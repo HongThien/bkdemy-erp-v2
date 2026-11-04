@@ -413,6 +413,7 @@
 | updated_by | uuid | Y | jwt_uid() |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| ke_hoach | text | Y |  |  |  |
 
 ## bao_cao_ph_ky_log
 

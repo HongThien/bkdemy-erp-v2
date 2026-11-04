@@ -1,11 +1,11 @@
 // BÁO CÁO HỌC KÌ (spec-bao-cao-ky.md, Thùy chốt 04/11) — chế độ "Học kì" của màn Report phụ huynh.
-// KHÁC hẳn report tháng: không bảng buổi / ET / BTVN / 7 chỉ số. 6 khối: điểm năng lực (GV nhập) · hoàn thành chủ đề–chuyên đề ·
-// điểm các lần thi + TB lần thi · thứ hạng · chuyên cần · nhận xét + phụ lục. Số liệu = fn_bc_ky_tinh (nháp) / snapshot (đã công bố).
+// KHÁC hẳn report tháng. 5 PHẦN (Thùy 04/11): đánh giá chủ đề→chuyên đề · kết quả thi + hạng · thái độ học tập (chuyên cần + BTVN) ·
+// nhận xét + kế hoạch + điểm năng lực (GV nhập) · phụ lục điểm thi toàn khối. Số liệu = fn_bc_ky_tinh (nháp) / snapshot (đã công bố).
 // ERP chỉ NHẬP + TÍNH + CHỤP SNAPSHOT; PDF gửi PH dựng ngoài ERP từ snapshot (spec A8).
 import { useEffect, useState } from 'react'
 import {
   listKyHoc, themKyHoc, xemBcKy, getBcKyNhap, luuBcKyNhap, congBoBcKy, moLaiBcKy,
-  BC_KY_NHAP_TRONG, type KyHoc, type BcKyData, type BcKyNhap, type BcKyDonVi,
+  BC_KY_NHAP_TRONG, type KyHoc, type BcKyData, type BcKyNhap, type BcKyDonVi, type BcKyChuDe,
 } from '../../lib/baoCaoKy'
 
 const pctCls = (p: number | null) => p == null ? 'text-slate-400' : p >= 80 ? 'text-emerald-700' : p >= 50 ? 'text-amber-700' : 'text-rose-700'
@@ -68,12 +68,12 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
   if (loading) return <p className="text-sm text-slate-500">Đang tính báo cáo kì…</p>
   if (loi || !data) return <p className="rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700">{loi ?? 'Không tải được báo cáo.'}</p>
   return (
-    <div className="grid gap-5 xl:grid-cols-[minmax(0,460px)_1fr]">
+    <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_340px]">
       <XemTruocKy d={data} congBoAt={congBoAt} />
       <div className="xl:sticky xl:top-0 xl:self-start">
         <NhapKy hsId={hsId} mon={mon} kyId={kyId} nhap={nhap} congBoAt={congBoAt}
           // vá tại chỗ (không tính lại cả báo cáo): phần nhập hiện ngay trên bản xem trước
-          onDaLuu={(n) => { setNhap(n); setData((d) => d && { ...d, nang_luc: { diem: n.diem_du_doan, sai_so: n.sai_so }, nhan_xet: n.nhan_xet }); onTrangThai(hsId, 'nhap') }}
+          onDaLuu={(n) => { setNhap(n); setData((d) => d && { ...d, nang_luc: { diem: n.diem_du_doan, sai_so: n.sai_so }, nhan_xet: n.nhan_xet, ke_hoach: n.ke_hoach }); onTrangThai(hsId, 'nhap') }}
           onCongBo={async () => { const x = await xemBcKy(hsId, mon, kyId); setData(x.du_lieu); setCongBoAt(x.cong_bo_at); setNhap((n) => ({ ...n, cong_bo_at: x.cong_bo_at })); onTrangThai(hsId, 'cong_bo') }}
           onMoLai={async () => { const x = await xemBcKy(hsId, mon, kyId); setData(x.du_lieu); setCongBoAt(null); setNhap((n) => ({ ...n, cong_bo_at: null })); onTrangThai(hsId, 'nhap') }} />
       </div>
@@ -88,6 +88,7 @@ function NhapKy({ hsId, mon, kyId, nhap, congBoAt, onDaLuu, onCongBo, onMoLai }:
   const [diem, setDiem] = useState(nhap.diem_du_doan?.toString() ?? '')
   const [saiSo, setSaiSo] = useState(nhap.sai_so?.toString() ?? '')
   const [nx, setNx] = useState(nhap.nhan_xet ?? '')
+  const [kh, setKh] = useState(nhap.ke_hoach ?? '')
   const [saved, setSaved] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
@@ -98,10 +99,10 @@ function NhapKy({ hsId, mon, kyId, nhap, congBoAt, onDaLuu, onCongBo, onMoLai }:
     if (Number.isNaN(d) || Number.isNaN(ss)) { setLoi('Điểm và sai số phải là số.'); return }
     if (d != null && (d < 0 || d > 10)) { setLoi('Điểm dự đoán trong khoảng 0–10.'); return }
     if (ss != null && (ss < 0 || ss > 10)) { setLoi('Sai số trong khoảng 0–10.'); return }
-    const n: BcKyNhap = { ...nhap, diem_du_doan: d, sai_so: ss, nhan_xet: nx.trim() ? nx : null }
-    if (n.diem_du_doan === nhap.diem_du_doan && n.sai_so === nhap.sai_so && n.nhan_xet === nhap.nhan_xet) return
+    const n: BcKyNhap = { ...nhap, diem_du_doan: d, sai_so: ss, nhan_xet: nx.trim() ? nx : null, ke_hoach: kh.trim() ? kh : null }
+    if (n.diem_du_doan === nhap.diem_du_doan && n.sai_so === nhap.sai_so && n.nhan_xet === nhap.nhan_xet && n.ke_hoach === nhap.ke_hoach) return
     setLoi(null)
-    try { await luuBcKyNhap(hsId, mon, kyId, { diem_du_doan: n.diem_du_doan, sai_so: n.sai_so, nhan_xet: n.nhan_xet }); onDaLuu(n); setSaved(tag); setTimeout(() => setSaved((s) => (s === tag ? null : s)), 1500) }
+    try { await luuBcKyNhap(hsId, mon, kyId, { diem_du_doan: n.diem_du_doan, sai_so: n.sai_so, nhan_xet: n.nhan_xet, ke_hoach: n.ke_hoach }); onDaLuu(n); setSaved(tag); setTimeout(() => setSaved((s) => (s === tag ? null : s)), 1500) }
     catch (e: any) { setLoi(e?.message ?? String(e)) }
   }
   const du = soOrNull(diem) != null && soOrNull(saiSo) != null && !!nx.trim()
@@ -123,7 +124,10 @@ function NhapKy({ hsId, mon, kyId, nhap, congBoAt, onDaLuu, onCongBo, onMoLai }:
         </label>
       </div>
       <label className="block text-[12px] text-slate-500">Nhận xét của giáo viên
-        <textarea value={nx} disabled={khoa} onChange={(e) => setNx(e.target.value)} onBlur={() => void luu('nx')} rows={7} className="mt-1 w-full rounded-lg border border-slate-200 px-2.5 py-2 text-[13px] leading-relaxed text-slate-800 disabled:bg-slate-50" />
+        <textarea value={nx} disabled={khoa} onChange={(e) => setNx(e.target.value)} onBlur={() => void luu('nx')} rows={6} className="mt-1 w-full rounded-lg border border-slate-200 px-2.5 py-2 text-[13px] leading-relaxed text-slate-800 disabled:bg-slate-50" />
+      </label>
+      <label className="block text-[12px] text-slate-500">Kế hoạch cải thiện
+        <textarea value={kh} disabled={khoa} onChange={(e) => setKh(e.target.value)} onBlur={() => void luu('kh')} rows={4} className="mt-1 w-full rounded-lg border border-slate-200 px-2.5 py-2 text-[13px] leading-relaxed text-slate-800 disabled:bg-slate-50" />
       </label>
       {loi && <p className="rounded-md bg-rose-50 px-2 py-1 text-[12px] text-rose-700">{loi}</p>}
       <div className="flex items-center gap-2">
@@ -139,120 +143,184 @@ function NhapKy({ hsId, mon, kyId, nhap, congBoAt, onDaLuu, onCongBo, onMoLai }:
   )
 }
 
-// ── Bản xem trước (bố cục theo mockup docs/mockup-bao-cao-ky.html) ──
-function Sec({ icon, ten, children }: { icon: string; ten: string; children: React.ReactNode }) {
-  return <section className="border-b-8 border-slate-100 px-5 py-4 last:border-b-0"><h2 className="mb-3 text-[15px] font-bold text-slate-800">{icon} {ten}</h2>{children}</section>
-}
-function Thanh({ u, nToiDa }: { u: BcKyDonVi; nToiDa: number }) {
+// ── Bản xem trước — 5 PHẦN (Thùy 04/11 duyệt lại bố cục): ① Đánh giá (chủ đề = card, chuyên đề = dòng) · ② Kết quả thi
+// (1 bảng + đồ thị 2 đường) · ③ Thái độ học tập (chuyên cần + BTVN) · ④ Nhận xét GV + kế hoạch + điểm năng lực · ⑤ Phụ lục
+// điểm thi toàn khối. Mọi số đọc từ jsonb (fn_bc_ky_tinh / snapshot) — ở đây chỉ hiển thị.
+const MAU_EM = '#4f46e5', MAU_TB = '#f97316'
+function Phan({ so, ten, mo, children }: { so: number; ten: string; mo?: string; children: React.ReactNode }) {
   return (
-    <div className="my-2">
-      <div className="mb-0.5 flex justify-between gap-2 text-[13px]"><span className="text-slate-700">{u.ten}</span><b className={`tabular-nums ${pctCls(u.p)}`}>{u.p == null ? 'chưa đo' : `${u.p}%`}</b></div>
-      <div className="h-2 overflow-hidden rounded-full bg-slate-200"><div className={`h-full rounded-full ${barCls(u.p)}`} style={{ width: `${u.p ?? 0}%` }} /></div>
-      <div className="text-[11px] text-slate-400">{u.n === 0 ? 'chưa có lần đánh giá nào trong 45 ngày cuối kì' : `${u.n} lần đánh giá${u.n < nToiDa / 2 ? ' · độ tin còn thấp' : ''}`}</div>
+    <section className="rounded-2xl border border-slate-200 bg-white shadow-sm">
+      <div className="flex items-baseline gap-3 border-b border-slate-100 px-5 py-3">
+        <span className="flex h-7 w-7 shrink-0 items-center justify-center self-center rounded-full bg-indigo-600 text-[13px] font-bold text-white">{so}</span>
+        <h2 className="text-[16px] font-bold text-slate-800">{ten}</h2>
+        {mo && <span className="text-[12px] text-slate-400">{mo}</span>}
+      </div>
+      <div className="px-5 py-4">{children}</div>
+    </section>
+  )
+}
+function DongChuyenDe({ u }: { u: BcKyDonVi }) {
+  return (
+    <div className="flex items-center gap-3 py-1.5">
+      <span className="min-w-0 flex-1 text-[13px] text-slate-700">{u.ten}</span>
+      <div className="h-3 w-28 shrink-0 overflow-hidden rounded-full bg-slate-200"><div className={`h-full rounded-full ${barCls(u.p)}`} style={{ width: `${u.p ?? 0}%` }} /></div>
+      <b className={`w-11 shrink-0 text-right text-[13px] tabular-nums ${pctCls(u.p)}`}>{u.p == null ? '—' : `${u.p}%`}</b>
+      <span className="w-14 shrink-0 text-right text-[11px] text-slate-400" title="số lần đánh giá trong 45 ngày cuối kì">{u.n === 0 ? 'chưa đo' : `${u.n} lần${u.n < u.n_toi_da / 2 ? '*' : ''}`}</span>
+    </div>
+  )
+}
+function CardChuDe({ cd }: { cd: BcKyChuDe }) {
+  return (
+    <div className="overflow-hidden rounded-xl border border-slate-200">
+      <div className="flex items-center gap-3 bg-slate-50 px-3.5 py-2.5">
+        <h3 className="min-w-0 flex-1 text-[14px] font-bold text-slate-800">{cd.ten}</h3>
+        <span className={`rounded-lg px-2 py-0.5 text-[13px] font-extrabold tabular-nums ${cd.p == null ? 'bg-slate-100 text-slate-400' : cd.p >= 80 ? 'bg-emerald-100 text-emerald-700' : cd.p >= 50 ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-700'}`}>{cd.p == null ? 'chưa đo' : `${cd.p}%`}</span>
+      </div>
+      <div className="divide-y divide-slate-100 px-3.5 py-1">
+        {cd.chuyen_de.length ? cd.chuyen_de.map((u) => <DongChuyenDe key={u.ma} u={u} />) : <p className="py-2 text-[12px] text-slate-400">Chưa có chuyên đề nào được đánh giá.</p>}
+      </div>
     </div>
   )
 }
 function BieuDoThi({ thi }: { thi: BcKyData['thi'] }) {
   if (!thi.length) return <p className="text-[13px] text-slate-400">Chưa có lần thi nào trong kì.</p>
-  const W = 400, H = 170, L = 26, R = 12, T = 14, B = 30
-  const PAD = 24 // điểm đầu/cuối lùi vào trong để nhãn "MT T10" không bị cắt mép
+  const W = 560, H = 200, L = 28, R = 12, T = 18, B = 30, PAD = 30
   const x = (i: number) => thi.length === 1 ? (L + W - R) / 2 : L + PAD + (i * (W - L - R - 2 * PAD)) / (thi.length - 1)
   const y = (v: number) => T + (1 - v / 10) * (H - T - B)
   const duong = (k: 'diem' | 'tb') => thi.map((t, i) => `${x(i)},${y(t[k])}`).join(' ')
   return (
     <div>
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full">
-        {[0, 2, 4, 6, 8, 10].map((v) => <g key={v}><line x1={L} x2={W - R} y1={y(v)} y2={y(v)} stroke="#e2e8f0" /><text x={L - 6} y={y(v) + 3} fontSize="9" textAnchor="end" fill="#94a3b8">{v}</text></g>)}
-        <polyline points={duong('tb')} fill="none" stroke="#94a3b8" strokeWidth="2" strokeDasharray="5 4" />
-        <polyline points={duong('diem')} fill="none" stroke="#4f46e5" strokeWidth="2.5" />
+        {[0, 2, 4, 6, 8, 10].map((v) => <g key={v}><line x1={L} x2={W - R} y1={y(v)} y2={y(v)} stroke="#e2e8f0" /><text x={L - 7} y={y(v) + 3} fontSize="10" textAnchor="end" fill="#94a3b8">{v}</text></g>)}
+        <polyline points={duong('tb')} fill="none" stroke={MAU_TB} strokeWidth="3" strokeLinejoin="round" />
+        <polyline points={duong('diem')} fill="none" stroke={MAU_EM} strokeWidth="3" strokeLinejoin="round" />
         {thi.map((t, i) => (
           <g key={i}>
-            <circle cx={x(i)} cy={y(t.diem)} r="3.5" fill="#4f46e5" />
-            <text x={x(i)} y={y(t.diem) - 7} fontSize="10" fontWeight="700" textAnchor="middle" fill="#312e81">{so1(t.diem)}</text>
-            <text x={x(i)} y={H - 10} fontSize="10" textAnchor="middle" fill="#475569">{t.nhan}</text>
+            <circle cx={x(i)} cy={y(t.tb)} r="4" fill={MAU_TB} />
+            <circle cx={x(i)} cy={y(t.diem)} r="4.5" fill={MAU_EM} />
+            <text x={x(i)} y={y(t.diem) + (t.diem >= t.tb ? -9 : 16)} fontSize="11" fontWeight="700" textAnchor="middle" fill={MAU_EM}>{so1(t.diem)}</text>
+            <text x={x(i)} y={y(t.tb) + (t.diem >= t.tb ? 16 : -9)} fontSize="10.5" fontWeight="600" textAnchor="middle" fill={MAU_TB}>{so1(t.tb)}</text>
+            <text x={x(i)} y={H - 9} fontSize="11" textAnchor="middle" fill="#475569">{t.nhan}</text>
           </g>
         ))}
       </svg>
-      <div className="mt-1 flex gap-4 text-[12px] text-slate-600">
-        <span><i className="mr-1 inline-block h-[3px] w-3.5 rounded bg-indigo-600 align-middle" />Điểm của em</span>
-        <span><i className="mr-1 inline-block h-[3px] w-3.5 rounded bg-slate-400 align-middle" />Trung bình lần thi (khối)</span>
+      <div className="mt-1 flex flex-wrap gap-5 text-[12.5px] text-slate-700">
+        <span className="flex items-center gap-1.5"><i className="inline-block h-1 w-5 rounded" style={{ background: MAU_EM }} />Điểm của con</span>
+        <span className="flex items-center gap-1.5"><i className="inline-block h-1 w-5 rounded" style={{ background: MAU_TB }} />Trung bình cả khối ở lần thi đó</span>
       </div>
     </div>
   )
 }
+function O({ so, nhan, tone }: { so: React.ReactNode; nhan: string; tone?: 'do' | 'cam' | 'xanh' }) {
+  const c = tone === 'do' ? 'bg-rose-50 text-rose-700' : tone === 'cam' ? 'bg-amber-50 text-amber-700' : tone === 'xanh' ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-50 text-slate-800'
+  return <div className={`rounded-xl px-3.5 py-3 ${c}`}><b className="block text-[22px] leading-tight tabular-nums">{so}</b><span className="text-[12px] opacity-80">{nhan}</span></div>
+}
 export function XemTruocKy({ d, congBoAt }: { d: BcKyData; congBoAt: string | null }) {
-  const cc = d.chuyen_can
+  const cc = d.thai_do.chuyen_can, bt = d.thai_do.btvn
   const nghi = cc ? cc.vang + cc.vang_phep : 0
   return (
-    <div className="overflow-hidden rounded-[22px] bg-white shadow-[0_8px_30px_#0002]">
-      <div className="bg-gradient-to-br from-indigo-600 to-violet-600 px-5 pb-6 pt-5 text-white">
-        <small className="text-[12px] uppercase tracking-wider opacity-80">BK Academy · Báo cáo học kì</small>
-        <h1 className="mb-0.5 mt-1 text-[22px] font-bold">{d.hs.ho_ten}</h1>
-        <p className="text-[13px] opacity-90">{d.mon}{d.lop.khoi ? ` ${d.lop.khoi}` : ''} · Lớp {d.lop.ten ?? '—'} · {d.ky.ten} (tháng {thangNhan(d.ky.tu_thang)} → {thangNhan(d.ky.den_thang)})</p>
+    <div className="space-y-4">
+      <div className="rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 px-5 py-4 text-white shadow-sm">
+        <small className="text-[11.5px] uppercase tracking-wider opacity-80">BK Academy · Báo cáo học kì</small>
+        <h1 className="mt-0.5 text-[22px] font-bold">{d.hs.ho_ten}</h1>
+        <p className="text-[13px] opacity-90">{d.mon}{d.lop.khoi ? ` ${d.lop.khoi}` : ''} · Lớp {d.lop.ten ?? '—'} · {d.ky.ten} (tháng {thangNhan(d.ky.tu_thang)} → {thangNhan(d.ky.den_thang)}){d.gv ? ` · GV ${d.gv}` : ''}</p>
       </div>
-      <Sec icon="🎯" ten="Điểm năng lực">
-        <div className="flex items-end gap-3">
-          <span className="text-[44px] font-extrabold leading-none text-indigo-600">{so1(d.nang_luc.diem)}</span>
-          <span className="pb-1 text-[20px] font-semibold text-slate-500">± {so1(d.nang_luc.sai_so)}</span>
-        </div>
-        <p className="mt-1.5 text-[12px] leading-relaxed text-slate-500">Điểm dự đoán cho kì tới và sai số do giáo viên đánh giá. Điểm càng cao là học càng tốt; sai số càng nhỏ là làm bài càng cẩn thận.</p>
-      </Sec>
-      <Sec icon="📚" ten="Mức hoàn thành">
-        <div className="mb-1 text-[11px] text-slate-400">Tính trên các lần đánh giá trong 45 ngày cuối kì ({ddmm(d.cua_so_hoan_thanh.tu)} → {ddmm(d.cua_so_hoan_thanh.den)})</div>
-        <div className="mt-2 text-[11px] font-bold uppercase text-slate-500">Chủ đề ({d.cua_so_hoan_thanh.n_chu_de} lần đánh giá gần nhất)</div>
-        {d.hoan_thanh.chu_de.length ? d.hoan_thanh.chu_de.map((u) => <Thanh key={u.ma} u={u} nToiDa={u.n_toi_da} />) : <p className="text-[13px] text-slate-400">Chưa có lần đánh giá nào trong kì.</p>}
-        <div className="mt-3 text-[11px] font-bold uppercase text-slate-500">Chuyên đề ({d.cua_so_hoan_thanh.n_chuyen_de} lần đánh giá gần nhất)</div>
-        {d.hoan_thanh.chuyen_de.map((u) => <Thanh key={u.ma} u={u} nToiDa={u.n_toi_da} />)}
-      </Sec>
-      <Sec icon="📈" ten="Điểm các lần thi"><BieuDoThi thi={d.thi} /></Sec>
-      <Sec icon="🏆" ten="Thứ hạng tại trung tâm">
-        {d.hang_ky
-          ? <div className="mb-3 grid grid-cols-2 gap-2.5">
-              <div className="rounded-xl bg-slate-50 p-3"><b className="block text-[22px] text-slate-800">{d.hang_ky.hang} / {d.hang_ky.tong}</b><span className="text-[12px] text-slate-500">Hạng cả học kì · theo điểm TB {d.hang_ky.so_lan} lần thi em đã thi</span></div>
-              <div className="rounded-xl bg-slate-50 p-3"><b className="block text-[22px] text-slate-800">Top {d.hang_ky.top_pct}%</b><span className="text-[12px] text-slate-500">Trong khối {d.lop.khoi} {d.mon}</span></div>
-            </div>
-          : <p className="mb-2 text-[13px] text-slate-400">Em chưa có lần thi nào trong kì — không xếp hạng.</p>}
+
+      <Phan so={1} ten="Đánh giá kiến thức" mo={`45 ngày cuối kì (${ddmm(d.danh_gia.tu)} → ${ddmm(d.danh_gia.den)}) · chủ đề ${d.danh_gia.n_chu_de} lần, chuyên đề ${d.danh_gia.n_chuyen_de} lần đánh giá gần nhất`}>
+        {d.danh_gia.chu_de.length
+          ? <div className="grid gap-3 lg:grid-cols-2">{d.danh_gia.chu_de.map((cd) => <CardChuDe key={cd.ma} cd={cd} />)}</div>
+          : <p className="text-[13px] text-slate-400">Chưa có lần đánh giá nào trong kì.</p>}
+        <p className="mt-2 text-[11px] text-slate-400">* ít lần đánh giá — độ tin còn thấp.</p>
+      </Phan>
+
+      <Phan so={2} ten="Kết quả thi">
+        <BieuDoThi thi={d.thi} />
         {d.thi.length > 0 && (
-          <table className="w-full text-[12.5px]">
-            <thead><tr className="border-b border-slate-200 text-[11px] text-slate-500"><th className="py-1.5 text-left font-medium">Lần thi</th><th className="py-1.5 text-right font-medium">Điểm</th><th className="py-1.5 text-right font-medium">Hạng</th></tr></thead>
-            <tbody>{d.thi.map((t, i) => <tr key={i} className="border-b border-slate-100"><td className="py-2">{t.nhan}</td><td className="py-2 text-right tabular-nums">{so1(t.diem)}</td><td className="py-2 text-right tabular-nums">{t.hang}/{t.n_mau}</td></tr>)}</tbody>
+          <table className="mt-4 w-full text-[13px]">
+            <thead><tr className="border-b border-slate-200 text-[11.5px] text-slate-500">
+              <th className="py-1.5 text-left font-medium">Lần thi</th><th className="py-1.5 text-right font-medium">Ngày</th>
+              <th className="py-1.5 text-right font-medium">Điểm</th><th className="py-1.5 text-right font-medium">TB khối</th>
+              <th className="py-1.5 text-right font-medium">Chênh</th><th className="py-1.5 text-right font-medium">Hạng</th>
+            </tr></thead>
+            <tbody>
+              {d.thi.map((t, i) => (
+                <tr key={i} className="border-b border-slate-100">
+                  <td className="py-2 font-medium">{t.nhan}</td><td className="py-2 text-right tabular-nums text-slate-500">{ddmm(t.ngay)}</td>
+                  <td className="py-2 text-right font-bold tabular-nums" style={{ color: MAU_EM }}>{so1(t.diem)}</td>
+                  <td className="py-2 text-right tabular-nums" style={{ color: MAU_TB }}>{so1(t.tb)}</td>
+                  <td className={`py-2 text-right tabular-nums ${t.chenh >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>{t.chenh >= 0 ? '+' : ''}{so1(t.chenh)}</td>
+                  <td className="py-2 text-right tabular-nums">{t.hang}/{t.n_mau}</td>
+                </tr>
+              ))}
+              {d.hang_ky && (
+                <tr className="bg-indigo-50/60 font-bold">
+                  <td className="py-2.5 pl-1">Cả học kì</td><td />
+                  <td className="py-2.5 text-right tabular-nums" style={{ color: MAU_EM }}>{so1(d.hang_ky.diem_tb)}</td><td /><td />
+                  <td className="py-2.5 pr-1 text-right tabular-nums text-indigo-700">{d.hang_ky.hang}/{d.hang_ky.tong}</td>
+                </tr>
+              )}
+            </tbody>
           </table>
         )}
-      </Sec>
-      <Sec icon="🗓️" ten="Chuyên cần">
+        {d.hang_ky && <p className="mt-2 text-[11.5px] text-slate-500">Hạng cả kì xếp theo hạng trung bình {d.hang_ky.so_lan} lần con đã thi (hạng TB {so1(d.hang_ky.hang_tb)}), trong khối {d.lop.khoi} {d.mon}. Lần không thi không tính.</p>}
+      </Phan>
+
+      <Phan so={3} ten="Thái độ học tập">
+        <div className="mb-1.5 text-[11.5px] font-bold uppercase text-slate-500">Chuyên cần</div>
         {cc && cc.tong > 0
-          ? <div className="grid grid-cols-2 gap-2.5">
-              <div className="rounded-xl bg-slate-50 p-3"><b className="block text-[22px] text-slate-800">{nghi} buổi</b><span className="text-[12px] text-slate-500">Nghỉ trong kì{cc.vang_phep ? ` (${cc.vang_phep} có phép)` : ''}</span></div>
-              <div className="rounded-xl bg-slate-50 p-3"><b className="block text-[22px] text-slate-800">{cc.co_mat} / {cc.tong}</b><span className="text-[12px] text-slate-500">Buổi có mặt</span></div>
+          ? <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+              <O so={`${cc.co_mat}/${cc.tong}`} nhan="Buổi có mặt" tone="xanh" />
+              <O so={nghi} nhan={`Buổi nghỉ${cc.vang_phep ? ` (${cc.vang_phep} có phép)` : ''}`} tone={nghi ? 'cam' : undefined} />
             </div>
           : <p className="text-[13px] text-slate-400">Chưa có buổi điểm danh nào trong kì.</p>}
-      </Sec>
-      <Sec icon="💬" ten="Nhận xét của giáo viên">
-        {d.nhan_xet
-          ? <div className="whitespace-pre-line rounded-lg border-l-4 border-violet-600 bg-slate-50 px-3.5 py-3 text-[14px] leading-relaxed text-slate-800">{d.nhan_xet}{d.gv && <em className="mt-2 block text-[12px] not-italic text-slate-500">— {d.gv}</em>}</div>
-          : <p className="text-[13px] text-slate-400">Giáo viên chưa nhập nhận xét.</p>}
-      </Sec>
-      <Sec icon="📎" ten="Phụ lục — bảng điểm các lần thi">
-        {d.thi.length
-          ? <>
+        <div className="mb-1.5 mt-4 text-[11.5px] font-bold uppercase text-slate-500">Bài tập về nhà {bt && bt.tong > 0 ? <span className="font-normal normal-case text-slate-400">· {bt.tong} buổi có ghi nhận</span> : null}</div>
+        {bt && bt.tong > 0
+          ? <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+              <O so={bt.khong_lam} nhan="Lần không làm" tone={bt.khong_lam ? 'do' : 'xanh'} />
+              <O so={bt.nop_muon} nhan="Lần nộp muộn" tone={bt.nop_muon ? 'cam' : 'xanh'} />
+              <O so={bt.khong_nghiem_tuc} nhan={`Lần không nghiêm túc${bt.chong_doi ? ` (${bt.chong_doi} chống đối)` : ''}`} tone={bt.khong_nghiem_tuc ? 'do' : 'xanh'} />
+            </div>
+          : <p className="text-[13px] text-slate-400">Chưa có ghi nhận bài tập về nhà trong kì.</p>}
+      </Phan>
+
+      <Phan so={4} ten="Nhận xét của giáo viên">
+        <div className="mb-4 flex items-end gap-3 rounded-xl bg-indigo-50/60 px-4 py-3">
+          <div>
+            <div className="text-[11.5px] font-bold uppercase text-indigo-700">Điểm năng lực</div>
+            <div className="flex items-end gap-2"><span className="text-[40px] font-extrabold leading-none text-indigo-600">{so1(d.nang_luc.diem)}</span><span className="pb-1 text-[18px] font-semibold text-slate-500">± {so1(d.nang_luc.sai_so)}</span></div>
+          </div>
+          <p className="pb-1 text-[12px] leading-relaxed text-slate-500">Điểm dự đoán cho kì tới và sai số do giáo viên đánh giá. Điểm càng cao là học càng tốt; sai số càng nhỏ là làm bài càng cẩn thận.</p>
+        </div>
+        <div className="mb-1.5 text-[11.5px] font-bold uppercase text-slate-500">Nhận xét</div>
+        {d.nhan_xet ? <div className="whitespace-pre-line rounded-lg border-l-4 border-violet-600 bg-slate-50 px-3.5 py-3 text-[14px] leading-relaxed text-slate-800">{d.nhan_xet}</div> : <p className="text-[13px] text-slate-400">Giáo viên chưa nhập nhận xét.</p>}
+        <div className="mb-1.5 mt-4 text-[11.5px] font-bold uppercase text-slate-500">Kế hoạch cải thiện</div>
+        {d.ke_hoach ? <div className="whitespace-pre-line rounded-lg border-l-4 border-emerald-500 bg-slate-50 px-3.5 py-3 text-[14px] leading-relaxed text-slate-800">{d.ke_hoach}</div> : <p className="text-[13px] text-slate-400">Giáo viên chưa nhập kế hoạch.</p>}
+        {d.gv && <p className="mt-2 text-right text-[12px] text-slate-500">— {d.gv}</p>}
+      </Phan>
+
+      <Phan so={5} ten="Phụ lục — điểm thi toàn khối" mo={`Khối ${d.lop.khoi ?? ''} ${d.mon} · ${d.phu_luc.hs.length} học sinh · xếp theo hạng trung bình`}>
+        {d.phu_luc.hs.length
+          ? <div className="max-h-[560px] overflow-auto rounded-lg border border-slate-200">
               <table className="w-full text-[12.5px]">
-                <thead><tr className="border-b border-slate-200 text-[11px] text-slate-500"><th className="py-1.5 text-left font-medium">Lần thi</th><th className="py-1.5 text-right font-medium">Ngày</th><th className="py-1.5 text-right font-medium">Điểm</th><th className="py-1.5 text-right font-medium">TB lần thi</th><th className="py-1.5 text-right font-medium">Chênh</th></tr></thead>
-                <tbody>
-                  {d.thi.map((t, i) => (
-                    <tr key={i} className="border-b border-slate-100">
-                      <td className="py-2">{t.nhan}</td><td className="py-2 text-right tabular-nums">{ddmm(t.ngay)}</td><td className="py-2 text-right tabular-nums">{so1(t.diem)}</td>
-                      <td className="py-2 text-right tabular-nums">{so1(t.tb)} <span className="text-[10px] text-slate-400">({t.n_mau})</span></td>
-                      <td className={`py-2 text-right tabular-nums ${t.chenh >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>{t.chenh >= 0 ? '+' : ''}{so1(t.chenh)}</td>
-                    </tr>))}
-                  {d.tong_thi && <tr className="font-semibold"><td className="py-2">Trung bình</td><td /><td className="py-2 text-right tabular-nums">{so1(d.tong_thi.tb_em)}</td><td className="py-2 text-right tabular-nums">{so1(d.tong_thi.tb_lan)}</td>
-                    <td className={`py-2 text-right tabular-nums ${d.tong_thi.chenh >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>{d.tong_thi.chenh >= 0 ? '+' : ''}{so1(d.tong_thi.chenh)}</td></tr>}
-                </tbody>
+                <thead className="sticky top-0 bg-slate-50"><tr className="text-[11.5px] text-slate-500">
+                  <th className="px-2 py-1.5 text-right font-medium">#</th><th className="px-2 py-1.5 text-left font-medium">Học sinh</th><th className="px-2 py-1.5 text-left font-medium">Lớp</th>
+                  {d.phu_luc.cot.map((c, i) => <th key={i} className="px-2 py-1.5 text-right font-medium">{c.nhan}</th>)}
+                  <th className="px-2 py-1.5 text-right font-medium">Hạng TB</th><th className="px-2 py-1.5 text-right font-medium">Hạng</th>
+                </tr></thead>
+                <tbody>{d.phu_luc.hs.map((h, i) => (
+                  <tr key={i} className={h.la_em ? 'bg-indigo-100 font-bold text-indigo-900' : 'border-t border-slate-100'}>
+                    <td className="px-2 py-1.5 text-right tabular-nums text-slate-400">{i + 1}</td>
+                    <td className="px-2 py-1.5">{h.ten}{h.la_em && ' ⭐'}</td><td className="px-2 py-1.5 text-slate-500">{h.lop ?? ''}</td>
+                    {h.diem.map((v, j) => <td key={j} className="px-2 py-1.5 text-right tabular-nums">{v == null ? <span className="text-slate-300">—</span> : so1(v)}</td>)}
+                    <td className="px-2 py-1.5 text-right tabular-nums">{so1(h.hang_tb)}</td><td className="px-2 py-1.5 text-right tabular-nums">{h.hang}</td>
+                  </tr>))}</tbody>
               </table>
-              <p className="mt-2 text-[11px] text-slate-400">TB lần thi tính trên các em cùng khối đã thi đề đó (số trong ngoặc); em vắng thì không vào mẫu.</p>
-            </>
+            </div>
           : <p className="text-[13px] text-slate-400">Chưa có lần thi nào trong kì.</p>}
-      </Sec>
-      <div className="px-5 py-3.5 text-center text-[11px] text-slate-400">BK Academy · Báo cáo học kì · {congBoAt ? `công bố ${new Date(congBoAt).toLocaleDateString('vi-VN')}` : `bản nháp — tính lúc ${new Date(d.tinh_luc).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}`}</div>
+        <p className="mt-2 text-[11px] text-slate-400">"—" = không thi lần đó (không tính vào hạng). Hạng TB = trung bình hạng các lần đã thi.</p>
+      </Phan>
+
+      <p className="text-center text-[11px] text-slate-400">BK Academy · Báo cáo học kì · {congBoAt ? `công bố ${new Date(congBoAt).toLocaleDateString('vi-VN')}` : `bản nháp — tính lúc ${new Date(d.tinh_luc).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}`}</p>
     </div>
   )
 }

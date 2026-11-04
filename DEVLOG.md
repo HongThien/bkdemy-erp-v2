@@ -78724,3 +78724,11 @@ Thùy nêu 4 việc, làm được 3:
 - Kết quả T10 (trước → sau): Long 18→13h, bổ trợ 1.260.000→910.000 · Cường 24→21h, 1.440.000→1.260.000 · Ngân 31→29,5h, 1.860.000→1.770.000 · Tùng 25,5→24,5h, 1.402.500→1.347.500. Người khác y nguyên. Test test_bo_tro_trung_gio.mjs 6/6 trước khi áp (sau khi áp thì phần so trước/sau tự bằng nhau).
 - UI: màn Lương (ERP) + Lương của tôi (app TA) ghi "khai X giờ, Y giờ chồng nhau chỉ tính 1 lần" · form "Thêm việc" app TA báo trước khi giờ trùng việc bổ trợ đã ghi (vẫn cho ghi để lưu tên em) · nhãn cờ trung_gio ở màn duyệt nói rõ luật. Đã thấy trên ERP local (Long T10); app TA chưa mở bằng TA thật.
 - Treo: 2 chặn cứng (khai bù ca trùng giờ ca đã có · checkout < 1 phút) — Thùy đang hỏi "chặn cứng là gì", chưa gật.
+
+
+## 2026-11-04 — Báo cáo HỌC KÌ: dựng lại 5 phần theo Thùy (mig 202611041727 ĐÃ ÁP)
+- SAI CỦA TÔI: HANDOFF ghi "chốt thiết kế" ⇒ tôi coi mockup là đã duyệt, dựng luôn màn ERP + app PH. Thùy: "mockup t đã duyệt đâu". Chưa push/deploy gì. Bài học: spec "chốt logic" ≠ mockup đã duyệt — đưa HTML số thật cho Thùy xem TRƯỚC khi dựng màn.
+- Thùy duyệt bản số thật ⇒ 5 phần: (1) Đánh giá — mỗi chủ đề 1 card, chuyên đề 1 dòng, thanh ngắn cùng dòng · (2) Kết quả thi — 1 bảng (điểm · TB khối · chênh · hạng) + dòng "Cả học kì", đồ thị 2 đường 2 màu (tím = con, cam = TB khối) · (3) Thái độ học tập — chuyên cần + BTVN (không làm / nộp muộn / không nghiêm túc = chưa nghiêm túc + chống đối; buổi thường + ca bù) · (4) Nhận xét + KẾ HOẠCH CẢI THIỆN (cột mới `ke_hoach`) + điểm năng lực · (5) Phụ lục — điểm thi toàn khối × môn, mỗi dòng 1 em, mỗi cột 1 lần thi, xếp theo HẠNG TB (họ tên đầy đủ).
+- Đổi luật: hạng cả kì = xếp theo hạng trung bình các lần đã thi (trước: TB điểm). Chuyên đề gắn chủ đề theo CẶP của từng câu (1 chuyên đề ở nhiều chủ đề — lần đầu gán min ⇒ card "Hình", "Tiếp tuyến" rỗng).
+- Kiểm (ROLLBACK, 3 em): Toán 8A1 5 card · Toán 9A1 8 card, phụ lục 73 em · KHTN 8K1 3 card. Bản dev dựng đúng component màn ERP (overlay trên localhost:5173, số từ public/_tmp_bcky.json — file tạm, KHÔNG commit, có tên HS).
+- Cần Thùy xem: (a) hạng TB thưởng em bỏ 1 lần thi khó (vd #1 K9 thi 3/4 lần) · (b) bài Hình–Học chưa gắn chuyên đề hiện dòng "Hình" · (c) 2 chủ đề trùng tên "Căn bậc hai - Căn thức bậc hai" (Đại + Hình) · (d) app PH CHƯA cập nhật theo 5 phần (còn khuôn cũ, chưa push).

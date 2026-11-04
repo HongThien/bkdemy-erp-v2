@@ -5,27 +5,31 @@ import { supabase } from './supabase'
 
 export type KyHoc = { id: string; ten: string; tu_thang: string; den_thang: string }
 
-export type BcKyDonVi = { ma: string; ten: string; chu_de?: string | null; p: number | null; n: number; n_toi_da: number }
+export type BcKyDonVi = { ma: string; ten: string; p: number | null; n: number; n_toi_da: number }
+export type BcKyChuDe = BcKyDonVi & { chuyen_de: BcKyDonVi[] }
 export type BcKyLanThi = { loai: 'mt_sat_hach' | 'khao_sat_thang'; nhan: string; thang: string; ngay: string; diem: number; tb: number; chenh: number; n_mau: number; hang: number }
-// Khuôn jsonb của fn_bc_ky_tinh = cũng là snapshot lúc công bố (tự đủ để dựng app PH / PDF).
+// Khuôn jsonb của fn_bc_ky_tinh (phiên bản 2, mig 202611041727 — 5 phần) = cũng là snapshot lúc công bố (tự đủ để dựng app PH / PDF).
 export type BcKyData = {
   phien_ban: number; tinh_luc: string; cong_bo_at?: string
   hs: { id: string; ho_ten: string; ma_hs: string | null }
   lop: { id: string | null; ten: string | null; khoi: string | null }
   mon: string; gv: string | null
   ky: KyHoc
-  cua_so_hoan_thanh: { tu: string; den: string; n_chu_de: number; n_chuyen_de: number }
+  danh_gia: { tu: string; den: string; n_chu_de: number; n_chuyen_de: number; chu_de: BcKyChuDe[] }
+  thi: BcKyLanThi[]
+  hang_ky: { hang: number; tong: number; hang_tb: number; diem_tb: number; so_lan: number } | null
+  thai_do: {
+    chuyen_can: { vang: number; vang_phep: number; co_mat: number; tong: number } | null
+    btvn: { tong: number; khong_lam: number; nop_muon: number; xin_phep: number; khong_nghiem_tuc: number; chong_doi: number } | null
+  }
   nang_luc: { diem: number | null; sai_so: number | null }
   nhan_xet: string | null
-  hoan_thanh: { chu_de: BcKyDonVi[]; chuyen_de: BcKyDonVi[] }
-  thi: BcKyLanThi[]
-  hang_ky: { hang: number; tong: number; tb: number; so_lan: number; top_pct: number } | null
-  tong_thi: { tb_em: number; tb_lan: number; chenh: number } | null
-  chuyen_can: { vang: number; vang_phep: number; co_mat: number; tong: number } | null
+  ke_hoach: string | null
+  phu_luc: { cot: { nhan: string; ngay: string }[]; hs: { ten: string; lop: string | null; la_em: boolean; diem: (number | null)[]; hang_tb: number; hang: number }[] }
 }
 export type BcKyXem = { cong_bo_at: string | null; du_lieu: BcKyData }
-export type BcKyNhap = { diem_du_doan: number | null; sai_so: number | null; nhan_xet: string | null; cong_bo_at: string | null }
-export const BC_KY_NHAP_TRONG: BcKyNhap = { diem_du_doan: null, sai_so: null, nhan_xet: null, cong_bo_at: null }
+export type BcKyNhap = { diem_du_doan: number | null; sai_so: number | null; nhan_xet: string | null; ke_hoach: string | null; cong_bo_at: string | null }
+export const BC_KY_NHAP_TRONG: BcKyNhap = { diem_du_doan: null, sai_so: null, nhan_xet: null, ke_hoach: null, cong_bo_at: null }
 
 export async function listKyHoc(): Promise<KyHoc[]> {
   const { data, error } = await supabase.from('ky_hoc').select('id, ten, tu_thang, den_thang').order('tu_thang', { ascending: false }).limit(50)
@@ -45,12 +49,12 @@ export async function xemBcKy(hsId: string, mon: string, kyId: string): Promise<
   return data as BcKyXem
 }
 export async function getBcKyNhap(hsId: string, mon: string, kyId: string): Promise<BcKyNhap> {
-  const { data, error } = await supabase.from('bao_cao_ph_ky').select('diem_du_doan, sai_so, nhan_xet, cong_bo_at')
+  const { data, error } = await supabase.from('bao_cao_ph_ky').select('diem_du_doan, sai_so, nhan_xet, ke_hoach, cong_bo_at')
     .eq('hoc_sinh_id', hsId).eq('mon', mon).eq('ky_id', kyId).maybeSingle()
   if (error) throw error
   return (data as BcKyNhap) ?? { ...BC_KY_NHAP_TRONG }
 }
-export async function luuBcKyNhap(hsId: string, mon: string, kyId: string, patch: Partial<Pick<BcKyNhap, 'diem_du_doan' | 'sai_so' | 'nhan_xet'>>): Promise<void> {
+export async function luuBcKyNhap(hsId: string, mon: string, kyId: string, patch: Partial<Pick<BcKyNhap, 'diem_du_doan' | 'sai_so' | 'nhan_xet' | 'ke_hoach'>>): Promise<void> {
   const { error } = await supabase.from('bao_cao_ph_ky').upsert({ hoc_sinh_id: hsId, mon, ky_id: kyId, ...patch }, { onConflict: 'hoc_sinh_id,mon,ky_id' })
   if (error) throw error
 }
