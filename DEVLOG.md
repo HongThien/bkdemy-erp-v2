@@ -78682,3 +78682,7 @@ Thùy nêu 4 việc, làm được 3:
 - Làm: `kho-rules/dai/lo/k10-hs/ghi-ban-do.mjs --ghi` → chủ đề NCD00234 (khối 10, nhánh toan) · 4 chuyên đề · 18 nhóm · 30 dạng. Chưa chép câu, chưa lý thuyết/ví dụ. Thử ROLLBACK trước đó đã tốn 1 số seq (NCD00233 trống) — vô hại.
 - Sai: 2/11 chỉ viết .md rồi báo "xong", Thùy không thấy trên app; phải nói rõ "chưa ghi DB" và dựng ngay đường xem.
 - Việc kế (theo memory "bản đồ cập nhật ⇒ phân lại"): điền LT/VD + phân lại câu "thiếu dạng" Hàm số vào dạng mới.
+
+## 4/11 — Ghi mô tả + lý thuyết + ví dụ 30 dạng K10 Hàm số (NCD00234)
+- Làm: 4 agent Sonnet soạn `kho-rules/dai/lo/k10-hs/ra/cd1..4.json` → `ghi-lt-vd.mjs --ghi` (30 dạng, 1 transaction).
+- Cảnh báo: ví dụ phần lớn AI TỰ SOẠN theo kiểu đề sách, chỉ kiểm số học tay, chưa trích nguyên văn đề thi, chưa kiểm máy; dạng "đọc đồ thị / dấu a,b,c" mô tả hình bằng chữ; có dùng \begin{cases} (chưa kiểm renderer).
