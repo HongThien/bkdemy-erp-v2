@@ -1,0 +1,280 @@
+[
+ {
+  "ma_cau": "T111000000014",
+  "loai": "trac_nghiem",
+  "de": "Số thập phân vô hạn tuần hoàn $3,1555\\ldots=3,1(5)$ viết dưới dạng số hữu tỉ là:",
+  "lua_chon": [
+   "$A. \\dfrac{63}{20}.$",
+   "$B. \\dfrac{142}{45}.$",
+   "$C. \\dfrac{1}{18}.$",
+   "$D. \\dfrac{7}{2}.$"
+  ],
+  "co_hinh": false,
+  "nguon": "PNL_K11_CapSoNhan_3"
+ },
+ {
+  "ma_cau": "T111000000015",
+  "loai": "trac_nghiem",
+  "de": "Tính tổng $S=-1+\\dfrac{1}{6}-\\dfrac{1}{6^2}+\\ldots+(-1)^{n-1}\\dfrac{1}{6^n}+\\ldots$",
+  "lua_chon": [
+   "$A. S=\\dfrac{7}{6}$",
+   "$B. S=-\\dfrac{6}{7}$",
+   "$C. S=\\dfrac{6}{7}$",
+   "$D. S=-\\dfrac{7}{6}$"
+  ],
+  "co_hinh": false,
+  "nguon": "PNL_K11_CapSoNhan_3"
+ },
+ {
+  "ma_cau": "T111000000016",
+  "loai": "trac_nghiem",
+  "de": "Số thập phân vô hạn tuần hoàn $0,121212\\ldots$ được biểu diễn bởi phân số",
+  "lua_chon": [
+   "$A. \\dfrac{3}{25}.$",
+   "$B. \\dfrac{12}{99}.$",
+   "$C. \\dfrac{1}{11}.$",
+   "$D. \\dfrac{3}{22}.$"
+  ],
+  "co_hinh": false,
+  "nguon": "PNL_K11_CapSoNhan_3"
+ },
+ {
+  "ma_cau": "T111000000019",
+  "loai": "trac_nghiem",
+  "de": "Tổng $S=\\dfrac{1}{3}+\\dfrac{1}{3^2}+\\cdots+\\dfrac{1}{3^n}+\\cdots$ có giá trị là:",
+  "lua_chon": [
+   "$A. \\dfrac{1}{9}.$",
+   "$B. \\dfrac{1}{4}.$",
+   "$C. \\dfrac{1}{3}.$",
+   "$D. \\dfrac{1}{2}.$"
+  ],
+  "co_hinh": false,
+  "nguon": "PNL_K11_CapSoNhan_3"
+ },
+ {
+  "ma_cau": "T111000000023",
+  "loai": "trac_nghiem",
+  "de": "Tính tổng cấp số nhân lùi vô hạn $-\\dfrac{1}{2},\\dfrac{1}{4},-\\dfrac{1}{8},\\ldots,\\dfrac{(-1)^n}{2^n},\\ldots$ là.",
+  "lua_chon": [
+   "$A. -1.$",
+   "$B. \\dfrac{1}{2}.$",
+   "$C. -\\dfrac{1}{4}.$",
+   "$D. -\\dfrac{1}{3}.$"
+  ],
+  "co_hinh": false,
+  "nguon": "PNL_K11_CapSoNhan_3"
+ },
+ {
+  "ma_cau": "T111000000031",
+  "loai": "trac_nghiem",
+  "de": "Bạn A thả quả bóng cao su từ độ cao $10$ m theo phương thẳng đứng. Mỗi khi chạm đất nó lại nảy lên theo phương thẳng đứng có độ cao bằng $\\dfrac{3}{4}$ độ cao trước đó. Tính tổng quãng đường bóng đi được đến khi bóng dừng hẳn.",
+  "lua_chon": [
+   "$A. 40\\ m.$",
+   "$B. 70\\ m.$",
+   "$C. 50\\ m.$",
+   "$D. 80\\ m.$"
+  ],
+  "co_hinh": false,
+  "nguon": "PNL_K11_CapSoNhan_3"
+ },
+ {
+  "ma_cau": "T111000000049",
+  "loai": "tra_loi_ngan",
+  "de": "Từ độ cao $55,8$ m của tháp nghiêng Pisa nước Italia người ta thả một quả bóng cao su chạm xuống đất. Giả sử mỗi lần chạm đất quả bóng lại nảy lên độ cao bằng $\\dfrac{1}{10}$ độ cao mà quả bóng đạt trước đó. Tổng độ dài hành trình của quả bóng được thả từ lúc ban đầu cho đến khi nó nằm yên trên mặt đất là bao nhiêu?",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "PNL_K11_CapSoNhan_3"
+ },
+ {
+  "ma_cau": "T111000000052",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình vuông $(C_1)$ có cạnh bằng $a$. Người ta chia mỗi cạnh của hình vuông thành bốn phần bằng nhau và nối các điểm chia một cách thích hợp để có hình vuông $(C_2)$. Từ hình vuông $(C_2)$ lại tiếp tục làm như trên ta nhận được dãy các hình vuông $C_1,C_2,C_3,\\ldots,C_n$. Gọi $S_i$ là diện tích của hình vuông $C_i\\ (i\\in\\{1,2,3,\\ldots\\})$. Đặt $T=S_1+S_2+S_3+\\ldots+S_n+\\ldots$. Biết $T=\\dfrac{32}{3}$. Tính $a$?",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "PNL_K11_CapSoNhan_3"
+ },
+ {
+  "ma_cau": "T1110000001000",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim\\dfrac{n+1}{n^2-2}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001001",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim\\dfrac{3n^3-2n+5}{2n^2+5n-3}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001002",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim\\dfrac{3^n-4^n+5^n}{3^n+4^n-5^n}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001003",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim\\dfrac{1+3^n}{4+3^n}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001005",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim\\dfrac{\\sqrt[3]{n^2}+2}{n+\\sqrt{n}}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001006",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim\\left(\\sqrt{4n^2+5n}-2n\\right)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001007",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim\\left(\\sqrt{2n+1}-\\sqrt{n}\\right)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001009",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim\\left(n^3+n^2+n+1\\right)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001010",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim\\left(-n^2+n\\sqrt{n}-1\\right)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001011",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim\\left(\\sqrt[3]{1+2n-n^3}-n\\right)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001012",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim\\left(n+\\sqrt{n^2-n+1}\\right)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001013",
+  "loai": "tu_luan",
+  "de": "Người ta lấy bốn trung điểm các cạnh của hình vuông trên để được hình vuông nhỏ hơn nằm bên trong hình vuông bên ngoài. Quy trình làm như vậy diễn ra tới vô hạn. Tính diện tích tất cả hình vuông có trong bài toán.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001014",
+  "loai": "tu_luan",
+  "de": "Để trang hoàng cho căn hộ của mình, chú chuột Mickey quyết định tô màu một miếng bìa hình vuông cạnh bằng $1$. Nó tô màu xám các hình vuông nhỏ được đánh số lần lượt là $1,2,3,4,\\ldots,n,\\ldots$ trong đó cạnh của hình vuông kế tiếp bằng một nửa cạnh hình vuông trước đó. Giả sử quy trình tô màu của chuột Mickey có thể tiến ra vô hạn (như hình vẽ dưới đây). Tính tổng diện tích mà chuột Mickey phải tô màu.",
+  "lua_chon": null,
+  "co_hinh": true,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001015",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to2}\\dfrac{x^2+x-6}{x^2-4}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001016",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to5}\\dfrac{x^2-5x}{x^2-25}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001017",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to0}\\dfrac{(1+x)^3-1}{x}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001018",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to0}\\dfrac{(x+3)^3-27}{x}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001019",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to1}\\dfrac{\\sqrt{x+3}-2}{x-1}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001020",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to7}\\dfrac{2-\\sqrt{x-3}}{x^2-49}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001021",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to3}\\dfrac{\\sqrt{x^2-2x+6}-\\sqrt{x^2+2x-6}}{x^2-4x+3}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001022",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to2}\\dfrac{\\sqrt{x+2}-2}{\\sqrt{x+7}-3}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001023",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to2}\\dfrac{\\sqrt[3]{4x}-2}{x-2}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001024",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to-1}\\dfrac{\\sqrt[3]{5x-3}+2}{x+1}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ }
+]

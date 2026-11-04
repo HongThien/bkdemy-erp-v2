@@ -336,3 +336,20 @@ export async function getKhoCau(loai: 'dang_bai' | 'nhom' | 'chua_khop' | 'de_xu
   if (error) loi(error)
   return ((data ?? []) as (Omit<KhoCauRow, 'tong'> & { tong: number | string })[]).map((r) => ({ ...r, tong: Number(r.tong) }))
 }
+
+// ── Kho câu HÌNH–HỌC (04/11) — cùng hình dạng trả về với Đại để KhoModal dùng chung; bảng hinh_hoc_*, hàm fn_hh_* ──
+export async function getKhoCauHinh(loai: 'dang_bai' | 'dung_sai' | 'de_xuat' | 'chua_khop', id: string, loc: KhoCauLoc = 'tat_ca', limit = 40, offset = 0): Promise<KhoCauRow[]> {
+  const { data, error } = await supabase.rpc('fn_hh_kho_cau', { p_loai: loai, p_id: id, p_loc: loc, p_limit: limit, p_offset: offset })
+  if (error) loi(error)
+  return ((data ?? []) as (Omit<KhoCauRow, 'tong'> & { tong: number | string })[]).map((r) => ({ ...r, tong: Number(r.tong) }))
+}
+export async function chuyenCauHinhSangBai(maCau: string, maBai: string, caBanSao = true): Promise<{ id: string; ten: string; nhom: string; chu_de: string; so_cau: number }> {
+  const { data, error } = await supabase.rpc('fn_hh_cau_chuyen_dang', { p_ma_cau: maCau, p_ma_bai: maBai, p_ca_ban_sao: caBanSao })
+  if (error) loi(error)
+  return data as { id: string; ten: string; nhom: string; chu_de: string; so_cau: number }
+}
+export async function xoaCauHinh(maCau: string, caBanSao: boolean): Promise<number> {
+  const { data, error } = await supabase.rpc('fn_hh_cau_xoa', { p_ma_cau: maCau, p_ca_ban_sao: caBanSao })
+  if (error) loi(error)
+  return Number(data ?? 0)
+}

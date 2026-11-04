@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "T1110000002268",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "tham số chỉ nằm ở 1 nhánh"
+ },
+ {
+  "ma_cau": "T1110000002998",
+  "dang_bai_id": "NDB01197",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Điều kiện liên tục tại điểm ghép"
+ },
+ {
+  "ma_cau": "T1110000002707",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Triệt nhân tử chung x-x_0"
+ },
+ {
+  "ma_cau": "T1110000002566",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Nhân và chia cho biểu thức liên hợp"
+ },
+ {
+  "ma_cau": "T1110000002272",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "tham số chỉ nằm ở 1 nhánh"
+ },
+ {
+  "ma_cau": "T1110000002023",
+  "dang_bai_id": "NDB01182",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Giới hạn một bên bằng +∞ hoặc -∞"
+ },
+ {
+  "ma_cau": "T1110000002542",
+  "dang_bai_id": "NDB01153",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Tìm tham số để giới hạn bằng giá trị cho trước, hoặc để giới hạn hữu hạn"
+ },
+ {
+  "ma_cau": "T1110000001793",
+  "dang_bai_id": "NDB01156",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Tính tổng theo công thức rồi lấy giới hạn"
+ },
+ {
+  "ma_cau": "T1110000001801",
+  "dang_bai_id": "NDB01166",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Lập dãy theo chu kì, chứng minh dần về 0 hoặc tính giá trị ổn định"
+ },
+ {
+  "ma_cau": "T1110000002528",
+  "dang_bai_id": "NDB01149",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chứng minh lim u_n=a bằng lim(u_n-a)=0"
+ },
+ {
+  "ma_cau": "T1110000002133",
+  "dang_bai_id": "NDB01185",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Khối lượng theo vận tốc (v→ c^-), chi phí trung bình, nồng độ"
+ },
+ {
+  "ma_cau": "T1110000002689",
+  "dang_bai_id": "NDB01167",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Lập cấp số nhân lùi vô hạn của độ dài hoặc diện tích, tính tổng"
+ },
+ {
+  "ma_cau": "T1110000001724",
+  "dang_bai_id": "NDB01150",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "tính giới hạn của tổng, hiệu, tích, thương, căn các dãy đó"
+ },
+ {
+  "ma_cau": "T1110000002159",
+  "dang_bai_id": "NDB01186",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Lập hàm theo tham số rồi lấy giới hạn"
+ },
+ {
+  "ma_cau": "T1110000002548",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chia tử và mẫu cho luỹ thừa có cơ số lớn nhất"
+ },
+ {
+  "ma_cau": "T1110000002530",
+  "dang_bai_id": "NDB01149",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chứng minh lim u_n=a bằng lim(u_n-a)=0"
+ },
+ {
+  "ma_cau": "T1110000001734",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000002626",
+  "dang_bai_id": "NDB01153",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Tìm tham số để giới hạn bằng giá trị cho trước, hoặc để giới hạn hữu hạn"
+ },
+ {
+  "ma_cau": "T1110000002183",
+  "dang_bai_id": "NDB01179",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Đưa |x| ra ngoài căn, √(x²)=-x khi x<0"
+ },
+ {
+  "ma_cau": "T1110000003131",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Triệt nhân tử chung x-x_0"
+ },
+ {
+  "ma_cau": "T1110000001869",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chia tử và mẫu cho n, chú ý √(n²)=n"
+ },
+ {
+  "ma_cau": "T1110000001971",
+  "dang_bai_id": "NDB01170",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "cho lim f, lim g tính giới hạn biểu thức"
+ },
+ {
+  "ma_cau": "T1110000002503",
+  "dang_bai_id": "NDB01163",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Kiểm |q|<1, tính S=(u_1)/(1-q)"
+ },
+ {
+  "ma_cau": "T1110000002428",
+  "dang_bai_id": "NDB01197",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Điều kiện liên tục tại điểm ghép"
+ },
+ {
+  "ma_cau": "T1110000002609",
+  "dang_bai_id": "NDB01160",
+  "chac": "vua",
+  "ly_do": "Dạng này hợp nhất nhưng còn dạng khác cũng hợp lý hoặc đề phụ thuộc hình/trộn nhiều ý.",
+  "can_cu": "dãy vượt mọi số dương kể từ một số hạng nào đó"
+ },
+ {
+  "ma_cau": "T1110000002758",
+  "dang_bai_id": "NDB01185",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Khối lượng theo vận tốc (v→ c^-), chi phí trung bình, nồng độ"
+ },
+ {
+  "ma_cau": "T1110000003152",
+  "dang_bai_id": "NDB01183",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Dùng x^k chẵn hoặc lẻ khi x→-∞"
+ },
+ {
+  "ma_cau": "T1110000002578",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000002791",
+  "dang_bai_id": "NDB01182",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Giới hạn một bên bằng +∞ hoặc -∞"
+ },
+ {
+  "ma_cau": "T1110000003023",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000002822",
+  "dang_bai_id": "NDB01180",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Nhân liên hợp đưa về ∞/∞"
+ },
+ {
+  "ma_cau": "T1110000002835",
+  "dang_bai_id": "NDB01185",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Khối lượng theo vận tốc (v→ c^-), chi phí trung bình, nồng độ"
+ },
+ {
+  "ma_cau": "T1110000002732",
+  "dang_bai_id": "NDB01179",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Đưa |x| ra ngoài căn, √(x²)=-x khi x<0"
+ },
+ {
+  "ma_cau": "T1110000002557",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chia tử và mẫu cho n, chú ý √(n²)=n"
+ },
+ {
+  "ma_cau": "T1110000002452",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "tham số chỉ nằm ở 1 nhánh"
+ },
+ {
+  "ma_cau": "T1110000002642",
+  "dang_bai_id": "NDB01156",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Tính tổng theo công thức rồi lấy giới hạn"
+ },
+ {
+  "ma_cau": "T1110000001949",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Triệt nhân tử chung x-x_0"
+ },
+ {
+  "ma_cau": "T1110000002805",
+  "dang_bai_id": "NDB01181",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Đưa về 0/0 hoặc ∞/∞"
+ },
+ {
+  "ma_cau": "T1110000002666",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chia tử và mẫu cho n, chú ý √(n²)=n"
+ },
+ {
+  "ma_cau": "T1110000003119",
+  "dang_bai_id": "NDB01178",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chia tử và mẫu cho luỹ thừa cao nhất của x"
+ },
+ {
+  "ma_cau": "T1110000002209",
+  "dang_bai_id": "NDB01172",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Nhân tử và mẫu với biểu thức liên hợp"
+ },
+ {
+  "ma_cau": "T1110000001696",
+  "dang_bai_id": "NDB01148",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Cho dãy u_n, hỏi có giới hạn không"
+ },
+ {
+  "ma_cau": "T1110000002077",
+  "dang_bai_id": "NDB01148",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Cho dãy u_n, hỏi có giới hạn không"
+ },
+ {
+  "ma_cau": "T1110000002512",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Hàm xác định tại x_0, mẫu khác 0"
+ },
+ {
+  "ma_cau": "T1110000001807",
+  "dang_bai_id": "NDB01167",
+  "chac": "vua",
+  "ly_do": "Dạng này hợp nhất nhưng còn dạng khác cũng hợp lý hoặc đề phụ thuộc hình/trộn nhiều ý.",
+  "can_cu": "Lập cấp số nhân lùi vô hạn của độ dài hoặc diện tích, tính tổng"
+ },
+ {
+  "ma_cau": "T1110000002444",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "tham số chỉ nằm ở 1 nhánh"
+ },
+ {
+  "ma_cau": "T1110000001963",
+  "dang_bai_id": "NDB01179",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Đưa |x| ra ngoài căn, √(x²)=-x khi x<0"
+ },
+ {
+  "ma_cau": "T1110000001823",
+  "dang_bai_id": "NDB01149",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chứng minh lim u_n=a bằng lim(u_n-a)=0"
+ },
+ {
+  "ma_cau": "T1110000002484",
+  "dang_bai_id": "NDB01163",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Kiểm |q|<1, tính S=(u_1)/(1-q)"
+ },
+ {
+  "ma_cau": "T1110000003011",
+  "dang_bai_id": "NDB01197",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Điều kiện liên tục tại điểm ghép"
+ },
+ {
+  "ma_cau": "T1110000002113",
+  "dang_bai_id": "NDB01170",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "cho lim f, lim g tính giới hạn biểu thức"
+ },
+ {
+  "ma_cau": "T1110000001942",
+  "dang_bai_id": "NDB01168",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Lấy dãy x_n≠ x_0, x_n→ x_0, tính f(x_n)"
+ },
+ {
+  "ma_cau": "T1110000003087",
+  "dang_bai_id": "NDB01163",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Kiểm |q|<1, tính S=(u_1)/(1-q)"
+ },
+ {
+  "ma_cau": "T1110000001743",
+  "dang_bai_id": "NDB01162",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "(u_n)/(v_n) với v_n→0 hoặc v_n→±∞"
+ },
+ {
+  "ma_cau": "T1110000002540",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000002155",
+  "dang_bai_id": "NDB01186",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Lập hàm theo tham số rồi lấy giới hạn"
+ },
+ {
+  "ma_cau": "T1110000001651",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chia tử và mẫu cho n, chú ý √(n²)=n"
+ },
+ {
+  "ma_cau": "T1110000002046",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Hàm xác định tại x_0, mẫu khác 0"
+ },
+ {
+  "ma_cau": "T1110000001630",
+  "dang_bai_id": "NDB01149",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chứng minh lim u_n=a bằng lim(u_n-a)=0"
+ },
+ {
+  "ma_cau": "T1110000002568",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chia tử và mẫu cho n, chú ý √(n²)=n"
+ },
+ {
+  "ma_cau": "T1110000002025",
+  "dang_bai_id": "NDB01179",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Đưa |x| ra ngoài căn, √(x²)=-x khi x<0"
+ },
+ {
+  "ma_cau": "T1110000002313",
+  "dang_bai_id": "NDB01197",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Điều kiện liên tục tại điểm ghép"
+ },
+ {
+  "ma_cau": "T1110000002583",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000002120",
+  "dang_bai_id": "NDB01180",
+  "chac": "vua",
+  "ly_do": "Dạng này hợp nhất nhưng còn dạng khác cũng hợp lý hoặc đề phụ thuộc hình/trộn nhiều ý.",
+  "can_cu": "Nhân liên hợp đưa về ∞/∞"
+ },
+ {
+  "ma_cau": "T1110000002641",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chia tử và mẫu cho n, chú ý √(n²)=n"
+ },
+ {
+  "ma_cau": "T1110000002457",
+  "dang_bai_id": "NDB01196",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Liên tục trên từng khoảng rồi xét điểm chia nhánh"
+ },
+ {
+  "ma_cau": "T1110000003045",
+  "dang_bai_id": "NDB01156",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Tính tổng theo công thức rồi lấy giới hạn"
+ },
+ {
+  "ma_cau": "T1110000001929",
+  "dang_bai_id": "NDB01165",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Từ S=(u_1)/(1-q) tìm đại lượng còn lại"
+ },
+ {
+  "ma_cau": "T1110000001713",
+  "dang_bai_id": "NDB01148",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Cho dãy u_n, hỏi có giới hạn không"
+ },
+ {
+  "ma_cau": "T1110000002630",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Nhân và chia cho biểu thức liên hợp"
+ }
+]

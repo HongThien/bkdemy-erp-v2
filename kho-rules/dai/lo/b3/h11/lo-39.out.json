@@ -1,0 +1,86 @@
+[
+ {
+  "ma_cau": "HHC011070",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc khoảng cách: khoảng cách từ S đến (ABCD)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC011071",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc khoảng cách: khoảng cách giữa hai mặt phẳng đối diện hình lập phương",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC011072",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC011073",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc thể tích khối đa diện: tối ưu chi phí bể lăng trụ đứng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC011074",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: góc giữa (SAB) và (SAC)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC011075",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc khoảng cách: khoảng cách giữa AC và SB",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC011082",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: định nghĩa góc giữa đường thẳng và mặt phẳng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC011083",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: góc giữa SD và BC",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC011084",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: hình chiếu vuông góc của SB lên (ABCD)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC011085",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC011086",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc thể tích khối đa diện: thể tích đá viên chóp cụt tứ giác đều",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC011087",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc thể tích và quan hệ vuông góc: thể tích lăng trụ và chứng minh hai mặt phẳng vuông góc",
+  "can_cu": null
+ }
+]

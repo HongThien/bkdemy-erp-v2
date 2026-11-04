@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T1110000001249",
+  "dang_bai_id": "NDB00949",
+  "chac": "cao",
+  "ly_do": "Cho cos và khoảng của góc, tính sin"
+ },
+ {
+  "ma_cau": "T1110000001522",
+  "dang_bai_id": "NDB01156",
+  "chac": "vua",
+  "ly_do": "Tổng nghịch đảo 1/(1+..+k) rồi triệt tiêu; không hẳn dạng tổng CSC/CSN"
+ },
+ {
+  "ma_cau": "T1110000001462",
+  "dang_bai_id": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Xét tăng giảm dãy cho bởi công thức, có tham số k"
+ },
+ {
+  "ma_cau": "T1110000001395",
+  "dang_bai_id": "NDB00966",
+  "chac": "cao",
+  "ly_do": "Tổng hai cos đưa về tích (tổng thành tích) theo lời giải"
+ },
+ {
+  "ma_cau": "T1110000001629",
+  "dang_bai_id": "NDB01173",
+  "chac": "cao",
+  "ly_do": "Giới hạn 0/0 hiệu hai căn bậc ba"
+ },
+ {
+  "ma_cau": "T1110000001187",
+  "dang_bai_id": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính sin cos, cộng và góc nhân đôi/nửa; dạng sau thắng"
+ },
+ {
+  "ma_cau": "T1110000001467",
+  "dang_bai_id": "NDB00615",
+  "chac": "vua",
+  "ly_do": "CSC thực tế hàng gạch, tìm số hàng rồi tổng; đề có hình"
+ },
+ {
+  "ma_cau": "T1110000001220",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Phân thức cùng bậc"
+ },
+ {
+  "ma_cau": "T1110000002645",
+  "dang_bai_id": "NDB01156",
+  "chac": "vua",
+  "ly_do": "Tổng 1/(k²-1) triệt tiêu; không hẳn CSC/CSN"
+ },
+ {
+  "ma_cau": "T1110000001066",
+  "dang_bai_id": "NDB00607",
+  "chac": "cao",
+  "ly_do": "CSC cho u1 và công sai, tìm u7"
+ },
+ {
+  "ma_cau": "T1110000001200",
+  "dang_bai_id": "NDB00987",
+  "chac": "cao",
+  "ly_do": "TXĐ hàm cot2x - tanx cơ bản"
+ },
+ {
+  "ma_cau": "T1110000001299",
+  "dang_bai_id": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính số hạng u_{n+1} từ công thức"
+ },
+ {
+  "ma_cau": "T1110000001247",
+  "dang_bai_id": "NDB01195",
+  "chac": "cao",
+  "ly_do": "Tính liên tục hàm căn sơ cấp trên TXĐ"
+ },
+ {
+  "ma_cau": "T1110000001623",
+  "dang_bai_id": "NDB01178",
+  "chac": "cao",
+  "ly_do": "Phân thức hữu tỉ khi x tiến -∞"
+ },
+ {
+  "ma_cau": "T1110000001370",
+  "dang_bai_id": "NDB01178",
+  "chac": "cao",
+  "ly_do": "Phân thức hữu tỉ khi x tiến +∞"
+ },
+ {
+  "ma_cau": "T1110000001117",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng CSN cho hệ phương trình quan hệ các số hạng"
+ },
+ {
+  "ma_cau": "T1110000001380",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Tham số m chỉ ở một nhánh, liên tục tại x=1"
+ },
+ {
+  "ma_cau": "T1110000003064",
+  "dang_bai_id": "NDB01158",
+  "chac": "vua",
+  "ly_do": "Trắc nghiệm trộn nhiều dãy: phân thức, hiệu căn, truy hồi, tổng triệt tiêu"
+ },
+ {
+  "ma_cau": "T1110000001114",
+  "dang_bai_id": "NDB01030",
+  "chac": "cao",
+  "ly_do": "CSN cho u1 và u5, tìm công bội"
+ },
+ {
+  "ma_cau": "T1110000001573",
+  "dang_bai_id": "NDB01153",
+  "chac": "cao",
+  "ly_do": "Phân thức chứa tham số a để giới hạn bằng 6"
+ },
+ {
+  "ma_cau": "T1110000001110",
+  "dang_bai_id": "NDB00610",
+  "chac": "cao",
+  "ly_do": "Cho công thức số hạng tổng quát CSC, tìm công sai"
+ },
+ {
+  "ma_cau": "T1110000001069",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Căn thức dưới thương, chia tử mẫu cho n"
+ },
+ {
+  "ma_cau": "T1110000002556",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng giới hạn dãy truy hồi"
+ },
+ {
+  "ma_cau": "T1110000001605",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Thương các luỹ thừa a^n, b^n"
+ },
+ {
+  "ma_cau": "T1110000001135",
+  "dang_bai_id": "NDB01161",
+  "chac": "cao",
+  "ly_do": "Rút luỹ thừa cao nhất ra ngoài, giới hạn -∞"
+ },
+ {
+  "ma_cau": "T1110000001111",
+  "dang_bai_id": "NDB00606",
+  "chac": "cao",
+  "ly_do": "CSC cho hai số hạng u1,u2 tìm công sai"
+ },
+ {
+  "ma_cau": "T1110000003066",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng giới hạn dãy truy hồi"
+ },
+ {
+  "ma_cau": "T1110000001564",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Thương các luỹ thừa 5^n, 3^n, 2^n"
+ },
+ {
+  "ma_cau": "T1110000001891",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng giới hạn dãy truy hồi dạng căn"
+ },
+ {
+  "ma_cau": "T1110000001372",
+  "dang_bai_id": "NDB01180",
+  "chac": "cao",
+  "ly_do": "Dạng ∞-∞ hiệu căn và x, nhân liên hợp"
+ },
+ {
+  "ma_cau": "T1110000001212",
+  "dang_bai_id": "NDB00999",
+  "chac": "cao",
+  "ly_do": "Hàm bậc 2 theo cosx đủ bậc 1, đặt t thuộc [-1;1]"
+ },
+ {
+  "ma_cau": "T1110000001802",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng giới hạn tổng dãy truy hồi (triệt tiêu)"
+ },
+ {
+  "ma_cau": "T1110000001050",
+  "dang_bai_id": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện CSC cho bằng liệt kê, tìm u1 và d"
+ },
+ {
+  "ma_cau": "T1110000001197",
+  "dang_bai_id": "NDB00988",
+  "chac": "cao",
+  "ly_do": "TXĐ hàm phân thức lượng giác"
+ },
+ {
+  "ma_cau": "T1110000001063",
+  "dang_bai_id": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Giải phương trình tan x cơ bản"
+ },
+ {
+  "ma_cau": "T1110000001473",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm, tính tổng số học sinh"
+ },
+ {
+  "ma_cau": "T1110000001292",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm, tìm trung vị"
+ },
+ {
+  "ma_cau": "T1110000001091",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm, tính số đặc trưng"
+ },
+ {
+  "ma_cau": "T1110000001223",
+  "dang_bai_id": "NDB01152",
+  "chac": "cao",
+  "ly_do": "Phân thức tử bậc cao hơn mẫu, giới hạn ±∞"
+ },
+ {
+  "ma_cau": "T1110000001218",
+  "dang_bai_id": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Tăng dân số hằng năm, lãi kép kiểu CSN thực tế"
+ },
+ {
+  "ma_cau": "T111060101135",
+  "dang_bai_id": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Dãy cho bởi hệ thức truy hồi, tìm a rồi u4"
+ },
+ {
+  "ma_cau": "T1110000001193",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Phương trình tan(x+π/6)=giá trị, dạng ax+b"
+ },
+ {
+  "ma_cau": "T1110000001153",
+  "dang_bai_id": "NDB01007",
+  "chac": "cao",
+  "ly_do": "Phương trình tan(ax+b)=tan(bx+c)"
+ },
+ {
+  "ma_cau": "T1110000001546",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Tham số m ở nhánh giá trị tại điểm"
+ },
+ {
+  "ma_cau": "T1110000001188",
+  "dang_bai_id": "NDB00956",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức lượng giác biến đổi tự do"
+ },
+ {
+  "ma_cau": "T1110000001500",
+  "dang_bai_id": "NDB01152",
+  "chac": "cao",
+  "ly_do": "Phân thức tử bậc cao hơn mẫu"
+ },
+ {
+  "ma_cau": "T1110000001206",
+  "dang_bai_id": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Tìm chu kì hàm cos(2x/3)"
+ },
+ {
+  "ma_cau": "T1110000001158",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng CSN cho hệ phương trình quan hệ các số hạng"
+ },
+ {
+  "ma_cau": "T1110000001459",
+  "dang_bai_id": "NDB00618",
+  "chac": "cao",
+  "ly_do": "Bỏ ống tiết kiệm gấp đôi, tổng n số hạng CSN"
+ },
+ {
+  "ma_cau": "T1110000001446",
+  "dang_bai_id": "NDB01027",
+  "chac": "cao",
+  "ly_do": "Nhận diện CSN biết số hạng tổng quát"
+ },
+ {
+  "ma_cau": "T1110000001464",
+  "dang_bai_id": "NDB00615",
+  "chac": "cao",
+  "ly_do": "Thang CSC biết u1, d, un, tìm số bậc n"
+ },
+ {
+  "ma_cau": "T1110000001093",
+  "dang_bai_id": "NDB00988",
+  "chac": "cao",
+  "ly_do": "TXĐ hàm phân thức lượng giác"
+ },
+ {
+  "ma_cau": "T1110000001449",
+  "dang_bai_id": "NDB01029",
+  "chac": "cao",
+  "ly_do": "CSN cho u1 và q, tìm thứ tự số hạng"
+ },
+ {
+  "ma_cau": "T1110000002687",
+  "dang_bai_id": "NDB01154",
+  "chac": "vua",
+  "ly_do": "Rút gọn thừa số chung rồi hiệu luỹ thừa triệt tiêu; không khớp rõ dạng nào"
+ },
+ {
+  "ma_cau": "T1110000001171",
+  "dang_bai_id": "NDB00944",
+  "chac": "vua",
+  "ly_do": "Bánh xe: quãng đường, vận tốc, vòng/phút; ý rải nhiều dạng thực tế; đề có hình"
+ },
+ {
+  "ma_cau": "T1110000001384",
+  "dang_bai_id": "NDB01200",
+  "chac": "cao",
+  "ly_do": "Chứng minh phương trình có đủ ba nghiệm, chia khoảng đổi dấu"
+ },
+ {
+  "ma_cau": "T1110000001340",
+  "dang_bai_id": "NDB01012",
+  "chac": "cao",
+  "ly_do": "Đếm số lần vật qua vị trí cân bằng trong khoảng thời gian"
+ },
+ {
+  "ma_cau": "T1110000001112",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng lý thuyết/công thức cấp số cộng"
+ },
+ {
+  "ma_cau": "T1110000001303",
+  "dang_bai_id": "NDB01160",
+  "chac": "cao",
+  "ly_do": "Phát biểu sai là 4^n/3^n bằng +∞, giới hạn vô cực"
+ },
+ {
+  "ma_cau": "T1110000003016",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng giới hạn dãy truy hồi"
+ },
+ {
+  "ma_cau": "T1110000001892",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng giới hạn dãy truy hồi"
+ },
+ {
+  "ma_cau": "T1110000001538",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Thay trực tiếp x=-1 vào phân thức"
+ },
+ {
+  "ma_cau": "T1110000001584",
+  "dang_bai_id": "NDB01195",
+  "chac": "vua",
+  "ly_do": "Lý thuyết liên tục trên đoạn, chưa rõ dạng nào đúng"
+ },
+ {
+  "ma_cau": "T1110000001490",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm, tính tứ phân vị"
+ },
+ {
+  "ma_cau": "T1110000001456",
+  "dang_bai_id": "NDB00608",
+  "chac": "vua",
+  "ly_do": "CSC cho tổng 100 số hạng tìm d, rồi tổng nghịch đảo triệt tiêu"
+ },
+ {
+  "ma_cau": "T111010602096",
+  "dang_bai_id": "NDB00960",
+  "chac": "cao",
+  "ly_do": "Hạ bậc sin^6+cos^6 để đưa về cos4x"
+ },
+ {
+  "ma_cau": "T111010602043",
+  "dang_bai_id": "NDB00967",
+  "chac": "vua",
+  "ly_do": "Nhận dạng công thức sin+cos=√2 sin(a+π/4), có thể không phải dạng này"
+ },
+ {
+  "ma_cau": "T1110000001225",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Thương các luỹ thừa 2^{2n}, 8^n, 7^n"
+ },
+ {
+  "ma_cau": "T1110000001447",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng lý thuyết/công thức cấp số nhân"
+ },
+ {
+  "ma_cau": "T1110000001096",
+  "dang_bai_id": "NDB00991",
+  "chac": "cao",
+  "ly_do": "Xét chẵn lẻ có sin|x|, hàm mở rộng; dạng sau thắng"
+ }
+]

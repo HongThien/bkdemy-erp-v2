@@ -1,0 +1,58 @@
+[
+ {
+  "ma_cau": "T1110000001142",
+  "loai": "trac_nghiem",
+  "de": "Biết $\\lim\\limits_{x\\to+\\infty}\\dfrac{ax+5}{2x-1}=3$. Chọn khẳng định đúng.",
+  "lua_chon": [
+   "$a\\in(2;4)$.",
+   "$a\\in(3;5)$.",
+   "$a\\in(4;6)$.",
+   "$a\\in(5;7)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính giới hạn của phân thức theo tham số $a$ rồi cho bằng giá trị đề cho để tìm $a$.\n**Bước 1.** Chia tử và mẫu cho $x$ để tính giới hạn khi $x\\to+\\infty$ theo $a$.\n**Bước 2.** Cho giới hạn vừa tìm bằng $3$ và giải phương trình bậc nhất ẩn $a$.\n**Bước 3.** Kiểm tra giá trị $a$ thuộc khoảng nào, chú ý các khoảng ở đề là khoảng mở.\n**Phần 2. Trình bày**\n$\\dfrac{ax+5}{2x-1}=\\dfrac{a+\\dfrac{5}{x}}{2-\\dfrac{1}{x}}$ với $x\\neq0$.\n$\\lim\\limits_{x\\to+\\infty}\\dfrac{ax+5}{2x-1}=\\dfrac{a}{2}$.\nTheo đề, $\\dfrac{a}{2}=3$ nên $a=6$.\nTa có $6\\in(5;7)$ và $6\\notin(4;6)$ vì khoảng $(4;6)$ không chứa đầu mút $6$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001535",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f(x)=\\begin{cases}\\dfrac{|2x^2-7x+6|}{x-2} & \\text{khi } x<2 \\\\ a+\\dfrac{1-x}{2+x} & \\text{khi } x\\ge2\\end{cases}$. Biết $a$ là giá trị để hàm số $f(x)$ liên tục tại $x_0=2$, tìm số nghiệm nguyên của bất phương trình $-x^2+ax+\\dfrac{7}{4}>0$.",
+  "lua_chon": [
+   "$1$.",
+   "$4$.",
+   "$3$.",
+   "$2$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tìm $a$ từ điều kiện liên tục tại $x=2$ (cần bỏ dấu giá trị tuyệt đối ở nhánh $x<2$), rồi giải bất phương trình bậc hai theo $a$ vừa tìm.\n**Bước 1.** Phân tích $2x^2-7x+6$ thành nhân tử và xét dấu của nó khi $x$ nhỏ hơn $2$ gần $2$ để bỏ dấu giá trị tuyệt đối.\n**Bước 2.** Rút gọn nhánh $x<2$ để tính giới hạn trái tại $x=2$, và tính $f(2)$ theo $a$ từ nhánh $x\\ge2$.\n**Bước 3.** Cho giới hạn trái bằng $f(2)$ để tìm $a$.\n**Bước 4.** Thay $a$ vào bất phương trình, quy đồng về bậc hai, giải rồi liệt kê các số nguyên thuộc tập nghiệm.\n**Phần 2. Trình bày**\n$2x^2-7x+6=(x-2)(2x-3)$.\nKhi $x\\to2^-$ ta có $x>\\dfrac{3}{2}$ nên $2x-3>0$ và $x-2<0$, do đó $2x^2-7x+6<0$  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001064",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề nào dưới đây sai?",
+  "lua_chon": [
+   "$\\sin x=-1\\Leftrightarrow x=-\\dfrac{\\pi}{2}+k2\\pi,\\ k\\in\\mathbb{Z}$.",
+   "$\\cos x=1\\Leftrightarrow x=k2\\pi,\\ k\\in\\mathbb{Z}$.",
+   "$\\sin x=1\\Leftrightarrow x=\\dfrac{\\pi}{2}+k2\\pi,\\ k\\in\\mathbb{Z}$.",
+   "$\\cos x=-1\\Leftrightarrow x=k\\pi,\\ k\\in\\mathbb{Z}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhớ các nghiệm đặc biệt của $\\sin x$ và $\\cos x$ bằng $\\pm1$ trên đường tròn lượng giác, rồi kiểm tra từng phương án xem có thiếu hoặc thừa nghiệm không.\n**Bước 1.** Xác định trên đường tròn lượng giác điểm có tung độ $-1$ và điểm có tung độ $1$, từ đó viết nghiệm của $\\sin x=\\pm1$.\n**Bước 2.** Xác định các điểm có hoành độ $1$ và $-1$, từ đó viết nghiệm của $\\cos x=\\pm1$ chú ý chu kì $2\\pi$.\n**Bước 3.** So sánh với từng phương án; với phương án nghi ngờ, thử một giá trị cụ thể của $k$ để xem nghiệm có thỏa phương trình không.\n**Phần 2. Trình bày**\nPhương án A: $\\sin x=-1$ ứng với điểm $(0;-1)$ trên đường tròn lượng giác nên $x=-\\dfrac{\\pi}{2}+k2\\pi$. Phươ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001541",
+  "loai": "tu_luan",
+  "de": "Một cái hồ chứa $600$ l nước ngọt. Người ta bơm nước biển có nồng độ $30$ g/l vào hồ với tốc độ $15$ l/phút.\na) Tính nồng độ muối của nước hồ sau $t$ phút kể từ khi bắt đầu bơm.\nb) Nồng độ muối trong hồ sẽ thế nào khi $t$ dần hướng về vô cùng.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nồng độ bằng lượng muối chia cho thể tích nước; lập cả hai đại lượng theo $t$ rồi tính giới hạn khi $t\\to+\\infty$.\n**Bước 1.** Ý a: tính thể tích nước trong hồ sau $t$ phút gồm nước ngọt ban đầu và nước biển đã bơm vào.\n**Bước 2.** Ý a: tính khối lượng muối đã đưa vào hồ từ nồng độ và lượng nước biển bơm, rồi lập tỉ số để có nồng độ theo $t$.\n**Bước 3.** Ý b: chia tử và mẫu của hàm nồng độ cho $t$ rồi dùng $\\lim\\dfrac{1}{t}=0$ để tính giới hạn.\n**Bước 4.** Ý b: nêu ý nghĩa thực tế của kết quả đối với nước trong hồ.\n**Phần 2. Trình bày**\na) Sau $t$ phút lượng nước biển bơm vào là $15t$ lít nên thể tích nước trong hồ là $600+15t$ lít.\nLượng muối trong hồ là  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001176",
+  "loai": "tu_luan",
+  "de": "Giả sử khi một cơn sóng biển đi qua một cái cọc ở ngoài khơi, chiều cao của nước được mô hình hoá bởi hàm số $h(t)=90\\cos\\left(\\dfrac{\\pi}{10}t\\right)$, trong đó $h(t)$ là độ cao tính bằng centimét trên mực nước biển trung bình tại thời điểm $t$ giây.\na) Tìm chu kì của sóng.\nb) Tìm chiều cao của sóng, tức là khoảng cách theo phương thẳng đứng giữa đáy và đỉnh của sóng.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chu kì của $\\cos(\\omega t)$ là $\\dfrac{2\\pi}{\\omega}$, còn chiều cao sóng là hiệu giữa giá trị lớn nhất và nhỏ nhất của $h(t)$.\n**Bước 1.** Ý a: xác định hệ số $\\omega$ đứng trước $t$ trong đối số của hàm côsin.\n**Bước 2.** Ý a: áp dụng công thức chu kì của hàm $y=\\cos(\\omega t)$ với $\\omega$ vừa tìm để tính chu kì, nhớ ghi đơn vị giây.\n**Bước 3.** Ý b: dùng tập giá trị $[-1;1]$ của hàm côsin để suy ra khoảng giá trị của $h(t)$, tức độ cao đỉnh sóng và đáy sóng.\n**Bước 4.** Ý b: lấy độ cao đỉnh sóng trừ độ cao đáy sóng để được khoảng cách theo phương thẳng đứng giữa chúng, ghi đơn vị cm.\n**Phần 2. Trình bày**\na) Hàm $h(t)=90\\cos\\left(\\dfrac{\\pi}{10}t\\right …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

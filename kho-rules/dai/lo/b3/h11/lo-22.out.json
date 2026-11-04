@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "HHC008672",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: tính góc nhị diện/góc giữa hai mặt phẳng; đề: «Góc giữa đường thẳng … và mặt phẳng … bằng»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008680",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHỐI ĐA DIỆN: kiến thức khối đa diện/thể tích; đề: «Thể tích của khối lăng trụ có diện tích đáy»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008681",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: xét quan hệ vuông góc giữa đường thẳng/mặt phẳng; đề: «Đường vuông góc chung của hai đường thẳng … và»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008682",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: xét quan hệ vuông góc giữa đường thẳng/mặt phẳng; đề: «Khẳng định nào sau đây đúng?»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008683",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: xét quan hệ vuông góc giữa đường thẳng/mặt phẳng; đề: «Đường thẳng nào sau đây vuông góc với đường thẳng»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008684",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008685",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc THỂ TÍCH/KHỐI ĐA DIỆN: tính thể tích khối chóp/lăng trụ/chóp cụt; đề: «Tính thể tích khối chóp … .»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008686",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHOẢNG CÁCH: hỏi khoảng cách; đề: «b) khoảng cách giữa hai đường thẳng … và ….»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008693",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHỐI ĐA DIỆN: kiến thức khối đa diện/thể tích; đề: «Thể tích khối chóp … bằng:»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008694",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHOẢNG CÁCH: hỏi khoảng cách; đề: «Khoảng cách từ điểm … đến … là độ dài»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008695",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHỐI ĐA DIỆN: kiến thức khối đa diện/thể tích; đề: «Hình chóp tứ giác đều có mặt bên là hình»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008696",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008697",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc THỂ TÍCH/KHỐI ĐA DIỆN: tính thể tích khối chóp/lăng trụ/chóp cụt; đề: «Tính tỉ số thể tích … .»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008698",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHOẢNG CÁCH: hỏi khoảng cách; đề: «Tính khoảng cách giữa hai đường thẳng … và …»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008706",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: xét quan hệ vuông góc giữa đường thẳng/mặt phẳng; đề: «Đường thẳng nào sau đây vuông góc với đường thẳng»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008707",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: tính góc giữa đường thẳng/mặt phẳng; đề: «Khi đó tan của góc giữa đường thẳng … và»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008708",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHỐI ĐA DIỆN: kiến thức khối đa diện/thể tích; đề: «Thể tích của khối lăng trụ đã cho bằng»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008709",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHOẢNG CÁCH: hỏi khoảng cách; đề: «Khoảng cách từ … đến mặt phẳng … bằng»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008710",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008711",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHOẢNG CÁCH: hỏi khoảng cách; đề: «Tính khoảng cách giữa … đến mặt phẳng … .»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008712",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc THỂ TÍCH/KHỐI ĐA DIỆN: tính thể tích khối chóp/lăng trụ/chóp cụt; đề: «Tính số tiền để mua bê tông tươi làm chân»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008721",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHOẢNG CÁCH: hỏi khoảng cách; đề: «Khoảng cách từ điểm … đến mặt phẳng … bằng»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008722",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: tính góc giữa đường thẳng/mặt phẳng; đề: «Số đo góc giữa đường thẳng … với mặt phẳng»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008723",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: xét quan hệ vuông góc giữa đường thẳng/mặt phẳng; đề: «Đường thẳng … vuông góc với mặt phẳng nào sau»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008724",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHỐI ĐA DIỆN: kiến thức khối đa diện/thể tích; đề: «Thể tích khối lăng trụ đã cho bằng»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008725",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008726",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: tính góc giữa đường thẳng/mặt phẳng; đề: «Tính thể tích khối chóp … .»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008727",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: tính góc nhị diện/góc giữa hai mặt phẳng; đề: «Góc nhị diện … có số đo bằng …»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008728",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHOẢNG CÁCH: hỏi khoảng cách; đề: «Tính khoảng cách từ … đến mặt phẳng … .»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008733",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHOẢNG CÁCH: hỏi khoảng cách; đề: «Khoảng cách từ đỉnh … đến mặt phẳng … là:»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008734",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: xét quan hệ vuông góc giữa đường thẳng/mặt phẳng; đề: «Khẳng định nào sau đây là sai?»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008735",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc THỂ TÍCH/KHỐI ĐA DIỆN: tính thể tích khối chóp/lăng trụ/chóp cụt; đề: «Tính thể tích khối chóp …»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008736",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: tính góc nhị diện/góc giữa hai mặt phẳng; đề: «Tính số đo của góc phẳng nhị diện ….»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008742",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: xét quan hệ vuông góc giữa đường thẳng/mặt phẳng; đề: «Mặt phẳng … vuông góc với mặt phẳng nào sau»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008743",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: xét quan hệ vuông góc giữa đường thẳng/mặt phẳng; đề: «Hình chiếu của … lên … là đường thẳng nào»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008744",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: xét quan hệ vuông góc giữa đường thẳng/mặt phẳng; đề: «Cặp đường thẳng nào sau đây vuông góc với nhau?»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008745",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008746",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc THỂ TÍCH/KHỐI ĐA DIỆN: tính thể tích khối chóp/lăng trụ/chóp cụt; đề: «Tính thể tích của lượng nước đã đổ vào.»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008752",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHOẢNG CÁCH: hỏi khoảng cách; đề: «Khoảng cách từ … đến mặt phẳng … là»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008753",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHỐI ĐA DIỆN: kiến thức khối đa diện/thể tích; đề: «Góc giữa đường thẳng … và mặt phẳng … bằng:»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008754",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: xét quan hệ vuông góc giữa đường thẳng/mặt phẳng; đề: «Tính góc … .»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008755",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc THỂ TÍCH/KHỐI ĐA DIỆN: tính thể tích khối chóp/lăng trụ/chóp cụt; đề: «Tính thể tích của kim tự tháp này .»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008756",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHOẢNG CÁCH: hỏi khoảng cách; đề: «Tính khoảng cách từ điểm … đến mặt phẳng ….»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008763",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: tính góc giữa đường thẳng/mặt phẳng; đề: «Góc giữa hai đường thẳng bất kỳ trong không gian»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008764",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: xét quan hệ vuông góc giữa đường thẳng/mặt phẳng; đề: «Khẳng định nào sau đây đúng?»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008765",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008766",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHOẢNG CÁCH: hỏi khoảng cách; đề: «Biết khoảng cách từ … đến mặt phẳng … là»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008767",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHOẢNG CÁCH: hỏi khoảng cách; đề: «Tính khoảng cách của giữa đường thẳng chéo nhau …»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008768",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: tính góc nhị diện/góc giữa hai mặt phẳng; đề: «Tính thể tích khối chóp ….»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008782",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: tính góc nhị diện/góc giữa hai mặt phẳng; đề: «Góc nhị diện … là góc»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008783",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: xét quan hệ vuông góc giữa đường thẳng/mặt phẳng; đề: «Mặt phẳng nào sau đây vuông góc với mặt phẳng»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008784",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHỐI ĐA DIỆN: kiến thức khối đa diện/thể tích; đề: «Góc giữa đường thẳng … và mặt phẳng … là»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008785",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: xét quan hệ vuông góc giữa đường thẳng/mặt phẳng; đề: «Đoạn vuông góc chung của hai đường thẳng … và»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008786",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHỐI ĐA DIỆN: kiến thức khối đa diện/thể tích; đề: «Hình chiếu của … lên mặt phẳng … là điểm»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008787",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: xét quan hệ vuông góc giữa đường thẳng/mặt phẳng; đề: «Khẳng định nào sau đây sai?»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008788",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: xét quan hệ vuông góc giữa đường thẳng/mặt phẳng; đề: «Đường thẳng nào sau đây vuông góc với đường thẳng»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008789",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008790",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: tính góc giữa đường thẳng/mặt phẳng; đề: «Gọi … là góc giữa đường thẳng … và mặt»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008791",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHOẢNG CÁCH: hỏi khoảng cách; đề: «Tính khoảng cách từ điểm … đến mặt phẳng …»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008792",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc THỂ TÍCH/KHỐI ĐA DIỆN: tính thể tích khối chóp/lăng trụ/chóp cụt; đề: «Biết … với … và … là phân số tối»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008793",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHOẢNG CÁCH: hỏi khoảng cách; đề: «b) Tính khoảng cách giữa hai đường thẳng … và»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008794",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHỐI ĐA DIỆN: kiến thức khối đa diện/thể tích; đề: «Thể tích lớn nhất của khối chóp tứ giác đều»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008800",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: xét quan hệ vuông góc giữa đường thẳng/mặt phẳng; đề: «Khẳng định nào sau đây SAI?»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008801",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: xét quan hệ vuông góc giữa đường thẳng/mặt phẳng; đề: «Mặt phẳng … không vuông góc với mặt phẳng nào»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008802",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHỐI ĐA DIỆN: kiến thức khối đa diện/thể tích; đề: «Chọn khẳng định SAI trong các khẳng định dưới đây.»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008803",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHOẢNG CÁCH: hỏi khoảng cách; đề: «Tính khoảng cách giữa hai đường thẳng … và …»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008804",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: tính góc nhị diện/góc giữa hai mặt phẳng; đề: «b) Tính số đo của góc nhị diện sau»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008812",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: xét quan hệ vuông góc giữa đường thẳng/mặt phẳng; đề: «Chọn mệnh đề sai.»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008813",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHỐI ĐA DIỆN: kiến thức khối đa diện/thể tích; đề: «Góc giữa đường thẳng … và mặt phẳng … là»",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008814",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHỐI ĐA DIỆN: kiến thức khối đa diện/thể tích; đề: «Thể tích khối lăng trụ đã cho bằng»",
+  "can_cu": null
+ }
+]

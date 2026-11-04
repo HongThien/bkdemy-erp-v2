@@ -5,7 +5,7 @@
 //   --dot: đợt BỔ SUNG (câu mới nhập sau lượt đầu) ⇒ thư mục k<khoi>-<tên>, mẫu _mau/k<khoi>-<tên>.json;
 //          gop/lech-mau gọi với khối = "<khoi>-<tên>". Câu đang ở hàng duyệt (de_xuat / thieu_dang) luôn bị bỏ.
 // Ghi vào kho-rules/dai/lo/b3/k<khoi>/:
-//   dich.md        — bảng đích: mọi dạng bài nhánh Toán (Đại) của khối, kèm đường dẫn + mô tả + ví dụ
+//   dich.md        — bảng đích: mọi dạng bài nhánh Toán (Đại) của khối, kèm đường dẫn + mô tả + lý thuyết + ví dụ (ĐỦ, không cắt)
 //   lo-NN.json     — các lô câu GỐC chưa có dạng bài (không dòng gan_cau / gan_cum / đối ứng 1 chỗ),
 //                    trộn lẫn câu MẪU KIỂM (đã có dạng bài do người nối cụm/dạng cũ) — agent không biết câu nào là mẫu
 //   mau.json       — {ma_cau: dang_bai_id} của câu mẫu (để đo precision, KHÔNG đưa agent)
@@ -21,6 +21,8 @@ const LO = so('--lo', 70), MAU = so('--mau', 90)
 const iDot = args.indexOf('--dot'), DOT = iDot >= 0 ? args[iDot + 1] : null
 const iLai = args.indexOf('--lai-ai'), LAI = iLai >= 0 ? new RegExp(args[iLai + 1], 'i') : null // ĐỢT KHỚP LẠI NHÃN AI: thêm câu đã có dạng bài do AI gán (nguon 'ai') mà đề khớp biểu thức chính quy này — khi bản đồ vừa có dạng mới (20/10)
 const iLd = args.indexOf('--lai-dang'), LAIDANG = iLd >= 0 ? new Set(args[iLd + 1].split(',')) : null // KHỚP LẠI THEO DẠNG: thêm câu AI-gán đang nằm ở các dạng bài này (vd NDB00799,NDB00800 khi Thùy đổi luật đơn giản/phức tạp, 21/10)
+const iCd = args.indexOf('--chu-de'), CHUDE = iCd >= 0 ? args[iCd + 1] : null // chỉ xuất bảng đích + kiểm cổng tài liệu cho MỘT chủ đề (vd NCD00186 = Giới hạn)
+const iMc = args.indexOf('--ma-cau-file'), MACAU = iMc >= 0 ? new Set(JSON.parse(fs.readFileSync(args[iMc + 1], 'utf8'))) : null // chỉ phân đúng các câu trong danh sách này (kể cả câu đang ở hàng duyệt)
 const HANG = args.includes('--hang') // ĐỢT KHỚP LẠI: lấy câu gốc ĐANG Ở hàng duyệt (de_xuat / thieu_dang) thay cho câu chưa gán — dùng khi người vừa sửa/thêm dạng bài (20/10)
 if (!khoi) { console.error('Dùng: node scripts/bdm-b3-xuat-lo.mjs <khoi> [--lo 70] [--mau 90]'); process.exit(2) }
 
@@ -32,14 +34,14 @@ const cat = (s, n) => { s = (s ?? '').replace(/\s+\n/g, '\n').trim(); return s.l
 
 // 1) Bảng đích
 const dich = (await c.query(`
-  select d.id, d.ten, d.mo_ta, d.vi_du, n.ten nhom, n.mo_ta nhom_mo_ta, cd.ten chu_de, cd.nhanh, cdx.ten chuyen_de
+  select d.id, d.ten, d.mo_ta, d.vi_du, d.ly_thuyet, n.ly_thuyet nhom_ly_thuyet, n.ten nhom, n.mo_ta nhom_mo_ta, cd.ten chu_de, cd.nhanh, cdx.ten chuyen_de
     from dai_bdm_dang_bai d
     join dai_bdm_nhom n on n.id = d.nhom_id
     join dai_bdm_chu_de cd on cd.id = n.chu_de_id
     join dai_bdm_chuyen_de cdx on cdx.id = n.chuyen_de_id
     left join dai_bdm_o o on o.chu_de_id = n.chu_de_id and o.chuyen_de_id = n.chuyen_de_id
-   where cd.khoi = $1 and cd.nhanh = 'toan'
-   order by cd.thu_tu, o.thu_tu, n.thu_tu, d.thu_tu`, [khoi])).rows
+   where cd.khoi = $1 and cd.nhanh = 'toan' and ($2::text is null or cd.id = $2)
+   order by cd.thu_tu, o.thu_tu, n.thu_tu, d.thu_tu`, [khoi, CHUDE])).rows
 const ngoai = (await c.query(`select ten, nhanh from dai_bdm_chu_de where khoi = $1 and nhanh <> 'toan' order by thu_tu`, [khoi])).rows
 
 // 2) Câu gốc + mẫu
@@ -54,7 +56,18 @@ const cau = (await c.query(`
 await c.query('rollback'); await c.end()
 
 const dbIds = new Set(dich.map((d) => d.id))
-const chua = cau.filter((r) => (!r.dang_bai_id && (HANG ? r.o_hang : !r.o_hang)) || (LAI && r.dang_bai_id && r.gnguon === 'ai' && !r.o_hang && LAI.test(r.noi_dung)) || (LAIDANG && r.dang_bai_id && r.gnguon === 'ai' && !r.o_hang && LAIDANG.has(r.dang_bai_id))) // mặc định: bỏ câu ở hàng duyệt (người đang xử lý); --hang: CHỈ câu ở hàng duyệt
+// ⭐ CỔNG CỨNG (Thùy 02/11, mọi khối): phân dạng PHẢI đọc đủ MÔ TẢ + LÝ THUYẾT + VÍ DỤ của dạng.
+// Dạng thiếu bất kỳ mục nào ⇒ KHÔNG xuất lô (agent sẽ gán theo tên dạng = đoán). Điền bản đồ rồi chạy lại.
+// --chap-nhan-thieu chỉ để thử: dạng thiếu bị đánh dấu "⚠ THIẾU" trong dich.md và brief cấm xếp mức cao vào đó.
+const co = (x) => (x ?? '').trim() !== ''
+const thieuDang = dich.map((d) => ({ id: d.id, ten: d.ten, thieu: [!co(d.mo_ta) && 'mô tả', !co(d.ly_thuyet) && !co(d.nhom_ly_thuyet) && 'lý thuyết', !co(d.vi_du) && 'ví dụ'].filter(Boolean) })).filter((x) => x.thieu.length)
+if (thieuDang.length) {
+  console.error(`⚠ ${thieuDang.length}/${dich.length} dạng thiếu mô tả / lý thuyết / ví dụ:`)
+  for (const x of thieuDang) console.error(`   ${x.id} · ${x.ten} — thiếu ${x.thieu.join(', ')}`)
+  if (!args.includes('--chap-nhan-thieu')) { console.error('✗ DỪNG: điền đủ trên bản đồ rồi chạy lại (hoặc --chap-nhan-thieu để thử).'); process.exit(2) }
+}
+const thieuMa = new Map(thieuDang.map((x) => [x.id, x.thieu]))
+const chua = MACAU ? cau.filter((r) => MACAU.has(r.ma_cau)) : cau.filter((r) => (!r.dang_bai_id && (HANG ? r.o_hang : !r.o_hang)) || (LAI && r.dang_bai_id && r.gnguon === 'ai' && !r.o_hang && LAI.test(r.noi_dung)) || (LAIDANG && r.dang_bai_id && r.gnguon === 'ai' && !r.o_hang && LAIDANG.has(r.dang_bai_id))) // mặc định: bỏ câu ở hàng duyệt (người đang xử lý); --hang: CHỈ câu ở hàng duyệt
 // mẫu: câu do NGƯỜI nối (cụm cũ / dạng cũ 1 chỗ), đích nằm trong bảng đích nhánh Toán
 const MAU_NGUOI = args.includes('--mau-nguoi') // 28/10: mẫu = câu NGƯỜI đã gán (gnguon 'nguoi') khi bản đồ cũ đã hết câu nối cụm/dạng cũ
 const mauDs = cau.filter((r) => r.dang_bai_id && (MAU_NGUOI ? r.gnguon === 'nguoi' : (r.nguon === 'gan_cum' || r.nguon === 'doi_ung')) && dbIds.has(r.dang_bai_id))
@@ -74,8 +87,11 @@ for (const d of dich) {
   const nh = `${d.chuyen_de} › ${d.nhom}`
   if (nh !== nhTruoc) { md.push(`### ${nh}${d.nhom_mo_ta ? ` — ${cat(d.nhom_mo_ta, 300)}` : ''}`, ''); nhTruoc = nh }
   md.push(`- **${d.id}** · ${d.ten}`)
-  if (d.mo_ta) md.push(`  - Mô tả: ${cat(d.mo_ta, 500).replace(/\n/g, ' ')}`)
-  if (d.vi_du) md.push(`  - Ví dụ: ${cat(d.vi_du, 450).replace(/\n/g, ' ')}`)
+  if (thieuMa.has(d.id)) md.push(`  - ⚠ THIẾU ${thieuMa.get(d.id).join(', ')} — câu xếp vào dạng này tối đa mức "vua"`)
+  if (d.mo_ta) md.push(`  - Mô tả: ${d.mo_ta.trim().replace(/\n/g, ' ')}`)
+  const lt = co(d.ly_thuyet) ? d.ly_thuyet : d.nhom_ly_thuyet
+  if (co(lt)) md.push(`  - Lý thuyết${co(d.ly_thuyet) ? '' : ' (của nhóm)'}: ${lt.trim().replace(/\n/g, ' ')}`)
+  if (d.vi_du) md.push(`  - Ví dụ: ${d.vi_du.trim().replace(/\n/g, ' ')}`)
 }
 fs.writeFileSync(path.join(goc, 'dich.md'), md.join('\n') + '\n')
 fs.mkdirSync(path.join(goc, '..', '_mau'), { recursive: true }); fs.writeFileSync(path.join(goc, '..', '_mau', ten + '.json'), JSON.stringify(mau, null, 1)) // NGOÀI thư mục agent

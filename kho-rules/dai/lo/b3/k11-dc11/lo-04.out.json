@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T1110000001547",
+  "dang_bai_id": "NDB00988",
+  "chac": "cao",
+  "ly_do": "TXĐ hàm phân thức mẫu sin3x"
+ },
+ {
+  "ma_cau": "T1110000001130",
+  "dang_bai_id": "NDB01148",
+  "chac": "cao",
+  "ly_do": "Giới hạn 0 của q^n với |q|<1 (đáp án A)"
+ },
+ {
+  "ma_cau": "T1110000001895",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: giới hạn dãy cho bởi hệ thức truy hồi"
+ },
+ {
+  "ma_cau": "T1110000001451",
+  "dang_bai_id": "NDB01025",
+  "chac": "vua",
+  "ly_do": "Ba số lập CSN đồng thời CSC; dạng gần nhất 3 số lập CSN"
+ },
+ {
+  "ma_cau": "T1110000001246",
+  "dang_bai_id": "NDB01195",
+  "chac": "cao",
+  "ly_do": "Xét tính liên tục hàm sơ cấp trên tập xác định"
+ },
+ {
+  "ma_cau": "T1110000001475",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Bảng số liệu ghép nhóm, đếm số ngày; chủ đề mẫu số liệu"
+ },
+ {
+  "ma_cau": "T1110000001259",
+  "dang_bai_id": "NDB00614",
+  "chac": "cao",
+  "ly_do": "CSC thực tế cho u1 và d, tìm số hạng thứ 7"
+ },
+ {
+  "ma_cau": "T1110000001294",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Phân thức cùng bậc"
+ },
+ {
+  "ma_cau": "T1110000001780",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: giới hạn tổng triệt tiêu (khử liên tiếp)"
+ },
+ {
+  "ma_cau": "T1110000001134",
+  "dang_bai_id": "NDB01163",
+  "chac": "cao",
+  "ly_do": "Tổng cấp số nhân lùi vô hạn q=1/2"
+ },
+ {
+  "ma_cau": "T1110000001354",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Lập bảng tần số ghép nhóm, trung bình, mốt, tứ phân vị"
+ },
+ {
+  "ma_cau": "T1110000001457",
+  "dang_bai_id": "NDB01019",
+  "chac": "vua",
+  "ly_do": "SHTQ từ hệ thức truy hồi; mô tả dạng chỉ nêu lời/liệt kê"
+ },
+ {
+  "ma_cau": "T1110000001184",
+  "dang_bai_id": "NDB01166",
+  "chac": "vua",
+  "ly_do": "Pha loãng lặp lại thành CSN, tìm số lần; cũng hợp CSN thực tế"
+ },
+ {
+  "ma_cau": "T1110000001261",
+  "dang_bai_id": "NDB01030",
+  "chac": "cao",
+  "ly_do": "CSN biết u2,u4, tính tổng 12 số hạng"
+ },
+ {
+  "ma_cau": "T1110000001357",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Phân thức cùng bậc"
+ },
+ {
+  "ma_cau": "T1110000001183",
+  "dang_bai_id": "NDB01167",
+  "chac": "cao",
+  "ly_do": "Hình vuông tô màu lặp, diện tích CSN"
+ },
+ {
+  "ma_cau": "T1110000001361",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Căn trừ đa thức dạng vô cùng trừ vô cùng"
+ },
+ {
+  "ma_cau": "T1110000001452",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: CSN kết hợp tìm cực trị theo công bội"
+ },
+ {
+  "ma_cau": "T1110000001207",
+  "dang_bai_id": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Chu kì hàm tan(x/2)"
+ },
+ {
+  "ma_cau": "T1110000001315",
+  "dang_bai_id": "NDB00968",
+  "chac": "cao",
+  "ly_do": "Cho sinx tính sin(π/3-x) bằng công thức cộng"
+ },
+ {
+  "ma_cau": "T1110000001089",
+  "dang_bai_id": "NDB01170",
+  "chac": "vua",
+  "ly_do": "Cho giới hạn f tính giới hạn biểu thức khác; dạng chưa chắc"
+ },
+ {
+  "ma_cau": "T1110000001124",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Bảng số liệu chiều cao ghép nhóm, chủ đề mẫu số liệu"
+ },
+ {
+  "ma_cau": "T1110000001133",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Phân thức tử bậc thấp hơn mẫu"
+ },
+ {
+  "ma_cau": "T1110000001513",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Phân thức hữu tỉ 0/0 phân tích nhân tử"
+ },
+ {
+  "ma_cau": "T1110000001409",
+  "dang_bai_id": "NDB01008",
+  "chac": "cao",
+  "ly_do": "Tìm m để phương trình lượng giác có nghiệm"
+ },
+ {
+  "ma_cau": "T1110000001185",
+  "dang_bai_id": "NDB01198",
+  "chac": "cao",
+  "ly_do": "Cước taxi bậc thang, liên tục thực tế"
+ },
+ {
+  "ma_cau": "T1110000001615",
+  "dang_bai_id": "NDB01173",
+  "chac": "cao",
+  "ly_do": "Hiệu hai căn thức dạng 0/0"
+ },
+ {
+  "ma_cau": "T1110000001139",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Phân thức hữu tỉ 0/0"
+ },
+ {
+  "ma_cau": "T1110000001338",
+  "dang_bai_id": "NDB01011",
+  "chac": "cao",
+  "ly_do": "Ý b tìm thời điểm tàu hạ thuỷ (dạng sau); ý a giá trị tại t"
+ },
+ {
+  "ma_cau": "T1110000001387",
+  "dang_bai_id": "NDB00943",
+  "chac": "cao",
+  "ly_do": "Độ dài cung tròn không thực tế"
+ },
+ {
+  "ma_cau": "T1110000002679",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: giới hạn dãy cho bởi hệ thức truy hồi"
+ },
+ {
+  "ma_cau": "T1110000001625",
+  "dang_bai_id": "NDB01179",
+  "chac": "cao",
+  "ly_do": "Căn thức khi x→+∞"
+ },
+ {
+  "ma_cau": "T1110000001214",
+  "dang_bai_id": "NDB00610",
+  "chac": "cao",
+  "ly_do": "Cho SHTQ CSC, chứng minh và tính tổng"
+ },
+ {
+  "ma_cau": "T1110000001537",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Thay trực tiếp, mẫu khác 0"
+ },
+ {
+  "ma_cau": "T1110000001437",
+  "dang_bai_id": "NDB01019",
+  "chac": "cao",
+  "ly_do": "Tìm SHTQ từ liệt kê số hạng"
+ },
+ {
+  "ma_cau": "T1110000001886",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: giới hạn dãy cho bởi hệ thức truy hồi"
+ },
+ {
+  "ma_cau": "T111010602068",
+  "dang_bai_id": "NDB00984",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức bằng công thức cộng (dạng sau)"
+ },
+ {
+  "ma_cau": "T1110000001366",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Phân thức hữu tỉ 0/0"
+ },
+ {
+  "ma_cau": "T1110000001608",
+  "dang_bai_id": "NDB01182",
+  "chac": "cao",
+  "ly_do": "Giới hạn một bên dạng L/0"
+ },
+ {
+  "ma_cau": "T1110000001516",
+  "dang_bai_id": "NDB01172",
+  "chac": "cao",
+  "ly_do": "Một căn thức 0/0 nhân liên hợp"
+ },
+ {
+  "ma_cau": "T1110000001429",
+  "dang_bai_id": "NDB01011",
+  "chac": "cao",
+  "ly_do": "Tìm thời điểm đạt giá trị lớn nhất"
+ },
+ {
+  "ma_cau": "T1110000001894",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: giới hạn dãy cho bởi hệ thức truy hồi"
+ },
+ {
+  "ma_cau": "T1110000001084",
+  "dang_bai_id": "NDB00606",
+  "chac": "cao",
+  "ly_do": "CSC biết hai số hạng, tìm công sai"
+ },
+ {
+  "ma_cau": "T1110000001132",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Thương các luỹ thừa aⁿ, bⁿ"
+ },
+ {
+  "ma_cau": "T1110000001344",
+  "dang_bai_id": "NDB00618",
+  "chac": "vua",
+  "ly_do": "Thực tế trộn CSC và CSN so sánh tổng; chọn dạng CSN cuối"
+ },
+ {
+  "ma_cau": "T1110000001412",
+  "dang_bai_id": "NDB01009",
+  "chac": "cao",
+  "ly_do": "Phương trình sin=sin hai họ nghiệm trên khoảng"
+ },
+ {
+  "ma_cau": "T1110000001253",
+  "dang_bai_id": "NDB00996",
+  "chac": "cao",
+  "ly_do": "Dùng sin2x đưa về hàm cơ bản tìm min max"
+ },
+ {
+  "ma_cau": "T1110000001460",
+  "dang_bai_id": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Lãi kép"
+ },
+ {
+  "ma_cau": "T1110000001408",
+  "dang_bai_id": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Nghiệm đặc biệt sinx=1"
+ },
+ {
+  "ma_cau": "T1110000001254",
+  "dang_bai_id": "NDB00576",
+  "chac": "vua",
+  "ly_do": "sin(ax+b)=-1 vừa nghiệm đặc biệt vừa dạng sin(ax+b)"
+ },
+ {
+  "ma_cau": "T1110000001199",
+  "dang_bai_id": "NDB00987",
+  "chac": "cao",
+  "ly_do": "TXĐ hàm tan cơ bản"
+ },
+ {
+  "ma_cau": "T1110000001604",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Thương các luỹ thừa"
+ },
+ {
+  "ma_cau": "T1110000001353",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Bảng tần số ghép nhóm tốc độ ô tô"
+ },
+ {
+  "ma_cau": "T1110000001618",
+  "dang_bai_id": "NDB01167",
+  "chac": "cao",
+  "ly_do": "Hình vuông lặp vô hạn, tổng diện tích CSN lùi vô hạn"
+ },
+ {
+  "ma_cau": "T1110000001539",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Thay trực tiếp, hàm xác định"
+ },
+ {
+  "ma_cau": "T1110000001563",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Phân thức cùng bậc"
+ },
+ {
+  "ma_cau": "T1110000003017",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: giới hạn dãy cho bởi hệ thức truy hồi"
+ },
+ {
+  "ma_cau": "T1110000001322",
+  "dang_bai_id": "NDB00988",
+  "chac": "cao",
+  "ly_do": "TXĐ hàm phân thức có tan"
+ },
+ {
+  "ma_cau": "T1110000001567",
+  "dang_bai_id": "NDB01150",
+  "chac": "cao",
+  "ly_do": "Giới hạn tích hai dãy biết giới hạn"
+ },
+ {
+  "ma_cau": "T1110000001474",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Độ dài nhóm số liệu ghép nhóm"
+ },
+ {
+  "ma_cau": "T1110000001504",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Thương các luỹ thừa"
+ },
+ {
+  "ma_cau": "T1110000001181",
+  "dang_bai_id": "NDB00616",
+  "chac": "cao",
+  "ly_do": "CSC thực tế tìm n để tổng ≥ giá trị"
+ },
+ {
+  "ma_cau": "T111040102056",
+  "dang_bai_id": "NDB01009",
+  "chac": "cao",
+  "ly_do": "cosx=1/5 hai họ nghiệm, đếm nghiệm trên đoạn"
+ },
+ {
+  "ma_cau": "T1110000001611",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Phân thức hữu tỉ 0/0"
+ },
+ {
+  "ma_cau": "T1110000001877",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: giới hạn tổng khử liên tiếp với căn"
+ },
+ {
+  "ma_cau": "T1110000001578",
+  "dang_bai_id": "NDB01182",
+  "chac": "cao",
+  "ly_do": "Giới hạn một bên dạng L/0"
+ },
+ {
+  "ma_cau": "T1110000001375",
+  "dang_bai_id": "NDB01188",
+  "chac": "cao",
+  "ly_do": "Liên tục tại điểm chia nhánh"
+ },
+ {
+  "ma_cau": "T1110000001624",
+  "dang_bai_id": "NDB01178",
+  "chac": "cao",
+  "ly_do": "Phân thức hữu tỉ khi x→+∞"
+ },
+ {
+  "ma_cau": "T1110000001179",
+  "dang_bai_id": "NDB00614",
+  "chac": "cao",
+  "ly_do": "CSC thực tế cho u1 và d"
+ },
+ {
+  "ma_cau": "T1110000003126",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: giới hạn hàm tại vô cực chứa tham số"
+ }
+]

@@ -15,7 +15,7 @@ import {
   getCay, themChuDe, suaChuDe, themChuyenDeVaoChuDe, suaChuyenDe, xoaChuDeTronGoi, xoaChuyenDeKhoiChuDe, xoaNhomTronGoi,
   themNhom, suaNhom, themDangBai, suaDangBai, xoaDangBai, sapXep, chuyenNhom, chuyenDangBai, chuyenO,
   nangDangBai, haNhom, gopChuyenDe, getLyThuyetNhom, getViDuDangBai, getLyThuyetDangBai, lyThuyetNhomApi, viDuDangBaiApi, lyThuyetDangBaiApi,
-  getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum, getKhoCau, chuyenCauSangDang, xoaCauKho, BDM_NHANH, PHAN_HINH, khuonCuaVung, datMonBdm, tinhNangBdm, type BdmNhanh, type BdmMon,
+  getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum, getKhoCau, chuyenCauSangDang, xoaCauKho, getKhoCauHinh, chuyenCauHinhSangBai, xoaCauHinh, BDM_NHANH, PHAN_HINH, khuonCuaVung, datMonBdm, tinhNangBdm, type BdmNhanh, type BdmMon,
   type KhoCauRow, type KhoCauLoc,
   type BdmCay, type BdmChuDe, type BdmO, type BdmNhom, type BdmDangBai, type BdmDangCu, type BdmDangCuRef, type BdmDich, type BdmCauChuaGan,
 } from '../../lib/kho/banDoMoi'
@@ -43,7 +43,7 @@ const HIEN_KHOP_CU = false
 
 // Bản đồ mới → KHO (Thùy 18/10: "chưa thấy đường đi từ bản đồ mới vào kho"): bấm số câu trên thẻ dạng bài / nút 📚 ở nhóm / ⚠ Chưa khớp ở chủ đề
 // ⇒ danh sách câu thật (đề · đáp án · lời giải · cờ duyệt/kho chuẩn/kiểm máy). Cầu nối module-level: màn chỉ có 1 bản, đỡ luồn prop qua 4 tầng.
-type KhoMo = { loai: 'dang_bai' | 'nhom' | 'chua_khop' | 'de_xuat' | 'thieu_dang' | 'dung_sai'; id: string; ten: string }
+type KhoMo = { loai: 'dang_bai' | 'nhom' | 'chua_khop' | 'de_xuat' | 'thieu_dang' | 'dung_sai'; id: string; ten: string; hinh?: { bais: { id: string; ten: string }[] } }   // hinh = kho câu của vùng Hình–Học (bảng hinh_hoc_*): cùng popup, khác hàm
 let moKho: (m: KhoMo) => void = () => {}
 // KHO TRÊN LỚP (Thùy 22/10): mở từ card / popup dạng bài; số câu giảng · luyện theo dạng bài (đếm ở DB) qua context
 let moLop: (m: { id: string; ten: string }) => void = () => {}
@@ -370,7 +370,8 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
         <div className="flex min-h-0 flex-1">
           <div className="min-w-0 flex-1 overflow-auto">
             {khuon === 'hinh_hoc' ? (
-              <KhoHinhHocScreen key={chuDe.id} khoi={khoi} chuDeId={chuDe.id} tenChuDe={chuDe.ten} />
+              <KhoHinhHocScreen key={chuDe.id} khoi={khoi} chuDeId={chuDe.id} tenChuDe={chuDe.ten} khoMoi={khoMo === null}
+                onMoKho={(m) => setKhoMo({ ...m, hinh: { bais: m.bais } })} />
             ) : (
               <HinhLuyenTrongBanDo key={chuDe.id} khoi={khoi} chuDeId={chuDe.id} />
             )}
@@ -1360,14 +1361,14 @@ function KhoModal({ mo, khoi, cay, onDong, onDaDoi }: { mo: KhoMo; khoi: string;
   const doiDang = async (r: KhoCauRow, dangBai: string) => {
     setChuyen(null)
     try {
-      const kq = await chuyenCauSangDang(r.ma_cau, dangBai, true)
+      const kq = mo.hinh ? await chuyenCauHinhSangBai(r.ma_cau, dangBai, true) : await chuyenCauSangDang(r.ma_cau, dangBai, true)
       const roi = (mo.loai === 'dang_bai' && dangBai !== mo.id) || mo.loai === 'de_xuat' || mo.loai === 'thieu_dang' || mo.loai === 'chua_khop'
       xong(r.ma_cau, roi, `Đã chuyển ${kq.so_cau > 1 ? `${kq.so_cau} câu (kèm bản sao)` : 'câu'} sang «${kq.ten}»`)
     } catch (e) { setLoi(e instanceof Error ? e.message : String(e)) }
   }
   const xoa = async (r: KhoCauRow, caBanSao: boolean) => {
     try {
-      const n = await xoaCauKho(r.ma_cau, caBanSao)
+      const n = mo.hinh ? await xoaCauHinh(r.ma_cau, caBanSao) : await xoaCauKho(r.ma_cau, caBanSao)
       xong(r.ma_cau, true, `Đã đưa ${n} câu vào kho rác (khôi phục được ở Kho rác)`)
     } catch (e) { setLoi(e instanceof Error ? e.message : String(e)) }
   }
@@ -1386,7 +1387,7 @@ function KhoModal({ mo, khoi, cay, onDong, onDaDoi }: { mo: KhoMo; khoi: string;
   const tai = (batDau: number) => {
     const my = ++req.current
     setDang(true); setLoi(null)
-    getKhoCau(mo.loai, mo.id, loc, TRANG, batDau)
+    ;(mo.hinh ? getKhoCauHinh(mo.loai as 'dang_bai' | 'dung_sai' | 'de_xuat' | 'chua_khop', mo.id, loc, TRANG, batDau) : getKhoCau(mo.loai, mo.id, loc, TRANG, batDau))
       .then((r) => { if (my !== req.current) return; setRows((a) => (batDau === 0 ? r : [...a, ...r])); if (r.length) setTong(r[0].tong) })
       .catch((e) => { if (my === req.current) setLoi(e instanceof Error ? e.message : String(e)) })
       .finally(() => { if (my === req.current) setDang(false) })
@@ -1423,7 +1424,8 @@ function KhoModal({ mo, khoi, cay, onDong, onDaDoi }: { mo: KhoMo; khoi: string;
           )}
         </div>
       </div>
-      {chuyen && <div onClick={(e) => e.stopPropagation()}>
+      {chuyen && mo.hinh && <div onClick={(e) => e.stopPropagation()}><ChonBaiHinh bais={mo.hinh.bais} onClose={() => setChuyen(null)} onPick={(id) => void doiDang(chuyen, id)} /></div>}
+      {chuyen && !mo.hinh && <div onClick={(e) => e.stopPropagation()}>
         {tinhNangBdm().chonQuaCay
           ? <ChonDangBaiTrenCay cay={cay} onClose={() => setChuyen(null)} onPick={(id) => void doiDang(chuyen, id)} />
           : <DangPickerOne khoi={khoi} mon="Toán" banDoMoi onClose={() => setChuyen(null)}
@@ -1522,6 +1524,25 @@ function ChonDangBaiTrenCay({ cay, onClose, onPick }: { cay: BdmCay | null; onCl
             </button>
           ))}
         </div>
+      </div>
+    </div>
+  )
+}
+
+// Chọn bài học đích khi chuyển câu ở kho Hình–Học (danh sách bài của chủ đề — không có cây 4 tầng như Đại).
+function ChonBaiHinh({ bais, onClose, onPick }: { bais: { id: string; ten: string }[]; onClose: () => void; onPick: (id: string) => void }) {
+  return (
+    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/40 p-4" onClick={onClose}>
+      <div className="w-[460px] max-w-[94vw] rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <h3 className="mb-3 text-[14px] font-semibold text-slate-900">Chuyển câu sang bài học…</h3>
+        <div className="max-h-[60vh] space-y-1 overflow-y-auto">
+          {bais.map((b) => (
+            <button key={b.id} onClick={() => onPick(b.id)} className="flex w-full items-center gap-2 rounded-md border border-slate-200 px-3 py-1.5 text-left text-[13px] hover:border-indigo-300 hover:bg-indigo-50/40">
+              <code className="text-[10.5px] text-slate-400">{b.id}</code><span className="min-w-0 flex-1"><MathText>{b.ten}</MathText></span>
+            </button>
+          ))}
+        </div>
+        <div className="mt-3 text-right"><button onClick={onClose} className="rounded-md px-3 py-1 text-[13px] text-slate-500 hover:bg-slate-100">Huỷ</button></div>
       </div>
     </div>
   )

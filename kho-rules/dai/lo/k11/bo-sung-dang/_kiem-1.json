@@ -1,0 +1,154 @@
+[
+ {
+  "id": "NDB01631",
+  "vd_so": 1,
+  "dap_so_toi": "8π ≈ 25,13 cm",
+  "dap_so_tep": "8π ≈ 25,13 cm",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01631",
+  "vd_so": 2,
+  "dap_so_toi": "20π ≈ 62,83 m",
+  "dap_so_tep": "20π ≈ 62,83 m",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01631",
+  "vd_so": 3,
+  "dap_so_toi": "1700π ≈ 5341 km",
+  "dap_so_tep": "1700π ≈ 5341 km",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01618",
+  "vd_so": 1,
+  "dap_so_toi": "a) 1/2; b) 1; c) √3/3",
+  "dap_so_tep": "a) 1/2; b) 1; c) √3/3",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01618",
+  "vd_so": 2,
+  "dap_so_toi": "-1/2; A = -7/4",
+  "dap_so_tep": "-1/2; A = -7/4",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01618",
+  "vd_so": 3,
+  "dap_so_toi": "-(√6+√2)/4",
+  "dap_so_tep": "-(√6+√2)/4",
+  "ket_luan": "dung",
+  "ghi_chu": "Dùng công thức cộng (cos π/12) — vẫn trong chương trình 11."
+ },
+ {
+  "id": "NDB01633",
+  "vd_so": 1,
+  "dap_so_toi": "36 cm",
+  "dap_so_tep": "36 cm",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01633",
+  "vd_so": 2,
+  "dap_so_toi": "Max 35°C lúc 14h; min 25°C lúc 2h",
+  "dap_so_tep": "Max 35°C lúc 14h; min 25°C lúc 2h",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01633",
+  "vd_so": 3,
+  "dap_so_toi": "Max 5,2 m lúc 5h,17h; min 2,8 m lúc 11h,23h",
+  "dap_so_tep": "Max 5,2 m lúc 5h,17h; min 2,8 m lúc 11h,23h",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01632",
+  "vd_so": 1,
+  "dap_so_toi": "S = 8",
+  "dap_so_tep": "S = 8",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01632",
+  "vd_so": 2,
+  "dap_so_toi": "MN = √(π²+16)",
+  "dap_so_tep": "MN = √(π²+16)",
+  "ket_luan": "dung",
+  "ghi_chu": "Đề dùng chữ 'điểm cực đại/cực tiểu' (thuật ngữ K12) nhưng lời giải hiểu đúng là điểm cao/thấp nhất; không ảnh hưởng."
+ },
+ {
+  "id": "NDB01632",
+  "vd_so": 3,
+  "dap_so_toi": "3 điểm",
+  "dap_so_tep": "3 điểm",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01634",
+  "vd_so": 1,
+  "dap_so_toi": "5π²",
+  "dap_so_tep": "5π²",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01634",
+  "vd_so": 2,
+  "dap_so_toi": "27",
+  "dap_so_tep": "27",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01634",
+  "vd_so": 3,
+  "dap_so_toi": "m ∈ (-1;-1/2) ∪ {0;1}",
+  "dap_so_tep": "m ∈ (-1;-1/2) ∪ {0;1}",
+  "ket_luan": "dung",
+  "ghi_chu": "Đã kiểm số bằng đếm nghiệm theo m."
+ },
+ {
+  "id": "NDB01354",
+  "vd_so": 1,
+  "dap_so_toi": "Tần số 3;1;4;3;7;12; đại diện 129;132;135;138;141;144",
+  "dap_so_tep": "Tần số 3;1;4;3;7;12; đại diện 129;132;135;138;141;144",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01354",
+  "vd_so": 2,
+  "dap_so_toi": "8,4375 ≈ 8,44 giờ",
+  "dap_so_tep": "8,4375 ≈ 8,44 giờ",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01354",
+  "vd_so": 3,
+  "dap_so_toi": "Nhóm [35;40), Mo = 36,25",
+  "dap_so_tep": "Nhóm [35;40), Mo = 36,25",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01354",
+  "vd_so": 4,
+  "dap_so_toi": "Me = 18,1; Q1 = 15,25; Q3 = 20",
+  "dap_so_tep": "Me = 18,1; Q1 = 15,25; Q3 = 20",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ }
+]

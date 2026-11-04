@@ -1,0 +1,352 @@
+{
+ "khop": [
+  "T111000000014",
+  "T111000000015",
+  "T111000000016",
+  "T111000000019",
+  "T111000000023",
+  "T111000000031",
+  "T111000000052",
+  "T1110000001000",
+  "T1110000001001",
+  "T1110000001002",
+  "T1110000001003",
+  "T1110000001005",
+  "T1110000001006",
+  "T1110000001007",
+  "T1110000001009",
+  "T1110000001010",
+  "T1110000001011",
+  "T1110000001012",
+  "T1110000001015",
+  "T1110000001016",
+  "T1110000001017",
+  "T1110000001018",
+  "T1110000001019",
+  "T1110000001020",
+  "T1110000001021",
+  "T1110000001022",
+  "T1110000001023",
+  "T1110000001024",
+  "T1110000001025",
+  "T1110000001026",
+  "T1110000001027",
+  "T1110000001028",
+  "T1110000001029",
+  "T1110000001030",
+  "T1110000001031",
+  "T1110000001032",
+  "T1110000001033",
+  "T1110000001036",
+  "T1110000001037",
+  "T1110000001077",
+  "T1110000001160",
+  "T1110000001161",
+  "T1110000001162",
+  "T1110000001163",
+  "T1110000001164",
+  "T1110000001165",
+  "T1110000001166",
+  "T1110000001167",
+  "T1110000001168",
+  "T1110000001169",
+  "T1110000001220",
+  "T1110000001221",
+  "T1110000001222",
+  "T1110000001223",
+  "T1110000001224",
+  "T1110000001225",
+  "T1110000001226",
+  "T1110000001227",
+  "T1110000001228",
+  "T1110000001229",
+  "T1110000001230",
+  "T1110000001231",
+  "T1110000001232",
+  "T1110000001233",
+  "T1110000001234",
+  "T1110000001235",
+  "T1110000001236",
+  "T1110000001237",
+  "T1110000001238",
+  "T1110000001239",
+  "T1110000001240",
+  "T111000000131",
+  "T1110000001310",
+  "T1110000001311",
+  "T111000000132",
+  "T111000000134",
+  "T1110000001357",
+  "T1110000001358",
+  "T1110000001359",
+  "T1110000001360",
+  "T1110000001361",
+  "T1110000001362",
+  "T1110000001363",
+  "T1110000001364",
+  "T1110000001365",
+  "T1110000001366",
+  "T1110000001367",
+  "T1110000001368",
+  "T1110000001369",
+  "T1110000001370",
+  "T1110000001371",
+  "T1110000001372",
+  "T1110000001373",
+  "T1110000001378",
+  "T1110000001379",
+  "T1110000001380",
+  "T1110000001381",
+  "T1110000001538",
+  "T1110000001539",
+  "T1110000001540",
+  "T1110000001563",
+  "T1110000001564",
+  "T1110000001565",
+  "T1110000001595",
+  "T1110000001596",
+  "T1110000001601",
+  "T1110000001605",
+  "T1110000001607",
+  "T1110000001608",
+  "T1110000001609",
+  "T1110000001613",
+  "T1110000001615",
+  "T1110000001617",
+  "T1110000001621",
+  "T1110000001622",
+  "T1110000001625",
+  "T1110000001627",
+  "T1110000001629",
+  "T111000000205",
+  "T111000000206",
+  "T111000000207",
+  "T111000000208",
+  "T111000000209",
+  "T111000000210",
+  "T1110000004007",
+  "T1110000004010",
+  "T1110000004025",
+  "T1110000004026",
+  "T1110000004035",
+  "T1110000004040",
+  "T1110000004042",
+  "T1110000004045",
+  "T1110000004047",
+  "T1110000004059",
+  "T1110000004084",
+  "T1110000004091",
+  "T1110000004097",
+  "T1110000004104"
+ ],
+ "lech": [
+  {
+   "m": "T111000000049",
+   "cu": "≈68,2 (m)",
+   "mu": "$68{,}2$ m"
+  },
+  {
+   "m": "T1110000004020",
+   "cu": "0,75",
+   "mu": "$\\dfrac{3}{4}$"
+  },
+  {
+   "m": "T1110000004021",
+   "cu": "-3,5",
+   "mu": "$-\\dfrac{7}{2}$"
+  },
+  {
+   "m": "T1110000004022",
+   "cu": "$-\\frac{1}{2}$",
+   "mu": "$-\\dfrac{1}{2}$"
+  },
+  {
+   "m": "T1110000004023",
+   "cu": "$a=0$, $b=10$",
+   "mu": "$a=0,\\ b=10$"
+  },
+  {
+   "m": "T1110000004093",
+   "cu": "C",
+   "mu": "B"
+  },
+  {
+   "m": "T1110000004106",
+   "cu": "$\\frac{1}{24}$",
+   "mu": "$\\dfrac{1}{24}$"
+  }
+ ],
+ "thieu": [
+  {
+   "m": "T1110000001034",
+   "mu": "$\\lim_{x\\to1^-}f(x)=-2$; $\\lim_{x\\to1^+}f(x)=0$. Hàm số không có giới hạn tại $x=1$ vì giới hạn trái khác giới hạn phải.",
+   "tail": " không tồn tại $\\lim_{x\\to1}f(x)$.\n\nVậy $\\lim_{x\\to1^-}f(x)=-2$, $\\lim_{x\\to1^+}f(x)=0$ và hàm số không có giới hạn tại $x=1$ vì hai giới hạn một bên khác nhau."
+  },
+  {
+   "m": "T1110000001038",
+   "mu": "$\\lim_{x\\to1^-}f(x)=-2$; $\\lim_{x\\to1^+}f(x)=-2$. Hàm số có giới hạn tại $x=1$ (bằng $-2$) vì hai giới hạn một phía bằng nhau.",
+   "tail": "_{x\\to1^+}f(x)=-2$ nên tồn tại $\\lim_{x\\to1}f(x)=-2$.\n\nVậy $\\lim_{x\\to1^-}f(x)=\\lim_{x\\to1^+}f(x)=-2$ nên hàm số có giới hạn tại $x=1$ và $\\lim_{x\\to1}f(x)=-2$."
+  },
+  {
+   "m": "T1110000001039",
+   "mu": "a) $\\lim_{x\\to1}f(x)=-\\dfrac18$, khác $f(1)=\\dfrac18$ (nên $\\lim<f(1)$). b) $\\lim_{x\\to(-3)^+}f(x)=\\dfrac14$ và $f(-3)=\\dfrac14$ nên hai giá trị bằng nhau.",
+   "tail": "\nVì $-3\\neq1$ nên $f(-3)=\\dfrac{2-\\sqrt0}{9-1}=\\dfrac14$.\n\nVậy a) $\\lim_{x\\to1}f(x)=-\\dfrac18$, khác $f(1)=\\dfrac18$; b) $\\lim_{x\\to(-3)^+}f(x)=\\dfrac14=f(-3)$."
+  },
+  {
+   "m": "T1110000001040",
+   "mu": "Hàm liên tục trên $\\mathbb{R}$ (chứng minh: tại $x\\ne-1$ là hàm phân thức xác định nên liên tục; tại $x=-1$ có $\\lim f=\\frac43=f(-1)$).",
+   "tail": "x+1}=\\dfrac{1+1+2}{1+1+1}=\\dfrac43$\n\nMà $f(-1)=\\dfrac43$ nên $\\lim_{x\\to-1}f(x)=f(-1)$, tức $f$ liên tục tại $x=-1$.\n\nVậy hàm số $f$ liên tục trên $\\mathbb{R}$."
+  },
+  {
+   "m": "T1110000001041",
+   "mu": "Hàm liên tục trên $\\mathbb{R}$ (chứng minh: $x<0$ và $x>0$ là hàm sơ cấp xác định nên liên tục; tại $x=0$: $\\lim_{x\\to0^-}f=\\frac32$, $\\lim_{x\\to0^+}f=\\frac32$, $f(0)=\\frac32$).",
+   "tail": ")=\\dfrac{1+1+1}{1+1}=\\dfrac32$\n\nVì $\\lim_{x\\to0^-}f(x)=\\lim_{x\\to0^+}f(x)=f(0)=\\dfrac32$ nên $f$ liên tục tại $x=0$.\n\nVậy hàm số $f$ liên tục trên $\\mathbb{R}$."
+  },
+  {
+   "m": "T1110000001042",
+   "mu": "Hàm liên tục trên $\\mathbb{R}$ (với $x\\ne3$ liên tục, tại $x=3$ có $\\lim f=4=f(3)$).",
+   "tail": "_{x\\to3}f(x)=\\lim_{x\\to3}(x+1)=4$\n\nMà $f(3)=4$ nên $\\lim_{x\\to3}f(x)=f(3)$, tức $f$ liên tục tại $x=3$.\n\nVậy hàm số $f$ liên tục trên tập xác định $\\mathbb{R}$."
+  },
+  {
+   "m": "T1110000001043",
+   "mu": "Hàm liên tục trên $(-\\infty;1)$ và $(1;+\\infty)$ nhưng gián đoạn tại $x=1$ (không liên tục trên $\\mathbb{R}$), vì $\\lim_{x\\to1^+}f=3\\ne\\lim_{x\\to1^-}f=6$.",
+   "tail": "x)$ nên không tồn tại $\\lim_{x\\to1}f(x)$, do đó $f$ không liên tục tại $x=1$.\n\nVậy hàm số $f$ liên tục trên $(-\\infty;1)$ và $(1;+\\infty)$, gián đoạn tại $x=1$."
+  },
+  {
+   "m": "T1110000001044",
+   "mu": "Phương trình luôn có nghiệm (thuộc khoảng $(-1;0)$).",
+   "tail": "$m$.\n\nVì $g$ liên tục trên $[-1;0]$ nên phương trình $g(x)=0$ có ít nhất một nghiệm thuộc khoảng $(-1;0)$.\n\nVậy phương trình $(1-m^2)x^5-3x-1=0$ luôn có nghiệm."
+  },
+  {
+   "m": "T1110000001045",
+   "mu": "Phương trình luôn có nghiệm (thuộc khoảng $(0;1)$).",
+   "tail": "$m$.\n\nVì $g$ liên tục trên $[0;1]$ nên phương trình $g(x)=0$ có ít nhất một nghiệm thuộc khoảng $(0;1)$.\n\nVậy phương trình $(m^2+m+1)x^4+2x-2=0$ luôn có nghiệm."
+  },
+  {
+   "m": "T1110000001046",
+   "mu": "Phương trình luôn có $3$ nghiệm phân biệt (thuộc $(-\\infty;0)$, $(0;1)$, $(1;+\\infty)$).",
+   "tail": "2)$ đôi một không có điểm chung nên ba nghiệm này phân biệt. Mặt khác đa thức bậc $3$ có không quá $3$ nghiệm.\n\nVậy phương trình đã cho luôn có đúng $3$ nghiệm."
+  },
+  {
+   "m": "T1110000001062",
+   "mu": "Hàm liên tục trên $\\mathbb{R}\\setminus\\{1\\}$ và gián đoạn tại $x=1$ với mọi $m$, vì $\\lim_{x\\to1^+}f=-1\\ne\\lim_{x\\to1^-}f=1$ (không tồn tại giới hạn tại 1).",
+   "tail": "o1}f(x)$, do đó hàm số gián đoạn tại $x=1$ với mọi giá trị của $m$.\n\nVậy $f(x)$ liên tục trên $(-\\infty;1)$ và $(1;+\\infty)$, gián đoạn tại $x=1$ (với mọi $m$)."
+  },
+  {
+   "m": "T1110000001182",
+   "mu": "$p_n=4\\left(\\dfrac{1}{\\sqrt2}\\right)^{n-1}$; $Q_n=\\dfrac{4\\left(1-\\left(\\frac{1}{\\sqrt2}\\right)^n\\right)}{1-\\frac1{\\sqrt2}}$; $\\lim Q_n=8+4\\sqrt2$",
+   "tail": "t2$\n\nVậy $p_n=4\\left(\\dfrac{\\sqrt2}{2}\\right)^{n-1}$, $Q_n=\\dfrac{4\\left[1-\\left(\\frac{\\sqrt2}{2}\\right)^n\\right]}{1-\\frac{\\sqrt2}{2}}$ và $\\lim Q_n=8+4\\sqrt2$."
+  },
+  {
+   "m": "T1110000001185",
+   "mu": "Hàm số $T(x)$ liên tục trên $(0;+\\infty)$ (liên tục tại $x=1$ và $x=25$ vì các giới hạn một phía bằng giá trị hàm: 20000 và 380000).",
+   "tail": "n tục tại $x=25$.\n\nVậy hàm số $T(x)$ liên tục trên $(0;+\\infty)$: giá cước thay đổi liên tục theo quãng đường, không có bước nhảy giá tại km thứ 1 và km thứ 25."
+  },
+  {
+   "m": "T1110000001242",
+   "mu": "Liên tục tại $x=1$ (vì $\\lim_{x\\to1}(3x-2)=1=f(1)$).",
+   "tail": "-2$.\n\n$\\lim\\limits_{x\\to1}f(x)=\\lim\\limits_{x\\to1}(3x-2)=1$.\n\nVì $\\lim\\limits_{x\\to1}f(x)=1=f(1)$ nên hàm số liên tục tại $x=1$.\n\nVậy hàm số liên tục tại $x=1$."
+  },
+  {
+   "m": "T1110000001243",
+   "mu": "Không liên tục tại $x=-1$ (giới hạn phải $-1=f(-1)$, giới hạn trái $4$, không bằng nhau; hàm gián đoạn bên trái).",
+   "tail": "m\\limits_{x\\to(-1)^-}(3-x)=4$.\n\nHai giới hạn một phía khác nhau nên không tồn tại $\\lim\\limits_{x\\to-1}f(x)$.\n\nVậy hàm số không liên tục (gián đoạn) tại $x=-1$."
+  },
+  {
+   "m": "T1110000001244",
+   "mu": "Hàm số liên tục trên $\\mathbb R$.",
+   "tail": " thức, có tập xác định là $\\mathbb{R}$.\n\nHàm đa thức liên tục trên $\\mathbb{R}$.\n\nVậy hàm số liên tục trên $\\mathbb{R}$, tức là trên khoảng $(-\\infty;+\\infty)$."
+  },
+  {
+   "m": "T1110000001245",
+   "mu": "Liên tục trên $(-\\infty;0)$, $(0;3)$, $(3;+\\infty)$; gián đoạn tại $x=0$ và $x=3$ (tập xác định $\\mathbb R\\setminus\\{0;3\\}$).",
+   "tail": "Hàm số $f$ là hàm phân thức hữu tỉ nên liên tục trên từng khoảng của tập xác định.\n\nVậy hàm số liên tục trên các khoảng $(-\\infty;0)$, $(0;3)$ và $(3;+\\infty)$."
+  },
+  {
+   "m": "T1110000001246",
+   "mu": "Liên tục trên $(-\\infty;-1)$ và $(-1;+\\infty)$, tức trên $\\mathbb R\\setminus\\{-1\\}$; gián đoạn tại $x=-1$ (không xác định).",
+   "tail": "1$ liên tục trên $\\mathbb{R}$ nên thương của chúng liên tục tại mọi điểm mà mẫu khác $0$.\n\nVậy hàm số liên tục trên các khoảng $(-\\infty;-1)$ và $(-1;+\\infty)$."
+  },
+  {
+   "m": "T1110000001247",
+   "mu": "Liên tục trên $[2;+\\infty)$ (liên tục trên $(2;+\\infty)$ và liên tục phải tại $x=2$).",
+   "tail": "nfty)$.\n\nTại $x=2$: $f(2)=0$ và $\\lim\\limits_{x\\to2^+}\\sqrt{x-2}=0=f(2)$ nên hàm số liên tục phải tại $x=2$.\n\nVậy hàm số liên tục trên nửa khoảng $[2;+\\infty)$."
+  },
+  {
+   "m": "T1110000001374",
+   "mu": "Không liên tục tại $x=2$ (lim = 1 ≠ f(2) = 5).",
+   "tail": "o2}f(x)=\\lim\\limits_{x\\to2}\\dfrac{(x-1)(x-2)}{x-2}=\\lim\\limits_{x\\to2}(x-1)=1$.\n\nVì $\\lim\\limits_{x\\to2}f(x)=1\\neq5=f(2)$.\n\nVậy hàm số không liên tục tại $x=2$."
+  },
+  {
+   "m": "T1110000001375",
+   "mu": "Liên tục tại $x=1$ (lim = 1/4 = f(1)).",
+   "tail": "+3)-4}{(x-1)(\\sqrt{x+3}+2)}$\n\n$=\\lim\\limits_{x\\to1}\\dfrac{1}{\\sqrt{x+3}+2}$\n\n$=\\dfrac{1}{4}$\n\nVì $\\lim\\limits_{x\\to1}f(x)=f(1)$.\n\nVậy hàm số liên tục tại $x=1$."
+  },
+  {
+   "m": "T1110000001376",
+   "mu": "Liên tục tại $x=2$ (lim trái = lim phải = f(2) = 1).",
+   "tail": "t{2x-3})}$\n\n$=\\lim\\limits_{x\\to2^+}\\dfrac{2}{1+\\sqrt{2x-3}}=1$\n\nVì $\\lim\\limits_{x\\to2^-}f(x)=\\lim\\limits_{x\\to2^+}f(x)=f(2)=1$.\n\nVậy hàm số liên tục tại $x=2$."
+  },
+  {
+   "m": "T1110000001377",
+   "mu": "Không liên tục tại $x=3$ (lim phải = 24 ≠ f(3) = 18).",
+   "tail": "\\cdot4=24$\n\nVì $\\lim\\limits_{x\\to3^+}f(x)=24\\neq18=\\lim\\limits_{x\\to3^-}f(x)$ nên không tồn tại $\\lim\\limits_{x\\to3}f(x)$.\n\nVậy hàm số không liên tục tại $x=3$."
+  },
+  {
+   "m": "T1110000001382",
+   "mu": "Hàm $g(x)=x^5-3x+3$ liên tục, $g(0)=3>0$, $g(-2)=-23<0$ nên có nghiệm trong $(-2;0)$.",
+   "tail": ")=-32+6+3=-23<0$ và $f(0)=3>0$ nên $f(-2)\\cdot f(0)<0$.\n\nVậy phương trình $f(x)=0$ có ít nhất một nghiệm thuộc khoảng $(-2;0)$, tức phương trình luôn có nghiệm."
+  },
+  {
+   "m": "T1110000001383",
+   "mu": "Hàm $f(x)=4x^3-8x^2+1$ liên tục; $f(-1)=-11<0$, $f(0)=1>0$, $f(1)=-3<0$, $f(2)=1>0$ nên có ít nhất 1 nghiệm trong mỗi khoảng $(-1;0),(0;1),(1;2)$; phương trình bậc 3 có tối đa 3 nghiệm nên có đúng 3 nghiệm phân biệt trong $(-1;2)$.",
+   "tail": "t nhất ba nghiệm phân biệt thuộc $(-1;2)$.\n\nPhương trình bậc ba có không quá ba nghiệm.\n\nVậy phương trình có đúng ba nghiệm thực phân biệt trên khoảng $(-1;2)$."
+  },
+  {
+   "m": "T1110000001384",
+   "mu": "$f(x)=x^3-3x+1$ liên tục; $f(-2)=-1<0$, $f(0)=1>0$, $f(1)=-1<0$, $f(2)=3>0$ nên có nghiệm trong $(-2;0),(0;1),(1;2)$; bậc 3 có tối đa 3 nghiệm nên có đúng 3 nghiệm thực phân biệt.",
+   "tail": "hông giao nhau nên phương trình có ít nhất ba nghiệm phân biệt.\n\nPhương trình bậc ba có không quá ba nghiệm.\n\nVậy phương trình có đúng ba nghiệm thực phân biệt."
+  },
+  {
+   "m": "T1110000001385",
+   "mu": "Đặt $f(x)=(m^3-1)(x^{2023}-1)(x+2)^{2024}+2x+3$ liên tục trên $\\mathbb{R}$; $f(-2)=-1<0$, $f(1)=5>0$ nên $f(-2)f(1)<0$, suy ra phương trình có nghiệm trong $(-2;1)$ với mọi $m$.",
+   "tail": "3}-1)\\cdot0+(-4)+3=-1<0$.\n\nSuy ra $f(-2)\\cdot f(1)<0$ với mọi $m\\in\\mathbb{R}$.\n\nVậy phương trình có ít nhất một nghiệm thuộc $(-2;1)$ với mọi $m\\in\\mathbb{R}$."
+  },
+  {
+   "m": "T1110000001541",
+   "mu": "a) $C(t)=\\dfrac{450t}{600+15t}=\\dfrac{30t}{40+t}$ (g/l). b) $\\lim_{t\\to+\\infty}C(t)=30$ g/l, nồng độ tiến dần tới $30$ g/l (bằng nồng độ nước biển).",
+   "tail": "}+1}=\\dfrac{30}{0+1}=30$.\n\nVậy $C(t)=\\dfrac{30t}{40+t}$ g/l; khi $t\\to+\\infty$ nồng độ muối trong hồ tiến dần tới $30$ g/l, bằng nồng độ nước biển được bơm vào."
+  },
+  {
+   "m": "T1110000001543",
+   "mu": "$\\lim_{x\\to1}f(x)=\\lim\\dfrac{1}{\\sqrt{x+3}+2}=\\dfrac14=f(1)$ nên hàm số liên tục tại $x=1$.",
+   "tail": "o đó $\\lim_{x\\to1}f(x)=\\dfrac{1}{\\sqrt{4}+2}=\\dfrac{1}{4}$.\n\nVì $\\lim_{x\\to1}f(x)=f(1)=\\dfrac{1}{4}$ nên hàm số liên tục tại $x=1$.\n\nVậy $f$ liên tục tại $x=1$."
+  },
+  {
+   "m": "T1110000001544",
+   "mu": "Liên tục tại $x=5$: $\\lim_{x\\to5^+}f(x)=3$, $\\lim_{x\\to5^-}f(x)=3$, $f(5)=3$.",
+   "tail": " đó $\\lim_{x\\to5^+}f(x)=\\dfrac{\\sqrt{9}+3}{2}=3$.\n\nVì $\\lim_{x\\to5^-}f(x)=\\lim_{x\\to5^+}f(x)=f(5)=3$ nên hàm số liên tục tại $x=5$.\n\nVậy $f$ liên tục tại $x=5$."
+  },
+  {
+   "m": "T1110000001566",
+   "mu": "$a=\\pm1$",
+   "tail": "1}{6}$.\n\nHàm số liên tục tại $x=1$ khi và chỉ khi $\\lim_{x\\to1^-}f(x)=f(1)$.\n\n$-\\dfrac{1}{6}=a^2-\\dfrac{7}{6}$\n\n$a^2=1$\n\n$a=1$ hoặc $a=-1$.\n\nVậy $a\\in\\{-1;1\\}$."
+  },
+  {
+   "m": "T1110000001619",
+   "mu": "$T=\\dfrac{12137}{2}$ (với $a=2022$, $b=\\dfrac{4049}{2}$)",
+   "tail": "giới hạn một bên đều bằng $2025$:\n\n$a+3=2025$ suy ra $a=2022$.\n\n$\\dfrac12+b=2025$ suy ra $b=2024{,}5$.\n\n$T=2a+b=2\\cdot2022+2024{,}5=6068{,}5$\n\nVậy $T=6068{,}5$."
+  },
+  {
+   "m": "T1110000001628",
+   "mu": "a) $a=-3$. b) $a=-3$.",
+   "tail": "iên tục trên các khoảng $(-\\infty;-2)$ và $(-2;+\\infty)$.\n\nDo đó $f$ liên tục trên $\\mathbb{R}$ khi và chỉ khi $f$ liên tục tại $x=-2$, tức $a=-3$.\n\nVậy $a=-3$."
+  }
+ ],
+ "khongGiai": [
+  "T1110000001013",
+  "T1110000001014",
+  "T1110000004027",
+  "T111000000998"
+ ]
+}

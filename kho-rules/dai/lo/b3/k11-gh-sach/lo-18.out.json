@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "T1110000003009",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Tham số nằm ở 1 nhánh\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "tham số chỉ nằm ở 1 nhánh"
+ },
+ {
+  "ma_cau": "T1110000001811",
+  "dang_bai_id": "NDB01149",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Chứng minh giới hạn dãy bằng định nghĩa hoặc nguyên lí kẹp\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Chứng minh lim u_n=a bằng lim(u_n-a)=0"
+ },
+ {
+  "ma_cau": "T1110000002168",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"0/0 phân thức hữu tỉ: phân tích nhân tử\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Triệt nhân tử chung x-x_0."
+ },
+ {
+  "ma_cau": "T1110000002861",
+  "dang_bai_id": "NDB01183",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Giới hạn ±∞ khi x→±∞ của đa thức hoặc phân thức\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Dùng x^k chẵn hoặc lẻ khi x→-∞."
+ },
+ {
+  "ma_cau": "T1110000002075",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"0/0 phân thức hữu tỉ: phân tích nhân tử\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Triệt nhân tử chung x-x_0."
+ },
+ {
+  "ma_cau": "T1110000002602",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Hiệu hai căn hoặc căn trừ đa thức (∞-∞)\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Nhân và chia cho biểu thức liên hợp."
+ },
+ {
+  "ma_cau": "T1110000001874",
+  "dang_bai_id": "NDB01157",
+  "chac": "vua",
+  "ly_do": "Tổng cấp số cộng dưới căn rồi chia n^2; hợp dạng tổng n số hạng lẫn dạng căn dưới dấu thương, lấy dạng sau.",
+  "can_cu": "Chia tử và mẫu cho n, chú ý √(n²)=n."
+ },
+ {
+  "ma_cau": "T1110000002615",
+  "dang_bai_id": "NDB01159",
+  "chac": "vua",
+  "ly_do": "Căn bậc ba (và bậc hai) trong thương, đưa n ra ngoài căn; hợp dạng căn dưới dấu thương lẫn căn bậc ba, lấy dạng sau.",
+  "can_cu": "$\\sqrt[3]{n^3+cn^2}=n\\sqrt[3]{1+\\dfrac{c}{n}}$"
+ },
+ {
+  "ma_cau": "T1110000002195",
+  "dang_bai_id": "NDB01177",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Điều kiện tồn tại giới hạn: trái bằng phải\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Kết luận lim tồn tại hay không, tìm tham số để tồn tại."
+ },
+ {
+  "ma_cau": "T1110000004020",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Thương các luỹ thừa aⁿ, bⁿ\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Chia tử và mẫu cho luỹ thừa có cơ số lớn nhất."
+ },
+ {
+  "ma_cau": "T1110000001753",
+  "dang_bai_id": "NDB01153",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Phân thức chứa tham số\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Tìm tham số để giới hạn bằng giá trị cho trước"
+ },
+ {
+  "ma_cau": "T1110000003029",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Phân thức cùng bậc hoặc tử bậc thấp hơn\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000003095",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Hiệu hai căn hoặc căn trừ đa thức (∞-∞)\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Nhân và chia cho biểu thức liên hợp."
+ },
+ {
+  "ma_cau": "T1110000002899",
+  "dang_bai_id": "NDB01201",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"PT chứa tham số luôn có nghiệm\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Chọn a,b không phụ thuộc tham số sao cho f(a)f(b)<0."
+ },
+ {
+  "ma_cau": "T1110000002795",
+  "dang_bai_id": "NDB01179",
+  "chac": "vua",
+  "ly_do": "x→-∞ với √(x²)=-x rồi rút x; hợp dạng căn khi x→-∞ lẫn dạng ∞-∞, giữ dạng đầu vì thiếu chứng cứ độc lập.",
+  "can_cu": "Đưa |x| ra ngoài căn, √(x²)=-x khi x<0."
+ },
+ {
+  "ma_cau": "T1110000001915",
+  "dang_bai_id": "NDB01161",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Giới hạn ±∞ bằng cách rút luỹ thừa cao nhất\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "rút n² hoặc n, dùng quy tắc tích."
+ },
+ {
+  "ma_cau": "T1110000001953",
+  "dang_bai_id": "NDB01172",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"0/0 có một căn thức: nhân liên hợp\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Nhân tử và mẫu với biểu thức liên hợp."
+ },
+ {
+  "ma_cau": "T1110000002695",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Thay trực tiếp và quy tắc tổng, hiệu, tích, thương\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Hàm xác định tại x_0, mẫu khác 0."
+ },
+ {
+  "ma_cau": "T1110000002730",
+  "dang_bai_id": "NDB01178",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Phân thức hữu tỉ khi x→±∞\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Chia tử và mẫu cho luỹ thừa cao nhất của x."
+ },
+ {
+  "ma_cau": "T1110000001920",
+  "dang_bai_id": "NDB01160",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Nhận biết dãy có giới hạn +∞ hoặc -∞\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "lim n^k, lim qⁿ với q>1"
+ },
+ {
+  "ma_cau": "T1110000001979",
+  "dang_bai_id": "NDB01168",
+  "chac": "vua",
+  "ly_do": "Chứng minh giới hạn khi x→+∞ bằng dãy và kẹp |sin x|≤1; bản đồ thiếu dạng kẹp cho hàm số, gần nhất dạng dùng dãy x_n.",
+  "can_cu": "Lấy dãy x_n≠ x_0, x_n→ x_0, tính f(x_n)."
+ },
+ {
+  "ma_cau": "T1110000001927",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Thương các luỹ thừa aⁿ, bⁿ\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Chia tử và mẫu cho luỹ thừa có cơ số lớn nhất."
+ },
+ {
+  "ma_cau": "T1110000002110",
+  "dang_bai_id": "NDB01170",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Nhận biết khẳng định đúng về giới hạn\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "cho lim f, lim g tính giới hạn biểu thức"
+ },
+ {
+  "ma_cau": "T1110000002142",
+  "dang_bai_id": "NDB01173",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"0/0 có hai căn thức, căn bậc ba\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Tách thành hiệu rồi liên hợp từng phần."
+ },
+ {
+  "ma_cau": "T1110000002808",
+  "dang_bai_id": "NDB01172",
+  "chac": "vua",
+  "ly_do": "0/0 có √(x²-9), giản ước bằng cách biểu diễn x-3 qua căn; không hẳn nhân liên hợp nên gần dạng một căn thức.",
+  "can_cu": "Nhân tử và mẫu với biểu thức liên hợp."
+ },
+ {
+  "ma_cau": "T1110000001659",
+  "dang_bai_id": "NDB01152",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Phân thức tử bậc cao hơn mẫu (±∞)\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Rút luỹ thừa cao nhất, xét dấu hệ số."
+ },
+ {
+  "ma_cau": "T1110000003159",
+  "dang_bai_id": "NDB01190",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Khẳng định đúng về giới hạn và liên tục tại điểm\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "hàm nào gián đoạn tại điểm cho trước."
+ },
+ {
+  "ma_cau": "T1110000002233",
+  "dang_bai_id": "NDB01862",
+  "chac": "vua",
+  "ly_do": "0/0 có căn và sin, cos; hợp dạng một căn thức lẫn dạng hàm lượng giác, lấy dạng sau.",
+  "can_cu": "thì đổi biến $t=x-x_0\\to0$"
+ },
+ {
+  "ma_cau": "T1110000002933",
+  "dang_bai_id": "NDB01190",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Khẳng định đúng về giới hạn và liên tục tại điểm\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "hàm nào gián đoạn tại điểm cho trước."
+ },
+ {
+  "ma_cau": "T1110000002567",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Căn thức dưới dấu thương, đưa n ra ngoài căn\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Chia tử và mẫu cho n, chú ý √(n²)=n."
+ },
+ {
+  "ma_cau": "T1110000001916",
+  "dang_bai_id": "NDB01152",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Phân thức tử bậc cao hơn mẫu (±∞)\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Rút luỹ thừa cao nhất, xét dấu hệ số."
+ },
+ {
+  "ma_cau": "T1110000002152",
+  "dang_bai_id": "NDB01186",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Điểm dịch chuyển trong hình học\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Lập hàm theo tham số rồi lấy giới hạn."
+ },
+ {
+  "ma_cau": "T1110000002738",
+  "dang_bai_id": "NDB01180",
+  "chac": "vua",
+  "ly_do": "Hiệu √(x²-2x) và x√2 khi x→+∞, rút x; hợp dạng căn khi x→∞ lẫn dạng ∞-∞, lấy dạng sau.",
+  "can_cu": "Nhân liên hợp đưa về ∞/∞."
+ },
+ {
+  "ma_cau": "T1110000002554",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Thương các luỹ thừa aⁿ, bⁿ\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Chia tử và mẫu cho luỹ thừa có cơ số lớn nhất."
+ },
+ {
+  "ma_cau": "T1110000002627",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Hiệu hai căn hoặc căn trừ đa thức (∞-∞)\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Nhân và chia cho biểu thức liên hợp."
+ },
+ {
+  "ma_cau": "T1110000001816",
+  "dang_bai_id": "NDB01149",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Chứng minh giới hạn dãy bằng định nghĩa hoặc nguyên lí kẹp\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Chứng minh lim u_n=a bằng lim(u_n-a)=0"
+ },
+ {
+  "ma_cau": "T1110000002616",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Hiệu hai căn hoặc căn trừ đa thức (∞-∞)\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Nhân và chia cho biểu thức liên hợp."
+ },
+ {
+  "ma_cau": "T1110000002346",
+  "dang_bai_id": "NDB01199",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"PT có ít nhất một nghiệm trong khoảng\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Hàm liên tục trên [a;b] và f(a)f(b)<0."
+ },
+ {
+  "ma_cau": "T111000000961",
+  "dang_bai_id": "NDB01182",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Giới hạn dạng L/0 (xét dấu mẫu)\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Giới hạn một bên bằng +∞ hoặc -∞."
+ },
+ {
+  "ma_cau": "T111000000982",
+  "dang_bai_id": "NDB01190",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Khẳng định đúng về giới hạn và liên tục tại điểm\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "hàm nào gián đoạn tại điểm cho trước."
+ },
+ {
+  "ma_cau": "T1110000002082",
+  "dang_bai_id": "NDB01182",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Giới hạn dạng L/0 (xét dấu mẫu)\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Giới hạn một bên bằng +∞ hoặc -∞."
+ },
+ {
+  "ma_cau": "T1110000003033",
+  "dang_bai_id": "NDB01151",
+  "chac": "vua",
+  "ly_do": "Thương hai dãy cùng về 0 rút gọn thành phân thức cùng bậc; có thể xếp dạng cho giới hạn các dãy thành phần.",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000002883",
+  "dang_bai_id": "NDB01195",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Tìm các khoảng liên tục của hàm sơ cấp\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Đa thức, phân thức, căn, lượng giác, tổng hiệu tích thương hàm liên tục."
+ },
+ {
+  "ma_cau": "T111000000980",
+  "dang_bai_id": "NDB01190",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Khẳng định đúng về giới hạn và liên tục tại điểm\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "hàm nào gián đoạn tại điểm cho trước."
+ },
+ {
+  "ma_cau": "T1110000002240",
+  "dang_bai_id": "NDB01188",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Liên tục tại điểm chia nhánh\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "So giới hạn trái, phải với f(x_0)."
+ },
+ {
+  "ma_cau": "T1110000001833",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Phân thức cùng bậc hoặc tử bậc thấp hơn\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000002108",
+  "dang_bai_id": "NDB01178",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Phân thức hữu tỉ khi x→±∞\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Chia tử và mẫu cho luỹ thừa cao nhất của x."
+ },
+ {
+  "ma_cau": "T1110000001831",
+  "dang_bai_id": "NDB01149",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Chứng minh giới hạn dãy bằng định nghĩa hoặc nguyên lí kẹp\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Chứng minh lim u_n=a bằng lim(u_n-a)=0"
+ },
+ {
+  "ma_cau": "T1110000001912",
+  "dang_bai_id": "NDB01161",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Giới hạn ±∞ bằng cách rút luỹ thừa cao nhất\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "rút n² hoặc n, dùng quy tắc tích."
+ },
+ {
+  "ma_cau": "T1110000002049",
+  "dang_bai_id": "NDB01170",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Nhận biết khẳng định đúng về giới hạn\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "cho lim f, lim g tính giới hạn biểu thức"
+ },
+ {
+  "ma_cau": "T1110000002407",
+  "dang_bai_id": "NDB01197",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Tham số để hàm liên tục trên ℝ hoặc một khoảng\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Điều kiện liên tục tại điểm ghép."
+ },
+ {
+  "ma_cau": "T1110000002606",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Hiệu hai căn hoặc căn trừ đa thức (∞-∞)\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Nhân và chia cho biểu thức liên hợp."
+ },
+ {
+  "ma_cau": "T1110000001698",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Phân thức cùng bậc hoặc tử bậc thấp hơn\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000003058",
+  "dang_bai_id": "NDB01163",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Cấp số nhân lùi vô hạn và tính tổng\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Kiểm |q|<1, tính S=(u_1)/(1-q)."
+ },
+ {
+  "ma_cau": "T1110000001843",
+  "dang_bai_id": "NDB01159",
+  "chac": "vua",
+  "ly_do": "Căn bậc ba (và bậc hai) trong thương, đưa n ra ngoài căn; hợp dạng căn dưới dấu thương lẫn căn bậc ba, lấy dạng sau.",
+  "can_cu": "$\\sqrt[3]{n^3+cn^2}=n\\sqrt[3]{1+\\dfrac{c}{n}}$"
+ },
+ {
+  "ma_cau": "T1110000002783",
+  "dang_bai_id": "NDB01179",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Biểu thức chứa căn khi x→±∞\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Đưa |x| ra ngoài căn, √(x²)=-x khi x<0."
+ },
+ {
+  "ma_cau": "T1110000002699",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Thay trực tiếp và quy tắc tổng, hiệu, tích, thương\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Hàm xác định tại x_0, mẫu khác 0."
+ },
+ {
+  "ma_cau": "T1110000002927",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Tham số nằm ở 1 nhánh\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "tham số chỉ nằm ở 1 nhánh"
+ },
+ {
+  "ma_cau": "T1110000002048",
+  "dang_bai_id": "NDB01172",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"0/0 có một căn thức: nhân liên hợp\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Nhân tử và mẫu với biểu thức liên hợp."
+ },
+ {
+  "ma_cau": "T1110000002957",
+  "dang_bai_id": "NDB01197",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Tham số để hàm liên tục trên ℝ hoặc một khoảng\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Điều kiện liên tục tại điểm ghép."
+ },
+ {
+  "ma_cau": "T1110000002603",
+  "dang_bai_id": "NDB01159",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Căn bậc ba, liên hợp bậc ba\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Dùng a-b=(a³-b³)/(a²+ab+b²) cho căn bậc ba."
+ },
+ {
+  "ma_cau": "T111000000939",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Phân thức cùng bậc hoặc tử bậc thấp hơn\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000002673",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Thương các luỹ thừa aⁿ, bⁿ\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Chia tử và mẫu cho luỹ thừa có cơ số lớn nhất."
+ },
+ {
+  "ma_cau": "T1110000002595",
+  "dang_bai_id": "NDB01159",
+  "chac": "vua",
+  "ly_do": "Hiệu √ và ∛ trong thương cho giới hạn cho trước, tìm a; hợp dạng phân thức chứa tham số lẫn dạng căn bậc ba, lấy dạng sau.",
+  "can_cu": "Dùng a-b=(a³-b³)/(a²+ab+b²) cho căn bậc ba."
+ },
+ {
+  "ma_cau": "T1110000001691",
+  "dang_bai_id": "NDB01166",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Đại lượng giảm dần hoặc tích luỹ lặp lại\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Lập dãy theo chu kì, chứng minh dần về 0 hoặc tính giá trị ổn định."
+ },
+ {
+  "ma_cau": "T1110000002543",
+  "dang_bai_id": "NDB01153",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Phân thức chứa tham số\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Tìm tham số để giới hạn bằng giá trị cho trước"
+ },
+ {
+  "ma_cau": "T1110000002537",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Phân thức cùng bậc hoặc tử bậc thấp hơn\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000003114",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"0/0 phân thức hữu tỉ: phân tích nhân tử\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Triệt nhân tử chung x-x_0."
+ },
+ {
+  "ma_cau": "T1110000002591",
+  "dang_bai_id": "NDB01159",
+  "chac": "vua",
+  "ly_do": "Căn bậc ba (và bậc hai) trong thương, đưa n ra ngoài căn; hợp dạng căn dưới dấu thương lẫn căn bậc ba, lấy dạng sau.",
+  "can_cu": "$\\sqrt[3]{n^3+cn^2}=n\\sqrt[3]{1+\\dfrac{c}{n}}$"
+ },
+ {
+  "ma_cau": "T1110000002187",
+  "dang_bai_id": "NDB01176",
+  "chac": "cao",
+  "ly_do": "Đề khớp dạng \"Hàm chứa giá trị tuyệt đối hoặc căn tại điểm biên\" theo mô tả và ví dụ của dạng.",
+  "can_cu": "Bỏ dấu giá trị tuyệt đối theo từng bên."
+ }
+]

@@ -1,0 +1,922 @@
+[
+ {
+  "ma_cau": "HHC001574",
+  "loai": "trac_nghiem",
+  "de": "Trong các mệnh đề sau đây, mệnh đề nào sai?",
+  "lua_chon": [
+   "Hai mặt phẳng có một điểm chung thì chúng có vô số điểm chung khác nữa.",
+   "Hai mặt phẳng có một điểm chung thì chúng có một đường thẳng chung duy nhất.",
+   "Hai mặt phẳng phân biệt có một điểm chung thì chúng có một đường thẳng chung duy nhất.",
+   "Hai mặt phẳng cùng đi qua $3$ điểm $A,B,C$ không thẳng hàng thì hai mặt phẳng đó trùng nhau."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Theo tính chất thừa nhận của hình học không gian, nếu hai mặt phẳng phân biệt có một điểm chung thì chúng có một đường thẳng chung duy nhất chứa tất cả các điểm chung của hai mặt phẳng đó.\n\nNếu hai mặt phẳng trùng nhau thì chúng có một điểm chung nhưng có vô số đường thẳng chung.\n\nDo đó, mệnh đề \" Hai mặt phẳng có một điểm chung thì chúng có một đường thẳng chung duy nhất\"{} là sai vì thiếu điều kiện hai mặt phẳng phân biệt.\n\nVậy mệnh đề sai là phương án B.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001576",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có đáy là hình thang $ABCD$ ($\\text{AB\\parallel CD}$). Khẳng định nào sau đây sai?",
+  "lua_chon": [
+   "Hình chóp $S.ABCD$ có $4$ mặt bên.",
+   "Giao tuyến của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$ là $SO$ ($O$ là giao điểm của $AC$ và $BD$).",
+   "Giao tuyến của hai mặt phẳng $\\left(SAD\\right)$ và $\\left(SBC\\right)$ là $SI$ ($I$ là giao điểm của $AD$ và $BC$).",
+   "Giao tuyến của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SAD\\right)$ là đường trung bình của hình thang $ABCD$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Xét các phương án: - Hình chóp $S.ABCD$ có $4$ mặt bên là các tam giác $\\left(SAB\\right)$, $\\left(SBC\\right)$, $\\left(SCD\\right)$, $\\left(SAD\\right)$ nên phương án A đúng.\n\n- Hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$ có điểm chung $S$ và điểm chung $\\text{O=AC\\cap BD}$ nên giao tuyến là đường thẳng $SO$, do đó phương án B đúng.\n\n- Vì $ABCD$ là hình thang với $\\text{AB\\parallel CD}$ nên hai cạnh bên $AD$ và $BC$ cắt nhau tại điểm $I$. Khi đó hai mặt phẳng $\\left(SAD\\right)$ và $\\left",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001579",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có $AB$ cắt $CD$ tại $N$; $AC$ cắt $BD$ tại $E$. Gọi $M$ là trung điểm của $SA$. Giao tuyến của hai mặt phẳng $\\left(MCD\\right)$ và $\\left(SAB\\right)$ là",
+  "lua_chon": [
+   "$SN$.",
+   "$SM$.",
+   "$MN$.",
+   "$ME$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Ta có $\\text{M\\in SA\\subset }\\left(SAB\\right)$ và $M\\in \\left(MCD\\right)$ nên $M$ là điểm chung thứ nhất của hai mặt phẳng $\\left(MCD\\right)$ và $\\left(SAB\\right)$.\n\nTrong mặt phẳng $\\left(ABCD\\right)$, gọi $\\text{N=AB\\cap CD}$.\n\nVì $\\text{N\\in AB\\subset }\\left(SAB\\right)$ và $\\text{N\\in CD\\subset }\\left(MCD\\right)$ nên $N$ là điểm chung thứ hai của hai mặt phẳng $\\left(MCD\\right)$ và $\\left(SAB\\right)$.\n\nVậy giao tuyến của hai mặt phẳng $\\left(MCD\\right)$ và $\\left(SAB\\right)$ là đường thẳng $M",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001582",
+  "loai": "tu_luan",
+  "de": "Cho tứ diện $ABCD$. Gọi $M$là trung điểm cạnh $AB$; $N,P$ lần lượt là điểm thuộc cạnh $AC,BD$ sao cho $AN=2NC$, $BD=3PD$.\n1. [a)] Tìm giao tuyến của $\\left(MNP\\right)$ và $\\left(BCD\\right)$.\n2. [b)] Gọi $Q$ là giao điểm của $CD$ với $\\left(MNP\\right)$. Tính tỉ số $\\dfrac{QC}{QD}$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "1. [a)] Ta có $\\text{P\\in BD\\subset }\\left(BCD\\right)$ và $P\\in \\left(MNP\\right)$ nên $P$ là một điểm chung của hai mặt phẳng $\\left(MNP\\right)$ và $\\left(BCD\\right)$.\n\nTrong mặt phẳng $\\left(ABC\\right)$, xét tam giác $ABC$ có $M$ là trung điểm của $AB$ và $\\text{N\\in AC}$ thỏa mãn $AN=2NC$.\n\nDo $\\dfrac{AM}{MB}=1\\ne 2=\\dfrac{AN}{NC}$ nên hai đường thẳng $MN$ và $BC$ không song song với nhau.\n\nGọi $\\text{E=MN\\cap BC}$.\n\nVì $\\text{E\\in MN\\subset }\\left(MNP\\right)$ và $\\text{E\\in BC\\subset }\\left(B",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001586",
+  "loai": "trac_nghiem",
+  "de": "Cho bốn điểm $ABCD$không đồng phẳng. Giao tuyến của mặt phẳng $\\left(ABC\\right)$ và $\\left(ABD\\right)$ là đường thẳng:",
+  "lua_chon": [
+   "$AB$.",
+   "$AC$.",
+   "$BD$.",
+   "$BC$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Hai mặt phẳng $\\left(ABC\\right)$ và $\\left(ABD\\right)$ có hai điểm chung phân biệt là $A$ và $B$.\n\nDo đó, giao tuyến của hai mặt phẳng $\\left(ABC\\right)$ và $\\left(ABD\\right)$ là đường thẳng $AB$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001587",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có đáy là $ABCD$ hình thang với $\\text{AB\\parallel CD}$. Giao tuyến của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$ là",
+  "lua_chon": [
+   "Đường thẳng qua $S$ và song song với $AB$ và $CD$.",
+   "Đường thẳng qua $S$ và song song với $AD$ và $BC$.",
+   "Đường thẳng qua $S$ và qua giao điểm của $AD$ và $BC$.",
+   "Đường thẳng qua $S$ và qua giao điểm của $AC$ và $BD$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Xét hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$, ta có:\n\n- Điểm $S$ là điểm chung của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$.\n\n- $AB\\subset \\left(SAB\\right)$ và $CD\\subset \\left(SCD\\right)$.\n\n- $\\text{AB\\parallel CD}$ (do $ABCD$ là hình thang với đáy $AB$ và $CD$).\n\nTheo định lí về giao tuyến của hai mặt phẳng lần lượt chứa hai đường thẳng song song, giao tuyến của $\\left(SAB\\right)$ và $\\left(SCD\\right)$ là đường thẳng $d$ đi qua điểm $S$ và song song với $AB$ và $CD$",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001588",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$. Gọi $I$và $J$ theo thứ tự là trung điểm của $AD$ và $AC$, $G$ là trọng tâm tam giác $BCD$. Giao tuyến của hai mặt phẳng $\\left(GIJ\\right)$ và $\\left(BCD\\right)$ là đường thẳng:",
+  "lua_chon": [
+   "Qua $I$ và song song với $AB$.",
+   "Qua $I$ và song song với $BD$.",
+   "Qua $G$ và song song với $CD$.",
+   "Qua $G$ và song song với $BC$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Xét hai mặt phẳng $\\left(GIJ\\right)$ và $\\left(BCD\\right)$, ta có:\n\n- Điểm $G$ là điểm chung của hai mặt phẳng $\\left(GIJ\\right)$ và $\\left(BCD\\right)$ (do $G\\in \\left(GIJ\\right)$ và $G$ là trọng tâm tam giác $BCD$ nên $G\\in \\left(BCD\\right)$).\n\n- Trong tam giác $ACD$, $I$ là trung điểm của $AD$ và $J$ là trung điểm của $AC$ nên $IJ$ là đường trung bình của tam giác $ACD$, suy ra $\\text{IJ\\parallel CD}$.\n\n- Mặt khác, $IJ\\subset \\left(GIJ\\right)$ và $CD\\subset \\left(BCD\\right)$.\n\nTheo định lí gia",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001595",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình bình hành. Gọi $d$ là giao tuyến của hai mặt phẳng $\\left(SAD\\right)$ và $\\left(SBC\\right)$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$d$ qua $S$ và song song với $DC$.",
+   "$d$ qua $S$ và song song với $AB$.",
+   "$d$ qua $S$ và song song với $BC$.",
+   "$d$ qua $S$ và song song với $BD$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Ta có:\n\n- $S\\in \\left(SAD\\right)\\cap \\left(SBC\\right)$ nên $S$ là điểm chung của hai mặt phẳng $\\left(SAD\\right)$ và $\\left(SBC\\right)$.\n\n- $AD\\subset \\left(SAD\\right)$ và $BC\\subset \\left(SBC\\right)$.\n\n- $\\text{AD\\parallel BC}$ (vì $ABCD$ là hình bình hành).\n\nTheo định lí về giao tuyến của hai mặt phẳng chứa hai đường thẳng song song, giao tuyến $d$ của $\\left(SAD\\right)$ và $\\left(SBC\\right)$ là đường thẳng đi qua $S$ và song song với $AD$ và $BC$.\n\nVậy $d$ đi qua $S$ và song song với $BC$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001600",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có đáy là $ABCD$ hình thang ($\\text{AB\\parallel CD}$). Giao tuyến của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$ là",
+  "lua_chon": [
+   "Đường thẳng qua $S$ và giao điểm của $AD$ và $BC$.",
+   "Đường thẳng qua $S$ và song song với $AD$ và $BC$.",
+   "Đường thẳng qua $S$ và giao điểm của $AC$ và $BD$.",
+   "Đường thẳng qua $S$ và song song với $AB$ và $CD$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Ta có $S$ là điểm chung của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$.\n\nMặt khác, $\\begin{cases} AB\\subset \\left(SAB\\right) \\\\ CD\\subset \\left(SCD\\right) \\\\ \\text{AB\\parallel CD} \\end{cases}$\n\nTheo tính chất giao tuyến của hai mặt phẳng lần lượt chứa hai đường thẳng song song, giao tuyến của $\\left(SAB\\right)$ và $\\left(SCD\\right)$ là đường thẳng $d$ đi qua $S$ và song song với $AB,CD$.\n\nDo đó, giao tuyến cần tìm là đường thẳng qua $S$ và song song với $AB$ và $CD$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001601",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có $\\text{AC\\cap BD=M}$ và $\\text{AB\\cap CD=N}$. Giao tuyến của mặt phẳng $\\left(SAC\\right)$ và mặt phẳng $\\left(SBD\\right)$ là đường thẳng",
+  "lua_chon": [
+   "$SC$.",
+   "$SM$.",
+   "$SN$.",
+   "$SB$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Ta có $S$ là điểm chung thứ nhất của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$.\n\nMặt khác, vì $\\text{M=AC\\cap BD}$ nên\n\n$\\begin{cases} \\text{M\\in AC\\subset }\\left(SAC\\right)\\Rightarrow M\\in \\left(SAC\\right) \\\\ \\text{M\\in BD\\subset }\\left(SBD\\right)\\Rightarrow M\\in \\left(SBD\\right) \\end{cases}$\n\nSuy ra $M$ là điểm chung thứ hai của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$.\n\nVậy giao tuyến của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$ là đường thẳng $SM$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001605",
+  "loai": "tra_loi_ngan",
+  "de": "Cho tứ diện $ABCD$có $AB=4$, $CD=6$. Gọi $\\left(\\alpha \\right)$ là một mặt phẳng song song với $AB$ và $CD$. Biết $\\left(\\alpha \\right)$ cắt các mặt tứ diện $ABCD$ tạo thành một hình thoi, chu vi của hình thoi đó bằng bao nhiêu?",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "9.6",
+  "loi_giai": "Vì $\\left(\\alpha \\right)\\parallel AB$ và $\\left(\\alpha \\right)\\parallel CD$ nên mặt phẳng $\\left(\\alpha \\right)$ cắt các mặt của tứ diện $ABCD$ theo các giao tuyến song song với $AB$ và $CD$:\n\n- Cắt mặt phẳng $\\left(ABC\\right)$ theo giao tuyến $\\text{MN\\parallel AB}$ ($\\text{M\\in AC,N\\in BC}$).\n\n- Cắt mặt phẳng $\\left(BCD\\right)$ theo giao tuyến $\\text{NP\\parallel CD}$ ($\\text{P\\in BD}$).\n\n- Cắt mặt phẳng $\\left(ABD\\right)$ theo giao tuyến $\\text{PQ\\parallel AB}$ ($\\text{Q\\in AD}$).\n\n- Cắt mặt p",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001610",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình bình hành. Gọi $M,N$ lần lượt là trung điểm của đoạn thẳng $SA$ và $SB$.\n1. [a.] Chứng minh hai đường thẳng $MN$ và $CD$ song song nhau.\n2. [b.] Tìm giao tuyến của mặt phẳng $\\left(CMN\\right)$ và mặt phẳng $\\left(SBD\\right)$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "1. [a.] Xét tam giác $SAB$, ta có $M$ là trung điểm của $SA$ và $N$ là trung điểm của $SB$.\n\nSuy ra $MN$ là đường trung bình của tam giác $SAB$, do đó $\\text{MN\\parallel AB}$.\n\nVì tứ giác $ABCD$ là hình bình hành nên $\\text{AB\\parallel CD}$.\n\nDo đó, $\\text{MN\\parallel CD}$ (vì cùng song song với $AB$).\n\n2. [b.] Tìm giao tuyến của mặt phẳng $\\left(CMN\\right)$ và mặt phẳng $\\left(SBD\\right)$:\n\nVì $\\text{MN\\parallel CD}$ nên bốn điểm $C,M,N,D$ cùng thuộc một mặt phẳng, tức là $\\left(CMN\\right)$ chí",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001616",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$có đáy là hình bình hành $ABCD$. Gọi $E$ là trung điểm của $AB$ và $G$ là trọng tâm của tam giác $SAB$. Lấy điểm $M$ trên cạnh $AD$, điểm $N$ trên cạnh $SC$ sao cho $AD=3AM$, $SC=3SN$. a) Tìm giao tuyến của mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$. b) Gọi $P$ là giao điểm của $NG$ và mặt phẳng $\\left(SAD\\right)$. Chứng minh $G$ là trung điểm của $PN$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "a) Tìm giao tuyến của mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$:\n\nTa có $S\\in \\left(SAC\\right)\\cap \\left(SBD\\right)$.\n\nTrong mặt phẳng đáy $\\left(ABCD\\right)$, gọi $O$ là giao điểm của hai đường chéo $AC$ và $BD$.\n\nVì $\\text{O\\in AC\\subset }\\left(SAC\\right)$ và $\\text{O\\in BD\\subset }\\left(SBD\\right)$ nên $O\\in \\left(SAC\\right)\\cap \\left(SBD\\right)$.\n\nVậy giao tuyến của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$ là đường thẳng $SO$.\n\nb) Xác định giao điểm $P$ và chứng minh $",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001617",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$. Gọi $M,N$lần lượt là trung điểm của $BC,CD$. Khi đó, giao tuyến của hai mặt phẳng $\\left(ADM\\right)$ và $\\left(ABN\\right)$ là",
+  "lua_chon": [
+   "$AG$, với $G$ là trọng tâm tam giác $BCD$.",
+   "$BG$, với $G$ là trọng tâm tam giác $BCD$.",
+   "$AM$.",
+   "$AN$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Ta có $A\\in \\left(ADM\\right)$ và $A\\in \\left(ABN\\right)$, nên $A$ là một điểm chung của hai mặt phẳng $\\left(ADM\\right)$ và $\\left(ABN\\right)$.\n\nTrong mặt phẳng $\\left(BCD\\right)$, gọi $G$ là giao điểm của hai đường trung tuyến $DM$ và $BN$.\n\nDo đó, $G$ là trọng tâm của tam giác $BCD$.\n\nVì $\\text{G\\in DM\\subset }\\left(ADM\\right)$ nên $G\\in \\left(ADM\\right)$.\n\nVì $\\text{G\\in BN\\subset }\\left(ABN\\right)$ nên $G\\in \\left(ABN\\right)$.\n\nSuy ra $G$ là điểm chung thứ hai của hai mặt phẳng $\\left(ADM\\ri",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001618",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Gọi $M,N,P$ lần lượt là trung điểm của $AB,CD,SA$. Giao tuyến của hai mặt phẳng $\\left(MNP\\right)$ và $\\left(SAD\\right)$ là",
+  "lua_chon": [
+   "$NP$.",
+   "Đường thẳng qua $M$ và song song $AC$.",
+   "Đường thẳng qua $P$ và song song $AD$.",
+   "Đường thẳng qua $S$ và song song $AD$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Ta có $P$ là trung điểm của $SA$ nên $\\text{P\\in SA\\subset }\\left(SAD\\right)$ và $P\\in \\left(MNP\\right)$, do đó $P$ là một điểm chung của hai mặt phẳng $\\left(MNP\\right)$ và $\\left(SAD\\right)$.\n\nVì $ABCD$ là hình bình hành nên $\\text{AB\\parallel CD}$ và $AB=CD$.\n\nLại có $M,N$ lần lượt là trung điểm của $AB,CD$ nên $\\text{AM\\parallel DN}$ và $AM=DN=\\dfrac{1}{2}AB$.\n\nSuy ra tứ giác $AMND$ là hình bình hành, do đó $\\text{MN\\parallel AD}$.\n\nHai mặt phẳng $\\left(MNP\\right)$ và $\\left(SAD\\right)$ lần ",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC001622",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình thang ($AD$ là đáy lớn). Gọi $O$ là giao điểm của $AC$ và $BD$, $I$ là giao điểm của $AB$ và $CD$. Giao tuyến của $\\left(SAB\\right)$ và $\\left(SCD\\right)$ là",
+  "lua_chon": [
+   "$\\text{Sx\\parallel AB}$.",
+   "$\\text{Sy\\parallel AD}$.",
+   "$SO$.",
+   "$SI$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Ta có $S\\in \\left(SAB\\right)\\cap \\left(SCD\\right)$.\n\nTrong mặt phẳng đáy $\\left(ABCD\\right)$, gọi $\\text{I=AB\\cap CD}$.\n\nVì $\\text{I\\in AB}$ và $AB\\subset \\left(SAB\\right)$ nên $I\\in \\left(SAB\\right)$.\n\nVì $\\text{I\\in CD}$ và $CD\\subset \\left(SCD\\right)$ nên $I\\in \\left(SCD\\right)$.\n\nSuy ra $I\\in \\left(SAB\\right)\\cap \\left(SCD\\right)$.\n\nDo đó, giao tuyến của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$ là đường thẳng $SI$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001623",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có đáy là hình chữ nhật $ABCD$ tâm $O$, điểm $M$ nằm trên cạnh $SB$ sao cho $SB=4SM$. Giao điểm của đường thẳng $SD$ và mặt phẳng $\\left(ACM\\right)$ nằm trên đường thẳng nào sau đây:",
+  "lua_chon": [
+   "$OM$.",
+   "$AM$.",
+   "$CM$.",
+   "$AC$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Xét mặt phẳng $\\left(SBD\\right)$ chứa đường thẳng $SD$.\n\nTa tìm giao tuyến của hai mặt phẳng $\\left(ACM\\right)$ và $\\left(SBD\\right)$:\n\nTa có $\\text{M\\in SB\\subset }\\left(SBD\\right)$ và $M\\in \\left(ACM\\right)$ nên $M\\in \\left(ACM\\right)\\cap \\left(SBD\\right)$.\n\nTrong mặt phẳng đáy $\\left(ABCD\\right)$, gọi $\\text{O=AC\\cap BD}$.\n\nVì $\\text{O\\in AC\\subset }\\left(ACM\\right)$ và $\\text{O\\in BD\\subset }\\left(SBD\\right)$ nên $O\\in \\left(ACM\\right)\\cap \\left(SBD\\right)$.\n\nSuy ra $\\left(ACM\\right)\\cap \\le",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001624",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có đáy là hình bình hành $ABCD$. Giao tuyến của hai mặt phẳng $\\left(SAD\\right)$ và $\\left(SBC\\right)$ là đường thẳng song song với đường thẳng nào sau đây?",
+  "lua_chon": [
+   "$BD$.",
+   "$SC$.",
+   "$AD$.",
+   "$AC$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Hai mặt phẳng $\\left(SAD\\right)$ và $\\left(SBC\\right)$ có điểm chung là $S$.\n\nMặt khác, $AD\\subset \\left(SAD\\right)$, $BC\\subset \\left(SBC\\right)$ và $\\text{AD\\parallel BC}$ (do $ABCD$ là hình bình hành).\n\nTheo định lí về giao tuyến của hai mặt phẳng chứa hai đường thẳng song song, giao tuyến của $\\left(SAD\\right)$ và $\\left(SBC\\right)$ là đường thẳng $d$ đi qua $S$ và song song với $AD$ (và $BC$).\n\nVậy giao tuyến của hai mặt phẳng song song với đường thẳng $AD$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001630",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình bình hành tâm $O$. Gọi $M$ là trung điểm của $SA$. a) Chứng minh: $\\text{MO\\parallel SC}$. b) Tìm giao điểm $K$ của $SD$ và $\\left(MBC\\right)$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "a) Xét tam giác $SAC$:\n\nVì $ABCD$ là hình bình hành tâm $O$ nên $O$ là trung điểm của $AC$.\n\nMặt khác, $M$ là trung điểm của $SA$ (giả thiết).\n\nDo đó, $MO$ là đường trung bình của tam giác $SAC$.\n\nSuy ra $\\text{MO\\parallel SC}$. b) Ta có $ABCD$ là hình bình hành nên $\\text{AD\\parallel BC}$.\n\nXét hai mặt phẳng $\\left(MBC\\right)$ và $\\left(SAD\\right)$ có:\n\n• $M$ là điểm chung của hai mặt phẳng;\n\n• $\\left(MBC\\right)$ chứa đường thẳng $BC$, $\\left(SAD\\right)$ chứa đường thẳng $AD$ mà $\\text{BC\\paral",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001634",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có $I$ là giao điểm hai đường chéo của tứ giác $ABCD$ như hình bên. Giao tuyến của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$ là",
+  "lua_chon": [
+   "đường thẳng $SA$.",
+   "đường thẳng $SC$.",
+   "đường thẳng $SI$.",
+   "đường thẳng $CD$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Ta có $S\\in \\left(SAC\\right)$ và $S\\in \\left(SBD\\right)$ nên $S$ là một điểm chung của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$.\n\nTrong mặt phẳng $\\left(ABCD\\right)$, ta có $\\text{I=AC\\cap BD}$.\n\nVì $\\text{I\\in AC\\subset }\\left(SAC\\right)$ nên $I\\in \\left(SAC\\right)$.\n\nVì $\\text{I\\in BD\\subset }\\left(SBD\\right)$ nên $I\\in \\left(SBD\\right)$.\n\nSuy ra $I$ là điểm chung thứ hai của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$.\n\nVậy giao tuyến của hai mặt phẳng $\\left(SAC\\righ",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC001636",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$có đáy là hình thang, đáy lớn là $AB$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "a) Tìm giao tuyến của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$.\nb) Gọi $M$ là trung điểm của cạnh $SB$. Tìm giao điểm của đường thẳng $DM$ và mp $\\left(SAC\\right)$.\n\na) Tìm giao tuyến của $\\left(SAB\\right)$ và $\\left(SCD\\right)$:\n\nTa có $S$ là điểm chung thứ nhất của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$.\n\nMặt khác, $AB\\subset \\left(SAB\\right)$, $CD\\subset \\left(SCD\\right)$ và $\\text{AB\\parallel CD}$ (do $ABCD$ là hình thang với đáy lớn $AB$).\n\nDo đó, giao tuyến củ",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001637",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình bình hành. Gọi $M,N$ lần lượt là trung điểm của $AD$ và $BC$. Giao tuyến của hai mặt phẳng $\\left(SMN\\right)$ và $\\left(SAC\\right)$ là:",
+  "lua_chon": [
+   "$SF$ ($F$ là trung điểm $CD$).",
+   "$SG$ ($G$ là trung điểm $AB$).",
+   "$SD$.",
+   "$SO$ ($O$ là tâm hình bình hành $ABCD$)."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Hai mặt phẳng $\\left(SMN\\right)$ và $\\left(SAC\\right)$ có điểm chung thứ nhất là $S$.\n\nTrong mặt phẳng đáy $\\left(ABCD\\right)$, gọi $O$ là giao điểm của hai đường chéo $AC$ và $BD$.\n\nVì $ABCD$ là hình bình hành nên $O$ là tâm đối xứng của hình bình hành $ABCD$.\n\nMặt khác, $M$ và $N$ lần lượt là trung điểm của hai cạnh đối diện $AD$ và $BC$ nên đoạn thẳng $MN$ đi qua tâm $O$ và $O$ là trung điểm của $MN$.\n\nDo đó, $\\text{O=MN\\cap AC}$.\n\nTa có:\n\n$\\begin{cases} \\text{O\\in MN\\subset }\\left(SMN\\right)",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC001638",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp tứ giác $S.ABCD$, $M$là một điểm trên cạnh $SC$, $N$ là trên cạnh $BC$. Tìm giao tuyến của mặt phẳng $\\left(SCD\\right)$ và mặt phẳng $\\left(AMN\\right)$.",
+  "lua_chon": [
+   "Đường thẳng $MK$, trong đó $\\text{K=AB\\cap CD}$.",
+   "Đường thẳng $MN$.",
+   "Đường thẳng $SE$, trong đó $\\text{E=AN\\cap CD}$.",
+   "Đường thẳng $ME$, trong đó $\\text{E=AN\\cap CD}$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Ta tìm hai điểm chung phân biệt của hai mặt phẳng $\\left(SCD\\right)$ và $\\left(AMN\\right)$:\n\n- Ta có $\\text{M\\in SC\\subset }\\left(SCD\\right)$ và $M\\in \\left(AMN\\right)$, nên $M$ là một điểm chung của $\\left(SCD\\right)$ và $\\left(AMN\\right)$.\n\n- Trong mặt phẳng đáy $\\left(ABCD\\right)$, gọi $E$ là giao điểm của hai đường thẳng $AN$ và $CD$ ($\\text{E=AN\\cap CD}$).\n\nKhi đó:\n\n$\\begin{cases} \\text{E\\in AN\\subset }\\left(AMN\\right)\\Rightarrow E\\in \\left(AMN\\right) \\\\ \\text{E\\in CD\\subset }\\left(SCD\\righ",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC001639",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có $\\text{AC\\cap BD=M}$ và $\\text{AB\\cap CD=N}$. Giao tuyến của mặt phẳng $\\left(SAB\\right)$ và mặt phẳng $\\left(SCD\\right)$ là đường thẳng",
+  "lua_chon": [
+   "$MN$.",
+   "$SA$.",
+   "$SM$.",
+   "$SN$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$ có điểm chung thứ nhất là $S$.\n\nTrong mặt phẳng đáy $\\left(ABCD\\right)$, gọi $\\text{N=AB\\cap CD}$.\n\nTa có:\n\n$\\begin{cases} \\text{N\\in AB\\subset }\\left(SAB\\right)\\Rightarrow N\\in \\left(SAB\\right) \\\\ \\text{N\\in CD\\subset }\\left(SCD\\right)\\Rightarrow N\\in \\left(SCD\\right) \\end{cases}$\n\nSuy ra $N$ là điểm chung thứ hai của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$.\n\nVậy giao tuyến của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\r",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC001642",
+  "loai": "trac_nghiem",
+  "de": "Cho hình tứ diện $ABCD$. Giao tuyến của hai mặt phẳng $\\left(ABC\\right)$và $\\left(CDB\\right)$ là đường thẳng.",
+  "lua_chon": [
+   "$BD$.",
+   "$BC$.",
+   "$AB$.",
+   "$CD$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Hai mặt phẳng $\\left(ABC\\right)$ và $\\left(CDB\\right)$ có hai điểm chung phân biệt là $B$ và $C$.\n\nDo đó, giao tuyến của hai mặt phẳng $\\left(ABC\\right)$ và $\\left(CDB\\right)$ là đường thẳng $BC$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001644",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình bình hành có $O$ là giao điểm của hai đường chéo $AC$ và $BD$, gọi $M$ là trung điểm của $SC$. Tìm giao điểm của $AM$ và mặt phẳng $\\left(SBD\\right)$?",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "Xét mặt phẳng $\\left(SAC\\right)$ chứa đường thẳng $AM$.\n\nTa có $\\text{O=AC\\cap BD}$, do đó $\\text{O\\in AC\\subset }\\left(SAC\\right)$ và $\\text{O\\in BD\\subset }\\left(SBD\\right)$.\n\nSuy ra $SO$ là giao tuyến của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$.\n\nTrong mặt phẳng $\\left(SAC\\right)$, gọi $I$ là giao điểm của $AM$ và $SO$.\n\nVì $\\text{I\\in SO}$ mà $SO\\subset \\left(SBD\\right)$ nên $I\\in \\left(SBD\\right)$.\n\nLại có $\\text{I\\in AM}$, do đó $I=AM\\cap \\left(SBD\\right)$.\n\nMặt khác, trong ",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001645",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình bình hành. Gọi $M$ là trung điểm của $SC$, $\\left(P\\right)$ là mặt phẳng qua $AM$ và song song với $BD$. Gọi $E,F$ lần lượt là giao điểm của $\\left(P\\right)$ với các cạnh $SB$ và $SD$, $K$ là giao điểm của $ME$ và $CB$, $J$ là giao điểm của $MF$ và $CD$. Chứng minh $3$ điểm $K,A,J$ nằm trên đường thẳng song song với $EF$ và tìm tỉ số $\\dfrac{EF}{KJ}$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "Trong mặt phẳng $\\left(SAC\\right)$, gọi $\\text{O=AC\\cap BD}$ và $\\text{I=AM\\cap SO}$.\n\nVì $ABCD$ là hình bình hành nên $O$ là trung điểm của $AC$, do đó $SO$ là đường trung tuyến của tam giác $SAC$.\n\nLại có $M$ là trung điểm của $SC$ nên $AM$ là đường trung tuyến của tam giác $SAC$.\n\nSuy ra $I$ là trọng tâm của tam giác $SAC$, do đó $\\dfrac{SI}{SO}=\\dfrac{2}{3}$.\n\nVì mặt phẳng $\\left(P\\right)$ đi qua $AM$ và song song với $BD$ nên giao tuyến của $\\left(P\\right)$ với $\\left(SBD\\right)$ là đường t",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001647",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình thang có đáy lớn $AB$. Gọi $M$ là trung điểm của $SB$. Tìm: a. Giao tuyến $2$ mặt phẳng $\\left(MAD\\right)$ và $\\left(SBC\\right)$ b. Giao điểm của đường thẳng $DM$ và $\\left(SAC\\right)$",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "a) Tìm giao tuyến của hai mặt phẳng $\\left(MAD\\right)$ và $\\left(SBC\\right)$:\n\n- Ta có $M$ là trung điểm của $SB$ nên $\\text{M\\in SB\\subset }\\left(SBC\\right)$ và $M\\in \\left(MAD\\right)$, suy ra $M$ là điểm chung thứ nhất của hai mặt phẳng $\\left(MAD\\right)$ và $\\left(SBC\\right)$.\n\n- Trong mặt phẳng đáy $\\left(ABCD\\right)$, do $ABCD$ là hình thang với đáy lớn $AB$ ($\\text{AB\\parallel CD}$ và $AB>CD$) nên hai đường thẳng $AD$ và $BC$ không song song. Gọi $\\text{E=AD\\cap BC}$.\n\nKhi đó:\n\n$\\begin{cas",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001648",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$. Trên các cạnh $AD$và $CD$ lấy hai điểm $M$ và $N$ sao cho $AM=2MD$ và $CN=ND$. Giao tuyến của mặt phẳng $\\left(BMN\\right)$ và mặt phẳng $\\left(ABD\\right)$ là đường thẳng nào dưới đây?",
+  "lua_chon": [
+   "$BN$.",
+   "$MN$.",
+   "$AN$.",
+   "$BM$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Ta có $B$ là điểm chung của hai mặt phẳng $\\left(BMN\\right)$ và $\\left(ABD\\right)$.\n\nMặt khác, $\\text{M\\in AD\\subset }\\left(ABD\\right)$ và $M\\in \\left(BMN\\right)$ nên $M$ là điểm chung thứ hai của hai mặt phẳng $\\left(BMN\\right)$ và $\\left(ABD\\right)$.\n\nVậy giao tuyến của $\\left(BMN\\right)$ và $\\left(ABD\\right)$ là đường thẳng $BM$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC001649",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình bình hành. Gọi $d$ là giao tuyến của hai mặt phẳng $\\left(SAD\\right)$ và $\\left(SBC\\right)$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$d$ qua $S$ và song song với $BC$.",
+   "$d$ qua $S$ và song song với $DC$.",
+   "$d$ qua $S$ và song song với $BD$.",
+   "$d$ qua $S$ và song song với $AB$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Hai mặt phẳng $\\left(SAD\\right)$ và $\\left(SBC\\right)$ có điểm chung là $S$.\n\nMặt khác, ta có $AD\\subset \\left(SAD\\right)$, $BC\\subset \\left(SBC\\right)$ và $\\text{AD\\parallel BC}$ (do tứ giác $ABCD$ là hình bình hành).\n\nTheo định lí về giao tuyến của hai mặt phẳng chứa hai đường thẳng song song, giao tuyến $d$ của $\\left(SAD\\right)$ và $\\left(SBC\\right)$ là đường thẳng đi qua $S$ và song song với $AD$ và $BC$.\n\nVậy $d$ đi qua $S$ và song song với $BC$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC001655",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có đáy là hình thang $ABCD$ ($\\text{AD\\parallel BC}$). Gọi $M$ là trung điểm của $CD$. Giao tuyến của hai mặt phẳng $\\left(SMB\\right)$ và $\\left(SAC\\right)$ là đường thẳng:",
+  "lua_chon": [
+   "$SP$ ($P$ là giao điểm của đường thẳng $AB$ và đường thẳng $CD$).",
+   "$SJ$ ($J$ là giao điểm của đường thẳng $AM$ và đường thẳng $BD$).",
+   "$SI$ ($I$ là giao điểm của đường thẳng $AC$ và đường thẳng $BM$).",
+   "$SO$ ($O$ là giao điểm của đường thẳng $AC$ và đường thẳng $BD$)."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Ta có $S\\in \\left(SMB\\right)\\cap \\left(SAC\\right)$, do đó $S$ là một điểm chung của hai mặt phẳng $\\left(SMB\\right)$ và $\\left(SAC\\right)$.\n\nTrong mặt phẳng đáy $\\left(ABCD\\right)$, gọi $\\text{I=AC\\cap BM}$.\n\nVì $\\text{I\\in BM}$ mà $BM\\subset \\left(SMB\\right)$ nên $I\\in \\left(SMB\\right)$.\n\nVì $\\text{I\\in AC}$ mà $AC\\subset \\left(SAC\\right)$ nên $I\\in \\left(SAC\\right)$.\n\nSuy ra $I\\in \\left(SMB\\right)\\cap \\left(SAC\\right)$, hay $I$ là điểm chung thứ hai của hai mặt phẳng $\\left(SMB\\right)$ và $\\le",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001658",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$. Gọi $E$và $F$ lần lượt là trung điểm của đoạn thẳng $AB$ và $CD$. Gọi $G$ là trọng tâm của tam giác $BCD$. Giao điểm của đường thẳng $EG$ và mặt phẳng $\\left(ACD\\right)$ là:",
+  "lua_chon": [
+   "Giao điểm của đường thẳng $EG$ và đường thẳng $CD$.",
+   "Điểm $F$.",
+   "Giao điểm của đường thẳng $EG$ và đường thẳng $AC$.",
+   "Giao điểm của đường thẳng $EG$ và đường thẳng $AF$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Vì $F$ là trung điểm của đoạn thẳng $CD$ và $G$ là trọng tâm của tam giác $BCD$ nên $\\text{G\\in BF}$.\n\nXét mặt phẳng $\\left(ABF\\right)$, ta có $\\text{E\\in AB}$ và $\\text{G\\in BF}$, do đó đường thẳng $EG$ nằm trong mặt phẳng $\\left(ABF\\right)$.\n\nMặt khác, xét hai mặt phẳng $\\left(ABF\\right)$ và $\\left(ACD\\right)$, ta có $A$ là điểm chung thứ nhất và $\\text{F\\in CD\\subset }\\left(ACD\\right)$ là điểm chung thứ hai.\n\nDo đó $\\left(ABF\\right)\\cap \\left(ACD\\right)=AF$.\n\nTrong mặt phẳng $\\left(ABF\\right)",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001660",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình bình hành. Gọi $G$ là trọng tâm tam giác $ABC$ và $M$ là trung điểm của cạnh $SC$. Gọi $K$ là giao điểm của đường thẳng $SD$ với mặt phẳng $\\left(AGM\\right)$. Tỉ số $\\dfrac{KS}{KD}$ bằng bao nhiêu?",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "0.5",
+  "loi_giai": "Gọi $\\text{O=AC\\cap BD}$ là tâm hình bình hành $ABCD$ và $N$ là trung điểm của $BC$.\n\nVì $G$ là trọng tâm của tam giác $ABC$ nên $\\text{G\\in AN}$ và $\\text{G\\in BO}$ với $BG=\\dfrac{2}{3}BO$.\n\nTrong mặt phẳng $\\left(SBC\\right)$, có $M$ là trung điểm của $SC$ và $N$ là trung điểm của $BC$, nên $MN$ là đường trung bình của $\\triangle \\text{SBC\\Rightarrow MN\\parallel SB}$.\n\nVì $\\text{N\\in AG\\subset }\\left(AGM\\right)$ nên $MN\\subset \\left(AGM\\right)$.\n\nXét hai mặt phẳng $\\left(AGM\\right)$ và $\\left(S",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001661",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình bình hành. Gọi $M$ là trung điểm của cạnh $SA$. Trên cạnh $SD$ lấy điểm $N$ sao cho $SN=2ND$. Gọi $G$ là trọng tâm của tam giác $SCD$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "a) Tìm giao tuyến của hai mặt phẳng $\\left(BMN\\right)$ và $\\left(ABD\\right)$.\nb) Chứng minh đường thẳng $GN$ song song với mặt phẳng $\\left(SAB\\right)$.\n\na) Ta có $B\\in \\left(BMN\\right)\\cap \\left(ABD\\right)$ nên $B$ là một điểm chung của hai mặt phẳng $\\left(BMN\\right)$ và $\\left(ABD\\right)$.\n\nTrong mặt phẳng $\\left(SAD\\right)$, vì $M$ là trung điểm của $SA$ nên $\\dfrac{SM}{SA}=\\dfrac{1}{2}$, mà $SN=2ND\\Rightarrow \\dfrac{SN}{SD}=\\dfrac{2}{3}$.\n\nDo $\\dfrac{SM}{SA}\\ne \\dfrac{SN}{SD}$ nên đường thẳ",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001662",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$. Lấy $E,F$là các điểm lần lượt nằm trên các cạnh $AB,AC$. Gọi $I$ là giao điểm của $EF$ và $BC$ (Hình vẽ bên), khi đó $I$ không phải là điểm chung của hai mặt phẳng nào sau đây?",
+  "lua_chon": [
+   "$\\left(BCD\\right)$ và $\\left(AEF\\right)$.",
+   "$\\left(BCD\\right)$ và $\\left(DEF\\right)$.",
+   "$\\left(BCD\\right)$ và $\\left(ABD\\right)$.",
+   "$\\left(BCD\\right)$ và $\\left(ABC\\right)$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Ta có $\\text{I=EF\\cap BC}$.\n\nVì $\\text{I\\in BC\\subset }\\left(BCD\\right)$ nên $I\\in \\left(BCD\\right)$.\n\nMặt khác: - $\\text{I\\in EF\\subset }\\left(AEF\\right)\\Rightarrow I\\in \\left(AEF\\right)$, do đó $I$ là điểm chung của $\\left(BCD\\right)$ và $\\left(AEF\\right)$.\n\n- $\\text{I\\in EF\\subset }\\left(DEF\\right)\\Rightarrow I\\in \\left(DEF\\right)$, do đó $I$ là điểm chung của $\\left(BCD\\right)$ và $\\left(DEF\\right)$.\n\n- $\\text{I\\in BC\\subset }\\left(ABC\\right)\\Rightarrow I\\in \\left(ABC\\right)$, do đó $I$ là đ",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC001665",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian, cho hai tam giác $ABC$và $DBC$ nằm trên hai mặt phẳng phân biệt như hình vẽ.\nMệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "$AC$ cắt $BD$.",
+   "$AB$ cắt $CD$.",
+   "$AB,CD$ chéo nhau.",
+   "$BC,BD$ chéo nhau."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Vì hai tam giác $ABC$ và $DBC$ nằm trên hai mặt phẳng phân biệt cắt nhau theo giao tuyến $BC$ nên bốn điểm $A,B,C,D$ không đồng phẳng.\n\nHai đường thẳng $AB$ và $CD$ không cùng thuộc một mặt phẳng và không có điểm chung.\n\nDo đó, $AB$ và $CD$ là hai đường thẳng chéo nhau.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC001678",
+  "loai": "trac_nghiem",
+  "de": "Cho hình tứ diện $ABCD$(hình vẽ). Giao tuyến của hai mặt phẳng $\\left(ABC\\right)$ và $\\left(CDA\\right)$ là đường thẳng",
+  "lua_chon": [
+   "$AC$.",
+   "$AB$.",
+   "$BD$.",
+   "$CD$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Ta có hai điểm $A$ và $C$ đều thuộc cả hai mặt phẳng $\\left(ABC\\right)$ và $\\left(CDA\\right)$:\n\n$\\begin{cases} A\\in \\left(ABC\\right)\\cap \\left(CDA\\right) \\\\ C\\in \\left(ABC\\right)\\cap \\left(CDA\\right). \\end{cases}$\n\nDo đó, giao tuyến của hai mặt phẳng $\\left(ABC\\right)$ và $\\left(CDA\\right)$ là đường thẳng $AC$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC001679",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp tam giác $S.ABC$. Gọi $E$, $F$lần lượt là trung điểm của $SA$ và $SC$, $G$ là trọng tâm tam giác $ABC$. Khẳng định nào sau đây đúng về giao điểm của đường thẳng $BC$ với mặt phẳng $\\left(EFG\\right)$?",
+  "lua_chon": [
+   "Giao điểm của $BC$ với đường thẳng đi qua $G$ song song với $AC$.",
+   "Giao điểm của $BC$ với đường thẳng $EF$.",
+   "Giao điểm của $BC$ với đường thẳng $EG$.",
+   "$BC$ và mặt phẳng $\\left(EFG\\right)$ không có điểm chung."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Trong tam giác $SAC$, $E$ và $F$ lần lượt là trung điểm của $SA$ và $SC$ nên $EF$ là đường trung bình của tam giác $SAC$.\n\nSuy ra $\\text{EF\\parallel AC}$.\n\nTa có:\n\n$\\begin{cases} EF\\subset \\left(EFG\\right) \\\\ AC\\subset \\left(ABC\\right) \\\\ \\text{EF\\parallel AC} \\\\ G\\in \\left(EFG\\right)\\cap \\left(ABC\\right) \\end{cases}$\n\nDo đó, giao tuyến của hai mặt phẳng $\\left(EFG\\right)$ và $\\left(ABC\\right)$ là đường thẳng $d$ đi qua $G$ và song song với $AC$ (và $EF$).\n\nTrong mặt phẳng $\\left(ABC\\right)$, đư",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001683",
+  "loai": "tra_loi_ngan",
+  "de": "Một khối gỗ có dạng hình chóp $S.ABCD$có đáy $ABCD$ là hình vuông và $SA=SB=SC=SD=12 cm$. Bác An cần cắt khối gỗ đó theo mặt phẳng $\\left(AMNP\\right)$ như hình vẽ, biết $SN=3 cm$, $\\left(AMNP\\right)\\parallel BD$. Em hãy tính giúp bác An độ dài đoạn $SP$. (làm tròn kết quả đến hàng phần mười).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "4.8",
+  "loi_giai": "Gọi $\\text{O=AC\\cap BD}$ là tâm của hình vuông đáy $ABCD$.\n\nTrong mặt phẳng $\\left(SAC\\right)$, gọi $\\text{I=SO\\cap AN}$.\n\nVì $\\text{I\\in AN\\subset }\\left(AMNP\\right)$ và $\\text{I\\in SO\\subset }\\left(SBD\\right)$ nên $I$ là điểm chung của hai mặt phẳng $\\left(AMNP\\right)$ và $\\left(SBD\\right)$.\n\nMặt khác, $\\left(AMNP\\right)\\parallel BD$ và $BD\\subset \\left(SBD\\right)$ nên giao tuyến của $\\left(AMNP\\right)$ và $\\left(SBD\\right)$ là đường thẳng đi qua $I$ và song song với $BD$.\n\nĐường thẳng này cắt",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC001692",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có đáy là hình bình hành. Gọi $M$, $N$ lần lượt là trung điểm của $AD$ và $BC$. Giao tuyến của $\\left(SMN\\right)$ và $\\left(SAC\\right)$ là đường thẳng",
+  "lua_chon": [
+   "$SO$ ($O$ là tâm của hình bình hành $ABCD$).",
+   "$SF$ ($F$ là trung điểm của $CD$).",
+   "$SK$ ($K$ là trung điểm của $AB$).",
+   "$SD$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Hai mặt phẳng $\\left(SMN\\right)$ và $\\left(SAC\\right)$ có điểm chung thứ nhất là $S$.\n\nTrong mặt phẳng đáy $\\left(ABCD\\right)$, gọi $O$ là tâm của hình bình hành $ABCD$ (giao điểm của $AC$ và $BD$).\n\nVì $M,N$ lần lượt là trung điểm của $AD$ và $BC$ nên đoạn thẳng $MN$ đi qua tâm $O$ của hình bình hành, suy ra $\\text{O=MN\\cap AC}$.\n\nDo đó $\\text{O\\in MN\\subset }\\left(SMN\\right)$ và $\\text{O\\in AC\\subset }\\left(SAC\\right)$, suy ra $O$ là điểm chung thứ hai của $\\left(SMN\\right)$ và $\\left(SAC\\righ",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001702",
+  "loai": "tu_luan",
+  "de": "(1 điểm) Cho hình chóp $S.ABCD$đáy $ABCD$ là hình bình hành. $M$, $N$, $K$ lần lượt là trung điểm của $AB$, $SC$ và $SD$. $I$ là giao điểm của $AN$ và $\\left(SBD\\right)$. $J$ là giao điểm của $MN$ với $\\left(SBD\\right)$. a) (0.5 điểm) Chứng minh rằng $NK\\parallel \\left(SAB\\right)$. b) (0.5 điểm) Tính tỉ số $\\dfrac{IB}{IJ}$?",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "a) Trong tam giác $SCD$, ta có $N$ là trung điểm của $SC$ và $K$ là trung điểm của $SD$.\n\nSuy ra $NK$ là đường trung bình của tam giác $SCD$, do đó $\\text{NK\\parallel CD}$.\n\nMặt khác, vì $ABCD$ là hình bình hành nên $\\text{CD\\parallel AB}$, suy ra $\\text{NK\\parallel AB}$.\n\nVì $AB\\subset \\left(SAB\\right)$ và $NK⊈\\left(SAB\\right)$ nên $NK\\parallel \\left(SAB\\right)$. b) Gọi $\\text{O=AC\\cap BD}$ là tâm của hình bình hành $ABCD$.\n\nTrong mặt phẳng $\\left(SAC\\right)$, gọi $\\text{I=AN\\cap SO}$. Vì $SO\\s",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001704",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Gọi $d$ là giao tuyến của hai mặt phẳng $\\left(SAD\\right)$ và $\\left(SBC\\right)$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$d$ đi qua $S$ và song song với $AB$.",
+   "$d$ đi qua $S$ và song song với $BD$.",
+   "$d$ đi qua $S$ và song song với $BC$.",
+   "$d$ đi qua $S$ và song song với $DC$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Xét hai mặt phẳng $\\left(SAD\\right)$ và $\\left(SBC\\right)$, ta có:\n\n• $S\\in \\left(SAD\\right)\\cap \\left(SBC\\right)$, suy ra $S$ là một điểm chung của hai mặt phẳng.\n\n• $AD\\subset \\left(SAD\\right)$ và $BC\\subset \\left(SBC\\right)$.\n\n• $\\text{AD\\parallel BC}$ (vì $ABCD$ là hình bình hành).\n\nTheo định lí về giao tuyến của hai mặt phẳng lần lượt chứa hai đường thẳng song song, giao tuyến $d$ của $\\left(SAD\\right)$ và $\\left(SBC\\right)$ là đường thẳng đi qua $S$ và song song với $AD$ và $BC$.\n\nVậy $d$ ",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001706",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$có $ABCD$ là hình bình hành, hai đường chéo $AC$ và $BD$ cắt nhau tại $O$. Gọi $M$ là trung điểm của $SC$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "a) Tìm giao tuyến của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$ và giao điểm $E$ của $AM$ và $\\left(SBD\\right)$.\nb) Tìm giao điểm của $P$ của $SB$ và mặt phẳng $\\left(MAD\\right)$.\nc) Gọi $F$ là điểm nằm trên cạnh $BC$. Gọi $N$ là giao điểm của $AF$ và $BD$, $K$ là giao điểm của $AF$ và $CD$, $I$ là giao điểm của $KM$ và $SD$. Chứng minh rằng $N,E,I$ thẳng hàng.\n\na) Tìm giao tuyến của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$:\n\nTa có $S\\in \\left(SAC\\right)\\cap \\left(SBD\\",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001707",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình bình hành. Gọi $M,I$ lần lượt là trung điểm của $SA,CD$. a) Tìm giao tuyến của hai mặt phẳng $\\left(SBI\\right)$ và $\\left(SAC\\right)$. b) Tìm giao điểm $E$ của đường thẳng $SD$ và mặt phẳng $\\left(MBI\\right)$. c) Tính tỉ số $\\dfrac{SE}{ED}$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "a) Ta có $S\\in \\left(SBI\\right)\\cap \\left(SAC\\right)$.\n\nTrong mặt phẳng đáy $\\left(ABCD\\right)$, gọi $\\text{K=BI\\cap AC}$.\n\nVì $\\text{K\\in BI\\subset }\\left(SBI\\right)$ và $\\text{K\\in AC\\subset }\\left(SAC\\right)$ nên $K\\in \\left(SBI\\right)\\cap \\left(SAC\\right)$.\n\nVậy giao tuyến của hai mặt phẳng $\\left(SBI\\right)$ và $\\left(SAC\\right)$ là đường thẳng $SK$.\n\nb) Trong mặt phẳng $\\left(ABCD\\right)$, vì $ABCD$ là hình bình hành nên $\\text{AD\\parallel BC}$.\n\nDo $I$ là trung điểm của $CD$ nên đường thẳ",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001709",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$, biết $AC$cắt $BD$ tại $M$ và $AB$ cắt $CD$ tại $O$. Giao tuyến của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$ là",
+  "lua_chon": [
+   "$SO$.",
+   "$SM$.",
+   "$SA$.",
+   "$SC$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Ta có $S$ là điểm chung thứ nhất của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$.\n\nLại có $\\text{O=AB\\cap CD}$, trong đó:\n\n• $\\text{O\\in AB\\subset }\\left(SAB\\right)\\Rightarrow O\\in \\left(SAB\\right)$;\n\n• $\\text{O\\in CD\\subset }\\left(SCD\\right)\\Rightarrow O\\in \\left(SCD\\right)$.\n\nSuy ra $O$ là điểm chung thứ hai của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$.\n\nVậy giao tuyến của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$ là đường thẳng $SO$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001710",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình bình hành tâm $O$. Gọi $M$ là trung điểm của cạnh $AB$ và $G$ là trọng tâm tam giác $SAB$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "a) Tìm giao tuyến của hai mặt phẳng $\\left(SMD\\right)$ và $\\left(SAC\\right)$.\nb) Tìm giao điểm $K$ của đường thẳng $GO$ và mặt phẳng $\\left(SCD\\right)$.\n\na) Tìm giao tuyến của hai mặt phẳng $\\left(SMD\\right)$ và $\\left(SAC\\right)$:\n\nTa có $S$ là điểm chung thứ nhất của hai mặt phẳng $\\left(SMD\\right)$ và $\\left(SAC\\right)$.\n\nTrong mặt phẳng đáy $\\left(ABCD\\right)$, gọi $E$ là giao điểm của $MD$ và $AC$.\n\nVì $\\text{E\\in MD\\subset }\\left(SMD\\right)$ và $\\text{E\\in AC\\subset }\\left(SAC\\right)$ nên ",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001712",
+  "loai": "trac_nghiem",
+  "de": "Trong các hình sau có bao nhiêu hình tứ diện.",
+  "lua_chon": [
+   "$2$.",
+   "$4$.",
+   "$1$.",
+   "$3$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Hình tứ diện là hình có $4$ đỉnh và $4$ mặt là các tam giác.\n\nQuan sát các hình đã cho:\n\n- Hình 1 là hình tứ diện $ABCD$ có $4$ đỉnh $A,B,C,D$ và $4$ mặt là các tam giác $ABC,ACD,ABD,BCD$.\n\n- Hình 2 là hình chóp tứ giác $S.ABCD$ có $5$ đỉnh và đáy là tứ giác $ABCD$.\n\n- Hình 3 là hình lăng trụ tam giác $ABC.A'B'C'$ có $6$ đỉnh và $5$ mặt.\n\n- Hình 4 là hình tứ diện $ABCD$ có $4$ đỉnh $A,B,C,D$ và $4$ mặt là các tam giác $ABC,ABD,ACD,BCD$.\n\nVậy trong các hình đã cho có $2$ hình tứ diện (Hình 1 và H",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC001718",
+  "loai": "trac_nghiem",
+  "de": "Hai mặt phẳng $\\left(P\\right)$ và $\\left(Q\\right)$ được gọi là song song nếu",
+  "lua_chon": [
+   "Có một đường thẳng trong $\\left(P\\right)$ song song với $\\left(Q\\right)$.",
+   "Có một đường thẳng trong $\\left(P\\right)$ cắt $\\left(Q\\right)$.",
+   "Có hai đường thẳng trong $\\left(P\\right)$ cùng song song với $\\left(Q\\right)$.",
+   "Chúng không có điểm chung."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Theo định nghĩa, hai mặt phẳng $\\left(P\\right)$ và $\\left(Q\\right)$ được gọi là song song với nhau nếu chúng không có điểm chung, ký hiệu $\\left(P\\right)\\parallel \\left(Q\\right)$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001719",
+  "loai": "trac_nghiem",
+  "de": "Hình nào dưới đây là hình biểu diễn của hình chóp tứ giác?",
+  "lua_chon": [
+   ".",
+   ".",
+   ".",
+   "."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Phân tích các hình biểu diễn:\n\n- Hình 1 là hình biểu diễn của hình lăng trụ tam giác.\n\n- Hình 2 là hình biểu diễn của hình lăng trụ tứ giác (hình hộp).\n\n- Hình 3 là hình biểu diễn của hình chóp tam giác.\n\n- Hình 4 là hình biểu diễn của hình chóp tứ giác (có đỉnh $S$ và đáy là tứ giác $ABCD$).\n\nVậy hình ở phương án D là hình biểu diễn của hình chóp tứ giác.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC001724",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp $S.ABCD$có $\\text{AB\\parallel CD}$, $AB=2CD$. Gọi $I$ là trung điểm của cạnh $SA$. Giao tuyến của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(IDC\\right)$ là đường thẳng $IJ$. Biết $J$ là điểm nằm trên cạnh $SB$ và $IJ=kAB$. Tính $k$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "0.5",
+  "loi_giai": "Ta có $I$ là trung điểm của cạnh $SA$ nên $\\text{I\\in SA\\subset }\\left(SAB\\right)$ và $I\\in \\left(IDC\\right)$.\n\nDo đó $I$ là một điểm chung của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(IDC\\right)$.\n\nMặt khác, hai mặt phẳng $\\left(SAB\\right)$ và $\\left(IDC\\right)$ lần lượt chứa hai đường thẳng song song là $AB\\subset \\left(SAB\\right)$ và $CD\\subset \\left(IDC\\right)$ (theo giả thiết $\\text{AB\\parallel CD}$).\n\nTheo định lí về giao tuyến của hai mặt phẳng, giao tuyến của $\\left(SAB\\right)$ và $\\le",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001725",
+  "loai": "tu_luan",
+  "de": "Cho tứ diện $ABCD$. Gọi $I,J,K$lần lượt là trung điểm của các cạnh $AB,AC$ và $AD$. Chứng minh $\\left(IJK\\right)\\parallel \\left(BCD\\right)$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "Trong tam giác $ABC$, $I$ là trung điểm của $AB$ và $J$ là trung điểm của $AC$ nên $IJ$ là đường trung bình của tam giác $ABC$.\n\nSuy ra $\\text{IJ\\parallel BC}$.\n\nVì $BC\\subset \\left(BCD\\right)$ và $IJ⊈\\left(BCD\\right)$ nên $IJ\\parallel \\left(BCD\\right)$.\n\nTrong tam giác $ABD$, $I$ là trung điểm của $AB$ và $K$ là trung điểm của $AD$ nên $IK$ là đường trung bình của tam giác $ABD$.\n\nSuy ra $\\text{IK\\parallel BD}$.\n\nVì $BD\\subset \\left(BCD\\right)$ và $IK⊈\\left(BCD\\right)$ nên $IK\\parallel \\left(BC",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001729",
+  "loai": "trac_nghiem",
+  "de": "Trong các mệnh đề sau, mệnh đề nào là đúng?",
+  "lua_chon": [
+   "Hai đường thẳng không có điểm chung thì chéo nhau.",
+   "Hai đường thẳng lần lượt nằm trên hai mặt phẳng phân biệt thì chéo nhau.",
+   "Hai đường thẳng chéo nhau thì không có điểm chung.",
+   "Hai đường thẳng phân biệt không song song thì chéo nhau."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Theo định nghĩa trong không gian, hai đường thẳng chéo nhau là hai đường thẳng không cùng nằm trong một mặt phẳng.\n\nNếu hai đường thẳng có điểm chung thì chúng cùng nằm trong một mặt phẳng (mặt phẳng xác định bởi hai đường thẳng cắt nhau), do đó hai đường thẳng chéo nhau thì không có điểm chung.\n\nCác khẳng định còn lại sai vì:\n\nHai đường thẳng không có điểm chung có thể song song.\n\nHai đường thẳng lần lượt nằm trên hai mặt phẳng phân biệt có thể song song hoặc cắt nhau.\n\nHai đường thẳng phân biệ",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001731",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình bình hành. Gọi $d$ là giao tuyến của hai mặt phẳng $\\left(SAD\\right)$ và $\\left(SBC\\right)$. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "$d$ qua $S$ và song song với $BD$.",
+   "$d$ qua $S$ và song song với $AB$.",
+   "$d$ qua $S$ và song song với $DC$.",
+   "$d$ qua $S$ và song song với $BC$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Ta có: $S$ là điểm chung của hai mặt phẳng $\\left(SAD\\right)$ và $\\left(SBC\\right)$.\n\nMặt khác, $\\begin{cases} AD\\subset \\left(SAD\\right) \\\\ BC\\subset \\left(SBC\\right) \\\\ \\text{AD\\parallel BC} \\end{cases}$ (do $ABCD$ là hình bình hành).\n\nTheo định lí về giao tuyến của hai mặt phẳng chứa hai đường thẳng song song, giao tuyến $d$ của $\\left(SAD\\right)$ và $\\left(SBC\\right)$ là đường thẳng đi qua $S$ và song song với $AD$ và $BC$.\n\nVậy khẳng định đúng là \" $d$ qua $S$ và song song với $BC$\".",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001735",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình bình hành. Gọi $M$ là trung điểm của $SA$, $N$ là giao điểm của $SD$ và $\\left(MBC\\right)$. Tỉ số $\\dfrac{SN}{SD}=\\dfrac{a}{b}$ với $\\dfrac{a}{b}$ là phân số tối giản, $a,b\\in \\mathbb{Z}$. Tính giá trị của $a+2b$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "5",
+  "loi_giai": "Xét hai mặt phẳng $\\left(SAD\\right)$ và $\\left(MBC\\right)$ ta có: $M$ là điểm chung của $\\left(SAD\\right)$ và $\\left(MBC\\right)$ (do $\\text{M\\in SA\\subset }\\left(SAD\\right)$ và $M\\in \\left(MBC\\right)$).\n\n$\\begin{cases} AD\\subset \\left(SAD\\right) \\\\ BC\\subset \\left(MBC\\right) \\\\ \\text{AD\\parallel BC} \\end{cases}$ (do $ABCD$ là hình bình hành).\n\nDo đó, giao tuyến của hai mặt phẳng $\\left(SAD\\right)$ và $\\left(MBC\\right)$ là đường thẳng qua $M$ và song song với $AD$ (và $BC$).\n\nTrong mặt phẳng $\\le",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001736",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp tứ giác $S.ABCD$, hai đường thẳng $AB$và $CD$ cắt nhau tại $E$, gọi $O$ là giao điểm của $AC$ và $BD$. Giao tuyến của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$ là đường thẳng",
+  "lua_chon": [
+   "$BC$.",
+   "$AD$.",
+   "$SE$.",
+   "$SO$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Ta có $S$ là điểm chung thứ nhất của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$.\n\nTrong mặt phẳng đáy $\\left(ABCD\\right)$, gọi $O$ là giao điểm của $AC$ và $BD$.\n\nVì $\\text{O\\in AC\\subset }\\left(SAC\\right)$ nên $O\\in \\left(SAC\\right)$.\n\nVì $\\text{O\\in BD\\subset }\\left(SBD\\right)$ nên $O\\in \\left(SBD\\right)$.\n\nSuy ra $O$ là điểm chung thứ hai của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$.\n\nVậy giao tuyến của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$ là đường ",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC001739",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp $ABCD.A'B'C'D'$. Mặt phẳng $\\left(ADD'A'\\right)$song song với mặt phẳng nào dưới đây?",
+  "lua_chon": [
+   "$\\left(ABCD\\right)$.",
+   "$\\left(ABB'A'\\right)$.",
+   "$\\left(ACC'A'\\right)$.",
+   "$\\left(BCC'B'\\right)$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Trong hình hộp $ABCD.A'B'C'D'$, xét hai mặt phẳng $\\left(ADD'A'\\right)$ và $\\left(BCC'B'\\right)$:\n\nTa có $\\text{AD\\parallel BC}$ với $AD\\subset \\left(ADD'A'\\right)$ và $BC\\subset \\left(BCC'B'\\right)$.\n\nLại có $AA'\\parallel BB'$ với $AA'\\subset \\left(ADD'A'\\right)$ và $BB'\\subset \\left(BCC'B'\\right)$.\n\nVì hai đường thẳng cắt nhau $AD$ và $AA'$ của mặt phẳng $\\left(ADD'A'\\right)$ lần lượt song song với hai đường thẳng cắt nhau $BC$ và $BB'$ của mặt phẳng $\\left(BCC'B'\\right)$ nên $\\left(ADD'A'\\rig",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC001740",
+  "loai": "trac_nghiem",
+  "de": "Trong các khẳng định dưới đây, khẳng định nào sai?",
+  "lua_chon": [
+   "Hai mặt phẳng phân biệt có một điểm chung thì chúng có một đường thẳng chung duy nhất.",
+   "Hai mặt phẳng có một điểm chung thì chúng có vô số điểm chung khác nữa.",
+   "Hai mặt phẳng có một điểm chung thì chúng có một đường thẳng chung duy nhất.",
+   "Nếu ba điểm phân biệt $A,B,C$ cùng thuộc hai mặt phẳng phân biệt thì ba điểm đó thẳng hàng."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Khẳng định \" Hai mặt phẳng có một điểm chung thì chúng có một đường thẳng chung duy nhất\"\\ là sai vì trong trường hợp hai mặt phẳng trùng nhau thì chúng có vô số điểm chung và có vô số đường thẳng chung.\n\nĐể có đúng một đường thẳng chung duy nhất thì hai mặt phẳng đó phải phân biệt.\n\nVậy khẳng định sai là C.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001741",
+  "loai": "trac_nghiem",
+  "de": "Cho bốn khẳng định sau: (I): \" Các cạnh bên của hình lăng trụ song song và bằng nhau\". (II): \" Các mặt bên của hình lăng trụ là các hình bình hành\". (III): \" Hai mặt đáy của hình lăng trụ là hai đa giác có các cạnh tương ứng song song và bằng nhau\". (IV): \" Hình hộp là hình lăng trụ có đáy là hình thoi\". Số khẳng định đúng trong bốn khẳng định đã cho là",
+  "lua_chon": [
+   "$1$.",
+   "$2$.",
+   "$3$.",
+   "$4$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Xét từng khẳng định:\n\n• Khẳng định (I): \" Các cạnh bên của hình lăng trụ song song và bằng nhau\"\\ là đúng theo tính chất của hình lăng trụ.\n\n• Khẳng định (II): \" Các mặt bên của hình lăng trụ là các hình bình hành\"\\ là đúng theo tính chất của hình lăng trụ.\n\n• Khẳng định (III): \" Hai mặt đáy của hình lăng trụ là hai đa giác có các cạnh tương ứng song song và bằng nhau\"\\ là đúng vì hai đáy của lăng trụ là hai đa giác bằng nhau và nằm trong hai mặt phẳng song song.\n\n• Khẳng định (IV): \" Hình hộp l",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001748",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$. Gọi $O$là giao điểm của $AC$ và $BD$. Giao tuyến của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$ là đường thẳng nào sau đây?",
+  "lua_chon": [
+   "$SA$.",
+   "$SB$.",
+   "$SC$.",
+   "$SO$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Ta có:\n\n$S\\in \\left(SAC\\right)$ và $S\\in \\left(SBD\\right)\\Rightarrow S\\in \\left(SAC\\right)\\cap \\left(SBD\\right)$.\n\nMặt khác, $\\text{O=AC\\cap BD\\Rightarrow }\\begin{cases} \\text{O\\in AC\\subset }\\left(SAC\\right) \\\\ \\text{O\\in BD\\subset }\\left(SBD\\right) \\end{cases}\\Rightarrow O\\in \\left(SAC\\right)\\cap \\left(SBD\\right)$.\n\nDo đó hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$ có hai điểm chung phân biệt là $S$ và $O$.\n\nVậy giao tuyến của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$ l",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001753",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$với đáy là tứ giác $ABCD$ có các cặp cạnh đối không song song. Giả sử $\\text{AC\\cap BD=O}$ và $\\text{AD\\cap BC=I}$. Giao tuyến của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$ là",
+  "lua_chon": [
+   "$SO$.",
+   "$SI$.",
+   "$SC$.",
+   "$SB$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Ta có $S\\in \\left(SAC\\right)$ và $S\\in \\left(SBD\\right)$ nên $S$ là một điểm chung của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$.\n\nTrong mặt phẳng $\\left(ABCD\\right)$, gọi $\\text{O=AC\\cap BD}$.\n\nVì $\\text{O\\in AC\\subset }\\left(SAC\\right)$ nên $O\\in \\left(SAC\\right)$.\n\nVì $\\text{O\\in BD\\subset }\\left(SBD\\right)$ nên $O\\in \\left(SBD\\right)$.\n\nSuy ra $O$ là điểm chung thứ hai của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$.\n\nVậy giao tuyến của hai mặt phẳng $\\left(SAC\\right)",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001760",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$. Gọi $I,J$theo thứ tự là trung điểm của $AD,AC$. Điểm $G$ là trọng tâm tam giác $BCD$. Giao tuyến của hai mặt phẳng $\\left(GIJ\\right)$ và $\\left(BCD\\right)$ là đường thẳng",
+  "lua_chon": [
+   "qua $I$ và song song với $AB$.",
+   "qua $J$ và song song với $BD$.",
+   "qua $G$ và song song với $CD$.",
+   "qua $G$ và song song với $BC$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Trong tam giác $ACD$, vì $I,J$ lần lượt là trung điểm của $AD$ và $AC$ nên $IJ$ là đường trung bình của tam giác $ACD$.\n\nSuy ra $\\text{IJ\\parallel CD}$.\n\nXét hai mặt phẳng $\\left(GIJ\\right)$ và $\\left(BCD\\right)$, ta có:\n\n• $G$ là điểm chung của hai mặt phẳng (vì $G\\in \\left(GIJ\\right)$ và $G$ là trọng tâm tam giác $BCD$ nên $G\\in \\left(BCD\\right)$).\n\n• $IJ\\subset \\left(GIJ\\right)$ và $CD\\subset \\left(BCD\\right)$.\n\n• $\\text{IJ\\parallel CD}$.\n\nTheo định lí về giao tuyến của hai mặt phẳng chứa hai",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001763",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình bình hành tâm $O$. Gọi $M$ là trung điểm của $SC$. a) Xác định giao tuyến của hai mặt phẳng $\\left(SAD\\right)$ và $\\left(SBC\\right)$. b) Xác định giao điểm $I$ của $AM$ và mặt phẳng $\\left(SBD\\right)$ và tính tỉ số $\\dfrac{AI}{AM}$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "a) Xác định giao tuyến của hai mặt phẳng $\\left(SAD\\right)$ và $\\left(SBC\\right)$:\n\nTa có $S$ là điểm chung của hai mặt phẳng $\\left(SAD\\right)$ và $\\left(SBC\\right)$.\n\nMặt khác:\n\n• $AD\\subset \\left(SAD\\right)$ và $BC\\subset \\left(SBC\\right)$.\n\n• $\\text{AD\\parallel BC}$ (vì $ABCD$ là hình bình hành).\n\nTheo định lí về giao tuyến của hai mặt phẳng chứa hai đường thẳng song song, giao tuyến của $\\left(SAD\\right)$ và $\\left(SBC\\right)$ là đường thẳng $d$ đi qua $S$ và song song với $AD$ và $BC$.\n\nb)",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001776",
+  "loai": "tra_loi_ngan",
+  "de": "Cho tứ diện $A.BCD$, gọi $I,J$lần lượt là là trung điểm cạnh $BC$ và $AD$. Điểm $K$ thuộc cạnh $CD$ sao cho đoạn $CK=\\dfrac{1}{2}CD$. Biết giao tuyến của hai mặt phẳng $\\left(IJK\\right)$ với $\\left(ACD\\right)$ là đường thẳng đi qua $2$ điểm thuộc cạnh $CD$ và $AD$. Tính tỷ số của đoạn thẳng nối $2$ điểm đó và $AC$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "0.5",
+  "loi_giai": "Ta có $\\text{J\\in AD\\subset }\\left(ACD\\right)$ và $J\\in \\left(IJK\\right)$ nên $J$ là điểm chung thứ nhất của hai mặt phẳng $\\left(IJK\\right)$ và $\\left(ACD\\right)$.\n\nVì $\\text{K\\in CD}$ thỏa mãn $CK=\\dfrac{1}{2}CD$ nên $K$ là trung điểm của cạnh $CD$.\n\nDo đó $\\text{K\\in CD\\subset }\\left(ACD\\right)$ và $K\\in \\left(IJK\\right)$ nên $K$ là điểm chung thứ hai của hai mặt phẳng $\\left(IJK\\right)$ và $\\left(ACD\\right)$.\n\nSuy ra giao tuyến của $\\left(IJK\\right)$ và $\\left(ACD\\right)$ là đường thẳng $JK$",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001792",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình bình hành. Gọi $M$ là điểm thuộc cạnh $SD$ sao cho $SM=2MD$. Xác định giao tuyến của hai mặt phẳng $\\left(MAB\\right)$ và $\\left(SCD\\right)$?",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "Ta có $\\text{M\\in SD\\subset }\\left(SCD\\right)$ nên $M\\in \\left(SCD\\right)$.\n\nLại có $M\\in \\left(MAB\\right)$, do đó $M$ là một điểm chung của hai mặt phẳng $\\left(MAB\\right)$ và $\\left(SCD\\right)$.\n\nMặt khác, hai mặt phẳng $\\left(MAB\\right)$ và $\\left(SCD\\right)$ lần lượt chứa hai đường thẳng $AB$ và $CD$ song song với nhau (do tứ giác $ABCD$ là hình bình hành).\n\nTheo định lí về giao tuyến của hai mặt phẳng chứa hai đường thẳng song song, giao tuyến của $\\left(MAB\\right)$ và $\\left(SCD\\right)$ là",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001800",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có đáy là hình bình hành. Gọi $d$ là giao tuyến của hai mặt phẳng $\\left(SAD\\right)$ và $\\left(SBC\\right)$. Phát biểu nào sau đây là đúng?",
+  "lua_chon": [
+   "$d$ đi qua $S$ và song song với $BC$.",
+   "$d$ đi qua $S$ và song song với $BD$.",
+   "$d$ đi qua $S$ và song song với $DC$.",
+   "$d$ đi qua $S$ và song song với $AB$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Ta có $S$ là điểm chung của hai mặt phẳng $\\left(SAD\\right)$ và $\\left(SBC\\right)$.\n\nMặt khác, tứ giác $ABCD$ là hình bình hành nên $\\text{AD\\parallel BC}$.\n\nDo $AD\\subset \\left(SAD\\right)$ và $BC\\subset \\left(SBC\\right)$ nên theo định lí về giao tuyến của hai mặt phẳng chứa hai đường thẳng song song, giao tuyến $d$ của $\\left(SAD\\right)$ và $\\left(SBC\\right)$ là đường thẳng đi qua $S$ và song song với $AD$, $BC$.\n\nVậy $d$ đi qua $S$ và song song với $BC$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC001803",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp $S.ABCD$, trong đó $ABCD$là một hình thang có hai cạnh đáy $AB$ và $CD$, đáy lớn $AB=9 \\left(cm\\right)$. Gọi $I$ và $J$ lần lượt là trung điểm của $AD$ và $BC$, $G$ là trọng tâm của tam giác $SAB$. Giao tuyến $d$ của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(GIJ\\right)$. Biết $d$ cắt $SA$ tại $M$ và cắt $SB$ tại $N$ và tứ giác $MNJI$ là hình bình hành, tính độ dài cạnh đáy $CD$ (theo đơn vị cm).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "3",
+  "loi_giai": "Vì $I,J$ lần lượt là trung điểm của $AD$ và $BC$ nên $IJ$ là đường trung bình của hình thang $ABCD$.\n\nSuy ra $\\text{IJ\\parallel AB\\parallel CD}$ và\n\n$IJ=\\dfrac{AB+CD}{2}.$\n\nXét hai mặt phẳng $\\left(SAB\\right)$ và $\\left(GIJ\\right)$ có điểm chung $G$, lần lượt chứa hai đường thẳng song song $AB$ và $IJ$.\n\nDo đó giao tuyến $d$ của $\\left(SAB\\right)$ và $\\left(GIJ\\right)$ là đường thẳng đi qua $G$ và song song với $AB,IJ$.\n\nĐường thẳng $d$ cắt $SA,SB$ lần lượt tại $M,N$ nên $\\text{MN\\parallel AB}$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC001805",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình tứ giác. Gọi $O$ là giao điểm của $AC$ và $BD$, $M$ là giao điểm của $AD$ và $BC$. Giao tuyến của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$ là đường thẳng nào sau đây?",
+  "lua_chon": [
+   "$SM$.",
+   "$SO$.",
+   "$SC$.",
+   "$SD$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Ta có $S$ là một điểm chung của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$.\n\nTrong mặt phẳng $\\left(ABCD\\right)$, gọi $\\text{O=AC\\cap BD}$, ta có:\n\n• $\\text{O\\in AC\\subset }\\left(SAC\\right)\\Rightarrow O\\in \\left(SAC\\right)$.\n\n• $\\text{O\\in BD\\subset }\\left(SBD\\right)\\Rightarrow O\\in \\left(SBD\\right)$.\n\nSuy ra $O$ là điểm chung thứ hai của hai mặt phẳng $\\left(SAC\\right)$ và $\\left(SBD\\right)$.\n\nVậy $\\left(SAC\\right)\\cap \\left(SBD\\right)=SO$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001809",
+  "loai": "tra_loi_ngan",
+  "de": "Cho tứ diện $ABCD$. Gọi $M,N$lần lượt là trung điểm của $AC$ và $BC$. Trên cạnh $BD$ lấy điểm $P$ sao cho $BP=2DP$. Gọi $F$ là giao điểm của $AD$ với mặt phẳng $\\left(MNP\\right)$. Tính $\\dfrac{FA}{FD}$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "2",
+  "loi_giai": "Trong tam giác $ABC$, $M$ và $N$ lần lượt là trung điểm của $AC$ và $BC$ nên $MN$ là đường trung bình của tam giác $ABC$.\n\nSuy ra $\\text{MN\\parallel AB}$.\n\nXét hai mặt phẳng $\\left(MNP\\right)$ và $\\left(ABD\\right)$ có:\n\n• $P$ là một điểm chung của hai mặt phẳng.\n\n• $MN\\subset \\left(MNP\\right)$, $AB\\subset \\left(ABD\\right)$ và $\\text{MN\\parallel AB}$.\n\nDo đó, giao tuyến của $\\left(MNP\\right)$ và $\\left(ABD\\right)$ là đường thẳng đi qua $P$ và song song với $AB$.\n\nTrong mặt phẳng $\\left(ABD\\right)",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001810",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình vuông cạnh $a$, $\\widehat{SAD}=90^\\circ$, mặt bên $SAB$ là tam giác đều. Gọi $M,N$ theo thứ tự là trọng tâm $\\triangle SAB,\\triangle SCD$, $I$ là giao điểm của các đường thẳng $BM,CN$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "a) Xác định giao tuyến của mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$?\nb) Tính diện tích hình tạo bởi các giao tuyến của mặt phẳng $\\left(AIC\\right)$ và các mặt của hình chóp?\n\na) Ta có $S$ là điểm chung của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$.\n\nMặt khác, $AB\\subset \\left(SAB\\right)$, $CD\\subset \\left(SCD\\right)$ và $\\text{AB\\parallel CD}$ (do $ABCD$ là hình vuông).\n\nTheo định lí về giao tuyến của hai mặt phẳng chứa hai đường thẳng song song, giao tuyến của $\\left(SAB\\",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC001813",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$có đáy là hình bình hành $ABCD$. Gọi $M$ là trung điểm $SB$, $G$ là trọng tâm tam giác $SAD$. a) Xác định giao tuyến của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$. b) Gọi $K$ giao điểm của đường thẳng $GM$ và mặt phẳng $\\left(ABCD\\right)$. Chứng minh ba điểm $K,D,C$ thẳng hàng. Tính tỉ số $\\dfrac{KD}{KC}$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "a) Xét hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$, ta có:\n\n- $S$ là điểm chung của $\\left(SAB\\right)$ và $\\left(SCD\\right)$.\n\n- $AB\\subset \\left(SAB\\right)$ và $CD\\subset \\left(SCD\\right)$.\n\n- $\\text{AB\\parallel CD}$ (vì $ABCD$ là hình bình hành).\n\nSuy ra giao tuyến của hai mặt phẳng $\\left(SAB\\right)$ và $\\left(SCD\\right)$ là đường thẳng $d$ đi qua điểm $S$ và song song với $AB,CD$.\n\nb) Trong tam giác $SAD$, gọi $N$ là trung điểm của $AD$.\n\nVì $G$ là trọng tâm tam giác $SAD$ nên $\\t",
+  "co_hinh": false
+ }
+]

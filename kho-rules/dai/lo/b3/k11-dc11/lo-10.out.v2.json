@@ -1,0 +1,7 @@
+[
+ {"ma_cau": "T1110000001142", "dang_bai_id": "NDB01178", "ung_vien": ["NDB01178"], "chac": "cao", "ly_do": "Giới hạn phân thức hữu tỉ khi x tiến +∞, tìm tham số a từ giá trị giới hạn."},
+ {"ma_cau": "T1110000001535", "dang_bai_id": "NDB01191", "ung_vien": ["NDB01176", "NDB01188", "NDB01191"], "chac": "cao", "ly_do": "Tìm a để hàm hai nhánh (có trị tuyệt đối) liên tục tại x=2, tham số ở một nhánh."},
+ {"ma_cau": "T1110000001064", "dang_bai_id": "NDB00575", "ung_vien": ["NDB00575"], "chac": "cao", "ly_do": "Hỏi lý thuyết công thức nghiệm sinx, cosx bằng ±1."},
+ {"ma_cau": "T1110000001541", "dang_bai_id": "NDB01185", "ung_vien": ["NDB01185"], "chac": "cao", "ly_do": "Nồng độ muối theo t rồi tính giới hạn khi t→∞, mô hình thực tế có giới hạn."},
+ {"ma_cau": "T1110000001176", "dang_bai_id": "NDB01633", "ung_vien": ["NDB00993", "NDB01633"], "chac": "cao", "ly_do": "Sóng biển: ý a chu kì, ý b chiều cao đỉnh-đáy tức min max hàm cos thực tế."}
+]

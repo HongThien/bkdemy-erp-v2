@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "T1110000001238",
+  "dang_bai_id": "NDB01182",
+  "chac": "cao",
+  "ly_do": "Thương dạng 5/0, xét dấu mẫu khi x→2+",
+  "can_cu": "Dấu của mẫu phải xét theo từng bên"
+ },
+ {
+  "ma_cau": "T1110000001458",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng tổng cấp số cộng thực tế (không giới hạn)",
+  "can_cu": ""
+ },
+ {
+  "ma_cau": "T1110000001146",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Tham số m ở giá trị tại điểm chia nhánh, liên tục tại x0=2",
+  "can_cu": "tìm tham số để hàm liên tục tại 1 điểm"
+ },
+ {
+  "ma_cau": "T1110000001272",
+  "dang_bai_id": "NDB01190",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm chọn mệnh đề đúng về liên tục/gián đoạn; đáp án đúng: gián đoạn tại x=2",
+  "can_cu": "Nhận biết khẳng định đúng hoặc hàm số gián đoạn trong bài trắc nghiệm"
+ },
+ {
+  "ma_cau": "T1110000001893",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng giới hạn dãy số cho bởi công thức truy hồi",
+  "can_cu": ""
+ },
+ {
+  "ma_cau": "T1110000001160",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Phân thức tử mẫu cùng bậc n²",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000001579",
+  "dang_bai_id": "NDB01173",
+  "chac": "cao",
+  "ly_do": "Hai căn thức ở tử và mẫu dạng 0/0, liên hợp từng căn",
+  "can_cu": "Hiệu hai căn bậc hai: nhân và chia liên hợp"
+ },
+ {
+  "ma_cau": "T1110000001617",
+  "dang_bai_id": "NDB01173",
+  "chac": "cao",
+  "ly_do": "Căn bậc hai trừ căn bậc ba dạng 0/0, thêm bớt rồi liên hợp",
+  "can_cu": "Hiệu hai căn khác bậc: nếu hai căn cùng bằng một số"
+ },
+ {
+  "ma_cau": "T1110000001365",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Hàm xác định tại x=2, mẫu khác 0, thay trực tiếp",
+  "can_cu": "Hàm xác định tại x_0, mẫu khác 0"
+ },
+ {
+  "ma_cau": "T1110000001166",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Hàm xác định tại x=-1, mẫu khác 0, thay trực tiếp",
+  "can_cu": "Hàm xác định tại x_0, mẫu khác 0"
+ },
+ {
+  "ma_cau": "T1110000003113",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng giới hạn hàm số bằng nguyên lí kẹp (|sin x|≤1) khi x→+∞",
+  "can_cu": ""
+ },
+ {
+  "ma_cau": "T1110000001381",
+  "dang_bai_id": "NDB01197",
+  "chac": "cao",
+  "ly_do": "Tìm a để hàm hai nhánh liên tục trên R, xét điểm chia nhánh x=2",
+  "can_cu": "Tìm tham số để hàm số liên tục trên tập số thực hoặc trên một khoảng"
+ },
+ {
+  "ma_cau": "T1110000001576",
+  "dang_bai_id": "NDB01163",
+  "chac": "cao",
+  "ly_do": "Tổng cấp số nhân lùi vô hạn u1=1, q=1/2",
+  "can_cu": "Nhận biết rồi áp dụng công thức tổng"
+ },
+ {
+  "ma_cau": "T1110000002230",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng giới hạn lượng giác 0/0 (1−cos kx)",
+  "can_cu": ""
+ },
+ {
+  "ma_cau": "T1110000001243",
+  "dang_bai_id": "NDB01188",
+  "chac": "cao",
+  "ly_do": "Xét liên tục tại điểm chia nhánh x=-1 của hàm hai công thức",
+  "can_cu": "So giới hạn trái, phải với f(x_0)"
+ },
+ {
+  "ma_cau": "T1110000001511",
+  "dang_bai_id": "NDB01178",
+  "chac": "cao",
+  "ly_do": "Phân thức cùng bậc khi x→-∞",
+  "can_cu": "Chia tử và mẫu cho luỹ thừa cao nhất của x"
+ },
+ {
+  "ma_cau": "T1110000001596",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Phân thức tử mẫu cùng bậc n²",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000001571",
+  "dang_bai_id": "NDB01149",
+  "chac": "cao",
+  "ly_do": "Dùng |u_n−2|<1/n³ (nguyên lí kẹp) suy ra lim u_n=2",
+  "can_cu": "Chứng minh giới hạn bằng định nghĩa hoặc nguyên lí kẹp"
+ },
+ {
+  "ma_cau": "T1110000001583",
+  "dang_bai_id": "NDB01177",
+  "chac": "cao",
+  "ly_do": "Hàm hai công thức, giới hạn trái = phải = 13 nên tồn tại",
+  "can_cu": "Tính hai giới hạn một bên rồi so sánh"
+ },
+ {
+  "ma_cau": "T1110000001598",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Phân thức tích, tử và mẫu cùng bậc 5",
+  "can_cu": "Khi tử hoặc mẫu là tích, chia mỗi thừa số cho luỹ thừa"
+ },
+ {
+  "ma_cau": "T1110000001597",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Phân thức tử bậc 3 thấp hơn mẫu bậc 4, giới hạn 0",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000003121",
+  "dang_bai_id": "NDB01179",
+  "chac": "vua",
+  "ly_do": "Căn chứa x² khi x→+∞ nhưng kèm tìm tham số a; bản đồ không có dạng tham số này",
+  "can_cu": "Đưa |x| ra ngoài căn rồi chia Nhận dạng"
+ },
+ {
+  "ma_cau": "T1110000001265",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Thương các luỹ thừa 100^n, 99^n, 98^n, chia cho cơ số lớn nhất",
+  "can_cu": "Chia cho luỹ thừa có cơ số lớn nhất"
+ },
+ {
+  "ma_cau": "T1110000001052",
+  "dang_bai_id": "NDB01153",
+  "chac": "cao",
+  "ly_do": "Tìm a để lim phân thức bằng 2",
+  "can_cu": "Tìm tham số từ điều kiện của giới hạn"
+ },
+ {
+  "ma_cau": "T1110000001561",
+  "dang_bai_id": "NDB01163",
+  "chac": "cao",
+  "ly_do": "Tổng cấp số nhân lùi vô hạn u1=1, q=1/3",
+  "can_cu": "Nhận biết rồi áp dụng công thức tổng"
+ },
+ {
+  "ma_cau": "T1110000001586",
+  "dang_bai_id": "NDB01156",
+  "chac": "cao",
+  "ly_do": "Tử là tổng 1+2+…+n, tính tổng rồi lấy giới hạn",
+  "can_cu": "Tính tổng rồi lấy giới hạn"
+ },
+ {
+  "ma_cau": "T1110000001568",
+  "dang_bai_id": "NDB01150",
+  "chac": "cao",
+  "ly_do": "Cho lim u_n, lim v_n tính lim hiệu",
+  "can_cu": "tính giới hạn của tổng, hiệu, tích, thương, căn các dãy đó"
+ },
+ {
+  "ma_cau": "T1110000001599",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Có √(n⁴+…) trong phân thức, đưa n² ra ngoài căn rồi chia",
+  "can_cu": "Rút n ngoài căn rồi chia Xác định bậc cao nhất"
+ },
+ {
+  "ma_cau": "T1110000001136",
+  "dang_bai_id": "NDB01156",
+  "chac": "cao",
+  "ly_do": "Tử là tổng cấp số cộng, tính tổng rồi lấy giới hạn",
+  "can_cu": "Tính tổng theo công thức rồi lấy giới hạn"
+ },
+ {
+  "ma_cau": "T1110000001528",
+  "dang_bai_id": "NDB01173",
+  "chac": "cao",
+  "ly_do": "Căn bậc hai trừ căn bậc ba dạng 0/0",
+  "can_cu": "Hiệu hai căn khác bậc: nếu hai căn cùng bằng một số"
+ },
+ {
+  "ma_cau": "T1110000001130",
+  "dang_bai_id": "NDB01148",
+  "chac": "cao",
+  "ly_do": "Nhận biết dãy có giới hạn 0: (2/3)^n với |q|<1",
+  "can_cu": "Nhận biết giới hạn của dãy số"
+ },
+ {
+  "ma_cau": "T1110000001895",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng giới hạn dãy số cho bởi công thức truy hồi",
+  "can_cu": ""
+ },
+ {
+  "ma_cau": "T1110000001246",
+  "dang_bai_id": "NDB01195",
+  "chac": "cao",
+  "ly_do": "Xét liên tục hàm sơ cấp (sin x+1)/(x+1) trên tập xác định",
+  "can_cu": "Tìm các khoảng liên tục của hàm số sơ cấp"
+ },
+ {
+  "ma_cau": "T1110000001294",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Phân thức tử mẫu cùng bậc n⁴",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000001780",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng tổng phân thức khử liên tiếp (1/(k(k+1)))",
+  "can_cu": ""
+ },
+ {
+  "ma_cau": "T1110000001134",
+  "dang_bai_id": "NDB01163",
+  "chac": "cao",
+  "ly_do": "Tổng cấp số nhân lùi vô hạn u1=1, q=1/2",
+  "can_cu": "Nhận biết rồi áp dụng công thức tổng"
+ },
+ {
+  "ma_cau": "T1110000001184",
+  "dang_bai_id": "NDB01166",
+  "chac": "cao",
+  "ly_do": "Lượng chất độc nhân tỉ số không đổi mỗi lần rửa, giảm dần về 0",
+  "can_cu": "Lập dãy theo chu kì rồi tìm giới hạn"
+ },
+ {
+  "ma_cau": "T1110000001357",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Phân thức tử mẫu cùng bậc n²",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000001183",
+  "dang_bai_id": "NDB01167",
+  "chac": "vua",
+  "ly_do": "Hình vuông tô màu lặp vô hạn, tỉ số 1/9; đề phụ thuộc hình tô",
+  "can_cu": "Lập cấp số nhân của độ dài hoặc diện tích"
+ },
+ {
+  "ma_cau": "T1110000001361",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Căn trừ đa thức dạng ∞-∞; cũng rút n được, dạng sau thắng",
+  "can_cu": "Nhân và chia cho biểu thức liên hợp"
+ },
+ {
+  "ma_cau": "T1110000001089",
+  "dang_bai_id": "NDB01170",
+  "chac": "vua",
+  "ly_do": "Cho giới hạn thương sai phân của f rồi tính giới hạn biểu thức khác; không khớp hẳn mô tả",
+  "can_cu": "cho lim f, lim g tính giới hạn biểu thức"
+ },
+ {
+  "ma_cau": "T1110000001133",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Phân thức tử bậc 3 thấp hơn mẫu bậc 4, giới hạn 0",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000001513",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Phân thức hữu tỉ 0/0, triệt x-2",
+  "can_cu": "Phân tích nhân tử rồi triệt nhân tử chung"
+ },
+ {
+  "ma_cau": "T1110000001185",
+  "dang_bai_id": "NDB01198",
+  "chac": "cao",
+  "ly_do": "Giá cước taxi bậc thang, xét liên tục của T(x)",
+  "can_cu": "Cước taxi, bảng giá bậc thang, hàm Heaviside, hàm dấu"
+ },
+ {
+  "ma_cau": "T1110000001615",
+  "dang_bai_id": "NDB01173",
+  "chac": "cao",
+  "ly_do": "Hiệu hai căn bậc hai dạng 0/0",
+  "can_cu": "Hiệu hai căn bậc hai: nhân và chia liên hợp"
+ },
+ {
+  "ma_cau": "T1110000001139",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Phân thức hữu tỉ 0/0, phân tích nhân tử triệt x-1",
+  "can_cu": "Phân tích nhân tử rồi triệt nhân tử chung"
+ },
+ {
+  "ma_cau": "T1110000002679",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng giới hạn dãy số cho bởi công thức truy hồi",
+  "can_cu": ""
+ },
+ {
+  "ma_cau": "T1110000001625",
+  "dang_bai_id": "NDB01179",
+  "chac": "cao",
+  "ly_do": "Căn chứa x² khi x→+∞, đưa |x| ra ngoài căn rồi chia",
+  "can_cu": "Đưa |x| ra ngoài căn rồi chia Nhận dạng"
+ },
+ {
+  "ma_cau": "T1110000001537",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Hàm xác định tại x=-1, mẫu khác 0, thay trực tiếp",
+  "can_cu": "Hàm xác định tại x_0, mẫu khác 0"
+ },
+ {
+  "ma_cau": "T1110000001886",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng giới hạn dãy số cho bởi công thức truy hồi",
+  "can_cu": ""
+ },
+ {
+  "ma_cau": "T1110000001366",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Phân thức hữu tỉ 0/0, phân tích nhân tử triệt x+3",
+  "can_cu": "Phân tích nhân tử rồi triệt nhân tử chung"
+ },
+ {
+  "ma_cau": "T1110000001608",
+  "dang_bai_id": "NDB01182",
+  "chac": "cao",
+  "ly_do": "Thương dạng 5/0, xét dấu mẫu bên trái -3",
+  "can_cu": "Dấu của mẫu phải xét theo từng bên"
+ },
+ {
+  "ma_cau": "T1110000001516",
+  "dang_bai_id": "NDB01172",
+  "chac": "cao",
+  "ly_do": "Một căn thức ở tử dạng 0/0, nhân liên hợp",
+  "can_cu": "Nhân tử và mẫu với biểu thức liên hợp"
+ },
+ {
+  "ma_cau": "T1110000001894",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng giới hạn dãy số cho bởi công thức truy hồi",
+  "can_cu": ""
+ },
+ {
+  "ma_cau": "T1110000001132",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Thương các luỹ thừa 9^n, 2^n, chia cho 9^n",
+  "can_cu": "Chia cho luỹ thừa có cơ số lớn nhất"
+ },
+ {
+  "ma_cau": "T1110000001604",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Thương các luỹ thừa 3^n,4^n,2^n, chia cho 4^n",
+  "can_cu": "Chia cho luỹ thừa có cơ số lớn nhất"
+ },
+ {
+  "ma_cau": "T1110000001618",
+  "dang_bai_id": "NDB01167",
+  "chac": "vua",
+  "ly_do": "Dãy hình vuông lặp vô hạn, tổng diện tích; đề phụ thuộc hình",
+  "can_cu": "Lập cấp số nhân của độ dài hoặc diện tích"
+ },
+ {
+  "ma_cau": "T1110000001539",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Hàm xác định tại x=2, mẫu khác 0, thay trực tiếp",
+  "can_cu": "Hàm xác định tại x_0, mẫu khác 0"
+ },
+ {
+  "ma_cau": "T1110000001563",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Phân thức tử mẫu cùng bậc n²",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000003017",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng giới hạn dãy số cho bởi công thức truy hồi",
+  "can_cu": ""
+ },
+ {
+  "ma_cau": "T1110000001567",
+  "dang_bai_id": "NDB01150",
+  "chac": "cao",
+  "ly_do": "Cho lim u_n, lim v_n tính lim tích",
+  "can_cu": "tính giới hạn của tổng, hiệu, tích, thương, căn các dãy đó"
+ },
+ {
+  "ma_cau": "T1110000001504",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Thương các luỹ thừa 3^n,2^n,4^n, chia cho 4^n",
+  "can_cu": "Chia cho luỹ thừa có cơ số lớn nhất"
+ },
+ {
+  "ma_cau": "T1110000001611",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Phân thức hữu tỉ 0/0, triệt x-1",
+  "can_cu": "Phân tích nhân tử rồi triệt nhân tử chung"
+ },
+ {
+  "ma_cau": "T1110000001877",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng tổng phân thức chứa căn khử liên tiếp",
+  "can_cu": ""
+ },
+ {
+  "ma_cau": "T1110000001578",
+  "dang_bai_id": "NDB01182",
+  "chac": "cao",
+  "ly_do": "Thương dạng 3/0, xét dấu mẫu bên phải -4",
+  "can_cu": "Dấu của mẫu phải xét theo từng bên"
+ },
+ {
+  "ma_cau": "T1110000001375",
+  "dang_bai_id": "NDB01188",
+  "chac": "cao",
+  "ly_do": "Xét liên tục tại điểm chia nhánh x=1, nhánh có căn dạng 0/0",
+  "can_cu": "So giới hạn trái, phải với f(x_0)"
+ },
+ {
+  "ma_cau": "T1110000001624",
+  "dang_bai_id": "NDB01178",
+  "chac": "cao",
+  "ly_do": "Phân thức tử bậc thấp hơn mẫu khi x→+∞",
+  "can_cu": "Chia tử và mẫu cho luỹ thừa cao nhất của x"
+ },
+ {
+  "ma_cau": "T1110000003126",
+  "dang_bai_id": "NDB01180",
+  "chac": "vua",
+  "ly_do": "Dạng ∞-∞ với căn khi x→+∞ nhưng kèm tham số a và tìm min",
+  "can_cu": "Nhân liên hợp rồi chia cho luỹ thừa cao nhất"
+ },
+ {
+  "ma_cau": "T1110000001522",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng tổng phân thức khử liên tiếp (tổng 1+2+…+k ở mẫu)",
+  "can_cu": ""
+ },
+ {
+  "ma_cau": "T1110000001629",
+  "dang_bai_id": "NDB01173",
+  "chac": "cao",
+  "ly_do": "Hiệu hai căn bậc ba dạng 0/0",
+  "can_cu": "Hiệu hai lập phương, dùng cho căn bậc ba với"
+ }
+]

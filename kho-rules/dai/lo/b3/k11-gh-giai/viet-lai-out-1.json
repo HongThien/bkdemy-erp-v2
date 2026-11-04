@@ -1,0 +1,97 @@
+[
+ {
+  "ma_cau": "T111000000131",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dùng giới hạn cơ bản của dãy số: $\\dfrac{1}{n^k}$ tiến về $0$ khi $n\\to+\\infty$ với $k$ nguyên dương.\n\n**Bước 1.** Nhớ lại giới hạn cơ bản của dãy $\\dfrac{1}{n^k}$.\n\n**Bước 2.** Đối chiếu kết quả đó với từng phương án.\n\n**Bước 3.** Chọn phương án trùng khớp, loại các phương án còn lại.\n\n**Phần 2. Trình bày**\n\nVới $k$ là số nguyên dương, theo định lí về giới hạn cơ bản của dãy số, ta có\n$$\\lim \\dfrac{1}{n^{k}}=0.$$\nVậy khẳng định đúng là $\\lim \\dfrac{1}{n^{k}}=0$ (đáp án A).",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004025",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn của tổng bằng tổng các giới hạn khi từng giới hạn đều hữu hạn.\n\n**Bước 1.** Tách biểu thức thành hai phần: phần phụ thuộc $n$ và phần là hằng số.\n\n**Bước 2.** Tìm giới hạn của từng phần.\n\n**Bước 3.** Cộng hai giới hạn lại để được kết quả.\n\n**Phần 2. Trình bày**\n\nTa có $\\lim\\dfrac{1}{n}=0$ và $\\lim 2=2$.\nDo đó\n$$\\lim\\left(\\dfrac{1}{n}+2\\right)=0+2=2.$$\nVậy $\\lim\\left(\\dfrac{1}{n}+2\\right)=2$ (đáp án C).",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004007",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với dãy $q^n$, giới hạn phụ thuộc vào $q$: nếu $q>1$ thì $q^n\\to+\\infty$, nếu $|q|<1$ thì $q^n\\to0$.\n\n**Bước 1.** Nhớ lại kết quả giới hạn của dãy $q^n$ theo từng khoảng giá trị của $q$.\n\n**Bước 2.** Xét từng dãy: xác định cơ số $q$ và so sánh với $1$.\n\n**Bước 3.** Chọn dãy có cơ số lớn hơn $1$, loại các dãy còn lại.\n\n**Phần 2. Trình bày**\n\nDãy $q^n$ có giới hạn $+\\infty$ khi $q>1$.\nVới $x_n=\\left(\\dfrac{e}{2}\\right)^n$ có $\\dfrac{e}{2}\\approx1{,}36>1$ nên $x_n\\to+\\infty$.\nVới $v_n=\\left(\\dfrac{3}{\\pi}\\right)^n$ có $\\dfrac{3}{\\pi}<1$ nên $v_n\\to0$.\nVới $u_n=\\dfrac{1}{n}$ có $u_n\\to0$.\nVới $a_n=(-1)^n\\cdot n$ dấu đổi liên tục nên $a_n$ không có giới hạn.\nVậy dãy có giới hạn $+\\infty$ là $x_n=\\left(\\dfrac{e}{2}\\right)^n$ (đáp án C).",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T111000000205",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn của tổng bằng tổng các giới hạn khi các giới hạn đều hữu hạn.\n\n**Bước 1.** Viết giới hạn của tổng thành tổng hai giới hạn.\n\n**Bước 2.** Thay giá trị giới hạn đã cho của $u_n$ và giới hạn của hằng số.\n\n**Bước 3.** Cộng lại và đối chiếu với các phương án.\n\n**Phần 2. Trình bày**\n\nÁp dụng định lí về giới hạn hữu hạn của dãy số, ta có\n$$\\lim \\left(u_{n}+2\\right)=\\lim u_{n}+\\lim 2=3+2=5.$$\nVậy $\\lim \\left(u_{n}+2\\right)=5$ (đáp án B).",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004045",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn của tổng hai dãy bằng tổng hai giới hạn khi cả hai đều hữu hạn.\n\n**Bước 1.** Viết giới hạn của tổng thành tổng hai giới hạn.\n\n**Bước 2.** Thay hai giá trị giới hạn đã cho.\n\n**Bước 3.** Tính tổng và chọn phương án tương ứng.\n\n**Phần 2. Trình bày**\n\nTa có\n$$\\lim(u_n+v_n)=\\lim u_n+\\lim v_n=4+3=7.$$\nVậy $\\lim(u_n+v_n)=7$ (đáp án A).",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004093",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn của hằng số nhân với dãy bằng hằng số nhân với giới hạn; giới hạn của hiệu bằng hiệu các giới hạn.\n\n**Bước 1.** Tách giới hạn của biểu thức thành giới hạn của $3u_n$ và giới hạn của hằng số $1$.\n\n**Bước 2.** Thay giá trị giới hạn của $u_n$.\n\n**Bước 3.** Tính và chọn phương án tương ứng.\n\n**Phần 2. Trình bày**\n\nTa có\n$$\\lim(3u_n-1)=3\\lim u_n-1=3\\cdot2-1=5.$$\nVậy $\\lim(3u_n-1)=5$ (đáp án C).",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T111000000206",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với phân thức có tử và mẫu cùng bậc, chia cả tử và mẫu cho luỹ thừa bậc cao nhất của $n$.\n\n**Bước 1.** Xác định luỹ thừa bậc cao nhất của $n$ ở tử và mẫu.\n\n**Bước 2.** Chia cả tử và mẫu cho luỹ thừa đó để xuất hiện các số hạng dạng $\\dfrac{1}{n}$.\n\n**Bước 3.** Cho $n\\to+\\infty$, thay $\\dfrac{1}{n}\\to0$ rồi tính.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $n$, ta có\n$$\\lim \\dfrac{2n+1}{1+n}=\\lim \\dfrac{2+\\dfrac{1}{n}}{\\dfrac{1}{n}+1}=\\dfrac{2+0}{0+1}=2.$$\nVậy giới hạn cần tìm bằng $2$ (đáp án A).",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004091",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với phân thức có tử và mẫu cùng bậc, chia cả tử và mẫu cho luỹ thừa bậc cao nhất của $n$.\n\n**Bước 1.** Xác định luỹ thừa bậc cao nhất của $n$ ở tử và mẫu.\n\n**Bước 2.** Chia cả tử và mẫu cho $n$ để xuất hiện số hạng dạng $\\dfrac{c}{n}$.\n\n**Bước 3.** Cho $n\\to+\\infty$, thay $\\dfrac{c}{n}\\to0$ rồi tính.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $n$, ta có\n$$\\lim\\dfrac{3n+2}{2n}=\\lim\\dfrac{3+\\dfrac{2}{n}}{2}=\\dfrac{3+0}{2}=\\dfrac{3}{2}.$$\nVậy giới hạn cần tìm bằng $\\dfrac{3}{2}$ (đáp án A).",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004047",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với phân thức có tử và mẫu cùng bậc, chia cả tử và mẫu cho luỹ thừa bậc cao nhất của $n$.\n\n**Bước 1.** Xác định luỹ thừa bậc cao nhất của $n$ ở tử và mẫu.\n\n**Bước 2.** Chia cả tử và mẫu cho $n$ để xuất hiện các số hạng dạng $\\dfrac{c}{n}$.\n\n**Bước 3.** Cho $n\\to+\\infty$, thay $\\dfrac{c}{n}\\to0$ rồi rút ra tỉ số hệ số.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $n$, ta có\n$$\\lim\\dfrac{2025n+1}{2026n+2}=\\lim\\dfrac{2025+\\dfrac{1}{n}}{2026+\\dfrac{2}{n}}=\\dfrac{2025+0}{2026+0}=\\dfrac{2025}{2026}.$$\nVậy giới hạn cần tìm bằng $\\dfrac{2025}{2026}$ (đáp án B).",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T111000000132",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nếu $|u_n|\\to+\\infty$ (dù $u_n\\to+\\infty$ hay $u_n\\to-\\infty$) thì $\\dfrac{1}{u_n}\\to0$.\n\n**Bước 1.** Nhớ lại định lí về giới hạn vô cực của dãy số liên quan đến $\\dfrac{1}{u_n}$.\n\n**Bước 2.** Kiểm tra từng khẳng định có phù hợp với định lí không.\n\n**Bước 3.** Chọn khẳng định không phù hợp (đề hỏi khẳng định SAI).\n\n**Phần 2. Trình bày**\n\nTheo định lí về giới hạn vô cực của dãy số, nếu $\\lim u_{n}=+\\infty$ hoặc $\\lim u_{n}=-\\infty$ thì\n$$\\lim \\dfrac{1}{u_{n}}=0.$$\nDo đó các khẳng định ở A và C đúng; khẳng định ở B đúng vì đổi dấu $u_n$ thì đổi dấu giới hạn vô cực.\nKhẳng định ở D nói $\\lim \\dfrac{1}{u_{n}}=-\\infty$ là sai.\nVậy khẳng định sai là D.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004020",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biến đổi $a^{n+1}=a\\cdot a^n$ để rút gọn luỹ thừa chung của tử và mẫu.\n\n**Bước 1.** Tách luỹ thừa ở tử thành tích của một hằng số với luỹ thừa giống mẫu.\n\n**Bước 2.** Rút gọn luỹ thừa chung, còn lại một hằng số.\n\n**Bước 3.** Giới hạn của dãy hằng bằng chính hằng số đó; đổi sang số thập phân nếu cần.\n\n**Phần 2. Trình bày**\n\nVới mọi $n$, ta có\n$$\\dfrac{3^{n+1}}{4\\cdot3^n}=\\dfrac{3\\cdot3^n}{4\\cdot3^n}=\\dfrac{3}{4}.$$\nDãy này là dãy hằng nên giới hạn bằng chính nó.\nVậy $\\lim\\dfrac{3^{n+1}}{4\\cdot3^n}=\\dfrac{3}{4}=0{,}75$.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T111000000023",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tổng cấp số nhân lùi vô hạn ($|q|<1$) là $S=\\dfrac{u_1}{1-q}$.\n\n**Bước 1.** Xác định số hạng đầu $u_1$ từ dãy đã cho.\n\n**Bước 2.** Tính công bội $q$ rồi kiểm tra điều kiện $|q|<1$.\n\n**Bước 3.** Áp dụng công thức tổng và chọn phương án.\n\n**Phần 2. Trình bày**\n\nCấp số nhân có số hạng đầu $u_1=-\\dfrac{1}{2}$ và công bội $q=\\dfrac{u_2}{u_1}=\\dfrac{\\frac{1}{4}}{-\\frac{1}{2}}=-\\dfrac{1}{2}$, thoả $|q|<1$.\nDo đó tổng của cấp số nhân lùi vô hạn là\n$$S=\\dfrac{u_1}{1-q}=\\dfrac{-\\frac{1}{2}}{1+\\frac{1}{2}}=-\\dfrac{1}{3}.$$\nVậy tổng cần tìm bằng $-\\dfrac{1}{3}$ (đáp án D).",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T111000000015",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhận ra tổng đã cho là tổng cấp số nhân lùi vô hạn, dùng $S=\\dfrac{u_1}{1-q}$.\n\n**Bước 1.** Xác định số hạng đầu $u_1$ và công bội $q$ từ các số hạng liên tiếp.\n\n**Bước 2.** Kiểm tra điều kiện $|q|<1$.\n\n**Bước 3.** Áp dụng công thức tổng và rút gọn phân số.\n\n**Phần 2. Trình bày**\n\nSố hạng đầu $u_1=-1$ và công bội\n$$q=\\dfrac{u_2}{u_1}=\\dfrac{u_3}{u_2}=\\ldots=-\\dfrac{1}{6}\\quad(|q|<1).$$\nDo đó\n$$S=\\dfrac{u_1}{1-q}=\\dfrac{-1}{1+\\frac{1}{6}}=-\\dfrac{6}{7}.$$\nVậy $S=-\\dfrac{6}{7}$ (đáp án B).",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T111000000019",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhận ra tổng đã cho là tổng cấp số nhân lùi vô hạn, dùng $S=\\dfrac{u_1}{1-q}$.\n\n**Bước 1.** Xác định số hạng đầu $u_1$ và công bội $q$ từ dạng tổng quát $\\dfrac{1}{3^n}$.\n\n**Bước 2.** Kiểm tra điều kiện $|q|<1$.\n\n**Bước 3.** Áp dụng công thức tổng và rút gọn phân số.\n\n**Phần 2. Trình bày**\n\n$S$ là tổng của cấp số nhân lùi vô hạn $(u_n)$ với $u_n=\\dfrac{1}{3^n}$, có số hạng đầu $u_1=\\dfrac{1}{3}$ và công bội $q=\\dfrac{1}{3}$ (thoả $|q|<1$).\nDo đó\n$$S=\\dfrac{u_1}{1-q}=\\dfrac{\\frac{1}{3}}{1-\\frac{1}{3}}=\\dfrac{1}{2}.$$\nVậy $S=\\dfrac{1}{2}$ (đáp án D).",
+  "ghi_chu": "Lời giải cũ ghi nhầm 'công sai q'; đã sửa thành 'công bội q'. Đáp số không đổi."
+ },
+ {
+  "ma_cau": "T111000000016",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết số thập phân tuần hoàn thành tổng cấp số nhân lùi vô hạn rồi dùng $S=\\dfrac{u_1}{1-q}$.\n\n**Bước 1.** Tách số thập phân thành tổng các nhóm chu kỳ liên tiếp.\n\n**Bước 2.** Xác định số hạng đầu và công bội của cấp số nhân tạo thành.\n\n**Bước 3.** Áp dụng công thức tổng, rút gọn rồi đối chiếu phương án.\n\n**Phần 2. Trình bày**\n\nTa có\n$$0{,}121212\\ldots=\\dfrac{12}{10^2}+\\dfrac{12}{10^4}+\\dfrac{12}{10^6}+\\ldots+\\dfrac{12}{10^{2n}}+\\ldots$$\nĐây là cấp số nhân lùi vô hạn có $u_1=\\dfrac{12}{100}$ và $q=\\dfrac{1}{100}$.\nDo đó\n$$0{,}121212\\ldots=\\dfrac{\\frac{12}{100}}{1-\\frac{1}{100}}=\\dfrac{12}{99}=\\dfrac{4}{33}.$$\nVậy số đã cho được biểu diễn bởi phân số $\\dfrac{12}{99}$ (đáp án B).",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T111000000014",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tách phần không tuần hoàn, phần còn lại là tổng cấp số nhân lùi vô hạn, dùng $S=\\dfrac{u_1}{1-q}$.\n\n**Bước 1.** Tách số thập phân thành phần hữu hạn cộng với phần tuần hoàn viết thành tổng các số hạng.\n\n**Bước 2.** Xác định số hạng đầu và công bội của cấp số nhân ở phần tuần hoàn.\n\n**Bước 3.** Tính tổng phần tuần hoàn rồi cộng với phần hữu hạn.\n\n**Phần 2. Trình bày**\n\nTa có\n$$3{,}1555\\ldots=3{,}1+0{,}05+0{,}005+0{,}0005+\\ldots$$\nDãy $0{,}05;\\ 0{,}005;\\ 0{,}0005;\\ \\ldots$ là cấp số nhân lùi vô hạn có $u_1=0{,}05$ và $q=0{,}1$.\nDo đó\n$$3{,}1555\\ldots=3{,}1+\\dfrac{0{,}05}{1-0{,}1}=\\dfrac{31}{10}+\\dfrac{1}{18}=\\dfrac{142}{45}.$$\nVậy $3{,}1(5)=\\dfrac{142}{45}$ (đáp án B).",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T111000000049",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quãng đường chia thành hai nhóm: các lần rơi xuống và các lần nảy lên; mỗi nhóm là một cấp số nhân lùi vô hạn.\n\n**Bước 1.** Gọi tên độ dài đường đi của lần rơi thứ $n$ và lần nảy thứ $n$, xác định số hạng đầu của mỗi dãy.\n\n**Bước 2.** Xác định công bội chung của hai cấp số nhân.\n\n**Bước 3.** Tính tổng của mỗi cấp số nhân bằng công thức tổng lùi vô hạn.\n\n**Bước 4.** Cộng hai tổng để được tổng quãng đường.\n\n**Phần 2. Trình bày**\n\nGọi $h_n$ là độ dài đường đi ở lần rơi xuống thứ $n$ và $l_n$ là độ dài đường đi ở lần nảy lên thứ $n$ ($n\\in\\mathbb{N}^*$).\nTheo đề, $h_1=55{,}8$ và $l_1=\\dfrac{1}{10}\\cdot55{,}8=5{,}58$.\nCác dãy $(h_n)$, $(l_n)$ đều là cấp số nhân lùi vô hạn với công bội $q=\\dfrac{1}{10}$.\nTổng độ dài đường đi của quả bóng là\n$$S=\\dfrac{h_1}{1-\\frac{1}{10}}+\\dfrac{l_1}{1-\\frac{1}{10}}=\\dfrac{10}{9}(h_1+l_1)=\\dfrac{10}{9}\\cdot61{,}38=68{,}2\\ (\\text{m}).$$\nVậy tổng độ dài hành trình của quả bóng là $68{,}2$ m.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T111000000031",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi đoạn bóng đi xuống (trừ lần thả đầu) đều có một đoạn đi lên bằng nó, nên tổng quãng đường bằng hai lần tổng các đoạn đi xuống trừ đi độ cao thả ban đầu.\n\n**Bước 1.** Xác định dãy các quãng đường đi xuống: số hạng đầu và công bội.\n\n**Bước 2.** Tính tổng các quãng đường đi xuống bằng công thức tổng cấp số nhân lùi vô hạn.\n\n**Bước 3.** Suy ra tổng quãng đường cả đi lên và đi xuống rồi đối chiếu phương án.\n\n**Phần 2. Trình bày**\n\nCác quãng đường khi bóng đi xuống tạo thành cấp số nhân lùi vô hạn có $u_1=10$ và $q=\\dfrac{3}{4}$.\nTổng các quãng đường đi xuống là\n$$S=\\dfrac{u_1}{1-q}=\\dfrac{10}{1-\\frac{3}{4}}=40\\ (\\text{m}).$$\nQuãng đường đi lên bằng tổng đi xuống bỏ đoạn thả đầu tiên, nên tổng quãng đường đến khi bóng dừng hẳn là\n$$2S-10=2\\cdot40-10=70\\ (\\text{m}).$$\nVậy tổng quãng đường bóng đi được là $70$ m (đáp án B).",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T111000000052",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích các hình vuông lập thành cấp số nhân lùi vô hạn; tổng $T=\\dfrac{S_1}{1-q}$ giúp tìm $a$.\n\n**Bước 1.** Tính cạnh hình vuông $C_2$ theo cạnh $a$ bằng định lí Pythagore, từ đó suy ra tỉ số diện tích $\\dfrac{S_2}{S_1}$.\n\n**Bước 2.** Chứng minh tương tự tỉ số này không đổi nên $(S_n)$ là cấp số nhân lùi vô hạn; xác định $S_1$ và công bội $q$.\n\n**Bước 3.** Viết tổng $T$ theo $a$ bằng công thức tổng lùi vô hạn.\n\n**Bước 4.** Cho $T=\\dfrac{32}{3}$ và giải phương trình tìm $a$.\n\n**Phần 2. Trình bày**\n\nCạnh của hình vuông $(C_2)$ là\n$$a_2=\\sqrt{\\left(\\dfrac{3}{4}a\\right)^2+\\left(\\dfrac{1}{4}a\\right)^2}=\\dfrac{a\\sqrt{10}}{4}.$$\nDo đó diện tích $S_2=\\dfrac{10}{16}a^2=\\dfrac{5}{8}a^2=\\dfrac{5}{8}S_1$.\nTương tự, $a_3=a_2\\cdot\\dfrac{\\sqrt{10}}{4}$ nên $S_3=\\dfrac{5}{8}S_2$, và cứ thế $S_{n+1}=\\dfrac{5}{8}S_n$.\nVậy $S_1,S_2,S_3,\\ldots$ là cấp số nhân lùi vô hạn có $u_1=S_1=a^2$ và $q=\\dfrac{5}{8}$.\nKhi đó\n$$T=\\dfrac{S_1}{1-q}=\\dfrac{a^2}{1-\\frac{5}{8}}=\\dfrac{8a^2}{3}.$$\nVới $T=\\dfrac{32}{3}$ ta có $a^2=4$, suy ra $a=2$ (vì $a>0$).\nVậy $a=2$.",
+  "ghi_chu": null
+ }
+]

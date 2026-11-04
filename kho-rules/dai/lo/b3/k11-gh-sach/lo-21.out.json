@@ -1,0 +1,72 @@
+[
+ {
+  "ma_cau": "T1110000001804",
+  "dang_bai_id": "NDB01167",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Lập cấp số nhân lùi vô hạn của độ dài hoặc diện tích, tính tổng"
+ },
+ {
+  "ma_cau": "T1110000002922",
+  "dang_bai_id": "NDB01195",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Đa thức, phân thức, căn, lượng giác, tổng hiệu tích thương hàm liên tục"
+ },
+ {
+  "ma_cau": "T1110000001944",
+  "dang_bai_id": "NDB01170",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "cho lim f, lim g tính giới hạn biểu thức"
+ },
+ {
+  "ma_cau": "T1110000002790",
+  "dang_bai_id": "NDB01183",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Dùng x^k chẵn hoặc lẻ khi x→-∞"
+ },
+ {
+  "ma_cau": "T1110000001975",
+  "dang_bai_id": "NDB01178",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chia tử và mẫu cho luỹ thừa cao nhất của x"
+ },
+ {
+  "ma_cau": "T1110000002074",
+  "dang_bai_id": "NDB01170",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "cho lim f, lim g tính giới hạn biểu thức"
+ },
+ {
+  "ma_cau": "T1110000002955",
+  "dang_bai_id": "NDB01190",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Trắc nghiệm: có giới hạn nhưng không liên tục"
+ },
+ {
+  "ma_cau": "T1110000001676",
+  "dang_bai_id": "NDB01149",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chứng minh lim u_n=a bằng lim(u_n-a)=0"
+ },
+ {
+  "ma_cau": "T1110000002015",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Triệt nhân tử chung x-x_0"
+ },
+ {
+  "ma_cau": "T1110000001741",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Khớp rõ mô tả/ví dụ của dạng đã chọn (dạng sau thắng khi hai dạng cùng hợp).",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ }
+]

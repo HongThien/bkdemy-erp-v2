@@ -1,0 +1,20 @@
+{
+ "id": "NDB01352",
+ "ten": "Tìm giá trị của tham số để dãy số là cấp số cộng",
+ "mo_ta": "Đề cho ba số (hoặc ba số hạng liên tiếp) có chứa tham số, hoặc dãy $u_n$ có chứa tham số, yêu cầu tìm giá trị của tham số để đó là cấp số cộng. Không thuộc dạng này: tìm $x$ để ba số lập thành cấp số nhân (NDB01025), cho quan hệ giữa các số hạng rồi tìm $u_1$, $d$, bài cho tổng và tích ba số hạng liên tiếp.",
+ "ly_thuyet": "##TC\n• Dãy $(u_n)$ là cấp số cộng khi $u_{n+1}=u_n+d$ với mọi $n\\ge1$, tức hiệu $u_{n+1}-u_n=d$ không phụ thuộc $n$.\n• Ba số $a,b,c$ theo thứ tự là ba số hạng liên tiếp của cấp số cộng khi và chỉ khi $a+c=2b$.\n• Khi đó công sai $d=b-a=c-b$.\n• Dãy $u_n=an+b$ ($a,b$ là hằng số) là cấp số cộng với công sai $d=a$.\n\n##PP Tìm tham số để ba số lập thành cấp số cộng\nXác định số ở giữa theo thứ tự đề cho, lập $a+c=2b$.\nGiải phương trình theo tham số, kết hợp điều kiện của đề (nếu có).\nThử lại bằng cách tính ba số rồi kiểm tra hiệu hai số liên tiếp bằng nhau.\n\n##PP Tìm tham số để dãy $u_n$ là cấp số cộng\nTính $u_{n+1}-u_n$ theo $n$ và tham số.\nCho hiệu này không phụ thuộc $n$ (hệ số của $n$ bằng $0$), giải ra tham số.\nVới mỗi giá trị tham số tìm được, kiểm tra và tính công sai.\n\n##CY\nThứ tự ba số do đề cho xác định số nào ở giữa; đổi thứ tự thì phương trình $a+c=2b$ đổi theo.\nDãy hằng ($d=0$) vẫn là cấp số cộng.",
+ "vi_du": "##VD\nTìm $x$ để ba số $x+1$; $3x-2$; $4x+1$ theo thứ tự đó lập thành một cấp số cộng.\n\nBài giải:\nBa số lập thành cấp số cộng khi $(x+1)+(4x+1)=2(3x-2)$.\n$\\Leftrightarrow 5x+2=6x-4$\n$\\Leftrightarrow x=6$.\nThử lại: với $x=6$ ba số là $7;\\ 16;\\ 25$, có $16-7=25-16=9$ nên là cấp số cộng với công sai $9$.\nVậy $x=6$.\n\n##VD\nTìm $x$ để ba số $x^2$; $x+1$; $3x-4$ theo thứ tự đó lập thành một cấp số cộng.\n\nBài giải:\nBa số lập thành cấp số cộng khi $x^2+(3x-4)=2(x+1)$.\n$\\Leftrightarrow x^2+x-6=0$\n$\\Leftrightarrow (x-2)(x+3)=0$\n$\\Leftrightarrow x=2$ hoặc $x=-3$.\nVới $x=2$ ba số là $4;\\ 3;\\ 2$ có công sai $-1$.\nVới $x=-3$ ba số là $9;\\ -2;\\ -13$ có công sai $-11$.\nCả hai giá trị đều thoả mãn.\nVậy $x=2$ hoặc $x=-3$.\n\n##VD\nTìm $m$ để dãy số $(u_n)$ với $u_n=(m^2-3m+2)n^2+(m+1)n+5$ là một cấp số cộng. Với mỗi giá trị $m$ tìm được, hãy cho biết công sai.\n\nBài giải:\nTa có $u_{n+1}-u_n=(m^2-3m+2)\\left[(n+1)^2-n^2\\right]+(m+1)$\n$=(m^2-3m+2)(2n+1)+(m+1)$.\nHiệu này không phụ thuộc $n$ khi và chỉ khi $m^2-3m+2=0$, tức $m=1$ hoặc $m=2$.\nVới $m=1$: $u_n=2n+5$, $u_{n+1}-u_n=2$ nên là cấp số cộng với $d=2$.\nVới $m=2$: $u_n=3n+5$, $u_{n+1}-u_n=3$ nên là cấp số cộng với $d=3$.\nVậy $m=1$ (công sai $2$) hoặc $m=2$ (công sai $3$).",
+ "nguon": [
+  {
+   "sach": "PNL Toán 11 2026",
+   "bai/tep": "Bài 02. Cấp số cộng, Dạng 02 (GV/HS), Bài tập 3 'Tìm ... sao cho ... là ba số hạng liên tiếp của một cấp số cộng' và phần Nhận xét",
+   "ghi_chu": "Xác nhận kiểu bài và hệ thức $a+c=2b$. Công thức trong file .docx nguồn không trích được bằng zipfile+xml (MathType/ảnh) nên đề và lời giải TỰ VIẾT lại bằng LaTeX và TỰ KIỂM TOÁN; sách chỉ dùng xác nhận kiểu bài."
+  },
+  {
+   "sach": "Toán 11 Từ Tâm",
+   "bai/tep": "C2-B2-CẤP SỐ CỘNG-P1.docx, Ví dụ 3.2 và 3.4 (tìm tham số để ba số lập cấp số cộng)",
+   "ghi_chu": "Ví dụ 3.7 (nghiệm phương trình bậc ba lập cấp số cộng) là kiểu khác, không đưa vào. 3 ví dụ do soạn."
+  }
+ ],
+ "ghi_chu": "Câu thật gán dạng này trong lô K11: T111060201046 (ba số $-x;12;2x-1$, đáp số $x=25$). Ví dụ tự soạn, đã kiểm lại."
+}

@@ -1,0 +1,250 @@
+[
+ {
+  "ma_cau": "T1110000001025",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to0}\\dfrac{1-\\sqrt[3]{1-x}}{x}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001026",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to1}\\dfrac{\\sqrt{2x+2}+\\sqrt{5x+4}-5}{x-1}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001027",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to2}\\dfrac{\\sqrt[3]{3x+2}-\\sqrt{5x-6}}{x-2}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001028",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to-\\infty}\\dfrac{3x^2-x+7}{2x^3-1}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001029",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to-\\infty}\\left(\\sqrt{2x^2+1}+x\\right)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001030",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to+\\infty}\\dfrac{3x^2-x+3}{x-4}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001031",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to+\\infty}\\left(\\sqrt{x^2-4x}-x\\right)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001032",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to+\\infty}\\left(\\sqrt{x^2+1}-x\\right)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001033",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to-\\infty}\\left(\\sqrt{x^2-3x+2}+x\\right)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001034",
+  "loai": "tu_luan",
+  "de": "Cho hàm số $f(x)=\\begin{cases} 2x^3-2x & \\text{khi } x\\ge1 \\\\ x^3-3x & \\text{khi } x<1 \\end{cases}$. Tìm $\\lim_{x\\to1^-}f(x)$, $\\lim_{x\\to1^+}f(x)$. Hàm số có giới hạn tại $x=1$ không? Vì sao?",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001036",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to(-1)^+}\\dfrac{x^2+4x+3}{\\sqrt{x^3+x^2}}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001037",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to1^-}\\sqrt{\\dfrac{4-4x^3}{3x^2+5x}}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001038",
+  "loai": "tu_luan",
+  "de": "Cho hàm số $f(x)=\\begin{cases} 5x^4-6x^2-x & \\text{khi } x\\ge1 \\\\ x^3-3x & \\text{khi } x<1 \\end{cases}$. Tìm $\\lim_{x\\to1^-}f(x)$, $\\lim_{x\\to1^+}f(x)$. Hàm số có giới hạn tại $x=1$ không? Vì sao?",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001039",
+  "loai": "tu_luan",
+  "de": "Cho hàm số $y=f(x)=\\begin{cases} \\dfrac{2-\\sqrt{x+3}}{x^2-1} & \\text{khi } x\\neq1 \\\\ \\dfrac18 & \\text{khi } x=1 \\end{cases}$. a) Tìm $\\lim_{x\\to1}f(x)$. So sánh $\\lim_{x\\to1}f(x)$ và $f(1)$. b) Tìm $\\lim_{x\\to(-3)^+}f(x)$. So sánh $\\lim_{x\\to(-3)^+}f(x)$ và $f(-3)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001040",
+  "loai": "tu_luan",
+  "de": "Chứng minh rằng hàm số $f(x)=\\begin{cases} \\dfrac{x^3+x+2}{x^3+1} & \\text{khi } x\\neq-1 \\\\ \\dfrac43 & \\text{khi } x=-1 \\end{cases}$ liên tục trên $\\mathbb{R}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001041",
+  "loai": "tu_luan",
+  "de": "Chứng minh rằng hàm số $f(x)=\\begin{cases} \\dfrac32 & \\text{khi } x\\le0 \\\\ \\dfrac{\\sqrt{x+1}-1}{\\sqrt[3]{x+1}-1} & \\text{khi } x>0 \\end{cases}$ liên tục trên $\\mathbb{R}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001042",
+  "loai": "tu_luan",
+  "de": "Xét tính liên tục của hàm số $f(x)=\\begin{cases} \\dfrac{x^2-2x-3}{x-3} & \\text{khi } x\\neq3 \\\\ 4 & \\text{khi } x=3 \\end{cases}$ trên tập xác định của nó.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001043",
+  "loai": "tu_luan",
+  "de": "Xét tính liên tục của hàm số $f(x)=\\begin{cases} x^3+x+1 & \\text{khi } x\\ge1 \\\\ 2x+4 & \\text{khi } x<1 \\end{cases}$ trên tập xác định của nó.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001044",
+  "loai": "tu_luan",
+  "de": "Chứng minh rằng phương trình $(1-m^2)x^5-3x-1=0$ luôn có nghiệm.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001045",
+  "loai": "tu_luan",
+  "de": "Chứng minh rằng phương trình $(m^2+m+1)x^4+2x-2=0$ luôn có nghiệm.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001046",
+  "loai": "tu_luan",
+  "de": "Chứng minh rằng phương trình $(m^2+1)x^3-2m^2x^2-4x+m^2+1=0$ luôn có $3$ nghiệm.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001062",
+  "loai": "tu_luan",
+  "de": "Xét tính liên tục của hàm số trên tập xác định $f(x)=\\begin{cases}\\dfrac{x^2-3x+2}{|x-1|} & \\text{khi } x\\neq1 \\\\ m & \\text{khi } x=1\\end{cases}$",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Việt Đức, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001077",
+  "loai": "tu_luan",
+  "de": "Tìm tất cả các giá trị thực của tham số $m$ để hàm số $f(x)=\\begin{cases}\\dfrac{x^2-16}{x-4} & \\text{khi } x>4\\\\ mx+1 & \\text{khi } x\\le4\\end{cases}$ liên tục trên $\\mathbb{R}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Việt Đức, Hà Nội"
+ },
+ {
+  "ma_cau": "T1110000001160",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn của dãy số $\\lim\\limits_{n\\to+\\infty}\\dfrac{-4n^2+n+2}{2n^2+n+1}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Nội dung ôn tập học kì I Toán 11 năm 2025–2026 — Trường THPT Nguyễn Trãi, Ba Đình"
+ },
+ {
+  "ma_cau": "T1110000001161",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn của dãy số $\\lim\\limits_{n\\to+\\infty}\\dfrac{\\sqrt{n^4+2n+2}}{n^2+1}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Nội dung ôn tập học kì I Toán 11 năm 2025–2026 — Trường THPT Nguyễn Trãi, Ba Đình"
+ },
+ {
+  "ma_cau": "T1110000001162",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn của dãy số $\\lim\\limits_{n\\to+\\infty}\\dfrac{3^{n+1}-4^n}{4^{n-1}+3}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Nội dung ôn tập học kì I Toán 11 năm 2025–2026 — Trường THPT Nguyễn Trãi, Ba Đình"
+ },
+ {
+  "ma_cau": "T1110000001163",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn của dãy số $\\lim\\limits_{n\\to+\\infty}\\dfrac{n^3+1}{n^2-2n+3}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Nội dung ôn tập học kì I Toán 11 năm 2025–2026 — Trường THPT Nguyễn Trãi, Ba Đình"
+ },
+ {
+  "ma_cau": "T1110000001164",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn của dãy số $\\lim\\limits_{n\\to+\\infty}\\dfrac{1+2+2^2+\\dots+2^n}{1+3+3^2+\\dots+3^n}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Nội dung ôn tập học kì I Toán 11 năm 2025–2026 — Trường THPT Nguyễn Trãi, Ba Đình"
+ },
+ {
+  "ma_cau": "T1110000001165",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn của hàm số $\\lim\\limits_{x\\to0}\\dfrac{1+x+x^2+x^3}{1+x}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Nội dung ôn tập học kì I Toán 11 năm 2025–2026 — Trường THPT Nguyễn Trãi, Ba Đình"
+ },
+ {
+  "ma_cau": "T1110000001166",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn của hàm số $\\lim\\limits_{x\\to-1}\\dfrac{\\sqrt{3x^2+1}-x}{x-1}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Nội dung ôn tập học kì I Toán 11 năm 2025–2026 — Trường THPT Nguyễn Trãi, Ba Đình"
+ },
+ {
+  "ma_cau": "T1110000001167",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn của hàm số $\\lim\\limits_{x\\to1}\\dfrac{\\sqrt{x+8}-3}{x-2}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Nội dung ôn tập học kì I Toán 11 năm 2025–2026 — Trường THPT Nguyễn Trãi, Ba Đình"
+ }
+]

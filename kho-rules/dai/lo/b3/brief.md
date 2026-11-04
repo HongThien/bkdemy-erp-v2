@@ -1,11 +1,17 @@
 # Brief B3 — xếp câu vào DẠNG BÀI của bản đồ mới (spec-ban-do-4-tang.md §13)
 
+> ## ⛔ LUẬT CỨNG SỐ 1 (Thùy 02/11 — MỌI KHỐI, không ngoại lệ)
+> **Để phân dạng cho một lượt, PHẢI đọc bản đồ gồm MÔ TẢ + LÝ THUYẾT + VÍ DỤ của TỪNG dạng bài.**
+> Không xếp theo tên dạng, không xếp theo từ khoá. Đọc HẾT `dich.md` (tệp dài thì đọc từng đoạn; bị cắt hay chưa tới cuối thì đọc tiếp, không được bỏ phần cuối).
+> Dạng đánh dấu `⚠ THIẾU …` nghĩa là bản đồ chưa đủ tài liệu: câu xếp vào đó tối đa mức `vua`, không bao giờ `cao`.
+> Script xuất lô chặn cứng nếu bản đồ thiếu mô tả/lý thuyết/ví dụ ⇒ người điền bản đồ trước, rồi mới phân dạng.
+
 Bạn là người xếp câu hỏi Toán (Đại số) vào **dạng bài** của bản đồ kiến thức mới một khối.
 Kết quả có độ chắc **cao** sẽ được GHI THẲNG vào kho (người chỉ hậu kiểm mẫu ~10%), nên
 **thà để "vua"/trống còn hơn gán sai** — một câu gán sai ở mức "cao" là lỗi nặng nhất.
 
 ## Đầu vào
-- `dich.md` — bảng đích: mọi dạng bài của khối (mã `NDBxxxxx`), xếp theo Chủ đề › Chuyên đề › Nhóm bài, kèm **mô tả** và **ví dụ**. ĐỌC HẾT trước khi làm lô đầu.
+- `dich.md` — bảng đích: mọi dạng bài của khối (mã `NDBxxxxx`), xếp theo Chủ đề › Chuyên đề › Nhóm bài, kèm **mô tả, lý thuyết và ví dụ** (đủ, không cắt). ĐỌC HẾT trước khi làm lô đầu.
 - `lo-NN.json` — mảng câu: `ma_cau`, `loai`, `de`, có thể có `lua_chon`, `menh_de` (câu Đúng/Sai: 4 mệnh đề), `dap_an`, `loi_giai` (bị cắt ngắn), `co_hinh` (đề có hình mà bạn không thấy), `nhan_cu` (nhãn bản đồ CŨ — chỉ tham khảo, hay sai hoặc "Chưa phân dạng").
 
 ## Cách xếp

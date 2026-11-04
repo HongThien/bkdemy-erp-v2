@@ -1,0 +1,197 @@
+[
+ {
+  "ma_cau": "HHC011070",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ đáy $ABCD$ là hình vuông có cạnh $AB=3$; $SD=5$. Biết $SA$ vuông góc với mặt phẳng đáy. Khoảng cách từ điểm $S$ đến mặt phẳng $(ABCD)$ bằng:",
+  "lua_chon": [
+   "$5$.",
+   "$3$.",
+   "$4a$.",
+   "$4$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "$SA\\perp(ABCD)$ nên $d(S,(ABCD))=SA$. $AD=AB=3$, tam giác $SAD$ vuông tại $A$: $SA=\\sqrt{SD^2-AD^2}=\\sqrt{25-9}=4$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC011071",
+  "loai": "trac_nghiem",
+  "de": "Cho hình lập phương $ABCD.EFGH$ có độ dài cạnh bằng 7, khoảng cách giữa hai mặt $(ABFE)$ và $(DCGH)$ bằng:",
+  "lua_chon": [
+   "$14$.",
+   "$7\\sqrt2$.",
+   "$49$.",
+   "$7$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Hai mặt $(ABFE)$ và $(DCGH)$ là hai mặt đối diện, song song nên khoảng cách bằng độ dài cạnh $=7$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC011072",
+  "loai": "dung_sai",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông tâm $O$ với độ dài $AB=2$, $SO\\perp(ABCD)$, góc tạo bởi $SA$ và mặt phẳng đáy bằng $60^{\\circ}$. Khi đó:",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$S_{ABCD}=2^2=4$.",
+    "noi_dung": "Diện tích đáy $S_{ABCD}=2$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$AO=\\frac{AC}2=\\sqrt2$. Góc giữa $SA$ và đáy là $\\widehat{SAO}=60^{\\circ}$ nên $SO=AO\\tan60^{\\circ}=\\sqrt2\\cdot\\sqrt3=\\sqrt6$, đó là khoảng cách từ $S$ đến $(ABCD)$.",
+    "noi_dung": "Khoảng cách từ điểm $S$ đến $(ABCD)$ là $\\sqrt6$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$V=\\frac13\\cdot4\\cdot\\sqrt6=\\frac{4\\sqrt6}3\\neq4\\sqrt6$.",
+    "noi_dung": "Thể tích hình chóp $V_{S.ABCD}=4\\sqrt6$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Chọn hệ tọa độ $A(0;0;0)$, $B(2;0;0)$, $D(0;2;0)$, $S(1;1;\\sqrt6)$. $BC\\parallel AD$ nên $d(SA,BC)=d(B,(SAD))$. Có $\\overrightarrow{SA}=(-1;-1;-\\sqrt6)$, $\\overrightarrow{AD}=(0;2;0)$, pháp tuyến $(SAD)$: $\\vec n=(\\sqrt6;0;-1)$. $d=\\frac{|\\overrightarrow{AB}\\cdot\\vec n|}{|\\vec n|}=\\frac{2\\sqrt6}{\\sqrt7}=\\frac{2\\sqrt{42}}7\\approx1{,}85\\neq\\sqrt{21}$.",
+    "noi_dung": "Khoảng cách giữa hai đường thẳng $SA$ và $BC$ là $\\sqrt{21}$."
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC011073",
+  "loai": "tra_loi_ngan",
+  "de": "Một thợ xây cần xây một bể nước hình lăng trụ đứng có đáy là tam giác đều, chứa được $1\\,m^3$ nước. Biết rằng chi phí để làm nắp đậy, tường xung quanh và đáy dưới là $1$ triệu đồng trên $1\\,m^2$. Hỏi người thợ xây cần ít nhất bao nhiêu triệu đồng để hoàn thành công việc? (kết quả làm tròn đến hàng phần chục)",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "6,5",
+  "loi_giai": "Gọi cạnh đáy $a$, chiều cao $h$. $V=\\frac{\\sqrt3}4a^2h=1\\Rightarrow h=\\frac4{\\sqrt3a^2}$. Diện tích cần làm: $S=2\\cdot\\frac{\\sqrt3}4a^2+3ah=\\frac{\\sqrt3}2a^2+\\frac{4\\sqrt3}a$. $S'=\\sqrt3a-\\frac{4\\sqrt3}{a^2}=0\\Leftrightarrow a^3=4$, $a=\\sqrt[3]4$. Khi đó $S_{\\min}=\\frac{\\sqrt3}2\\sqrt[3]{16}+\\frac{4\\sqrt3}{\\sqrt[3]4}\\approx6{,}547$. Chi phí ít nhất $\\approx6{,}5$ triệu đồng.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC011074",
+  "loai": "tra_loi_ngan",
+  "de": "Cho tam giác đều $ABC$ cạnh $a$, $I$ là trung điểm của $BC$, $D$ là điểm đối xứng với $A$ qua $I$. Vẽ đoạn thẳng $SD$ có độ dài bằng $\\frac{a\\sqrt6}2$ và vuông góc với mặt phẳng $(ABC)$. Tính góc $\\varphi$ (đơn vị: độ) giữa hai mặt phẳng $(SAB)$ và $(SAC)$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "90",
+  "loi_giai": "Chọn $A$ làm gốc, $AI$ trên trục $Ox$: $A(0;0;0)$, $B(\\frac{a\\sqrt3}2;-\\frac a2;0)$, $C(\\frac{a\\sqrt3}2;\\frac a2;0)$, $D(a\\sqrt3;0;0)$, $S(a\\sqrt3;0;\\frac{a\\sqrt6}2)$. Lấy $a=1$: $\\overrightarrow{AS}=(\\sqrt3;0;\\frac{\\sqrt6}2)$. $\\overrightarrow{AB}=(\\frac{\\sqrt3}2;-\\frac12;0)$, $\\overrightarrow{AC}=(\\frac{\\sqrt3}2;\\frac12;0)$. Pháp tuyến $\\vec n_1=[\\overrightarrow{AB},\\overrightarrow{AS}]=(-\\frac{\\sqrt6}4;-\\frac{3\\sqrt2}4;\\frac{\\sqrt3}2)$, $\\vec n_2=[\\overrightarrow{AC},\\overrightarrow{AS}]=(\\fr",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC011075",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp $S.ABCD$ có $SA\\perp(ABCD)$, $SA=3$, $ABCD$ là hình vuông cạnh bằng $1$. Tính khoảng cách giữa hai đường thẳng $AC$ và $SB$. (Làm tròn đến kết quả hàng phần trăm)",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "0,69",
+  "loi_giai": "Chọn $A(0;0;0)$, $B(1;0;0)$, $C(1;1;0)$, $S(0;0;3)$. $\\overrightarrow{AC}=(1;1;0)$, $\\overrightarrow{SB}=(1;0;-3)$, $[\\overrightarrow{AC},\\overrightarrow{SB}]=(-3;3;-1)$, độ dài $\\sqrt{19}$. $d(AC,SB)=\\frac{|\\overrightarrow{AB}\\cdot[\\overrightarrow{AC},\\overrightarrow{SB}]|}{\\sqrt{19}}=\\frac3{\\sqrt{19}}\\approx0{,}69$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC011082",
+  "loai": "trac_nghiem",
+  "de": "Cho đường thẳng $a$ và mặt phẳng $(P)$. Gọi $a'$ là hình chiếu vuông góc của $a$ lên $(P)$, $\\alpha$ là góc giữa đường thẳng $a$ và mặt phẳng $(P)$. Khẳng định nào sau đây sai về $\\alpha$?",
+  "lua_chon": [
+   "$\\alpha$ nhận giá trị từ $0^{\\circ}$ đến $180^{\\circ}$.",
+   "Nếu $a\\perp(P)$ thì $\\alpha=90^{\\circ}$.",
+   "Nếu $a\\parallel(P)$ thì $\\alpha=0^{\\circ}$.",
+   "Nếu $a$ không vuông góc với mặt phẳng $(P)$ thì $\\alpha=(a,a')$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Góc giữa đường thẳng và mặt phẳng nhận giá trị từ $0^{\\circ}$ đến $90^{\\circ}$, không phải đến $180^{\\circ}$. Vậy A sai.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC011083",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành, $SA$ vuông góc với đáy. Góc giữa hai đường thẳng $SD$ và $BC$ bằng góc nào sau đây?",
+  "lua_chon": [
+   "$\\widehat{SCD}$.",
+   "$\\widehat{SDC}$.",
+   "$\\widehat{SDA}$.",
+   "$\\widehat{SCB}$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "$BC\\parallel AD$ nên góc giữa $SD$ và $BC$ bằng góc giữa $SD$ và $AD$, tức $\\widehat{SDA}$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC011084",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có $SA\\perp(ABCD)$. Hình chiếu vuông góc của đường thẳng $SB$ lên mặt phẳng $(ABCD)$ là đường thẳng",
+  "lua_chon": [
+   "$BC$.",
+   "$AB$.",
+   "$SB$.",
+   "$BD$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Hình chiếu của $S$ lên $(ABCD)$ là $A$, của $B$ là chính $B$ nên hình chiếu của $SB$ là $AB$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC011085",
+  "loai": "dung_sai",
+  "de": "Cho hình chóp $S.ABCD$, $ABCD$ là hình vuông tâm $O$ cạnh $a$, $SA=2a$ và $SA\\perp(ABCD)$. Gọi $H$ là trung điểm của $SB$. Các mệnh đề sau đúng hay sai?",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$V=\\frac13\\cdot a^2\\cdot2a=\\frac{2a^3}3$.",
+    "noi_dung": "Thể tích của khối chóp $S.ABCD$ là $V=\\frac{2a^3}3$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$BD\\perp AC$ và $BD\\perp SA$ nên $BD\\perp(SAC)$, suy ra $BD\\perp SO$ và $BD\\perp CO$. Góc phẳng của nhị diện $[S,BD,C]$ là $\\widehat{SOC}=180^{\\circ}-\\widehat{SOA}$, không bằng $\\widehat{SOA}$.",
+    "noi_dung": "Số đo góc nhị diện $[S,BD,C]$ bằng số đo $\\widehat{SOA}$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$AD\\perp AB$ (hình vuông) và $AD\\perp SA$ nên $AD\\perp(SAB)$.",
+    "noi_dung": "$AD\\perp(SAB)$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$CD\\parallel AB$ nên $CD\\parallel(SAB)$, mà $AH\\subset(SAB)$. Do đó $d(AH,CD)=d(CD,(SAB))=d(D,(SAB))=AD=a$ (vì $AD\\perp(SAB)$).",
+    "noi_dung": "$d(AH,CD)=a$."
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC011086",
+  "loai": "tra_loi_ngan",
+  "de": "Bạn An có nhu cầu làm đá viên với hình dạng khối chóp cụt tứ giác đều. Mỗi viên đá có kích thước như sau: cạnh đáy lớn là $4$ cm, cạnh đáy nhỏ là $2$ cm và chiều cao là $3$ cm. Bạn An sử dụng loại khay làm đá mà mỗi khay có thể tạo ra đồng thời $6$ viên đá. Sau khi hoàn thành, bạn Mai đã có tổng cộng $5$ khay đá đầy. Hỏi An đã sử dụng bao nhiêu $cm^3$ nước để làm số đá viên này? (giả sử phần nước hao hụt khi làm là không đáng kể)",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "840",
+  "loi_giai": "Thể tích một viên đá (chóp cụt): $V=\\frac h3\\left(S_1+S_2+\\sqrt{S_1S_2}\\right)=\\frac33(16+4+8)=28$ cm$^3$. Số viên: $5\\cdot6=30$. Tổng thể tích nước: $30\\cdot28=840$ cm$^3$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC011087",
+  "loai": "tu_luan",
+  "de": "Cho hình lăng trụ $ABCD.A'B'C'D'$ có đáy $ABCD$ là hình vuông tâm $I$ cạnh bằng $a$, cạnh bên bằng $2a$; $A'I\\perp(ABCD)$.\na) Tính thể tích khối lăng trụ đã cho.\nb) Chứng minh: $(ACC'A')\\perp(A'B'C'D')$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "a) $V=\\frac{a^3\\sqrt{14}}2$; b) chứng minh (xem lời giải)",
+  "loi_giai": "a) $AI=\\frac{a\\sqrt2}2$. $A'I\\perp(ABCD)$ nên $A'I\\perp AI$, tam giác $A'AI$ vuông tại $I$: $A'I=\\sqrt{AA'^2-AI^2}=\\sqrt{4a^2-\\frac{a^2}2}=\\frac{a\\sqrt{14}}2$. Diện tích đáy $a^2$. $V=a^2\\cdot\\frac{a\\sqrt{14}}2=\\frac{a^3\\sqrt{14}}2$.\nb) $I$ là tâm hình vuông nên $I\\in AC$, suy ra $A'I\\subset(ACC'A')$. Mà $A'I\\perp(ABCD)$ nên $(ACC'A')\\perp(ABCD)$. Vì $(A'B'C'D')\\parallel(ABCD)$ nên $(ACC'A')\\perp(A'B'C'D')$.",
+  "co_hinh": false
+ }
+]

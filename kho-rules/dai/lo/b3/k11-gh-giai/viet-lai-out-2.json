@@ -1,0 +1,97 @@
+[
+ {
+  "ma_cau": "T1110000004042",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích các tam giác đều liên tiếp lập thành một cấp số nhân lùi vô hạn, nên tổng tính bằng $\\dfrac{S_1}{1-q}$.\n\n**Bước 1.** Tính cạnh và diện tích tam giác $A_1B_1C_1$ nội tiếp đường tròn bán kính $R$.\n**Bước 2.** Tìm bán kính đường tròn nội tiếp tam giác $A_1B_1C_1$, từ đó so sánh cạnh và diện tích của hai tam giác liên tiếp.\n**Bước 3.** Kết luận $(S_n)$ là cấp số nhân lùi vô hạn, xác định số hạng đầu $S_1$ và công bội $q$.\n**Bước 4.** Áp dụng công thức tổng cấp số nhân lùi vô hạn để tính $S$.\n\n**Phần 2. Trình bày**\n\nTam giác đều nội tiếp đường tròn bán kính $R=6$ có cạnh $A_1B_1=R\\sqrt{3}=6\\sqrt{3}$.\n\nDiện tích tam giác $A_1B_1C_1$ là $S_1=\\dfrac{\\sqrt{3}}{4}\\cdot\\left(6\\sqrt{3}\\right)^2=27\\sqrt{3}$.\n\nBán kính đường tròn nội tiếp tam giác $A_1B_1C_1$ là $\\dfrac{R}{2}=3$.\n\nTam giác $A_2B_2C_2$ nội tiếp đường tròn bán kính $\\dfrac{R}{2}$ nên cạnh của nó bằng $\\dfrac{1}{2}$ cạnh tam giác $A_1B_1C_1$.\n\nDo đó diện tích tam giác $A_2B_2C_2$ bằng $\\dfrac{1}{4}$ diện tích tam giác $A_1B_1C_1$, tức là $S_2=\\dfrac{1}{4}S_1$.\n\nLàm tương tự với các tam giác tiếp theo, dãy $(S_n)$ là cấp số nhân lùi vô hạn có $S_1=27\\sqrt{3}$ và $q=\\dfrac{1}{4}$.\n\n$$S=\\dfrac{S_1}{1-q}=\\dfrac{27\\sqrt{3}}{1-\\frac{1}{4}}=36\\sqrt{3}.$$\n\nVậy $S=36\\sqrt{3}\\ (\\text{cm}^2)$.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004021",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm phân thức xác định tại điểm đang xét thì giới hạn bằng giá trị của hàm tại điểm đó.\n\n**Bước 1.** Kiểm tra mẫu số khác $0$ tại $x=5$ để chắc hàm số xác định.\n**Bước 2.** Thay $x=5$ vào tử số và mẫu số rồi tính giá trị.\n\n**Phần 2. Trình bày**\n\nHàm số $f(x)=\\dfrac{x^2-5x-7}{x-3}$ xác định tại $x=5$ vì mẫu bằng $5-3=2\\neq0$.\n\nDo đó giới hạn bằng giá trị hàm số tại $x=5$:\n\n$$\\lim\\limits_{x\\to5}\\dfrac{x^2-5x-7}{x-3}=\\dfrac{25-25-7}{5-3}=-\\dfrac{7}{2}=-3{,}5.$$\n\nVậy giới hạn cần tìm bằng $-3{,}5$.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004097",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm đa thức liên tục trên $\\mathbb{R}$ nên giới hạn tại một điểm bằng giá trị của hàm tại điểm đó.\n\n**Bước 1.** Nhận ra $x^3+x+1$ là hàm đa thức.\n**Bước 2.** Thay $x=1$ vào biểu thức rồi tính.\n**Bước 3.** Đối chiếu kết quả với các đáp án.\n\n**Phần 2. Trình bày**\n\nHàm số $x^3+x+1$ là hàm đa thức nên liên tục tại $x=1$.\n\n$$I=\\lim\\limits_{x\\to1}\\left(x^3+x+1\\right)=1^3+1+1=3.$$\n\nVậy $I=3$, chọn đáp án B.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004010",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các quy tắc giới hạn của tổng, hiệu, tích luôn đúng; quy tắc giới hạn của thương chỉ đúng khi giới hạn của mẫu khác $0$.\n\n**Bước 1.** Nhớ lại các quy tắc giới hạn hữu hạn của hàm số và điều kiện đi kèm.\n**Bước 2.** Đối chiếu từng khẳng định, tìm khẳng định thiếu điều kiện cần thiết.\n\n**Phần 2. Trình bày**\n\nCác khẳng định A, B, C là đúng theo quy tắc giới hạn của tổng, hiệu và tích.\n\nKhẳng định D chỉ đúng khi $M\\neq0$, trong khi đề bài không cho điều kiện này (nếu $M=0$ thì $\\dfrac{L}{M}$ không có nghĩa).\n\nVậy khẳng định sai là D.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004026",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn của tích một hằng số với hàm số bằng hằng số đó nhân với giới hạn của hàm số.\n\n**Bước 1.** Áp dụng quy tắc $\\lim\\limits_{x\\to x_0}\\left[c\\cdot f(x)\\right]=c\\cdot\\lim\\limits_{x\\to x_0}f(x)$.\n**Bước 2.** Thay giá trị giới hạn đã cho và tính.\n\n**Phần 2. Trình bày**\n\n$$\\lim\\limits_{x\\to3}2f(x)=2\\cdot\\lim\\limits_{x\\to3}f(x)=2\\cdot(-2)=-4.$$\n\nVậy $\\lim\\limits_{x\\to3}2f(x)=-4$, chọn đáp án B.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004106",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn dạng $\\dfrac{0}{0}$ chứa căn thì nhân cả tử và mẫu với biểu thức liên hợp để khử căn và triệt tiêu nhân tử $x-4$.\n\n**Bước 1.** Nhận dạng: thay $x=4$ thấy tử và mẫu đều bằng $0$.\n**Bước 2.** Nhân tử và mẫu với biểu thức liên hợp của tử.\n**Bước 3.** Phân tích các biểu thức thành nhân tử và rút gọn nhân tử $x-4$.\n**Bước 4.** Thay $x=4$ vào biểu thức đã rút gọn để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to4$, tử và mẫu cùng tiến về $0$ nên ta nhân với biểu thức liên hợp $\\sqrt{2x+1}+3$:\n\n$$\\lim\\limits_{x\\to4}\\dfrac{\\sqrt{2x+1}-3}{x^2-16}=\\lim\\limits_{x\\to4}\\dfrac{(2x+1)-9}{(x^2-16)\\left(\\sqrt{2x+1}+3\\right)}.$$\n\nTa có $(2x+1)-9=2(x-4)$ và $x^2-16=(x-4)(x+4)$ nên\n\n$$\\lim\\limits_{x\\to4}\\dfrac{2(x-4)}{(x-4)(x+4)\\left(\\sqrt{2x+1}+3\\right)}=\\lim\\limits_{x\\to4}\\dfrac{2}{(x+4)\\left(\\sqrt{2x+1}+3\\right)}.$$\n\nThay $x=4$: $\\dfrac{2}{8\\cdot6}=\\dfrac{1}{24}$.\n\nVậy giới hạn bằng $\\dfrac{1}{24}$.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T111000000209",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với giới hạn của phân thức khi $x\\to-\\infty$, chia cả tử và mẫu cho lũy thừa bậc cao nhất của $x$.\n\n**Bước 1.** Xác định lũy thừa bậc cao nhất của $x$ ở tử và mẫu.\n**Bước 2.** Chia cả tử và mẫu cho lũy thừa đó.\n**Bước 3.** Dùng $\\lim\\limits_{x\\to-\\infty}\\dfrac{1}{x}=0$ để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $x$:\n\n$$\\lim\\limits_{x\\to-\\infty}\\dfrac{-2x-3}{2+x}=\\lim\\limits_{x\\to-\\infty}\\dfrac{-2-\\dfrac{3}{x}}{\\dfrac{2}{x}+1}=\\dfrac{-2-0}{0+1}=-2.$$\n\nVậy $\\lim\\limits_{x\\to-\\infty}\\dfrac{-2x-3}{2+x}=-2$, chọn đáp án B.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004022",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi $x\\to-\\infty$ thì $x<0$ nên $\\sqrt{x^2}=|x|=-x$; đưa $|x|$ ra ngoài căn rồi rút gọn với mẫu.\n\n**Bước 1.** Với $x<0$, đưa $x^2$ ra ngoài căn để được $|x|=-x$.\n**Bước 2.** Thế vào phân thức và rút gọn $x$ ở tử và mẫu.\n**Bước 3.** Cho $x\\to-\\infty$ để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nVới $x<0$ ta có $\\sqrt{x^2+1}=|x|\\sqrt{1+\\dfrac{1}{x^2}}=-x\\sqrt{1+\\dfrac{1}{x^2}}$.\n\nDo đó\n\n$$\\dfrac{\\sqrt{x^2+1}}{2x}=\\dfrac{-x\\sqrt{1+\\frac{1}{x^2}}}{2x}=-\\dfrac{\\sqrt{1+\\frac{1}{x^2}}}{2}.$$\n\nKhi $x\\to-\\infty$ thì $\\dfrac{1}{x^2}\\to0$ nên biểu thức tiến về $-\\dfrac{1}{2}$.\n\nVậy $\\lim\\limits_{x\\to-\\infty}\\dfrac{\\sqrt{x^2+1}}{2x}=-\\dfrac{1}{2}$.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T111000000210",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn một bên dạng $\\dfrac{L}{0}$ với $L\\neq0$ có kết quả vô cực; dấu phụ thuộc dấu của tử và dấu của mẫu khi $x$ tiến tới.\n\n**Bước 1.** Tính giới hạn của tử số khi $x\\to1^+$ và xét dấu.\n**Bước 2.** Tính giới hạn của mẫu số và xét dấu của mẫu khi $x>1$.\n**Bước 3.** Áp dụng quy tắc giới hạn của thương để kết luận $+\\infty$ hay $-\\infty$.\n\n**Phần 2. Trình bày**\n\nTa có $\\lim\\limits_{x\\to1^+}(4x-3)=4\\cdot1-3=1>0$.\n\nTa có $\\lim\\limits_{x\\to1^+}(x-1)=0$ và $x-1>0$ với mọi $x>1$.\n\nTheo quy tắc tìm giới hạn của thương:\n\n$$\\lim\\limits_{x\\to1^+}\\dfrac{4x-3}{x-1}=+\\infty.$$\n\nVậy giới hạn cần tìm bằng $+\\infty$, chọn đáp án A.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T111000000134",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn của $x^k$ khi $x\\to-\\infty$ phụ thuộc $k$ chẵn hay lẻ.\n\n**Bước 1.** Nhớ lại các giới hạn cơ bản của hàm số.\n**Bước 2.** Xét dấu của $x^k$ khi $x$ âm với $k$ chẵn và $k$ lẻ.\n**Bước 3.** Chỉ ra mệnh đề thiếu trường hợp.\n\n**Phần 2. Trình bày**\n\nCác mệnh đề A, B, C là các giới hạn cơ bản nên đúng.\n\nVới $k$ là số nguyên dương khác $0$, khi $x\\to-\\infty$:\n\n$\\lim\\limits_{x\\to-\\infty}x^k=+\\infty$ nếu $k$ chẵn;\n$\\lim\\limits_{x\\to-\\infty}x^k=-\\infty$ nếu $k$ lẻ.\n\nMệnh đề D khẳng định $\\lim\\limits_{x\\to-\\infty}x^k=-\\infty$ với mọi $k$, thiếu trường hợp $k$ chẵn nên sai.\n\nVậy mệnh đề sai là D.",
+  "ghi_chu": "Lời giải cũ bị lỗi hiển thị chữ ('neu k la so chan', 'neu k la so le') trong công thức; đã viết lại bằng chữ tiếng Việt, nội dung toán giữ nguyên."
+ },
+ {
+  "ma_cau": "T1110000004035",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tách hằng số ra khỏi hàm, rồi dùng cách chia cả tử và mẫu cho lũy thừa bậc cao nhất của $t$ cho phân thức còn lại.\n\n**Bước 1.** Tách $f(t)$ thành hằng số trừ một phân thức.\n**Bước 2.** Tính giới hạn của phân thức bằng cách chia tử và mẫu cho $t^2$.\n**Bước 3.** Lấy hằng số trừ giới hạn vừa tìm.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $t^2$:\n\n$$\\lim\\limits_{t\\to+\\infty}\\dfrac{15t}{9t^2+1}=\\lim\\limits_{t\\to+\\infty}\\dfrac{\\frac{15}{t}}{9+\\frac{1}{t^2}}=\\dfrac{0}{9}=0.$$\n\nDo đó $\\lim\\limits_{t\\to+\\infty}f(t)=5-0=5$.\n\nVậy $\\lim\\limits_{t\\to+\\infty}f(t)=5$, chọn đáp án A.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004059",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lập $C(t)$ là khối lượng muối chia thể tích nước theo $t$, rồi tính giới hạn của phân thức khi $t\\to+\\infty$.\n\n**Bước 1.** Biểu diễn khối lượng muối trong bể sau $t$ phút.\n**Bước 2.** Biểu diễn thể tích nước trong bể sau $t$ phút.\n**Bước 3.** Lập $C(t)$ và tính giới hạn bằng cách chia tử và mẫu cho $t$.\n\n**Phần 2. Trình bày**\n\nSau $t$ phút, lượng nước muối được bơm vào là $15t$ lít nên khối lượng muối là $40\\cdot15t=600t$ (gam).\n\nThể tích nước trong bể là $5000+15t$ (lít).\n\nNồng độ muối là $C(t)=\\dfrac{600t}{5000+15t}$.\n\n$$\\lim\\limits_{t\\to+\\infty}C(t)=\\lim\\limits_{t\\to+\\infty}\\dfrac{600}{\\frac{5000}{t}+15}=\\dfrac{600}{15}=40.$$\n\nVậy $\\lim\\limits_{t\\to+\\infty}C(t)=40$ (gam/lít).",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004040",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục tại $x_0$ khi giới hạn trái, giới hạn phải và giá trị tại $x_0$ bằng nhau.\n\n**Bước 1.** Tính $f(2)$.\n**Bước 2.** Tính giới hạn bên trái khi $x\\to2^-$.\n**Bước 3.** Tính giới hạn bên phải khi $x\\to2^+$ (phân tích tử thành nhân tử để rút gọn).\n**Bước 4.** So sánh ba giá trị và kết luận.\n\n**Phần 2. Trình bày**\n\nTa có $f(2)=2+1=3$.\n\n$\\lim\\limits_{x\\to2^-}f(x)=\\lim\\limits_{x\\to2^-}(x+1)=3$.\n\nVới $x>2$: $2x^2-5x+2=(2x-1)(x-2)$ nên\n\n$$\\lim\\limits_{x\\to2^+}f(x)=\\lim\\limits_{x\\to2^+}\\dfrac{(2x-1)(x-2)}{x-2}=\\lim\\limits_{x\\to2^+}(2x-1)=3.$$\n\nVì $\\lim\\limits_{x\\to2^-}f(x)=\\lim\\limits_{x\\to2^+}f(x)=f(2)=3$.\n\nVậy hàm số liên tục tại $x_0=2$.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004027",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số gián đoạn tại điểm mà đồ thị bị đứt, tức là giới hạn trái và phải khác nhau hoặc khác giá trị hàm.\n\n**Bước 1.** Quan sát đồ thị tại từng điểm trong các đáp án.\n**Bước 2.** Tìm điểm mà đồ thị không liền nét.\n\n**Phần 2. Trình bày**\n\nTại $x=3$, $x=0$, $x=1$ đồ thị liền nét nên hàm số liên tục.\n\nTại $x=-1$ đồ thị bị đứt: nhánh bên trái kết thúc ở độ cao $1$, nhánh bên phải bắt đầu ở độ cao nhỏ hơn.\n\nVậy hàm số gián đoạn tại $x_0=-1$, chọn đáp án D.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T111000000207",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm phân thức không liên tục tại điểm làm mẫu số bằng $0$ (hàm không xác định tại đó).\n\n**Bước 1.** Tìm tập xác định của từng hàm số.\n**Bước 2.** Kiểm tra hàm nào không xác định tại $x=2$.\n**Bước 3.** Kết luận các hàm còn lại liên tục tại $x=2$.\n\n**Phần 2. Trình bày**\n\nHàm $f(x)=\\dfrac{x+3}{x-2}$ có tập xác định $D=\\mathbb{R}\\setminus\\{2\\}$.\n\nVì hàm số không xác định tại $x=2$ nên không liên tục tại $x=2$.\n\nCác hàm $x^2+3x-2$, $\\dfrac{x+3}{x+2}$ và $\\sin x$ đều xác định tại $x=2$ và liên tục trên tập xác định của chúng nên liên tục tại $x=2$.\n\nVậy hàm số không liên tục tại $x=2$ là $f(x)=\\dfrac{x+3}{x-2}$, chọn đáp án B.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T111000000208",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục tại $x=3$ khi $\\lim\\limits_{x\\to3}f(x)=f(3)$.\n\n**Bước 1.** Xác định $f(3)$.\n**Bước 2.** Tính $\\lim\\limits_{x\\to3}f(x)$ bằng nhánh $x\\neq3$.\n**Bước 3.** Cho hai giá trị bằng nhau để tìm $m$.\n\n**Phần 2. Trình bày**\n\nTa có $f(3)=m$.\n\n$$\\lim\\limits_{x\\to3}f(x)=\\lim\\limits_{x\\to3}(x+5)=3+5=8.$$\n\nHàm số liên tục tại $x=3$ khi và chỉ khi $\\lim\\limits_{x\\to3}f(x)=f(3)$, tức là $m=8$.\n\nVậy $m=8$, chọn đáp án C.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004023",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục tại $x=2$ khi giới hạn trái, giới hạn phải và $f(2)$ bằng nhau.\n\n**Bước 1.** Xác định $f(2)$.\n**Bước 2.** Tính giới hạn trái khi $x\\to2^-$ (dùng nhánh $2x+a$).\n**Bước 3.** Tính giới hạn phải khi $x\\to2^+$ (dùng nhánh $-3x+b$).\n**Bước 4.** Cho ba giá trị bằng nhau, giải tìm $a$ và $b$.\n\n**Phần 2. Trình bày**\n\nTa có $f(2)=4$.\n\n$\\lim\\limits_{x\\to2^-}f(x)=\\lim\\limits_{x\\to2^-}(2x+a)=4+a$.\n\n$\\lim\\limits_{x\\to2^+}f(x)=\\lim\\limits_{x\\to2^+}(-3x+b)=-6+b$.\n\nHàm số liên tục tại $x=2$ khi $4+a=4=-6+b$.\n\nSuy ra $a=0$ và $b=10$.\n\nVậy $a=0$, $b=10$.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004084",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Liên tục tại $x_0=1$ nghĩa là giới hạn trái, giới hạn phải và giá trị hàm tại $1$ bằng nhau; từ đó lập hệ thức giữa $a$ và $b$.\n\n**Bước 1.** Tính $f(1)$ và giới hạn trái bằng nhánh $x\\le1$.\n**Bước 2.** Tính giới hạn phải bằng nhánh $x>1$.\n**Bước 3.** Cho hai giới hạn bằng nhau, biến đổi về dạng $a-3b$.\n\n**Phần 2. Trình bày**\n\nTa có $f(1)=a+b-4$ và $\\lim\\limits_{x\\to1^-}f(x)=a+b-4$.\n\n$\\lim\\limits_{x\\to1^+}f(x)=\\lim\\limits_{x\\to1^+}(2ax-2b)=2a-2b$.\n\nHàm số liên tục tại $1$ khi $a+b-4=2a-2b$, tức là $a-3b=-4$.\n\nVậy $P=a-3b=-4$.",
+  "ghi_chu": null
+ },
+ {
+  "ma_cau": "T1110000004104",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi nhánh là hàm đa thức nên đã liên tục trên khoảng của nó; chỉ cần kiểm tra tính liên tục tại điểm nối $x=200$.\n\n**Bước 1.** Nhận xét hai nhánh liên tục trên các khoảng $(0;200)$ và $(200;+\\infty)$.\n**Bước 2.** Tính $P(200)$ và giới hạn phải tại $x=200$.\n**Bước 3.** Cho hai giá trị bằng nhau để tìm $a$.\n\n**Phần 2. Trình bày**\n\nHai nhánh $4{,}5x$ và $3x+a$ là hàm đa thức nên liên tục trên các khoảng tương ứng.\n\nTại $x=200$: $P(200)=4{,}5\\cdot200=900$.\n\n$\\lim\\limits_{x\\to200^+}P(x)=3\\cdot200+a=600+a$.\n\nHàm số liên tục trên $(0;+\\infty)$ khi $600+a=900$, suy ra $a=300$.\n\nVậy $a=300$.",
+  "ghi_chu": null
+ }
+]

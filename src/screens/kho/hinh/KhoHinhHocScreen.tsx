@@ -10,10 +10,12 @@ import {
   listHinhHocBai, createHinhHocBai, updateHinhHocBai, deleteHinhHocBai,
   countHinhHocCauByBai, listHinhHocLyThuyet, upsertHinhHocLyThuyet, deleteHinhHocLyThuyet,
   duyetHinhHocBai, boDuyetHinhHocBai,
+  listHinhHocViDu, upsertHinhHocViDu, deleteHinhHocViDu,
   type HinhHocBai,
 } from '../../../lib/kho/hinhhoc'
 import type { MapRow, LyThuyet } from '../../../lib/kho/api'
 import type { BranchConfig, LyThuyetApi } from '../branches'
+import { getKhoCauHinh } from '../../../lib/kho/banDoMoi'
 import DangHub from '../DangHub'
 import { LyThuyetModal } from '../BanDo'
 import { Code, inp } from '../ui'
@@ -41,6 +43,13 @@ const hinhHocLyThuyetApi: LyThuyetApi = {
   remove: deleteHinhHocLyThuyet,
 }
 
+// Ví dụ của Bài (04/11) — lưu ở cột hinh_hoc_bai.vi_du, cùng shape LyThuyetApi để LyThuyetModal dùng nguyên.
+const hinhHocViDuApi: LyThuyetApi = {
+  list: listHinhHocViDu,
+  upsert: async (ma, noi_dung, file_url, ten_file) => upsertHinhHocViDu(ma, noi_dung, file_url, ten_file),
+  remove: deleteHinhHocViDu,
+}
+
 // Bài → MapRow để đưa vào DangHub. Không có tầng cha; leafMa = ma_bai.
 const baiToMapRow = (b: HinhHocBai): MapRow => ({
   leafMa: b.ma_bai, khoi: b.khoi,
@@ -50,10 +59,16 @@ const baiToMapRow = (b: HinhHocBai): MapRow => ({
 
 // `chuDeId` (tuỳ chọn) — mở từ Bản đồ mới, vùng Hình–Học: chỉ hiện bài học của chủ đề đó + ngăn "chưa xếp chủ đề".
 // Không truyền = màn cũ ở Kho › Hình học › Học (mọi bài của khối), hành vi y nguyên.
-export default function KhoHinhHocScreen({ khoi, chuDeId, tenChuDe }: { khoi: string; chuDeId?: string; tenChuDe?: string }) {
+export type MoKhoHinh = { loai: 'dang_bai' | 'dung_sai' | 'de_xuat' | 'chua_khop'; id: string; ten: string; bais: { id: string; ten: string }[] }
+// `onMoKho` (04/11): mở popup Kho CHUNG với Đại (KhoModal ở BanDoMoi) — kho câu của bài / kho Đúng/Sai / đề xuất / chưa khớp. `khoMoi` đổi ⇒ nạp lại số đếm.
+export default function KhoHinhHocScreen({ khoi, chuDeId, tenChuDe, onMoKho, khoMoi }: { khoi: string; chuDeId?: string; tenChuDe?: string; onMoKho?: (m: MoKhoHinh) => void; khoMoi?: boolean }) {
   const [bais, setBais] = useState<HinhHocBai[]>([])
   const [counts, setCounts] = useState<Record<string, number>>({})
   const [lyThuyets, setLyThuyets] = useState<Record<string, LyThuyet>>({})
+  const [soKho, setSoKho] = useState<{ dung_sai: number; de_xuat: number; chua_khop: number }>({ dung_sai: 0, de_xuat: 0, chua_khop: 0 })
+  const [viDus, setViDus] = useState<Record<string, LyThuyet>>({})
+  const [vdBai, setVdBai] = useState<HinhHocBai | null>(null)                   // Bài đang mở LyThuyetModal để sửa VÍ DỤ
+  const [moTaBai, setMoTaBai] = useState<HinhHocBai | null>(null)               // Bài đang sửa MÔ TẢ
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
   const [openBai, setOpenBai] = useState<HinhHocBai | null>(null)               // Bài đang mở DangHub
@@ -64,12 +79,24 @@ export default function KhoHinhHocScreen({ khoi, chuDeId, tenChuDe }: { khoi: st
   async function reload() {
     setLoading(true); setErr(null)
     try {
-      const [bs, cn, lt] = await Promise.all([listHinhHocBai(khoi), countHinhHocCauByBai(khoi), listHinhHocLyThuyet()])
-      setBais(bs); setCounts(cn); setLyThuyets(lt)
+      const [bs, cn, lt, vd] = await Promise.all([listHinhHocBai(khoi), countHinhHocCauByBai(khoi), listHinhHocLyThuyet(), listHinhHocViDu()])
+      setBais(bs); setCounts(cn); setLyThuyets(lt); setViDus(vd)
     } catch (e: any) { setErr(e.message ?? String(e)) }
     finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [khoi]) // eslint-disable-line
+  // số đếm 3 rổ của chủ đề (Đúng/Sai · AI đề xuất · chưa khớp) — nạp lại khi đóng popup Kho
+  useEffect(() => {
+    if (!chuDeId || khoMoi === false) return
+    let huy = false
+    ;(async () => {
+      try {
+        const [a, b, c] = await Promise.all((['dung_sai', 'de_xuat', 'chua_khop'] as const).map((l) => getKhoCauHinh(l, chuDeId, 'tat_ca', 1, 0)))
+        if (!huy) setSoKho({ dung_sai: a[0]?.tong ?? 0, de_xuat: b[0]?.tong ?? 0, chua_khop: c[0]?.tong ?? 0 })
+      } catch { /* đếm là phụ — lỗi thì giữ số cũ */ }
+    })()
+    return () => { huy = true }
+  }, [chuDeId, khoMoi]) // eslint-disable-line
 
   async function taoBai() {
     const ten = taoMoi?.trim(); if (!ten) return
@@ -105,7 +132,24 @@ export default function KhoHinhHocScreen({ khoi, chuDeId, tenChuDe }: { khoi: st
             {chuDeId && <span className="ml-2 text-slate-400">· đo ở BÀI HỌC (thang 3 bài), không đo ở từng bài tập</span>}
           </p>
         </div>
-        <button onClick={() => setTaoMoi('')} className="rounded-md bg-indigo-600 px-3.5 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">＋ Bài mới</button>
+        <div className="flex flex-wrap items-center justify-end gap-1.5">
+          {chuDeId && onMoKho && soKho.dung_sai > 0 && (
+            <button onClick={() => onMoKho({ loai: 'dung_sai', id: chuDeId, ten: tenChuDe ?? '', bais: hien.map((b) => ({ id: b.ma_bai, ten: b.ten_bai })) })}
+              title="Kho Đúng/Sai của chủ đề: mỗi câu có 4 ý ứng 4 dạng nên không nằm trong kho bài học"
+              className="rounded-md border border-violet-200 bg-violet-50 px-2 py-1 text-[12.5px] font-medium text-violet-800 hover:border-violet-400">✔✘ Kho Đúng/Sai ({soKho.dung_sai})</button>
+          )}
+          {chuDeId && onMoKho && soKho.de_xuat > 0 && (
+            <button onClick={() => onMoKho({ loai: 'de_xuat', id: chuDeId, ten: tenChuDe ?? '', bais: hien.map((b) => ({ id: b.ma_bai, ten: b.ten_bai })) })}
+              title="Câu AI xếp được nhưng chưa chắc — chuyển sang đúng bài hoặc duyệt"
+              className="rounded-md border border-amber-200 bg-amber-50 px-2 py-1 text-[12.5px] font-medium text-amber-800 hover:border-amber-400">🤖 AI đề xuất ({soKho.de_xuat})</button>
+          )}
+          {chuDeId && onMoKho && soKho.chua_khop > 0 && (
+            <button onClick={() => onMoKho({ loai: 'chua_khop', id: chuDeId, ten: tenChuDe ?? '', bais: hien.map((b) => ({ id: b.ma_bai, ten: b.ten_bai })) })}
+              title="Câu chưa có bài học nào khớp (chương khác hoặc bản đồ còn thiếu bài)"
+              className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[12.5px] font-medium text-slate-600 hover:border-slate-400">📥 Chưa khớp ({soKho.chua_khop})</button>
+          )}
+          <button onClick={() => setTaoMoi('')} className="rounded-md bg-indigo-600 px-3.5 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">＋ Bài mới</button>
+        </div>
       </div>
 
       {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
@@ -119,7 +163,10 @@ export default function KhoHinhHocScreen({ khoi, chuDeId, tenChuDe }: { khoi: st
             {hien.map((b, i) => (
               <BaiCard key={b.ma_bai} bai={b} thuTuHienThi={i + 1}
                 soCau={counts[b.ma_bai] ?? 0} coLyThuyet={!!(lyThuyets[b.ma_bai]?.noi_dung?.trim() || lyThuyets[b.ma_bai]?.file_url)}
-                onOpen={() => setOpenBai(b)} onLyThuyet={() => setLtBai(b)}
+                coViDu={!!(viDus[b.ma_bai]?.noi_dung?.trim() || viDus[b.ma_bai]?.file_url)}
+                onOpen={() => (onMoKho ? onMoKho({ loai: 'dang_bai', id: b.ma_bai, ten: b.ten_bai, bais: hien.map((x) => ({ id: x.ma_bai, ten: x.ten_bai })) }) : setOpenBai(b))}
+                onCongCu={() => setOpenBai(b)}
+                onLyThuyet={() => setLtBai(b)} onViDu={() => setVdBai(b)} onMoTa={() => setMoTaBai(b)}
                 onToggleDuyet={() => toggleDuyet(b)}
                 onMucDo={async (v) => { await updateHinhHocBai(b.ma_bai, { muc_do: v }); await reload() }} />
             ))}
@@ -162,6 +209,16 @@ export default function KhoHinhHocScreen({ khoi, chuDeId, tenChuDe }: { khoi: st
           onDeleteDang={() => xoaBai(openBai)}
           onChanged={reload} />
       )}
+      {vdBai && (
+        <LyThuyetModal ma={vdBai.ma_bai} ten={`${vdBai.ten_bai} — ví dụ`} current={viDus[vdBai.ma_bai]}
+          api={hinhHocViDuApi}
+          onClose={() => setVdBai(null)}
+          onSaved={async () => { setVdBai(null); await reload() }} />
+      )}
+      {moTaBai && (
+        <MoTaBaiModal bai={moTaBai} onClose={() => setMoTaBai(null)}
+          onSave={async (m) => { await updateHinhHocBai(moTaBai.ma_bai, { mo_ta: m }); setBais((prev) => prev.map((x) => (x.ma_bai === moTaBai.ma_bai ? { ...x, mo_ta: m } : x))); setMoTaBai(null) }} />
+      )}
       {ltBai && (
         <LyThuyetModal ma={ltBai.ma_bai} ten={ltBai.ten_bai} current={lyThuyets[ltBai.ma_bai]}
           api={hinhHocLyThuyetApi}
@@ -184,9 +241,9 @@ const MUCDO_TONE_HH: Record<number | string, string> = {
 }
 
 // 1 bài học vẽ như 1 chuyên đề của bản đồ Đại mới: dải chuyên đề → hộp nhóm → thẻ dạng bài (3 tầng cùng tên, cùng 1 bài).
-function BaiCard({ bai, thuTuHienThi, soCau, coLyThuyet, onOpen, onLyThuyet, onToggleDuyet, onMucDo }: {
-  bai: HinhHocBai; thuTuHienThi: number; soCau: number; coLyThuyet: boolean
-  onOpen: () => void; onLyThuyet: () => void; onToggleDuyet: () => void
+function BaiCard({ bai, thuTuHienThi, soCau, coLyThuyet, coViDu, onOpen, onCongCu, onLyThuyet, onViDu, onMoTa, onToggleDuyet, onMucDo }: {
+  bai: HinhHocBai; thuTuHienThi: number; soCau: number; coLyThuyet: boolean; coViDu: boolean
+  onOpen: () => void; onCongCu: () => void; onLyThuyet: () => void; onViDu: () => void; onMoTa: () => void; onToggleDuyet: () => void
   onMucDo: (v: number | null) => void
 }) {
   const md = bai.muc_do
@@ -227,6 +284,18 @@ function BaiCard({ bai, thuTuHienThi, soCau, coLyThuyet, onOpen, onLyThuyet, onT
               </button>
               <span className="shrink-0 rounded bg-white px-1.5 text-[10.5px] font-semibold text-violet-700 ring-1 ring-violet-200">📚 {soCau}</span>
             </div>
+            <div className="mt-1.5 flex gap-1.5">
+              <button onClick={onMoTa} title={bai.mo_ta?.trim() ? 'Mô tả nhận biết — xem / sửa' : 'Chưa có mô tả — bấm để viết'}
+                className={`rounded px-1.5 py-0.5 text-[11px] font-semibold ${bai.mo_ta?.trim() ? 'bg-emerald-500/90 text-white' : 'bg-rose-500/90 text-white'}`}>
+                📝 {bai.mo_ta?.trim() ? 'Mô tả' : 'Chưa mô tả'}
+              </button>
+              <button onClick={onCongCu} title="Công cụ cũ của bài: tìm câu, nhập chuỗi câu, clone biến thể…"
+                className="ml-auto rounded border border-slate-200 px-1.5 py-0.5 text-[11px] font-medium text-slate-500 hover:border-indigo-300 hover:text-indigo-700">⚙ Công cụ</button>
+              <button onClick={onViDu} title={coViDu ? 'Ví dụ của bài — xem / sửa' : 'Chưa có ví dụ — bấm để dán'}
+                className={`rounded px-1.5 py-0.5 text-[11px] font-semibold ${coViDu ? 'bg-emerald-500/90 text-white' : 'bg-rose-500/90 text-white'}`}>
+                🧩 {coViDu ? 'Ví dụ' : 'Chưa ví dụ'}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -247,6 +316,26 @@ function TenBaiModal({ title, ten, onChange, onClose, onSave }: {
         <div className="mt-5 flex justify-end gap-2">
           <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
           <button onClick={onSave} disabled={!ten.trim()} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">Lưu</button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Mô tả nhận biết của Bài (04/11) — như TruongMoTa của dạng bài Đại: B3 đọc mô tả này (cùng lý thuyết, ví dụ) khi xếp câu vào bài.
+function MoTaBaiModal({ bai, onClose, onSave }: { bai: HinhHocBai; onClose: () => void; onSave: (m: string) => Promise<void> }) {
+  const [v, setV] = useState(bai.mo_ta ?? '')
+  const [busy, setBusy] = useState(false)
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4 backdrop-blur-sm" onClick={onClose}>
+      <div className="w-[640px] max-w-[94vw] rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <h3 className="mb-1 text-base font-semibold text-slate-900">Mô tả nhận biết — {bai.ten_bai}</h3>
+        <p className="mb-3 text-[12px] text-slate-400">Đề cho gì, hỏi gì, khác các bài khác ở đâu (dòng «Lưu ý:» ghi ranh giới). Claude dựa vào mô tả này để xếp câu vào đúng bài.</p>
+        <textarea autoFocus className={`${inp} resize-y leading-relaxed`} rows={9} value={v} onChange={(e) => setV(e.target.value)} />
+        <div className="mt-4 flex justify-end gap-2">
+          <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
+          <button disabled={busy} onClick={async () => { setBusy(true); try { await onSave(v.trim()) } finally { setBusy(false) } }}
+            className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">Lưu</button>
         </div>
       </div>
     </div>

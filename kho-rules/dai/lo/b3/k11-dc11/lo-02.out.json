@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T1110000001195",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Tích bằng 0 tách thành sin3x=-1 và cosx=√3/2, phương trình cơ bản."
+ },
+ {
+  "ma_cau": "T1110000001233",
+  "dang_bai_id": "NDB01172",
+  "chac": "cao",
+  "ly_do": "Dạng 0/0 có một căn thức ở tử, nhân liên hợp."
+ },
+ {
+  "ma_cau": "T1110000001483",
+  "dang_bai_id": "NDB01354",
+  "chac": "vua",
+  "ly_do": "Mẫu số liệu ghép nhóm: chủ đề chỉ có một dạng nhưng dạng chưa có mô tả."
+ },
+ {
+  "ma_cau": "T111030201104",
+  "dang_bai_id": "NDB00996",
+  "chac": "vua",
+  "ly_do": "Dùng tổng thành tích đưa về hàm cơ bản, nhưng cũng có thể xếp dạng Asinx+Bcosx."
+ },
+ {
+  "ma_cau": "T1110000001510",
+  "dang_bai_id": "NDB01178",
+  "chac": "cao",
+  "ly_do": "Phân thức bậc nhất trên bậc nhất khi x tiến tới âm vô cực."
+ },
+ {
+  "ma_cau": "T1110000001090",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Tìm tham số a chỉ nằm ở giá trị tại điểm để hàm liên tục."
+ },
+ {
+  "ma_cau": "T1110000001308",
+  "dang_bai_id": "NDB01180",
+  "chac": "vua",
+  "ly_do": "Giới hạn hiệu phân thức trừ đa thức tại vô cực chứa tham số, không có dạng riêng."
+ },
+ {
+  "ma_cau": "T111060302047",
+  "dang_bai_id": "NDB01353",
+  "chac": "cao",
+  "ly_do": "Bốn góc của tứ giác tạo thành cấp số nhân."
+ },
+ {
+  "ma_cau": "T1110000001204",
+  "dang_bai_id": "NDB00991",
+  "chac": "vua",
+  "ly_do": "Tổng sinx+cosx không phải hàm cơ bản đơn lẻ, phải dùng phản ví dụ."
+ },
+ {
+  "ma_cau": "T1110000001433",
+  "dang_bai_id": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Đáp án đúng là dãy tăng, xét tăng giảm theo số hạng tổng quát."
+ },
+ {
+  "ma_cau": "T1110000002636",
+  "dang_bai_id": "NDB01156",
+  "chac": "vua",
+  "ly_do": "Truy hồi đưa về cấp số nhân rồi tính lim tổng, chưa có dạng riêng."
+ },
+ {
+  "ma_cau": "T1110000001607",
+  "dang_bai_id": "NDB01182",
+  "chac": "cao",
+  "ly_do": "Giới hạn một bên dạng 1/0 xét dấu mẫu."
+ },
+ {
+  "ma_cau": "T1110000001616",
+  "dang_bai_id": "NDB01173",
+  "chac": "cao",
+  "ly_do": "Dạng 0/0 có hai căn ở tử và căn ở mẫu, nhân liên hợp nhiều lần."
+ },
+ {
+  "ma_cau": "T1110000001170",
+  "dang_bai_id": "NDB01179",
+  "chac": "vua",
+  "ly_do": "Phân thức chứa x√x khi x tiến tới dương vô cực, dạng căn gần nhất."
+ },
+ {
+  "ma_cau": "T1110000001228",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Hiệu hai căn bậc hai của dãy số, nhân liên hợp."
+ },
+ {
+  "ma_cau": "T1110000001182",
+  "dang_bai_id": "NDB01167",
+  "chac": "vua",
+  "ly_do": "Đề có hình hình vuông lặp vô hạn, nhiều ý, cần xem hình."
+ },
+ {
+  "ma_cau": "T1110000001190",
+  "dang_bai_id": "NDB00966",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức bằng tổng thành tích."
+ },
+ {
+  "ma_cau": "T111000000431",
+  "dang_bai_id": "NDB00998",
+  "chac": "cao",
+  "ly_do": "Phương án đúng là tập giá trị của 3sin²x, hàm cơ bản bậc hai khuyết bậc nhất."
+ },
+ {
+  "ma_cau": "T111000000472",
+  "dang_bai_id": "NDB00958",
+  "chac": "cao",
+  "ly_do": "Phương án sai là công thức nhân đôi cos2a."
+ },
+ {
+  "ma_cau": "T111000000075",
+  "dang_bai_id": "NDB00565",
+  "chac": "cao",
+  "ly_do": "Cho điểm trên đường tròn lượng giác, hỏi số đo góc lượng giác."
+ },
+ {
+  "ma_cau": "T1110000001332",
+  "dang_bai_id": "NDB01014",
+  "chac": "cao",
+  "ly_do": "Đưa sin2x - sin(π/3+x)... về dạng sinu = cosv bằng góc phụ."
+ },
+ {
+  "ma_cau": "T1110000002646",
+  "dang_bai_id": "NDB01156",
+  "chac": "vua",
+  "ly_do": "Tổng tách phân số triệt tiêu, chưa có dạng riêng."
+ },
+ {
+  "ma_cau": "T1110000001400",
+  "dang_bai_id": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Chu kỳ hàm sin2x."
+ },
+ {
+  "ma_cau": "T1110000001263",
+  "dang_bai_id": "NDB01160",
+  "chac": "vua",
+  "ly_do": "Phát biểu sai về lim q^n với |q|>1, trộn dạng giới hạn 0 và vô cực."
+ },
+ {
+  "ma_cau": "T1110000001269",
+  "dang_bai_id": "NDB01172",
+  "chac": "cao",
+  "ly_do": "Dạng 0/0 một căn ở tử, nhân liên hợp."
+ },
+ {
+  "ma_cau": "T1110000001881",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng suy ra u_n bậc nhất, phân thức cùng bậc."
+ },
+ {
+  "ma_cau": "T1110000003122",
+  "dang_bai_id": "NDB01180",
+  "chac": "vua",
+  "ly_do": "Giới hạn hiệu phân thức trừ đa thức tại vô cực chứa tham số, không có dạng riêng."
+ },
+ {
+  "ma_cau": "T1110000001068",
+  "dang_bai_id": "NDB01148",
+  "chac": "cao",
+  "ly_do": "Nhận biết dãy q^n có giới hạn 0 khi |q|<1."
+ },
+ {
+  "ma_cau": "T1110000001603",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Thương các luỹ thừa 2^n và 3^n."
+ },
+ {
+  "ma_cau": "T1110000001324",
+  "dang_bai_id": "NDB00998",
+  "chac": "cao",
+  "ly_do": "Min max y=3-2sin2x từ tập giá trị của sin."
+ },
+ {
+  "ma_cau": "T1110000001405",
+  "dang_bai_id": "NDB01006",
+  "chac": "cao",
+  "ly_do": "Tính đơn điệu của cos2x trên khoảng."
+ },
+ {
+  "ma_cau": "T1110000001364",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Giới hạn tích telescoping của dãy số: bản đồ thiếu dạng giới hạn dãy số dạng tích rút gọn."
+ },
+ {
+  "ma_cau": "T1110000001232",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Dạng 0/0 phân thức hữu tỉ, phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T1110000001127",
+  "dang_bai_id": "NDB01354",
+  "chac": "vua",
+  "ly_do": "Mẫu số liệu ghép nhóm: chủ đề chỉ có một dạng nhưng dạng chưa có mô tả."
+ },
+ {
+  "ma_cau": "T1110000001125",
+  "dang_bai_id": "NDB01354",
+  "chac": "vua",
+  "ly_do": "Mẫu số liệu ghép nhóm: chủ đề chỉ có một dạng nhưng dạng chưa có mô tả."
+ },
+ {
+  "ma_cau": "T1110000001326",
+  "dang_bai_id": "NDB00998",
+  "chac": "cao",
+  "ly_do": "Min max hàm bậc hai khuyết bậc nhất theo sin²2x."
+ },
+ {
+  "ma_cau": "T1110000001377",
+  "dang_bai_id": "NDB01188",
+  "chac": "cao",
+  "ly_do": "Xét liên tục tại điểm chia nhánh của hàm nhiều công thức."
+ },
+ {
+  "ma_cau": "T1110000001526",
+  "dang_bai_id": "NDB01179",
+  "chac": "cao",
+  "ly_do": "Giới hạn chứa căn khi x tiến tới dương vô cực, tìm tham số."
+ },
+ {
+  "ma_cau": "T1110000001076",
+  "dang_bai_id": "NDB01354",
+  "chac": "vua",
+  "ly_do": "Mẫu số liệu ghép nhóm: chủ đề chỉ có một dạng nhưng dạng chưa có mô tả."
+ },
+ {
+  "ma_cau": "T1110000001363",
+  "dang_bai_id": "NDB01156",
+  "chac": "cao",
+  "ly_do": "Tử là tổng cấp số cộng rồi lấy giới hạn."
+ },
+ {
+  "ma_cau": "T1110000001499",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Tử hằng số, mẫu bậc 2: tử bậc thấp hơn mẫu."
+ },
+ {
+  "ma_cau": "T1110000001477",
+  "dang_bai_id": "NDB01354",
+  "chac": "vua",
+  "ly_do": "Mẫu số liệu ghép nhóm: chủ đề chỉ có một dạng nhưng dạng chưa có mô tả."
+ },
+ {
+  "ma_cau": "T1110000001610",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Hàm xác định tại điểm, thay trực tiếp."
+ },
+ {
+  "ma_cau": "T1110000001241",
+  "dang_bai_id": "NDB01184",
+  "chac": "vua",
+  "ly_do": "Nhiều ý rải ở các dạng giới hạn khác nhau (0/0, một bên, vô cực)."
+ },
+ {
+  "ma_cau": "T1110000001889",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Giới hạn dãy truy hồi dạng điều hoà: bản đồ thiếu dạng giới hạn dãy số cho bởi hệ thức truy hồi."
+ },
+ {
+  "ma_cau": "T1110000001239",
+  "dang_bai_id": "NDB01182",
+  "chac": "cao",
+  "ly_do": "Giới hạn một bên dạng L/0 xét dấu mẫu."
+ },
+ {
+  "ma_cau": "T1110000001487",
+  "dang_bai_id": "NDB01354",
+  "chac": "vua",
+  "ly_do": "Mẫu số liệu ghép nhóm: chủ đề chỉ có một dạng nhưng dạng chưa có mô tả."
+ },
+ {
+  "ma_cau": "T1110000001323",
+  "dang_bai_id": "NDB00988",
+  "chac": "cao",
+  "ly_do": "Tập xác định hàm có phân thức và tan."
+ },
+ {
+  "ma_cau": "T1110000001431",
+  "dang_bai_id": "NDB01011",
+  "chac": "cao",
+  "ly_do": "Thực tế phương trình lượng giác, tìm thời điểm đầu tiên."
+ },
+ {
+  "ma_cau": "T1110000001444",
+  "dang_bai_id": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cấp số cộng cho hai số hạng đầu cuối, tìm các số xen giữa."
+ },
+ {
+  "ma_cau": "T1110000003156",
+  "dang_bai_id": "NDB01195",
+  "chac": "vua",
+  "ly_do": "Lý thuyết liên tục trên đoạn, dạng gần nhất trong nhóm liên tục trên khoảng đoạn."
+ },
+ {
+  "ma_cau": "T1110000001082",
+  "dang_bai_id": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Số hạng của dãy cho bởi hệ thức truy hồi."
+ },
+ {
+  "ma_cau": "T1110000001213",
+  "dang_bai_id": "NDB01011",
+  "chac": "cao",
+  "ly_do": "Thực tế phương trình lượng giác tìm ngày xảy ra sự kiện."
+ },
+ {
+  "ma_cau": "T1110000001461",
+  "dang_bai_id": "NDB01166",
+  "chac": "cao",
+  "ly_do": "Bóng nảy lặp, tổng quãng đường là tổng cấp số nhân lùi vô hạn."
+ },
+ {
+  "ma_cau": "T111000000471",
+  "dang_bai_id": "NDB00963",
+  "chac": "cao",
+  "ly_do": "Phương án sai là công thức tổng thành tích của cos a - cos b."
+ },
+ {
+  "ma_cau": "T1110000001529",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Dạng 0/0 hiệu hai luỹ thừa, phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T1110000001509",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Hàm xác định tại điểm, thay trực tiếp."
+ },
+ {
+  "ma_cau": "T1110000001465",
+  "dang_bai_id": "NDB01024",
+  "chac": "vua",
+  "ly_do": "Góc tam giác lập cấp số cộng, thực tế/hình học cấp số cộng khác."
+ },
+ {
+  "ma_cau": "T1110000001794",
+  "dang_bai_id": "NDB01154",
+  "chac": "vua",
+  "ly_do": "Rút gọn thừa số chung rồi giới hạn luỹ thừa, không dạng riêng."
+ },
+ {
+  "ma_cau": "T1110000001485",
+  "dang_bai_id": "NDB01354",
+  "chac": "vua",
+  "ly_do": "Mẫu số liệu ghép nhóm: chủ đề chỉ có một dạng nhưng dạng chưa có mô tả."
+ },
+ {
+  "ma_cau": "T1110000001479",
+  "dang_bai_id": "NDB01354",
+  "chac": "vua",
+  "ly_do": "Mẫu số liệu ghép nhóm: chủ đề chỉ có một dạng nhưng dạng chưa có mô tả."
+ },
+ {
+  "ma_cau": "T1110000001470",
+  "dang_bai_id": "NDB01354",
+  "chac": "vua",
+  "ly_do": "Mẫu số liệu ghép nhóm: chủ đề chỉ có một dạng nhưng dạng chưa có mô tả."
+ },
+ {
+  "ma_cau": "T1110000001536",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Hàm xác định tại điểm, thay trực tiếp."
+ },
+ {
+  "ma_cau": "T1110000002650",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Giới hạn tích telescoping của dãy số: bản đồ thiếu dạng giới hạn dãy số dạng tích rút gọn."
+ },
+ {
+  "ma_cau": "T1110000001386",
+  "dang_bai_id": "NDB00564",
+  "chac": "cao",
+  "ly_do": "Đổi radian sang độ."
+ },
+ {
+  "ma_cau": "T1110000001525",
+  "dang_bai_id": "NDB01157",
+  "chac": "vua",
+  "ly_do": "Căn của thương với tham số a, cũng có thể xếp phân thức chứa tham số."
+ },
+ {
+  "ma_cau": "T1110000001397",
+  "dang_bai_id": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho cot a tính sin2a bằng công thức nhân đôi."
+ },
+ {
+  "ma_cau": "T1110000001515",
+  "dang_bai_id": "NDB01184",
+  "chac": "cao",
+  "ly_do": "Tử khác 0, mẫu bình phương tiến về 0, giới hạn vô cực."
+ },
+ {
+  "ma_cau": "T1110000003065",
+  "dang_bai_id": "NDB01156",
+  "chac": "vua",
+  "ly_do": "Tổng tách phân số triệt tiêu, chưa có dạng riêng."
+ },
+ {
+  "ma_cau": "T1110000001145",
+  "dang_bai_id": "NDB01195",
+  "chac": "cao",
+  "ly_do": "Chọn hàm sơ cấp liên tục trên toàn R."
+ }
+]

@@ -1,0 +1,947 @@
+[
+ {
+  "ma_cau": "HHC008213",
+  "chu_de": "song_song",
+  "ly_do": "giao tuyến, (OMN)//(SBC), điểm thuộc mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC008226",
+  "chu_de": "song_song",
+  "ly_do": "giao tuyến, đường cắt nhau, giao điểm SA với (MNP)"
+ },
+ {
+  "ma_cau": "HHC008261",
+  "chu_de": "song_song",
+  "ly_do": "giao điểm SD với (ABM), tỉ lệ đoạn trên chóp"
+ },
+ {
+  "ma_cau": "HHC008274",
+  "chu_de": "song_song",
+  "ly_do": "MN//(SBC), giao tuyến hai mặt, hình thang"
+ },
+ {
+  "ma_cau": "HHC008281",
+  "chu_de": "song_song",
+  "ly_do": "giao tuyến (SAB),(SCD), MN//(SCD), trọng tâm"
+ },
+ {
+  "ma_cau": "HHC008299",
+  "chu_de": "song_song",
+  "ly_do": "MN//CD, chéo nhau, (MNI)//(SCD)"
+ },
+ {
+  "ma_cau": "HHC008300",
+  "chu_de": "song_song",
+  "ly_do": "hình hộp, AC//mp, hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC008314",
+  "chu_de": "song_song",
+  "ly_do": "hình hộp, song song đường–mặt, hai mp song song"
+ },
+ {
+  "ma_cau": "HHC008325",
+  "chu_de": "song_song",
+  "ly_do": "giao điểm, thiết diện hình bình hành, đồng quy"
+ },
+ {
+  "ma_cau": "HHC008326",
+  "chu_de": "song_song",
+  "ly_do": "mp qua M song song (ADF), giao điểm AC"
+ },
+ {
+  "ma_cau": "HHC008330",
+  "chu_de": "song_song",
+  "ly_do": "giao tuyến, ON//(SCD), giao điểm IK với mp"
+ },
+ {
+  "ma_cau": "HHC008341",
+  "chu_de": "song_song",
+  "ly_do": "MN//(SBC), (OMN)//(SBC), EF cắt mp"
+ },
+ {
+  "ma_cau": "HHC008353",
+  "chu_de": "vuong_goc",
+  "ly_do": "CD,SA góc, AD⊥mp, góc đường–mp, nhị diện"
+ },
+ {
+  "ma_cau": "HHC008368",
+  "chu_de": "the_tich",
+  "ly_do": "lăng trụ lục giác, diện tích đáy, thể tích nước"
+ },
+ {
+  "ma_cau": "HHC008388",
+  "chu_de": "the_tich",
+  "ly_do": "lăng trụ đứng, diện tích đáy, chiều cao, thể tích"
+ },
+ {
+  "ma_cau": "HHC008408",
+  "chu_de": "the_tich",
+  "ly_do": "lăng trụ đứng, diện tích, thể tích lăng trụ và chóp"
+ },
+ {
+  "ma_cau": "HHC008432",
+  "chu_de": "vuong_goc",
+  "ly_do": "góc hai đường, BC⊥mp, góc hai mp, một ý thể tích"
+ },
+ {
+  "ma_cau": "HHC008446",
+  "chu_de": "the_tich",
+  "ly_do": "chóp đều, chiều cao SO, thể tích, hình chiếu"
+ },
+ {
+  "ma_cau": "HHC008460",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥đáy, mp vuông góc, hình chiếu, thêm thể tích khoảng cách"
+ },
+ {
+  "ma_cau": "HHC008476",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥đáy, mp vuông góc, CD⊥mp, góc đường–mp"
+ },
+ {
+  "ma_cau": "HHC008490",
+  "chu_de": "vuong_goc",
+  "ly_do": "lập phương, hai mp vuông góc, nhị diện"
+ },
+ {
+  "ma_cau": "HHC008509",
+  "chu_de": "vuong_goc",
+  "ly_do": "chóp SO⊥đáy, BD⊥mp, nhị diện, thể tích"
+ },
+ {
+  "ma_cau": "HHC008521",
+  "chu_de": "vuong_goc",
+  "ly_do": "hộp chữ nhật, góc hai đường, đường–mp, nhị diện"
+ },
+ {
+  "ma_cau": "HHC008548",
+  "chu_de": "vuong_goc",
+  "ly_do": "mp(SAB)⊥đáy, SH⊥đáy, AD⊥mp, hai mp vuông"
+ },
+ {
+  "ma_cau": "HHC008567",
+  "chu_de": "vuong_goc",
+  "ly_do": "chóp tam giác đều, mp vuông góc, nhị diện"
+ },
+ {
+  "ma_cau": "HHC008574",
+  "chu_de": "vuong_goc",
+  "ly_do": "chóp tam giác đều, mp vuông góc, nhị diện"
+ },
+ {
+  "ma_cau": "HHC008591",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥đáy, góc đường–mp, mp vuông góc, khoảng cách"
+ },
+ {
+  "ma_cau": "HHC008607",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥đáy, BD⊥mp, mp vuông góc, nhị diện"
+ },
+ {
+  "ma_cau": "HHC008619",
+  "chu_de": "khoang_cach",
+  "ly_do": "lập phương, d điểm–mp, d giữa đường chéo nhau"
+ },
+ {
+  "ma_cau": "HHC008637",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥đáy, AH⊥mp(SBC), hình chiếu, cosin góc"
+ },
+ {
+  "ma_cau": "HHC008653",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥đáy, mp vuông góc, AH⊥mp, góc đường–mp"
+ },
+ {
+  "ma_cau": "HHC008669",
+  "chu_de": "vuong_goc",
+  "ly_do": "chóp đều, góc hai đường, mp vuông góc, d"
+ },
+ {
+  "ma_cau": "HHC008684",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥đáy, mp vuông góc, hình chiếu, d và thể tích"
+ },
+ {
+  "ma_cau": "HHC008696",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥đáy, SO⊥đáy, mp vuông góc, d và thể tích"
+ },
+ {
+  "ma_cau": "HHC008710",
+  "chu_de": "khac",
+  "ly_do": "chóp tam giác đều, chiều cao thể tích cân bằng góc nhị diện"
+ },
+ {
+  "ma_cau": "HHC008725",
+  "chu_de": "vuong_goc",
+  "ly_do": "chóp đều, hình chiếu, góc đường–mp, thể tích"
+ },
+ {
+  "ma_cau": "HHC008745",
+  "chu_de": "vuong_goc",
+  "ly_do": "chóp đều tam giác, SG⊥mp, nhị diện, d"
+ },
+ {
+  "ma_cau": "HHC008765",
+  "chu_de": "vuong_goc",
+  "ly_do": "BC⊥mp, hình chiếu, góc hai mp, nhị diện"
+ },
+ {
+  "ma_cau": "HHC008789",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥đáy, góc đường–mp, mp vuông góc, thể tích"
+ },
+ {
+  "ma_cau": "HHC008816",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥đáy, BC⊥mp, góc đường–mp, nhị diện"
+ },
+ {
+  "ma_cau": "HHC008831",
+  "chu_de": "khoang_cach",
+  "ly_do": "lập phương, d giữa mp, điểm–mp, đường chéo nhau"
+ },
+ {
+  "ma_cau": "HHC008848",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥BC, BC⊥mp, góc đường–mp, thể tích"
+ },
+ {
+  "ma_cau": "HHC008858",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥đáy, mp vuông góc, nhị diện, thể tích"
+ },
+ {
+  "ma_cau": "HHC008875",
+  "chu_de": "vuong_goc",
+  "ly_do": "hộp chữ nhật, mp vuông góc, góc đường–mp"
+ },
+ {
+  "ma_cau": "HHC008894",
+  "chu_de": "vuong_goc",
+  "ly_do": "góc hai đường, đường–mp, hình chiếu, nhị diện"
+ },
+ {
+  "ma_cau": "HHC008906",
+  "chu_de": "vuong_goc",
+  "ly_do": "BD⊥mp, mp vuông góc, nhị diện"
+ },
+ {
+  "ma_cau": "HHC008927",
+  "chu_de": "khoang_cach",
+  "ly_do": "lăng trụ đều, d giữa mp, điểm–mp, đường–mp"
+ },
+ {
+  "ma_cau": "HHC008941",
+  "chu_de": "vuong_goc",
+  "ly_do": "AC⊥mp, nhị diện, góc đường–mp, một ý d"
+ },
+ {
+  "ma_cau": "HHC008956",
+  "chu_de": "khoang_cach",
+  "ly_do": "lăng trụ đều, d đường chéo nhau, d điểm–mp, góc"
+ },
+ {
+  "ma_cau": "HHC008970",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥đáy, góc đường–mp, BD⊥mp, d và thể tích"
+ },
+ {
+  "ma_cau": "HHC008988",
+  "chu_de": "vuong_goc",
+  "ly_do": "tứ diện đều, góc hai đường, hai mp, nhị diện"
+ },
+ {
+  "ma_cau": "HHC008989",
+  "chu_de": "khac",
+  "ly_do": "lập phương: vuông góc hai ý, khoảng cách hai ý cân bằng"
+ },
+ {
+  "ma_cau": "HHC009000",
+  "chu_de": "vuong_goc",
+  "ly_do": "mp(SAB)⊥đáy, SH⊥mp, cosin góc, mp vuông góc"
+ },
+ {
+  "ma_cau": "HHC009013",
+  "chu_de": "vuong_goc",
+  "ly_do": "hộp chữ nhật, mp vuông góc, sin góc, d và thể tích"
+ },
+ {
+  "ma_cau": "HHC009035",
+  "chu_de": "vuong_goc",
+  "ly_do": "lập phương, A'O⊥BD, mp vuông góc, góc hai mp"
+ },
+ {
+  "ma_cau": "HHC009062",
+  "chu_de": "vuong_goc",
+  "ly_do": "chóp đều tam giác, SA⊥, mp vuông góc, nhị diện"
+ },
+ {
+  "ma_cau": "HHC009076",
+  "chu_de": "vuong_goc",
+  "ly_do": "mp(SAB)⊥đáy, tam giác vuông, mp vuông góc"
+ },
+ {
+  "ma_cau": "HHC009095",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥đáy, mp vuông góc, nhị diện, d và tỉ số thể tích"
+ },
+ {
+  "ma_cau": "HHC009110",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥BD, mp vuông góc, góc đường–mp, tang góc hai mp"
+ },
+ {
+  "ma_cau": "HHC009124",
+  "chu_de": "vuong_goc",
+  "ly_do": "hai mp cùng ⊥ đáy, SA⊥đáy, BC⊥mp, d"
+ },
+ {
+  "ma_cau": "HHC009134",
+  "chu_de": "vuong_goc",
+  "ly_do": "tứ diện đều, đường⊥đường, đường⊥mp, hai mp vuông"
+ },
+ {
+  "ma_cau": "HHC009149",
+  "chu_de": "vuong_goc",
+  "ly_do": "BC⊥mp, nhị diện, thể tích và d"
+ },
+ {
+  "ma_cau": "HHC009164",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥đáy, BC⊥SD, DC⊥mp, mp vuông góc, nhị diện"
+ },
+ {
+  "ma_cau": "HHC009175",
+  "chu_de": "vuong_goc",
+  "ly_do": "góc đường–mp, góc hai mp, d và thể tích"
+ },
+ {
+  "ma_cau": "HHC009198",
+  "chu_de": "khoang_cach",
+  "ly_do": "thể tích, d điểm–mp, chiều cao A.SNM, d đường chéo nhau"
+ },
+ {
+  "ma_cau": "HHC009215",
+  "chu_de": "vuong_goc",
+  "ly_do": "CB⊥mp, mp vuông góc, góc đường–mp, thể tích"
+ },
+ {
+  "ma_cau": "HHC009230",
+  "chu_de": "vuong_goc",
+  "ly_do": "mp(SAB)⊥đáy, SH⊥mp, AD⊥mp, mp vuông góc"
+ },
+ {
+  "ma_cau": "HHC009242",
+  "chu_de": "the_tich",
+  "ly_do": "lăng trụ đều, chiều cao, thể tích, d, góc"
+ },
+ {
+  "ma_cau": "HHC009280",
+  "chu_de": "vuong_goc",
+  "ly_do": "chóp đều tam giác, nhị diện, d, góc đường–mp"
+ },
+ {
+  "ma_cau": "HHC009291",
+  "chu_de": "vuong_goc",
+  "ly_do": "kim tự tháp, góc đường–mp, góc hai mp, d điểm–mp"
+ },
+ {
+  "ma_cau": "HHC009304",
+  "chu_de": "song_song",
+  "ly_do": "điểm trên SA, trọng tâm, SC//(GMN), giao điểm"
+ },
+ {
+  "ma_cau": "HHC009316",
+  "chu_de": "song_song",
+  "ly_do": "hình hộp, hai mp song song, trọng tâm, thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC009326",
+  "chu_de": "song_song",
+  "ly_do": "chéo nhau, giao tuyến Sx//CD, giao điểm đường–mp"
+ },
+ {
+  "ma_cau": "HHC009340",
+  "chu_de": "song_song",
+  "ly_do": "mp song song (ABC), MP//AB, tỉ lệ cắt đoạn"
+ },
+ {
+  "ma_cau": "HHC009350",
+  "chu_de": "song_song",
+  "ly_do": "(OEF) cắt CD, giao tuyến, EF//AD"
+ },
+ {
+  "ma_cau": "HHC009359",
+  "chu_de": "song_song",
+  "ly_do": "giao tuyến, giao điểm đường–mp(ABM)"
+ },
+ {
+  "ma_cau": "HHC009379",
+  "chu_de": "vuong_goc",
+  "ly_do": "lập phương, AC⊥B'D', góc hai đường"
+ },
+ {
+  "ma_cau": "HHC009394",
+  "chu_de": "vuong_goc",
+  "ly_do": "hình chiếu, SA⊥BC, AC⊥mp, góc đường–mp"
+ },
+ {
+  "ma_cau": "HHC009408",
+  "chu_de": "vuong_goc",
+  "ly_do": "BD⊥SC, SA⊥BC, góc hai đường, CD⊥mp"
+ },
+ {
+  "ma_cau": "HHC009417",
+  "chu_de": "vuong_goc",
+  "ly_do": "lập phương, BC⊥DD', góc hai đường, MN⊥mp"
+ },
+ {
+  "ma_cau": "HHC009432",
+  "chu_de": "vuong_goc",
+  "ly_do": "OA,OB,OC đôi một vuông góc, đường⊥mp"
+ },
+ {
+  "ma_cau": "HHC009446",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥đáy, tam giác vuông, AC⊥mp, góc hai đường"
+ },
+ {
+  "ma_cau": "HHC009468",
+  "chu_de": "vuong_goc",
+  "ly_do": "chóp đều, hai mp vuông góc, góc đường–mp, d"
+ },
+ {
+  "ma_cau": "HHC009492",
+  "chu_de": "vuong_goc",
+  "ly_do": "CD⊥mp, mp vuông góc, góc hai đường, AK⊥BD"
+ },
+ {
+  "ma_cau": "HHC009506",
+  "chu_de": "vuong_goc",
+  "ly_do": "BD⊥SA, AC⊥mp, CD⊥mp, góc BC,SA"
+ },
+ {
+  "ma_cau": "HHC009516",
+  "chu_de": "vuong_goc",
+  "ly_do": "BD⊥SA, AC⊥mp, CD⊥mp, góc BC,SA"
+ },
+ {
+  "ma_cau": "HHC009526",
+  "chu_de": "vuong_goc",
+  "ly_do": "BD⊥mp, tam giác vuông, góc hai đường, SA⊥AB"
+ },
+ {
+  "ma_cau": "HHC009533",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥AC, BM⊥mp, góc hai đường"
+ },
+ {
+  "ma_cau": "HHC009547",
+  "chu_de": "vuong_goc",
+  "ly_do": "mái chóp, góc đường–mp, SB⊥CD, MN⊥mp"
+ },
+ {
+  "ma_cau": "HHC009567",
+  "chu_de": "vuong_goc",
+  "ly_do": "lăng trụ đứng, góc hai đường, CC'⊥AB, mp vuông góc"
+ },
+ {
+  "ma_cau": "HHC009582",
+  "chu_de": "vuong_goc",
+  "ly_do": "AC⊥mp, góc hai đường, MN⊥SO, cotang góc đường–mp"
+ },
+ {
+  "ma_cau": "HHC009595",
+  "chu_de": "vuong_goc",
+  "ly_do": "SD⊥BC, góc hai đường, BA⊥mp, NA⊥mp"
+ },
+ {
+  "ma_cau": "HHC009599",
+  "chu_de": "vuong_goc",
+  "ly_do": "SD⊥BC, góc hai đường, BA⊥mp, NA⊥mp"
+ },
+ {
+  "ma_cau": "HHC009612",
+  "chu_de": "vuong_goc",
+  "ly_do": "AC⊥mp, hình chiếu, CD⊥SD, góc đường–mp"
+ },
+ {
+  "ma_cau": "HHC009627",
+  "chu_de": "vuong_goc",
+  "ly_do": "BM⊥AC, BM⊥mp, mặt bên vuông, hình chiếu"
+ },
+ {
+  "ma_cau": "HHC009643",
+  "chu_de": "vuong_goc",
+  "ly_do": "tam giác vuông cân, SA⊥CD, góc đường–mp"
+ },
+ {
+  "ma_cau": "HHC009654",
+  "chu_de": "vuong_goc",
+  "ly_do": "lăng trụ đứng, DC⊥BB', BD⊥mp, nhị diện"
+ },
+ {
+  "ma_cau": "HHC009662",
+  "chu_de": "vuong_goc",
+  "ly_do": "lăng trụ đứng, DC⊥BB', BD⊥mp, nhị diện"
+ },
+ {
+  "ma_cau": "HHC009678",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA=SC, SB=SD, SO⊥mp, AC⊥mp"
+ },
+ {
+  "ma_cau": "HHC009687",
+  "chu_de": "vuong_goc",
+  "ly_do": "BD⊥mp, BD⊥SC, CD⊥mp, AH⊥SB"
+ },
+ {
+  "ma_cau": "HHC009700",
+  "chu_de": "vuong_goc",
+  "ly_do": "hình hộp vuông, AC⊥B'D', góc hai đường, DD'⊥mp"
+ },
+ {
+  "ma_cau": "HHC009714",
+  "chu_de": "vuong_goc",
+  "ly_do": "hình hộp vuông, CC'⊥mp, góc hai đường, BD⊥A'C'"
+ },
+ {
+  "ma_cau": "HHC009736",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥BC, MO⊥mp, d và thể tích thêm"
+ },
+ {
+  "ma_cau": "HHC009762",
+  "chu_de": "vuong_goc",
+  "ly_do": "hộp chữ nhật, hình chiếu, DH⊥mp, AH⊥FC"
+ },
+ {
+  "ma_cau": "HHC009773",
+  "chu_de": "vuong_goc",
+  "ly_do": "SAB đều, SH⊥mp, nhị diện, tang góc đường–mp"
+ },
+ {
+  "ma_cau": "HHC009787",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥AB, chéo nhau, góc đường–mp, góc hai đường"
+ },
+ {
+  "ma_cau": "HHC009793",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥AB, chéo nhau, góc đường–mp, góc hai đường"
+ },
+ {
+  "ma_cau": "HHC009801",
+  "chu_de": "vuong_goc",
+  "ly_do": "hai mp vuông góc, SC⊥BD, góc hai mp"
+ },
+ {
+  "ma_cau": "HHC009811",
+  "chu_de": "vuong_goc",
+  "ly_do": "cosin góc hai đường, góc đường–mp, tam giác vuông"
+ },
+ {
+  "ma_cau": "HHC009831",
+  "chu_de": "vuong_goc",
+  "ly_do": "góc đường–mp, mp vuông góc, BC⊥mp, góc hai mp"
+ },
+ {
+  "ma_cau": "HHC009853",
+  "chu_de": "vuong_goc",
+  "ly_do": "mp vuông góc, góc hai mp, SC⊥mp, OI"
+ },
+ {
+  "ma_cau": "HHC009868",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥BC, tam giác vuông, góc hai đường, BC⊥mp"
+ },
+ {
+  "ma_cau": "HHC009881",
+  "chu_de": "vuong_goc",
+  "ly_do": "BD⊥mp, BD⊥SC, CD⊥mp, AM⊥SB"
+ },
+ {
+  "ma_cau": "HHC009893",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥BC, BC⊥mp, SC⊥mp, mp vuông góc"
+ },
+ {
+  "ma_cau": "HHC009907",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥BC, BI⊥mp, hệ thức, góc hai đường"
+ },
+ {
+  "ma_cau": "HHC009922",
+  "chu_de": "vuong_goc",
+  "ly_do": "AB1⊥mp, góc đường–mp, AA1⊥mp, AB⊥CC1"
+ },
+ {
+  "ma_cau": "HHC009937",
+  "chu_de": "vuong_goc",
+  "ly_do": "góc SO với mp, SO⊥AB, góc đường–đường, đường–mp"
+ },
+ {
+  "ma_cau": "HHC009958",
+  "chu_de": "khac",
+  "ly_do": "lập phương: đường chéo, giao điểm, vuông góc, d trộn"
+ },
+ {
+  "ma_cau": "HHC009959",
+  "chu_de": "vuong_goc",
+  "ly_do": "BC⊥SB, BD⊥mp, MN chéo, diện tích AMKN"
+ },
+ {
+  "ma_cau": "HHC009982",
+  "chu_de": "khac",
+  "ly_do": "lập phương: đường chéo, giao điểm, vuông góc, d trộn"
+ },
+ {
+  "ma_cau": "HHC009983",
+  "chu_de": "vuong_goc",
+  "ly_do": "BC⊥SB, BD⊥mp, MN chéo, diện tích AMKN"
+ },
+ {
+  "ma_cau": "HHC009999",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA,BC chéo vuông, BD⊥mp, CD⊥AJ"
+ },
+ {
+  "ma_cau": "HHC010014",
+  "chu_de": "vuong_goc",
+  "ly_do": "AC⊥SB, SA⊥BC, BD⊥mp, góc hai đường"
+ },
+ {
+  "ma_cau": "HHC010026",
+  "chu_de": "vuong_goc",
+  "ly_do": "AH⊥mp, hình chiếu, d AH, cosin góc đường–mp"
+ },
+ {
+  "ma_cau": "HHC010043",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥AD, góc đường–mp, CD⊥mp, góc hai mp"
+ },
+ {
+  "ma_cau": "HHC010058",
+  "chu_de": "vuong_goc",
+  "ly_do": "góc hai đường, góc đường–mp, mặt bên vuông, BD⊥mp"
+ },
+ {
+  "ma_cau": "HHC010070",
+  "chu_de": "vuong_goc",
+  "ly_do": "gấp tấm nhựa, hai đường vuông, mp song song mp trung trực"
+ },
+ {
+  "ma_cau": "HHC010087",
+  "chu_de": "vuong_goc",
+  "ly_do": "lập phương, góc hai đường, BC⊥mp, tang góc"
+ },
+ {
+  "ma_cau": "HHC010102",
+  "chu_de": "vuong_goc",
+  "ly_do": "lăng trụ đứng, BA⊥mp, góc hai đường, mp vuông góc"
+ },
+ {
+  "ma_cau": "HHC010111",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥mp, hình chiếu, CD⊥mp"
+ },
+ {
+  "ma_cau": "HHC010119",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥mp, hình chiếu, CD⊥mp"
+ },
+ {
+  "ma_cau": "HHC010143",
+  "chu_de": "vuong_goc",
+  "ly_do": "chóp đều, mp vuông góc, hình chiếu, góc hai đường"
+ },
+ {
+  "ma_cau": "HHC010162",
+  "chu_de": "vuong_goc",
+  "ly_do": "BC⊥mp, hình chiếu, góc hai đường, mp vuông"
+ },
+ {
+  "ma_cau": "HHC010180",
+  "chu_de": "vuong_goc",
+  "ly_do": "SO⊥đáy, BD⊥mp, SA⊥BE, nhị diện"
+ },
+ {
+  "ma_cau": "HHC010199",
+  "chu_de": "vuong_goc",
+  "ly_do": "tam giác vuông, BD⊥mp, mp vuông góc"
+ },
+ {
+  "ma_cau": "HHC010214",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥CD, góc đường–mp, mp vuông góc, thể tích một ý"
+ },
+ {
+  "ma_cau": "HHC010234",
+  "chu_de": "vuong_goc",
+  "ly_do": "BC⊥SB, AC⊥mp, góc đường–mp, mp vuông góc"
+ },
+ {
+  "ma_cau": "HHC010258",
+  "chu_de": "vuong_goc",
+  "ly_do": "AH⊥mp, BC⊥SB, nhị diện, mp vuông góc"
+ },
+ {
+  "ma_cau": "HHC010280",
+  "chu_de": "vuong_goc",
+  "ly_do": "BC⊥SB, góc hai đường, góc hai mp"
+ },
+ {
+  "ma_cau": "HHC010281",
+  "chu_de": "vuong_goc",
+  "ly_do": "các mp vuông góc, góc hai mp"
+ },
+ {
+  "ma_cau": "HHC010297",
+  "chu_de": "vuong_goc",
+  "ly_do": "BD⊥mp, góc hai đường, đường–mp, đường vuông"
+ },
+ {
+  "ma_cau": "HHC010319",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥BD, d một ý, góc đường–mp, mp vuông góc"
+ },
+ {
+  "ma_cau": "HHC010332",
+  "chu_de": "vuong_goc",
+  "ly_do": "BD⊥AC, hình chiếu, góc hai đường, AH⊥mp"
+ },
+ {
+  "ma_cau": "HHC010345",
+  "chu_de": "vuong_goc",
+  "ly_do": "AK⊥SB, SM⊥BC, AM⊥SC, SA⊥BC"
+ },
+ {
+  "ma_cau": "HHC010358",
+  "chu_de": "vuong_goc",
+  "ly_do": "CD⊥mp, góc hai đường, SC⊥mp, đồng phẳng"
+ },
+ {
+  "ma_cau": "HHC010377",
+  "chu_de": "vuong_goc",
+  "ly_do": "CB⊥mp, góc hai mp, SC⊥BD, CD⊥mp"
+ },
+ {
+  "ma_cau": "HHC010388",
+  "chu_de": "vuong_goc",
+  "ly_do": "SD⊥CD, mp vuông góc, BC⊥mp, cosin góc hai đường"
+ },
+ {
+  "ma_cau": "HHC010410",
+  "chu_de": "vuong_goc",
+  "ly_do": "SO⊥mp, tam giác vuông, hình chiếu, nhị diện"
+ },
+ {
+  "ma_cau": "HHC010417",
+  "chu_de": "vuong_goc",
+  "ly_do": "góc đường–mp, BD⊥mp, SA⊥AB, AH⊥BC"
+ },
+ {
+  "ma_cau": "HHC010421",
+  "chu_de": "vuong_goc",
+  "ly_do": "góc đường–mp, BD⊥mp, SA⊥AB, AH⊥BC"
+ },
+ {
+  "ma_cau": "HHC010441",
+  "chu_de": "vuong_goc",
+  "ly_do": "SO⊥AC, mp vuông góc, SO⊥mp, AB⊥mp"
+ },
+ {
+  "ma_cau": "HHC010458",
+  "chu_de": "vuong_goc",
+  "ly_do": "AB'⊥AC, mp vuông góc, AB'⊥mp, góc đường–mp"
+ },
+ {
+  "ma_cau": "HHC010481",
+  "chu_de": "vuong_goc",
+  "ly_do": "góc đường–mp, mp vuông góc, góc nhọn, d một ý"
+ },
+ {
+  "ma_cau": "HHC010500",
+  "chu_de": "vuong_goc",
+  "ly_do": "hình chiếu, BC⊥mp, tang góc đường–mp, nhị diện"
+ },
+ {
+  "ma_cau": "HHC010501",
+  "chu_de": "vuong_goc",
+  "ly_do": "SO⊥mp, SA⊥mp, góc đường–mp, nhị diện"
+ },
+ {
+  "ma_cau": "HHC010514",
+  "chu_de": "vuong_goc",
+  "ly_do": "chóp đều tam giác, mp vuông góc, góc đường–mp, nhị diện"
+ },
+ {
+  "ma_cau": "HHC010533",
+  "chu_de": "vuong_goc",
+  "ly_do": "AC⊥mp, hình chiếu, góc đường–mp, mp vuông góc"
+ },
+ {
+  "ma_cau": "HHC010548",
+  "chu_de": "vuong_goc",
+  "ly_do": "BC⊥SB, góc hai đường, BD⊥mp, hình chiếu"
+ },
+ {
+  "ma_cau": "HHC010575",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥BD, d một ý, mp vuông góc, nhị diện"
+ },
+ {
+  "ma_cau": "HHC010592",
+  "chu_de": "vuong_goc",
+  "ly_do": "AC⊥mp, tam giác vuông, góc hai đường, tan góc"
+ },
+ {
+  "ma_cau": "HHC010604",
+  "chu_de": "vuong_goc",
+  "ly_do": "BC⊥mp, sin góc đường–mp, SC⊥BD, tang góc"
+ },
+ {
+  "ma_cau": "HHC010613",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA⊥AB, tam giác vuông, AC⊥mp, SC⊥mp"
+ },
+ {
+  "ma_cau": "HHC010621",
+  "chu_de": "vuong_goc",
+  "ly_do": "góc hai đường, SA⊥ON, SA⊥mp, HK⊥"
+ },
+ {
+  "ma_cau": "HHC010627",
+  "chu_de": "vuong_goc",
+  "ly_do": "BC⊥SA, BC⊥SB, BC⊥mp, hình chiếu AH,AK"
+ },
+ {
+  "ma_cau": "HHC010641",
+  "chu_de": "vuong_goc",
+  "ly_do": "AC⊥mp, nhị diện, BD tính độ dài, mp vuông góc"
+ },
+ {
+  "ma_cau": "HHC010656",
+  "chu_de": "vuong_goc",
+  "ly_do": "mô hình cầu dốc, sin góc, góc đường–mp"
+ },
+ {
+  "ma_cau": "HHC010668",
+  "chu_de": "vuong_goc",
+  "ly_do": "BP⊥SC, BP⊥NM, BP⊥SA, BP⊥MA"
+ },
+ {
+  "ma_cau": "HHC010692",
+  "chu_de": "song_song",
+  "ly_do": "MN//(SBC), (OMN)//(SBC), EF cắt mp"
+ },
+ {
+  "ma_cau": "HHC010693",
+  "chu_de": "song_song",
+  "ly_do": "giao tuyến, MN//DC, MD//CN, giao điểm P"
+ },
+ {
+  "ma_cau": "HHC010713",
+  "chu_de": "khoang_cach",
+  "ly_do": "d điểm–mp, mp(SAB)⊥đáy, thể tích một ý"
+ },
+ {
+  "ma_cau": "HHC010737",
+  "chu_de": "vuong_goc",
+  "ly_do": "góc hai đường, SH⊥mp, mp vuông góc, góc hai mp"
+ },
+ {
+  "ma_cau": "HHC010755",
+  "chu_de": "vuong_goc",
+  "ly_do": "BC⊥mp, SM⊥mp, mp vuông góc, BD⊥mp"
+ },
+ {
+  "ma_cau": "HHC010772",
+  "chu_de": "vuong_goc",
+  "ly_do": "mỗi ý một đường⊥mp hoặc mp vuông góc"
+ },
+ {
+  "ma_cau": "HHC010799",
+  "chu_de": "vuong_goc",
+  "ly_do": "tam giác vuông, nhị diện, cosin, SC⊥mp"
+ },
+ {
+  "ma_cau": "HHC010811",
+  "chu_de": "vuong_goc",
+  "ly_do": "hình chiếu, mp vuông góc, góc đường–mp, thể tích"
+ },
+ {
+  "ma_cau": "HHC010823",
+  "chu_de": "vuong_goc",
+  "ly_do": "hình chiếu, mp vuông góc, góc đường–mp, thể tích"
+ },
+ {
+  "ma_cau": "HHC010833",
+  "chu_de": "vuong_goc",
+  "ly_do": "mp vuông góc, góc đường–mp, thể tích và d một ý"
+ },
+ {
+  "ma_cau": "HHC010848",
+  "chu_de": "vuong_goc",
+  "ly_do": "BC⊥mp, góc hai đường, IJ⊥BC, góc hai mp"
+ },
+ {
+  "ma_cau": "HHC010864",
+  "chu_de": "vuong_goc",
+  "ly_do": "góc hai đường, MN⊥BC, góc hai mp, BC⊥mp"
+ },
+ {
+  "ma_cau": "HHC010879",
+  "chu_de": "vuong_goc",
+  "ly_do": "CD⊥mp, SA⊥SC, thể tích và d một ý"
+ },
+ {
+  "ma_cau": "HHC010896",
+  "chu_de": "vuong_goc",
+  "ly_do": "góc hai mp, BD⊥mp, d và thể tích một ý"
+ },
+ {
+  "ma_cau": "HHC010920",
+  "chu_de": "vuong_goc",
+  "ly_do": "hình chiếu, mp vuông góc, d và V một ý"
+ },
+ {
+  "ma_cau": "HHC010975",
+  "chu_de": "vuong_goc",
+  "ly_do": "mp(SAB)⊥đáy, AD⊥mp, SA⊥CD, SH⊥mp"
+ },
+ {
+  "ma_cau": "HHC011002",
+  "chu_de": "vuong_goc",
+  "ly_do": "góc hai mp, AB⊥mp, AA'⊥BC, thể tích một ý"
+ },
+ {
+  "ma_cau": "HHC011016",
+  "chu_de": "khoang_cach",
+  "ly_do": "mp vuông góc, d điểm–mp, d đường chéo nhau, thể tích"
+ },
+ {
+  "ma_cau": "HHC011034",
+  "chu_de": "the_tich",
+  "ly_do": "đường cao, công thức thể tích chóp, diện tích đáy"
+ },
+ {
+  "ma_cau": "HHC011053",
+  "chu_de": "vuong_goc",
+  "ly_do": "góc hai đường, hình chiếu, thể tích và d một ý"
+ },
+ {
+  "ma_cau": "HHC011072",
+  "chu_de": "khoang_cach",
+  "ly_do": "d điểm–mp, d đường chéo nhau, thể tích, diện tích"
+ },
+ {
+  "ma_cau": "HHC011085",
+  "chu_de": "vuong_goc",
+  "ly_do": "nhị diện, AD⊥mp, thể tích và d một ý"
+ }
+]

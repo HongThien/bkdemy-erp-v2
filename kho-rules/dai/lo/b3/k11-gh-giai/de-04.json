@@ -1,0 +1,265 @@
+[
+ {
+  "ma_cau": "T111000000131",
+  "loai": "trac_nghiem",
+  "de": "Với $k$ là số nguyên dương, mệnh đề nào sau đây ĐÚNG?",
+  "lua_chon": [
+   "$\\lim \\dfrac{1}{n^{k}}=0$.",
+   "$\\lim \\dfrac{1}{n^{k}}=+\\infty$.",
+   "$\\lim \\dfrac{1}{n^{k}}=-\\infty$.",
+   "$\\lim \\dfrac{1}{n^{k}}=k$."
+  ],
+  "co_hinh": false,
+  "nguon": "Đề giữa kì 1 Toán 11 năm 2025 - 2026 trường THPT chuyên Vị Thanh - Cần Thơ"
+ },
+ {
+  "ma_cau": "T1110000001310",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn: $\\lim\\limits_{x\\to3}\\dfrac{\\sqrt{x+6}-3}{9-x^2}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001311",
+  "loai": "tu_luan",
+  "de": "Tìm các giá trị của tham số $m$ để hàm số $f(x)=\\begin{cases} 2x^2-3x+15 & \\text{khi } x>-1 \\\\ -mx+3 & \\text{khi } x\\le-1 \\end{cases}$ liên tục tại điểm $x_0=-1$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T111000000132",
+  "loai": "trac_nghiem",
+  "de": "Khẳng định nào sau đây SAI?",
+  "lua_chon": [
+   "$\\lim u_{n}=+\\infty$ thì $\\lim \\dfrac{1}{u_{n}}=0$.",
+   "$\\lim u_{n}=+\\infty$ khi và chỉ khi $\\lim \\left(-u_{n}\\right)=-\\infty$.",
+   "$\\lim u_{n}=-\\infty$ thì $\\lim \\dfrac{1}{u_{n}}=0$.",
+   "$\\lim u_{n}=+\\infty$ thì $\\lim \\dfrac{1}{u_{n}}=-\\infty$."
+  ],
+  "co_hinh": false,
+  "nguon": "Đề giữa kì 1 Toán 11 năm 2025 - 2026 trường THPT chuyên Vị Thanh - Cần Thơ"
+ },
+ {
+  "ma_cau": "T111000000134",
+  "loai": "trac_nghiem",
+  "de": "Cho $c$ là hằng số, $k$ là số nguyên dương khác không. Mệnh đề nào sau đây SAI?",
+  "lua_chon": [
+   "$\\lim\\limits_{x\\to +\\infty }x^{k}=+\\infty$.",
+   "$\\lim\\limits_{x\\to x_{0}}c=c$.",
+   "$\\lim\\limits_{x\\to x_{0}}x=x_{0}$.",
+   "$\\lim\\limits_{x\\to -\\infty }x^{k}=-\\infty$."
+  ],
+  "co_hinh": false,
+  "nguon": "Đề giữa kì 1 Toán 11 năm 2025 - 2026 trường THPT chuyên Vị Thanh - Cần Thơ"
+ },
+ {
+  "ma_cau": "T1110000001357",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{n^2+2n+1}{2n^2+3}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001358",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{\\sqrt{n^2+n}-3n}{1-2n}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001359",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{n\\to+\\infty}(n^2-4n+1)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001360",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{n\\to+\\infty}(\\sqrt{n^2-3n}-n)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001361",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{n\\to+\\infty}(\\sqrt{2n^2+1}-n)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001362",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{2^n+5^{n+1}}{1+5^n}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001363",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{1+2+3+\\dots+n}{n^2-4n}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001364",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim u_n$, với $u_n=(1-\\dfrac{1}{2^2})(1-\\dfrac{1}{3^2})\\dots(1-\\dfrac{1}{n^2})$ $(\\forall n\\ge2)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001365",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to2}\\dfrac{2x+1}{x-3}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001366",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to-3}\\dfrac{x^2-9}{x+3}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001367",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to3}\\dfrac{\\sqrt{x^2-5}-2}{x-3}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001368",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to-1}\\dfrac{2\\sqrt[3]{x}+2}{\\sqrt{x^2+3}-2}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001369",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to2^-}\\dfrac{|2-x|}{2x^2-5x+2}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001370",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to+\\infty}\\dfrac{2x+7}{x^2-3}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001371",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{2x+3}{\\sqrt{2x^2-3}}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001372",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to+\\infty}(\\sqrt{x^2-x+1}-x)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001373",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}(x+1)\\sqrt{\\dfrac{2x+1}{x^3+x+2}}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001374",
+  "loai": "tu_luan",
+  "de": "Xét tính liên tục của hàm số $f(x)=\\begin{cases} \\dfrac{x^2-3x+2}{x-2} & \\text{khi } x\\neq2 \\\\ 4x-3 & \\text{khi } x=2 \\end{cases}$ tại $x=2$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001375",
+  "loai": "tu_luan",
+  "de": "Xét tính liên tục của hàm số $f(x)=\\begin{cases} \\dfrac{\\sqrt{x+3}-2}{x-1} & \\text{khi } x\\neq1 \\\\ \\dfrac{1}{4} & \\text{khi } x=1 \\end{cases}$ tại $x=1$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001376",
+  "loai": "tu_luan",
+  "de": "Xét tính liên tục của hàm số $f(x)=\\begin{cases} \\dfrac{1-\\sqrt{2x-3}}{2-x} & \\text{khi } x>2 \\\\ x^2-3x+3 & \\text{khi } x\\le2 \\end{cases}$ tại $x=2$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001377",
+  "loai": "tu_luan",
+  "de": "Xét tính liên tục của hàm số $f(x)=\\begin{cases} \\dfrac{x^2-9}{\\sqrt{x+1}-2} & \\text{khi } x>3 \\\\ 2x+12 & \\text{khi } x\\le3 \\end{cases}$ tại điểm $x=3$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001378",
+  "loai": "tu_luan",
+  "de": "Tìm giá trị của $a$ để hàm số $f(x)=\\begin{cases} \\dfrac{x^2-5x+6}{x^2-4} & \\text{khi } x\\neq2 \\\\ \\dfrac{1}{8}(a+x) & \\text{khi } x=2 \\end{cases}$ liên tục tại $x=2$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001379",
+  "loai": "tu_luan",
+  "de": "Tìm giá trị của $a$ để hàm số $f(x)=\\begin{cases} \\dfrac{x^3-x^2+2x-2}{x-1} & \\text{khi } x\\neq1 \\\\ 3x+a & \\text{khi } x=1 \\end{cases}$ liên tục tại $x=1$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001380",
+  "loai": "tu_luan",
+  "de": "Tìm giá trị của $m$ để hàm số $f(x)=\\begin{cases} x^2 & \\text{khi } x<1 \\\\ 2mx-3 & \\text{khi } x\\ge1 \\end{cases}$ liên tục tại $x=1$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001381",
+  "loai": "tu_luan",
+  "de": "Tìm giá trị của $a$ để hàm số $f(x)=\\begin{cases} a^2x^2 & \\text{khi } x\\le2 \\\\ (1-a)x & \\text{khi } x>2 \\end{cases}$ liên tục trên $\\mathbb{R}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ },
+ {
+  "ma_cau": "T1110000001382",
+  "loai": "tu_luan",
+  "de": "Chứng minh phương trình $x^5-3x+3=0$ luôn có nghiệm.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Phan Đình Phùng"
+ }
+]

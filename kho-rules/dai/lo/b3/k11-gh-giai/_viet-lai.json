@@ -1,0 +1,436 @@
+[
+ {
+  "ma_cau": "T111000000131",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Với $k$ là số nguyên dương, mệnh đề nào sau đây ĐÚNG?",
+  "lua_chon": [
+   "$\\lim \\dfrac{1}{n^{k}}=0$.",
+   "$\\lim \\dfrac{1}{n^{k}}=+\\infty$.",
+   "$\\lim \\dfrac{1}{n^{k}}=-\\infty$.",
+   "$\\lim \\dfrac{1}{n^{k}}=k$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Với $k$ là số nguyên dương, theo định lí về giới hạn cơ bản của dãy số, ta có\n\n$\\lim \\dfrac{1}{n^{k}}=0.$\n\nVậy khẳng định đúng là $\\lim \\dfrac{1}{n^{k}}=0$."
+ },
+ {
+  "ma_cau": "T1110000004025",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "$\\lim\\left(\\frac{1}{n}+2\\right)$ bằng",
+  "lua_chon": [
+   "$1$.",
+   "$0$.",
+   "$2$.",
+   "$+\\infty$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "$\\lim\\frac{1}{n}=0$ nên $\\lim\\left(\\frac{1}{n}+2\\right)=0+2=2$."
+ },
+ {
+  "ma_cau": "T1110000004007",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Trong các dãy số sau, dãy số nào có giới hạn $+\\infty$?",
+  "lua_chon": [
+   "$u_n=\\frac{1}{n}$.",
+   "$v_n=\\left(\\frac{3}{\\pi}\\right)^n$.",
+   "$x_n=\\left(\\frac{e}{2}\\right)^n$.",
+   "$a_n=\\left(-1\\right)^n\\cdot n$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Dãy $q^n$ có giới hạn $+\\infty$ khi $q>1$. Ở đây $\\frac{e}{2}\\approx1{,}36>1$ nên $x_n\\to+\\infty$; $\\frac{3}{\\pi}<1$ nên $v_n\\to0$; $u_n\\to0$; $a_n$ không có giới hạn."
+ },
+ {
+  "ma_cau": "T111000000205",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho dãy số $\\left(u_{n}\\right)$ có $\\lim u_{n}=3$. Khi đó $\\lim \\left(u_{n}+2\\right)$ bằng:",
+  "lua_chon": [
+   "$3$.",
+   "$5$.",
+   "$6$.",
+   "$2$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Áp dụng định lí về giới hạn hữu hạn của dãy số, ta có\n\n$\\lim \\left(u_{n}+2\\right)=\\lim u_{n}+\\lim 2=3+2=5.$\n\nVậy $\\lim \\left(u_{n}+2\\right)=5$."
+ },
+ {
+  "ma_cau": "T1110000004045",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Nếu các dãy số $\\left(u_n\\right),\\left(v_n\\right)$ thỏa mãn $\\lim u_n=4$ và $\\lim v_n=3$ thì $\\lim\\left(u_n+v_n\\right)$ bằng",
+  "lua_chon": [
+   "$7$.",
+   "$12$.",
+   "$1$.",
+   "$\\frac{4}{3}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$\\lim(u_n+v_n)=4+3=7$."
+ },
+ {
+  "ma_cau": "T1110000004093",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho $\\lim\\limits_{n\\to+\\infty}u_n=2$ khi đó $\\lim\\limits_{n\\to+\\infty}\\left[3u_n-1\\right]$ bằng",
+  "lua_chon": [
+   "$-\\infty$.",
+   "$3$.",
+   "$5$.",
+   "$+\\infty$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "$\\lim(3u_n-1)=3\\cdot2-1=5$."
+ },
+ {
+  "ma_cau": "T111000000206",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tính $\\lim \\dfrac{2n+1}{1+n}$ được kết quả là",
+  "lua_chon": [
+   "$2$.",
+   "$0$.",
+   "$\\dfrac{1}{2}$.",
+   "$1$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Chia cả tử và mẫu cho $n$, ta có\n\n$\\lim \\dfrac{2n+1}{1+n}=\\lim \\dfrac{2+\\dfrac{1}{n}}{\\dfrac{1}{n}+1}=\\dfrac{2+0}{0+1}=2.$\n\nVậy giới hạn cần tìm bằng $2$."
+ },
+ {
+  "ma_cau": "T1110000004091",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Giá trị của $\\lim\\limits_{n\\to+\\infty}\\frac{3n+2}{2n}$ bằng",
+  "lua_chon": [
+   "$\\frac{3}{2}$.",
+   "$2$.",
+   "$3$.",
+   "$+\\infty$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$\\lim\\frac{3n+2}{2n}=\\lim\\frac{3+\\frac{2}{n}}{2}=\\frac{3}{2}$."
+ },
+ {
+  "ma_cau": "T1110000004047",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tính $\\lim\\frac{2025n+1}{2026n+2}$.",
+  "lua_chon": [
+   "$\\frac{2026}{2025}$.",
+   "$\\frac{2025}{2026}$.",
+   "$\\frac{1}{2}$.",
+   "$0$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chia tử và mẫu cho $n$: $\\lim\\frac{2025+\\frac{1}{n}}{2026+\\frac{2}{n}}=\\frac{2025}{2026}$."
+ },
+ {
+  "ma_cau": "T111000000132",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Khẳng định nào sau đây SAI?",
+  "lua_chon": [
+   "$\\lim u_{n}=+\\infty$ thì $\\lim \\dfrac{1}{u_{n}}=0$.",
+   "$\\lim u_{n}=+\\infty$ khi và chỉ khi $\\lim \\left(-u_{n}\\right)=-\\infty$.",
+   "$\\lim u_{n}=-\\infty$ thì $\\lim \\dfrac{1}{u_{n}}=0$.",
+   "$\\lim u_{n}=+\\infty$ thì $\\lim \\dfrac{1}{u_{n}}=-\\infty$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Theo định lí về giới hạn vô cực của dãy số, nếu $\\lim u_{n}=+\\infty$ hoặc $\\lim u_{n}=-\\infty$ thì\n\n$\\lim \\dfrac{1}{u_{n}}=0.$\n\nDo đó, khẳng định $\\lim u_{n}=+\\infty$ thì $\\lim \\dfrac{1}{u_{n}}=-\\infty$ là khẳng định sai."
+ },
+ {
+  "ma_cau": "T1110000004020",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tìm giới hạn: $\\lim\\frac{3^{n+1}}{4\\cdot3^n}$.",
+  "lua_chon": null,
+  "dap_an": "0,75",
+  "loi_giai": "$\\frac{3^{n+1}}{4\\cdot3^n}=\\frac{3}{4}$ với mọi $n$ nên giới hạn bằng $\\frac{3}{4}=0{,}75$."
+ },
+ {
+  "ma_cau": "T111000000023",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tính tổng cấp số nhân lùi vô hạn $-\\dfrac{1}{2},\\dfrac{1}{4},-\\dfrac{1}{8},\\ldots,\\dfrac{(-1)^n}{2^n},\\ldots$ là.",
+  "lua_chon": [
+   "$A. -1.$",
+   "$B. \\dfrac{1}{2}.$",
+   "$C. -\\dfrac{1}{4}.$",
+   "$D. -\\dfrac{1}{3}.$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Cấp số nhân có $u_1=-\\dfrac{1}{2}$ công bội $q=-\\dfrac{1}{2}$ nên tổng của cấp số nhân lùi vô hạn là.\n\n$\\lim S_n=\\lim \\dfrac{u_1\\left(1-q^n\\right)}{1-q}=\\dfrac{u_1}{1-q}=-\\dfrac{1}{3}$"
+ },
+ {
+  "ma_cau": "T111000000015",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tính tổng $S=-1+\\dfrac{1}{6}-\\dfrac{1}{6^2}+\\ldots+(-1)^{n-1}\\dfrac{1}{6^n}+\\ldots$",
+  "lua_chon": [
+   "$A. S=\\dfrac{7}{6}$",
+   "$B. S=-\\dfrac{6}{7}$",
+   "$C. S=\\dfrac{6}{7}$",
+   "$D. S=-\\dfrac{7}{6}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có: $q=\\dfrac{u_2}{u_1}=\\dfrac{u_3}{u_2}=\\ldots=-\\dfrac{1}{6}\\ (|q|<1)$. Do đó: $S=\\dfrac{u_1}{1-q}=\\dfrac{-1}{1+\\frac{1}{6}}=\\dfrac{-6}{7}$"
+ },
+ {
+  "ma_cau": "T111000000019",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tổng $S=\\dfrac{1}{3}+\\dfrac{1}{3^2}+\\cdots+\\dfrac{1}{3^n}+\\cdots$ có giá trị là:",
+  "lua_chon": [
+   "$A. \\dfrac{1}{9}.$",
+   "$B. \\dfrac{1}{4}.$",
+   "$C. \\dfrac{1}{3}.$",
+   "$D. \\dfrac{1}{2}.$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $S=\\dfrac{1}{3}+\\dfrac{1}{3^2}+\\cdots+\\dfrac{1}{3^n}+\\cdots$ là tổng của cấp số nhân lùi vô hạn $(u_n)$ với $u_n=\\dfrac{1}{3^n}$ có số hạng đầu $u_1=\\dfrac{1}{3}$, công sai $q=\\dfrac{1}{3}$. Do đó $S=\\dfrac{u_1}{1-q}=\\dfrac{\\frac{1}{3}}{1-\\frac{1}{3}}=\\dfrac{1}{2}.$"
+ },
+ {
+  "ma_cau": "T111000000016",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Số thập phân vô hạn tuần hoàn $0,121212\\ldots$ được biểu diễn bởi phân số",
+  "lua_chon": [
+   "$A. \\dfrac{3}{25}.$",
+   "$B. \\dfrac{12}{99}.$",
+   "$C. \\dfrac{1}{11}.$",
+   "$D. \\dfrac{3}{22}.$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $0,121212\\ldots=\\dfrac{12}{10^2}+\\dfrac{12}{10^4}+\\dfrac{12}{10^6}+\\ldots+\\dfrac{12}{10^{2n}}+\\ldots=12\\left(\\dfrac{1}{10^2}+\\dfrac{1}{10^4}+\\ldots+\\dfrac{1}{10^{2n}}+\\ldots\\right)$\n\n$=12\\left(\\dfrac{\\frac{1}{100}}{1-\\frac{1}{100}}\\right)=\\dfrac{4}{33}=\\dfrac{12}{99}.$"
+ },
+ {
+  "ma_cau": "T111000000014",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Số thập phân vô hạn tuần hoàn $3,1555\\ldots=3,1(5)$ viết dưới dạng số hữu tỉ là:",
+  "lua_chon": [
+   "$A. \\dfrac{63}{20}.$",
+   "$B. \\dfrac{142}{45}.$",
+   "$C. \\dfrac{1}{18}.$",
+   "$D. \\dfrac{7}{2}.$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "$3,1555\\ldots=3,1+0,05+0,005+0,0005+\\ldots$\n\nDãy số $0,05;0,005;0,0005;0,00005;\\ldots$ là một cấp số nhân lùi vô hạn có $u_1=0,05$; $q=0,1.$\n\nVậy $3,1555\\ldots=3,1+\\dfrac{0,05}{1-0,1}=\\dfrac{142}{45}.$"
+ },
+ {
+  "ma_cau": "T111000000049",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Từ độ cao $55,8$ m của tháp nghiêng Pisa nước Italia người ta thả một quả bóng cao su chạm xuống đất. Giả sử mỗi lần chạm đất quả bóng lại nảy lên độ cao bằng $\\dfrac{1}{10}$ độ cao mà quả bóng đạt trước đó. Tổng độ dài hành trình của quả bóng được thả từ lúc ban đầu cho đến khi nó nằm yên trên mặt đất là bao nhiêu?",
+  "lua_chon": null,
+  "dap_an": "≈68,2 (m)",
+  "loi_giai": "Gọi $h_n$ là độ dài đường đi của quả bóng ở lần rơi xuống thứ $n\\ (n\\in\\mathbb{N}^*).$\n\nGọi $l_n$ là độ dài đường đi của quả bóng ở lần nảy lên thứ $n\\ (n\\in\\mathbb{N}^*).$\n\nTheo bài ra ta có $h_1=55,8$, $l_1=\\dfrac{1}{10}.55,8=5,58$ và các dãy số $(h_n),(l_n)$ là các cấp số nhân lùi vô hạn với công bội $q=\\dfrac{1}{10}.$\n\nTừ đó ta suy ra tổng độ dài đường đi của quả bóng là:\n\n$S=\\dfrac{h_1}{1-\\frac{1}{10}}+\\dfrac{l_1}{1-\\frac{1}{10}}=\\dfrac{10}{9}(h_1+l_1)=68,2\\ (m).$"
+ },
+ {
+  "ma_cau": "T111000000031",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Bạn A thả quả bóng cao su từ độ cao $10$ m theo phương thẳng đứng. Mỗi khi chạm đất nó lại nảy lên theo phương thẳng đứng có độ cao bằng $\\dfrac{3}{4}$ độ cao trước đó. Tính tổng quãng đường bóng đi được đến khi bóng dừng hẳn.",
+  "lua_chon": [
+   "$A. 40\\ m.$",
+   "$B. 70\\ m.$",
+   "$C. 50\\ m.$",
+   "$D. 80\\ m.$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Các quãng đường khi bóng đi xuống tạo thành một cấp số nhân lùi vô hạn có $u_1=10$ và $q=\\dfrac{3}{4}.$\n\nTổng các quãng đường khi bóng đi xuống là $S=\\dfrac{u_1}{1-q}=\\dfrac{10}{1-\\frac{3}{4}}=40.$\n\nTổng quãng đường bóng đi được đến khi bóng dừng hẳn $2S-10=70.$"
+ },
+ {
+  "ma_cau": "T111000000052",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình vuông $(C_1)$ có cạnh bằng $a$. Người ta chia mỗi cạnh của hình vuông thành bốn phần bằng nhau và nối các điểm chia một cách thích hợp để có hình vuông $(C_2)$. Từ hình vuông $(C_2)$ lại tiếp tục làm như trên ta nhận được dãy các hình vuông $C_1,C_2,C_3,\\ldots,C_n$. Gọi $S_i$ là diện tích của hình vuông $C_i\\ (i\\in\\{1,2,3,\\ldots\\})$. Đặt $T=S_1+S_2+S_3+\\ldots+S_n+\\ldots$. Biết $T=\\dfrac{32}{3}$. Tính $a$?",
+  "lua_chon": null,
+  "dap_an": "2",
+  "loi_giai": "Cạnh của hình vuông $(C_2)$ là: $a_2=\\sqrt{\\left(\\dfrac{3}{4}a\\right)^2+\\left(\\dfrac{1}{4}a\\right)^2}=\\dfrac{a\\sqrt{10}}{4}$. Do đó diện tích $S_2=\\dfrac{5}{8}a^2=\\dfrac{5}{8}S_1.$\n\nCạnh của hình vuông $(C_3)$ là: $a_3=\\sqrt{\\left(\\dfrac{3}{4}a_2\\right)^2+\\left(\\dfrac{1}{4}a_2\\right)^2}=a_2.\\dfrac{\\sqrt{10}}{4}=a\\left(\\dfrac{\\sqrt{10}}{4}\\right)^2$. Do đó diện tích $S_3=\\left(\\dfrac{5}{8}\\right)^2a^2=\\dfrac{5}{8}S_2.$\n\nLý luận tương tự ta có các $S_1,S_2,S_3,\\ldots S_n\\ldots$ tạo thành một dãy cấp số nhân lùi vô hạn có $u_1=S_1$ và công bội $q=\\dfrac{5}{8}.$\n\nKhi đó: $T=\\dfrac{S_1}{1-q}=\\dfrac{8a^2}{3}$. Với $T=\\dfrac{32}{3}$ ta có $a^2=4\\Leftrightarrow a=2.$"
+ },
+ {
+  "ma_cau": "T1110000004042",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho tam giác đều $A_1B_1C_1$ nội tiếp đường tròn tâm $O$ bán kính là $R=6$ cm. Người ta vẽ đường tròn nội tiếp tam giác $A_1B_1C_1$ rồi dựng tam giác đều $A_2B_2C_2$. Tiếp theo người ta vẽ đường tròn nội tiếp tam giác $A_2B_2C_2$ rồi dựng tam giác đều $A_3B_3C_3$. Cứ tiếp tục quá trình như vậy. Gọi $S_1,S_2,S_3,\\dots,S_n,\\dots$ lần lượt là diện tích các tam giác đều $A_1B_1C_1,A_2B_2C_2,A_3B_3C_3,\\dots,A_nB_nC_n,\\dots$ Tính $S=S_1+S_2+\\dots+S_n+\\dots$.",
+  "lua_chon": null,
+  "dap_an": "$36\\sqrt{3}$",
+  "loi_giai": "Tam giác đều nội tiếp đường tròn bán kính $R$ có cạnh $R\\sqrt{3}$, bán kính đường tròn nội tiếp là $\\frac{R}{2}$. Tam giác $A_2B_2C_2$ nội tiếp đường tròn nội tiếp tam giác $A_1B_1C_1$ (bán kính $\\frac{R}{2}$) nên cạnh bằng $\\frac{1}{2}$ cạnh tam giác $A_1B_1C_1$, diện tích bằng $\\frac{1}{4}$. Vậy $S_n$ là cấp số nhân với $S_1=\\frac{\\sqrt{3}}{4}(6\\sqrt{3})^2=27\\sqrt{3}$, $q=\\frac{1}{4}$. $S=\\frac{S_1}{1-q}=\\frac{27\\sqrt{3}}{3/4}=36\\sqrt{3}$ (cm²)."
+ },
+ {
+  "ma_cau": "T1110000004021",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tìm giới hạn: $\\lim\\limits_{x\\to5}\\frac{x^2-5x-7}{x-3}$.",
+  "lua_chon": null,
+  "dap_an": "-3,5",
+  "loi_giai": "Hàm số xác định tại $x=5$: $\\frac{25-25-7}{5-3}=-\\frac{7}{2}=-3{,}5$."
+ },
+ {
+  "ma_cau": "T1110000004097",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Giới hạn $I=\\lim\\limits_{x\\to1}\\left(x^3+x+1\\right)$ bằng.",
+  "lua_chon": [
+   "$I=+\\infty$.",
+   "$I=3$.",
+   "$I=-\\infty$.",
+   "$I=5$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Hàm đa thức: $I=1^3+1+1=3$."
+ },
+ {
+  "ma_cau": "T1110000004010",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Giả sử $\\lim\\limits_{x\\to x_0}f(x)=L$ và $\\lim\\limits_{x\\to x_0}g(x)=M$ với $L,M$ là các số thực. Khẳng định nào sau đây sai?",
+  "lua_chon": [
+   "$\\lim\\limits_{x\\to x_0}\\left[f(x)+g(x)\\right]=L+M$.",
+   "$\\lim\\limits_{x\\to x_0}\\left[f(x)-g(x)\\right]=L-M$.",
+   "$\\lim\\limits_{x\\to x_0}\\left[f(x)\\cdot g(x)\\right]=L\\cdot M$.",
+   "$\\lim\\limits_{x\\to x_0}\\left[\\frac{f(x)}{g(x)}\\right]=\\frac{L}{M}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Quy tắc giới hạn của thương chỉ đúng khi $M\\neq0$; đề không có điều kiện này nên khẳng định D sai."
+ },
+ {
+  "ma_cau": "T1110000004026",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho $\\lim\\limits_{x\\to3}f(x)=-2$. Tính $\\lim\\limits_{x\\to3}2f(x)$.",
+  "lua_chon": [
+   "$-6$.",
+   "$-4$.",
+   "$4$.",
+   "$6$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "$\\lim\\limits_{x\\to3}2f(x)=2\\cdot(-2)=-4$."
+ },
+ {
+  "ma_cau": "T1110000004106",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(0,5 điểm) Tính giới hạn sau: $\\lim\\limits_{x\\to4}\\frac{\\sqrt{2x+1}-3}{x^2-16}$.",
+  "lua_chon": null,
+  "dap_an": "$\\frac{1}{24}$",
+  "loi_giai": "$\\lim\\limits_{x\\to4}\\frac{\\sqrt{2x+1}-3}{x^2-16}=\\lim\\limits_{x\\to4}\\frac{(2x+1)-9}{(x^2-16)(\\sqrt{2x+1}+3)}=\\lim\\limits_{x\\to4}\\frac{2(x-4)}{(x-4)(x+4)(\\sqrt{2x+1}+3)}=\\lim\\limits_{x\\to4}\\frac{2}{(x+4)(\\sqrt{2x+1}+3)}=\\frac{2}{8\\cdot6}=\\frac{1}{24}$."
+ },
+ {
+  "ma_cau": "T111000000209",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to -\\infty }\\dfrac{-2x-3}{2+x}$:",
+  "lua_chon": [
+   "$2$.",
+   "$-2$.",
+   "$-3$.",
+   "$-1$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chia cả tử và mẫu cho $x$, ta có\n\n$\\lim\\limits_{x\\to -\\infty }\\dfrac{-2x-3}{2+x}=\\lim\\limits_{x\\to -\\infty }\\dfrac{-2-\\dfrac{3}{x}}{\\dfrac{2}{x}+1}=\\dfrac{-2-0}{0+1}=-2.$\n\nVậy $\\lim\\limits_{x\\to -\\infty }\\dfrac{-2x-3}{2+x}=-2$."
+ },
+ {
+  "ma_cau": "T1110000004022",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn: $\\lim\\limits_{x\\to-\\infty}\\frac{\\sqrt{x^2+1}}{2x}$.",
+  "lua_chon": null,
+  "dap_an": "$-\\frac{1}{2}$",
+  "loi_giai": "Với $x<0$: $\\sqrt{x^2+1}=|x|\\sqrt{1+\\frac{1}{x^2}}=-x\\sqrt{1+\\frac{1}{x^2}}$. Do đó $\\frac{\\sqrt{x^2+1}}{2x}=\\frac{-x\\sqrt{1+\\frac{1}{x^2}}}{2x}=-\\frac{\\sqrt{1+\\frac{1}{x^2}}}{2}\\to-\\frac{1}{2}$ khi $x\\to-\\infty$."
+ },
+ {
+  "ma_cau": "T111000000210",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to 1^{+}}\\dfrac{4x-3}{x-1}$",
+  "lua_chon": [
+   "$+\\infty$.",
+   "$2$.",
+   "$-\\infty$.",
+   "$-2$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có:\n\n$\\lim\\limits_{x\\to 1^{+}}\\left(4x-3\\right)=4\\cdot 1-3=1>0$.\n\n$\\lim\\limits_{x\\to 1^{+}}\\left(x-1\\right)=0$ và $x-1>0$ với mọi $x>1$.\n\nDo đó theo quy tắc tìm giới hạn của thương, ta có\n\n$\\lim\\limits_{x\\to 1^{+}}\\dfrac{4x-3}{x-1}=+\\infty.$\n\nVậy giới hạn cần tìm bằng $+\\infty$."
+ },
+ {
+  "ma_cau": "T111000000134",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho $c$ là hằng số, $k$ là số nguyên dương khác không. Mệnh đề nào sau đây SAI?",
+  "lua_chon": [
+   "$\\lim\\limits_{x\\to +\\infty }x^{k}=+\\infty$.",
+   "$\\lim\\limits_{x\\to x_{0}}c=c$.",
+   "$\\lim\\limits_{x\\to x_{0}}x=x_{0}$.",
+   "$\\lim\\limits_{x\\to -\\infty }x^{k}=-\\infty$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Với $k$ là số nguyên dương khác không, khi $x\\to -\\infty$ thì:\n\n$\\lim\\limits_{x\\to -\\infty }x^{k}=+\\infty neu k\\text{ la so chan};$\n\n$\\lim\\limits_{x\\to -\\infty }x^{k}=-\\infty neu k\\text{ la so le}.$\n\nDo đó mệnh đề $\\lim\\limits_{x\\to -\\infty }x^{k}=-\\infty$ là sai vì chưa xét trường hợp $k$ là số chẵn."
+ },
+ {
+  "ma_cau": "T1110000004035",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Sự phân hủy của rác thải hữu cơ có trong nước sẽ làm tiêu hao lượng oxygen hòa tan trong nước. Sau khi một lượng rác thải hữu cơ được xả vào một hồ nước thì nồng độ oxygen (mg/l) trong hồ sau $t$ giờ ($t\\ge0$) được biểu diễn bởi hàm số $f(t)=5-\\frac{15t}{9t^2+1}$. Tính $\\lim\\limits_{t\\to+\\infty}f(t)$.",
+  "lua_chon": [
+   "$5$.",
+   "$+\\infty$.",
+   "$\\frac{5}{3}$.",
+   "$\\frac{10}{3}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$\\lim\\frac{15t}{9t^2+1}=\\lim\\frac{15/t}{9+1/t^2}=0$ nên $\\lim f(t)=5-0=5$."
+ },
+ {
+  "ma_cau": "T1110000004059",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một bể chứa $5000$ lít nước tinh khiết. Người ta bơm vào bể đó nước muối có nồng độ $40$ gam muối cho mỗi lít nước với tốc độ $15$ lít/phút. Biết rằng nồng độ muối có trong bể chứa được tính bằng tỉ số của khối lượng muối trong bể và thể tích nước trong bể, đơn vị: gam/lít. Gọi $C(t)$ là nồng độ muối có trong bể sau thời gian $t$ phút nước được bơm vào trong bể. Giả sử bể có thể chứa được lượng nước vô cùng lớn, tính $\\lim\\limits_{t\\to+\\infty}C(t)$.",
+  "lua_chon": null,
+  "dap_an": "40",
+  "loi_giai": "Sau $t$ phút: khối lượng muối $=40\\cdot15t=600t$ (gam), thể tích $=5000+15t$ (lít). $C(t)=\\frac{600t}{5000+15t}$ nên $\\lim\\limits_{t\\to+\\infty}C(t)=\\frac{600}{15}=40$ (gam/lít)."
+ },
+ {
+  "ma_cau": "T1110000004040",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xét tính liên tục của hàm số $f(x)=\\begin{cases}\\frac{2x^2-5x+2}{x-2}&\\text{khi }x>2\\\\x+1&\\text{khi }x\\le2\\end{cases}$ tại điểm $x_0=2$.",
+  "lua_chon": null,
+  "dap_an": "Hàm số liên tục tại $x_0=2$",
+  "loi_giai": "$f(2)=2+1=3$. $\\lim\\limits_{x\\to2^-}f(x)=\\lim\\limits_{x\\to2^-}(x+1)=3$. $\\lim\\limits_{x\\to2^+}f(x)=\\lim\\limits_{x\\to2^+}\\frac{(2x-1)(x-2)}{x-2}=\\lim\\limits_{x\\to2^+}(2x-1)=3$. Vì $\\lim\\limits_{x\\to2^-}f=\\lim\\limits_{x\\to2^+}f=f(2)=3$ nên hàm số liên tục tại $x_0=2$."
+ },
+ {
+  "ma_cau": "T1110000004027",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $y=f(x)$ xác định trên $\\mathbb{R}$ có đồ thị như hình bên dưới. Hàm số đã cho gián đoạn tại điểm nào dưới đây?",
+  "lua_chon": [
+   "$x_0=3$.",
+   "$x_0=1$.",
+   "$x_0=0$.",
+   "$x_0=-1$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Đồ thị bị đứt (nhảy) tại $x=-1$: nhánh bên trái kết thúc ở độ cao $1$, nhánh bên phải bắt đầu ở độ cao nhỏ hơn. Tại $x=3$, $x=0$, $x=1$ đồ thị liền nét. Vậy hàm số gián đoạn tại $x_0=-1$."
+ },
+ {
+  "ma_cau": "T111000000207",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Hàm số nào sau đây là không liên tục tại điểm $x=2$?",
+  "lua_chon": [
+   "$f\\left(x\\right)=x^{2}+3x-2$.",
+   "$f\\left(x\\right)=\\dfrac{x+3}{x-2}$.",
+   "$f\\left(x\\right)=\\dfrac{x+3}{x+2}$.",
+   "$f\\left(x\\right)=\\sin x$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét hàm số $f\\left(x\\right)=\\dfrac{x+3}{x-2}$, tập xác định của hàm số là $D=\\mathbb{R}\\setminus \\{2\\}$.\n\nVì hàm số không xác định tại điểm $x=2$ nên hàm số không liên tục tại điểm $x=2$.\n\nCác hàm số $f\\left(x\\right)=x^{2}+3x-2$, $f\\left(x\\right)=\\dfrac{x+3}{x+2}$ và $f\\left(x\\right)=\\sin x$ đều xác định tại $x=2$ và liên tục trên tập xác định của chúng nên đều liên tục tại điểm $x=2$."
+ },
+ {
+  "ma_cau": "T111000000208",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f\\left(x\\right)=\\begin{cases} x+5 khi x\\ne 3 \\\\ m khi x=3 \\end{cases}$. Tìm $m$ để hàm số liên tục tại điểm $x=3$.",
+  "lua_chon": [
+   "$3$.",
+   "$5$.",
+   "$8$.",
+   "$1$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $f\\left(3\\right)=m$.\n\nGiới hạn của hàm số khi $x\\to 3$ là\n\n$\\lim\\limits_{x\\to 3}f\\left(x\\right)=\\lim\\limits_{x\\to 3}\\left(x+5\\right)=3+5=8.$\n\nHàm số liên tục tại điểm $x=3$ khi và chỉ khi\n\n$\\lim\\limits_{x\\to 3}f\\left(x\\right)=f\\left(3\\right)\\Leftrightarrow m=8.$\n\nVậy $m=8$."
+ },
+ {
+  "ma_cau": "T1110000004023",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}2x+a&\\text{khi }x<2\\\\4&\\text{khi }x=2\\\\-3x+b&\\text{khi }x>2.\\end{cases}$ Tìm $a,b$ để hàm số liên tục tại $x=2$.",
+  "lua_chon": null,
+  "dap_an": "$a=0$, $b=10$",
+  "loi_giai": "$f(2)=4$; $\\lim\\limits_{x\\to2^-}f(x)=4+a$; $\\lim\\limits_{x\\to2^+}f(x)=-6+b$. Hàm số liên tục tại $x=2$ khi $4+a=4=-6+b$, suy ra $a=0$, $b=10$."
+ },
+ {
+  "ma_cau": "T1110000004084",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết hàm số $f(x)=\\begin{cases}ax^2+bx-4&\\text{khi }x\\le1\\\\2ax-2b&\\text{khi }x>1\\end{cases}$ liên tục tại $x_0=1$. Tính giá trị của biểu thức $P=a-3b$.",
+  "lua_chon": null,
+  "dap_an": "-4",
+  "loi_giai": "$f(1)=a+b-4$; $\\lim\\limits_{x\\to1^-}f(x)=a+b-4$; $\\lim\\limits_{x\\to1^+}f(x)=2a-2b$. Liên tục tại $1$: $a+b-4=2a-2b\\Leftrightarrow a-3b=-4$. Vậy $P=-4$."
+ },
+ {
+  "ma_cau": "T1110000004104",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tại một xưởng sản xuất bột đá thạch anh, giá bán (tính theo nghìn đồng) của $x$ (kg) bột đá thạch anh được tính theo công thức sau: $P(x)=\\begin{cases}4{,}5x&\\text{khi }0<x\\le200\\\\3x+a&\\text{khi }x>200\\end{cases}$ ($a$ là một hằng số). Với giá trị nào của $a$ thì hàm số $P(x)$ liên tục trên $(0;+\\infty)$?",
+  "lua_chon": null,
+  "dap_an": "300",
+  "loi_giai": "Hai nhánh liên tục trên khoảng của mình. Tại $x=200$: $P(200)=4{,}5\\cdot200=900$, $\\lim_{x\\to200^+}P(x)=600+a$. Liên tục khi $600+a=900\\Leftrightarrow a=300$."
+ }
+]
