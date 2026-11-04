@@ -93,7 +93,7 @@ function PhienMoi({ onXong, onHuy }: { onXong: (id: string) => void; onHuy: () =
       </div>
       <div className="mb-1 text-[12px] font-medium text-slate-500">Môn · khối</div>
       {phamVi && chon.length === 0 ? (
-        <p className="mb-3 text-[13px] text-amber-700">{loai === 'nhap_kho' ? 'Chưa có khối nào chạy bản đồ mới để nhập kho.' : 'Loại việc này chỉ trưởng khối trở lên mở được — nhân sự dùng phiên 📥 Nhập kho & phân dạng.'}</p>
+        <p className="mb-3 text-[13px] text-amber-700">Bạn chưa là trưởng khối của khối nào có bản đồ mới — nhờ Thùy/Trang phân công ở màn Phân công.</p>
       ) : (
         <select value={o} onChange={(e) => setO(e.target.value)} className="mb-3 w-full rounded-lg border border-slate-200 px-3 py-2 text-[13.5px]">
           {chon.map((p) => <option key={`${p.mon}|${p.khoi}`} value={`${p.mon}|${p.khoi}`}>{p.mon} · khối {p.khoi}</option>)}

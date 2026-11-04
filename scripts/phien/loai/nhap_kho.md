@@ -15,9 +15,7 @@ bạn phân câu ─┬─ CHẮC        → "cao"   : TỰ GÁN, không chờ a
 theo đúng luật cao / vua / thieu bên dưới. Câu trùng câu đã có trong kho thì DB không thêm, trả mã cũ. **Không có lệnh xoá.**
 Câu có hình mà bạn không xem được hình ⇒ ghi rõ trong đề "[có hình — chưa đưa hình]" và không "cao".
 
-**Ai mở phiên:** mọi nhân sự mở được phiên này. Phiên của **nhân sự** (không phải trưởng khối) chỉ được `them_cau` +
-`phan_dang` + các lệnh đọc — KHÔNG thêm/sửa dạng (DB chặn); thiếu dạng thì báo "thieu" và gom cụm để trưởng khối thêm.
-Phiên của trưởng khối trở lên làm được cả vòng xoáy bên dưới.
+**Ai mở phiên:** trưởng khối trở lên của đúng khối (người có Phòng làm việc).
 
 ## Thế nào là "cao" (chắc) — giữ chặt, vì câu "cao" đi thẳng tới học sinh
 

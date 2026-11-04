@@ -11,7 +11,7 @@ export type PhienTrangThai = 'mo' | 'dang_dong' | 'dong'
 export const PHIEN_LOAI: { id: PhienLoai; ten: string; mo_ta: string; mo: boolean }[] = [
   { id: 'ban_do', ten: '🗺 Bản đồ', mo_ta: 'Phase 1 — Claude dựng nháp, sửa theo lệnh; trưởng khối duyệt các dạng', mo: true },
   { id: 'ly_thuyet', ten: '📘 Lý thuyết dạng', mo_ta: 'Phase 2 — lý thuyết · ví dụ · mô tả nhận biết từng dạng', mo: true },
-  { id: 'nhap_kho', ten: '📥 Nhập kho & phân dạng', mo_ta: 'Đưa bài tập vào kho và xếp vào dạng: chắc thì tự gán, chưa chắc thì trưởng khối duyệt. Mọi nhân sự mở được, không xoá được gì', mo: true },
+  { id: 'nhap_kho', ten: '📥 Nhập kho & phân dạng', mo_ta: 'Đưa bài tập mới vào kho và xếp vào dạng: chắc thì tự gán, chưa chắc thì vào hàng duyệt. Không xoá được gì', mo: true },
   { id: 'bao_sai', ten: '⚑ Câu bị báo sai', mo_ta: 'Xử lý câu trợ giảng báo sai', mo: false },
   { id: 'giai_bai', ten: '✍️ Giải bài', mo_ta: 'Thùy phát động', mo: false },
 ]
@@ -19,7 +19,7 @@ export const PHIEN_LOAI: { id: PhienLoai; ten: string; mo_ta: string; mo: boolea
 export const LOAI_SUA_BAN_DO: PhienLoai[] = ['ban_do', 'ly_thuyet', 'nhap_kho']
 export const tenLoai = (l: PhienLoai) => PHIEN_LOAI.find((x) => x.id === l)?.ten ?? l
 
-// tk = trưởng khối trở lên (mọi loại việc) · tk false = nhân sự: chỉ phiên Nhập kho (đưa bài tập vào kho + xếp vào dạng) — Thùy 04/11
+// tk: luôn true — mọi loại phiên chỉ trưởng khối trở lên (Thùy 04/11, mig 202611041648)
 export type PhienPhamVi = { mon: string; khoi: string; co_ban_do: boolean; tk: boolean }
 export type PhienItem = {
   id: string; loai: PhienLoai; mon: string; khoi: string; tieu_de: string; trang_thai: PhienTrangThai
