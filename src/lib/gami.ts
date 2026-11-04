@@ -1272,8 +1272,12 @@ export async function getMyTasks(): Promise<MyTask[]> {
 // KHÔNG gồm OPS điểm danh: buoi_hoc_hs không có cột "ai điểm danh" → team-wide,
 // chưa attribute được theo TỪNG NGƯỜI (xem listOpsDiemDanhTeam bên dưới, đo theo TEAM).
 export type StaffTaskRow = MyTask & { nhan_su_id: string; lop: string }
+// Thùy 04/11: ĐÁNH GIÁ người ⇒ việc ĐÃ TỚI HẠN thuộc người phụ trách LÚC HẠN (bản chụp viec_phu_trach_snap), việc
+// chưa tới hạn theo phân công hiện tại — fn_viec_buoi_thuong_lh (mig 202611041655). Lớp đổi TA thì việc cũ vẫn của người cũ.
 export async function listAllStaffTasks(tu: string, den: string): Promise<StaffTaskRow[]> {
-  const rows = await viecBuoiThuong(tu, den, true)
+  const { data, error } = await supabase.rpc('fn_viec_buoi_thuong_lh', { p_tu: tu, p_den: den }).limit(LIMIT)
+  if (error) throw error
+  const rows = (data ?? []) as ViecBuoiThuongRow[]
   return rows.map((r) => ({ ...taskTuRow(r), nhan_su_id: r.nhan_su_id }))
 }
 

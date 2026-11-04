@@ -78686,3 +78686,12 @@ Thùy nêu 4 việc, làm được 3:
 ## 4/11 — Ghi mô tả + lý thuyết + ví dụ 30 dạng K10 Hàm số (NCD00234)
 - Làm: 4 agent Sonnet soạn `kho-rules/dai/lo/k10-hs/ra/cd1..4.json` → `ghi-lt-vd.mjs --ghi` (30 dạng, 1 transaction).
 - Cảnh báo: ví dụ phần lớn AI TỰ SOẠN theo kiểu đề sách, chỉ kiểm số học tay, chưa trích nguyên văn đề thi, chưa kiểm máy; dạng "đọc đồ thị / dấu a,b,c" mô tả hình bằng chữ; có dùng \begin{cases} (chưa kiểm renderer).
+
+
+## 4/11 — Đánh giá việc buổi học theo NGƯỜI LÚC HẠN (nối Gậy mig 1642) — mig 202611041655 ĐÃ ÁP
+- Lỗi (cùng lỗi Thùy bắt ở Gậy): mọi chỗ đánh giá người dùng `fn_viec_buoi_thuong(…, true)` = phân công HIỆN TẠI ⇒ lớp đổi TA thì việc cũ chạy sang người mới.
+- Dò (pg_proc.prosrc + grep src): 10 hàm gọi engine với p_tat_ca. ĐÁNH GIÁ (đã sửa): fn_ta_viec_thang · fn_gv_viec_thang (Chất lượng vận hành tháng) · fn_hsta_task + fn_hsta_gay (Hiệu suất TA — 2 chỗ còn lọc `pc.la_chinh` hiện tại) · _troly_viec_buoi_goc · _troly_cc_viec_van_hanh (Trợ lý) · fn_bctk_so (Báo cáo tuần) · _phong_viec_ta_pv (Phòng) · client listAllStaffTasks. HÀNH ĐỘNG (giữ hiện tại, cố ý): getMyTasks, fn_ta_push_dem*, _tg_viec_ton.
+- Làm: `_viec_nguoi_luc_han` = 1 luật duy nhất (fn_viec_chup_phu_trach chuyển sang gọi nó, hành vi y cũ) · `fn_viec_buoi_thuong_lh(p_tu,p_den)`: chưa tới hạn ⇒ hiện tại; tới hạn ⇒ bản chụp, chưa chụp ⇒ tính đúng luật chụp lúc đọc, không ra ai ⇒ bỏ trống.
+- Đo (buổi 01/10→04/11, việc đã tới hạn): 1097 → 874 dòng; 282 (buổi×khâu) đổi người. Đổi hẳn người 59: 8B1 Phong→Khánh 16 · 8A2 Lưu Văn Đông→Khánh 16 · 12B1 Nguyễn Tiến Tước→Trần Hoàng Đạt 13 · 6S1 Phong Ngọc Cường→Nguyễn Hà Giang 9 / →Nguyễn Thị Mỹ Hằng 5. Lớp 2 người cùng vai chỉ giữ người chính 137 (danhgia 97, et 20, btvn 20 — vd 8B1 GV Hải bỏ, giữ Trang). Bỏ trống 86: MT 59 (quá 6h chưa chụp, sơ đồ không có sổ) + 27 khâu mơ hồ/không có trong sổ.
+- 8B1 fn_ta_viec_thang trước: Phong 16 đạt · sau: Khánh 13 đạt + 3 không đạt (3 gậy BTVN đã trả về Khánh).
+- Treo: fn_ta_buoi_thang (buổi TA trong tháng/lương), fn_ta_tien_trinh, _troly_bc_btvn_ti_le (nhãn TA lớp), _troly_bc_viec_yeu (retest) vẫn đọc phan_cong_lop hiện tại — chưa đụng. tsc: chỉ lỗi cũ pdfRender.ts.
