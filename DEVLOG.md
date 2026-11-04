@@ -78634,7 +78634,6 @@ Thùy nêu 4 việc, làm được 3:
 - `rungBong` lệch màu từng bản sao (sáng ±7%, ấm/lạnh ±3,5%, theo nghiên cứu Little Habitats). Rải theo trọng số `chonKieuCay` (scene.js): dừa/tre gần trại, thông/bách ra xa; khoảng cách riêng `CAY_CACH`.
 - Soi 1024×768: đồng quê + thu + tuyết + Tết + Halloween — shader mùa ăn đúng vào cây mới. Bản đầu tre có chỏm tròn như bóng bay, dừa bé lá như sợi, bàng thành khối bánh kem ⇒ đã sửa cả 3.
 
-<<<<<<< HEAD
 ## 04/11 — Báo cáo HỌC KÌ (report kì, khác hẳn report tháng): chốt thiết kế, CHƯA code/DB — spec `spec-bao-cao-ky.md` + mockup `docs/mockup-bao-cao-ky.html`
 - Thùy: "report kì = nhiều tháng tổng hợp, không giống report tháng tí nào". Chốt: kì là ĐỐI TƯỢNG (`ky_hoc`, khoảng tháng tự chọn, Thùy tạo) · chỉ nhìn MT + Khảo sát (không ET/BTVN/7 chỉ số/bảng từng buổi) · hoàn thành chủ đề (20 lần gần nhất) + chuyên đề (10 lần), trong 45 ngày, thiếu thì lấy số lần có · hạng từng lần thi + hạng cả kì (CHỈ tính lần đã thi, không thi ≠ 0 điểm) · điểm năng lực (dự đoán ± sai số) GV NHẬP TAY (mẫu 4–5 lần quá nhỏ) · chuyên cần = số buổi nghỉ · đường xu hướng 2 đường: điểm em + TRUNG BÌNH lần thi cùng khối (đề khó/dễ khác nhau) · phụ lục bảng điểm thi · kì đầu chưa so kì trước.
 - Đầu ra: ERP CHỈ nhập + tính + chụp snapshot jsonb khi Công bố (tự đủ, cả bản trong app PH và PDF dựng từ cùng snapshot). PDF do Claude dựng ngoài ERP (Thùy: tải PDF trên ERP mất công). App PH có trang kéo dọc. Hiện HẾT chủ đề + chuyên đề.
@@ -78647,9 +78646,7 @@ Thùy nêu 4 việc, làm được 3:
 - **Mig `202611041623_et_ma_de_trong_dang_bai` ĐÃ ÁP:** ứng viên = cùng DẠNG BÀI + in được cùng form; cùng cụm → cùng loại câu → câu gốc chỉ là thứ tự ưu tiên; chỉ trùng khi dạng bài hết câu cùng form. Bảng tạm đổi tên `_et_vt2` (thêm loai_cau). Thân hàm lấy nguyên từ bản đang chạy, thay đúng chỗ.
 - **Kiểm** `scripts/_test_et_ma_de_dang_bai.mjs` (ROLLBACK, 43 ET thật · 140 câu gốc): trùng đề 1 **84 → 6** (6 câu còn lại: dạng bài hết câu cùng form) · mọi câu đề 2/3 cùng dạng bài + cùng form · câu có cụm thật vẫn lấy trong cụm trước. 3/3.
 - **Không đổi:** ET đã lưu (đề 2/3 chỉ sinh lại khi người soạn bấm 🎲 Sinh đề 2 & 3 / Lưu) · ET BẢN CŨ (`src/lib/made.ts` buildMaDe, khối 3–5 + KHTN cũ + MT) — bất biến "chỉ cùng cụm, không sang cụm khác dù cùng dạng" là luật Thùy chốt cho bản đồ cũ (dạng cũ rộng) ⇒ chờ Thùy quyết có nới không.
-=======
 ## 04/11 — Phiên Claude: không xoá dòng NGƯỜI nhập ở hàng chờ duyệt / thiếu dạng (Thùy: "thêm được, không được xoá") — mig 202611041626 ĐÃ ÁP
 - Rà quyền ghi Phiên Claude: chỉ 1 lệnh ghi (`ban-do.mjs`), không lệnh xoá câu/nút bản đồ, câu người gán/kiểm mẫu bị chặn. Lỗ: `_phien_kho_phan1` dọn `*_bdm_de_xuat` + `*_bdm_cau_thieu_dang` bất kể nguồn (đo: dai 1 · hgt 1 dòng thiếu dạng nguon='nguoi') và nhánh 'thieu' upsert đè dòng người.
 - Sửa: câu có dòng chờ duyệt/thiếu dạng nguon <> 'ai' ⇒ Claude bị chặn; mọi lệnh dọn chỉ đụng nguon='ai'. Thử ROLLBACK: T106000000564 (người) bị chặn cả thieu/vua, dòng người nguyên; câu chỉ có dòng AI vẫn phân lại.
 - Còn mở (Thùy chưa quyết): phân lại vẫn gỡ dòng gán AI cũ của chính Claude · ghi đè lý thuyết (log giữ bản cũ) · phiên chỉ mở cho trưởng khối trở lên · Claude chưa thêm được CÂU mới qua phiên · ngoài phiên, RLS kho cho mọi nhân sự xoá/sửa thẳng.
->>>>>>> 834cc248 (Phiên Claude: không xoá/đè dòng chờ duyệt · thiếu dạng do NGƯỜI nhập (chỉ dọn dòng nguon=ai) — mig 202611041626 ĐÃ ÁP — Thùy 04/11)
