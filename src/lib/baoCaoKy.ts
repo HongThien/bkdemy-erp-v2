@@ -20,7 +20,7 @@ export type BcKyData = {
   hang_ky: { hang: number; tong: number; hang_tb: number; diem_tb: number; so_lan: number } | null
   thai_do: {
     chuyen_can: { vang: number; vang_phep: number; co_mat: number; tong: number } | null
-    btvn: { tong: number; khong_lam: number; nop_muon: number; xin_phep: number; khong_nghiem_tuc: number; chong_doi: number } | null
+    btvn: { tong: number; dat_chuan: number; khong_lam: number; nop_muon: number; xin_phep: number; khong_nghiem_tuc: number; chong_doi: number } | null
   }
   nang_luc: { diem: number | null; sai_so: number | null }
   nhan_xet: string | null

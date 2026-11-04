@@ -293,6 +293,7 @@ export function XemTruocKy({ d, congBoAt }: { d: BcKyData; congBoAt: string | nu
         <div className="mb-1.5 mt-4 text-[11.5px] font-bold uppercase text-slate-500">Bài tập về nhà {bt && bt.tong > 0 ? <span className="font-normal normal-case text-slate-400">· {bt.tong} buổi có ghi nhận</span> : null}</div>
         {bt && bt.tong > 0
           ? <div className="grid grid-cols-2 gap-2.5">
+              <O so={`${bt.dat_chuan}/${bt.tong}`} nhan="Lần nộp BTVN đạt chuẩn" tone="xanh" />
               <O so={bt.khong_lam} nhan="Lần không làm" tone={bt.khong_lam ? 'do' : 'xanh'} />
               <O so={bt.nop_muon} nhan="Lần nộp muộn" tone={bt.nop_muon ? 'cam' : 'xanh'} />
               <O so={bt.khong_nghiem_tuc} nhan={`Lần không nghiêm túc${bt.chong_doi ? ` (${bt.chong_doi} chống đối)` : ''}`} tone={bt.khong_nghiem_tuc ? 'do' : 'xanh'} />
