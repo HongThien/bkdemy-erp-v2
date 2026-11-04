@@ -10,7 +10,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useStore } from '../../store/useStore'
 import { homNayVN, congNgay, ddmmVN } from '../../lib/tuan'
-import { luongThang, bangDonGia, datDonGia, dsLoaiViec, kyTrangThai, chotKy, moLaiKy, gioVN, type LuongThang, type DonGia, type LoaiViec, type KyTrangThai } from '../../lib/tacong'
+import { luongThang, bangDonGia, datDonGia, suaDonGia, xoaDonGia, thongSoKy, dsLoaiViec, kyTrangThai, chotKy, moLaiKy, gioVN, type LuongThang, type DonGia, type LoaiViec, type KyTrangThai, type ThongSoKy } from '../../lib/tacong'
 
 type Tab = 'luong' | 'gia'
 const inputCls = 'rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-sm text-slate-700 outline-none focus:border-indigo-400'
@@ -143,11 +143,37 @@ function ChotKy({ tt, thang, coGhi, bao, onXong }: { tt: KyTrangThai; thang: str
           <ul className="mt-1 flex flex-col gap-1">
             {tt.lich_su.map((h) => (
               <li key={h.lan}>Lần {h.lan}: chốt {luc(h.chot_at)}{h.chot_boi ? ` · ${h.chot_boi}` : ''} · {h.so_ta} TA · {tien(h.tong_net)}đ{h.ghi_chu ? ` · ${h.ghi_chu}` : ''}
-                {h.mo_lai_at && <span className="text-amber-700"> — mở lại {luc(h.mo_lai_at)}{h.mo_lai_boi ? ` · ${h.mo_lai_boi}` : ''}: {h.ly_do_mo_lai}</span>}</li>
+                {h.mo_lai_at && <span className="text-amber-700"> — mở lại {luc(h.mo_lai_at)}{h.mo_lai_boi ? ` · ${h.mo_lai_boi}` : ''}: {h.ly_do_mo_lai}</span>}
+                <ThongSoChot ky={tt.ky} lan={h.lan} /></li>
             ))}
           </ul>
         </details>
       )}
+    </div>
+  )
+}
+
+// Thông số lương ĐÃ CHỤP lúc chốt (Thùy 04/11: đổi thông số hiện tại không làm đổi quá khứ) — bất biến cùng bản chốt.
+function ThongSoChot({ ky, lan }: { ky: string; lan: number }) {
+  const [ts, setTs] = useState<ThongSoKy | null | undefined>(undefined)
+  const [loi, setLoi] = useState<string | null>(null)
+  if (ts === undefined) return <button className="ml-2 text-indigo-600 underline" onClick={() => thongSoKy(ky, lan).then((x) => setTs(x)).catch((e) => setLoi(loiCua(e)))}>Xem thông số lúc chốt</button>
+  if (loi) return <span className="ml-2 text-red-600">{loi}</span>
+  if (!ts || !ts.don_gia?.length) return <span className="ml-2 text-slate-400">(lần chốt này chưa chụp thông số)</span>
+  return (
+    <div className="mt-1 rounded-lg border border-slate-200 bg-slate-50 p-2">
+      <p className="mb-1 font-semibold text-slate-700">Đơn giá dùng cho lần chốt {lan} (chụp {luc(ts.chup_at)})</p>
+      <table className="w-full text-[11.5px] tabular-nums"><tbody>
+        {ts.don_gia.map((d, i) => (
+          <tr key={d.ma + (d.si_tu ?? '') + i} className="border-t border-slate-100">
+            <td className="py-0.5 pr-2 text-slate-700">{d.ten}</td>
+            <td className="py-0.5 pr-2 text-right font-medium">{Number(d.gia_tri) < 1 && d.don_vi === 'hệ số' ? so(d.gia_tri) : tien(d.gia_tri)}</td>
+            <td className="py-0.5 pr-2 text-slate-500">{d.don_vi}</td>
+            <td className="py-0.5 text-slate-400">từ {ddmmVN(d.hieu_luc_tu)}/{String(d.hieu_luc_tu).slice(0, 4)}</td>
+          </tr>
+        ))}
+      </tbody></table>
+      <p className="mt-1 text-slate-500">Loại việc lúc chốt: {ts.loai_viec.filter((l) => l.active).map((l) => l.ten).join(' · ')}</p>
     </div>
   )
 }
@@ -201,6 +227,48 @@ function FragmentLuong({ r, mo, onMo, tenLoai }: { r: LuongThang; mo: boolean; o
   )
 }
 
+// Sửa / xoá một dòng đơn giá (Thùy 04/11). Xoá = ẩn dòng (giữ lịch sử), bắt lý do, xác nhận ngay trên dòng.
+function SuaGia({ r, bao, onXong }: { r: DonGia; bao: (t: string, ok?: boolean) => void; onXong: (x: { id: string; xoa?: boolean; gia?: number; tu?: string; gc?: string } | null) => void }) {
+  const [gia, setGia] = useState(String(Number(r.gia_tri)))
+  const [tu, setTu] = useState(r.hieu_luc_tu)
+  const [gc, setGc] = useState(r.ghi_chu ?? '')
+  const [xoa, setXoa] = useState(false)
+  const [lyDo, setLyDo] = useState('')
+  const [ban, setBan] = useState(false)
+  async function luu() {
+    setBan(true)
+    try { await suaDonGia(r.id, Number(gia), tu, gc); bao('Đã sửa đơn giá — có ghi lại giá cũ'); onXong({ id: r.id, gia: Number(gia), tu, gc }) }
+    catch (e) { bao(loiCua(e), false) } finally { setBan(false) }
+  }
+  async function xoaDong() {
+    setBan(true)
+    try { await xoaDonGia(r.id, lyDo); bao('Đã xoá dòng đơn giá (ẩn, lịch sử vẫn giữ)'); onXong({ id: r.id, xoa: true }) }
+    catch (e) { bao(loiCua(e), false) } finally { setBan(false) }
+  }
+  return (
+    <tr className="border-t border-indigo-100 bg-indigo-50/50">
+      <td className="px-3 py-2 text-slate-800">{r.ten}</td>
+      <td className="px-3 py-2 text-right"><input type="number" min={0} step="any" className={`${inputCls} w-32 text-right`} value={gia} onChange={(e) => setGia(e.target.value)} /></td>
+      <td className="px-3 py-2 text-slate-600">{r.don_vi}</td>
+      <td className="px-3 py-2"><input type="date" className={inputCls} value={tu} onChange={(e) => e.target.value && setTu(e.target.value)} /></td>
+      <td className="px-3 py-2" colSpan={2}><input className={`${inputCls} w-full`} placeholder="Ghi chú" value={gc} onChange={(e) => setGc(e.target.value)} /></td>
+      <td className="px-3 py-2" colSpan={2}>
+        {!xoa
+          ? <div className="flex flex-wrap gap-1">
+              <button className={btnPrimary} disabled={ban || gia === '' || !(Number(gia) >= 0)} onClick={luu}>Lưu</button>
+              <button className={btnGhost} disabled={ban} onClick={() => onXong(null)}>Huỷ</button>
+              <button className="rounded-lg border border-red-200 bg-white px-2.5 py-1 text-xs font-semibold text-red-600 hover:bg-red-50" disabled={ban} onClick={() => setXoa(true)}>Xoá</button>
+            </div>
+          : <div className="flex flex-wrap items-center gap-1">
+              <input className={`${inputCls} min-w-[160px] flex-1`} placeholder="Lý do xoá (bắt buộc)" value={lyDo} onChange={(e) => setLyDo(e.target.value)} />
+              <button className="rounded-lg bg-red-600 px-2.5 py-1 text-xs font-semibold text-white disabled:opacity-40" disabled={ban || !lyDo.trim()} onClick={xoaDong}>Xác nhận xoá</button>
+              <button className={btnGhost} disabled={ban} onClick={() => setXoa(false)}>Thôi</button>
+            </div>}
+      </td>
+    </tr>
+  )
+}
+
 // ═══════════════════════════════ ĐƠN GIÁ ═══════════════════════════════
 function TabGia({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolean) => void }) {
   const [rows, setRows] = useState<DonGia[] | null>(null)
@@ -230,17 +298,23 @@ function TabGia({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolean)
     } catch (e) { bao(loiCua(e), false) } finally { setBan(false) }
   }
   const giaTri = (r: DonGia) => (Number(r.gia_tri) < 1 && r.don_vi === 'hệ số' ? so(r.gia_tri) : tien(r.gia_tri))
+  const [dangSua, setDangSua] = useState<string | null>(null)
+  // sau sửa/xoá: vá đúng dòng tại chỗ, rồi quét NỀN (cờ "đang dùng" của dòng khác có thể đổi) — không trắng bảng
+  const vaDong = (x: { id: string; xoa?: boolean; gia?: number; tu?: string; gc?: string }) => {
+    setRows((prev) => prev && (x.xoa ? prev.filter((r) => r.id !== x.id) : prev.map((r) => (r.id === x.id ? { ...r, gia_tri: x.gia ?? r.gia_tri, hieu_luc_tu: x.tu ?? r.hieu_luc_tu, ghi_chu: x.gc ?? r.ghi_chu } : r))))
+    bangDonGia().then(setRows).catch(() => {})
+  }
   return (
     <div className="flex flex-col gap-3">
       <div className={`${card} overflow-x-auto`}>
         <table className="w-full min-w-[820px] border-collapse text-sm tabular-nums">
           <thead><tr className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-500">
-            <th className="px-3 py-2">Mục</th><th className="px-3 py-2 text-right">Giá trị</th><th className="px-3 py-2">Đơn vị</th><th className="px-3 py-2">Hiệu lực từ</th><th className="px-3 py-2">Hôm nay</th><th className="px-3 py-2">Người đặt</th><th className="px-3 py-2">Ghi chú</th>
+            <th className="px-3 py-2">Mục</th><th className="px-3 py-2 text-right">Giá trị</th><th className="px-3 py-2">Đơn vị</th><th className="px-3 py-2">Hiệu lực từ</th><th className="px-3 py-2">Hôm nay</th><th className="px-3 py-2">Người đặt</th><th className="px-3 py-2">Ghi chú</th>{coGhi && <th className="w-36 px-3 py-2"></th>}
           </tr></thead>
           <tbody>
-            {rows === null && <tr><td colSpan={7} className="p-6 text-center text-slate-400">Đang tải…</td></tr>}
-            {rows?.map((r, i) => (
-              <tr key={r.ma + (r.si_tu ?? '') + r.hieu_luc_tu + i} className="border-t border-slate-100">
+            {rows === null && <tr><td colSpan={8} className="p-6 text-center text-slate-400">Đang tải…</td></tr>}
+            {rows?.map((r) => dangSua === r.id ? <SuaGia key={r.id} r={r} bao={bao} onXong={(x) => { setDangSua(null); if (x) vaDong(x) }} /> : (
+              <tr key={r.id} className="border-t border-slate-100">
                 <td className="px-3 py-1.5 text-slate-800">{r.ten}</td>
                 <td className="px-3 py-1.5 text-right font-medium">{giaTri(r)}</td>
                 <td className="px-3 py-1.5 text-slate-600">{r.don_vi}</td>
@@ -250,6 +324,9 @@ function TabGia({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolean)
                   : <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-slate-500">Đã thay</span>}</td>
                 <td className="px-3 py-1.5 text-slate-600">{r.nguoi_dat ?? 'cài sẵn'}</td>
                 <td className="px-3 py-1.5 text-xs text-slate-500">{r.ghi_chu}</td>
+                {coGhi && <td className="px-3 py-1.5">{r.khoa_ky
+                  ? <span className="text-[11px] text-slate-400" title="Dòng này đang dùng cho tháng đã chốt lương — mở lại kỳ, hoặc thêm giá mới có hiệu lực sau tháng đó">🔒 đã chốt {r.khoa_ky.slice(5, 7)}/{r.khoa_ky.slice(0, 4)}</span>
+                  : <button className={btnGhost} onClick={() => setDangSua(r.id)}>Sửa / Xoá</button>}</td>}
               </tr>
             ))}
           </tbody>
@@ -257,7 +334,8 @@ function TabGia({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolean)
       </div>
       {coGhi && (
         <div className={`${card} p-3`}>
-          <p className="mb-2 text-sm font-semibold text-slate-800">Thêm giá mới (dòng cũ giữ nguyên, kỳ lương dùng dòng mới nhất có hiệu lực ≤ đầu kỳ)</p>
+          <p className="mb-1 text-sm font-semibold text-slate-800">Thêm giá mới (kỳ lương dùng dòng mới nhất có hiệu lực ≤ đầu kỳ)</p>
+          <p className="mb-2 text-xs text-slate-500">Muốn đổi giá từ một tháng mới thì <b>thêm dòng</b> có hiệu lực từ tháng đó (giá cũ vẫn dùng cho các tháng trước). Nhập nhầm thì <b>Sửa / Xoá</b>. Dòng đang dùng cho tháng đã chốt lương bị khoá 🔒; mỗi lần chốt, toàn bộ đơn giá được chụp lại trong bản chốt.</p>
           <div className="flex flex-wrap items-end gap-2 text-xs font-medium text-slate-500">
             <label className="flex flex-col gap-1">Mục<select className={`${inputCls} min-w-[280px]`} value={chon} onChange={(e) => setChon(e.target.value)}>
               <option value="">— chọn mục —</option>{muc.map(([k, x]) => <option key={k} value={k}>{x.ten}</option>)}

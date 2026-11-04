@@ -99,7 +99,7 @@ export async function dsLop(): Promise<{ id: string; ten_lop: string; mon: strin
 
 // ── PHÍA QUẢN LÝ (ERP: lá ta_cong_duyet · ta_luong) — quyền chặn ở DB (co_quyen_ghi / co_chuc_nang) ──
 export type ThieuCong = { loai: 'buoi' | 'ca' | 'bo_tro_bu' | 'bo_tro_yeu' | 'bo_tro_duoi'; ngay: string; lop_id: string | null; ten: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; buoi_hoc_id: string | null; ca_bo_tro_id: string | null; nguoi_phu_trach: string | null }
-export type DonGia = { ma: string; ten: string; si_tu: number | null; si_den: number | null; gia_tri: number; don_vi: string; hieu_luc_tu: string; dang_hieu_luc: boolean; ghi_chu: string; nguoi_dat: string | null; dat_at: string }
+export type DonGia = { id: string; khoa_ky: string | null; ma: string; ten: string; si_tu: number | null; si_den: number | null; gia_tri: number; don_vi: string; hieu_luc_tu: string; dang_hieu_luc: boolean; ghi_chu: string; nguoi_dat: string | null; dat_at: string }
 
 export const doiChieu = (tu: string, den: string) => rpc<DongCong[]>('fn_ta_doi_chieu', { p_tu: tu, p_den: den })
 export const thieuCong = (tu: string, den: string) => rpc<ThieuCong[]>('fn_ta_buoi_thieu_cong', { p_tu: tu, p_den: den })
@@ -112,7 +112,12 @@ export const nhapHoViec = (ns: string, v: KhaiViec, lyDo: string) => rpc<string>
   p_ns: ns, p_loai: v.loai, p_ngay: v.ngay, p_lop: v.lop ?? null, p_buoi: v.buoi ?? null, p_ca: v.ca ?? null,
   p_bat: v.bat || null, p_ket: v.ket || null, p_hs: v.hs?.trim() || null, p_ly_do: lyDo,
 })
-export const bangDonGia = () => rpc<DonGia[]>('fn_ta_bang_don_gia')
+export const bangDonGia = () => rpc<DonGia[]>('fn_ta_don_gia_ds')   // kèm id + khoa_ky (tháng đã chốt đang dùng dòng này ⇒ không sửa/xoá)
+// Thùy 04/11: sửa / xoá đơn giá (xoá = ẩn dòng, giữ lịch sử); dòng đang dùng cho tháng đã chốt bị DB chặn.
+export const suaDonGia = (id: string, gia: number, hieuLucTu: string, ghiChu: string) => rpc<null>('fn_ta_sua_don_gia', { p_id: id, p_gia: gia, p_hieu_luc_tu: hieuLucTu, p_ten: null, p_ghi_chu: ghiChu })
+export const xoaDonGia = (id: string, lyDo: string) => rpc<null>('fn_ta_xoa_don_gia', { p_id: id, p_ly_do: lyDo })
+export type ThongSoKy = { lan: number; chot_at: string; chup_at: string; don_gia: { ma: string; ten: string; si_tu: number | null; si_den: number | null; gia_tri: number; don_vi: string; hieu_luc_tu: string }[]; loai_viec: { ma: string; ten: string; nhom: string; tinh_vao: string; don_vi: string; active: boolean }[] }
+export const thongSoKy = (ky: string, lan: number) => rpc<ThongSoKy | null>('fn_ta_ky_thong_so', { p_ky: ky, p_lan: lan })
 // Đổi giá = THÊM dòng mới có hiệu lực từ ngày chỉ định (bảng chỉ-thêm). Bậc lương phải kèm khoảng sĩ số của bậc đó.
 export const datDonGia = (ma: string, gia: number, tu: string, o: { ten?: string; siTu?: number | null; siDen?: number | null; ghiChu?: string } = {}) =>
   rpc<string>('fn_ta_dat_don_gia', { p_ma: ma, p_gia: gia, p_hieu_luc_tu: tu, p_ten: o.ten ?? null, p_si_tu: o.siTu ?? null, p_si_den: o.siDen ?? null, p_ghi_chu: o.ghiChu ?? '' })
