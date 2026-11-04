@@ -78726,3 +78726,9 @@ Thùy nêu 4 việc, làm được 3:
 - **Kiểm** `scripts/_test_btvn_app_cap3.mjs` 5/5 (giờ đóng = hạn, không đè TA, lượt 2 không đổi gì, quyền) + giả lập em làm muộn 1 câu sau khi máy đóng ⇒ Nộp muộn + Chưa nghiêm túc, ô BTVN có điểm, giờ đóng giữ nguyên.
 - **Chạy thật 1 lượt:** 10A1 · 15/10 (hạn 14:30 18/10, TA chưa đóng) ⇒ đóng lúc 14:30 18/10, lưới 16 ô · 80 kết quả, 4 Không làm bài · 4 đúng hạn · 1 muộn, buổi hoàn tất.
 - **⚠ CHỜ THÙY chạy SQL Editor `202611041716_btvn_app_cap3_cron_sql_editor.sql`** (lịch 15 phút cho job mới + lịch `buoi-tu-dong-et-btvn-trong` của 28/10 — file 202610282053 CHƯA TỪNG chạy nên việc tự đóng khâu ET/BTVN trống chưa hoạt động). Chạy xong Claude `--ghi-so` cả 2 file.
+
+## 04/11 — K9: Chuyên đề "Hình Giữa kì 1" (tuyển tập bài hình giữa kì 1 lớp 9, như K7/K8)
+- Thùy: "Làm 1 file chuyên đề giống khối 7, 8, tuyển tập các bài hình giữa kì 1 lớp 9". Khuôn: `scripts/_cd_hinh_gk1_7.mjs` (K7/K8: tai_lieu loai chuyen_de, nhanh hinh, ban_do moi, ghi qua RPC `fn_tl_hl_*`).
+- Làm: `scripts/_cd_hinh_gk1_9.mjs` — nguồn = 167 bài Hình–Luyện K9 có câu nguồn trong đề / đề cương GIỮA học kì (kho K9 còn 340 bài cuối kì, không lấy). Kết quả 167/167 bài, tai_lieu da22bf68-6441-49fb-ba08-95a8da33d17c.
+- Khác K7/K8: K9 gần như chưa có mô hình (1/167) ⇒ thay vì dồn "Bài tập khác" 166 bài, chia 4 phần chủ đề bằng từ khoá (chỉ để chia mục lục, không ghi lên bài kho): biểu thức lượng giác 8 · giải tam giác vuông 11 · thực tế 77 · hình tổng hợp 70 (+1 bài mô hình đường cao).
+- Chạy sai lần đầu: heredoc Bash nuốt `\\` làm hỏng regex ⇒ viết script bằng Write tool; sửa tạm `_cd_hinh_gk1_7.mjs` đã hoàn lại nguyên (git diff rỗng).
