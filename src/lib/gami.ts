@@ -1120,6 +1120,9 @@ export type TabKey = 'diemdanh' | 'danhgia' | 'ingame' | 'et' | 'btvn' | 'mt' | 
 export type VaiViec = 'gv' | 'tg' | 'tk'
 export type MyTask = { buoiId: string; lopId: string; lop: string; ngay: string; vai: VaiViec; tab: TabKey; label: string; done: boolean; doneAt: string | null; deadline: number | null; loai?: 'bu' | 'bo_tro_duoi' | 'bo_tro_yeu'; refKey: string }
 const LABEL_BY_TAB: Record<string, string> = { danhgia: 'Đánh giá sau buổi', ingame: 'Chấm bài trên lớp', et: 'Chấm ET', btvn: 'Chấm BTVN', mt: 'Chấm MT' }
+// Nhãn 1 khâu buổi học — dùng chung "Việc của tôi" và máy quét gậy (gay.ts), đừng chép bản thứ hai.
+export const nhanViecBuoi = (tab: string, etOnline?: boolean | null): string =>
+  tab === 'et' && etOnline ? 'Xác nhận ET (online)' : (LABEL_BY_TAB[tab] ?? tab)
 // ref_key: khoá gậy tự động (vh:buoi|tab|nhansu) — tính SẴN ở fn_viec_buoi_thuong (§2.0), gay.ts đọc
 // THẲNG cột này, không tự ghép chuỗi lần 2 (1 nguồn duy nhất, đổi công thức chỉ sửa 1 chỗ).
 type ViecBuoiThuongRow = { nhan_su_id: string; buoi_id: string; lop_id: string; ten_lop: string; ngay: string; vai: VaiViec; tab: TabKey; dong_at: string | null; han: string | null; et_online: boolean; ref_key: string }
@@ -1131,7 +1134,7 @@ async function viecBuoiThuong(tu: string | null, den: string | null, tatCa: bool
 // Buổi có ET online: máy đã chấm + đổ lưới, việc còn lại là bấm xác nhận — nhãn nói rõ để TA khỏi đi tìm bài giấy.
 const taskTuRow = (r: ViecBuoiThuongRow): MyTask => ({
   buoiId: r.buoi_id, lopId: r.lop_id, lop: r.ten_lop, ngay: r.ngay, vai: r.vai, tab: r.tab,
-  label: r.tab === 'et' && r.et_online ? 'Xác nhận ET (online)' : (LABEL_BY_TAB[r.tab] ?? r.tab),
+  label: nhanViecBuoi(r.tab, r.et_online),
   done: !!r.dong_at, doneAt: r.dong_at, deadline: r.han ? new Date(r.han).getTime() : null,
   refKey: r.ref_key,
 })
