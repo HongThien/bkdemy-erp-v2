@@ -1,0 +1,22 @@
+{
+  "P1 Bài 21": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: cây cau gãy (tan, cos của góc 20 độ)." },
+  "P1 Bài 22": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: góc của dây treo quả cầu (cos = 20/60)." },
+  "P1 Bài 23": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: khoảng cách AI trong trò đánh đu (sin 16 độ)." },
+  "P1 Bài 24": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: chiều cao tháp hải đăng (tan 32 độ, so le trong, cộng 3,2 m)." },
+  "P1 Bài 25": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: chiều cao cái cây (tan 38 độ, cộng tầm mắt)." },
+  "P1 Bài 26": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: khoảng cách AH của xích đu (sin 43 độ)." },
+  "P1 Bài 27": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: hai góc hạ 40 và 55 độ từ đỉnh toà nhà, khoảng cách AB." },
+  "P1 Bài 28": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: góc của thang so với mặt đất (cos = 1,5/4)." },
+  "P1 Bài 29": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: chiều cao con diều (cos 40 độ)." },
+  "P1 Bài 30": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: khoảng cách BC qua ao (cos 40 độ)." },
+  "P1 Bài 31": { "tt": "khong_tt", "ghi": "Diện tích hình vành khuyên (hai đường tròn bán kính 1,5 cm và 6 cm)." },
+  "P1 Bài 32": { "tt": "khong_tt", "ghi": "Diện tích hình quạt tròn bán kính 8 cm, góc ở tâm 60 độ." },
+  "P1 Bài 33": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến AB, AC cắt nhau tại A (OA = 2R): AB = AC, OA phân giác; DC // OA; OCEA hình thang cân; diện tích AKOS." },
+  "P1 Bài 34": { "tt": "tt_khac", "ghi": "Tiếp tuyến Ax tại A (BM.BE = AB^2) và chứng minh PO là tiếp tuyến của đường tròn đường kính NQ; BQ.BM + AQ.AP = AB^2; tỉ số diện tích = cos^2." },
+  "P1 Bài 35": { "tt": "ba_tt", "ghi": "Ba tiếp tuyến của đường tròn (M): AC, BD tại hai đầu đường kính CD và AB tại H; AC = AH, BD = BH, AC // BD, AC + BD = AB = 2R, AC.BD = CD^2/4 (đúng mẫu ba tiếp tuyến, như Bài 38 với vai trò đổi); thêm CD là tiếp tuyến của (O) tại M." },
+  "P1 Bài 36": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến SA, SB cắt nhau tại S: SO vuông góc AB, OE.OS = R^2, AB đi qua điểm cố định F, chứng minh FC là tiếp tuyến." },
+  "P1 Bài 37": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến MA, MC cắt nhau tại M (kèm đường kính AB): MO trung trực AC, OMNB hình bình hành, K trung điểm OM, H thuộc (A;R), K thuộc (O) khi AM = R căn 3." },
+  "P1 Bài 38": { "tt": "ba_tt", "ghi": "Ba tiếp tuyến Ax, By và MD (tiếp xúc tại C): MD = MA + BD, góc MOD = 90 độ, MA.BD = R^2, IE^2 + IF^2 = R^2, AD, CI, EF đồng quy." },
+  "P1 Bài 39": { "tt": "ba_tt", "ghi": "Hai tiếp tuyến AM, AN cắt nhau tại A và tiếp tuyến thứ ba EF tại B: chu vi tam giác AEF = AM + AN = 2R căn 3; năm điểm cùng đường tròn; AH.AO = AB.AC; quỹ tích trọng tâm G." },
+  "P1 Bài 40": { "tt": "khong_tt", "ghi": "Hình học phẳng có hai đường cao: A, E, H, D cùng đường tròn; BHCK hình bình hành; O thuộc AK; H, G, O thẳng hàng; MI vuông góc DE (không có tiếp tuyến)." }
+}

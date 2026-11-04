@@ -1,0 +1,15 @@
+{
+  "P1 Bài 1": { "tt": "khong_tt", "ghi": "Tỉ số lượng giác thực tế (tháp, drone): tam giác vuông ABC." },
+  "P1 Bài 2": { "tt": "khong_tt", "ghi": "Tỉ số lượng giác thực tế (máy bay cất cánh): tam giác vuông ABH, tìm cạnh và tìm góc." },
+  "P1 Bài 3": { "tt": "khong_tt", "ghi": "Tỉ số lượng giác thực tế (tàu qua sông): tam giác vuông ABC." },
+  "P1 Bài 4": { "tt": "khong_tt", "ghi": "Diện tích hình tròn / nửa hình vành khuyên (quạt giấy)." },
+  "P1 Bài 5": { "tt": "khong_tt", "ghi": "Diện tích phần tư hình tròn (hai con dê); dùng vị trí tương đối hai đường tròn (tiếp xúc ngoài) chỉ để chứng tỏ hai phần cỏ không chồng nhau, không có tiếp tuyến." },
+  "P1 Bài 6": { "tt": "khong_tt", "ghi": "Đường tròn chứa cung tròn (cầu Đông Trù): tìm bán kính từ dây và độ cao cung; chỉ dùng tính chất tiếp tuyến tại điểm cao nhất để suy ra OM vuông góc dây, không phải bài tiếp tuyến." },
+  "P2 Bài 1": { "tt": "khong_tt", "ghi": "Hai đường cao, bốn điểm cùng thuộc một đường tròn (trung tuyến cạnh huyền), tam giác đồng dạng, MN = BC cos MHC; không có tiếp tuyến." },
+  "P2 Bài 2": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến cắt nhau MA, MC của (O) tại M (xy là tiếp tuyến tại A); ý 3 chứng minh BE là tiếp tuyến, ý 4 MB đi qua trung điểm CH." },
+  "P2 Bài 3": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến cắt nhau DA, DB tại D (ý b chứng minh DB là tiếp tuyến); ý c thêm tiếp tuyến KE." },
+  "P2 Bài 4": { "tt": "ba_tt", "ghi": "Ba tiếp tuyến Mx, Ny (tại hai đầu đường kính MN) và EF (tại điểm A trên nửa đường tròn): ME + NF = EF, AE·AF = R²." },
+  "P2 Bài 5": { "tt": "ba_tt", "ghi": "Ý 3: AD, BC, AB là ba tiếp tuyến của đường tròn đường kính CD (tâm M), tiếp tuyến AD, BC tại hai đầu đường kính CD và AB tại H; AD + BC = AB. Ngoài ra xy là tiếp tuyến của (O) tại M. Nếu muốn xếp theo tiếp tuyến của (O) thì là tt_khac." },
+  "P3 Bài 1": { "tt": "khong_tt", "ghi": "Máng nước hình hộp chữ nhật, cực trị thể tích (bài biên giới với Đại số)." },
+  "P3 Bài 2": { "tt": "khong_tt", "ghi": "Hình vuông ABCD, tứ giác EFGH, chu vi nhỏ nhất (bài biên giới với Đại số)." }
+}

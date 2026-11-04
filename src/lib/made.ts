@@ -38,7 +38,12 @@ export async function buildMaDe(
     // Ứng viên = câu CÙNG CỤM BÀI + in được cùng form. KHÔNG lấy sang cụm KHÁC dù cùng dạng — đó chính
     // là chỗ gây "loạn": bài thay thế phải TƯƠNG ĐƯƠNG câu gốc, không chỉ tình cờ cùng dạng.
     // Dạng vẫn tự khớp vì cụm nằm gọn trong 1 dạng.
+    // ⭐ Thùy 04/11 "nếu có câu clone thì phải chọn câu clone": trong cụm, câu CÙNG GỐC (clone của câu đề 1 / anh em khi câu đề 1
+    // là clone) xếp lên đầu — cụm gom nhiều câu gốc thì gốc khác không được chen trước clone. Sort ổn định: phần còn lại giữ thứ tự cũ.
+    const gocOf = (c: CauHoi) => c.parent_ma_cau ?? c.ma_cau
+    const goc = baseCau ? gocOf(baseCau) : b.maCau
     const candidates = (pools[b.maDang] ?? []).filter((c) => rootOf(c) === root && canBeETForm(c, form))
+      .sort((x, y) => Number(gocOf(x) !== goc) - Number(gocOf(y) !== goc))
     const picks: (string | null)[] = []
     for (let v = 0; v < 2; v++) {
       const fresh = candidates.find((c) => !used.has(c.ma_cau))   // biến thể KHÁC chưa dùng ở bất kỳ đề nào

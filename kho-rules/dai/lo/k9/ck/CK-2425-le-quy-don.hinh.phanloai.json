@@ -1,0 +1,16 @@
+{
+  "P1 Bài 21.1": { "tt": "khong_tt", "ghi": "tỉ số lượng giác: tính góc BCA từ cột đèn và bóng" },
+  "P1 Bài 21.2": { "tt": "khong_tt", "ghi": "tỉ số lượng giác: chiều cao tháp hải đăng, góc so le trong" },
+  "P1 Bài 21.3": { "tt": "khong_tt", "ghi": "tỉ số lượng giác: tàu ngầm (quãng đường, thời gian)" },
+  "P1 Bài 22.1": { "tt": "khong_tt", "ghi": "diện tích hình quạt và độ dài cung" },
+  "P1 Bài 22.2": { "tt": "khong_tt", "ghi": "diện tích hình tròn (hai mặt trống)" },
+  "P1 Bài 22.3": { "tt": "khong_tt", "ghi": "diện tích hình vành khuyên" },
+  "P1 Bài 23": { "tt": "ba_tt", "ghi": "AC, BD, CD là ba tiếp tuyến (hai tiếp tuyến tại hai đầu đường kính AB và tiếp tuyến tại M): CD=AC+BD, góc COD=90°, tiếp tuyến của đường tròn đường kính CD" },
+  "P1 Bài 24": { "tt": "hai_tt", "ghi": "MA, MB là hai tiếp tuyến cắt nhau tại M (MO là trung trực AB); chứng minh KD là tiếp tuyến và K là trung điểm DQ" },
+  "P1 Bài 25": { "tt": "hai_tt", "ghi": "PA, PM là hai tiếp tuyến cắt nhau tại P (PO là trung trực AM, phân giác góc AOM); BM song song OP, hình bình hành OBNP, ba điểm I, J, K thẳng hàng" },
+  "P1 Bài 26": { "tt": "tt_khac", "ghi": "tiếp tuyến tại A cắt OI tại M, hệ thức OI.OM=R^2, chứng minh MB là tiếp tuyến, thêm tiếp tuyến tại D cắt AB tại N (MD vuông góc ON)" },
+  "P1 Bài 27": { "tt": "hai_tt", "ghi": "AB, AC là hai tiếp tuyến cắt nhau tại A (OA là trung trực BC); hệ thức OH.HA=BK.BA, HK là tiếp tuyến của đường tròn đường kính AC" },
+  "P1 Bài 28": { "tt": "hai_tt", "ghi": "KA, KB là hai tiếp tuyến cắt nhau tại K (KO là trung trực AB); BC song song KO, BC.KO=2R^2, diện tích tam giác ABC khi OK=2R" },
+  "P1 Bài 29": { "tt": "hai_tt", "ghi": "AB, AC là hai tiếp tuyến cắt nhau tại A với OA=2R (OA là phân giác góc BOC); DC song song OA, OCEA là hình thang cân, diện tích hình thoi AKOS" },
+  "P2 Bài 33": { "tt": "tt_khac", "ghi": "tính độ dài tiếp tuyến kẻ từ vệ tinh tới đường tròn tâm O bán kính 6400 km (tiếp tuyến vuông góc bán kính, Pythagore)" }
+}

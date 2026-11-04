@@ -1,0 +1,15 @@
+{
+  "P1 Bài 33": { "tt": "khong_tt", "ghi": "đường tròn ngoại tiếp tam giác, tia phân giác, hai đường tròn đường kính BD, CD; không có tiếp tuyến" },
+  "P1 Bài 34": { "tt": "hai_tt", "ghi": "từ B kẻ hai tiếp tuyến BA, BM tới đường tròn (C;CA); dùng BA=BM và CM vuông góc BM" },
+  "P1 Bài 35": { "tt": "khong_tt", "ghi": "đường cao, hình chiếu, tam giác đồng dạng; không có tiếp tuyến" },
+  "P1 Bài 36": { "tt": "khong_tt", "ghi": "tam giác vuông cân, hình vuông, tia phân giác; không có tiếp tuyến" },
+  "P1 Bài 37": { "tt": "tt_khac", "ghi": "một tiếp tuyến SA tại A cắt cát tuyến SBC tại S; chỉ dùng SA vuông góc OA" },
+  "P1 Bài 38": { "tt": "khong_tt", "ghi": "tam giác nhọn, đường cao, tam giác đồng dạng; không có tiếp tuyến" },
+  "P2 Bài 4": { "tt": "tt_khac", "ghi": "chứng minh OF là tiếp tuyến của đường tròn ngoại tiếp tam giác MEF (OF vuông góc IF tại F)" },
+  "P3 Bài 4": { "tt": "khong_tt", "ghi": "hai đường tròn (O) và (I) cắt nhau tại A, K; không có tiếp tuyến" },
+  "P4 Bài 4": { "tt": "khong_tt", "ghi": "tam giác nội tiếp, đường cao, đường tròn đường kính OC; không có tiếp tuyến" },
+  "P4 Bài 5": { "tt": "khong_tt", "ghi": "hình chữ nhật trong nửa hình tròn, cực trị; không có tiếp tuyến" },
+  "P5 Bài 4": { "tt": "khong_tt", "ghi": "nửa đường tròn, đường kính, tam giác đồng dạng; không có tiếp tuyến" },
+  "P5 Bài 5": { "tt": "khong_tt", "ghi": "hình quạt tròn, độ dài cung, diện tích hình quạt, cực trị; không có tiếp tuyến" },
+  "P6 Bài 4": { "tt": "hai_tt", "ghi": "từ A kẻ hai tiếp tuyến AB, AC; dùng AB=AC, AO vuông góc BC, AH·AO=AB²" }
+}

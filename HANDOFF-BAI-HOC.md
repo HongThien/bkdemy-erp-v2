@@ -7,6 +7,8 @@
 ## Mục lục (số dòng trong file này)
 
 - dòng 36 — ⭐⭐⭐ LUẬT DUYỆT (Thùy 14/10, "nói bao lần rồi") — MỌI KHỐI, MỌI LÔ: muốn Thùy duy�
+- Bài học 03/11 — K9 đề cương / đề thi HK1 → Hình–Luyện + tiếp tuyến (ngay dưới mục lục ②)
+- Bài học 03/11 — Nông trại · tăng tốc bằng Toán · push (ngay dưới mục lục ②)
 - Bài học 03/11 — Phòng làm việc · Báo cáo tuần · thử nghiệm trên DB thật (ngay dưới mục lục ②)
 - Bài học 23/10 — Dashboard học tập · mastery · push (ngay dưới mục lục ②)
 - Bài học 12→23/10 — Nông trại + app HS (cuối file)
@@ -39,6 +41,24 @@
 ---
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
+
+## Bài học 03/11 — Nông trại · tăng tốc bằng Toán · push
+- **KHÔNG chạy truy vấn nặng trên DB thật 17–22h VN** (giờ HS chơi). 03/11 đo tăng tốc (>40s/truy vấn) đúng giờ cao điểm ⇒ cùng lúc HS báo nông trại "về cấp 1", Thùy phải bật bảo trì. Đo diện rộng để sáng/khuya.
+- **Game nhúng: lỗi kết nối phải BÁO, không lặng lẽ dùng bản lưu máy.** Fallback "hết 4s thì dùng localStorage" biến DB chậm thành "mất tiến trình" trong mắt HS (dữ liệu server vẫn nguyên). Nhúng ⇒ chỉ tin server; hỏng thì màn "Chưa kết nối được" + Thử lại.
+- **Chọn câu từ kho: lấy ID trước, lấy nội dung sau.** `_hs_dang_da_hoc` + kéo nội dung cả kho vượt trần 8s PostgREST; tách 2 bước (lọc id theo dạng em đã làm → `_dtv_kho_cau_tim` cho vài ứng viên) xuống ~3s.
+- **Test thời gian chờ trong 1 transaction: `now()` đứng yên** ⇒ cột mốc dùng `clock_timestamp()`.
+- **Push: nối commit + push bằng `&&` cùng lệnh với bước giải xung đột.** 03/11 script giải xung đột DEVLOG fail nhưng commit/push chạy dòng riêng ⇒ lên origin với dấu `<<<<<<<` (vá ở `ffd4ee0c`). `sed -i` trên Git Bash xoá CR ⇒ sửa file CRLF bằng Python mức byte.
+
+## Bài học 03/11 — K9 đề cương / đề thi HK1 → Hình–Luyện + tiếp tuyến (đừng đạp lại)
+
+- **Câu hỏi mơ hồ ⇒ kiểm DB / hỏi MỘT câu trước khi mở việc lớn.** "Các bài trong đề cương thì sao" tôi đọc thành "lượt Đại số" và mở 20 trạm soạn (tốn lớn); Thùy muốn nói phần HÌNH của đề thi + đề cương HK1. Đếm DB theo từng đề (số câu Hình · đã có hinh_bai · đã có mô hình) trả lời ngay và lộ ra 22 đề thi CKI còn 0 bài.
+- **Đỗ tạm vào bài THẬT = làm bẩn bản đồ.** Ghi mọi câu Hình vào HH00108 "tạm" rồi ghi "người xếp tay" ⇒ bài tiếp tuyến lẫn 190 câu lượng giác/quạt. "Cần xếp tay" KHÔNG phải trạng thái bàn giao. Hoặc xếp xong trước khi báo "xong", hoặc đỗ vào dạng chờ/bài riêng chưa hiện cho HS — không đỗ vào bài có tên nghiệp vụ.
+- **Xếp bằng từ khoá: dùng CHỮ CÓ DẤU** (bỏ dấu ⇒ "cũng"≈"cung", "tháp"≈"thấp"…); bỏ lệnh LaTeX phải giữ `\sin \cos \tan \cot`; thứ tự luật quan trọng (quạt trước cung khi đề hỏi diện tích; trig trước đường tròn thì "tam giác nhọn nội tiếp" bị hút nhầm vào lượng giác). Đọc lại cả danh sách đích trước khi `--ghi`, ghi `undo.json`.
+- **Nối nhãn bản soạn ↔ ma_cau luôn cần nhân chứng thứ hai** (nội dung đề khớp DB); số lượng khớp không phải bằng chứng. `sed` làm mất `^` trong `[^\p{L}\p{N}]` ⇒ xoá hết chữ, so sánh báo lệch hàng loạt — nhân chứng chặn được, dùng Edit chứ không `sed` cho regex Unicode.
+- **Trạm Sonnet soạn hay lọt kiến thức học kì II** (đường tròn ngoại tiếp tam giác vuông, góc chắn nửa đường tròn, đường trung bình) dù brief cấm; trạm Opus soát phải kiểm cụ thể. Sub-agent tự xoá cả tệp nháp của nó ⇒ trái Luật xoá: brief ghi rõ "không xoá gì, kể cả nháp".
+- **Giới hạn 20 sub-agent chạy cùng lúc**; soạn xong đề nào giao soát đề đó ngay. Dừng trạm bằng TaskStop không mất tệp đã ghi, nhưng bản nháp dở chưa qua cổng thì không tin.
+- **Chuẩn hoá kết thúc dòng bằng `sed` trên DEVLOG/HANDOFF = viết lại cả tệp** (78k dòng đổi). Kiểm `git ls-files --eol <tệp>` trước: DEVLOG `i/-text` (git không tự đổi), HANDOFF `i/lf w/crlf`. Thêm mục bằng append LF, không `sed -i 's/$/\r/'`.
+- **`tra_loi_ngan` vs `tu_luan`** cho câu có đúng một đáp số nguyên: các đề cương soạn chưa nhất quán — chờ Thùy chốt một cách chung (k9.md §10 / §13).
 
 ## Bài học 03/11 — Phòng làm việc · Báo cáo tuần · thử nghiệm trên DB thật
 - **Tạo file mới: KIỂM TÊN TRƯỚC.** Write lên `src/lib/phong.ts` đè mất file danh mục phòng học bổ trợ (tool không chặn). Glob tên trước khi tạo file `lib/*.ts`.

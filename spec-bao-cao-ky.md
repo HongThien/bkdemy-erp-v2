@@ -1,0 +1,72 @@
+# spec-bao-cao-ky — Báo cáo HỌC KÌ gửi phụ huynh
+
+> Thùy chốt 04/11. **Khác hẳn report tháng** (`ReportPHScreen`): không bảng từng buổi, không ET/BTVN, không 7 chỉ số, không thang 5 kiến thức/thái độ.
+> Dùng chung với report tháng chỉ: chọn Môn → Lớp → HS, ảnh gửi PH, chốt cả lớp.
+> Phần A = LOGIC (đã chốt). Phần B = "bàn sau" (số/tên/catalog chưa chốt).
+
+## A. LOGIC
+
+### A1. Kì là một ĐỐI TƯỢNG
+- Bảng `ky_hoc`: tên (vd "HK1 2026–27"), `tu_thang`, `den_thang` (text `YYYY-MM`). Khoảng tháng **không cố định**, người có quyền tự tạo/sửa.
+- **Người tạo kì = Thùy** (CEO). Các quyền khác (nhập, công bố) còn ở mục B.
+- Mã gốc = `id` uuid, cấp lúc INSERT, bất biến. Báo cáo bám `ky_hoc.id`, không bám tên/tháng.
+- Đổi `tu_thang`/`den_thang` sau khi đã có báo cáo công bố ⇒ báo cáo cũ KHÔNG đổi (xem A7).
+- Kì đầu tiên: **chưa có kì trước ⇒ không so sánh**.
+
+### A2. Nội dung báo cáo (đúng 6 khối)
+1. **Tỉ lệ hoàn thành chủ đề – chuyên đề** (A3).
+2. **Thứ hạng tại trung tâm** qua từng lần thi + hạng cả kì (A4).
+3. **Điểm năng lực = điểm dự đoán ± sai số** — giáo viên NHẬP TAY (A5).
+4. **Nhận xét giáo viên** (văn bản).
+5. **Chuyên cần**: số buổi nghỉ trong kì (A6).
+6. **Đường xu hướng** theo tháng + **Phụ lục** bảng điểm chi tiết các lần thi.
+
+**Nguồn số liệu thi CHỈ gồm: MT (`ky_thi.loai='mt_sat_hach'`) và Khảo sát (`'khao_sat_thang'`)** — bảng `ky_thi` + `diem_thi`. Không đụng ET/BTVN.
+
+### A3. Tỉ lệ hoàn thành chủ đề – chuyên đề
+- Đơn vị: mỗi **chủ đề** lấy **20** lần đánh giá gần nhất; mỗi **chuyên đề** lấy **10** lần gần nhất.
+- Chỉ tính lần đánh giá trong **45 ngày gần nhất** (tính lùi từ ngày cuối kì). Chưa đủ số lần ⇒ lấy số lần có (8 lần thì đánh giá theo 8).
+- Cửa sổ cắt theo TỪNG chủ đề/chuyên đề, không cắt chung cả môn.
+- **Hiển thị: HIỆN HẾT** mọi chủ đề và chuyên đề (Thùy chốt 04/11) — **Thùy xác nhận lại 04/11 sau khi biết số đúng (K9 ≈ 38 thanh)** ⇒ PDF không cố 2 trang: phần Hoàn thành được phép dài nhiều trang, phụ lục sang trang riêng. Số đo 04/11 (T7–T10, bản đồ mới, mọi khối đã nối): số chủ đề / chuyên đề CÓ LƯỢT ĐO theo lớp: cấp 1 1–6 / 3–17 · K6 5–6 / 12–16 · K7 7 / 20–21 (7S1: 2 / 9) · K8 6 / 21–23 · K9 10–11 / 23–27 · K10 4 / 7 · K11 2 / 7 · K12 3–4 / 7–8 · KHTN K7 7 / 21, K8 6 / 23, K9 11 / 27. ⇒ K9 ≈ 38 thanh/báo cáo (cả kì còn nhiều hơn). Lượt đo = câu được chấm, chưa tách theo buổi.
+- Thiếu data = ít lần đo ⇒ **độ tin thấp**, KHÁC yếu (CLAUDE.md §5). Đơn vị 0 lần đo hiển thị "chưa đo", không phải 0%.
+- Tính ở Postgres (`fn_bc_ky_*`), tái dùng engine mastery hiện có; nguồn công thức duy nhất = hàm DB (CLAUDE.md §2.0).
+
+### A4. Thứ hạng
+- Hạng từng lần thi: lấy theo hạng của lần thi đó (khối / trung tâm như `fn_rank_diem_mt`, `fn_bxh_diem_ks_khoi`).
+- **Hạng cả kì** = xếp theo **điểm trung bình các lần thi MÀ EM ĐÃ THI**. **Không thi ⇒ không tính** (KHÔNG cộng 0 điểm — khác luật MT hạng tháng).
+- Số lần thi quá ít ⇒ ghi kèm "dựa trên n lần thi".
+
+### A5. Điểm năng lực
+- `diem_du_doan` + `sai_so`: **GV nhập tay**. Lý do: mẫu 4–5 lần thi quá nhỏ, công thức suy ra không đúng.
+- Ý nghĩa hiển thị cho PH: điểm cao = học tốt; sai số nhỏ = cẩn thận, sai số lớn = ẩu.
+- Cột đã có ở `bao_cao_ph` (`nl_diem`, `nl_sai_so`) nhưng bảng tháng — bảng kì có cột riêng, không dùng chung.
+
+### A6. Chuyên cần
+- Hiện **số buổi nghỉ** trong kì (vắng + vắng phép) để PH thấy. Tính ở DB.
+
+### A6b. Đường xu hướng (Thùy chốt 04/11)
+- Vẽ **2 đường trên cùng trục**: điểm của em theo từng lần thi **và** điểm TRUNG BÌNH của chính lần thi đó (mọi em đã thi đề đó).
+- Lý do: đề mỗi lần khó/dễ khác nhau — điểm em tụt mà trung bình cũng tụt thì là đề khó, không phải em yếu đi. PH phải đọc được khoảng cách em so với mặt bằng, không chỉ độ cao tuyệt đối.
+- Trung bình mỗi lần thi tính **chỉ trên em đã thi** (không thi thì không vào mẫu, cùng luật A4). Ghi kèm sĩ số mẫu n.
+- Tính ở Postgres cùng hàm với phần hạng; snapshot lúc công bố (A7).
+- Phụ lục thêm cột "TB lần thi" cạnh điểm của em.
+
+### A7. Lưu & đóng băng
+- Bảng `bao_cao_ph_ky`, khóa (`hoc_sinh_id`, `mon`, `ky_id`). Lưu phần GV nhập: điểm dự đoán, sai số, nhận xét.
+- **Bấm Công bố = chụp snapshot jsonb** toàn bộ số liệu (hoàn thành, hạng, chuyên cần, xu hướng, phụ lục) + ảnh. Mở lại báo cáo đã công bố đọc snapshot, **không tính lại** (khác report tháng, số có thể đổi sau khi đã gửi PH).
+- Chưa công bố ⇒ xem trước bằng số tính động.
+- Chốt cả lớp: công bố hàng loạt = chụp snapshot từng HS ở DB (HS chưa nhập nhận xét/điểm năng lực tự bỏ qua). Không còn bước chụp ảnh trong trình duyệt như `bulkCongBoLop` của report tháng ⇒ nên làm bằng 1 RPC transactional ở DB.
+
+### A8. Hai đầu ra (Thùy chốt 04/11)
+- **Trong app PH:** trang HTML **kéo dọc**, dựng từ snapshot jsonb (A7) — biểu đồ SVG, chữ co theo màn hình. App PH (`bkdemy-ph-app`, `lib/parent-data.ts`) đã đọc `bao_cao_ph` trực tiếp từ Supabase nên đọc được snapshot; cần thêm màn + quyền đọc bảng kì.
+- **Gửi PH (Zalo):** **1 file PDF** (Thùy 04/11: PH bấm tải 1 lần, ảnh thì 2 lần). A4 dọc, nhiều trang (số trang theo số chủ đề/chuyên đề): (1) tóm tắt — điểm năng lực · hoàn thành · xu hướng · hạng · chuyên cần · nhận xét; (2) phụ lục bảng điểm. Chữ đủ lớn đọc trên điện thoại (dàn như thẻ mockup, không thu nhỏ bảng).
+- **⭐ ERP KHÔNG tạo PDF** (Thùy 04/11: tải PDF trên ERP mất công). **ERP chỉ NHẬP + TÍNH + CHỤP SNAPSHOT**; PDF do **Claude dựng ngoài ERP** từ snapshot jsonb (đọc từ DB). Hệ quả thiết kế: snapshot phải **tự đủ** — chứa mọi số, nhãn, tên HS/lớp/kì/GV, nhận xét — để dựng PDF không phải query thêm. Không cần `jspdf`/`html2canvas`/upload PDF, không cột `pdf_url` bắt buộc.
+- Cả hai cùng dựng từ MỘT snapshot ⇒ không lệch số giữa app và ảnh.
+
+## B. BÀN SAU (chưa chốt — đừng tự quyết trong code)
+- Tên cột/hàm/bảng cụ thể, quyền (ai tạo kì, ai nhập, ai công bố), vị trí leaf trong menu.
+- Thang màu/bố cục thẻ ảnh, kiểu đường xu hướng (trục theo lần thi hay theo tháng).
+- ~~Phạm vi "trung bình lần thi"~~ — **CHỐT 04/11: tính theo KHỐI** (cùng kỳ thi, cùng môn, cùng khối).
+- Quy tắc "45 ngày" khi kì kết thúc nhưng báo cáo công bố muộn (đang hiểu: lùi từ `den_thang` cuối kì).
+- Phân biệt MT vs Khảo sát trong phụ lục (gộp 1 bảng hay 2 bảng).
+- Có cần hạng theo hệ (bac) như report tháng không.

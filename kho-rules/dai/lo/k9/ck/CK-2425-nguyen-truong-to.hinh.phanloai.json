@@ -1,0 +1,8 @@
+{
+ "P1 Bài 18": { "tt": "ba_tt", "ghi": "Ax, By và CD là ba tiếp tuyến của (O): chứng minh CD = AC + BD, CD tiếp xúc (O) tại M, AC·BD = R²" },
+ "P1 Bài 19": { "tt": "tt_khac", "ghi": "Chứng minh DE là tiếp tuyến của đường tròn (O) ngoại tiếp AEHF (đường kính AH)" },
+ "P1 Bài 20": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến MA, MB cắt nhau tại M: OM ⊥ AB, OK·OM = R², I là tâm nội tiếp, AOBH là hình thoi" },
+ "P1 Bài 21": { "tt": "tt_khac", "ghi": "Chứng minh DE là tiếp tuyến chung của hai đường tròn (I), (K); không có cặp tiếp tuyến cắt nhau" },
+ "P1 Bài 22": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến MA, MB cắt nhau tại M; ý b chứng minh KD là tiếp tuyến (KB = KD)" },
+ "P1 Bài 23": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến AB, AC cắt nhau tại A: AO ⊥ BC, tính chu vi và diện tích tam giác ABC, IG là trung trực của OA" }
+}
