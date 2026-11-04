@@ -1,0 +1,15 @@
+[
+ {"ma_cau": "T1120000007207", "dang_bai_id": "NDB00780", "chac": "cao", "ly_do": "Thiết diện tam giác đều có cạnh phải tự suy từ đáy tròn để xây S(x); dạng sau thắng 00779."},
+ {"ma_cau": "T1120000007489", "dang_bai_id": "NDB00747", "chac": "cao", "ly_do": "Xét hàm nào không là nguyên hàm theo định nghĩa F'=f, họ F+C."},
+ {"ma_cau": "T1120000007568", "dang_bai_id": "NDB00747", "chac": "cao", "ly_do": "Hỏi trực tiếp định nghĩa nguyên hàm F'(x)=f(x)."},
+ {"ma_cau": "T1120000007843", "dang_bai_id": "NDB00781", "chac": "vua", "ly_do": "Nửa khối elip tròn xoay dùng công thức thể tích sẵn, nhưng có hình và bối cảnh thực tế; có thể cách thiết diện."},
+ {"ma_cau": "T1120000007732", "dang_bai_id": "NDB00747", "chac": "cao", "ly_do": "Nhận biết hàm không là nguyên hàm của -x^3 theo định nghĩa, họ F+C."},
+ {"ma_cau": "T1120000007720", "dang_bai_id": "NDB00747", "chac": "cao", "ly_do": "Đánh giá phát biểu về định nghĩa, tính duy nhất và tính chất tuyến tính của nguyên hàm."},
+ {"ma_cau": "T1120000007511", "dang_bai_id": "NDB00774", "chac": "cao", "ly_do": "Diện tích giới hạn bởi một hàm, trục hoành, hai cận x=-1, x=2 cho sẵn."},
+ {"ma_cau": "T1120000007097", "dang_bai_id": "NDB00779", "chac": "cao", "ly_do": "Thiết diện hình vuông với cạnh cho sẵn theo x, lắp S(x) rồi tích phân."},
+ {"ma_cau": "T1120000007763", "dang_bai_id": "NDB02592", "chac": "cao", "ly_do": "Chọn công thức Newton–Leibniz: tích phân f' bằng f(b)-f(a)."},
+ {"ma_cau": "T1120000007065", "dang_bai_id": "NDB00746", "chac": "cao", "ly_do": "Tìm nguyên hàm có điều kiện F(π) để xác định C rồi tính F(π/2)."},
+ {"ma_cau": "T1120000007268", "dang_bai_id": "NDB00629", "chac": "cao", "ly_do": "Tích phân hàm lượng giác tan^2 và sin^2(x/2), hạ bậc rồi thay cận."},
+ {"ma_cau": "T1120000007680", "dang_bai_id": "NDB00774", "chac": "cao", "ly_do": "Công thức diện tích giới hạn bởi đồ thị, trục hoành, hai cận a, b cho sẵn."},
+ {"ma_cau": "T1120000007415", "dang_bai_id": "NDB00744", "chac": "cao", "ly_do": "Nguyên hàm có hạng tử 5/x (phân thức); dạng sau thắng so với đa thức."}
+]

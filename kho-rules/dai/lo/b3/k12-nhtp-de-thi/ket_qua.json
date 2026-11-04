@@ -1,0 +1,1760 @@
+[
+ {
+  "ma_cau": "T1120000007152",
+  "dang_bai_id": "NDB00779",
+  "chac": "cao",
+  "ly_do": "Thiết diện hình vuông cho sẵn cạnh theo x, lắp V=∫S(x)dx."
+ },
+ {
+  "ma_cau": "T1120000007780",
+  "dang_bai_id": "NDB00628",
+  "chac": "cao",
+  "ly_do": "Hàm cho bởi hai công thức, tách cận tại điểm nối rồi tính tích phân."
+ },
+ {
+  "ma_cau": "T1120000007343",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Công thức thể tích khối tròn xoay quanh Ox với cận a, b cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000007807",
+  "dang_bai_id": "NDB00628",
+  "chac": "cao",
+  "ly_do": "Hàm hai công thức e^{2x} và x²+x+2, tách cận tại 0."
+ },
+ {
+  "ma_cau": "T1120000007434",
+  "dang_bai_id": "NDB00775",
+  "chac": "cao",
+  "ly_do": "Diện tích giữa hai đồ thị, phải tự giải phương trình hoành độ giao điểm lấy cận."
+ },
+ {
+  "ma_cau": "T1120000007606",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Chọn công thức diện tích từ đồ thị một hàm và trục hoành; có thể cũng hợp dạng có cận NDB00774."
+ },
+ {
+  "ma_cau": "T1120000007071",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Công thức thể tích tròn xoay quanh Ox với x=a, x=b."
+ },
+ {
+  "ma_cau": "T1120000007829",
+  "dang_bai_id": "NDB00781",
+  "chac": "vua",
+  "ly_do": "Có hình; V quay quanh Ox bằng tích phân, V1 là hai hình nón, tìm tham số a."
+ },
+ {
+  "ma_cau": "T1120000007217",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm tổng sin x, x², -1/x; chứa lượng giác nên xếp dạng lượng giác (sau đa thức, phân thức)."
+ },
+ {
+  "ma_cau": "T1120000007158",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Thể tích quay y=√(2-x³) quanh Ox với cận x=-1, x=1 cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000007417",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Cho ∫f dx, tìm f bằng định nghĩa (lấy đạo hàm), không tính nguyên hàm."
+ },
+ {
+  "ma_cau": "T1120000007311",
+  "dang_bai_id": "NDB00751",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức sai theo tính chất tích phân; đáp án sai là đảo cận không đổi dấu."
+ },
+ {
+  "ma_cau": "T1120000007564",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Dùng tính chất tổng hiệu và nhân hằng số của tích phân để suy ra ∫f."
+ },
+ {
+  "ma_cau": "T1120000007218",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "∫f' = f(2)-f(1), đọc giá trị f tại hai cận trên đồ thị."
+ },
+ {
+  "ma_cau": "T1120000007285",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của sin x + 3, chứa lượng giác."
+ },
+ {
+  "ma_cau": "T1120000007577",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Hỏi định nghĩa tích phân qua công thức Newton–Leibniz F(b)-F(a)."
+ },
+ {
+  "ma_cau": "T1120000007504",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Cho F, tìm f bằng định nghĩa F'=f."
+ },
+ {
+  "ma_cau": "T1120000005555",
+  "dang_bai_id": "NDB02592",
+  "chac": "vua",
+  "ly_do": "f(3)-f(0)=∫f' cho bằng diện tích trên đồ thị f'; có hình, hơi lai dạng diện tích."
+ },
+ {
+  "ma_cau": "T1120000007301",
+  "dang_bai_id": "NDB00752",
+  "chac": "vua",
+  "ly_do": "Chọn mệnh đề sai về tính chất tích phân; đáp án sai ở nối cận c tùy ý, nhưng cũng gần dạng NDB00751."
+ },
+ {
+  "ma_cau": "T1120000007731",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Công thức thể tích khối tròn xoay quanh Ox với cận a, b."
+ },
+ {
+  "ma_cau": "T1120000007545",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Cho nguyên hàm G, hỏi ∫g = G(b)-G(a)."
+ },
+ {
+  "ma_cau": "T1120000007717",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của đa thức."
+ },
+ {
+  "ma_cau": "T1120000007733",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Chọn công thức diện tích giới hạn bởi y=cos x, trục Ox, x=0, x=π (cận cho sẵn)."
+ },
+ {
+  "ma_cau": "T1120000007231",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm mũ e^x."
+ },
+ {
+  "ma_cau": "T1120000007100",
+  "dang_bai_id": "NDB00751",
+  "chac": "cao",
+  "ly_do": "Chọn mệnh đề sai về tính chất tích phân; đáp án sai là đảo cận không đổi dấu."
+ },
+ {
+  "ma_cau": "T1120000007570",
+  "dang_bai_id": "NDB00744",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của 1/(5x-2), phân thức hàm hợp tuyến tính."
+ },
+ {
+  "ma_cau": "T1120000007420",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Nối cận ∫_{-4}^{5} = ∫_{-4}^{-3} + ∫_{-3}^{5}."
+ },
+ {
+  "ma_cau": "T1120000007773",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên hàm của sin x."
+ },
+ {
+  "ma_cau": "T1120000007468",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "∫f' = f(3)-f(0), suy ra f(3)."
+ },
+ {
+  "ma_cau": "T1120000007500",
+  "dang_bai_id": "NDB00760",
+  "chac": "vua",
+  "ly_do": "Cho tốc độ tăng nhiệt, tìm đại lượng rồi tính giá trị trung bình; có thêm ý trung bình."
+ },
+ {
+  "ma_cau": "T1120000007484",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Công thức diện tích hình phẳng giới hạn bởi y=f(x), Ox, x=a, x=b."
+ },
+ {
+  "ma_cau": "T1120000007259",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "∫f' = f(3)-f(2) từ giá trị tại hai cận."
+ },
+ {
+  "ma_cau": "T1120000007690",
+  "dang_bai_id": "NDB00635",
+  "chac": "cao",
+  "ly_do": "Thể tích quay quanh Ox của hình giữa parabol và đường thẳng, tự tìm giao điểm làm cận."
+ },
+ {
+  "ma_cau": "T1120000007431",
+  "dang_bai_id": "NDB00746",
+  "chac": "vua",
+  "ly_do": "Tìm nguyên hàm có điều kiện F(1), nhưng sau đó còn tìm giá trị lớn nhất của F."
+ },
+ {
+  "ma_cau": "T1120000007707",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Công thức diện tích giới hạn bởi y=f(x), Ox, x=a, x=b."
+ },
+ {
+  "ma_cau": "T1120000007580",
+  "dang_bai_id": "NDB00751",
+  "chac": "cao",
+  "ly_do": "Tích phân không phụ thuộc tên biến và nhân hằng số 2."
+ },
+ {
+  "ma_cau": "T1120000007116",
+  "dang_bai_id": "NDB02592",
+  "chac": "vua",
+  "ly_do": "Newton–Leibniz với hai nguyên hàm F, G rồi thêm diện tích giữa F và G tìm m; câu trộn."
+ },
+ {
+  "ma_cau": "T1120000007667",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Chọn công thức diện tích từ đồ thị một hàm và Ox, cận trên hình; cũng gần dạng NDB00774."
+ },
+ {
+  "ma_cau": "T1120000005337",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Diện tích giới hạn bởi y=x²+2, trục hoành, x=1, x=3, cận cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000007186",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Họ nguyên hàm của đa thức."
+ },
+ {
+  "ma_cau": "T1120000007598",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Dùng tính chất tổng hiệu: ∫(f+3x²)=∫f+∫3x², suy ra ∫f."
+ },
+ {
+  "ma_cau": "T1120000007156",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Công thức diện tích hình phẳng giới hạn bởi x=a, x=b, y=f(x), Ox."
+ },
+ {
+  "ma_cau": "T1120000005029",
+  "dang_bai_id": "NDB00753",
+  "chac": "vua",
+  "ly_do": "Giá trị trung bình của đa thức trên [0;b], tích phân đa thức nhưng bản đồ chưa có dạng giá trị trung bình."
+ },
+ {
+  "ma_cau": "T1120000007175",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bảng biến thiên, số nghiệm phương trình: thuộc khảo sát hàm số, không phải nguyên hàm–tích phân."
+ },
+ {
+  "ma_cau": "T1120000007566",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của e^x."
+ },
+ {
+  "ma_cau": "T1120000007282",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Thể tích quay y=√x+3/2, 0≤x≤4 quanh Ox; hàm và cận đã cho, hình chỉ minh họa."
+ },
+ {
+  "ma_cau": "T1120000007069",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định sai về định nghĩa/tính chất nguyên hàm (tích không bằng tích nguyên hàm)."
+ },
+ {
+  "ma_cau": "T1120000007113",
+  "dang_bai_id": "NDB00754",
+  "chac": "cao",
+  "ly_do": "∫(x²+1)/x tách thành x+1/x, tích phân phân thức."
+ },
+ {
+  "ma_cau": "T1120000007187",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Thể tích quay y=√(2+sin x) quanh Ox, cận 0 và π cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000007521",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích giữa hai đồ thị đọc từ hình, chọn tích phân đúng."
+ },
+ {
+  "ma_cau": "T1120000007471",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Nối cận: ∫_4^7 = ∫_0^7 - ∫_0^4."
+ },
+ {
+  "ma_cau": "T1120000007323",
+  "dang_bai_id": "NDB00754",
+  "chac": "cao",
+  "ly_do": "Tích phân của 1+3/x, đưa về phân thức rồi tính."
+ },
+ {
+  "ma_cau": "T1120000007320",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Công thức Newton–Leibniz với F nguyên hàm của f."
+ },
+ {
+  "ma_cau": "T1120000007716",
+  "dang_bai_id": "NDB00753",
+  "chac": "cao",
+  "ly_do": "Tích phân đa thức bậc nhất."
+ },
+ {
+  "ma_cau": "T1120000007363",
+  "dang_bai_id": "NDB00635",
+  "chac": "cao",
+  "ly_do": "Thể tích quay y=1-x², y=0 quanh Ox, tự tìm giao điểm làm cận."
+ },
+ {
+  "ma_cau": "T1120000007506",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Cho F(-1), F(2), tính ∫f = F(2)-F(-1)."
+ },
+ {
+  "ma_cau": "T1120000007782",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên hàm của phân thức với điều kiện F(1)=-2."
+ },
+ {
+  "ma_cau": "T1120000007679",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Chọn công thức diện tích giới hạn bởi y=-e^x, y=0, x=0, x=2."
+ },
+ {
+  "ma_cau": "T1120000007263",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Công thức diện tích hình phẳng giới hạn bởi y=f(x), Ox, x=a, x=b."
+ },
+ {
+  "ma_cau": "T1120000007359",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Tìm f từ f' kèm điều kiện f(1)=2."
+ },
+ {
+  "ma_cau": "T1120000007241",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của e^x+cos x, chứa hàm mũ (dạng sau)."
+ },
+ {
+  "ma_cau": "T1120000007607",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Cho F=ln|x|, tìm f bằng định nghĩa F'=f."
+ },
+ {
+  "ma_cau": "T1120000005300",
+  "dang_bai_id": "NDB00753",
+  "chac": "vua",
+  "ly_do": "Ý a tích phân đa thức, ý b mặt phẳng Oxyz thuộc HGT; câu trộn hai chủ đề."
+ },
+ {
+  "ma_cau": "T1120000007373",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Công thức thể tích tròn xoay quanh Ox với x=a, x=b."
+ },
+ {
+  "ma_cau": "T1120000007188",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên hàm F có điều kiện F(0)=-2."
+ },
+ {
+  "ma_cau": "T1120000007414",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hằng số, đa thức."
+ },
+ {
+  "ma_cau": "T1120000007671",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Cho nguyên hàm F, tính ∫[2+f] tách hằng số và Newton–Leibniz."
+ },
+ {
+  "ma_cau": "T1120000007239",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Tìm f từ f'=5-3cos x kèm f(0)=-10."
+ },
+ {
+  "ma_cau": "T1120000007273",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của sin x + 3."
+ },
+ {
+  "ma_cau": "T1120000007823",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Công thức thể tích tròn xoay quanh Ox với x=a, x=b."
+ },
+ {
+  "ma_cau": "T1120000007565",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Dùng tính chất nối cận để suy ra tích phân cần tìm, không tính nguyên hàm."
+ },
+ {
+  "ma_cau": "T1120000007194",
+  "dang_bai_id": "NDB00755",
+  "chac": "cao",
+  "ly_do": "Đồ thị đường gấp khúc, tính tích phân bằng diện tích có dấu."
+ },
+ {
+  "ma_cau": "T1120000007392",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Hỏi công thức Newton–Leibniz F(b)−F(a) từ nguyên hàm F."
+ },
+ {
+  "ma_cau": "T1120000007230",
+  "dang_bai_id": "NDB00744",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của 1+3/x gồm hạng tử phân thức; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000007477",
+  "dang_bai_id": "NDB00750",
+  "chac": "cao",
+  "ly_do": "Cho tốc độ tăng chiều cao f'(x), tìm chiều cao tại thời điểm, có giá trị ban đầu."
+ },
+ {
+  "ma_cau": "T1120000007769",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Diện tích giới hạn bởi y=x²−4, trục hoành, x=−2, x=3 đã cho sẵn cận."
+ },
+ {
+  "ma_cau": "T1120000007822",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Công thức diện tích S=∫|f| giữa đồ thị, trục hoành và hai cận a, b."
+ },
+ {
+  "ma_cau": "T1120000007537",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Công thức thể tích quay quanh Ox có sẵn cận a, b."
+ },
+ {
+  "ma_cau": "T1120000007380",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Thể tích quay y=√x quanh Ox với cận x=0, x=1 cho sẵn, lắp công thức."
+ },
+ {
+  "ma_cau": "T1120000007677",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Hỏi thẳng định nghĩa nguyên hàm F'(x)=f(x)."
+ },
+ {
+  "ma_cau": "T1120000007079",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Diện tích từ đồ thị f đổi dấu, cho giá trị tích phân từng đoạn; phụ thuộc hình, một hàm nên chưa chắc."
+ },
+ {
+  "ma_cau": "T1120000007237",
+  "dang_bai_id": "NDB00779",
+  "chac": "cao",
+  "ly_do": "Thiết diện hình vuông cạnh cho sẵn theo x, lắp V=∫S(x)dx."
+ },
+ {
+  "ma_cau": "T1120000007462",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc khảo sát hàm số (cực trị, tiệm cận xiên), không phải nguyên hàm–tích phân."
+ },
+ {
+  "ma_cau": "T1120000007747",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Cho F(2), F(4), tính ∫f bằng F(4)−F(2)."
+ },
+ {
+  "ma_cau": "T1120000007522",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Công thức thể tích quay y=e^{2x} quanh Ox, cận 0 và 1 cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000007193",
+  "dang_bai_id": "NDB00779",
+  "chac": "cao",
+  "ly_do": "Thiết diện tam giác đều cạnh x√(3−x) cho sẵn, lắp công thức thể tích."
+ },
+ {
+  "ma_cau": "T1120000007529",
+  "dang_bai_id": "NDB00755",
+  "chac": "vua",
+  "ly_do": "Đồ thị gấp khúc để tính F(4)+F(6); phụ thuộc hình, còn dạng nguyên hàm cho sẵn F(−1)."
+ },
+ {
+  "ma_cau": "T1120000007644",
+  "dang_bai_id": "NDB00628",
+  "chac": "cao",
+  "ly_do": "Hàm cho bởi ba công thức, tách cận tại điểm nối."
+ },
+ {
+  "ma_cau": "T1120000007497",
+  "dang_bai_id": "NDB00754",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm a/x²+b/x+2 đưa về phân thức, tìm tham số."
+ },
+ {
+  "ma_cau": "T1120000007481",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Chọn biểu thức diện tích từ đồ thị f đổi dấu; phụ thuộc hình, chỉ một hàm."
+ },
+ {
+  "ma_cau": "T1120000007472",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Họ nguyên hàm của hàm mũ 2^{x+5}."
+ },
+ {
+  "ma_cau": "T1120000007593",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Cho F(1), F(2), tính ∫f bằng F(2)−F(1)."
+ },
+ {
+  "ma_cau": "T1120000007180",
+  "dang_bai_id": "NDB00778",
+  "chac": "vua",
+  "ly_do": "Thể tích quay parabol quanh trục AB phải tự dựng hàm từ hình; trục quay không phải Ox."
+ },
+ {
+  "ma_cau": "T1120000007441",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Thể tích quay y=e^x quanh Ox, cận 0 và 1 cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000007762",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Hỏi công thức Newton–Leibniz F(b)−F(a)."
+ },
+ {
+  "ma_cau": "T1120000007235",
+  "dang_bai_id": "NDB00774",
+  "chac": "vua",
+  "ly_do": "Chọn công thức diện tích với cận a, b; có hình đồ thị, dạng 00777 cũng có thể."
+ },
+ {
+  "ma_cau": "T1120000007624",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Suy F'(x)=7^x từ định nghĩa nguyên hàm, không tính."
+ },
+ {
+  "ma_cau": "T1120000007828",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng tích phân có hàm ẩn/phương trình hàm (đoán f rồi tính ∫)."
+ },
+ {
+  "ma_cau": "T1120000007493",
+  "dang_bai_id": "NDB00753",
+  "chac": "cao",
+  "ly_do": "Tích phân đa thức có cận b là tham số, giải phương trình."
+ },
+ {
+  "ma_cau": "T1120000007703",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Biết f'(x) và điểm đi qua, tìm f(x) rồi tính f(5)."
+ },
+ {
+  "ma_cau": "T1120000007820",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "∫f'=f(2)−f(0) từ giá trị tại hai cận."
+ },
+ {
+  "ma_cau": "T1120000007806",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Hai lần lấy nguyên hàm có điều kiện f(1), F(0) để xác định hằng số."
+ },
+ {
+  "ma_cau": "T1120000007203",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Công thức thể tích quay quanh Ox có cận a, b."
+ },
+ {
+  "ma_cau": "T1120000007719",
+  "dang_bai_id": "NDB00779",
+  "chac": "cao",
+  "ly_do": "Thiết diện hình chữ nhật hai cạnh cho sẵn theo x."
+ },
+ {
+  "ma_cau": "T1120000007201",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "∫f'=f(2)−f(1), đọc giá trị trên đồ thị."
+ },
+ {
+  "ma_cau": "T1120000007698",
+  "dang_bai_id": "NDB00628",
+  "chac": "cao",
+  "ly_do": "Hàm hai công thức, tách cận tại x=1."
+ },
+ {
+  "ma_cau": "T1120000007421",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Tích phân của tổ hợp tuyến tính 7f+8g từ giá trị cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000007490",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm 3cos x + 1/x², có hạng tử lượng giác; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000007575",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm 3e^x+2x, có hạng tử mũ; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000007668",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm e^x+2, hàm mũ cộng hằng số."
+ },
+ {
+  "ma_cau": "T1120000007589",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Chọn công thức thể tích quay y=√x quanh Ox, cận 0 và 2."
+ },
+ {
+  "ma_cau": "T1120000007401",
+  "dang_bai_id": "NDB00774",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa hai nguyên hàm F, G có cận x=0,4; hàm ẩn, kết hợp tính chất nguyên hàm."
+ },
+ {
+  "ma_cau": "T1120000007232",
+  "dang_bai_id": "NDB00755",
+  "chac": "cao",
+  "ly_do": "Tích phân nửa đường tròn tính bằng diện tích một phần tư hình tròn."
+ },
+ {
+  "ma_cau": "T1120000007684",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Tích phân tổng hai hàm từ giá trị cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000007330",
+  "dang_bai_id": "NDB00751",
+  "chac": "vua",
+  "ly_do": "Chọn mệnh đề sai về tính chất cận (∫_a^a=0, đảo cận, Newton–Leibniz); nhiều dạng gần nhau."
+ },
+ {
+  "ma_cau": "T1120000005451",
+  "dang_bai_id": "NDB00753",
+  "chac": "vua",
+  "ly_do": "Giá trị trung bình của hàm đa thức; phần tính là tích phân đa thức, nhưng là khái niệm riêng."
+ },
+ {
+  "ma_cau": "T1120000007360",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Cho quan hệ giữa F(b) và F(a), suy ∫f=F(b)−F(a)."
+ },
+ {
+  "ma_cau": "T1120000007297",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Biết họ nguyên hàm, tìm f bằng định nghĩa (lấy đạo hàm)."
+ },
+ {
+  "ma_cau": "T1120000007573",
+  "dang_bai_id": "NDB00753",
+  "chac": "cao",
+  "ly_do": "Tích phân đa thức chứa tham số m, giải m."
+ },
+ {
+  "ma_cau": "T1120000007299",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm 3cos x − 3^x, có hạng tử mũ; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000007518",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Tích phân của hằng số nhân hàm f từ giá trị cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000007153",
+  "dang_bai_id": "NDB00750",
+  "chac": "cao",
+  "ly_do": "Cho tốc độ tăng nhiệt độ, tìm nhiệt độ tại thời điểm với giá trị ban đầu."
+ },
+ {
+  "ma_cau": "T1120000007315",
+  "dang_bai_id": "NDB00744",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm 3x²+1/x, có hạng tử phân thức."
+ },
+ {
+  "ma_cau": "T1120000007672",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Dùng tính chất nối cận trừ hai tích phân cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000007425",
+  "dang_bai_id": "NDB00779",
+  "chac": "cao",
+  "ly_do": "Thiết diện tam giác đều cạnh cho sẵn theo x."
+ },
+ {
+  "ma_cau": "T1120000005545",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Biết F, tìm f=F' theo định nghĩa nguyên hàm."
+ },
+ {
+  "ma_cau": "T1120000007063",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc khảo sát hàm số: số điểm cực đại từ dấu f'(x)."
+ },
+ {
+  "ma_cau": "T1120000007378",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm e^{3x+1} có điều kiện F(0), tính F(1)."
+ },
+ {
+  "ma_cau": "T1120000005852",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Đề thiếu nội dung; đáp án là GTLN đọc từ đồ thị, thuộc khảo sát hàm số."
+ },
+ {
+  "ma_cau": "T1120000007072",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Hỏi công thức Newton–Leibniz F(b)−F(a)."
+ },
+ {
+  "ma_cau": "T1120000007695",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm 2+cos x, có hạng tử lượng giác."
+ },
+ {
+  "ma_cau": "T1120000007427",
+  "dang_bai_id": "NDB00752",
+  "chac": "vua",
+  "ly_do": "Tích phân 5f−2x với ∫f suy từ diện tích có dấu S1−S2; phụ thuộc hình, trộn đồ thị."
+ },
+ {
+  "ma_cau": "T1120000007470",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Tìm f từ f' lượng giác kèm điều kiện f(π/2)=1."
+ },
+ {
+  "ma_cau": "T1120000007661",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Tích phân hiệu f−g từ giá trị cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000007200",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm sin x + x² − 1/x, có hạng tử lượng giác; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000007567",
+  "dang_bai_id": "NDB00775",
+  "chac": "cao",
+  "ly_do": "Diện tích giữa hai đồ thị, phải tự giải hoành độ giao điểm lấy cận."
+ },
+ {
+  "ma_cau": "T1120000007374",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của 3cos x − 4sin x."
+ },
+ {
+  "ma_cau": "T1120000007660",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm mũ 7^x."
+ },
+ {
+  "ma_cau": "T1120000007665",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Đảo cận và nhân hằng số với tích phân cho sẵn; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000007406",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Hỏi công thức Newton–Leibniz F(b)−F(a)."
+ },
+ {
+  "ma_cau": "T1120000007300",
+  "dang_bai_id": "NDB00629",
+  "chac": "cao",
+  "ly_do": "Tính tích phân của 1/sin²x, hàm lượng giác cơ bản."
+ },
+ {
+  "ma_cau": "T1120000007103",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Công thức thể tích quay y=f(x), Ox, x=a, x=b quanh Ox."
+ },
+ {
+  "ma_cau": "T1120000007424",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Thể tích quay quanh Ox, đã cho đủ hàm và hai cận."
+ },
+ {
+  "ma_cau": "T1120000007798",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Hỏi định nghĩa nguyên hàm F'(x)=f(x)."
+ },
+ {
+  "ma_cau": "T1120000007542",
+  "dang_bai_id": "NDB00753",
+  "chac": "cao",
+  "ly_do": "Tính trực tiếp tích phân đa thức có tham số 2024m."
+ },
+ {
+  "ma_cau": "T1120000007629",
+  "dang_bai_id": "NDB00754",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm đưa về phân thức 1/x, 1/x², 1/x³."
+ },
+ {
+  "ma_cau": "T1120000007699",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Chọn mệnh đề sai về định nghĩa/tính chất nguyên hàm."
+ },
+ {
+  "ma_cau": "T1120000007483",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Cho ∫f, tính ∫(f+1) bằng tính chất tổng."
+ },
+ {
+  "ma_cau": "T1120000007676",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Cho F(1), F(2), tính ∫f bằng Newton–Leibniz."
+ },
+ {
+  "ma_cau": "T1120000007534",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định sai về định nghĩa tích phân Newton–Leibniz."
+ },
+ {
+  "ma_cau": "T1120000007469",
+  "dang_bai_id": "NDB00748",
+  "chac": "cao",
+  "ly_do": "Họ nguyên hàm của căn bậc ba."
+ },
+ {
+  "ma_cau": "T1120000007827",
+  "dang_bai_id": "NDB00742",
+  "chac": "vua",
+  "ly_do": "Cho F đa thức là nguyên hàm của f, tìm a+b+c; có thể là dạng định nghĩa NDB00747."
+ },
+ {
+  "ma_cau": "T1120000007267",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của x^6+e^x, có hàm mũ (dạng sau)."
+ },
+ {
+  "ma_cau": "T1120000007370",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Chọn công thức diện tích từ đồ thị; đề phụ thuộc hình không xem được."
+ },
+ {
+  "ma_cau": "T1120000007276",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của e^{-x}+x, có hàm mũ (dạng sau)."
+ },
+ {
+  "ma_cau": "T1120000007366",
+  "dang_bai_id": "NDB00630",
+  "chac": "cao",
+  "ly_do": "Tích phân của √x−e^x, có hàm mũ (dạng sau)."
+ },
+ {
+  "ma_cau": "T1120000007228",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Hỏi định nghĩa nguyên hàm."
+ },
+ {
+  "ma_cau": "T1120000007056",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Diện tích hình phẳng tô đậm trên đồ thị y=e^x; cận đọc từ hình."
+ },
+ {
+  "ma_cau": "T1120000007384",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Hỏi định nghĩa nguyên hàm."
+ },
+ {
+  "ma_cau": "T1120000007369",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Dùng tính chất nối cận và hằng số nhân để tính ∫0^5 f."
+ },
+ {
+  "ma_cau": "T1120000007104",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của sin x + 2cos x."
+ },
+ {
+  "ma_cau": "T1120000007673",
+  "dang_bai_id": "NDB00632",
+  "chac": "vua",
+  "ly_do": "Hai ý khác dạng: ý a nguyên hàm có điều kiện, ý b quãng đường cho sẵn v(t)."
+ },
+ {
+  "ma_cau": "T1120000007508",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Công thức diện tích giới hạn bởi y=f(x), Ox, x=a, x=b."
+ },
+ {
+  "ma_cau": "T1120000007634",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "∫f' bằng f(2)−f(−1) theo Newton–Leibniz."
+ },
+ {
+  "ma_cau": "T1120000007586",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Tính chất nguyên hàm: hằng số nhân đưa ra ngoài."
+ },
+ {
+  "ma_cau": "T1120000007288",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của e^{-x}+x, có hàm mũ (dạng sau)."
+ },
+ {
+  "ma_cau": "T1120000007467",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Chọn công thức diện tích hình tô đậm trên hình vẽ; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T1120000007132",
+  "dang_bai_id": "NDB00754",
+  "chac": "vua",
+  "ly_do": "Dùng f(3)−f(1) cho phần f' kèm phân thức (x−3)/x; còn hợp NDB02592."
+ },
+ {
+  "ma_cau": "T1120000007578",
+  "dang_bai_id": "NDB00627",
+  "chac": "cao",
+  "ly_do": "Phá dấu giá trị tuyệt đối |2x−4| tách cận tại x=2."
+ },
+ {
+  "ma_cau": "T1120000007505",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Dùng tính chất hằng số nhân của tích phân cho sẵn ∫f."
+ },
+ {
+  "ma_cau": "T1120000007775",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Chọn công thức diện tích từ đồ thị f(x) cho bằng hình; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T1120000007626",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Cho ∫f, tính ∫(½f+2) bằng tính chất tuyến tính."
+ },
+ {
+  "ma_cau": "T1120000007486",
+  "dang_bai_id": "NDB00753",
+  "chac": "cao",
+  "ly_do": "Tích phân đa thức 2x trực tiếp."
+ },
+ {
+  "ma_cau": "T1120000007738",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên hàm F có F(0)=2024 rồi tính F(−1)."
+ },
+ {
+  "ma_cau": "T1120000007308",
+  "dang_bai_id": "NDB00774",
+  "chac": "vua",
+  "ly_do": "Thực tế: lập hàm bậc ba từ dữ kiện rồi tính diện tích với hình; bản đồ thiếu dạng thực tế diện tích."
+ },
+ {
+  "ma_cau": "T1120000007112",
+  "dang_bai_id": "NDB00780",
+  "chac": "vua",
+  "ly_do": "Thiết diện tam giác vuông cân cạnh cho sẵn; có thể là NDB00779, đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T1120000007772",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Xét tính chất của nguyên hàm (tổng, hằng số, biến giả)."
+ },
+ {
+  "ma_cau": "T1120000007102",
+  "dang_bai_id": "NDB00747",
+  "chac": "vua",
+  "ly_do": "Cho ∫f, tìm f bằng đạo hàm; có thể xếp vào nguyên hàm phân thức NDB00744."
+ },
+ {
+  "ma_cau": "T1120000007501",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Họ nguyên hàm của x²."
+ },
+ {
+  "ma_cau": "T1120000007362",
+  "dang_bai_id": "NDB00779",
+  "chac": "cao",
+  "ly_do": "Thiết diện hình vuông cạnh x√2 đã cho sẵn, tính V=∫S(x)dx."
+ },
+ {
+  "ma_cau": "T1120000007101",
+  "dang_bai_id": "NDB00754",
+  "chac": "cao",
+  "ly_do": "Tích phân (x+2)/x tách thành phân thức."
+ },
+ {
+  "ma_cau": "T1120000007608",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Cho ∫f, tính ∫(2f+2) bằng tính chất tuyến tính."
+ },
+ {
+  "ma_cau": "T1120000007576",
+  "dang_bai_id": "NDB00629",
+  "chac": "cao",
+  "ly_do": "Tích phân đa thức kèm sin x, có hàm lượng giác (dạng sau)."
+ },
+ {
+  "ma_cau": "T1120000007400",
+  "dang_bai_id": "NDB00742",
+  "chac": "vua",
+  "ly_do": "Cho F đa thức là nguyên hàm của f, tìm a+b+c; có thể là dạng định nghĩa NDB00747."
+ },
+ {
+  "ma_cau": "T1120000007495",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Thể tích quay quanh Ox, cho hàm số và hai cận x=1, x=2."
+ },
+ {
+  "ma_cau": "T1120000007361",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Diện tích giới hạn bởi y=3^x, hai trục tọa độ, x=2, cận có sẵn."
+ },
+ {
+  "ma_cau": "T1120000007416",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của 3^x."
+ },
+ {
+  "ma_cau": "T1120000007183",
+  "dang_bai_id": "NDB00629",
+  "chac": "cao",
+  "ly_do": "Tích phân 3/sin²x, hàm lượng giác."
+ },
+ {
+  "ma_cau": "T1120000006824",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tích phân √(−x²+2x+8) (đổi biến lượng giác / diện tích 1/4 hình tròn); bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T1120000007189",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Cho quan hệ F(a), F(b), tính ∫f bằng F(b)−F(a)."
+ },
+ {
+  "ma_cau": "T1120000007662",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của cos x + 6x, có hàm lượng giác (dạng sau)."
+ },
+ {
+  "ma_cau": "T1120000007666",
+  "dang_bai_id": "NDB00742",
+  "chac": "vua",
+  "ly_do": "Kiểm F đa thức là nguyên hàm của hàm nào bằng đạo hàm; có thể là NDB00747."
+ },
+ {
+  "ma_cau": "T1120000007067",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Cộng hai tích phân cho sẵn bằng tính chất tổng."
+ },
+ {
+  "ma_cau": "T1120000007316",
+  "dang_bai_id": "NDB00743",
+  "chac": "vua",
+  "ly_do": "Chọn công thức nguyên hàm sai trong bảng; phương án sai là sin x."
+ },
+ {
+  "ma_cau": "T1120000007211",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "f'=1/x với điều kiện f(−1), f(1) tìm hằng số hai nhánh."
+ },
+ {
+  "ma_cau": "T1120000007309",
+  "dang_bai_id": "NDB00753",
+  "chac": "cao",
+  "ly_do": "Tích phân 3x²+√x đưa về lũy thừa/đa thức."
+ },
+ {
+  "ma_cau": "T1120000007538",
+  "dang_bai_id": "NDB00778",
+  "chac": "vua",
+  "ly_do": "Thể tích bát tròn xoay, cận suy từ hình vẽ và độ sâu; có thể là NDB00636."
+ },
+ {
+  "ma_cau": "T1120000007423",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Diện tích giới hạn bởi parabol, Ox, x=−3, x=−1."
+ },
+ {
+  "ma_cau": "T1120000007774",
+  "dang_bai_id": "NDB00751",
+  "chac": "cao",
+  "ly_do": "Đảo cận tích phân đổi dấu."
+ },
+ {
+  "ma_cau": "T1120000007821",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tích phân f(2x) từ ∫f cho sẵn (đổi biến); bản đồ thiếu dạng đổi biến."
+ },
+ {
+  "ma_cau": "T1120000006807",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tích phân √(2−x²) (đổi biến lượng giác / diện tích hình tròn); bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T1120000007220",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Công thức thể tích quay quanh Ox của y=f(x) giữa x=a, x=b."
+ },
+ {
+  "ma_cau": "T1120000007572",
+  "dang_bai_id": "NDB00630",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm đưa về hàm mũ √(e^{x+2})."
+ },
+ {
+  "ma_cau": "T1120000007726",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm 3cos x − 1/x², có hàm lượng giác (dạng sau)."
+ },
+ {
+  "ma_cau": "T1120000007342",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Hỏi định nghĩa tích phân F(b)−F(a)."
+ },
+ {
+  "ma_cau": "T1120000007358",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của x − sin x, có hàm lượng giác (dạng sau)."
+ },
+ {
+  "ma_cau": "T1120000007353",
+  "dang_bai_id": "NDB00753",
+  "chac": "cao",
+  "ly_do": "Tích phân đa thức 3−x."
+ },
+ {
+  "ma_cau": "T1120000007682",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Tính chất nguyên hàm của hằng số nhân 4f(x)."
+ },
+ {
+  "ma_cau": "T1120000007379",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Tính ∫[x+2f−3g] bằng tính chất tuyến tính từ ∫f, ∫g cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000007075",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "∫¼f' bằng ¼[f(2026)−f(2025)] theo Newton–Leibniz."
+ },
+ {
+  "ma_cau": "T1120000007488",
+  "dang_bai_id": "NDB00752",
+  "chac": "vua",
+  "ly_do": "Hằng số nhân vào tích phân; mô tả/tên của NDB00751 và NDB00752 đang đảo nhau nên chưa chắc."
+ },
+ {
+  "ma_cau": "T1120000007514",
+  "dang_bai_id": "NDB00752",
+  "chac": "vua",
+  "ly_do": "Tổ hợp tuyến tính 2f+3g của hai tích phân cho sẵn; ranh giới 00751/00752 mơ hồ."
+ },
+ {
+  "ma_cau": "T1120000007196",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Hỏi thẳng định nghĩa nguyên hàm F'(x)=f(x)."
+ },
+ {
+  "ma_cau": "T1120000007502",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Họ nguyên hàm của cos x, hàm lượng giác cơ bản."
+ },
+ {
+  "ma_cau": "T1120000007569",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm đa thức 5x^4-6x^2+1."
+ },
+ {
+  "ma_cau": "T1120000007718",
+  "dang_bai_id": "NDB00751",
+  "chac": "vua",
+  "ly_do": "Nối cận/hiệu hai tích phân; mô tả và tên 00751/00752 đảo nhau nên không chắc dạng nào."
+ },
+ {
+  "ma_cau": "T1120000007117",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Xét đồng biến từ f'(x) cho trước, thuộc khảo sát hàm số (đạo hàm), không phải nguyên hàm–tích phân."
+ },
+ {
+  "ma_cau": "T1120000007479",
+  "dang_bai_id": "NDB00751",
+  "chac": "vua",
+  "ly_do": "Nối cận cộng hai tích phân; mô tả và tên 00751/00752 đảo nhau nên không chắc."
+ },
+ {
+  "ma_cau": "T1120000007357",
+  "dang_bai_id": "NDB00752",
+  "chac": "vua",
+  "ly_do": "Tích phân 2f-3g+1 gồm cả hằng số; ranh giới 00751/00752 mơ hồ."
+ },
+ {
+  "ma_cau": "T1120000007507",
+  "dang_bai_id": "NDB00754",
+  "chac": "cao",
+  "ly_do": "Tích phân của 1/x trên [1;e], hàm phân thức."
+ },
+ {
+  "ma_cau": "T1120000007142",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Diện tích giới hạn bởi hàm, trục hoành, x=0, x=2 có sẵn cận; chọn công thức."
+ },
+ {
+  "ma_cau": "T1120000007803",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm e^x + x; có hàm mũ, theo dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000007181",
+  "dang_bai_id": "NDB00755",
+  "chac": "vua",
+  "ly_do": "Tích phân từ đồ thị qua diện tích hai phần A,B; dạng cho bởi đồ thị nhưng không chắc đúng ranh giới."
+ },
+ {
+  "ma_cau": "T1120000007675",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm đa thức 2x-6."
+ },
+ {
+  "ma_cau": "T1120000007076",
+  "dang_bai_id": "NDB00627",
+  "chac": "cao",
+  "ly_do": "Tích phân chứa |2^x-4|, phải xét dấu và tách đoạn."
+ },
+ {
+  "ma_cau": "T1120000007584",
+  "dang_bai_id": "NDB00754",
+  "chac": "cao",
+  "ly_do": "Tích phân (x^2+1)/x, tách phân thức, trùng ví dụ dạng."
+ },
+ {
+  "ma_cau": "T1120000007625",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Cho F(1), F(2), tính ∫f bằng F(b)-F(a)."
+ },
+ {
+  "ma_cau": "T1120000007371",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của 2x+1 thỏa F(1)=1, tìm F(-1)."
+ },
+ {
+  "ma_cau": "T1120000007480",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định sai về định nghĩa/công thức Newton–Leibniz của tích phân."
+ },
+ {
+  "ma_cau": "T1120000007134",
+  "dang_bai_id": "NDB00779",
+  "chac": "cao",
+  "ly_do": "Thiết diện là tam giác đều cạnh x, đã cho sẵn hình dạng thiết diện."
+ },
+ {
+  "ma_cau": "T1120000007543",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bài hàm ẩn f·f'=(2x+1)√(1+f²) đổi biến u=√(1+f²); bản đồ thiếu dạng nguyên hàm/tích phân đổi biến, hàm ẩn."
+ },
+ {
+  "ma_cau": "T1120000007681",
+  "dang_bai_id": "NDB00753",
+  "chac": "cao",
+  "ly_do": "Tích phân đa thức có tham số a, b."
+ },
+ {
+  "ma_cau": "T1120000007085",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Cho f(-2), f(5), tính ∫f' bằng f(b)-f(a)."
+ },
+ {
+  "ma_cau": "T1120000007130",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tối ưu lợi nhuận bằng đạo hàm, không dùng nguyên hàm–tích phân; thuộc ứng dụng đạo hàm."
+ },
+ {
+  "ma_cau": "T1120000007354",
+  "dang_bai_id": "NDB00744",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm 3x^2-2+1/x có số hạng phân thức; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000007581",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nguyên hàm ln x / x bằng đổi biến t=ln x; bản đồ thiếu dạng nguyên hàm đổi biến."
+ },
+ {
+  "ma_cau": "T1120000007438",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Cho F(2), F(-1), tính ∫f bằng F(b)-F(a)."
+ },
+ {
+  "ma_cau": "T1120000007727",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định sai về công thức Newton–Leibniz và tính chất tích phân."
+ },
+ {
+  "ma_cau": "T1120000007242",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Công thức diện tích giới hạn bởi f(x), trục hoành, x=a, x=b."
+ },
+ {
+  "ma_cau": "T1120000007080",
+  "dang_bai_id": "NDB00779",
+  "chac": "cao",
+  "ly_do": "Thiết diện hình tròn bán kính √cos x, đã cho sẵn công thức thiết diện."
+ },
+ {
+  "ma_cau": "T1120000007482",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Chọn mệnh đề sai về tính chất của nguyên hàm (k≠0)."
+ },
+ {
+  "ma_cau": "T1120000007391",
+  "dang_bai_id": "NDB00752",
+  "chac": "vua",
+  "ly_do": "Hằng số nhân vào tích phân cho sẵn; mô tả/tên 00751/00752 đảo nhau."
+ },
+ {
+  "ma_cau": "T1120000007126",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Hỏi công thức Newton–Leibniz F(b)-F(a)."
+ },
+ {
+  "ma_cau": "T1120000007697",
+  "dang_bai_id": "NDB00751",
+  "chac": "vua",
+  "ly_do": "Nối cận, không phụ thuộc tên biến; mô tả và tên 00751/00752 đảo nhau."
+ },
+ {
+  "ma_cau": "T1120000007808",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Quay y=√x, trục hoành, x=0, x=1 quanh Ox; đề đủ hàm và cận, hình chỉ minh hoạ."
+ },
+ {
+  "ma_cau": "T1120000007785",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Hỏi định nghĩa nguyên hàm F'(x)=f(x)."
+ },
+ {
+  "ma_cau": "T1120000007182",
+  "dang_bai_id": "NDB00752",
+  "chac": "vua",
+  "ly_do": "Suy ∫f từ ∫(4f-2x) bằng tính chất tổng hiệu; ranh giới 00751/00752 mơ hồ."
+ },
+ {
+  "ma_cau": "T1120000007227",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của 1/x với điều kiện f(-1), f(1) để tìm hằng số trên từng khoảng."
+ },
+ {
+  "ma_cau": "T1120000007368",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm (e^x)^2=e^{2x}, hàm mũ."
+ },
+ {
+  "ma_cau": "T1120000007422",
+  "dang_bai_id": "NDB00752",
+  "chac": "vua",
+  "ly_do": "Tích phân 8f-2 từ ∫f cho sẵn; ranh giới 00751/00752 mơ hồ."
+ },
+ {
+  "ma_cau": "T1120000007663",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm đa thức x^2+4."
+ },
+ {
+  "ma_cau": "T1120000007683",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm 1+cos x, có hàm lượng giác."
+ },
+ {
+  "ma_cau": "T1120000007831",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Hỏi công thức Newton–Leibniz F(b)-F(a)."
+ },
+ {
+  "ma_cau": "T1120000007723",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Diện tích giữa hai đường với cận x=2, x=3 cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000007579",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên hàm của 3x^2-2 thỏa F(1)=4."
+ },
+ {
+  "ma_cau": "T1120000007078",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên hàm của sin x."
+ },
+ {
+  "ma_cau": "T1120000007485",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của sin x đi qua M(0;1), tính F(π/2)."
+ },
+ {
+  "ma_cau": "T1120000005846",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Khẳng định về giá trị lớn nhất của hàm số, không phải nguyên hàm–tích phân."
+ },
+ {
+  "ma_cau": "T1120000007730",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Chọn công thức diện tích từ đồ thị f với trục hoành, trục tung; cận và dấu đọc từ hình."
+ },
+ {
+  "ma_cau": "T1120000007419",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Cho F(4), F(5), tính ∫f bằng F(5)-F(4)."
+ },
+ {
+  "ma_cau": "T1120000007549",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm cos x + 2x, có hàm lượng giác."
+ },
+ {
+  "ma_cau": "T1120000007455",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm 3^{x+1}-sin x, có hàm mũ; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000007664",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Công thức diện tích giữa f, g với cận a, b có sẵn."
+ },
+ {
+  "ma_cau": "T1120000007799",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Hỏi công thức Newton–Leibniz F(b)-F(a)."
+ },
+ {
+  "ma_cau": "T1120000007319",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Cho f(4) và ∫f', tìm f(1) bằng f(b)-f(a)."
+ },
+ {
+  "ma_cau": "T1120000007141",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Công thức thể tích quay y=sin x quanh Ox với cận 0, π."
+ },
+ {
+  "ma_cau": "T1120000007070",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Chọn mệnh đề sai về định nghĩa nguyên hàm."
+ },
+ {
+  "ma_cau": "T1120000007509",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Công thức thể tích quay y=x^2+4, y=0, x=1, x=2 quanh Ox."
+ },
+ {
+  "ma_cau": "T1120000007233",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Công thức thể tích quay y=sin x quanh Ox với cận 0, π/2."
+ },
+ {
+  "ma_cau": "T1120000007403",
+  "dang_bai_id": "NDB00747",
+  "chac": "vua",
+  "ly_do": "Từ ∫5^x dx=F+C suy F'=5^x, là định nghĩa nhưng cũng có thể làm theo nguyên hàm hàm mũ (00745)."
+ },
+ {
+  "ma_cau": "T1120000007184",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Họ nguyên hàm của 5^x."
+ },
+ {
+  "ma_cau": "T1120000007787",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Hỏi công thức Newton–Leibniz F(b)-F(a)."
+ },
+ {
+  "ma_cau": "T1120000005544",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm e^x-2/x^2+sin x trộn nhiều loại hàm; dạng sau thắng là hàm mũ."
+ },
+ {
+  "ma_cau": "T1120000007073",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Họ nguyên hàm của 2^x."
+ },
+ {
+  "ma_cau": "T1120000007428",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích hình gạch sọc giữa hai đồ thị cho hình, cận từ giao điểm; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000007721",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Thể tích quay y=3x+9, y=0, x=-6, x=-4 quanh Ox có cận."
+ },
+ {
+  "ma_cau": "T1120000007274",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của 1/(x+1) thỏa F(0)=2, tính F(1)."
+ },
+ {
+  "ma_cau": "T1120000007475",
+  "dang_bai_id": "NDB00753",
+  "chac": "cao",
+  "ly_do": "Tích phân đa thức hợp tuyến tính (3x-1)^4."
+ },
+ {
+  "ma_cau": "T1120000007229",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Cho f(2), f(1), tính ∫f' bằng f(2)-f(1)."
+ },
+ {
+  "ma_cau": "T1120000007487",
+  "dang_bai_id": "NDB00751",
+  "chac": "vua",
+  "ly_do": "Nối cận cộng hai tích phân; mô tả và tên 00751/00752 đảo nhau."
+ },
+ {
+  "ma_cau": "T1120000007207",
+  "dang_bai_id": "NDB00780",
+  "chac": "cao",
+  "ly_do": "Thiết diện tam giác đều có cạnh phải tự suy từ đáy tròn để xây S(x); dạng sau thắng 00779."
+ },
+ {
+  "ma_cau": "T1120000007489",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Xét hàm nào không là nguyên hàm theo định nghĩa F'=f, họ F+C."
+ },
+ {
+  "ma_cau": "T1120000007568",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Hỏi trực tiếp định nghĩa nguyên hàm F'(x)=f(x)."
+ },
+ {
+  "ma_cau": "T1120000007843",
+  "dang_bai_id": "NDB00781",
+  "chac": "vua",
+  "ly_do": "Nửa khối elip tròn xoay dùng công thức thể tích sẵn, nhưng có hình và bối cảnh thực tế; có thể cách thiết diện."
+ },
+ {
+  "ma_cau": "T1120000007732",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Nhận biết hàm không là nguyên hàm của -x^3 theo định nghĩa, họ F+C."
+ },
+ {
+  "ma_cau": "T1120000007720",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Đánh giá phát biểu về định nghĩa, tính duy nhất và tính chất tuyến tính của nguyên hàm."
+ },
+ {
+  "ma_cau": "T1120000007511",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Diện tích giới hạn bởi một hàm, trục hoành, hai cận x=-1, x=2 cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000007097",
+  "dang_bai_id": "NDB00779",
+  "chac": "cao",
+  "ly_do": "Thiết diện hình vuông với cạnh cho sẵn theo x, lắp S(x) rồi tích phân."
+ },
+ {
+  "ma_cau": "T1120000007763",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Chọn công thức Newton–Leibniz: tích phân f' bằng f(b)-f(a)."
+ },
+ {
+  "ma_cau": "T1120000007065",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên hàm có điều kiện F(π) để xác định C rồi tính F(π/2)."
+ },
+ {
+  "ma_cau": "T1120000007268",
+  "dang_bai_id": "NDB00629",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm lượng giác tan^2 và sin^2(x/2), hạ bậc rồi thay cận."
+ },
+ {
+  "ma_cau": "T1120000007680",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Công thức diện tích giới hạn bởi đồ thị, trục hoành, hai cận a, b cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000007415",
+  "dang_bai_id": "NDB00744",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm có hạng tử 5/x (phân thức); dạng sau thắng so với đa thức."
+ }
+]
