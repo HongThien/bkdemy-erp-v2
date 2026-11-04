@@ -161,11 +161,12 @@ function Phan({ so, ten, mo, children }: { so: number; ten: string; mo?: string;
 }
 function DongChuyenDe({ u }: { u: BcKyDonVi }) {
   return (
-    <div className="flex items-center gap-3 py-1.5">
-      <span className="min-w-0 flex-1 text-[13px] text-slate-700">{u.ten}</span>
-      <div className="h-3 w-28 shrink-0 overflow-hidden rounded-full bg-slate-200"><div className={`h-full rounded-full ${barCls(u.p)}`} style={{ width: `${u.p ?? 0}%` }} /></div>
-      <b className={`w-11 shrink-0 text-right text-[13px] tabular-nums ${pctCls(u.p)}`}>{u.p == null ? '—' : `${u.p}%`}</b>
-      <span className="w-14 shrink-0 text-right text-[11px] text-slate-400" title="số lần đánh giá trong 45 ngày cuối kì">{u.n === 0 ? 'chưa đo' : `${u.n} lần${u.n < u.n_toi_da / 2 ? '*' : ''}`}</span>
+    <div className="flex items-center gap-2.5 py-1.5">
+      <div className="min-w-0 flex-1 text-[13px] leading-snug text-slate-700">{u.ten}
+        <small className="block text-[10.5px] text-slate-400">{u.n === 0 ? 'chưa đo' : `${u.n} lần đánh giá${u.n < u.n_toi_da / 2 ? '*' : ''}`}</small>
+      </div>
+      <div className="h-3 w-[72px] shrink-0 overflow-hidden rounded-full bg-slate-200"><div className={`h-full rounded-full ${barCls(u.p)}`} style={{ width: `${u.p ?? 0}%` }} /></div>
+      <b className={`w-[42px] shrink-0 text-right text-[13px] tabular-nums ${pctCls(u.p)}`}>{u.p == null ? '—' : `${u.p}%`}</b>
     </div>
   )
 }
@@ -184,13 +185,13 @@ function CardChuDe({ cd }: { cd: BcKyChuDe }) {
 }
 function BieuDoThi({ thi }: { thi: BcKyData['thi'] }) {
   if (!thi.length) return <p className="text-[13px] text-slate-400">Chưa có lần thi nào trong kì.</p>
-  const W = 560, H = 200, L = 28, R = 12, T = 18, B = 30, PAD = 30
+  const W = 340, H = 210, L = 24, R = 8, T = 20, B = 26, PAD = 22 // khung vẽ cỡ điện thoại ⇒ chữ không bị thu nhỏ
   const x = (i: number) => thi.length === 1 ? (L + W - R) / 2 : L + PAD + (i * (W - L - R - 2 * PAD)) / (thi.length - 1)
   const y = (v: number) => T + (1 - v / 10) * (H - T - B)
   const duong = (k: 'diem' | 'tb') => thi.map((t, i) => `${x(i)},${y(t[k])}`).join(' ')
   return (
     <div>
-      <svg viewBox={`0 0 ${W} ${H}`} className="w-full">
+      <svg viewBox={`0 0 ${W} ${H}`} className="mx-auto w-full max-w-[460px]">
         {[0, 2, 4, 6, 8, 10].map((v) => <g key={v}><line x1={L} x2={W - R} y1={y(v)} y2={y(v)} stroke="#e2e8f0" /><text x={L - 7} y={y(v) + 3} fontSize="10" textAnchor="end" fill="#94a3b8">{v}</text></g>)}
         <polyline points={duong('tb')} fill="none" stroke={MAU_TB} strokeWidth="3" strokeLinejoin="round" />
         <polyline points={duong('diem')} fill="none" stroke={MAU_EM} strokeWidth="3" strokeLinejoin="round" />
@@ -206,7 +207,7 @@ function BieuDoThi({ thi }: { thi: BcKyData['thi'] }) {
       </svg>
       <div className="mt-1 flex flex-wrap gap-5 text-[12.5px] text-slate-700">
         <span className="flex items-center gap-1.5"><i className="inline-block h-1 w-5 rounded" style={{ background: MAU_EM }} />Điểm của con</span>
-        <span className="flex items-center gap-1.5"><i className="inline-block h-1 w-5 rounded" style={{ background: MAU_TB }} />Trung bình cả khối ở lần thi đó</span>
+        <span className="flex items-center gap-1.5"><i className="inline-block h-1 w-5 rounded" style={{ background: MAU_TB }} />TB cả khối</span>
       </div>
     </div>
   )
@@ -219,7 +220,8 @@ export function XemTruocKy({ d, congBoAt }: { d: BcKyData; congBoAt: string | nu
   const cc = d.thai_do.chuyen_can, bt = d.thai_do.btvn
   const nghi = cc ? cc.vang + cc.vang_phep : 0
   return (
-    <div className="space-y-4">
+    // 1 CỘT cho mọi nơi — app PH lẫn PDF (Thùy 04/11: "đa số PH dùng điện thoại")
+    <div className="mx-auto max-w-[480px] space-y-4">
       <div className="rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 px-5 py-4 text-white shadow-sm">
         <small className="text-[11.5px] uppercase tracking-wider opacity-80">BK Academy · Báo cáo học kì</small>
         <h1 className="mt-0.5 text-[22px] font-bold">{d.hs.ho_ten}</h1>
@@ -228,7 +230,7 @@ export function XemTruocKy({ d, congBoAt }: { d: BcKyData; congBoAt: string | nu
 
       <Phan so={1} ten="Đánh giá kiến thức" mo={`45 ngày cuối kì (${ddmm(d.danh_gia.tu)} → ${ddmm(d.danh_gia.den)}) · chủ đề ${d.danh_gia.n_chu_de} lần, chuyên đề ${d.danh_gia.n_chuyen_de} lần đánh giá gần nhất`}>
         {d.danh_gia.chu_de.length
-          ? <div className="grid gap-3 lg:grid-cols-2">{d.danh_gia.chu_de.map((cd) => <CardChuDe key={cd.ma} cd={cd} />)}</div>
+          ? <div className="grid gap-3">{d.danh_gia.chu_de.map((cd) => <CardChuDe key={cd.ma} cd={cd} />)}</div>
           : <p className="text-[13px] text-slate-400">Chưa có lần đánh giá nào trong kì.</p>}
         <p className="mt-2 text-[11px] text-slate-400">* ít lần đánh giá — độ tin còn thấp.</p>
       </Phan>
@@ -268,14 +270,14 @@ export function XemTruocKy({ d, congBoAt }: { d: BcKyData; congBoAt: string | nu
       <Phan so={3} ten="Thái độ học tập">
         <div className="mb-1.5 text-[11.5px] font-bold uppercase text-slate-500">Chuyên cần</div>
         {cc && cc.tong > 0
-          ? <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+          ? <div className="grid grid-cols-2 gap-2.5">
               <O so={`${cc.co_mat}/${cc.tong}`} nhan="Buổi có mặt" tone="xanh" />
               <O so={nghi} nhan={`Buổi nghỉ${cc.vang_phep ? ` (${cc.vang_phep} có phép)` : ''}`} tone={nghi ? 'cam' : undefined} />
             </div>
           : <p className="text-[13px] text-slate-400">Chưa có buổi điểm danh nào trong kì.</p>}
         <div className="mb-1.5 mt-4 text-[11.5px] font-bold uppercase text-slate-500">Bài tập về nhà {bt && bt.tong > 0 ? <span className="font-normal normal-case text-slate-400">· {bt.tong} buổi có ghi nhận</span> : null}</div>
         {bt && bt.tong > 0
-          ? <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+          ? <div className="grid grid-cols-2 gap-2.5">
               <O so={bt.khong_lam} nhan="Lần không làm" tone={bt.khong_lam ? 'do' : 'xanh'} />
               <O so={bt.nop_muon} nhan="Lần nộp muộn" tone={bt.nop_muon ? 'cam' : 'xanh'} />
               <O so={bt.khong_nghiem_tuc} nhan={`Lần không nghiêm túc${bt.chong_doi ? ` (${bt.chong_doi} chống đối)` : ''}`} tone={bt.khong_nghiem_tuc ? 'do' : 'xanh'} />
@@ -301,7 +303,7 @@ export function XemTruocKy({ d, congBoAt }: { d: BcKyData; congBoAt: string | nu
       <Phan so={5} ten="Phụ lục — điểm thi toàn khối" mo={`Khối ${d.lop.khoi ?? ''} ${d.mon} · ${d.phu_luc.hs.length} học sinh · xếp theo hạng trung bình`}>
         {d.phu_luc.hs.length
           ? <div className="max-h-[560px] overflow-auto rounded-lg border border-slate-200">
-              <table className="w-full text-[12.5px]">
+              <table className="w-full whitespace-nowrap text-[12px]">
                 <thead className="sticky top-0 bg-slate-50"><tr className="text-[11.5px] text-slate-500">
                   <th className="px-2 py-1.5 text-right font-medium">#</th><th className="px-2 py-1.5 text-left font-medium">Học sinh</th><th className="px-2 py-1.5 text-left font-medium">Lớp</th>
                   {d.phu_luc.cot.map((c, i) => <th key={i} className="px-2 py-1.5 text-right font-medium">{c.nhan}</th>)}
