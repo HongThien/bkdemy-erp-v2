@@ -170,16 +170,31 @@ function DongChuyenDe({ u }: { u: BcKyDonVi }) {
     </div>
   )
 }
+// Chủ đề hiện gọn (tên · % · thanh); chuyên đề chỉ mở khi bấm "Xem chi tiết" (Thùy 04/11).
 function CardChuDe({ cd }: { cd: BcKyChuDe }) {
+  const [mo, setMo] = useState(false)
   return (
     <div className="overflow-hidden rounded-xl border border-slate-200">
-      <div className="flex items-center gap-3 bg-slate-50 px-3.5 py-2.5">
-        <h3 className="min-w-0 flex-1 text-[14px] font-bold text-slate-800">{cd.ten}</h3>
-        <span className={`rounded-lg px-2 py-0.5 text-[13px] font-extrabold tabular-nums ${cd.p == null ? 'bg-slate-100 text-slate-400' : cd.p >= 80 ? 'bg-emerald-100 text-emerald-700' : cd.p >= 50 ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-700'}`}>{cd.p == null ? 'chưa đo' : `${cd.p}%`}</span>
+      <div className="px-3.5 pb-2.5 pt-3">
+        <div className="flex items-center gap-3">
+          <h3 className="min-w-0 flex-1 text-[14px] font-bold leading-snug text-slate-800">{cd.ten}</h3>
+          <span className={`rounded-lg px-2 py-0.5 text-[13px] font-extrabold tabular-nums ${cd.p == null ? 'bg-slate-100 text-slate-400' : cd.p >= 80 ? 'bg-emerald-100 text-emerald-700' : cd.p >= 50 ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-700'}`}>{cd.p == null ? 'chưa đo' : `${cd.p}%`}</span>
+        </div>
+        <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-slate-200"><div className={`h-full rounded-full ${barCls(cd.p)}`} style={{ width: `${cd.p ?? 0}%` }} /></div>
+        <div className="mt-1.5 flex items-center justify-between">
+          <span className="text-[11px] text-slate-400">{cd.n === 0 ? 'chưa có lần đánh giá trong 45 ngày cuối kì' : `${cd.n} lần đánh giá${cd.n < cd.n_toi_da / 2 ? ' · độ tin còn thấp' : ''}`}</span>
+          {cd.chuyen_de.length > 0 && (
+            <button onClick={() => setMo((v) => !v)} className="rounded-md px-2 py-0.5 text-[12px] font-semibold text-indigo-600 hover:bg-indigo-50">
+              {mo ? 'Thu gọn ▴' : `Xem chi tiết (${cd.chuyen_de.length}) ▾`}
+            </button>
+          )}
+        </div>
       </div>
-      <div className="divide-y divide-slate-100 px-3.5 py-1">
-        {cd.chuyen_de.length ? cd.chuyen_de.map((u) => <DongChuyenDe key={u.ma} u={u} />) : <p className="py-2 text-[12px] text-slate-400">Chưa có chuyên đề nào được đánh giá.</p>}
-      </div>
+      {mo && (
+        <div className="divide-y divide-slate-100 border-t border-slate-100 bg-slate-50/60 px-3.5 py-1">
+          {cd.chuyen_de.map((u) => <DongChuyenDe key={u.ma} u={u} />)}
+        </div>
+      )}
     </div>
   )
 }
