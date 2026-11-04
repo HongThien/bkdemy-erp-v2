@@ -78733,3 +78733,8 @@ Thùy nêu 4 việc, làm được 3:
 - Khác K7/K8: K9 gần như chưa có mô hình (1/167) ⇒ thay vì dồn "Bài tập khác" 166 bài, chia 4 phần chủ đề bằng từ khoá (chỉ để chia mục lục, không ghi lên bài kho): biểu thức lượng giác 8 · giải tam giác vuông 11 · thực tế 77 · hình tổng hợp 70 (+1 bài mô hình đường cao).
 - Chạy sai lần đầu: heredoc Bash nuốt `\\` làm hỏng regex ⇒ viết script bằng Write tool; sửa tạm `_cd_hinh_gk1_7.mjs` đã hoàn lại nguyên (git diff rỗng).
 - (04/11 17:30) Thùy chạy SQL Editor 202611041716 ⇒ Claude --ghi-so 202610282053 + 202611041716. cron.job: `btvn-app-cap3-tu-dong` + `buoi-tu-dong-et-btvn-trong` */15, lượt đầu 17:30 succeeded. Lượt đó máy đóng 15 khâu ET + 19 khâu BTVN (buoi_hoc_phase_log actor null) — chủ yếu tồn đọng khâu trống từ khi lịch 28/10 chưa chạy. Buổi thường >7 ngày còn treo: ET 0 · BTVN 5 (có nội dung BTVN, TA đóng tay).
+
+## 04/11 (chiều) — K9 chuyên đề Hình Giữa kì 1: làm lại chỉ bài hình 3–4 ý
+- Thùy: "bỏ các bài lượng giác, CHỈ tính bài hình 3 ý chuẩn 2.5 điểm; bài thực tế ứng dụng lượng giác bỏ đi" rồi "4 ý giữ được, bỏ các bài giải tam giác và thực tế thôi".
+- Xoá bản đầu (tai_lieu da22bf68…: 1 tai_lieu + 10 phần + 167 dòng tham chiếu, Thùy gật; bài kho hinh_bai 508 nguyên) bằng `scripts/_xoa_cd_hinh_gk1_9.mjs` (1 transaction, kiểm trước/sau). Dựng lại bằng `_cd_hinh_gk1_9.mjs`: 65 bài (đếm ý: 3 ý + 4 ý; loại biểu thức A, thực tế C, 1–2 ý). tai_lieu 5d83d096-6c86-43fd-88ff-f03de424afe4.
+- Thùy chưa nói rõ bài 1–2 ý: tôi loại 8 bài hình 1–2 ý + 9 bài giải tam giác 1 ý (nêu lại để Thùy quyết).

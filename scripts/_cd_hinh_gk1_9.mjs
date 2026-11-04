@@ -2,8 +2,9 @@
 // Khuôn = scripts/_cd_hinh_gk1_7.mjs (K7, K8): tai_lieu loai 'chuyen_de' ban_do 'moi' nhanh 'hinh', ghi qua RPC builder fn_tl_hl_*.
 // Khác K7/K8 ở hai chỗ:
 //  (1) Nguồn = bài kho Hình–Luyện K9 mà câu nguồn nằm trong đề / đề cương GIỮA học kì (kho K9 còn có cả bài CUỐI kì — không lấy).
-//  (2) Bản đồ mô hình K9 gần như trống (1/167 bài có mô hình) ⇒ bài chưa gán mô hình KHÔNG dồn một phần "Bài tập khác" dài 166 bài
-//      mà chia 4 phần theo CHỦ ĐỀ (xếp bằng từ khoá trên chữ có dấu, chỉ để chia mục lục tài liệu ôn tập; không ghi gì lên bài kho).
+//  (2) Thùy 04/11 (lần 2): CHỈ bài hình 3–4 ý (chuẩn 2,5 điểm). Bỏ bài biểu thức lượng giác, giải tam giác thuần số, bài thực tế
+//      (nhận bằng từ khoá trên chữ có dấu — chỉ để lọc tài liệu ôn tập, không ghi gì lên bài kho) và bài 1–2 ý.
+//      Bài chưa gán mô hình (gần hết) vào một phần "Bài hình 3–4 ý"; bản đầu (167 bài, 5 phần) đã xoá bằng _xoa_cd_hinh_gk1_9.mjs.
 //   node scripts/_cd_hinh_gk1_9.mjs --thu   → ROLLBACK, in kết quả
 //   node scripts/_cd_hinh_gk1_9.mjs         → ghi thật (từ chối nếu đã có chuyên đề cùng tên + khối)
 import pg from 'pg'
@@ -44,10 +45,19 @@ try {
   if (daCo) throw new Error(`Đã có "${TEN}" khối ${KHOI} (${daCo.id}) — không tạo bản thứ 2.`)
 
   const bai = await q(`select b.ma_bai, b.loai_cau, m.id mh_id, m.ma mh_ma, nm.id nhom_id, nm.ten nhom, nm.thu_tu nhom_tt, cd.thu_tu cd_tt,
+                              (select count(*) from hinh_y y2 where y2.bai_id = b.id) ny,
                               coalesce(b.gia_thiet_chung, '') || ' ' || coalesce(b.de_bai, '') || ' ' || coalesce((select string_agg(y.noi_dung, ' ¦ ' order by y.thu_tu) from hinh_y y where y.bai_id = b.id), '') txt
                          from hinh_bai b left join hinh_mo_hinh m on m.id = b.mo_hinh_id
                          left join hinh_nhom_mo_hinh nm on nm.id = m.nhom_mh_id left join dai_bdm_chu_de cd on cd.id = m.chu_de_id
                         where b.khoi = $1 and b.bo_qua_at is null ${GK_SQL} order by b.ma_bai`, [KHOI])
+  // Thùy 04/11: CHỈ bài hình 3–4 ý (chuẩn 2,5 điểm); bỏ biểu thức lượng giác (A), giải tam giác thuần số (B) và bài thực tế (C).
+  const ban = []
+  for (let i = bai.length - 1; i >= 0; i--) {
+    const b = bai[i]
+    const cd = chuDe(dau(b.txt))
+    if (cd === 'A' || cd === 'C' || Number(b.ny) < 3 || Number(b.ny) > 4) { ban.push(b); bai.splice(i, 1) }
+  }
+  console.log(`Bỏ ${ban.length} bài (biểu thức / thực tế / không phải 3–4 ý) · giữ ${bai.length}`)
   if (!bai.length) throw new Error('Không có bài giữa kì nào ở Hình–Luyện K9.')
   const [tl] = await q(`insert into tai_lieu (loai, ten, khoi, mon, nhanh, ban_do) values ('chuyen_de', $1, $2, 'Toán', 'hinh', 'moi') returning id`, [TEN, KHOI])
   const nhom = [...new Map(bai.filter((b) => b.nhom_id).sort((a, b) => a.cd_tt - b.cd_tt || a.nhom_tt - b.nhom_tt).map((b) => [b.nhom_id, b.nhom])).entries()]
@@ -65,12 +75,10 @@ try {
     }
   }
   const chuaMh = bai.filter((b) => !b.mh_id)
-  for (const [ma, ten] of CHU_DE) {
-    const ds = chuaMh.filter((b) => chuDe(dau(b.txt)) === ma).sort(theoLoai)
-    if (!ds.length) continue
-    const [p] = await q(`insert into tai_lieu_phan (tai_lieu_id, thu_tu, loai_phan, tieu_de) values ($1, $2, 'buoi', $3) returning id`, [tl.id, await sau(), ten])
+  if (chuaMh.length) {
+    const [p] = await q(`insert into tai_lieu_phan (tai_lieu_id, thu_tu, loai_phan, tieu_de) values ($1, $2, 'buoi', $3) returning id`, [tl.id, await sau(), 'Bài hình 3–4 ý'])
     const [{ k }] = await q(`select fn_tl_hl_them_khoi_khac($1, $2) k`, [tl.id, p.id])
-    await q(`select fn_tl_hl_dat_bai($1, $2)`, [k, ds.map((b) => b.ma_bai)])
+    await q(`select fn_tl_hl_dat_bai($1, $2)`, [k, chuaMh.sort(theoLoai).map((b) => b.ma_bai)])
   }
 
   const [{ kq }] = await q(`select fn_tl_hl_noi_dung($1) kq`, [tl.id])
