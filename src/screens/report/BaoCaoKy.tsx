@@ -302,12 +302,12 @@ export function XemTruocKy({ d, congBoAt }: { d: BcKyData; congBoAt: string | nu
       </Phan>
 
       <Phan so={4} ten="Nhận xét của giáo viên">
-        <div className="mb-4 flex items-end gap-3 rounded-xl bg-indigo-50/60 px-4 py-3">
+        <div className="mb-4 flex flex-col gap-1.5 rounded-xl bg-indigo-50/60 px-4 py-3">
           <div>
             <div className="text-[11.5px] font-bold uppercase text-indigo-700">Điểm năng lực</div>
             <div className="flex items-end gap-2"><span className="text-[40px] font-extrabold leading-none text-indigo-600">{so1(d.nang_luc.diem)}</span><span className="pb-1 text-[18px] font-semibold text-slate-500">± {so1(d.nang_luc.sai_so)}</span></div>
           </div>
-          <p className="pb-1 text-[12px] leading-relaxed text-slate-500">Điểm dự đoán cho kì tới và sai số do giáo viên đánh giá. Điểm càng cao là học càng tốt; sai số càng nhỏ là làm bài càng cẩn thận.</p>
+          <p className="text-[12px] leading-relaxed text-slate-500">Điểm dự đoán cho kì tới và sai số do giáo viên đánh giá. Điểm càng cao là học càng tốt; sai số càng nhỏ là làm bài càng cẩn thận.</p>
         </div>
         <div className="mb-1.5 text-[11.5px] font-bold uppercase text-slate-500">Nhận xét</div>
         {d.nhan_xet ? <div className="whitespace-pre-line rounded-lg border-l-4 border-violet-600 bg-slate-50 px-3.5 py-3 text-[14px] leading-relaxed text-slate-800">{d.nhan_xet}</div> : <p className="text-[13px] text-slate-400">Giáo viên chưa nhập nhận xét.</p>}
