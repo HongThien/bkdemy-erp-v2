@@ -78619,3 +78619,8 @@ Thùy nêu 4 việc, làm được 3:
 - Rà quyền ghi Phiên Claude: chỉ 1 lệnh ghi (`ban-do.mjs`), không lệnh xoá câu/nút bản đồ, câu người gán/kiểm mẫu bị chặn. Lỗ: `_phien_kho_phan1` dọn `*_bdm_de_xuat` + `*_bdm_cau_thieu_dang` bất kể nguồn (đo: dai 1 · hgt 1 dòng thiếu dạng nguon='nguoi') và nhánh 'thieu' upsert đè dòng người.
 - Sửa: câu có dòng chờ duyệt/thiếu dạng nguon <> 'ai' ⇒ Claude bị chặn; mọi lệnh dọn chỉ đụng nguon='ai'. Thử ROLLBACK: T106000000564 (người) bị chặn cả thieu/vua, dòng người nguyên; câu chỉ có dòng AI vẫn phân lại.
 - Còn mở (Thùy chưa quyết): phân lại vẫn gỡ dòng gán AI cũ của chính Claude · ghi đè lý thuyết (log giữ bản cũ) · phiên chỉ mở cho trưởng khối trở lên · Claude chưa thêm được CÂU mới qua phiên · ngoài phiên, RLS kho cho mọi nhân sự xoá/sửa thẳng.
+
+## 04/11 — Bot phiên Claude: phiên mở ở máy nhà, máy công ty không trả lời được
+- Sai: anh Đạt (Toán 11, phiên nhập kho 6743f362) nhắn 4 lần đều "error_during_execution". Phiên bắt đầu ở máy nhà (DESKTOP-EV1E49J) ⇒ lịch sử hội thoại Claude Code chỉ nằm ở `~/.claude/projects` máy nhà; máy công ty `--resume` ⇒ "No conversation found". Log không lộ vì bot chỉ ghi `result`, câu lỗi nằm ở stderr.
+- Sửa (`scripts/phien/bot.mjs`): lỗi luôn kèm stderr; gặp "No conversation found" ⇒ `lichSuTuDb` chép lại các tin xong/dung của phiên từ `claude_phien_tin` (tên người qua `tai_khoan`) đặt trước tin mới, mở session cùng id trên máy này. Bot máy công ty đã khởi động lại.
+- Còn hở: hai máy cùng chạy, phiên đi qua lại thì máy kia `--resume` bản CŨ của nó (thiếu lượt chạy ở máy này, không báo lỗi). Tin `loi` không tự chạy lại — người phải nhắn lại.

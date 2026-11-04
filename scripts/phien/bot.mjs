@@ -157,7 +157,8 @@ function goiClaude1({ phien, nhapVao, tiepNoi, khiCo }) {
     child.on('close', (code) => {
       clearTimeout(timer)
       if (ketQua && !ketQua.is_error && ketQua.subtype === 'success') return resolve(ketQua)
-      const msg = ketQua ? `${ketQua.subtype ?? ''} ${String(ketQua.result ?? '')}` : (err || `claude exit ${code}`)
+      // stderr luôn kèm theo: "No conversation found" (máy này không có lịch sử phiên) chỉ hiện ở stderr.
+      const msg = ketQua ? `${ketQua.subtype ?? ''} ${String(ketQua.result ?? '')} ${err}` : (err || `claude exit ${code}`)
       reject(new Error(msg.trim().slice(0, 800)))
     })
     child.stdin.write(nhapVao)
@@ -175,6 +176,31 @@ async function heartbeat(trangThai = nghiDen > Date.now() ? 'nghi_han_muc' : 'ch
     nghi_toi: trangThai === 'nghi_han_muc' ? new Date(nghiDen).toISOString() : null,
   })
   if (error) log('heartbeat lỗi:', error.message)
+}
+
+// Lịch sử phiên trong DB (trừ các tin đang xử lượt này) ⇒ khối chữ đặt trước tin mới khi máy này không có session.
+// claude_phien_tin.nguoi_gui = tai_khoan.id, không có FK ⇒ tra tên riêng.
+async function lichSuTuDb(phienId, boQua) {
+  const { data, error } = await svc.from('claude_phien_tin')
+    .select('id, vai, noi_dung, nguoi_gui')
+    .eq('phien_id', phienId).in('vai', ['nguoi', 'claude', 'he_thong']).in('trang_thai', ['xong', 'dung'])
+    .order('id').limit(1000)
+  if (error) throw new Error('không đọc được lịch sử phiên: ' + error.message)
+  const cu = (data ?? []).filter((t) => !boQua.includes(t.id))
+  if (!cu.length) return ''
+  const idNguoi = [...new Set(cu.map((t) => t.nguoi_gui).filter(Boolean))]
+  const ten = new Map()
+  if (idNguoi.length) {
+    const { data: tk } = await svc.from('tai_khoan').select('id, nhan_su:nhan_su_id(ho_ten)').in('id', idNguoi).limit(100)
+    for (const n of tk ?? []) ten.set(n.id, n.nhan_su?.ho_ten)
+  }
+  const NL = '\n'
+  const dong = cu.map((t) => t.vai === 'claude' ? '[CLAUDE (em) đã trả lời]' + NL + t.noi_dung
+    : t.vai === 'nguoi' ? '[' + (ten.get(t.nguoi_gui) ?? 'Người dùng') + ']' + NL + t.noi_dung
+    : '[HỆ THỐNG]' + NL + t.noi_dung)
+  return '[LỊCH SỬ PHIÊN NÀY — các lượt trước chạy ở máy khác nên em không nhớ; đây là bản chép từ hệ thống. ' +
+    'Những gì đã ghi vào bản đồ ở các lượt trước là THẬT, đọc lại DB nếu cần.]' + NL + NL +
+    dong.join(NL + NL + '---' + NL + NL) + NL + NL + '=== HẾT LỊCH SỬ — TIN MỚI BÊN DƯỚI ===' + NL + NL
 }
 
 async function chayLuot(phienId) {
@@ -250,6 +276,13 @@ async function chayLuot(phienId) {
     } catch (e) {
       // Lượt đầu chết sau khi Claude Code đã tạo session ⇒ lần sau --session-id báo trùng: chuyển sang --resume.
       if (!tiepNoi && /already in use|already exists/i.test(e.message)) { tiepNoi = true; kq = await goiClaude({ phien, nhapVao, tiepNoi, khiCo }) }
+      // Phiên bắt đầu ở MÁY KHÁC (bot chạy 2 máy: nhà + công ty) ⇒ máy này không có lịch sử để --resume.
+      // Dựng lại hội thoại từ DB (nguồn thật) rồi mở session mới cùng id trên máy này.
+      else if (tiepNoi && /no conversation found/i.test(e.message)) {
+        log(`  phiên ${phienId.slice(0, 8)} bắt đầu ở máy khác — dựng lại hội thoại từ DB`)
+        tiepNoi = false
+        kq = await goiClaude({ phien, nhapVao: await lichSuTuDb(phienId, ids) + nhapVao, tiepNoi, khiCo })
+      }
       else throw e
     }
     if (!noiDung() && kq.result) phan.push(String(kq.result).trim())
