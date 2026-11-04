@@ -209,7 +209,7 @@ function FragmentLuong({ r, mo, onMo, tenLoai }: { r: LuongThang; mo: boolean; o
               ))}
               <tr className="border-t border-slate-200">
                 <td className="py-1 pr-2 font-medium text-slate-800">Bổ trợ</td>
-                <td className="py-1 pr-2 text-right" colSpan={3}>{so(bt.gio)} giờ ÷ ({bt.so_lop} lớp × {so(bt.chi_tieu_moi_lop)} giờ) = {pct(bt.ti_le)} · Σ bậc {tien(bt.tong_bac)}</td>
+                <td className="py-1 pr-2 text-right" colSpan={3}>{so(bt.gio)} giờ ÷ ({bt.so_lop} lớp × {so(bt.chi_tieu_moi_lop)} giờ) = {pct(bt.ti_le)} · Σ bậc {tien(bt.tong_bac)}{Number(bt.gio_trung) > 0 && <span className="text-amber-700"> · khai {so(bt.gio_khai ?? 0)} giờ, {so(bt.gio_trung ?? 0)} giờ chồng nhau chỉ tính 1 lần</span>}</td>
                 <td className="py-1 text-right">{tien(bt.tien)}</td>
               </tr>
               {r.chi_tiet.ngoai_package.map((x, i) => (

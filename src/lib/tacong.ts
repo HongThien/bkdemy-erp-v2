@@ -23,7 +23,7 @@ export type LuongThang = {
   ngoai_package: number; gross: number; tien_phat: number; net: number
   chi_tiet: {
     lop: { lop: string; la_chu: boolean; si_tb: number; bac: number; tg_lam: number; so_buoi: number; ti_le_tg: number; btvn_lam: number; btvn_dinh_muc: number; ti_le_btvn: number; tien: number }[]
-    bo_tro: { gio: number; so_lop: number; chi_tieu_moi_lop: number; chi_tieu: number; ti_le: number | null; tong_bac: number; lop_chinh: string | null; tien: number }
+    bo_tro: { gio: number; gio_khai?: number; gio_trung?: number; so_lop: number; chi_tieu_moi_lop: number; chi_tieu: number; ti_le: number | null; tong_bac: number; lop_chinh: string | null; tien: number }
     ngoai_package: { loai: string; ngay: string; lop: string | null; so_luong: number; don_gia: number | null; thieu_don_gia: boolean }[]
     day_thay: number; tien_phat: number
   }
@@ -43,7 +43,7 @@ export const NHAN_CO: Record<string, { t: string; nhe?: boolean }> = {
   quen_ra: { t: 'Quên checkout' }, khai_bu: { t: 'Khai bù', nhe: true }, nhap_ho: { t: 'Nhập hộ', nhe: true },
   ca_khong_viec: { t: 'Ca chưa ghi việc' }, buoi_huy: { t: 'Buổi đã huỷ' }, khong_co_buoi: { t: 'Không có buổi trên lịch' },
   hai_ta_cung_buoi: { t: 'Hai TA cùng buổi' }, truoc_gio_vao: { t: 'Trước giờ checkin' }, sau_gio_ra: { t: 'Sau giờ checkout' },
-  trung_gio: { t: 'Trùng giờ việc khác' }, ngoai_gio: { t: 'Ngoài 7h–22h30' }, thieu_gio: { t: 'Thiếu giờ' },
+  trung_gio: { t: 'Trùng giờ việc khác (bổ trợ chồng giờ chỉ tính 1 lần)' }, ngoai_gio: { t: 'Ngoài 7h–22h30' }, thieu_gio: { t: 'Thiếu giờ' },
   chua_don_gia: { t: 'Chưa có đơn giá', nhe: true }, ca_bi_tu_choi: { t: 'Ca bị từ chối' }, lop_chua_co_ta: { t: 'Lớp hôm đó chưa phân TA' },
 }
 export const nhanCo = (ma: string) => NHAN_CO[ma] ?? { t: ma }
