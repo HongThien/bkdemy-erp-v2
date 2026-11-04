@@ -363,69 +363,20 @@ export async function createTaiLieu(input: { loai?: string; ten: string; khoi: s
 
 // ⭐ Thùy 28/10: giáo trình đi theo lớp. Copy ĐỘC LẬP 1 buổi (= bài 13…) từ giáo trình lớp A sang giáo trình
 // lớp B — câu + cấu hình riêng của câu (dòng/cột/chế độ hình/mm). Sau copy 2 lớp sửa riêng, không ảnh hưởng.
-//   `buoiPhanId` = id phần loại 'buoi' trong tl nguồn; copy TOÀN BỘ phần con tới hết buổi (dừng ở phần 'buoi' kế tiếp).
-//   `tlDichId` = id tl đích. Chèn vào CUỐI (tăng thu_tu tiếp theo); đổi tên buổi nếu caller cung cấp `tenMoi`.
+//
+// Thùy 04/11: BAN ĐẦU chuỗi insert ở CLIENT không map `cha_id` ⇒ phần con mới mất liên kết với buổi mới,
+// RPC fn_tl_bdm_noi_dung đọc theo cha_id trả về rỗng ⇒ buổi copy xong hiển thị trống. Chuyển SANG RPC
+// `fn_tl_bdm_copy_buoi` (mig 202611041721): 1 transaction, đi theo cây cha_id, giữ map OLD→NEW.
 export async function copyBuoiBdm(buoiPhanId: string, tlDichId: string, tenMoi?: string | null): Promise<{ buoiMoiId: string; soPhan: number; soCau: number }> {
-  const { data: bRow } = await supabase.from('tai_lieu_phan').select('*').eq('id', buoiPhanId).single()
-  if (!bRow || (bRow as TaiLieuPhan).loai_phan !== 'buoi') throw new Error('Không phải phần buổi')
-  const b = bRow as TaiLieuPhan
-  const nguonPhans = await listPhan(b.tai_lieu_id)
-  const iBuoi = nguonPhans.findIndex((p) => p.id === buoiPhanId)
-  if (iBuoi < 0) throw new Error('Buổi không có trong tài liệu nguồn')
-  // Nhóm con = từ sau buổi tới trước phần 'buoi' kế tiếp.
-  const con: TaiLieuPhan[] = []
-  for (let i = iBuoi + 1; i < nguonPhans.length && nguonPhans[i].loai_phan !== 'buoi'; i++) con.push(nguonPhans[i])
-  const nguonCau = await supabase.from('tai_lieu_cau').select('*').in('phan_id', [buoiPhanId, ...con.map((p) => p.id)]).order('thu_tu')
-  if (nguonCau.error) throw nguonCau.error
-  const cauByPhan = new Map<string, { ma_cau: string; thu_tu: number; diem: number | null }[]>()
-  for (const r of (nguonCau.data ?? []) as any[]) {
-    const arr = cauByPhan.get(r.phan_id) ?? []
-    arr.push({ ma_cau: r.ma_cau, thu_tu: r.thu_tu, diem: r.diem })
-    cauByPhan.set(r.phan_id, arr)
-  }
-  const dichPhans = await listPhan(tlDichId)
-  let tt = dichPhans.length ? Math.max(...dichPhans.map((p) => p.thu_tu)) + 1 : 0
-  // Insert buổi mới
-  const buoiMoi = await addPhan({ tai_lieu_id: tlDichId, thu_tu: tt++, loai_phan: 'buoi', ref_ma: null, tieu_de: (tenMoi ?? b.tieu_de) ?? null, noi_dung: b.noi_dung })
-  let soPhan = 1, soCau = 0
-  // Copy câu của chính phần buổi nếu có (hiếm)
-  const cBuoi = cauByPhan.get(buoiPhanId) ?? []
-  if (cBuoi.length) { await supabase.from('tai_lieu_cau').insert(cBuoi.map((c) => ({ ...c, phan_id: buoiMoi.id }))); soCau += cBuoi.length }
-  // Copy từng phần con theo thứ tự
-  const maCauCopy = new Set<string>(cBuoi.map((c) => c.ma_cau))
-  for (const p of con) {
-    const pMoi = await addPhan({ tai_lieu_id: tlDichId, thu_tu: tt++, loai_phan: p.loai_phan, ref_ma: p.ref_ma, tieu_de: p.tieu_de, noi_dung: p.noi_dung, kieu: p.kieu, hien_lt: p.hien_lt, diem_moi_cau: p.diem_moi_cau, nang_cao: p.nang_cao })
-    soPhan++
-    const cs = cauByPhan.get(p.id) ?? []
-    if (cs.length) {
-      const { error } = await supabase.from('tai_lieu_cau').insert(cs.map((c) => ({ ...c, phan_id: pMoi.id })))
-      if (error) throw error
-      soCau += cs.length
-      for (const c of cs) maCauCopy.add(c.ma_cau)
-    }
-  }
-  // Merge cau_hinh (chỉ các khoá của câu copy) nguồn → đích.
-  if (maCauCopy.size) {
-    const [{ data: tlNguon }, { data: tlDich }] = await Promise.all([
-      supabase.from('tai_lieu').select('cau_hinh').eq('id', b.tai_lieu_id).single(),
-      supabase.from('tai_lieu').select('cau_hinh').eq('id', tlDichId).single(),
-    ])
-    const chNguon = ((tlNguon as any)?.cau_hinh ?? {}) as CauHinh
-    const chDich = ((tlDich as any)?.cau_hinh ?? {}) as CauHinh
-    const KHOA: (keyof CauHinh)[] = ['btvnLinesByCau', 'colByCau', 'hinhCheDoByCau', 'anhMmByCau', 'anhPctByCau', 'etFormByCau', 'diemByCau']
-    const chMoi: CauHinh = { ...chDich }
-    for (const k of KHOA) {
-      const nguonMap = (chNguon as any)[k] as Record<string, unknown> | undefined
-      if (!nguonMap) continue
-      const dichMap = { ...((chDich as any)[k] as Record<string, unknown> | undefined ?? {}) }
-      for (const ma of maCauCopy) if (ma in nguonMap) dichMap[ma] = nguonMap[ma]
-      ;(chMoi as any)[k] = dichMap
-    }
-    await supabase.from('tai_lieu').update({ cau_hinh: chMoi, updated_at: new Date().toISOString() }).eq('id', tlDichId)
-  } else {
-    await supabase.from('tai_lieu').update({ updated_at: new Date().toISOString() }).eq('id', tlDichId)
-  }
-  return { buoiMoiId: buoiMoi.id, soPhan, soCau }
+  const { data, error } = await supabase.rpc('fn_tl_bdm_copy_buoi', {
+    p_buoi_nguon: buoiPhanId,
+    p_tai_lieu_dich: tlDichId,
+    p_ten_moi: tenMoi ?? null,
+  })
+  if (error) throw error
+  const row = Array.isArray(data) ? data[0] : data
+  if (!row?.buoi_moi_id) throw new Error('Copy buổi: RPC không trả về buoi_moi_id')
+  return { buoiMoiId: row.buoi_moi_id as string, soPhan: Number(row.so_phan ?? 0), soCau: Number(row.so_cau ?? 0) }
 }
 export async function updateTaiLieu(id: string, patch: Partial<Pick<TaiLieu, 'ten' | 'theme' | 'ma_chuyen_de' | 'cau_hinh' | 'nhanh'>>): Promise<void> {
   const { error } = await supabase.from('tai_lieu').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id)
