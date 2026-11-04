@@ -1,0 +1,7 @@
+[
+ {"ma_cau": "T1120000008834", "dang_bai_id": "NDB00746", "chac": "cao", "ly_do": "Tìm nguyên hàm F(x) của hàm phân thức thoả F(-1)=3: có điều kiện xác định hằng số C."},
+ {"ma_cau": "T1120000008739", "dang_bai_id": "NDB00742", "chac": "cao", "ly_do": "Nguyên hàm của hàm lũy thừa x^2 (đa thức), áp dụng công thức cơ bản."},
+ {"ma_cau": "T1120000008772", "dang_bai_id": "NDB00752", "chac": "cao", "ly_do": "Dùng tính chất hiệu của tích phân từ giả thiết ∫[f−x]=3, không tìm hàm f."},
+ {"ma_cau": "T1120000008803", "dang_bai_id": "NDB00774", "chac": "cao", "ly_do": "Đề cho sẵn hàm số y=x²−2x−3 và hai cận x=−1, x=4, chỉ lắp công thức diện tích (hình chỉ minh hoạ)."},
+ {"ma_cau": "T1120000008781", "dang_bai_id": "NDB00752", "chac": "cao", "ly_do": "Dùng tính chất nối cận ∫1^3 = ∫1^2 + ∫2^3 với giá trị tích phân cho sẵn."}
+]

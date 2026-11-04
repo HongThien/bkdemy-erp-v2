@@ -1,0 +1,800 @@
+[
+ {
+  "ma_cau": "T1120000008766",
+  "loai": "trac_nghiem",
+  "de": "(THPT Phúc Thọ - Hà Nội 2025) Biết $\\int_{2}^{4} 8f(x)\\mathrm{d}x=3$, $\\int_{2}^{3} 4f(y)\\mathrm{d}y=7$. Tính $\\int\\limits_{3}^{4} f(z)\\mathrm{d}z$.",
+  "lua_chon": [
+   "$-\\frac{7}{4}$.",
+   "$-\\frac{11}{8}$.",
+   "$-\\frac{3}{2}$.",
+   "$-\\frac{9}{8}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chọn B\nTa có $\\int_{2}^{4} f(z)\\mathrm{d}z=\\frac{3}{8}$, $\\int_{2}^{3} f(z)\\mathrm{d}z=\\frac{7}{4}$\nMà $\\int\\limits_{2}^{3} f(z)\\mathrm{d}z+\\int\\limits_{3}^{4} f(z)\\mathrm{d}z=\\int\\limits_{2}^{4} f(z)\\mathrm{d}z$ nên $\\int\\limits_{3}^{4} f(z)\\mathrm{d}z=-\\frac{11}{8}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008806",
+  "loai": "trac_nghiem",
+  "de": "(KHTN Hà Nội 2025) Cho hình phẳng $\\left( H \\right)$ giới hạn bởi đồ thị $y=2x-x^{2}$ và trục hoành. Thể tích vật thể tròn xoay sinh ra khi cho $\\left( H \\right)$ quay quanh trục hoành bằng",
+  "lua_chon": [
+   "$\\frac{16}{15}$.",
+   "$\\frac{4}{3}$.",
+   "$\\frac{16\\pi}{15}$.",
+   "$\\frac{4\\pi}{3}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn C\nPhương trình hoành độ giao điểm của đồ thị $y=2x-x^{2}$ và trục hoành là\n$2x-x^{2}=0\\Leftrightarrow\\left[ \\begin{array}{l} x=0 \\\\ x=2 \\end{array} \\right.$.\nThể tích vật thể tròn xoay sinh ra khi cho $\\left( H \\right)$ quay quanh trục hoành là\n$V=\\pi\\int\\limits_{0}^{2} \\left( 2x-x^{2} \\right)^{2}dx=\\frac{16\\pi}{15}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008736",
+  "loai": "trac_nghiem",
+  "de": "(Đề Tham Khảo 2025) Nguyên hàm của hàm số $f(x)=e^{x}$ là:",
+  "lua_chon": [
+   "$\\frac{e^{x+1}}{x+1}+C$.",
+   "$e^{x}+C$.",
+   "$\\frac{e^{x}}{x}+C$.",
+   "$x.e^{x-1}+C$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chọn B\nTa có: $\\int e^{x}\\text{d}x=e^{x}+C$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008729",
+  "loai": "tu_luan",
+  "de": "(CD12) Tìm $\\int \\frac{x^{2}+7x+12}{x+3}\\ dx$ trên $(0;+\\infty)$.",
+  "loi_giai": "$\\int \\frac{x^{2}+7x+12}{x+3}\\ dx=\\int \\frac{(x+3)(x+4)}{x+3}\\ dx=\\int (x+4)dx=\\frac{x^{2}}{2}+4x+C$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008809",
+  "loai": "trac_nghiem",
+  "de": "(Sở Thái Bình 2025) Thể tích của khối tròn xoay khi quay hình phẳng được giới hạn bởi đồ thị hàm số $y=2x-1$, $y=0$, $x=0,x=3$ quanh trục hoành bằng",
+  "lua_chon": [
+   "$21\\pi$.",
+   "$6\\pi$.",
+   "$6$.",
+   "$21$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Chọn A\nThể tích khối tròn xoay: $V=\\pi\\int_{0}^{3} \\left( 2x-1 \\right)^{2}dx=21\\pi$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008838",
+  "loai": "tu_luan",
+  "de": "Một vật chuyển động với vận tốc là $v\\left( t \\right)=\\frac{1}{2\\pi}+\\frac{\\text{sin}\\left( \\pi t \\right)}{\\pi}\\left( \\text{m}/\\text{s} \\right)$. Gọi $S_{1}$ là quãng đường vật đó đi trong 2 giây đầu và $S_{2}$ là quãng đường đi từ giây thứ 3 đến giây thứ 5. Chứng minh $S_{2}>S_{1}$?",
+  "loi_giai": "Gọi thời điểm ban đầu $S\\left( 0 \\right)=0;t=0;S=0\\Rightarrow S_{1}=S\\left( 2 \\right)$\nKhi đó: $S\\left( t \\right)=\\int \\left( \\frac{1}{2\\pi}+\\frac{\\sin\\left( \\pi t \\right)}{\\pi} \\right)dt=\\frac{1}{2\\pi}t-\\frac{1}{\\pi^{2}}\\text{cos}\\left( \\pi t \\right)+C$\nTa có: $S\\left( 0 \\right)=0\\Rightarrow C-\\frac{1}{\\pi^{2}}=0\\Rightarrow C=\\frac{1}{\\pi^{2}}$\nSuy ra $S\\left( t \\right)=\\frac{1}{2\\pi}-\\frac{1}{\\pi^{2}}\\text{cos}\\left( \\pi t \\right)+\\frac{1}{\\pi^{2}}$\n$S_{1}=S\\left( 2 \\right)=\\frac{1}{2\\pi}-\\frac{1}{\\pi^{2}}+\\frac{1}{\\pi^{2}}=\\frac{1}{2\\pi}\\approx 0,159$; $S_{2}=\\int\\limits_{3}^{5} v\\left( t \\right)dt=0,31\\Rightarrow S_{2}>S_{1}$(đpcm).",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008763",
+  "loai": "trac_nghiem",
+  "de": "(THPT Đô Lương 1 - Nghệ An 2025) Nếu $\\int\\limits_{0}^{2} f\\left( x \\right)\\text{d}x=4$ thì $\\int\\limits_{0}^{2} \\left[ \\frac{1}{2}f\\left( x \\right)-2 \\right]\\text{d}x$ bằng",
+  "lua_chon": [
+   "$4$.",
+   "$6$.",
+   "$0$.",
+   "$-2$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Chọn D\n$\\int\\limits_{0}^{2} \\left[ \\frac{1}{2}f\\left( x \\right)-2 \\right]\\text{d}x=\\int\\limits_{0}^{2} \\frac{1}{2}f\\left( x \\right)\\text{d}x-\\int\\limits_{0}^{2} 2\\text{d}x=\\frac{1}{2}.4-4=-2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008733",
+  "loai": "tu_luan",
+  "de": "(KNTT12) Tìm:\na) $\\int \\left( 2e^{x}+\\frac{1}{3^{x}} \\right)dx$\nb) $\\int \\left( x^{2}+2^{x} \\right)dx$",
+  "loi_giai": "a) $\\int \\left( 2e^{x}+\\frac{1}{3^{x}} \\right)dx=2e^{x}-\\frac{1}{3^{x}\\ln 3}+C$.\nb) $\\int \\left( x^{2}+2^{x} \\right)dx=\\frac{x^{3}}{3}+\\frac{2^{x}}{\\ln 2}+C$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008754",
+  "loai": "tu_luan",
+  "de": "(Sở Sơn La 2025) Sữa chua là một sản phẩm tốt cho sức khỏe, hỗ trợ hệ tiêu hóa, làm đẹp da. Sữa chua được tạo từ sữa nhờ vi khuẩn lên menlactic. Trong dây chuyền sản xuất sữa chua của một nhà máy, công đoạn lên men là công đoạn quyết định chất lượng của sữa chua. Số lượng vi khuẩn lactic trông bồn lên men tại thời điểm $t$ (giờ) được kí hiệu là $N\\left( t \\right)$. Ban đầu ($t=0$ giờ), số lượng vi khuẩn $N\\left( 0 \\right)=10$ (tỷ tế bào). Do sự thay đổi về nguồn dinh dưỡng (đường lactose giảm), độ PH (axit lactic tăng) nên tốc độ thay đổi số lượng vi khuẩn $N'\\left( t \\right)$ được mô hình hóa bởi công thức $N'\\left( t \\right)=10.2^{2t}$(tỷ tế bào/giờ) với t là thời gian tính bằng giờ, $0\\le t\\le 5$. Quá trình lên men kết thúc sau $5$ giờ.\nb)Số lượng tế bào vi khuẩn lactic tại thời điểm t được xác định bởi công thức\n$N\\left( t \\right)=\\frac{5}{\\ln 2}\\left( 2^{2t}-1 \\right)+10$\nb) Sau $5$h lên men, số lượng vi khuẩn là $31,7$tỷ tế bào.\nc) So với lúc ban đầu ($t=0$) số lượng vi khuẩn ( làm tròn đến hàng phần mười) đã tăng thêm $454,4$ tỷ tế bào tại thời điểm $t=3$.\nd) Tại thời điểm kết thúc quá trình lên men, lượng vi khuẩn trong bồn lên men lớn hơn $7389$tỷ tế bào.",
+  "loi_giai": "a) đúng.Ta có:\n$N\\left( t \\right)=\\int N'\\left( t \\right)dt=\\int 10.2^{2t}dt=10.\\frac{4^{t}}{\\ln 4}+c=\\frac{5}{\\ln 2}.2^{2t}+C$\n$N\\left( 0 \\right)=10\\Rightarrow C+\\frac{5}{\\ln 2}=10\\Rightarrow C=10-\\frac{5}{\\ln 2}$\n$\\Rightarrow N\\left( t \\right)=\\frac{5}{\\ln 2}\\left( 2^{2t}-1 \\right)+10$\nb) Sai. Sau 1 h, thay $t=1$ vào $N\\left( t \\right)$, ta được: $N\\left( 1 \\right)=\\frac{5}{\\ln 2}\\left( 2^{2}-1 \\right)+10=31,64$.\nc) đúng. Ta có $N\\left( 3 \\right)=\\frac{5}{\\ln 2}\\left( 2^{6}-1 \\right)+10=464,4$ (tỷ tế bào). Suy ra $N\\left( 3 \\right)-N\\left( 0 \\right)=464,4-10=454,4$.\nd) đúng. $N\\left( 5 \\right)=\\frac{5}{\\ln 2}\\left( 2^{10}-1 \\right)+10=7389,4>7389$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008764",
+  "loai": "trac_nghiem",
+  "de": "(Sở Bình Thuận 2025) Cho $\\int\\limits_{0}^{1} f(x)dx=7$. Giá trị của $\\int\\limits_{0}^{1} 3f(x)dx$ bằng:",
+  "lua_chon": [
+   "$21.$",
+   "$\\frac{3}{7}.$",
+   "$7.$",
+   "$\\frac{7}{3}.$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Chọn A",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008744",
+  "loai": "trac_nghiem",
+  "de": "(Sở Quảng Nam 2025) Họ nguyên hàm của hàm số $f\\left( x \\right)=x^{5}$ là",
+  "lua_chon": [
+   "$\\frac{x^{6}}{6}+C$.",
+   "$5x^{4}+C$.",
+   "$\\frac{x^{6}}{5}+C$.",
+   "$\\frac{x^{4}}{4}+C$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Chọn A\nTa có $\\int f\\left( x \\right)dx=\\int x^{5}dx=\\frac{x^{6}}{6}+C$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008737",
+  "loai": "trac_nghiem",
+  "de": "(THPT Triệu Sơn 3 - Thanh Hóa 2025) $\\int (\\sin x+4x^{3}\\text{)d}x$ bằng",
+  "lua_chon": [
+   "$-\\cos x+4x^{4}+C$.",
+   "$\\cos x+x^{4}+C$.",
+   "$\\cos x+12x^{2}+C$.",
+   "$-\\cos x+x^{4}+C$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Chọn D\nTa có $\\int (\\sin x+4x^{3}\\text{)d}x$$=-\\cos x+x^{4}+C$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008839",
+  "loai": "trac_nghiem",
+  "de": "Cho $I=\\int\\limits_{0}^{1} \\frac{\\text{d}x}{\\sqrt{2x+a}}$, với $a>0$. Tìm $a$ nguyên để $I\\ge 1$.",
+  "lua_chon": [
+   "Không có giá trị nào của $a$.",
+   "$a=0$.",
+   "Vô số giá trị của $a$.",
+   "$a=1$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $I=\\int\\limits_{0}^{1} \\frac{\\text{d}x}{\\sqrt{2x+a}}=\\left. \\sqrt{2x+a} \\right|_{0}^{1}=\\sqrt{2+a}-\\sqrt{a}$.\nTa có: $I\\ge 1\\Leftrightarrow\\sqrt{2+a}\\ge 1+\\sqrt{a}\\Leftrightarrow 2+a\\ge a+1+2\\sqrt{a}\\Leftrightarrow\\sqrt{a}\\le\\frac{1}{2}\\Leftrightarrow 0\\le a\\le\\frac{1}{4}.$\nVới $a>0$, $a$ nguyên thì không có giá trị nào của $a$ thoả mãn.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008735",
+  "loai": "tu_luan",
+  "de": "(KNTT12) Tìm:\na) $\\int \\frac{2x-1}{x+1}dx$\nb) $\\int \\left( 3+2\\sin^{2}x \\right)dx$",
+  "loi_giai": "a) Ta có:\n$\\frac{2x-1}{x+1}=\\frac{2(x+1)-3}{x+1}=2-\\frac{3}{x+1}$\nDo đó:\n$\\int \\frac{2x-1}{x+1}\\ dx=\\int 2\\ dx-3\\int \\frac{1}{x+1}\\cdot(x+1)^{\\prime}dx=2x-3\\ln|x+1|+C$\nb) Ta có: $2\\sin^{2}x=1-\\cos 2x$. Do đó\n$\\begin{array}{l} \\int \\left( 3+2\\sin^{2}x \\right)dx=\\int 4dx-\\int \\cos 2xdx \\\\ =4x-\\int \\cos 2x\\cdot\\frac{(2x)^{\\prime}}{2}dx=4x-\\frac{\\sin 2x}{2}+C \\end{array}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008734",
+  "loai": "tu_luan",
+  "de": "(KNTT12) Tìm:\na) $\\int \\left( 2^{x}+3^{x} \\right)^{2}dx$\nb) $\\int \\left( e^{x}-e^{-x} \\right)^{2}dx$",
+  "loi_giai": "a) Ta có: $\\left( 2^{x}+3^{x} \\right)^{2}=4^{x}+2\\cdot 6^{x}+9^{x}$\nDo đó:$\\int \\left( 2^{x}+3^{x} \\right)^{2}dx=\\int \\left( 4^{x}+2\\cdot 6^{x}+9^{x} \\right)dx=\\frac{4^{x}}{2\\ln 2}+2\\cdot\\frac{6^{x}}{\\ln 6}+\\frac{9^{x}}{2\\ln 3}+C$\nb) $\\int \\left( e^{x}-e^{-x} \\right)^{2}dx=\\int \\left( e^{2x}+e^{-2x}-2 \\right)dx=\\frac{e^{2x}-e^{-2x}}{2}-2x+C$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008802",
+  "loai": "tu_luan",
+  "de": "(CTST12) Tính diện tích hình phẳng giới hạn bởi đồ thị hàm số $y=f(x)=x^{3}-2x^{2}+x$, trục hoành và hai đường thẳng $x=-1,x=1$.",
+  "loi_giai": "Diện tích cần tìm là $S=\\int\\limits_{-1}^{1} \\left| x^{3}-2x^{2}+x \\right|dx$.\nTa có $x^{3}-2x^{2}+x=0\\Leftrightarrow x(x-1)^{2}=0\\Leftrightarrow x=0$ hoặc $x=1$.\nVới $x\\in[-1;0]$ thì $f(x)\\le 0$; với $x\\in[0;1]$ thì $f(x)\\ge 0$.\nVậy $S=\\int\\limits_{-1}^{1} \\left| x^{3}-2x^{2}+x \\right|dx=\\int\\limits_{-1}^{0} \\left( -x^{3}+2x^{2}-x \\right)dx+\\int\\limits_{0}^{1} \\left( x^{3}-2x^{2}+x \\right)dx$\n$=\\left. \\left( -\\frac{x^{4}}{4}+\\frac{2x^{3}}{3}-\\frac{x^{2}}{2} \\right) \\right|_{-1}^{0}+\\left. \\left( \\frac{x^{4}}{4}-\\frac{2x^{3}}{3}+\\frac{x^{2}}{2} \\right) \\right|_{0}^{1}=\\frac{17}{12}+\\frac{1}{12}=\\frac{3}{2}\\text{. }$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008760",
+  "loai": "trac_nghiem",
+  "de": "(Sở Hà Nội 2025) Nếu $\\int\\limits_{0}^{2} f\\left( x \\right)\\text{d}x=3$ thì $\\int\\limits_{0}^{2} \\left[ f\\left( x \\right)+2 \\right]\\text{d}x$ bằng:",
+  "lua_chon": [
+   "$5$.",
+   "$6$.",
+   "$7$.",
+   "$10$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn C\n$\\int\\limits_{0}^{2} \\left[ f\\left( x \\right)+2 \\right]\\text{d}x=\\int\\limits_{0}^{2} f\\left( x \\right)\\text{d}x+\\int\\limits_{0}^{2} \\text{2d}x=3+4=7$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008769",
+  "loai": "trac_nghiem",
+  "de": "(Chuyên Lam Sơn - Thanh Hóa 2025) Biết $\\int\\limits_{0}^{1} f\\left( x \\right)dx=3$ và $\\int\\limits_{0}^{1} g\\left( x \\right)dx=-2$. Khi đó $\\int\\limits_{0}^{1} \\left[ f\\left( x \\right)+g\\left( x \\right) \\right]dx$ bằng",
+  "lua_chon": [
+   "$1.$",
+   "$5.$",
+   "$-1$.",
+   "$-6.$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Chọn A\n$\\int\\limits_{0}^{1} \\left[ f\\left( x \\right)+g\\left( x \\right) \\right]dx=\\int\\limits_{0}^{1} f\\left( x \\right)dx+\\int\\limits_{0}^{1} g\\left( x \\right)dx=3+(-2)=1.$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008759",
+  "loai": "trac_nghiem",
+  "de": "(Sở Thái Nguyên 2025) Nếu $\\int\\limits_{-3}^{1} f\\left( x \\right)\\,\\text{d}x=-2$ thì $\\int\\limits_{-3}^{1} \\left[ 2-5f\\left( x \\right) \\right]\\,\\text{d}x$ bằng",
+  "lua_chon": [
+   "$18$.",
+   "$6$.",
+   "$12$.",
+   "$-4$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Chọn A\nTa có: $\\int\\limits_{-3}^{1} \\left[ 2-5f\\left( x \\right) \\right]\\,\\text{d}x=\\int\\limits_{-3}^{1} 2\\,\\text{d}x-5\\int\\limits_{-3}^{1} f\\left( x \\right)\\,\\text{d}x=8+10=18.$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008741",
+  "loai": "trac_nghiem",
+  "de": "(THPT Lê Thánh Tông - Nguyễn Khuyến 2025) Họ nguyên hàm của hàm số $f\\left( x \\right)=3x^{2}+\\sin x$ là",
+  "lua_chon": [
+   "$x^{3}+\\text{cos}x+C$.",
+   "$x^{3}+\\sin x+C$.",
+   "$x^{3}-\\text{cos}x+C$.",
+   "$x^{3}-\\sin x+C$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn C\nTa có $\\int f\\left( x \\right)dx=\\int \\left( 3x^{2}+\\sin x \\right)dx=x^{3}-\\text{cos}x+C.$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008785",
+  "loai": "trac_nghiem",
+  "de": "(THPT Cẩm Giàng 2 2019) Cho $\\int\\limits_{-2}^{2} f\\left( x \\right)\\text{d}x=1$, $\\int\\limits_{-2}^{4} f\\left( t \\right)\\text{d}t=-4$. Tính $\\int\\limits_{2}^{4} f\\left( y \\right)\\text{d}y$.",
+  "lua_chon": [
+   "$I=5$.",
+   "$I=-3$.",
+   "$I=3$.",
+   "$I=-5$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có: $\\int\\limits_{-2}^{4} f\\left( t \\right)\\text{d}t=\\int\\limits_{-2}^{4} f\\left( x \\right)\\text{d}x$, $\\int\\limits_{2}^{4} f\\left( y \\right)\\text{d}y=\\int\\limits_{2}^{4} f\\left( x \\right)\\text{d}x$.\nKhi đó: $\\int\\limits_{-2}^{2} f\\left( x \\right)\\text{d}x+\\int\\limits_{2}^{4} f\\left( x \\right)\\text{d}x=\\int\\limits_{-2}^{4} f\\left( x \\right)\\text{d}x$.\n$\\Rightarrow\\int\\limits_{2}^{4} f\\left( x \\right)\\text{d}x=\\int\\limits_{-2}^{4} f\\left( x \\right)\\text{d}x-\\int\\limits_{-2}^{2} f\\left( x \\right)\\text{d}x=-4-1=-5$.\nVậy $\\int\\limits_{2}^{4} f\\left( y \\right)\\text{d}y=-5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008801",
+  "loai": "tu_luan",
+  "de": "(KNTT12) Tính diện tích hình phẳng giới hạn bởi các đường sau:\na) $y=e^{x},y=\\sqrt{x},x=0,x=1$;\nb) $y=\\cos x,y=\\frac{1}{2},x=0,x=\\frac{\\pi}{3}$.",
+  "loi_giai": "a) Vì $e^{x}\\ge 1\\ge\\sqrt{x},\\forall x\\in[0;1]$, nên diện tích cần tính là\n$S=\\int\\limits_{0}^{1} \\left| e^{x}-\\sqrt{x} \\right|dx=\\int\\limits_{0}^{1} \\left( e^{x}-\\sqrt{x} \\right)dx=\\left. \\left( e^{x}-\\frac{2}{3}x^{\\frac{3}{2}} \\right) \\right|_{0}^{1}=e-\\frac{5}{3}.$\nb) Vì $\\cos x\\ge\\frac{1}{2},\\forall x\\in\\left[ 0;\\frac{\\pi}{3} \\right]$, nên diện tích cần tính là\n$S=\\int\\limits_{0}^{\\frac{\\pi}{3}} \\left| \\cos x-\\frac{1}{2} \\right|dx=\\int\\limits_{0}^{\\frac{\\pi}{3}} \\left( \\cos x-\\frac{1}{2} \\right)dx=\\left. \\left( \\sin x-\\frac{1}{2}x \\right) \\right|_{0}^{\\frac{\\pi}{3}}$$\\approx 0,73648$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008738",
+  "loai": "tu_luan",
+  "de": "(THPT Nguyễn Khuyến - Lê Thánh Tông 2025) Biết $\\int f\\left( x \\right)\\text{d}x=\\cos x+C$ thì $\\int f'\\left( x \\right)\\text{d}x$ bằng\nA $\\sin x+C'$\tB. $\\cos x+C'$\tC. $-\\sin x+C'$\tD. $-\\cos x+C$",
+  "loi_giai": "Chọn C\nVì $\\int f\\left( x \\right)\\text{d}x=\\cos x+C$ nên $f\\left( x \\right)=-\\sin x$.\nTa có: $\\int f'\\left( x \\right)\\text{d}x=f\\left( x \\right)+C'=-\\sin x+C'$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008731",
+  "loai": "tu_luan",
+  "de": "(KNTT12) Tìm:\na) $\\int \\left( e^{2x}+e^{-x} \\right)dx$\nb) $\\int \\left( 2^{x}-1 \\right)^{2}dx$",
+  "loi_giai": "$\\begin{array}{l} \\text{ a) }\\int \\left( e^{2x}+e^{-x} \\right)dx=\\int e^{2x}dx+\\int e^{-x}dx \\\\ =\\int \\left( e^{2} \\right)^{x}dx+\\int \\left( e^{-1} \\right)^{x}dx=\\frac{\\left( e^{2} \\right)^{x}}{\\ln e^{2}}+\\frac{\\left( e^{-1} \\right)^{x}}{\\ln e^{-1}}+C \\\\ =\\frac{e^{2x}}{2}+\\frac{e^{-x}}{-1}+C=\\frac{1}{2}e^{2x}-e^{-x}+C \\end{array}$\nb) Ta có: $\\left( 2^{x}-1 \\right)^{2}=\\left( 2^{x} \\right)^{2}-2\\cdot 2^{x}+1=4^{x}-2\\cdot 2^{x}+1$.\nDo đó:\n$\\begin{array}{l} \\int \\left( 2^{x}-1 \\right)^{2}dx=\\int 4^{x}dx-\\int 2\\cdot 2^{x}dx+\\int 1dx \\\\ =\\frac{4^{x}}{\\ln 4}-2\\cdot\\frac{2^{x}}{\\ln 2}+x+C=\\frac{4^{x}}{2\\ln 2}-\\frac{2^{x+1}}{\\ln 2}+x+C \\end{array}$\nChú ý. Với $k$ là hằng số khác 0, ta có:\n$\\boxed{\\i …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008782",
+  "loai": "trac_nghiem",
+  "de": "(Mã 103 - 2020 Lần 2) Biết $\\int_{0}^{1} \\left[ f\\left( x \\right)+2x \\right]\\text{d}x=4$. Khi đó $\\int_{0}^{1} f\\left( x \\right)\\text{d}x$ bằng",
+  "lua_chon": [
+   "$3$.",
+   "$2$.",
+   "$6$.",
+   "$4$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Chọn A\n$\\int_{0}^{1} \\left[ f\\left( x \\right)+2x \\right]\\text{d}x=4\\Leftrightarrow\\int_{0}^{1} f\\left( x \\right)\\text{d}x+\\int_{0}^{1} 2x\\text{d}x=4\\Leftrightarrow\\int_{0}^{1} f\\left( x \\right)\\text{d}x=4-1=3$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008804",
+  "loai": "trac_nghiem",
+  "de": "(THPT Nguyễn Khuyến - Lê Thánh Tông 2025) Khi cắt vật thể bởi mặt phẳng vuông góc với trục $Ox$ tại điểm có hoành độ là $x$, $\\left( 0\\le x\\le 3 \\right)$ ta được mặt cắt là một hình vuông có cạnh là $\\sqrt{9-x^{2}}$ (được mô hình hóa bởi hình vẽ bên dưới). Thể tích của vật thể đó bằng",
+  "lua_chon": [
+   "$171\\pi$.",
+   "$171$.",
+   "$18\\pi$.",
+   "$18$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Chọn D\nDiện tích mặt cắt hình vuông: $S=9-x^{2}$\nThể tích của vật: $V=\\int\\limits_{0}^{3} \\left( 9-x^{2} \\right)\\text{d}x=18$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008776",
+  "loai": "tu_luan",
+  "de": "Tích phân $\\int\\limits_{\\frac{\\pi}{7}}^{\\frac{\\pi}{5}} \\sin xdx$ có giá trị bằng:\nA. $\\sin\\frac{\\pi}{5}-\\sin\\frac{\\pi}{7}$. В. $\\sin\\frac{\\pi}{7}-\\sin\\frac{\\pi}{5}$.\tC. $\\cos\\frac{\\pi}{5}-\\cos\\frac{\\pi}{7}$.\tD. $\\cos\\frac{\\pi}{7}-\\cos\\frac{\\pi}{5}$.",
+  "loi_giai": "Chọn D",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008768",
+  "loai": "trac_nghiem",
+  "de": "(THPT Nguyễn Quốc Trinh - Hà Nội 2025) Cho $\\int\\limits_{0}^{1} f\\left( x \\right)dx=2$ và $\\int\\limits_{0}^{1} g\\left( x \\right)dx=5$, khi đó $\\int\\limits_{0}^{1} \\left[ f\\left( x \\right)-2g\\left( x \\right) \\right]dx$ bằng",
+  "lua_chon": [
+   "$-3.$",
+   "$-8$.",
+   "$12$.",
+   "$1$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\int\\limits_{0}^{1} \\left[ f\\left( x \\right)-2g\\left( x \\right) \\right]dx=\\int\\limits_{0}^{1} f\\left( x \\right)dx-2\\int\\limits_{0}^{1} g\\left( x \\right)dx=2-2.5=-8$.\nChọn B",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008805",
+  "loai": "trac_nghiem",
+  "de": "(Cụm trường Hưng Yên 2025) Cho hình phẳng $\\left( H \\right)$ giới hạn bởi các đường $y=x^{2}+3,\\text{ }y=0,\\text{ }x=0,\\text{ }x=5$. Gọi $V$là thể tích của khối tròn xoay được tạo thành khi quay $\\left( H \\right)$xung quanh trục $Ox$. Mệnh đề nào dưới đây đúng?",
+  "lua_chon": [
+   "$V=\\int\\limits_{0}^{5} \\left( x^{2}+3 \\right)dx$.",
+   "$V=\\pi\\int\\limits_{0}^{5} \\left( x^{2}+3 \\right)^{2}dx$.",
+   "$V=\\int\\limits_{0}^{5} \\left( x^{2}+3 \\right)^{2}dx$.",
+   "$V=\\pi\\int\\limits_{0}^{5} \\left( x^{2}+3 \\right)dx$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chọn B\nThể tích của khối tròn xoay được tạo thành khi quay $\\left( H \\right)$xung quanh trục $Ox$ là$V=\\pi\\int\\limits_{0}^{5} \\left( x^{2}+3 \\right)^{2}dx$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008832",
+  "loai": "tu_luan",
+  "de": "Cho hai hàm số $f\\left( x \\right)=ax^{3}+bx^{2}+cx-2,\\,\\,g\\left( x \\right)=dx^{2}+ex+2\\,\\,\\left( a,b,c,d,e\\in\\mathbb{R} \\right)$. Biết đồ thị hàm số $y=f\\left( x \\right)$ và $y=g\\left( x \\right)$ cắt nhau tại ba điểm phân biệt có hoành độ lần lượt là $-2;\\,-1;\\,1$. Tính diện tích hình phẳng giới hạn bởi hai đồ thị.",
+  "loi_giai": "Ta có: $f\\left( x \\right)=ax^{3}+bx^{2}+cx-2,\\,\\,g\\left( x \\right)=dx^{2}+ex+2\\,\\,\\left( a,b,c,d,e\\in\\mathbb{R} \\right)$\n$\\Rightarrow f\\left( x \\right)-g\\left( x \\right)=ax^{3}+\\left( b-d \\right)x^{2}+\\left( c-e \\right)x-4$ (1)\nVì đồ thị hàm số $y=f\\left( x \\right)$ và $y=g\\left( x \\right)$ cắt nhau tại ba điểm phân biệt có hoành độ lần lượt là\n$-2;\\,-1;\\,1$ $\\Rightarrow$$f\\left( x \\right)-g\\left( x \\right)=a\\left( x+2 \\right)\\left( x+1 \\right)\\left( x-1 \\right)$ (2)\nTừ (1) và $\\left( 2 \\right)$ suy ra: $-2a=-4\\Rightarrow a=2$.\nDo đó $f\\left( x \\right)-g\\left( x \\right)=2\\left( x+2 \\right)\\left( x+1 \\right)\\left( x-1 \\right)$\nVậy $S=\\int\\limits_{-2}^{1} \\left| 2\\left( x+2 \\right)\\left( x+1 \\ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008777",
+  "loai": "tu_luan",
+  "de": "Cho hàm số $F(x)$ là một nguyên hàm của hàm số trên $\\mathbb{R}$. Biết đồ thị hàm số $y=f(x)$ như hình vẽ và diện tích phần tô đậm $S=11$ và $F(-2)=2$. Tính $F(3)$.\nA. $F(3)=13$.В. $F(3)=9$.\tC. $F(3)=-13$.\tD. $F(3)=-9$.",
+  "loi_giai": "Chọn D\nTa có: $S=-\\int\\limits_{-2}^{3} f(x)dx=-\\left. F(x) \\right|_{-2}^{3}=-F(3)+F(-2)=11\\Leftrightarrow 2-F(3)=11\\Leftrightarrow F(3)=-9$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008800",
+  "loai": "tu_luan",
+  "de": "(KNTT12) Tính diện tích hình phẳng giới hạn bởi các đường sau:\na) $y=(x-1)^{3},y=x-1,x=0,x=1$\nb) $y=x^{3}+2x^{2}-3x,y=x^{2}+3x,x=-3,x=0$.",
+  "loi_giai": "a) Do $(x-1)^{3}\\ge x-1,\\forall x\\in[0;1]$, nên diện tích cần tính là\n$\\begin{array}{cc} S & =\\int\\limits_{0}^{1} \\left| (x-1)^{3}-(x-1) \\right|dx=\\int\\limits_{0}^{1} \\left[ (x-1)^{3}-(x-1) \\right]dx \\\\  & =\\int\\limits_{0}^{1} \\left( x^{3}-3x^{2}+2x \\right)dx=\\left. \\left( \\frac{x^{4}}{4}-x^{3}+x^{2} \\right) \\right|_{0}^{1}=\\frac{1}{4} \\end{array}$\nb) Ta có:\n$x^{3}+2x^{2}-3x-x^{2}-3x=x^{3}+x^{2}-6x=x(x-2)(x+3)\\ge 0,\\forall x\\in[-3;0]$\nVậy diện tích cần tính là\n$\\begin{array}{cc} S & =\\int\\limits_{-3}^{0} \\left| x^{3}+2x^{2}-3x-x^{2}-3x \\right|dx=\\int\\limits_{-3}^{0} \\left| x^{3}+x^{2}-6x \\right|dx \\\\  & =\\int\\limits_{-3}^{0} \\left( x^{3}+x^{2}-6x \\right)dx=\\left. \\left( \\frac{x^{4}}{4}+\\frac …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008730",
+  "loai": "tu_luan",
+  "de": "(KNTT12) Tìm:\na) $\\int 4x(x-1)^{2}dx$\nb) $\\int \\frac{(2x+1)^{2}}{x^{3}}dx$",
+  "loi_giai": "a) Ta có: $4x(x-1)^{2}=4x\\left( x^{2}-2x+1 \\right)=4x^{3}-8x^{2}+4x$.\nDo đó:\n$\\begin{array}{l} \\int 4x(x-1)^{2}dx=\\int 4x^{3}dx-\\int 8x^{2}dx+\\int 4xdx \\\\ =4\\cdot\\frac{x^{4}}{4}-8\\cdot\\frac{x^{3}}{3}+4\\cdot\\frac{x^{2}}{2}+C=x^{4}-\\frac{8}{3}x^{3}+2x^{2}+C \\end{array}$\nb) Ta có: $\\frac{(2x+1)^{2}}{x^{3}}=\\frac{4x^{2}+4x+1}{x^{3}}=\\frac{4}{x}+\\frac{4}{x^{2}}+\\frac{1}{x^{3}}$.\nDo đó:\n$\\begin{array}{l} \\int \\frac{(2x+1)^{2}}{x^{3}}dx=\\int \\frac{4}{x}dx+\\int \\frac{4}{x^{2}}dx+\\int \\frac{1}{x^{3}}dx \\\\ =4\\ln|x|+4\\left( -\\frac{1}{x} \\right)+\\frac{x^{-2}}{-2}+C=4\\ln|x|-\\frac{4}{x}-\\frac{1}{2x^{2}}+C \\end{array}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008756",
+  "loai": "tu_luan",
+  "de": "(CD12) Tính:\na) $\\int\\limits_{0}^{1} x^{6}\\ dx$\nb) $\\int\\limits_{1}^{4} \\frac{x^{3}}{\\sqrt{x}}\\ dx$",
+  "loi_giai": "a) $\\int\\limits_{0}^{1} x^{6}\\ dx=\\left. \\frac{x^{7}}{7} \\right|_{0}^{1}=\\frac{1}{7}$\nb) $\\int\\limits_{1}^{4} \\frac{x^{3}}{\\sqrt{x}}\\ dx=\\int\\limits_{1}^{4} x^{\\frac{5}{2}}\\ dx=\\left. \\frac{2}{7}x^{\\frac{7}{2}} \\right|_{1}^{4}=\\frac{256}{7}-\\frac{2}{7}=\\frac{254}{7}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008740",
+  "loai": "trac_nghiem",
+  "de": "(Chuyên Lê Quý Đôn - Đà Nẵng 2025) Họ các nguyên hàm của hàm số $f\\left( x \\right)=3e^{x}$ là",
+  "lua_chon": [
+   "$3e^{x}$.",
+   "$3xe^{x}+C$.",
+   "$3e^{x}+C$.",
+   "$-3e^{x}+C$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn C\n$\\int f\\left( x \\right)\\text{d}x=\\int \\text{3}e^{x}\\text{d}x=3e^{x}+C$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008747",
+  "loai": "trac_nghiem",
+  "de": "(Sở Hậu Giang 2025) Nguyên hàm của hàm số $f\\left( x \\right)=e$ là",
+  "lua_chon": [
+   "$x^{e}+C$.",
+   "$\\frac{e^{2}}{2}+C$.",
+   "$ex+C$.",
+   "$\\frac{ex}{\\log e}+C$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Nguyên hàm của hàm số $f\\left( x \\right)=e$ là $ex+C$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008732",
+  "loai": "tu_luan",
+  "de": "(KNTT12) Tìm:\na) $\\int \\frac{(x+2)^{2}}{x^{4}}dx$\nb) $\\int \\sqrt{x}\\left( 7x^{2}+6 \\right)dx$",
+  "loi_giai": "a) $\\int \\frac{(x+2)^{2}}{x^{4}}dx=\\int \\left( \\frac{1}{x^{2}}+\\frac{4}{x^{3}}+\\frac{4}{x^{4}} \\right)dx$\n$=-\\frac{1}{x}+4\\cdot\\frac{x^{-2}}{-2}+4\\cdot\\frac{x^{-3}}{-3}+C=-\\frac{1}{x}-\\frac{2}{x^{2}}-\\frac{4}{3x^{3}}+C$.\nb) $\\int \\sqrt{x}\\left( 7x^{2}+6 \\right)dx=\\int 7x^{\\frac{5}{2}}\\ dx+\\int 6x^{\\frac{1}{2}}\\ dx$\n$=2x^{\\frac{7}{2}}+4x^{\\frac{3}{2}}+C=2\\sqrt{x}\\left( x^{3}+2x \\right)+C$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008836",
+  "loai": "tu_luan",
+  "de": "Cho hàm số $y=f\\left( x \\right)$ có đạo hàm là $f'\\left( x \\right)=6x^{2}-2,\\forall x\\in\\mathbb{R}$ và $f\\left( 0 \\right)=1$. Biết $F\\left( x \\right)$là một nguyên hàm của $f\\left( x \\right)$ và $F\\left( 2 \\right)=0$. Tính $F\\left( 4 \\right)$.",
+  "loi_giai": "Ta có: $\\int f'\\left( x \\right)\\text{d}x$$=\\int \\left( 6x^{2}-2 \\right)\\text{d}x$$=2x^{3}-2x+C$.\nSuy ra $f\\left( x \\right)=2x^{3}-2x+C$.\nTheo bài ra ta có $f\\left( 0 \\right)=1$$\\Rightarrow C=1$ $\\Rightarrow$$f\\left( x \\right)=2x^{3}-2x+1$.\nKhi đó: $F\\left( x \\right)=\\int f\\left( x \\right)\\text{d}x=\\int \\left( 2x^{3}-2x+1 \\right)\\text{d}x=\\frac{1}{2}x^{4}-x^{2}+x+C'$.\nMà $F\\left( 2 \\right)=0\\Rightarrow 6+C'=0\\Rightarrow C'=-6$ suy ra $F\\left( x \\right)=\\frac{1}{2}x^{4}-x^{2}+x-6$$\\Rightarrow F\\left( 4 \\right)=110.$\nVậy $F\\left( 4 \\right)=110.$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008774",
+  "loai": "trac_nghiem",
+  "de": "(KTNL GV Thpt Lý Thái Tổ -2019) Giá trị của $\\int\\limits_{0}^{\\frac{\\pi}{2}} \\sin xdx$ bằng",
+  "lua_chon": [
+   "0.",
+   "1.",
+   "-1.",
+   "$\\frac{\\pi}{2}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chọn B\n+ Tính được $\\int\\limits_{0}^{\\frac{\\pi}{2}} \\sin xdx=-\\cos x\\left| \\begin{array}{l} \\frac{\\pi}{2} \\\\ 0 \\end{array} \\right.=1$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008742",
+  "loai": "trac_nghiem",
+  "de": "(THPT Triệu Sơn 1 - Thanh Hóa 2025) Tìm nguyên hàm $F=\\int sinxdx$.",
+  "lua_chon": [
+   "$F=2\\cos x+C$.",
+   "$F=\\frac{1}{2}\\cos x+C$.",
+   "$F=\\cos x+C$.",
+   "$F=-\\cos x+C$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Chọn D\nTa có $F=\\int sinxdx=-co\\text{s}x+C$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008837",
+  "loai": "tu_luan",
+  "de": "Cho $F\\left( x \\right)=\\cos 2x$ là một nguyên hàm của hàm số $f\\left( x \\right)\\tan x$. Tìm họ nguyên hàm của hàm số $g\\left( x \\right)=\\frac{\\tan x}{f'\\left( x \\right)}$.",
+  "loi_giai": "Ta có: $F'\\left( x \\right)=-2\\sin 2x=-4\\sin x\\cos x$\nVì $F\\left( x \\right)=\\cos 2x$ là một nguyên hàm của hàm số $f\\left( x \\right)\\tan x$ nên:\n$F'\\left( x \\right)=f\\left( x \\right).\\tan x$$\\Leftrightarrow-4\\sin x\\cos x=f\\left( x \\right).\\tan x$$\\Leftrightarrow f\\left( x \\right)=-4\\cos^{2}x$\nSuy ra $f'\\left( x \\right)=8\\sin x\\cos x$\nVậy $\\int g\\left( x \\right)\\text{d}x=\\int \\frac{\\tan x}{f'\\left( x \\right)}\\text{d}x=\\int \\frac{\\tan x}{8\\sin x\\cos x}\\text{d}x=\\int \\frac{1}{8\\cos^{2}x}\\text{d}x=\\frac{1}{8}\\tan x+C$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008743",
+  "loai": "trac_nghiem",
+  "de": "(THPT Anh Sơn 3 - Nghệ An 2025) Nguyên hàm của hàm số $f\\left( x \\right)=2^{x}$ là",
+  "lua_chon": [
+   "$2^{x}+C$.",
+   "$\\ln 2.2^{x}+C$.",
+   "$\\frac{2^{x}}{\\ln 2}+C$.",
+   "$\\frac{2^{x}}{x+1}+C$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn C\nNguyên hàm của hàm số $f\\left( x \\right)=2^{x}$ là $\\frac{2^{x}}{\\ln 2}+C$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008833",
+  "loai": "tu_luan",
+  "de": "Cho $\\left( H \\right)$ là hình phẳng giới hạn bởi đồ thị hai hàm số $y=x^{2}+1;\\,y=-x-1$ và hai đường thẳng $x=-1;\\,x=1$.\nThể tích của khối tròn xoay được tạo thành khi quay $\\left( H \\right)$ quanh trục $Ox$ bằng",
+  "loi_giai": "Gọi $\\left( H_{1} \\right)$ là hình phẳng giới hạn bởi $y=x^{2}+1$, $y=0;x=-1,x=0$. Khi quay $\\left( H_{1} \\right)$ quanh trục $Ox$ thì khối tròn xoay được tạo thành có thể tích $V_{1}=\\pi\\int\\limits_{-1}^{0} \\left( x^{2}+1 \\right)^{2}\\text{d}x=\\frac{28\\pi}{15}$.\nGọi $\\left( H_{2} \\right)$ là hình phẳng được giới hạn bởi $y=-x-1,y=0;x=0,x=1.$ Khi quay $\\left( H_{2} \\right)$ quanh trục $Ox$ thì khối tròn xoay được tạo thành có thể tích $V_{2}=\\pi\\int\\limits_{0}^{1} \\left( -x-1 \\right)^{2}\\text{d}x=\\frac{7\\pi}{3}$.\nVậy thể tích của khối tròn xoay được tạo thành khi quay $\\left( H \\right)$ quanh trục $Ox$ là $V=V_{1}+V_{2}=\\frac{21\\pi}{5}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008831",
+  "loai": "tu_luan",
+  "de": "Ta vẽ hai nửa đường tròn như hình vẽ bên, trong đó đường kính của nửa đường tròn lớn gấp đôi đường kính của nửa đường tròn nhỏ. Biết rằng nửa hình tròn đường kính $AB$ có bán kính bằng $4$ và $\\widehat{BAC}=30^{0}$. Hiện tích hình $(H)$ (Phần tô đậm) bằng",
+  "loi_giai": "Chọn hệ trục tọa độ sao cho $AB$ nằm trên $Ox$, các nửa đường tròn nằm trong góc phần tư thứ nhất và $A(0;0)$ khi đó ta có:\nNửa đường tròn nhỏ có phương trình: $y=\\sqrt{4-(x-2)^{2}}$.\nNửa đường tròn lớn có phương trình: $y=\\sqrt{16-(x-4)^{2}}$.\nĐường thẳng $AC$ có phương trình $y=\\frac{1}{\\sqrt{3}}x.$\nHình phẳng $(H)$ giới hạn bởi $y=\\sqrt{4-(x-2)^{2}}$; $y=\\sqrt{16-(x-4)^{2}}$; $y=\\frac{1}{\\sqrt{3}}x$ và trục $Ox:\\text{ }y=0.$\nTìm cận: $\\sqrt{4-(x-2)^{2}}=\\frac{1}{\\sqrt{3}}x\\Leftrightarrow\\left[ \\begin{array}{l} x=0 \\\\ x=3 \\end{array} \\right.$; $\\sqrt{16-(x-4)^{2}}=\\frac{1}{\\sqrt{3}}x\\Leftrightarrow\\left[ \\begin{array}{l} x=0 \\\\ x=6 \\end{array} \\right.$.\nDiện tích hình phẳng $(H)$ cần tính  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008835",
+  "loai": "tu_luan",
+  "de": "Biết $F\\left( x \\right)$ là một nguyên hàm của hàm số $f\\left( x \\right)=\\frac{1}{2x+1}$ và $F\\left( 0 \\right)=2$. Tính $F\\left( \\text{e} \\right)$",
+  "loi_giai": "Ta có $F\\left( x \\right)=\\int f\\left( x \\right)\\text{d}x=\\frac{1}{2}\\text{ln}\\left| 2x+1 \\right|+C$.\nDo $F\\left( 0 \\right)=2$ suy ra $C=2$ nên $F\\left( \\text{e} \\right)=\\frac{1}{2}\\text{ln}\\left( 2\\text{e}+1 \\right)+2=\\text{ln}\\sqrt{2\\text{e}+1}+2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008793",
+  "loai": "tu_luan",
+  "de": "(Liên trường THPT Ninh Bình 2025) Một đoàn tàu đứng yên trong sân ga, ngay trước đầu tàu có một cái cây. Đoàn tàu khởi hành từ trạng thái đứng yên với gia tốc $a=0,004t\\left( m/s^{2} \\right)$ và đi qua cái cây trong thời gian $60$ giây. Sau $90$ giây đoàn tàu chuyển sang trạng thái chuyển động đều. Xét tính đúng sai của các khẳng định sau:\na)Vận tốc của đoàn tàu là $v=4.10^{-3}t^{2}\\left( m/s \\right)$.\nb)Sau $90$ giây, đoàn tàu chuyển động với vận tốc $58,32\\left( km/h \\right)$.\nc)Sau khi chuyển động đều một thời gian, đoàn tàu gặp một cây cầu có chiều dài $486\\left( m \\right)$. Khi đó đoàn tàu đi qua cây cầu đó trong thời gian $30$ giây.\nd)Chiều dài của đoàn tàu là $l=144\\left( m \\right)$.",
+  "loi_giai": "a) Sai.\nVận tốc của tàu là $v\\left( t \\right)=\\int 0,004t\\,dt=2.10^{-3}t^{2}+C$.\nVì đoàn tàu khởi hành từ trạng thái đừng yên nên $v\\left( 0 \\right)=0\\Rightarrow C=0\\Rightarrow v\\left( t \\right)=2.10^{-3}t^{2}\\left( m/s \\right)$\nb) Đúng.\nSau $90$ giây, đoàn tàu chuyển động với vận tốc là:\n$v\\left( 90 \\right)=2.10^{-3}.90^{2}=16,2\\left( m/s \\right)=58,32\\left( km/h \\right)$.\nc) Sai.\nChiều dài của con tàu là $l=\\int\\limits_{0}^{60} 2.10^{-3}t^{2}=144\\left( m \\right)$\nTổng độ dài quãng đường con tàu đi qua cầu là $h=144+486=630\\left( m \\right)$.\nThời gian để tàu qua cầu là $t=\\frac{630}{16,2}=38,\\left( 8 \\right)\\left( s \\right)$\nd)Đúng.\nDựa vào câu\tc.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008762",
+  "loai": "trac_nghiem",
+  "de": "(Sở Bắc Ninh 2025) Nếu $\\int\\limits_{0}^{\\frac{\\pi}{2}} f\\left( x \\right)dx=-5$ thì $\\int\\limits_{0}^{\\frac{\\pi}{2}} \\left[ f\\left( x \\right)+\\sin x \\right]dx$ bằng",
+  "lua_chon": [
+   "$-4$.",
+   "$-7$.",
+   "$-6$.",
+   "$-3$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Chọn A\nTa có: $\\int\\limits_{0}^{\\frac{\\pi}{2}} \\left[ f\\left( x \\right)+\\sin x \\right]dx=\\int\\limits_{0}^{\\frac{\\pi}{2}} f\\left( x \\right)dx+\\int\\limits_{0}^{\\frac{\\pi}{2}} \\sin xdx=-5-\\left. \\cos x \\right|_{0}^{\\frac{\\pi}{2}}=-5-\\cos\\frac{\\pi}{2}+\\cos 0=-4$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008780",
+  "loai": "trac_nghiem",
+  "de": "(Mã 111-2021-Lần 2) Nếu $\\int\\limits_{0}^{2} f\\left( x \\right)\\text{d}x=3$ thì $\\int\\limits_{0}^{2} \\left[ 2x-f\\left( x \\right) \\right]\\text{d}x$ bằng",
+  "lua_chon": [
+   "$7$.",
+   "$10$.",
+   "$1$.",
+   "$-2$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn C\nTa có $\\int\\limits_{0}^{2} \\left[ 2x-f\\left( x \\right) \\right]\\text{d}x=\\int\\limits_{0}^{2} 2x\\text{d}x-\\int\\limits_{0}^{2} f\\left( x \\right)\\text{d}x$$=\\left. x^{2} \\right|_{0}^{2}-3=4-3=1$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008798",
+  "loai": "tu_luan",
+  "de": "(THPT Sóc Sơn - Hà Nội 2025) Cây cà chua khi trồng có chiều cao $6$cm. Tốc độ tăng chiều cao của cây cà chua sau khi trồng được cho bởi hàm số $v\\left( t \\right)=-0,1t^{3}+t^{2}$, trong đó $t$ tính theo tuần, $v\\left( t \\right)$ tính bằng cm/tuần. Gọi $h\\left( t \\right)$ (tính bằng cm) là chiều cao của cây cà chua ở tuần thứ $t$.\na) Giai đoạn tăng trưởng của cây cà chua kéo dài $9$tuần.\n[[shape]]b) Chiều cao tối đa của cây cà chua không thấp hơn $89$cm.\nc) Vào thời điểm cây cà chua phát triển nhanh nhất thì chiều cao của cây cà chua nhỏ hơn $55$cm.\nd) Ở tuần thứ nhất, tốc độ tăng chiều cao của cây cà chua là $0,9$cm/tuần.",
+  "loi_giai": "a) Sai. Giai đoạn tăng trưởng của cây dừng lại khi tốc độ tăng trưởng của cây bằng không\n$v\\left( t \\right)=0\\Leftrightarrow-0,1t^{3}+t^{2}=0\\Leftrightarrow\\left[ \\begin{array}{l} t_{1}=0 \\\\ t_{2}=10 \\end{array} \\right.$\n$t_{1}=0$ là khi mới trồng xuống, $t_{2}=10$ là giai đoạn tăng trưởng của cây.\nb) Đúng. Chiều cao tối đa của cây bằng chiều cao của cây khi trồng xuống cộng với chiều cao của cây trong giai đoạn tăng truwỏng\n$h=6+\\int\\limits_{0}^{10} v\\left( t \\right)dt=6+\\int\\limits_{0}^{10} \\left( -0,1t^{3}+t^{2} \\right)dt=6+\\left. \\left( \\frac{-0,1}{4}t^{4}+\\frac{t^{3}}{3} \\right) \\right|_{0}^{10}=6-\\frac{10^{3}}{4}+\\frac{10^{3}}{3}=6+\\frac{10^{3}}{12}=\\frac{268}{3}\\approx 89,3333$\nc) Sai …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008778",
+  "loai": "trac_nghiem",
+  "de": "(Đề minh họa 2022) Nếu $\\int\\limits_{1}^{3} f(x)\\text{d}x=2$ thì $\\int\\limits_{1}^{3} \\left[ f\\left( x \\right)+2x \\right]dx$ bằng",
+  "lua_chon": [
+   "$20$.",
+   "$10$.",
+   "$18$.",
+   "$12$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chọn B\nTa có $\\int\\limits_{1}^{3} \\left[ f\\left( x \\right)+2x \\right]dx=\\int\\limits_{1}^{3} f\\left( x \\right)dx+\\int\\limits_{1}^{3} 2xdx=2+\\left. x^{2} \\right|_{1}^{3}=2+\\left( 9-1 \\right)=10$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008771",
+  "loai": "trac_nghiem",
+  "de": "(Liên trường THPT Ninh Bình 2025) Cho $\\int\\limits_{1}^{2} f(x)\\text{d}x=3$, $\\int\\limits_{1}^{2} g(x)\\text{d}x=2$. Giá trị $\\int\\limits_{1}^{2} \\left[ f(x)+g(x) \\right]\\text{d}x$ bằng",
+  "lua_chon": [
+   "$-1$.",
+   "$6$.",
+   "$1$.",
+   "$5$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$\\int\\limits_{1}^{2} \\left[ f(x)+g(x) \\right]\\text{d}x$$=\\int\\limits_{1}^{2} f(x)\\text{d}x+\\int\\limits_{1}^{2} g(x)\\text{d}x$$=3+2=5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008807",
+  "loai": "trac_nghiem",
+  "de": "(Sở Bắc Ninh 2025) Cho một vật thể được giới hạn bởi hai mặt phẳng $x=0$ và $x=3$. Một mặt phẳng tùy ý vuông góc với trục $Ox$ tại điểm có hoành độ $x,\\left( 0\\le x\\le 3 \\right)$ cắt vật thể theo mặt cắt là một hình vuông có độ dài cạnh bằng $\\sqrt{16-x^{2}}$. Thể tích của vật thể đó bằng",
+  "lua_chon": [
+   "$39\\pi$.",
+   "$10,$.",
+   "$39$.",
+   "$\\frac{128}{3}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Chọn A\nTa có công thức $V=\\pi\\int\\limits_{a}^{b} f^{2}\\left( x \\right)\\text{d}x$ suy ra $V=\\pi\\int\\limits_{0}^{3} \\left( \\sqrt{16-x^{2}} \\right)^{2}\\text{d}x=39\\pi$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008784",
+  "loai": "trac_nghiem",
+  "de": "(Mã 104 - 2020 Lần 2) Biết $\\int\\limits_{0}^{1} \\left[ f\\left( x \\right)+2x \\right]\\text{d}x=5$. Khi đó $\\int\\limits_{0}^{1} f\\left( x \\right)\\text{d}x$ bằng",
+  "lua_chon": [
+   "$7$.",
+   "$3$.",
+   "$5$.",
+   "$4$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Chọn D\n$\\int\\limits_{0}^{1} \\left[ f\\left( x \\right)+2x \\right]\\text{d}x=5$$\\Leftrightarrow\\int\\limits_{0}^{1} f\\left( x \\right)\\text{d}x+\\int\\limits_{0}^{1} \\text{2xd}x=5$\n$\\int\\limits_{0}^{1} f\\left( x \\right)\\text{d}x+\\left. x^{2} \\right|_{0}^{1}=5\\Leftrightarrow\\int\\limits_{0}^{1} f\\left( x \\right)\\text{d}x+1=5\\Leftrightarrow\\int\\limits_{0}^{1} f\\left( x \\right)\\text{d}x=4$.122",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008808",
+  "loai": "trac_nghiem",
+  "de": "(Sở Bắc Giang 2025) Cho hình phẳng $\\left( H \\right)$ giới hạn bởi các đường $y=x^{2}+3,\\,y=0,\\,x=0,\\,x=2$. Gọi $V$ là thể tích khối tròn xoay được tạo thành khi quay $\\left( H \\right)$xung quanh trục $Ox$. Mệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "$V=\\int\\limits_{0}^{2} (x^{2}+3)^{2}dx$.",
+   "$V=\\pi\\int\\limits_{0}^{2} (x^{2}+3)dx$.",
+   "$V=\\pi\\int\\limits_{0}^{2} (x^{2}+3)^{2}dx$.",
+   "$V=\\int\\limits_{0}^{2} (x^{2}+3)dx$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn C\nThể tích khối tròn xoay được tạo thành khi quay hình phẳng $\\left( H \\right)$ giới hạn bởi các đường $y=x^{2}+3,\\,y=0,\\,x=0,\\,x=2$ là $V=\\pi\\int\\limits_{0}^{2} (x^{2}+3)^{2}dx$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008758",
+  "loai": "trac_nghiem",
+  "de": "Chuyên Hoàng Văn Thụ - Hòa Bình 2025) Biết $\\int\\limits_{0}^{9} f\\left( x \\right)dx=37$ và $\\int\\limits_{0}^{9} \\left[ 3f\\left( x \\right)-2g\\left( x \\right) \\right]dx=61$. Tính $\\int\\limits_{0}^{9} g\\left( x \\right)dx$ bằng.",
+  "lua_chon": [
+   "$-25$.",
+   "$25$.",
+   "$-86$.",
+   "$86$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Chọn A\nTa có $\\int\\limits_{0}^{9} \\left[ 3f\\left( x \\right)-2g\\left( x \\right) \\right]dx=61\\Leftrightarrow 3\\int\\limits_{0}^{9} f\\left( x \\right)dx-2\\int\\limits_{0}^{9} g\\left( x \\right)dx=61$.\n$\\Leftrightarrow 111-2\\int\\limits_{0}^{9} g\\left( x \\right)dx=61\\Leftrightarrow\\int\\limits_{0}^{9} g\\left( x \\right)dx=25$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008795",
+  "loai": "tu_luan",
+  "de": "(Sở Hà Tĩnh 2025) Thành phố $X$ theo dõi tốc độ gia tăng dân số của hai khu vực $A$ và $B$ trong thời gian $6$ năm (kể từ đầu năm $2019$ đến hết năm $2024$). Hình vẽ sau mô tả tốc độ gia tăng dân số của hai khu vực trên trong $6$ năm, với đơn vị trên trục $Ot$ tính bằng năm, $t=0$ ứng với mốc từ đầu năm $2019$. Đơn vị trên trục $Oy$ biểu diễn ngàn người tăng thêm mỗi năm.\nKhu vực $A$ có tốc độ gia tăng dân số theo thời gian được mô tả bởi hàm $P_{A}^{/}(t)=-\\frac{1}{2}t^{2}+2t+8$\nKhu vực $B$ có tốc độ gia tăng dân số theo thời gian được mô tả bởi hàm $P_{B}^{/}(t)=a-\\frac{1}{2}t$\nBiết rằng $P_{A}(t),P_{B}(t)$ lần lượt biểu diễn tổng số dân tăng thêm tại khu vực $A$ và $B$ sau $t$ năm.\na. Tốc độ gia tăng dân số của khu vực $A$ với $t=4$ là $8000$ (người trên năm).\nb. Ta có $P_{B}^{/}(0)=8$và $a=8$.\nc) Dân số của khu vực $A$ tăng thêm từ $0$ đến $5$ năm là $33\\,000$ (người).\nd) Phần diện tích tô đậm trong hình vẽ biểu diễn sự chênh lệch dân số tăng thêm giữa hai khu vực trong giai đoạn từ $0$ đến $5$ năm là $9\\,000$ người.",
+  "loi_giai": "a) Đúng\nTa có $P_{A}^{/}(4)=-\\frac{1}{2}4^{2}+2.4+8=8$ (ngàn người trên năm) = $8000$ (người trên năm).\nb) Đúng\nTa có $P_{B}^{/}(0)=a-\\frac{1}{2}.0=8\\Rightarrow a=8$\nc) Sai\nDân số của khu vực $A$ tăng thêm từ $0$ đến $5$ năm là\n$\\int\\limits_{0}^{5} P_{A}^{/}(t)dt=\\int\\limits_{0}^{5} \\left( -\\frac{1}{2}t^{2}+2t+8 \\right)dt=44,167$ (ngàn người) $=44\\,\\,167$ (người).\nd) Sai\nDiện tích tô đậm trong hình vẽ bằng:\n$\\int\\limits_{0}^{5} \\left| -\\frac{1}{2}t^{2}+2t+8-8+\\frac{1}{2}t \\right|dt=\\int\\limits_{0}^{5} \\left| -\\frac{1}{2}t^{2}+\\frac{5}{2}t \\right|dt=10,417$(ngàn người) $=10\\,\\,417$ (người).",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008792",
+  "loai": "tu_luan",
+  "de": "(THPT Ngô Sĩ Liên - Bắc Giang 2025) Một chất điểm chuyển động theo quy luật với tốc độ $v\\left( t \\right)\\left( m/s \\right)$, biết rằng $v\\left( t \\right)$ có dạng đường parabol $\\left( P \\right)$ có đỉnh $I\\left( 2;3 \\right)$ khi $0\\le t\\le 5\\left( s \\right)$ và $v\\left( t \\right)$ có dạng đường thẳng khi $5\\le t\\le 10\\left( s \\right)$ (Hình vẽ).\na) Diện tích hình phẳng giới hạn bởi đồ thị hàm số $v\\left( t \\right),$trục $Ot$, và hai đường thẳng $t=0,t=10$ là $\\frac{395}{6}$ (đvdt).\nb) Quãng đường vật di chuyển được trong khoảng thời gian từ giây thứ 5 đến giây thứ 10 là $\\frac{385}{2}\\left( m \\right)$.\nc. Quãng đường vật di chuyển được trong khoảng thời gian từ $0$giây đến $5$ giây là $\\frac{115}{3}\\left( m \\right)$.\nd) Phương trình parabol $\\left( P \\right)$ là: $v\\left( t \\right)=2t^{2}-8t+10$.",
+  "loi_giai": "a) SAI\n+) Parabol $\\left( P \\right)$ có đỉnh $I\\left( 2;3 \\right)$ nên phương trình $\\left( P \\right)$ có dạng: $v=a\\left( t-2 \\right)^{2}+3$.\n+) $\\left( P \\right)$ đi qua điểm có tọa độ $\\left( 0;11 \\right)$ nên $11=4a+3\\Leftrightarrow a=2$.\nVậy phương trình $\\left( P \\right)$ là $v=2\\left( t-2 \\right)^{2}+3$ hay $v\\left( t \\right)=2t^{2}-8t+11$.\nTheo đồ thị, khi $t=5\\Rightarrow v\\left( 5 \\right)=21$.\n+) Đường thẳng $d$ có dạng: $v=mt+n$.\n+) Đường thẳng $d$ đi qua hai điểm $\\left( 5;21 \\right)$ và $\\left( 10;0 \\right)$ nên $\\left\\{ \\begin{array}{l} 5m+n=21 \\\\ 10m+n=0 \\end{array} \\right.\\Leftrightarrow\\left\\{ \\begin{array}{l} m=-\\frac{21}{5} \\\\ n=42 \\end{array} \\right.$\nVậy phương trình $d:v …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008773",
+  "loai": "trac_nghiem",
+  "de": "(THPT Yên Phong 1 Bắc Ninh 2019) Tính tích phân $I=\\int\\limits_{-1}^{0} \\left( 2x+1 \\right)dx$.",
+  "lua_chon": [
+   "$I=0$.",
+   "$I=1$.",
+   "$I=2$.",
+   "$I=-\\frac{1}{2}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$I=\\int\\limits_{-1}^{0} \\left( 2x+1 \\right)dx=\\left. \\left( x^{2}+x \\right) \\right|_{-1}^{0}=0-0=0$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008765",
+  "loai": "trac_nghiem",
+  "de": "(Cụm Ninh Giang - Tứ Kỳ - Gia Lộc 2025) Cho $\\int\\limits_{1}^{5} f\\left( x \\right)\\text{d}x=3;\\,\\int\\limits_{1}^{2} f\\left( x \\right)\\text{d}x=-2$. Tính $I=3\\int\\limits_{2}^{5} f\\left( x \\right)\\text{d}x$",
+  "lua_chon": [
+   "3.",
+   "-15.",
+   "15.",
+   "-3."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có: $I=3\\int\\limits_{2}^{5} f\\left( x \\right)\\text{d}x=3\\left( \\int\\limits_{1}^{5} f\\left( x \\right)\\text{d}x-\\int\\limits_{1}^{2} f\\left( x \\right)\\text{d}x \\right)=15$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008783",
+  "loai": "trac_nghiem",
+  "de": "(Mã 104 - 2020 Lần 2) Biết $\\int\\limits_{1}^{2} f(x)dx=2$ và $\\int\\limits_{1}^{2} g(x)dx=3.$Khi đó $\\int\\limits_{1}^{2} [f(x)+g(x)]dx$ bằng",
+  "lua_chon": [
+   "$1$.",
+   "$5$.",
+   "$-1$.",
+   "$6$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Chọn D\nTa có: $\\int\\limits_{1}^{2} [f(x)+g(x)]dx=\\int\\limits_{1}^{2} f(x)dx+\\int\\limits_{1}^{2} g(x)dx=2+3=5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008745",
+  "loai": "trac_nghiem",
+  "de": "(Sở Thái Nguyên 2025) Nguyên hàm của hàm số $f\\left( x \\right)=3x^{2}+2$ là:",
+  "lua_chon": [
+   "$2x+C$.",
+   "$3x^{2}+2x+C$.",
+   "$x^{3}+2x+C$.",
+   "$x^{3}+C$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn C\n$\\int \\left( 3x^{2}+2 \\right)\\text{d}x=x^{3}+2x+C$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008757",
+  "loai": "trac_nghiem",
+  "de": "(Sở Thanh Hóa 2025) Cho $I=\\int\\limits_{0}^{2} f\\left( x \\right)dx=3$. Khi đó $J=\\int\\limits_{0}^{2} \\left[ 4f\\left( x \\right)-3 \\right]dx$ bằng:",
+  "lua_chon": [
+   "$8$.",
+   "$6$.",
+   "$2$.",
+   "$4$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chọn B\nTa có $J=\\int\\limits_{0}^{2} \\left[ 4f\\left( x \\right)-3 \\right]dx=\\int\\limits_{0}^{2} 4f\\left( x \\right)dx-\\int\\limits_{0}^{2} 3dx=12-6=6$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008779",
+  "loai": "trac_nghiem",
+  "de": "(Mã 101-2022) Nếu $\\int\\limits_{-1}^{5} f\\left( x \\right)\\text{d}x=-3$ thì $\\int\\limits_{5}^{-1} f\\left( x \\right)\\text{d}x$ bằng",
+  "lua_chon": [
+   "$5$.",
+   "$6$.",
+   "$4$.",
+   "$3$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Chọn A\nTa có: $\\int\\limits_{5}^{-1} f\\left( x \\right)\\text{d}x=-\\int\\limits_{-1}^{5} f\\left( x \\right)\\text{d}x=-\\left( -3 \\right)=3$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008810",
+  "loai": "trac_nghiem",
+  "de": "Cho hình phẳng $D$ giới hạn bởi đồ thị hàm số $y=\\sqrt{5-x},x\\le 5$, trục tung, trục hoành. Thể tích khối tròn xoay tạo thành khi quay $D$quanh trục $Ox$là",
+  "lua_chon": [
+   "$\\frac{25\\pi}{2}$.",
+   "$\\frac{25}{2}$.",
+   "$25\\pi$.",
+   "$\\frac{25}{4}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Chọn A\nXét phương trình hoành độ giao điểm hai hàm số $y=\\sqrt{5-x},y=0$.\n$\\begin{array}{l} \\sqrt{5-x}=0 \\\\ \\Leftrightarrow 5-x=0 \\\\ \\Leftrightarrow x=5 \\end{array}$\n$D$ là hình phẳng giới hạn bởi đồ thị $\\left\\{ \\begin{array}{l} y=f\\left( x \\right)=\\sqrt{5-x} \\\\ y=0 \\\\ x=0;x=5 \\end{array} \\right.$\nThể tích khối tròn xoay khi quay$D$quanh $Ox$là\n$V=\\pi\\int\\limits_{0}^{5} \\left( \\sqrt{5-x} \\right)^{2}dx=\\pi\\int\\limits_{0}^{5} \\left( 5-x \\right)dx=\\pi\\left. \\left( 5x-\\frac{x^{2}}{2} \\right) \\right|_{0}^{5}=\\frac{25\\pi}{2}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008761",
+  "loai": "trac_nghiem",
+  "de": "(Sở Tuyên Quang 2025) Nếu $\\int\\limits_{0}^{3} f\\left( x \\right)dx=6$ thì $\\int\\limits_{0}^{3} \\left[ \\frac{1}{3}f\\left( x \\right)+2 \\right]dx$ bằng:",
+  "lua_chon": [
+   "$8$.",
+   "$6$.",
+   "$5$.",
+   "$9$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Chọn A\nTa có: $\\int\\limits_{0}^{3} \\left[ \\frac{1}{3}f\\left( x \\right)+2 \\right]dx=\\frac{1}{3}\\int\\limits_{0}^{3} f\\left( x \\right)dx+\\int\\limits_{0}^{3} 2dx=\\frac{1}{3}.6+\\left. 2x \\right|_{0}^{3}=2+6=8$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008770",
+  "loai": "trac_nghiem",
+  "de": "(THPT Bắc Đông Quan - Thái Bình 2025) Cho hàm số $y=f\\left( x \\right)$ có đạo hàm liên tục trên $\\left[ 0;2 \\right]$, $f\\left( 0 \\right)=1$ và $\\int\\limits_{0}^{2} f'\\left( x \\right)\\text{d}x=-3$. Tính $f\\left( 2 \\right)$?",
+  "lua_chon": [
+   "$f\\left( 2 \\right)=-4$.",
+   "$f\\left( 2 \\right)=-2$.",
+   "$f\\left( 2 \\right)=4$.",
+   "$f\\left( 2 \\right)=-3$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Chọn D\nTa có: $\\int\\limits_{0}^{2} f'\\left( x \\right)\\text{d}x=-3\\Leftrightarrow f\\left( 2 \\right)-f\\left( 0 \\right)=-3\\Leftrightarrow f\\left( 2 \\right)=-3+f\\left( 0 \\right)=-3+1=-2$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008775",
+  "loai": "trac_nghiem",
+  "de": "(KTNL GV Bắc Giang 2019) Tính tích phân $I=\\int\\limits_{0}^{2} (2x+1)dx$",
+  "lua_chon": [
+   "$I=5$.",
+   "$I=6$.",
+   "$I=2$.",
+   "$I=4$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chọn B\nTa có $I=\\int\\limits_{0}^{2} (2x+1)dx=\\left. \\left( x^{2}+x \\right) \\right|_{0}^{2}=4+2=6$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008767",
+  "loai": "trac_nghiem",
+  "de": "(Sở Hậu Giang 2025) Giá trị của tích phân $\\int\\limits_{-2}^{2} \\left| x^{2}-1 \\right|dx$ bằng.",
+  "lua_chon": [
+   "$\\frac{8}{3}$.",
+   "$4$.",
+   "$0$",
+   "$\\frac{4}{3}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có: $\\left| x^{2}-1 \\right|=\\left\\{ \\begin{array}{l} x^{2}-1\\text{ khi }x\\le-1 \\\\ -x^{2}+1\\text{ khi }-1<x<1 \\\\ x^{2}-1\\text{ khi }x\\ge 1 \\end{array} \\right.$.\nNên: $\\int\\limits_{-2}^{2} \\left| x^{2}-1 \\right|dx=\\int\\limits_{-2}^{-1} \\left( x^{2}-1 \\right)dx+\\int\\limits_{-1}^{1} \\left( -x^{2}+1 \\right)dx+\\int\\limits_{1}^{2} \\left( x^{2}-1 \\right)dx=\\frac{4}{3}+\\frac{4}{3}+\\frac{4}{3}=4$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008746",
+  "loai": "trac_nghiem",
+  "de": "(THPT Tư Nghĩa 1 - Quảng Ngãi 2025) Nguyên hàm của hàm số $f\\left( x \\right)=e^{x}$ là",
+  "lua_chon": [
+   "$e^{x}+C$.",
+   "$\\frac{e^{x+1}}{x+1}+C$.",
+   "$\\frac{e^{x}}{x}+C$.",
+   "$xe^{x-1}+C$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\int e^{x}\\text{d}x=e^{x}+C$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008786",
+  "loai": "trac_nghiem",
+  "de": "(Chu Văn An -Thái Nguyên - 2018) Tính tích phân $I=\\int\\limits_{-1}^{1} \\left| 2^{x}-2^{-x} \\right|dx$.",
+  "lua_chon": [
+   "$\\frac{1}{\\ln 2}$.",
+   "$\\ln 2$.",
+   "$2\\ln 2$.",
+   "$\\frac{2}{\\ln 2}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$I=\\int\\limits_{-1}^{1} \\left| 2^{x}-2^{-x} \\right|dx$ ta có $2^{x}-2^{-x}=0$ $\\Rightarrow x=0$.\n$\\Rightarrow I=\\int\\limits_{-1}^{1} \\left| 2^{x}-2^{-x} \\right|dx=\\int\\limits_{-1}^{0} \\left| 2^{x}-2^{-x} \\right|dx+\\int\\limits_{0}^{1} \\left| 2^{x}-2^{-x} \\right|dx=\\left| \\int\\limits_{-1}^{0} \\left( 2^{x}-2^{-x} \\right)dx \\right|+\\left| \\int\\limits_{0}^{1} \\left( 2^{x}-2^{-x} \\right)dx \\right|$\n$=\\left| \\left. \\left( \\frac{2^{x}+2^{-x}}{\\ln 2} \\right) \\right|_{-1}^{0} \\right|+\\left| \\left. \\left( \\frac{2^{x}+2^{-x}}{\\ln 2} \\right) \\right|_{0}^{1} \\right|=\\frac{1}{\\ln 2}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

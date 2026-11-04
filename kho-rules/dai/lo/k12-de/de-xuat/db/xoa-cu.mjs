@@ -171,8 +171,10 @@ try {
   const BANG_SONG = new Set(['diem_thi (cả bảng)', 'tai_lieu (cả bảng, bỏ updated_at)'])
 
   // ── 3. Đếm + sao lưu (trong tx, trước khi xoá) ────────────────────────────────────────────────────────
-  for (const [nhan, s] of CHAN) { const n = (await Q(s, [ID]))[0].n; if (n) nguy.push(`${nhan}: ${n} dòng`); in_(`  kiểm ${nhan}: ${n}`) }
+  for (const [nhan, s] of CHAN) { const n = (await Q(s, [ID]))[0].n; if (n && !nhan.startsWith('bai_cau_bao_loi')) nguy.push(`${nhan}: ${n} dòng`);   // báo lỗi của HS: chỉ mất liên kết bai_test_cau_id (SET NULL), dòng giữ ma_cau ⇒ cho phép + sao lưu (04/11)
+ in_(`  kiểm ${nhan}: ${n}`) }
   mkdirSync(BACKUP, { recursive: true })
+  { const bl = await Q(`select * from bai_cau_bao_loi where bai_test_cau_id in (${BTC})`, [ID]); writeFileSync(join(BACKUP, 'bai_cau_bao_loi-se-SET-NULL.json'), JSON.stringify(bl, null, 1)); in_(`  báo lỗi HS sẽ mất liên kết bai_test_cau_id (giữ ma_cau): ${bl.length} dòng, đã sao lưu`) }
   const KE = [] // {t, kieu, n, conLai, h, vd, file, md5file}
   for (const [t, pred, kieu] of B) {
     const rows = (await q2(`select to_jsonb(t) j from ${t} t where ${pred}`)).map((r) => r.j)
