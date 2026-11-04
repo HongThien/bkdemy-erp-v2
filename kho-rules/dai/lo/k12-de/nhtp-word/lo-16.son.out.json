@@ -1,0 +1,457 @@
+[
+ {
+  "id": "W0901",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=2x²; V/S=32π/5 ⇒ a-b=27≠17 (kiểm Simpson)"
+ },
+ {
+  "id": "W0902",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2·4=8"
+ },
+ {
+  "id": "W0903",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "G=3x²; V/S=48π/5 ⇒ c-d=43≠23 (kiểm Simpson)"
+ },
+ {
+  "id": "W0904",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x⁴/4"
+ },
+ {
+  "id": "W0905",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3·5=15"
+ },
+ {
+  "id": "W0906",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a^x/ln a; khớp file nguồn"
+ },
+ {
+  "id": "W0907",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2025^x/ln2025"
+ },
+ {
+  "id": "W0908",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2025^x/ln2025"
+ },
+ {
+  "id": "W0909",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3^x/ln3 - cos x"
+ },
+ {
+  "id": "W0910",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "f'=1+4/x²>0; min=f(1)=-3; f=0⇔x=±2; f<0 trên (1;2) nên S≠∫f"
+ },
+ {
+  "id": "W0911",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=π∫f²"
+ },
+ {
+  "id": "W0912",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3-8=-5"
+ },
+ {
+  "id": "W0913",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3+8=11"
+ },
+ {
+  "id": "W0914",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2^x/ln2"
+ },
+ {
+  "id": "W0915",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=π∫x⁶dx; đáp án B nằm trong đề"
+ },
+ {
+  "id": "W0916",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=2x-e^x+C, F(0)=-1+C=2024 ⇒ C=2025"
+ },
+ {
+  "id": "W0917",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "4+8=12"
+ },
+ {
+  "id": "W0918",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "S=∫5^x dx"
+ },
+ {
+  "id": "W0919",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x³+C"
+ },
+ {
+  "id": "W0920",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫(9-x²)dx từ -3 đến 3=36 (kiểm máy)"
+ },
+ {
+  "id": "W0921",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "k=1500; V(16)=104000≠140000; trừ rò rỉ 4800 ⇒ 99200"
+ },
+ {
+  "id": "W0922",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "sin x - x²"
+ },
+ {
+  "id": "W0923",
+  "dap_an": "8.64",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "M chân đường vuông góc từ D xuống AB; a+b+c=216/25=8.64 (kiểm quét máy; đề không nói làm tròn)"
+ },
+ {
+  "id": "W0924",
+  "dap_an": null,
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "đề mất công thức (omml chưa chuyển) — không giải được"
+ },
+ {
+  "id": "W0925",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "-2cos x + x"
+ },
+ {
+  "id": "W0926",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "-2cos x + x"
+ },
+ {
+  "id": "W0927",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "-2cos x + x"
+ },
+ {
+  "id": "W0928",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "S"
+  ],
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "lấy theo nhãn ĐÚNG/SAI trong file; đề gốc thiếu, đã kiểm Q(30)≈14971, t≤68"
+ },
+ {
+  "id": "W0929",
+  "dap_an": "C",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "không có phương án; lấy theo 'Chọn đáp án: C' trong đề"
+ },
+ {
+  "id": "W0930",
+  "dap_an": "305",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "kiểm lại V=97π≈304.73 ⇒ 305; không thấy hình"
+ },
+ {
+  "id": "W0931",
+  "dap_an": "B",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "không có phương án; e^x - x + C, theo 'Chọn B' trong đề"
+ },
+ {
+  "id": "W0932",
+  "dap_an": [
+   "S",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "kiểm b²=11520/11, V=68250π, S=1600π; đề gốc thiếu, theo nhãn khớp tính"
+ },
+ {
+  "id": "W0933",
+  "dap_an": "0.37",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "h(2)=13/15, Δh=11/30≈0.37; kiểm lại phương trình"
+ },
+ {
+  "id": "W0934",
+  "dap_an": "C",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "S=56/3, chi phí≈6533000 đ; theo 'Chọn C' trong đề, không có phương án"
+ },
+ {
+  "id": "W0935",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "e^x + cos x + C"
+ },
+ {
+  "id": "W0936",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "4+2=6"
+ },
+ {
+  "id": "W0937",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "C=2026"
+ },
+ {
+  "id": "W0938",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2+6=8"
+ },
+ {
+  "id": "W0939",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "4^x/ln4=4^x/(2ln2)"
+ },
+ {
+  "id": "W0940",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=π∫(x²+3)²"
+ },
+ {
+  "id": "W0941",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "f(3)-f(1)=2"
+ },
+ {
+  "id": "W0942",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "f(3)-f(1)=2"
+ },
+ {
+  "id": "W0943",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "khớp file nguồn"
+ },
+ {
+  "id": "W0944",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "khớp file nguồn"
+ },
+ {
+  "id": "W0945",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "khớp file nguồn"
+ },
+ {
+  "id": "W0946",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "π∫x⁴"
+ },
+ {
+  "id": "W0947",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "7^x/ln7"
+ },
+ {
+  "id": "W0948",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "tan x"
+ },
+ {
+  "id": "W0949",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "π·83/15 (kiểm Simpson)"
+ },
+ {
+  "id": "W0950",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "(9-3)/ln3 ⇒ a=6"
+ },
+ {
+  "id": "W0951",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "-cot x"
+ },
+ {
+  "id": "W0952",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "π·37/10 (kiểm Simpson)"
+ },
+ {
+  "id": "W0953",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "(25-5)/ln5 ⇒ a=20"
+ },
+ {
+  "id": "W0954",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "π/5"
+ },
+ {
+  "id": "W0955",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x⁴/4"
+ },
+ {
+  "id": "W0956",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "5^x<6 trên [0;1] nên A (5^x-6 âm) sai"
+ },
+ {
+  "id": "W0957",
+  "dap_an": [
+   "S",
+   "Đ",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "khoảng cách tối thiểu 100>50 ⇒ không nhiễu; |h|≤229.1 ⇒ 30.55 phút; OA≈510>250"
+ },
+ {
+  "id": "W0958",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2025^x/ln2025"
+ },
+ {
+  "id": "W0959",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2x³/3+5x²/2+3x"
+ },
+ {
+  "id": "W0960",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2^x/ln2 + sin x"
+ }
+]

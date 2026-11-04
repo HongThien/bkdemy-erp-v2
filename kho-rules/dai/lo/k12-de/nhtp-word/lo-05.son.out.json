@@ -1,0 +1,477 @@
+[
+ {
+  "id": "W0241",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=e^x, C=0, F(ln3)=3"
+ },
+ {
+  "id": "W0242",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Newton-Leibniz"
+ },
+ {
+  "id": "W0243",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫(1-sec²)=x-tan x"
+ },
+ {
+  "id": "W0244",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Tích phân từng số hạng, có -2026x"
+ },
+ {
+  "id": "W0245",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "f(2)-f(-1)=-9"
+ },
+ {
+  "id": "W0246",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Tính chất tổng"
+ },
+ {
+  "id": "W0247",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "-3+2=-1"
+ },
+ {
+  "id": "W0248",
+  "dap_an": [
+   "S",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a=4; c=8+12-7=13 (đề ghi -13)"
+ },
+ {
+  "id": "W0249",
+  "dap_an": "2",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "10-∫3x²=10-8"
+ },
+ {
+  "id": "W0250",
+  "dap_an": "252",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Giao x=0,-6; Simpson=252"
+ },
+ {
+  "id": "W0251",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Tính chất tổng"
+ },
+ {
+  "id": "W0252",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "-3+2=-1"
+ },
+ {
+  "id": "W0253",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Có 1/12 x⁴ và -2026x"
+ },
+ {
+  "id": "W0254",
+  "dap_an": [
+   "S",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a=4; c=13 (đề ghi -13)"
+ },
+ {
+  "id": "W0255",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "b=4; d=-16/3; c=57 (kiểm máy)"
+ },
+ {
+  "id": "W0256",
+  "dap_an": "-12",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=x³/3-2x²+15"
+ },
+ {
+  "id": "W0257",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "b: ∫cos=+sin; d: F=3x+2, tổng=15350"
+ },
+ {
+  "id": "W0258",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x⁴-2026x+C"
+ },
+ {
+  "id": "W0259",
+  "dap_an": "43",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "I=48-ln5, a-b=43"
+ },
+ {
+  "id": "W0260",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "f(2026)-f(1)=1"
+ },
+ {
+  "id": "W0261",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "5+4=9"
+ },
+ {
+  "id": "W0262",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫(1-1/x)=1-ln2"
+ },
+ {
+  "id": "W0263",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3x²/2+cos x"
+ },
+ {
+  "id": "W0264",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2·4=8"
+ },
+ {
+  "id": "W0265",
+  "dap_an": [
+   null,
+   null,
+   "S",
+   "Đ"
+  ],
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "ý a,b hỏng công thức (EQ-FAILED); c=3-ln4⇒a+b=7; d: S=8/3=3ln2-ln3⇒5"
+ },
+ {
+  "id": "W0266",
+  "dap_an": "A",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "F(-4)-F(-9); công thức tích phân hỏng nhưng suy được"
+ },
+ {
+  "id": "W0267",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "6-2=4"
+ },
+ {
+  "id": "W0268",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=∫S(x)dx"
+ },
+ {
+  "id": "W0269",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "c: đạo hàm 3x³-x²+3x+3 ≠ f"
+ },
+ {
+  "id": "W0270",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a: V=4.56π<5π; b=1024; c: I-J; d: A=I/5"
+ },
+ {
+  "id": "W0271",
+  "dap_an": "39.1",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=e^x+2x²+1; F(3)=39.0855"
+ },
+ {
+  "id": "W0272",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F(3)-F(0)=∫₀³f"
+ },
+ {
+  "id": "W0273",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫cos=sin"
+ },
+ {
+  "id": "W0274",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3(2x³-x)"
+ },
+ {
+  "id": "W0275",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "S=∫|sin2x|"
+ },
+ {
+  "id": "W0276",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3^x/ln3+ln|x|"
+ },
+ {
+  "id": "W0277",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3^x/ln3+ln|x|"
+ },
+ {
+  "id": "W0278",
+  "dap_an": [
+   "S",
+   "Đ",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a: đạo hàm ≠ f"
+ },
+ {
+  "id": "W0279",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "6-2=4"
+ },
+ {
+  "id": "W0280",
+  "dap_an": [
+   "S",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a: A=I/5; b=1024; c: I-J; d: V=4.56π<5π"
+ },
+ {
+  "id": "W0281",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "6x³-3x"
+ },
+ {
+  "id": "W0282",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=∫S(x)dx"
+ },
+ {
+  "id": "W0283",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫cos=sin"
+ },
+ {
+  "id": "W0284",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F(3)-F(0)=∫₀³f"
+ },
+ {
+  "id": "W0285",
+  "dap_an": [
+   null,
+   null,
+   null,
+   null
+  ],
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "cần đề: công thức không đọc được (omml)"
+ },
+ {
+  "id": "W0286",
+  "dap_an": null,
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "cần đề: công thức không đọc được (omml)"
+ },
+ {
+  "id": "W0287",
+  "dap_an": null,
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "cần đề: công thức không đọc được (omml)"
+ },
+ {
+  "id": "W0288",
+  "dap_an": null,
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "cần đề: công thức không đọc được (omml)"
+ },
+ {
+  "id": "W0289",
+  "dap_an": null,
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "cần đề: công thức không đọc được (omml)"
+ },
+ {
+  "id": "W0290",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "5-3=2"
+ },
+ {
+  "id": "W0291",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "y=3x² là đạo hàm, không phải nguyên hàm"
+ },
+ {
+  "id": "W0292",
+  "dap_an": [
+   "S",
+   "Đ",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a=-3cos x; H_a=3(1-cos a); cos a=-1/3 ⇒ a=1.911>7π/12"
+ },
+ {
+  "id": "W0293",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "4x+sin x+C; khớp nguồn"
+ },
+ {
+  "id": "W0294",
+  "dap_an": "4",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "TB=(1/6)∫₀⁶T=4"
+ },
+ {
+  "id": "W0295",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "e^x+x²+C"
+ },
+ {
+  "id": "W0296",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=ln|x-2|+2 ⇒ F(0)=2+ln2"
+ },
+ {
+  "id": "W0297",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F(b)-F(a)"
+ },
+ {
+  "id": "W0298",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "-4-2=-6"
+ },
+ {
+  "id": "W0299",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2+F(2)-F(1)=2+3=5"
+ },
+ {
+  "id": "W0300",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "½ln(2x+3)|=½ln(7/5)"
+ }
+]

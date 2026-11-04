@@ -1,0 +1,462 @@
+[
+ {
+  "id": "W0061",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "sin x + C"
+ },
+ {
+  "id": "W0062",
+  "dap_an": [
+   "S",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Giao 0,3; S1=9/2; S(trục Ox)=125/6 nên c sai; tỉ số 27/6 sai"
+ },
+ {
+  "id": "W0063",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "khớp nguồn"
+ },
+ {
+  "id": "W0064",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0065",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0066",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=π∫x dx"
+ },
+ {
+  "id": "W0067",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0068",
+  "dap_an": "7.37",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "k²=163/3, k≈7,3711; đã kiểm số"
+ },
+ {
+  "id": "W0069",
+  "dap_an": [
+   "S",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Nguyên hàm x³/3-4x; H là tam giác diện tích 2; giao x=-3,2"
+ },
+ {
+  "id": "W0070",
+  "dap_an": "6",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "b²-6b+2=0, tổng nghiệm dương 6; khớp nguồn"
+ },
+ {
+  "id": "W0071",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "đổi cận đổi dấu"
+ },
+ {
+  "id": "W0072",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "1/6"
+ },
+ {
+  "id": "W0073",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0074",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0075",
+  "dap_an": [
+   "S",
+   "S",
+   "S",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a: e^{2x}/2+2x; b: hằng số 1/2; c: chứa e^4 nên sai; d: ∫|1-x²|=2"
+ },
+ {
+  "id": "W0076",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0077",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "31/3; đã kiểm số"
+ },
+ {
+  "id": "W0078",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "π(π-2)/4; đã kiểm số"
+ },
+ {
+  "id": "W0079",
+  "dap_an": "1",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=π/2(e²-1): a=2,b=-1"
+ },
+ {
+  "id": "W0080",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "6"
+ },
+ {
+  "id": "W0081",
+  "dap_an": [
+   "S",
+   "S",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a: e²-e+3/2; b: diện tích e²-3; c: C=3 ⇒ (6e+13)/6; d: x²/2"
+ },
+ {
+  "id": "W0082",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0083",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "6"
+ },
+ {
+  "id": "W0084",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0085",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "74-64=10"
+ },
+ {
+  "id": "W0086",
+  "dap_an": "C",
+  "do_chac": "vua",
+  "de_sai": true,
+  "ghi": "F(4)-F(2)=-3; đề ghi đoạn [1;2] nhưng dùng F(4): lỗi đề nhẹ"
+ },
+ {
+  "id": "W0087",
+  "dap_an": null,
+  "do_chac": null,
+  "de_sai": false,
+  "ghi": "cần xem lựa chọn (công thức lỗi); đáp án x⁴/4+C"
+ },
+ {
+  "id": "W0088",
+  "dap_an": null,
+  "do_chac": null,
+  "de_sai": false,
+  "ghi": "cần xem công thức (đề lỗi chuyển đổi)"
+ },
+ {
+  "id": "W0089",
+  "dap_an": null,
+  "do_chac": null,
+  "de_sai": false,
+  "ghi": "cần xem công thức (đề lỗi chuyển đổi)"
+ },
+ {
+  "id": "W0090",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3·5=15"
+ },
+ {
+  "id": "W0091",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F(2)-F(1)=-4; khớp nguồn"
+ },
+ {
+  "id": "W0092",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F'=5^x"
+ },
+ {
+  "id": "W0093",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "-4"
+ },
+ {
+  "id": "W0094",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "tích phân không tách tích"
+ },
+ {
+  "id": "W0095",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0096",
+  "dap_an": "541",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "π[3x³+6lnx-1/(3x³)]₂⁴≈540,97; đã kiểm số"
+ },
+ {
+  "id": "W0097",
+  "dap_an": "-2",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=-2cosx-sinx-1"
+ },
+ {
+  "id": "W0098",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "5-3=2"
+ },
+ {
+  "id": "W0099",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫[2+f]=2x+∫f"
+ },
+ {
+  "id": "W0100",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0101",
+  "dap_an": null,
+  "do_chac": null,
+  "de_sai": false,
+  "ghi": "cần xem lựa chọn (công thức lỗi); đáp án x⁴/2+C"
+ },
+ {
+  "id": "W0102",
+  "dap_an": [
+   "S",
+   "S",
+   "S",
+   "S"
+  ],
+  "do_chac": "vua",
+  "de_sai": true,
+  "ghi": "Đề ghi f=(x²-x-1)/x nên f=x-1-1/x: a,b,c,d đều sai; có lẽ đề gốc (2x²-x-1)/x"
+ },
+ {
+  "id": "W0103",
+  "dap_an": "3.3",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "10/3≈3,3"
+ },
+ {
+  "id": "W0104",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0105",
+  "dap_an": [
+   "Đ",
+   null,
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "b: F có ln x (không |x|) trên ℝ{0} mơ hồ nên null; c: C=1, F(2)=7+ln2 đúng"
+ },
+ {
+  "id": "W0106",
+  "dap_an": [
+   "S",
+   "S",
+   "S",
+   "S"
+  ],
+  "do_chac": "vua",
+  "de_sai": true,
+  "ghi": "Trùng W0102: đề sai (có lẽ (2x²-x-1)/x), theo đề thì đều sai"
+ },
+ {
+  "id": "W0107",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "14-6=8"
+ },
+ {
+  "id": "W0108",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3+25"
+ },
+ {
+  "id": "W0109",
+  "dap_an": null,
+  "do_chac": null,
+  "de_sai": false,
+  "ghi": "cần xem lựa chọn (công thức lỗi); đáp án x⁴+C"
+ },
+ {
+  "id": "W0110",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3+15"
+ },
+ {
+  "id": "W0111",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "28"
+ },
+ {
+  "id": "W0112",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "-3+1=-2"
+ },
+ {
+  "id": "W0113",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0114",
+  "dap_an": [
+   "S",
+   "S",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a: 8/3; b: π/5 (thiếu π); c: 4/3; d: max h=2, S=h³/6=4/3"
+ },
+ {
+  "id": "W0115",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "π/30; đã kiểm số"
+ },
+ {
+  "id": "W0116",
+  "dap_an": "7.5",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "0,005·1500; đã kiểm số"
+ },
+ {
+  "id": "W0117",
+  "dap_an": "3",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "=1+√2: a=1,b=1"
+ },
+ {
+  "id": "W0118",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "5+2=7"
+ },
+ {
+  "id": "W0119",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0120",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ }
+]

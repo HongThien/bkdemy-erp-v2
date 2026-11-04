@@ -1,0 +1,16 @@
+const S=(f,a,b,n=20000)=>{const h=(b-a)/n;let s=f(a)+f(b);for(let i=1;i<n;i++)s+=(i%2?4:2)*f(a+i*h);return s*h/3};
+const P=Math.PI,E=Math.E;
+console.log('W0062 S1',S(x=>3*x-x*x,0,3),'S2',S(x=>Math.min(2*x,-x*x+5*x),0,5),'par',S(x=>-x*x+5*x,0,5));
+const k=Math.sqrt(163/3);console.log('W0068',k,S(x=>x,1,k)/S(x=>x,k,9));
+const f75=x=>Math.exp(2*x)/2+2*x+0.5;console.log('W0075 c',S(f75,0,2),E*E/4+1.5,'d',S(x=>Math.abs(x*x-1),0,2));
+console.log('W0077',S(x=>Math.abs(2*x*x-6*x),-1,2),31/3);
+console.log('W0078',P*S(x=>Math.sin(x/2)**2,0,P/2),P*(P-2)/4);
+console.log('W0079',P*S(x=>Math.exp(2*x),0,1),P/2*(E*E-1));
+console.log('W0081 a',S(x=>x+Math.exp(x),1,2),E*E-E+1.5,'b',S(x=>Math.abs(Math.exp(x)-1),0,2),57/13,'c',S(x=>x*x/2+Math.exp(x)+3,0,1),(6*E+13)/6);
+console.log('W0096',P*S(x=>(3*x+1/x/x)**2,2,4));
+console.log('W0114 c',S(x=>4*x-3-x*x,1,3),'b',P*S(x=>x**4,0,1));
+console.log('W0115',P*S(x=>(x-x*x)**2,0,1),P/30);
+console.log('W0116',0.005*S(x=>100+20*x-2*x*x,0,15));
+console.log('W0117',S(x=>Math.sin(x)+3*Math.cos(x),0,P/4),Math.SQRT2+1);
+console.log('W0097', -2*Math.cos(P/2)-Math.sin(P/2)-1, -2*Math.cos(P)-Math.sin(P)-1);
+console.log('W0070',3+Math.sqrt(7),3-Math.sqrt(7),(b=>S(x=>3*x*x-12*x,0,b)/b)(3+Math.sqrt(7)));

@@ -1,0 +1,283 @@
+#0 W0781 tra_loi_ngan ["id","loai","de","loi_giai_file"]
+DE: Cho hàm số $f\left( x \right)=\left\{ \begin{array}{l} 3x^{2}-2x+m\,\,\,\,\,\,\text{khi}\,\,x\ge 1 \\ 1-4x\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\text{khi}\,\,x<1 \end{array} \right.$ ($m$ là tham số thực) liên tục trên $\mathbb{R}$. Biết rằng $f\left( x \right)$ có nguyên hàm trên $\mathbb{R}$ là $F\left( x \right)$ thỏa mãn $F\left( -2 \right)=-6$.
+a) $m=-4$.
+b) $F\left( x \right)=\left\{ \begin{array}{l} x^{3}-x^{2}-4x+7\,\,\,\,\,\text{khi}\,\,x\ge 1 \\ x-2x{}^{2}\,\,+4\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\text{khi}\,\,x<1 \end{array} \right.$.
+c) $\int\limits_{-1}^{5} f\left( x \right)dx=108$.
+d) $\int\limits_{1}^{e^{2}} f\left( \ln x \right)\frac{1}{x}dx=3$.
+LG: a) Đúng | Ta có $f\left( x \right)$ liên tục trên $\mathbb{R}$ nên $f\left( x \right)$ liên tục tại $x=1$. | Do đó $\lim\limits_{x\rightarrow 1^{-}}f\left( x \right)=\lim\limits_{x\rightarrow 1^{+}}f\left( x \right)=f\left( 1 \right)$$\Leftrightarrow m+1=-3\Leftrightarrow m=-4$. | b) Đúng. | Ta có $F\le
+
+#1 W0782 tra_loi_ngan ["id","loai","de","loi_giai_file"]
+DE: Cho hàm số $f\left( x \right)=3x^{2}+2x$. Trong các hàm số dưới đây, hàm số nào là một nguyên hàm của $f\left( x \right)$ trên $\mathbb{R}$?
+A. $F_{1}\left( x \right)=x^{3}+x^{2}-4$. B. $F_{2}\left( x \right)=\frac{x^{3}}{3}+\frac{x^{2}}{2}$. C. $F_{3}\left( x \right)=x^{3}-x^{2}+1$. D. $F_{4}\left( x \right)=3x^{3}+x^{2}$
+LG: Ta có: $F_{1}^{\prime}\left( x \right)=3x^{2}+2x$; $F'_{2}\left( x \right)=x^{2}+x$; $F'_{3}\left( x \right)=3x^{2}-2x$; $F_{4}^{\prime}\left( x \right)=9x^{2}+2x$. | Suy ra: $F_{1}^{\prime}\left( x \right)=3x^{2}+2x=f\left( x \right)$. | Vậy $F_{1}\left( x \right)=x^{3}+x^{2}-4$ là một nguyên hàm của
+
+#2 W0783 tra_loi_ngan ["id","loai","de"]
+DE: Ta có: $\int\limits_{0}^{1} \left( 3x+1 \right)\left( x+3 \right)\text{d}x=\int\limits_{0}^{1} \left( 3x^{2}+10x+3 \right)\text{d}x=\left. \left( x^{3}+5x^{2}+3x \right) \right|_{0}^{1}=9$.
+Vậy : $\int\limits_{0}^{1} \left( 3x+1 \right)\left( x+3 \right)\text{d}x=9$.
+
+#3 W0784 dung_sai ["id","loai","de","menh_de"]
+DE: Đặt $t=3x-2$ $\Rightarrow\text{d}t=3\text{d}x\Rightarrow\text{d}x=\frac{\text{d}t}{3}$. Đúng
+Khi đó.
+MD: ["$\\int 2x\\left( 3x-2 \\right)^{6}\\text{d}x=\\frac{2}{3}\\int \\frac{t+2}{3}t^{6}\\text{d}t$$=\\frac{2}{9}\\int \\left( t^{7}+2t^{6} \\right)\\text{d}t=\\frac{2}{9}\\left( \\frac{t^{8}}{8}+\\frac{2t^{7}}{7} \\right)+C$ . Sai","$=\\frac{1}{36}\\left( 3x-2 \\right)^{8}+\\frac{4}{63}\\left( 3x-2 \\right)^{7}+C$. Sai","Từ đó ta có $A=\\frac{1}{36}$, $B=\\frac{4}{63}$. Suy ra $12A+7B=\\frac{7}{9}$. Đúng"]
+
+#4 W0785 trac_nghiem ["id","loai","de"]
+DE: Dựa vào bảng công thức nguyên hàm cơ bản. Chọn C
+
+#5 W0786 trac_nghiem ["id","loai","de"]
+DE: Diện tích hình phẳng đã cho được tính bởi công thức $S=\int\limits_{0}^{2} 3^{x}dx$
+
+#6 W0787 tra_loi_ngan ["id","loai","de"]
+DE: Ta có: $f(x)=\left( x^{2}-2 \right)(2x+1)=2x^{3}+x^{2}-4x-2$.
+Suy ra $F(x)=\int f(x)dx=\int \left( 2x^{3}+x^{2}-4x-2 \right)dx$
+$\begin{array}{l} =\int 2x^{3}\ dx+\int x^{2}\ dx-\int 4x\ dx-\int 2\ dx \\ =\frac{1}{2}x^{4}+\frac{1}{3}x^{3}-2x^{2}-2x+C,C\in R \end{array}$
+Mà $F(-1)=\frac{1}{6}$ nên suy ra $C=0$. Vậy hàm số $F(x)=\frac{1}{2}x^{4}+\frac{1}{3}x^{3}-2x^{2}-2x$. Suy ra $F\left( -\frac{1}{2} \right)=\frac{47}{96}\approx 0,49$.
+
+#7 W0788 dung_sai ["id","loai","de","menh_de","loi_giai_file"]
+DE: Cho hàm số $f\left( x \right)=x^{2}-3x+2$. Khi đó
+MD: ["$\\int\\limits_{0}^{1} f\\left( x \\right)dx=\\frac{5}{6}$.","$\\int \\frac{f\\left( x \\right)}{x}dx=\\frac{x^{2}}{2}-3x-2\\ln x+C\\,\\,\\left( \\forall x\\in\\left( 0;+\\infty \\right) \\right)$.","Thể tích khối tròn xoay sinh ra bởi hình phẳng giới hạn bởi đồ thị hàm số $y=f\\left( x \\right)$ và trục hoành là $V=\\frac{\\pi}{30}$.","Gọi $d$ là đường thẳng đi qua hai điểm $A\\left( 0;2 \\right);B\\left( 1;1 \\right)$. Diện tích hình phẳng được giới hạn bởi đồ thị hàm số $y=f\\left( x \\right);\\,$ đường thẳng $d$ và các đường thẳng $x=1;x=4$ là $S=\\frac{20}{3}$"]
+LG: a) Ta có: $\int\limits_{0}^{1} f\left( x \right)dx=\int\limits_{0}^{1} \left( x^{2}-3x+2 \right)dx=\frac{5}{6}$. Đúng | b) $\int \frac{f\left( x \right)}{x}dx=\int \left( x-3+\frac{2}{x} \right)dx=\frac{x^{2}}{2}-3x+2\ln x+C\,\,\left( \forall x\in\left( 0;+\infty \right) \right)$. Đúng. | c) Phương tr
+
+#8 W0789 trac_nghiem ["id","loai","de","lua_chon","dap_an_nguon_file","loi_giai_file"]
+DE: Cho hàm số $f\left( x \right)=4+2\cos x$. Khẳng định nào dưới đây đúng?
+LC: ["$\\int f\\left( x \\right)dx=-2\\sin x+C$.","$\\int f\\left( x \\right)dx=4x+2\\sin x+C$.","$\\int f\\left( x \\right)dx=4x-2\\sin x+C$.","$\\int f\\left( x \\right)dx=4x+2\\cos x+C$."]
+DA: B
+LG: Chọn B. | Ta có $\int f\left( x \right)dx=4x+2\sin x+C$.
+
+#9 W0790 trac_nghiem ["id","loai","de","lua_chon","dap_an_nguon_file","loi_giai_file"]
+DE: Câu 12. Hàm số $F\left( x \right)=2x+\sin 2x$ là một nguyên hàm của hàm số nào dưới đây?
+LC: ["$x^{2}+\\frac{1}{2}\\cos 2x$.","$2+2\\cos 2x$.","$x^{2}-\\frac{1}{2}\\cos 2x$.","$2-2\\cos 2x$."]
+DA: B
+LG: Chọn B | Ta có $F\left( x \right)=2x+\sin 2x\Rightarrow F'\left( x \right)=2+2\cos 2x$. | Vậy hàm số $F\left( x \right)=2x+\sin 2x$ là một nguyên hàm của hàm số $2+2\cos 2x$.
+
+#10 W0791 trac_nghiem ["id","loai","de","lua_chon","dap_an_nguon_file","loi_giai_file"]
+DE: Cho hàm số $y=f\left( x \right)$ là một nguyên hàm của hàm số $y=x^{3}$.Phát biểu nào sau đây đúng?
+LC: ["$f\\left( x \\right)=\\frac{x^{4}}{4}+C$.","$f\\left( x \\right)=3x^{2}$.","$f\\left( x \\right)=4x^{3}$.","$f\\left( x \\right)=\\frac{x^{4}}{4}$."]
+DA: A
+LG: Chọn A | Ta có $\int x^{3}\text{d}x=\frac{x^{4}}{4}+C$.
+
+#11 W0792 dung_sai ["id","loai","de","menh_de","loi_giai_file"]
+DE: Xét tính đúng sai của các mệnh đề sau
+MD: ["$\\int \\cos xdx=\\sin x+C$","$I=\\int\\limits_{1}^{e} \\left( \\frac{1}{x}-\\frac{1}{x^{2}} \\right)dx=\\frac{1}{e}.$","Biết $\\int\\limits_{3}^{5} \\frac{x^{2}+x+1}{x}\\text{d}x=a+\\ln\\frac{b}{3}$ với $a$, $b$ là các số nguyên. Khi đó, $S=a-2b=0.$","Diện tích hình phẳng giới hạn bởi đồ thị hai hàm số $y=x^{2}+1$, và $y=1$ và đường thẳng $x=1$ bằng $\\frac{4}{3}$."]
+LG: (a) Đúng : Ta có: $\int \cos xdx=\sin x+C$. | (b) Đúng | $I=\int\limits_{1}^{e} \left( \frac{1}{x}-\frac{1}{x^{2}} \right)dx=\left. \left( \ln\left| x \right|+\frac{1}{x} \right) \right|_{1}^{e}=\frac{1}{e}$. | (c) Đúng | Ta có [[EQ-FAILED:oleObject273.bin:template sel=21 var=0x0030: expected 3 slots (m
+
+#12 W0793 trac_nghiem ["id","loai","de","lua_chon","dap_an_nguon_file","loi_giai_file"]
+DE: Nếu $\int\limits_{-2}^{1} f\left( x \right)dx=-1$ và $\int\limits_{1}^{7} f\left( x \right)dx=-5$ thì $\int\limits_{-2}^{7} f\left( x \right)dx$ bằng
+LC: ["$-4$.","$5$.","$-6$.","$4$."]
+DA: C
+LG: Ta có $\int\limits_{-2}^{7} f\left( x \right)dx=\int\limits_{-2}^{1} f\left( x \right)dx+\int\limits_{1}^{7} f\left( x \right)dx=-1-5=-6.$
+
+#13 W0794 tra_loi_ngan ["id","loai","de"]
+DE: [[EQ-FAILED:oleObject338.bin:unmapped private-use MTCode U+E98F (typeface 11, font position 103)]] Gọi $V_{1}$ là thể tích của khối tròn xoay được tạo thành khi cho hình phẳng giới hạn bởi đồ thị hàm số $y=x+\frac{1}{x}$, trục hoành và hai đường thẳng $x=1,x=4$ quay quanh trục $Ox$. Khi đó
+$V_{1}=\pi\int\limits_{1}^{4} \left( x+\frac{1}{x} \right)^{2}\ dx=\frac{111\pi}{4}\,\,\left( dm^{3} \right)$.
+[[EQ-FAILED:oleObject344.bin:unmapped private-use MTCode U+E98F (typeface 11, font position 103)]] Gọi $V_{2}$ là thể tích của khối tròn xoay được tạo thành khi cho hình phẳng giới hạn bởi đồ thị hàm số $y=x$, trục hoành và hai đường thẳng $x=1,x=4$ quay quanh trục $Ox$. Khi đó $V_{2}=\pi\int\limits_{1}^{4} x^{2}\ dx=21\,\,\left( dm^{3} \right)$.
+Vậy thể tích của bề dày chiếc bát thủy tinh đó là:
+$V=V_{1}-V_{2}=\frac{111\pi}{4}-21\pi=\frac{27\pi}{4}\approx 21,2\,\,\left( dm^{3} \right).$
+Đáp số: 21,2.
+
+#14 W0795 trac_nghiem ["id","loai","de","lua_chon","dap_an_nguon_file","loi_giai_file"]
+DE: Họ nguyên hàm của hàm số $f\left( x \right)=\sin x$ là?
+LC: ["$-\\cos x+C$.","$\\cos x+C$.","$\\sin x+C$.","$-\\sin x+C$."]
+DA: A
+LG: Chọn A. | Ta có $\int \sin x\text{d}x=-\cos x+C$ với $C$ là hằng số.
+
+#15 W0796 dung_sai ["id","loai","de"]
+DE: Do $s'(t)=v(t)$ nên quãng đường $s(t)$ mà xe ô tô đi được trong thời gian $t$ (giây) là một nguyên hàm của hàm số $v(t)$. Ta có: $\int (-10t+20)dt=-5t^{2}+20t+C$ với $C$ là hằng số. Khi đó, ta gọi hàm số $s(t)=-5t^{2}+20t+C$.
+[[EQ-FAILED:oleObject326.bin:unmapped private-use MTCode U+E98F (typeface 11, font position 103)]] Do $s(0)=0$ nên $C=0$. Suy ra $s(t)=-5t^{2}+20t$.
+[[EQ-FAILED:oleObject330.bin:unmapped private-use MTCode U+E98F (typeface 11, font position 103)]] Xe ô tô dừng hẳn khi $v(t)=0$ hay $-10t+20=0\Leftrightarrow t=2$. Vậy thời gian kể từ lúc đạp phanh đến khi xe ô tô dừng hẳn là 2 giây.
+[[EQ-FAILED:oleObject333.bin:unmapped private-use MTCode U+E98F (typeface 11, font position 103)]] Ta có xe ô tô đang chạy với tốc độ $65\ km/h\approx 18\ m/s$.
+Do đó, quãng đường xe ô tô còn di chuyển được kể từ lúc đạp phanh đến khi xe dừng hẳn là: $s(2)=-5\cdot 2^{2}+20\cdot 2=20\,(\ m)$.
+Vậy quãng đường xe ô tô đã di chuyển kể từ lúc người lái xe phát hiện chướng ngại vật trên đường đến khi xe ô tô dừng hẳn là: $18+20\approx 38\,(\ m)$.
+Do $38<50$ nên xe ô tô đã dừng hẳn trước khi va chạm với chướng ngại vật trên đường.
+Đáp án: a) Đ, b) Đ, c) S, d) Đ.
+
+#16 W0797 dung_sai ["id","loai","de","menh_de"]
+DE: Cho hàm số $f(x)=x+1$.
+MD: ["$\\int f\\left( x \\right)\\text{d}x\\text{ =}x^{2}+x+C$.","$\\int\\limits_{0}^{1} \\left[ \\left( x-1 \\right).f\\left( x \\right) \\right]dx=-\\frac{2}{3}$","Gọi $F\\left( x \\right)$ là một nguyên hàm của $f\\left( x \\right)$. Biết $F\\left( 1 \\right)=2$ Thì $F\\left( x \\right)=x^{2}+x-1$.","Gọi $F\\left( x \\right)$ là một nguyên hàm của $f\\left( x \\right)$. Biết $F\\left( 1 \\right)=2$ và $\\frac{1}{F\\left( 1 \\right)}+\\frac{1}{F\\left( 2 \\right)}+...+\\frac{1}{F\\left( 99 \\right)}+\\frac{1}{F\\left( 100 \\right)}=\\frac{a}{b}$ thì $a+b=201$ ."]
+
+#17 W0798 trac_nghiem ["id","loai","de","lua_chon","dap_an_nguon_file","loi_giai_file"]
+DE: Tìm $\int \left( 2x+1 \right)\,\text{d}x$.
+LC: ["$2x+1+C$.","$x^{2}+x$.","$x^{2}+x+C$.","$2+C$."]
+DA: C
+LG: $\int \left( 2x+1 \right)\,\text{d}x=x^{2}+x+C$ vì $\left( x^{2}+x+C \right)^{\prime}=2x+1$.
+
+#18 W0799 trac_nghiem ["id","loai","de","lua_chon","dap_an_nguon_file","loi_giai_file"]
+DE: Cho $\int\limits_{0}^{\frac{\pi}{2}} f\left( x \right)\text{d}x=5$. Tính $I=\int\limits_{0}^{\frac{\pi}{2}} \left[ f\left( x \right)+2\sin x \right]\text{d}x=5$.
+LC: ["$I=5+\\frac{\\pi}{2}$.","$I=3$.","$I=5+\\pi$.","$I=7$."]
+DA: D
+LG: Ta có | $I=\int\limits_{0}^{\frac{\pi}{2}} \left[ f\left( x \right)\,+2\sin x \right]\,\text{d}x=\int\limits_{0}^{\frac{\pi}{2}} f\left( x \right)\,\text{d}x\,\text{+2}\int\limits_{0}^{\tfrac{\pi}{2}} \sin x\,\text{d}x$$=\int\limits_{0}^{\frac{\pi}{2}} f\left( x \right)\,\text{d}x\,\,-\left. 2\cos x 
+
+#19 W0800 trac_nghiem ["id","loai","de","lua_chon","dap_an_nguon_file","loi_giai_file"]
+DE: Hàm số nào sau đây là một nguyên hàm của hàm số $y=\cot^{2}x$?
+LC: ["$y=\\frac{\\cot^{3}x}{3}$.","$y=\\cot x-x$.","$y=\\cot x$.","$y=-\\cot x-x$."]
+DA: D
+LG: Chọn D | [[EQ-FAILED:oleObject222.bin:template sel=21 var=0x0020: expected 3 slots (main, lower, upper), got 4]]
+
+#20 W0801 trac_nghiem ["id","loai","de","lua_chon","dap_an_nguon_file","loi_giai_file"]
+DE: Cho hàm số $y=f\left( x \right)$ liên tục trên [[EQ-FAILED:oleObject224.bin:unmapped private-use MTCode U+EF0A (typeface 24)]]. Biểu thức $\int\limits_{5}^{3} f\left( x \right)dx$ bằng
+LC: ["2 .","$\\frac{1}{2}$.","$-2$.","$-\\frac{1}{2}$."]
+DA: C
+LG: Chọn C | Áp dụng tính chất $\int\limits_{5}^{3} f\left( x \right)dx$$=-\int\limits_{3}^{5} f\left( x \right)dx=-2$.
+
+#21 W0802 tra_loi_ngan ["id","loai","de"]
+DE: Trong không gian $Oxyz$, một khinh khí cầu ở toạ độ $A\left( -16;-10;10 \right)$ bắt đầu bay với véc tơ vận tốc không đổi $\overrightarrow{v}\left( 4;3;-1 \right)$ (đơn vị vận tốc là km/h) và dự kiến bay trong thời gian 10 giờ. Biết trạm kiểm soát không lưu đặt ở vị trí gốc toạ độ $O$ kiểm soát được các vật thể cách trạm một khoảng tối đa bằng $12$ km. Thời gian kể từ khi trạm kiểm soát không lưu phát hiện ra khinh khí cầu đến khi khinh khí cầu ra khỏi vùng kiểm soát là bao nhiêu phút?
+
+#22 W0803 tra_loi_ngan ["id","loai","de"]
+DE: Trong không gian $Oxyz$, một khinh khí cầu ở toạ độ $A\left( -12;-7;9 \right)$ bắt đầu bay với véc tơ vận tốc không đổi $\overrightarrow{v}\left( 8;6;-2 \right)$ (đơn vị vận tốc là km/h) và dự kiến bay trong thời gian 10 giờ. Biết trạm kiểm soát không lưu được đặt ở vị trí gốc toạ độ $O$ kiểm soát được các vật thể cách trạm một khoảng tối đa bằng $12$ km. Thời gian kể từ khi trạm kiểm soát không lưu phát hiện ra khinh khí cầu đến khi khinh khí cầu ra khỏi vùng kiểm soát là bao nhiêu phút?
+
+#23 W0804 tra_loi_ngan ["id","loai","de"]
+DE: Trong không gian $Oxyz$, một khinh khí cầu ở toạ độ $A\left( -16;-10;10 \right)$ bắt đầu bay với véc tơ vận tốc không đổi $\overrightarrow{v}\left( 4;3;-1 \right)$ (đơn vị vận tốc là km/h) và dự kiến bay trong thời gian 10 giờ. Biết trạm kiểm soát không lưu được đặt ở vị trí gốc toạ độ $O$ kiểm soát được các vật thể cách trạm một khoảng tối đa bằng $12$ km. Thời gian kể từ khi trạm kiểm soát không lưu phát hiện ra khinh khí cầu đến khi khinh khí cầu ra khỏi vùng kiểm soát là bao nhiêu phút?
+
+#24 W0805 dung_sai ["id","loai","de","menh_de"]
+DE: Cho hàm số $f\left( x \right)=\frac{x^{2}+5x-7}{x}.$
+MD: ["$\\int f\\left( x \\right)\\,\\text{d}x=\\frac{x^{2}}{2}+5x-7\\ln x+C.$","Hàm số $f\\left( x \\right)$ là một nguyên hàm của hàm số $g\\left( x \\right)=\\frac{x^{2}+7}{x^{2}}.$","Biết $\\int\\limits_{-2}^{-1} f\\left( x \\right)\\,\\text{d}x=\\frac{m}{n}+m\\ln n,\\,$ với $m,\\,n\\in\\mathbb{N}^{*},\\,\\frac{m}{n}$ là phân số tối giản. Tổng $m+2025n=4057.$","Gọi $G\\left( x \\right)$ là nguyên hàm của hàm số $f\\left( x \\right)$ thoả mãn $G\\left( 1 \\right)=4$ và $G\\left( 3 \\right)+G\\left( -9 \\right)=20.$ Khi đó $G\\left( -6 \\right)=a\\ln 2+b\\ln 3+c,$ với $a,\\,b,\\,c$ là các số hữu tỉ. Tổng $a+b+c=\\frac{2}{3}.$"]
+
+#25 W0806 trac_nghiem ["id","loai","de","lua_chon","dap_an_nguon_file"]
+DE: Cho hàm số $y=f\left( x \right)$ liên tục trên đoạn $\left[ a;b \right]$ và $c$ là số thực tùy ý thuộc đoạn $\left[ a;b \right].$ Nếu $\int\limits_{a}^{b} f(x)\text{d}x=3$ và $\int\limits_{a}^{c} f(x)\text{d}x=8$ thì tích phân $\int\limits_{c}^{b} f(x)\text{d}x$ bằng
+LC: ["$11.$","$-5.$","$5.$","$-11.$"]
+DA: B
+
+#26 W0807 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Cho hàm số $y=f(x)$ liên tục trên đoạn $\text{[}2;\,7].$ Hình phẳng giới hạn bởi đồ thị hàm số $y=f(x),$ trục hoành và hai đường thẳng $x=2,\,x=7$ có diện tích là:
+LC: ["$S=\\left| \\int\\limits_{2}^{7} f(x)\\text{d}x \\right|.$","$S=\\text{π}\\int\\limits_{2}^{7} \\left| f(x) \\right|\\text{d}x.$","$S=\\text{π}\\int\\limits_{2}^{7} f^{2}(x)\\text{d}x.$","$S=\\int\\limits_{2}^{7} \\left| f(x) \\right|\\text{d}x.$"]
+
+#27 W0808 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Nguyên hàm của hàm số $f(x)=\sin x$ là:
+LC: ["$\\cos x+C.$","$\\cot x+C.$","$-\\cos x+C.$","$-\\cot x+C.$"]
+
+#28 W0809 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Nguyên hàm của hàm số $f(x)=\cos x$ là:
+LC: ["$\\sin x+C.$","$\\tan x+C.$","$-\\tan x+C.$","$-\\sin x+C.$"]
+
+#29 W0810 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Cho hàm số $y=f(x)$ liên tục trên đoạn $\text{[1};\,5].$ Hình phẳng giới hạn bởi đồ thị hàm số $y=f(x),$ trục hoành và hai đường thẳng $x=1,\,x=5$ có diện tích là:
+LC: ["$S=\\text{π}\\int\\limits_{1}^{5} \\left| f(x) \\right|\\text{d}x.$","$S=\\int\\limits_{1}^{5} \\left| f(x) \\right|\\text{d}x.$","$S=\\left| \\int\\limits_{1}^{5} f(x)\\text{d}x \\right|.$","$S=\\text{π}\\int\\limits_{1}^{5} f^{2}(x)\\text{d}x.$"]
+
+#30 W0811 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Cho hàm số $y=f(x)$ liên tục trên đoạn $\text{[}2;\,7].$ Hình phẳng giới hạn bởi đồ thị hàm số $y=f(x),$ trục hoành và hai đường thẳng $x=2,\,x=7$ có diện tích là:
+LC: ["$S=\\left| \\int\\limits_{2}^{7} f(x)\\text{d}x \\right|.$","$S=\\text{π}\\int\\limits_{2}^{7} \\left| f(x) \\right|\\text{d}x.$","$S=\\int\\limits_{2}^{7} \\left| f(x) \\right|\\text{d}x.$","$S=\\text{π}\\int\\limits_{2}^{7} f^{2}(x)\\text{d}x.$"]
+
+#31 W0812 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Nguyên hàm của hàm số $f(x)=\sin x$ là:
+LC: ["$\\cot x+C.$","$-\\cot x+C.$","$\\cos x+C.$","$-\\cos x+C.$"]
+
+#32 W0813 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Cho hàm số $y=f(x)$ liên tục trên đoạn $\text{[1};\,5].$ Hình phẳng giới hạn bởi đồ thị hàm số $y=f(x),$ trục hoành và hai đường thẳng $x=1,\,x=5$ có diện tích là:
+LC: ["$S=\\int\\limits_{1}^{5} \\left| f(x) \\right|\\text{d}x.$","$S=\\text{π}\\int\\limits_{1}^{5} \\left| f(x) \\right|\\text{d}x.$","$S=\\left| \\int\\limits_{1}^{5} f(x)\\text{d}x \\right|.$","$S=\\text{π}\\int\\limits_{1}^{5} f^{2}(x)\\text{d}x.$"]
+
+#33 W0814 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Nguyên hàm của hàm số $f(x)=\cos x$ là:
+LC: ["$\\tan x+C.$","$\\sin x+C.$","$-\\sin x+C.$","$-\\tan x+C.$"]
+
+#34 W0815 tra_loi_ngan ["id","loai","de"]
+DE: Hệ thống định vị toàn cầu GPS là một hệ thống cho phép xác định vị trí của một vật thể trong không gian. Trong cùng một thời điểm vị trí của một điểm $M$ trong không gian sẽ được xác định bởi bốn vệ tinh cho trước nhờ các bộ thu phát tín hiệu đặt trên các vệ tinh. Giả sử trong không gian với hệ tọa độ $Oxyz$, có bốn vệ tinh lần lượt đặt tại các điểm $A\left( 2;4;0 \right),\,B\left( 0;4;6 \right),\,C(2;0;6),\,D(-1;-2;-3)$ và vị trí điểm $M\left( a;b;c \right)$ thỏa mãn $MA+MB+MC+MD$ nhỏ nhất. Tính độ dài $MO$ (làm tròn đến hàng phần chục).
+
+#35 W0816 tra_loi_ngan ["id","loai","de"]
+DE: Hệ thống định vị toàn cầu GPS là một hệ thống cho phép xác định vị trí của một vật thể trong không gian. Trong cùng một thời điểm vị trí của một điểm $M$ trong không gian sẽ được xác định bởi bốn vệ tinh cho trước nhờ các bộ thu phát tín hiệu đặt trên các vệ tinh. Giả sử trong không gian với hệ tọa độ $Oxyz$, có bốn vệ tinh lần lượt đặt tại các điểm $A\left( 2;4;0 \right),\,B\left( 0;4;6 \right),\,C(2;0;6),\,D(-1;-2;-3)$ và vị trí điểm $M\left( a;b;c \right)$ thỏa mãn $MA+MB+MC+MD$ nhỏ nhất. Tính $a^{2}-b^{2}+c^{2}$(làm tròn đến hàng đơn vị).
+--- Hết ---
+Thí sinh không được sử dụng tài liệu. CBCT không giải thích gì thêm.
+
+#36 W0817 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Nguyên hàm của hàm số $f\left( x \right)=2^{x}$ là
+LC: ["$2^{x}+C$.","$\\frac{2^{x+1}}{x+1}+C$.","$2^{x}.\\ln 2+C$.","$\\frac{2^{x}}{\\ln 2}+C$."]
+
+#37 W0818 dung_sai ["id","loai","de","menh_de"]
+DE: Xét hàm số $f\left( x \right)=x+\cos x$ trên $\mathbb{R}$.
+MD: ["$\\int f\\left( x \\right)\\text{d}x=\\frac{x^{2}}{2}-\\sin x+C$.","Hàm số $F\\left( x \\right)=\\frac{x^{2}}{2}-\\sin x+5$ là một nguyên hàm của hàm số $f(x)$.","Đạo hàm của hàm số $f(x)$ là $f'(x)=1-\\sin x$.","Gọi $G\\left( x \\right)$ là một nguyên hàm của hàm số $f(x)$ và thỏa mãn $G\\left( 0 \\right)=1$. Khi đó $G\\left( \\pi \\right)=\\frac{\\pi^{2}}{2}+1.$"]
+
+#38 W0819 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Họ nguyên hàm của hàm số $f\left( x \right)=9^{x}$ là
+LC: ["$F\\left( x \\right)=\\frac{9^{x+1}}{x+1}+C$.","$F\\left( x \\right)=\\frac{9^{x}}{2\\text{ln3}}+C$.","$F\\left( x \\right)=9^{x}\\text{ln9}+C$.","$F\\left( x \\right)=9^{x}+C.$"]
+
+#39 W0820 dung_sai ["id","loai","de","menh_de","loi_giai_file"]
+DE: Xét hàm số $f\left( x \right)=x+\cos x$ trên $\mathbb{R}$.
+MD: ["[1] Đạo hàm của hàm số $f(x)$ là $f'(x)=1-\\sin x$.","[1] Hàm số $F\\left( x \\right)=\\frac{x^{2}}{2}-\\sin x+5$ là một nguyên hàm của hàm số $f(x)$.","[1] $\\int f\\left( x \\right)\\text{d}x=\\frac{x^{2}}{2}-\\sin x+C$.","[2] Gọi $G\\left( x \\right)$ là một nguyên hàm của hàm số $f(x)$ và thỏa mãn $G\\left( 0 \\right)=1$. Khi đó $G\\left( \\pi \\right)=\\frac{\\pi^{2}}{2}+1.$"]
+LG: a) Ta có $f'(x)=1-\sin x$ nên a) đúng. | b) Ta $F'\left( x \right)=\left( \frac{x^{2}}{2}-\sin x+5 \right)^{'}=x-\cos x\ne f(x)$ nên b) sai. | c) Ta có: $\int f\left( x \right)dx=\int \left( x+\cos x \right)dx=\frac{x^{2}}{2}+\sin x+C$. Vậy c) sai. | d) Gọi $G\left( x \right)$ là một nguyên hàm của $f\
+
+#40 W0821 trac_nghiem ["id","loai","de","lua_chon","dap_an_nguon_file","loi_giai_file"]
+DE: Họ nguyên hàm của hàm số $f\left( x \right)=9^{x}$ là
+LC: ["$F\\left( x \\right)=\\frac{9^{x}}{2\\text{ln3}}+C$.","$F\\left( x \\right)=9^{x}\\cdot\\text{ln9}+C$.","$F\\left( x \\right)=\\frac{9^{x+1}}{x+1}+C$.","$F\\left( x \\right)=9^{x}+C$."]
+DA: A
+LG: Nguyên hàm của hàm số $f\left( x \right)=9^{x}$ là $F\left( x \right)=\frac{9^{x}}{\text{ln9}}+C=\frac{9^{x}}{\text{2ln3}}+C$.
+
+#41 W0822 dung_sai ["id","loai","de","menh_de"]
+DE: Cho hàm số $y=f\left( x \right)$ liên tục và có nguyên hàm trên $\left[ a;b \right]$. Các mệnh đề sau đây đúng hay sai?
+MD: ["$\\int\\limits_{a}^{b} f\\left( x \\right)\\text{d}x=-\\int\\limits_{b}^{a} f\\left( x \\right)\\text{d}x.$ b) $\\int\\limits_{a}^{b} f\\left( x \\right)\\text{d}x=2\\int\\limits_{a}^{b} f\\left( x \\right)\\text{d}\\left( 2x \\right).$","$\\int\\limits_{a}^{a} f\\left( x \\right)\\text{d}x=0.$ d) $\\int\\limits_{a}^{b} f\\left( x \\right)\\text{d}x=\\int\\limits_{b}^{a} f\\left( x \\right)\\text{d}x.$"]
+
+#42 W0823 trac_nghiem ["id","loai","de","lua_chon"]
+DE: $\int (\sin x+4x^{3}\text{)d}x$ bằng
+LC: ["$-\\cos x+x^{4}+C$.","$\\cos x+12x^{2}+C$.","$-\\cos x+4x^{4}+C$.","$\\cos x+x^{4}+C$."]
+
+#43 W0824 trac_nghiem ["id","loai","de","lua_chon"]
+DE: $\int (\cos x+5x^{4}\text{)d}x$ bằng
+LC: ["$-\\sin x+x^{5}+C$.","$-\\sin x+20x^{3}+C$.","$\\sin x+5x^{5}+C$.","$\\sin x+x^{5}+C$."]
+
+#44 W0825 trac_nghiem ["id","loai","de","lua_chon","dap_an_nguon_file"]
+DE: Họ nguyên hàm của hàm số $f(x)=\frac{1}{\cos^{2}x}$ là
+LC: ["$\\tan x+C.$","$\\cot x+C.$","$-\\tan x+C.$","$-\\cot x+C.$"]
+DA: A
+
+#45 W0826 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Họ nguyên hàm của hàm số $f(x)=\frac{1}{\cos^{2}x}$ là
+LC: ["$\\tan x+C.$","$-\\cot x+C.$","$\\cot x+C.$","$-\\tan x+C.$"]
+
+#46 W0827 trac_nghiem ["id","loai","de","lua_chon","dap_an_nguon_file"]
+DE: Hàm số $F\left( x \right)=e^{3x}+2\sqrt{x}-x^{3}+2x^{2}-2025$ là một nguyên hàm của hàm số nào sau đây?
+LC: ["$f\\left( x \\right)=\\frac{1}{3}e^{3x}+\\frac{4}{3}x\\sqrt{x}-\\frac{1}{4}x^{4}+\\frac{2}{3}x^{3}-2025x+C$.","$f\\left( x \\right)=3e^{3x}+\\frac{4}{3}x\\sqrt{x}-\\frac{1}{4}x^{4}+\\frac{2}{3}x^{3}-2025x+C$.","$f\\left( x \\right)=3e^{3x}+\\frac{1}{\\sqrt{x}}-3x^{2}+4x$.","$f\\left( x \\right)=3e^{3x}+\\frac{1}{\\sqrt{x}}-3x^{2}+4x-2025$."]
+DA: C
+
+#47 W0828 trac_nghiem ["id","loai","de","lua_chon","dap_an_nguon_file"]
+DE: Hình phẳng $D$ giới hạn bởi đồ thị hàm số $y=e^{x}$, trục hoành và hai đường thẳng $x=1,\;x=2$. Thể tích khối tròn xoay sinh ra khi cho hình phẳng $D$ quay quanh trục hoành là:
+LC: ["$V=\\int\\limits_{1}^{2} e^{x}dx$.","$V=\\int\\limits_{1}^{2} e^{2x}dx$.","$V=\\pi\\int\\limits_{1}^{2} e^{2x}dx$.","$V=\\pi\\int\\limits_{1}^{2} e^{x}dx$."]
+DA: C
+
+#48 W0829 dung_sai ["id","loai","de","menh_de"]
+DE: Cho hàm số $f\left( x \right)=\left| x^{2}+2x \right|$.
+MD: ["Ta có $f\\left( x \\right)=\\left\\{ \\begin{array}{l} -x^{2}-2x\\text{ nê'u}\\,\\,x\\in\\left( -\\infty;-2 \\right]\\cup\\left[ 0;+\\infty \\right) \\\\ x^{2}+2x\\text{ nê'u}\\,\\,x\\in\\left( -2;0 \\right) \\end{array} \\right.$.","$\\int\\limits_{-2}^{0} f\\left( x \\right)\\text{d}x=\\int\\limits_{-2}^{0} \\left( x^{2}+2x \\right)\\text{d}x$.","$\\int\\limits_{0}^{2} f\\left( x \\right)\\text{d}x=\\frac{20}{3}$.","Có $3$ giá trị dương của $m$ thoả mãn $\\int\\limits_{-1}^{m} f\\left( x \\right)\\text{d}x=2$."]
+
+#49 W0830 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Hàm số $F\left( x \right)=e^{3x}+2\sqrt{x}-x^{3}+2x^{2}-2025$ là một nguyên hàm của hàm số nào sau đây?
+LC: ["$f\\left( x \\right)=3e^{3x}+\\frac{1}{\\sqrt{x}}-3x^{2}+4x$.","$f\\left( x \\right)=3e^{3x}+\\frac{4}{3}x\\sqrt{x}-\\frac{1}{4}x^{4}+\\frac{2}{3}x^{3}-2025x+C$.","$f\\left( x \\right)=\\frac{1}{3}e^{3x}+\\frac{4}{3}x\\sqrt{x}-\\frac{1}{4}x^{4}+\\frac{2}{3}x^{3}-2025x+C$.","$f\\left( x \\right)=3e^{3x}+\\frac{1}{\\sqrt{x}}-3x^{2}+4x-2025$."]
+
+#50 W0831 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Hình phẳng $D$ giới hạn bởi đồ thị hàm số $y=e^{x}$, trục hoành và hai đường thẳng $x=1,\;x=2$. Thể tích khối tròn xoay sinh ra khi cho hình phẳng $D$ quay quanh trục hoành là:
+LC: ["$V=\\int\\limits_{1}^{2} e^{x}dx$.","$V=\\pi\\int\\limits_{1}^{2} e^{2x}dx$.","$V=\\int\\limits_{1}^{2} e^{2x}dx$.","$V=\\pi\\int\\limits_{1}^{2} e^{x}dx$."]
+
+#51 W0832 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Hàm số $F\left( x \right)=e^{3x}+2\sqrt{x}-x^{3}+2x^{2}-2025$ là một nguyên hàm của hàm số nào sau đây?
+LC: ["$f\\left( x \\right)=\\frac{1}{3}e^{3x}+\\frac{4}{3}x\\sqrt{x}-\\frac{1}{4}x^{4}+\\frac{2}{3}x^{3}-2025x+C$.","$f\\left( x \\right)=3e^{3x}+\\frac{1}{\\sqrt{x}}-3x^{2}+4x$.","$f\\left( x \\right)=3e^{3x}+\\frac{4}{3}x\\sqrt{x}-\\frac{1}{4}x^{4}+\\frac{2}{3}x^{3}-2025x+C$.","$f\\left( x \\right)=3e^{3x}+\\frac{1}{\\sqrt{x}}-3x^{2}+4x-2025$."]
+
+#52 W0833 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Hình phẳng $D$ giới hạn bởi đồ thị hàm số $y=e^{x}$, trục hoành và hai đường thẳng $x=1,\;x=2$. Thể tích khối tròn xoay sinh ra khi cho hình phẳng $D$ quay quanh trục hoành là:
+LC: ["$V=\\int\\limits_{1}^{2} e^{x}dx$.","$V=\\int\\limits_{1}^{2} e^{2x}dx$.","$V=\\pi\\int\\limits_{1}^{2} e^{x}dx$.","$V=\\pi\\int\\limits_{1}^{2} e^{2x}dx$."]
+
+#53 W0834 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Cho hàm số $f\left( x \right)=3^{x}+\sin x$. Họ nguyên hàm của hàm số $f\left( x \right)$ trên $R$ là:
+LC: ["$F\\left( x \\right)=3^{x}+\\sin x+C$","$F\\left( x \\right)=\\frac{3^{x}}{\\ln 3}-\\sin x+C$","$F\\left( x \\right)=3^{x}.\\ln 3-\\cos x+C$","$F\\left( x \\right)=\\frac{3^{x}}{\\ln 3}-\\cos x+C$"]
+
+#54 W0835 trac_nghiem ["id","loai","de","lua_chon","dap_an_nguon_file","loi_giai_file"]
+DE: Nguyên hàm của hàm số $f(x)=1+\cos x$ là
+LC: ["$1-\\sin x+C$.","$1+\\sin x+C$.","$x-\\sin x+C$.","$x+\\sin x+C$."]
+DA: D
+LG: Chọn D | $\int (1+\cos x)\ dx=x+\sin x+C$
+
+#55 W0836 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Nguyên hàm của hàm số $f(x)=1+\cos x$ là
+LC: ["$1-\\sin x+C$.","$x-\\sin x+C$.","$x+\\sin x+C$.","$1+\\sin x+C$."]
+
+#56 W0837 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Diện tích hình phẳng giới hạn bởi hai đường $y=x^{2}-1$ và $y=x-1$ bằng
+LC: ["$\\frac{13\\pi}{6}.$","$\\frac{\\pi}{6}$.","$\\frac{1}{6}$.","$\\frac{13}{6}$."]
+
+#57 W0838 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Nguyên hàm của hàm số $f(x)=1-\cos x$ là
+LC: ["$1-\\sin x+C$.","$x-\\sin x+C$.","$1+\\sin x+C$.","$x+\\sin x+C$."]
+
+#58 W0839 trac_nghiem ["id","loai","de","lua_chon"]
+DE: Diện tích hình phẳng giới hạn bởi hai đường $y=x^{2}-3$ và $y=x-3$ bằng
+LC: ["$\\frac{\\pi}{6}$.","$\\frac{1}{6}$.","$\\frac{125}{6}$.","$\\frac{125\\pi}{6}$."]
+
+#59 W0840 trac_nghiem ["id","loai","de","lua_chon","dap_an_nguon_file"]
+DE: Nguyên hàm của hàm số $f(x)=\frac{1}{x}+2^{x}-3\sin x$ là
+LC: ["$\\ln\\left| x \\right|+\\frac{2^{x}}{\\ln 2}-3\\cos x+C$.","$-\\frac{1}{x^{2}}+\\frac{2^{x+1}}{x+1}-3\\cos x+C$.","$\\ln\\left| x \\right|+\\frac{2^{x}}{\\ln 2}+3\\cos x+C$.","$\\ln\\left| x \\right|+2^{x}\\ln 2-3\\cos x+C$."]
+DA: C
+

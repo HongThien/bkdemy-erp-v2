@@ -1,0 +1,17 @@
+const S=(f,a,b,n=20000)=>{const h=(b-a)/n;let s=f(a)+f(b);for(let i=1;i<n;i++)s+=f(a+i*h)*(i%2?4:2);return s*h/3};
+console.log('543c',S(x=>x*x+2*x,0,2),20/3,'543d',S(x=>1+2/x,1,3),2+2*Math.log(3));
+console.log('562',S(x=>6*x*Math.sqrt(9-x*x),0,3));
+console.log('564',S(x=>Math.abs(6*x*x-6*x-12),-9,-5));
+console.log('566b',S(x=>Math.exp(2*x),-3,1)*Math.PI, Math.PI*(Math.E-Math.exp(-3)));
+console.log('569',-2*Math.PI-2);
+console.log('571d',S(x=>3*x*x+4*x-3,-4,0));
+console.log('575',5*6**4/4+6**3/3-3*36/2+10);
+console.log('576',S(x=>-5*x*x-3*x-2,3,8),-5405/6);
+console.log('580',S(x=>Math.abs(3*x*x-30*x+72),-2,2));
+console.log('581d',S(x=>-3*x*x+3*x,-4,-2));
+console.log('583b',S(x=>Math.exp(2*x),-1,1)*Math.PI,Math.PI*(Math.exp(2)/2-Math.exp(-2)/2));
+console.log('584',2*Math.SQRT2+3*Math.PI/4);
+const f=x=>x<=0?x*x-x:x;
+console.log('592b',S(f,-4,-2),'c',S(f,-1,0)+S(f,0,1)+S(f,-1,0)+S(f,0,3),20/3,'d',S(f,-2,0)+S(f,0,1),31/6);
+console.log('598',S(x=>3*x*(3*x*x-2),1,3));
+console.log('568d',S(x=>x+5,-1,0)-2*6+3*(-2),'586d',S(x=>5-x,-1,2)-2*2-4*(-9));

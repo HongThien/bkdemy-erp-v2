@@ -1,0 +1,512 @@
+[
+ {
+  "id": "W0721",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫4^x=4^x/ln4=4^x/(2ln2)"
+ },
+ {
+  "id": "W0722",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Menh_de 5-8 là lời giải lẫn vào; ý d thiếu giá trị tốc độ tối đa trong đề, theo file nguồn Đ (v(30)=96,3 km/h)"
+ },
+ {
+  "id": "W0723",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫a^x=a^x/ln a"
+ },
+ {
+  "id": "W0724",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫e^{-3x}=-1/3 e^{-3x}"
+ },
+ {
+  "id": "W0725",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x^4-3x|(-1..1)=-6"
+ },
+ {
+  "id": "W0726",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=∫S(x)dx"
+ },
+ {
+  "id": "W0727",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F'=-2e^{-2x}"
+ },
+ {
+  "id": "W0728",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "(-cos x)'=sin x"
+ },
+ {
+  "id": "W0729",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫5cos x=5sin x"
+ },
+ {
+  "id": "W0730",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "S=∫|f1-f2|"
+ },
+ {
+  "id": "W0731",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "v0=10, S2=180, b=10, a=5/6, v(24)=30 m/s=108 km/h>100; ý c sai cận 24 thay t"
+ },
+ {
+  "id": "W0732",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Như W0722; ý d thiếu giá trị tốc độ tối đa trong đề, theo nguồn Đ (96,3 km/h)"
+ },
+ {
+  "id": "W0733",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "S=∫_a^b v dt"
+ },
+ {
+  "id": "W0734",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   null
+  ],
+  "do_chac": "vua",
+  "de_sai": true,
+  "ghi": "AB=(3000;3000;3000); ý c sai hướng (1;-1;1); ý d không rõ tham số t/gốc tọa độ nên null"
+ },
+ {
+  "id": "W0735",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫sin2x=-1/2 cos2x"
+ },
+ {
+  "id": "W0736",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=π∫cos²4x=π²/16 (kiểm Simpson)"
+ },
+ {
+  "id": "W0737",
+  "dap_an": [
+   "Đ",
+   "S",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "v0=25 m/s, S2=220 đúng, b=25 nên ý b sai, c sai cận 20, a=-0,6 v(20)=46,8 km/h<50"
+ },
+ {
+  "id": "W0738",
+  "dap_an": "B",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "∫(3x+1)²=(3x+1)³/9; phương án B thiếu +C nhưng là phương án duy nhất đúng hệ số"
+ },
+ {
+  "id": "W0739",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "π∫sin²x=π²/2 (Simpson)"
+ },
+ {
+  "id": "W0740",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫e^{2x}=e^{2x}/2"
+ },
+ {
+  "id": "W0741",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "(e^4-e)/3 (Simpson)"
+ },
+ {
+  "id": "W0742",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "S=∫|f|"
+ },
+ {
+  "id": "W0743",
+  "dap_an": null,
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Menh_de là yêu cầu tự luận, không phải mệnh đề Đ/S; không xét được"
+ },
+ {
+  "id": "W0744",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2x²-cos x"
+ },
+ {
+  "id": "W0745",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "v0=7,5 m/s, S2=150, b=7,5 (không phải 9), a=1,5, v(20)=135 km/h>120; ý c biến chạy x là biến giả, đúng"
+ },
+ {
+  "id": "W0746",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x⁴+e^x-x+C"
+ },
+ {
+  "id": "W0747",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=π∫f²"
+ },
+ {
+  "id": "W0748",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "v0=10, S2=200, b=10, a=10/9, v(20)=116 km/h>100; ý c sai cận 20 thay t"
+ },
+ {
+  "id": "W0749",
+  "dap_an": [
+   "Đ",
+   "S",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "b thiếu trị tuyệt đối (âm); độ dịch chuyển -9/2; quãng đường 61/6 (Simpson)"
+ },
+ {
+  "id": "W0750",
+  "dap_an": null,
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đề chỉ là mảnh lời giải, không có câu hỏi/phương án"
+ },
+ {
+  "id": "W0751",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2+2ln3 ⇒ a=b=2,c=3 ⇒ S=7"
+ },
+ {
+  "id": "W0752",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "v=0 tại t=4 (không phải 5); quãng đường 40 m (không phải 400)"
+ },
+ {
+  "id": "W0753",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫x⁴=x⁵/5+C"
+ },
+ {
+  "id": "W0754",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "ý c: a=2024 ⇒ 2a-1=4047; ý d: diện tích 8/3 ≠ 3"
+ },
+ {
+  "id": "W0755",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫1/x=ln|x|; ∫3^x=3^x/ln3"
+ },
+ {
+  "id": "W0756",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "dừng sau 2 s (không phải 20); 18,06+20=38,06<50 m"
+ },
+ {
+  "id": "W0757",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Như W0756"
+ },
+ {
+  "id": "W0758",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "e^x+x²+C"
+ },
+ {
+  "id": "W0759",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2.37+3.(-16)=26"
+ },
+ {
+  "id": "W0760",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2^x≥1 nên (1-2^x) âm; mệnh đề A sai"
+ },
+ {
+  "id": "W0761",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x⁶/6+C"
+ },
+ {
+  "id": "W0762",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": true,
+  "ghi": "ý d: V=64π/15 (Simpson) nhưng đề ghi 16π/15 ⇒ S, lệch file nguồn (nguồn ghi đúng với 64π/15, có lẽ đề in sai)"
+ },
+ {
+  "id": "W0763",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x²⁰²⁶/2026+2024x+C"
+ },
+ {
+  "id": "W0764",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2-6=-4"
+ },
+ {
+  "id": "W0765",
+  "dap_an": null,
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Mất đề và 4 mệnh đề gốc; menh_de chỉ còn đáp án/lời giải"
+ },
+ {
+  "id": "W0766",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3+(-2)=1; phương án D lẫn lời giải"
+ },
+ {
+  "id": "W0767",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "h(6)=0,75.36+30+12=69 cm ≠ 70; chiều cao tăng"
+ },
+ {
+  "id": "W0768",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "m/2+n=3, 2m+2n=8 ⇒ m=n=2"
+ },
+ {
+  "id": "W0769",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "-cos x-4x²+C"
+ },
+ {
+  "id": "W0770",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F(3) ⇒ C=0 nên ý b (+1) sai; ∫3^4 f=¼ln(5/3), ab=15; ý d = ¼ln(5/3)-7 (Simpson)"
+ },
+ {
+  "id": "W0771",
+  "dap_an": "10.2",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "S=61/6≈10,2 (hàng phần mười); đề lẫn \"10,12\" từ lời giải nên bỏ"
+ },
+ {
+  "id": "W0772",
+  "dap_an": [
+   "Đ",
+   "S",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫=x²-cos x; ∫0^{π/2}=π²/4+1; diện tích π²/16+1-√2/2 (Simpson)"
+ },
+ {
+  "id": "W0773",
+  "dap_an": [
+   "Đ",
+   "S",
+   "S",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "S=2ln4; V=3π; chia đôi diện tích k=2"
+ },
+ {
+  "id": "W0774",
+  "dap_an": [
+   "Đ",
+   "S",
+   "S",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Như W0773"
+ },
+ {
+  "id": "W0775",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x²+3x+C"
+ },
+ {
+  "id": "W0776",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2.37+3.16=122"
+ },
+ {
+  "id": "W0777",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Loại gán nhầm: thực chất trắc nghiệm A-D; F'=f"
+ },
+ {
+  "id": "W0778",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2.4=8"
+ },
+ {
+  "id": "W0779",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Loại gán nhầm: trắc nghiệm A-D; giá trị 8 là D"
+ },
+ {
+  "id": "W0780",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫1/sin²x=-cot x+C"
+ }
+]

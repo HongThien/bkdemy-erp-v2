@@ -1,0 +1,482 @@
+[
+ {
+  "id": "W0001",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Nguyên hàm dạng 1/(ax+b) cho (1/a)ln|ax+b|"
+ },
+ {
+  "id": "W0002",
+  "dap_an": [
+   "S",
+   "S",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Giao điểm -2,0,2; S=8, V=64π (Simpson khớp); A thiếu dấu trị tuyệt đối, B thiếu π"
+ },
+ {
+  "id": "W0003",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "S"
+  ],
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "C sai biến (t,dx); D tích phân tích không bằng tích tích phân; ô eq-empty lỗi trích nhỏ ở A"
+ },
+ {
+  "id": "W0004",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đổi biến u=3x: I=12/3=4"
+ },
+ {
+  "id": "W0005",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "B sai (tích); C đúng vì b nằm giữa"
+ },
+ {
+  "id": "W0006",
+  "dap_an": null,
+  "do_chac": "vua",
+  "de_sai": true,
+  "ghi": "Quãng đường=∫|v|dt; không phương án nào là ∫|v|, v đổi dấu trên đoạn"
+ },
+ {
+  "id": "W0007",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=-cosx+sinx+C, F(π/2)=2 ⇒ C=1"
+ },
+ {
+  "id": "W0008",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F'=x²+e^x"
+ },
+ {
+  "id": "W0009",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "f(ln3)=f(1)+9-e²=9"
+ },
+ {
+  "id": "W0010",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "e^x·2 + 1/cos²x ⇒ 2e^x+tanx+C"
+ },
+ {
+  "id": "W0011",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "5+2[-cos]=7"
+ },
+ {
+  "id": "W0012",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2+2ln3 ⇒ a=2,b=2,c=3 ⇒ S=7 (Simpson khớp)"
+ },
+ {
+  "id": "W0013",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=e^x+x²+C, C=1/2"
+ },
+ {
+  "id": "W0014",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "C sai: cận phải là -1..1; D tính ra 4/3"
+ },
+ {
+  "id": "W0015",
+  "dap_an": "3.93",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=(5/4)πa³≈3.927; Simpson khớp"
+ },
+ {
+  "id": "W0016",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Công thức diện tích ∫|f-g|"
+ },
+ {
+  "id": "W0017",
+  "dap_an": [
+   "S",
+   "Đ",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "A thiếu trị tuyệt đối; D: S=∫0^1 x²=1/3 ≠ 4/3"
+ },
+ {
+  "id": "W0018",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫1^2 2024x dx=3036"
+ },
+ {
+  "id": "W0019",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "A: 2π(π+1) đúng; B: V=8π/15 (Simpson) nên sai; D: 4/3·π·5·16=320π/3"
+ },
+ {
+  "id": "W0020",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Diện tích dùng |f|"
+ },
+ {
+  "id": "W0021",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫1^3 3x(3x²-2)dx=156 (Simpson khớp)"
+ },
+ {
+  "id": "W0022",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "|f-g|=8 ⇒ S=∫8dx"
+ },
+ {
+  "id": "W0023",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=π∫e^{8x}dx"
+ },
+ {
+  "id": "W0024",
+  "dap_an": "B",
+  "do_chac": "vua",
+  "de_sai": true,
+  "ghi": "Tiếp tuyến y=4; hiệu ≤0 trên [0,1] nên B và C cùng đúng, chọn B (dạng chuẩn)"
+ },
+ {
+  "id": "W0025",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=π∫(x²+3)²dx"
+ },
+ {
+  "id": "W0026",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "π(e²-1)/2 (Simpson khớp)"
+ },
+ {
+  "id": "W0027",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "π∫(x²+1)=4π/3"
+ },
+ {
+  "id": "W0028",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "π∫(2+cosx)=π(π+1) (Simpson khớp)"
+ },
+ {
+  "id": "W0029",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫0^2(2x-x²)=4/3"
+ },
+ {
+  "id": "W0030",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "π∫0^π(2+sinx)=2π(π+1)"
+ },
+ {
+  "id": "W0031",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Newton-Leibniz"
+ },
+ {
+  "id": "W0032",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3(-1)-4·3=-15"
+ },
+ {
+  "id": "W0033",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Đề gộp a,b / c,d thành 2 mệnh đề; a=-7 Đ, b=-1 nên S, c=12 Đ, d=-17 nên S"
+ },
+ {
+  "id": "W0034",
+  "dap_an": [
+   "S",
+   "Đ",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "A sai \"từ 3 đến 0\"; C=F(3)-F(0)=1; D diện tích=1 vì f≥0"
+ },
+ {
+  "id": "W0035",
+  "dap_an": [
+   "S",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Trên [0,2] x²-2x≤0 nên |.|=-(x²-2x); A,C sai dấu"
+ },
+ {
+  "id": "W0036",
+  "dap_an": "2",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a=b=2 ⇒ I=26/3=5/3+7 ⇒ m=5,n=3,S=2; đề dính dòng thừa \"3. ỨNG DỤNG...\""
+ },
+ {
+  "id": "W0037",
+  "dap_an": "-2",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a=1,b=-2 ⇒ P=-2; đề dính dòng thừa cuối"
+ },
+ {
+  "id": "W0038",
+  "dap_an": "-3",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a=3,b=-1 ⇒ P=-3"
+ },
+ {
+  "id": "W0039",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "D: V=π·2419/30 (Simpson), không phải 17π/2"
+ },
+ {
+  "id": "W0040",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x^6/6+C"
+ },
+ {
+  "id": "W0041",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=f' sai; F'=f"
+ },
+ {
+  "id": "W0042",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫_a^a f=0 không phải 1"
+ },
+ {
+  "id": "W0043",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3(-1)-4·3=-15"
+ },
+ {
+  "id": "W0044",
+  "dap_an": [
+   "S",
+   "Đ",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Đề gộp a–d trong 1 mệnh đề; a sai (3e^x phải là 2e^x), b,c,d đúng"
+ },
+ {
+  "id": "W0045",
+  "dap_an": "4",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "(2-√2)/2 ⇒ a=2,b=2"
+ },
+ {
+  "id": "W0046",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Hàm lẻ triệt tiêu, ∫2dx=4"
+ },
+ {
+  "id": "W0047",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x³+x²+5x+C"
+ },
+ {
+  "id": "W0048",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x³/3+3x²/2+2x+C"
+ },
+ {
+  "id": "W0049",
+  "dap_an": "2",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "√2/2=(√2-0)/2 ⇒ a=2,b=0; hơi lạ vì b=0"
+ },
+ {
+  "id": "W0050",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫0^3|4-x²|=23/3 (Simpson khớp)"
+ },
+ {
+  "id": "W0051",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "-3-12=-15"
+ },
+ {
+  "id": "W0052",
+  "dap_an": null,
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Công thức OMML không trích được, thiếu đề"
+ },
+ {
+  "id": "W0053",
+  "dap_an": null,
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Công thức OMML không trích được, thiếu đề"
+ },
+ {
+  "id": "W0054",
+  "dap_an": null,
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Công thức OMML không trích được, thiếu đề"
+ },
+ {
+  "id": "W0055",
+  "dap_an": null,
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Công thức OMML không trích được, thiếu đề"
+ },
+ {
+  "id": "W0056",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=e^x+C, F(0)=2 ⇒ C=1"
+ },
+ {
+  "id": "W0057",
+  "dap_an": [
+   "S",
+   "Đ",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "A: S=12-5ln5 (Simpson); B đúng 5ln(5/2)-3; D thiếu π"
+ },
+ {
+  "id": "W0058",
+  "dap_an": "7",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a=2,b=2,c=3"
+ },
+ {
+  "id": "W0059",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "e^x+2/x-cosx+C"
+ },
+ {
+  "id": "W0060",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "π∫100x⁴=20π"
+ }
+]
