@@ -78676,3 +78676,4 @@ Thùy nêu 4 việc, làm được 3:
 ## 04/11 — SỬA LẠI: phiên Nhập kho chỉ trưởng khối trở lên (Thùy: "Trợ giảng có phòng làm việc đâu, trưởng khối trở lên mới có") — mig 202611041648 CHƯA ÁP
 - SAI CỦA TÔI: hiểu "nhân sự" thành mọi nhân sự ⇒ mig 202611041633 mở phiên Nhập kho cho tất cả. Đúng ý: người dùng phiên = người có Phòng làm việc = trưởng khối trở lên; cái thiếu chỉ là Claude đưa được BÀI MỚI vào kho.
 - Sửa: `fn_phien_mo` mọi loại chỉ trưởng khối trở lên · `fn_phien_pham_vi` chỉ khối mình quản. GIỮ `fn_phien_kho_them` + lệnh `them_cau`. Cột `sua_cau_truc` giữ (luôn true). Đo trước: 0 phiên của nhân sự đã mở. Thử ROLLBACK: TA phạm vi rỗng + bị chặn; Hải chỉ khối 9.
+- **04/11 16:5x:** Thùy chạy `202611041644_viec_phu_trach_chup_cron_sql_editor.sql` ở SQL Editor (cron.schedule trả jobid 4) ⇒ đã `--ghi-so`. claude_build/claude_ro không đọc được schema cron ⇒ bằng chứng chạy = chup_at mới trong viec_phu_trach_snap khi có việc tới hạn.
