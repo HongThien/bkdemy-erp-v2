@@ -12,7 +12,8 @@ const pctCls = (p: number | null) => p == null ? 'text-slate-400' : p >= 80 ? 't
 const barCls = (p: number | null) => p == null ? 'bg-slate-200' : p >= 80 ? 'bg-emerald-500' : p >= 50 ? 'bg-amber-500' : 'bg-rose-500'
 const thangNhan = (ym: string) => { const [y, m] = ym.split('-'); return `${Number(m)}/${y}` }
 const ddmm = (iso: string) => { const [, m, d] = iso.slice(0, 10).split('-'); return `${d}/${m}` }
-const so1 = (v: number | null | undefined) => v == null ? '—' : Number(v).toLocaleString('vi-VN', { maximumFractionDigits: 1 })
+// điểm hiện tối đa 2 chữ số sau dấu phẩy (Thùy 04/11: 9,25 thay vì 9,3) — số đã làm tròn ở DB
+const so1 = (v: number | null | undefined) => v == null ? '—' : Number(v).toLocaleString('vi-VN', { maximumFractionDigits: 2 })
 
 // ── Chọn kì (+ tạo kì — DB chỉ cho admin hệ thống) ──
 export function ChonKy({ kyId, onChange }: { kyId: string | null; onChange: (id: string | null) => void }) {
@@ -171,7 +172,7 @@ function DongChuyenDe({ u }: { u: BcKyDonVi }) {
         <div className="mt-0.5 flex items-center gap-1.5">
           {u.muc && <span className={`rounded-full px-2 py-px text-[10px] font-bold text-white ${u.muc === 'nang_cao' ? 'bg-violet-600' : 'bg-sky-500'}`}>{u.muc === 'nang_cao' ? 'Nâng cao' : 'Cơ bản'}</span>}
           <VienHang u={u} />
-          <small className="text-[10.5px] text-slate-400">{u.n === 0 ? 'chưa đo' : `${u.n} lần đánh giá${u.n < u.n_toi_da / 2 ? '*' : ''}`}</small>
+          <small className="text-[10.5px] text-slate-400">{u.n === 0 ? 'chưa đo' : `${u.n} lần đánh giá`}</small>
         </div>
       </div>
       <div className="h-3 w-[72px] shrink-0 overflow-hidden rounded-full bg-slate-200"><div className={`h-full rounded-full ${barCls(u.p)}`} style={{ width: `${u.p ?? 0}%` }} /></div>
@@ -191,7 +192,7 @@ function CardChuDe({ cd }: { cd: BcKyChuDe }) {
         </div>
         <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-slate-200"><div className={`h-full rounded-full ${barCls(cd.p)}`} style={{ width: `${cd.p ?? 0}%` }} /></div>
         <div className="mt-1.5 flex items-center justify-between">
-          <span className="flex items-center gap-1.5 text-[11px] text-slate-400"><VienHang u={cd} />{cd.n === 0 ? 'chưa có lần đánh giá trong 60 ngày cuối kì' : `${cd.n} lần đánh giá${cd.n < cd.n_toi_da / 2 ? ' · độ tin còn thấp' : ''}`}</span>
+          <span className="flex items-center gap-1.5 text-[11px] text-slate-400"><VienHang u={cd} />{cd.n === 0 ? 'chưa có lần đánh giá trong 60 ngày cuối kì' : `${cd.n} lần đánh giá`}</span>
           {cd.chuyen_de.length > 0 && (
             <button onClick={() => setMo((v) => !v)} className="rounded-md px-2 py-0.5 text-[12px] font-semibold text-indigo-600 hover:bg-indigo-50">
               {mo ? 'Thu gọn ▴' : `Xem chi tiết (${cd.chuyen_de.length}) ▾`}
@@ -256,7 +257,6 @@ export function XemTruocKy({ d }: { d: BcKyData; congBoAt?: string | null }) {
         {d.danh_gia.chu_de.length
           ? <div className="grid gap-3">{d.danh_gia.chu_de.map((cd) => <CardChuDe key={cd.ma} cd={cd} />)}</div>
           : <p className="text-[13px] text-slate-400">Chưa có lần đánh giá nào trong kì.</p>}
-        <p className="mt-2 text-[11px] text-slate-400">* ít lần đánh giá — độ tin còn thấp.</p>
       </Phan>
 
       <Phan so={2} ten="Kết quả thi">
@@ -288,7 +288,6 @@ export function XemTruocKy({ d }: { d: BcKyData; congBoAt?: string | null }) {
             </tbody>
           </table>
         )}
-        {d.hang_ky && <p className="mt-2 text-[11.5px] text-slate-500">Hạng cả kì xếp theo hạng trung bình {d.hang_ky.so_lan} lần con đã thi (hạng TB {so1(d.hang_ky.hang_tb)}), trong khối {d.lop.khoi} {d.mon}. Lần không thi không tính.</p>}
       </Phan>
 
       <Phan so={3} ten="Thái độ học tập">
@@ -311,7 +310,6 @@ export function XemTruocKy({ d }: { d: BcKyData; congBoAt?: string | null }) {
               {bt.chua_ghi > 0 && <O so={bt.chua_ghi} nhan="Chưa ghi trạng thái nộp" />}
             </div>
           : <p className="text-[13px] text-slate-400">Chưa có ghi nhận bài tập về nhà trong kì.</p>}
-        {bt && bt.khong_nghiem_tuc > 0 && <p className="mt-2 text-[12px] text-slate-500">Trong đó {bt.khong_nghiem_tuc} lần bị ghi chưa nghiêm túc{bt.chong_doi ? ` (${bt.chong_doi} lần chống đối)` : ''}.</p>}
       </Phan>
 
       <Phan so={4} ten="Nhận xét của giáo viên">
@@ -320,7 +318,6 @@ export function XemTruocKy({ d }: { d: BcKyData; congBoAt?: string | null }) {
             <div className="text-[11.5px] font-bold uppercase text-indigo-700">Điểm năng lực</div>
             <div className="flex items-end gap-2"><span className="text-[40px] font-extrabold leading-none text-indigo-600">{so1(d.nang_luc.diem)}</span><span className="pb-1 text-[18px] font-semibold text-slate-500">± {so1(d.nang_luc.sai_so)}</span></div>
           </div>
-          <p className="text-[12px] leading-relaxed text-slate-500">Điểm dự đoán cho kì tới và sai số do giáo viên đánh giá. Điểm càng cao là học càng tốt; sai số càng nhỏ là làm bài càng cẩn thận.</p>
         </div>
         <div className="mb-1.5 text-[11.5px] font-bold uppercase text-slate-500">Nhận xét</div>
         {d.nhan_xet ? <div className="whitespace-pre-line rounded-lg border-l-4 border-violet-600 bg-slate-50 px-3.5 py-3 text-[14px] leading-relaxed text-slate-800">{d.nhan_xet}</div> : <p className="text-[13px] text-slate-400">Giáo viên chưa nhập nhận xét.</p>}
@@ -348,7 +345,6 @@ export function XemTruocKy({ d }: { d: BcKyData; congBoAt?: string | null }) {
               </table>
             </div>
           : <p className="text-[13px] text-slate-400">Chưa có lần thi nào trong kì.</p>}
-        <p className="mt-2 text-[11px] text-slate-400">"—" = không thi lần đó (không tính vào hạng). Hạng TB = trung bình hạng các lần đã thi.</p>
       </Phan>
 
     </div>
