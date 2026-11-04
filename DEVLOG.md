@@ -78712,3 +78712,9 @@ Thùy nêu 4 việc, làm được 3:
 - Thùy chụp HHC001872 (`\text{AB\parallel CD}` đỏ). Quét 6 bảng nội dung: 789 dòng (bai_test_cau 88 · dai_cau_hoi 255 · dai_cau_menh_de 121 · hgt_cau_hoi 51 · hgt_cau_menh_de 47 · hinh_hoc_cau_hoi 227) bị. Script `scripts/sua-latex-text-lenh-toan.mjs --ghi`: tách `\text{A\cmd B}` → `\text{A}\cmd \text{ B}`. Dry-run trước; còn sót ⇒ ROLLBACK; form Điền Ô 366→366.
 - Sai trước đó: regex SQL tự viết hỏng (báo "parentheses not balanced" mọi cột, bảng trống) — chuyển lọc phía JS. Quét 1 lượt ban đầu trả bảng rỗng nhưng KHÔNG phải bằng chứng sạch.
 - Không đụng `kho_doi_dang_log` (log bất biến). Chưa làm: gate chặn lúc nhập; lỗi thiếu khoảng trắng `$S.ABCD$có`.
+
+
+## 2026-11-04 — Báo cáo HỌC KÌ: màn app PH (Thùy "Màn app PH") — ERP mig 202611041707 ĐÃ ÁP · PH mig 0037 ĐÃ ÁP · ph-app 77c725e
+- ERP: role `fdw_bkdemy_web` đọc `bao_cao_ph_ky` qua 2 cổng (grant + policy) — policy CHỈ `cong_bo_at is not null` ⇒ nháp/GV đang nhập không rời ERP. Không mở `ky_hoc`/log (snapshot tự đủ).
+- App PH: view `bao_cao_ky_view` · action `getBaoCaoKy` (guard con thuộc PH) · ô "📑 Báo cáo học kì" → danh sách → trang kéo dọc y bản xem trước ERP. Chi tiết: DEVLOG repo ph-app.
+- Kiểm: link xem thử local chạy hết đường (action + guard + FDW, 0 dòng ⇒ "Chưa có báo cáo học kì"). Trang chi tiết chưa nhìn với dữ liệu thật — cần 1 báo cáo công bố trên ERP.
