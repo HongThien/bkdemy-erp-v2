@@ -159,12 +159,18 @@ function Phan({ so, ten, mo, children }: { so: number; ten: string; mo?: string;
     </section>
   )
 }
+// Hạng trong khối của 1 chủ đề / chuyên đề (Thùy 04/11) — viên bo tròn màu, chữ trắng, cạnh tag Cơ bản / Nâng cao.
+function VienHang({ u }: { u: BcKyDonVi }) {
+  if (u.hang == null || !u.tong) return null
+  return <span className="rounded-full bg-slate-600 px-2 py-px text-[10px] font-bold text-white" title="Thứ hạng mức hoàn thành trong khối">Hạng {u.hang}/{u.tong}</span>
+}
 function DongChuyenDe({ u }: { u: BcKyDonVi }) {
   return (
     <div className="flex items-center gap-2.5 py-1.5">
       <div className="min-w-0 flex-1 text-[13px] leading-snug text-slate-700">{u.ten}
         <div className="mt-0.5 flex items-center gap-1.5">
           {u.muc && <span className={`rounded-full px-2 py-px text-[10px] font-bold text-white ${u.muc === 'nang_cao' ? 'bg-violet-600' : 'bg-sky-500'}`}>{u.muc === 'nang_cao' ? 'Nâng cao' : 'Cơ bản'}</span>}
+          <VienHang u={u} />
           <small className="text-[10.5px] text-slate-400">{u.n === 0 ? 'chưa đo' : `${u.n} lần đánh giá${u.n < u.n_toi_da / 2 ? '*' : ''}`}</small>
         </div>
       </div>
@@ -185,7 +191,7 @@ function CardChuDe({ cd }: { cd: BcKyChuDe }) {
         </div>
         <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-slate-200"><div className={`h-full rounded-full ${barCls(cd.p)}`} style={{ width: `${cd.p ?? 0}%` }} /></div>
         <div className="mt-1.5 flex items-center justify-between">
-          <span className="text-[11px] text-slate-400">{cd.n === 0 ? 'chưa có lần đánh giá trong 45 ngày cuối kì' : `${cd.n} lần đánh giá${cd.n < cd.n_toi_da / 2 ? ' · độ tin còn thấp' : ''}`}</span>
+          <span className="flex items-center gap-1.5 text-[11px] text-slate-400"><VienHang u={cd} />{cd.n === 0 ? 'chưa có lần đánh giá trong 60 ngày cuối kì' : `${cd.n} lần đánh giá${cd.n < cd.n_toi_da / 2 ? ' · độ tin còn thấp' : ''}`}</span>
           {cd.chuyen_de.length > 0 && (
             <button onClick={() => setMo((v) => !v)} className="rounded-md px-2 py-0.5 text-[12px] font-semibold text-indigo-600 hover:bg-indigo-50">
               {mo ? 'Thu gọn ▴' : `Xem chi tiết (${cd.chuyen_de.length}) ▾`}
