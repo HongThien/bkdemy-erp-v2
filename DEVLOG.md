@@ -78677,3 +78677,8 @@ Thùy nêu 4 việc, làm được 3:
 - SAI CỦA TÔI: hiểu "nhân sự" thành mọi nhân sự ⇒ mig 202611041633 mở phiên Nhập kho cho tất cả. Đúng ý: người dùng phiên = người có Phòng làm việc = trưởng khối trở lên; cái thiếu chỉ là Claude đưa được BÀI MỚI vào kho.
 - Sửa: `fn_phien_mo` mọi loại chỉ trưởng khối trở lên · `fn_phien_pham_vi` chỉ khối mình quản. GIỮ `fn_phien_kho_them` + lệnh `them_cau`. Cột `sua_cau_truc` giữ (luôn true). Đo trước: 0 phiên của nhân sự đã mở. Thử ROLLBACK: TA phạm vi rỗng + bị chặn; Hải chỉ khối 9.
 - **04/11 16:5x:** Thùy chạy `202611041644_viec_phu_trach_chup_cron_sql_editor.sql` ở SQL Editor (cron.schedule trả jobid 4) ⇒ đã `--ghi-so`. claude_build/claude_ro không đọc được schema cron ⇒ bằng chứng chạy = chup_at mới trong viec_phu_trach_snap khi có việc tới hạn.
+
+## 4/11 — Ghi bản đồ mới K10 "Hàm số, đồ thị và ứng dụng" vào DB (Thùy "ghi đi")
+- Làm: `kho-rules/dai/lo/k10-hs/ghi-ban-do.mjs --ghi` → chủ đề NCD00234 (khối 10, nhánh toan) · 4 chuyên đề · 18 nhóm · 30 dạng. Chưa chép câu, chưa lý thuyết/ví dụ. Thử ROLLBACK trước đó đã tốn 1 số seq (NCD00233 trống) — vô hại.
+- Sai: 2/11 chỉ viết .md rồi báo "xong", Thùy không thấy trên app; phải nói rõ "chưa ghi DB" và dựng ngay đường xem.
+- Việc kế (theo memory "bản đồ cập nhật ⇒ phân lại"): điền LT/VD + phân lại câu "thiếu dạng" Hàm số vào dạng mới.
