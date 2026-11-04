@@ -302,12 +302,16 @@ export function XemTruocKy({ d, congBoAt }: { d: BcKyData; congBoAt: string | nu
         <div className="mb-1.5 mt-4 text-[11.5px] font-bold uppercase text-slate-500">Bài tập về nhà {bt && bt.tong > 0 ? <span className="font-normal normal-case text-slate-400">· {bt.tong} buổi có ghi nhận</span> : null}</div>
         {bt && bt.tong > 0
           ? <div className="grid grid-cols-2 gap-2.5">
-              <O so={`${bt.dat_chuan}/${bt.tong}`} nhan="Lần nộp BTVN đạt chuẩn" tone="xanh" />
-              <O so={bt.khong_lam} nhan="Lần không làm" tone={bt.khong_lam ? 'do' : 'xanh'} />
-              <O so={bt.nop_muon} nhan="Lần nộp muộn" tone={bt.nop_muon ? 'cam' : 'xanh'} />
-              <O so={bt.khong_nghiem_tuc} nhan={`Lần không nghiêm túc${bt.chong_doi ? ` (${bt.chong_doi} chống đối)` : ''}`} tone={bt.khong_nghiem_tuc ? 'do' : 'xanh'} />
+              {/* nhóm KHÔNG TRÙNG — cộng các ô = tổng buổi (Thùy 04/11) */}
+              <O so={`${bt.dat_chuan}/${bt.tong}`} nhan="Đạt chuẩn (đúng hạn, nghiêm túc)" tone="xanh" />
+              <O so={bt.dung_han_chua_nt} nhan="Đúng hạn nhưng chưa nghiêm túc" tone={bt.dung_han_chua_nt ? 'cam' : 'xanh'} />
+              <O so={bt.nop_muon} nhan="Nộp muộn" tone={bt.nop_muon ? 'cam' : 'xanh'} />
+              <O so={bt.khong_lam} nhan="Không làm" tone={bt.khong_lam ? 'do' : 'xanh'} />
+              {bt.xin_phep > 0 && <O so={bt.xin_phep} nhan="Xin phép" />}
+              {bt.chua_ghi > 0 && <O so={bt.chua_ghi} nhan="Chưa ghi trạng thái nộp" />}
             </div>
           : <p className="text-[13px] text-slate-400">Chưa có ghi nhận bài tập về nhà trong kì.</p>}
+        {bt && bt.khong_nghiem_tuc > 0 && <p className="mt-2 text-[12px] text-slate-500">Trong đó {bt.khong_nghiem_tuc} lần bị ghi chưa nghiêm túc{bt.chong_doi ? ` (${bt.chong_doi} lần chống đối)` : ''}.</p>}
       </Phan>
 
       <Phan so={4} ten="Nhận xét của giáo viên">

@@ -21,7 +21,8 @@ export type BcKyData = {
   hang_ky: { hang: number; tong: number; hang_tb: number; diem_tb: number; so_lan: number } | null
   thai_do: {
     chuyen_can: { vang: number; vang_phep: number; co_mat: number; tong: number } | null
-    btvn: { tong: number; dat_chuan: number; khong_lam: number; nop_muon: number; xin_phep: number; khong_nghiem_tuc: number; chong_doi: number } | null
+    // nhóm KHÔNG TRÙNG (cộng = tong): dat_chuan · dung_han_chua_nt · nop_muon · khong_lam · xin_phep · chua_ghi; khong_nghiem_tuc/chong_doi đếm chồng (ghi chú)
+    btvn: { tong: number; dat_chuan: number; dung_han_chua_nt: number; chua_ghi: number; khong_lam: number; nop_muon: number; xin_phep: number; khong_nghiem_tuc: number; chong_doi: number } | null
   }
   nang_luc: { diem: number | null; sai_so: number | null }
   nhan_xet: string | null
