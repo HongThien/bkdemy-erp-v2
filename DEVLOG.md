@@ -78769,3 +78769,8 @@ Thùy nêu 4 việc, làm được 3:
 - Còn treo: BTVN 4 ô cộng không ra tổng (ô "không nghiêm túc" chồng với "không làm"/"nộp muộn") — đã đề xuất chia nhóm không trùng, Thùy chưa trả lời · app PH chưa cập nhật bố cục mới · chưa push.
 ## 04/11 (đêm muộn) — Auto duyệt câu đã đẩy vào bản đồ NH-TP (Thùy: "đẩy vào bản đồ thì auto duyệt đi chứ")
 - Các lượt trước ghi câu vào kho dạng `da_duyet=false` rồi gán mức cao nhưng KHÔNG duyệt ⇒ màn duyệt vẫn hiện "chưa duyệt". Đã duyệt: **1.179 câu** (TN 835 · Đ/S 210 · TLN 111 · tự luận 23; = mọi câu gán cao/kho Đ/S nguon ai trong NGÀY ở NCD00095) + **46 ví dụ trên lớp** (`da_duyet=true`, `duyet_nguon='ai'` cho câu). Kiểm: 969 câu gán hôm nay đều đã duyệt, 0 chưa. Script `nhtp-sach/duyet-cao-hom-nay.mjs`. "Vừa" (≈100) / trống / đề sai chưa nhập: vẫn chưa duyệt.
+
+### 04/11 — [Hình 7] HH00104 "Tam giác cân. Đường trung trực của đoạn thẳng": duyệt nhanh
+- Thùy: "sao trung trực của đoạn thẳng phần Hình học lớp 7 chưa có bài… đẩy bài vào" → kiểm kho: bài ĐÃ có 21 câu (HHC001955–1975, nhập 08/10 từ Word Củng cố C4 Bài 5, đủ lời giải + hình, kho_chuan) nhưng 0/21 câu và bài chưa duyệt ⇒ màn chỉ hiện câu đã duyệt nên trống.
+- Thùy "duyệt nhanh": `da_duyet=true`, `duyet_nguon='ai'`, `duyet_boi` trống, `duyet_at=now()` cho 21 câu + bài HH00104 (cùng kiểu Hình 8 ngày 02/11). Chưa sửa lời giải theo luật trình bày 27/10 (dòng ngắn, (gt)/(cmt)); lý thuyết có mục trung trực nhưng cả 21 câu là tam giác cân/đều/vuông cân, chưa có câu thuần trung trực.
+- Hình–Luyện K7 còn trống phần này: 40 bài hiện có đều từ đề thi/đề cương; các bài Củng cố HH00096–HH00104, HH00112 chưa chép sang Hình–Luyện (`nhap_tu_de_thi.mjs` chỉ đọc câu của đề thi).
