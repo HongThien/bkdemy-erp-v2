@@ -3,7 +3,7 @@
 // Dựng lại đề gốc mọi ET bản đồ mới từ 20/10, sinh đề 2/3 bằng hàm đang chạy rồi hàm mới. Với câu đề 1 có clone (cùng gốc) trong
 // kho chuẩn của dạng bài: đếm ô đề 2/3 lấy được câu cùng gốc — phải = min(2, số clone hợp form còn chưa dùng ở đề khác).
 import pg from 'pg'; import fs from 'node:fs'
-const MIG = 'supabase/migrations/202611041639_et_ma_de_uu_tien_clone.sql'
+const MIG = process.argv[2] ?? 'supabase/migrations/202611041639_et_ma_de_uu_tien_clone.sql'
 const url = fs.readFileSync('.env','utf8').match(/^\s*DATABASE_URL\s*=\s*(.+?)\s*$/m)[1].replace(/^["']|["']$/g,'')
 const c = new pg.Client({connectionString:url}); await c.connect()
 const q = async (s,a)=>(await c.query(s,a)).rows
