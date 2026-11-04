@@ -240,7 +240,7 @@ function O({ so, nhan, tone }: { so: React.ReactNode; nhan: string; tone?: 'do' 
   const c = tone === 'do' ? 'bg-rose-50 text-rose-700' : tone === 'cam' ? 'bg-amber-50 text-amber-700' : tone === 'xanh' ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-50 text-slate-800'
   return <div className={`rounded-xl px-3.5 py-3 ${c}`}><b className="block text-[22px] leading-tight tabular-nums">{so}</b><span className="text-[12px] opacity-80">{nhan}</span></div>
 }
-export function XemTruocKy({ d, congBoAt }: { d: BcKyData; congBoAt: string | null }) {
+export function XemTruocKy({ d }: { d: BcKyData; congBoAt?: string | null }) {
   const cc = d.thai_do.chuyen_can, bt = d.thai_do.btvn
   const nghi = cc ? cc.vang + cc.vang_phep : 0
   return (
@@ -351,7 +351,6 @@ export function XemTruocKy({ d, congBoAt }: { d: BcKyData; congBoAt: string | nu
         <p className="mt-2 text-[11px] text-slate-400">"—" = không thi lần đó (không tính vào hạng). Hạng TB = trung bình hạng các lần đã thi.</p>
       </Phan>
 
-      <p className="text-center text-[11px] text-slate-400">BK Academy · Báo cáo học kì · {congBoAt ? `công bố ${new Date(congBoAt).toLocaleDateString('vi-VN')}` : `bản nháp — tính lúc ${new Date(d.tinh_luc).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}`}</p>
     </div>
   )
 }
