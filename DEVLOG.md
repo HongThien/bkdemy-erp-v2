@@ -78813,3 +78813,13 @@ Thùy nêu 4 việc, làm được 3:
   cơ chế đặc thù (tg · trong_thi · cham_thi · bo_tro_dac_biet) không đổi; Bổ trợ ⇒ package + giờ; 'khac' không bật lại. Thêm cột `id` uuid để log chung `ta_cong_log` ghi vết.
 - **Quá khứ:** chưa tháng nào chốt (ta_luong_ky rỗng); bản chốt chụp kết quả + loai_viec ⇒ đổi cơ chế chỉ ảnh hưởng tháng chưa chốt. Không làm hiệu lực theo ngày cho cơ chế (quá nặng, chưa cần).
 - **Test:** `scripts/luong-ta-t9/test_loai_viec.mjs` 22/22 (rollback). Màn kiểm trên dev-alt: bảng 13 loại, cảnh báo thiếu giá, form sửa mở/huỷ đúng.
+
+
+## 2026-11-04 (đêm) — Báo cáo HỌC KÌ: vòng duyệt cuối + màn ERP chốt (mig 202611041924 · 202611042051 ĐÃ ÁP) · app PH GIỮ LẠI
+- BTVN chia nhóm KHÔNG TRÙNG, cộng = tổng buổi (Thùy "Sửa như đề xuất"): đạt chuẩn · đúng hạn nhưng chưa nghiêm túc · nộp muộn · không làm · xin phép · chưa ghi trạng thái (mig 1924 thêm `dung_han_chua_nt`, `chua_ghi`). "Không nghiêm túc/chống đối" đếm chồng nên không còn là ô riêng.
+- PDF: mỗi phần sang trang mới (`.phan+.phan{break-before:page}`, trước đó hero bị kéo giãn) · bỏ HẾT dòng chú thích nhỏ (Thùy "Bỏ hết": dấu *, "độ tin còn thấp", "Hạng cả kì xếp…", "Trong đó…", ghi chú điểm dự đoán, "—" = không thi) ở cả màn ERP lẫn script PDF · bỏ footer.
+- Điểm 2 chữ số sau dấu phẩy (9,25 không phải 9,3): mig 2051 round 2 cho diem/tb/chenh/diem_tb/phụ lục; hang_tb giữ 1. Màn `so1` maximumFractionDigits 2.
+- Thùy "Chốt, làm app PH" ⇒ tôi dựng lại màn app PH 5 phần (ph-app commit c476047, local). Thùy gắt: "m cứ ốp lên app PH làm đéo gì thế. đã nhập đủ dữ liệu ERP đâu mà đưa lên app PH ??" ⇒ **app PH GIỮ: không push/deploy ph-app (77c725e, c476047 chỉ ở máy) tới khi Thùy nói rõ đưa lên app PH.** Bài học: "chốt" thiết kế ≠ lệnh đưa ra cho PH; dữ liệu ERP chưa nhập thì không đẩy ra ngoài.
+- Thùy hỏi "ERP cần chức năng report học kì để điền điểm và nhận xét" ⇒ đã có: Report phụ huynh → công tắc Học kì → chọn kì (＋ Kì: admin) → nhập điểm dự đoán · sai số · nhận xét · kế hoạch cải thiện → Chốt & công bố / Công bố cả lớp.
+- Push ERP: merge origin (12 commit phiên khác; 5 file chưa track trùng origin cất ra scratchpad, DEVLOG xung đột giữ cả hai) ⇒ dd8cb9a8 lên origin. Auto-deploy tắt ⇒ Thùy tự Create Deployment.
+- File tạm CÓ TÊN HS, KHÔNG commit, chờ Thùy gật mới xoá: public/_tmp_bcky.json · public/_duyet-bcky.html · reports/duyet-bao-cao-ky-04-11.html · reports/bao-cao-ky-mau-Toan9A1*.pdf (v1–v8); ph-app/.next.cu-0411.
