@@ -70,3 +70,9 @@
 - Quy tắc "45 ngày" khi kì kết thúc nhưng báo cáo công bố muộn (đang hiểu: lùi từ `den_thang` cuối kì).
 - Phân biệt MT vs Khảo sát trong phụ lục (gộp 1 bảng hay 2 bảng).
 - Có cần hạng theo hệ (bac) như report tháng không.
+
+## C. HIỆN TRẠNG BUILD (04/11, đợt P1 — mig `202611041652` + `202611041657` ĐÃ ÁP)
+- **DB:** `ky_hoc` (tạo/sửa = admin hệ thống qua RLS) · `bao_cao_ph_ky` (PK hs × môn × kì; điểm dự đoán · sai số · nhận xét · snapshot · cong_bo_at) · `bao_cao_ph_ky_log` (trigger, §4) · trigger chặn sửa khi đã công bố. Hàm: `fn_bc_ky_tinh` (jsonb tự đủ = khuôn snapshot) · `fn_bc_ky_xem` (đã công bố ⇒ snapshot) · `fn_bc_ky_cong_bo` / `fn_bc_ky_mo_lai` / `fn_bc_ky_cong_bo_lop` (chỉ em nhập đủ 3 ô).
+- **ERP:** màn Report phụ huynh có công tắc **Tháng | Học kì** (`src/screens/report/BaoCaoKy.tsx`, `src/lib/baoCaoKy.ts`): chọn kì / ＋ Kì · cột trái chấm xanh = đã công bố, vàng = đang nhập · bản xem trước theo mockup · ô nhập tự lưu · Chốt & công bố / Mở lại · Công bố cả lớp.
+- **Quyết định kỹ thuật tự chốt — Thùy soát (thuộc mục B):** (1) Hoàn thành tái dùng nguồn câu Dashboard học tập `_dbht_cau` (mọi kênh ET · MT · BTVN · bài app, mỗi câu nặng như nhau), đã thêm nhánh KHTN; đơn vị liệt kê = chủ đề/chuyên đề em có câu trong kì; "độ tin còn thấp" khi < ½ số lần (dưới 10 / dưới 5). (2) Lần thi = (MT | KS, tháng thi, khối, môn) gom ky_thi các lớp; MT thi ngày 1–10 tính tháng trước. (3) Hạng + TB từng lần trong các em đã thi cùng khối; hạng kì theo TB các lần em đã thi. (4) Chuyên cần = buổi thường không huỷ. (5) Nhập + công bố = mọi nhân sự (như report tháng).
+- **Chưa làm:** màn app PH đọc snapshot (repo `bkdemy-ph-app`, cần FDW/quyền đọc `bao_cao_ph_ky`) · dựng PDF từ snapshot · Hình–Học chưa gắn chủ đề hiện chung một dòng "Hình".
