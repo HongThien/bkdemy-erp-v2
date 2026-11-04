@@ -11,7 +11,7 @@ import { useStore } from '../../store/useStore'
 import SearchSelect from '../../components/SearchSelect'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import {
-  doiChieu, thieuCong, duyetCong, chotGio, nhapHoCa, nhapHoViec, dsLoaiViec, dsLop, dsNhanSuDangLam,
+  doiChieu, thieuCong, duyetCong, chotGio, chotGioTheoViec, nhapHoCa, nhapHoViec, dsLoaiViec, dsLop, dsNhanSuDangLam,
   gioVN, hm, nhanCo, type DongCong, type ThieuCong, type LoaiViec,
 } from '../../lib/tacong'
 
@@ -120,8 +120,13 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
     try { await chotGio(r.id, r.ngay, vao, ra); setMo(null); bao('Đã chốt giờ — giờ gốc vẫn giữ'); await tai(false) }
     catch (e) { bao(loiCua(e), false) } finally { setBan(false) }
   }
+  async function chotTheoViec(r: DongCong) {
+    setBan(true)
+    try { const g = await chotGioTheoViec(r.id); setMo(null); bao(`Đã chốt ${g.vao}–${g.ra} theo việc — giờ gốc vẫn giữ`); await tai(false) }
+    catch (e) { bao(loiCua(e), false) } finally { setBan(false) }
+  }
 
-  const props = { coGhi, boChon, doiChon, mo, setMo, ban, tuChoi, chot }
+  const props = { coGhi, boChon, doiChon, mo, setMo, ban, tuChoi, chot, chotTheoViec }
   return (
     <div className="flex flex-col gap-3">
       <div className={`${card} flex flex-wrap items-center gap-2 px-3 py-2`}>
@@ -160,7 +165,7 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
 
 type DongProps = {
   coGhi: boolean; boChon: Set<string>; doiChon: (id: string) => void; mo: string | null; setMo: (m: string | null) => void; ban: boolean
-  tuChoi: (r: DongCong, lyDo: string) => void; chot: (r: DongCong, vao: string, ra: string) => void
+  tuChoi: (r: DongCong, lyDo: string) => void; chot: (r: DongCong, vao: string, ra: string) => void; chotTheoViec: (r: DongCong) => void
 }
 const Pill = ({ c, children }: { c: string; children: React.ReactNode }) => <span className={`mr-1 inline-block whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] font-semibold ${c}`}>{children}</span>
 const Chk = ({ r, p }: { r: DongCong; p: DongProps }) => (r.duyet === 'cho_duyet' && p.coGhi
@@ -182,6 +187,7 @@ function NhomCa({ c, viec, ...p }: { c: DongCong; viec: DongCong[] } & DongProps
         <td className="px-2 py-2 align-top"></td>
         <td className="px-2 py-2 align-top"><TrangThai r={c} /></td>
         <td className="px-2 py-2 align-top">{p.coGhi && <div className="flex flex-col gap-1">
+          {!c.ra_at && !c.ra_chot && viec.some((v) => v.duyet !== 'tu_choi' && v.gio_ket_thuc) && <button className={btnGhost} disabled={p.ban} title="Giờ ra = giờ kết thúc việc cuối trong ca" onClick={() => p.chotTheoViec(c)}>Chốt theo việc</button>}
           <button className={btnGhost} onClick={() => p.setMo(p.mo === 'chot:' + c.id ? null : 'chot:' + c.id)}>Chốt giờ</button>
           {c.duyet === 'cho_duyet' && <button className={btnDanger} onClick={() => p.setMo(p.mo === 'tc:' + c.id ? null : 'tc:' + c.id)}>Từ chối</button>}
         </div>}</td>

@@ -106,6 +106,8 @@ export const thieuCong = (tu: string, den: string) => rpc<ThieuCong[]>('fn_ta_bu
 export const duyetCong = (ca: string[], viec: string[], ketQua: 'da_duyet' | 'tu_choi', lyDo?: string) =>
   rpc<number>('fn_ta_duyet_cong', { p_ca: ca, p_viec: viec, p_ket_qua: ketQua, p_ly_do: lyDo ?? null })
 export const chotGio = (id: string, ngay: string, vao: string, ra: string) => rpc<null>('fn_ta_chot_gio', { p_id: id, p_vao: tsVN(ngay, vao), p_ra: tsVN(ngay, ra) })
+// Chốt giờ theo việc trong ca (Thùy 04/11): DB tính vào = sớm hơn (checkin, việc đầu), ra = việc cuối
+export const chotGioTheoViec = (id: string) => rpc<{ vao: string; ra: string }>('fn_ta_chot_gio_theo_viec', { p_id: id })
 export const nhapHoCa = (ns: string, ngay: string, vao: string, ra: string, lyDo: string) =>
   rpc<string>('fn_ta_cham_cong_nhap_ho', { p_ns: ns, p_vao: tsVN(ngay, vao), p_ra: tsVN(ngay, ra), p_ly_do: lyDo })
 export const nhapHoViec = (ns: string, v: KhaiViec, lyDo: string) => rpc<string>('fn_ta_nhap_ho_viec', {
