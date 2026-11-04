@@ -78774,3 +78774,7 @@ Thùy nêu 4 việc, làm được 3:
 - Thùy: "sao trung trực của đoạn thẳng phần Hình học lớp 7 chưa có bài… đẩy bài vào" → kiểm kho: bài ĐÃ có 21 câu (HHC001955–1975, nhập 08/10 từ Word Củng cố C4 Bài 5, đủ lời giải + hình, kho_chuan) nhưng 0/21 câu và bài chưa duyệt ⇒ màn chỉ hiện câu đã duyệt nên trống.
 - Thùy "duyệt nhanh": `da_duyet=true`, `duyet_nguon='ai'`, `duyet_boi` trống, `duyet_at=now()` cho 21 câu + bài HH00104 (cùng kiểu Hình 8 ngày 02/11). Chưa sửa lời giải theo luật trình bày 27/10 (dòng ngắn, (gt)/(cmt)); lý thuyết có mục trung trực nhưng cả 21 câu là tam giác cân/đều/vuông cân, chưa có câu thuần trung trực.
 - Hình–Luyện K7 còn trống phần này: 40 bài hiện có đều từ đề thi/đề cương; các bài Củng cố HH00096–HH00104, HH00112 chưa chép sang Hình–Luyện (`nhap_tu_de_thi.mjs` chỉ đọc câu của đề thi).
+
+## 04/11 (đêm muộn) — Auto duyệt câu mức cao ở MỌI khối (Thùy: "các lớp khác làm thế luôn")
+- Quét: câu Đại/HGT K6–K12 đã gán nguon 'ai' / kho Đ/S nguon 'ai' mà `da_duyet=false`: Đại ~9.8k, HGT ~2.4k (K12 4.9k+1.0k, K11 2.2k, K10 0.9k+1.3k, K6–9 ~1.9k); 99% có đáp án đầy đủ. **Đã duyệt 12.249 câu** (Đại 9.844 · HGT 2.405; `duyet_nguon='ai'`, theo lô 500, mỗi lô 1 transaction) + 95 ví dụ trên lớp nguon=sach. Điều kiện: có đáp án đầy đủ (TN A–D · TLN có đáp số · Đ/S đủ 4 ý · tự luận có lời giải). Không đụng gán cum/doi_ung/nguoi (≈2.3k câu), mức vừa, câu thiếu đáp án (~50). Script `nhtp-sach/duyet-cao-moi-khoi.mjs`.
+- Còn mở: 1.423 ví dụ trên lớp "Ví dụ của dạng bài (bản đồ mới)" `da_duyet=false` — không đụng, hỏi Thùy có áp luật này không.
