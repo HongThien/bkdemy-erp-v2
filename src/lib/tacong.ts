@@ -119,6 +119,12 @@ export const bangDonGia = () => rpc<DonGia[]>('fn_ta_don_gia_ds')   // kèm id +
 export const suaDonGia = (id: string, gia: number, hieuLucTu: string, ghiChu: string) => rpc<null>('fn_ta_sua_don_gia', { p_id: id, p_gia: gia, p_hieu_luc_tu: hieuLucTu, p_ten: null, p_ghi_chu: ghiChu })
 export const xoaDonGia = (id: string, lyDo: string) => rpc<null>('fn_ta_xoa_don_gia', { p_id: id, p_ly_do: lyDo })
 export type ThongSoKy = { lan: number; chot_at: string; chup_at: string; don_gia: { ma: string; ten: string; si_tu: number | null; si_den: number | null; gia_tri: number; don_vi: string; hieu_luc_tu: string }[]; loai_viec: { ma: string; ten: string; nhom: string; tinh_vao: string; don_vi: string; active: boolean }[] }
+// Thùy 04/11: LOẠI VIỆC & CƠ CHẾ sửa trên màn (mig 202611042237). Cơ chế: tg (đặc thù) · bo_tro (giờ vào chỉ tiêu) · ngoai (giờ/buổi × giá).
+export type LoaiViecQL = { ma: string; ten: string; co_che: 'tg' | 'bo_tro' | 'ngoai'; dac_thu: boolean; nhom: string; tinh_vao: string; don_vi: 'gio' | 'buoi'; can_lop: boolean; can_hs: boolean; thu_tu: number; active: boolean; ghi_chu: string; gia_tri: number | null; gia_hieu_luc_tu: string | null; gia_id: string | null; gia_khoa_ky: string | null; so_viec: number }
+export const dsLoaiViecQL = () => rpc<LoaiViecQL[]>('fn_ta_loai_viec_ds')
+export type LuuLoaiViec = { ma: string | null; ten: string; coChe: 'tg' | 'bo_tro' | 'ngoai'; donVi: 'gio' | 'buoi'; canLop: boolean; canHs: boolean; ghiChu: string; gia: number | null; giaTu: string | null }
+export const luuLoaiViec = (x: LuuLoaiViec) => rpc<string>('fn_ta_loai_viec_luu', { p_ma: x.ma, p_ten: x.ten, p_co_che: x.coChe, p_don_vi: x.donVi, p_can_lop: x.canLop, p_can_hs: x.canHs, p_ghi_chu: x.ghiChu, p_gia: x.gia, p_gia_tu: x.giaTu })
+export const dungLoaiViec = (ma: string, active: boolean) => rpc<null>('fn_ta_loai_viec_dung', { p_ma: ma, p_active: active })
 export const thongSoKy = (ky: string, lan: number) => rpc<ThongSoKy | null>('fn_ta_ky_thong_so', { p_ky: ky, p_lan: lan })
 // Đổi giá = THÊM dòng mới có hiệu lực từ ngày chỉ định (bảng chỉ-thêm). Bậc lương phải kèm khoảng sĩ số của bậc đó.
 export const datDonGia = (ma: string, gia: number, tu: string, o: { ten?: string; siTu?: number | null; siDen?: number | null; ghiChu?: string } = {}) =>

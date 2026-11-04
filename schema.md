@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-485 bảng · 38 view · 0 enum · 265 trigger · 1577 function
+485 bảng · 38 view · 0 enum · 267 trigger · 1581 function
 
 ## _app_secrets
 
@@ -5815,6 +5815,8 @@ END |  |  |
 | can_hs | boolean |  | false |  |  |
 | thu_tu | smallint |  | 0 |  |  |
 | active | boolean |  | true |  |  |
+| id | uuid |  | gen_random_uuid() |  |  |
+| ghi_chu | text |  | ''::text |  |  |
 
 ## ta_luong_ky
 
@@ -9318,6 +9320,8 @@ WITH luot AS (
 | ta_don_gia | ta_don_gia_khoa_ky | BEFORE | INSERT | _ta_don_gia_khoa_ky |
 | ta_don_gia | ta_don_gia_kiem_sua | BEFORE | DELETE/UPDATE | _ta_don_gia_kiem_sua |
 | ta_don_gia | ta_don_gia_log | AFTER | INSERT/UPDATE | _ta_cong_ghi_log |
+| ta_loai_viec | ta_loai_viec_kiem | BEFORE | INSERT/DELETE/UPDATE | _ta_loai_viec_kiem |
+| ta_loai_viec | ta_loai_viec_log | AFTER | INSERT/UPDATE | _ta_cong_ghi_log |
 | ta_luong_ky | ta_luong_ky_bat_bien | BEFORE | DELETE/UPDATE | _ta_luong_ky_bat_bien |
 | ta_luong_ky_dong | ta_luong_ky_dong_bat_bien | BEFORE | DELETE/UPDATE | _ta_luong_ky_bat_bien |
 | tai_lieu | trg_et_khong_tron_ban_do | BEFORE | INSERT/UPDATE | _et_khong_tron_ban_do |
@@ -9576,8 +9580,8 @@ WITH luot AS (
 - `_kho_form_tn_cua(p_cautbl text)` → text
 - `_kho_form_tn_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `_kho_la_dang_cho(p_ma_dang text)` → boolean
-- `_kho_loc_duyet_sql(p_loc text, p_tbl text)` → text
 - `_kho_loc_duyet_sql(p_loc text)` → text
+- `_kho_loc_duyet_sql(p_loc text, p_tbl text)` → text
 - `_kho_lt_dang_tbl(p_kho text)` → text
 - `_kho_lt_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `_kho_muc_do_dang(p_mon text, p_ma_dang text)` → smallint
@@ -9734,6 +9738,7 @@ WITH luot AS (
 - `_ta_khoa_ky()` → trigger
 - `_ta_ky_da_chot(p_ngay date)` → boolean
 - `_ta_ky_tinh_trang(p_ky date)` → jsonb
+- `_ta_loai_viec_kiem()` → trigger
 - `_ta_lop_cua_buoi(p_buoi uuid)` → uuid
 - `_ta_luong_ky_bat_bien()` → trigger
 - `_ta_luong_tinh(p_ky date, p_ns uuid DEFAULT NULL::uuid)` → TABLE(nhan_su_id uuid, ho_ten text, package_lop numeric, bo_tro_gio numeric, bo_tro_tien numeric, ngoai_package numeric, gross numeric, tien_phat numeric, net numeric, chi_tiet jsonb)
@@ -9767,8 +9772,8 @@ WITH luot AS (
 - `_tk_dong_bo(p_ns uuid)` → void
 - `_tk_goc_team(p_team text, p_mon text)` → uuid
 - `_tl_bdm_cau_da_dung(p_buoi uuid, p_tru_phan uuid DEFAULT NULL::uuid)` → text[]
-- `_tl_bdm_cau_vi_tri(p_khoi text, p_mon text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
 - `_tl_bdm_cau_vi_tri(p_khoi text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
+- `_tl_bdm_cau_vi_tri(p_khoi text, p_mon text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
 - `_tl_bdm_ghi_cau(p_phan uuid, p_ma_caus text[])` → void
 - `_tl_bdm_khoi_nhom(p_nhom text)` → text
 - `_tl_bdm_kiem_buoi(p_tai_lieu uuid, p_buoi uuid)` → void
@@ -10652,6 +10657,9 @@ WITH luot AS (
 - `fn_ta_khai_viec(p_loai text, p_ngay date, p_lop uuid DEFAULT NULL::uuid, p_buoi uuid DEFAULT NULL::uuid, p_ca uuid DEFAULT NULL::uuid, p_bat time without time zone DEFAULT NULL::time without time zone, p_ket time without time zone DEFAULT NULL::time without time zone, p_hs text DEFAULT NULL::text, p_ghi_chu text DEFAULT ''::text)` → uuid
 - `fn_ta_ky_thong_so(p_ky date, p_lan integer DEFAULT NULL::integer)` → jsonb
 - `fn_ta_ky_trang_thai(p_ky date)` → jsonb
+- `fn_ta_loai_viec_ds()` → TABLE(ma text, ten text, co_che text, dac_thu boolean, nhom text, tinh_vao text, don_vi text, can_lop boolean, can_hs boolean, thu_tu smallint, active boolean, ghi_chu text, gia_tri numeric, gia_hieu_luc_tu date, gia_id uuid, gia_khoa_ky date, so_viec bigint)
+- `fn_ta_loai_viec_dung(p_ma text, p_active boolean)` → void
+- `fn_ta_loai_viec_luu(p_ma text, p_ten text, p_co_che text, p_don_vi text, p_can_lop boolean, p_can_hs boolean, p_ghi_chu text DEFAULT ''::text, p_gia numeric DEFAULT NULL::numeric, p_gia_tu date DEFAULT NULL::date)` → text
 - `fn_ta_luong_ky(p_ky date, p_ns uuid DEFAULT NULL::uuid)` → TABLE(nhan_su_id uuid, ho_ten text, package_lop numeric, bo_tro_gio numeric, bo_tro_tien numeric, ngoai_package numeric, gross numeric, tien_phat numeric, net numeric, chi_tiet jsonb, da_chot boolean, lan integer, chot_at timestamp with time zone)
 - `fn_ta_luong_thang(p_ky date, p_ns uuid DEFAULT NULL::uuid)` → TABLE(nhan_su_id uuid, ho_ten text, package_lop numeric, bo_tro_gio numeric, bo_tro_tien numeric, ngoai_package numeric, gross numeric, tien_phat numeric, net numeric, chi_tiet jsonb)
 - `fn_ta_mo_lai_ky(p_ky date, p_ly_do text)` → void
@@ -10859,8 +10867,8 @@ WITH luot AS (
 - `hs_sotay_tim_ct(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_sotay_tim_lt(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
@@ -10930,8 +10938,8 @@ WITH luot AS (
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 

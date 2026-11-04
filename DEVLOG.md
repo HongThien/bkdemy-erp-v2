@@ -78804,3 +78804,12 @@ Thùy nêu 4 việc, làm được 3:
 - Thùy: "toàn bộ cả bài vị trí cũng thế, duyệt hết các bài trong phần hình học". Đã duyệt **1.115 câu + 21 bài `hinh_hoc_bai`**: `da_duyet=true`, `duyet_nguon='ai'`, `duyet_boi` trống, `duyet_at=now()` (cùng kiểu HH00104/Hình 8). Script `scripts/_duyet_hinh_hoc_het.mjs` (1 transaction, kiểm trước/sau, --thu = ROLLBACK).
 - Điều kiện: bài thật (không phải bài chờ `HH??000000`), chưa xoá, `kiem_may<>'nghi'`, CÓ lời giải. KHÔNG duyệt: 1.753 câu ở bài chờ (HH07/08/11000000 — chưa phân dạng) và 5 câu thiếu lời giải (HH00064003/005/006, HH00095002, HHC001824). Sau duyệt cả 6 bài HH00105–110 qua kho chuẩn đủ (148/46/144/105/127/46).
 - Chưa sửa lời giải theo luật trình bày 27/10 (dòng ngắn, (gt)/(cmt)); duyệt = hiện trong kho/chuyên đề, không phải đã soát lời giải.
+
+### 04/11 22:40 — [Lương TA] Tab "Loại việc & cơ chế" sửa trên màn (mig 202611042237 ĐÃ ÁP)
+- **Làm:** Thùy "làm đi" — danh sách loại việc + cơ chế tính lương sửa được ở màn Lương TA (tab mới giữa Bảng lương và Đơn giá):
+  thêm · sửa (tên, cơ chế Bổ trợ ↔ Ngoài package, đơn vị giờ/buổi, cần lớp/HS, mô tả, đặt giá mới kèm ngày hiệu lực) · ngừng/dùng lại.
+  Hàm `fn_ta_loai_viec_ds` / `fn_ta_loai_viec_luu` / `fn_ta_loai_viec_dung`, quyền ghi `ta_luong`. Báo đỏ loại đang dùng mà chưa có giá (Họp, Đào tạo).
+- **Luật ở DB (trigger `ta_loai_viec_kiem`):** mã loại = mã gốc (DB cấp từ tên bỏ dấu lúc thêm, trùng thì thêm `_2`), không đổi; không xoá cứng;
+  cơ chế đặc thù (tg · trong_thi · cham_thi · bo_tro_dac_biet) không đổi; Bổ trợ ⇒ package + giờ; 'khac' không bật lại. Thêm cột `id` uuid để log chung `ta_cong_log` ghi vết.
+- **Quá khứ:** chưa tháng nào chốt (ta_luong_ky rỗng); bản chốt chụp kết quả + loai_viec ⇒ đổi cơ chế chỉ ảnh hưởng tháng chưa chốt. Không làm hiệu lực theo ngày cho cơ chế (quá nặng, chưa cần).
+- **Test:** `scripts/luong-ta-t9/test_loai_viec.mjs` 22/22 (rollback). Màn kiểm trên dev-alt: bảng 13 loại, cảnh báo thiếu giá, form sửa mở/huỷ đúng.
