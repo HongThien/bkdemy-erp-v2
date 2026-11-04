@@ -78726,6 +78726,26 @@ Thùy nêu 4 việc, làm được 3:
 - Treo: 2 chặn cứng (khai bù ca trùng giờ ca đã có · checkout < 1 phút) — Thùy đang hỏi "chặn cứng là gì", chưa gật.
 
 
+## 04/11 — BTVN app cấp 3 tự đóng khi hết hạn (Thùy: "những bài tập được phát hành trên app sẽ được tự động đóng khi hết giờ ko cần TA đóng nữa")
+- **Đo 13/10–04/11 khối 10–12:** BTVN đều làm app, đều có hạn, 0 bài nộp ảnh; TA đóng trễ vài ngày (nhiều buổi 18–28/10 đóng hôm nay), có buổi đóng trước hạn.
+- **Thùy chốt:** bỏ trống ⇒ Không làm bài · đã trả lời ⇒ có làm, không điền đủ đáp án ⇒ thái độ Chưa nghiêm túc · sau hạn VẪN cho làm (không khoá), tính Nộp muộn.
+- **Mig `202611041715_btvn_app_cap3_tu_dong_khi_het_han` ĐÃ ÁP:** fn_btvn_online_dong_bo ⇒ lõi `_btvn_online_dong_bo_core(p_buoi, p_ca_da_dong)` + wrapper giữ chữ ký/hành vi · job `_btvn_app_tu_dong()`: khối 10·11·12, buổi thường, BTVN app có hạn đã qua, ≤30 ngày, bỏ qua buổi có ảnh nộp + buổi chưa em nào trả lời app (lớp làm giấy, vd 11A1 21/10 · 28/10) · chưa có lưới BTVN ⇒ tự dựng (như syncDocProblems, câu từ bài app biến thể 1) · đổ kết quả · trạng thái/thái độ chỉ ô trống · fn_dong_btvn rồi giờ đóng = ĐÚNG giờ hạn · rút đề xuất gậy khâu BTVN · buổi MÁY đóng (giờ đóng = giờ hạn) vẫn nhận bài muộn: Không làm bài/trống mà có trả lời ⇒ đúng hạn/muộn theo giờ câu đầu, tính lại EXP tháng. Buổi TA tự đóng: không đụng.
+- **Sai lần đầu (ROLLBACK):** cho nâng mọi "Không làm bài" ⇒ đổi 22 ô TA tick ở buổi TA đã đóng (có em TA đánh "chống đối") ⇒ giới hạn về buổi máy đóng. Lần 2: buổi chưa có lưới BTVN (TA chưa từng mở tab) ⇒ điểm không có ô để đổ ⇒ thêm bước dựng lưới.
+- **Kiểm** `scripts/_test_btvn_app_cap3.mjs` 5/5 (giờ đóng = hạn, không đè TA, lượt 2 không đổi gì, quyền) + giả lập em làm muộn 1 câu sau khi máy đóng ⇒ Nộp muộn + Chưa nghiêm túc, ô BTVN có điểm, giờ đóng giữ nguyên.
+- **Chạy thật 1 lượt:** 10A1 · 15/10 (hạn 14:30 18/10, TA chưa đóng) ⇒ đóng lúc 14:30 18/10, lưới 16 ô · 80 kết quả, 4 Không làm bài · 4 đúng hạn · 1 muộn, buổi hoàn tất.
+- **⚠ CHỜ THÙY chạy SQL Editor `202611041716_btvn_app_cap3_cron_sql_editor.sql`** (lịch 15 phút cho job mới + lịch `buoi-tu-dong-et-btvn-trong` của 28/10 — file 202610282053 CHƯA TỪNG chạy nên việc tự đóng khâu ET/BTVN trống chưa hoạt động). Chạy xong Claude `--ghi-so` cả 2 file.
+
+## 04/11 — K9: Chuyên đề "Hình Giữa kì 1" (tuyển tập bài hình giữa kì 1 lớp 9, như K7/K8)
+- Thùy: "Làm 1 file chuyên đề giống khối 7, 8, tuyển tập các bài hình giữa kì 1 lớp 9". Khuôn: `scripts/_cd_hinh_gk1_7.mjs` (K7/K8: tai_lieu loai chuyen_de, nhanh hinh, ban_do moi, ghi qua RPC `fn_tl_hl_*`).
+- Làm: `scripts/_cd_hinh_gk1_9.mjs` — nguồn = 167 bài Hình–Luyện K9 có câu nguồn trong đề / đề cương GIỮA học kì (kho K9 còn 340 bài cuối kì, không lấy). Kết quả 167/167 bài, tai_lieu da22bf68-6441-49fb-ba08-95a8da33d17c.
+- Khác K7/K8: K9 gần như chưa có mô hình (1/167) ⇒ thay vì dồn "Bài tập khác" 166 bài, chia 4 phần chủ đề bằng từ khoá (chỉ để chia mục lục, không ghi lên bài kho): biểu thức lượng giác 8 · giải tam giác vuông 11 · thực tế 77 · hình tổng hợp 70 (+1 bài mô hình đường cao).
+- Chạy sai lần đầu: heredoc Bash nuốt `\\` làm hỏng regex ⇒ viết script bằng Write tool; sửa tạm `_cd_hinh_gk1_7.mjs` đã hoàn lại nguyên (git diff rỗng).
+- (04/11 17:30) Thùy chạy SQL Editor 202611041716 ⇒ Claude --ghi-so 202610282053 + 202611041716. cron.job: `btvn-app-cap3-tu-dong` + `buoi-tu-dong-et-btvn-trong` */15, lượt đầu 17:30 succeeded. Lượt đó máy đóng 15 khâu ET + 19 khâu BTVN (buoi_hoc_phase_log actor null) — chủ yếu tồn đọng khâu trống từ khi lịch 28/10 chưa chạy. Buổi thường >7 ngày còn treo: ET 0 · BTVN 5 (có nội dung BTVN, TA đóng tay).
+
+## 04/11 (chiều) — K9 chuyên đề Hình Giữa kì 1: làm lại chỉ bài hình 3–4 ý
+- Thùy: "bỏ các bài lượng giác, CHỈ tính bài hình 3 ý chuẩn 2.5 điểm; bài thực tế ứng dụng lượng giác bỏ đi" rồi "4 ý giữ được, bỏ các bài giải tam giác và thực tế thôi".
+- Xoá bản đầu (tai_lieu da22bf68…: 1 tai_lieu + 10 phần + 167 dòng tham chiếu, Thùy gật; bài kho hinh_bai 508 nguyên) bằng `scripts/_xoa_cd_hinh_gk1_9.mjs` (1 transaction, kiểm trước/sau). Dựng lại bằng `_cd_hinh_gk1_9.mjs`: 65 bài (đếm ý: 3 ý + 4 ý; loại biểu thức A, thực tế C, 1–2 ý). tai_lieu 5d83d096-6c86-43fd-88ff-f03de424afe4.
+- Thùy chưa nói rõ bài 1–2 ý: tôi loại 8 bài hình 1–2 ý + 9 bài giải tam giác 1 ý (nêu lại để Thùy quyết).
 ## 2026-11-04 — Báo cáo HỌC KÌ: dựng lại 5 phần theo Thùy (mig 202611041727 ĐÃ ÁP)
 - SAI CỦA TÔI: HANDOFF ghi "chốt thiết kế" ⇒ tôi coi mockup là đã duyệt, dựng luôn màn ERP + app PH. Thùy: "mockup t đã duyệt đâu". Chưa push/deploy gì. Bài học: spec "chốt logic" ≠ mockup đã duyệt — đưa HTML số thật cho Thùy xem TRƯỚC khi dựng màn.
 - Thùy duyệt bản số thật ⇒ 5 phần: (1) Đánh giá — mỗi chủ đề 1 card, chuyên đề 1 dòng, thanh ngắn cùng dòng · (2) Kết quả thi — 1 bảng (điểm · TB khối · chênh · hạng) + dòng "Cả học kì", đồ thị 2 đường 2 màu (tím = con, cam = TB khối) · (3) Thái độ học tập — chuyên cần + BTVN (không làm / nộp muộn / không nghiêm túc = chưa nghiêm túc + chống đối; buổi thường + ca bù) · (4) Nhận xét + KẾ HOẠCH CẢI THIỆN (cột mới `ke_hoach`) + điểm năng lực · (5) Phụ lục — điểm thi toàn khối × môn, mỗi dòng 1 em, mỗi cột 1 lần thi, xếp theo HẠNG TB (họ tên đầy đủ).
