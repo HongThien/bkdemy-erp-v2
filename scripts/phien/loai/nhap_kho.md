@@ -53,6 +53,8 @@ node scripts/phien/ban-do.mjs sua '{"loai":"dang_bai","id":"...","mo_ta":"..."}'
 - Chỉ phân **câu gốc** (bản sao tự đi theo), không phân câu Đúng/Sai, chỉ câu của đúng khối — DB tự chặn.
 - Câu **NGƯỜI đã quyết** (gán tay / đã kiểm mẫu) DB không cho đổi — đúng như thế, đừng tìm cách vòng.
 - Câu Đại phân vào chủ đề vùng `toan`; câu Hình giải tích (nhánh `hgt`) vào chủ đề vùng `hgt`.
+- **Phiên KHTN** (05/11): kho `khtn`, bản đồ KHTN không chia vùng — `them_cau` dùng `"nhanh":"khtn"` (bỏ trống cũng được),
+  dạng bài mã `KDB…`, chủ đề mã của bản đồ KHTN. Câu Toán không phân được trong phiên KHTN và ngược lại (DB chặn).
 
 ## Cách làm một lượt
 

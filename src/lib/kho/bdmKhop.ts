@@ -1,6 +1,12 @@
 // B4 DUYỆT KHỚP — duyệt câu xếp vào dạng bài của BẢN ĐỒ MỚI. mig 202610161046 · spec-ban-do-4-tang.md §B4.
 // Seam: UI chỉ gọi hàm ở đây; mọi đếm/lọc/phân quyền theo phạm vi nằm ở Postgres (CLAUDE.md §2.0).
 import { supabase } from '../supabase'
+import { layMonBdm } from './banDoMoi'
+
+// Bộ hàm theo môn đang mở trên Bản đồ mới (05/11: KHTN có bộ fn_khtn_bdm_khop_* cùng chữ ký, mig 202611051543).
+// Phạm vi người duyệt (pham_vi/ung_vien/giao/go) chỉ Toán có — KHTN duyệt theo trưởng khối.
+const K = (x: string) => (layMonBdm() === 'KHTN' ? 'fn_khtn_bdm_khop_' : 'fn_bdm_khop_') + x
+export const khopCoPhamVi = () => layMonBdm() !== 'KHTN'
 
 export type KhopHang = 'de_xuat' | 'trong' | 'thieu' | 'mau'
 export const KHOP_HANG_LABEL: Record<KhopHang, string> = {
@@ -19,7 +25,7 @@ export type KhopCau = {
   ly_do: string | null; chac: string | null
   dang_bai_id: string | null; dang_bai: string | null; nhom: string | null; chu_de: string | null; chuyen_de: string | null
   dang_cu: string | null; chuyen_de_cu: string | null
-  nhanh?: 'dai' | 'hgt'   // câu thuộc kho Đại hay kho Hình giải tích (mig 202610221734)
+  nhanh?: 'dai' | 'hgt' | 'khtn'   // câu thuộc kho Đại / Hình giải tích (mig 202610221734) / KHTN (mig 202611051543)
   nguon_tl?: string[]     // nguồn tài liệu của câu (mig 202610271607)
 }
 export type KhopDich = { id: string; dang_bai: string; mo_ta: string | null; nhom: string; nhom_id: string; chuyen_de: string; chuyen_de_id: string; chu_de: string; chu_de_id: string }
@@ -34,14 +40,14 @@ const go = async <T,>(fn: string, args: Record<string, unknown>): Promise<T> => 
 
 // nguon (Thùy 27/10): 'de_thi' | 'de_cuong' | 'sach:<tác giả>' | 'kho_cu' — lọc ở DB (mig 202610271607); null = mọi nguồn
 export const khopDem = (khoi: string, chuDe?: string | null, nguon?: string | null) =>
-  go<KhopDem>('fn_bdm_khop_dem', { p_khoi: khoi, p_chu_de: chuDe ?? null, p_nguon: nguon ?? null })
+  go<KhopDem>(K('dem'), { p_khoi: khoi, p_chu_de: chuDe ?? null, p_nguon: nguon ?? null })
 export const khopHang = (khoi: string, hang: KhopHang, limit = 30, offset = 0, chuDe?: string | null, nguon?: string | null) =>
-  go<{ tong: number; rows: KhopCau[] }>('fn_bdm_khop_hang', { p_khoi: khoi, p_hang: hang, p_limit: limit, p_offset: offset, p_chu_de: chuDe ?? null, p_nguon: nguon ?? null })
+  go<{ tong: number; rows: KhopCau[] }>(K('hang'), { p_khoi: khoi, p_hang: hang, p_limit: limit, p_offset: offset, p_chu_de: chuDe ?? null, p_nguon: nguon ?? null })
 export const khopNguonDs = (khoi: string, hang: KhopHang, chuDe?: string | null) =>
-  go<{ nguon: string; so_cau: number }[]>('fn_bdm_khop_nguon_ds', { p_khoi: khoi, p_hang: hang, p_chu_de: chuDe ?? null })
-export const khopDich = (khoi: string) => go<KhopDich[]>('fn_bdm_khop_dich', { p_khoi: khoi })
+  go<{ nguon: string; so_cau: number }[]>(K('nguon_ds'), { p_khoi: khoi, p_hang: hang, p_chu_de: chuDe ?? null })
+export const khopDich = (khoi: string) => go<KhopDich[]>(K('dich'), { p_khoi: khoi })
 export const khopQuyet = (maCau: string, hanhDong: KhopHanhDong, dangBai?: string | null, lyDo?: string | null) =>
-  go<{ ok: boolean }>('fn_bdm_khop_quyet', { p_ma_cau: maCau, p_hanh_dong: hanhDong, p_dang_bai: dangBai ?? null, p_ly_do: lyDo ?? null })
+  go<{ ok: boolean }>(K('quyet'), { p_ma_cau: maCau, p_hanh_dong: hanhDong, p_dang_bai: dangBai ?? null, p_ly_do: lyDo ?? null })
 export const khopPhamVi = () => go<{ la_admin: boolean; rows: KhopPhamVi[] }>('fn_bdm_khop_pham_vi', {})
 export const khopUngVien = () => go<{ tai_khoan_id: string; ho_ten: string }[]>('fn_bdm_khop_ung_vien', {})
 export const khopGiao = (taiKhoan: string, khoi: string, chuDe: string | null) =>

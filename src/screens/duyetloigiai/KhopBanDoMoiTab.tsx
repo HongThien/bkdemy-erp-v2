@@ -7,7 +7,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { MathText } from '../kho/ui'
 import {
-  KHOP_HANG_LABEL, KHOP_HANG_MOTA, khopDem, khopDich, khopGiao, khopGo, khopHang, khopNguonDs, khopPhamVi, khopQuyet, khopUngVien,
+  KHOP_HANG_LABEL, KHOP_HANG_MOTA, khopCoPhamVi, khopDem, khopDich, khopGiao, khopGo, khopHang, khopNguonDs, khopPhamVi, khopQuyet, khopUngVien,
   type KhopCau, type KhopDem, type KhopDich, type KhopHang, type KhopPhamVi,
 } from '../../lib/kho/bdmKhop'
 import { useNhanXet, NutCanSua, NhanXetCu, DongChoSua } from './CanSua'
@@ -19,7 +19,7 @@ import type { TrangThaiNX } from '../../lib/kho/nhanXet'
 const HANG: KhopHang[] = ['de_xuat', 'trong', 'thieu', 'mau']
 const TRANG = 20
 // Nhớ hàng đang mở khi chuyển tab/khối rồi quay lại (module-level, sống tới F5).
-const monCau = (c: KhopCau) => (c.nhanh === 'hgt' ? 'hgt' : 'toan') as 'hgt' | 'toan'   // nhận xét "Cần sửa" ghi vào đúng kho của câu
+const monCau = (c: KhopCau) => (c.nhanh === 'hgt' ? 'hgt' : c.nhanh === 'khtn' ? 'khtn' : 'toan') as 'hgt' | 'toan' | 'khtn'   // nhận xét "Cần sửa" ghi vào đúng kho của câu
 // Nhớ cả TRANG đang mở (Thùy 23/10); trang chỉ dùng lại khi cùng khối + chủ đề.
 const NHO: { hang: KhopHang; trang: number; khoa: string; nguon: string } = { hang: 'de_xuat', trang: 0, khoa: '', nguon: 'all' }
 
@@ -49,7 +49,8 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
   const cd = chuDeId && locCD ? chuDeId : null
   const req = useRef(0)
   const nhanXet = useNhanXet('cau')   // "✎ Cần sửa" nội dung câu (đề/đáp án/lời giải): chờ Claude sửa thì tạm ẩn
-  const deSau = useDeSau('bdm_khop', 'toan')  // "⏭ Để sau" (Thùy 20/10): câu chưa muốn quyết dạng bài xuống cuối hàng
+  const monDS = khopCoPhamVi() ? 'toan' : 'khtn'   // "Để sau" theo môn của bản đồ đang mở
+  const deSau = useDeSau('bdm_khop', monDS)  // "⏭ Để sau" (Thùy 20/10): câu chưa muốn quyết dạng bài xuống cuối hàng
 
   const setHang = (h: KhopHang) => { NHO.hang = h; setHangRaw(h); setTrang(0) }
   const setNguon = (v: string) => { NHO.nguon = v; NHO.khoa = khoa; setNguonRaw(v); setTrang(0) }
@@ -74,6 +75,7 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
   useEffect(() => { void napDem() }, [napDem])
   useEffect(() => { khopDich(khoi).then(setDich).catch(() => setDich([])) }, [khoi])
   const napPhamVi = useCallback(async () => {
+    if (!khopCoPhamVi()) return
     try { const r = await khopPhamVi(); setLaAdmin(r.la_admin); setPhamVi(r.rows) } catch { /* không có quyền xem ⇒ bỏ qua */ }
   }, [])
   useEffect(() => { void napPhamVi() }, [napPhamVi])
@@ -100,7 +102,7 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
   // "⏭ Để sau" = xuống CUỐI CẢ HÀNG (Thùy 22/10): DB đã xếp câu để sau ra sau (mig 202610221621). Hàng còn câu chưa nạp
   // ⇒ câu rời trang ngay, nạp bù câu kế tiếp; hàng đã nạp hết ⇒ giữ lại, deSau.xep đặt nó ở cuối.
   async function deSauCau(c: KhopCau) {
-    await deSau.ghi('toan', c.ma_cau, 'Bản đồ mới › Duyệt kho')
+    await deSau.ghi(monDS, c.ma_cau, 'Bản đồ mới › Duyệt kho')
     if (tong > (trang + 1) * TRANG) {   // còn trang sau ⇒ câu rời trang này (nó đã ở cuối hàng, trang cuối)
       setRows((prev) => { const n = prev.filter((x) => x.ma_cau !== c.ma_cau); if (n.length < 6) void buThem(); return n })
     }
@@ -136,9 +138,9 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
             Độ chính xác đo được: {chinhXac}% ({dem!.kiem_giu}/{dem!.kiem_n})
           </span>
         )}
-        <button onClick={() => setHienPhamVi((v) => !v)} className="ml-auto rounded-md border border-slate-300 px-3 py-1 text-[12.5px] text-slate-600 hover:bg-slate-50">
+        {khopCoPhamVi() && <button onClick={() => setHienPhamVi((v) => !v)} className="ml-auto rounded-md border border-slate-300 px-3 py-1 text-[12.5px] text-slate-600 hover:bg-slate-50">
           {laAdmin ? 'Phạm vi' : 'Phạm vi của tôi'}
-        </button>
+        </button>}
       </div>
       {hienPhamVi && <PhamViPanel khoi={khoi} dich={dich} laAdmin={laAdmin} rows={phamVi} onDoi={napPhamVi} />}
       <p className="border-b border-slate-100 bg-slate-50 px-6 py-1.5 text-[12px] text-slate-500">{KHOP_HANG_MOTA[hang]}</p>
@@ -156,9 +158,9 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
           ) : (
             <ul className="space-y-3">
               {rows.some((c) => nhanXet.dangChoSua(monCau(c), c.ma_cau)) && <li className="list-none"><DongChoSua n={rows.filter((c) => nhanXet.dangChoSua(monCau(c), c.ma_cau)).length} /></li>}
-              {deSau.xep(rows.filter((c) => !nhanXet.dangChoSua(monCau(c), c.ma_cau)), (c) => ['toan', c.ma_cau]).map((c) => <CauCard key={c.ma_cau} c={c} hang={hang} dich={dich} onQuyet={quyet} onXem={onXem}
+              {deSau.xep(rows.filter((c) => !nhanXet.dangChoSua(monCau(c), c.ma_cau)), (c) => [monDS, c.ma_cau]).map((c) => <CauCard key={c.ma_cau} c={c} hang={hang} dich={dich} onQuyet={quyet} onXem={onXem}
                 nx={nhanXet.cua(monCau(c), c.ma_cau)} onCanSua={nhanXet.vaNX}
-                deSauAt={deSau.luc('toan', c.ma_cau)} onDeSau={() => deSauCau(c)} />)}
+                deSauAt={deSau.luc(monDS, c.ma_cau)} onDeSau={() => deSauCau(c)} />)}
               {soTrang > 1 && <li className="flex list-none justify-center pt-3"><PhanTrang trang={trang} soTrang={soTrang} onChon={setTrang} /></li>}
             </ul>
           )}

@@ -17,7 +17,7 @@ export type BdmMon = 'Toán' | 'KHTN'
 // nhanhTl = p_nhanh của cây chọn giáo trình / ET (fn_tl_bdm_cay_chon, mig 202611031655) cho vùng chính của môn
 export const BDM_MON: Record<BdmMon, { bang: string; ham: string; coVung: boolean; aiDuyet: boolean; khoLop: boolean; mastery: boolean; chuaPhan: boolean; chonQuaCay: boolean; nhanhTl: string }> = {
   'Toán': { bang: 'dai_bdm_', ham: 'fn_bdm_', coVung: true, aiDuyet: true, khoLop: true, mastery: true, chuaPhan: false, chonQuaCay: false, nhanhTl: 'toan' },
-  'KHTN': { bang: 'khtn_bdm_', ham: 'fn_khtn_bdm_', coVung: false, aiDuyet: false, khoLop: false, mastery: false, chuaPhan: true, chonQuaCay: true, nhanhTl: 'khtn' },
+  'KHTN': { bang: 'khtn_bdm_', ham: 'fn_khtn_bdm_', coVung: false, aiDuyet: true, khoLop: false, mastery: false, chuaPhan: true, chonQuaCay: true, nhanhTl: 'khtn' },
 }
 export const BDM_DS_MON = Object.keys(BDM_MON) as BdmMon[]
 /** Cờ của môn tài liệu (giáo trình / ET); môn chưa có bản đồ mới ⇒ null. */
