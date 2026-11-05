@@ -75,7 +75,7 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
       .then(([x, n]) => { setData(x.du_lieu); setCongBoAt(x.cong_bo_at); setNhap(n) })
       .catch((e) => setLoi(e?.message ?? String(e))).finally(() => setLoading(false))
   }, [hsId, mon, kyId])
-  if (loading) return <p className="text-sm text-slate-500">Đang tính báo cáo kì…</p>
+  if (loading) return <p className="text-sm text-slate-500">Đang tải báo cáo kì…</p>
   if (loi || !data) return <p className="rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700">{loi ?? 'Không tải được báo cáo.'}</p>
   const cao = 'h-[calc(100vh-170px)]'
   return (
