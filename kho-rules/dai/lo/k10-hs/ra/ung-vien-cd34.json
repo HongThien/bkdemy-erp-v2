@@ -1,0 +1,494 @@
+{
+  "PT căn: √f=√g": [
+    {
+      "ma_cau": "T1100000009420",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Bình phương cả hai vế của phương trình $\\sqrt{x^2+x+2}=\\sqrt{3x+1}$ rồi biến đổi, thu gọn ta được phương trình nào sau đây?",
+      "lua_chon": [
+        "$-x^2+2x+1=0$.",
+        "$x^2+x+1=0$.",
+        "$x^2-2x+1=0$.",
+        "$x^2-2x-1=0$."
+      ],
+      "dap_an": "C",
+      "loi_giai": "$x^2+x+2=3x+1\\Leftrightarrow x^2-2x+1=0$.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000001213",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Bình phương hai vế phương trình $\\sqrt{x^2-3x+2}=\\sqrt{-x^2-2x+2}$ và rút gọn ta được phương trình nào sau đây?",
+      "lua_chon": [
+        "$x^2-x=0$.",
+        "$2x^2-5x=0$.",
+        "$2x^2-x=0$.",
+        "$2x^2-x+4=0$."
+      ],
+      "dap_an": "C",
+      "loi_giai": "$x^2-3x+2=-x^2-2x+2\\Leftrightarrow2x^2-x=0$.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000003729",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Bình phương cả hai vế của phương trình $\\sqrt{x^{2}+3x+2}=\\sqrt{3x^{2}+1}$ rồi biến đổi, thu gọn ta được phương trình nào sau đây?",
+      "lua_chon": [
+        "$2x^{2}+3x+3=0$.",
+        "$2x^{2}-3x-1=0$.",
+        "$x^{2}+1=0$.",
+        "$2x^{2}+3x+1=0$."
+      ],
+      "dap_an": "B",
+      "loi_giai": "$x^2+3x+2=3x^2+1\\Leftrightarrow2x^2-3x-1=0$.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000009201",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Bình phương cả hai vế của phương trình $\\sqrt{x^2+x+2}=\\sqrt{3x+1}$ rồi biến đổi, thu gọn ta được phương trình nào sau đây?",
+      "lua_chon": [
+        "$x^2+x+1=0$.",
+        "$x^2-2x+1=0$.",
+        "$x^2-2x-1=0$.",
+        "$-x^2+2x+1=0$."
+      ],
+      "dap_an": "B",
+      "loi_giai": "$x^2+x+2=3x+1\\Leftrightarrow x^2-2x+1=0$. Chọn B.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000009179",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Bình phương cả hai vế của phương trình $\\sqrt{-2x^2+4x}=\\sqrt{x^2+1}$ rồi biến đổi, thu gọn ta được phương trình nào sau đây?",
+      "lua_chon": [
+        "$3x^2+4x-1=0$.",
+        "$3x^2+4x+1=0$.",
+        "$3x^2-4x-1=0$.",
+        "$3x^2-4x+1=0$."
+      ],
+      "dap_an": "D",
+      "loi_giai": "$-2x^2+4x=x^2+1\\Leftrightarrow3x^2-4x+1=0$. Chọn D.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000008617",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Cho phương trình $\\sqrt{x^{2}+5x-2}=\\sqrt{2x^{2}-x+1}$. Bình phương hai vế của phương trình đã cho và thu gọn được phương trình nào dưới đây?",
+      "lua_chon": [
+        "$3x^{2}+4x-1=0$.",
+        "$x^{2}+4x+3=0$.",
+        "$x^{2}-6x+3=0$.",
+        "$-3x^{2}-4x+3=0$."
+      ],
+      "dap_an": "C",
+      "loi_giai": "$x^2+5x-2=2x^2-x+1\\Leftrightarrow x^2-6x+3=0$. Chọn C.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000007385",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Cho phương trình $\\sqrt{x^{2}+5x-2}=\\sqrt{2x^{2}-x+1}$. Bình phương thu được phương trình nào?",
+      "lua_chon": [
+        "$x^{2}+4x+3=0$.",
+        "$x^{2}-6x+3=0$.",
+        "$3x^{2}+4x-1=0$.",
+        "$-3x^{2}-4x+3=0$."
+      ],
+      "dap_an": "B",
+      "loi_giai": "Bình phương hai vế: $x^2+5x-2=2x^2-x+1\\Leftrightarrow x^2-6x+3=0$. Chọn B.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000009723",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Cho phương trình $\\sqrt{3x^2-4x+1}=\\sqrt{x-2}$. Bình phương hai vế của phương trình trên ta được phương trình:",
+      "lua_chon": [
+        "$3x^2-4x+1=(x-2)^2$.",
+        "$3x^2-4x+1=x-2$.",
+        "$3x^2-4x+1=-9(x-2)^2$.",
+        "$3x^2-4x+1=3(x-2)^2$."
+      ],
+      "dap_an": "B",
+      "loi_giai": "Bình phương hai vế $\\sqrt{A}=\\sqrt{B}$ được $A=B$: $3x^2-4x+1=x-2$. Chọn B.",
+      "anh_de": null,
+      "menh_de": null
+    }
+  ],
+  "PT căn: √f=g": [
+    {
+      "ma_cau": "T1100000007291",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Cho phương trình $\\sqrt{2x^{2}+2x+2}=x-1$, với $x\\ge1$. Phương trình nào trong các phương án dưới đây được suy ra từ sự biến đổi của phương trình đã cho?",
+      "lua_chon": [
+        "$2x^{2}+2x+2=x^{2}-1$.",
+        "$2x^{2}+2x+2=x-1$.",
+        "$x^{2}+4x+1=0$.",
+        "$x^{2}-4x+1=0$."
+      ],
+      "dap_an": "C",
+      "loi_giai": "Bình phương hai vế: $2x^2+2x+2=(x-1)^2=x^2-2x+1\\Leftrightarrow x^2+4x+1=0$.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000007420",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Phương trình $\\sqrt{-x^{2}+10x-25}=0$:",
+      "lua_chon": [
+        "vô số nghiệm.",
+        "có nghiệm duy nhất.",
+        "có hai nghiệm phân biệt.",
+        "vô nghiệm."
+      ],
+      "dap_an": "B",
+      "loi_giai": "$\\sqrt{-x^2+10x-25}=0\\Leftrightarrow-(x-5)^2=0\\Leftrightarrow x=5$: có nghiệm duy nhất. Chọn B.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000008384",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Bình phương hai vế của phương trình $\\sqrt{x^2+3x-2}=x+1$ ta được phương trình nào sau đây?",
+      "lua_chon": [
+        "$x^2+3x-2=(x+1)^2$.",
+        "$\\sqrt{x^2+3x-2}=(x+1)^2$.",
+        "$x^2+3x-2=x+1$.",
+        "$\\left(x^2+3x-2\\right)^2=(x+1)^2$."
+      ],
+      "dap_an": "A",
+      "loi_giai": "Bình phương hai vế: $\\left(\\sqrt{x^2+3x-2}\\right)^2=(x+1)^2\\Leftrightarrow x^2+3x-2=(x+1)^2$. Chọn A.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000009223",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Bình phương cả hai vế của phương trình $\\sqrt{x^2-8x+16}=x+2$, ta thu được phương trình nào sau đây?",
+      "lua_chon": [
+        "$x^2-8x+16=x+2$",
+        "$(x^2-8x+16)^2=(x+2)^2$",
+        "$x^2-8x+16=(x+2)^2$",
+        "$(x^2-8x+16)^2=x+2$"
+      ],
+      "dap_an": "C",
+      "loi_giai": "Bình phương hai vế: $\\left(\\sqrt{x^2-8x+16}\\right)^2=(x+2)^2\\Leftrightarrow x^2-8x+16=(x+2)^2$. Chọn C.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000004389",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Kết luận nào sau đây đúng về phương trình $\\sqrt{x-2}=4-x$?",
+      "lua_chon": [
+        "Phương trình đã cho có nghiệm $x=3$.",
+        "Phương trình đã cho vô nghiệm.",
+        "Phương trình đã cho có hai nghiệm là $x=3$ và $x=6$.",
+        "Phương trình đã cho có nghiệm $x=6$."
+      ],
+      "dap_an": "A",
+      "loi_giai": "Điều kiện $4-x\\ge0$. Bình phương: $x-2=16-8x+x^2\\iff x^2-9x+18=0\\iff x=3$ hoặc $x=6$. Chỉ $x=3$ thỏa $4-x\\ge0$. Chọn A.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000008207",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Cho phương trình $\\sqrt{x^{2}-2x+4}=2$. Chọn khẳng định đúng:",
+      "lua_chon": [
+        "Phương trình đã cho vô nghiệm.",
+        "Phương trình đã cho có đúng một nghiệm.",
+        "Tích các nghiệm của phương trình đã cho bằng $0$.",
+        "Tổng các nghiệm của phương trình đã cho bằng $-2$."
+      ],
+      "dap_an": "C",
+      "loi_giai": "Bình phương hai vế: $x^2-2x+4=4\\Leftrightarrow x(x-2)=0\\Leftrightarrow x=0$ hoặc $x=2$ (đều thỏa). Tích hai nghiệm bằng $0$, tổng bằng $2$.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000004400",
+      "loai_cau": "tu_luan",
+      "noi_dung": "Giải phương trình $\\sqrt{3x^2-4x+5}=2x-1$.",
+      "lua_chon": null,
+      "dap_an": "$x=2$",
+      "loi_giai": "Điều kiện $2x-1\\ge0\\iff x\\ge\\frac12$. Bình phương hai vế: $3x^2-4x+5=4x^2-4x+1\\iff x^2-4=0\\iff x=\\pm2$. Chỉ $x=2$ thỏa điều kiện. Vậy phương trình có nghiệm $x=2$.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000004377",
+      "loai_cau": "tu_luan",
+      "noi_dung": "Giải phương trình $\\sqrt{x+10}=x-2$.",
+      "lua_chon": null,
+      "dap_an": "$x=6$",
+      "loi_giai": "Điều kiện $x\\ge2$. Bình phương: $x+10=x^2-4x+4\\Leftrightarrow x^2-5x-6=0\\Leftrightarrow x=6$ hoặc $x=-1$. Thử lại: $x=6$ thỏa ($\\sqrt{16}=4$), $x=-1$ loại. Vậy $x=6$.",
+      "anh_de": null,
+      "menh_de": null
+    }
+  ],
+  "PT căn khác": [],
+  "PT giá trị tuyệt đối / trùng phương": [
+    {
+      "ma_cau": "T1100000007104",
+      "loai_cau": "tra_loi_ngan",
+      "noi_dung": "Cho các mệnh đề sau: P: \"Số nguyên tố nhỏ nhất là số 1\". Q: \"Phương trình $x^4+2x=0$ có nghiệm\". R: \"$\\forall x\\in\\mathbb R,\\ x>-3\\Rightarrow x>9$\". T: \"2 là số nguyên tố\". Có bao nhiêu mệnh đề đúng trong các mệnh đề trên?",
+      "lua_chon": null,
+      "dap_an": "2",
+      "loi_giai": "P sai (số nguyên tố nhỏ nhất là $2$). Q đúng ($x=0$ là nghiệm). R sai (chẳng hạn $x=0>-3$ nhưng $0\\not>9$). T đúng. Có $2$ mệnh đề đúng.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000008324",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Nghiệm của phương trình $\\left|x^2-2x+2\\right|=x$ là:",
+      "lua_chon": [
+        "$S=\\{1\\}$.",
+        "$S=\\{2\\}$.",
+        "$S=\\varnothing$.",
+        "$S=\\{1;2\\}$"
+      ],
+      "dap_an": "D",
+      "loi_giai": "Vì $x^2-2x+2=(x-1)^2+1>0$ nên phương trình $\\Leftrightarrow x^2-2x+2=x$ với $x\\ge0$, tức $x^2-3x+2=0\\Leftrightarrow x=1$ hoặc $x=2$ (đều $\\ge0$). Chọn D.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000007512",
+      "loai_cau": "tra_loi_ngan",
+      "noi_dung": "Gọi $S$ là tập hợp các giá trị nguyên của tham số $m\\in[3;5]$ để phương trình $(m-2)x^4-2(m+1)x^2-3=0$ có đúng hai nghiệm phân biệt. Tổng các phần tử của tập $S$ bằng bao nhiêu?",
+      "lua_chon": null,
+      "dap_an": "12",
+      "loi_giai": "Đặt $t=x^2\\ge0$: $(m-2)t^2-2(m+1)t-3=0$. Với $m\\in\\{3;4;5\\}$ thì $m-2>0$ và tích hai nghiệm $\\dfrac{-3}{m-2}<0$ nên có đúng một nghiệm $t>0$, cho đúng hai nghiệm $x=\\pm\\sqrt t$. Vậy $S=\\{3;4;5\\}$, tổng bằng $12$.",
+      "anh_de": null,
+      "menh_de": null
+    }
+  ],
+  "m để PT chứa căn": [
+    {
+      "ma_cau": "T1100000007403",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Tìm tập nghiệm của phương trình $\\sqrt{x-1}=3$.",
+      "lua_chon": [
+        "$S=\\left\\{ 4 \\right\\}$.",
+        "$S=\\left\\{ 9 \\right\\}$.",
+        "$S=\\left\\{ 7 \\right\\}$.",
+        "$S=\\left\\{ 10 \\right\\}$."
+      ],
+      "dap_an": "D",
+      "loi_giai": "Bình phương hai vế: $x-1=9\\Leftrightarrow x=10$ (thỏa). Chọn D.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000009374",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Tổng các nghiệm của phương trình $\\sqrt{x^2-3x}=2$ bằng",
+      "lua_chon": [
+        "$-3$.",
+        "$3$.",
+        "$4$.",
+        "$-4$."
+      ],
+      "dap_an": "B",
+      "loi_giai": "$x^2-3x=4\\Leftrightarrow x=4$ hoặc $x=-1$ (cả hai đều thỏa). Tổng $=3$.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000009788",
+      "loai_cau": "tra_loi_ngan",
+      "noi_dung": "Số nghiệm của phương trình $\\sqrt{x^{2}-5x+6}=2$ là",
+      "lua_chon": null,
+      "dap_an": "2",
+      "loi_giai": "$x^2-5x+6=4\\Leftrightarrow x^2-5x+2=0$, có $\\Delta=17>0$ nên có 2 nghiệm phân biệt.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000002152",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Phương trình $\\sqrt{x-1}=\\sqrt{3-x}$ có nghiệm là",
+      "lua_chon": [
+        "$x=0$.",
+        "$x=1$.",
+        "$x=2$.",
+        "$x=3$."
+      ],
+      "dap_an": "C",
+      "loi_giai": "Bình phương hai vế: $x-1=3-x\\Rightarrow x=2$. Thử lại: $\\sqrt1=\\sqrt1$ đúng. Chọn C.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000008349",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Tập nghiệm $S$ của phương trình $\\sqrt{x^2-4}=x-2$ là:",
+      "lua_chon": [
+        "$S=\\varnothing$.",
+        "$S=\\{0\\}$.",
+        "$S=\\{0;2\\}$.",
+        "$S=\\{2\\}$."
+      ],
+      "dap_an": "D",
+      "loi_giai": "Điều kiện $x-2\\ge0$. Bình phương: $x^2-4=x^2-4x+4\\Leftrightarrow x=2$ (thỏa). Chọn D.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000007461",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Cho phương trình $\\sqrt{2x^{2}+3x-5}=x+1$. Giá trị nào sau đây là nghiệm của phương trình đã cho?",
+      "lua_chon": [
+        "$x=2$.",
+        "$x=3$.",
+        "$x=1$.",
+        "$x=4$."
+      ],
+      "dap_an": "A",
+      "loi_giai": "Bình phương: $x^2+x-6=0\\Leftrightarrow x=2$ hoặc $x=-3$; $x=-3$ loại vì $x+1<0$. Nghiệm $x=2$.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000007383",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Phương trình $\\sqrt{x^{2}+1}=2$ có nghiệm là",
+      "lua_chon": [
+        "$x=4$.",
+        "$x=\\pm 3$.",
+        "$x=\\pm\\sqrt{3}$.",
+        "$x=2$."
+      ],
+      "dap_an": "C",
+      "loi_giai": "$\\sqrt{x^2+1}=2\\Leftrightarrow x^2+1=4\\Leftrightarrow x^2=3\\Leftrightarrow x=\\pm\\sqrt3$. Chọn C.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000007440",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Tập nghiệm của phương trình $\\sqrt{2x-1}=-x^{2}-5$ là",
+      "lua_chon": [
+        "$S=\\left\\{ 1 \\right\\}.$",
+        ". $S=\\left\\{ 5 \\right\\}.$",
+        "$S=\\left\\{ 1;5 \\right\\}.$",
+        "$S=\\varnothing.$"
+      ],
+      "dap_an": "D",
+      "loi_giai": "$\\sqrt{2x-1}\\ge0$ còn $-x^2-5<0$ với mọi $x$ nên phương trình vô nghiệm, $S=\\varnothing$. Chọn D.",
+      "anh_de": null,
+      "menh_de": null
+    }
+  ],
+  "PT căn thực tế/hình": [],
+  "BPT tích / thương": [
+    {
+      "ma_cau": "T1100000004503",
+      "loai_cau": "tra_loi_ngan",
+      "noi_dung": "Số nghiệm nguyên của bất phương trình $(2x-1)(3x+2)\\le0$ là bao nhiêu?",
+      "lua_chon": null,
+      "dap_an": "1",
+      "loi_giai": "$(2x-1)(3x+2)\\le0\\iff-\\frac23\\le x\\le\\frac12$. Số nguyên duy nhất trong đoạn này là $x=0$. Có $1$ nghiệm nguyên.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000008286",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Gọi $S$ là tập nghiệm của bất phương trình $\\dfrac{x^2-2x+1}{x^2-9}\\ge0$. Khi đó $S\\cap(-3;3)$ là tập nào sau đây?",
+      "lua_chon": [
+        "$(-3;3)$.",
+        "$(-3;1]$.",
+        "$(-3;0)$.",
+        "$\\{1\\}$."
+      ],
+      "dap_an": "D",
+      "loi_giai": "$\\dfrac{(x-1)^2}{x^2-9}\\ge0\\Leftrightarrow x=1$ hoặc $x^2-9>0$ (tức $x<-3$ hoặc $x>3$). Giao với $(-3;3)$ chỉ còn $\\{1\\}$. Chọn D.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000007943",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Tập nghiệm của bất phương trình bậc hai $4x^{2}-5x+1\\le0$ có dạng $\\left[\\dfrac{a}{b};c\\right]$ với $\\dfrac{a}{b}$ là phân số tối giản. Tính $a^{2}+b^{2}-c$?",
+      "lua_chon": [
+        "4.",
+        "16.",
+        "17.",
+        "18."
+      ],
+      "dap_an": "B",
+      "loi_giai": "$4x^2-5x+1=0\\Leftrightarrow x=\\dfrac14$ hoặc $x=1$. Tập nghiệm $\\left[\\dfrac14;1\\right]$: $a=1$, $b=4$, $c=1$. $a^2+b^2-c=1+16-1=16$.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000007264",
+      "loai_cau": "tra_loi_ngan",
+      "noi_dung": "Các nghiệm $(x;y)$ của bất phương trình $\\dfrac x2+\\dfrac y3-1\\le0$. Trong đó $x,y$ là các số nguyên dương, khi đó $x+y$ bằng:",
+      "lua_chon": null,
+      "dap_an": "2",
+      "loi_giai": "Nhân 6: $3x+2y\\le6$. Với $x,y$ nguyên dương: $x=1$ thì $2y\\le3$ nên $y=1$; $x\\ge2$ thì $2y\\le0$ loại. Nghiệm duy nhất $(1;1)$ nên $x+y=2$.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000001602",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Cho hệ $\\begin{cases}x-\\dfrac35y<5&(1)\\\\5x-3y<20&(2)\\end{cases}$. Gọi $S_{1}$ là tập nghiệm của bất phương trình (1), $S_{2}$ là tập nghiệm của bất phương trình (2) và $S$ là tập nghiệm của hệ thì",
+      "lua_chon": [
+        "$S_{1}=S$.",
+        "$S_{1}\\subset S_{2}$.",
+        "$S_{2}\\subset S_{1}$.",
+        "$S_{2}\\ne S$."
+      ],
+      "dap_an": "C",
+      "loi_giai": "(1) $\\Leftrightarrow x-0{,}6y<5$; (2) $\\Leftrightarrow x-0{,}6y<4$. Nếu $x-0{,}6y<4$ thì $x-0{,}6y<5$ nên $S_{2}\\subset S_{1}$ (và $S=S_{2}$).",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000007289",
+      "loai_cau": "trac_nghiem",
+      "noi_dung": "Tập nghiệm của bất phương trình $7x^{2}-4x-3>0$ là $S=\\left(-\\infty;\\dfrac ab\\right)\\cup(c;+\\infty)$ với $a<0$ và $\\dfrac ab$ là phân số tối giản. Tính giá trị của biểu thức $M=3a+b+c$.",
+      "lua_chon": [
+        "$M=0$.",
+        "$M=-1$.",
+        "$M=2$.",
+        "$M=5$."
+      ],
+      "dap_an": "B",
+      "loi_giai": "$7x^2-4x-3=(x-1)(7x+3)$, nghiệm $x=-\\dfrac37$, $x=1$; $7x^2-4x-3>0\\Leftrightarrow x<-\\dfrac37$ hoặc $x>1$. Vậy $a=-3,b=7,c=1$ và $M=-9+7+1=-1$.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000007306",
+      "loai_cau": "tu_luan",
+      "noi_dung": "a) Giải bất phương trình sau: $(x+1)(x^{2}+5)<x^{3}-1$.\nb) Tính tổng các nghiệm nguyên của bất phương trình $2x^{2}-5x+2\\le0$.",
+      "lua_chon": null,
+      "dap_an": "a) $S=(-3;-2)$; b) tổng bằng $3$",
+      "loi_giai": "a) $(x+1)(x^2+5)=x^3+x^2+5x+5<x^3-1\\Leftrightarrow x^2+5x+6<0\\Leftrightarrow(x+2)(x+3)<0\\Leftrightarrow-3<x<-2$. Vậy $S=(-3;-2)$.\n\nb) $2x^2-5x+2\\le0\\Leftrightarrow\\dfrac12\\le x\\le2$. Nghiệm nguyên: $x=1$, $x=2$; tổng bằng $3$.",
+      "anh_de": null,
+      "menh_de": null
+    },
+    {
+      "ma_cau": "T1100000008400",
+      "loai_cau": "tu_luan",
+      "noi_dung": "Câu 1 (1,0 điểm): Cho tam thức bậc hai $f(x)=-x^2+4x+5$.\na) (0,75 điểm) Xác định các nghiệm (nếu có) và lập bảng xét dấu của tam thức bậc hai đã cho.\nb) (0,25 điểm) Từ bảng xét dấu của tam thức bậc hai đã cho, hãy tìm tập nghiệm của bất phương trình $-x^2+4x+5<0$.",
+      "lua_chon": null,
+      "dap_an": "a) Nghiệm $x=-1$, $x=5$; bảng xét dấu như lời giải; b) $S=(-\\infty;-1)\\cup(5;+\\infty)$.",
+      "loi_giai": "a) $f(x)=0\\Leftrightarrow x=-1$ hoặc $x=5$. Hệ số $a=-1<0$ nên $f(x)$ trái dấu với $a$ (tức dương) trong khoảng hai nghiệm:\n$\\begin{array}{|c|c|c|c|c|c|c|}\\hline x&-\\infty&&-1&&5&&+\\infty\\\\\\hline f(x)&&-&0&+&0&-&\\\\\\hline\\end{array}$\nb) Từ bảng xét dấu: $f(x)<0\\Leftrightarrow x<-1$ hoặc $x>5$. Tập nghiệm $S=(-\\infty;-1)\\cup(5;+\\infty)$.",
+      "anh_de": null,
+      "menh_de": null
+    }
+  ]
+}

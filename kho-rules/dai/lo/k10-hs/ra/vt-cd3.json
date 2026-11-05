@@ -1,0 +1,69 @@
+{
+  "dang": [
+    {
+      "nhom": "Dấu tam thức bậc hai",
+      "dang": "Xét dấu tam thức bậc hai",
+      "n_cau_that": 90,
+      "cach_dem": "Ước lượng bằng regex trên noi_dung T110% (loại dung_sai): ~50 câu 'xét dấu/bảng xét dấu/f(x) nhận giá trị dương-âm' + ~29 câu đọc dấu/BPT f(x) từ đồ thị parabol (có hình) + ~10-15 câu 'Bảng xét dấu nào là của tam thức…'. Có nhiều đề trùng nội dung giữa các đề thi.",
+      "vi_du": ["T1100000009789", "T1100000004300"],
+      "ghi_chu": "9789 tự luận xét dấu + lập bảng (không hình). 4300 trắc nghiệm đọc đồ thị parabol (anh_de có). Cả hai de_thi, lời giải khớp đáp án (đã tự kiểm: 9789 nghiệm 2,7; 4300 đáp D là (-3;1))."
+    },
+    {
+      "nhom": "Giải bất phương trình",
+      "dang": "Giải BPT bậc hai",
+      "n_cau_that": 85,
+      "cach_dem": "Regex: có x^2 + 'bất phương trình' + (giải|tập nghiệm|nghiệm của), loại tham số m, 'nguyên', hệ, hai ẩn → 92 câu, trừ ~7 câu khái niệm 'BPT nào là BPT bậc hai'. Kiểu con: tự luận 'Giải BPT', trắc nghiệm chọn tập nghiệm, Δ=0 / Δ<0, quy về bậc hai (2 vế đều có x^2).",
+      "vi_du": ["T1100000008760", "T1100000008172"],
+      "ghi_chu": "8760 tự luận a<0 (S=[-1/2;1]); 8172 trắc nghiệm quy về bậc hai (x^2+3x+1<=2x^2-2x-5 → x<=-1 hoặc x>=6, đáp B). Đã tự kiểm số học. Hầu như không có câu ẩn phụ."
+    },
+    {
+      "nhom": "Giải bất phương trình",
+      "dang": "BPT tích / thương (nâng cao)",
+      "n_cau_that": 2,
+      "cach_dem": "Regex tìm BPT có dạng (..)(..) hoặc \\dfrac chứa x trong T110%: chỉ còn 1 câu phân thức bậc hai thật (8286) và 1 câu tích hai nhị thức bậc nhất (4503, thực chất quy về BPT bậc hai); T1100000007306(a) là BPT bậc nhất sau khi rút gọn nên không tính.",
+      "vi_du": ["T1100000008286", "T1100000004503"],
+      "ghi_chu": "ÍT CÂU THẬT (<3) → nên bỏ dạng hoặc gộp vào 'Giải BPT bậc hai'. Cả hai câu mẫu đều de_thi, lời giải khớp (8286: S∩(-3;3)={1}, đáp D; 4503: 1 nghiệm nguyên x=0), nhưng 4503 không phải 'nâng cao'."
+    },
+    {
+      "nhom": "Giải bất phương trình",
+      "dang": "Tập nghiệm – số nghiệm nguyên – hệ BPT bậc hai",
+      "n_cau_that": 35,
+      "cach_dem": "Regex: BPT bậc hai + (nguyên | tổng | dạng [a;b] | (a;b) | giao) không tham số → 35 câu (24 trả lời ngắn, 9 trắc nghiệm, 2 tự luận). Phần 'hệ BPT bậc hai' = 0 câu thật (các câu 'hệ bất phương trình' trong T110 đều là bậc nhất hai ẩn).",
+      "vi_du": ["T1100000009507", "T1100000008191"],
+      "ghi_chu": "9507 tổng nghiệm nguyên dương (đáp 55, kiểm: -3<=x<=10). 8191 đếm nghiệm nguyên sau khi quy về bậc hai (đáp B=2, kiểm: -5/2<=x<=-1). Nên bỏ chữ 'hệ BPT bậc hai' khỏi tên dạng vì không có câu."
+    },
+    {
+      "nhom": "Tham số m (tam thức, BPT)",
+      "dang": "m để tam thức / BPT nghiệm đúng ∀x, vô nghiệm, có nghiệm",
+      "n_cau_that": 33,
+      "cach_dem": "Regex: x^2 + tham số m + (nghiệm đúng|vô nghiệm|có nghiệm|∀x|với mọi|luôn|dương|âm|tập nghiệm R) → 30 câu, cộng thêm vài câu hỗn hợp (a), (b) trong đề tự luận (3462a, 1481a, 8019a, 8040a). Gồm: 15 tự luận, 13 trả lời ngắn (đếm m nguyên), 3 trắc nghiệm.",
+      "vi_du": ["T1100000009318", "T1100000001888"],
+      "ghi_chu": "9318 tự luận a=1 hằng (Δ'<=0 → -1<=m<=2). 1888 trả lời ngắn có a=m-1 (loại m=1 vì phải là tam thức bậc hai; đáp 2019, kiểm m∈[2;2020]). Cả hai de_thi, đã tự kiểm."
+    },
+    {
+      "nhom": "Tham số m (tam thức, BPT)",
+      "dang": "m để PT bậc hai có nghiệm thoả điều kiện",
+      "n_cau_that": 4,
+      "cach_dem": "Truy vấn 'phương trình ... x^2 ... = 0' + tham số m, loại PT chứa căn/mệnh đề → chỉ 4: 3868 (hai nghiệm phân biệt), 9440 (PT (m-2)x^2... vô nghiệm), 3536 (hai nghiệm dương, dap_an null), 3462(a) (m để PT có nghiệm, lẫn nhiều ý). Không có câu Viète hay nghiệm trong khoảng.",
+      "vi_du": ["T1100000003868", "T1100000009440"],
+      "ghi_chu": "ÍT CÂU THẬT (~4): chỉ đủ điều kiện Δ, chưa có Viète/dấu hai nghiệm. Nên xem xét bỏ hoặc gộp vào dạng m ∀x. 3868: Δ=m^2-10m+21>0, đáp 16 (kiểm). 9440 (trắc nghiệm) có xét m=2, đáp C (kiểm Δ'=-m^2+4m-3<0)."
+    },
+    {
+      "nhom": "Ứng dụng thực tế (BPT bậc hai)",
+      "dang": "BPT bậc hai trong thực tế",
+      "n_cau_that": 11,
+      "cach_dem": "Quét các câu bối cảnh (lợi nhuận/chi phí/độ cao/vận tốc/diện tích) rồi chọn tay những câu lời giải dẫn đến BPT bậc hai (không phải tìm max/min đỉnh parabol hay quy hoạch tuyến tính): 1225, 1502, 1820, 2098, 4397, 4870, 5571, 7394, 7416, 7936, 8197.",
+      "vi_du": ["T1100000002098", "T1100000004397"],
+      "ghi_chu": "2098 tự luận không bị lỗ (30<=x<=110), 4397 trả lời ngắn pháo hoa độ cao >=117,9 (t2=7). Đều de_thi, đã tự kiểm số học. 2098 và 7394 là cùng một đề (trùng)."
+    }
+  ],
+  "thieu_dang": [
+    {"kieu": "Nhận biết khái niệm: 'biểu thức/đa thức nào là tam thức bậc hai', 'BPT nào là BPT bậc hai một ẩn', tìm m để f(x) là tam thức bậc hai", "n": 35, "ma_cau": "T1100000004433"},
+    {"kieu": "Định lí về dấu dạng lý thuyết: điều kiện theo Δ, a để f(x)>=0 (hoặc <0) ∀x; mệnh đề đúng/sai về dấu của f(x)=ax^2+bx+c", "n": 32, "ma_cau": "T1100000004194"},
+    {"kieu": "Hàm bậc hai/parabol: đỉnh, trục đối xứng, xác định parabol, bảng biến thiên (thuộc chuyên đề hàm số bậc hai, không phải dấu tam thức)", "n": 45, "ma_cau": "T1100000009124"},
+    {"kieu": "Phương trình chứa căn √f=√g, √f=g (chuyên đề PT quy về bậc hai)", "n": 20, "ma_cau": "T1100000004180"},
+    {"kieu": "Thực tế bậc hai kiểu tìm max/min (doanh thu, lợi nhuận lớn nhất, độ cao lớn nhất) - dạng 'Bài toán thực tế hàm bậc hai' của chuyên đề trước", "n": 10, "ma_cau": "T1100000001738"},
+    {"kieu": "Tìm m để BPT nghiệm đúng/nghiệm trong một đoạn-khoảng cho trước (∀x∈[2;5], tập nghiệm nằm trong [0;3])", "n": 3, "ma_cau": "T1100000008040"},
+    {"kieu": "Ngược: cho dấu/tập nghiệm của tam thức, tìm hệ số hoặc mốc (f(x)<0 ∀x∈(m;n) tìm m; xác định hàm bậc hai từ 3 điểm rồi giải BPT)", "n": 3, "ma_cau": "T1100000009595"}
+  ]
+}

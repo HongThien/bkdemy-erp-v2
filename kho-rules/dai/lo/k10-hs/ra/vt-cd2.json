@@ -1,0 +1,106 @@
+{
+  "dang": [
+    {
+      "nhom": "Đồ thị và tính chất parabol",
+      "dang": "Đỉnh, trục đối xứng, giao với trục",
+      "n_cau_that": 109,
+      "cach_dem": "69 câu không Đ/S đã gán mã Q01 trong ra/D1..D6.md (107 kể cả Đ/S) + ~40 câu chưa gán mà noi_dung khớp regex đỉnh/trục đối xứng/giao trục (ước lượng thô, T110, loại dung_sai)",
+      "vi_du": ["T1100000003754", "T1100000003288"],
+      "ghi_chu": "3754 = tìm đỉnh (trắc nghiệm, I(1;2) đã tự tính lại); 3288 = trục đối xứng x=1 (đã kiểm). Không cần hình. Còn ~38 câu Đ/S về cùng dạng."
+    },
+    {
+      "nhom": "Đồ thị và tính chất parabol",
+      "dang": "Bảng biến thiên, khoảng đồng biến – nghịch biến",
+      "n_cau_that": 39,
+      "cach_dem": "35 câu không Đ/S gán Q02 + ~4 câu chưa gán khớp regex đồng biến/nghịch biến/bảng biến thiên",
+      "vi_du": ["T1100000005801", "T1100000004621"],
+      "ghi_chu": "Cả hai có anh_de (5801: đọc BBT tìm x để hàm đạt GTNN, đáp án 2; 4621: đọc khoảng đồng biến từ đồ thị, đáp án (2;+∞)). Lời giải khớp đáp án nhưng không đối chiếu được hình. Phương án không cần hình: T1100000005252 (y=x²-4x+11 đồng biến trên (2;+∞), đã kiểm)."
+    },
+    {
+      "nhom": "Đồ thị và tính chất parabol",
+      "dang": "Nhận dạng đồ thị parabol",
+      "n_cau_that": 25,
+      "cach_dem": "17 câu Q03 (đều không Đ/S, đều có anh_de) + ~8 câu chưa gán có hình, hỏi 'hàm số nào có đồ thị...' (ước lượng)",
+      "vi_du": ["T1100000001253", "T1100000007600"],
+      "ghi_chu": "1253: chọn hàm số từ đồ thị (đáp án 2x²-3x+1, thử điểm (0;1),(1;0) khớp). 7600: chọn hình đúng cho y=-x²+2x+3 (đỉnh (1;4), nghiệm -1 và 3 khớp); đáp án là Hình A nên cần anh_de chứa đủ 4 hình. Cả hai có anh_de."
+    },
+    {
+      "nhom": "Đồ thị và tính chất parabol",
+      "dang": "Đọc dấu a, b, c từ đồ thị",
+      "n_cau_that": 20,
+      "cach_dem": "12 câu Q05 không Đ/S (11 có anh_de) + ~8 câu chưa gán có hình hỏi dấu hệ số (ước lượng)",
+      "vi_du": ["T1100000003290", "T1100000008666"],
+      "ghi_chu": "3290: chọn bộ dấu a,b,c đúng (a>0,b<0,c>0). 8666: đếm số hệ số âm (đáp án 1; a<0,b>0,c>0). Cả hai có anh_de. Phần lớn câu Q05 chỉ hỏi dấu a và Δ chứ không có b,c."
+    },
+    {
+      "nhom": "Đồ thị và tính chất parabol",
+      "dang": "Vẽ đồ thị, tịnh tiến",
+      "n_cau_that": 23,
+      "cach_dem": "21 câu tự luận Q10 (không Đ/S) + ~2 câu chưa gán (T1100000008822, T1100000008586)",
+      "vi_du": ["T1100000001246", "T1100000001740"],
+      "ghi_chu": "KHÔNG câu nào trong 21 câu Q10 có anh_de. Hình nằm ở anh_dap_an (chỉ 7 câu có: 1246, 1740, 2096, 2899, 2938, 313, 7696). Hai ví dụ chọn đều có anh_dap_an, số liệu đã kiểm (1246 y=x²-4x+3 đỉnh (2;-1); 1740 y=-x²/2+2x-2 đỉnh (2;0)). Nếu bắt buộc anh_de thì dạng này đang thiếu câu thật. Chưa thấy câu thật về tịnh tiến đồ thị."
+    },
+    {
+      "nhom": "Xác định hàm bậc hai",
+      "dang": "Xác định công thức từ điều kiện",
+      "n_cau_that": 69,
+      "cach_dem": "55 câu không Đ/S gán Q04 + ~14 câu chưa gán khớp regex xác định/đi qua/tính S (regex rộng, có thể dư vài câu)",
+      "vi_du": ["T1100000003524", "T1100000002997"],
+      "ghi_chu": "3524: qua A(0;3) và đỉnh I(-1;2), a+b+c=6 (đã giải lại). 2997: qua hai điểm, S=b+c=-2 (đã giải lại). Không cần hình. Có cả loại đọc đồ thị rồi chọn công thức (vd T1100000003392, có anh_de)."
+    },
+    {
+      "nhom": "GTLN – GTNN",
+      "dang": "GTLN/GTNN trên ℝ hoặc trên đoạn",
+      "n_cau_that": 15,
+      "cach_dem": "14 câu không Đ/S gán Q06 + ~1 câu chưa gán (T1100000007895). Đây là mã chính; thêm khoảng 10 câu Q06 là mã phụ của câu đỉnh/thực tế",
+      "vi_du": ["T1100000007312", "T1100000001451"],
+      "ghi_chu": "7312: GTNN của y=x²-4x+1 bằng -3 (trên ℝ). 1451: GTLN+GTNN trên [0;5] của y=-x²+4x+3, M=7, m=-2, tổng 5 (trên đoạn, trả lời ngắn). Cả hai đã kiểm. Cũng nằm trong 'Bài toán thực tế' và 'm để...' nên số đếm riêng của dạng khá ít."
+    },
+    {
+      "nhom": "Tương giao và số nghiệm",
+      "dang": "Parabol cắt đường thẳng, số nghiệm f(x)=m",
+      "n_cau_that": 3,
+      "cach_dem": "Chỉ 2 câu không Đ/S gán Q07 (T110000000838, T110000000848) + 1 câu chưa gán (T1100000007938); thêm ~8 câu Đ/S nhưng loại",
+      "vi_du": ["T110000000848", "T1100000007938"],
+      "ghi_chu": "848: đường thẳng y=x+1 cắt y=x²-1, diện tích OAB=3/2 (đã giải lại). 7938: giao điểm d:y=x-1 và (P):y=x²-2x-1 là (0;-1),(3;2) (đã giải lại). Kho gần như KHÔNG có câu thật 'biện luận số nghiệm f(x)=m' (chỉ T110000000838 ý b, là câu hai ý có vẽ đồ thị). Dạng này thiếu nguồn thật."
+    },
+    {
+      "nhom": "Tham số m (hàm bậc hai)",
+      "dang": "m để hàm bậc hai thoả điều kiện",
+      "n_cau_that": 19,
+      "cach_dem": "7 câu không Đ/S gán Q08 + ~12 câu chưa gán khớp regex tham số/giá trị của m (regex rộng, có thể dư, ước lượng thô 12-19)",
+      "vi_du": ["T1100000004544", "T1100000004629"],
+      "ghi_chu": "4544: đếm m nguyên để hàm đồng biến trên (3;5), đáp án 5 (đã giải lại). 4629: trục đối xứng x=-4 tìm a=0,25 (tham số tên a nhưng cùng kiểu). Phương án trắc nghiệm đã kiểm: T1100000005738 (đồng biến trên (-2;+∞) thì m≥5). Cần thận trọng: T1100000005732 là mẹo hàm bậc hai có |x|."
+    },
+    {
+      "nhom": "Ứng dụng thực tế (hàm bậc hai)",
+      "dang": "Bài toán thực tế hàm bậc hai",
+      "n_cau_that": 87,
+      "cach_dem": "51 câu không Đ/S gán Q09 + ~36 câu chưa gán khớp regex cổng/bóng/quỹ đạo/ném/cầu/vòi (đa số là cổng parabol, quả bóng, cầu vòm)",
+      "vi_du": ["T1100000004186", "T1100000007640"],
+      "ghi_chu": "4186: cổng chào parabol, chân cổng cách 16 m, đo 1,5 m cách chân 1 m, đỉnh cao 6,4 m (đã giải lại). 7640: quả bóng h(t)=-0,5t²+2,5t+1,5 cao hơn 1,5 m trong 5 giây (đã giải lại). Không có hình nhưng đề tự đủ dữ kiện. Nhiều câu cổng/cầu khác có hình."
+    }
+  ],
+  "thieu_dang": [
+    {
+      "kieu": "Nhận biết hàm số bậc hai (trong các hàm sau, hàm nào là hàm bậc hai; nhận biết hàm/tam thức bậc hai theo tham số)",
+      "n": 39,
+      "ma_cau": "T1100000008914"
+    },
+    {
+      "kieu": "Hình học tọa độ với parabol: diện tích tam giác tạo bởi đỉnh và giao điểm với trục (IAB, OAB)",
+      "n": 3,
+      "ma_cau": "T1100000001159"
+    },
+    {
+      "kieu": "Điểm thuộc parabol / tính f(a) cho hàm bậc hai (đã có ở chuyên đề Hàm số và đồ thị, dạng 'Điểm thuộc đồ thị')",
+      "n": 3,
+      "ma_cau": "T1100000009581"
+    },
+    {
+      "kieu": "Hàm bậc hai chứa |x| hoặc tham số quy về hàm bậc hai (trick nhận dạng theo m)",
+      "n": 1,
+      "ma_cau": "T1100000005732"
+    }
+  ]
+}

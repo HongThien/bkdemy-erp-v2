@@ -1,0 +1,60 @@
+{
+  "dang": [
+    {
+      "nhom": "Phương trình chứa căn",
+      "dang": "√f = √g",
+      "n_cau_that": 83,
+      "cach_dem": "dai_cau_hoi, ma_cau like T110%, noi_dung chứa sqrt + 'phương trình', loại elip/hypebol/vectơ/tọa độ/lượng giác/hàm số; phân loại bằng regex: đúng 2 căn, dạng √.. = √..; 105 câu thô, 83 sau khi gộp đề trùng (23 tu_luan, còn lại trắc nghiệm/trả lời ngắn). Gồm cả ~13 câu 'bình phương hai vế ra phương trình nào'.",
+      "vi_du": ["T1100000004231", "T1100000007697"],
+      "ghi_chu": "4231: tu_luan, x=5 nhận, x=-2 bị loại (biểu thức dưới căn âm). 7697: tu_luan, giữ cả hai nghiệm x=-1, x=2. Đã tự kiểm số học khớp lời giải. Còn nhiều câu dự phòng: 9018, 9277, 8422 (S={1;7})."
+    },
+    {
+      "nhom": "Phương trình chứa căn",
+      "dang": "√f = g",
+      "n_cau_that": 81,
+      "cach_dem": "Cùng truy vấn, regex: 1 căn đơn ở một vế = biểu thức không căn (kể cả chuyển vế x+√.. = c); 99 câu thô, 81 sau khi gộp trùng (20 tu_luan).",
+      "vi_du": ["T1100000004400", "T1100000008717"],
+      "ghi_chu": "4400: tu_luan, √(3x²-4x+5)=2x-1 → x=±2, loại x=-2 theo điều kiện. 8717: tu_luan, √(2x²+x+3)=1-x, giữ cả x=-1 và x=-2 (đều thỏa x≤1). Đã tự kiểm số học."
+    },
+    {
+      "nhom": "Phương trình chứa căn",
+      "dang": "PT chứa căn khác (nâng cao)",
+      "n_cau_that": 8,
+      "cach_dem": "Đọc tay 19 câu còn lại sau khi loại A/B: nâng cao đúng nghĩa là PT tích có căn (9299, 8693, 7673, 7884, 3453), nhân hai vế với căn mẫu (8776), điều kiện xác định đặc biệt (9397), tổng hai căn bình phương (3615) = 8. Không tìm thấy câu ẩn phụ t=√ hay nhân liên hợp thật.",
+      "vi_du": ["T1100000009299", "T1100000003615"],
+      "ghi_chu": "9299: tu_luan, đưa về tích (x-3)[√(4-x²)-(x-1)]=0, loại x=3, nghiệm (1+√7)/2. 3615: tra_loi_ngan, tổng hai căn lồng, đáp án 25 khớp. Dạng ẩn phụ / liên hợp 0 câu thật, nên đổi mô tả dạng thành 'phương trình tích, nhân căn, bình phương hai lần' hoặc chờ nhập thêm nguồn. Câu 8693 là dự phòng (tra_loi_ngan, tổng=1)."
+    },
+    {
+      "nhom": "Phương trình quy khác",
+      "dang": "PT chứa dấu giá trị tuyệt đối / trùng phương (nâng cao)",
+      "n_cau_that": 2,
+      "cach_dem": "Quét noi_dung có | | hoặc 'trùng phương' hoặc x^4 kèm 'phương trình', loại hypebol/tam thức/mệnh đề: chỉ 8324 (|x²-2x+2|=x, trắc nghiệm) và 7512 (trùng phương có tham số m, trả lời ngắn).",
+      "vi_du": ["T1100000008324", "T1100000007512"],
+      "ghi_chu": "ÍT NGUỒN (<3): nên cân nhắc bỏ dạng này hoặc gộp vào dạng khác. 8324 đáp án D {1;2} khớp lời giải; 7512 đáp án 12 khớp (m=3,4,5). Cả hai không phải tu_luan."
+    },
+    {
+      "nhom": "Tham số và ứng dụng",
+      "dang": "m để PT chứa căn có nghiệm / nghiệm duy nhất / vô nghiệm",
+      "n_cau_that": 4,
+      "cach_dem": "PT căn + 'tham số m' trong nhóm 651 câu có sqrt: 9694 (tu_luan, 2 nghiệm phân biệt), 892 (có nghiệm), 9427 (hai nghiệm phân biệt), 9712 (m nguyên dương, căn bậc 4). Loại 8929 (m chỉ là số nghiệm), 9635/8565 (m thuộc tam thức, không phải PT căn).",
+      "vi_du": ["T1100000009694", "T110000000892"],
+      "ghi_chu": "9694: tu_luan, a) m=2 → x=1; b) 5/4≤m<2 (đã kiểm). 892: trắc nghiệm, m≥3 (đã kiểm g(2)=6). Dạng này khoảng 4 câu: ít, nhưng đủ 2 ví dụ; chưa có câu 'vô nghiệm'/'nghiệm duy nhất' riêng."
+    },
+    {
+      "nhom": "Tham số và ứng dụng",
+      "dang": "Thực tế / hình học dẫn đến PT căn",
+      "n_cau_that": 1,
+      "cach_dem": "Quét câu có từ khóa thực tế (tàu, xe, km, vận tốc, cầu...) + phương trình trong T110, rồi đọc tay 44 câu: chỉ 8016 (hai tàu, khoảng cách → PT bậc hai) dùng Pythagore. Các câu thực tế còn lại là parabol/hypebol/quy hoạch tuyến tính/đường thẳng, không phải PT căn.",
+      "vi_du": ["T1100000008016"],
+      "ghi_chu": "ÍT NGUỒN (<3): chỉ 1 câu thật, tra_loi_ngan, đáp án t=5 khớp (loại t=-35/3). Khuyến nghị bỏ dạng hoặc gộp vào 'm / ứng dụng'. Câu 8016 thực ra không chứa PT căn phải giải (căn có sẵn trong S1, bình phương ra bậc hai)."
+    }
+  ],
+  "thieu_dang": [
+    { "kieu": "Chọn phương trình thu được sau khi bình phương hai vế (trắc nghiệm biến đổi)", "n": 13, "ma_cau": "T1100000009179" },
+    { "kieu": "Đọc nghiệm √f(x)=√g(x) từ đồ thị hai hàm bậc hai", "n": 2, "ma_cau": "T1100000005161" },
+    { "kieu": "Câu nhiều ý: giải PT căn + vẽ đồ thị / tam thức dương (tu_luan ghép)", "n": 3, "ma_cau": "T1100000001823" },
+    { "kieu": "PT bậc cao x^8... = a, nghiệm viết dạng căn bậc m", "n": 3, "ma_cau": "T1100000007716" },
+    { "kieu": "Tập xác định / tập giá trị / tính giá trị của hàm số chứa căn (thuộc bài Hàm số, không phải PT)", "n": 96, "ma_cau": "T1100000001739" },
+    { "kieu": "Bất phương trình chứa căn", "n": 4, "ma_cau": "T1100000009532" }
+  ]
+}
