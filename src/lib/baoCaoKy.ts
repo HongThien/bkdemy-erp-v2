@@ -25,13 +25,23 @@ export type BcKyData = {
     btvn: { tong: number; dat_chuan: number; dung_han_chua_nt: number; chua_ghi: number; khong_lam: number; nop_muon: number; xin_phep: number; khong_nghiem_tuc: number; chong_doi: number } | null
   }
   nang_luc: { diem: number | null; sai_so: number | null }
-  nhan_xet: string | null
-  ke_hoach: string | null
+  nhan_xet: string | null          // ô "nhận xét thêm" (không bắt buộc)
+  ke_hoach: string | null          // ô "viết thêm" của kế hoạch
+  // phiên bản 3 (mig 202611051600 — thang nhận xét, Thùy 05/11); snapshot cũ không có ⇒ undefined
+  nhan_xet_chon?: BcKyNxTo[]
+  ke_hoach_chon?: string[]
+  goi_y?: BcKyGoiY
   phu_luc: { cot: { nhan: string; ngay: string }[]; hs: { ten: string; lop: string | null; la_em: boolean; diem: (number | null)[]; hang_tb: number; hang: number }[] }
 }
+export type MucDo = 'tot' | 'on' | 'chua_tot'
+export type MucDoChon = MucDo | 'chua_du'
+export type BcKyNxTo = { ma: string; ten: string; con: { ma: string; ten: string; muc_do: MucDoChon; noi_dung: string | null }[] }
+export type BcKyGoiYMuc = { muc_do: MucDo | null; khoa: string | null; so: Record<string, number | boolean | null> }
+export type BcKyGoiY = { du_doan: number | null; sai_so: number | null; so_lan: number; muc: Record<string, BcKyGoiYMuc> }
+export type NxChon = Record<string, { muc_do: MucDoChon; lc: string | null }>
 export type BcKyXem = { cong_bo_at: string | null; du_lieu: BcKyData }
-export type BcKyNhap = { diem_du_doan: number | null; sai_so: number | null; nhan_xet: string | null; ke_hoach: string | null; cong_bo_at: string | null }
-export const BC_KY_NHAP_TRONG: BcKyNhap = { diem_du_doan: null, sai_so: null, nhan_xet: null, ke_hoach: null, cong_bo_at: null }
+export type BcKyNhap = { diem_du_doan: number | null; sai_so: number | null; nhan_xet: string | null; ke_hoach: string | null; nx_chon: NxChon; kh_chon: string[]; cong_bo_at: string | null }
+export const BC_KY_NHAP_TRONG: BcKyNhap = { diem_du_doan: null, sai_so: null, nhan_xet: null, ke_hoach: null, nx_chon: {}, kh_chon: [], cong_bo_at: null }
 
 export async function listKyHoc(): Promise<KyHoc[]> {
   const { data, error } = await supabase.from('ky_hoc').select('id, ten, tu_thang, den_thang').order('tu_thang', { ascending: false }).limit(50)
@@ -51,12 +61,12 @@ export async function xemBcKy(hsId: string, mon: string, kyId: string): Promise<
   return data as BcKyXem
 }
 export async function getBcKyNhap(hsId: string, mon: string, kyId: string): Promise<BcKyNhap> {
-  const { data, error } = await supabase.from('bao_cao_ph_ky').select('diem_du_doan, sai_so, nhan_xet, ke_hoach, cong_bo_at')
+  const { data, error } = await supabase.from('bao_cao_ph_ky').select('diem_du_doan, sai_so, nhan_xet, ke_hoach, nx_chon, kh_chon, cong_bo_at')
     .eq('hoc_sinh_id', hsId).eq('mon', mon).eq('ky_id', kyId).maybeSingle()
   if (error) throw error
   return (data as BcKyNhap) ?? { ...BC_KY_NHAP_TRONG }
 }
-export async function luuBcKyNhap(hsId: string, mon: string, kyId: string, patch: Partial<Pick<BcKyNhap, 'diem_du_doan' | 'sai_so' | 'nhan_xet' | 'ke_hoach'>>): Promise<void> {
+export async function luuBcKyNhap(hsId: string, mon: string, kyId: string, patch: Partial<Pick<BcKyNhap, 'diem_du_doan' | 'sai_so' | 'nhan_xet' | 'ke_hoach' | 'nx_chon' | 'kh_chon'>>): Promise<void> {
   const { error } = await supabase.from('bao_cao_ph_ky').upsert({ hoc_sinh_id: hsId, mon, ky_id: kyId, ...patch }, { onConflict: 'hoc_sinh_id,mon,ky_id' })
   if (error) throw error
 }
@@ -69,7 +79,7 @@ export async function moLaiBcKy(hsId: string, mon: string, kyId: string): Promis
   const { error } = await supabase.rpc('fn_bc_ky_mo_lai', { p_hs: hsId, p_mon: mon, p_ky: kyId })
   if (error) throw error
 }
-// Công bố cả lớp trong 1 transaction ở DB — chỉ em đã nhập đủ điểm dự đoán + sai số + nhận xét.
+// Công bố cả lớp trong 1 transaction ở DB — chỉ em đã đủ điểm dự đoán + sai số + mọi mục nhận xét (_bc_ky_thieu).
 export async function congBoLopBcKy(lopId: string, mon: string, kyId: string): Promise<{ cong_bo: number; bo_qua: number }> {
   const { data, error } = await supabase.rpc('fn_bc_ky_cong_bo_lop', { p_lop: lopId, p_mon: mon, p_ky: kyId })
   if (error) throw error
@@ -84,4 +94,66 @@ export async function listBcKyTrangThai(hsIds: string[], mon: string, kyId: stri
   const out: Record<string, 'cong_bo' | 'nhap'> = {}
   for (const r of (data ?? []) as { hoc_sinh_id: string; cong_bo_at: string | null }[]) out[r.hoc_sinh_id] = r.cong_bo_at ? 'cong_bo' : 'nhap'
   return out
+}
+
+// ── THANG NHẬN XÉT (danh mục — Thùy sửa trên ERP; spec §D, mig 202611051600) ──
+// Mã gốc do DB cấp; xoá = đặt xoa_at (kho rác — báo cáo lưu MÃ). Ghi chỉ admin (RLS); mọi người đọc.
+export type NxMuc = { ma: string; cha: string | null; ten: string; thu_tu: number; goi_y: 'btvn' | 'can_than' | 'tien_bo_diem' | null; nguong_tot: number | null; nguong_chua_tot: number | null }
+export type NxLuaChon = { ma: string; muc_ma: string; muc_do: MucDo; noi_dung: string; khoa_goi_y: string | null; thu_tu: number }
+export type KhMau = { ma: string; muc_ma: string | null; noi_dung: string; thu_tu: number }
+export type DanhMucNx = { muc: NxMuc[]; lc: NxLuaChon[]; kh: KhMau[] }
+const COT_MUC = 'ma, cha, ten, thu_tu, goi_y, nguong_tot, nguong_chua_tot'
+const COT_LC = 'ma, muc_ma, muc_do, noi_dung, khoa_goi_y, thu_tu'
+const COT_KH = 'ma, muc_ma, noi_dung, thu_tu'
+const so = <T extends { thu_tu: number; ma: string }>(a: T[]) => a.sort((x, y) => x.thu_tu - y.thu_tu || x.ma.localeCompare(y.ma))
+export async function getDanhMucNx(): Promise<DanhMucNx> {
+  const [m, l, k] = await Promise.all([
+    supabase.from('bc_ky_nx_muc').select(COT_MUC).is('xoa_at', null).limit(500),
+    supabase.from('bc_ky_nx_lua_chon').select(COT_LC).is('xoa_at', null).limit(2000),
+    supabase.from('bc_ky_kh_mau').select(COT_KH).is('xoa_at', null).limit(1000),
+  ])
+  if (m.error) throw m.error; if (l.error) throw l.error; if (k.error) throw k.error
+  const num = (v: unknown) => v == null ? null : Number(v)
+  return {
+    muc: so(((m.data ?? []) as NxMuc[]).map((x) => ({ ...x, nguong_tot: num(x.nguong_tot), nguong_chua_tot: num(x.nguong_chua_tot) }))),
+    lc: so((l.data ?? []) as NxLuaChon[]),
+    kh: so((k.data ?? []) as KhMau[]),
+  }
+}
+export async function laAdminBcKy(): Promise<boolean> {
+  const { data, error } = await supabase.rpc('_bc_ky_la_admin')
+  if (error) return false
+  return !!data
+}
+export async function themNxMuc(v: Pick<NxMuc, 'cha' | 'ten' | 'thu_tu'>): Promise<NxMuc> {
+  const { data, error } = await supabase.from('bc_ky_nx_muc').insert(v).select(COT_MUC).single()
+  if (error) throw error
+  return data as NxMuc
+}
+export async function suaNxMuc(ma: string, patch: Partial<Pick<NxMuc, 'ten' | 'thu_tu' | 'nguong_tot' | 'nguong_chua_tot'>>): Promise<void> {
+  const { error } = await supabase.from('bc_ky_nx_muc').update(patch).eq('ma', ma)
+  if (error) throw error
+}
+export async function themNxLuaChon(v: Pick<NxLuaChon, 'muc_ma' | 'muc_do' | 'noi_dung' | 'thu_tu'>): Promise<NxLuaChon> {
+  const { data, error } = await supabase.from('bc_ky_nx_lua_chon').insert(v).select(COT_LC).single()
+  if (error) throw error
+  return data as NxLuaChon
+}
+export async function suaNxLuaChon(ma: string, patch: Partial<Pick<NxLuaChon, 'noi_dung' | 'thu_tu'>>): Promise<void> {
+  const { error } = await supabase.from('bc_ky_nx_lua_chon').update(patch).eq('ma', ma)
+  if (error) throw error
+}
+export async function themKhMau(v: Pick<KhMau, 'muc_ma' | 'noi_dung' | 'thu_tu'>): Promise<KhMau> {
+  const { data, error } = await supabase.from('bc_ky_kh_mau').insert(v).select(COT_KH).single()
+  if (error) throw error
+  return data as KhMau
+}
+export async function suaKhMau(ma: string, patch: Partial<Pick<KhMau, 'noi_dung' | 'thu_tu'>>): Promise<void> {
+  const { error } = await supabase.from('bc_ky_kh_mau').update(patch).eq('ma', ma)
+  if (error) throw error
+}
+// Xoá = đưa vào kho rác (không xoá cứng — báo cáo cũ trỏ bằng mã).
+export async function boVaoKhoRac(bang: 'bc_ky_nx_muc' | 'bc_ky_nx_lua_chon' | 'bc_ky_kh_mau', ma: string): Promise<void> {
+  const { error } = await supabase.from(bang).update({ xoa_at: new Date().toISOString() }).eq('ma', ma)
+  if (error) throw error
 }

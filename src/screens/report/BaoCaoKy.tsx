@@ -5,8 +5,9 @@
 import { useEffect, useState } from 'react'
 import {
   listKyHoc, themKyHoc, xemBcKy, getBcKyNhap, luuBcKyNhap, congBoBcKy, moLaiBcKy,
-  BC_KY_NHAP_TRONG, type KyHoc, type BcKyData, type BcKyNhap, type BcKyDonVi, type BcKyChuDe,
+  BC_KY_NHAP_TRONG, type KyHoc, type BcKyData, type BcKyNhap, type BcKyDonVi, type BcKyChuDe, type BcKyGoiY,
 } from '../../lib/baoCaoKy'
+import { useDanhMucNx, NhapNhanXet, NhapKeHoach, dungNhanXetChon, dungKeHoachChon, mucNhoDangDung, NHAN_MUC, MAU_MUC } from './ThangNhanXet'
 
 const pctCls = (p: number | null) => p == null ? 'text-slate-400' : p >= 80 ? 'text-emerald-700' : p >= 50 ? 'text-amber-700' : 'text-rose-700'
 const barCls = (p: number | null) => p == null ? 'bg-slate-200' : p >= 80 ? 'bg-emerald-500' : p >= 50 ? 'bg-amber-500' : 'bg-rose-500'
@@ -60,6 +61,7 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
   const [nhap, setNhap] = useState<BcKyNhap>(BC_KY_NHAP_TRONG)
   const [loading, setLoading] = useState(true)
   const [loi, setLoi] = useState<string | null>(null)
+  const dm = useDanhMucNx()
   useEffect(() => {
     setData(null); setLoading(true); setLoi(null)
     Promise.all([xemBcKy(hsId, mon, kyId), getBcKyNhap(hsId, mon, kyId)])
@@ -71,10 +73,15 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
   return (
     <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_340px]">
       <XemTruocKy d={data} congBoAt={congBoAt} />
-      <div className="xl:sticky xl:top-0 xl:self-start">
-        <NhapKy hsId={hsId} mon={mon} kyId={kyId} nhap={nhap} congBoAt={congBoAt}
+      <div className="xl:sticky xl:top-0 xl:max-h-[calc(100vh-120px)] xl:self-start xl:overflow-y-auto">
+        <NhapKy hsId={hsId} mon={mon} kyId={kyId} nhap={nhap} congBoAt={congBoAt} goiY={data.goi_y}
           // vá tại chỗ (không tính lại cả báo cáo): phần nhập hiện ngay trên bản xem trước
-          onDaLuu={(n) => { setNhap(n); setData((d) => d && { ...d, nang_luc: { diem: n.diem_du_doan, sai_so: n.sai_so }, nhan_xet: n.nhan_xet, ke_hoach: n.ke_hoach }); onTrangThai(hsId, 'nhap') }}
+          onDaLuu={(n) => {
+            setNhap(n)
+            setData((d) => d && { ...d, nang_luc: { diem: n.diem_du_doan, sai_so: n.sai_so }, nhan_xet: n.nhan_xet, ke_hoach: n.ke_hoach,
+              ...(dm ? { nhan_xet_chon: dungNhanXetChon(dm, n.nx_chon), ke_hoach_chon: dungKeHoachChon(dm, n.kh_chon) } : {}) })
+            onTrangThai(hsId, 'nhap')
+          }}
           onCongBo={async () => { const x = await xemBcKy(hsId, mon, kyId); setData(x.du_lieu); setCongBoAt(x.cong_bo_at); setNhap((n) => ({ ...n, cong_bo_at: x.cong_bo_at })); onTrangThai(hsId, 'cong_bo') }}
           onMoLai={async () => { const x = await xemBcKy(hsId, mon, kyId); setData(x.du_lieu); setCongBoAt(null); setNhap((n) => ({ ...n, cong_bo_at: null })); onTrangThai(hsId, 'nhap') }} />
       </div>
@@ -82,10 +89,11 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
   )
 }
 
-function NhapKy({ hsId, mon, kyId, nhap, congBoAt, onDaLuu, onCongBo, onMoLai }: {
-  hsId: string; mon: string; kyId: string; nhap: BcKyNhap; congBoAt: string | null
+function NhapKy({ hsId, mon, kyId, nhap, congBoAt, goiY, onDaLuu, onCongBo, onMoLai }: {
+  hsId: string; mon: string; kyId: string; nhap: BcKyNhap; congBoAt: string | null; goiY?: BcKyGoiY
   onDaLuu: (n: BcKyNhap) => void; onCongBo: () => Promise<void>; onMoLai: () => Promise<void>
 }) {
+  const dm = useDanhMucNx()
   const [diem, setDiem] = useState(nhap.diem_du_doan?.toString() ?? '')
   const [saiSo, setSaiSo] = useState(nhap.sai_so?.toString() ?? '')
   const [nx, setNx] = useState(nhap.nhan_xet ?? '')
@@ -95,41 +103,81 @@ function NhapKy({ hsId, mon, kyId, nhap, congBoAt, onDaLuu, onCongBo, onMoLai }:
   const [loi, setLoi] = useState<string | null>(null)
   const khoa = !!congBoAt
   const soOrNull = (s: string) => { const t = s.trim().replace(',', '.'); if (!t) return null; const v = Number(t); return Number.isFinite(v) ? v : NaN }
-  async function luu(tag: string) {
-    const d = soOrNull(diem), ss = soOrNull(saiSo)
+  const bao = (tag: string) => { setSaved(tag); setTimeout(() => setSaved((s) => (s === tag ? null : s)), 1500) }
+  async function ghi(tag: string, n: BcKyNhap, patch: Parameters<typeof luuBcKyNhap>[3]) {
+    setLoi(null)
+    const cu = nhap
+    onDaLuu(n)   // vá trước (bấm liên tiếp không mất lựa chọn), lỗi thì trả lại bản cũ
+    try { await luuBcKyNhap(hsId, mon, kyId, patch); bao(tag) }
+    catch (e: any) { onDaLuu(cu); setLoi(e?.message ?? String(e)) }
+  }
+  async function luu(tag: string, dd = diem, ssStr = saiSo) {
+    const d = soOrNull(dd), ss = soOrNull(ssStr)
     if (Number.isNaN(d) || Number.isNaN(ss)) { setLoi('Điểm và sai số phải là số.'); return }
     if (d != null && (d < 0 || d > 10)) { setLoi('Điểm dự đoán trong khoảng 0–10.'); return }
     if (ss != null && (ss < 0 || ss > 10)) { setLoi('Sai số trong khoảng 0–10.'); return }
+    if ((d != null && (d * 4) % 1 !== 0) || (ss != null && (ss * 4) % 1 !== 0)) { setLoi('Điểm và sai số là bội của 0,25.'); return }
     const n: BcKyNhap = { ...nhap, diem_du_doan: d, sai_so: ss, nhan_xet: nx.trim() ? nx : null, ke_hoach: kh.trim() ? kh : null }
     if (n.diem_du_doan === nhap.diem_du_doan && n.sai_so === nhap.sai_so && n.nhan_xet === nhap.nhan_xet && n.ke_hoach === nhap.ke_hoach) return
-    setLoi(null)
-    try { await luuBcKyNhap(hsId, mon, kyId, { diem_du_doan: n.diem_du_doan, sai_so: n.sai_so, nhan_xet: n.nhan_xet, ke_hoach: n.ke_hoach }); onDaLuu(n); setSaved(tag); setTimeout(() => setSaved((s) => (s === tag ? null : s)), 1500) }
-    catch (e: any) { setLoi(e?.message ?? String(e)) }
+    await ghi(tag, n, { diem_du_doan: n.diem_du_doan, sai_so: n.sai_so, nhan_xet: n.nhan_xet, ke_hoach: n.ke_hoach })
   }
-  const du = soOrNull(diem) != null && soOrNull(saiSo) != null && !!nx.trim()
+  const dungGoiY = () => {
+    if (goiY?.du_doan == null || goiY.sai_so == null) return
+    const a = String(goiY.du_doan), b = String(goiY.sai_so)
+    setDiem(a); setSaiSo(b); void luu('goiy', a, b)
+  }
+  const conThieu = dm ? mucNhoDangDung(dm).filter((m) => !nhap.nx_chon[m.ma]).length : 0
+  const du = soOrNull(diem) != null && soOrNull(saiSo) != null && !!dm && conThieu === 0
   async function chay(fn: () => Promise<void>) { setBusy(true); setLoi(null); try { await fn() } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(false) } }
+  const tieuDe = 'mb-1.5 text-[12px] font-bold uppercase tracking-wider text-slate-500'
   return (
-    <div className="space-y-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+    <div className="space-y-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
       <div className="flex items-center justify-between">
         <h3 className="text-[13px] font-semibold uppercase tracking-wider text-slate-500">Giáo viên nhập</h3>
         {khoa
           ? <span className="rounded-md bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">✓ Đã công bố {new Date(congBoAt!).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}</span>
           : <span className="rounded-md bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-700">Nháp — phụ huynh chưa thấy</span>}
       </div>
-      <div className="grid grid-cols-2 gap-3">
-        <label className="text-[12px] text-slate-500">Điểm dự đoán (0–10)
-          <input value={diem} disabled={khoa} onChange={(e) => setDiem(e.target.value)} onBlur={() => void luu('diem')} inputMode="decimal" className="mt-1 h-9 w-full rounded-lg border border-slate-200 px-2 text-[14px] font-semibold text-slate-800 disabled:bg-slate-50" />
-        </label>
-        <label className="text-[12px] text-slate-500">Sai số (±)
-          <input value={saiSo} disabled={khoa} onChange={(e) => setSaiSo(e.target.value)} onBlur={() => void luu('saiso')} inputMode="decimal" className="mt-1 h-9 w-full rounded-lg border border-slate-200 px-2 text-[14px] font-semibold text-slate-800 disabled:bg-slate-50" />
+
+      <div>
+        <div className={tieuDe}>Điểm năng lực</div>
+        <div className="grid grid-cols-2 gap-3">
+          <label className="text-[12px] text-slate-500">Điểm dự đoán (0–10)
+            <input value={diem} disabled={khoa} onChange={(e) => setDiem(e.target.value)} onBlur={() => void luu('diem')} inputMode="decimal" className="mt-1 h-9 w-full rounded-lg border border-slate-200 px-2 text-[14px] font-semibold text-slate-800 disabled:bg-slate-50" />
+          </label>
+          <label className="text-[12px] text-slate-500">Sai số (±)
+            <input value={saiSo} disabled={khoa} onChange={(e) => setSaiSo(e.target.value)} onBlur={() => void luu('saiso')} inputMode="decimal" className="mt-1 h-9 w-full rounded-lg border border-slate-200 px-2 text-[14px] font-semibold text-slate-800 disabled:bg-slate-50" />
+          </label>
+        </div>
+        {goiY?.du_doan != null && (
+          <div className="mt-1.5 flex items-center gap-2 text-[12px] text-indigo-700">
+            🤖 Gợi ý {so1(goiY.du_doan)} ± {so1(goiY.sai_so)} <span className="text-slate-400">({goiY.so_lan} lần thi)</span>
+            {!khoa && (soOrNull(diem) !== goiY.du_doan || soOrNull(saiSo) !== goiY.sai_so) &&
+              <button onClick={dungGoiY} className="rounded-md bg-indigo-50 px-2 py-0.5 font-semibold hover:bg-indigo-100">Dùng</button>}
+          </div>
+        )}
+      </div>
+
+      <div>
+        <div className={tieuDe}>Nhận xét {conThieu > 0 && !khoa && <span className="font-normal normal-case text-amber-600">· còn {conThieu} mục chưa chọn</span>}</div>
+        {dm
+          ? <NhapNhanXet dm={dm} nx={nhap.nx_chon} goiY={goiY} khoa={khoa}
+              onDoi={(v) => void ghi('nxc', { ...nhap, nx_chon: v }, { nx_chon: v })} />
+          : <p className="text-[12px] text-slate-400">Đang tải thang nhận xét…</p>}
+        <label className="mt-2 block text-[12px] text-slate-500">Nhận xét thêm (khi cần)
+          <textarea value={nx} disabled={khoa} onChange={(e) => setNx(e.target.value)} onBlur={() => void luu('nx')} rows={3} className="mt-1 w-full rounded-lg border border-slate-200 px-2.5 py-2 text-[13px] leading-relaxed text-slate-800 disabled:bg-slate-50" />
         </label>
       </div>
-      <label className="block text-[12px] text-slate-500">Nhận xét của giáo viên
-        <textarea value={nx} disabled={khoa} onChange={(e) => setNx(e.target.value)} onBlur={() => void luu('nx')} rows={6} className="mt-1 w-full rounded-lg border border-slate-200 px-2.5 py-2 text-[13px] leading-relaxed text-slate-800 disabled:bg-slate-50" />
-      </label>
-      <label className="block text-[12px] text-slate-500">Kế hoạch cải thiện
-        <textarea value={kh} disabled={khoa} onChange={(e) => setKh(e.target.value)} onBlur={() => void luu('kh')} rows={4} className="mt-1 w-full rounded-lg border border-slate-200 px-2.5 py-2 text-[13px] leading-relaxed text-slate-800 disabled:bg-slate-50" />
-      </label>
+
+      <div>
+        <div className={tieuDe}>Kế hoạch cải thiện</div>
+        {dm && <NhapKeHoach dm={dm} nx={nhap.nx_chon} kh={nhap.kh_chon} khoa={khoa}
+          onDoi={(v) => void ghi('khc', { ...nhap, kh_chon: v }, { kh_chon: v })} />}
+        <label className="mt-2 block text-[12px] text-slate-500">Viết thêm
+          <textarea value={kh} disabled={khoa} onChange={(e) => setKh(e.target.value)} onBlur={() => void luu('kh')} rows={3} className="mt-1 w-full rounded-lg border border-slate-200 px-2.5 py-2 text-[13px] leading-relaxed text-slate-800 disabled:bg-slate-50" />
+        </label>
+      </div>
+
       {loi && <p className="rounded-md bg-rose-50 px-2 py-1 text-[12px] text-rose-700">{loi}</p>}
       <div className="flex items-center gap-2">
         {khoa
@@ -139,7 +187,7 @@ function NhapKy({ hsId, mon, kyId, nhap, congBoAt, onDaLuu, onCongBo, onMoLai }:
       </div>
       <p className="text-[11px] text-slate-400">{khoa
         ? 'Đang hiện bản ĐÓNG BĂNG lúc công bố — số liệu không tự đổi. Mở lại để sửa rồi công bố lại.'
-        : 'Tự lưu khi rời ô. Công bố cần đủ điểm dự đoán, sai số và nhận xét; lúc công bố hệ thống chụp lại toàn bộ số liệu.'}</p>
+        : 'Tự lưu khi chọn / rời ô. Công bố cần điểm dự đoán, sai số và đủ mọi mục nhận xét (được chọn "Chưa đủ QS").'}</p>
     </div>
   )
 }
@@ -319,10 +367,37 @@ export function XemTruocKy({ d }: { d: BcKyData; congBoAt?: string | null }) {
             <div className="flex items-end gap-2"><span className="text-[40px] font-extrabold leading-none text-indigo-600">{so1(d.nang_luc.diem)}</span><span className="pb-1 text-[18px] font-semibold text-slate-500">± {so1(d.nang_luc.sai_so)}</span></div>
           </div>
         </div>
-        <div className="mb-1.5 text-[11.5px] font-bold uppercase text-slate-500">Nhận xét</div>
-        {d.nhan_xet ? <div className="whitespace-pre-line rounded-lg border-l-4 border-violet-600 bg-slate-50 px-3.5 py-3 text-[14px] leading-relaxed text-slate-800">{d.nhan_xet}</div> : <p className="text-[13px] text-slate-400">Giáo viên chưa nhập nhận xét.</p>}
+        {/* Nhận xét theo thang (Thùy 05/11): mục to → mục nhỏ, mỗi mục 1 mức + 1 câu */}
+        {(d.nhan_xet_chon ?? []).length === 0 && !d.nhan_xet && <p className="text-[13px] text-slate-400">Giáo viên chưa nhập nhận xét.</p>}
+        <div className="space-y-3">
+          {(d.nhan_xet_chon ?? []).map((t) => (
+            <div key={t.ma} className="overflow-hidden rounded-xl border border-slate-200">
+              <div className="bg-indigo-600 px-3.5 py-1.5 text-[13px] font-bold text-white">{t.ten}</div>
+              <div className="divide-y divide-slate-100">
+                {t.con.map((c) => (
+                  <div key={c.ma} className="px-3.5 py-2.5">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[13px] font-semibold text-slate-700">{c.ten}</span>
+                      <span className={`rounded-full px-2 py-px text-[11px] font-bold ${MAU_MUC[c.muc_do]}`}>{NHAN_MUC[c.muc_do]}</span>
+                    </div>
+                    {c.noi_dung && <p className="mt-0.5 text-[13.5px] leading-relaxed text-slate-800">{c.noi_dung}</p>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        {d.nhan_xet && <>
+          <div className="mb-1.5 mt-4 text-[11.5px] font-bold uppercase text-slate-500">Thầy cô ghi thêm</div>
+          <div className="whitespace-pre-line rounded-lg border-l-4 border-violet-600 bg-slate-50 px-3.5 py-3 text-[14px] leading-relaxed text-slate-800">{d.nhan_xet}</div>
+        </>}
         <div className="mb-1.5 mt-4 text-[11.5px] font-bold uppercase text-slate-500">Kế hoạch cải thiện</div>
-        {d.ke_hoach ? <div className="whitespace-pre-line rounded-lg border-l-4 border-emerald-500 bg-slate-50 px-3.5 py-3 text-[14px] leading-relaxed text-slate-800">{d.ke_hoach}</div> : <p className="text-[13px] text-slate-400">Giáo viên chưa nhập kế hoạch.</p>}
+        {(d.ke_hoach_chon ?? []).length > 0 || d.ke_hoach
+          ? <div className="rounded-lg border-l-4 border-emerald-500 bg-slate-50 px-3.5 py-3 text-[14px] leading-relaxed text-slate-800">
+              {(d.ke_hoach_chon ?? []).length > 0 && <ul className="list-disc space-y-1 pl-5">{d.ke_hoach_chon!.map((k, i) => <li key={i}>{k}</li>)}</ul>}
+              {d.ke_hoach && <div className={`whitespace-pre-line ${(d.ke_hoach_chon ?? []).length ? 'mt-2' : ''}`}>{d.ke_hoach}</div>}
+            </div>
+          : <p className="text-[13px] text-slate-400">Giáo viên chưa nhập kế hoạch.</p>}
         {d.gv && <p className="mt-2 text-right text-[12px] text-slate-500">— {d.gv}</p>}
       </Phan>
 

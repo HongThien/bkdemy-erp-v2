@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-489 bảng · 38 view · 0 enum · 267 trigger · 1597 function
+493 bảng · 38 view · 0 enum · 273 trigger · 1600 function
 
 ## _app_secrets
 
@@ -414,6 +414,8 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
 | ke_hoach | text | Y |  |  |  |
+| nx_chon | jsonb |  | '{}'::jsonb |  |  |
+| kh_chon | jsonb |  | '[]'::jsonb |  |  |
 
 ## bao_cao_ph_ky_log
 
@@ -509,6 +511,63 @@
 | trang_thai_moi | text | Y |  |  |  |
 | actor | uuid | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+
+## bc_ky_dm_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  | nextval('bc_ky_dm_log_id_seq'::regclass) | PK |  |
+| bang | text |  |  |  |  |
+| ma | text |  |  |  |  |
+| hanh_dong | text |  |  |  | `them` · `sua` |
+| cu | jsonb | Y |  |  |  |
+| moi | jsonb | Y |  |  |  |
+| actor | uuid | Y | jwt_uid() |  |  |
+| at | timestamp with time zone |  | now() |  |  |
+
+## bc_ky_kh_mau
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  | ('KHM'::text \|\| lpad((nextval('bc_ky_kh_mau_seq'::regclass))::text, 3, '0'::text)) | PK |  |
+| muc_ma | text | Y |  | FK→bc_ky_nx_muc.ma |  |
+| noi_dung | text |  |  |  |  |
+| thu_tu | integer |  | 0 |  |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+| updated_by | uuid | Y | jwt_uid() |  |  |
+
+## bc_ky_nx_lua_chon
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  | ('NXL'::text \|\| lpad((nextval('bc_ky_nx_lua_chon_seq'::regclass))::text, 4, '0'::text)) | PK |  |
+| muc_ma | text |  |  | FK→bc_ky_nx_muc.ma |  |
+| muc_do | text |  |  |  | `tot` · `on` · `chua_tot` |
+| noi_dung | text |  |  |  |  |
+| khoa_goi_y | text | Y |  |  | `top` · `that_thuong` · `khong_lam` · `nop_muon` · `khong_nghiem_tuc` |
+| thu_tu | integer |  | 0 |  |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+| updated_by | uuid | Y | jwt_uid() |  |  |
+
+## bc_ky_nx_muc
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  | ('NXM'::text \|\| lpad((nextval('bc_ky_nx_muc_seq'::regclass))::text, 3, '0'::text)) | PK |  |
+| cha | text | Y |  | FK→bc_ky_nx_muc.ma |  |
+| ten | text |  |  |  |  |
+| thu_tu | integer |  | 0 |  |  |
+| goi_y | text | Y |  |  | `btvn` · `can_than` · `tien_bo_diem` |
+| nguong_tot | numeric | Y |  |  |  |
+| nguong_chua_tot | numeric | Y |  |  |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+| updated_by | uuid | Y | jwt_uid() |  |  |
 
 ## bdm_ma_cum_luu_20261029
 
@@ -9160,6 +9219,12 @@ WITH luot AS (
 | bao_cao_ph_preset | trg_bao_cao_ph_preset_touch | BEFORE | UPDATE | bao_cao_ph_preset_touch |
 | bao_cao_tuan_khoi | bao_cao_tuan_khoi_log_trg | AFTER | INSERT/UPDATE | _bctk_ghi_log |
 | bao_loi | trg_log_bao_loi | BEFORE | UPDATE | log_bao_loi |
+| bc_ky_kh_mau | trg_bc_ky_kh_mau_kiem | BEFORE | INSERT/UPDATE | _bc_ky_dm_kiem |
+| bc_ky_kh_mau | trg_bc_ky_kh_mau_log | AFTER | INSERT/UPDATE | _bc_ky_dm_ghi_log |
+| bc_ky_nx_lua_chon | trg_bc_ky_nx_lua_chon_kiem | BEFORE | INSERT/UPDATE | _bc_ky_dm_kiem |
+| bc_ky_nx_lua_chon | trg_bc_ky_nx_lua_chon_log | AFTER | INSERT/UPDATE | _bc_ky_dm_ghi_log |
+| bc_ky_nx_muc | trg_bc_ky_nx_muc_kiem | BEFORE | INSERT/UPDATE | _bc_ky_dm_kiem |
+| bc_ky_nx_muc | trg_bc_ky_nx_muc_log | AFTER | INSERT/UPDATE | _bc_ky_dm_ghi_log |
 | bo_tro_hinh | trg_bthinh_log | AFTER | INSERT/UPDATE | _trg_bthinh_log |
 | bo_tro_hinh | trg_bthinh_suc_chua | BEFORE | INSERT/UPDATE | _trg_bthinh_suc_chua |
 | bo_tro_yeu | trg_btyeu_ban_do_luc_mo | BEFORE | INSERT | _btyeu_ban_do_luc_mo |
@@ -9409,8 +9474,11 @@ WITH luot AS (
 - `_ban_be_cua(p_hs uuid)` → SETOF uuid
 - `_bao_cao_ph_ky_ghi_log()` → trigger
 - `_bao_cao_ph_ky_truoc()` → trigger
+- `_bc_ky_dm_ghi_log()` → trigger
+- `_bc_ky_dm_kiem()` → trigger
 - `_bc_ky_la_admin()` → boolean
 - `_bc_ky_thang_thi(p_loai text, p_ngay date)` → text
+- `_bc_ky_thieu(p_bc bao_cao_ph_ky)` → text
 - `_bcmt_duoc_ghep(p_tuan date, p_mon text)` → uuid[]
 - `_bcmt_ghi_log()` → trigger
 - `_bctk_ca_nhan(p_ns uuid, p_tu date, p_nhap jsonb)` → jsonb
@@ -10928,8 +10996,8 @@ WITH luot AS (
 - `hs_sotay_tim_ct(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_sotay_tim_lt(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
@@ -10998,9 +11066,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
@@ -11029,11 +11097,18 @@ WITH luot AS (
 | bao_cao_ph | bao_cao_ph_nl_sai_so_chk | `CHECK (((nl_sai_so IS NULL) OR ((nl_sai_so >= (0)::numeric) AND (nl_sai_so <= (5)::numeric))))` |
 | bao_cao_ph_ky | bao_cao_ph_ky_check | `CHECK (((cong_bo_at IS NULL) OR (snapshot IS NOT NULL)))` |
 | bao_cao_ph_ky | bao_cao_ph_ky_diem_du_doan_check | `CHECK (((diem_du_doan >= (0)::numeric) AND (diem_du_doan <= (10)::numeric)))` |
+| bao_cao_ph_ky | bao_cao_ph_ky_kh_chon_check | `CHECK ((jsonb_typeof(kh_chon) = 'array'::text))` |
+| bao_cao_ph_ky | bao_cao_ph_ky_nx_chon_check | `CHECK ((jsonb_typeof(nx_chon) = 'object'::text))` |
 | bao_cao_ph_ky | bao_cao_ph_ky_sai_so_check | `CHECK (((sai_so >= (0)::numeric) AND (sai_so <= (10)::numeric)))` |
 | bao_cao_ph_preset | bao_cao_ph_preset_muc_check | `CHECK (((muc >= 1) AND (muc <= 5)))` |
 | bao_cao_ph_preset | bao_cao_ph_preset_noi_dung_check | `CHECK ((btrim(noi_dung) <> ''::text))` |
 | bao_cao_tuan_khoi | bao_cao_tuan_khoi_check | `CHECK (((trang_thai = 'nhap'::text) OR ((so IS NOT NULL) AND (nop_at IS NOT NULL) AND (tre IS NOT NULL))))` |
 | bao_cao_tuan_khoi | bao_cao_tuan_khoi_tuan_check | `CHECK ((EXTRACT(isodow FROM tuan) = (1)::numeric))` |
+| bc_ky_kh_mau | bc_ky_kh_mau_noi_dung_check | `CHECK ((btrim(noi_dung) <> ''::text))` |
+| bc_ky_nx_lua_chon | bc_ky_nx_lua_chon_noi_dung_check | `CHECK ((btrim(noi_dung) <> ''::text))` |
+| bc_ky_nx_muc | bc_ky_nx_muc_check | `CHECK (((goi_y IS NULL) OR (cha IS NOT NULL)))` |
+| bc_ky_nx_muc | bc_ky_nx_muc_check1 | `CHECK (((goi_y IS NULL) OR ((nguong_tot IS NOT NULL) AND (nguong_chua_tot IS NOT NULL))))` |
+| bc_ky_nx_muc | bc_ky_nx_muc_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
 | bo_tro_hinh | bo_tro_hinh_dong_du_ck | `CHECK (((trang_thai <> 'hoan_thanh'::text) OR ((ket_qua IS NOT NULL) AND (hoan_thanh_at IS NOT NULL))))` |
 | bo_tro_hinh | bo_tro_hinh_ly_do_ck | `CHECK ((length(TRIM(BOTH FROM ly_do)) > 0))` |
 | bo_tro_hinh | bo_tro_hinh_muc_ck | `CHECK ((muc = ANY (ARRAY[1, 2, 3])))` |

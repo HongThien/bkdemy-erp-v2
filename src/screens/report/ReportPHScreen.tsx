@@ -10,6 +10,7 @@ import { getTongQuanHS, type TongQuanHS } from '../../lib/mastery'
 import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, getKhoiRankDiemMT, getLopRankDiemMT, getHeRankDiemMT, getKSDiemThang, type KSThang, listNxPreset, addNxPreset, updateNxPreset, deleteNxPreset, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH, type KhoiRankMT, type LopRankMT, type HeRankMT, type NxTruc, type NxPreset } from '../../lib/report'
 import { tenHienThiDs } from '../../lib/hoten'
 import { ChonKy, BaoCaoKyBody } from './BaoCaoKy'
+import { NutThangNhanXet } from './ThangNhanXet'
 import { congBoLopBcKy, listBcKyTrangThai } from '../../lib/baoCaoKy'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
@@ -141,7 +142,7 @@ export default function ReportPHScreen() {
           <button onClick={() => setCheDo('thang')} className={monBtn(cheDo === 'thang')}>Tháng</button>
           <button onClick={() => setCheDo('ky')} className={monBtn(cheDo === 'ky')}>Học kì</button>
         </div>
-        {cheDo === 'ky' ? <div className="ml-2"><ChonKy kyId={kyId} onChange={setKyId} /></div> : <>
+        {cheDo === 'ky' ? <div className="ml-2 flex items-center gap-1"><ChonKy kyId={kyId} onChange={setKyId} /><NutThangNhanXet /></div> : <>
         <div className="ml-2 flex items-center gap-0.5 rounded-md ring-1 ring-slate-200">
           <button onClick={() => setYm(shiftYM(ym, -1))} className="h-7 rounded-l-md px-2 text-slate-500 hover:bg-slate-100" title="Tháng trước">‹</button>
           <span className="min-w-[92px] text-center text-[13px] font-semibold tabular-nums text-slate-700">Tháng {Number(mm)}/{yy}</span>

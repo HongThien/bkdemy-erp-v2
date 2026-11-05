@@ -86,3 +86,20 @@
 - **Thùy 04/11:** BTVN hiện theo **nhóm KHÔNG TRÙNG**, cộng các ô = tổng buổi: Đạt chuẩn (đúng hạn, nghiêm túc) · Đúng hạn nhưng chưa nghiêm túc · Nộp muộn · Không làm · (Xin phép / Chưa ghi trạng thái — chỉ hiện khi có). "Không nghiêm túc" chuyển thành dòng ghi chú "Trong đó n lần bị ghi chưa nghiêm túc". Mig `202611041924`.
 - **PDF (Thùy 04/11):** khổ hẹp cỡ điện thoại (125 × 220 mm), 1 cột; **mỗi phần 2–5 bắt đầu trang mới** (phần 1 nằm dưới header); chuyên đề mở sẵn (PDF không bấm được); phụ lục in đủ dòng, không cuộn; giữ trọn mỗi card/dòng bảng trong 1 trang. Bản mẫu đang dựng bằng script ngoài repo (HTML → Edge headless) — khi làm công cụ PDF thật thì áp đúng các luật này.
 - **Thùy 04/11:** bỏ MỌI dòng chú thích nhỏ (chân trang, "* độ tin còn thấp", giải thích hạng kì, giải thích điểm năng lực, "trong đó … chưa nghiêm túc", chú giải phụ lục) · điểm làm tròn **2 chữ số** sau dấu phẩy (9,25), hạng TB giữ 1 chữ số. Mig `202611042051`.
+
+## D. NHẬN XÉT GIÁO VIÊN + ĐIỂM NĂNG LỰC + KẾ HOẠCH (Thùy chốt 05/11 — THAY A5 "GV nhập tay" và ô nhận xét tự do)
+- **Nhận xét = quá trình học CẢ KÌ, không phải 1 bài thi.** Khung 4 mục to · 9 mục nhỏ:
+  1. Thái độ học tập — Trên lớp · Về nhà 🤖 · Chủ động
+  2. Năng lực học tập — Tiếp thu · Vận dụng
+  3. Độ ổn định — Độ chắc kiến thức · Cẩn thận 🤖 (tên cho PH, ý = sai số)
+  4. Tiến bộ — Về điểm 🤖 · Về cách học
+- **Thang 3 mức Tốt / Ổn / Chưa tốt**, mỗi mức có nhiều LOẠI (mỗi loại = 1 câu hiện thẳng cho PH). GV chọn **1 mức + 1 loại** mỗi mục nhỏ, hoặc **"Chưa đủ quan sát"**. Không 5 mức (lý do: loại đã làm việc phân biệt; GV chấm khớp nhau hơn; PH đọc nhanh).
+- **Ô "Nhận xét thêm"** (không bắt buộc) — thang không bao quát hết.
+- **🤖 = hệ thống gợi ý mức từ số liệu, GV duyệt/sửa**; GV chọn khác gợi ý ⇒ màn báo để xem lại (không chặn). Ngưỡng lưu ở danh mục, sửa trên ERP:
+  - Về nhà: % lần nộp BTVN đạt chuẩn (trên số buổi đã ghi, bỏ xin phép) — Tốt ≥ 90 · Chưa tốt < 70. Loại gợi ý theo lỗi nhiều nhất (không làm / nộp muộn / chưa nghiêm túc).
+  - Cẩn thận: sai số (GV đã nhập, chưa nhập thì sai số gợi ý) — Tốt ≤ 0,75 · Chưa tốt ≥ 1,75. Em < 2 lần thi ⇒ không gợi ý.
+  - Tiến bộ về điểm: CHÊNH so TB khối nửa sau kì − nửa đầu kì (không so điểm thô) — Tốt ≥ +0,5 · Chưa tốt ≤ −0,5; em luôn trong top 20% mọi lần thi ⇒ Tốt loại "giữ vững nhóm dẫn đầu". Em < 2 lần thi ⇒ không gợi ý.
+- **Điểm dự đoán + sai số: hệ thống gợi ý, GV duyệt** (Thùy 05/11 "claude chạy 1 lượt và dự đoán"). Thang bội 0,25. Luật (backtest T10, 254 em): dự đoán = TB điểm các lần thi trong kì, trọng số lần gần nhất 6-4-3-3 (lệch TB 0,97); sai số = max(0,75; 1,5 × độ lệch chuẩn của CHÊNH so TB từng lần thi), 1 lần thi ⇒ 1,0 (65% điểm thật T10 lọt khoảng). Không có lần thi ⇒ không gợi ý.
+- **Kế hoạch cải thiện:** danh mục phương án mẫu gắn theo mục nhỏ; hệ thống đưa lên đầu các phương án của mục GV chấm Chưa tốt / Ổn; GV tích chọn + ô "Viết thêm".
+- **Danh mục (mục · loại · ngưỡng · phương án) sửa thẳng trên ERP** (Thùy: "không phụ thuộc vào claude, làm thẳng trên erp giống report tháng") — chỉ admin; mã gốc bất biến, xoá = kho rác (`xoa_at`), báo cáo đã công bố giữ chữ trong snapshot.
+- **Công bố cần:** điểm dự đoán + sai số + MỌI mục nhỏ đã chọn (kể cả "Chưa đủ quan sát"). Nhận xét thêm / viết thêm không bắt buộc.
