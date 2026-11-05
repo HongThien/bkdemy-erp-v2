@@ -9,7 +9,7 @@
 // nhan_su_id = khoá vẽ (ghế trống dùng khoá ô).
 export type NguoiCanh = { nhan_su_id: string; ho_ten: string; hieu_suat: number | null; tre_han: number; gay_thang: number; nhan?: string; trong?: boolean }
 
-export type DoVat = 'phien' | 'ban_do' | 'quan_tri' | 'chat_luong' | 'bao_cao'
+export type DoVat = 'phien' | 'ban_do' | 'quan_tri' | 'chat_luong' | 'bao_cao' | 'hoi_ta'
 const W = 1600, H = 900, SAN = 560   // mép tường / sàn
 
 // 8 chỗ ngồi: hàng sau nhỏ hơn (xa hơn). Thứ tự lấp: hàng trước giữa → ra hai bên → hàng sau.
@@ -127,8 +127,9 @@ function Bien({ x, y, chu }: { x: number; y: number; chu: string }) {
   )
 }
 
-export default function CanhPhong<T extends NguoiCanh>({ ds, onMoNguoi, onMoDoVat }: {
+export default function CanhPhong<T extends NguoiCanh>({ ds, onMoNguoi, onMoDoVat, coHoiTa = false }: {
   ds: T[]; onMoNguoi: (ns: T) => void; onMoDoVat: (d: DoVat) => void
+  coHoiTa?: boolean   // phòng trưởng bộ môn: thêm bảng tin "Hỏi vận hành TA" (Thùy 05/11)
 }) {
   const ngoi = ds.slice(0, SO_GHE)
   // Tường có 2 lỗ cửa sổ ở 2 đầu (evenodd) ⇒ nền style phía sau hiện qua. Giữa tường: 3 bức tranh (Thùy 03/11).
@@ -183,6 +184,17 @@ export default function CanhPhong<T extends NguoiCanh>({ ds, onMoNguoi, onMoDoVa
         <text x={147} y={350} textAnchor="middle" fontSize={14} fontWeight={800} fill="#fff">BÁO CÁO TUẦN</text>
         <text x={147} y={396} textAnchor="middle" fontSize={30}>📝</text>
       </g>
+
+      {/* BẢNG TIN = Hỏi vận hành trợ giảng (Thùy 05/11) — chỉ phòng trưởng bộ môn, dưới cửa sổ phải (đối xứng lịch Báo cáo tuần) */}
+      {coHoiTa && (
+        <g className="dv" onClick={() => onMoDoVat('hoi_ta')} role="button" aria-label="Mở Hỏi vận hành trợ giảng">
+          <rect className="vien" x={1378} y={332} width={150} height={78} rx={8} fill="#fff" stroke="#8f5e31" strokeWidth={5} />
+          <rect x={1378} y={332} width={150} height={24} rx={6} fill="#4f46e5" />
+          <circle cx={1406} cy={330} r={5} fill="#475569" /><circle cx={1500} cy={330} r={5} fill="#475569" />
+          <text x={1453} y={350} textAnchor="middle" fontSize={13} fontWeight={800} fill="#fff">HỎI VẬN HÀNH TA</text>
+          <text x={1453} y={396} textAnchor="middle" fontSize={30}>💬</text>
+        </g>
+      )}
 
       {/* chậu cây */}
       <g><rect x={40} y={500} width={70} height={70} rx={10} fill="#c8915c" />

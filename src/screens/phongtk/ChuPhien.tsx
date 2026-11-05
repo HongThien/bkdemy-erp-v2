@@ -29,8 +29,24 @@ function chu(s: string): string {
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
 }
 
+// Bảng markdown (các dòng liền nhau bắt đầu bằng "|") — ô hỏi Phòng TBM trả danh sách người bằng bảng.
+function bang(dongs: string[]): string {
+  const o = (l: string) => l.trim().replace(/^\||\|$/g, '').split('|').map((c) => c.trim())
+  const rows = dongs.filter((l) => !/^\s*\|?\s*:?-{2,}/.test(l)).map(o)
+  if (!rows.length) return ''
+  const [dau, ...than] = rows
+  return `<div class="my-1.5 overflow-x-auto"><table class="min-w-full border-collapse text-[13px]"><thead><tr>${dau.map((c) => `<th class="border-b-2 border-slate-200 bg-slate-50 px-2 py-1 text-left font-semibold">${dong(c)}</th>`).join('')}</tr></thead><tbody>${
+    than.map((r) => `<tr>${r.map((c) => `<td class="border-b border-slate-100 px-2 py-1 align-top">${dong(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`
+}
+
 export default function ChuPhien({ text }: { text: string }) {
-  const html = text.split('\n').map((l) => {
+  const nhom: (string | string[])[] = []
+  for (const l of text.split('\n')) {
+    if (/^\s*\|/.test(l)) { const t = nhom[nhom.length - 1]; if (Array.isArray(t)) t.push(l); else nhom.push([l]) }
+    else nhom.push(l)
+  }
+  const html = nhom.map((l) => {
+    if (Array.isArray(l)) return bang(l)
     if (/^>\s?/.test(l)) {
       const t = l.replace(/^>\s?/, '')
       return `<div class="my-0.5 text-[12px] leading-snug text-slate-400">${esc(t)}</div>`

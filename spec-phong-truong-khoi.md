@@ -131,6 +131,17 @@ chốt tuần…) giữ nguyên. Đổi người quản môn = đổi ghế trê
 **Hiệu suất hiện REALTIME** (Thùy 03/11): số tháng đang chạy, tính lại mỗi lần gọi; cảnh phòng tự làm mới nền mỗi 60 giây. Không lấy số tháng trước —
 đầu tháng chưa có task đã đóng/quá hạn thì hiện "—" (đúng nghĩa: chưa có gì để đo, §1.5).
 
+### 4.3 Ô HỎI vận hành trợ giảng — phòng trưởng bộ môn (Thùy 05/11)
+
+| # | Chốt |
+|---|---|
+| 1 | Trưởng bộ môn hỏi bằng lời dữ liệu vận hành TA để ra quyết định: **lương · công & duyệt công · việc sau buổi · dữ liệu đã điền (điểm danh, ET, BTVN, nhận xét) · hiệu suất, gậy**. Bảng đã có ở ERP (Lương TA, Duyệt công, Quản trị) ⇒ phòng chỉ thêm **chỗ hỏi** ("chỉ cần làm chỗ hỏi thôi"). |
+| 2 | Lương: **xem đủ nhưng chỉ phần liên quan bộ môn mình** — TA có lớp môn khác thì chỉ thấy dòng lớp/ngoài-package của môn mình, tổng gross/net xem ở màn Lương TA. |
+| 3 | Đồ vật: bảng tin 💬 "HỎI VẬN HÀNH TA" dưới cửa sổ phải, chỉ phòng `tbm` (`HoiVanHanhTa.tsx`). Ô hỏi **chỉ đọc** — không duyệt/sửa gì. |
+| 4 | Duyệt công từ phòng (Thùy chọn "xem + được duyệt" 05/11): **chưa làm**, chờ Thùy. |
+
+**DB (mig `202611051536`):** `fn_phong_hoi_danh_muc()` + `fn_phong_hoi_goi(tên, tham số)` — gác `fn_phong_che_do()='tbm'`, phạm vi lớp đặt ở DB (`_phong_hoi_lop`), model không chọn được. Công cụ: `tro_giang` · `luong_tro_giang` · `cong_tro_giang` · `viec_van_hanh` · `tinh_trang_buoi` — đều đọc hàm sẵn (`_phong_chi_so_pv`, `_ta_luong_ky_core`, `_ta_doi_chieu`, công cụ Trợ lý). Thêm công cụ = viết `_phong_hoi_cc_<tên>` + thêm vào CASE và danh mục. Server: `api/phong-hoi.mjs` (token người hỏi) + `api/_phong_hoi_core.mjs`; thử local `scripts/phong-hoi-thu.mjs`.
+
 ## 5. Bản thử đã dựng (01/11) — mig `202611011822`
 
 | Phần | Chỗ |
