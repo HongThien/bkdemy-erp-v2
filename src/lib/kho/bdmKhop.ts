@@ -39,12 +39,22 @@ const go = async <T,>(fn: string, args: Record<string, unknown>): Promise<T> => 
 }
 
 // nguon (Thùy 27/10): 'de_thi' | 'de_cuong' | 'sach:<tác giả>' | 'kho_cu' — lọc ở DB (mig 202610271607); null = mọi nguồn
-export const khopDem = (khoi: string, chuDe?: string | null, nguon?: string | null) =>
-  go<KhopDem>(K('dem'), { p_khoi: khoi, p_chu_de: chuDe ?? null, p_nguon: nguon ?? null })
-export const khopHang = (khoi: string, hang: KhopHang, limit = 30, offset = 0, chuDe?: string | null, nguon?: string | null) =>
-  go<{ tong: number; rows: KhopCau[] }>(K('hang'), { p_khoi: khoi, p_hang: hang, p_limit: limit, p_offset: offset, p_chu_de: chuDe ?? null, p_nguon: nguon ?? null })
-export const khopNguonDs = (khoi: string, hang: KhopHang, chuDe?: string | null) =>
-  go<{ nguon: string; so_cau: number }[]>(K('nguon_ds'), { p_khoi: khoi, p_hang: hang, p_chu_de: chuDe ?? null })
+// loc (Thùy 05/11): mã của BẤT KỲ tầng nào (chủ đề NCD · chuyên đề NCH · nhóm NNB · dạng bài NDB) — lọc ở DB (mig 202611051718).
+// Chỉ bộ Toán có p_loc; bộ KHTN (fn_khtn_bdm_khop_*) chưa có ⇒ không gửi.
+const locArg = (loc?: string | null) => (khopCoPhamVi() ? { p_loc: loc ?? null } : {})
+export const khopDem = (khoi: string, chuDe?: string | null, nguon?: string | null, loc?: string | null) =>
+  go<KhopDem>(K('dem'), { p_khoi: khoi, p_chu_de: chuDe ?? null, p_nguon: nguon ?? null, ...locArg(loc) })
+export const khopHang = (khoi: string, hang: KhopHang, limit = 30, offset = 0, chuDe?: string | null, nguon?: string | null, loc?: string | null) =>
+  go<{ tong: number; rows: KhopCau[] }>(K('hang'), { p_khoi: khoi, p_hang: hang, p_limit: limit, p_offset: offset, p_chu_de: chuDe ?? null, p_nguon: nguon ?? null, ...locArg(loc) })
+export const khopNguonDs = (khoi: string, hang: KhopHang, chuDe?: string | null, loc?: string | null) =>
+  go<{ nguon: string; so_cau: number }[]>(K('nguon_ds'), { p_khoi: khoi, p_hang: hang, p_chu_de: chuDe ?? null, ...locArg(loc) })
+
+export type KhopCap = 'chu_de' | 'chuyen_de' | 'nhom' | 'dang_bai'
+export const KHOP_CAP_LABEL: Record<KhopCap, string> = { chu_de: 'Chủ đề', chuyen_de: 'Chuyên đề', nhom: 'Nhóm bài', dang_bai: 'Dạng bài' }
+export type KhopLocMuc = { id: string; ten: string; duong: string | null; so_cau: number }
+/** Các mục ở một cấp đang có câu trong hàng (kèm số câu), theo thứ tự bản đồ — chỉ Toán. */
+export const khopLocDs = (khoi: string, hang: KhopHang, cap: KhopCap, nguon?: string | null) =>
+  go<KhopLocMuc[]>('fn_bdm_khop_loc_ds', { p_khoi: khoi, p_hang: hang, p_cap: cap, p_nguon: nguon ?? null })
 export const khopDich = (khoi: string) => go<KhopDich[]>(K('dich'), { p_khoi: khoi })
 export const khopQuyet = (maCau: string, hanhDong: KhopHanhDong, dangBai?: string | null, lyDo?: string | null) =>
   go<{ ok: boolean }>(K('quyet'), { p_ma_cau: maCau, p_hanh_dong: hanhDong, p_dang_bai: dangBai ?? null, p_ly_do: lyDo ?? null })
