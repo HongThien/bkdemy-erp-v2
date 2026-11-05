@@ -10,6 +10,8 @@
 // Thứ tự câu trong bài = thứ tự file truyền vào, rồi thứ tự khối trong file → truyền file theo ĐÚNG thứ tự câu trong tài liệu gốc.
 // Chuẩn hoá (log-giai-hinh-hoc-bai.md R1/R2): đề KHÔNG dòng trống; lời giải xuống dòng đơn, chỉ cách 1 dòng trống TRƯỚC ý b) c) d)…
 //   và trước "**Phần 2. Trình bày**" (lời giải 2 phần).
+// --lop giang|luyen (05/11): ghi vào KHO TRÊN LỚP (hinh_hoc_cau_lop, mã HHL…) thay vì kho luyện — câu "Bài trên lớp" của tài liệu; thứ tự nối cuối chuỗi vai đó.
+// --duyet-ai (05/11, Thùy "đẩy luôn"): câu kho luyện ghi da_duyet=true, duyet_nguon='ai' (không ký tên người) — như lô Thales 02/11.
 // --cam: regex các từ NGOÀI whitelist của bài (vd bài tam giác vuông: "cân|đều|trung trực|Pytago|đồng dạng|hình bình hành") — chỉ CẢNH BÁO,
 //        có cảnh báo thì --ghi từ chối trừ khi thêm --bo-qua-canh-bao (người đã xem từng chỗ).
 import pg from 'pg'
@@ -17,11 +19,14 @@ import { readFileSync, existsSync, mkdirSync, copyFileSync, writeFileSync } from
 import { join } from 'node:path'
 
 const argv = process.argv.slice(2)
-const CO_GT = new Set(['--cam', '--hinh', '--ra'])
+const CO_GT = new Set(['--cam', '--hinh', '--ra', '--lop'])
 const pos = argv.filter((a, i) => !a.startsWith('--') && !CO_GT.has(argv[i - 1]))
 const [maBai, ...files] = pos
 const gt = (k) => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] : null }
 const GHI = argv.includes('--ghi'), BO_QUA = argv.includes('--bo-qua-canh-bao')
+const LOP = gt('--lop') // 'giang' | 'luyen' ⇒ kho trên lớp
+if (LOP && !['giang', 'luyen'].includes(LOP)) { console.error('--lop phải là giang | luyen'); process.exit(2) }
+const DUYET_AI = argv.includes('--duyet-ai')
 const NOI = argv.includes('--noi') // bài đã có câu ⇒ NỐI vào cuối (thu_tu tiếp theo), dùng khi chuyển câu sang bài đã nhập
 const CHO_CUNG = argv.includes('--cho-cung') // lớp 9 học cung ⇒ tắt cảnh báo chữ "cung" (vốn để bắt lớp 7 gọi nhầm ký hiệu góc là cung)
 const CAM = gt('--cam') ? new RegExp(gt('--cam'), 'i') : null
@@ -82,17 +87,25 @@ const c = new pg.Client({ connectionString: process.env.DATABASE_URL, connection
 await c.connect()
 const bai = (await c.query('select ma_bai, ten_bai from hinh_hoc_bai where ma_bai = $1', [maBai])).rows[0]
 if (!bai) { console.error('❌ Không có bài', maBai); process.exit(1) }
-const cu = (await c.query(`select count(*)::int n, coalesce(max(thu_tu),0)::int mx from hinh_hoc_cau_hoi where dang_chinh = $1 and xoa_at is null`, [maBai])).rows[0]
+const cu = LOP
+  ? (await c.query(`select count(*)::int n, coalesce(max(thu_tu),-1)::int mx from hinh_hoc_cau_lop where dang_bai_id = $1 and vai = $2 and xoa_at is null`, [maBai, LOP])).rows[0]
+  : (await c.query(`select count(*)::int n, coalesce(max(thu_tu),0)::int mx from hinh_hoc_cau_hoi where dang_chinh = $1 and xoa_at is null`, [maBai])).rows[0]
 if (cu.n && !NOI) { console.error(`❌ Bài ${maBai} đã có ${cu.n} câu — không nhập chồng (thêm câu vào cuối bài: --noi).`); process.exit(1) }
 const map = []
 await c.query('begin')
 try {
-  let tt = NOI ? cu.mx + 1 : 1
+  let tt = NOI ? cu.mx + 1 : LOP ? 0 : 1
   for (const x of cau) {
-    const r = await c.query(
+    const r = LOP
+      ? await c.query(
+        `insert into hinh_hoc_cau_lop (dang_bai_id, vai, thu_tu, loai_cau, noi_dung, loi_giai, lua_chon, dap_an, nguon)
+         values ($1,$2,$3,$4,$5,$6,$7,$8,'tài liệu soạn (Claude soạn lời giải)') returning ma_cau`,
+        [maBai, LOP, tt++, x.loai, x.nd, x.lg, x.lc ? JSON.stringify(x.lc) : null, x.dapAn])
+      : await c.query(
       `insert into hinh_hoc_cau_hoi (dang_chinh, noi_dung, loi_giai, thu_tu, loai_cau, lua_chon, dap_an, nguon_giai, giai_method, kho_chuan, da_duyet)
-       values ($1,$2,$3,$4,$5,$6,$7,'ai','claude_code',true,false) returning ma_cau`,
-      [maBai, x.nd, x.lg, tt++, x.loai, x.lc ? JSON.stringify(x.lc) : null, x.dapAn])
+       values ($1,$2,$3,$4,$5,$6,$7,'ai','claude_code',true,$8) returning ma_cau`,
+      [maBai, x.nd, x.lg, tt++, x.loai, x.lc ? JSON.stringify(x.lc) : null, x.dapAn, DUYET_AI])
+    if (DUYET_AI && !LOP) await c.query(`update hinh_hoc_cau_hoi set duyet_nguon = 'ai', duyet_at = now() where ma_cau = $1`, [r.rows[0].ma_cau])
     map.push({ nhan: x.nhan, ma_cau: r.rows[0].ma_cau, thu_tu: tt - 1, hinh: x.hinh, hinhLG: x.hinhLG })
   }
   await c.query('commit')

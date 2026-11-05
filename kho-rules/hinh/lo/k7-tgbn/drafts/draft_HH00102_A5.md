@@ -1,0 +1,269 @@
+### TL1.1 → HH00102
+**loai_cau:** tu_luan
+**noi_dung:**
+Quan sát hình vẽ (các cạnh có cùng kí hiệu thì bằng nhau, các góc có cùng kí hiệu thì bằng nhau).
+a) Viết các yếu tố bằng nhau mà đề bài cho trên hình.
+b) Viết kết luận hai tam giác bằng nhau (theo đúng thứ tự đỉnh tương ứng) và nêu trường hợp bằng nhau.
+c) Viết các tính chất suy ra (các cặp cạnh, góc tương ứng còn lại bằng nhau).
+**loi_giai:**
+**Phần 1. Hướng dẫn**
+**Mấu chốt:** Hình có hai tam giác chung đỉnh $A$ và chung cạnh $AD$, mỗi tam giác có hai góc và cạnh nằm giữa hai góc đó đã được đánh dấu, nên dùng trường hợp g.c.g cho $\triangle ABD$ và $\triangle ACD$.
+
+**Bước 1.** Đọc kí hiệu trên hình. Hai cạnh $AB$, $AC$ cùng 2 gạch nên bằng nhau. Hai góc ở $B$, $C$ cùng 2 cung nên bằng nhau. Hai góc ở $A$ (hai bên tia $AD$) cùng 1 cung nên bằng nhau.
+
+**Bước 2.** Chọn hai tam giác: $\triangle ABD$ và $\triangle ACD$. Ở $\triangle ABD$, cạnh $AB$ nằm giữa góc $B$ và góc $BAD$. Ở $\triangle ACD$, cạnh $AC$ nằm giữa góc $C$ và góc $CAD$.
+
+**Bước 3.** Hai góc kề một cạnh bằng nhau và cạnh đó cũng bằng nhau, đúng trường hợp g.c.g. Viết kết luận theo đúng thứ tự đỉnh: $B\to C$, $A\to A$, $D\to D$.
+
+**Bước 4.** Từ hai tam giác bằng nhau, liệt kê các cặp cạnh, góc tương ứng còn lại ($BD$ với $CD$, $\widehat{ADB}$ với $\widehat{ADC}$).
+
+**Chú ý:** Góc phải nằm ở hai đầu của cạnh đã cho bằng nhau. Ở đây là $\widehat{B}$ và $\widehat{BAD}$ cùng kề cạnh $AB$, đừng ghép nhầm với góc ở $D$.
+
+**Phần 2. Trình bày**
+a) Đề bài cho:
+$AB=AC$ (gt);
+$\widehat{B}=\widehat{C}$ (gt);
+$\widehat{BAD}=\widehat{CAD}$ (gt).
+
+b) Xét $\triangle ABD$ và $\triangle ACD$ có:
+$\widehat{B}=\widehat{C}$ (gt);
+$AB=AC$ (gt);
+$\widehat{BAD}=\widehat{CAD}$ (gt)
+nên $\triangle ABD=\triangle ACD$ (g.c.g).
+
+c) Tính chất suy ra:
+$BD=CD$ (hai cạnh tương ứng);
+$\widehat{ADB}=\widehat{ADC}$ (hai góc tương ứng).
+Vì $D$ nằm giữa $B$, $C$ và $BD=CD$
+nên $D$ là trung điểm của $BC$ (trung điểm).
+Mà $\widehat{ADB}+\widehat{ADC}=180^\circ$ (hai góc kề bù)
+và $\widehat{ADB}=\widehat{ADC}$ (cmt)
+nên $\widehat{ADB}=\widehat{ADC}=90^\circ$, tức $AD\perp BC$.
+**cấu hình hình / nghi vấn:**
+Hình: tam giác $ABC$ cân tại $A$ (dựng đúng), $D$ là trung điểm $BC$, đoạn $AD$; kí hiệu như ảnh gốc: $AB$, $AC$ 2 gạch; góc $B$, $C$ 2 cung; góc $BAD$ và $DAC$ mỗi bên 1 cung (ảnh gốc vẽ liền một cung vắt qua $AD$, đọc là hai góc bằng nhau). KHÔNG vẽ ô vuông ở $D$ (ảnh gốc không có; $AD\perp BC$ chỉ là tính chất suy ra ở c).
+Verify (kiem_A5.mjs): 2 bộ toạ độ, kiểm $AB=AC$, $\widehat B=\widehat C$, $\widehat{BAD}=\widehat{CAD}$, $BD=CD$, $\widehat{ADB}=\widehat{ADC}=90^\circ$, $D$ giữa $B$, $C$ — PASS.
+Chỉ dùng g.c.g, hai góc kề bù, trung điểm (trong whitelist). Nghi vấn nhỏ: ảnh gốc ở $A$ là một cung liền vắt qua $AD$; tôi đọc là $\widehat{BAD}=\widehat{CAD}$ (GeoGebra vẽ hai góc kề có cùng kí hiệu). Nếu Thùy muốn hiểu khác (chỉ là một góc $\widehat{BAC}$ đánh dấu) thì không dùng được g.c.g.
+**hinh:** HH00102_TL1-1.png
+
+### TL1.2 → HH00102
+**loai_cau:** tu_luan
+**noi_dung:**
+Quan sát hình vẽ (các cạnh có cùng kí hiệu thì bằng nhau, các góc có cùng kí hiệu thì bằng nhau).
+a) Viết các yếu tố bằng nhau mà đề bài cho trên hình.
+b) Viết kết luận hai tam giác bằng nhau (theo đúng thứ tự đỉnh tương ứng) và nêu trường hợp bằng nhau.
+c) Viết các tính chất suy ra (các cặp cạnh, góc tương ứng còn lại bằng nhau).
+**loi_giai:**
+**Phần 1. Hướng dẫn**
+**Mấu chốt:** Tứ giác $ABCD$ có đường chéo $AC$ chia thành hai tam giác $ABC$, $CDA$ có chung cạnh $AC$ và hai cặp góc kề cạnh $AC$ đã đánh dấu bằng nhau, nên dùng g.c.g.
+
+**Bước 1.** Đọc kí hiệu trên hình. Góc $BAC$ và góc $DCA$ cùng 1 cung nên bằng nhau. Góc $DAC$ và góc $BCA$ cùng 2 cung nên bằng nhau.
+
+**Bước 2.** Cạnh $AC$ là cạnh chung của hai tam giác $ABC$ và $CDA$, đề bài không đánh dấu nhưng vẫn là một điều kiện cần ghi.
+
+**Bước 3.** Cạnh $AC$ nằm giữa hai góc đã cho bằng nhau, đúng trường hợp g.c.g. Viết kết luận: $A\to C$, $B\to D$, $C\to A$.
+
+**Bước 4.** Từ hai tam giác bằng nhau, liệt kê các cặp cạnh, góc tương ứng còn lại. Hai góc so le trong bằng nhau còn cho biết các cặp cạnh song song.
+
+**Chú ý:** Hai tam giác là $\triangle ABC$ và $\triangle CDA$, không phải $\triangle ABC$ và $\triangle ADC$. Thứ tự đỉnh phải theo đúng các góc bằng nhau.
+
+**Phần 2. Trình bày**
+a) Đề bài cho:
+$\widehat{BAC}=\widehat{DCA}$ (gt);
+$\widehat{DAC}=\widehat{BCA}$ (gt).
+
+b) Xét $\triangle ABC$ và $\triangle CDA$ có:
+$\widehat{BAC}=\widehat{DCA}$ (gt);
+$AC=CA$ (cạnh chung);
+$\widehat{BCA}=\widehat{DAC}$ (gt)
+nên $\triangle ABC=\triangle CDA$ (g.c.g).
+
+c) Tính chất suy ra:
+$AB=CD$ (hai cạnh tương ứng);
+$BC=DA$ (hai cạnh tương ứng);
+$\widehat{ABC}=\widehat{CDA}$ (hai góc tương ứng).
+Ngoài ra, $\widehat{BAC}=\widehat{DCA}$ (gt) ở vị trí so le trong
+nên $AB\parallel CD$ (hai góc so le trong bằng nhau).
+Tương tự, $\widehat{DAC}=\widehat{BCA}$ (gt) ở vị trí so le trong
+nên $AD\parallel BC$ (hai góc so le trong bằng nhau).
+**cấu hình hình / nghi vấn:**
+Hình: $ABCD$ là hình bình hành vẽ đúng ($D\to C$ cùng vectơ $A\to B$), đường chéo $AC$. Kí hiệu như ảnh gốc: góc $BAC$ và $DCA$ 1 cung; góc $DAC$ và $BCA$ 2 cung (đã phóng to 700 dpi để đọc). Không vẽ kí hiệu song song, không gạch cạnh.
+Verify (kiem_A5.mjs): 2 bộ toạ độ, kiểm hai cặp góc, $B$, $D$ khác phía $AC$ (so le trong hợp lệ), $AB=CD$, $BC=DA$, $\widehat{ABC}=\widehat{CDA}$, $AB\parallel CD$, $AD\parallel BC$ — PASS.
+Chỉ dùng g.c.g, hai góc so le trong (whitelist). Hai dòng song song ở c) là bổ sung ngầm định, có thể bỏ nếu muốn đúng nghĩa "tính chất suy ra từ tam giác bằng nhau". Không có nghi vấn về kí hiệu hình.
+**hinh:** HH00102_TL1-2.png
+
+### TL1.3 → HH00102
+**loai_cau:** tu_luan
+**noi_dung:**
+Quan sát hình vẽ (các cạnh có cùng kí hiệu thì bằng nhau, các góc có cùng kí hiệu thì bằng nhau).
+a) Viết các yếu tố bằng nhau mà đề bài cho trên hình.
+b) Viết kết luận hai tam giác bằng nhau (theo đúng thứ tự đỉnh tương ứng) và nêu trường hợp bằng nhau.
+c) Viết các tính chất suy ra (các cặp cạnh, góc tương ứng còn lại bằng nhau).
+**loi_giai:**
+**Phần 1. Hướng dẫn**
+**Mấu chốt:** Hai đoạn $EC$ và $DB$ cắt nhau tại $A$ tạo hai tam giác $AED$ và $ACB$; cạnh $ED$, $BC$ đã đánh dấu bằng nhau và hai cặp góc ở hai đầu mỗi cạnh cũng bằng nhau, nên dùng g.c.g.
+
+**Bước 1.** Đọc kí hiệu trên hình. $ED$ và $BC$ cùng 2 gạch nên bằng nhau. Góc $E$ và góc $C$ cùng 2 cung nên bằng nhau. Góc $D$ và góc $B$ cùng 1 cung nên bằng nhau.
+
+**Bước 2.** Chọn hai tam giác $\triangle AED$ và $\triangle ACB$. Cạnh $ED$ nằm giữa góc $E$ và góc $D$. Cạnh $CB$ nằm giữa góc $C$ và góc $B$.
+
+**Bước 3.** Ghép đỉnh theo các góc bằng nhau: $E\to C$, $D\to B$, nên $A\to A$. Hai góc kề cạnh bằng nhau, cạnh bằng nhau: trường hợp g.c.g.
+
+**Bước 4.** Liệt kê các cặp cạnh, góc tương ứng còn lại ($AE$ với $AC$, $AD$ với $AB$, góc ở $A$).
+
+**Chú ý:** Viết đỉnh $A$ ở vị trí đầu cả hai tam giác ($\triangle AED$, $\triangle ACB$) để thứ tự đỉnh khớp. Viết nhầm $\triangle AED=\triangle ABC$ là sai tương ứng.
+
+**Phần 2. Trình bày**
+a) Đề bài cho:
+$ED=BC$ (gt);
+$\widehat{E}=\widehat{C}$ (gt);
+$\widehat{D}=\widehat{B}$ (gt).
+
+b) Xét $\triangle AED$ và $\triangle ACB$ có:
+$\widehat{E}=\widehat{C}$ (gt);
+$ED=CB$ (gt);
+$\widehat{D}=\widehat{B}$ (gt)
+nên $\triangle AED=\triangle ACB$ (g.c.g).
+
+c) Tính chất suy ra:
+$AE=AC$ (hai cạnh tương ứng);
+$AD=AB$ (hai cạnh tương ứng);
+$\widehat{EAD}=\widehat{CAB}$ (hai góc tương ứng).
+**cấu hình hình / nghi vấn:**
+Hình: $E$, $D$ ở trên, $B$, $C$ ở dưới; $EC$ cắt $DB$ tại $A$, vẽ đúng $A$ là trung điểm $EC$ và $DB$ (như ảnh gốc, hai đoạn $ED$, $BC$ song song bằng nhau). Kí hiệu như ảnh gốc: $ED$, $BC$ 2 gạch; góc $E$, $C$ 2 cung; góc $D$, $B$ 1 cung. Không vẽ góc ở $A$.
+Verify (kiem_A5.mjs): 2 bộ toạ độ, kiểm $ED=BC$, $\widehat E=\widehat C$, $\widehat D=\widehat B$, $AE=AC$, $AD=AB$, $\widehat{EAD}=\widehat{CAB}$, $A$ nằm giữa — PASS.
+Chỉ dùng g.c.g. Không có nghi vấn.
+**hinh:** HH00102_TL1-3.png
+
+### TL1.4 → HH00102
+**loai_cau:** tu_luan
+**noi_dung:**
+Quan sát hình vẽ (các cạnh có cùng kí hiệu thì bằng nhau, các góc có cùng kí hiệu thì bằng nhau).
+a) Viết các yếu tố bằng nhau mà đề bài cho trên hình.
+b) Viết kết luận hai tam giác bằng nhau (theo đúng thứ tự đỉnh tương ứng) và nêu trường hợp bằng nhau.
+c) Viết các tính chất suy ra (các cặp cạnh, góc tương ứng còn lại bằng nhau).
+**loi_giai:**
+**Phần 1. Hướng dẫn**
+**Mấu chốt:** Hai đoạn $EC$ và $DB$ cắt nhau tại $A$; đề cho $EA=AC$, một góc ở đầu mút và góc ở $A$ có kí hiệu, nên dùng g.c.g cho $\triangle AED$ và $\triangle ACB$ với cạnh $AE=AC$.
+
+**Bước 1.** Đọc kí hiệu trên hình. $EA$ và $AC$ cùng 3 gạch nên bằng nhau. Góc $E$ và góc $C$ cùng 2 cung nên bằng nhau. Hai góc ở $A$ cùng 1 cung nên bằng nhau (đó là hai góc đối đỉnh).
+
+**Bước 2.** Chọn hai tam giác $\triangle AED$ và $\triangle ACB$. Cạnh $AE$ nằm giữa góc $E$ và góc $EAD$. Cạnh $AC$ nằm giữa góc $C$ và góc $CAB$.
+
+**Bước 3.** Hai góc kề cạnh bằng nhau, cạnh bằng nhau: trường hợp g.c.g. Ghép đỉnh theo cạnh và góc bằng nhau: $E\to C$, $A\to A$, $D\to B$.
+
+**Bước 4.** Liệt kê các cặp cạnh, góc tương ứng còn lại ($ED$ với $CB$, $AD$ với $AB$, góc $D$ với góc $B$).
+
+**Chú ý:** Hai góc ở $A$ có kí hiệu chung chính là hai góc đối đỉnh, nên ở phần b) ghi lí do "hai góc đối đỉnh" cũng đúng.
+
+**Phần 2. Trình bày**
+a) Đề bài cho:
+$EA=AC$ (gt);
+$\widehat{E}=\widehat{C}$ (gt);
+$\widehat{EAD}=\widehat{CAB}$ (gt).
+
+b) Xét $\triangle AED$ và $\triangle ACB$ có:
+$\widehat{E}=\widehat{C}$ (gt);
+$EA=CA$ (gt);
+$\widehat{EAD}=\widehat{CAB}$ (hai góc đối đỉnh)
+nên $\triangle AED=\triangle ACB$ (g.c.g).
+
+c) Tính chất suy ra:
+$ED=CB$ (hai cạnh tương ứng);
+$AD=AB$ (hai cạnh tương ứng);
+$\widehat{D}=\widehat{B}$ (hai góc tương ứng).
+**cấu hình hình / nghi vấn:**
+Hình: như ảnh gốc ($E$, $D$ ở trên, $B$, $C$ ở dưới, $EC$ cắt $DB$ tại $A$; $A$ là trung điểm cả hai đoạn như ảnh gốc). Kí hiệu như ảnh gốc: $EA$, $AC$ 3 gạch; góc $E$, $C$ 2 cung; góc $EAD$ và $CAB$ 1 cung (hai góc đối đỉnh). Ảnh gốc không đánh dấu $ED$, $BC$ nên không gạch.
+Verify (kiem_A5.mjs): 2 bộ toạ độ, kiểm $EA=AC$, $\widehat E=\widehat C$, $\widehat{EAD}=\widehat{CAB}$, $ED=CB$, $AD=AB$, $\widehat D=\widehat B$ — PASS.
+Chỉ dùng g.c.g, hai góc đối đỉnh. Hình vẽ A là trung điểm của $EC$ và $DB$ giống ảnh gốc, nhưng đề chỉ cho $EA=AC$ — lời giải KHÔNG dùng $AD=AB$ làm điều kiện, chỉ suy ra. Không có nghi vấn.
+**hinh:** HH00102_TL1-4.png
+
+### TL1.5 → HH00102
+**loai_cau:** tu_luan
+**noi_dung:**
+Quan sát hình vẽ (các cạnh có cùng kí hiệu thì bằng nhau, các góc có cùng kí hiệu thì bằng nhau).
+a) Viết các yếu tố bằng nhau mà đề bài cho trên hình.
+b) Viết kết luận hai tam giác bằng nhau (theo đúng thứ tự đỉnh tương ứng) và nêu trường hợp bằng nhau.
+c) Viết các tính chất suy ra (các cặp cạnh, góc tương ứng còn lại bằng nhau).
+**loi_giai:**
+**Phần 1. Hướng dẫn**
+**Mấu chốt:** Tứ giác $HIJK$ có đường chéo $HJ$ chia thành hai tam giác $HIJ$, $JKH$ có chung cạnh $HJ$ và hai cặp góc kề cạnh $HJ$ đã đánh dấu bằng nhau, nên dùng g.c.g.
+
+**Bước 1.** Đọc kí hiệu trên hình. Góc $IHJ$ và góc $KJH$ cùng kí hiệu (1 cung) nên bằng nhau. Góc $KHJ$ và góc $IJH$ cùng kí hiệu (2 cung) nên bằng nhau.
+
+**Bước 2.** Cạnh $HJ$ là cạnh chung của $\triangle HIJ$ và $\triangle JKH$, đề bài không đánh dấu nhưng vẫn là một điều kiện cần ghi.
+
+**Bước 3.** Cạnh $HJ$ nằm giữa hai góc đã cho bằng nhau, đúng trường hợp g.c.g. Viết kết luận theo thứ tự đỉnh: $H\to J$, $I\to K$, $J\to H$.
+
+**Bước 4.** Liệt kê các cặp cạnh, góc tương ứng còn lại.
+
+**Chú ý:** Ở mỗi đỉnh $H$, $J$ có hai góc khác nhau cùng chung đỉnh. Phải ghép đúng góc có cùng kí hiệu, đừng ghép góc $IHJ$ với góc $IJH$.
+
+**Phần 2. Trình bày**
+a) Đề bài cho:
+$\widehat{IHJ}=\widehat{KJH}$ (gt);
+$\widehat{KHJ}=\widehat{IJH}$ (gt).
+
+b) Xét $\triangle HIJ$ và $\triangle JKH$ có:
+$\widehat{IHJ}=\widehat{KJH}$ (gt);
+$HJ=JH$ (cạnh chung);
+$\widehat{IJH}=\widehat{KHJ}$ (gt)
+nên $\triangle HIJ=\triangle JKH$ (g.c.g).
+
+c) Tính chất suy ra:
+$HI=JK$ (hai cạnh tương ứng);
+$IJ=KH$ (hai cạnh tương ứng);
+$\widehat{I}=\widehat{K}$ (hai góc tương ứng).
+Ngoài ra, $\widehat{IHJ}=\widehat{KJH}$ (gt) ở vị trí so le trong
+nên $HI\parallel JK$ (hai góc so le trong bằng nhau).
+Tương tự, $\widehat{KHJ}=\widehat{IJH}$ (gt) ở vị trí so le trong
+nên $HK\parallel IJ$ (hai góc so le trong bằng nhau).
+**cấu hình hình / nghi vấn:**
+Hình: $HIJK$ là hình bình hành vẽ đúng ($K=H+J-I$), đường chéo $HJ$. Ảnh gốc đánh dấu bằng cung trơn và cung có gạch nhỏ cắt ngang (không phải 2 cung): ở $H$, góc $IHJ$ cung trơn, góc $JHK$ cung có gạch; ở $J$, góc $IJH$ cung có gạch, góc $HJK$ cung trơn. Tôi vẽ cung trơn = 1 cung, cung có gạch = 2 cung (cùng kiểu thì bằng nhau), ghép: $\widehat{IHJ}=\widehat{KJH}$ (trơn) và $\widehat{KHJ}=\widehat{IJH}$ (có gạch). Đã phóng to 800 dpi để đọc.
+Verify (kiem_A5.mjs): 2 bộ toạ độ, kiểm hai cặp góc, $I$, $K$ khác phía $HJ$, $HI=JK$, $IJ=KH$, $\widehat I=\widehat K$, $HI\parallel JK$, $IJ\parallel HK$ — PASS.
+Chỉ dùng g.c.g, hai góc so le trong. Hai dòng song song ở c) là bổ sung ngầm định, có thể bỏ. Nghi vấn nhỏ: cách ghép góc theo "gạch nhỏ" đọc từ ảnh phóng to; nếu Thùy đọc khác thì đổi.
+**hinh:** HH00102_TL1-5.png
+
+### TL1.6 → HH00102
+**loai_cau:** tu_luan
+**noi_dung:**
+Quan sát hình vẽ (các cạnh có cùng kí hiệu thì bằng nhau, các góc có cùng kí hiệu thì bằng nhau).
+a) Viết các yếu tố bằng nhau mà đề bài cho trên hình.
+b) Viết kết luận hai tam giác bằng nhau (theo đúng thứ tự đỉnh tương ứng) và nêu trường hợp bằng nhau.
+c) Viết các tính chất suy ra (các cặp cạnh, góc tương ứng còn lại bằng nhau).
+**loi_giai:**
+**Phần 1. Hướng dẫn**
+**Mấu chốt:** $AD\perp BC$ tại $D$ nên hai góc ở $D$ cùng vuông, cùng với $BD=DC$ và $\widehat{B}=\widehat{C}$ cho hai tam giác $ABD$, $ACD$ bằng nhau theo g.c.g.
+
+**Bước 1.** Đọc kí hiệu trên hình. Ô vuông ở $D$ cho $AD\perp BC$. $BD$ và $DC$ cùng 3 gạch nên bằng nhau. Góc $B$ và góc $C$ cùng kí hiệu nên bằng nhau.
+
+**Bước 2.** Vì $D$ nằm giữa $B$, $C$ nên $\widehat{ADB}$ và $\widehat{ADC}$ kề bù. Cả hai cùng bằng $90^\circ$ vì $AD\perp BC$.
+
+**Bước 3.** Chọn $\triangle ABD$ và $\triangle ACD$. Cạnh $BD$ nằm giữa góc $B$ và góc $ADB$, cạnh $CD$ nằm giữa góc $C$ và góc $ADC$. Đúng trường hợp g.c.g.
+
+**Bước 4.** Liệt kê các cặp cạnh, góc tương ứng còn lại ($AB$ với $AC$, $\widehat{BAD}$ với $\widehat{CAD}$).
+
+**Chú ý:** Ô vuông chỉ có ở một góc nhưng cho cả hai góc ở $D$ vuông. Đừng quên nêu $\widehat{ADB}=\widehat{ADC}$ trước khi viết kết luận.
+
+**Phần 2. Trình bày**
+a) Đề bài cho:
+$AD\perp BC$ tại $D$ (gt);
+$BD=DC$ (gt);
+$\widehat{B}=\widehat{C}$ (gt).
+
+b) Xét $\triangle ABD$ và $\triangle ACD$ có:
+$\widehat{B}=\widehat{C}$ (gt);
+$BD=CD$ (gt);
+$\widehat{ADB}=\widehat{ADC}=90^\circ$ (vì $AD\perp BC$ (gt))
+nên $\triangle ABD=\triangle ACD$ (g.c.g).
+
+c) Tính chất suy ra:
+$AB=AC$ (hai cạnh tương ứng);
+$\widehat{BAD}=\widehat{CAD}$ (hai góc tương ứng).
+Vì $D$ thuộc đoạn $BC$ nên tia $AD$ nằm giữa hai tia $AB$, $AC$
+và $\widehat{BAD}=\widehat{CAD}$ (cmt)
+nên $AD$ là tia phân giác của $\widehat{BAC}$ (tia phân giác).
+**cấu hình hình / nghi vấn:**
+Hình: tam giác $ABC$ (dựng cân tại $A$ vì $AD$ là đường vuông góc và $BD=DC$), $D$ trung điểm $BC$, ô vuông ở $D$, $BD$, $DC$ 3 gạch, góc $B$, $C$ 1 cung (ảnh gốc là cung có gạch chéo/tô — đọc là một kí hiệu chung cho hai góc bằng nhau). Không vẽ kí hiệu nào ở góc $A$.
+Verify (kiem_A5.mjs): 2 bộ toạ độ, kiểm $BD=DC$, $\widehat B=\widehat C$, $AD\perp BC$, $\widehat{ADB}=\widehat{ADC}$, $AB=AC$, $\widehat{BAD}=\widehat{CAD}$, $D$ giữa $B$, $C$ — PASS.
+Chỉ dùng g.c.g, hai góc kề bù, tia phân giác (trong whitelist). Hai dòng cuối c) là bổ sung ngầm định ($AD$ phân giác), có thể bỏ. Ghi chú: tia phân giác ở c) theo định nghĩa whitelist (tia nằm giữa và tạo hai góc bằng nhau). Không có nghi vấn.
+**hinh:** HH00102_TL1-6.png

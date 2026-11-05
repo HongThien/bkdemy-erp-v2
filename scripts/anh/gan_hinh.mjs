@@ -25,7 +25,7 @@ import { join, extname } from 'node:path'
 import { randomUUID } from 'node:crypto'
 import { createClient } from '@supabase/supabase-js'
 
-const BANG = { HHC: 'hinh_hoc_cau_hoi', HH: 'hinh_hoc_cau_hoi' } // HH… = mã câu kiểu cũ (HH00087012), cùng bảng
+const BANG = { HHC: 'hinh_hoc_cau_hoi', HH: 'hinh_hoc_cau_hoi', HHL: 'hinh_hoc_cau_lop' } // HH… = mã câu kiểu cũ (HH00087012), cùng bảng · HHL = kho trên lớp (mig 202611051603)
 // Cách gắn của một bảng: khoa = cột khoá ghi trong tên tệp · song = điều kiện "dòng còn sống" · cot[kiểu] = các cột ảnh được ghi
 // (kiểu: chung = tên không đuôi · de = đuôi _de · lg = đuôi _lg; bảng không khai kiểu nào thì tên tệp kiểu đó bị từ chối) · bump = SET thêm.
 const HOC = { khoa: 'ma_cau', song: ' and xoa_at is null', cot: { chung: ['anh_de', 'anh_dap_an'], de: ['anh_de'], lg: ['anh_dap_an'] }, bump: '' }
