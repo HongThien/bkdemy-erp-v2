@@ -619,9 +619,13 @@ function BoxNhom(p: {
       })}
       onClick={() => p.onChon({ loai: 'nhom', id: n.id })}
       className={`group/nhom cursor-grab overflow-hidden rounded-xl border bg-white shadow-sm active:cursor-grabbing ${p.sapHa ? 'ring-2 ring-violet-500 ring-offset-2' : sang(`n:${n.id}`)} ${p.chon ? 'border-amber-400 ring-2 ring-amber-300' : 'border-slate-200 hover:border-indigo-300'}`}>
-      <div className="flex items-start gap-2 bg-slate-700 px-3 py-2 text-white">
+      <div className="flex flex-col gap-1 bg-slate-700 px-3 py-2 text-white">
+       {/* hàng 1: tên nhóm bài · hàng 2: thao tác + số liệu (Thùy 05/11) */}
+       <span className="flex items-start gap-2">
         <span className="mt-px rounded bg-white/20 px-1.5 text-[11px] font-bold">{n.so}</span>
         <span className="flex-1 text-[13px] font-semibold leading-snug"><MathText>{n.ten}</MathText></span>
+       </span>
+       <span className="flex items-center gap-1.5">
         {/* Điện thoại: luôn hiện (không có rê chuột), nhóm xếp dọc nên mũi tên là ▲▼ */}
         <span className="hidden shrink-0 gap-0.5 group-hover/nhom:flex max-md:flex">
           <button onClick={(e) => { e.stopPropagation(); doiCho(-1, 'Đã đưa lên trước') }} disabled={viTri <= 0}
@@ -636,7 +640,8 @@ function BoxNhom(p: {
         </button>
         <button onClick={(e) => { e.stopPropagation(); moKho({ loai: 'nhom', id: n.id, ten: n.ten }) }} draggable={false}
           title="Mở KHO: mọi câu của các dạng bài trong nhóm này" className="shrink-0 rounded bg-white/15 px-1.5 py-0.5 text-[11px] font-semibold text-white/90 hover:bg-white/30">📚</button>
-        <DauTienDo moTa={!!n.mo_ta.trim()} noiDung={n.co_ly_thuyet} nhanNoiDung="lý thuyết" />
+        <span className="ml-auto"><DauTienDo moTa={!!n.mo_ta.trim()} noiDung={n.co_ly_thuyet} nhanNoiDung="lý thuyết" /></span>
+       </span>
       </div>
       {p.sapHa && <div className="bg-violet-600 px-3 py-1.5 text-center text-[11.5px] font-semibold text-white">⤵ Thả: hạ thành DẠNG BÀI của nhóm này</div>}
       <div className="flex flex-col gap-1.5 p-2.5">
@@ -677,19 +682,25 @@ function CardDangBai(p: {
         return lam(() => (k.nhomId === n.id ? sapXep('dang_bai', ids) : chuyenDangBai(k.id, n.id, ids)), k.nhomId === n.id ? 'Đã đổi thứ tự' : 'Đã chuyển dạng bài')
       })}
       onClick={(e) => { e.stopPropagation(); p.onChon({ loai: 'dang_bai', id: d.id }) }}
-      className={`flex cursor-grab items-start gap-1.5 rounded-lg border px-2 py-1.5 text-[12px] active:cursor-grabbing max-md:py-2 max-md:text-[13px] ${sang(`d:${d.id}`)} ${
+      className={`flex cursor-grab flex-col gap-1 rounded-lg border px-2 py-1.5 text-[12px] active:cursor-grabbing max-md:py-2 max-md:text-[13px] ${sang(`d:${d.id}`)} ${
         p.chon ? 'border-amber-400 bg-amber-50' : 'border-violet-200 bg-violet-50 hover:border-violet-400'}`}>
-      <span className="mt-px shrink-0 text-[10.5px] font-bold text-violet-500">{n.so}.{d.so}</span>
-      <span className="flex-1 leading-snug text-violet-950">
-        <MathText>{d.ten}</MathText>
-        {HIEN_KHOP_CU && d.dang_cu.length > 0 && <span title={'Dạng cũ gắn thẳng vào đây (câu tự về): ' + d.dang_cu.map((x) => x.ten).join(' · ')} className="ml-1 text-[10px] text-amber-600">📦{d.dang_cu.length}</span>}
+      {/* hàng 1: tên dạng bài (Thùy 05/11 — tên đọc liền một dòng, số liệu xuống hàng dưới) */}
+      <span className="flex items-start gap-1.5">
+        <span className="mt-px shrink-0 text-[10.5px] font-bold text-violet-500">{n.so}.{d.so}</span>
+        <span className="flex-1 leading-snug text-violet-950">
+          <MathText>{d.ten}</MathText>
+          {HIEN_KHOP_CU && d.dang_cu.length > 0 && <span title={'Dạng cũ gắn thẳng vào đây (câu tự về): ' + d.dang_cu.map((x) => x.ten).join(' · ')} className="ml-1 text-[10px] text-amber-600">📦{d.dang_cu.length}</span>}
+        </span>
       </span>
-      {d.so_cau > 0 && (
-        <button onClick={(e) => { e.stopPropagation(); moKho({ loai: 'dang_bai', id: d.id, ten: d.ten }) }} draggable={false}
-          title="Mở KHO: các câu thuộc dạng bài này" className="shrink-0 rounded bg-white px-1.5 text-[10.5px] font-semibold text-violet-700 ring-1 ring-violet-200 hover:bg-violet-100">📚 {d.so_cau}</button>
-      )}
-      <BadgeLop d={d} />
-      <DauTienDo moTa={!!d.mo_ta.trim()} noiDung={d.co_ly_thuyet} nhanNoiDung="lý thuyết" noiDung2={d.co_vi_du} nhanNoiDung2="ví dụ" lop={tinhNangBdm().khoLop ? soLop : undefined} />
+      {/* hàng 2: kho câu · kho trên lớp · chấm tiến độ */}
+      <span className="flex items-center gap-1.5">
+        {d.so_cau > 0 && (
+          <button onClick={(e) => { e.stopPropagation(); moKho({ loai: 'dang_bai', id: d.id, ten: d.ten }) }} draggable={false}
+            title="Mở KHO: các câu thuộc dạng bài này" className="shrink-0 rounded bg-white px-1.5 text-[10.5px] font-semibold text-violet-700 ring-1 ring-violet-200 hover:bg-violet-100">📚 {d.so_cau}</button>
+        )}
+        <BadgeLop d={d} />
+        <span className="ml-auto"><DauTienDo moTa={!!d.mo_ta.trim()} noiDung={d.co_ly_thuyet} nhanNoiDung="lý thuyết" noiDung2={d.co_vi_du} nhanNoiDung2="ví dụ" lop={tinhNangBdm().khoLop ? soLop : undefined} /></span>
+      </span>
     </div>
   )
 }
@@ -776,7 +787,7 @@ function NutChuyenDang({ huong, onBam }: { huong: 'truoc' | 'sau'; onBam: (() =>
 // Dạng bài có chấm thứ 4 = KHO TRÊN LỚP (Thùy 27/10 "mỗi dạng bài sẽ có 4 dấu chấm tròn thay vì 3").
 function DauTienDo({ moTa, noiDung, nhanNoiDung, noiDung2, nhanNoiDung2, lop }: { moTa: boolean; noiDung: boolean; nhanNoiDung: string; noiDung2?: boolean; nhanNoiDung2?: string; lop?: number }) {
   return (
-    <span className="flex shrink-0 gap-0.5 pt-1">
+    <span className="flex shrink-0 gap-0.5">
       <span title={moTa ? 'Đã có mô tả' : 'Chưa có mô tả'} className={`h-2 w-2 rounded-full ${moTa ? 'bg-emerald-400' : 'bg-slate-300'}`} />
       <span title={noiDung ? `Đã có ${nhanNoiDung}` : `Chưa có ${nhanNoiDung}`} className={`h-2 w-2 rounded-full ${noiDung ? 'bg-sky-400' : 'bg-slate-300'}`} />
       {nhanNoiDung2 && <span title={noiDung2 ? `Đã có ${nhanNoiDung2}` : `Chưa có ${nhanNoiDung2}`} className={`h-2 w-2 rounded-full ${noiDung2 ? 'bg-violet-400' : 'bg-slate-300'}`} />}
