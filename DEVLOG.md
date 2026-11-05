@@ -78999,3 +78999,8 @@ Thùy nêu 4 việc, làm được 3:
 - **Làm:** `ban-do-moi/gop-so-nguyen-0511.mjs` (1 transaction, chạy thử rollback trước). Nhóm 1+2 + dạng 4.4 → NNB01622 "Các tính chất cơ bản của số nguyên"; 1.1+1.2+4.4 → NDB01286 "Tính chất cơ bản của số nguyên"; 2.1+2.2 → NDB01288 "Số đối" (chuyển sang nhóm NNB01622); 4.1+4.2 → NDB01294 "Tập hợp của số nguyên". Mô tả/LT/VD ghép từ nội dung cũ (PP có nhãn theo dạng cũ).
 - **Chuyển tham chiếu sang mã giữ lại:** gán câu 21 · câu trên lớp 12 · bai_test_cau 6 · tu_luyen_dang_lan 6 · gami_session_problems 8. Gán sau: 1286=19, 1288=14, 1294=18 (khớp tổng trước). Xoá: 4 dạng (NDB01287/89/95/97) + nhóm NNB01623 + 13 phần giáo trình (3 tài liệu buổi 26 lớp 6S1; phần Số đối chuyển cha sang nhóm mới). Thùy gật 05/11.
 - **Bài học:** gộp dạng/nhóm đụng ≥8 bảng không FK (giáo trình `tai_lieu_phan.ref_ma`, đo `ma_dang`) — phải quét MỌI cột text trước, chuyển rồi mới xoá; chưa có RPC gộp dạng. Kiểm "nhóm rỗng" phải đặt SAU lúc xoá dạng cuối.
+
+## 5/11 — Luật duyệt kho thành trigger DB (mọi khối)
+- Thùy: "các câu đưa vào kho vẫn chưa duyệt… sửa luôn luật mọi khối". Nguyên nhân: luật "cao ⇒ tự duyệt" (04/11) là SCRIPT phải nhớ chạy sau B3; K10 (28/10 + lượt sau) quên ⇒ 1.072 câu Đại gán nguon ai chưa duyệt.
+- Làm: mig `202611051930_tu_duyet_khi_gan_ai.sql` (đã áp bằng --only; lần 1 deadlock do phiên khác ghi, lần 2 OK): hàm `_bdm_du_dap_an`, `_bdm_tu_duyet_sau_gan` + 4 trigger (dai/hgt gan_cau, kho_ds). Thử trigger trong ROLLBACK: gán nguon ai ⇒ da_duyet=true. Vá tồn: `duyet-cao-moi-khoi.mjs --ghi` 1.072 Đại / 0 hgt. Ghi vào CLAUDE.md §7 + memory.
+- Chưa phủ: Hình–Học (`hinh_hoc_*`), ví dụ lớp `dai_cau_lop`, và câu K10 Hàm số CHƯA gán dạng (chưa phân lại).

@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-496 bảng · 38 view · 0 enum · 275 trigger · 1618 function
+496 bảng · 38 view · 0 enum · 279 trigger · 1620 function
 
 ## _app_secrets
 
@@ -9329,7 +9329,9 @@ WITH luot AS (
 | dai_bdm_doi_ung_cum | trg_bdm_doi_ung_cum_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_gan_cau | trg_bdm_gan_cau_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_gan_cau | trg_dai_bdm_gan_cau_cam_ds | BEFORE | INSERT | _bdm_cam_dung_sai |
+| dai_bdm_gan_cau | trg_dai_bdm_gan_cau_tu_duyet | AFTER | INSERT/UPDATE | _bdm_tu_duyet_sau_gan |
 | dai_bdm_kho_ds | trg_dai_bdm_kho_ds_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
+| dai_bdm_kho_ds | trg_dai_bdm_kho_ds_tu_duyet | AFTER | INSERT/UPDATE | _bdm_tu_duyet_sau_gan |
 | dai_bdm_nhom | trg_bdm_nhom_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_nhom | trg_bdm_nhom_thu_tu | BEFORE | INSERT | _bdm_thu_tu |
 | dai_bdm_nhom | trg_bdm_nhom_tien_de_cung_o | AFTER | UPDATE | _bdm_tien_de_cung_o |
@@ -9374,7 +9376,9 @@ WITH luot AS (
 | hgt_bdm_de_xuat | trg_hgt_bdm_de_xuat_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | hgt_bdm_gan_cau | trg_hgt_bdm_gan_cau_cam_ds | BEFORE | INSERT | _bdm_cam_dung_sai |
 | hgt_bdm_gan_cau | trg_hgt_bdm_gan_cau_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
+| hgt_bdm_gan_cau | trg_hgt_bdm_gan_cau_tu_duyet | AFTER | INSERT/UPDATE | _bdm_tu_duyet_sau_gan |
 | hgt_bdm_kho_ds | trg_hgt_bdm_kho_ds_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
+| hgt_bdm_kho_ds | trg_hgt_bdm_kho_ds_tu_duyet | AFTER | INSERT/UPDATE | _bdm_tu_duyet_sau_gan |
 | hgt_cau_form_tn | hgt_cau_form_tn_kiem | BEFORE | INSERT/UPDATE | hgt_cau_form_tn_kiem |
 | hgt_cau_hoi | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | hgt_cau_hoi | trg_de_thi_dien_dang | AFTER | UPDATE | _trg_de_thi_dien_dang |
@@ -9563,6 +9567,7 @@ WITH luot AS (
 - `_bdm_dang_cu_mot_dich(p_ma_dang_cu text)` → text
 - `_bdm_dang_o_khoi_moi(p_kho text, p_dang text)` → boolean
 - `_bdm_ds_khoi_chay()` → text[]
+- `_bdm_du_dap_an(p_loai text, p_dap_an text, p_menh_de jsonb, p_loi_giai text)` → boolean
 - `_bdm_duyet_duoc(p_khoi text, p_chu_de text)` → boolean
 - `_bdm_ghi_log()` → trigger
 - `_bdm_kho_cua_cau(p_ma_cau text)` → text
@@ -9577,6 +9582,7 @@ WITH luot AS (
 - `_bdm_tien_de_cung_o()` → trigger
 - `_bdm_tien_de_kiem()` → trigger
 - `_bdm_touch()` → trigger
+- `_bdm_tu_duyet_sau_gan()` → trigger
 - `_bdm_xoa_cac_nhom(p_nhom text[])` → jsonb
 - `_bl_bo_dau(p text)` → text
 - `_bl_kiem(p text)` → jsonb
@@ -11141,8 +11147,8 @@ WITH luot AS (
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
