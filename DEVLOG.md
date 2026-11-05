@@ -78834,3 +78834,7 @@ Thùy nêu 4 việc, làm được 3:
 - **Kiểm mù Opus theo chương:** mỗi chương 1 dich riêng (372/88/156/48/48 KB), mẫu cao ổn định md5: HS 30 · NHTP 20 · VT 15 · XS 15 · SDT 15 = 95 câu ⇒ **trùng 95/95** (Opus hạ vài câu xuống "vừa" vì đề lỗi, dạng vẫn trùng). Chấp nhận.
 - **Ghi (`khop-lai-hang --ghi`):** cao 812 → `dai_bdm_gan_cau` (nguon ai) · vừa 240 → `de_xuat` · trống 71 → `cau_thieu_dang` (Oxyz/HGT, lớp 10–11, thiếu dạng). Rồi `duyet-cao-moi-khoi.mjs --ghi`: **681 câu duyệt**; 131 câu cao chưa duyệt (thiếu đáp án). Phân bố cao theo chương: HS 232 · NHTP 268 · VT 268 · XS 21 · SDT 23.
 - **Cho Thùy:** 240 vừa + 71 trống; NDB00751/752 mô tả đảo; thiếu dạng đổi biến + hàm ẩn; Vectơ nhận 268 câu cao — đáng soi mẫu bằng mắt (nhiều câu lực/vận tốc, Oxyz thuần).
+
+## 05/11 — Hiệu suất TA: 1 gậy trừ 50 (thay 15)
+- Thùy: gậy trừ quá ít ⇒ hiệu suất quá cao. Mig 202611051457: `_hsta_tru_moi_gay()` 15 → 50 (gậy không phải Chậm deadline). Gậy Chậm deadline giữ thang −10…−40. hsta_chot rỗng ⇒ tháng 10 tự tính lại.
+- Kiểm "gậy đã trừ chưa": công thức đúng 100% task có gậy đã vào sổ (0 lệch). NHƯNG T10 chỉ 19 gậy rơi vào task BTVN/ET; 203 gậy Chậm deadline còn ĐỀ XUẤT chờ chốt (không trừ); 27 gậy vào sổ gắn Đánh giá/ingame (ngoài BTVN/ET ⇒ không vào hiệu suất).
