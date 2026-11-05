@@ -12,7 +12,7 @@ bạn phân câu ─┬─ CHẮC        → "cao"   : TỰ GÁN, không chờ a
 ```
 **Đưa bài tập MỚI vào kho (Thùy 04/11):** người mở phiên đưa tài liệu / dán đề ⇒ bạn chép từng bài thành câu, giải
 (nếu tài liệu chưa có lời giải), rồi `them_cau` — câu vào dạng chờ của khối, **chưa duyệt**, kèm `phan` để xếp luôn vào dạng
-theo đúng luật cao / vua / thieu bên dưới. Câu trùng câu đã có trong kho thì DB không thêm, trả mã cũ. **Không có lệnh xoá.**
+theo đúng luật cao / vua / thieu bên dưới. Câu trùng câu đã có trong kho thì DB không thêm, trả mã cũ.
 Câu có hình mà bạn không xem được hình ⇒ ghi rõ trong đề "[có hình — chưa đưa hình]" và không "cao".
 
 **Ai mở phiên:** trưởng khối trở lên của đúng khối (người có Phòng làm việc).
@@ -51,7 +51,8 @@ node scripts/phien/ban-do.mjs sua '{"loai":"dang_bai","id":"...","mo_ta":"..."}'
 - Lời giải viết theo đúng định dạng kho (`kho-rules/` của khối nếu có) — đề và lời giải liền dòng, công thức trong `$…$`.
 - Mỗi lô ≤ 50 câu (`them_cau` ≤ 20). Câu lỗi không kéo cả lô; đọc kết quả từng câu.
 - Chỉ phân **câu gốc** (bản sao tự đi theo), không phân câu Đúng/Sai, chỉ câu của đúng khối — DB tự chặn.
-- Câu **NGƯỜI đã quyết** (gán tay / đã kiểm mẫu) DB không cho đổi — đúng như thế, đừng tìm cách vòng.
+- Câu **NGƯỜI đã quyết** (gán tay / đã kiểm mẫu): mặc định DB không cho đổi. Chỉ khi người mở phiên BẢO đổi câu đó ⇒ thêm
+  `"ghi_de": true` vào đúng câu đó trong `phan_dang`. Không tự thêm cờ này cho cả lô.
 - Câu Đại phân vào chủ đề vùng `toan`; câu Hình giải tích (nhánh `hgt`) vào chủ đề vùng `hgt`.
 - **Phiên KHTN** (05/11): kho `khtn`, bản đồ KHTN không chia vùng — `them_cau` dùng `"nhanh":"khtn"` (bỏ trống cũng được),
   dạng bài mã `KDB…`, chủ đề mã của bản đồ KHTN. Câu Toán không phân được trong phiên KHTN và ngược lại (DB chặn).

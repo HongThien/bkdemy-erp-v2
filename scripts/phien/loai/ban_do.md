@@ -25,8 +25,10 @@ node scripts/phien/ban-do.mjs tro-giup            # đủ cú pháp các lệnh 
 node scripts/phien/ban-do.mjs them_nhom '{"chu_de_id":"NCD00012","chuyen_de_id":"NCH00034","ten":"...","mo_ta":"..."}'
 ```
 Lệnh ghi: `them_chu_de` · `them_chuyen_de` · `them_nhom` · `them_dang_bai` · `sua` (tên, mô tả) · `chuyen_nhom` ·
-`chuyen_dang_bai` · `sap_xep`. **Không có lệnh xoá**: thấy cần xoá/gộp thì đề xuất, trưởng khối tự xoá trên màn
-Bản đồ mới (gộp = chuyển hết con sang nút còn lại bằng lệnh chuyển, rồi đề xuất xoá nút rỗng).
+`chuyen_dang_bai` · `sap_xep` · **xoá** `xoa_chu_de '{"id":..}'` · `xoa_chuyen_de '{"chu_de_id":..,"chuyen_de_id":..}'` ·
+`xoa_nhom '{"id":..}'` · `xoa_dang_bai '{"id":..}'` (Thùy 05/11). Xoá: liệt kê sẽ mất gì, chờ người mở phiên gật rồi mới chạy.
+Nút còn câu đã gán thì DB báo số câu — chuyển câu đi (`phan_dang`) trước. Gộp = chuyển hết con sang nút còn lại rồi xoá nút rỗng.
+Ghi lý thuyết (`ghi_noi_dung`) và lệnh kho cũng dùng được ngay trong phiên này.
 JSON để trong **dấu nháy đơn**. Mỗi lệnh ghi một thay đổi; nhiều thay đổi thì chạy nhiều lệnh.
 
 ## Hai tình huống hay gặp

@@ -5,7 +5,8 @@
 // `node scripts/phien/ban-do.mjs …`. Script này KHÔNG nhận mã phiên từ tham số — chỉ từ PHIEN_ID —
 // nên Claude không trỏ được sang phiên/khối khác. Mọi lệnh đi qua RPC fn_phien_bd_* (chỉ service_role):
 // DB tự kiểm phiên đang mở, đóng vai người mở phiên, kiểm lại quyền trưởng khối, nút thuộc đúng khối.
-// KHÔNG có lệnh xoá — cần xoá thì đề xuất để trưởng khối xoá tay trên màn Bản đồ mới (Luật xoá).
+// XOÁ (05/11, Thùy: trưởng khối đủ quyền): xoa_chu_de '{"id":..}' · xoa_chuyen_de '{"chu_de_id":..,"chuyen_de_id":..}' ·
+// xoa_nhom '{"id":..}' · xoa_dang_bai '{"id":..}' — chỉ chạy sau khi người mở phiên gật trong chat.
 //
 // Cách dùng (Claude gọi):
 //   node scripts/phien/ban-do.mjs xem                    cây bản đồ của khối (mã + tên + mô tả + số câu)
@@ -37,14 +38,14 @@
 //    {"ma_cau":"...","ket_qua":"thieu","ly_do":"câu hỏi ... mà bản đồ chưa có dạng","chu_de_id":"NCD... (tuỳ chọn)"}]
 //   HET
 //     cao = CHẮC ⇒ tự gán (hậu kiểm mẫu ~10%) · vua = chưa chắc ⇒ trưởng khối duyệt · thieu = bản đồ thiếu dạng.
-//     Câu NGƯỜI đã quyết thì DB từ chối. Câu lỗi không kéo cả lô — kết quả trả từng câu.
+//     Câu NGƯỜI đã quyết thì DB từ chối — trừ khi người mở phiên bảo đổi: thêm "ghi_de": true vào câu đó. Câu lỗi không kéo cả lô.
 //   node scripts/phien/ban-do.mjs them_cau <<'HET'                             đưa ≤ 20 BÀI TẬP MỚI vào kho (04/11):
 //   [{"nhanh":"dai","loai_cau":"tu_luan","noi_dung":"...","loi_giai":"...","dap_an":"...","ten_de_goc":"tên tài liệu",
 //     "phan":{"ket_qua":"cao","dang_bai_id":"NDB..."}},
 //    {"nhanh":"hgt","loai_cau":"trac_nghiem","noi_dung":"...","lua_chon":["A","B","C","D"],"dap_an":"B","phan":{"ket_qua":"thieu","ly_do":"..."}}]
 //   HET
 //     nhanh dai | hgt · loai_cau trac_nghiem | tra_loi_ngan | tu_luan | dung_sai (Đ/S không kèm phan). Câu trùng kho ⇒ KHÔNG thêm, trả mã cũ.
-//     Câu vào dạng chờ của khối, chưa duyệt. `phan` (tuỳ chọn) = xếp luôn, cùng luật phan_dang. Không có lệnh xoá.
+//     Câu vào dạng chờ của khối, chưa duyệt. `phan` (tuỳ chọn) = xếp luôn, cùng luật phan_dang.
 // ============================================================================
 import { readFileSync } from 'node:fs'
 import { join, dirname } from 'node:path'
