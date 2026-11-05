@@ -7,7 +7,7 @@ import {
   listKyHoc, themKyHoc, xemBcKy, getBcKyNhap, luuBcKyNhap, congBoBcKy, moLaiBcKy,
   BC_KY_NHAP_TRONG, type KyHoc, type BcKyData, type BcKyNhap, type BcKyDonVi, type BcKyChuDe, type BcKyGoiY,
 } from '../../lib/baoCaoKy'
-import { SoLieuKy } from './SoLieuKy'
+import { SoLieuKy, PhuLucKy } from './SoLieuKy'
 import { useDanhMucNx, NhapNhanXet, NhapKeHoach, dungNhanXetChon, dungKeHoachChon, mucNhoDangDung, NHAN_MUC, MAU_MUC } from './ThangNhanXet'
 
 const pctCls = (p: number | null) => p == null ? 'text-slate-400' : p >= 80 ? 'text-emerald-700' : p >= 50 ? 'text-amber-700' : 'text-rose-700'
@@ -66,6 +66,7 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
   const [loi, setLoi] = useState<string | null>(null)
   const [moSoLieu, setMoSoLieuS] = useState(NHO_KY.moSoLieu)
   const [xemPH, setXemPH] = useState(false)
+  const [xemPL, setXemPL] = useState(false)
   const dm = useDanhMucNx()
   const setMoSoLieu = (v: boolean) => { NHO_KY.moSoLieu = v; setMoSoLieuS(v) }
   useEffect(() => {
@@ -76,12 +77,12 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
   }, [hsId, mon, kyId])
   if (loading) return <p className="text-sm text-slate-500">Đang tính báo cáo kì…</p>
   if (loi || !data) return <p className="rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700">{loi ?? 'Không tải được báo cáo.'}</p>
-  const cao = 'h-[calc(100vh-150px)]'
+  const cao = 'h-[calc(100vh-170px)]'
   return (
     <div className="flex items-start gap-3">
       <div className="@container min-w-0 flex-1">
         <NhapKy d={data} hsId={hsId} mon={mon} kyId={kyId} nhap={nhap} congBoAt={congBoAt} goiY={data.goi_y}
-          moSoLieu={moSoLieu} onMoSoLieu={() => setMoSoLieu(!moSoLieu)} onXemPH={() => setXemPH(true)}
+          moSoLieu={moSoLieu} onMoSoLieu={() => setMoSoLieu(!moSoLieu)} onXemPH={() => setXemPH(true)} onXemPL={() => setXemPL(true)}
           // vá tại chỗ (không tính lại cả báo cáo): bản gửi PH đọc ngay phần vừa nhập
           onDaLuu={(n) => {
             setNhap(n)
@@ -96,15 +97,34 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
         ? <aside className={`sticky top-0 ${cao} w-[44%] max-w-[720px] shrink-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm`}>
             <div className="flex items-center gap-2 border-b border-slate-200 bg-slate-50 px-4 py-2">
               <span className="text-[13px] font-bold text-slate-700">📊 Số liệu học sinh</span>
-              <button onClick={() => setXemPH(true)} className="ml-auto rounded-md px-2 py-1 text-[12px] font-semibold text-indigo-600 hover:bg-indigo-50">📱 Xem bản gửi PH</button>
+              <button onClick={() => setXemPL(true)} className="ml-auto rounded-md px-2 py-1 text-[12px] font-semibold text-amber-700 hover:bg-amber-50">🏆 Phụ lục điểm thi</button>
+              <button onClick={() => setXemPH(true)} className="rounded-md px-2 py-1 text-[12px] font-semibold text-indigo-600 hover:bg-indigo-50">📱 Bản gửi PH</button>
               <button onClick={() => setMoSoLieu(false)} className="rounded-md px-2 py-1 text-[12px] font-semibold text-slate-500 hover:bg-slate-200" title="Ẩn số liệu">Ẩn ▸</button>
             </div>
             <div className="h-[calc(100%-41px)] overflow-y-auto px-4 py-3"><SoLieuKy d={data} /></div>
           </aside>
-        : <button onClick={() => setMoSoLieu(true)} title="Xem số liệu học sinh"
-            className={`sticky top-0 ${cao} w-9 shrink-0 rounded-xl border border-indigo-200 bg-indigo-50 text-[12.5px] font-bold tracking-wide text-indigo-700 [writing-mode:vertical-rl] hover:bg-indigo-100`}>
-            ◂ 📊 Số liệu học sinh
-          </button>}
+        : <div className={`sticky top-0 ${cao} flex w-9 shrink-0 flex-col gap-2`}>
+            <button onClick={() => setMoSoLieu(true)} title="Xem số liệu học sinh"
+              className="min-h-0 flex-[3] rounded-xl border border-indigo-200 bg-indigo-50 text-[12.5px] font-bold tracking-wide text-indigo-700 [writing-mode:vertical-rl] hover:bg-indigo-100">
+              ◂ 📊 Số liệu học sinh
+            </button>
+            <button onClick={() => setXemPL(true)} title="Phụ lục điểm thi toàn khối (popup)"
+              className="min-h-0 flex-[2] rounded-xl border border-amber-200 bg-amber-50 text-[12.5px] font-bold tracking-wide text-amber-700 [writing-mode:vertical-rl] hover:bg-amber-100">
+              🏆 Phụ lục điểm thi
+            </button>
+          </div>}
+      {xemPL && (
+        <div className="fixed inset-0 z-50 flex justify-center bg-slate-900/50 px-4 pb-6 pt-14" onClick={() => setXemPL(false)}>
+          <div className="flex max-h-full w-full max-w-6xl flex-col rounded-2xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-3 border-b border-slate-200 px-5 py-3">
+              <h2 className="text-[16px] font-bold text-slate-800">🏆 Phụ lục điểm thi — {data.mon} khối {data.lop.khoi ?? ''} · {data.ky.ten}</h2>
+              <span className="text-[12px] text-slate-500">đang xem: <b className="text-indigo-700">{data.hs.ho_ten}</b></span>
+              <button onClick={() => setXemPL(false)} className="ml-auto rounded-md px-3 py-1 text-[13px] text-slate-500 hover:bg-slate-100">Đóng ✕</button>
+            </div>
+            <div className="min-h-0 flex-1 overflow-auto px-5 py-3"><PhuLucKy d={data} /></div>
+          </div>
+        </div>
+      )}
       {xemPH && (
         <div className="fixed inset-0 z-50 flex justify-center overflow-y-auto bg-slate-900/50 px-4 pb-6 pt-14" onClick={() => setXemPH(false)}>
           <div className="h-fit w-full max-w-[520px]" onClick={(e) => e.stopPropagation()}>
@@ -120,9 +140,9 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
   )
 }
 
-function NhapKy({ d: bc, hsId, mon, kyId, nhap, congBoAt, goiY, moSoLieu, onMoSoLieu, onXemPH, onDaLuu, onCongBo, onMoLai }: {
+function NhapKy({ d: bc, hsId, mon, kyId, nhap, congBoAt, goiY, moSoLieu, onMoSoLieu, onXemPH, onXemPL, onDaLuu, onCongBo, onMoLai }: {
   d: BcKyData; hsId: string; mon: string; kyId: string; nhap: BcKyNhap; congBoAt: string | null; goiY?: BcKyGoiY
-  moSoLieu: boolean; onMoSoLieu: () => void; onXemPH: () => void
+  moSoLieu: boolean; onMoSoLieu: () => void; onXemPH: () => void; onXemPL: () => void
   onDaLuu: (n: BcKyNhap) => void; onCongBo: () => Promise<void>; onMoLai: () => Promise<void>
 }) {
   const dm = useDanhMucNx()
@@ -170,7 +190,10 @@ function NhapKy({ d: bc, hsId, mon, kyId, nhap, congBoAt, goiY, moSoLieu, onMoSo
       <div className={`${the} flex flex-wrap items-center gap-x-5 gap-y-2 px-4 py-3`}>
         <div className="min-w-0">
           <div className="truncate text-[17px] font-bold text-slate-800">{bc.hs.ho_ten}</div>
-          <div className="text-[12px] text-slate-500">{bc.mon}{bc.lop.khoi ? ` ${bc.lop.khoi}` : ''} · {bc.lop.ten ?? '—'} · {bc.ky.ten}</div>
+          <div className="text-[12px] text-slate-500">{bc.mon}{bc.lop.khoi ? ` ${bc.lop.khoi}` : ''} · {bc.lop.ten ?? '—'} · {bc.ky.ten}
+            {' · '}{bc.so_lieu_chot_at
+              ? <span className="text-emerald-700" title="Số liệu đã chốt — không tính lại">📌 số liệu chốt {new Date(bc.so_lieu_chot_at).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}</span>
+              : <span className="text-amber-600" title="Chưa chốt — số liệu đang tính trực tiếp">số liệu chưa chốt</span>}</div>
         </div>
         {khoa
           ? <span className="rounded-md bg-emerald-50 px-2 py-1 text-[11.5px] font-semibold text-emerald-700">✓ Đã công bố {new Date(congBoAt!).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}</span>
@@ -191,6 +214,7 @@ function NhapKy({ d: bc, hsId, mon, kyId, nhap, congBoAt, goiY, moSoLieu, onMoSo
         <div className="ml-auto flex items-center gap-2">
           {saved && <span className="text-[11.5px] text-emerald-600">Đã lưu</span>}
           {!khoa && conThieu > 0 && <span className="text-[12px] text-amber-600">còn {conThieu} mục chưa chọn</span>}
+          <button onClick={onXemPL} className="rounded-lg px-2.5 py-1.5 text-[12.5px] font-semibold text-amber-700 hover:bg-amber-50" title="Phụ lục điểm thi toàn khối, lọc theo lớp">🏆 Phụ lục</button>
           <button onClick={onXemPH} className="rounded-lg px-2.5 py-1.5 text-[12.5px] font-semibold text-indigo-600 hover:bg-indigo-50" title="Bản 1 cột gửi phụ huynh">📱 Bản gửi PH</button>
           {!moSoLieu && <button onClick={onMoSoLieu} className="rounded-lg px-2.5 py-1.5 text-[12.5px] font-semibold text-slate-600 hover:bg-slate-100">📊 Số liệu</button>}
           {khoa

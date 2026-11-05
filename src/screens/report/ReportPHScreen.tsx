@@ -11,7 +11,7 @@ import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, getKhoiRan
 import { tenHienThiDs } from '../../lib/hoten'
 import { ChonKy, BaoCaoKyBody } from './BaoCaoKy'
 import { NutThangNhanXet } from './ThangNhanXet'
-import { congBoLopBcKy, listBcKyTrangThai } from '../../lib/baoCaoKy'
+import { congBoLopBcKy, listBcKyTrangThai, chotSoLieuBcKy, laAdminBcKy } from '../../lib/baoCaoKy'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
 const curYM = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` }
@@ -64,6 +64,25 @@ export default function ReportPHScreen() {
   const [kyId, setKyId] = useState<string | null>(null)
   const [ttKy, setTtKy] = useState<Record<string, 'cong_bo' | 'nhap'>>({})
   const [kyBusy, setKyBusy] = useState(false)
+  // Chốt số liệu kì (Thùy 05/11: snap 1 lần, không tính lại) — chỉ admin; từng em 1 lời gọi (tránh trần thời gian của API)
+  const [laAdmin, setLaAdmin] = useState(false)
+  const [chotTd, setChotTd] = useState<{ xong: number; tong: number; loi: number } | null>(null)
+  const [phienKy, setPhienKy] = useState(0)
+  useEffect(() => { laAdminBcKy().then(setLaAdmin) }, [])
+  async function chotSoLieuLop() {
+    if (!kyId || !roster.length) return
+    const lopTen = lopOpts.find((o) => o.id === lopId)?.label ?? ''
+    if (!confirm(`Chốt số liệu báo cáo kì cho lớp ${lopTen} (${roster.length} em)?
+Số liệu tính lúc này sẽ được giữ cố định, không tính lại nữa. Em đã chốt trước đó sẽ được chốt lại (bản cũ vẫn lưu trong lịch sử).`)) return
+    let loi = 0
+    for (let i = 0; i < roster.length; i++) {
+      setChotTd({ xong: i, tong: roster.length, loi })
+      try { await chotSoLieuBcKy(roster[i].id, mon, kyId) } catch { loi++ }
+    }
+    setChotTd({ xong: roster.length, tong: roster.length, loi })
+    setPhienKy((x) => x + 1)   // em đang mở đọc lại bản vừa chốt
+    setTimeout(() => setChotTd(null), 4000)
+  }
   useEffect(() => {
     setTtKy({})
     if (cheDo !== 'ky' || !kyId || !roster.length) return
@@ -148,7 +167,7 @@ export default function ReportPHScreen() {
           <span className="min-w-[92px] text-center text-[13px] font-semibold tabular-nums text-slate-700">Tháng {Number(mm)}/{yy}</span>
           <button onClick={() => setYm(shiftYM(ym, +1))} className="h-7 rounded-r-md px-2 text-slate-500 hover:bg-slate-100" title="Tháng sau">›</button>
         </div></>}
-        {cheDo === 'ky' && roster.length > 0 && kyId && <button disabled={kyBusy} onClick={() => void congBoLopKy()} title="Công bố báo cáo học kì cho cả lớp (chụp số liệu ở DB)" className="ml-auto rounded-md bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-50">✓ Công bố cả lớp ({roster.length})</button>}
+        {cheDo === 'ky' && roster.length > 0 && kyId && <button disabled={kyBusy} onClick={() => void congBoLopKy()} title="Công bố báo cáo học kì cho cả lớp (chụp số liệu ở DB)" className={`ml-auto rounded-md bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-50`}>✓ Công bố cả lớp ({roster.length})</button>}
         {cheDo === 'thang' && roster.length > 0 && <button disabled={!!bulk?.running} onClick={() => void bulkCongBoLop()} title="Chụp ảnh + công bố báo cáo cho cả lớp" className="ml-auto rounded-md bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-50">✓ Chốt cả lớp ({roster.length})</button>}
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-6">
@@ -159,7 +178,13 @@ export default function ReportPHScreen() {
             {/* CỘT TRÁI: danh sách cả lớp, click chọn thẳng — giống "Kết quả học tập" */}
             <aside className="w-56 shrink-0">
               <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-                <div className="border-b border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-slate-500">{roster.length} học sinh</div>
+                <div className="flex items-center border-b border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-slate-500">{roster.length} học sinh
+                  {cheDo === 'ky' && roster.length > 0 && kyId && laAdmin && (
+                    <button disabled={!!chotTd && chotTd.xong < chotTd.tong} onClick={() => void chotSoLieuLop()} title="Giữ cố định số liệu kì của cả lớp — không tính lại nữa (chỉ admin)"
+                      className="ml-auto rounded px-1.5 py-0.5 text-[11px] font-semibold normal-case tracking-normal text-slate-600 hover:bg-white disabled:opacity-60">
+                      {chotTd ? (chotTd.xong < chotTd.tong ? `Đang chốt ${chotTd.xong}/${chotTd.tong}…` : `✓ Đã chốt ${chotTd.tong - chotTd.loi}/${chotTd.tong}${chotTd.loi ? ` · ${chotTd.loi} lỗi` : ''}`) : '📌 Chốt số liệu'}
+                    </button>)}
+                </div>
                 <div className="max-h-[75vh] overflow-auto">
                   {(() => { const tenHT = tenHienThiDs(roster.map((r) => r.ho_ten)); return roster.map((r, i) => (
                     <button key={r.id} onClick={() => setHsId(r.id)} title={r.ho_ten}
@@ -180,7 +205,7 @@ export default function ReportPHScreen() {
               {!hs ? (
                 <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn học sinh ở cột trái để xem report.</div>
               ) : cheDo === 'ky' ? (
-                kyId ? <BaoCaoKyBody key={hs.id + mon + kyId} hsId={hs.id} mon={mon} kyId={kyId} onTrangThai={(id, tt) => setTtKy((m) => ({ ...m, [id]: tt }))} />
+                kyId ? <BaoCaoKyBody key={hs.id + mon + kyId + phienKy} hsId={hs.id} mon={mon} kyId={kyId} onTrangThai={(id, tt) => setTtKy((m) => ({ ...m, [id]: tt }))} />
                   : <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chưa có kì nào — admin bấm "＋ Kì" để tạo kì (tên, từ tháng → đến tháng).</div>
               ) : <ReportBody key={hs.id + mon + ym} hsId={hs.id} mon={mon} ym={ym} lopId={lopId} hsName={hs.ho_ten} hsImg={hs.anh_url} lopTen={lopOpts.find((o) => o.id === lopId)?.label ?? ''} />}
             </div>

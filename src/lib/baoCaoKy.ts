@@ -12,6 +12,7 @@ export type BcKyLanThi = { loai: 'mt_sat_hach' | 'khao_sat_thang'; nhan: string;
 // Khuôn jsonb của fn_bc_ky_tinh (phiên bản 2, mig 202611041727 — 5 phần) = cũng là snapshot lúc công bố (tự đủ để dựng app PH / PDF).
 export type BcKyData = {
   phien_ban: number; tinh_luc: string; cong_bo_at?: string
+  so_lieu_chot_at?: string   // có ⇒ số liệu đọc bản CHỐT (mig 202611051704), không tính lại
   hs: { id: string; ho_ten: string; ma_hs: string | null }
   lop: { id: string | null; ten: string | null; khoi: string | null }
   mon: string; gv: string | null
@@ -78,6 +79,12 @@ export async function congBoBcKy(hsId: string, mon: string, kyId: string): Promi
 export async function moLaiBcKy(hsId: string, mon: string, kyId: string): Promise<void> {
   const { error } = await supabase.rpc('fn_bc_ky_mo_lai', { p_hs: hsId, p_mon: mon, p_ky: kyId })
   if (error) throw error
+}
+// Chốt số liệu 1 em (chỉ admin — DB chặn người khác). Đã chốt thì ghi đè, bản cũ vào log.
+export async function chotSoLieuBcKy(hsId: string, mon: string, kyId: string): Promise<string> {
+  const { data, error } = await supabase.rpc('fn_bc_ky_chot_hs', { p_hs: hsId, p_mon: mon, p_ky: kyId })
+  if (error) throw error
+  return data as string
 }
 // Công bố cả lớp trong 1 transaction ở DB — chỉ em đã đủ điểm dự đoán + sai số + mọi mục nhận xét (_bc_ky_thieu).
 export async function congBoLopBcKy(lopId: string, mon: string, kyId: string): Promise<{ cong_bo: number; bo_qua: number }> {
