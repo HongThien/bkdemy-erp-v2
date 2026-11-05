@@ -79004,3 +79004,7 @@ Thùy nêu 4 việc, làm được 3:
 - Thùy: "các câu đưa vào kho vẫn chưa duyệt… sửa luôn luật mọi khối". Nguyên nhân: luật "cao ⇒ tự duyệt" (04/11) là SCRIPT phải nhớ chạy sau B3; K10 (28/10 + lượt sau) quên ⇒ 1.072 câu Đại gán nguon ai chưa duyệt.
 - Làm: mig `202611051930_tu_duyet_khi_gan_ai.sql` (đã áp bằng --only; lần 1 deadlock do phiên khác ghi, lần 2 OK): hàm `_bdm_du_dap_an`, `_bdm_tu_duyet_sau_gan` + 4 trigger (dai/hgt gan_cau, kho_ds). Thử trigger trong ROLLBACK: gán nguon ai ⇒ da_duyet=true. Vá tồn: `duyet-cao-moi-khoi.mjs --ghi` 1.072 Đại / 0 hgt. Ghi vào CLAUDE.md §7 + memory.
 - Chưa phủ: Hình–Học (`hinh_hoc_*`), ví dụ lớp `dai_cau_lop`, và câu K10 Hàm số CHƯA gán dạng (chưa phân lại).
+
+## 5/11 — Duyệt nốt câu Hàm số K10 đã phân dạng
+- Hàm số K10 (NCD00234): 1.078 câu đã gán dạng nguon ai; 1.072 đã duyệt (vá bằng script sau khi có trigger). 6 câu còn lại thiếu `dap_an` (lời giải có): đã đọc lời giải, điền đáp án + duyệt 4 câu (T…4265=B — file đáp án ghi D sai; T…7341=C; T…4980=27; T…7325=8). CÒN 2 câu KHÔNG duyệt: T…4939 (TN, đáp án đúng I(2;−1) KHÔNG có trong 4 phương án — đề sai) và T…1509 (thiếu hình đồ thị, không xác định được đáp án).
+- Bài học: Thùy bực vì phải hỏi lại — câu "đã phân dạng, tự tin cao" thì duyệt luôn, không dừng ở bước dò điều kiện đáp án rồi báo.
