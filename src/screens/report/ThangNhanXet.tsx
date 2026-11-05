@@ -66,11 +66,12 @@ export function NhapNhanXet({ dm, nx, goiY, khoa, onDoi }: {
     onDoi({ ...nx, [m.ma]: { muc_do: md, lc: lc?.ma ?? null } })
   }
   return (
-    <div className="space-y-3">
+    // mục to = 1 thẻ (header màu + thân trắng); khung cha có @container ⇒ ≥880px 4 cột (laptop 1366 vừa 1 màn), ≥640px 2 cột, hẹp 1 cột
+    <div className="grid items-start gap-3 @min-[640px]:grid-cols-2 @min-[880px]:grid-cols-4">
       {mucTo(dm).map((t) => (
-        <div key={t.ma}>
-          <div className="mb-1 text-[11.5px] font-bold uppercase tracking-wide text-indigo-700">{t.ten}</div>
-          <div className="space-y-2">
+        <div key={t.ma} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <div className="bg-indigo-600 px-3 py-2 text-[13px] font-bold text-white">{t.ten}</div>
+          <div className="space-y-2 p-2.5">
             {mucCon(dm, t.ma).map((m) => {
               const c = nx[m.ma], g = goiY?.muc?.[m.ma], mt = moTaGoiY(m, goiY)
               const ds = c && c.muc_do !== 'chua_du' ? dm.lc.filter((l) => l.muc_ma === m.ma && l.muc_do === c.muc_do) : []
@@ -85,11 +86,11 @@ export function NhapNhanXet({ dm, nx, goiY, khoa, onDoi }: {
                     )}
                   </div>
                   {mt && <div className="text-[11px] text-slate-500">{mt}</div>}
-                  <div className="mt-1.5 flex flex-wrap gap-1">
+                  <div className="mt-1.5 flex gap-1">
                     {(['tot', 'on', 'chua_tot', 'chua_du'] as MucDoChon[]).map((md) => (
                       <button key={md} disabled={khoa} onClick={() => chonMuc(m, md)}
-                        className={`rounded-md px-2 py-1 text-[12px] font-semibold ${c?.muc_do === md ? MAU_MUC[md] : 'bg-slate-100 text-slate-600 hover:bg-slate-200'} disabled:cursor-default`}>
-                        {md === 'chua_du' ? 'Chưa đủ QS' : NHAN_MUC[md]}
+                        title={NHAN_MUC[md]} className={`flex-auto whitespace-nowrap rounded-md px-1 py-1 text-[11.5px] font-semibold ${c?.muc_do === md ? MAU_MUC[md] : 'bg-slate-100 text-slate-600 hover:bg-slate-200'} disabled:cursor-default`}>
+                        {md === 'chua_du' ? 'Chưa QS' : NHAN_MUC[md]}
                       </button>
                     ))}
                   </div>
