@@ -78838,3 +78838,4 @@ Thùy nêu 4 việc, làm được 3:
 ## 05/11 — Hiệu suất TA: 1 gậy trừ 50 (thay 15)
 - Thùy: gậy trừ quá ít ⇒ hiệu suất quá cao. Mig 202611051457: `_hsta_tru_moi_gay()` 15 → 50 (gậy không phải Chậm deadline). Gậy Chậm deadline giữ thang −10…−40. hsta_chot rỗng ⇒ tháng 10 tự tính lại.
 - Kiểm "gậy đã trừ chưa": công thức đúng 100% task có gậy đã vào sổ (0 lệch). NHƯNG T10 chỉ 19 gậy rơi vào task BTVN/ET; 203 gậy Chậm deadline còn ĐỀ XUẤT chờ chốt (không trừ); 27 gậy vào sổ gắn Đánh giá/ingame (ngoài BTVN/ET ⇒ không vào hiệu suất).
+- Nối tiếp (Thùy "cũng trừ 50"): mig 202611051505 — gậy Chậm deadline cũng −50/gậy, bỏ thang theo giờ trễ (td = g_tre × _hsta_tru_moi_gay()). Verify T10: mọi task có gậy = 50; Khánh 79.5, Duy 89.8, Tùng 91.2.
