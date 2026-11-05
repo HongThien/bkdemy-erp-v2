@@ -1,0 +1,17 @@
+[
+{"ma_cau":"T11200000010228","dang_bai_id":"NDB02536","chac":"cao","ly_do":"Rút gọn tổng hiệu về AC trên lập phương rồi tính độ dài đường chéo mặt — đúng dạng độ dài tổng, hiệu trên hình đặc biệt."},
+{"ma_cau":"T11200000010229","dang_bai_id":"NDB02542","chac":"cao","ly_do":"Cho hình lập phương, tính tích vô hướng MN·AC' — đúng mô tả tích vô hướng trên hình khối."},
+{"ma_cau":"T11200000010233","dang_bai_id":"NDB02542","chac":"cao","ly_do":"Cho hình lập phương, tính tích vô hướng MN·AC' — đúng mô tả tích vô hướng trên hình khối."},
+{"ma_cau":"T11200000010235","dang_bai_id":"NDB02541","chac":"cao","ly_do":"Cho |a|, |b|, |a+b|, tính a·b bằng khai triển bình phương — đúng ví dụ dạng tích vô hướng khi biết độ dài."},
+{"ma_cau":"T11200000010239","dang_bai_id":"NDB02540","chac":"cao","ly_do":"Phân tích A'M theo AA', AB, AD rồi tính x+y+z — đúng dạng phân tích vectơ theo ba vectơ không đồng phẳng."},
+{"ma_cau":"T11200000010262","dang_bai_id":"NDB02543","chac":"cao","ly_do":"Tính cos góc giữa hai vectơ AI, SC trên hình chóp — đúng dạng góc giữa hai vectơ trên hình khối."},
+{"ma_cau":"T11200000010264","dang_bai_id":"NDB02542","chac":"cao","ly_do":"Cho lập phương, tính tích vô hướng AC·MN — dạng tích vô hướng trên hình khối."},
+{"ma_cau":"T11200000010266","dang_bai_id":"NDB02542","chac":"cao","ly_do":"Cho lập phương, tính tích vô hướng AC·NM — dạng tích vô hướng trên hình khối."},
+{"ma_cau":"T11200000010267","dang_bai_id":"NDB02553","chac":"cao","ly_do":"Tìm điểm M thoả MA=3MB theo toạ độ — đúng dạng điểm chia đoạn theo tỉ số, điểm thoả đẳng thức vectơ."},
+{"ma_cau":"T11200000010271","dang_bai_id":"NDB02543","chac":"cao","ly_do":"Tính côsin góc giữa SC và AB trên hình chóp qua tích vô hướng — dạng góc giữa hai vectơ trên hình khối."},
+{"ma_cau":"T11200000010276","dang_bai_id":"NDB02561","chac":"cao","ly_do":"Hai lực hợp góc 120°, lực thứ ba vuông góc mặt phẳng hai lực, tính hợp lực — đúng mô tả dạng hợp lực."},
+{"ma_cau":"T11200000010280","dang_bai_id":"NDB02561","chac":"cao","ly_do":"Hai lực hợp góc 150°, lực thứ ba vuông góc mặt phẳng hai lực, tính hợp lực — đúng mô tả dạng hợp lực."},
+{"ma_cau":"T11200000010285","dang_bai_id":"NDB02542","chac":"cao","ly_do":"Cho lập phương cạnh 2, tính AC·BC' bằng phân tích theo cạnh — dạng tích vô hướng trên hình khối."},
+{"ma_cau":"T11200000010292","dang_bai_id":"NDB02542","chac":"cao","ly_do":"Cho lập phương, tính AD'·BB' bằng phân tích theo cạnh — dạng tích vô hướng trên hình khối."},
+{"ma_cau":"T11200000010303","dang_bai_id":"NDB02552","chac":"cao","ly_do":"Cho ba đỉnh, tìm đỉnh thứ tư hình bình hành ABCM bằng AB=MC — đúng dạng tìm đỉnh còn lại."}
+]

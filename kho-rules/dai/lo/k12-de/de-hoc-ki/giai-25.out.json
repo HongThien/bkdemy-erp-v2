@@ -1,0 +1,488 @@
+[
+ {
+  "id": "X2050",
+  "dap_an": "0.44",
+  "loi_giai": "Hộp có $10$ bi (8 trắng, 2 đỏ), mỗi người lấy $3$ bi. Gọi $k$ là số bi đỏ lấy được.\n$P(k=0)=\\dfrac{C_8^3}{C_{10}^3}=\\dfrac{56}{120}$\n$P(k=1)=\\dfrac{C_2^1\\cdot C_8^2}{C_{10}^3}=\\dfrac{56}{120}$\n$P(k=2)=\\dfrac{C_2^2\\cdot C_8^1}{C_{10}^3}=\\dfrac{8}{120}$\nHai người lấy số bi đỏ như nhau: $P=\\left(\\dfrac{56}{120}\\right)^2+\\left(\\dfrac{56}{120}\\right)^2+\\left(\\dfrac{8}{120}\\right)^2=\\dfrac{6336}{14400}=0{,}44$\nVậy xác suất cần tìm là $0{,}44$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2057",
+  "dap_an": "0.44",
+  "loi_giai": "Hộp có $10$ bi (8 trắng, 2 đỏ), mỗi người lấy $3$ bi. Gọi $k$ là số bi đỏ lấy được.\n$P(k=0)=\\dfrac{C_8^3}{C_{10}^3}=\\dfrac{56}{120}$\n$P(k=1)=\\dfrac{C_2^1\\cdot C_8^2}{C_{10}^3}=\\dfrac{56}{120}$\n$P(k=2)=\\dfrac{C_2^2\\cdot C_8^1}{C_{10}^3}=\\dfrac{8}{120}$\nHai người lấy số bi đỏ như nhau: $P=\\left(\\dfrac{56}{120}\\right)^2+\\left(\\dfrac{56}{120}\\right)^2+\\left(\\dfrac{8}{120}\\right)^2=\\dfrac{6336}{14400}=0{,}44$\nVậy xác suất cần tìm là $0{,}44$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2061",
+  "dap_an": "18",
+  "loi_giai": "Gọi $M$ là trung điểm $BC$. Tam giác $ABC$ đều cạnh $5$ nên $AM\\bot BC$, $AM=\\dfrac{5\\sqrt3}{2}$, $AG=\\dfrac{2}{3}AM=\\dfrac{5\\sqrt3}{3}$.\nVì $A'G\\bot(ABC)$ nên $A'G\\bot BC$. Suy ra $BC\\bot(A'AM)$.\nTrong $(A'AM)$ kẻ $MH\\bot AA'$ thì $MH\\bot BC$, do đó $d(AA',BC)=MH=\\dfrac{15}{4}$.\nKẻ $GK\\bot AA'$ ($K\\in AA'$), vì $GK\\parallel MH$ và $\\dfrac{AG}{AM}=\\dfrac23$ nên $GK=\\dfrac23MH=\\dfrac52$.\nTrong tam giác $AGK$ vuông tại $K$: $\\sin\\widehat{A'AG}=\\dfrac{GK}{AG}=\\dfrac{5/2}{5\\sqrt3/3}=\\dfrac{\\sqrt3}{2}$ nên $\\widehat{A'AG}=60^\\circ$.\n$A'G=AG\\cdot\\tan60^\\circ=\\dfrac{5\\sqrt3}{3}\\cdot\\sqrt3=5$\n$S_{ABC}=\\dfrac{5^2\\sqrt3}{4}=\\dfrac{25\\sqrt3}{4}$\n$V_{A'.ABC}=\\dfrac13\\cdot\\dfrac{25\\sqrt3}{4}\\cdot5=\\dfrac{125\\sqrt3}{12}\\approx18{,}04$\nVậy thể tích khối chóp $A'.ABC$ xấp xỉ $18$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2063",
+  "dap_an": "21.3",
+  "loi_giai": "Hướng bay $\\overrightarrow u=(2;2;1)$, $|\\overrightarrow u|=3$ nên vectơ đơn vị là $\\left(\\dfrac23;\\dfrac23;\\dfrac13\\right)$. Khi đi được quãng đường $s$ thì độ cao là $\\dfrac{s}{3}$.\nĐộ cao $6$ km ứng với $s=18$ km $=18000$ m.\nQuãng đường sau $T$ giây: $s(T)=\\displaystyle\\int_0^T\\left(-\\dfrac{t^2}{1200}+\\dfrac t2+10\\right)dt=-\\dfrac{T^3}{3600}+\\dfrac{T^2}{4}+10T$.\nGiải $s(T)=18000$ được $T=300$ s ($=5$ phút), vì $-\\dfrac{300^3}{3600}+\\dfrac{300^2}{4}+3000=-7500+22500+3000=18000$.\nVị trí $C=B+18\\cdot\\left(\\dfrac23;\\dfrac23;\\dfrac13\\right)=(14;11;6)$.\nVận tốc tại $C$: $v(300)=-75+150+10=85$ m/s $=0{,}085$ km/s.\n$AC=\\sqrt{13^2+9^2+6^2}=\\sqrt{286}\\approx16{,}91$ km.\nThoát ra nhanh nhất khi bay thẳng theo hướng $\\overrightarrow{AC}$, cần đi thêm $100-\\sqrt{286}\\approx83{,}09$ km.\nThời gian đi thêm: $\\dfrac{83{,}09}{0{,}085}\\approx977{,}5$ s $\\approx16{,}29$ phút.\nTổng thời gian: $5+16{,}29\\approx21{,}3$ phút.\nVậy máy bay mất khoảng $21{,}3$ phút.",
+  "chuong": "VT",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Đơn vị: v theo m/s, t theo giây; T=300 s khớp đẹp."
+ },
+ {
+  "id": "X2069",
+  "dap_an": "1201",
+  "loi_giai": "Gọi $A_1$: \"đúng bài 1\", $A_2$: \"đúng bài 2\". $P(A_1)=0{,}9$, $P(\\overline{A_1})=0{,}1$, $P(A_2|A_1)=0{,}8$, $P(A_2|\\overline{A_1})=0{,}3$.\n$P(A_2)=0{,}9\\cdot0{,}8+0{,}1\\cdot0{,}3=0{,}75$\n$P(A_1|A_2)=\\dfrac{0{,}9\\cdot0{,}8}{0{,}75}=\\dfrac{0{,}72}{0{,}75}=\\dfrac{24}{25}$\nDo đó $m=24$, $n=25$ (nguyên tố cùng nhau) và $m^2+n^2=576+625=1201$.\nVậy $m^2+n^2=1201$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2070",
+  "dap_an": "50",
+  "loi_giai": "Sau $n$ tháng (gửi đầu mỗi tháng), số tiền cả gốc lẫn lãi là $T_n=8\\cdot1{,}005\\cdot\\dfrac{1{,}005^n-1}{0{,}005}$ (triệu đồng).\nCần $T_n\\ge 450$ nên $1{,}005^n\\ge1+\\dfrac{450\\cdot0{,}005}{8\\cdot1{,}005}\\approx1{,}2799$.\n$n\\ge\\log_{1{,}005}1{,}2799\\approx49{,}46$.\nKiểm tra: $T_{49}\\approx445{,}16<450$ và $T_{50}\\approx455{,}43\\ge450$.\nVậy ông Bình cần gửi ít nhất 50 tháng.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2079",
+  "dap_an": "3925",
+  "loi_giai": "$P(A_1)=0{,}8$, $P(\\overline{A_1})=0{,}2$, $P(A_2|A_1)=0{,}9$, $P(A_2|\\overline{A_1})=0{,}3$.\n$P(A_2)=0{,}8\\cdot0{,}9+0{,}2\\cdot0{,}3=0{,}78$\n$P(A_1|A_2)=\\dfrac{0{,}8\\cdot0{,}9}{0{,}78}=\\dfrac{0{,}72}{0{,}78}=\\dfrac{12}{13}$\nDo đó $m=12$, $n=13$ và $m^3+n^3=1728+2197=3925$.\nVậy $m^3+n^3=3925$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2081",
+  "dap_an": "53",
+  "loi_giai": "Sau $n$ tháng (gửi đầu mỗi tháng), số tiền cả gốc lẫn lãi là $T_n=8\\cdot1{,}005\\cdot\\dfrac{1{,}005^n-1}{0{,}005}$ (triệu đồng).\nCần $T_n\\ge 480$ nên $1{,}005^n\\ge1+\\dfrac{480\\cdot0{,}005}{8\\cdot1{,}005}\\approx1{,}2985$.\n$n\\ge\\log_{1{,}005}1{,}2985\\approx52{,}35$.\nKiểm tra: $T_{52}\\approx476{,}11<480$ và $T_{53}\\approx486{,}53\\ge480$.\nVậy ông Bình cần gửi ít nhất 53 tháng.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2086",
+  "dap_an": "4.39",
+  "loi_giai": "Ta có $y=x+\\dfrac{1}{x+1}=(x+1)+\\dfrac{1}{x+1}-1$. Hai nhánh ứng với $x+1>0$ và $x+1<0$.\nĐặt $A$ có $x_A+1=a>0$, $B$ có $x_B+1=-b$ ($b>0$). Khi đó $A\\left(a-1;\\,a+\\dfrac1a-1\\right)$, $B\\left(-b-1;\\,-b-\\dfrac1b-1\\right)$.\n$x_A-x_B=a+b$; $y_A-y_B=(a+b)+\\left(\\dfrac1a+\\dfrac1b\\right)=(a+b)\\left(1+\\dfrac{1}{ab}\\right)$.\n$AB^2=(a+b)^2\\left[1+\\left(1+\\dfrac1{ab}\\right)^2\\right]$.\nVì $a+b\\ge2\\sqrt{ab}$, đặt $s=ab>0$: $AB^2\\ge4s\\left[1+\\left(1+\\dfrac1s\\right)^2\\right]=8s+8+\\dfrac4s$.\nÁp dụng AM-GM: $8s+\\dfrac4s\\ge2\\sqrt{32}=8\\sqrt2$, dấu bằng khi $s=\\dfrac{1}{\\sqrt2}$ và $a=b$.\nSuy ra $AB^2\\ge8+8\\sqrt2$, tức $AB_{\\min}=\\sqrt{8+8\\sqrt2}\\approx4{,}39$.\nVậy khoảng cách ngắn nhất giữa hai tàu là $4{,}39$ km.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đã kiểm số: min 4.3947."
+ },
+ {
+  "id": "X2090",
+  "dap_an": "612",
+  "loi_giai": "Doanh thu $R(x)=x\\cdot P(x)=50x-0{,}001x^3$.\nLợi nhuận $L(x)=R(x)-C(x)=-0{,}001x^3+15x-95$, với $0\\le x\\le100$.\n$L'(x)=-0{,}003x^2+15=0\\Leftrightarrow x^2=5000\\Leftrightarrow x=50\\sqrt2\\approx70{,}71$ (nhận vì $x\\in[0;100]$).\nLập bảng biến thiên: $L$ tăng trên $(0;50\\sqrt2)$, giảm trên $(50\\sqrt2;100)$ nên $L$ đạt max tại $x=50\\sqrt2$.\n$L(50\\sqrt2)\\approx612{,}1$ (triệu đồng).\nVậy lợi nhuận lớn nhất khoảng 612 triệu đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2092",
+  "dap_an": "114",
+  "loi_giai": "Nhiệt độ gà tây: $T(t)=65+130e^{-kt}$ (vì $D_0=195-65=130$).\nSau $30$ phút $T=150$: $65+130e^{-30k}=150\\Rightarrow e^{-30k}=\\dfrac{85}{130}\\Rightarrow k=\\dfrac{1}{30}\\ln\\dfrac{130}{85}$.\nCần $T(t)\\le 91$: $130e^{-kt}\\le26\\Rightarrow e^{-kt}\\le\\dfrac{1}{5}$.\n$t\\ge\\dfrac{1}{k}\\ln5=\\dfrac{30\\ln5}{\\ln\\frac{130}{85}}\\approx113{,}64$ (phút).\nVậy cần ít nhất 114 phút.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Ví dụ 26/130=1/5."
+ },
+ {
+  "id": "X2097",
+  "dap_an": "2.2",
+  "loi_giai": "Ba biến cố độc lập: $P(A)=x$, $P(B)=y$, $P(C)=0{,}6$.\nCả ba trúng thầu: $0{,}6xy=0{,}336\\Rightarrow xy=0{,}56$.\nKhông dự án nào trúng: $1-0{,}976=0{,}024=(1-x)(1-y)\\cdot0{,}4\\Rightarrow(1-x)(1-y)=0{,}06$.\nKhai triển: $1-(x+y)+xy=0{,}06\\Rightarrow x+y=1+0{,}56-0{,}06=1{,}5$.\n$x,y$ là nghiệm của $t^2-1{,}5t+0{,}56=0\\Rightarrow t=0{,}8$ hoặc $t=0{,}7$.\nVì $x>y$ nên $x=0{,}8$, $y=0{,}7$.\nVậy $x+2y=0{,}8+1{,}4=2{,}2$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2099",
+  "dap_an": "642",
+  "loi_giai": "Doanh thu $R(x)=x\\cdot P(x)=30x-0{,}001x^3$.\nLợi nhuận $L(x)=R(x)-C(x)=-0{,}001x^3+15x-65$, với $0\\le x\\le100$.\n$L'(x)=-0{,}003x^2+15=0\\Leftrightarrow x^2=5000\\Leftrightarrow x=50\\sqrt2\\approx70{,}71$ (nhận vì $x\\in[0;100]$).\nLập bảng biến thiên: $L$ tăng trên $(0;50\\sqrt2)$, giảm trên $(50\\sqrt2;100)$ nên $L$ đạt max tại $x=50\\sqrt2$.\n$L(50\\sqrt2)\\approx642{,}1$ (triệu đồng).\nVậy lợi nhuận lớn nhất khoảng 642 triệu đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2101",
+  "dap_an": "104",
+  "loi_giai": "Nhiệt độ gà tây: $T(t)=65+130e^{-kt}$ (vì $D_0=195-65=130$).\nSau $30$ phút $T=150$: $65+130e^{-30k}=150\\Rightarrow e^{-30k}=\\dfrac{85}{130}\\Rightarrow k=\\dfrac{1}{30}\\ln\\dfrac{130}{85}$.\nCần $T(t)\\le 95$: $130e^{-kt}\\le30\\Rightarrow e^{-kt}\\le\\dfrac{30}{130}$.\n$t\\ge\\dfrac{1}{k}\\ln\\dfrac{130}{30}=\\dfrac{30\\ln\\frac{130}{30}}{\\ln\\frac{130}{85}}\\approx103{,}53$ (phút).\nVậy cần ít nhất 104 phút.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2107",
+  "dap_an": "0.91",
+  "loi_giai": "Gọi $B$: \"bị nhiễm\", $D$: \"dương tính\". $P(B)=\\dfrac{105}{300}=0{,}35$, $P(\\overline B)=0{,}65$.\n$P(D|B)=0{,}9$, $P(D|\\overline B)=0{,}05$.\n$P(D)=0{,}35\\cdot0{,}9+0{,}65\\cdot0{,}05=0{,}3475$\n$P(B|D)=\\dfrac{0{,}35\\cdot0{,}9}{0{,}3475}=\\dfrac{0{,}315}{0{,}3475}\\approx0{,}9065\\approx0{,}91$\nVậy xác suất bạn đó thật sự bị nhiễm là $0{,}91$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2108",
+  "dap_an": "0.91",
+  "loi_giai": "Gọi $B$: \"bị nhiễm\", $D$: \"dương tính\". $P(B)=\\dfrac{105}{300}=0{,}35$, $P(\\overline B)=0{,}65$.\n$P(D|B)=0{,}9$, $P(D|\\overline B)=0{,}05$.\n$P(D)=0{,}35\\cdot0{,}9+0{,}65\\cdot0{,}05=0{,}3475$\n$P(B|D)=\\dfrac{0{,}35\\cdot0{,}9}{0{,}3475}=\\dfrac{0{,}315}{0{,}3475}\\approx0{,}9065\\approx0{,}91$\nVậy xác suất bạn đó thật sự bị nhiễm là $0{,}91$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2110",
+  "dap_an": "0.6",
+  "loi_giai": "Đoạn $[10;199]$ có $199-10+1=190$ số tự nhiên, nên $n(\\Omega)=190$.\nGọi $A$: \"số lẻ\", $B$: \"số chia hết cho 5\". Số lẻ từ $11$ đến $199$: $\\dfrac{199-11}{2}+1=95$ số, nên $n(A)=95$.\nSố chia hết cho $5$ từ $10$ đến $195$: $\\dfrac{195-10}{5}+1=38$ số, nên $n(B)=38$.\nSố vừa lẻ vừa chia hết cho $5$ (tận cùng là $5$): $15,25,\\dots,195$ có $19$ số, nên $n(A\\cap B)=19$.\n$n(A\\cup B)=95+38-19=114$\n$P=\\dfrac{114}{190}=0{,}6$\nVậy xác suất cần tìm là $0{,}6$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2111",
+  "dap_an": "15",
+  "loi_giai": "$\\overrightarrow{AB}$ cùng phương $\\overrightarrow u=(2;-2;1)$ nên $\\overrightarrow{AB}=k\\overrightarrow u$ ($k>0$).\n$x_B-x_A=550-10=540=2k\\Rightarrow k=270$.\n$|\\overrightarrow u|=\\sqrt{4+4+1}=3$ nên $AB=270\\cdot3=810$ m.\nCabin chuyển động đều, $3$ phút đi được $810$ m nên vận tốc là $\\dfrac{810}{3}=270$ m/phút.\nThời gian đi hết $AD=4050$ m là $\\dfrac{4050}{270}=15$ phút.\nVậy thời gian di chuyển là $15$ phút.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2114",
+  "dap_an": "0.75",
+  "loi_giai": "Gọi $O$ là tâm tam giác đều $ABC$ thì $SO\\bot(ABC)$ và $\\widehat{SAO}=60^\\circ$. Gọi $M$ là trung điểm $BC$ ($A,O,M$ thẳng hàng).\n$AM=\\dfrac{\\sqrt3}{2}$, $AO=\\dfrac23AM=\\dfrac{\\sqrt3}{3}$.\n$BC\\bot AM$, $BC\\bot SO$ nên $BC\\bot(SAM)$. Kẻ $MH\\bot SA$ thì $MH\\bot BC$, do đó $d(SA,BC)=MH$.\nKẻ $OK\\bot SA$: $OK=AO\\sin60^\\circ=\\dfrac{\\sqrt3}{3}\\cdot\\dfrac{\\sqrt3}{2}=\\dfrac12$.\nVì $OK\\parallel MH$ và $\\dfrac{AM}{AO}=\\dfrac{\\sqrt3/2}{\\sqrt3/3}=\\dfrac32$ nên $MH=\\dfrac32\\cdot\\dfrac12=\\dfrac34=0{,}75$.\nVậy khoảng cách giữa $SA$ và $BC$ bằng $0{,}75$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2116",
+  "dap_an": "41",
+  "loi_giai": "Gọi $x$ là số nghìn đồng/kg tăng thêm so với $30$ nghìn, $x\\ge0$. Giá bán là $30+x$ (nghìn đồng/kg).\nSố rau thừa là $20x$ kg, số rau bán được là $1000-20x$ kg (suy ra $0\\le x\\le50$).\nTổng tiền thu về (nghìn đồng): $f(x)=(1000-20x)(30+x)+20x\\cdot2=-20x^2+440x+30000$.\n$f'(x)=-40x+440=0\\Leftrightarrow x=11$.\n$f$ đạt lớn nhất tại $x=11$ (parabol quay xuống).\nGiá bán là $30+11=41$ nghìn đồng/kg.\nVậy nên bán rau với giá $41$ nghìn đồng.",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Cộng cả tiền thu mua rau thừa (2 nghìn/kg)."
+ },
+ {
+  "id": "X2119",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "KHAC",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ là bảng mã đề/đáp án, không có đề."
+ },
+ {
+  "id": "X2120",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "KHAC",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ là bảng mã đề/đáp án, không có đề."
+ },
+ {
+  "id": "X2121",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "KHAC",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ là bảng mã đề/đáp án, không có đề."
+ },
+ {
+  "id": "X2123",
+  "dap_an": "88.8",
+  "loi_giai": "Lúc $5$ giờ sáng: $t=5$.\n$B(5)=82+7\\sin\\dfrac{5\\pi}{12}\\approx82+7\\cdot0{,}9659=88{,}76$\nLàm tròn đến hàng phần chục: $88{,}8$.\nVậy huyết áp tâm trương lúc $5$ giờ sáng khoảng $88{,}8$ mmHg.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2125",
+  "dap_an": "29.4",
+  "loi_giai": "Vận tốc tức thời là đạo hàm của quãng đường: $v(t)=s'(t)=9{,}8t$.\nTại $t=3$: $v(3)=9{,}8\\cdot3=29{,}4$.\nVậy vận tốc rơi của viên sỏi lúc $t=3$ là $29{,}4$ m/s.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2128",
+  "dap_an": "0.2268",
+  "loi_giai": "$X\\sim B(2;0{,}4)$: $P(X=0)=0{,}36$, $P(X=1)=0{,}48$.\n$Y\\sim B(2;0{,}7)$: $P(Y=0)=0{,}09$, $P(Y=1)=0{,}42$.\nTổng số phát trúng không quá $1$: $(X,Y)=(0,0)$ hoặc $(0,1)$ hoặc $(1,0)$.\n$P=0{,}36\\cdot0{,}09+0{,}36\\cdot0{,}42+0{,}48\\cdot0{,}09=0{,}0324+0{,}1512+0{,}0432=0{,}2268$\nVậy xác suất cần tìm là $0{,}2268$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2146",
+  "dap_an": "256",
+  "loi_giai": "Gọi $x$ (triệu đồng) là số tiền gửi. Sau $3$ năm, lãi kép: $x(1+0{,}055)^3\\ge300$.\n$x\\ge\\dfrac{300}{(1+0{,}055)^3}\\approx255{,}48$.\nSố tiền nguyên nhỏ nhất thoả mãn là 256 triệu đồng.\nVậy bác Lan phải gửi ít nhất 256 triệu đồng.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2147",
+  "dap_an": "-2",
+  "loi_giai": "$y=\\dfrac{2x+1}{x+1}\\Rightarrow y'=\\dfrac{2(x+1)-(2x+1)}{(x+1)^2}=\\dfrac{1}{(x+1)^2}$ với $x\\ne-1$.\n$y'=1\\Leftrightarrow(x+1)^2=1\\Leftrightarrow x=0$ hoặc $x=-2$ (đều thoả $x\\ne-1$).\nTổng các nghiệm: $0+(-2)=-2$.\nVậy tổng các nghiệm bằng $-2$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2150",
+  "dap_an": "3.14",
+  "loi_giai": "Vận tốc $v(t)=x'(t)=0{,}5\\cdot2\\pi\\cos(2\\pi t)$.\nVì $-1\\le\\cos(2\\pi t)\\le1$ nên $|v(t)|\\le\\pi$.\nVận tốc lớn nhất là $\\pi\\approx3{,}14$ cm/s.\nVậy vận tốc lớn nhất của con lắc là $3{,}14$ cm/s.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2152",
+  "dap_an": "0.03",
+  "loi_giai": "Thí sinh chọn $2$ môn tự chọn trong $9$ môn nên số tổ hợp là $C_9^2=36$.\nKhối C09 gồm Văn – Vật lí – Địa lí; Văn đã bắt buộc, nên tổ hợp phải gồm cả Vật lí và Địa lí: có $1$ tổ hợp.\n$P=\\dfrac{1}{36}\\approx0{,}03$\nVậy xác suất cần tìm là $0{,}03$.",
+  "chuong": "XS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Giả sử mỗi tổ hợp 2 môn đồng khả năng."
+ },
+ {
+  "id": "X2162",
+  "dap_an": "0.22",
+  "loi_giai": "Thí sinh chọn $2$ môn tự chọn trong $9$ môn nên số tổ hợp là $C_9^2=36$.\nKhối C03 gồm Toán – Văn – Lịch sử; Toán, Văn đã bắt buộc, nên tổ hợp phải chứa Lịch sử: chọn thêm $1$ trong $8$ môn còn lại, có $8$ tổ hợp.\n$P=\\dfrac{8}{36}=\\dfrac29\\approx0{,}22$\nVậy xác suất cần tìm là $0{,}22$.",
+  "chuong": "XS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Giả sử mỗi tổ hợp 2 môn đồng khả năng."
+ },
+ {
+  "id": "X2164",
+  "dap_an": "4.71",
+  "loi_giai": "Vận tốc $v(t)=x'(t)=0{,}5\\cdot3\\pi\\cos(3\\pi t)$.\nVì $-1\\le\\cos(3\\pi t)\\le1$ nên $|v(t)|\\le1{,}5\\pi$.\nVận tốc lớn nhất là $1{,}5\\pi\\approx4{,}71$ cm/s.\nVậy vận tốc lớn nhất của con lắc là $4{,}71$ cm/s.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2166",
+  "dap_an": "249",
+  "loi_giai": "Gọi $x$ (triệu đồng) là số tiền gửi. Sau $3$ năm, lãi kép: $x(1+0{,}065)^3\\ge300$.\n$x\\ge\\dfrac{300}{(1+0{,}065)^3}\\approx248{,}35$.\nSố tiền nguyên nhỏ nhất thoả mãn là 249 triệu đồng.\nVậy bác Lan phải gửi ít nhất 249 triệu đồng.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2168",
+  "dap_an": "-4",
+  "loi_giai": "$y=\\dfrac{x+1}{x+2}\\Rightarrow y'=\\dfrac{(x+2)-(x+1)}{(x+2)^2}=\\dfrac{1}{(x+2)^2}$ với $x\\ne-2$.\n$y'=1\\Leftrightarrow(x+2)^2=1\\Leftrightarrow x=-1$ hoặc $x=-3$ (đều thoả $x\\ne-2$).\nTổng các nghiệm: $-1+(-3)=-4$.\nVậy tổng các nghiệm bằng $-4$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2175",
+  "dap_an": "0.68",
+  "loi_giai": "Chọn hệ trục: $A(0;0;0)$, $B(1;0;0)$, $C(0;\\sqrt2;0)$, $S(p;q;r)$.\n$SB\\bot AB$: $(p-1)\\cdot1=0\\Rightarrow p=1$. $SC\\bot AC$: $(q-\\sqrt2)\\sqrt2=0\\Rightarrow q=\\sqrt2$. Vậy $S(1;\\sqrt2;r)$, $r>0$.\nMặt phẳng $(SAB)$ có vectơ pháp tuyến $\\overrightarrow n=\\left[\\overrightarrow{AB},\\overrightarrow{AS}\\right]=(0;-r;\\sqrt2)$.\n$\\overrightarrow{BC}=(-1;\\sqrt2;0)$, $\\sin45^\\circ=\\dfrac{|\\overrightarrow{BC}\\cdot\\overrightarrow n|}{|\\overrightarrow{BC}||\\overrightarrow n|}=\\dfrac{r\\sqrt2}{\\sqrt3\\sqrt{r^2+2}}=\\dfrac{\\sqrt2}{2}$.\n$\\Rightarrow4r^2=3(r^2+2)\\Rightarrow r^2=6\\Rightarrow r=\\sqrt6$.\n$\\overrightarrow{SA}=(-1;-\\sqrt2;-\\sqrt6)$, $\\left[\\overrightarrow{SA},\\overrightarrow{BC}\\right]=(\\sqrt6\\cdot\\sqrt2;\\ \\sqrt6;\\ -\\sqrt2-\\sqrt2)$ nên $\\overrightarrow m=(2\\sqrt3;\\sqrt6;-2\\sqrt2)$ (tính trực tiếp).\n$d(SA,BC)=\\dfrac{|\\overrightarrow{AB}\\cdot\\overrightarrow m|}{|\\overrightarrow m|}=\\dfrac{2\\sqrt3}{\\sqrt{12+6+8}}=\\dfrac{2\\sqrt3}{\\sqrt{26}}\\approx0{,}68$.\nVậy khoảng cách giữa $SA$ và $BC$ xấp xỉ $0{,}68$ cm.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đã kiểm số: 0.6794."
+ },
+ {
+  "id": "X2177",
+  "dap_an": "260",
+  "loi_giai": "Gọi $x$, $y$ (ha) là diện tích trồng bắp và cà chua: $x\\ge0$, $y\\ge0$, $x+y\\le6$ (diện tích), $10x+20y\\le100\\Leftrightarrow x+2y\\le10$ (số ngày).\nSố tiền thu được (triệu đồng): $F=30x+50y$.\nMiền nghiệm là tứ giác có các đỉnh $(0;0)$, $(6;0)$, $(2;4)$, $(0;5)$.\n$F(0;0)=0$; $F(6;0)=180$; $F(2;4)=60+200=260$; $F(0;5)=250$.\nVậy số tiền nhiều nhất là $260$ triệu đồng (trồng $2$ ha bắp và $4$ ha cà chua).",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2179",
+  "dap_an": "0.44",
+  "loi_giai": "Gọi $n$ là số bóng xanh hộp I, $p=\\dfrac{6}{6+n}$ là xác suất lấy quả đỏ từ hộp I.\nNếu chuyển bóng đỏ: hộp II có $8$ đỏ, $3$ xanh, xác suất hai quả đều xanh là $\\dfrac{C_3^2}{C_{11}^2}=\\dfrac3{55}$.\nNếu chuyển bóng xanh: hộp II có $7$ đỏ, $4$ xanh, xác suất hai quả đều xanh là $\\dfrac{C_4^2}{C_{11}^2}=\\dfrac6{55}$.\n$P(\\text{hai quả đều xanh})=p\\cdot\\dfrac3{55}+(1-p)\\cdot\\dfrac6{55}=1-\\dfrac{32}{35}=\\dfrac3{35}\\Rightarrow p=\\dfrac37\\Rightarrow n=8$.\n$P(\\text{ít nhất 1 đỏ})=\\dfrac{32}{35}$, và $P(\\text{ít nhất 1 đỏ}\\ |\\ \\text{chuyển đỏ})=1-\\dfrac3{55}=\\dfrac{52}{55}$.\nTheo công thức Bayes: $P=\\dfrac{\\frac37\\cdot\\frac{52}{55}}{\\frac{32}{35}}=\\dfrac{156/385}{32/35}=\\dfrac{5460}{12320}\\approx0{,}4432$\nVậy xác suất cần tìm là $0{,}44$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2180",
+  "dap_an": "100",
+  "loi_giai": "Doanh thu $R(x)=x\\cdot p(x)=1700x-7x^2$.\nLợi nhuận $L(x)=R(x)-C(x)=-0{,}004x^3-5{,}4x^2+1200x-16000$, $x>0$.\n$L'(x)=-0{,}012x^2-10{,}8x+1200=0\\Leftrightarrow x^2+900x-100000=0\\Leftrightarrow x=100$ (nhận) hoặc $x=-1000$ (loại).\n$L'(x)>0$ khi $0<x<100$ và $L'(x)<0$ khi $x>100$ nên $L$ đạt lớn nhất tại $x=100$.\nVậy mỗi tháng nên sản xuất $100$ sản phẩm.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2187",
+  "dap_an": "2.97",
+  "loi_giai": "Vì $SA\\bot(ABC)$ nên $SA\\bot AH$ với $H$ là hình chiếu của $A$ trên $BC$; $AH\\bot BC$ nên $AH$ là đoạn vuông góc chung của $SA$ và $BC$. Do đó $d(SA,BC)=AH$.\nNửa chu vi $p=\\dfrac{3+7+8}{2}=9$.\n$S_{ABC}=\\sqrt{9\\cdot(9-3)(9-7)(9-8)}=\\sqrt{108}=6\\sqrt3$.\n$AH=\\dfrac{2S_{ABC}}{BC}=\\dfrac{12\\sqrt3}{7}\\approx2{,}97$.\nVậy khoảng cách giữa $SA$ và $BC$ bằng $2{,}97$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2188",
+  "dap_an": "0.75",
+  "loi_giai": "Gọi $A$: \"thư rác\", $B$: \"thư bị chặn\". $P(A)=0{,}03$, $P(\\overline A)=0{,}97$, $P(B|A)=0{,}95$, $P(B|\\overline A)=0{,}01$.\n$P(B)=0{,}03\\cdot0{,}95+0{,}97\\cdot0{,}01=0{,}0285+0{,}0097=0{,}0382$\n$P(A|B)=\\dfrac{0{,}0285}{0{,}0382}\\approx0{,}746\\approx0{,}75$\nVậy xác suất để thư bị chặn là thư rác là $0{,}75$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2196",
+  "dap_an": "2.97",
+  "loi_giai": "Vì $SA\\bot(ABC)$ nên $SA\\bot AH$ với $H$ là hình chiếu của $A$ trên $BC$; $AH\\bot BC$ nên $AH$ là đoạn vuông góc chung của $SA$ và $BC$. Do đó $d(SA,BC)=AH$.\nNửa chu vi $p=\\dfrac{3+7+8}{2}=9$.\n$S_{ABC}=\\sqrt{9\\cdot(9-3)(9-7)(9-8)}=\\sqrt{108}=6\\sqrt3$.\n$AH=\\dfrac{2S_{ABC}}{BC}=\\dfrac{12\\sqrt3}{7}\\approx2{,}97$.\nVậy khoảng cách giữa $SA$ và $BC$ bằng $2{,}97$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2200",
+  "dap_an": "2.5",
+  "loi_giai": "Vận tốc thực khi ngược dòng là $v-5$ nên thời gian bơi $t=\\dfrac{100}{v-5}$.\n$E(v)=c\\cdot v^3\\cdot\\dfrac{100}{v-5}=100c\\cdot\\dfrac{v^3}{v-5}$, $v>5$.\nXét $f(v)=\\dfrac{v^3}{v-5}$: $f'(v)=\\dfrac{3v^2(v-5)-v^3}{(v-5)^2}=\\dfrac{v^2(2v-15)}{(v-5)^2}$.\n$f'(v)<0\\Leftrightarrow5<v<7{,}5$ nên năng lượng tiêu hao giảm trên khoảng $(5;7{,}5)$.\nKhoảng $(a;b)$ lớn nhất làm $E$ giảm là $(5;7{,}5)$ nên $(b-a)_{\\max}=7{,}5-5=2{,}5$.\nVậy giá trị lớn nhất của $b-a$ là $2{,}5$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2201",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "NHTP",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Cần hình vẽ (phần đất trắng), không có trong đề."
+ },
+ {
+  "id": "X2202",
+  "dap_an": "0.64",
+  "loi_giai": "Chuồng II có $10$ con: $7$ đen, $3$ trắng. Con thỏ chuyển sang chuồng I là đen với xác suất $0{,}7$, là trắng với xác suất $0{,}3$.\nNếu chuyển thỏ đen: chuồng I có $16$ con ($6$ đen, $10$ trắng), xác suất lấy trắng là $\\dfrac{10}{16}$.\nNếu chuyển thỏ trắng: chuồng I có $16$ con ($5$ đen, $11$ trắng), xác suất lấy trắng là $\\dfrac{11}{16}$.\n$P=0{,}7\\cdot\\dfrac{10}{16}+0{,}3\\cdot\\dfrac{11}{16}=\\dfrac{10{,}3}{16}\\approx0{,}64375\\approx0{,}64$\nVậy xác suất cần tìm là $0{,}64$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2203",
+  "dap_an": "-6.9",
+  "loi_giai": "Gọi $t$ (giờ) là thời gian từ lúc $12$ giờ đến khi hai kim trùng nhau lần đầu. Kim phút quay $t$ vòng, kim giờ quay $\\dfrac{t}{12}$ vòng.\nHai kim trùng nhau lần đầu khi kim phút hơn kim giờ đúng $1$ vòng: $t-\\dfrac t{12}=1\\Rightarrow t=\\dfrac{12}{11}$ giờ.\nKim phút quay cùng chiều kim đồng hồ nên góc lượng giác là số âm: $-\\dfrac{12}{11}\\cdot2\\pi=-\\dfrac{24\\pi}{11}\\approx-6{,}856$.\nLàm tròn đến hàng phần chục: $-6{,}9$.\nVậy kim phút quay được góc lượng giác $-6{,}9$ rad.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2204",
+  "dap_an": "-6.9",
+  "loi_giai": "Gọi $t$ (giờ) là thời gian từ lúc $12$ giờ đến khi hai kim trùng nhau lần đầu. Kim phút quay $t$ vòng, kim giờ quay $\\dfrac{t}{12}$ vòng.\nHai kim trùng nhau lần đầu khi kim phút hơn kim giờ đúng $1$ vòng: $t-\\dfrac t{12}=1\\Rightarrow t=\\dfrac{12}{11}$ giờ.\nKim phút quay cùng chiều kim đồng hồ nên góc lượng giác là số âm: $-\\dfrac{12}{11}\\cdot2\\pi=-\\dfrac{24\\pi}{11}\\approx-6{,}856$.\nLàm tròn đến hàng phần chục: $-6{,}9$.\nVậy kim phút quay được góc lượng giác $-6{,}9$ rad.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2205",
+  "dap_an": "3304",
+  "loi_giai": "Gọi $N=750+1238+472+y$ là tổng số người được kiểm tra.\nXác suất người đó bị viêm phổi và không nghiện thuốc lá là $\\dfrac{472}{N}$.\nĐiều kiện: $\\dfrac{472}{N}\\le\\dfrac17\\Leftrightarrow N\\ge472\\cdot7=3304$.\nVậy phải kiểm tra tối thiểu $3304$ người.",
+  "chuong": "XS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Hiểu \"viêm phổi trong khi không nghiện\" là giao; nếu có điều kiện thì khác."
+ },
+ {
+  "id": "X2206",
+  "dap_an": "2496",
+  "loi_giai": "Gọi $x$, $y$ lần lượt là số nhân viên ca I, ca II ($x,y\\in\\mathbb N$).\nRàng buộc: $y\\ge2$ (từ $16$h–$20$h chỉ có ca II); $x+y\\ge10$ (giờ cao điểm $12$h–$16$h); $x\\le9$; $x\\ge1,5y$.\nChi phí mỗi ngày (nghìn đồng): $F=8\\cdot32x+8\\cdot30y=256x+240y$.\nMiền nghiệm có các đỉnh $(8;2)$, $(9;2)$, $(9;6)$, $(6;4)$ (giao của $x=1,5y$ và $x+y=10$).\n$F(8;2)=2528$; $F(9;2)=2784$; $F(9;6)=3744$; $F(6;4)=1536+960=2496$.\nGiá trị nhỏ nhất là $2496$ khi $x=6$, $y=4$.\nVậy $a=2496$.",
+  "chuong": "KHAC",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Hiểu \"không quá 9 NV trong 8h–16h\" là x ≤ 9."
+ },
+ {
+  "id": "X2207",
+  "dap_an": "0.71",
+  "loi_giai": "Gọi $I$: \"thùng loại I\", $II$: \"thùng loại II\". Số thùng loại I gấp $2$ lần loại II nên $P(I)=\\dfrac23$, $P(II)=\\dfrac13$.\nGọi $A$: \"10 lon lấy ra có đúng $2$ lon quá hạn\".\n$P(A|I)=\\dfrac{C_5^2C_{19}^8}{C_{24}^{10}}$, $P(A|II)=\\dfrac{C_3^2C_{21}^8}{C_{24}^{10}}$ (tử số: $10\\cdot75582=755820$ và $3\\cdot203490=610470$).\n$P(I|A)=\\dfrac{\\frac23\\cdot755820}{\\frac23\\cdot755820+\\frac13\\cdot610470}=\\dfrac{1511640}{2122110}\\approx0{,}7123$\nVậy xác suất cần tìm là $0{,}71$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2208",
+  "dap_an": "14",
+  "loi_giai": "Đáy là tam giác vuông cân tại $B$ ($AB=BC=a$). Chọn hệ trục $B(0;0;0)$, $A(a;0;0)$, $C(0;a;0)$, $B'(0;0;a\\sqrt2)$, $M\\left(0;\\dfrac a2;0\\right)$.\n$\\overrightarrow{AM}=\\left(-a;\\dfrac a2;0\\right)$, $\\overrightarrow{B'C}=(0;a;-a\\sqrt2)$, $\\overrightarrow{AB'}=(-a;0;a\\sqrt2)$.\n$\\left[\\overrightarrow{AM},\\overrightarrow{B'C}\\right]=\\left(-\\dfrac{a^2\\sqrt2}{2};-a^2\\sqrt2;-a^2\\right)$, độ dài $=a^2\\sqrt{\\dfrac12+2+1}=\\dfrac{a^2\\sqrt{14}}{2}$.\n$\\left|\\overrightarrow{AB'}\\cdot\\left[\\overrightarrow{AM},\\overrightarrow{B'C}\\right]\\right|=\\left|\\dfrac{a^3\\sqrt2}{2}-a^3\\sqrt2\\right|=\\dfrac{a^3\\sqrt2}{2}$.\n$d=\\dfrac{a^3\\sqrt2/2}{a^2\\sqrt{14}/2}=\\dfrac{a\\sqrt2}{\\sqrt{14}}=\\dfrac{a}{\\sqrt7}=\\dfrac{a\\sqrt7}{7}$.\nSuy ra $m=7$, $n=7$ nên $m+n=14$.\nVậy $m+n=14$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Giả sử vuông tại B vì AB=BC."
+ },
+ {
+  "id": "X2209",
+  "dap_an": "0.4",
+  "loi_giai": "Mỗi em nhận $2$ suất khác loại; gọi $a$, $b$, $c$ là số em nhận (áo, sữa), (áo, cặp), (sữa, cặp).\n$a+b=7$ (số áo), $a+c=9$ (số sữa), $b+c=4$ (số cặp). Giải ra $a=6$, $b=1$, $c=3$.\nSố cách chọn $2$ em trong $10$ em: $C_{10}^2=45$.\nHai em nhận quà giống nhau (cùng cặp loại): $C_6^2+C_1^2+C_3^2=15+0+3=18$.\n$P=\\dfrac{18}{45}=0{,}4$\nVậy xác suất cần tìm là $0{,}4$.",
+  "chuong": "XS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Hiểu \"giống nhau\" là cùng cặp loại quà."
+ },
+ {
+  "id": "X2211",
+  "dap_an": "8",
+  "loi_giai": "Sau $3$ phút: $s(3)=s(0)\\cdot2^3=625000\\Rightarrow s(0)=78125$ (con).\nCần $s(t)=20\\,000\\,000$: $78125\\cdot2^t=20\\,000\\,000\\Rightarrow2^t=256$.\n$\\Rightarrow t=\\log_2256=8$.\nVậy sau $8$ phút số vi khuẩn $A$ là $20$ triệu con.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2229",
+  "dap_an": "9",
+  "loi_giai": "Số tiền sau $n$ quý: $T_n=100\\cdot(1+0{,}03)^n=100\\cdot1{,}03^n$ (triệu đồng).\n$T_n>130\\Leftrightarrow1{,}03^n>1{,}3\\Leftrightarrow n>\\log_{1{,}03}1{,}3\\approx8{,}876$.\nSố quý nguyên nhỏ nhất là $9$.\nVậy sau ít nhất $9$ quý.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2231",
+  "dap_an": "9",
+  "loi_giai": "Số tiền sau $n$ quý: $T_n=100\\cdot(1+0{,}03)^n=100\\cdot1{,}03^n$ (triệu đồng).\n$T_n>130\\Leftrightarrow1{,}03^n>1{,}3\\Leftrightarrow n>\\log_{1{,}03}1{,}3\\approx8{,}876$.\nSố quý nguyên nhỏ nhất là $9$.\nVậy sau ít nhất $9$ quý.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ }
+]

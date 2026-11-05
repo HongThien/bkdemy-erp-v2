@@ -1,0 +1,74 @@
+[
+ {
+  "ma_cau": "T11200000010539",
+  "loai": "tra_loi_ngan",
+  "de": "Trung bình cộng và phương sai của bảy số liệu lần lượt là 8 và 16. Nếu 5 trong bảy số liệu là $2;4;10;12;14$ thì tích của hai số liệu còn lại là bao nhiêu?",
+  "dap_an": "48",
+  "loi_giai": "Gọi hai số còn lại là $x,y$. Tổng bảy số: $7\\cdot 8=56$.\nTổng năm số đã biết: $2+4+10+12+14=42$ nên $x+y=56-42=14$.\nPhương sai: $\\dfrac{\\sum a_i^2}{7}-8^2=16\\Rightarrow \\sum a_i^2=7\\cdot 80=560$.\nTổng bình phương năm số đã biết: $4+16+100+144+196=460$ nên $x^2+y^2=100$.\nSuy ra $xy=\\dfrac{(x+y)^2-(x^2+y^2)}{2}=\\dfrac{196-100}{2}=48$.\nVậy tích hai số còn lại bằng $48$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010561",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty xây dựng khảo sát khách hàng xem họ có nhu cầu mua nhà ở mức giá nào. Kết quả khảo sát được ghi lại ở bảng sau:\nMức giá (triệu đồng $\\left. /\\text{m}^{2} \\right)$\n$\\left[ 10;14 \\right)$\n$\\left[ 14;18 \\right)$\n$\\left[ 18;22 \\right)$\n$\\left[ 22;26 \\right)$\n$\\left[ 26;30 \\right)$\nSố khách hàng\n54\n78\n120\n45\n12\nCông ty nên xây nhà ở mức giá nào (bao nhiêu tiền một mét vuông) để nhiều người có nhu cầu mua nhất. Biết rằng Mốt của bảng số liệu trên là căn cứ để lựa chọn (đơn vị là triệu đồng và làm tròn đến hàng phần mười)?\n----------------Hết----------------\n(Cán bộ coi thi không giải thích gì thêm)",
+  "dap_an": "19.4",
+  "loi_giai": "Nhóm có tần số lớn nhất là $[18;22)$ (tần số $120$), độ dài nhóm $h=4$; tần số nhóm trước là $78$, nhóm sau là $45$.\n$M_o=18+\\dfrac{120-78}{(120-78)+(120-45)}\\cdot 4=18+\\dfrac{42}{117}\\cdot 4\\approx 19{,}44$.\nVậy công ty nên xây nhà ở mức giá khoảng $19{,}4$ triệu đồng/m$^2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010541",
+  "loai": "tra_loi_ngan",
+  "de": "Trung bình cộng và phương sai của bảy số liệu lần lượt là 8 và 16. Nếu 5 trong bảy số liệu là $2;4;10;12;14$ thì tích của hai số liệu còn lại là bao nhiêu?\n------ HẾT ------",
+  "dap_an": "48",
+  "loi_giai": "Gọi hai số còn lại là $x,y$. Tổng bảy số: $7\\cdot 8=56$.\nTổng năm số đã biết: $2+4+10+12+14=42$ nên $x+y=56-42=14$.\nPhương sai: $\\dfrac{\\sum a_i^2}{7}-8^2=16\\Rightarrow \\sum a_i^2=7\\cdot 80=560$.\nTổng bình phương năm số đã biết: $4+16+100+144+196=460$ nên $x^2+y^2=100$.\nSuy ra $xy=\\dfrac{(x+y)^2-(x^2+y^2)}{2}=\\dfrac{196-100}{2}=48$.\nVậy tích hai số còn lại bằng $48$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010345",
+  "loai": "tra_loi_ngan",
+  "de": "Để thực hiện dự án “Sức khỏe học đường”, bạn lớp trưởng lớp 12A đã khảo sát thời gian ngủ trung bình mỗi đêm của 42 bạn học sinh trong lớp. Kết quả được tổng hợp trong bảng sau:\nThời gian ngủ (giờ)\n$\\left[ 4;5 \\right)$\n$\\left[ 5;6 \\right)$\n$\\left[ 6;7 \\right)$\n$\\left[ 7;8 \\right)$\n$\\left[ 8;9 \\right)$\nSố học sinh\n4\n11\n16\n8\n3\nTìm khoảng tứ phân vị của mẫu số liệu ghép nhóm trên (kết quả làm tròn đến hàng phần trăm) ?",
+  "dap_an": "1.47",
+  "loi_giai": "Cỡ mẫu $n=42$. Tần số tích lũy: $4;\\ 15;\\ 31;\\ 39;\\ 42$.\nTứ phân vị thứ nhất $Q_1$: $\\dfrac{n}{4}=10{,}5$ thuộc nhóm $[5;6)$ (tần số tích lũy trước đó là 4, tần số nhóm là 11).\n$Q_1=5+\\dfrac{10{,}5-4}{11}\\cdot1=5+\\dfrac{6{,}5}{11}\\approx5{,}59$.\nTứ phân vị thứ ba $Q_3$: $\\dfrac{3n}{4}=31{,}5$ thuộc nhóm $[7;8)$ (tần số tích lũy trước đó là 31, tần số nhóm là 8).\n$Q_3=7+\\dfrac{31{,}5-31}{8}\\cdot1=7+0{,}0625=7{,}0625$.\nKhoảng tứ phân vị: $\\Delta_Q=Q_3-Q_1=7{,}0625-5{,}5909\\approx1{,}47$.\nVậy khoảng tứ phân vị bằng $1{,}47$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010564",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty xây dựng khảo sát khách hàng xem họ có nhu cầu mua nhà ở mức giá nào. Kết quả khảo sát được ghi lại ở bảng sau:\nMức giá (triệu đồng $\\left. /\\text{m}^{2} \\right)$\n$\\left[ 10;14 \\right)$\n$\\left[ 14;18 \\right)$\n$\\left[ 18;22 \\right)$\n$\\left[ 22;26 \\right)$\n$\\left[ 26;30 \\right)$\nSố khách hàng\n54\n78\n120\n44\n13\nCông ty nên xây nhà ở mức giá nào (bao nhiêu tiền một mét vuông) để nhiều người có nhu cầu mua nhất. Biết rằng Mốt của bảng số liệu trên là căn cứ để lựa chọn (đơn vị là triệu đồng và làm tròn đến hàng đơn vị)?\n---------------Hết---------------\n(Cán bộ coi thi không giải thích gì thêm)",
+  "dap_an": "19",
+  "loi_giai": "Nhóm có tần số lớn nhất là $[18;22)$ (tần số $120$), độ dài nhóm $h=4$; tần số nhóm trước là $78$, nhóm sau là $44$.\n$M_o=18+\\dfrac{120-78}{(120-78)+(120-44)}\\cdot 4=18+\\dfrac{42}{118}\\cdot 4\\approx 19{,}42$.\nVậy công ty nên xây nhà ở mức giá khoảng $19$ triệu đồng/m$^2$ (làm tròn đến hàng đơn vị).",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010452",
+  "loai": "tra_loi_ngan",
+  "de": "Bảng dưới biểu diễn mẫu số liệu ghép nhóm về chiều cao của 42 mẫu cây ở một vườn thực vật (đơn vị: centimét). Tính khoảng tứ phân vị của mẫu số liệu ghép nhóm đó (làm tròn kết quả đến hàng phần chục).\nNhóm\nTần số\nTần số tích lũy\n[40;45)\n5\n5\n[45;50)\n10\n15\n[50;55)\n7\n22\n[55;60)\n9\n31\n[60;65)\n7\n38\n[65;70)\n4\n42\nn = 42",
+  "dap_an": "12.6",
+  "loi_giai": "Cỡ mẫu $n=42$.\nTứ phân vị thứ nhất: $\\dfrac{n}{4}=10{,}5$ thuộc nhóm $[45;50)$ (tần số tích lũy $5<10{,}5\\le15$). $Q_1=45+\\dfrac{10{,}5-5}{10}\\cdot5=47{,}75$.\nTứ phân vị thứ ba: $\\dfrac{3n}{4}=31{,}5$ thuộc nhóm $[60;65)$ (tần số tích lũy $31<31{,}5\\le38$). $Q_3=60+\\dfrac{31{,}5-31}{7}\\cdot5\\approx60{,}357$.\nKhoảng tứ phân vị: $\\Delta_Q=Q_3-Q_1\\approx60{,}357-47{,}75\\approx12{,}6$.\nVậy khoảng tứ phân vị của mẫu số liệu là $12{,}6$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010546",
+  "loai": "tra_loi_ngan",
+  "de": "Người ta ghi chép lại trọng lượng (gam) một loại cá rô được nuôi trong ao theo một chế độ đặc\nbiệt sau 6 tháng, họ có bảng tần số ghép nhóm sau:\nTrọng lượng\n$[60;70)$\n$[70;80)$\n$[80;90)$\n$[90;100)$\n$[100;110)$\n$[110;120)$\nSố cá\n13\n24\n55\n61\n31\n16\nTìm trung vị của mẫu số liệu (làm tròn đến hàng phần chục).",
+  "dap_an": "91.3",
+  "loi_giai": "Cỡ mẫu $n=13+24+55+61+31+16=200$, nên $\\dfrac n2=100$.\nTần số tích luỹ: $13;\\ 37;\\ 92;\\ 153;\\dots$ nên nhóm chứa trung vị là $[90;100)$.\n$M_e=90+\\dfrac{100-92}{61}\\cdot 10\\approx 91{,}31$.\nVậy trung vị xấp xỉ $91{,}3$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010359",
+  "loai": "tra_loi_ngan",
+  "de": "Thống kê phổ điểm môn Tin học trong kỳ thi thử tốt nghiệp THPT lần 1 năm 2026 của tỉnh Bắc Ninh ta được kết quả như sau:\nĐiểm\n$[3;4)$\n$[4;5)$\n$[5;6)$\n$[6;7)$\n$[7;8)$\n$[8;9)$\n$[9;10)$\nSố học sinh\n$2$\n$1$\n$20$\n$30$\n$38$\n$41$\n$14$\nTrung vị của mẫu số liệu ghép nhóm trên là bao nhiêu (làm tròn đến hàng phần trăm)?",
+  "dap_an": "7.53",
+  "loi_giai": "Cỡ mẫu $n=2+1+20+30+38+41+14=146$. Trung vị ứng với $\\dfrac{n}{2}=73$.\nTần số tích lũy: $2;\\ 3;\\ 23;\\ 53;\\ 91;\\dots$ Nhóm chứa trung vị là $[7;8)$ (tích lũy trước đó là 53, tần số nhóm là 38).\n$M_e=7+\\dfrac{73-53}{38}\\cdot1=7+\\dfrac{20}{38}\\approx7{,}53$.\nVậy trung vị xấp xỉ $7{,}53$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010545",
+  "loai": "tra_loi_ngan",
+  "de": "Người ta ghi chép lại trọng lượng (gam) một loại cá rô được nuôi trong ao theo một chế độ đặc\nbiệt sau 6 tháng, họ có bảng tần số ghép nhóm sau:\nTrọng lượng\n$[60;70)$\n$[70;80)$\n$[80;90)$\n$[90;100)$\n$[100;110)$\n$[110;120)$\nSố cá\n13\n24\n55\n61\n31\n16\nTìm trung vị của mẫu số liệu (làm tròn đến hàng phần chục).\n----HẾT---",
+  "dap_an": "91.3",
+  "loi_giai": "Cỡ mẫu $n=13+24+55+61+31+16=200$, nên $\\dfrac n2=100$.\nTần số tích luỹ: $13;\\ 37;\\ 92;\\ 153;\\dots$ nên nhóm chứa trung vị là $[90;100)$.\n$M_e=90+\\dfrac{100-92}{61}\\cdot 10\\approx 91{,}31$.\nVậy trung vị xấp xỉ $91{,}3$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

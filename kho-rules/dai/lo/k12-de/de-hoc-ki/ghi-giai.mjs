@@ -8,13 +8,16 @@ import pg from 'pg'
 import { insertCauBatch } from '../../../../../scripts/_kho_insert.mjs'
 import { bien } from '../../../../../scripts/kho/cau-hinh.mjs'
 const GHI = process.argv.includes('--ghi')
+const TU = +(process.argv[process.argv.indexOf('--tu') + 1] || 1)   // chỉ lấy lô ≥ số này (đợt 2: --tu 18)
+const RA = process.argv.includes('--ra') ? process.argv[process.argv.indexOf('--ra') + 1] : 'ghi-giai-ket-qua.json'
 const D = 'kho-rules/dai/lo/k12-de/de-hoc-ki/'
 const goc = new Map(JSON.parse(fs.readFileSync(D + 'goc-giai.json', 'utf8')).map((x) => [x.id, x]))
 const HONG = /omml|EQ-FAILED|\[\[eq|\[\[omml|\[\[img|\[\[shape/i
 const cauList = [], meta = [], loai = []
+const cauHgt = [], metaHgt = []   // chương PPTD (Oxyz) ⇒ kho HGT (hgt_cau_hoi), không phải dai_cau_hoi
 const bo = {}
 const dem = (k, id) => { bo[k] = (bo[k] || 0) + 1; loai.push({ id, ly_do: k }) }
-const files = fs.readdirSync(D).filter((f) => /^giai-\d+\.out\.json$/.test(f)).sort()
+const files = fs.readdirSync(D).filter((f) => /^giai-\d+\.out\.json$/.test(f)).sort().filter((f) => +f.match(/\d+/)[0] >= TU)
 for (const f of files) {
   for (const r of JSON.parse(fs.readFileSync(D + f, 'utf8'))) {
     const g = goc.get(r.id); if (!g) { dem('khong_co_goc', r.id); continue }
@@ -44,11 +47,11 @@ for (const f of files) {
         Object.assign(o, { loai_cau: 'tra_loi_ngan', noi_dung: nd, dap_an: da })
       }
     } else { dem('loai_khac', r.id); continue }
-    cauList.push(o); meta.push({ id: r.id, chuong: r.chuong })
+    if (r.chuong === 'PPTD') { cauHgt.push(o); metaHgt.push({ id: r.id, chuong: r.chuong }) } else { cauList.push(o); meta.push({ id: r.id, chuong: r.chuong }) }
   }
 }
-console.log('đủ điều kiện nhập:', cauList.length, '· loại:', JSON.stringify(bo))
-fs.writeFileSync(D + 'ghi-giai-loai.json', JSON.stringify(loai))
+console.log('đủ điều kiện nhập: dai', cauList.length, '· hgt(PPTD)', cauHgt.length, '· loại:', JSON.stringify(bo))
+fs.writeFileSync(D + RA.replace('ket-qua', 'loai'), JSON.stringify(loai))
 const c = new pg.Client({ connectionString: process.env.DATABASE_URL_RW ?? bien('DATABASE_URL')?.gia_tri })
 await c.connect()
 await c.query('begin')
@@ -59,7 +62,14 @@ try {
   console.log(`insert: mới ${moi.length} · trùng ${r.trung.length}`)
   const by = {}; for (const x of moi) { const k = meta[x.i].chuong; by[k] = (by[k] || 0) + 1 }
   console.log('theo chương:', JSON.stringify(by))
-  if (GHI) fs.writeFileSync(D + 'ghi-giai-ket-qua.json', JSON.stringify(moi.map((x) => ({ ma_cau: x.m, id: meta[x.i].id, chuong: meta[x.i].chuong, loai: cauList[x.i].loai_cau }))))
+  const rh = cauHgt.length ? await insertCauBatch({ client: c, subject: 'hgt', cauList: cauHgt }) : { maCauList: [], trung: [] }
+  const trungH = new Set(rh.trung.map((t) => t.idx))
+  const moiH = rh.maCauList.map((m, i) => ({ m, i })).filter((x) => !trungH.has(x.i))
+  console.log(`hgt (PPTD) insert: mới ${moiH.length} · trùng ${rh.trung.length}`)
+  if (GHI) fs.writeFileSync(D + RA, JSON.stringify([
+    ...moi.map((x) => ({ ma_cau: x.m, id: meta[x.i].id, chuong: meta[x.i].chuong, loai: cauList[x.i].loai_cau, kho: 'dai' })),
+    ...moiH.map((x) => ({ ma_cau: x.m, id: metaHgt[x.i].id, chuong: 'PPTD', loai: cauHgt[x.i].loai_cau, kho: 'hgt' })),
+  ]))
   await c.query(GHI ? 'commit' : 'rollback')
   console.log(GHI ? '✔ ĐÃ COMMIT' : '↩ ROLLBACK (chạy thử)')
 } catch (e) { await c.query('rollback'); console.error('LỖI → rollback:', e.message); process.exitCode = 1 }

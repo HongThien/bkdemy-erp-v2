@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "T11200000010289",
+  "loai": "tra_loi_ngan",
+  "de": "Một phân xưởng được đặt hàng sản xuất 8000 quả bóng pickleball. Hiện tại phân xưởng đang có một số máy có thể cài đặt để mỗi máy trong 1 giờ sản xuất tự động được 30 quả bóng pickleball mà không cần công nhân tham gia. Chi phí nhân công cài đặt mỗi máy là 200 nghìn đồng và vận hành hệ thống là 192 nghìn đồng mỗi giờ. Phân xưởng nên dùng bao nhiêu máy để tiết kiệm chi phí nhân công và vận hành hệ thống?",
+  "dap_an": "16",
+  "loi_giai": "Gọi $n$ là số máy sử dụng ($n>0$). Thời gian sản xuất xong là $\\dfrac{8000}{30n}=\\dfrac{800}{3n}$ giờ.\nChi phí cài đặt máy: $200n$ (nghìn đồng). Chi phí vận hành: $192\\cdot\\dfrac{800}{3n}=\\dfrac{51200}{n}$ (nghìn đồng).\nTổng chi phí: $C(n)=200n+\\dfrac{51200}{n}$.\n$C'(n)=200-\\dfrac{51200}{n^{2}}=0\\Leftrightarrow n^{2}=256\\Leftrightarrow n=16$.\n$C'(n)<0$ khi $0<n<16$ và $C'(n)>0$ khi $n>16$ nên $C(n)$ nhỏ nhất tại $n=16$.\nVậy phân xưởng nên dùng $16$ máy.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010392",
+  "loai": "tra_loi_ngan",
+  "de": "Một nhà máy sản xuất $\\text{ }x$ sản phẩm trong mỗi tháng. Chi phí sản xuất $x$ sản phẩm được cho bởi hàm chi phí $C\\left( x \\right)=16\\,000+500x-1,6x^{2}+0,004x^{3}$ (nghìn đồng). Biết giá bán của của mỗi sản phẩm là một hàm số phụ thuộc vào số lượng sản phẩm $x$ và được cho bởi công thức $p\\left( x \\right)=1700-7x$ (nghìn đồng). Hỏi mỗi tháng nhà máy nên sản xuất bao nhiêu sản phẩm để lợi nhuận thu được là lớn nhất? Biết rằng kết quả khảo sát thị trường cho thấy sản phẩm sản xuất ra sẽ được tiêu thụ hết.",
+  "dap_an": "100",
+  "loi_giai": "Doanh thu: $x\\cdot p(x)=1700x-7x^{2}$.\nLợi nhuận: $L(x)=1700x-7x^{2}-(16000+500x-1{,}6x^{2}+0{,}004x^{3})=-0{,}004x^{3}-5{,}4x^{2}+1200x-16000$ với $x>0$.\n$L'(x)=-0{,}012x^{2}-10{,}8x+1200$.\n$L'(x)=0\\Leftrightarrow x^{2}+900x-100000=0\\Leftrightarrow x=100$ hoặc $x=-1000$ (loại).\n$L'(x)>0$ khi $0<x<100$ và $L'(x)<0$ khi $x>100$ nên $L(x)$ đạt giá trị lớn nhất tại $x=100$.\nVậy mỗi tháng nên sản xuất $100$ sản phẩm.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010330",
+  "loai": "trac_nghiem",
+  "de": "Một chất điểm chuyển động theo quy luật $S=6t^{2}-2t^{3}$. Thời điểm $t$ (giây) tại đó vận tốc $v\\left( \\text{m/s} \\right)$ của chuyển động đạt giá trị lớn nhất là",
+  "lua_chon": [
+   "$t=3.$",
+   "$t=2.$",
+   "$t=1.$",
+   "$t=5.$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Vận tốc $v(t)=S'(t)=12t-6t^{2}$.\n$v'(t)=12-12t=0\\Leftrightarrow t=1$; $v''=-12<0$ nên $v$ đạt giá trị lớn nhất tại $t=1$ ($v(1)=6$).\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010308",
+  "loai": "tra_loi_ngan",
+  "de": "Từ một miếng bìa hình vuông có cạnh bằng $12$(cm), người ta cắt bỏ đi bốn hình vuông nhỏ có cạnh bằng nhau ở bốn góc, sau đó gấp lại để được một cái hộp không có nắp. Tính thể tích lớn nhất của cái hộp đó.\nĐáp số\nBài\n1\n2\n3\n4\n5\n6\nkq\n1\n3\n0,5\n43\n5,77\n128\nĐỀ 102,104,106,108",
+  "dap_an": "128",
+  "loi_giai": "Gọi $x$ (cm) là cạnh hình vuông nhỏ bị cắt, $0<x<6$.\nĐáy hộp là hình vuông cạnh $12-2x$, chiều cao hộp là $x$.\nThể tích $V(x)=x(12-2x)^{2}$.\n$V(x)=4x^{3}-48x^{2}+144x$, $V'(x)=12x^{2}-96x+144=12(x-2)(x-6)$.\n$V'(x)=0\\Leftrightarrow x=2$ (nhận) hoặc $x=6$ (loại).\n$V'>0$ trên $(0;2)$, $V'<0$ trên $(2;6)$ nên $V$ đạt lớn nhất tại $x=2$.\n$V(2)=2\\cdot 8^{2}=128$.\nVậy thể tích lớn nhất của hộp là $128$ ($\\text{cm}^{3}$).",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010481",
+  "loai": "tra_loi_ngan",
+  "de": "Biết đồ thị hàm số $y=x^{3}-3x^{2}-9x-1$ có hai điểm cực trị $A$ và $B$. Phương trình đường thẳng $AB$ là $y=ax+b$ ($a,b\\in\\mathbb{R}$). Tính tổng $a+b$.",
+  "dap_an": "-12",
+  "loi_giai": "$y'=3x^{2}-6x-9=0\\Leftrightarrow x=-1$ hoặc $x=3$.\n$y(-1)=-1-3+9-1=4$ nên $A(-1;4)$; $y(3)=27-27-27-1=-28$ nên $B(3;-28)$.\nĐường thẳng $AB$: hệ số góc $\\dfrac{-28-4}{3+1}=-8$, nên $y=-8(x+1)+4=-8x-4$.\nSuy ra $a=-8,\\ b=-4$.\nVậy $a+b=-12$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010253",
+  "loai": "tra_loi_ngan",
+  "de": "Công ty của Bác An định làm một bể chứa nước có dạng hình trụ có nắp đậy bằng thép không gỉ có thể tích $2\\pi\\,\\,(m^{3})$ để đựng nước. Biết giá mỗi mét vuông thép không gỉ là 500 nghìn đồng. Hỏi chi phí nguyên vật liệu làm mỗi bể nước thấp nhất là bao nhiêu? ( kết quả tính bằng đơn vị nghìn đồng và lấy $\\pi\\,=3,14$)\n------ HẾT ------",
+  "dap_an": "9420",
+  "loi_giai": "Gọi bán kính đáy là $r$ (m), chiều cao $h$ (m). Thể tích $\\pi r^{2}h=2\\pi\\Rightarrow h=\\dfrac{2}{r^{2}}$.\nDiện tích toàn phần: $S=2\\pi r^{2}+2\\pi rh=2\\pi r^{2}+\\dfrac{4\\pi}{r}$.\n$S'=4\\pi r-\\dfrac{4\\pi}{r^{2}}$, $S'=0\\Leftrightarrow r=1$.\n$S'<0$ khi $0<r<1$ và $S'>0$ khi $r>1$ nên $S$ nhỏ nhất tại $r=1$: $S=6\\pi=18{,}84$ m$^{2}$.\nChi phí thấp nhất: $18{,}84\\cdot 500=9420$ nghìn đồng.\nVậy chi phí thấp nhất là $9420$ nghìn đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010375",
+  "loai": "tra_loi_ngan",
+  "de": "Một hộ sản xuất kinh doanh hạt điều sấy mỗi ngày sản xuất được $x$ kg $\\left( 5\\le x\\le 20 \\right)$. Tổng chi phí sản xuất $x$ kg được cho bởi hàm chi phí $C\\left( x \\right)=x^{3}-3x^{2}+19x+300$(đơn vị: nghìn đồng). Giả sử hộ sản xuất này bán hết sản phẩm mỗi ngày với giá $316$ nghìn đồng/kg. Hỏi hộ sản xuất này cần sản xuất và bán ra mỗi ngày bao nhiêu kilôgam hạt điều để thu được lợi nhuận lớn nhất?\n------ HẾT ------",
+  "dap_an": "11",
+  "loi_giai": "Doanh thu khi bán $x$ kg là $316x$ (nghìn đồng).\nLợi nhuận: $f(x)=316x-(x^{3}-3x^{2}+19x+300)=-x^{3}+3x^{2}+297x-300$, với $5\\le x\\le20$.\n$f'(x)=-3x^{2}+6x+297$.\n$f'(x)=0\\Leftrightarrow x^{2}-2x-99=0\\Leftrightarrow x=11$ hoặc $x=-9$ (loại vì $x\\in[5;20]$).\n$f(5)=1135$; $f(11)=1999$; $f(20)=-1160$.\nLợi nhuận lớn nhất tại $x=11$.\nVậy cần sản xuất và bán $11$ kg mỗi ngày.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010250",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=\\frac{1}{3}x^{3}\\text{–}2mx^{2}+\\left( m+3 \\right)x\\text{–}5+m$, với m là tham số. Hỏi có bao nhiêu giá trị nguyên của m để hàm số đồng biến trên khoảng $\\left( -\\infty;+\\infty \\right)$?\n------ HẾT ------",
+  "dap_an": "2",
+  "loi_giai": "$y'=x^{2}-4mx+m+3$.\nHàm số đồng biến trên $\\mathbb{R}$ khi $y'\\ge 0$ với mọi $x$, tức $\\Delta'=4m^{2}-(m+3)\\le 0$.\n$4m^{2}-m-3\\le 0\\Leftrightarrow (4m+3)(m-1)\\le 0\\Leftrightarrow -\\dfrac{3}{4}\\le m\\le 1$.\nCác giá trị nguyên của $m$ là $0$ và $1$.\nVậy có $2$ giá trị nguyên của $m$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010478",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=\\frac{2x-3}{x+1}$ .Gọi đường thẳng tiệm cận đứng và tiệm cận ngang của đồ thị hàm số lần lượt có phương trình: $x=a;y=b$. Khi đó tổng a +3b bằng bao nhiêu?",
+  "dap_an": "5",
+  "loi_giai": "Tiệm cận đứng: $x=-1$ (mẫu bằng $0$, tử $\\to-5\\ne0$), nên $a=-1$.\nTiệm cận ngang: $\\lim_{x\\to\\pm\\infty}\\dfrac{2x-3}{x+1}=2$, nên $y=2$, $b=2$.\nVậy $a+3b=-1+6=5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010416",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=x^{3}-4x^{2}+5x+2$. Hàm số có điểm cực đại và điểm cực tiểu lần lượt là $x_{1},x_{2}$. Tính giá trị biểu thức $A=x_{1}-3x_{2}$.",
+  "dap_an": "-4",
+  "loi_giai": "$y'=3x^{2}-8x+5=(x-1)(3x-5)$.\n$y'=0\\Leftrightarrow x=1$ hoặc $x=\\dfrac{5}{3}$.\nHệ số của $x^{3}$ dương nên $y'$ đổi dấu từ $+$ sang $-$ tại $x=1$ (cực đại) và từ $-$ sang $+$ tại $x=\\dfrac{5}{3}$ (cực tiểu).\nDo đó $x_{1}=1$, $x_{2}=\\dfrac{5}{3}$.\n$A=x_{1}-3x_{2}=1-3\\cdot\\dfrac{5}{3}=-4$.\nVậy $A=-4$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010410",
+  "loai": "tra_loi_ngan",
+  "de": "Nếu một điện trở $R$ được nối với một ắc-quy có suất điện động $E$ và điện trở trong $r$ thì công suất tiêu thụ trên điện trở $R$ là $P=\\frac{E^{2}R}{(R+r)^{2}},$ trong đó $R,\\,r$ được tính bằng ôm $(\\Omega),$ $E$ được tính bằng vôn $(\\text{V})$ và $P$ được tính bằng oát $(\\text{W}).$ Cho $E=12\\,(\\text{V})$ và $r=2\\,(\\Omega),$ còn $R$ biến thiên thì công suất $P$ đạt giá trị cực đại bằng bao nhiêu $\\text{W}?$",
+  "dap_an": "18",
+  "loi_giai": "Công suất: $P=\\dfrac{E^{2}R}{(R+r)^{2}}=\\dfrac{E^{2}}{R+2r+\\dfrac{r^{2}}{R}}$.\nTheo bất đẳng thức Cauchy: $R+\\dfrac{r^{2}}{R}\\ge 2r$, nên $P\\le\\dfrac{E^{2}}{4r}$, dấu \"$=$\" xảy ra khi $R=r$.\nVới $E=12$, $r=2$: $P_{\\max}=\\dfrac{12^{2}}{4\\cdot 2}=\\dfrac{144}{8}=18$.\nVậy công suất cực đại bằng $18$ W.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010265",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=\\left( x^{2}-2 \\right).e^{2x}$. Tính giá trị cực tiểu của hàm số đã cho. (Làm tròn đến hàng phần trăm)",
+  "dap_an": "-7.39",
+  "loi_giai": "$y'=2xe^{2x}+2\\left(x^{2}-2\\right)e^{2x}=2e^{2x}\\left(x^{2}+x-2\\right)=2e^{2x}(x+2)(x-1)$.\n$y'=0\\Leftrightarrow x=-2$ hoặc $x=1$.\n$y'$ đổi dấu từ $+$ sang $-$ tại $x=-2$ và từ $-$ sang $+$ tại $x=1$ nên hàm số đạt cực tiểu tại $x=1$.\n$y(1)=(1-2)e^{2}=-e^{2}\\approx -7{,}39$.\nVậy giá trị cực tiểu của hàm số xấp xỉ $-7{,}39$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010244",
+  "loai": "tra_loi_ngan",
+  "de": "Một cơ sở sản xuất khăn mặt đang bán mỗi chiếc khăn với giá 30.000 đồng một chiếc và mỗi tháng cơ sở bán được trung bình 3000 chiếc khăn. Cơ sở sản xuất đang có kế hoạch tăng giá bán để có lợi nhận tốt hơn. Sau khi tham khảo thị trường, người quản lý thấy rằng nếu từ mức giá 30.000 đồng mà cứ tăng giá thêm 1.000 đồng thì mỗi tháng sẽ bán ít hơn 100 chiếc. Biết vốn sản xuất một chiếc khăn không thay đổi là 18.000 đồng. Để đạt lợi nhuận lớn nhất thì mỗi chiếc khăn cần tăng thêm x đồng. Tính giá trị của x.",
+  "dap_an": "9000",
+  "loi_giai": "Gọi $t$ là số lần tăng giá (mỗi lần $1000$ đồng); khi đó giá bán là $30000+1000t$ và số khăn bán được là $3000-100t$.\nLợi nhuận mỗi chiếc: $30000+1000t-18000=12000+1000t$.\nTổng lợi nhuận: $L(t)=(12000+1000t)(3000-100t)=-100000t^{2}+1800000t+36000000$.\n$L(t)$ đạt giá trị lớn nhất tại $t=-\\dfrac{1800000}{2\\cdot(-100000)}=9$.\nSố tiền tăng thêm mỗi chiếc: $x=9\\cdot 1000=9000$ đồng.\nVậy $x=9000$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010488",
+  "loai": "tra_loi_ngan",
+  "de": "Nhà máy $A$ chuyên sản xuất một loại sản phẩm cho nhà máy $B$. Hai nhà máy thỏa thuận rằng, hàng tháng $A$ cung cấp cho $B$ số lượng sản phẩm theo đơn đặt hàng của $B$ (tối đa 100 tấn sản phẩm). Nếu số lượng đặt hàng là $x$ tấn sản phẩm thì giá bán cho mỗi tấn sản phẩm là $p\\left( x \\right)=125-0,01x^{2}$ (triệu đồng). Chi phí để $A$ sản xuất $x$ tấn sản phẩm trong một tháng là $C\\left( x \\right)=120+17x$ (triệu đồng) ( gồm 120 triệu đồng chi phí cố định và 17 triệu đồng cho mỗi tấn sản phẩm). Hỏi $A$ bán cho $B$ bao nhiêu tấn sản phẩm mỗi tháng thì thu được lợi nhuận cao nhất?",
+  "dap_an": "60",
+  "loi_giai": "Doanh thu: $x\\cdot p(x)=125x-0{,}01x^{3}$ (triệu đồng). Lợi nhuận: $L(x)=125x-0{,}01x^{3}-(120+17x)=-0{,}01x^{3}+108x-120$, $x\\in[0;100]$.\n$L'(x)=-0{,}03x^{2}+108=0\\Leftrightarrow x^{2}=3600\\Leftrightarrow x=60$ (nhận).\n$L(0)=-120,\\ L(60)=4200,\\ L(100)=680$.\nVậy lợi nhuận cao nhất khi $A$ bán cho $B$ $60$ tấn sản phẩm mỗi tháng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010312",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=\\frac{x-1}{2x-3}\\text{ }\\left( C \\right)$. Gọi $I$ là giao điểm của hai đường tiệm cân của đồ thị hàm số. Đường thẳng $2x+y-1=0$ cắt tiệm cận đứng tại $A$ và cắt tiệm cận ngang tại $B$. Tính diện tích của tam giác $IAB$, kết quả làm tròn đến hàng phần trăm.",
+  "dap_an": "1.56",
+  "loi_giai": "Đồ thị có tiệm cận đứng $x=\\dfrac{3}{2}$ và tiệm cận ngang $y=\\dfrac{1}{2}$ nên $I\\left(\\dfrac{3}{2};\\dfrac{1}{2}\\right)$.\nĐường thẳng $y=1-2x$ cắt $x=\\dfrac{3}{2}$ tại $A\\left(\\dfrac{3}{2};-2\\right)$.\nĐường thẳng $y=1-2x$ cắt $y=\\dfrac{1}{2}$ tại $B\\left(\\dfrac{1}{4};\\dfrac{1}{2}\\right)$.\nTam giác $IAB$ vuông tại $I$ (hai tiệm cận vuông góc) với $IA=\\left|-2-\\dfrac{1}{2}\\right|=\\dfrac{5}{2}$, $IB=\\dfrac{3}{2}-\\dfrac{1}{4}=\\dfrac{5}{4}$.\n$S_{IAB}=\\dfrac{1}{2}\\cdot\\dfrac{5}{2}\\cdot\\dfrac{5}{4}=\\dfrac{25}{16}\\approx 1{,}56$.\nVậy diện tích tam giác $IAB$ xấp xỉ $1{,}56$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010450",
+  "loai": "tra_loi_ngan",
+  "de": "Một xe ô tô chở khách du lịch có sức chứa tối đa là $16$ hành khách. Trong một khu du lịch, một đoàn khách gồm $22$ người đang đi bộ và muốn thuê xe về khách sạn. Lái xe đưa ra thỏa thuận với đoàn khách du lịch như sau: Nếu một chuyến xe chở $x$ (người) thì giá tiền cho mỗi người là $\\frac{(40-x)^{2}}{2}$(nghìn đồng). Với thỏa thuận như trên thì lái xe có thể thu được nhiều nhất bao nhiêu triệu đồng từ một chuyến chở khách ?(đáp số làm tròn đến hàng phần trăm).\n------ HẾT ------\nThí sinh không được sử dụng tài liệu. Cán bộ coi thi không giải thích gì thêm!",
+  "dap_an": "4.74",
+  "loi_giai": "Với $x$ người trên chuyến xe $(1\\le x\\le 16)$, số tiền thu được là $f(x)=x\\cdot\\dfrac{(40-x)^{2}}{2}$ (nghìn đồng).\n$f'(x)=\\dfrac{(40-x)^{2}-2x(40-x)}{2}=\\dfrac{(40-x)(40-3x)}{2}$.\nTrên $[1;16]$: $f'(x)=0\\Leftrightarrow x=\\dfrac{40}{3}$; $f$ tăng trên $\\left(0;\\dfrac{40}{3}\\right)$ và giảm trên $\\left(\\dfrac{40}{3};16\\right]$.\nVì $x$ nguyên nên so sánh $f(13)=\\dfrac{13\\cdot27^{2}}{2}=4738{,}5$ và $f(14)=\\dfrac{14\\cdot26^{2}}{2}=4732$.\nDo đó số tiền lớn nhất là $4738{,}5$ nghìn đồng $\\approx 4{,}74$ triệu đồng (cũng cho kết quả $4{,}74$ nếu lấy $x=\\dfrac{40}{3}$).\nVậy lái xe thu được nhiều nhất khoảng $4{,}74$ triệu đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010453",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty sản xuất dụng cụ thể thao nhận được một đơn đặt hàng sản xuất $8000$ quả bóng pickleball. Công ty này sở hữu một số máy móc, mỗi máy có thể sản xuất $30$ quả bóng trong một giờ. Chi phí thiết lập các máy này là $200$ nghìn đồng cho mỗi máy. Khi được thiết lập, hoạt động sản xuất sẽ hoàn toàn diễn ra tự động dưới sự giám sát. Số tiền phải trả cho người giám sát là $192$ nghìn đồng một giờ. Số máy móc công ty nên sử dụng là bao nhiêu để chi phí hoạt động là thấp nhất?\n-------- HẾT--------",
+  "dap_an": "16",
+  "loi_giai": "Gọi $x$ là số máy sử dụng $(x>0)$. Thời gian sản xuất $8000$ quả bóng là $\\dfrac{8000}{30x}=\\dfrac{800}{3x}$ giờ.\nChi phí thiết lập: $200x$ (nghìn đồng); chi phí giám sát: $192\\cdot\\dfrac{800}{3x}=\\dfrac{51200}{x}$ (nghìn đồng).\nTổng chi phí $f(x)=200x+\\dfrac{51200}{x}$.\nTheo bất đẳng thức Cô-si: $f(x)\\ge2\\sqrt{200x\\cdot\\dfrac{51200}{x}}=6400$, dấu bằng khi $200x=\\dfrac{51200}{x}\\Leftrightarrow x^{2}=256\\Leftrightarrow x=16$.\nVậy công ty nên sử dụng $16$ máy.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010288",
+  "loai": "tra_loi_ngan",
+  "de": "Các đường tiệm cận của đồ thị hàm số $y=\\frac{-8x+4}{2x-3}$ tạo với hai trục tọa độ một hình chữ nhật có diện tích bằng bao nhiêu?",
+  "dap_an": "6",
+  "loi_giai": "Đồ thị $y=\\dfrac{-8x+4}{2x-3}$ có tiệm cận đứng $x=\\dfrac{3}{2}$ và tiệm cận ngang $y=\\dfrac{-8}{2}=-4$.\nHai tiệm cận cùng hai trục toạ độ tạo thành hình chữ nhật có hai kích thước là $\\left|\\dfrac{3}{2}\\right|$ và $|-4|$.\nDiện tích $S=\\dfrac{3}{2}\\cdot 4=6$.\nVậy diện tích bằng $6$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010257",
+  "loai": "tra_loi_ngan",
+  "de": "Hàm số $y=\\,f(x)$ có $y'=\\left( x^{2}-1 \\right)\\left( 3x-2 \\right)^{3}$. Hỏi hàm số có bao nhiêu điểm cực đại ?",
+  "dap_an": "1",
+  "loi_giai": "$y'=0\\Leftrightarrow x=-1$, $x=1$ hoặc $x=\\dfrac{2}{3}$; sắp xếp $-1<\\dfrac{2}{3}<1$.\nVới $x>1$: $y'>0$. Với $\\dfrac{2}{3}<x<1$: $x^{2}-1<0$, $(3x-2)^{3}>0$ nên $y'<0$.\nVới $-1<x<\\dfrac{2}{3}$: $x^{2}-1<0$, $(3x-2)^{3}<0$ nên $y'>0$. Với $x<-1$: $x^{2}-1>0$, $(3x-2)^{3}<0$ nên $y'<0$.\n$y'$ đổi dấu từ $+$ sang $-$ chỉ tại $x=\\dfrac{2}{3}$, đổi dấu từ $-$ sang $+$ tại $x=-1$ và $x=1$.\nVậy hàm số có $1$ điểm cực đại.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010339",
+  "loai": "tra_loi_ngan",
+  "de": "Thể tích $V$ của 1kg nước ở nhiệt độ $T\\,\\,\\left( 0^{\\circ}\\le T\\le 30^{\\circ} \\right)$ được cho bởi công thức:\n$V=999,87-0,06426T+0,0085043T^{2}-0,0000679T^{3}$. (Theo: J. Stewart, Calculus, Seventh Edition,\nBrooks/Cole, CENGAGE Learning 2012). Gọi $\\left( a^{\\circ};b^{\\circ} \\right)$ là khoảng nhiệt độ mà trong khoảng đó khi nhiệt độ\ntăng thì thể tích $V$ của 1kg nước cũng tăng. Tính giá trị biểu thức $P=b-a$ ($a,\\,b$ làm tròn đến hàng đơn vị).",
+  "dap_an": "26",
+  "loi_giai": "$V'(T)=-0{,}06426+0{,}0170086T-0{,}0002037T^{2}$.\n$V'(T)=0\\Leftrightarrow T\\approx 3{,}97$ hoặc $T\\approx 79{,}53$.\n$V'(T)>0$ khi $3{,}97<T<79{,}53$; trong $[0;30]$ thì $V$ tăng trên $(3{,}97;30)$.\nLàm tròn: $a=4$, $b=30$.\nVậy $P=b-a=30-4=26$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010283",
+  "loai": "tra_loi_ngan",
+  "de": "Trong hệ trục toạ độ $\\left( Oxy \\right)$, cho đồ thị hàm số $\\left( C \\right)$: $y=\\frac{x^{2}+x+1}{x+1};x>-1$ mô tả chuyển động của một chiếc thuyền trên biển, một trạm phát sóng đặt tại điểm $I\\left( -1;-1 \\right)$. Biết hoành độ điểm $M$ thuộc đồ thị $\\left( C \\right)$ mà tại đó thuyền thu được sóng tốt nhất là $x_{0}=\\frac{1}{\\sqrt[n]{a}}-b$(Loại trừ các điều kiện ảnh hưởng đến việc thu phát sóng). Tính $a.n+b$?",
+  "dap_an": "9",
+  "loi_giai": "Ta có $y=\\dfrac{x^{2}+x+1}{x+1}=x+\\dfrac{1}{x+1}$ với $x>-1$. Sóng thu tốt nhất khi khoảng cách $MI$ nhỏ nhất.\nĐặt $t=x+1>0$. Khi đó $M\\left(t-1;\\,t+\\dfrac{1}{t}-1\\right)$ và $\\overrightarrow{IM}=\\left(t;\\,t+\\dfrac{1}{t}\\right)$.\n$IM^{2}=t^{2}+\\left(t+\\dfrac{1}{t}\\right)^{2}=2t^{2}+2+\\dfrac{1}{t^{2}}$.\nXét $g(t)=2t^{2}+\\dfrac{1}{t^{2}}+2$, $g'(t)=4t-\\dfrac{2}{t^{3}}=0\\Leftrightarrow t^{4}=\\dfrac{1}{2}\\Leftrightarrow t=\\dfrac{1}{\\sqrt[4]{2}}$.\nLập bảng biến thiên, $g(t)$ nhỏ nhất tại $t=\\dfrac{1}{\\sqrt[4]{2}}$, suy ra $x_{0}=\\dfrac{1}{\\sqrt[4]{2}}-1$.\nĐối chiếu $x_{0}=\\dfrac{1}{\\sqrt[n]{a}}-b$ ta có $n=4$, $a=2$, $b=1$.\nVậy $a\\cdot n+b=2\\cdot 4+1=9$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010236",
+  "loai": "tra_loi_ngan",
+  "de": "Mỗi tháng cơ sở bán được trung bình $3000$ chiếc khăn. Cơ sở sản xuất đang có kế hoạch tăng giá bán để có lợi nhận tốt hơn. Sau khi tham khảo thị trường, người quản lý thấy rằng nếu từ mức giá $30$ nghìn đồng mà cứ tăng giá thêm $1$ nghìn đồng thì mỗi tháng sẽ bán ít hơn $100$ chiếc. Biết vốn sản xuất một chiếc khăn không thay đổi là $18$ nghìn đồng. Hỏi cơ sở sản xuất phải bán với giá mới là bao nhiêu để đạt lợi nhuận lớn nhất (đơn vị tính là nghìn đồng).\n------ HẾT ------",
+  "dap_an": "39",
+  "loi_giai": "Gọi $t$ là số lần tăng giá (mỗi lần $1$ nghìn đồng).\nGiá bán: $30+t$ (nghìn đồng); số khăn bán được: $3000-100t$.\nLợi nhuận mỗi chiếc: $30+t-18=12+t$.\n$L(t)=(12+t)(3000-100t)=-100t^{2}+1800t+36000$.\n$L(t)$ là tam thức bậc hai có hệ số $a<0$ nên đạt max tại $t=-\\dfrac{1800}{2\\cdot(-100)}=9$.\nGiá bán mới là $30+9=39$ nghìn đồng.\nVậy giá bán mới là $39$ nghìn đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010297",
+  "loai": "tra_loi_ngan",
+  "de": "(0.5 điểm). Một công ty sản xuất đồ chơi A phải chi 30 000 USD để thiết lập dây chuyền sản xuất ban đầu. Sau đó, cứ sản xuất được một sản phẩm đồ chơi A, công ty phải trả 4 USD cho nguyên liệu thô và nhân công. Gọi $x(x\\ge 1)$ là số đồ chơi mà công ty đã sản xuất và $T(x)$ (đơn vị USD) là tổng số tiền bao gồm cả chi phí ban đầu mà công ty phải chi trả khi sản xuất $x$ đồ chơi A. Người ta xác định chi phí trung bình cho mỗi sản phẩm đồ chơi A là $M(x)=\\frac{T(x)}{x}$. Khi $x$ đủ lớn ($x\\rightarrow+\\infty$) thì chi phí trung bình cho mỗi sản phẩm đồ chơi A gần nhất là bao nhiêu USD?",
+  "dap_an": "4",
+  "loi_giai": "Tổng chi phí khi sản xuất $x$ đồ chơi: $T(x)=30000+4x$ (USD).\nChi phí trung bình: $M(x)=\\dfrac{30000+4x}{x}=4+\\dfrac{30000}{x}$.\nKhi $x\\to+\\infty$ thì $\\dfrac{30000}{x}\\to 0$ nên $M(x)\\to 4$.\nVậy chi phí trung bình mỗi sản phẩm gần nhất $4$ USD.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010311",
+  "loai": "tra_loi_ngan",
+  "de": "Đồ thị hàm số $y=x^{3}-3x^{2}+m$ có điểm cực tiểu là $M\\left( a;b \\right)$ và $a+b=1$. Tìm giá trị $m$.\n------ HẾT ------",
+  "dap_an": "3",
+  "loi_giai": "$y'=3x^{2}-6x=0\\Leftrightarrow x=0$ hoặc $x=2$; $y''=6x-6$.\n$y''(2)=6>0$ nên $x=2$ là điểm cực tiểu, $y(2)=8-12+m=m-4$.\nSuy ra $M(2;m-4)$, $a=2$, $b=m-4$.\n$a+b=1\\Leftrightarrow 2+m-4=1\\Leftrightarrow m=3$.\nVậy $m=3$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010366",
+  "loai": "tra_loi_ngan",
+  "de": "Một doanh nghiệp dự định sản xuất không quá 500 sản phẩm. Nếu doanh nghiệp sản xuất $x$ sản phẩm ($1\\le x\\le 500$) thì doanh thu nhận được khi bán hết số sản phẩm đó là $D(x)=x^{3}-1999x^{2}+1001000x+250000$ (đồng), trong khi chi phí sản xuất bình quân cho một sản phẩm là $C(x)=x+1000+\\frac{250000}{x}$ (đồng). Doanh nghiệp cần sản xuất bao nhiêu sản phẩm để lợi nhuận thu được là lớn nhất?\n---------- HẾT ----------",
+  "dap_an": "333",
+  "loi_giai": "Chi phí sản xuất $x$ sản phẩm: $x\\cdot C(x)=x^2+1000x+250000$.\nLợi nhuận: $L(x)=D(x)-xC(x)=x^3-2000x^2+1000000x$, với $1\\le x\\le500$, $x\\in\\mathbb{N}$.\n$L'(x)=3x^2-4000x+1000000=0\\Leftrightarrow x=\\dfrac{1000}{3}$ hoặc $x=1000$ (loại vì $x\\le500$).\nTrên $[1;500]$: $L'(x)>0$ khi $x<\\dfrac{1000}{3}$, $L'(x)<0$ khi $\\dfrac{1000}{3}<x\\le500$, nên $L$ đạt max quanh $x=\\dfrac{1000}{3}\\approx333{,}3$.\nVì $x$ nguyên, so sánh $L(333)=333\\cdot667^2=148\\,148\\,037$ và $L(334)=334\\cdot666^2=148\\,147\\,704$.\n$L(333)>L(334)$ nên lợi nhuận lớn nhất khi $x=333$.\nVậy cần sản xuất $333$ sản phẩm.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010331",
+  "loai": "tra_loi_ngan",
+  "de": "Số lượng sản phẩm của một công ty bán được trong $x$ (tháng) được tính theo công thức $S\\left( x \\right)=400\\left( 2+\\frac{3}{x+2} \\right)$ với $x\\ge 1$ . Ta coi $y=S\\left( x \\right)$ là một hàm số xác định trên $\\left[ 1;+\\infty \\right)$ . Khi đó, hãy tính xem số lượng sản phẩm của công ty bán được trong một khoảng thời gian dài không thể thấp hơn bao nhiêu sản phẩm ?",
+  "dap_an": "800",
+  "loi_giai": "$S(x)=400\\left(2+\\dfrac{3}{x+2}\\right)=800+\\dfrac{1200}{x+2}>800$, $\\forall x\\ge 1$.\n$\\lim\\limits_{x\\to+\\infty}S(x)=800$ nên $S(x)$ giảm dần và tiến tới $800$ nhưng luôn lớn hơn $800$.\nVậy số sản phẩm bán được trong thời gian dài không thể thấp hơn $800$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010249",
+  "loai": "tra_loi_ngan",
+  "de": "Biết rằng tiệm cận xiên của đồ thị hàm số $y=\\frac{x^{2}-3x+4}{x-1}$ là đường thẳng có dạng $y=ax+b$ với $a,b\\in\\mathbb{R}$. Tính giá trị của $P=24a-b$.",
+  "dap_an": "26",
+  "loi_giai": "Chia đa thức: $x^{2}-3x+4=(x-1)(x-2)+2$.\nDo đó $y=x-2+\\dfrac{2}{x-1}$.\nTiệm cận xiên là $y=x-2$ nên $a=1$, $b=-2$.\n$P=24a-b=24+2=26$.\nVậy $P=26$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010274",
+  "loai": "tra_loi_ngan",
+  "de": "Một nhà máy $A$ chuyên sản xuất một loại sản phẩm cho nhà máy $B$, nhà máy $A$ chỉ bán sản phẩm cho nhà máy $B$ và nhà máy $B$ cam kết thu mua hết số sản phẩm mà nhà máy $A$ sản xuất được. Nhà máy $A$ có khả năng sản xuất được tối đa là 200 tấn sản phẩm trong 1 tháng. Nếu bán ra $x$ tấn sản phẩm cho nhà máy $B$ thì giá bán mỗi tấn sản phẩm là $55-0,0002x^{2}$ triệu đồng. Trong một tháng nhà máy $A$ phải chi phí cho nhân công và chi cho khấu hao máy móc một lượng cố định là 155 triệu đồng, ngoài ra khi sản xuất mỗi tấn sản phẩm thì nhà máy phải chi phí thêm cho mua nguyên liệu là 33 triệu đồng. Biết rằng nhà máy $A$ phải nộp $7\\%$ doanh thu cho cơ quan thuế. Tính lợi nhuận sau thuế (lợi nhuận sau khi đã trừ tiền thuế) lớn nhất thu được trong 1 tháng của nhà máy $A$ (đơn vị tính là triệu đồng và kết quả làm tròn đến hàng đơn vị).",
+  "dap_an": "2027",
+  "loi_giai": "Doanh thu khi bán $x$ tấn: $R(x)=x(55-0{,}0002x^{2})=55x-0{,}0002x^{3}$ (triệu đồng).\nThuế $7\\%$ doanh thu nên doanh thu sau thuế là $0{,}93R(x)$.\nLợi nhuận sau thuế: $L(x)=0{,}93(55x-0{,}0002x^{3})-155-33x=-0{,}000186x^{3}+18{,}15x-155$, với $0\\le x\\le 200$.\n$L'(x)=-0{,}000558x^{2}+18{,}15=0\\Leftrightarrow x=\\sqrt{\\dfrac{18{,}15}{0{,}000558}}\\approx 180{,}35$ (nhận, vì $0\\le x\\le 200$).\nLập bảng biến thiên: $L'(x)>0$ với $0\\le x<180{,}35$ và $L'(x)<0$ với $180{,}35<x\\le 200$, nên $L$ đạt giá trị lớn nhất tại $x\\approx 180{,}35$.\n$L(180{,}35)\\approx 2027{,}26$ (triệu đồng).\nVậy lợi nhuận sau thuế lớn nhất khoảng $2027$ triệu đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010329",
+  "loai": "trac_nghiem",
+  "de": "Tiệm cận xiên của đồ thị hàm số $y=\\frac{2x^{2}+3x-1}{x+2}$ tạo với hai trục tọa độ một tam giác có diện tích bằng",
+  "lua_chon": [
+   "$0,25$(đvdt).",
+   "$0,5$(đvdt).",
+   "$1$(đvdt).",
+   "$1,5$(đvdt)."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Chia đa thức: $y=\\dfrac{2x^{2}+3x-1}{x+2}=2x-1+\\dfrac{1}{x+2}$ nên tiệm cận xiên là $y=2x-1$.\nĐường thẳng này cắt $Ox$ tại $\\left(\\dfrac{1}{2};0\\right)$ và cắt $Oy$ tại $(0;-1)$.\nDiện tích tam giác: $S=\\dfrac{1}{2}\\cdot\\dfrac{1}{2}\\cdot 1=0{,}25$ (đvdt).\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010302",
+  "loai": "tra_loi_ngan",
+  "de": "Giả sử hàm số $f\\left( x \\right)=x^{3}-6x^{2}+9x-1$ đạt cực đại tại $x=a$ và đạt cực tiểu tại $x=b$. Giá trị\ncủa biểu thức $A=2a+b$ là bao nhiêu?\n------ HẾT ------\nSỞ GIÁO DỤC VÀ ĐÀO TẠO NINH BÌNH\nTrường THPT Kim Sơn C\n--------------------\n(Đề thi có 06 trang)\nĐỀ KIỂM TRA GIỮA KỲ I LỚP 12\nNĂM HỌC 2024 - 2025\nMÔN: TOÁN\nThời gian làm bài: 90 phút\n(không kể thời gian phát đề)\nHọ và tên: ............................................................................\nSố báo danh: .......\nMã đề 103",
+  "dap_an": "5",
+  "loi_giai": "Ta có $f'(x)=3x^{2}-12x+9=3(x-1)(x-3)$. $f'(x)=0\\Leftrightarrow x=1$ hoặc $x=3$.\n$f'(x)>0$ trên $(-\\infty;1)$, $f'(x)<0$ trên $(1;3)$, $f'(x)>0$ trên $(3;+\\infty)$.\nHàm số đạt cực đại tại $x=1$ nên $a=1$, đạt cực tiểu tại $x=3$ nên $b=3$.\nVậy $A=2a+b=2+3=5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010252",
+  "loai": "tra_loi_ngan",
+  "de": "Sau khi tiêm một loại thuốc vào cơ thể bệnh nhân, nồng độ thuốc trong máu (tính theo $mg/cm^{3}$) thay đổi theo công thức $C(t)=\\frac{0,15t}{t^{2}+1}$, trong đó $t$ là thời gian (tính theo giờ) kể từ thời điểm tiêm thuốc, $t\\ge 0$. Nồng độ thuốc trong máu đạt giá trị lớn nhất là bao nhiêu $mg/cm^{3}$ (kết quả làm tròn đến hàng phần trăm)?\n---------- HẾT ----------\nThí sinh không được sử dụng tài liệu. Giám thị không giải thích gì thêm.\nHọ và tên giám thị: ….……………………………………… Chữ ký: …………………………..",
+  "dap_an": "0.08",
+  "loi_giai": "$C'(t)=0{,}15\\cdot\\dfrac{(t^{2}+1)-2t^{2}}{(t^{2}+1)^{2}}=0{,}15\\cdot\\dfrac{1-t^{2}}{(t^{2}+1)^{2}}$.\nVới $t\\ge 0$: $C'(t)=0\\Leftrightarrow t=1$; $C'>0$ khi $0\\le t<1$ và $C'<0$ khi $t>1$.\nDo đó $C$ đạt giá trị lớn nhất tại $t=1$: $C(1)=\\dfrac{0{,}15}{2}=0{,}075\\approx 0{,}08$.\nVậy nồng độ thuốc lớn nhất xấp xỉ $0{,}08$ $mg/cm^{3}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010327",
+  "loai": "trac_nghiem",
+  "de": "Giá trị lớn nhất của hàm số $y=x+\\frac{4}{x+1}$ trên đoạn $\\left[ 0;3 \\right]$ bằng",
+  "lua_chon": [
+   "$5$.",
+   "$3$.",
+   "$-5$.",
+   "$4$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "$y'=1-\\dfrac{4}{(x+1)^{2}}=0\\Leftrightarrow x=1$ (nhận, vì $x+1>0$ trên $[0;3]$).\n$y(0)=4$, $y(1)=3$, $y(3)=4$.\nGiá trị lớn nhất bằng $4$. Chọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010254",
+  "loai": "tra_loi_ngan",
+  "de": "Một khách sạn có 60 phòng cho thuê. Biết rằng nếu cho thuê mỗi phòng với giá 500 nghìn đồng một ngày thì tất cả các phòng đều có người thuê. Nhưng cứ mỗi lần tăng giá cho thuê mỗi phòng thêm 50 nghìn đồng/ 1 ngày thì có thêm 2 phòng bị bỏ trống. Hỏi người quản lý khách sạn nên cho thuê mỗi phòng với giá bao nhiêu tiền một ngày (kết quả tính bằng đơn vị triệu đồng) để tổng số tiền thu được của khách sạn trong ngày là lớn nhất?\n------ HẾT ------",
+  "dap_an": "1",
+  "loi_giai": "Gọi $t$ là số lần tăng giá (mỗi lần $50$ nghìn đồng).\nGiá thuê: $500+50t$ (nghìn đồng); số phòng được thuê: $60-2t$.\nDoanh thu: $T(t)=(500+50t)(60-2t)=-100t^{2}+2000t+30000$.\n$T(t)$ đạt giá trị lớn nhất tại $t=-\\dfrac{2000}{2\\cdot(-100)}=10$.\nGiá thuê mỗi phòng: $500+50\\cdot 10=1000$ nghìn đồng $=1$ triệu đồng.\nVậy nên cho thuê với giá $1$ triệu đồng một ngày.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010518",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=\\frac{2x+1}{x+1}$ . Phương trình $y^{'}=1$ có tổng các nghiệm bằng bao nhiêu?",
+  "dap_an": "-2",
+  "loi_giai": "$y=\\dfrac{2x+1}{x+1}\\Rightarrow y'=\\dfrac{2(x+1)-(2x+1)}{(x+1)^2}=\\dfrac{1}{(x+1)^2}$ với $x\\ne-1$.\n$y'=1\\Leftrightarrow(x+1)^2=1\\Leftrightarrow x=0$ hoặc $x=-2$ (đều thoả $x\\ne-1$).\nTổng các nghiệm: $0+(-2)=-2$.\nVậy tổng các nghiệm bằng $-2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010282",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty sản xuất dụng cụ thể thao nhận được một đơn đặt hàng sản xuất $8000$ quả bóng tennis. Công ty này sở hữu một số máy móc, mỗi máy có thể sản xuất $30$ quả bóng trong một giờ. Chi phí thiết lập các máy này là $200$ nghìn đồng cho mỗi máy. Khi được thiết lập, hoạt động sản xuất sẽ hoàn toàn diễn ra tự động dưới sự giám sát. Số tiền phải trả cho người giám sát là $192$ nghìn đồng một giờ. Số máy móc công ty nên sử dụng là bao nhiêu để chi phí hoạt động là thấp nhất?\n--- Hết ---",
+  "dap_an": "16",
+  "loi_giai": "Gọi $n$ là số máy sử dụng ($n>0$). Thời gian sản xuất xong là $\\dfrac{8000}{30n}=\\dfrac{800}{3n}$ giờ.\nChi phí thiết lập máy: $200n$ (nghìn đồng). Chi phí giám sát: $192\\cdot\\dfrac{800}{3n}=\\dfrac{51200}{n}$ (nghìn đồng).\nTổng chi phí: $C(n)=200n+\\dfrac{51200}{n}$.\n$C'(n)=200-\\dfrac{51200}{n^{2}}=0\\Leftrightarrow n^{2}=256\\Leftrightarrow n=16$.\n$C'(n)<0$ khi $0<n<16$ và $C'(n)>0$ khi $n>16$ nên $C(n)$ nhỏ nhất tại $n=16$ (khi đó $C=6400$ nghìn đồng).\nVậy công ty nên sử dụng $16$ máy.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010526",
+  "loai": "tra_loi_ngan",
+  "de": "Một nhà máy sản xuất $x$ sản phẩm trong mỗi tháng. Chi phí sản xuất $x$ sản phẩm được cho bởi hàm chi phí $C\\left( x \\right)=16\\,000+500x-1,6x^{2}+0,004x^{3}$ (nghìn đồng). Biết giá bán của của mỗi sản phẩm là một hàm số phụ thuộc vào số lượng sản phẩm $x$ và được cho bởi công thức $p\\left( x \\right)=1700-7x$ (nghìn đồng). Hỏi mỗi tháng nhà máy nên sản xuất bao nhiêu sản phẩm để lợi nhuận thu được là lớn nhất? Biết rằng kết quả khảo sát thị trường cho thấy sản phẩm sản xuất ra sẽ được tiêu thụ hết.\n------ HẾT ------",
+  "dap_an": "100",
+  "loi_giai": "Doanh thu $R(x)=x\\cdot p(x)=1700x-7x^2$.\nLợi nhuận $L(x)=R(x)-C(x)=-0{,}004x^3-5{,}4x^2+1200x-16000$, $x>0$.\n$L'(x)=-0{,}012x^2-10{,}8x+1200=0\\Leftrightarrow x^2+900x-100000=0\\Leftrightarrow x=100$ (nhận) hoặc $x=-1000$ (loại).\n$L'(x)>0$ khi $0<x<100$ và $L'(x)<0$ khi $x>100$ nên $L$ đạt lớn nhất tại $x=100$.\nVậy mỗi tháng nên sản xuất $100$ sản phẩm.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010293",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $f(x)=x^{3}-3x$. Đặt $g(x)=f(x^{2}-2x)$. Biết rằng hàm số $g(x)$ đồng biến trên khoảng $(m;+\\infty)$. Tìm giá trị nhỏ nhất của $m$. (Làm tròn kết quả đến chữ số hàng phần trăm).",
+  "dap_an": "2.41",
+  "loi_giai": "Đặt $u=x^{2}-2x$. Ta có $f'(u)=3u^{2}-3=3(u-1)(u+1)$.\n$g'(x)=(2x-2)\\cdot f'(x^{2}-2x)=2(x-1)\\cdot 3\\left(x^{2}-2x-1\\right)\\left(x^{2}-2x+1\\right)=6(x-1)^{3}\\left(x^{2}-2x-1\\right)$.\n$g'(x)=0\\Leftrightarrow x=1-\\sqrt{2}$, $x=1$, $x=1+\\sqrt{2}$.\nXét dấu $g'(x)$: $g'(x)<0$ trên $(1;1+\\sqrt{2})$ và $g'(x)>0$ trên $(1+\\sqrt{2};+\\infty)$.\nHàm số $g$ đồng biến trên $(m;+\\infty)$ khi và chỉ khi $(m;+\\infty)\\subset(1+\\sqrt{2};+\\infty)$, tức $m\\ge 1+\\sqrt{2}$.\nVậy giá trị nhỏ nhất của $m$ là $1+\\sqrt{2}\\approx 2{,}41$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010240",
+  "loai": "tra_loi_ngan",
+  "de": "Tại một nhà máy, khi sản xuất $x$ tạ sản phẩm ($x>0$) mỗi ngày thì chi phí trung bình trên mỗi tạ sản phẩm được tính bởi công thức: $\\overline{C}\\left( x \\right)=\\frac{1}{2}x+3+\\frac{8}{x}$ (triệu đồng/tạ). Tính chi phí trung bình thấp nhất (tính theo triệu đồng/tạ) mà nhà máy có thể đạt được trong ngày.",
+  "dap_an": "7",
+  "loi_giai": "$\\overline{C}'(x)=\\dfrac{1}{2}-\\dfrac{8}{x^{2}}$ với $x>0$.\n$\\overline{C}'(x)=0\\Leftrightarrow x^{2}=16\\Leftrightarrow x=4$.\n$\\overline{C}'(x)<0$ khi $0<x<4$ và $\\overline{C}'(x)>0$ khi $x>4$ nên $\\overline{C}$ đạt giá trị nhỏ nhất tại $x=4$.\n$\\overline{C}(4)=\\dfrac{1}{2}\\cdot 4+3+\\dfrac{8}{4}=2+3+2=7$.\nVậy chi phí trung bình thấp nhất là $7$ triệu đồng/tạ.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010503",
+  "loai": "tra_loi_ngan",
+  "de": "Trong hệ trục tọa độ $\\left( Oxy \\right)$ cho đồ thị hàm số $\\left( C \\right):y=\\frac{x^{2}+x+1}{x+1}$ mô tả chuyển động của hai tàu đánh cá $A$ và $B$ (đơn vị trên mỗi trục tọa độ tính bằng $km$). Biết quỹ đạo chuyển động của hai tàu luôn thuộc về hai nhánh khác nhau của đồ thị $\\left( C \\right)$. Tính khoảng cách ngắn nhất (đơn vị $km$) giữa hai tàu đánh cá $A$ và $B$(kết quả làm tròn đến hàng phần trăm).",
+  "dap_an": "4.39",
+  "loi_giai": "Ta có $y=x+\\dfrac{1}{x+1}=(x+1)+\\dfrac{1}{x+1}-1$. Hai nhánh ứng với $x+1>0$ và $x+1<0$.\nĐặt $A$ có $x_A+1=a>0$, $B$ có $x_B+1=-b$ ($b>0$). Khi đó $A\\left(a-1;\\,a+\\dfrac1a-1\\right)$, $B\\left(-b-1;\\,-b-\\dfrac1b-1\\right)$.\n$x_A-x_B=a+b$; $y_A-y_B=(a+b)+\\left(\\dfrac1a+\\dfrac1b\\right)=(a+b)\\left(1+\\dfrac{1}{ab}\\right)$.\n$AB^2=(a+b)^2\\left[1+\\left(1+\\dfrac1{ab}\\right)^2\\right]$.\nVì $a+b\\ge2\\sqrt{ab}$, đặt $s=ab>0$: $AB^2\\ge4s\\left[1+\\left(1+\\dfrac1s\\right)^2\\right]=8s+8+\\dfrac4s$.\nÁp dụng AM-GM: $8s+\\dfrac4s\\ge2\\sqrt{32}=8\\sqrt2$, dấu bằng khi $s=\\dfrac{1}{\\sqrt2}$ và $a=b$.\nSuy ra $AB^2\\ge8+8\\sqrt2$, tức $AB_{\\min}=\\sqrt{8+8\\sqrt2}\\approx4{,}39$.\nVậy khoảng cách ngắn nhất giữa hai tàu là $4{,}39 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010573",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=\\frac{x^{2}+3x+3}{x+1}$ có đồ thị $(C)$. Gọi $d$ là khoảng cách giữa hai điểm cực trị của $(C)$ và $d_{2}$ là khoảng cách từ điểm cực tiểu của $(C)$ đến gốc tọa độ. Giá trị của $d^{2}+2d_{2}^{2}$ bằng bao nhiêu?",
+  "dap_an": "38",
+  "loi_giai": "$y=x+2+\\dfrac1{x+1}$ nên $y'=1-\\dfrac1{(x+1)^2}=0\\Leftrightarrow x=0$ hoặc $x=-2$.\n$y''=\\dfrac2{(x+1)^3}$: $y''(0)=2>0$ nên $(0;3)$ là điểm cực tiểu; $y''(-2)=-2<0$ nên $(-2;-1)$ là điểm cực đại.\n$d^2=(0+2)^2+(3+1)^2=20$; $d_2^2=0^2+3^2=9$.\n$d^2+2d_2^2=20+18=38$.\nVậy giá trị cần tìm là $38$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010530",
+  "loai": "tra_loi_ngan",
+  "de": "Một con cá bơi ngược dòng để vượt khoảng cách là $100\\,km$. Vận tốc dòng nước là $5\\,km/h$. Nếu\nvận tốc bơi của cá khi nước đứng yên là $v\\left( km/h \\right)$, $\\left( v>5 \\right)$ thì năng lượng tiêu hao của cá trong $t$ giờ được cho bởi công thức $E\\left( v \\right)=c.v^{3}.t$, trong đó $c$ là hằng số dương, $E$ được tính bằng Jun. Biết rằng vận tốc bơi của cá khi nước đứng yên thuộc khoảng $\\left( a\\,;\\,b \\right)$ thì năng lượng tiêu hao của cá giảm. Hãy tính giá trị lớn nhất của $b-a$ (kết quả làm tròn tới hàng phần mười) .",
+  "dap_an": "2.5",
+  "loi_giai": "Vận tốc thực khi ngược dòng là $v-5$ nên thời gian bơi $t=\\dfrac{100}{v-5}$.\n$E(v)=c\\cdot v^3\\cdot\\dfrac{100}{v-5}=100c\\cdot\\dfrac{v^3}{v-5}$, $v>5$.\nXét $f(v)=\\dfrac{v^3}{v-5}$: $f'(v)=\\dfrac{3v^2(v-5)-v^3}{(v-5)^2}=\\dfrac{v^2(2v-15)}{(v-5)^2}$.\n$f'(v)<0\\Leftrightarrow5<v<7{,}5$ nên năng lượng tiêu hao giảm trên khoảng $(5;7{,}5)$.\nKhoảng $(a;b)$ lớn nhất làm $E$ giảm là $(5;7{,}5)$ nên $(b-a)_{\\max}=7{,}5-5=2{,}5$.\nVậy giá trị lớn nhất của $b-a$ là $2{,}5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010277",
+  "loai": "tra_loi_ngan",
+  "de": "Một nhà máy chế biến cà phê bán trong nước và xuất khẩu ra nước ngoài cho biết, nếu giá vốn sản xuất mỗi kg cà phê là $x$ USD thì sản lượng nhà máy sản xuất được là $R\\left( x \\right)=x-150\\text{ }(kg)$ và lượng tiêu thụ trong nước là $Q\\left( x \\right)=2700-x\\text{ (kg)}$. Phần cà phê còn dư được xuất khẩu với giá cố định là $1900$ USD mỗi kg. Biết rằng với mỗi kg cà phê xuất khẩu thì nhà máy phải chịu mức thuế là $m$ USD. Lợi nhuận từ xuất khẩu và thuế thu được từ nhà nước luôn giữ tỷ lệ bằng 4:1. Hãy tìm giá trị của $m$ để lợi nhuận từ xuất khẩu đạt giá trị lớn nhất.\n----HẾT---\n(Thí sinh không được sử dụng tài liệu; Giám thị không giải thích gì thêm)",
+  "dap_an": "47.5",
+  "loi_giai": "Lượng cà phê xuất khẩu là $E(x)=R(x)-Q(x)=(x-150)-(2700-x)=2x-2850$ (kg), điều kiện $1425\\le x\\le 2700$.\nLợi nhuận trên mỗi kg xuất khẩu là $1900-x-m$, thuế trên mỗi kg là $m$.\nTỉ lệ lợi nhuận : thuế $=4:1$ nên $1900-x-m=4m\\Leftrightarrow m=\\dfrac{1900-x}{5}$.\nLợi nhuận từ xuất khẩu: $L(x)=4m\\cdot E(x)=\\dfrac{4}{5}(1900-x)(2x-2850)=\\dfrac{4}{5}\\left(-2x^{2}+6650x-5415000\\right)$.\n$L(x)$ là hàm bậc hai có hệ số $-\\dfrac{8}{5}<0$ nên đạt giá trị lớn nhất tại $x=\\dfrac{6650}{4}=1662{,}5$ (thỏa mãn điều kiện).\nKhi đó $m=\\dfrac{1900-1662{,}5}{5}=47{,}5$.\nVậy $m=47{,}5$ USD.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010310",
+  "loai": "tra_loi_ngan",
+  "de": "Từ một miếng bìa hình vuông có cạnh bằng $12$(cm), người ta cắt bỏ đi bốn hình vuông nhỏ có cạnh bằng nhau ở bốn góc, sau đó gấp lại để được một cái hộp không có nắp. Tính thể tích lớn nhất của cái hộp đó.\n------ HẾT ------",
+  "dap_an": "128",
+  "loi_giai": "Gọi $x$ (cm) là cạnh hình vuông nhỏ bị cắt, $0<x<6$.\nĐáy hộp là hình vuông cạnh $12-2x$, chiều cao hộp là $x$.\nThể tích $V(x)=x(12-2x)^{2}$.\n$V(x)=4x^{3}-48x^{2}+144x$, $V'(x)=12x^{2}-96x+144=12(x-2)(x-6)$.\n$V'(x)=0\\Leftrightarrow x=2$ (nhận) hoặc $x=6$ (loại).\n$V'>0$ trên $(0;2)$, $V'<0$ trên $(2;6)$ nên $V$ đạt lớn nhất tại $x=2$.\n$V(2)=2\\cdot 8^{2}=128$.\nVậy thể tích lớn nhất của hộp là $128$ ($\\text{cm}^{3}$).",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010328",
+  "loai": "trac_nghiem",
+  "de": "Tiệm cận đứng của đồ thị hàm số $y=\\frac{-2x-3}{x+1}$ là",
+  "lua_chon": [
+   "$y=-2$.",
+   "$x=-1$.",
+   "$x=2$.",
+   "$y=1$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Khi $x\\to-1^{+}$: tử $-2x-3\\to-1<0$, mẫu $x+1\\to0^{+}$ nên $y\\to-\\infty$; do đó đồ thị có tiệm cận đứng $x=-1$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010226",
+  "loai": "tra_loi_ngan",
+  "de": "Gọi M và n lần lượt là giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y=x^{3}-3x^{2}-9x+35$ trên đoạn $\\left[ -4;4 \\right]$.Tính 2M +3n .\nĐs: 203",
+  "dap_an": "-43",
+  "loi_giai": "$y'=3x^{2}-6x-9=3(x-3)(x+1)$, $y'=0\\Leftrightarrow x=-1$ hoặc $x=3$ (đều thuộc $[-4;4]$).\n$y(-4)=-64-48+36+35=-41$.\n$y(-1)=-1-3+9+35=40$.\n$y(3)=27-27-27+35=8$.\n$y(4)=64-48-36+35=15$.\nDo đó $M=40$, $n=-41$.\n$2M+3n=80-123=-43$.\nVậy $2M+3n=-43$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010436",
+  "loai": "tra_loi_ngan",
+  "de": "Hàm số $y=-11x^{4}+4x^{2}+82$, đạt cực tiểu tại $x$ bằng bao nhiêu ? 0 0,25",
+  "dap_an": "0",
+  "loi_giai": "$y'=-44x^{3}+8x=-4x(11x^{2}-2)$.\n$y'=0\\Leftrightarrow x=0$ hoặc $x=\\pm\\sqrt{\\dfrac{2}{11}}$.\n$y''=-132x^{2}+8$. Tại $x=0$: $y''(0)=8>0$ nên $x=0$ là điểm cực tiểu.\nTại $x=\\pm\\sqrt{\\dfrac{2}{11}}$: $y''=-24+8=-16<0$ nên là các điểm cực đại.\nVậy hàm số đạt cực tiểu tại $x=0$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010572",
+  "loai": "tra_loi_ngan",
+  "de": "Ở một vịnh biển, ngoài xa có một hòn đào nhỏ. Người ta tiến hành lấn biển để xây một khu đô thị và làm một tuyến cáp treo nối khu đô thị với hòn đảo để phát triển du lịch. Xét trong hệ tọa độ $Oxy$ với đơn vị tương ứng $1$ km có hòn đảo ở $O$ thì đường bao của phần đất lấn biển có dạng là một phần của đồ thị hàm số $y=\\frac{x^{2}+1}{x}.$ Giả sử tuyến cáp treo được thiết kế nối đảo với đường bao của khu đô thị với độ dài ngắn nhất. Độ dài của tuyến cáp treo là bao nhiêu km (làm tròn kết quả đến hàng phần mười)?",
+  "dap_an": "2.2",
+  "loi_giai": "Điểm $M$ trên đường bao: $M\\left(x;\\,x+\\dfrac1x\\right)$, $x\\ne 0$.\n$OM^2=x^2+\\left(x+\\dfrac1x\\right)^2=2x^2+2+\\dfrac1{x^2}\\ge 2+2\\sqrt{2x^2\\cdot\\dfrac1{x^2}}=2+2\\sqrt2$ (AM-GM), dấu bằng khi $2x^2=\\dfrac1{x^2}$.\n$OM_{\\min}=\\sqrt{2+2\\sqrt2}\\approx 2{,}197$.\nVậy tuyến cáp treo dài khoảng $2{,}2$ km.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010520",
+  "loai": "tra_loi_ngan",
+  "de": "Chuyển động của một vật gắn trên con lắc lò xo (khi bỏ qua ma sát và sức cản không khí) được cho bởi phương trình sau\n$x(t)=15+0,5\\sin(3\\pi t)$\nTrong đó $x$ tính bằng cm, thời gian $t$ tính bằng giây.Vận tốc lớn nhất mà con lắc đạt được là bao nhiêu cm/s? (Làm tròn đến hàng phần trăm)",
+  "dap_an": "4.71",
+  "loi_giai": "Vận tốc $v(t)=x'(t)=0{,}5\\cdot3\\pi\\cos(3\\pi t)$.\nVì $-1\\le\\cos(3\\pi t)\\le1$ nên $|v(t)|\\le1{,}5\\pi$.\nVận tốc lớn nhất là $1{,}5\\pi\\approx4{,}71$ cm/s.\nVậy vận tốc lớn nhất của con lắc là $4{,}71$ cm/s.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010260",
+  "loai": "tra_loi_ngan",
+  "de": "Anh An muốn thiết kế một bể chứa nước có dạng hình hộp chữ nhật không có nắp, có đáy là hình chữ nhật với chiều dài gấp đôi chiều rộng và diện tích tất cả các mặt của bể nước bằng $150$ m2. Để thể tích của bể nước là lớn nhất thì chiều dài, chiều rộng và chiều cao của bể nước theo đơn vị mét lần lượt có giá trị là $a,b,c$ mét. Tính giá trị $a+2b+3c$.\n………………………….HẾT……………………..\nHọ và tên học sinh:…………………………………; Số báo danh:…………………………\nHọ và tên giám thị coi thi 1:………………………………; chữ ký:……………………….\nHọ và tên giám thị coi thi 2:………………………………; chữ ký:……………………….\nThí sinh không được sử dụng tài liệu. Giám thị không giải thích gì thêm.",
+  "dap_an": "30",
+  "loi_giai": "Gọi chiều rộng $b$, chiều dài $a=2b$, chiều cao $c$ (m).\nDiện tích các mặt của bể không nắp: $2b^{2}+2(2b\\cdot c)+2(b\\cdot c)=2b^{2}+6bc=150\\Rightarrow c=\\dfrac{75-b^{2}}{3b}$.\nThể tích: $V=2b^{2}c=\\dfrac{2b(75-b^{2})}{3}=\\dfrac{150b-2b^{3}}{3}$.\n$V'=\\dfrac{150-6b^{2}}{3}$, $V'=0\\Leftrightarrow b=5$ (do $b>0$).\n$V'>0$ khi $0<b<5$ và $V'<0$ khi $b>5$ nên $V$ lớn nhất tại $b=5$.\nKhi đó $a=10$, $c=\\dfrac{75-25}{15}=\\dfrac{10}{3}$.\n$a+2b+3c=10+10+10=30$.\nVậy $a+2b+3c=30$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010306",
+  "loai": "tra_loi_ngan",
+  "de": "Ông A dự định đầu tư sản xuất một loại sản phẩm với số lượng không quá 200 sản phẩm . Nếu ông A bán được $x$ sản phẩm thì thu về số tiền tính theo công thức $f(x)=x^{3}-1440x^{2}+148500x+30000$ (đồng). Chi phí sản xuất bình quân cho một sản phẩm được tính theo công thức $C\\left( x \\right)=1000+x+\\frac{25000}{x}$ (đồng). Ông A cần sản xuất bao nhiêu sản phẩm thì lợi nhuận thu về là lớn nhất?",
+  "dap_an": "54",
+  "loi_giai": "Chi phí sản xuất $x$ sản phẩm: $x\\cdot C(x)=1000x+x^{2}+25000$.\nLợi nhuận: $L(x)=f(x)-x\\,C(x)=x^{3}-1441x^{2}+147500x+5000$, với $x\\in\\mathbb{N}$, $0<x\\le 200$.\n$L'(x)=3x^{2}-2882x+147500=0\\Leftrightarrow x\\approx 54{,}25$ hoặc $x\\approx 906{,}4$ (loại vì $x\\le 200$).\nTrên $[0;200]$: $L'(x)>0$ khi $x<54{,}25$ và $L'(x)<0$ khi $54{,}25<x\\le 200$, nên $L$ đạt cực đại tại $x\\approx 54{,}25$.\nVì $x$ nguyên nên so sánh $L(54)=3\\,925\\,508$ và $L(55)=3\\,924\\,850$; ta có $L(54)>L(55)$.\nVậy cần sản xuất $54$ sản phẩm.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010519",
+  "loai": "tra_loi_ngan",
+  "de": "Chuyển động của một vật gắn trên con lắc lò xo (khi bỏ qua ma sát và sức cản không khí) được cho bởi phương trình sau\n$x(t)=15+0,5\\sin(2\\pi t)$\nTrong đó $x$ tính bằng cm, thời gian $t$ tính bằng giây.Vận tốc lớn nhất mà con lắc đạt được là bao nhiêu cm/s? (Làm tròn đến hàng phần trăm)",
+  "dap_an": "3.14",
+  "loi_giai": "Vận tốc $v(t)=x'(t)=0{,}5\\cdot2\\pi\\cos(2\\pi t)$.\nVì $-1\\le\\cos(2\\pi t)\\le1$ nên $|v(t)|\\le\\pi$.\nVận tốc lớn nhất là $\\pi\\approx3{,}14$ cm/s.\nVậy vận tốc lớn nhất của con lắc là $3{,}14$ cm/s.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010317",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=\\sqrt{12x-x^{2}}.$ Biết tập tất cả các giá trị để hàm số nghịch biến là $\\text{(}a;b\\text{)}$ thì $a+b$ bằng bao nhiêu?",
+  "dap_an": "18",
+  "loi_giai": "Điều kiện: $12x-x^{2}\\ge 0\\Leftrightarrow 0\\le x\\le 12$.\n$y'=\\dfrac{12-2x}{2\\sqrt{12x-x^{2}}}<0\\Leftrightarrow x>6$.\nHàm số nghịch biến trên $(6;12)$ nên $a=6$, $b=12$.\nVậy $a+b=18$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010442",
+  "loai": "tra_loi_ngan",
+  "de": "Một tập đoàn năng lượng cần xây dựng tuyến ống dẫn dầu cỡ lớn chạy theo một đường thẳng dài 720km để dẫn dầu đi qua một vùng hoang mạc rộng lớn. Hai trạm bơm công suất lớn ở hai đầu tuyến đã xây xong, phần việc còn lại là:\n+) Lắp đặt ống dẫn dầu giữa hai trạm bơm công suất lớn đã có.\n+) Xây thêm một số trạm bơm tăng áp nằm trên tuyến ống dẫn để tăng hiệu quả dẫn dầu sao cho các trạm bơm tăng áp này chia toàn bộ tuyến ống dẫn dầu thành các đoạn có độ dài bằng nhau.\nĐơn vị thiết kế lập dự toán phần việc còn lại như sau:\n+) Chi phí xây 1 trạm bơm tăng áp là 108 (triệu đồng).\n+) Chi phí xây đoạn ống dẫn dầu nối giữa hai trạm bơm kề nhau với khoảng cách $x\\ km$ là $x\\left( 2+\\sqrt{x} \\right)$ (triệu đồng).\nHỏi cần xây thêm bao nhiêu trạm bơm tăng áp để tổng chi phí phần việc còn lại theo dự toán như trên là nhỏ nhất? Coi kích thước của các trạm bơm tăng áp là không đáng kể so với chiều dài toàn tuyến ống dẫn dầu.\n----HẾT---\nThí sinh thực hiện nghiêm túc quy chế thi. CBCT không giải thích gì thêm.",
+  "dap_an": "19",
+  "loi_giai": "Gọi $k$ là số trạm tăng áp xây thêm; tuyến ống chia thành $n=k+1$ đoạn bằng nhau, mỗi đoạn dài $x=\\dfrac{720}{n}$ km.\nTổng chi phí: $T=108k+n\\cdot x(2+\\sqrt{x})=108(n-1)+720\\left(2+\\sqrt{\\dfrac{720}{n}}\\right)=108n+1332+720\\sqrt{720}\\cdot n^{-1/2}$.\n$T'(n)=108-360\\sqrt{720}\\cdot n^{-3/2}=0\\Leftrightarrow n^{3/2}=\\dfrac{10}{3}\\sqrt{720}=40\\sqrt{5}=20\\sqrt{20}\\Leftrightarrow n=20$.\n$T'(n)$ đổi dấu từ $-$ sang $+$ tại $n=20$ nên $T$ nhỏ nhất khi $n=20$ (khi đó $x=36$ km, $T=7812$ triệu đồng).\nSố trạm tăng áp: $k=n-1=19$.\nVậy cần xây thêm $19$ trạm bơm tăng áp.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010268",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty sản xuất đồ chơi A phải chi 70 triệu đồng để thiết lập dây chuyền sản xuất ban đầu. Sau đó, cứ sản xuất được một sản phẩm đồ chơi A công ty phải trả 50 000 đồng cho nguyên liệu thô và nhân công. Khi số lượng đồ chơi A mà công ty sản xuất ra càng lớn thì chi phí trung bình để sản xuất một đồ chơi A không dưới bao nhiêu nghìn đồng ?\n-------------- HẾT ---------------\n- Thí sinh không được sử dụng tài liệu;\n- Cán bộ coi thi không giải thích gì thêm.",
+  "dap_an": "50",
+  "loi_giai": "Gọi $x$ là số sản phẩm đồ chơi A đã sản xuất ($x>0$). Tổng chi phí là $T(x)=70000+50x$ (nghìn đồng).\nChi phí trung bình mỗi sản phẩm là $M(x)=\\dfrac{70000+50x}{x}=50+\\dfrac{70000}{x}$.\nKhi $x\\to+\\infty$ thì $\\dfrac{70000}{x}\\to 0$ nên $M(x)\\to 50$, và $M(x)>50$ với mọi $x>0$.\nVậy chi phí trung bình không dưới $50$ nghìn đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010326",
+  "loai": "tra_loi_ngan",
+  "de": "Cho 1 tấm nhôm hình vuông cạnh bằng 14 cm. Người ta cắt ở 4 góc 4 hình vuông có cạnh bằng $x$ cm rồi gập tấm nhôm lại để được 1 cái hộp không nắp. Tìm $x$ để thể tích của cái hộp là lớn nhất? (kết quả làm tròn đến hàng phần chục).\n------------- HẾT -------------",
+  "dap_an": "2.3",
+  "loi_giai": "Đáy hộp là hình vuông cạnh $14-2x$, cao $x$ ($0<x<7$): $V(x)=x(14-2x)^{2}=4x^{3}-56x^{2}+196x$.\n$V'(x)=12x^{2}-112x+196=4(3x-7)(x-7)$ $=0\\Leftrightarrow x=\\dfrac{7}{3}$ hoặc $x=7$ (loại).\n$V'$ đổi dấu từ dương sang âm tại $x=\\dfrac{7}{3}$ nên $V$ lớn nhất tại đó.\n$x=\\dfrac{7}{3}\\approx 2{,}3$.\nVậy $x\\approx 2{,}3$ cm.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010460",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=\\frac{x^{2}+3x+3}{x+1}$ có đồ thị $(C)$. Gọi $d$ là khoảng cách giữa hai điểm cực trị của $(C)$ và $d_{1}$ là khoảng cách từ điểm cực đại của $(C)$ đến gốc tọa độ. Giá trị của $d^{2}+d_{1}^{2}$ bằng bao nhiêu?",
+  "dap_an": "25",
+  "loi_giai": "Ta có $y=x+2+\\dfrac{1}{x+1}$, $y'=1-\\dfrac{1}{(x+1)^{2}}$, $y'=0\\Leftrightarrow(x+1)^{2}=1\\Leftrightarrow x=0$ hoặc $x=-2$.\n$y''=\\dfrac{2}{(x+1)^{3}}$: tại $x=-2$ có $y''<0$ nên là điểm cực đại, $y(-2)=-1$, điểm cực đại $(-2;-1)$. Tại $x=0$ là cực tiểu, $y(0)=3$, điểm cực tiểu $(0;3)$.\n$d^{2}=(0+2)^{2}+(3+1)^{2}=4+16=20$.\n$d_1^{2}=(-2)^{2}+(-1)^{2}=5$.\nVậy $d^{2}+d_1^{2}=20+5=25$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010305",
+  "loai": "tra_loi_ngan",
+  "de": "Tính tổng các giá trị của $m$ để đồ thị hàm số $y=x^{3}-x^{2}-x+m$ có điểm cực tiểu $M\\left( a;b \\right)$ với $a+b=1$.",
+  "dap_an": "1",
+  "loi_giai": "Ta có $y'=3x^{2}-2x-1=0\\Leftrightarrow x=1$ hoặc $x=-\\dfrac{1}{3}$. $y''=6x-2$.\n$y''(1)=4>0$ nên hàm số đạt cực tiểu tại $x=1$, với $y(1)=m-1$. Vậy $M(1;m-1)$, tức $a=1$, $b=m-1$.\nĐiều kiện $a+b=1$ cho $1+m-1=1\\Leftrightarrow m=1$.\nVậy tổng các giá trị của $m$ là $1$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010300",
+  "loai": "tra_loi_ngan",
+  "de": "Có bao nhiêu giá trị nguyên nhỏ hơn $2025$ của tham số $m$ để hàm số $y=2x^{3}-3x^{2}-6mx+m$ nghịch biến trên khoảng $\\left( -1;\\,1 \\right)$?\n----HẾT---",
+  "dap_an": "2023",
+  "loi_giai": "Ta có $y'=6x^{2}-6x-6m$. Hàm số nghịch biến trên $(-1;1)$ khi và chỉ khi $y'\\le 0$ với mọi $x\\in(-1;1)$.\n$\\Leftrightarrow m\\ge x^{2}-x$ với mọi $x\\in(-1;1)$.\nXét $h(x)=x^{2}-x$ trên $(-1;1)$: $h'(x)=2x-1=0\\Leftrightarrow x=\\dfrac{1}{2}$. Có $h(-1)=2$, $h(1)=0$, $h\\left(\\dfrac{1}{2}\\right)=-\\dfrac{1}{4}$.\nTrên khoảng $(-1;1)$ thì $h(x)<2$ và $h(x)$ tiến tới $2$ khi $x\\to -1^{+}$ nên điều kiện tương đương $m\\ge 2$.\nVới $m=2$: $y'=6(x-2)(x+1)<0$ trên $(-1;1)$ nên thỏa mãn.\nCác giá trị nguyên $m$ thỏa $2\\le m<2025$ là $m=2,3,\\dots,2024$, gồm $2024-2+1=2023$ giá trị.\nVậy có $2023$ giá trị nguyên của $m$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010408",
+  "loai": "tra_loi_ngan",
+  "de": "Nếu một điện trở $R$ được nối với một ắc-quy có suất điện động $E$ và điện trở trong $r$ thì công suất tiêu thụ trên điện trở $R$ là $P=\\frac{E^{2}R}{(R+r)^{2}},$ trong đó $R,\\,r$ được tính bằng ôm $(\\Omega),$ $E$ được tính bằng vôn $(\\text{V})$ và $P$ được tính bằng oát $(\\text{W}).$ Cho $E=15\\,(\\text{V})$ và $r=3\\,(\\Omega),$ còn $R$ biến thiên thì công suất $P$ đạt giá trị cực đại bằng bao nhiêu $\\text{W}?$ (kết quả làm tròn đến hàng phần chục).",
+  "dap_an": "18.8",
+  "loi_giai": "Công suất: $P=\\dfrac{E^{2}R}{(R+r)^{2}}=\\dfrac{E^{2}}{R+2r+\\dfrac{r^{2}}{R}}$.\nTheo bất đẳng thức Cauchy: $R+\\dfrac{r^{2}}{R}\\ge 2r$, nên $P\\le\\dfrac{E^{2}}{4r}$, dấu \"$=$\" xảy ra khi $R=r$.\nVới $E=15$, $r=3$: $P_{\\max}=\\dfrac{15^{2}}{4\\cdot 3}=\\dfrac{225}{12}=18{,}75$.\nLàm tròn đến hàng phần chục: $18{,}8$.\nVậy công suất cực đại xấp xỉ $18{,}8$ W.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010299",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=f\\left( x \\right)$ có đạo hàm $f'\\left( x \\right)=\\left( x-1 \\right)\\left( x^{2}-2 \\right)\\left( x^{4}-4 \\right)$. Hàm số $y=f\\left( x \\right)$ có bao nhiêu điểm cực trị?\n----HẾT---",
+  "dap_an": "1",
+  "loi_giai": "Ta có $x^{4}-4=(x^{2}-2)(x^{2}+2)$ nên $f'(x)=(x-1)(x^{2}-2)^{2}(x^{2}+2)$.\nTrong đó $(x^{2}-2)^{2}\\ge 0$ và $x^{2}+2>0$ nên $f'(x)$ chỉ đổi dấu khi đi qua $x=1$ (các nghiệm $x=\\pm\\sqrt{2}$ là nghiệm bội chẵn, $f'$ không đổi dấu).\nVậy hàm số có $1$ điểm cực trị.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010421",
+  "loai": "tra_loi_ngan",
+  "de": "Ông A dự định đầu tư sản xuất một loại sản phẩm với số lượng không quá 150 sản phẩm. Nếu ông A sản xuất được $x$ sản phẩm thì bán và thu về số tiền được tính theo công thức $f(x)=x^{3}-1565x^{2}+128500x+30000$ (nghìn đồng), khi đó chi phí sản xuất bình quân cho một sản phẩm được tính theo công thức $C\\left( x \\right)=1000+x+\\frac{25000}{x}$ (nghìn đồng). Ông A cần sản xuất bao nhiêu sản phẩm để lợi nhuận thu về là lớn nhất?",
+  "dap_an": "42",
+  "loi_giai": "Chi phí sản xuất $x$ sản phẩm: $x\\cdot C(x)=1000x+x^{2}+25000$.\nLợi nhuận: $L(x)=f(x)-xC(x)=x^{3}-1566x^{2}+127500x+5000$, với $0<x\\le 150$, $x\\in\\mathbb{N}^{*}$.\n$L'(x)=3x^{2}-3132x+127500=0\\Leftrightarrow x^{2}-1044x+42500=0\\Leftrightarrow x\\approx 42{,}43$ (nhận) hoặc $x\\approx 1001{,}6$ (loại).\n$L'(x)>0$ trên $(0;42{,}43)$ và $L'(x)<0$ trên $(42{,}43;150]$ nên $L$ đạt max ở lân cận $x=42{,}43$.\nSo sánh: $L(42)=2\\,671\\,664$, $L(43)=2\\,671\\,473$.\n$L(42)>L(43)$ nên lợi nhuận lớn nhất khi $x=42$.\nVậy ông A cần sản xuất $42$ sản phẩm.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010255",
+  "loai": "tra_loi_ngan",
+  "de": "Người ta thống kê được chi phí sửa chữa, vận hành máy móc trong một năm của một xưởng sản xuất được tính bởi công thức $f\\left( x \\right)=\\frac{1350x-1500}{30x+5}$ (triệu đồng). Biết $x$ là số năm kể từ lúc máy móc vận hành lần đầu tiên, số năm càng nhiều thì chi phí càng cao. Khi số năm $x$ đủ lớn thì chi phí vận hành máy móc trong một năm gần bằng bao nhiêu triệu đồng?\n-------------- HẾT --------------",
+  "dap_an": "45",
+  "loi_giai": "Khi $x\\to+\\infty$: $f(x)=\\dfrac{1350x-1500}{30x+5}=\\dfrac{1350-\\frac{1500}{x}}{30+\\frac{5}{x}}\\to\\dfrac{1350}{30}=45$.\nVậy khi số năm đủ lớn, chi phí vận hành gần bằng $45$ triệu đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010438",
+  "loai": "tra_loi_ngan",
+  "de": "Một nhà máy tung ra thị trường dòng drone phun thuốc tự động. Nhà máy có công suất tối đa 350 chiếc/quý. Phòng kinh doanh đưa ra hai tham số tài chính quan trọng cho việc sản xuất và tiêu thụ hết $x$ chiếc drone $\\left( x\\in\\mathbb{N}^{*},\\,\\,x\\le 350 \\right)$ trong một quý như sau: 6300\nGiá bán mỗi chiếc drone được xác định theo hàm cầu: $P(x)=120-0,2x$ (đơn vị: triệu đồng/chiếc).\nChi phí vận hành cố định: 1000 triệu đồng. Chi phí linh kiện: Giá gốc là 50 triệu đồng/chiếc, nếu sản xuất trên 100 chiếc thì chi phí linh kiện giảm xuống chỉ còn 40 triệu đồng/chiếc (áp dụng cho toàn bộ lô hàng).\nLợi nhuận sau thuế nhà máy lớn nhất đạt bao nhiêu triệu đồng ? (Biết thuế 10% tính trên lợi nhuận dương).",
+  "dap_an": "6300",
+  "loi_giai": "Doanh thu: $x\\cdot P(x)=120x-0{,}2x^{2}$.\nTrường hợp $1\\le x\\le 100$: lợi nhuận trước thuế $L_{1}(x)=120x-0{,}2x^{2}-1000-50x=-0{,}2x^{2}+70x-1000$. Đỉnh $x=175>100$ nên $L_{1}$ đồng biến trên $[1;100]$, $\\max L_{1}=L_{1}(100)=4000$.\nTrường hợp $101\\le x\\le 350$: $L_{2}(x)=120x-0{,}2x^{2}-1000-40x=-0{,}2x^{2}+80x-1000$. Đỉnh $x=200\\in[101;350]$, $L_{2}(200)=-8000+16000-1000=7000$.\nLợi nhuận trước thuế lớn nhất là $7000$ (triệu đồng) tại $x=200$ (dương nên chịu thuế).\nLợi nhuận sau thuế: $7000\\cdot(1-10\\%)=6300$.\nVậy lợi nhuận sau thuế lớn nhất là $6300$ triệu đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010419",
+  "loai": "tra_loi_ngan",
+  "de": "Một vật chuyển động trên đường thẳng có quãng đường di chuyển trong khoảng thời gian $t$ (giây) được cho bởi phương trình $s\\left( t \\right)=-\\frac{1}{3}t^{3}+6t^{2}\\left( m \\right)$, với $0\\le t\\le 12$. Tính từ khi bắt đầu di chuyển đến thời điểm vận tốc của vật đạt giá trị lớn nhất thì vật di chuyển được quãng đường dài bao nhiêu mét (làm tròn đến hàng đơn vị)?",
+  "dap_an": "144",
+  "loi_giai": "Vận tốc: $v(t)=s'(t)=-t^{2}+12t$, với $0\\le t\\le 12$.\n$v'(t)=-2t+12=0\\Leftrightarrow t=6$, $v(6)=36$; $v(0)=0$, $v(12)=0$.\nVậy vận tốc lớn nhất tại $t=6$ s.\nQuãng đường đi được: $s(6)=-\\dfrac{1}{3}\\cdot 216+6\\cdot 36=-72+216=144$.\nVậy vật di chuyển được $144$ mét.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010313",
+  "loai": "tra_loi_ngan",
+  "de": "Ông A muốn mua một mảnh đất hình chữ nhật có diện tích bằng $100\\,m^{2}$ để làm khu vườn. Để chi phí xây dựng bờ rào xung quanh khu vườn là ít tốn kém nhất thì ông A đã mua mảnh đất có kích thước $a(m)\\,\\times\\,b(m)$(với $a$ là chiều dài, $b$ là chiều rộng của khu vườn). Khi đó kết quả của $a+2b$ bằng bao nhiêu?\n-------------- HẾT --------------",
+  "dap_an": "30",
+  "loi_giai": "Ta có $ab=100$, chi phí rào ít nhất khi chu vi $2(a+b)$ nhỏ nhất.\nTheo bất đẳng thức Cô-si: $a+b\\ge 2\\sqrt{ab}=20$, dấu \"=\" khi $a=b=10$.\nKhi đó $a+2b=10+20=30$.\nVậy $a+2b=30$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010325",
+  "loai": "tra_loi_ngan",
+  "de": "Lợi nhuận thu được T của 1 công ty khi dùng số tiền $x$ chi cho quảng cáo được cho bởi công thức: $T=T(x)=\\frac{-x^{3}}{5}+9x^{2}+100\\,\\,,\\,\\,x\\ge 0$, ở đây các số tiền được tính bằng đơn vị nghìn USD. Hỏi công ty thu được lợi nhuận tối đa là bao nhiêu nghìn USD khi quảng cáo?",
+  "dap_an": "2800",
+  "loi_giai": "$T'(x)=-\\dfrac{3x^{2}}{5}+18x=0\\Leftrightarrow x=0$ hoặc $x=30$.\n$T'>0$ trên $(0;30)$, $T'<0$ trên $(30;+\\infty)$ nên $T$ lớn nhất tại $x=30$.\n$T(30)=-\\dfrac{27000}{5}+9\\cdot 900+100=-5400+8100+100=2800$.\nVậy lợi nhuận tối đa là $2800$ nghìn USD.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010315",
+  "loai": "tra_loi_ngan",
+  "de": "Tổng giá trị lớn nhất và giá trị nhỏ nhất của hàm số $f(x)=5^{x}+5^{1-x}$ trên đoạn $\\left[ 0;1 \\right]$ có dạng $m+2\\sqrt{n}$ ($m,\\;n$ là các số nguyên dương). Tính $P=\\frac{m}{n+3}\\quad$",
+  "dap_an": "0.75",
+  "loi_giai": "Đặt $t=5^{x}$, $x\\in[0;1]\\Rightarrow t\\in[1;5]$; $f=t+\\dfrac{5}{t}$.\n$f'(t)=1-\\dfrac{5}{t^{2}}=0\\Leftrightarrow t=\\sqrt{5}$.\n$f(1)=6$, $f(\\sqrt{5})=2\\sqrt{5}$, $f(5)=6$.\nGiá trị lớn nhất là $6$, giá trị nhỏ nhất là $2\\sqrt{5}$; tổng là $6+2\\sqrt{5}$ nên $m=6$, $n=5$.\n$P=\\dfrac{m}{n+3}=\\dfrac{6}{8}=0{,}75$.\nVậy $P=0{,}75$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010246",
+  "loai": "tra_loi_ngan",
+  "de": "Biết rằng tiệm cận xiên của đồ thị hàm số $y=\\frac{2x^{2}-3x+2}{x-1}$ là đường thẳng có dạng $y=ax+b$ với $a,b\\in\\mathbb{R}$. Tính giá trị của biểu thức $a-b$.\n------ HẾT ------",
+  "dap_an": "3",
+  "loi_giai": "Chia đa thức: $2x^{2}-3x+2=(x-1)(2x-1)+1$.\nDo đó $y=2x-1+\\dfrac{1}{x-1}$.\nTiệm cận xiên là $y=2x-1$ nên $a=2$, $b=-1$.\n$a-b=2-(-1)=3$.\nVậy $a-b=3$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010333",
+  "loai": "tra_loi_ngan",
+  "de": "Gọi $m,M$ lần lượt là giá trị nhỏ nhất và giá trị lớn nhất của hàm số $y=\\frac{4}{3}\\sin^{3}x+4\\cos^{2}x-5\\sin x+1$. Tính giá trị của $M-m$.\nHD: Đặt $t=\\sin x;t\\in\\left[ -1;1 \\right]$ khảo sát hàm số f(t) trên đoạn $\\left[ -1;1 \\right]$ có $M=\\frac{19}{3};\\mathrm{m}=-\\frac{8}{3}$ nên M - m = 9",
+  "dap_an": "9",
+  "loi_giai": "Biến đổi: $y=\\dfrac{4}{3}\\sin^{3}x+4(1-\\sin^{2}x)-5\\sin x+1=\\dfrac{4}{3}\\sin^{3}x-4\\sin^{2}x-5\\sin x+5$.\nĐặt $t=\\sin x$, $t\\in[-1;1]$: $f(t)=\\dfrac{4}{3}t^{3}-4t^{2}-5t+5$.\n$f'(t)=4t^{2}-8t-5=0\\Leftrightarrow t=-\\dfrac{1}{2}$ (nhận) hoặc $t=\\dfrac{5}{2}$ (loại).\n$f(-1)=\\dfrac{14}{3}$, $f\\left(-\\dfrac{1}{2}\\right)=\\dfrac{19}{3}$, $f(1)=-\\dfrac{8}{3}$.\nSuy ra $M=\\dfrac{19}{3}$, $m=-\\dfrac{8}{3}$.\nVậy $M-m=\\dfrac{27}{3}=9$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010565",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $M\\left( a;b \\right)$ là điểm nằm trên đường thẳng đi qua hai điểm cực trị của đồ thị hàm số\n$y=x^{3}-3x$ và hai điểm $A\\left( 1;2 \\right),\\text{ }B\\left( 2;1 \\right)$.Khi $MA\\text{ }+\\text{ }MB$ ngắn nhất thì giá trị $b-4a$ bằng bao nhiêu?",
+  "dap_an": "2",
+  "loi_giai": "$y'=3x^2-3=0\\Leftrightarrow x=\\pm1$ nên hai điểm cực trị là $(-1;2)$ và $(1;-2)$. Đường thẳng qua hai điểm này: $d:\\ 2x+y=0$.\nThay $A(1;2)$: $2\\cdot1+2=4>0$; $B(2;1)$: $4+1=5>0$ nên $A,B$ cùng phía với $d$.\nGọi $A'$ đối xứng $A$ qua $d$: $A'=A-2\\cdot\\dfrac{2\\cdot1+2}{5}(2;1)=\\left(-\\dfrac{11}5;\\dfrac25\\right)$.\n$MA+MB=MA'+MB\\ge A'B$, dấu bằng khi $M$ là giao của $A'B$ với $d$.\n$\\overrightarrow{A'B}=\\left(\\dfrac{21}5;\\dfrac35\\right)\\parallel(7;1)$. Đường $A'B$: $(x;y)=(2+7s;\\,1+s)$.\nThay vào $2x+y=0$: $4+14s+1+s=0\\Rightarrow s=-\\dfrac13$, suy ra $M\\left(-\\dfrac13;\\dfrac23\\right)$.\n$b-4a=\\dfrac23+\\dfrac43=2$.\nVậy $b-4a=2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010335",
+  "loai": "tra_loi_ngan",
+  "de": "Đường tiệm cận xiên của đồ thị hàm số $y=\\frac{x^{2}-3x+2}{x+3}$ có dạng $y=ax+b$. Tổng $2a+b$?.",
+  "dap_an": "-4",
+  "loi_giai": "Chia đa thức: $y=\\dfrac{x^{2}-3x+2}{x+3}=x-6+\\dfrac{20}{x+3}$.\nTiệm cận xiên: $y=x-6$ nên $a=1$, $b=-6$.\nVậy $2a+b=2-6=-4$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010259",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=x+1+\\frac{1}{x+1}$ có đồ thị là $\\left( C \\right)$. Tâm đối xứng của hàm số là $I\\left( a;\\,b \\right)$. Giá trị của $T=\\,3a-b$ là bao nhiêu ?\n-------------- HẾT --------------",
+  "dap_an": "-3",
+  "loi_giai": "Đồ thị $y=x+1+\\dfrac{1}{x+1}$ có tiệm cận đứng $x=-1$ và tiệm cận xiên $y=x+1$.\nTâm đối xứng là giao điểm: $x=-1$, $y=-1+1=0$, tức $I(-1;0)$.\nSuy ra $a=-1$, $b=0$.\n$T=3a-b=-3-0=-3$.\nVậy $T=-3$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

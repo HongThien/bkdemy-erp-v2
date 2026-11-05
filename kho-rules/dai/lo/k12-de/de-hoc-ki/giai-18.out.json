@@ -1,0 +1,488 @@
+[
+ {
+  "id": "X1022",
+  "dap_an": "-6",
+  "loi_giai": "$y'=-3x^{2}-6x+9=-3(x+3)(x-1)$.\n$y'=0\\Leftrightarrow x=-3$ hoặc $x=1$.\n$y'>0$ trên $(-3;1)$, $y'<0$ ngoài đoạn này nên hàm số đạt cực tiểu tại $x_{2}=-3$ và cực đại tại $x_{1}=1$.\n$T=x_{2}-3x_{1}=-3-3\\cdot 1=-6$.\nVậy $T=-6$.",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": true,
+  "ghi": "Đs gốc 10 ứng với y=x^3+3x^2-9x; hàm in ra cho -6"
+ },
+ {
+  "id": "X1023",
+  "dap_an": "-43",
+  "loi_giai": "$y'=3x^{2}-6x-9=3(x-3)(x+1)$, $y'=0\\Leftrightarrow x=-1$ hoặc $x=3$ (đều thuộc $[-4;4]$).\n$y(-4)=-64-48+36+35=-41$.\n$y(-1)=-1-3+9+35=40$.\n$y(3)=27-27-27+35=8$.\n$y(4)=64-48-36+35=15$.\nDo đó $M=40$, $n=-41$.\n$2M+3n=80-123=-43$.\nVậy $2M+3n=-43$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đs gốc 203 sai (dùng n=41); đã kiểm máy"
+ },
+ {
+  "id": "X1024",
+  "dap_an": "17",
+  "loi_giai": "$y'=3x^{2}+2bx+c$.\nĐiểm cực đại $(-1;7)$ nên $y'(-1)=0\\Leftrightarrow 3-2b+c=0\\Rightarrow c=2b-3$.\n$y(-1)=7\\Leftrightarrow -1+b-c+d=7\\Rightarrow d=8-b+c=b+5$.\n$y(2)=-20\\Leftrightarrow 8+4b+2c+d=-20\\Leftrightarrow 8+4b+4b-6+b+5=-20\\Leftrightarrow 9b=-27\\Leftrightarrow b=-3$.\nSuy ra $c=-9$, $d=2$, tức $y=x^{3}-3x^{2}-9x+2$.\nThử lại: $y'=3x^{2}-6x-9$ đổi dấu từ $+$ sang $-$ tại $x=-1$ nên đó là cực đại.\n$P=b-2c+d=-3+18+2=17$.\nVậy $P=17$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1025",
+  "dap_an": "8",
+  "loi_giai": "$\\overrightarrow{AB}-\\overrightarrow{C'B}+\\overrightarrow{C'C}=\\overrightarrow{AB}+\\overrightarrow{BC'}+\\overrightarrow{C'C}=\\overrightarrow{AC}$.\n$|\\overrightarrow{AC}|=AC=3\\sqrt{2}$ (đường chéo hình vuông cạnh $3$).\nSuy ra $a=3$, $b=2$.\n$T=2a+b=6+2=8$.\nVậy $T=8$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1027",
+  "dap_an": "16",
+  "loi_giai": "Chọn hệ trục với $A(0;0;0)$, $B(4;0;0)$, $D(0;4;0)$, $A'(0;0;4)$.\nKhi đó $C'(4;4;4)$, $M(0;2;0)$, $N(4;0;2)$.\n$\\overrightarrow{MN}=(4;-2;2)$, $\\overrightarrow{AC'}=(4;4;4)$.\n$\\overrightarrow{MN}\\cdot\\overrightarrow{AC'}=16-8+8=16$.\nVậy $\\overrightarrow{MN}\\cdot\\overrightarrow{AC'}=16$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng tọa độ"
+ },
+ {
+  "id": "X1028",
+  "dap_an": "6",
+  "loi_giai": "$y'=3x^{2}-6x$, $y'=0\\Leftrightarrow x=0$ hoặc $x=2$.\n$y'>0$ khi $x<0$, $y'<0$ khi $0<x<2$ nên hàm số đạt cực đại tại $x=0$.\n$y(0)=m-1$ nên $M(0;m-1)$, tức $a=0$, $b=m-1$.\n$a+b=5\\Leftrightarrow m-1=5\\Leftrightarrow m=6$.\nVậy $m=6$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1029",
+  "dap_an": "-0.5",
+  "loi_giai": "$y'=-3x^{2}+6x=-3x(x-2)$.\n$y'>0\\Leftrightarrow 0<x<2$ nên hàm số đồng biến trên $(0;2)$.\nSuy ra $a=0$, $b=2$.\n$P=\\dfrac{a-b}{4}=\\dfrac{0-2}{4}=-\\dfrac{1}{2}$.\nVậy $P=-0{,}5$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1030",
+  "dap_an": "4",
+  "loi_giai": "Chia đa thức: $x^{2}+3x+2=(x-3)(x+6)+20$.\nDo đó $y=x+6+\\dfrac{20}{x-3}$.\nVì $\\lim\\limits_{x\\to\\pm\\infty}\\dfrac{20}{x-3}=0$ nên tiệm cận xiên là $y=x+6$, tức $g(x)=x+6$.\n$g(-2)=-2+6=4$.\nVậy $g(-2)=4$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1032",
+  "dap_an": "4",
+  "loi_giai": "Chọn hệ trục với $A(0;0;0)$, $B(2;0;0)$, $D(0;2;0)$, $A'(0;0;2)$.\nKhi đó $C'(2;2;2)$, $M(0;1;0)$, $N(2;0;1)$.\n$\\overrightarrow{MN}=(2;-1;1)$, $\\overrightarrow{AC'}=(2;2;2)$.\n$\\overrightarrow{MN}\\cdot\\overrightarrow{AC'}=4-2+2=4$.\nVậy $\\overrightarrow{MN}\\cdot\\overrightarrow{AC'}=4$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng tọa độ"
+ },
+ {
+  "id": "X1033",
+  "dap_an": "3",
+  "loi_giai": "$y'=3x^{2}-6x$, $y'=0\\Leftrightarrow x=0$ hoặc $x=2$.\n$y'<0$ khi $0<x<2$ và $y'>0$ khi $x>2$ nên hàm số đạt cực tiểu tại $x=2$.\n$y(2)=8-12+m=m-4$ nên $M(2;m-4)$, tức $a=2$, $b=m-4$.\n$a+b=1\\Leftrightarrow m-2=1\\Leftrightarrow m=3$.\nVậy $m=3$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1037",
+  "dap_an": "11.5",
+  "loi_giai": "$|\\overrightarrow{a}+\\overrightarrow{b}|^{2}=|\\overrightarrow{a}|^{2}+|\\overrightarrow{b}|^{2}+2\\overrightarrow{a}\\cdot\\overrightarrow{b}$.\n$64=25+16+2\\overrightarrow{a}\\cdot\\overrightarrow{b}$.\n$\\overrightarrow{a}\\cdot\\overrightarrow{b}=\\dfrac{64-41}{2}=\\dfrac{23}{2}$.\nVậy $\\overrightarrow{a}\\cdot\\overrightarrow{b}=11{,}5$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1040",
+  "dap_an": "3",
+  "loi_giai": "$H(x)=\\dfrac{3x+50}{x}=3+\\dfrac{50}{x}$ với $x>0$.\nVì $\\dfrac{50}{x}>0$ nên $H(x)>3$ với mọi $x>0$.\nKhi $x\\to+\\infty$ thì $H(x)\\to 3$, nên chi phí trung bình luôn lớn hơn $3$ và có thể gần $3$ tuỳ ý.\nVậy chi phí trung bình không thấp hơn $3$ triệu đồng.",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "H(x)>3, không đạt min; đáp số là cận dưới 3"
+ },
+ {
+  "id": "X1046",
+  "dap_an": "39",
+  "loi_giai": "Gọi $t$ là số lần tăng giá (mỗi lần $1$ nghìn đồng).\nGiá bán: $30+t$ (nghìn đồng); số khăn bán được: $3000-100t$.\nLợi nhuận mỗi chiếc: $30+t-18=12+t$.\n$L(t)=(12+t)(3000-100t)=-100t^{2}+1800t+36000$.\n$L(t)$ là tam thức bậc hai có hệ số $a<0$ nên đạt max tại $t=-\\dfrac{1800}{2\\cdot(-100)}=9$.\nGiá bán mới là $30+9=39$ nghìn đồng.\nVậy giá bán mới là $39$ nghìn đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1049",
+  "dap_an": "-92",
+  "loi_giai": "Chia đa thức: $f(x)=\\dfrac{x^{2}-2x+2}{x+1}=x-3+\\dfrac{5}{x+1}$.\nTiệm cận đứng $x=-1$, tiệm cận xiên $y=x-3$.\nTâm đối xứng là giao hai tiệm cận: $x=-1$, $y=-1-3=-4$, tức $I(-1;-4)$.\nSuy ra $a=-1$, $b=-4$.\n$T=4a^{2}-6b^{2}=4\\cdot 1-6\\cdot 16=-92$.\nVậy $T=-92$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1054",
+  "dap_an": "-92",
+  "loi_giai": "Chia đa thức: $f(x)=\\dfrac{x^{2}-2x+2}{x+1}=x-3+\\dfrac{5}{x+1}$.\nTiệm cận đứng $x=-1$, tiệm cận xiên $y=x-3$.\nTâm đối xứng là giao hai tiệm cận: $x=-1$, $y=-1-3=-4$, tức $I(-1;-4)$.\nSuy ra $a=-1$, $b=-4$.\n$T=4a^{2}-6b^{2}=4\\cdot 1-6\\cdot 16=-92$.\nVậy $T=-92$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1055",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "VT",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn mảnh lời giải gốc, mất đề; đáp số gốc 6."
+ },
+ {
+  "id": "X1056",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn mảnh lời giải gốc, mất đề; đáp số gốc 506."
+ },
+ {
+  "id": "X1057",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "VT",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn mảnh lời giải gốc, mất đề; đáp số gốc 173."
+ },
+ {
+  "id": "X1058",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn mảnh lời giải gốc, mất đề (cần hình); đáp số gốc 20."
+ },
+ {
+  "id": "X1059",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn mảnh lời giải gốc, mất đề; đáp số gốc 1."
+ },
+ {
+  "id": "X1060",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn mảnh lời giải gốc, mất đề; đáp số gốc 285."
+ },
+ {
+  "id": "X1068",
+  "dap_an": "5",
+  "loi_giai": "$f(x)=\\dfrac{0{,}2x^{2}+10x+5}{x}=0{,}2x+10+\\dfrac{5}{x}$ với $x>0$.\n$f'(x)=0{,}2-\\dfrac{5}{x^{2}}$, $f'(x)=0\\Leftrightarrow x^{2}=25\\Leftrightarrow x=5$ (do $x>0$).\n$f'(x)<0$ khi $0<x<5$ và $f'(x)>0$ khi $x>5$ nên $f$ đạt giá trị nhỏ nhất tại $x=5$.\nVậy cần sản xuất $5$ sản phẩm.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1070",
+  "dap_an": "5",
+  "loi_giai": "$f(x)=\\dfrac{0{,}2x^{2}+10x+5}{x}=0{,}2x+10+\\dfrac{5}{x}$ với $x>0$.\n$f'(x)=0{,}2-\\dfrac{5}{x^{2}}$, $f'(x)=0\\Leftrightarrow x^{2}=25\\Leftrightarrow x=5$ (do $x>0$).\n$f'(x)<0$ khi $0<x<5$ và $f'(x)>0$ khi $x>5$ nên $f$ đạt giá trị nhỏ nhất tại $x=5$.\nVậy cần sản xuất $5$ sản phẩm.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1078",
+  "dap_an": "4",
+  "loi_giai": "$M$ thuộc đoạn $AC$ với $AM=\\dfrac{2}{3}AC$ nên $\\overrightarrow{AM}=\\dfrac{2}{3}\\overrightarrow{AC}=\\dfrac{2}{3}(\\overrightarrow{AB}+\\overrightarrow{AD})$.\n$\\overrightarrow{A'M}=\\overrightarrow{A'A}+\\overrightarrow{AM}=-\\overrightarrow{AA'}+\\dfrac{2}{3}\\overrightarrow{AB}+\\dfrac{2}{3}\\overrightarrow{AD}$.\nSuy ra $x=-1$, $y=\\dfrac{2}{3}$, $z=\\dfrac{2}{3}$.\n$x+y+z=-1+\\dfrac{4}{3}=\\dfrac{1}{3}$, phân số tối giản nên $a=1$, $b=3$.\n$a+b=4$.\nVậy $a+b=4$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1079",
+  "dap_an": "7",
+  "loi_giai": "$\\overline{C}'(x)=\\dfrac{1}{2}-\\dfrac{8}{x^{2}}$ với $x>0$.\n$\\overline{C}'(x)=0\\Leftrightarrow x^{2}=16\\Leftrightarrow x=4$.\n$\\overline{C}'(x)<0$ khi $0<x<4$ và $\\overline{C}'(x)>0$ khi $x>4$ nên $\\overline{C}$ đạt giá trị nhỏ nhất tại $x=4$.\n$\\overline{C}(4)=\\dfrac{1}{2}\\cdot 4+3+\\dfrac{8}{4}=2+3+2=7$.\nVậy chi phí trung bình thấp nhất là $7$ triệu đồng/tạ.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1080",
+  "dap_an": "2025",
+  "loi_giai": "Phương trình tương đương $2^{x-2y}(2x+1)=(2x+1)+(4y+3)$, tức $(2x+1)\\left(2^{x-2y}-1\\right)=4y+3>0$.\nĐặt $k=x-2y$. Khi đó $k>0$ và $(2k+4y+1)(2^{k}-1)=4y+3$, hay $4y\\left(2^{k}-2\\right)=3-(2k+1)(2^{k}-1)$.\nNếu $k>1$: vế trái $>0$, vế phải $<3-3\\cdot 3<0$, vô lí.\nNếu $0<k<1$: vế trái $<0$, vế phải $>0$ (vì $(2k+1)(2^{k}-1)<3$), vô lí.\nVậy $k=1$, tức $x=2y+1$ (thoả mãn với mọi $y\\in[1;3]$).\nKhi đó $P=2^{y-1}-(2y+1)-y^{2}+2037=2^{y-1}-y^{2}-2y+2036$.\n$P'(y)=2^{y-1}\\ln 2-2y-2<4\\ln 2-4<0$ trên $[1;3]$ nên $P$ nghịch biến.\n$P_{\\min}=P(3)=4-9-6+2036=2025$.\nVậy giá trị nhỏ nhất của $P$ là $2025$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm số: min tại x=7,y=3"
+ },
+ {
+  "id": "X1081",
+  "dap_an": "24",
+  "loi_giai": "Gọi nửa cạnh đáy là $a$, chiều cao $h$, bán kính cầu nội tiếp $r=6$.\nXét mặt phẳng qua đỉnh và trung điểm hai cạnh đáy đối nhau: tam giác cân có đáy $2a$, đường cao $h$, cạnh bên $d=\\sqrt{a^{2}+h^{2}}$, bán kính đường tròn nội tiếp $r$.\nDiện tích tam giác: $ah=r(a+d)$, suy ra $rd=a(h-r)$.\nBình phương: $r^{2}(a^{2}+h^{2})=a^{2}(h-r)^{2}\\Rightarrow r^{2}h^{2}=a^{2}h(h-2r)\\Rightarrow a^{2}=\\dfrac{r^{2}h}{h-2r}$ với $h>2r$.\nThể tích: $V=\\dfrac{1}{3}\\cdot 4a^{2}\\cdot h=\\dfrac{4r^{2}}{3}\\cdot\\dfrac{h^{2}}{h-2r}$.\nXét $g(h)=\\dfrac{h^{2}}{h-2r}$: $g'(h)=\\dfrac{h(h-4r)}{(h-2r)^{2}}$, $g'(h)=0\\Leftrightarrow h=4r$.\n$g'$ đổi dấu từ $-$ sang $+$ tại $h=4r$ nên $V$ nhỏ nhất khi $h=4r=24$.\nVậy chiều cao của kim tự tháp là $24$ m.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1082",
+  "dap_an": "6000",
+  "loi_giai": "Gọi $t$ là số lần tăng giá (mỗi lần $1000$ đồng); khi đó giá bán là $40000+1000t$ và số khăn bán được là $3000-100t$.\nLợi nhuận mỗi chiếc: $40000+1000t-22000=18000+1000t$.\nTổng lợi nhuận: $L(t)=(18000+1000t)(3000-100t)=-100000t^{2}+1200000t+54000000$.\n$L(t)$ đạt giá trị lớn nhất tại $t=-\\dfrac{1200000}{2\\cdot(-100000)}=6$.\nSố tiền tăng thêm mỗi chiếc: $x=6\\cdot 1000=6000$ đồng.\nVậy $x=6000$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1083",
+  "dap_an": "9000",
+  "loi_giai": "Gọi $t$ là số lần tăng giá (mỗi lần $1000$ đồng); khi đó giá bán là $30000+1000t$ và số khăn bán được là $3000-100t$.\nLợi nhuận mỗi chiếc: $30000+1000t-18000=12000+1000t$.\nTổng lợi nhuận: $L(t)=(12000+1000t)(3000-100t)=-100000t^{2}+1800000t+36000000$.\n$L(t)$ đạt giá trị lớn nhất tại $t=-\\dfrac{1800000}{2\\cdot(-100000)}=9$.\nSố tiền tăng thêm mỗi chiếc: $x=9\\cdot 1000=9000$ đồng.\nVậy $x=9000$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1084",
+  "dap_an": "1",
+  "loi_giai": "Hiểu hàm số là $y=x^{3}-3mx^{2}+3(2m-1)x+1$ (đề in thiếu $x$).\n$y'=3x^{2}-6mx+3(2m-1)$.\nHàm số đồng biến trên $\\mathbb{R}$ khi $y'\\ge 0$ với mọi $x$, tức $\\Delta'=9m^{2}-9(2m-1)=9(m-1)^{2}\\le 0\\Leftrightarrow m=1$.\n(Nếu hiểu đúng như đề in: $y'=3x^{2}-6mx\\ge 0$ với mọi $x$ khi và chỉ khi $m=0$, cũng có đúng $1$ giá trị.)\nVậy có $1$ giá trị nguyên của $m$.",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": true,
+  "ghi": "Đề thiếu x trong số hạng 3(2m-1)x; cả hai cách hiểu đều ra 1"
+ },
+ {
+  "id": "X1086",
+  "dap_an": "7",
+  "loi_giai": "$y'=-3x^{2}-2mx+4m+9$.\nHàm số nghịch biến trên $\\mathbb{R}$ khi $y'\\le 0$ với mọi $x$.\nVì hệ số $a=-3<0$ nên cần $\\Delta'=m^{2}+3(4m+9)\\le 0\\Leftrightarrow m^{2}+12m+27\\le 0\\Leftrightarrow (m+3)(m+9)\\le 0\\Leftrightarrow -9\\le m\\le -3$.\nCác giá trị nguyên: $-9,-8,-7,-6,-5,-4,-3$, gồm $7$ giá trị.\nVậy có $7$ giá trị nguyên của $m$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1087",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Mơ hồ \"giảm đến\": có thể là giảm 20 nghìn hay giá mới 80 nghìn; doanh thu max khi giảm 20 nghìn."
+ },
+ {
+  "id": "X1092",
+  "dap_an": "3",
+  "loi_giai": "Chia đa thức: $2x^{2}-3x+2=(x-1)(2x-1)+1$.\nDo đó $y=2x-1+\\dfrac{1}{x-1}$.\nTiệm cận xiên là $y=2x-1$ nên $a=2$, $b=-1$.\n$a-b=2-(-1)=3$.\nVậy $a-b=3$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1095",
+  "dap_an": "16",
+  "loi_giai": "$f'(x)=x^{2}-4x+3=(x-1)(x-3)$, nên $f'(u)\\ge 0\\Leftrightarrow u\\le 1$ hoặc $u\\ge 3$.\n$g'(x)=(2x+3)f'\\left(x^{2}+3x-m\\right)$.\nVới $x\\in(1;3)$ thì $2x+3>0$, nên $g$ đồng biến trên $(1;3)$ khi $f'(u)\\ge 0$ với mọi $x\\in(1;3)$, trong đó $u=x^{2}+3x-m$.\nHàm $u=x^{2}+3x-m$ đồng biến trên $(1;3)$ nên $u$ nhận mọi giá trị trong khoảng $(4-m;18-m)$.\nCần khoảng này không giao với $(1;3)$: $18-m\\le 1\\Leftrightarrow m\\ge 17$ hoặc $4-m\\ge 3\\Leftrightarrow m\\le 1$.\nVới $m\\in[-10;20]$: $m\\in\\{-10;\\ldots;1\\}$ có $12$ giá trị; $m\\in\\{17;\\ldots;20\\}$ có $4$ giá trị.\nTổng cộng $12+4=16$ giá trị.\nVậy có $16$ giá trị nguyên của $m$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đã kiểm máy"
+ },
+ {
+  "id": "X1097",
+  "dap_an": "14",
+  "loi_giai": "Gọi $n$ là số máy sử dụng ($n>0$).\nThời gian sản xuất: $\\dfrac{8000}{40n}=\\dfrac{200}{n}$ giờ.\nChi phí: $f(n)=200n+196\\cdot\\dfrac{200}{n}=200n+\\dfrac{39200}{n}$ (nghìn đồng).\n$f'(n)=200-\\dfrac{39200}{n^{2}}$, $f'(n)=0\\Leftrightarrow n^{2}=196\\Leftrightarrow n=14$.\n$f'(n)<0$ khi $n<14$ và $f'(n)>0$ khi $n>14$ nên $f$ đạt giá trị nhỏ nhất tại $n=14$.\nVậy nên sử dụng $14$ máy.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1099",
+  "dap_an": "26",
+  "loi_giai": "Chia đa thức: $x^{2}-3x+4=(x-1)(x-2)+2$.\nDo đó $y=x-2+\\dfrac{2}{x-1}$.\nTiệm cận xiên là $y=x-2$ nên $a=1$, $b=-2$.\n$P=24a-b=24+2=26$.\nVậy $P=26$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1101",
+  "dap_an": "2",
+  "loi_giai": "$y'=x^{2}-4mx+m+3$.\nHàm số đồng biến trên $\\mathbb{R}$ khi $y'\\ge 0$ với mọi $x$, tức $\\Delta'=4m^{2}-(m+3)\\le 0$.\n$4m^{2}-m-3\\le 0\\Leftrightarrow (4m+3)(m-1)\\le 0\\Leftrightarrow -\\dfrac{3}{4}\\le m\\le 1$.\nCác giá trị nguyên của $m$ là $0$ và $1$.\nVậy có $2$ giá trị nguyên của $m$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1105",
+  "dap_an": "6.78",
+  "loi_giai": "$ABCM$ là hình bình hành nên $\\overrightarrow{AB}=\\overrightarrow{MC}$.\n$\\overrightarrow{AB}=(1;-3;4)$, $\\overrightarrow{MC}=(-2-a;3-b;3-c)$.\nSuy ra $-2-a=1$, $3-b=-3$, $3-c=4$, tức $a=-3$, $b=6$, $c=-1$.\nVậy $M(-3;6;-1)$.\n$P=\\sqrt{a^{2}+b^{2}+c^{2}}=\\sqrt{9+36+1}=\\sqrt{46}\\approx 6{,}78$.\nVậy $P=\\sqrt{46}\\approx 6{,}78$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "P=√46 ≈ 6.78 (đề không nêu làm tròn)"
+ },
+ {
+  "id": "X1109",
+  "dap_an": "0.08",
+  "loi_giai": "$C'(t)=0{,}15\\cdot\\dfrac{(t^{2}+1)-2t^{2}}{(t^{2}+1)^{2}}=0{,}15\\cdot\\dfrac{1-t^{2}}{(t^{2}+1)^{2}}$.\nVới $t\\ge 0$: $C'(t)=0\\Leftrightarrow t=1$; $C'>0$ khi $0\\le t<1$ và $C'<0$ khi $t>1$.\nDo đó $C$ đạt giá trị lớn nhất tại $t=1$: $C(1)=\\dfrac{0{,}15}{2}=0{,}075\\approx 0{,}08$.\nVậy nồng độ thuốc lớn nhất xấp xỉ $0{,}08$ $mg/cm^{3}$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1113",
+  "dap_an": "9420",
+  "loi_giai": "Gọi bán kính đáy là $r$ (m), chiều cao $h$ (m). Thể tích $\\pi r^{2}h=2\\pi\\Rightarrow h=\\dfrac{2}{r^{2}}$.\nDiện tích toàn phần: $S=2\\pi r^{2}+2\\pi rh=2\\pi r^{2}+\\dfrac{4\\pi}{r}$.\n$S'=4\\pi r-\\dfrac{4\\pi}{r^{2}}$, $S'=0\\Leftrightarrow r=1$.\n$S'<0$ khi $0<r<1$ và $S'>0$ khi $r>1$ nên $S$ nhỏ nhất tại $r=1$: $S=6\\pi=18{,}84$ m$^{2}$.\nChi phí thấp nhất: $18{,}84\\cdot 500=9420$ nghìn đồng.\nVậy chi phí thấp nhất là $9420$ nghìn đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1115",
+  "dap_an": "1",
+  "loi_giai": "Gọi $t$ là số lần tăng giá (mỗi lần $50$ nghìn đồng).\nGiá thuê: $500+50t$ (nghìn đồng); số phòng được thuê: $60-2t$.\nDoanh thu: $T(t)=(500+50t)(60-2t)=-100t^{2}+2000t+30000$.\n$T(t)$ đạt giá trị lớn nhất tại $t=-\\dfrac{2000}{2\\cdot(-100)}=10$.\nGiá thuê mỗi phòng: $500+50\\cdot 10=1000$ nghìn đồng $=1$ triệu đồng.\nVậy nên cho thuê với giá $1$ triệu đồng một ngày.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1118",
+  "dap_an": "45",
+  "loi_giai": "Khi $x\\to+\\infty$: $f(x)=\\dfrac{1350x-1500}{30x+5}=\\dfrac{1350-\\frac{1500}{x}}{30+\\frac{5}{x}}\\to\\dfrac{1350}{30}=45$.\nVậy khi số năm đủ lớn, chi phí vận hành gần bằng $45$ triệu đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1119",
+  "dap_an": "-1.5",
+  "loi_giai": "$y'=\\dfrac{(x-2)-(x+2m)}{(x-2)^{2}}=\\dfrac{-2(m+1)}{(x-2)^{2}}$ trên $[-1;1]$ (không chứa $x=2$).\nNếu $m=-1$: $y=1$, không thoả.\nNếu $m>-1$: $y'<0$, hàm nghịch biến, $\\max y=y(-1)=\\dfrac{-1+2m}{-3}=2\\Leftrightarrow m=-\\dfrac{5}{2}$, mâu thuẫn $m>-1$.\nNếu $m<-1$: $y'>0$, hàm đồng biến, $\\max y=y(1)=\\dfrac{1+2m}{-1}=2\\Leftrightarrow m=-\\dfrac{3}{2}$, thoả $m<-1$.\nVậy $m=-\\dfrac{3}{2}$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1122",
+  "dap_an": "1",
+  "loi_giai": "$y'=0\\Leftrightarrow x=-1$, $x=1$ hoặc $x=\\dfrac{2}{3}$; sắp xếp $-1<\\dfrac{2}{3}<1$.\nVới $x>1$: $y'>0$. Với $\\dfrac{2}{3}<x<1$: $x^{2}-1<0$, $(3x-2)^{3}>0$ nên $y'<0$.\nVới $-1<x<\\dfrac{2}{3}$: $x^{2}-1<0$, $(3x-2)^{3}<0$ nên $y'>0$. Với $x<-1$: $x^{2}-1>0$, $(3x-2)^{3}<0$ nên $y'<0$.\n$y'$ đổi dấu từ $+$ sang $-$ chỉ tại $x=\\dfrac{2}{3}$, đổi dấu từ $-$ sang $+$ tại $x=-1$ và $x=1$.\nVậy hàm số có $1$ điểm cực đại.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1123",
+  "dap_an": "50",
+  "loi_giai": "Khi $x\\to+\\infty$: $f(x)=\\dfrac{1500x-1500}{30x+5}=\\dfrac{1500-\\frac{1500}{x}}{30+\\frac{5}{x}}\\to\\dfrac{1500}{30}=50$.\nVậy khi số năm đủ lớn, chi phí vận hành gần bằng $50$ triệu đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1124",
+  "dap_an": "-3",
+  "loi_giai": "Đồ thị $y=x+1+\\dfrac{1}{x+1}$ có tiệm cận đứng $x=-1$ và tiệm cận xiên $y=x+1$.\nTâm đối xứng là giao điểm: $x=-1$, $y=-1+1=0$, tức $I(-1;0)$.\nSuy ra $a=-1$, $b=0$.\n$T=3a-b=-3-0=-3$.\nVậy $T=-3$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1133",
+  "dap_an": "30",
+  "loi_giai": "Gọi chiều rộng $b$, chiều dài $a=2b$, chiều cao $c$ (m).\nDiện tích các mặt của bể không nắp: $2b^{2}+2(2b\\cdot c)+2(b\\cdot c)=2b^{2}+6bc=150\\Rightarrow c=\\dfrac{75-b^{2}}{3b}$.\nThể tích: $V=2b^{2}c=\\dfrac{2b(75-b^{2})}{3}=\\dfrac{150b-2b^{3}}{3}$.\n$V'=\\dfrac{150-6b^{2}}{3}$, $V'=0\\Leftrightarrow b=5$ (do $b>0$).\n$V'>0$ khi $0<b<5$ và $V'<0$ khi $b>5$ nên $V$ lớn nhất tại $b=5$.\nKhi đó $a=10$, $c=\\dfrac{75-25}{15}=\\dfrac{10}{3}$.\n$a+2b+3c=10+10+10=30$.\nVậy $a+2b+3c=30$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1139",
+  "dap_an": "2",
+  "loi_giai": "$y'=e^{x}x^{2}+2xe^{x}=e^{x}x(x+2)$.\nVì $e^{x}>0$ nên $y'<0\\Leftrightarrow x(x+2)<0\\Leftrightarrow -2<x<0$.\nHàm số nghịch biến trên $(-2;0)$ nên $a=-2$, $b=0$.\n$b-a=0-(-2)=2$.\nVậy $b-a=2$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1140",
+  "dap_an": "-0.3",
+  "loi_giai": "Chọn hệ trục với $A(0;0;0)$, $B(a;0;0)$, $D(0;a\\sqrt{2};0)$, $S(0;0;2a)$; khi đó $C(a;a\\sqrt{2};0)$.\n$I$ là trung điểm $SD$ nên $I\\left(0;\\dfrac{a\\sqrt{2}}{2};a\\right)$.\n$\\overrightarrow{AI}=\\left(0;\\dfrac{a\\sqrt{2}}{2};a\\right)$, $\\overrightarrow{SC}=(a;a\\sqrt{2};-2a)$.\n$\\overrightarrow{AI}\\cdot\\overrightarrow{SC}=\\dfrac{a\\sqrt{2}}{2}\\cdot a\\sqrt{2}-2a^{2}=a^{2}-2a^{2}=-a^{2}$.\n$|\\overrightarrow{AI}|=a\\sqrt{\\dfrac{1}{2}+1}=a\\sqrt{\\dfrac{3}{2}}$, $|\\overrightarrow{SC}|=a\\sqrt{1+2+4}=a\\sqrt{7}$.\n$\\cos\\left(\\overrightarrow{AI},\\overrightarrow{SC}\\right)=\\dfrac{-a^{2}}{a\\sqrt{3/2}\\cdot a\\sqrt{7}}=-\\dfrac{1}{\\sqrt{21/2}}\\approx -0{,}3086\\approx -0{,}3$.\nVậy $\\cos\\left(\\overrightarrow{AI},\\overrightarrow{SC}\\right)\\approx -0{,}3$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1141",
+  "dap_an": "-1.8",
+  "loi_giai": "Hàm số xác định trên $[-2;0]$ (vì $1-x>0$).\n$y'=2x+\\dfrac{4}{1-x}=\\dfrac{-2x^{2}+2x+4}{1-x}=\\dfrac{-2(x+1)(x-2)}{1-x}$.\nTrên $[-2;0]$: $y'=0\\Leftrightarrow x=-1$; $y'<0$ khi $-2<x<-1$ và $y'>0$ khi $-1<x<0$.\nSo sánh: $y(-2)=4-4\\ln 3\\approx -0{,}39$, $y(-1)=1-4\\ln 2\\approx -1{,}77$, $y(0)=0$.\nGiá trị nhỏ nhất là $1-4\\ln 2\\approx -1{,}8$.\nVậy giá trị nhỏ nhất của hàm số xấp xỉ $-1{,}8$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đã kiểm máy"
+ },
+ {
+  "id": "X1147",
+  "dap_an": "2",
+  "loi_giai": "Chọn hệ trục với $A(0;0;0)$, $B(2;0;0)$, $D(0;2;0)$, $A'(0;0;2)$.\nKhi đó $C(2;2;0)$, $M(2;1;2)$, $N(2;2;1)$.\n$\\overrightarrow{AC}=(2;2;0)$, $\\overrightarrow{MN}=(0;1;-1)$.\n$\\overrightarrow{AC}\\cdot\\overrightarrow{MN}=0+2+0=2$.\nVậy $\\overrightarrow{AC}\\cdot\\overrightarrow{MN}=2$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng tọa độ"
+ },
+ {
+  "id": "X1152",
+  "dap_an": "-7.39",
+  "loi_giai": "$y'=2xe^{2x}+2\\left(x^{2}-2\\right)e^{2x}=2e^{2x}\\left(x^{2}+x-2\\right)=2e^{2x}(x+2)(x-1)$.\n$y'=0\\Leftrightarrow x=-2$ hoặc $x=1$.\n$y'$ đổi dấu từ $+$ sang $-$ tại $x=-2$ và từ $-$ sang $+$ tại $x=1$ nên hàm số đạt cực tiểu tại $x=1$.\n$y(1)=(1-2)e^{2}=-e^{2}\\approx -7{,}39$.\nVậy giá trị cực tiểu của hàm số xấp xỉ $-7{,}39$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đã kiểm máy"
+ },
+ {
+  "id": "X1154",
+  "dap_an": "-2",
+  "loi_giai": "Chọn hệ trục với $A(0;0;0)$, $B(2;0;0)$, $D(0;2;0)$, $A'(0;0;2)$.\nKhi đó $C(2;2;0)$, $M(2;1;2)$, $N(2;2;1)$.\n$\\overrightarrow{AC}=(2;2;0)$, $\\overrightarrow{NM}=(0;-1;1)$.\n$\\overrightarrow{AC}\\cdot\\overrightarrow{NM}=0-2+0=-2$.\nVậy $\\overrightarrow{AC}\\cdot\\overrightarrow{NM}=-2$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng tọa độ"
+ },
+ {
+  "id": "X1155",
+  "dap_an": "40",
+  "loi_giai": "$G(x)=0{,}03x^{2}(60-x)=1{,}8x^{2}-0{,}03x^{3}$ với $0<x<60$.\n$G'(x)=3{,}6x-0{,}09x^{2}=0{,}09x(40-x)$.\n$G'(x)>0\\Leftrightarrow 0<x<40$ nên độ giảm huyết áp tăng theo liều lượng trên khoảng $(0;40)$, tức huyết áp giảm dần khi tăng liều.\nSuy ra $a=0$, $b=40$.\n$b-a=40$.\nVậy $b-a=40$.",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Hiểu \"giảm dần theo liều\" = G tăng theo liều trên (0;40); nếu hiểu G giảm thì 20"
+ }
+]

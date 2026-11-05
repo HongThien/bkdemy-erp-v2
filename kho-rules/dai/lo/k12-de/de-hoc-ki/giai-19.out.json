@@ -1,0 +1,488 @@
+[
+ {
+  "id": "X1158",
+  "dap_an": "15",
+  "loi_giai": "Gọi $M(a;b;c)$. Ta có $\\overrightarrow{MA}=(1-a;3-b;-1-c)$ và $\\overrightarrow{MB}=(3-a;-1-b;5-c)$.\nTừ $\\overrightarrow{MA}=3\\overrightarrow{MB}$ ta có $1-a=3(3-a)$, $3-b=3(-1-b)$, $-1-c=3(5-c)$.\nSuy ra $a=4$, $b=-3$, $c=8$.\nKhi đó $a-b+c=4+3+8=15$.\nVậy $a-b+c=15$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1163",
+  "dap_an": "50",
+  "loi_giai": "Gọi $x$ là số sản phẩm đồ chơi A đã sản xuất ($x>0$). Tổng chi phí là $T(x)=70000+50x$ (nghìn đồng).\nChi phí trung bình mỗi sản phẩm là $M(x)=\\dfrac{70000+50x}{x}=50+\\dfrac{70000}{x}$.\nKhi $x\\to+\\infty$ thì $\\dfrac{70000}{x}\\to 0$ nên $M(x)\\to 50$, và $M(x)>50$ với mọi $x>0$.\nVậy chi phí trung bình không dưới $50$ nghìn đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1165",
+  "dap_an": "40",
+  "loi_giai": "Gọi $x$ là số sản phẩm đồ chơi A đã sản xuất ($x>0$). Tổng chi phí là $T(x)=70000+40x$ (nghìn đồng).\nChi phí trung bình mỗi sản phẩm là $M(x)=\\dfrac{70000+40x}{x}=40+\\dfrac{70000}{x}$.\nKhi $x\\to+\\infty$ thì $\\dfrac{70000}{x}\\to 0$ nên $M(x)\\to 40$, và $M(x)>40$ với mọi $x>0$.\nVậy chi phí trung bình không dưới $40$ nghìn đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1166",
+  "dap_an": "80",
+  "loi_giai": "Doanh thu: $R(x)=x\\cdot p(x)=240x-3x^{2}$.\nLợi nhuận: $L(x)=R(x)-C(x)=240x-3x^{2}-75-(80+T)x+x^{2}=-2x^{2}+(160-T)x-75$.\n$L$ là hàm bậc hai có hệ số $a=-2<0$ nên đạt giá trị lớn nhất tại $x=\\dfrac{160-T}{4}$.\nTổng thuế phải chi trả khi đó là $S(T)=T\\cdot x=\\dfrac{T(160-T)}{4}=\\dfrac{-T^{2}+160T}{4}$.\n$S(T)$ đạt giá trị lớn nhất khi $T=\\dfrac{160}{2}=80$. Khi đó $x=\\dfrac{160-80}{4}=20\\in[0;40]$ (thỏa mãn).\nVậy mức thuế của mỗi bộ sách là $80$ nghìn đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1167",
+  "dap_an": "-0.5",
+  "loi_giai": "Ta có $\\overrightarrow{AB}=\\overrightarrow{SB}-\\overrightarrow{SA}$ nên $\\overrightarrow{SC}\\cdot\\overrightarrow{AB}=\\overrightarrow{SC}\\cdot\\overrightarrow{SB}-\\overrightarrow{SC}\\cdot\\overrightarrow{SA}$.\nTam giác $SBC$ có $SB=SC=a$, $BC=a\\sqrt{2}$ nên $SB^{2}+SC^{2}=BC^{2}$, tam giác $SBC$ vuông tại $S$, suy ra $\\overrightarrow{SC}\\cdot\\overrightarrow{SB}=0$.\nTam giác $SAC$ có $SA=SC=AC=a$ nên là tam giác đều, suy ra $\\overrightarrow{SC}\\cdot\\overrightarrow{SA}=a\\cdot a\\cdot\\cos 60^{\\circ}=\\dfrac{a^{2}}{2}$.\nDo đó $\\overrightarrow{SC}\\cdot\\overrightarrow{AB}=0-\\dfrac{a^{2}}{2}=-\\dfrac{a^{2}}{2}$.\nMà $|\\overrightarrow{SC}|\\cdot|\\overrightarrow{AB}|=a\\cdot a=a^{2}$.\nSuy ra $\\cos(\\overrightarrow{SC},\\overrightarrow{AB})=\\dfrac{-a^{2}/2}{a^{2}}=-\\dfrac{1}{2}$.\nVậy côsin của góc giữa hai vectơ bằng $-0{,}5$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1168",
+  "dap_an": "2.38",
+  "loi_giai": "Ta có $C'(t)=\\dfrac{3(27+t^{3})-3t\\cdot 3t^{2}}{(27+t^{3})^{2}}=\\dfrac{81-6t^{3}}{(27+t^{3})^{2}}$.\n$C'(t)=0\\Leftrightarrow t^{3}=\\dfrac{27}{2}\\Leftrightarrow t=\\sqrt[3]{13{,}5}\\approx 2{,}38$.\nTrên $[0;+\\infty)$: $C'(t)>0$ khi $0\\le t<\\sqrt[3]{13{,}5}$ và $C'(t)<0$ khi $t>\\sqrt[3]{13{,}5}$ nên $C(t)$ đạt giá trị lớn nhất tại $t=\\sqrt[3]{13{,}5}$.\nVậy sau khoảng $2{,}38$ giờ thì nồng độ hoá chất trong máu lớn nhất.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1172",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Bài tự luận khảo sát và vẽ đồ thị, không có đáp số ngắn"
+ },
+ {
+  "id": "X1173",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Dính 2 câu tự luận (GTLN/GTNN và vận tốc), không có một đáp số ngắn"
+ },
+ {
+  "id": "X1174",
+  "dap_an": "521",
+  "loi_giai": "Doanh thu khi bán $x$ tấn: $R(x)=x(45-0{,}0002x^{2})=45x-0{,}0002x^{3}$ (triệu đồng).\nThuế $6\\%$ doanh thu nên doanh thu sau thuế là $0{,}94R(x)$.\nLợi nhuận sau thuế: $L(x)=0{,}94(45x-0{,}0002x^{3})-150-34x=-0{,}000188x^{3}+8{,}3x-150$, với $0\\le x\\le 200$.\n$L'(x)=-0{,}000564x^{2}+8{,}3=0\\Leftrightarrow x=\\sqrt{\\dfrac{8{,}3}{0{,}000564}}\\approx 121{,}31$ (nhận, vì $0\\le x\\le 200$).\nLập bảng biến thiên: $L'(x)>0$ với $0\\le x<121{,}31$ và $L'(x)<0$ với $121{,}31<x\\le 200$, nên $L$ đạt giá trị lớn nhất tại $x\\approx 121{,}31$.\n$L(121{,}31)\\approx 521{,}25$ (triệu đồng).\nVậy lợi nhuận sau thuế lớn nhất khoảng $521$ triệu đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1176",
+  "dap_an": "2027",
+  "loi_giai": "Doanh thu khi bán $x$ tấn: $R(x)=x(55-0{,}0002x^{2})=55x-0{,}0002x^{3}$ (triệu đồng).\nThuế $7\\%$ doanh thu nên doanh thu sau thuế là $0{,}93R(x)$.\nLợi nhuận sau thuế: $L(x)=0{,}93(55x-0{,}0002x^{3})-155-33x=-0{,}000186x^{3}+18{,}15x-155$, với $0\\le x\\le 200$.\n$L'(x)=-0{,}000558x^{2}+18{,}15=0\\Leftrightarrow x=\\sqrt{\\dfrac{18{,}15}{0{,}000558}}\\approx 180{,}35$ (nhận, vì $0\\le x\\le 200$).\nLập bảng biến thiên: $L'(x)>0$ với $0\\le x<180{,}35$ và $L'(x)<0$ với $180{,}35<x\\le 200$, nên $L$ đạt giá trị lớn nhất tại $x\\approx 180{,}35$.\n$L(180{,}35)\\approx 2027{,}26$ (triệu đồng).\nVậy lợi nhuận sau thuế lớn nhất khoảng $2027$ triệu đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1177",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Bài tự luận khảo sát và vẽ đồ thị, không có đáp số ngắn"
+ },
+ {
+  "id": "X1178",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Dính 2 câu tự luận (GTLN/GTNN và vận tốc), không có một đáp số ngắn"
+ },
+ {
+  "id": "X1179",
+  "dap_an": "20",
+  "loi_giai": "Ta có $y=\\dfrac{x^{2}+3x+3}{x+1}=x+2+\\dfrac{1}{x+1}$, tập xác định $\\mathbb{R}\\setminus\\{-1\\}$.\n$y'=1-\\dfrac{1}{(x+1)^{2}}=\\dfrac{x^{2}+2x}{(x+1)^{2}}$. $y'=0\\Leftrightarrow x=0$ hoặc $x=-2$.\nXét dấu $y'$: $y'>0$ trên $(-\\infty;-2)$, $y'<0$ trên $(-2;-1)$ và $(-1;0)$, $y'>0$ trên $(0;+\\infty)$.\nHàm số đạt cực đại tại $x=-2$ với $a=y(-2)=\\dfrac{4-6+3}{-1}=-1$.\nHàm số đạt cực tiểu tại $x=0$ với $b=y(0)=3$.\nKhi đó $a+7b=-1+7\\cdot 3=20$.\nVậy $a+7b=20$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1182",
+  "dap_an": "64",
+  "loi_giai": "Gọi $\\vec F_1,\\vec F_2$ là hai lực có độ lớn $40$ N hợp nhau góc $120^{\\circ}$ và $\\vec F_3$ là lực thứ ba ($|\\vec F_3|=50$ N) vuông góc với mặt phẳng chứa $\\vec F_1,\\vec F_2$.\nTa có $|\\vec F_1+\\vec F_2|^{2}=40^{2}+40^{2}+2\\cdot 40\\cdot 40\\cdot\\cos 120^{\\circ}=1600$, suy ra $|\\vec F_1+\\vec F_2|=40$ N.\nVì $\\vec F_3$ vuông góc với mặt phẳng chứa $\\vec F_1,\\vec F_2$ nên $\\vec F_3\\perp(\\vec F_1+\\vec F_2)$.\nDo đó $|\\vec F_1+\\vec F_2+\\vec F_3|=\\sqrt{40^{2}+50^{2}}=\\sqrt{4100}\\approx 64{,}03$ N.\nVậy hợp lực có độ lớn khoảng $64$ N.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1183",
+  "dap_an": "47.5",
+  "loi_giai": "Lượng cà phê xuất khẩu là $E(x)=R(x)-Q(x)=(x-150)-(2700-x)=2x-2850$ (kg), điều kiện $1425\\le x\\le 2700$.\nLợi nhuận trên mỗi kg xuất khẩu là $1900-x-m$, thuế trên mỗi kg là $m$.\nTỉ lệ lợi nhuận : thuế $=4:1$ nên $1900-x-m=4m\\Leftrightarrow m=\\dfrac{1900-x}{5}$.\nLợi nhuận từ xuất khẩu: $L(x)=4m\\cdot E(x)=\\dfrac{4}{5}(1900-x)(2x-2850)=\\dfrac{4}{5}\\left(-2x^{2}+6650x-5415000\\right)$.\n$L(x)$ là hàm bậc hai có hệ số $-\\dfrac{8}{5}<0$ nên đạt giá trị lớn nhất tại $x=\\dfrac{6650}{4}=1662{,}5$ (thỏa mãn điều kiện).\nKhi đó $m=\\dfrac{1900-1662{,}5}{5}=47{,}5$.\nVậy $m=47{,}5$ USD.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1184",
+  "dap_an": "1.6",
+  "loi_giai": "Gọi chiều rộng đáy là $x$ ($x>0$), chiều dài đáy là $2x$ và chiều cao là $h$.\nThể tích $V=2x\\cdot x\\cdot h=2x^{2}h=20$ nên $h=\\dfrac{10}{x^{2}}$.\nDiện tích vật liệu (bể không nắp): $S=2x^{2}+2(x+2x)h=2x^{2}+6xh=2x^{2}+\\dfrac{60}{x}$.\n$S'(x)=4x-\\dfrac{60}{x^{2}}=0\\Leftrightarrow x^{3}=15\\Leftrightarrow x=\\sqrt[3]{15}$.\nLập bảng biến thiên: $S'(x)<0$ khi $0<x<\\sqrt[3]{15}$ và $S'(x)>0$ khi $x>\\sqrt[3]{15}$ nên $S$ nhỏ nhất tại $x=\\sqrt[3]{15}$.\nKhi đó $h=\\dfrac{10}{\\sqrt[3]{15}^{\\,2}}\\approx 1{,}64$.\nVậy cần xây bể có chiều cao khoảng $1{,}6$ m.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1185",
+  "dap_an": "3",
+  "loi_giai": "Ta có $f'(x)=0\\Leftrightarrow x=0$, $x=1$, $x=-2$ (nghiệm kép), $x=3$.\nCác nghiệm $x=0$, $x=1$ (bội 1) và $x=3$ (bội 5, lẻ) là nghiệm bội lẻ nên $f'(x)$ đổi dấu khi đi qua các điểm này.\nNghiệm $x=-2$ là nghiệm bội chẵn nên $f'(x)$ không đổi dấu tại $x=-2$.\nVậy hàm số có $3$ điểm cực trị.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1186",
+  "dap_an": "54",
+  "loi_giai": "Gọi $\\vec F_1,\\vec F_2$ là hai lực có độ lớn $40$ N hợp nhau góc $150^{\\circ}$ và $\\vec F_3$ là lực thứ ba ($|\\vec F_3|=50$ N) vuông góc với mặt phẳng chứa $\\vec F_1,\\vec F_2$.\nTa có $|\\vec F_1+\\vec F_2|^{2}=40^{2}+40^{2}+2\\cdot 40\\cdot 40\\cdot\\cos 150^{\\circ}=3200-1600\\sqrt{3}\\approx 428{,}7$.\nVì $\\vec F_3\\perp(\\vec F_1+\\vec F_2)$ nên $|\\vec F_1+\\vec F_2+\\vec F_3|^{2}=428{,}7+2500\\approx 2928{,}7$.\nSuy ra độ lớn hợp lực là $\\sqrt{2928{,}7}\\approx 54{,}1$ N.\nVậy hợp lực có độ lớn khoảng $54$ N.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1187",
+  "dap_an": "200",
+  "loi_giai": "Lượng chè xuất khẩu là $E(x)=R(x)-Q(x)=(2x-200)-(2500-x)=3x-2700$ (kg), điều kiện $900\\le x\\le 2500$.\nLợi nhuận trên mỗi kg xuất khẩu là $2500-x-m$, thuế trên mỗi kg là $m$.\nTỉ lệ lợi nhuận : thuế $=3:1$ nên $2500-x-m=3m\\Leftrightarrow m=\\dfrac{2500-x}{4}$.\nLợi nhuận từ xuất khẩu: $L(x)=3m\\cdot E(x)=\\dfrac{3}{4}(2500-x)(3x-2700)=\\dfrac{3}{4}\\left(-3x^{2}+10200x-6750000\\right)$.\n$L(x)$ là hàm bậc hai có hệ số âm nên đạt giá trị lớn nhất tại $x=\\dfrac{10200}{6}=1700$ (thỏa mãn điều kiện).\nKhi đó $m=\\dfrac{2500-1700}{4}=200$.\nVậy $m=200$ USD.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1188",
+  "dap_an": "2.25",
+  "loi_giai": "Gọi $k$ là số lần tăng giá $100000$ đ ($k\\ge 0$). Giá thuê mỗi căn là $2+0{,}1k$ (triệu đồng) và số căn hộ được thuê là $50-2k$.\nDoanh thu mỗi tháng: $f(k)=(2+0{,}1k)(50-2k)=-0{,}2k^{2}+k+100$.\n$f'(k)=-0{,}4k+1=0\\Leftrightarrow k=2{,}5$, và $f$ đạt giá trị lớn nhất tại $k=2{,}5$.\nKhi đó giá thuê là $2+0{,}1\\cdot 2{,}5=2{,}25$ (triệu đồng).\nVậy công ty nên cho thuê mỗi căn hộ với giá $2{,}25$ triệu đồng một tháng.",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "k=2,5 không nguyên (k=2 và k=3 cho cùng doanh thu); lấy đáp số mô hình liên tục"
+ },
+ {
+  "id": "X1189",
+  "dap_an": "16",
+  "loi_giai": "Gọi $n$ là số máy sử dụng ($n>0$). Thời gian sản xuất xong là $\\dfrac{8000}{30n}=\\dfrac{800}{3n}$ giờ.\nChi phí thiết lập máy: $200n$ (nghìn đồng). Chi phí giám sát: $192\\cdot\\dfrac{800}{3n}=\\dfrac{51200}{n}$ (nghìn đồng).\nTổng chi phí: $C(n)=200n+\\dfrac{51200}{n}$.\n$C'(n)=200-\\dfrac{51200}{n^{2}}=0\\Leftrightarrow n^{2}=256\\Leftrightarrow n=16$.\n$C'(n)<0$ khi $0<n<16$ và $C'(n)>0$ khi $n>16$ nên $C(n)$ nhỏ nhất tại $n=16$ (khi đó $C=6400$ nghìn đồng).\nVậy công ty nên sử dụng $16$ máy.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1191",
+  "dap_an": "12",
+  "loi_giai": "Tổng khối lượng cá trên một đơn vị diện tích là $f(n)=n\\cdot p(n)=240n-10n^{2}$ (gam), với $n>0$.\n$f'(n)=240-20n>0\\Leftrightarrow n<12$.\nVậy $f(n)$ tăng trên khoảng $(0;12)$, tức $a=0$, $b=12$.\nDo đó $a+b=12$.",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Hiểu \"số gam\" là tổng khối lượng cá n·p(n)"
+ },
+ {
+  "id": "X1192",
+  "dap_an": "9",
+  "loi_giai": "Ta có $y=\\dfrac{x^{2}+x+1}{x+1}=x+\\dfrac{1}{x+1}$ với $x>-1$. Sóng thu tốt nhất khi khoảng cách $MI$ nhỏ nhất.\nĐặt $t=x+1>0$. Khi đó $M\\left(t-1;\\,t+\\dfrac{1}{t}-1\\right)$ và $\\overrightarrow{IM}=\\left(t;\\,t+\\dfrac{1}{t}\\right)$.\n$IM^{2}=t^{2}+\\left(t+\\dfrac{1}{t}\\right)^{2}=2t^{2}+2+\\dfrac{1}{t^{2}}$.\nXét $g(t)=2t^{2}+\\dfrac{1}{t^{2}}+2$, $g'(t)=4t-\\dfrac{2}{t^{3}}=0\\Leftrightarrow t^{4}=\\dfrac{1}{2}\\Leftrightarrow t=\\dfrac{1}{\\sqrt[4]{2}}$.\nLập bảng biến thiên, $g(t)$ nhỏ nhất tại $t=\\dfrac{1}{\\sqrt[4]{2}}$, suy ra $x_{0}=\\dfrac{1}{\\sqrt[4]{2}}-1$.\nĐối chiếu $x_{0}=\\dfrac{1}{\\sqrt[n]{a}}-b$ ta có $n=4$, $a=2$, $b=1$.\nVậy $a\\cdot n+b=2\\cdot 4+1=9$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1195",
+  "dap_an": "20",
+  "loi_giai": "Ta có $h'(t)=-t^{2}+10t+24$. $h'(t)=0\\Leftrightarrow t=12$ hoặc $t=-2$ (loại vì $t>0$).\n$h'(t)>0$ khi $0<t<12$ và $h'(t)<0$ khi $t>12$ nên $h(t)$ đạt giá trị lớn nhất tại $t=12$.\nThời gian $t$ tính từ $8$ giờ sáng, nên mực nước cao nhất lúc $8+12=20$ giờ.\nVậy mực nước cao nhất vào lúc $20$ giờ.",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Đáp số là mốc giờ trong ngày (t=12 tính từ 8h)"
+ },
+ {
+  "id": "X1201",
+  "dap_an": "1.5",
+  "loi_giai": "Gọi chiều rộng đáy là $x$ ($x>0$), chiều dài đáy là $3x$ và chiều cao là $h$.\nThể tích $V=3x\\cdot x\\cdot h=3x^{2}h=18$ nên $h=\\dfrac{6}{x^{2}}$.\nDiện tích cần xây (bể không nắp): $S=3x^{2}+2(x+3x)h=3x^{2}+8xh=3x^{2}+\\dfrac{48}{x}$.\nChi phí nhân công tỉ lệ thuận với $S$, nên chi phí thấp nhất khi $S$ nhỏ nhất.\n$S'(x)=6x-\\dfrac{48}{x^{2}}=0\\Leftrightarrow x^{3}=8\\Leftrightarrow x=2$.\n$S'(x)<0$ khi $0<x<2$ và $S'(x)>0$ khi $x>2$ nên $S$ nhỏ nhất tại $x=2$. Khi đó $h=\\dfrac{6}{4}=1{,}5$.\nVậy cần xây bể có chiều cao $1{,}5$ m.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1206",
+  "dap_an": "4",
+  "loi_giai": "Ta có $\\overrightarrow{AC}=\\overrightarrow{AB}+\\overrightarrow{AD}$ và $\\overrightarrow{BC'}=\\overrightarrow{BC}+\\overrightarrow{BB'}=\\overrightarrow{AD}+\\overrightarrow{AA'}$.\nDo đó $\\overrightarrow{AC}\\cdot\\overrightarrow{BC'}=(\\overrightarrow{AB}+\\overrightarrow{AD})\\cdot(\\overrightarrow{AD}+\\overrightarrow{AA'})$.\nVì $AB,AD,AA'$ đôi một vuông góc nên $\\overrightarrow{AB}\\cdot\\overrightarrow{AD}=\\overrightarrow{AB}\\cdot\\overrightarrow{AA'}=\\overrightarrow{AD}\\cdot\\overrightarrow{AA'}=0$.\nSuy ra $\\overrightarrow{AC}\\cdot\\overrightarrow{BC'}=\\overrightarrow{AD}\\cdot\\overrightarrow{AD}=AD^{2}=4$.\nVậy $\\overrightarrow{AC}\\cdot\\overrightarrow{BC'}=4$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1208",
+  "dap_an": "3",
+  "loi_giai": "Tập xác định $[-1;1]$. $y'=\\dfrac{-x}{\\sqrt{1-x^{2}}}+1=0\\Leftrightarrow\\sqrt{1-x^{2}}=x\\Leftrightarrow x=\\dfrac{\\sqrt{2}}{2}$.\nTính: $y(-1)=0$, $y(1)=2$, $y\\left(\\dfrac{\\sqrt{2}}{2}\\right)=\\dfrac{\\sqrt{2}}{2}+\\dfrac{\\sqrt{2}}{2}+1=1+\\sqrt{2}$.\nVì $1+\\sqrt{2}>2$ nên giá trị lớn nhất là $1+\\sqrt{2}$, tức $a=1$, $b=2$.\nVậy $a+b=3$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1209",
+  "dap_an": "-8",
+  "loi_giai": "Ta có $y=x+\\dfrac{9}{x+1}$ (viết lại: $\\dfrac{x^{2}+x+9}{x+1}=x+\\dfrac{9}{x+1}$), tập xác định $\\mathbb{R}\\setminus\\{-1\\}$.\n$y'=1-\\dfrac{9}{(x+1)^{2}}=0\\Leftrightarrow (x+1)^{2}=9\\Leftrightarrow x=2$ hoặc $x=-4$.\nCả hai nghiệm đều làm $y'$ đổi dấu nên là hai điểm cực trị: $x_{1}=2$, $x_{2}=-4$.\nVậy $x_{1}\\cdot x_{2}=2\\cdot(-4)=-8$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1210",
+  "dap_an": "6",
+  "loi_giai": "Đồ thị $y=\\dfrac{-8x+4}{2x-3}$ có tiệm cận đứng $x=\\dfrac{3}{2}$ và tiệm cận ngang $y=\\dfrac{-8}{2}=-4$.\nHai tiệm cận cùng hai trục toạ độ tạo thành hình chữ nhật có hai kích thước là $\\left|\\dfrac{3}{2}\\right|$ và $|-4|$.\nDiện tích $S=\\dfrac{3}{2}\\cdot 4=6$.\nVậy diện tích bằng $6$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1212",
+  "dap_an": "16",
+  "loi_giai": "Gọi $n$ là số máy sử dụng ($n>0$). Thời gian sản xuất xong là $\\dfrac{8000}{30n}=\\dfrac{800}{3n}$ giờ.\nChi phí cài đặt máy: $200n$ (nghìn đồng). Chi phí vận hành: $192\\cdot\\dfrac{800}{3n}=\\dfrac{51200}{n}$ (nghìn đồng).\nTổng chi phí: $C(n)=200n+\\dfrac{51200}{n}$.\n$C'(n)=200-\\dfrac{51200}{n^{2}}=0\\Leftrightarrow n^{2}=256\\Leftrightarrow n=16$.\n$C'(n)<0$ khi $0<n<16$ và $C'(n)>0$ khi $n>16$ nên $C(n)$ nhỏ nhất tại $n=16$.\nVậy phân xưởng nên dùng $16$ máy.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1213",
+  "dap_an": "4",
+  "loi_giai": "Tập xác định $[-1;1]$. $y'=\\dfrac{-x}{\\sqrt{1-x^{2}}}+1=0\\Leftrightarrow\\sqrt{1-x^{2}}=x\\Leftrightarrow x=\\dfrac{\\sqrt{2}}{2}$.\nTính: $y(-1)=1$, $y(1)=3$, $y\\left(\\dfrac{\\sqrt{2}}{2}\\right)=\\dfrac{\\sqrt{2}}{2}+\\dfrac{\\sqrt{2}}{2}+2=2+\\sqrt{2}\\approx 3{,}41$.\nGiá trị lớn nhất là $2+\\sqrt{2}$, tức $a=2$, $b=2$.\nVậy $a+b=4$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1215",
+  "dap_an": "9",
+  "loi_giai": "Gọi $k$ là số lần tăng giá $100$ nghìn đồng ($0\\le k\\le 100$). Giá thuê mỗi căn là $8+0{,}1k$ (triệu đồng) và số căn được thuê là $100-k$.\nDoanh thu mỗi tháng: $f(k)=(8+0{,}1k)(100-k)=-0{,}1k^{2}+2k+800$.\n$f'(k)=-0{,}2k+2=0\\Leftrightarrow k=10$, và $f$ đạt giá trị lớn nhất tại $k=10$.\nKhi đó giá thuê là $8+0{,}1\\cdot 10=9$ (triệu đồng).\nVậy công ty nên cho thuê mỗi căn hộ với giá $9$ triệu đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1216",
+  "dap_an": "2",
+  "loi_giai": "Ta có $\\overrightarrow{AD'}=\\overrightarrow{AD}+\\overrightarrow{AA'}$ và $\\overrightarrow{BB'}=\\overrightarrow{AA'}$.\nDo đó $\\overrightarrow{AD'}\\cdot\\overrightarrow{BB'}=(\\overrightarrow{AD}+\\overrightarrow{AA'})\\cdot\\overrightarrow{AA'}=\\overrightarrow{AD}\\cdot\\overrightarrow{AA'}+AA'^{2}$.\nVì $AD\\perp AA'$ nên $\\overrightarrow{AD}\\cdot\\overrightarrow{AA'}=0$, suy ra $\\overrightarrow{AD'}\\cdot\\overrightarrow{BB'}=AA'^{2}=(\\sqrt{2})^{2}=2$.\nVậy $\\overrightarrow{AD'}\\cdot\\overrightarrow{BB'}=2$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1221",
+  "dap_an": "2.41",
+  "loi_giai": "Đặt $u=x^{2}-2x$. Ta có $f'(u)=3u^{2}-3=3(u-1)(u+1)$.\n$g'(x)=(2x-2)\\cdot f'(x^{2}-2x)=2(x-1)\\cdot 3\\left(x^{2}-2x-1\\right)\\left(x^{2}-2x+1\\right)=6(x-1)^{3}\\left(x^{2}-2x-1\\right)$.\n$g'(x)=0\\Leftrightarrow x=1-\\sqrt{2}$, $x=1$, $x=1+\\sqrt{2}$.\nXét dấu $g'(x)$: $g'(x)<0$ trên $(1;1+\\sqrt{2})$ và $g'(x)>0$ trên $(1+\\sqrt{2};+\\infty)$.\nHàm số $g$ đồng biến trên $(m;+\\infty)$ khi và chỉ khi $(m;+\\infty)\\subset(1+\\sqrt{2};+\\infty)$, tức $m\\ge 1+\\sqrt{2}$.\nVậy giá trị nhỏ nhất của $m$ là $1+\\sqrt{2}\\approx 2{,}41$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1223",
+  "dap_an": "60",
+  "loi_giai": "Thời gian đi hết quãng đường là $t=\\dfrac{120}{v}$ giờ.\nĐiện năng tiêu thụ: $E(v)=P(v)\\cdot t=\\left(12+\\dfrac{v^{2}}{300}\\right)\\dfrac{120}{v}=\\dfrac{1440}{v}+\\dfrac{2v}{5}$ (kWh), $v>0$.\n$E'(v)=-\\dfrac{1440}{v^{2}}+\\dfrac{2}{5}=0\\Leftrightarrow v^{2}=3600\\Leftrightarrow v=60$.\n$E'(v)<0$ khi $0<v<60$ và $E'(v)>0$ khi $v>60$ nên $E(v)$ nhỏ nhất tại $v=60$ (khi đó $E=48$ kWh).\nVậy xe cần chạy với vận tốc $60$ km/h.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1225",
+  "dap_an": "75",
+  "loi_giai": "Doanh thu: $R(x)=x\\cdot p(x)=600x-0{,}5x^{2}$ (nghìn đồng).\nLợi nhuận: $L(x)=R(x)-C(x)=-0{,}5x^{2}+500x-50000$, với $0\\le x\\le 800$.\n$L'(x)=-x+500=0\\Leftrightarrow x=500$ (thỏa mãn). $L'(x)>0$ khi $x<500$ và $L'(x)<0$ khi $x>500$ nên $L$ lớn nhất tại $x=500$.\n$L(500)=-0{,}5\\cdot 250000+250000-50000=75000$ (nghìn đồng) $=75$ triệu đồng.\nVậy lợi nhuận lớn nhất là $75$ triệu đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1226",
+  "dap_an": "4052",
+  "loi_giai": "Ta có $a=\\lim\\limits_{x\\to\\pm\\infty}\\dfrac{y}{x}=\\lim\\limits_{x\\to\\pm\\infty}\\sqrt[3]{8+\\dfrac{2}{x^{2}}+\\dfrac{1}{x^{3}}}=2$.\n$b=\\lim\\limits_{x\\to\\pm\\infty}\\left(\\sqrt[3]{8x^{3}+2x+1}-2x\\right)=\\lim\\limits_{x\\to\\pm\\infty}\\dfrac{2x+1}{\\sqrt[3]{(8x^{3}+2x+1)^{2}}+2x\\sqrt[3]{8x^{3}+2x+1}+4x^{2}}=0$ (bậc tử là $1$, bậc mẫu là $2$).\nVậy $T=2026\\cdot 2+2027\\cdot 0=4052$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1231",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn mảnh lời giải, thiếu đề"
+ },
+ {
+  "id": "X1232",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn mảnh lời giải, thiếu đề"
+ },
+ {
+  "id": "X1233",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn mảnh lời giải, thiếu đề"
+ },
+ {
+  "id": "X1234",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn mảnh lời giải, thiếu đề"
+ },
+ {
+  "id": "X1235",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn mảnh lời giải, thiếu đề"
+ },
+ {
+  "id": "X1236",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn mảnh lời giải, thiếu đề"
+ },
+ {
+  "id": "X1240",
+  "dap_an": "4",
+  "loi_giai": "Tổng chi phí khi sản xuất $x$ đồ chơi: $T(x)=30000+4x$ (USD).\nChi phí trung bình: $M(x)=\\dfrac{30000+4x}{x}=4+\\dfrac{30000}{x}$.\nKhi $x\\to+\\infty$ thì $\\dfrac{30000}{x}\\to 0$ nên $M(x)\\to 4$.\nVậy chi phí trung bình mỗi sản phẩm gần nhất $4$ USD.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1244",
+  "dap_an": "-10",
+  "loi_giai": "Sau $t$ phút, lượng muối trong bể là $30\\cdot 25t=750t$ (gam) và thể tích nước là $5000+25t$ (lít).\nNồng độ muối: $f(t)=\\dfrac{750t}{5000+25t}=\\dfrac{30t}{200+t}$.\n$\\lim\\limits_{t\\to+\\infty}f(t)=\\lim\\limits_{t\\to+\\infty}\\dfrac{30}{\\dfrac{200}{t}+1}=30$ nên tiệm cận ngang là $y=30$, tức $b=30$.\nVậy $3b-100=90-100=-10$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1248",
+  "dap_an": "1",
+  "loi_giai": "Ta có $x^{4}-4=(x^{2}-2)(x^{2}+2)$ nên $f'(x)=(x-1)(x^{2}-2)^{2}(x^{2}+2)$.\nTrong đó $(x^{2}-2)^{2}\\ge 0$ và $x^{2}+2>0$ nên $f'(x)$ chỉ đổi dấu khi đi qua $x=1$ (các nghiệm $x=\\pm\\sqrt{2}$ là nghiệm bội chẵn, $f'$ không đổi dấu).\nVậy hàm số có $1$ điểm cực trị.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1253",
+  "dap_an": "2023",
+  "loi_giai": "Ta có $y'=6x^{2}-6x-6m$. Hàm số nghịch biến trên $(-1;1)$ khi và chỉ khi $y'\\le 0$ với mọi $x\\in(-1;1)$.\n$\\Leftrightarrow m\\ge x^{2}-x$ với mọi $x\\in(-1;1)$.\nXét $h(x)=x^{2}-x$ trên $(-1;1)$: $h'(x)=2x-1=0\\Leftrightarrow x=\\dfrac{1}{2}$. Có $h(-1)=2$, $h(1)=0$, $h\\left(\\dfrac{1}{2}\\right)=-\\dfrac{1}{4}$.\nTrên khoảng $(-1;1)$ thì $h(x)<2$ và $h(x)$ tiến tới $2$ khi $x\\to -1^{+}$ nên điều kiện tương đương $m\\ge 2$.\nVới $m=2$: $y'=6(x-2)(x+1)<0$ trên $(-1;1)$ nên thỏa mãn.\nCác giá trị nguyên $m$ thỏa $2\\le m<2025$ là $m=2,3,\\dots,2024$, gồm $2024-2+1=2023$ giá trị.\nVậy có $2023$ giá trị nguyên của $m$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1261",
+  "dap_an": "16",
+  "loi_giai": "Gọi $n$ là số máy sử dụng ($n>0$). Thời gian sản xuất xong là $\\dfrac{8000}{30n}=\\dfrac{800}{3n}$ giờ.\nChi phí thiết lập máy: $200n$ (nghìn đồng). Chi phí giám sát: $192\\cdot\\dfrac{800}{3n}=\\dfrac{51200}{n}$ (nghìn đồng).\nTổng chi phí: $C(n)=200n+\\dfrac{51200}{n}$.\n$C'(n)=200-\\dfrac{51200}{n^{2}}=0\\Leftrightarrow n^{2}=256\\Leftrightarrow n=16$.\n$C'(n)<0$ khi $0<n<16$ và $C'(n)>0$ khi $n>16$ nên $C(n)$ nhỏ nhất tại $n=16$.\nVậy công ty nên sử dụng $16$ máy.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1263",
+  "dap_an": "5",
+  "loi_giai": "Ta có $f'(x)=3x^{2}-12x+9=3(x-1)(x-3)$. $f'(x)=0\\Leftrightarrow x=1$ hoặc $x=3$.\n$f'(x)>0$ trên $(-\\infty;1)$, $f'(x)<0$ trên $(1;3)$, $f'(x)>0$ trên $(3;+\\infty)$.\nHàm số đạt cực đại tại $x=1$ nên $a=1$, đạt cực tiểu tại $x=3$ nên $b=3$.\nVậy $A=2a+b=2+3=5$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1264",
+  "dap_an": "44",
+  "loi_giai": "Hình bình hành $ABCM$ có $\\overrightarrow{AB}=\\overrightarrow{MC}$.\nTa có $\\overrightarrow{AB}=(1;-3;4)$ và $\\overrightarrow{MC}=(-2-a;\\,3-b;\\,3-c)$.\nSuy ra $-2-a=1$, $3-b=-3$, $3-c=4$, tức $a=-3$, $b=6$, $c=-1$.\nKhi đó $M(-3;6;-1)$ và $P=a^{2}+b^{2}-c^{2}=9+36-1=44$.\nVậy $P=44$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1270",
+  "dap_an": "2",
+  "loi_giai": "Ta có $y'=3x^{2}-4x+1=0\\Leftrightarrow x=\\dfrac{1}{3}$ hoặc $x=1$ (đều thuộc $[0;2]$).\nTính: $y(0)=m$, $y\\left(\\dfrac{1}{3}\\right)=m+\\dfrac{4}{27}$, $y(1)=m$, $y(2)=m+2$.\nGiá trị nhỏ nhất của hàm số trên $[0;2]$ là $m$.\nTheo đề $m=2$.\nVậy $m=2$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1271",
+  "dap_an": "1",
+  "loi_giai": "Ta có $y'=3x^{2}-2x-1=0\\Leftrightarrow x=1$ hoặc $x=-\\dfrac{1}{3}$. $y''=6x-2$.\n$y''(1)=4>0$ nên hàm số đạt cực tiểu tại $x=1$, với $y(1)=m-1$. Vậy $M(1;m-1)$, tức $a=1$, $b=m-1$.\nĐiều kiện $a+b=1$ cho $1+m-1=1\\Leftrightarrow m=1$.\nVậy tổng các giá trị của $m$ là $1$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1272",
+  "dap_an": "54",
+  "loi_giai": "Chi phí sản xuất $x$ sản phẩm: $x\\cdot C(x)=1000x+x^{2}+25000$.\nLợi nhuận: $L(x)=f(x)-x\\,C(x)=x^{3}-1441x^{2}+147500x+5000$, với $x\\in\\mathbb{N}$, $0<x\\le 200$.\n$L'(x)=3x^{2}-2882x+147500=0\\Leftrightarrow x\\approx 54{,}25$ hoặc $x\\approx 906{,}4$ (loại vì $x\\le 200$).\nTrên $[0;200]$: $L'(x)>0$ khi $x<54{,}25$ và $L'(x)<0$ khi $54{,}25<x\\le 200$, nên $L$ đạt cực đại tại $x\\approx 54{,}25$.\nVì $x$ nguyên nên so sánh $L(54)=3\\,925\\,508$ và $L(55)=3\\,924\\,850$; ta có $L(54)>L(55)$.\nVậy cần sản xuất $54$ sản phẩm.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1273",
+  "dap_an": "10.2",
+  "loi_giai": "Gọi $I$ là trung điểm của $BC$, ta có $I(1;-2;0)$ và $BC^{2}=4+16=20$.\nTheo công thức đường trung tuyến: $MB^{2}+MC^{2}=2MI^{2}+\\dfrac{BC^{2}}{2}=2MI^{2}+10$.\nTừ $MB^{2}+MC^{2}=18$ ta có $2MI^{2}=8$, suy ra $MI=2$. Vậy $M$ thuộc mặt cầu tâm $I(1;-2;0)$ bán kính $2$.\nKhoảng cách $AI=\\sqrt{1^{2}+(-2)^{2}+12^{2}}=\\sqrt{149}\\approx 12{,}21$.\nVì $AI>2$ nên $A$ nằm ngoài mặt cầu, khoảng cách ngắn nhất $AM_{\\min}=AI-2=\\sqrt{149}-2\\approx 10{,}2$.\nVậy khoảng cách ngắn nhất giữa hai vệ tinh khoảng $10{,}2$ nghìn kilômét.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ }
+]

@@ -1,0 +1,488 @@
+[
+ {
+  "id": "X1588",
+  "dap_an": "18",
+  "loi_giai": "Thay tọa độ vào vế trái của $(P)$: $f(A)=1-2\\cdot(-1)-(-2)+5=10>0$; $f(B)=-2-2\\cdot4-4+5=-9<0$. Vậy $A,B$ nằm khác phía so với $(P)$.\nGọi $A'$ là điểm đối xứng của $A$ qua $(P)$ thì $A'$ cùng phía với $B$ và $MA=MA'$.\n$|MA-MB|=|MA'-MB|\\le A'B$, dấu \"$=$\" xảy ra khi $M$ là giao điểm của đường thẳng $A'B$ với $(P)$ ($M$ nằm ngoài đoạn $A'B$).\nHình chiếu của $A$ lên $(P)$: $H=A-\\dfrac{10}{6}\\cdot(1;-2;-1)=\\left(-\\dfrac{2}{3};\\dfrac{7}{3};-\\dfrac{1}{3}\\right)$.\n$A'=2H-A=\\left(-\\dfrac{7}{3};\\dfrac{17}{3};\\dfrac{4}{3}\\right)$.\n$\\overrightarrow{A'B}=\\left(\\dfrac{1}{3};-\\dfrac{5}{3};\\dfrac{8}{3}\\right)$ cùng phương với $(1;-5;8)$ nên $A'B:\\ x=-2+t,\\ y=4-5t,\\ z=4+8t$.\nThế vào $(P)$: $(-2+t)-2(4-5t)-(4+8t)+5=0\\Leftrightarrow3t-9=0\\Leftrightarrow t=3$.\nSuy ra $M(1;-11;28)$, do đó $a+b+c=1-11+28=18$.\nVậy $a+b+c=18$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng máy: M(1;-11;28)"
+ },
+ {
+  "id": "X1593",
+  "dap_an": "10.7",
+  "loi_giai": "Phương trình hoành độ giao điểm: $3-x^{2}=2x\\Leftrightarrow x^{2}+2x-3=0\\Leftrightarrow x=-3$ hoặc $x=1$.\nTrên $[-3;1]$ ta có $3-x^{2}\\ge2x$ nên $S=\\int_{-3}^{1}(3-x^{2}-2x)\\,dx$.\n$S=\\left.\\left(3x-x^{2}-\\dfrac{x^{3}}{3}\\right)\\right|_{-3}^{1}=\\left(3-1-\\dfrac{1}{3}\\right)-(-9-9+9)=\\dfrac{5}{3}+9=\\dfrac{32}{3}$.\nVậy $S=\\dfrac{32}{3}\\approx10{,}7$.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "S=32/3"
+ },
+ {
+  "id": "X1594",
+  "dap_an": "22.5",
+  "loi_giai": "Ô tô dừng hẳn khi $v(t)=0\\Leftrightarrow-5t+15=0\\Leftrightarrow t=3$ (giây).\nQuãng đường đi được: $s=\\int_{0}^{3}(-5t+15)\\,dt=\\left.\\left(-\\dfrac{5t^{2}}{2}+15t\\right)\\right|_{0}^{3}=-22{,}5+45=22{,}5$.\nVậy ô tô còn di chuyển $22{,}5$ mét.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1595",
+  "dap_an": "4.9",
+  "loi_giai": "Vì $f(x)>0$ nên chia hai vế cho $\\sqrt{1+f^{2}(x)}$: $\\dfrac{f(x)f'(x)}{\\sqrt{1+f^{2}(x)}}=2x+1$.\nDo $\\left(\\sqrt{1+f^{2}(x)}\\right)'=\\dfrac{f(x)f'(x)}{\\sqrt{1+f^{2}(x)}}$ nên lấy nguyên hàm hai vế: $\\sqrt{1+f^{2}(x)}=x^{2}+x+C$.\nVới $x=0$: $\\sqrt{1+8}=3=C$.\nVới $x=1$: $\\sqrt{1+f^{2}(1)}=1+1+3=5\\Rightarrow f^{2}(1)=24$.\nVì $f(1)>0$ nên $f(1)=\\sqrt{24}\\approx4{,}9$.\nVậy $f(1)\\approx4{,}9$.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "f(1)=căn 24"
+ },
+ {
+  "id": "X1596",
+  "dap_an": "3",
+  "loi_giai": "Khoảng cách từ $M(2;-3;4)$ đến $(P):x-2y+2z-25=0$ là $d=\\dfrac{|2-2\\cdot(-3)+2\\cdot4-25|}{\\sqrt{1^{2}+(-2)^{2}+2^{2}}}$.\n$d=\\dfrac{|2+6+8-25|}{3}=\\dfrac{9}{3}=3$.\nVậy khoảng cách bằng $3$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1597",
+  "dap_an": "4",
+  "loi_giai": "Khoảng cách từ $M(2;-3;4)$ đến $(P):x-2y+2z-4=0$ là $d=\\dfrac{|2-2\\cdot(-3)+2\\cdot4-4|}{\\sqrt{1^{2}+(-2)^{2}+2^{2}}}$.\n$d=\\dfrac{|2+6+8-4|}{3}=\\dfrac{12}{3}=4$.\nVậy khoảng cách bằng $4$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1598",
+  "dap_an": "0.41",
+  "loi_giai": "Tam giác $ABC$ vuông tại $B$ nên $AB=\\sqrt{AC^{2}-BC^{2}}=\\sqrt{4-1}=\\sqrt{3}$.\n$S_{\\Delta ABC}=\\dfrac{1}{2}\\cdot AB\\cdot BC=\\dfrac{\\sqrt{3}}{2}$.\n$V_{S.ABC}=\\dfrac{1}{3}\\cdot SA\\cdot S_{\\Delta ABC}=\\dfrac{1}{3}\\cdot\\sqrt{2}\\cdot\\dfrac{\\sqrt{3}}{2}=\\dfrac{\\sqrt{6}}{6}\\approx0{,}41$.\nVậy thể tích khối chóp bằng $0{,}41$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1599",
+  "dap_an": "1.7",
+  "loi_giai": "Vì $SA\\bot(ABC)$ nên góc giữa $SB$ và mặt đáy là $\\widehat{SBA}=30^{0}$.\n$SA=AB\\cdot\\tan30^{0}=3\\cdot\\dfrac{1}{\\sqrt{3}}=\\sqrt{3}$.\n$S_{\\Delta ABC}=\\dfrac{1}{2}\\cdot AB\\cdot BC=\\dfrac{1}{2}\\cdot3\\cdot2=3$.\n$V_{S.ABC}=\\dfrac{1}{3}\\cdot SA\\cdot S_{\\Delta ABC}=\\dfrac{1}{3}\\cdot\\sqrt{3}\\cdot3=\\sqrt{3}\\approx1{,}7$.\nVậy thể tích khối chóp bằng $1{,}7$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1600",
+  "dap_an": "225",
+  "loi_giai": "Doanh thu khi bán hết $x$ sản phẩm là $150x$ (nghìn đồng).\nLợi nhuận: $L(x)=150x-(x^{2}+20x+4000)=-x^{2}+130x-4000$.\n$L(x)$ là tam thức bậc hai có hệ số $a=-1<0$ nên đạt giá trị lớn nhất tại $x=-\\dfrac{130}{2\\cdot(-1)}=65$.\n$L(65)=-65^{2}+130\\cdot65-4000=-4225+8450-4000=225$.\nVậy lợi nhuận lớn nhất là $225$ nghìn đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1601",
+  "dap_an": "11",
+  "loi_giai": "Doanh thu khi bán $x$ kg là $316x$ (nghìn đồng).\nLợi nhuận: $f(x)=316x-(x^{3}-3x^{2}+19x+300)=-x^{3}+3x^{2}+297x-300$, với $5\\le x\\le20$.\n$f'(x)=-3x^{2}+6x+297$.\n$f'(x)=0\\Leftrightarrow x^{2}-2x-99=0\\Leftrightarrow x=11$ hoặc $x=-9$ (loại vì $x\\in[5;20]$).\n$f(5)=1135$; $f(11)=1999$; $f(20)=-1160$.\nLợi nhuận lớn nhất tại $x=11$.\nVậy cần sản xuất và bán $11$ kg mỗi ngày.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đề lẫn tiền tố \"Câu 3\" và mảnh lời giải"
+ },
+ {
+  "id": "X1603",
+  "dap_an": "1.7",
+  "loi_giai": "Vì $SA\\bot(ABC)$ nên góc giữa $SB$ và mặt đáy là $\\widehat{SBA}=30^{0}$.\n$SA=AB\\cdot\\tan30^{0}=3\\cdot\\dfrac{1}{\\sqrt{3}}=\\sqrt{3}$.\n$S_{\\Delta ABC}=\\dfrac{1}{2}\\cdot AB\\cdot BC=\\dfrac{1}{2}\\cdot3\\cdot2=3$.\n$V_{S.ABC}=\\dfrac{1}{3}\\cdot SA\\cdot S_{\\Delta ABC}=\\dfrac{1}{3}\\cdot\\sqrt{3}\\cdot3=\\sqrt{3}\\approx1{,}7$.\nVậy thể tích khối chóp bằng $1{,}7$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Trùng X1599"
+ },
+ {
+  "id": "X1604",
+  "dap_an": "4",
+  "loi_giai": "Khoảng cách từ $M(2;-3;4)$ đến $(P):x-2y+2z-4=0$ là $d=\\dfrac{|2-2\\cdot(-3)+2\\cdot4-4|}{\\sqrt{1^{2}+(-2)^{2}+2^{2}}}$.\n$d=\\dfrac{|2+6+8-4|}{3}=\\dfrac{12}{3}=4$.\nVậy khoảng cách bằng $4$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Trùng X1597"
+ },
+ {
+  "id": "X1607",
+  "dap_an": "11",
+  "loi_giai": "Doanh thu khi bán $x$ kg là $316x$ (nghìn đồng).\nLợi nhuận: $f(x)=316x-(x^{3}-3x^{2}+19x+300)=-x^{3}+3x^{2}+297x-300$, với $5\\le x\\le20$.\n$f'(x)=-3x^{2}+6x+297$.\n$f'(x)=0\\Leftrightarrow x^{2}-2x-99=0\\Leftrightarrow x=11$ hoặc $x=-9$ (loại vì $x\\in[5;20]$).\n$f(5)=1135$; $f(11)=1999$; $f(20)=-1160$.\nLợi nhuận lớn nhất tại $x=11$.\nVậy cần sản xuất và bán $11$ kg mỗi ngày.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Trùng X1601"
+ },
+ {
+  "id": "X1613",
+  "dap_an": "16.8",
+  "loi_giai": "$f(x)=\\int\\left(2x+\\dfrac{1}{x^{2}}\\right)dx=x^{2}-\\dfrac{1}{x}+C$.\n$f(1)=1\\Rightarrow1-1+C=1\\Rightarrow C=1$.\n$f(x)=x^{2}-\\dfrac{1}{x}+1$ nên $f(4)=16-\\dfrac{1}{4}+1=16{,}75\\approx16{,}8$.\nVậy $f(4)\\approx16{,}8$.",
+  "chuong": "NHTP",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "16,75 làm tròn phần chục = 16,8"
+ },
+ {
+  "id": "X1616",
+  "dap_an": "2.31",
+  "loi_giai": "Hai mặt phẳng có cùng vectơ pháp tuyến $(1;1;1)$ và hằng số khác nhau nên song song.\nLấy $M(0;0;-2)\\in(P)$. Khi đó $d((P),(Q))=d(M,(Q))=\\dfrac{|0+0-2+6|}{\\sqrt{1^{2}+1^{2}+1^{2}}}=\\dfrac{4}{\\sqrt{3}}\\approx2{,}31$.\nVậy khoảng cách giữa hai mặt phẳng bằng $2{,}31$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1618",
+  "dap_an": "-0.5",
+  "loi_giai": "Đường thẳng $\\Delta$ có vectơ chỉ phương $\\overrightarrow{u_{1}}=(-m;2m;-4)$; đường thẳng $d$ có vectơ chỉ phương $\\overrightarrow{u_{2}}=(2;-3;1)$.\n$\\Delta\\bot d\\Leftrightarrow\\overrightarrow{u_{1}}\\cdot\\overrightarrow{u_{2}}=0\\Leftrightarrow-2m-6m-4=0$.\n$\\Leftrightarrow-8m=4\\Leftrightarrow m=-\\dfrac{1}{2}$.\nVậy $m=-0{,}5$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "m=-1/2"
+ },
+ {
+  "id": "X1629",
+  "dap_an": "2.7",
+  "loi_giai": "$v(t)=\\int a(t)\\,dt=\\int(10t+4)\\,dt=5t^{2}+4t+C$; $v(0)=4\\Rightarrow C=4$, nên $v(t)=5t^{2}+4t+4$.\n$s=\\int_{0}^{0{,}5}(5t^{2}+4t+4)\\,dt=\\left.\\left(\\dfrac{5t^{3}}{3}+2t^{2}+4t\\right)\\right|_{0}^{0{,}5}=\\dfrac{5}{24}+\\dfrac{1}{2}+2=\\dfrac{65}{24}\\approx2{,}7$.\nVậy quãng đường đi được khoảng $2{,}7$ km.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1630",
+  "dap_an": "283",
+  "loi_giai": "$C(x)=\\int C'(x)\\,dx=\\int(8-0{,}13x+0{,}00022x^{2})\\,dx=8x-0{,}065x^{2}+\\dfrac{0{,}00022}{3}x^{3}+k$.\n$C(0)=24\\Rightarrow k=24$.\n$C(82)=24+8\\cdot82-0{,}065\\cdot82^{2}+\\dfrac{0{,}00022}{3}\\cdot82^{3}\\approx24+656-437{,}06+40{,}43=283{,}37$.\nVậy tổng chi phí khi sản xuất $82$ tấn xấp xỉ $283$ triệu đồng.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1631",
+  "dap_an": "26.7",
+  "loi_giai": "$v(t)=\\int(5t+5)\\,dt=\\dfrac{5t^{2}}{2}+5t+C$; $v(0)=5\\Rightarrow C=5$.\n$s=\\int_{0}^{2}\\left(\\dfrac{5t^{2}}{2}+5t+5\\right)dt=\\left.\\left(\\dfrac{5t^{3}}{6}+\\dfrac{5t^{2}}{2}+5t\\right)\\right|_{0}^{2}=\\dfrac{20}{3}+10+10=\\dfrac{80}{3}\\approx26{,}7$.\nVậy quãng đường đi được khoảng $26{,}7$ km.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1632",
+  "dap_an": "625",
+  "loi_giai": "$C(x)=\\int(11-0{,}10x+0{,}00045x^{2})\\,dx=11x-0{,}05x^{2}+0{,}00015x^{3}+k$.\n$C(0)=24\\Rightarrow k=24$.\n$C(74)=24+11\\cdot74-0{,}05\\cdot74^{2}+0{,}00015\\cdot74^{3}=24+814-273{,}8+60{,}78\\approx624{,}98$.\nVậy tổng chi phí khi sản xuất $74$ tấn xấp xỉ $625$ triệu đồng.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1633",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Chỉ là mảnh bảng đáp án các mã đề, không có đề"
+ },
+ {
+  "id": "X1641",
+  "dap_an": "67",
+  "loi_giai": "Đặt hệ trục như hình: parabol có đỉnh $(0;12{,}5)$ và đi qua $(\\pm4;0)$ nên $(P):y=ax^{2}+12{,}5$ với $0=16a+12{,}5\\Rightarrow a=-\\dfrac{25}{32}$.\n$S=\\int_{-4}^{4}\\left(12{,}5-\\dfrac{25}{32}x^{2}\\right)dx=2\\left(50-\\dfrac{25}{32}\\cdot\\dfrac{64}{3}\\right)=2\\left(50-\\dfrac{50}{3}\\right)=\\dfrac{200}{3}\\approx66{,}67$.\nVậy diện tích của cổng xấp xỉ $67\\ \\text{m}^{2}$.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Hình lỗi nhưng đủ dữ kiện rộng 8, cao 12,5"
+ },
+ {
+  "id": "X1642",
+  "dap_an": "4",
+  "loi_giai": "Ta có $D(0;0;4)$, $E(6;0;4)$, $N(0;2;6)$: $\\overrightarrow{DE}=(6;0;0)$, $\\overrightarrow{DN}=(0;2;2)$.\n$\\left[\\overrightarrow{DE},\\overrightarrow{DN}\\right]=(0;-12;12)$, chọn vectơ pháp tuyến $\\vec{n}=(0;1;-1)$.\nMặt phẳng $(DEMN)$: $y-(z-4)=0\\Leftrightarrow y-z+4=0$ (kiểm tra $N$: $2-6+4=0$; $M$: $2-6+4=0$).\n$d(B,(DEMN))=\\dfrac{|4-0+4|}{\\sqrt{1+1}}=\\dfrac{8}{\\sqrt{2}}=4\\sqrt{2}$ với $B(6;4;0)$.\nSuy ra $a\\sqrt{2}=4\\sqrt{2}$ nên $a=4$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1644",
+  "dap_an": "75",
+  "loi_giai": "Đặt hệ trục như hình: parabol có đỉnh $(0;14)$ và đi qua $(\\pm4;0)$ nên $y=ax^{2}+14$ với $0=16a+14\\Rightarrow a=-\\dfrac{7}{8}$.\n$S=\\int_{-4}^{4}\\left(14-\\dfrac{7}{8}x^{2}\\right)dx=2\\left(56-\\dfrac{7}{8}\\cdot\\dfrac{64}{3}\\right)=2\\left(56-\\dfrac{56}{3}\\right)=\\dfrac{224}{3}\\approx74{,}67$.\nVậy diện tích của cổng xấp xỉ $75\\ \\text{m}^{2}$.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Hình lỗi nhưng đủ dữ kiện rộng 8, cao 14"
+ },
+ {
+  "id": "X1645",
+  "dap_an": "4",
+  "loi_giai": "Ta có $H(0;4;4)$, $F(6;4;4)$, $N(0;2;6)$: $\\overrightarrow{HF}=(6;0;0)$, $\\overrightarrow{HN}=(0;-2;2)$.\n$\\left[\\overrightarrow{HF},\\overrightarrow{HN}\\right]=(0;-12;-12)$, chọn vectơ pháp tuyến $\\vec{n}=(0;1;1)$.\nMặt phẳng $(MNHF)$: $(y-4)+(z-4)=0\\Leftrightarrow y+z-8=0$ (kiểm tra $N$: $2+6-8=0$; $M$: $2+6-8=0$).\n$d(A,(MNHF))=\\dfrac{|0+0-8|}{\\sqrt{1+1}}=\\dfrac{8}{\\sqrt{2}}=4\\sqrt{2}$ với $A(6;0;0)$.\nSuy ra $a=4$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1648",
+  "dap_an": "5.21",
+  "loi_giai": "Ô tô dừng lại khi $t=5$ nên quãng đường là $s=\\int_{0}^{5}\\left(\\dfrac{1}{2}t^{2}-0{,}1t^{3}\\right)dt$ (vì $v(t)=t^{2}(0{,}5-0{,}1t)\\ge0$ trên $[0;5]$).\n$s=\\left.\\left(\\dfrac{t^{3}}{6}-0{,}025t^{4}\\right)\\right|_{0}^{5}=\\dfrac{125}{6}-15{,}625\\approx5{,}2083$.\nVậy quãng đường ô tô đi được khoảng $5{,}21$ m.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1654",
+  "dap_an": "283",
+  "loi_giai": "$C(x)=\\int C'(x)\\,dx=\\int(8-0{,}13x+0{,}00022x^{2})\\,dx=8x-0{,}065x^{2}+\\dfrac{0{,}00022}{3}x^{3}+k$.\n$C(0)=24\\Rightarrow k=24$.\n$C(82)=24+8\\cdot82-0{,}065\\cdot82^{2}+\\dfrac{0{,}00022}{3}\\cdot82^{3}\\approx24+656-437{,}06+40{,}43=283{,}37$.\nVậy tổng chi phí khi sản xuất $82$ tấn xấp xỉ $283$ triệu đồng.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Trùng X1630"
+ },
+ {
+  "id": "X1659",
+  "dap_an": "27.0",
+  "loi_giai": "Độ cao: $h(t)=\\int_{0}^{t}(23-9{,}8u)\\,du=23t-4{,}9t^{2}$ (mét), vì lúc $t=0$ viên đạn ở mặt đất.\n$h(t)$ lớn nhất khi $v(t)=0\\Leftrightarrow t=\\dfrac{23}{9{,}8}$ (giây).\n$h_{\\max}=\\dfrac{23^{2}}{4\\cdot4{,}9}=\\dfrac{529}{19{,}6}\\approx26{,}99\\approx27{,}0$.\nVậy độ cao lớn nhất khoảng $27{,}0$ mét.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "h max = 26,99"
+ },
+ {
+  "id": "X1660",
+  "dap_an": "4",
+  "loi_giai": "Mặt trên và mặt dưới của mái nhà vuông góc với $Oz$ nên có phương trình dạng $z=k$.\nMặt dưới đi qua $A(3;6;18)$: $z=18$. Mặt trên đi qua $D(6;9;22)$: $z=22$.\nHai mặt phẳng song song nên độ dày là $|22-18|=4$.\nVậy độ dày của mái nhà là $4$ decimet.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1662",
+  "dap_an": "510",
+  "loi_giai": "$C(x)=\\int(8-0{,}07x+0{,}00034x^{2})\\,dx=8x-0{,}035x^{2}+\\dfrac{0{,}00034}{3}x^{3}+k$.\n$C(0)=27\\Rightarrow k=27$.\n$C(82)=27+8\\cdot82-0{,}035\\cdot82^{2}+\\dfrac{0{,}00034}{3}\\cdot82^{3}=27+656-235{,}34+62{,}49\\approx510{,}15$.\nVậy tổng chi phí khi sản xuất $82$ tấn xấp xỉ $510$ triệu đồng.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1665",
+  "dap_an": "11.3",
+  "loi_giai": "Trên $[0;2]$ ta có $v(t)=-(t-4)(t+1)>0$ nên quãng đường là $s=\\int_{0}^{2}(-t^{2}+3t+4)\\,dt$.\n$s=\\left.\\left(-\\dfrac{t^{3}}{3}+\\dfrac{3t^{2}}{2}+4t\\right)\\right|_{0}^{2}=-\\dfrac{8}{3}+6+8=\\dfrac{34}{3}\\approx11{,}3$.\nVậy quãng đường vật đi được khoảng $11{,}3$ mét.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1666",
+  "dap_an": "-4",
+  "loi_giai": "$\\overrightarrow{AB}=(2;-3;3)$, vectơ pháp tuyến của $(P)$ là $\\overrightarrow{n_{P}}=(1;-2;3)$.\n$(Q)$ đi qua $A,B$ và vuông góc $(P)$ nên có vectơ pháp tuyến $\\overrightarrow{n_{Q}}=\\left[\\overrightarrow{AB},\\overrightarrow{n_{P}}\\right]=(-3;-3;-1)$, chọn $(3;3;1)$.\n$(Q):3x+3y+z+c=0$ đi qua $A(-1;2;0)$: $-3+6+0+c=0\\Rightarrow c=-3$.\nDo đó $(Q):3x+3y+z-3=0$ (kiểm tra $B$: $3-3+3-3=0$), suy ra $a=3$, $b=1$, $c=-3$.\n$a+2b+3c=3+2-9=-4$.\nVậy giá trị biểu thức bằng $-4$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Khớp bảng đáp án -4"
+ },
+ {
+  "id": "X1667",
+  "dap_an": "30",
+  "loi_giai": "Tốc độ tên lửa $500$ m/s $=1800$ km/h, gấp $2$ lần tốc độ máy bay ($900$ km/h). Trong cùng thời gian, nếu máy bay bay được $AB=s$ thì tên lửa bay được $OB=2s$.\nVectơ đơn vị theo hướng bay: $\\dfrac{\\overrightarrow{u}}{|\\overrightarrow{u}|}=\\left(\\dfrac{3}{5};-\\dfrac{4}{5};0\\right)$ nên $B=\\left(-33+\\dfrac{3s}{5};12-\\dfrac{4s}{5};18\\right)$.\n$OB^{2}=4s^{2}\\Leftrightarrow\\left(-33+\\dfrac{3s}{5}\\right)^{2}+\\left(12-\\dfrac{4s}{5}\\right)^{2}+18^{2}=4s^{2}$.\n$\\Leftrightarrow1557-58{,}8s+s^{2}=4s^{2}\\Leftrightarrow3s^{2}+58{,}8s-1557=0\\Leftrightarrow s=15$ (loại nghiệm âm).\nSuy ra $B(-24;0;18)$ và $OB=\\sqrt{576+0+324}=30$ (km), thoả tầm bắn tối đa $40$ km.\nVậy khoảng cách từ bệ phóng đến vị trí máy bay bị bắn hạ là $30$ km.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng máy s=15, B(-24;0;18)"
+ },
+ {
+  "id": "X1672",
+  "dap_an": "5.66",
+  "loi_giai": "$\\vec{u}\\bot\\vec{v}\\Leftrightarrow\\vec{u}\\cdot\\vec{v}=0\\Leftrightarrow4(m-1)+1\\cdot(3-m^{2})-5\\cdot2m=0$.\n$\\Leftrightarrow-m^{2}-6m-1=0\\Leftrightarrow m^{2}+6m+1=0$.\nTheo Vi-ét: $m_{1}+m_{2}=-6$, $m_{1}m_{2}=1$, nên $(m_{1}-m_{2})^{2}=36-4=32$.\n$|m_{1}-m_{2}|=\\sqrt{32}=4\\sqrt{2}\\approx5{,}66$.\nVậy $|m_{1}-m_{2}|\\approx5{,}66$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1673",
+  "dap_an": "3.21",
+  "loi_giai": "Tập xác định: $-x^{2}+5x-6\\ge0\\Leftrightarrow x\\in[2;3]$.\n$y'=1+\\dfrac{-2x+5}{2\\sqrt{-x^{2}+5x-6}}$. $y'=0\\Leftrightarrow2\\sqrt{-x^{2}+5x-6}=2x-5$ (cần $x\\ge\\dfrac{5}{2}$).\nBình phương: $4(-x^{2}+5x-6)=(2x-5)^{2}\\Leftrightarrow8x^{2}-40x+49=0\\Leftrightarrow x=\\dfrac{10\\pm\\sqrt{2}}{4}$. Chỉ nhận $x=\\dfrac{10+\\sqrt{2}}{4}\\approx2{,}85$.\nKhi đó $\\sqrt{-x^{2}+5x-6}=\\dfrac{2x-5}{2}=\\dfrac{\\sqrt{2}}{4}$ nên $y=\\dfrac{10+\\sqrt{2}}{4}+\\dfrac{\\sqrt{2}}{4}=\\dfrac{5+\\sqrt{2}}{2}\\approx3{,}2071$.\nSo sánh với $y(2)=2$, $y(3)=3$.\nVậy giá trị lớn nhất của hàm số là $\\dfrac{5+\\sqrt{2}}{2}\\approx3{,}21$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Max=(5+căn2)/2, kiểm bằng máy"
+ },
+ {
+  "id": "X1675",
+  "dap_an": "1012",
+  "loi_giai": "Vì $SO\\bot(ABCD)$ nên $SO\\bot AC$; lại có $AC\\bot BD$. Suy ra $AC\\bot(SBD)$.\nDo đó $d(C,(SBD))=CO=\\dfrac{AC}{2}$.\nHình thoi $ABCD$ có $\\widehat{BAD}=120^{0}$ nên $\\widehat{ABC}=60^{0}$; tam giác $ABC$ cân tại $B$ có góc $60^{0}$ nên đều, suy ra $AC=2024$.\n$CO=\\dfrac{2024}{2}=1012$.\nVậy khoảng cách bằng $1012$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1677",
+  "dap_an": "1255",
+  "loi_giai": "Số phần tử không gian mẫu: $|\\Omega|=C_{30}^{3}=4060$.\nVới mỗi cặp màu, số cách lấy $3$ viên thuộc đúng hai màu đó là $C_{a+b}^{3}-C_{a}^{3}-C_{b}^{3}$ (trừ các trường hợp cùng một màu).\nĐỏ–xanh: $C_{13}^{3}-C_{6}^{3}-C_{7}^{3}=286-20-35=231$; đỏ–vàng: $C_{14}^{3}-C_{6}^{3}-C_{8}^{3}=364-20-56=288$; đỏ–trắng: $C_{15}^{3}-C_{6}^{3}-C_{9}^{3}=455-20-84=351$.\nXanh–vàng: $C_{15}^{3}-C_{7}^{3}-C_{8}^{3}=455-35-56=364$; xanh–trắng: $C_{16}^{3}-C_{7}^{3}-C_{9}^{3}=560-35-84=441$; vàng–trắng: $C_{17}^{3}-C_{8}^{3}-C_{9}^{3}=680-56-84=540$.\nSố kết quả thuận lợi: $231+288+351+364+441+540=2215$.\n$P=\\dfrac{2215}{4060}=\\dfrac{443}{812}$ (tối giản), nên $a+b=443+812=1255$.\nVậy $a+b=1255$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "P=443/812"
+ },
+ {
+  "id": "X1678",
+  "dap_an": "100",
+  "loi_giai": "Doanh thu: $x\\cdot p(x)=1700x-7x^{2}$.\nLợi nhuận: $L(x)=1700x-7x^{2}-(16000+500x-1{,}6x^{2}+0{,}004x^{3})=-0{,}004x^{3}-5{,}4x^{2}+1200x-16000$ với $x>0$.\n$L'(x)=-0{,}012x^{2}-10{,}8x+1200$.\n$L'(x)=0\\Leftrightarrow x^{2}+900x-100000=0\\Leftrightarrow x=100$ hoặc $x=-1000$ (loại).\n$L'(x)>0$ khi $0<x<100$ và $L'(x)<0$ khi $x>100$ nên $L(x)$ đạt giá trị lớn nhất tại $x=100$.\nVậy mỗi tháng nên sản xuất $100$ sản phẩm.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng máy"
+ },
+ {
+  "id": "X1686",
+  "dap_an": "141",
+  "loi_giai": "Số phần tử không gian mẫu: $|\\Omega|=C_{26}^{3}=2600$.\nĐể $3$ viên có ba màu khác nhau, chọn $3$ trong $4$ màu rồi lấy mỗi màu $1$ viên.\nĐỏ–xanh–vàng: $5\\cdot6\\cdot7=210$; đỏ–xanh–trắng: $5\\cdot6\\cdot8=240$; đỏ–vàng–trắng: $5\\cdot7\\cdot8=280$; xanh–vàng–trắng: $6\\cdot7\\cdot8=336$.\nSố kết quả thuận lợi: $210+240+280+336=1066$.\n$P=\\dfrac{1066}{2600}=\\dfrac{41}{100}$ (tối giản), nên $a+b=41+100=141$.\nVậy $a+b=141$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "P=41/100"
+ },
+ {
+  "id": "X1688",
+  "dap_an": "150",
+  "loi_giai": "Doanh thu: $x\\cdot p(x)=x(1800-5x)=1800x-5x^{2}$.\nLợi nhuận: $L(x)=1800x-5x^{2}-(18000+570x-1{,}8x^{2}+0{,}004x^{3})=-0{,}004x^{3}-3{,}2x^{2}+1230x-18000$.\n$L'(x)=-0{,}012x^{2}-6{,}4x+1230$.\n$L'(x)=0\\Leftrightarrow3x^{2}+1600x-307500=0\\Leftrightarrow x=150$ hoặc $x=-\\dfrac{2050}{3}$ (loại).\n$L'(x)>0$ khi $0<x<150$ và $L'(x)<0$ khi $x>150$ nên $L(x)$ đạt giá trị lớn nhất tại $x=150$.\nVậy mỗi tháng nên sản xuất $150$ sản phẩm.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng máy"
+ },
+ {
+  "id": "X1690",
+  "dap_an": "1753",
+  "loi_giai": "Hình thoi $ABCD$ có $\\widehat{BAD}=60^{0}$ nên tam giác $ABD$ đều, suy ra $BD=2024$ và $AO=\\dfrac{2024\\sqrt{3}}{2}=1012\\sqrt{3}$.\nTa có $AC\\bot BD$ và $AC\\bot SO$ (vì $SO\\bot(ABCD)$) nên $AC\\bot(SBD)$.\nDo đó $d(C,(SBD))=CO=AO=1012\\sqrt{3}\\approx1752{,}88$.\nVậy khoảng cách làm tròn bằng $1753$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1704",
+  "dap_an": "1753",
+  "loi_giai": "Hình thoi $ABCD$ có $\\widehat{BAD}=60^{0}$ nên tam giác $ABD$ đều, suy ra $BD=2024$ và $AO=\\dfrac{2024\\sqrt{3}}{2}=1012\\sqrt{3}$.\nTa có $AC\\bot BD$ và $AC\\bot SO$ (vì $SO\\bot(ABCD)$) nên $AC\\bot(SBD)$.\nDo đó $d(C,(SBD))=CO=AO=1012\\sqrt{3}\\approx1752{,}88$.\nVậy khoảng cách làm tròn bằng $1753$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Trùng X1690"
+ },
+ {
+  "id": "X1708",
+  "dap_an": "150",
+  "loi_giai": "Doanh thu: $x\\cdot p(x)=x(1800-5x)=1800x-5x^{2}$.\nLợi nhuận: $L(x)=1800x-5x^{2}-(18000+570x-1{,}8x^{2}+0{,}004x^{3})=-0{,}004x^{3}-3{,}2x^{2}+1230x-18000$.\n$L'(x)=-0{,}012x^{2}-6{,}4x+1230$.\n$L'(x)=0\\Leftrightarrow3x^{2}+1600x-307500=0\\Leftrightarrow x=150$ hoặc $x=-\\dfrac{2050}{3}$ (loại).\n$L'(x)>0$ khi $0<x<150$ và $L'(x)<0$ khi $x>150$ nên $L(x)$ đạt giá trị lớn nhất tại $x=150$.\nVậy mỗi tháng nên sản xuất $150$ sản phẩm.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Trùng X1688"
+ },
+ {
+  "id": "X1712",
+  "dap_an": "0.73",
+  "loi_giai": "Chọn hệ trục với $O$ là gốc, $AB=2$ nên $OA=OB=OC=\\sqrt{2}$: $A(\\sqrt{2};0;0)$, $B(0;\\sqrt{2};0)$, $C(-\\sqrt{2};0;0)$, $S(0;0;2)$.\n$\\overrightarrow{SB}=(0;\\sqrt{2};-2)$, $\\overrightarrow{SC}=(-\\sqrt{2};0;-2)$, $\\left[\\overrightarrow{SB},\\overrightarrow{SC}\\right]=(-2\\sqrt{2};2\\sqrt{2};2)$, chọn $\\vec{n}=(-\\sqrt{2};\\sqrt{2};1)$ là vectơ pháp tuyến của $(SBC)$.\n$\\overrightarrow{SA}=(\\sqrt{2};0;-2)$, $|\\overrightarrow{SA}|=\\sqrt{6}$, $|\\vec{n}|=\\sqrt{5}$.\n$\\sin(SA,(SBC))=\\dfrac{|\\vec{n}\\cdot\\overrightarrow{SA}|}{|\\vec{n}|\\cdot|\\overrightarrow{SA}|}=\\dfrac{|-2-2|}{\\sqrt{5}\\cdot\\sqrt{6}}=\\dfrac{4}{\\sqrt{30}}\\approx0{,}73$.\nVậy $\\sin$ của góc cần tìm xấp xỉ $0{,}73$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng máy 0,7303"
+ },
+ {
+  "id": "X1713",
+  "dap_an": "84",
+  "loi_giai": "Gọi số cần tìm là $\\overline{abcd}$ với $a\\ge1$, $a+b+c+d=7$.\nĐặt $a'=a-1\\ge0$, khi đó $a'+b+c+d=6$ với các ẩn nguyên không âm (mỗi ẩn đều không vượt quá $9$ nên không cần loại trường hợp nào).\nSố nghiệm: $C_{6+3}^{3}=C_{9}^{3}=84$.\nVậy có $84$ số.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng máy"
+ },
+ {
+  "id": "X1714",
+  "dap_an": "284",
+  "loi_giai": "Lợi nhuận trước thuế: $f(x)-g(x)=2006x-x^{2}-(x^{2}+1438x-1209)=-2x^{2}+568x+1209$.\nSau khi chịu thuế $t$ trên mỗi sản phẩm: $L(x)=-2x^{2}+(568-t)x+1209$, đạt lớn nhất tại $x=\\dfrac{568-t}{4}$ (thuộc $(0;2500]$).\nTiền thuế nhà nước thu: $T=t\\cdot x=\\dfrac{t(568-t)}{4}$, là tam thức bậc hai theo $t$ đạt lớn nhất tại $t=\\dfrac{568}{2}=284\\in(0;320)$.\nVậy $t=284$ nghìn đồng.",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Hiểu: t để tiền thuế max"
+ },
+ {
+  "id": "X1715",
+  "dap_an": "0.57",
+  "loi_giai": "Quãng đường Tít chạy: $s_{T}(t)=\\int_{0}^{t}5\\sqrt{u}\\,du=\\dfrac{10}{3}t^{\\frac{3}{2}}$. $s_{T}=10\\Leftrightarrow t^{\\frac{3}{2}}=3\\Leftrightarrow t=3^{\\frac{2}{3}}\\approx2{,}08$ (giờ).\nMít: $s_{M}(t)=5t-\\dfrac{5}{2\\pi}\\sin(2\\pi t)$, có $s_{M}'(t)=5-5\\cos(2\\pi t)\\ge0$ nên $s_{M}$ đồng biến; $s_{M}(2)=10-0=10$ nên Mít tới $10$ km tại $t=2$ (giờ).\nVì $2<2{,}08$ nên Mít về đích trước, cuộc đua kết thúc lúc $t=2$.\nKhi đó Tít chạy được $s_{T}(2)=\\dfrac{10}{3}\\cdot2\\sqrt{2}\\approx9{,}43$ km.\nKhoảng cách giữa hai bạn: $10-9{,}43\\approx0{,}57$ km.\nVậy khoảng cách giữa hai bạn là $0{,}57$ km.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Mít tới 10 km tại t=2 trước Tít"
+ },
+ {
+  "id": "X1716",
+  "dap_an": "0.18",
+  "loi_giai": "Mỗi bạn có $2$ trạng thái (đứng/ngồi) nên $|\\Omega|=2^{8}=256$.\nSố cách chọn $k$ bạn đứng, không có hai bạn kề nhau trên vòng $8$ chỗ là $\\dfrac{8}{8-k}C_{8-k}^{k}$.\n$k=0$: $1$; $k=1$: $8$; $k=2$: $\\dfrac{8}{6}C_{6}^{2}=20$; $k=3$: $\\dfrac{8}{5}C_{5}^{3}=16$; $k=4$: $\\dfrac{8}{4}C_{4}^{4}=2$.\nSố kết quả thuận lợi: $1+8+20+16+2=47$.\n$P=\\dfrac{47}{256}\\approx0{,}18$.\nVậy xác suất cần tìm xấp xỉ $0{,}18$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng máy 47/256"
+ },
+ {
+  "id": "X1717",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Chỉ là mảnh bảng đáp án các mã đề, không có đề"
+ },
+ {
+  "id": "X1719",
+  "dap_an": "0.39",
+  "loi_giai": "Chọn một nam và một nữ. Biến cố $A$: \"một người bản địa, một người quốc tế\"; biến cố $B$: \"người quốc tế là nữ\".\nNam bản địa $0{,}85$, nam quốc tế $0{,}15$; nữ bản địa $0{,}9$, nữ quốc tế $0{,}1$.\n$P(A\\cap B)$: nam bản địa, nữ quốc tế: $0{,}85\\cdot0{,}1=0{,}085$.\n$P(A)$: ($0{,}85\\cdot0{,}1$) $+$ ($0{,}15\\cdot0{,}9$) $=0{,}085+0{,}135=0{,}22$.\n$P(B|A)=\\dfrac{0{,}085}{0{,}22}\\approx0{,}39$.\nVậy xác suất cần tìm xấp xỉ $0{,}39$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Khớp bảng đáp án 0,39"
+ },
+ {
+  "id": "X1721",
+  "dap_an": "2.12",
+  "loi_giai": "Chọn hệ trục $Axyz$ với $B$ thuộc tia $Ax$, $D$ thuộc tia $Ay$, $S$ thuộc tia $Az$: $A(0;0;0)$, $B(2;0;0)$, $C(2;2;0)$, $D(0;6;0)$, $S(0;0;2\\sqrt{3})$.\n$\\overrightarrow{SC}=(2;2;-2\\sqrt{3})$, $\\overrightarrow{SD}=(0;6;-2\\sqrt{3})$, $\\left[\\overrightarrow{SC},\\overrightarrow{SD}\\right]=(8\\sqrt{3};4\\sqrt{3};12)$, chọn $\\vec{n}=(2\\sqrt{3};\\sqrt{3};3)$.\n$(SCD)$ đi qua $D(0;6;0)$: $2\\sqrt{3}x+\\sqrt{3}(y-6)+3z=0\\Leftrightarrow2\\sqrt{3}x+\\sqrt{3}y+3z-6\\sqrt{3}=0$.\n$d(A,(SCD))=\\dfrac{6\\sqrt{3}}{\\sqrt{12+3+9}}=\\dfrac{6\\sqrt{3}}{2\\sqrt{6}}=\\dfrac{3}{\\sqrt{2}}\\approx2{,}12$.\nVậy khoảng cách bằng $2{,}12$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Khớp bảng đáp án 2,12"
+ },
+ {
+  "id": "X1723",
+  "dap_an": "2429",
+  "loi_giai": "Lãi suất quá hạn: $1{,}5\\cdot13\\%=19{,}5\\%$/năm.\nKhoản $20$ triệu phát sinh ngày $01/9$ đến hết ngày $20/10$: $30+20=50$ ngày. Lãi: $20\\,000\\,000\\cdot0{,}195\\cdot\\dfrac{50}{365}\\approx534\\,247$ (đồng).\nKhoản $12$ triệu phát sinh ngày $05/9$ đến hết ngày $20/10$: $26+20=46$ ngày. Lãi: $12\\,000\\,000\\cdot0{,}195\\cdot\\dfrac{46}{365}\\approx294\\,904$ (đồng).\nPhí trả chậm: $5\\%\\cdot(20\\,000\\,000+12\\,000\\,000)=1\\,600\\,000$ (đồng).\nTổng: $534\\,247+294\\,904+1\\,600\\,000\\approx2\\,429\\,151$ (đồng) $\\approx2429$ nghìn đồng.\nVậy tổng số tiền lãi và phí trả chậm là $2429$ nghìn đồng.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Khớp bảng đáp án 2429; đếm ngày gồm cả ngày phát sinh và ngày thanh toán"
+ },
+ {
+  "id": "X1724",
+  "dap_an": "18",
+  "loi_giai": "Với $E=12$, $r=2$: $P=\\dfrac{144R}{(R+2)^{2}}$.\nTheo bất đẳng thức Cô-si: $(R+2)^{2}\\ge4\\cdot R\\cdot2=8R$ nên $P\\le\\dfrac{144R}{8R}=18$.\nDấu \"$=$\" xảy ra khi $R=2$.\nVậy công suất cực đại bằng $18$ W.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Khớp bảng đáp án 18"
+ },
+ {
+  "id": "X1730",
+  "dap_an": "2653",
+  "loi_giai": "Lãi suất quá hạn: $1{,}5\\cdot13\\%=19{,}5\\%$/năm.\nKhoản $20$ triệu phát sinh ngày $01/9$ đến hết ngày $20/10$: $50$ ngày. Lãi: $20\\,000\\,000\\cdot0{,}195\\cdot\\dfrac{50}{365}\\approx534\\,247$ (đồng).\nKhoản $15$ triệu phát sinh ngày $05/9$ đến hết ngày $20/10$: $26+20=46$ ngày. Lãi: $15\\,000\\,000\\cdot0{,}195\\cdot\\dfrac{46}{365}\\approx368\\,630$ (đồng).\nPhí trả chậm: $5\\%\\cdot(20\\,000\\,000+15\\,000\\,000)=1\\,750\\,000$ (đồng).\nTổng: $534\\,247+368\\,630+1\\,750\\,000\\approx2\\,652\\,877$ (đồng) $\\approx2653$ nghìn đồng.\nVậy tổng số tiền lãi và phí trả chậm là $2653$ nghìn đồng.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Khớp bảng đáp án 2653; đếm ngày gồm cả ngày phát sinh và ngày thanh toán"
+ }
+]
