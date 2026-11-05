@@ -78963,3 +78963,9 @@ Thùy nêu 4 việc, làm được 3:
 - Gỡ: loại phiên không chặn việc (Lý thuyết đổi cấu trúc, Bản đồ ghi lý thuyết, lệnh kho mọi phiên) · bỏ "mỗi bản đồ một phiên" ở hàm (fn_phien_mo, fn_phien_mo_lai) · chuyên đề dùng chung sửa được nếu quản mọi khối dùng nó · câu người đã quyết: ghi_de: true khi trưởng khối bảo. Thêm xoa_chu_de · xoa_chuyen_de · xoa_nhom · xoa_dang_bai (gọi đúng fn_bdm_xoa_* / fn_khtn_bdm_xoa_*; dạng còn câu gán ⇒ báo số câu).
 - Còn 2 UNIQUE index claude_phien_ban_do_mot_idx · claude_phien_sua_ban_do_mot_idx giữ chốt một-phiên ở bảng ⇒ file mig riêng drop, chờ Thùy gật (Luật xoá).
 - Thử ROLLBACK (Hải K9, phiên Nhập kho): thêm nhóm/dạng, ghi lý thuyết, kho-tong, xoá dạng + nhóm thử: được; xoá dạng còn câu / dạng khối 8: chặn; câu người gán: chặn, ghi_de ⇒ được; TA mở phiên: chặn.
+
+## 05/11 — Ca bù biến mất sau "Xác nhận ET" nhầm (Thùy 05/11: Ding Phạm Hoàng An 3A1)
+- **Xử lý ca trước (Thùy bảo "mở lại đã, fix sau"):** mig `202611051745_mo_lai_ca_bu_hoang_an` (buổi về `mo`) + `202611051746_mo_lai_et_ca_bu_hoang_an` (mở lại ET qua `fn_mo_lai_phase`, thu hồi 250 EXP — Thùy: "vì nó chưa làm ET đâu"). ĐÃ ÁP. Kiểm: ô Bổ trợ bù của TA Hồ Mai Nhật An hiện lại ca.
+- **Gốc rễ + sửa:** `fn_dong_phase` đặt `hoan_tat` mọi buổi không-thường khi đóng 1 phase ⇒ ca bù mất khỏi ô TA. Mig `202611051748_bu_dong_et_khong_hoan_tat` (ĐÃ ÁP). Spec §37.
+- **Kiểm:** ROLLBACK tái hiện trước/sau. Chưa bấm thử trên app TA thật.
+- **Nợ:** buổi đuổi/MT cùng cơ chế; 23 buổi bù `hoan_tat` cũ giữ nguyên.
