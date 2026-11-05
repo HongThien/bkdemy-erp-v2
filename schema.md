@@ -9752,8 +9752,8 @@ WITH luot AS (
 - `_kho_form_tn_cua(p_cautbl text)` → text
 - `_kho_form_tn_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `_kho_la_dang_cho(p_ma_dang text)` → boolean
-- `_kho_loc_duyet_sql(p_loc text, p_tbl text)` → text
 - `_kho_loc_duyet_sql(p_loc text)` → text
+- `_kho_loc_duyet_sql(p_loc text, p_tbl text)` → text
 - `_kho_lt_dang_tbl(p_kho text)` → text
 - `_kho_lt_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `_kho_muc_do_dang(p_mon text, p_ma_dang text)` → smallint
@@ -9953,8 +9953,8 @@ WITH luot AS (
 - `_tk_dong_bo(p_ns uuid)` → void
 - `_tk_goc_team(p_team text, p_mon text)` → uuid
 - `_tl_bdm_cau_da_dung(p_buoi uuid, p_tru_phan uuid DEFAULT NULL::uuid)` → text[]
-- `_tl_bdm_cau_vi_tri(p_khoi text, p_mon text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
 - `_tl_bdm_cau_vi_tri(p_khoi text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
+- `_tl_bdm_cau_vi_tri(p_khoi text, p_mon text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
 - `_tl_bdm_ghi_cau(p_phan uuid, p_ma_caus text[])` → void
 - `_tl_bdm_khoi_nhom(p_nhom text)` → text
 - `_tl_bdm_kiem_buoi(p_tai_lieu uuid, p_buoi uuid)` → void
@@ -11134,9 +11134,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
