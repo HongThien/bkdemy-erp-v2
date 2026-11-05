@@ -1,0 +1,209 @@
+[
+ {
+  "id": "NDB00857",
+  "ten": "Góc giữa hai mặt phẳng",
+  "mo_ta": "",
+  "nhom_id": "NNB01510",
+  "nhom": "Tính góc giữa các đối tượng",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Góc  và Khoảng cách",
+  "cau_mau": [
+   {
+    "de": "Trong không gian $Oxyz$, cho mặt phẳng $(P):x-2y+2z+1=0$ và mặt phẳng $(Q):z-2=0$. Gọi $\\alpha$ là góc giữa hai mặt phẳng $(P)$ và $(Q)$. Tính giá trị $\\cos\\alpha$.",
+    "dap_an": "C"
+   },
+   {
+    "de": "Trong không gian với hệ tọa độ $Oxyz$, cho hai điểm $A\\left(6;5;-1\\right),B\\left(4;-2;3\\right)$. Tính số đo góc nhị diện $\\left[A,Ox,B\\right]$ theo đơn vị độ.",
+    "dap_an": "135"
+   },
+   {
+    "de": "Trong không gian với hệ trục tọa độ $Oxyz$. Tính góc giữa mặt phẳng $(Oxy)$ và mặt phẳng $(P)$ có phương trình $(P):x+z+1=0$.",
+    "dap_an": "B"
+   }
+  ]
+ },
+ {
+  "id": "NDB00858",
+  "ten": "Góc giữa hai đường thẳng",
+  "mo_ta": "",
+  "nhom_id": "NNB01510",
+  "nhom": "Tính góc giữa các đối tượng",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Góc  và Khoảng cách",
+  "cau_mau": [
+   {
+    "de": "Trong không gian với một hệ trục tọa độ $Oxyz$ cho trước (mặt phẳng $\\left(Oxy\\right)$ trùng với mặt đất, trục $Oz$ hướng thẳng đứng lên trời, đơn vị đo trên mỗi trục lấy theo kilômét), một chiếc máy bay đang di chuyển với hướng bay không đổi từ điểm $M\\left(-50;30;10\\right)$ đến vị trí hạ cánh là $N\\left(2;3;0\\right)$. Đường bay của máy bay hợp với phương thẳng đứng một góc $a^\\circ$. Tìm $a$? (Làm tròn kết quả đến hàng đơn vị).",
+    "dap_an": "80"
+   },
+   {
+    "de": "Trong không gian với hệ trục tọa độ $Oxyz$, hai đường thẳng $\\Delta_1,\\Delta_2$ tương ứng có $\\vec u_1=(a_1;b_1;c_1)$ và $\\vec u_2=(a_2;b_2;c_2)$ là hai vectơ chỉ phương. Gọi $\\varphi$ là góc giữa $\\Delta_1$ và $\\Delta_2$. Chọn khẳng định ĐÚNG",
+    "dap_an": "B"
+   },
+   {
+    "de": "Tính $\\cos$ góc giữa đường thẳng $d$ với trục $Ox$ biết $d: \\dfrac{x+1}{2}=\\dfrac{y-1}{1}=\\dfrac{z-2}{1}$.",
+    "dap_an": "B"
+   }
+  ]
+ },
+ {
+  "id": "NDB00859",
+  "ten": "Góc giữa đường thẳng và mặt phẳng",
+  "mo_ta": "",
+  "nhom_id": "NNB01510",
+  "nhom": "Tính góc giữa các đối tượng",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Góc  và Khoảng cách",
+  "cau_mau": [
+   {
+    "de": "Trong không gian tọa độ $Oxyz$ cho đường thẳng $d: \\dfrac{x}{1} = \\dfrac{y-1}{-1} = \\dfrac{z+2}{-2}$ và mặt phẳng $(P): 2x+y-z+5=0$. Góc giữa $d$ và $(P)$ là:",
+    "dap_an": "C"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, với mặt phẳng $(Oxy)$ là mặt đất, một máy bay cất cánh từ vị trí $A(0;10;0)$ với vận tốc $\\vec v=(150;150;40)$. Tính góc nâng của máy bay (góc giữa hướng chuyển động bay lên của máy bay với mặt đất và làm tròn kết quả đến hàng đơn vị).",
+    "dap_an": "11"
+   },
+   {
+    "de": "Gọi $\\alpha$ là góc giữa đường thẳng $d:\\frac{x+5}{2}=\\frac{y-2}{1}=\\frac{z+2}{1}$ và mặt phẳng (P): $3x+4y+5z-2025=0$. Khi đó",
+    "dap_an": "C"
+   }
+  ]
+ },
+ {
+  "id": "NDB00860",
+  "ten": "Khoảng cách từ điểm đến mặt phẳng",
+  "mo_ta": "",
+  "nhom_id": "NNB01511",
+  "nhom": "Tính khoảng cách giữa các đối tượng",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Góc  và Khoảng cách",
+  "cau_mau": [
+   {
+    "de": "Trong một trò chơi mô phỏng bắn súng, một người chơi đặt điểm ngắm tại điểm $O$ là giao điểm của hai đường thẳng $AC$ và $BD$ trong căn phòng hình hộp chữ nhật $ABCD.A'B'C'D'$ có kích thước $AB=50$ m , $AD=35$ m, $AA'=10$ m. Người chơi có nhiệm vụ từ điểm ngắm đã đặt bắn trúng một mục tiêu di động trên mặt phẳng $(C'B'D')$. Tính khoảng cách ngắn nhất từ điểm ngắm đó đến mục tiêu (làm tròn đến chữ số thập phân thứ hai sau dấu phẩy).\n[hình vẽ hệ trục tọa độ và hình hộp chữ nhật]",
+    "dap_an": null
+   },
+   {
+    "de": "Trong không gian $Oxyz$, cho các điểm $A(0;1;2)$, $B(2;-2;1)$, $C(-2;1;0)$, $M(3;0;1)$. Tính khoảng cách từ $M$ đến mặt phẳng $(ABC)$, (kết quả làm tròn đến hàng phần trăm).",
+    "dap_an": "1,73"
+   },
+   {
+    "de": "Khoảng cách từ điểm $A\\left( 2;-3;0 \\right)$ đến mặt phẳng $\\left( P \\right):3x-4y+1=0$ bằng",
+    "dap_an": "D"
+   }
+  ]
+ },
+ {
+  "id": "NDB00861",
+  "ten": "Khoảng cách từ điểm đến đường thẳng",
+  "mo_ta": "",
+  "nhom_id": "NNB01511",
+  "nhom": "Tính khoảng cách giữa các đối tượng",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Góc  và Khoảng cách",
+  "cau_mau": [
+   {
+    "de": "Trong không gian với hệ tọa độ $Oxyz$, đài kiểm soát không lưu sân bay có tọa độ $O\\left(0;0;0\\right)$, mỗi đơn vị trên trục ứng với $1$ km. Máy bay bay trong phạm vi cách đài kiểm soát $417$ km sẽ hiển thị trên màn hình ra đa. Một máy bay đang ở vị trí $A\\left(-688;-185;8\\right)$, chuyển động theo đường thẳng $d$ có vectơ chỉ phương là $\\vec{u}=\\left(91;75;0\\right)$ và hướng về đài kiểm soát không lưu (như hình). Tính khoảng cách ngắn nhất giữa máy bay và đài kiểm soát không lưu.",
+    "dap_an": "$\\approx294,9$ km"
+   },
+   {
+    "de": "Trong không gian với hệ tọa độ $Oxyz$, cho đường thẳng $d$ là giao tuyến của hai mặt phẳng $(P): 2x+y-2z-4=0$ và $(Q): x-2y+2z+6=0$. Tính khoảng cách $h$ từ điểm $M(1;0;1)$ đến đường thẳng $d$.",
+    "dap_an": "A"
+   },
+   {
+    "de": "Trong không gian với hệ toạ độ $Oxyz$, đài kiểm soát không lưu sân bay có toạ độ $O(0;0;0)$, mỗi đơn vị trên trục ứng với $1$ km. Máy bay bay trong phạm vi cách đài kiểm soát $417$ km sẽ hiển thị trên màn hình ra đa. Một máy bay đang ở vị trí $A(-688;-185;8)$, chuyển động theo đường thẳng $d$ có vectơ chỉ phương là $\\vec u=(91;75;0)$ và hướng về đài kiểm soát không lưu.\n\nTính khoảng cách ngắn nhất giữa máy bay và đài kiểm soát không lưu (đơn vị: kilômét, làm tròn kết quả đến hàng đơn vị).",
+    "dap_an": "295"
+   }
+  ]
+ },
+ {
+  "id": "NDB00864",
+  "ten": "Khoảng cách giữa đường thẳng và mặt phẳng",
+  "mo_ta": "",
+  "nhom_id": "NNB01511",
+  "nhom": "Tính khoảng cách giữa các đối tượng",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Góc  và Khoảng cách",
+  "cau_mau": [
+   {
+    "de": "Trong không gian $Oxyz$ (đơn vị trên mỗi trục tọa độ là mét), một ngôi nhà có sàn nhà nằm ngang trên mặt phẳng $(\\alpha): 2x+y-3z+18=0$. Hai mái nhà lần lượt nằm trên các mặt phẳng $(P): x-y=0, (Q): x+y-2z=0$. Hỏi chiều cao của ngôi nhà tính từ sàn nhà đến nóc nhà (điểm cao nhất của mái nhà) là bao nhiêu? (làm tròn đến hàng phần chục)",
+    "dap_an": "4,8"
+   },
+   {
+    "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho hai đường thẳng $d_1: \\dfrac{x-2}{6}=\\dfrac{y-1}{-1}=\\dfrac{z+1}{2}$ và $d_2: \\dfrac{x-1}{3}=\\dfrac{y+1}{1}=\\dfrac{z+1}{4}$. Gọi $(P)$ là mặt phẳng chứa đường thẳng $d_2$ và song song với đường thẳng $d_1$. Khoảng cách giữa đường thẳng $d_1$ và mặt phẳng $(P)$ là",
+    "dap_an": "B"
+   },
+   {
+    "de": "Trong không gian $Oxyz$ (đơn vị trên mỗi trục tọa độ là mét), một ngôi nhà (xem hình vẽ bên) có sàn nhà nằm ngang trên mặt phẳng $\\left(\\alpha \\right) :y-z-5=0$. Hai mái nhà (coi như là hai phần mặt phẳng) lần lượt nằm trên các mặt phẳng $\\left(P\\right) :2x-3y+z-6=0$, $\\left(Q\\right) :2x+y-3z+10=0$. Hỏi chiều cao của ngôi nhà tính từ nóc nhà (điểm cao nhất của mái nhà) đến sàn nhà là bao nhiêu mét (không làm tròn kết quả các phép tính trung gian, chỉ làm tròn kết quả cuối cùng đến hàng phần trăm",
+    "dap_an": "6.36"
+   }
+  ]
+ },
+ {
+  "id": "NDB00865",
+  "ten": "Viết phương trình mặt phẳng hợp với mặt phẳng khác góc cho trước",
+  "mo_ta": "",
+  "nhom_id": "NNB01512",
+  "nhom": "Các bài toán ứng dụng góc",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Góc  và Khoảng cách",
+  "cau_mau": [
+   {
+    "de": "Cho hai điểm $A(1;-1;1)$; $B(2;-2;4)$. Có bao nhiêu mặt phẳng chứa $A,B$ và tạo với mặt phẳng $(\\alpha): x-2y+z-7=0$ một góc $60^\\circ$.",
+    "dap_an": "2"
+   },
+   {
+    "de": "Trong không gian với hệ tọa độ $Oxyz$, cho mặt phẳng $(Q):x+2y+2z-3=0$ và đường thẳng $d:\\begin{cases}x=t\\\\y=-4+2t\\\\z=1-t\\end{cases}$. Mặt phẳng $(P)$ chứa đường thẳng $d$ và tạo với mặt phẳng $(Q)$ một góc nhỏ nhất. Biết phương trình mặt phẳng $(P)$ có dạng $x+by+cz+d=0$. Tính $M=2b+3c+4d$.",
+    "dap_an": "31"
+   },
+   {
+    "de": "Trong không gian với hệ tọa độ $Oxyz$, biết mặt phẳng $(P): ax+by+cz+d=0$ với $c<0$ đi qua hai điểm $A(0;1;0)$, $B(1;0;0)$ và tạo với mặt phẳng $(yOz)$ một góc $60^\\circ$. Tính giá trị $a+b+c$.",
+    "dap_an": "$2-\\sqrt{2}$"
+   }
+  ]
+ },
+ {
+  "id": "NDB00866",
+  "ten": "Xác định vị trí tương đối của 2 mặt phẳng",
+  "mo_ta": "",
+  "nhom_id": "NNB01513",
+  "nhom": "Vị trí tương đối giữa mặt phẳng và mặt phẳng",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Ví trí tương đối của Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian tọa độ $Oxyz$, mặt phẳng $(\\alpha): 3x-2y-z+5=0$ vuông góc với mặt phẳng nào dưới đây?",
+    "dap_an": "A"
+   },
+   {
+    "de": "Trong không gian với hệ tọa độ $Oxyz,$ cho mặt phẳng $\\left( P \\right)$ có phương trình:$mx+(m-1)y+z-10=0$ và mặt phẳng $(Q):2x+y-2z+3=0$. Với giá trị nào của dưới đây của $m$ thì $\\left( P \\right)$ và $\\left( Q \\right)$ vuông góc với nhau",
+    "dap_an": "B"
+   },
+   {
+    "de": "Trong không gian với hệ tọa độ $Oxyz$, cho 3 điểm $A(2;0;0)$, $B(0;b;0)$, $C(0;0;c)$, trong đó $b.c \neq 0$ và mặt phẳng $(P): y - z + 2025 = 0$. Mối liên hệ giữa $b,c$ để mặt phẳng $(ABC)$ vuông góc với mặt phẳng $(P)$ là",
+    "dap_an": "C"
+   }
+  ]
+ },
+ {
+  "id": "NDB00867",
+  "ten": "Khoảng cách giữa 2 mặt phẳng song song",
+  "mo_ta": "",
+  "nhom_id": "NNB01513",
+  "nhom": "Vị trí tương đối giữa mặt phẳng và mặt phẳng",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Ví trí tương đối của Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian $Oxyz$ cho $A(2;0;0), B(0;4;0), C(0;0;6), D(2;4;6)$. Gọi $(P)$ là mặt phẳng song song với $mp(ABC), (P)$ cách đều $D$ và mặt phẳng $(ABC)$. Phương trình của $(P)$ là $ax+by+4z+c=0$. Giá trị của $2a-4b+c$ là",
+    "dap_an": "-48"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, khoảng cách giữa hai mặt phẳng $(P): x+2y+2z-10=0$ và $(Q): x+2y+2z-3=0$ bằng",
+    "dap_an": "B"
+   },
+   {
+    "de": "Khi gắn hệ trục tọa độ $Oxyz$ (đơn vị trên mỗi trục tọa độ là decimet) vào một ngôi nhà $1$ tầng có diện tích $50 m^{2}$, người ta thấy rằng mặt trên và mặt dưới của mái nhà thuộc các mặt phẳng vuông góc với trục $Oz$. Biết rằng các vị trí $A\\left(3;4;33\\right)$ và $B\\left(9;8;35\\right)$ lần lượt thuộc mặt dưới, mặt trên của mái nhà. Độ dày của mái nhà được tính bằng khoảng cách giữa mặt trên và mặt dưới của mái nhà đó. Biết giá tiền $1 m^{3}$ bê tông tươi là $1300000$ (đồng), tiền công đổ mái l",
+    "dap_an": "18"
+   }
+  ]
+ }
+]

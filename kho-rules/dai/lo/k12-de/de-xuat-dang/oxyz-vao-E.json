@@ -1,0 +1,94 @@
+[
+ {
+  "id": "NDB00878",
+  "ten": "Xét vị trí tương đối của đường thẳng mặt cầu",
+  "mo_ta": "",
+  "nhom_id": "NNB01517",
+  "nhom": "Vị trí tương đối của đường thẳng và mặt cầu",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Ví trí tương đối của Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian với hệ tọa độ $Oxyz$, đài kiểm soát không lưu sân bay có tọa độ $O\\left(0;0;0\\right)$, mỗi đơn vị trên trục ứng với $1 km$. Máy bay bay trong phạm vi cách đài kiểm soát $317 km$sẽ hiển thị trên màn hình rađa. Một máy bay X đang bay ở vị trí $A\\left(-688;-185;11\\right)$, chuyển động theo đường thẳng hướng đến điểm $E\\left(677;940;11\\right)$ (xem hình vẽ minh họa).\nBiết rằng vận tốc máy bay là $900 km/h$, hãy tính số phút máy bay xuất hiện trên màn hình rađa của đài kiểm soát khôn",
+    "dap_an": "15.5"
+   },
+   {
+    "de": "Trong không gian với hệ tọa độ $Oxyz$, đài kiểm soát không lưu đặt tại gốc tọa độ $O\\left(0;0;0\\right)$. Mỗi đơn vị trên trục tọa độ ứng với $1 km$. Một máy bay đang ở vị trí $A\\left(-506;-35;8\\right)$, chuyển động theo đường thẳng có vectơ chỉ phương $\\overrightarrow{u}\\left(91;75;0\\right)$ và bay theo hướng về phía đài kiểm soát không lưu. Máy bay sẽ được hiển thị trên màn hình ra-đa nếu nằm trong phạm vi cách đài kiểm soát không lưu không quá $417 km$. Gọi $M$ là vị trí đầu tiên mà máy bay xu",
+    "dap_an": "9"
+   },
+   {
+    "de": "Ngày 31-7-2016, Tổng công ty Quản lý bay Việt Nam đã làm lễ khánh thành và đưa vào sử dụng trạm rađa thứ hai tại Sơn Trà và hệ thống xử lý dữ liệu rađa tại Trung tâm điều hành bay Đà Nẵng. Trạm rađa thứ hai đưa vào hoạt động tăng cường công tác quản lý vùng trời, bảo đảm vững chắc an ninh chủ quyền của Tổ quốc.Trạm rađa thứ hai và hệ thống xử lý dữ liệu rađa ở Trung tâm điều hành bay Đà Nẵng có vị trí đặc biệt quan trọng trong việc bảo đảm hoạt động bay, góp phần giám sát, quản lý vùng trời, bảo",
+    "dap_an": "212"
+   }
+  ]
+ },
+ {
+  "id": "NDB00879",
+  "ten": "Viết phương trình đường thẳng cắt mặt cầu",
+  "mo_ta": "",
+  "nhom_id": "NNB01517",
+  "nhom": "Vị trí tương đối của đường thẳng và mặt cầu",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Ví trí tương đối của Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong hệ trục tọa độ $Oxyz$ (đơn vị trên các trục là kilomet), một trạm radar được đặt tại điểm $I(1;2;3)$ và có vùng hoạt động được giới hạn bởi một mặt cầu tâm $I$, bán kính $R$. Một chiếc máy bay xuất phát từ điểm $A(-5;-3;1)$, chuyển động thẳng đều với vận tốc không đổi $720$ km/h và theo hướng vectơ $\\vec u(1;1;0)$. Biết rằng khoảng thời gian máy bay di chuyển trong vùng phủ sóng của radar là $20$ giây. Tính bán kính $R$ của vùng phủ sóng đó (đơn vị kilomet, làm tròn kết quả đến hàng phần t",
+    "dap_an": "2,92"
+   },
+   {
+    "de": "Một trạm $X$ có chức năng thu phát sóng điện thoại. Bán kính phủ sóng của trạm $X$ là $2\\,\\mathrm{km}$. Chọn hệ trục tọa độ $Oxyz$ sao cho $O$ trùng với trạm $X$ và đơn vị độ dài trên mỗi trục là $1\\,\\mathrm{km}$. Từ một nơi nằm ngoài vùng phủ sóng của trạm $X$, bạn An đi xuyên qua khu vực trạm $X$ phủ sóng và đi trên một con đường có dạng đường thẳng $\\begin{cases}x=t\\\\y=1-t\\\\z=\\sqrt3\\end{cases}$. Quãng đường mà bạn An đi vào vùng phủ sóng của trạm $X$ bằng bao nhiêu $\\mathrm{km}$? (Kết quả làm",
+    "dap_an": "1,4"
+   },
+   {
+    "de": "Trong hệ trục tọa độ $Oxyz$ cho trước (đơn vị trên trục là mét), một trạm thu phát sóng 5G có bán kính vùng phủ sóng của trạm ở ngưỡng $600\\,\\mathrm m$ được đặt tại vị trí $I(200;450;60)$. Vào lúc $5$ giờ $00$ phút sáng, bạn An đi bộ từ vị trí $A(-100;50;0)$ đến vị trí $B(-100;1250;0)$ trên một đường thẳng với vận tốc không đổi trong thời gian $15$ phút. Tính quãng đường từ vị trí $A$ đến vị trí xa nhất mà An có thể sử dụng dịch vụ của trạm thu phát sóng $5\\mathrm G$ trên (đơn vị: mét, kết quả l",
+    "dap_an": "916"
+   }
+  ]
+ },
+ {
+  "id": "NDB00880",
+  "ten": "Viết phương trình mặt cầu cắt đường thẳng",
+  "mo_ta": "",
+  "nhom_id": "NNB01517",
+  "nhom": "Vị trí tương đối của đường thẳng và mặt cầu",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Ví trí tương đối của Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho mặt cầu $(S)$ tâm $I(-2;3;0)$ và đường thẳng $\\Delta: \\dfrac{x-4}{2}=\\dfrac{y-3}{1}=\\dfrac{z-3}{2}$. Biết đường thẳng $\\Delta$ cắt mặt cầu $(S)$ tại hai điểm phân biệt $A,B$ sao cho $AB=8$. Tính bán kính của mặt cầu $(S)$.",
+    "dap_an": "5"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, cho mặt cầu $(S):x^{2}+y^{2}+z^{2}+4x-6y-a=0$ ($a$ là tham số) và đường thẳng $\\Delta:\\ \\begin{cases}x=4+2t\\\\y=3+t\\\\z=3+2t\\end{cases}$. Tìm $a$ để đường thẳng $\\Delta$ cắt mặt cầu $(S)$ tại hai điểm phân biệt $A,B$ sao cho $AB=8$.",
+    "dap_an": "12"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, cho đường thẳng $d: \\dfrac{x+1}{1}=\\dfrac{y+3}{2}=\\dfrac{z+2}{2}$ và mặt cầu $(S)$ có tâm $I(3;2;0)$. Đường thẳng $d$ cắt mặt cầu $(S)$ tại hai điểm $A,B$ sao cho $AB=8$. Xét tính đúng sai của các khẳng định sau:",
+    "dap_an": null
+   }
+  ]
+ },
+ {
+  "id": "NDB00881",
+  "ten": "Bài toán đường thẳng tiếp xúc với mặt cầu",
+  "mo_ta": "",
+  "nhom_id": "NNB01517",
+  "nhom": "Vị trí tương đối của đường thẳng và mặt cầu",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Ví trí tương đối của Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian với tọa độ $Oxyz$, cho mặt cầu $(C): (x-1)^2+(y-2)^2+(z+3)^2=11$. Đường thẳng $d$ là tiếp tuyến của mặt cầu $(C)$ tại điểm $A(2;1;0)$ có vectơ chỉ phương là $\\overrightarrow{u_d}=(-1;b;c)$ và vuông góc với đường thẳng $\\Delta: \\dfrac{x+1}{1}=\\dfrac{y}{2}=\\dfrac{z-2}{1}$. Tính giá trị $b+c$ (kết quả làm tròn đến hàng phần trăm).",
+    "dap_an": "0,71"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, cho điểm $I(3;1;-2)$. Phương trình mặt cầu tâm $I$ tiếp xúc với trục $Ox$ là",
+    "dap_an": "A"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, viết phương trình mặt cầu $(S)$ có tâm là $I(1;2;0)$ và tiếp xúc với đường thẳng $d:\\dfrac{x-1}2=\\dfrac y{-1}=\\dfrac z1$.",
+    "dap_an": "$(x-1)^2+(y-2)^2+z^2=\\dfrac{10}3$"
+   }
+  ]
+ }
+]

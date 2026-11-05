@@ -11,6 +11,9 @@ process.loadEnvFile('.env')
 
 const [khoi, ra] = process.argv.slice(2)
 const LO = process.argv.includes('--lo') ? +process.argv[process.argv.indexOf('--lo') + 1] : 70
+// --ma-cau-file f.json: chỉ phân đúng các câu trong danh sách (kể cả câu đang ở hàng duyệt) + bảng đích kèm LÝ THUYẾT — dùng khi bản đồ vừa được bổ sung (05/11)
+const iMc = process.argv.indexOf('--ma-cau-file')
+const MACAU = iMc >= 0 ? new Set(JSON.parse(fs.readFileSync(process.argv[iMc + 1], 'utf8'))) : null
 if (!khoi || !ra) { console.error('Dùng: node scripts/bdm-b3-hgt-xuat-lo.mjs <khoi> <thu-muc-ra> [--lo 70]'); process.exit(2) }
 fs.mkdirSync(ra, { recursive: true })
 
@@ -20,7 +23,7 @@ await c.query('begin read only')
 const q = async (s, p) => (await c.query(s, p)).rows
 
 const dich = await q(`
-  select d.id, d.ten, d.mo_ta, d.vi_du, n.ten nhom, cdx.ten chuyen_de, cd.ten chu_de, cd.id chu_de_id
+  select d.id, d.ten, d.mo_ta, d.vi_du, d.ly_thuyet, n.ten nhom, cdx.ten chuyen_de, cd.ten chu_de, cd.id chu_de_id
     from dai_bdm_dang_bai d
     join dai_bdm_nhom n on n.id = d.nhom_id
     join dai_bdm_chu_de cd on cd.id = n.chu_de_id and cd.khoi = $1 and cd.nhanh = 'hgt'
@@ -36,6 +39,7 @@ for (const d of dich) {
   md += `- **${d.id}** — ${d.ten}\n  - mô tả: ${(d.mo_ta || '(chưa có)').replace(/\n+/g, ' ')}\n`
   const ex = (d.vi_du || '').split(/\n\s*\n/).filter((b) => b.startsWith('##VD')).map((b) => b.split('\nLời giải.')[0].replace(/^##VD\s*/, '').replace(/\n/g, ' ')).slice(0, 2)
   for (const e of ex) md += `  - ví dụ: ${e}\n`
+  if (MACAU && (d.ly_thuyet || '').trim()) md += `  - lý thuyết: ${d.ly_thuyet.replace(/\n+/g, ' ').slice(0, 1500)}\n`
 }
 fs.writeFileSync(path.join(ra, 'bang-dich.md'), md)
 
@@ -44,10 +48,10 @@ const rows = await q(`
          b.ten_dang dang_cu, b.ten_chuyen_de chuyen_de_cu
     from hgt_cau_hoi h join hgt_ban_do b on b.ma_dang = h.dang_chinh
    where h.xoa_at is null and h.loai_cau <> 'dung_sai' and b.khoi = $1
-     and not exists (select 1 from hgt_bdm_gan_cau g where g.ma_cau = h.ma_cau)
+     and (${MACAU ? 'h.ma_cau = any($2)' : `not exists (select 1 from hgt_bdm_gan_cau g where g.ma_cau = h.ma_cau)
      and not exists (select 1 from hgt_bdm_de_xuat e where e.ma_cau = h.ma_cau)
-     and not exists (select 1 from hgt_bdm_cau_thieu_dang t where t.ma_cau = h.ma_cau)
-   order by b.ten_chuyen_de, h.ma_cau`, [khoi])
+     and not exists (select 1 from hgt_bdm_cau_thieu_dang t where t.ma_cau = h.ma_cau)`})
+   order by b.ten_chuyen_de, h.ma_cau`, MACAU ? [khoi, [...MACAU]] : [khoi])
 await c.query('rollback'); await c.end()
 
 const gon = (r) => {

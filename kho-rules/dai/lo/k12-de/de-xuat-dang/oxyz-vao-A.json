@@ -1,0 +1,270 @@
+[
+ {
+  "id": "NDB00835",
+  "ten": "Xác định vector pháp tuyến , vector chỉ phương của mặt phẳng",
+  "mo_ta": "Xác định vector pháp tuyến , vector chỉ phương của mặt phẳng khi biết phương trình",
+  "nhom_id": "NNB01507",
+  "nhom": "Các đại lượng cơ bản",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian với hệ tọa độ $Oxyz$, cho mặt phẳng $(P):2x-4y+6z-9=0$. Vectơ nào sau đây là vectơ pháp tuyến của mặt phẳng?",
+    "dap_an": "D"
+   },
+   {
+    "de": "Trong không gian với hệ tọa độ $Oxyz$, cho mặt phẳng $(P):x-2y+3z-1=0$. Vectơ nào sau đây là một vecto pháp tuyến của mặt phẳng $(P)$ ?",
+    "dap_an": "A"
+   },
+   {
+    "de": "Trong không gian tọa độ $Oxyz$, cho mặt phẳng $(P):x-2y-4=0$, khi đó một vectơ pháp tuyến của mặt phẳng $(P)$ là",
+    "dap_an": "B"
+   }
+  ]
+ },
+ {
+  "id": "NDB00836",
+  "ten": "Xác định vector pháp tuyến , vector chỉ phương của đường thẳng",
+  "mo_ta": "Xác định vector pháp tuyến , vector chỉ phương của đường thẳng",
+  "nhom_id": "NNB01507",
+  "nhom": "Các đại lượng cơ bản",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Cho đường thẳng $\\Delta$ có một vectơ chỉ phương là $\\vec{u} = (2;-4;-6)$. Vectơ nào sau đây không phải là vectơ chỉ phương của $\\Delta$?",
+    "dap_an": "C"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, cho đường thẳng $\\Delta: \\begin{cases} x=2+3t \\\\ y=-1+t \\\\ z=5-2t \\end{cases}\\ (t\\in\\mathbb{R})$. Véc tơ nào sau đây là một véc tơ chỉ phương của đường thẳng $\\Delta$?",
+    "dap_an": "D"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, cho đường thẳng $d:\\dfrac{x+1}{1}=\\dfrac{y-3}{-1}=\\dfrac{z-2}{2}$. Vectơ nào dưới đây là một vectơ chỉ phương của $d$?",
+    "dap_an": "D"
+   }
+  ]
+ },
+ {
+  "id": "NDB00837",
+  "ten": "Xác định tâm và bán kính của mặt cầu",
+  "mo_ta": "Xác định tâm và bán kính của mặt cầu khi biết phương trình",
+  "nhom_id": "NNB01507",
+  "nhom": "Các đại lượng cơ bản",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Cho phương trình mặt cầu $(S): x^2+y^2+z^2=16$, bán kính $R$ của mặt cầu là",
+    "dap_an": "A"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, cho mặt cầu $\\left( S \\right):x^{2}+y^{2}+z^{2}-2x+4y+2z-10=0$. Tâm và bán kính của mặt cầu $\\left( S \\right)$ là",
+    "dap_an": "B"
+   },
+   {
+    "de": "Một công ty sản xuất đèn LED trang trí cho các lễ hội. Một trong những sản phẩm mới là một đèn LED hình cầu với các dây đèn nằm đều bên trong. Để đảm bảo ánh sáng tỏa ra đều từ mọi hướng, tâm của đèn LED cần được đặt đúng tại vị trí của tâm hình cầu. Giả sử một quả cầu đèn LED có phương trình mặt cầu là: $\\left(x-1\\right)^2+\\left(y-3\\right)^2+\\left(z+2\\right)^2=49$. Một bóng đèn nhỏ nằm tại điểm $\\left(4;7;-2\\right)$. Tính khoảng cách từ bóng đèn nhỏ đến tâm quả cầu đèn LED.",
+    "dap_an": "5"
+   }
+  ]
+ },
+ {
+  "id": "NDB00838",
+  "ten": "Xác định quan hệ của điểm với mặt phẳng",
+  "mo_ta": "Xác định điểm có thuộc mặt phẳng không",
+  "nhom_id": "NNB01507",
+  "nhom": "Các đại lượng cơ bản",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian $Oxyz$, cho mặt phẳng $(P): 2x - y + z - 2 = 0$. Điểm nào sau đây thuộc $(P)$?",
+    "dap_an": "A"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, cho điểm $M(a;b;1)$ thuộc mặt phẳng $(P): 2x-y+z-3=0$. Tính giá trị biểu thức $S=2a-b$.",
+    "dap_an": "2"
+   },
+   {
+    "de": "Trong không gian với hệ tọa độ $Oxyz$, điểm nào dưới đây thuộc mặt phẳng $\\left(P\\right) :3x-y+2z+1=0$?",
+    "dap_an": "D"
+   }
+  ]
+ },
+ {
+  "id": "NDB00839",
+  "ten": "Xác định quan hệ của điểm với đường thẳng",
+  "mo_ta": "Xác định điểm có thuộc đường thẳng không",
+  "nhom_id": "NNB01507",
+  "nhom": "Các đại lượng cơ bản",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian $Oxyz$ cho đường thẳng $\\Delta$ có phương trình $\\begin{cases}x=3-t\\\\y=1+3t\\\\z=2t\\end{cases}$, điểm nào dưới đây thuộc đường thẳng $\\Delta$?",
+    "dap_an": "D"
+   },
+   {
+    "de": "Một phần mềm mô phỏng vận động viên đang tập bắn súng trong không gian $Oxyz$. Cho biết trục $d$ của nòng súng có phương trình $\\dfrac{x-1}{1}=\\dfrac{y-2}{-3}=\\dfrac{z-3}{-5}$ và hồng tâm $A(8;-19;6m+4)$. Tìm giá trị của $m$ để vận động viên bắn trúng hồng tâm?",
+    "dap_an": "-6"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, điểm nào dưới đây thuộc đường thẳng $d:\\begin{cases}x=1-t\\\\y=5+t\\\\z=2+3t\\end{cases}$?",
+    "dap_an": "D"
+   }
+  ]
+ },
+ {
+  "id": "NDB00840",
+  "ten": "Xác định quan hệ của điểm với mặt cầu",
+  "mo_ta": "Xác định điểm có thuộc mặt cầu không",
+  "nhom_id": "NNB01507",
+  "nhom": "Các đại lượng cơ bản",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian với hệ tọa độ $Oxyz$ (đơn vị trên mỗi trục là km), một ngọn hải đăng được đặt ở vị trí $I(1;5;5)$. Ngọn hải đăng được thiết kế với bán kính phủ sáng là $5$ km. Một người đi biển di chuyển theo đường thẳng từ vị trí $I(1;5;5)$ đến vị trí $A(7;14;11)$. Điểm nào sau đây mà người đi biển đi qua và vẫn thuộc vùng phủ sáng của ngọn hải đăng?",
+    "dap_an": "A"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, cho mặt cầu $(S): (x-2)^2+(y+3)^2+(z-1)^2=9$. Điểm nào trong các điểm bên dưới thuộc mặt cầu $(S)$?",
+    "dap_an": "A"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, một thiết bị phát sóng đặt tại vị trí $A(3;0;0)$. Vùng phủ sóng của thiết bị có bán kính bằng $5$. Hỏi vị trí của điểm nào sau đây không thuộc vùng phủ sóng của thiết bị nói trên?",
+    "dap_an": "C"
+   }
+  ]
+ },
+ {
+  "id": "NDB00841",
+  "ten": "Viết phương trình mặt phẳng biết vector pháp tuyến",
+  "mo_ta": "Viết phương trình mặt phẳng khi đề bài cho rõ vector pháp tuyến hoặc cho song song với mặt phẳng khác",
+  "nhom_id": "NNB01508",
+  "nhom": "Viết phương trình mặt phẳng - đường thẳng - mặt cầu dạng cơ bản",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian với hệ tọa độ $Oxyz$, phương trình mặt phẳng đi qua điểm $A\\left(2;-1;3\\right)$và có vectơ pháp tuyến $\\overrightarrow{n}=\\left(2;3;-1\\right)$ là",
+    "dap_an": "B"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, phương trình mặt phẳng đi qua điểm $A(1;-2;3)$ và có vectơ pháp tuyến $\\vec n=(2;-1;1)$ là",
+    "dap_an": "A"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, cho điểm $M\\left(1;2;3\\right)$ và mặt phẳng $\\left(P\\right) :x+3y-4z+9=0$. Mặt phẳng $\\left(Q\\right)$ đi qua $M$ và song song với $\\left(P\\right)$ có phương trình là",
+    "dap_an": "C"
+   }
+  ]
+ },
+ {
+  "id": "NDB00842",
+  "ten": "Viết phương trình mặt phẳng biết 2 vector chỉ phương",
+  "mo_ta": "Viết phương trình mặt phẳng biết 2 vector chỉ phương",
+  "nhom_id": "NNB01508",
+  "nhom": "Viết phương trình mặt phẳng - đường thẳng - mặt cầu dạng cơ bản",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian với hệ toạ độ $Oxyz$, mặt phẳng $(P)$ có cặp véc tơ chỉ phương là $\\vec{a}(2;1;3)$; $\\vec{b}(1;1;2)$. Biết vec tơ pháp tuyến của mặt phẳng $(P)$ có dạng $\\vec{n}_P=(a;b;c)$. Tính $a+b+c$?",
+    "dap_an": "-1"
+   },
+   {
+    "de": "Trong giờ thể dục học về kỹ thuật chuyền bóng hơi, Bình và An tập chuyền bóng cho nhau. Ở một động tác Bình chuyền bóng cho An, quả bóng bay lên cao nhưng lại lệch sang bên trái của An và rơi xuống vị trí cách chỗ An đứng $0{,}5$m và cách chỗ Bình $4{,}5$m. Chọn hệ trục tọa độ $Oxyz$ sao cho gốc tọa độ $O$ tại vị trí Bình, vị trí An nằm trên tia $Ox$ và mặt phẳng $Oxy$ là mặt đất. Biết rằng quỹ đạo của quả bóng nằm trong mặt phẳng $(\\alpha): x+by+cz+d=0$ và $(\\alpha)$ vuông góc với mặt đất. Khi ",
+    "dap_an": "-400"
+   },
+   {
+    "de": "Trong tiết thể dục học về kĩ thuật chuyền bóng hơi, Nam và An đang tập chuyền bóng cho nhau, Nam ném bóng cho An đỡ, quả bóng bay lên cao nhưng lại lệch sang phải của Nam và rơi xuống vị trí cách An $0{,}5$ m và cách Nam $4{,}5$ m được mô tả bằng hình vẽ bên dưới. Biết rằng quỹ đạo của quả bóng nằm trong mặt phẳng $(\\alpha): ax+\\dfrac{1}{2}y+cz+d=0$ và vuông góc với mặt đất. Khi đó giá trị của $a+c+d$ bằng (kết quả làm tròn đến hàng phần chục).",
+    "dap_an": "-4,5"
+   }
+  ]
+ },
+ {
+  "id": "NDB00843",
+  "ten": "Viết phương trình đường thẳng biết vector chỉ phương",
+  "mo_ta": "Viết phương trình đường thẳng biết vector chỉ phương hoặc song song với đường thẳng khác",
+  "nhom_id": "NNB01508",
+  "nhom": "Viết phương trình mặt phẳng - đường thẳng - mặt cầu dạng cơ bản",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian $Oxyz$, cho đường thẳng $d$ đi qua điểm $M(3;-1;4)$ và có một vectơ chỉ phương $\\vec u=(-2;4;5)$. Phương trình của $d$ là",
+    "dap_an": null
+   },
+   {
+    "de": "Trong không gian với hệ tọa độ $Oxyz$, đường thẳng đi qua điểm $M\\left(-1;2;-5\\right)$ và song song với đường thẳng $\\left(d\\right):\\dfrac{x-1}{1}=\\dfrac{y-2}{3}=\\dfrac{z-3}{-5}$ có phương trình chính tắc là",
+    "dap_an": "B"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, phương trình đường thẳng đi qua điểm $M(1;-2;-5)$ và có một vectơ chỉ phương $\\vec u=(2;1;-1)$ là",
+    "dap_an": "D"
+   }
+  ]
+ },
+ {
+  "id": "NDB00844",
+  "ten": "Viết phương trình đường thẳng biết 2 vector pháp tuyến",
+  "mo_ta": "Viết phương trình đường thẳng biết 2 vector pháp tuyến",
+  "nhom_id": "NNB01508",
+  "nhom": "Viết phương trình mặt phẳng - đường thẳng - mặt cầu dạng cơ bản",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian $Oxyz$, cho hai mặt phẳng $(P): 2x+y-z-1=0$, $(Q): x-2y+z-5=0$. Khi đó giao tuyến của hai mặt phẳng $(P)$ và $(Q)$ có một vectơ chỉ phương là",
+    "dap_an": "C"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, cho hai mặt phẳng $(P): 3x-2y+2z-5=0$ và $(Q): 4x+5y-z+1=0$. Biết hai điểm $A$, $B$ phân biệt cùng thuộc giao tuyến của hai mặt phẳng $(P)$ và $(Q)$. Khi đó $\\overrightarrow{AB}$ cùng phương với véctơ nào sau đây?",
+    "dap_an": "A"
+   },
+   {
+    "de": "Cho hai điểm $A(3;3;1)$, $B(3;2;1)$, mặt phẳng $(P): x-2y-z+3=0$. Đường thẳng $d$ nằm trên $(P)$ sao cho mọi điểm của $d$ cách đều hai điểm $A$, $B$ có phương trình là",
+    "dap_an": "A"
+   }
+  ]
+ },
+ {
+  "id": "NDB00845",
+  "ten": "Chuyển dạng của phương trình đường thẳng",
+  "mo_ta": "Chuyển qua lại các dạng phương trình đường thẳng : tổng quát, tham số, chính tắc",
+  "nhom_id": "NNB01508",
+  "nhom": "Viết phương trình mặt phẳng - đường thẳng - mặt cầu dạng cơ bản",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian với hệ tọa độ $Oxyz,$ cho đường thẳng $\\Delta$ có phương trình chính tắc $\\frac{x-3}{2}=\\frac{y+1}{-3}=\\frac{z}{1}$. Phương trình tham số của đường thẳng $\\Delta$ là?",
+    "dap_an": "A"
+   }
+  ]
+ },
+ {
+  "id": "NDB00846",
+  "ten": "Viết phương trình mặt cầu biết tâm và bán kính",
+  "mo_ta": "Viết phương trình mặt cầu biết tâm và bán kính",
+  "nhom_id": "NNB01508",
+  "nhom": "Viết phương trình mặt phẳng - đường thẳng - mặt cầu dạng cơ bản",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Các bài toán cơ bản về Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian $Oxyz$, phương trình mặt cầu tâm $I(a,b,c)$, bán kính $R$ là",
+    "dap_an": "A"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, cho hai điểm $A\\left(1;2;3\\right)$ và $B\\left(-2;1;5\\right)$. Phương trình mặt cầu tâm $A$ bán kính $AB$ là:",
+    "dap_an": "D"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, cho hai điểm $I(2;4;-1)$ và $A(0;2;3)$. Phương trình mặt cầu có tâm $I$ và đi qua điểm $A$ là",
+    "dap_an": "C"
+   }
+  ]
+ }
+]

@@ -1,0 +1,672 @@
+{
+ "dang_moi": [
+  {
+   "id_tam": "NHTP-MOI-01",
+   "ten": "Tích phân (nguyên hàm) đổi biến số — hàm cho tường minh",
+   "nhom_dat": "NHÓM MỚI: Tích phân › Phương pháp đổi biến số",
+   "dat_sau": "NDB00755",
+   "sau_dang_moi": null,
+   "muc_do": "Mức 3",
+   "mo_ta": "Đề cho hàm dưới dấu tích phân viết tường minh (có ln x, e^x, căn, sin x, phân thức…) mà bảng nguyên hàm không áp thẳng được. Việc làm: chọn ẩn phụ t = u(x), đổi cận, đưa về tích phân cơ bản hoặc phân thức hữu tỉ rồi tính. Ranh giới: khác NDB00753/NDB00754/NDB00630 (chỉ biến đổi đại số rồi tra bảng, không cần ẩn phụ) và khác dạng \"cho ∫f, tính ∫f(ax+b)\" (f không có công thức).",
+   "ly_thuyet": "##TC Công thức đổi biến\n• Đặt $t=u(x)$ ($u$ có đạo hàm liên tục): $\\int_{a}^{b} f\\big(u(x)\\big)\\,u'(x)\\,dx=\\int_{u(a)}^{u(b)} f(t)\\,dt$.\n• Với nguyên hàm: nếu $\\int f(t)\\,dt=F(t)+C$ thì $\\int f\\big(u(x)\\big)\\,u'(x)\\,dx=F\\big(u(x)\\big)+C$.\n• Khi đổi biến phải đổi cả cận: $x=a\\Rightarrow t=u(a)$, $x=b\\Rightarrow t=u(b)$.\n\n##TC Các cách đặt hay gặp\n• Có $\\ln x$ đi cùng $\\dfrac{dx}{x}$: đặt $t=\\ln x$ (hoặc $t=\\ln x+1$ khi mẫu chứa $\\ln x+1$).\n• Có $e^{x}$: đặt $t=e^{x}$; nếu có cả $e^{-x}$ thì nhân tử và mẫu với $e^{x}$ trước.\n• Có $\\sqrt{ax+b}$ hoặc $\\sqrt{e^{x}}$: đặt $t$ bằng căn, khi đó $x$ và $dx$ biểu diễn theo $t$.\n• Có $\\sin x\\cos x$: đặt $t=\\sin x$ hoặc $t=\\cos x$; có $\\dfrac{1}{\\cos^{2}x}$: đặt $t=\\tan x$.\n\n##PP Cách tính tích phân bằng đổi biến\nTìm trong biểu thức một cụm $u(x)$ mà đạo hàm $u'(x)$ cũng có mặt (kể cả sai khác một hằng số), đặt $t=u(x)$ và tính $dt=u'(x)\\,dx$.\nĐổi cận theo $t$, viết lại toàn bộ tích phân chỉ còn biến $t$.\nNếu còn phân thức hữu tỉ thì chia đa thức hoặc phân tích mẫu thành tích rồi tách $\\dfrac{1}{(t-p)(t-q)}=\\dfrac{1}{p-q}\\Big(\\dfrac{1}{t-p}-\\dfrac{1}{t-q}\\Big)$.\nTính tích phân theo $t$ bằng bảng nguyên hàm, rồi đối chiếu với dạng kết quả đề cho (tìm $a,b,c$).\n\n##CY\n• Không đổi cận mà quay về biến $x$ thì phải thay lại $t=u(x)$; đổi cận thì không cần thay lại.\n• Đặt $t=\\sqrt{\\cdot}$ thì cận mới là giá trị của căn, không phải của biểu thức trong căn.\n• Kết quả dạng $a\\ln2-\\dfrac{b}{c}$: so sánh hệ số của $\\ln2$ và phần hữu tỉ, đừng dùng số gần đúng.",
+   "vi_du": "##VD\na) Tìm $\\int(2x+1)^{5}\\,dx$.\nb) Biết $\\int_{1}^{e}\\dfrac{2\\ln x+1}{x(\\ln x+1)^{2}}\\,dx=a\\ln2-\\dfrac{b}{c}$ với $a,b,c$ nguyên dương, $\\dfrac{b}{c}$ tối giản. Tính $S=a+b+c$.\n\nBài giải:\na) Đặt $t=2x+1$ thì $dt=2\\,dx$, nên $\\int(2x+1)^{5}dx=\\dfrac{1}{2}\\int t^{5}dt=\\dfrac{t^{6}}{12}+C=\\dfrac{(2x+1)^{6}}{12}+C$.\nb) Đặt $t=\\ln x+1$ thì $dt=\\dfrac{dx}{x}$ và $2\\ln x+1=2t-1$.\nĐổi cận: $x=1\\Rightarrow t=1$; $x=e\\Rightarrow t=2$.\n$\\int_{1}^{e}\\dfrac{2\\ln x+1}{x(\\ln x+1)^{2}}dx=\\int_{1}^{2}\\dfrac{2t-1}{t^{2}}dt=\\int_{1}^{2}\\Big(\\dfrac{2}{t}-\\dfrac{1}{t^{2}}\\Big)dt$.\n$=\\Big(2\\ln t+\\dfrac{1}{t}\\Big)\\Big|_{1}^{2}=2\\ln2+\\dfrac{1}{2}-1=2\\ln2-\\dfrac{1}{2}$.\nSuy ra $a=2$, $b=1$, $c=2$ và $S=2+1+2=5$.\n\n##VD\nBiết $I=\\int_{\\ln3}^{\\ln6}\\dfrac{dx}{e^{x}+2e^{-x}-3}=3\\ln a-\\ln b$ với $a,b$ nguyên dương. Tính $P=ab$.\n\nBài giải:\nNhân tử và mẫu với $e^{x}$: $\\dfrac{1}{e^{x}+2e^{-x}-3}=\\dfrac{e^{x}}{e^{2x}-3e^{x}+2}$.\nĐặt $t=e^{x}$ thì $dt=e^{x}dx$. Đổi cận: $x=\\ln3\\Rightarrow t=3$; $x=\\ln6\\Rightarrow t=6$.\n$I=\\int_{3}^{6}\\dfrac{dt}{t^{2}-3t+2}=\\int_{3}^{6}\\Big(\\dfrac{1}{t-2}-\\dfrac{1}{t-1}\\Big)dt=\\ln\\dfrac{t-2}{t-1}\\Big|_{3}^{6}$.\n$=\\ln\\dfrac{4}{5}-\\ln\\dfrac{1}{2}=\\ln\\dfrac{8}{5}=3\\ln2-\\ln5$.\nVậy $a=2$, $b=5$ và $P=ab=10$.",
+   "dang_gan_nhat": "NDB00630 / NDB00754 (tích phân hàm mũ, phân thức cơ bản): các dạng đó chỉ biến đổi đại số rồi tra bảng; ở đây bắt buộc đặt ẩn phụ t = u(x) và đổi cận nên không nhét được.",
+   "so_cau": 13,
+   "ma_cau": [
+    "T1120000001544",
+    "T1120000001891",
+    "T1120000001896",
+    "T1120000001898",
+    "T1120000001902",
+    "T1120000001908",
+    "T1120000001919",
+    "T1120000001922",
+    "T1120000001927",
+    "T1120000001928",
+    "T1120000001942",
+    "T1120000001946",
+    "T1120000002271"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000001902",
+    "T1120000001922",
+    "T1120000002271"
+   ]
+  },
+  {
+   "id_tam": "NHTP-MOI-02",
+   "ten": "Cho tích phân của f, tính tích phân của f(ax+b), f(|ax+b|), x·f(x²+1)…",
+   "nhom_dat": "NHÓM MỚI: Tích phân › Phương pháp đổi biến số",
+   "dat_sau": "NDB00755",
+   "sau_dang_moi": "NHTP-MOI-01",
+   "muc_do": "Mức 3",
+   "mo_ta": "Đề không cho công thức của f, chỉ cho giá trị một hay hai tích phân của f trên các đoạn khác nhau (hoặc nguyên hàm F), rồi hỏi tích phân của hàm hợp như f(2x), f(1−3x), f(|2x−1|), x·f(x²+1), nguyên hàm G của f(2x)+cos πx. Việc làm: đặt t là biểu thức trong f, đổi cận để về ∫f(t)dt trên đúng đoạn đề cho; có trị tuyệt đối thì tách tại điểm đổi dấu. Ranh giới: khác NDB00751/NDB00752 (chỉ nối cận, không đổi biến) và khác dạng \"hai tích phân cho trước\" (ở đây một phép đổi biến là đủ, không cần ghép hai điều kiện có biến đổi khác nhau).",
+   "ly_thuyet": "##TC Đổi biến trong tích phân của hàm hợp\n• Nếu $a\\neq0$ thì $\\int_{\\alpha}^{\\beta} f(ax+b)\\,dx=\\dfrac{1}{a}\\int_{a\\alpha+b}^{a\\beta+b} f(t)\\,dt$ (đặt $t=ax+b$, $dt=a\\,dx$).\n• Tích phân không phụ thuộc tên biến: $\\int_{p}^{q} f(t)\\,dt=\\int_{p}^{q} f(x)\\,dx$.\n• Với $t=x^{2}+1$: $x\\,dx=\\dfrac{dt}{2}$, nên $\\int_{0}^{2} x\\,f(x^{2}+1)\\,dx=\\dfrac{1}{2}\\int_{1}^{5} f(t)\\,dt$.\n\n##TC Trị tuyệt đối trong đối số\n• $|ax+b|=ax+b$ khi $ax+b\\ge0$ và $|ax+b|=-(ax+b)$ khi $ax+b<0$; tách tích phân tại nghiệm của $ax+b=0$ rồi đổi biến từng đoạn.\n\n##PP Tính $\\int f(u(x))\\,dx$ khi cho $\\int f(t)\\,dt$ trên các đoạn\nXác định đoạn của $t$ đề đã cho (ví dụ $[0;1]$ và $[0;3]$) và đoạn của $t$ mà tích phân cần tính sẽ cho.\nNếu có trị tuyệt đối: tìm điểm $x_0$ làm $u(x)$ đổi dấu và tách tích phân thành hai đoạn.\nVới mỗi đoạn đặt $t=u(x)$ hoặc $t=-u(x)$ (để $t$ nằm trong miền đề cho), nhớ nhân hệ số $\\dfrac{1}{|a|}$ và đảo cận khi $a<0$.\nCộng các phần, dùng nối cận và tính chất cộng của tích phân để thay giá trị đề cho.\n\n##CY\n• Khi $a<0$, cận đảo chiều và dấu trừ của $dt=a\\,dx$ triệt tiêu nhau; kiểm tra bằng cách thử $\\int_{0}^{1}f(1-x)dx=\\int_{0}^{1}f(t)dt$.\n• Đoạn lấy của $t$ phải khớp đoạn đề đã cho; nếu lệch thì dùng nối cận $\\int_{p}^{r}=\\int_{p}^{q}+\\int_{q}^{r}$.\n• Nguyên hàm: nếu $F$ là nguyên hàm của $f$ thì $\\int_{p}^{q} f(kx)\\,dx=\\dfrac{F(kq)-F(kp)}{k}$.",
+   "vi_du": "##VD\nCho $f(x)$ liên tục trên $\\mathbb{R}$ và $\\int_{0}^{1} f(x)\\,dx=4$, $\\int_{0}^{3} f(x)\\,dx=6$. Tính $I=\\int_{-1}^{1} f\\big(|2x+1|\\big)\\,dx$.\n\nBài giải:\nTa có $2x+1\\ge0\\iff x\\ge-\\dfrac{1}{2}$, nên tách $I=\\int_{-1}^{-\\frac{1}{2}} f(-2x-1)\\,dx+\\int_{-\\frac{1}{2}}^{1} f(2x+1)\\,dx$.\nVới tích phân thứ nhất đặt $t=-2x-1$, $dt=-2\\,dx$; $x=-1\\Rightarrow t=1$, $x=-\\dfrac{1}{2}\\Rightarrow t=0$. Khi đó $\\int_{-1}^{-\\frac{1}{2}} f(-2x-1)dx=\\dfrac{1}{2}\\int_{0}^{1} f(t)\\,dt=\\dfrac{1}{2}\\cdot4=2$.\nVới tích phân thứ hai đặt $t=2x+1$, $dt=2\\,dx$; $x=-\\dfrac{1}{2}\\Rightarrow t=0$, $x=1\\Rightarrow t=3$. Khi đó $\\int_{-\\frac{1}{2}}^{1} f(2x+1)dx=\\dfrac{1}{2}\\int_{0}^{3} f(t)\\,dt=\\dfrac{1}{2}\\cdot6=3$.\nVậy $I=2+3=5$.\n\n##VD\nCho $f(x)$ liên tục trên $\\mathbb{R}$ và $\\int_{-5}^{1} f(x)\\,dx=9$. Tính $\\int_{0}^{2}\\big[f(1-3x)+9\\big]\\,dx$.\n\nBài giải:\nTách $\\int_{0}^{2}\\big[f(1-3x)+9\\big]dx=\\int_{0}^{2} f(1-3x)\\,dx+\\int_{0}^{2}9\\,dx$, trong đó $\\int_{0}^{2}9\\,dx=18$.\nĐặt $t=1-3x$, $dt=-3\\,dx$; $x=0\\Rightarrow t=1$, $x=2\\Rightarrow t=-5$.\n$\\int_{0}^{2} f(1-3x)\\,dx=-\\dfrac{1}{3}\\int_{1}^{-5} f(t)\\,dt=\\dfrac{1}{3}\\int_{-5}^{1} f(t)\\,dt=\\dfrac{9}{3}=3$.\nVậy giá trị cần tính bằng $3+18=21$.",
+   "dang_gan_nhat": "NDB00751 / NDB00752 (tính chất cận, tổng hiệu tích phân): chỉ dùng nối cận và cộng trừ trên cùng một biến; ở đây đối số của f là ax+b hoặc |ax+b| nên bắt buộc đổi biến và đổi cận.",
+   "so_cau": 13,
+   "ma_cau": [
+    "T1120000001892",
+    "T1120000001893",
+    "T1120000001895",
+    "T1120000001899",
+    "T1120000001903",
+    "T1120000001920",
+    "T1120000001921",
+    "T1120000001924",
+    "T1120000001925",
+    "T1120000002050",
+    "T1120000002115",
+    "T1120000002229",
+    "T1120000002488"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000001893",
+    "T1120000001899",
+    "T1120000001921"
+   ]
+  },
+  {
+   "id_tam": "NHTP-MOI-03",
+   "ten": "Cho hai tích phân của f(u₁(x)), f(u₂(x)) — đổi biến ghép để tính ∫f",
+   "nhom_dat": "NHÓM MỚI: Tích phân › Phương pháp đổi biến số",
+   "dat_sau": "NDB00755",
+   "sau_dang_moi": "NHTP-MOI-02",
+   "muc_do": "Mức 4",
+   "mo_ta": "Đề cho hai (đôi khi một) tích phân chứa f với hai đối số khác nhau như f(√x)/√x, f(sin x)cos x, tan x·f(cos²x), f(ln²x)/(x ln x), f(tan x), hoặc x²f′(x) kèm f(2−√x), rồi hỏi tích phân của f(x) (hoặc f(2x)/x) trên một đoạn mới. Việc làm: đổi biến từng tích phân về dạng ∫f(t)dt (hoặc ∫f(t)/t dt) trên các đoạn khác nhau rồi ghép lại bằng nối cận. Ranh giới: khác dạng \"cho ∫f, tính ∫f(ax+b)\" ở chỗ phải đổi biến cả các điều kiện cho trước, đối số là căn/lượng giác/lôga.",
+   "ly_thuyet": "##TC Các phép đổi biến chuẩn đưa về $\\int f(t)\\,dt$\n• $t=\\sqrt{x}$: $\\dfrac{dx}{\\sqrt{x}}=2\\,dt$; $t=\\sin x$: $\\cos x\\,dx=dt$; $t=\\tan x$: $dx=\\dfrac{dt}{1+t^{2}}$.\n• $t=\\cos^{2}x$: $\\tan x\\,dx=-\\dfrac{dt}{2t}$; $t=\\ln x$: $\\dfrac{dx}{x}=dt$; $t=\\sqrt[3]{x}$: $\\dfrac{dx}{x}=\\dfrac{3\\,dt}{t}$.\n• Mẫu $\\dfrac{f(\\cdot)}{x}$ hoặc $\\dfrac{f(\\cdot)}{t}$: dạng $\\int\\dfrac{f(t)}{t}\\,dt$ không đổi dạng khi đặt $t=x^{k}$, chỉ nhân hệ số $k$.\n\n##PP Ghép hai điều kiện đổi biến\nVới mỗi tích phân cho trước, đặt $t$ bằng đối số của $f$, tính $dt$, đổi cận và viết kết quả dạng $\\int_{p}^{q} f(t)\\,dt$ (hoặc $\\int_{p}^{q}\\dfrac{f(t)}{t}\\,dt$).\nĐổi biến tích phân cần tính theo cùng một kiểu, xem nó cần $\\int f$ trên những đoạn nào.\nDùng nối cận $\\int_{p}^{r}f=\\int_{p}^{q}f+\\int_{q}^{r}f$ (hoặc cộng các đoạn khớp nhau) để biểu diễn đại lượng cần tính qua các giá trị đã biết.\nChú ý khi đề có $f'(x)$ (như $x^{2}f'(x)$): tích phân từng phần trước để đưa về $\\int f$.\n\n##CY\n• Tích phân đã cho và tích phân cần tính phải cùng dạng ($\\int f(t)dt$ hay $\\int\\dfrac{f(t)}{t}dt$); đừng trộn hai dạng.\n• Kiểm tra từng đoạn $t$: các đoạn phải ghép khít nhau (như $[\\tfrac14;1]$ và $[1;2]$) mới cộng được.\n• Đổi $t=\\cos^{2}x$ làm cận đảo: $x=0\\Rightarrow t=1$, $x=\\dfrac{\\pi}{3}\\Rightarrow t=\\dfrac{1}{4}$; dấu trừ của $-\\dfrac{dt}{2t}$ khử bằng đảo cận.",
+   "vi_du": "##VD\nCho $f(x)$ liên tục trên $\\mathbb{R}$ thỏa mãn $\\int_{1}^{9}\\dfrac{f(\\sqrt{x})}{\\sqrt{x}}\\,dx=4$ và $\\int_{0}^{\\frac{\\pi}{2}} f(\\sin x)\\cos x\\,dx=2$. Tính $I=\\int_{0}^{3} f(x)\\,dx$.\n\nBài giải:\nVới tích phân thứ nhất đặt $t=\\sqrt{x}$ thì $\\dfrac{dx}{\\sqrt{x}}=2\\,dt$; $x=1\\Rightarrow t=1$, $x=9\\Rightarrow t=3$. Do đó $2\\int_{1}^{3} f(t)\\,dt=4$, suy ra $\\int_{1}^{3} f(t)\\,dt=2$.\nVới tích phân thứ hai đặt $t=\\sin x$ thì $dt=\\cos x\\,dx$; $x=0\\Rightarrow t=0$, $x=\\dfrac{\\pi}{2}\\Rightarrow t=1$. Do đó $\\int_{0}^{1} f(t)\\,dt=2$.\nNối cận: $I=\\int_{0}^{1} f(x)\\,dx+\\int_{1}^{3} f(x)\\,dx=2+2=4$.\n\n##VD\nCho $f(x)$ liên tục trên $\\mathbb{R}$ thỏa mãn $\\int_{0}^{\\frac{\\pi}{3}}\\tan x\\cdot f(\\cos^{2}x)\\,dx=\\int_{1}^{8}\\dfrac{f(\\sqrt[3]{x})}{x}\\,dx=6$. Tính $\\int_{\\frac{1}{2}}^{\\sqrt{2}}\\dfrac{f(x^{2})}{x}\\,dx$.\n\nBài giải:\nTích phân thứ nhất: đặt $t=\\cos^{2}x$, $dt=-2\\sin x\\cos x\\,dx$ nên $\\tan x\\,dx=-\\dfrac{dt}{2t}$; $x=0\\Rightarrow t=1$, $x=\\dfrac{\\pi}{3}\\Rightarrow t=\\dfrac{1}{4}$. Vậy $\\dfrac{1}{2}\\int_{\\frac{1}{4}}^{1}\\dfrac{f(t)}{t}\\,dt=6$, suy ra $\\int_{\\frac{1}{4}}^{1}\\dfrac{f(t)}{t}\\,dt=12$.\nTích phân thứ hai: đặt $t=\\sqrt[3]{x}$ thì $\\dfrac{dx}{x}=\\dfrac{3\\,dt}{t}$; $x=1\\Rightarrow t=1$, $x=8\\Rightarrow t=2$. Vậy $3\\int_{1}^{2}\\dfrac{f(t)}{t}\\,dt=6$, suy ra $\\int_{1}^{2}\\dfrac{f(t)}{t}\\,dt=2$.\nTích phân cần tính: đặt $u=x^{2}$ thì $\\dfrac{dx}{x}=\\dfrac{du}{2u}$; $x=\\dfrac{1}{2}\\Rightarrow u=\\dfrac{1}{4}$, $x=\\sqrt{2}\\Rightarrow u=2$. Vậy $\\int_{\\frac{1}{2}}^{\\sqrt{2}}\\dfrac{f(x^{2})}{x}dx=\\dfrac{1}{2}\\int_{\\frac{1}{4}}^{2}\\dfrac{f(u)}{u}\\,du=\\dfrac{1}{2}(12+2)=7$.",
+   "dang_gan_nhat": "D10 (cho ∫f, tính ∫f(ax+b)) và NDB00752: D10 chỉ một phép đổi biến tuyến tính và f cho thẳng trên đoạn; ở đây có hai điều kiện đối số căn/lượng giác/lôga phải đổi biến riêng rồi ghép đoạn nên là kiểu bài khác.",
+   "so_cau": 9,
+   "ma_cau": [
+    "T1120000001955",
+    "T1120000001970",
+    "T1120000001976",
+    "T1120000001990",
+    "T1120000001994",
+    "T1120000002007",
+    "T1120000002010",
+    "T1120000002017",
+    "T1120000002030"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000002007",
+    "T1120000001970",
+    "T1120000001994"
+   ]
+  },
+  {
+   "id_tam": "NHTP-MOI-04",
+   "ten": "Tích phân từng phần — hàm cho tường minh (ln, đa thức, lượng giác, mũ)",
+   "nhom_dat": "NHÓM MỚI: Tích phân › Phương pháp tích phân từng phần",
+   "dat_sau": "NDB00755",
+   "sau_dang_moi": "NHTP-MOI-03",
+   "muc_do": "Mức 3",
+   "mo_ta": "Đề cho tích phân của tích hai hàm khác loại như x·ln(x²+9), ln x/x², ln x/(1+x)², x²ln(x+1), x³ln((4−x²)/(4+x²)), x/cos²x và hỏi hệ số a,b,c trong kết quả hoặc giá trị biểu thức a,b,c. Việc làm: chọn u, dv theo thứ tự ưu tiên (lôga, đa thức, lượng giác, mũ), có thể đổi biến t=x² trước, rồi áp ∫u dv = uv − ∫v du. Ranh giới: khác NDB00753 (đa thức tính thẳng bảng) và khác dạng đổi biến (ở đây một nhân tử phải được lấy đạo hàm).",
+   "ly_thuyet": "##TC Công thức tích phân từng phần\n• $\\int_{a}^{b} u(x)\\,v'(x)\\,dx=u(x)v(x)\\Big|_{a}^{b}-\\int_{a}^{b} u'(x)\\,v(x)\\,dx$, hay $\\int u\\,dv=uv-\\int v\\,du$.\n• Với nguyên hàm: $\\int u\\,v'\\,dx=uv-\\int u'\\,v\\,dx$.\n\n##TC Thứ tự chọn $u$ (lôga – đa thức – lượng giác – mũ)\n• Có $\\ln$ hoặc $\\log$: chọn $u=\\ln(\\cdot)$, phần còn lại là $dv$.\n• Đa thức nhân lượng giác hay mũ: chọn $u$ là đa thức, $dv$ là lượng giác hay mũ; bậc đa thức $n$ thì cần $n$ lần từng phần.\n• Mẫu $\\dfrac{1}{\\cos^{2}x}$: $dv=\\dfrac{dx}{\\cos^{2}x}$, $v=\\tan x$.\n\n##PP Cách tính tích phân từng phần\nNhận ra tích phân là tích của hai nhân tử khác loại; nếu biểu thức trong $\\ln$ là $x^{2}+c$ và có nhân tử $x$ thì đặt $t=x^{2}$ trước.\nChọn $u$ theo thứ tự ưu tiên, đặt $dv$ là phần còn lại; tính $du$ và $v$ (chọn một nguyên hàm, bỏ hằng số).\nÁp dụng công thức, tính $uv\\Big|_{a}^{b}$ rồi tích phân $\\int v\\,du$ (thường là hàm hữu tỉ, tách phân thức nếu cần).\nGộp kết quả, rút gọn $\\ln$ rồi đối chiếu với dạng đề cho để tìm $a,b,c$.\n\n##CY\n• Với $\\int\\dfrac{\\ln x}{(1+x)^{2}}dx$ chọn $v=-\\dfrac{1}{1+x}$ hoặc $v=\\dfrac{x}{1+x}$ cho phép rút gọn; chọn đúng nguyên hàm sẽ đỡ tính toán.\n• Khi dùng $\\ln$ cận $1$ làm triệt tiêu số hạng $\\ln1=0$, kiểm tra số hạng đó trước khi thay cận.\n• Kết quả có nhiều $\\ln$ (như $\\ln5,\\ln3$): giữ nguyên, không đổi sang số thập phân.",
+   "vi_du": "##VD\nBiết $\\int_{1}^{2}\\dfrac{\\ln x}{x^{2}}\\,dx=\\dfrac{b}{c}+a\\ln2$ với $a$ là số thực, $b,c$ nguyên dương, $\\dfrac{b}{c}$ tối giản. Tính $T=2a+3b+c$.\n\nBài giải:\nĐặt $u=\\ln x$, $dv=\\dfrac{dx}{x^{2}}$ thì $du=\\dfrac{dx}{x}$, $v=-\\dfrac{1}{x}$.\n$\\int_{1}^{2}\\dfrac{\\ln x}{x^{2}}dx=-\\dfrac{\\ln x}{x}\\Big|_{1}^{2}+\\int_{1}^{2}\\dfrac{dx}{x^{2}}=-\\dfrac{\\ln2}{2}+\\Big(-\\dfrac{1}{x}\\Big)\\Big|_{1}^{2}$.\n$=-\\dfrac{\\ln2}{2}+\\Big(-\\dfrac{1}{2}+1\\Big)=\\dfrac{1}{2}-\\dfrac{1}{2}\\ln2$.\nSuy ra $a=-\\dfrac{1}{2}$, $b=1$, $c=2$ và $T=-1+3+2=4$.\n\n##VD\nBiết $\\int_{0}^{1} x\\ln(x^{2}+1)\\,dx=a\\ln2-\\dfrac{b}{c}$ với $a,b,c\\in\\mathbb{N}^{*}$, $\\dfrac{b}{c}$ tối giản. Tính $P=13a+10b+84c$.\n\nBài giải:\nĐặt $t=x^{2}$ thì $x\\,dx=\\dfrac{dt}{2}$; $x=0\\Rightarrow t=0$, $x=1\\Rightarrow t=1$. Ta có $\\int_{0}^{1} x\\ln(x^{2}+1)dx=\\dfrac{1}{2}\\int_{0}^{1}\\ln(t+1)\\,dt$.\nTừng phần: $u=\\ln(t+1)$, $dv=dt$ nên $du=\\dfrac{dt}{t+1}$, $v=t+1$ (chọn nguyên hàm này để rút gọn).\n$\\int_{0}^{1}\\ln(t+1)dt=(t+1)\\ln(t+1)\\Big|_{0}^{1}-\\int_{0}^{1}dt=2\\ln2-1$.\nVậy tích phân bằng $\\dfrac{1}{2}(2\\ln2-1)=\\ln2-\\dfrac{1}{2}$, suy ra $a=1$, $b=1$, $c=2$ và $P=13+10+168=191$.",
+   "dang_gan_nhat": "NDB00753 / NDB00754 (tích phân hàm đưa về đa thức / phân thức): các dạng đó chỉ cần biến đổi rồi tra bảng; ở đây có nhân tử lôga hay đa thức×lượng giác không có nguyên hàm trong bảng nên bắt buộc từng phần.",
+   "so_cau": 9,
+   "ma_cau": [
+    "T1120000001917",
+    "T1120000001904",
+    "T1120000001913",
+    "T1120000001918",
+    "T1120000001936",
+    "T1120000001939",
+    "T1120000001940",
+    "T1120000001943",
+    "T1120000001945"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000001918",
+    "T1120000001904",
+    "T1120000001939"
+   ]
+  },
+  {
+   "id_tam": "NHTP-MOI-05",
+   "ten": "Cho f′(x) (hoặc ∫xf′) — dùng từng phần để tính ∫f, ∫xf",
+   "nhom_dat": "NHÓM MỚI: Tích phân › Phương pháp tích phân từng phần",
+   "dat_sau": "NDB00755",
+   "sau_dang_moi": "NHTP-MOI-04",
+   "muc_do": "Mức 3",
+   "mo_ta": "Đề cho f′(x) bằng công thức (như x(6+12x+e^{−x}), x/(x+1)², x e^{x²}, (2x−1)e^{2x}/x²) cùng giá trị f tại một điểm, hoặc cho ∫xf′(x)dx và f(1), rồi hỏi ∫f hay ∫xf trên một đoạn. Việc làm: từng phần ∫f = x f − ∫x f′ (hoặc dùng nguyên hàm khác của dv), tính f tại cận từ f′ nếu cần. Ranh giới: khác D08 (ở đây không có hàm f hợp f′(u(x))) và khác dạng tìm f rồi tính thẳng (không cần tìm f tường minh).",
+   "ly_thuyet": "##TC Chuyển tích phân của $f$ sang tích phân của $f'$\n• $\\int_{a}^{b} f(x)\\,dx=x\\,f(x)\\Big|_{a}^{b}-\\int_{a}^{b} x\\,f'(x)\\,dx$.\n• $\\int_{a}^{b} g(x)f(x)\\,dx=G(x)f(x)\\Big|_{a}^{b}-\\int_{a}^{b} G(x)f'(x)\\,dx$ với $G$ là một nguyên hàm của $g$ (chọn $G$ để rút gọn).\n• Newton–Leibniz: $f(b)=f(a)+\\int_{a}^{b} f'(x)\\,dx$.\n\n##PP Cách làm\nXác định đề cho $f'(x)$ tường minh hay cho $\\int x f'(x)dx$, và cần tính $\\int f$ hay $\\int x f$ (chọn $G=\\dfrac{x^{2}}{2}$ hoặc $G(x)=x-c$ để cận bị triệt tiêu).\nÁp dụng từng phần với $u=f$, $dv=g\\,dx$ để $f'$ xuất hiện.\nTính giá trị $f$ tại cận cần dùng: từ điều kiện đề cho hoặc từ $f(b)=f(a)+\\int_{a}^{b} f'$.\nTính $\\int G(x)f'(x)\\,dx$ bằng cách thay $f'$ tường minh (đổi biến hoặc từng phần tiếp).\n\n##CY\n• Chọn $G(x)$ sao cho $G$ triệt tiêu ở một cận ($G(x)=x-1$ khi cận là $1$) sẽ không phải tính $f$ tại cận đó.\n• Không cần tìm $f(x)$ tường minh; làm vậy dễ sai và tốn thời gian.\n• $f(1)$ đề cho ở dạng $\\int_{0}^{1}xf'(x)dx$ thì dùng ngay công thức đầu tiên.",
+   "vi_du": "##VD\nCho $f(x)$ có đạo hàm liên tục trên $[0;1]$, $f(1)=-\\dfrac{1}{18}$ và $\\int_{0}^{1}x\\,f'(x)\\,dx=\\dfrac{1}{36}$. Tính $\\int_{0}^{1}f(x)\\,dx$.\n\nBài giải:\nTừng phần với $u=f(x)$, $dv=dx$: $\\int_{0}^{1}f(x)dx=x\\,f(x)\\Big|_{0}^{1}-\\int_{0}^{1}x\\,f'(x)dx$.\n$=f(1)-\\dfrac{1}{36}=-\\dfrac{1}{18}-\\dfrac{1}{36}=-\\dfrac{1}{12}$.\n\n##VD\nCho $f(x)$ có $f(0)=-1$ và $f'(x)=x\\big(6+12x+e^{-x}\\big)$ với mọi $x\\in\\mathbb{R}$. Tính $\\int_{0}^{1}f(x)\\,dx$.\n\nBài giải:\nTừng phần: $\\int_{0}^{1}f(x)dx=x\\,f(x)\\Big|_{0}^{1}-\\int_{0}^{1}x\\,f'(x)dx=f(1)-\\int_{0}^{1}x^{2}\\big(6+12x+e^{-x}\\big)dx$.\nTính $f(1)$: $f(1)=f(0)+\\int_{0}^{1}\\big(6x+12x^{2}+xe^{-x}\\big)dx=-1+3+4+\\Big(1-\\dfrac{2}{e}\\Big)=7-\\dfrac{2}{e}$, vì $\\int_{0}^{1}xe^{-x}dx=-(x+1)e^{-x}\\Big|_{0}^{1}=1-\\dfrac{2}{e}$.\nTính $\\int_{0}^{1}x^{2}\\big(6+12x+e^{-x}\\big)dx=2+3+\\int_{0}^{1}x^{2}e^{-x}dx=5+\\Big(2-\\dfrac{5}{e}\\Big)=7-\\dfrac{5}{e}$, vì $\\int x^{2}e^{-x}dx=-(x^{2}+2x+2)e^{-x}$ cho $\\int_{0}^{1}=2-\\dfrac{5}{e}$.\nVậy $\\int_{0}^{1}f(x)dx=\\Big(7-\\dfrac{2}{e}\\Big)-\\Big(7-\\dfrac{5}{e}\\Big)=\\dfrac{3}{e}$.",
+   "dang_gan_nhat": "NDB02592 (tính tích phân từ nguyên hàm cho sẵn F(b)−F(a)): dạng đó chỉ dùng Newton–Leibniz cho ∫f′ hoặc ∫f khi biết F; ở đây hỏi ∫f khi chỉ biết f′ hoặc ∫xf′ nên bắt buộc từng phần.",
+   "so_cau": 9,
+   "ma_cau": [
+    "T1120000001901",
+    "T1120000001909",
+    "T1120000001910",
+    "T1120000001911",
+    "T1120000002000",
+    "T1120000002002",
+    "T1120000002009",
+    "T1120000002015",
+    "T1120000002035"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000002000",
+    "T1120000001901",
+    "T1120000001911"
+   ]
+  },
+  {
+   "id_tam": "NHTP-MOI-06",
+   "ten": "Biết nguyên hàm của f(x)·g(x), tìm nguyên hàm của f′(x)·g(x) (từng phần ngược)",
+   "nhom_dat": "NHÓM MỚI: Tích phân › Phương pháp tích phân từng phần",
+   "dat_sau": "NDB00755",
+   "sau_dang_moi": "NHTP-MOI-05",
+   "muc_do": "Mức 4",
+   "mo_ta": "Đề cho F(x) là nguyên hàm của f(x)·e^{kx} (hoặc f(x)/e^x, f(x)π^x, f(x)/x) rồi hỏi họ nguyên hàm của f′(x)·e^{kx} (hoặc x f′(x), f′(x)e^x). Việc làm: từng phần ∫f′g = fg − ∫fg′; dùng F′ = f·g để thay f·g và F để thay ∫f·g, được kết quả theo F, F′. Ranh giới: khác D06 (ở đây không cho f′ tường minh, cho nguyên hàm của f·g) và khác \"tìm nguyên hàm hàm cơ bản có điều kiện\" (NDB00746).",
+   "ly_thuyet": "##TC Từng phần cho nguyên hàm của $f'g$\n• $\\int f'(x)\\,g(x)\\,dx=f(x)\\,g(x)-\\int f(x)\\,g'(x)\\,dx$.\n• Nếu $F(x)$ là nguyên hàm của $f(x)\\,e^{kx}$ thì $F'(x)=f(x)\\,e^{kx}$, $\\int f(x)e^{kx}dx=F(x)+C$ và $g'=k\\,e^{kx}$, nên $\\int f'(x)e^{kx}dx=F'(x)-k\\,F(x)+C$.\n• Tương tự với $g(x)=e^{-x}$: $\\int f'(x)e^{-x}dx=f e^{-x}+\\int f e^{-x}dx$.\n\n##PP Cách làm\nXác định hàm $g$ trong cặp $f\\cdot g$ mà đề cho nguyên hàm $F$, và $g$ trong biểu thức cần tính (thường cùng $g$).\nViết $\\int f'g\\,dx=f g-\\int f g'\\,dx$, trong đó $g'$ tỉ lệ với $g$ (ví dụ $g=e^{kx}$ thì $g'=kg$).\nThay $f g=F'$ và $\\int f g'\\,dx=k\\int f g\\,dx=kF$.\nRút gọn kết quả theo $F(x)$ và $F'(x)$ đề cho và kết luận, nhớ $+C$.\n\n##CY\n• Nếu đề cho $F$ là nguyên hàm của $\\dfrac{f(x)}{x}$ thì $f(x)=x\\,F'(x)$; tìm $f$ tường minh rồi tính.\n• Với $g(x)=\\dfrac{1}{e^{x}}$ hay $\\pi^{x}$ cần tính $g'$ đúng ($g'=-g$ hoặc $g'=\\ln\\pi\\cdot g$).\n• Kết quả là họ nguyên hàm nên luôn có $+C$.",
+   "vi_du": "##VD\nCho $F(x)=(x^{2}+2x)e^{x}$ là một nguyên hàm của $f(x)\\,e^{2x}$. Tìm họ nguyên hàm của $f'(x)\\,e^{2x}$.\n\nBài giải:\nTừng phần: $\\int f'(x)e^{2x}dx=f(x)e^{2x}-2\\int f(x)e^{2x}dx$.\nVì $F$ là nguyên hàm của $f(x)e^{2x}$ nên $f(x)e^{2x}=F'(x)$ và $\\int f(x)e^{2x}dx=F(x)+C$.\n$F'(x)=(2x+2)e^{x}+(x^{2}+2x)e^{x}=(x^{2}+4x+2)e^{x}$.\nDo đó $\\int f'(x)e^{2x}dx=(x^{2}+4x+2)e^{x}-2(x^{2}+2x)e^{x}+C=(2-x^{2})e^{x}+C$.\n\n##VD\nCho $F(x)=\\dfrac{x^{3}}{3}$ là một nguyên hàm của $\\dfrac{f(x)}{x}$ với $x\\neq0$. Tính $\\int f'(x)\\,e^{x}\\,dx$.\n\nBài giải:\nVì $F'(x)=\\dfrac{f(x)}{x}$ nên $x^{2}=\\dfrac{f(x)}{x}$, suy ra $f(x)=x^{3}$ và $f'(x)=3x^{2}$.\nTừng phần: $\\int 3x^{2}e^{x}dx=3x^{2}e^{x}-\\int 6x\\,e^{x}dx=3x^{2}e^{x}-6\\big(x e^{x}-e^{x}\\big)+C$.\nVậy $\\int f'(x)e^{x}dx=3(x^{2}-2x+2)e^{x}+C$.",
+   "dang_gan_nhat": "NDB00746 (tìm nguyên hàm khi có điều kiện): dạng đó cho f′ hoặc f tường minh; ở đây chỉ cho nguyên hàm của f·g và phải dùng từng phần ngược nên không nhét được.",
+   "so_cau": 7,
+   "ma_cau": [
+    "T1120000001702",
+    "T1120000001704",
+    "T1120000001706",
+    "T1120000001708",
+    "T1120000001710",
+    "T1120000001711",
+    "T1120000001712"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000001702",
+    "T1120000001706",
+    "T1120000001712"
+   ]
+  },
+  {
+   "id_tam": "NHTP-MOI-07",
+   "ten": "Tích phân chứa f′(u(x)) hoặc f+f′ — đổi biến rồi từng phần, nhận đạo hàm của tích",
+   "nhom_dat": "NHÓM MỚI: Tích phân › Phương pháp tích phân từng phần",
+   "dat_sau": "NDB00755",
+   "sau_dang_moi": "NHTP-MOI-06",
+   "muc_do": "Mức 4",
+   "mo_ta": "Đề cho tích phân có f′ hợp với biểu thức (x f′(3x), x f′(2x−4), x³f′(x²), sin2x f′(sin x), x f′(1−x)) hay f và f′ đi cùng nhau (e^x[f+f′], f tan²x+f′ tan x), cùng vài giá trị f, rồi hỏi một tích phân khác của f. Việc làm: đổi biến t=u(x) trước, sau đó từng phần để chuyển f′ sang f; hoặc nhận ra biểu thức là đạo hàm của tích (e^x f)′, (f tan x)′. Ranh giới: khác D06 (có thêm đổi biến vì f′ là hàm hợp) và khác dạng hệ thức hàm (D13/D14, đề không cho phương trình giữa f và f′).",
+   "ly_thuyet": "##TC Hai công cụ\n• Đổi biến $t=u(x)$ rồi từng phần: $\\int_{a}^{b}x\\,f'(kx)\\,dx=\\dfrac{1}{k^{2}}\\int_{ka}^{kb}t\\,f'(t)\\,dt$, và $\\int t f'(t)dt=t f(t)-\\int f(t)dt$.\n• Đạo hàm của tích: $\\big(e^{x}f\\big)'=e^{x}(f+f')$; $\\big(f\\tan x\\big)'=f'\\tan x+f\\,(1+\\tan^{2}x)$; $\\big(x f\\big)'=x f'+f$.\n\n##PP Cách làm\nNếu có $f'(u(x))$: đổi biến $t=u(x)$ để $f'(t)$ xuất hiện đơn thuần, đưa phần còn lại theo $t$ và đổi cận.\nTừng phần $\\int t\\,f'(t)\\,dt=t\\,f(t)-\\int f(t)\\,dt$ (hoặc với nhân tử $(1-t)$, $t^{2}$,…) để về $\\int f$ hoặc giá trị $f$ tại cận.\nNếu có $f$ và $f'$ đi cùng với cùng nhân tử ($e^{x}$, $\\tan x$): kiểm tra xem biểu thức có phải đạo hàm của $e^{x}f$, $f\\tan x$ không; nếu có thì tích phân bằng $\\big[e^{x}f\\big]$ tại hai cận.\nThay các giá trị $f$, $\\int f$ đề cho và tính.\n\n##CY\n• Khi $f'(1-x)$ xuất hiện: đổi $t=1-x$ đảo cận, đối xứng $\\int_{0}^{1}$; dấu của $dt$ triệt tiêu với cận đảo.\n• Ghi đúng hệ số $\\dfrac{1}{k^{2}}$ khi đổi $t=kx$ cho $x\\,f'(kx)$ (một $\\dfrac{1}{k}$ từ $dx$, một $\\dfrac{1}{k}$ từ $x=\\dfrac{t}{k}$).\n• Nếu tổng $f+f'$ không đi cùng $e^{x}$ thì tìm thừa số nhân thích hợp theo D03.",
+   "vi_du": "##VD\nCho $f(x)$ có đạo hàm liên tục trên $\\mathbb{R}$ thỏa mãn $f(3)=21$ và $\\int_{0}^{3}f(x)\\,dx=9$. Tính $I=\\int_{0}^{1}x\\,f'(3x)\\,dx$.\n\nBài giải:\nĐặt $t=3x$ thì $x=\\dfrac{t}{3}$, $dx=\\dfrac{dt}{3}$; $x=0\\Rightarrow t=0$, $x=1\\Rightarrow t=3$.\n$I=\\dfrac{1}{9}\\int_{0}^{3}t\\,f'(t)\\,dt$.\nTừng phần: $\\int_{0}^{3}t\\,f'(t)dt=t\\,f(t)\\Big|_{0}^{3}-\\int_{0}^{3}f(t)dt=3\\cdot21-9=54$.\nVậy $I=\\dfrac{54}{9}=6$.\n\n##VD\nCho $y=f(x)$ có $f(0)=f(1)=1$. Biết $\\int_{0}^{1}e^{x}\\big[f(x)+f'(x)\\big]dx=ae+b$ với $a,b\\in\\mathbb{Z}$. Tính $a^{2019}+b^{2019}$.\n\nBài giải:\nTa có $\\big(e^{x}f(x)\\big)'=e^{x}\\big[f(x)+f'(x)\\big]$.\nSuy ra $\\int_{0}^{1}e^{x}\\big[f(x)+f'(x)\\big]dx=e^{x}f(x)\\Big|_{0}^{1}=e\\cdot f(1)-f(0)=e-1$.\nVậy $a=1$, $b=-1$ và $a^{2019}+b^{2019}=1+(-1)=0$.",
+   "dang_gan_nhat": "D06 (cho f′ hoặc ∫xf′, tính ∫f): D06 không có f′ nằm trong hàm hợp và không có tổ hợp f+f′; ở đây phải đổi biến trước hoặc nhận đạo hàm của tích nên là kiểu khác.",
+   "so_cau": 8,
+   "ma_cau": [
+    "T1120000001933",
+    "T1120000001996",
+    "T1120000002005",
+    "T1120000002051",
+    "T1120000002067",
+    "T1120000002070",
+    "T1120000002490",
+    "T1120000002491"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000001933",
+    "T1120000001996",
+    "T1120000002051"
+   ]
+  },
+  {
+   "id_tam": "NHTP-MOI-08",
+   "ten": "Phương trình vi phân tách biến f′(x) = g(x)·h(f(x)) (kể cả (f′)² = …)",
+   "nhom_dat": "NHÓM MỚI: Tích phân › Hàm ẩn — hệ thức giữa f và f′ (phương trình vi phân)",
+   "dat_sau": "NDB00755",
+   "sau_dang_moi": "NHTP-MOI-07",
+   "muc_do": "Mức 4",
+   "mo_ta": "Đề cho hệ thức giữa f và f′ dạng f′=(2x+3)f², f′=2x f², (f′)²=(x+1)f, (f′)²=eˣf², f′=(x+1)e^{x−f}, f′(1+f)²=((x−1)f²)², 3f′e^{f³−x²−1}=2x/f² cùng giá trị f tại một điểm, hỏi f(a), tổng f(1)+…+f(n) hoặc ∫f. Việc làm: đưa f cùng f′ về một vế (chia cho h(f)), nhận vế trái là đạo hàm của H(f), lấy nguyên hàm hai vế rồi dùng điều kiện đầu. Ranh giới: khác D03 (phương trình tuyến tính, nhân thừa số) và khác D04 (cần ẩn phụ hay nhận đạo hàm bậc hai).",
+   "ly_thuyet": "##TC Phương trình tách biến\n• $f'(x)=g(x)\\,h\\big(f(x)\\big)$ tương đương $\\dfrac{f'(x)}{h(f(x))}=g(x)$; vế trái là đạo hàm của $H\\big(f(x)\\big)$ với $H'=\\dfrac{1}{h}$, nên $H\\big(f(x)\\big)=\\int g(x)\\,dx$.\n• Các mẫu hay gặp: $f'=g\\,f^{2}\\Rightarrow\\Big(-\\dfrac{1}{f}\\Big)'=g$; $f'=g\\,f\\Rightarrow\\big(\\ln|f|\\big)'=g$; $f'=g\\sqrt{f}\\Rightarrow\\big(2\\sqrt{f}\\big)'=g$; $f'=g\\,e^{f}\\Rightarrow\\big(-e^{-f}\\big)'=g$; $3f^{2}f'e^{f^{3}}=g\\Rightarrow\\big(e^{f^{3}}\\big)'=g$.\n• $(f')^{2}=g\\,h(f)$: lấy căn $f'=\\pm\\sqrt{g\\,h(f)}$, dấu chọn theo giả thiết đơn điệu ($f$ đồng biến thì $f'\\ge0$).\n\n##PP Giải phương trình tách biến\nChuyển hạng tử chứa $f$ về một phía, chia cho $h(f)$ (nhớ điều kiện $h(f)\\neq0$ như $f\\neq0$) để thành $\\dfrac{f'}{h(f)}=g(x)$.\nLấy nguyên hàm hai vế; vế trái là $H(f(x))$ theo đúng mẫu ở trên, vế phải là $G(x)+C$.\nThay điều kiện $f(x_{0})=y_{0}$ tìm $C$, rồi giải ra $f(x)$ (chú ý dấu căn, dấu mẫu).\nTính đại lượng đề hỏi: giá trị $f(a)$, tổng thu gọn dạng $\\dfrac{1}{k}-\\dfrac{1}{k+1}$, hay $\\int f$.\n\n##CY\n• Phải kiểm tra $f$ không đổi dấu và khác $0$ trước khi chia; giả thiết \"$f(x)\\neq0$\", \"$f>0$\" có mục đích đó.\n• Tổng $f(1)+f(2)+\\dots+f(n)$ với $f(k)=-\\dfrac{1}{(k+1)(k+2)}$ thu gọn bằng $\\dfrac{1}{k+1}-\\dfrac{1}{k+2}$.\n• Khi vế trái cho $f'(1+f)^{2}=\\big[(x-1)f^{2}\\big]^{2}$ thì chia cho $f^{4}$ và đặt $u=\\dfrac{1}{f}$ để vế trái thành $-(u+1)^{2}u'$.",
+   "vi_du": "##VD\nCho hàm số $f(x)\\neq0$ thỏa $f'(x)=(2x+3)f^{2}(x)$ và $f(0)=-\\dfrac{1}{2}$. Tính $f(1)$ và $S=f(1)+f(2)+\\dots+f(2018)$.\n\nBài giải:\nChia hai vế cho $f^{2}$: $\\dfrac{f'}{f^{2}}=2x+3$, tức $\\Big(-\\dfrac{1}{f}\\Big)'=2x+3$. Suy ra $-\\dfrac{1}{f(x)}=x^{2}+3x+C$.\nTừ $f(0)=-\\dfrac{1}{2}$ có $2=C$, nên $f(x)=-\\dfrac{1}{x^{2}+3x+2}=-\\dfrac{1}{(x+1)(x+2)}$.\nVậy $f(1)=-\\dfrac{1}{6}$.\n$f(k)=-\\Big(\\dfrac{1}{k+1}-\\dfrac{1}{k+2}\\Big)$ nên $S=-\\Big(\\dfrac{1}{2}-\\dfrac{1}{2020}\\Big)=-\\dfrac{1009}{2020}$.\n\n##VD\nHàm $f(x)>0$ đồng biến trên $(0;+\\infty)$ và thỏa $\\big[f'(x)\\big]^{2}=4x\\,f(x)$ với $f(1)=\\dfrac{4}{9}$. Tính $f(4)$.\n\nBài giải:\nVì $f$ đồng biến nên $f'>0$, do đó $f'=2\\sqrt{x}\\sqrt{f}$ và $\\dfrac{f'}{\\sqrt{f}}=2\\sqrt{x}$, tức $\\big(2\\sqrt{f}\\big)'=2\\sqrt{x}$.\nLấy nguyên hàm: $2\\sqrt{f(x)}=\\dfrac{4}{3}x^{\\frac{3}{2}}+C$.\nVới $f(1)=\\dfrac{4}{9}$: $2\\cdot\\dfrac{2}{3}=\\dfrac{4}{3}+C$ nên $C=0$.\nVậy $\\sqrt{f(x)}=\\dfrac{2}{3}x^{\\frac{3}{2}}$, $f(x)=\\dfrac{4}{9}x^{3}$ và $f(4)=\\dfrac{4}{9}\\cdot64=\\dfrac{256}{9}$.",
+   "dang_gan_nhat": "NDB00746 (tìm nguyên hàm khi có điều kiện) và NDB00750: f′ trong các dạng đó là hàm của x cho sẵn; ở đây f′ phụ thuộc cả f nên phải tách biến mới lấy nguyên hàm được.",
+   "so_cau": 27,
+   "ma_cau": [
+    "T1120000001677",
+    "T1120000001678",
+    "T1120000001682",
+    "T1120000001683",
+    "T1120000001684",
+    "T1120000001691",
+    "T1120000001694",
+    "T1120000001695",
+    "T1120000001697",
+    "T1120000001699",
+    "T1120000001701",
+    "T1120000001707",
+    "T1120000001713",
+    "T1120000001951",
+    "T1120000001965",
+    "T1120000001969",
+    "T1120000001973",
+    "T1120000001981",
+    "T1120000001982",
+    "T1120000001983",
+    "T1120000001998",
+    "T1120000002004",
+    "T1120000002014",
+    "T1120000002028",
+    "T1120000002037",
+    "T1120000002040",
+    "T1120000002041"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000001683",
+    "T1120000001678",
+    "T1120000001973"
+   ],
+   "ghi_chu": "T1120000001998 ghi \"f nhận giá trị không âm\" nhưng f(0)=−1: đề có thể sai, nên soát trước khi dùng làm câu mẫu."
+  },
+  {
+   "id_tam": "NHTP-MOI-09",
+   "ten": "Phương trình vi phân tuyến tính cấp một — nhân thừa số để vế trái thành đạo hàm của tích/thương",
+   "nhom_dat": "NHÓM MỚI: Tích phân › Hàm ẩn — hệ thức giữa f và f′ (phương trình vi phân)",
+   "dat_sau": "NDB00755",
+   "sau_dang_moi": "NHTP-MOI-08",
+   "muc_do": "Mức 4",
+   "mo_ta": "Đề cho hệ thức tuyến tính giữa f và f′ như xf′−f=2x³+3x², (x+1)f′+(x+2)f=eˣ, f+f′=e^{−x}, 2xf′+f=2x, xf′+2f=2x+1, f′sin x−f cos x=−1, cos x f′+sin x f=2sin x cos³x, (x²+1)f′+xf=−x cùng giá trị f, rồi hỏi f(a), số nghiệm hay ∫f. Việc làm: nhân hai vế với thừa số μ(x) thích hợp để vế trái thành (μf)′ rồi lấy nguyên hàm. Ranh giới: khác D02 (ở đây f và f′ cộng với nhau, không tách biến) và khác D04 (không cần ẩn phụ).",
+   "ly_thuyet": "##TC Đạo hàm của tích và thương cần nhớ\n• $(u f)'=u f'+u'f$; $\\Big(\\dfrac{f}{u}\\Big)'=\\dfrac{u f'-u'f}{u^{2}}$.\n• $\\big(e^{x}f\\big)'=e^{x}(f+f')$; $(xf)'=xf'+f$; $(x^{2}f)'=x(xf'+2f)$; $\\Big(\\dfrac{f}{x}\\Big)'=\\dfrac{xf'-f}{x^{2}}$; $\\Big(\\dfrac{f}{\\sin x}\\Big)'=\\dfrac{f'\\sin x-f\\cos x}{\\sin^{2}x}$; $\\Big(\\dfrac{f}{\\cos x}\\Big)'=\\dfrac{f'\\cos x+f\\sin x}{\\cos^{2}x}$.\n\n##TC Thừa số tích phân\n• Phương trình $f'+p(x)f=q(x)$: nhân với $\\mu(x)=e^{P(x)}$, $P'=p$, được $(\\mu f)'=\\mu q$ và $f=\\dfrac{1}{\\mu}\\Big(\\int\\mu q\\,dx+C\\Big)$.\n\n##PP Giải phương trình tuyến tính cấp một\nĐưa về dạng $f'+p(x)f=q(x)$ (chia cho hệ số của $f'$ nếu khác $0$ trên khoảng đang xét).\nNhận ra ngay vế trái là đạo hàm của tích/thương ở trên, hoặc tìm $\\mu=e^{\\int p}$.\nNhân $\\mu$ hai vế, viết $(\\mu f)'=\\mu q$ rồi lấy nguyên hàm hai vế.\nDùng điều kiện đề cho tìm $C$ và $f(x)$; tính giá trị hoặc tích phân cần hỏi.\n\n##CY\n• Chia cho hệ số của $f'$ chỉ hợp lệ trên khoảng không chứa nghiệm của hệ số đó (như $x>0$, $x\\ne-1$).\n• Với $xf'-f$ ($x\\ne0$) dùng $\\Big(\\dfrac{f}{x}\\Big)'$; với $2xf'+f$ nhân $\\dfrac{1}{2\\sqrt{x}}$ hay đưa về $(\\sqrt{x}\\,f)'$ và $x>0$.\n• Nghiệm có phần $e^{x}\\cos(kx)$ hay $\\sin(kx)$: số nghiệm trên $[-1;1]$ xét từ phần lượng giác.",
+   "vi_du": "##VD\nCho $f(x)$ có đạo hàm trên $(0;+\\infty)$ thỏa $f(1)=4$ và $f(x)=x\\,f'(x)-2x^{3}-3x^{2}$ với mọi $x>0$. Tính $f(2)$.\n\nBài giải:\nBiến đổi $xf'(x)-f(x)=2x^{3}+3x^{2}$. Chia hai vế cho $x^{2}$: $\\dfrac{xf'-f}{x^{2}}=2x+3$, tức $\\Big(\\dfrac{f}{x}\\Big)'=2x+3$.\nLấy nguyên hàm: $\\dfrac{f(x)}{x}=x^{2}+3x+C$. Từ $f(1)=4$ ta có $4=1+3+C$ nên $C=0$.\nVậy $f(x)=x^{3}+3x^{2}$ và $f(2)=8+12=20$.\n\n##VD\nCho $f(x)$ có đạo hàm liên tục trên $\\mathbb{R}$ thỏa $f'(x)+2x\\,f(x)=2x$ và $f(0)=3$. Tính $f(1)$.\n\nBài giải:\nỞ đây $p(x)=2x$ nên $\\mu(x)=e^{x^{2}}$. Nhân hai vế với $e^{x^{2}}$: $\\big(e^{x^{2}}f(x)\\big)'=2x\\,e^{x^{2}}$.\nLấy nguyên hàm: $e^{x^{2}}f(x)=e^{x^{2}}+C$, tức $f(x)=1+C\\,e^{-x^{2}}$.\nTừ $f(0)=3$ có $C=2$, nên $f(x)=1+2e^{-x^{2}}$ và $f(1)=1+\\dfrac{2}{e}$.",
+   "dang_gan_nhat": "D02 (tách biến): D02 chỉ áp dụng khi vế phải là tích g(x)h(f); ở đây f và f′ cộng với nhau nên cần thừa số tích phân hoặc nhận đạo hàm của tích.",
+   "so_cau": 27,
+   "ma_cau": [
+    "T1120000001680",
+    "T1120000001681",
+    "T1120000001686",
+    "T1120000001687",
+    "T1120000001689",
+    "T1120000001690",
+    "T1120000001693",
+    "T1120000001696",
+    "T1120000001700",
+    "T1120000001703",
+    "T1120000001705",
+    "T1120000001709",
+    "T1120000001714",
+    "T1120000001716",
+    "T1120000001717",
+    "T1120000001718",
+    "T1120000001967",
+    "T1120000001978",
+    "T1120000001985",
+    "T1120000001988",
+    "T1120000001995",
+    "T1120000002003",
+    "T1120000002025",
+    "T1120000002032",
+    "T1120000002047",
+    "T1120000002061",
+    "T1120000002071"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000001686",
+    "T1120000001680",
+    "T1120000002032"
+   ]
+  },
+  {
+   "id_tam": "NHTP-MOI-10",
+   "ten": "Phương trình vi phân đặc biệt — nhận đạo hàm của f·f′, f′/f hay đặt ẩn phụ (u=1/f, u=x/f, u=f/x, u=f−x…)",
+   "nhom_dat": "NHÓM MỚI: Tích phân › Hàm ẩn — hệ thức giữa f và f′ (phương trình vi phân)",
+   "dat_sau": "NDB00755",
+   "sau_dang_moi": "NHTP-MOI-09",
+   "muc_do": "Mức 5",
+   "mo_ta": "Đề cho hệ thức chứa f, f′, f″ mà không tách biến hay tuyến tính ngay được: f′²+f f″=2x²−x+1, f²−f f″+f′²=0, f″=f′², 3xf−x²f′=2f², x[f′+2f²]=f[1−3x²f], x²f²+(2x−1)f=xf′−1, f=x ln(x³/(xf′−f)), f f′+x−4=(x−2)f′+f, [2f+xf′]²=f/x. Việc làm: nhận biểu thức là đạo hàm của f f′, f′/f hay đặt ẩn phụ để đưa về tách biến hoặc tuyến tính. Ranh giới: đứng sau D02/D03; đây là mức vận dụng cao, phải nhìn ra ẩn phụ trước.",
+   "ly_thuyet": "##TC Các đạo hàm hay gặp\n• $(f f')'=f'^{2}+f f''$; $\\big(f^{2}\\big)''=2(f'^{2}+f f'')$; $\\Big(\\dfrac{f'}{f}\\Big)'=\\dfrac{f f''-f'^{2}}{f^{2}}$; $\\Big(\\dfrac{1}{f'}\\Big)'=-\\dfrac{f''}{f'^{2}}$.\n• $\\Big(\\dfrac{x}{f}\\Big)'=\\dfrac{f-xf'}{f^{2}}$; $\\Big(\\dfrac{f}{x}\\Big)'=\\dfrac{xf'-f}{x^{2}}$; $(xf)'=f+xf'$.\n\n##TC Ẩn phụ thường dùng\n• Phương trình Bernoulli $f'+p f=q f^{2}$: chia $f^{2}$, đặt $u=\\dfrac{1}{f}$ thì $u'=-\\dfrac{f'}{f^{2}}$ và được phương trình tuyến tính.\n• Có $xf'$ lẫn $f$: thử $u=xf$, $u=\\dfrac{f}{x}$ hoặc $u=\\dfrac{x}{f}$ rồi tính $u'$.\n• Có $f f'$ và $f$, $x$ cùng nhau: thử $u=f-x$ hoặc $u=f+ax$.\n\n##PP Cách làm\nGom các số hạng chứa đạo hàm cao nhất, so với danh sách đạo hàm ở trên xem vế trái có phải $(f f')'$, $\\Big(\\dfrac{f'}{f}\\Big)'$… không; nếu có thì lấy nguyên hàm hai vế liên tiếp.\nNếu không, thử các ẩn phụ ở trên: tính $u'$ và thay vào phương trình xem có tách biến hoặc tuyến tính không.\nGiải phương trình theo $u$ (D02 hoặc D03), dùng điều kiện đầu để tìm các hằng số.\nQuay lại $f$, tính giá trị hoặc tích phân đề hỏi.\n\n##CY\n• Lấy nguyên hàm hai lần thì có hai hằng số; dùng cả hai điều kiện $f(x_{0})$ và $f'(x_{0})$.\n• Với phương trình có $e^{f}$ hay $\\sqrt{f}$ như $2\\sin2x\\big[f+e^{\\cos2x}\\sqrt{f}\\big]+f'=0$ thì đặt $u=\\sqrt{f}$ để đưa về tuyến tính.\n• Kiểm tra lại nghiệm bằng cách đạo hàm và thay vào phương trình đã cho.",
+   "vi_du": "##VD\nCho $y=f(x)$ thỏa $\\big[f'(x)\\big]^{2}+f(x)\\,f''(x)=2x^{2}-x+1$ với mọi $x\\in\\mathbb{R}$ và $f(0)=f'(0)=3$. Tính $\\big[f(1)\\big]^{2}$.\n\nBài giải:\nVế trái là $\\big(f f'\\big)'$. Lấy nguyên hàm: $f(x)f'(x)=\\dfrac{2}{3}x^{3}-\\dfrac{x^{2}}{2}+x+C_{1}$. Từ $f(0)f'(0)=9$ ta có $C_{1}=9$.\nVì $f f'=\\Big(\\dfrac{f^{2}}{2}\\Big)'$ nên $\\dfrac{f^{2}(x)}{2}=\\dfrac{x^{4}}{6}-\\dfrac{x^{3}}{6}+\\dfrac{x^{2}}{2}+9x+C_{2}$. Từ $f(0)=3$ có $C_{2}=\\dfrac{9}{2}$.\nTại $x=1$: $\\dfrac{f^{2}(1)}{2}=\\dfrac{1}{6}-\\dfrac{1}{6}+\\dfrac{1}{2}+9+\\dfrac{9}{2}=14$.\nVậy $\\big[f(1)\\big]^{2}=28$.\n\n##VD\nCho $f(x)$ xác định, liên tục trên $\\mathbb{R}\\setminus\\{0\\}$ thỏa $f(1)=-2$ và $x^{2}f^{2}(x)+(2x-1)f(x)=x\\,f'(x)-1$. Tính $\\int_{1}^{4}f(x)\\,dx$.\n\nBài giải:\nĐặt $g(x)=x\\,f(x)$ thì $g'=f+xf'$. Từ phương trình, $xf'=x^{2}f^{2}+(2x-1)f+1$, nên $g'=x^{2}f^{2}+2x\\,f+1=g^{2}+2g+1=(g+1)^{2}$.\nSuy ra $\\dfrac{g'}{(g+1)^{2}}=1$, tức $\\Big(-\\dfrac{1}{g+1}\\Big)'=1$ và $-\\dfrac{1}{g+1}=x+C$.\nVới $g(1)=f(1)=-2$ có $g+1=-1$ nên $1=1+C$, $C=0$. Do đó $g+1=-\\dfrac{1}{x}$, $g=-1-\\dfrac{1}{x}$ và $f(x)=-\\dfrac{1}{x}-\\dfrac{1}{x^{2}}$.\n$\\int_{1}^{4}f(x)dx=\\Big(-\\ln x+\\dfrac{1}{x}\\Big)\\Big|_{1}^{4}=-\\ln4+\\dfrac{1}{4}-1=-\\ln4-\\dfrac{3}{4}$.",
+   "dang_gan_nhat": "D02 / D03: các dạng đó nhìn thẳng ra tách biến hoặc tuyến tính; ở đây hệ thức có f″, f f′ hay phải đặt ẩn phụ (xf, 1/f, f−x) mới đưa được về D02/D03.",
+   "so_cau": 15,
+   "ma_cau": [
+    "T1120000001679",
+    "T1120000001685",
+    "T1120000001692",
+    "T1120000001715",
+    "T1120000001719",
+    "T1120000001977",
+    "T1120000001984",
+    "T1120000001992",
+    "T1120000002006",
+    "T1120000002018",
+    "T1120000002038",
+    "T1120000002042",
+    "T1120000002052",
+    "T1120000002054",
+    "T1120000002056"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000001679",
+    "T1120000002038",
+    "T1120000001719"
+   ]
+  },
+  {
+   "id_tam": "NHTP-MOI-11",
+   "ten": "Hệ thức chứa f(u(x)) — đổi biến, hàm ngược, lấy tích phân hai vế để tính ∫f",
+   "nhom_dat": "NHÓM MỚI: Tích phân › Hàm ẩn — phương trình hàm và tính đối xứng",
+   "dat_sau": "NDB00755",
+   "sau_dang_moi": "NHTP-MOI-10",
+   "muc_do": "Mức 5",
+   "mo_ta": "Đề cho hệ thức giữa f(x) và f ở đối số khác như f(x³+3x+1)=2x−3, f³(x)+f(x)=x, f(x)+(5x−2)f(5x²−4x)=…, 6x²f(x³)+4f(1−x)=3√(1−x²), f(2x)−xf(x²)=…, f(x²+1)+f(√x)/(4x√x)=…, rồi hỏi ∫f trên một đoạn. Việc làm: nếu f cho dưới dạng f(g(x))=h(x) hoặc hàm ngược thì đổi biến t=g(x) (hay y=f(x)); nếu hệ thức có cả f(x) và f(u(x)) thì lấy tích phân hai vế trên đoạn thích hợp để ∫f xuất hiện ở hai phía. Ranh giới: khác D14 (đối số là a−x, đối xứng cận) và khác D11 (đề cho tích phân, không cho hệ thức hàm).",
+   "ly_thuyet": "##TC Đổi biến trong hệ thức hàm\n• Nếu $f\\big(g(x)\\big)=h(x)$ với $g$ đơn điệu thì $\\int_{g(x_{1})}^{g(x_{2})}f(t)\\,dt=\\int_{x_{1}}^{x_{2}}h(x)\\,g'(x)\\,dx$ (đặt $t=g(x)$); cận $x_{i}$ lấy từ phương trình $g(x_{i})=$ cận của $t$.\n• Hàm ngược: nếu $f^{3}+af=x$ thì $x$ là hàm của $y=f(x)$, $x=y^{3}+ay$ và $\\int_{x_{1}}^{x_{2}}f(x)\\,dx=\\int_{y_{1}}^{y_{2}}y\\,(3y^{2}+a)\\,dy$, với $y_{i}$ nghiệm của $y^{3}+ay=x_{i}$.\n• Lấy tích phân hai vế: $\\int_{p}^{q}u'(x)\\,f\\big(u(x)\\big)\\,dx=\\int_{u(p)}^{u(q)}f(t)\\,dt$.\n\n##PP Cách làm\nXác định hệ thức có dạng $f\\big(g(x)\\big)=h(x)$ (một đối số) hay chứa $f(x)$ cùng $f\\big(u(x)\\big)$ (hai đối số).\nMột đối số: tìm cận $x_{i}$ ứng với cận của $t$ rồi tính $\\int h(x)g'(x)\\,dx$. Hàm ngược: đặt $y=f(x)$, biểu diễn $x$ theo $y$ và đổi cận.\nHai đối số: nhân hai vế với hệ số cần thiết, lấy tích phân trên đoạn sao cho $u$ biến đoạn đó thành đoạn đề hỏi; mỗi tích phân chứa $f\\big(u(x)\\big)$ đổi biến về $\\int f(t)dt$.\nGiải phương trình ẩn $\\int f$ (có thể hệ hai phương trình hai ẩn khi $\\int_{a}^{b}f$ khác $\\int_{b}^{c}f$).\n\n##CY\n• Phải kiểm tra $u$ biến đoạn lấy tích phân thành đoạn nào; sai đoạn thì tích phân $\\int f$ không trùng.\n• Hệ thức chỉ có hiệu lực khi đối số thuộc miền xác định đề cho; không thay $x$ ngoài miền đó.\n• Hàm $f^{3}+af=x$ có $f$ đơn điệu (vì $y^{3}+ay$ đơn điệu) nên mỗi $x$ ứng một $y$ duy nhất.",
+   "vi_du": "##VD\nCho $f(x)$ liên tục trên $\\mathbb{R}$ thỏa $f(x^{3}+3x+1)=2x-3$ với mọi $x$. Tính $I=\\int_{-3}^{1}f(x)\\,dx$.\n\nBài giải:\nĐặt $t=x^{3}+3x+1$ thì $dt=(3x^{2}+3)\\,dx$. Hàm $t(x)$ đồng biến.\n$t=-3\\iff x^{3}+3x+4=0\\iff x=-1$; $t=1\\iff x^{3}+3x=0\\iff x=0$.\n$I=\\int_{-1}^{0}f(t(x))\\,t'(x)\\,dx=\\int_{-1}^{0}(2x-3)(3x^{2}+3)\\,dx=\\int_{-1}^{0}\\big(6x^{3}-9x^{2}+6x-9\\big)dx$.\n$=\\Big(\\dfrac{3}{2}x^{4}-3x^{3}+3x^{2}-9x\\Big)\\Big|_{-1}^{0}=-\\Big(\\dfrac{3}{2}+3+3+9\\Big)=-\\dfrac{33}{2}$.\n\n##VD\nCho $f(x)$ liên tục trên $\\mathbb{R}$ thỏa $f^{3}(x)+f(x)=x$ với mọi $x$. Tính $\\int_{0}^{2}f(x)\\,dx$.\n\nBài giải:\nĐặt $y=f(x)$ thì $x=y^{3}+y$ và $dx=(3y^{2}+1)\\,dy$. Hàm $y^{3}+y$ đồng biến.\n$x=0\\Rightarrow y^{3}+y=0\\Rightarrow y=0$; $x=2\\Rightarrow y^{3}+y=2\\Rightarrow y=1$.\n$\\int_{0}^{2}f(x)\\,dx=\\int_{0}^{1}y\\,(3y^{2}+1)\\,dy=\\Big(\\dfrac{3}{4}y^{4}+\\dfrac{1}{2}y^{2}\\Big)\\Big|_{0}^{1}=\\dfrac{5}{4}$.\n\n##VD\nCho $f(x)$ liên tục trên $\\mathbb{R}$ thỏa $f(x)+(5x-2)\\,f(5x^{2}-4x)=50x^{3}-60x^{2}+23x-1$ với mọi $x$. Tính $I=\\int_{0}^{1}f(x)\\,dx$.\n\nBài giải:\nLấy tích phân hai vế trên $[0;1]$: $\\int_{0}^{1}f(x)dx+\\int_{0}^{1}(5x-2)f(5x^{2}-4x)dx=\\int_{0}^{1}\\big(50x^{3}-60x^{2}+23x-1\\big)dx$.\nTrong tích phân thứ hai đặt $u=5x^{2}-4x$ thì $du=2(5x-2)\\,dx$; $x=0\\Rightarrow u=0$, $x=1\\Rightarrow u=1$. Do đó nó bằng $\\dfrac{1}{2}\\int_{0}^{1}f(u)\\,du=\\dfrac{I}{2}$.\nVế phải: $\\dfrac{50}{4}-20+\\dfrac{23}{2}-1=3$.\nVậy $I+\\dfrac{I}{2}=3$ và $I=2$.",
+   "dang_gan_nhat": "D10 / D11 (đổi biến với f cho ∫ hoặc hai tích phân): các dạng đó cho giá trị tích phân của f; ở đây đề cho hệ thức hàm f(g(x))=h(x) hoặc f(x)+…f(u(x))=… và phải tự suy ra ∫f nên không nhét được.",
+   "so_cau": 16,
+   "ma_cau": [
+    "T1120000001906",
+    "T1120000001923",
+    "T1120000001926",
+    "T1120000001932",
+    "T1120000001938",
+    "T1120000001999",
+    "T1120000002001",
+    "T1120000002016",
+    "T1120000002020",
+    "T1120000002023",
+    "T1120000002026",
+    "T1120000002027",
+    "T1120000002029",
+    "T1120000002034",
+    "T1120000002069",
+    "T1120000002073"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000001923",
+    "T1120000002026",
+    "T1120000002027"
+   ],
+   "ghi_chu": "T1120000001999: đối số 3−x² ra ngoài [−1;2] khi x=0 nên đề có thể thiếu điều kiện miền, nên soát trước khi dùng làm câu mẫu."
+  },
+  {
+   "id_tam": "NHTP-MOI-12",
+   "ten": "Tích phân đối xứng cận và hệ thức f(x) ± f(a−x) = h(x) — đổi biến x → a+b−x",
+   "nhom_dat": "NHÓM MỚI: Tích phân › Hàm ẩn — phương trình hàm và tính đối xứng",
+   "dat_sau": "NDB00755",
+   "sau_dang_moi": "NHTP-MOI-11",
+   "muc_do": "Mức 4",
+   "mo_ta": "Đề cho hàm dưới dấu tích phân có tính đối xứng trên [a;b] (x^{2020}/(e^x+1), x sin^{2018}x/(sin^{2018}x+cos^{2018}x), f(x)=f(2020−x), f(x)f(a−x)=k²) hoặc hệ thức f(x)+f(−x)=h(x), f(x)+f(1−x)=x²(1−x)², 2f(x)+3f(1−x)=√(1−x²), 3f(x)+f(2−x)=…, rồi hỏi ∫f hoặc ∫x f(x). Việc làm: đổi biến x→a+b−x, cộng hai biểu thức để triệt tiêu phần chưa biết. Ranh giới: khác D13 (đối số a−x có cận đổi vị trí, không cần ∫f(u(x)) tổng quát) và khác D14c (hỏi ∫xf′ hoặc ∫g f′/f).",
+   "ly_thuyet": "##TC Phép đối xứng cận\n• $\\int_{a}^{b}f(x)\\,dx=\\int_{a}^{b}f(a+b-x)\\,dx$ (đặt $t=a+b-x$).\n• $f(x)=f(a+b-x)$ trên $[a;b]$ thì $\\int_{a}^{b}x\\,f(x)\\,dx=\\dfrac{a+b}{2}\\int_{a}^{b}f(x)\\,dx$.\n• Hàm $\\dfrac{x^{2n}}{e^{x}+1}$ trên $[-a;a]$: $\\int_{-a}^{a}\\dfrac{x^{2n}}{e^{x}+1}dx=\\int_{-a}^{a}\\dfrac{x^{2n}e^{x}}{e^{x}+1}dx=\\dfrac{1}{2}\\int_{-a}^{a}x^{2n}dx$.\n• $\\int_{0}^{\\pi}x\\,g(\\sin x)\\,dx=\\dfrac{\\pi}{2}\\int_{0}^{\\pi}g(\\sin x)\\,dx$; $\\int_{0}^{\\frac{\\pi}{2}}\\dfrac{\\sin^{n}x}{\\sin^{n}x+\\cos^{n}x}dx=\\dfrac{\\pi}{4}$.\n\n##TC Hệ thức hàm đối xứng\n• $f(x)+f(a-x)=h(x)$ trên $[0;a]$ thì $2\\int_{0}^{a}f=\\int_{0}^{a}h$; tổng quát $\\alpha f(x)+\\beta f(a-x)=h(x)$ thì $(\\alpha+\\beta)\\int_{0}^{a}f=\\int_{0}^{a}h$.\n• $f(x)f(a-x)=k^{2}$, $f>0$: $\\dfrac{1}{k+f(x)}+\\dfrac{1}{k+f(a-x)}=\\dfrac{1}{k}$, nên $\\int_{0}^{a}\\dfrac{dx}{k+f(x)}=\\dfrac{a}{2k}$.\n\n##PP Cách làm\nXác định cận đối xứng $[a;b]$ (tâm $\\dfrac{a+b}{2}$) hoặc hệ thức giữa $f(x)$ và $f(a-x)$.\nViết lại tích phân cần tính theo biến $a+b-x$ (hoặc lấy tích phân hai vế của hệ thức trên $[0;a]$ và đổi biến ở số hạng chứa $f(a-x)$).\nCộng (hoặc lập tổ hợp của) hai biểu thức để phần chứa $f$ triệt tiêu hoặc quy về $\\int f$.\nTính tích phân của hàm đã biết và chia hệ số.\n\n##CY\n• Chỉ cộng được khi hai tích phân cùng đoạn lấy; sau đổi biến $t=a+b-x$ cận trở về cũ nhờ đảo cận và dấu của $dt$.\n• Hệ thức $f(x)+f(-x)=h(x)$ cần $h$ chẵn; tích phân trên $[-a;a]$ thì $\\int_{-a}^{a}f=\\dfrac{1}{2}\\int_{-a}^{a}h$.\n• Không có cận đối xứng thì không áp dụng (ví dụ $\\int_{3}^{2017}$ có tâm $1010$ nên dùng cho $f(x)=f(2020-x)$).",
+   "vi_du": "##VD\nCho $f(x)$ liên tục trên $\\mathbb{R}$ thỏa $f(x)=f(2020-x)$ và $\\int_{3}^{2017}f(x)\\,dx=4$. Tính $\\int_{3}^{2017}x\\,f(x)\\,dx$.\n\nBài giải:\nĐặt $I=\\int_{3}^{2017}x f(x)dx$. Đổi biến $t=2020-x$ ($3+2017=2020$ nên cận giữ nguyên sau khi đảo): $I=\\int_{3}^{2017}(2020-t)\\,f(2020-t)\\,dt=\\int_{3}^{2017}(2020-t)f(t)\\,dt$.\nCộng hai biểu thức của $I$: $2I=2020\\int_{3}^{2017}f(t)\\,dt=2020\\cdot4$.\nVậy $I=4040$.\n\n##VD\nBiết $\\int_{-2}^{2}\\dfrac{x^{2020}}{e^{x}+1}\\,dx=\\dfrac{2^{a}}{b}$ với $a,b$ nguyên dương. Tính $S=a+b$.\n\nBài giải:\nĐặt $I=\\int_{-2}^{2}\\dfrac{x^{2020}}{e^{x}+1}dx$. Đổi biến $x\\to-x$: $I=\\int_{-2}^{2}\\dfrac{x^{2020}}{e^{-x}+1}dx=\\int_{-2}^{2}\\dfrac{x^{2020}e^{x}}{e^{x}+1}dx$.\nCộng hai biểu thức: $2I=\\int_{-2}^{2}x^{2020}\\,dx=\\dfrac{2\\cdot2^{2021}}{2021}$.\nSuy ra $I=\\dfrac{2^{2021}}{2021}$, nên $a=b=2021$ và $S=4042$.\n\n##VD\nCho $f(x)$ liên tục trên $[0;1]$ thỏa $2f(x)+3f(1-x)=\\sqrt{1-x^{2}}$. Tính $\\int_{0}^{1}f(x)\\,dx$.\n\nBài giải:\nLấy tích phân hai vế trên $[0;1]$: $2\\int_{0}^{1}f(x)dx+3\\int_{0}^{1}f(1-x)dx=\\int_{0}^{1}\\sqrt{1-x^{2}}\\,dx$.\nĐặt $t=1-x$ thì $\\int_{0}^{1}f(1-x)dx=\\int_{0}^{1}f(t)dt$. Tích phân vế phải là một phần tư diện tích hình tròn đơn vị, bằng $\\dfrac{\\pi}{4}$.\nDo đó $5\\int_{0}^{1}f(x)dx=\\dfrac{\\pi}{4}$ và $\\int_{0}^{1}f(x)dx=\\dfrac{\\pi}{20}$.",
+   "dang_gan_nhat": "NDB00751 / NDB00752 (tính chất cận, tổng hiệu): các dạng đó chỉ dùng nối cận; ở đây phải đổi biến x→a+b−x rồi cộng hai biểu thức nên không nhét được.",
+   "so_cau": 13,
+   "ma_cau": [
+    "T1120000001894",
+    "T1120000001905",
+    "T1120000001997",
+    "T1120000002013",
+    "T1120000002019",
+    "T1120000001949",
+    "T1120000001950",
+    "T1120000001989",
+    "T1120000002011",
+    "T1120000002024",
+    "T1120000002033",
+    "T1120000002065",
+    "T1120000002066"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000002013",
+    "T1120000002011",
+    "T1120000002024"
+   ]
+  },
+  {
+   "id_tam": "NHTP-MOI-13",
+   "ten": "Biết f(x) ± f(a−x) (hoặc f(x)·f(a−x)) — tính ∫x f′(x), ∫g(x)f′/f",
+   "nhom_dat": "NHÓM MỚI: Tích phân › Hàm ẩn — phương trình hàm và tính đối xứng",
+   "dat_sau": "NDB00755",
+   "sau_dang_moi": "NHTP-MOI-12",
+   "muc_do": "Mức 5",
+   "mo_ta": "Đề cho hệ thức đối xứng giữa f(x) và f(2−x), f(π/2−x), f(1−x) (cộng bằng đa thức/lượng giác/mũ, hoặc nhân bằng hằng số, e^{…}, 1) cùng f(0) hay f(1), rồi hỏi ∫x f′(x)dx hoặc ∫(x³−3x²) f′/f dx hoặc f(−2)−f(3) (với f′(x)+2f′(−x)). Việc làm: từng phần ∫x f′ = x f − ∫f, dùng hệ thức để tính f tại cận và ∫f; với f f(a−x) lấy ln hai vế rồi đối xứng. Ranh giới: khác D14 (hỏi thẳng ∫f hoặc ∫xf); ở đây có thêm từng phần với f′ hoặc f′/f.",
+   "ly_thuyet": "##TC Hai công cụ ghép\n• Từng phần: $\\int_{0}^{a}x\\,f'(x)\\,dx=a\\,f(a)-\\int_{0}^{a}f(x)\\,dx$.\n• Hệ thức cộng: $f(x)+f(a-x)=h(x)$ cho $f(0)+f(a)=h(0)$ (tìm $f(a)$) và $2\\int_{0}^{a}f=\\int_{0}^{a}h$.\n• Hệ thức nhân: $f(x)f(a-x)=e^{\\varphi(x)}$ ($f>0$) thì $g(x)=\\ln f(x)$ thỏa $g(x)+g(a-x)=\\varphi(x)$; và $\\dfrac{f'}{f}=g'$.\n\n##PP Cách làm\nTừ hệ thức thay $x=0$ (hoặc cận) tìm $f(a)$ qua $f(0)$ hay ngược lại.\nLấy tích phân hai vế hệ thức cộng trên $[0;a]$, đổi biến $t=a-x$ ở số hạng $f(a-x)$ để được $\\int_{0}^{a}f$.\nNếu đề hỏi $\\int x\\,f'$ dùng từng phần với $u=x$, $dv=f'dx$.\nVới dạng nhân và $\\int w(x)\\,\\dfrac{f'}{f}dx$: từng phần với $u=w$, $dv=g'dx$ rồi dùng đối xứng của $w$ để thay $g$.\n\n##CY\n• Hệ thức cộng cho $f(a)$ ngay tại $x=0$; kiểm tra điều kiện đầu đề cho có đủ không.\n• Nếu $w(x)=3x(x-2)$ thỏa $w(2-x)=w(x)$ thì $\\int_{0}^{2}w\\,g=\\int_{0}^{2}w(x)\\,g(2-x)dx$ và cộng hai vế được $2\\int w\\,g=\\int w\\cdot(g(x)+g(2-x))$.\n• Với $f'(x)+2f'(-x)=h(x)$, thay $x\\to-x$ để giải hệ hai phương trình theo $f'(x)$, $f'(-x)$.",
+   "vi_du": "##VD\nCho $y=f(x)$ có đạo hàm liên tục trên $\\mathbb{R}$, $f(0)=3$ và $f(x)+f(2-x)=x^{2}-2x+2$ với mọi $x$. Tính $I=\\int_{0}^{2}x\\,f'(x)\\,dx$.\n\nBài giải:\nTừng phần: $I=x\\,f(x)\\Big|_{0}^{2}-\\int_{0}^{2}f(x)dx=2f(2)-\\int_{0}^{2}f(x)dx$.\nThay $x=0$ vào hệ thức: $f(0)+f(2)=2$ nên $f(2)=-1$.\nLấy tích phân hai vế trên $[0;2]$ và dùng $\\int_{0}^{2}f(2-x)dx=\\int_{0}^{2}f(x)dx$: $2\\int_{0}^{2}f=\\int_{0}^{2}(x^{2}-2x+2)dx=\\dfrac{8}{3}$, nên $\\int_{0}^{2}f=\\dfrac{4}{3}$.\nVậy $I=-2-\\dfrac{4}{3}=-\\dfrac{10}{3}$.\n\n##VD\nCho $f(x)>0$ có đạo hàm liên tục trên $[0;2]$, $f(0)=1$ và $f(x)\\,f(2-x)=e^{2x^{2}-4x}$. Tính $I=\\int_{0}^{2}\\dfrac{(x^{3}-3x^{2})\\,f'(x)}{f(x)}\\,dx$.\n\nBài giải:\nĐặt $g(x)=\\ln f(x)$ thì $g'=\\dfrac{f'}{f}$ và $g(x)+g(2-x)=2x^{2}-4x$. Từ $x=0$: $f(0)f(2)=1$ nên $f(2)=1$ và $g(0)=g(2)=0$.\nTừng phần: $I=\\int_{0}^{2}(x^{3}-3x^{2})\\,g'(x)\\,dx=(x^{3}-3x^{2})g(x)\\Big|_{0}^{2}-\\int_{0}^{2}(3x^{2}-6x)g(x)\\,dx=-J$, với $J=\\int_{0}^{2}3x(x-2)\\,g(x)\\,dx$.\nHàm $w(x)=3x(x-2)$ thỏa $w(2-x)=w(x)$ nên $J=\\int_{0}^{2}w(x)\\,g(2-x)\\,dx$. Cộng hai biểu thức của $J$: $2J=\\int_{0}^{2}3x(x-2)(2x^{2}-4x)\\,dx=6\\int_{0}^{2}x^{2}(x-2)^{2}dx=\\dfrac{32}{5}$.\nSuy ra $J=\\dfrac{16}{5}$ và $I=-\\dfrac{16}{5}$.",
+   "dang_gan_nhat": "D14 (hệ thức đối xứng hỏi ∫f): D14 không cần từng phần với f′; ở đây đề hỏi ∫xf′ hoặc ∫g·f′/f nên phải kết hợp từng phần với đối xứng.",
+   "so_cau": 10,
+   "ma_cau": [
+    "T1120000001958",
+    "T1120000001966",
+    "T1120000001968",
+    "T1120000002036",
+    "T1120000002043",
+    "T1120000002045",
+    "T1120000002046",
+    "T1120000002055",
+    "T1120000002068",
+    "T1120000002072"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000002043",
+    "T1120000002046",
+    "T1120000002055"
+   ]
+  },
+  {
+   "id_tam": "NHTP-MOI-14",
+   "ten": "Hệ thức chứa f″, f(a−x), f²(1−x)… — thay giá trị đặc biệt, lấy tích phân hai vế rồi từng phần",
+   "nhom_dat": "NHÓM MỚI: Tích phân › Hàm ẩn — phương trình hàm và tính đối xứng",
+   "dat_sau": "NDB00755",
+   "sau_dang_moi": "NHTP-MOI-13",
+   "muc_do": "Mức 5",
+   "mo_ta": "Đề cho hệ thức có đạo hàm cấp hai hay hàm ở hai đối số như f(1−x)+x²f″(x)=2x, f(2−x)+x²f″(x)=2x, √(x³+1)[4xf′(1−x)−f(x)]=x⁵, f²(1−x)=(x²+3)f(x+1), f(4x)=f(x)+4x³+2x cùng f(1), f′(1) hay f(0), rồi hỏi ∫xf′, ∫(2x−1)f″ hoặc ∫f. Việc làm: thay x đặc biệt, thay x→−x/2−x để suy ra f tường minh, hoặc lấy tích phân hai vế trên đoạn rồi từng phần để đưa mọi hạng tử về ∫f. Ranh giới: khác D13 (không có đạo hàm bậc cao) và D14c (hệ thức không đối xứng cộng/nhân).",
+   "ly_thuyet": "##TC Công cụ\n• Từng phần: $\\int_{0}^{1}x^{2}f''\\,dx=x^{2}f'\\Big|_{0}^{1}-2\\int_{0}^{1}x\\,f'\\,dx$ và $\\int_{0}^{1}x\\,f'\\,dx=f(1)-\\int_{0}^{1}f\\,dx$.\n• Đổi biến đối xứng: $\\int_{0}^{1}f(1-x)\\,dx=\\int_{0}^{1}f(x)\\,dx$ và $\\int_{0}^{1}f'(1-x)\\,dx=f(1)-f(0)$.\n• Thay $x\\to-x$ vào $f^{2}(1-x)=(x^{2}+3)f(x+1)$ được hệ hai phương trình theo $a=f(1-x)$, $b=f(1+x)$.\n\n##PP Cách làm\nHệ thức có $f''$ và $f(a-x)$: lấy tích phân hai vế trên $[0;a]$, từng phần $x^{2}f''$ rồi $x f'$, thay $f(1)$, $f'(1)$ và đặt $I=\\int xf'$ (hoặc $\\int f$) làm ẩn.\nHệ thức nhiều đối số ($f^{2}(1-x)$, $f(x+1)$): thay $x$ bởi $-x$, giải hệ hai phương trình tìm $f$ tường minh (so sánh $a^{3}=b^{3}$); sau đó tính tích phân trực tiếp.\nHệ thức $f(4x)=f(x)+h(x)$: lặp thay $x$ bởi $\\dfrac{x}{4},\\dfrac{x}{16},\\dots$ và cộng, dùng $f(0)$ cho phần dư.\nKiểm tra lại bằng giá trị đặc biệt đề cho.\n\n##CY\n• Các điều kiện $f(1)$, $f'(1)$ thường chỉ được dùng ở biên khi từng phần; nếu không thấy chỗ dùng thì có thể bỏ sót hạng tử.\n• Từ $a^{2}=(x^{2}+3)b$, $b^{2}=(x^{2}+3)a$ với $a,b\\neq0$ suy ra $a^{3}=b^{3}$ và $a=b$ (số thực).\n• Tích phân hai vế chỉ hợp lệ khi các vế liên tục trên đoạn đó.",
+   "vi_du": "##VD\nCho $f$ có đạo hàm cấp hai trên $\\mathbb{R}$ thỏa $f(1)=f'(1)=1$ và $f(1-x)+x^{2}f''(x)=2x$ với mọi $x$. Tính $I=\\int_{0}^{1}x\\,f'(x)\\,dx$.\n\nBài giải:\nLấy tích phân hai vế trên $[0;1]$: $\\int_{0}^{1}f(1-x)dx+\\int_{0}^{1}x^{2}f''(x)dx=\\int_{0}^{1}2x\\,dx=1$.\n$\\int_{0}^{1}f(1-x)dx=\\int_{0}^{1}f(x)dx=f(1)-I=1-I$, vì $\\int_{0}^{1}f=x f\\Big|_{0}^{1}-\\int_{0}^{1}x f'=f(1)-I$.\n$\\int_{0}^{1}x^{2}f''dx=x^{2}f'\\Big|_{0}^{1}-2\\int_{0}^{1}x f'dx=f'(1)-2I=1-2I$.\nDo đó $(1-I)+(1-2I)=1$, suy ra $I=\\dfrac{1}{3}$.\n\n##VD\nHàm $f(x)\\neq0$ có đạo hàm cấp hai trên $\\mathbb{R}$ thỏa $f^{2}(1-x)=(x^{2}+3)f(x+1)$. Tính $I=\\int_{0}^{2}(2x-1)f''(x)\\,dx$.\n\nBài giải:\nThay $x$ bởi $-x$: $f^{2}(1+x)=(x^{2}+3)f(1-x)$. Đặt $a=f(1-x)$, $b=f(1+x)$ khác $0$: $a^{2}=(x^{2}+3)b$ và $b^{2}=(x^{2}+3)a$.\nChia hai đẳng thức: $\\dfrac{a^{2}}{b^{2}}=\\dfrac{b}{a}$ nên $a^{3}=b^{3}$, tức $a=b$. Khi đó $a^{2}=(x^{2}+3)a$ cho $a=x^{2}+3$.\nVậy $f(1-x)=x^{2}+3$, suy ra $f(t)=(1-t)^{2}+3=t^{2}-2t+4$ và $f''(x)=2$.\n$I=\\int_{0}^{2}(2x-1)\\cdot2\\,dx=2\\big(x^{2}-x\\big)\\Big|_{0}^{2}=4$.",
+   "dang_gan_nhat": "D13 (hệ thức chứa f(u(x)), tính ∫f): D13 chỉ đổi biến, không có đạo hàm cấp hai; ở đây cần từng phần hay thay x→−x để tìm f nên là kiểu bài riêng.",
+   "so_cau": 7,
+   "ma_cau": [
+    "T1120000001972",
+    "T1120000001979",
+    "T1120000001993",
+    "T1120000002021",
+    "T1120000002039",
+    "T1120000002062",
+    "T1120000002063"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000001972",
+    "T1120000001993",
+    "T1120000002062"
+   ]
+  },
+  {
+   "id_tam": "NHTP-MOI-15",
+   "ten": "Hàm số chứa tích phân là hằng số: f(x)=… + k·∫f(t)dt",
+   "nhom_dat": "NHÓM MỚI: Tích phân › Hàm ẩn — phương trình hàm và tính đối xứng",
+   "dat_sau": "NDB00755",
+   "sau_dang_moi": "NHTP-MOI-14",
+   "muc_do": "Mức 3",
+   "mo_ta": "Đề cho f(x) bằng một biểu thức của x cộng với tích phân (cận hằng) của chính f nhân hệ số, như f(x)=16x³−15x²+2x∫₁²f(t)dt−21 hoặc f(x)−1=∫₋₁¹(x+eᵗ)f(t)dt, rồi hỏi f(a) hoặc một tích phân của f. Việc làm: đặt các tích phân hằng là ẩn k, biểu diễn f theo x và k, rồi lập phương trình ẩn k. Ranh giới: khác D13 (hệ thức hàm có đối số khác) và NDB00752 (tính chất cộng các tích phân đã cho, không có f ở hai vế).",
+   "ly_thuyet": "##TC Tích phân với cận hằng số là một số\n• $\\int_{a}^{b}f(t)\\,dt$ (cận hằng) là một hằng số, không phụ thuộc $x$; đặt $k=\\int_{a}^{b}f(t)\\,dt$, $m=\\int_{a}^{b}e^{t}f(t)\\,dt$,…\n• Khi $f(x)=P(x)+k\\,Q(x)$ với $P,Q$ đã biết, thay lại vào định nghĩa của $k$ được phương trình bậc nhất theo $k$.\n\n##PP Cách làm\nĐặt các tích phân hằng số trong đề là các ẩn $k,m,\\dots$; viết $f(x)$ theo $x$ và các ẩn đó.\nThay biểu thức của $f$ vào định nghĩa của mỗi ẩn, tính tích phân thành đa thức bậc nhất của ẩn.\nGiải phương trình (hệ) tìm ẩn, suy ra $f(x)$ rồi tính đại lượng đề hỏi.\n\n##CY\n• Đặt ẩn cho từng tích phân khác nhau; $\\int f(t)dt$ và $\\int e^{t}f(t)dt$ là hai ẩn khác nhau.\n• Dấu của $\\int_{a}^{b}$ và cận phải đúng khi thay $f$ vào; sai cận làm lệch kết quả.\n• Kiểm tra lại bằng cách thay $f$ vào hệ thức đề cho.",
+   "vi_du": "##VD\nCho $f(x)$ liên tục trên $\\mathbb{R}$ thỏa $f(x)=16x^{3}-15x^{2}+2x\\displaystyle\\int_{1}^{2}f(t)\\,dt-21$. Tính $f(2)$.\n\nBài giải:\nĐặt $k=\\int_{1}^{2}f(t)\\,dt$ (hằng số). Khi đó $f(x)=16x^{3}-15x^{2}+2k\\,x-21$.\n$k=\\int_{1}^{2}\\big(16t^{3}-15t^{2}+2kt-21\\big)dt=\\big(4t^{4}-5t^{3}+kt^{2}-21t\\big)\\Big|_{1}^{2}=(4k-18)-(k-22)=3k+4$.\nGiải $k=3k+4$ được $k=-2$. Vậy $f(x)=16x^{3}-15x^{2}-4x-21$ và $f(2)=128-60-8-21=39$.\n\n##VD\nCho $f(x)=x^{2}+2\\displaystyle\\int_{0}^{1}f(t)\\,dt$. Tính $\\int_{0}^{1}f(x)\\,dx$.\n\nBài giải:\nĐặt $k=\\int_{0}^{1}f(t)\\,dt$ thì $f(x)=x^{2}+2k$, nên $k=\\int_{0}^{1}(x^{2}+2k)\\,dx=\\dfrac{1}{3}+2k$.\nSuy ra $k=-\\dfrac{1}{3}$, tức $\\int_{0}^{1}f(x)\\,dx=-\\dfrac{1}{3}$.",
+   "dang_gan_nhat": "NDB00752 (tổng hiệu các tích phân): dạng đó chỉ cộng trừ các tích phân đã cho, f không xuất hiện hai vế; ở đây f được định nghĩa bằng chính tích phân của nó nên phải đặt ẩn và giải phương trình.",
+   "so_cau": 3,
+   "ma_cau": [
+    "T1120000001395",
+    "T1120000001871",
+    "T1120000002048"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000001395",
+    "T1120000001871",
+    "T1120000002048"
+   ]
+  },
+  {
+   "id_tam": "NHTP-MOI-16",
+   "ten": "Bất đẳng thức tích phân (Cauchy–Schwarz, bình phương hoàn chỉnh) — tìm f hoặc cực trị của tích phân",
+   "nhom_dat": "NHÓM MỚI: Tích phân › Bất đẳng thức tích phân và đồ thị hàm ẩn (vận dụng cao)",
+   "dat_sau": "NDB00755",
+   "sau_dang_moi": "NHTP-MOI-15",
+   "muc_do": "Mức 5",
+   "mo_ta": "Đề cho ∫[f′]²dx = A, một tích phân ∫g(x)f(x)dx = B (hoặc ∫cos(πx/2)f, ∫f(√x)) và f(a) = 0, rồi hỏi ∫f; hoặc hỏi giá trị nhỏ nhất của ∫f² với ∫f, ∫xf cho trước, GTLN của ∫f·∫1/f, bất đẳng thức dạng 3∫[f′f²+1/9] ≤ 2∫√f′ f. Việc làm: từng phần chuyển ∫g f thành ∫G f′, lập ∫(f′ + kG)² ≥ 0 hoặc dùng Cauchy–Schwarz, dấu bằng cho f. Ranh giới: khác D06 (không có ràng buộc tổng bình phương) và khác dạng hàm ẩn (D02–D04): ở đây không có phương trình giữa f và f′ mà là các ràng buộc tích phân.",
+   "ly_thuyet": "##TC Bất đẳng thức tích phân\n• Cauchy–Schwarz: $\\Big(\\int_{a}^{b}u\\,v\\,dx\\Big)^{2}\\le\\int_{a}^{b}u^{2}dx\\cdot\\int_{a}^{b}v^{2}dx$, dấu bằng khi $u=\\lambda v$.\n• Bình phương hoàn chỉnh: $\\int_{a}^{b}\\big(f'(x)+k\\,G(x)\\big)^{2}dx\\ge0$, và $=0$ khi $f'=-kG$ trên đoạn.\n• Từng phần: $\\int_{a}^{b}g\\,f\\,dx=\\big[G f\\big]_{a}^{b}-\\int_{a}^{b}G\\,f'\\,dx$ với $G'=g$.\n\n##PP Cách làm cho $\\int[f']^{2}$, $\\int g f$ cho trước\nDùng từng phần với $G'=g$ chọn $G$ sao cho $G\\,f$ triệt tiêu ở cận ($G(b)=0$ nếu $f(b)=0$) để tính $\\int G\\,f'$ qua $\\int g f$ đã cho.\nChọn hằng số $k$ sao cho $\\int(f'+kG)^{2}=\\int f'^{2}+2k\\int G f'+k^{2}\\int G^{2}=0$ (phương trình bậc hai có nghiệm kép).\nSuy ra $f'=-kG$, tìm $f$ bằng nguyên hàm rồi dùng $f(a)=0$ xác định hằng số; tính tích phân đề hỏi.\n\n##PP Cực trị khi không có đạo hàm\nChọn $a,b$ (hoặc $\\lambda$) để $\\int\\big(f-a-bx\\big)^{2}\\ge0$ cho cận dưới của $\\int f^{2}$, tối ưu cận bằng cách giải hệ đạo hàm theo $a,b$; xét dấu bằng $f=a+bx$.\nVới tích $\\int f\\cdot\\int\\dfrac{1}{f}$: dùng $\\Big(f+\\dfrac{M m}{f}-M-m\\Big)\\le0$ khi $m\\le f\\le M$.\n\n##CY\n• Dấu bằng chỉ đạt khi $f'=-kG$ thỏa các ràng buộc đề cho; kiểm tra bằng cách thay lại.\n• Chọn $G$ có hằng số cộng khác nhau sẽ cho các cách làm khác nhau; chọn để cận triệt tiêu.\n• Điều kiện $\\int(\\cdot)^{2}=0$ trên đoạn buộc hàm liên tục bằng $0$ trên cả đoạn.",
+   "vi_du": "##VD\nCho $f(x)$ có đạo hàm liên tục trên $[0;1]$ thỏa $f(1)=0$, $\\int_{0}^{1}\\big[f'(x)\\big]^{2}dx=7$ và $\\int_{0}^{1}x^{2}f(x)\\,dx=\\dfrac{1}{3}$. Tính $\\int_{0}^{1}f(x)\\,dx$.\n\nBài giải:\nTừng phần với $G=\\dfrac{x^{3}}{3}$: $\\int_{0}^{1}x^{2}f\\,dx=\\dfrac{x^{3}}{3}f\\Big|_{0}^{1}-\\dfrac{1}{3}\\int_{0}^{1}x^{3}f'\\,dx=-\\dfrac{1}{3}\\int_{0}^{1}x^{3}f'\\,dx$. Do đó $\\int_{0}^{1}x^{3}f'\\,dx=-1$.\nXét $\\int_{0}^{1}\\big(f'+kx^{3}\\big)^{2}dx=7+2k(-1)+\\dfrac{k^{2}}{7}=\\dfrac{(k-7)^{2}}{7}$. Chọn $k=7$ thì tích phân bằng $0$.\nVì bình phương không âm và liên tục nên $f'(x)=-7x^{3}$, suy ra $f(x)=-\\dfrac{7x^{4}}{4}+C$. Từ $f(1)=0$ có $C=\\dfrac{7}{4}$.\n$\\int_{0}^{1}f\\,dx=-\\dfrac{7}{20}+\\dfrac{7}{4}=\\dfrac{7}{5}$.\n\n##VD\nCho $f(x)$ có đạo hàm liên tục trên $[0;1]$ thỏa $f(0)=0$, $\\int_{0}^{1}\\big[f'(x)\\big]^{2}dx=\\dfrac{1}{3}$ và $\\int_{0}^{1}f(x)\\,dx=-\\dfrac{1}{3}$. Tính $\\int_{0}^{\\frac{1}{2}}f(x)\\,dx$.\n\nBài giải:\nTừng phần với $G=x-1$ (triệt tiêu tại $x=1$): $\\int_{0}^{1}f\\,dx=(x-1)f\\Big|_{0}^{1}-\\int_{0}^{1}(x-1)f'\\,dx=-\\int_{0}^{1}(x-1)f'dx$ vì $f(0)=0$. Vậy $\\int_{0}^{1}(x-1)f'dx=\\dfrac{1}{3}$.\n$\\int_{0}^{1}\\big(f'-(x-1)\\big)^{2}dx=\\dfrac{1}{3}-2\\cdot\\dfrac{1}{3}+\\int_{0}^{1}(x-1)^{2}dx=\\dfrac{1}{3}-\\dfrac{2}{3}+\\dfrac{1}{3}=0$.\nSuy ra $f'(x)=x-1$, $f(x)=\\dfrac{x^{2}}{2}-x$ (vì $f(0)=0$). Kiểm tra $\\int_{0}^{1}f=\\dfrac{1}{6}-\\dfrac{1}{2}=-\\dfrac{1}{3}$ đúng.\n$\\int_{0}^{\\frac{1}{2}}f\\,dx=\\Big(\\dfrac{x^{3}}{6}-\\dfrac{x^{2}}{2}\\Big)\\Big|_{0}^{\\frac{1}{2}}=\\dfrac{1}{48}-\\dfrac{1}{8}=-\\dfrac{5}{48}$.\n\n##VD\nCho $f(x)$ liên tục trên $[0;1]$ thỏa $\\int_{0}^{1}f(x)\\,dx=2$ và $\\int_{0}^{1}x\\,f(x)\\,dx=\\dfrac{3}{2}$. Tìm giá trị nhỏ nhất của $\\int_{0}^{1}f^{2}(x)\\,dx$.\n\nBài giải:\nVới mọi $a,b$ ta có $\\int_{0}^{1}\\big(f-a-bx\\big)^{2}dx\\ge0$, tức $\\int f^{2}\\ge2a\\int f+2b\\int xf-\\int(a+bx)^{2}=4a+3b-a^{2}-ab-\\dfrac{b^{2}}{3}$.\nCực đại hóa vế phải theo $a,b$: $\\partial_{a}$: $4-2a-b=0$; $\\partial_{b}$: $3-a-\\dfrac{2b}{3}=0$, nghiệm $a=-1$, $b=6$, cho giá trị $7$. Vậy $\\int f^{2}\\ge7$.\nDấu bằng khi $f(x)=6x-1$: thật vậy $\\int_{0}^{1}(6x-1)dx=2$, $\\int_{0}^{1}x(6x-1)dx=\\dfrac{3}{2}$, $\\int_{0}^{1}(6x-1)^{2}dx=7$.\nVậy giá trị nhỏ nhất bằng $7$.",
+   "dang_gan_nhat": "NDB00752 (tổng hiệu các tích phân) và D06: dạng đó không có ràng buộc ∫[f′]² hay ∫f²; ở đây phải dùng bất đẳng thức tích phân với dấu bằng để xác định f nên là kiểu bài riêng.",
+   "so_cau": 26,
+   "ma_cau": [
+    "T1120000001947",
+    "T1120000001948",
+    "T1120000001952",
+    "T1120000001953",
+    "T1120000001954",
+    "T1120000001956",
+    "T1120000001957",
+    "T1120000001959",
+    "T1120000001960",
+    "T1120000001961",
+    "T1120000001962",
+    "T1120000001963",
+    "T1120000001964",
+    "T1120000001971",
+    "T1120000001986",
+    "T1120000001987",
+    "T1120000001991",
+    "T1120000002008",
+    "T1120000002012",
+    "T1120000002022",
+    "T1120000002031",
+    "T1120000002044",
+    "T1120000002049",
+    "T1120000002053",
+    "T1120000002057",
+    "T1120000002074"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000001956",
+    "T1120000002031",
+    "T1120000002012"
+   ]
+  },
+  {
+   "id_tam": "NHTP-MOI-17",
+   "ten": "Đọc đồ thị, bảng biến thiên của f hoặc f′ để tính tích phân (|f′|, f′(ax+b), cực trị f(a)−f(b))",
+   "nhom_dat": "NHÓM MỚI: Tích phân › Bất đẳng thức tích phân và đồ thị hàm ẩn (vận dụng cao)",
+   "dat_sau": "NDB00755",
+   "sau_dang_moi": "NHTP-MOI-16",
+   "muc_do": "Mức 4",
+   "mo_ta": "Đề cho đồ thị hoặc bảng biến thiên của f (hoặc của f′, f″), có khi kèm công thức f′, rồi hỏi tích phân ∫|f′(2x−1)|, ∫₂⁵|f′| = 5, ∫x f″(x−1), ∫(2x−3)f′ với diện tích parabola và đường thẳng, giá trị nhỏ nhất của f(a)−f(b) với a<b≤1, hay số nghiệm của g. Việc làm: xác định dấu của f′ (khoảng đồng biến, nghịch biến) để bỏ trị tuyệt đối, đọc giá trị f tại các điểm, rồi dùng Newton–Leibniz, đổi biến hoặc từng phần. Ranh giới: khác NDB02592 (chỉ f(b)−f(a) một đoạn không đổi dấu) và NDB00755 (hàm ghép).",
+   "ly_thuyet": "##TC Dấu của f′ và tích phân\n• $f'>0$ trên $(p;q)$ thì $\\int_{p}^{q}|f'|\\,dx=f(q)-f(p)$; $f'<0$ thì $\\int_{p}^{q}|f'|\\,dx=f(p)-f(q)$.\n• $\\int_{a}^{b}|f'(x)|\\,dx=\\sum|f(x_{i+1})-f(x_{i})|$ với $x_{i}$ là các điểm $f'$ đổi dấu (cực trị trên đồ thị hoặc BBT).\n• $f(a)-f(b)=-\\int_{a}^{b}f'(x)\\,dx$.\n\n##PP Cách làm\nXác định các khoảng $f'$ cùng dấu: từ đồ thị $f$ (đoạn đồng biến/nghịch biến), từ đồ thị $f'$ (phần trên/dưới trục hoành), từ BBT, hoặc từ phân tích thừa số của $f'(x)$.\nTách tích phân tại các điểm đổi dấu, mỗi đoạn dùng Newton–Leibniz với giá trị $f$ đọc từ đồ thị.\nCó $f'(ax+b)$: đổi biến $t=ax+b$ trước (cận mới là giá trị $t$); có $x\\,f''$ hay $(2x-3)f'$: từng phần để đưa về $f$.\nBài tìm GTNN của $f(a)-f(b)$: tìm cặp $(a,b)$ làm $\\int_{a}^{b}f'$ lớn nhất, tức lấy đoạn $f'>0$ dài nhất thỏa ràng buộc.\n\n##CY\n• Đọc giá trị tại điểm lưới của đồ thị; giá trị không nguyên thì suy từ công thức hàm.\n• Cận sau đổi biến $t=2x-1$ là $-1$ và $1$ khi $x\\in[0;1]$; phải đọc đồ thị trên $[-1;1]$.\n• Hàm lẻ nhân căn dương cho $\\int_{-p}^{p}f'=0$; đừng cộng nhầm hai đoạn trái dấu.",
+   "vi_du": "##VD\nCho $f(x)$ có đạo hàm liên tục trên $[0;5]$; $f'>0$ trên $(0;2)$ và $f'<0$ trên $(2;5)$. Biết $f(0)=1$, $f(2)=4$, $f(5)=2$. Tính $\\int_{0}^{5}\\big|f'(x)\\big|\\,dx$.\n\nBài giải:\nTrên $[0;2]$, $f'>0$ nên $\\int_{0}^{2}|f'|\\,dx=f(2)-f(0)=3$.\nTrên $[2;5]$, $f'<0$ nên $\\int_{2}^{5}|f'|\\,dx=f(2)-f(5)=2$.\nVậy $\\int_{0}^{5}|f'(x)|\\,dx=3+2=5$.\n\n##VD\nCho $f(x)$ có đạo hàm $f'(x)=x\\,(x^{2}-1)\\sqrt{x^{2}+3}$ trên $\\mathbb{R}$. Giả sử $a<b\\le1$. Tìm giá trị nhỏ nhất của $f(a)-f(b)$.\n\nBài giải:\nDấu của $f'$ theo $x(x^{2}-1)$: $f'<0$ trên $(-\\infty;-1)$ và $(0;1)$, $f'>0$ trên $(-1;0)$ và $(1;+\\infty)$.\nVì $f(a)-f(b)=-\\int_{a}^{b}f'(x)\\,dx$, cần $\\int_{a}^{b}f'$ lớn nhất với $a<b\\le1$. Chỉ có đoạn $[-1;0]$ cho phần dương, các đoạn khác không làm tăng nên lấy $a=-1$, $b=0$.\n$\\int_{-1}^{0}x(x^{2}-1)\\sqrt{x^{2}+3}\\,dx$: đặt $t=x^{2}+3$, $x\\,dx=\\dfrac{dt}{2}$; $x=-1\\Rightarrow t=4$, $x=0\\Rightarrow t=3$. Tích phân bằng $\\dfrac{1}{2}\\int_{4}^{3}(t-4)\\sqrt{t}\\,dt=\\dfrac{1}{2}\\Big[\\dfrac{2}{5}t^{\\frac{5}{2}}-\\dfrac{8}{3}t^{\\frac{3}{2}}\\Big]_{4}^{3}=\\dfrac{64-33\\sqrt{3}}{15}$.\nVậy giá trị nhỏ nhất của $f(a)-f(b)$ bằng $-\\dfrac{64-33\\sqrt{3}}{15}=\\dfrac{33\\sqrt{3}-64}{15}$.",
+   "dang_gan_nhat": "NDB02592 (tính tích phân từ nguyên hàm cho sẵn, đọc f(a),f(b) trên đồ thị): dạng đó chỉ f(b)−f(a) trên một đoạn; ở đây phải xét dấu f′, tách đoạn, hoặc kết hợp đổi biến/từng phần với đồ thị nên là kiểu vận dụng cao riêng.",
+   "so_cau": 6,
+   "ma_cau": [
+    "T1120000002474",
+    "T1120000002487",
+    "T1120000002489",
+    "T1120000002492",
+    "T1120000002512",
+    "T1120000002533"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000002474",
+    "T1120000002487",
+    "T1120000002533"
+   ]
+  },
+  {
+   "id_tam": "NHTP-MOI-18",
+   "ten": "Bài toán thực tế có tốc độ thay đổi tỉ lệ với chính đại lượng (y′ = k·y, y′ = −k·y², V′ = −k√V)",
+   "nhom_dat": "Tích phân › Ứng dụng tích phân vào các bài toán thực tế khác",
+   "dat_sau": "NDB00761",
+   "sau_dang_moi": null,
+   "muc_do": "Mức 4",
+   "mo_ta": "Đề mô tả một đại lượng (số vi khuẩn, nhiệt độ vật nguội, nồng độ thuốc, thể tích nước trong bể…) mà tốc độ thay đổi tỉ lệ với chính nó hoặc với lũy thừa của nó (y′=ky, y′=−ky², V′=−k√V), kèm hai điều kiện để tìm k rồi hỏi giá trị hoặc thời điểm. Việc làm: chia hai vế cho y^α để vế trái là đạo hàm của ln y, 1/y hoặc √y, lấy nguyên hàm rồi dùng điều kiện đầu. Ranh giới: khác NDB00760/NDB00761 (tốc độ cho sẵn là hàm của t, chỉ lấy nguyên hàm/đạo hàm thẳng); ở đây vế phải chứa chính hàm cần tìm.",
+   "ly_thuyet": "##TC Mô hình tốc độ tỉ lệ\n• $y'(t)=k\\,y(t)$ với $y>0$: $\\big(\\ln y\\big)'=k$ nên $y(t)=y(0)\\,e^{kt}$ (tăng trưởng $k>0$, suy giảm $k<0$).\n• Định luật làm nguội Newton: $T'(t)=-k\\big(T(t)-T_{s}\\big)$; đặt $y=T-T_{s}$ thì $y'=-ky$ và $y(t)=y(0)\\,e^{-kt}$.\n• $y'(t)=-k\\,y^{2}(t)$ với $y>0$: $\\Big(\\dfrac{1}{y}\\Big)'=k$ nên $\\dfrac{1}{y(t)}=kt+\\dfrac{1}{y(0)}$.\n• $V'(t)=-k\\sqrt{V(t)}$ (hoặc $-k\\sqrt{h}$ với $V=S\\,h$): $\\big(2\\sqrt{V}\\big)'=-k$ nên $\\sqrt{V(t)}=\\sqrt{V(0)}-\\dfrac{k}{2}t$.\n\n##PP Cách giải bài toán thực tế dạng $y'=k\\,y^{\\alpha}$\nGọi đại lượng cần tìm, viết đúng phương trình tốc độ theo đề (chú ý đơn vị thời gian và dấu của $k$).\nChia hai vế cho $y^{\\alpha}$ để vế trái là đạo hàm của $\\ln y$ ($\\alpha=1$), $-\\dfrac{1}{y}$ ($\\alpha=2$) hoặc $2\\sqrt{y}$ ($\\alpha=\\tfrac12$); lấy nguyên hàm hai vế.\nDùng điều kiện đầu ($t=0$ hoặc một thời điểm cho trước) tìm hằng số $C$, dùng điều kiện thứ hai tìm $k$.\nGiải điều kiện đề hỏi (giá trị tại $t_{0}$, thời điểm đạt ngưỡng, thời gian cạn bể) và đổi về đơn vị đề yêu cầu.\n\n##CY\n• $y>0$ nên $\\ln y$ không cần dấu giá trị tuyệt đối; với nhiệt độ phải đặt $y=T-T_{s}$ rồi mới dùng mô hình.\n• Bể có đáy diện tích $S$ không đổi: $V=S\\,h$ nên $\\sqrt{V}$ và $\\sqrt{h}$ chỉ khác nhau hằng số, dùng thể tích hoặc chiều cao đều được.\n• Làm tròn chỉ ở bước cuối; giữ $e^{k}$ hoặc $\\ln2$ dạng chính xác khi tính $k$.",
+   "vi_du": "##VD\nMột cốc cà phê nóng $80^{\\circ}\\mathrm{C}$ đặt trong phòng $20^{\\circ}\\mathrm{C}$. Sau $15$ phút nhiệt độ cốc còn $50^{\\circ}\\mathrm{C}$. Gọi $T(t)$ là nhiệt độ tại phút $t$ và $y(t)=T(t)-20$; biết $y'(t)=-k\\,y(t)$ với $k>0$. Sau bao nhiêu phút (làm tròn đến phần mười) thì cà phê còn $30^{\\circ}\\mathrm{C}$?\n\nBài giải:\nTừ $y'=-ky$ với $y>0$ suy ra $\\big(\\ln y\\big)'=-k$, nên $y(t)=y(0)\\,e^{-kt}$ với $y(0)=80-20=60$.\nĐiều kiện $T(15)=50$ cho $y(15)=30$: $60\\,e^{-15k}=30$, suy ra $e^{-15k}=\\dfrac{1}{2}$ và $k=\\dfrac{\\ln2}{15}$.\nCà phê còn $30^{\\circ}\\mathrm{C}$ khi $y(t)=10$: $60\\,e^{-kt}=10$, tức $e^{-kt}=\\dfrac{1}{6}$, nên $t=\\dfrac{\\ln6}{k}=\\dfrac{15\\ln6}{\\ln2}\\approx38{,}8$.\nVậy sau khoảng $38{,}8$ phút.\n\n##VD\nNồng độ chất độc $y(t)$ (mg/lít) trong hồ sau $t$ ngày thỏa $y(t)>0$ và $y'(t)=-k\\,y^{2}(t)$. Biết $y(1)=2$ và $y(3)=1$. Sau bao nhiêu ngày thì nồng độ giảm xuống còn $0{,}1$ mg/lít?\n\nBài giải:\nChia hai vế cho $y^{2}$: $\\dfrac{y'}{y^{2}}=-k$, tức $\\Big(\\dfrac{1}{y}\\Big)'=k$. Suy ra $\\dfrac{1}{y(t)}=kt+C$.\nTừ $y(1)=2$: $\\dfrac{1}{2}=k+C$. Từ $y(3)=1$: $1=3k+C$. Trừ hai vế được $2k=\\dfrac{1}{2}$, nên $k=\\dfrac{1}{4}$ và $C=\\dfrac{1}{4}$.\nVậy $\\dfrac{1}{y(t)}=\\dfrac{t+1}{4}$, hay $y(t)=\\dfrac{4}{t+1}$.\n$y(t)=0{,}1\\iff t+1=40\\iff t=39$.\nVậy sau $39$ ngày.",
+   "dang_gan_nhat": "NDB00760 / NDB00750 (cho tốc độ thay đổi, tính giá trị đại lượng): tốc độ trong các dạng đó là hàm của t cho sẵn, chỉ lấy nguyên hàm; ở đây tốc độ phụ thuộc chính đại lượng cần tìm nên phải tách biến, không nhét được.",
+   "so_cau": 15,
+   "ma_cau": [
+    "T112000000007",
+    "T1120000001181",
+    "T1120000001238",
+    "T1120000001337",
+    "T1120000001653",
+    "T1120000001663",
+    "T112000000168",
+    "T1120000002437",
+    "T1120000002439",
+    "T112000000338",
+    "T112000000696",
+    "T112040202003",
+    "T112040202010",
+    "T112040202019",
+    "T112040202020"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000001181",
+    "T112040202003",
+    "T1120000002437"
+   ],
+   "ghi_chu": "Một số câu bị cắt đề ở 380 ký tự (T1120000001337 y′=−7·…, T112000000168, T112040202019 bể tôm); đã xếp theo nhãn máy và phần đề còn đọc được."
+  },
+  {
+   "id_tam": "NHTP-MOI-19",
+   "ten": "Giá trị trung bình của hàm số trên đoạn",
+   "nhom_dat": "Tích phân › Ứng dụng tích phân vào các bài toán thực tế khác",
+   "dat_sau": "NDB00761",
+   "sau_dang_moi": "NHTP-MOI-18",
+   "muc_do": "Mức 2",
+   "mo_ta": "Đề cho định nghĩa hoặc hỏi \"giá trị trung bình\" (nhiệt độ trung bình, chi phí trung bình, mật độ khối lượng trung bình, vận tốc trung bình của dòng máu, nồng độ trung bình) của một hàm trên [a;b], đôi khi hàm phải suy ra từ phương trình c′=−kc. Việc làm: tính m = (1/(b−a))∫ₐᵇ f(x)dx rồi đổi đơn vị nếu cần. Ranh giới: khác NDB00758/NDB00759 (các đại lượng vật lý, doanh thu: đại lượng là kết quả của tích phân; ở đây là trung bình có chia cho độ dài đoạn).",
+   "ly_thuyet": "##ĐN Giá trị trung bình của hàm số\nGiá trị trung bình của hàm $f$ liên tục trên $[a;b]$ là $m=\\dfrac{1}{b-a}\\displaystyle\\int_{a}^{b}f(x)\\,dx$.\n\n##TC Ý nghĩa\n• $m\\,(b-a)=\\int_{a}^{b}f(x)\\,dx$: diện tích hình chữ nhật cao $m$, rộng $b-a$ bằng diện tích hình thang cong dưới đồ thị.\n• Mật độ trung bình trên thanh dài $L$: $\\bar\\rho=\\dfrac{1}{L}\\int_{0}^{L}\\rho(x)\\,dx$; chi phí trung bình trong $[0;T]$ tháng: $\\bar c=\\dfrac{1}{T}\\int_{0}^{T}c(t)\\,dt$.\n\n##PP Cách làm\nXác định hàm $f$ và đoạn $[a;b]$ (đổi năm sang tháng, giờ sang phút nếu đề yêu cầu).\nTính $\\int_{a}^{b}f(x)\\,dx$ bằng nguyên hàm; nếu chưa có $f$ tường minh (như $c'=-kc$) thì tìm $f$ trước (D01).\nChia cho độ dài đoạn $b-a$, làm tròn theo yêu cầu.\n\n##CY\n• Nhớ chia cho $b-a$; thiếu bước chia là lỗi hay gặp.\n• Vận tốc trung bình theo bán kính $r$ khác vận tốc trung bình theo thời gian: lấy trung bình theo đúng biến của bài.\n• Trung bình trong khoảng \"hai năm\" khi $t$ tính theo tháng là đoạn $[0;24]$.",
+   "vi_du": "##VD\nNhiệt độ (độ C) tại thời điểm $t$ giờ trong khoảng từ $6$ giờ sáng đến $12$ giờ trưa được mô hình hóa bởi $T(t)=20+1{,}5(t-6)$, $6\\le t\\le12$. Tính nhiệt độ trung bình trong khoảng thời gian đó.\n\nBài giải:\nGiá trị trung bình là $\\dfrac{1}{12-6}\\int_{6}^{12}\\big[20+1{,}5(t-6)\\big]dt$.\n$\\int_{6}^{12}\\big[20+1{,}5(t-6)\\big]dt=\\Big(20t+0{,}75(t-6)^{2}\\Big)\\Big|_{6}^{12}=(240+27)-120=147$.\nVậy nhiệt độ trung bình bằng $\\dfrac{147}{6}=24{,}5\\,{}^{\\circ}\\mathrm{C}$.\n\n##VD\nGiá trị trung bình của hàm $f(x)=x^{2}+2x$ trên đoạn $[0;3]$ là bao nhiêu?\n\nBài giải:\n$\\int_{0}^{3}(x^{2}+2x)\\,dx=\\Big(\\dfrac{x^{3}}{3}+x^{2}\\Big)\\Big|_{0}^{3}=9+9=18$.\nVậy $m=\\dfrac{18}{3-0}=6$.",
+   "dang_gan_nhat": "NDB00758 / NDB00759 (ứng dụng tích phân vào đại lượng vật lý, doanh thu): các dạng đó tính đại lượng bằng tích phân; trung bình có chia cho độ dài đoạn là khái niệm riêng.",
+   "so_cau": 8,
+   "ma_cau": [
+    "T1120000001753",
+    "T1120000001755",
+    "T1120000001849",
+    "T1120000001876",
+    "T1120000001877",
+    "T1120000001884",
+    "T1120000002103",
+    "T1120000002289"
+   ],
+   "cau_tieu_bieu": [
+    "T1120000001849",
+    "T1120000001876",
+    "T1120000002103"
+   ],
+   "ghi_chu": "T1120000001877 (nồng độ N₂O₅, c′=−0,0005c rồi lấy trung bình) cần giải D01 trước khi lấy trung bình; xếp ở đây vì câu hỏi cuối là giá trị trung bình."
+  }
+ ],
+ "khop_dang_co": [],
+ "khong_xep_duoc": [
+  {
+   "ma_cau": "T1120000001912",
+   "ly_do": "Câu mẹo đơn lẻ: ∫ sin^n x cos((n+2)x) dx là nguyên hàm đặc biệt (đạo hàm của sin^{n+1}x·cos((n+1)x)/(n+1)); không có câu cùng kiểu, không lập dạng."
+  },
+  {
+   "ma_cau": "T1120000002058",
+   "ly_do": "Hệ hai hệ thức vi phân giữa f, f′ và g, g′ (hai hàm, mức rất cao); chỉ 1 câu, vượt khung CT2018."
+  },
+  {
+   "ma_cau": "T1120000002059",
+   "ly_do": "Phương trình Euler cấp hai 10f−5xf′+x²f″=0 (nghiệm x^m với m phức); vượt chương trình CT2018, chỉ 1 câu."
+  },
+  {
+   "ma_cau": "T1120000002294",
+   "ly_do": "Đề chỉ là mảnh lời giải của câu vận tốc trung bình dòng máu (trùng nội dung T1120000002103), không có câu hỏi/đáp án; nên loại hoặc khôi phục đề."
+  },
+  {
+   "ma_cau": "T1120000002473",
+   "ly_do": "Độ dài đường cong (∫√(1+y′²)) trên đồ thị hàm bậc ba — ngoài CT2018 Toán 12, chỉ 2 câu cùng kiểu (cùng T112000000777)."
+  },
+  {
+   "ma_cau": "T112000000512",
+   "ly_do": "Câu mẹo đơn lẻ: tổng tích phân hai hàm ngược 2^{x²} và √(log₂x) (đưa về diện tích hình chữ nhật); không có câu cùng kiểu."
+  },
+  {
+   "ma_cau": "T112000000777",
+   "ly_do": "Độ dài đường cong y=log x (giá đỡ) — ngoài CT2018, chỉ 2 câu cùng kiểu (cùng T1120000002473); đề còn bị cắt."
+  },
+  {
+   "ma_cau": "T112050201024",
+   "ly_do": "ĐỀ LỖI: mất biểu thức cần tính (\"Tex translation failed\"); chỉ còn ∫f=6, ∫g=−3. Khi khôi phục đề sẽ khớp NDB00752."
+  },
+  {
+   "ma_cau": "T112050302009",
+   "ly_do": "ĐỀ LỖI: chỉ là mảnh lời giải tính số năm (10^7/…), không có đề."
+  },
+  {
+   "ma_cau": "T112050302011",
+   "ly_do": "ĐỀ LỖI: chỉ có \"(khán giả)\", mảnh vụn của câu khác."
+  }
+ ]
+}

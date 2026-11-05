@@ -13,6 +13,9 @@ import { bien } from './kho/cau-hinh.mjs'
 const [thuMuc, khoi] = process.argv.slice(2)
 const GHI = process.argv.includes('--ghi')
 const KHONG_GAN = process.argv.includes('--khong-gan')
+// --khop-lai (05/11): KHỚP LẠI câu đang ở hàng duyệt (hgt_bdm_de_xuat / hgt_bdm_cau_thieu_dang) sau khi bản đồ được bổ sung.
+// Trước khi chèn, rút dòng hàng duyệt nguon='ai' của đúng các câu có trong lô (KHÔNG đụng nguon<>'ai', KHÔNG đụng câu đã có hgt_bdm_gan_cau).
+const KHOP_LAI = process.argv.includes('--khop-lai')
 if (!thuMuc || !khoi) { console.error('Dùng: node scripts/bdm-b3-hgt-ghi.mjs <thu-muc> <khoi> [--ghi]'); process.exit(2) }
 
 const kq = []
@@ -49,6 +52,18 @@ try {
   const sai = kq.filter((r) => r.db && !hopLe.has(r.db))
   if (sai.length) throw new Error('dạng bài không thuộc chủ đề hgt của khối: ' + [...new Set(sai.map((r) => r.db))].slice(0, 5).join(','))
   const chua = `not exists (select 1 from hgt_bdm_gan_cau g where g.ma_cau = t.ma_cau) and not exists (select 1 from hgt_bdm_de_xuat e where e.ma_cau = t.ma_cau) and not exists (select 1 from hgt_bdm_cau_thieu_dang d where d.ma_cau = t.ma_cau)`
+  if (KHOP_LAI) {
+    const ids = kq.map((r) => r.ma_cau)
+    const a = await c.query(`delete from hgt_bdm_de_xuat where ma_cau = any($1) and nguon = 'ai' and not exists (select 1 from hgt_bdm_gan_cau g where g.ma_cau = hgt_bdm_de_xuat.ma_cau)`, [ids])
+    const b = await c.query(`delete from hgt_bdm_cau_thieu_dang where ma_cau = any($1) and nguon = 'ai' and not exists (select 1 from hgt_bdm_gan_cau g where g.ma_cau = hgt_bdm_cau_thieu_dang.ma_cau)`, [ids])
+    console.log(`khớp lại: rút hàng duyệt de_xuat ${a.rowCount} · thieu_dang ${b.rowCount}`)
+    // câu ĐÃ có gán dạng (người hoặc AI) thì không đè — bỏ khỏi lô
+    const daGan = new Set((await c.query(`select ma_cau from hgt_bdm_gan_cau where ma_cau = any($1)`, [ids])).rows.map((r) => r.ma_cau))
+    if (daGan.size) {
+      for (const arr of [cao, vua, trong]) for (let i = arr.length - 1; i >= 0; i--) if (daGan.has(arr[i].ma_cau)) arr.splice(i, 1)
+      console.log(`bỏ ${daGan.size} câu đã có gán dạng:`, [...daGan].join(','))
+    }
+  }
   const chay = async (sql, cot) => { let n = 0; for (let i = 0; i < cot[0].length; i += 200) n += (await c.query(sql, cot.map((a) => a.slice(i, i + 200)))).rowCount; return n }
   const nCao = await chay(`insert into hgt_bdm_gan_cau (ma_cau, dang_bai_id, nguon) select t.ma_cau, t.db, 'ai' from unnest($1::text[], $2::text[]) t(ma_cau, db) join hgt_cau_hoi q on q.ma_cau = t.ma_cau and q.xoa_at is null where ${chua} on conflict (ma_cau) do nothing`, [cao.map((r) => r.ma_cau), cao.map((r) => r.db)])
   const nVua = await chay(`insert into hgt_bdm_de_xuat (ma_cau, dang_bai_id, chac, ly_do, nguon) select t.ma_cau, t.db, t.chac, t.ly, 'ai' from unnest($1::text[], $2::text[], $3::text[], $4::text[]) t(ma_cau, db, ly, chac) join hgt_cau_hoi q on q.ma_cau = t.ma_cau and q.xoa_at is null where ${chua} on conflict (ma_cau) do nothing`, [vua.map((r) => r.ma_cau), vua.map((r) => r.db), vua.map((r) => r.ly_do), vua.map((r) => r.chac)])
