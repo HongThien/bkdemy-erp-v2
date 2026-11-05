@@ -1,5 +1,5 @@
 // Ô HỎI — Phòng Trưởng bộ môn: hỏi dữ liệu VẬN HÀNH TRỢ GIẢNG để ra quyết định (Thùy 05/11:
-// "lương, dữ liệu đã điền, duyệt công các thứ… trưởng bộ môn có thể hỏi các dữ liệu từ DB").
+// "lương, dữ liệu đã điền, duyệt công các thứ… trưởng bộ môn có thể hỏi các dữ liệu từ DB") + BỔ TRỢ của môn (mig 202611051749).
 // Bảng đã có ở ERP (Lương TA, Duyệt công, Quản trị) ⇒ ở đây CHỈ là chỗ hỏi bằng lời.
 // Màn này không tính gì: gửi câu hỏi tới api/phong-hoi.mjs; model chọn công cụ trong danh mục DB
 // (fn_phong_hoi_danh_muc), DB tự khoá phạm vi môn của người hỏi (fn_phong_hoi_goi, mig 202611051536).
@@ -13,6 +13,7 @@ type Luot = { hoi: string; dap: string | null; buoc: Buoc[]; loi: string | null 
 const TEN_CC: Record<string, string> = {
   tro_giang: 'Danh sách TA', luong_tro_giang: 'Lương TA', cong_tro_giang: 'Công & duyệt công',
   viec_van_hanh: 'Việc sau buổi', tinh_trang_buoi: 'Dữ liệu buổi đã điền',
+  bo_tro_tuan: 'Bổ trợ theo tuần', bo_tro_case: 'Case bổ trợ', bo_tro_retest: 'Retest',
 }
 const GOI_Y = [
   'Tháng này lương tạm tính của các TA bao nhiêu?',
@@ -21,6 +22,8 @@ const GOI_Y = [
   'Tuần này buổi nào chưa điền nhận xét hoặc chưa nhập ET?',
   'Hiệu suất tháng của từng TA thế nào?',
   'Buổi nào đã diễn ra mà chưa ai ghi công?',
+  'Bổ trợ tuần này chạy thế nào, em yếu nào chưa được xếp ca?',
+  'Retest nào đang tồn lâu nhất?',
 ]
 
 // Sống tới F5: rời ô hỏi quay lại vẫn còn cuộc trò chuyện (CLAUDE.md §2 React).
@@ -62,7 +65,7 @@ export default function HoiVanHanhTa({ mon }: { mon: string[] | null }) {
         <div className="min-w-0 flex-1">
           <h2 className="text-[17px] font-bold text-slate-800">💬 Hỏi vận hành trợ giảng</h2>
           <p className="text-[12.5px] text-slate-500">
-            Lương · công & duyệt công · việc sau buổi · dữ liệu đã điền (điểm danh, ET, BTVN, nhận xét) · hiệu suất, gậy — chỉ trong bộ môn
+            Lương · công & duyệt công · việc sau buổi · dữ liệu đã điền (điểm danh, ET, BTVN, nhận xét) · hiệu suất, gậy · bổ trợ (yếu, bù, đuổi, nhẹ, Hình, retest) — chỉ trong bộ môn
             {mon?.length ? ` ${mon.join(' · ')}` : ' (mọi môn)'}. Số lấy thẳng từ hệ thống, không sửa được gì ở đây; duyệt công vẫn ở màn Duyệt công.
           </p>
         </div>
