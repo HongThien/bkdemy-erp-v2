@@ -1,0 +1,274 @@
+[
+ {
+  "ma_cau": "T11200000010381",
+  "loai": "tra_loi_ngan",
+  "de": "Cổng trường Đại học Bách Khoa Hà Nội có hình dạng Parabol, chiều rộng $8\\,m$, chiều cao $14\\,m$. Tính diện tích của cổng (làm tròn kết quả đến hàng đơn vị)\n$-4$$-4$\n$4$\n$14$$-4$\n$x$\n$y$\n$O$$-4$",
+  "dap_an": "75",
+  "loi_giai": "Đặt hệ trục như hình: parabol có đỉnh $(0;14)$ và đi qua $(\\pm4;0)$ nên $y=ax^{2}+14$ với $0=16a+14\\Rightarrow a=-\\dfrac{7}{8}$.\n$S=\\int_{-4}^{4}\\left(14-\\dfrac{7}{8}x^{2}\\right)dx=2\\left(56-\\dfrac{7}{8}\\cdot\\dfrac{64}{3}\\right)=2\\left(56-\\dfrac{56}{3}\\right)=\\dfrac{224}{3}\\approx74{,}67$.\nVậy diện tích của cổng xấp xỉ $75\\ \\text{m}^{2}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010400",
+  "loai": "tra_loi_ngan",
+  "de": "Trong một trò chơi điện tử, hai bạn Tít và Mít thi xem ai chạy được quãng đường xa hơn. Tít chạy với vận tốc $v_{T}\\left( t \\right)=5\\sqrt{t}\\,\\,\\left( \\text{km/h} \\right),$ quãng đường Mít chạy được cho bởi phương trình $s_{M}\\left( t \\right)=5t-\\frac{5}{2\\pi}\\sin\\left( 2\\pi t \\right)\\,\\,\\left( \\text{km} \\right)$ (với $t$ là thời gian tính theo giờ). Nếu cuộc đua kết thúc khi Tít hoặc Mít chạy được $10\\,\\,\\text{km}$ đầu tiên thì khoảng cách giữa hai bạn là bao nhiêu kilômét? (Kết quả làm tròn đến hàng phần trăm)",
+  "dap_an": "0.57",
+  "loi_giai": "Quãng đường Tít chạy: $s_{T}(t)=\\int_{0}^{t}5\\sqrt{u}\\,du=\\dfrac{10}{3}t^{\\frac{3}{2}}$. $s_{T}=10\\Leftrightarrow t^{\\frac{3}{2}}=3\\Leftrightarrow t=3^{\\frac{2}{3}}\\approx2{,}08$ (giờ).\nMít: $s_{M}(t)=5t-\\dfrac{5}{2\\pi}\\sin(2\\pi t)$, có $s_{M}'(t)=5-5\\cos(2\\pi t)\\ge0$ nên $s_{M}$ đồng biến; $s_{M}(2)=10-0=10$ nên Mít tới $10$ km tại $t=2$ (giờ).\nVì $2<2{,}08$ nên Mít về đích trước, cuộc đua kết thúc lúc $t=2$.\nKhi đó Tít chạy được $s_{T}(2)=\\dfrac{10}{3}\\cdot2\\sqrt{2}\\approx9{,}43$ km.\nKhoảng cách giữa hai bạn: $10-9{,}43\\approx0{,}57$ km.\nVậy khoảng cách giữa hai bạn là $0{,}57$ km.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010353",
+  "loai": "tra_loi_ngan",
+  "de": "Tính diện tích $S$ của hình phẳng giới hạn bởi các đường $y=x^{2}+2x,\\,\\,y=x+6$ (làm tròn đến hàng phần chục).",
+  "dap_an": "20.8",
+  "loi_giai": "Phương trình hoành độ giao điểm: $x^2+2x=x+6\\Leftrightarrow x^2+x-6=0\\Leftrightarrow x=-3$ hoặc $x=2$.\nTrên $[-3;2]$ ta có $x+6\\ge x^2+2x$ nên $S=\\displaystyle\\int_{-3}^{2}\\left(x+6-x^2-2x\\right)dx=\\int_{-3}^{2}(-x^2-x+6)\\,dx$.\n$=\\left(-\\dfrac{x^3}{3}-\\dfrac{x^2}{2}+6x\\right)\\Big|_{-3}^{2}=\\dfrac{22}{3}-\\left(-\\dfrac{27}{2}\\right)=\\dfrac{125}{6}\\approx20{,}83$.\nLàm tròn đến hàng phần chục: $S\\approx20{,}8$.\nVậy $S\\approx20{,}8$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010342",
+  "loai": "tra_loi_ngan",
+  "de": "Một vật chuyển động với vận tốc là $v\\left( t \\right)=3t^{2}+2t$ (mét/ giây), với $t$ (giây) là thời gian vật đi được tính từ lúc bắt đầu chuyển động. Quãng đường vật đi được trong 5 giây đầu tiên bằng bao nhiêu mét?",
+  "dap_an": "150",
+  "loi_giai": "Quãng đường vật đi được trong 5 giây đầu: $s=\\displaystyle\\int_0^5(3t^2+2t)\\,dt=(t^3+t^2)\\Big|_0^5=125+25=150$ (m).\nVậy quãng đường là $150$ mét.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010350",
+  "loai": "tra_loi_ngan",
+  "de": "Bác Năm làm một cái cửa nhà hình parabol có chiều cao từ mặt đất đến đỉnh là $2,25$ mét, chiều rộng tiếp giáp với mặt đất là $3$ mét. Giá làm cửa mỗi mét vuông là $1500000$ đồng. Vậy bác Năm phải trả bao nhiêu nghìn đồng?\n------ HẾT ------",
+  "dap_an": "6750",
+  "loi_giai": "Chọn hệ trục có gốc ở giữa chân cửa, parabol có đỉnh $(0;2{,}25)$ và cắt trục hoành tại $x=\\pm1{,}5$.\nPhương trình parabol: $y=ax^2+2{,}25$, qua $(1{,}5;0)$ nên $2{,}25a+2{,}25=0\\Rightarrow a=-1$, tức $y=-x^2+2{,}25$.\nDiện tích cửa: $S=\\displaystyle\\int_{-1{,}5}^{1{,}5}(2{,}25-x^2)\\,dx=\\left(2{,}25x-\\dfrac{x^3}{3}\\right)\\Big|_{-1{,}5}^{1{,}5}=2\\left(3{,}375-1{,}125\\right)=4{,}5$ (m$^2$).\nChi phí: $4{,}5\\cdot1\\,500\\,000=6\\,750\\,000$ đồng $=6750$ nghìn đồng.\nVậy bác Năm phải trả $6750$ nghìn đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010355",
+  "loai": "tra_loi_ngan",
+  "de": "Diện tích $S$ của hình thang cong giới hạn bởi đồ thị hàm số $y=f\\left( x \\right)=x$, trục hoành và hai đường thẳng $x=2,\\,x=4$ là\n------ HẾT ------",
+  "dap_an": "6",
+  "loi_giai": "Trên $[2;4]$ hàm $f(x)=x\\ge0$ nên $S=\\displaystyle\\int_2^4x\\,dx=\\dfrac{x^2}{2}\\Big|_2^4=\\dfrac{16}{2}-\\dfrac{4}{2}=8-2=6$.\nVậy $S=6$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010386",
+  "loai": "tra_loi_ngan",
+  "de": "Người ta quan sát một vật chuyển động dọc theo một đường thẳng và nhận thấy vận tốc của vật đó tại thời điểm $t$ (giây) phụ thuộc vào công thức $v\\left( t \\right)=-t^{2}+3t+4$ (mét/giây). Quãng đường vật đi được trong 2 giây đầu tiên là bao nhiêu mét? (làm tròn kết quả đến hàng phần mười).",
+  "dap_an": "11.3",
+  "loi_giai": "Trên $[0;2]$ ta có $v(t)=-(t-4)(t+1)>0$ nên quãng đường là $s=\\int_{0}^{2}(-t^{2}+3t+4)\\,dt$.\n$s=\\left.\\left(-\\dfrac{t^{3}}{3}+\\dfrac{3t^{2}}{2}+4t\\right)\\right|_{0}^{2}=-\\dfrac{8}{3}+6+8=\\dfrac{34}{3}\\approx11{,}3$.\nVậy quãng đường vật đi được khoảng $11{,}3$ mét.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010367",
+  "loai": "tra_loi_ngan",
+  "de": "Tính diện tích của hình phẳng giới hạn bởi đồ thị hàm số $y=3-x^{2}$ và $y=2x$(kết quả làm tròn đến hàng phần chục).",
+  "dap_an": "10.7",
+  "loi_giai": "Phương trình hoành độ giao điểm: $3-x^{2}=2x\\Leftrightarrow x^{2}+2x-3=0\\Leftrightarrow x=-3$ hoặc $x=1$.\nTrên $[-3;1]$ ta có $3-x^{2}\\ge2x$ nên $S=\\int_{-3}^{1}(3-x^{2}-2x)\\,dx$.\n$S=\\left.\\left(3x-x^{2}-\\dfrac{x^{3}}{3}\\right)\\right|_{-3}^{1}=\\left(3-1-\\dfrac{1}{3}\\right)-(-9-9+9)=\\dfrac{5}{3}+9=\\dfrac{32}{3}$.\nVậy $S=\\dfrac{32}{3}\\approx10{,}7$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010376",
+  "loai": "tra_loi_ngan",
+  "de": "Một ô tô đang chạy với tốc độ với tốc độ $4\\ (\\text{km}/\\ \\text{h})$ thì tăng tốc với gia tốc $a(t)=10t+4\\ (\\text{km}/\\ \\text{h}^{\\text{2}})$. Tính quãng đường ô tô đi được trong vòng $0,5$ giờ kể từ khi tăng tốc. (kết quả làm tròn đến hàng phần mười).",
+  "dap_an": "2.7",
+  "loi_giai": "$v(t)=\\int a(t)\\,dt=\\int(10t+4)\\,dt=5t^{2}+4t+C$; $v(0)=4\\Rightarrow C=4$, nên $v(t)=5t^{2}+4t+4$.\n$s=\\int_{0}^{0{,}5}(5t^{2}+4t+4)\\,dt=\\left.\\left(\\dfrac{5t^{3}}{3}+2t^{2}+4t\\right)\\right|_{0}^{0{,}5}=\\dfrac{5}{24}+\\dfrac{1}{2}+2=\\dfrac{65}{24}\\approx2{,}7$.\nVậy quãng đường đi được khoảng $2{,}7$ km.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010382",
+  "loai": "tra_loi_ngan",
+  "de": "Một ô tô đồ chơi trượt xuống dốc và dừng lại sau 5 giây, vận tốc ô tô đồ chơi từ thời điểm t=0 giây đến t=5 giây được cho bởi công thức $v(t)=\\frac{1}{2}t^{2}-0,1t^{3}\\text{ (m/s)}$.\nTính quãng đường ô tô đồ chơi đi đến khi dừng lại (theo đơn vị m, làm tròn đến chữ số thập phân hàng phần trăm).",
+  "dap_an": "5.21",
+  "loi_giai": "Ô tô dừng lại khi $t=5$ nên quãng đường là $s=\\int_{0}^{5}\\left(\\dfrac{1}{2}t^{2}-0{,}1t^{3}\\right)dt$ (vì $v(t)=t^{2}(0{,}5-0{,}1t)\\ge0$ trên $[0;5]$).\n$s=\\left.\\left(\\dfrac{t^{3}}{6}-0{,}025t^{4}\\right)\\right|_{0}^{5}=\\dfrac{125}{6}-15{,}625\\approx5{,}2083$.\nVậy quãng đường ô tô đi được khoảng $5{,}21$ m.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010364",
+  "loai": "tra_loi_ngan",
+  "de": "Một vật chuyển động với vận tốc $10\\,m/s$ thì tăng tốc với gia tốc $a\\left( t \\right)=2t+t^{2}$. Quãng đường vật đi được trong khoảng thời gian 10 giây kể từ lúc bắt đầu tăng tốc bằng $\\frac{a}{b}$. Tính $a+b$.",
+  "dap_an": "3803",
+  "loi_giai": "Vận tốc: $v(t)=\\displaystyle\\int(2t+t^2)\\,dt=t^2+\\dfrac{t^3}{3}+C$. Vì $v(0)=10$ nên $C=10$, do đó $v(t)=t^2+\\dfrac{t^3}{3}+10$.\nQuãng đường trong 10 giây: $s=\\displaystyle\\int_0^{10}\\left(t^2+\\dfrac{t^3}{3}+10\\right)dt=\\left(\\dfrac{t^3}{3}+\\dfrac{t^4}{12}+10t\\right)\\Big|_0^{10}$.\n$=\\dfrac{1000}{3}+\\dfrac{10000}{12}+100=\\dfrac{1000}{3}+\\dfrac{2500}{3}+\\dfrac{300}{3}=\\dfrac{3800}{3}$.\nPhân số $\\dfrac{3800}{3}$ tối giản nên $a=3800,\\ b=3$, suy ra $a+b=3803$.\nVậy $a+b=3803$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010348",
+  "loai": "tra_loi_ngan",
+  "de": "Gia tốc tại thời điểm $t$( giây) của một vật chuyển động thẳng được cho bởi công thức $a(t)=4\\pi\\cos t\\left( \\ cm/s^{2} \\right)$. Nếu vận tốc của vật bằng 0 tại thời điểm $t=0$ thì vận tốc trung bình của vật trong khoảng thời gian $0\\le t\\le\\pi$ là bao nhiêu?",
+  "dap_an": "8",
+  "loi_giai": "Vận tốc: $v(t)=\\displaystyle\\int4\\pi\\cos t\\,dt=4\\pi\\sin t+C$. Vì $v(0)=0$ nên $C=0$, do đó $v(t)=4\\pi\\sin t$.\nVận tốc trung bình trên $[0;\\pi]$: $\\overline{v}=\\dfrac{1}{\\pi-0}\\displaystyle\\int_0^{\\pi}4\\pi\\sin t\\,dt=4\\cdot\\left(-\\cos t\\right)\\Big|_0^{\\pi}=4\\cdot2=8$ (cm/s).\nVậy vận tốc trung bình là $8$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010356",
+  "loai": "tra_loi_ngan",
+  "de": "Diện tích $S$ của hình thang cong giới hạn bởi đồ thị hàm số $y=f\\left( x \\right)=x$, trục hoành và hai đường thẳng $x=2,\\,x=4$ là",
+  "dap_an": "6",
+  "loi_giai": "Trên $[2;4]$ hàm $f(x)=x\\ge0$ nên $S=\\displaystyle\\int_2^4x\\,dx=\\dfrac{x^2}{2}\\Big|_2^4=\\dfrac{16}{2}-\\dfrac{4}{2}=8-2=6$.\nVậy $S=6$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010344",
+  "loai": "tra_loi_ngan",
+  "de": "Một vật chuyển động chậm dần đều với vận tốc $v\\left( t \\right)=160-10t\\left( m/s \\right)$. Hỏi rằng trong 3s trước khi dừng hẳn vật chuyển động được bao nhiêu m?",
+  "dap_an": "45",
+  "loi_giai": "Vật dừng hẳn khi $v(t)=0\\Leftrightarrow160-10t=0\\Leftrightarrow t=16$ (s).\nQuãng đường vật đi trong 3 giây trước khi dừng (từ $t=13$ đến $t=16$): $s=\\displaystyle\\int_{13}^{16}(160-10t)\\,dt=(160t-5t^2)\\Big|_{13}^{16}$.\n$=(2560-1280)-(2080-845)=1280-1235=45$ (m).\nVậy vật đi được $45$ m.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010377",
+  "loai": "tra_loi_ngan",
+  "de": "Tại một nhà máy, gọi $C(x)$ là tổng chi phí (tính theo triệu đồng) để sản xuất $x$ tấn sản phẩm B trong một tháng. Khi đó, đạo hàm $C'(x)$, gọi là chi phí cận biên, cho biết tốc độ tăng tổng chi phí theo lượng sản phẩm được sản xuất. Giả sử chi phí cận biên (tính theo triệu đồng trên tấn) của nhà máy được ước lượng bởi công thức $C^{\\prime}(x)=8-0,13x+0,00022x^{2}$ với $0\\le x\\le 88$.\nBiết rằng $C(0)=24$ triệu đồng, gọi là chi phí cố định. Tính tổng chi phí khi nhà máy sản xuất $82$ tấn sản phẩm B trong tháng (kết quả làm tròn đến hàng đơn vị).\n---Hết----",
+  "dap_an": "283",
+  "loi_giai": "$C(x)=\\int C'(x)\\,dx=\\int(8-0{,}13x+0{,}00022x^{2})\\,dx=8x-0{,}065x^{2}+\\dfrac{0{,}00022}{3}x^{3}+k$.\n$C(0)=24\\Rightarrow k=24$.\n$C(82)=24+8\\cdot82-0{,}065\\cdot82^{2}+\\dfrac{0{,}00022}{3}\\cdot82^{3}\\approx24+656-437{,}06+40{,}43=283{,}37$.\nVậy tổng chi phí khi sản xuất $82$ tấn xấp xỉ $283$ triệu đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010378",
+  "loai": "tra_loi_ngan",
+  "de": "Một ô tô đang chạy với tốc độ với tốc độ $5\\ (\\text{km}/\\ \\text{h})$ thì tăng tốc với gia tốc $a(t)=5t+5\\ (\\text{km}/\\ \\text{h}^{\\text{2}})$. Tính quãng đường ô tô đi được trong vòng $2$ giờ kể từ khi tăng tốc. (kết quả làm tròn đến hàng phần mười).",
+  "dap_an": "26.7",
+  "loi_giai": "$v(t)=\\int(5t+5)\\,dt=\\dfrac{5t^{2}}{2}+5t+C$; $v(0)=5\\Rightarrow C=5$.\n$s=\\int_{0}^{2}\\left(\\dfrac{5t^{2}}{2}+5t+5\\right)dt=\\left.\\left(\\dfrac{5t^{3}}{6}+\\dfrac{5t^{2}}{2}+5t\\right)\\right|_{0}^{2}=\\dfrac{20}{3}+10+10=\\dfrac{80}{3}\\approx26{,}7$.\nVậy quãng đường đi được khoảng $26{,}7$ km.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010346",
+  "loai": "tra_loi_ngan",
+  "de": "Tại một nhà máy sản xuất một loại phân bón, gọi $P(x)$ là lợi nhuận (tính theo triệu đồng) thu được từ việc bán $x$ tấn sản phẩm trong một tuần. Khi đó, đạo hàm $P'(x)$, gọi là lợi nhuận cận biên, cho biết tốc độ tăng lợi nhuận theo lượng sản phẩm bán được. Giả sử lợi nhuận cận biên (tính theo triệu đồng trên tấn) của nhà máy được ước lượng bởi công thức $P'(x)=16-0,02x\\text{,}\\,0\\le x\\le 100.$\nTính lợi nhuận nhà máy (theo triệu đồng) thu được khi bán 90 tấn sản phẩm trong tuần. Biết rằng nhà máy lỗ 25 triệu đồng nếu không bán được lượng sản phẩm nào trong tuần.\n-------- HẾT--------",
+  "dap_an": "1334",
+  "loi_giai": "$P(x)=\\displaystyle\\int(16-0{,}02x)\\,dx=16x-0{,}01x^2+C$.\nKhông bán được sản phẩm nào thì lỗ 25 triệu: $P(0)=-25\\Rightarrow C=-25$, nên $P(x)=16x-0{,}01x^2-25$.\n$P(90)=16\\cdot90-0{,}01\\cdot90^2-25=1440-81-25=1334$ (triệu đồng).\nVậy lợi nhuận là $1334$ triệu đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010343",
+  "loai": "tra_loi_ngan",
+  "de": "Một vật chuyển động với vận tốc $v\\left( t \\right)\\left( m/s \\right)$ có gia tốc $a\\left( t \\right)=3t^{2}+t\\left( m/s^{2} \\right)$. Vận tốc ban đầu của vật là $2\\left( m/s \\right)$. Hỏi vật tốc của vật sau 4 (s) bằng?",
+  "dap_an": "74",
+  "loi_giai": "Vận tốc là nguyên hàm của gia tốc: $v(t)=\\displaystyle\\int(3t^2+t)\\,dt=t^3+\\dfrac{t^2}{2}+C$.\nVận tốc ban đầu $v(0)=2\\Rightarrow C=2$, nên $v(t)=t^3+\\dfrac{t^2}{2}+2$.\n$v(4)=4^3+\\dfrac{4^2}{2}+2=64+8+2=74$ (m/s).\nVậy vận tốc sau 4 giây là $74$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010347",
+  "loai": "tra_loi_ngan",
+  "de": "Tại một nhà máy sản xuất một loại phân bón, gọi $P(x)$ là lợi nhuận (tính theo triệu đồng) thu được từ việc bán $x$ tấn sản phẩm trong một tuần. Khi đó, đạo hàm $P'(x)$, gọi là lợi nhuận cận biên, cho biết tốc độ tăng lợi nhuận theo lượng sản phẩm bán được. Giả sử lợi nhuận cận biên (tính theo triệu đồng trên tấn) của nhà máy được ước lượng bởi công thức $P'(x)=16-0,02x\\text{,}\\,0\\le x\\le 100.$\nTính lợi nhuận nhà máy (theo triệu đồng) thu được khi bán 90 tấn sản phẩm trong tuần. Biết rằng nhà máy lỗ 25 triệu đồng nếu không bán được lượng sản phẩm nào trong tuần.",
+  "dap_an": "1334",
+  "loi_giai": "$P(x)=\\displaystyle\\int(16-0{,}02x)\\,dx=16x-0{,}01x^2+C$.\nKhông bán được sản phẩm nào thì lỗ 25 triệu: $P(0)=-25\\Rightarrow C=-25$, nên $P(x)=16x-0{,}01x^2-25$.\n$P(90)=16\\cdot90-0{,}01\\cdot90^2-25=1440-81-25=1334$ (triệu đồng).\nVậy lợi nhuận là $1334$ triệu đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010385",
+  "loai": "tra_loi_ngan",
+  "de": "Tại một nhà máy, gọi $C(x)$ là tổng chi phí (tính theo triệu đồng) để sản xuất $x$ tấn sản phẩm $Z$ trong một tháng. Khi đó, đạo hàm $C'(x)$, gọi là chi phí cận biên, cho biết tốc độ tăng tổng chi phí theo lượng sản phẩm được sản xuất. Giả sử chi phí cận biên (tính theo triệu đồng trên tấn) của nhà máy được ước lượng bởi công thức $C'(x)=8-0,07x+0,00034x^{2}$ với $0\\le x\\le 88$.\nBiết rằng $C(0)=27$ triệu đồng, gọi là chi phí cố định. Tính tổng chi phí khi nhà máy sản xuất $82$ tấn sản phẩm $Z$ trong tháng (kết quả làm tròn đến hàng đơn vị).",
+  "dap_an": "510",
+  "loi_giai": "$C(x)=\\int(8-0{,}07x+0{,}00034x^{2})\\,dx=8x-0{,}035x^{2}+\\dfrac{0{,}00034}{3}x^{3}+k$.\n$C(0)=27\\Rightarrow k=27$.\n$C(82)=27+8\\cdot82-0{,}035\\cdot82^{2}+\\dfrac{0{,}00034}{3}\\cdot82^{3}=27+656-235{,}34+62{,}49\\approx510{,}15$.\nVậy tổng chi phí khi sản xuất $82$ tấn xấp xỉ $510$ triệu đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010340",
+  "loai": "tra_loi_ngan",
+  "de": "Hình phẳng giới hạn bởi đồ thị hàm số $y=e^{x}$, các đường thẳng $x=2,x=3$ và trục $Ox$ có diện tích là? (kết quả làm tròn đến hàng phần mười).",
+  "dap_an": "12.7",
+  "loi_giai": "$S=\\displaystyle\\int_{2}^{3}e^{x}\\,dx=e^{x}\\Big|_{2}^{3}=e^{3}-e^{2}\\approx 12{,}7$.\nVậy diện tích bằng $12{,}7$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010380",
+  "loai": "tra_loi_ngan",
+  "de": "Cổng trường Đại học Bách Khoa Hà Nội có hình dạng Parabol, chiều rộng $8\\,m$, chiều cao $12,5\\,m$.Tính diện tích của cổng (làm tròn kết quả đến hàng đơn vị).\n$-4$$-4$\n$4$\n$12,5$$-4$\n$x$\n$y$\n$O$$-4$",
+  "dap_an": "67",
+  "loi_giai": "Đặt hệ trục như hình: parabol có đỉnh $(0;12{,}5)$ và đi qua $(\\pm4;0)$ nên $(P):y=ax^{2}+12{,}5$ với $0=16a+12{,}5\\Rightarrow a=-\\dfrac{25}{32}$.\n$S=\\int_{-4}^{4}\\left(12{,}5-\\dfrac{25}{32}x^{2}\\right)dx=2\\left(50-\\dfrac{25}{32}\\cdot\\dfrac{64}{3}\\right)=2\\left(50-\\dfrac{50}{3}\\right)=\\dfrac{200}{3}\\approx66{,}67$.\nVậy diện tích của cổng xấp xỉ $67\\ \\text{m}^{2}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010354",
+  "loai": "tra_loi_ngan",
+  "de": "Tính diện tích $S$ của hình phẳng giới hạn bởi các đường $y=x^{2}-2x,\\,\\,y=2-x$ (làm tròn đến hàng phần chục).",
+  "dap_an": "4.5",
+  "loi_giai": "Phương trình hoành độ giao điểm: $x^2-2x=2-x\\Leftrightarrow x^2-x-2=0\\Leftrightarrow x=-1$ hoặc $x=2$.\nTrên $[-1;2]$ ta có $2-x\\ge x^2-2x$ nên $S=\\displaystyle\\int_{-1}^{2}\\left(2-x-x^2+2x\\right)dx=\\int_{-1}^{2}(-x^2+x+2)\\,dx$.\n$=\\left(-\\dfrac{x^3}{3}+\\dfrac{x^2}{2}+2x\\right)\\Big|_{-1}^{2}=\\dfrac{10}{3}-\\left(-\\dfrac{7}{6}\\right)=\\dfrac{9}{2}=4{,}5$.\nVậy $S=4{,}5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010349",
+  "loai": "tra_loi_ngan",
+  "de": "Một quẩn thể vi khuẩn ban đẩu gồm 500 vi khuẩn, sau đó bắt đẩu tăng trưởng. Gọi $P(t)$ là số lượng vi khuẩn của quẩn thể đó tại thời điểm $t$, trong đó $t$ tính theo ngày $(0\\le t\\le 10)$. Tốc độ tăng trưởng của quần thể vi khuẩn đó cho bởi hàm số $P^{/}(t)=k\\sqrt{t}$, trong đó $k$ là hằng số. Sau 1 ngày, số lượng vi khuẩn của quần thể đó đã tăng lên thành 600 vi khuẩn. Tính số lượng vi khuẩn của quẩn thể đó sau 7 ngày (làm tròn kết quả đến hàng đơn vị).",
+  "dap_an": "2352",
+  "loi_giai": "$P(t)=\\displaystyle\\int k\\sqrt t\\,dt=\\dfrac{2k}{3}t^{\\frac32}+C$. Vì $P(0)=500$ nên $C=500$.\n$P(1)=600\\Rightarrow\\dfrac{2k}{3}+500=600\\Rightarrow\\dfrac{2k}{3}=100$.\nDo đó $P(t)=100t^{\\frac32}+500$.\n$P(7)=100\\cdot7\\sqrt7+500\\approx100\\cdot18{,}5203+500\\approx2352{,}03$.\nVậy sau 7 ngày có khoảng $2352$ vi khuẩn.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010351",
+  "loai": "tra_loi_ngan",
+  "de": "Bác Năm làm một cái cửa nhà hình parabol có chiều cao từ mặt đất đến đỉnh là $2,25$ mét, chiều rộng tiếp giáp với mặt đất là $3$ mét. Giá làm cửa mỗi mét vuông là $1500000$ đồng. Vậy bác Năm phải trả bao nhiêu nghìn đồng?",
+  "dap_an": "6750",
+  "loi_giai": "Chọn hệ trục có gốc ở giữa chân cửa, parabol có đỉnh $(0;2{,}25)$ và cắt trục hoành tại $x=\\pm1{,}5$.\nPhương trình parabol: $y=ax^2+2{,}25$, qua $(1{,}5;0)$ nên $2{,}25a+2{,}25=0\\Rightarrow a=-1$, tức $y=-x^2+2{,}25$.\nDiện tích cửa: $S=\\displaystyle\\int_{-1{,}5}^{1{,}5}(2{,}25-x^2)\\,dx=\\left(2{,}25x-\\dfrac{x^3}{3}\\right)\\Big|_{-1{,}5}^{1{,}5}=2\\left(3{,}375-1{,}125\\right)=4{,}5$ (m$^2$).\nChi phí: $4{,}5\\cdot1\\,500\\,000=6\\,750\\,000$ đồng $=6750$ nghìn đồng.\nVậy bác Năm phải trả $6750$ nghìn đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010383",
+  "loai": "tra_loi_ngan",
+  "de": "Tại một nhà máy, gọi $C(x)$ là tổng chi phí (tính theo triệu đồng) để sản xuất $x$ tấn sản phẩm B trong một tháng. Khi đó, đạo hàm $C'(x)$, gọi là chi phí cận biên, cho biết tốc độ tăng tổng chi phí theo lượng sản phẩm được sản xuất. Giả sử chi phí cận biên (tính theo triệu đồng trên tấn) của nhà máy được ước lượng bởi công thức $C^{\\prime}(x)=8-0,13x+0,00022x^{2}$ với $0\\le x\\le 88$.\nBiết rằng $C(0)=24$ triệu đồng, gọi là chi phí cố định. Tính tổng chi phí (tính theo triệu đồng)khi nhà máy sản xuất $82$ tấn sản phẩm B trong một tháng (kết quả làm tròn đến hàng đơn vị).",
+  "dap_an": "283",
+  "loi_giai": "$C(x)=\\int C'(x)\\,dx=\\int(8-0{,}13x+0{,}00022x^{2})\\,dx=8x-0{,}065x^{2}+\\dfrac{0{,}00022}{3}x^{3}+k$.\n$C(0)=24\\Rightarrow k=24$.\n$C(82)=24+8\\cdot82-0{,}065\\cdot82^{2}+\\dfrac{0{,}00022}{3}\\cdot82^{3}\\approx24+656-437{,}06+40{,}43=283{,}37$.\nVậy tổng chi phí khi sản xuất $82$ tấn xấp xỉ $283$ triệu đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010574",
+  "loai": "tra_loi_ngan",
+  "de": "Một vật chuyển động với vận tốc $10\\,\\text{m/s}$ thì tăng tốc với gia tốc được tính theo thời gian là $a\\left( t \\right)=t^{2}+3t$. Tính quãng đường vật đi được trong khoảng thời gian $6$ giây kể từ khi vật bắt đầu tăng tốc?",
+  "dap_an": "276",
+  "loi_giai": "Vận tốc: $v(t)=\\displaystyle\\int a(t)\\,dt=\\dfrac{t^3}3+\\dfrac{3t^2}2+C$. Tại $t=0$, $v=10$ nên $C=10$.\nQuãng đường trong $6$ giây: $s=\\displaystyle\\int_0^6\\left(\\dfrac{t^3}3+\\dfrac{3t^2}2+10\\right)dt=\\left(\\dfrac{t^4}{12}+\\dfrac{t^3}2+10t\\right)\\Big|_0^6$.\n$s=\\dfrac{1296}{12}+\\dfrac{216}2+60=108+108+60=276$.\nVậy quãng đường vật đi được là $276$ m.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010357",
+  "loai": "tra_loi_ngan",
+  "de": "Một bồn chứa nước có dạng hình trụ với chiều cao $2m$ và bán kính đáy $0,5m$. Lúc đầu bồn chứa đầy nước. Người ta tiến hành vặn van ở đáy bồn để xả nước. Kể từ khi bắt đầu xả nước, tốc độ thay đổi chiều cao của mực nước trong bồn theo thời gian $t$ là $h'(t)=\\frac{t}{25}-\\frac{2}{5}$(m/phút). Sau khi xả 5 phút, trong bồn còn bao nhiêu lít nước (kết quả làm tròn đến hàng đơn vị)?\n------ HẾT ------",
+  "dap_an": "393",
+  "loi_giai": "Chiều cao mực nước: $h(t)=\\displaystyle\\int\\left(\\dfrac{t}{25}-\\dfrac25\\right)dt=\\dfrac{t^2}{50}-\\dfrac{2t}{5}+C$.\nLúc đầu bồn đầy nên $h(0)=2\\Rightarrow C=2$, do đó $h(t)=\\dfrac{t^2}{50}-\\dfrac{2t}{5}+2$.\n$h(5)=\\dfrac{25}{50}-2+2=0{,}5$ (m).\nThể tích nước còn lại: $V=\\pi r^2h=\\pi\\cdot0{,}5^2\\cdot0{,}5=0{,}125\\pi$ (m$^3$) $=125\\pi$ (lít) $\\approx392{,}7$ lít.\nLàm tròn đến hàng đơn vị: $393$ lít.\nVậy còn khoảng $393$ lít nước.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010368",
+  "loai": "tra_loi_ngan",
+  "de": "Một ô tô đang chạy với tốc độ $15\\left( {m}/{s} \\right)$ thì người lái đạp phanh, từ thời điểm đó ô tô chuyển động chậm dần đều với $v\\left( t \\right)=-5t+15\\left( {m}/{s} \\right)$, trong đó $t$ là khoảng thời gian tính bằng giây, kể từ lúc bắt đầu đạp phanh. Hỏi từ lúc đạp phanh đến khi dừng hẳn, ô tô còn di chuyển bao nhiêu mét.",
+  "dap_an": "22.5",
+  "loi_giai": "Ô tô dừng hẳn khi $v(t)=0\\Leftrightarrow-5t+15=0\\Leftrightarrow t=3$ (giây).\nQuãng đường đi được: $s=\\int_{0}^{3}(-5t+15)\\,dt=\\left.\\left(-\\dfrac{5t^{2}}{2}+15t\\right)\\right|_{0}^{3}=-22{,}5+45=22{,}5$.\nVậy ô tô còn di chuyển $22{,}5$ mét.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010384",
+  "loai": "tra_loi_ngan",
+  "de": "Một viên đạn được bắn thẳng đứng lên trên từ mặt đất. Giả sử tại thời điểm $t$ giây (coi $t=0$ là thời điểm viên đạn được bắn lên), vận tốc của nó được cho bởi $v\\left( t \\right)=23-9,8t\\left( \\text{~m}/\\text{s} \\right)$. Độ cao của viên đạn (tính từ mặt đất) đạt giá trị lớn nhất là bao nhiêu?( làm tròn kết quả đến chữ số thập phân thứ nhất của mét ).",
+  "dap_an": "27.0",
+  "loi_giai": "Độ cao: $h(t)=\\int_{0}^{t}(23-9{,}8u)\\,du=23t-4{,}9t^{2}$ (mét), vì lúc $t=0$ viên đạn ở mặt đất.\n$h(t)$ lớn nhất khi $v(t)=0\\Leftrightarrow t=\\dfrac{23}{9{,}8}$ (giây).\n$h_{\\max}=\\dfrac{23^{2}}{4\\cdot4{,}9}=\\dfrac{529}{19{,}6}\\approx26{,}99\\approx27{,}0$.\nVậy độ cao lớn nhất khoảng $27{,}0$ mét.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010369",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $f\\left( x \\right)$ liên tục trên $R$ thỏa mãn điều kiện $f\\left( 0 \\right)=2\\sqrt{2},\\,f\\left( x \\right)>0,\\,\\forall x\\in R$ và $f\\left( x \\right).f'\\left( x \\right)=\\left( 2x+1 \\right)\\sqrt{1+f^{2}\\left( x \\right)},\\,\\forall x\\in R$. Tính giá trị $f\\left( 1 \\right)$. Kết quả làm tròn đến một chữ số đằng sau dấu phẩy.",
+  "dap_an": "4.9",
+  "loi_giai": "Vì $f(x)>0$ nên chia hai vế cho $\\sqrt{1+f^{2}(x)}$: $\\dfrac{f(x)f'(x)}{\\sqrt{1+f^{2}(x)}}=2x+1$.\nDo $\\left(\\sqrt{1+f^{2}(x)}\\right)'=\\dfrac{f(x)f'(x)}{\\sqrt{1+f^{2}(x)}}$ nên lấy nguyên hàm hai vế: $\\sqrt{1+f^{2}(x)}=x^{2}+x+C$.\nVới $x=0$: $\\sqrt{1+8}=3=C$.\nVới $x=1$: $\\sqrt{1+f^{2}(1)}=1+1+3=5\\Rightarrow f^{2}(1)=24$.\nVì $f(1)>0$ nên $f(1)=\\sqrt{24}\\approx4{,}9$.\nVậy $f(1)\\approx4{,}9$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010341",
+  "loai": "tra_loi_ngan",
+  "de": "Khảo sát chuyển động của xe khách A trong 30 phút trên một quãng đường ta thu được kết quả: vận tốc $v$(m/phút) của xe khách theo thời gian $t$ (phút) được biểu diễn bởi hàm số\n$v\\left( t \\right)=\\left\\{ \\begin{array}{l} 50t,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,\\,0\\le t\\le 10 \\\\ 20t+300,\\,\\,\\,\\,\\,\\,\\,\\,\\,10<t\\le 30 \\\\ -10\\mathrm{t}+1200,\\,\\,\\,30<t\\le 50 \\end{array} \\right.$\nTính vận tốc trung bình của xe khách trong $50$ phút đã khảo sát.",
+  "dap_an": "650",
+  "loi_giai": "Quãng đường xe đi được trong 50 phút: $S=\\displaystyle\\int_0^{50}v(t)\\,dt=\\int_0^{10}50t\\,dt+\\int_{10}^{30}(20t+300)\\,dt+\\int_{30}^{50}(-10t+1200)\\,dt$.\n$\\displaystyle\\int_0^{10}50t\\,dt=25t^2\\Big|_0^{10}=2500$.\n$\\displaystyle\\int_{10}^{30}(20t+300)\\,dt=(10t^2+300t)\\Big|_{10}^{30}=(9000+9000)-(1000+3000)=14000$.\n$\\displaystyle\\int_{30}^{50}(-10t+1200)\\,dt=(-5t^2+1200t)\\Big|_{30}^{50}=(-12500+60000)-(-4500+36000)=16000$.\nDo đó $S=2500+14000+16000=32500$ (m).\nVận tốc trung bình: $\\overline{v}=\\dfrac{32500}{50}=650$ (m/phút).\nVậy vận tốc trung bình là $650$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010379",
+  "loai": "tra_loi_ngan",
+  "de": "Tại một nhà máy, gọi $C(x)$ là tổng chi phí (tính theo triệu đồng) để sản xuất $x$ tấn sản phẩm M trong một tháng. Khi đó, đạo hàm $C'(x)$, gọi là chi phí cận biên, cho biết tốc độ tăng tổng chi phí theo lượng sản phẩm được sản xuất. Giả sử chi phí cận biên (tính theo triệu đồng trên tấn) của nhà máy được ước lượng bởi công thức $C^{\\prime}(x)=11-0,10x+0,00045x^{2}$ với $0\\le x\\le 81$.\nBiết rằng $C(0)=24$ triệu đồng, gọi là chi phí cố định. Tính tổng chi phí khi nhà máy sản xuất $74$ tấn sản phẩm M trong tháng (kết quả làm tròn đến hàng đơn vị).\n---Hết----",
+  "dap_an": "625",
+  "loi_giai": "$C(x)=\\int(11-0{,}10x+0{,}00045x^{2})\\,dx=11x-0{,}05x^{2}+0{,}00015x^{3}+k$.\n$C(0)=24\\Rightarrow k=24$.\n$C(74)=24+11\\cdot74-0{,}05\\cdot74^{2}+0{,}00015\\cdot74^{3}=24+814-273{,}8+60{,}78\\approx624{,}98$.\nVậy tổng chi phí khi sản xuất $74$ tấn xấp xỉ $625$ triệu đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010352",
+  "loai": "tra_loi_ngan",
+  "de": "Gia tốc tại thời điểm $t$( giây) của một vật chuyển động thẳng được cho bởi công thức $a(t)=4\\pi\\cos t\\left( \\ cm/s^{2} \\right)$. Nếu vận tốc của vật bằng 0 tại thời điểm $t=0$ thì vận tốc trung bình của vật trong khoảng thời gian $0\\le t\\le\\pi$ là bao nhiêu?\n------ HẾT ------",
+  "dap_an": "8",
+  "loi_giai": "Vận tốc: $v(t)=\\displaystyle\\int4\\pi\\cos t\\,dt=4\\pi\\sin t+C$. Vì $v(0)=0$ nên $C=0$, do đó $v(t)=4\\pi\\sin t$.\nVận tốc trung bình trên $[0;\\pi]$: $\\overline{v}=\\dfrac{1}{\\pi-0}\\displaystyle\\int_0^{\\pi}4\\pi\\sin t\\,dt=4\\cdot\\left(-\\cos t\\right)\\Big|_0^{\\pi}=4\\cdot2=8$ (cm/s).\nVậy vận tốc trung bình là $8$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

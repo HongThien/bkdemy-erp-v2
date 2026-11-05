@@ -1,0 +1,488 @@
+[
+ {
+  "id": "X1732",
+  "dap_an": "3.18",
+  "loi_giai": "Chọn hệ trục: $A(0;0;0)$, $B(3;0;0)$, $D(0;9;0)$, $C(3;3;0)$, $S(0;0;3\\sqrt{3})$.\nTa có $\\overrightarrow{SC}=(3;3;-3\\sqrt{3})$, $\\overrightarrow{SD}=(0;9;-3\\sqrt{3})$.\nVectơ pháp tuyến của $(SCD)$: $\\left[\\overrightarrow{SC},\\overrightarrow{SD}\\right]=(18\\sqrt{3};9\\sqrt{3};27)$, chọn $\\overrightarrow{n}=(2\\sqrt{3};\\sqrt{3};3)$.\nPhương trình $(SCD)$: $2\\sqrt{3}x+\\sqrt{3}y+3z-9\\sqrt{3}=0$.\n$d(A,(SCD))=\\dfrac{9\\sqrt{3}}{\\sqrt{12+3+9}}=\\dfrac{9\\sqrt{3}}{2\\sqrt{6}}=\\dfrac{9\\sqrt{2}}{4}\\approx 3{,}18$.\nVậy khoảng cách từ $A$ đến $(SCD)$ xấp xỉ $3{,}18$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1733",
+  "dap_an": "18.8",
+  "loi_giai": "Công suất: $P=\\dfrac{E^{2}R}{(R+r)^{2}}=\\dfrac{E^{2}}{R+2r+\\dfrac{r^{2}}{R}}$.\nTheo bất đẳng thức Cauchy: $R+\\dfrac{r^{2}}{R}\\ge 2r$, nên $P\\le\\dfrac{E^{2}}{4r}$, dấu \"$=$\" xảy ra khi $R=r$.\nVới $E=15$, $r=3$: $P_{\\max}=\\dfrac{15^{2}}{4\\cdot 3}=\\dfrac{225}{12}=18{,}75$.\nLàm tròn đến hàng phần chục: $18{,}8$.\nVậy công suất cực đại xấp xỉ $18{,}8$ W.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1735",
+  "dap_an": "0.61",
+  "loi_giai": "Chọn một sinh viên nam và một sinh viên nữ nên tỉ lệ $20\\%$, $80\\%$ không ảnh hưởng.\nNam: bản địa $0{,}9$, quốc tế $0{,}1$. Nữ: bản địa $0{,}85$, quốc tế $0{,}15$.\nGọi $B$ là biến cố \"có đúng một sinh viên quốc tế\": $P(B)=0{,}1\\cdot 0{,}85+0{,}9\\cdot 0{,}15=0{,}085+0{,}135=0{,}22$.\nGọi $A$ là biến cố \"sinh viên quốc tế là nữ\" (nam bản địa, nữ quốc tế): $P(A\\cap B)=0{,}9\\cdot 0{,}15=0{,}135$.\n$P(A\\mid B)=\\dfrac{0{,}135}{0{,}22}=\\dfrac{27}{44}\\approx 0{,}61$.\nVậy xác suất cần tìm xấp xỉ $0{,}61$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Tỉ lệ 20%/80% không dùng vì chọn 1 nam và 1 nữ"
+ },
+ {
+  "id": "X1736",
+  "dap_an": "929",
+  "loi_giai": "Khoảng cách từ $A$, $B$ đến $(P)$: $d(A,(P))=\\dfrac{|90-70-12+10|}{3}=6$, $d(B,(P))=\\dfrac{|-70+110-38+10|}{3}=4$.\nGóc giữa $MA$ và $(P)$ bằng góc giữa $MB$ và $(P)$ nên $\\sin$ hai góc bằng nhau: $\\dfrac{6}{MA}=\\dfrac{4}{MB}\\Rightarrow MA=\\dfrac{3}{2}MB\\Rightarrow 4MA^{2}=9MB^{2}$.\nTập điểm $M$ trong không gian thoả mãn là mặt cầu $(S)$ có tâm $I=\\dfrac{9B-4A}{5}=(-99;127;58{,}8)$ và $R^{2}=\\dfrac{k^{2}AB^{2}}{(1-k^{2})^{2}}$ với $k=\\dfrac{3}{2}$, $AB^{2}=80^{2}+90^{2}+26^{2}=15176$, nên $R^{2}=21853{,}44$.\nKhoảng cách từ $I$ đến $(P)$: $d=\\dfrac{|-198+254-58{,}8+10|}{3}=2{,}4$.\nQuỹ tích $M$ trên mặt vườn là đường tròn có bán kính $r=\\sqrt{R^{2}-d^{2}}=\\sqrt{21853{,}44-5{,}76}=\\sqrt{21847{,}68}\\approx 147{,}81$.\nĐộ dài đường ray: $2\\pi r\\approx 928{,}7\\approx 929$.\nVậy độ dài đường ray khoảng $929$ mét.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Dòng HẾT trong đề bỏ qua"
+ },
+ {
+  "id": "X1744",
+  "dap_an": "18",
+  "loi_giai": "Công suất: $P=\\dfrac{E^{2}R}{(R+r)^{2}}=\\dfrac{E^{2}}{R+2r+\\dfrac{r^{2}}{R}}$.\nTheo bất đẳng thức Cauchy: $R+\\dfrac{r^{2}}{R}\\ge 2r$, nên $P\\le\\dfrac{E^{2}}{4r}$, dấu \"$=$\" xảy ra khi $R=r$.\nVới $E=12$, $r=2$: $P_{\\max}=\\dfrac{12^{2}}{4\\cdot 2}=\\dfrac{144}{8}=18$.\nVậy công suất cực đại bằng $18$ W.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1746",
+  "dap_an": "0.39",
+  "loi_giai": "Chọn một sinh viên nam và một sinh viên nữ nên tỉ lệ $80\\%$, $20\\%$ không ảnh hưởng.\nNam: bản địa $0{,}85$, quốc tế $0{,}15$. Nữ: bản địa $0{,}9$, quốc tế $0{,}1$.\nGọi $B$ là biến cố \"có đúng một sinh viên quốc tế\": $P(B)=0{,}15\\cdot 0{,}9+0{,}85\\cdot 0{,}1=0{,}135+0{,}085=0{,}22$.\nGọi $A$ là biến cố \"sinh viên quốc tế là nữ\" (nam bản địa, nữ quốc tế): $P(A\\cap B)=0{,}85\\cdot 0{,}1=0{,}085$.\n$P(A\\mid B)=\\dfrac{0{,}085}{0{,}22}=\\dfrac{17}{44}\\approx 0{,}39$.\nVậy xác suất cần tìm xấp xỉ $0{,}39$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Tỉ lệ 80%/20% không dùng vì chọn 1 nam và 1 nữ"
+ },
+ {
+  "id": "X1753",
+  "dap_an": "929",
+  "loi_giai": "Khoảng cách từ $A$, $B$ đến $(P)$: $d(A,(P))=\\dfrac{|90-70-12+10|}{3}=6$, $d(B,(P))=\\dfrac{|-70+110-38+10|}{3}=4$.\nGóc giữa $MA$ và $(P)$ bằng góc giữa $MB$ và $(P)$ nên $\\sin$ hai góc bằng nhau: $\\dfrac{6}{MA}=\\dfrac{4}{MB}\\Rightarrow MA=\\dfrac{3}{2}MB\\Rightarrow 4MA^{2}=9MB^{2}$.\nTập điểm $M$ trong không gian thoả mãn là mặt cầu $(S)$ có tâm $I=\\dfrac{9B-4A}{5}=(-99;127;58{,}8)$ và $R^{2}=\\dfrac{k^{2}AB^{2}}{(1-k^{2})^{2}}$ với $k=\\dfrac{3}{2}$, $AB^{2}=80^{2}+90^{2}+26^{2}=15176$, nên $R^{2}=21853{,}44$.\nKhoảng cách từ $I$ đến $(P)$: $d=\\dfrac{|-198+254-58{,}8+10|}{3}=2{,}4$.\nQuỹ tích $M$ trên mặt vườn là đường tròn có bán kính $r=\\sqrt{R^{2}-d^{2}}=\\sqrt{21853{,}44-5{,}76}=\\sqrt{21847{,}68}\\approx 147{,}81$.\nĐộ dài đường ray: $2\\pi r\\approx 928{,}7\\approx 929$.\nVậy độ dài đường ray khoảng $929$ mét.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1757",
+  "dap_an": "18.8",
+  "loi_giai": "Công suất: $P=\\dfrac{E^{2}R}{(R+r)^{2}}=\\dfrac{E^{2}}{R+2r+\\dfrac{r^{2}}{R}}$.\nTheo bất đẳng thức Cauchy: $R+\\dfrac{r^{2}}{R}\\ge 2r$, nên $P\\le\\dfrac{E^{2}}{4r}$, dấu \"$=$\" xảy ra khi $R=r$.\nVới $E=15$, $r=3$: $P_{\\max}=\\dfrac{15^{2}}{4\\cdot 3}=\\dfrac{225}{12}=18{,}75$.\nLàm tròn đến hàng phần chục: $18{,}8$.\nVậy công suất cực đại xấp xỉ $18{,}8$ W.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1760",
+  "dap_an": "-4.5",
+  "loi_giai": "Đặt $\\overrightarrow{AB}=\\overrightarrow{u}$, $\\overrightarrow{AD}=\\overrightarrow{v}$, $\\overrightarrow{AA'}=\\overrightarrow{w}$.\n$\\overrightarrow{AC}=\\overrightarrow{u}+\\overrightarrow{v}=(7;0;-1)$, $\\overrightarrow{AB'}=\\overrightarrow{u}+\\overrightarrow{w}=(1;-1;0)$, $\\overrightarrow{AD'}=\\overrightarrow{v}+\\overrightarrow{w}=(6;3;3)$.\nCộng ba vectơ: $2(\\overrightarrow{u}+\\overrightarrow{v}+\\overrightarrow{w})=(14;2;2)\\Rightarrow\\overrightarrow{u}+\\overrightarrow{v}+\\overrightarrow{w}=(7;1;1)$.\nSuy ra $\\overrightarrow{w}=(7;1;1)-(7;0;-1)=(0;1;2)$.\n$A'=A+\\overrightarrow{w}=(-3;3;3)$ nên $a=-3$, $b=3$, $c=3$.\n$\\dfrac{a-b-c}{2}=\\dfrac{-3-3-3}{2}=-4{,}5$.\nVậy giá trị biểu thức bằng $-4{,}5$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1761",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "XS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn mảnh lời giải, thiếu đề"
+ },
+ {
+  "id": "X1762",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn mảnh lời giải, thiếu đề"
+ },
+ {
+  "id": "X1763",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn mảnh lời giải, thiếu đề"
+ },
+ {
+  "id": "X1764",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn mảnh lời giải, thiếu đề"
+ },
+ {
+  "id": "X1765",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "KHAC",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn mảnh lời giải, thiếu đề"
+ },
+ {
+  "id": "X1766",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "KHAC",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn mảnh lời giải, thiếu đề"
+ },
+ {
+  "id": "X1768",
+  "dap_an": "0.17",
+  "loi_giai": "Gọi $A$ là tập sinh viên học tiếng Anh, $B$ là tập sinh viên học tiếng Pháp: $n(A)=40$, $n(B)=30$.\nMỗi sinh viên học ít nhất một ngôn ngữ nên $n(A\\cup B)=60$.\n$n(A\\cap B)=n(A)+n(B)-n(A\\cup B)=40+30-60=10$.\nXác suất: $P=\\dfrac{10}{60}=\\dfrac{1}{6}\\approx 0{,}17$.\nVậy xác suất cần tìm xấp xỉ $0{,}17$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1770",
+  "dap_an": "1.5",
+  "loi_giai": "Gia tốc: $a(t)=v'(t)=-2t+3$.\nVận tốc của vật giảm khi $v'(t)<0\\Leftrightarrow -2t+3<0\\Leftrightarrow t>1{,}5$.\nVậy kể từ giây thứ $1{,}5$ trở đi vận tốc của vật giảm.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1772",
+  "dap_an": "-4",
+  "loi_giai": "$y'=3x^{2}-8x+5=(x-1)(3x-5)$.\n$y'=0\\Leftrightarrow x=1$ hoặc $x=\\dfrac{5}{3}$.\nHệ số của $x^{3}$ dương nên $y'$ đổi dấu từ $+$ sang $-$ tại $x=1$ (cực đại) và từ $-$ sang $+$ tại $x=\\dfrac{5}{3}$ (cực tiểu).\nDo đó $x_{1}=1$, $x_{2}=\\dfrac{5}{3}$.\n$A=x_{1}-3x_{2}=1-3\\cdot\\dfrac{5}{3}=-4$.\nVậy $A=-4$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1773",
+  "dap_an": "4053",
+  "loi_giai": "$y'=1-\\dfrac{1}{x}=\\dfrac{x-1}{x}$, trên $\\left[\\dfrac{1}{2};e\\right]$ có $y'=0\\Leftrightarrow x=1$.\n$y(1)=1$; $y\\left(\\dfrac{1}{2}\\right)=\\dfrac{1}{2}+\\ln 2\\approx 1{,}193$; $y(e)=e-1\\approx 1{,}718$.\nSuy ra $\\min y=1$, $\\max y=e-1$.\nTích: $1\\cdot(e-1)=1\\cdot e+(-1)$ nên $a=1$, $b=-1$.\n$2026a-2027b=2026+2027=4053$.\nVậy kết quả bằng $4053$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1775",
+  "dap_an": "5",
+  "loi_giai": "$SA\\bot(ABCD)$ nên $AD$ là hình chiếu của $SD$ trên đáy, suy ra $\\widehat{SDA}=60^{\\circ}$ và $SA=AD\\tan 60^{\\circ}=AD\\sqrt{3}$.\nVì $AB\\parallel CD$ nên $AB\\parallel(SCD)$, do đó $d(B,(SCD))=d(A,(SCD))$.\n$CD\\bot AD$, $CD\\bot SA$ nên $CD\\bot(SAD)$. Kẻ $AH\\bot SD$ thì $AH\\bot(SCD)$, suy ra $d(A,(SCD))=AH$.\nTrong tam giác vuông $SAD$: $AH=AD\\sin 60^{\\circ}=\\dfrac{AD\\sqrt{3}}{2}=\\dfrac{a\\sqrt{3}}{2}\\Rightarrow AD=a$, $SA=a\\sqrt{3}$.\n$S_{ABCD}=\\dfrac{(AB+CD)\\cdot AD}{2}=\\dfrac{(3a+a)\\cdot a}{2}=2a^{2}$.\n$V=\\dfrac{1}{3}SA\\cdot S_{ABCD}=\\dfrac{1}{3}\\cdot a\\sqrt{3}\\cdot 2a^{2}=\\dfrac{2}{3}\\sqrt{3}a^{3}$.\nVậy $m=2$, $n=3$, $m+n=5$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1782",
+  "dap_an": "144",
+  "loi_giai": "Vận tốc: $v(t)=s'(t)=-t^{2}+12t$, với $0\\le t\\le 12$.\n$v'(t)=-2t+12=0\\Leftrightarrow t=6$, $v(6)=36$; $v(0)=0$, $v(12)=0$.\nVậy vận tốc lớn nhất tại $t=6$ s.\nQuãng đường đi được: $s(6)=-\\dfrac{1}{3}\\cdot 216+6\\cdot 36=-72+216=144$.\nVậy vật di chuyển được $144$ mét.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1783",
+  "dap_an": "0.04",
+  "loi_giai": "Chọn hệ trục: $A(0;0;0)$, $B(3;0;0)$, $D(0;3;0)$, $A'(0;0;5)$, suy ra $C(3;3;0)$, $C'(3;3;5)$.\n$M\\left(\\dfrac{3}{2};0;0\\right)$, $N\\left(3;3;\\dfrac{5}{2}\\right)$.\n$\\overrightarrow{MN}=\\left(\\dfrac{3}{2};3;\\dfrac{5}{2}\\right)$, $\\overrightarrow{A'C}=(3;3;-5)$.\n$\\overrightarrow{MN}\\cdot\\overrightarrow{A'C}=\\dfrac{9}{2}+9-\\dfrac{25}{2}=1$.\n$|\\overrightarrow{MN}|=\\sqrt{\\dfrac{9}{4}+9+\\dfrac{25}{4}}=\\sqrt{\\dfrac{35}{2}}$, $|\\overrightarrow{A'C}|=\\sqrt{43}$.\n$\\cos(MN,A'C)=\\dfrac{1}{\\sqrt{\\dfrac{35}{2}\\cdot 43}}=\\dfrac{1}{\\sqrt{752{,}5}}\\approx 0{,}04$.\nVậy $\\cos(MN,A'C)\\approx 0{,}04$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1790",
+  "dap_an": "42",
+  "loi_giai": "Chi phí sản xuất $x$ sản phẩm: $x\\cdot C(x)=1000x+x^{2}+25000$.\nLợi nhuận: $L(x)=f(x)-xC(x)=x^{3}-1566x^{2}+127500x+5000$, với $0<x\\le 150$, $x\\in\\mathbb{N}^{*}$.\n$L'(x)=3x^{2}-3132x+127500=0\\Leftrightarrow x^{2}-1044x+42500=0\\Leftrightarrow x\\approx 42{,}43$ (nhận) hoặc $x\\approx 1001{,}6$ (loại).\n$L'(x)>0$ trên $(0;42{,}43)$ và $L'(x)<0$ trên $(42{,}43;150]$ nên $L$ đạt max ở lân cận $x=42{,}43$.\nSo sánh: $L(42)=2\\,671\\,664$, $L(43)=2\\,671\\,473$.\n$L(42)>L(43)$ nên lợi nhuận lớn nhất khi $x=42$.\nVậy ông A cần sản xuất $42$ sản phẩm.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Lợi nhuận = f(x) - x.C(x)"
+ },
+ {
+  "id": "X1791",
+  "dap_an": "840",
+  "loi_giai": "Đường đi cùng phương $\\overrightarrow{u}=(2;-2;1)$ với $|\\overrightarrow{u}|=\\sqrt{4+4+1}=3$.\n$B=A+t\\overrightarrow{u}$ nên $x_{B}=10+2t=550\\Rightarrow t=270$.\n$AB=270\\cdot|\\overrightarrow{u}|=810$ m, đi trong $3$ phút $=180$ s.\nVận tốc cabin: $v=\\dfrac{810}{180}=4{,}5$ m/s.\nThời gian đi hết $AD=3780$ m: $\\dfrac{3780}{4{,}5}=840$ s.\nVậy thời gian di chuyển là $840$ giây.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1792",
+  "dap_an": "0.76",
+  "loi_giai": "Chọn hệ trục (đặt $a=1$): $A(0;0;0)$, $B(1;0;0)$, $C(0;1;0)$, $S(x;y;z)$.\n$SB\\bot AB$ nên $x=1$; $SC\\bot AC$ nên $y=1$. Vậy $S(1;1;z)$.\nMặt phẳng $(SAC)$ có vectơ pháp tuyến $\\overrightarrow{AC}\\times\\overrightarrow{AS}\\parallel(z;0;-1)$ nên $d(B,(SAC))=\\dfrac{z}{\\sqrt{z^{2}+1}}=\\dfrac{\\sqrt{3}}{2}\\Rightarrow z^{2}=3\\Rightarrow z=\\sqrt{3}$.\nGóc nhị diện $[A,SB,C]$ là góc giữa hai thành phần vuông góc với $SB$ của $\\overrightarrow{BA}$ và $\\overrightarrow{BC}$.\n$\\overrightarrow{BS}=(0;1;\\sqrt{3})$, $|\\overrightarrow{BS}|^{2}=4$. $\\overrightarrow{BA}=(-1;0;0)$ có $\\overrightarrow{BA}\\cdot\\overrightarrow{BS}=0$ nên $\\overrightarrow{u}=\\overrightarrow{BA}=(-1;0;0)$.\n$\\overrightarrow{BC}=(-1;1;0)$, $\\overrightarrow{BC}\\cdot\\overrightarrow{BS}=1$ nên $\\overrightarrow{w}=\\overrightarrow{BC}-\\dfrac{1}{4}\\overrightarrow{BS}=\\left(-1;\\dfrac{3}{4};-\\dfrac{\\sqrt{3}}{4}\\right)$, $|\\overrightarrow{w}|^{2}=1+\\dfrac{9}{16}+\\dfrac{3}{16}=\\dfrac{7}{4}$.\n$\\cos\\left[A,SB,C\\right]=\\dfrac{\\overrightarrow{u}\\cdot\\overrightarrow{w}}{|\\overrightarrow{u}||\\overrightarrow{w}|}=\\dfrac{1}{\\dfrac{\\sqrt{7}}{2}}=\\dfrac{2}{\\sqrt{7}}\\approx 0{,}76$, $\\sin\\left[A,SB,C\\right]=\\sqrt{1-\\dfrac{4}{7}}=\\dfrac{\\sqrt{21}}{7}\\approx 0{,}65$.\nVậy $\\cos\\left[A,SB,C\\right]\\approx 0{,}76$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1793",
+  "dap_an": "1",
+  "loi_giai": "Số cách chọn $4$ số từ $70$ số: $C_{70}^{4}=916\\,895$.\nBốn số lập cấp số nhân công bội nguyên $q\\ge 2$ (các số dương, phân biệt): $a,aq,aq^{2},aq^{3}$ với $aq^{3}\\le 70$.\n$q=2$: $8a\\le 70\\Rightarrow a\\in\\{1,\\dots,8\\}$: $8$ bộ.\n$q=3$: $27a\\le 70\\Rightarrow a\\in\\{1,2\\}$: $2$ bộ.\n$q=4$: $64a\\le 70\\Rightarrow a=1$: $1$ bộ. $q\\ge 5$: $125>70$ nên không có.\nTổng: $8+2+1=11$ bộ, xác suất $\\dfrac{a}{b}=\\dfrac{11}{916\\,895}$ (đã tối giản).\n$\\dfrac{10^{5}a}{b}=\\dfrac{1\\,100\\,000}{916\\,895}\\approx 1{,}1997\\approx 1$.\nVậy kết quả làm tròn là $1$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Bỏ phần \"Hết\" và dòng chú thích ở cuối đề"
+ },
+ {
+  "id": "X1800",
+  "dap_an": "69",
+  "loi_giai": "Chi phí sản xuất $x$ sản phẩm: $x\\cdot C(x)=1000x+x^{2}+25000$.\nLợi nhuận: $L(x)=f(x)-xC(x)=x^{3}-1023x^{2}+127500x+5000$, với $0<x\\le 150$, $x\\in\\mathbb{N}^{*}$.\n$L'(x)=3x^{2}-2046x+127500=0\\Leftrightarrow x^{2}-682x+42500=0\\Leftrightarrow x\\approx 69{,}4$ (nhận) hoặc $x\\approx 612{,}6$ (loại).\n$L'(x)>0$ trên $(0;69{,}4)$ và $L'(x)<0$ trên $(69{,}4;150]$.\nSo sánh: $L(69)=4\\,260\\,506$, $L(70)=4\\,260\\,300$.\n$L(69)>L(70)$ nên lợi nhuận lớn nhất khi $x=69$.\nVậy ông A cần sản xuất $69$ sản phẩm.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Lợi nhuận = f(x) - x.C(x)"
+ },
+ {
+  "id": "X1801",
+  "dap_an": "1200",
+  "loi_giai": "Đường đi cùng phương $\\overrightarrow{u}=(2;-2;1)$ với $|\\overrightarrow{u}|=\\sqrt{4+4+1}=3$.\n$B=A+t\\overrightarrow{u}$ nên $x_{B}=10+2t=550\\Rightarrow t=270$.\n$AB=270\\cdot|\\overrightarrow{u}|=810$ m, đi trong $3$ phút $=180$ s.\nVận tốc cabin: $v=\\dfrac{810}{180}=4{,}5$ m/s.\nThời gian đi hết $AD=5400$ m: $\\dfrac{5400}{4{,}5}=1200$ s.\nVậy thời gian di chuyển là $1200$ giây.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1802",
+  "dap_an": "0.65",
+  "loi_giai": "Chọn hệ trục (đặt $a=1$): $A(0;0;0)$, $B(1;0;0)$, $C(0;1;0)$, $S(x;y;z)$.\n$SB\\bot AB$ nên $x=1$; $SC\\bot AC$ nên $y=1$. Vậy $S(1;1;z)$.\nMặt phẳng $(SAC)$ có vectơ pháp tuyến $\\overrightarrow{AC}\\times\\overrightarrow{AS}\\parallel(z;0;-1)$ nên $d(B,(SAC))=\\dfrac{z}{\\sqrt{z^{2}+1}}=\\dfrac{\\sqrt{3}}{2}\\Rightarrow z^{2}=3\\Rightarrow z=\\sqrt{3}$.\nGóc nhị diện $[A,SB,C]$ là góc giữa hai thành phần vuông góc với $SB$ của $\\overrightarrow{BA}$ và $\\overrightarrow{BC}$.\n$\\overrightarrow{BS}=(0;1;\\sqrt{3})$, $|\\overrightarrow{BS}|^{2}=4$. $\\overrightarrow{BA}=(-1;0;0)$ có $\\overrightarrow{BA}\\cdot\\overrightarrow{BS}=0$ nên $\\overrightarrow{u}=\\overrightarrow{BA}=(-1;0;0)$.\n$\\overrightarrow{BC}=(-1;1;0)$, $\\overrightarrow{BC}\\cdot\\overrightarrow{BS}=1$ nên $\\overrightarrow{w}=\\overrightarrow{BC}-\\dfrac{1}{4}\\overrightarrow{BS}=\\left(-1;\\dfrac{3}{4};-\\dfrac{\\sqrt{3}}{4}\\right)$, $|\\overrightarrow{w}|^{2}=1+\\dfrac{9}{16}+\\dfrac{3}{16}=\\dfrac{7}{4}$.\n$\\cos\\left[A,SB,C\\right]=\\dfrac{\\overrightarrow{u}\\cdot\\overrightarrow{w}}{|\\overrightarrow{u}||\\overrightarrow{w}|}=\\dfrac{1}{\\dfrac{\\sqrt{7}}{2}}=\\dfrac{2}{\\sqrt{7}}\\approx 0{,}76$, $\\sin\\left[A,SB,C\\right]=\\sqrt{1-\\dfrac{4}{7}}=\\dfrac{\\sqrt{21}}{7}\\approx 0{,}65$.\nVậy $\\sin\\left[A,SB,C\\right]\\approx 0{,}65$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1803",
+  "dap_an": "1",
+  "loi_giai": "Số cách chọn $4$ số từ $70$ số: $C_{70}^{4}=916\\,895$.\nBốn số lập cấp số nhân công bội nguyên $q\\ge 2$ (các số dương, phân biệt): $a,aq,aq^{2},aq^{3}$ với $aq^{3}\\le 70$.\n$q=2$: $8a\\le 70\\Rightarrow a\\in\\{1,\\dots,8\\}$: $8$ bộ.\n$q=3$: $27a\\le 70\\Rightarrow a\\in\\{1,2\\}$: $2$ bộ.\n$q=4$: $64a\\le 70\\Rightarrow a=1$: $1$ bộ. $q\\ge 5$: $125>70$ nên không có.\nTổng: $8+2+1=11$ bộ, xác suất $\\dfrac{a}{b}=\\dfrac{11}{916\\,895}$ (đã tối giản).\n$\\dfrac{10^{5}a}{b}=\\dfrac{1\\,100\\,000}{916\\,895}\\approx 1{,}1997\\approx 1$.\nVậy kết quả làm tròn là $1$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1805",
+  "dap_an": "5",
+  "loi_giai": "Không gian mẫu: $10\\cdot 12=120$.\nHộp thứ nhất có $10-2=8$ bóng không ghi số $4$ hoặc $6$; hộp thứ hai có $12-2=10$ bóng không ghi số $4$ hoặc $6$.\nSố cách thuận lợi: $8\\cdot 10=80$.\nXác suất: $\\dfrac{80}{120}=\\dfrac{2}{3}$, nên $a=2$, $b=3$.\n$a+b=5$.\nVậy $a+b=5$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1807",
+  "dap_an": "0.24",
+  "loi_giai": "$SH\\bot(ABCD)$ nên $HB$ là hình chiếu của $SB$ trên đáy, $\\widehat{SBH}=45^{\\circ}$.\n$HB=\\sqrt{HA^{2}+AB^{2}}=\\sqrt{a^{2}+a^{2}}=a\\sqrt{2}$, suy ra $SH=HB=a\\sqrt{2}$.\nChọn hệ trục với $H(0;0;0)$, trục $Hx$ theo $HD$: $D(a;0;0)$, $B(-a;a;0)$, $S(0;0;a\\sqrt{2})$.\nĐường thẳng $BH$ có vectơ chỉ phương $\\overrightarrow{b}=(1;-1;0)$. Đường thẳng $SD$ có vectơ chỉ phương $\\overrightarrow{s}=(1;0;-\\sqrt{2})$.\n$\\left[\\overrightarrow{b},\\overrightarrow{s}\\right]=(\\sqrt{2};\\sqrt{2};1)$, độ dài $\\sqrt{5}$.\n$d(SD,BH)=\\dfrac{|\\overrightarrow{HD}\\cdot[\\overrightarrow{b},\\overrightarrow{s}]|}{\\sqrt{5}}=\\dfrac{a\\sqrt{2}}{\\sqrt{5}}=a\\sqrt{\\dfrac{2}{5}}$.\nSuy ra $m=\\sqrt{\\dfrac{2}{5}}$, $m^{2}=\\dfrac{2}{5}$.\nVậy $\\dfrac{3}{5}m^{2}=\\dfrac{3}{5}\\cdot\\dfrac{2}{5}=\\dfrac{6}{25}=0{,}24$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1810",
+  "dap_an": "1.71",
+  "loi_giai": "Số cách chọn $3$ sản phẩm từ $14$: $C_{14}^{3}=364$.\n$X$ nhận các giá trị $0;1;2;3$:\n$P(X=0)=\\dfrac{C_{6}^{3}}{364}=\\dfrac{20}{364}$, $P(X=1)=\\dfrac{C_{8}^{1}C_{6}^{2}}{364}=\\dfrac{120}{364}$, $P(X=2)=\\dfrac{C_{8}^{2}C_{6}^{1}}{364}=\\dfrac{168}{364}$, $P(X=3)=\\dfrac{C_{8}^{3}}{364}=\\dfrac{56}{364}$.\n$E(X)=\\dfrac{0\\cdot 20+1\\cdot 120+2\\cdot 168+3\\cdot 56}{364}=\\dfrac{624}{364}=\\dfrac{12}{7}\\approx 1{,}71$.\nVậy kì vọng của $X$ xấp xỉ $1{,}71$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1812",
+  "dap_an": "2023",
+  "loi_giai": "Đặt $t=\\sin x$. Với $x\\in\\left(\\dfrac{\\pi}{2};\\pi\\right)$ thì $t\\in(0;1)$ và $t$ giảm khi $x$ tăng, $t-1\\ne 0$.\n$y=\\dfrac{t+m}{t-1}$ có $y'_{t}=\\dfrac{-1-m}{(t-1)^{2}}$.\nHàm $y(x)$ nghịch biến trên khoảng đã cho khi $\\dfrac{dy}{dx}=y'_{t}\\cdot\\cos x<0$. Vì $\\cos x<0$ nên cần $y'_{t}>0\\Leftrightarrow -1-m>0\\Leftrightarrow m<-1$.\n(Với $m=-1$ thì $y=1$ là hàm hằng, không thoả mãn.)\nKết hợp $m\\in\\mathbb{Z}$, $m\\in[-2024;2024]$: $m\\in\\{-2024;\\dots;-2\\}$, có $2024-2+1=2023$ giá trị.\nVậy có $2023$ giá trị của $m$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Dòng HẾT bỏ qua"
+ },
+ {
+  "id": "X1817",
+  "dap_an": "0.16",
+  "loi_giai": "$SH\\bot(ABCD)$ nên $HB$ là hình chiếu của $SB$ trên đáy, $\\widehat{SBH}=45^{\\circ}$.\n$HB=\\sqrt{HA^{2}+AB^{2}}=\\sqrt{a^{2}+a^{2}}=a\\sqrt{2}$, suy ra $SH=HB=a\\sqrt{2}$.\nChọn hệ trục với $H(0;0;0)$, trục $Hx$ theo $HD$: $D(a;0;0)$, $B(-a;a;0)$, $S(0;0;a\\sqrt{2})$.\nĐường thẳng $BH$ có vectơ chỉ phương $\\overrightarrow{b}=(1;-1;0)$. Đường thẳng $SD$ có vectơ chỉ phương $\\overrightarrow{s}=(1;0;-\\sqrt{2})$.\n$\\left[\\overrightarrow{b},\\overrightarrow{s}\\right]=(\\sqrt{2};\\sqrt{2};1)$, độ dài $\\sqrt{5}$.\n$d(SD,BH)=\\dfrac{|\\overrightarrow{HD}\\cdot[\\overrightarrow{b},\\overrightarrow{s}]|}{\\sqrt{5}}=\\dfrac{a\\sqrt{2}}{\\sqrt{5}}=a\\sqrt{\\dfrac{2}{5}}$.\nSuy ra $k=\\sqrt{\\dfrac{2}{5}}$, $k^{2}=\\dfrac{2}{5}$.\nVậy $\\dfrac{2}{5}k^{2}=\\dfrac{2}{5}\\cdot\\dfrac{2}{5}=\\dfrac{4}{25}=0{,}16$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1818",
+  "dap_an": "1.29",
+  "loi_giai": "Số cách chọn $3$ sản phẩm từ $14$: $C_{14}^{3}=364$.\n$X$ nhận các giá trị $0;1;2;3$:\n$P(X=0)=\\dfrac{C_{8}^{3}}{364}=\\dfrac{56}{364}$, $P(X=1)=\\dfrac{C_{6}^{1}C_{8}^{2}}{364}=\\dfrac{168}{364}$, $P(X=2)=\\dfrac{C_{6}^{2}C_{8}^{1}}{364}=\\dfrac{120}{364}$, $P(X=3)=\\dfrac{C_{6}^{3}}{364}=\\dfrac{20}{364}$.\n$E(X)=\\dfrac{0\\cdot 56+1\\cdot 168+2\\cdot 120+3\\cdot 20}{364}=\\dfrac{468}{364}=\\dfrac{9}{7}\\approx 1{,}29$.\nVậy kì vọng của $X$ xấp xỉ $1{,}29$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1820",
+  "dap_an": "-1",
+  "loi_giai": "Không gian mẫu: $10\\cdot 12=120$.\nHộp thứ nhất có $10-2=8$ bóng không ghi số $3$ hoặc $7$; hộp thứ hai có $12-2=10$ bóng không ghi số $3$ hoặc $7$.\nSố cách thuận lợi: $8\\cdot 10=80$.\nXác suất: $\\dfrac{80}{120}=\\dfrac{2}{3}$, nên $a=2$, $b=3$.\n$a-b=2-3=-1$.\nVậy $a-b=-1$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1822",
+  "dap_an": "2022",
+  "loi_giai": "Đặt $t=\\cos x$. Với $x\\in\\left(0;\\dfrac{\\pi}{3}\\right)$ thì $t\\in\\left(\\dfrac{1}{2};1\\right)$ và $t$ giảm khi $x$ tăng.\n$y=\\dfrac{2t+3}{2t-m}$ xác định trên khoảng này khi $2t-m\\ne 0$ với $2t\\in(1;2)$, tức $m\\notin[1;2]$.\n$y'_{t}=\\dfrac{2(2t-m)-2(2t+3)}{(2t-m)^{2}}=\\dfrac{-2m-6}{(2t-m)^{2}}$.\nHàm $y(x)$ nghịch biến khi $\\dfrac{dy}{dx}=y'_{t}\\cdot(-\\sin x)<0$. Vì $\\sin x>0$ nên cần $y'_{t}>0\\Leftrightarrow -2m-6>0\\Leftrightarrow m<-3$ (thoả điều kiện $m\\notin[1;2]$).\nKết hợp $m\\in\\mathbb{Z}$, $m\\in[-2025;2025]$: $m\\in\\{-2025;\\dots;-4\\}$, có $2025-4+1=2022$ giá trị.\nVậy có $2022$ giá trị của $m$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Dòng HẾT bỏ qua"
+ },
+ {
+  "id": "X1827",
+  "dap_an": "1.45",
+  "loi_giai": "Gọi $M$ là trung điểm $CD$. Tam giác $ACD$ đều cạnh $2\\sqrt{3}$ nên $AM\\bot CD$, $AM=\\dfrac{2\\sqrt{3}\\cdot\\sqrt{3}}{2}=3$.\nTam giác $BCD$ cân tại $B$ nên $BM\\bot CD$, $BM=\\sqrt{BC^{2}-CM^{2}}=\\sqrt{7-3}=2$.\n$CD\\bot AM$, $CD\\bot BM$ nên $CD\\bot(ABM)$.\nKẻ $MH\\bot AB$ ($H\\in AB$). Khi đó $MH\\bot CD$ (vì $CD\\bot(ABM)$) nên $MH$ là đoạn vuông góc chung của $AB$ và $CD$, $d(AB,CD)=MH$.\nTam giác $ABM$ có $AB=4$, $AM=3$, $BM=2$. Nửa chu vi $p=\\dfrac{9}{2}$.\n$S_{ABM}=\\sqrt{\\dfrac{9}{2}\\cdot\\dfrac{1}{2}\\cdot\\dfrac{3}{2}\\cdot\\dfrac{5}{2}}=\\dfrac{3\\sqrt{15}}{4}$.\n$MH=\\dfrac{2S_{ABM}}{AB}=\\dfrac{3\\sqrt{15}}{8}\\approx 1{,}45$.\nVậy khoảng cách giữa $AB$ và $CD$ xấp xỉ $1{,}45$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1828",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "KHAC",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Đề lỗi: tìm được xác suất 3/28, không có dạng 1/a"
+ },
+ {
+  "id": "X1832",
+  "dap_an": "0",
+  "loi_giai": "$y'=-44x^{3}+8x=-4x(11x^{2}-2)$.\n$y'=0\\Leftrightarrow x=0$ hoặc $x=\\pm\\sqrt{\\dfrac{2}{11}}$.\n$y''=-132x^{2}+8$. Tại $x=0$: $y''(0)=8>0$ nên $x=0$ là điểm cực tiểu.\nTại $x=\\pm\\sqrt{\\dfrac{2}{11}}$: $y''=-24+8=-16<0$ nên là các điểm cực đại.\nVậy hàm số đạt cực tiểu tại $x=0$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đuôi \"0 0,25\" trong đề là rác"
+ },
+ {
+  "id": "X1834",
+  "dap_an": "0.25",
+  "loi_giai": "Chọn hệ trục (đặt $a=1$): $A(0;0;0)$, $B(1;0;0)$, $D(0;1;0)$, $A'(0;0;1)$, suy ra $C(1;1;0)$, $C'(1;1;1)$, $D'(0;1;1)$.\n$I$ là tâm hình vuông $ADD'A'$: $I\\left(0;\\dfrac{1}{2};\\dfrac{1}{2}\\right)$. $K$ là trung điểm $CC'$: $K\\left(1;1;\\dfrac{1}{2}\\right)$.\n$\\overrightarrow{IB}=\\left(1;-\\dfrac{1}{2};-\\dfrac{1}{2}\\right)$, $\\overrightarrow{AK}=\\left(1;1;\\dfrac{1}{2}\\right)$.\n$\\overrightarrow{IB}\\cdot\\overrightarrow{AK}=1-\\dfrac{1}{2}-\\dfrac{1}{4}=\\dfrac{1}{4}$, tức $\\overrightarrow{IB}\\cdot\\overrightarrow{AK}=\\dfrac{1}{4}a^{2}$.\nVậy $n=0{,}25$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1835",
+  "dap_an": "6300",
+  "loi_giai": "Doanh thu: $x\\cdot P(x)=120x-0{,}2x^{2}$.\nTrường hợp $1\\le x\\le 100$: lợi nhuận trước thuế $L_{1}(x)=120x-0{,}2x^{2}-1000-50x=-0{,}2x^{2}+70x-1000$. Đỉnh $x=175>100$ nên $L_{1}$ đồng biến trên $[1;100]$, $\\max L_{1}=L_{1}(100)=4000$.\nTrường hợp $101\\le x\\le 350$: $L_{2}(x)=120x-0{,}2x^{2}-1000-40x=-0{,}2x^{2}+80x-1000$. Đỉnh $x=200\\in[101;350]$, $L_{2}(200)=-8000+16000-1000=7000$.\nLợi nhuận trước thuế lớn nhất là $7000$ (triệu đồng) tại $x=200$ (dương nên chịu thuế).\nLợi nhuận sau thuế: $7000\\cdot(1-10\\%)=6300$.\nVậy lợi nhuận sau thuế lớn nhất là $6300$ triệu đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Số 6300 trong đề là rác"
+ },
+ {
+  "id": "X1836",
+  "dap_an": "7560",
+  "loi_giai": "Chia độ dài cho $10$: các số là $1,2,\\dots,9$. Số cách chọn và gán $6$ đèn vào $6$ vị trí: $A_{9}^{6}=60\\,480$.\nĐiều kiện: $M=\\dfrac{A+B}{2}$, $N=\\dfrac{B+C}{2}$, $P=\\dfrac{C+A}{2}$. Khi đó $A+B$, $B+C$, $C+A$ đều chẵn nên $A,B,C$ cùng tính chẵn lẻ.\nBa số $A,B,C$ phân biệt, cùng tính chẵn lẻ; ba trung điểm $M,N,P$ phải khác ba số còn lại, tức trong ba số không có số nào là trung bình cộng của hai số kia (không lập cấp số cộng).\nCùng lẻ ($1,3,5,7,9$): $C_{5}^{3}=10$ bộ, trừ $4$ cấp số cộng $(1,3,5),(3,5,7),(5,7,9),(1,5,9)$ còn $6$ bộ.\nCùng chẵn ($2,4,6,8$): $C_{4}^{3}=4$ bộ, trừ $2$ cấp số cộng $(2,4,6),(4,6,8)$ còn $2$ bộ.\nCó $6+2=8$ bộ ba số, mỗi bộ gán cho $A,B,C$ theo $3!=6$ cách, ba điểm $M,N,P$ được xác định duy nhất. Số cách thuận lợi: $8\\cdot 6=48$.\n$p=\\dfrac{48}{60\\,480}=\\dfrac{1}{1260}$.\nVậy $\\dfrac{6}{p}=6\\cdot 1260=7560$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Số 7560 trong đề là rác; kiểm bằng máy"
+ },
+ {
+  "id": "X1840",
+  "dap_an": "736",
+  "loi_giai": "Các bạn nữ xếp theo thứ tự tăng dần và các bạn nam xếp theo thứ tự tăng dần nên cách xếp được xác định hoàn toàn bởi số bạn nam ở mỗi khoảng.\nGọi $g_{0},g_{1},g_{2},g_{3},g_{4},g_{5}$ là số nam đứng trước $G_{1}$, giữa $G_{1}G_{2}$, $G_{2}G_{3}$, $G_{3}G_{4}$, $G_{4}G_{5}$ và sau $G_{5}$.\nTa có $g_{0}+g_{1}+g_{2}+g_{3}+g_{4}+g_{5}=10$, $g_{i}\\ge 0$, $g_{1}\\ge 2$, $1\\le g_{4}\\le 4$.\nĐặt $g_{1}=2+a$, $g_{4}=1+b$ với $a\\ge 0$, $0\\le b\\le 3$: $g_{0}+a+g_{2}+g_{3}+g_{5}=7-b$.\nSố nghiệm không âm của $5$ ẩn có tổng $7-b$ là $C_{11-b}^{4}$.\n$b=0$: $C_{11}^{4}=330$; $b=1$: $C_{10}^{4}=210$; $b=2$: $C_{9}^{4}=126$; $b=3$: $C_{8}^{4}=70$.\nTổng: $330+210+126+70=736$.\nVậy có $736$ cách xếp.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng máy"
+ },
+ {
+  "id": "X1841",
+  "dap_an": "1.62",
+  "loi_giai": "Gọi $c$ là số câu đúng thì số câu sai là $10-c$. Điểm: $4c-(10-c)=20\\Leftrightarrow 5c=30\\Leftrightarrow c=6$.\nMỗi câu đúng với xác suất $\\dfrac{1}{4}$, sai với xác suất $\\dfrac{3}{4}$.\n$p=C_{10}^{6}\\left(\\dfrac{1}{4}\\right)^{6}\\left(\\dfrac{3}{4}\\right)^{4}=\\dfrac{210\\cdot 81}{4^{10}}=\\dfrac{17010}{1\\,048\\,576}\\approx 0{,}016222$.\n$100p\\approx 1{,}6222\\approx 1{,}62$.\nVậy $100p\\approx 1{,}62$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1842",
+  "dap_an": "19",
+  "loi_giai": "Gọi $k$ là số trạm tăng áp xây thêm; tuyến ống chia thành $n=k+1$ đoạn bằng nhau, mỗi đoạn dài $x=\\dfrac{720}{n}$ km.\nTổng chi phí: $T=108k+n\\cdot x(2+\\sqrt{x})=108(n-1)+720\\left(2+\\sqrt{\\dfrac{720}{n}}\\right)=108n+1332+720\\sqrt{720}\\cdot n^{-1/2}$.\n$T'(n)=108-360\\sqrt{720}\\cdot n^{-3/2}=0\\Leftrightarrow n^{3/2}=\\dfrac{10}{3}\\sqrt{720}=40\\sqrt{5}=20\\sqrt{20}\\Leftrightarrow n=20$.\n$T'(n)$ đổi dấu từ $-$ sang $+$ tại $n=20$ nên $T$ nhỏ nhất khi $n=20$ (khi đó $x=36$ km, $T=7812$ triệu đồng).\nSố trạm tăng áp: $k=n-1=19$.\nVậy cần xây thêm $19$ trạm bơm tăng áp.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng máy"
+ },
+ {
+  "id": "X1846",
+  "dap_an": "27.6",
+  "loi_giai": "Chọn đơn vị là $15$ km: trạm ở $O$, phạm vi phát hiện là hình cầu tâm $O$ bán kính $\\dfrac{45}{15}=3$ đơn vị.\n$\\overrightarrow{AB}=(-5;-2{,}5;2{,}5)$. Điểm trên đường đi: $M(4-5t;2-2{,}5t;1+2{,}5t)$, $t\\in[0;1]$.\n$OM^{2}=(4-5t)^{2}+(2-2{,}5t)^{2}+(1+2{,}5t)^{2}=37{,}5t^{2}-45t+21$.\n$OM\\le 3\\Leftrightarrow 37{,}5t^{2}-45t+12\\le 0\\Leftrightarrow 0{,}4\\le t\\le 0{,}8$ (nằm trong $[0;1]$).\nĐộ dài $AB=\\sqrt{25+6{,}25+6{,}25}=\\sqrt{37{,}5}$ đơn vị $=15\\sqrt{37{,}5}\\approx 91{,}86$ km.\nQuãng đường trong vùng phát hiện: $(0{,}8-0{,}4)\\cdot 91{,}86\\approx 36{,}74$ km.\nThời gian: $\\dfrac{36{,}74}{80}\\approx 0{,}4593$ giờ $\\approx 27{,}56$ phút.\nVậy vệ tinh ở trong phạm vi phát hiện khoảng $27{,}6$ phút.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng máy"
+ },
+ {
+  "id": "X1848",
+  "dap_an": "113",
+  "loi_giai": "Vận tốc: $v(t)=s'(t)=-3t^{2}+36t+5$, với $t\\in[0;10]$.\n$v'(t)=-6t+36=0\\Leftrightarrow t=6$.\n$v(0)=5$; $v(6)=-108+216+5=113$; $v(10)=-300+360+5=65$.\nVậy vận tốc lớn nhất là $113$ m/s.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1854",
+  "dap_an": "0.48",
+  "loi_giai": "Chọn $3$ thẻ từ $16$ thẻ: $|\\Omega|=C_{16}^{3}=560$.\nGọi $r$, $b$ là số thẻ đỏ, thẻ xanh rút được: $r+b=3$ và $5r+8b=18$. Thay $r=3-b$: $15+3b=18\\Rightarrow b=1$, $r=2$.\nSố cách: $C_{10}^{2}\\cdot C_{6}^{1}=45\\cdot 6=270$.\n$P=\\dfrac{270}{560}=\\dfrac{27}{56}\\approx 0{,}48$.\nVậy xác suất cần tìm xấp xỉ $0{,}48$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1856",
+  "dap_an": "1.5",
+  "loi_giai": "Đặt gốc $A$, $\\overrightarrow{AB}=\\overrightarrow{b}$, $\\overrightarrow{AD}=\\overrightarrow{d}$, $\\overrightarrow{AA'}=\\overrightarrow{e}$ (ba vectơ không đồng phẳng).\n$M\\in AA'$: $\\overrightarrow{AM}=s\\overrightarrow{e}$. $N\\in BC$: $\\overrightarrow{AN}=\\overrightarrow{b}+u\\overrightarrow{d}$. $P\\in C'D'$: $\\overrightarrow{AP}=\\overrightarrow{d}+\\overrightarrow{e}+w\\overrightarrow{b}$.\n$\\overrightarrow{NM}=3\\overrightarrow{NP}$ nên $s\\overrightarrow{e}-\\overrightarrow{b}-u\\overrightarrow{d}=3\\left[(w-1)\\overrightarrow{b}+(1-u)\\overrightarrow{d}+\\overrightarrow{e}\\right]$.\nĐồng nhất hệ số: $\\overrightarrow{e}$: $s=3$; $\\overrightarrow{b}$: $-1=3(w-1)\\Rightarrow w=\\dfrac{2}{3}$; $\\overrightarrow{d}$: $-u=3(1-u)\\Rightarrow u=\\dfrac{3}{2}$.\nVậy $\\overrightarrow{AM}=3\\overrightarrow{AA'}$, suy ra $MA=3AA'$ và $\\overrightarrow{A'M}=2\\overrightarrow{AA'}$ nên $MA'=2AA'$.\n$\\dfrac{MA}{MA'}=\\dfrac{3}{2}=1{,}5$.\nVậy $\\dfrac{MA}{MA'}=\\dfrac{3}{2}$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1858",
+  "dap_an": "1.5",
+  "loi_giai": "Đáy là hình chữ nhật $AB=2$, $AD=BC=2\\sqrt{3}$, tâm $O$.\n$(SAD)\\bot(ABCD)$ nên hình chiếu $H$ của $S$ nằm trên $AD$. Chọn hệ trục: $A(0;0;0)$, $B(2;0;0)$, $D(0;2\\sqrt{3};0)$, $C(2;2\\sqrt{3};0)$, $O(1;\\sqrt{3};0)$, $H(0;h;0)$, $S(0;h;z)$.\n$SA=SO$: $h^{2}+z^{2}=1+(h-\\sqrt{3})^{2}+z^{2}\\Rightarrow 0=4-2\\sqrt{3}h\\Rightarrow h=\\dfrac{2}{\\sqrt{3}}$.\n$HD=2\\sqrt{3}-\\dfrac{2}{\\sqrt{3}}=\\dfrac{4}{\\sqrt{3}}$, góc giữa $SD$ và đáy là $\\widehat{SDH}=60^{\\circ}$ nên $z=SH=HD\\tan 60^{\\circ}=4$. Vậy $S\\left(0;\\dfrac{2}{\\sqrt{3}};4\\right)$.\n$\\overrightarrow{SB}=\\left(2;-\\dfrac{2}{\\sqrt{3}};-4\\right)$, $\\overrightarrow{AC}=(2;2\\sqrt{3};0)$.\n$\\left[\\overrightarrow{SB},\\overrightarrow{AC}\\right]=\\left(8\\sqrt{3};-8;\\dfrac{16}{\\sqrt{3}}\\right)$, độ dài $\\dfrac{32}{\\sqrt{3}}$.\n$\\overrightarrow{AS}=\\left(0;\\dfrac{2}{\\sqrt{3}};4\\right)$, $\\overrightarrow{AS}\\cdot\\left[\\overrightarrow{SB},\\overrightarrow{AC}\\right]=-\\dfrac{16}{\\sqrt{3}}+\\dfrac{64}{\\sqrt{3}}=\\dfrac{48}{\\sqrt{3}}$.\n$d(SB,AC)=\\dfrac{48/\\sqrt{3}}{32/\\sqrt{3}}=\\dfrac{3}{2}$.\nVậy khoảng cách giữa $SB$ và $AC$ bằng $1{,}5$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng máy"
+ },
+ {
+  "id": "X1868",
+  "dap_an": "1.5",
+  "loi_giai": "Đặt gốc $A$, $\\overrightarrow{AB}=\\overrightarrow{b}$, $\\overrightarrow{AD}=\\overrightarrow{d}$, $\\overrightarrow{AA'}=\\overrightarrow{e}$ (ba vectơ không đồng phẳng).\n$M\\in AA'$: $\\overrightarrow{AM}=s\\overrightarrow{e}$. $N\\in BC$: $\\overrightarrow{AN}=\\overrightarrow{b}+u\\overrightarrow{d}$. $P\\in C'D'$: $\\overrightarrow{AP}=\\overrightarrow{d}+\\overrightarrow{e}+w\\overrightarrow{b}$.\n$\\overrightarrow{NM}=3\\overrightarrow{NP}$ nên $s\\overrightarrow{e}-\\overrightarrow{b}-u\\overrightarrow{d}=3\\left[(w-1)\\overrightarrow{b}+(1-u)\\overrightarrow{d}+\\overrightarrow{e}\\right]$.\nĐồng nhất hệ số: $\\overrightarrow{e}$: $s=3$; $\\overrightarrow{b}$: $-1=3(w-1)\\Rightarrow w=\\dfrac{2}{3}$; $\\overrightarrow{d}$: $-u=3(1-u)\\Rightarrow u=\\dfrac{3}{2}$.\nVậy $\\overrightarrow{AM}=3\\overrightarrow{AA'}$, suy ra $MA=3AA'$ và $\\overrightarrow{A'M}=2\\overrightarrow{AA'}$ nên $MA'=2AA'$.\n$\\dfrac{MA}{MA'}=\\dfrac{3}{2}=1{,}5$.\nVậy $\\dfrac{MA}{MA'}=\\dfrac{3}{2}$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1872",
+  "dap_an": "47",
+  "loi_giai": "Mặt phẳng $(\\alpha)$ chứa trục $Ox$ có dạng $y\\cos\\varphi+z\\sin\\varphi=0$ (vectơ pháp tuyến $(0;\\cos\\varphi;\\sin\\varphi)$ có độ dài $1$).\nKhoảng cách (cùng phía nên cùng dấu): $d_{1}=-2\\cos\\varphi+3\\sin\\varphi$, $d_{2}=4\\cos\\varphi+\\sin\\varphi$, $d_{3}=2\\cos\\varphi+\\sin\\varphi$ (lấy dấu theo cùng một phía).\n$T=d_{1}+2d_{2}+3d_{3}=(-2+8+6)\\cos\\varphi+(3+2+3)\\sin\\varphi=12\\cos\\varphi+8\\sin\\varphi$.\nTheo Bunyakovsky: $T\\le\\sqrt{12^{2}+8^{2}}=\\sqrt{208}=4\\sqrt{13}$, dấu \"$=$\" khi $\\tan\\varphi=\\dfrac{2}{3}$.\nKhi đó $T_{\\max}=4\\sqrt{13}=a\\sqrt{b}$ với $a=4$, $b=13$ (nguyên tố).\n$S=2a+3b=8+39=47$.\nVậy $S=47$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Dấu = đạt khi A thuộc mặt phẳng (biên); đáp số theo đề 47"
+ }
+]

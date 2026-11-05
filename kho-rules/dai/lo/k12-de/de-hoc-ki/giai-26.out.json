@@ -1,0 +1,461 @@
+[
+ {
+  "id": "X2234",
+  "dap_an": "48",
+  "loi_giai": "Gọi hai số còn lại là $x,y$. Tổng bảy số: $7\\cdot 8=56$.\nTổng năm số đã biết: $2+4+10+12+14=42$ nên $x+y=56-42=14$.\nPhương sai: $\\dfrac{\\sum a_i^2}{7}-8^2=16\\Rightarrow \\sum a_i^2=7\\cdot 80=560$.\nTổng bình phương năm số đã biết: $4+16+100+144+196=460$ nên $x^2+y^2=100$.\nSuy ra $xy=\\dfrac{(x+y)^2-(x^2+y^2)}{2}=\\dfrac{196-100}{2}=48$.\nVậy tích hai số còn lại bằng $48$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2235",
+  "dap_an": "0.53",
+  "loi_giai": "Gọi $A$: \"học sinh được chọn là nam\"; $B$: \"học sinh được chọn tham gia câu lạc bộ Toán\".\nSố nam tham gia CLB: $21\\cdot 0{,}14=2{,}94$; số nữ tham gia CLB: $24\\cdot 0{,}11=2{,}64$ (tính theo tỉ lệ).\n$P(A\\cap B)=\\dfrac{2{,}94}{45}$, $P(B)=\\dfrac{2{,}94+2{,}64}{45}=\\dfrac{5{,}58}{45}$.\n$P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{2{,}94}{5{,}58}\\approx 0{,}5269$.\nVậy xác suất cần tìm xấp xỉ $0{,}53$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2238",
+  "dap_an": "48",
+  "loi_giai": "Gọi hai số còn lại là $x,y$. Tổng bảy số: $7\\cdot 8=56$.\nTổng năm số đã biết: $2+4+10+12+14=42$ nên $x+y=56-42=14$.\nPhương sai: $\\dfrac{\\sum a_i^2}{7}-8^2=16\\Rightarrow \\sum a_i^2=7\\cdot 80=560$.\nTổng bình phương năm số đã biết: $4+16+100+144+196=460$ nên $x^2+y^2=100$.\nSuy ra $xy=\\dfrac{(x+y)^2-(x^2+y^2)}{2}=\\dfrac{196-100}{2}=48$.\nVậy tích hai số còn lại bằng $48$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2247",
+  "dap_an": "23.4",
+  "loi_giai": "Gọi $H$ là trung điểm $AB$ thì $SH\\perp(ABC)$. Kẻ $HK\\perp BC$ tại $K$, khi đó $BC\\perp(SHK)$ nên góc nhị diện $[S,BC,A]$ chính là $\\widehat{SKH}=60^\\circ$.\n$HB=3$, $\\widehat{B}=60^\\circ$ nên $HK=HB\\sin 60^\\circ=\\dfrac{3\\sqrt3}{2}$.\n$SH=HK\\tan 60^\\circ=\\dfrac{3\\sqrt3}{2}\\cdot\\sqrt3=\\dfrac92$.\nDiện tích đáy: $S_{ABC}=\\dfrac{6^2\\sqrt3}{4}=9\\sqrt3$.\n$V=\\dfrac13\\cdot 9\\sqrt3\\cdot\\dfrac92=\\dfrac{27\\sqrt3}{2}\\approx 23{,}38$.\nVậy $V\\approx 23{,}4$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2248",
+  "dap_an": "46",
+  "loi_giai": "Gọi $S_n$ (triệu đồng) là số tiền còn lại sau lần rút thứ $n$, lãi $r=0{,}6\\%$.\n$S_n=1000\\cdot 1{,}006^n-25\\cdot\\dfrac{1{,}006^n-1}{0{,}006}$.\nRút hết tiền khi $S_n\\le 0$: $1000\\cdot 1{,}006^n\\le \\dfrac{25}{0{,}006}\\left(1{,}006^n-1\\right)$.\n$\\Leftrightarrow 1{,}006^n\\ge \\dfrac{25/0{,}006}{25/0{,}006-1000}=\\dfrac{4166{,}67}{3166{,}67}\\approx 1{,}3158$.\n$\\Leftrightarrow n\\ge \\log_{1{,}006}1{,}3158\\approx 45{,}87$.\nVậy sau $46$ tháng anh Bình rút hết tiền.",
+  "chuong": "KHAC",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Tính số lần rút (lần đầu rút sau 1 tháng); kiểm máy n=46"
+ },
+ {
+  "id": "X2249",
+  "dap_an": "65",
+  "loi_giai": "Tam giác $ABC$ vuông tại $A$: $AC=\\sqrt{BC^2-AB^2}=\\sqrt{13-4}=3$. Lăng trụ đứng nên $AA'=CC'=4$.\nChọn hệ trục $Oxyz$ với $A(0;0;0)$, $B(2;0;0)$, $C(0;3;0)$, $A'(0;0;4)$. Khi đó $E(1;0;0)$, $F(0;0;2)$.\nMặt phẳng $(ACE)\\equiv(ABC)$ có vectơ pháp tuyến $\\vec n_1=(0;0;1)$.\n$\\overrightarrow{CE}=(1;-3;0)$, $\\overrightarrow{EF}=(-1;0;2)$ nên $\\vec n_2=[\\overrightarrow{CE},\\overrightarrow{EF}]=(-6;-2;-3)$, $|\\vec n_2|=7$.\n$\\cos\\varphi=\\dfrac{|\\vec n_1\\cdot\\vec n_2|}{|\\vec n_1||\\vec n_2|}=\\dfrac37\\Rightarrow\\varphi\\approx 64{,}6^\\circ$.\nHình chiếu của $F$ lên $(ABC)$ là $A$ nằm trong nửa mặt phẳng chứa $A$ nên góc nhị diện nhọn.\nVậy số đo góc nhị diện xấp xỉ $65^\\circ$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2253",
+  "dap_an": "0.27",
+  "loi_giai": "Gọi hộp 1 có $n_1$ bi, trong đó $b_1$ bi đen; hộp 2 có $n_2$ bi, trong đó $b_2$ bi đen. Ta có $n_1+n_2=15$, $n_1>n_2$, $b_1>b_2$.\nXác suất lấy được 2 viên đen: $\\dfrac{b_1b_2}{n_1n_2}=\\dfrac{5}{28}$ nên $28\\mid n_1n_2$.\nCác cặp $(n_1,n_2)$: $(14,1),(13,2),(12,3),(11,4),(10,5),(9,6),(8,7)$ có tích $14;26;36;44;50;54;56$. Chỉ $n_1n_2=56$ chia hết cho $28$ (và $14$ cho $b_1b_2=2{,}5$ không nguyên), nên $n_1=8$, $n_2=7$.\n$b_1b_2=\\dfrac{5\\cdot 56}{28}=10$ với $b_1\\le 8$, $b_2\\le 7$, $b_1>b_2$ nên $b_1=5$, $b_2=2$.\nSố bi trắng: hộp 1 có $3$, hộp 2 có $5$.\n$P(\\text{2 trắng})=\\dfrac38\\cdot\\dfrac57=\\dfrac{15}{56}\\approx 0{,}2679$.\nVậy xác suất cần tìm xấp xỉ $0{,}27$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2255",
+  "dap_an": "91.3",
+  "loi_giai": "Cỡ mẫu $n=13+24+55+61+31+16=200$, nên $\\dfrac n2=100$.\nTần số tích luỹ: $13;\\ 37;\\ 92;\\ 153;\\dots$ nên nhóm chứa trung vị là $[90;100)$.\n$M_e=90+\\dfrac{100-92}{61}\\cdot 10\\approx 91{,}31$.\nVậy trung vị xấp xỉ $91{,}3$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Bảng số liệu đọc từ đề, nhóm 6 khoảng"
+ },
+ {
+  "id": "X2259",
+  "dap_an": "91.3",
+  "loi_giai": "Cỡ mẫu $n=13+24+55+61+31+16=200$, nên $\\dfrac n2=100$.\nTần số tích luỹ: $13;\\ 37;\\ 92;\\ 153;\\dots$ nên nhóm chứa trung vị là $[90;100)$.\n$M_e=90+\\dfrac{100-92}{61}\\cdot 10\\approx 91{,}31$.\nVậy trung vị xấp xỉ $91{,}3$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2262",
+  "dap_an": "0.27",
+  "loi_giai": "Gọi hộp 1 có $n_1$ bi, trong đó $b_1$ bi đen; hộp 2 có $n_2$ bi, trong đó $b_2$ bi đen. Ta có $n_1+n_2=15$, $n_1>n_2$, $b_1>b_2$.\nXác suất lấy được 2 viên đen: $\\dfrac{b_1b_2}{n_1n_2}=\\dfrac{5}{28}$ nên $28\\mid n_1n_2$.\nCác cặp $(n_1,n_2)$: $(14,1),(13,2),(12,3),(11,4),(10,5),(9,6),(8,7)$ có tích $14;26;36;44;50;54;56$. Chỉ $n_1n_2=56$ chia hết cho $28$ (và $14$ cho $b_1b_2=2{,}5$ không nguyên), nên $n_1=8$, $n_2=7$.\n$b_1b_2=\\dfrac{5\\cdot 56}{28}=10$ với $b_1\\le 8$, $b_2\\le 7$, $b_1>b_2$ nên $b_1=5$, $b_2=2$.\nSố bi trắng: hộp 1 có $3$, hộp 2 có $5$.\n$P(\\text{2 trắng})=\\dfrac38\\cdot\\dfrac57=\\dfrac{15}{56}\\approx 0{,}2679$.\nVậy xác suất cần tìm xấp xỉ $0{,}27$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2268",
+  "dap_an": "0.62",
+  "loi_giai": "Không gian mẫu: mỗi hành khách chọn 1 trong 3 toa nên $n(\\Omega)=3^5=243$.\nGọi biến cố $A$: mỗi toa có ít nhất 1 hành khách. Số cách có ít nhất một toa trống: $3\\cdot 2^5-3\\cdot 1^5=93$.\nDo đó $n(A)=243-93=150$.\n$P(A)=\\dfrac{150}{243}=\\dfrac{50}{81}\\approx 0{,}617$.\nVậy xác suất cần tìm xấp xỉ $0{,}62$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2270",
+  "dap_an": "106",
+  "loi_giai": "Gọi $A$ là vị trí chiến sĩ (cách bờ bên kia $100$ m), $T$ là mục tiêu ở bờ bên kia, $AT=1000$ m. Gọi $H$ là hình chiếu của $A$ lên bờ bên kia thì $AH=100$, $HT=\\sqrt{1000^2-100^2}=\\sqrt{990000}$.\nChiến sĩ bơi đến điểm $M$ trên bờ kia với $HM=x$ ($0\\le x\\le \\sqrt{990000}$), sau đó chạy đoạn $MT=\\sqrt{990000}-x$.\nGọi $v$ là vận tốc bơi thì vận tốc chạy là $3v$. Thời gian: $t(x)=\\dfrac{\\sqrt{x^2+10000}}{v}+\\dfrac{\\sqrt{990000}-x}{3v}$.\n$t'(x)=\\dfrac1v\\left(\\dfrac{x}{\\sqrt{x^2+10000}}-\\dfrac13\\right)=0\\Leftrightarrow 9x^2=x^2+10000\\Leftrightarrow x^2=1250$.\n$t'$ đổi dấu từ âm sang dương tại $x=\\sqrt{1250}\\approx 35{,}36$ nên $t$ nhỏ nhất tại đó.\nQuãng đường bơi: $AM=\\sqrt{1250+10000}=\\sqrt{11250}\\approx 106{,}07$.\nVậy chiến sĩ phải bơi khoảng $106$ m.",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Hiểu đề: bơi ngang sông rộng 100 m rồi chạy dọc bờ tới mục tiêu"
+ },
+ {
+  "id": "X2271",
+  "dap_an": "3.46",
+  "loi_giai": "Ta có $MA^2=9$, $MB^2=36$, $MC^2=25$, $MD^2=169$, tức\n$(a-4)^2+(b-1)^2+c^2=9$ $(1)$; $(a-4)^2+(b-6)^2+(c-6)^2=36$ $(2)$; $(a-5)^2+(b-6)^2+(c-2)^2=25$ $(3)$; $(a-7)^2+(b-2)^2+(c-14)^2=169$ $(4)$.\n$(2)-(1)$: $-10b-12c+71=27\\Leftrightarrow 5b+6c=22$.\n$(3)-(1)$: $-2a-10b-4c+48=16\\Leftrightarrow a+5b+2c=16$.\n$(4)-(1)$: $-6a-2b-28c+232=160\\Leftrightarrow 3a+b+14c=36$.\nTừ hai phương trình cuối: $a=16-5b-2c$ nên $3(16-5b-2c)+b+14c=36\\Leftrightarrow 7b-4c=6$.\nKết hợp $5b+6c=22$ ta được $b=2$, $c=2$, $a=16-10-4=2$.\nThử lại vào $(1)$: $4+1+4=9$ đúng.\n$OM=\\sqrt{2^2+2^2+2^2}=2\\sqrt3\\approx 3{,}46$.\nVậy $OM\\approx 3{,}46$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2272",
+  "dap_an": "6.31",
+  "loi_giai": "Số tiền thu được khi chở $x$ người: $f(x)=x\\cdot\\dfrac{(44-x)^2}{2}$ (nghìn đồng), $0<x\\le 16$.\n$f'(x)=\\dfrac{(44-x)^2-2x(44-x)}{2}=\\dfrac{(44-x)(44-3x)}{2}$.\n$f'(x)=0\\Leftrightarrow x=\\dfrac{44}{3}\\approx 14{,}67$ (loại $x=44$). $f'>0$ trên $\\left(0;\\dfrac{44}3\\right)$, $f'<0$ trên $\\left(\\dfrac{44}3;16\\right]$.\n$f\\left(\\dfrac{44}3\\right)\\approx 6309{,}9$ nghìn đồng; với $x$ nguyên: $f(15)=6307{,}5$, $f(14)=6300$. Cả hai đều làm tròn thành $6{,}31$ triệu đồng.\nVậy lái xe thu được nhiều nhất khoảng $6{,}31$ triệu đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Giá trị x nguyên (15) hay thực (44/3) đều cho 6,31"
+ },
+ {
+  "id": "X2276",
+  "dap_an": "4.74",
+  "loi_giai": "Số tiền thu được khi chở $x$ người: $f(x)=x\\cdot\\dfrac{(40-x)^2}{2}$ (nghìn đồng), $0<x\\le 16$.\n$f'(x)=\\dfrac{(40-x)^2-2x(40-x)}{2}=\\dfrac{(40-x)(40-3x)}{2}$.\n$f'(x)=0\\Leftrightarrow x=\\dfrac{40}{3}\\approx 13{,}33$ (loại $x=40$). $f'>0$ trên $\\left(0;\\dfrac{40}3\\right)$, $f'<0$ trên $\\left(\\dfrac{40}3;16\\right]$.\n$f\\left(\\dfrac{40}3\\right)\\approx 4740{,}7$ nghìn đồng; với $x$ nguyên: $f(13)=4738{,}5$, $f(14)=4732$. Cả hai đều làm tròn thành $4{,}74$ triệu đồng.\nVậy lái xe thu được nhiều nhất khoảng $4{,}74$ triệu đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Giá trị x nguyên (13) hay thực (40/3) đều cho 4,74"
+ },
+ {
+  "id": "X2278",
+  "dap_an": "3",
+  "loi_giai": "Đặt $a'=a+1$. Các điểm đã cho là các điểm ở câu tương ứng dịch sang trái $1$ đơn vị theo $Ox$ nên hệ $MA=3$, $MB=6$, $MC=5$, $MD=13$ trở thành\n$(a'-4)^2+(b-1)^2+c^2=9$; $(a'-4)^2+(b-6)^2+(c-6)^2=36$; $(a'-5)^2+(b-6)^2+(c-2)^2=25$; $(a'-7)^2+(b-2)^2+(c-14)^2=169$.\nTrừ từng phương trình cho phương trình đầu: $5b+6c=22$, $a'+5b+2c=16$, $3a'+b+14c=36$.\nGiải hệ được $b=2$, $c=2$, $a'=2$ nên $a=1$. Vậy $M(1;2;2)$.\nThử lại: $MA^2=4+1+4=9$ đúng.\n$OM=\\sqrt{1+4+4}=3$.\nVậy khoảng cách từ $M$ đến $O$ bằng $3$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2279",
+  "dap_an": "0.74",
+  "loi_giai": "Không gian mẫu: $n(\\Omega)=3^6=729$.\nSố cách có ít nhất một toa trống: $3\\cdot 2^6-3\\cdot 1^6=189$. Số cách mỗi toa có người: $729-189=540$.\n$P=\\dfrac{540}{729}=\\dfrac{20}{27}\\approx 0{,}7407$.\nVậy xác suất cần tìm xấp xỉ $0{,}74$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2286",
+  "dap_an": "0.92",
+  "loi_giai": "Số cách xếp $9$ học sinh vào $9$ ghế: $n(\\Omega)=9!$.\nGọi $A$: \"3 học sinh lớp 10 ngồi liền nhau\". Gộp 3 học sinh này thành một nhóm: có $3!$ cách xếp trong nhóm và $7!$ cách xếp $7$ phần tử (nhóm và $6$ bạn còn lại), nên $n(A)=7!\\cdot 3!$.\n$P(A)=\\dfrac{7!\\cdot 3!}{9!}=\\dfrac{6}{72}=\\dfrac1{12}$.\n$P(\\overline A)=1-\\dfrac1{12}=\\dfrac{11}{12}\\approx 0{,}9167$.\nVậy xác suất cần tìm xấp xỉ $0{,}92$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2291",
+  "dap_an": "1.66",
+  "loi_giai": "Vì $AB\\perp(ACD)$ nên $AB\\perp AH$ với mọi đường thẳng $AH$ nằm trong $(ACD)$.\nKẻ $AH\\perp CD$ tại $H$ ($H\\in CD$). Khi đó $AH\\perp AB$ và $AH\\perp CD$ nên $AH$ là đoạn vuông góc chung của $AB$ và $CD$.\nTam giác $ACD$ vuông tại $A$: $CD=\\sqrt{AC^2+AD^2}=\\sqrt{13}$.\n$AH=\\dfrac{AC\\cdot AD}{CD}=\\dfrac{2\\cdot 3}{\\sqrt{13}}=\\dfrac{6}{\\sqrt{13}}=\\dfrac{6\\sqrt{13}}{13}\\approx 1{,}66$.\nVậy $d(AB,CD)=\\dfrac{6\\sqrt{13}}{13}\\approx 1{,}66$.",
+  "chuong": "KHAC",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Đề không nêu làm tròn; đáp án 6/sqrt(13), lấy 2 chữ số thập phân"
+ },
+ {
+  "id": "X2300",
+  "dap_an": "1.66",
+  "loi_giai": "Vì $AB\\perp(ACD)$ nên $AB\\perp AH$ với mọi đường thẳng $AH$ nằm trong $(ACD)$.\nKẻ $AH\\perp CD$ tại $H$ ($H\\in CD$). Khi đó $AH\\perp AB$ và $AH\\perp CD$ nên $AH$ là đoạn vuông góc chung của $AB$ và $CD$.\nTam giác $ACD$ vuông tại $A$: $CD=\\sqrt{AC^2+AD^2}=\\sqrt{13}$.\n$AH=\\dfrac{AC\\cdot AD}{CD}=\\dfrac{2\\cdot 3}{\\sqrt{13}}=\\dfrac{6}{\\sqrt{13}}=\\dfrac{6\\sqrt{13}}{13}\\approx 1{,}66$.\nVậy $d(AB,CD)=\\dfrac{6\\sqrt{13}}{13}\\approx 1{,}66$.",
+  "chuong": "KHAC",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Đề không nêu làm tròn; đáp án 6/sqrt(13), lấy 2 chữ số thập phân"
+ },
+ {
+  "id": "X2308",
+  "dap_an": "14",
+  "loi_giai": "Đáy là hình thoi cạnh $a$, $\\widehat{ABC}=60^\\circ$ nên tam giác $ABC$ đều: $AC=a$, $OC=\\dfrac a2$, $OD=\\dfrac{a\\sqrt3}{2}$.\nTam giác $OCD$ vuông tại $O$, kẻ $OH\\perp CD$: $OH=\\dfrac{OC\\cdot OD}{CD}=\\dfrac{\\frac a2\\cdot\\frac{a\\sqrt3}2}{a}=\\dfrac{a\\sqrt3}{4}$.\nKẻ $OK\\perp SH$ tại $K$ thì $OK\\perp(SCD)$ nên $d(O,(SCD))=OK$.\n$\\dfrac1{OK^2}=\\dfrac1{OH^2}+\\dfrac1{SO^2}=\\dfrac{16}{3a^2}+\\dfrac{16}{9a^2}=\\dfrac{64}{9a^2}$ nên $OK=\\dfrac{3a}{8}$.\nVậy $m=3$, $n=8$ (tối giản) và $2m+n=14$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2310",
+  "dap_an": "0.32",
+  "loi_giai": "An thắng chung cuộc khi thắng đủ $3$ séc trước. Xét các trường hợp (séc cuối An thắng):\nAn thắng $3-0$: $0{,}4^3=0{,}064$.\nAn thắng $3-1$: $C_3^1\\cdot 0{,}4^3\\cdot 0{,}6=0{,}1152$.\nAn thắng $3-2$: $C_4^2\\cdot 0{,}4^3\\cdot 0{,}6^2=0{,}13824$.\nXác suất: $0{,}064+0{,}1152+0{,}13824=0{,}31744\\approx 0{,}32$.\nVậy xác suất An thắng chung cuộc xấp xỉ $0{,}32$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2313",
+  "dap_an": "108",
+  "loi_giai": "Vận tốc: $v(t)=S'(t)=-3t^2+36t$, $t\\in[0;10]$.\n$v'(t)=-6t+36=0\\Leftrightarrow t=6$.\n$v(0)=0$, $v(6)=-108+216=108$, $v(10)=-300+360=60$.\nVậy vận tốc lớn nhất bằng $108$ m/s.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2314",
+  "dap_an": "75",
+  "loi_giai": "Vận tốc: $v(t)=S'(t)=-3t^2+30t$, $t\\in[0;10]$.\n$v'(t)=-6t+30=0\\Leftrightarrow t=5$.\n$v(0)=0$, $v(5)=-75+150=75$, $v(10)=-300+300=0$.\nVậy vận tốc lớn nhất bằng $75$ m/s.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2316",
+  "dap_an": "347",
+  "loi_giai": "Xác suất thắng một ván (ít nhất hai mặt 6 trong ba con súc sắc): $p=C_3^2\\left(\\dfrac16\\right)^2\\dfrac56+\\left(\\dfrac16\\right)^3=\\dfrac{15+1}{216}=\\dfrac{2}{27}$; thua: $q=\\dfrac{25}{27}$.\nThắng ít nhất $3$ trong $4$ ván: $C_4^3p^3q+p^4=\\dfrac{4\\cdot 8\\cdot 25+16}{27^4}=\\dfrac{816}{531441}=\\dfrac{272}{177147}$.\n$272=2^4\\cdot 17$ và $177147=3^{11}$ nguyên tố cùng nhau nên $a=272$, $b=177147$.\n$b-650a=177147-650\\cdot 272=347$.\nVậy giá trị cần tìm là $347$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2317",
+  "dap_an": "4",
+  "loi_giai": "Vì $-\\overrightarrow{CM}=\\overrightarrow{MC}$ nên $\\overrightarrow{MA}+2\\overrightarrow{MB}-\\overrightarrow{CM}=\\overrightarrow{MA}+2\\overrightarrow{MB}+\\overrightarrow{MC}$.\nGọi $G$ thoả $\\overrightarrow{GA}+2\\overrightarrow{GB}+\\overrightarrow{GC}=\\vec 0$: $G=\\dfrac{A+2B+C}{4}=\\left(\\dfrac32;\\dfrac54;\\dfrac32\\right)$.\nKhi đó $\\overrightarrow{MA}+2\\overrightarrow{MB}+\\overrightarrow{MC}=4\\overrightarrow{MG}$ nên biểu thức bằng $4MG$, nhỏ nhất khi $MG$ nhỏ nhất.\n$M\\in(Oyz)$ nên $M$ là hình chiếu của $G$ lên $(Oyz)$: $M\\left(0;\\dfrac54;\\dfrac32\\right)$, tức $b=\\dfrac54$, $c=\\dfrac32$.\n$2b+c=\\dfrac52+\\dfrac32=4$.\nVậy $2b+c=4$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2319",
+  "dap_an": "19.4",
+  "loi_giai": "Nhóm có tần số lớn nhất là $[18;22)$ (tần số $120$), độ dài nhóm $h=4$; tần số nhóm trước là $78$, nhóm sau là $45$.\n$M_o=18+\\dfrac{120-78}{(120-78)+(120-45)}\\cdot 4=18+\\dfrac{42}{117}\\cdot 4\\approx 19{,}44$.\nVậy công ty nên xây nhà ở mức giá khoảng $19{,}4$ triệu đồng/m$^2$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2322",
+  "dap_an": "75",
+  "loi_giai": "Xác suất thắng một ván (ít nhất hai mặt 6 trong ba con súc sắc): $p=C_3^2\\left(\\dfrac16\\right)^2\\dfrac56+\\left(\\dfrac16\\right)^3=\\dfrac{15+1}{216}=\\dfrac{2}{27}$; thua: $q=\\dfrac{25}{27}$.\nThắng ít nhất $3$ trong $4$ ván: $C_4^3p^3q+p^4=\\dfrac{4\\cdot 8\\cdot 25+16}{27^4}=\\dfrac{816}{531441}=\\dfrac{272}{177147}$.\n$272=2^4\\cdot 17$ và $177147=3^{11}$ nguyên tố cùng nhau nên $a=272$, $b=177147$.\n$b-651a=177147-651\\cdot 272=75$.\nVậy giá trị cần tìm là $75$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2323",
+  "dap_an": "8",
+  "loi_giai": "Vì $-\\overrightarrow{CM}=\\overrightarrow{MC}$ nên $\\overrightarrow{MA}+2\\overrightarrow{MB}-\\overrightarrow{CM}=\\overrightarrow{MA}+2\\overrightarrow{MB}+\\overrightarrow{MC}$.\nGọi $G$ thoả $\\overrightarrow{GA}+2\\overrightarrow{GB}+\\overrightarrow{GC}=\\vec 0$: $G=\\dfrac{A+2B+C}{4}=\\left(\\dfrac32;\\dfrac54;\\dfrac32\\right)$.\nBiểu thức bằng $4MG$, nhỏ nhất khi $M$ là hình chiếu của $G$ lên $(Oyz)$: $M\\left(0;\\dfrac54;\\dfrac32\\right)$.\n$4b+2c=5+3=8$.\nVậy $4b+2c=8$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2324",
+  "dap_an": "19",
+  "loi_giai": "Nhóm có tần số lớn nhất là $[18;22)$ (tần số $120$), độ dài nhóm $h=4$; tần số nhóm trước là $78$, nhóm sau là $44$.\n$M_o=18+\\dfrac{120-78}{(120-78)+(120-44)}\\cdot 4=18+\\dfrac{42}{118}\\cdot 4\\approx 19{,}42$.\nVậy công ty nên xây nhà ở mức giá khoảng $19$ triệu đồng/m$^2$ (làm tròn đến hàng đơn vị).",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2325",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "KHAC",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn bảng số rời, không có đề"
+ },
+ {
+  "id": "X2329",
+  "dap_an": "37",
+  "loi_giai": "Gọi $S_n$ (triệu đồng) là số tiền còn lại sau lần rút thứ $n$, lãi $0{,}5\\%$/tháng.\n$S_n=1000\\cdot 1{,}005^n-30\\cdot\\dfrac{1{,}005^n-1}{0{,}005}$.\nRút hết khi $S_n\\le 0$: $1000\\cdot 1{,}005^n\\le 6000\\left(1{,}005^n-1\\right)\\Leftrightarrow 1{,}005^n\\ge \\dfrac{6000}{5000}=1{,}2$.\n$n\\ge \\log_{1{,}005}1{,}2\\approx 36{,}56$.\nVậy sau $37$ tháng anh Huy rút hết tiền.",
+  "chuong": "KHAC",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Tính số lần rút (lần đầu sau 1 tháng); kiểm máy n=37"
+ },
+ {
+  "id": "X2331",
+  "dap_an": "400",
+  "loi_giai": "Chi phí trung bình: $f(x)=\\dfrac{400x+50}{x}=400+\\dfrac{50}{x}$ với $x>0$.\nVì $\\dfrac{50}{x}>0$ nên $f(x)>400$ với mọi $x>0$, và $f(x)\\to 400$ khi $x\\to+\\infty$.\nVậy chi phí sản xuất trung bình mỗi sản phẩm không thấp hơn $400$ nghìn đồng.",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Cận dưới 400 (không đạt được)"
+ },
+ {
+  "id": "X2333",
+  "dap_an": "2",
+  "loi_giai": "$y'=3x^2-3=0\\Leftrightarrow x=\\pm1$ nên hai điểm cực trị là $(-1;2)$ và $(1;-2)$. Đường thẳng qua hai điểm này: $d:\\ 2x+y=0$.\nThay $A(1;2)$: $2\\cdot1+2=4>0$; $B(2;1)$: $4+1=5>0$ nên $A,B$ cùng phía với $d$.\nGọi $A'$ đối xứng $A$ qua $d$: $A'=A-2\\cdot\\dfrac{2\\cdot1+2}{5}(2;1)=\\left(-\\dfrac{11}5;\\dfrac25\\right)$.\n$MA+MB=MA'+MB\\ge A'B$, dấu bằng khi $M$ là giao của $A'B$ với $d$.\n$\\overrightarrow{A'B}=\\left(\\dfrac{21}5;\\dfrac35\\right)\\parallel(7;1)$. Đường $A'B$: $(x;y)=(2+7s;\\,1+s)$.\nThay vào $2x+y=0$: $4+14s+1+s=0\\Rightarrow s=-\\dfrac13$, suy ra $M\\left(-\\dfrac13;\\dfrac23\\right)$.\n$b-4a=\\dfrac23+\\dfrac43=2$.\nVậy $b-4a=2$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2335",
+  "dap_an": "4",
+  "loi_giai": "Đồ thị có tiệm cận đứng $x=-1$, tiệm cận ngang $y=2$ nên $I(-1;2)$. $y'=\\dfrac{3}{(x+1)^2}$.\nĐặt $t=x_0+1>1$ (vì $x_0>0$). Tiếp tuyến tại $M$: $y=\\dfrac{3}{t^2}(x-x_0)+y_0$ với $y_0=2-\\dfrac3t$.\nCắt $x=-1$ tại $A$: $y_A=y_0-\\dfrac3t=2-\\dfrac6t$ nên $IA=\\dfrac6t$.\nCắt $y=2$ tại $B$: $\\dfrac{3}{t^2}(x_B-x_0)=\\dfrac3t\\Rightarrow x_B=x_0+t=2t-1$ nên $IB=|x_B+1|=2t$.\n$IA^2+IB^2=40\\Leftrightarrow \\dfrac{36}{t^2}+4t^2=40\\Leftrightarrow t^4-10t^2+9=0\\Leftrightarrow t^2=1$ hoặc $t^2=9$.\nVì $t>1$ nên $t=3$, suy ra $x_0=2$, $y_0=1$.\n$P=x_0^2+2y_0^2-x_0y_0=4+2-2=4$.\nVậy $P=4$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2337",
+  "dap_an": "39",
+  "loi_giai": "Gọi $S_n$ (triệu đồng) là số tiền còn lại sau lần rút thứ $n$, lãi $0{,}8\\%$/tháng.\n$S_n=1000\\cdot 1{,}008^n-30\\cdot\\dfrac{1{,}008^n-1}{0{,}008}$.\nRút hết khi $S_n\\le 0$: $1000\\cdot 1{,}008^n\\le 3750\\left(1{,}008^n-1\\right)\\Leftrightarrow 1{,}008^n\\ge \\dfrac{3750}{2750}\\approx 1{,}3636$.\n$n\\ge \\log_{1{,}008}1{,}3636\\approx 38{,}92$.\nVậy sau $39$ tháng anh Huy rút hết tiền.",
+  "chuong": "KHAC",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Tính số lần rút (lần đầu sau 1 tháng); kiểm máy n=39"
+ },
+ {
+  "id": "X2338",
+  "dap_an": "17",
+  "loi_giai": "Gọi $x,y$ lần lượt là số xe loại A, B thuê: $0\\le x\\le 10$, $0\\le y\\le 9$ (nguyên).\nChở đủ xi măng: $20x+10y\\ge 140\\Leftrightarrow 2x+y\\ge 14$. Chở đủ thép: $0{,}6x+1{,}5y\\ge 9\\Leftrightarrow 2x+5y\\ge 30$.\nChi phí: $F=5x+4{,}5y$ (triệu đồng).\nCác đỉnh của miền nghiệm: $(2{,}5;9)$, $(5;4)$, $(10;2)$, $(10;9)$ với $F=53;\\ 43;\\ 59;\\ 90$.\n$F$ nhỏ nhất tại $(5;4)$ (giao của $2x+y=14$ và $2x+5y=30$), có toạ độ nguyên nên thoả đề; $F_{\\min}=43$ triệu đồng.\nVậy $x+3y=5+12=17$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2342",
+  "dap_an": "45",
+  "loi_giai": "Với $x$ sản phẩm bán được thì giá bán $t=\\dfrac{290-x}{5}$, doanh thu $R=x\\cdot t=\\dfrac{x(290-x)}{5}$.\nSau thuế $20\\%$ trên doanh thu, còn $0{,}8R=0{,}16\\,x(290-x)$.\nLợi nhuận: $L(x)=0{,}16x(290-x)-\\left(5000-58x+x^2\\right)=-1{,}16x^2+104{,}4x-5000$.\n$L'(x)=-2{,}32x+104{,}4=0\\Leftrightarrow x=45$, và $L$ là parabol quay xuống nên $L$ lớn nhất tại $x=45$.\nKhi đó $t=\\dfrac{290-45}{5}=49\\in(0;58)$ thoả điều kiện.\nVậy công ty cần bán $45$ sản phẩm.",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Thuế 20% tính trên doanh thu"
+ },
+ {
+  "id": "X2344",
+  "dap_an": "113",
+  "loi_giai": "Gọi $T$: \"thịt lợn giảm giá\", $G$: \"gạo giảm giá\"; $P(T\\cap G)=0{,}1$.\n$P(T|\\overline G)=\\dfrac25\\Rightarrow P(T)-0{,}1=\\dfrac25\\left(1-P(G)\\right)\\Rightarrow P(T)=0{,}5-0{,}4P(G)$ $(1)$.\n$P(G|\\overline T)=\\dfrac47\\Rightarrow P(G)-0{,}1=\\dfrac47\\left(1-P(T)\\right)$ $(2)$.\nThay $(1)$ vào $(2)$: $P(G)-0{,}1=\\dfrac47\\left(0{,}5+0{,}4P(G)\\right)\\Rightarrow P(G)\\cdot\\dfrac{5{,}4}{7}=\\dfrac{2{,}7}{7}\\Rightarrow P(G)=0{,}5$, suy ra $P(T)=0{,}3$.\n$P(T\\cup G)=0{,}3+0{,}5-0{,}1=0{,}7=\\dfrac7{10}$ nên $m=7$, $n=10$.\n$T=9m+5n=63+50=113$.\nVậy $T=113$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2347",
+  "dap_an": "2691",
+  "loi_giai": "Khoảng cách từ $A$, $B$ đến $(P)$: $d(A,P)=\\dfrac{|4+1+0+1|}{\\sqrt6}=\\sqrt6$; $d(B,P)=\\dfrac{|6\\sqrt3-0-1+1|}{\\sqrt6}=3\\sqrt2$. $A,B$ cùng phía với $(P)$.\nGọi $H,K$ là hình chiếu của $A,B$ lên $(P)$. $AB^2=(3\\sqrt3-2)^2+1+1=33-12\\sqrt3$ và $(3\\sqrt2-\\sqrt6)^2=24-12\\sqrt3$ nên $HK^2=AB^2-(d_B-d_A)^2=9$, $HK=3$.\nĐặt toạ độ phẳng trong $(P)$ với $H(0;0)$, $K(3;0)$, $M(x;y)$: $MA=\\sqrt{6+x^2+y^2}$, $MB=\\sqrt{18+(x-3)^2+y^2}$.\nKhảo sát trên đường thẳng $HK$ ($y=0$): $f(x)=7\\sqrt{18+(x-3)^2}-\\sqrt{6+x^2}$, $f'(x)=0\\Leftrightarrow \\dfrac{7(x-3)}{\\sqrt{18+(x-3)^2}}=\\dfrac{x}{\\sqrt{6+x^2}}$.\nTại $x=\\dfrac72$: $18+\\dfrac14=6+\\dfrac{49}4=\\dfrac{73}4$ nên hai căn bằng nhau và $7(x-3)=x$ đúng, vậy $x=\\dfrac72$ là điểm cực tiểu.\n$T_{\\min}=7\\sqrt{\\dfrac{73}4}-\\sqrt{\\dfrac{73}4}=6\\cdot\\dfrac{\\sqrt{73}}2=3\\sqrt{73}$ (kiểm bằng máy: $T_{\\min}\\approx 25{,}632$).\nSuy ra $a=3$, $b=73$.\n$Q=3a+9b+2025=9+657+2025=2691$.\nVậy $Q=2691$.",
+  "chuong": "PPTD",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Tối ưu hoá kiểm bằng máy, bước y=0 chưa chứng minh chặt"
+ },
+ {
+  "id": "X2350",
+  "dap_an": "0.58",
+  "loi_giai": "Chọn hệ trục $Oxyz$ với $A(0;0;0)$, $B(1;0;0)$, $D(0;1;0)$, $C(1;1;0)$, $S(0;0;2)$.\n$\\overrightarrow{BD}=(-1;1;0)$, $\\overrightarrow{SC}=(1;1;-2)$, $\\overrightarrow{BS}=(-1;0;2)$.\n$[\\overrightarrow{BD},\\overrightarrow{SC}]=(-2;-2;-2)$, độ dài $\\sqrt{4+4+4}=2\\sqrt3$.\n$d(BD,SC)=\\dfrac{|[\\overrightarrow{BD},\\overrightarrow{SC}]\\cdot\\overrightarrow{BS}|}{|[\\overrightarrow{BD},\\overrightarrow{SC}]|}=\\dfrac{|2+0-4|}{2\\sqrt3}=\\dfrac{1}{\\sqrt3}\\approx 0{,}577$.\nVậy khoảng cách xấp xỉ $0{,}58$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2354",
+  "dap_an": "125",
+  "loi_giai": "Gọi $T$: \"thịt lợn giảm giá\", $G$: \"gạo giảm giá\"; $P(T\\cap G)=0{,}1$.\n$P(T|\\overline G)=\\dfrac25\\Rightarrow P(T)-0{,}1=\\dfrac25\\left(1-P(G)\\right)\\Rightarrow P(T)=0{,}5-0{,}4P(G)$ $(1)$.\n$P(G|\\overline T)=\\dfrac47\\Rightarrow P(G)-0{,}1=\\dfrac47\\left(1-P(T)\\right)$ $(2)$.\nThay $(1)$ vào $(2)$: $P(G)-0{,}1=\\dfrac47\\left(0{,}5+0{,}4P(G)\\right)\\Rightarrow P(G)\\cdot\\dfrac{5{,}4}{7}=\\dfrac{2{,}7}{7}\\Rightarrow P(G)=0{,}5$, suy ra $P(T)=0{,}3$.\n$P(T\\cup G)=0{,}3+0{,}5-0{,}1=0{,}7=\\dfrac7{10}$ nên $m=7$, $n=10$.\n$T=5m+9n=35+90=125$.\nVậy $T=125$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2356",
+  "dap_an": "49",
+  "loi_giai": "Với $x$ sản phẩm bán được thì giá bán $t=\\dfrac{290-x}{5}$, doanh thu $R=x\\cdot t=\\dfrac{x(290-x)}{5}$.\nSau thuế $20\\%$ trên doanh thu, còn $0{,}8R=0{,}16\\,x(290-x)$.\nLợi nhuận: $L(x)=0{,}16x(290-x)-\\left(5000-58x+x^2\\right)=-1{,}16x^2+104{,}4x-5000$.\n$L'(x)=-2{,}32x+104{,}4=0\\Leftrightarrow x=45$, và $L$ là parabol quay xuống nên $L$ lớn nhất tại $x=45$.\nKhi đó $t=\\dfrac{290-45}{5}=49\\in(0;58)$ thoả điều kiện.\nVậy công ty cần bán với giá $49$ USD.",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Thuế 20% tính trên doanh thu"
+ },
+ {
+  "id": "X2357",
+  "dap_an": "2542",
+  "loi_giai": "Khoảng cách từ $A$, $B$ đến $(P)$: $d(A,P)=\\dfrac{|4+1+0+1|}{\\sqrt6}=\\sqrt6$; $d(B,P)=\\dfrac{|6\\sqrt3-0-1+1|}{\\sqrt6}=3\\sqrt2$. $A,B$ cùng phía với $(P)$.\nGọi $H,K$ là hình chiếu của $A,B$ lên $(P)$. $AB^2=(3\\sqrt3-2)^2+1+1=33-12\\sqrt3$ và $(3\\sqrt2-\\sqrt6)^2=24-12\\sqrt3$ nên $HK^2=AB^2-(d_B-d_A)^2=9$, $HK=3$.\nĐặt toạ độ phẳng trong $(P)$ với $H(0;0)$, $K(3;0)$, $M(x;y)$: $MA=\\sqrt{6+x^2+y^2}$, $MB=\\sqrt{18+(x-3)^2+y^2}$.\nKhảo sát trên đường thẳng $HK$ ($y=0$): $f(x)=7\\sqrt{18+(x-3)^2}-\\sqrt{6+x^2}$, $f'(x)=0\\Leftrightarrow \\dfrac{7(x-3)}{\\sqrt{18+(x-3)^2}}=\\dfrac{x}{\\sqrt{6+x^2}}$.\nTại $x=\\dfrac72$: $18+\\dfrac14=6+\\dfrac{49}4=\\dfrac{73}4$ nên hai căn bằng nhau và $7(x-3)=x$ đúng, vậy $x=\\dfrac72$ là điểm cực tiểu.\n$T_{\\min}=7\\sqrt{\\dfrac{73}4}-\\sqrt{\\dfrac{73}4}=6\\cdot\\dfrac{\\sqrt{73}}2=3\\sqrt{73}$ (kiểm bằng máy: $T_{\\min}\\approx 25{,}632$).\nSuy ra $a=3$, $b=73$.\n$Q=2a+7b+2025=6+511+2025=2542$.\nVậy $Q=2542$.",
+  "chuong": "PPTD",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Tối ưu hoá kiểm bằng máy, bước y=0 chưa chứng minh chặt"
+ },
+ {
+  "id": "X2358",
+  "dap_an": "0.55",
+  "loi_giai": "Chọn hệ trục $Oxyz$ với $A(0;0;0)$, $B(1;0;0)$, $D(0;1;0)$, $C(1;1;0)$, $S(0;0;\\sqrt3)$.\n$\\overrightarrow{BD}=(-1;1;0)$, $\\overrightarrow{SC}=(1;1;-\\sqrt3)$, $\\overrightarrow{BS}=(-1;0;\\sqrt3)$.\n$[\\overrightarrow{BD},\\overrightarrow{SC}]=(-\\sqrt3;-\\sqrt3;-2)$, độ dài $\\sqrt{10}$.\n$d(BD,SC)=\\dfrac{|[\\overrightarrow{BD},\\overrightarrow{SC}]\\cdot\\overrightarrow{BS}|}{|[\\overrightarrow{BD},\\overrightarrow{SC}]|}=\\dfrac{|\\sqrt3-2\\sqrt3|}{\\sqrt{10}}=\\dfrac{\\sqrt3}{\\sqrt{10}}\\approx 0{,}548$.\nVậy khoảng cách xấp xỉ $0{,}55$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2364",
+  "dap_an": "2.2",
+  "loi_giai": "Điểm $M$ trên đường bao: $M\\left(x;\\,x+\\dfrac1x\\right)$, $x\\ne 0$.\n$OM^2=x^2+\\left(x+\\dfrac1x\\right)^2=2x^2+2+\\dfrac1{x^2}\\ge 2+2\\sqrt{2x^2\\cdot\\dfrac1{x^2}}=2+2\\sqrt2$ (AM-GM), dấu bằng khi $2x^2=\\dfrac1{x^2}$.\n$OM_{\\min}=\\sqrt{2+2\\sqrt2}\\approx 2{,}197$.\nVậy tuyến cáp treo dài khoảng $2{,}2$ km.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2365",
+  "dap_an": "38",
+  "loi_giai": "$y=x+2+\\dfrac1{x+1}$ nên $y'=1-\\dfrac1{(x+1)^2}=0\\Leftrightarrow x=0$ hoặc $x=-2$.\n$y''=\\dfrac2{(x+1)^3}$: $y''(0)=2>0$ nên $(0;3)$ là điểm cực tiểu; $y''(-2)=-2<0$ nên $(-2;-1)$ là điểm cực đại.\n$d^2=(0+2)^2+(3+1)^2=20$; $d_2^2=0^2+3^2=9$.\n$d^2+2d_2^2=20+18=38$.\nVậy giá trị cần tìm là $38$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2367",
+  "dap_an": "1",
+  "loi_giai": "Phương trình $(ABC)$: $x+\\dfrac yb+\\dfrac zc=1$, vectơ pháp tuyến $\\vec n=\\left(1;\\dfrac1b;\\dfrac1c\\right)$. Vectơ pháp tuyến của $(P)$: $\\vec n_P=(0;1;-1)$.\n$(ABC)\\perp(P)\\Leftrightarrow \\vec n\\cdot\\vec n_P=0\\Leftrightarrow \\dfrac1b-\\dfrac1c=0\\Leftrightarrow b=c$.\n$d(O,(ABC))=\\dfrac1{\\sqrt{1+\\frac1{b^2}+\\frac1{c^2}}}=\\dfrac1{\\sqrt{1+\\frac2{b^2}}}=\\dfrac13\\Rightarrow 1+\\dfrac2{b^2}=9\\Rightarrow b^2=\\dfrac14$.\nVì $b>0$ nên $b=c=\\dfrac12$ (hữu tỷ thoả đề).\n$b+c=1$.\nVậy $b+c=1$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2368",
+  "dap_an": "276",
+  "loi_giai": "Vận tốc: $v(t)=\\displaystyle\\int a(t)\\,dt=\\dfrac{t^3}3+\\dfrac{3t^2}2+C$. Tại $t=0$, $v=10$ nên $C=10$.\nQuãng đường trong $6$ giây: $s=\\displaystyle\\int_0^6\\left(\\dfrac{t^3}3+\\dfrac{3t^2}2+10\\right)dt=\\left(\\dfrac{t^4}{12}+\\dfrac{t^3}2+10t\\right)\\Big|_0^6$.\n$s=\\dfrac{1296}{12}+\\dfrac{216}2+60=108+108+60=276$.\nVậy quãng đường vật đi được là $276$ m.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2370",
+  "dap_an": "26",
+  "loi_giai": "Gọi $\\vec F_1,\\vec F_2$ là hai lực hợp nhau góc $100^\\circ$ ($|\\vec F_1|=25$, $|\\vec F_2|=12$) và $\\vec F_3$ vuông góc mặt phẳng chứa chúng ($|\\vec F_3|=4$).\n$|\\vec F_1+\\vec F_2|^2=25^2+12^2+2\\cdot25\\cdot12\\cos100^\\circ=769+600\\cos100^\\circ\\approx 664{,}81$.\nVì $\\vec F_3\\perp(\\vec F_1,\\vec F_2)$ nên $|\\vec F_1+\\vec F_2+\\vec F_3|^2=|\\vec F_1+\\vec F_2|^2+|\\vec F_3|^2\\approx 664{,}81+16=680{,}81$.\nHợp lực: $\\sqrt{680{,}81}\\approx 26{,}09$.\nVậy độ lớn hợp lực khoảng $26$ N.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X2375",
+  "dap_an": "13.4",
+  "loi_giai": "Tam giác $ABC$ vuông tại $A$, $\\widehat{B}=30^\\circ$: $BC=\\dfrac{AC}{\\sin30^\\circ}=20\\sqrt3$, $AB=\\dfrac{AC}{\\tan30^\\circ}=30$.\nKẻ $AH\\perp BC$: $AH=\\dfrac{AB\\cdot AC}{BC}=\\dfrac{30\\cdot10\\sqrt3}{20\\sqrt3}=15$.\n$SA\\perp(ABC)$ nên góc giữa $SC$ và $(ABC)$ là $\\widehat{SCA}=60^\\circ$, suy ra $SA=AC\\tan60^\\circ=10\\sqrt3\\cdot\\sqrt3=30$.\nKẻ $AK\\perp SH$ thì $AK\\perp(SBC)$ nên $d(A,(SBC))=AK$.\n$\\dfrac1{AK^2}=\\dfrac1{SA^2}+\\dfrac1{AH^2}=\\dfrac1{900}+\\dfrac1{225}=\\dfrac5{900}\\Rightarrow AK=\\dfrac{30}{\\sqrt5}=6\\sqrt5\\approx 13{,}42$.\nVậy khoảng cách cần tìm xấp xỉ $13{,}4$.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ }
+]
