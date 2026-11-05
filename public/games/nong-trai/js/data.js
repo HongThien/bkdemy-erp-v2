@@ -21,20 +21,22 @@ const PHA = 1, SAU = 99;   // SAU = cấp không bao giờ tới (tắt tính n�
 const RUONG = {
   // mùa đầu (Thu Đông) — 8 loại, mở theo cấp (xem LUAT.moKhoa để biết cấp ↔ tuần)
   // W = thu/ô/ngày khi tưới đủ (EXP, chưa bonus mùa) · e = EXP nông sản / 1 điểm chăm chỉ — cả hai tăng dần theo bậc
-  lua_mi:    { ten: 'Lúa mì',    bac: 1, ngay: 1, cap: 1,  hat: 16, diem: 5,  goc: 7,  gia: 2,  mua: 0 },   // W 25,2 · e 5,0
-  ca_rot:    { ten: 'Cà rốt',    bac: 2, ngay: 1, cap: 1,  hat: 17, diem: 5,  goc: 5,  gia: 3,  mua: 1 },   // W 27   · e 5,4
-  ngo:       { ten: 'Ngô',       bac: 3, ngay: 2, cap: 3,  hat: 36, diem: 10, goc: 8,  gia: 4,  mua: 0 },   // W 28,8 · e 5,8
-  khoai_tay: { ten: 'Khoai tây', bac: 4, ngay: 2, cap: 5,  hat: 37, diem: 10, goc: 11, gia: 3,  mua: 1 },   // W 29,7 · e 5,9
-  ca_chua:   { ten: 'Cà chua',   bac: 5, ngay: 2, cap: 7,  hat: 39, diem: 10, goc: 7,  gia: 5,  mua: 1 },   // W 31,5 · e 6,3
-  bi_ngo:    { ten: 'Bí ngô',    bac: 6, ngay: 3, cap: 9,  hat: 63, diem: 16, goc: 8,  gia: 7,  mua: 1 },   // W 33,6 · e 6,3
-  hoa_huong_duong: { ten: 'Hoa hướng dương', bac: 7, ngay: 3, cap: 11, hat: 68, diem: 17, goc: 6, gia: 10, mua: 1 },   // W 36 · e 6,4 — hướng dương Nghệ An nở tháng 11–12
-  dau_tay:   { ten: 'Dâu tây',   bac: 8, ngay: 3, cap: 13, hat: 72, diem: 18, goc: 16, gia: 4,  mua: 1 },   // W 38,4 · e 6,4
+  // Thùy 05/11: goc ×0,5 cho MỌI cây (W/e ghi cuối dòng là số CŨ, nay còn một nửa). Chơi theo tài khoản, em chăm ~240 EXP/ngày đủ 20 xu sau ~8 ngày;
+  // đích 15–20 ngày. Tỉ lệ 100 EXP = 1 xu GIỮ NGUYÊN. Server giữ bản sao ở bảng nt_cay (mig 202611051751) — đổi 1 bên phải đổi cả bên kia.
+  lua_mi:    { ten: 'Lúa mì',    bac: 1, ngay: 1, cap: 1,  hat: 16, diem: 5,  goc: 3.5,  gia: 2,  mua: 0 },   // W 25,2 · e 5,0
+  ca_rot:    { ten: 'Cà rốt',    bac: 2, ngay: 1, cap: 1,  hat: 17, diem: 5,  goc: 2.5,  gia: 3,  mua: 1 },   // W 27   · e 5,4
+  ngo:       { ten: 'Ngô',       bac: 3, ngay: 2, cap: 3,  hat: 36, diem: 10, goc: 4,  gia: 4,  mua: 0 },   // W 28,8 · e 5,8
+  khoai_tay: { ten: 'Khoai tây', bac: 4, ngay: 2, cap: 5,  hat: 37, diem: 10, goc: 5.5, gia: 3,  mua: 1 },   // W 29,7 · e 5,9
+  ca_chua:   { ten: 'Cà chua',   bac: 5, ngay: 2, cap: 7,  hat: 39, diem: 10, goc: 3.5,  gia: 5,  mua: 1 },   // W 31,5 · e 6,3
+  bi_ngo:    { ten: 'Bí ngô',    bac: 6, ngay: 3, cap: 9,  hat: 63, diem: 16, goc: 4,  gia: 7,  mua: 1 },   // W 33,6 · e 6,3
+  hoa_huong_duong: { ten: 'Hoa hướng dương', bac: 7, ngay: 3, cap: 11, hat: 68, diem: 17, goc: 3, gia: 10, mua: 1 },   // W 36 · e 6,4 — hướng dương Nghệ An nở tháng 11–12
+  dau_tay:   { ten: 'Dâu tây',   bac: 8, ngay: 3, cap: 13, hat: 72, diem: 18, goc: 8, gia: 4,  mua: 1 },   // W 38,4 · e 6,4
   // mùa 2 (Tết) · mùa 3 (Xuân) — tới lúc này HS đã qua mùa đầu, cây mùa sau ngang bậc 7–8
-  ot:        { ten: 'Ớt',        bac: 7, ngay: 1, cap: 2,  hat: 23, diem: 6,  goc: 10, gia: 2,  mua: 2 },   // W 36 · e 6,0
-  dua_hau:   { ten: 'Dưa hấu',   bac: 8, ngay: 3, cap: 4,  hat: 72, diem: 18, goc: 4,  gia: 16, mua: 2 },   // W 38,4 · e 6,4
-  dau_nanh:  { ten: 'Đậu nành',  bac: 7, ngay: 1, cap: 2,  hat: 23, diem: 6,  goc: 10, gia: 2,  mua: 3 },   // W 36 · e 6,0
-  lua_nuoc:  { ten: 'Lúa nước',  bac: 7, ngay: 2, cap: 3,  hat: 45, diem: 12, goc: 10, gia: 4,  mua: 3 },   // W 36 · e 6,0
-  mia:       { ten: 'Mía',       bac: 8, ngay: 3, cap: 5,  hat: 72, diem: 18, goc: 8,  gia: 8,  mua: 3 },   // W 38,4 · e 6,4
+  ot:        { ten: 'Ớt',        bac: 7, ngay: 1, cap: 2,  hat: 23, diem: 6,  goc: 5, gia: 2,  mua: 2 },   // W 36 · e 6,0
+  dua_hau:   { ten: 'Dưa hấu',   bac: 8, ngay: 3, cap: 4,  hat: 72, diem: 18, goc: 2,  gia: 16, mua: 2 },   // W 38,4 · e 6,4
+  dau_nanh:  { ten: 'Đậu nành',  bac: 7, ngay: 1, cap: 2,  hat: 23, diem: 6,  goc: 5, gia: 2,  mua: 3 },   // W 36 · e 6,0
+  lua_nuoc:  { ten: 'Lúa nước',  bac: 7, ngay: 2, cap: 3,  hat: 45, diem: 12, goc: 5, gia: 4,  mua: 3 },   // W 36 · e 6,0
+  mia:       { ten: 'Mía',       bac: 8, ngay: 3, cap: 5,  hat: 72, diem: 18, goc: 4,  gia: 8,  mua: 3 },   // W 38,4 · e 6,4
 };
 for (const k in RUONG) RUONG[k].id = k;
 

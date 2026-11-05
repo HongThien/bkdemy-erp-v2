@@ -5198,7 +5198,7 @@ END |  |  |
 |---|---|---|---|---|---|
 | id | text |  |  | PK |  |
 | ngay | integer |  |  |  |  |
-| goc | integer |  |  |  |  |
+| goc | numeric |  |  |  |  |
 | gia | integer |  |  |  |  |
 
 ## nt_dht

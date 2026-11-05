@@ -617,7 +617,7 @@ function MpNongTrai() {
         <div className="p-3">
           <div className="flex justify-between text-[14px]"><span style={chu()}>Xu từ Nông trại tháng này</span><b style={{ color: MAU.acc }}>8/20 xu</b></div>
           <div className="mt-1 h-2.5 overflow-hidden rounded-full" style={{ background: MAU.surface2 }}><div className="h-full w-[40%] rounded-full" style={{ background: MAU.acc }} /></div>
-          <p className="mt-1 text-[12.5px]" style={mo}>Mỗi ngày chơi ≥ 5 phút · tối đa 1 xu/ngày</p>
+          <p className="mt-1 text-[12.5px]" style={mo}>Mỗi ngày chơi ≥ 5 phút · tối đa 4 xu/ngày</p>
         </div>
       </Soi>
       <Soi id="ban_be" style={THE}>
