@@ -78823,3 +78823,8 @@ Thùy nêu 4 việc, làm được 3:
 - Thùy hỏi "ERP cần chức năng report học kì để điền điểm và nhận xét" ⇒ đã có: Report phụ huynh → công tắc Học kì → chọn kì (＋ Kì: admin) → nhập điểm dự đoán · sai số · nhận xét · kế hoạch cải thiện → Chốt & công bố / Công bố cả lớp.
 - Push ERP: merge origin (12 commit phiên khác; 5 file chưa track trùng origin cất ra scratchpad, DEVLOG xung đột giữ cả hai) ⇒ dd8cb9a8 lên origin. Auto-deploy tắt ⇒ Thùy tự Create Deployment.
 - File tạm CÓ TÊN HS, KHÔNG commit, chờ Thùy gật mới xoá: public/_tmp_bcky.json · public/_duyet-bcky.html · reports/duyet-bao-cao-ky-04-11.html · reports/bao-cao-ky-mau-Toan9A1*.pdf (v1–v8); ph-app/.next.cu-0411.
+
+## 5/11 — Sửa ##VD cùng dòng đề (K10 Hàm số NCD00234)
+- Lỗi: 60 ví dụ viết `##VD Ví dụ 1. đề…` cùng dòng ⇒ `parseLyThuyetBlocks` coi phần sau tag là TIÊU ĐỀ rồi ghi đè "Ví dụ N" ⇒ đề mất, chỉ còn lời giải. Do agent soạn không đọc kỹ spec-format-noidung (##VD phải trần, đề dòng kế).
+- Sửa: `kho-rules/dai/lo/k10-hs/sua-vd-tag.mjs --ghi` → `##VD` riêng dòng, đề dòng kế, "Bài giải:" riêng dòng; sửa luôn `ra/cd1..4.json`. 30/31 dạng (1 dạng Thùy tự thêm, không cần sửa).
+- Bài học: agent soạn LT/VD phải được dặn ĐÚNG khuôn thẻ; ##ĐL/ĐN/TC/PP/CY kèm tiêu đề cùng dòng là hợp lệ, riêng ##VD/##BT thì KHÔNG.
