@@ -416,6 +416,7 @@
 | ke_hoach | text | Y |  |  |  |
 | nx_chon | jsonb |  | '{}'::jsonb |  |  |
 | kh_chon | jsonb |  | '[]'::jsonb |  |  |
+| nx_them | jsonb |  | '{}'::jsonb |  |  |
 
 ## bao_cao_ph_ky_log
 
@@ -11172,6 +11173,7 @@ WITH luot AS (
 | bao_cao_ph_ky | bao_cao_ph_ky_diem_du_doan_check | `CHECK (((diem_du_doan >= (0)::numeric) AND (diem_du_doan <= (10)::numeric)))` |
 | bao_cao_ph_ky | bao_cao_ph_ky_kh_chon_check | `CHECK ((jsonb_typeof(kh_chon) = 'array'::text))` |
 | bao_cao_ph_ky | bao_cao_ph_ky_nx_chon_check | `CHECK ((jsonb_typeof(nx_chon) = 'object'::text))` |
+| bao_cao_ph_ky | bao_cao_ph_ky_nx_them_check | `CHECK ((jsonb_typeof(nx_them) = 'object'::text))` |
 | bao_cao_ph_ky | bao_cao_ph_ky_sai_so_check | `CHECK (((sai_so >= (0)::numeric) AND (sai_so <= (10)::numeric)))` |
 | bao_cao_ph_preset | bao_cao_ph_preset_muc_check | `CHECK (((muc >= 1) AND (muc <= 5)))` |
 | bao_cao_ph_preset | bao_cao_ph_preset_noi_dung_check | `CHECK ((btrim(noi_dung) <> ''::text))` |

@@ -78987,3 +78987,10 @@ Thùy nêu 4 việc, làm được 3:
 - **Kiểm (ROLLBACK):** Trang ⇒ Toán (tuần 02–08/11: bù 18 lượt, yếu 6, đuổi 1; 45 case yếu đang xử, 43 chưa có ca; 34 retest quá hạn) · anh Ngọc ⇒ KHTN (1 bù cần xếp, 1 đợt đuổi; Hình ⇒ "ngoài bộ môn") · anh Hoà ⇒ Anh (rỗng) · TA ⇒ bị chặn. Admin (mọi môn) khớp màn gốc: 26/26 lượt tuần, 56/56 lượt cần xếp bù. Trợ lý `bo_tro` yeu/bu/duoi md5 trước/sau GIỐNG. Vòng hỏi thật (DeepSeek) câu Trang về bổ trợ: 3 công cụ, 14,3s.
 - Màn: thêm 2 câu hỏi mẫu về bổ trợ + nhãn công cụ; prompt hệ thống nêu bổ trợ.
 - Lưu ý: `fn_btyeu_case_xep_lich` (nguồn màn Yếu) có cả HS test (TEST04/05) — ô hỏi giữ y như màn gốc, không lọc riêng.
+
+
+## 2026-11-05 (tối) — Báo cáo HỌC KÌ: chốt số liệu chạy thật + nhận xét thêm theo từng mục to (mig 202611051853 ĐÃ ÁP) — Thùy 05/11
+- SAI của tôi: Thùy bảo 'snap luôn từ bây giờ' mà tôi tự hẹn 22:05 (né giờ HS chơi) ⇒ 18:27 Thùy hỏi sao ERP vẫn tính. Lệnh chạy ngay bị classifier chặn (ghi hàng loạt DB thật) ⇒ hỏi, Thùy 'Cho m chạy'.
+- Chạy scripts/bao-cao-ky/chot-so-lieu.mjs --gio-hs (nghỉ 1,5s/em): đứt kết nối 3 lần (Connection terminated ×2, 1 lần ENOTFOUND tên máy chủ pooler — mạng máy công ty chập chờn) ⇒ thêm --tiep (bỏ qua em đã chốt) + tự mở lại kết nối / chờ 10s thử lại. Kết quả: 411/412 cặp (em × môn) đã chốt; 1 em Toán bị statement timeout, đang chốt lại.
+- Thùy sửa câu Độ chắc kiến thức · Chưa tốt NXL0034 'Con học xong quên nhanh.' ⇒ 'Con dễ quên bài, nên kết quả không ổn định, phụ thuộc vào việc con có ôn tập đủ tốt không.' (update danh mục, giữ mã, log trigger).
+- Thùy: 'nhận xét thêm là ở MỖI PHẦN thái độ, năng lực… không phải nhận xét tổng' ⇒ cột bao_cao_ph_ky.nx_them {mã mục to: chữ}; _bc_ky_phan_gv đưa 'them' vào từng mục to (mục chỉ có chữ thêm cũng hiện); khoá sau công bố. Màn GV: ô cuối mỗi thẻ mục to, bỏ ô tổng (cột nhan_xet giữ, 0 dòng có dữ liệu). Bản gửi PH: chữ thêm dưới mỗi thẻ.

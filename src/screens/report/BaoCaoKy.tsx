@@ -87,7 +87,7 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
           onDaLuu={(n) => {
             setNhap(n)
             setData((d) => d && { ...d, nang_luc: { diem: n.diem_du_doan, sai_so: n.sai_so }, nhan_xet: n.nhan_xet, ke_hoach: n.ke_hoach,
-              ...(dm ? { nhan_xet_chon: dungNhanXetChon(dm, n.nx_chon), ke_hoach_chon: dungKeHoachChon(dm, n.kh_chon) } : {}) })
+              ...(dm ? { nhan_xet_chon: dungNhanXetChon(dm, n.nx_chon, n.nx_them), ke_hoach_chon: dungKeHoachChon(dm, n.kh_chon) } : {}) })
             onTrangThai(hsId, 'nhap')
           }}
           onCongBo={async () => { const x = await xemBcKy(hsId, mon, kyId); setData(x.du_lieu); setCongBoAt(x.cong_bo_at); setNhap((n) => ({ ...n, cong_bo_at: x.cong_bo_at })); onTrangThai(hsId, 'cong_bo') }}
@@ -148,7 +148,7 @@ function NhapKy({ d: bc, hsId, mon, kyId, nhap, congBoAt, goiY, moSoLieu, onMoSo
   const dm = useDanhMucNx()
   const [diem, setDiem] = useState(nhap.diem_du_doan?.toString() ?? '')
   const [saiSo, setSaiSo] = useState(nhap.sai_so?.toString() ?? '')
-  const [nx, setNx] = useState(nhap.nhan_xet ?? '')
+  const [nx] = useState(nhap.nhan_xet ?? '')   // nhận xét TỔNG cũ — không còn ô nhập (thay bằng nhận xét thêm theo mục), giữ giá trị cũ khi lưu
   const [kh, setKh] = useState(nhap.ke_hoach ?? '')
   const [saved, setSaved] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
@@ -226,20 +226,17 @@ function NhapKy({ d: bc, hsId, mon, kyId, nhap, congBoAt, goiY, moSoLieu, onMoSo
 
       {/* Nhận xét theo thang: mục to xếp thành cột (rộng: 4 cột · hẹp: 2 cột) */}
       {dm
-        ? <NhapNhanXet dm={dm} nx={nhap.nx_chon} goiY={goiY} khoa={khoa} onDoi={(v) => void ghi('nxc', { ...nhap, nx_chon: v }, { nx_chon: v })} />
+        ? <NhapNhanXet dm={dm} nx={nhap.nx_chon} them={nhap.nx_them} goiY={goiY} khoa={khoa}
+            onDoi={(v) => void ghi('nxc', { ...nhap, nx_chon: v }, { nx_chon: v })}
+            onDoiThem={(v) => void ghi('nxt', { ...nhap, nx_them: v }, { nx_them: v })} />
         : <p className="text-[12px] text-slate-400">Đang tải thang nhận xét…</p>}
 
-      <div className="grid gap-3 @3xl:grid-cols-2">
+      <div>
         <div className={`${the} px-4 py-3`}>
           <div className={`${tieuDe} mb-1.5`}>Kế hoạch cải thiện</div>
           {dm && <NhapKeHoach dm={dm} nx={nhap.nx_chon} kh={nhap.kh_chon} khoa={khoa} onDoi={(v) => void ghi('khc', { ...nhap, kh_chon: v }, { kh_chon: v })} />}
           <textarea value={kh} disabled={khoa} onChange={(e) => setKh(e.target.value)} onBlur={() => void luu('kh')} rows={2} placeholder="Viết thêm (nếu cần)…"
             className="mt-2 w-full rounded-lg border border-slate-200 px-2.5 py-2 text-[13px] leading-relaxed text-slate-800 disabled:bg-slate-50" />
-        </div>
-        <div className={`${the} px-4 py-3`}>
-          <div className={`${tieuDe} mb-1.5`}>Nhận xét thêm <span className="font-normal normal-case text-slate-400">— khi thang chưa nói hết</span></div>
-          <textarea value={nx} disabled={khoa} onChange={(e) => setNx(e.target.value)} onBlur={() => void luu('nx')} rows={5} placeholder="Không bắt buộc…"
-            className="w-full rounded-lg border border-slate-200 px-2.5 py-2 text-[13px] leading-relaxed text-slate-800 disabled:bg-slate-50" />
         </div>
       </div>
       <p className="text-[11px] text-slate-400">{khoa
@@ -441,6 +438,7 @@ export function XemTruocKy({ d }: { d: BcKyData; congBoAt?: string | null }) {
                   </div>
                 ))}
               </div>
+              {t.them && <p className="whitespace-pre-line border-t border-slate-100 bg-slate-50 px-3.5 py-2.5 text-[13.5px] italic leading-relaxed text-slate-700">{t.them}</p>}
             </div>
           ))}
         </div>

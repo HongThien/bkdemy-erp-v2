@@ -32,13 +32,13 @@ const mucCon = (dm: DanhMucNx, cha: string) => dm.muc.filter((m) => m.cha === ch
 export const mucNhoDangDung = (dm: DanhMucNx) => { const to = new Set(mucTo(dm).map((m) => m.ma)); return dm.muc.filter((m) => m.cha && to.has(m.cha)) }
 
 // Dựng phần nhận xét / kế hoạch để VÁ bản xem trước ngay sau khi GV chọn (chỉ ghép chữ từ danh mục — số liệu không đụng).
-export function dungNhanXetChon(dm: DanhMucNx, nx: NxChon): BcKyNxTo[] {
+export function dungNhanXetChon(dm: DanhMucNx, nx: NxChon, them: Record<string, string> = {}): BcKyNxTo[] {
   return mucTo(dm).map((t) => ({
-    ma: t.ma, ten: t.ten,
+    ma: t.ma, ten: t.ten, them: them[t.ma]?.trim() || null,
     con: mucCon(dm, t.ma).filter((m) => nx[m.ma]).map((m) => ({
       ma: m.ma, ten: m.ten, muc_do: nx[m.ma].muc_do, noi_dung: dm.lc.find((l) => l.ma === nx[m.ma].lc)?.noi_dung ?? null,
     })),
-  })).filter((t) => t.con.length > 0)
+  })).filter((t) => t.con.length > 0 || !!t.them)
 }
 export const dungKeHoachChon = (dm: DanhMucNx, kh: string[]) => kh.map((ma) => dm.kh.find((k) => k.ma === ma)?.noi_dung).filter((x): x is string => !!x)
 
@@ -55,8 +55,9 @@ function moTaGoiY(m: NxMuc, g: BcKyGoiY | undefined): string | null {
 }
 
 // ── GV chọn nhận xét ──
-export function NhapNhanXet({ dm, nx, goiY, khoa, onDoi }: {
-  dm: DanhMucNx; nx: NxChon; goiY?: BcKyGoiY; khoa: boolean; onDoi: (nx: NxChon) => void
+export function NhapNhanXet({ dm, nx, them, goiY, khoa, onDoi, onDoiThem }: {
+  dm: DanhMucNx; nx: NxChon; them: Record<string, string>; goiY?: BcKyGoiY; khoa: boolean
+  onDoi: (nx: NxChon) => void; onDoiThem: (them: Record<string, string>) => void
 }) {
   function chonMuc(m: NxMuc, md: MucDoChon) {
     if (md === 'chua_du') return onDoi({ ...nx, [m.ma]: { muc_do: md, lc: null } })
@@ -110,11 +111,22 @@ export function NhapNhanXet({ dm, nx, goiY, khoa, onDoi }: {
                 </div>
               )
             })}
+            <OThemMuc ten={t.ten} gia={them[t.ma] ?? ''} khoa={khoa}
+              onLuu={(v) => { const n = { ...them }; if (v) n[t.ma] = v; else delete n[t.ma]; onDoiThem(n) }} />
           </div>
         </div>
       ))}
     </div>
   )
+}
+
+// Nhận xét thêm cho riêng 1 mục to (không bắt buộc) — lưu khi rời ô
+function OThemMuc({ ten, gia, khoa, onLuu }: { ten: string; gia: string; khoa: boolean; onLuu: (v: string) => void }) {
+  const [v, setV] = useState(gia)
+  useEffect(() => setV(gia), [gia])
+  return <textarea value={v} disabled={khoa} rows={2} onChange={(e) => setV(e.target.value)} onBlur={() => { const x = v.trim(); if (x !== gia.trim()) onLuu(x) }}
+    placeholder={`Nhận xét thêm về ${ten.toLowerCase()} (nếu cần)…`}
+    className="w-full resize-y rounded-lg border border-slate-200 px-2 py-1.5 text-[12.5px] leading-snug text-slate-800 placeholder:text-slate-400 disabled:bg-slate-50" />
 }
 
 // ── GV chọn kế hoạch cải thiện: phương án của mục chấm Chưa tốt / Ổn lên đầu ──

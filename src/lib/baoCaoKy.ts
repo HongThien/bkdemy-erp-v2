@@ -36,13 +36,14 @@ export type BcKyData = {
 }
 export type MucDo = 'tot' | 'on' | 'chua_tot'
 export type MucDoChon = MucDo | 'chua_du'
-export type BcKyNxTo = { ma: string; ten: string; con: { ma: string; ten: string; muc_do: MucDoChon; noi_dung: string | null }[] }
+// them = nhận xét thêm của GV cho riêng mục to này (Thùy 05/11, mig 202611051853)
+export type BcKyNxTo = { ma: string; ten: string; them?: string | null; con: { ma: string; ten: string; muc_do: MucDoChon; noi_dung: string | null }[] }
 export type BcKyGoiYMuc = { muc_do: MucDo | null; khoa: string | null; so: Record<string, number | boolean | null> }
 export type BcKyGoiY = { du_doan: number | null; sai_so: number | null; so_lan: number; muc: Record<string, BcKyGoiYMuc> }
 export type NxChon = Record<string, { muc_do: MucDoChon; lc: string | null }>
 export type BcKyXem = { cong_bo_at: string | null; du_lieu: BcKyData }
-export type BcKyNhap = { diem_du_doan: number | null; sai_so: number | null; nhan_xet: string | null; ke_hoach: string | null; nx_chon: NxChon; kh_chon: string[]; cong_bo_at: string | null }
-export const BC_KY_NHAP_TRONG: BcKyNhap = { diem_du_doan: null, sai_so: null, nhan_xet: null, ke_hoach: null, nx_chon: {}, kh_chon: [], cong_bo_at: null }
+export type BcKyNhap = { diem_du_doan: number | null; sai_so: number | null; nhan_xet: string | null; ke_hoach: string | null; nx_chon: NxChon; kh_chon: string[]; nx_them: Record<string, string>; cong_bo_at: string | null }
+export const BC_KY_NHAP_TRONG: BcKyNhap = { diem_du_doan: null, sai_so: null, nhan_xet: null, ke_hoach: null, nx_chon: {}, kh_chon: [], nx_them: {}, cong_bo_at: null }
 
 export async function listKyHoc(): Promise<KyHoc[]> {
   const { data, error } = await supabase.from('ky_hoc').select('id, ten, tu_thang, den_thang').order('tu_thang', { ascending: false }).limit(50)
@@ -62,12 +63,12 @@ export async function xemBcKy(hsId: string, mon: string, kyId: string): Promise<
   return data as BcKyXem
 }
 export async function getBcKyNhap(hsId: string, mon: string, kyId: string): Promise<BcKyNhap> {
-  const { data, error } = await supabase.from('bao_cao_ph_ky').select('diem_du_doan, sai_so, nhan_xet, ke_hoach, nx_chon, kh_chon, cong_bo_at')
+  const { data, error } = await supabase.from('bao_cao_ph_ky').select('diem_du_doan, sai_so, nhan_xet, ke_hoach, nx_chon, kh_chon, nx_them, cong_bo_at')
     .eq('hoc_sinh_id', hsId).eq('mon', mon).eq('ky_id', kyId).maybeSingle()
   if (error) throw error
   return (data as BcKyNhap) ?? { ...BC_KY_NHAP_TRONG }
 }
-export async function luuBcKyNhap(hsId: string, mon: string, kyId: string, patch: Partial<Pick<BcKyNhap, 'diem_du_doan' | 'sai_so' | 'nhan_xet' | 'ke_hoach' | 'nx_chon' | 'kh_chon'>>): Promise<void> {
+export async function luuBcKyNhap(hsId: string, mon: string, kyId: string, patch: Partial<Pick<BcKyNhap, 'diem_du_doan' | 'sai_so' | 'nhan_xet' | 'ke_hoach' | 'nx_chon' | 'kh_chon' | 'nx_them'>>): Promise<void> {
   const { error } = await supabase.from('bao_cao_ph_ky').upsert({ hoc_sinh_id: hsId, mon, ky_id: kyId, ...patch }, { onConflict: 'hoc_sinh_id,mon,ky_id' })
   if (error) throw error
 }
