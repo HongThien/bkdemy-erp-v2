@@ -20,7 +20,7 @@ import { demLopTheoDang } from '../../../lib/kho/khoTrenLop'
 import KhoTrenLopModal from '../KhoTrenLopModal'
 import DangHub from '../DangHub'
 import { LyThuyetModal } from '../BanDo'
-import { Code, inp } from '../ui'
+import { Code, inp, MathText } from '../ui'
 
 // Config MINIMAL cho DangHub — chỉ đủ để phần "Kho câu hỏi" chạy đúng bảng hinh_hoc_cau_hoi.
 // list/count/create/updateLeaf/deleteLeaf KHÔNG được DangHub gọi (chỉ BanDo dùng) — stub trả rỗng.
@@ -249,7 +249,9 @@ const MUCDO_TONE_HH: Record<number | string, string> = {
   none: 'bg-slate-100 text-slate-400 hover:bg-slate-200',
 }
 
-// 1 bài học vẽ như 1 chuyên đề của bản đồ Đại mới: dải chuyên đề → hộp nhóm → thẻ dạng bài (3 tầng cùng tên, cùng 1 bài).
+// 1 bài học = chuyên đề = nhóm = dạng bài cùng tên (Thùy 28/10) ⇒ CHỈ vẽ tầng 4 (Thùy 05/11: "tầng 2-3-4 bản chất giống nhau").
+// Nút đi theo cặp như khung dạng bài Đại (ChiTiet ở BanDoMoi.tsx): 📖 Lý thuyết | 📝 Ví dụ · 🏫 Kho trên lớp | 📚 Kho bài tập.
+// 4 chấm ở đầu thẻ = mô tả · lý thuyết · ví dụ · kho trên lớp (giống DauTienDo của Đại).
 function BaiCard({ bai, thuTuHienThi, soCau, coLyThuyet, coViDu, soLop, onOpen, onCongCu, onLyThuyet, onViDu, onMoTa, onKhoLop, onToggleDuyet, onMucDo }: {
   bai: HinhHocBai; thuTuHienThi: number; soCau: number; coLyThuyet: boolean; coViDu: boolean; soLop?: { giang: number; luyen: number }
   onOpen: () => void; onCongCu: () => void; onLyThuyet: () => void; onViDu: () => void; onMoTa: () => void; onKhoLop: () => void; onToggleDuyet: () => void
@@ -257,61 +259,49 @@ function BaiCard({ bai, thuTuHienThi, soCau, coLyThuyet, coViDu, soLop, onOpen, 
 }) {
   const md = bai.muc_do
   const nextMd = md == null ? 1 : md >= 5 ? null : md + 1
+  const moTa = bai.mo_ta?.trim() ?? ''
+  const lop = soLop ? soLop.giang + soLop.luyen : 0
+  const cham = (co: boolean, mau: string, ten: string) => <span title={co ? `Đã có ${ten}` : `Chưa có ${ten}`} className={`h-2 w-2 rounded-full ${co ? mau : 'bg-white/35'}`} />
+  const nut = (onClick: () => void, cls: string, tieuDe: string, phu: string, tat = false) => (
+    <button onClick={onClick} disabled={tat}
+      className={`flex min-w-0 flex-col items-start rounded-md border px-3 py-2 text-left text-[13px] font-semibold disabled:opacity-50 ${cls}`}>
+      <span>{tieuDe}</span><span className="text-[11.5px] font-normal">{phu}</span>
+    </button>
+  )
   return (
-    <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-      {/* tầng CHUYÊN ĐỀ */}
-      <div className="flex items-center gap-2 bg-sky-600 px-3 py-2 text-white">
+    <div className="overflow-hidden rounded-xl border border-violet-200 bg-white">
+      <div className="flex items-center gap-2 bg-violet-600 px-3 py-2 text-white">
         <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/20 text-[12px] font-bold">{thuTuHienThi}</span>
-        <h3 className="min-w-0 flex-1 truncate text-[14.5px] font-semibold" title={bai.ten_bai}>{bai.ten_bai}</h3>
-        <span className="shrink-0 font-mono text-[10.5px] text-white/70">{bai.ma_bai}</span>
+        <h3 className="min-w-0 flex-1 truncate text-[14.5px] font-semibold" title={`${bai.ten_bai} · ${bai.ma_bai}`}>{bai.ten_bai}</h3>
+        <span className="flex shrink-0 gap-0.5">
+          {cham(!!moTa, 'bg-emerald-300', 'mô tả')}{cham(coLyThuyet, 'bg-sky-300', 'lý thuyết')}{cham(coViDu, 'bg-fuchsia-300', 'ví dụ')}{cham(lop > 0, 'bg-teal-300', 'kho trên lớp')}
+        </span>
+        <button onClick={() => onMucDo(nextMd)} title={md == null ? 'Chưa gán độ khó — bấm để đặt' : `Độ khó ${md}. Bấm xoay 1→2→3→4→5→bỏ.`}
+          className={`h-5 min-w-5 shrink-0 rounded px-1 text-[11px] font-bold ${MUCDO_TONE_HH[md ?? 'none']}`}>{md ?? '?'}</button>
         <button onClick={onToggleDuyet}
           className={`shrink-0 rounded px-2 py-0.5 text-[11px] font-semibold ${bai.da_duyet ? 'bg-white text-emerald-700 hover:bg-emerald-50' : 'bg-white/90 text-rose-600 hover:bg-white'}`}>
           {bai.da_duyet ? '✓ Đã duyệt' : '○ Chưa duyệt'}
         </button>
       </div>
-      <div className="p-3">
-        {/* tầng NHÓM BÀI */}
-        <div className="overflow-hidden rounded-lg border border-slate-200">
-          <div className="flex items-center gap-2 bg-slate-800 px-2.5 py-1.5 text-white">
-            <span className="rounded bg-white/15 px-1.5 text-[11px] font-bold">1</span>
-            <span className="min-w-0 flex-1 truncate text-[13px] font-semibold">{bai.ten_bai}</span>
-            <button onClick={onLyThuyet} title={coLyThuyet ? 'Lý thuyết bài học — xem / sửa' : 'Chưa có lý thuyết — bấm để gắn'}
-              className={`shrink-0 rounded px-1.5 py-0.5 text-[11px] font-semibold ${coLyThuyet ? 'bg-emerald-500/90 text-white' : 'bg-rose-500/90 text-white'}`}>
-              📖 {coLyThuyet ? 'Lý thuyết' : 'Chưa LT'}
-            </button>
-          </div>
-          {/* tầng DẠNG BÀI — bấm mở kho câu */}
-          <div className="p-2">
-            <div onClick={onOpen} title="Mở KHO: các câu của dạng bài này"
-              className="flex cursor-pointer items-start gap-1.5 rounded-lg border border-violet-200 bg-violet-50 px-2 py-1.5 text-[12px] hover:border-violet-400">
-              <span className="mt-px shrink-0 text-[10.5px] font-bold text-violet-500">1.1</span>
-              <span className="flex-1 leading-snug text-violet-950">{bai.ten_bai}</span>
-              <button onClick={(e) => { e.stopPropagation(); onMucDo(nextMd) }}
-                title={md == null ? 'Chưa gán độ khó — bấm để đặt' : `Độ khó ${md}. Bấm xoay 1→2→3→4→5→bỏ.`}
-                className={`h-5 min-w-5 shrink-0 rounded px-1 text-[11px] font-bold ${MUCDO_TONE_HH[md ?? 'none']}`}>
-                {md ?? '?'}
-              </button>
-              <span className="shrink-0 rounded bg-white px-1.5 text-[10.5px] font-semibold text-violet-700 ring-1 ring-violet-200">📚 {soCau}</span>
-            </div>
-            <div className="mt-1.5 flex gap-1.5">
-              <button onClick={onMoTa} title={bai.mo_ta?.trim() ? 'Mô tả nhận biết — xem / sửa' : 'Chưa có mô tả — bấm để viết'}
-                className={`rounded px-1.5 py-0.5 text-[11px] font-semibold ${bai.mo_ta?.trim() ? 'bg-emerald-500/90 text-white' : 'bg-rose-500/90 text-white'}`}>
-                📝 {bai.mo_ta?.trim() ? 'Mô tả' : 'Chưa mô tả'}
-              </button>
-              <button onClick={onCongCu} title="Công cụ cũ của bài: tìm câu, nhập chuỗi câu, clone biến thể…"
-                className="ml-auto rounded border border-slate-200 px-1.5 py-0.5 text-[11px] font-medium text-slate-500 hover:border-indigo-300 hover:text-indigo-700">⚙ Công cụ</button>
-              <button onClick={onViDu} title={coViDu ? 'Ví dụ của bài — xem / sửa' : 'Chưa có ví dụ — bấm để dán'}
-                className={`rounded px-1.5 py-0.5 text-[11px] font-semibold ${coViDu ? 'bg-emerald-500/90 text-white' : 'bg-rose-500/90 text-white'}`}>
-                🧩 {coViDu ? 'Ví dụ' : 'Chưa ví dụ'}
-              </button>
-            </div>
-            {/* KHO TRÊN LỚP — bài giảng + luyện trên lớp (như dạng bài Đại) · kho luyện = 📚 ở thẻ trên */}
-            <button onClick={onKhoLop}
-              className="mt-1.5 flex w-full flex-col items-start rounded-md border border-teal-200 bg-teal-50 px-2.5 py-1.5 text-[12px] font-semibold text-teal-700 hover:bg-teal-100">
-              <span>🏫 Kho trên lớp</span>
-              <span className="text-[11px] font-normal">{soLop && soLop.giang + soLop.luyen ? `${soLop.giang} bài giảng · ${soLop.luyen} luyện trên lớp — bấm để soạn` : 'chưa có — bấm để thêm bài giảng / luyện trên lớp'}</span>
-            </button>
-          </div>
+      <div className="flex flex-col gap-2 p-3">
+        <button onClick={onMoTa} title="Mô tả nhận biết — xem / sửa"
+          className="rounded-md border border-slate-200 px-3 py-2 text-left text-[12.5px] hover:border-violet-300">
+          <span className="font-semibold text-slate-700">Mô tả nhận biết</span>
+          <span className={`mt-0.5 block overflow-hidden ${moTa ? 'text-slate-500' : 'italic text-slate-400'}`}
+            style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>{moTa ? <MathText>{moTa}</MathText> : 'chưa có — bấm để viết'}</span>
+        </button>
+        <div className="grid grid-cols-2 gap-2">
+          {nut(onLyThuyet, 'border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100', '📖 Lý thuyết', coLyThuyet ? 'đã có — bấm để sửa' : 'chưa có — bấm để dán')}
+          {nut(onViDu, 'border-violet-200 bg-violet-50 text-violet-700 hover:bg-violet-100', '📝 Ví dụ', coViDu ? 'đã có — bấm để sửa' : 'chưa có — bấm để dán')}
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          {nut(onKhoLop, 'border-teal-200 bg-teal-50 text-teal-700 hover:bg-teal-100', '🏫 Kho trên lớp', lop ? `${soLop!.giang} giảng · ${soLop!.luyen} luyện` : 'chưa có — bấm để thêm')}
+          {nut(onOpen, 'border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100', '📚 Kho bài tập', soCau ? `${soCau} câu — bấm để xem` : 'chưa có câu')}
+        </div>
+        <div className="flex items-center justify-between text-[11px] text-slate-400">
+          <code>{bai.ma_bai}</code>
+          <button onClick={onCongCu} title="Màn quản lý bài kiểu cũ: ✨ clone biến thể bằng AI · 📥 nhập chuỗi câu (văn bản / ảnh / PDF) · đổi tên · xoá bài"
+            className="rounded border border-slate-200 px-1.5 py-0.5 font-medium text-slate-500 hover:border-indigo-300 hover:text-indigo-700">⚙ Nhập · clone · đổi tên</button>
         </div>
       </div>
     </div>

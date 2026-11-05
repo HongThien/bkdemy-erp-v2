@@ -1,0 +1,50 @@
+[
+ {
+  "ma_bai": "HH00099",
+  "noi_dung": "**Trường hợp bằng nhau thứ nhất của tam giác (cạnh – cạnh – cạnh)**\n\nNếu ba cạnh của tam giác này lần lượt bằng ba cạnh của tam giác kia thì hai tam giác đó bằng nhau.\nNếu $\\triangle ABC$ và $\\triangle DEF$ có:\n$AB=DE$;\n$BC=EF$;\n$AC=DF$\nthì $\\triangle ABC=\\triangle DEF$ (c.c.c).\n\n**Phương pháp giải:**\n\nÁp dụng lý thuyết trường hợp bằng nhau thứ nhất của tam giác.\nTừ việc chứng minh hai tam giác bằng nhau suy ra các cạnh tương ứng bằng nhau; các góc tương ứng bằng nhau.",
+  "file_url": null,
+  "cap_nhat_at": "2026-11-05T09:27:11.195Z"
+ },
+ {
+  "ma_bai": "HH00101",
+  "noi_dung": "**Trường hợp bằng nhau thứ hai của tam giác (cạnh – góc – cạnh)**\n\nNếu hai cạnh và góc xen giữa của tam giác này bằng hai cạnh và góc xen giữa của tam giác kia thì hai tam giác đó bằng nhau.\nNếu $\\triangle ABC$ và $\\triangle A'B'C'$ có:\n$AB=A'B'$;\n$\\widehat{B}=\\widehat{B'}$;\n$BC=B'C'$\nthì $\\triangle ABC=\\triangle A'B'C'$ (c.g.c).\n\n**Phương pháp giải:**\n\nÁp dụng lý thuyết trường hợp bằng nhau thứ hai của tam giác.\nTừ việc chứng minh hai tam giác bằng nhau suy ra các cạnh tương ứng bằng nhau; các góc tương ứng bằng nhau.",
+  "file_url": null,
+  "cap_nhat_at": "2026-10-08T04:07:24.550Z"
+ },
+ {
+  "ma_bai": "HH00102",
+  "noi_dung": "**Trường hợp bằng nhau thứ ba của tam giác (góc – cạnh – góc)**\n\nNếu một cạnh và hai góc kề của tam giác này bằng một cạnh và hai góc kề của tam giác kia thì hai tam giác đó bằng nhau.\nNếu $\\triangle ABC$ và $\\triangle A'B'C'$ có:\n$\\widehat{B}=\\widehat{B'}$;\n$BC=B'C'$;\n$\\widehat{C}=\\widehat{C'}$\nthì $\\triangle ABC=\\triangle A'B'C'$ (g.c.g).\n\n**Phương pháp giải:**\n\nÁp dụng lý thuyết trường hợp bằng nhau thứ ba của tam giác.\nTừ việc chứng minh hai tam giác bằng nhau suy ra các cạnh tương ứng bằng nhau; các góc tương ứng bằng nhau.",
+  "file_url": null,
+  "cap_nhat_at": "2026-10-08T04:07:24.550Z"
+ },
+ {
+  "ma_bai": "HH00103",
+  "noi_dung": "**1. Ba trường hợp bằng nhau của tam giác vuông**\n\n- Nếu hai cạnh góc vuông của tam giác vuông này lần lượt bằng hai cạnh góc vuông của tam giác vuông kia thì hai tam giác vuông đó bằng nhau (cgv - cgv).\n- Nếu một cạnh góc vuông và góc nhọn kề cạnh ấy của tam giác vuông này bằng một cạnh góc vuông và góc nhọn kề cạnh ấy của tam giác vuông kia thì hai tam giác vuông đó bằng nhau (cgv - gn).\n- Nếu cạnh huyền và một góc nhọn của tam giác vuông này bằng cạnh huyền và một góc nhọn của tam giác vuông kia thì hai tam giác vuông đó bằng nhau (ch - gn).\n\n**2. Trường hợp bằng nhau đặc biệt của tam giác vuông**\n\nNếu cạnh huyền và một cạnh góc vuông của tam giác vuông này bằng cạnh huyền và một cạnh góc vuông của tam giác vuông kia thì hai tam giác vuông đó bằng nhau (ch - cgv).\nVí dụ: xét hai tam giác vuông $\\triangle ABC$ và $\\triangle DEF$ có:\n$\\widehat{A}=\\widehat{D}=90^\\circ$;\n$BC=EF$ (cạnh huyền);\n$AB=DE$ (cạnh góc vuông)\n$\\Rightarrow \\triangle ABC=\\triangle DEF$ (ch - cgv).\n\n**Phương pháp giải:**\n\nXét hai tam giác vuông, tìm các yếu tố bằng nhau rồi đối chiếu với các trường hợp bằng nhau của tam giác vuông ở trên.\nKết luận hai tam giác bằng nhau, rồi suy ra các cạnh (góc) tương ứng bằng nhau.",
+  "file_url": null,
+  "cap_nhat_at": "2026-10-08T04:07:24.550Z"
+ },
+ {
+  "ma_bai": "HH00104",
+  "noi_dung": "**1. Tam giác cân**\n\na) Định nghĩa: Tam giác cân là tam giác có hai cạnh bằng nhau.\nb) Tính chất: Trong tam giác cân, hai góc đáy bằng nhau.\nc) Dấu hiệu nhận biết:\n- Tam giác có hai cạnh bằng nhau là tam giác cân.\n- Tam giác có hai góc bằng nhau thì tam giác đó là tam giác cân.\n$\\triangle ABC$ cân tại $A$ $\\Rightarrow \\widehat{B}=\\widehat{C}$.\n$\\triangle ABC$ có $AB=AC$ hoặc $\\widehat{B}=\\widehat{C}$ $\\Rightarrow \\triangle ABC$ cân tại $A$.\n\n**2. Tam giác vuông cân**\n\na) Định nghĩa: Tam giác vuông cân là tam giác vuông có hai cạnh bằng nhau.\nb) Tính chất: Trong tam giác vuông cân, hai góc nhọn bằng $45^\\circ$.\nc) Dấu hiệu nhận biết:\n- Tam giác vuông có hai cạnh bằng nhau là tam giác vuông cân.\n- Tam giác vuông có một góc bằng $45^\\circ$ là tam giác vuông cân.\n- Tam giác cân có một góc đáy bằng $45^\\circ$ là tam giác vuông cân.\n\n**3. Tam giác đều**\n\na) Định nghĩa: Tam giác đều là tam giác có ba cạnh bằng nhau.\nb) Tính chất: Trong tam giác đều, ba góc bằng nhau và bằng $60^\\circ$.\nc) Dấu hiệu nhận biết:\n- Tam giác có ba cạnh bằng nhau là tam giác đều.\n- Tam giác có ba góc bằng nhau là tam giác đều.\n- Tam giác cân có một góc bằng $60^\\circ$ là tam giác đều.\n\n**4. Đường trung trực của đoạn thẳng**\n\na) Định nghĩa: Đường thẳng vuông góc với một đoạn thẳng tại trung điểm của nó được gọi là đường trung trực của đoạn thẳng đó.\nb) Tính chất: Điểm nằm trên đường trung trực của một đoạn thẳng thì cách đều hai mút của đoạn thẳng đó.",
+  "file_url": null,
+  "cap_nhat_at": "2026-10-08T04:07:24.550Z"
+ },
+ {
+  "ma_bai": "HH00142",
+  "noi_dung": "**1. Đoạn thẳng tỉ lệ**\n\na) Tỉ số của hai đoạn thẳng là tỉ số độ dài của chúng theo cùng một đơn vị đo.\nb) Hai đoạn thẳng $AB$ và $CD$ gọi là tỉ lệ với hai đoạn thẳng $A'B'$ và $C'D'$ nếu có tỉ lệ thức:\n$\\dfrac{AB}{CD}=\\dfrac{A'B'}{C'D'}$ hay $\\dfrac{AB}{A'B'}=\\dfrac{CD}{C'D'}$.\n\n**2. Định lí Thalès trong tam giác**\n\na) Định lí Thalès: Nếu một đường thẳng song song với một cạnh của tam giác và cắt hai cạnh còn lại thì nó định ra trên hai cạnh đó những đoạn thẳng tương ứng tỉ lệ.\nXét $\\triangle ABC$ có $DE\\parallel BC$ ($D\\in AB$, $E\\in AC$) thì:\n$\\dfrac{AD}{AB}=\\dfrac{AE}{AC}$ ; $\\dfrac{AD}{DB}=\\dfrac{AE}{EC}$ ; $\\dfrac{BD}{AB}=\\dfrac{EC}{AC}$.\nb) Định lí Thalès đảo: Nếu một đường thẳng cắt hai cạnh của một tam giác và định ra trên hai cạnh này những đoạn thẳng tương ứng tỉ lệ thì đường thẳng đó song song với cạnh còn lại của tam giác.\nXét $\\triangle ABC$ có $D\\in AB$, $E\\in AC$ và $\\dfrac{AD}{AB}=\\dfrac{AE}{AC}$ thì $DE\\parallel BC$.",
+  "file_url": null,
+  "cap_nhat_at": "2026-10-28T10:51:36.552Z"
+ },
+ {
+  "ma_bai": "HH00143",
+  "noi_dung": "##TC\n**1. Nhận biết đường trung bình của tam giác**\nĐường trung bình của tam giác là đoạn thẳng nối trung điểm hai cạnh của tam giác.\nXét $\\triangle ABC$ có $D$ là trung điểm của $AB$, $E$ là trung điểm của $AC$ nên $DE$ là đường trung bình của $\\triangle ABC$.\n\n##TC\n**2. Tính chất đường trung bình của tam giác**\n**a) Định lí:** Đường trung bình của tam giác thì song song với cạnh thứ ba và bằng nửa cạnh đó.\nXét $\\triangle ABC$ có $DE$ là đường trung bình ($D\\in AB$, $E\\in AC$) thì $DE\\parallel BC$ và $DE=\\dfrac12BC$.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/e6a51005-4553-4a65-b0d6-ee7698334c22.png)\nChứng minh:\nLấy $F$ đối xứng với $D$ qua $E$ nên $E$ là trung điểm của $DF$.\nTứ giác $ADCF$ có hai đường chéo $AC$ và $DF$ cắt nhau tại trung điểm $E$ của mỗi đường nên $ADCF$ là hình bình hành.\nSuy ra $FC\\parallel AD$ và $FC=AD$.\nMà $AD=DB$ ($D$ là trung điểm của $AB$) nên $FC=DB$; lại có $A,D,B$ thẳng hàng nên $FC\\parallel DB$.\nTứ giác $BDFC$ có $FC=DB$ và $FC\\parallel DB$ nên $BDFC$ là hình bình hành.\nSuy ra $DF\\parallel BC$ và $DF=BC$.\nDo đó $DE\\parallel BC$. Mà $DE=\\dfrac12DF$ nên $DE=\\dfrac12BC$.\n**b) Chú ý:** Trong một tam giác, nếu một đường thẳng đi qua trung điểm một cạnh và song song với cạnh thứ hai thì nó đi qua trung điểm của cạnh thứ ba.\nXét $\\triangle ABC$ có $D$ là trung điểm của $AB$, $DE\\parallel BC$ ($E\\in AC$) thì $E$ là trung điểm của $AC$.",
+  "file_url": null,
+  "cap_nhat_at": "2026-10-29T07:17:52.596Z"
+ },
+ {
+  "ma_bai": "HH00144",
+  "noi_dung": "##TC\n**1. Tính chất đường phân giác của tam giác**\na) Định lí: Trong một tam giác, đường phân giác của một góc chia cạnh đối diện thành hai đoạn thẳng tỉ lệ với hai cạnh kề hai đoạn ấy.\nXét $\\triangle ABC$ có $AD$ là tia phân giác của góc $A$ ($D\\in BC$). Khi đó $\\dfrac{DB}{DC}=\\dfrac{AB}{AC}$.\nb) Chú ý: Trong $\\triangle ABC$, nếu $D$ là điểm thuộc đoạn $BC$ và thoả mãn $\\dfrac{DB}{DC}=\\dfrac{AB}{AC}$ thì $AD$ là đường phân giác của góc $A$.",
+  "file_url": null,
+  "cap_nhat_at": "2026-10-29T07:25:49.111Z"
+ }
+]
