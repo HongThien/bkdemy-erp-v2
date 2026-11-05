@@ -1,0 +1,12 @@
+[
+{"ma_cau":"T11200000010059","dang_bai_id":"NDB00774","chac":"cao","ly_do":"Diện tích hình phẳng y=x³, trục hoành, cận x=1, x=2 cho sẵn, lắp công thức."},
+{"ma_cau":"T11200000010086","dang_bai_id":"NDB00774","chac":"cao","ly_do":"Diện tích hình thang cong với trục hoành, cận x=-2, x=0 cho sẵn."},
+{"ma_cau":"T11200000010088","dang_bai_id":"NDB00774","chac":"cao","ly_do":"Diện tích hình thang cong với trục hoành, cận x=-2, x=0 cho sẵn."},
+{"ma_cau":"T11200000010117","dang_bai_id":"NDB00756","chac":"cao","ly_do":"Cho gia tốc và v0, tìm v(t) rồi tích phân ra quãng đường; hợp cả 00749, dạng sau thắng."},
+{"ma_cau":"T1120000009387","dang_bai_id":"NDB00746","chac":"cao","ly_do":"Cho f'(x) và f(0)=3, tìm nguyên hàm có điều kiện để tính f(2)."},
+{"ma_cau":"T1120000009393","dang_bai_id":"NDB00747","chac":"cao","ly_do":"Cho ∫f dx, suy f bằng định nghĩa nguyên hàm (lấy đạo hàm), không tính nguyên hàm."},
+{"ma_cau":"T1120000009394","dang_bai_id":"NDB00746","chac":"cao","ly_do":"Tìm nguyên hàm F thoả F(1)=-1/2 để xác định hằng số C."},
+{"ma_cau":"T1120000009837","dang_bai_id":"NDB00743","chac":"cao","ly_do":"Họ nguyên hàm của 3cos x − 1, dùng công thức nguyên hàm lượng giác."},
+{"ma_cau":"T1120000009841","dang_bai_id":"NDB02592","chac":"cao","ly_do":"Cho sẵn nguyên hàm F=x², tính ∫[2+f] bằng F(b)−F(a) cộng phần hằng, khớp ví dụ dạng."},
+{"ma_cau":"T1120000009888","dang_bai_id":"NDB00774","chac":"cao","ly_do":"Diện tích hình phẳng y=x², trục hoành, cận x=1, x=2 cho sẵn."}
+]

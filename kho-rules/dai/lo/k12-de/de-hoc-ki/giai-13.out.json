@@ -1,0 +1,542 @@
+[
+ {
+  "id": "X0721",
+  "dap_an": "A",
+  "loi_giai": "Theo định nghĩa xác suất có điều kiện, với $P(B)>0$ thì $P(A|B)=\\dfrac{P(AB)}{P(B)}$.\nChọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0722",
+  "dap_an": "B",
+  "loi_giai": "Ta có $P(A|B)=\\dfrac{P(AB)}{P(B)}=\\dfrac{0{,}2}{0{,}4}=0{,}5$.\nVậy $P(A|B)=0{,}5$. Chọn B.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0723",
+  "dap_an": "B",
+  "loi_giai": "Góc giữa hai đường thẳng nằm trong khoảng từ $0^\\circ$ đến $90^\\circ$ nên $\\cos\\varphi\\ge 0$.\nDo đó $\\cos\\varphi=\\dfrac{|\\overrightarrow{u_1}\\cdot\\overrightarrow{u_2}|}{|\\overrightarrow{u_1}|\\cdot|\\overrightarrow{u_2}|}$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0724",
+  "dap_an": "B",
+  "loi_giai": "Đường thẳng $d$ có phương trình tham số $x=1-2t$, $y=-3+t$, $z=-5t$ nên một vectơ chỉ phương là $\\vec{u}_d(-2;1;-5)$.\nVectơ $\\vec{u}(2;-1;5)=-\\vec{u}_d$ cũng là một vectơ chỉ phương của $d$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0725",
+  "dap_an": "C",
+  "loi_giai": "Tâm $I$ của mặt cầu là trung điểm $MN$: $I\\left(\\dfrac{5+1}{2};\\dfrac{2+0}{2};\\dfrac{-9+1}{2}\\right)=(3;1;-4)$.\nTa có $\\overrightarrow{MN}=(-4;-2;10)$ nên $MN^2=16+4+100=120$.\nBán kính $R=\\dfrac{MN}{2}$ nên $R^2=\\dfrac{MN^2}{4}=30$.\nPhương trình mặt cầu: $(x-3)^2+(y-1)^2+(z+4)^2=30$.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0726",
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\overrightarrow{AB}=(1;2;2)$ là một vectơ chỉ phương của đường thẳng $AB$.\nĐường thẳng đi qua $A(1;2;3)$ nên có phương trình $\\dfrac{x-1}{1}=\\dfrac{y-2}{2}=\\dfrac{z-3}{2}$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0727",
+  "dap_an": "0.42",
+  "loi_giai": "Gọi $A$ là biến cố \"khách hàng nói sẽ mua\", $B$ là biến cố \"khách hàng chắc chắn mua\".\nTa có $P(A)=\\dfrac{550}{800}=\\dfrac{11}{16}$, $P(\\overline{A})=\\dfrac{250}{800}=\\dfrac{5}{16}$, $P(B|A)=0{,}6$, $P(B|\\overline{A})=0{,}01$.\nTheo công thức xác suất toàn phần: $P(B)=P(A)\\cdot P(B|A)+P(\\overline{A})\\cdot P(B|\\overline{A})$.\n$P(B)=\\dfrac{550}{800}\\cdot 0{,}6+\\dfrac{250}{800}\\cdot 0{,}01=0{,}4125+0{,}003125=0{,}415625$.\nLàm tròn đến hàng phần trăm: $0{,}42$.\nVậy xác suất cần tìm xấp xỉ $0{,}42$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0728",
+  "dap_an": "C",
+  "loi_giai": "Ta có $P(B|A)=\\dfrac{1}{3}$ nên $P(\\overline{B}|A)=1-\\dfrac{1}{3}=\\dfrac{2}{3}$.\n$P(A\\cap\\overline{B})=P(A)\\cdot P(\\overline{B}|A)=\\dfrac{2}{5}\\cdot\\dfrac{2}{3}=\\dfrac{4}{15}$.\nChọn C.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": true,
+  "ghi": "Đề thiếu vế sau chữ \"và\" nhưng không ảnh hưởng"
+ },
+ {
+  "id": "X0729",
+  "dap_an": "B",
+  "loi_giai": "Theo công thức xác suất toàn phần với hệ $\\{A;\\overline{A}\\}$: $P(B)=P(A)\\cdot P(B|A)+P(\\overline{A})\\cdot P(B|\\overline{A})$.\nChọn B.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0730",
+  "dap_an": "D",
+  "loi_giai": "Vì $A$ và $B$ độc lập nên $P(A|B)=P(A)$.\nVậy $P(A|B)=0{,}2024$. Chọn D.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0731",
+  "dap_an": "B",
+  "loi_giai": "Ta có $P(AB)=P(A|B)\\cdot P(B)=0{,}4\\cdot 0{,}6=0{,}24$.\n$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0{,}24}{0{,}3}=0{,}8$.\nChọn B.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0732",
+  "dap_an": "0.42",
+  "loi_giai": "Gọi $A$ là biến cố \"khách hàng nói sẽ mua\", $B$ là biến cố \"khách hàng chắc chắn mua\".\nTa có $P(A)=\\dfrac{550}{800}$, $P(\\overline{A})=\\dfrac{250}{800}$, $P(B|A)=0{,}6$, $P(B|\\overline{A})=0{,}01$.\nTheo công thức xác suất toàn phần: $P(B)=P(A)\\cdot P(B|A)+P(\\overline{A})\\cdot P(B|\\overline{A})$.\n$P(B)=\\dfrac{550}{800}\\cdot 0{,}6+\\dfrac{250}{800}\\cdot 0{,}01=0{,}415625\\approx 0{,}42$.\nVậy xác suất cần tìm xấp xỉ $0{,}42$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0733",
+  "dap_an": "B",
+  "loi_giai": "Đường thẳng $d$ đi qua $M(2;2;1)$, có vectơ chỉ phương $\\overrightarrow{u}=(5;2;-3)$.\nPhương trình tham số: $\\begin{cases}x=2+5t\\\\y=2+2t\\\\z=1-3t\\end{cases}$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0734",
+  "dap_an": "B",
+  "loi_giai": "Theo định nghĩa xác suất có điều kiện, với $P(B)>0$ thì $P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}$.\nChọn B.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0735",
+  "dap_an": "A",
+  "loi_giai": "Ta có $P(\\overline{B})=1-0{,}4=0{,}6$.\nTheo công thức xác suất toàn phần: $P(A)=P(B)\\cdot P(A|B)+P(\\overline{B})\\cdot P(A|\\overline{B})$.\n$P(A)=0{,}4\\cdot 0{,}5+0{,}6\\cdot 0{,}3=0{,}2+0{,}18=0{,}38$.\nChọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0736",
+  "dap_an": "A",
+  "loi_giai": "Ta có $P(B|A)=\\dfrac{1}{3}$ nên $P(\\overline{B}|A)=1-\\dfrac{1}{3}=\\dfrac{2}{3}$.\n$P(A\\cap\\overline{B})=P(A)\\cdot P(\\overline{B}|A)=\\dfrac{2}{5}\\cdot\\dfrac{2}{3}=\\dfrac{4}{15}$.\nChọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": true,
+  "ghi": "Đề thiếu vế sau chữ \"và\" nhưng không ảnh hưởng"
+ },
+ {
+  "id": "X0737",
+  "dap_an": "B",
+  "loi_giai": "Mặt cầu tâm $I(1;-2;3)$, bán kính $R=3$ có phương trình $(x-1)^2+(y+2)^2+(z-3)^2=R^2=9$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0738",
+  "dap_an": "2",
+  "loi_giai": "Gọi $K$ là điểm thoả mãn $\\overrightarrow{KB}+\\overrightarrow{KC}-\\overrightarrow{KA}=\\overrightarrow{0}$ hay $\\overrightarrow{K}=\\overrightarrow{B}+\\overrightarrow{C}-\\overrightarrow{A}$.\nToạ độ $K$: $x_K=5+1-8=-2$, $y_K=3+2-5=0$, $z_K=-4-6+11=1$ nên $K(-2;0;1)$.\nTa có $\\overrightarrow{MA}-\\overrightarrow{MB}-\\overrightarrow{MC}=(\\overrightarrow{MK}+\\overrightarrow{KA})-(\\overrightarrow{MK}+\\overrightarrow{KB})-(\\overrightarrow{MK}+\\overrightarrow{KC})=-\\overrightarrow{MK}+(\\overrightarrow{KA}-\\overrightarrow{KB}-\\overrightarrow{KC})=-\\overrightarrow{MK}$.\nDo đó $\\left|\\overrightarrow{MA}-\\overrightarrow{MB}-\\overrightarrow{MC}\\right|=MK$, bài toán trở thành tìm $M\\in(S)$ sao cho $MK$ nhỏ nhất.\nMặt cầu $(S)$ có tâm $I(2;4;-1)$, bán kính $R=3$.\n$\\overrightarrow{IK}=(-4;-4;2)$ nên $IK=\\sqrt{16+16+4}=6>R$, do đó $K$ nằm ngoài $(S)$.\n$MK$ nhỏ nhất khi $M$ là giao điểm của đoạn $IK$ với $(S)$, tức $\\overrightarrow{IM}=\\dfrac{R}{IK}\\overrightarrow{IK}=\\dfrac{1}{2}\\overrightarrow{IK}=(-2;-2;1)$.\nSuy ra $M(0;2;0)$, nên $a=0$, $b=2$, $c=0$.\nVậy $T=a+b+c=2$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng máy (lấy mẫu mặt cầu)"
+ },
+ {
+  "id": "X0739",
+  "dap_an": "B",
+  "loi_giai": "Theo định nghĩa xác suất có điều kiện, với $P(B)>0$ thì $P(A|B)=\\dfrac{P(AB)}{P(B)}$.\nChọn B.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0740",
+  "dap_an": "36",
+  "loi_giai": "Đường thẳng $\\Delta$ có vectơ chỉ phương $\\overrightarrow{u}=(2;3;2)$; mặt phẳng $(P)$ có vectơ pháp tuyến $\\overrightarrow{n}=(1;2;-1)$.\n$\\sin(\\Delta,(P))=\\dfrac{|\\overrightarrow{u}\\cdot\\overrightarrow{n}|}{|\\overrightarrow{u}|\\cdot|\\overrightarrow{n}|}=\\dfrac{|2+6-2|}{\\sqrt{17}\\cdot\\sqrt{6}}=\\dfrac{6}{\\sqrt{102}}\\approx 0{,}5941$.\nSuy ra góc giữa $\\Delta$ và $(P)$ xấp xỉ $36{,}45^\\circ$, làm tròn đến hàng đơn vị là $36^\\circ$.\nVậy $n=36$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0741",
+  "dap_an": "C",
+  "loi_giai": "Đường thẳng $\\Delta:\\dfrac{x-5}{8}=\\dfrac{y-9}{6}=\\dfrac{z-12}{3}$ có một vectơ chỉ phương là $(8;6;3)$.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0742",
+  "dap_an": "B",
+  "loi_giai": "Ta có $P(\\overline{B})=1-0{,}4=0{,}6$.\n$P(A)=P(B)\\cdot P(A|B)+P(\\overline{B})\\cdot P(A|\\overline{B})=0{,}4\\cdot 0{,}8+0{,}6\\cdot 0{,}3=0{,}32+0{,}18=0{,}5$.\nChọn B.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0743",
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng đi qua $P(1;1;-1)$ và có vectơ chỉ phương $\\overrightarrow{u}=(1;2;3)$ có phương trình chính tắc $\\dfrac{x-1}{1}=\\dfrac{y-1}{2}=\\dfrac{z+1}{3}$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0744",
+  "dap_an": "50",
+  "loi_giai": "Đường thẳng $\\Delta$ có vectơ chỉ phương $\\overrightarrow{u}=(3;1;-2)$; mặt phẳng $(P)$ có vectơ pháp tuyến $\\overrightarrow{n}=(1;2;-1)$.\n$\\sin(\\Delta,(P))=\\dfrac{|\\overrightarrow{u}\\cdot\\overrightarrow{n}|}{|\\overrightarrow{u}|\\cdot|\\overrightarrow{n}|}=\\dfrac{|3+2+2|}{\\sqrt{14}\\cdot\\sqrt{6}}=\\dfrac{7}{\\sqrt{84}}\\approx 0{,}7638$.\nSuy ra góc giữa $\\Delta$ và $(P)$ xấp xỉ $49{,}80^\\circ$, làm tròn đến hàng đơn vị là $50^\\circ$.\nVậy $n=50$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0745",
+  "dap_an": "A",
+  "loi_giai": "Ta có $P(AB)=P(A|B)\\cdot P(B)=0{,}25\\cdot 0{,}3=0{,}075$.\n$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0{,}075}{0{,}4}=0{,}1875$.\nChọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0746",
+  "dap_an": "0.76",
+  "loi_giai": "Gọi $A$ là biến cố \"học sinh tham gia câu lạc bộ âm nhạc\", $G$ là biến cố \"học sinh biết chơi guitar\".\nTa có $P(A)=0{,}3$, $P(\\overline{A})=0{,}7$, $P(G|A)=0{,}75$, $P(G|\\overline{A})=0{,}1$.\n$P(G)=P(A)\\cdot P(G|A)+P(\\overline{A})\\cdot P(G|\\overline{A})=0{,}3\\cdot 0{,}75+0{,}7\\cdot 0{,}1=0{,}225+0{,}07=0{,}295$.\nTheo công thức Bayes: $P(A|G)=\\dfrac{P(A)\\cdot P(G|A)}{P(G)}=\\dfrac{0{,}225}{0{,}295}=\\dfrac{45}{59}\\approx 0{,}7627$.\nLàm tròn đến hàng phần trăm: $0{,}76$.\nVậy xác suất cần tìm xấp xỉ $0{,}76$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0747",
+  "dap_an": "C",
+  "loi_giai": "Mặt cầu $(S):(x+1)^2+y^2+(z-3)^2=4$ có tâm $I(-1;0;3)$ và bán kính $R=\\sqrt{4}=2$.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0748",
+  "dap_an": "0.57",
+  "loi_giai": "Trước lần lật thứ 3, đã lật 2 lá nên còn 6 lá. Xét các trường hợp của 2 lá đầu:\nHai lá cùng màu (cùng đỏ hoặc cùng đen): xác suất $2\\cdot\\dfrac{4}{8}\\cdot\\dfrac{3}{7}=\\dfrac{24}{56}$. Khi đó còn 4 lá một màu, 2 lá màu kia; An đoán màu nhiều hơn nên xác suất đúng là $\\dfrac{4}{6}$.\nHai lá khác màu: xác suất $1-\\dfrac{24}{56}=\\dfrac{32}{56}$. Khi đó còn 3 đỏ, 3 đen; xác suất đoán đúng là $\\dfrac{3}{6}=\\dfrac{1}{2}$.\nXác suất đoán đúng ở lần 3: $\\dfrac{24}{56}\\cdot\\dfrac{4}{6}+\\dfrac{32}{56}\\cdot\\dfrac{1}{2}=\\dfrac{16}{56}+\\dfrac{16}{56}=\\dfrac{4}{7}\\approx 0{,}5714$.\nLàm tròn đến hàng phần trăm: $0{,}57$.\nVậy xác suất cần tìm xấp xỉ $0{,}57$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0749",
+  "dap_an": "C",
+  "loi_giai": "Theo định nghĩa xác suất có điều kiện, với $P(B)>0$ thì $P(A|B)=\\dfrac{P(AB)}{P(B)}$.\nChọn C.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0750",
+  "dap_an": "D",
+  "loi_giai": "Mặt cầu tâm $I(2;-1;3)$, bán kính $R=4$ có phương trình $(x-2)^2+(y+1)^2+(z-3)^2=16$.\nChọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0751",
+  "dap_an": "B",
+  "loi_giai": "Đường thẳng đi qua $P(1;1;-1)$ và có vectơ chỉ phương $\\overrightarrow{u}=(1;2;3)$ có phương trình chính tắc $\\dfrac{x-1}{1}=\\dfrac{y-1}{2}=\\dfrac{z+1}{3}$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0752",
+  "dap_an": "C",
+  "loi_giai": "Ta có $P(\\overline{B})=1-0{,}4=0{,}6$.\n$P(A)=P(B)\\cdot P(A|B)+P(\\overline{B})\\cdot P(A|\\overline{B})=0{,}4\\cdot 0{,}8+0{,}6\\cdot 0{,}3=0{,}32+0{,}18=0{,}5$.\nChọn C.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0753",
+  "dap_an": "C",
+  "loi_giai": "Vì $F$ là nguyên hàm của $f$ nên $\\int\\limits_{2}^{4} f(x)\\,\\mathrm{d}x=F(4)-F(2)$.\n$\\int\\limits_{2}^{4} f(x)\\,\\mathrm{d}x=3-6=-3$.\nChọn C.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": true,
+  "ghi": "Đề ghi đoạn [1;2] nhưng dùng F(4): lỗi in, đoạn đúng phải chứa 4"
+ },
+ {
+  "id": "X0754",
+  "dap_an": "D",
+  "loi_giai": "Phương trình tổng quát của mặt phẳng có dạng $Ax+By+Cz+D=0$ (bậc nhất đối với $x,y,z$, $A^2+B^2+C^2>0$).\nCác phương trình ở A, B, C chứa $z^2$, $y^2$, $x^2$ nên không phải phương trình mặt phẳng.\nPhương trình $2x+y+z+3=0$ là bậc nhất nên là phương trình mặt phẳng.\nChọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0755",
+  "dap_an": "C",
+  "loi_giai": "Mặt phẳng $(P)$ có vectơ pháp tuyến $\\overrightarrow{n_P}=(1;-2;2)$, mặt phẳng $(Q)$ có vectơ pháp tuyến $\\overrightarrow{n_Q}=(2;2;-1)$.\n$\\cos\\alpha=\\dfrac{|\\overrightarrow{n_P}\\cdot\\overrightarrow{n_Q}|}{|\\overrightarrow{n_P}|\\cdot|\\overrightarrow{n_Q}|}=\\dfrac{|2-4-2|}{3\\cdot 3}=\\dfrac{4}{9}$.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0756",
+  "dap_an": "C",
+  "loi_giai": "Đường thẳng $\\Delta:\\dfrac{x-5}{8}=\\dfrac{y-9}{6}=\\dfrac{z-12}{3}$ có một vectơ chỉ phương là $(8;6;3)$.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0757",
+  "dap_an": "B",
+  "loi_giai": "Mặt phẳng $(P)$ có vectơ pháp tuyến $\\overrightarrow{n_P}=(2;1;-1)$, mặt phẳng $(Q)$ có vectơ pháp tuyến $\\overrightarrow{n_Q}=(1;-2;1)$.\nGiao tuyến có một vectơ chỉ phương là $\\overrightarrow{u}=[\\overrightarrow{n_P},\\overrightarrow{n_Q}]$.\n$[\\overrightarrow{n_P},\\overrightarrow{n_Q}]=\\left(1\\cdot 1-(-1)(-2);\\ (-1)\\cdot 1-2\\cdot 1;\\ 2\\cdot(-2)-1\\cdot 1\\right)=(-1;-3;-5)$.\nVectơ $(1;3;5)$ cùng phương với $(-1;-3;-5)$ nên cũng là một vectơ chỉ phương của giao tuyến.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0758",
+  "dap_an": "A",
+  "loi_giai": "Vì $A$, $B$ độc lập nên $P(A|B)=P(A)=0{,}8$.\nChọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0759",
+  "dap_an": "0.38",
+  "loi_giai": "Gọi $A$ là biến cố \"khách hàng xem quảng cáo\", $B$ là biến cố \"khách hàng mua sản phẩm\".\nTa có $P(A)=0{,}4$, $P(B)=0{,}25$, $P(A|B)=0{,}6$.\n$P(AB)=P(B)\\cdot P(A|B)=0{,}25\\cdot 0{,}6=0{,}15$.\n$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0{,}15}{0{,}4}=0{,}375$.\nLàm tròn đến hàng phần trăm: $0{,}38$.\nVậy xác suất cần tìm xấp xỉ $0{,}38$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0760",
+  "dap_an": "A",
+  "loi_giai": "Ta có $P(\\overline{A})=1-0{,}2=0{,}8$.\n$P(B)=P(A)\\cdot P(B|A)+P(\\overline{A})\\cdot P(B|\\overline{A})=0{,}2\\cdot 0{,}7+0{,}8\\cdot 0{,}15=0{,}14+0{,}12=0{,}26$.\nTheo công thức Bayes: $P(A|B)=\\dfrac{P(A)\\cdot P(B|A)}{P(B)}=\\dfrac{0{,}14}{0{,}26}=\\dfrac{7}{13}$.\nChọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0761",
+  "dap_an": "D",
+  "loi_giai": "Góc giữa hai mặt phẳng nằm trong khoảng từ $0^\\circ$ đến $90^\\circ$.\nGóc giữa hai vectơ pháp tuyến là $120^\\circ>90^\\circ$ nên góc giữa hai mặt phẳng là $180^\\circ-120^\\circ=60^\\circ$.\nChọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0762",
+  "dap_an": "C",
+  "loi_giai": "Ta có $P(B)=1-P(\\overline{B})=1-0{,}2=0{,}8$.\n$P(A)=P(B)\\cdot P(A|B)+P(\\overline{B})\\cdot P(A|\\overline{B})=0{,}8\\cdot 0{,}5+0{,}2\\cdot 0{,}3=0{,}4+0{,}06=0{,}46$.\nChọn C.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0763",
+  "dap_an": "0.5",
+  "loi_giai": "Gọi $A$ là biến cố \"người được chọn là nam\", $B$ là biến cố \"người được chọn bị đau dạ dày\".\nTa có $P(A)=\\dfrac{60}{100}=0{,}6$, $P(AB)=\\dfrac{30}{100}=0{,}3$.\n$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0{,}3}{0{,}6}=0{,}5$.\nVậy xác suất cần tìm là $0{,}5$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0764",
+  "dap_an": "B",
+  "loi_giai": "$d(M,(P))=\\dfrac{|2\\cdot 2-2\\cdot(-1)+3+1|}{\\sqrt{2^2+(-2)^2+1^2}}=\\dfrac{|4+2+3+1|}{3}=\\dfrac{10}{3}$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0765",
+  "dap_an": "B",
+  "loi_giai": "Vì $A$, $B$ độc lập nên $P(A|B)=P(A)=0{,}8$.\nChọn B.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0766",
+  "dap_an": "0.33",
+  "loi_giai": "Gọi $A$ là biến cố \"khách hàng xem quảng cáo\", $B$ là biến cố \"khách hàng mua sản phẩm\".\nTa có $P(A)=0{,}45$, $P(B)=0{,}25$, $P(A|B)=0{,}6$.\n$P(AB)=P(B)\\cdot P(A|B)=0{,}25\\cdot 0{,}6=0{,}15$.\n$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0{,}15}{0{,}45}=\\dfrac{1}{3}\\approx 0{,}33$.\nVậy xác suất cần tìm xấp xỉ $0{,}33$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0767",
+  "dap_an": "D",
+  "loi_giai": "Mặt phẳng $(P)$ có vectơ pháp tuyến $\\overrightarrow{n_P}=(2;1;-1)$, mặt phẳng $(Q)$ có vectơ pháp tuyến $\\overrightarrow{n_Q}=(1;-2;1)$.\nGiao tuyến có một vectơ chỉ phương là $\\overrightarrow{u}=[\\overrightarrow{n_P},\\overrightarrow{n_Q}]$.\n$[\\overrightarrow{n_P},\\overrightarrow{n_Q}]=\\left(1\\cdot 1-(-1)(-2);\\ (-1)\\cdot 1-2\\cdot 1;\\ 2\\cdot(-2)-1\\cdot 1\\right)=(-1;-3;-5)$.\nVectơ $(1;3;5)$ cùng phương với $(-1;-3;-5)$ nên cũng là một vectơ chỉ phương của giao tuyến.\nChọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0768",
+  "dap_an": "C",
+  "loi_giai": "Mặt cầu $(S):(x-3)^2+(y+1)^2+(z-2)^2=4$ có tâm $I(3;-1;2)$ và bán kính $R=\\sqrt{4}=2$.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0769",
+  "dap_an": "B",
+  "loi_giai": "Mặt phẳng $(P):2x+3y+z+2=0$ có một vectơ pháp tuyến là $(2;3;1)$, tức $\\vec{n}_2(2;3;1)$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0770",
+  "dap_an": "A",
+  "loi_giai": "Mặt cầu tâm $I(2;1;2)$, bán kính $R=3$ có phương trình $(x-2)^2+(y-1)^2+(z-2)^2=R^2=9$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0771",
+  "dap_an": "B",
+  "loi_giai": "Ta có $P(AB)=P(A|B)\\cdot P(B)=0{,}3\\cdot 0{,}6=0{,}18$.\n$P(\\overline{A}B)=P(B)-P(AB)=0{,}6-0{,}18=0{,}42$.\nChọn B.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0772",
+  "dap_an": "D",
+  "loi_giai": "Ta có $\\overrightarrow{AB}=(1;2;-4)$ là một vectơ chỉ phương của đường thẳng $AB$.\nĐường thẳng $AB$ đi qua $A(1;2;3)$ nên có phương trình chính tắc $\\dfrac{x-1}{1}=\\dfrac{y-2}{2}=\\dfrac{z-3}{-4}$.\nChọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0773",
+  "dap_an": "-7",
+  "loi_giai": "Hàm số $y=\\dfrac{x^2+3x+3}{x+2}$ có tập xác định $\\mathbb{R}\\setminus\\{-2\\}$.\n$y'=\\dfrac{(2x+3)(x+2)-(x^2+3x+3)}{(x+2)^2}=\\dfrac{x^2+4x+3}{(x+2)^2}$.\n$y'=0\\Leftrightarrow x^2+4x+3=0\\Leftrightarrow x=-1$ hoặc $x=-3$.\n$y'>0$ khi $x<-3$ hoặc $x>-1$ (với $x\\ne -2$), nên hàm số đồng biến trên $(-\\infty;-3)$ và $(-1;+\\infty)$.\nCác điểm cực trị là $x=-3$ và $x=-1$. Theo đề, $a=-3$ (khoảng $(-\\infty;a)$) và $b=-1$ (khoảng $(b;+\\infty)$).\nVậy $A=2a+b=2\\cdot(-3)+(-1)=-7$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0774",
+  "dap_an": "B",
+  "loi_giai": "$\\overrightarrow{u}+\\overrightarrow{v}=(3+5;\\ 2+(-4);\\ 0+2)=(8;-2;2)$.\nChọn B.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0775",
+  "dap_an": "B",
+  "loi_giai": "Khoảng biến thiên của mẫu số liệu ghép nhóm bằng hiệu giữa đầu mút phải của nhóm cuối cùng và đầu mút trái của nhóm đầu tiên.\n$R=65-40=25$.\nChọn B.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0776",
+  "dap_an": "0.59",
+  "loi_giai": "Thùng I có $4$ máy bay và $6$ ô tô (10 món). Thùng II có $12$ máy bay và $8$ ô tô (20 món).\nGọi $A$ là biến cố \"món lấy từ thùng I là máy bay\", $B$ là biến cố \"món lấy từ thùng II (sau khi chuyển) là máy bay\".\n$P(A)=\\dfrac{4}{10}=0{,}4$, $P(\\overline{A})=0{,}6$.\nNếu chuyển máy bay: thùng II có $13$ máy bay trong $21$ món nên $P(B|A)=\\dfrac{13}{21}$.\nNếu chuyển ô tô: thùng II có $12$ máy bay trong $21$ món nên $P(B|\\overline{A})=\\dfrac{12}{21}$.\n$P(B)=0{,}4\\cdot\\dfrac{13}{21}+0{,}6\\cdot\\dfrac{12}{21}=\\dfrac{5{,}2+7{,}2}{21}=\\dfrac{12{,}4}{21}\\approx 0{,}5905$.\nLàm tròn đến hai chữ số thập phân: $0{,}59$.\nVậy xác suất cần tìm xấp xỉ $0{,}59$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0777",
+  "dap_an": "B",
+  "loi_giai": "Mặt cầu tâm $I(-1;2;-3)$ đi qua $M(0;3;2)$ có bán kính $R=IM$.\n$\\overrightarrow{IM}=(1;1;5)$ nên $R^2=IM^2=1+1+25=27$.\nPhương trình mặt cầu: $(x+1)^2+(y-2)^2+(z+3)^2=27$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0778",
+  "dap_an": "D",
+  "loi_giai": "$\\overrightarrow{BA}=(1-0;\\ 3-1;\\ 4-2)=(1;2;2)$.\nChọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0779",
+  "dap_an": "D",
+  "loi_giai": "Theo công thức xác suất toàn phần với hệ $\\{B;\\overline{B}\\}$: $P(A)=P(B)\\cdot P(A|B)+P(\\overline{B})\\cdot P(A|\\overline{B})$.\nChọn D.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0780",
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng $\\Delta_1$ đi qua $M_1(1;0;-2)$, có vectơ chỉ phương $\\overrightarrow{u_1}=(2;1;-2)$.\nĐường thẳng $\\Delta_2$ đi qua $M_2(-2;1;0)$, có vectơ chỉ phương $\\overrightarrow{u_2}=(-2;-1;2)=-\\overrightarrow{u_1}$ nên $\\Delta_1$, $\\Delta_2$ song song hoặc trùng nhau.\nThay $M_2$ vào $\\Delta_1$: $\\dfrac{-2-1}{2}=-1{,}5$, $\\dfrac{1}{1}=1$, hai tỉ số khác nhau nên $M_2\\notin\\Delta_1$.\nVậy $\\Delta_1\\parallel\\Delta_2$. Chọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ }
+]

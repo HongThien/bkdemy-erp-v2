@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T1120000009857",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009441",
+  "dang_bai_id": "NDB02588",
+  "chac": "cao",
+  "ly_do": "Nhận biết: công thức/ý nghĩa hoặc đổi qua lại giữa phương sai và độ lệch chuẩn."
+ },
+ {
+  "ma_cau": "T1120000009536",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009359",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009340",
+  "dang_bai_id": "NDB02591",
+  "chac": "cao",
+  "ly_do": "Tính số trung bình của mẫu ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009631",
+  "dang_bai_id": "NDB02583",
+  "chac": "cao",
+  "ly_do": "Chỉ hỏi nhóm chứa tứ phân vị, dò tần số tích luỹ, không cần nội suy."
+ },
+ {
+  "ma_cau": "T1120000009855",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009349",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009690",
+  "dang_bai_id": "NDB02591",
+  "chac": "vua",
+  "ly_do": "Hỏi cỡ mẫu nhưng đề lỗi ô tần số \"1 2\" tách đôi; đọc bảng lấy cỡ mẫu."
+ },
+ {
+  "ma_cau": "T1120000009510",
+  "dang_bai_id": "NDB02585",
+  "chac": "cao",
+  "ly_do": "Tính khoảng tứ phân vị: tính Q1, Q3 bằng nội suy rồi lấy hiệu."
+ },
+ {
+  "ma_cau": "T1120000009443",
+  "dang_bai_id": "NDB02588",
+  "chac": "cao",
+  "ly_do": "Nhận biết: công thức/ý nghĩa hoặc đổi qua lại giữa phương sai và độ lệch chuẩn."
+ },
+ {
+  "ma_cau": "T1120000009739",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009646",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009770",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009635",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Cần cả ΔQ, s², s; theo luật dạng sau thắng xếp vào dạng phương sai–độ lệch chuẩn."
+ },
+ {
+  "ma_cau": "T1120000009853",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009471",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009424",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009777",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009623",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Cần cả ΔQ, s², s; theo luật dạng sau thắng xếp vào dạng phương sai–độ lệch chuẩn."
+ },
+ {
+  "ma_cau": "T1120000009552",
+  "dang_bai_id": "NDB02584",
+  "chac": "cao",
+  "ly_do": "Tính trung vị/tứ phân vị bằng công thức nội suy sau khi tìm nhóm chứa."
+ },
+ {
+  "ma_cau": "T1120000009323",
+  "dang_bai_id": "NDB02583",
+  "chac": "cao",
+  "ly_do": "Chỉ hỏi nhóm chứa tứ phân vị, dò tần số tích luỹ, không cần nội suy."
+ },
+ {
+  "ma_cau": "T1120000009437",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009719",
+  "dang_bai_id": "NDB02585",
+  "chac": "cao",
+  "ly_do": "Tính khoảng tứ phân vị: tính Q1, Q3 bằng nội suy rồi lấy hiệu."
+ },
+ {
+  "ma_cau": "T1120000009477",
+  "dang_bai_id": "NDB02591",
+  "chac": "cao",
+  "ly_do": "Tính số trung bình của mẫu ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009612",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009738",
+  "dang_bai_id": "NDB02591",
+  "chac": "vua",
+  "ly_do": "Hỏi nhóm chứa mốt (tần số lớn nhất) rồi giá trị đại diện; bản đồ chưa có dạng mốt riêng."
+ },
+ {
+  "ma_cau": "T1120000009782",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009548",
+  "dang_bai_id": "NDB02588",
+  "chac": "cao",
+  "ly_do": "Nhận biết: công thức/ý nghĩa hoặc đổi qua lại giữa phương sai và độ lệch chuẩn."
+ },
+ {
+  "ma_cau": "T1120000009611",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009807",
+  "dang_bai_id": "NDB02583",
+  "chac": "cao",
+  "ly_do": "Chỉ hỏi nhóm chứa tứ phân vị, dò tần số tích luỹ, không cần nội suy."
+ },
+ {
+  "ma_cau": "T1120000009854",
+  "dang_bai_id": "NDB02588",
+  "chac": "cao",
+  "ly_do": "Nhận biết: công thức/ý nghĩa hoặc đổi qua lại giữa phương sai và độ lệch chuẩn."
+ },
+ {
+  "ma_cau": "T1120000009689",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009849",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009675",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009316",
+  "dang_bai_id": "NDB02586",
+  "chac": "cao",
+  "ly_do": "Biết sẵn Q1,Q2,Q3 hoặc hỏi công thức: ΔQ = Q3 − Q1."
+ },
+ {
+  "ma_cau": "T1120000009586",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009509",
+  "dang_bai_id": "NDB02588",
+  "chac": "cao",
+  "ly_do": "Nhận biết: công thức/ý nghĩa hoặc đổi qua lại giữa phương sai và độ lệch chuẩn."
+ },
+ {
+  "ma_cau": "T1120000009632",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009746",
+  "dang_bai_id": "NDB02591",
+  "chac": "vua",
+  "ly_do": "Hỏi nhóm chứa mốt (tần số lớn nhất) rồi giá trị đại diện; bản đồ chưa có dạng mốt riêng."
+ },
+ {
+  "ma_cau": "T1120000009592",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009599",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009522",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009525",
+  "dang_bai_id": "NDB02590",
+  "chac": "cao",
+  "ly_do": "Ghép số liệu thô thành nhóm rồi so khoảng biến thiên ghép nhóm với mẫu gốc."
+ },
+ {
+  "ma_cau": "T1120000009826",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009580",
+  "dang_bai_id": "NDB02591",
+  "chac": "cao",
+  "ly_do": "Tính số trung bình của mẫu ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009820",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009456",
+  "dang_bai_id": "NDB02591",
+  "chac": "cao",
+  "ly_do": "Tính số trung bình của mẫu ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009291",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009410",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009630",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009845",
+  "dang_bai_id": "NDB02586",
+  "chac": "cao",
+  "ly_do": "Biết sẵn Q1,Q2,Q3 hoặc hỏi công thức: ΔQ = Q3 − Q1."
+ },
+ {
+  "ma_cau": "T1120000009686",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009411",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009566",
+  "dang_bai_id": "NDB02588",
+  "chac": "cao",
+  "ly_do": "Nhận biết: công thức/ý nghĩa hoặc đổi qua lại giữa phương sai và độ lệch chuẩn."
+ },
+ {
+  "ma_cau": "T11200000010026",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009391",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009425",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009627",
+  "dang_bai_id": "NDB02583",
+  "chac": "cao",
+  "ly_do": "Chỉ hỏi nhóm chứa tứ phân vị, dò tần số tích luỹ, không cần nội suy."
+ },
+ {
+  "ma_cau": "T1120000009661",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009388",
+  "dang_bai_id": "NDB02584",
+  "chac": "cao",
+  "ly_do": "Tính trung vị/tứ phân vị bằng công thức nội suy sau khi tìm nhóm chứa."
+ },
+ {
+  "ma_cau": "T1120000009654",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009360",
+  "dang_bai_id": "NDB02588",
+  "chac": "vua",
+  "ly_do": "Chọn biểu thức phương sai đúng cho bảng cụ thể; cũng có thể coi là tính phương sai (NDB02587)."
+ },
+ {
+  "ma_cau": "T1120000009923",
+  "dang_bai_id": "NDB02586",
+  "chac": "cao",
+  "ly_do": "Biết sẵn Q1,Q2,Q3 hoặc hỏi công thức: ΔQ = Q3 − Q1."
+ },
+ {
+  "ma_cau": "T1120000009433",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009587",
+  "dang_bai_id": "NDB02584",
+  "chac": "cao",
+  "ly_do": "Tính trung vị/tứ phân vị bằng công thức nội suy sau khi tìm nhóm chứa."
+ },
+ {
+  "ma_cau": "T1120000009835",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009537",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai/độ lệch chuẩn từ bảng ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000009431",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng biến thiên từ bảng ghép nhóm: đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."
+ },
+ {
+  "ma_cau": "T1120000009805",
+  "dang_bai_id": "NDB02583",
+  "chac": "cao",
+  "ly_do": "Chỉ hỏi nhóm chứa tứ phân vị, dò tần số tích luỹ, không cần nội suy."
+ }
+]

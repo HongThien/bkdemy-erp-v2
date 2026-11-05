@@ -1,0 +1,14 @@
+[
+ {"ma_cau": "T1120000009837", "dang_bai_id": "NDB00743", "chac": "cao", "ly_do": "Tìm họ nguyên hàm của 3cos x - 1: hàm lượng giác dùng bảng nguyên hàm, đúng ví dụ dạng lượng giác."},
+ {"ma_cau": "T1120000009916", "dang_bai_id": "NDB00756", "chac": "vua", "ly_do": "Cho gia tốc, vận tốc đầu, tìm vận tốc: giống ví dụ NDB00756 nhưng chỉ dùng nguyên hàm nên NDB00749 cũng hợp."},
+ {"ma_cau": "T1120000009961", "dang_bai_id": "NDB00632", "chac": "vua", "ly_do": "Cho sẵn biểu thức v(t), tìm quãng đường đến khi dừng bằng tích phân; NDB00756 cũng có thể hợp."},
+ {"ma_cau": "T11200000010059", "dang_bai_id": "NDB00774", "chac": "cao", "ly_do": "Diện tích giới hạn bởi y=x^3, trục hoành, hai đường x=1, x=2 cho sẵn cận, lắp công thức."},
+ {"ma_cau": "T11200000010117", "dang_bai_id": "NDB00756", "chac": "cao", "ly_do": "Cho gia tốc a(t), vận tốc ban đầu, tính quãng đường trong 3 giây: khớp ví dụ NDB00756."},
+ {"ma_cau": "T1120000009394", "dang_bai_id": "NDB00746", "chac": "cao", "ly_do": "Tìm nguyên hàm F(x) thoả F(1) cho trước để xác định hằng số C."},
+ {"ma_cau": "T1120000009387", "dang_bai_id": "NDB00746", "chac": "cao", "ly_do": "Cho f'(x) và f(0)=3, tìm f(x) bằng nguyên hàm với điều kiện rồi tính f(2)."},
+ {"ma_cau": "T1120000009888", "dang_bai_id": "NDB00774", "chac": "cao", "ly_do": "Diện tích giới hạn bởi y=x^2, trục hoành, x=1, x=2 có sẵn cận."},
+ {"ma_cau": "T11200000010088", "dang_bai_id": "NDB00774", "chac": "cao", "ly_do": "Diện tích hình thang cong giới hạn bởi parabol, trục hoành, x=-2, x=0 có sẵn cận."},
+ {"ma_cau": "T1120000009841", "dang_bai_id": "NDB02592", "chac": "cao", "ly_do": "Cho F là nguyên hàm của f, tính tích phân của 2+f bằng Newton-Leibniz F(2)-F(1)."},
+ {"ma_cau": "T1120000009393", "dang_bai_id": "NDB00747", "chac": "cao", "ly_do": "Cho họ nguyên hàm của f, suy f bằng đạo hàm: áp dụng định nghĩa nguyên hàm."},
+ {"ma_cau": "T11200000010086", "dang_bai_id": "NDB00774", "chac": "cao", "ly_do": "Diện tích hình thang cong giới hạn bởi parabol, trục hoành, x=-2, x=0 có sẵn cận."}
+]

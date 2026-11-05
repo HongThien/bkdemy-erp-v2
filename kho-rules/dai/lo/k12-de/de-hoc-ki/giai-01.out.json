@@ -1,0 +1,542 @@
+[
+ {
+  "id": "X0001",
+  "dap_an": "3.2",
+  "loi_giai": "Ta có $y=\\dfrac{3x^{2}+2x}{4x+4}=\\dfrac{3}{4}x-\\dfrac{1}{4}+\\dfrac{1}{4x+4}$.\nVì $\\lim\\limits_{x\\to\\pm\\infty}\\dfrac{1}{4x+4}=0$ nên tiệm cận xiên là $y=\\dfrac{3}{4}x-\\dfrac{1}{4}$, hay $3x-4y-1=0$.\nKhoảng cách từ $M(3;-2)$ đến đường thẳng này là $d=\\dfrac{|3\\cdot 3-4\\cdot(-2)-1|}{\\sqrt{3^{2}+4^{2}}}=\\dfrac{16}{5}=3{,}2$.\nVậy khoảng cách bằng $3{,}2$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0002",
+  "dap_an": "-0.5",
+  "loi_giai": "Chọn hệ trục với $A(0;0;0)$, $B(a;0;0)$, $D(0;a;0)$, $A'(0;0;a)$. Khi đó $C(a;a;0)$, $C'(a;a;a)$, $D'(0;a;a)$.\n$M$ là trung điểm $A'D'$ nên $M\\left(0;\\dfrac{a}{2};a\\right)$; $N$ là trung điểm $C'D'$ nên $N\\left(\\dfrac{a}{2};a;a\\right)$.\n$\\overrightarrow{MN}=\\left(\\dfrac{a}{2};\\dfrac{a}{2};0\\right)$, $\\overrightarrow{C'B}=(a-a;0-a;0-a)=(0;-a;-a)$.\n$\\overrightarrow{MN}\\cdot\\overrightarrow{C'B}=\\dfrac{a}{2}\\cdot 0+\\dfrac{a}{2}\\cdot(-a)+0\\cdot(-a)=-\\dfrac{a^{2}}{2}$.\nVậy $n=-0{,}5$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0003",
+  "dap_an": "500",
+  "loi_giai": "Gọi $k$ là số lần tăng giá $50$ nghìn đồng ($k\\ge 0$). Giá vé là $400+50k$ (nghìn đồng), số khách là $120-10k$.\nDoanh thu: $f(k)=(400+50k)(120-10k)=-500k^{2}+2000k+48000$.\n$f'(k)=-1000k+2000=0\\Leftrightarrow k=2$; $f'(k)>0$ khi $k<2$ và $f'(k)<0$ khi $k>2$ nên $f$ đạt lớn nhất tại $k=2$.\nKhi đó giá vé là $400+50\\cdot 2=500$ (nghìn đồng), doanh thu lớn nhất là $500\\cdot 100=50000$ nghìn đồng.\nVậy công ty nên bán giá $500$ nghìn đồng mỗi vé.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0004",
+  "dap_an": "C",
+  "loi_giai": "Ta có $\\lim\\limits_{x\\to 1^{+}}\\dfrac{2x+3}{x-1}=+\\infty$ (vì tử $\\to 5>0$, mẫu $\\to 0^{+}$).\nDo đó đường thẳng $x=1$ là tiệm cận đứng của đồ thị.\nChọn C.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0005",
+  "dap_an": "245",
+  "loi_giai": "Số trung bình: $\\overline{x}=\\dfrac{500\\cdot 5+1500\\cdot 46+2500\\cdot 162+3500\\cdot 25+4500\\cdot 12}{250}=\\dfrac{618000}{250}=2472$.\nCác giá trị $x^{2}f$ lần lượt là $1\\,250\\,000;\\ 103\\,500\\,000;\\ 1\\,012\\,500\\,000;\\ 306\\,250\\,000;\\ 243\\,000\\,000$, tổng $=1\\,666\\,500\\,000$.\nPhương sai: $s^{2}=\\dfrac{1\\,666\\,500\\,000}{250}-2472^{2}=6\\,666\\,000-6\\,110\\,784=555\\,216$.\nĐộ lệch chuẩn $s=\\sqrt{555216}\\approx 745$.\nĐộ lệch chuẩn vượt tiêu chuẩn là $745-500=245$.\nVậy lô hàng vượt tiêu chuẩn $245$ giờ.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0006",
+  "dap_an": "0.75",
+  "loi_giai": "Đặt hệ trục sao cho $O$ là gốc, đáy $ABCD$ nằm trong mặt phẳng $(Oxy)$ và $S$ thuộc tia $Oz$.\nĐáy là hình vuông cạnh $\\sqrt{2}$ nên $OA=OB=OC=OD=\\dfrac{\\sqrt{2}\\cdot\\sqrt{2}}{2}=1$.\nChiều cao $SO=\\sqrt{SA^{2}-OA^{2}}=\\sqrt{5-1}=2$, nên $S(0;0;2)$.\nĐiểm $I$ cách đều $A,B,C,D$ nên $I$ nằm trên trục $SO$, tức $I(0;0;c)$, suy ra $a=b=0$.\n$IA^{2}=1+c^{2}$, $IS^{2}=(2-c)^{2}$. Từ $IA=IS$: $1+c^{2}=4-4c+c^{2}\\Leftrightarrow c=\\dfrac{3}{4}$.\nVậy $a+b+c=\\dfrac{3}{4}=0{,}75$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "đề không nêu mặt phẳng đáy; giả định đáy nằm trong Oxy"
+ },
+ {
+  "id": "X0007",
+  "dap_an": "A",
+  "loi_giai": "Gọi $G$ là trọng tâm tam giác $BCD$. Khi đó $\\overrightarrow{AB}+\\overrightarrow{AC}+\\overrightarrow{AD}=3\\overrightarrow{AG}$.\nTam giác $BCD$ đều cạnh $a$ nên $BG=\\dfrac{a\\sqrt{3}}{3}$.\nTứ diện đều nên $AG\\perp(BCD)$, $AG=\\sqrt{AB^{2}-BG^{2}}=\\sqrt{a^{2}-\\dfrac{a^{2}}{3}}=\\dfrac{a\\sqrt{6}}{3}$.\nSuy ra $\\left|\\overrightarrow{AB}+\\overrightarrow{AC}+\\overrightarrow{AD}\\right|=3\\cdot\\dfrac{a\\sqrt{6}}{3}=a\\sqrt{6}$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0008",
+  "dap_an": "D",
+  "loi_giai": "Từ $\\overrightarrow{MC}=-\\dfrac{1}{3}\\overrightarrow{MC'}$ suy ra $M$ nằm giữa $C$ và $C'$, $MC=\\dfrac{1}{3}MC'$, do đó $CM=\\dfrac{1}{4}CC'$ và $\\overrightarrow{CM}=\\dfrac{1}{4}\\overrightarrow{CC'}=\\dfrac{1}{4}\\overrightarrow{c}$.\nTa có $\\overrightarrow{A'M}=\\overrightarrow{A'A}+\\overrightarrow{AC}+\\overrightarrow{CM}$.\n$=-\\overrightarrow{c}+\\overrightarrow{b}+\\dfrac{1}{4}\\overrightarrow{c}=\\overrightarrow{b}-\\dfrac{3}{4}\\overrightarrow{c}$.\nChọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0009",
+  "dap_an": "B",
+  "loi_giai": "Tứ giác $BACD$ là hình bình hành nên $\\overrightarrow{BA}=\\overrightarrow{DC}$.\n$\\overrightarrow{BA}=(-1-3;2-4;0+2)=(-4;-2;2)$ và $\\overrightarrow{DC}=(1-x_{0};-y_{0};-3-z_{0})$.\nSuy ra $1-x_{0}=-4$, $-y_{0}=-2$, $-3-z_{0}=2$, tức $x_{0}=5$, $y_{0}=2$, $z_{0}=-5$.\nVậy $x_{0}+y_{0}+z_{0}=5+2-5=2$.\nChọn B.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0010",
+  "dap_an": "A",
+  "loi_giai": "Điểm đối xứng của $M(x;y;z)$ qua trục $Ox$ là $(x;-y;-z)$.\nVới $M(1;2;3)$ ta được điểm đối xứng là $(1;-2;-3)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0011",
+  "dap_an": "A",
+  "loi_giai": "$2\\overrightarrow{u}=(-6;0;2)$.\n$\\overrightarrow{w}=2\\overrightarrow{u}-\\overrightarrow{v}=(-6-0;\\,0-2;\\,2-(-2))=(-6;-2;4)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0012",
+  "dap_an": "B",
+  "loi_giai": "Cỡ mẫu $n=17+33+25+20+5=100$. Tần số tích luỹ: $17;\\ 50;\\ 75;\\ 95;\\ 100$.\nTứ phân vị thứ nhất: $\\dfrac{n}{4}=25$ nên $Q_{1}$ thuộc nhóm $[2{,}5;4{,}5)$: $Q_{1}=2{,}5+\\dfrac{25-17}{33}\\cdot 2=2{,}5+\\dfrac{16}{33}\\approx 2{,}9848$.\nTứ phân vị thứ ba: $\\dfrac{3n}{4}=75$ nên $Q_{3}$ thuộc nhóm $[4{,}5;6{,}5)$: $Q_{3}=4{,}5+\\dfrac{75-50}{25}\\cdot 2=6{,}5$.\nKhoảng tứ phân vị: $\\Delta_{Q}=Q_{3}-Q_{1}\\approx 6{,}5-2{,}9848\\approx 3{,}52$.\nChọn B.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0013",
+  "dap_an": "A",
+  "loi_giai": "$y'=4x^{3}+16x=4x\\left(x^{2}+4\\right)$.\nVì $x^{2}+4>0$ nên $y'>0\\Leftrightarrow x>0$ và $y'<0\\Leftrightarrow x<0$.\nHàm số đồng biến trên khoảng $(0;+\\infty)$.\nChọn A.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0014",
+  "dap_an": "459",
+  "loi_giai": "Sản lượng cá sau $t$ tháng: $S(t)=300\\cdot p(t)\\cdot m(t)=300\\cdot\\dfrac{31}{31+t}\\cdot 0{,}45\\left(0{,}2+\\dfrac{141}{155}t-0{,}05t^{2}\\right)$ với $0\\le t\\le 10$.\nĐặt $g(t)=0{,}2+\\dfrac{141}{155}t-0{,}05t^{2}$. Khi đó $S(t)=\\dfrac{4185\\,g(t)}{31+t}$ và $S'(t)=4185\\cdot\\dfrac{g'(t)(31+t)-g(t)}{(31+t)^{2}}$, có dấu cùng dấu với $h(t)=g'(t)(31+t)-g(t)$.\nVới $g'(t)=\\dfrac{141}{155}-0{,}1t$: $h(t)=\\dfrac{141}{5}+\\dfrac{141}{155}t-3{,}1t-0{,}1t^{2}-0{,}2-\\dfrac{141}{155}t+0{,}05t^{2}=28-3{,}1t-0{,}05t^{2}$.\n$h(t)=0\\Leftrightarrow t^{2}+62t-560=0\\Leftrightarrow t=8$ (loại $t=-70$). $h>0$ khi $t<8$, $h<0$ khi $t>8$ nên $S(t)$ đạt lớn nhất tại $t=8$.\nTa có $g(8)=0{,}2+\\dfrac{1128}{155}-3{,}2=\\dfrac{1128}{155}-3=\\dfrac{663}{155}$ và $p(8)=\\dfrac{31}{39}$.\n$S(8)=300\\cdot\\dfrac{31}{39}\\cdot 0{,}45\\cdot\\dfrac{663}{155}=135\\cdot\\dfrac{31\\cdot 663}{39\\cdot 155}=135\\cdot\\dfrac{17}{5}=459$.\nVậy sản lượng cá lớn nhất là $459$ kg.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0015",
+  "dap_an": "(9;-5;7)",
+  "loi_giai": "$\\overrightarrow{AB}=(3-0;-1-1;1+2)=(3;-2;3)$ nên $3\\overrightarrow{AB}=(9;-6;9)$.\n$\\overrightarrow{AM}=(a;b-1;c+2)=(9;-6;9)$.\nSuy ra $a=9$, $b-1=-6\\Rightarrow b=-5$, $c+2=9\\Rightarrow c=7$.\nVậy $M(9;-5;7)$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "đáp án dạng bộ ba toạ độ"
+ },
+ {
+  "id": "X0016",
+  "dap_an": "18",
+  "loi_giai": "Gọi chiều rộng đáy là $x$ ($x>0$), chiều dài $2x$, chiều cao $h$. Thể tích: $2x^{2}h=\\dfrac{500}{3}\\Rightarrow h=\\dfrac{250}{3x^{2}}$.\nDiện tích cần xây (đáy và bốn mặt bên, không nắp): $S=2x^{2}+2(x+2x)h=2x^{2}+6xh=2x^{2}+\\dfrac{500}{x}$.\n$S'=4x-\\dfrac{500}{x^{2}}=0\\Leftrightarrow x^{3}=125\\Leftrightarrow x=5$.\n$S'<0$ khi $x<5$ và $S'>0$ khi $x>5$ nên $S$ nhỏ nhất tại $x=5$: $S_{\\min}=2\\cdot 25+\\dfrac{500}{5}=150$ (m$^{2}$).\nChi phí ít nhất: $150\\cdot 120\\,000=18\\,000\\,000$ đồng $=18$ triệu đồng.\nVậy chi phí nhân công ít nhất là $18$ triệu đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0017",
+  "dap_an": "29.7",
+  "loi_giai": "$|\\overrightarrow{u}|=\\sqrt{1^{2}+2^{2}+(-2)^{2}}=3$. Sau $5$ giây cabin đi được quãng đường $6\\cdot 5=30$ m.\nVectơ dịch chuyển: $30\\cdot\\dfrac{\\overrightarrow{u}}{|\\overrightarrow{u}|}=10\\overrightarrow{u}=(10;20;-20)$.\nVị trí cabin: $P=A+(10;20;-20)=(-1+10;\\,4+20;\\,3-20)=(9;24;-17)$.\n$\\overrightarrow{BP}=(9-2;\\,24-0;\\,-17+1)=(7;24;-16)$.\n$BP=\\sqrt{7^{2}+24^{2}+16^{2}}=\\sqrt{881}\\approx 29{,}68$.\nVậy khoảng cách khoảng $29{,}7$ mét.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0018",
+  "dap_an": "A",
+  "loi_giai": "Hàm số $y=\\dfrac{2}{x^{2}-x}=\\dfrac{2}{x(x-1)}$ có mẫu bằng $0$ tại $x=0$ và $x=1$; tử $2\\ne 0$ nên có hai tiệm cận đứng $x=0$, $x=1$.\n$\\lim\\limits_{x\\to\\pm\\infty}\\dfrac{2}{x^{2}-x}=0$ nên có một tiệm cận ngang $y=0$.\nTổng số đường tiệm cận đứng và ngang là $2+1=3$.\nChọn A.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0019",
+  "dap_an": "B",
+  "loi_giai": "Tứ diện đều nên tam giác $DAB$ đều, $\\widehat{ADB}=60^{\\circ}$, $DA=DB=2$.\n$\\overrightarrow{DA}\\cdot\\overrightarrow{DB}=DA\\cdot DB\\cdot\\cos 60^{\\circ}=2\\cdot 2\\cdot\\dfrac{1}{2}=2$.\nChọn B.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0020",
+  "dap_an": "A",
+  "loi_giai": "$G$ là trọng tâm nên $x_{G}=\\dfrac{x_{A}+x_{B}+x_{C}}{3}$, suy ra $x_{C}=3x_{G}-x_{A}-x_{B}=-3-1-2=-6$.\n$y_{C}=3\\cdot 2-0-1=5$; $z_{C}=3\\cdot 0-2-4=-6$.\nVậy $C(-6;5;-6)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0021",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{u}\\cdot\\overrightarrow{v}=(-1)\\cdot 1+1\\cdot(-1)+3\\cdot 0=-1-1+0=-2$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0022",
+  "dap_an": "19",
+  "loi_giai": "Khoảng biến thiên: $R=70-40=30$.\nCỡ mẫu $n=44$. Tần số tích luỹ: $4;\\ 18;\\ 26;\\ 36;\\ 42;\\ 44$.\n$Q_{1}$ ứng với $\\dfrac{n}{4}=11$, thuộc nhóm $[45;50)$: $Q_{1}=45+\\dfrac{11-4}{14}\\cdot 5=47{,}5$.\n$Q_{3}$ ứng với $\\dfrac{3n}{4}=33$, thuộc nhóm $[55;60)$: $Q_{3}=55+\\dfrac{33-26}{10}\\cdot 5=58{,}5$.\nKhoảng tứ phân vị: $\\Delta_{Q}=58{,}5-47{,}5=11$.\nHiệu cần tìm: $R-\\Delta_{Q}=30-11=19$.\nVậy kết quả là $19$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0023",
+  "dap_an": "-10",
+  "loi_giai": "$ABCD$ là hình chữ nhật nên $AC=\\sqrt{AB^{2}+AD^{2}}=\\sqrt{10}$.\n$SA\\perp(ABCD)$ nên $AC$ là hình chiếu của $SC$ lên đáy, góc giữa $SC$ và đáy là $\\widehat{SCA}=45^{\\circ}$. Tam giác $SAC$ vuông cân tại $A$ nên $SA=AC=\\sqrt{10}$ và $SC=\\sqrt{20}$.\nGóc giữa hai vectơ $\\overrightarrow{SC}$ và $\\overrightarrow{CA}$ bằng $180^{\\circ}-\\widehat{SCA}=135^{\\circ}$.\n$\\overrightarrow{SC}\\cdot\\overrightarrow{CA}=SC\\cdot CA\\cdot\\cos 135^{\\circ}=\\sqrt{20}\\cdot\\sqrt{10}\\cdot\\left(-\\dfrac{\\sqrt{2}}{2}\\right)=10\\sqrt{2}\\cdot\\left(-\\dfrac{\\sqrt{2}}{2}\\right)=-10$.\nVậy tích vô hướng bằng $-10$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0024",
+  "dap_an": "(-2/3;11/3;-1)",
+  "loi_giai": "$M$ thuộc đoạn $BC$ và $BM=2MC$ nên $\\overrightarrow{BM}=\\dfrac{2}{3}\\overrightarrow{BC}$.\n$\\overrightarrow{AM}=\\overrightarrow{AB}+\\overrightarrow{BM}=\\overrightarrow{AB}+\\dfrac{2}{3}\\left(\\overrightarrow{AC}-\\overrightarrow{AB}\\right)=\\dfrac{1}{3}\\overrightarrow{AB}+\\dfrac{2}{3}\\overrightarrow{AC}$.\n$\\overrightarrow{AM}=\\dfrac{1}{3}(2;-1;3)+\\dfrac{2}{3}(-2;6;-3)=\\left(\\dfrac{2-4}{3};\\dfrac{-1+12}{3};\\dfrac{3-6}{3}\\right)=\\left(-\\dfrac{2}{3};\\dfrac{11}{3};-1\\right)$.\nVậy $\\overrightarrow{AM}=\\left(-\\dfrac{2}{3};\\dfrac{11}{3};-1\\right)$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "đáp án dạng bộ ba toạ độ"
+ },
+ {
+  "id": "X0025",
+  "dap_an": "6.24",
+  "loi_giai": "Xét $y=3x+\\dfrac{4}{x^{2}}$ trên $(0;+\\infty)$: $y'=3-\\dfrac{8}{x^{3}}=0\\Leftrightarrow x^{3}=\\dfrac{8}{3}\\Leftrightarrow x=\\sqrt[3]{\\dfrac{8}{3}}\\approx 1{,}3867$.\n$y'<0$ khi $0<x<\\sqrt[3]{8/3}$ và $y'>0$ khi $x>\\sqrt[3]{8/3}$ nên $y$ đạt giá trị nhỏ nhất tại $x=\\sqrt[3]{8/3}$.\nTại đó $\\dfrac{4}{x^{2}}=\\dfrac{4x}{x^{3}}=\\dfrac{4x\\cdot 3}{8}=1{,}5x$ nên $y_{\\min}=4{,}5x\\approx 4{,}5\\cdot 1{,}3867\\approx 6{,}24$.\nVậy giá trị nhỏ nhất xấp xỉ $6{,}24$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0026",
+  "dap_an": "D",
+  "loi_giai": "Giá trị đại diện các nhóm: $17{,}5;\\ 22{,}5;\\ 27{,}5;\\ 32{,}5;\\ 37{,}5$ với tần số $10;\\ 12;\\ 14;\\ 9;\\ 5$.\nSố trung bình: $\\overline{x}=\\dfrac{17{,}5\\cdot 10+22{,}5\\cdot 12+27{,}5\\cdot 14+32{,}5\\cdot 9+37{,}5\\cdot 5}{50}=\\dfrac{1310}{50}=26{,}2$.\nPhương sai: $s^{2}=\\dfrac{17{,}5^{2}\\cdot 10+22{,}5^{2}\\cdot 12+27{,}5^{2}\\cdot 14+32{,}5^{2}\\cdot 9+37{,}5^{2}\\cdot 5}{50}-26{,}2^{2}=\\dfrac{36262{,}5}{50}-686{,}44=38{,}81$.\nVì $30<38{,}81<40$ nên phương sai thuộc khoảng $(30;40)$.\nChọn D.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0027",
+  "dap_an": "-126",
+  "loi_giai": "Vectơ vuông góc với cả $\\overrightarrow{a}$ và $\\overrightarrow{b}$ cùng phương với $\\left[\\overrightarrow{a},\\overrightarrow{b}\\right]=\\left(-2\\cdot 1-1\\cdot 2;\\ 1\\cdot 1-3\\cdot 1;\\ 3\\cdot 2-(-2)\\cdot 1\\right)=(-4;-2;8)$.\n$\\overrightarrow{c}=(12;m;n)=k(-4;-2;8)$ nên $12=-4k\\Rightarrow k=-3$, do đó $m=6$, $n=-24$.\nKiểm tra: $\\overrightarrow{c}\\cdot\\overrightarrow{a}=36-12-24=0$; $\\overrightarrow{c}\\cdot\\overrightarrow{b}=12+12-24=0$.\n$4n-5m=4\\cdot(-24)-5\\cdot 6=-96-30=-126$.\nVậy giá trị cần tìm là $-126$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0028",
+  "dap_an": "A",
+  "loi_giai": "$2\\overrightarrow{a}=(6;-4;6)$, $-\\overrightarrow{b}=(-1;-4;4)$, $4\\overrightarrow{c}=(12;8;-8)$.\n$\\overrightarrow{u}=(6-1+12;\\,-4-4+8;\\,6+4-8)=(17;0;2)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0029",
+  "dap_an": "A",
+  "loi_giai": "Gọi $H(x;y;z)$. $\\overrightarrow{KH}=(x-1;y-5;z+2)=(3;6;4)$.\nSuy ra $x=4$, $y=11$, $z=2$. Vậy $H(4;11;2)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0030",
+  "dap_an": "D",
+  "loi_giai": "Khoảng tứ phân vị của mẫu số liệu ghép nhóm là hiệu giữa tứ phân vị thứ ba và tứ phân vị thứ nhất: $\\Delta_{Q}=Q_{3}-Q_{1}$.\nChọn D.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0031",
+  "dap_an": "5",
+  "loi_giai": "Chi phí tổng cộng của $x$ xe: $x\\cdot C(x)=3x^{2}+300x+30000$.\nLợi nhuận: $L(x)=D(x)-xC(x)=x^{3}-4597x^{2}+50300x+30000-3x^{2}-300x-30000=x^{3}-4600x^{2}+50000x$.\n$L'(x)=3x^{2}-9200x+50000$; $L'(x)=0$ trên $[1;10]$ tại $x\\approx 5{,}45$, $L'>0$ khi $x<5{,}45$ và $L'<0$ khi $5{,}45<x\\le 10$.\nDo $x\\in\\mathbb{N}$ nên so sánh $L(5)$ và $L(6)$: $L(5)=125-115000+250000=135125$; $L(6)=216-165600+300000=134616$.\n$L(5)>L(6)$ nên lợi nhuận lớn nhất khi $x=5$.\nVậy cần ưu tiên tối đa $5$ xe.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "giả sử C(x) là chi phí bình quân mỗi xe nên tổng chi phí là x·C(x)"
+ },
+ {
+  "id": "X0032",
+  "dap_an": "A",
+  "loi_giai": "$f'(x)=0\\Leftrightarrow x=0$ (nghiệm kép), $x=1$, $x=2$.\nVì $x^{2}\\ge 0$ nên dấu của $f'(x)$ là dấu của $(x-1)(x-2)$ (trừ tại $x=0$): $f'>0$ khi $x<1$, $f'<0$ khi $1<x<2$, $f'>0$ khi $x>2$.\n$f'$ đổi dấu từ $+$ sang $-$ tại $x=1$ (cực đại) và từ $-$ sang $+$ tại $x=2$ (cực tiểu); tại $x=0$, $f'$ không đổi dấu.\nVậy hàm số đạt cực tiểu tại $x=2$.\nChọn A.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0033",
+  "dap_an": "7",
+  "loi_giai": "$\\overrightarrow{d}=2\\overrightarrow{a}+3\\overrightarrow{b}=(2;0;2)+(3;3;0)=(5;3;2)$.\nGóc giữa $\\overrightarrow{c}$ và $\\overrightarrow{d}$ bằng $90^{\\circ}$ khi $\\overrightarrow{c}\\cdot\\overrightarrow{d}=0$.\n$-4\\cdot 5+2\\cdot 3+m\\cdot 2=0\\Leftrightarrow -20+6+2m=0\\Leftrightarrow m=7$.\nVậy $m=7$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0034",
+  "dap_an": "5.95",
+  "loi_giai": "Cỡ mẫu $n=38$. Tần số tích luỹ: $5;\\ 17;\\ 26;\\ 33;\\ 38$.\n$Q_{1}$ ứng với $\\dfrac{n}{4}=9{,}5$, thuộc nhóm $[163;166)$: $Q_{1}=163+\\dfrac{9{,}5-5}{12}\\cdot 3=164{,}125$.\n$Q_{3}$ ứng với $\\dfrac{3n}{4}=28{,}5$, thuộc nhóm $[169;172)$: $Q_{3}=169+\\dfrac{28{,}5-26}{7}\\cdot 3\\approx 170{,}0714$.\n$\\Delta_{Q}=Q_{3}-Q_{1}\\approx 170{,}0714-164{,}125\\approx 5{,}95$.\nVậy khoảng tứ phân vị xấp xỉ $5{,}95$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0035",
+  "dap_an": "5",
+  "loi_giai": "$M$ nằm trên trục $Oz$ nên $M(0;0;z)$.\n$MA^{2}=0+1+(z-1)^{2}=z^{2}-2z+2$; $MB^{2}=4+9+(z-3)^{2}=z^{2}-6z+22$.\n$MA=MB\\Leftrightarrow z^{2}-2z+2=z^{2}-6z+22\\Leftrightarrow 4z=20\\Leftrightarrow z=5$.\nVậy cao độ của $M$ bằng $5$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0036",
+  "dap_an": "-21",
+  "loi_giai": "Gọi $I$ là điểm thoả $\\overrightarrow{IA}+\\overrightarrow{IB}+\\overrightarrow{IC}+2\\overrightarrow{ID}=\\overrightarrow{0}$ (tổng hệ số bằng $5$).\n$I\\left(\\dfrac{-6+1-3+2(-1)}{5};\\dfrac{4+1+2+2(-1)}{5};\\dfrac{-1+2+4+2\\cdot 0}{5}\\right)=(-2;1;1)$.\n$P=MA^{2}+MB^{2}+MC^{2}+2MD^{2}=5MI^{2}+\\left(IA^{2}+IB^{2}+IC^{2}+2ID^{2}\\right)$, trong đó số hạng thứ hai không đổi.\nDo đó $P$ nhỏ nhất khi $MI=0$, tức $M\\equiv I(-2;1;1)$, suy ra $a=-2$, $b=1$, $c=1$.\n$Q=15a+10b-c=-30+10-1=-21$.\nVậy $Q=-21$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0037",
+  "dap_an": "B",
+  "loi_giai": "Cỡ mẫu $n=2+4+10+5+3=24$. Tần số tích luỹ: $2;\\ 6;\\ 16;\\ 21;\\ 24$.\nTứ phân vị thứ ba ứng với $\\dfrac{3n}{4}=18$. Vì $16<18\\le 21$ nên $Q_{3}$ thuộc nhóm $[120;150)$.\nChọn B.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0038",
+  "dap_an": "B",
+  "loi_giai": "Cỡ mẫu $n=9+13+17+9+4=52$. Giá trị đại diện: $13{,}5;\\ 15{,}5;\\ 17{,}5;\\ 19{,}5;\\ 21{,}5$.\nSố trung bình: $\\overline{x}=\\dfrac{13{,}5\\cdot 9+15{,}5\\cdot 13+17{,}5\\cdot 17+19{,}5\\cdot 9+21{,}5\\cdot 4}{52}=\\dfrac{882}{52}\\approx 16{,}96$.\nPhương sai: $s^{2}=\\dfrac{13{,}5^{2}\\cdot 9+15{,}5^{2}\\cdot 13+17{,}5^{2}\\cdot 17+19{,}5^{2}\\cdot 9+21{,}5^{2}\\cdot 4}{52}-\\overline{x}^{2}\\approx 5{,}4$.\nChọn B.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0039",
+  "dap_an": "C",
+  "loi_giai": "Mẫu $x^{2}+1>0$ với mọi $x$ nên đồ thị không có tiệm cận đứng.\n$\\lim\\limits_{x\\to\\pm\\infty}\\left(y-(x+1)\\right)=\\lim\\limits_{x\\to\\pm\\infty}\\dfrac{x}{x^{2}+1}=0$ nên đường thẳng $y=x+1$ là tiệm cận xiên.\nHàm số không có tiệm cận ngang vì $y\\to\\pm\\infty$ khi $x\\to\\pm\\infty$.\nChọn C.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0040",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "dữ kiện mâu thuẫn: thực tế tam giác cân tại C, chân đường cao từ B là (1;2;1) không có trong đáp án"
+ },
+ {
+  "id": "X0041",
+  "dap_an": "C",
+  "loi_giai": "$\\left|\\overrightarrow{a}+\\overrightarrow{b}\\right|^{2}=|\\overrightarrow{a}|^{2}+2\\overrightarrow{a}\\cdot\\overrightarrow{b}+|\\overrightarrow{b}|^{2}=25+2\\cdot 3+5=36$.\nSuy ra $\\left|\\overrightarrow{a}+\\overrightarrow{b}\\right|=6$.\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "có nhãn [[shape]] thừa ở đề"
+ },
+ {
+  "id": "X0042",
+  "dap_an": "180",
+  "loi_giai": "$y=-x^{3}+270x^{2}$ với $0\\le x\\le 270$, $y'=-3x^{2}+540x=-3x(x-180)$.\n$y'=0\\Leftrightarrow x=0$ hoặc $x=180$.\n$y'>0$ khi $0<x<180$ (lợi nhuận tăng) và $y'<0$ khi $180<x<270$ (lợi nhuận giảm).\nVậy từ sản phẩm thứ $180$ trở đi lợi nhuận bắt đầu giảm.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0043",
+  "dap_an": "10;1200",
+  "loi_giai": "Số tiền bán được: $B(x)=220x$. Lợi nhuận: $L(x)=B(x)-C(x)=220x-x^{3}+3x^{2}+20x-500=-x^{3}+3x^{2}+240x-500$ với $1\\le x\\le 18$.\n$L'(x)=-3x^{2}+6x+240=0\\Leftrightarrow x^{2}-2x-80=0\\Leftrightarrow x=10$ (loại $x=-8$).\n$L(1)=-258$; $L(10)=-1000+300+2400-500=1200$; $L(18)=-5832+972+4320-500=-1040$.\nVậy $L$ lớn nhất bằng $1200$ nghìn đồng khi $x=10$.\nHộ cần sản xuất và bán $10$ mét vải mỗi ngày, lợi nhuận tối đa là $1200$ nghìn đồng.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "đáp án gồm 2 giá trị: 10 mét và 1200 nghìn đồng"
+ },
+ {
+  "id": "X0044",
+  "dap_an": "-10",
+  "loi_giai": "$ABCD$ là hình chữ nhật nên $AC=\\sqrt{AB^{2}+AD^{2}}=\\sqrt{10}$.\n$SA\\perp(ABCD)$ nên góc giữa $SC$ và đáy là $\\widehat{SCA}=45^{\\circ}$. Tam giác $SAC$ vuông cân tại $A$ nên $SA=AC=\\sqrt{10}$, $SC=\\sqrt{20}$.\nGóc giữa hai vectơ $\\overrightarrow{SC}$ và $\\overrightarrow{CA}$ bằng $180^{\\circ}-45^{\\circ}=135^{\\circ}$.\n$\\overrightarrow{SC}\\cdot\\overrightarrow{CA}=\\sqrt{20}\\cdot\\sqrt{10}\\cdot\\cos 135^{\\circ}=10\\sqrt{2}\\cdot\\left(-\\dfrac{\\sqrt{2}}{2}\\right)=-10$.\nVậy tích vô hướng bằng $-10$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0045",
+  "dap_an": "20",
+  "loi_giai": "$G(x)=0{,}025x^{2}(30-x)=0{,}025\\left(30x^{2}-x^{3}\\right)$ với $0\\le x\\le 30$.\n$G'(x)=0{,}025\\left(60x-3x^{2}\\right)=0{,}075x(20-x)$; $G'(x)=0\\Leftrightarrow x=0$ hoặc $x=20$.\n$G(0)=0$; $G(20)=0{,}025\\cdot 400\\cdot 10=100$; $G(30)=0$.\nĐộ giảm huyết áp lớn nhất khi $x=20$.\nVậy cần tiêm $20$ miligam thuốc.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0046",
+  "dap_an": "C",
+  "loi_giai": "Hai vectơ cùng hướng khi vectơ này bằng $k$ lần vectơ kia với $k>0$.\n$(-6;4;10)=2\\cdot(-3;2;5)=2\\overrightarrow{a}$ với $2>0$ nên cùng hướng với $\\overrightarrow{a}$.\nCác phương án A, B không tỉ lệ với $\\overrightarrow{a}$; phương án D $(3;-2;-5)$ không cùng phương với $\\overrightarrow{a}$.\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0047",
+  "dap_an": "B",
+  "loi_giai": "$\\lim\\limits_{x\\to 1^{+}}\\dfrac{2x+2}{x-1}=+\\infty$ (tử $\\to 4>0$, mẫu $\\to 0^{+}$).\nVậy tiệm cận đứng của đồ thị là $x=1$.\nChọn B.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0048",
+  "dap_an": "C",
+  "loi_giai": "Hình chiếu của $M(x;y;z)$ lên mặt phẳng $(Oxz)$ là $(x;0;z)$.\nVới $M(-3;2;5)$ ta được $(-3;0;5)$.\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0049",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{u}=-2\\overrightarrow{i}+5\\overrightarrow{j}-\\overrightarrow{k}$ nên $\\overrightarrow{u}=(-2;5;-1)$.\n$\\overrightarrow{v}=-3\\overrightarrow{u}=(6;-15;3)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0050",
+  "dap_an": "C",
+  "loi_giai": "Theo quy tắc hình hộp, $\\overrightarrow{AC'}=\\overrightarrow{AB}+\\overrightarrow{AD}+\\overrightarrow{AA'}$.\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0051",
+  "dap_an": "A",
+  "loi_giai": "Đặt $\\overrightarrow{AB}=\\overrightarrow{a}$, $\\overrightarrow{AD}=\\overrightarrow{b}$, $\\overrightarrow{AA'}=\\overrightarrow{c}$.\n$\\overrightarrow{u}=\\overrightarrow{A'A}+\\overrightarrow{A'B'}+\\overrightarrow{A'D'}=-\\overrightarrow{c}+\\overrightarrow{a}+\\overrightarrow{b}$.\n$\\overrightarrow{A'C}=\\overrightarrow{A'A}+\\overrightarrow{AC}=-\\overrightarrow{c}+\\overrightarrow{a}+\\overrightarrow{b}$.\nSuy ra $\\overrightarrow{u}=\\overrightarrow{A'C}$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0052",
+  "dap_an": "D",
+  "loi_giai": "$\\overrightarrow{BC}=(4;0;-2)$. $\\overrightarrow{BM}=2\\overrightarrow{BC}=(8;0;-4)$.\n$BMDA$ là hình bình hành nên $\\overrightarrow{BM}=\\overrightarrow{AD}$.\n$\\overrightarrow{AD}=(x_{D}-1;\\,y_{D}-1;\\,z_{D}-1)=(8;0;-4)$ suy ra $D(9;1;-3)$.\nChọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0053",
+  "dap_an": "219.32",
+  "loi_giai": "Chọn gốc là điểm xuất phát, trục $Ox$ hướng Đông, $Oy$ hướng Bắc, $Oz$ hướng lên (đơn vị km).\nKhinh khí cầu thứ nhất: $A(100;-80;1)$. Khinh khí cầu thứ hai (Bắc $70$, Tây $60$, cao $800$ m $=0{,}8$ km): $B(-60;70;0{,}8)$.\n$\\overrightarrow{AB}=(-160;150;-0{,}2)$.\n$AB=\\sqrt{160^{2}+150^{2}+0{,}2^{2}}=\\sqrt{48100{,}04}\\approx 219{,}32$.\nVậy khoảng cách giữa hai khinh khí cầu khoảng $219{,}32$ km.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0054",
+  "dap_an": "6.67",
+  "loi_giai": "Với $x_{0}=10$: $v(x)=(10-x)x^{2}=10x^{2}-x^{3}$ trên đoạn $[5;10]$.\n$v'(x)=20x-3x^{2}=x(20-3x)$; $v'(x)=0\\Leftrightarrow x=\\dfrac{20}{3}$ (thuộc $[5;10]$).\n$v(5)=125$; $v\\left(\\dfrac{20}{3}\\right)=\\dfrac{10}{3}\\cdot\\dfrac{400}{9}=\\dfrac{4000}{27}\\approx 148{,}15$; $v(10)=0$.\nVận tốc lớn nhất khi $x=\\dfrac{20}{3}\\approx 6{,}67$.\nVậy $x\\approx 6{,}67$ mm.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0055",
+  "dap_an": "41",
+  "loi_giai": "Gọi $x$ là số lần giảm giá $4000$ đồng. Giá bán: $50-4x$ (nghìn đồng/kg), số kg bán được: $25+50x$.\nLợi nhuận: $L(x)=(50-4x-30)(25+50x)=(20-4x)(25+50x)=-200x^{2}+900x+500$.\n$L'(x)=-400x+900=0\\Leftrightarrow x=\\dfrac{9}{4}$; $L'>0$ khi $x<\\dfrac{9}{4}$, $L'<0$ khi $x>\\dfrac{9}{4}$ nên $L$ lớn nhất tại $x=\\dfrac{9}{4}$.\nGiá bán: $50-4\\cdot\\dfrac{9}{4}=41$ (nghìn đồng).\nVậy giá bán là $41$ nghìn đồng mỗi kg.",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "coi mức giảm giá liên tục; nếu giảm theo bậc nguyên đáp án là 42"
+ },
+ {
+  "id": "X0056",
+  "dap_an": "-6",
+  "loi_giai": "Phương trình hoành độ giao điểm: $2x+m=\\dfrac{3x+2}{x-1}\\ (x\\ne 1)\\Leftrightarrow 2x^{2}+(m-5)x-(m+2)=0\\ (*)$.\n$x=1$ không là nghiệm của $(*)$ (thay vào được $-5\\ne 0$). $\\Delta=(m-5)^{2}+8(m+2)=m^{2}-2m+41>0$ với mọi $m$ nên $d$ luôn cắt đồ thị tại hai điểm phân biệt $C,D$.\nTheo Vi-ét: $x_{C}+x_{D}=\\dfrac{5-m}{2}$, $y_{C}+y_{D}=2(x_{C}+x_{D})+2m=5+m$.\nTrọng tâm $G$ của $\\Delta OCD$: $G\\left(\\dfrac{5-m}{6};\\dfrac{5+m}{3}\\right)$.\n$G\\in\\Delta:\\ 2x-y-4=0\\Rightarrow\\dfrac{5-m}{3}-\\dfrac{5+m}{3}-4=0\\Leftrightarrow -\\dfrac{2m}{3}=4\\Leftrightarrow m=-6$.\nVậy $m=-6$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0057",
+  "dap_an": "B",
+  "loi_giai": "Giá trị đại diện: $67{,}5;\\ 72{,}5;\\ 77{,}5;\\ 82{,}5$ với tần số $1;\\ 3;\\ 4;\\ 2$, cỡ mẫu $n=10$.\n$\\overline{x}=\\dfrac{67{,}5\\cdot 1+72{,}5\\cdot 3+77{,}5\\cdot 4+82{,}5\\cdot 2}{10}=\\dfrac{760}{10}=76$.\nChọn B.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0058",
+  "dap_an": "C",
+  "loi_giai": "$y'=-3x^{2}+3=0\\Leftrightarrow x=\\pm 1$.\n$y'>0$ khi $-1<x<1$ và $y'<0$ khi $x<-1$ hoặc $x>1$ nên hàm số đạt cực đại tại $x=1$.\n$y_{CĐ}=y(1)=-1+3=2$.\nChọn C.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0059",
+  "dap_an": "29",
+  "loi_giai": "Trong hình hộp $ABCD.A'B'C'D'$, $\\overrightarrow{AB}=\\overrightarrow{DC}$ nên $D=A+C-B=(1+2-1;\\,-1+1-0;\\,1+2-1)=(2;0;2)$.\n$\\overrightarrow{DD'}=(4-2;\\,5-0;\\,-5-2)=(2;5;-7)$. Vì $\\overrightarrow{AA'}=\\overrightarrow{DD'}$ nên $A'=(1+2;\\,-1+5;\\,1-7)=(3;4;-6)$.\n$\\overrightarrow{D'A'}=(3-4;\\,4-5;\\,-6+5)=(-1;-1;-1)$.\nVectơ vuông góc cả hai: $\\left[\\overrightarrow{DD'},\\overrightarrow{D'A'}\\right]=(5\\cdot(-1)-(-7)(-1);\\ (-7)(-1)-2\\cdot(-1);\\ 2\\cdot(-1)-5\\cdot(-1))=(-12;9;3)$.\n$\\overrightarrow{v}(a;b;1)$ cùng phương với $(-12;9;3)$ nên $\\overrightarrow{v}=\\dfrac{1}{3}(-12;9;3)=(-4;3;1)$, tức $a=-4$, $b=3$.\n$-5a+3b=20+9=29$.\nVậy giá trị cần tìm là $29$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0060",
+  "dap_an": "7",
+  "loi_giai": "$y=\\dfrac{x^{2}+3x+3}{x+2}=x+1+\\dfrac{1}{x+2}$, $y'=1-\\dfrac{1}{(x+2)^{2}}=0\\Leftrightarrow (x+2)^{2}=1\\Leftrightarrow x=-1$ hoặc $x=-3$.\n$y'>0$ khi $x<-3$ hoặc $x>-1$; $y'<0$ khi $-3<x<-2$ hoặc $-2<x<-1$.\nHàm số đạt cực đại tại $x=-3$: $M=y(-3)=-3$; đạt cực tiểu tại $x=-1$: $m=y(-1)=1$.\n$M^{2}-2m=9-2=7$.\nVậy giá trị biểu thức là $7$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ }
+]

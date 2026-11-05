@@ -1,0 +1,844 @@
+[
+ {
+  "ma_cau": "T11200000010169",
+  "loai": "trac_nghiem",
+  "de": "Xét một phép thử có biến cố $A$ và $B$ thỏa mãn $P\\left( A \\right)$, $P\\left( B \\right)>0$. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "$P\\left( A \\right)=P\\left( B \\right)P\\left( A|B \\right)+P\\left( \\overline{B} \\right)P\\left( A|\\overline{B} \\right)$.",
+   "$P\\left( A \\right)=P\\left( \\overline{B} \\right)P\\left( A|B \\right)+P\\left( B \\right)P\\left( A|\\overline{B} \\right)$.",
+   "$P\\left( A \\right)=P\\left( B \\right)P\\left( \\overline{A}|B \\right)+P\\left( A|\\overline{B} \\right)$.",
+   "$P\\left( A \\right)=P\\left( \\overline{B} \\right)P\\left( \\overline{A}|B \\right)+P\\left( B \\right)P\\left( A|\\overline{B} \\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Hai biến cố $B$ và $\\overline{B}$ tạo thành hệ đầy đủ, nên theo công thức xác suất toàn phần:\n$P(A)=P(B)P(A|B)+P(\\overline{B})P(A|\\overline{B})$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009963",
+  "loai": "trac_nghiem",
+  "de": "Cho A, B là hai biến cố thỏa $P(B)=0,4;P(A|B)=0,8;P(A|\\overline{B})=0,3$. Tính $P(A)$ ta được kết quả bằng",
+  "lua_chon": [
+   "0,5.",
+   "0,4.",
+   "0,6.",
+   "0,32."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$P(\\overline B)=1-0,4=0,6$.\n$P(A)=P(B)P(A|B)+P(\\overline B)P(A|\\overline B)=0,4\\cdot0,8+0,6\\cdot0,3=0,32+0,18=0,5$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010102",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố A và B là hai biến cố độc lập, biết $P\\left( A \\right)=0,2$ và $P\\left( \\text{ B} \\right)=0,25$. Tính $P\\left( A|B \\right).$",
+  "lua_chon": [
+   "$0,25$.",
+   "$0,8$.",
+   "$0,2$.",
+   "$1,25$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Hai biến cố $A$, $B$ độc lập nên $P(A|B)=P(A)=0{,}2$.\nVậy $P(A|B)=0{,}2$. Chọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010165",
+  "loai": "trac_nghiem",
+  "de": "Cho 2 biến cố $A$ và $B$. Tìm $P\\left( A \\right)$ biết $P\\left( A|B \\right)=0,8;$ $P\\left( A|\\overline{B} \\right)=0,3$; $P\\left( B \\right)=0,4$.",
+  "lua_chon": [
+   "$0,1$.",
+   "$0,5$.",
+   "$0,04$.",
+   "$0,55$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $P(\\overline{B})=1-0,4=0,6$.\nTheo công thức xác suất toàn phần: $P(A)=P(B)P(A|B)+P(\\overline{B})P(A|\\overline{B})$.\n$P(A)=0,4\\cdot 0,8+0,6\\cdot 0,3=0,32+0,18=0,5$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009971",
+  "loai": "tra_loi_ngan",
+  "de": "Trước khi đưa ra thị trường một sản phẩm, công ty phỏng vấn 800 khách hàng và được kết quả là 550 ngưới nói sẽ mua, còn 250 người nóiẽ không mua. Theo kinh nghiệm của nhà sản xuất thì trong những người nói mua sẽ có 60% số người chắc chắn mua, còn trong những người nói sẽ không mua lại có 1% người chắc chắn mua. Chon ngẫu nhiên một khách hàng. Xác suất chọn được khách hàng chắc chắn mua là bao nhiêu? (Kết quả làm trong đến hàng phần trăm).\n-------------- HẾT ---------------\n- Thí sinh không được sử dụng tài liệu;\n- Cán bộ coi thi không giải thích gì thêm.",
+  "dap_an": "0.42",
+  "loi_giai": "Gọi $A$ là biến cố \"khách hàng nói sẽ mua\", $B$ là biến cố \"khách hàng chắc chắn mua\".\nTa có $P(A)=\\dfrac{550}{800}=\\dfrac{11}{16}$, $P(\\overline{A})=\\dfrac{250}{800}=\\dfrac{5}{16}$, $P(B|A)=0{,}6$, $P(B|\\overline{A})=0{,}01$.\nTheo công thức xác suất toàn phần: $P(B)=P(A)\\cdot P(B|A)+P(\\overline{A})\\cdot P(B|\\overline{A})$.\n$P(B)=\\dfrac{550}{800}\\cdot 0{,}6+\\dfrac{250}{800}\\cdot 0{,}01=0{,}4125+0{,}003125=0{,}415625$.\nLàm tròn đến hàng phần trăm: $0{,}42$.\nVậy xác suất cần tìm xấp xỉ $0{,}42$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010127",
+  "loai": "tra_loi_ngan",
+  "de": "Một học sinh làm $2$ bài tập kế tiếp. Xác suất làm đúng bài thứ nhất là $0,7$. Nếu làm đúng bài thứ nhất thì khả năng làm đúng bài thứ hai là $0,8$. Nhưng nếu làm sai bài thứ nhất thì khả năng làm đúng bài thứ hai là $0,2$. Tính xác suất học sinh đó làm đúng cả hai bài?",
+  "dap_an": "0.56",
+  "loi_giai": "Gọi $A$: \"làm đúng bài thứ nhất\", $B$: \"làm đúng bài thứ hai\". $P(A)=0{,}7$, $P(B|A)=0{,}8$.\nXác suất làm đúng cả hai bài: $P(A\\cap B)=P(A)\\cdot P(B|A)=0{,}7\\cdot 0{,}8=0{,}56$.\nVậy xác suất là $0.56$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009972",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố A và B bất kì, với $0<P\\left( A \\right)<1$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$P\\left( B \\right)=P\\left( A \\right).P\\left( B|A \\right)+P\\left( A \\right).P\\left( B|\\overline{A} \\right)$.",
+   "$P\\left( B \\right)=P\\left( A \\right).P\\left( B|A \\right)+P\\left( \\overline{A} \\right).P\\left( B|\\overline{A} \\right)$.",
+   "$P\\left( B \\right)=P\\left( A \\right).P\\left( B|A \\right)-P\\left( \\overline{A} \\right).P\\left( B|\\overline{A} \\right)$.",
+   "$P\\left( B \\right)=P\\left( A \\right).P\\left( A|B \\right)+P\\left( \\overline{A} \\right).P\\left( B|\\overline{A} \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Theo công thức xác suất toàn phần với hệ $\\{A;\\overline{A}\\}$: $P(B)=P(A)\\cdot P(B|A)+P(\\overline{A})\\cdot P(B|\\overline{A})$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009882",
+  "loai": "tra_loi_ngan",
+  "de": "Một xí nghiệp mỗi ngày sản xuất ra $2000$ sản phẩm trong đó có $39$ sản phẩm lỗi. Lần lượt lấy ra ngẫu nhiên hai sản phẩm không hoàn lại để kiểm tra. Tính xác suất của biến cố: Sản phẩm lấy ra lần thứ hai bị lỗi (làm tròn kết quả đến hàng phần trăm).\n-------------- HẾT ---------------\n- Thí sinh không được sử dụng tài liệu;\n- Cán bộ coi thi không giải thích gì thêm.",
+  "dap_an": "0.02",
+  "loi_giai": "Gọi $A$ là biến cố \"sản phẩm lần 1 lỗi\", $B$ là biến cố \"sản phẩm lần 2 lỗi\".\n$P(A)=\\dfrac{39}{2000}$, $P(B|A)=\\dfrac{38}{1999}$, $P(B|\\overline{A})=\\dfrac{39}{1999}$.\nTheo công thức xác suất toàn phần: $P(B)=P(A)P(B|A)+P(\\overline{A})P(B|\\overline{A})=\\dfrac{39}{2000}\\cdot\\dfrac{38}{1999}+\\dfrac{1961}{2000}\\cdot\\dfrac{39}{1999}=\\dfrac{39\\cdot 1999}{2000\\cdot 1999}=\\dfrac{39}{2000}=0{,}0195$.\nLàm tròn đến hàng phần trăm: $0{,}02$.\nVậy xác suất cần tìm xấp xỉ $0{,}02$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009881",
+  "loai": "trac_nghiem",
+  "de": "Một hộp chứa 4 quả bóng được đánh số từ 1 đến 4. An lấy ngẫu nhiên một quả bóng, bỏ ra ngoài, rồi lấy tiếp một quả bóng nữa. Xét các biến cố:\n$A$: \"Quả bóng lấy ra lần đầu có số chẵn\"\n$B$: \"Quả bóng lấy ra lần hai có số lẻ\".\nXác định biến cố $C=B|A$: \"biến cố $B$ với điều kiện biết $A$ đã xảy ra\".",
+  "lua_chon": [
+   "$B|A=\\left\\{ \\left( 1,2 \\right),\\left( 1,3 \\right),\\left( 1,4 \\right),\\left( 2,1 \\right),\\left( 2,3 \\right),\\left( 2,4 \\right),\\left( 3,1 \\right),\\left( 3,2 \\right),\\left( 3,4 \\right),\\left( 4,1 \\right),\\left( 4,2 \\right),\\left( 4,3 \\right) \\right\\}$",
+   "$B|A=\\left\\{ \\left( 2,1 \\right),\\left( 2,3 \\right),\\left( 4,1 \\right),\\left( 4,3 \\right) \\right\\}$",
+   "$B|A=\\left\\{ \\left( 2,1 \\right),\\left( 2,3 \\right),\\left( 2,4 \\right),\\left( 4,1 \\right),\\left( 4,2 \\right),\\left( 4,3 \\right) \\right\\}$",
+   "$B|A=\\left\\{ \\left( 1,1 \\right),\\left( 1,3 \\right),\\left( 2,1 \\right),\\left( 2,3 \\right),\\left( 3,1 \\right),\\left( 3,3 \\right),\\left( 4,1 \\right),\\left( 4,3 \\right) \\right\\}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Biến cố $A$: lần đầu lấy số chẵn, tức là $2$ hoặc $4$.\nBiến cố $B|A$: lần hai lấy số lẻ, biết lần đầu đã lấy số chẵn. Quả đã lấy ra bị bỏ ra ngoài nên lần hai lấy số lẻ ($1$ hoặc $3$) trong 3 quả còn lại.\nNếu lần đầu là $2$: các kết quả $(2,1)$, $(2,3)$.\nNếu lần đầu là $4$: các kết quả $(4,1)$, $(4,3)$.\nVậy $B|A=\\{(2,1),(2,3),(4,1),(4,3)\\}$. Chọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010078",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hai biến cố $A$ và $B$ có $P(A)=0,3;P(B)=0,6;\\,P(\\mathrm{A}\\cap B)=0,2.$ Xác suất $P\\left( A|B \\right)$ (kết quả làm tròn đến chữ số thập phân thứ hai sau dấu phẩy)\n------ HẾT ------",
+  "dap_an": "0.33",
+  "loi_giai": "$P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0,2}{0,6}=\\dfrac{1}{3}\\approx0,33$.\nVậy $P(A|B)\\approx0,33$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009936",
+  "loai": "tra_loi_ngan",
+  "de": "[vdc] Một con chuột bị mắc kẹt trong một căn phòng với ba đường hầm dẫn ra bên ngoài, ta ký hiệu là A, B, C. Ba đường hầm nhìn hoàn toàn giống nhau nên con chuột chọn ngẫu nhiên một đường hầm để đi.\n+) Nếu chọn đường hầm A thì chuột thoát ra ngoài an toàn.\n+) Nếu chọn đường hầm B thì chuột chắc chắn bị mắc bẫy.\n+) Nếu chọn đường hầm C thì do có một con mèo canh giữ nên chuột chỉ có $60\\%$ khả năng thoát ra ngoài an toàn\nXác suất để con chuột thoát ra ngoài an toàn là số được viết dưới dạng phân số tối giản $\\frac{a}{b}$. Tìm tổng $a+b$.\nĐáp số: 23",
+  "dap_an": "23",
+  "loi_giai": "Gọi $H$: \"chuột thoát ra ngoài an toàn\". Mỗi đường hầm được chọn với xác suất $\\dfrac13$.\n$P(H|A)=1$; $P(H|B)=0$; $P(H|C)=0,6$.\nTheo công thức xác suất toàn phần: $P(H)=\\dfrac13\\cdot1+\\dfrac13\\cdot0+\\dfrac13\\cdot0,6=\\dfrac{1,6}{3}=\\dfrac{8}{15}$.\nPhân số $\\dfrac{8}{15}$ tối giản nên $a=8$, $b=15$.\nVậy $a+b=23$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010128",
+  "loai": "tra_loi_ngan",
+  "de": "Cầu thủ X có tỷ lệ sút penalty không dẫn đến bàn thắng là $25\\%$ và tỷ lệ sút penalty bị thủ môn cản phá là $20\\%$. Cầu thủ X sút penalty 1 lần. Tính xác suất để thủ môn cản được cú sút của cầu thủ X, biết rằng cầu thủ X sút không dẫn đến bàn thắng.",
+  "dap_an": "0.8",
+  "loi_giai": "Gọi $A$: \"sút không vào\", $B$: \"thủ môn cản phá được\". $P(A)=0{,}25$, $P(B)=0{,}2$.\nThủ môn cản phá được thì cú sút không thành bàn nên $B\\subset A$, do đó $P(A\\cap B)=P(B)=0{,}2$.\n$P(B|A)=\\dfrac{P(A\\cap B)}{P(A)}=\\dfrac{0{,}2}{0{,}25}=0{,}8$.\nVậy xác suất cần tìm là $0.8$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010024",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A$ và $B$ có $\\ P\\left( A \\right)=0,2;\\ P\\left( B \\right)=0,6;P\\left( A|B \\right)=0,3$. Tính $\\ P\\left( \\overline{A}B \\right)$.'",
+  "lua_chon": [
+   "$0,02$.",
+   "$0,24$.",
+   "$0,18$.",
+   "$0,42$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $P(AB)=P(B)\\cdot P(A|B)=0,6\\cdot 0,3=0,18$.\nVì $B=AB\\cup\\overline{A}B$ (hai biến cố xung khắc) nên $P(\\overline{A}B)=P(B)-P(AB)=0,6-0,18=0,42$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009973",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A$ và $B$ là hai biến cố độc lập, với $P\\left( A \\right)=0,2024$, $P\\left( B \\right)=0,2025$. Tính $P\\left( A|B \\right)$.",
+  "lua_chon": [
+   "$0,7975$.",
+   "$0,2025$.",
+   "$0,7976$.",
+   "$0,2024$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Vì $A$ và $B$ độc lập nên $P(A|B)=P(A)$.\nVậy $P(A|B)=0{,}2024$. Chọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010112",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố A và B là hai biến cố độc lập, biết $P\\left( A \\right)=0,2$ và $P\\left( \\text{ B} \\right)=0,25$. Tính $P\\left( A|B \\right).$",
+  "lua_chon": [
+   "$0,2$.",
+   "$0,25$.",
+   "$1,25$.",
+   "$0,8$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Hai biến cố $A$, $B$ độc lập nên $P(A|B)=P(A)=0{,}2$.\nVậy $P(A|B)=0{,}2$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009981",
+  "loai": "trac_nghiem",
+  "de": "Cho A và B là hai biến cố bất kì, với $0<P\\left( B \\right)<1$. Khi đó:",
+  "lua_chon": [
+   "$P\\left( B|A \\right)=\\frac{P\\left( AB \\right)}{P\\left( B \\right)}$.",
+   "$P\\left( A|B \\right)=\\frac{P\\left( AB \\right)}{P\\left( B \\right)}$.",
+   "$P\\left( A|B \\right)=\\frac{P\\left( B \\right)}{P\\left( AB \\right)}$.",
+   "$P\\left( B|A \\right)=\\frac{P\\left( AB \\right)}{P\\left( \\overline{B} \\right)}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Theo định nghĩa xác suất có điều kiện, với $P(B)>0$ thì $P(A|B)=\\dfrac{P(AB)}{P(B)}$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010001",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A$ và $B$, với $P\\left( A \\right)=0,2$, $P\\left( B|A \\right)=0,7$, $P\\left( B|\\overline{A} \\right)=0,15$. Tính $P\\left( A|B \\right)$.",
+  "lua_chon": [
+   "$\\frac{7}{13}$.",
+   "$\\frac{9}{13}$.",
+   "$\\frac{6}{13}$.",
+   "$\\frac{4}{13}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $P(\\overline{A})=1-0{,}2=0{,}8$.\n$P(B)=P(A)\\cdot P(B|A)+P(\\overline{A})\\cdot P(B|\\overline{A})=0{,}2\\cdot 0{,}7+0{,}8\\cdot 0{,}15=0{,}14+0{,}12=0{,}26$.\nTheo công thức Bayes: $P(A|B)=\\dfrac{P(A)\\cdot P(B|A)}{P(B)}=\\dfrac{0{,}14}{0{,}26}=\\dfrac{7}{13}$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009950",
+  "loai": "trac_nghiem",
+  "de": "Một công ty bảo hiểm thống kê cho biết có $64{0}/{0}$ số người mua bảo hiểm ô tô là phụ nữ và có $40{0}/{0}$ số người mua bảo hiểm ô tô là phụ nữ trên 48 tuổi. Biết người mua bảo hiểm ô tô là phụ nữ, xác suất người đó trên 48 tuổi là",
+  "lua_chon": [
+   "$0,256$.",
+   "$0,5625$.",
+   "$0,625$.",
+   "$0,9$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Gọi $A$: \"người mua là phụ nữ\", $B$: \"người mua trên 48 tuổi\". $P(A)=0,64$; $P(A\\cap B)=0,40$.\n$P(B|A)=\\dfrac{P(A\\cap B)}{P(A)}=\\dfrac{0,40}{0,64}=0,625$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010069",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hai biến cố $A$ và $B$, biết $P\\left( A \\right)=0,2$, $P\\left( B \\right)=0,4$ và $P\\left( A\\cup B \\right)=0,5$. Tính $P\\left( B|A \\right)$.\n------ HẾT ------\nThí sinh không được sử dụng tài liệu. Giám thị coi thi không giải thích gì thêm.\nĐÁP ÁN\nCâu\\Mã đề\n1301\n1302\n1303\n1304\n1305\n1306\n1307\n1308\n1\nA\nA\nC\nB\nA\nA\nC\nB\n2\nC\nA\nD\nD\nC\nA\nD\nD\n3\nB\nA\nB\nA\nB\nA\nB\nA\n4\nC\nC\nB\nB\nC\nC\nB\nB\n5\nB\nB\nC\nB\nB\nB\nC\nB\n6\nB\nB\nA\nB\nB\nB\nA\nB\n7\nA\nA\nB\nC\nA\nA\nB\nC\n8\nB\nC\nD\nA\nB\nC\nD\nA\n9\nB\nA\nA\nC\nB\nA\nA\nC\n10\nD\nC\nC\nB\nD\nC\nC\nB\n11\nB\nA\nA\nA\nB\nA\nA\nA\n12\nB\nC\nC\nB\nB\nC\nC\nB\n1\nDDSD\nDSDD\nDSDD\nDSDD\nDDSD\nDSDD\nDSDD\nDSDD\n2\nDSDD\nDDSD\nDSDD\nDSDD\nDSDD\nDDSD\nDSDD\nDSDD\n3\nDSDD\nDSDD\nDSDS\nDDSD\nDSDD\nDSDD\nDSDS\nDDSD\n4\nDSDS\nDSDS\nDDSD\nDSDS\nDSDS\nDSDS\nDDSD\nDSDS\n1\n0,26\n1053\n-1,5\n1053\n99,9\n468\n99,9\n3,09\n2\n1053\n0,26\n0,26\n3,74\n3,09\n3\n3\n0,5\n3\n-1,5\n519\n519\n0,36\n468\n3\n0,5\n3\n4\n519\n3,74\n3,74\n519\n3\n0,5\n468\n468\n5\n0,36\n0,36\n0,36\n-1,5\n3\n3,09\n3\n99,9\n6\n3,74\n-1,5\n1053\n0,26\n0,5\n99,9\n3,09\n3",
+  "dap_an": "0.5",
+  "loi_giai": "Theo công thức cộng xác suất: $P(A\\cup B)=P(A)+P(B)-P(AB)$, suy ra $0,5=0,2+0,4-P(AB)$.\nDo đó $P(AB)=0,1$.\n$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0,1}{0,2}=0,5$.\nVậy $P(B|A)=0,5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010115",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố A và B là hai biến cố độc lập, biết $P\\left( A \\right)=0,2$ và $P\\left( \\text{ B} \\right)=0,25$. Tính $P\\left( A|B \\right).$",
+  "lua_chon": [
+   "$0,2$.",
+   "$0,8$.",
+   "$1,25$.",
+   "$0,25$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Hai biến cố $A$, $B$ độc lập nên $P(A|B)=P(A)=0{,}2$.\nVậy $P(A|B)=0{,}2$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010106",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố A và B là hai biến cố độc lập, biết $P\\left( A \\right)=0,2$ và $P\\left( \\text{ B} \\right)=0,25$. Tính $P\\left( A|B \\right).$",
+  "lua_chon": [
+   "$0,25$.",
+   "$0,2$.",
+   "$0,8$.",
+   "$1,25$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Hai biến cố $A$, $B$ độc lập nên $P(A|B)=P(A)=0{,}2$.\nVậy $P(A|B)=0{,}2$. Chọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009999",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến độc lập $A,B$ với $P\\left( A \\right)=0,8;\\text{ }P\\left( B \\right)=0,3$. Khi đó, $P\\left( A\\left| B \\right. \\right)$ bằng",
+  "lua_chon": [
+   "0,8.",
+   "0,6.",
+   "0,4.",
+   "0,3."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vì $A$, $B$ độc lập nên $P(A|B)=P(A)=0{,}8$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010004",
+  "loai": "tra_loi_ngan",
+  "de": "Trong đợt khảo sát về sức khỏe của một công ty có $100$ người trong đó có $60$ nam và $40$ nữ người ta thấy có 30 người nam bị bệnh đau dạ dày và có 10 người nữ bị bệnh đau dạ dày. Chọn ngẫu nhiên một người từ công ty đó. Tính xác suất người đó bị bệnh đau dạ dày biết người đó là nam.",
+  "dap_an": "0.5",
+  "loi_giai": "Gọi $A$ là biến cố \"người được chọn là nam\", $B$ là biến cố \"người được chọn bị đau dạ dày\".\nTa có $P(A)=\\dfrac{60}{100}=0{,}6$, $P(AB)=\\dfrac{30}{100}=0{,}3$.\n$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0{,}3}{0{,}6}=0{,}5$.\nVậy xác suất cần tìm là $0{,}5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009974",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A$ và $B$, với $P\\left( A \\right)=0,3$, $P\\left( B \\right)=0,6$, $P\\left( A|B \\right)=0,4$. Tính $P\\left( B|A \\right)$.",
+  "lua_chon": [
+   "0,2.",
+   "0,8.",
+   "0,12.",
+   "$0,38$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $P(AB)=P(A|B)\\cdot P(B)=0{,}4\\cdot 0{,}6=0{,}24$.\n$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0{,}24}{0{,}3}=0{,}8$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010092",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A$ và $B$, với $P\\left( A \\right)=0,3$; $P\\left( B \\right)=0,5$; $P\\left( A|B \\right)=0,4$. Tính $P\\left( AB \\right)$.",
+  "lua_chon": [
+   "$0,2$",
+   "$0,12$",
+   "$0,15$",
+   "$0,3$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Theo công thức nhân xác suất: $P(AB)=P(A|B)\\cdot P(B)=0{,}4\\cdot 0{,}5=0{,}2$.\nVậy $P(AB)=0{,}2$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009902",
+  "loai": "tra_loi_ngan",
+  "de": "Một nhóm học sinh có 5 nam và 7 nữ tham gia lao động trên sân trường. Cô giáo chọn ngẫu nhiên đồng thời 3 bạn trong nhóm đi quét sân. Biết rằng có ít nhất một bạn nam được chọn, tính xác suất để ba bạn được chọn có cùng giới tính( kết quả làm tròn đến hàng phần trăm).\n--------------- HẾT --------------",
+  "dap_an": "0.05",
+  "loi_giai": "Số cách chọn 3 bạn từ 12 bạn: $C_{12}^3=220$.\nSố cách chọn 3 bạn đều là nữ: $C_7^3=35$. Số cách chọn có ít nhất một nam: $220-35=185$.\nTrong các cách này, ba bạn cùng giới tính chỉ có thể là ba nam: $C_5^3=10$ cách.\nXác suất cần tìm: $\\dfrac{10}{185}=\\dfrac{2}{37}\\approx0{,}054\\approx0{,}05$.\nVậy xác suất xấp xỉ $0{,}05$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009988",
+  "loai": "tra_loi_ngan",
+  "de": "Trường THPT Thị xã Quảng trị, có $30\\%$ học sinh tham gia câu lạc bộ âm nhạc, trong số học sinh đó thì có $75\\%$ học sinh biết chơi đàn guitar. Ngoài ra, trong số học sinh không tham gia câu lạc bộ âm nhạc có $10\\%$ học sinh biết chơi đàn guitar. Chọn ngẫu nhiên 1 học sinh của trường. Giả sử học sinh đó biết chơi đàn guitar. Xác suất để chọn được học sinh thuộc câu lạc bộ âm nhạc là bao nhiêu ? ( làm tròn kết quả đến hàng phần trăm ).",
+  "dap_an": "0.76",
+  "loi_giai": "Gọi $A$ là biến cố \"học sinh tham gia câu lạc bộ âm nhạc\", $G$ là biến cố \"học sinh biết chơi guitar\".\nTa có $P(A)=0{,}3$, $P(\\overline{A})=0{,}7$, $P(G|A)=0{,}75$, $P(G|\\overline{A})=0{,}1$.\n$P(G)=P(A)\\cdot P(G|A)+P(\\overline{A})\\cdot P(G|\\overline{A})=0{,}3\\cdot 0{,}75+0{,}7\\cdot 0{,}1=0{,}225+0{,}07=0{,}295$.\nTheo công thức Bayes: $P(A|G)=\\dfrac{P(A)\\cdot P(G|A)}{P(G)}=\\dfrac{0{,}225}{0{,}295}=\\dfrac{45}{59}\\approx 0{,}7627$.\nLàm tròn đến hàng phần trăm: $0{,}76$.\nVậy xác suất cần tìm xấp xỉ $0{,}76$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009943",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A$ và $B$. Công thức nào sau đây là công thức đúng xác suất của biến cố $A$ với điều kiện $B$?",
+  "lua_chon": [
+   "$P\\left( A|B \\right)=\\frac{P\\left( A\\cup B \\right)}{P(B)}.$",
+   "$P\\left( A|B \\right)=\\frac{P\\left( AB \\right)}{P(B)}.$",
+   "$P\\left( A|B \\right)=\\frac{P\\left( A\\cup B \\right)}{P(A)}.$",
+   "$P\\left( A|B \\right)=\\frac{P\\left( AB \\right)}{P(A)}.$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xác suất của $A$ với điều kiện $B$ (với $P(B)>0$) là $P(A|B)=\\dfrac{P(AB)}{P(B)}$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009977",
+  "loai": "trac_nghiem",
+  "de": "Cho A và B là hai biến cố bất kì, với $P\\left( B \\right)>0$. Khi đó:",
+  "lua_chon": [
+   "$P\\left( B|A \\right)=\\frac{P\\left( A\\cap B \\right)}{P\\left( A \\right)}$.",
+   "$P\\left( A|B \\right)=\\frac{P\\left( A\\cap B \\right)}{P\\left( B \\right)}$.",
+   "$P\\left( B|A \\right)=\\frac{P\\left( A\\cap B \\right)}{P\\left( B \\right)}$.",
+   "$P\\left( A|B \\right)=\\frac{P\\left( B \\right)}{P\\left( A\\cap B \\right)}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Theo định nghĩa xác suất có điều kiện, với $P(B)>0$ thì $P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009941",
+  "loai": "trac_nghiem",
+  "de": "Cho hệ đầy đủ hai biến cố $B$ và $\\overline{B}$. Với một biến cố $A$ bất kỳ, công thức xác suất toàn phần nào sau đây là đúng?",
+  "lua_chon": [
+   "$P(A)=P(B)\\cdot P(B|A)+P(\\overline{B})\\cdot P(\\overline{B}|A)$",
+   "$P(A)=P(A|B)+P(A|\\overline{B})$",
+   "$P(A)=P(B)\\cdot P(A|B)+P(\\overline{B})\\cdot P(A|\\overline{B})$",
+   "$P(A)=P(B)\\cdot P(A|B)-P(\\overline{B})\\cdot P(A|\\overline{B})$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Với hệ đầy đủ $B,\\overline B$, công thức xác suất toàn phần là $P(A)=P(B)\\cdot P(A|B)+P(\\overline B)\\cdot P(A|\\overline B)$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009965",
+  "loai": "trac_nghiem",
+  "de": "Công thức xác suất của biến cố $A$ với điều kiện biến cố $B$ đã xảy ra ($P(B)>0$) là",
+  "lua_chon": [
+   "$P(A|B)=\\frac{P(AB)}{P(B)}$.",
+   "$P(A|B)=P(A)P(B)$.",
+   "$P(A|B)=\\frac{P(A)}{P(B)}$.",
+   "$P(A|B)=\\frac{P(AB)}{P(A)}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Theo định nghĩa xác suất có điều kiện, với $P(B)>0$ thì $P(A|B)=\\dfrac{P(AB)}{P(B)}$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009962",
+  "loai": "trac_nghiem",
+  "de": "Cho A, B là hai biến cố ngẫu nhiên thỏa $P(A)>0$ và $0<P(B)<1.$ Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$P\\left( B\\left| A \\right. \\right)=\\frac{P(B).P\\left( A\\left| B \\right. \\right)}{P(A)P\\left( A\\left| B \\right. \\right)+P(\\overline{A})P\\left( A\\left| \\overline{B} \\right. \\right)}$.",
+   "$P\\left( B\\left| A \\right. \\right)=\\frac{P(A).P\\left( A\\left| B \\right. \\right)}{P(B)P\\left( A\\left| B \\right. \\right)+P(\\overline{B})P\\left( A\\left| \\overline{B} \\right. \\right)}$.",
+   "$P\\left( B\\left| A \\right. \\right)=\\frac{P(B).P\\left( B\\left| A \\right. \\right)}{P(B)P\\left( A\\left| B \\right. \\right)+P(\\overline{B})P\\left( A\\left| \\overline{B} \\right. \\right)}$.",
+   "$P\\left( B\\left| A \\right. \\right)=\\frac{P(B).P\\left( A\\left| B \\right. \\right)}{P(B)P\\left( A\\left| B \\right. \\right)+P(\\overline{B})P\\left( A\\left| \\overline{B} \\right. \\right)}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Theo công thức Bayes (với $B,\\overline B$ là hệ đầy đủ): $P(B|A)=\\dfrac{P(B)\\cdot P(A|B)}{P(A)}=\\dfrac{P(B)\\cdot P(A|B)}{P(B)P(A|B)+P(\\overline B)P(A|\\overline B)}$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010098",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố A và B, biết $P\\left( A \\right)=0,6$, $P\\left( B \\right)=0,7$, $P\\left( A\\cap B \\right)=0,3$. Tính $P\\left( A|B \\right)$.",
+  "lua_chon": [
+   "$\\frac{3}{7}$.",
+   "$\\frac{3}{6}$.",
+   "$\\frac{7}{6}$.",
+   "$\\frac{6}{7}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Theo công thức xác suất có điều kiện: $P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0{,}3}{0{,}7}=\\dfrac{3}{7}$.\nVậy $P(A|B)=\\dfrac{3}{7}$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010000",
+  "loai": "tra_loi_ngan",
+  "de": "Công ty sữa Việt Nam phát phiếu thăm dò khách hàng ở một thành phố với hai câu hỏi: “Tháng vừa rồi bạn có xem quảng cáo về Vinamilk không?” và “Tháng vừa rồi bạn có mua sản phẩm nào của Vinamilk không?”. Kết quả thăm dò như sau: Số người xem quảng cáo Vinamilk chiếm tỉ lệ 40% tổng số người khảo sát, số người có mua sản phẩm của Vinamilk chiếm tỉ lệ 25% tổng số người khảo sát. Trong số người mua sản phẩm của Vinamilk thì số người xem quảng cáo chiếm tỉ lệ 60%. Chọn ngẫu nhiên một khách hàng trong số các khách hàng đã xem quảng cáo về Vinamilk. Xác suất khách hàng đó mua sản phẩm Vinamilk khi đã xem quảng cáo là bao nhiêu? (làm tròn đến hàng phần trăm)\n----HẾT---",
+  "dap_an": "0.38",
+  "loi_giai": "Gọi $A$ là biến cố \"khách hàng xem quảng cáo\", $B$ là biến cố \"khách hàng mua sản phẩm\".\nTa có $P(A)=0{,}4$, $P(B)=0{,}25$, $P(A|B)=0{,}6$.\n$P(AB)=P(B)\\cdot P(A|B)=0{,}25\\cdot 0{,}6=0{,}15$.\n$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0{,}15}{0{,}4}=0{,}375$.\nLàm tròn đến hàng phần trăm: $0{,}38$.\nVậy xác suất cần tìm xấp xỉ $0{,}38$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010023",
+  "loai": "tra_loi_ngan",
+  "de": "Có hai thùng đồ chơi trẻ em, thùng I có $4$ máy bay và $6$ ô tô, thùng II có $12$ máy bay và $8$\nô tô. Từ thùng I, lấy ngẫu nhiên một món đồ chơi rồi chuyển sang thùng II. Tính xác suất để lấy\nđược món đồ chơi từ thùng II là máy bay, làm tròn kết quả đến hai chữ số thập phân.",
+  "dap_an": "0.59",
+  "loi_giai": "Gọi $A$ là biến cố \"món đồ chuyển từ thùng I sang là máy bay\", $B$ là biến cố \"món đồ lấy ra từ thùng II là máy bay\".\nThùng I có $10$ món, nên $P(A)=\\dfrac{4}{10}=0,4$ và $P(\\overline{A})=0,6$.\nNếu chuyển máy bay: thùng II có $21$ món, trong đó $13$ máy bay, nên $P(B|A)=\\dfrac{13}{21}$.\nNếu chuyển ô tô: thùng II có $21$ món, trong đó $12$ máy bay, nên $P(B|\\overline{A})=\\dfrac{12}{21}$.\nTheo công thức xác suất toàn phần: $P(B)=P(A)\\cdot P(B|A)+P(\\overline{A})\\cdot P(B|\\overline{A})=0,4\\cdot\\dfrac{13}{21}+0,6\\cdot\\dfrac{12}{21}=\\dfrac{12,4}{21}\\approx 0,5905$.\nVậy xác suất cần tìm xấp xỉ $0,59$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009937",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A$ và $B$ thỏa mãn $P(A)=0,7,P(B)=0,8$ và $P(A\\cap B)=0,28$. Tính xác suất có điều kiện $P(B|A)$.",
+  "lua_chon": [
+   "0,2.",
+   "0,6.",
+   "0,4.",
+   "0,35."
+  ],
+  "dap_an": "C",
+  "loi_giai": "$P(B|A)=\\dfrac{P(A\\cap B)}{P(A)}=\\dfrac{0,28}{0,7}=0,4$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010064",
+  "loai": "tra_loi_ngan",
+  "de": "Số liệu thống kê tại một vùng cho thấy trong các vụ tai nạn ô tô có:\n• 0,37% người tử vong.\n• 29% người không thắt dây an toàn.\n• 0,28% người không thắt dây an toàn và tử vong.\nChọn ngẫu nhiên một người đã bị tai nạn ô tô trong vùng này. Xác suất người đó không tử vong là bao nhiêu %, biết rằng người đó có thắt dây an toàn? (Làm tròn kết quả đến hàng phần mười)",
+  "dap_an": "99.9",
+  "loi_giai": "Gọi $A$ là biến cố \"người đó thắt dây an toàn\", $B$ là biến cố \"người đó tử vong\".\n$P(\\overline{A})=29\\%$ nên $P(A)=71\\%$; $P(B)=0,37\\%$; $P(\\overline{A}B)=0,28\\%$.\n$P(AB)=P(B)-P(\\overline{A}B)=0,37\\%-0,28\\%=0,09\\%$.\n$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0,09}{71}\\approx0,00127$.\n$P(\\overline{B}|A)=1-P(B|A)\\approx1-0,00127=0,99873\\approx99,9\\%$.\nVậy xác suất cần tìm xấp xỉ $99,9\\%$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010089",
+  "loai": "tra_loi_ngan",
+  "de": "Một cuộc thi khoa học có 36 bộ câu hỏi, trong đó có 20 bộ câu hỏi về chủ đề tự nhiên và 16 bộ câu hỏi về chủ đề xã hội. Bạn Hà lấy ngẫu nhiên 1 bộ câu hỏi (lấy không hoàn lại), sau đó bạn Lan lấy ngẫu nhiên 1 bộ câu hỏi. Xác suất bạn Lan lấy được bộ câu hỏi về chủ đề xã hội bằng $\\frac{a}{b}$ với $\\frac{a}{b}$ là phân số tối giản. Giá trị $b-a$ bằng bao nhiêu?\n-------------- HẾT --------------",
+  "dap_an": "5",
+  "loi_giai": "Hà và Lan lấy lần lượt không hoàn lại. Gọi $A$: \"Hà lấy bộ xã hội\", $B$: \"Lan lấy bộ xã hội\".\n$P(B)=P(\\overline{A})P(B|\\overline{A})+P(A)P(B|A)=\\dfrac{20}{36}\\cdot\\dfrac{16}{35}+\\dfrac{16}{36}\\cdot\\dfrac{15}{35}=\\dfrac{320+240}{1260}=\\dfrac{4}{9}$.\nDo đó $a=4$, $b=9$ (phân số tối giản), $b-a=5$.\nVậy $b-a=5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010168",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A$ và $B$. Biết $P\\left( B \\right)=0,01$; $P\\left( A|B \\right)=0,7$; $P\\left( A|\\overline{B} \\right)=0,09$. Khi đó $P\\left( A \\right)$ bằng",
+  "lua_chon": [
+   "$0,0079$.",
+   "$0,0961$.",
+   "$0,0916$.",
+   "$0,0970$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $P(\\overline{B})=1-0,01=0,99$.\n$P(A)=P(B)P(A|B)+P(\\overline{B})P(A|\\overline{B})=0,01\\cdot 0,7+0,99\\cdot 0,09=0,007+0,0891=0,0961$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010025",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A,B$ với $0<P(B)<1.$ Phát biểu nào sau đây là đúng?",
+  "lua_chon": [
+   "$P(A)=P\\left( \\overline{B} \\right).P\\left( A|\\overline{B} \\right)-P\\left( B \\right).P\\left( A|B \\right).$",
+   "$P(A)=P\\left( \\overline{B} \\right).P\\left( A|B \\right)+P\\left( B \\right).P\\left( A|\\overline{B} \\right).$",
+   "$P(A)=P\\left( B \\right).P\\left( A|B \\right)+P\\left( \\overline{B} \\right).P\\left( A|\\overline{B} \\right).$",
+   "$P(A)=P\\left( B \\right).P\\left( A|B \\right)-P\\left( \\overline{B} \\right).P\\left( A|\\overline{B} \\right).$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Vì $0<P(B)<1$ nên $B$ và $\\overline{B}$ tạo thành một hệ đầy đủ các biến cố.\nTheo công thức xác suất toàn phần: $P(A)=P(B)\\cdot P(A|B)+P(\\overline{B})\\cdot P(A|\\overline{B})$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009959",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A,B$ thoả mãn $P\\left( \\overline{A} \\right)=0,2;P\\left( B\\left| A \\right. \\right)=0,4;P\\left( B\\left| \\overline{A} \\right. \\right)=0,5.$ Khi đó $P\\left( B \\right)$ bằng",
+  "lua_chon": [
+   "$0,48$.",
+   "$0,36$.",
+   "$0,42$.",
+   "$0,32$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "$P(\\overline A)=0,2$ nên $P(A)=0,8$.\nTheo công thức xác suất toàn phần: $P(B)=P(A)P(B|A)+P(\\overline A)P(B|\\overline A)=0,8\\cdot0,4+0,2\\cdot0,5=0,32+0,1=0,42$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010123",
+  "loai": "tra_loi_ngan",
+  "de": "Hai bạn An, Bình cùng ném bóng rổ. Mỗi lần chỉ có một người ném với quy tắc như sau: Nếu ném trúng thì người đó sẽ ném tiếp, nếu ném trượt thì đến lượt người kia ném. Ở mọi lần ném bóng, xác suất An ném trúng đều là $0,4$ và xác suất Bình ném trúng đều là $0,6$. Hai bạn rút thăm để quyết định người ném bóng đầu tiên. Xác suất người được ném đầu tiên là An và xác suất người được ném đầu tiên là Bình cùng bằng $0,5$. Tìm xác suất để người ném bóng lần thứ $2$ là Bình.",
+  "dap_an": "0.6",
+  "loi_giai": "Gọi $E$: \"người ném lần thứ hai là Bình\". An hoặc Bình ném đầu với xác suất $0{,}5$ mỗi bên.\nNếu An ném đầu: Bình ném lần 2 khi An ném trượt, xác suất $1-0{,}4=0{,}6$. Nếu Bình ném đầu: Bình ném lần 2 khi Bình ném trúng, xác suất $0{,}6$.\nTheo công thức xác suất toàn phần: $P(E)=0{,}5\\cdot 0{,}6+0{,}5\\cdot 0{,}6=0{,}6$.\nVậy xác suất cần tìm là $0.6$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009928",
+  "loai": "tra_loi_ngan",
+  "de": "Bạn An phải thực hiện hai thí nghiệm liên tiếp. Thí nghiệm thứ nhất có xác suất thành công là $0,9$. Nếu thí nghiệm thứ nhất thành công thì xác suất thành công của thí nghiệm thứ hai là $0,8$. Tính xác suất để thí nghiệm thứ nhất thành công và thí nghiệm thứ hai không thành công.",
+  "dap_an": "0.18",
+  "loi_giai": "Gọi $A$: \"thí nghiệm thứ nhất thành công\", $B$: \"thí nghiệm thứ hai thành công\".\nCó $P(A)=0,9$; $P(B|A)=0,8$ nên $P(\\overline B|A)=1-0,8=0,2$.\nXác suất cần tìm: $P(A\\cap\\overline B)=P(A)\\cdot P(\\overline B|A)=0,9\\cdot0,2=0,18$.\nVậy xác suất là $0,18$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010166",
+  "loai": "trac_nghiem",
+  "de": ". Cho các biến cố $A$ và $B$ thỏa mãn $\\text{P}(A)>0$, $\\text{P}(B)>0$. Khi đó $\\text{P}(A\\mid B)$ bằng biểu thức nào dưới đây?",
+  "lua_chon": [
+   "$\\frac{\\text{P}(B)}{\\text{P}(A)\\cdot\\text{P}(B\\mid A)}$.",
+   "$\\frac{\\text{P}(A)\\cdot\\text{P}(B\\mid A)}{\\text{P}(B)}$.",
+   "$\\frac{\\text{P}(A)}{\\text{P}(B)\\cdot\\text{P}(B\\mid A)}$.",
+   "$\\frac{\\text{P}(B)\\cdot\\text{P}(B\\mid A)}{\\text{P}(A)}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $P(AB)=P(A)\\cdot P(B|A)$ và $P(A|B)=\\dfrac{P(AB)}{P(B)}$.\nDo đó $P(A|B)=\\dfrac{P(A)\\cdot P(B|A)}{P(B)}$ (công thức Bayes).\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010111",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố A và B, biết $P\\left( A \\right)=0,6$, $P\\left( B \\right)=0,7$, $P\\left( A\\cap B \\right)=0,3$. Tính $P\\left( A|B \\right)$.",
+  "lua_chon": [
+   "$\\frac{7}{6}$.",
+   "$\\frac{3}{7}$.",
+   "$\\frac{6}{7}$.",
+   "$\\frac{3}{6}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Theo công thức xác suất có điều kiện: $P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0{,}3}{0{,}7}=\\dfrac{3}{7}$.\nVậy $P(A|B)=\\dfrac{3}{7}$. Chọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009885",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A$ và $B$ có $\\ P\\left( B \\right)=0,6;P\\left( AB \\right)=0,18$. Tính $\\ P\\left( A|B \\right)$.",
+  "lua_chon": [
+   "$0,3$.",
+   "$0,24$.",
+   "$0,9$.",
+   "$0,02$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $P(A|B)=\\dfrac{P(AB)}{P(B)}=\\dfrac{0{,}18}{0{,}6}=0{,}3$.\nVậy $P(A|B)=0{,}3$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010164",
+  "loai": "trac_nghiem",
+  "de": "Xác suất của biến cố $A$ với điều kiện biến cố $B$ có công thức là",
+  "lua_chon": [
+   "$P\\left( \\left. A \\right|B \\right)=\\frac{P\\left( AB \\right)}{P\\left( B \\right)}$",
+   "$P\\left( \\left. B \\right|A \\right)=\\frac{P\\left( AB \\right)}{P\\left( A \\right)}$",
+   "$P\\left( B \\right)=P\\left( A \\right).P\\left( \\left. B \\right|A \\right)+P\\left( \\overline{A} \\right).P\\left( \\left. B \\right|\\overline{A} \\right)$",
+   "$P\\left( AB \\right)=P\\left( A \\right)P\\left( B \\right)$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Xác suất của biến cố $A$ với điều kiện biến cố $B$ (với $P(B)>0$) là $P(A|B)=\\dfrac{P(AB)}{P(B)}$.\nPhương án B là công thức của $P(B|A)$, phương án C là công thức xác suất toàn phần, phương án D là công thức hai biến cố độc lập.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010006",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến độc lập $A,B$ với $P\\left( A \\right)=0,8;\\text{ }P\\left( B \\right)=0,3$. Khi đó, $P\\left( A\\left| B \\right. \\right)$ bằng",
+  "lua_chon": [
+   "0,6.",
+   "0,8.",
+   "0,4.",
+   "0,3."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Vì $A$, $B$ độc lập nên $P(A|B)=P(A)=0{,}8$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009984",
+  "loai": "trac_nghiem",
+  "de": "Cho 2 biến cố $A$ và $B$. Biết $P\\left( A|B \\right)=0,8;$ $P\\left( A|\\overline{B} \\right)=0,3$; $P\\left( B \\right)=0,4$. Giá trị $P\\left( A \\right)$ bằng",
+  "lua_chon": [
+   "$0,04$.",
+   "$0,5$.",
+   "$0,1$.",
+   "$0,55$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $P(\\overline{B})=1-0{,}4=0{,}6$.\n$P(A)=P(B)\\cdot P(A|B)+P(\\overline{B})\\cdot P(A|\\overline{B})=0{,}4\\cdot 0{,}8+0{,}6\\cdot 0{,}3=0{,}32+0{,}18=0{,}5$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009990",
+  "loai": "tra_loi_ngan",
+  "de": "Trên mặt bàn có 4 lá bài đỏ và 4 lá bài đen chưa được lật. An thực hiện lật ngẫu nhiên lần lượt từng lá bài, trước khi lật từng lá bài An phải đoán màu của lá bài đó và luôn đoán sao cho xác suất đoán đúng màu của lá bài sắp lật là lớn nhất. Xác suất lần lật bài thứ 3, An đoán đúng màu của lá bài đó là bao nhiêu? (làm tròn kết quả đến hàng phần trăm)",
+  "dap_an": "0.57",
+  "loi_giai": "Trước lần lật thứ 3, đã lật 2 lá nên còn 6 lá. Xét các trường hợp của 2 lá đầu:\nHai lá cùng màu (cùng đỏ hoặc cùng đen): xác suất $2\\cdot\\dfrac{4}{8}\\cdot\\dfrac{3}{7}=\\dfrac{24}{56}$. Khi đó còn 4 lá một màu, 2 lá màu kia; An đoán màu nhiều hơn nên xác suất đúng là $\\dfrac{4}{6}$.\nHai lá khác màu: xác suất $1-\\dfrac{24}{56}=\\dfrac{32}{56}$. Khi đó còn 3 đỏ, 3 đen; xác suất đoán đúng là $\\dfrac{3}{6}=\\dfrac{1}{2}$.\nXác suất đoán đúng ở lần 3: $\\dfrac{24}{56}\\cdot\\dfrac{4}{6}+\\dfrac{32}{56}\\cdot\\dfrac{1}{2}=\\dfrac{16}{56}+\\dfrac{16}{56}=\\dfrac{4}{7}\\approx 0{,}5714$.\nLàm tròn đến hàng phần trăm: $0{,}57$.\nVậy xác suất cần tìm xấp xỉ $0{,}57$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010167",
+  "loai": "trac_nghiem",
+  "de": "Cho $A,\\,B$ là hai biến cố thỏa $P(A)=\\frac{2}{5};P(B\\mid A)=\\frac{1}{3};P(B\\mid\\overline{A})=\\frac{1}{4}$. Giá trị của $P(B)$ là",
+  "lua_chon": [
+   "$\\frac{19}{60}$.",
+   "$\\frac{17}{60}$.",
+   "$\\frac{9}{20}$.",
+   "$\\frac{7}{30}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $P(\\overline{A})=1-\\dfrac{2}{5}=\\dfrac{3}{5}$.\n$P(B)=P(A)P(B|A)+P(\\overline{A})P(B|\\overline{A})=\\dfrac{2}{5}\\cdot\\dfrac{1}{3}+\\dfrac{3}{5}\\cdot\\dfrac{1}{4}=\\dfrac{2}{15}+\\dfrac{3}{20}=\\dfrac{8}{60}+\\dfrac{9}{60}=\\dfrac{17}{60}$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009991",
+  "loai": "trac_nghiem",
+  "de": "Cho A và B là hai biến cố bất kì, với $0<P\\left( B \\right)<1$. Khi đó:",
+  "lua_chon": [
+   "$P\\left( A|B \\right)=\\frac{P\\left( B \\right)}{P\\left( AB \\right)}$.",
+   "$P\\left( B|A \\right)=\\frac{P\\left( AB \\right)}{P\\left( B \\right)}$.",
+   "$P\\left( A|B \\right)=\\frac{P\\left( AB \\right)}{P\\left( B \\right)}$.",
+   "$P\\left( B|A \\right)=\\frac{P\\left( AB \\right)}{P\\left( \\overline{B} \\right)}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Theo định nghĩa xác suất có điều kiện, với $P(B)>0$ thì $P(A|B)=\\dfrac{P(AB)}{P(B)}$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010108",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố A và B, biết $P\\left( A \\right)=0,6$, $P\\left( B \\right)=0,7$, $P\\left( A\\cap B \\right)=0,3$. Tính $P\\left( A|B \\right)$.",
+  "lua_chon": [
+   "$\\frac{3}{7}$.",
+   "$\\frac{7}{6}$.",
+   "$\\frac{3}{6}$.",
+   "$\\frac{6}{7}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Theo công thức xác suất có điều kiện: $P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0{,}3}{0{,}7}=\\dfrac{3}{7}$.\nVậy $P(A|B)=\\dfrac{3}{7}$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009920",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A$ và $B$ với $0<P\\left( B \\right)<1$. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "$P\\left( A \\right)=P\\left( B \\right)P\\left( A|B \\right)-P\\left( \\overline{B} \\right)P\\left( A|\\overline{B} \\right)$.",
+   "$P\\left( A \\right)=P\\left( A \\right)P\\left( A|B \\right)+P\\left( \\overline{A} \\right)P\\left( A|\\overline{B} \\right)$.",
+   "$P\\left( A \\right)=P\\left( B \\right)P\\left( A|\\overline{B} \\right)+P\\left( \\overline{B} \\right)P\\left( A|B \\right)$.",
+   "$P\\left( A \\right)=P\\left( B \\right)P\\left( A|B \\right)+P\\left( \\overline{B} \\right)P\\left( A|\\overline{B} \\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Vì $B$ và $\\overline B$ là hệ đầy đủ nên theo công thức xác suất toàn phần: $P(A)=P(B)\\cdot P(A|B)+P(\\overline B)\\cdot P(A|\\overline B)$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009975",
+  "loai": "tra_loi_ngan",
+  "de": "Trước khi đưa ra thị trường một sản phẩm, công ty phỏng vấn 800 khách hàng và được kết quả là 550 ngưới nói sẽ mua, còn 250 người nóiẽ không mua. Theo kinh nghiệm của nhà sản xuất thì trong những người nói mua sẽ có 60% số người chắc chắn mua, còn trong những người nói sẽ không mua lại có 1% người chắc chắn mua. Chon ngẫu nhiên một khách hàng. Xác suất chọn được khách hàng chắc chắn mua là bao nhiêu? (Kết quả làm trong đến hàng phần trăm).",
+  "dap_an": "0.42",
+  "loi_giai": "Gọi $A$ là biến cố \"khách hàng nói sẽ mua\", $B$ là biến cố \"khách hàng chắc chắn mua\".\nTa có $P(A)=\\dfrac{550}{800}$, $P(\\overline{A})=\\dfrac{250}{800}$, $P(B|A)=0{,}6$, $P(B|\\overline{A})=0{,}01$.\nTheo công thức xác suất toàn phần: $P(B)=P(A)\\cdot P(B|A)+P(\\overline{A})\\cdot P(B|\\overline{A})$.\n$P(B)=\\dfrac{550}{800}\\cdot 0{,}6+\\dfrac{250}{800}\\cdot 0{,}01=0{,}415625\\approx 0{,}42$.\nVậy xác suất cần tìm xấp xỉ $0{,}42$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009966",
+  "loai": "trac_nghiem",
+  "de": "Cho A, B là hai biến cố thỏa $P(A)=0,5;P(B)=0,4;P(AB)=0,2$. Tính $P(A|B)$ ta được kết quả bằng",
+  "lua_chon": [
+   "0,9.",
+   "0,5.",
+   "0,4.",
+   "0,25."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $P(A|B)=\\dfrac{P(AB)}{P(B)}=\\dfrac{0{,}2}{0{,}4}=0{,}5$.\nVậy $P(A|B)=0{,}5$. Chọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010163",
+  "loai": "trac_nghiem",
+  "de": "Nếu hai biến cố A, B thỏa mãn $P\\left( B \\right)=0,6;\\text{ }P\\left( A\\cap B \\right)=0,2$ thì $P\\left( A|B \\right)$ bằng",
+  "lua_chon": [
+   "$\\frac{3}{25}$",
+   "$\\frac{2}{5}$",
+   "$\\frac{1}{3}$",
+   "$\\frac{4}{5}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "$P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0,2}{0,6}=\\dfrac{1}{3}$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010104",
+  "loai": "tra_loi_ngan",
+  "de": "Một hộp đựng 9 viên bi xanh và 7 viên bi đỏ. Lần lượt lấy ngẫu nhiên ra 2 bi, mỗi lần lấy 1 bi không hoàn lại. Tính xác suất để bi thứ 2 màu xanh nếu biết bi thứ nhất màu đỏ?",
+  "dap_an": "0.6",
+  "loi_giai": "Sau khi bi thứ nhất màu đỏ được lấy ra, hộp còn $9$ bi xanh và $6$ bi đỏ, tổng $15$ bi.\nXác suất bi thứ hai màu xanh khi biết bi thứ nhất đỏ: $\\dfrac{9}{15}=\\dfrac{3}{5}=0{,}6$.\nVậy xác suất cần tìm là $0.6$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009978",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A$ và $B$, với $P\\left( B \\right)=0,4$, $P\\left( A|B \\right)=0,5$, $P\\left( A|\\overline{B} \\right)=0,3$. Tính $P\\left( A \\right)$.",
+  "lua_chon": [
+   "$0,38$.",
+   "0,2.",
+   "0,12.",
+   "0,8."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $P(\\overline{B})=1-0{,}4=0{,}6$.\nTheo công thức xác suất toàn phần: $P(A)=P(B)\\cdot P(A|B)+P(\\overline{B})\\cdot P(A|\\overline{B})$.\n$P(A)=0{,}4\\cdot 0{,}5+0{,}6\\cdot 0{,}3=0{,}2+0{,}18=0{,}38$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010017",
+  "loai": "tra_loi_ngan",
+  "de": "Có hai thùng đồ chơi trẻ em, thùng I có $4$ máy bay và $6$ ô tô, thùng II có $12$ máy bay và $8$\nô tô. Từ thùng I, lấy ngẫu nhiên một món đồ chơi rồi chuyển sang thùng II. Tính xác suất để lấy\nđược món đồ chơi từ thùng II là máy bay, làm tròn kết quả đến hai chữ số thập phân.\n------ HẾT ------",
+  "dap_an": "0.59",
+  "loi_giai": "Thùng I có $4$ máy bay và $6$ ô tô (10 món). Thùng II có $12$ máy bay và $8$ ô tô (20 món).\nGọi $A$ là biến cố \"món lấy từ thùng I là máy bay\", $B$ là biến cố \"món lấy từ thùng II (sau khi chuyển) là máy bay\".\n$P(A)=\\dfrac{4}{10}=0{,}4$, $P(\\overline{A})=0{,}6$.\nNếu chuyển máy bay: thùng II có $13$ máy bay trong $21$ món nên $P(B|A)=\\dfrac{13}{21}$.\nNếu chuyển ô tô: thùng II có $12$ máy bay trong $21$ món nên $P(B|\\overline{A})=\\dfrac{12}{21}$.\n$P(B)=0{,}4\\cdot\\dfrac{13}{21}+0{,}6\\cdot\\dfrac{12}{21}=\\dfrac{5{,}2+7{,}2}{21}=\\dfrac{12{,}4}{21}\\approx 0{,}5905$.\nLàm tròn đến hai chữ số thập phân: $0{,}59$.\nVậy xác suất cần tìm xấp xỉ $0{,}59$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009987",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A,\\ \\ B$ thoả $P\\left( A \\right)=0,4;\\ \\ P\\left( B \\right)=0,3;\\ \\ P\\left( A\\mid B \\right)=0,25$. Khi đó, $P\\left( B\\mid A \\right)$ bằng",
+  "lua_chon": [
+   "$0,1875$.",
+   "$0,95$.",
+   "$0,333$.",
+   "$0,48$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $P(AB)=P(A|B)\\cdot P(B)=0{,}25\\cdot 0{,}3=0{,}075$.\n$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0{,}075}{0{,}4}=0{,}1875$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010125",
+  "loai": "tra_loi_ngan",
+  "de": "Hộp thứ nhất có $4$ bi xanh và $4$ bi đỏ, hộp thứ hai có $5$ bi xanh và $3$ bi đỏ. Lấy ngẫu nhiên một bi từ hộp thứ nhất rồi bỏ vào hộp thứ hai, sau đó từ hộp thứ hai lấy ra một bi, Tính xác suất để bi lấy ra từ hộp thứ hai có màu xanh. ( Kết quả làm tròn hai chữ số thập phân).",
+  "dap_an": "0.61",
+  "loi_giai": "Gọi $X$: \"bi lấy từ hộp thứ nhất là xanh\", $Y$: \"bi lấy từ hộp thứ hai là xanh\".\nHộp thứ nhất: $P(X)=\\dfrac{4}{8}=\\dfrac{1}{2}$, $P(\\overline{X})=\\dfrac{1}{2}$.\nNếu bi chuyển sang là xanh, hộp hai có $6$ xanh trong $9$ bi: $P(Y|X)=\\dfrac{6}{9}$. Nếu là đỏ, hộp hai có $5$ xanh trong $9$ bi: $P(Y|\\overline{X})=\\dfrac{5}{9}$.\n$P(Y)=\\dfrac{1}{2}\\cdot\\dfrac{6}{9}+\\dfrac{1}{2}\\cdot\\dfrac{5}{9}=\\dfrac{11}{18}\\approx 0{,}61$.\nVậy xác suất cần tìm khoảng $0.61$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009903",
+  "loai": "tra_loi_ngan",
+  "de": "Một huyện đang triển khai chương trình sàng lọc phát hiện bệnh hiểm nghèo X cho người dân. Không có loại xét nghiệm nào cho kết quả chính xác 100%. Một loại xét nghiệm, ta gọi là xét nghiệm A, cho kết quả như sau: Khi một người bị bệnh X thì tỉ lệ có phản ứng dương tính trong xét nghiệm A là 95%, còn người không mắc bệnh X thì tỷ lệ có phản ứng âm tính trong xét nghiệm A là 97%. Biết rằng tỉ lệ người mắc bệnh X của huyện này là 0,5%. Hỏi khi một người ở huyện X có xét nghiệm dương tính với xét nghiệm A thì xác suất để người đó mắc bệnh hiểm nghèo X là bao nhiêu?( kết quả làm tròn đến hàng phần trăm)",
+  "dap_an": "0.14",
+  "loi_giai": "Gọi $B$: \"người đó mắc bệnh X\", $T$: \"xét nghiệm dương tính\".\n$P(B)=0{,}005$, $P(\\overline{B})=0{,}995$, $P(T|B)=0{,}95$, $P(T|\\overline{B})=1-0{,}97=0{,}03$.\n$P(T)=0{,}005\\cdot0{,}95+0{,}995\\cdot0{,}03=0{,}00475+0{,}02985=0{,}0346$.\nTheo công thức Bayes: $P(B|T)=\\dfrac{P(B)P(T|B)}{P(T)}=\\dfrac{0{,}00475}{0{,}0346}\\approx0{,}1373\\approx0{,}14$.\nVậy xác suất cần tìm xấp xỉ $0{,}14$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009994",
+  "loai": "trac_nghiem",
+  "de": "Cho 2 biến cố $A$ và $B$. Biết $P\\left( A|B \\right)=0,8;$ $P\\left( A|\\overline{B} \\right)=0,3$; $P\\left( B \\right)=0,4$. Giá trị $P\\left( A \\right)$ bằng",
+  "lua_chon": [
+   "$0,1$.",
+   "$0,04$.",
+   "$0,5$.",
+   "$0,55$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $P(\\overline{B})=1-0{,}4=0{,}6$.\n$P(A)=P(B)\\cdot P(A|B)+P(\\overline{B})\\cdot P(A|\\overline{B})=0{,}4\\cdot 0{,}8+0{,}6\\cdot 0{,}3=0{,}32+0{,}18=0{,}5$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010082",
+  "loai": "tra_loi_ngan",
+  "de": "Truecaller App là một ứng dụng được sử dụng để chặn cuộc gọi rác trong điện thoại. Tuy nhiên, vì ứng dụng không tuyệt đối hoàn hảo nên một cuộc gọi rác bị chặn với xác suất $0,8$ và một cuộc gọi đúng (không phải là cuộc gọi rác) bị chặn với xác suất $0,01$. Thống kê cho thấy tỉ lệ cuộc gọi rác là $10\\%$. Chọn ngẫu nhiên một cuộc gọi không bị chặn. Tính xác suất để đó là cuộc gọi đúng (Kết quả làm tròn đến hàng phần trăm)\n-----------------HẾT-----------------\n• Học sinh không được sử dụng tài liệu;\n• Giám thị không giải thích gì thêm.",
+  "dap_an": "0.98",
+  "loi_giai": "Gọi $R$: \"cuộc gọi rác\", $C$: \"cuộc gọi bị chặn\". Có $P(R)=0{,}1$, $P(\\overline{R})=0{,}9$, $P(C|R)=0{,}8$, $P(C|\\overline{R})=0{,}01$.\nSuy ra $P(\\overline{C}|R)=0{,}2$ và $P(\\overline{C}|\\overline{R})=0{,}99$.\nTheo công thức xác suất toàn phần: $P(\\overline{C})=0{,}1\\cdot 0{,}2+0{,}9\\cdot 0{,}99=0{,}02+0{,}891=0{,}911$.\nTheo công thức Bayes: $P(\\overline{R}|\\overline{C})=\\dfrac{0{,}9\\cdot 0{,}99}{0{,}911}=\\dfrac{0{,}891}{0{,}911}\\approx 0{,}978$.\nVậy xác suất cần tìm khoảng $0.98$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010003",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A,\\,B$ thỏa mãn $P\\left( \\overline{B} \\right)=0,2;\\,P\\left( A|B \\right)=0,5;\\,P\\left( \\left. A \\right|\\overline{B} \\right)=0,3$. Khi đó, $P\\left( A \\right)$ bằng",
+  "lua_chon": [
+   "0,34.",
+   "0,15.",
+   "0,46.",
+   "0,31."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $P(B)=1-P(\\overline{B})=1-0{,}2=0{,}8$.\n$P(A)=P(B)\\cdot P(A|B)+P(\\overline{B})\\cdot P(A|\\overline{B})=0{,}8\\cdot 0{,}5+0{,}2\\cdot 0{,}3=0{,}4+0{,}06=0{,}46$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010113",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố A và B, biết $P\\left( A \\right)=0,6$, $P\\left( B \\right)=0,7$, $P\\left( A\\cap B \\right)=0,3$. Tính $P\\left( A|B \\right)$.",
+  "lua_chon": [
+   "$\\frac{3}{7}$.",
+   "$\\frac{3}{6}$.",
+   "$\\frac{6}{7}$.",
+   "$\\frac{7}{6}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Theo công thức xác suất có điều kiện: $P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0{,}3}{0{,}7}=\\dfrac{3}{7}$.\nVậy $P(A|B)=\\dfrac{3}{7}$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010162",
+  "loai": "trac_nghiem",
+  "de": "Một hộp chứa 4 quả bóng được đánh số từ 1 đến 4. An lấy ngẫu nhiên một quả bóng, bỏ ra ngoài, rồi lấy tiếp một quả bóng nữa. Xét các biến cố $A$: \"Quả bóng lấy ra lần đầu có số chẵn\" và $B$: \"Quả bóng lấy ra lần hai có số lẻ\". Khi đó, biến cố $B|A$ được mô tả là",
+  "lua_chon": [
+   "$B|A=\\left\\{ \\left( 2,1 \\right),\\left( 2,3 \\right),\\left( 4,1 \\right),\\left( 4,3 \\right) \\right\\}$",
+   "$B|A=\\left\\{ \\left( 2,1 \\right),\\left( 2,3 \\right),\\left( 2,4 \\right),\\left( 4,1 \\right),\\left( 4,2 \\right),\\left( 4,3 \\right) \\right\\}$",
+   "$B|A=\\left\\{ \\left( 1,1 \\right),\\left( 1,3 \\right),\\left( 2,1 \\right),\\left( 2,3 \\right),\\left( 3,1 \\right),\\left( 3,3 \\right),\\left( 4,1 \\right),\\left( 4,3 \\right) \\right\\}$",
+   "$B|A=\\left\\{ \\left( 1,2 \\right),\\left( 1,3 \\right),\\left( 1,4 \\right),\\left( 2,1 \\right),\\left( 2,3 \\right),\\left( 2,4 \\right),\\left( 3,1 \\right),\\left( 3,2 \\right),\\left( 3,4 \\right),\\left( 4,1 \\right),\\left( 4,2 \\right),\\left( 4,3 \\right) \\right\\}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Biến cố $A$: quả lấy lần đầu là số chẵn, tức là $2$ hoặc $4$.\nBiến cố $B|A$: lần hai lấy được số lẻ khi đã biết lần đầu là số chẵn. Sau khi bỏ một quả chẵn, hai quả lẻ $1$ và $3$ vẫn còn trong hộp.\nVậy $B|A=\\{(2,1),(2,3),(4,1),(4,3)\\}$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009960",
+  "loai": "trac_nghiem",
+  "de": "Một công ty bảo hiểm thống kê cho biết có $48{0}/{0}$ số người mua bảo hiểm tài sản là nam giới và có $21{0}/{0}$ số người mua bảo hiểm tài sản là nam giới trên 50 tuổi. Biết người mua bảo hiểm tài sản là nam giới, xác suất người đó trên 50 tuổi là",
+  "lua_chon": [
+   "$0,4375$.",
+   "$0,256$.",
+   "$0,5625$.",
+   "$0,482$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Gọi $A$: \"người mua là nam giới\", $B$: \"người mua trên 50 tuổi\". $P(A)=0,48$; $P(A\\cap B)=0,21$.\n$P(B|A)=\\dfrac{0,21}{0,48}=0,4375$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010074",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố ngẫu nhiên $A$ và $B$ có $P\\left( A \\right)=0,5;P\\left( AB \\right)=0,3$. Xác suất của $B$ với điều kiện $A$ là",
+  "lua_chon": [
+   "0,6.",
+   "0,3.",
+   "0,4.",
+   "$\\frac{3}{7}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0,3}{0,5}=0,6$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

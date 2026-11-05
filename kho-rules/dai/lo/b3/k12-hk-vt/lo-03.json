@@ -1,0 +1,880 @@
+[
+ {
+  "ma_cau": "T1120000009603",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp tứ giác đều $S\\text{ }.\\text{ }ABCD$ có độ dài tất cả các cạnh bằng a . Tích vô hướng của $\\overrightarrow{AS}\\cdot\\overrightarrow{BC}$ bằng",
+  "lua_chon": [
+   "$\\frac{a^{2}}{2}$.",
+   "$-\\frac{a^{2}}{2}$.",
+   "$\\frac{a^{2}}{\\sqrt{2}}$.",
+   "0."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vì $ABCD$ là hình vuông nên $\\overrightarrow{BC}=\\overrightarrow{AD}$, suy ra $\\overrightarrow{AS}\\cdot\\overrightarrow{BC}=\\overrightarrow{AS}\\cdot\\overrightarrow{AD}$.\nTam giác $SAD$ có $SA=SD=AD=a$ nên đều, $\\widehat{SAD}=60^\\circ$.\n$\\overrightarrow{AS}\\cdot\\overrightarrow{AD}=a\\cdot a\\cdot\\cos60^\\circ=\\dfrac{a^2}{2}$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009819",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp $ABCD.A'B'C'D'$. Khi đó $\\overrightarrow{AA'}+\\overrightarrow{AD}$ bằng",
+  "lua_chon": [
+   "$\\overrightarrow{AC}$",
+   "$\\overrightarrow{AC'}$",
+   "$\\overrightarrow{BC'}$",
+   "$\\overrightarrow{AB'}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Vì $ABCD.A'B'C'D'$ là hình hộp nên $\\overrightarrow{AA'}=\\overrightarrow{BB'}$ và $\\overrightarrow{AD}=\\overrightarrow{BC}$.\n$\\overrightarrow{AA'}+\\overrightarrow{AD}=\\overrightarrow{BB'}+\\overrightarrow{BC}=\\overrightarrow{BC'}$ (quy tắc hình bình hành cho hình bình hành $BCC'B'$).\nVậy $\\overrightarrow{AA'}+\\overrightarrow{AD}=\\overrightarrow{BC'}$. Chọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009851",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho $\\overrightarrow{\\,a\\,}=\\left( 4;-5;3 \\right)$, $\\overrightarrow{\\,b\\,}=\\left( -1;2;6 \\right)$ và $\\overrightarrow{\\,c\\,}=\\left( 4;2;-3 \\right)$. Toạ độ của vectơ $\\overrightarrow{\\,u\\,}=\\overrightarrow{\\,a\\,}+2\\overrightarrow{\\,b\\,}-3\\overrightarrow{\\,c\\,}$ là",
+  "lua_chon": [
+   "$\\overrightarrow{\\,u\\,}=\\left( -10;-7;24 \\right).$",
+   "$\\overrightarrow{\\,u\\,}=\\left( -9;-9;18 \\right).$",
+   "$\\overrightarrow{\\,u\\,}=\\left( 14;5;6 \\right).$",
+   "$\\overrightarrow{\\,u\\,}=\\left( -5;-14;21 \\right).$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\vec{u}=\\vec{a}+2\\vec{b}-3\\vec{c}$.\nHoành độ: $4+2\\cdot(-1)-3\\cdot 4=-10$.\nTung độ: $-5+2\\cdot 2-3\\cdot 2=-7$.\nCao độ: $3+2\\cdot 6-3\\cdot(-3)=24$.\nVậy $\\vec{u}=(-10;-7;24)$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009578",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$ cho $2$ véc tơ $\\overrightarrow{a}=(2;1;-1)$; $\\overrightarrow{b}=(1;3;\\mathrm{m})$. Tìm $m$ để $\\overrightarrow{a}\\overrightarrow{.b}=0$.",
+  "lua_chon": [
+   "$m=1$.",
+   "$m=-2$",
+   "$m=5$.",
+   "$m=-5$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "$\\overrightarrow a\\cdot\\overrightarrow b=2\\cdot1+1\\cdot3+(-1)\\cdot m=5-m$.\n$\\overrightarrow a\\cdot\\overrightarrow b=0\\Leftrightarrow5-m=0\\Leftrightarrow m=5$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009400",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$ cho điểm $A\\left( 1;\\,2;\\,-3 \\right)$. Hình chiếu vuông góc của $A$ lên mặt phẳng $\\left( Oxy \\right)$ có tọa độ là",
+  "lua_chon": [
+   "$\\left( 0;\\,2;\\,-3 \\right)$.",
+   "$\\left( 1;\\,2;\\,0 \\right)$.",
+   "$\\left( 1;\\,0;\\,0 \\right)$.",
+   "$\\left( 1;\\,0;\\,-3 \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Hình chiếu vuông góc của điểm $(x;y;z)$ lên mặt phẳng $(Oxy)$ là điểm $(x;y;0)$.\nVới $A(1;2;-3)$ ta được hình chiếu là $(1;2;0)$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010015",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho hai vectơ $\\overrightarrow{u}=\\left( 3\\text{ };2\\text{ };0 \\right),\\text{ }\\overrightarrow{v}=\\left( 5\\text{ };-4\\text{ };2 \\right)$. Tọa độ của vectơ $\\overrightarrow{u}+\\overrightarrow{v}$ là:",
+  "lua_chon": [
+   "$\\left( -2\\text{ };6\\text{ };2 \\right)$",
+   "$\\left( \\text{8 };-2\\text{ };2 \\right)$.",
+   "$\\left( -2\\text{ };6\\text{ };2 \\right)$.",
+   "$\\left( 2\\text{ };-6\\text{ };2 \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "$\\overrightarrow{u}+\\overrightarrow{v}=(3+5;\\ 2+(-4);\\ 0+2)=(8;-2;2)$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009797",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho hai vectơ $\\overrightarrow{a}=\\left( 3;0;1 \\right),\\,\\overrightarrow{c}=\\left( 1;1;0 \\right)$ và vectơ $\\overrightarrow{b}$ thỏa mãn biểu thức $\\overrightarrow{b}-\\overrightarrow{a}+2\\overrightarrow{c}=\\overrightarrow{0}$. Tọa độ vectơ $\\overrightarrow{b}$ là",
+  "lua_chon": [
+   "$\\left( -2;1;-1 \\right)$.",
+   "$\\left( -1;2;-1 \\right)$.",
+   "$\\left( 1;-2;1 \\right)$.",
+   "$\\left( 5;2;1 \\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Từ $\\overrightarrow{b}-\\overrightarrow{a}+2\\overrightarrow{c}=\\overrightarrow{0}$ suy ra $\\overrightarrow{b}=\\overrightarrow{a}-2\\overrightarrow{c}$.\n$2\\overrightarrow{c}=(2;2;0)$.\n$\\overrightarrow{b}=(3-2;\\,0-2;\\,1-0)=(1;-2;1)$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009692",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian, cho hai vectơ $\\overrightarrow{AB}$ và $\\overrightarrow{BC}$. Vectơ $\\overrightarrow{AC}$ bằng",
+  "lua_chon": [
+   "$\\overrightarrow{AB}\\,\\,$.",
+   "$\\overrightarrow{AB}\\,-\\,\\overrightarrow{BC}\\,$.",
+   "$-\\overrightarrow{AC}\\,-\\,\\overrightarrow{BC}\\,$.",
+   "$\\overrightarrow{AB}\\,+\\,\\overrightarrow{BC}\\,$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Theo quy tắc ba điểm: $\\overrightarrow{AB}+\\overrightarrow{BC}=\\overrightarrow{AC}$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009524",
+  "loai": "trac_nghiem",
+  "de": "Có ba lực $\\overrightarrow{F_{1}},\\;\\overrightarrow{F_{2}},\\;\\overrightarrow{F_{3}}$ cùng tác động vào một vật. Các lực này đôi một vuông góc với nhau và có độ lớn $20N$. Tính độ lớn của hợp lực của ba lực trên.",
+  "lua_chon": [
+   "$20$.",
+   "$\\frac{20\\sqrt{3}}{3}$.",
+   "$20\\sqrt{3}$.",
+   "$60$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Hợp lực $\\overrightarrow{F}=\\overrightarrow{F_{1}}+\\overrightarrow{F_{2}}+\\overrightarrow{F_{3}}$.\nVì ba lực đôi một vuông góc nên $\\overrightarrow{F_{i}}\\cdot\\overrightarrow{F_{j}}=0$ với $i\\ne j$.\n$\\left| \\overrightarrow{F} \\right|^{2}=\\left| \\overrightarrow{F_{1}} \\right|^{2}+\\left| \\overrightarrow{F_{2}} \\right|^{2}+\\left| \\overrightarrow{F_{3}} \\right|^{2}=3\\cdot 20^{2}=1200$.\nSuy ra $\\left| \\overrightarrow{F} \\right|=20\\sqrt{3}$ (N).\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009699",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho hai vectơ $\\overrightarrow{u}=\\left( 1;3;-2 \\right)$ và $\\overrightarrow{v}=\\left( 2;1;-1 \\right)$. Toạ độ vectơ $\\overrightarrow{u}-\\overrightarrow{v}$ là:",
+  "lua_chon": [
+   "$\\left( 1;-2;1 \\right)$.",
+   "$\\left( -1;2;-3 \\right)$.",
+   "$\\left( 3;4;-3 \\right)$.",
+   "$\\left( -1;2;-1 \\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "$\\overrightarrow{u}-\\overrightarrow{v}=(1-2;3-1;-2+1)=(-1;2;-1)$. Chọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009462",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, vecto $\\overrightarrow{a}=\\left( 3;2;-1 \\right)$ có độ dài bằng",
+  "lua_chon": [
+   "$2\\sqrt{3}$.",
+   "$14$.",
+   "$4$.",
+   "$\\sqrt{14}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "$|\\overrightarrow{a}|=\\sqrt{3^{2}+2^{2}+(-1)^{2}}=\\sqrt{14}$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009321",
+  "loai": "tra_loi_ngan",
+  "de": "Trong không gian $Oxyz$, cho hai điểm $A\\left( 0;\\,1;\\,1 \\right)$ và $B\\left( 2;\\,-3;\\,3 \\right)$. Gọi $M$ là điểm nằm trên trục $Oz$ và cách đều $A,B$. Khi đó cao độ của điểm $M$ bằng bao nhiêu?",
+  "dap_an": "5",
+  "loi_giai": "$M$ nằm trên trục $Oz$ nên $M(0;0;z)$.\n$MA^{2}=0+1+(z-1)^{2}=z^{2}-2z+2$; $MB^{2}=4+9+(z-3)^{2}=z^{2}-6z+22$.\n$MA=MB\\Leftrightarrow z^{2}-2z+2=z^{2}-6z+22\\Leftrightarrow 4z=20\\Leftrightarrow z=5$.\nVậy cao độ của $M$ bằng $5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009766",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho các vectơ $\\overrightarrow{a}=(1;2;3)$ và $\\overrightarrow{b}=(-2;1;0)$. Tính tích vô hướng $\\overrightarrow{a}.(\\overrightarrow{a}+2\\overrightarrow{b})$.",
+  "lua_chon": [
+   "$16$.",
+   "$10$.",
+   "$14$.",
+   "$22$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "$\\overrightarrow{a}+2\\overrightarrow{b}=(1-4;\\,2+2;\\,3+0)=(-3;4;3)$.\n$\\overrightarrow{a}\\cdot(\\overrightarrow{a}+2\\overrightarrow{b})=1\\cdot(-3)+2\\cdot 4+3\\cdot 3=-3+8+9=14$.\nVậy giá trị cần tìm là $14$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009833",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian, với hệ trục tọa độ $Oxyz$, cho 4 điểm $A\\left( 0;1;-2 \\right)$, $B\\left( 3;-4;0 \\right)$, $C\\left( -5;2;0 \\right)$, $D\\left( 6;-3;7 \\right)$. Giá trị của biểu thức $P=\\overrightarrow{AB}^{2}-\\overrightarrow{AC}.\\overrightarrow{C\\text{D}}$ là bao nhiêu?",
+  "lua_chon": [
+   "$84$.",
+   "$-39$.",
+   "$39$.",
+   "$-48$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{AB}=(3;-5;2)$ nên $\\overrightarrow{AB}^{2}=9+25+4=38$.\n$\\overrightarrow{AC}=(-5;1;2)$, $\\overrightarrow{CD}=(11;-5;7)$.\n$\\overrightarrow{AC}\\cdot\\overrightarrow{CD}=-55-5+14=-46$.\n$P=38-(-46)=84$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009570",
+  "loai": "tra_loi_ngan",
+  "de": "Trong không gian với hệ tọa độ cho trước (đơn vị đo lấy theo mét), một con ong bay từ điểm $A(2;\\,4;\\,1)$ với vận tốc và hướng không đổi đến điểm $B(10;\\,12;\\,5)$ trong 5 giây. Nếu con ong tiếp tục giữ nguyên vận tốc và hướng bay thì tọa độ của con ong sau $3$ giây tiếp theo đạt tại vị trí điểm $M\\left( a;\\,b;\\,c \\right)$. Tìm $5a-b-c$(làm tròn kết quả đến hàng phần chục).",
+  "dap_an": "49.8",
+  "loi_giai": "$\\overrightarrow{AB}=(8;8;4)$, con ong đi hết $AB$ trong $5$ giây nên vận tốc là $\\overrightarrow v=\\dfrac{1}{5}\\overrightarrow{AB}=(1{,}6;1{,}6;0{,}8)$ (m/s).\nSau $3$ giây tiếp theo, ong đi thêm $3\\overrightarrow v=(4{,}8;4{,}8;2{,}4)$.\n$M=B+3\\overrightarrow v=(14{,}8;\\,16{,}8;\\,7{,}4)$.\nDo đó $5a-b-c=5\\cdot14{,}8-16{,}8-7{,}4=74-24{,}2=49{,}8$.\nVậy $5a-b-c=49{,}8$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009755",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$ , cho 3 điểm $A\\left( 1;\\,2;\\,-1 \\right),\\,B\\left( 2;\\,-1;\\,3 \\right),\\,$$C\\left( -3;\\,5;\\,1 \\right)$. Tìm tọa độ đỉnh $D$ sao cho tứ giác $ABCD$ là hình bình hành.",
+  "lua_chon": [
+   "$D\\left( -4;\\,8;\\,-3 \\right)$.",
+   "$D\\left( -2;\\,2;\\,5 \\right)$.",
+   "$D\\left( -2;\\,8;\\,-3 \\right)$.",
+   "$D\\left( -4;\\,8;\\,-5 \\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$ABCD$ là hình bình hành khi $\\overrightarrow{AB}=\\overrightarrow{DC}$, tức $A+C=B+D$ nên $D=A+C-B$.\n$D=(1+(-3)-2;\\ 2+5-(-1);\\ -1+1-3)=(-4;8;-3)$.\nVậy $D(-4;8;-3)$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009555",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$,cho điểm $A\\left( 1;3;-1 \\right)$ và $B=\\left( 3;-1;5 \\right)$. Tọa độ trung điểm $I$ của đoạn $AB$ là",
+  "lua_chon": [
+   "$I\\left( 2;1;2 \\right)$.",
+   "$I\\left( 2;-4;6 \\right)$.",
+   "$I\\left( -4;-2;-4 \\right)$.",
+   "$I\\left( 4;2;4 \\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Trung điểm $I$ của $AB$: $I\\left( \\dfrac{1+3}{2};\\dfrac{3-1}{2};\\dfrac{-1+5}{2} \\right)=I\\left( 2;1;2 \\right)$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009804",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho $\\vec{u}=\\vec{i}-3\\vec{k}$. Tọa độ của vectơ $\\vec{u}$ là:",
+  "lua_chon": [
+   "$\\left( 1;-1;3 \\right)$.",
+   "$\\left( 1;-3;0 \\right)$.",
+   "$\\left( 1;0;-3 \\right)$.",
+   "$\\left( 0;2;-3 \\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "$\\vec{u}=\\vec{i}-3\\vec{k}=1\\cdot\\vec{i}+0\\cdot\\vec{j}-3\\cdot\\vec{k}$.\nSuy ra $\\vec{u}=(1;0;-3)$. Chọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010198",
+  "loai": "tra_loi_ngan",
+  "de": "Trong không gian $Oxyz$, cho hai điềm $A\\left( 1;2;3 \\right)$, $B\\left( 7;10;6 \\right)$. Hai điểm $M$, $N$ thay đổi trên mặt phẳng $\\left( Oxy \\right)$ sao cho $MN=4$. Khi $AM+BN$ nhỏ nhất, tính tổng hoành độ của $M$ và tung độ của $N$.",
+  "dap_an": "9",
+  "loi_giai": "Hai điểm $A\\left( 1;2;3 \\right)$, $B\\left( 7;10;6 \\right)$ cùng phía với mặt phẳng $\\left( Oxy \\right)$ (cùng có cao độ dương). Lấy $A'\\left( 1;2;-3 \\right)$ đối xứng với $A$ qua $\\left( Oxy \\right)$, khi đó $AM=A'M$.\nĐặt $\\overrightarrow{v}=\\overrightarrow{MN}$ với $\\overrightarrow{v}$ nằm trong mặt phẳng $\\left( Oxy \\right)$, $\\left| \\overrightarrow{v} \\right|=4$. Gọi $B'=B-\\overrightarrow{v}$ thì $BN=B'M$.\nKhi đó $AM+BN=A'M+MB'\\ge A'B'=\\left| \\overrightarrow{A'B}-\\overrightarrow{v} \\right|$, với $\\overrightarrow{A'B}=\\left( 6;8;9 \\right)$ và $\\overrightarrow{v}=\\left( v_{x};v_{y};0 \\right)$.\nPhần nằm ngang của $\\overrightarrow{A'B}$ là $\\left( 6;8 \\right)$ có độ dài $10$. Để $\\left| \\over …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009871",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho $\\vec{a}=-2\\overrightarrow{i}+\\overrightarrow{j}-5\\overrightarrow{k}$. Tọa độ của vectơ $\\overrightarrow{a}$ là",
+  "lua_chon": [
+   "$\\left( -2;1;-5 \\right)$.",
+   "$\\left( 1;-2;-5 \\right)$.",
+   "$\\left( 2;1;-5 \\right)$.",
+   "$\\left( 2;-1;5 \\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\vec{a}=-2\\vec{i}+1\\cdot\\vec{j}-5\\vec{k}$.\nVậy $\\vec{a}=(-2;1;-5)$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009294",
+  "loai": "trac_nghiem",
+  "de": "Cho lăng trụ đứng $ABC.A'B'C'$, điểm $M$ trên $CC'$ sao cho $\\overrightarrow{MC}=-\\frac{1}{3}\\overrightarrow{MC'}.$ Đặt $\\overrightarrow{AB}=\\overrightarrow{a},\\,\\,\\overrightarrow{AC}=\\overrightarrow{b},\\,\\,\\overrightarrow{AA'}=\\overrightarrow{c}.$ Khẳng định nào dưới đây là đúng ?",
+  "lua_chon": [
+   "$\\overrightarrow{A'M}=\\overrightarrow{a}-\\overrightarrow{b}+\\frac{1}{2}\\overrightarrow{c}.$",
+   "$\\overrightarrow{A'M}=\\frac{-3}{2}\\overrightarrow{a}+\\overrightarrow{b}-\\frac{3}{4}\\overrightarrow{c}.$",
+   "$\\overrightarrow{A'M}=-\\overrightarrow{a}+2\\overrightarrow{b}-\\frac{2}{3}\\overrightarrow{c}.$",
+   "$\\overrightarrow{A'M}=\\overrightarrow{b}-\\frac{3}{4}\\overrightarrow{c}.$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Từ $\\overrightarrow{MC}=-\\dfrac{1}{3}\\overrightarrow{MC'}$ suy ra $M$ nằm giữa $C$ và $C'$, $MC=\\dfrac{1}{3}MC'$, do đó $CM=\\dfrac{1}{4}CC'$ và $\\overrightarrow{CM}=\\dfrac{1}{4}\\overrightarrow{CC'}=\\dfrac{1}{4}\\overrightarrow{c}$.\nTa có $\\overrightarrow{A'M}=\\overrightarrow{A'A}+\\overrightarrow{AC}+\\overrightarrow{CM}$.\n$=-\\overrightarrow{c}+\\overrightarrow{b}+\\dfrac{1}{4}\\overrightarrow{c}=\\overrightarrow{b}-\\dfrac{3}{4}\\overrightarrow{c}$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009806",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$. Trong các khẳng định sau, khẳng định nào sai?",
+  "lua_chon": [
+   "$\\overrightarrow{AD}+\\overrightarrow{DB}=\\overrightarrow{AB}$.",
+   "$\\overrightarrow{AB}+\\overrightarrow{BC}=\\overrightarrow{AC}$.",
+   "$\\overrightarrow{DA}+\\overrightarrow{BD}=\\overrightarrow{BA}$.",
+   "$\\overrightarrow{CB}+\\overrightarrow{AC}=\\overrightarrow{BA}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Dùng quy tắc ba điểm kiểm tra từng đẳng thức.\n$\\overrightarrow{AD}+\\overrightarrow{DB}=\\overrightarrow{AB}$ đúng; $\\overrightarrow{AB}+\\overrightarrow{BC}=\\overrightarrow{AC}$ đúng; $\\overrightarrow{DA}+\\overrightarrow{BD}=\\overrightarrow{BD}+\\overrightarrow{DA}=\\overrightarrow{BA}$ đúng.\n$\\overrightarrow{CB}+\\overrightarrow{AC}=\\overrightarrow{AC}+\\overrightarrow{CB}=\\overrightarrow{AB}\\ne\\overrightarrow{BA}$ nên đẳng thức $\\overrightarrow{CB}+\\overrightarrow{AC}=\\overrightarrow{BA}$ sai.\nVậy khẳng định sai là $\\overrightarrow{CB}+\\overrightarrow{AC}=\\overrightarrow{BA}$. Chọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009322",
+  "loai": "tra_loi_ngan",
+  "de": "Trong không gian $Oxyz$, cho $4$ điểm $A(-6;4;-1),\\,B(1;1;2),\\,C(-3;2;4),\\,D(-1;-1;0)$, biết tọa độ $M(a;b;c)$ để $P=MA^{2}+MB^{2}+MC^{2}+2MD^{2}$ đạt giá trị nhỏ nhất. Tính giá trị $Q=15a+10b-c$.\n---------- HẾT ----------",
+  "dap_an": "-21",
+  "loi_giai": "Gọi $I$ là điểm thoả $\\overrightarrow{IA}+\\overrightarrow{IB}+\\overrightarrow{IC}+2\\overrightarrow{ID}=\\overrightarrow{0}$ (tổng hệ số bằng $5$).\n$I\\left(\\dfrac{-6+1-3+2(-1)}{5};\\dfrac{4+1+2+2(-1)}{5};\\dfrac{-1+2+4+2\\cdot 0}{5}\\right)=(-2;1;1)$.\n$P=MA^{2}+MB^{2}+MC^{2}+2MD^{2}=5MI^{2}+\\left(IA^{2}+IB^{2}+IC^{2}+2ID^{2}\\right)$, trong đó số hạng thứ hai không đổi.\nDo đó $P$ nhỏ nhất khi $MI=0$, tức $M\\equiv I(-2;1;1)$, suy ra $a=-2$, $b=1$, $c=1$.\n$Q=15a+10b-c=-30+10-1=-21$.\nVậy $Q=-21$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010212",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp $ABCD.A'B'C'D'$. Vectơ $\\vec{u}=\\overrightarrow{A'A}+\\overrightarrow{A'B'}+\\overrightarrow{A'D'}$ bằng vectơ nào sau đây?",
+  "lua_chon": [
+   "$\\overrightarrow{C'A}$.",
+   "$\\overrightarrow{AC'}$.",
+   "$\\overrightarrow{CA}$.",
+   "$\\overrightarrow{A'C}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $\\overrightarrow{A'B'}=\\overrightarrow{AB}$, $\\overrightarrow{A'D'}=\\overrightarrow{AD}$ nên $\\vec{u}=\\overrightarrow{A'A}+\\overrightarrow{AB}+\\overrightarrow{AD}$.\nMà $\\overrightarrow{AB}+\\overrightarrow{AD}=\\overrightarrow{AC}$ nên $\\vec{u}=\\overrightarrow{A'A}+\\overrightarrow{AC}=\\overrightarrow{A'C}$. Chọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009745",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$. Mệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "$\\overrightarrow{AB}-\\overrightarrow{AD}=\\overrightarrow{BD}.$",
+   "$\\overrightarrow{AC}-\\overrightarrow{CB}=\\overrightarrow{AB}.$",
+   "$\\overrightarrow{BC}+\\overrightarrow{AB}=\\overrightarrow{AC}.$",
+   "$\\overrightarrow{AB}+\\overrightarrow{BD}=\\overrightarrow{DA}.$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Theo quy tắc ba điểm: $\\overrightarrow{BC}+\\overrightarrow{AB}=\\overrightarrow{AB}+\\overrightarrow{BC}=\\overrightarrow{AC}$ nên mệnh đề $\\overrightarrow{BC}+\\overrightarrow{AB}=\\overrightarrow{AC}$ đúng.\nCác mệnh đề còn lại sai: $\\overrightarrow{AB}+\\overrightarrow{BD}=\\overrightarrow{AD}\\ne\\overrightarrow{DA}$; $\\overrightarrow{AB}-\\overrightarrow{AD}=\\overrightarrow{DB}\\ne\\overrightarrow{BD}$; $\\overrightarrow{AC}-\\overrightarrow{CB}=\\overrightarrow{AC}+\\overrightarrow{BC}\\ne\\overrightarrow{AB}$.\nVậy mệnh đề đúng là $\\overrightarrow{BC}+\\overrightarrow{AB}=\\overrightarrow{AC}$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009577",
+  "loai": "tra_loi_ngan",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho tam giác $ABC$ có $A\\left( 1;\\,2;\\,-1 \\right)$, $B\\left( 2;\\,-1;\\,3 \\right)$, $C\\left( -4;\\,7;\\,5 \\right)$. Gọi $D\\left( a;\\,b;\\,c \\right)$ là điểm thỏa mãn $\\overrightarrow{AD}-\\overrightarrow{AB}-2\\overrightarrow{BC}=\\overrightarrow{0}$. Tính giá trị của biểu thức $a+b+c$.",
+  "dap_an": "12",
+  "loi_giai": "$\\overrightarrow{AD}-\\overrightarrow{AB}-2\\overrightarrow{BC}=\\overrightarrow0\\Leftrightarrow\\overrightarrow{AD}=\\overrightarrow{AB}+2\\overrightarrow{BC}$.\n$\\overrightarrow{AB}=(1;-3;4)$, $\\overrightarrow{BC}=(-6;8;2)$ nên $\\overrightarrow{AD}=(1-12;\\,-3+16;\\,4+4)=(-11;13;8)$.\n$D=(1-11;\\,2+13;\\,-1+8)=(-10;15;7)$.\nVậy $a+b+c=-10+15+7=12$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010213",
+  "loai": "tra_loi_ngan",
+  "de": "Ba lực $\\overrightarrow{F_{1}},\\overrightarrow{F_{2}},\\overrightarrow{F_{3}}$ cùng tác động vào một vật có phương đôi một vuông góc và có độ lớn lần lượt là $4N;5N;6N$. Tính độ lớn hợp lực của ba lực đã cho.(làm tròn đến chữ số hàng phần trăm)\n----HẾT---\nHọc sinh không được sử dụng tài liệu. Giám thị không giải thích gì thêm\nChữ kí của giám thị 1:………………………………Chữ kí của giám thị 1:………………………………..",
+  "dap_an": "8.77",
+  "loi_giai": "Ba lực có phương đôi một vuông góc nên hợp lực $\\overrightarrow{F}=\\overrightarrow{F_{1}}+\\overrightarrow{F_{2}}+\\overrightarrow{F_{3}}$ thoả mãn $\\left| \\overrightarrow{F} \\right|^{2}=\\left| \\overrightarrow{F_{1}} \\right|^{2}+\\left| \\overrightarrow{F_{2}} \\right|^{2}+\\left| \\overrightarrow{F_{3}} \\right|^{2}$.\n$\\left| \\overrightarrow{F} \\right|=\\sqrt{4^{2}+5^{2}+6^{2}}=\\sqrt{77}\\approx 8{,}77$ (N).\nVậy độ lớn hợp lực khoảng $8{,}77$ N.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010173",
+  "loai": "tra_loi_ngan",
+  "de": "Trên phần mềm mô phỏng việc điều khiển drone giao hàng trong không gian $Oxyz$, một drone giao hàng đang ở toạ độ $A\\left( 1;0;1 \\right)$ di chuyển đến địa điểm nhận hàng là $B\\left( 4;4;6 \\right)$. Mỗi đơn vị trên phần mềm bằng $1\\,km$ ngoài thực tế. Biết tốc độ của drone là $80\\left( km/h \\right)$; giả sử rằng từ vị trí giao hàng và nhận hàng không gặp chướng ngại vật, sức cản gió không đáng kể để drone bay theo đường thẳng. Thời gian drone bay từ vị trí ban đầu đến địa điểm giao hàng mất bao nhiêu phút?(Làm tròn đến hàng phần chục).",
+  "dap_an": "5.3",
+  "loi_giai": "Ta có $\\overrightarrow{AB}=\\left( 3;4;5 \\right)$.\nQuãng đường drone bay: $AB=\\sqrt{3^{2}+4^{2}+5^{2}}=\\sqrt{50}\\approx 7{,}071$ (km).\nThời gian bay: $t=\\dfrac{\\sqrt{50}}{80}\\approx 0{,}0884$ (giờ) $\\approx 5{,}30$ (phút).\nLàm tròn đến hàng phần chục, vậy thời gian bay là $5{,}3$ phút.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009446",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian Oxyz, biết điểm A( 1; - 2; 7) và điểm B(-1; 5; 3). Khi đó $\\overrightarrow{AB}$ có tọa độ là",
+  "lua_chon": [
+   "( 0; 3; 10)",
+   "( -2; 7; - 4)",
+   "( - 2; 3; 4)",
+   "( 2; - 7; 4)"
+  ],
+  "dap_an": "B",
+  "loi_giai": "$\\overrightarrow{AB}=(-1-1;5-(-2);3-7)=(-2;7;-4)$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009861",
+  "loai": "trac_nghiem",
+  "de": "Trong hệ trục tọa độ $Oxyz,$ cho $\\vec{u}=\\vec{i}-3\\vec{k}$. Tọa độ của vectơ $\\vec{u}$ là",
+  "lua_chon": [
+   "$\\left( 1;-1;3 \\right).$",
+   "$\\left( 1;-3;0 \\right).$",
+   "$\\left( 0;2;-3 \\right).$",
+   "$\\left( 1;0;-3 \\right).$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $\\vec{u}=\\vec{i}-3\\vec{k}=1\\cdot\\vec{i}+0\\cdot\\vec{j}-3\\cdot\\vec{k}$.\nVậy $\\vec{u}=(1;0;-3)$. Chọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009696",
+  "loai": "tra_loi_ngan",
+  "de": "Trong không gian với hệ tọa độ $Oxyz$, cho tam giác $ABC$ với $A\\left( 1;-3;1 \\right)$; $B\\left( 3;-5;4 \\right)$, $C\\left( a;-1;b \\right)$ nhận điểm $G\\left( 2;c;3 \\right)$ làm trọng tâm của nó thì giá trị của tổng $a+b+c$ bằng",
+  "dap_an": "3",
+  "loi_giai": "$G$ là trọng tâm nên $2=\\dfrac{1+3+a}{3}\\Rightarrow a=2$.\n$c=\\dfrac{-3-5-1}{3}=-3$.\n$3=\\dfrac{1+4+b}{3}\\Rightarrow b=4$.\nVậy $a+b+c=2+4-3=3$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009674",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$\\overrightarrow{AB}-\\overrightarrow{AD}=\\overrightarrow{BD}$.",
+   "$\\overrightarrow{BD}-\\overrightarrow{AD}=\\overrightarrow{AB}$",
+   "$\\overrightarrow{BC}+\\overrightarrow{AB}=\\overrightarrow{AC}$.",
+   "$\\overrightarrow{AB}+\\overrightarrow{BD}=\\overrightarrow{DA}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Xét từng khẳng định:\n$\\overrightarrow{AB}-\\overrightarrow{AD}=\\overrightarrow{DB}\\ne\\overrightarrow{BD}$ nên A sai.\n$\\overrightarrow{BD}-\\overrightarrow{AD}=\\overrightarrow{BD}+\\overrightarrow{DA}=\\overrightarrow{BA}\\ne\\overrightarrow{AB}$ nên B sai.\n$\\overrightarrow{BC}+\\overrightarrow{AB}=\\overrightarrow{AB}+\\overrightarrow{BC}=\\overrightarrow{AC}$ nên C đúng.\n$\\overrightarrow{AB}+\\overrightarrow{BD}=\\overrightarrow{AD}\\ne\\overrightarrow{DA}$ nên D sai.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009314",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho $\\overrightarrow{a}=\\left( 3;\\,-2;\\,3 \\right),\\,\\overrightarrow{b}=\\left( 1;\\,4;\\,-4 \\right)$ và $\\overrightarrow{c}=\\left( 3;\\,2;\\,-2 \\right)$. Tọa độ của véc tơ $\\overrightarrow{u}=2\\overrightarrow{a}-\\overrightarrow{b}+4\\overrightarrow{c}$ là",
+  "lua_chon": [
+   "$\\left( 17;\\,0;\\,2 \\right)$.",
+   "$\\left( 19;\\,8;\\,-6 \\right)$.",
+   "$\\left( 14;\\,2;\\,-1 \\right)$.",
+   "$\\left( 11;\\,6;\\,-8 \\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$2\\overrightarrow{a}=(6;-4;6)$, $-\\overrightarrow{b}=(-1;-4;4)$, $4\\overrightarrow{c}=(12;8;-8)$.\n$\\overrightarrow{u}=(6-1+12;\\,-4-4+8;\\,6+4-8)=(17;0;2)$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009765",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho các vectơ $\\overrightarrow{a}=(1;2;3)$ và $\\overrightarrow{b}=(-2;1;0)$. Tính tích vô hướng $\\overrightarrow{a}.(\\overrightarrow{a}+2\\overrightarrow{b})$.",
+  "lua_chon": [
+   "$22$.",
+   "$10$.",
+   "$14$.",
+   "$16$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "$\\overrightarrow{a}+2\\overrightarrow{b}=(1-4;\\,2+2;\\,3+0)=(-3;4;3)$.\n$\\overrightarrow{a}\\cdot(\\overrightarrow{a}+2\\overrightarrow{b})=1\\cdot(-3)+2\\cdot 4+3\\cdot 3=-3+8+9=14$.\nVậy giá trị cần tìm là $14$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009868",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ toạ độ $Oxyz$, cho hai điểm $A\\left( 1;-1;2 \\right),\\,B\\left( 4;-3;1 \\right)$.Toạ độ của vectơ $\\overrightarrow{AB}$ là",
+  "lua_chon": [
+   "$\\left( -3;2;1 \\right)$.",
+   "$\\left( 3;-2;-1 \\right)$.",
+   "$\\left( 3;-4;-1 \\right)$.",
+   "$\\left( 5;-4;3 \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\overrightarrow{AB}=(4-1;\\,-3-(-1);\\,1-2)=(3;-2;-1)$.\nVậy $\\overrightarrow{AB}=(3;-2;-1)$. Chọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009297",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho hai véc tơ $\\overrightarrow{u}=\\left( -3;0;1 \\right)$ và $\\overrightarrow{v}=\\left( 0;2;-2 \\right)$. Tọa độ của véc tơ $\\overrightarrow{\\text{w}}=2\\overrightarrow{u}-\\overrightarrow{v}$ tương ứng là:",
+  "lua_chon": [
+   "$\\left( -6;-2;4 \\right)$.",
+   "$\\left( -6;2;0 \\right)$.",
+   "$\\left( -2;1;3 \\right)$.",
+   "$\\left( 1;-2;5 \\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$2\\overrightarrow{u}=(-6;0;2)$.\n$\\overrightarrow{w}=2\\overrightarrow{u}-\\overrightarrow{v}=(-6-0;\\,0-2;\\,2-(-2))=(-6;-2;4)$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009563",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian vởi hệ toạ độ $Oxyz$, cho vectơ $\\overrightarrow{OA}=-2\\vec{i}-\\vec{j}-3\\vec{k}$. Toạ độ của điểm $A$ là:",
+  "lua_chon": [
+   "$(-2;-1;3)$.",
+   "$(2;1;3)$.",
+   "$(-2;0;3)$.",
+   "$(-2;-1;-3)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Vì $\\overrightarrow{OA}=-2\\vec i-\\vec j-3\\vec k$ nên $A(-2;-1;-3)$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009653",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho hai điểm $P\\left( x_{P};y_{P};z_{P} \\right)$ và $Q\\left( x_{Q};y_{Q};z_{Q} \\right)$. Khi đó vectơ $\\overrightarrow{PQ}$ có tọa độ là",
+  "lua_chon": [
+   "$\\left( \\frac{x_{P}+x_{Q}}{2};\\frac{y_{P}+y_{Q}}{2};\\frac{z_{P}+z_{Q}}{2} \\right)$.",
+   "$\\left( x_{P}-x_{Q};y_{P}-y_{Q};z_{P}-z_{Q} \\right)$.",
+   "$\\left( x_{P}+x_{Q};y_{P}+y_{Q};z_{P}+z_{Q} \\right)$.",
+   "$\\left( x_{Q}-x_{P};y_{Q}-y_{P};z_{Q}-z_{P} \\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Với hai điểm $P$, $Q$ thì $\\overrightarrow{PQ}=(x_Q-x_P;\\,y_Q-y_P;\\,z_Q-z_P)$ (tọa độ điểm cuối trừ tọa độ điểm đầu).\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009408",
+  "loai": "tra_loi_ngan",
+  "de": "Trong hệ trục tọa độ $Oxyz$, cho ba điểm $A(2;0;-3)$, $B(0;-4;5)$ và $C(-1;2;0)$.\na) Chứng minh rằng ba điểm $A,B,C$ không thẳng hàng.\nb) Tìm toạ độ của điểm $D$ sao cho tứ giác $ABCD$ là hình bình hành.\n------ HẾT ------",
+  "dap_an": "(1;6;-8)",
+  "loi_giai": "a) $\\overrightarrow{AB}=(-2;-4;8)$, $\\overrightarrow{AC}=(-3;2;3)$.\nVì $\\dfrac{-2}{-3}\\ne\\dfrac{-4}{2}$ nên $\\overrightarrow{AB}$ và $\\overrightarrow{AC}$ không cùng phương. Vậy $A,B,C$ không thẳng hàng.\nb) $ABCD$ là hình bình hành khi $\\overrightarrow{AB}=\\overrightarrow{DC}$.\nGọi $D(x;y;z)$, $\\overrightarrow{DC}=(-1-x;2-y;0-z)=(-2;-4;8)$.\nSuy ra $x=1$, $y=6$, $z=-8$.\nVậy $D(1;6;-8)$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009864",
+  "loai": "trac_nghiem",
+  "de": "Trong hệ trục tọa độ $Oxyz,$ xác định vectơ cùng phương với vectơ $\\overrightarrow{n}=(1;1;0).$",
+  "lua_chon": [
+   "$\\overrightarrow{u}=\\left( 2;0;2 \\right).$",
+   "$\\overrightarrow{u}=\\left( 0;2;2 \\right).$",
+   "$\\overrightarrow{u}=\\left( 2;2;2 \\right).$",
+   "$\\overrightarrow{u}=(2;2;0).$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Hai vectơ cùng phương nếu vectơ này bằng một số nhân vectơ kia.\nTa có $(2;2;0)=2\\cdot(1;1;0)=2\\overrightarrow{n}$.\nCác vectơ còn lại không là bội của $\\overrightarrow{n}$ vì có toạ độ thứ ba khác $0$.\nVậy chọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009512",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho $\\overrightarrow{a}=-\\overrightarrow{i}+2\\overrightarrow{j}-3\\overrightarrow{k}$. Tọa độ của vectơ $\\overrightarrow{a}$ là",
+  "lua_chon": [
+   "$\\left( 2;-3;-1 \\right)$.",
+   "$\\left( -1;2;-3 \\right)$.",
+   "$\\left( -3;2;-1 \\right)$.",
+   "$\\left( 2;-1;-3 \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Với $\\overrightarrow{a}=x\\overrightarrow{i}+y\\overrightarrow{j}+z\\overrightarrow{k}$ thì $\\overrightarrow{a}=\\left( x;y;z \\right)$.\nTừ $\\overrightarrow{a}=-\\overrightarrow{i}+2\\overrightarrow{j}-3\\overrightarrow{k}$ suy ra $\\overrightarrow{a}=\\left( -1;2;-3 \\right)$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009660",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho hai vectơ $\\overrightarrow{u}=\\left( u_{1};u_{2};u_{3} \\right)$ và $\\overrightarrow{v}=\\left( v_{1};v_{2};v_{3} \\right)$. Khi đó $\\overrightarrow{u}.\\overrightarrow{v}$ bằng",
+  "lua_chon": [
+   "$u_{1}.v_{1}+u_{2}.v_{2}+u_{3}.v_{3}$.",
+   "$u_{1}.v_{2}+u_{2}.v_{1}+u_{3}.v_{3}$.",
+   "$u_{1}.v_{1}-u_{2}.v_{2}+u_{3}.v_{3}$.",
+   "$u_{1}.v_{1}+u_{2}.v_{3}+u_{3}.v_{2}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Tích vô hướng của hai vectơ trong không gian: $\\overrightarrow{u}\\cdot\\overrightarrow{v}=u_{1}v_{1}+u_{2}v_{2}+u_{3}v_{3}$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009407",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$. Gọi $M,\\text{ }N$ là trung điểm của $AB$ và $CD$. Chọn khẳng định đúng?",
+  "lua_chon": [
+   "$\\overrightarrow{MN}=\\frac{1}{4}\\left( \\overrightarrow{BC}+\\overrightarrow{AD} \\right)$.",
+   "$\\overrightarrow{MN}=\\overrightarrow{BC}+\\overrightarrow{AD}$.",
+   "$\\overrightarrow{MN}=\\frac{1}{2}\\left( \\overrightarrow{BC}-\\overrightarrow{AD} \\right)$.",
+   "$\\overrightarrow{MN}=\\frac{1}{2}\\left( \\overrightarrow{BC}+\\overrightarrow{AD} \\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Vì $M$ là trung điểm $AB$ nên $\\overrightarrow{MA}+\\overrightarrow{MB}=\\overrightarrow{0}$; vì $N$ là trung điểm $CD$ nên $\\overrightarrow{NC}+\\overrightarrow{ND}=\\overrightarrow{0}$.\nTa có $\\overrightarrow{MN}=\\overrightarrow{MA}+\\overrightarrow{AD}+\\overrightarrow{DN}$ và $\\overrightarrow{MN}=\\overrightarrow{MB}+\\overrightarrow{BC}+\\overrightarrow{CN}$.\nCộng hai đẳng thức: $2\\overrightarrow{MN}=(\\overrightarrow{MA}+\\overrightarrow{MB})+\\overrightarrow{AD}+\\overrightarrow{BC}+(\\overrightarrow{DN}+\\overrightarrow{CN})=\\overrightarrow{AD}+\\overrightarrow{BC}$.\nVậy $\\overrightarrow{MN}=\\dfrac{1}{2}\\left(\\overrightarrow{BC}+\\overrightarrow{AD}\\right)$. Chọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009715",
+  "loai": "tra_loi_ngan",
+  "de": "Trong không gian $Oxyz$, cho $4$ điểm $A\\left( 1;2;3 \\right),B\\left( 3;0;1 \\right),C\\left( 5;-1;2 \\right),D\\left( 3;7;4 \\right)$.\nBiết điểm $M$ di động trên mặt phẳng tọa độ $\\left( Oxy \\right)$ để biểu thức $P=\\overrightarrow{MA}.\\overrightarrow{MB}+2\\overrightarrow{MC}^{2}+3\\overrightarrow{MD}^{2}$ đạt giá trị nhỏ nhất.\nTìm tọa độ $M$ và tính giá trị nhỏ nhất của biểu thức $P$.\n1 điểm\nGọi $I$ là trung điểm của $AB$. $H$ là điểm thỏa $\\overrightarrow{HI}^{2}+2\\overrightarrow{HC}+3\\overrightarrow{HD}=\\overrightarrow{0}$.\nTính đúng $I\\left( 2;1;2 \\right)$, $H(\\frac{7}{2};\\frac{10}{3};3)$\n0.25\nBiến đổi biểu thức $P$ về dạng $P=6MH^{2}+HI^{2}+2HC^{2}+3HD^{2}+\\overrightarrow{IA}.\\overrightarrow{IB}$\n0.25\nNhận xét: $HI^{2}+2HC^{2}+3HD^{2}+\\overrightarrow{IA}.\\overrightarrow{IB}$ không đổi, nên $P$ đạt giá trị nhỏ nhất khi và chỉ khi $MH$ nhỏ nhất. Do đó $M$ là hình chiếu vuông góc của $H$ lên mặt phẳng $\\left( Oxy \\right)$.\nKết luận đúng tọa độ $M(\\frac{7}{2};\\frac{10}{3};0)$\n.\n0,125\n0,125\nTính được giá trị nhỏ nhất của $P$ bằng $\\frac{887}{6}$\n0.25\nCách 2\nGọi $M(x;y;0)$, $\\overrightarrow{MA}=(1-x,2-y,3)$, $\\overrightarrow{MB}=(3-x,-y,1)$,\n$\\overrightarrow{MC}=(5-x,-1-y,2)$,$\\overrightarrow{MD}=(3-x,7-y,4)$\n0.125\n$P=(x-1)(x-3)+y(y-2)+3+2\\left[ (x-5)^{2}+\\left( y+1 \\right)^{2}+4 \\right]+3\\left[ (x-3)^{2}+\\left( y-7 \\right)^{2}+16 \\right]$\n0.25\n$P=6x^{2}+6y^{2}-42x-40y+288$\n0,25\n$P=6\\left[ \\left( x-\\frac{7}{2} \\right)^{2}+\\left( y-\\frac{10}{3} \\right)^{2}+\\frac{887}{36} \\right]\\ge 6 …",
+  "dap_an": "M(7/2;10/3;0), P_min=887/6",
+  "loi_giai": "Gọi $M(x;y;0)$. $\\overrightarrow{MA}=(1-x;2-y;3)$, $\\overrightarrow{MB}=(3-x;-y;1)$, $\\overrightarrow{MC}=(5-x;-1-y;2)$, $\\overrightarrow{MD}=(3-x;7-y;4)$.\n$\\overrightarrow{MA}\\cdot\\overrightarrow{MB}=(x-1)(x-3)+y(y-2)+3$.\n$\\overrightarrow{MC}^2=(x-5)^2+(y+1)^2+4$; $\\overrightarrow{MD}^2=(x-3)^2+(y-7)^2+16$.\n$P=(x-1)(x-3)+y(y-2)+3+2\\left[(x-5)^2+(y+1)^2+4\\right]+3\\left[(x-3)^2+(y-7)^2+16\\right]=6x^2+6y^2-42x-40y+288$.\n$P=6\\left[\\left(x-\\dfrac{7}{2}\\right)^2+\\left(y-\\dfrac{10}{3}\\right)^2\\right]+\\dfrac{887}{6}\\ge\\dfrac{887}{6}$.\nDấu \"=\" xảy ra khi $x=\\dfrac{7}{2}$, $y=\\dfrac{10}{3}$.\nVậy $M\\left(\\dfrac{7}{2};\\dfrac{10}{3};0\\right)$ và giá trị nhỏ nhất của $P$ bằng $\\dfrac{887}{6}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009426",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho $\\vec{a}=-\\overrightarrow{i}+2\\overrightarrow{j}-3\\overrightarrow{k}$. Tọa độ của vectơ $\\vec{a}$ là",
+  "lua_chon": [
+   "$\\left( -3;2;-1 \\right)$.",
+   "$\\left( 2;-1;-3 \\right)$.",
+   "$\\left( -1;2;-3 \\right)$.",
+   "$\\left( 2;-3;-1 \\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Vì $\\vec{a}=-1\\cdot\\vec{i}+2\\vec{j}-3\\vec{k}$ nên $\\vec{a}=(-1;2;-3)$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009775",
+  "loai": "tra_loi_ngan",
+  "de": "Trong không gian $Oxyz$, cho tam giác $ABC$ có $I$ là tâm đường tròn ngoại tiếp. Tính giá trị $OI^{2}$ biết $A\\left( 2;2;-2 \\right),B\\left( 6;-4;2 \\right),C\\left( 8;-2;0 \\right)$",
+  "dap_an": "17",
+  "loi_giai": "$\\overrightarrow{CA}=(-6;4;-2)$, $\\overrightarrow{CB}=(-2;-2;2)$.\n$\\overrightarrow{CA}\\cdot\\overrightarrow{CB}=12-8-4=0$ nên tam giác $ABC$ vuông tại $C$.\nTâm đường tròn ngoại tiếp tam giác vuông là trung điểm cạnh huyền $AB$: $I\\left(\\dfrac{2+6}{2};\\dfrac{2-4}{2};\\dfrac{-2+2}{2}\\right)=(4;-1;0)$.\n$OI^2=4^2+(-1)^2+0^2=17$.\nVậy $OI^2=17$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009330",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho vectơ $\\vec{a}=\\left( -3;2;\\,5 \\right)$. Vectơ cùng hướng vectơ $\\vec{a}$ là",
+  "lua_chon": [
+   "$\\overrightarrow{b}=\\left( 0;5;\\,8 \\right)$.",
+   "$\\overrightarrow{b}=\\left( 5;2;\\,-3 \\right)$.",
+   "$\\overrightarrow{b}=\\left( -6;4;\\,10 \\right)$.",
+   "$\\overrightarrow{b}=\\left( 3;-2;\\,-5 \\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Hai vectơ cùng hướng khi vectơ này bằng $k$ lần vectơ kia với $k>0$.\n$(-6;4;10)=2\\cdot(-3;2;5)=2\\overrightarrow{a}$ với $2>0$ nên cùng hướng với $\\overrightarrow{a}$.\nCác phương án A, B không tỉ lệ với $\\overrightarrow{a}$; phương án D $(3;-2;-5)$ không cùng phương với $\\overrightarrow{a}$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009530",
+  "loai": "tra_loi_ngan",
+  "de": "Trong không gian $Oxyz,$ cho các vectơ $\\vec{a}=(m-1;\\text{ }5\\text{ };1),\\text{ }\\vec{b}=(m\\text{ };0\\text{ };-2)$ . Giá trị nguyên dương của $m$ bằng bao nhiêu thì hai vectơ $\\vec{a}$ và $\\vec{b}$ vuông góc với nhau?",
+  "dap_an": "2",
+  "loi_giai": "$\\vec{a}\\perp\\vec{b}\\Leftrightarrow\\vec{a}\\cdot\\vec{b}=0$.\n$\\vec{a}\\cdot\\vec{b}=\\left( m-1 \\right)m+5\\cdot 0+1\\cdot\\left( -2 \\right)=m^{2}-m-2$.\n$m^{2}-m-2=0\\Leftrightarrow m=2$ hoặc $m=-1$.\nGiá trị nguyên dương là $m=2$.\nVậy $m=2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009716",
+  "loai": "tra_loi_ngan",
+  "de": "Trong không gian $Oxyz$, cho $4$ điểm $A\\left( 1;1;1 \\right),B\\left( 3;3;1 \\right),C\\left( 6;0;2 \\right),D\\left( 2;4;2 \\right)$. Biết điểm $M$ di động trên mặt phẳng tọa độ $\\left( Oxz \\right)$ để biểu thức $P=\\overrightarrow{MA}.\\overrightarrow{MB}-2\\overrightarrow{MC}^{2}+3\\overrightarrow{MD}^{2}$ đạt giá trị nhỏ nhất. Tìm tọa độ $M$ và tính giá trị nhỏ nhất của biểu thức $P$.\n1 điểm\nGọi $I$ là trung điểm của $AB$. $H$ là điểm thỏa $\\overrightarrow{HI}^{2}-2\\overrightarrow{HC}+3\\overrightarrow{HD}=\\overrightarrow{0}$.\nTính đúng $I\\left( 2;2;1 \\right)$, $H(-2;7;\\frac{3}{2})$\n0.25\nBiến đổi biểu thức $P$ về dạng $P=2MH^{2}+HI^{2}-2HC^{2}+3HD^{2}+\\overrightarrow{IA}.\\overrightarrow{IB}$\n0.25\nNhận xét: $HI^{2}-2HC^{2}+3HD^{2}+\\overrightarrow{IA}.\\overrightarrow{IB}$ không đổi, nên $P$ đạt giá trị nhỏ nhất khi và chỉ khi $MH$ nhỏ nhất. Do đó $M$ là hình chiếu vuông góc của $H$ lên mặt phẳng $\\left( Oxz \\right)$.\nKết luận đúng tọa độ $M(-2;0;\\frac{3}{2})$.\n0,125\n0,125\nTính được giá trị nhỏ nhất của $P$ bằng $-13,5$\n0.25\nCách 2\nGọi $M(x;0;z)$, $\\overrightarrow{MA}=(1-x,1,1-z)$, $\\overrightarrow{MB}=(3-x,3,1-z)$,\n$\\overrightarrow{MC}=(6-x,0,2-z)$,$\\overrightarrow{MD}=(2-x,4,2-z)$\n0.125\n$P=(x-1)(x-3)+3+(z-1)^{2}-2\\left[ (x-6)^{2}+(z-2)^{2} \\right]+3\\left[ (x-2)^{2}+16+\\left( z-2 \\right)^{2} \\right]$\n0.25\n$P=2x^{2}+2z^{2}+8x-6z-1$\n0,25\n$P=2\\left[ \\left( x+2 \\right)^{2}+\\left( z-\\frac{3}{2} \\right)^{2}-\\frac{27}{4} \\right]\\ge-2.\\frac{27}{4}=-\\frac{27}{2}=-13,5$ khi $x=-2;z=\\frac{3}{2}$ …",
+  "dap_an": "M(-2;0;3/2), P_min=-13.5",
+  "loi_giai": "Gọi $M(x;0;z)$. $\\overrightarrow{MA}=(1-x;1;1-z)$, $\\overrightarrow{MB}=(3-x;3;1-z)$, $\\overrightarrow{MC}=(6-x;0;2-z)$, $\\overrightarrow{MD}=(2-x;4;2-z)$.\n$\\overrightarrow{MA}\\cdot\\overrightarrow{MB}=(x-1)(x-3)+3+(z-1)^2$.\n$P=(x-1)(x-3)+3+(z-1)^2-2\\left[(x-6)^2+(z-2)^2\\right]+3\\left[(x-2)^2+16+(z-2)^2\\right]=2x^2+2z^2+8x-6z-1$.\n$P=2\\left[(x+2)^2+\\left(z-\\dfrac{3}{2}\\right)^2\\right]-\\dfrac{27}{2}\\ge-\\dfrac{27}{2}=-13{,}5$.\nDấu \"=\" xảy ra khi $x=-2$, $z=\\dfrac{3}{2}$.\nVậy $M\\left(-2;0;\\dfrac{3}{2}\\right)$ và giá trị nhỏ nhất của $P$ bằng $-13{,}5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009723",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian Oxyz, cho hai vectơ $\\vec{u}=\\left( -2;-1;2 \\right)$ và $\\overrightarrow{v}=\\left( 0;1;-1 \\right)$. Góc giữa $\\vec{u}$ và $\\overrightarrow{v}$ là",
+  "lua_chon": [
+   "$135^{o}$.",
+   "$-45^{o}$.",
+   "$60^{o}$.",
+   "$45^{o}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$\\vec{u}\\cdot\\vec{v}=0-1-2=-3$; $|\\vec{u}|=\\sqrt{4+1+4}=3$; $|\\vec{v}|=\\sqrt{0+1+1}=\\sqrt{2}$.\n$\\cos(\\vec{u},\\vec{v})=\\dfrac{-3}{3\\sqrt{2}}=-\\dfrac{\\sqrt{2}}{2}$.\nSuy ra góc giữa hai vectơ bằng $135^\\circ$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009872",
+  "loai": "tra_loi_ngan",
+  "de": ": Một phòng học có thiết kế dạng hình hộp chữ nhật với chiều dài là $6\\,\\text{m}$, chiều rộng là $4\\,\\text{m}$ và chiều cao là $4$ m. Một chiếc đèn được treo tại chính giữa trần nhà của phòng học. Xét hệ trục tọa độ $\\text{Oxyz}$ có gốc $\\text{O}$ trùng với một góc phòng và mặt phẳng $\\left( \\text{Oxy} \\right)$ trùng với mặt sàn, đơn vị đo được lấy theo mét (H.2.51). Tọa độ của điểm treo đèn là $I\\left( a;b;c \\right)$. Hãy tính tổng $a+b+c$",
+  "dap_an": "9",
+  "loi_giai": "Hệ trục có gốc $O$ tại một góc phòng, $(Oxy)$ trùng mặt sàn, nên các cạnh của phòng theo các trục là $6$ m, $4$ m (trên sàn) và chiều cao $4$ m (theo $Oz$).\nĐèn treo tại chính giữa trần nhà nên hình chiếu của đèn lên sàn là tâm của hình chữ nhật $6\\times 4$ và cao độ bằng chiều cao phòng.\nDo đó toạ độ của $I$ gồm các số $\\dfrac62=3$, $\\dfrac42=2$ (theo thứ tự các trục) và cao độ $4$.\nTổng $a+b+c=3+2+4=9$.\nVậy $a+b+c=9$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009748",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp $ABCD.A'B'C'D'$. Mệnh đề nào sau đây sai?",
+  "lua_chon": [
+   "$\\overrightarrow{CA'}=\\overrightarrow{CB}+\\overrightarrow{CC'}+\\overrightarrow{CA}$.",
+   "$\\overrightarrow{AC'}=\\overrightarrow{AB}+\\overrightarrow{AD}+\\overrightarrow{AA'}$.",
+   "$\\overrightarrow{D'B}=\\overrightarrow{D'A'}+\\overrightarrow{D'C'}+\\overrightarrow{D'D}$.",
+   "$\\overrightarrow{BD'}=\\overrightarrow{BA}+\\overrightarrow{BC}+\\overrightarrow{BB'}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vì $ABCD.A'B'C'D'$ là hình hộp nên $\\overrightarrow{AC'}=\\overrightarrow{AB}+\\overrightarrow{AD}+\\overrightarrow{AA'}$ (đúng).\nTương tự, từ đỉnh $B$: $\\overrightarrow{BD'}=\\overrightarrow{BA}+\\overrightarrow{BC}+\\overrightarrow{BB'}$ (đúng); từ đỉnh $D'$: $\\overrightarrow{D'B}=\\overrightarrow{D'A'}+\\overrightarrow{D'C'}+\\overrightarrow{D'D}$ (đúng).\nVới đỉnh $C$ ta có đường chéo $CA'$ nên $\\overrightarrow{CA'}=\\overrightarrow{CD}+\\overrightarrow{CB}+\\overrightarrow{CC'}$, chứ không phải $\\overrightarrow{CB}+\\overrightarrow{CC'}+\\overrightarrow{CA}$ (vì $\\overrightarrow{CA}$ là đường chéo đáy, không phải cạnh).\nVậy mệnh đề sai là $\\overrightarrow{CA'}=\\overrightarrow{CB}+\\overrightarrow{CC'}+ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009651",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho hai điểm $A\\left( -3;1;4 \\right)$ và $B\\left( 1;7;2 \\right)$. Tọa độ trung điểm của đoạn thẳng $AB$ là",
+  "lua_chon": [
+   "$\\left( -2;8;6 \\right)$.",
+   "$\\left( 4;6;-2 \\right)$.",
+   "$\\left( -1;3;4 \\right)$.",
+   "$\\left( -1;4;3 \\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Tọa độ trung điểm $I$ của $AB$:\n$x_I=\\dfrac{-3+1}{2}=-1$; $y_I=\\dfrac{1+7}{2}=4$; $z_I=\\dfrac{4+2}{2}=3$.\nVậy $I(-1;4;3)$. Chọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009750",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho 4 điểm $A\\left( 2;0;2 \\right)$, $B\\left( 1;-1;-2 \\right)$, $C\\left( -1;1;0 \\right)$. Véc tơ tích có hướng\n$\\left[ \\overrightarrow{AB};\\overrightarrow{AC} \\right]$ có tọa độ là:",
+  "lua_chon": [
+   "$\\left[ \\overrightarrow{AB},\\overrightarrow{AC} \\right]=\\left( 6;10;-4 \\right)$",
+   "$\\left[ \\overrightarrow{AB},\\overrightarrow{AC} \\right]=\\left( -6;-10;4 \\right)$.",
+   "$\\left[ \\overrightarrow{AB},\\overrightarrow{AC} \\right]=\\left( -6;10;4 \\right)$",
+   "$\\left[ \\overrightarrow{AB},\\overrightarrow{AC} \\right]=\\left( -3;-5;2 \\right)$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{AB}=(-1;-1;-4)$, $\\overrightarrow{AC}=(-3;1;-2)$.\n$\\left[\\overrightarrow{AB};\\overrightarrow{AC}\\right]=\\left(\\begin{vmatrix}-1&-4\\\\1&-2\\end{vmatrix};\\begin{vmatrix}-4&-1\\\\-2&-3\\end{vmatrix};\\begin{vmatrix}-1&-1\\\\-3&1\\end{vmatrix}\\right)$.\n$=\\left((-1)(-2)-(-4)(1);\\ (-4)(-3)-(-1)(-2);\\ (-1)(1)-(-1)(-3)\\right)=(6;10;-4)$.\nVậy $\\left[\\overrightarrow{AB};\\overrightarrow{AC}\\right]=(6;10;-4)$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009605",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$ có $AB=AC=AD$ và $\\widehat{BAC}=\\widehat{BAD}=60{}^{\\circ}$. Góc giữa cặp vectơ $\\overrightarrow{AB}$ và $\\overrightarrow{CD}$ bằng",
+  "lua_chon": [
+   "$90^{0}$.",
+   "$120^{0}$.",
+   "$60^{0}$.",
+   "$0^{0}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Đặt $AB=AC=AD=a$. Khi đó $\\overrightarrow{AB}\\cdot\\overrightarrow{CD}=\\overrightarrow{AB}\\cdot(\\overrightarrow{AD}-\\overrightarrow{AC})=\\overrightarrow{AB}\\cdot\\overrightarrow{AD}-\\overrightarrow{AB}\\cdot\\overrightarrow{AC}$.\n$\\overrightarrow{AB}\\cdot\\overrightarrow{AD}=a\\cdot a\\cdot\\cos60^\\circ=\\dfrac{a^2}{2}$, $\\overrightarrow{AB}\\cdot\\overrightarrow{AC}=a\\cdot a\\cdot\\cos60^\\circ=\\dfrac{a^2}{2}$.\nSuy ra $\\overrightarrow{AB}\\cdot\\overrightarrow{CD}=0$ nên $\\overrightarrow{AB}\\perp\\overrightarrow{CD}$, góc giữa hai vectơ bằng $90^\\circ$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009741",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho véc-tơ $\\overrightarrow{u}=\\overrightarrow{i}-2\\overrightarrow{j}-\\overrightarrow{k}$. Mệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "$\\overrightarrow{u}=\\left( 1;2;1 \\right).$",
+   "$\\overrightarrow{u}=\\left( -1;2;1 \\right).$",
+   "$\\overrightarrow{u}=\\left( 1;-2;1 \\right).$",
+   "$\\overrightarrow{u}=\\left( 1;-2;-1 \\right).$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Với $\\overrightarrow{u}=x\\overrightarrow{i}+y\\overrightarrow{j}+z\\overrightarrow{k}$ thì $\\overrightarrow{u}=(x;y;z)$.\nỞ đây $\\overrightarrow{u}=\\overrightarrow{i}-2\\overrightarrow{j}-\\overrightarrow{k}$ nên $\\overrightarrow{u}=(1;-2;-1)$.\nVậy $\\overrightarrow{u}=(1;-2;-1)$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009381",
+  "loai": "tra_loi_ngan",
+  "de": "Trong không gian $Oxyz$, cho hai điểm $M(2;2;1)$, $N\\left( -\\frac{8}{3};\\frac{4}{3};\\frac{8}{3} \\right)$. Gọi $I(a;b;c)$ là tâm đường tròn nội tiếp tam giác $OMN$. Tính $a+b+c$.\n---------------------- HẾT ---------------------",
+  "dap_an": "2",
+  "loi_giai": "$OM=\\sqrt{4+4+1}=3$, $ON=\\sqrt{\\dfrac{64}{9}+\\dfrac{16}{9}+\\dfrac{64}{9}}=4$, $\\overrightarrow{MN}=\\left(-\\dfrac{14}{3};-\\dfrac{2}{3};\\dfrac{5}{3}\\right)$ nên $MN=\\sqrt{\\dfrac{196+4+25}{9}}=5$.\nTâm đường tròn nội tiếp: $I=\\dfrac{MN\\cdot O+ON\\cdot M+OM\\cdot N}{MN+ON+OM}=\\dfrac{5\\cdot O+4\\cdot M+3\\cdot N}{12}$.\n$4M=\\left(8;8;4\\right)$, $3N=\\left(-8;4;8\\right)$ nên $I=\\dfrac{\\left(0;12;12\\right)}{12}=\\left(0;1;1\\right)$.\n$a+b+c=0+1+1=2$.\nVậy $a+b+c=2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009740",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho hai véc-tơ $\\overrightarrow{a}=\\left( -1;3;-2 \\right)$ và $\\overrightarrow{b}=\\left( -2;0;3 \\right)$. Tọa độ của véc-tơ $\\overrightarrow{b}-\\overrightarrow{a}$ là",
+  "lua_chon": [
+   "$\\left( -1;-3;5 \\right).$",
+   "$\\left( -3;3;1 \\right).$",
+   "$\\left( 1;3;-5 \\right).$",
+   "$\\left( -1;-3;1 \\right).$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{b}-\\overrightarrow{a}=(-2-(-1);\\,0-3;\\,3-(-2))=(-1;-3;5)$.\nVậy tọa độ của $\\overrightarrow{b}-\\overrightarrow{a}$ là $(-1;-3;5)$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009467",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho hai vectơ $\\overrightarrow{u}=\\left( 1\\,;\\,3\\,;\\,-2 \\right)$ và $\\overrightarrow{v}=\\left( 2\\,;\\,1\\,;\\,-1 \\right)$. Tọa độ của vetơ $\\overrightarrow{u}+\\overrightarrow{v}$ là",
+  "lua_chon": [
+   "$\\left( 3\\,;\\,4\\,;\\,-3 \\right)$.",
+   "$\\left( 3\\,;\\,4\\,;\\,-1 \\right)$.",
+   "$\\left( -1\\,;\\,2\\,;\\,-3 \\right)$.",
+   "$\\left( 1\\,;\\,-2\\,;\\,1 \\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{u}+\\overrightarrow{v}=(1+2;3+1;-2-1)=(3;4;-3)$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009869",
+  "loai": "tra_loi_ngan",
+  "de": ": Trong không gian $Oxyz$, hình chiếu vuông góc của điềm $M(1;2;-3)$ lên mặt phẳng $(Oxy)$ có tọa độ là N(a;b;c). Khi đó $S=2a+b+c$ bằng bao nhiêu?\n6m\n4m\n4m\nx\nz\ny",
+  "dap_an": "4",
+  "loi_giai": "Hình chiếu vuông góc của điểm $M(x;y;z)$ lên mặt phẳng $(Oxy)$ là điểm $(x;y;0)$.\nDo đó $N(1;2;0)$, suy ra $a=1$, $b=2$, $c=0$.\n$S=2a+b+c=2+2+0=4$.\nVậy $S=4$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009502",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, hình chiếu vuông góc của điểm $M\\left( 2;1;-1 \\right)$ trên mặt phẳng $\\left( Ozx \\right)$ có tọa độ là",
+  "lua_chon": [
+   "$\\left( 0;1;-1 \\right)$.",
+   "$\\left( 2;0;-1 \\right)$.",
+   "$\\left( 2;1;0 \\right)$.",
+   "$\\left( 0;1;0 \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Hình chiếu vuông góc của $M(2;1;-1)$ lên mặt phẳng $(Ozx)$ giữ nguyên $x,z$ và cho $y=0$.\nVậy hình chiếu là $(2;0;-1)$. Chọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009348",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho hai vectơ $\\overrightarrow{u_{1}}=\\left( x_{1};y_{1};z_{1} \\right),\\,\\,\\overrightarrow{u_{2}}=\\left( x_{2};y_{2};z_{2} \\right)$. Vectơ $\\overrightarrow{u_{1}}+\\overrightarrow{u_{2}}$ có toạ độ là:",
+  "lua_chon": [
+   "$\\left( x_{1}-x_{2};y_{1}-y_{2};z_{1}-z_{2} \\right)$.",
+   "$\\left( x_{1}+x_{2};y_{1}+y_{2};z_{1}+z_{2} \\right)$.",
+   "$\\left( x_{2}-x_{1};y_{2}-y_{1};z_{2}-z_{1} \\right)$.",
+   "$\\left( x_{1}-x_{2};y_{1}+y_{2};z_{1}-z_{2} \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Theo quy tắc cộng vectơ trong hệ toạ độ, cộng từng thành phần tương ứng.\n$\\overrightarrow{u_{1}}+\\overrightarrow{u_{2}}=\\left(x_{1}+x_{2};y_{1}+y_{2};z_{1}+z_{2}\\right)$. Chọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010189",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho vectơ $\\vec{b}=3\\vec{i}-\\vec{j}+5\\vec{k}$. Tìm tọa độ vectơ $\\vec{b}$.",
+  "lua_chon": [
+   "$(-1;3;5)$.",
+   "$(1;0;1)$.",
+   "$(3;-1;5)$.",
+   "$(1;-1;1)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Vì $\\vec{b}=3\\vec{i}-\\vec{j}+5\\vec{k}$ nên $\\vec{b}=\\left( 3;-1;5 \\right)$. Chọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010063",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho điểm $M$ thoả mãn $\\overrightarrow{OM}=2\\,\\overrightarrow{i}+3\\overrightarrow{j}-4\\overrightarrow{k}$. Tìm tọa độ điểm $H$ là hình chiếu vuông góc của điểm $M$ lên mặt phẳng $\\left( Oyz \\right)$.",
+  "lua_chon": [
+   "$H\\left( 0;\\,3;\\,-4 \\right)$.",
+   "$H\\left( 2;\\,0;\\,0 \\right)$.",
+   "$H\\left( 2;\\,3;\\,-4 \\right)$.",
+   "$H\\left( -2;\\,-3;\\,4 \\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Từ $\\overrightarrow{OM}=2\\overrightarrow{i}+3\\overrightarrow{j}-4\\overrightarrow{k}$ suy ra $M(2;3;-4)$.\nHình chiếu vuông góc của $M$ lên mặt phẳng $(Oyz)$ là điểm giữ nguyên tung độ, cao độ và cho hoành độ bằng $0$: $H(0;3;-4)$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009295",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ tọa độ $Oxyz$, cho điểm $A\\left( -1;2;0 \\right),\\,B\\left( 3;4;-2 \\right)$ và $C\\left( 1;0;-3 \\right).$ Biết tọa độ điểm $D\\left( x_{0};y_{0};z_{0} \\right)$ để tứ giác $BACD$ là hình bình hành. Tính $x_{0}+y_{0}+z_{0}?$",
+  "lua_chon": [
+   "$12.$",
+   "$2.$",
+   "$-5.$",
+   "$-8.$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Tứ giác $BACD$ là hình bình hành nên $\\overrightarrow{BA}=\\overrightarrow{DC}$.\n$\\overrightarrow{BA}=(-1-3;2-4;0+2)=(-4;-2;2)$ và $\\overrightarrow{DC}=(1-x_{0};-y_{0};-3-z_{0})$.\nSuy ra $1-x_{0}=-4$, $-y_{0}=-2$, $-3-z_{0}=2$, tức $x_{0}=5$, $y_{0}=2$, $z_{0}=-5$.\nVậy $x_{0}+y_{0}+z_{0}=5+2-5=2$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009808",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian Oxyz, cho hai điểm $M\\left( 1;-2;3 \\right)$ và $N\\left( 3;0;-1 \\right)$. Tìm tọa độ trung điểm $I$ của đoạn thẳng $MN$.",
+  "lua_chon": [
+   "$I\\left( 2;-1;2 \\right)$.",
+   "$I\\left( 4;-2;2 \\right)$.",
+   "$I\\left( 2;-1;1 \\right)$",
+   "$I\\left( 4;-2;1 \\right)$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "$I$ là trung điểm của $MN$ nên $I\\left(\\dfrac{1+3}{2};\\dfrac{-2+0}{2};\\dfrac{3+(-1)}{2}\\right)=(2;-1;1)$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009473",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho $\\,\\overrightarrow{b}=-\\overrightarrow{i}+4\\overrightarrow{j}$. Tọa độ $\\,\\overrightarrow{b}$ bằng?",
+  "lua_chon": [
+   "$\\left( 1;4;0 \\right)$.",
+   "$\\left( 0;-1;4 \\right)$.",
+   "$\\left( -1;4;0 \\right)$.",
+   "$\\left( 4;-1;0 \\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "$\\overrightarrow{b}=-1\\cdot\\overrightarrow{i}+4\\cdot\\overrightarrow{j}+0\\cdot\\overrightarrow{k}$ nên $\\overrightarrow{b}=(-1;4;0)$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009648",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho hai điểm $M\\left( x_{M};y_{M};z_{M} \\right)$ và $N\\left( x_{N};y_{N};z_{N} \\right)$. Khi đó vectơ $\\overrightarrow{MN}$ có tọa độ là",
+  "lua_chon": [
+   "$\\left( \\frac{x_{M}+x_{N}}{2};\\frac{y_{M}+y_{N}}{2};\\frac{z_{M}+z_{N}}{2} \\right)$.",
+   "$\\left( x_{M}+x_{N};y_{M}+y_{N};z_{M}+z_{N} \\right)$.",
+   "$\\left( x_{N}-x_{M};y_{N}-y_{M};z_{N}-z_{M} \\right)$.",
+   "$\\left( x_{M}-x_{N};y_{M}-y_{N};z_{M}-z_{N} \\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Với hai điểm $M(x_M;y_M;z_M)$, $N(x_N;y_N;z_N)$ thì $\\overrightarrow{MN}=(x_N-x_M;\\,y_N-y_M;\\,z_N-z_M)$ (tọa độ điểm cuối trừ tọa độ điểm đầu).\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009799",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông tâm $O$. Gọi $G$ là trọng tâm tam giác $SAC$. Khi đó $\\overrightarrow{SG}=\\frac{a}{b}.\\overrightarrow{SO},$ với $\\frac{a}{b}$ là phân số tối giản, $a,b\\in\\mathbb{N}$. Tính $M=a+b$.",
+  "dap_an": "5",
+  "loi_giai": "$O$ là trung điểm của $AC$ nên $SO$ là trung tuyến của tam giác $SAC$.\n$G$ là trọng tâm tam giác $SAC$ nên $G$ nằm trên $SO$ và $SG=\\dfrac{2}{3}SO$, tức $\\overrightarrow{SG}=\\dfrac{2}{3}\\overrightarrow{SO}$.\nSuy ra $a=2,\\ b=3$ (phân số tối giản).\nVậy $M=a+b=5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009417",
+  "loai": "trac_nghiem",
+  "de": "Cho hình lập phương $ABCD.A'B'C'D'$. Khẳng định nào sau đây là sai?",
+  "lua_chon": [
+   "$\\left( \\overrightarrow{AB};\\overrightarrow{A'D'} \\right)=90{}^{\\circ}$.",
+   "$\\left( \\overrightarrow{AB};\\overrightarrow{A'C'} \\right)=45{}^{\\circ}$.",
+   "$\\left( \\overrightarrow{A'A};\\overrightarrow{CB'} \\right)=45{}^{\\circ}$.",
+   "$\\left( \\overrightarrow{AC};\\overrightarrow{B'D'} \\right)=90{}^{\\circ}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn hệ trục: $A(0;0;0)$, $B(1;0;0)$, $D(0;1;0)$, $A'(0;0;1)$ nên $C(1;1;0)$, $B'(1;0;1)$, $C'(1;1;1)$, $D'(0;1;1)$.\nA đúng: $\\overrightarrow{A'D'}=(0;1;0)\\perp\\overrightarrow{AB}=(1;0;0)$, góc $90^{\\circ}$.\nB đúng: $\\overrightarrow{A'C'}=\\overrightarrow{AC}$ và góc $\\widehat{BAC}=45^{\\circ}$.\nC sai: $\\overrightarrow{A'A}=(0;0;-1)$, $\\overrightarrow{CB'}=(0;-1;1)$, $\\cos=\\dfrac{-1}{1\\cdot\\sqrt{2}}=-\\dfrac{\\sqrt{2}}{2}$ nên góc là $135^{\\circ}$.\nD đúng: $AC\\perp B'D'$ (vì $AC\\perp BD$, $BD\\parallel B'D'$), góc $90^{\\circ}$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

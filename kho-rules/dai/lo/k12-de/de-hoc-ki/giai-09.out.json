@@ -1,0 +1,542 @@
+[
+ {
+  "id": "X0481",
+  "dap_an": "C",
+  "loi_giai": "Hàm số $y=\\dfrac{1-2x}{x+1}$ có tiệm cận đứng $x=-1$ và tiệm cận ngang $y=\\lim_{x\\to\\pm\\infty}\\dfrac{1-2x}{x+1}=-2$.\nTâm đối xứng của đồ thị hàm phân thức bậc nhất trên bậc nhất là giao điểm hai đường tiệm cận.\nVậy tâm đối xứng là $I(-1;-2)$.\nChọn C.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0482",
+  "dap_an": "D",
+  "loi_giai": "Ta có $\\overrightarrow{AB}=(1+2;-2-2;3+1)=(3;-4;4)$.\n$AB=\\sqrt{3^2+(-4)^2+4^2}=\\sqrt{9+16+16}=\\sqrt{41}$.\nVậy khoảng cách $AB=\\sqrt{41}$.\nChọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0483",
+  "dap_an": "6",
+  "loi_giai": "Vì $ABCD$ là tứ diện đều cạnh $2$ nên các tam giác mặt đều, $\\widehat{BAD}=60^\\circ$.\n$\\overrightarrow{AB}\\left(\\overrightarrow{AB}-\\overrightarrow{DA}\\right)=\\overrightarrow{AB}\\left(\\overrightarrow{AB}+\\overrightarrow{AD}\\right)=AB^2+\\overrightarrow{AB}\\cdot\\overrightarrow{AD}$.\n$AB^2=4$ và $\\overrightarrow{AB}\\cdot\\overrightarrow{AD}=2\\cdot 2\\cdot\\cos 60^\\circ=2$.\nVậy giá trị cần tìm bằng $4+2=6$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0484",
+  "dap_an": "7.2",
+  "loi_giai": "Điểm đối xứng với $M(x;y;z)$ qua trục $Oy$ là $N(-x;y;-z)$, nên $N(-3;3;2)$.\n$\\overrightarrow{MN}=(-6;0;4)$.\n$MN=\\sqrt{36+0+16}=\\sqrt{52}\\approx 7{,}2$.\nVậy $MN\\approx 7{,}2$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0485",
+  "dap_an": "A",
+  "loi_giai": "Theo quy tắc ba điểm: $\\overrightarrow{BC}+\\overrightarrow{AB}=\\overrightarrow{AB}+\\overrightarrow{BC}=\\overrightarrow{AC}$ nên mệnh đề $\\overrightarrow{BC}+\\overrightarrow{AB}=\\overrightarrow{AC}$ đúng.\nCác mệnh đề còn lại sai: $\\overrightarrow{AB}+\\overrightarrow{BD}=\\overrightarrow{AD}\\ne\\overrightarrow{DA}$; $\\overrightarrow{AB}-\\overrightarrow{AD}=\\overrightarrow{DB}\\ne\\overrightarrow{BD}$; $\\overrightarrow{AC}-\\overrightarrow{CB}=\\overrightarrow{AC}+\\overrightarrow{BC}\\ne\\overrightarrow{AB}$.\nVậy mệnh đề đúng là $\\overrightarrow{BC}+\\overrightarrow{AB}=\\overrightarrow{AC}$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0486",
+  "dap_an": "B",
+  "loi_giai": "Nhóm chứa mốt là nhóm có tần số lớn nhất, đó là nhóm $[155;160)$ với tần số $20$.\nGiá trị đại diện của nhóm là $\\dfrac{155+160}{2}=157{,}5$.\nVậy giá trị đại diện cần tìm là $157{,}5$.\nChọn B.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0487",
+  "dap_an": "C",
+  "loi_giai": "Khoảng biến thiên của mẫu số liệu ghép nhóm bằng hiệu giữa đầu mút phải của nhóm cuối và đầu mút trái của nhóm đầu.\nNhóm đầu là $[2;2{,}5)$, nhóm cuối là $[4{,}5;5)$.\nKhoảng biến thiên $R=5-2=3$.\nVậy khoảng biến thiên là $3$.\nChọn C.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0488",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{b}-\\overrightarrow{a}=(-2-(-1);\\,0-3;\\,3-(-2))=(-1;-3;5)$.\nVậy tọa độ của $\\overrightarrow{b}-\\overrightarrow{a}$ là $(-1;-3;5)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0489",
+  "dap_an": "D",
+  "loi_giai": "Với $\\overrightarrow{u}=x\\overrightarrow{i}+y\\overrightarrow{j}+z\\overrightarrow{k}$ thì $\\overrightarrow{u}=(x;y;z)$.\nỞ đây $\\overrightarrow{u}=\\overrightarrow{i}-2\\overrightarrow{j}-\\overrightarrow{k}$ nên $\\overrightarrow{u}=(1;-2;-1)$.\nVậy $\\overrightarrow{u}=(1;-2;-1)$.\nChọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0490",
+  "dap_an": "D",
+  "loi_giai": "Phương sai $s^2$ là trung bình của các bình phương độ lệch nên luôn $\\ge 0$; độ lệch chuẩn $s=\\sqrt{s^2}$ nên phương sai là bình phương của độ lệch chuẩn; phương sai càng lớn thì dữ liệu càng phân tán. Ba khẳng định này đúng.\nKhẳng định \"phương sai luôn lớn hơn độ lệch chuẩn\" sai: chẳng hạn $s^2=0{,}25$ thì $s=0{,}5>s^2$ (ta chỉ có $s^2>s$ khi $s>1$).\nVậy khẳng định sai là \"Phương sai luôn luôn lớn hơn độ lệch chuẩn\".\nChọn D.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0491",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{b}-\\overrightarrow{a}=(-2-(-1);\\,0-3;\\,3-(-2))=(-1;-3;5)$.\nVậy tọa độ của $\\overrightarrow{b}-\\overrightarrow{a}$ là $(-1;-3;5)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0492",
+  "dap_an": "A",
+  "loi_giai": "Phương sai $s^2$ là trung bình của các bình phương độ lệch nên luôn $\\ge 0$; độ lệch chuẩn $s=\\sqrt{s^2}$ nên phương sai là bình phương của độ lệch chuẩn; phương sai càng lớn thì dữ liệu càng phân tán. Ba khẳng định này đúng.\nKhẳng định \"phương sai luôn lớn hơn độ lệch chuẩn\" sai: chẳng hạn $s^2=0{,}25$ thì $s=0{,}5>s^2$ (ta chỉ có $s^2>s$ khi $s>1$).\nVậy khẳng định sai là \"Phương sai luôn luôn lớn hơn độ lệch chuẩn\".\nChọn A.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0493",
+  "dap_an": "C",
+  "loi_giai": "Theo quy tắc ba điểm: $\\overrightarrow{BC}+\\overrightarrow{AB}=\\overrightarrow{AB}+\\overrightarrow{BC}=\\overrightarrow{AC}$ nên mệnh đề $\\overrightarrow{BC}+\\overrightarrow{AB}=\\overrightarrow{AC}$ đúng.\nCác mệnh đề còn lại sai: $\\overrightarrow{AB}+\\overrightarrow{BD}=\\overrightarrow{AD}\\ne\\overrightarrow{DA}$; $\\overrightarrow{AB}-\\overrightarrow{AD}=\\overrightarrow{DB}\\ne\\overrightarrow{BD}$; $\\overrightarrow{AC}-\\overrightarrow{CB}=\\overrightarrow{AC}+\\overrightarrow{BC}\\ne\\overrightarrow{AB}$.\nVậy mệnh đề đúng là $\\overrightarrow{BC}+\\overrightarrow{AB}=\\overrightarrow{AC}$.\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0494",
+  "dap_an": "A",
+  "loi_giai": "Nhóm chứa mốt là nhóm có tần số lớn nhất, đó là nhóm $[155;160)$ với tần số $20$.\nGiá trị đại diện của nhóm là $\\dfrac{155+160}{2}=157{,}5$.\nVậy giá trị đại diện cần tìm là $157{,}5$.\nChọn A.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0495",
+  "dap_an": "C",
+  "loi_giai": "Khoảng biến thiên của mẫu số liệu ghép nhóm bằng hiệu giữa đầu mút phải của nhóm cuối và đầu mút trái của nhóm đầu.\nNhóm đầu là $[2;2{,}5)$, nhóm cuối là $[4{,}5;5)$.\nKhoảng biến thiên $R=5-2=3$.\nVậy khoảng biến thiên là $3$.\nChọn C.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0496",
+  "dap_an": "A",
+  "loi_giai": "Vì $ABCD.A'B'C'D'$ là hình hộp nên $\\overrightarrow{AC'}=\\overrightarrow{AB}+\\overrightarrow{AD}+\\overrightarrow{AA'}$ (đúng).\nTương tự, từ đỉnh $B$: $\\overrightarrow{BD'}=\\overrightarrow{BA}+\\overrightarrow{BC}+\\overrightarrow{BB'}$ (đúng); từ đỉnh $D'$: $\\overrightarrow{D'B}=\\overrightarrow{D'A'}+\\overrightarrow{D'C'}+\\overrightarrow{D'D}$ (đúng).\nVới đỉnh $C$ ta có đường chéo $CA'$ nên $\\overrightarrow{CA'}=\\overrightarrow{CD}+\\overrightarrow{CB}+\\overrightarrow{CC'}$, chứ không phải $\\overrightarrow{CB}+\\overrightarrow{CC'}+\\overrightarrow{CA}$ (vì $\\overrightarrow{CA}$ là đường chéo đáy, không phải cạnh).\nVậy mệnh đề sai là $\\overrightarrow{CA'}=\\overrightarrow{CB}+\\overrightarrow{CC'}+\\overrightarrow{CA}$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0497",
+  "dap_an": "C",
+  "loi_giai": "$\\overrightarrow{AO}=2\\vec{i}-\\vec{j}+3\\vec{k}$ nên $\\overrightarrow{AO}=(2;-1;3)$.\nGọi $A(x;y;z)$ thì $\\overrightarrow{AO}=(-x;-y;-z)=(2;-1;3)$, suy ra $x=-2,\\ y=1,\\ z=-3$.\nVậy $A(-2;1;-3)$.\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0498",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{AB}=(-1;-1;-4)$, $\\overrightarrow{AC}=(-3;1;-2)$.\n$\\left[\\overrightarrow{AB};\\overrightarrow{AC}\\right]=\\left(\\begin{vmatrix}-1&-4\\\\1&-2\\end{vmatrix};\\begin{vmatrix}-4&-1\\\\-2&-3\\end{vmatrix};\\begin{vmatrix}-1&-1\\\\-3&1\\end{vmatrix}\\right)$.\n$=\\left((-1)(-2)-(-4)(1);\\ (-4)(-3)-(-1)(-2);\\ (-1)(1)-(-1)(-3)\\right)=(6;10;-4)$.\nVậy $\\left[\\overrightarrow{AB};\\overrightarrow{AC}\\right]=(6;10;-4)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0499",
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\lim_{x\\to\\pm\\infty}\\dfrac{2x+1}{x-1}=2$.\nVậy tiệm cận ngang của đồ thị là $y=2$.\nChọn B.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0500",
+  "dap_an": "C",
+  "loi_giai": "$y'=3x^2-6x-9=3(x^2-2x-3)$; $y'=0\\Leftrightarrow x=-1$ hoặc $x=3$.\nBảng biến thiên: $y'>0$ trên $(-\\infty;-1)$, $y'<0$ trên $(-1;3)$, $y'>0$ trên $(3;+\\infty)$.\nVậy $y'$ đổi dấu từ $-$ sang $+$ tại $x=3$ nên hàm số đạt cực tiểu tại $x=3$ (khi đó $y_{CT}=-27$).\nChọn C.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0501",
+  "dap_an": "D",
+  "loi_giai": "$\\overrightarrow{a}+2\\overrightarrow{b}=(1-4;\\,2+2;\\,3+0)=(-3;4;3)$.\n$\\overrightarrow{a}\\cdot(\\overrightarrow{a}+2\\overrightarrow{b})=1\\cdot(-3)+2\\cdot 4+3\\cdot 3=-3+8+9=14$.\nVậy giá trị cần tìm là $14$.\nChọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0502",
+  "dap_an": "C",
+  "loi_giai": "Đồ thị có tiệm cận xiên khi hàm phân thức có bậc tử lớn hơn bậc mẫu đúng $1$ đơn vị (và không chia hết).\n$y=\\dfrac{4}{x-1}$ và $y=\\dfrac{2x}{x^2+1}$ có bậc tử nhỏ hơn bậc mẫu; $y=\\dfrac{x+3}{2x-1}$ có bậc tử bằng bậc mẫu: chỉ có tiệm cận ngang.\n$y=\\dfrac{x^2+3x-2}{x+3}=x-\\dfrac{2}{x+3}$ (vì $x^2+3x-2=x(x+3)-2$) nên có tiệm cận xiên $y=x$.\nVậy hàm số có tiệm cận xiên là $y=\\dfrac{x^2+3x-2}{x+3}$.\nChọn C.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0503",
+  "dap_an": "A",
+  "loi_giai": "$ABCD$ là hình bình hành khi $\\overrightarrow{AB}=\\overrightarrow{DC}$, tức $A+C=B+D$ nên $D=A+C-B$.\n$D=(1+(-3)-2;\\ 2+5-(-1);\\ -1+1-3)=(-4;8;-3)$.\nVậy $D(-4;8;-3)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0504",
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\lim_{x\\to 1^+}\\dfrac{2x+1}{x-1}=+\\infty$ (tử $\\to 3>0$, mẫu $\\to 0^+$).\nVậy tiệm cận đứng của đồ thị là $x=1$.\nChọn A.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0505",
+  "dap_an": "D",
+  "loi_giai": "$y'=3x^2-6x-9=3(x^2-2x-3)$; $y'=0\\Leftrightarrow x=-1$ hoặc $x=3$.\nBảng biến thiên: $y'>0$ trên $(-\\infty;-1)$, $y'<0$ trên $(-1;3)$, $y'>0$ trên $(3;+\\infty)$.\nVậy $y'$ đổi dấu từ $+$ sang $-$ tại $x=-1$ nên hàm số đạt cực đại tại $x=-1$ (khi đó $y_{CĐ}=5$).\nChọn D.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0506",
+  "dap_an": "D",
+  "loi_giai": "Đồ thị có tiệm cận xiên khi hàm phân thức có bậc tử lớn hơn bậc mẫu đúng $1$ đơn vị (và không chia hết).\n$y=\\dfrac{4}{x-1}$ và $y=\\dfrac{2x}{x^2+1}$ có bậc tử nhỏ hơn bậc mẫu; $y=\\dfrac{x+3}{2x-1}$ có bậc tử bằng bậc mẫu: chỉ có tiệm cận ngang.\n$y=\\dfrac{x^2+3x-2}{x+3}=x-\\dfrac{2}{x+3}$ (vì $x^2+3x-2=x(x+3)-2$) nên có tiệm cận xiên $y=x$.\nVậy hàm số có tiệm cận xiên là $y=\\dfrac{x^2+3x-2}{x+3}$.\nChọn D.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0507",
+  "dap_an": "B",
+  "loi_giai": "$ABCD$ là hình bình hành khi $\\overrightarrow{AB}=\\overrightarrow{DC}$, tức $A+C=B+D$ nên $D=A+C-B$.\n$D=(1+(-3)-2;\\ 2+1-5;\\ -3+4-7)=(-4;-2;-6)$.\nVậy $D(-4;-2;-6)$.\nChọn B.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0508",
+  "dap_an": "B",
+  "loi_giai": "Điểm đối xứng với $M(x;y;z)$ qua trục $Oy$ là $N(-x;y;-z)$ (giữ nguyên tung độ, đổi dấu hoành độ và cao độ).\nVới $M(-4;2;-3)$ ta được $N(4;2;3)$.\nVậy $N(4;2;3)$.\nChọn B.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0509",
+  "dap_an": "B",
+  "loi_giai": "$y'=3x^2-6x-9=3(x^2-2x-3)$; $y'=0\\Leftrightarrow x=-1$ hoặc $x=3$.\nBảng biến thiên: $y'>0$ trên $(-\\infty;-1)$, $y'<0$ trên $(-1;3)$, $y'>0$ trên $(3;+\\infty)$.\nVậy $y'$ đổi dấu từ $+$ sang $-$ tại $x=-1$ nên hàm số đạt cực đại tại $x=-1$ (khi đó $y_{CĐ}=5$).\nChọn B.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0510",
+  "dap_an": "D",
+  "loi_giai": "Ta có $\\lim_{x\\to\\pm\\infty}\\dfrac{2x+1}{x-1}=2$.\nVậy tiệm cận ngang của đồ thị là $y=2$.\nChọn D.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0511",
+  "dap_an": "B",
+  "loi_giai": "Đồ thị có tiệm cận xiên khi hàm phân thức có bậc tử lớn hơn bậc mẫu đúng $1$ đơn vị (và không chia hết).\n$y=\\dfrac{4}{x-1}$ và $y=\\dfrac{2x}{x^2+1}$ có bậc tử nhỏ hơn bậc mẫu; $y=\\dfrac{x+3}{2x-1}$ có bậc tử bằng bậc mẫu: chỉ có tiệm cận ngang.\n$y=\\dfrac{x^2+3x-2}{x+3}=x-\\dfrac{2}{x+3}$ (vì $x^2+3x-2=x(x+3)-2$) nên có tiệm cận xiên $y=x$.\nVậy hàm số có tiệm cận xiên là $y=\\dfrac{x^2+3x-2}{x+3}$.\nChọn B.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0512",
+  "dap_an": "A",
+  "loi_giai": "$ABCD$ là hình bình hành khi $\\overrightarrow{AB}=\\overrightarrow{DC}$, tức $A+C=B+D$ nên $D=A+C-B$.\n$D=(1+(-3)-2;\\ 2+1-5;\\ -3+4-7)=(-4;-2;-6)$.\nVậy $D(-4;-2;-6)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0513",
+  "dap_an": "C",
+  "loi_giai": "$\\overrightarrow{a}+2\\overrightarrow{b}=(1-4;\\,2+2;\\,3+0)=(-3;4;3)$.\n$\\overrightarrow{a}\\cdot(\\overrightarrow{a}+2\\overrightarrow{b})=1\\cdot(-3)+2\\cdot 4+3\\cdot 3=-3+8+9=14$.\nVậy giá trị cần tìm là $14$.\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0514",
+  "dap_an": "C",
+  "loi_giai": "$\\overrightarrow{a}+2\\overrightarrow{b}=(1-4;\\,2+2;\\,3+0)=(-3;4;3)$.\n$\\overrightarrow{a}\\cdot(\\overrightarrow{a}+2\\overrightarrow{b})=1\\cdot(-3)+2\\cdot 4+3\\cdot 3=-3+8+9=14$.\nVậy giá trị cần tìm là $14$.\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0515",
+  "dap_an": "C",
+  "loi_giai": "$\\overrightarrow{a}=-\\overrightarrow{i}+2\\overrightarrow{j}-3\\overrightarrow{k}$ nên tọa độ là hệ số của $\\overrightarrow{i},\\overrightarrow{j},\\overrightarrow{k}$ tương ứng.\nVậy $\\overrightarrow{a}=(-1;2;-3)$.\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0516",
+  "dap_an": "D",
+  "loi_giai": "$\\overrightarrow{a}=-\\overrightarrow{i}+2\\overrightarrow{j}-3\\overrightarrow{k}$ nên tọa độ là hệ số của $\\overrightarrow{i},\\overrightarrow{j},\\overrightarrow{k}$ tương ứng.\nVậy $\\overrightarrow{a}=(-1;2;-3)$.\nChọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0517",
+  "dap_an": "C",
+  "loi_giai": "$ABCD$ là hình bình hành khi $\\overrightarrow{AB}=\\overrightarrow{DC}$, tức $A+C=B+D$ nên $D=A+C-B$.\n$D=(0+(-5)-4;\\ 2+1-(-2);\\ 3+(-3)-1)=(-9;5;-1)$.\nVậy $D(-9;5;-1)$.\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0518",
+  "dap_an": "B",
+  "loi_giai": "Nhóm đầu là $[50;52)$, nhóm cuối là $[58;60)$.\nKhoảng biến thiên $R=60-50=10$ (km/h).\nVậy khoảng biến thiên là $10$.\nChọn B.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0519",
+  "dap_an": "3",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$. $y'=e^x+(x+1)e^x=(x+2)e^x$.\n$y'=0\\Leftrightarrow x=-2$; $y'<0$ khi $x<-2$ và $y'>0$ khi $x>-2$ nên hàm số đạt giá trị nhỏ nhất tại $x=-2$.\n$y(-2)=(-2+1)e^{-2}=-\\dfrac{1}{e^2}$. So với $-\\dfrac{a}{e^b}$ (với $a,b\\in\\mathbb{N}$) ta có $a=1,\\ b=2$.\nVậy $a+b=3$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "ký hiệu ∈ bị lỗi mã; hiểu a,b thuộc N"
+ },
+ {
+  "id": "X0520",
+  "dap_an": "D",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}\\setminus\\{-2\\}$.\n$y'=\\dfrac{(x+2)-(x-1)}{(x+2)^2}=\\dfrac{3}{(x+2)^2}>0$ với mọi $x\\ne-2$.\nDo đó hàm số đồng biến trên từng khoảng $(-\\infty;-2)$ và $(-2;+\\infty)$ (không đồng biến trên cả $\\mathbb{R}\\setminus\\{-2\\}$ vì tập này không phải một khoảng).\nVậy khẳng định đúng là \"Hàm số đồng biến trên các khoảng $(-\\infty;-2)$ và $(-2;+\\infty)$\".\nChọn D.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0521",
+  "dap_an": "1221",
+  "loi_giai": "$\\overrightarrow{MN}=(300;100;2)$ ứng với $20$ phút bay.\nTrong $5$ phút tiếp theo (bằng $\\dfrac{1}{4}$ của $20$ phút), máy bay đi thêm vectơ $\\dfrac{1}{4}\\overrightarrow{MN}=(75;25;0{,}5)$.\nVị trí mới: $(800+75;\\ 300+25;\\ 10+0{,}5)=(875;325;10{,}5)$.\n$x+y+2z=875+325+21=1221$.\nVậy $x+y+2z=1221$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0522",
+  "dap_an": "C",
+  "loi_giai": "$y'=3x^2-3$; $y'=0\\Leftrightarrow x=\\pm1$. $y''=6x$.\nTại $x=1$: $y''(1)=6>0$ nên $x=1$ là điểm cực tiểu, $y(1)=1-3+3=1$.\nVậy điểm cực tiểu của đồ thị là $C(1;1)$.\nChọn C.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0523",
+  "dap_an": "17",
+  "loi_giai": "$\\overrightarrow{CA}=(-6;4;-2)$, $\\overrightarrow{CB}=(-2;-2;2)$.\n$\\overrightarrow{CA}\\cdot\\overrightarrow{CB}=12-8-4=0$ nên tam giác $ABC$ vuông tại $C$.\nTâm đường tròn ngoại tiếp tam giác vuông là trung điểm cạnh huyền $AB$: $I\\left(\\dfrac{2+6}{2};\\dfrac{2-4}{2};\\dfrac{-2+2}{2}\\right)=(4;-1;0)$.\n$OI^2=4^2+(-1)^2+0^2=17$.\nVậy $OI^2=17$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0524",
+  "dap_an": "C",
+  "loi_giai": "Ta có $\\lim_{x\\to(-1)^+}\\dfrac{2x+1}{x+1}=-\\infty$ (tử $\\to -1<0$, mẫu $\\to 0^+$).\nVậy tiệm cận đứng của đồ thị là $x=-1$.\nChọn C.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0525",
+  "dap_an": "D",
+  "loi_giai": "Giá trị đại diện các nhóm: $45;55;65;75;85$ với tần số $7;6;19;23;10$, cỡ mẫu $n=65$.\nSố trung bình $\\bar{x}=\\dfrac{45\\cdot7+55\\cdot6+65\\cdot19+75\\cdot23+85\\cdot10}{65}=\\dfrac{4455}{65}\\approx 68{,}54$.\nPhương sai $s^2=\\dfrac{7\\cdot45^2+6\\cdot55^2+19\\cdot65^2+23\\cdot75^2+10\\cdot85^2}{65}-\\bar{x}^2=\\dfrac{314225}{65}-\\bar{x}^2\\approx 136{,}71$.\nĐộ lệch chuẩn $s=\\sqrt{136{,}71}\\approx 11{,}69$.\nVậy độ lệch chuẩn là $s_x=11{,}69$.\nChọn D.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Phương án 11,69 là kết quả đúng sau làm tròn"
+ },
+ {
+  "id": "X0526",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{b}=2\\overrightarrow{j}-5\\overrightarrow{k}=(0;2;-5)$.\n$\\overrightarrow{u}=\\overrightarrow{a}-\\overrightarrow{b}=(4-0;\\,-1-2;\\,1-(-5))=(4;-3;6)$.\nVậy $\\overrightarrow{u}=(4;-3;6)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0527",
+  "dap_an": "C",
+  "loi_giai": "$N'(t)=60t-3t^2=3t(20-t)$; $N'(t)=0\\Leftrightarrow t=0$ hoặc $t=20$ (trên $[0;30]$).\n$N(0)=1000$; $N(20)=1000+30\\cdot400-8000=5000$; $N(30)=1000+27000-27000=1000$.\nSố vi khuẩn lớn nhất khi $t=20$ phút $=20\\cdot60=1200$ giây.\nVậy sau $1200$ giây.\nChọn C.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đề hỏi \"giây\"; đáp án 1200 giây (=20 phút)"
+ },
+ {
+  "id": "X0528",
+  "dap_an": "A",
+  "loi_giai": "Vì $G$ là trọng tâm tứ diện nên với mọi điểm $O$: $\\overrightarrow{OG}=\\dfrac{1}{4}\\left(\\overrightarrow{OA}+\\overrightarrow{OB}+\\overrightarrow{OC}+\\overrightarrow{OD}\\right)$ và $\\overrightarrow{GA}+\\overrightarrow{GB}+\\overrightarrow{GC}+\\overrightarrow{GD}=\\overrightarrow{0}$ (đúng).\nChọn $O\\equiv A$: $\\overrightarrow{AG}=\\dfrac{1}{4}\\left(\\overrightarrow{AB}+\\overrightarrow{AC}+\\overrightarrow{AD}\\right)$ (đúng).\nDo đó $\\overrightarrow{AG}=\\dfrac{2}{3}\\left(\\overrightarrow{AB}+\\overrightarrow{AC}+\\overrightarrow{AD}\\right)$ sai (hệ số $\\dfrac23$ dùng cho trọng tâm tam giác với đường trung tuyến, không phải trọng tâm tứ diện).\nVậy mệnh đề sai là $\\overrightarrow{AG}=\\dfrac{2}{3}\\left(\\overrightarrow{AB}+\\overrightarrow{AC}+\\overrightarrow{AD}\\right)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0529",
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\lim_{x\\to(-1)^+}\\dfrac{2x+1}{x+1}=-\\infty$ (tử $\\to -1<0$, mẫu $\\to 0^+$).\nVậy tiệm cận đứng của đồ thị là $x=-1$.\nChọn A.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0530",
+  "dap_an": "C",
+  "loi_giai": "Nhóm đầu là $[50;52)$, nhóm cuối là $[58;60)$.\nKhoảng biến thiên $R=60-50=10$ (km/h).\nVậy khoảng biến thiên là $10$.\nChọn C.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0531",
+  "dap_an": "C",
+  "loi_giai": "$y'=3x^2-3$; $y'=0\\Leftrightarrow x=\\pm1$. $y''=6x$.\nTại $x=1$: $y''(1)=6>0$ nên $x=1$ là điểm cực tiểu, $y(1)=1-3+3=1$.\nVậy điểm cực tiểu của đồ thị là $C(1;1)$.\nChọn C.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0532",
+  "dap_an": "D",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}\\setminus\\{-2\\}$.\n$y'=\\dfrac{(x+2)-(x-1)}{(x+2)^2}=\\dfrac{3}{(x+2)^2}>0$ với mọi $x\\ne-2$.\nDo đó hàm số đồng biến trên từng khoảng $(-\\infty;-2)$ và $(-2;+\\infty)$ (không đồng biến trên cả $\\mathbb{R}\\setminus\\{-2\\}$ vì tập này không phải một khoảng).\nVậy khẳng định đúng là \"Hàm số đồng biến trên các khoảng $(-\\infty;-2)$ và $(-2;+\\infty)$\".\nChọn D.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0533",
+  "dap_an": "3",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$. $y'=e^x+(x+1)e^x=(x+2)e^x$.\n$y'=0\\Leftrightarrow x=-2$; $y'<0$ khi $x<-2$ và $y'>0$ khi $x>-2$ nên hàm số đạt giá trị nhỏ nhất tại $x=-2$.\n$y(-2)=(-2+1)e^{-2}=-\\dfrac{1}{e^2}$. So với $-\\dfrac{a}{e^b}$ (với $a,b\\in\\mathbb{N}$) ta có $a=1,\\ b=2$.\nVậy $a+b=3$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "ký hiệu ∈ bị lỗi mã; hiểu a,b thuộc N"
+ },
+ {
+  "id": "X0534",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{b}=2\\overrightarrow{j}-5\\overrightarrow{k}=(0;2;-5)$.\n$\\overrightarrow{u}=\\overrightarrow{a}-\\overrightarrow{b}=(4-0;\\,-1-2;\\,1-(-5))=(4;-3;6)$.\nVậy $\\overrightarrow{u}=(4;-3;6)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0535",
+  "dap_an": "1221",
+  "loi_giai": "$\\overrightarrow{MN}=(300;100;2)$ ứng với $20$ phút bay.\nTrong $5$ phút tiếp theo (bằng $\\dfrac{1}{4}$ của $20$ phút), máy bay đi thêm vectơ $\\dfrac{1}{4}\\overrightarrow{MN}=(75;25;0{,}5)$.\nVị trí mới: $(800+75;\\ 300+25;\\ 10+0{,}5)=(875;325;10{,}5)$.\n$x+y+2z=875+325+21=1221$.\nVậy $x+y+2z=1221$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "lua_chon chứa rác \"[[shape]]Hết\"; câu trả lời ngắn"
+ },
+ {
+  "id": "X0536",
+  "dap_an": "D",
+  "loi_giai": "Giá trị đại diện các nhóm: $45;55;65;75;85$ với tần số $7;6;19;23;10$, cỡ mẫu $n=65$.\nSố trung bình $\\bar{x}=\\dfrac{45\\cdot7+55\\cdot6+65\\cdot19+75\\cdot23+85\\cdot10}{65}=\\dfrac{4455}{65}\\approx 68{,}54$.\nPhương sai $s^2=\\dfrac{7\\cdot45^2+6\\cdot55^2+19\\cdot65^2+23\\cdot75^2+10\\cdot85^2}{65}-\\bar{x}^2=\\dfrac{314225}{65}-\\bar{x}^2\\approx 136{,}71$.\nĐộ lệch chuẩn $s=\\sqrt{136{,}71}\\approx 11{,}69$.\nVậy độ lệch chuẩn là $s_x=11{,}69$.\nChọn D.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Phương án 11,69 là kết quả đúng sau làm tròn"
+ },
+ {
+  "id": "X0537",
+  "dap_an": "D",
+  "loi_giai": "Vì $G$ là trọng tâm tứ diện nên với mọi điểm $O$: $\\overrightarrow{OG}=\\dfrac{1}{4}\\left(\\overrightarrow{OA}+\\overrightarrow{OB}+\\overrightarrow{OC}+\\overrightarrow{OD}\\right)$ và $\\overrightarrow{GA}+\\overrightarrow{GB}+\\overrightarrow{GC}+\\overrightarrow{GD}=\\overrightarrow{0}$ (đúng).\nChọn $O\\equiv A$: $\\overrightarrow{AG}=\\dfrac{1}{4}\\left(\\overrightarrow{AB}+\\overrightarrow{AC}+\\overrightarrow{AD}\\right)$ (đúng).\nDo đó $\\overrightarrow{AG}=\\dfrac{2}{3}\\left(\\overrightarrow{AB}+\\overrightarrow{AC}+\\overrightarrow{AD}\\right)$ sai (hệ số $\\dfrac23$ dùng cho trọng tâm tam giác với đường trung tuyến, không phải trọng tâm tứ diện).\nVậy mệnh đề sai là $\\overrightarrow{AG}=\\dfrac{2}{3}\\left(\\overrightarrow{AB}+\\overrightarrow{AC}+\\overrightarrow{AD}\\right)$.\nChọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0538",
+  "dap_an": "A",
+  "loi_giai": "$N'(t)=60t-3t^2=3t(20-t)$; $N'(t)=0\\Leftrightarrow t=0$ hoặc $t=20$ (trên $[0;30]$).\n$N(0)=1000$; $N(20)=1000+30\\cdot400-8000=5000$; $N(30)=1000+27000-27000=1000$.\nSố vi khuẩn lớn nhất khi $t=20$ phút $=20\\cdot60=1200$ giây.\nVậy sau $1200$ giây.\nChọn A.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đề hỏi \"giây\"; đáp án 1200 giây (=20 phút)"
+ },
+ {
+  "id": "X0539",
+  "dap_an": "D",
+  "loi_giai": "$\\overrightarrow{AB}=(-3;-5;0)$, $\\overrightarrow{AC}=(2;-2;-3)$.\n$\\overrightarrow{AB}\\cdot\\overrightarrow{AC}=-6+10+0=4$; $AB=\\sqrt{34}$, $AC=\\sqrt{4+4+9}=\\sqrt{17}$.\n$\\cos A=\\dfrac{4}{\\sqrt{34}\\cdot\\sqrt{17}}=\\dfrac{4}{17\\sqrt2}=\\dfrac{2\\sqrt2}{17}$.\nVậy $\\cos A=\\dfrac{2\\sqrt{2}}{17}$.\nChọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0540",
+  "dap_an": "C",
+  "loi_giai": "Ta có $\\lim_{x\\to1^+}\\dfrac{3x+2}{x-1}=+\\infty$ (tử $\\to 5>0$, mẫu $\\to 0^+$).\nVậy tiệm cận đứng là đường thẳng $x=1$.\nChọn C.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ }
+]

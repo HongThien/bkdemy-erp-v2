@@ -1,0 +1,542 @@
+[
+ {
+  "id": "X0601",
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\vec{u}=\\vec{a}+2\\vec{b}-3\\vec{c}$.\nHoành độ: $4+2\\cdot(-1)-3\\cdot 4=-10$.\nTung độ: $-5+2\\cdot 2-3\\cdot 2=-7$.\nCao độ: $3+2\\cdot 6-3\\cdot(-3)=24$.\nVậy $\\vec{u}=(-10;-7;24)$. Chọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0602",
+  "dap_an": "C",
+  "loi_giai": "Gọi $H(x;y;z)$, ta có $\\overrightarrow{KH}=(x-1;y-5;z+2)=(5;2;-1)$.\nSuy ra $x=1+5=6$, $y=5+2=7$, $z=-2-1=-3$.\nVậy $H(6;7;-3)$. Chọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0603",
+  "dap_an": "D",
+  "loi_giai": "Giá trị đại diện của các nhóm lần lượt là $17{,}5$; $22{,}5$; $27{,}5$; $32{,}5$; $37{,}5$ với tần số $14;17;10;4;5$.\nSố trung bình: $\\overline{x}=\\dfrac{17{,}5\\cdot 14+22{,}5\\cdot 17+27{,}5\\cdot 10+32{,}5\\cdot 4+37{,}5\\cdot 5}{50}=\\dfrac{1220}{50}=24{,}4$.\nPhương sai: $s^2=\\dfrac{14\\cdot 17{,}5^2+17\\cdot 22{,}5^2+10\\cdot 27{,}5^2+4\\cdot 32{,}5^2+5\\cdot 37{,}5^2}{50}-24{,}4^2$.\n$s^2=\\dfrac{31712{,}5}{50}-595{,}36=634{,}25-595{,}36=38{,}89$.\nVì $38{,}89\\in(30;40)$ nên chọn D.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0604",
+  "dap_an": "A",
+  "loi_giai": "Độ lệch chuẩn bằng căn bậc hai của phương sai.\nTa có $s=\\sqrt{s^2}=\\sqrt{4}=2$ (kg).\nVậy độ lệch chuẩn là $2$ kg. Chọn A.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0605",
+  "dap_an": "8",
+  "loi_giai": "Khoảng biến thiên của mẫu số liệu ghép nhóm bằng hiệu giữa đầu mút phải của nhóm cuối cùng và đầu mút trái của nhóm đầu tiên.\nNhóm đầu tiên là $[6;8)$ nên đầu mút trái là $6$; nhóm cuối cùng là $[12;14)$ nên đầu mút phải là $14$.\nVậy khoảng biến thiên là $R=14-6=8$ (triệu đồng).",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0606",
+  "dap_an": "A",
+  "loi_giai": "Cỡ mẫu bằng tổng các tần số của các nhóm.\n$n=4+8+8+16+4=40$.\nVậy cỡ mẫu là $40$. Chọn A.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0607",
+  "dap_an": "22.2",
+  "loi_giai": "Giá trị đại diện các nhóm: $2;6;10;14;18$ với tần số $2;4;7;4;3$, cỡ mẫu $n=20$.\nSố trung bình: $\\overline{x}=\\dfrac{2\\cdot 2+4\\cdot 6+7\\cdot 10+4\\cdot 14+3\\cdot 18}{20}=\\dfrac{208}{20}=10{,}4$.\nPhương sai: $s^2=\\dfrac{2\\cdot 2^2+4\\cdot 6^2+7\\cdot 10^2+4\\cdot 14^2+3\\cdot 18^2}{20}-10{,}4^2=\\dfrac{2608}{20}-108{,}16$.\n$s^2=130{,}4-108{,}16=22{,}24\\approx 22{,}2$.\nVậy phương sai xấp xỉ $22{,}2$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0608",
+  "dap_an": "D",
+  "loi_giai": "Ta có $\\vec{a}-\\vec{b}=(2-0;\\,-3-2;\\,3-(-1))=(2;-5;4)$.\nVậy $\\vec{a}-\\vec{b}=(2;-5;4)$. Chọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0609",
+  "dap_an": "2.5",
+  "loi_giai": "Hình chiếu của $M$ lên $Oz$ là $H(0;0;2)$, nên $OH=2$ và $MH=\\sqrt{3^2+4^2}=5$.\nTam giác $OHM$ vuông tại $H$, góc $\\alpha=\\widehat{MOH}$ nên $\\tan\\alpha=\\dfrac{MH}{OH}=\\dfrac{5}{2}$.\nVậy $\\tan\\alpha=2{,}5$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0610",
+  "dap_an": "D",
+  "loi_giai": "Trung điểm $I$ của $AB$ có toạ độ $I\\left(\\dfrac{1-1}{2};\\dfrac{0+2}{2};\\dfrac{-3+1}{2}\\right)=(0;1;-1)$.\nVậy trung điểm là $(0;1;-1)$. Chọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0611",
+  "dap_an": "D",
+  "loi_giai": "Ta có $\\vec{u}=\\vec{i}-3\\vec{k}=1\\cdot\\vec{i}+0\\cdot\\vec{j}-3\\cdot\\vec{k}$.\nVậy $\\vec{u}=(1;0;-3)$. Chọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0612",
+  "dap_an": "D",
+  "loi_giai": "Ta có $\\overrightarrow{AB}=(2-1;\\,-2-(-1);\\,1-0)=(1;-1;1)$.\nVậy $\\overrightarrow{AB}=(1;-1;1)$. Chọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0613",
+  "dap_an": "C",
+  "loi_giai": "Cỡ mẫu $n=8+12+8+10+7=45$.\nTứ phân vị thứ nhất $Q_1$ ứng với giá trị thứ $\\dfrac{n}{4}=11{,}25$.\nTần số tích luỹ: nhóm $[40;44)$ là $8$; nhóm $[44;48)$ là $8+12=20$.\nVì $8<11{,}25\\le 20$ nên $Q_1$ thuộc nhóm $[44;48)$.\nVậy nhóm chứa tứ phân vị thứ nhất là $[44;48)$. Chọn C.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0614",
+  "dap_an": "D",
+  "loi_giai": "Hai vectơ cùng phương nếu vectơ này bằng một số nhân vectơ kia.\nTa có $(2;2;0)=2\\cdot(1;1;0)=2\\overrightarrow{n}$.\nCác vectơ còn lại không là bội của $\\overrightarrow{n}$ vì có toạ độ thứ ba khác $0$.\nVậy chọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0615",
+  "dap_an": "D",
+  "loi_giai": "Hàm số $y=\\dfrac{2x-1}{x-2}$ có tập xác định $\\mathbb{R}\\setminus\\{2\\}$.\nTa có $\\lim_{x\\to 2^+}\\dfrac{2x-1}{x-2}=+\\infty$ (vì tử $\\to 3>0$, mẫu $\\to 0^+$).\nVậy tiệm cận đứng là $x=2$. Chọn D.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0616",
+  "dap_an": "D",
+  "loi_giai": "Theo quy tắc ba điểm: $\\overrightarrow{AB}+\\overrightarrow{BS}=\\overrightarrow{AS}$.\nSuy ra $\\overrightarrow{AB}+\\overrightarrow{BS}+\\overrightarrow{SA}=\\overrightarrow{AS}+\\overrightarrow{SA}=\\vec{0}$.\nVậy chọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0617",
+  "dap_an": "-8",
+  "loi_giai": "Ta có $f'(x)=-3x^2+6x$; $f'(x)=0\\Leftrightarrow x=0$ hoặc $x=2$.\n$f''(x)=-6x+6$, $f''(2)=-6<0$ nên hàm số đạt cực đại tại $x=2$.\n$f(2)=-8+12+1=5$, nên $A(2;5)$, tức $m=2$, $n=5$.\n$Q=m-2n=2-10=-8$.\nVậy $Q=-8$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0618",
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\overrightarrow{AB}=(4-1;\\,-3-(-1);\\,1-2)=(3;-2;-1)$.\nVậy $\\overrightarrow{AB}=(3;-2;-1)$. Chọn B.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0619",
+  "dap_an": "4",
+  "loi_giai": "Hình chiếu vuông góc của điểm $M(x;y;z)$ lên mặt phẳng $(Oxy)$ là điểm $(x;y;0)$.\nDo đó $N(1;2;0)$, suy ra $a=1$, $b=2$, $c=0$.\n$S=2a+b+c=2+2+0=4$.\nVậy $S=4$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0620",
+  "dap_an": "45",
+  "loi_giai": "Chọn hệ trục với $A'$ làm gốc: $A'(0;0;0)$, $B'(1;0;0)$, $D'(0;1;0)$ (cạnh hình lập phương bằng $1$), khi đó $A(0;0;-1)$, $B(1;0;-1)$, $C'(1;1;0)$.\n$M$ là trung điểm $A'D'$ nên $M\\left(0;\\dfrac12;0\\right)$; $N$ là trung điểm $C'D'$ nên $N\\left(\\dfrac12;1;0\\right)$.\n$\\overrightarrow{MN}=\\left(\\dfrac12;\\dfrac12;0\\right)$, $\\overrightarrow{AB}=(1;0;0)$.\n$\\cos\\left(\\overrightarrow{MN},\\overrightarrow{AB}\\right)=\\dfrac{\\frac12}{\\sqrt{\\frac12}\\cdot 1}=\\dfrac{\\sqrt2}{2}$.\nSuy ra góc giữa hai vectơ bằng $45^{\\circ}$.\nVậy $a=45$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0621",
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\vec{a}=-2\\vec{i}+1\\cdot\\vec{j}-5\\vec{k}$.\nVậy $\\vec{a}=(-2;1;-5)$. Chọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0622",
+  "dap_an": "9",
+  "loi_giai": "Hệ trục có gốc $O$ tại một góc phòng, $(Oxy)$ trùng mặt sàn, nên các cạnh của phòng theo các trục là $6$ m, $4$ m (trên sàn) và chiều cao $4$ m (theo $Oz$).\nĐèn treo tại chính giữa trần nhà nên hình chiếu của đèn lên sàn là tâm của hình chữ nhật $6\\times 4$ và cao độ bằng chiều cao phòng.\nDo đó toạ độ của $I$ gồm các số $\\dfrac62=3$, $\\dfrac42=2$ (theo thứ tự các trục) và cao độ $4$.\nTổng $a+b+c=3+2+4=9$.\nVậy $a+b+c=9$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đề cần hình để biết trục; tổng không phụ thuộc cách đặt."
+ },
+ {
+  "id": "X0623",
+  "dap_an": "69.5",
+  "loi_giai": "$H$ là hình chiếu của $P$ lên $(Oxy)$ nên $\\widehat{HOP}=46^{\\circ}$, tam giác $OHP$ vuông tại $H$.\n$OH=OP\\cos 46^{\\circ}=41\\cos 46^{\\circ}\\approx 28{,}48$; $c=PH=OP\\sin 46^{\\circ}=41\\sin 46^{\\circ}\\approx 29{,}49$.\n$H$ nằm trong $(Oxy)$ với $(\\vec{i},\\overrightarrow{OH})=52^{\\circ}$ nên $a=OH\\cos 52^{\\circ}\\approx 17{,}53$; $b=OH\\sin 52^{\\circ}\\approx 22{,}44$.\n$a+b+c\\approx 17{,}53+22{,}44+29{,}49=69{,}47\\approx 69{,}5$.\nVậy $a+b+c\\approx 69{,}5$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đề dùng hình; giả định P ở góc phần tám dương, khớp 69,5 trong đáp án."
+ },
+ {
+  "id": "X0624",
+  "dap_an": "A",
+  "loi_giai": "Xét từng phát biểu.\n$\\overrightarrow{DA}+\\overrightarrow{DB}=\\vec{0}$ chỉ đúng khi $D$ là trung điểm $AB$, không đúng với tứ diện nên đây là phát biểu sai.\n$\\overrightarrow{BA}+\\overrightarrow{AB}=\\vec{0}$ đúng vì hai vectơ đối nhau.\n$\\overrightarrow{BA}+\\overrightarrow{AC}=\\overrightarrow{BC}$ đúng theo quy tắc ba điểm.\n$\\overrightarrow{AD}-\\overrightarrow{AC}=\\overrightarrow{CD}$ đúng theo quy tắc hiệu.\nVậy phát biểu sai là A. Chọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0625",
+  "dap_an": "A",
+  "loi_giai": "$ABCD$ là hình bình hành khi $\\overrightarrow{AB}=\\overrightarrow{DC}$.\n$\\overrightarrow{AB}=(1;3;-7)$, $\\overrightarrow{DC}=(-3-x;\\,1-y;\\,2-z)$ với $D(x;y;z)$.\nSuy ra $-3-x=1\\Rightarrow x=-4$; $1-y=3\\Rightarrow y=-2$; $2-z=-7\\Rightarrow z=9$.\nVậy $D(-4;-2;9)$. Chọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0626",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "KHAC",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Đề rỗng, chỉ là mảnh bảng đáp án (-27; -1; 60; 10; 550; 69,5; Mã 102;104), không có câu hỏi."
+ },
+ {
+  "id": "X0627",
+  "dap_an": "A",
+  "loi_giai": "Mặt phẳng đi qua gốc toạ độ $O(0;0;0)$ khi phương trình thoả mãn lúc thay $x=y=z=0$.\nPhương án A: $2\\cdot0+5\\cdot0-8\\cdot0=0$ đúng.\nCác phương án B, C, D có hệ số tự do khác $0$ nên không thoả mãn.\nVậy chọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0628",
+  "dap_an": "D",
+  "loi_giai": "Đường thẳng $\\Delta:\\dfrac{x-1}{3}=\\dfrac{y+2}{-2}=\\dfrac{z-1}{4}$ có một vectơ chỉ phương là $(3;-2;4)$ (các số ở mẫu).\nVậy $\\vec{u}_3=(3;-2;4)$. Chọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0629",
+  "dap_an": "5",
+  "loi_giai": "Khoảng cách từ $I(1;1;1)$ đến $(P):2x-2y+z-16=0$ là\n$d=\\dfrac{|2\\cdot1-2\\cdot1+1-16|}{\\sqrt{2^2+(-2)^2+1^2}}=\\dfrac{15}{3}=5$.\nVậy $d(I,(P))=5$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0630",
+  "dap_an": "D",
+  "loi_giai": "Vectơ pháp tuyến của $(P)$ là $\\vec{n}_P=(1;2;-2)$, của $(Q)$ là $\\vec{n}_Q=(1;1;1)$.\n$\\cos((P),(Q))=\\dfrac{|\\vec{n}_P\\cdot\\vec{n}_Q|}{|\\vec{n}_P|\\cdot|\\vec{n}_Q|}=\\dfrac{|1+2-2|}{3\\cdot\\sqrt3}=\\dfrac{1}{3\\sqrt3}=\\dfrac{\\sqrt3}{9}$.\nVậy cosin của góc giữa hai mặt phẳng bằng $\\dfrac{\\sqrt3}{9}$. Chọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0631",
+  "dap_an": "23",
+  "loi_giai": "Mặt cầu $(S):(x-2)^2+(y+5)^2+(z-7)^2=16$ có tâm $I(2;-5;7)$.\nSuy ra $a=2$, $b=-5$, $c=7$.\n$3a-2b+c=6+10+7=23$.\nVậy $3a-2b+c=23$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0632",
+  "dap_an": "B",
+  "loi_giai": "Biến cố $A$: lần đầu lấy số chẵn, tức là $2$ hoặc $4$.\nBiến cố $B|A$: lần hai lấy số lẻ, biết lần đầu đã lấy số chẵn. Quả đã lấy ra bị bỏ ra ngoài nên lần hai lấy số lẻ ($1$ hoặc $3$) trong 3 quả còn lại.\nNếu lần đầu là $2$: các kết quả $(2,1)$, $(2,3)$.\nNếu lần đầu là $4$: các kết quả $(4,1)$, $(4,3)$.\nVậy $B|A=\\{(2,1),(2,3),(4,1),(4,3)\\}$. Chọn B.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0633",
+  "dap_an": "0.02",
+  "loi_giai": "Gọi $A$ là biến cố \"sản phẩm lần 1 lỗi\", $B$ là biến cố \"sản phẩm lần 2 lỗi\".\n$P(A)=\\dfrac{39}{2000}$, $P(B|A)=\\dfrac{38}{1999}$, $P(B|\\overline{A})=\\dfrac{39}{1999}$.\nTheo công thức xác suất toàn phần: $P(B)=P(A)P(B|A)+P(\\overline{A})P(B|\\overline{A})=\\dfrac{39}{2000}\\cdot\\dfrac{38}{1999}+\\dfrac{1961}{2000}\\cdot\\dfrac{39}{1999}=\\dfrac{39\\cdot 1999}{2000\\cdot 1999}=\\dfrac{39}{2000}=0{,}0195$.\nLàm tròn đến hàng phần trăm: $0{,}02$.\nVậy xác suất cần tìm xấp xỉ $0{,}02$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0634",
+  "dap_an": "A",
+  "loi_giai": "Mặt cầu tâm $I(a;b;c)$, bán kính $R$ có phương trình $(x-a)^2+(y-b)^2+(z-c)^2=R^2$.\nVới $I(1;-2;3)$, $R=3$ ta được $(x-1)^2+(y+2)^2+(z-3)^2=9$.\nVậy chọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0635",
+  "dap_an": "C",
+  "loi_giai": "Mặt phẳng $(\\alpha):2x-3z+1=0$, tức $2x+0y-3z+1=0$, có một vectơ pháp tuyến là $(2;0;-3)$.\nVậy $\\vec{n}_1=(2;0;-3)$. Chọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0636",
+  "dap_an": "0.4",
+  "loi_giai": "Gọi $G_1$: \"lần 1 rút được đồng vàng\", $G_2$: \"lần 2 rút được đồng vàng\". Cần tính $P(G_2|G_1)=\\dfrac{P(G_1G_2)}{P(G_1)}$.\nRương I có 3 vàng, rương II có 3 bạc, rương III có 2 vàng 1 bạc; mỗi rương được chọn lần đầu với xác suất $\\dfrac13$.\n$P(G_1)=\\dfrac13\\cdot1+\\dfrac13\\cdot0+\\dfrac13\\cdot\\dfrac23=\\dfrac59$.\nLần 1 chọn rương I (vàng chắc chắn): lần 2 chọn rương II hoặc III mỗi rương xác suất $\\dfrac12$, xác suất vàng là $\\dfrac12\\cdot0+\\dfrac12\\cdot\\dfrac23=\\dfrac13$. Đóng góp: $\\dfrac13\\cdot1\\cdot\\dfrac13=\\dfrac19$.\nLần 1 chọn rương III và rút được vàng (xác suất $\\dfrac13\\cdot\\dfrac23$): lần 2 chọn rương I hoặc II, xác suất vàng là $\\dfrac12\\cdot1+\\dfrac12\\cdot0=\\dfrac12$. Đóng góp: $\\dfrac13\\cdot\\dfrac23\\cdot\\dfrac12=\\dfrac19$.\n$P(G_1G_2)=\\dfrac19+\\dfrac19=\\dfrac29$.\n$P(G_2|G_1)=\\dfrac{2/9}{5/9}=\\dfrac25=0{,}4$.\nVậy xác suất cần tìm là $0{,}4$.",
+  "chuong": "XS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Hiểu rương lần 2 chọn ngẫu nhiên trong 2 rương còn lại."
+ },
+ {
+  "id": "X0637",
+  "dap_an": "A",
+  "loi_giai": "Ta có $P(A|B)=\\dfrac{P(AB)}{P(B)}=\\dfrac{0{,}18}{0{,}6}=0{,}3$.\nVậy $P(A|B)=0{,}3$. Chọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0638",
+  "dap_an": "45",
+  "loi_giai": "Vectơ pháp tuyến của $(P)$ là $\\vec{n}_P=(1;0;3)$, của $(Q)$ là $\\vec{n}_Q=(2;0;1)$.\n$\\cos\\varphi=\\dfrac{|1\\cdot2+0+3\\cdot1|}{\\sqrt{1+9}\\cdot\\sqrt{4+1}}=\\dfrac{5}{\\sqrt{50}}=\\dfrac{\\sqrt2}{2}$.\nSuy ra $\\varphi=45^{\\circ}$.\nVậy góc giữa hai mặt phẳng bằng $45^{\\circ}$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0639",
+  "dap_an": "D",
+  "loi_giai": "Mặt cầu $(S):(x+2)^2+(y-1)^2+z^2=4$ có tâm $I(-2;1;0)$ và bán kính $R=\\sqrt4=2$.\nVậy chọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0640",
+  "dap_an": "D",
+  "loi_giai": "Diện tích hình phẳng là $S=\\displaystyle\\int_1^2 x^2\\,dx$ (vì $x^2\\ge0$).\n$S=\\dfrac{x^3}{3}\\Big|_1^2=\\dfrac{8}{3}-\\dfrac13=\\dfrac73$.\nVậy $S=\\dfrac73$. Chọn D.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0641",
+  "dap_an": "1",
+  "loi_giai": "Điểm $M(5;1;c)$ thuộc $(P):x-2y+2z-5=0$ nên $5-2\\cdot1+2c-5=0$.\nSuy ra $2c-2=0$, tức $c=1$.\nVậy $c=1$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đề viết M(5,1,c), hiểu là M(5;1;c)."
+ },
+ {
+  "id": "X0642",
+  "dap_an": "C",
+  "loi_giai": "Mặt phẳng $(P):3x+2y-z+1=0$ có một vectơ pháp tuyến là $(3;2;-1)$ (các hệ số của $x,y,z$).\nVậy chọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0643",
+  "dap_an": "B",
+  "loi_giai": "Đường thẳng $d$ có phương trình tham số $x=0$, $y=t$, $z=2-t$, tức $x=0+0\\cdot t$, $y=0+1\\cdot t$, $z=2+(-1)\\cdot t$.\nVectơ chỉ phương là hệ số của $t$: $(0;1;-1)$.\nVậy chọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0644",
+  "dap_an": "A",
+  "loi_giai": "Vectơ chỉ phương của $d_1$ là $\\vec{u}_1=(1;-1;2)$, của $d_2$ là $\\vec{u}_2=(-1;1;1)$.\n$\\vec{u}_1\\cdot\\vec{u}_2=1\\cdot(-1)+(-1)\\cdot1+2\\cdot1=0$.\nSuy ra $\\cos\\varphi=0$, tức $\\varphi=90^{\\circ}$.\nVậy góc giữa hai đường thẳng bằng $90^{\\circ}$. Chọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0645",
+  "dap_an": "C",
+  "loi_giai": "Đường thẳng đi qua $M(2;0;-1)$ với vectơ chỉ phương $\\vec{a}=(2;-3;1)$ có phương trình tham số\n$\\begin{cases}x=2+2t\\\\y=-3t\\\\z=-1+t\\end{cases}$.\nVậy chọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0646",
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\overrightarrow{AB}=(1;6;5)$, $\\overrightarrow{AC}=(-1;8;9)$.\n$[\\overrightarrow{AB},\\overrightarrow{AC}]=(6\\cdot9-5\\cdot8;\\ 5\\cdot(-1)-1\\cdot9;\\ 1\\cdot8-6\\cdot(-1))=(14;-14;14)=14\\cdot(1;-1;1)$.\nMặt phẳng nhận $\\vec{n}=(1;-1;1)$ làm vectơ pháp tuyến và đi qua $A(1;1;4)$: $1(x-1)-1(y-1)+1(z-4)=0$.\nRút gọn: $x-y+z-4=0$.\nKiểm tra: $B$: $2-7+9-4=0$; $C$: $0-9+13-4=0$.\nVậy chọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0647",
+  "dap_an": "C",
+  "loi_giai": "Đường thẳng $d:\\dfrac{x-4}{7}=\\dfrac{y-5}{4}=\\dfrac{z+7}{-5}$ có một vectơ chỉ phương là $(7;4;-5)$.\nVậy chọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0648",
+  "dap_an": "45",
+  "loi_giai": "Vectơ pháp tuyến của $(P)$ là $\\vec{n}_P=(3;0;1)$, của $(Q)$ là $\\vec{n}_Q=(1;0;2)$.\n$\\cos\\varphi=\\dfrac{|3\\cdot1+0+1\\cdot2|}{\\sqrt{9+1}\\cdot\\sqrt{1+4}}=\\dfrac{5}{\\sqrt{50}}=\\dfrac{\\sqrt2}{2}$.\nSuy ra $\\varphi=45^{\\circ}$.\nVậy góc giữa hai mặt phẳng bằng $45^{\\circ}$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0649",
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\overrightarrow{MN}=(4;-1;2)$, $\\overrightarrow{MP}=(1;-9;-3)$.\n$[\\overrightarrow{MN},\\overrightarrow{MP}]=((-1)(-3)-2(-9);\\ 2\\cdot1-4\\cdot(-3);\\ 4\\cdot(-9)-(-1)\\cdot1)=(21;14;-35)=7\\cdot(3;2;-5)$.\nMặt phẳng nhận $(3;2;-5)$ làm vectơ pháp tuyến, qua $M(1;3;2)$: $3(x-1)+2(y-3)-5(z-2)=0\\Leftrightarrow 3x+2y-5z+1=0$.\nMặt phẳng có dạng $Ax+By+Cz+1=0$ nên $A=3$, $B=2$, $C=-5$.\n$S=A+B+C=3+2-5=0$.\nVậy $S=0$. Chọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0650",
+  "dap_an": "C",
+  "loi_giai": "Mặt phẳng $(P):x-4y+3z-2=0$ có một vectơ pháp tuyến là $(1;-4;3)$.\nVậy $\\overrightarrow{n_3}=(1;-4;3)$. Chọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0651",
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng đi qua $M(1;-1;2)$ có vectơ chỉ phương $\\vec{u}=(2;1;3)$ có phương trình chính tắc\n$\\dfrac{x-1}{2}=\\dfrac{y+1}{1}=\\dfrac{z-2}{3}$.\nVậy chọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0652",
+  "dap_an": "B",
+  "loi_giai": "Ta có $P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0{,}3}{0{,}7}=\\dfrac37$.\nVậy $P(A|B)=\\dfrac37$. Chọn B.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0653",
+  "dap_an": "A",
+  "loi_giai": "Mặt cầu $(S):(x+1)^2+(y-3)^2+(z-2)^2=9$ có tâm $I(-1;3;2)$ và bán kính $R=\\sqrt9=3$.\nVậy chọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": true,
+  "ghi": "Đề ghi \"mặt cầu (P)\" là lỗi in, hiểu là (S)."
+ },
+ {
+  "id": "X0654",
+  "dap_an": "D",
+  "loi_giai": "Vectơ chỉ phương của $d_1$ là $\\vec{u}_1=(1;-1;2)$, của $d_2$ là $\\vec{u}_2=(-1;1;1)$.\n$\\vec{u}_1\\cdot\\vec{u}_2=-1-1+2=0$ nên $d_1\\perp d_2$.\nVậy góc giữa hai đường thẳng bằng $90^{\\circ}$. Chọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0655",
+  "dap_an": "0.05",
+  "loi_giai": "Số cách chọn 3 bạn từ 12 bạn: $C_{12}^3=220$.\nSố cách chọn 3 bạn đều là nữ: $C_7^3=35$. Số cách chọn có ít nhất một nam: $220-35=185$.\nTrong các cách này, ba bạn cùng giới tính chỉ có thể là ba nam: $C_5^3=10$ cách.\nXác suất cần tìm: $\\dfrac{10}{185}=\\dfrac{2}{37}\\approx0{,}054\\approx0{,}05$.\nVậy xác suất xấp xỉ $0{,}05$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0656",
+  "dap_an": "0.14",
+  "loi_giai": "Gọi $B$: \"người đó mắc bệnh X\", $T$: \"xét nghiệm dương tính\".\n$P(B)=0{,}005$, $P(\\overline{B})=0{,}995$, $P(T|B)=0{,}95$, $P(T|\\overline{B})=1-0{,}97=0{,}03$.\n$P(T)=0{,}005\\cdot0{,}95+0{,}995\\cdot0{,}03=0{,}00475+0{,}02985=0{,}0346$.\nTheo công thức Bayes: $P(B|T)=\\dfrac{P(B)P(T|B)}{P(T)}=\\dfrac{0{,}00475}{0{,}0346}\\approx0{,}1373\\approx0{,}14$.\nVậy xác suất cần tìm xấp xỉ $0{,}14$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0657",
+  "dap_an": "B",
+  "loi_giai": "Mặt cầu $(x+3)^2+(y-1)^2+(z+2)^2=4$ có tâm $I(-3;1;-2)$ và bán kính $R=\\sqrt4=2$.\nVậy chọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0658",
+  "dap_an": "0.17",
+  "loi_giai": "Số cách chọn 3 bạn từ 12 bạn: $C_{12}^3=220$.\nSố cách chọn 3 bạn đều là nam: $C_5^3=10$. Số cách chọn có ít nhất một nữ: $220-10=210$.\nTrong các cách này, ba bạn cùng giới tính chỉ có thể là ba nữ: $C_7^3=35$ cách.\nXác suất cần tìm: $\\dfrac{35}{210}=\\dfrac16\\approx0{,}17$.\nVậy xác suất xấp xỉ $0{,}17$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0659",
+  "dap_an": "A",
+  "loi_giai": "Phương trình $x^2+y^2+z^2-2ax-2by-2cz+d=0$ là phương trình mặt cầu khi $a^2+b^2+c^2-d>0$.\nA: $a=0,b=2,c=0,d=1$: $4-1=3>0$, thoả mãn.\nB: $a=-1,b=-3,c=1,d=15$: $1+9+1-15=-4<0$.\nC: $a=0,b=3,c=0,d=20$: $9-20=-11<0$.\nD: $a=2,b=0,c=1,d=5$: $4+1-5=0$, chỉ là một điểm.\nVậy chọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0660",
+  "dap_an": "C",
+  "loi_giai": "Ta có $P(A|B)=\\dfrac{P(AB)}{P(B)}=\\dfrac{0{,}2}{0{,}8}=0{,}25$.\nVậy $P(A|B)=0{,}25$. Chọn C.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ }
+]

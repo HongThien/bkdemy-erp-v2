@@ -1,0 +1,148 @@
+[
+ {
+  "ma_cau": "T1120000009905",
+  "loai": "tra_loi_ngan",
+  "de": "Một nhóm học sinh có 5 nam và 7 nữ tham gia lao động trên sân trường. Cô giáo chọn ngẫu nhiên đồng thời 3 bạn trong nhóm đi quét sân. Biết rằng có ít nhất một bạn nữ được chọn,tính xác suất để ba bạn được chọn có cùng giới tính( kết quả làm tròn đến hàng phần trăm).",
+  "dap_an": "0.17",
+  "loi_giai": "Số cách chọn 3 bạn từ 12 bạn: $C_{12}^3=220$.\nSố cách chọn 3 bạn đều là nam: $C_5^3=10$. Số cách chọn có ít nhất một nữ: $220-10=210$.\nTrong các cách này, ba bạn cùng giới tính chỉ có thể là ba nữ: $C_7^3=35$ cách.\nXác suất cần tìm: $\\dfrac{35}{210}=\\dfrac16\\approx0{,}17$.\nVậy xác suất xấp xỉ $0{,}17$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010062",
+  "loai": "trac_nghiem",
+  "de": "Một nhà máy có hai dây chuyền. Dây chuyền I sản xuất 60% sản phẩm, dây chuyền II sản xuất 40%. Tỉ lệ phế phẩm của dây chuyền I là 2%, dây chuyền II là 3%. Chọn ngẫu nhiên 1 sản phẩm, xác suất nó là phế phẩm là:",
+  "lua_chon": [
+   "0,024.",
+   "0,026.",
+   "0,03",
+   "0,025."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Gọi $A$ là biến cố \"sản phẩm là phế phẩm\". $P(I)=0,6$, $P(II)=0,4$, $P(A|I)=0,02$, $P(A|II)=0,03$.\nTheo công thức xác suất toàn phần: $P(A)=0,6\\cdot0,02+0,4\\cdot0,03=0,012+0,012=0,024$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010080",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A$ và $B$ bất kì với $P\\left( A \\right)>0,\\,P\\left( B \\right)>0$. Chọn khẳng định đúng trong các khẳng định sau là",
+  "lua_chon": [
+   "$P\\left( A\\cup B \\right)=P\\left( A|B \\right).P\\left( B \\right)$.",
+   "$P\\left( A\\cap B \\right)=P\\left( A|B \\right).P\\left( A \\right)$.",
+   "$P\\left( A|B \\right).P\\left( A \\right)=P\\left( B|A \\right).P\\left( B \\right)$.",
+   "$P\\left( A|B \\right).P\\left( B \\right)=P\\left( B|A \\right).P\\left( A \\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Công thức nhân xác suất: $P(A\\cap B)=P(A|B)\\cdot P(B)=P(B|A)\\cdot P(A)$.\nSuy ra $P(A|B)\\cdot P(B)=P(B|A)\\cdot P(A)$.\nCác khẳng định A, B, C đều sai (A nhầm $A\\cup B$ với $A\\cap B$; B và C nhầm biến cố đứng nhân với xác suất có điều kiện).\nVậy khẳng định đúng là D. Chọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010126",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty bảo hiểm nhận thấy có 48% số người mua bảo hiểm ô tô là phụ nữ và có 36% số người mua bảo hiểm ô tô là phụ nữ trên 50 tuổi. Biết một người mua bảo hiểm ô tô là phụ nữ, tính xác suất người đó trên 50 tuổi.",
+  "dap_an": "0.75",
+  "loi_giai": "Gọi $A$: \"người mua là phụ nữ\", $B$: \"người mua trên 50 tuổi\". $P(A)=0{,}48$, $P(A\\cap B)=0{,}36$.\n$P(B|A)=\\dfrac{P(A\\cap B)}{P(A)}=\\dfrac{0{,}36}{0{,}48}=0{,}75$.\nVậy xác suất cần tìm là $0.75$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010012",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A$ và $B$ có $\\ P\\left( A \\right)=0,2;\\ P\\left( B \\right)=0,6;P\\left( A|B \\right)=0,3$. Tính $\\ P\\left( \\overline{A}B \\right)$.'",
+  "lua_chon": [
+   "$0,02$.",
+   "$0,42$.",
+   "$0,18$.",
+   "$0,24$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $P(AB)=P(A|B)\\cdot P(B)=0{,}3\\cdot 0{,}6=0{,}18$.\n$P(\\overline{A}B)=P(B)-P(AB)=0{,}6-0{,}18=0{,}42$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009931",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A$,$B$ với $P(B)=0,2$,$P(\\mathrm{A}B)=0,1$. Khi đó, $P\\left( \\left. A \\right|B \\right)$ bằng",
+  "lua_chon": [
+   "$0,5.$",
+   "$0,3.$",
+   "$0,8.$",
+   "$0,2.$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "$P(A|B)=\\dfrac{P(AB)}{P(B)}=\\dfrac{0,1}{0,2}=0,5$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010007",
+  "loai": "tra_loi_ngan",
+  "de": "Công ty sữa Việt Nam phát phiếu thăm dò khách hàng ở một thành phố với hai câu hỏi: “Tháng vừa rồi bạn có xem quảng cáo về Vinamilk không?” và “Tháng vừa rồi bạn có mua sản phẩm nào của Vinamilk không?”. Kết quả thăm dò như sau: Số người xem quảng cáo Vinamilk chiếm tỉ lệ 45% tổng số người khảo sát, số người có mua sản phẩm của Vinamilk chiếm tỉ lệ 25% tổng số người khảo sát. Trong số người mua sản phẩm của Vinamilk thì số người xem quảng cáo chiếm tỉ lệ 60%. Chọn ngẫu nhiên một khách hàng trong số các khách hàng đã xem quảng cáo về Vinamilk. Xác suất khách hàng đó mua sản phẩm Vinamilk khi đã xem quảng cáo là bao nhiêu? (làm tròn đến hàng phần trăm)\n----HẾT---",
+  "dap_an": "0.33",
+  "loi_giai": "Gọi $A$ là biến cố \"khách hàng xem quảng cáo\", $B$ là biến cố \"khách hàng mua sản phẩm\".\nTa có $P(A)=0{,}45$, $P(B)=0{,}25$, $P(A|B)=0{,}6$.\n$P(AB)=P(B)\\cdot P(A|B)=0{,}25\\cdot 0{,}6=0{,}15$.\n$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0{,}15}{0{,}45}=\\dfrac{1}{3}\\approx 0{,}33$.\nVậy xác suất cần tìm xấp xỉ $0{,}33$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010097",
+  "loai": "tra_loi_ngan",
+  "de": "Lớp 12A có 30 học sinh, trong đó có 17 bạn nữ còn lại là nam. Có 3 bạn tên An, trong đó có 1 bạn nữ và 2 bạn nam. Thầy giáo gọi ngẫu nhiên 1 bạn lên bảng. Tính xác suất để bạn được gọi tên An, với điều kiện bạn đó là nam. (Kết quả làm tròn đến hàng phần trăm)",
+  "dap_an": "0.15",
+  "loi_giai": "Lớp có $30-17=13$ bạn nam, trong đó có $2$ bạn tên An.\nXác suất cần tìm là xác suất có điều kiện: $P=\\dfrac{2}{13}\\approx 0{,}1538$.\nVậy xác suất khoảng $0.15$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010100",
+  "loai": "tra_loi_ngan",
+  "de": "Một hộp đựng 9 viên bi xanh và 7 viên bi đỏ. Lần lượt lấy ngẫu nhiên ra 2 bi, mỗi lần lấy 1 bi không hoàn lại. Tính xác suất để bi thứ 2 màu xanh nếu biết bi thứ nhất màu đỏ?\n-------- HẾT--------",
+  "dap_an": "0.6",
+  "loi_giai": "Sau khi bi thứ nhất màu đỏ được lấy ra, hộp còn $9$ bi xanh và $6$ bi đỏ, tổng $15$ bi.\nXác suất bi thứ hai màu xanh khi biết bi thứ nhất đỏ: $\\dfrac{9}{15}=\\dfrac{3}{5}=0{,}6$.\nVậy xác suất cần tìm là $0.6$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009955",
+  "loai": "tra_loi_ngan",
+  "de": "Giả sử có một loại bệnh mà tỉ lệ người mắc bệnh là $0,02\\%$. Nếu một người mắc bệnh thì xác suất xét nghiệm cho kết quả dương tính là $98\\%$ , nếu một người không mắc bệnh thì xác suất cho kết quả dương tính là $2\\%$. Khi một người xét nghiệm có kết quả dương tính thì khả năng mắc bệnh của người đó là $a\\%$. Giá trị $a$ (làm tròn đến hàng phần trăm) bằng bao nhiêu?",
+  "dap_an": "0.97",
+  "loi_giai": "Gọi $A$: \"người mắc bệnh\", $B$: \"xét nghiệm dương tính\". $P(A)=0,0002$; $P(\\overline A)=0,9998$; $P(B|A)=0,98$; $P(B|\\overline A)=0,02$.\n$P(B)=0,0002\\cdot0,98+0,9998\\cdot0,02=0,000196+0,019996=0,020192$.\n$P(A|B)=\\dfrac{P(A)P(B|A)}{P(B)}=\\dfrac{0,000196}{0,020192}\\approx0,009707\\approx0,97\\%$.\nVậy $a\\approx0,97$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010020",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A,B$ với $0<P(B)<1.$ Phát biểu nào sau đây là đúng?",
+  "lua_chon": [
+   "$P(A)=P\\left( \\overline{B} \\right).P\\left( A|B \\right)+P\\left( B \\right).P\\left( A|\\overline{B} \\right).$",
+   "$P(A)=P\\left( \\overline{B} \\right).P\\left( A|\\overline{B} \\right)-P\\left( B \\right).P\\left( A|B \\right).$",
+   "$P(A)=P\\left( B \\right).P\\left( A|B \\right)-P\\left( \\overline{B} \\right).P\\left( A|\\overline{B} \\right).$",
+   "$P(A)=P\\left( B \\right).P\\left( A|B \\right)+P\\left( \\overline{B} \\right).P\\left( A|\\overline{B} \\right).$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Theo công thức xác suất toàn phần với hệ $\\{B;\\overline{B}\\}$: $P(A)=P(B)\\cdot P(A|B)+P(\\overline{B})\\cdot P(A|\\overline{B})$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009907",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố A và B có P(A) = 0,5 , P(B) = 0,8 và P(AB) = 0,2. Xác suất của biến cố A với điều kiện B là",
+  "lua_chon": [
+   "0,625.",
+   "0,4.",
+   "0,25.",
+   "0,5."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $P(A|B)=\\dfrac{P(AB)}{P(B)}=\\dfrac{0{,}2}{0{,}8}=0{,}25$.\nVậy $P(A|B)=0{,}25$. Chọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009900",
+  "loai": "trac_nghiem",
+  "de": "Cho hai biến cố $A$ và $B$, với $P\\left( B \\right)=0,7$, $P\\left( A\\cap B \\right)=0,3$. Tính $P\\left( A|B \\right)$.",
+  "lua_chon": [
+   "$\\frac{1}{7}$.",
+   "$\\frac{3}{7}$.",
+   "$\\frac{1}{2}$.",
+   "$\\frac{6}{7}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0{,}3}{0{,}7}=\\dfrac37$.\nVậy $P(A|B)=\\dfrac37$. Chọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

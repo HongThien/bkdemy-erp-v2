@@ -1,0 +1,15 @@
+[
+ {"ma_cau": "T1120000009905", "dang_bai_id": "NDB02571", "chac": "cao", "ly_do": "Chọn nhóm bằng tổ hợp, biết có ít nhất một nữ: đếm trên không gian mẫu thu hẹp."},
+ {"ma_cau": "T11200000010062", "dang_bai_id": "NDB02576", "chac": "cao", "ly_do": "Hai dây chuyền, tỉ lệ phế phẩm thực tế: công thức toàn phần bằng ngữ cảnh."},
+ {"ma_cau": "T11200000010080", "dang_bai_id": "NDB02567", "chac": "cao", "ly_do": "Chọn khẳng định đúng về công thức xác suất có điều kiện/nhân, thuần lý thuyết."},
+ {"ma_cau": "T11200000010126", "dang_bai_id": "NDB02570", "chac": "cao", "ly_do": "Tỉ lệ thống kê phụ nữ và phụ nữ trên 50 tuổi, lấy P(AB)/P(A)."},
+ {"ma_cau": "T11200000010012", "dang_bai_id": "NDB02568", "chac": "cao", "ly_do": "Cho P(A), P(B), P(A|B), tính P(ĀB)=P(B)-P(AB) bằng ký hiệu."},
+ {"ma_cau": "T1120000009931", "dang_bai_id": "NDB02568", "chac": "cao", "ly_do": "Thay P(AB), P(B) vào P(A|B)=P(AB)/P(B)."},
+ {"ma_cau": "T11200000010007", "dang_bai_id": "NDB02570", "chac": "cao", "ly_do": "Tỉ lệ khảo sát khách hàng xem quảng cáo/mua hàng, tính P(B|A) từ tỉ lệ."},
+ {"ma_cau": "T11200000010097", "dang_bai_id": "NDB02571", "chac": "cao", "ly_do": "Chọn một bạn biết là nam: đếm trên tập nam thu hẹp (dạng sau thắng)."},
+ {"ma_cau": "T11200000010100", "dang_bai_id": "NDB02571", "chac": "cao", "ly_do": "Lấy không hoàn lại, biết bi thứ nhất đỏ: cập nhật hộp, đếm lại."},
+ {"ma_cau": "T1120000009955", "dang_bai_id": "NDB02580", "chac": "cao", "ly_do": "Biết xét nghiệm dương tính, tìm xác suất mắc bệnh: Bayes hai nhóm."},
+ {"ma_cau": "T11200000010020", "dang_bai_id": "NDB02574", "chac": "cao", "ly_do": "Chọn công thức xác suất toàn phần đúng trong 4 phương án."},
+ {"ma_cau": "T1120000009907", "dang_bai_id": "NDB02568", "chac": "cao", "ly_do": "Cho P(A), P(B), P(AB), tính P(A|B)=P(AB)/P(B)."},
+ {"ma_cau": "T1120000009900", "dang_bai_id": "NDB02568", "chac": "cao", "ly_do": "Cho P(B), P(A∩B), thay vào công thức tính P(A|B)."}
+]

@@ -1,0 +1,820 @@
+[
+ {
+  "ma_cau": "T1120000009756",
+  "loai": "trac_nghiem",
+  "de": "Tiệm cận đứng của đồ thị hàm số $y=\\frac{2x+1}{x-1}$ là:",
+  "lua_chon": [
+   "$x=1$.",
+   "$y=2$.",
+   "$x=-\\frac{1}{2}$.",
+   "$y=-1$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\lim_{x\\to 1^+}\\dfrac{2x+1}{x-1}=+\\infty$ (tử $\\to 3>0$, mẫu $\\to 0^+$).\nVậy tiệm cận đứng của đồ thị là $x=1$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009818",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left( x \\right)$ có đạo hàm $f'\\left( x \\right)=\\left( x-2 \\right)^{2}\\left( 1-x \\right)$ với mọi $x\\in\\mathbb{R}$. Hàm số đã cho đồng biến trên khoảng nào dưới đây?",
+  "lua_chon": [
+   "$\\left( 1;+\\infty \\right)$.",
+   "$\\left( -\\infty;1 \\right)$.",
+   "$\\left( 2;+\\infty \\right)$.",
+   "$\\left( 1;2 \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "$f'(x)=(x-2)^{2}(1-x)$; $(x-2)^{2}\\ge0$ với mọi $x$, bằng $0$ chỉ tại $x=2$.\n$f'(x)>0 \\Leftrightarrow 1-x>0$ và $x\\ne2 \\Leftrightarrow x<1$.\nVậy hàm số đồng biến trên $(-\\infty;1)$. Chọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010195",
+  "loai": "tra_loi_ngan",
+  "de": "Giá trị lớn nhất của hàm số $f\\left( x \\right)=x+\\cos^{2}x$ trên đoạn $\\left[ 0;\\frac{\\pi}{4} \\right]$ có dạng $\\frac{\\pi+a}{b}$. Tính $a+b$.",
+  "dap_an": "6",
+  "loi_giai": "Ta có $f'\\left( x \\right)=1-2\\sin x\\cos x=1-\\sin 2x\\ge 0$ với mọi $x$, dấu bằng chỉ xảy ra tại điểm rời rạc.\nDo đó $f\\left( x \\right)$ đồng biến trên $\\left[ 0;\\dfrac{\\pi}{4} \\right]$ nên $\\max f\\left( x \\right)=f\\left( \\dfrac{\\pi}{4} \\right)=\\dfrac{\\pi}{4}+\\cos^{2}\\dfrac{\\pi}{4}=\\dfrac{\\pi}{4}+\\dfrac{1}{2}=\\dfrac{\\pi+2}{4}$.\nSuy ra $a=2$, $b=4$.\nVậy $a+b=6$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009673",
+  "loai": "trac_nghiem",
+  "de": "Giá trị cực tiểu $y_{CT}$ của hàm số $y=x^{3}-3x^{2}+4$ là:",
+  "lua_chon": [
+   "$y_{CT}=4$.",
+   "$y_{CT}=2$.",
+   "$y_{CT}=0$.",
+   "$y_{CT}=3$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "$y'=3x^{2}-6x=3x(x-2)$; $y'=0\\Leftrightarrow x=0$ hoặc $x=2$.\n$y'>0$ trên $(-\\infty;0)$ và $(2;+\\infty)$; $y'<0$ trên $(0;2)$.\nHàm số đạt cực tiểu tại $x=2$, giá trị cực tiểu $y_{CT}=y(2)=8-12+4=0$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010206",
+  "loai": "tra_loi_ngan",
+  "de": "Một loại vi khuẩn được tiêm một loại thuốc kích thích sự sinh sản. Sau $t$ giây, số vi khuẩn được xác định theo công thức $N\\left( t \\right)=1200+60t^{2}-t^{3}\\,\\left( 0\\le t\\le 60 \\right)$. Hỏi sau bao nhiêu giây thì số vi khuẩn lớn nhất?",
+  "dap_an": "40",
+  "loi_giai": "Ta có $N'\\left( t \\right)=120t-3t^{2}=3t\\left( 40-t \\right)$.\nTrên đoạn $\\left[ 0;60 \\right]$: $N'\\left( t \\right)=0\\Leftrightarrow t=0$ hoặc $t=40$.\n$N\\left( 0 \\right)=1\\,200$; $N\\left( 40 \\right)=1\\,200+96\\,000-64\\,000=33\\,200$; $N\\left( 60 \\right)=1\\,200+216\\,000-216\\,000=1\\,200$.\nVậy số vi khuẩn lớn nhất sau $40$ giây.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009365",
+  "loai": "tra_loi_ngan",
+  "de": "Có bao nhiêu giá trị nguyên của $m$ thuộc khoảng $\\left( -2024\\,;\\,2024 \\right)$ để hàm số $y=\\frac{m-1}{5}x^{5}+\\frac{m+2}{4}x^{4}+m+5$ đạt cực đại tại $x=0$?",
+  "dap_an": "2021",
+  "loi_giai": "$y'=\\left(m-1\\right)x^{4}+\\left(m+2\\right)x^{3}=x^{3}\\left[\\left(m-1\\right)x+m+2\\right]$.\nĐặt $g(x)=\\left(m-1\\right)x+m+2$, khi đó $y'=x^{3}g(x)$.\nNếu $m=-2$ thì $y'=-3x^{4}\\le 0$, hàm số không có cực trị (loại).\nNếu $g(0)=m+2>0$: gần $x=0$ thì $y'$ cùng dấu $x^{3}$, đổi dấu từ âm sang dương nên $x=0$ là điểm cực tiểu (loại).\nNếu $g(0)=m+2<0$: gần $x=0$ thì $y'$ ngược dấu $x^{3}$, đổi dấu từ dương sang âm nên $x=0$ là điểm cực đại (nhận).\nVậy $m<-2$ và $m\\in\\left(-2024;2024\\right)$, $m$ nguyên nên $m\\in\\left\\{-2023;\\ldots;-3\\right\\}$.\nSố giá trị: $-3-(-2023)+1=2021$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009351",
+  "loai": "trac_nghiem",
+  "de": "Một chất điểm chuyển động theo quy luật $s\\left( t \\right)=-t^{3}+6t^{2}$ với $t$ là thời gian tính từ lúc bắt đầu chuyển động, $s\\left( t \\right)$ là quãng đường đi được trong khoảng thời gian $t$. Tính vận tốc chất điểm đạt được tại thời điểm $t=2$.",
+  "lua_chon": [
+   "$\\frac{21}{4}$",
+   "$\\frac{45}{4}$",
+   "$9$",
+   "$12.$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Vận tốc là đạo hàm của quãng đường: $v(t)=s'(t)=-3t^{2}+12t$.\nTại $t=2$: $v(2)=-3\\cdot 4+12\\cdot 2=-12+24=12$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009762",
+  "loai": "trac_nghiem",
+  "de": "Tiệm cận ngang của đồ thị hàm số $y=\\frac{2x+1}{x-1}$ là:",
+  "lua_chon": [
+   "$x=-\\frac{1}{2}$.",
+   "$y=-1$.",
+   "$x=1$.",
+   "$y=2$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $\\lim_{x\\to\\pm\\infty}\\dfrac{2x+1}{x-1}=2$.\nVậy tiệm cận ngang của đồ thị là $y=2$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009776",
+  "loai": "trac_nghiem",
+  "de": "Đường thẳng nào dưới đây là tiệm cận đứng của đồ thị hàm số $y=\\frac{2x+1}{x+1}$?",
+  "lua_chon": [
+   "$x=1$",
+   "$y=2$",
+   "$x=-1$",
+   "$y=-1$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $\\lim_{x\\to(-1)^+}\\dfrac{2x+1}{x+1}=-\\infty$ (tử $\\to -1<0$, mẫu $\\to 0^+$).\nVậy tiệm cận đứng của đồ thị là $x=-1$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010190",
+  "loai": "tra_loi_ngan",
+  "de": "Một cửa hàng bán sản phẩm áo phông có khảo sát cho thấy: khi giá bán là $x$ (nghìn đồng/áo) thì số áo bán ra mỗi ngày được mô tả gần đúng bởi $p=600-10x$. Tìm mức giá bán một chiếc áo (đơn vị nghìn đồng) để giúp doanh thu trong một ngày là lớn nhất.",
+  "dap_an": "30",
+  "loi_giai": "Doanh thu mỗi ngày: $R\\left( x \\right)=x\\cdot p=x\\left( 600-10x \\right)=-10x^{2}+600x$ với $0<x<60$.\n$R'\\left( x \\right)=-20x+600=0\\Leftrightarrow x=30$.\n$R'\\left( x \\right)>0$ khi $x<30$ và $R'\\left( x \\right)<0$ khi $x>30$ nên $R$ đạt giá trị lớn nhất tại $x=30$ (khi đó $R=9\\,000$).\nVậy giá bán mỗi chiếc áo là $30$ nghìn đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009694",
+  "loai": "tra_loi_ngan",
+  "de": "Giá trị nhỏ nhất của hàm số $y=\\frac{x^{2}+2x+4}{x+2}$ trên đoạn $\\left[ -1;2 \\right]$ là bao nhiêu?",
+  "dap_an": "2",
+  "loi_giai": "$y=\\dfrac{x^2+2x+4}{x+2}=x+\\dfrac{4}{x+2}$ trên $[-1;2]$.\n$y'=1-\\dfrac{4}{(x+2)^2}=\\dfrac{x^2+4x}{(x+2)^2}$; $y'=0\\Leftrightarrow x=0$ hoặc $x=-4$ (loại).\n$y(-1)=3$; $y(0)=2$; $y(2)=3$.\nVậy giá trị nhỏ nhất bằng $2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009828",
+  "loai": "trac_nghiem",
+  "de": "Một doanh nghiệp dự kiến lợi nhuận khi sản xuất $x$ sản phẩm $(0\\le x\\le 300)$ được cho bởi hàm số $y=-x^{3}+300x^{2}$ (đơn vị: đồng). Hỏi doanh nghiệp cần sản xuất bao nhiêu sản phẩm để đạt được lợi nhuận cao nhất?",
+  "lua_chon": [
+   "$200$.",
+   "$150$.",
+   "$250$.",
+   "$100$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Xét $y=-x^{3}+300x^{2}$ trên đoạn $[0;300]$.\n$y'=-3x^{2}+600x=-3x(x-200)$; $y'=0 \\Leftrightarrow x=0$ hoặc $x=200$.\n$y(0)=0$; $y(200)=-8\\,000\\,000+12\\,000\\,000=4\\,000\\,000$; $y(300)=-27\\,000\\,000+27\\,000\\,000=0$.\nLợi nhuận cao nhất khi $x=200$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009784",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=\\frac{x-1}{x+2}$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "Hàm số đồng biến trên $\\mathbb{R}\\backslash\\left\\{ 2 \\right\\}$.",
+   "Hàm số đồng biến trên $\\mathbb{R}$.",
+   "Hàm số nghịch biến trên $\\mathbb{R}\\backslash\\left\\{ 2 \\right\\}$.",
+   "Hàm số đồng biến trên các khoảng $\\left( -\\infty\\,;\\,-2 \\right)$ và $\\left( -2\\,;\\,+\\infty \\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}\\setminus\\{-2\\}$.\n$y'=\\dfrac{(x+2)-(x-1)}{(x+2)^2}=\\dfrac{3}{(x+2)^2}>0$ với mọi $x\\ne-2$.\nDo đó hàm số đồng biến trên từng khoảng $(-\\infty;-2)$ và $(-2;+\\infty)$ (không đồng biến trên cả $\\mathbb{R}\\setminus\\{-2\\}$ vì tập này không phải một khoảng).\nVậy khẳng định đúng là \"Hàm số đồng biến trên các khoảng $(-\\infty;-2)$ và $(-2;+\\infty)$\".\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009529",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=x-1+\\frac{2}{x-1}\\cdot$ Gọi $I$ là tâm đối xứng của đồ thị hàm số, khoảng cách $OI$ bằng bao nhiêu? ($O$ là gốc tọa độ).",
+  "dap_an": "1",
+  "loi_giai": "Hàm số $y=x-1+\\dfrac{2}{x-1}$ có tiệm cận đứng $x=1$ và tiệm cận xiên $y=x-1$ (vì $\\dfrac{2}{x-1}\\to 0$ khi $x\\to\\pm\\infty$).\nTâm đối xứng $I$ là giao điểm hai tiệm cận: $x=1$, $y=1-1=0$, nên $I\\left( 1;0 \\right)$.\n$OI=\\sqrt{1^{2}+0^{2}}=1$.\nVậy $OI=1$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009718",
+  "loai": "tra_loi_ngan",
+  "de": "Một người thợ muốn làm một chiếc thùng hình hộp chữ nhật không nắp từ $216\\text{ }\\ cm^{2}$ vật liệu nhôm cao cấp. Biết đáy thùng là hình chữ nhật có chiều dài gấp đôi chiều rộng. Thể tích của hộp là lớn nhất bằng bao nhiêu $\\ cm^{3}?$",
+  "dap_an": "288",
+  "loi_giai": "Gọi chiều rộng đáy là $x$ ($x>0$), chiều dài $2x$, chiều cao $h$.\nDiện tích vật liệu (không nắp): $2x^2+2\\cdot2xh+2xh=2x^2+6xh=216\\Rightarrow h=\\dfrac{108-x^2}{3x}$.\nThể tích: $V=2x^2h=\\dfrac{2x(108-x^2)}{3}=\\dfrac{216x-2x^3}{3}$, với $0<x<\\sqrt{108}$.\n$V'=\\dfrac{216-6x^2}{3}=0\\Leftrightarrow x=6$.\n$V'$ đổi dấu từ $+$ sang $-$ tại $x=6$ nên $V$ lớn nhất khi $x=6$: $V=\\dfrac{216\\cdot6-2\\cdot216}{3}=288$.\nVậy thể tích lớn nhất bằng $288\\ cm^3$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009779",
+  "loai": "trac_nghiem",
+  "de": "Một loại vi khuẩn được tiêm một loại thuốc kích thích sự sinh sản. Sau t phút, số vi khuẩn được xác định theo công thức $N(t)=1000+30t^{2}-t^{3}\\,(0\\le t\\le 30)$. Hỏi sau bao nhiêu giây thì số vi khuẩn lớn nhất?",
+  "lua_chon": [
+   "$1100$.",
+   "$20$.",
+   "$1200$.",
+   "$10$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "$N'(t)=60t-3t^2=3t(20-t)$; $N'(t)=0\\Leftrightarrow t=0$ hoặc $t=20$ (trên $[0;30]$).\n$N(0)=1000$; $N(20)=1000+30\\cdot400-8000=5000$; $N(30)=1000+27000-27000=1000$.\nSố vi khuẩn lớn nhất khi $t=20$ phút $=20\\cdot60=1200$ giây.\nVậy sau $1200$ giây.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009583",
+  "loai": "trac_nghiem",
+  "de": "Đường tiệm cận xiên của đồ thị hàm số $y=\\frac{x^{2}+3x}{x-2}$ là",
+  "lua_chon": [
+   "$y=2x-5$.",
+   "$y=x-2$.",
+   "$y=x+5$.",
+   "$y=x-5$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chia đa thức: $\\dfrac{x^2+3x}{x-2}=x+5+\\dfrac{10}{x-2}$.\nVì $\\lim_{x\\to\\pm\\infty}\\dfrac{10}{x-2}=0$ nên tiệm cận xiên là $y=x+5$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009677",
+  "loai": "trac_nghiem",
+  "de": "Một chất điểm chuyển động với vận tốc được cho bởi công thức $v\\left( t \\right)=-t^{2}+4t+2$ , với $t$ (giây) là khoảng thời gian tính từ khi chất điểm bắt đầu chuyển động. Hỏi tại thời điểm nào thì vận tốc của chất điểm là lớn nhất?",
+  "lua_chon": [
+   "$4$.",
+   "2.",
+   "$3$.",
+   "1"
+  ],
+  "dap_an": "B",
+  "loi_giai": "$v(t)=-t^2+4t+2=-(t-2)^2+6\\le6$ với mọi $t\\ge0$.\nDấu \"=\" xảy ra khi $t=2$.\nVậy vận tốc lớn nhất tại thời điểm $t=2$ giây. Chọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009595",
+  "loai": "trac_nghiem",
+  "de": "Sau khi phát hiện một bệnh dịch, các chuyên gia y tế ước tính số người nhiễm bệnh kể từ ngày xuất hiện bệnh nhân đầu tiên đến ngày thứ $t$ là $f\\left( t \\right)=45t^{2}-t^{3}$. Nếu xem $f'\\left( t \\right)$ là tốc độ truyền bệnh tại thời điểm $t$. Tốc độ truyền bệnh sẽ lớn nhất vào ngày thứ bao nhiêu?",
+  "lua_chon": [
+   "15.",
+   "16.",
+   "14.",
+   "17."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Tốc độ truyền bệnh: $f'(t)=90t-3t^2$ ($t\\ge0$).\nĐặt $g(t)=f'(t)$, $g'(t)=90-6t=0\\Leftrightarrow t=15$.\n$g'(t)>0$ khi $t<15$, $g'(t)<0$ khi $t>15$ nên $g(t)$ đạt giá trị lớn nhất tại $t=15$.\nVậy tốc độ truyền bệnh lớn nhất vào ngày thứ $15$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009508",
+  "loai": "tra_loi_ngan",
+  "de": "Cho một tấm nhôm hình chữ nhật có kích thước $15\\,\\text{cm}\\times 24\\,\\text{cm}$. Người ta cắt bỏ 4 góc của tấm tôn 4 miếng hình vuông bằng nhau rồi gò lại thành một hình hộp chữ nhật không có nắp. Để thể tích của hình hộp đó lớn nhất thì độ dài cạnh hình vuông của các miếng tôn bị cắt bỏ bằng bao nhiêu?",
+  "dap_an": "3",
+  "loi_giai": "Gọi $x$ (cm) là cạnh hình vuông cắt bỏ, $0<x<7{,}5$. Hình hộp có các cạnh $x$; $15-2x$; $24-2x$.\n$V(x)=x(15-2x)(24-2x)=4x^{3}-78x^{2}+360x$.\n$V'(x)=12x^{2}-156x+360=0\\Leftrightarrow x^{2}-13x+30=0\\Leftrightarrow x=3$ hoặc $x=10$ (loại vì $x<7{,}5$).\n$V'(x)>0$ khi $0<x<3$, $V'(x)<0$ khi $3<x<7{,}5$ nên $V$ lớn nhất tại $x=3$ ($V=486\\ \\text{cm}^{3}$).\nVậy cạnh hình vuông cần cắt bỏ là $3$ cm.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009774",
+  "loai": "trac_nghiem",
+  "de": "Điểm cực tiểu của đồ thị hàm số $y=x^{3}-3x+3$ là",
+  "lua_chon": [
+   "$A(-1;5)$.",
+   "$C(1;1)$.",
+   "$D(1;2)$.",
+   "$B(5;-1)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "$y'=3x^2-3$; $y'=0\\Leftrightarrow x=\\pm1$. $y''=6x$.\nTại $x=1$: $y''(1)=6>0$ nên $x=1$ là điểm cực tiểu, $y(1)=1-3+3=1$.\nVậy điểm cực tiểu của đồ thị là $C(1;1)$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010219",
+  "loai": "trac_nghiem",
+  "de": "Đồ thị hàm số $y=\\frac{-x^{2}+9}{x+1}$ cắt trục tung tại điểm có tọa độ là",
+  "lua_chon": [
+   "$\\left( 0;9 \\right).$",
+   "$\\left( 3;0 \\right).$",
+   "$\\left( 0;3 \\right).$",
+   "$\\left( 9;0 \\right).$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Đồ thị cắt trục tung tại điểm có hoành độ $x=0$.\nKhi $x=0$: $y=\\dfrac{-0+9}{0+1}=9$.\nVậy giao điểm là $\\left( 0;9 \\right)$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010215",
+  "loai": "trac_nghiem",
+  "de": "Điểm cực đại của hàm số $y=\\frac{x^{2}-3x}{x+1}$ là",
+  "lua_chon": [
+   "$x=-3.$",
+   "$x=-1.$",
+   "$x=-9.$",
+   "$x=1.$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $y=x-4+\\dfrac{4}{x+1}$ với $x\\ne -1$; $y'=1-\\dfrac{4}{\\left( x+1 \\right)^{2}}$.\n$y'=0\\Leftrightarrow \\left( x+1 \\right)^{2}=4\\Leftrightarrow x=1$ hoặc $x=-3$.\n$y'>0$ khi $x<-3$ hoặc $x>1$; $y'<0$ khi $-3<x<1$, $x\\ne -1$. Do đó hàm số đạt cực đại tại $x=-3$ (và cực tiểu tại $x=1$).\nVậy điểm cực đại của hàm số là $x=-3$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009567",
+  "loai": "trac_nghiem",
+  "de": "Đường thẳng nào dưới đây là đường tiệm cận xiên của đồ thị hàm số $y=x-2+\\frac{1}{x+3}$.",
+  "lua_chon": [
+   "$y=x-1$.",
+   "$y=x-2$.",
+   "$y=2x+1$",
+   "$y=x+3$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $y=x-2+\\dfrac{1}{x+3}$ và $\\lim_{x\\to\\pm\\infty}\\dfrac{1}{x+3}=0$.\nSuy ra $\\lim_{x\\to\\pm\\infty}\\left[y-(x-2)\\right]=0$ nên đường thẳng $y=x-2$ là tiệm cận xiên của đồ thị.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010181",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=-x^{3}+bx^{2}+cx-1$. Biết rằng đồ thị của hàm số trên có điểm cực trị là $A\\left( 2;27 \\right)$. Khi đó giá trị $5b+c$ bằng bao nhiêu?",
+  "dap_an": "9",
+  "loi_giai": "Ta có $y'=-3x^{2}+2bx+c$.\nĐồ thị có điểm cực trị $A\\left( 2;27 \\right)$ nên $y'\\left( 2 \\right)=0$ và $y\\left( 2 \\right)=27$.\n$y'\\left( 2 \\right)=0\\Leftrightarrow -12+4b+c=0\\Leftrightarrow 4b+c=12$.\n$y\\left( 2 \\right)=27\\Leftrightarrow -8+4b+2c-1=27\\Leftrightarrow 2b+c=18$.\nGiải hệ ta được $b=-3$, $c=24$. Khi đó $y'=-3x^{2}-6x+24=-3\\left( x+4 \\right)\\left( x-2 \\right)$ đổi dấu tại $x=2$ (thoả mãn là điểm cực trị).\nVậy $5b+c=-15+24=9$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009543",
+  "loai": "tra_loi_ngan",
+  "de": "Gọi $m$ là giá trị nhỏ nhất của hàm số $y=\\frac{x-2}{x+1}$ trên đoạn $\\left[ 0;2 \\right]$. Tìm $m$?",
+  "dap_an": "-2",
+  "loi_giai": "Hàm số xác định và liên tục trên $\\left[ 0;2 \\right]$.\n$y'=\\dfrac{3}{\\left( x+1 \\right)^{2}}>0,\\ \\forall x\\in\\left[ 0;2 \\right]$ nên hàm số đồng biến trên $\\left[ 0;2 \\right]$.\nDo đó $\\min_{\\left[ 0;2 \\right]}y=y\\left( 0 \\right)=\\dfrac{0-2}{0+1}=-2$.\nVậy $m=-2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009326",
+  "loai": "tra_loi_ngan",
+  "de": "Một cơ sở kinh doanh hoa hồi dự kiến lợi nhuận khi sản xuất $x$ sản phẩm $(0\\le x\\le 270)$ được cho bởi hàm số $y=-x^{3}+270x^{2}$ (đơn vị: đồng). Hỏi từ sản phẩm thứ bao nhiêu trở đi thì lợi nhuận của cơ sở kinh doanh đó bắt đầu giảm?",
+  "dap_an": "180",
+  "loi_giai": "$y=-x^{3}+270x^{2}$ với $0\\le x\\le 270$, $y'=-3x^{2}+540x=-3x(x-180)$.\n$y'=0\\Leftrightarrow x=0$ hoặc $x=180$.\n$y'>0$ khi $0<x<180$ (lợi nhuận tăng) và $y'<0$ khi $180<x<270$ (lợi nhuận giảm).\nVậy từ sản phẩm thứ $180$ trở đi lợi nhuận bắt đầu giảm.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009507",
+  "loai": "trac_nghiem",
+  "de": "Tiệm cận đứng của đồ thị số hàm số $y=\\frac{4x^{2}-x+1}{3x+2}$ là đường thẳng",
+  "lua_chon": [
+   "$x=-\\frac{3}{2}$.",
+   "$x=-\\frac{2}{3}$.",
+   "$x=\\frac{4}{3}$.",
+   "$x=\\frac{2}{3}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Mẫu số $3x+2=0\\Leftrightarrow x=-\\dfrac{2}{3}$; tại đó tử số $4\\cdot\\dfrac{4}{9}+\\dfrac{2}{3}+1=\\dfrac{31}{9}\\ne 0$.\nDo đó $\\lim_{x\\to-\\frac{2}{3}^{\\pm}}y=\\pm\\infty$ và tiệm cận đứng là $x=-\\dfrac{2}{3}$. Chọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009680",
+  "loai": "trac_nghiem",
+  "de": "Tiệm cận ngang của đồ thị hàm số $y=\\frac{3x-5}{x+4}$ là",
+  "lua_chon": [
+   "$y=3$",
+   "$y=-4$.",
+   "$x=3$.",
+   "$x=-4$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$\\lim_{x\\to\\pm\\infty}\\dfrac{3x-5}{x+4}=3$.\nVậy tiệm cận ngang là $y=3$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010205",
+  "loai": "trac_nghiem",
+  "de": "Tâm đối xứng của đồ thị hàm số $y=\\frac{x+3}{x-2}$ thuộc đường thẳng nào sau đây?",
+  "lua_chon": [
+   "$3x+2y+7=0$.",
+   "$x+4y-7=0$.",
+   "$2x-y-7=0$.",
+   "$-3x-y+7=0$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Đồ thị hàm số $y=\\dfrac{x+3}{x-2}$ có tiệm cận đứng $x=2$, tiệm cận ngang $y=1$ nên tâm đối xứng là $I\\left( 2;1 \\right)$.\nThay $I$ vào các phương án: $3\\cdot 2+2\\cdot 1+7=15\\ne 0$; $2+4-7=-1\\ne 0$; $4-1-7=-4\\ne 0$; $-3\\cdot 2-1+7=0$ thoả mãn.\nVậy $I$ thuộc đường thẳng $-3x-y+7=0$. Chọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009356",
+  "loai": "tra_loi_ngan",
+  "de": "Trong số các hình chữ nhật có cùng chu vi 16 cm, hình chữ nhật có diện tích lớn nhất bằng bao nhiêu $cm^{2}$?",
+  "dap_an": "16",
+  "loi_giai": "Chu vi $16$ cm nên nửa chu vi là $8$ cm. Gọi một cạnh là $x$ thì cạnh kia là $8-x$ $(0<x<8)$.\nDiện tích: $S(x)=x\\left(8-x\\right)=-x^{2}+8x$.\n$S'(x)=-2x+8=0\\Leftrightarrow x=4$, và $S'$ đổi dấu từ dương sang âm nên $S$ lớn nhất tại $x=4$.\n$S(4)=4\\cdot 4=16$.\nVậy diện tích lớn nhất bằng $16\\ \\text{cm}^{2}$ (hình vuông cạnh $4$ cm).",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010216",
+  "loai": "tra_loi_ngan",
+  "de": "Có bao nhiêu giá trị nguyên của tham số $m$ để hàm số $y=\\frac{1}{3}x^{3}\\text{–}2mx^{2}+\\left( m+3 \\right)x\\text{–}5+m$ đồng biến trên $\\mathbb{R}$?",
+  "dap_an": "2",
+  "loi_giai": "Ta có $y'=x^{2}-4mx+m+3$.\nHàm số đồng biến trên $\\mathbb{R}$ khi và chỉ khi $y'\\ge 0$ với mọi $x\\in\\mathbb{R}$ $\\Leftrightarrow\\Delta'=4m^{2}-\\left( m+3 \\right)\\le 0\\Leftrightarrow 4m^{2}-m-3\\le 0\\Leftrightarrow -\\dfrac{3}{4}\\le m\\le 1$.\nCác giá trị nguyên của $m$ là $0$ và $1$.\nVậy có $2$ giá trị nguyên của $m$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009331",
+  "loai": "trac_nghiem",
+  "de": "Đường tiệm cận đứng của đồ thị hàm số $y=\\frac{2x+2}{x-1}$ có phương trình là",
+  "lua_chon": [
+   "$x=-2$.",
+   "$x=1$.",
+   "$x=2$.",
+   "$x=-1$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "$\\lim\\limits_{x\\to 1^{+}}\\dfrac{2x+2}{x-1}=+\\infty$ (tử $\\to 4>0$, mẫu $\\to 0^{+}$).\nVậy tiệm cận đứng của đồ thị là $x=1$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009363",
+  "loai": "trac_nghiem",
+  "de": "Một công ty bất động sản có 50 căn hộ cho thuê. Biết rằng nếu cho thuê mỗi căn hộ với giá 2.000.000 đồng mỗi tháng thì mọi căn hộ đều có người thuê và cứ mỗi lần tăng giá cho thuê mỗi căn hộ 100.000 đồng mỗi tháng thì có thêm 2 căn hộ bị bỏ trống. Muốn có thu nhập cao nhất, công ty đó phải cho thuê với giá mỗi căn hộ là bao nhiêu?",
+  "lua_chon": [
+   "2.250.000.",
+   "2.350.000.",
+   "2.450.000.",
+   "2.550.000."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Gọi $x$ (triệu đồng) là giá cho thuê mỗi căn hộ mỗi tháng $(x\\ge 2)$.\nMỗi lần tăng $0{,}1$ triệu thì có $2$ căn bị bỏ trống nên số căn được thuê là $50-2\\cdot\\dfrac{x-2}{0{,}1}=90-20x$.\nDoanh thu: $f(x)=x\\left(90-20x\\right)=-20x^{2}+90x$.\n$f'(x)=-40x+90=0\\Leftrightarrow x=2{,}25$, và $f'$ đổi dấu từ dương sang âm nên $f$ lớn nhất tại $x=2{,}25$.\nVậy giá thuê mỗi căn hộ là $2.250.000$ đồng. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009812",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị nhỏ nhất của hàm số $y=\\frac{x^{2}+25}{x}$ trên khoảng $\\left( 0;+\\infty \\right)$.",
+  "dap_an": "10",
+  "loi_giai": "Với $x>0$: $y=x+\\dfrac{25}{x}$.\n$y'=1-\\dfrac{25}{x^{2}}=0 \\Leftrightarrow x=5$ (nhận vì $x>0$).\n$y'<0$ trên $(0;5)$, $y'>0$ trên $(5;+\\infty)$ nên $y$ đạt giá trị nhỏ nhất tại $x=5$.\n$y(5)=5+5=10$.\nVậy giá trị nhỏ nhất của hàm số trên $(0;+\\infty)$ bằng $10$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009341",
+  "loai": "trac_nghiem",
+  "de": "Giá trị cực đại của hàm số $y=-x^{3}+3x$ là",
+  "lua_chon": [
+   "$0$.",
+   "$1$.",
+   "$2$.",
+   "$-2$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "$y'=-3x^{2}+3=0\\Leftrightarrow x=\\pm 1$.\n$y'>0$ khi $-1<x<1$ và $y'<0$ khi $x<-1$ hoặc $x>1$ nên hàm số đạt cực đại tại $x=1$.\n$y_{CĐ}=y(1)=-1+3=2$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009379",
+  "loai": "tra_loi_ngan",
+  "de": "Người ta bơm xăng vào bình xăng của một xe máy Honda lead. Biết rằng thể tích $V$(lít) của lượng xăng trong bình xăng được tính theo thời gian bơm xăng $t$(phút) cho bởi công thức:\n$V\\left( t \\right)=4\\left( 3t^{2}-2t^{3} \\right)+1$ với $0\\le t\\le 1$\nGọi $V'\\left( t \\right)$ là tốc độ tăng thể tích tại thời điểm $t$ với $0\\le t\\le 1$\nXăng chảy vào bình xăng vào thời điểm ở giây thứ bao nhiêu có tốc độ tăng thể tích là lớn nhất",
+  "dap_an": "30",
+  "loi_giai": "$V(t)=12t^{2}-8t^{3}+1$ nên tốc độ tăng thể tích: $V'(t)=24t-24t^{2}$ với $0\\le t\\le 1$.\n$V''(t)=24-48t=0\\Leftrightarrow t=\\dfrac{1}{2}$; $V''>0$ khi $t<\\dfrac{1}{2}$ và $V''<0$ khi $t>\\dfrac{1}{2}$.\nNên $V'(t)$ lớn nhất tại $t=\\dfrac{1}{2}$ phút, giá trị $V'\\left(\\dfrac{1}{2}\\right)=6$ (lít/phút).\n$\\dfrac{1}{2}$ phút $=30$ giây.\nVậy tốc độ tăng thể tích lớn nhất ở giây thứ $30$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009357",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=ax^{3}+bx^{2}+cx+d$ đạt cực trị tại các điểm $x_{1},x_{2}$ thỏa mãn $x_{1}\\in\\left( -1;0 \\right),x_{2}\\in\\left( 1;2 \\right)$ Biết hàm số đồng biến trên khoảng $\\left( x_{1};x_{2} \\right)$. Đồ thị hàm số cắt trục tung tại điểm có tung độ âm. Trong các số $a,b$ và $c$ có bao nhiêu số âm?",
+  "dap_an": "1",
+  "loi_giai": "$y'=3ax^{2}+2bx+c$ có hai nghiệm $x_{1}<x_{2}$ và hàm số đồng biến trên $\\left(x_{1};x_{2}\\right)$ nên $y'>0$ trên khoảng này, suy ra $a<0$.\nVì $x_{1}\\in(-1;0)$, $x_{2}\\in(1;2)$ nên $0\\in\\left(x_{1};x_{2}\\right)$, do đó $y'(0)=c>0$.\nTổng nghiệm $x_{1}+x_{2}=-\\dfrac{2b}{3a}$ và $x_{1}+x_{2}\\in(0;2)$ nên $-\\dfrac{2b}{3a}>0$; do $a<0$ nên $b>0$.\nĐồ thị cắt trục tung tại $y=d<0$ (không xét trong các số $a,b,c$).\nVậy trong ba số $a,b,c$ chỉ có $a$ âm, tức có $1$ số âm.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010197",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=\\frac{x^{2}-2x+4}{x-2}$ có đồ thị $(C)$ và $M$ là điểm cực tiểu của đồ thị $(C)$. Khoảng cách từ điểm $M$ đến tiệm cận xiên của đồ thị $(C)$ bằng bao nhiêu? (Làm tròn đến hàng phần trăm).",
+  "dap_an": "1.41",
+  "loi_giai": "Ta có $y=x+\\dfrac{4}{x-2}$ với $x\\ne 2$, nên tiệm cận xiên là $y=x$, hay $x-y=0$.\n$y'=1-\\dfrac{4}{\\left( x-2 \\right)^{2}}=0\\Leftrightarrow x=0$ hoặc $x=4$.\n$y'>0$ khi $x<0$ hoặc $x>4$; $y'<0$ khi $0<x<4$, $x\\ne 2$. Do đó $x=4$ là điểm cực tiểu, $y\\left( 4 \\right)=4+2=6$ nên $M\\left( 4;6 \\right)$.\nKhoảng cách từ $M$ đến đường $x-y=0$: $d=\\dfrac{\\left| 4-6 \\right|}{\\sqrt{2}}=\\sqrt{2}\\approx 1{,}41$.\nVậy khoảng cách bằng $1{,}41$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009497",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f(x)$ có $\\lim\\limits_{x\\rightarrow+\\infty}f(x)=1$ và $\\lim\\limits_{x\\rightarrow-\\infty}f(x)=-1$. Khẳng định nào sau đây là khẳng định đúng?",
+  "lua_chon": [
+   "Đồ thị hàm số đã cho có hai tiệm cận ngang là các đường thẳng $y=1$ và $y=-1$.",
+   "Đồ thị hàm số đã cho có hai tiệm cận ngang là các đường thẳng $x=1$ và $x=-1$.",
+   "Đồ thị hàm số đã cho có đúng một tiệm cận ngang.",
+   "Đồ thị hàm số đã cho không có tiệm cận ngang."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Theo định nghĩa, $\\lim_{x\\to+\\infty}f(x)=1$ nên đường thẳng $y=1$ là tiệm cận ngang; $\\lim_{x\\to-\\infty}f(x)=-1$ nên đường thẳng $y=-1$ là tiệm cận ngang.\nVậy đồ thị có hai tiệm cận ngang $y=1$ và $y=-1$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009354",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f(x)$ có đạo hàm $f'(x)=x^{3}-4x$. Chọn khẳng định đúng?",
+  "lua_chon": [
+   "Hàm số đồng biến trên $\\left( -\\infty;2 \\right)$.",
+   "Hàm số đồng biến trên $\\left( 2;+\\infty \\right)$.",
+   "Hàm số đồng biến trên $\\left( -2;2 \\right)$.",
+   "Hàm số đồng biến trên $\\left( 0;+\\infty \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "$f'(x)=x^{3}-4x=x\\left(x-2\\right)\\left(x+2\\right)$. Nghiệm: $x=-2,\\ 0,\\ 2$.\nXét dấu $f'(x)$: $f'(x)<0$ trên $(-\\infty;-2)$, $f'(x)>0$ trên $(-2;0)$, $f'(x)<0$ trên $(0;2)$, $f'(x)>0$ trên $(2;+\\infty)$.\nHàm số đồng biến trên $(-2;0)$ và $(2;+\\infty)$.\nVậy khẳng định đúng là: hàm số đồng biến trên $(2;+\\infty)$. Chọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009353",
+  "loai": "tra_loi_ngan",
+  "de": "Ông Thanh dự định sử dụng hết $7\\,\\text{m}^{\\text{2}}$ kính để làm bể cá bằng kính có dạng hình hộp chữ nhật không nắp, chiều dài gấp đôi chiều rộng. Bể cá có thể tích lớn nhất bằng bao nhiêu?",
+  "dap_an": "1.68",
+  "loi_giai": "Gọi chiều rộng đáy là $x$ $(x>0)$, chiều dài là $2x$, chiều cao là $h$ (đơn vị m).\nDiện tích kính (không nắp): $2x^{2}+2\\left(x\\cdot h\\right)+2\\left(2x\\cdot h\\right)=2x^{2}+6xh=7\\Rightarrow h=\\dfrac{7-2x^{2}}{6x}$.\nThể tích: $V=2x^{2}\\cdot h=\\dfrac{x\\left(7-2x^{2}\\right)}{3}=\\dfrac{7x-2x^{3}}{3}$, với $0<x<\\sqrt{\\dfrac{7}{2}}$.\n$V'=\\dfrac{7-6x^{2}}{3}=0\\Leftrightarrow x=\\sqrt{\\dfrac{7}{6}}$. $V'$ đổi dấu từ dương sang âm nên $V$ lớn nhất tại điểm này.\n$V_{\\max}=\\dfrac{\\sqrt{\\dfrac{7}{6}}\\left(7-\\dfrac{7}{3}\\right)}{3}=\\dfrac{14}{9}\\sqrt{\\dfrac{7}{6}}=\\dfrac{7\\sqrt{42}}{27}\\approx 1{,}68$.\nVậy thể tích lớn nhất của bể cá xấp xỉ $1{,}68\\ \\text{m}^{3}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009752",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left( x \\right)=x^{3}-3\\text{x}^{2}-9\\text{x}$. Điểm cực tiểu của hàm số đã cho là",
+  "lua_chon": [
+   "$x=-1$.",
+   "$y=5$.",
+   "$x=3$.",
+   "$y=-27$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "$y'=3x^2-6x-9=3(x^2-2x-3)$; $y'=0\\Leftrightarrow x=-1$ hoặc $x=3$.\nBảng biến thiên: $y'>0$ trên $(-\\infty;-1)$, $y'<0$ trên $(-1;3)$, $y'>0$ trên $(3;+\\infty)$.\nVậy $y'$ đổi dấu từ $-$ sang $+$ tại $x=3$ nên hàm số đạt cực tiểu tại $x=3$ (khi đó $y_{CT}=-27$).\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009704",
+  "loai": "tra_loi_ngan",
+  "de": "Giá trị lớn nhất của hàm số $y=\\frac{x^{2}+3x+9}{x+3}$ trên đoạn $\\left[ -2;6 \\right]$ bằng",
+  "dap_an": "7",
+  "loi_giai": "$y=\\dfrac{x^2+3x+9}{x+3}=x+\\dfrac{9}{x+3}$ trên $[-2;6]$.\n$y'=1-\\dfrac{9}{(x+3)^2}=\\dfrac{x^2+6x}{(x+3)^2}$; $y'=0\\Leftrightarrow x=0$ hoặc $x=-6$ (loại).\n$y(-2)=7$; $y(0)=3$; $y(6)=7$.\nVậy giá trị lớn nhất bằng $7$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009327",
+  "loai": "tra_loi_ngan",
+  "de": "Một hộ làm nghề dệt vải lụa tơ tằm sản xuất mỗi ngày được $x$ mét vải lụa ( $1\\le x\\le 18)$. Tổng chi phí sản xuất $x$ mét vải lụa, tính bằng nghìn đồng, cho bởi hàm chi phí:\n$C(x)=x^{3}-3x^{2}-20x+500.$\nGiả sử hộ làm nghề dệt này bán hết sản phẩm mỗi ngày với giá 220 nghìn đồng/mét. Gọi $B(x)\\,$ là số tiền bán được và $L(x)\\,$ là lợi nhuận thu được khi bán $x\\,$ mét vải lụa. Hộ làm nghề dệt này cần sản xuất và bán ra mỗi ngày bao nhiêu mét vải lụa để thu được lợi nhuận tối đa. Hãy tính lợi nhuận tối đa đó (đơn vị nghìn đồng).",
+  "dap_an": "10;1200",
+  "loi_giai": "Số tiền bán được: $B(x)=220x$. Lợi nhuận: $L(x)=B(x)-C(x)=220x-x^{3}+3x^{2}+20x-500=-x^{3}+3x^{2}+240x-500$ với $1\\le x\\le 18$.\n$L'(x)=-3x^{2}+6x+240=0\\Leftrightarrow x^{2}-2x-80=0\\Leftrightarrow x=10$ (loại $x=-8$).\n$L(1)=-258$; $L(10)=-1000+300+2400-500=1200$; $L(18)=-5832+972+4320-500=-1040$.\nVậy $L$ lớn nhất bằng $1200$ nghìn đồng khi $x=10$.\nHộ cần sản xuất và bán $10$ mét vải mỗi ngày, lợi nhuận tối đa là $1200$ nghìn đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009867",
+  "loai": "tra_loi_ngan",
+  "de": ": Cho hàm số $y=f\\left( x \\right)=-x^{3}+3x^{2}+1$. Biết rằng đồ thị của hàm số $y=f\\left( x \\right)$ đạt cực đại tại điểm $A\\left( m;n \\right)$. Giá trị của biểu thức $Q=m-2n$ bằng bao nhiêu?",
+  "dap_an": "-8",
+  "loi_giai": "Ta có $f'(x)=-3x^2+6x$; $f'(x)=0\\Leftrightarrow x=0$ hoặc $x=2$.\n$f''(x)=-6x+6$, $f''(2)=-6<0$ nên hàm số đạt cực đại tại $x=2$.\n$f(2)=-8+12+1=5$, nên $A(2;5)$, tức $m=2$, $n=5$.\n$Q=m-2n=2-10=-8$.\nVậy $Q=-8$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009325",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=x+1+\\frac{x}{x^{2}+1}$. Mệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "Đồ thị hàm số có hai đường tiệm cận đứng là $x=1$ và $x=-1$.",
+   "Đồ thị hàm số không có đường tiệm cận nào.",
+   "Đồ thị hàm số có đường tiệm cận xiên là $y=x+1$.",
+   "Đồ thị hàm số có đường tiệm cận ngang là $y=1$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Mẫu $x^{2}+1>0$ với mọi $x$ nên đồ thị không có tiệm cận đứng.\n$\\lim\\limits_{x\\to\\pm\\infty}\\left(y-(x+1)\\right)=\\lim\\limits_{x\\to\\pm\\infty}\\dfrac{x}{x^{2}+1}=0$ nên đường thẳng $y=x+1$ là tiệm cận xiên.\nHàm số không có tiệm cận ngang vì $y\\to\\pm\\infty$ khi $x\\to\\pm\\infty$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009300",
+  "loai": "tra_loi_ngan",
+  "de": "Một người quản lý một trang trại nuôi cá xác định rằng: Sau $t$ tháng từ khi thả $300$ con cá $X$ (với $0\\le t\\le 10$ ) thì khối lượng trung bình $m\\left( t \\right)$ tính theo $\\text{kilogram}$ của một con cá $X$ ước tính là $m\\left( t \\right)=0,45\\left( 0,2+\\frac{141}{155}t-0,05t^{2} \\right)$. Người này nhận định rằng tỉ lệ giữa số lượng cá $X$ còn sống trong ao so với số lượng cá $X$ thả ban đầu sau $t$ tháng kể từ ngày thả là $p\\left( t \\right)=\\frac{31}{31+t}$.\nBiết rằng sản lượng cá $X$ tại một thời điểm được tính bằng tổng khối lượng của các con cá $X$ đã thả còn sống trong ao lúc đó. Hỏi với những nhận định trên của người quản lí thì dự kiến trong tối đa $10$ tháng nuôi, sản lượng cá $X$ lớn nhất có thể đạt được là bao nhiêu? (kết quả tính theo đơn vị $\\text{kilogram}$ )",
+  "dap_an": "459",
+  "loi_giai": "Sản lượng cá sau $t$ tháng: $S(t)=300\\cdot p(t)\\cdot m(t)=300\\cdot\\dfrac{31}{31+t}\\cdot 0{,}45\\left(0{,}2+\\dfrac{141}{155}t-0{,}05t^{2}\\right)$ với $0\\le t\\le 10$.\nĐặt $g(t)=0{,}2+\\dfrac{141}{155}t-0{,}05t^{2}$. Khi đó $S(t)=\\dfrac{4185\\,g(t)}{31+t}$ và $S'(t)=4185\\cdot\\dfrac{g'(t)(31+t)-g(t)}{(31+t)^{2}}$, có dấu cùng dấu với $h(t)=g'(t)(31+t)-g(t)$.\nVới $g'(t)=\\dfrac{141}{155}-0{,}1t$: $h(t)=\\dfrac{141}{5}+\\dfrac{141}{155}t-3{,}1t-0{,}1t^{2}-0{,}2-\\dfrac{141}{155}t+0{,}05t^{2}=28-3{,}1t-0{,}05t^{2}$.\n$h(t)=0\\Leftrightarrow t^{2}+62t-560=0\\Leftrightarrow t=8$ (loại $t=-70$). $h>0$ khi $t<8$, $h<0$ khi $t>8$ nên $S(t)$ đạt lớn nhất tại $t=8$.\nTa có $g(8)=0{,}2+\\dfrac{1128}{155}-3{,}2=\\dfrac{ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009772",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=\\frac{x-1}{x+2}$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "Hàm số đồng biến trên $\\mathbb{R}$.",
+   "Hàm số đồng biến trên $\\mathbb{R}\\backslash\\left\\{ 2 \\right\\}$.",
+   "Hàm số nghịch biến trên $\\mathbb{R}\\backslash\\left\\{ 2 \\right\\}$.",
+   "Hàm số đồng biến trên các khoảng $\\left( -\\infty\\,;\\,-2 \\right)$ và $\\left( -2\\,;\\,+\\infty \\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}\\setminus\\{-2\\}$.\n$y'=\\dfrac{(x+2)-(x-1)}{(x+2)^2}=\\dfrac{3}{(x+2)^2}>0$ với mọi $x\\ne-2$.\nDo đó hàm số đồng biến trên từng khoảng $(-\\infty;-2)$ và $(-2;+\\infty)$ (không đồng biến trên cả $\\mathbb{R}\\setminus\\{-2\\}$ vì tập này không phải một khoảng).\nVậy khẳng định đúng là \"Hàm số đồng biến trên các khoảng $(-\\infty;-2)$ và $(-2;+\\infty)$\".\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010209",
+  "loai": "trac_nghiem",
+  "de": "Tiệm cận đứng của đồ thị hàm số $y=\\frac{2x^{2}+3x-1}{x+1}$ có phương trình là",
+  "lua_chon": [
+   "$x=1$.",
+   "$x=-1$.",
+   "$y=2$.",
+   "$y=0$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Tại $x=-1$, mẫu bằng $0$ còn tử bằng $2-3-1=-2\\ne 0$ nên $\\lim\\limits_{x\\to -1}\\left| y \\right|=+\\infty$.\nVậy tiệm cận đứng là $x=-1$. Chọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009538",
+  "loai": "trac_nghiem",
+  "de": "Tìm giá trị cực tiểu của hàm số $y=x^{3}-3x+2$.",
+  "lua_chon": [
+   "$y_{CT}=4$.",
+   "$y_{CT}=0$.",
+   "$y_{CT}=-1$.",
+   "$y_{CT}=1$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "$y'=3x^{2}-3$; $y'=0\\Leftrightarrow x=\\pm 1$.\n$y''=6x$: $y''\\left( 1 \\right)=6>0$ nên hàm số đạt cực tiểu tại $x=1$; $y''\\left( -1 \\right)=-6<0$ nên đạt cực đại tại $x=-1$.\n$y_{CT}=y\\left( 1 \\right)=1-3+2=0$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010188",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=\\frac{1}{3}x^{3}-4x+4$. Đường thẳng đi qua các điểm cực trị của đồ thị hàm số có phương trình $y=ax+b$. Tính $S=a+b$ (làm tròn đến hàng phần trăm).",
+  "dap_an": "1.33",
+  "loi_giai": "Ta có $y'=x^{2}-4=0\\Leftrightarrow x=\\pm 2$, và $y'$ đổi dấu tại hai điểm này nên có hai điểm cực trị.\n$y\\left( 2 \\right)=\\dfrac{8}{3}-8+4=-\\dfrac{4}{3}$; $y\\left( -2 \\right)=-\\dfrac{8}{3}+8+4=\\dfrac{28}{3}$.\nHai điểm cực trị là $\\left( 2;-\\dfrac{4}{3} \\right)$ và $\\left( -2;\\dfrac{28}{3} \\right)$. Hệ số góc: $a=\\dfrac{-\\frac{4}{3}-\\frac{28}{3}}{2-\\left( -2 \\right)}=-\\dfrac{8}{3}$.\nThay điểm $\\left( 2;-\\dfrac{4}{3} \\right)$: $-\\dfrac{4}{3}=-\\dfrac{8}{3}\\cdot 2+b\\Rightarrow b=4$.\nVậy $S=a+b=4-\\dfrac{8}{3}=\\dfrac{4}{3}\\approx 1{,}33$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010196",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left( x \\right)$ liên tục trên $\\mathbb{R}$ và có $f'\\left( x \\right)=\\left( x-1 \\right)^{2}\\left( x^{2}-5x+6 \\right)$. Số điểm cực trị của hàm số đã cho là",
+  "lua_chon": [
+   "$5$.",
+   "$3$.",
+   "$2$.",
+   "$4$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $f'\\left( x \\right)=\\left( x-1 \\right)^{2}\\left( x-2 \\right)\\left( x-3 \\right)$.\n$f'\\left( x \\right)=0\\Leftrightarrow x=1$ (nghiệm kép), $x=2$, $x=3$.\n$f'\\left( x \\right)$ không đổi dấu khi qua $x=1$ (nghiệm bội chẵn), đổi dấu khi qua $x=2$ và $x=3$.\nVậy hàm số có $2$ điểm cực trị. Chọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009602",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=\\frac{x^{2}-4x+7}{x-1}.$ Mệnh đề nào dưới đây đúng?",
+  "lua_chon": [
+   "Cực tiểu của hàm số bằng −6.",
+   "Cực tiểu của hàm số bằng 2.",
+   "Cực tiểu của hàm số bằng 3.",
+   "Cực tiểu của hàm số bằng −1."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Tập xác định $D=\\mathbb R\\setminus\\{1\\}$. $y'=\\dfrac{(2x-4)(x-1)-(x^2-4x+7)}{(x-1)^2}=\\dfrac{x^2-2x-3}{(x-1)^2}$.\n$y'=0\\Leftrightarrow x=-1$ hoặc $x=3$.\nXét dấu $y'$: $y'>0$ trên $(-\\infty;-1)$, $y'<0$ trên $(-1;1)$ và $(1;3)$, $y'>0$ trên $(3;+\\infty)$.\nHàm số đạt cực đại tại $x=-1$ ($y=-6$) và đạt cực tiểu tại $x=3$ với $y(3)=\\dfrac{9-12+7}{2}=2$.\nVậy cực tiểu của hàm số bằng $2$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009751",
+  "loai": "trac_nghiem",
+  "de": "Tiệm cận ngang của đồ thị hàm số $y=\\frac{2x+1}{x-1}$ là:",
+  "lua_chon": [
+   "$x=1$.",
+   "$y=2$.",
+   "$x=-\\frac{1}{2}$.",
+   "$y=-1$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\lim_{x\\to\\pm\\infty}\\dfrac{2x+1}{x-1}=2$.\nVậy tiệm cận ngang của đồ thị là $y=2$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009591",
+  "loai": "trac_nghiem",
+  "de": "Giá trị lớn nhất của hàm số $y=\\frac{x^{2}}{x+1}$ trên đoạn $\\left[ 0;2 \\right]$ là",
+  "lua_chon": [
+   "$\\frac{4}{3}$.",
+   "$-\\frac{4}{3}$.",
+   "0.",
+   "1."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$y'=\\dfrac{2x(x+1)-x^2}{(x+1)^2}=\\dfrac{x^2+2x}{(x+1)^2}\\ge0$ với mọi $x\\in[0;2]$ nên hàm số đồng biến trên $[0;2]$.\nDo đó $\\max_{[0;2]}y=y(2)=\\dfrac{4}{3}$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009781",
+  "loai": "trac_nghiem",
+  "de": "Đường thẳng nào dưới đây là tiệm cận đứng của đồ thị hàm số $y=\\frac{2x+1}{x+1}$?",
+  "lua_chon": [
+   "$x=-1$",
+   "$x=1$",
+   "$y=-1$",
+   "$y=2$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\lim_{x\\to(-1)^+}\\dfrac{2x+1}{x+1}=-\\infty$ (tử $\\to -1<0$, mẫu $\\to 0^+$).\nVậy tiệm cận đứng của đồ thị là $x=-1$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010185",
+  "loai": "trac_nghiem",
+  "de": "Tiệm cận xiên của đồ thị hàm số $y=2x+3-\\frac{3}{x+2}$ là đường thẳng có phương trình",
+  "lua_chon": [
+   "$y=-x-2$.",
+   "$y=2x+3$.",
+   "$y=x+2$.",
+   "$y=-2x-3$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $y=2x+3-\\dfrac{3}{x+2}$ và $\\lim\\limits_{x\\to\\pm\\infty}\\left[ y-\\left( 2x+3 \\right) \\right]=\\lim\\limits_{x\\to\\pm\\infty}\\left( -\\dfrac{3}{x+2} \\right)=0$.\nVậy tiệm cận xiên là $y=2x+3$. Chọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009758",
+  "loai": "trac_nghiem",
+  "de": "Đồ thị của hàm số nào sau đây có một đường tiệm cận xiên?",
+  "lua_chon": [
+   "$y=\\frac{x+3}{2x-1}$",
+   "$y=\\frac{4}{x-1}$",
+   "$y=\\frac{2x}{x^{2}+1}$.",
+   "$y=\\frac{x^{2}+3x-2}{x+3}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Đồ thị có tiệm cận xiên khi hàm phân thức có bậc tử lớn hơn bậc mẫu đúng $1$ đơn vị (và không chia hết).\n$y=\\dfrac{4}{x-1}$ và $y=\\dfrac{2x}{x^2+1}$ có bậc tử nhỏ hơn bậc mẫu; $y=\\dfrac{x+3}{2x-1}$ có bậc tử bằng bậc mẫu: chỉ có tiệm cận ngang.\n$y=\\dfrac{x^2+3x-2}{x+3}=x-\\dfrac{2}{x+3}$ (vì $x^2+3x-2=x(x+3)-2$) nên có tiệm cận xiên $y=x$.\nVậy hàm số có tiệm cận xiên là $y=\\dfrac{x^2+3x-2}{x+3}$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010194",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=\\frac{2x+4}{1-x}$. Phát biểu nào sau đây là đúng?",
+  "lua_chon": [
+   "Hàm số đồng biến trên $\\left( -\\infty;1 \\right)\\cup\\left( 1;+\\infty \\right)$.",
+   "Hàm số nghịch biến trên $\\left( -\\infty;1 \\right)\\cup\\left( 1;+\\infty \\right)$.",
+   "Hàm số đồng biến trên các khoảng $\\left( -\\infty;1 \\right)$ và $\\left( 1;+\\infty \\right)$.",
+   "Hàm số nghịch biến trên các khoảng $\\left( -\\infty;1 \\right)$ và $\\left( 1;+\\infty \\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Tập xác định: $\\mathbb{R}\\backslash\\left\\{ 1 \\right\\}$.\n$y'=\\dfrac{2\\left( 1-x \\right)+\\left( 2x+4 \\right)}{\\left( 1-x \\right)^{2}}=\\dfrac{6}{\\left( 1-x \\right)^{2}}>0$ với mọi $x\\ne 1$.\nVậy hàm số đồng biến trên các khoảng $\\left( -\\infty;1 \\right)$ và $\\left( 1;+\\infty \\right)$. Chọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009415",
+  "loai": "trac_nghiem",
+  "de": "Một vật chuyển động theo quy luật $s=-2t^{3}+24t^{2}+9t-3$ với $t$ là khoảng thời gian tính từ lúc bắt đầu chuyển động và $s$ là quãng đường vật đi được trong khoảng thời gian đó. Hỏi trong khoảng thời gian 10 giây, kể từ lúc bắt đầu chuyển động, vận tốc lớn nhất của vật đạt được bằng bao nhiêu?",
+  "lua_chon": [
+   "487 $\\left( m/s \\right)$.",
+   "105 $\\left( m/s \\right)$.",
+   "111 $\\left( m/s \\right)$.",
+   "289 $\\left( m/s \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Vận tốc $v(t)=s'(t)=-6t^{2}+48t+9$ với $t\\in[0;10]$.\n$v'(t)=-12t+48=0\\Leftrightarrow t=4$.\n$v(0)=9$; $v(4)=-96+192+9=105$; $v(10)=-600+480+9=-111$.\nVậy vận tốc lớn nhất là $105$ (m/s). Chọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009445",
+  "loai": "tra_loi_ngan",
+  "de": "Một doanh nghiệp dự định sản xuất không quá 20 sản phẩm mỗi ngày. Nếu doanh nghiệp sản xuất x sản phẩm mỗi ngày ( $1\\le x\\le 20$) thì doanh thu nhận được khi bán hết số sản phẩm đó là F(x) = 340x ( nghìn đồng), trong khi chi phí sản xuất bình quân cho một sản phẩm là $G(x)=x^{2}-3x+\\frac{700}{x}-20$ ( nghìn đồng) . Doanh nghiệp cần sản xuất bao nhiêu sản phẩm mỗi ngày để lợi nhuận lớn nhất?",
+  "dap_an": "12",
+  "loi_giai": "Chi phí sản xuất $x$ sản phẩm là $x\\cdot G(x)=x^{3}-3x^{2}+700-20x$.\nLợi nhuận: $L(x)=340x-\\left(x^{3}-3x^{2}-20x+700\\right)=-x^{3}+3x^{2}+360x-700$, $1\\le x\\le 20$.\n$L'(x)=-3x^{2}+6x+360=0\\Leftrightarrow x^{2}-2x-120=0\\Leftrightarrow x=12$ (loại $x=-10$).\n$L(1)=-338$; $L(12)=2324$; $L(20)=-300$.\nVậy lợi nhuận lớn nhất khi sản xuất $12$ sản phẩm mỗi ngày.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009533",
+  "loai": "tra_loi_ngan",
+  "de": ". Người ta muốn làm một chiếc hộp hình hộp chữ nhật có đáy hình vuông và thể tích là $20l$. Diện tích toàn phần nhỏ nhất của hộp là bao nhiêu? (đơn vị là $dm^{2}$ và làm tròn kết quả đến hàng phần mười)",
+  "dap_an": "44.2",
+  "loi_giai": "Đổi $20$ lít $=20\\ dm^{3}$. Gọi cạnh đáy là $a$ ($dm$), chiều cao là $h$ ($dm$), $a>0$, $h>0$.\nThể tích: $a^{2}h=20\\Rightarrow h=\\dfrac{20}{a^{2}}$.\nDiện tích toàn phần: $S=2a^{2}+4ah=2a^{2}+\\dfrac{80}{a}$.\n$S'=4a-\\dfrac{80}{a^{2}}=0\\Leftrightarrow a^{3}=20\\Leftrightarrow a=\\sqrt[3]{20}$.\nLập bảng biến thiên: $S'<0$ khi $a<\\sqrt[3]{20}$, $S'>0$ khi $a>\\sqrt[3]{20}$ nên $S$ đạt nhỏ nhất tại $a=\\sqrt[3]{20}$.\n$S_{\\min}=2\\sqrt[3]{20^{2}}+\\dfrac{80}{\\sqrt[3]{20}}=6\\sqrt[3]{20^{2}}\\approx 44{,}2$.\nVậy diện tích toàn phần nhỏ nhất của hộp xấp xỉ $44{,}2\\ dm^{2}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009733",
+  "loai": "trac_nghiem",
+  "de": "Đồ thị hàm số $y=\\frac{1-2x}{x+1}$ có tâm đối xứng điểm nào sau đây?",
+  "lua_chon": [
+   "$P(1;-1).$",
+   "$M(-1;1).$",
+   "$I(-1;-2).$",
+   "$I(-2;-1).$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Hàm số $y=\\dfrac{1-2x}{x+1}$ có tiệm cận đứng $x=-1$ và tiệm cận ngang $y=\\lim_{x\\to\\pm\\infty}\\dfrac{1-2x}{x+1}=-2$.\nTâm đối xứng của đồ thị hàm phân thức bậc nhất trên bậc nhất là giao điểm hai đường tiệm cận.\nVậy tâm đối xứng là $I(-1;-2)$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009685",
+  "loai": "tra_loi_ngan",
+  "de": "Số dân số của một thị trấn X sau $t$ năm kể từ năm 2025 được ước tính bởi công thức $f\\left( t \\right)=\\frac{16t-10}{t+5}$ ($f\\left( t \\right)$ được tính bằng nghìn người). Biết rằng đạo hàm của hàm số $f(t)$ biểu thị tốc độ gia tăng dân số của thị trấn ( đơn vị là nghìn người/ năm). Vào năm nào thì tốc độ gia tăng dân số là $0,4$ nghìn người/ năm?",
+  "dap_an": "2035",
+  "loi_giai": "$f'(t)=\\dfrac{16(t+5)-(16t-10)}{(t+5)^2}=\\dfrac{90}{(t+5)^2}$.\nTốc độ gia tăng là $0{,}4$ nên $\\dfrac{90}{(t+5)^2}=0{,}4\\Leftrightarrow(t+5)^2=225$.\nDo $t\\ge0$ nên $t+5=15\\Leftrightarrow t=10$.\nNăm tương ứng: $2025+10=2035$.\nVậy vào năm $2035$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009396",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $y=\\frac{2x^{2}+\\,5x+\\,5}{x+\\,1}.$ Gọi $\\Delta$ là đường thẳng đi qua hai điểm cực trị của đồ thị hàm số. Khoảng cách từ gốc tọa độ $O$ đến $\\Delta$ là bao nhiêu ( Kết quả làm tròn đến hàng thập phân thứ hai).",
+  "dap_an": "1.21",
+  "loi_giai": "$y'=\\dfrac{\\left(4x+5\\right)\\left(x+1\\right)-\\left(2x^{2}+5x+5\\right)}{\\left(x+1\\right)^{2}}=\\dfrac{2x^{2}+4x}{\\left(x+1\\right)^{2}}$.\n$y'=0\\Leftrightarrow x=0$ hoặc $x=-2$. Các điểm cực trị: $A\\left(0;5\\right)$ và $B\\left(-2;-3\\right)$.\nĐường thẳng $\\Delta=AB$ có hệ số góc $\\dfrac{5+3}{0+2}=4$ nên $\\Delta:\\ y=4x+5\\Leftrightarrow4x-y+5=0$.\n$d\\left(O,\\Delta\\right)=\\dfrac{5}{\\sqrt{16+1}}=\\dfrac{5}{\\sqrt{17}}\\approx 1{,}21$.\nVậy khoảng cách xấp xỉ $1{,}21$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010225",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left( x \\right)$ có đạo hàm $f'\\left( x \\right)=-2x$ với mọi $x\\in\\mathbb{R}$. Hàm số đã cho nghịch biến trên khoảng nào dưới đây?",
+  "lua_chon": [
+   "$\\left( 0;+\\infty \\right).$",
+   "$\\left( -\\infty;0 \\right).$",
+   "$\\left( -\\infty;+\\infty \\right).$",
+   "$\\left( -2;+\\infty \\right).$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $f'\\left( x \\right)=-2x<0\\Leftrightarrow x>0$.\nVậy hàm số nghịch biến trên khoảng $\\left( 0;+\\infty \\right)$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010186",
+  "loai": "trac_nghiem",
+  "de": "Giá trị lớn nhất của hàm số $y=\\frac{2}{x}$ trên đoạn $\\left[ 1;3 \\right]$ là",
+  "lua_chon": [
+   "$-\\frac{2}{9}$.",
+   "$2$.",
+   "$\\frac{2}{3}$.",
+   "$-2$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $y'=-\\dfrac{2}{x^{2}}<0$ với mọi $x\\in\\left[ 1;3 \\right]$ nên hàm số nghịch biến trên đoạn $\\left[ 1;3 \\right]$.\nDo đó $\\max\\limits_{\\left[ 1;3 \\right]}y=y\\left( 1 \\right)=2$. Chọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009757",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left( x \\right)=x^{3}-3\\text{x}^{2}-9\\text{x}$. Điểm cực đại của hàm số đã cho là",
+  "lua_chon": [
+   "$x=3$.",
+   "$y=-27$.",
+   "$y=5$.",
+   "$x=-1$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "$y'=3x^2-6x-9=3(x^2-2x-3)$; $y'=0\\Leftrightarrow x=-1$ hoặc $x=3$.\nBảng biến thiên: $y'>0$ trên $(-\\infty;-1)$, $y'<0$ trên $(-1;3)$, $y'>0$ trên $(3;+\\infty)$.\nVậy $y'$ đổi dấu từ $+$ sang $-$ tại $x=-1$ nên hàm số đạt cực đại tại $x=-1$ (khi đó $y_{CĐ}=5$).\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009429",
+  "loai": "trac_nghiem",
+  "de": "Trên đoạn $\\left[ 1;5 \\right]$, hàm số $y=x+\\frac{4}{x}$ đạt giá trị nhỏ nhất tại điểm",
+  "lua_chon": [
+   "$x=4$.",
+   "$x=1$.",
+   "$x=5$.",
+   "$x=2$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "$y'=1-\\dfrac{4}{x^{2}}=0\\Leftrightarrow x=2$ (loại $x=-2$) trên $[1;5]$.\n$y(1)=5$; $y(2)=4$; $y(5)=\\dfrac{29}{5}=5{,}8$.\nVậy giá trị nhỏ nhất bằng $4$ tại $x=2$. Chọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

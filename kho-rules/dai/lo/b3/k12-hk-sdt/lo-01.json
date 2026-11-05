@@ -1,0 +1,886 @@
+[
+ {
+  "ma_cau": "T1120000009857",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hiểu thời gian hoàn thành một bài tập của một số học sinh thu được kết quả sau:\nThời gian (phút)\n$\\left. [0;4 \\right)$\n$[\\left. 4;8 \\right)$\n$\\left. [8;12 \\right)$\n$\\left. [12;16 \\right)$\n$\\left. [16;20 \\right)$\nSố học sinh\n2\n4\n7\n4\n3\nXác định phương sai của mẫu số liệu ghép nhóm trên (làm tròn đến hàng phần chục).",
+  "dap_an": "22.2",
+  "loi_giai": "Giá trị đại diện các nhóm: $2;6;10;14;18$ với tần số $2;4;7;4;3$, cỡ mẫu $n=20$.\nSố trung bình: $\\overline{x}=\\dfrac{2\\cdot 2+4\\cdot 6+7\\cdot 10+4\\cdot 14+3\\cdot 18}{20}=\\dfrac{208}{20}=10{,}4$.\nPhương sai: $s^2=\\dfrac{2\\cdot 2^2+4\\cdot 6^2+7\\cdot 10^2+4\\cdot 14^2+3\\cdot 18^2}{20}-10{,}4^2=\\dfrac{2608}{20}-108{,}16$.\n$s^2=130{,}4-108{,}16=22{,}24\\approx 22{,}2$.\nVậy phương sai xấp xỉ $22{,}2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009441",
+  "loai": "trac_nghiem",
+  "de": "Xét mẫu số liệu ghép nhóm cho bởi bảng sau . Gọi $\\overline{x}$ là số trung bình cộng của mẫu số liệu ghép nhóm đó. Độ lệch chuẩn của mẫu số liệu ghép nhóm được tính bằng công thức nào trong các công thức dưới đây?\nNhóm\nGiá trị đại diện\nTần số\n$\\left[ a_{1};a_{2} \\right)$\n$x_{1}$\n$n_{1}$\n$\\left[ a_{2};a_{3} \\right)$\n$x_{2}$\n$n_{2}$\n$\\left[ a_{3};a_{4} \\right)$\n$x_{3}$\n$n_{3}$\n$\\left[ a_{4};a_{5} \\right)$\n$x_{4}$\n$n_{4}$\n$n=50$",
+  "lua_chon": [
+   "$s^{2}=\\frac{n_{1}\\left( x_{1}-\\overline{x} \\right)^{2}+n_{2}\\left( x_{2}-\\overline{x} \\right)^{2}+n_{3}\\left( x_{3}-\\overline{x} \\right)^{2}+n_{4}\\left( x_{4}-\\overline{x} \\right)^{2}}{4}$",
+   "$s=\\sqrt{\\frac{n_{1}\\left( x_{1}-\\overline{x} \\right)^{2}+n_{2}\\left( x_{2}-\\overline{x} \\right)^{2}+n_{3}\\left( x_{3}-\\overline{x} \\right)^{2}+n_{4}\\left( x_{4}-\\overline{x} \\right)^{2}}{4}}$",
+   "$s^{2}=\\frac{n_{1}\\left( x_{1}-\\overline{x} \\right)^{2}+n_{2}\\left( x_{2}-\\overline{x} \\right)^{2}+n_{3}\\left( x_{3}-\\overline{x} \\right)^{2}+n_{4}\\left( x_{4}-\\overline{x} \\right)^{2}}{50}$",
+   "$s=\\sqrt{\\frac{n_{1}\\left( x_{1}-\\overline{x} \\right)^{2}+n_{2}\\left( x_{2}-\\overline{x} \\right)^{2}+n_{3}\\left( x_{3}-\\overline{x} \\right)^{2}+n_{4}\\left( x_{4}-\\overline{x} \\right)^{2}}{50}}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Phương sai: $s^{2}=\\dfrac{n_1(x_1-\\overline{x})^{2}+n_2(x_2-\\overline{x})^{2}+n_3(x_3-\\overline{x})^{2}+n_4(x_4-\\overline{x})^{2}}{n}$ với $n=50$.\nĐộ lệch chuẩn $s=\\sqrt{s^{2}}=\\sqrt{\\dfrac{n_1(x_1-\\overline{x})^{2}+\\dots+n_4(x_4-\\overline{x})^{2}}{50}}$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009536",
+  "loai": "tra_loi_ngan",
+  "de": "Bạn Hoa rất thích nhảy hiện đại. Thời gian tập nhảy mỗi ngày trong thời gian gần đây của bạn Hoa được thống kê lại ở bảng sau:\nThời gian (phút)\n$[20;25)$\n$[25;30)$\n$[30;35)$\n$[35;40)$\n$[40;45)$\nSố ngày\n$6$\n$6$\n$4$\n$1$\n$1$\nTìm khoảng biến thiên của mẫu số liệu ghép nhóm trên ?\n------ HẾT ------",
+  "dap_an": "25",
+  "loi_giai": "Nhóm đầu tiên là $[20;25)$, nhóm cuối cùng là $[40;45)$.\nKhoảng biến thiên: $R=45-20=25$ (phút).\nVậy khoảng biến thiên của mẫu số liệu ghép nhóm là $25$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009359",
+  "loai": "trac_nghiem",
+  "de": "Cho mẫu số liệu ghép nhóm như sau:\nNhóm\n$\\left[ 40;47 \\right)$\n$\\left[ 47;54 \\right)$\n$\\left[ 54;61 \\right)$\n$\\left[ 61;68 \\right)$\n$\\left[ 68;75 \\right)$\nTần số\n$1$\n$6$\n$21$\n$21$\n$11$\n$n=60$\nKhoảng biến thiên của mẫu số liệu ghép nhóm đã cho bằng",
+  "lua_chon": [
+   "$7$.",
+   "$60$.",
+   "$35$.",
+   "$20$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Đầu mút trái của nhóm đầu là $40$, đầu mút phải của nhóm cuối là $75$.\nKhoảng biến thiên: $R=75-40=35$. Chọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009340",
+  "loai": "trac_nghiem",
+  "de": "Cho mẫu số liệu ghép nhóm về tuổi thọ của 10 người dân trong khu chung cư như sau:\nChu kì ( tuổi)\n$\\left[ 65;70 \\right)$\n$\\left[ 70;75 \\right)$\n$\\left[ 75;80 \\right)$\n$\\left[ 80;85 \\right)$\nTần số\n$1$\n$3$\n$4$\n$2$\nTrung bình của mẫu số liệu ghép nhóm trên là",
+  "lua_chon": [
+   "$75$.",
+   "$76$.",
+   "$75,5$.",
+   "$76,5$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Giá trị đại diện: $67{,}5;\\ 72{,}5;\\ 77{,}5;\\ 82{,}5$ với tần số $1;\\ 3;\\ 4;\\ 2$, cỡ mẫu $n=10$.\n$\\overline{x}=\\dfrac{67{,}5\\cdot 1+72{,}5\\cdot 3+77{,}5\\cdot 4+82{,}5\\cdot 2}{10}=\\dfrac{760}{10}=76$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009631",
+  "loai": "trac_nghiem",
+  "de": "Cho mẫu số liệu ghép nhóm về tuổi thọ (đơn vị tính là năm) của một loại bóng đèn mới như sau.\nTuổi thọ\n$[2;3,5)$\n$[3,5;5)$\n$[5;6,5)$\n$[6,5;8)$\nSố bóng đèn\n8\n22\n35\n15\nNhóm chứa tứ phân vị thứ ba của mẫu số liệu là",
+  "lua_chon": [
+   "$[3,5;5)$.",
+   "$[2;3,5)$.",
+   "$[6,5;8)$.",
+   "$[5;6,5)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Cỡ mẫu $n=8+22+35+15=80$.\nTần số tích lũy: $8;\\ 30;\\ 65;\\ 80$.\nTứ phân vị thứ ba ứng với vị trí $\\dfrac{3n}{4}=60$, mà $30<60\\le65$ nên $Q_3$ thuộc nhóm $[5;6{,}5)$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009855",
+  "loai": "tra_loi_ngan",
+  "de": "Lương tháng của một số nhân viên một văn phòng được ghi lại như sau:\nLương tháng (triệu đồng)\n$\\left[ 6;8 \\right)$\n$\\left[ 8;10 \\right)$\n$\\left[ 10;12 \\right)$\n$\\left[ 12;14 \\right)$\nSố nhân viên\n3\n6\n8\n7\nTìm khoảng biến thiên của mẫu số liệu ghép nhóm trên.",
+  "dap_an": "8",
+  "loi_giai": "Khoảng biến thiên của mẫu số liệu ghép nhóm bằng hiệu giữa đầu mút phải của nhóm cuối cùng và đầu mút trái của nhóm đầu tiên.\nNhóm đầu tiên là $[6;8)$ nên đầu mút trái là $6$; nhóm cuối cùng là $[12;14)$ nên đầu mút phải là $14$.\nVậy khoảng biến thiên là $R=14-6=8$ (triệu đồng).",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009349",
+  "loai": "trac_nghiem",
+  "de": "Xét mẫu số liệu ghép nhóm cho bởi Bảng 1.\nNhóm\nTần số\n$\\left[ a_{1}\\,;\\,a_{2} \\right)$\n$\\left[ a_{2}\\,;\\,a_{3} \\right)$\n…\n$\\left[ a_{m}\\,;\\,a_{m+1} \\right)$\n$n_{1}$\n$n_{2}$\n…\n$n_{m}$\n$n$\nBảng 1\nKhoảng biến thiên của mẫu số liệu ghép nhóm đó bằng",
+  "lua_chon": [
+   "$a_{m+1}-a_{1}$.",
+   "$a_{m+1}-a_{m}$.",
+   "$n_{m}-n_{1}$.",
+   "$n-n_{m}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Khoảng biến thiên của mẫu số liệu ghép nhóm bằng hiệu giữa đầu mút phải của nhóm cuối và đầu mút trái của nhóm đầu.\nNhóm đầu là $\\left[a_{1};a_{2}\\right)$, nhóm cuối là $\\left[a_{m};a_{m+1}\\right)$ nên $R=a_{m+1}-a_{1}$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009690",
+  "loai": "trac_nghiem",
+  "de": "Khảo sát về độ ẩm không khí trung bình các tháng năm 2022 tại Đà Nẵng (đơn vị: %), người ta được một mẫu dữ liệu ghép nhóm như sau:\nĐộ ẩm\n$\\left[ 71;74 \\right)$\n$\\left[ 74;77 \\right)$\n$\\left[ 77;80 \\right)$\n$\\left[ 80;83 \\right)$\n$\\left[ 83;86 \\right)$\nSố tháng\n3\n$1$ 2\n7\n$6$\n$2$\nCỡ mẫu của mẫu số liệu ghép nhóm trên là",
+  "lua_chon": [
+   "30",
+   "32",
+   "20",
+   "27"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Số tháng ở nhóm thứ hai là $12$ (ô ghi \"1 2\").\nCỡ mẫu: $3+12+7+6+2=30$.\nVậy cỡ mẫu là $30$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009510",
+  "loai": "tra_loi_ngan",
+  "de": "Một trang báo điện tử thống kê thời gian người sử dụng đọc thông tin trên trang trong mỗi lần truy cập ở bảng sau:\nThời gian đọc (phút)\n[0; 2)\n[2; 4)\n[4; 6)\n[6; 8)\n[8; 10]\nSố lượt truy cập\n45\n34\n23\n18\n5\nHãy tìm khoảng tứ phân vị của mẫu số liệu ghép nhóm trên (kết quả làm tròn đến hàng phần trăm).\n------ HẾT ------",
+  "dap_an": "3.89",
+  "loi_giai": "Cỡ mẫu $n=45+34+23+18+5=125$. Tần số tích luỹ: $45;79;102;120;125$.\n$Q_{1}$ ứng với $\\dfrac{n}{4}=31{,}25$, thuộc nhóm $[0;2)$: $Q_{1}=0+\\dfrac{31{,}25-0}{45}\\cdot 2\\approx 1{,}3889$.\n$Q_{3}$ ứng với $\\dfrac{3n}{4}=93{,}75$, thuộc nhóm $[4;6)$ (vì $79<93{,}75\\le 102$): $Q_{3}=4+\\dfrac{93{,}75-79}{23}\\cdot 2\\approx 5{,}2826$.\nKhoảng tứ phân vị $\\Delta_{Q}=Q_{3}-Q_{1}\\approx 5{,}2826-1{,}3889\\approx 3{,}89$.\nVậy khoảng tứ phân vị bằng $3{,}89$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009443",
+  "loai": "trac_nghiem",
+  "de": "Trong các mệnh đề sau mệnh đề nào sai ?",
+  "lua_chon": [
+   "Độ lệch chuẩn có cùng đơn vị với đơn vị của mẫu số liệu.",
+   "Khi hai mẫu số liệu ghép nhóm có cùng đơn vị đo và có số trung bình cộng bằng nhau (hoặc xấp xỉ nhau), mẫu số liệu nào có độ lệch chuẩn nhỏ hơn thì mức độ phân tán của các số liệu trong mẫu đó sẽ thấp hơn.",
+   "Độ lệch chuẩn của mẫu số liệu ghép nhóm luôn bằng độ lệch chuẩn của mẫu số liệu gốc và được dùng để đo mức độ phân tán của mẫu số liệu ghép nhóm đó.",
+   "Phương sai của mẫu số liệu ghép nhóm xấp xỉ phương sai của mẫu số liệu gốc và được dùng để đo mức độ phân tán của mẫu số liệu ghép nhóm đó"
+  ],
+  "dap_an": "C",
+  "loi_giai": "A đúng, B đúng, D đúng (theo lí thuyết số đặc trưng của mẫu số liệu ghép nhóm).\nC sai: độ lệch chuẩn của mẫu số liệu ghép nhóm chỉ xấp xỉ độ lệch chuẩn của mẫu số liệu gốc, không luôn bằng.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009739",
+  "loai": "trac_nghiem",
+  "de": "Tuổi thọ (năm) của 50 bình ắc quy ô tô điện được cho như sau:\nTuổi thọ (năm)\n$[2;2,5)$\n$[2,5;3)$\n$[3;3,5)$\n$[3,5;4)$\n$[4;4,5)$\n$[4,5;5)$\nTần số\n4\n9\n14\n11\n7\n5\nKhoảng biến thiên của mẫu số liệu trên là:",
+  "lua_chon": [
+   "$10$.",
+   "$2,25$.",
+   "$3$.",
+   "$2,5$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Khoảng biến thiên của mẫu số liệu ghép nhóm bằng hiệu giữa đầu mút phải của nhóm cuối và đầu mút trái của nhóm đầu.\nNhóm đầu là $[2;2{,}5)$, nhóm cuối là $[4{,}5;5)$.\nKhoảng biến thiên $R=5-2=3$.\nVậy khoảng biến thiên là $3$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009646",
+  "loai": "trac_nghiem",
+  "de": "Quãng đường (km) các cầu thủ chạy trong một trận bóng đá được ghi lại trong bảng sau:\nQuãng đường (km)\n$\\left[ 2;4 \\right)$\n$\\left[ 4;6 \\right)$\n$\\left[ 6;8 \\right)$\n$\\left[ 8;10 \\right)$\n$\\left[ 10;12 \\right)$\nSố cầu thủ\n2\n5\n6\n9\n3\nKhoảng biến thiên của mẫu số liệu ghép nhóm trên là",
+  "lua_chon": [
+   "$14$.",
+   "$10$.",
+   "$8$.",
+   "$6$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Khoảng biến thiên của mẫu số liệu ghép nhóm bằng hiệu giữa đầu mút phải của nhóm cuối và đầu mút trái của nhóm đầu.\n$R=12-2=10$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009770",
+  "loai": "trac_nghiem",
+  "de": "Bảng dưới đây ghi lại tốc độ của một số chiếc xe ô tô khi đi qua một điểm đo tốc độ.\nTốc độ $(km/h)$\n$[50;52)$\n$[52;54)$\n$[54;56)$\n$[56;58)$\n$[58;60)$\nSố xe ô tô\n$40$\n$32$\n$25$\n$20$\n$8$\nKhoảng biến thiên (đơn vị: $km/h$) của mẫu số liệu ghép nhóm trên là",
+  "lua_chon": [
+   "$12$.",
+   "$10$.",
+   "$6$.",
+   "$8$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Nhóm đầu là $[50;52)$, nhóm cuối là $[58;60)$.\nKhoảng biến thiên $R=60-50=10$ (km/h).\nVậy khoảng biến thiên là $10$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009635",
+  "loai": "tra_loi_ngan",
+  "de": "Khảo sát trọng lượng (kg) của trẻ em 6 tuổi ở một khu vực thu được kết quả:\nTrọng lượng (kg)\n$\\left[ 14\\,;\\;16 \\right)$\n$\\left[ 16\\,;\\;18 \\right)$\n$\\left[ 18\\,;\\;20 \\right)$\n$\\left[ 20\\,;\\;22 \\right)$\n$\\left[ 22\\,;\\;24 \\right)$\n$\\left[ 24\\,;\\;26 \\right)$\n$\\left[ 26\\,;\\;28 \\right)$\nSố trẻ\n25\n60\n120\n105\n42\n30\n18\nGọi $\\Delta Q$, $s^{2},s$ lần lượt là khoảng tứ phân vị, phương sai và độ lệch chuấn của mẫu số liệu sau khi đã làm tròn đến hàng phần chục thì giá trị của biểu thức $P=\\Delta Q+s^{2}+s$ bằng\n----HẾT---",
+  "dap_an": "15",
+  "loi_giai": "Tổng số trẻ $n=25+60+120+105+42+30+18=400$. Giá trị đại diện: $15;17;19;21;23;25;27$.\nTrung bình: $\\bar{x}=\\dfrac{25\\cdot15+60\\cdot17+120\\cdot19+105\\cdot21+42\\cdot23+30\\cdot25+18\\cdot27}{400}=\\dfrac{8082}{400}=20{,}205$.\nPhương sai: $s^{2}=\\dfrac{1}{400}\\sum f_ix_i^{2}-\\bar{x}^{2}\\approx8{,}458$, làm tròn $s^{2}\\approx8{,}5$.\nĐộ lệch chuẩn: $s=\\sqrt{8{,}458}\\approx2{,}908$, làm tròn $s\\approx2{,}9$.\nTứ phân vị thứ nhất: $\\dfrac{n}{4}=100$. Tần số tích lũy: $25;85;205;\\dots$ nên $Q_1$ thuộc nhóm $[18;20)$:\n$Q_1=18+\\dfrac{100-85}{120}\\cdot2=18{,}25$.\nTứ phân vị thứ ba: $\\dfrac{3n}{4}=300$. Tần số tích lũy: $205;310;\\dots$ nên $Q_3$ thuộc nhóm $[20;22)$:\n$Q_3=20+\\dfrac{300-205}{105}\\cdot2\\appro …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009853",
+  "loai": "trac_nghiem",
+  "de": "Tuổi của các học viên của một lớp tiếng Anh buổi tối ở một trung tâm được ghi lại trong bảng tần số ghép nhóm sau:\nTuổi của học viên\n$[15;20)$\n$[20;25)$\n$[25;30)$\n$[30;35)$\n$[35;40)$\nSố học viên\n$14$\n$17$\n$10$\n$4$\n$5$\n$n=50$\nPhương sai của mẫu số liệu ghép nhóm trên thuộc khoảng nào sau đây?",
+  "lua_chon": [
+   "$(40;50)$.",
+   "$(20;30)$.",
+   "$(10;20)$.",
+   "$(30;40)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Giá trị đại diện của các nhóm lần lượt là $17{,}5$; $22{,}5$; $27{,}5$; $32{,}5$; $37{,}5$ với tần số $14;17;10;4;5$.\nSố trung bình: $\\overline{x}=\\dfrac{17{,}5\\cdot 14+22{,}5\\cdot 17+27{,}5\\cdot 10+32{,}5\\cdot 4+37{,}5\\cdot 5}{50}=\\dfrac{1220}{50}=24{,}4$.\nPhương sai: $s^2=\\dfrac{14\\cdot 17{,}5^2+17\\cdot 22{,}5^2+10\\cdot 27{,}5^2+4\\cdot 32{,}5^2+5\\cdot 37{,}5^2}{50}-24{,}4^2$.\n$s^2=\\dfrac{31712{,}5}{50}-595{,}36=634{,}25-595{,}36=38{,}89$.\nVì $38{,}89\\in(30;40)$ nên chọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009471",
+  "loai": "trac_nghiem",
+  "de": "Bạn Chi rất thích nhảy hiện đại. Thời gian tập nhảy mỗi ngày trong thời gian gần đây của bạn Chi được thống kê lại ở bảng sau:\nThời gian (phút)\n$[20;25)$\n$[25;30)$\n$[30;35)$\n$[35;40)$\n$[40;45)$\nSó ngày\n6\n6\n4\n1\n1\nKhoảng biến thiên của mẫu số liệu ghép nhóm là",
+  "lua_chon": [
+   "25.",
+   "15.",
+   "20.",
+   "30."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Khoảng biến thiên của mẫu số liệu ghép nhóm là hiệu giữa đầu mút phải của nhóm cuối và đầu mút trái của nhóm đầu.\n$R=45-20=25$.\nVậy khoảng biến thiên là 25. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009424",
+  "loai": "trac_nghiem",
+  "de": "Mỗi ngày bác Hương đều đi bộ để rèn luyện sức khoẻ. Quãng đường đi bộ mỗi ngày (đơn vị: $km$) của bác Hương trong 20 ngày được thống kê lại ở bảng sau:\nQuãng đường $(km)$\n$[2,7;3,0)$\n$[3,0;3,3)$\n$[3,3;3,6)$\n$[3,6;3,9)$\n$[3,9;4,2)$\nSố ngày\n3\n6\n5\n4\n2\nPhương sai của mẫu số liệu ghép nhóm là",
+  "lua_chon": [
+   "0,36.",
+   "11,62.",
+   "3,39.",
+   "0,1314."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Giá trị đại diện: $2{,}85;\\ 3{,}15;\\ 3{,}45;\\ 3{,}75;\\ 4{,}05$ với tần số $3;6;5;4;2$, $n=20$.\n$\\overline{x}=\\dfrac{3\\cdot 2{,}85+6\\cdot 3{,}15+5\\cdot 3{,}45+4\\cdot 3{,}75+2\\cdot 4{,}05}{20}=3{,}39$.\n$s^{2}=\\dfrac{3(2{,}85-3{,}39)^{2}+6(3{,}15-3{,}39)^{2}+5(3{,}45-3{,}39)^{2}+4(3{,}75-3{,}39)^{2}+2(4{,}05-3{,}39)^{2}}{20}=\\dfrac{2{,}628}{20}=0{,}1314$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009777",
+  "loai": "trac_nghiem",
+  "de": "Bảng dưới đây biểu diễn mẫu số liệu ghép nhóm về số tiền (đơn vị: nghìn đồng) mà 65 khách hàng mua hàng ở một siêu thị mini trong một ngày.\nNhóm\n$\\left[ 40;50 \\right)$\n$\\left[ 50;60 \\right)$\n$\\left[ 60;70 \\right)$\n$\\left[ 70;80 \\right)$\n$\\left[ 80;90 \\right)$\nTần số\n7\n6\n19\n23\n10\nĐộ lệch chuẩn của mẫu số liệu ghép nhóm trên bằng? (kết quả làm tròn đến hàng phần trăm).",
+  "lua_chon": [
+   "$136,71$.",
+   "$s_{x}=11,7$.",
+   "$s_{x}=11,6$.",
+   "$s_{x}=11,69$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Giá trị đại diện các nhóm: $45;55;65;75;85$ với tần số $7;6;19;23;10$, cỡ mẫu $n=65$.\nSố trung bình $\\bar{x}=\\dfrac{45\\cdot7+55\\cdot6+65\\cdot19+75\\cdot23+85\\cdot10}{65}=\\dfrac{4455}{65}\\approx 68{,}54$.\nPhương sai $s^2=\\dfrac{7\\cdot45^2+6\\cdot55^2+19\\cdot65^2+23\\cdot75^2+10\\cdot85^2}{65}-\\bar{x}^2=\\dfrac{314225}{65}-\\bar{x}^2\\approx 136{,}71$.\nĐộ lệch chuẩn $s=\\sqrt{136{,}71}\\approx 11{,}69$.\nVậy độ lệch chuẩn là $s_x=11{,}69$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009623",
+  "loai": "tra_loi_ngan",
+  "de": "Khảo sát trọng lượng (kg) của trẻ em 6 tuổi ở một khu vực thu được kết quả:\nTrọng lượng (kg)\n$\\left[ 14\\,;\\;16 \\right)$\n$\\left[ 16\\,;\\;18 \\right)$\n$\\left[ 18\\,;\\;20 \\right)$\n$\\left[ 20\\,;\\;22 \\right)$\n$\\left[ 22\\,;\\;24 \\right)$\n$\\left[ 24\\,;\\;26 \\right)$\n$\\left[ 26\\,;\\;28 \\right)$\nSố trẻ\n25\n60\n120\n105\n42\n30\n18\nGọi $\\Delta Q$, $s^{2},s$ lần lượt là khoảng tứ phân vị, phương sai và độ lệch chuấn của mẫu số liệu sau khi đã làm tròn đến hàng phần chục thì giá trị của biểu thức $P=\\Delta Q+s^{2}+s$ bằng",
+  "dap_an": "15",
+  "loi_giai": "Tổng số trẻ $n=25+60+120+105+42+30+18=400$. Giá trị đại diện: $15;17;19;21;23;25;27$.\nTrung bình: $\\bar{x}=\\dfrac{25\\cdot15+60\\cdot17+120\\cdot19+105\\cdot21+42\\cdot23+30\\cdot25+18\\cdot27}{400}=\\dfrac{8082}{400}=20{,}205$.\nPhương sai: $s^{2}=\\dfrac{1}{400}\\sum f_ix_i^{2}-\\bar{x}^{2}\\approx8{,}458$, làm tròn $s^{2}\\approx8{,}5$.\nĐộ lệch chuẩn: $s=\\sqrt{8{,}458}\\approx2{,}908$, làm tròn $s\\approx2{,}9$.\nTứ phân vị thứ nhất: $\\dfrac{n}{4}=100$. Tần số tích lũy: $25;85;205;\\dots$ nên $Q_1$ thuộc nhóm $[18;20)$:\n$Q_1=18+\\dfrac{100-85}{120}\\cdot2=18{,}25$.\nTứ phân vị thứ ba: $\\dfrac{3n}{4}=300$. Tần số tích lũy: $205;310;\\dots$ nên $Q_3$ thuộc nhóm $[20;22)$:\n$Q_3=20+\\dfrac{300-205}{105}\\cdot2\\appro …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009552",
+  "loai": "tra_loi_ngan",
+  "de": "Cho bảng phân bố tần số ghép lớp về độ dài của 60 lá dương xỉ trưởng thành như sau:\nĐộ dài (cm)\n$\\left[ 10;20 \\right)$\n$\\left[ 20;30 \\right)$\n$\\left[ 30;40 \\right)$\n$\\left[ 40;50 \\right]$\nTần số\n$8$\n$18$\n$24$\n$10$\nTính trung vị bảng phân bố tần số ghép lớp đã cho (làm tròn đến hàng phần chục).",
+  "dap_an": "31.7",
+  "loi_giai": "Cỡ mẫu $n=8+18+24+10=60$; tần số tích luỹ: $8;26;50;60$.\n$\\dfrac{n}{2}=30$ thuộc nhóm $[30;40)$ (tần số tích luỹ nhóm trước là $26$).\n$M_{e}=30+\\dfrac{30-26}{24}\\cdot 10=30+\\dfrac{5}{3}\\approx 31{,}7$.\nVậy trung vị khoảng $31{,}7$ cm.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009323",
+  "loai": "trac_nghiem",
+  "de": "Điều tra thời gian sử dụng Internet hằng ngày của một sô học sinh được bảng sau\nThời gian (phút)\n$\\left[ 30;60 \\right)$\n$\\left[ 60;90 \\right)$\n$\\left[ 90;120 \\right)$\n$\\left[ 120;150 \\right)$\n$\\left[ 150;180 \\right)$\nTần số\n$2$\n$4$\n$10$\n$5$\n$3$\nTứ phân vị thứ ba của mẫu số liệu ghép nhóm trên thuộc nhóm nào?",
+  "lua_chon": [
+   "$\\left[ 30;60 \\right)$.",
+   "$\\left[ 120;150 \\right)$.",
+   "$\\left[ 90;120 \\right)$.",
+   "$\\left[ 150;180 \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Cỡ mẫu $n=2+4+10+5+3=24$. Tần số tích luỹ: $2;\\ 6;\\ 16;\\ 21;\\ 24$.\nTứ phân vị thứ ba ứng với $\\dfrac{3n}{4}=18$. Vì $16<18\\le 21$ nên $Q_{3}$ thuộc nhóm $[120;150)$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009437",
+  "loai": "trac_nghiem",
+  "de": "Khảo sát chiều cao của một nhóm 10 học sinh lớp 12A. Ta có được mẫu số liệu ghép nhóm như sau:\nChu kì\n$\\left[ 150;155 \\right)$\n$\\left[ 155;160 \\right)$\n$\\left[ 160;165 \\right)$\n$\\left[ 165;170 \\right)$\nTần số\n$1$\n$3$\n$4$\n$2$\nKhoảng biến thiên của mẫu số liệu trên là:",
+  "lua_chon": [
+   "20",
+   "25",
+   "15",
+   "30"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Nhóm đầu tiên là $[150;155)$, nhóm cuối cùng là $[165;170)$.\nKhoảng biến thiên: $R=170-150=20$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009719",
+  "loai": "tra_loi_ngan",
+  "de": "Thời gian (phút) di chuyển đến trường của nhóm học sinh trường THPT Nguyễn Trãi – Hội An được tổng hợp dưới bảng sau:\nThời gian\n$[30;40)$\n$[40;50)$\n$[50;60)$\n$[60;70)$\n$[70;80)$\n$[80;90)$\nSố học sinh\n2\n10\n16\n8\n2\n2\nTìm khoảng tứ phân vị của mẫu số liệu ghép nhóm trên (làm tròn đến hang phần mười).",
+  "dap_an": "14.5",
+  "loi_giai": "Cỡ mẫu: $n=2+10+16+8+2+2=40$.\nTứ phân vị thứ nhất: $\\dfrac{n}{4}=10$; tần số tích luỹ $2;12;\\dots$ nên $Q_1$ thuộc nhóm $[40;50)$.\n$Q_1=40+\\dfrac{10-2}{10}\\cdot10=48$.\nTứ phân vị thứ ba: $\\dfrac{3n}{4}=30$; tần số tích luỹ $2;12;28;36;\\dots$ nên $Q_3$ thuộc nhóm $[60;70)$.\n$Q_3=60+\\dfrac{30-28}{8}\\cdot10=62{,}5$.\nKhoảng tứ phân vị: $\\Delta_Q=Q_3-Q_1=62{,}5-48=14{,}5$.\nVậy khoảng tứ phân vị là $14{,}5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009477",
+  "loai": "trac_nghiem",
+  "de": "Doanh thu bán hàng trong 20 ngày được lựa chọn ngẫu nhiên của một của hàng được ghi lại ở bảng sau (đơn vị: triệu đồng):\nDoanh thu\n$[5;7)$\n$[7;9)$\n$[9;11)$\n$[11;13)$\n$[13;15)$\nSố ngày\n2\n7\n7\n3\n1\nSố trung bình của mẫu số liệu trên thuộc khoảng nào trong các khoảng dưới đây?",
+  "lua_chon": [
+   "$[9;11)$.",
+   "$[7;9)$.",
+   "$[11;13)$.",
+   "$[13;15)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Giá trị đại diện các nhóm: $6;8;10;12;14$ với tần số $2;7;7;3;1$ ($n=20$).\n$\\overline{x}=\\dfrac{2\\cdot 6+7\\cdot 8+7\\cdot 10+3\\cdot 12+1\\cdot 14}{20}=\\dfrac{188}{20}=9{,}4$.\nVì $9\\le 9{,}4<11$ nên số trung bình thuộc khoảng $[9;11)$. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009612",
+  "loai": "trac_nghiem",
+  "de": "Thời gian chạy bộ mỗi ngày trong thời gian gần đây của bạn Thuận được thống kê ở bảng sau:\nThời gian (phút)\n[20; 25)\n[25; 30)\n[30; 35)\n[35; 40)\n[40; 45)\nSố ngày\n6\n6\n4\n1\n1\nKhoảng biến thiên của mẫu số liệu ghép nhóm là",
+  "lua_chon": [
+   "20.",
+   "30.",
+   "15.",
+   "25."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Nhóm đầu là $[20;25)$, nhóm cuối là $[40;45)$.\nKhoảng biến thiên $R=45-20=25$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009738",
+  "loai": "trac_nghiem",
+  "de": "Chiều cao của 40 học sinh nam ở một trường THPT cho bởi bảng sau\nLớp chiều cao (cm)\n$\\left[ 150;155 \\right)$\n$\\left[ 155;160 \\right)$\n$\\left[ 160;165 \\right)$\n$\\left[ 165;170 \\right)$\nSố học sinh\n9\n20\n7\n4\nGiá trị đại diện của nhóm chứa Mốt của mẫu số liệu là:",
+  "lua_chon": [
+   "$160$.",
+   "$157,5$.",
+   "$162,5$.",
+   "$168,5$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Nhóm chứa mốt là nhóm có tần số lớn nhất, đó là nhóm $[155;160)$ với tần số $20$.\nGiá trị đại diện của nhóm là $\\dfrac{155+160}{2}=157{,}5$.\nVậy giá trị đại diện cần tìm là $157{,}5$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009782",
+  "loai": "trac_nghiem",
+  "de": "Bảng dưới đây ghi lại tốc độ của một số chiếc xe ô tô khi đi qua một điểm đo tốc độ.\nTốc độ $(km/h)$\n$[50;52)$\n$[52;54)$\n$[54;56)$\n$[56;58)$\n$[58;60)$\nSố xe ô tô\n$40$\n$32$\n$25$\n$20$\n$8$\nKhoảng biến thiên (đơn vị: $km/h$) của mẫu số liệu ghép nhóm trên là",
+  "lua_chon": [
+   "$12$.",
+   "$6$.",
+   "$10$.",
+   "$8$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Nhóm đầu là $[50;52)$, nhóm cuối là $[58;60)$.\nKhoảng biến thiên $R=60-50=10$ (km/h).\nVậy khoảng biến thiên là $10$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009548",
+  "loai": "trac_nghiem",
+  "de": "Mỗi ngày bác Hương đều đi bộ để rèn luyện sức khoẻ. Qua thống kê quãng đường 20 ngày đi bộ (đơn vị: km) của bác Hương tính được phương sai của mẫu số liệu ghép nhóm là 49. Độ lệch chuẩn của mẫu số liệu trên là",
+  "lua_chon": [
+   "$2401$.",
+   "$14$.",
+   "$98$.",
+   "$7$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Độ lệch chuẩn bằng căn bậc hai của phương sai.\n$s=\\sqrt{49}=7$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009611",
+  "loai": "tra_loi_ngan",
+  "de": "Người ta ghi lại tiền lãi (đơn vị: triệu đồng) của một số nhà đầu tư (với số tiền đầu tư như nhau), khi đầu tư vào hai lĩnh vực A, B cho kết quả như sau:\nTiền lãi\n[5; 10)\n[10; 15)\n[15; 20)\n[20; 25)\n[25; 30)\nSố nhà đầu tư vào lĩnh vực A\n2\n5\n8\n6\n4\nSố nhà đầu tư vào lĩnh vực B\n8\n4\n2\n5\n6\nTính tổng độ lệch chuẩn cho các mẫu số liệu về tiền lãi của các nhà đầu tư ở hai lĩnh vực A và B (kết quả làm tròn hai chữ số thập phân) .",
+  "dap_an": "13.87",
+  "loi_giai": "Giá trị đại diện: $7{,}5;\\,12{,}5;\\,17{,}5;\\,22{,}5;\\,27{,}5$.\nLĩnh vực A: tần số $2;5;8;6;4$, $n=25$. $\\bar x_A=\\dfrac{462{,}5}{25}=18{,}5$.\n$s_A^2=\\dfrac{2(7{,}5-18{,}5)^2+5(12{,}5-18{,}5)^2+8(17{,}5-18{,}5)^2+6(22{,}5-18{,}5)^2+4(27{,}5-18{,}5)^2}{25}=\\dfrac{850}{25}=34$, nên $s_A\\approx5{,}83$.\nLĩnh vực B: tần số $8;4;2;5;6$, $n=25$. $\\bar x_B=\\dfrac{422{,}5}{25}=16{,}9$.\n$s_B^2=\\dfrac{8(7{,}5-16{,}9)^2+4(12{,}5-16{,}9)^2+2(17{,}5-16{,}9)^2+5(22{,}5-16{,}9)^2+6(27{,}5-16{,}9)^2}{25}=64{,}64$, nên $s_B\\approx8{,}04$.\nVậy $s_A+s_B\\approx5{,}83+8{,}04=13{,}87$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009807",
+  "loai": "trac_nghiem",
+  "de": "Cô Minh Hiền rất thích nhảy hiện đại. Thời gian tập nhảy mỗi ngày trong thời gian gần đây của Cô Minh Hiền được thống kê lại ở bảng sau:\nThời gian (phút)\n[20; 25)\n[25; 30)\n[30; 35)\n[35; 40)\n[40; 45)\nSố ngày\n6\n6\n4\n1\n1\nNhóm chứa tứ phân vị thứ nhất $Q_{1}$ là:",
+  "lua_chon": [
+   "[25; 30).",
+   "[30; 35).",
+   "[20; 25).",
+   "[35; 40)."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Tổng số ngày: $n=6+6+4+1+1=18$.\nTứ phân vị thứ nhất $Q_{1}$ ứng với giá trị thứ $\\dfrac{n}{4}=4{,}5$ của mẫu số liệu.\nTần số tích luỹ: nhóm $[20;25)$ có $6$ ngày, $6\\ge 4{,}5$ nên nhóm chứa $Q_{1}$ là $[20;25)$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009854",
+  "loai": "trac_nghiem",
+  "de": "Một mẫu số liệu ghép nhóm về khối lượng của một nhóm cá thể động vật (đơn vị: kg) có phương sai là $4$. Độ lệch chuẩn của mẫu số liệu đó bằng",
+  "lua_chon": [
+   "$2$ kg.",
+   "$8$ kg.",
+   "$16$ kg.",
+   "$4$ kg."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Độ lệch chuẩn bằng căn bậc hai của phương sai.\nTa có $s=\\sqrt{s^2}=\\sqrt{4}=2$ (kg).\nVậy độ lệch chuẩn là $2$ kg. Chọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009689",
+  "loai": "trac_nghiem",
+  "de": "Số lượng khách hàng nữ mua hàng thời trang trong một ngày của một cửa hàng được thống kê trong bảng tần số ghép nhóm như sau:\nKhoảng tuổi\n$\\left[ 20;\\,30 \\right)$\n$\\left[ 30;\\,40 \\right)$\n$\\left[ 40;\\,50 \\right)$\n$\\left[ 50;\\,60 \\right)$\n$\\left[ 60;\\,70 \\right)$\nSố khách hàng nữ\n$3$\n$9$\n$6$\n$4$\n$2$\nKhoảng biến thiên của mẫu số liệu ghép nhóm trên là",
+  "lua_chon": [
+   "$20$",
+   "$50$",
+   "24",
+   "$60$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Nhóm đầu tiên là $[20;30)$, nhóm cuối cùng là $[60;70)$.\nKhoảng biến thiên: $R=70-20=50$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009849",
+  "loai": "trac_nghiem",
+  "de": "Xét mẫu số liệu ghép nhóm cho bởi bảng sau:\nNhóm\n$[7;11)$\n$[11;15)$\n$[15;19)$\n$[19;23)$\n$[23;27)$\nTần số\n$5$\n$6$\n$8$\n$7$\n$4$\n$n=30$\nKhoảng biến thiên của mẫu số liệu ghép nhóm trên bằng",
+  "lua_chon": [
+   "$12$.",
+   "$16$.",
+   "$34$.",
+   "$20$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Khoảng biến thiên bằng đầu mút phải của nhóm cuối trừ đầu mút trái của nhóm đầu.\n$R=27-7=20$. Chọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009675",
+  "loai": "tra_loi_ngan",
+  "de": "Thời gian hoàn thành bài kiểm tra môn Toán của học sinh lớp 12A được cho trong bảng sau:\nThời gian (phút)\n$\\left[ 25;30 \\right)$\n$\\left[ 30;35 \\right)$\n$\\left[ 35;40 \\right)$\n$\\left[ 40;45 \\right)$\n[45;50)\nSố học sinh\n$9$\n$17$\n$8$\n$6$\n5\nĐộ lệch chuẩn của mẫu số liệu ghép nhóm trên (kết quả làm tròn đến hàng phần chục).",
+  "dap_an": "6.3",
+  "loi_giai": "Cỡ mẫu: $n=9+17+8+6+5=45$.\nGiá trị đại diện các nhóm: $27{,}5;\\ 32{,}5;\\ 37{,}5;\\ 42{,}5;\\ 47{,}5$.\nSố trung bình: $\\bar{x}=\\dfrac{9\\cdot27{,}5+17\\cdot32{,}5+8\\cdot37{,}5+6\\cdot42{,}5+5\\cdot47{,}5}{45}=\\dfrac{1592{,}5}{45}\\approx35{,}39$.\nPhương sai: $s^2=\\dfrac{9\\cdot27{,}5^2+17\\cdot32{,}5^2+8\\cdot37{,}5^2+6\\cdot42{,}5^2+5\\cdot47{,}5^2}{45}-\\bar{x}^2=\\dfrac{58131{,}25}{45}-\\bar{x}^2\\approx39{,}43$.\nĐộ lệch chuẩn: $s=\\sqrt{s^2}\\approx6{,}3$.\nVậy độ lệch chuẩn của mẫu số liệu là $6{,}3$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009316",
+  "loai": "trac_nghiem",
+  "de": "Gọi $Q_{1},\\,Q_{2},\\,Q_{3}$ lần lượt là tứ phân vị của một mẫu số liệu ghép nhóm. Khoảng tứ phân vị $\\Delta_{Q}$ của mẫu số liệu trên được xác định bởi công thức nào sau đây?",
+  "lua_chon": [
+   "$\\Delta_{Q}=Q_{2}-Q_{3}$.",
+   "$\\Delta_{Q}=Q_{2}-Q_{1}$.",
+   "$\\Delta_{Q}=Q_{1}-Q_{3}$.",
+   "$\\Delta_{Q}=Q_{3}-Q_{1}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Khoảng tứ phân vị của mẫu số liệu ghép nhóm là hiệu giữa tứ phân vị thứ ba và tứ phân vị thứ nhất: $\\Delta_{Q}=Q_{3}-Q_{1}$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009586",
+  "loai": "trac_nghiem",
+  "de": "Bạn Oanh nuôi 20 con mèo cảnh. Cân nặng mỗi con mèo (đơn vị: $kg$) được thống kê lại ở bảng sau:\nCân nặng $(kg)$\n$[2,7;3,0)$\n$[3,0;3,3)$\n$[3,3;3,6)$\n$[3,6;3,9)$\n$[3,9;4,2)$\nTần số\n3\n6\n5\n4\n2\nPhương sai của mẫu số liệu ghép nhóm là",
+  "lua_chon": [
+   "0,36.",
+   "11,62.",
+   "0,1314.",
+   "3,39."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Giá trị đại diện: $2{,}85;\\,3{,}15;\\,3{,}45;\\,3{,}75;\\,4{,}05$ với tần số $3;6;5;4;2$, $n=20$.\n$\\bar x=\\dfrac{2{,}85\\cdot3+3{,}15\\cdot6+3{,}45\\cdot5+3{,}75\\cdot4+4{,}05\\cdot2}{20}=\\dfrac{67{,}8}{20}=3{,}39$.\n$s^2=\\dfrac{3(2{,}85-3{,}39)^2+6(3{,}15-3{,}39)^2+5(3{,}45-3{,}39)^2+4(3{,}75-3{,}39)^2+2(4{,}05-3{,}39)^2}{20}$.\n$s^2=\\dfrac{0{,}8748+0{,}3456+0{,}018+0{,}5184+0{,}8712}{20}=\\dfrac{2{,}628}{20}=0{,}1314$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009509",
+  "loai": "trac_nghiem",
+  "de": "Một mẫu số liệu ghép nhóm có phương sai bằng 25 thì có độ lệch chuẩn bằng",
+  "lua_chon": [
+   "$50$.",
+   "$625$.",
+   "$4$.",
+   "$5$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Độ lệch chuẩn bằng căn bậc hai của phương sai: $s=\\sqrt{25}=5$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009632",
+  "loai": "trac_nghiem",
+  "de": "Mỗi ngày bác Hương đều đi bộ để rèn luyện sức khoẻ. Quãng đường đi bộ mỗi ngày (đơn vị: $km$) của bác Hương trong 20 ngày được thống kê lại ở bảng sau:\nQuãng đường $(km)$\n$[2,7;3,0)$\n$[3,0;3,3)$\n$[3,3;3,6)$\n$[3,6;3,9)$\n$[3,9;4,2)$\nSố ngày\n3\n6\n5\n4\n2\nĐộ lệch chuẩn của mẫu số liệu ghép nhóm có giá trị gần nhất với giá trị nào dưới đây?",
+  "lua_chon": [
+   "3,41.",
+   "11,62.",
+   "0,36",
+   "0,017."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Cỡ mẫu $n=3+6+5+4+2=20$. Giá trị đại diện: $2{,}85;\\ 3{,}15;\\ 3{,}45;\\ 3{,}75;\\ 4{,}05$.\nTrung bình: $\\bar{x}=\\dfrac{3\\cdot2{,}85+6\\cdot3{,}15+5\\cdot3{,}45+4\\cdot3{,}75+2\\cdot4{,}05}{20}=\\dfrac{67{,}8}{20}=3{,}39$.\nPhương sai: $s^{2}=\\dfrac{3\\cdot2{,}85^{2}+6\\cdot3{,}15^{2}+5\\cdot3{,}45^{2}+4\\cdot3{,}75^{2}+2\\cdot4{,}05^{2}}{20}-3{,}39^{2}=\\dfrac{232{,}47}{20}-11{,}4921=0{,}1314$.\nĐộ lệch chuẩn: $s=\\sqrt{0{,}1314}\\approx0{,}3625$.\nGiá trị gần nhất là $0{,}36$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009746",
+  "loai": "trac_nghiem",
+  "de": "Chiều cao của 40 học sinh nam ở một trường THPT cho bởi bảng sau\nLớp chiều cao (cm)\n$\\left[ 150;155 \\right)$\n$\\left[ 155;160 \\right)$\n$\\left[ 160;165 \\right)$\n$\\left[ 165;170 \\right)$\nSố học sinh\n9\n20\n7\n4\nGiá trị đại diện của nhóm chứa Mốt của mẫu số liệu là:",
+  "lua_chon": [
+   "$157,5$.",
+   "$162,5$.",
+   "$168,5$.",
+   "$160$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Nhóm chứa mốt là nhóm có tần số lớn nhất, đó là nhóm $[155;160)$ với tần số $20$.\nGiá trị đại diện của nhóm là $\\dfrac{155+160}{2}=157{,}5$.\nVậy giá trị đại diện cần tìm là $157{,}5$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009592",
+  "loai": "tra_loi_ngan",
+  "de": "Bảng 1, Bảng 2 lần lượt biểu diễn mẫu số liệu ghép nhóm thống kê mức lương của hai công ty $A,B$ (đơn vị: triệu đồng)\nNhóm\nTần số\n$[10;15)$\n15\n$[15;20)$\n18\n$[20;25)$\n10\n$[25;30)$\n10\n$[30;35)$\n5\n$[35;40)$\n2\n$n=60$\nNhóm\nTần số\n$[10;15)$\n25\n$[15;20)$\n15\n$[20;25)$\n7\n$[25;30)$\n5\n$[30;35)$\n5\n$[35;40)$\n3\n$n=60$\nBảng 1\nBảng 2\nSau khi đã làm tròn đến hàng phần chục thì tổng độ lệch chuẩn của mẫu số liệu ghép nhóm của công ty $A$ và công ty $B$ bằng",
+  "dap_an": "14.6",
+  "loi_giai": "Với mỗi bảng, lấy giá trị đại diện các nhóm: $12{,}5;\\,17{,}5;\\,22{,}5;\\,27{,}5;\\,32{,}5;\\,37{,}5$, $n=60$.\nCông ty $A$: $\\bar x=\\dfrac{12{,}5\\cdot15+17{,}5\\cdot18+22{,}5\\cdot10+27{,}5\\cdot10+32{,}5\\cdot5+37{,}5\\cdot2}{60}=\\dfrac{1240}{60}\\approx20{,}67$.\n$s_A^2=\\dfrac{\\sum f_ix_i^2}{60}-\\bar x^2\\approx49{,}14$, nên $s_A\\approx7{,}0$.\nCông ty $B$: $\\bar x=\\dfrac{12{,}5\\cdot25+17{,}5\\cdot15+22{,}5\\cdot7+27{,}5\\cdot5+32{,}5\\cdot5+37{,}5\\cdot3}{60}=\\dfrac{1145}{60}\\approx19{,}08$.\n$s_B^2=\\dfrac{\\sum f_ix_i^2}{60}-\\bar x^2\\approx57{,}91$, nên $s_B\\approx7{,}6$.\nVậy $s_A+s_B\\approx7{,}0+7{,}6=14{,}6$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009599",
+  "loai": "trac_nghiem",
+  "de": "Bạn Oanh nuôi 20 con mèo cảnh. Cân nặng mỗi con mèo (đơn vị: $kg$) được thống kê lại ở bảng sau:\nCân nặng $(kg)$\n$[2,7;3,0)$\n$[3,0;3,3)$\n$[3,3;3,6)$\n$[3,6;3,9)$\n$[3,9;4,2)$\nTần số\n3\n6\n5\n4\n2\nPhương sai của mẫu số liệu ghép nhóm là",
+  "lua_chon": [
+   "0,36.",
+   "0,1314.",
+   "3,39.",
+   "11,62."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Giá trị đại diện: $2{,}85;\\,3{,}15;\\,3{,}45;\\,3{,}75;\\,4{,}05$ với tần số $3;6;5;4;2$, $n=20$.\n$\\bar x=\\dfrac{2{,}85\\cdot3+3{,}15\\cdot6+3{,}45\\cdot5+3{,}75\\cdot4+4{,}05\\cdot2}{20}=\\dfrac{67{,}8}{20}=3{,}39$.\n$s^2=\\dfrac{3(2{,}85-3{,}39)^2+6(3{,}15-3{,}39)^2+5(3{,}45-3{,}39)^2+4(3{,}75-3{,}39)^2+2(4{,}05-3{,}39)^2}{20}$.\n$s^2=\\dfrac{0{,}8748+0{,}3456+0{,}018+0{,}5184+0{,}8712}{20}=\\dfrac{2{,}628}{20}=0{,}1314$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009522",
+  "loai": "trac_nghiem",
+  "de": "Bảng dưới đây ghi lại tốc độ của một số xe ô tô khi đi qua một điểm đo tốc độ\nTốc độ(km/h)\n$\\left[ \\text{50;52} \\right)$\n$\\left[ 52;54 \\right)$\n$\\left[ 54;56 \\right)$\n$\\left[ 56;58 \\right)$\n$\\left[ 58;60 \\right)$\nSố xe ô tô\n8\n32\n25\n20\n40\nKhoảng biến thiên (đơn vị: km/h) của mẫu số liệu ghép nhóm trên là",
+  "lua_chon": [
+   "$2$",
+   "$10$",
+   "$40$",
+   "$32$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Khoảng biến thiên của mẫu số liệu ghép nhóm bằng hiệu giữa đầu mút phải của nhóm cuối cùng và đầu mút trái của nhóm đầu tiên.\nNhóm đầu tiên là $[50;52)$, nhóm cuối cùng là $[58;60)$.\n$R=60-50=10$ (km/h).\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009525",
+  "loai": "trac_nghiem",
+  "de": "Thành tích môn nhảy cao (đơn vị cm) của các vận động viên tại một giải điền kinh cấp trường của một trường THPT như sau\n$\\begin{array}{l} 160\\ \\ \\ \\,\\,\\,\\,170\\ \\ \\ \\ \\,160\\ \\ \\ \\ 161\\ \\ \\ \\ 162\\ \\ \\ \\ 179\\ \\ \\ \\ 163\\ \\ \\ \\ 155\\ \\ \\ \\ 158\\,\\,\\,\\,\\,\\,182 \\\\ 150\\ \\ \\ \\ \\ 146\\ \\ \\ \\ \\ 148\\ \\ \\ \\ 168\\ \\ \\ \\ 169\\ \\ \\ \\,\\,\\ 150\\ \\ \\,\\,\\ 148\\ \\ \\ \\ \\,155\\ \\ \\ \\ \\,160\\ \\ \\ \\,165\\ \\ \\,\\, \\end{array}$\nNgười ta ghép nhóm mẫu số liệu trên thành các nhóm có độ dài bằng nhau với nhóm đầu tiên là $\\left[ 140;150 \\right)$ . Hãy tìm hiệu giữa khoảng biến thiên của mẫu số liệu ghép nhóm và mẫu số liệu gốc.",
+  "lua_chon": [
+   "$16$",
+   "$14.$",
+   "$15$",
+   "$50$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Mẫu số liệu gốc có giá trị nhỏ nhất là $146$ và lớn nhất là $182$.\nKhoảng biến thiên của mẫu số liệu gốc: $R_{1}=182-146=36$.\nCác nhóm có độ dài $10$, nhóm đầu tiên $[140;150)$ nên các nhóm lần lượt là $[140;150),[150;160),[160;170),[170;180),[180;190)$; giá trị lớn nhất $182$ thuộc nhóm $[180;190)$.\nKhoảng biến thiên của mẫu số liệu ghép nhóm: $R_{2}=190-140=50$.\nHiệu giữa hai khoảng biến thiên: $R_{2}-R_{1}=50-36=14$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009826",
+  "loai": "trac_nghiem",
+  "de": "Một mẫu số liệu có bảng tần số ghép nhóm như sau:\nNhóm\n$\\left[ 1;5 \\right)$\n$\\left[ 5;9 \\right)$\n$\\left[ 9;13 \\right)$\n$\\left[ 13;17 \\right)$\n$\\left[ 17;21 \\right)$\nTần số\n$4$\n$8$\n$13$\n$6$\n$4$\nPhương sai của mẫu số liệu là (kết quả làm tròn đến hàng phần trăm).",
+  "lua_chon": [
+   "$21$.",
+   "$4,58$.",
+   "$20,98$.",
+   "$10,7$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Cỡ mẫu: $n=4+8+13+6+4=35$. Giá trị đại diện: $3;7;11;15;19$.\nSố trung bình: $\\bar{x}=\\dfrac{4\\cdot3+8\\cdot7+13\\cdot11+6\\cdot15+4\\cdot19}{35}=\\dfrac{377}{35}\\approx10{,}77$.\n$\\overline{x^{2}}=\\dfrac{4\\cdot9+8\\cdot49+13\\cdot121+6\\cdot225+4\\cdot361}{35}=\\dfrac{4795}{35}=137$.\nPhương sai: $s^{2}=137-\\left(\\dfrac{377}{35}\\right)^{2}\\approx20{,}98$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009580",
+  "loai": "trac_nghiem",
+  "de": "Thống kê điểm trung bình môn Toán của một số học sinh lớp 12 được cho ở bảng sau:\nKhoảng điểm\n$[6,5;7)$\n$[7;7,5)$\n$[7,5;8)$\n$[8;8,5)$\n$[8,5;9)$\n$[9;9,5)$\n$[9,5;10)$\nTần số\n$8$\n$10$\n$16$\n$24$\n$13$\n$7$\n$4$\nSố trung bình của mẫu số liệu ghép nhóm trên có giá trị là:",
+  "lua_chon": [
+   "8,12.",
+   "8.",
+   "7,7.",
+   "8,5."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Giá trị đại diện các nhóm: $6{,}75;\\,7{,}25;\\,7{,}75;\\,8{,}25;\\,8{,}75;\\,9{,}25;\\,9{,}75$. Cỡ mẫu $n=8+10+16+24+13+7+4=82$.\n$\\bar x=\\dfrac{6{,}75\\cdot8+7{,}25\\cdot10+7{,}75\\cdot16+8{,}25\\cdot24+8{,}75\\cdot13+9{,}25\\cdot7+9{,}75\\cdot4}{82}=\\dfrac{666}{82}\\approx8{,}12$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009820",
+  "loai": "trac_nghiem",
+  "de": "Một mẫu số liệu có bảng tần số ghép nhóm như sau:\nNhóm\n$\\left[ 1;5 \\right)$\n$\\left[ 5;9 \\right)$\n$\\left[ 9;13 \\right)$\n$\\left[ 13;17 \\right)$\n$\\left[ 17;21 \\right)$\nTần số\n$4$\n$8$\n$13$\n$6$\n$4$\nPhương sai của mẫu số liệu là (kết quả làm tròn đến hàng phần trăm).",
+  "lua_chon": [
+   "$10,7$.",
+   "$4,58$.",
+   "$21$.",
+   "$20,98$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Cỡ mẫu: $n=4+8+13+6+4=35$. Giá trị đại diện: $3;7;11;15;19$.\nSố trung bình: $\\bar{x}=\\dfrac{4\\cdot3+8\\cdot7+13\\cdot11+6\\cdot15+4\\cdot19}{35}=\\dfrac{377}{35}\\approx10{,}77$.\n$\\overline{x^{2}}=\\dfrac{4\\cdot9+8\\cdot49+13\\cdot121+6\\cdot225+4\\cdot361}{35}=\\dfrac{4795}{35}=137$.\nPhương sai: $s^{2}=137-\\left(\\dfrac{377}{35}\\right)^{2}\\approx20{,}98$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009456",
+  "loai": "tra_loi_ngan",
+  "de": "Bác Hùng đầu tư cùng một số tiền vào hai lĩnh vực kinh doanh A và B. Bác Hùng thống kê số tiền thu được mỗi tháng trong 20 tháng theo mỗi lĩnh vực cho kết quả như sau:\nSố tiền( triệu đồng)\n$\\left[ 15;25 \\right)$\n$\\left[ 25;35 \\right)$\n$\\left[ 35;45 \\right)$\n$\\left[ 45;55 \\right)$\n$\\left[ 55;65 \\right)$\nSố tháng theo lĩnh vực A.\n3\n4\n5\n3\n5\nSố tháng theo lĩnh vực B.\n3\n2\n5\n4\n6\nGọi $\\overline{x_{A}},\\overline{x_{B}}$ lần lượt là số tiền trung bình thu đươc vào hai lĩnh vực kinh doanh A và B. Tính $\\overline{x_{A}}-\\overline{x_{B}}$",
+  "dap_an": "-2.5",
+  "loi_giai": "Lấy giá trị đại diện mỗi nhóm: $20;30;40;50;60$. Cả hai lĩnh vực có $n=20$ tháng.\n$\\overline{x_{A}}=\\dfrac{3\\cdot 20+4\\cdot 30+5\\cdot 40+3\\cdot 50+5\\cdot 60}{20}=\\dfrac{830}{20}=41{,}5$.\n$\\overline{x_{B}}=\\dfrac{3\\cdot 20+2\\cdot 30+5\\cdot 40+4\\cdot 50+6\\cdot 60}{20}=\\dfrac{880}{20}=44$.\nVậy $\\overline{x_{A}}-\\overline{x_{B}}=41{,}5-44=-2{,}5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009291",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty sản xuất bóng đèn LED đã kiểm tra chất lượng sản phẩm của một lô hàng và ghi nhận thời gian sử dụng của 250 bóng đèn như sau:\nKhoảng thời gian (giờ)\nGiá trị đại diện\nSố lượng bóng đèn\n[0, 1000)\n500\n5\n[1000, 2000)\n1500\n46\n[2000, 3000)\n2500\n162\n[3000, 4000)\n3500\n25\n[4000, 5000)\n4500\n12\n$N=250$\nNếu độ lệch chuẩn của của bảng số liệu trên vượt quá 500 thì lô hàng không đạt tiêu chuẩn. Qua tính toán người ta thấy lô hàng đã không đạt tiêu chuẩn để đưa ra thị trường. Hỏi độ lệch chuẩn của lô hàng trên đã vượt qua tiêu chuẩn là bao nhiêu? (kết quả làm tròn đến hàng đơn vị).",
+  "dap_an": "245",
+  "loi_giai": "Số trung bình: $\\overline{x}=\\dfrac{500\\cdot 5+1500\\cdot 46+2500\\cdot 162+3500\\cdot 25+4500\\cdot 12}{250}=\\dfrac{618000}{250}=2472$.\nCác giá trị $x^{2}f$ lần lượt là $1\\,250\\,000;\\ 103\\,500\\,000;\\ 1\\,012\\,500\\,000;\\ 306\\,250\\,000;\\ 243\\,000\\,000$, tổng $=1\\,666\\,500\\,000$.\nPhương sai: $s^{2}=\\dfrac{1\\,666\\,500\\,000}{250}-2472^{2}=6\\,666\\,000-6\\,110\\,784=555\\,216$.\nĐộ lệch chuẩn $s=\\sqrt{555216}\\approx 745$.\nĐộ lệch chuẩn vượt tiêu chuẩn là $745-500=245$.\nVậy lô hàng vượt tiêu chuẩn $245$ giờ.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009410",
+  "loai": "trac_nghiem",
+  "de": "Mỗi ngày bác Hương đều đi bộ để rèn luyện sức khỏe. Quãng đường đi bộ mỗi ngày (đơn vị: km) của bác Hương trong 20 ngày được thống kê lại ở bảng sau:\nQuãng đường (km)\n$\\left[ 2,7;3,0 \\right)$\n$\\left[ 3,0;3,3 \\right)$\n$\\left[ 3,3;3,6 \\right)$\n$\\left[ 3,6;3,9 \\right)$\n$\\left[ 3,9;4,2 \\right)$\nSố ngày\n3\n6\n5\n4\n2\n$N=20$\nPhương sai của mẫu số liệu ghép nhóm trên gần nhất với số nào sau đây?",
+  "lua_chon": [
+   "$11,62$.",
+   "$0,36$.",
+   "$3,39$.",
+   "$0,13$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Giá trị đại diện các nhóm: $2{,}85;\\ 3{,}15;\\ 3{,}45;\\ 3{,}75;\\ 4{,}05$ với tần số $3;6;5;4;2$.\nSố trung bình: $\\overline{x}=\\dfrac{3\\cdot 2{,}85+6\\cdot 3{,}15+5\\cdot 3{,}45+4\\cdot 3{,}75+2\\cdot 4{,}05}{20}=\\dfrac{67{,}8}{20}=3{,}39$.\nPhương sai: $s^{2}=\\dfrac{3(2{,}85-3{,}39)^{2}+6(3{,}15-3{,}39)^{2}+5(3{,}45-3{,}39)^{2}+4(3{,}75-3{,}39)^{2}+2(4{,}05-3{,}39)^{2}}{20}=\\dfrac{2{,}628}{20}=0{,}1314$.\nGần nhất với $0{,}13$. Chọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009630",
+  "loai": "trac_nghiem",
+  "de": "Mỗi ngày bác Hương đều đi bộ để rèn luyện sức khoẻ. Quãng đường đi bộ mỗi ngày (đơn vị: $km$) của bác Hương trong 20 ngày được thống kê lại ở bảng sau:\nQuãng đường $(km)$\n$[2,7;3,0)$\n$[3,0;3,3)$\n$[3,3;3,6)$\n$[3,6;3,9)$\n$[3,9;4,2)$\nSố ngày\n3\n6\n5\n4\n2\nĐộ lệch chuẩn của mẫu số liệu ghép nhóm có giá trị gần nhất với giá trị nào dưới đây?",
+  "lua_chon": [
+   "0,36",
+   "3,41.",
+   "0,017.",
+   "11,62."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Cỡ mẫu $n=3+6+5+4+2=20$. Giá trị đại diện: $2{,}85;\\ 3{,}15;\\ 3{,}45;\\ 3{,}75;\\ 4{,}05$.\nTrung bình: $\\bar{x}=\\dfrac{3\\cdot2{,}85+6\\cdot3{,}15+5\\cdot3{,}45+4\\cdot3{,}75+2\\cdot4{,}05}{20}=\\dfrac{67{,}8}{20}=3{,}39$.\nPhương sai: $s^{2}=\\dfrac{3\\cdot2{,}85^{2}+6\\cdot3{,}15^{2}+5\\cdot3{,}45^{2}+4\\cdot3{,}75^{2}+2\\cdot4{,}05^{2}}{20}-3{,}39^{2}=\\dfrac{232{,}47}{20}-11{,}4921=0{,}1314$.\nĐộ lệch chuẩn: $s=\\sqrt{0{,}1314}\\approx0{,}3625$.\nGiá trị gần nhất là $0{,}36$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009845",
+  "loai": "trac_nghiem",
+  "de": "Trong một mẫu số liệu ghép nhóm ta tìm được $Q_{1}=5$, $Q_{2}=10$, $Q_{3}=15$ là tứ phân vị của một mẫu số liệu trên. Khoảng tứ phân vị $\\Delta_{Q}$ của mẫu số liệu trên bằng?",
+  "lua_chon": [
+   "$\\Delta_{Q}=15$.",
+   "$\\Delta_{Q}=5$.",
+   "$\\Delta_{Q}=10$.",
+   "$\\Delta_{Q}=30$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Khoảng tứ phân vị: $\\Delta_{Q}=Q_{3}-Q_{1}=15-5=10$. Chọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009686",
+  "loai": "tra_loi_ngan",
+  "de": "Thời gian hoàn thành bài kiểm tra môn Toán của học sinh lớp 12A được cho trong bảng sau:\nThời gian (phút)\n$\\left[ 25;30 \\right)$\n$\\left[ 30;35 \\right)$\n$\\left[ 35;40 \\right)$\n$\\left[ 40;45 \\right)$\nSố học sinh\n$9$\n$17$\n$8$\n$6$\nPhương sai của mẫu số liệu ghép nhóm trên (kết quả làm tròn đến hàng phần chục).",
+  "dap_an": "23.7",
+  "loi_giai": "Cỡ mẫu: $n=9+17+8+6=40$.\nGiá trị đại diện: $27{,}5;\\ 32{,}5;\\ 37{,}5;\\ 42{,}5$.\nSố trung bình: $\\bar{x}=\\dfrac{9\\cdot27{,}5+17\\cdot32{,}5+8\\cdot37{,}5+6\\cdot42{,}5}{40}=\\dfrac{1355}{40}=33{,}875$.\nPhương sai: $s^2=\\dfrac{9\\cdot27{,}5^2+17\\cdot32{,}5^2+8\\cdot37{,}5^2+6\\cdot42{,}5^2}{40}-\\bar{x}^2=\\dfrac{46850}{40}-33{,}875^2\\approx23{,}73$.\nVậy phương sai của mẫu số liệu là $23{,}7$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009411",
+  "loai": "trac_nghiem",
+  "de": "Một công ty cung cấp nước sạch thống kê lượng nước các hộ gia đình trong một khu vực tiêu thụ trong một tháng ở bảng sau.\nLượng nước tiêu thụ $\\left( m^{3} \\right)$\n$\\left[ 3\\,;\\,6 \\right)$\n$\\left[ 6\\,;\\,9 \\right)$\n$\\left[ 9\\,;\\,12 \\right)$\n$\\left[ 12\\,;\\,15 \\right)$\n$\\left[ 15\\,;\\,18 \\right)$\nSố hộ gia đỉnh\n$20$\n$60$\n$40$\n$32$\n$7$\nKhoảng biến thiên của mẫu số liệu ghép nhóm trên là:",
+  "lua_chon": [
+   "$15$$m^{3}$.",
+   "$3$$m^{3}$.",
+   "$18$$m^{3}$.",
+   "$20$$m^{3}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Nhóm đầu tiên là $[3;6)$, nhóm cuối cùng là $[15;18)$.\nKhoảng biến thiên: $R=18-3=15$ ($m^{3}$).\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009566",
+  "loai": "trac_nghiem",
+  "de": "Một mẫu số liệu ghép nhóm có phương sai bằng $36$ thì có độ lệch chuẩn bằng",
+  "lua_chon": [
+   "$-6.$",
+   "$6.$",
+   "$216.$",
+   "$72.$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Độ lệch chuẩn bằng căn bậc hai của phương sai.\n$s=\\sqrt{36}=6$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010026",
+  "loai": "trac_nghiem",
+  "de": "Cô Hà thống kê lại đường kính thân gỗ của một số cây xoan đào 6 năm tuổi được trồng ở một lâm trường ở bảng sau:\nĐường kính $(cm)$\n$[40;45)$\n$[45;50)$\n$[50;55)$\n$[55;60)$\n$[60;65)$\nTần số\n5\n20\n18\n7\n3\nKhoảng biến thiên của mẫu số liệu ghép nhóm trên là",
+  "lua_chon": [
+   "25.",
+   "69,8.",
+   "6.",
+   "30."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Đầu mút trái của nhóm đầu tiên là $40$, đầu mút phải của nhóm cuối cùng là $65$.\nKhoảng biến thiên: $R=65-40=25$ $(cm)$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009391",
+  "loai": "tra_loi_ngan",
+  "de": "Khảo sát thời gian tập thể dục trong ngày của học sinh lớp 12A thu được mẫu số liệu ghép nhóm sau:\nThời gian (phút)\n$\\left[ 10;20 \\right)$\n$\\left[ 20;30 \\right)$\n$\\left[ 30;40 \\right)$\n$\\left[ 40;50 \\right)$\n$\\left[ 50;60 \\right)$\nSố học sinh lớp 12A\n5\n7\n12\n10\n6\nTính độ lệch chuẩn của mẫu số liệu ghép nhóm trên (làm tròn kết quả đến chữ số thập phân thứ nhất).",
+  "dap_an": "12.3",
+  "loi_giai": "Giá trị đại diện: $15;\\ 25;\\ 35;\\ 45;\\ 55$ với tần số $5;\\ 7;\\ 12;\\ 10;\\ 6$, $n=40$.\nTrung bình: $\\overline{x}=\\dfrac{15\\cdot 5+25\\cdot 7+35\\cdot 12+45\\cdot 10+55\\cdot 6}{40}=\\dfrac{1450}{40}=36{,}25$.\nPhương sai: $s^{2}=\\dfrac{5\\cdot 15^{2}+7\\cdot 25^{2}+12\\cdot 35^{2}+10\\cdot 45^{2}+6\\cdot 55^{2}}{40}-36{,}25^{2}=\\dfrac{58600}{40}-1314{,}0625=150{,}9375$.\nĐộ lệch chuẩn: $s=\\sqrt{150{,}9375}\\approx 12{,}3$.\nVậy độ lệch chuẩn xấp xỉ $12{,}3$ phút.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009425",
+  "loai": "trac_nghiem",
+  "de": "Mỗi ngày bác Hương đều đi bộ để rèn luyện sức khỏe. Quãng đường đi bộ mỗi ngày (đơn vị: km) của bác Hương trong 20 ngày được thống kê lại ở bảng sau:\nQuãng đường (km)\n[2,7; 3,0)\n[3,0; 3,3)\n[3,3; 3,6)\n[3,6; 3,9)\n[3,9; 4,2)\nSố ngày\n3\n6\n5\n4\n2\nKhoảng biến thiên của mẫu số liệu ghép nhóm là",
+  "lua_chon": [
+   "0,3.",
+   "0,9.",
+   "0,6.",
+   "1,5."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Nhóm đầu tiên là $[2{,}7;3{,}0)$, nhóm cuối cùng là $[3{,}9;4{,}2)$.\nKhoảng biến thiên: $R=4{,}2-2{,}7=1{,}5$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009627",
+  "loai": "trac_nghiem",
+  "de": "Cho mẫu số liệu ghép nhóm về tuổi thọ (đơn vị tính là năm) của một loại bóng đèn mới như sau.\nTuổi thọ\n$[2;3,5)$\n$[3,5;5)$\n$[5;6,5)$\n$[6,5;8)$\nSố bóng đèn\n8\n22\n35\n15\nNhóm chứa tứ phân vị thứ ba của mẫu số liệu là",
+  "lua_chon": [
+   "$[3,5;5)$.",
+   "$[6,5;8)$.",
+   "$[5;6,5)$.",
+   "$[2;3,5)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Cỡ mẫu $n=8+22+35+15=80$.\nTần số tích lũy của các nhóm: $8;\\ 30;\\ 65;\\ 80$.\nTứ phân vị thứ ba $Q_3$ ứng với vị trí $\\dfrac{3n}{4}=60$.\nVì $30<60\\le65$ nên $Q_3$ thuộc nhóm $[5;6{,}5)$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009661",
+  "loai": "trac_nghiem",
+  "de": "Thời gian (giờ) ngủ của một buổi tối của một số học sinh khối 12 được ghi lại trong bảng sau:\nThời gian (giờ)\n$\\left[ 4;5 \\right)$\n$\\left[ 5;6 \\right)$\n$\\left[ 6;7 \\right)$\n$\\left[ 7;8 \\right)$\n$\\left[ 8;9 \\right)$\nSố học sinh\n4\n8\n10\n11\n8\nKhoảng biến thiên của mẫu số liệu ghép nhóm trên là",
+  "lua_chon": [
+   "$13$.",
+   "$5$.",
+   "$4$.",
+   "$3$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Khoảng biến thiên của mẫu số liệu ghép nhóm bằng hiệu giữa đầu mút phải của nhóm cuối và đầu mút trái của nhóm đầu.\n$R=9-4=5$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009388",
+  "loai": "trac_nghiem",
+  "de": "Thống kê thời gian đến trường của một số học sinh lớp 10 và thu được mẫu số liệu ghép nhóm sau:\nThời gian (phút)\n$\\left[ 1\\,;\\,4,5 \\right)$\n$\\left[ 4,5\\,;\\,8 \\right)$\n$\\left[ 8\\,;\\,11,5 \\right)$\n$\\left[ 11,5\\,;\\,15 \\right)$\n$\\left[ 15\\,;\\,18,5 \\right)$\n$\\left[ 18,5\\,;\\,22 \\right)$\nSố học sinh\n$15$\n$19$\n$16$\n$9$\n$4$\n$7$\nTrung vị của mẫu số liệu ghép nhóm trên là (kết quả làm tròn đến hàng phần chục)",
+  "lua_chon": [
+   "$9,4.$",
+   "$8,8.$",
+   "$8,2.$",
+   "$7,4.$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Tổng số học sinh: $n=15+19+16+9+4+7=70$, nên $\\dfrac{n}{2}=35$.\nTần số tích luỹ: $15$; $34$; $50$; ... nên nhóm chứa trung vị là $\\left[8;11{,}5\\right)$.\n$M_{e}=8+\\dfrac{35-34}{16}\\cdot 3{,}5=8+0{,}21875\\approx 8{,}2$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009654",
+  "loai": "tra_loi_ngan",
+  "de": "Cho mẫu số liệu ghép nhóm sau về điểm kiểm tra giữa kỳ I môn Toán của các học sinh lớp 12B .\nĐiểm\n$\\left[ 5;6 \\right)$\n$\\left[ 6;7 \\right)$\n$\\left[ 7;8 \\right)$\n$\\left[ 8;9 \\right)$\n$\\left[ 9;10 \\right)$\nSố học sinh\n$6$\n$8$\n$18$\n$6$\n$2$\nPhương sai của mẫu số liệu ghép nhóm trên bằng bao nhiêu? (làm tròn kết quả đến hàng phần trăm).",
+  "dap_an": "1.09",
+  "loi_giai": "Cỡ mẫu $n=6+8+18+6+2=40$. Giá trị đại diện: $5{,}5;6{,}5;7{,}5;8{,}5;9{,}5$.\nTrung bình: $\\bar{x}=\\dfrac{6\\cdot5{,}5+8\\cdot6{,}5+18\\cdot7{,}5+6\\cdot8{,}5+2\\cdot9{,}5}{40}=\\dfrac{290}{40}=7{,}25$.\nPhương sai: $s^{2}=\\dfrac{6\\cdot5{,}5^{2}+8\\cdot6{,}5^{2}+18\\cdot7{,}5^{2}+6\\cdot8{,}5^{2}+2\\cdot9{,}5^{2}}{40}-7{,}25^{2}=\\dfrac{2146}{40}-52{,}5625=1{,}0875$.\nVậy phương sai $\\approx1{,}09$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009360",
+  "loai": "trac_nghiem",
+  "de": "Một bác tài xế thống kê lại độ dài quãng đường (đơn vị: km) bác đã lái xe mỗi ngày trong một tháng ở bảng sau:\nĐộ dài quãng đường\n(km)\n$\\left[ 50;100 \\right)$\n$\\left[ 100;150 \\right)$\n$\\left[ 150;200 \\right)$\n$\\left[ 200;250 \\right)$\n$\\left[ 250;300 \\right)$\nGiá trị trung bình\n(km)\n$75$\n$125$\n$175$\n$225$\n$275$\nSố ngày\n$5$\n$10$\n$9$\n$4$\n$2$\n$n=30$\nPhương sai của mẫu số liệu trên được thực hiện bởi phép tính",
+  "lua_chon": [
+   "$s^{2}=155$.",
+   "$s^{2}=\\frac{\\left( 75-155 \\right)^{2}+\\left( 125-155 \\right)^{2}+\\left( 175-155 \\right)^{2}+\\left( 225-155 \\right)^{2}+\\left( 275-155 \\right)^{2}}{30}$.",
+   "$s^{2}=5\\left( 75-155 \\right)^{2}+10\\left( 125-155 \\right)^{2}+9\\left( 175-155 \\right)^{2}+4\\left( 225-155 \\right)^{2}+2\\left( 275-155 \\right)^{2}$.",
+   "$s^{2}=\\frac{5\\left( 75-155 \\right)^{2}+10\\left( 125-155 \\right)^{2}+9\\left( 175-155 \\right)^{2}+4\\left( 225-155 \\right)^{2}+2\\left( 275-155 \\right)^{2}}{30}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Số trung bình: $\\overline{x}=\\dfrac{5\\cdot 75+10\\cdot 125+9\\cdot 175+4\\cdot 225+2\\cdot 275}{30}=\\dfrac{4650}{30}=155$.\nPhương sai: $s^{2}=\\dfrac{5\\left(75-155\\right)^{2}+10\\left(125-155\\right)^{2}+9\\left(175-155\\right)^{2}+4\\left(225-155\\right)^{2}+2\\left(275-155\\right)^{2}}{30}$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009923",
+  "loai": "trac_nghiem",
+  "de": "Cho mẫu số liệu ghép nhóm có tứ phân vị thứ nhất, thứ hai, thứ ba lần lượt là Q1, Q2, Q3. Khoảng tứ phân vị của mẫu số liệu ghép nhóm đó bằng:",
+  "lua_chon": [
+   "2Q2.",
+   "Q1 – Q3.",
+   "Q3 – Q1.",
+   "Q3 + Q1 – Q2."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Khoảng tứ phân vị của mẫu số liệu ghép nhóm là $\\Delta_Q=Q_3-Q_1$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009433",
+  "loai": "trac_nghiem",
+  "de": "Mỗi ngày bác Hương đều đi bộ để rèn luyện sức khoẻ. Quãng đường đi bộ mỗi ngày (đơn vị: $km$) của bác Hương trong 20 ngày được thống kê lại ở bảng sau:\nQuãng đường $(km)$\n$[2,7;3,0)$\n$[3,0;3,3)$\n$[3,3;3,6)$\n$[3,6;3,9)$\n$[3,9;4,2)$\nSố ngày\n3\n6\n5\n4\n2\nĐộ lệch chuẩn của mẫu số liệu ghép nhóm có giá trị gần nhất với giá trị nào dưới đây?",
+  "lua_chon": [
+   "3,41.",
+   "0,017.",
+   "11,62.",
+   "0,36."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Giá trị đại diện: $2{,}85;\\ 3{,}15;\\ 3{,}45;\\ 3{,}75;\\ 4{,}05$ với tần số $3;6;5;4;2$, $n=20$.\n$\\overline{x}=3{,}39$; $s^{2}=\\dfrac{2{,}628}{20}=0{,}1314$.\nĐộ lệch chuẩn $s=\\sqrt{0{,}1314}\\approx 0{,}36$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009587",
+  "loai": "trac_nghiem",
+  "de": "Doanh thu bán hàng trong 20 ngày được lựa chọn ngẫu nhiên của một cửa hàng được ghi lại ở bảng sau (đơn vị: triệu đồng):\nDoanh thu\n$[5;7)$\n$[7;9)$\n$[9;11)$\n$[11;13)$\n$[13;15)$\nSố ngày\n2\n7\n7\n3\n1\nTứ phân vị thứ ba của mẫu số liệu trên gần nhất với giá trị nào trong các giá trị sau?",
+  "lua_chon": [
+   "13.",
+   "11.",
+   "12.",
+   "10."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Cỡ mẫu $n=20$, $\\dfrac{3n}{4}=15$. Tần số tích luỹ: $2;\\,9;\\,16;\\,19;\\,20$ nên nhóm chứa $Q_3$ là $[9;11)$.\n$Q_3=9+\\dfrac{15-9}{7}\\cdot2=9+\\dfrac{12}{7}\\approx10{,}71$.\nGiá trị gần nhất với $10{,}71$ trong các đáp án là $11$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009835",
+  "loai": "trac_nghiem",
+  "de": "Mỗi ngày cô Lan đều đi bộ để rèn luyện sức khỏe. Quãng đường đi bộ mỗi ngày (đơn vị: km) của cô Lan trong 18 ngày được thống kê lại ở bảng sau:\nQuãng đường (km)\n$\\left[ 2,7;\\,3,0 \\right)$\n$\\left[ 3,0;\\,3,3 \\right)$\n$\\left[ 3,3;\\,3,6 \\right)$\n$\\left[ 3,6;\\,3,9 \\right)$\nSố ngày\n3\n6\n5\n4\nPhương sai của mẫu số liệu ghép nhóm là (làm tròn đến hàng phần trăm)",
+  "lua_chon": [
+   "$4,07$.",
+   "$3,42$.",
+   "$0,15$.",
+   "$0,09$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Giá trị đại diện: $2{,}85;\\ 3{,}15;\\ 3{,}45;\\ 3{,}75$ với tần số $3;6;5;4$ ($n=18$).\nSố trung bình: $\\bar{x}=\\dfrac{3\\cdot2{,}85+6\\cdot3{,}15+5\\cdot3{,}45+4\\cdot3{,}75}{18}=\\dfrac{59{,}7}{18}\\approx3{,}3167$.\nPhương sai: $s^{2}=\\dfrac{3\\cdot2{,}85^{2}+6\\cdot3{,}15^{2}+5\\cdot3{,}45^{2}+4\\cdot3{,}75^{2}}{18}-\\bar{x}^{2}=\\dfrac{199{,}665}{18}-3{,}3167^{2}\\approx0{,}09$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009537",
+  "loai": "trac_nghiem",
+  "de": "Cân nặng của một số quả mít trong một khu vườn được thống kê ở bảng sau\nCân nặng (kg)\n$\\left[ 4;\\,\\,6 \\right)$\n$\\left[ 6;\\,\\,8 \\right)$\n$\\left[ 8;\\,\\,10 \\right)$\n$\\left[ 10;\\,\\,12 \\right)$\n$\\left[ 12;\\,\\,14 \\right)$\nSố quả mít\n12\n13\n12\n6\n7\nHãy tính phương sai của mẫu số liệu ghép nhóm trên (kết quả làm tròn đến hàng phần trăm).",
+  "lua_chon": [
+   "8,58.",
+   "7,14.",
+   "2,67.",
+   "8,32."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Giá trị đại diện các nhóm: $5;7;9;11;13$ với tần số $12;13;12;6;7$; cỡ mẫu $n=50$.\nSố trung bình: $\\overline{x}=\\dfrac{5\\cdot 12+7\\cdot 13+9\\cdot 12+11\\cdot 6+13\\cdot 7}{50}=\\dfrac{416}{50}=8{,}32$.\n$\\dfrac{5^{2}\\cdot 12+7^{2}\\cdot 13+9^{2}\\cdot 12+11^{2}\\cdot 6+13^{2}\\cdot 7}{50}=\\dfrac{3818}{50}=76{,}36$.\nPhương sai: $s^{2}=76{,}36-8{,}32^{2}=76{,}36-69{,}2224=7{,}1376\\approx 7{,}14$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009431",
+  "loai": "trac_nghiem",
+  "de": "Cô Minh Hiền rất thích nhảy hiện đại. Thời gian tập nhảy mỗi ngày trong thời gian gần đây của Cô Minh Hiền được thống kê lại ở bảng sau:\nThời gian (phút)\n[20; 25)\n[25; 30)\n[30; 35)\n[35; 40)\n[40; 45)\nSố ngày\n6\n6\n4\n1\n1\nKhoảng biến thiên của mẫu số liệu ghép nhóm là",
+  "lua_chon": [
+   "20.",
+   "15.",
+   "30.",
+   "25."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Nhóm đầu tiên là $[20;25)$, nhóm cuối cùng là $[40;45)$.\nKhoảng biến thiên: $R=45-20=25$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000009805",
+  "loai": "trac_nghiem",
+  "de": "Cô Minh Hiền rất thích nhảy hiện đại. Thời gian tập nhảy mỗi ngày trong thời gian gần đây của Cô Minh Hiền được thống kê lại ở bảng sau:\nThời gian (phút)\n[20; 25)\n[25; 30)\n[30; 35)\n[35; 40)\n[40; 45)\nSố ngày\n6\n6\n4\n1\n1\nNhóm chứa tứ phân vị thứ nhất $Q_{1}$ là:",
+  "lua_chon": [
+   "[30; 35).",
+   "[25; 30).",
+   "[20; 25).",
+   "[35; 40)."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Tổng số ngày: $n=6+6+4+1+1=18$.\nTứ phân vị thứ nhất $Q_{1}$ ứng với giá trị thứ $\\dfrac{n}{4}=4{,}5$ của mẫu số liệu.\nTần số tích luỹ: nhóm $[20;25)$ có $6$ ngày, $6\\ge 4{,}5$ nên nhóm chứa $Q_{1}$ là $[20;25)$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

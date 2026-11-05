@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T1120000009768",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc hệ số i, j, k thành toạ độ vectơ"
+ },
+ {
+  "ma_cau": "T1120000009786",
+  "dang_bai_id": "NDB02548",
+  "chac": "cao",
+  "ly_do": "Hiệu hai vectơ theo toạ độ, b cho dạng j,k"
+ },
+ {
+  "ma_cau": "T1120000009706",
+  "dang_bai_id": "NDB02545",
+  "chac": "cao",
+  "ly_do": "Hình chiếu của điểm lên trục Oz"
+ },
+ {
+  "ma_cau": "T1120000009550",
+  "dang_bai_id": "NDB02535",
+  "chac": "cao",
+  "ly_do": "Nhận vectơ bằng AC trên lăng trụ"
+ },
+ {
+  "ma_cau": "T1120000009558",
+  "dang_bai_id": "NDB02556",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng hai vectơ theo toạ độ"
+ },
+ {
+  "ma_cau": "T1120000009825",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Tổng hai vectơ cạnh hình hộp bằng vectơ nào"
+ },
+ {
+  "ma_cau": "T1120000009712",
+  "dang_bai_id": "NDB02548",
+  "chac": "cao",
+  "ly_do": "Tính toạ độ x + 2y"
+ },
+ {
+  "ma_cau": "T1120000009665",
+  "dang_bai_id": "NDB02550",
+  "chac": "cao",
+  "ly_do": "Tìm vectơ cùng phương bằng toạ độ tỉ lệ"
+ },
+ {
+  "ma_cau": "T1120000009734",
+  "dang_bai_id": "NDB02554",
+  "chac": "cao",
+  "ly_do": "Khoảng cách hai điểm bằng toạ độ"
+ },
+ {
+  "ma_cau": "T1120000009561",
+  "dang_bai_id": "NDB02542",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng AB.AC trong tứ diện đều"
+ },
+ {
+  "ma_cau": "T1120000009639",
+  "dang_bai_id": "NDB02566",
+  "chac": "cao",
+  "ly_do": "Ba flycam đọc vị trí theo hướng, độ cao rồi tính góc giữa vị trí; dạng sau thắng"
+ },
+ {
+  "ma_cau": "T1120000009517",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Rút gọn tổng hai vectơ trong hình hộp"
+ },
+ {
+  "ma_cau": "T11200000010203",
+  "dang_bai_id": "NDB02552",
+  "chac": "cao",
+  "ly_do": "Tìm đỉnh D còn lại của hình bình hành ABDC"
+ },
+ {
+  "ma_cau": "T11200000010193",
+  "dang_bai_id": "NDB02548",
+  "chac": "cao",
+  "ly_do": "Tổ hợp 2u+v-j theo toạ độ"
+ },
+ {
+  "ma_cau": "T1120000009702",
+  "dang_bai_id": "NDB02545",
+  "chac": "cao",
+  "ly_do": "Điểm đối xứng qua mặt phẳng toạ độ (Oyz)"
+ },
+ {
+  "ma_cau": "T1120000009743",
+  "dang_bai_id": "NDB02548",
+  "chac": "cao",
+  "ly_do": "Hiệu hai vectơ theo toạ độ"
+ },
+ {
+  "ma_cau": "T1120000009796",
+  "dang_bai_id": "NDB02549",
+  "chac": "cao",
+  "ly_do": "Toạ độ AB từ OA, OB"
+ },
+ {
+  "ma_cau": "T1120000009767",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc hệ số i, j, k thành toạ độ vectơ"
+ },
+ {
+  "ma_cau": "T1120000009547",
+  "dang_bai_id": "NDB02552",
+  "chac": "vua",
+  "ly_do": "Tìm đỉnh D hình thang vuông có diện tích cho trước; có thể lẫn dạng độ dài, vuông góc"
+ },
+ {
+  "ma_cau": "T1120000009636",
+  "dang_bai_id": "NDB02552",
+  "chac": "cao",
+  "ly_do": "Tìm B' của hình hộp: hình bình hành đáy và cạnh bên bằng nhau"
+ },
+ {
+  "ma_cau": "T11200000010177",
+  "dang_bai_id": "NDB02543",
+  "chac": "cao",
+  "ly_do": "Cosin góc giữa hai vectơ trên hình lập phương"
+ },
+ {
+  "ma_cau": "T1120000009596",
+  "dang_bai_id": "NDB02542",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng AS.BC trong chóp đều"
+ },
+ {
+  "ma_cau": "T1120000009468",
+  "dang_bai_id": "NDB02556",
+  "chac": "cao",
+  "ly_do": "Cosin góc giữa hai vectơ theo toạ độ"
+ },
+ {
+  "ma_cau": "T1120000009589",
+  "dang_bai_id": "NDB02543",
+  "chac": "cao",
+  "ly_do": "Góc giữa AB và CD trên tứ diện"
+ },
+ {
+  "ma_cau": "T1120000009638",
+  "dang_bai_id": "NDB02540",
+  "chac": "cao",
+  "ly_do": "Phân tích AG (G trọng tâm BCD) theo a, b, c; dạng sau thắng"
+ },
+ {
+  "ma_cau": "T1120000009504",
+  "dang_bai_id": "NDB02559",
+  "chac": "cao",
+  "ly_do": "Cực trị |2MA+MB+MC| bằng tâm tỉ cự, M trên Ox"
+ },
+ {
+  "ma_cau": "T11200000010214",
+  "dang_bai_id": "NDB02552",
+  "chac": "cao",
+  "ly_do": "Tìm đỉnh D của hình bình hành ABCD"
+ },
+ {
+  "ma_cau": "T1120000009671",
+  "dang_bai_id": "NDB02548",
+  "chac": "cao",
+  "ly_do": "Hiệu hai vectơ theo toạ độ"
+ },
+ {
+  "ma_cau": "T1120000009691",
+  "dang_bai_id": "NDB02557",
+  "chac": "cao",
+  "ly_do": "Tam giác vuông tại C, C trên trục: tích vô hướng bằng 0"
+ },
+ {
+  "ma_cau": "T1120000009576",
+  "dang_bai_id": "NDB02548",
+  "chac": "cao",
+  "ly_do": "Hiệu hai vectơ theo toạ độ"
+ },
+ {
+  "ma_cau": "T1120000009870",
+  "dang_bai_id": "NDB02543",
+  "chac": "cao",
+  "ly_do": "Góc giữa MN và AB trên hình lập phương"
+ },
+ {
+  "ma_cau": "T1120000009722",
+  "dang_bai_id": "NDB02556",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng AB.AC theo toạ độ ba điểm"
+ },
+ {
+  "ma_cau": "T1120000009521",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "OM theo i, j, k suy ra toạ độ điểm M"
+ },
+ {
+  "ma_cau": "T1120000009764",
+  "dang_bai_id": "NDB02552",
+  "chac": "cao",
+  "ly_do": "Tìm đỉnh D của hình bình hành ABCD"
+ },
+ {
+  "ma_cau": "T1120000009488",
+  "dang_bai_id": "NDB02553",
+  "chac": "cao",
+  "ly_do": "Điểm M chia đoạn AB theo tỉ số MA=2MB"
+ },
+ {
+  "ma_cau": "T1120000009364",
+  "dang_bai_id": "NDB02565",
+  "chac": "cao",
+  "ly_do": "Tàu ngầm bay thẳng đều, tìm vị trí sau thời gian t"
+ },
+ {
+  "ma_cau": "T1120000009368",
+  "dang_bai_id": "NDB02559",
+  "chac": "cao",
+  "ly_do": "Cực trị |3MA+2MB-MC| bằng tâm tỉ cự, M trên (Oyz)"
+ },
+ {
+  "ma_cau": "T1120000009328",
+  "dang_bai_id": "NDB02542",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng SC.CA trong chóp có SA vuông góc đáy"
+ },
+ {
+  "ma_cau": "T1120000009534",
+  "dang_bai_id": "NDB02552",
+  "chac": "cao",
+  "ly_do": "Tìm đỉnh C của hình bình hành OBCD"
+ },
+ {
+  "ma_cau": "T1120000009634",
+  "dang_bai_id": "NDB02541",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng khi biết độ dài và góc"
+ },
+ {
+  "ma_cau": "T1120000009489",
+  "dang_bai_id": "NDB02538",
+  "chac": "cao",
+  "ly_do": "Đẳng thức vectơ đúng trong chóp S.ABC (quy tắc trừ)"
+ },
+ {
+  "ma_cau": "T1120000009644",
+  "dang_bai_id": "NDB02556",
+  "chac": "cao",
+  "ly_do": "Góc giữa hai vectơ theo toạ độ"
+ },
+ {
+  "ma_cau": "T1120000009401",
+  "dang_bai_id": "NDB02556",
+  "chac": "cao",
+  "ly_do": "Tìm m để góc giữa hai vectơ bằng 30 độ, điều kiện dấu cos"
+ },
+ {
+  "ma_cau": "T11200000010172",
+  "dang_bai_id": "NDB02541",
+  "chac": "cao",
+  "ly_do": "Độ dài 4a-b từ |a|, |b|, a.b bằng khai triển bình phương"
+ },
+ {
+  "ma_cau": "T1120000009384",
+  "dang_bai_id": "NDB02561",
+  "chac": "cao",
+  "ly_do": "Độ lớn trọng lực P=mg, thuộc nhóm lực/trọng lực"
+ },
+ {
+  "ma_cau": "T1120000009859",
+  "dang_bai_id": "NDB02556",
+  "chac": "vua",
+  "ly_do": "Góc giữa OM và trục Oz theo toạ độ, hỏi tan; có thể gần dạng góc với trục"
+ },
+ {
+  "ma_cau": "T1120000009823",
+  "dang_bai_id": "NDB02551",
+  "chac": "cao",
+  "ly_do": "Toạ độ trung điểm của đoạn AB"
+ },
+ {
+  "ma_cau": "T1120000009749",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Cho AO theo i, j, k tìm toạ độ A (đối dấu)"
+ },
+ {
+  "ma_cau": "T1120000009483",
+  "dang_bai_id": "NDB02545",
+  "chac": "cao",
+  "ly_do": "Hình chiếu của điểm lên mặt phẳng (Oxy)"
+ },
+ {
+  "ma_cau": "T1120000009469",
+  "dang_bai_id": "NDB02548",
+  "chac": "cao",
+  "ly_do": "Tổng hai vectơ theo toạ độ"
+ },
+ {
+  "ma_cau": "T1120000009532",
+  "dang_bai_id": "NDB02556",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng hai vectơ theo toạ độ"
+ },
+ {
+  "ma_cau": "T1120000009309",
+  "dang_bai_id": "NDB02542",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng SC.CA trong chóp có SA vuông góc đáy"
+ },
+ {
+  "ma_cau": "T1120000009800",
+  "dang_bai_id": "NDB02551",
+  "chac": "cao",
+  "ly_do": "Toạ độ trung điểm của đoạn MN"
+ },
+ {
+  "ma_cau": "T1120000009444",
+  "dang_bai_id": "NDB02551",
+  "chac": "cao",
+  "ly_do": "Toạ độ trung điểm của đoạn AB"
+ },
+ {
+  "ma_cau": "T1120000009527",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Quy tắc hình hộp: tổng ba cạnh bằng đường chéo"
+ },
+ {
+  "ma_cau": "T1120000009633",
+  "dang_bai_id": "NDB02552",
+  "chac": "vua",
+  "ly_do": "Tìm đỉnh D hình thang cho diện tích; lời giải dùng cả tích có hướng, hai dạng cùng hợp"
+ },
+ {
+  "ma_cau": "T1120000009505",
+  "dang_bai_id": "NDB02557",
+  "chac": "cao",
+  "ly_do": "AB vuông góc BC, C trên trục Oz: tích vô hướng bằng 0"
+ },
+ {
+  "ma_cau": "T1120000009545",
+  "dang_bai_id": "NDB02559",
+  "chac": "cao",
+  "ly_do": "Tổng bình phương MS2+MA2+... nhỏ nhất, M chạy trên SO (tâm tỉ cự)"
+ },
+ {
+  "ma_cau": "T1120000009480",
+  "dang_bai_id": "NDB02551",
+  "chac": "cao",
+  "ly_do": "Toạ độ trung điểm của đoạn MN"
+ },
+ {
+  "ma_cau": "T1120000009695",
+  "dang_bai_id": "NDB02548",
+  "chac": "cao",
+  "ly_do": "Tổ hợp u+3v theo toạ độ"
+ },
+ {
+  "ma_cau": "T1120000009709",
+  "dang_bai_id": "NDB02548",
+  "chac": "cao",
+  "ly_do": "Hiệu hai vectơ theo toạ độ"
+ },
+ {
+  "ma_cau": "T1120000009809",
+  "dang_bai_id": "NDB02556",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng hai vectơ theo toạ độ"
+ },
+ {
+  "ma_cau": "T1120000009650",
+  "dang_bai_id": "NDB02556",
+  "chac": "cao",
+  "ly_do": "Công thức tích vô hướng theo toạ độ"
+ },
+ {
+  "ma_cau": "T1120000009442",
+  "dang_bai_id": "NDB02549",
+  "chac": "cao",
+  "ly_do": "Toạ độ AB từ hai điểm"
+ },
+ {
+  "ma_cau": "T1120000009498",
+  "dang_bai_id": "NDB02535",
+  "chac": "cao",
+  "ly_do": "Nhận vectơ bằng AB trên hình hộp chữ nhật"
+ },
+ {
+  "ma_cau": "T1120000009430",
+  "dang_bai_id": "NDB02557",
+  "chac": "cao",
+  "ly_do": "Tam giác vuông tại C, C trên Ox: tích vô hướng bằng 0 rồi tính diện tích"
+ },
+ {
+  "ma_cau": "T11200000010224",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc hệ số i, j, k thành toạ độ vectơ"
+ },
+ {
+  "ma_cau": "T1120000009753",
+  "dang_bai_id": "NDB02556",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng a.(a+2b) theo toạ độ"
+ },
+ {
+  "ma_cau": "T1120000009572",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Vectơ vuông góc hai vectơ cho trước: tích có hướng"
+ },
+ {
+  "ma_cau": "T1120000009710",
+  "dang_bai_id": "NDB02549",
+  "chac": "cao",
+  "ly_do": "Toạ độ vectơ OA từ điểm A"
+ }
+]

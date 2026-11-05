@@ -1,0 +1,542 @@
+[
+ {
+  "id": "X0361",
+  "dap_an": "C",
+  "loi_giai": "Ta có $\\vec{u}-\\vec{v}=(-2-2;\\,3-1;\\,2-(-1))$\n$=(-4;2;3)$.\nVậy tọa độ của $\\vec{u}-\\vec{v}$ là $(-4;2;3)$. Chọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0362",
+  "dap_an": "D",
+  "loi_giai": "Ta có $y=x+\\dfrac{1}{x+2}$ nên $y-x=\\dfrac{1}{x+2}$.\nKhi $x\\to\\pm\\infty$ thì $\\dfrac{1}{x+2}\\to0$, tức là $\\lim_{x\\to\\pm\\infty}\\left(y-x\\right)=0$.\nVậy tiệm cận xiên của đồ thị là $y=x$. Chọn D.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0363",
+  "dap_an": "13.87",
+  "loi_giai": "Các nhóm có giá trị đại diện lần lượt là $7{,}5;\\ 12{,}5;\\ 17{,}5;\\ 22{,}5;\\ 27{,}5$.\nLĩnh vực A: cỡ mẫu $n=2+5+8+6+4=25$.\nTrung bình: $\\bar{x}_A=\\dfrac{2\\cdot7{,}5+5\\cdot12{,}5+8\\cdot17{,}5+6\\cdot22{,}5+4\\cdot27{,}5}{25}=\\dfrac{462{,}5}{25}=18{,}5$.\nPhương sai: $s_A^2=\\dfrac{2\\cdot7{,}5^2+5\\cdot12{,}5^2+8\\cdot17{,}5^2+6\\cdot22{,}5^2+4\\cdot27{,}5^2}{25}-18{,}5^2=\\dfrac{9406{,}25}{25}-342{,}25=34$.\nĐộ lệch chuẩn: $s_A=\\sqrt{34}\\approx5{,}83$.\nLĩnh vực B: cỡ mẫu $n=8+4+2+5+6=25$.\nTrung bình: $\\bar{x}_B=\\dfrac{8\\cdot7{,}5+4\\cdot12{,}5+2\\cdot17{,}5+5\\cdot22{,}5+6\\cdot27{,}5}{25}=\\dfrac{422{,}5}{25}=16{,}9$.\nPhương sai: $s_B^2=\\dfrac{8756{,}25}{25}-16{,}9^2=350{,}25-285{,}61=64{,}64$.\nĐộ lệch chuẩn: $s_B=\\sqrt{64{,}64}\\approx8{,}04$.\nTổng hai độ lệch chuẩn: $s_A+s_B\\approx5{,}83+8{,}04\\approx13{,}87$.\nVậy tổng độ lệch chuẩn khoảng $13{,}87$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0364",
+  "dap_an": "D",
+  "loi_giai": "Ta có $\\vec{a}=-\\vec{i}+2\\vec{j}-3\\vec{k}$.\nTheo định nghĩa tọa độ của vectơ trong hệ $Oxyz$: $\\vec{a}=x\\vec{i}+y\\vec{j}+z\\vec{k}\\Leftrightarrow\\vec{a}=(x;y;z)$.\nDo đó $\\vec{a}=(-1;2;-3)$. Chọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đề in lỗi \"2j\" bằng \\overrightarrow, hiểu là 2j"
+ },
+ {
+  "id": "X0365",
+  "dap_an": "B",
+  "loi_giai": "Theo quy tắc hình hộp, với hình hộp $ABCD.A'B'C'D'$ thì $\\overrightarrow{AB}+\\overrightarrow{AD}+\\overrightarrow{AA'}=\\overrightarrow{AC'}$ (đường chéo xuất phát từ $A$).\nVậy mệnh đề đúng là $\\overrightarrow{AB}+\\overrightarrow{AD}+\\overrightarrow{AA'}=\\overrightarrow{AC'}$. Chọn B.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0366",
+  "dap_an": "2",
+  "loi_giai": "Ta có $y'=-54x^{2}+18\\left(m^{2}+1\\right)x+6\\left(2-3m\\right)$ và $y''=-108x+18\\left(m^{2}+1\\right)$.\nHàm số đạt cực tiểu tại $x=\\dfrac13$ nên $y'\\left(\\dfrac13\\right)=0$:\n$-54\\cdot\\dfrac19+18\\left(m^{2}+1\\right)\\cdot\\dfrac13+6\\left(2-3m\\right)=0$\n$\\Leftrightarrow -6+6\\left(m^{2}+1\\right)+12-18m=0$\n$\\Leftrightarrow 6m^{2}-18m+12=0$\n$\\Leftrightarrow m^{2}-3m+2=0\\Leftrightarrow m=1$ hoặc $m=2$.\nĐiều kiện cực tiểu: $y''\\left(\\dfrac13\\right)>0$, tức là $-36+18\\left(m^{2}+1\\right)>0\\Leftrightarrow m^{2}>1$.\nVới $m=1$: $y''\\left(\\dfrac13\\right)=0$, không thỏa (kiểm tra: $y'=-54x^2+36x-6=-6(3x-1)^2\\le0$ nên $y'$ không đổi dấu, hàm số không có cực trị).\nVới $m=2$: $y''\\left(\\dfrac13\\right)=18\\cdot4-36=36>0$, thỏa mãn.\nVậy $m=2$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0367",
+  "dap_an": "C",
+  "loi_giai": "Ta có $\\vec{a}-\\vec{b}=(1-2;\\,2-2;\\,3-(-1))=(-1;0;4)$ và $2\\vec{c}=(8;0;-8)$.\nSuy ra $\\vec{d}=\\vec{a}-\\vec{b}+2\\vec{c}=(-1+8;\\,0+0;\\,4-8)=(7;0;-4)$.\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0368",
+  "dap_an": "15",
+  "loi_giai": "Tổng số trẻ $n=25+60+120+105+42+30+18=400$. Giá trị đại diện: $15;17;19;21;23;25;27$.\nTrung bình: $\\bar{x}=\\dfrac{25\\cdot15+60\\cdot17+120\\cdot19+105\\cdot21+42\\cdot23+30\\cdot25+18\\cdot27}{400}=\\dfrac{8082}{400}=20{,}205$.\nPhương sai: $s^{2}=\\dfrac{1}{400}\\sum f_ix_i^{2}-\\bar{x}^{2}\\approx8{,}458$, làm tròn $s^{2}\\approx8{,}5$.\nĐộ lệch chuẩn: $s=\\sqrt{8{,}458}\\approx2{,}908$, làm tròn $s\\approx2{,}9$.\nTứ phân vị thứ nhất: $\\dfrac{n}{4}=100$. Tần số tích lũy: $25;85;205;\\dots$ nên $Q_1$ thuộc nhóm $[18;20)$:\n$Q_1=18+\\dfrac{100-85}{120}\\cdot2=18{,}25$.\nTứ phân vị thứ ba: $\\dfrac{3n}{4}=300$. Tần số tích lũy: $205;310;\\dots$ nên $Q_3$ thuộc nhóm $[20;22)$:\n$Q_3=20+\\dfrac{300-205}{105}\\cdot2\\approx21{,}81$.\nKhoảng tứ phân vị: $\\Delta Q=Q_3-Q_1\\approx3{,}56$, làm tròn $\\Delta Q\\approx3{,}6$.\nVậy $P=\\Delta Q+s^{2}+s\\approx3{,}6+8{,}5+2{,}9=15$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Làm tròn từng đại lượng đến 0,1 rồi cộng theo đề"
+ },
+ {
+  "id": "X0369",
+  "dap_an": "A",
+  "loi_giai": "Vì $G$ là trọng tâm tam giác $BCD$ nên $\\overrightarrow{AG}=\\dfrac13\\left(\\overrightarrow{AB}+\\overrightarrow{AC}+\\overrightarrow{AD}\\right)$.\nMà $\\overrightarrow{AB}=\\vec{a},\\ \\overrightarrow{AC}=\\vec{b},\\ \\overrightarrow{AD}=\\vec{c}$ nên $\\overrightarrow{AG}=\\dfrac13\\left(\\vec{a}+\\vec{b}+\\vec{c}\\right)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0370",
+  "dap_an": "C",
+  "loi_giai": "Gọi $D$ là đỉnh của hình bình hành $ABCD$: $\\overrightarrow{AD}=\\overrightarrow{BC}$.\n$\\overrightarrow{BC}=(-5;4;-7)$ nên $D=(2-5;\\,4+4;\\,0-7)=(-3;8;-7)$.\nVì $ABCD.A'B'C'D'$ là hình hộp nên $\\overrightarrow{AA'}=\\overrightarrow{DD'}=(6+3;\\,8-8;\\,10+7)=(9;0;17)$.\nSuy ra $\\overrightarrow{BB'}=\\overrightarrow{AA'}=(9;0;17)$, do đó $B'=(4+9;\\,0+0;\\,0+17)=(13;0;17)$.\nVậy $B'(13;0;17)$.\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0371",
+  "dap_an": "18",
+  "loi_giai": "Ta có $\\overrightarrow{AB}=(1;-2;-2)$ nên $AB=\\sqrt{1+4+4}=3$; $\\overrightarrow{AC}=(5;-1;-1)$.\n$\\left[\\overrightarrow{AB},\\overrightarrow{AC}\\right]=(0;-9;9)$ nên $S_{ABC}=\\dfrac12\\sqrt{0+81+81}=\\dfrac{9\\sqrt2}{2}$.\nChiều cao hình thang: $h=d(C,AB)=\\dfrac{2S_{ABC}}{AB}=\\dfrac{9\\sqrt2}{3}=3\\sqrt2$.\nVì $ABCD$ là hình thang có đáy $AB,CD$ nên $\\overrightarrow{DC}=k\\overrightarrow{AB}$ với $k>0$, tức $CD=3k$.\nDiện tích: $S=\\dfrac{(AB+CD)\\cdot h}{2}=\\dfrac{(3+3k)\\cdot3\\sqrt2}{2}=6\\sqrt2\\Leftrightarrow3+3k=4\\Leftrightarrow k=\\dfrac13$.\nTừ $\\overrightarrow{DC}=\\dfrac13\\overrightarrow{AB}$: $(6-a;\\,1-b;\\,0-c)=\\left(\\dfrac13;-\\dfrac23;-\\dfrac23\\right)$.\nSuy ra $a=\\dfrac{17}{3};\\ b=\\dfrac53;\\ c=\\dfrac23$.\nVậy $P=3a+b-c=17+\\dfrac53-\\dfrac23=18$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0372",
+  "dap_an": "C",
+  "loi_giai": "Cỡ mẫu $n=8+22+35+15=80$.\nTần số tích lũy của các nhóm: $8;\\ 30;\\ 65;\\ 80$.\nTứ phân vị thứ ba $Q_3$ ứng với vị trí $\\dfrac{3n}{4}=60$.\nVì $30<60\\le65$ nên $Q_3$ thuộc nhóm $[5;6{,}5)$.\nChọn C.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0373",
+  "dap_an": "C",
+  "loi_giai": "$\\overrightarrow{u}\\cdot\\overrightarrow{v}=|\\overrightarrow{u}|\\cdot|\\overrightarrow{v}|\\cdot\\cos30^{\\circ}$\n$=3\\sqrt3\\cdot4\\cdot\\dfrac{\\sqrt3}{2}=18$.\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0374",
+  "dap_an": "B",
+  "loi_giai": "Khoảng biến thiên $R=$ (đầu mút phải nhóm cuối) $-$ (đầu mút trái nhóm đầu) nên dùng nhóm đầu và nhóm cuối.\nPhương sai và độ lệch chuẩn tính qua giá trị đại diện của mọi nhóm nên dùng cả nhóm đầu và nhóm cuối.\nKhoảng tứ phân vị $\\Delta Q=Q_3-Q_1$ chỉ dựa vào các nhóm chứa $Q_1,Q_3$, không dùng thông tin của nhóm đầu và nhóm cuối.\nVậy chọn B.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0375",
+  "dap_an": "A",
+  "loi_giai": "Cỡ mẫu $n=3+6+5+4+2=20$. Giá trị đại diện: $2{,}85;\\ 3{,}15;\\ 3{,}45;\\ 3{,}75;\\ 4{,}05$.\nTrung bình: $\\bar{x}=\\dfrac{3\\cdot2{,}85+6\\cdot3{,}15+5\\cdot3{,}45+4\\cdot3{,}75+2\\cdot4{,}05}{20}=\\dfrac{67{,}8}{20}=3{,}39$.\nPhương sai: $s^{2}=\\dfrac{3\\cdot2{,}85^{2}+6\\cdot3{,}15^{2}+5\\cdot3{,}45^{2}+4\\cdot3{,}75^{2}+2\\cdot4{,}05^{2}}{20}-3{,}39^{2}=\\dfrac{232{,}47}{20}-11{,}4921=0{,}1314$.\nĐộ lệch chuẩn: $s=\\sqrt{0{,}1314}\\approx0{,}3625$.\nGiá trị gần nhất là $0{,}36$.\nChọn A.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0376",
+  "dap_an": "D",
+  "loi_giai": "Cỡ mẫu $n=8+22+35+15=80$.\nTần số tích lũy: $8;\\ 30;\\ 65;\\ 80$.\nTứ phân vị thứ ba ứng với vị trí $\\dfrac{3n}{4}=60$, mà $30<60\\le65$ nên $Q_3$ thuộc nhóm $[5;6{,}5)$.\nChọn D.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0377",
+  "dap_an": "C",
+  "loi_giai": "Cỡ mẫu $n=3+6+5+4+2=20$. Giá trị đại diện: $2{,}85;\\ 3{,}15;\\ 3{,}45;\\ 3{,}75;\\ 4{,}05$.\nTrung bình: $\\bar{x}=\\dfrac{3\\cdot2{,}85+6\\cdot3{,}15+5\\cdot3{,}45+4\\cdot3{,}75+2\\cdot4{,}05}{20}=\\dfrac{67{,}8}{20}=3{,}39$.\nPhương sai: $s^{2}=\\dfrac{3\\cdot2{,}85^{2}+6\\cdot3{,}15^{2}+5\\cdot3{,}45^{2}+4\\cdot3{,}75^{2}+2\\cdot4{,}05^{2}}{20}-3{,}39^{2}=\\dfrac{232{,}47}{20}-11{,}4921=0{,}1314$.\nĐộ lệch chuẩn: $s=\\sqrt{0{,}1314}\\approx0{,}3625$.\nGiá trị gần nhất là $0{,}36$.\nChọn C.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0378",
+  "dap_an": "18",
+  "loi_giai": "Ta có $\\overrightarrow{AB}=(1;-2;-2)$ nên $AB=\\sqrt{1+4+4}=3$; $\\overrightarrow{AC}=(5;-1;-1)$.\n$\\left[\\overrightarrow{AB},\\overrightarrow{AC}\\right]=(0;-9;9)$ nên $S_{ABC}=\\dfrac12\\sqrt{0+81+81}=\\dfrac{9\\sqrt2}{2}$.\nChiều cao hình thang: $h=d(C,AB)=\\dfrac{2S_{ABC}}{AB}=\\dfrac{9\\sqrt2}{3}=3\\sqrt2$.\nVì $ABCD$ là hình thang có đáy $AB,CD$ nên $\\overrightarrow{DC}=k\\overrightarrow{AB}$ với $k>0$, tức $CD=3k$.\nDiện tích: $S=\\dfrac{(AB+CD)\\cdot h}{2}=\\dfrac{(3+3k)\\cdot3\\sqrt2}{2}=6\\sqrt2\\Leftrightarrow3+3k=4\\Leftrightarrow k=\\dfrac13$.\nTừ $\\overrightarrow{DC}=\\dfrac13\\overrightarrow{AB}$: $(6-a;\\,1-b;\\,0-c)=\\left(\\dfrac13;-\\dfrac23;-\\dfrac23\\right)$.\nSuy ra $a=\\dfrac{17}{3};\\ b=\\dfrac53;\\ c=\\dfrac23$.\nVậy $P=3a+b-c=17+\\dfrac53-\\dfrac23=18$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0379",
+  "dap_an": "D",
+  "loi_giai": "$\\overrightarrow{u}\\cdot\\overrightarrow{v}=|\\overrightarrow{u}|\\cdot|\\overrightarrow{v}|\\cdot\\cos30^{\\circ}$\n$=3\\sqrt3\\cdot4\\cdot\\dfrac{\\sqrt3}{2}=18$.\nChọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0380",
+  "dap_an": "15",
+  "loi_giai": "Tổng số trẻ $n=25+60+120+105+42+30+18=400$. Giá trị đại diện: $15;17;19;21;23;25;27$.\nTrung bình: $\\bar{x}=\\dfrac{25\\cdot15+60\\cdot17+120\\cdot19+105\\cdot21+42\\cdot23+30\\cdot25+18\\cdot27}{400}=\\dfrac{8082}{400}=20{,}205$.\nPhương sai: $s^{2}=\\dfrac{1}{400}\\sum f_ix_i^{2}-\\bar{x}^{2}\\approx8{,}458$, làm tròn $s^{2}\\approx8{,}5$.\nĐộ lệch chuẩn: $s=\\sqrt{8{,}458}\\approx2{,}908$, làm tròn $s\\approx2{,}9$.\nTứ phân vị thứ nhất: $\\dfrac{n}{4}=100$. Tần số tích lũy: $25;85;205;\\dots$ nên $Q_1$ thuộc nhóm $[18;20)$:\n$Q_1=18+\\dfrac{100-85}{120}\\cdot2=18{,}25$.\nTứ phân vị thứ ba: $\\dfrac{3n}{4}=300$. Tần số tích lũy: $205;310;\\dots$ nên $Q_3$ thuộc nhóm $[20;22)$:\n$Q_3=20+\\dfrac{300-205}{105}\\cdot2\\approx21{,}81$.\nKhoảng tứ phân vị: $\\Delta Q=Q_3-Q_1\\approx3{,}56$, làm tròn $\\Delta Q\\approx3{,}6$.\nVậy $P=\\Delta Q+s^{2}+s\\approx3{,}6+8{,}5+2{,}9=15$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Làm tròn từng đại lượng đến 0,1 rồi cộng theo đề"
+ },
+ {
+  "id": "X0381",
+  "dap_an": "D",
+  "loi_giai": "Gọi $D$ là đỉnh của hình bình hành $ABCD$: $\\overrightarrow{AD}=\\overrightarrow{BC}$.\n$\\overrightarrow{BC}=(-5;4;-7)$ nên $D=(2-5;\\,4+4;\\,0-7)=(-3;8;-7)$.\nVì $ABCD.A'B'C'D'$ là hình hộp nên $\\overrightarrow{AA'}=\\overrightarrow{DD'}=(6+3;\\,8-8;\\,10+7)=(9;0;17)$.\nSuy ra $\\overrightarrow{BB'}=\\overrightarrow{AA'}=(9;0;17)$, do đó $B'=(4+9;\\,0+0;\\,0+17)=(13;0;17)$.\nVậy $B'(13;0;17)$.\nChọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0382",
+  "dap_an": "C",
+  "loi_giai": "Khoảng biến thiên dùng đầu mút của nhóm đầu và nhóm cuối.\nPhương sai và độ lệch chuẩn tính từ giá trị đại diện của mọi nhóm, kể cả nhóm đầu và nhóm cuối.\nKhoảng tứ phân vị $\\Delta Q=Q_3-Q_1$ chỉ dựa vào các nhóm chứa $Q_1,Q_3$ nên không sử dụng thông tin của nhóm đầu và nhóm cuối.\nChọn C.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0383",
+  "dap_an": "C",
+  "loi_giai": "Vì $G$ là trọng tâm tam giác $BCD$ nên $\\overrightarrow{AG}=\\dfrac13\\left(\\overrightarrow{AB}+\\overrightarrow{AC}+\\overrightarrow{AD}\\right)=\\dfrac13\\left(\\vec{a}+\\vec{b}+\\vec{c}\\right)$.\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0384",
+  "dap_an": "97.1",
+  "loi_giai": "Chọn hệ trục: gốc là điểm xuất phát, $x$ hướng đông, $y$ hướng bắc, $z$ hướng lên.\nFlycam thứ nhất: $F_1(-200;100;50)$. Flycam thứ hai: $F_2(200;-300;100)$. Flycam thứ ba: $F_3(150;100;50)$.\n$\\overrightarrow{F_3F_1}=(-350;0;0)$, $\\overrightarrow{F_3F_2}=(50;-400;50)$.\n$\\overrightarrow{F_3F_1}\\cdot\\overrightarrow{F_3F_2}=-350\\cdot50=-17500$.\n$\\left|\\overrightarrow{F_3F_1}\\right|=350$, $\\left|\\overrightarrow{F_3F_2}\\right|=\\sqrt{2500+160000+2500}=\\sqrt{165000}$.\n$\\cos\\alpha=\\dfrac{-17500}{350\\cdot\\sqrt{165000}}=\\dfrac{-50}{\\sqrt{165000}}\\approx-0{,}1231$.\nSuy ra $\\alpha\\approx97{,}1^{\\circ}$.\nVậy $\\alpha\\approx97{,}1$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0385",
+  "dap_an": "A",
+  "loi_giai": "Theo quy tắc hình hộp, tổng ba vectơ có chung gốc là ba cạnh của hình hộp bằng vectơ đường chéo xuất phát từ gốc đó.\nTại đỉnh $D$ có ba cạnh $DA,DC,DD'$ nên $\\overrightarrow{DB'}=\\overrightarrow{DA}+\\overrightarrow{DC}+\\overrightarrow{DD'}$.\nCác mệnh đề còn lại không có ba vectơ là ba cạnh cùng gốc nên sai.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0386",
+  "dap_an": "C",
+  "loi_giai": "Vì $ABC.A'B'C'$ là lăng trụ đều nên $\\overrightarrow{B'A'}=\\overrightarrow{BA}$.\nDo đó $\\left(\\overrightarrow{B'A'},\\overrightarrow{BC}\\right)=\\left(\\overrightarrow{BA},\\overrightarrow{BC}\\right)=\\widehat{ABC}=60^{\\circ}$ (tam giác $ABC$ đều).\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0387",
+  "dap_an": "B",
+  "loi_giai": "Tốc độ sản xuất tăng khi $S'(t)>0$.\n$S'(t)=-3t^{2}+18t=-3t(t-6)$.\n$S'(t)>0\\Leftrightarrow0<t<6$ (với $0\\le t\\le9$).\nKhoảng thời gian tăng là $(0;6)$ nên $a=0,\\ b=6$.\nVậy $R=a^{2}+2b^{2}=0+2\\cdot36=72$. Chọn B.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0388",
+  "dap_an": "4.3",
+  "loi_giai": "Gọi $x$ là số lần tăng giá ($x\\in\\mathbb{N}$, $0\\le x\\le16$).\nGiá thuê mỗi căn: $4+0{,}3x$ (triệu đồng); số căn được thuê: $80-5x$.\nDoanh thu mỗi tháng: $f(x)=(4+0{,}3x)(80-5x)=-1{,}5x^{2}+4x+320$.\nĐỉnh parabol tại $x=\\dfrac{4}{3}$, không nguyên nên so sánh hai số nguyên gần nhất: $f(1)=322{,}5$; $f(2)=322$.\nVậy $f$ lớn nhất khi $x=1$, giá thuê là $4+0{,}3=4{,}3$ triệu đồng.",
+  "chuong": "HS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Đề không nêu chi phí, coi lợi nhuận = doanh thu. Nếu xét x liên tục ra 4,4"
+ },
+ {
+  "id": "X0389",
+  "dap_an": "B",
+  "loi_giai": "Tọa độ trọng tâm $G$ của tam giác $BCD$:\n$x_G=\\dfrac{3+(-1)+7}{3}=3$; $y_G=\\dfrac{2+0+4}{3}=2$; $z_G=\\dfrac{-5+2+0}{3}=-1$.\nVậy $G(3;2;-1)$. Chọn B.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0390",
+  "dap_an": "104",
+  "loi_giai": "$\\overrightarrow{u}\\cdot\\overrightarrow{v}=1\\cdot2+(-2)\\cdot0+5\\cdot(-1)=-3$.\n$|\\overrightarrow{u}|=\\sqrt{1+4+25}=\\sqrt{30}$; $|\\overrightarrow{v}|=\\sqrt{4+0+1}=\\sqrt5$.\n$\\cos\\left(\\overrightarrow{u},\\overrightarrow{v}\\right)=\\dfrac{-3}{\\sqrt{30}\\cdot\\sqrt5}=\\dfrac{-3}{\\sqrt{150}}\\approx-0{,}2449$.\nSuy ra góc $\\approx104{,}18^{\\circ}$.\nVậy $a\\approx104$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0391",
+  "dap_an": "1.69",
+  "loi_giai": "Cỡ mẫu $n=4+8+12+6+10=40$. Giá trị đại diện: $5{,}5;6{,}5;7{,}5;8{,}5;9{,}5$.\nTrung bình: $\\bar{x}=\\dfrac{4\\cdot5{,}5+8\\cdot6{,}5+12\\cdot7{,}5+6\\cdot8{,}5+10\\cdot9{,}5}{40}=\\dfrac{310}{40}=7{,}75$.\nPhương sai: $s^{2}=\\dfrac{4\\cdot5{,}5^{2}+8\\cdot6{,}5^{2}+12\\cdot7{,}5^{2}+6\\cdot8{,}5^{2}+10\\cdot9{,}5^{2}}{40}-7{,}75^{2}=\\dfrac{2470}{40}-60{,}0625=1{,}6875$.\nVậy phương sai $\\approx1{,}69$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0392",
+  "dap_an": "B",
+  "loi_giai": "Khoảng biến thiên của mẫu số liệu ghép nhóm bằng hiệu giữa đầu mút phải của nhóm cuối và đầu mút trái của nhóm đầu.\n$R=12-2=10$.\nChọn B.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0393",
+  "dap_an": "60",
+  "loi_giai": "Ta có $\\overrightarrow{AB}=(6;12;-2)$, phương trình đường bay: $\\begin{cases}x=6+6t\\\\y=12t\\\\z=6-2t\\end{cases}$.\nMáy bay hạ cánh trên mặt sân bay $(Oxy)$: $z=0\\Leftrightarrow6-2t=0\\Leftrightarrow t=3$.\nKhi đó $x=6+18=24$, $y=36$, nên $M(24;36;0)$.\nVậy $a+b+c=24+36+0=60$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0394",
+  "dap_an": "C",
+  "loi_giai": "Với hai điểm $M(x_M;y_M;z_M)$, $N(x_N;y_N;z_N)$ thì $\\overrightarrow{MN}=(x_N-x_M;\\,y_N-y_M;\\,z_N-z_M)$ (tọa độ điểm cuối trừ tọa độ điểm đầu).\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0395",
+  "dap_an": "-2",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}\\setminus\\{3\\}$.\nViết lại $y=\\dfrac{x^{2}-4x+7}{x-3}=x-1+\\dfrac{4}{x-3}$.\n$y'=1-\\dfrac{4}{(x-3)^{2}}=0\\Leftrightarrow(x-3)^{2}=4\\Leftrightarrow x=1$ hoặc $x=5$.\nXét dấu $y'$: $y'>0$ trên $(-\\infty;1)$ và $(5;+\\infty)$; $y'<0$ trên $(1;3)$ và $(3;5)$.\nDo đó hàm số đạt cực đại tại $x=1$ và đạt cực tiểu tại $x=5$.\nGiá trị cực đại: $y(1)=\\dfrac{1-4+7}{1-3}=\\dfrac{4}{-2}=-2$.\nVậy giá trị cực đại bằng $-2$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0396",
+  "dap_an": "B",
+  "loi_giai": "Tích vô hướng của hai vectơ trong không gian: $\\overrightarrow{a}\\cdot\\overrightarrow{b}=a_{1}b_{1}+a_{2}b_{2}+a_{3}b_{3}$.\nChọn B.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0397",
+  "dap_an": "D",
+  "loi_giai": "Tọa độ trung điểm $I$ của $AB$:\n$x_I=\\dfrac{-3+1}{2}=-1$; $y_I=\\dfrac{1+7}{2}=4$; $z_I=\\dfrac{4+2}{2}=3$.\nVậy $I(-1;4;3)$. Chọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0398",
+  "dap_an": "A",
+  "loi_giai": "Vì $\\overrightarrow{OB}=\\vec{i}+3\\vec{j}-2\\vec{k}$ nên $\\overrightarrow{OB}=(1;3;-2)$.\nTọa độ điểm $B$ bằng tọa độ vectơ $\\overrightarrow{OB}$, suy ra $B(1;3;-2)$. Chọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0399",
+  "dap_an": "D",
+  "loi_giai": "Với hai điểm $P$, $Q$ thì $\\overrightarrow{PQ}=(x_Q-x_P;\\,y_Q-y_P;\\,z_Q-z_P)$ (tọa độ điểm cuối trừ tọa độ điểm đầu).\nChọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0400",
+  "dap_an": "1.09",
+  "loi_giai": "Cỡ mẫu $n=6+8+18+6+2=40$. Giá trị đại diện: $5{,}5;6{,}5;7{,}5;8{,}5;9{,}5$.\nTrung bình: $\\bar{x}=\\dfrac{6\\cdot5{,}5+8\\cdot6{,}5+18\\cdot7{,}5+6\\cdot8{,}5+2\\cdot9{,}5}{40}=\\dfrac{290}{40}=7{,}25$.\nPhương sai: $s^{2}=\\dfrac{6\\cdot5{,}5^{2}+8\\cdot6{,}5^{2}+18\\cdot7{,}5^{2}+6\\cdot8{,}5^{2}+2\\cdot9{,}5^{2}}{40}-7{,}25^{2}=\\dfrac{2146}{40}-52{,}5625=1{,}0875$.\nVậy phương sai $\\approx1{,}09$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0401",
+  "dap_an": "C",
+  "loi_giai": "Tọa độ trọng tâm $G$ của tam giác $MNP$:\n$x_G=\\dfrac{1+4+1}{3}=2$; $y_G=\\dfrac{0+(-1)+(-2)}{3}=-1$; $z_G=\\dfrac{-2+3+8}{3}=3$.\nVậy $G(2;-1;3)$. Chọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0402",
+  "dap_an": "74",
+  "loi_giai": "$\\overrightarrow{u}\\cdot\\overrightarrow{v}=3\\cdot1+1\\cdot7+(-4)\\cdot0=10$.\n$|\\overrightarrow{u}|=\\sqrt{9+1+16}=\\sqrt{26}$; $|\\overrightarrow{v}|=\\sqrt{1+49+0}=\\sqrt{50}$.\n$\\cos\\left(\\overrightarrow{u},\\overrightarrow{v}\\right)=\\dfrac{10}{\\sqrt{26}\\cdot\\sqrt{50}}=\\dfrac{10}{\\sqrt{1300}}\\approx0{,}2774$.\nSuy ra góc $\\approx73{,}90^{\\circ}$.\nVậy $a\\approx74$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0403",
+  "dap_an": "3",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}\\setminus\\{-2\\}$.\nViết lại $y=\\dfrac{x^{2}+x+7}{x+2}=x-1+\\dfrac{9}{x+2}$.\n$y'=1-\\dfrac{9}{(x+2)^{2}}=0\\Leftrightarrow(x+2)^{2}=9\\Leftrightarrow x=1$ hoặc $x=-5$.\nXét dấu $y'$: $y'>0$ trên $(-\\infty;-5)$ và $(1;+\\infty)$; $y'<0$ trên $(-5;-2)$ và $(-2;1)$.\nDo đó hàm số đạt cực đại tại $x=-5$ và đạt cực tiểu tại $x=1$.\nGiá trị cực tiểu: $y(1)=\\dfrac{1+1+7}{1+2}=3$.\nVậy giá trị cực tiểu bằng $3$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0404",
+  "dap_an": "-3",
+  "loi_giai": "Ta có $\\overrightarrow{AB}=(7;10;-3)$, phương trình đường bay: $\\begin{cases}x=3+7t\\\\y=10t\\\\z=6-3t\\end{cases}$.\nMáy bay hạ cánh trên mặt sân bay $(Oxy)$: $z=0\\Leftrightarrow6-3t=0\\Leftrightarrow t=2$.\nKhi đó $x=3+14=17$, $y=20$, nên $M(17;20;0)$.\nVậy $a-b+c=17-20+0=-3$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0405",
+  "dap_an": "C",
+  "loi_giai": "Tọa độ trung điểm $I$ của $AB$:\n$x_I=\\dfrac{2+4}{2}=3$; $y_I=\\dfrac{-1+1}{2}=0$; $z_I=\\dfrac{5+(-7)}{2}=-1$.\nVậy $I(3;0;-1)$. Chọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0406",
+  "dap_an": "A",
+  "loi_giai": "Tích vô hướng của hai vectơ trong không gian: $\\overrightarrow{u}\\cdot\\overrightarrow{v}=u_{1}v_{1}+u_{2}v_{2}+u_{3}v_{3}$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0407",
+  "dap_an": "B",
+  "loi_giai": "Khoảng biến thiên của mẫu số liệu ghép nhóm bằng hiệu giữa đầu mút phải của nhóm cuối và đầu mút trái của nhóm đầu.\n$R=9-4=5$.\nChọn B.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0408",
+  "dap_an": "D",
+  "loi_giai": "Vì $\\overrightarrow{OA}=2\\vec{i}-5\\vec{j}+\\vec{k}$ nên $\\overrightarrow{OA}=(2;-5;1)$.\nTọa độ điểm $A$ bằng tọa độ vectơ $\\overrightarrow{OA}$, suy ra $A(2;-5;1)$. Chọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0409",
+  "dap_an": "0",
+  "loi_giai": "Từ $\\overrightarrow{IA}+\\overrightarrow{IB}+\\overrightarrow{IC}=\\overrightarrow{0}$ suy ra $I$ là trọng tâm tam giác $ABC$.\n$a=\\dfrac{2+(-3)+(-1)}{3}=-\\dfrac23$; $b=\\dfrac{-2+3+(-1)}{3}=0$; $c=\\dfrac{4+(-1)+(-1)}{3}=\\dfrac23$.\nVậy $a+b+c=-\\dfrac23+0+\\dfrac23=0$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0410",
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\overrightarrow{a}\\cdot\\overrightarrow{b}=|\\overrightarrow{a}|\\cdot|\\overrightarrow{b}|\\cdot\\cos90^{\\circ}=0$.\nChọn B.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0411",
+  "dap_an": "A",
+  "loi_giai": "Hai vectơ cùng phương khi tọa độ tương ứng tỉ lệ.\nTa có $\\vec{b}=(-4;10;4)=2\\cdot(-2;5;2)=2\\vec{a}$ nên $\\vec{b}$ cùng phương với $\\vec{a}$.\nCác vectơ còn lại có tọa độ không tỉ lệ với $\\vec{a}$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0412",
+  "dap_an": "C",
+  "loi_giai": "Đồ thị hàm số $y=\\dfrac{3x-1}{x+2}$ có tiệm cận đứng $x=-2$ và tiệm cận ngang $y=3$.\nGiao điểm hai tiệm cận là tâm đối xứng của đồ thị: $(-2;3)$.\nChọn C.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0413",
+  "dap_an": "12",
+  "loi_giai": "Ta có $\\vec{u}=2\\vec{a}=(2\\cdot(-2);\\,2\\cdot6;\\,2\\cdot2)=(-4;12;4)$.\nSuy ra $x=-4,\\ y=12,\\ z=4$.\nVậy $x+y+z=-4+12+4=12$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0414",
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\vec{u}=\\vec{i}-3\\vec{k}=1\\cdot\\vec{i}+0\\cdot\\vec{j}-3\\cdot\\vec{k}$.\nVậy $\\vec{u}=(1;0;-3)$. Chọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0415",
+  "dap_an": "24.5",
+  "loi_giai": "Cỡ mẫu $n=5+9+12+10+6=42$. Giá trị đại diện: $10;30;50;70;90$.\nTrung bình: $\\bar{x}=\\dfrac{5\\cdot10+9\\cdot30+12\\cdot50+10\\cdot70+6\\cdot90}{42}=\\dfrac{2160}{42}=\\dfrac{360}{7}\\approx51{,}43$.\nPhương sai: $s^{2}=\\dfrac{5\\cdot10^{2}+9\\cdot30^{2}+12\\cdot50^{2}+10\\cdot70^{2}+6\\cdot90^{2}}{42}-\\left(\\dfrac{360}{7}\\right)^{2}=\\dfrac{136200}{42}-\\left(\\dfrac{360}{7}\\right)^{2}\\approx597{,}96$.\nĐộ lệch chuẩn: $s=\\sqrt{597{,}96}\\approx24{,}45$.\nVậy độ lệch chuẩn $\\approx24{,}5$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0416",
+  "dap_an": "D",
+  "loi_giai": "$MNCI$ là hình bình hành nên $\\overrightarrow{MN}=\\overrightarrow{IC}$.\n$\\overrightarrow{MN}=(1-6;\\,6-5;\\,-3-3)=(-5;1;-6)$.\nGọi $I(x;y;z)$ thì $\\overrightarrow{IC}=(2-x;\\,-12-y;\\,0-z)$.\nTừ $2-x=-5$, $-12-y=1$, $-z=-6$ ta được $x=7,\\ y=-13,\\ z=6$.\nVậy $I(7;-13;6)$. Chọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0417",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{u}-\\overrightarrow{v}=(1-2;\\,3-1;\\,-2-(-1))=(-1;2;-1)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0418",
+  "dap_an": "C",
+  "loi_giai": "$\\left[\\vec{u},\\vec{c}\\right]=\\left(u_2c_3-u_3c_2;\\ u_3c_1-u_1c_3;\\ u_1c_2-u_2c_1\\right)$.\nThành phần thứ nhất: $(-3)\\cdot4-(-2)\\cdot0=-12$.\nThành phần thứ hai: $(-2)\\cdot(-5)-(-7)\\cdot4=10+28=38$.\nThành phần thứ ba: $(-7)\\cdot0-(-3)\\cdot(-5)=-15$.\nVậy $\\left[\\vec{u},\\vec{c}\\right]=(-12;38;-15)$. Chọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0419",
+  "dap_an": "C",
+  "loi_giai": "$y'=3x^{2}-6x=3x(x-2)$; $y'=0\\Leftrightarrow x=0$ hoặc $x=2$.\n$y'>0$ trên $(-\\infty;0)$ và $(2;+\\infty)$; $y'<0$ trên $(0;2)$.\nHàm số đạt cực tiểu tại $x=2$, giá trị cực tiểu $y_{CT}=y(2)=8-12+4=0$.\nChọn C.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0420",
+  "dap_an": "C",
+  "loi_giai": "Xét từng khẳng định:\n$\\overrightarrow{AB}-\\overrightarrow{AD}=\\overrightarrow{DB}\\ne\\overrightarrow{BD}$ nên A sai.\n$\\overrightarrow{BD}-\\overrightarrow{AD}=\\overrightarrow{BD}+\\overrightarrow{DA}=\\overrightarrow{BA}\\ne\\overrightarrow{AB}$ nên B sai.\n$\\overrightarrow{BC}+\\overrightarrow{AB}=\\overrightarrow{AB}+\\overrightarrow{BC}=\\overrightarrow{AC}$ nên C đúng.\n$\\overrightarrow{AB}+\\overrightarrow{BD}=\\overrightarrow{AD}\\ne\\overrightarrow{DA}$ nên D sai.\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ }
+]
