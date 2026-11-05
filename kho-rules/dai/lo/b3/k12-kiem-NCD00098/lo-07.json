@@ -1,0 +1,851 @@
+[
+ {
+  "ma_cau": "T1120000002809",
+  "loai": "trac_nghiem",
+  "de": "Tính tích phân $I=\\int\\limits_{0}^{2016} 7^{x}dx$.",
+  "lua_chon": [
+   "$I=\\frac{7^{2017}}{2017}-7$.",
+   "$I=\\left( 7^{2016}-1 \\right)\\ln 7$.",
+   "$I=\\frac{7^{2016}-1}{\\ln 7}$.",
+   "$I=2016.7^{2015}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $I=\\int\\limits_{0}^{2016} 7^{x}\\ dx=\\left. \\frac{1}{\\ln 7}7^{x} \\right|_{0}^{2016}=\\frac{7^{2016}-1}{\\ln 7}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112020301004",
+  "loai": "trac_nghiem",
+  "de": "Đồ thị sau là của hàm số nào dưới đây? [hình]",
+  "lua_chon": [
+   "$\\text{A. }y=\\dfrac{x^{2}-3}{3x}$",
+   "$\\text{B. }y=\\dfrac{x^{2}-3}{-3x}$",
+   "$\\text{C. }y=\\dfrac{x^{2}+3}{-3x}$",
+   "$\\text{D. }y=\\dfrac{x^{2}+3}{3x}$"
+  ],
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan hệ số của hàm bậc hai trên bậc nhất"
+ },
+ {
+  "ma_cau": "T112070307013",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $B(1;2;-3)$, $C(7;4;-2)$. Tìm $E$ sao cho $CE = 2EB$.",
+  "dap_an": "$(3; \\dfrac{8}{3}; -\\dfrac{8}{3})$",
+  "loi_giai": "Phân tích: Biến đổi đẳng thức véctơ:\n$CE - 2EB = 0 \\iff -EC + 2BE = 0 \\iff 2EB + EC = 0$\nĐiểm $E$ là tâm tỉ cự của hệ hai điểm $B, C$ với hệ số tương ứng là $2$ và $1$.\nGiải:\nTổng hệ số: $k = 2 + 1 = 3$.\n$E = \\dfrac{2B + 1C}{3} \\Rightarrow \\begin{cases} x_E = \\dfrac{2\\cdot1+7}{3} = 3 \\\\ y_E = \\dfrac{2\\cdot2+4}{3} = \\dfrac{8}{3} \\\\ z_E = \\dfrac{2\\cdot(-3)-2}{3} = -\\dfrac{8}{3} \\end{cases}$\nVậy $E(3; \\dfrac{8}{3}; -\\dfrac{8}{3})$.",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tìm điểm thoả mãn điều kiện cho trước hoặc cực trị hình học (tâm tỉ cự)"
+ },
+ {
+  "ma_cau": "T112070201005",
+  "loai": "tu_luan",
+  "de": "Cho 3 vector $\\vec{u}=(3;7;0)$; $\\vec{v}=(2;3;1)$; $\\vec{w}=(3;-2;4)$.\na) Chứng minh 3 vector $\\vec{u}$; $\\vec{v}$; $\\vec{w}$ không đồng phẳng.\nb) Biểu thị vector $\\vec{a}=(-4;-12;3)$ theo 3 vector $\\vec{u}$;$\\vec{v}$;$\\vec{w}$.",
+  "dap_an": "$\\vec{a}=-5\\vec{u}+7\\vec{v}-\\vec{w}$",
+  "loi_giai": "a) Ta có: $[\\vec{u},\\vec{v}]=(7;-3;-5)\\Rightarrow [\\vec{u},\\vec{v}].\\vec{w} \\neq 0 \\Rightarrow 3$ vector $\\vec{u}$; $\\vec{v}$; $\\vec{w}$ không đồng phẳng.\nb) Giả sử $\\vec{a}=m.\\vec{u}+n.\\vec{v}+p.\\vec{w} \\Leftrightarrow (-4;-12;3)=(3m;7m;0)+(2n;3n;n)+(3p;-2p;4p)$\n$\\Leftrightarrow \\begin{cases} 3m+2n+3p=-4 \\\\ 7m+3n-2p=7 \\\\ n+4p=3 \\end{cases} \\Leftrightarrow \\begin{cases} m=-5 \\\\ n=7 \\\\ p=-1 \\end{cases}. $ Vậy $\\vec{a}=-5.\\vec{u}+7.\\vec{v}-\\vec{w}$.",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tích có hướng giữa hai vecto và ứng dụng"
+ },
+ {
+  "ma_cau": "T112070107043",
+  "loai": "trac_nghiem",
+  "de": "Cho hình lăng trụ tam giác đều $ABC.A'B'C'$ có $AB=a$ và $AA'=\\sqrt{2}a$. Góc giữa hai đường thẳng $AB'$ và $BC'$ bằng [hình]",
+  "lua_chon": [
+   "$60^o$.",
+   "$45^o$.",
+   "$90^o$.",
+   "$30^o$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\overrightarrow{A'B'}.\\overrightarrow{BC'}=(\\overrightarrow{AB}+\\overrightarrow{BB'})(\\overrightarrow{BC}+\\overrightarrow{CC'}) = \\overrightarrow{AB}.\\overrightarrow{BC} + \\overrightarrow{AB}.\\overrightarrow{CC'} + \\overrightarrow{BB'}.\\overrightarrow{BC} + \\overrightarrow{BB'}.\\overrightarrow{CC'}$\n$= \\overrightarrow{AB}.\\overrightarrow{BC} + \\overrightarrow{AB}.\\overrightarrow{CC'} + \\overrightarrow{BB'}.\\overrightarrow{BC} + \\overrightarrow{BB'}.\\overrightarrow{CC'} = -\\dfrac{a^2}{2}+0+0+2a^2 = \\dfrac{3a^2}{2}$.\nSuy ra $\\cos (\\overrightarrow{AB'},\\overrightarrow{BC'}) = \\dfrac{\\overrightarrow{AB'}.\\overrightarrow{BC'}}{|\\overrightarrow{AB'}|.|\\overrightarrow{BC'}|} = \\dfrac{\\dfrac{ …",
+  "co_hinh": true,
+  "nhan_cu": "Vectơ trong không gian › Tính góc giữa hai vecto trong một số hình đặc biệt"
+ },
+ {
+  "ma_cau": "T112070312001",
+  "loai": "tra_loi_ngan",
+  "de": "Trong không gian $Oxyz$, một chiếc điện thoại iphone được đặt trên một giá đỡ có ba chân với điểm đặt $S(0;0;20)$ và các điểm chạm mặt đất của ba chân lần lượt là $A(0;-6;0)$, $B(3\\sqrt{3};3;0)$, $C(-3\\sqrt{3};3;0)$ (đơn vị cm).\nCho biết điện thoại có trọng lượng là $2N$. Gọi ba lực $\\vec{F_1}$, $\\vec{F_2}$, $\\vec{F_3}$ tác dụng tại $S$ và có phương lần lượt theo các đoạn $SA,SB,SC$ có độ lớn bằng nhau.\nBiết tọa độ của lực $\\vec{F_1}=(a;b;c)$, khi đó $T=2a+5b+6c$ bằng?",
+  "dap_an": "-5",
+  "loi_giai": "Trọng lượng của điện thoại là $2N$ và hướng thẳng đứng xuống dưới nên véc-tơ trọng lực là $\\vec{P}=(0;0;-2)$.\nĐiện thoại ở trạng thái cân bằng nên tổng các lực do điện thoại tác dụng lên giá đỡ tại $S$ chính bằng trọng lực của điện thoại.\nDo đó $\\vec{F_1}+\\vec{F_2}+\\vec{F_3}=\\vec{P}=(0;0;-2)$.\nTa có $\\vec{SA}=(0;-6;-20)$, $\\vec{SB}=(3\\sqrt{3};3;-20)$, $\\vec{SC}=(-3\\sqrt{3};3;-20)$.\nSuy ra $\\vec{SA}+\\vec{SB}+\\vec{SC}=(0;0;-60)$.\nVì $\\vec{F_1}$, $\\vec{F_2}$, $\\vec{F_3}$ có phương lần lượt theo các đoạn $SA,SB,SC$ và có độ lớn bằng nhau, đồng thời $SA=SB=SC=\\sqrt{436}$ nên tồn tại số thực $k>0$ sao cho $\\vec{F_1}=k\\vec{SA}$, $\\vec{F_2}=k\\vec{SB}$, $\\vec{F_3}=k\\vec{SC}$.\nKhi đó $\\vec{F_1}+\\vec{F …",
+  "co_hinh": true,
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Một số bài toán thực tế liên quan đến Lực"
+ },
+ {
+  "ma_cau": "T112070304003",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ tọa độ $Oxyz$, khoảng cách giữa hai điểm $A(-2;-3;9)$ và $B(-2;3;1)$ bằng:",
+  "lua_chon": [
+   "10.",
+   "8.",
+   "100.",
+   "6."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Khoảng cách giữa hai điểm $A$ và $B$ là:\n$AB = \\sqrt{(-2-(-2))^2 + (3-(-3))^2 + (1-9)^2} = \\sqrt{0^2 + 6^2 + (-8)^2} = \\sqrt{36+64} = \\sqrt{100} = 10$.",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tính độ dài véc tơ hoặc khoảng cách giữa hai điểm"
+ },
+ {
+  "ma_cau": "T1120000007445",
+  "loai": "tra_loi_ngan",
+  "de": "Viên gạch men dùng để lát nền nhà là một hình vuông có cạnh bằng $60cm$ như hình vẽ. Mỗi viên gạch có $4$ bông hoa, mỗi bông hoa gồm $4$ cánh hoa. Mỗi cánh hoa (phần màu xanh) là phần giao nhau của hai hình tròn có cùng bán kính và khoảng cách giữa hai tâm là $15\\sqrt{2}$ cm.\nƯớc tính ở công đoạn tráng men, phần màu xanh có chi phí 40 nghìn đồng/$m^{2}$, còn phần màu trắng có chi phí 30 nghìn đồng/$m^{2}$. Nếu cơ sở dự định sản xuất $175\\,000$ viên gạch như trên thì chi phí của công đoạn tráng men này bằng bao nhiêu tỉ đồng (kết quả làm tròn đến hàng phần trăm)?",
+  "dap_an": "2,25",
+  "loi_giai": "Mỗi cánh hoa là phần giao của hai hình tròn bán kính $15$ cm có tâm cách nhau $15\\sqrt2$ cm: $S_1=2\\left(\\dfrac{\\pi\\cdot15^2}{4}-\\dfrac{15^2}{2}\\right)=225\\left(\\dfrac\\pi2-1\\right)$ cm$^2$. Có $16$ cánh: $S_{xanh}=3600\\left(\\dfrac\\pi2-1\\right)\\approx2054{,}9$ cm$^2\\approx0{,}2055$ m$^2$; $S_{trắng}=0{,}36-0{,}2055$ m$^2$. Chi phí mỗi viên $\\approx40\\cdot0{,}2055+30\\cdot0{,}1545\\approx12{,}855$ nghìn đồng; với $175000$ viên $\\approx2{,}25$ tỉ đồng.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112070305015",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho ba điểm $A(3; -2; 3)$, $B(-1; 2; 5)$, $C(1; 0; 1)$. Tìm tọa độ trọng tâm $G$ của tam giác $ABC$.",
+  "lua_chon": [
+   "$G(1; 0; 3)$",
+   "$G(3; 0; 1)$",
+   "$G(-1; 0; 3)$",
+   "$G(0; 0; -1)$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Tọa độ trọng tâm $G$ của tam giác $ABC$ là $G(x_G; y_G; z_G)$ với:\n$x_G = \\dfrac{3+(-1)+1}{3} = 1$; $y_G = \\dfrac{-2+2+0}{3} = 0$; $z_G = \\dfrac{3+5+1}{3} = 3$.\nVậy $G(1; 0; 3)$.",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Dùng hệ thức trung điểm, trọng tâm theo toạ độ"
+ },
+ {
+  "ma_cau": "T112020202017",
+  "loai": "trac_nghiem",
+  "de": "(THPT Ngô Sĩ Liên - Bắc Giang 2025) Cho hàm số $y=f(x)$ có đồ thị như hình dưới đây. [hình] Biểu thức $f(x)$ là biểu thức nào sau đây?",
+  "lua_chon": [
+   "$x+\\dfrac{1}{x}$",
+   "$-x^3+3x-1$",
+   "$x^3-1$",
+   "$\\dfrac{x-1}{x+1}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Chọn D\nĐồ thị hàm số $y=f(x)$ có tiệm cận đứng là $x=-1$ nên biểu thức $f(x)$ là $\\dfrac{x-1}{x+1}$.",
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan đến đồ thị hàm số bậc nhất trên bậc nhất"
+ },
+ {
+  "ma_cau": "T1120000002585",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f(x)$ liên tục trên $\\mathbb{R}$ và có đồ thị cắt trục $Ox$ tại đúng ba điểm phân biệt $a,b,c(a<c<b)$. Gọi $S_{1}$ là diện tích hình phẳng giới hạn bởi đồ thị hàm số và trục $Ox$ tương ứng với $x\\in[a;c],S_{2}$ là diện tích hình phẳng giới hạn bởi đồ thị hàm số và trục $Ox$ tương ứng với $x\\in[c;b]$. Nếu $f(x)\\le 0,\\forall x\\in[a;c],f(x)\\ge 0,\\forall x\\in[c;b]$ thì giá trị của $\\int\\limits_{a}^{b} f(x)$ bằng",
+  "lua_chon": [
+   "$S_{1}+S_{2}$.",
+   "$S_{1}-S_{2}$.",
+   "$-S_{1}+S_{2}$.",
+   "$-S_{1}-S_{2}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "$\\int\\limits_{a}^{b} f(x)dx=\\int\\limits_{a}^{c} f(x)dx+\\int\\limits_{c}^{b} f(x)dx=-S_{1}+S_{2}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000002817",
+  "loai": "tu_luan",
+  "de": "Tìm họ nguyên hàm của hàm số $f\\left( x \\right)$, biết:\na) $f\\left( x \\right)=x^{2}$\t\t\t\tb) $f\\left( x \\right)=x^{4}+x^{-3}$\nc) $f\\left( x \\right)=x^{2}+\\frac{3}{x}$\t\t\t\td) $f\\left( x \\right)=\\frac{1}{x}-\\frac{1}{x^{2}}$\ne) $f\\left( x \\right)=x^{2}+\\frac{3}{x}-2\\sqrt{x}$\t\t\tf) $f\\left( x \\right)=3\\sqrt{x}+\\frac{1}{\\sqrt[3]{x}}$",
+  "loi_giai": "a) Ta có $\\int x^{2}\\text{d}x=\\frac{x^{3}}{3}+C$\nb) Ta có $\\int f\\left( x \\right)\\text{d}x=\\int \\left( x^{4}+x^{-3} \\right)\\text{d}x=\\frac{1}{5}x^{5}-\\frac{1}{2}x^{-2}+C$\nc) Ta có $\\int \\left( x^{2}+\\frac{3}{x} \\right)\\text{d}x=\\frac{x^{3}}{3}+3\\text{ln}\\left| x \\right|+C$\nd) Ta có $\\int \\left( \\frac{1}{x}-\\frac{1}{x^{2}} \\right)\\text{d}x=\\text{ln}\\left| x \\right|+\\frac{1}{x}+C$\ne) Ta có $\\int x^{2}+\\frac{3}{x}-2\\sqrt{x}\\text{~d}x=\\frac{x^{3}}{3}+3\\text{ln}\\left| x \\right|-\\frac{4}{3}\\sqrt{x^{3}}+C$\nf) Ta có $\\int \\left( 3\\sqrt{x}+\\frac{1}{\\sqrt[3]{x}} \\right)\\text{d}x=\\int \\left( 3x^{\\frac{1}{2}}+x^{-\\frac{1}{3}} \\right)\\text{d}x=\\frac{6}{3}x^{\\frac{3}{2}}+\\frac{3}{2}x^{\\frac{2}{3}}+C=2x^{\\ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112020104010",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. [hình]\nHàm số đã cho là hàm số nào sau đây?",
+  "lua_chon": [
+   "$y=x^3-3x+1$.",
+   "$y=x^3-3x$.",
+   "$y=x^3-3x-1$.",
+   "$y=x^3+3x$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chọn B\nĐồ thị hàm số đi qua gốc tọa độ - loại đáp án A, C. Hàm số có hai điểm cực trị - loại D.\nĐáp án là B",
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan đến đồ thị hàm số bậc 3"
+ },
+ {
+  "ma_cau": "T1120000002812",
+  "loai": "trac_nghiem",
+  "de": "Khẳng định nào trong các khẳng định sau đúng với mọi hàm $f$, $g$ liên tục trên $K$ và $a$, $\\,b$ là các số bất kỳ thuộc $K$?",
+  "lua_chon": [
+   "$\\int\\limits_{a}^{b} \\left[ f(x)+2g(x) \\right]\\text{d}x=\\int\\limits_{a}^{b} f(x)\\text{d}x\\,\\text{+2}\\,\\int\\limits_{a}^{b} g(x)\\text{d}x$.",
+   "$\\int\\limits_{a}^{b} \\frac{f(x)}{g(x)}\\text{d}x=\\frac{\\int\\limits_{a}^{b} f(x)\\text{d}x}{\\,\\int\\limits_{a}^{b} g(x)\\text{d}x}\\,$.",
+   "$\\int\\limits_{a}^{b} \\left[ f(x).g(x) \\right]\\text{d}x=\\int\\limits_{a}^{b} f(x)\\text{d}x\\text{ .}\\,\\int\\limits_{a}^{b} g(x)\\text{d}x$.",
+   "$\\,\\int\\limits_{a}^{b} f^{2}(x)\\text{d}x\\text{=}\\left[ \\int\\limits_{a}^{b} f(x)\\text{d}x \\right]^{2}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Theo tính chất tích phân ta có\n$\\int\\limits_{a}^{b} \\left[ f(x)+g(x) \\right]\\text{d}x=\\int\\limits_{a}^{b} f(x)\\text{d}x\\,\\text{+}\\,\\int\\limits_{a}^{b} g(x)\\text{d}x;\\,\\int\\limits_{a}^{b} kf(x)\\text{d}x=k\\int\\limits_{a}^{b} f(x)\\text{d}x$, với $k\\in\\mathbb{R}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112020202005",
+  "loai": "trac_nghiem",
+  "de": "Bảng biến thiên sau đây của hàm số nào?$\\begin{array}{|c|c c||c c|}\\\\hline x & - \\infty & & -1 & & + \\infty \\\\ \\hline y' & & + & & + \\\\ \\hline & & & + \\infty & & \\\\ y & & \\nearrow & & \\nearrow & 2 \\\\ & 2 & & - \\infty & & \\\\ \\hline \\end{array}$",
+  "lua_chon": [
+   "$y=\\dfrac{2x+3}{x+1}$",
+   " $y=\\dfrac{2x-1}{x-1}$",
+   " $y=\\dfrac{2x-1}{x+1}$",
+   " $y=\\dfrac{x+1}{2x-1}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Từ bảng biến thiên ta thấy đồ thị hàm số có tiệm cận đứng $x=-1$ nên loại $y=\\dfrac{2x-1}{x-1}$, $y=\\dfrac{x+1}{2x-1}$.\nXét phương án $y=\\dfrac{2x+3}{x+1}: y=\\dfrac{2x+3}{x+1}\\Rightarrow y'=\\dfrac{-1}{(x+1)^2}<0, \\forall x \\neq -1$ suy ra hàm số nghịch biến trên từng khoảng xác định (loại).",
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan đến đồ thị hàm số bậc nhất trên bậc nhất"
+ },
+ {
+  "ma_cau": "T1120000007015",
+  "loai": "trac_nghiem",
+  "de": "Phương trình $\\cos x=1$ có họ nghiệm là",
+  "lua_chon": [
+   "$x=k\\pi\\ (k\\in\\mathbb Z)$.",
+   "$x=k2\\pi\\ (k\\in\\mathbb Z)$.",
+   "$x=\\dfrac\\pi2+k\\pi\\ (k\\in\\mathbb Z)$.",
+   "$x=k\\dfrac\\pi2\\ (k\\in\\mathbb Z)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "$\\cos x=1\\Leftrightarrow x=k2\\pi$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000005998",
+  "loai": "tra_loi_ngan",
+  "de": "Trong một cửa hàng, nhà quản lý dự định treo một đồ trang trí trên cao. Vật trang trí được đặt trên giá đỡ nằm dưới thanh treo 1 m. Biết khoảng cách giữa hai thanh treo là 3 m. Biết tổng độ dài nhỏ nhất của các đoạn dây xích là $a + b\\sqrt{c}$ (trong đó $a, b, c$ là các số tự nhiên). Tính $a + b + c$.",
+  "dap_an": "8",
+  "loi_giai": "Gọi $O$ là điểm nút dây cách đường treo $x$ ($0\\le x\\le1$). $OA=OB=\\sqrt{\\frac94+x^2}$, $OC=1-x$. Tổng độ dài dây $L(x)=2\\left(2\\sqrt{\\frac94+x^2}+1-x\\right)$, $L'(x)=0\\Leftrightarrow\\sqrt{\\frac94+x^2}=2x\\Leftrightarrow x=\\frac{\\sqrt3}{2}$. $L_{\\min}=2+3\\sqrt3$ nên $a=2,\\ b=3,\\ c=3$, $a+b+c=8$.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007563",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề nào sau đây sai?",
+  "lua_chon": [
+   "$\\displaystyle\\int\\sin3x\\,\\mathrm dx=\\dfrac13\\cos3x+C$.",
+   "$\\displaystyle\\int x^3\\,\\mathrm dx=\\dfrac{x^4}4+C$.",
+   "$\\displaystyle\\int e^x\\,\\mathrm dx=e^x+C$.",
+   "$\\displaystyle\\int\\dfrac1x\\,\\mathrm dx=\\ln|x|+C$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$\\displaystyle\\int\\sin3x\\,\\mathrm dx=-\\dfrac13\\cos3x+C$, nên mệnh đề A sai (thiếu dấu trừ); B, C, D đúng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000002646",
+  "loai": "tra_loi_ngan",
+  "de": "Một nghệ sĩ đang thực hiện vẽ tranh tường 3D nghệ thuật để trang trí nội thất. Mỗi bức tranh gồm một hình lục giác đều có cạnh bằng $30$ cm, trên mỗi cạnh của hình lục giác đều có một cánh hoa hình parabol, đỉnh của parabol cách cạnh lục giác đều $30$ cm và nằm phía ngoài hình lục giác, đường parabol đó đi qua hai đầu mút của mỗi cạnh (xem hình dưới). Biết tổng giá vẽ tranh 3D (bao gồm công và vật tư) là 500.000 đồng/m². Hỏi nghệ sĩ nhận được bao nhiêu tiền sau khi hoàn thành bức tranh? (Làm tròn đến nghìn đồng gần nhất.)",
+  "dap_an": "297",
+  "loi_giai": "Diện tích lục giác là diện tích của 6 tam giác đều cạnh $0,3\\mathrm{m}$: $S_{1}=6.\\frac{(0,3)^{2}\\sqrt{3}}{4}=\\frac{27\\sqrt{3}}{200}(m^{2})$\nDiện tích 6 cánh hoa là diện tích 6 parabol $d=0,3m$; $h=0,3m$\n$S_{2}=6.\\frac{2}{3}h.d=6.\\frac{2}{3}.0,3.0,3=\\frac{9}{25}(m^{2})$\nTổng diện tích bức tranh: $S=S_{1}+S_{2}$\nTổng giá tiền để vẽ bức tranh là : $\\left( \\frac{9}{25}+\\frac{27\\sqrt{3}}{200} \\right).500\\approx 297$ (nghìn)",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007691",
+  "loai": "tra_loi_ngan",
+  "de": "Cho một mô hình $3$-D mô phỏng một đường hầm như hình vẽ bên. Biết rằng đường hầm mô hình có chiều dài $5$ (cm); khi cắt hình này bởi mặt phẳng vuông góc với đáy của nó, ta được thiết diện là một hình parabol có độ dài đáy gấp đôi chiều cao parabol. Chiều cao của mỗi thiết diện parabol cho bởi công thức $y=3-\\dfrac25x$ (cm), với $x$ (cm) là khoảng cách tính từ lối vào lớn hơn của đường hầm mô hình. Tính thể tích (theo đơn vị cm$^3$) không gian bên trong đường hầm mô hình (làm tròn kết quả đến hàng đơn vị).",
+  "dap_an": "29",
+  "loi_giai": "Thiết diện parabol có đáy $2h$, chiều cao $h$ với $h=3-\\dfrac25x$ nên diện tích $S(x)=\\dfrac23\\cdot2h\\cdot h=\\dfrac43h^{2}$. $V=\\int\\limits_{0}^{5}\\dfrac43\\left(3-\\dfrac25x\\right)^{2}\\text{d}x=\\dfrac43\\cdot\\dfrac{3^{3}-1^{3}}{3\\cdot\\frac25}=\\dfrac{260}{9}\\approx28{,}9\\approx29$ (cm$^3$).",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000002735",
+  "loai": "tu_luan",
+  "de": "Mặt sàn của một thang máy có dạng hình vuông $ABCD$ cạnh $2\\text{m}$ được lát gạch màu trắng và trang trí bởi một hình 4 cánh giống nhau màu sẫm. Khi đặt trong hệ trục tọa độ $Oxy$ với $O$ là tâm hình vuông sao cho $A\\left( 1;1 \\right)$ như hình vẽ bên thì các đường cong $OA$ có phương trình $y=x^{2}$ và $y=ax^{3}+bx$. Tính giá trị $a.b$ biết rằng diện tích trang trí màu sẫm chiếm $\\frac{1}{3}$ diện tích mặt sàn.",
+  "loi_giai": "Đồ thị của hàm số $y=ax^{3}+bx$ đi qua điểm $A\\left( 1;1 \\right)\\Rightarrow$$a+b=1$.\n$S_{ABCD}=4\\left( \\text{m}^{\\text{2}} \\right)$.\nDiện tích của 4 cánh hoa: $S_{1}=\\frac{1}{3}S_{ABCD}=\\frac{4}{3}$\nDiện tích của một cánh hoa: $S_{2}=\\frac{1}{4}.\\frac{4}{3}=\\frac{1}{3}$.\nMà: $S_{2}=\\int\\limits_{0}^{1} \\left( x^{2}-ax^{3}-bx \\right)\\text{d}x=\\left( \\frac{x^{3}}{3}-\\frac{ax^{4}}{4}-\\frac{bx^{2}}{2} \\right)\\left| \\begin{array}{l} 1 \\\\ 0 \\end{array} \\right.=\\frac{1}{3}$\n$\\Leftrightarrow\\frac{1}{3}-\\frac{a}{4}-\\frac{b}{2}=\\frac{1}{3}\\Leftrightarrow\\frac{a}{4}+\\frac{b}{2}=0$.\nTa có hệ pt: $\\left\\{ \\begin{array}{l} a+b=1 \\\\ \\frac{a}{4}+\\frac{b}{2}=0 \\end{array} \\right.\\Leftrightarrow\\left\\{ \\begin{ …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007453",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số nhân $(u_n)$ có $u_1=3$ và công bội $q=-2$. Giá trị $u_4$ là",
+  "lua_chon": [
+   "$48$.",
+   "$24$.",
+   "$-24$.",
+   "$-3$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "$u_4=u_1q^3=3\\cdot(-8)=-24$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112000000558",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình nón có bán kính đáy $OA=6 cm$và chiều cao $SO=8 cm$. Cắt hình nón đã cho bởi một mặt phẳng song song với trục $SO$ và cách trục $SO$ một khoảng bằng $3 cm$ ta được hai phần. Thể tích phần không chứa đỉnh $S$ bằng bao nhiêu ${cm}^{3}$? (Không làm tròn kết quả các phép tính trung gian, chỉ làm tròn kết quả cuối cùng đến hàng phần chục).",
+  "dap_an": "33.2",
+  "loi_giai": "Chọn hệ trục tọa độ sao cho tâm đáy hình nón là $O\\left(0;0;0\\right)$, trục $SO$ nằm trên trục $Oz$ với đỉnh $S\\left(0;0;8\\right)$.\nPhương trình mặt nón là $x^{2}+y^{2}=r^{2}\\left(z\\right)$, với $r\\left(z\\right)=6-\\dfrac{3}{4}z$ là bán kính đường tròn giao tuyến của mặt nón và mặt phẳng $z=k$ ($0\\le k\\le 8$).\nMặt phẳng cắt song song với trục $SO$ và cách $SO$ một khoảng bằng $3$ có phương trình $x=3$.\nPhần hình nón không chứa đỉnh $S$ tương ứng với phần không gian giới hạn bởi mặt nón và mặt phẳng $x=3$, nằm về phía $x\\ge 3$.\nThiết diện của phần này khi cắt bởi mặt phẳng $z=k$ là một hình viên phân của đường tròn bán kính $r\\left(z\\right)$, khoảng cách từ tâm đến dây cung là $d=3$.\nĐiều kiện …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000002862",
+  "loai": "tu_luan",
+  "de": "Tính các tích phân sau đây:\na) $A=\\int\\limits_{-2}^{2} \\left| x^{2}-1 \\right|\\text{d}x$\t\t\t\tb) $B=\\int\\limits_{-2}^{1} \\left| x^{3}+x^{2}-2x \\right|\\text{d}x$\nc) $C=\\int\\limits_{-1}^{2} \\left| x^{3}-3x+2 \\right|\\text{d}x$\t\t\td) $D=\\int\\limits_{-2}^{2} \\left| x^{4}-3x^{2}-4 \\right|\\text{d}x$",
+  "loi_giai": "a) $A=\\int\\limits_{-2}^{2} \\left| x^{2}-1 \\right|\\text{d}x$.\nXét $f\\left( x \\right)=x^{2}-1$ trên đoạn $\\left[ -2;2 \\right]$.\nCho $f\\left( x \\right)=0\\Leftrightarrow x^{2}-1=0\\Leftrightarrow\\left[ \\begin{array}{l} x=-1\\in\\left[ -2;2 \\right] \\\\ x=1\\in\\left[ -2;2 \\right] \\end{array} \\right.$.\nBảng xét dấu:\nDo đó:$A=\\int\\limits_{-2}^{2} \\left| x^{2}-1 \\right|\\text{d}x=\\int\\limits_{-2}^{-1} \\left( x^{2}-1 \\right)\\text{d}x+\\int\\limits_{-1}^{1} \\left( 1-x^{2} \\right)\\text{d}x+\\int\\limits_{1}^{2} \\left( x^{2}-1 \\right)\\text{d}x$\n$=\\left. \\left( \\frac{x^{3}}{3}-x \\right) \\right|_{-2}^{-1}+\\left. \\left( x-\\frac{x^{3}}{3} \\right) \\right|_{-1}^{1}+\\left. \\left( \\frac{x^{3}}{3}-x \\right) \\right|_{1}^{2} …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007694",
+  "loai": "trac_nghiem",
+  "de": "Biết rằng $\\int\\limits_{0}^{1}\\dfrac{2\\text{e}^{2x}+3}{\\text{e}^{x}}\\text{d}x=\\dfrac{m\\cdot\\text{e}^{2}+n\\cdot\\text{e}+p}{\\text{e}}$ (với $m,n,p\\in\\mathbb{Z}$). Khi đó $m+2n-p$ bằng",
+  "lua_chon": [
+   "$7$.",
+   "$1$.",
+   "$6$.",
+   "$2$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$\\int\\limits_{0}^{1}\\left(2\\text{e}^{x}+3\\text{e}^{-x}\\right)\\text{d}x=2(\\text{e}-1)+3\\left(1-\\dfrac1{\\text{e}}\\right)=2\\text{e}+1-\\dfrac3{\\text{e}}=\\dfrac{2\\text{e}^{2}+\\text{e}-3}{\\text{e}}$. Vậy $m=2$, $n=1$, $p=-3$ và $m+2n-p=7$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000002751",
+  "loai": "trac_nghiem",
+  "de": "Nếu $F\\left( x \\right)$ là nguyên hàm của hàm số $f\\left( x \\right)=\\sin 5x\\sin 2x$ thì",
+  "lua_chon": [
+   "$F\\left( x \\right)=\\frac{\\cos 3x}{6}-\\frac{\\cos 7x}{14}+C$.",
+   "$F\\left( x \\right)=\\frac{\\cos 3x}{6}+\\frac{\\cos 7x}{14}+C$.",
+   "$F\\left( x \\right)=\\frac{\\sin 3x}{6}-\\frac{\\sin 7x}{14}+C$.",
+   "$F\\left( x \\right)=\\frac{\\sin 3x}{6}-\\frac{\\cos 7x}{14}+C$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $2f\\left( x \\right)=2\\sin 5x\\sin 2x=\\cos 3x-\\cos 7x$.\nSuy ra:$2\\int f\\left( x \\right)dx=\\frac{\\sin 3x}{3}-\\frac{\\sin 7x}{7}+2C$$\\Rightarrow\\int f\\left( x \\right)dx=\\frac{\\sin 3x}{6}-\\frac{\\sin 7x}{14}+C$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007645",
+  "loai": "tra_loi_ngan",
+  "de": "Cho một mảnh vườn hình chữ nhật $ABCD$ có chiều rộng là 2 m , chiều dài gấp ba chiều rộng. Người ta chia mảnh vườn bằng cách dùng hai đường parabol, mỗi đường parabol có đỉnh là trung điểm mỗi cạnh dài và đi qua hai mút của canh dài đối diện. Tính tỉ số diện tích phần mảnh vườn nằm ở miền trong hai parabol với diện tích phần còn lại. (kết quả làm tròn đến hàng phần trăm)",
+  "dap_an": "0,89",
+  "loi_giai": "Chọn hệ trục, hai parabol: $y=2-\\frac{2x^2}9$ và $y=\\frac{2x^2}9$ trên $[-3;3]$, cắt nhau tại $x=\\pm\\frac3{\\sqrt2}$. Diện tích miền trong hai parabol $=\\int_{-3/\\sqrt2}^{3/\\sqrt2}\\left(2-\\frac{4x^2}9\\right)dx=4\\sqrt2$. Diện tích hình chữ nhật $=12$, phần còn lại $=12-4\\sqrt2$. Tỉ số $=\\frac{4\\sqrt2}{12-4\\sqrt2}\\approx0{,}89$.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112010403004",
+  "loai": "tra_loi_ngan",
+  "de": "Một hộ làm nghề dệt vải lụa tơ tằm sản xuất mỗi ngày được $x$ mét vải lụa ($1 \\le x \\le 18$).\nTổng chi phí sản xuất $x$ mét vải lụa, tính bằng nghìn đồng, cho bởi hàm chi phí $C(x) = x^3 - 3x^2 - 20x + 500$.\nGiả sử hộ làm nghề dệt này bán hết sản phẩm mỗi ngày với giá 220 nghìn đồng/mét.\nVậy hộ này cần sản xuất và bán ra mỗi ngày bao nhiêu mét để thu được lợi nhuận tối đa?",
+  "dap_an": "10",
+  "loi_giai": "Giá bán mỗi mét vải là 220 nghìn đồng.\nHàm doanh thu $R(x)$ là $R(x) = 220x$ (nghìn đồng).\nHàm lợi nhuận $P(x)$ là $P(x) = R(x) - C(x)$.\n$P(x) = 220x - (x^3 - 3x^2 - 20x + 500)$.\n$P(x) = -x^3 + 3x^2 + 240x - 500$.\nĐể tìm lợi nhuận tối đa, ta tìm đạo hàm của $P(x)$.\n$P'(x) = -3x^2 + 6x + 240$.\nCho $P'(x) = 0$ để tìm các điểm cực trị.\n$-3x^2 + 6x + 240 = 0$.\nChia cả hai vế cho $-3$: $x^2 - 2x - 80 = 0$.\nGiải phương trình bậc hai, ta được $(x-10)(x+8) = 0$.\nCác nghiệm là $x = 10$ hoặc $x = -8$.\nVì $x$ là số mét vải và $1 \\le x \\le 18$, nên ta loại $x = -8$ và xét $x = 10$.\nTính lợi nhuận tại các điểm biên và điểm cực trị trong khoảng xét:\n$P(1) = -1^3 + 3(1^2) + 240(1) - 500 = -258$ (nghìn đồng …",
+  "nhan_cu": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số › Ứng dụng GTLN - GTNN"
+ },
+ {
+  "ma_cau": "T112070101055",
+  "loai": "trac_nghiem",
+  "de": "Cho hình lập phương $ABCD.A'B'C'D'$ có độ dài mỗi cạnh bằng $1$. Tính độ dài của $\\vec{AB} + \\vec{CC'}$",
+  "lua_chon": [
+   "$\\sqrt{2}$",
+   "$2$",
+   "$\\sqrt{3}$",
+   "$1$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\vec{d} = \\vec{BC} = \\vec{AC} - \\vec{AB} = \\vec{c} - \\vec{b}$.\nSuy ra $\\vec{d} + \\vec{b} - \\vec{c} = \\vec{0}$ hay $\\vec{b} - \\vec{c} + \\vec{d} = \\vec{0}$.\nVì $ABCD.A'B'C'D'$ là hình lập phương nên $\\vec{CC'} = \\vec{BB'}$.\nTa có $\\vec{AB} + \\vec{CC'} = \\vec{AB} + \\vec{BB'} = \\vec{AB'}$.\nXét tam giác $ABB'$ vuông tại $B$, ta có $AB' = \\sqrt{AB^2 + BB'^2} = \\sqrt{1^2 + 1^2} = \\sqrt{2}$.\nVậy $|\\vec{AB} + \\vec{CC'}| = |\\vec{AB'}| = \\sqrt{2}$.",
+  "co_hinh": true,
+  "nhan_cu": "Vectơ trong không gian › Tổng hiệu giữa các vecto"
+ },
+ {
+  "ma_cau": "T1120000002768",
+  "loai": "trac_nghiem",
+  "de": "Nguyên hàm của hàm số $f\\left( x \\right)=x^{3}+x$ là:",
+  "lua_chon": [
+   "$x^{3}+x+C$.",
+   "$3x^{2}+1+C$.",
+   "$x^{4}+x^{2}+C$.",
+   "$\\frac{1}{4}x^{4}+\\frac{1}{2}x^{2}+C$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "$\\int \\left( x^{3}+x \\right)\\text{d}x=\\frac{1}{4}x^{4}+\\frac{1}{2}x^{2}+C$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112070101027",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp $ABCD.A'B'C'D'$. Tính tổng $\\vec{BA} + \\vec{BC} + \\vec{B'D'}$.",
+  "lua_chon": [
+   "$\\vec{BD'}$",
+   "$\\vec{0}$",
+   "$\\vec{2B'D'}$",
+   "$\\vec{2DB'}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $ABCD$ là hình bình hành nên $\\vec{BA} + \\vec{BC} = \\vec{BD}$.\nMặt khác, vì $ABCD.A'B'C'D'$ là hình hộp nên $\\vec{BD} = \\vec{B'D'}$.\nDo đó, $\\vec{BA} + \\vec{BC} + \\vec{B'D'} = \\vec{BD} + \\vec{B'D'} = \\vec{B'D'} + \\vec{B'D'} = 2\\vec{B'D'}$.",
+  "co_hinh": true,
+  "nhan_cu": "Vectơ trong không gian › Tổng hiệu giữa các vecto"
+ },
+ {
+  "ma_cau": "T1120000002564",
+  "loai": "tu_luan",
+  "de": "Cho đồ thị hàm số $y=e^{-\\frac{x}{2}}$ và hình phẳng được tô màu như Hình.\na) Hình phẳng đó được giới hạn bởi các đường nào?\nb) Viết công thức tính diện tích hình phẳng đó.\nc) Tính diện tích hình phẳng đó.",
+  "loi_giai": "a) Hình phẳng đã cho được giới hạn bởi đồ thị hàm số $y=e^{-\\frac{x}{2}}$, trục hoành và hai đường thẳng $x=-1$, $x=0$.\nb) Diện tích hình phẳng đó được tính theo công thức $S=\\int\\limits_{-1}^{0} \\left| e^{-\\frac{x}{2}} \\right|dx=\\int\\limits_{-1}^{0} e^{-\\frac{x}{2}}\\ dx$.\nc) Diện tích hình phẳng đó là:\n$S=\\int\\limits_{-1}^{0} e^{-\\frac{x}{2}}\\ dx=\\int\\limits_{-1}^{0} \\left( e^{-\\frac{1}{2}} \\right)^{x}\\ dx=\\left. \\frac{\\left( e^{-\\frac{1}{2}} \\right)^{x}}{\\ln e^{-\\frac{1}{2}}} \\right|_{-1}^{0}=-2\\left( 1-e^{\\frac{1}{2}} \\right)$",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112020301006",
+  "loai": "trac_nghiem",
+  "de": "Đường cong ở hình bên là đồ thị của hàm số: [hình]",
+  "lua_chon": [
+   "$y = \\dfrac{x^2 + 2x + 2}{-x - 1}$",
+   "$y = \\dfrac{x^2 + 2x + 2}{x + 1}$",
+   "$y = \\dfrac{x^2 - 2x + 2}{x - 1}$",
+   "$y = \\dfrac{x^2 - 2x + 2}{x + 1}$"
+  ],
+  "dap_an": "D",
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan hệ số của hàm bậc hai trên bậc nhất"
+ },
+ {
+  "ma_cau": "T112070108006",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$. Trên các cạnh $AD$ và $BC$ lần lượt lấy các điểm $M, N$ sao cho $\\vec{AM} = 3\\vec{MD}$, $\\vec{NB} = -3\\vec{NC}$. Gọi $P, Q$ lần lượt là trung điểm của $AD$ và $BC$. Khẳng định nào sau đây sai?",
+  "lua_chon": [
+   "Các vecto $\\vec{AB}, \\vec{DC}, \\vec{MN}$ đồng phẳng.",
+   "Các vecto $\\vec{AB}, \\vec{PQ}, \\vec{MN}$ đồng phẳng.",
+   "Các vecto $\\vec{PQ}, \\vec{DC}, \\vec{MN}$ đồng phẳng.",
+   "Các vecto $\\vec{BD}, \\vec{AC}, \\vec{MN}$ đồng phẳng."
+  ],
+  "dap_an": "B",
+  "nhan_cu": "Vectơ trong không gian › Điều kiện đồng phẳng giữa các vecto"
+ },
+ {
+  "ma_cau": "T1120000002775",
+  "loai": "trac_nghiem",
+  "de": "Nguyễn hàm $F\\left( x \\right)$ của hàm số của hàm số $f\\left( x \\right)=\\frac{1}{x}+e$ là",
+  "lua_chon": [
+   "$F\\left( x \\right)=-\\frac{1}{x^{2}}+e^{x}+C$.",
+   "$F\\left( x \\right)=\\ln\\left| x \\right|+ex+C$.",
+   "$F\\left( x \\right)=\\ln\\left| x \\right|+e^{x}+C$.",
+   "$F\\left( x \\right)=\\ln x+e+C$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Nguyễn hàm $F\\left( x \\right)$ của hàm số của hàm số $f\\left( x \\right)=\\frac{1}{x}+e$ là$F\\left( x \\right)=\\ln\\left| x \\right|+ex+C$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112070108008",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$. $M$ là điểm trên đoạn $AB$ và $MB = 2MA$. $N$ là điểm trên đường thẳng $CD$ mà $\\vec{CN} = k\\vec{CD}$. Nếu $MN,\\vec{AD},\\vec{BC}$ đồng phẳng thì giá trị của $k$ là:",
+  "lua_chon": [
+   "$k = \\dfrac{2}{3}$.",
+   "$k = \\dfrac{3}{2}$.",
+   "$k = \\dfrac{4}{3}$.",
+   "$k = -\\dfrac{1}{2}$."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Vectơ trong không gian › Điều kiện đồng phẳng giữa các vecto"
+ },
+ {
+  "ma_cau": "T1120000002734",
+  "loai": "tu_luan",
+  "de": "Cho hình $\\left( H \\right)$giới hạn bởi các đường $y=x^{2},\\;y=0,\\;x=0,\\;x=4$. Đường thẳng $y=k\\;\\left( 0<k<16 \\right)$ chia hình $\\left( H \\right)$thành hai phần có diện tích $S_{1},\\;S_{2}\\;$(hình vẽ). Tìm $k$ để $S_{1}=S_{2}$.",
+  "loi_giai": "Phương trình hoành độ giao điểm $x^{2}=k\\Rightarrow x=\\sqrt{k}\\;\\left( x>0 \\right)$\n$S$ là diện tích hình phẳng giới hạn bởi $D:\\left\\{ \\begin{array}{l} y=x^{2} \\\\ y=0 \\\\ x=0,\\;x=4 \\end{array} \\right.$\nĐể $S_{1}=S_{2}\\;\\Leftrightarrow\\int\\limits_{\\sqrt{k}}^{4} \\left( x^{2}-k \\right)dx=\\frac{1}{2}\\int\\limits_{0}^{4} x^{2}.dx\\Leftrightarrow\\left( \\frac{x^{3}}{3}-kx \\right)|_{\\sqrt{k}}^{4}=\\frac{32}{3}$.\n$\\Leftrightarrow\\frac{64}{3}-4k-\\left( \\frac{k\\sqrt{k}}{3}-k\\sqrt{k} \\right)=\\frac{32}{3}\\Leftrightarrow k\\sqrt{k}-6k+16=0\\Leftrightarrow\\left[ \\begin{array}{l} \\sqrt{k}=2 \\\\ \\sqrt{k}=2+\\sqrt{2}\\left( loai \\right) \\\\ \\sqrt{k}=2-\\sqrt{2}\\left( loai \\right) \\end{array} \\right.\\Leftrightarrow k=4$",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112070108005",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ tọa độ $Oxyz$, cho ba điểm $A(0;1;-2)$, $B(1;2;1)$, $C(4;3;m)$. Tìm $m$ để 4 điểm $O,A,B,C$ đồng phẳng.",
+  "lua_chon": [
+   "$m = -7$.",
+   "$m = -14$.",
+   "$m = 7$.",
+   "$m = 14$."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Vectơ trong không gian › Điều kiện đồng phẳng giữa các vecto"
+ },
+ {
+  "ma_cau": "T112020202020",
+  "loai": "trac_nghiem",
+  "de": "(Cụm Chuyên Môn Đắk Lăk 2025) Hình vẽ sau đây là đồ thị của hàm số nào? [hình]",
+  "lua_chon": [
+   "$y=x^3-3x^2+1$",
+   "$y=\\dfrac{x^2-x-1}{x+2}$",
+   "$y=\\dfrac{x+1}{x-3}$",
+   "$y=\\dfrac{x-1}{x+1}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Đồ thị trên là của hàm phân thức bậc nhất trên bậc nhất.",
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan đến đồ thị hàm số bậc nhất trên bậc nhất"
+ },
+ {
+  "ma_cau": "T112020202007",
+  "loai": "trac_nghiem",
+  "de": "Đồ thị hàm số nào dưới đây có dạng như đường cong trong hình vẽ bên dưới [hình]",
+  "lua_chon": [
+   "$y = x^3-3x+2.$",
+   "$y = \\dfrac{x+2}{x-1}$",
+   "$y = \\dfrac{x-2}{x-1}$",
+   "$y = -x^4+5x^2-1.$"
+  ],
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan đến đồ thị hàm số bậc nhất trên bậc nhất"
+ },
+ {
+  "ma_cau": "T1120000002736",
+  "loai": "tu_luan",
+  "de": "Ông An xây dựng một sân bóng đá mini hình chữ nhật có chiều rộng $30$m và chiều dài $50$m. Ông An chia sân bóng làm hai phần (tô đen và không tô đen) như hình bên. Phần tô đen gồm hai miền có diện tích bằng nhau và đường cong $AIB$ là một parabol đỉnh $I$. Phần tô đen được trồng cỏ nhân tạo với giá $130.000$ đồng/$m^{2}$ và phần còn lại được trồng cỏ nhân tạo với giá $90.000$ đồng/$m^{2}$. Ông An phải trả bao nhiêu tiền để trồng cỏ nhân tạo cho sân bóng?",
+  "loi_giai": "Gắn hệ trục toạ độ $Oxy$ như hình vẽ :\nGiả sử, đường cong parabol có dạng : $y=ax^{2}+bx+c,\\,\\,\\left( a\\ne 0 \\right)$.\nTa có : $\\left\\{ \\begin{array}{l} c=0 \\\\ 10=225a+15b \\\\ 10=225a-15b \\end{array} \\right.\\Leftrightarrow\\left\\{ \\begin{array}{l} c=0 \\\\ a=\\frac{2}{45} \\\\ b=0 \\end{array} \\right.\\Rightarrow\\left( P \\right):y=\\frac{2}{45}x^{2}.$\nDiện tích phần sân được tô đậm là :\n$S_{1}=2.\\int\\limits_{-15}^{15} \\left( \\frac{2}{45}x^{2} \\right)dx=2.\\frac{2}{45}.\\frac{1}{3}x^{3}\\left| \\begin{array}{l} 15 \\\\ -15 \\end{array} \\right.=200\\,\\,\\left( m^{2} \\right).$\nDiện tích phần sân còn lại là : $S_{2}=S-S_{1}=30.50-200=1300\\,\\,\\,\\left( m^{2} \\right)$.\nVậy số tiền ông An phải trả để trồng cỏ nhân tạo …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112070109012",
+  "loai": "tra_loi_ngan",
+  "de": "Có ba lực cùng tác động vào một vật. Hai trong ba lực này hợp với nhau một góc $100^{\\circ}$ và có độ lớn lần lượt là $25 N$ và $12 N$. Lực thứ ba vuông góc với mặt phẳng tạo bởi hai lực đã cho và có độ lớn $4 N$. Tính độ lớn của hợp lực của ba lực trên.",
+  "dap_an": "26.09",
+  "loi_giai": "Tính hợp lực thành phần: Tương tự câu trên, gọi hai lực đầu là $F_1$ ($25 N$) và $F_2$ ($12 N$), hợp nhau góc $100^{\\circ}$. Bình phương độ lớn hợp lực $F_{12}$ của chúng là: $F_{12}^2 = F_1^2 + F_2^2 + 2F_1F_2 \\cos(100^{\\circ}) = 25^2 + 12^2 + 2 \\cdot 25 \\cdot 12 \\cdot \\cos(100^{\\circ}) = 625 + 144 + 600 \\cos(100^{\\circ}) = 769 + 600 \\cos(100^{\\circ})$.\nTính hợp lực tổng: Lực thứ ba $F_3$ ($4 N$) vuông góc với mặt phẳng chứa hai lực đầu nên nó vuông góc với hợp lực $F_{12}$. Bình phương độ lớn hợp lực tổng là: $F^2 = F_{12}^2 + F_3^2 = 769 + 600 \\cos(100^{\\circ}) + 4^2 = 769 + 600 \\cos(100^{\\circ}) + 16 = 785 + 600 \\cos(100^{\\circ})$.\nDo đó, $F = \\sqrt{785 + 600 \\cos(100^{\\circ})} N$.\nKết l …",
+  "co_hinh": true,
+  "nhan_cu": "Vectơ trong không gian › Một số mô hình toán thực tế liên quan đến Lực"
+ },
+ {
+  "ma_cau": "T112070105035",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$. Gọi $M$ và $P$ lần lượt là trung điểm của các cạnh $AB$ và $CD$. Đặt $\\vec{AB}=\\vec{b}$, $\\vec{AC}=\\vec{c}$, $\\vec{AD}=\\vec{d}$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$\\vec{MP}=\\dfrac{1}{2}(\\vec{c}+\\vec{d}+\\vec{b})$.",
+   "$\\vec{MP}=\\dfrac{1}{2}(\\vec{d}+\\vec{b}-\\vec{c})$.",
+   "$\\vec{MP}=\\dfrac{1}{2}(\\vec{c}+\\vec{b}-\\vec{d})$.",
+   "$\\vec{MP}=\\dfrac{1}{2}(\\vec{c}+\\vec{d}-\\vec{b})$.\n"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\vec{MP}=\\vec{AP}-\\vec{AM}$\nVì $P$ là trung điểm của $CD$ nên $\\vec{AP}=\\dfrac{1}{2}(\\vec{AC}+\\vec{AD})=\\dfrac{1}{2}(\\vec{c}+\\vec{d})$\nVì $M$ là trung điểm của $AB$ nên $\\vec{AM}=\\dfrac{1}{2}\\vec{AB}=\\dfrac{1}{2}\\vec{b}$\nVậy $\\vec{MP}=\\dfrac{1}{2}(\\vec{c}+\\vec{d})-\\dfrac{1}{2}\\vec{b}=\\dfrac{1}{2}(\\vec{c}+\\vec{d}-\\vec{b})$.\nChọn B.",
+  "nhan_cu": "Vectơ trong không gian › Dùng hệ thức trung điểm, trọng tâm để tính toán hoặc chứng minh."
+ },
+ {
+  "ma_cau": "T112070202095",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho vector $\\vec{u} = \\left( \\dfrac{1}{2};-1;1 \\right)$. Hãy biểu diễn vector $\\vec{u}$ theo các vector $\\vec{i}$, $\\vec{j}$, $\\vec{k}$.",
+  "lua_chon": [
+   "$\\vec{u} = \\dfrac{1}{2}\\vec{i} + \\vec{j} + \\vec{k}$.",
+   "$\\vec{u} = -\\dfrac{1}{2}\\vec{i} - \\vec{j} + \\vec{k}$.",
+   "$\\vec{u} = \\dfrac{1}{2}\\vec{i} + \\vec{j} - \\vec{k}$.",
+   "$\\vec{u} = \\dfrac{1}{2}\\vec{i} - \\vec{j} + \\vec{k}$.\n"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Trong hệ tọa độ $Oxyz$, mọi vector $\\vec{u}=(x;y;z)$ đều có thể biểu diễn dưới dạng\n$\\vec{u} = x\\vec{i} + y\\vec{j} + z\\vec{k}$.\nDo đó, với $\\vec{u} = \\left( \\dfrac{1}{2};-1;1 \\right)$ ta có $\\vec{u} = \\dfrac{1}{2}\\vec{i} - \\vec{j} + \\vec{k}$.",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T1120000007082",
+  "loai": "trac_nghiem",
+  "de": "Một cửa hàng tiện lợi thống kê số tiền (đơn vị: chục nghìn đồng) mà $44$ khách hàng mua hàng ở đó trong một ngày. Số liệu được ghi lại trong bảng sau:\n| Số tiền (chục nghìn đồng) | $[40;45)$ | $[45;50)$ | $[50;55)$ | $[55;60)$ | $[60;65)$ | $[65;70)$ |\n|---|---|---|---|---|---|---|\n| Số khách hàng | 4 | 14 | 8 | 10 | 6 | 2 |\nĐộ lệch chuẩn của mẫu số liệu ghép nhóm trên gần nhất với số nào sau đây?",
+  "lua_chon": [
+   "$6{,}79$",
+   "$6{,}69$",
+   "$6{,}59$",
+   "$6{,}89$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Cỡ mẫu $44$, giá trị đại diện $42{,}5;47{,}5;52{,}5;57{,}5;62{,}5;67{,}5$. Trung bình $\\bar x\\approx53{,}18$; phương sai $s^2\\approx46{,}13$; độ lệch chuẩn $s\\approx6{,}79$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000002844",
+  "loai": "trac_nghiem",
+  "de": "Hàm số nào dưới đây là một nguyên hàm của hàm số $f\\left( x \\right)=x+\\sin\\left( 2x+1 \\right)$?",
+  "lua_chon": [
+   "$F\\left( x \\right)=\\frac{1}{2}x^{2}-\\cos\\left( 2x+1 \\right)$.",
+   "$F\\left( x \\right)=\\frac{1}{2}x^{2}-2\\cos\\left( 2x+1 \\right)$.",
+   "$F\\left( x \\right)=\\frac{1}{2}x^{2}+\\frac{1}{2}\\cos\\left( 2x+1 \\right)$.",
+   "$F\\left( x \\right)=\\frac{1}{2}x^{2}-\\frac{1}{2}\\cos\\left( 2x+1 \\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "$\\left( \\frac{1}{2}x^{2}-\\cos\\left( 2x+1 \\right) \\right)^{\\prime}=x+2\\sin\\left( 2x+1 \\right)$.\n$\\left( \\frac{1}{2}x^{2}-2\\cos\\left( 2x+1 \\right) \\right)^{\\prime}=x+4\\sin\\left( 2x+1 \\right)$.\n$\\left( \\frac{1}{2}x^{2}+\\frac{1}{2}\\cos\\left( 2x+1 \\right) \\right)^{\\prime}=x-\\sin\\left( 2x+1 \\right)$.\n$\\left( \\frac{1}{2}x^{2}-\\frac{1}{2}\\cos\\left( 2x+1 \\right) \\right)^{\\prime}=x+\\sin\\left( 2x+1 \\right)$.\nVậy $F\\left( x \\right)=\\frac{1}{2}x^{2}-\\frac{1}{2}\\cos\\left( 2x+1 \\right)$là một nguyên hàm của hàm số $f\\left( x \\right)=x+\\sin\\left( 2x+1 \\right)$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112020301011",
+  "loai": "tra_loi_ngan",
+  "de": "Đồ thị trong hình bên dưới là của hàm số $y = ax + b + \\dfrac{1}{x + c}$\n[hình]\nKhi đó tổng $a + b + c$ bằng",
+  "dap_an": "3",
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan hệ số của hàm bậc hai trên bậc nhất"
+ },
+ {
+  "ma_cau": "T1120000002771",
+  "loai": "trac_nghiem",
+  "de": "Nguyên hàm của hàm số $f\\left( x \\right)=2^{x}$ là",
+  "lua_chon": [
+   "$2^{x}+C$.",
+   "$\\ln 2.2^{x}+C$.",
+   "$\\frac{2^{x}}{\\ln 2}+C$.",
+   "$\\frac{2^{x}}{x+1}+C$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Nguyên hàm của hàm số $f\\left( x \\right)=2^{x}$ là $\\frac{2^{x}}{\\ln 2}+C$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112020202011",
+  "loai": "trac_nghiem",
+  "de": "(THPT Trực Ninh - Nam Định 2025) Đường cong trong hình vẽ sau là đồ thị của hàm số nào dưới đây? [hình] Mô tả: Đồ thị hàm số có tiệm cận đứng $x=1$, tiệm cận ngang $y=1$.",
+  "lua_chon": [
+   "$y = \\dfrac{x^2 - x + 1}{x - 1}$",
+   "B. $y = \\dfrac{2x - 1}{x - 1}$",
+   "C. $y = \\dfrac{x + 1}{x - 1}$",
+   "D. $y = x^3 - 3x - 1$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Đồ thị trên của hàm số dạng $y = \\dfrac{ax+b}{cx+d}$. Tiệm cận ngang $y = 1 ->$ Chọn C",
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan đến đồ thị hàm số bậc nhất trên bậc nhất"
+ },
+ {
+  "ma_cau": "T112070102011",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian, cho ba vecto $\\vec{a},\\vec{b},\\vec{c}$ và số thực $k$. Khẳng định nào sau đây sai?",
+  "lua_chon": [
+   "$\\vec{a} \\cdot \\vec{b} = \\vec{b} \\cdot \\vec{a}$",
+   "$(k\\vec{a}) \\cdot \\vec{b} = (\\vec{a})^2 \\cdot (\\vec{b})^2$",
+   "$\\vec{a} \\cdot (\\vec{b} + \\vec{c}) = \\vec{a} \\cdot \\vec{b} + \\vec{a} \\cdot \\vec{c}$",
+   "$(k\\vec{a}) \\cdot \\vec{b} = k(\\vec{a} \\cdot \\vec{b}) = \\vec{a} \\cdot (k\\vec{b})$"
+  ],
+  "dap_an": "B",
+  "co_hinh": true,
+  "nhan_cu": "Vectơ trong không gian › Tính tích vô hướng giữa hai vecto khi biết góc"
+ },
+ {
+  "ma_cau": "T112000000721",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$có đáy $ABCD$ là hình bình hành. Gọi $M$, $N$ lần lượt là trung điểm của $SA$ và $SC$. Đường thẳng $MN$ song song với đường thẳng nào dưới đây?",
+  "lua_chon": [
+   "$BC$.",
+   "$BD$.",
+   "$AB$.",
+   "$AC$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Xét tam giác $SAC$, ta có $M$ là trung điểm của $SA$ và $N$ là trung điểm của $SC$.\nDo đó, $MN$ là đường trung bình của tam giác $SAC$.\nSuy ra $\\text{MN}\\parallel \\text{ AC}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112020104017",
+  "loai": "trac_nghiem",
+  "de": "(Cụm Ninh Giang - Tứ Kỳ - Gia Lộc 2025) Đường cong hình bên là đồ thị của một trong bốn hàm số dưới đây. Hàm số đó là hàm số nào? [hình]",
+  "lua_chon": [
+   "$y = -x^3 + 3x + 2$",
+   "$y = x^3 + x^2 + 1$",
+   "$y = x^3 - 3x + 2$",
+   "$y = x^2 + 1$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Đồ thị hàm số cắt trục tung tại 2 nên loại B và D.\nHàm số đồng biến trên khoảng $(1;+\\infty)$ nên loại#A.",
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan đến đồ thị hàm số bậc 3"
+ },
+ {
+  "ma_cau": "T1120000002798",
+  "loai": "trac_nghiem",
+  "de": "Phát biểu nào sau đây là đúng? Biết $f(x)=\\frac{1}{\\sin^{2}x}$ liên tục trên $[a;b]$.",
+  "lua_chon": [
+   "$\\int\\limits_{a}^{b} \\frac{1}{\\sin^{2}x}dx=\\cot a-\\cot b$.",
+   "$\\int\\limits_{a}^{b} \\frac{1}{\\sin^{2}x}\\ dx=\\cot b-\\cot a$.",
+   "$\\int\\limits_{a}^{b} \\frac{1}{\\sin^{2}x}\\ dx=\\tan a-\\tan b$.",
+   "$\\int\\limits_{a}^{b} \\frac{1}{\\sin^{2}x}\\ dx=\\tan b-\\tan a$."
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112070108013",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp $ABCD.EFGH$. Gọi $I$ là tâm hình bình hành $ABEF$ và $K$ là tâm hình bình hành $BCGF$. Trong các khẳng định sau, khẳng định nào đúng?",
+  "lua_chon": [
+   "$\\vec{BD}$, $\\vec{EK}$, $\\vec{GF}$ đồng phẳng.",
+   "$\\vec{BD}$, $\\vec{IK}$, $\\vec{GC}$ đồng phẳng.",
+   "$\\vec{BD}$, $\\vec{AK}$, $\\vec{GF}$ đồng phẳng.",
+   "$\\vec{BD}$, $\\vec{IK}$, $\\vec{GF}$ đồng phẳng."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Vectơ trong không gian › Điều kiện đồng phẳng giữa các vecto"
+ },
+ {
+  "ma_cau": "T1120000002743",
+  "loai": "tu_luan",
+  "de": "Gọi $\\left( H \\right)$ là phần giao của hai khối $\\frac{1}{4}$ hình trụ có bán kính $a$, hai trục hình trụ vuông góc với nhau như hình vẽ sau. Tính thể tích của khối $\\left( H \\right)$.",
+  "dap_an": "$V_{(H)}=\\dfrac{2a^3}{3}$",
+  "loi_giai": "• Đặt hệ toạ độ $Oxyz$ như hình vẽ, xét mặt cắt song song với mp $\\left( Oyz \\right)$ cắt trục $Ox$ tại $x$: thiết diện mặt cắt luôn là hình vuông có cạnh $\\sqrt{a^{2}-x^{2}}$ $\\left( 0\\le x\\le a \\right)$.\n• Do đó thiết diện mặt cắt có diện tích: $S\\left( x \\right)=a^{2}-x^{2}$.\n• Vậy $V_{\\left( H \\right)}=\\int\\limits_{0}^{a} S\\left( x \\right)\\text{d}x$$=\\int\\limits_{0}^{a} \\left( a^{2}-x^{2} \\right)\\text{d}x$$=\\left. \\left( a^{2}x-\\frac{x^{3}}{3} \\right) \\right|_{0}^{a}$$=\\frac{2a^{3}}{3}$.",
+  "co_hinh": true,
+  "nhan_cu": "Ứng dụng hình học của tích phân › Thể tích vật thể tính theo mặt cắt vuông góc trục hoành"
+ },
+ {
+  "ma_cau": "T1120000007498",
+  "loai": "tu_luan",
+  "de": "(1,0 điểm) Một chiếc xe đua đang chạy $180\\ \\mathrm{km/h}$. Tay đua nhấn ga để về đích kể từ đó xe chạy với gia tốc $a(t)=2t+1\\ (\\mathrm{m/s^2})$. Hỏi rằng $5$ s sau khi nhấn ga thì xe chạy với vận tốc bao nhiêu $\\mathrm{km/h}$.",
+  "dap_an": "$288$ km/h",
+  "loi_giai": "$v(t)=\\displaystyle\\int(2t+1)\\,\\mathrm dt=t^2+t+C$. Vận tốc ban đầu $180$ km/h $=50$ m/s nên $v(0)=50\\Rightarrow C=50$. Khi đó $v(5)=5^2+5+50=80$ m/s $=80\\cdot3{,}6=288$ km/h.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112070107037",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$ có hai mặt $ABC$ và $ABD$ là các tam giác đều. Khẳng định nào sau đây đúng nhất.",
+  "lua_chon": [
+   "$AB$ và $CD$ chéo nhau",
+   " $AB$ và $CD$ vuông góc với nhau",
+   " $AB$ và $CD$ đồng phẳng",
+   " $AB$ và $CD$ cắt nhau"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chọn B\nĐặt $AB = AD = AC = a$\nTa có $\\overrightarrow{CD}.\\overrightarrow{AB} = (\\overrightarrow{AD} - \\overrightarrow{AC})\\overrightarrow{AB} = |\\overrightarrow{AB}||\\overrightarrow{AD}|\\cos 60^o - |\\overrightarrow{AB}||\\overrightarrow{AC}|\\cos 60^o = a.a.\\dfrac{1}{2} - a.a.\\dfrac{1}{2} = 0$\nVậy $AB \\perp CD$.",
+  "nhan_cu": "Vectơ trong không gian › Tính góc giữa hai vecto trong một số hình đặc biệt"
+ },
+ {
+  "ma_cau": "T112070302009",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ toạ độ $Oxyz$, cho $\\vec{a}=(1;2;3)$, $\\vec{b}=(2;2;-1)$. Toạ độ $\\vec{a}-2\\vec{b}$ là:",
+  "lua_chon": [
+   "$(-3;-2;1)$.",
+   "$(3;2;5)$.",
+   "$(-3;-2;5)$.",
+   "$(-1;0;4)$.",
+   "D."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $2\\vec{b}=(4;4;-2)$.\nSuy ra $\\vec{a}-2\\vec{b}=(1-4;2-4;3-(-2))=(-3;-2;5)$.",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tính tổng, hiệu, tích của véc tơ với một số theo toạ độ"
+ },
+ {
+  "ma_cau": "T112010303022",
+  "loai": "trac_nghiem",
+  "de": "Tổng số đường tiệm cận đứng và tiệm cận ngang của đồ thị hàm số $y = \\dfrac{2x - 5}{x + 1}$ là:",
+  "lua_chon": [
+   "0",
+   "2",
+   "3",
+   "1"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Tập xác định của hàm số là $D = R \\setminus \\{-1\\}$.",
+  "nhan_cu": "Đường tiệm cận của đồ thị hàm số › Tìm tiệm cận đứng của hàm số"
+ },
+ {
+  "ma_cau": "T112020302013",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y = \\dfrac{ax^2 + bx + c}{mx + n}$ có đồ thị hàm số như hình vẽ: [hình vẽ đồ thị hàm số]. Tâm đối xứng của đồ thị hàm số đã cho là",
+  "lua_chon": [
+   "$I(1;2)$.",
+   "$J(-1;-2)$.",
+   "$K(1;1)$.",
+   "$O(0;0)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Chọn D Dựa vào đồ thị hàm số thấy giao của đường tiệm cận xiên và đường tiệm cận ngang của đồ thị hàm số giao nhau tại điểm $O(0;0)$ nên tâm đối xứng của đồ thị hàm số là điểm $O(0;0)$.",
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan đến đồ thị hàm bậc hai trên bậc nhất"
+ },
+ {
+  "ma_cau": "T1120000002855",
+  "loai": "tu_luan",
+  "de": "Thực hiện các yêu cầu sau:\na) Tính diện tích hình thang cong giới hạn bởi đồ thị hàm số $y=f\\left( x \\right)=2x-1$, trục hoành và hai đường thẳng $x=1,\\,x=3$.\nb) Tính diện tích hình thang cong giới hạn bởi đồ thị hàm số $y=f\\left( x \\right)=-x^{2}+4x$, trục hoành, trục tung và đường thẳng $x=2$.\nc) Tính diện tích hình thang cong giới hạn bởi đồ thị hàm số $y=f\\left( x \\right)=\\left( x+2 \\right)^{2}-1$, trục hoành và hai đường thẳng $x=1,\\,x=2$.\nd) Tính diện tích hình thang cong giới hạn bởi đồ thị hàm số$y=3^{x}$, trục hoành và hai đường thẳng $x=0$,$x=2$.",
+  "loi_giai": "a) Hàm số$y=f\\left( x \\right)=2x-1$ liên tục và dương trên đoạn $\\left[ 1;3 \\right]$ và có một nguyên hàm là$F\\left( x \\right)=x^{2}-x$\nDo đó diện tích hình thang cong cần tìm là $S=F\\left( 3 \\right)-F\\left( 1 \\right)=\\left( 3^{2}-3 \\right)-\\left( 1^{2}-1 \\right)=6$.\nb) Hàm số$y=f\\left( x \\right)=-x^{2}+4x$ liên tục, không âm trên đoạn $\\left[ 0;2 \\right]$ và có một nguyên hàm$F\\left( x \\right)=-\\frac{x^{3}}{3}+2x^{2}$.\nDo đó, diện tích hình thang cong cần tìm là $S=F(2)-F(0)=\\left( -\\frac{2^{3}}{3}+2.2^{2} \\right)-\\left( -\\frac{0^{3}}{3}+2.0^{2} \\right)=\\frac{16}{3}$\nc) Hàm số$y=f\\left( x \\right)=\\left( x+2 \\right)^{2}-1=x^{2}+4x+3$ liên tục và không âm trên đoạn$\\left[ 1;2 \\right]$ và có m …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112070101033",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$. Gọi $M,N$ lần lượt là trung điểm của $AD$ và $BC$. Tổng $\\vec{AB} + \\vec{DC}$ bằng",
+  "lua_chon": [
+   "$\\vec{0}$",
+   "$2\\vec{NM}$",
+   "$2\\vec{AD}$",
+   "$2\\vec{MN}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có:\n$\\vec{AB} + \\vec{DC} = (\\vec{AM} + \\vec{MN} + \\vec{NB}) + (\\vec{DM} + \\vec{MN} + \\vec{NC})$\n$= (\\vec{AM} + \\vec{DM}) + 2\\vec{MN} + (\\vec{NB} + \\vec{NC})$.\nVì $M,N$ lần lượt là trung điểm của $AD$ và $BC$ nên $\\vec{AM} + \\vec{DM} = \\vec{0}$ và $\\vec{NB} + \\vec{NC} = \\vec{0}$\nSuy ra $\\vec{AB} + \\vec{DC} = 2\\vec{MN}$.",
+  "nhan_cu": "Vectơ trong không gian › Tổng hiệu giữa các vecto"
+ },
+ {
+  "ma_cau": "T112070202096",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, gọi $M'$ là hình chiếu vuông góc của điểm $M(2;3;-1)$ trên trục $Oy$. Khi đó $\\overline{MM'}$ có tọa độ là",
+  "lua_chon": [
+   "$(0;2;3)$",
+   "$(3;0;0)$",
+   "$(-2;0;1)$",
+   "$(0;2;3)$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Hình chiếu vuông góc của điểm $M(2;3;-1)$ trên trục $Oy$ là điểm $M'(0;3;0)$.\nKhi đó ta có tọa độ vector $\\overline{MM'} = (0-2;3-3;0-(-1)) = (-2;0;1)$.",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112020202018",
+  "loai": "trac_nghiem",
+  "de": "(Sở Vũng Tàu 2025) Đường cong như hình vẽ dưới đây là đồ thị của hàm số nào? [hình]",
+  "lua_chon": [
+   "$y=\\dfrac{x-2}{x-1}$",
+   "$y=\\dfrac{x^2+2x-2}{x-1}$",
+   "$y=\\dfrac{-x^2+2x-2}{x-1}$",
+   "$y=\\dfrac{-x^2+x-2}{x-1}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Dựa vào đồ thị ta có tiệm cận xiên $y=-x+1$ do đó $-1=\\lim_{x \\to \\infty}\\dfrac{f(x)}{x}$ suy ra loại A,B.\nvà đồ thị hàm số đi qua điểm $(2;-2)$ nên chọn C.",
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan đến đồ thị hàm số bậc nhất trên bậc nhất"
+ },
+ {
+  "ma_cau": "T1120000007795",
+  "loai": "tu_luan",
+  "de": "Tìm $\\int\\left(\\sqrt{x}+2x+1\\right)\\mathrm{d}x$.",
+  "dap_an": "$\\dfrac23x\\sqrt x+x^2+x+C$",
+  "loi_giai": "$\\int\\left(x^{1/2}+2x+1\\right)\\mathrm{d}x=\\dfrac{x^{3/2}}{3/2}+x^2+x+C=\\dfrac23x\\sqrt x+x^2+x+C$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112070305012",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho hai điểm $A(1; 1; 2)$ và $B(3; 1; 0)$. Trung điểm của đoạn thẳng $AB$ có tọa độ là",
+  "lua_chon": [
+   "$(2; 1; 1)$",
+   "$(4; 2; 2).$",
+   "$(2; 0; -2).$",
+   "$(1; 0; -1).$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Gọi $M$ là trung điểm của đoạn thẳng $AB$.\nTọa độ điểm $M$ được xác định bởi: $x_M = \\dfrac{x_A+x_B}{2} = \\dfrac{1+3}{2} = 2$.\n$y_M = \\dfrac{y_A+y_B}{2} = \\dfrac{1+1}{2} = 1$.\n$z_M = \\dfrac{z_A+z_B}{2} = \\dfrac{2+0}{2} = 1$.\nVậy trung điểm $M$ có tọa độ là $(2; 1; 1).$",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Dùng hệ thức trung điểm, trọng tâm theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070101008",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $S.ABC$ với $M, N, P$ lần lượt là trung điểm của $SA, SB, SC$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$\\vec{AB} = \\vec{PN} - \\vec{PM}$",
+   "$\\vec{AB} = 2(\\vec{PM} - \\vec{PN})$",
+   "$\\vec{AB} = 2(\\vec{PN} - \\vec{PM})$",
+   "$\\vec{AB} = \\dfrac{1}{2}(\\vec{PN} - \\vec{PM})$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "$\\vec{PN} - \\vec{PM} = \\vec{MN} \\Rightarrow 2(\\vec{PN} - \\vec{PM}) = 2\\vec{MN} = \\vec{AB}$. Đáp án C đúng.",
+  "nhan_cu": "Vectơ trong không gian › Tổng hiệu giữa các vecto"
+ },
+ {
+  "ma_cau": "T112070307005",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho ba điểm $A(2;-1;0)$, $B(5;0;1)$, $C(3;2;-1)$. Tọa độ điểm $M$ thỏa mãn đẳng thức $6\\vec{MA} - 11\\vec{MB} + 9\\vec{MC} = \\vec{0}$ là",
+  "lua_chon": [
+   "$(4;-3;5)$",
+   "$(-3;-4;-5)$",
+   "$(-4;3;-5)$",
+   "$(4;3;-5)$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $6\\vec{MA} - 11\\vec{MB} + 9\\vec{MC} = \\vec{0} \\Leftrightarrow x_M = \\dfrac{6x_A - 11x_B + 9x_C}{6-11+9};... \\Rightarrow M(-4;3;-5)$. Chọn C.",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tìm điểm thoả mãn điều kiện cho trước hoặc cực trị hình học (tâm tỉ cự)"
+ },
+ {
+  "ma_cau": "T1120000002663",
+  "loai": "tra_loi_ngan",
+  "de": "Bạn An thực hiện thiết kế một logo hình con mắt cho một phòng khám nhãn khoa. Logo là một hình phẳng giới hạn bởi hai parabol $y=f\\left( x \\right)$ và $y=g\\left( x \\right)$ có các kích thước như hình vẽ dưới đây (phần được tô màu đen) và một hình tròn có bán kính bằng $0,5$dm ở giữa là phần con ngươi (phần được tô màu xanh), đơn vị trên mỗi trục tọa độ là decimet. Biết rằng chi phí để sơn phần con ngươi hình tròn màu xanh là $25\\,000$đồng/dm2 và chi phí để sơn phần còn lại màu đen là $20\\,000$ đồng/dm2. Chi phí để sơn logo trên là bao nhiêu nghìn đồng? (Kết quả làm tròn đến hàng đơn vị).",
+  "dap_an": "200",
+  "loi_giai": "Gọi phương trình parabol $y=f\\left( x \\right)$ là $f\\left( x \\right)=ax^{2}+bx+c$ với $a\\ne 0$ đi qua các điểm có tọa độ lần lượt là $\\left( 2;\\,1 \\right),\\,\\left( 0;\\,2 \\right),\\,\\left( -2;\\,1 \\right)$.\nLập hệ phương trình ba ẩn, từ đó suy ra được $\\left\\{ \\begin{array}{l} a=-\\frac{1}{4} \\\\ b=0 \\\\ c=2 \\end{array} \\right.$ nên $f\\left( x \\right)=-\\frac{1}{4}x^{2}+2$\nGọi phương trình parabol $y=g\\left( x \\right)$ là $g\\left( x \\right)=mx^{2}+nx+p$ với $m\\ne 0$ đi qua các điểm có tọa độ lần lượt là $\\left( -2;\\,0 \\right),\\,\\left( 0;\\,-1 \\right),\\,\\left( 2;\\,0 \\right)$.\nLập hệ phương trình ba ẩn, từ đó suy ra được $\\left\\{ \\begin{array}{l} m=\\frac{1}{4} \\\\ n=0 \\\\ p=-1 \\end{array} \\right.$ nên $ …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112000000031",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty thiết kế một bảng quảng cáo có dạng hình chữ nhật $ABCD$có kích thước $AB=10 m,AD=6 m$. Nội dung quảng cáo được mô tả trong phần tô đậm với hai đường cong trong hình là một phần của đồ thị hàm số $\\left(C\\right)$ có dạng $y=\\dfrac{ax+b}{cx+d}$ (hình minh họa). Khoảng cách từ điểm $A$ đến đường tiệm cận đứng và đường tiệm cận ngang của đồ thị hàm số $\\left(C\\right)$ bằng $3 m$. Đồ thị hàm số $\\left(C\\right)$ cắt cạnh $AB$ tại điểm $E$ thỏa mãn $\\dfrac{AE}{AB}=\\dfrac{2}{5}$. Diện tích phần nội dung quảng cáo là bao nhiêu mét vuông? (Kết quả làm tròn đến hàng phần mười)",
+  "dap_an": "45.1",
+  "loi_giai": "Chọn hệ trục tọa độ $Oxy$ sao cho $A\\left(0;0\\right)$, $B\\left(10;0\\right)$, $D\\left(0;6\\right)$ và $C\\left(10;6\\right)$.\nTheo giả thiết, đồ thị $\\left(C\\right)$ có đường tiệm cận đứng là $x=3$ và đường tiệm cận ngang là $y=3$.\nDo đó hàm số có dạng $y=\\dfrac{3x+b}{x-3}$.\nĐiểm $E$ thuộc đoạn $AB$ và $\\dfrac{AE}{AB}=\\dfrac{2}{5}\\Rightarrow AE=4$, suy ra tọa độ điểm $E$ là $\\left(4;0\\right)$.\nĐồ thị $\\left(C\\right)$ đi qua $E\\left(4;0\\right)$ nên ta có $0=\\dfrac{3\\cdot 4+b}{4-3}\\Rightarrow b=-12$.\nVậy hàm số là $y=\\dfrac{3x-12}{x-3}=3-\\dfrac{3}{x-3}$.\nĐồ thị $\\left(C\\right)$ cắt cạnh $AD$ tại điểm có tung độ $y\\left(0\\right)=4$.\nĐồ thị $\\left(C\\right)$ cắt cạnh $CD$ tại điểm có hoành độ thỏa mã …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

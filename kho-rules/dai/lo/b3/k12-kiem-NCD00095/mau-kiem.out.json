@@ -1,0 +1,22 @@
+[
+{"ma_cau":"T1120000002754","dang_bai_id":"NDB00743","chac":"cao","ly_do":"Nguyên hàm sin^2x bằng hạ bậc, khớp ví dụ dạng nguyên hàm lượng giác."},
+{"ma_cau":"T1120000002888","dang_bai_id":"NDB00781","chac":"cao","ly_do":"Quay nửa đường tròn quanh Ox thành khối cầu, khớp ví dụ hình quen thuộc; dạng sau thắng so với khuyết cận."},
+{"ma_cau":"T1120000002591","dang_bai_id":"NDB00779","chac":"cao","ly_do":"Đề cho sẵn công thức diện tích thiết diện S(x), lắp V=∫S(x)dx."},
+{"ma_cau":"T1120000007208","dang_bai_id":"NDB00760","chac":"cao","ly_do":"Cho chi phí cận biên và C(0), tính giá trị C(98); dạng sau thắng so với NDB00750/NDB00759."},
+{"ma_cau":"T1120000002900","dang_bai_id":"NDB00747","chac":"vua","ly_do":"Dùng định nghĩa F'=f để tìm f; có thể xem là nguyên hàm hàm mũ NDB00745."},
+{"ma_cau":"T1120000007387","dang_bai_id":"NDB00751","chac":"cao","ly_do":"Chọn khẳng định sai về tính chất cận (∫a^a, đảo cận, nối cận, đổi biến)."},
+{"ma_cau":"T1120000002786","dang_bai_id":"NDB00742","chac":"cao","ly_do":"Nguyên hàm hằng số e là ex+C, công thức ∫k dx của hàm đa thức."},
+{"ma_cau":"T1120000002901","dang_bai_id":"NDB00746","chac":"cao","ly_do":"Tìm nguyên hàm thỏa F(0)=1 để xác định hằng số C."},
+{"ma_cau":"T1120000002842","dang_bai_id":"NDB00743","chac":"cao","ly_do":"Hạ bậc 2cos^2(x/2)=1+cos x, khớp ví dụ nguyên hàm lượng giác."},
+{"ma_cau":"T1120000002769","dang_bai_id":"NDB00745","chac":"cao","ly_do":"Nguyên hàm tổng lũy thừa và e^x; dạng sau thắng chọn hàm mũ."},
+{"ma_cau":"T1120000002912","dang_bai_id":"NDB00780","chac":"cao","ly_do":"Hình nêm: tự dựng thiết diện tam giác và xây S(x) rồi tích phân."},
+{"ma_cau":"T1120000002603","dang_bai_id":"NDB00635","chac":"cao","ly_do":"Quay miền giữa y=x^2 và y=2x quanh Ox, không cho cận, tự tìm giao điểm."},
+{"ma_cau":"T1120000002697","dang_bai_id":"NDB00779","chac":"cao","ly_do":"Thiết diện hình tròn bán kính R(x) cho sẵn, S(x)=πR^2, V=∫S(x)dx."},
+{"ma_cau":"T1120000007783","dang_bai_id":"NDB00760","chac":"vua","ly_do":"Cho chi phí, doanh thu cận biên, tính lợi nhuận tại x=8; NDB00759 doanh thu cũng hợp."},
+{"ma_cau":"T1120000002859","dang_bai_id":"NDB00754","chac":"cao","ly_do":"Tích phân 1/(x+2), hàm phân thức cơ bản, khớp ví dụ."},
+{"ma_cau":"T1120000002811","dang_bai_id":"NDB00628","chac":"cao","ly_do":"Hàm cho bởi hai công thức, tách cận tại x=1, khớp ví dụ."},
+{"ma_cau":"T1120000007513","dang_bai_id":"NDB00756","chac":"cao","ly_do":"Cho gia tốc và vận tốc đầu, tính quãng đường bằng tích phân; dạng sau thắng."},
+{"ma_cau":"T1120000002837","dang_bai_id":"NDB00742","chac":"cao","ly_do":"Khai triển (x+1)(x+2) rồi lấy nguyên hàm đa thức, khớp ví dụ."},
+{"ma_cau":"T1120000002821","dang_bai_id":"NDB00746","chac":"cao","ly_do":"Nguyên hàm có điều kiện F(0)=0, F(3)=7 để tìm C và m."},
+{"ma_cau":"T1120000002667","dang_bai_id":"NDB00786","chac":"cao","ly_do":"Thể tích phần giao hai khối trụ vuông góc, khớp ví dụ dạng giao nhau."}
+]
