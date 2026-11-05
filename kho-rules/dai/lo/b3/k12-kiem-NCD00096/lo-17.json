@@ -1,0 +1,43 @@
+[
+ {
+  "ma_cau": "T1120000002784",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề nào sau đây là sai ?",
+  "lua_chon": [
+   "$\\int a^{x}\\text{d}x=\\frac{a^{x}}{\\ln a}+C\\,\\,\\left( 0<a\\ne 1 \\right)$.",
+   "$\\int \\sin x\\,\\text{d}x=\\cos x+C$.",
+   "$\\int \\frac{1}{x}\\,\\text{d}x=\\ln\\left| x \\right|+C\\,\\,\\,\\left( x\\ne 0 \\right)$.",
+   "$\\int e^{x}\\text{d}x=e^{x}+C$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Vì $\\int \\sin x\\,\\text{d}x=-\\cos x+C$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000002841",
+  "loai": "trac_nghiem",
+  "de": "Nguyên hàm của hàm số $f\\left( x \\right)=\\left( \\cos\\frac{x}{2}+\\sin\\frac{x}{2} \\right)^{2}$ là:",
+  "lua_chon": [
+   "$\\sin\\frac{x}{2}-\\cos\\frac{x}{2}+C$.",
+   "$x-\\cos x+C$.",
+   "$\\left( \\sin\\frac{x}{2}-\\cos\\frac{x}{2} \\right)^{2}+C$.",
+   "$\\sin\\frac{x}{2}+\\cos\\frac{x}{2}+C$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\int f\\left( x \\right)\\text{d}x=\\int \\left( \\cos\\frac{x}{2}+\\sin\\frac{x}{2} \\right)^{2}\\text{d}x=\\int \\left( \\cos^{\\text{2}}\\frac{x}{2}+\\sin^{2}\\frac{x}{2}+2\\cos\\frac{x}{2}.\\sin\\frac{x}{2} \\right)\\text{d}x$\n$=\\int \\left( 1+\\sin x \\right)\\text{d}x=\\int \\text{d}x+\\int \\sin x\\text{d}x=x-\\cos x+C$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000002802",
+  "loai": "trac_nghiem",
+  "de": "Tích phân $\\int\\limits_{1}^{2} \\frac{1}{x\\sqrt{x}}\\ dx$ có giá trị bằng:",
+  "lua_chon": [
+   "$2-\\sqrt{2}$.",
+   "$2+\\sqrt{2}$.",
+   "$\\frac{-\\sqrt{2}+8}{20}$.",
+   "$\\frac{-\\sqrt{2}-8}{20}$."
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

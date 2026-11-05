@@ -1,0 +1,5 @@
+[
+ {"ma_cau": "T1120000002784", "dang_bai_id": "NDB00743", "chac": "vua", "ly_do": "Chọn mệnh đề sai về bảng nguyên hàm; phương án sai là ∫sin x (lượng giác), nhưng đề trộn mũ, 1/x, lượng giác."},
+ {"ma_cau": "T1120000002841", "dang_bai_id": "NDB00743", "chac": "cao", "ly_do": "Nguyên hàm hàm lượng giác: khai triển bình phương, dùng sin x cos x = sin(2·x/2), tích phân sin x."},
+ {"ma_cau": "T1120000002802", "dang_bai_id": "NDB00754", "chac": "cao", "ly_do": "Tích phân 1/(x√x) là phân thức đưa về lũy thừa x^(-3/2); dạng phân thức đứng sau đa thức."}
+]

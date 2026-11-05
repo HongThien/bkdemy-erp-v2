@@ -78828,3 +78828,9 @@ Thùy nêu 4 việc, làm được 3:
 - Lỗi: 60 ví dụ viết `##VD Ví dụ 1. đề…` cùng dòng ⇒ `parseLyThuyetBlocks` coi phần sau tag là TIÊU ĐỀ rồi ghi đè "Ví dụ N" ⇒ đề mất, chỉ còn lời giải. Do agent soạn không đọc kỹ spec-format-noidung (##VD phải trần, đề dòng kế).
 - Sửa: `kho-rules/dai/lo/k10-hs/sua-vd-tag.mjs --ghi` → `##VD` riêng dòng, đề dòng kế, "Bài giải:" riêng dòng; sửa luôn `ra/cd1..4.json`. 30/31 dạng (1 dạng Thùy tự thêm, không cần sửa).
 - Bài học: agent soạn LT/VD phải được dặn ĐÚNG khuôn thẻ; ##ĐL/ĐN/TC/PP/CY kèm tiêu đề cùng dòng là hợp lệ, riêng ##VD/##BT thì KHÔNG.
+
+## 05/11 — [K12] ỐP bản đồ 5 chương đã xây: phân dạng 1.123 câu chưa gán (ĐÃ GHI + duyệt)
+- **Thùy:** "ốp bản đồ các chương m đã xây đi". `bdm-b3-xuat-lo.mjs 12 --dot k12-op` (không `--chu-de`): 175 dạng (HS 77 · NHTP 41 · VT 32 · XS 15 · SDT 10), **1.123 câu** chưa gán, 17 lô ≤70. Cổng "đọc đủ mô tả/LT/ví dụ" qua. 17 agent Sonnet; **mọi agent (trừ lô 17 chỉ 3 câu) báo KHÔNG đọc hết dich.md 716KB** (≈390k token): chỉ đọc mô tả 175 dạng + lý thuyết/ví dụ chọn lọc.
+- **Kiểm mù Opus theo chương:** mỗi chương 1 dich riêng (372/88/156/48/48 KB), mẫu cao ổn định md5: HS 30 · NHTP 20 · VT 15 · XS 15 · SDT 15 = 95 câu ⇒ **trùng 95/95** (Opus hạ vài câu xuống "vừa" vì đề lỗi, dạng vẫn trùng). Chấp nhận.
+- **Ghi (`khop-lai-hang --ghi`):** cao 812 → `dai_bdm_gan_cau` (nguon ai) · vừa 240 → `de_xuat` · trống 71 → `cau_thieu_dang` (Oxyz/HGT, lớp 10–11, thiếu dạng). Rồi `duyet-cao-moi-khoi.mjs --ghi`: **681 câu duyệt**; 131 câu cao chưa duyệt (thiếu đáp án). Phân bố cao theo chương: HS 232 · NHTP 268 · VT 268 · XS 21 · SDT 23.
+- **Cho Thùy:** 240 vừa + 71 trống; NDB00751/752 mô tả đảo; thiếu dạng đổi biến + hàm ẩn; Vectơ nhận 268 câu cao — đáng soi mẫu bằng mắt (nhiều câu lực/vận tốc, Oxyz thuần).

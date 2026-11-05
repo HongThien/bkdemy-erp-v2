@@ -1,0 +1,17 @@
+[
+{"ma_cau":"T1120000007790","dang_bai_id":"NDB02574","chac":"cao","ly_do":"Chọn công thức xác suất toàn phần đúng trong 4 phương án."},
+{"ma_cau":"T1120000005556","dang_bai_id":"NDB02580","chac":"cao","ly_do":"Xét nghiệm dương tính, hỏi xác suất mắc bệnh: toàn phần rồi Bayes hai nhóm."},
+{"ma_cau":"T1120000007465","dang_bai_id":"NDB02581","chac":"vua","ly_do":"Chuyển bóng giữa hộp rồi lấy hai quả, tính xác suất có điều kiện qua các nhánh; gần cả NDB02577."},
+{"ma_cau":"T1120000007789","dang_bai_id":"NDB02573","chac":"cao","ly_do":"A, B độc lập suy ra P(A|B)=P(A); chọn khẳng định đúng về tính độc lập."},
+{"ma_cau":"T1120000007784","dang_bai_id":"NDB02581","chac":"cao","ly_do":"Chuyển bóng sang hộp II, biết quả lấy ra màu đỏ, hỏi xác suất là quả được chuyển: Bayes sau chuyển hộp."},
+{"ma_cau":"T1120000004890","dang_bai_id":"NDB02568","chac":"cao","ly_do":"Thay P(AB), P(A) cho sẵn vào công thức tính P(B|A)."},
+{"ma_cau":"T112080201009","dang_bai_id":"NDB02577","chac":"cao","ly_do":"Lấy bi từ hai hộp, dồn phần còn lại sang hộp ba rồi lấy tiếp; hệ đầy đủ là kết quả lần chuyển."},
+{"ma_cau":"T1120000007845","dang_bai_id":"NDB02570","chac":"cao","ly_do":"Bảng hai chiều thuốc–kết quả, lấy ô giao chia tổng cột điều kiện."},
+{"ma_cau":"T1120000007778","dang_bai_id":"NDB02568","chac":"cao","ly_do":"Cho P(A|B) hỏi P(B|A), đổi chiều qua P(AB) với số cho sẵn."},
+{"ma_cau":"T1120000007777","dang_bai_id":"NDB02574","chac":"cao","ly_do":"Chọn dạng đúng của công thức xác suất toàn phần với hệ A, Ā."},
+{"ma_cau":"T112080201005","dang_bai_id":"NDB02578","chac":"cao","ly_do":"Giải đấu tennis nhiều trận, phân trường hợp ghép cặp rồi cây nhiều tầng."},
+{"ma_cau":"T112000000445","dang_bai_id":"NDB02578","chac":"vua","ly_do":"Trò chơi thả bóng nhiều lần kết hợp tổ hợp; đề phụ thuộc hình, ít dùng xác suất có điều kiện."},
+{"ma_cau":"T1120000005629","dang_bai_id":"NDB02571","chac":"cao","ly_do":"Đếm trên nhóm nữ thu hẹp (17 bạn); hợp cả NDB02570, dạng sau thắng."},
+{"ma_cau":"T112080201010","dang_bai_id":"NDB02577","chac":"cao","ly_do":"Chuyển thỏ từ chuồng II sang chuồng I rồi lấy tiếp, công thức toàn phần."},
+{"ma_cau":"T1120000007837","dang_bai_id":"NDB02568","chac":"cao","ly_do":"Thay P(AB), P(B) cho sẵn vào P(A|B)=P(AB)/P(B)."}
+]
