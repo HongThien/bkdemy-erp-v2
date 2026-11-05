@@ -63,6 +63,13 @@ export async function hhCau(maBai: string): Promise<HhCauKho[]> {
   if (error) throw error
   return (data ?? []) as HhCauKho[]
 }
+/** Câu KHO TRÊN LỚP của 1 bài học (mig 202611051603/1610) — bài giảng rồi luyện trên lớp, đúng chuỗi thứ tự của kho. */
+export type HhCauLop = Omit<HhCauKho, 'la_goc'> & { vai: 'giang' | 'luyen' }
+export async function hhCauLop(maBai: string): Promise<HhCauLop[]> {
+  const { data, error } = await supabase.rpc('fn_hh_lop_cua_bai', { p_ma_bai: maBai })
+  if (error) throw error
+  return (data ?? []) as HhCauLop[]
+}
 /** Đặt tập bài học của 1 buổi (thứ tự = mảng; bài mới tự gợi ý câu luyện + BTVN). Trả lại buổi để vá tại chỗ. */
 export async function hhDatBai(taiLieuId: string, buoiId: string, maBai: string[]): Promise<CdhPhan> {
   const { data, error } = await supabase.rpc('fn_tl_hh_dat_bai', { p_tai_lieu: taiLieuId, p_buoi: buoiId, p_bai: maBai })

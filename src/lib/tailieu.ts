@@ -2,7 +2,7 @@
 import { supabase } from './supabase'
 import { cumKey, listCauByDang, listDaiMap, listKhtnMap, listHgtMap, listAnhMap, listTsaMap, listBdmMap, khoiChayBanDoMoi, type CauHoi, type MapRow } from './kho/api'
 import { listHinhHocMap } from './kho/hinhhoc'
-import { laMaLop } from './kho/khoTrenLop'
+import { laMaLop, bangLopCuaMa } from './kho/khoTrenLop'
 
 const LIMIT = 10000
 
@@ -103,15 +103,15 @@ export const cauTblCuaCau = (tl: TaiLieuNhanhCtx, maCau: string): string => khoC
 // Nạp nội dung câu của 1 tài liệu theo đúng kho từng câu — gom theo BẢNG, 1 query/bảng (không N+1).
 export async function fetchCausCuaTaiLieu(tl: TaiLieuNhanhCtx, maCaus: string[]): Promise<CauHoi[]> {
   const byTbl = new Map<string, string[]>()
-  const lop: string[] = []   // câu KHO TRÊN LỚP (mã 'LOP…', mig 202610221458) — bảng riêng, GV trộn với kho luyện trong cùng tài liệu
+  const lop = new Map<string, string[]>()   // câu KHO TRÊN LỚP (mã 'LOP…' Đại · 'HHL…' Hình) — bảng riêng theo nhánh, GV trộn với kho luyện trong cùng tài liệu
   for (const ma of new Set(maCaus)) {
     if (laMaHinh(ma)) continue   // hàng Hình không ở kho câu
-    if (laMaLop(ma)) { lop.push(ma); continue }
+    if (laMaLop(ma)) { const b = bangLopCuaMa(ma); lop.set(b, [...(lop.get(b) ?? []), ma]); continue }
     const t = cauTblCuaCau(tl, ma); byTbl.set(t, [...(byTbl.get(t) ?? []), ma])
   }
   const out: CauHoi[] = []
-  if (lop.length) {
-    const { data, error } = await supabase.from('dai_cau_lop').select('*').in('ma_cau', lop).limit(LIMIT)
+  for (const [bang, mas] of lop) {
+    const { data, error } = await supabase.from(bang).select('*').in('ma_cau', mas).limit(LIMIT)
     if (error) throw error
     // khuôn CauHoi để mọi chỗ render (builder, in, xem trước) dùng chung — dang_chinh = dạng bài bản đồ mới
     out.push(...((data ?? []) as Record<string, unknown>[]).map((r) => ({

@@ -1,12 +1,12 @@
-// KHO TRÊN LỚP của 1 dạng bài (Đại — Thùy 22/10): 2 chuỗi Bài giảng · Luyện trên lớp. Thêm / sửa / xếp thứ tự / đổi vai /
+// KHO TRÊN LỚP của 1 dạng bài (Đại — Thùy 22/10; Hình–Học: bài học — Thùy 05/11, `nhanh="hinh_hoc"`): 2 chuỗi Bài giảng · Luyện trên lớp. Thêm / sửa / xếp thứ tự / đổi vai /
 // bỏ (kho rác) / chép từ kho luyện. Mutation vá tại chỗ (CLAUDE.md §2), không tải lại cả danh sách.
 import { useEffect, useState } from 'react'
 import { MathText, LoiGiaiXem, inp } from './ui'
 import { uploadKhoImage } from '../../lib/kho/api'
-import { getKhoCau, type KhoCauRow } from '../../lib/kho/banDoMoi'
+import type { KhoCauRow } from '../../lib/kho/banDoMoi'
 import {
-  cauLopCuaDang, themCauLop, suaCauLop, boCauLop, xepCauLop, chepTuKhoLuyen, NHAN_VAI,
-  type CauLop, type CauLopNhap, type VaiLop,
+  cauLopCuaDang, themCauLop, suaCauLop, boCauLop, xepCauLop, chepTuKhoLuyen, khoLuyenCuaDang, NHAN_VAI,
+  type CauLop, type CauLopNhap, type VaiLop, type NhanhLop,
 } from '../../lib/kho/khoTrenLop'
 
 const NHAN_LOAI: Record<string, string> = { tu_luan: 'Tự luận', trac_nghiem: 'Trắc nghiệm', tra_loi_ngan: 'Trả lời ngắn', dung_sai: 'Đúng/Sai' }
@@ -16,14 +16,14 @@ const MAU: Record<VaiLop, { dau: string; vien: string; nut: string }> = {
   luyen: { dau: 'bg-sky-600', vien: 'border-sky-200', nut: 'text-sky-700 border-sky-300 hover:bg-sky-50' },
 }
 
-export default function KhoTrenLopModal({ dangBaiId, ten, onDong }: { dangBaiId: string; ten: string; onDong: (doi: boolean) => void }) {
+export default function KhoTrenLopModal({ dangBaiId, ten, onDong, nhanh = 'dai' }: { dangBaiId: string; ten: string; onDong: (doi: boolean) => void; nhanh?: NhanhLop }) {
   const [rows, setRows] = useState<CauLop[] | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
   const [dangLam, setDangLam] = useState(false)
   const [soan, setSoan] = useState<{ vai: VaiLop; cau: CauLop | null } | null>(null)   // cau null = thêm mới
   const [chep, setChep] = useState<VaiLop | null>(null)
   const [doi, setDoi] = useState(false)   // có ghi gì ⇒ báo cha tải lại số đếm
-  useEffect(() => { setRows(null); cauLopCuaDang(dangBaiId).then(setRows).catch((e) => setLoi(e.message ?? String(e))) }, [dangBaiId])
+  useEffect(() => { setRows(null); cauLopCuaDang(dangBaiId, nhanh).then(setRows).catch((e) => setLoi(e.message ?? String(e))) }, [dangBaiId, nhanh])
   useEffect(() => {
     const f = (e: KeyboardEvent) => { if (e.key === 'Escape' && !soan && !chep) onDong(doi) }
     window.addEventListener('keydown', f); return () => window.removeEventListener('keydown', f)
@@ -36,7 +36,7 @@ export default function KhoTrenLopModal({ dangBaiId, ten, onDong }: { dangBaiId:
   const chuoi = (vai: VaiLop) => (rows ?? []).filter((r) => r.vai === vai).sort((a, b) => a.thu_tu - b.thu_tu)
   // đặt lại chuỗi `vai` = ds (thứ tự mới) — vá tại chỗ
   const datChuoi = (vai: VaiLop, ds: CauLop[]) => lam(async () => {
-    await xepCauLop(dangBaiId, vai, ds.map((x) => x.ma_cau))
+    await xepCauLop(dangBaiId, vai, ds.map((x) => x.ma_cau), nhanh)
     const moi = new Map(ds.map((x, i) => [x.ma_cau, { ...x, vai, thu_tu: i }]))
     setRows((prev) => (prev ?? []).map((r) => moi.get(r.ma_cau) ?? r))
   })
@@ -89,14 +89,14 @@ export default function KhoTrenLopModal({ dangBaiId, ten, onDong }: { dangBaiId:
         <SoanCau vai={soan.vai} cau={soan.cau} onHuy={() => setSoan(null)}
           onLuu={(nhap) => lam(async () => {
             if (soan.cau) { const r = await suaCauLop(soan.cau.ma_cau, nhap); setRows((prev) => (prev ?? []).map((x) => x.ma_cau === r.ma_cau ? r : x)) }
-            else { const r = await themCauLop(dangBaiId, soan.vai, nhap); setRows((prev) => [...(prev ?? []), r]) }
+            else { const r = await themCauLop(dangBaiId, soan.vai, nhap, nhanh); setRows((prev) => [...(prev ?? []), r]) }
             setSoan(null)
           })} />
       )}
       {chep && (
-        <ChepTuKho dangBaiId={dangBaiId} vai={chep} daChep={new Set((rows ?? []).map((r) => r.nguon_ma_cau).filter(Boolean) as string[])}
+        <ChepTuKho dangBaiId={dangBaiId} nhanh={nhanh} vai={chep} daChep={new Set((rows ?? []).map((r) => r.nguon_ma_cau).filter(Boolean) as string[])}
           onHuy={() => setChep(null)}
-          onChep={(mas) => lam(async () => { const r = await chepTuKhoLuyen(dangBaiId, chep, mas); setRows((prev) => [...(prev ?? []), ...r]); setChep(null) })} />
+          onChep={(mas) => lam(async () => { const r = await chepTuKhoLuyen(dangBaiId, chep, mas, nhanh); setRows((prev) => [...(prev ?? []), ...r]); setChep(null) })} />
       )}
     </div>
   )
@@ -234,11 +234,11 @@ function SoanCau({ vai, cau, onHuy, onLuu }: { vai: VaiLop; cau: CauLop | null; 
   )
 }
 
-function ChepTuKho({ dangBaiId, vai, daChep, onHuy, onChep }: { dangBaiId: string; vai: VaiLop; daChep: Set<string>; onHuy: () => void; onChep: (mas: string[]) => void }) {
+function ChepTuKho({ dangBaiId, nhanh, vai, daChep, onHuy, onChep }: { dangBaiId: string; nhanh: NhanhLop; vai: VaiLop; daChep: Set<string>; onHuy: () => void; onChep: (mas: string[]) => void }) {
   const [rows, setRows] = useState<KhoCauRow[] | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
   const [chon, setChon] = useState<string[]>([])   // thứ tự bấm = thứ tự chép
-  useEffect(() => { getKhoCau('dang_bai', dangBaiId, 'tat_ca', 200, 0).then(setRows).catch((e) => setLoi(e.message ?? String(e))) }, [dangBaiId])
+  useEffect(() => { khoLuyenCuaDang(dangBaiId, nhanh).then(setRows).catch((e) => setLoi(e.message ?? String(e))) }, [dangBaiId, nhanh])
   const bat = (m: string) => setChon((x) => (x.includes(m) ? x.filter((y) => y !== m) : [...x, m]))
   return (
     <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/40 p-6 max-md:p-0" onClick={(e) => { e.stopPropagation(); onHuy() }}>

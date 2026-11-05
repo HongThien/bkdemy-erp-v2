@@ -16,6 +16,8 @@ import {
 import type { MapRow, LyThuyet } from '../../../lib/kho/api'
 import type { BranchConfig, LyThuyetApi } from '../branches'
 import { getKhoCauHinh } from '../../../lib/kho/banDoMoi'
+import { demLopTheoDang } from '../../../lib/kho/khoTrenLop'
+import KhoTrenLopModal from '../KhoTrenLopModal'
 import DangHub from '../DangHub'
 import { LyThuyetModal } from '../BanDo'
 import { Code, inp } from '../ui'
@@ -69,6 +71,8 @@ export default function KhoHinhHocScreen({ khoi, chuDeId, tenChuDe, onMoKho, kho
   const [viDus, setViDus] = useState<Record<string, LyThuyet>>({})
   const [vdBai, setVdBai] = useState<HinhHocBai | null>(null)                   // Bài đang mở LyThuyetModal để sửa VÍ DỤ
   const [moTaBai, setMoTaBai] = useState<HinhHocBai | null>(null)               // Bài đang sửa MÔ TẢ
+  const [demLop, setDemLop] = useState<Record<string, { giang: number; luyen: number }>>({})   // kho trên lớp theo bài (Thùy 05/11)
+  const [lopBai, setLopBai] = useState<HinhHocBai | null>(null)                 // Bài đang mở KHO TRÊN LỚP
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
   const [openBai, setOpenBai] = useState<HinhHocBai | null>(null)               // Bài đang mở DangHub
@@ -79,8 +83,8 @@ export default function KhoHinhHocScreen({ khoi, chuDeId, tenChuDe, onMoKho, kho
   async function reload() {
     setLoading(true); setErr(null)
     try {
-      const [bs, cn, lt, vd] = await Promise.all([listHinhHocBai(khoi), countHinhHocCauByBai(khoi), listHinhHocLyThuyet(), listHinhHocViDu()])
-      setBais(bs); setCounts(cn); setLyThuyets(lt); setViDus(vd)
+      const [bs, cn, lt, vd, dl] = await Promise.all([listHinhHocBai(khoi), countHinhHocCauByBai(khoi), listHinhHocLyThuyet(), listHinhHocViDu(), demLopTheoDang(khoi, 'hinh_hoc')])
+      setBais(bs); setCounts(cn); setLyThuyets(lt); setViDus(vd); setDemLop(dl)
     } catch (e: any) { setErr(e.message ?? String(e)) }
     finally { setLoading(false) }
   }
@@ -164,6 +168,7 @@ export default function KhoHinhHocScreen({ khoi, chuDeId, tenChuDe, onMoKho, kho
               <BaiCard key={b.ma_bai} bai={b} thuTuHienThi={i + 1}
                 soCau={counts[b.ma_bai] ?? 0} coLyThuyet={!!(lyThuyets[b.ma_bai]?.noi_dung?.trim() || lyThuyets[b.ma_bai]?.file_url)}
                 coViDu={!!(viDus[b.ma_bai]?.noi_dung?.trim() || viDus[b.ma_bai]?.file_url)}
+                soLop={demLop[b.ma_bai]} onKhoLop={() => setLopBai(b)}
                 onOpen={() => (onMoKho ? onMoKho({ loai: 'dang_bai', id: b.ma_bai, ten: b.ten_bai, bais: hien.map((x) => ({ id: x.ma_bai, ten: x.ten_bai })) }) : setOpenBai(b))}
                 onCongCu={() => setOpenBai(b)}
                 onLyThuyet={() => setLtBai(b)} onViDu={() => setVdBai(b)} onMoTa={() => setMoTaBai(b)}
@@ -209,6 +214,10 @@ export default function KhoHinhHocScreen({ khoi, chuDeId, tenChuDe, onMoKho, kho
           onDeleteDang={() => xoaBai(openBai)}
           onChanged={reload} />
       )}
+      {lopBai && (
+        <KhoTrenLopModal nhanh="hinh_hoc" dangBaiId={lopBai.ma_bai} ten={lopBai.ten_bai}
+          onDong={(doi) => { setLopBai(null); if (doi) demLopTheoDang(khoi, 'hinh_hoc').then(setDemLop).catch(() => { /* số đếm chỉ để xem */ }) }} />
+      )}
       {vdBai && (
         <LyThuyetModal ma={vdBai.ma_bai} ten={`${vdBai.ten_bai} — ví dụ`} current={viDus[vdBai.ma_bai]}
           api={hinhHocViDuApi}
@@ -241,9 +250,9 @@ const MUCDO_TONE_HH: Record<number | string, string> = {
 }
 
 // 1 bài học vẽ như 1 chuyên đề của bản đồ Đại mới: dải chuyên đề → hộp nhóm → thẻ dạng bài (3 tầng cùng tên, cùng 1 bài).
-function BaiCard({ bai, thuTuHienThi, soCau, coLyThuyet, coViDu, onOpen, onCongCu, onLyThuyet, onViDu, onMoTa, onToggleDuyet, onMucDo }: {
-  bai: HinhHocBai; thuTuHienThi: number; soCau: number; coLyThuyet: boolean; coViDu: boolean
-  onOpen: () => void; onCongCu: () => void; onLyThuyet: () => void; onViDu: () => void; onMoTa: () => void; onToggleDuyet: () => void
+function BaiCard({ bai, thuTuHienThi, soCau, coLyThuyet, coViDu, soLop, onOpen, onCongCu, onLyThuyet, onViDu, onMoTa, onKhoLop, onToggleDuyet, onMucDo }: {
+  bai: HinhHocBai; thuTuHienThi: number; soCau: number; coLyThuyet: boolean; coViDu: boolean; soLop?: { giang: number; luyen: number }
+  onOpen: () => void; onCongCu: () => void; onLyThuyet: () => void; onViDu: () => void; onMoTa: () => void; onKhoLop: () => void; onToggleDuyet: () => void
   onMucDo: (v: number | null) => void
 }) {
   const md = bai.muc_do
@@ -296,6 +305,12 @@ function BaiCard({ bai, thuTuHienThi, soCau, coLyThuyet, coViDu, onOpen, onCongC
                 🧩 {coViDu ? 'Ví dụ' : 'Chưa ví dụ'}
               </button>
             </div>
+            {/* KHO TRÊN LỚP — bài giảng + luyện trên lớp (như dạng bài Đại) · kho luyện = 📚 ở thẻ trên */}
+            <button onClick={onKhoLop}
+              className="mt-1.5 flex w-full flex-col items-start rounded-md border border-teal-200 bg-teal-50 px-2.5 py-1.5 text-[12px] font-semibold text-teal-700 hover:bg-teal-100">
+              <span>🏫 Kho trên lớp</span>
+              <span className="text-[11px] font-normal">{soLop && soLop.giang + soLop.luyen ? `${soLop.giang} bài giảng · ${soLop.luyen} luyện trên lớp — bấm để soạn` : 'chưa có — bấm để thêm bài giảng / luyện trên lớp'}</span>
+            </button>
           </div>
         </div>
       </div>

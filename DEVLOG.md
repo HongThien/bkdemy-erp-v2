@@ -78881,3 +78881,11 @@ Thùy nêu 4 việc, làm được 3:
 - DB: bc_ky_nx_muc / bc_ky_nx_lua_chon / bc_ky_kh_mau (mã gốc NXM/NXL/KHM từ sequence, trigger cấm đổi mã + giữ 2 tầng, kho rác xoa_at, log bc_ky_dm_log, ghi chỉ admin) · bao_cao_ph_ky + nx_chon/kh_chon (lưu MÃ) · _bc_ky_thieu (1 luật đủ-công-bố cho lẻ + cả lớp) · fn_bc_ky_tinh phiên bản 3: goi_y (du_doan, sai_so, mức 3 mục 🤖 + số liệu) + nhan_xet_chon + ke_hoach_chon. Nạp sẵn 9 mục, 52 câu, 17 phương án.
 - Kiểm: ROLLBACK 6 em — gợi ý DB khớp từng số bản JS; chặn công bố khi thiếu mục; snapshot 4/9 mục; chặn sửa sau công bố; chặn đổi mã. Màn local (admin): ⚙ Thang nhận xét hiện đủ; 9A1 em mẫu: gợi ý 8 ± 1, Về nhà 🤖 Tốt 28/31. CHƯA bấm chọn trên màn (bấm = ghi nháp thật vào DB).
 - Treo: app PH + script PDF chưa hiện phần nhận xét theo thang (app PH đang giữ) · chưa có sắp xếp lại thứ tự mục/câu trên màn sửa thang.
+
+### 05/11 — Hình–Học: kho trên lớp (Thùy: "bản đồ Hình–Học các khối cần cấu trúc tương tự Đại: lý thuyết, ví dụ, mô tả, kho trên lớp, kho luyện")
+- Hiện trạng trước: bài học Hình đã có mô tả + lý thuyết + ví dụ (04/11) + kho luyện (hinh_hoc_cau_hoi) — THIẾU kho trên lớp.
+- Mig 202611051603 ĐÃ ÁP: bảng riêng hinh_hoc_cau_lop (mã gốc 'HHL'+6, dang_bai_id = hinh_hoc_bai.ma_bai vì bài = dạng bài), fn_hh_lop_* đối xứng fn_dai_lop_* (cua_dang · dem · them · chep_tu_kho · xep · cua_bai). RLS viết (select la_thanh_vien()).
+- Mig 202611051610 ĐÃ ÁP: builder giáo trình Hình dùng được câu HHL — fn_tl_hh_dat_cau nhận câu kho trên lớp của đúng bài; fn_tl_hl_noi_dung đọc nội dung từ cả 2 kho (thân sinh từ pg_get_functiondef, chỉ thay đúng đoạn).
+- Client: khoTrenLop.ts thêm registry KHO_LOP (dai | hinh_hoc) — rẽ nhánh duy nhất; KhoTrenLopModal nhận `nhanh`; thẻ bài Hình–Học thêm 🏫 Kho trên lớp; ChonCauHoc 2 tab (🏫/📚) cho phần bài học + BTVN, ET giữ chỉ kho luyện (bài đo); tailieu.ts resolve mã LOP/HHL theo bảng.
+- Kiểm: scripts/_test_hh_kho_lop.mjs 12/12 (ROLLBACK). App: thẻ 3 bài Thales K8 hiện 🏫, modal + chép từ kho luyện Hình đúng câu; Đại kho trên lớp vẫn đọc đúng (NDB00468: 2 câu LOP).
+- SAI lúc thử: `select (fn_them(...)).*` gọi hàm 1 lần/CỘT ⇒ chèn 23 dòng trong transaction thử (đã rollback). Gọi hàm trả dòng phải `select * from fn(...)`.

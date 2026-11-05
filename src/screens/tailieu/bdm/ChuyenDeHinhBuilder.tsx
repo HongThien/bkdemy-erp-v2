@@ -6,7 +6,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { addBuoi, updatePhan, updateTaiLieu, anhPhaiCua, type CauHinh } from '../../../lib/tailieu'
 import { xoaBuoi, loiDoc, datCoPhan } from '../../../lib/tailieuBdm'
-import { cdhNoiDung, cdhDatMoHinh, cdhDatBai, cdhCayChon, hhCayChon, hhCau, hhDatBai, hhDatCau, hhGoiY, type CdhNoiDung, type CdhPhan, type CdhMoHinh, type CdhChonMoHinh, type CdhChonNhom, type CdhChonChuDe, type HhBai, type HhChonBai, type HhCauKho } from '../../../lib/chuyenDeHinh'
+import { cdhNoiDung, cdhDatMoHinh, cdhDatBai, cdhCayChon, hhCayChon, hhCau, hhCauLop, hhDatBai, hhDatCau, hhGoiY, type CdhNoiDung, type CdhPhan, type CdhMoHinh, type CdhChonMoHinh, type CdhChonNhom, type CdhChonChuDe, type HhBai, type HhChonBai, type HhCauKho } from '../../../lib/chuyenDeHinh'
 import { khoCuaMoHinh, demKhoMoHinh, type ChuoiKho, type DemKho } from '../../../lib/kho/hinhCay'
 import { MathText, inp } from '../../kho/ui'
 import { MAU_PRESET } from '../TaiLieuBuilder'
@@ -241,6 +241,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
         // câu đang ở phần KHÁC của buổi (luyện/BTVN bài khác, hoặc nửa kia của chính bài này) ⇒ khoá, DB cũng chặn
         const khoa = (p.hoc ?? []).flatMap((x) => [...(x.phan_id === h.phan_id && !btvn ? [] : x.caus), ...(x.phan_id === h.phan_id && btvn ? [] : x.btvn?.caus ?? [])]).map((c) => c.ma_cau)
         return <ChonCauHoc maBai={h.ma_bai} ten={`${h.ten ?? h.ma_bai} · ${btvn ? 'BTVN' : 'Bài luyện'}`} daChon={cua.map((c) => c.ma_cau)} khoa={khoa}
+          coKhoLop macDinh={btvn ? 'luyen' : 'lop'}
           onClose={() => setChonCauHoc(null)} onConfirm={async (mas) => { setChonCauHoc(null); await datCauHoc(p, phanId, mas) }} />
       })()}
       {ganLop && <GanLopBdm hinh masterId={id} khoi={khoi} tl={{ mon: nd.tai_lieu.mon, nhanh: nd.tai_lieu.nhanh, cau_hinh: ch }} onClose={() => setGanLop(false)} />}
@@ -455,22 +456,39 @@ export function ChonBaiHoc({ khoi, daChon, onClose, onConfirm, ghiChu }: { khoi:
 }
 
 // ── Chọn câu của 1 bài học cho khối Bài luyện / BTVN (câu đã chọn giữ thứ tự, câu mới thêm cuối; câu đang ở phần khác của buổi bị khoá) ──
-export function ChonCauHoc({ maBai, ten, daChon, khoa, onClose, onConfirm }: { maBai: string; ten: string; daChon: string[]; khoa: string[]; onClose: () => void; onConfirm: (mas: string[]) => void }) {
-  const [kho, setKho] = useState<HhCauKho[] | null>(null)
+// 2 NGUỒN như giáo trình Đại (ChonCauBdm): 🏫 Kho trên lớp · 📚 Kho luyện — chọn trộn, 1 danh sách. `coKhoLop` = false (ET: bài ĐO) ⇒ chỉ kho luyện.
+export function ChonCauHoc({ maBai, ten, daChon, khoa, coKhoLop = false, macDinh = 'lop', onClose, onConfirm }: {
+  maBai: string; ten: string; daChon: string[]; khoa: string[]; coKhoLop?: boolean; macDinh?: 'lop' | 'luyen'; onClose: () => void; onConfirm: (mas: string[]) => void
+}) {
+  type CauChon = HhCauKho & { vai?: 'giang' | 'luyen' }   // vai chỉ có ở câu kho trên lớp
+  const [luyen, setLuyen] = useState<CauChon[] | null>(null)
+  const [lop, setLop] = useState<CauChon[] | null>(coKhoLop ? null : [])
+  const [nguon, setNguon] = useState<'lop' | 'luyen'>(coKhoLop ? macDinh : 'luyen')
   const [chon, setChon] = useState<string[]>(daChon)
   const [err, setErr] = useState<string | null>(null)
-  useEffect(() => { hhCau(maBai).then(setKho).catch((e) => setErr(loiDoc(e))) }, [maBai])
+  useEffect(() => {
+    hhCau(maBai).then(setLuyen).catch((e) => setErr(loiDoc(e)))
+    if (coKhoLop) hhCauLop(maBai).then((l) => { setLop(l.map((x) => ({ ...x, la_goc: true }))); if (!l.length) setNguon('luyen') }).catch((e) => setErr(loiDoc(e)))
+  }, [maBai, coKhoLop])
+  const kho = nguon === 'lop' ? lop : luyen
   const bat = (ma: string) => setChon((s) => (s.includes(ma) ? s.filter((x) => x !== ma) : [...s, ma]))
   return (
     <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
       <div className="absolute inset-x-16 inset-y-8 flex flex-col overflow-hidden rounded-2xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3">
           <h3 className="text-base font-semibold text-slate-900">Chọn câu · {ten}</h3>
+          {coKhoLop && <div className="ml-3 flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+            {([['lop', '🏫 Kho trên lớp', lop], ['luyen', '📚 Kho luyện tập', luyen]] as const).map(([k, nhan, ds]) => (
+              <button key={k} onClick={() => setNguon(k)} className={`rounded-md px-3 py-1 text-[12.5px] font-medium ${nguon === k ? 'bg-white text-sky-700 shadow-sm' : 'text-slate-500 hover:text-slate-800'}`}>
+                {nhan} <span className="text-[11px] text-slate-400">{ds ? ds.length : '…'}</span>
+              </button>
+            ))}
+          </div>}
           <button onClick={onClose} className="ml-auto text-slate-400 hover:text-slate-700">✕</button>
         </div>
         <div className="min-h-0 flex-1 space-y-2 overflow-auto px-6 py-4">
           {err ? <p className="text-sm text-rose-600">{err}</p> : !kho ? <p className="text-sm text-slate-400">Đang tải kho…</p>
-            : kho.length === 0 ? <p className="text-sm text-slate-400">Bài học này chưa có câu kho chuẩn.</p>
+            : kho.length === 0 ? <p className="text-sm text-slate-400">{nguon === 'lop' ? 'Bài học này chưa có câu ở kho trên lớp — soạn ở Bản đồ mới › Hình – Học › 🏫 Kho trên lớp.' : 'Bài học này chưa có câu kho chuẩn.'}</p>
             : kho.map((c) => {
               const on = chon.includes(c.ma_cau), khoaC = khoa.includes(c.ma_cau)
               return (
@@ -480,6 +498,7 @@ export function ChonCauHoc({ maBai, ten, daChon, khoa, onClose, onConfirm }: { m
                     <span className={`flex h-5 w-5 items-center justify-center rounded text-[11px] font-bold ${on ? 'bg-sky-600 text-white' : 'bg-slate-100 text-slate-400'}`}>{on ? chon.indexOf(c.ma_cau) + 1 : ''}</span>
                     <span className="font-mono text-slate-500">{c.ma_cau}</span>
                     {!c.la_goc && <span className="rounded bg-slate-100 px-1.5 text-slate-500">bản sao</span>}
+                    {c.vai && <span className="rounded bg-teal-50 px-1.5 text-teal-700">{c.vai === 'giang' ? '🎓 Bài giảng' : '✏️ Luyện trên lớp'}</span>}
                     <span className="text-slate-400">đã dùng {c.so_lan_dung} lần</span>
                   </div>
                   <div className="line-clamp-3 text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></div>
