@@ -20,8 +20,12 @@ function Tile({ nhan, so, phu, tone }: { nhan: string; so: React.ReactNode; phu?
 const Muc = ({ children, phu }: { children: React.ReactNode; phu?: React.ReactNode }) =>
   <div className="mb-1.5 mt-4 flex items-baseline gap-2 first:mt-0"><h4 className="text-[12px] font-bold uppercase tracking-wider text-indigo-700">{children}</h4>{phu && <span className="text-[11px] text-slate-400">{phu}</span>}</div>
 
+// Lọc lớp của phụ lục: nhớ qua các em (sống tới F5). '__em' = lớp của em đang xem, '' = cả khối.
+const NHO_PL = { lop: '__em' }
 export function SoLieuKy({ d }: { d: BcKyData }) {
   const [chiYeu, setChiYeu] = useState(false)
+  const [lopPL, setLopPLS] = useState(NHO_PL.lop)
+  const setLopPL = (v: string) => { NHO_PL.lop = v; setLopPLS(v) }
   const cc = d.thai_do.chuyen_can, bt = d.thai_do.btvn, hk = d.hang_ky
   const nghi = cc ? cc.vang + cc.vang_phep : 0
   const btMau = bt ? bt.tong - bt.xin_phep - bt.chua_ghi : 0
@@ -103,6 +107,42 @@ export function SoLieuKy({ d }: { d: BcKyData }) {
             </tbody>
           </table>
         : <p className="text-slate-400">Chưa có lần đánh giá nào trong kì.</p>}
+
+      {/* Phụ lục điểm thi toàn khối + lọc theo lớp để so sánh (Thùy 05/11). Hạng = hạng KHỐI tính ở DB; STT chỉ là thứ tự dòng đang hiện. */}
+      {(() => {
+        const pl = d.phu_luc
+        const dsLop = [...new Set(pl.hs.map((h) => h.lop).filter((x): x is string => !!x))].sort((a, b) => a.localeCompare(b, 'vi', { numeric: true }))
+        const lopChon = lopPL === '__em' ? (d.lop.ten ?? '') : lopPL
+        const ds = lopChon ? pl.hs.filter((h) => h.lop === lopChon || h.la_em) : pl.hs
+        return <>
+          <Muc phu={<>
+            <select value={lopPL} onChange={(e) => setLopPL(e.target.value)} className="ml-1 h-6 rounded border border-slate-200 px-1 text-[11.5px] text-slate-700">
+              <option value="__em">Lớp của em ({d.lop.ten ?? '—'})</option>
+              <option value="">Cả khối ({pl.hs.length} em)</option>
+              {dsLop.map((l) => <option key={l} value={l}>Lớp {l}</option>)}
+            </select>
+            <span className="ml-1.5">{ds.length} em · xếp theo hạng TB khối</span>
+          </>}>Phụ lục điểm thi</Muc>
+          {pl.hs.length
+            ? <div className="overflow-x-auto rounded-lg border border-slate-200">
+                <table className="w-full whitespace-nowrap text-[12px] tabular-nums">
+                  <thead className="bg-slate-50"><tr className="text-[11px] text-slate-500">
+                    <th className="px-2 py-1 text-right font-medium">STT</th><th className="px-2 py-1 text-left font-medium">Học sinh</th><th className="px-2 py-1 text-left font-medium">Lớp</th>
+                    {pl.cot.map((c, i) => <th key={i} className="px-2 py-1 text-right font-medium">{c.nhan}</th>)}
+                    <th className="px-2 py-1 text-right font-medium">Hạng TB</th><th className="px-2 py-1 text-right font-medium">Hạng khối</th>
+                  </tr></thead>
+                  <tbody>{ds.map((h, i) => (
+                    <tr key={i} className={h.la_em ? 'bg-indigo-100 font-bold text-indigo-900' : 'border-t border-slate-100'}>
+                      <td className="px-2 py-1 text-right text-slate-400">{i + 1}</td>
+                      <td className="px-2 py-1">{h.ten}{h.la_em && ' ⭐'}</td><td className="px-2 py-1 text-slate-500">{h.lop ?? ''}</td>
+                      {h.diem.map((v, j) => <td key={j} className="px-2 py-1 text-right">{v == null ? <span className="text-slate-300">—</span> : so1(v)}</td>)}
+                      <td className="px-2 py-1 text-right">{so1(h.hang_tb)}</td><td className="px-2 py-1 text-right">{h.hang}</td>
+                    </tr>))}</tbody>
+                </table>
+              </div>
+            : <p className="text-slate-400">Chưa có lần thi nào trong kì.</p>}
+        </>
+      })()}
     </div>
   )
 }
