@@ -439,7 +439,7 @@ const CHU_DE_TAT_CA: ChuDeHD[] = [
       ] },
       { tieu: 'Lưu ý', loai: 'luuy', y: [
         'Nông trại BK lưu vườn theo tài khoản của em, đổi thiết bị vẫn còn nguyên. Hạt giống và thú cưng mua bằng điểm học tập; mỗi ngày chơi tối đa 30 phút.',
-        'Chơi đều nhận xu thật: ngày nào chơi từ 5 phút trở lên thì được tính, mỗi ngày tối đa 4 xu và cả tháng tối đa 20 xu, vào thẳng Ví xu.',
+        'Chơi đều nhận xu thật: ngày nào chơi từ 5 phút trở lên thì được tính, mỗi ngày tối đa 1 xu và cả tháng tối đa 20 xu, vào thẳng Ví xu.',
         'Săn lùng Quái Vật là game tiếp theo, chưa có ngày mở.',
       ] },
     ],

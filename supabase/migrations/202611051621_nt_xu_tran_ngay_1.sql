@@ -1,0 +1,11 @@
+-- ============================================================================
+-- 202611051621 — Nông trại: trần xu NGÀY 4 → 1 (Thùy 05/11: "hệ thống thiết kế để học sinh chơi 15–20 ngày mới full,
+--   chứ tính kiểu gì chơi 8 ngày đã full").
+-- ----------------------------------------------------------------------------
+-- Công thức giữ nguyên (fn_nt_xu_dong_bo): trần luỹ kế trong tháng = least(xu_toi_da_thang, số ngày chơi ≥ xu_phut_toi_thieu phút × xu_toi_da_ngay).
+--   4 xu/ngày ⇒ 5 ngày chơi là đủ 20 (đo 05/11: em chăm nhất tháng 10 chạm trần ở ngày chơi thứ 9, tháng 11 đã 10 xu sau 5 ngày).
+--   1 xu/ngày ⇒ phải 20 ngày chơi mới đủ 20 xu/tháng.
+-- Xu đã nhận KHÔNG thu hồi: hàm chỉ cộng phần chênh dương ⇒ em đang vượt nhịp mới (vd 10 xu / 5 ngày) đứng yên tới khi số ngày chơi bắt kịp.
+-- MẤT GÌ (Luật xoá): không xoá gì; đổi 1 ô cấu hình. Hoàn tác: xu_toi_da_ngay = 4.
+-- ============================================================================
+update public.nt_cau_hinh set xu_toi_da_ngay = 1, updated_at = now() where id = 1;

@@ -78889,3 +78889,8 @@ Thùy nêu 4 việc, làm được 3:
 - Client: khoTrenLop.ts thêm registry KHO_LOP (dai | hinh_hoc) — rẽ nhánh duy nhất; KhoTrenLopModal nhận `nhanh`; thẻ bài Hình–Học thêm 🏫 Kho trên lớp; ChonCauHoc 2 tab (🏫/📚) cho phần bài học + BTVN, ET giữ chỉ kho luyện (bài đo); tailieu.ts resolve mã LOP/HHL theo bảng.
 - Kiểm: scripts/_test_hh_kho_lop.mjs 12/12 (ROLLBACK). App: thẻ 3 bài Thales K8 hiện 🏫, modal + chép từ kho luyện Hình đúng câu; Đại kho trên lớp vẫn đọc đúng (NDB00468: 2 câu LOP).
 - SAI lúc thử: `select (fn_them(...)).*` gọi hàm 1 lần/CỘT ⇒ chèn 23 dòng trong transaction thử (đã rollback). Gọi hàm trả dòng phải `select * from fn(...)`.
+
+## 05/11 — Nông trại: trần xu ngày 4 → 1 (Thùy: "thiết kế để HS chơi 15–20 ngày mới full, tính kiểu gì chơi 8 ngày đã full")
+- **Sai:** mig 202610231358 (23/10) đặt 4 xu/ngày, tự ghi rõ "đủ 20 xu sau 5 ngày chơi" nhưng không nêu ra là lệch ý đồ 13/10 ("20 xu nếu làm đầy đủ game"). Đo 05/11: em chăm nhất chạm 20 xu tháng 10 ở ngày chơi thứ 9 (game mở 23/10), tháng 11 đã 10 xu sau 5 ngày. Soát 205 lần cộng từ 23/10: 0 lần vượt trần ngày/tháng, sổ nt_xu khớp ledger ⇒ game đúng luật, luật sai nhịp.
+- **Sửa (mig 202611051621 ĐÃ ÁP --only):** `nt_cau_hinh.xu_toi_da_ngay = 1` ⇒ 20 ngày chơi (≥5 phút) mới đủ 20 xu/tháng. Không thu hồi: em đang vượt nhịp đứng yên tới khi số ngày chơi bắt kịp. App đọc trần ngày từ kết quả hàm (xu_moi_ngay); 3 chỗ chữ cứng "tối đa 4 xu" (hướng dẫn · tutorial · mô phỏng tutorial) sửa thành 1 xu.
+- `check:style-hs` RỚT ở `CaBoTroHS.tsx` (có từ 17/10, không phải file sửa lần này).
