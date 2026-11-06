@@ -79111,3 +79111,9 @@ Thùy nêu 4 việc, làm được 3:
 - 06/11 khuya — Thùy 'lớp chưa xong hết thì em nào xong làm pdf em đấy': dung-pdf.mjs thêm --gom-du (in cả em đã điền đủ chưa công bố, số liệu theo fn_bc_ky_xem, KHÔNG công bố hộ). SAI: lần đầu chạy không lọc lớp ⇒ in lại cả 96 file đã có, Thùy nhắc ⇒ dừng, chạy riêng 13 lớp thiếu. Tổng 196 PDF ở _bao-cao-ky-pdf/Nửa kì 1.
 
 - Thùy 'Công bố luôn': công bố 74/74 báo cáo đã điền đủ còn lại (actor Thùy) ⇒ 196 công bố = 196 PDF; còn 44 đang nhập dở.
+
+## 2026-11-06 (tối) — MT 12A1·12B1: đổi sang buổi 01/11, sửa 4 câu hình giải tích, hủy buổi 30/10
+- **Thùy:** 2 lớp test ngày 01/11 (không phải 30/10) ⇒ gán lại + xoá buổi 30/10. `doi-ngay-0111.mjs`: update `tai_lieu.ngay` của 2 bản `mt_buoi` sang 2026-11-01 (buổi 01/11 có sẵn của từng lớp) + đóng 4 phase khác (chỉ nơi NULL); không xoá gì.
+- **12A1 thiếu 4 câu trên lưới chấm (18/22):** 4 câu hình giải tích (kho hgt) chưa khai `cau_hinh.nhanhByCau[ma_cau]='hinh_gt'` ⇒ app tra kho Đại không thấy. `sua-nhanh-hgt.mjs` khai cho đề gốc + bản buổi 12A1 (12B1 không có câu hgt). **Bài học: đề MT có câu kho HGT phải ghi nhanhByCau='hinh_gt' (mẫu "Kiểm tra Khảo sát tháng 8 - Khối 9") — script tạo MT lần sau làm ngay lúc tạo.**
+- **Xoá buổi 30/10:** Thùy gật xoá; chạy thử bị chặn bởi `viec_phu_trach_snap` (6 dòng hệ thống tự chụp, trigger "bản chụp bất biến — không sửa, không xoá (Thùy 04/11)") ⇒ KHÔNG lách. Thay bằng `huy-buoi-3010.mjs`: 2 buổi `trang_thai='huy'` (+ly_do_huy), xoá kỳ thi mồ côi 'MT 12A1 2026-10-30' (0 điểm). Còn lại bám buổi huỷ: sĩ số 15, câu MT 18, nhật ký phase 8, snap 6 (vô hại, danh sách chấm MT loại buổi huỷ).
+- **Dùng từ:** Oxyz = kho HÌNH GIẢI TÍCH (hgt), không phải "hình học" (Thùy nhắc 06/11).
