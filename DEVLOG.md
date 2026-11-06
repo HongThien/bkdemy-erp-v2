@@ -79011,3 +79011,8 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 06/11 — Báo cáo HỌC KÌ: công cụ PDF vào repo
 - Pull main xong. Thêm `scripts/bao-cao-ky/dung-pdf.mjs` (snapshot đã công bố → HTML → Edge headless PDF, 125×220 mm, phần 2–5 sang trang mới, giữ trọn card/dòng; nhãn Kế hoạch dính khung). Thử bằng bản nháp `fn_bc_ky_tinh` (ROLLBACK, không ghi). Kì "Nửa kì 1": 10 dòng nhập, 0 công bố ⇒ chưa chạy được trên snapshot thật.
+
+## 06/11 — Phiên Claude: trưởng khối đủ quyền SỬA KHO (duyệt · sửa câu · ảnh · kho rác) — mig 202611061430 CHƯA ÁP
+- Thùy: "t đã nói là cho trưởng khối mọi quyền sửa kho và bản đồ, sao m vẫn chặn". Đo lịch sử phiên: anh Đạt (Toán 10, 05/11 19:25) xin duyệt nhóm 1–2 ⇒ không có lệnh duyệt; anh Ngọc (KHTN 9, 06/11 14:03) hỏi thêm ảnh ⇒ không có lệnh ảnh. Mig 1726 mới mở phần BẢN ĐỒ.
+- Thêm: `_phien_kho_cau` (câu đúng môn + khối phiên) · `fn_phien_kho_duyet` (mã / dạng / nhóm, cả bản sao, người duyệt = người mở phiên, giữ người duyệt cũ nếu đã đúng trạng thái) · `fn_phien_kho_sua_cau` · `fn_phien_kho_anh` (chỉ URL bucket kho-anh) · `fn_phien_kho_rac` (qua fn_kho_tu_choi_cau). ban-do.mjs: duyet_cau · bo_duyet_cau · sua_cau · kho_rac · anh_pdf (pdftoppm + pngjs cắt theo tỉ lệ) · anh_docx (docx_trich.mjs) · gan_anh (upload kho-anh rồi RPC); ảnh tạm ở scripts/phien/.tam/<phiên>/ (gitignore) để Claude Read soát.
+- Thử ROLLBACK: Đạt duyệt NNB02063 (260) + NNB02068 (215) ⇒ người duyệt Đạt; sửa đáp án; gắn ảnh; kho rác; câu khối 9 chặn; URL lạ chặn. Ngọc duyệt + gắn ảnh câu KHTN 9. anh_pdf cắt thử PDF 4T ra đúng vùng. Máy nhà cần poppler (pdftoppm) cho anh_pdf.
