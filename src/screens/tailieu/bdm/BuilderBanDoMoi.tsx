@@ -387,8 +387,10 @@ function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, canUp, canDown, 
 }
 
 // ── 1 khối câu (bài luyện / BTVN / chưa khớp): số lượng theo loại + Gợi ý + Chọn câu + danh sách câu ──
-export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, soMacDinh, onXoa, onGoiY, onChonCau }: {
+export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soMacDinh, onXoa, onGoiY, onChonCau }: {
   tieuDe: string; mau: 'sky' | 'orange' | 'amber'; caus: string[]; cauMap: Map<string, CauHoi>; cfg: CfgCau; chiXem: boolean; btvn?: boolean
+  /** true = chỉ số lượng + Gợi ý + Chọn câu + ✕ (không cột/chế độ hình/mm ảnh — nơi dùng không lưu cấu hình in theo câu). */
+  gon?: boolean
   soMacDinh?: Record<string, number>
   onXoa: (m: string) => void; onGoiY?: (so: Record<string, number>) => void; onChonCau?: () => void
 }) {
@@ -426,9 +428,9 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, soMacDin
                             <input type="number" min={0} max={50} value={cfg.lines[m] ?? DEFAULT_BTVN_LINES} onChange={(e) => cfg.onLine(m, Math.max(0, Math.min(50, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
                           </label>
                         )}
-                        <ColSel value={cfg.cols[m] ?? 1} onChange={(n) => cfg.onCol(m, n)} />
-                        {c?.anh_de && <CheDoHinhBtn cur={cfg.cheDo[m] ?? 'hien'} onChange={(v) => cfg.onCheDo(m, v)} />}
-                        {c?.anh_de && <AnhMmCtl ma={m} url={c.anh_de} />}
+                        {!gon && <ColSel value={cfg.cols[m] ?? 1} onChange={(n) => cfg.onCol(m, n)} />}
+                        {!gon && c?.anh_de && <CheDoHinhBtn cur={cfg.cheDo[m] ?? 'hien'} onChange={(v) => cfg.onCheDo(m, v)} />}
+                        {!gon && c?.anh_de && <AnhMmCtl ma={m} url={c.anh_de} />}
                         <button onClick={() => onXoa(m)} className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
                       </span>
                     )}
