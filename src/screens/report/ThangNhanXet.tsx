@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react'
 import {
   getDanhMucNx, laAdminBcKy, themNxMuc, suaNxMuc, themNxLuaChon, suaNxLuaChon, themKhMau, suaKhMau, boVaoKhoRac,
-  type DanhMucNx, type NxMuc, type KhMau, type MucDo, type MucDoChon, type NxChon, type BcKyGoiY, type BcKyNxTo,
+  type DanhMucNx, type NxMuc, type MucDo, type MucDoChon, type NxChon, type BcKyGoiY, type BcKyNxTo,
 } from '../../lib/baoCaoKy'
 
 export const NHAN_MUC: Record<MucDoChon, string> = { tot: 'Tốt', on: 'Ổn', chua_tot: 'Chưa tốt', chua_du: 'Chưa đủ quan sát' }
@@ -32,15 +32,15 @@ const mucCon = (dm: DanhMucNx, cha: string) => dm.muc.filter((m) => m.cha === ch
 export const mucNhoDangDung = (dm: DanhMucNx) => { const to = new Set(mucTo(dm).map((m) => m.ma)); return dm.muc.filter((m) => m.cha && to.has(m.cha)) }
 
 // Dựng phần nhận xét / kế hoạch để VÁ bản xem trước ngay sau khi GV chọn (chỉ ghép chữ từ danh mục — số liệu không đụng).
-export function dungNhanXetChon(dm: DanhMucNx, nx: NxChon, them: Record<string, string> = {}): BcKyNxTo[] {
+export function dungNhanXetChon(dm: DanhMucNx, nx: NxChon): BcKyNxTo[] {
   return mucTo(dm).map((t) => ({
-    ma: t.ma, ten: t.ten, them: them[t.ma]?.trim() || null,
+    ma: t.ma, ten: t.ten,
     con: mucCon(dm, t.ma).filter((m) => nx[m.ma]).map((m) => ({
       ma: m.ma, ten: m.ten, muc_do: nx[m.ma].muc_do, noi_dung: dm.lc.find((l) => l.ma === nx[m.ma].lc)?.noi_dung ?? null,
     })),
-  })).filter((t) => t.con.length > 0 || !!t.them)
+  })).filter((t) => t.con.length > 0)
 }
-export const dungKeHoachChon = (dm: DanhMucNx, kh: string[]) => kh.map((ma) => dm.kh.find((k) => k.ma === ma)?.noi_dung).filter((x): x is string => !!x)
+export const dungKeHoachChon = (dm: DanhMucNx, kh: string[]) => kh.map((ma) => (dm.kh.find((k) => k.ma === ma) ?? dm.khCu.find((k) => k.ma === ma))?.noi_dung).filter((x): x is string => !!x)
 
 // Số liệu đứng sau gợi ý 🤖 (hiển thị cho GV)
 function moTaGoiY(m: NxMuc, g: BcKyGoiY | undefined): string | null {
@@ -55,9 +55,8 @@ function moTaGoiY(m: NxMuc, g: BcKyGoiY | undefined): string | null {
 }
 
 // ── GV chọn nhận xét ──
-export function NhapNhanXet({ dm, nx, them, goiY, khoa, onDoi, onDoiThem }: {
-  dm: DanhMucNx; nx: NxChon; them: Record<string, string>; goiY?: BcKyGoiY; khoa: boolean
-  onDoi: (nx: NxChon) => void; onDoiThem: (them: Record<string, string>) => void
+export function NhapNhanXet({ dm, nx, goiY, khoa, onDoi }: {
+  dm: DanhMucNx; nx: NxChon; goiY?: BcKyGoiY; khoa: boolean; onDoi: (nx: NxChon) => void
 }) {
   function chonMuc(m: NxMuc, md: MucDoChon) {
     if (md === 'chua_du') return onDoi({ ...nx, [m.ma]: { muc_do: md, lc: null } })
@@ -111,8 +110,6 @@ export function NhapNhanXet({ dm, nx, them, goiY, khoa, onDoi, onDoiThem }: {
                 </div>
               )
             })}
-            <OThemMuc ten={t.ten} gia={them[t.ma] ?? ''} khoa={khoa}
-              onLuu={(v) => { const n = { ...them }; if (v) n[t.ma] = v; else delete n[t.ma]; onDoiThem(n) }} />
           </div>
         </div>
       ))}
@@ -120,33 +117,22 @@ export function NhapNhanXet({ dm, nx, them, goiY, khoa, onDoi, onDoiThem }: {
   )
 }
 
-// Nhận xét thêm cho riêng 1 mục to (không bắt buộc) — lưu khi rời ô
-function OThemMuc({ ten, gia, khoa, onLuu }: { ten: string; gia: string; khoa: boolean; onLuu: (v: string) => void }) {
-  const [v, setV] = useState(gia)
-  useEffect(() => setV(gia), [gia])
-  return <textarea value={v} disabled={khoa} rows={2} onChange={(e) => setV(e.target.value)} onBlur={() => { const x = v.trim(); if (x !== gia.trim()) onLuu(x) }}
-    placeholder={`Nhận xét thêm về ${ten.toLowerCase()} (nếu cần)…`}
-    className="w-full resize-y rounded-lg border border-slate-200 px-2 py-1.5 text-[12.5px] leading-snug text-slate-800 placeholder:text-slate-400 disabled:bg-slate-50" />
-}
-
-// ── GV chọn kế hoạch cải thiện: phương án của mục chấm Chưa tốt / Ổn lên đầu ──
-export function NhapKeHoach({ dm, nx, kh, khoa, onDoi }: { dm: DanhMucNx; nx: NxChon; kh: string[]; khoa: boolean; onDoi: (kh: string[]) => void }) {
-  const [tatCa, setTatCa] = useState(false)
-  const uu = (k: KhMau) => { const md = k.muc_ma ? nx[k.muc_ma]?.muc_do : undefined; return md === 'chua_tot' ? 0 : md === 'on' ? 1 : 2 }
-  const ten = (k: KhMau) => dm.muc.find((m) => m.ma === k.muc_ma)?.ten ?? 'Chung'
-  const ds = [...dm.kh].sort((a, b) => uu(a) - uu(b))
-  const hien = tatCa ? ds : ds.filter((k) => uu(k) < 2 || kh.includes(k.ma))
+// ── Kế hoạch cải thiện (Thùy 06/11): chọn trong các phương án đề xuất (danh mục, hiện hết) + ô viết thêm. Phương án đã cất kho
+// rác mà báo cáo còn tích vẫn hiện (nhãn "cũ") để GV tự bỏ tích — không tự xoá lựa chọn của GV.
+export function NhapKeHoach({ dm, kh, khoa, onDoi }: { dm: DanhMucNx; kh: string[]; khoa: boolean; onDoi: (kh: string[]) => void }) {
+  const cu = dm.khCu.filter((k) => kh.includes(k.ma))
   return (
     <div className="space-y-1">
-      {hien.length === 0 && <p className="text-[12px] text-slate-400">Chưa có mục nào chấm Ổn / Chưa tốt — bấm "Xem tất cả" để chọn.</p>}
-      {hien.map((k) => (
-        <label key={k.ma} className={`flex cursor-pointer items-start gap-1.5 rounded px-1 py-0.5 text-[12px] leading-snug ${kh.includes(k.ma) ? 'bg-emerald-50 text-slate-800' : 'text-slate-600'}`}>
-          <input type="checkbox" disabled={khoa} checked={kh.includes(k.ma)} className="mt-0.5"
-            onChange={(e) => onDoi(e.target.checked ? [...kh, k.ma] : kh.filter((x) => x !== k.ma))} />
-          <span><b className="mr-1 text-[10.5px] font-semibold text-slate-400">{ten(k)}</b>{k.noi_dung}</span>
-        </label>
-      ))}
-      <button onClick={() => setTatCa((v) => !v)} className="text-[11.5px] font-semibold text-indigo-600 hover:underline">{tatCa ? 'Thu gọn' : `Xem tất cả (${dm.kh.length})`}</button>
+      {[...dm.kh, ...cu].map((k) => {
+        const daCat = cu.includes(k)
+        return (
+          <label key={k.ma} className={`flex cursor-pointer items-start gap-2 rounded-lg px-2 py-1.5 text-[13px] leading-snug ${kh.includes(k.ma) ? 'bg-emerald-50 text-slate-800 ring-1 ring-emerald-200' : 'text-slate-600 hover:bg-slate-50'}`}>
+            <input type="checkbox" disabled={khoa} checked={kh.includes(k.ma)} className="mt-0.5"
+              onChange={(e) => onDoi(e.target.checked ? [...kh, k.ma] : kh.filter((x) => x !== k.ma))} />
+            <span>{k.noi_dung}{daCat && <span className="ml-1.5 rounded bg-slate-200 px-1 text-[10.5px] text-slate-500" title="Phương án cũ đã bỏ khỏi danh mục — bỏ tích nếu không dùng">cũ</span>}</span>
+          </label>
+        )
+      })}
     </div>
   )
 }

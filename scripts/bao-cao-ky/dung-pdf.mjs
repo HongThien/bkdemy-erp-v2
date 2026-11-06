@@ -135,9 +135,16 @@ function dungHtml(d) {
       : '<p class="trong">Chưa có ghi nhận bài tập về nhà trong kì.</p>')
 
   const nxc = d.nhan_xet_chon ?? [], khc = d.ke_hoach_chon ?? []
+  // Kết luận (Thùy 06/11) — 7 mức y report tháng (MUC_HEX ở src/screens/report/ReportCard.tsx)
+  const KL = { rat_tot: ['#ecfdf5', '#047857', '🌟', 'Con học rất tốt'], dat_yeu_cau: ['#f0fdf4', '#15803d', '✅', 'Con đạt yêu cầu'], tien_bo: ['#f0f9ff', '#0369a1', '📈', 'Con đang tiến bộ'],
+    cai_thien_thai_do: ['#fffbeb', '#b45309', '⚠️', 'Con cần cải thiện thái độ học tập'], cai_thien_kien_thuc: ['#fffbeb', '#b45309', '⚠️', 'Con cần cải thiện kiến thức và kĩ năng'],
+    van_de_thai_do: ['#fff1f2', '#be123c', '🆘', 'Con gặp vấn đề về thái độ học tập'], van_de_kien_thuc: ['#fff1f2', '#be123c', '🆘', 'Con gặp vấn đề về kiến thức và kĩ năng'] }
+  const kl = d.ket_luan, klm = kl?.muc ? KL[kl.muc] : null
+  const klHtml = kl ? `<div class="box" style="background:${klm ? klm[0] : '#f8fafc'};border-left:0;margin-bottom:8px"><div class="lb" style="margin:0">Kết luận</div>${klm ? `<div style="font-weight:800;font-size:12.5pt;color:${klm[1]}">${klm[2]} ${klm[3]}</div>` : ''}${kl.noi_dung ? `<div style="margin-top:3px">${lines(kl.noi_dung)}</div>` : ''}</div>` : ''
   const p4 = `<div class="nl"><div class="k">Điểm năng lực</div><div><span class="d">${so(d.nang_luc.diem)}</span> <span class="s">± ${so(d.nang_luc.sai_so)}</span></div></div>`
+    + klHtml
     + (!nxc.length && !d.nhan_xet ? '<p class="trong">Giáo viên chưa nhập nhận xét.</p>' : '')
-    + nxc.map((t) => `<div class="nx"><h3>${esc(t.ten)}</h3>${t.con.map((c) => `<div class="m"><em>${esc(c.ten)}</em><u style="background:${MAU_MUC[c.muc_do]}">${NHAN_MUC[c.muc_do]}</u>${c.noi_dung ? `<p>${esc(c.noi_dung)}</p>` : ''}</div>`).join('')}${t.them ? `<div class="them">${lines(t.them)}</div>` : ''}</div>`).join('')
+    + nxc.map((t) => `<div class="nx"><h3>${esc(t.ten)}</h3>${t.con.map((c) => `<div class="m"><em>${esc(c.ten)}</em><u style="background:${MAU_MUC[c.muc_do]}">${NHAN_MUC[c.muc_do]}</u>${c.noi_dung ? `<p>${esc(c.noi_dung)}</p>` : ''}</div>`).join('')}</div>`).join('')
     + (d.nhan_xet ? `<div class="lb">Thầy cô ghi thêm</div><div class="box">${lines(d.nhan_xet)}</div>` : '')
     // nhãn + khung + tên GV đi liền nhau, không tách qua trang (nhãn mồ côi ở cuối trang trước)
     + `<div style="break-inside:avoid"><div class="lb">Kế hoạch cải thiện</div>` + (khc.length || d.ke_hoach

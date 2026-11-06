@@ -79016,3 +79016,10 @@ Thùy nêu 4 việc, làm được 3:
 - Thùy: "t đã nói là cho trưởng khối mọi quyền sửa kho và bản đồ, sao m vẫn chặn". Đo lịch sử phiên: anh Đạt (Toán 10, 05/11 19:25) xin duyệt nhóm 1–2 ⇒ không có lệnh duyệt; anh Ngọc (KHTN 9, 06/11 14:03) hỏi thêm ảnh ⇒ không có lệnh ảnh. Mig 1726 mới mở phần BẢN ĐỒ.
 - Thêm: `_phien_kho_cau` (câu đúng môn + khối phiên) · `fn_phien_kho_duyet` (mã / dạng / nhóm, cả bản sao, người duyệt = người mở phiên, giữ người duyệt cũ nếu đã đúng trạng thái) · `fn_phien_kho_sua_cau` · `fn_phien_kho_anh` (chỉ URL bucket kho-anh) · `fn_phien_kho_rac` (qua fn_kho_tu_choi_cau). ban-do.mjs: duyet_cau · bo_duyet_cau · sua_cau · kho_rac · anh_pdf (pdftoppm + pngjs cắt theo tỉ lệ) · anh_docx (docx_trich.mjs) · gan_anh (upload kho-anh rồi RPC); ảnh tạm ở scripts/phien/.tam/<phiên>/ (gitignore) để Claude Read soát.
 - Thử ROLLBACK: Đạt duyệt NNB02063 (260) + NNB02068 (215) ⇒ người duyệt Đạt; sửa đáp án; gắn ảnh; kho rác; câu khối 9 chặn; URL lạ chặn. Ngọc duyệt + gắn ảnh câu KHTN 9. anh_pdf cắt thử PDF 4T ra đúng vùng. Máy nhà cần poppler (pdftoppm) cho anh_pdf.
+
+
+## 2026-11-06 — Báo cáo HỌC KÌ: card Kết luận + kế hoạch 3 phương án, bỏ nhận xét thêm (mig 202611061432 ĐÃ ÁP) — Thùy 06/11
+- Thùy định đổi mỗi mục nhỏ thành 1 dropdown combo 'mức – câu' + tự thêm mẫu, rồi đổi ý 'thôi để như cũ' (giữ nút Tốt/Ổn/Chưa tốt/Chưa QS).
+- Bỏ ô nhận xét thêm theo mục (0 báo cáo có dữ liệu; cột nx_them giữ). Thêm card KẾT LUẬN y report tháng: ket_luan_muc (7 mức như bao_cao_ph, màu/nhãn dùng chung MUC_HEX của ReportCard) + ket_luan chữ; _bc_ky_phan_gv trả 'ket_luan'; khoá sau công bố. Bản gửi PH + PDF (dung-pdf.mjs) hiện Kết luận ngay sau điểm năng lực.
+- Kế hoạch: chỉ còn 3 phương án chung (chiến dịch cải thiện riêng · hoạt động bổ trợ sắp tới · tiếp tục duy trì và phát huy). 17 phương án cũ → KHO RÁC (xoa_at), không xoá: 17/39 nháp đang tích phương án cũ, màn vẫn hiện kèm nhãn 'cũ' để GV tự bỏ tích, chữ vẫn in.
+- Kiểm: ROLLBACK (kết luận ra đúng, phương án cũ vẫn resolve) + màn local đọc DOM (Browser pane bị ẩn nên ảnh chụp đứng hình, bấm toạ độ không ăn ⇒ điều khiển bằng JS).
