@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-496 bảng · 38 view · 0 enum · 279 trigger · 1625 function
+496 bảng · 38 view · 0 enum · 280 trigger · 1625 function
 
 ## _app_secrets
 
@@ -9444,6 +9444,7 @@ WITH luot AS (
 | khtn_bdm_dang_bai | trg_khtn_bdm_dang_bai_thu_tu | BEFORE | INSERT | _khtn_bdm_thu_tu |
 | khtn_bdm_dang_bai | trg_khtn_bdm_dang_bai_touch | BEFORE | UPDATE | _bdm_touch |
 | khtn_bdm_gan_cau | trg_khtn_bdm_gan_cau_log | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_ghi_log |
+| khtn_bdm_gan_cau | trg_khtn_bdm_gan_cau_tu_duyet | AFTER | INSERT/UPDATE | _bdm_tu_duyet_sau_gan |
 | khtn_bdm_nhom | trg_khtn_bdm_nhom_log | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_ghi_log |
 | khtn_bdm_nhom | trg_khtn_bdm_nhom_thu_tu | BEFORE | INSERT | _khtn_bdm_thu_tu |
 | khtn_bdm_nhom | trg_khtn_bdm_nhom_tien_de_cung_o | AFTER | UPDATE | _khtn_bdm_tien_de_cung_o |

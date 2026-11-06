@@ -79035,3 +79035,12 @@ Thùy nêu 4 việc, làm được 3:
 - **Kiểm:** kịch bản xấu nhất 13 khối Toán: trước 1 khối lỗi, sau 0 lỗi, lệnh chậm nhất 3,7 s; chạy script 6 lần sạch (1 lần trước đó báo 1–2 lỗi khối 7 mà em không bắt được nội dung — nghi tranh khoá với dùng thật vì bản script đầu giữ khoá cache ~70 s; đã sửa script, 6 lần sau sạch).
 - **Tự phê:** các lần đo ban đầu (tm1/dry51) cũng giữ khoá cache vài phút trong giờ làm việc — có thể đã làm chậm người dùng thật trong lúc đó. Từ nay đo theo từng khối.
 - **Chưa kiểm trên app thật** (cần bấm Chốt tuần với phiên đăng nhập thật). **Nợ:** nuốt lỗi ở WidgetDangYeu/chotTuan; môn khác chưa đo.
+
+
+## 2026-11-06 — Báo cáo HỌC KÌ: bố cục điện thoại cho màn GV nhập (Thùy: 'UI mobile, kéo lên xuống để tích')
+- Dưới md (768px): danh sách HS ⇒ ô chọn + nút ‹ › (chấm ✓ đã công bố / • nháp ngay trong tên); cột trái ẩn; nhận xét 1 cột; thanh dính đáy 'còn N mục chưa chọn' + Chốt & công bố; ngăn Số liệu bên phải ẩn ⇒ nút 📊 mở popup toàn màn; popup phụ lục sát mép. Padding màn p-3. Desktop không đổi.
+- Kiểm (đo DOM — pane ẩn, không chụp được): 375px không phần tử nào tràn ngang, nhận xét 351px 1 cột, thanh chốt ở đáy; 1440px cột trái hiện, 4 cột, ô chọn HS + thanh đáy ẩn. Ô chọn HS dùng chung cho cả chế độ Tháng.
+
+## 06/11 — KHTN áp luật tự duyệt của Toán (Thùy: "Áp luật duyệt của Toán cho KHTN") — mig 202611061508 CHƯA ÁP
+- Trigger `trg_khtn_bdm_gan_cau_tu_duyet` (`_bdm_tu_duyet_sau_gan` chọn bảng câu theo tiền tố dai/hgt/khtn): gán AI + đủ đáp án ⇒ da_duyet, duyet_nguon ai. Vá tồn đọng: K7 811 · K8 50 · K9 1.660 = 2.521 câu; 11 câu thiếu đáp án còn chờ.
+- BẮT ĐƯỢC KHI THỬ: `_trg_chan_duyet_dang_cho` chỉ biết bản đồ mới Đại/HGT ⇒ câu KHTN dạng chờ đã gán vẫn bị chặn duyệt, và vì tự duyệt chạy trong lúc gán nên gán dạng KHTN cũng hỏng ⇒ thêm nhánh khtn_cau_hoi (có khtn_bdm_gan_cau của câu/gốc = đã phân). Thử ROLLBACK: gán AI mới ⇒ duyệt · gán người ⇒ không · Toán 0 dòng bị đụng.
