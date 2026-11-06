@@ -68,6 +68,7 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
   const [moSoLieu, setMoSoLieuS] = useState(NHO_KY.moSoLieu)
   const [xemPH, setXemPH] = useState(false)
   const [xemPL, setXemPL] = useState(false)
+  const [soLieuDt, setSoLieuDt] = useState(false)   // điện thoại: số liệu mở popup toàn màn (ngăn phải chỉ có từ md)
   const dm = useDanhMucNx()
   const setMoSoLieu = (v: boolean) => { NHO_KY.moSoLieu = v; setMoSoLieuS(v) }
   useEffect(() => {
@@ -83,7 +84,7 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
     <div className="flex items-start gap-3">
       <div className="@container min-w-0 flex-1">
         <NhapKy d={data} hsId={hsId} mon={mon} kyId={kyId} nhap={nhap} congBoAt={congBoAt} goiY={data.goi_y}
-          moSoLieu={moSoLieu} onMoSoLieu={() => setMoSoLieu(!moSoLieu)} onXemPH={() => setXemPH(true)} onXemPL={() => setXemPL(true)}
+          moSoLieu={moSoLieu} onMoSoLieu={() => (window.matchMedia('(min-width: 768px)').matches ? setMoSoLieu(!moSoLieu) : setSoLieuDt(true))} onXemPH={() => setXemPH(true)} onXemPL={() => setXemPL(true)}
           // vá tại chỗ (không tính lại cả báo cáo): bản gửi PH đọc ngay phần vừa nhập
           onDaLuu={(n) => {
             setNhap(n)
@@ -96,7 +97,7 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
           onMoLai={async () => { const x = await xemBcKy(hsId, mon, kyId); setData(x.du_lieu); setCongBoAt(null); setNhap((n) => ({ ...n, cong_bo_at: null })); onTrangThai(hsId, 'nhap') }} />
       </div>
       {moSoLieu
-        ? <aside className={`sticky top-0 ${cao} w-[44%] max-w-[720px] shrink-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm`}>
+        ? <aside className={`sticky top-0 hidden md:block ${cao} w-[44%] max-w-[720px] shrink-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm`}>
             <div className="flex items-center gap-2 border-b border-slate-200 bg-slate-50 px-4 py-2">
               <span className="text-[13px] font-bold text-slate-700">📊 Số liệu học sinh</span>
               <button onClick={() => setXemPL(true)} className="ml-auto rounded-md px-2 py-1 text-[12px] font-semibold text-amber-700 hover:bg-amber-50">🏆 Phụ lục điểm thi</button>
@@ -105,7 +106,7 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
             </div>
             <div className="h-[calc(100%-41px)] overflow-y-auto px-4 py-3"><SoLieuKy d={data} /></div>
           </aside>
-        : <div className={`sticky top-0 ${cao} flex w-9 shrink-0 flex-col gap-2`}>
+        : <div className={`sticky top-0 hidden md:flex ${cao} w-9 shrink-0 flex-col gap-2`}>
             <button onClick={() => setMoSoLieu(true)} title="Xem số liệu học sinh"
               className="min-h-0 flex-[3] rounded-xl border border-indigo-200 bg-indigo-50 text-[12.5px] font-bold tracking-wide text-indigo-700 [writing-mode:vertical-rl] hover:bg-indigo-100">
               ◂ 📊 Số liệu học sinh
@@ -115,15 +116,24 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
               🏆 Phụ lục điểm thi
             </button>
           </div>}
+      {soLieuDt && (
+        <div className="fixed inset-0 z-50 flex flex-col bg-white">
+          <div className="flex items-center gap-2 border-b border-slate-200 px-3 py-2.5">
+            <span className="text-[14px] font-bold text-slate-800">📊 {data.hs.ho_ten}</span>
+            <button onClick={() => setSoLieuDt(false)} className="ml-auto rounded-md bg-slate-100 px-3 py-1.5 text-[13px] font-semibold text-slate-600">Đóng ✕</button>
+          </div>
+          <div className="min-h-0 flex-1 overflow-y-auto px-3 py-3"><SoLieuKy d={data} /></div>
+        </div>
+      )}
       {xemPL && (
-        <div className="fixed inset-0 z-50 flex justify-center bg-slate-900/50 px-4 pb-6 pt-14" onClick={() => setXemPL(false)}>
-          <div className="flex max-h-full w-full max-w-6xl flex-col rounded-2xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center gap-3 border-b border-slate-200 px-5 py-3">
-              <h2 className="text-[16px] font-bold text-slate-800">🏆 Phụ lục điểm thi — {data.mon} khối {data.lop.khoi ?? ''} · {data.ky.ten}</h2>
+        <div className="fixed inset-0 z-50 flex justify-center bg-slate-900/50 p-0 md:px-4 md:pb-6 md:pt-14" onClick={() => setXemPL(false)}>
+          <div className="flex max-h-full w-full max-w-6xl flex-col bg-white shadow-2xl md:rounded-2xl" onClick={(e) => e.stopPropagation()}>
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-slate-200 px-3 py-2.5 md:px-5 md:py-3">
+              <h2 className="text-[15px] font-bold text-slate-800 md:text-[16px]">🏆 Phụ lục điểm thi — {data.mon} khối {data.lop.khoi ?? ''} · {data.ky.ten}</h2>
               <span className="text-[12px] text-slate-500">đang xem: <b className="text-indigo-700">{data.hs.ho_ten}</b></span>
               <button onClick={() => setXemPL(false)} className="ml-auto rounded-md px-3 py-1 text-[13px] text-slate-500 hover:bg-slate-100">Đóng ✕</button>
             </div>
-            <div className="min-h-0 flex-1 overflow-auto px-5 py-3"><PhuLucKy d={data} /></div>
+            <div className="min-h-0 flex-1 overflow-auto px-3 py-3 md:px-5"><PhuLucKy d={data} /></div>
           </div>
         </div>
       )}
@@ -202,7 +212,7 @@ function NhapKy({ d: bc, hsId, mon, kyId, nhap, congBoAt, goiY, moSoLieu, onMoSo
         {khoa
           ? <span className="rounded-md bg-emerald-50 px-2 py-1 text-[11.5px] font-semibold text-emerald-700">✓ Đã công bố {new Date(congBoAt!).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}</span>
           : <span className="rounded-md bg-amber-50 px-2 py-1 text-[11.5px] font-semibold text-amber-700">Nháp — phụ huynh chưa thấy</span>}
-        <div className="flex items-center gap-2 border-l border-slate-200 pl-5">
+        <div className="flex flex-wrap items-center gap-2 md:border-l md:border-slate-200 md:pl-5">
           <span className={`${tieuDe} whitespace-nowrap`}>Điểm năng lực</span>
           <input value={diem} disabled={khoa} onChange={(e) => setDiem(e.target.value)} onBlur={() => void luu('diem')} inputMode="decimal" placeholder="điểm" title="Điểm dự đoán (0–10, bội 0,25)" className={o} />
           <span className="text-[15px] font-bold text-slate-400">±</span>
@@ -220,7 +230,7 @@ function NhapKy({ d: bc, hsId, mon, kyId, nhap, congBoAt, goiY, moSoLieu, onMoSo
           {!khoa && conThieu > 0 && <span className="text-[12px] text-amber-600">còn {conThieu} mục chưa chọn</span>}
           <button onClick={onXemPL} className="rounded-lg px-2.5 py-1.5 text-[12.5px] font-semibold text-amber-700 hover:bg-amber-50" title="Phụ lục điểm thi toàn khối, lọc theo lớp">🏆 Phụ lục</button>
           <button onClick={onXemPH} className="rounded-lg px-2.5 py-1.5 text-[12.5px] font-semibold text-indigo-600 hover:bg-indigo-50" title="Bản 1 cột gửi phụ huynh">📱 Bản gửi PH</button>
-          {!moSoLieu && <button onClick={onMoSoLieu} className="rounded-lg px-2.5 py-1.5 text-[12.5px] font-semibold text-slate-600 hover:bg-slate-100">📊 Số liệu</button>}
+          {<button onClick={onMoSoLieu} className={`rounded-lg px-2.5 py-1.5 text-[12.5px] font-semibold text-slate-600 hover:bg-slate-100 ${moSoLieu ? 'md:hidden' : ''}`}>📊 Số liệu</button>}
           {khoa
             ? <button disabled={busy} onClick={() => void chay(async () => { await moLaiBcKy(hsId, mon, kyId); await onMoLai() })} className="rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50">Mở lại để sửa</button>
             : <button disabled={busy || !du} onClick={() => void chay(async () => { await congBoBcKy(hsId, mon, kyId); await onCongBo() })} title={du ? 'Chụp số liệu + công bố cho phụ huynh' : 'Cần điểm, sai số và đủ mọi mục nhận xét'} className="rounded-lg bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">✓ Chốt &amp; công bố</button>}
@@ -257,6 +267,13 @@ function NhapKy({ d: bc, hsId, mon, kyId, nhap, congBoAt, goiY, moSoLieu, onMoSo
             className="mt-2 w-full rounded-lg border border-slate-200 px-2.5 py-2 text-[13px] leading-relaxed text-slate-800 disabled:bg-slate-50" />
         </div>
       </div>
+      {!khoa && (
+        <div className="sticky bottom-0 z-10 -mx-3 flex items-center gap-2 border-t border-slate-200 bg-white/95 px-3 py-2 backdrop-blur md:hidden">
+          <span className={`text-[12.5px] ${conThieu ? 'text-amber-600' : 'text-emerald-600'}`}>{conThieu ? `Còn ${conThieu} mục chưa chọn` : '✓ Đủ mục nhận xét'}</span>
+          {saved && <span className="text-[11.5px] text-emerald-600">Đã lưu</span>}
+          <button disabled={busy || !du} onClick={() => void chay(async () => { await congBoBcKy(hsId, mon, kyId); await onCongBo() })} className="ml-auto rounded-lg bg-emerald-600 px-3 py-2 text-[13px] font-semibold text-white disabled:opacity-40">✓ Chốt &amp; công bố</button>
+        </div>
+      )}
       <p className="text-[11px] text-slate-400">{khoa
         ? 'Đang hiện bản ĐÓNG BĂNG lúc công bố — số liệu không tự đổi. Mở lại để sửa rồi công bố lại.'
         : 'Tự lưu khi chọn / rời ô. Công bố cần điểm, sai số và đủ mọi mục nhận xét ("Chưa QS" = chưa đủ quan sát, cũng tính).'}</p>

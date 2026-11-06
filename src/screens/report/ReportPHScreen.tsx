@@ -153,7 +153,7 @@ Số liệu tính lúc này sẽ được giữ cố định, không tính lại
   const hs = roster.find((r) => r.id === hsId) ?? null
   return (
     <div className="flex h-full min-w-0 flex-col bg-[#fafafb]">
-      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-6 py-2.5">
+      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-3 py-2.5 md:px-6">
         <span className="mr-2 text-sm font-semibold text-slate-900">Report phụ huynh</span>
         {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
         <div className="ml-2 w-44"><SearchSelect value={lopId} onChange={setLopId} options={lopOpts} placeholder="Chọn lớp…" /></div>
@@ -170,13 +170,23 @@ Số liệu tính lúc này sẽ được giữ cố định, không tính lại
         {cheDo === 'ky' && roster.length > 0 && kyId && <button disabled={kyBusy} onClick={() => void congBoLopKy()} title="Công bố báo cáo học kì cho cả lớp (chụp số liệu ở DB)" className={`ml-auto rounded-md bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-50`}>✓ Công bố cả lớp ({roster.length})</button>}
         {cheDo === 'thang' && roster.length > 0 && <button disabled={!!bulk?.running} onClick={() => void bulkCongBoLop()} title="Chụp ảnh + công bố báo cáo cho cả lớp" className="ml-auto rounded-md bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-50">✓ Chốt cả lớp ({roster.length})</button>}
       </div>
-      <div className="min-h-0 flex-1 overflow-auto p-6">
+      <div className="min-h-0 flex-1 overflow-auto p-3 md:p-6">
         {!lopId ? (
           <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn lớp để xem danh sách học sinh.</div>
         ) : (
-          <div className="flex gap-4">
+          <div className="flex flex-col gap-3 md:flex-row md:gap-4">
+            {/* ĐIỆN THOẠI: danh sách HS thành ô chọn + ‹ › (cột trái chỉ hiện từ md) */}
+            {(() => { const i = roster.findIndex((r) => r.id === hsId); return (
+              <div className="flex items-center gap-1.5 md:hidden">
+                <button disabled={i <= 0} onClick={() => setHsId(roster[i - 1].id)} className="h-10 w-10 shrink-0 rounded-lg border border-slate-200 bg-white text-[18px] text-slate-600 disabled:opacity-30">‹</button>
+                <select value={hsId ?? ''} onChange={(e) => setHsId(e.target.value || null)} className="h-10 min-w-0 flex-1 rounded-lg border border-slate-200 bg-white px-2 text-[14px] font-semibold text-slate-800">
+                  <option value="">— Chọn học sinh ({roster.length}) —</option>
+                  {roster.map((r) => <option key={r.id} value={r.id}>{cheDo === 'ky' && ttKy[r.id] ? (ttKy[r.id] === 'cong_bo' ? '✓ ' : '• ') : ''}{r.ho_ten}</option>)}
+                </select>
+                <button disabled={i < 0 || i >= roster.length - 1} onClick={() => setHsId(roster[i + 1].id)} className="h-10 w-10 shrink-0 rounded-lg border border-slate-200 bg-white text-[18px] text-slate-600 disabled:opacity-30">›</button>
+              </div>) })()}
             {/* CỘT TRÁI: danh sách cả lớp, click chọn thẳng — giống "Kết quả học tập" */}
-            <aside className="w-56 shrink-0">
+            <aside className="hidden w-56 shrink-0 md:block">
               <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
                 <div className="flex items-center border-b border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-slate-500">{roster.length} học sinh
                   {cheDo === 'ky' && roster.length > 0 && kyId && laAdmin && (

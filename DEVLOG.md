@@ -79023,3 +79023,8 @@ Thùy nêu 4 việc, làm được 3:
 - Bỏ ô nhận xét thêm theo mục (0 báo cáo có dữ liệu; cột nx_them giữ). Thêm card KẾT LUẬN y report tháng: ket_luan_muc (7 mức như bao_cao_ph, màu/nhãn dùng chung MUC_HEX của ReportCard) + ket_luan chữ; _bc_ky_phan_gv trả 'ket_luan'; khoá sau công bố. Bản gửi PH + PDF (dung-pdf.mjs) hiện Kết luận ngay sau điểm năng lực.
 - Kế hoạch: chỉ còn 3 phương án chung (chiến dịch cải thiện riêng · hoạt động bổ trợ sắp tới · tiếp tục duy trì và phát huy). 17 phương án cũ → KHO RÁC (xoa_at), không xoá: 17/39 nháp đang tích phương án cũ, màn vẫn hiện kèm nhãn 'cũ' để GV tự bỏ tích, chữ vẫn in.
 - Kiểm: ROLLBACK (kết luận ra đúng, phương án cũ vẫn resolve) + màn local đọc DOM (Browser pane bị ẩn nên ảnh chụp đứng hình, bấm toạ độ không ăn ⇒ điều khiển bằng JS).
+
+
+## 2026-11-06 — Báo cáo HỌC KÌ: bố cục điện thoại cho màn GV nhập (Thùy: 'UI mobile, kéo lên xuống để tích')
+- Dưới md (768px): danh sách HS ⇒ ô chọn + nút ‹ › (chấm ✓ đã công bố / • nháp ngay trong tên); cột trái ẩn; nhận xét 1 cột; thanh dính đáy 'còn N mục chưa chọn' + Chốt & công bố; ngăn Số liệu bên phải ẩn ⇒ nút 📊 mở popup toàn màn; popup phụ lục sát mép. Padding màn p-3. Desktop không đổi.
+- Kiểm (đo DOM — pane ẩn, không chụp được): 375px không phần tử nào tràn ngang, nhận xét 351px 1 cột, thanh chốt ở đáy; 1440px cột trái hiện, 4 cột, ô chọn HS + thanh đáy ẩn. Ô chọn HS dùng chung cho cả chế độ Tháng.
