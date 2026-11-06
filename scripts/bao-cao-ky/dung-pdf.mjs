@@ -6,6 +6,8 @@
 //   node scripts/bao-cao-ky/dung-pdf.mjs [--ky <ky_id>] [--lop <tên lớp>] [--mon Toán|KHTN] [--hs <ma_hs|uuid>] [--out <thư mục>] [--html]
 //   Mặc định: kì mới nhất, MỌI em đã công bố → <repo>/../_bao-cao-ky-pdf/<kì>/<lớp>/<Tên HS> - <môn>.pdf (ngoài repo: có tên HS).
 //   --html = chỉ ghi .html (xem bằng trình duyệt, không in).
+//   --gom-du = in THÊM em đã điền đủ (fn_bc_ky_trang_thai = 'du') nhưng CHƯA công bố — số liệu y màn xem (fn_bc_ky_xem: số liệu chốt +
+//              phần GV nhập lúc in). Thùy 06/11: "lớp chưa xong hết thì em nào xong làm pdf em đấy". KHÔNG công bố hộ.
 // Chỉ ĐỌC DB (ưu tiên DATABASE_URL_RO).
 import pg from 'pg'
 import fs from 'node:fs'
@@ -187,8 +189,20 @@ const rows = jsonFile ? [{ snapshot: JSON.parse(fs.readFileSync(jsonFile, 'utf8'
      and ($2::text is null or b.mon = $2) and ($3::text is null or b.snapshot->'lop'->>'ten' = $3)
      and ($4::text is null or h.id::text = $4 or h.ma_hs = $4)
    order by b.snapshot->'lop'->>'ten', b.snapshot->'hs'->>'ho_ten', b.mon`, [ky.id, mon, lop, hs])).rows
+const soCongBo = rows.length
+if (!jsonFile && process.argv.includes('--gom-du')) {
+  const du = (await c.query(`
+    select b.hoc_sinh_id, b.mon from bao_cao_ph_ky b join hoc_sinh h on h.id = b.hoc_sinh_id,
+           lateral public.fn_bc_ky_trang_thai(array[b.hoc_sinh_id], b.mon, b.ky_id) t
+     where b.ky_id = $1 and b.cong_bo_at is null and t.trang_thai = 'du'
+       and ($2::text is null or b.mon = $2) and ($3::text is null or h.id::text = $3 or h.ma_hs = $3)`, [ky.id, mon, hs])).rows
+  for (const r of du) {
+    const d = (await c.query(`select public.fn_bc_ky_xem($1, $2, $3) x`, [r.hoc_sinh_id, r.mon, ky.id])).rows[0].x.du_lieu
+    if (!lop || d.lop?.ten === lop) rows.push({ snapshot: d })
+  }
+}
 if (!jsonFile) await c.end()
-console.log(`Kì "${ky.ten}": ${rows.length} báo cáo đã công bố → ${OUT}`)
+console.log(`Kì "${ky.ten}": ${soCongBo} báo cáo đã công bố${rows.length > soCongBo ? ` + ${rows.length - soCongBo} đã điền đủ chưa công bố` : ''} → ${OUT}`)
 if (!rows.length) process.exit(0)
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'bckypdf-'))
