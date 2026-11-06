@@ -473,6 +473,16 @@ export async function chamLamLai(cau: BaiTestCau, dapAnHs: unknown): Promise<{ v
   return { verdict: g.verdict, key: cau.dap_an_key }
 }
 
+/** HS bấm "Bỏ qua" (không biết làm, Thùy 06/11): ghi câu là SAI (verdict wrong, 0 điểm, dap_an_hs = null) — vào mastery như một lần làm sai. Idempotent theo (bai_lam, câu). */
+export async function boQuaCau(baiLamId: string, cau: BaiTestCau): Promise<ChamKetQua> {
+  const { data, error } = await supabase.from('bai_lam_cau').upsert({
+    bai_lam_id: baiLamId, bai_test_cau_id: cau.id, dap_an_hs: null,
+    verdict: 'wrong', diem: 0, cham_boi: 'exact', cham_at: new Date().toISOString(),
+  }, { onConflict: 'bai_lam_id,bai_test_cau_id' }).select('id').single()
+  if (error) throw error
+  return { verdict: 'wrong', cham_boi: 'exact', key: cau.dap_an_key, baiLamCauId: (data as { id: string }).id }
+}
+
 export async function traLoiCau(baiLamId: string, cau: BaiTestCau, dapAnHs: unknown): Promise<ChamKetQua> {
   const g = await chamCau(cau, dapAnHs)
   // dung_sai: lưu điểm thô THPT (0/0.1/0.25/0.5/1); loại khác: theo verdict × trọng số câu.

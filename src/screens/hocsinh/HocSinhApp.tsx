@@ -12,7 +12,7 @@ import { MON_LUYEN_CHUNG_MINH } from '../../lib/mon'
 import { LamDienO } from './DienOCau'
 import { KeoThaCau } from './KeoThaCau'
 import {
-  listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, chamLamLai, baoSai, nopBai, chuCaiChon, chiSoCuaChu,
+  listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, boQuaCau, chamLamLai, baoSai, nopBai, chuCaiChon, chiSoCuaChu,
   getETDe, luuDapAnET, nopET, getETDapAnDaLuu, xemGoiY, daHetHan, laNopMuon,
   type BaiTestCuaHS, type BaiTestFull, type BaiLamCau, type ETCauDe, type ETReveal,
 } from '../../lib/testonline'
@@ -98,7 +98,7 @@ import { nhiemVuCuaToi, type NhiemVuCuaToi } from '../../lib/nhiemvu'
 import { anhBac } from './gami/hinh'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
-type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean; boQua?: boolean }
+type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean; boQua?: boolean; daBo?: boolean /* bấm "Bỏ qua" ⇒ ghi SAI */ }
 type MenhDeSnap = { noi_dung: string; loi_giai?: string | null }
 
 const LOAI_TEN: Record<string, string> = { btvn: 'BTVN', et: 'ET', giao_trinh: 'Bài tập', de_thi: 'Đề thi', bo_tro: 'Bổ trợ', bo_tro_test: 'Kiểm tra cuối buổi', retest: 'Kiểm tra lại', thi_thu: 'Thi thử' }
@@ -1036,7 +1036,7 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
       const init: Record<string, CauState> = {}
       for (const [cauId, r] of Object.entries(f.daLam)) {
         const c = f.caus.find((x) => x.id === cauId)
-        init[cauId] = { chon: (r as BaiLamCau).dap_an_hs as number | string, kq: { verdict: (r as BaiLamCau).verdict ?? 'wrong', key: c?.dap_an_key, baiLamCauId: (r as BaiLamCau).id } }
+        init[cauId] = { chon: (r as BaiLamCau).dap_an_hs as number | string, kq: { verdict: (r as BaiLamCau).verdict ?? 'wrong', key: c?.dap_an_key, baiLamCauId: (r as BaiLamCau).id }, daBo: (r as BaiLamCau).dap_an_hs == null }
       }
       setSt(init)
       nhung?.onTai?.(f.caus.length, Object.keys(f.daLam).length)
@@ -1107,6 +1107,22 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
     const next = [...cur]; next[i] = v
     setSt((s) => ({ ...s, [cau.id]: { chon: next, kq: null } }))
   }
+
+  // "Bỏ qua" (Thùy 06/11): em không biết làm ⇒ GHI SAI (mastery coi như làm sai), hiện đáp án + lời giải như câu sai. Vòng làm lại thì chỉ ghi trên máy.
+  async function boQuaSai() {
+    if (!cau || !baiLamId || busy || daLo) return
+    setBusy(true)
+    try {
+      const kq = vongLai ? { verdict: 'wrong', key: cau.dap_an_key, baiLamCauId: '' } : await boQuaCau(baiLamId, cau)
+      setSt((s) => ({ ...s, [cau.id]: { chon: s[cau.id]?.chon ?? null, kq: { verdict: kq.verdict, key: kq.key, baiLamCauId: kq.baiLamCauId }, daBo: true } }))
+    } catch (e) { console.error(e) } finally { setBusy(false) }
+  }
+
+  // "Làm sau" (Thùy 06/11): dễ làm trước, khó làm sau — nhảy sang câu CHƯA làm kế tiếp (vòng lại đầu bài nếu hết), KHÔNG ghi gì; câu này vẫn chưa làm, quay lại làm được.
+  const cauChuaLamKe = (() => {
+    for (let k = 1; k < total; k++) { const j = (idx + k) % total; if (!st[caus[j].id]?.kq && !st[caus[j].id]?.boQua) return j }
+    return -1
+  })()
 
   async function xacNhan() {
     if (!cau || !baiLamId || !cs || !daDu) return
@@ -1287,7 +1303,7 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
               <p className="text-[21px] font-semibold" style={{ color: txtMau }}>
                 {nhung
                   ? (vd === 'correct' ? '✦ Trúng đòn! Em làm đúng rồi' : vd === 'partial' ? '✦ Trúng một phần' : '💥 Trượt đòn — xem lời giải nhé')
-                  : vd === 'correct' ? '🎉 Đúng hết!' : vd === 'partial' ? '👍 Đúng một phần' : '😔 Chưa đúng'}
+                  : vd === 'correct' ? '🎉 Đúng hết!' : vd === 'partial' ? '👍 Đúng một phần' : cs?.daBo ? '⏭ Em đã bỏ qua — tính là chưa đúng' : '😔 Chưa đúng'}
                 {laDS && <span className="ml-1 text-[17.5px] font-normal">· {dsDung}/{menhDe.length} ý đúng</span>}
               </p>
               {cau.loai_cau === 'tra_loi_ngan' && vd !== 'correct' && <p className="mt-1 text-[17.5px]" style={{ color: MAU.muted }}>Đáp án đúng: <b style={{ color: MAU.dung }}>{String(cau.dap_an_key)}</b></p>}
@@ -1320,6 +1336,8 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
         )}
         {!daLo ? (
           <>
+          {!nhung && cauChuaLamKe >= 0 && <button onClick={() => setIdx(cauChuaLamKe)} disabled={busy} className={desktop ? 'px-6 py-3.5 text-[19px] font-medium disabled:opacity-40' : 'px-3 py-3 text-[16.5px] disabled:opacity-40'} style={NUT_PHU}>Làm sau</button>}
+          {!choBoQua && !nhung && <button onClick={() => { if (confirm('Bỏ qua câu này? Câu sẽ tính là chưa đúng.')) void boQuaSai() }} disabled={busy} className={desktop ? 'px-6 py-3.5 text-[19px] font-medium disabled:opacity-40' : 'px-3 py-3 text-[16.5px] disabled:opacity-40'} style={NUT_PHU}>Bỏ qua</button>}
           {choBoQua && <button onClick={() => cau && setSt((s) => ({ ...s, [cau.id]: { chon: s[cau.id]?.chon ?? null, kq: null, boQua: true } }))} className={desktop ? 'px-6 py-3.5 text-[19px] font-medium' : 'px-3 py-3 text-[16.5px]'} style={NUT_PHU}>Bỏ qua, xem đáp án</button>}
           <button onClick={xacNhan} disabled={busy || !daDu}
             className={`flex-1 font-semibold disabled:opacity-40 ${nhung ? 'tran-phien ' : ''}${desktop ? 'py-3.5 text-[21px]' : 'py-3 text-[20px]'}`} style={nhung ? NUT_TRAN : NUT_CHINH}>
