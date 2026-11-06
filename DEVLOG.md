@@ -79086,3 +79086,7 @@ Thùy nêu 4 việc, làm được 3:
 - **Phát hiện ngay lúc test:** 17 em Toán K12 vừa có điểm MT 12B1 2026-11-01 ghi lúc 17:52–17:56 (sau lần chốt 86 em) ⇒ chốt lại luôn trong cùng migration (dry-run: sau chốt 0 lệch thi/hạng/phụ lục). Tổng đã chốt lại hôm nay: 86 + 17 = 103 em Toán (K6/K10/K11/K12).
 - **Kiểm:** dry-run rollback dương tính (giả lập 1 điểm MT K11 sửa ⇒ 25/25 em K11 bị báo, K9 0) + âm tính; màn Report phụ huynh → Học kì lớp 12B1 mở bình thường, không lỗi console, không cảnh báo thừa. **Chưa bấm thử nút trên màn thật** (cần dữ liệu lệch thật + quyền admin trên trình duyệt thật).
 - **Nợ:** Điểm MT còn tiếp tục được nhập ⇒ nên chốt lại sau khi nhập xong; thẻ Kết luận mới (p12) vẫn chưa vào 300+ bản chốt cũ (chờ phiên Báo cáo kì quyết); môn KHTN chưa kiểm lệch (hàm áp chung, 58 bản chốt).
+
+## 06/11 — App HS: robot góp ý chỉnh được (Thùy: "vướng vào các ô của học sinh")
+- **Làm:** `gopy/NutGopYNoi.tsx` `LinhVatGopY` — kéo dời chỗ (chạm = mở góp ý, kéo >8px = dời) · nút −/+ thu nhỏ (bỏ bong bóng, robot 54px) / phóng to · nút ✕ ẩn ⇒ còn mép nhỏ ở cạnh gần nhất, chạm hiện lại đúng cỡ cũ. Cỡ + vị trí lưu `localStorage hs_gopy_linh_vat` (tiện ích riêng từng máy), kẹp trong màn khi tải/đổi cỡ, chừa 30px cho 2 nút bên phải.
+- **Kiểm:** trang xem mẫu `hs.html?xem=gami` 1024×768 + 375×812: thu nhỏ/ẩn/hiện lại/kéo/chạm mở tấm góp ý/tải lại giữ chỗ ✓. Chưa thử trên iPad thật (cảm ứng).
