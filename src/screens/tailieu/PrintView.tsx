@@ -579,7 +579,13 @@ function DocBdm({ full, bdm, nguon, gv, scope, lt = true, onlyBuoiId, perHS = fa
         ? ((perHS && roster.length)
           ? roster.map((hs) => <div key={hs.id} className="pv-hs-recto">{bdm.buoi.filter(coBtvn).map((b) => sheet(b, hs.ho_ten, hs.id + b.id))}</div>)
           : bdm.buoi.filter(coBtvn).map((b) => sheet(b, undefined, b.id)))
-        : bdm.buoi.map((b) => (
+        : bdm.buoi.map((b) => {
+          // ⭐ Số câu ĐẾM LIÊN TỤC cả BUỔI (nhóm → dạng bài → "Luyện thêm" → "Bài luyện thêm"), KHÔNG reset mỗi dạng — đúng như app HS
+          // (bai_test_cau.thu_tu = thứ tự phẳng của phiếu; app hiện "Câu {thu_tu}"). Thùy 06/11: phiếu bắt đầu mỗi dạng từ câu 1 ⇒ lệch app.
+          // Đếm theo THỨ TỰ VẼ (biểu thức JSX chạy trên xuống) nên đừng đảo thứ tự các khối bên dưới mà không sửa cả cauCuaBuoi/getGiaoTrinhBuoiCaus.
+          let dem = 0
+          const cauItems = (cs: CauHoi[]) => cs.map((c) => { dem += 1; return { key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: dem, c, gv, cheDoHinh: hinhCheDoByCau[c.ma_cau], nguon: nguon?.[c.ma_cau] }) } })
+          return (
           <section key={b.id} className="pv-buoi gtbk">
             {b.tieu_de && <BuoiMasthead title={b.tieu_de} lopTen={lopTen} ngayPhat={ngayPhat} />}
             {b.nhom.map((n) => (
@@ -602,7 +608,7 @@ function DocBdm({ full, bdm, nguon, gv, scope, lt = true, onlyBuoiId, perHS = fa
                       {d.hien_vi_du && d.vi_du?.trim() && parseLyThuyetBlocks(d.vi_du).some((x) => x.loai !== 'text')
                         ? <LyThuyetBody text={d.vi_du} />
                         : d.hien_vi_du && <LtBlock title="Ví dụ" lt={d.vi_du?.trim() || d.vi_du_file_url ? { noi_dung: d.vi_du ?? '', file_url: d.vi_du_file_url, ten_file: null } : null} />}
-                      {d.caus.length > 0 && <CauFlow hop items={caus(d.caus).map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau[c.ma_cau], nguon: nguon?.[c.ma_cau] }) }))} />}
+                      {d.caus.length > 0 && <CauFlow hop items={cauItems(caus(d.caus))} />}
                     </div>
                   </section>
                 ))}
@@ -614,7 +620,7 @@ function DocBdm({ full, bdm, nguon, gv, scope, lt = true, onlyBuoiId, perHS = fa
                       <span className="gtbk-pill">{pill}</span>
                     </div>
                     <div className="gtbk-card-body">
-                      <CauFlow hop items={caus(n.chua_phan!.caus).map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau[c.ma_cau], nguon: nguon?.[c.ma_cau] }) }))} />
+                      <CauFlow hop items={cauItems(caus(n.chua_phan!.caus))} />
                     </div>
                   </section>
                 )}
@@ -624,13 +630,14 @@ function DocBdm({ full, bdm, nguon, gv, scope, lt = true, onlyBuoiId, perHS = fa
               <section className="pv-sec gtbk-card">
                 <div className="gtbk-card-head"><div className="gtbk-card-title">Bài luyện thêm</div><span className="gtbk-pill">{pill}</span></div>
                 <div className="gtbk-card-body">
-                  <CauFlow hop items={caus(b.chua_khop!.caus).map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau[c.ma_cau], nguon: nguon?.[c.ma_cau] }) }))} />
+                  <CauFlow hop items={cauItems(caus(b.chua_khop!.caus))} />
                 </div>
               </section>
             )}
             {scope === 'all' && coBtvn(b) && sheet(b, undefined, 'btvn-' + b.id)}
           </section>
-        ))}
+          )
+        })}
     </div>
   )
 }
@@ -658,6 +665,7 @@ function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByC
     const last = groups[groups.length - 1]
     if (last && last.cd === cd) last.dangs.push(d); else groups.push({ cd, dangs: [d] })
   }
+  let dem = 0 // số câu đã in trong buổi — số câu ĐẾM LIÊN TỤC xuyên các dạng, khớp app HS (Thùy 06/11)
   const btvnHere = scope === 'all' && (buoi.btvns.some((b) => b.caus.length) || buoi.ontaps.some((b) => b.caus.length))
   // ⭐ 08-19 (Thùy báo "BTVN 4A1 trống trang 1"): doc BTVN THUẦN (không title, không dạng — buildBuois
   // dựng buổi 'implicit') thì `.pv-buoi` bọc ngoài KHÔNG thêm gì (không masthead, groups rỗng) — chỉ còn
@@ -686,7 +694,7 @@ function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByC
           {/* 1 chuyên đề: chỉ "Lý thuyết" (tên chuyên đề ĐÃ ở dải buổi → khỏi lặp). Nhiều chuyên đề: ghi tên để phân biệt.
               Ẩn cả khối chuyên đề nếu MỌI dạng trong nhóm đều tắt hien_lt (vd buổi chỉ ôn dạng cũ). */}
           {lt && g.dangs.some((d) => d.hien_lt !== false) && <LtBlock title={groups.length > 1 ? `Lý thuyết chuyên đề: ${tenCd[g.cd] ?? ''}` : 'Lý thuyết'} lt={ltCd[g.cd]} big />}
-          {g.dangs.map((d) => <DangBlock key={d.id} p={d} gv={gv} lt={lt} colByCau={colByCau} hinhCheDoByCau={hinhCheDoByCau} />)}
+          {g.dangs.map((d) => { const bd = dem; dem += d.caus.length; return <DangBlock key={d.id} p={d} gv={gv} lt={lt} colByCau={colByCau} hinhCheDoByCau={hinhCheDoByCau} batDau={bd} /> })}
         </Fragment>
       ))}
       {/* Giáo trình Hình: LUYỆN — mỗi mô hình 1 card, bài trọn ý đánh số liên tục trong buổi */}
@@ -797,7 +805,7 @@ export function CauList({ kieu, children }: { kieu?: string; children: React.Rea
 // 1 DẠNG = 1 card BK: đầu card (mã dạng · tên dạng · pill "Bài luyện") → thân (LT·ví dụ nếu có → câu).
 // Card KHÔNG break-inside:avoid (dạng dài hơn 1 trang vẫn phải chảy, không thì paged.js cắt mất nội dung);
 // chỉ giữ đầu card không mồ côi (break-after:avoid trong CSS).
-function DangBlock({ p, gv, lt = true, colByCau, hinhCheDoByCau }: { p: PhanResolved; gv: boolean; lt?: boolean; colByCau: Record<string, number>; hinhCheDoByCau?: Record<string, CheDoHinh> }) {
+function DangBlock({ p, gv, lt = true, colByCau, hinhCheDoByCau, batDau = 0 }: { p: PhanResolved; gv: boolean; lt?: boolean; colByCau: Record<string, number>; hinhCheDoByCau?: Record<string, CheDoHinh>; batDau?: number }) {
   return (
     <section className="pv-sec gtbk-card">
       <div className="gtbk-card-head">
@@ -812,7 +820,7 @@ function DangBlock({ p, gv, lt = true, colByCau, hinhCheDoByCau }: { p: PhanReso
         )}
         {p.caus.length > 0 && (
           <>
-            <CauFlow hop items={p.caus.map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau?.[c.ma_cau] }) }))} />
+            <CauFlow hop items={p.caus.map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: batDau + i + 1, c, gv, cheDoHinh: hinhCheDoByCau?.[c.ma_cau] }) }))} />
           </>
         )}
       </div>
