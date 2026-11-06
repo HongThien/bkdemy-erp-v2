@@ -79109,3 +79109,5 @@ Thùy nêu 4 việc, làm được 3:
 - **Kiểm:** trang xem mẫu `hs.html?xem=gami` 1024×768 + 375×812: thu nhỏ/ẩn/hiện lại/kéo/chạm mở tấm góp ý/tải lại giữ chỗ ✓. Chưa thử trên iPad thật (cảm ứng).
 
 - 06/11 khuya — Thùy 'lớp chưa xong hết thì em nào xong làm pdf em đấy': dung-pdf.mjs thêm --gom-du (in cả em đã điền đủ chưa công bố, số liệu theo fn_bc_ky_xem, KHÔNG công bố hộ). SAI: lần đầu chạy không lọc lớp ⇒ in lại cả 96 file đã có, Thùy nhắc ⇒ dừng, chạy riêng 13 lớp thiếu. Tổng 196 PDF ở _bao-cao-ky-pdf/Nửa kì 1.
+
+- Thùy 'Công bố luôn': công bố 74/74 báo cáo đã điền đủ còn lại (actor Thùy) ⇒ 196 công bố = 196 PDF; còn 44 đang nhập dở.
