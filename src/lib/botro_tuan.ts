@@ -81,7 +81,10 @@ export async function chotTuan(mon: string, onTienDo?: (xong: number, tong: numb
   // Thùy 29/10 (spec-truong-khoi.md §4.1): chốt tuần ĐÓNG BĂNG số dạng yếu đầu tuần từ cache dang_yeu_hien_tai (trong fn_botro_chot_tuan)
   // ⇒ làm mới cache từng khối của môn cho đủ trước (DB tính, lô 10 em/lần; lần đầu cả môn ~2 phút).
   for (const khoi of [...new Set(ls.map((l) => l.khoi).filter(Boolean) as string[])]) {
-    for (let con = 1, vong = 0; con > 0 && vong < 100; vong++) { con = await lamMoiDangYeu(mon, khoi, 10); onDangYeu?.(con) }
+    // 06/11: mỗi lệnh DB làm theo hộp thời gian (~4 s, lưu từng em) ⇒ lặp tới khi hết em cũ. Không tiến triển 3 vòng liền (có lượt chấm mới đang đổ vào) ⇒ thôi, đừng quay 100 vòng.
+    for (let con = 1, vong = 0, truoc = Infinity, dung = 0; con > 0 && vong < 100 && dung < 3; vong++) {
+      con = await lamMoiDangYeu(mon, khoi, 10); dung = con >= truoc ? dung + 1 : 0; truoc = con; onDangYeu?.(con)
+    }
   }
   const dangTheoDoi = await danhSachTuan(mon, 'theo_doi')
   const giu = { hsIds: new Set(dangTheoDoi.ds.map((x) => x.hoc_sinh_id)), out: new Map<string, ChuyenDeStat[]>() }

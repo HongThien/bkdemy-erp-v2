@@ -79028,3 +79028,10 @@ Thùy nêu 4 việc, làm được 3:
 - Bỏ ô nhận xét thêm theo mục (0 báo cáo có dữ liệu; cột nx_them giữ). Thêm card KẾT LUẬN y report tháng: ket_luan_muc (7 mức như bao_cao_ph, màu/nhãn dùng chung MUC_HEX của ReportCard) + ket_luan chữ; _bc_ky_phan_gv trả 'ket_luan'; khoá sau công bố. Bản gửi PH + PDF (dung-pdf.mjs) hiện Kết luận ngay sau điểm năng lực.
 - Kế hoạch: chỉ còn 3 phương án chung (chiến dịch cải thiện riêng · hoạt động bổ trợ sắp tới · tiếp tục duy trì và phát huy). 17 phương án cũ → KHO RÁC (xoa_at), không xoá: 17/39 nháp đang tích phương án cũ, màn vẫn hiện kèm nhãn 'cũ' để GV tự bỏ tích, chữ vẫn in.
 - Kiểm: ROLLBACK (kết luận ra đúng, phương án cũ vẫn resolve) + màn local đọc DOM (Browser pane bị ẩn nên ảnh chụp đứng hình, bấm toạ độ không ăn ⇒ điều khiển bằng JS).
+
+## 06/11 — "statement timeout" khi Chốt tuần: tìm gốc + hộp thời gian (Thùy 06/11: "rất hay gặp … tìm phương án triệt để")
+- **Đo:** `fn_qlcl_lam_moi` khối 12 vượt trần 8 s (lô 10 em × 1,6 s); gốc = `_do_o_bdm` nhánh câu xoá quét 9.566 anh em của dạng cũ T112000000 × ~20 câu/em. Cả lô bị huỷ ⇒ không lưu ⇒ lặp mãi.
+- **Làm:** mig `202611061457_do_o_bdm_anh_em_dung_som` (ĐÃ ÁP) — dừng sớm (0 khác trên 323+113 ca đối chiếu) + `fn_qlcl_lam_moi` hộp thời gian 4 s; `botro_tuan.ts` chốt chặn không-tiến-triển; `scripts/_do_thoi_gian_chot_tuan.mjs`. Spec §38.
+- **Kiểm:** kịch bản xấu nhất 13 khối Toán: trước 1 khối lỗi, sau 0 lỗi, lệnh chậm nhất 3,7 s; chạy script 6 lần sạch (1 lần trước đó báo 1–2 lỗi khối 7 mà em không bắt được nội dung — nghi tranh khoá với dùng thật vì bản script đầu giữ khoá cache ~70 s; đã sửa script, 6 lần sau sạch).
+- **Tự phê:** các lần đo ban đầu (tm1/dry51) cũng giữ khoá cache vài phút trong giờ làm việc — có thể đã làm chậm người dùng thật trong lúc đó. Từ nay đo theo từng khối.
+- **Chưa kiểm trên app thật** (cần bấm Chốt tuần với phiên đăng nhập thật). **Nợ:** nuốt lỗi ở WidgetDangYeu/chotTuan; môn khác chưa đo.
