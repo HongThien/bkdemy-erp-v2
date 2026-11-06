@@ -11,7 +11,7 @@ import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, getKhoiRan
 import { tenHienThiDs } from '../../lib/hoten'
 import { ChonKy, BaoCaoKyBody } from './BaoCaoKy'
 import { NutThangNhanXet } from './ThangNhanXet'
-import { congBoLopBcKy, listBcKyTrangThai, chotSoLieuBcKy, laAdminBcKy } from '../../lib/baoCaoKy'
+import { congBoLopBcKy, listBcKyTrangThai, chotSoLieuBcKy, laAdminBcKy, type BcKyTT } from '../../lib/baoCaoKy'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
 const curYM = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` }
@@ -62,7 +62,7 @@ export default function ReportPHScreen() {
   // Học kì (spec-bao-cao-ky.md, 04/11): báo cáo khác hẳn tháng — dùng chung chọn Môn → Lớp → HS.
   const [cheDo, setCheDo] = useState<'thang' | 'ky'>('thang')
   const [kyId, setKyId] = useState<string | null>(null)
-  const [ttKy, setTtKy] = useState<Record<string, 'cong_bo' | 'nhap'>>({})
+  const [ttKy, setTtKy] = useState<Record<string, BcKyTT>>({})
   const [kyBusy, setKyBusy] = useState(false)
   // Chốt số liệu kì (Thùy 05/11: snap 1 lần, không tính lại) — chỉ admin; từng em 1 lời gọi (tránh trần thời gian của API)
   const [laAdmin, setLaAdmin] = useState(false)
@@ -181,7 +181,7 @@ Số liệu tính lúc này sẽ được giữ cố định, không tính lại
                 <button disabled={i <= 0} onClick={() => setHsId(roster[i - 1].id)} className="h-10 w-10 shrink-0 rounded-lg border border-slate-200 bg-white text-[18px] text-slate-600 disabled:opacity-30">‹</button>
                 <select value={hsId ?? ''} onChange={(e) => setHsId(e.target.value || null)} className="h-10 min-w-0 flex-1 rounded-lg border border-slate-200 bg-white px-2 text-[14px] font-semibold text-slate-800">
                   <option value="">— Chọn học sinh ({roster.length}) —</option>
-                  {roster.map((r) => <option key={r.id} value={r.id}>{cheDo === 'ky' && ttKy[r.id] ? (ttKy[r.id] === 'cong_bo' ? '✓ ' : '• ') : ''}{r.ho_ten}</option>)}
+                  {roster.map((r) => <option key={r.id} value={r.id}>{cheDo === 'ky' && ttKy[r.id] ? (ttKy[r.id] === 'cong_bo' ? '✓ ' : ttKy[r.id] === 'du' ? '● ' : '○ ') : ''}{r.ho_ten}</option>)}
                 </select>
                 <button disabled={i < 0 || i >= roster.length - 1} onClick={() => setHsId(roster[i + 1].id)} className="h-10 w-10 shrink-0 rounded-lg border border-slate-200 bg-white text-[18px] text-slate-600 disabled:opacity-30">›</button>
               </div>) })()}
@@ -203,7 +203,10 @@ Số liệu tính lúc này sẽ được giữ cố định, không tính lại
                         ? <img src={r.anh_url} alt="" className="h-6 w-6 shrink-0 rounded-full object-cover" />
                         : <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-[10px] font-semibold text-indigo-600">{r.ho_ten.trim().split(/\s+/).pop()?.[0]?.toUpperCase() ?? '?'}</span>}
                       <span className="truncate">{tenHT[i]}</span>
-                      {cheDo === 'ky' && ttKy[r.id] && <span title={ttKy[r.id] === 'cong_bo' ? 'Đã công bố báo cáo kì' : 'Đang nhập'} className={`ml-auto h-2 w-2 shrink-0 rounded-full ${ttKy[r.id] === 'cong_bo' ? 'bg-emerald-500' : 'bg-amber-400'}`} />}
+                      {/* vàng = đang nhập dở · xanh lá = điền đủ (sẵn sàng công bố) · ✓ xanh = đã công bố (Thùy 06/11) */}
+                      {cheDo === 'ky' && ttKy[r.id] && (ttKy[r.id] === 'cong_bo'
+                        ? <span title="Đã công bố báo cáo kì" className="ml-auto shrink-0 text-[12px] font-bold leading-none text-emerald-600">✓</span>
+                        : <span title={ttKy[r.id] === 'du' ? 'Đã điền đủ — sẵn sàng công bố' : 'Đang nhập dở'} className={`ml-auto h-2 w-2 shrink-0 rounded-full ${ttKy[r.id] === 'du' ? 'bg-emerald-500' : 'bg-amber-400'}`} />)}
                     </button>
                   )) })()}
                   {roster.length === 0 && <p className="px-3 py-2 text-[12px] text-slate-500">Lớp trống.</p>}

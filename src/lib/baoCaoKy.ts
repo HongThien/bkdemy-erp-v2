@@ -94,14 +94,15 @@ export async function congBoLopBcKy(lopId: string, mon: string, kyId: string): P
   if (error) throw error
   return data as { cong_bo: number; bo_qua: number }
 }
-// Trạng thái cả lớp cho cột trái: đã công bố / đang nhập (có dòng) — không dòng = chưa nhập gì.
-export async function listBcKyTrangThai(hsIds: string[], mon: string, kyId: string): Promise<Record<string, 'cong_bo' | 'nhap'>> {
+// Trạng thái từng em cho danh sách HS (Thùy 06/11: điền đủ ⇒ chấm xanh lá): 'nhap' dở · 'du' đủ để công bố · 'cong_bo'.
+// Luật "đủ" ở DB (fn_bc_ky_trang_thai → _bc_ky_thieu) — không tự đếm ở client. Không có = chưa nhập gì.
+export type BcKyTT = 'cong_bo' | 'du' | 'nhap'
+export async function listBcKyTrangThai(hsIds: string[], mon: string, kyId: string): Promise<Record<string, BcKyTT>> {
   if (!hsIds.length) return {}
-  const { data, error } = await supabase.from('bao_cao_ph_ky').select('hoc_sinh_id, cong_bo_at')
-    .eq('mon', mon).eq('ky_id', kyId).in('hoc_sinh_id', hsIds).limit(500)
+  const { data, error } = await supabase.rpc('fn_bc_ky_trang_thai', { p_hs: hsIds, p_mon: mon, p_ky: kyId })
   if (error) throw error
-  const out: Record<string, 'cong_bo' | 'nhap'> = {}
-  for (const r of (data ?? []) as { hoc_sinh_id: string; cong_bo_at: string | null }[]) out[r.hoc_sinh_id] = r.cong_bo_at ? 'cong_bo' : 'nhap'
+  const out: Record<string, BcKyTT> = {}
+  for (const r of (data ?? []) as { hoc_sinh_id: string; trang_thai: BcKyTT }[]) out[r.hoc_sinh_id] = r.trang_thai
   return out
 }
 

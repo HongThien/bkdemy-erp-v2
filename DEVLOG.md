@@ -79051,3 +79051,9 @@ Thùy nêu 4 việc, làm được 3:
 - Thùy chọn (06/11): EXP + thành tựu tính BTVN bù TỪ THÁNG 11 theo tháng buổi mẹ; T9–T10 giữ nguyên EXP/Level/xu đã chốt.
 - Mig `202611061522_btvn_bu_tinh_cho_buoi_me` ĐÃ ÁP (`--only`), sinh từ định nghĩa LIVE + thay đúng đoạn (mỗi đoạn khớp 1 lần), nguồn nối duy nhất `fn_btvn_bu_theo_buoi_me`: `fn_matrix_lop` (ô buổi mẹ = % bài bù / không làm, thay "vắng" — kéo theo hồ sơ HS Trợ lý qua `_troly_matrix`) · `fn_completion_theo_lop` (làm bù = phải nộp + đã làm) · `fn_thanh_tuu_thang` + `fn_recompute_exp_thang` (từ T11, ledger neo buổi mẹ, buổi mẹ đã có kết quả của em thì không lấy bù) · trigger `trg_btvn_bu_exp_buoi_me` (TA ghi trạng thái nộp BTVN bù ⇒ tính lại EXP lớp×tháng buổi mẹ, từ T11).
 - Kiểm ROLLBACK (lớp 2037…, T10): ma trận vang 9→3 (+5 done, +1 không làm) · completion 61/47→67/53 · EXP T10 không đổi, trigger T10 không chạy. Bản thử mốc T10 (chỉ trong ROLLBACK): trigger tính lại +6 dòng / +1.194 EXP; thành tựu B4 +5 em đạt, B5 +2. Sau áp: live ma trận đúng như thử. Không đổi việc chấm TA (buổi thường chỉ HS có mặt; BTVN bù có luồng riêng) và mastery (vốn đã đọc mọi buổi).
+
+
+## 2026-11-06 — Báo cáo HỌC KÌ: chấm danh sách HS 3 trạng thái (mig 202611061539 ĐÃ ÁP) — Thùy 'điền xong thì tròn vàng chuyển xanh lá'
+- fn_bc_ky_trang_thai(p_hs[], mon, ky) ⇒ nhap / du (đúng luật _bc_ky_thieu: điểm + sai số + mọi mục nhận xét) / cong_bo; client bỏ tự đọc bảng.
+- Danh sách HS: vàng = dở · xanh lá = đủ · ✓ xanh = đã công bố; ô chọn HS điện thoại ○ / ● / ✓. Sau mỗi lần lưu hỏi lại DB (nền, gộp lần lưu dồn dập 400ms) để chấm đổi màu ngay.
+- Lúc áp: 50 báo cáo đủ, 30 dở. Kiểm màn local 9A1: Hoàng Nhật Minh 'đủ', Chu Châu Anh 'dở'.

@@ -2,9 +2,9 @@
 // KHÁC hẳn report tháng. 5 PHẦN (Thùy 04/11): đánh giá chủ đề→chuyên đề · kết quả thi + hạng · thái độ học tập (chuyên cần + BTVN) ·
 // nhận xét + kế hoạch + điểm năng lực (GV nhập) · phụ lục điểm thi toàn khối. Số liệu = fn_bc_ky_tinh (nháp) / snapshot (đã công bố).
 // ERP chỉ NHẬP + TÍNH + CHỤP SNAPSHOT; PDF gửi PH dựng ngoài ERP từ snapshot (spec A8).
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
-  listKyHoc, themKyHoc, xemBcKy, getBcKyNhap, luuBcKyNhap, congBoBcKy, moLaiBcKy,
+  listKyHoc, themKyHoc, xemBcKy, listBcKyTrangThai, type BcKyTT, getBcKyNhap, luuBcKyNhap, congBoBcKy, moLaiBcKy,
   BC_KY_NHAP_TRONG, type KyHoc, type BcKyData, type BcKyNhap, type BcKyDonVi, type BcKyChuDe, type BcKyGoiY,
 } from '../../lib/baoCaoKy'
 import { SoLieuKy, PhuLucKy } from './SoLieuKy'
@@ -59,7 +59,7 @@ export function ChonKy({ kyId, onChange }: { kyId: string | null; onChange: (id:
 // ── Thân báo cáo kì của 1 HS — MÀN LÀM VIỆC CỦA GV (Thùy 05/11): phần nhập chiếm trọn màn; số liệu HS ở ngăn phải bật/tắt
 // bằng thanh dọc (nhớ trạng thái khi đổi HS, sống tới F5); bản gửi phụ huynh (1 cột điện thoại) chỉ mở khi bấm "Xem bản gửi PH".
 const NHO_KY = { moSoLieu: false }
-export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; mon: string; kyId: string; onTrangThai: (hsId: string, tt: 'cong_bo' | 'nhap') => void }) {
+export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; mon: string; kyId: string; onTrangThai: (hsId: string, tt: BcKyTT) => void }) {
   const [data, setData] = useState<BcKyData | null>(null)
   const [congBoAt, setCongBoAt] = useState<string | null>(null)
   const [nhap, setNhap] = useState<BcKyNhap>(BC_KY_NHAP_TRONG)
@@ -71,6 +71,15 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
   const [soLieuDt, setSoLieuDt] = useState(false)   // điện thoại: số liệu mở popup toàn màn (ngăn phải chỉ có từ md)
   const dm = useDanhMucNx()
   const setMoSoLieu = (v: boolean) => { NHO_KY.moSoLieu = v; setMoSoLieuS(v) }
+  // chấm trạng thái ở danh sách HS: hỏi lại DB sau khi lưu (vàng = dở · xanh lá = đủ). Lưu dồn dập ⇒ chỉ lấy lần hỏi cuối.
+  const hoiRef = useRef(0)
+  const hoiTrangThai = () => {
+    const lan = ++hoiRef.current
+    setTimeout(() => {
+      if (lan !== hoiRef.current) return
+      listBcKyTrangThai([hsId], mon, kyId).then((m) => { if (lan === hoiRef.current && m[hsId]) onTrangThai(hsId, m[hsId]) }).catch(() => {})
+    }, 400)
+  }
   useEffect(() => {
     setData(null); setLoading(true); setLoi(null)
     Promise.all([xemBcKy(hsId, mon, kyId), getBcKyNhap(hsId, mon, kyId)])
@@ -91,10 +100,10 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
             setData((d) => d && { ...d, nang_luc: { diem: n.diem_du_doan, sai_so: n.sai_so }, nhan_xet: n.nhan_xet, ke_hoach: n.ke_hoach,
               ket_luan: n.ket_luan_muc || n.ket_luan ? { muc: n.ket_luan_muc, noi_dung: n.ket_luan } : null,
               ...(dm ? { nhan_xet_chon: dungNhanXetChon(dm, n.nx_chon), ke_hoach_chon: dungKeHoachChon(dm, n.kh_chon) } : {}) })
-            onTrangThai(hsId, 'nhap')
+            hoiTrangThai()
           }}
           onCongBo={async () => { const x = await xemBcKy(hsId, mon, kyId); setData(x.du_lieu); setCongBoAt(x.cong_bo_at); setNhap((n) => ({ ...n, cong_bo_at: x.cong_bo_at })); onTrangThai(hsId, 'cong_bo') }}
-          onMoLai={async () => { const x = await xemBcKy(hsId, mon, kyId); setData(x.du_lieu); setCongBoAt(null); setNhap((n) => ({ ...n, cong_bo_at: null })); onTrangThai(hsId, 'nhap') }} />
+          onMoLai={async () => { const x = await xemBcKy(hsId, mon, kyId); setData(x.du_lieu); setCongBoAt(null); setNhap((n) => ({ ...n, cong_bo_at: null })); hoiTrangThai() }} />
       </div>
       {moSoLieu
         ? <aside className={`sticky top-0 hidden md:block ${cao} w-[44%] max-w-[720px] shrink-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm`}>
