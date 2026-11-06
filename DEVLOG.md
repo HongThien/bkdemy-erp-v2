@@ -79099,3 +79099,5 @@ Thùy nêu 4 việc, làm được 3:
 - App PH (repo bkdemy-ph-app): Phần 4 thêm Kết luận 7 mức + nhận xét theo thang + phương án kế hoạch (khuôn snapshot v3); giữ hiển thị nhận xét tổng cũ. Kiểm local 3100 bằng link xem-thử PH em Hoàng Nhật Minh 9A1: hiện đúng. Push af21a61 (gồm 2 commit 04/11 đang giữ: FDW + màn báo cáo kì).
 - PDF: scripts/bao-cao-ky/dung-pdf.mjs theo từng lớp ⇒ ../_bao-cao-ky-pdf/Nửa kì 1/<lớp>/ (ngoài repo, có tên HS).
 - Còn treo: 39 báo cáo KHTN công bố trước luật top 10 ⇒ snapshot giữ hạng cũ (15 em khác hạng) — chờ Thùy có công bố lại không.
+
+- 06/11 21h — Thùy 'Công bố lại': mở lại + công bố lại 39 báo cáo KHTN theo luật top 10 (actor Thùy): 38/39 xong, 14 em đổi hạng (7K1 6 · 7K2 2 · 9K1 5 · 9K2 1). Lỗi 1: Chu Bảo Ngọc HS0083 9K2 — bản đã công bố 19:02 có điểm 8,5 nhưng sai_so NULL (lọt qua luật đủ — chưa rõ đường nào), công bố lại bị chặn ⇒ giữ bản cũ (rollback cả lượt). Dựng lại PDF 7K2 + 8K1.
