@@ -79103,3 +79103,7 @@ Thùy nêu 4 việc, làm được 3:
 - 06/11 21h — Thùy 'Công bố lại': mở lại + công bố lại 39 báo cáo KHTN theo luật top 10 (actor Thùy): 38/39 xong, 14 em đổi hạng (7K1 6 · 7K2 2 · 9K1 5 · 9K2 1). Lỗi 1: Chu Bảo Ngọc HS0083 9K2 — bản đã công bố 19:02 có điểm 8,5 nhưng sai_so NULL (lọt qua luật đủ — chưa rõ đường nào), công bố lại bị chặn ⇒ giữ bản cũ (rollback cả lượt). Dựng lại PDF 7K2 + 8K1.
 
 - Vá: lỗi giẫm nhau lúc công bố (Chu Bảo Ngọc) — mig 202611062105 ĐÃ ÁP: fn_bc_ky_cong_bo khoá dòng FOR UPDATE trước khi xét đủ + chụp snapshot. Quét lại: chỉ 1 báo cáo đã công bố thiếu điểm/sai số (em này) — GV mở lại, nhập sai số, công bố lại.
+
+## 06/11 — App HS: robot góp ý chỉnh được (Thùy: "vướng vào các ô của học sinh")
+- **Làm:** `gopy/NutGopYNoi.tsx` `LinhVatGopY` — kéo dời chỗ (chạm = mở góp ý, kéo >8px = dời) · nút −/+ thu nhỏ (bỏ bong bóng, robot 54px) / phóng to · nút ✕ ẩn ⇒ còn mép nhỏ ở cạnh gần nhất, chạm hiện lại đúng cỡ cũ. Cỡ + vị trí lưu `localStorage hs_gopy_linh_vat` (tiện ích riêng từng máy), kẹp trong màn khi tải/đổi cỡ, chừa 30px cho 2 nút bên phải.
+- **Kiểm:** trang xem mẫu `hs.html?xem=gami` 1024×768 + 375×812: thu nhỏ/ẩn/hiện lại/kéo/chạm mở tấm góp ý/tải lại giữ chỗ ✓. Chưa thử trên iPad thật (cảm ứng).
