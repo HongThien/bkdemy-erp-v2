@@ -45,6 +45,16 @@ node scripts/phien/ban-do.mjs them_cau <<'HET'                           # ≤ 2
 [{"nhanh":"dai","loai_cau":"tu_luan","noi_dung":"...","loi_giai":"...","dap_an":"...","ten_de_goc":"tên tài liệu",
   "phan":{"ket_qua":"cao","dang_bai_id":"NDB..."}}]
 HET
+node scripts/phien/ban-do.mjs duyet_cau '{"nhom_id":"NNB…"}'          # duyệt câu (cả nhóm / cả dạng / danh sách mã) — bo_duyet_cau ngược lại
+node scripts/phien/ban-do.mjs sua_cau <<'HET'                          # sửa đề / phương án / đáp án / lời giải (chỉ trường có mặt)
+[{"ma_cau":"…","dap_an":"…","loi_giai":"…"}]
+HET
+node scripts/phien/ban-do.mjs kho_rac <<'HET'                          # câu hỏng ⇒ kho rác (khôi phục được) — hỏi người mở phiên trước
+[{"ma_cau":"…","ly_do":"…"}]
+HET
+node scripts/phien/ban-do.mjs anh_pdf '{"file":"<pdf>","trang":3,"vung":[0.1,0.2,0.6,0.5],"ten":"cau12"}'   # cắt hình từ PDF
+node scripts/phien/ban-do.mjs anh_docx '{"file":"<docx>"}'                                                 # tách hình từ Word
+node scripts/phien/ban-do.mjs gan_anh '{"ma_cau":"…","file":"<png vừa cắt>","o":"de"}'                   # gắn hình vào câu
 node scripts/phien/ban-do.mjs them_dang_bai '{"nhom_id":"...","ten":"...","mo_ta":"..."}'   # khi trưởng khối gật thêm dạng
 node scripts/phien/ban-do.mjs sua '{"loai":"dang_bai","id":"...","mo_ta":"..."}'            # khi trưởng khối gật sửa mô tả
 ```
@@ -56,6 +66,12 @@ node scripts/phien/ban-do.mjs sua '{"loai":"dang_bai","id":"...","mo_ta":"..."}'
 - Câu Đại phân vào chủ đề vùng `toan`; câu Hình giải tích (nhánh `hgt`) vào chủ đề vùng `hgt`.
 - **Phiên KHTN** (05/11): kho `khtn`, bản đồ KHTN không chia vùng — `them_cau` dùng `"nhanh":"khtn"` (bỏ trống cũng được),
   dạng bài mã `KDB…`, chủ đề mã của bản đồ KHTN. Câu Toán không phân được trong phiên KHTN và ngược lại (DB chặn).
+
+## Ảnh của câu (06/11)
+
+Câu có hình mà chưa gắn ⇒ tìm hình ở tài liệu gốc: PDF thì `anh_pdf` (đoán vùng theo tỉ lệ trang, cắt rộng một chút), Word thì
+`anh_docx` (đọc `van_ban.md` để biết hình nằm sau câu nào). **Luôn Read ảnh vừa cắt để soát** đúng hình, đủ nhãn điểm, không dính
+chữ câu khác — sai thì cắt lại với vùng khác. Đúng rồi mới `gan_anh`, rồi sửa đề bỏ dòng "[có hình — chưa đưa hình]" bằng `sua_cau`.
 
 ## Cách làm một lượt
 

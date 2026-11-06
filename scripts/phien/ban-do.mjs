@@ -5,6 +5,13 @@
 // `node scripts/phien/ban-do.mjs …`. Script này KHÔNG nhận mã phiên từ tham số — chỉ từ PHIEN_ID —
 // nên Claude không trỏ được sang phiên/khối khác. Mọi lệnh đi qua RPC fn_phien_bd_* (chỉ service_role):
 // DB tự kiểm phiên đang mở, đóng vai người mở phiên, kiểm lại quyền trưởng khối, nút thuộc đúng khối.
+// CÂU TRONG KHO (06/11, Thùy: trưởng khối đủ quyền sửa kho) — câu phải đúng môn + khối của phiên:
+//   duyet_cau '{"ma_cau":["…"]}' | '{"nhom_id":"…"}' | '{"dang_bai_id":"…"}'     duyệt (cả bản sao) · bo_duyet_cau cùng tham số
+//   sua_cau <<'HET'  [{"ma_cau":"…","noi_dung":"…","lua_chon":[…],"dap_an":"…","loi_giai":"…"}]  HET     (chỉ trường có mặt mới sửa)
+//   kho_rac <<'HET'  [{"ma_cau":"…","ly_do":"…"}]  HET                          đưa vào kho rác (khôi phục được ở màn kho)
+//   anh_pdf '{"file":"<pdf>","trang":3,"vung":[x0,y0,x1,y1],"ten":"cau12"}'      cắt hình (vung = tỉ lệ 0–1 của trang) ⇒ in đường dẫn PNG
+//   anh_docx '{"file":"<docx>"}'                                                 tách mọi hình trong Word ⇒ in danh sách PNG
+//   gan_anh '{"ma_cau":"…","file":"<png đã cắt>","o":"de|dap_an|ca_hai"}'       upload + gắn vào câu. XEM ẢNH (Read) TRƯỚC khi gắn.
 // XOÁ (05/11, Thùy: trưởng khối đủ quyền): xoa_chu_de '{"id":..}' · xoa_chuyen_de '{"chu_de_id":..,"chuyen_de_id":..}' ·
 // xoa_nhom '{"id":..}' · xoa_dang_bai '{"id":..}' — chỉ chạy sau khi người mở phiên gật trong chat.
 //
@@ -192,7 +199,7 @@ if (lenh === 'kho-tong') {
 }
 
 let ts
-const thamSo = con[0] ?? (lenh === 'phan_dang' || lenh === 'them_cau' ? await docStdin() : '{}')
+const thamSo = con[0] ?? (['phan_dang', 'them_cau', 'sua_cau', 'kho_rac'].includes(lenh) ? await docStdin() : '{}')
 try { ts = JSON.parse(thamSo) } catch { loi(`Tham số phải là JSON (trong dấu nháy đơn, hoặc qua heredoc với phan_dang), vd: node scripts/phien/ban-do.mjs ${lenh} '{"ten":"..."}'`) }
 
 if (lenh === 'doc') {
@@ -220,6 +227,69 @@ if (lenh === 'phan_dang') {
   if (error) loi(error.message)
   console.log(`Phân lô: ${data.ok} câu OK · ${data.loi} câu lỗi`)
   for (const x of data.chi_tiet ?? []) if (!x.ok) console.log(`  ✗ ${x.ma_cau}: ${x.loi}`)
+  process.exit(0)
+}
+
+if (lenh === 'duyet_cau' || lenh === 'bo_duyet_cau') {
+  const { data, error } = await svc.rpc('fn_phien_kho_duyet', { p_phien: PHIEN, p_ts: { ...ts, duyet: lenh === 'duyet_cau' } })
+  if (error) loi(error.message)
+  console.log(`${lenh === 'duyet_cau' ? 'Duyệt' : 'Bỏ duyệt'}: ${data.ok} câu OK · ${data.loi} câu lỗi${data.ghi_chu ? ' — ' + data.ghi_chu : ''}`)
+  for (const x of data.chi_tiet ?? []) console.log(`  ✗ ${x.ma_cau}: ${x.loi}`)
+  process.exit(0)
+}
+
+if (lenh === 'sua_cau' || lenh === 'kho_rac') {
+  if (!Array.isArray(ts)) loi(`${lenh} cần một MẢNG câu (xem tro-giup).`)
+  const { data, error } = await svc.rpc(lenh === 'sua_cau' ? 'fn_phien_kho_sua_cau' : 'fn_phien_kho_rac', { p_phien: PHIEN, p_ds: ts })
+  if (error) loi(error.message)
+  console.log(`${lenh === 'sua_cau' ? 'Sửa' : 'Kho rác'}: ${data.ok} câu OK · ${data.loi} câu lỗi`)
+  for (const x of data.chi_tiet ?? []) console.log(`  ✗ ${x.ma_cau}: ${x.loi}`)
+  process.exit(0)
+}
+
+// ẢNH: cắt / tách vào thư mục tạm TRONG repo (Claude đọc được bằng Read để soát), rồi gan_anh mới upload + ghi DB.
+if (lenh === 'anh_pdf' || lenh === 'anh_docx' || lenh === 'gan_anh') {
+  const { execFileSync } = await import('node:child_process')
+  const { mkdirSync, existsSync, readdirSync, writeFileSync } = await import('node:fs')
+  const { resolve, extname, basename } = await import('node:path')
+  const tam = join(root, 'scripts', 'phien', '.tam', PHIEN); mkdirSync(tam, { recursive: true })
+  const TAI_LIEU = (env('PHIEN_TAI_LIEU_DIR') ?? '').split(';').map((x) => x.trim()).filter(Boolean).map((x) => resolve(x).toLowerCase())
+  const trongDuoc = (f) => { const a = resolve(f).toLowerCase(); return a.startsWith(resolve(tam).toLowerCase()) || TAI_LIEU.some((d) => a.startsWith(d)) }
+  if (!ts.file || !existsSync(ts.file)) loi(`Không thấy file: ${ts.file ?? '(thiếu "file")'}`)
+  if (!trongDuoc(ts.file)) loi('File phải nằm trong thư mục tài liệu hoặc thư mục ảnh tạm của phiên.')
+  if (lenh === 'anh_pdf') {
+    const trang = Number(ts.trang), v = ts.vung ?? [0, 0, 1, 1]
+    if (!(trang >= 1) || v.length !== 4 || v.some((x) => !(x >= 0 && x <= 1)) || v[2] <= v[0] || v[3] <= v[1]) loi('Cần "trang" ≥ 1 và "vung":[x0,y0,x1,y1] tỉ lệ 0–1 (x1>x0, y1>y0).')
+    const goc = join(tam, `_trang${trang}`)
+    try { execFileSync('pdftoppm', ['-f', String(trang), '-l', String(trang), '-r', '200', '-png', '-singlefile', ts.file, goc], { stdio: 'pipe' }) }
+    catch (e) { loi(`pdftoppm lỗi (máy bot cần cài poppler): ${String(e.message).slice(0, 200)}`) }
+    const { PNG } = (await import('pngjs')).default
+    const anh = PNG.sync.read(readFileSync(`${goc}.png`))
+    const x0 = Math.floor(v[0] * anh.width), y0 = Math.floor(v[1] * anh.height), w = Math.max(1, Math.floor((v[2] - v[0]) * anh.width)), h = Math.max(1, Math.floor((v[3] - v[1]) * anh.height))
+    const cat = new PNG({ width: w, height: h })
+    PNG.bitblt(anh, cat, x0, y0, Math.min(w, anh.width - x0), Math.min(h, anh.height - y0), 0, 0)
+    const ra = join(tam, `${String(ts.ten ?? `trang${trang}`).replace(/[^\w.-]/g, '_')}.png`)
+    writeFileSync(ra, PNG.sync.write(cat))
+    console.log(`Đã cắt: ${ra}  (${w}×${h}px; cả trang: ${goc}.png) — đọc ảnh này để soát trước khi gan_anh`)
+  } else if (lenh === 'anh_docx') {
+    const ra = join(tam, basename(ts.file, extname(ts.file)).replace(/[^\w.-]/g, '_'))
+    try { execFileSync(process.execPath, [join(root, 'scripts', 'anh', 'docx_trich.mjs'), ts.file, ra], { stdio: 'pipe' }) }
+    catch (e) { loi(`Tách Word lỗi: ${String(e.message).slice(0, 200)}`) }
+    const ds = existsSync(join(ra, 'png')) ? readdirSync(join(ra, 'png')) : []
+    console.log(`Đã tách ${ds.length} hình vào ${join(ra, 'png')} · văn bản đánh dấu vị trí hình: ${join(ra, 'van_ban.md')}`)
+    for (const f of ds) console.log(`  ${join(ra, 'png', f)}`)
+  } else {
+    if (!ts.ma_cau) loi('Thiếu "ma_cau".')
+    const duoi = extname(ts.file).toLowerCase().replace('.', '')
+    if (!['png', 'jpg', 'jpeg'].includes(duoi)) loi('Chỉ gắn ảnh png / jpg.')
+    const duongDan = `${crypto.randomUUID()}.${duoi}`
+    const { error: eUp } = await svc.storage.from('kho-anh').upload(duongDan, readFileSync(ts.file), { contentType: duoi === 'png' ? 'image/png' : 'image/jpeg', upsert: false })
+    if (eUp) loi(`Upload lỗi: ${eUp.message}`)
+    const url = svc.storage.from('kho-anh').getPublicUrl(duongDan).data.publicUrl
+    const { data, error } = await svc.rpc('fn_phien_kho_anh', { p_phien: PHIEN, p_ma_cau: ts.ma_cau, p_url: url, p_o: ts.o ?? 'ca_hai' })
+    if (error) loi(error.message)
+    console.log(`OK gan_anh ${data.ma_cau} (${data.o}): ${data.url}`)
+  }
   process.exit(0)
 }
 

@@ -94,3 +94,6 @@ dist-dautu/
 
 # Phiếu lương TA tháng 9 xuất ra từ script (chứa số lương — không commit)
 scripts/luong-ta-t9/_out/
+
+# ảnh tạm của Phiên Claude (cắt từ tài liệu trước khi gắn vào câu)
+scripts/phien/.tam/
