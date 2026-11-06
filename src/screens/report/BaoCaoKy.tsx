@@ -8,7 +8,7 @@ import {
   BC_KY_NHAP_TRONG, type KyHoc, type BcKyData, type BcKyNhap, type BcKyDonVi, type BcKyChuDe, type BcKyGoiY,
 } from '../../lib/baoCaoKy'
 import { SoLieuKy, PhuLucKy } from './SoLieuKy'
-import { MUC_HEX } from './ReportCard'
+import { MUC_HEX } from '../../lib/ketLuan'
 import { useDanhMucNx, NhapNhanXet, NhapKeHoach, dungNhanXetChon, dungKeHoachChon, mucNhoDangDung, NHAN_MUC, MAU_MUC } from './ThangNhanXet'
 
 const pctCls = (p: number | null) => p == null ? 'text-slate-400' : p >= 80 ? 'text-emerald-700' : p >= 50 ? 'text-amber-700' : 'text-rose-700'
@@ -206,43 +206,45 @@ function NhapKy({ d: bc, hsId, mon, kyId, nhap, congBoAt, goiY, moSoLieu, onMoSo
   async function chay(fn: () => Promise<void>) { setBusy(true); setLoi(null); try { await fn() } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(false) } }
   const the = 'rounded-2xl border border-slate-200 bg-white shadow-sm'
   const tieuDe = 'text-[12px] font-bold uppercase tracking-wider text-slate-500'
-  const o = 'h-9 w-20 rounded-lg border border-slate-200 px-2 text-center text-[15px] font-bold text-slate-800 disabled:bg-slate-50'
+  const o = 'h-8 w-14 rounded-lg border border-slate-200 px-1 text-center text-[15px] font-bold text-slate-800 disabled:bg-slate-50'
   return (
     <div className="space-y-3">
       {/* Thanh trên: ai · trạng thái · điểm năng lực · công bố — luôn trong tầm mắt */}
-      <div className={`${the} flex flex-wrap items-center gap-x-5 gap-y-2 px-4 py-3`}>
+      <div className={`${the} flex flex-wrap items-center gap-x-3 gap-y-2 px-4 py-2.5`}>
         <div className="min-w-0">
-          <div className="truncate text-[17px] font-bold text-slate-800">{bc.hs.ho_ten}</div>
-          <div className="text-[12px] text-slate-500">{bc.mon}{bc.lop.khoi ? ` ${bc.lop.khoi}` : ''} · {bc.lop.ten ?? '—'} · {bc.ky.ten}
+          <div className="flex items-center gap-2">
+            <span className="truncate text-[16px] font-bold text-slate-800">{bc.hs.ho_ten}</span>
+            {khoa
+              ? <span className="whitespace-nowrap rounded bg-emerald-50 px-1.5 py-px text-[11px] font-semibold text-emerald-700" title={`Công bố ${new Date(congBoAt!).toLocaleString('vi-VN')}`}>✓ Đã công bố</span>
+              : <span className="whitespace-nowrap rounded bg-amber-50 px-1.5 py-px text-[11px] font-semibold text-amber-700" title="Phụ huynh chưa thấy">Nháp</span>}
+          </div>
+          <div className="truncate text-[11.5px] text-slate-500">{bc.lop.ten ?? '—'} · {bc.ky.ten}
             {' · '}{bc.so_lieu_chot_at
-              ? <span className="text-emerald-700" title="Số liệu đã chốt — không tính lại">📌 số liệu chốt {new Date(bc.so_lieu_chot_at).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}</span>
-              : <span className="text-amber-600" title="Chưa chốt — số liệu đang tính trực tiếp">số liệu chưa chốt</span>}</div>
+              ? <span className="text-emerald-700" title="Số liệu đã chốt — không tính lại">📌 chốt {new Date(bc.so_lieu_chot_at).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit' })}</span>
+              : <span className="text-amber-600" title="Chưa chốt — số liệu đang tính trực tiếp">chưa chốt số liệu</span>}</div>
         </div>
-        {khoa
-          ? <span className="rounded-md bg-emerald-50 px-2 py-1 text-[11.5px] font-semibold text-emerald-700">✓ Đã công bố {new Date(congBoAt!).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}</span>
-          : <span className="rounded-md bg-amber-50 px-2 py-1 text-[11.5px] font-semibold text-amber-700">Nháp — phụ huynh chưa thấy</span>}
-        <div className="flex flex-wrap items-center gap-2 md:border-l md:border-slate-200 md:pl-5">
-          <span className={`${tieuDe} whitespace-nowrap`}>Điểm năng lực</span>
+        <div className="flex items-center gap-1.5 md:border-l md:border-slate-200 md:pl-3">
+          <span className={`${tieuDe} whitespace-nowrap`} title="Điểm năng lực = điểm dự đoán ± sai số">Năng lực</span>
           <input value={diem} disabled={khoa} onChange={(e) => setDiem(e.target.value)} onBlur={() => void luu('diem')} inputMode="decimal" placeholder="điểm" title="Điểm dự đoán (0–10, bội 0,25)" className={o} />
           <span className="text-[15px] font-bold text-slate-400">±</span>
           <input value={saiSo} disabled={khoa} onChange={(e) => setSaiSo(e.target.value)} onBlur={() => void luu('saiso')} inputMode="decimal" placeholder="sai số" title="Sai số (bội 0,25)" className={o} />
           {goiY?.du_doan != null && (
             <span className="flex items-center gap-1.5 whitespace-nowrap text-[12px] text-indigo-700">
-              🤖 {so1(goiY.du_doan)} ± {so1(goiY.sai_so)} <span className="text-slate-400">({goiY.so_lan} lần thi)</span>
+              <span title={`Gợi ý từ ${goiY.so_lan} lần thi trong kì`}>🤖 {so1(goiY.du_doan)} ± {so1(goiY.sai_so)}</span>
               {!khoa && (soOrNull(diem) !== goiY.du_doan || soOrNull(saiSo) !== goiY.sai_so) &&
                 <button onClick={dungGoiY} className="rounded-md bg-indigo-50 px-2 py-0.5 font-semibold hover:bg-indigo-100">Dùng</button>}
             </span>
           )}
         </div>
-        <div className="ml-auto flex items-center gap-2">
-          {saved && <span className="text-[11.5px] text-emerald-600">Đã lưu</span>}
-          {!khoa && conThieu > 0 && <span className="text-[12px] text-amber-600">còn {conThieu} mục chưa chọn</span>}
-          <button onClick={onXemPL} className="rounded-lg px-2.5 py-1.5 text-[12.5px] font-semibold text-amber-700 hover:bg-amber-50" title="Phụ lục điểm thi toàn khối, lọc theo lớp">🏆 Phụ lục</button>
-          <button onClick={onXemPH} className="rounded-lg px-2.5 py-1.5 text-[12.5px] font-semibold text-indigo-600 hover:bg-indigo-50" title="Bản 1 cột gửi phụ huynh">📱 Bản gửi PH</button>
-          {<button onClick={onMoSoLieu} className={`rounded-lg px-2.5 py-1.5 text-[12.5px] font-semibold text-slate-600 hover:bg-slate-100 ${moSoLieu ? 'md:hidden' : ''}`}>📊 Số liệu</button>}
+        <div className="ml-auto flex items-center gap-1">
+          {saved && <span className="text-[12px] text-emerald-600" title="Đã lưu">✓</span>}
+          <button onClick={onXemPL} className="rounded-lg px-2 py-1.5 text-[15px] hover:bg-amber-50" title="Phụ lục điểm thi toàn khối">🏆</button>
+          <button onClick={onXemPH} className="rounded-lg px-2 py-1.5 text-[15px] hover:bg-indigo-50" title="Xem bản gửi phụ huynh">📱</button>
+          <button onClick={onMoSoLieu} className={`rounded-lg px-2 py-1.5 text-[15px] hover:bg-slate-100 ${moSoLieu ? 'md:hidden' : ''}`} title="Số liệu học sinh">📊</button>
           {khoa
             ? <button disabled={busy} onClick={() => void chay(async () => { await moLaiBcKy(hsId, mon, kyId); await onMoLai() })} className="rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50">Mở lại để sửa</button>
-            : <button disabled={busy || !du} onClick={() => void chay(async () => { await congBoBcKy(hsId, mon, kyId); await onCongBo() })} title={du ? 'Chụp số liệu + công bố cho phụ huynh' : 'Cần điểm, sai số và đủ mọi mục nhận xét'} className="rounded-lg bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">✓ Chốt &amp; công bố</button>}
+            : <button disabled={busy || !du} onClick={() => void chay(async () => { await congBoBcKy(hsId, mon, kyId); await onCongBo() })} title={du ? 'Chụp số liệu + công bố cho phụ huynh' : 'Cần điểm, sai số và đủ mọi mục nhận xét'} className="relative ml-1 whitespace-nowrap rounded-lg bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">✓ Chốt &amp; công bố
+                {conThieu > 0 && <span className="absolute -right-1.5 -top-2 rounded-full bg-amber-500 px-1.5 text-[10.5px] font-bold leading-[16px] text-white" title={`Còn ${conThieu} mục nhận xét chưa chọn`}>{conThieu}</span>}</button>}
         </div>
         {loi && <p className="w-full rounded-md bg-rose-50 px-2 py-1 text-[12px] text-rose-700">{loi}</p>}
       </div>

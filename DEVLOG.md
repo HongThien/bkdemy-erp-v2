@@ -79057,3 +79057,11 @@ Thùy nêu 4 việc, làm được 3:
 - fn_bc_ky_trang_thai(p_hs[], mon, ky) ⇒ nhap / du (đúng luật _bc_ky_thieu: điểm + sai số + mọi mục nhận xét) / cong_bo; client bỏ tự đọc bảng.
 - Danh sách HS: vàng = dở · xanh lá = đủ · ✓ xanh = đã công bố; ô chọn HS điện thoại ○ / ● / ✓. Sau mỗi lần lưu hỏi lại DB (nền, gộp lần lưu dồn dập 400ms) để chấm đổi màu ngay.
 - Lúc áp: 50 báo cáo đủ, 30 dở. Kiểm màn local 9A1: Hoàng Nhật Minh 'đủ', Chu Châu Anh 'dở'.
+
+
+## 2026-11-06 — Báo cáo HỌC KÌ: header 1 dòng + đưa lên APP GIÁO VIÊN (Thùy 06/11)
+- Header màn GV nhập: 3 dòng ⇒ 1 dòng ở 1366px (đo DOM: cao 72px = tên + dòng phụ). Bỏ nhãn dài ('Điểm năng lực' → 'Năng lực', '(n lần thi)' vào title), trạng thái thành nhãn nhỏ cạnh tên, 3 nút 🏆 📱 📊 chỉ còn biểu tượng (chữ ở title), 'còn N mục' thành số nhỏ trên nút Chốt, ô điểm w-14.
+- MUC_HEX (7 mức kết luận) tách ra src/lib/ketLuan.ts; ReportCard re-export ⇒ app GV dùng mà không kéo html2canvas/mastery (build gv: 0 file có html2canvas).
+- App GV: ô '📑 Báo cáo học kì' trang chủ (chỉ khi GV có lớp vai gv) ⇒ BaoCaoKyGv.tsx: chọn kì · lớp phụ trách · em (ô chọn ‹ › kèm ○ ● ✓) rồi dùng NGUYÊN BaoCaoKyBody của ERP (một nguồn). Không có: tạo kì, sửa thang, chốt số liệu, công bố cả lớp. Nhớ kì/lớp/em khi rời màn.
+- Quyền (jwt GV Tạ Quốc Cường 9A1, ROLLBACK): la_thanh_vien true ⇒ đọc báo cáo (số liệu đã chốt) + ghi nháp theo policy; _bc_ky_la_admin false ⇒ chốt số liệu bị chặn. Không SET ROLE authenticated được (giới hạn claude_build) ⇒ RLS bảng chưa thử trực tiếp, chỉ suy từ policy la_thanh_vien.
+- Chưa mở được màn BaoCaoKyGv bằng tài khoản GV thật (admin dev không có lớp vai gv ⇒ ô không hiện).

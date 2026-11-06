@@ -17,6 +17,7 @@ import HocSinhView from './HocSinhView'
 import LopView, { type LopSubKey } from './LopView'
 import DashGv from './DashGv'
 import GopY from './GopY'
+import BaoCaoKyGv from './BaoCaoKyGv'
 
 type NvKey = 'danhgia' // Thùy 28/10: bỏ 'Bài trên lớp' khỏi việc của GV
 type TabKey = 'home' | 'viec' | 'hs' | 'lop' | 'dash'
@@ -46,6 +47,7 @@ export default function GvHome({ profile, quyen }: { profile: MyProfile; quyen: 
   // Buổi ẢO hôm nay của lớp mình (TKB) → box "Trước buổi" trang chủ; bấm = mở tab Lớp đúng lớp + sub trước buổi.
   const [buoiHomNay, setBuoiHomNay] = useState<BuoiAo[]>([])
   const [lopInit, setLopInit] = useState<{ lopId: string; sub: LopSubKey; n: number } | null>(null)
+  const [bcKy, setBcKy] = useState(false)   // màn Báo cáo học kì (Thùy 06/11)
   const coQuyen = quyen.laAdmin || quyen.chucNang.includes('buoihoc') // cùng leaf với tab chấm bên ERP
 
   // Lớp phụ trách vai GV (chốt ④) — nguồn cho tab Học sinh + Lớp.
@@ -75,6 +77,7 @@ export default function GvHome({ profile, quyen }: { profile: MyProfile; quyen: 
     return () => document.removeEventListener('visibilitychange', h)
   }, [view]) // eslint-disable-line
 
+  if (bcKy) return <BaoCaoKyGv lops={lopsGv} onBack={() => setBcKy(false)} />
   if (view) return <ChamBuoiGv view={view} onBack={() => { setView(null); reload(true) }} />
 
   // Sắp theo thời gian GẦN → XA (CEO 31/08) — preview box trang chủ cũng ăn theo thứ tự này.
@@ -85,7 +88,7 @@ export default function GvHome({ profile, quyen }: { profile: MyProfile; quyen: 
     <div className="flex h-[100dvh] flex-col bg-[#f5f5f7]" style={{ fontFamily: "'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif" }}>
       <div className="min-h-0 flex-1 overflow-auto">
         {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} dashTom={dashTom}
-          buoiHomNay={buoiHomNay} coLop={lopsGv.length > 0} onTruocBuoi={moTruocBuoi} />}
+          buoiHomNay={buoiHomNay} coLop={lopsGv.length > 0} onTruocBuoi={moTruocBuoi} onBaoCaoKy={() => setBcKy(true)} />}
         {tab === 'viec' && <ViecTab tasks={tasks} now={now} homNay={homNay} onOpen={setView} />}
         {tab === 'hs' && <HocSinhView lops={lopsGv} />}
         {tab === 'lop' && <LopView key={lopInit?.n ?? 0} lops={lopsGv} init={lopInit} />}
@@ -137,10 +140,10 @@ function HeaderBar({ profile, sub }: { profile: MyProfile; sub: string }) {
 }
 
 // ── TRANG CHỦ: hero mỏng + box dashboard + 2 box nghiệp vụ ──
-function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, dashTom, buoiHomNay, coLop, onTruocBuoi }: {
+function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now, onGo, dashTom, buoiHomNay, coLop, onTruocBuoi, onBaoCaoKy }: {
   profile: MyProfile; homNay: string; loading: boolean; coQuyen: boolean
   tasks: MyTask[]; canLam: MyTask[]; noCua: (k: NvKey) => number; now: number; onGo: (t: TabKey) => void
-  dashTom: GvDash | null; buoiHomNay: BuoiAo[]; coLop: boolean; onTruocBuoi: (lopId: string) => void
+  dashTom: GvDash | null; buoiHomNay: BuoiAo[]; coLop: boolean; onTruocBuoi: (lopId: string) => void; onBaoCaoKy: () => void
 }) {
   const tenGoi = (profile.nhanSu.ho_ten ?? '').trim().split(/\s+/).pop() || 'bạn'
   const quaHan = canLam.filter((t) => mucDeadline(t.deadline, now) === 'qua_han').length
@@ -164,6 +167,18 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
         {!loading && coQuyen && <BoxDashThang d={dashTom} onGo={() => onGo('dash')} />}
 
         {!loading && coLop && <BoxTruocBuoi buoi={buoiHomNay} onOpen={onTruocBuoi} onGoLop={() => onGo('lop')} />}
+
+        {/* Báo cáo học kì gửi phụ huynh — GV chấm thang nhận xét, kết luận, kế hoạch (Thùy 06/11) */}
+        {!loading && coLop && (
+          <button onClick={onBaoCaoKy} className="mb-3 flex w-full items-center gap-2.5 rounded-2xl border border-slate-200/70 bg-white p-3.5 text-left shadow-sm active:bg-slate-50">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-[21px]">📑</span>
+            <div className="min-w-0 flex-1">
+              <p className="text-[15px] font-bold text-slate-800">Báo cáo học kì</p>
+              <p className="text-[12px] text-slate-400">Nhận xét · kết luận · kế hoạch gửi phụ huynh</p>
+            </div>
+            <span className="text-slate-300">›</span>
+          </button>
+        )}
 
         {!loading && coQuyen && (
           <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-2">

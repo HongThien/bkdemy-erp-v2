@@ -5,6 +5,7 @@
 // (cùng cột với Report PH — 1 ảnh cho (HS, môn, tháng)). NÓ KHÔNG động vào `cong_bo_at`, nên trao giải chụp
 // KHÔNG bằng công bố report cho PH.
 import { forwardRef } from 'react'
+import { MUC_HEX } from '../../lib/ketLuan'
 import { createRoot } from 'react-dom/client'
 import html2canvas from 'html2canvas'
 import type { TongQuanHS } from '../../lib/mastery'
@@ -21,15 +22,7 @@ type Bucket = { pct: number | null; n: number }
 
 
 // ── ẢNH GỬI PHỤ HUYNH — thẻ inline-hex (né oklch Tailwind v4), layout kiểu tab Kết quả app PH ──
-export const MUC_HEX: Record<string, { bg: string; fg: string; emoji: string; label: string }> = {
-  rat_tot: { bg: '#ecfdf5', fg: '#047857', emoji: '🌟', label: 'Con học rất tốt' },
-  dat_yeu_cau: { bg: '#f0fdf4', fg: '#15803d', emoji: '✅', label: 'Con đạt yêu cầu' },
-  tien_bo: { bg: '#f0f9ff', fg: '#0369a1', emoji: '📈', label: 'Con đang tiến bộ' },
-  cai_thien_thai_do: { bg: '#fffbeb', fg: '#b45309', emoji: '⚠️', label: 'Con cần cải thiện thái độ học tập' },
-  cai_thien_kien_thuc: { bg: '#fffbeb', fg: '#b45309', emoji: '⚠️', label: 'Con cần cải thiện kiến thức và kĩ năng' },
-  van_de_thai_do: { bg: '#fff1f2', fg: '#be123c', emoji: '🆘', label: 'Con gặp vấn đề về thái độ học tập' },
-  van_de_kien_thuc: { bg: '#fff1f2', fg: '#be123c', emoji: '🆘', label: 'Con gặp vấn đề về kiến thức và kĩ năng' },
-}
+export { MUC_HEX }   // định nghĩa ở lib/ketLuan.ts (06/11 — app GV dùng chung mà không kéo html2canvas)
 export const s10 = (pct: number | null) => pct == null ? '—' : (pct / 10).toFixed(1)
 export const hexPct = (pct: number | null) => pct == null ? '#cbd5e1' : pct >= 80 ? '#059669' : pct >= 50 ? '#d97706' : '#e11d48'
 
