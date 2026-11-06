@@ -98,7 +98,7 @@ function bieuDo(thi) {
 
 const vienHang = (u) => u.hang == null || !u.tong ? '' : `<span class="viên" style="background:#475569">Hạng ${u.hang}/${u.tong}</span>`
 const vienMuc = (u) => u.muc ? `<span class="viên" style="background:${u.muc === 'nang_cao' ? '#7c3aed' : '#0ea5e9'}">${u.muc === 'nang_cao' ? 'Nâng cao' : 'Cơ bản'}</span>` : ''
-const nLan = (u, dai) => u.n === 0 ? (dai ? 'chưa có lần đánh giá trong 60 ngày cuối kì' : 'chưa đo') : `${u.n} lần đánh giá`
+const nLan = (u) => `${u.n} lần đánh giá`
 const O = (v, nhan, t) => `<div class="o ${t ?? 'm'}"><b>${v}</b><span>${esc(nhan)}</span></div>`
 
 function dungHtml(d) {
@@ -106,11 +106,16 @@ function dungHtml(d) {
   const nghi = cc ? cc.vang + cc.vang_phep : 0
   const tt = (n, ten, mo) => `<div class="tt"><b class="n">${n}</b><h2>${esc(ten)}</h2>${mo ? `<span>${esc(mo)}</span>` : ''}</div>`
 
-  const p1 = d.danh_gia.chu_de.length ? d.danh_gia.chu_de.map((cd) => `
+  // Chưa đo (không có lần đánh giá trong 60 ngày cuối kì) = không quan trọng ⇒ KHÔNG hiện (Thùy 06/11), cả chủ đề lẫn chuyên đề
+  // chủ đề chỉ có 1 chuyên đề trùng tên (vd "Hình" → "Hình") ⇒ hiện 1 dòng thôi (Thùy 06/11)
+  const boLap = (cd, cy) => cy.length === 1 && cy[0].ten.trim() === cd.ten.trim() ? [] : cy
+  const daDo = (u) => u.n > 0 && u.p != null
+  const chuDe = d.danh_gia.chu_de.filter(daDo).map((cd) => ({ ...cd, chuyen_de: boLap(cd, cd.chuyen_de.filter(daDo)) }))
+  const p1 = chuDe.length ? chuDe.map((cd) => `
     <div class="cd"><div class="top">
       <div class="row"><div class="ten">${esc(cd.ten)}</div><span class="chip" style="color:${pctMau(cd.p)};background:${pctMau(cd.p)}1a">${cd.p == null ? 'chưa đo' : cd.p + '%'}</span></div>
       <div class="bar"><i style="width:${cd.p ?? 0}%;background:${pctMau(cd.p)}"></i></div>
-      <div class="sub">${vienHang(cd)}${nLan(cd, true)}</div></div>
+      <div class="sub">${vienHang(cd)}${nLan(cd)}</div></div>
       ${cd.chuyen_de.length ? `<div class="cy">${cd.chuyen_de.map((u) => `
         <div class="l"><div class="t">${esc(u.ten)}<div class="sub" style="margin-top:1px">${vienMuc(u)}${vienHang(u)}${nLan(u)}</div></div>
           <div class="bb"><i style="width:${u.p ?? 0}%;background:${pctMau(u.p)}"></i></div><b class="p" style="color:${pctMau(u.p)}">${u.p == null ? '—' : u.p + '%'}</b></div>`).join('')}</div>` : ''}

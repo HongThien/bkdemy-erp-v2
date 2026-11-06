@@ -346,6 +346,11 @@ function O({ so, nhan, tone }: { so: React.ReactNode; nhan: string; tone?: 'do' 
 export function XemTruocKy({ d }: { d: BcKyData; congBoAt?: string | null }) {
   const cc = d.thai_do.chuyen_can, bt = d.thai_do.btvn
   const nghi = cc ? cc.vang + cc.vang_phep : 0
+  // Chưa đo trong 60 ngày cuối kì = không quan trọng ⇒ không hiện (Thùy 06/11), cả chủ đề lẫn chuyên đề
+  // chủ đề chỉ có 1 chuyên đề trùng tên (vd "Hình" → "Hình") ⇒ hiện 1 dòng thôi (Thùy 06/11)
+  const boLap = (cd: BcKyChuDe, cy: BcKyDonVi[]) => cy.length === 1 && cy[0].ten.trim() === cd.ten.trim() ? [] : cy
+  const daDo = (u: BcKyDonVi) => u.n > 0 && u.p != null
+  const chuDeDaDo = d.danh_gia.chu_de.filter(daDo).map((cd) => ({ ...cd, chuyen_de: boLap(cd, cd.chuyen_de.filter(daDo)) }))
   return (
     // 1 CỘT cho mọi nơi — app PH lẫn PDF (Thùy 04/11: "đa số PH dùng điện thoại")
     <div className="mx-auto max-w-[480px] space-y-4">
@@ -356,8 +361,8 @@ export function XemTruocKy({ d }: { d: BcKyData; congBoAt?: string | null }) {
       </div>
 
       <Phan so={1} ten="Đánh giá kiến thức">
-        {d.danh_gia.chu_de.length
-          ? <div className="grid gap-3">{d.danh_gia.chu_de.map((cd) => <CardChuDe key={cd.ma} cd={cd} />)}</div>
+        {chuDeDaDo.length
+          ? <div className="grid gap-3">{chuDeDaDo.map((cd) => <CardChuDe key={cd.ma} cd={cd} />)}</div>
           : <p className="text-[13px] text-slate-400">Chưa có lần đánh giá nào trong kì.</p>}
       </Phan>
 
