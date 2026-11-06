@@ -1,0 +1,14 @@
+[
+ {"ma_cau": "T11200000010623", "dang_bai_id": "NDB02521", "chac": "cao", "ly_do": "Kéo dây trên bờ giá 40, dưới nước giá 50, chọn điểm rẽ M để chi phí nhỏ nhất: đường đi qua hai môi trường."},
+ {"ma_cau": "T11200000010607", "dang_bai_id": "NDB02460", "chac": "cao", "ly_do": "Cho bảng biến thiên, hỏi khoảng nghịch biến: đọc khoảng đơn điệu theo trục x từ bảng biến thiên."},
+ {"ma_cau": "T11200000010625", "dang_bai_id": "NDB02518", "chac": "cao", "ly_do": "Cắt bốn góc tấm bìa vuông gập thành hộp không nắp, tìm thể tích lớn nhất: tối ưu hộp từ tấm bìa."},
+ {"ma_cau": "T11200000010609", "dang_bai_id": "NDB02476", "chac": "cao", "ly_do": "Hàm bậc nhất trên bậc nhất cho bằng công thức, hỏi tiệm cận ngang y = a/c."},
+ {"ma_cau": "T11200000010604", "dang_bai_id": "NDB02525", "chac": "cao", "ly_do": "Cho sẵn doanh thu F(x) và chi phí bình quân G(x), lập lợi nhuận, giải L(x) > 100 tìm số sản phẩm ít nhất."},
+ {"ma_cau": "T11200000010597", "dang_bai_id": "NDB02479", "chac": "cao", "ly_do": "Cho đồ thị hàm nhất biến, chỉ hỏi phương trình tiệm cận đứng: đọc tiệm cận từ đồ thị, không tìm hệ số."},
+ {"ma_cau": "T11200000010605", "dang_bai_id": "NDB02518", "chac": "cao", "ly_do": "Bể cá hình hộp không nắp, kinh phí kính cho trước, tìm thể tích lớn nhất: tối ưu bể, hộp từ diện tích vật liệu."},
+ {"ma_cau": "T11200000010624", "dang_bai_id": "NDB02524", "chac": "cao", "ly_do": "Giảm giá 5 nghìn thì bán thêm 5 chiếc, tự lập hàm lợi nhuận theo giá rồi tìm giá tối ưu."},
+ {"ma_cau": "T11200000010602", "dang_bai_id": "NDB02472", "chac": "cao", "ly_do": "GTNN của hàm chứa logarit y = x^2 - 4ln(1-x) trên đoạn [-2;0], làm tròn hàng phần chục."},
+ {"ma_cau": "T11200000010608", "dang_bai_id": "NDB02464", "chac": "cao", "ly_do": "Hàm bậc ba cho công thức, hỏi điểm cực đại: giải y' = 0 và xét dấu."},
+ {"ma_cau": "T11200000010626", "dang_bai_id": "NDB02531", "chac": "cao", "ly_do": "Cho s(t) bậc ba, tìm vận tốc lớn nhất trong 5 giây đầu: tối ưu hàm v(t) = s'(t) trên đoạn."},
+ {"ma_cau": "T11200000010610", "dang_bai_id": "NDB02470", "chac": "cao", "ly_do": "GTLN của hàm trùng phương (đa thức) trên đoạn [0;2]: so sánh giá trị tại nghiệm y' và hai đầu mút."}
+]

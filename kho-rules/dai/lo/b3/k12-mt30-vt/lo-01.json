@@ -1,0 +1,119 @@
+[
+ {
+  "ma_cau": "T11200000010611",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp $ABCD.A'B'C'D'$ (hình vẽ). Vectơ $\\overrightarrow{AB}+\\overrightarrow{AD}+\\overrightarrow{AA'}$ bằng vectơ nào sau đây?",
+  "lua_chon": [
+   "$\\overrightarrow{AC}$",
+   "$\\overrightarrow{AC'}$",
+   "$\\overrightarrow{BD'}$",
+   "$\\overrightarrow{AD'}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Theo quy tắc hình hộp, $\\overrightarrow{AB}+\\overrightarrow{AD}+\\overrightarrow{AA'}=\\overrightarrow{AC'}$.\nChọn B.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010613",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho hai điểm $A(1;2;-3)$ và $B(3;-2;1)$. Tọa độ trung điểm $I$ của đoạn thẳng $AB$ là",
+  "lua_chon": [
+   "$(2;0;-1)$",
+   "$(4;0;-2)$",
+   "$(1;-2;2)$",
+   "$(2;-2;2)$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "$I\\left(\\dfrac{1+3}{2};\\dfrac{2+(-2)}{2};\\dfrac{-3+1}{2}\\right)=(2;0;-1)$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010589",
+  "loai": "trac_nghiem",
+  "de": "Cho hình lăng trụ $ABC.A'B'C'$ (xem hình dưới). Phát biểu nào sau đây là đúng?",
+  "lua_chon": [
+   "$\\overrightarrow{BA}+\\overrightarrow{A'C'}=\\overrightarrow{BC'}$",
+   "$\\overrightarrow{BA}+\\overrightarrow{A'C'}=\\overrightarrow{C'B'}$",
+   "$\\overrightarrow{BA}+\\overrightarrow{A'C'}=\\overrightarrow{BC}$",
+   "$\\overrightarrow{BA}+\\overrightarrow{A'C'}=\\overrightarrow{A'A}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Vì $ABC.A'B'C'$ là hình lăng trụ nên $\\overrightarrow{A'C'}=\\overrightarrow{AC}$.\nDo đó $\\overrightarrow{BA}+\\overrightarrow{A'C'}=\\overrightarrow{BA}+\\overrightarrow{AC}=\\overrightarrow{BC}$.\nChọn C.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010591",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện đều $ABCD$ có độ dài cạnh bằng $a$, gọi $M$ là trung điểm của đoạn thẳng $CD$. Tích vô hướng $\\overrightarrow{AM}\\cdot\\overrightarrow{AB}$ bằng",
+  "lua_chon": [
+   "$a^2$",
+   "$\\dfrac{a^2}{2}$",
+   "$\\dfrac{a^2}{3}$",
+   "$\\dfrac{a^2}{4}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Vì $M$ là trung điểm $CD$ nên $\\overrightarrow{AM}=\\dfrac12\\left(\\overrightarrow{AC}+\\overrightarrow{AD}\\right)$.\n$\\overrightarrow{AM}\\cdot\\overrightarrow{AB}=\\dfrac12\\left(\\overrightarrow{AC}\\cdot\\overrightarrow{AB}+\\overrightarrow{AD}\\cdot\\overrightarrow{AB}\\right)$.\nCác mặt của tứ diện đều là tam giác đều cạnh $a$ nên $\\overrightarrow{AC}\\cdot\\overrightarrow{AB}=a\\cdot a\\cdot\\cos60^\\circ=\\dfrac{a^2}{2}$ và $\\overrightarrow{AD}\\cdot\\overrightarrow{AB}=\\dfrac{a^2}{2}$.\nVậy $\\overrightarrow{AM}\\cdot\\overrightarrow{AB}=\\dfrac12\\left(\\dfrac{a^2}{2}+\\dfrac{a^2}{2}\\right)=\\dfrac{a^2}{2}$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010627",
+  "loai": "tra_loi_ngan",
+  "de": "Trong không gian với hệ tọa độ $Oxyz$ (đơn vị trên mỗi trục là mét), một flycam đang ở vị trí $A(10;20;30)$ thì bay thẳng theo hướng của vectơ $\\overrightarrow{u}=(2;1;2)$ với tốc độ không đổi $6$ m/s. Sau $10$ giây, flycam ở vị trí $B(a;b;c)$. Tính $a+b+c$.",
+  "dap_an": "160",
+  "loi_giai": "Quãng đường flycam bay được sau $10$ giây: $AB=6\\cdot10=60$ (m).\n$|\\overrightarrow{u}|=\\sqrt{2^2+1^2+2^2}=3$. Vì $\\overrightarrow{AB}$ cùng hướng với $\\overrightarrow{u}$ nên $\\overrightarrow{AB}=\\dfrac{60}{3}\\overrightarrow{u}=20\\overrightarrow{u}=(40;20;40)$.\nSuy ra $B(10+40;\\,20+20;\\,30+40)=(50;40;70)$.\nVậy $a+b+c=50+40+70=160$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010614",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho hai vectơ $\\overrightarrow{u}=(1;0;1)$ và $\\overrightarrow{v}=(0;1;1)$. Góc giữa hai vectơ $\\overrightarrow{u}$ và $\\overrightarrow{v}$ bằng",
+  "lua_chon": [
+   "$30^\\circ$",
+   "$45^\\circ$",
+   "$60^\\circ$",
+   "$120^\\circ$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "$\\overrightarrow{u}\\cdot\\overrightarrow{v}=1\\cdot0+0\\cdot1+1\\cdot1=1$; $|\\overrightarrow{u}|=|\\overrightarrow{v}|=\\sqrt2$.\n$\\cos(\\overrightarrow{u},\\overrightarrow{v})=\\dfrac{1}{\\sqrt2\\cdot\\sqrt2}=\\dfrac12\\Rightarrow(\\overrightarrow{u},\\overrightarrow{v})=60^\\circ$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010590",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp $ABCD.A'B'C'D'$ (xem hình dưới). Đường thẳng $AB$ song song với mặt phẳng nào sau đây?",
+  "lua_chon": [
+   "$(CC'A'A)$",
+   "$(BB'C'C)$",
+   "$(A'B'C'D')$",
+   "$(AA'D'D)$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "$ABCD.A'B'C'D'$ là hình hộp nên $AB\\parallel A'B'$, mà $A'B'\\subset(A'B'C'D')$ và $AB\\not\\subset(A'B'C'D')$.\nVậy $AB\\parallel(A'B'C'D')$.\nCác mặt phẳng $(CC'A'A)$, $(BB'C'C)$, $(AA'D'D)$ đều chứa điểm $A$ hoặc $B$ nên không song song với $AB$.\nChọn C.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010612",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho hai vectơ $\\overrightarrow{a}=(1;-2;3)$ và $\\overrightarrow{b}=(2;1;-1)$. Tọa độ của vectơ $\\overrightarrow{a}+2\\overrightarrow{b}$ là",
+  "lua_chon": [
+   "$(3;-1;2)$",
+   "$(4;0;1)$",
+   "$(5;-4;5)$",
+   "$(5;0;1)$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "$2\\overrightarrow{b}=(4;2;-2)$ nên $\\overrightarrow{a}+2\\overrightarrow{b}=(1+4;\\,-2+2;\\,3-2)=(5;0;1)$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010628",
+  "loai": "tra_loi_ngan",
+  "de": "Ba lực $\\overrightarrow{F_1},\\overrightarrow{F_2},\\overrightarrow{F_3}$ cùng tác động vào một vật, đôi một vuông góc với nhau và có cường độ lần lượt là $3$ N, $4$ N, $12$ N. Cường độ hợp lực tác động vào vật bằng bao nhiêu Newton?",
+  "dap_an": "13",
+  "loi_giai": "Hợp lực $\\overrightarrow{F}=\\overrightarrow{F_1}+\\overrightarrow{F_2}+\\overrightarrow{F_3}$. Vì ba lực đôi một vuông góc nên $\\overrightarrow{F_i}\\cdot\\overrightarrow{F_j}=0$ $(i\\ne j)$.\n$\\left|\\overrightarrow{F}\\right|^2=\\left|\\overrightarrow{F_1}\\right|^2+\\left|\\overrightarrow{F_2}\\right|^2+\\left|\\overrightarrow{F_3}\\right|^2=9+16+144=169$.\nVậy $\\left|\\overrightarrow{F}\\right|=13$ (N).",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

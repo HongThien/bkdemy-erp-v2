@@ -1,0 +1,10 @@
+[
+ {"ma_cau": "T11200000010615", "dang_bai_id": "NDB00742", "chac": "cao", "ly_do": "Tìm họ nguyên hàm của đa thức 3x^2+2, áp dụng công thức luỹ thừa."},
+ {"ma_cau": "T11200000010603", "dang_bai_id": "NDB00775", "chac": "vua", "ly_do": "Diện tích cánh hoa giữa parabol và nửa đường tròn (cận ±2 tự suy) rồi tính chi phí; đề có hình, còn dạng 00774/00777 cũng hợp."},
+ {"ma_cau": "T11200000010616", "dang_bai_id": "NDB00745", "chac": "cao", "ly_do": "Nguyên hàm tổng e^x+1/x gồm mũ và phân thức; theo luật dạng sau thắng xếp vào hàm mũ."},
+ {"ma_cau": "T11200000010617", "dang_bai_id": "NDB00746", "chac": "cao", "ly_do": "Tìm nguyên hàm của cos x thoả F(π/2)=3 để xác định hằng số C rồi tính F(0)."},
+ {"ma_cau": "T11200000010592", "dang_bai_id": "NDB00742", "chac": "cao", "ly_do": "Nguyên hàm của luỹ thừa x^2, công thức đa thức cơ bản."},
+ {"ma_cau": "T11200000010606", "dang_bai_id": "NDB00777", "chac": "vua", "ly_do": "Diện tích giữa hai parabol cho bằng hình lưới ô vuông; thiếu hình, không đáp án, không lời giải nên chưa chắc."},
+ {"ma_cau": "T11200000010595", "dang_bai_id": "NDB00774", "chac": "cao", "ly_do": "Công thức diện tích hình phẳng giới hạn bởi y=2x-3, trục hoành và hai cận x=1, x=2 cho sẵn."},
+ {"ma_cau": "T11200000010618", "dang_bai_id": "NDB00752", "chac": "cao", "ly_do": "Tính tích phân tổ hợp tuyến tính 2f-3g+x từ giá trị các tích phân đã cho bằng tính chất tổng hiệu."}
+]

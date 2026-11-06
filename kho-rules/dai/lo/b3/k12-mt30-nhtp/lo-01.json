@@ -1,0 +1,102 @@
+[
+ {
+  "ma_cau": "T11200000010615",
+  "loai": "trac_nghiem",
+  "de": "Họ tất cả các nguyên hàm của hàm số $f(x)=3x^2+2$ là",
+  "lua_chon": [
+   "$6x+C$",
+   "$x^3+2+C$",
+   "$x^3+2x+C$",
+   "$3x^3+2x+C$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "$\\int(3x^2+2)\\,dx=3\\cdot\\dfrac{x^3}{3}+2x+C=x^3+2x+C$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010603",
+  "loai": "tra_loi_ngan",
+  "de": "Một khuôn viên dạng nửa hình tròn, trên đó người ta thiết kế phần để trồng hoa có dạng của một cánh hoa hình parabol có đỉnh trùng với tâm và có trục đối xứng vuông góc với đường kính của nửa hình tròn, hai đầu mút của cánh hoa nằm trên nửa đường tròn (phần tô màu) và cách nhau một khoảng bằng $4$ m. Phần còn lại của khuôn viên (phần không tô màu) dành để trồng cỏ Nhật Bản. Biết các kích thước cho như hình vẽ, chi phí để trồng hoa và trồng cỏ Nhật Bản tương ứng là $150000$ đồng$/\\text{m}^2$ và $100000$ đồng$/\\text{m}^2$. Hỏi cần bao nhiêu tiền (triệu đồng) để trồng hoa và trồng cỏ Nhật Bản trong khuôn viên đó? (Số tiền được làm tròn đến hàng phần trăm).",
+  "dap_an": "3.74",
+  "loi_giai": "Chọn hệ trục $Oxy$ với $O$ là tâm nửa hình tròn, $Ox$ theo đường kính. Hai đầu mút cánh hoa là $(\\pm2;4)$ (cách nhau $4$ m, cao $4$ m).\nBán kính nửa hình tròn: $R^2=2^2+4^2=20$, nên đường tròn là $y=\\sqrt{20-x^2}$.\nParabol đỉnh $O$, trục $Oy$, qua $(2;4)$: $y=x^2$.\nDiện tích cánh hoa: $S_1=\\int_{-2}^{2}\\left(\\sqrt{20-x^2}-x^2\\right)dx\\approx11{,}94$ ($\\text{m}^2$).\nDiện tích nửa hình tròn: $\\dfrac12\\pi R^2=10\\pi\\approx31{,}42$; diện tích phần trồng cỏ: $S_2=10\\pi-S_1\\approx19{,}48$.\nChi phí: $150000\\cdot11{,}94+100000\\cdot19{,}48\\approx3{,}74$ triệu đồng.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010616",
+  "loai": "trac_nghiem",
+  "de": "Trên khoảng $(0;+\\infty)$, họ tất cả các nguyên hàm của hàm số $f(x)=e^x+\\dfrac1x$ là",
+  "lua_chon": [
+   "$e^x+\\ln x+C$",
+   "$e^x-\\dfrac{1}{x^2}+C$",
+   "$e^x+\\dfrac{1}{x^2}+C$",
+   "$xe^x+\\ln x+C$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "$\\int\\left(e^x+\\dfrac1x\\right)dx=e^x+\\ln|x|+C=e^x+\\ln x+C$ (vì $x>0$).\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010617",
+  "loai": "trac_nghiem",
+  "de": "Biết $F(x)$ là một nguyên hàm của hàm số $f(x)=\\cos x$ và $F\\left(\\dfrac\\pi2\\right)=3$. Giá trị của $F(0)$ bằng",
+  "lua_chon": [
+   "$3$",
+   "$1$",
+   "$4$",
+   "$2$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "$F(x)=\\int\\cos x\\,dx=\\sin x+C$. Ta có $F\\left(\\dfrac\\pi2\\right)=1+C=3\\Rightarrow C=2$.\nDo đó $F(x)=\\sin x+2$ và $F(0)=0+2=2$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010592",
+  "loai": "trac_nghiem",
+  "de": "Họ nguyên hàm của hàm số $f(x)=x^2$ là",
+  "lua_chon": [
+   "$\\dfrac13x^3+C$",
+   "$2x^3+C$",
+   "$3x^3+C$",
+   "$\\dfrac12x^3+C$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "$\\int x^2\\,dx=\\dfrac{x^3}{3}+C=\\dfrac13x^3+C$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010606",
+  "loai": "tra_loi_ngan",
+  "de": "Trong lưới ô vuông có hai đường parabol như hình vẽ. Biết rằng mỗi ô vuông nhỏ có cạnh bằng $1$ cm. Diện tích của hình phẳng trong lưới ô vuông được giới hạn bởi hai đường parabol (phần gạch chéo) bằng bao nhiêu centimet vuông (kết quả làm tròn đến hàng phần trăm)?",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010595",
+  "loai": "trac_nghiem",
+  "de": "Trong mặt phẳng với hệ tọa độ $Oxy$, diện tích $S$ của hình phẳng giới hạn bởi đồ thị của hàm số $y=2x-3$, trục hoành và hai đường thẳng $x=1$, $x=2$ được xác định bằng công thức",
+  "lua_chon": [
+   "$S=\\pi\\int_1^2|2x-3|\\,dx$",
+   "$S=\\int_1^2|2x-3|\\,dx$",
+   "$S=\\pi\\int_1^2(2x-3)^2\\,dx$",
+   "$S=\\left|\\int_1^2(2x-3)\\,dx\\right|$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Diện tích hình phẳng giới hạn bởi đồ thị hàm số $y=f(x)$, trục hoành và hai đường thẳng $x=a$, $x=b$ là $S=\\int_a^b|f(x)|\\,dx$.\nVới $f(x)=2x-3$, $a=1$, $b=2$ ta được $S=\\int_1^2|2x-3|\\,dx$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010618",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\int_0^2f(x)\\,dx=3$ và $\\int_0^2g(x)\\,dx=-1$. Giá trị của $\\int_0^2[2f(x)-3g(x)+x]\\,dx$ bằng",
+  "lua_chon": [
+   "$7$",
+   "$11$",
+   "$9$",
+   "$5$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "$\\int_0^2[2f(x)-3g(x)+x]\\,dx=2\\int_0^2f(x)\\,dx-3\\int_0^2g(x)\\,dx+\\int_0^2x\\,dx$\n$=2\\cdot3-3\\cdot(-1)+\\dfrac{x^2}{2}\\Big|_0^2=6+3+2=11$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]
