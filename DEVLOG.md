@@ -79092,3 +79092,10 @@ Thùy nêu 4 việc, làm được 3:
 - PDF thử Hoàng Nhật Minh 9A1 Toán (dung-pdf.mjs --json từ bản nháp, KHÔNG công bố) ⇒ reports/bao-cao-ky-thu (có tên HS, không commit). Thấy: 2 chủ đề cùng tên 'Căn bậc hai - Căn thức bậc hai' (Đại + Hình); phần 1 nhiều khoảng trắng do giữ trọn card.
 - Thùy: 'bạn chỉ có 1 đầu điểm cao nhất xếp thứ 10 — top 10 phải đủ ít nhất 70% số lần thi'. Hiểu & làm: hạng 1–10 chỉ cho em thi ≥ 70% số cột lần thi; còn lại xếp từ sau nhóm top theo hạng TB. _bc_ky_xep_hang_lai(jsonb) gọi trong fn_bc_ky_du_lieu (cả số liệu đã chốt ⇒ khỏi chốt lại). Thử: K9 Toán top 10 đều thi 4–5 lần (không đổi); K9 KHTN em thi 1 lần đang hạng 4 ⇒ xuống ≥ 11; chạy lại 2 lần ra y hệt.
 - Lúc áp đã có 39 báo cáo KHTN CÔNG BỐ (7K1 6 · 7K2 3 · 8K1 10 · 9K1 13 · 9K2 7) — bản đóng băng giữ hạng cũ; 15 em sẽ đổi hạng nếu công bố lại. Chờ Thùy quyết.
+
+
+## 2026-11-06 (tối) — Báo cáo HỌC KÌ: công bố lớp đã xong + app PH + PDF (Thùy 'lớp nào xong thì đẩy lên app PH và tạo luôn pdf')
+- Lớp xong cả lớp (mọi em đủ/đã công bố): Toán 7A1 · 7S1 · 8A1 · 8B1 · 8B2 · 8S1 · 9A1 · 9B2 · 9C1 (83 em) + KHTN 7K2 · 8K1 (đã công bố trước bởi Phạm Anh Ngọc). Công bố 9 lớp Toán bằng fn_bc_ky_cong_bo_lop, cong_bo_boi = tài khoản Đào Xuân Thùy: 83/83, bỏ qua 0. Snapshot mang luật top 10 ≥ 70% (mig 1942).
+- App PH (repo bkdemy-ph-app): Phần 4 thêm Kết luận 7 mức + nhận xét theo thang + phương án kế hoạch (khuôn snapshot v3); giữ hiển thị nhận xét tổng cũ. Kiểm local 3100 bằng link xem-thử PH em Hoàng Nhật Minh 9A1: hiện đúng. Push af21a61 (gồm 2 commit 04/11 đang giữ: FDW + màn báo cáo kì).
+- PDF: scripts/bao-cao-ky/dung-pdf.mjs theo từng lớp ⇒ ../_bao-cao-ky-pdf/Nửa kì 1/<lớp>/ (ngoài repo, có tên HS).
+- Còn treo: 39 báo cáo KHTN công bố trước luật top 10 ⇒ snapshot giữ hạng cũ (15 em khác hạng) — chờ Thùy có công bố lại không.
