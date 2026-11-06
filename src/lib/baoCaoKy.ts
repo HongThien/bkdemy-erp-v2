@@ -89,6 +89,14 @@ export async function chotSoLieuBcKy(hsId: string, mon: string, kyId: string): P
   return data as string
 }
 // Công bố cả lớp trong 1 transaction ở DB — chỉ em đã đủ điểm dự đoán + sai số + mọi mục nhận xét (_bc_ky_thieu).
+// Em đã chốt số liệu, CHƯA công bố, mà có điểm thi (cùng môn · cùng khối · tháng thuộc kì) ghi/sửa SAU lúc chốt ⇒ bản chốt có thể thiếu điểm / sai hạng khối.
+// Rẻ (chỉ SQL, không tính lại báo cáo). Có thể báo dư; chốt lại vô hại. Mig 202611061809.
+export async function nghiLechBcKy(hsIds: string[], mon: string, kyId: string): Promise<string[]> {
+  if (!hsIds.length) return []
+  const { data, error } = await supabase.rpc('fn_bc_ky_nghi_lech', { p_hs: hsIds, p_mon: mon, p_ky: kyId })
+  if (error) throw error
+  return (data as string[] | null) ?? []
+}
 export async function congBoLopBcKy(lopId: string, mon: string, kyId: string): Promise<{ cong_bo: number; bo_qua: number }> {
   const { data, error } = await supabase.rpc('fn_bc_ky_cong_bo_lop', { p_lop: lopId, p_mon: mon, p_ky: kyId })
   if (error) throw error

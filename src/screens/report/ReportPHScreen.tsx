@@ -11,7 +11,7 @@ import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, getKhoiRan
 import { tenHienThiDs } from '../../lib/hoten'
 import { ChonKy, BaoCaoKyBody } from './BaoCaoKy'
 import { NutThangNhanXet } from './ThangNhanXet'
-import { congBoLopBcKy, listBcKyTrangThai, chotSoLieuBcKy, laAdminBcKy, type BcKyTT } from '../../lib/baoCaoKy'
+import { congBoLopBcKy, listBcKyTrangThai, chotSoLieuBcKy, laAdminBcKy, nghiLechBcKy, type BcKyTT } from '../../lib/baoCaoKy'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
 const curYM = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` }
@@ -69,17 +69,28 @@ export default function ReportPHScreen() {
   const [chotTd, setChotTd] = useState<{ xong: number; tong: number; loi: number } | null>(null)
   const [phienKy, setPhienKy] = useState(0)
   useEffect(() => { laAdminBcKy().then(setLaAdmin) }, [])
-  async function chotSoLieuLop() {
+  // Em có bản chốt nhưng điểm thi đổi SAU lúc chốt (Thùy 06/11, vụ MT tháng 10 sửa muộn) — chỉ báo cho admin (chỉ admin chốt được).
+  const [lech, setLech] = useState<string[]>([])
+  useEffect(() => {
+    setLech([])
+    if (cheDo !== 'ky' || !kyId || !roster.length || !laAdmin) return
+    nghiLechBcKy(roster.map((r) => r.id), mon, kyId).then(setLech).catch(() => setLech([]))
+  }, [cheDo, kyId, roster, mon, laAdmin, phienKy])
+  async function chotSoLieuLop(chiEm?: string[]) {
     if (!kyId || !roster.length) return
+    const ds = chiEm ? roster.filter((r) => chiEm.includes(r.id)) : roster
     const lopTen = lopOpts.find((o) => o.id === lopId)?.label ?? ''
-    if (!confirm(`Chốt số liệu báo cáo kì cho lớp ${lopTen} (${roster.length} em)?
+    if (!confirm(chiEm
+      ? `Chốt lại số liệu báo cáo kì cho ${ds.length} em có điểm thi đổi sau lúc chốt (lớp ${lopTen})?
+Số liệu tính lại tới lúc này; bản cũ vẫn lưu trong lịch sử. Báo cáo đã công bố không bị đụng.`
+      : `Chốt số liệu báo cáo kì cho lớp ${lopTen} (${ds.length} em)?
 Số liệu tính lúc này sẽ được giữ cố định, không tính lại nữa. Em đã chốt trước đó sẽ được chốt lại (bản cũ vẫn lưu trong lịch sử).`)) return
     let loi = 0
-    for (let i = 0; i < roster.length; i++) {
-      setChotTd({ xong: i, tong: roster.length, loi })
-      try { await chotSoLieuBcKy(roster[i].id, mon, kyId) } catch { loi++ }
+    for (let i = 0; i < ds.length; i++) {
+      setChotTd({ xong: i, tong: ds.length, loi })
+      try { await chotSoLieuBcKy(ds[i].id, mon, kyId) } catch { loi++ }
     }
-    setChotTd({ xong: roster.length, tong: roster.length, loi })
+    setChotTd({ xong: ds.length, tong: ds.length, loi })
     setPhienKy((x) => x + 1)   // em đang mở đọc lại bản vừa chốt
     setTimeout(() => setChotTd(null), 4000)
   }
@@ -195,6 +206,12 @@ Số liệu tính lúc này sẽ được giữ cố định, không tính lại
                       {chotTd ? (chotTd.xong < chotTd.tong ? `Đang chốt ${chotTd.xong}/${chotTd.tong}…` : `✓ Đã chốt ${chotTd.tong - chotTd.loi}/${chotTd.tong}${chotTd.loi ? ` · ${chotTd.loi} lỗi` : ''}`) : '📌 Chốt số liệu'}
                     </button>)}
                 </div>
+                {lech.length > 0 && (
+                  <div className="border-b border-amber-200 bg-amber-50 px-3 py-2 text-[12px] text-amber-900">
+                    ⚠ <b>{lech.length} em</b> có điểm thi đổi sau lúc chốt — số liệu kì (điểm các lần thi, hạng khối) có thể cũ.
+                    <button disabled={!!chotTd && chotTd.xong < chotTd.tong} onClick={() => void chotSoLieuLop(lech)}
+                      className="ml-1.5 rounded bg-amber-500 px-2 py-0.5 text-[11.5px] font-semibold text-white hover:bg-amber-600 disabled:opacity-60">Chốt lại {lech.length} em</button>
+                  </div>)}
                 <div className="max-h-[75vh] overflow-auto">
                   {(() => { const tenHT = tenHienThiDs(roster.map((r) => r.ho_ten)); return roster.map((r, i) => (
                     <button key={r.id} onClick={() => setHsId(r.id)} title={r.ho_ten}
@@ -203,6 +220,7 @@ Số liệu tính lúc này sẽ được giữ cố định, không tính lại
                         ? <img src={r.anh_url} alt="" className="h-6 w-6 shrink-0 rounded-full object-cover" />
                         : <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-[10px] font-semibold text-indigo-600">{r.ho_ten.trim().split(/\s+/).pop()?.[0]?.toUpperCase() ?? '?'}</span>}
                       <span className="truncate">{tenHT[i]}</span>
+                      {lech.includes(r.id) && <span title="Điểm thi đổi sau lúc chốt số liệu" className="shrink-0 text-[11px] text-amber-600">⚠</span>}
                       {/* vàng = đang nhập dở · xanh lá = điền đủ (sẵn sàng công bố) · ✓ xanh = đã công bố (Thùy 06/11) */}
                       {cheDo === 'ky' && ttKy[r.id] && (ttKy[r.id] === 'cong_bo'
                         ? <span title="Đã công bố báo cáo kì" className="ml-auto shrink-0 text-[12px] font-bold leading-none text-emerald-600">✓</span>
