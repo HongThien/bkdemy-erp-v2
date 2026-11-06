@@ -79086,3 +79086,9 @@ Thùy nêu 4 việc, làm được 3:
 - **Phát hiện ngay lúc test:** 17 em Toán K12 vừa có điểm MT 12B1 2026-11-01 ghi lúc 17:52–17:56 (sau lần chốt 86 em) ⇒ chốt lại luôn trong cùng migration (dry-run: sau chốt 0 lệch thi/hạng/phụ lục). Tổng đã chốt lại hôm nay: 86 + 17 = 103 em Toán (K6/K10/K11/K12).
 - **Kiểm:** dry-run rollback dương tính (giả lập 1 điểm MT K11 sửa ⇒ 25/25 em K11 bị báo, K9 0) + âm tính; màn Report phụ huynh → Học kì lớp 12B1 mở bình thường, không lỗi console, không cảnh báo thừa. **Chưa bấm thử nút trên màn thật** (cần dữ liệu lệch thật + quyền admin trên trình duyệt thật).
 - **Nợ:** Điểm MT còn tiếp tục được nhập ⇒ nên chốt lại sau khi nhập xong; thẻ Kết luận mới (p12) vẫn chưa vào 300+ bản chốt cũ (chờ phiên Báo cáo kì quyết); môn KHTN chưa kiểm lệch (hàm áp chung, 58 bản chốt).
+
+
+## 2026-11-06 (tối) — Báo cáo HỌC KÌ: top 10 phải thi ≥ 70% số lần (mig 202611061942 ĐÃ ÁP) + PDF thử 9A1
+- PDF thử Hoàng Nhật Minh 9A1 Toán (dung-pdf.mjs --json từ bản nháp, KHÔNG công bố) ⇒ reports/bao-cao-ky-thu (có tên HS, không commit). Thấy: 2 chủ đề cùng tên 'Căn bậc hai - Căn thức bậc hai' (Đại + Hình); phần 1 nhiều khoảng trắng do giữ trọn card.
+- Thùy: 'bạn chỉ có 1 đầu điểm cao nhất xếp thứ 10 — top 10 phải đủ ít nhất 70% số lần thi'. Hiểu & làm: hạng 1–10 chỉ cho em thi ≥ 70% số cột lần thi; còn lại xếp từ sau nhóm top theo hạng TB. _bc_ky_xep_hang_lai(jsonb) gọi trong fn_bc_ky_du_lieu (cả số liệu đã chốt ⇒ khỏi chốt lại). Thử: K9 Toán top 10 đều thi 4–5 lần (không đổi); K9 KHTN em thi 1 lần đang hạng 4 ⇒ xuống ≥ 11; chạy lại 2 lần ra y hệt.
+- Lúc áp đã có 39 báo cáo KHTN CÔNG BỐ (7K1 6 · 7K2 3 · 8K1 10 · 9K1 13 · 9K2 7) — bản đóng băng giữ hạng cũ; 15 em sẽ đổi hạng nếu công bố lại. Chờ Thùy quyết.

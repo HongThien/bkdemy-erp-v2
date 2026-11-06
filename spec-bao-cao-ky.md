@@ -104,3 +104,8 @@
 - **Kế hoạch cải thiện:** danh mục phương án mẫu gắn theo mục nhỏ; hệ thống đưa lên đầu các phương án của mục GV chấm Chưa tốt / Ổn; GV tích chọn + ô "Viết thêm".
 - **Danh mục (mục · loại · ngưỡng · phương án) sửa thẳng trên ERP** (Thùy: "không phụ thuộc vào claude, làm thẳng trên erp giống report tháng") — chỉ admin; mã gốc bất biến, xoá = kho rác (`xoa_at`), báo cáo đã công bố giữ chữ trong snapshot.
 - **Công bố cần:** điểm dự đoán + sai số + MỌI mục nhỏ đã chọn (kể cả "Chưa đủ quan sát"). Nhận xét thêm / viết thêm không bắt buộc.
+
+## E. XẾP HẠNG CẢ KÌ — TOP 10 PHẢI THI ĐỦ (Thùy chốt 06/11, sau PDF thử 9A1)
+- Hạng 1–10 (phụ lục + "Cả học kì") chỉ dành cho em đã thi **≥ 70% số lần thi** của khối × môn trong kì (số cột phụ lục; K9 Toán 5 lần ⇒ ≥ 4).
+- Trong nhóm đủ: xếp theo hạng TB như cũ (bằng nhau cùng hạng). Mọi em còn lại (đủ nhưng ngoài 10 + chưa đủ) xếp tiếp sau nhóm top theo hạng TB ⇒ em thi 1 lần điểm cao tốt nhất đứng thứ 11.
+- Một nơi: `_bc_ky_xep_hang_lai` trong `fn_bc_ky_du_lieu` (mig 202611061942) — áp cả số liệu đã chốt, không phải chốt lại. Báo cáo ĐÃ CÔNG BỐ giữ nguyên bản đóng băng; muốn theo luật mới phải Mở lại → công bố lại.
