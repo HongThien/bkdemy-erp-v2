@@ -78969,3 +78969,62 @@ Thùy nêu 4 việc, làm được 3:
 - **Gốc rễ + sửa:** `fn_dong_phase` đặt `hoan_tat` mọi buổi không-thường khi đóng 1 phase ⇒ ca bù mất khỏi ô TA. Mig `202611051748_bu_dong_et_khong_hoan_tat` (ĐÃ ÁP). Spec §37.
 - **Kiểm:** ROLLBACK tái hiện trước/sau. Chưa bấm thử trên app TA thật.
 - **Nợ:** buổi đuổi/MT cùng cơ chế; 23 buổi bù `hoan_tat` cũ giữ nguyên.
+## 5/11 — Vẽ lại hình trong ví dụ K10 Hàm số bằng code
+- Thùy: "Vẽ lại hình của các ví dụ trên". 11 câu thật có hình (ảnh scan/GeoGebra lẫn lộn kiểu) → `scripts/anh/ve_do_thi_k10_ham_so.mjs ve` vẽ SVG→PNG bằng công thức hàm số (parabol, hàm khúc, bậc ba, trùng phương, đường thẳng, 2 bảng biến thiên), soát từng hình bằng mắt (sửa: nhãn chồng nhau, 4 hình trong 1 ảnh bị tràn → clipPath), `gan --ghi` upload bucket kho-anh + thay URL trong `dai_bdm_dang_bai.vi_du`. 9/11 thay; 2 hình (T…1246, T…1740: câu "vẽ đồ thị") bỏ vì dạng 'Vẽ đồ thị, tịnh tiến' đã bị xoá khỏi cây. Biên bản URL cũ: `scripts/anh/bien_ban/ham-so-k10-vi-du-*.json`; ảnh cũ không xoá.
+- KHÔNG đụng ảnh trong `dai_cau_hoi` (kho câu) — chỉ ví dụ trong bản đồ. Hình cho kho câu cùng 11 câu: vẽ sẵn ở C:\Users\WBPC\bk-kho-lam-viec\ve-lai-hinh\k10-ham-so\ nếu Thùy muốn gắn.
+
+## 05/11 (chiều) — Nông trại: sản lượng cây ×0,5 thay cho trần ngày 1 xu (Thùy: "Tỉ lệ fix rồi. Chỉ có thay đổi số lượng EXP thu được của cây thôi")
+- **Sai lượt trước:** hạ trần ngày 4 → 1 (mig 202611051621) là chặn ngọn; Thùy: "vấn đề là thiết kế … tổng số xu kiếm được 1 tháng". Đề xuất đổi 200 EXP = 1 xu cũng bị bác — tỉ lệ 100 EXP = 1 xu là cố định.
+- **Gốc:** kinh tế game chỉnh 30/09 cho đích 30–45 xu/tháng; 12/10 trần tài khoản hạ còn 20 nhưng vòi EXP không chỉnh lại. Đo bản lưu: 2 em chăm nhất ~240 EXP/ngày chơi ⇒ đủ 20 xu sau ~8–9 ngày.
+- **Sửa:** `goc` mọi cây ×0,5 ở CẢ game (bk-nong-trai `js/data.js`, commit trên nhip-ngay, chép vào `public/games/nong-trai/` bằng `dong-bo-nong-trai.mjs`) LẪN server (mig 202611051751 ĐÃ ÁP --only: `nt_cay.goc` integer → numeric, chia 2; `_nt_o_tt` tính trộm/giúp bạn thật đọc cột này). Trần ngày trả về 4; 3 chỗ chữ trong app trả lại "tối đa 4 xu".
+- **Kiểm:** `_nt_o_tt` trên ô mẫu: lúa mì tưới đủ 1 sâu ⇒ 5 quả (3,5×1,8×0,8) · khoai tây tưới+bón 1 sâu ⇒ 10 (9,9). `tools/test-engine.mjs`: "Tất cả luật đúng". `tools/kich-ban.mjs` (giả lập, trần demo 45): "chăm mẫu mực" còn ~37 xu/tháng ⇒ ~1,2 xu/ngày ⇒ ~16–17 ngày đủ 20.
+- **Chênh lúc chuyển:** server đổi ngay, game chỉ đổi khi Thùy Deploy ⇒ khoảng giữa đó số quả trộm/giúp bạn tính theo bản mới, ô của chính em vẫn theo bản cũ. Bản demo (trả hạt bằng EXP) lúa mì thành lỗ — chỉ ảnh hưởng chế độ thử, app HS chơi theo tài khoản trả bằng điểm học tập.
+
+### 05/11 — Lỗi statement timeout ở Bản đồ mới (nút ✅ Duyệt kho) + màn Duyệt kho
+- Thùy đoán do tải nhiều câu một lúc. Đo bằng phiên app thật: danh sách câu (fn_bdm_khop_hang) đã phân trang 20 câu, 0,2–0,4s — KHÔNG phải nguyên nhân. Thủ phạm = HÀM ĐẾM fn_bdm_khop_dem (K6 quá trần 8s; K10–12 1,8–2,7s), nút "Duyệt kho (n)" trên bản đồ cũng gọi nó ⇒ cả 2 chỗ cùng lỗi. Chạy bằng quyền chủ bảng + giả phiên admin chỉ 0,3–0,4s ⇒ RLS trên bảng câu lớn mà _bdm_khop_nguon đọc 4 lần.
+- Mig 202611051753 ĐÃ ÁP: _bdm_khop_nguon, _khtn_bdm_khop_nguon, fn_bdm_khop_dem, fn_khtn_bdm_khop_dem → SECURITY DEFINER, bọc ngoài where la_thanh_vien() (thân sinh nguyên từ DB); phạm vi duyệt từng người vẫn qua _bdm_duyet_duoc (jwt). Thử ROLLBACK: số đếm y hệt, người ngoài nhận rỗng. Sau: dem K6 8s+ → 0,55s · K10 0,99s · K11 1,1s · K12 0,5s · KHTN K6 0,18s.
+- Còn chậm vừa: fn_bdm_khop_nguon_ds K11/K12 1,4–1,9s (gọi _kho_nguon_cau từng câu) — dưới trần, để sau.
+- Bài học: hàm đọc mới của bản đồ/kho đọc bảng câu lớn ⇒ mặc định SECURITY DEFINER + kiểm nhân sự 1 lần (đã 2 lần dính: fn_bdm_cay 02/11, khop_dem 05/11).
+
+## 05/11 — Ô hỏi Phòng TBM: thêm dữ liệu BỔ TRỢ của môn (mig 202611051749 ĐÃ ÁP — Thùy "Áp đi")
+- **Thùy (qua phiên Hoàn thiện phòng làm việc):** "Trưởng bộ môn có quyền truy cập dữ liệu bổ trợ của môn đó". Màn Bổ trợ ERP họ đã mở được (lá botro · botroyeu · botro_duoi) ⇒ chỉ thiếu ở ô hỏi.
+- **3 công cụ mới**, khoá môn y như 5 công cụ cũ (cửa `fn_phong_hoi_goi` ghi đè `_lop`), chỉ BỌC hàm đọc của màn Bổ trợ + lọc lớp/môn + rút cột: `bo_tro_tuan` (`fn_bo_tro_dashboard_tuan`, đếm theo (loại, tt) hàm gốc đã phân loại, theo TA phụ trách ca, lượt cần chú ý) · `bo_tro_case` loai yeu (`fn_btyeu_case_xep_lich`, kèm số case CHƯA có ca chờ học) / hinh (`fn_bthinh_danh_sach`) / bu (`fn_bu_lan_nghi_can_xep`) / duoi (`_troly_cc_bo_tro`, vá thêm lọc `_lop` chỉ-thu-hẹp) / nhe (`fn_btnhe_ds`) · `bo_tro_retest` (`fn_btyeu_retest_theo_doi`). Dòng không có lớp (case yếu/Hình theo môn + khối HS) ⇒ `_phong_hoi_o_ok(môn, khối)`.
+- **Kiểm (ROLLBACK):** Trang ⇒ Toán (tuần 02–08/11: bù 18 lượt, yếu 6, đuổi 1; 45 case yếu đang xử, 43 chưa có ca; 34 retest quá hạn) · anh Ngọc ⇒ KHTN (1 bù cần xếp, 1 đợt đuổi; Hình ⇒ "ngoài bộ môn") · anh Hoà ⇒ Anh (rỗng) · TA ⇒ bị chặn. Admin (mọi môn) khớp màn gốc: 26/26 lượt tuần, 56/56 lượt cần xếp bù. Trợ lý `bo_tro` yeu/bu/duoi md5 trước/sau GIỐNG. Vòng hỏi thật (DeepSeek) câu Trang về bổ trợ: 3 công cụ, 14,3s.
+- Màn: thêm 2 câu hỏi mẫu về bổ trợ + nhãn công cụ; prompt hệ thống nêu bổ trợ.
+- Lưu ý: `fn_btyeu_case_xep_lich` (nguồn màn Yếu) có cả HS test (TEST04/05) — ô hỏi giữ y như màn gốc, không lọc riêng.
+
+
+## 2026-11-05 (tối) — Báo cáo HỌC KÌ: chốt số liệu chạy thật + nhận xét thêm theo từng mục to (mig 202611051853 ĐÃ ÁP) — Thùy 05/11
+- SAI của tôi: Thùy bảo 'snap luôn từ bây giờ' mà tôi tự hẹn 22:05 (né giờ HS chơi) ⇒ 18:27 Thùy hỏi sao ERP vẫn tính. Lệnh chạy ngay bị classifier chặn (ghi hàng loạt DB thật) ⇒ hỏi, Thùy 'Cho m chạy'.
+- Chạy scripts/bao-cao-ky/chot-so-lieu.mjs --gio-hs (nghỉ 1,5s/em): đứt kết nối 3 lần (Connection terminated ×2, 1 lần ENOTFOUND tên máy chủ pooler — mạng máy công ty chập chờn) ⇒ thêm --tiep (bỏ qua em đã chốt) + tự mở lại kết nối / chờ 10s thử lại. Kết quả: 411/412 cặp (em × môn) đã chốt; 1 em Toán bị statement timeout, đang chốt lại.
+- Thùy sửa câu Độ chắc kiến thức · Chưa tốt NXL0034 'Con học xong quên nhanh.' ⇒ 'Con dễ quên bài, nên kết quả không ổn định, phụ thuộc vào việc con có ôn tập đủ tốt không.' (update danh mục, giữ mã, log trigger).
+- Thùy: 'nhận xét thêm là ở MỖI PHẦN thái độ, năng lực… không phải nhận xét tổng' ⇒ cột bao_cao_ph_ky.nx_them {mã mục to: chữ}; _bc_ky_phan_gv đưa 'them' vào từng mục to (mục chỉ có chữ thêm cũng hiện); khoá sau công bố. Màn GV: ô cuối mỗi thẻ mục to, bỏ ô tổng (cột nhan_xet giữ, 0 dòng có dữ liệu). Bản gửi PH: chữ thêm dưới mỗi thẻ.
+
+## 05/11/2026 — K6 Số nguyên: gộp nhóm/dạng ở chuyên đề NCH00461 (Thùy sửa bản đồ)
+- **Làm:** `ban-do-moi/gop-so-nguyen-0511.mjs` (1 transaction, chạy thử rollback trước). Nhóm 1+2 + dạng 4.4 → NNB01622 "Các tính chất cơ bản của số nguyên"; 1.1+1.2+4.4 → NDB01286 "Tính chất cơ bản của số nguyên"; 2.1+2.2 → NDB01288 "Số đối" (chuyển sang nhóm NNB01622); 4.1+4.2 → NDB01294 "Tập hợp của số nguyên". Mô tả/LT/VD ghép từ nội dung cũ (PP có nhãn theo dạng cũ).
+- **Chuyển tham chiếu sang mã giữ lại:** gán câu 21 · câu trên lớp 12 · bai_test_cau 6 · tu_luyen_dang_lan 6 · gami_session_problems 8. Gán sau: 1286=19, 1288=14, 1294=18 (khớp tổng trước). Xoá: 4 dạng (NDB01287/89/95/97) + nhóm NNB01623 + 13 phần giáo trình (3 tài liệu buổi 26 lớp 6S1; phần Số đối chuyển cha sang nhóm mới). Thùy gật 05/11.
+- **Bài học:** gộp dạng/nhóm đụng ≥8 bảng không FK (giáo trình `tai_lieu_phan.ref_ma`, đo `ma_dang`) — phải quét MỌI cột text trước, chuyển rồi mới xoá; chưa có RPC gộp dạng. Kiểm "nhóm rỗng" phải đặt SAU lúc xoá dạng cuối.
+
+## 5/11 — Luật duyệt kho thành trigger DB (mọi khối)
+- Thùy: "các câu đưa vào kho vẫn chưa duyệt… sửa luôn luật mọi khối". Nguyên nhân: luật "cao ⇒ tự duyệt" (04/11) là SCRIPT phải nhớ chạy sau B3; K10 (28/10 + lượt sau) quên ⇒ 1.072 câu Đại gán nguon ai chưa duyệt.
+- Làm: mig `202611051930_tu_duyet_khi_gan_ai.sql` (đã áp bằng --only; lần 1 deadlock do phiên khác ghi, lần 2 OK): hàm `_bdm_du_dap_an`, `_bdm_tu_duyet_sau_gan` + 4 trigger (dai/hgt gan_cau, kho_ds). Thử trigger trong ROLLBACK: gán nguon ai ⇒ da_duyet=true. Vá tồn: `duyet-cao-moi-khoi.mjs --ghi` 1.072 Đại / 0 hgt. Ghi vào CLAUDE.md §7 + memory.
+- Chưa phủ: Hình–Học (`hinh_hoc_*`), ví dụ lớp `dai_cau_lop`, và câu K10 Hàm số CHƯA gán dạng (chưa phân lại).
+
+## 5/11 — Duyệt nốt câu Hàm số K10 đã phân dạng
+- Hàm số K10 (NCD00234): 1.078 câu đã gán dạng nguon ai; 1.072 đã duyệt (vá bằng script sau khi có trigger). 6 câu còn lại thiếu `dap_an` (lời giải có): đã đọc lời giải, điền đáp án + duyệt 4 câu (T…4265=B — file đáp án ghi D sai; T…7341=C; T…4980=27; T…7325=8). CÒN 2 câu KHÔNG duyệt: T…4939 (TN, đáp án đúng I(2;−1) KHÔNG có trong 4 phương án — đề sai) và T…1509 (thiếu hình đồ thị, không xác định được đáp án).
+- Bài học: Thùy bực vì phải hỏi lại — câu "đã phân dạng, tự tin cao" thì duyệt luôn, không dừng ở bước dò điều kiện đáp án rồi báo.
+
+## 06/11 — Báo cáo HỌC KÌ: công cụ PDF vào repo
+- Pull main xong. Thêm `scripts/bao-cao-ky/dung-pdf.mjs` (snapshot đã công bố → HTML → Edge headless PDF, 125×220 mm, phần 2–5 sang trang mới, giữ trọn card/dòng; nhãn Kế hoạch dính khung). Thử bằng bản nháp `fn_bc_ky_tinh` (ROLLBACK, không ghi). Kì "Nửa kì 1": 10 dòng nhập, 0 công bố ⇒ chưa chạy được trên snapshot thật.
+
+## 06/11 — Phiên Claude: trưởng khối đủ quyền SỬA KHO (duyệt · sửa câu · ảnh · kho rác) — mig 202611061430 CHƯA ÁP
+- Thùy: "t đã nói là cho trưởng khối mọi quyền sửa kho và bản đồ, sao m vẫn chặn". Đo lịch sử phiên: anh Đạt (Toán 10, 05/11 19:25) xin duyệt nhóm 1–2 ⇒ không có lệnh duyệt; anh Ngọc (KHTN 9, 06/11 14:03) hỏi thêm ảnh ⇒ không có lệnh ảnh. Mig 1726 mới mở phần BẢN ĐỒ.
+- Thêm: `_phien_kho_cau` (câu đúng môn + khối phiên) · `fn_phien_kho_duyet` (mã / dạng / nhóm, cả bản sao, người duyệt = người mở phiên, giữ người duyệt cũ nếu đã đúng trạng thái) · `fn_phien_kho_sua_cau` · `fn_phien_kho_anh` (chỉ URL bucket kho-anh) · `fn_phien_kho_rac` (qua fn_kho_tu_choi_cau). ban-do.mjs: duyet_cau · bo_duyet_cau · sua_cau · kho_rac · anh_pdf (pdftoppm + pngjs cắt theo tỉ lệ) · anh_docx (docx_trich.mjs) · gan_anh (upload kho-anh rồi RPC); ảnh tạm ở scripts/phien/.tam/<phiên>/ (gitignore) để Claude Read soát.
+- Thử ROLLBACK: Đạt duyệt NNB02063 (260) + NNB02068 (215) ⇒ người duyệt Đạt; sửa đáp án; gắn ảnh; kho rác; câu khối 9 chặn; URL lạ chặn. Ngọc duyệt + gắn ảnh câu KHTN 9. anh_pdf cắt thử PDF 4T ra đúng vùng. Máy nhà cần poppler (pdftoppm) cho anh_pdf.
+
+
+## 2026-11-06 — Báo cáo HỌC KÌ: card Kết luận + kế hoạch 3 phương án, bỏ nhận xét thêm (mig 202611061432 ĐÃ ÁP) — Thùy 06/11
+- Thùy định đổi mỗi mục nhỏ thành 1 dropdown combo 'mức – câu' + tự thêm mẫu, rồi đổi ý 'thôi để như cũ' (giữ nút Tốt/Ổn/Chưa tốt/Chưa QS).
+- Bỏ ô nhận xét thêm theo mục (0 báo cáo có dữ liệu; cột nx_them giữ). Thêm card KẾT LUẬN y report tháng: ket_luan_muc (7 mức như bao_cao_ph, màu/nhãn dùng chung MUC_HEX của ReportCard) + ket_luan chữ; _bc_ky_phan_gv trả 'ket_luan'; khoá sau công bố. Bản gửi PH + PDF (dung-pdf.mjs) hiện Kết luận ngay sau điểm năng lực.
+- Kế hoạch: chỉ còn 3 phương án chung (chiến dịch cải thiện riêng · hoạt động bổ trợ sắp tới · tiếp tục duy trì và phát huy). 17 phương án cũ → KHO RÁC (xoa_at), không xoá: 17/39 nháp đang tích phương án cũ, màn vẫn hiện kèm nhãn 'cũ' để GV tự bỏ tích, chữ vẫn in.
+- Kiểm: ROLLBACK (kết luận ra đúng, phương án cũ vẫn resolve) + màn local đọc DOM (Browser pane bị ẩn nên ảnh chụp đứng hình, bấm toạ độ không ăn ⇒ điều khiển bằng JS).

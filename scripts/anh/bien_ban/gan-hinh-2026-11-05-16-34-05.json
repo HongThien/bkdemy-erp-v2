@@ -1,0 +1,29 @@
+[
+ {
+  "ma": "HHC011618",
+  "bang": "hinh_hoc_cau_hoi",
+  "tep": "HHC011618_VN.1.png",
+  "kieu": "chung",
+  "anh_de_cu": null,
+  "anh_dap_an_cu": null,
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-11/HHC011618-87a889c0-8b34-4d84-8c83-b838e2a297ac.png"
+ },
+ {
+  "ma": "HHC011619",
+  "bang": "hinh_hoc_cau_hoi",
+  "tep": "HHC011619_VN.2.png",
+  "kieu": "chung",
+  "anh_de_cu": null,
+  "anh_dap_an_cu": null,
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-11/HHC011619-a10e8640-0072-4979-8863-1801faf272ec.png"
+ },
+ {
+  "ma": "HHC011620",
+  "bang": "hinh_hoc_cau_hoi",
+  "tep": "HHC011620_VN.3.png",
+  "kieu": "chung",
+  "anh_de_cu": null,
+  "anh_dap_an_cu": null,
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-11/HHC011620-14c0cad5-0b58-400b-b495-f2c7e0651d2d.png"
+ }
+]

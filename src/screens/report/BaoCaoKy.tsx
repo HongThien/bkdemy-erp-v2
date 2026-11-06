@@ -8,6 +8,7 @@ import {
   BC_KY_NHAP_TRONG, type KyHoc, type BcKyData, type BcKyNhap, type BcKyDonVi, type BcKyChuDe, type BcKyGoiY,
 } from '../../lib/baoCaoKy'
 import { SoLieuKy, PhuLucKy } from './SoLieuKy'
+import { MUC_HEX } from './ReportCard'
 import { useDanhMucNx, NhapNhanXet, NhapKeHoach, dungNhanXetChon, dungKeHoachChon, mucNhoDangDung, NHAN_MUC, MAU_MUC } from './ThangNhanXet'
 
 const pctCls = (p: number | null) => p == null ? 'text-slate-400' : p >= 80 ? 'text-emerald-700' : p >= 50 ? 'text-amber-700' : 'text-rose-700'
@@ -75,7 +76,7 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
       .then(([x, n]) => { setData(x.du_lieu); setCongBoAt(x.cong_bo_at); setNhap(n) })
       .catch((e) => setLoi(e?.message ?? String(e))).finally(() => setLoading(false))
   }, [hsId, mon, kyId])
-  if (loading) return <p className="text-sm text-slate-500">Đang tính báo cáo kì…</p>
+  if (loading) return <p className="text-sm text-slate-500">Đang tải báo cáo kì…</p>
   if (loi || !data) return <p className="rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700">{loi ?? 'Không tải được báo cáo.'}</p>
   const cao = 'h-[calc(100vh-170px)]'
   return (
@@ -87,6 +88,7 @@ export function BaoCaoKyBody({ hsId, mon, kyId, onTrangThai }: { hsId: string; m
           onDaLuu={(n) => {
             setNhap(n)
             setData((d) => d && { ...d, nang_luc: { diem: n.diem_du_doan, sai_so: n.sai_so }, nhan_xet: n.nhan_xet, ke_hoach: n.ke_hoach,
+              ket_luan: n.ket_luan_muc || n.ket_luan ? { muc: n.ket_luan_muc, noi_dung: n.ket_luan } : null,
               ...(dm ? { nhan_xet_chon: dungNhanXetChon(dm, n.nx_chon), ke_hoach_chon: dungKeHoachChon(dm, n.kh_chon) } : {}) })
             onTrangThai(hsId, 'nhap')
           }}
@@ -148,8 +150,9 @@ function NhapKy({ d: bc, hsId, mon, kyId, nhap, congBoAt, goiY, moSoLieu, onMoSo
   const dm = useDanhMucNx()
   const [diem, setDiem] = useState(nhap.diem_du_doan?.toString() ?? '')
   const [saiSo, setSaiSo] = useState(nhap.sai_so?.toString() ?? '')
-  const [nx, setNx] = useState(nhap.nhan_xet ?? '')
+  const [nx] = useState(nhap.nhan_xet ?? '')   // nhận xét TỔNG cũ — không còn ô nhập (thay bằng nhận xét thêm theo mục), giữ giá trị cũ khi lưu
   const [kh, setKh] = useState(nhap.ke_hoach ?? '')
+  const [kl, setKl] = useState(nhap.ket_luan ?? '')
   const [saved, setSaved] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
@@ -173,6 +176,7 @@ function NhapKy({ d: bc, hsId, mon, kyId, nhap, congBoAt, goiY, moSoLieu, onMoSo
     if (n.diem_du_doan === nhap.diem_du_doan && n.sai_so === nhap.sai_so && n.nhan_xet === nhap.nhan_xet && n.ke_hoach === nhap.ke_hoach) return
     await ghi(tag, n, { diem_du_doan: n.diem_du_doan, sai_so: n.sai_so, nhan_xet: n.nhan_xet, ke_hoach: n.ke_hoach })
   }
+  const luuKl = () => { const v = kl.trim() || null; if (v !== nhap.ket_luan) void ghi('kl', { ...nhap, ket_luan: v }, { ket_luan: v }) }
   const dungGoiY = () => {
     if (goiY?.du_doan == null || goiY.sai_so == null) return
     const a = String(goiY.du_doan), b = String(goiY.sai_so)
@@ -226,20 +230,31 @@ function NhapKy({ d: bc, hsId, mon, kyId, nhap, congBoAt, goiY, moSoLieu, onMoSo
 
       {/* Nhận xét theo thang: mục to xếp thành cột (rộng: 4 cột · hẹp: 2 cột) */}
       {dm
-        ? <NhapNhanXet dm={dm} nx={nhap.nx_chon} goiY={goiY} khoa={khoa} onDoi={(v) => void ghi('nxc', { ...nhap, nx_chon: v }, { nx_chon: v })} />
+        ? <NhapNhanXet dm={dm} nx={nhap.nx_chon} goiY={goiY} khoa={khoa}
+            onDoi={(v) => void ghi('nxc', { ...nhap, nx_chon: v }, { nx_chon: v })} />
         : <p className="text-[12px] text-slate-400">Đang tải thang nhận xét…</p>}
 
-      <div className="grid gap-3 @3xl:grid-cols-2">
+      <div className="grid items-start gap-3 @3xl:grid-cols-2">
+        {/* KẾT LUẬN — y report tháng: 1 trong 7 mức + chữ (Thùy 06/11) */}
         <div className={`${the} px-4 py-3`}>
-          <div className={`${tieuDe} mb-1.5`}>Kế hoạch cải thiện</div>
-          {dm && <NhapKeHoach dm={dm} nx={nhap.nx_chon} kh={nhap.kh_chon} khoa={khoa} onDoi={(v) => void ghi('khc', { ...nhap, kh_chon: v }, { kh_chon: v })} />}
-          <textarea value={kh} disabled={khoa} onChange={(e) => setKh(e.target.value)} onBlur={() => void luu('kh')} rows={2} placeholder="Viết thêm (nếu cần)…"
-            className="mt-2 w-full rounded-lg border border-slate-200 px-2.5 py-2 text-[13px] leading-relaxed text-slate-800 disabled:bg-slate-50" />
+          <div className={`${tieuDe} mb-1.5`}>Kết luận</div>
+          <div className="mb-2 grid gap-1 @xl:grid-cols-2">
+            {Object.entries(MUC_HEX).map(([k, m]) => (
+              <button key={k} disabled={khoa} onClick={() => { const v = nhap.ket_luan_muc === k ? null : k; void ghi('kl', { ...nhap, ket_luan_muc: v }, { ket_luan_muc: v }) }}
+                style={nhap.ket_luan_muc === k ? { background: m.fg, color: '#fff' } : undefined}
+                className={`flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-left text-[12.5px] font-medium ring-1 ring-slate-200 ${nhap.ket_luan_muc === k ? '' : 'bg-slate-50 text-slate-600 hover:bg-slate-100'} disabled:cursor-default`}>
+                <span>{m.emoji}</span>{m.label}
+              </button>
+            ))}
+          </div>
+          <textarea value={kl} disabled={khoa} onChange={(e) => setKl(e.target.value)} onBlur={luuKl} rows={3} placeholder="Kết luận chung về học kì…"
+            className="w-full rounded-lg border border-slate-200 px-2.5 py-2 text-[13px] leading-relaxed text-slate-800 disabled:bg-slate-50" />
         </div>
         <div className={`${the} px-4 py-3`}>
-          <div className={`${tieuDe} mb-1.5`}>Nhận xét thêm <span className="font-normal normal-case text-slate-400">— khi thang chưa nói hết</span></div>
-          <textarea value={nx} disabled={khoa} onChange={(e) => setNx(e.target.value)} onBlur={() => void luu('nx')} rows={5} placeholder="Không bắt buộc…"
-            className="w-full rounded-lg border border-slate-200 px-2.5 py-2 text-[13px] leading-relaxed text-slate-800 disabled:bg-slate-50" />
+          <div className={`${tieuDe} mb-1.5`}>Kế hoạch cải thiện</div>
+          {dm && <NhapKeHoach dm={dm} kh={nhap.kh_chon} khoa={khoa} onDoi={(v) => void ghi('khc', { ...nhap, kh_chon: v }, { kh_chon: v })} />}
+          <textarea value={kh} disabled={khoa} onChange={(e) => setKh(e.target.value)} onBlur={() => void luu('kh')} rows={2} placeholder="Viết thêm (nếu cần)…"
+            className="mt-2 w-full rounded-lg border border-slate-200 px-2.5 py-2 text-[13px] leading-relaxed text-slate-800 disabled:bg-slate-50" />
         </div>
       </div>
       <p className="text-[11px] text-slate-400">{khoa
@@ -349,6 +364,11 @@ function O({ so, nhan, tone }: { so: React.ReactNode; nhan: string; tone?: 'do' 
 export function XemTruocKy({ d }: { d: BcKyData; congBoAt?: string | null }) {
   const cc = d.thai_do.chuyen_can, bt = d.thai_do.btvn
   const nghi = cc ? cc.vang + cc.vang_phep : 0
+  // Chưa đo trong 60 ngày cuối kì = không quan trọng ⇒ không hiện (Thùy 06/11), cả chủ đề lẫn chuyên đề
+  // chủ đề chỉ có 1 chuyên đề trùng tên (vd "Hình" → "Hình") ⇒ hiện 1 dòng thôi (Thùy 06/11)
+  const boLap = (cd: BcKyChuDe, cy: BcKyDonVi[]) => cy.length === 1 && cy[0].ten.trim() === cd.ten.trim() ? [] : cy
+  const daDo = (u: BcKyDonVi) => u.n > 0 && u.p != null
+  const chuDeDaDo = d.danh_gia.chu_de.filter(daDo).map((cd) => ({ ...cd, chuyen_de: boLap(cd, cd.chuyen_de.filter(daDo)) }))
   return (
     // 1 CỘT cho mọi nơi — app PH lẫn PDF (Thùy 04/11: "đa số PH dùng điện thoại")
     <div className="mx-auto max-w-[480px] space-y-4">
@@ -359,8 +379,8 @@ export function XemTruocKy({ d }: { d: BcKyData; congBoAt?: string | null }) {
       </div>
 
       <Phan so={1} ten="Đánh giá kiến thức">
-        {d.danh_gia.chu_de.length
-          ? <div className="grid gap-3">{d.danh_gia.chu_de.map((cd) => <CardChuDe key={cd.ma} cd={cd} />)}</div>
+        {chuDeDaDo.length
+          ? <div className="grid gap-3">{chuDeDaDo.map((cd) => <CardChuDe key={cd.ma} cd={cd} />)}</div>
           : <p className="text-[13px] text-slate-400">Chưa có lần đánh giá nào trong kì.</p>}
       </Phan>
 
@@ -424,6 +444,12 @@ export function XemTruocKy({ d }: { d: BcKyData; congBoAt?: string | null }) {
             <div className="flex items-end gap-2"><span className="text-[40px] font-extrabold leading-none text-indigo-600">{so1(d.nang_luc.diem)}</span><span className="pb-1 text-[18px] font-semibold text-slate-500">± {so1(d.nang_luc.sai_so)}</span></div>
           </div>
         </div>
+        {d.ket_luan && (() => { const m = d.ket_luan.muc ? MUC_HEX[d.ket_luan.muc] : null; return (
+          <div className="mb-4 rounded-xl px-4 py-3" style={{ background: m?.bg ?? '#f8fafc' }}>
+            <div className="text-[11.5px] font-bold uppercase text-slate-500">Kết luận</div>
+            {m && <div className="mt-1 text-[16px] font-extrabold" style={{ color: m.fg }}>{m.emoji} {m.label}</div>}
+            {d.ket_luan.noi_dung && <p className="mt-1 whitespace-pre-line text-[14px] leading-relaxed text-slate-800">{d.ket_luan.noi_dung}</p>}
+          </div>) })()}
         {/* Nhận xét theo thang (Thùy 05/11): mục to → mục nhỏ, mỗi mục 1 mức + 1 câu */}
         {(d.nhan_xet_chon ?? []).length === 0 && !d.nhan_xet && <p className="text-[13px] text-slate-400">Giáo viên chưa nhập nhận xét.</p>}
         <div className="space-y-3">

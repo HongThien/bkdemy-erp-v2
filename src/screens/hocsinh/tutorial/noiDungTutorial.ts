@@ -203,7 +203,7 @@ const CHUONG_TAT_CA: ChuongTutorial[] = [
       { noi: 'Nông trại BK đã mở rồi! Ở màn chính, em chạm ô Trò chơi rồi chọn Nông trại BK để vào vườn của mình.', soi: 'o_vao', loc: 'greeting' },
       { noi: 'Em có 4 ô đất để gieo hạt, tưới nước rồi thu hoạch. Hạt giống mua bằng điểm học tập, em làm bài càng nhiều thì càng có nhiều điểm để mua.', soi: 'vuon', loc: 'explaining' },
       { noi: 'Mỗi ngày em chơi được tối đa 30 phút. Vườn lớn lên theo số ngày em chăm, nên chơi đều mỗi ngày nhé.', soi: 'gio', loc: 'open_book' },
-      { noi: 'Chơi đều là có xu thật. Ngày nào chơi từ 5 phút trở lên thì được tính, mỗi ngày tối đa 1 xu, cả tháng tối đa 20 xu, vào thẳng Ví xu của em.', soi: 'xu', loc: 'explaining' },
+      { noi: 'Chơi đều là có xu thật. Ngày nào chơi từ 5 phút trở lên thì được tính, mỗi ngày tối đa 4 xu, cả tháng tối đa 20 xu, vào thẳng Ví xu của em.', soi: 'xu', loc: 'explaining' },
       { noi: 'Em có thể sang thăm vườn bạn cùng lớp, giúp bạn tưới nước và bắt sâu. Bạn cũng có thể ghé hái trộm vài quả của em, nên nhớ nuôi chó canh vườn.', soi: 'ban_be', loc: 'winking' },
       { noi: 'Nhà em có sẵn một chú chó. Muốn nuôi thêm mèo, chim hay các bạn thú khác thì mua bằng điểm học tập ở nút Thú cưng. Vào chơi thử thôi nào!', soi: 'thu_cung', loc: 'greeting' },
     ],

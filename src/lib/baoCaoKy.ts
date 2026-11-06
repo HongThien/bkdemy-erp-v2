@@ -28,6 +28,7 @@ export type BcKyData = {
   nang_luc: { diem: number | null; sai_so: number | null }
   nhan_xet: string | null          // ô "nhận xét thêm" (không bắt buộc)
   ke_hoach: string | null          // ô "viết thêm" của kế hoạch
+  ket_luan?: { muc: string | null; noi_dung: string | null } | null   // Thùy 06/11, giống report tháng (mig 202611061432)
   // phiên bản 3 (mig 202611051600 — thang nhận xét, Thùy 05/11); snapshot cũ không có ⇒ undefined
   nhan_xet_chon?: BcKyNxTo[]
   ke_hoach_chon?: string[]
@@ -36,13 +37,14 @@ export type BcKyData = {
 }
 export type MucDo = 'tot' | 'on' | 'chua_tot'
 export type MucDoChon = MucDo | 'chua_du'
-export type BcKyNxTo = { ma: string; ten: string; con: { ma: string; ten: string; muc_do: MucDoChon; noi_dung: string | null }[] }
+// them = nhận xét thêm của GV cho riêng mục to này (Thùy 05/11, mig 202611051853)
+export type BcKyNxTo = { ma: string; ten: string; them?: string | null; con: { ma: string; ten: string; muc_do: MucDoChon; noi_dung: string | null }[] }
 export type BcKyGoiYMuc = { muc_do: MucDo | null; khoa: string | null; so: Record<string, number | boolean | null> }
 export type BcKyGoiY = { du_doan: number | null; sai_so: number | null; so_lan: number; muc: Record<string, BcKyGoiYMuc> }
 export type NxChon = Record<string, { muc_do: MucDoChon; lc: string | null }>
 export type BcKyXem = { cong_bo_at: string | null; du_lieu: BcKyData }
-export type BcKyNhap = { diem_du_doan: number | null; sai_so: number | null; nhan_xet: string | null; ke_hoach: string | null; nx_chon: NxChon; kh_chon: string[]; cong_bo_at: string | null }
-export const BC_KY_NHAP_TRONG: BcKyNhap = { diem_du_doan: null, sai_so: null, nhan_xet: null, ke_hoach: null, nx_chon: {}, kh_chon: [], cong_bo_at: null }
+export type BcKyNhap = { diem_du_doan: number | null; sai_so: number | null; nhan_xet: string | null; ke_hoach: string | null; nx_chon: NxChon; kh_chon: string[]; nx_them: Record<string, string>; ket_luan_muc: string | null; ket_luan: string | null; cong_bo_at: string | null }
+export const BC_KY_NHAP_TRONG: BcKyNhap = { diem_du_doan: null, sai_so: null, nhan_xet: null, ke_hoach: null, nx_chon: {}, kh_chon: [], nx_them: {}, ket_luan_muc: null, ket_luan: null, cong_bo_at: null }
 
 export async function listKyHoc(): Promise<KyHoc[]> {
   const { data, error } = await supabase.from('ky_hoc').select('id, ten, tu_thang, den_thang').order('tu_thang', { ascending: false }).limit(50)
@@ -62,12 +64,12 @@ export async function xemBcKy(hsId: string, mon: string, kyId: string): Promise<
   return data as BcKyXem
 }
 export async function getBcKyNhap(hsId: string, mon: string, kyId: string): Promise<BcKyNhap> {
-  const { data, error } = await supabase.from('bao_cao_ph_ky').select('diem_du_doan, sai_so, nhan_xet, ke_hoach, nx_chon, kh_chon, cong_bo_at')
+  const { data, error } = await supabase.from('bao_cao_ph_ky').select('diem_du_doan, sai_so, nhan_xet, ke_hoach, nx_chon, kh_chon, nx_them, ket_luan_muc, ket_luan, cong_bo_at')
     .eq('hoc_sinh_id', hsId).eq('mon', mon).eq('ky_id', kyId).maybeSingle()
   if (error) throw error
   return (data as BcKyNhap) ?? { ...BC_KY_NHAP_TRONG }
 }
-export async function luuBcKyNhap(hsId: string, mon: string, kyId: string, patch: Partial<Pick<BcKyNhap, 'diem_du_doan' | 'sai_so' | 'nhan_xet' | 'ke_hoach' | 'nx_chon' | 'kh_chon'>>): Promise<void> {
+export async function luuBcKyNhap(hsId: string, mon: string, kyId: string, patch: Partial<Pick<BcKyNhap, 'diem_du_doan' | 'sai_so' | 'nhan_xet' | 'ke_hoach' | 'nx_chon' | 'kh_chon' | 'nx_them' | 'ket_luan_muc' | 'ket_luan'>>): Promise<void> {
   const { error } = await supabase.from('bao_cao_ph_ky').upsert({ hoc_sinh_id: hsId, mon, ky_id: kyId, ...patch }, { onConflict: 'hoc_sinh_id,mon,ky_id' })
   if (error) throw error
 }
@@ -108,23 +110,26 @@ export async function listBcKyTrangThai(hsIds: string[], mon: string, kyId: stri
 export type NxMuc = { ma: string; cha: string | null; ten: string; thu_tu: number; goi_y: 'btvn' | 'can_than' | 'tien_bo_diem' | null; nguong_tot: number | null; nguong_chua_tot: number | null }
 export type NxLuaChon = { ma: string; muc_ma: string; muc_do: MucDo; noi_dung: string; khoa_goi_y: string | null; thu_tu: number }
 export type KhMau = { ma: string; muc_ma: string | null; noi_dung: string; thu_tu: number }
-export type DanhMucNx = { muc: NxMuc[]; lc: NxLuaChon[]; kh: KhMau[] }
+// khCu = phương án đã cất kho rác — cần chữ khi báo cáo nháp còn tích
+export type DanhMucNx = { muc: NxMuc[]; lc: NxLuaChon[]; kh: KhMau[]; khCu: KhMau[] }
 const COT_MUC = 'ma, cha, ten, thu_tu, goi_y, nguong_tot, nguong_chua_tot'
 const COT_LC = 'ma, muc_ma, muc_do, noi_dung, khoa_goi_y, thu_tu'
 const COT_KH = 'ma, muc_ma, noi_dung, thu_tu'
 const so = <T extends { thu_tu: number; ma: string }>(a: T[]) => a.sort((x, y) => x.thu_tu - y.thu_tu || x.ma.localeCompare(y.ma))
 export async function getDanhMucNx(): Promise<DanhMucNx> {
-  const [m, l, k] = await Promise.all([
+  const [m, l, k, kc] = await Promise.all([
     supabase.from('bc_ky_nx_muc').select(COT_MUC).is('xoa_at', null).limit(500),
     supabase.from('bc_ky_nx_lua_chon').select(COT_LC).is('xoa_at', null).limit(2000),
     supabase.from('bc_ky_kh_mau').select(COT_KH).is('xoa_at', null).limit(1000),
+    supabase.from('bc_ky_kh_mau').select(COT_KH).not('xoa_at', 'is', null).limit(1000),
   ])
-  if (m.error) throw m.error; if (l.error) throw l.error; if (k.error) throw k.error
+  if (m.error) throw m.error; if (l.error) throw l.error; if (k.error) throw k.error; if (kc.error) throw kc.error
   const num = (v: unknown) => v == null ? null : Number(v)
   return {
     muc: so(((m.data ?? []) as NxMuc[]).map((x) => ({ ...x, nguong_tot: num(x.nguong_tot), nguong_chua_tot: num(x.nguong_chua_tot) }))),
     lc: so((l.data ?? []) as NxLuaChon[]),
     kh: so((k.data ?? []) as KhMau[]),
+    khCu: (kc.data ?? []) as KhMau[],
   }
 }
 export async function laAdminBcKy(): Promise<boolean> {
