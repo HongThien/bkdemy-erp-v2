@@ -79008,3 +79008,6 @@ Thùy nêu 4 việc, làm được 3:
 ## 5/11 — Duyệt nốt câu Hàm số K10 đã phân dạng
 - Hàm số K10 (NCD00234): 1.078 câu đã gán dạng nguon ai; 1.072 đã duyệt (vá bằng script sau khi có trigger). 6 câu còn lại thiếu `dap_an` (lời giải có): đã đọc lời giải, điền đáp án + duyệt 4 câu (T…4265=B — file đáp án ghi D sai; T…7341=C; T…4980=27; T…7325=8). CÒN 2 câu KHÔNG duyệt: T…4939 (TN, đáp án đúng I(2;−1) KHÔNG có trong 4 phương án — đề sai) và T…1509 (thiếu hình đồ thị, không xác định được đáp án).
 - Bài học: Thùy bực vì phải hỏi lại — câu "đã phân dạng, tự tin cao" thì duyệt luôn, không dừng ở bước dò điều kiện đáp án rồi báo.
+
+## 06/11 — Báo cáo HỌC KÌ: công cụ PDF vào repo
+- Pull main xong. Thêm `scripts/bao-cao-ky/dung-pdf.mjs` (snapshot đã công bố → HTML → Edge headless PDF, 125×220 mm, phần 2–5 sang trang mới, giữ trọn card/dòng; nhãn Kế hoạch dính khung). Thử bằng bản nháp `fn_bc_ky_tinh` (ROLLBACK, không ghi). Kì "Nửa kì 1": 10 dòng nhập, 0 công bố ⇒ chưa chạy được trên snapshot thật.
