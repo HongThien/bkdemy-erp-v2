@@ -79134,3 +79134,5 @@ Thùy nêu 4 việc, làm được 3:
 ## 2026-11-07 — Báo cáo HỌC KÌ: phụ lục bỏ em đã nghỉ (mig 202611071059 ĐÃ ÁP) — Thùy 'những bạn đã nghỉ thì không đưa vào phụ lục'
 - Đo: 14 em phụ lục không còn lớp đang học của môn (KHTN K9 5 · Toán K6 4 · K7 2 · K8 2 · K9 1). _bc_ky_xep_hang_lai lọc lop NULL (giữ chính em) rồi mới xếp hạng; hang_ky.tong = tập sau lọc. Hạng từng lần thi giữ nguyên.
 - Công bố lại 206/207 (app PH đang ẩn): đổi hạng cả kì 89, phụ lục ngắn lại 176; lỗi 1 = Chu Bảo Ngọc (thiếu sai số). Dựng lại toàn bộ PDF.
+
+- 07/11 — PDF: lượt dựng lại báo 207/207 mà 182 file vẫn bản 06/11. Nguyên nhân: Edge headless ghi PDF ~1 s SAU khi thoát + dùng chung 1 hồ sơ tạm ⇒ chạy dồn bị bỏ sót, script đếm theo lệnh chạy xong. Sửa dung-pdf.mjs: mỗi file 1 hồ sơ + 1 html riêng, chờ tới khi file thật sự được ghi mới (≤ 15 s), không ghi ⇒ báo LỖI; dọn thư mục tạm không làm hỏng lượt. Dựng lại 207/207 (kiểm giờ ghi). Còn 2 file cũ 9A2 (Nguyễn Khôi Nguyên, Nghiêm Văn Bảo Khánh) — Phạm Thị Thùy Trang mở lại sáng 07/11 để sửa, chưa công bố lại.

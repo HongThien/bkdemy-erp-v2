@@ -207,17 +207,26 @@ if (!rows.length) process.exit(0)
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'bckypdf-'))
 let ok = 0
+const loi = []
 for (const { snapshot: d } of rows) {
   const dir = path.join(OUT, tenFile(ky.ten), tenFile(d.lop.ten ?? 'khong-lop'))
   fs.mkdirSync(dir, { recursive: true })
   const base = path.join(dir, `${tenFile(d.hs.ho_ten)} - ${tenFile(d.mon)}`)
   const html = dungHtml(d)
   if (chiHtml) { fs.writeFileSync(base + '.html', html); ok++; continue }
-  const f = path.join(tmp, 'bc.html'); fs.writeFileSync(f, html)
+  // 07/11: mỗi file 1 hồ sơ Edge riêng + 1 file html riêng. Dùng chung 1 hồ sơ thì Edge headless lần trước còn giữ khoá ⇒ lần sau trả về
+  // ngay KHÔNG ghi file (lượt 07/11 báo 207/207 mà 182 file vẫn bản cũ). Đếm "xong" = file PDF thật sự vừa được ghi.
+  const n = ok + loi.length
+  const f = path.join(tmp, `bc${n}.html`); fs.writeFileSync(f, html)
+  const pdf = base + '.pdf', truoc = Date.now()
   try {
-    execFileSync(EDGE, ['--headless', '--disable-gpu', '--no-pdf-header-footer', `--user-data-dir=${path.join(tmp, 'p')}`, `--print-to-pdf=${base}.pdf`, pathToFileURL(f).href], { stdio: 'ignore', timeout: 60000 })
+    execFileSync(EDGE, ['--headless', '--disable-gpu', '--no-pdf-header-footer', `--user-data-dir=${path.join(tmp, 'p' + n)}`, `--print-to-pdf=${pdf}`, pathToFileURL(f).href], { stdio: 'ignore', timeout: 60000 })
+    // Edge thoát xong mới ghi file (~1 s sau) ⇒ chờ tới khi file mới xuất hiện (tối đa 15 s) rồi mới in em kế tiếp
+    const moi = () => fs.existsSync(pdf) && fs.statSync(pdf).mtimeMs >= truoc - 1000
+    for (let i = 0; i < 60 && !moi(); i++) Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 250)
+    if (!moi()) throw new Error('Edge chạy xong mà không ghi file')
     ok++
-  } catch (e) { console.log('LỖI', d.hs.ho_ten, d.mon, e.message) }
+  } catch (e) { loi.push(d.hs.ho_ten); console.log('LỖI', d.hs.ho_ten, d.mon, e.message) }
 }
-fs.rmSync(tmp, { recursive: true, force: true })
+try { fs.rmSync(tmp, { recursive: true, force: true, maxRetries: 5, retryDelay: 500 }) } catch { /* Edge còn giữ hồ sơ tạm — để Windows tự dọn, không làm hỏng lượt in */ }
 console.log(`XONG: ${ok}/${rows.length} → ${OUT}`)
