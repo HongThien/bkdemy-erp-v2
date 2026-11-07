@@ -79129,3 +79129,8 @@ Thùy nêu 4 việc, làm được 3:
 - lib/mini-dang.mjs tachDapSoThucTe: thêm nhánh DỰ PHÒNG (chỉ chạy khi cách đọc cũ thất bại ⇒ câu cũ không đổi hành vi): đáp số kèm ĐƠN VỊ chữ ("61 ngôi sao", "302 ki-lô-gam gạo", "15 nghìn đồng") và CẶP CÓ NHÃN ("Tuổi của chị: 14; Tuổi của em: 12") — giữ đơn vị/nhãn ở mọi phương án.
 - SAI 2 lần cùng gốc: heredoc bash nuốt gạch chéo ⇒ `\text` thành TAB trong mã JS (verify vẫn PASS vì so text với chính nó; JSON.stringify che mất). Bắt bằng /\t/ trên output; sửa bằng script Python ghi ra file (chr(92)). Bài học: patch có `\` ⇒ không dùng heredoc, kiểm output bằng regex tab.
 - Kết quả: 612/655 form, verify 0 FAIL, đã ghi (da_duyet=false). Trang duyệt kho-rules/dai/lo/mcq-4t/duyet-4t-20261107.html (bản sao build-duyet bỏ ::int). 43 câu không làm: 21 đáp "Không" (Có/Không — MƠ HỒ theo spec), 9 đáp 1 chữ cái (dãy lặp), dãy 5 số / a) b) nhiều phần.
+
+
+## 2026-11-07 — Báo cáo HỌC KÌ: phụ lục bỏ em đã nghỉ (mig 202611071059 ĐÃ ÁP) — Thùy 'những bạn đã nghỉ thì không đưa vào phụ lục'
+- Đo: 14 em phụ lục không còn lớp đang học của môn (KHTN K9 5 · Toán K6 4 · K7 2 · K8 2 · K9 1). _bc_ky_xep_hang_lai lọc lop NULL (giữ chính em) rồi mới xếp hạng; hang_ky.tong = tập sau lọc. Hạng từng lần thi giữ nguyên.
+- Công bố lại 206/207 (app PH đang ẩn): đổi hạng cả kì 89, phụ lục ngắn lại 176; lỗi 1 = Chu Bảo Ngọc (thiếu sai số). Dựng lại toàn bộ PDF.

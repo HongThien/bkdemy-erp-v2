@@ -114,3 +114,4 @@
 - `ky_hoc.mo_ph` (mặc định TẮT): app PH chỉ đọc báo cáo ĐÃ CÔNG BỐ của kì đang MỞ (policy `fdw_bkdemy_web_read` + `_bc_ky_mo_ph`). Tắt không đụng trạng thái công bố / snapshot.
 - Bật/tắt: nút "📱 App PH: đang ẩn / đang hiện" cạnh ô chọn kì ở Report phụ huynh → Học kì (chỉ admin), mỗi lần đổi ghi `ky_hoc_mo_ph_log`.
 - Quy trình: GV điền → công bố → admin soát (ERP / PDF) → bật app PH cho cả kì.
+- (07/11) Phụ lục chỉ gồm em CÒN HỌC môn đó (có lớp đang học — `lop` khác NULL); em đã nghỉ bị bỏ trước khi xếp hạng cả kì (`_bc_ky_xep_hang_lai`, mig 202611071059). Điểm/TB/hạng từng lần thi giữ nguyên.
