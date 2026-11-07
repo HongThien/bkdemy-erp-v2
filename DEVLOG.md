@@ -79136,3 +79136,5 @@ Thùy nêu 4 việc, làm được 3:
 - Công bố lại 206/207 (app PH đang ẩn): đổi hạng cả kì 89, phụ lục ngắn lại 176; lỗi 1 = Chu Bảo Ngọc (thiếu sai số). Dựng lại toàn bộ PDF.
 
 - 07/11 — PDF: lượt dựng lại báo 207/207 mà 182 file vẫn bản 06/11. Nguyên nhân: Edge headless ghi PDF ~1 s SAU khi thoát + dùng chung 1 hồ sơ tạm ⇒ chạy dồn bị bỏ sót, script đếm theo lệnh chạy xong. Sửa dung-pdf.mjs: mỗi file 1 hồ sơ + 1 html riêng, chờ tới khi file thật sự được ghi mới (≤ 15 s), không ghi ⇒ báo LỖI; dọn thư mục tạm không làm hỏng lượt. Dựng lại 207/207 (kiểm giờ ghi). Còn 2 file cũ 9A2 (Nguyễn Khôi Nguyên, Nghiêm Văn Bảo Khánh) — Phạm Thị Thùy Trang mở lại sáng 07/11 để sửa, chưa công bố lại.
+
+- 07/11 — Thùy 'riêng 4T – 5T là 2 lớp đặc biệt, xếp hạng đầy đủ, không cần rule đủ bài' ⇒ mig 202611071135: khối 4T/5T coi mọi em ĐỦ. Thử 4T1: em thi 1/3 lần đứng hạng 2. 9 báo cáo nháp, 0 công bố ⇒ không công bố lại.
