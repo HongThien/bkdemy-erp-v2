@@ -79194,3 +79194,4 @@ Thùy nêu 4 việc, làm được 3:
 - Vẽ lại câu có hình nhỏ/mờ + đề và lời giải nhất quán, parabol xác định đủ (đỉnh + điểm đi qua): T…160/4617 (cùng hình), 2430/6775, 4874, 4985, 6804/301025, 301022, 301026, 301027, 4923, 2443. Diện tích vùng tô khớp đáp số cả 10 hình.
 - **Bỏ qua (nói rõ):** T…2425 (lời giải A(16;90) mâu thuẫn "15 s"), T…2476 (đề "1 giờ" vs lời giải), T…863 và 880 (đề không cho số liệu), mọi hình đã đủ đọc (1000, 12/16, 3/2…). Trang duyệt: `kho-rules/dai/k12-bt-NDB00631-truoc-sau.html`. Chưa ghi DB.
 - Máy vẽ: sửa chiều cao khi `deu:false` (hình t–v đơn vị lệch hẳn, vd v tới 90 mà t tới 4,5).
+- **Ghi DB (Thùy duyệt, 07/11):** 13 câu NDB00631 đổi `anh_de` sang SVG máy vẽ, sao lưu `reports/sao-luu-anh-cau-*.json`.
