@@ -151,9 +151,10 @@ const LUAT = {
   batDau: { xu: 20, diem: 10, kho: {} },   // bản demo: ví giả 20 xu, tặng 10 điểm để học gieo
   // ô ruộng (spec §5.1 — CEO: bắt đầu ít ô, mở dần bằng cấp + điểm chăm chỉ)
   // CEO 30/09: bắt đầu 4 ô, ít ô thì trân trọng, hiểu sâu hơn. Lần 5: tuần đầu 4 ô, HẾT THÁNG ĐẦU ĐỦ 8 Ô là được; ô 9–12 rải tháng 2–3.
-  oDau: 4, oToiDa: 12,
-  oMo: [{ cap: 3, diem: 10 }, { cap: 5, diem: 15 }, { cap: 7, diem: 20 }, { cap: 9, diem: 20 }, { cap: 12, diem: 30 },
-        { cap: 14, diem: 40 }, { cap: 16, diem: 50 }, { cap: 18, diem: 60 }],   // ô thứ 5 → 12
+  // Thùy 07/11: BẮT ĐẦU 8 Ô, tối đa 12 ⇒ 12 ô chỉ gấp 1,5 lần 8 ô (kinh tế dễ chỉnh), mỗi ô thêm +12,5% (thay vì +25% khi 4→8). Ô 9–12 mở dần bằng cấp + điểm. Bản lưu cũ 4–6 ô được engine nâng lên 8.
+  oDau: 8, oToiDa: 12,
+  oMo: [{ cap: 12, diem: 30 },
+        { cap: 14, diem: 40 }, { cap: 16, diem: 50 }, { cap: 18, diem: 60 }],   // ô thứ 9 → 12
   // CEO 30/09: 1 ô = 1 hạt, mỗi ngày mua tối đa SỐ HẠT = SỐ Ô đang có (tính cả trả xu lẫn trả điểm) — đây là cái chặn "dùng xu mua mãi"
   // chăm sóc (spec §5.2 — CEO: mọi cây đều tưới + bón được)
   tuoiThem: 0.8,                 // tưới đủ mọi ngày cây đang lớn: +80% sản lượng (thiếu thì theo tỉ lệ ngày) — lần 5: 50% → 80%
