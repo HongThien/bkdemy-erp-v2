@@ -31,7 +31,7 @@ const HD = [
     muc: () => [{ loai: 'bang' }, '#btnBan'],
     batDau: s => { let tot = 0, k0 = 0; D.BAN_AO.forEach((_, k) => { const t = E.tomTatBan(s, k), d = t.hai * 2 + t.giup; if (d > tot) { tot = d; k0 = k; } }); s.hd.ban = k0; },
     dem: ['tham'], xong: s => moi(s, 'tham') >= 1 },
-  { id: 'giup', kieu: 'lam', dong: 'talking', loi: 'Ô có 💧 là bạn chưa tưới, 🐛 là có sâu. Chạm để GIÚP bạn — mỗi ngày giúp được 10 lượt, mỗi lượt +4 EXP.',
+  { id: 'giup', kieu: 'lam', dong: 'talking', loi: 'Ô có 💧 là bạn chưa tưới, 🐛 là có sâu. Chạm để GIÚP bạn — mỗi ngày giúp được ' + D.LUAT.giup + ' lượt, mỗi lượt +' + D.LUAT.expGiup + ' EXP.',
     dem: ['giup'], xong: s => moi(s, 'giup') >= 1 || E.tomTatBan(s, ban(s)).giup === 0 },
   { id: 'trom', kieu: 'lam', dong: 'winking', loi: 'Ô có 🧺 là cây chín từ HÔM QUA mà bạn chưa hái — em hái được 1 quả (mỗi ngày 3 lượt). Cẩn thận chó nhà bạn đuổi đó!',
     dem: ['trom', 'biDuoi'], xong: s => moi(s, 'trom') + moi(s, 'biDuoi') >= 1 || E.tomTatBan(s, ban(s)).hai === 0 },
@@ -70,7 +70,7 @@ function hdMuc(s) { const B = hdBuoc(s); return B && B.muc ? B.muc(s) : null; }
 const MEO = [
   // TIN MỚI 03/11 (Thùy: "tutorial đổi background, đổi nhà, máy chế biến" + giúp bạn có EXP) — cấp 1 ⇒ mọi em thấy 1 lần, lần lượt từng mẹo
   { id: 'nha_canh', cap: 1, muc: () => '#btnGiaoDien', loi: 'Có món mới nè! Chạm nút 🎨 NHÀ & CẢNH để chọn kiểu nhà em thích và đổi khung cảnh: Trang trại tuyết hay Đêm Halloween. Bạn sang chơi cũng thấy nhà của em đó!' },
-  { id: 'may_cb', cap: D.LO_CAP, muc: () => ({ loai: 'lo' }), loi: 'MÁY CHẾ BIẾN mở rồi! Bỏ nông sản vào làm món mới: 5 lúa mì thành bánh mì, 4 khoai tây thành khoai tây nghiền… Chờ vài phút là xong, bán được nhiều EXP hơn bán thẳng. Đang chờ thì bấm ⚡ làm 3 câu toán, đúng 2 câu là máy chạy nhanh gấp đôi!' },
+  { id: 'may_cb', cap: D.LO_CAP, muc: () => ({ loai: 'lo' }), loi: 'MÁY CHẾ BIẾN mở rồi! Bỏ nông sản vào làm món mới: 3 lúa mì thành bánh mì, 3 khoai tây thành khoai tây nghiền… Chờ vài phút là xong, bán được nhiều EXP hơn bán thẳng. Đang chờ thì bấm ⚡ làm 3 câu toán, đúng 2 câu là máy chạy nhanh gấp đôi!' },
   { id: 'giup_exp', cap: 1, muc: () => [{ loai: 'bang' }, '#btnBan'], loi: 'Giúp bạn giờ có thưởng: mỗi lượt tưới hay bắt sâu cho bạn được +' + D.LUAT.expGiup + ' EXP, mỗi ngày tối đa ' + D.LUAT.giup + ' lượt. Sang vườn bạn cùng lớp giúp nhau nhé!' },
   { id: 'mo_o', cap: D.LUAT.oMo[0].cap, muc: s => ({ loai: 'ruong', i: s.oMo }), loi: 'Em mở được Ô RUỘNG MỚI rồi! Chạm vào ô đất có biển, trả bằng điểm học tập. Điểm có được khi làm bài trên app.' },
   { id: 'ga', cap: D.VAT.ga.cap, muc: () => ({ loai: 'chuong', id: 'ga' }), loi: 'Có CHUỒNG GÀ rồi! Mua gà ở chuồng, cho gà ăn lúa mì hoặc ngô, sáng mai gà đẻ trứng — thỉnh thoảng có cả phân bón.' },

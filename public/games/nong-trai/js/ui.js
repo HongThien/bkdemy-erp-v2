@@ -456,7 +456,7 @@ function veCho() {
   const key = [choTab, JSON.stringify(s.kho), s.vi.xu, s.vi.exp, s.diem, s.cap, s.tuan.xu, JSON.stringify(s.vat.ga.con.length), s.vat.bo.con.length, JSON.stringify(s.thu)].join('|');
   let html = viHtml() + `<div class="tab"><button data-t="ban" class="${choTab === 'ban' ? 'chon' : ''}">💰 Bán</button><button data-t="mua" class="${choTab === 'mua' ? 'chon' : ''}">🛒 Mua</button><button data-t="lai" class="${choTab === 'lai' ? 'chon' : ''}">🧮 Bảng tính lãi</button></div>`;
   if (choTab === 'ban') {
-    const ds = Object.keys(s.kho).filter(id => D.I[id] && D.I[id].gia > 0 && s.kho[id] > 0);
+    const ds = Object.keys(s.kho).filter(id => D.I[id] && D.I[id].gia > 0 && s.kho[id] > 0 && !(dht() && D.I[id].loai === 'phan'));   // tài khoản: phân bón không bán (engine.ban chặn)
     if (!ds.length) html += '<p class="nho">Kho chưa có gì để bán — thu hoạch đã nhé.</p>';
     for (const id of ds) {
       const P = D.I[id], n = s.kho[id], anVat = Object.values(D.VAT).some(V => V.an[id]) || Object.values(D.BANH).some(B => B.can[id]);

@@ -79140,3 +79140,10 @@ Thùy nêu 4 việc, làm được 3:
 - 07/11 — Thùy 'riêng 4T – 5T là 2 lớp đặc biệt, xếp hạng đầy đủ, không cần rule đủ bài' ⇒ mig 202611071135: khối 4T/5T coi mọi em ĐỦ. Thử 4T1: em thi 1/3 lần đứng hạng 2. 9 báo cáo nháp, 0 công bố ⇒ không công bố lại.
 
 - 07/11 — Thùy 'Report phụ huynh thoát ra tab khác vào lại không phải chọn lại từ đầu': ReportPHScreen nhớ môn · chế độ tháng/kì · lớp · em · tháng · kì · vị trí cuộn ở module-level (NHO_RP, sống tới F5). Xoá lớp/em chỉ khi môn/lớp THẬT SỰ đổi (so giá trị trước — cờ 'lần đầu' bị StrictMode dev chạy effect 2 lần làm mất lớp/em). Kiểm local: rời sang Kết quả học tập rồi quay lại ⇒ đúng Học kì · 9A1 · Lê Thu Trà · cuộn 284px; tự đổi sang 9A2 ⇒ bỏ chọn em như cũ.
+
+## 07/11 — Nông trại: ngân sách EXP tháng + lỗi bán phân bón (Thùy: "tỉ trọng exp, không phải trần")
+- **Báo:** em Nguyễn Gia Lộc (HS0010, 8S1) 217 EXP không đổi ra xu. Đo: game đã đổi đủ 20/20 xu tháng 11 (`thang.ra=20`), server mới trả 16 (4 ngày chơi ≥ 5 phút × 4) ⇒ đúng luật, nhưng em đạt 20 xu sau 7 ngày (~330 EXP/ngày).
+- **Sai lần 1 (05/11):** chỉ cắt sản lượng cây ×0,5. Đo lại `nt_luu.dem`: nguồn rò lớn nhất là BÁN PHÂN BÓN (mua 3 điểm học tập, bán 5 EXP, không giới hạn) — 45 em, HS0527 mua 605 bón 5.
+- **Làm:** game `1671934` — ngân sách 2.000 EXP/tháng (cây+máy 1.500 · gà/bò 200 · giúp/trộm 300): `RUONG` goc/gia mới, máy chế biến ×1,3 nguyên liệu mới, trứng 2 sữa 5, đồng xu cổ 20, giúp bạn 1 EXP; chơi theo tài khoản chặn bán phân bón (engine + ẩn ở chợ). Mig `202611071152` ĐÃ ÁP: `nt_cay` goc/gia + `_nt_luat().expGiup = 1`. Test engine ✓, test JS↔SQL ✓ (sửa test cũ: 10 lượt giúp, ô < 3 quả không hái được, em ngoài lớp có thể đã có vườn ⇒ upsert).
+- **Giả lập:** mẫu mực 7,6/9,7/16,6 xu (8/10/12 ô) + giúp ~3 + máy ⇒ ~20 lúc đủ 12 ô.
+- **Dở:** Thùy giao hoàn điểm học tập + trừ xu + thông báo cho 45 em bán phân. Phát hiện phần lớn EXP bán phân chưa thành xu thật (HS0527: 3.000 EXP, 0 xu nhận) ⇒ thiết kế 5 bước ở HANDOFF, CHƯA ghi DB. Thùy về nhà làm tiếp.

@@ -339,6 +339,8 @@ function layBanh(s) {
 // ---------- CHỢ ----------
 function ban(s, id, n) {
   const P = I[id]; if (!P || !P.gia) return loi('Món này không bán được');
+  // chơi theo tài khoản: phân bón mua bằng ĐIỂM HỌC TẬP ⇒ bán ra EXP là đổi điểm ra xu (07/11: 1 em mua 196 bao) — chỉ được bón
+  if (theoServer() && P.loai === 'phan') return loi('Phân bón để bón cây, không bán được');
   n = Math.min(Math.floor(n), so(s, id)); if (n < 1) return loi('Hết ' + P.ten.toLowerCase());
   them(s, id, -n); const su = [{ loai: 'ban', id, n }];
   nhanExp(s, P.gia * n, su); dem(s, 'ban', n);

@@ -8,6 +8,7 @@
 
 - dòng 36 — ⭐⭐⭐ LUẬT DUYỆT (Thùy 14/10, "nói bao lần rồi") — MỌI KHỐI, MỌI LÔ: muốn Thùy duy�
 - Bài học 03/11 — K9 đề cương / đề thi HK1 → Hình–Luyện + tiếp tuyến (ngay dưới mục lục ②)
+- Bài học 07/11 — Kinh tế nông trại (ngay dưới mục lục ②)
 - Bài học 03/11 — Nông trại · tăng tốc bằng Toán · push (ngay dưới mục lục ②)
 - Bài học 03/11 — Phòng làm việc · Báo cáo tuần · thử nghiệm trên DB thật (ngay dưới mục lục ②)
 - Bài học 23/10 — Dashboard học tập · mastery · push (ngay dưới mục lục ②)
@@ -41,6 +42,12 @@
 ---
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
+
+## Bài học 07/11 — Kinh tế nông trại
+- **Chỉnh nhịp xu = chỉnh NGUỒN EXP, không chỉnh trần.** Trần chạm sớm ⇒ EXP dồn mà không đổi được, HS thấy "hỏng". Đặt ngân sách EXP/tháng cho em giỏi nhất rồi chia cho từng nguồn; trần chỉ là lưới an toàn (Thùy 05/11 + 07/11).
+- **Thứ mua bằng điểm học tập mà BÁN được ra EXP = cửa đổi điểm ra xu.** Phân bón 3 điểm → bán 5 EXP, không giới hạn, 45 em khai thác (1 em 600 bao). Mọi món mới mua bằng điểm: hỏi "bán lại được không, được bao nhiêu" trước khi mở.
+- **Đo nguồn EXP thật trước khi đoán:** `nt_luu.state.dem` có bộ đếm từng nguồn (muaPhan, bon, thuQua, expGiup, tromExp…). 05/11 tôi tưởng cây là nguồn chính và cắt cây; thật ra phân bón mới là chính.
+- **Bộ giả lập `kich-ban.mjs` không có máy chế biến, giúp-bạn-EXP, bán phân** — số thật cao hơn giả lập; kiểm thêm bằng dữ liệu `nt_luu` thật.
 
 ## Bài học 03/11 — Nông trại · tăng tốc bằng Toán · push
 - **KHÔNG chạy truy vấn nặng trên DB thật 17–22h VN** (giờ HS chơi). 03/11 đo tăng tốc (>40s/truy vấn) đúng giờ cao điểm ⇒ cùng lúc HS báo nông trại "về cấp 1", Thùy phải bật bảo trì. Đo diện rộng để sáng/khuya.
