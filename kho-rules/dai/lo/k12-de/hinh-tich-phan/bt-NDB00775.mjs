@@ -2,7 +2,7 @@
 // Dạng này nhiều hình thực tế/hình học phức tạp (bể cá, hoa văn, cổng parabol…) đã đủ đọc ⇒ giữ. Chỉ vẽ lại hình yếu mà hàm xác định đủ từ đề/lời giải.
 const G = 'gach'
 export const BT_775 = [
-  { cau: ['T112000000036'], ten: 'lưới ô vuông 1cm: y=0,5x², y=0,25x²+2, x∈[−4;4]', S: 9.75, tol: 0.01, mt: { loai: 'giai_tich', x: [-4, 4], y: [0, 8], deu: true, luoi: true, anTruc: true,
+  { cau: ['T112000000036'], ten: 'lưới ô vuông 1cm: y=0,5x², y=0,25x²+2, x∈[−4;4]', S: 9.75, tol: 0.01, mt: { loai: 'giai_tich', x: [-4, 4], y: [0, 8], deu: true, luoi: true, anTruc: true, nhanX: 'khong', nhanY: 'khong',
     ham: [{ f: '0.5*x^2', tu: -4, den: 4, mau: 'xanh' }, { f: '0.25*x^2+2', tu: -4, den: 4, mau: 'do' }],
     to: [{ tren: 'h1', duoi: 'h0', tu: -4, den: 4, kieu: G }] } },
   { cau: ['T1120000006818'], ten: 'y=x³ (0..1), y=(x−2)² (1..2), trục Ox', S: 7 / 12, mt: { loai: 'giai_tich', x: [-0.6, 3], y: [-0.5, 2.3], deu: true, nhanX: [1, 2], nhanY: [1],

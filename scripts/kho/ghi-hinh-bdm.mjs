@@ -15,7 +15,7 @@ import { createClient } from '@supabase/supabase-js'
 import { bien } from './cau-hinh.mjs'
 import { veHinh } from './hinh-luong-giac.mjs'
 
-const args = process.argv.slice(2), GHI = args.includes('--ghi')
+const args = process.argv.slice(2), GHI = args.includes('--ghi'), THAY = args.includes('--thay')   // --thay: hình đã có ⇒ THAY bằng bản vẽ mới thay vì bỏ qua
 const [tep, ten] = args.filter((a) => !a.startsWith('--'))
 const url = process.env.DATABASE_URL_RW ?? bien('DATABASE_URL')?.gia_tri
 if (!tep || !ten || !url) { console.error('Dùng: node scripts/kho/ghi-hinh-bdm.mjs <spec.mjs> <TÊN_EXPORT> [--ghi]'); process.exit(2) }
@@ -54,12 +54,13 @@ try {
         const kh = r.moi_vd.split(/(?=##VD)/)   // mỗi phần bắt đầu bằng ##VD
         const idx = kh.findIndex((_, i) => i === d.vd - 1 + (kh[0].startsWith('##VD') ? 0 : 1))
         const k = kh[idx]; if (!k) { loi.push(`${id} vd${d.vd}: không có ví dụ này`); continue }
-        if (d.thay) {   // thay URL của hình thứ d.thay (1,2,…) trong khối ví dụ bằng hình mới — hình cũ giữ nguyên trên bucket
-          const ms = [...k.matchAll(/!\[\]\(([^)]*)\)/g)], m = ms[d.thay - 1]
-          if (!m) { loi.push(`${id} vd${d.vd}: không có hình thứ ${d.thay} để thay`); continue }
+        const th = d.thay ?? (THAY && /!\[\]\(/.test(k) ? 1 : 0)
+        if (th) {   // thay URL của hình thứ d.thay (1,2,…) trong khối ví dụ bằng hình mới — hình cũ giữ nguyên trên bucket
+          const ms = [...k.matchAll(/!\[\]\(([^)]*)\)/g)], m = ms[th - 1]
+          if (!m) { loi.push(`${id} vd${d.vd}: không có hình thứ ${th} để thay`); continue }
           const u = await dua(id, d.mt)
           kh[idx] = k.slice(0, m.index) + `![](${u})` + k.slice(m.index + m[0].length); r.moi_vd = kh.join(''); r.dung = true
-          console.log(`✓ ${id} vd${d.vd} → THAY hình ${d.thay}`); continue
+          console.log(`✓ ${id} vd${d.vd} → THAY hình ${th}`); continue
         }
         if (/!\[\]\(/.test(k)) { bo.push(`${id} vd${d.vd}: đã có hình`); continue }
         const dong = k.split('\n'), im = dong.findIndex((l) => MOC.test(l.trim()))
@@ -71,7 +72,12 @@ try {
         if (!d.lt) { loi.push(`${id}: thiếu "lt"`); continue }
         const dong = r.moi_lt.split('\n'), im = dong.findIndex((l) => l.includes(d.lt))
         if (im < 0) { loi.push(`${id}: không thấy đoạn "${d.lt}" trong lý thuyết`); continue }
-        if (dong.slice(im, im + 3).some((l) => /!\[\]\(/.test(l))) { bo.push(`${id}: đã có hình sau "${d.lt}"`); continue }
+        const ia = dong.slice(im + 1, im + 4).findIndex((l) => /!\[\]\(/.test(l))
+        if (ia >= 0) {
+          if (!THAY) { bo.push(`${id}: đã có hình sau "${d.lt}"`); continue }
+          const u = await dua(id, d.mt); dong[im + 1 + ia] = dong[im + 1 + ia].replace(/!\[\]\([^)]*\)/, `![](${u})`); r.moi_lt = dong.join('\n'); r.dung = true
+          console.log(`✓ ${id} lý thuyết → THAY hình sau: ${dong[im].slice(0, 50)}…`); continue
+        }
         const u = await dua(id, d.mt)
         dong.splice(im + 1, 0, `![](${u})`); r.moi_lt = dong.join('\n'); r.dung = true
         console.log(`✓ ${id} lý thuyết → chèn sau: ${dong[im].slice(0, 70)}…`)

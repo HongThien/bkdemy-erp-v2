@@ -5,7 +5,7 @@ const bis = (f, a, b) => { for (let i = 0; i < 60; i++) { const m = (a + b) / 2;
 const fCt = (x) => 0.75 * (x - 2.3) + 0.3 * Math.sin(2.5 * x)
 const cNghiem = bis(fCt, 0.6, 3.9)
 
-export const HINH_LT = [
+const _LT = [
   // ── K12
   { nhom: 'NNB01217', lt: 'Nếu $f(x)\\ge0$ trên $[a;b]$ thì', mt: { loai: 'giai_tich', x: [-0.5, 5], y: [-0.5, 3.6],
     ham: [{ f: '1.4+0.9*sin(1.1*x)+0.1*x', tu: 0.3, den: 4.5, nhan: 'y = f(x)', xnhan: 4.4, dy: -10 }],
@@ -43,3 +43,4 @@ export const HINH_LT = [
     doc: [{ x: 0.6, nhan: 'a', den: 'h0' }, { x: 3.9, nhan: 'b', den: 'h0' }, { x: cNghiem, nhan: 'c', den: 'h0' }],
     diem: [{ x: 0.6, y: fCt(0.6), ten: 'f(a)', tren: 0, vi: 'bl' }, { x: 3.9, y: fCt(3.9), ten: 'f(b)', tren: 0, vi: 'tl' }, { x: cNghiem, y: 0, tren: 0 }] } },
 ]
+export const HINH_LT = _LT.map((d) => ({ ...d, mt: { ...d.mt, minhHoa: true } }))

@@ -79165,3 +79165,8 @@ Thùy nêu 4 việc, làm được 3:
 - **Bỏ qua:** T…082 (ảnh nằm ở `anh_dap_an`, đề không có hình), 141/1006 (cùng hình yếu nhưng không có đề rõ), mọi hình thực tế phức tạp. Trang duyệt: `kho-rules/dai/k12-bt-NDB00775-truoc-sau.html`. Chưa ghi DB.
 - Máy vẽ thêm `khung` (hình chữ nhật nét liền).
 - **Ghi DB (Thùy duyệt, 07/11):** 7 câu NDB00775 đổi `anh_de` sang SVG máy vẽ, sao lưu `reports/sao-luu-anh-cau-*.json`.
+
+## 2026-11-07 (chiều muộn) — Thùy: "máy vẽ phải có grid" ⇒ lưới ô vuông + số ở mọi vạch, vẽ lại TẤT CẢ hình đã ghi
+- **Sai:** máy vẽ `hinh-giai-tich.mjs` ban đầu chỉ vẽ trục + hàm (không lưới) ⇒ hình khác kiểu SGK/đề. Thùy kiểm lại sau khi đã ghi 29 + 18 hình.
+- **Sửa:** lưới ô VUÔNG mặc định bật (dx = dy; quá cao thì thu cả hai trục cùng tỉ lệ), vạch lưới nguyên có số ghi trên trục (1, 2, 3, 4…), nhãn chữ (a, b, x₀…) thêm vào; `minhHoa:true` cho hình khái niệm lý thuyết (không số), `luoi:false` / `nhanX:'khong'` tắt; thêm lề phải 46px cho nhãn đường cong.
+- **Ghi lại DB:** `ghi-hinh-bdm.mjs --thay` (20 ví dụ K12 · 9 lý thuyết · 6 ví dụ K11) + `ghi-anh-cau.mjs` (11 câu NDB00777 · 7 câu NDB00775). Bài học: duyệt hình xong mới ghi — nhưng nhìn lại từ góc người dùng thật (có lưới không?) TRƯỚC khi trình duyệt.

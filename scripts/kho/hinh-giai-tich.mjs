@@ -7,7 +7,7 @@
 //   x: [-1, 4], y: [-1, 5],            khung (đơn vị toán). Tỉ lệ px/đơn vị tự chọn, x và y độc lập.
 //   nhanX: [1, 3] | "nguyen" | "khong"  số ghi trên trục Ox (mặc định: chỉ các cận/giao điểm trong `doc`/`diem` có `nhan`; "nguyen" = mọi số nguyên)
 //   nhanY: [2, 4] | "nguyen" | "khong"  (mặc định "khong" — chỉ ghi khi liệt kê)
-//   luoi: true|false                    lưới mờ (mặc định false — hình SGK sạch)
+//   luoi: false                         tắt lưới ô vuông (mặc định BẬT); buocX / buocY: bước lưới
 //   ham: [{ f: "x^2", tu, den, nhan: "y = x²", bo: [..], net: "dut", mau: "xanh|do|luc|tim|den" }]   f dùng x + − * / ^ ( ) sqrt abs sin cos tan exp ln pi
 //   to: [{ tren: "h0"|<số>, duoi: "h1"|<số> (mặc định 0 = trục hoành), tu, den, mau?: "xanh|do|luc|cam" }]    tô miền giữa hai đường (kieu: "gach" = gạch chéo như đề SGK) ("hN" = hàm ham[N]; số = đường y = hằng)
 //   doc: [{ x: 1, nhan: "a", den: "hN"|<số>|"truc" }]   đường dóng nét đứt từ trục Ox lên tới đường (mặc định tới ham[0]); nhan ghi dưới trục
@@ -39,14 +39,21 @@ export function svgGiaiTich(mt) {
   const [x0, x1] = mt.x ?? [-1, 4], [y0, y1] = mt.y ?? [-1, 4]
   if (!(x0 < x1 && y0 < y1)) throw new Error('khung x, y sai')
   const Wmong = mt.w ?? 480, le = 30
-  const dx = (Wmong - 2 * le) / (x1 - x0)
-  const dy = mt.deu ? dx : Math.min(dx * 1.15, Math.max(24, 330 / (y1 - y0)))
-  const W = Math.round((x1 - x0) * dx + 2 * le), H = Math.round((y1 - y0) * dy + 2 * le)
+  let dx = (Wmong - 2 * le) / (x1 - x0)
+  let dy = mt.deu === false ? Math.min(dx * 1.15, Math.max(24, 330 / (y1 - y0))) : dx   // ô lưới VUÔNG mặc định; quá cao thì thu cả hai trục cùng tỉ lệ
+  if (mt.deu !== false && (y1 - y0) * dy > 430) { const s = 430 / ((y1 - y0) * dy); dx *= s; dy *= s }
+  const PAD = 46, W = Math.round((x1 - x0) * dx + 2 * le) + PAD, H = Math.round((y1 - y0) * dy + 2 * le)
   const X = (v) => le + (v - x0) * dx, Y = (v) => le + (y1 - v) * dy
   const fs = (mt.ham ?? []).map((h) => bienDich(h.f))
   const gt = (k) => { if (typeof k === 'number') return () => k; const m = /^h([0-9]+)$/.exec(String(k)); const f = m && fs[+m[1]]; if (!f) throw new Error(`"${k}" không phải hằng số hay hàm "h0", "h1"… (ham[] có ${fs.length})`); return f }
-  const o = [`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" font-family="'Times New Roman', serif" font-size="16"><rect width="${W}" height="${H}" fill="#fff"/><defs><marker id="mt" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><pattern id="gach" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="#fff"/><line x1="0" y1="0" x2="0" y2="7" stroke="#374151" stroke-width="1.1"/></pattern><clipPath id="kh"><rect x="${le - 2}" y="${le - 2}" width="${W - 2 * le + 4}" height="${H - 2 * le + 4}"/></clipPath></defs>`]
-  if (mt.luoi) { for (let v = Math.ceil(x0); v <= x1; v++) o.push(`<line x1="${X(v)}" y1="${le}" x2="${X(v)}" y2="${H - le}" stroke="#e5e7eb"/>`); for (let v = Math.ceil(y0); v <= y1; v++) o.push(`<line x1="${le}" y1="${Y(v)}" x2="${W - le}" y2="${Y(v)}" stroke="#e5e7eb"/>`) }
+  const o = [`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" font-family="'Times New Roman', serif" font-size="16"><rect width="${W}" height="${H}" fill="#fff"/><defs><marker id="mt" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><pattern id="gach" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="#fff"/><line x1="0" y1="0" x2="0" y2="7" stroke="#374151" stroke-width="1.1"/></pattern><clipPath id="kh"><rect x="${le - 2}" y="${le - 2}" width="${W - 2 * le - PAD + 4}" height="${H - 2 * le + 4}"/></clipPath></defs>`]
+  // LƯỚI Ô VUÔNG (mặc định BẬT — CEO 07/11: hình giải tích phải có lưới). Tắt: luoi:false. Bước: buocX/buocY (mặc định số nguyên đẹp theo khoảng).
+  const buoc = (r) => (r <= 14 ? 1 : r <= 30 ? 2 : r <= 70 ? 5 : 10)
+  if (mt.luoi !== false) {
+    const bx = mt.buocX ?? buoc(x1 - x0), by = mt.buocY ?? buoc(y1 - y0), L = '#c9d1db'
+    for (let v = Math.ceil(x0 / bx - 1e-9) * bx; v <= x1 + 1e-9; v += bx) o.push(`<line x1="${r2(X(v))}" y1="${le}" x2="${r2(X(v))}" y2="${H - le}" stroke="${L}" stroke-width="1"/>`)
+    for (let v = Math.ceil(y0 / by - 1e-9) * by; v <= y1 + 1e-9; v += by) o.push(`<line x1="${le}" y1="${r2(Y(v))}" x2="${W - le - PAD}" y2="${r2(Y(v))}" stroke="${L}" stroke-width="1"/>`)
+  }
   const trucY = x0 <= 0 && x1 >= 0 ? X(0) : le, trucX = y0 <= 0 && y1 >= 0 ? Y(0) : H - le
 
   // 1) miền tô (dưới đường cong để đường cong đè lên)
@@ -62,15 +69,17 @@ export function svgGiaiTich(mt) {
 
   // 2) trục
   if (mt.anTruc !== true) {
-    o.push(`<line x1="${le - 10}" y1="${trucX}" x2="${W - le + 8}" y2="${trucX}" stroke="#111" stroke-width="1.5" marker-end="url(#mt)"/>`)
+    o.push(`<line x1="${le - 10}" y1="${trucX}" x2="${W - le - PAD + 8}" y2="${trucX}" stroke="#111" stroke-width="1.5" marker-end="url(#mt)"/>`)
     o.push(`<line x1="${trucY}" y1="${H - le + 10}" x2="${trucY}" y2="${le - 12}" stroke="#111" stroke-width="1.5" marker-end="url(#mt)"/>`)
-    o.push(chu(W - le + 4, trucX + 18, (mt.truc ?? ['x', 'y'])[0], { nghieng: true }), chu(trucY + 8, le - 12, (mt.truc ?? ['x', 'y'])[1], { nghieng: true }), chu(trucY - 15, trucX + 17, 'O', { nghieng: true }))
+    o.push(chu(W - le - PAD + 4, trucX + 18, (mt.truc ?? ['x', 'y'])[0], { nghieng: true }), chu(trucY + 8, le - 12, (mt.truc ?? ['x', 'y'])[1], { nghieng: true }), chu(trucY - 15, trucX + 17, 'O', { nghieng: true }))
   }
 
   // 3) nhãn trục Ox/Oy
-  const nhanX = mt.nhanX ?? [], nhanY = mt.nhanY ?? 'khong'
-  const dsX = nhanX === 'nguyen' ? Array.from({ length: Math.floor(x1) - Math.ceil(x0) + 1 }, (_, i) => Math.ceil(x0) + i).filter((v) => v !== 0) : Array.isArray(nhanX) ? nhanX : []
-  const dsY = nhanY === 'nguyen' ? Array.from({ length: Math.floor(y1) - Math.ceil(y0) + 1 }, (_, i) => Math.ceil(y0) + i).filter((v) => v !== 0) : Array.isArray(nhanY) ? nhanY : []
+  // Số ghi trên trục: MẶC ĐỊNH ghi mọi vạch lưới nguyên (1, 2, 3, 4…) — CEO 07/11 "grid theo các điểm trên trục số". nhanX/nhanY: mảng nhãn THÊM (số hoặc {v,t}) | 'khong' tắt hết số tự động. minhHoa:true = hình minh hoạ khái niệm (chỉ nhãn chữ a, b, x₀…).
+  const gx = mt.buocX ?? buoc(x1 - x0), gy = mt.buocY ?? buoc(y1 - y0)
+  const tuDong = (lo, hi, g) => (mt.minhHoa || !Number.isInteger(g) ? [] : Array.from({ length: Math.ceil(hi / g - 1e-9) - Math.ceil(lo / g - 1e-9) }, (_, k) => (Math.ceil(lo / g - 1e-9) + k) * g).filter((v) => v !== 0))
+  const hop = (tay, auto) => { if (tay === 'khong') return []; const ex = Array.isArray(tay) ? tay : []; const so = new Set(ex.filter((e) => typeof e !== 'object').map(Number)); return [...auto.filter((v) => !so.has(v)), ...ex] }
+  const dsX = hop(mt.nhanX, tuDong(x0, x1, gx)), dsY = hop(mt.nhanY, tuDong(y0, y1, gy))
   for (const e of dsX) { const v = typeof e === 'object' ? e.v : e, tx = typeof e === 'object' ? e.t : tick(e); o.push(`<line x1="${r2(X(v))}" y1="${trucX - 3}" x2="${r2(X(v))}" y2="${trucX + 3}" stroke="#111"/>`, chu(X(v), trucX + 17, tx, { neo: 'middle', co: 14 })) }
   for (const e of dsY) { const v = typeof e === 'object' ? e.v : e, tx = typeof e === 'object' ? e.t : tick(e); o.push(`<line x1="${trucY - 3}" y1="${r2(Y(v))}" x2="${trucY + 3}" y2="${r2(Y(v))}" stroke="#111"/>`, chu(trucY - 7, Y(v) + 5, tx, { neo: 'end', co: 14 })) }
 

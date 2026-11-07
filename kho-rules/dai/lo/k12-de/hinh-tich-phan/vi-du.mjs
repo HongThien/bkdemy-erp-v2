@@ -20,7 +20,7 @@ export const HINH_VI_DU = [
   { dang: 'NDB00774', vd: 1, mt: { loai: 'giai_tich', x: [-0.6, 4], y: [-1, 10], nhanY: [],
     ham: [{ f: 'x^2', tu: 0, den: 3.1, nhan: 'y = x²', xnhan: 2.55, neo: 'end', dx: -6 }],
     to: [{ tren: 'h0', tu: 1, den: 3, mau: 'cam' }], doc: [{ x: 1, nhan: '1', den: 'h0' }, { x: 3, nhan: '3', den: 'h0' }], chu: [{ x: 2, y: 2.2, t: 'S' }] } },
-  { dang: 'NDB00774', vd: 2, mt: { loai: 'giai_tich', x: [-0.7, 7.2], y: [-1.5, 1.6], nhanY: [1],
+  { dang: 'NDB00774', vd: 2, mt: { loai: 'giai_tich', x: [-0.7, 7.2], y: [-1.5, 1.6], buocX: PI / 2, buocY: 0.5, nhanY: [1],
     ham: [{ f: 'sin(x)', tu: 0, den: 2 * PI, nhan: 'y = sin x', xnhan: 1.9, neo: 'start', dx: 8, dy: -4 }],
     to: [{ tren: 'h0', tu: 0, den: PI, mau: 'cam' }, { tren: 'h0', tu: PI, den: 2 * PI, mau: 'cam' }],
     nhanX: [{ v: PI, t: 'π' }, { v: 2 * PI, t: '2π' }] } },
@@ -45,7 +45,7 @@ export const HINH_VI_DU = [
   { dang: 'NDB00788', vd: 1, mt: { loai: 'giai_tich', x: [-2.5, 2.5], y: [-0.6, 2.7], deu: true, nhanX: [-1, 1], nhanY: [2],
     ham: [{ f: 'x^2', tu: -1.5, den: 1.5, mau: 'xanh', nhan: 'y = x²', xnhan: 1.25, neo: 'start', dx: 6 }, { f: '2-abs(x)', tu: -2.3, den: 2.3, mau: 'do', nhan: 'y = 2 − |x|', xnhan: -1.7, neo: 'end', dx: -4, dy: -8 }],
     to: [{ tren: 'h1', duoi: 'h0', tu: -1, den: 1, mau: 'cam' }], diem: [{ x: -1, y: 1, tren: 0 }, { x: 1, y: 1, tren: 0 }], chu: [{ x: 0, y: 1.25, t: 'S' }] } },
-  { dang: 'NDB00788', vd: 2, mt: { loai: 'giai_tich', x: [-2.7, 2.7], y: [-0.6, 1.6], deu: true, nhanY: [1],
+  { dang: 'NDB00788', vd: 2, mt: { loai: 'giai_tich', x: [-2.7, 2.7], y: [-0.6, 1.6], deu: true, buocX: PI / 2, buocY: 0.5, nhanY: [1],
     ham: [{ f: 'cos(x)', tu: -2.1, den: 2.1, nhan: 'y = cos x', xnhan: 1.2, neo: 'start', dx: 8, dy: -12 }],
     to: [{ tren: 'h0', tu: -PI / 2, den: PI / 2, mau: 'cam' }], nhanX: [{ v: -PI / 2, t: '−π/2' }, { v: PI / 2, t: 'π/2' }], chu: [{ x: 0, y: 0.4, t: 'S' }] } },
   // ── Thể tích khối tròn xoay (NDB00636, NDB00635, NDB00639, NDB00778, NDB00781)
