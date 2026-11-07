@@ -79158,3 +79158,4 @@ Thùy nêu 4 việc, làm được 3:
 - **Xem:** 89 câu có ảnh đề. Đa số đã là hình TikZ/GeoGebra sạch ⇒ giữ. Yếu mà hàm xác định đủ từ đề/lời giải ⇒ vẽ lại 11 câu (9 hình; 005422/007185/007574 dùng chung 1 hình). Đường cong tự do (chỉ cho S₁, S₂, f'(x)…) ⇒ giữ ảnh gốc: T…002584, 002713, 002718, 002722, 005529, 006888, 007428, 105001, 105018, v.v.
 - **Kiểm:** diện tích vùng tô (tích phân số) khớp đáp số lời giải cả 9 hình. Trang duyệt: `kho-rules/dai/k12-bt-NDB00777-truoc-sau.html`. Chưa ghi `anh_de`.
 - **Công cụ:** `scripts/kho/html-truoc-sau-bt.mjs`; máy vẽ thêm gạch chéo (`kieu:'gach'`) và sửa `-x^2` (JS cấm dấu âm đứng trước `**`).
+- **Ghi DB (Thùy duyệt, 07/11):** 11 câu NDB00777 đổi `anh_de` sang SVG máy vẽ (`kho-anh/cau-hinh/`), sao lưu `reports/sao-luu-anh-cau-*.json`, script `scripts/kho/ghi-anh-cau.mjs`. Ảnh cũ giữ trên bucket.
