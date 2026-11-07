@@ -79159,3 +79159,8 @@ Thùy nêu 4 việc, làm được 3:
 - **Kiểm:** diện tích vùng tô (tích phân số) khớp đáp số lời giải cả 9 hình. Trang duyệt: `kho-rules/dai/k12-bt-NDB00777-truoc-sau.html`. Chưa ghi `anh_de`.
 - **Công cụ:** `scripts/kho/html-truoc-sau-bt.mjs`; máy vẽ thêm gạch chéo (`kieu:'gach'`) và sửa `-x^2` (JS cấm dấu âm đứng trước `**`).
 - **Ghi DB (Thùy duyệt, 07/11):** 11 câu NDB00777 đổi `anh_de` sang SVG máy vẽ (`kho-anh/cau-hinh/`), sao lưu `reports/sao-luu-anh-cau-*.json`, script `scripts/kho/ghi-anh-cau.mjs`. Ảnh cũ giữ trên bucket.
+
+## 2026-11-07 (chiều) — Lô bài tập NDB00775: xem 46 ảnh, vẽ lại 7 câu (6 hình), CHỜ duyệt
+- Dạng này toàn bài thực tế/hình học (bể cá, hoa văn, cổng parabol, hồ nước…) — phần lớn hình đã đủ đọc ⇒ giữ. Vẽ lại câu yếu mà hàm xác định đủ: T…036 (lưới ô vuông), 6818, 5230, 4880+4893 (cùng hình), 7476, 044. Diện tích vùng tô khớp đáp số (036 làm tròn 9,75, tol 0,01; 044 tự tính = 2 vì lời giải gốc bị cắt cụt).
+- **Bỏ qua:** T…082 (ảnh nằm ở `anh_dap_an`, đề không có hình), 141/1006 (cùng hình yếu nhưng không có đề rõ), mọi hình thực tế phức tạp. Trang duyệt: `kho-rules/dai/k12-bt-NDB00775-truoc-sau.html`. Chưa ghi DB.
+- Máy vẽ thêm `khung` (hình chữ nhật nét liền).

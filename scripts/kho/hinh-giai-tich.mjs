@@ -114,6 +114,9 @@ export function svgGiaiTich(mt) {
     if (mt.tru.nhan) o.push(chu(X((tu + den) / 2), trucX - ry - 8, mt.tru.nhan, { co: 15, neo: 'middle' }))
   }
 
+  // 5c) khung chữ nhật nét liền: khung: [{ x: [0, 4], y: [0, 4] }]
+  for (const k of mt.khung ?? []) o.push(`<rect x="${r2(X(k.x[0]))}" y="${r2(Y(k.y[1]))}" width="${r2((k.x[1] - k.x[0]) * dx)}" height="${r2((k.y[1] - k.y[0]) * dy)}" fill="none" stroke="#111" stroke-width="1.8"/>`)
+
   // 6) đường cong
   for (const [i, h] of (mt.ham ?? []).entries()) {
     const tu = h.tu ?? x0, den = h.den ?? x1; if (!(tu < den)) throw new Error(`ham[${i}]: tu < den`)

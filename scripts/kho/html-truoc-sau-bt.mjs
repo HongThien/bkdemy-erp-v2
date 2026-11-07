@@ -18,7 +18,7 @@ for (const d of ds) {
   const { rows } = await c.query('select ma_cau, noi_dung, dap_an, anh_de, loai_cau from dai_cau_hoi where ma_cau = any($1)', [d.cau])
   let kiem = ''
   const { svg } = veHinh(d.mt)
-  if (d.S !== undefined) { const v = tinh(d.mt), ok = Math.abs(v - d.S) < 1e-3; if (!ok) loi++; kiem = `<b style="color:${ok ? '#047857' : '#b91c1c'}">${ok ? '✓' : '✗'} diện tích vùng tô (máy tính) = ${v.toFixed(4)} · đáp số lời giải = ${d.S.toFixed(4)}</b>` }
+  if (d.S !== undefined) { const v = tinh(d.mt), ok = Math.abs(v - d.S) < (d.tol ?? 1e-3); if (!ok) loi++; kiem = `<b style="color:${ok ? '#047857' : '#b91c1c'}">${ok ? '✓' : '✗'} diện tích vùng tô (máy tính) = ${v.toFixed(4)} · đáp số lời giải = ${d.S.toFixed(4)}</b>` }
   for (const r of rows) o.push(`<section><h3>${r.ma_cau} · ${r.loai_cau} · ĐA ${esc(r.dap_an)} · <span style="color:#555">${esc(d.ten)}</span></h3><p>${esc(r.noi_dung)}</p><p>${kiem}</p><div class="r"><figure><figcaption>HÌNH CŨ</figcaption><img src="${r.anh_de}"></figure><figure><figcaption>HÌNH MỚI (máy vẽ)</figcaption><img src="data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}"></figure></div></section>`)
 }
 await c.end()
