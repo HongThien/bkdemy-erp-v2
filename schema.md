@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-497 bảng · 38 view · 0 enum · 282 trigger · 1631 function
+498 bảng · 38 view · 0 enum · 282 trigger · 1631 function
 
 ## _app_secrets
 
@@ -2063,6 +2063,18 @@
 | tai_lieu_id | uuid |  |  | PK FK→tai_lieu.id |  |
 | ghim_boi | uuid | Y |  |  |  |
 | ghim_at | timestamp with time zone |  | now() |  |  |
+
+## dht_hoan
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| ngay | date |  | ((now() AT TIME ZONE 'Asia/Ho_Chi_Minh'::text))::date |  |  |
+| so | integer |  |  |  |  |
+| ly_do | text |  |  |  |  |
+| ma_tham_chieu | text | Y |  |  |  |
+| tao_at | timestamp with time zone |  | now() |  |  |
 
 ## dht_tieu
 
@@ -5802,8 +5814,8 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
-| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
+| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -11288,6 +11300,7 @@ WITH luot AS (
 | dang_ky_test | dang_ky_test_check | `CHECK (((nguon = 'web'::text) = (kenh IS NULL)))` |
 | dang_ky_test | dang_ky_test_check1 | `CHECK (((trang_thai = 'huy'::text) = (huy_ly_do IS NOT NULL)))` |
 | dang_ky_test | dang_ky_test_thoi_luong_phut_check | `CHECK ((thoi_luong_phut = ANY (ARRAY[45, 60, 75, 90, 120])))` |
+| dht_hoan | dht_hoan_so_check | `CHECK ((so > 0))` |
 | dht_tieu | dht_tieu_so_check | `CHECK ((so > 0))` |
 | dtv_gop_tu | dtv_gop_tu_en_check | `CHECK (((char_length(btrim(en)) >= 1) AND (char_length(btrim(en)) <= 60)))` |
 | dtv_gop_tu | dtv_gop_tu_vi_check | `CHECK (((char_length(btrim(vi)) >= 1) AND (char_length(btrim(vi)) <= 120)))` |
