@@ -79189,3 +79189,8 @@ Thùy nêu 4 việc, làm được 3:
 - **Giả lập `kich-ban.mjs` (khởi đầu 8 ô):** chăm mẫu mực xu ròng T10/T11/T12 = 7/5/10 · học vừa phải 5/6/7 · chỉ chơi không học 5/7/7. Chưa chạm trần 20 xu; mục tiêu ngân sách ≈20 xu chỉ ở em đủ 12 ô + học đều ⇒ có thể cần chỉnh lại `goc/gia` nếu muốn.
 - **Lưu ý:** số hạt mua tối đa/ngày = số ô ⇒ 4-ô cũ giờ mua được 8 hạt/ngày; chưa deploy.
 - **Ghi DB (Thùy duyệt, 07/11):** 3 câu NDB00787 đổi `anh_de` sang SVG máy vẽ, sao lưu `reports/sao-luu-anh-cau-*.json`.
+
+## 2026-11-07 (tối) — Lô bài tập NDB00631 (quãng đường từ đồ thị v(t)): xem 48 ảnh, vẽ lại 13 câu (10 hình), CHỜ duyệt
+- Vẽ lại câu có hình nhỏ/mờ + đề và lời giải nhất quán, parabol xác định đủ (đỉnh + điểm đi qua): T…160/4617 (cùng hình), 2430/6775, 4874, 4985, 6804/301025, 301022, 301026, 301027, 4923, 2443. Diện tích vùng tô khớp đáp số cả 10 hình.
+- **Bỏ qua (nói rõ):** T…2425 (lời giải A(16;90) mâu thuẫn "15 s"), T…2476 (đề "1 giờ" vs lời giải), T…863 và 880 (đề không cho số liệu), mọi hình đã đủ đọc (1000, 12/16, 3/2…). Trang duyệt: `kho-rules/dai/k12-bt-NDB00631-truoc-sau.html`. Chưa ghi DB.
+- Máy vẽ: sửa chiều cao khi `deu:false` (hình t–v đơn vị lệch hẳn, vd v tới 90 mà t tới 4,5).

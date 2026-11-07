@@ -40,7 +40,7 @@ export function svgGiaiTich(mt) {
   if (!(x0 < x1 && y0 < y1)) throw new Error('khung x, y sai')
   const Wmong = mt.w ?? 480, le = 30
   let dx = (Wmong - 2 * le) / (x1 - x0)
-  let dy = mt.deu === false ? Math.min(dx * 1.15, Math.max(24, 330 / (y1 - y0))) : dx   // ô lưới VUÔNG mặc định; quá cao thì thu cả hai trục cùng tỉ lệ
+  let dy = mt.deu === false ? Math.min(dx * 1.15, Math.max(2, 330 / (y1 - y0))) : dx   // ô lưới VUÔNG mặc định; quá cao thì thu cả hai trục cùng tỉ lệ
   if (mt.deu !== false && (y1 - y0) * dy > 430) { const s = 430 / ((y1 - y0) * dy); dx *= s; dy *= s }
   const PAD = 46, W = Math.round((x1 - x0) * dx + 2 * le) + PAD, H = Math.round((y1 - y0) * dy + 2 * le)
   const X = (v) => le + (v - x0) * dx, Y = (v) => le + (y1 - v) * dy
