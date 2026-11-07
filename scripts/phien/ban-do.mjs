@@ -5,6 +5,11 @@
 // `node scripts/phien/ban-do.mjs …`. Script này KHÔNG nhận mã phiên từ tham số — chỉ từ PHIEN_ID —
 // nên Claude không trỏ được sang phiên/khối khác. Mọi lệnh đi qua RPC fn_phien_bd_* (chỉ service_role):
 // DB tự kiểm phiên đang mở, đóng vai người mở phiên, kiểm lại quyền trưởng khối, nút thuộc đúng khối.
+// HÌNH (07/11) — phiên Toán:
+//   hh_xem                                                        bài học Hình–Học của khối (mã · tên · chủ đề · số câu · độ dài lý thuyết/ví dụ)
+//   hh_bai '{"viec":"them","ten_bai":"…","chu_de_id":"NCD…"}' · '{"viec":"sua","ma_bai":"HH…","mo_ta":"…","vi_du":"…","ly_thuyet":"…"}' · '{"viec":"xoa","ma_bai":"HH…"}'
+//   hinh '{"ham":"fn_hl_…|fn_hh_…","args":{"p_…":…}}'             gọi đúng hàm Hình màn sửa tay dùng (danh sách: scripts/phien/loai/ban_do.md §Hình)
+//   Câu Hình–Học (HHC…) dùng chung lệnh kho: them_cau ("nhanh":"hinh_hoc","ma_bai"), duyet_cau ({"ma_bai"}), sua_cau, gan_anh, kho_rac.
 // CÂU TRONG KHO (06/11, Thùy: trưởng khối đủ quyền sửa kho) — câu phải đúng môn + khối của phiên:
 //   duyet_cau '{"ma_cau":["…"]}' | '{"nhom_id":"…"}' | '{"dang_bai_id":"…"}'     duyệt (cả bản sao) · bo_duyet_cau cùng tham số
 //   sua_cau <<'HET'  [{"ma_cau":"…","noi_dung":"…","lua_chon":[…],"dap_an":"…","loi_giai":"…"}]  HET     (chỉ trường có mặt mới sửa)
@@ -227,6 +232,30 @@ if (lenh === 'phan_dang') {
   if (error) loi(error.message)
   console.log(`Phân lô: ${data.ok} câu OK · ${data.loi} câu lỗi`)
   for (const x of data.chi_tiet ?? []) if (!x.ok) console.log(`  ✗ ${x.ma_cau}: ${x.loi}`)
+  process.exit(0)
+}
+
+if (lenh === 'hh_xem') {
+  const { data, error } = await svc.rpc('fn_phien_hh_xem', { p_phien: PHIEN })
+  if (error) loi(error.message)
+  const moTa = (b) => (b.mo_ta ? `\n    mô tả: ${String(b.mo_ta).replace(/\s+/g, ' ').slice(0, 200)}` : '')
+  console.log((data ?? []).map((b) => `${b.ma_bai} · ${b.ten_bai}${b.chu_de ? ` [${b.chu_de_id} ${b.chu_de}]` : ''} · ${b.so_cau} câu (${b.so_cau_duyet} duyệt) · lý thuyết ${b.ky_tu_ly_thuyet} ký tự · ví dụ ${b.ky_tu_vi_du}${moTa(b)}`).join('\n') || '(khối chưa có bài học Hình)')
+  process.exit(0)
+}
+
+if (lenh === 'hh_bai') {
+  const { data, error } = await svc.rpc('fn_phien_hh_bai', { p_phien: PHIEN, p_viec: ts.viec, p_ts: ts })
+  if (error) loi(error.message)
+  console.log(`OK hh_bai ${ts.viec}: ${JSON.stringify(data)}`)
+  process.exit(0)
+}
+
+if (lenh === 'hinh') {
+  if (!ts.ham) loi('Thiếu "ham" (fn_hl_… / fn_hh_…).')
+  const { data, error } = await svc.rpc('fn_phien_hinh_goi', { p_phien: PHIEN, p_ham: ts.ham, p_args: ts.args ?? {} })
+  if (error) loi(error.message)
+  const s = JSON.stringify(data, null, 1)
+  console.log(s.length > 20000 ? s.slice(0, 20000) + '\n… (cắt — thu hẹp tham số)' : s)
   process.exit(0)
 }
 

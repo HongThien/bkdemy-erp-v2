@@ -79202,3 +79202,9 @@ Thùy nêu 4 việc, làm được 3:
 - **PHÁT HIỆN lỗi lời giải gốc T…4846:** lời giải ghi "= 14π ≈ 44,0" nhưng 8/3 + 8 + 4/3 = 12 ⇒ V = 12π ≈ 37,7 (khớp đáp số 37,7). Chỉ sai phép cộng trong lời giải, đáp số đúng — chờ Thùy cho sửa lời giải.
 - Máy vẽ: `xoay` nhận MẢNG (nhiều đoạn quay); trang duyệt kiểm cả thể tích (`V:`). Trang duyệt: `kho-rules/dai/k12-bt-NDB00636-truoc-sau.html`. Chưa ghi DB.
 - **Ghi DB (Thùy duyệt, 07/11):** 4 câu NDB00636 đổi `anh_de` sang SVG máy vẽ, sao lưu `reports/sao-luu-anh-cau-*.json`.
+
+## 07/11 — Phiên Claude: trưởng khối đủ quyền HÌNH (Học + Luyện) — mig 202611071654 CHƯA ÁP
+- Thùy: "Trưởng khối cần có mọi quyền cho bản đồ, bao gồm cả Hình, giải tích và đại". Phiên đã phủ Đại (vùng toan) + Hình giải tích (vùng hgt); Hình chưa có gì.
+- `fn_phien_hinh_goi(phiên, hàm, args)`: Claude gọi đúng fn_hl_* / fn_hh_* (đọc+ghi) theo tên tham số; rào khối `_phien_hinh_khoi` cho MỌI giá trị là mã Hình (mô hình · bài toán · bài luyện · ý · bài học · câu · nhóm mô hình · chủ đề) + p_khoi. Bẫy: proargtypes::oid[] đánh số từ 0.
+- `fn_phien_hh_xem` + `fn_phien_hh_bai` (them · sua tên/mô tả/ví dụ/lý thuyết/chủ đề/thứ tự · xoa — còn câu thì chặn). Kho HHC vào lệnh kho chung: _phien_kho_cau nhận hinh_hoc_cau_hoi; duyet {ma_bai}; them_cau nhanh hinh_hoc + ma_bai. Bẫy: alias `c` trong SQL trùng biến record `c` của plpgsql.
+- ban-do.mjs: hh_xem · hh_bai · hinh. Hướng dẫn §Hình ở loai/ban_do.md. Thử ROLLBACK (Cường K8): đọc/tạo/xoá mô hình; khối 9 + mô hình khối 7 chặn; thêm bài, lý thuyết, câu, sửa, duyệt cả bài, kho rác, chuyển câu; bài khối 9 chặn; xoá bài còn câu chặn.

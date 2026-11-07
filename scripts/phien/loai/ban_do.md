@@ -29,6 +29,23 @@ Lệnh ghi: `them_chu_de` · `them_chuyen_de` · `them_nhom` · `them_dang_bai` 
 `xoa_nhom '{"id":..}'` · `xoa_dang_bai '{"id":..}'` (Thùy 05/11). Xoá: liệt kê sẽ mất gì, chờ người mở phiên gật rồi mới chạy.
 Nút còn câu đã gán thì DB báo số câu — chuyển câu đi (`phan_dang`) trước. Gộp = chuyển hết con sang nút còn lại rồi xoá nút rỗng.
 Ghi lý thuyết (`ghi_noi_dung`) và lệnh kho cũng dùng được ngay trong phiên này.
+
+## Hình (07/11 — Thùy: trưởng khối đủ quyền cả Hình, Giải tích, Đại)
+
+Đại = chủ đề vùng `toan` · Hình giải tích = vùng `hgt` (cùng lệnh bản đồ + kho ở trên). **Hình** có 2 phần, bảng riêng:
+- **Hình–Học** (bài học = dạng, mã `HH…`, câu `HHC…`): `hh_xem` · `hh_bai` (them · sua tên/mô tả/ví dụ/lý thuyết/chủ đề/thứ tự · xoa —
+  bài còn câu thì chuyển câu trước). Câu dùng lệnh kho chung: `them_cau` (`"nhanh":"hinh_hoc","ma_bai":"HH…"`) · `duyet_cau {"ma_bai"}` ·
+  `sua_cau` · `gan_anh` · `kho_rac`. Lý thuyết/ví dụ đúng thẻ `spec-format-noidung.md` (##ĐN ##ĐL ##TC ##PP ##VD…).
+- **Hình–Luyện** (cây mô hình) và thao tác Hình–Học khác: `hinh '{"ham":…,"args":{…}}'` gọi đúng hàm màn sửa tay. Tên tham số y như hàm.
+  Đọc: `fn_hl_mo_hinh_luyen{p_khoi}` · `fn_hl_tien_do{p_khoi}` · `fn_hl_goc_mo_hinh{p_mh}` · `fn_hl_bai_full{p_bai}` · `fn_hl_kho_cua_mo_hinh{p_mo_hinh,p_gioi_han}` ·
+  `fn_hl_kho_chua_phan{p_khoi,p_gioi_han,p_bo_qua,p_che_do}` · `fn_hl_gia_thiet_hieu_luc{p_baitoan}` · `fn_hl_mo_hinh_se_mat{p_id}` · `fn_hh_kho_cau{p_loai,p_id,p_loc,p_limit,p_offset}` · `fn_hh_lop_cua_bai{p_ma_bai}`.
+  Ghi: `fn_hl_tao_mo_hinh{p_khoi,p_ten,p_gia_thiet,p_anh}` · `fn_hl_tao_mo_hinh_trong_nhom` · `fn_hl_them_gia_thiet{p_cha,p_ten,p_gia_thiet_them,p_chinh}` ·
+  `fn_hl_them_bai{p_nhanh,p_phat_bieu,p_gia_thiet_rieng,p_loi_giai,p_anh,p_tien_de}` · `fn_hl_them_bai_sau` · `fn_hl_sua_bai` · `fn_hl_re_nhanh` · `fn_hl_re_nhanh_tu_bai` ·
+  `fn_hl_doi_cha_gia_thiet` · `fn_hl_doi_neo` · `fn_hl_doi_thu_tu` · `fn_hl_chuyen_bai` · `fn_hl_gan_bai_mo_hinh` · `fn_hl_gan_y` · `fn_hl_duyet_bai{p_bai,p_duyet}` ·
+  `fn_hl_bo_qua_bai` · `fn_hl_khoi_phuc_bai` · `fn_hl_xoa_mo_hinh{p_id}` (xem `fn_hl_mo_hinh_se_mat` trước) · `fn_hl_nhom_mh_sap` · `fn_hl_nhom_mh_xoa` ·
+  `fn_hh_cau_chuyen_dang{p_ma_cau,p_ma_bai,p_ca_ban_sao}` · `fn_hh_lop_them` · `fn_hh_lop_chep_tu_kho` · `fn_hh_lop_xep`.
+  Cần biết hàm làm gì ⇒ grep tên hàm trong `supabase/migrations/` (đầu file có "VÌ SAO"). Mọi mã Hình đưa vào phải thuộc khối phiên (DB chặn).
+  Luật vẽ/hình: `docs/luong-kho-kieu-1-hinh-hoc.md`, `spec-hinh-cay-nhanh.md` (cây nhánh: chỉ xuống/sang phải; giả thiết nối giả thiết).
 JSON để trong **dấu nháy đơn**. Mỗi lệnh ghi một thay đổi; nhiều thay đổi thì chạy nhiều lệnh.
 
 ## Hai tình huống hay gặp
