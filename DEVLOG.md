@@ -79182,3 +79182,9 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 2026-11-07 (tối) — Lô bài tập NDB00787 (diện tích hình phẳng có công thức): xem 55 ảnh, vẽ lại 3 câu, CHỜ duyệt
 - Dạng này gần như toàn ảnh chụp thực tế (kính, cổng, đồng hồ, hoa văn…) và hình hình học trang trí — giữ hết. Vẽ lại 3 hình parabol đơn giản mà yếu: T…6760 (cổng, lối đi ABCD), 7040 (cửa hầm), 7670 (cổng trường). Diện tích vùng tô khớp đáp số (14/3, 128/3, 200/3). Trang duyệt: `kho-rules/dai/k12-bt-NDB00787-truoc-sau.html`. Chưa ghi DB. Hình đã có lưới + số trên trục.
+
+## 2026-11-07 (khuya) — Nông Trại: BẮT ĐẦU 8 Ô (tối đa 12) — Thùy: "12 ô gấp 3 lần 4 ô thì kinh tế không ổn; start 8 ô, max 12 ⇒ chênh 1,5 lần, mỗi ô +12,5%"
+- **Phát hiện trước khi sửa:** 124/166 em đang 4 ô, 121 trong số đó cấp 1–2 (ô 5 cần cấp 3 + 10 điểm) ⇒ kẹt vì ít vào vườn, không phải vì điểm/ô. Chi phí mở ô 5+6 chỉ 25 điểm (≈1,25 lượt học) so với 5 điểm/ô/ngày gieo hạt.
+- **Làm:** game `nhip-ngay` 89ffddf: `LUAT.oDau 4→8`, `oMo` chỉ còn ô 9–12 (cấp 12/14/16/18, 30/40/50/60 điểm); bản lưu cũ 4–6 ô được `engine` nâng lên 8 lúc nạp (dòng 60). `tools/test-engine.mjs` sửa theo (4→`L.oDau`) ⇒ "Tất cả luật đúng". Sync vào ERP (chỉ commit `data.js`; sync còn kéo theo ~300 file đổi dòng CRLF/LF, không commit).
+- **Giả lập `kich-ban.mjs` (khởi đầu 8 ô):** chăm mẫu mực xu ròng T10/T11/T12 = 7/5/10 · học vừa phải 5/6/7 · chỉ chơi không học 5/7/7. Chưa chạm trần 20 xu; mục tiêu ngân sách ≈20 xu chỉ ở em đủ 12 ô + học đều ⇒ có thể cần chỉnh lại `goc/gia` nếu muốn.
+- **Lưu ý:** số hạt mua tối đa/ngày = số ô ⇒ 4-ô cũ giờ mua được 8 hạt/ngày; chưa deploy.
