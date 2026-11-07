@@ -79179,3 +79179,6 @@ Thùy nêu 4 việc, làm được 3:
 - **Sai/nhầm:** (a) tôi gợi ý ghi nợ cấn dần rồi nhầm "lỗ" ↔ "lơ" ↔ "nợ"; Thùy chốt thứ tự trả: EXP game → xu game → xu ví, EXP phân bón chắc chắn đã quy ra xu thật nên trừ ví luôn. (b) `nt_xu.da_nhan` có CHECK > 0 ⇒ em bị trừ hết giữ tối thiểu 1 (không xoá dòng — luật xoá), hệ quả em phải kiếm thêm 1 xu nữa mới nhận lại xu nông trại.
 - **Chưa làm / quyết định:** xu các THÁNG TRƯỚC đã vào ví không đụng (state game chỉ có tháng hiện tại, không tách được phần phân bón); thứ tự trả nợ cho thấy game đủ bù hết nên không có phần thiếu cần xuống ví ngoài 84 xu. 3 em state tháng 10 (HS0394/0691/0577) `da_nhan` tháng 11 = 0 ⇒ không trừ.
 - **Còn:** deploy game `1671934` (bản chặn bán phân bón) — Thùy bấm Create Deployment; tin nói "không bán được nữa" nên deploy sớm.
+
+## 2026-11-07 (tối) — Lô bài tập NDB00787 (diện tích hình phẳng có công thức): xem 55 ảnh, vẽ lại 3 câu, CHỜ duyệt
+- Dạng này gần như toàn ảnh chụp thực tế (kính, cổng, đồng hồ, hoa văn…) và hình hình học trang trí — giữ hết. Vẽ lại 3 hình parabol đơn giản mà yếu: T…6760 (cổng, lối đi ABCD), 7040 (cửa hầm), 7670 (cổng trường). Diện tích vùng tô khớp đáp số (14/3, 128/3, 200/3). Trang duyệt: `kho-rules/dai/k12-bt-NDB00787-truoc-sau.html`. Chưa ghi DB. Hình đã có lưới + số trên trục.
