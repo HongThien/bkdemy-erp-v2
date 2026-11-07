@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-498 bảng · 38 view · 0 enum · 282 trigger · 1631 function
+499 bảng · 38 view · 0 enum · 282 trigger · 1631 function
 
 ## _app_secrets
 
@@ -4212,7 +4212,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→huy_hieu.mon |  |
+| mon | text |  |  | PK FK→thanh_tuu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -5276,6 +5276,21 @@ END |  |  |
 | giam | numeric |  |  |  |  |
 | nop_at | timestamp with time zone |  | clock_timestamp() |  |  |
 
+## nt_thu_hoi_phan
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
+| so_bao | integer |  |  |  |  |
+| dht_hoan | integer |  |  |  |  |
+| exp_phai_rut | integer |  |  |  |  |
+| exp_rut_vi | integer |  |  |  |  |
+| xu_game_rut | integer |  |  |  |  |
+| exp_tra_lai | integer |  |  |  |  |
+| exp_con_thieu | integer |  |  |  |  |
+| state_truoc | jsonb |  |  |  |  |
+| tao_at | timestamp with time zone |  | now() |  |  |
+
 ## nt_xu
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -5815,7 +5830,7 @@ END |  |  |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
 | mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
-| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
+| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -11455,6 +11470,7 @@ WITH luot AS (
 | nt_tang_toc_de | nt_tang_toc_de_muc_tieu_check | `CHECK ((muc_tieu = 'may'::text))` |
 | nt_tang_toc_nop | nt_tang_toc_nop_giam_check | `CHECK (((giam >= (0)::numeric) AND (giam <= (1)::numeric)))` |
 | nt_tang_toc_nop | nt_tang_toc_nop_so_dung_check | `CHECK (((so_dung >= 0) AND (so_dung <= 3)))` |
+| nt_thu_hoi_phan | nt_thu_hoi_phan_so_bao_check | `CHECK ((so_bao > 0))` |
 | nt_xu | nt_xu_da_nhan_check | `CHECK ((da_nhan > 0))` |
 | nt_xu | nt_xu_thang_check | `CHECK ((thang ~ '^[0-9]{4}-[0-9]{2}$'::text))` |
 | phan_cong_ca | phan_cong_ca_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
