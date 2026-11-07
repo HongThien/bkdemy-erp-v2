@@ -4251,7 +4251,27 @@ function parseSoThucTe(s, ctx = {}) { // → { v: Rat, fmt } | null
   if (/\d\s+\d/.test(lamSachSo(t))) return null // 2 chữ số cách nhau mà không phải hàng nghìn/hỗn số — KHÔNG đọc thành phép nhân
   const c = parseDonThucCore(t.replace(/\{,\}/g, '.').replace(',', '.')); return (c && c.coef && c.vars.size === 0 && !c.hasIrrational) ? { v: c.coef, fmt: null } : null
 }
-function tachDapSoThucTe(rawClean0, ctx = {}) { // → {vals: Rat[], fmts, sep} hoặc null — dùng chung cho canon lẫn sinh nhiễu
+// Đáp số kèm ĐƠN VỊ chữ ở cuối (tiểu học 4T — Thùy 07/11: "61 ngôi sao", "150 kg gạo", "15 nghìn đồng", "$46$ kg"): CHỈ thử khi
+// cách đọc cũ thất bại (không đổi hành vi câu đã đọc được) — đọc phần số như cũ, đơn vị giữ nguyên (dv) để hiện lại ở MỌI phương án.
+// Chỉ nhận 1 giá trị + 1 đơn vị (nhiều giá trị mỗi cái một đơn vị ⇒ vẫn null, không đoán).
+// Thêm (cùng ngày): CẶP CÓ NHÃN "Tuổi của chị: $9$; Tuổi của em: $7$" (≤4 phần, mỗi phần "nhãn: số") ⇒ nhan[] giữ nguyên, hiện lại trước mỗi số.
+function tachDapSoThucTe(rawClean0, ctx = {}) {
+  const t = tachDapSoThucTeLoi(rawClean0, ctx); if (t) return t
+  // đọc lại chính text phương án (máy so 'máy ≠ kho'): gỡ \text{…} và ';\ ' về chữ thường trước
+  const raw = String(rawClean0).trim().replace(/\\text\{([^{}]*)\}/g, '$1').replace(/;\\ /g, '; ').replace(/\s+/g, ' ')
+  const phan = raw.split(/\s*;\s*/)
+  if (phan.length >= 2 && phan.length <= 4 && phan.every((x) => /^[^:;$\d][^:;$]{0,40}:\s*\S/.test(x))) {
+    const nhan = [], so = []
+    for (const x of phan) { const i = x.indexOf(':'); nhan.push(x.slice(0, i).trim()); so.push(x.slice(i + 1).trim()) }
+    const xs = so.map((x) => parseSoThucTe(x.replace(/\$/g, ''), ctx)); if (xs.some((x) => !x)) return null
+    return { vals: xs.map((x) => x.v), fmts: xs.map((x) => x.fmt), sep: ';', nhan }
+  }
+  const m = raw.match(/^(.*\d)\s*(?:\\text\{\s*)?([A-Za-zÀ-ỹĐđ][A-Za-zÀ-ỹĐđ \-]{0,30}?)\}?\s*\.?$/)
+  if (!m) return null
+  const t2 = tachDapSoThucTeLoi(m[1].trim(), ctx); if (!t2 || t2.vals.length !== 1 || t2.sep !== ';') return null
+  return { ...t2, dv: m[2].trim().replace(/\s+/g, ' ') }
+}
+function tachDapSoThucTeLoi(rawClean0, ctx = {}) { // → {vals: Rat[], fmts, sep} hoặc null — dùng chung cho canon lẫn sinh nhiễu
   const tp = { thapPhan: coThapPhan(ctx.dang) }
   const doc = (arr) => { const xs = arr.map((p) => parseSoThucTe(p, ctx)); return xs.some((x) => !x) ? null : xs }
   const goi = (xs, sep) => xs && { vals: xs.map((x) => x.v), fmts: xs.map((x) => x.fmt), sep }
@@ -4285,7 +4305,13 @@ function vietGiaTri(v, fmt, tex) {
   return texR(v)
 }
 // tex=true ⇒ text phương án (KaTeX: {,} · \, · ";\ "); tex=false ⇒ key_gia_tri (so sánh: ',' · không cách · ';').
-function renderDapSoThucTe(vals, sep, fmts = [], tex = false) {
+// dv = đơn vị chữ ở cuối (xem tachDapSoThucTe) — gắn lại sau số, cả ở phương án lẫn khoá so sánh.
+function renderDapSoThucTe(vals, sep, fmts = [], tex = false, dv = null, nhan = null) {
+  if (nhan) return vals.map((v, i) => (tex ? `\\text{${nhan[i]}: }` : `${nhan[i]}: `) + vietGiaTri(v, fmts[i], tex)).join(tex ? ';\\ ' : ';')
+  const s = renderDapSoThucTeSo(vals, sep, fmts, tex)
+  return dv ? (tex ? `${s}\\text{ ${dv}}` : `${s} ${dv}`) : s
+}
+function renderDapSoThucTeSo(vals, sep, fmts = [], tex = false) {
   const pairs = vals.map((v, i) => [v, fmts[i]]), w = ([v, f]) => vietGiaTri(v, f, tex)
   const sorted = () => [...pairs].sort((a, b) => cmp(a[0], b[0]))
   if (sep === ' hoặc ') { const arr = sorted(); return `${w(arr[0])} hoặc ${w(arr[1])}` }
@@ -4296,7 +4322,7 @@ function renderDapSoThucTe(vals, sep, fmts = [], tex = false) {
 export function chuanHoaDapSoThucTe(s, dang) {
   const clean = String(s ?? '').replace(/\$/g, '').trim()
   const t = tachDapSoThucTe(clean, { dang }); if (!t) return clean
-  return renderDapSoThucTe(t.vals, t.sep, t.fmts, false)
+  return renderDapSoThucTe(t.vals, t.sep, t.fmts, false, t.dv, t.nhan)
 }
 export function evalDapSoThucTeKetQua(s, dang) { const t = chuanHoaDapSoThucTe(s, dang); return t || null }
 // Dạng mà "quên phần nguyên" là lỗi THẬT (đổi phân số/hỗn số/đơn vị ↔ số thập phân, đọc–viết số thập phân).
@@ -4306,10 +4332,11 @@ export function sinhNhieuDapSoThucTe(dapAn, rule, ctx = {}) {
   const clean = String(dapAn ?? '').replace(/\$/g, '').trim()
   const parsed = tachDapSoThucTe(clean, ctx); if (!parsed) return null
   const { vals, fmts, sep } = parsed
-  const render = (arr, fs = fmts) => renderDapSoThucTe(arr, sep, fs, true)
-  const dungText = render(vals), dungKey = renderDapSoThucTe(vals, sep, fmts, false)
+  const dv = parsed.dv ?? null, nhan = parsed.nhan ?? null
+  const render = (arr, fs = fmts) => renderDapSoThucTe(arr, sep, fs, true, dv, nhan)
+  const dungText = render(vals), dungKey = renderDapSoThucTe(vals, sep, fmts, false, dv, nhan)
   if (!rule) return { text: dungText }
-  const ra = (arr, ds, fs = fmts) => { const k = renderDapSoThucTe(arr, sep, fs, false); return k === dungKey ? null : { text: render(arr, fs), ds } }
+  const ra = (arr, ds, fs = fmts) => { const k = renderDapSoThucTe(arr, sep, fs, false, dv, nhan); return k === dungKey ? null : { text: render(arr, fs), ds } }
   const f0 = fmts[0]
   const thapPhan1 = vals.length === 1 && f0?.loai === 'thap_phan'
   const sapXep = vals.length >= 3 && sep === ';' && RE_SAP_XEP.test(String(ctx.noiDung ?? '')) && fmts.every((f) => f?.loai === 'nguyen' || f?.loai === 'thap_phan')

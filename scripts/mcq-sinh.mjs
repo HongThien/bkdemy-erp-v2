@@ -464,7 +464,7 @@ async function cauBdm({ dangs, khoi, chuDe }) {
       and c.da_duyet                                   -- CỬA 2 chỉ nhận câu đã qua CỬA 1 (spec-kho-chuan.md §4)
       and c.dap_an is not null and c.dap_an <> '' and c.lua_chon is null and c.menh_de is null
       and not exists (select 1 from bdm_cau_form_tn f where f.ma_cau = c.ma_cau and f.xoa_at is null)
-    order by b.khoi::int, b.thu_tu_chu_de nulls last, b.thu_tu_chuyen_de nulls last, b.thu_tu_nhom nulls last, b.thu_tu_dang nulls last, c.dang_chinh, c.ma_cau
+    order by nullif(regexp_replace(b.khoi, '[^0-9]', '', 'g'), '')::int, b.khoi, b.thu_tu_chu_de nulls last, b.thu_tu_chuyen_de nulls last, b.thu_tu_nhom nulls last, b.thu_tu_dang nulls last, c.dang_chinh, c.ma_cau
     limit 50000`, p)).rows.map((r) => ({ ...r, khoa_may: khoaMay(r.khuon, r.khoi) }))
 }
 
@@ -472,7 +472,8 @@ async function list() {
   const n = Number(opt('--n', 40))
   let rows, dangs
   if (BDM) {
-    if (KHOI_OPT && !/^(6|7|8|9|10|11|12)$/.test(KHOI_OPT)) throw new Error('--khoi: bản đồ mới chỉ K6–12 (cấp 1 vẫn dùng --dang <mã dạng cũ>)')
+    // Tiểu học lên bản đồ mới từ 05/11 (K3·4·4T·5·5T) ⇒ nhận cả khối có hậu tố T (Thùy 07/11: 4T làm thêm form MCQ)
+    if (KHOI_OPT && !/^(3|4|4T|5|5T|6|7|8|9|10|11|12)$/.test(KHOI_OPT)) throw new Error('--khoi: bản đồ mới K3–12 (3 · 4 · 4T · 5 · 5T · 6…12)')
     rows = await cauBdm({ dangs: DANG_OPT ? DANG_OPT.split(',').map((s) => s.trim().toUpperCase()) : null, khoi: KHOI_OPT, chuDe: CHU_DE_OPT })
     dangs = DANG_OPT ? DANG_OPT.split(',').map((s) => s.trim().toUpperCase()) : [...new Set(rows.map((r) => r.ma_dang_bai))]
   } else {

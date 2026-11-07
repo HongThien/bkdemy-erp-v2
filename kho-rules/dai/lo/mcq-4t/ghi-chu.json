@@ -1,0 +1,54 @@
+{
+ "hoi": [
+  {
+   "khoi": "4T",
+   "ma_dang": "NDB01526",
+   "ten_dang": "Tìm vị trí của một số trong dãy số ?",
+   "n": "21",
+   "ly_do": "Đáp số Có/Không — khuôn 4 đáp án tính toán không hợp (spec-mcq-quy-trinh-sinh §2: MƠ HỒ) · vd: Không",
+   "de_xuat": "Để nguyên tự luận (chưa làm form)"
+  },
+  {
+   "khoi": "4T",
+   "ma_dang": "NDB00653",
+   "ten_dang": "Cụm 1",
+   "n": "1",
+   "ly_do": "Đáp số nhiều phần (dãy 5 số, a) b) …) — chưa có khuôn · vd: 21414 (dấu * = 4).",
+   "de_xuat": "Để nguyên tự luận (chưa làm form)"
+  },
+  {
+   "khoi": "4T",
+   "ma_dang": "NDB00655",
+   "ten_dang": "CỤm 3",
+   "n": "6",
+   "ly_do": "Đáp số nhiều phần (dãy 5 số, a) b) …) — chưa có khuôn · vd: * = 6 (tích = 3160080).",
+   "de_xuat": "Để nguyên tự luận (chưa làm form)"
+  },
+  {
+   "khoi": "4T",
+   "ma_dang": "NDB01538",
+   "ten_dang": "Bài toán về dãy đối tượng lặp lại",
+   "n": "11",
+   "ly_do": "Đáp số là 1 chữ cái trong dãy lặp — chưa có khuôn sinh phương án · vd: N",
+   "de_xuat": "Để nguyên tự luận (chưa làm form)"
+  },
+  {
+   "khoi": "4T",
+   "ma_dang": "NDB01542",
+   "ten_dang": "Tính trung bình cộng của các số",
+   "n": "1",
+   "ly_do": "Đáp số nhiều phần (dãy 5 số, a) b) …) — chưa có khuôn · vd: a) $6250000$ đồng; b) $1250000$ đồng",
+   "de_xuat": "Để nguyên tự luận (chưa làm form)"
+  },
+  {
+   "khoi": "4T",
+   "ma_dang": "NDB01588",
+   "ten_dang": "Bài toán tổng hiệu ẩn tổng bằng trung bình cộng",
+   "n": "3",
+   "ly_do": "Đáp số nhiều phần (dãy 5 số, a) b) …) — chưa có khuôn · vd: $362$; $364$; $366$; $368$; $370$",
+   "de_xuat": "Để nguyên tự luận (chưa làm form)"
+  }
+ ],
+ "loi_kho": [],
+ "con_lai": []
+}

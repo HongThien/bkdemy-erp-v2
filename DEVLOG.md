@@ -79122,3 +79122,10 @@ Thùy nêu 4 việc, làm được 3:
 ## 2026-11-07 — Báo cáo HỌC KÌ: tạm thu hồi khỏi app PH bằng công tắc theo kì (mig 202611071041 ĐÃ ÁP) — Thùy 'tạm thu hồi để t check'
 - Không mở lại 196 báo cáo (mất trạng thái công bố). Thêm ky_hoc.mo_ph mặc định false + log; policy FDW app PH = đã công bố VÀ kì mở. Áp xong 'Nửa kì 1' tắt ⇒ app PH local (cùng DB thật, link xem-thử PH em Hoàng Nhật Minh): 'Chưa có báo cáo học kì', không bật hướng dẫn.
 - ERP: nút '📱 App PH: đang ẩn/đang hiện' cạnh ô chọn kì (admin, có hỏi lại trước khi đổi); người khác thấy dòng 'chưa hiện trên app PH'. Chưa bấm thử (bấm = mở thật cho PH).
+
+### 07/11 — 4T bản đồ mới: làm THÊM form trắc nghiệm (MCQ) cho câu kho (Thùy: "ý là làm thêm form")
+- Hiện trạng 4T: 2117 câu, 418 trắc nghiệm gốc, 1044 đã có form ⇒ 655 câu tự luận chưa form. Câu gốc giữ nguyên (form ở bdm/dai_cau_form_tn).
+- mcq-sinh.mjs: bản đồ mới nhận cả K3·4·4T·5·5T (tiểu học lên bản đồ mới 05/11); ORDER BY khối bỏ ép ::int (vỡ với '4T').
+- lib/mini-dang.mjs tachDapSoThucTe: thêm nhánh DỰ PHÒNG (chỉ chạy khi cách đọc cũ thất bại ⇒ câu cũ không đổi hành vi): đáp số kèm ĐƠN VỊ chữ ("61 ngôi sao", "302 ki-lô-gam gạo", "15 nghìn đồng") và CẶP CÓ NHÃN ("Tuổi của chị: 14; Tuổi của em: 12") — giữ đơn vị/nhãn ở mọi phương án.
+- SAI 2 lần cùng gốc: heredoc bash nuốt gạch chéo ⇒ `\text` thành TAB trong mã JS (verify vẫn PASS vì so text với chính nó; JSON.stringify che mất). Bắt bằng /\t/ trên output; sửa bằng script Python ghi ra file (chr(92)). Bài học: patch có `\` ⇒ không dùng heredoc, kiểm output bằng regex tab.
+- Kết quả: 612/655 form, verify 0 FAIL, đã ghi (da_duyet=false). Trang duyệt kho-rules/dai/lo/mcq-4t/duyet-4t-20261107.html (bản sao build-duyet bỏ ::int). 43 câu không làm: 21 đáp "Không" (Có/Không — MƠ HỒ theo spec), 9 đáp 1 chữ cái (dãy lặp), dãy 5 số / a) b) nhiều phần.
