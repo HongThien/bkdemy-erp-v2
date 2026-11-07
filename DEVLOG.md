@@ -79201,3 +79201,4 @@ Thùy nêu 4 việc, làm được 3:
 - **NDB00636 (30 câu):** đa số đã là TikZ có phác khối quay (giữ). Vẽ lại 4 câu hình yếu: T…2600 (cos x), 5049 (3√x), 7042 (√x và 2−x), 4846 (hình thang quay Ox). Kiểm thể tích π∫|f²−g²| khớp đáp số cả 4.
 - **PHÁT HIỆN lỗi lời giải gốc T…4846:** lời giải ghi "= 14π ≈ 44,0" nhưng 8/3 + 8 + 4/3 = 12 ⇒ V = 12π ≈ 37,7 (khớp đáp số 37,7). Chỉ sai phép cộng trong lời giải, đáp số đúng — chờ Thùy cho sửa lời giải.
 - Máy vẽ: `xoay` nhận MẢNG (nhiều đoạn quay); trang duyệt kiểm cả thể tích (`V:`). Trang duyệt: `kho-rules/dai/k12-bt-NDB00636-truoc-sau.html`. Chưa ghi DB.
+- **Ghi DB (Thùy duyệt, 07/11):** 4 câu NDB00636 đổi `anh_de` sang SVG máy vẽ, sao lưu `reports/sao-luu-anh-cau-*.json`.
