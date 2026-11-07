@@ -1,0 +1,144 @@
+[
+ {
+  "ma": "BT.07.126.01",
+  "so": "B1",
+  "gia_thiet_goc": "Cho tam giác $ABC$ vuông tại $A$, kẻ $BD$ là phân giác của góc $B$ ($D$ thuộc $AC$).",
+  "gia_thiet_them": [],
+  "cau_hoi": "Cho $\\triangle ABC$ vuông tại A. Trên cạnh BC lấy điểm E sao cho $BA = BE$. Tia phân giác của góc\nB cắt cạnh AC tại K.\na) Chứng minh $\\triangle ABK =\\triangle EBK$ và $AK = KE$\nb) Chứng minh $EK \\perp BC$\nc) Chứng minh: BK là đường trung trực của đoạn thẳng AE.",
+  "tien_de": []
+ },
+ {
+  "ma": "BT.07.126.02",
+  "so": "B2",
+  "gia_thiet_goc": "Cho tam giác $ABC$ vuông tại $A$, kẻ $BD$ là phân giác của góc $B$ ($D$ thuộc $AC$).",
+  "gia_thiet_them": [],
+  "cau_hoi": "Cho $\\triangle ABC$ vuông tại A. Trên cạnh BC lấy điểm E sao cho $BA = BE$. Tia phân giác của góc\nB cắt cạnh AC tại K.\na) Chứng minh $\\triangle ABK = \\triangle EBK$ và $AK = KE$\nb) Chứng minh $EK \\perp BC$\nc) Chứng minh: BK là đường trung trực của đoạn thẳng AE.",
+  "tien_de": []
+ },
+ {
+  "ma": "BT.07.126.03",
+  "so": "B3",
+  "gia_thiet_goc": "Cho tam giác $ABC$ vuông tại $A$, kẻ $BD$ là phân giác của góc $B$ ($D$ thuộc $AC$).",
+  "gia_thiet_them": [
+   "Trên cạnh $BC$ lấy điểm $E$ sao cho $BE=BA$."
+  ],
+  "cau_hoi": "Chứng minh $\\triangle ABD=\\triangle EBD$.",
+  "tien_de": []
+ },
+ {
+  "ma": "BT.07.126.04",
+  "so": "B4",
+  "gia_thiet_goc": "Cho tam giác $ABC$ vuông tại $A$, kẻ $BD$ là phân giác của góc $B$ ($D$ thuộc $AC$).",
+  "gia_thiet_them": [
+   "Trên cạnh $BC$ lấy điểm $E$ sao cho $BE=BA$."
+  ],
+  "cau_hoi": "Chứng minh $DE=DA$ và $DE\\perp BC$.",
+  "tien_de": [
+   {
+    "so": "B3",
+    "phat_bieu": "Chứng minh $\\triangle ABD=\\triangle EBD$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.126.05",
+  "so": "B5",
+  "gia_thiet_goc": "Cho tam giác $ABC$ vuông tại $A$, kẻ $BD$ là phân giác của góc $B$ ($D$ thuộc $AC$).",
+  "gia_thiet_them": [
+   "Trên cạnh $BC$ lấy điểm $E$ sao cho $BE=BA$."
+  ],
+  "cau_hoi": "Chứng minh $BD\\perp AE$.",
+  "tien_de": [
+   {
+    "so": "B3",
+    "phat_bieu": "Chứng minh $\\triangle ABD=\\triangle EBD$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.126.06",
+  "so": "B6",
+  "gia_thiet_goc": "Cho tam giác $ABC$ vuông tại $A$, kẻ $BD$ là phân giác của góc $B$ ($D$ thuộc $AC$).",
+  "gia_thiet_them": [
+   "Trên cạnh $BC$ lấy điểm $E$ sao cho $BE=BA$."
+  ],
+  "cau_hoi": "Chứng minh $BD$ là đường trung trực của đoạn thẳng $AE$.",
+  "tien_de": [
+   {
+    "so": "B5",
+    "phat_bieu": "Chứng minh $BD\\perp AE$."
+   },
+   {
+    "so": "B3",
+    "phat_bieu": "Chứng minh $\\triangle ABD=\\triangle EBD$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.126.07",
+  "so": "B7",
+  "gia_thiet_goc": "Cho tam giác $ABC$ vuông tại $A$, kẻ $BD$ là phân giác của góc $B$ ($D$ thuộc $AC$).",
+  "gia_thiet_them": [
+   "Trên cạnh $BC$ lấy điểm $E$ sao cho $BE=BA$.",
+   "Trên tia đối của tia $AB$ lấy điểm $F$ sao cho $AF=CE$."
+  ],
+  "cau_hoi": "Chứng minh ba điểm $F, D, E$ thẳng hàng.",
+  "tien_de": [
+   {
+    "so": "B4",
+    "phat_bieu": "Chứng minh $DE=DA$ và $DE\\perp BC$."
+   },
+   {
+    "so": "B3",
+    "phat_bieu": "Chứng minh $\\triangle ABD=\\triangle EBD$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.126.08",
+  "so": "B8",
+  "gia_thiet_goc": "Cho tam giác $ABC$ vuông tại $A$, kẻ $BD$ là phân giác của góc $B$ ($D$ thuộc $AC$).",
+  "gia_thiet_them": [
+   "Kẻ $DE\\perp BC$ tại $E$ ($E\\in BC$)."
+  ],
+  "cau_hoi": "Chứng minh $\\triangle ABD=\\triangle EBD$.",
+  "tien_de": []
+ },
+ {
+  "ma": "BT.07.126.09",
+  "so": "B9",
+  "gia_thiet_goc": "Cho tam giác $ABC$ vuông tại $A$, kẻ $BD$ là phân giác của góc $B$ ($D$ thuộc $AC$).",
+  "gia_thiet_them": [
+   "Kẻ $DE\\perp BC$ tại $E$ ($E\\in BC$).",
+   "Tia $BA$ cắt tia $ED$ tại $Q$."
+  ],
+  "cau_hoi": "Chứng minh $DQ=DC$.",
+  "tien_de": [
+   {
+    "so": "B8",
+    "phat_bieu": "Chứng minh $\\triangle ABD=\\triangle EBD$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.126.10",
+  "so": "B10",
+  "gia_thiet_goc": "Cho tam giác $ABC$ vuông tại $A$, kẻ $BD$ là phân giác của góc $B$ ($D$ thuộc $AC$).",
+  "gia_thiet_them": [
+   "Kẻ $DE\\perp BC$ tại $E$ ($E\\in BC$).",
+   "Tia $BA$ cắt tia $ED$ tại $Q$.",
+   "Gọi $M$ là trung điểm của đoạn thẳng $QC$."
+  ],
+  "cau_hoi": "Chứng minh ba điểm $B, D, M$ thẳng hàng.",
+  "tien_de": [
+   {
+    "so": "B8",
+    "phat_bieu": "Chứng minh $\\triangle ABD=\\triangle EBD$."
+   },
+   {
+    "so": "B9",
+    "phat_bieu": "Chứng minh $DQ=DC$."
+   }
+  ]
+ }
+]

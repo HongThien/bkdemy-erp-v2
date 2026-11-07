@@ -1,0 +1,62 @@
+[
+ {
+  "ma": "BT.07.126.01",
+  "so": "B1",
+  "loi_giai": "a) Xét $\\triangle ABK$ và $\\triangle EBK$ có:\n$BA=BE$ (gt)\n$\\widehat{ABK}=\\widehat{EBK}$ ($BK$ là tia phân giác của góc $B$)\n$BK$ là cạnh chung\nDo đó $\\triangle ABK=\\triangle EBK$ (c.g.c).\nSuy ra $AK=KE$ (hai cạnh tương ứng).\nb) Vì $\\triangle ABK=\\triangle EBK$ (cmt)\nnên $\\widehat{BEK}=\\widehat{BAK}$ (hai góc tương ứng).\nMà $\\widehat{BAK}=90^\\circ$ ($\\triangle ABC$ vuông tại $A$)\nnên $\\widehat{BEK}=90^\\circ$.\nMà $E$ thuộc $BC$ nên $EK\\perp BC$.\nc) Tia $BK$ nằm giữa hai tia $BA$, $BE$ (tia phân giác)\nnên $BK$ cắt đoạn $AE$ tại $H$\n($H$ nằm giữa $A$ và $E$).\nXét $\\triangle ABH$ và $\\triangle EBH$ có:\n$BA=BE$ (gt)\n$\\widehat{ABH}=\\widehat{EBH}$ ($H$ thuộc tia phân giác $BK$)\n$BH$ là cạnh chung\nDo đó $\\triangle ABH=\\triangle EBH$ (c.g.c).\nSuy ra $HA=HE$ (hai cạnh tương ứng)\nvà $\\widehat{AHB}=\\widehat{EHB}$ (hai góc tương ứng).\nMà $\\widehat{AHB}+\\widehat{EHB}=180^\\circ$ (hai góc kề bù)\nnên $\\widehat{AHB}=90^\\circ$, tức là $BK\\perp AE$ tại $H$.\nMà $H$ nằm giữa $A$ và $E$, $HA=HE$ (cmt)\nnên $H$ là trung điểm của $AE$ (trung điểm).\nVậy $BK$ vuông góc với $AE$\ntại trung điểm $H$ của $AE$\nnên $BK$ là đường trung trực của đoạn thẳng $AE$\n(định nghĩa đường trung trực).",
+  "ghi_chu": "Giữ tên K, E đúng như câu hỏi (đề B1/B2 tự đặt K = giao tia phân giác góc B với AC, tức K trùng D của giả thiết gốc; câu hỏi bắt chứng minh tam giác ABK = EBK). Đổi sang D sẽ lệch chữ của câu hỏi."
+ },
+ {
+  "ma": "BT.07.126.02",
+  "so": "B2",
+  "loi_giai": "a) Xét $\\triangle ABK$ và $\\triangle EBK$ có:\n$BA=BE$ (gt)\n$\\widehat{ABK}=\\widehat{EBK}$ ($BK$ là tia phân giác của góc $B$)\n$BK$ là cạnh chung\nDo đó $\\triangle ABK=\\triangle EBK$ (c.g.c).\nSuy ra $AK=KE$ (hai cạnh tương ứng).\nb) Vì $\\triangle ABK=\\triangle EBK$ (cmt)\nnên $\\widehat{BEK}=\\widehat{BAK}$ (hai góc tương ứng).\nMà $\\widehat{BAK}=90^\\circ$ ($\\triangle ABC$ vuông tại $A$)\nnên $\\widehat{BEK}=90^\\circ$.\nMà $E$ thuộc $BC$ nên $EK\\perp BC$.\nc) Tia $BK$ nằm giữa hai tia $BA$, $BE$ (tia phân giác)\nnên $BK$ cắt đoạn $AE$ tại $H$\n($H$ nằm giữa $A$ và $E$).\nXét $\\triangle ABH$ và $\\triangle EBH$ có:\n$BA=BE$ (gt)\n$\\widehat{ABH}=\\widehat{EBH}$ ($H$ thuộc tia phân giác $BK$)\n$BH$ là cạnh chung\nDo đó $\\triangle ABH=\\triangle EBH$ (c.g.c).\nSuy ra $HA=HE$ (hai cạnh tương ứng)\nvà $\\widehat{AHB}=\\widehat{EHB}$ (hai góc tương ứng).\nMà $\\widehat{AHB}+\\widehat{EHB}=180^\\circ$ (hai góc kề bù)\nnên $\\widehat{AHB}=90^\\circ$, tức là $BK\\perp AE$ tại $H$.\nMà $H$ nằm giữa $A$ và $E$, $HA=HE$ (cmt)\nnên $H$ là trung điểm của $AE$ (trung điểm).\nVậy $BK$ vuông góc với $AE$\ntại trung điểm $H$ của $AE$\nnên $BK$ là đường trung trực của đoạn thẳng $AE$\n(định nghĩa đường trung trực).",
+  "ghi_chu": "Giữ tên K, E đúng như câu hỏi (đề B1/B2 tự đặt K = giao tia phân giác góc B với AC, tức K trùng D của giả thiết gốc; câu hỏi bắt chứng minh tam giác ABK = EBK). Đổi sang D sẽ lệch chữ của câu hỏi."
+ },
+ {
+  "ma": "BT.07.126.03",
+  "so": "B3",
+  "loi_giai": "Xét $\\triangle ABD$ và $\\triangle EBD$ có:\n$BA=BE$ (gt)\n$\\widehat{ABD}=\\widehat{EBD}$ ($BD$ là tia phân giác của góc $B$)\n$BD$ là cạnh chung\nDo đó $\\triangle ABD=\\triangle EBD$ (c.g.c).",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.126.04",
+  "so": "B4",
+  "loi_giai": "Vì $\\triangle ABD=\\triangle EBD$ (theo B3)\nnên $DE=DA$ (hai cạnh tương ứng)\nvà $\\widehat{BED}=\\widehat{BAD}$ (hai góc tương ứng).\nMà $\\widehat{BAD}=90^\\circ$ ($\\triangle ABC$ vuông tại $A$, $D$ thuộc $AC$)\nnên $\\widehat{BED}=90^\\circ$.\nMà $E$ thuộc $BC$ nên $DE\\perp BC$.\nVậy $DE=DA$ và $DE\\perp BC$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.126.05",
+  "so": "B5",
+  "loi_giai": "Tia $BD$ nằm giữa hai tia $BA$, $BE$ (tia phân giác)\nnên $BD$ cắt đoạn $AE$ tại $H$ ($H$ nằm giữa $A$ và $E$).\nXét $\\triangle ABH$ và $\\triangle EBH$ có:\n$BA=BE$ (gt)\n$\\widehat{ABH}=\\widehat{EBH}$ ($H$ thuộc tia phân giác $BD$)\n$BH$ là cạnh chung\nDo đó $\\triangle ABH=\\triangle EBH$ (c.g.c).\nSuy ra $\\widehat{AHB}=\\widehat{EHB}$ (hai góc tương ứng).\nMà $\\widehat{AHB}+\\widehat{EHB}=180^\\circ$ (hai góc kề bù)\nnên $\\widehat{AHB}=90^\\circ$.\nVậy $BD\\perp AE$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.126.06",
+  "so": "B6",
+  "loi_giai": "Ta có $BD\\perp AE$ (theo B5).\nTia $BD$ nằm giữa hai tia $BA$, $BE$ (tia phân giác)\nnên $BD$ cắt đoạn $AE$ tại $H$ ($H$ nằm giữa $A$ và $E$).\nXét $\\triangle ABH$ và $\\triangle EBH$ có:\n$BA=BE$ (gt)\n$\\widehat{ABH}=\\widehat{EBH}$ ($H$ thuộc tia phân giác $BD$)\n$BH$ là cạnh chung\nDo đó $\\triangle ABH=\\triangle EBH$ (c.g.c).\nSuy ra $HA=HE$ (hai cạnh tương ứng).\nMà $H$ nằm giữa $A$ và $E$\nnên $H$ là trung điểm của $AE$ (trung điểm).\nVậy $BD$ vuông góc với $AE$\ntại trung điểm $H$ của $AE$\nnên $BD$ là đường trung trực của đoạn thẳng $AE$\n(định nghĩa đường trung trực).",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.126.07",
+  "so": "B7",
+  "loi_giai": "Vì $F$ thuộc tia đối của tia $AB$\nnên $A$ nằm giữa $B$ và $F$.\nMà $DA\\perp AB$ ($\\triangle ABC$ vuông tại $A$)\nnên $\\widehat{DAF}=90^\\circ$.\nVì $DE\\perp BC$ (theo B4), $E$ thuộc $BC$\nnên $\\widehat{DEC}=90^\\circ$.\nXét $\\triangle DAF$ và $\\triangle DEC$ có:\n$DA=DE$ (theo B4)\n$\\widehat{DAF}=\\widehat{DEC}=90^\\circ$ (cmt)\n$AF=EC$ (gt)\nDo đó $\\triangle DAF=\\triangle DEC$ (c.g.c).\nSuy ra $\\widehat{ADF}=\\widehat{EDC}$ (hai góc tương ứng).\nVì $D$ nằm giữa $A$ và $C$ ($D$ thuộc cạnh $AC$)\nnên $\\widehat{ADE}+\\widehat{EDC}=180^\\circ$ (hai góc kề bù).\nDo đó $\\widehat{ADE}+\\widehat{ADF}=180^\\circ$.\nVì $A$ nằm giữa $B$ và $F$ (cmt)\nnên $F$, $B$ khác phía đối với $AC$.\nVì $E$ thuộc cạnh $BC$\nnên $E$, $B$ cùng phía đối với $AC$.\nSuy ra $F$, $E$ khác phía đối với $AC$.\nHai góc $\\widehat{ADE}$, $\\widehat{ADF}$ chung cạnh $DA$,\nhai cạnh còn lại khác phía đối với $AC$\nvà tổng hai góc bằng $180^\\circ$\nnên hai tia $DE$, $DF$ đối nhau.\nVậy ba điểm $F, D, E$ thẳng hàng.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.126.08",
+  "so": "B8",
+  "loi_giai": "Vì $DE\\perp BC$ tại $E$ (gt) nên $\\widehat{BED}=90^\\circ$.\nXét $\\triangle ABD$ (vuông tại $A$) và $\\triangle EBD$ (vuông tại $E$) có:\n$BD$ là cạnh huyền chung\n$\\widehat{ABD}=\\widehat{EBD}$ ($BD$ là tia phân giác của góc $B$)\nDo đó $\\triangle ABD=\\triangle EBD$ (ch - gn).",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.126.09",
+  "so": "B9",
+  "loi_giai": "Vì $\\triangle ABD=\\triangle EBD$ (theo B8)\nnên $DA=DE$ (hai cạnh tương ứng).\nVì $DA\\perp AB$ ($\\triangle ABC$ vuông tại $A$)\nvà $Q$ thuộc tia $BA$ nên $\\widehat{DAQ}=90^\\circ$.\nVì $DE\\perp BC$ (gt), $C$ thuộc $BC$\nnên $\\widehat{DEC}=90^\\circ$.\nVì $D$ thuộc cạnh $AC$, $E$ thuộc cạnh $BC$\nnên $D$, $E$ cùng phía đối với $AB$.\nDo đó đoạn $ED$ không cắt $AB$,\nmà $Q$ thuộc tia $ED$\nnên $D$ nằm giữa $E$ và $Q$.\nLại có $D$ nằm giữa $A$ và $C$ ($D$ thuộc cạnh $AC$)\nnên $\\widehat{ADQ}=\\widehat{EDC}$ (hai góc đối đỉnh).\nXét $\\triangle ADQ$ và $\\triangle EDC$ có:\n$\\widehat{DAQ}=\\widehat{DEC}=90^\\circ$ (cmt)\n$DA=DE$ (cmt)\n$\\widehat{ADQ}=\\widehat{EDC}$ (cmt)\nDo đó $\\triangle ADQ=\\triangle EDC$ (cgv - gn).\nSuy ra $DQ=DC$ (hai cạnh tương ứng).",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.126.10",
+  "so": "B10",
+  "loi_giai": "Vì $\\triangle ABD=\\triangle EBD$ (theo B8)\nnên $BE=BA$ (hai cạnh tương ứng).\nVì $Q$ thuộc tia $ED$, $DE\\perp BC$ tại $E$ (gt)\nnên $\\widehat{BEQ}=90^\\circ$.\nXét $\\triangle BEQ$ và $\\triangle BAC$ có:\n$\\widehat{BEQ}=\\widehat{BAC}=90^\\circ$ (cmt, gt)\n$BE=BA$ (cmt)\n$\\widehat{EBQ}=\\widehat{ABC}$ (góc chung)\nDo đó $\\triangle BEQ=\\triangle BAC$ (g.c.g).\nSuy ra $BQ=BC$ (hai cạnh tương ứng).\nXét $\\triangle BQM$ và $\\triangle BCM$ có:\n$BQ=BC$ (cmt)\n$MQ=MC$ ($M$ là trung điểm của $QC$)\n$BM$ là cạnh chung\nDo đó $\\triangle BQM=\\triangle BCM$ (c.c.c).\nSuy ra $\\widehat{BMQ}=\\widehat{BMC}$ (hai góc tương ứng).\nMà $\\widehat{BMQ}+\\widehat{BMC}=180^\\circ$ (hai góc kề bù)\nnên $\\widehat{BMQ}=90^\\circ$, tức là $BM\\perp QC$.\nXét $\\triangle DQM$ và $\\triangle DCM$ có:\n$DQ=DC$ (theo B9)\n$MQ=MC$ ($M$ là trung điểm của $QC$)\n$DM$ là cạnh chung\nDo đó $\\triangle DQM=\\triangle DCM$ (c.c.c).\nSuy ra $\\widehat{DMQ}=\\widehat{DMC}$ (hai góc tương ứng).\nMà $\\widehat{DMQ}+\\widehat{DMC}=180^\\circ$ (hai góc kề bù)\nnên $\\widehat{DMQ}=90^\\circ$, tức là $DM\\perp QC$.\nQua $M$ chỉ có một đường thẳng vuông góc với $QC$\nnên hai đường thẳng $BM$ và $DM$ trùng nhau.\nVậy ba điểm $B, D, M$ thẳng hàng.",
+  "ghi_chu": ""
+ }
+]

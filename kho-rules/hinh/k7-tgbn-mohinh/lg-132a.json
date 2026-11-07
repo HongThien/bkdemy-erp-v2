@@ -1,0 +1,80 @@
+[
+  {
+    "ma": "BT.07.132.01",
+    "so": "B1",
+    "loi_giai": "Xét $\\triangle ABD$ và $\\triangle ACD$ có:\n$AB=AC$ (gt)\n$\\widehat{BAD}=\\widehat{CAD}$ (tia phân giác)\n$AD$ chung (cạnh chung)\nDo đó $\\triangle ABD=\\triangle ACD$ (c.g.c).",
+    "ghi_chu": ""
+  },
+  {
+    "ma": "BT.07.132.02",
+    "so": "B2",
+    "loi_giai": "$\\triangle ABD=\\triangle ACD$ (theo B1)\nSuy ra $BD=CD$ (hai cạnh tương ứng)\nMà $D$ thuộc cạnh $BC$ nên $D$ nằm giữa $B$ và $C$ (gt)\nDo đó $D$ là trung điểm của $BC$ (trung điểm).\nLại có $\\widehat{ADB}=\\widehat{ADC}$ (hai góc tương ứng)\nMà $\\widehat{ADB}+\\widehat{ADC}=180^\\circ$ (hai góc kề bù)\nNên $2\\widehat{ADB}=180^\\circ$ (cmt)\nSuy ra $\\widehat{ADB}=\\widehat{ADC}=90^\\circ$ (cmt)\nVậy $AD\\perp BC$ (định nghĩa hai đường thẳng vuông góc).",
+    "ghi_chu": ""
+  },
+  {
+    "ma": "BT.07.132.03",
+    "so": "B3",
+    "loi_giai": "$D$ là trung điểm của $BC$ (theo B2)\n$AD\\perp BC$ tại $D$ (theo B2)\nVậy $AD$ là đường trung trực của $BC$\n(định nghĩa đường trung trực).",
+    "ghi_chu": ""
+  },
+  {
+    "ma": "BT.07.132.04",
+    "so": "B4",
+    "loi_giai": "$\\triangle ABD=\\triangle ACD$ (theo B1)\nSuy ra $\\widehat{ABD}=\\widehat{ACD}$ (hai góc tương ứng)\nVì $D$ thuộc cạnh $BC$ (gt)\nnên tia $BD$ trùng tia $BC$, tia $CD$ trùng tia $CB$\nDo đó $\\widehat{ABD}=\\widehat{ABC}$ và $\\widehat{ACD}=\\widehat{ACB}$ (cmt)\nVậy $\\widehat{ABC}=\\widehat{ACB}$ (cmt).",
+    "ghi_chu": ""
+  },
+  {
+    "ma": "BT.07.132.05",
+    "so": "B5",
+    "loi_giai": "$\\widehat{BAD}=\\widehat{CAD}$ (tia phân giác)\nTia $AD$ nằm giữa hai tia $AB$, $AC$ (tia phân giác)\nnên $\\widehat{BAD}+\\widehat{CAD}=\\widehat{BAC}$ (cộng góc)\nMà $\\widehat{BAC}<180^\\circ$ (góc của tam giác)\nnên $\\widehat{BAD}=\\widehat{CAD}<90^\\circ$ (cmt)\nNếu $M$ thuộc tia đối của tia $AB$\nthì $\\widehat{MAD}=180^\\circ-\\widehat{BAD}>90^\\circ$ (hai góc kề bù)\nĐiều này vô lí vì tam giác $AMD$ vuông tại $M$\n(tổng ba góc của tam giác)\nVậy $M$ thuộc tia $AB$, còn $N$ thuộc cạnh $AC$ (gt).\nTia $AM$ trùng tia $AB$, tia $AN$ trùng tia $AC$\nnên $\\widehat{MAD}=\\widehat{BAD}=\\widehat{CAD}=\\widehat{NAD}$ (cmt)\nXét $\\triangle ADM$ và $\\triangle ADN$ có:\n$AM=AN$ (gt)\n$\\widehat{MAD}=\\widehat{NAD}$ (cmt)\n$AD$ chung (cạnh chung)\nDo đó $\\triangle ADM=\\triangle ADN$ (c.g.c).\nSuy ra $\\widehat{AND}=\\widehat{AMD}$ (hai góc tương ứng)\nMà $\\widehat{AMD}=90^\\circ$ vì $DM\\perp AB$ (gt)\nNên $\\widehat{AND}=90^\\circ$, tức là $DN\\perp AC$.",
+    "ghi_chu": ""
+  },
+  {
+    "ma": "BT.07.132.06",
+    "so": "B6",
+    "loi_giai": "Trước hết chứng minh $MN\\parallel BC$.\n$\\widehat{BAD}=\\widehat{CAD}$ (tia phân giác)\nTia $AD$ nằm giữa hai tia $AB$, $AC$ (tia phân giác)\nnên $\\widehat{BAD}+\\widehat{CAD}=\\widehat{BAC}$ (cộng góc)\nMà $\\widehat{BAC}<180^\\circ$ (góc của tam giác)\nnên $\\widehat{BAD}=\\widehat{CAD}<90^\\circ$ (cmt)\nNếu $M$ thuộc tia đối của tia $AB$\nthì $\\widehat{MAD}=180^\\circ-\\widehat{BAD}>90^\\circ$ (hai góc kề bù)\nĐiều này vô lí vì tam giác $AMD$ vuông tại $M$\n(tổng ba góc của tam giác)\nVậy $M$ thuộc tia $AB$, còn $N$ thuộc cạnh $AC$ (gt).\nTia $AM$ trùng tia $AB$, tia $AN$ trùng tia $AC$\nnên $\\widehat{MAN}=\\widehat{BAC}$ (cmt)\n$AM=AN$ (gt) nên $\\triangle AMN$ cân tại $A$\n(dấu hiệu nhận biết tam giác cân)\nSuy ra $\\widehat{AMN}=\\widehat{ANM}$ (tính chất tam giác cân)\nTrong $\\triangle AMN$ có $\\widehat{AMN}+\\widehat{ANM}+\\widehat{MAN}=180^\\circ$\n(tổng ba góc của tam giác)\nNên $2\\widehat{AMN}=180^\\circ-\\widehat{BAC}$\n$AB=AC$ (gt) nên $\\triangle ABC$ cân tại $A$\n(dấu hiệu nhận biết tam giác cân)\nSuy ra $\\widehat{ABC}=\\widehat{ACB}$ (tính chất tam giác cân)\nTrong $\\triangle ABC$ có $\\widehat{ABC}+\\widehat{ACB}+\\widehat{BAC}=180^\\circ$\n(tổng ba góc của tam giác)\nNên $2\\widehat{ABC}=180^\\circ-\\widehat{BAC}$\nDo đó $\\widehat{AMN}=\\widehat{ABC}$\nHai góc này ở vị trí đồng vị nên $MN\\parallel BC$ (hai góc đồng vị).\nTiếp theo chứng minh $NE\\parallel BC$.\nXét $\\triangle KNE$ và $\\triangle KCD$ có:\n$KN=KC$ ($K$ là trung điểm của $CN$)\n$\\widehat{NKE}=\\widehat{CKD}$ (hai góc đối đỉnh)\n$KE=KD$ (gt)\nDo đó $\\triangle KNE=\\triangle KCD$ (c.g.c).\nSuy ra $\\widehat{KNE}=\\widehat{KCD}$ (hai góc tương ứng)\n$K$ thuộc $NC$ và $K$ nằm giữa $D$ và $E$ (gt)\nnên $E$, $D$ nằm khác phía đối với đường thẳng $NC$\ndo đó $\\widehat{KNE}$, $\\widehat{KCD}$ ở vị trí so le trong\nSuy ra $NE\\parallel CD$, tức là $NE\\parallel BC$ (hai góc so le trong).\nQua $N$ có hai đường thẳng $NM$, $NE$\ncùng song song với $BC$ (cmt)\nNên $NM$ và $NE$ trùng nhau (tiên đề Euclid).\nVậy ba điểm $M, N, E$ thẳng hàng.",
+    "ghi_chu": ""
+  },
+  {
+    "ma": "BT.07.132.07",
+    "so": "B7",
+    "loi_giai": "$\\widehat{BAD}=\\widehat{CAD}$ (tia phân giác)\nTia $AD$ nằm giữa hai tia $AB$, $AC$ (tia phân giác)\nnên $\\widehat{BAD}+\\widehat{CAD}=\\widehat{BAC}$ (cộng góc)\nMà $\\widehat{BAC}<180^\\circ$ (góc của tam giác)\nnên $\\widehat{BAD}=\\widehat{CAD}<90^\\circ$ (cmt)\nNếu $E$ thuộc tia đối của tia $AB$\nthì $\\widehat{EAD}=180^\\circ-\\widehat{BAD}>90^\\circ$ (hai góc kề bù)\nĐiều này vô lí vì tam giác $AED$ vuông tại $E$\n(tổng ba góc của tam giác)\nVậy $E$ thuộc tia $AB$; chứng minh tương tự $F$ thuộc tia $AC$.\nTia $AE$ trùng tia $AB$, tia $AF$ trùng tia $AC$\nnên $\\widehat{EAD}=\\widehat{BAD}=\\widehat{CAD}=\\widehat{FAD}$ (cmt)\nXét $\\triangle AED$ và $\\triangle AFD$ có:\n$\\widehat{AED}=\\widehat{AFD}=90^\\circ$ (gt)\n$AD$ chung (cạnh chung)\n$\\widehat{EAD}=\\widehat{FAD}$ (cmt)\nDo đó $\\triangle AED=\\triangle AFD$ (ch - gn).\nSuy ra $DE=DF$ (hai cạnh tương ứng).",
+    "ghi_chu": ""
+  },
+  {
+    "ma": "BT.07.132.08",
+    "so": "B8",
+    "loi_giai": "Xét $\\triangle AED$ và $\\triangle AFD$ có:\n$\\widehat{AED}=\\widehat{AFD}=90^\\circ$ (gt)\n$AD$ chung (cạnh chung)\n$DE=DF$ (theo B7)\nDo đó $\\triangle AED=\\triangle AFD$ (ch - cgv).\nSuy ra $AE=AF$ (hai cạnh tương ứng).",
+    "ghi_chu": ""
+  },
+  {
+    "ma": "BT.07.132.09",
+    "so": "B9",
+    "loi_giai": "Xét $\\triangle AED$ và $\\triangle AFD$ có:\n$\\widehat{AED}=\\widehat{AFD}=90^\\circ$ (gt)\n$AD$ chung (cạnh chung)\n$DE=DF$ (theo B7)\nDo đó $\\triangle AED=\\triangle AFD$ (ch - cgv).\nSuy ra $AE=AF$ (hai cạnh tương ứng).\nXét $\\triangle AEI$ và $\\triangle AFI$ có:\n$AE=AF$ (cmt)\n$EI=FI$ ($I$ là trung điểm của $EF$)\n$AI$ chung (cạnh chung)\nDo đó $\\triangle AEI=\\triangle AFI$ (c.c.c).\nSuy ra $\\widehat{AIE}=\\widehat{AIF}$ (hai góc tương ứng)\n$I$ nằm giữa $E$ và $F$ (trung điểm)\nnên $\\widehat{AIE}+\\widehat{AIF}=180^\\circ$ (hai góc kề bù)\nSuy ra $\\widehat{AIE}=90^\\circ$ (cmt)\nnên $AI\\perp EF$ tại $I$.\nXét $\\triangle DEI$ và $\\triangle DFI$ có:\n$DE=DF$ (theo B7)\n$EI=FI$ ($I$ là trung điểm của $EF$)\n$DI$ chung (cạnh chung)\nDo đó $\\triangle DEI=\\triangle DFI$ (c.c.c).\nSuy ra $\\widehat{DIE}=\\widehat{DIF}$ (hai góc tương ứng)\nMà $\\widehat{DIE}+\\widehat{DIF}=180^\\circ$ (hai góc kề bù)\nSuy ra $\\widehat{DIE}=90^\\circ$ (cmt)\nnên $DI\\perp EF$ tại $I$.\nQua $I$ chỉ có một đường thẳng vuông góc với $EF$\nnên hai đường thẳng $IA$ và $ID$ trùng nhau\n(qua một điểm chỉ có một đường thẳng\nvuông góc với đường thẳng cho trước).\nVậy ba điểm $A, I, D$ thẳng hàng.",
+    "ghi_chu": ""
+  },
+  {
+    "ma": "BT.07.132.10",
+    "so": "B10",
+    "loi_giai": "$\\widehat{BAD}=\\widehat{CAD}$ (tia phân giác)\nTia $AD$ nằm giữa hai tia $AB$, $AC$ (tia phân giác)\nnên $\\widehat{BAD}+\\widehat{CAD}=\\widehat{BAC}$ (cộng góc)\nMà $\\widehat{BAC}<180^\\circ$ (góc của tam giác)\nnên $\\widehat{BAD}=\\widehat{CAD}<90^\\circ$ (cmt)\nNếu $E$ thuộc tia đối của tia $AB$\nthì $\\widehat{EAD}=180^\\circ-\\widehat{BAD}>90^\\circ$ (hai góc kề bù)\nĐiều này vô lí vì tam giác $AED$ vuông tại $E$\n(tổng ba góc của tam giác)\nVậy $E$ thuộc tia $AB$; chứng minh tương tự $F$ thuộc tia $AC$.\nTia $AD$ nằm giữa hai tia $AB$, $AC$ (cmt)\nnên tia $AD$ cắt đoạn $EF$ tại $K$ (giao điểm của $AD$ và $EF$)\nDo đó $K$ nằm giữa $E$ và $F$, tia $AK$ trùng tia $AD$.\nSuy ra $\\widehat{EAK}=\\widehat{BAD}=\\widehat{CAD}=\\widehat{FAK}$ (tia phân giác)\nXét $\\triangle AEK$ và $\\triangle AFK$ có:\n$AE=AF$ (theo B8)\n$\\widehat{EAK}=\\widehat{FAK}$ (cmt)\n$AK$ chung (cạnh chung)\nDo đó $\\triangle AEK=\\triangle AFK$ (c.g.c).\nSuy ra $\\widehat{AKE}=\\widehat{AKF}$ (hai góc tương ứng)\n$K$ nằm giữa $E$ và $F$ (cmt)\nnên $\\widehat{AKE}+\\widehat{AKF}=180^\\circ$ (hai góc kề bù)\nSuy ra $\\widehat{AKE}=90^\\circ$ (cmt)\nVậy $AK\\perp EF$ (định nghĩa hai đường thẳng vuông góc).",
+    "ghi_chu": ""
+  },
+  {
+    "ma": "BT.07.132.11",
+    "so": "B11",
+    "loi_giai": "$AK\\perp EF$ (theo B10)\n$K$ thuộc $AD$ (gt), $K$ khác $A$ (theo B10)\nnên đường thẳng $AK$ trùng đường thẳng $AD$\nSuy ra $AD\\perp EF$ (cmt)\n$AD\\perp BC$ (theo B2)\nVậy $EF\\parallel BC$\n(hai đường thẳng cùng vuông góc với $AD$).",
+    "ghi_chu": ""
+  },
+  {
+    "ma": "BT.07.132.12",
+    "so": "B12",
+    "loi_giai": "Trên tia đối của tia $AB$ lấy điểm $H$ sao cho $AH=AB$.\nKhi đó $A$ nằm giữa $B$ và $H$, $AH=AB$\nnên $A$ là trung điểm của $BH$ (trung điểm).\nTa chứng minh $H$ trùng $G$.\n$AH=AB$ và $AB=AC$ (gt) nên $AH=AC$\nDo đó $\\triangle AHC$ cân tại $A$ (dấu hiệu nhận biết tam giác cân)\nSuy ra $\\widehat{AHC}=\\widehat{ACH}$ (tính chất tam giác cân)\nTrong $\\triangle AHC$ có $\\widehat{AHC}+\\widehat{ACH}+\\widehat{HAC}=180^\\circ$\n(tổng ba góc của tam giác)\nNên $2\\widehat{AHC}=180^\\circ-\\widehat{HAC}$\nMà $\\widehat{HAC}+\\widehat{BAC}=180^\\circ$ (hai góc kề bù)\nSuy ra $2\\widehat{AHC}=\\widehat{BAC}$\nLại có $2\\widehat{BAD}=\\widehat{BAC}$ (tia phân giác)\nDo đó $\\widehat{AHC}=\\widehat{BAD}$\nHai góc này ở vị trí đồng vị ($C$ và $D$ nằm cùng phía đối với $AB$)\nNên $HC\\parallel AD$ (hai góc đồng vị).\nQua $C$ có $CG\\parallel AD$ (gt) và $CH\\parallel AD$ (cmt)\nNên $CG$ và $CH$ trùng nhau (tiên đề Euclid).\nVậy $G$ và $H$ cùng thuộc đường thẳng $AB$ và đường thẳng $CG$\nHai đường thẳng $AB$ và $CG$ phân biệt chỉ có một điểm chung\nNên $G$ trùng $H$.\nVậy $A$ là trung điểm của $BG$.",
+    "ghi_chu": ""
+  },
+  {
+    "ma": "BT.07.132.13",
+    "so": "B13",
+    "loi_giai": "$AD$ là đường trung trực của $BC$ (theo B3)\n$P$ thuộc đoạn thẳng $AD$ (gt)\nNên $P$ nằm trên đường trung trực của $BC$\nVậy $PB=PC$ (tính chất đường trung trực).",
+    "ghi_chu": ""
+  }
+]

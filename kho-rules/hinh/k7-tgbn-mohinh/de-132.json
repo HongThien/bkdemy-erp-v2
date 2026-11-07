@@ -1,0 +1,361 @@
+[
+ {
+  "ma": "BT.07.132.01",
+  "so": "B1",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [],
+  "cau_hoi": "Chứng minh $\\triangle ABD=\\triangle ACD$.",
+  "tien_de": []
+ },
+ {
+  "ma": "BT.07.132.02",
+  "so": "B2",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [],
+  "cau_hoi": "Chứng minh $D$ là trung điểm của $BC$ và $AD\\perp BC$.",
+  "tien_de": [
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $\\triangle ABD=\\triangle ACD$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.03",
+  "so": "B3",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [],
+  "cau_hoi": "Chứng minh $AD$ là đường trung trực của $BC$.",
+  "tien_de": [
+   {
+    "so": "B2",
+    "phat_bieu": "Chứng minh $D$ là trung điểm của $BC$ và $AD\\perp BC$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.04",
+  "so": "B4",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [],
+  "cau_hoi": "Chứng minh $\\widehat{ABC}=\\widehat{ACB}$.",
+  "tien_de": [
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $\\triangle ABD=\\triangle ACD$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.05",
+  "so": "B5",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Vẽ $DM\\perp AB$ tại $M$. Trên cạnh $AC$ lấy điểm $N$ sao cho $AN=AM$."
+  ],
+  "cau_hoi": "Chứng minh $\\triangle ADM=\\triangle ADN$ và $DN\\perp AC$.",
+  "tien_de": [
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $\\triangle ABD=\\triangle ACD$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.06",
+  "so": "B6",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Vẽ $DM\\perp AB$ tại $M$. Trên cạnh $AC$ lấy điểm $N$ sao cho $AN=AM$.",
+   "Gọi $K$ là trung điểm của $CN$. Trên tia đối của tia $KD$ lấy điểm $E$ sao cho $KE=KD$."
+  ],
+  "cau_hoi": "Chứng minh ba điểm $M, N, E$ thẳng hàng.",
+  "tien_de": [
+   {
+    "so": "B5",
+    "phat_bieu": "Chứng minh $\\triangle ADM=\\triangle ADN$ và $DN\\perp AC$."
+   },
+   {
+    "so": "B3",
+    "phat_bieu": "Chứng minh $AD$ là đường trung trực của $BC$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.07",
+  "so": "B7",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Từ $D$ kẻ $DE\\perp AB$ tại $E$ và $DF\\perp AC$ tại $F$."
+  ],
+  "cau_hoi": "Chứng minh $DE=DF$.",
+  "tien_de": [
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $\\triangle ABD=\\triangle ACD$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.08",
+  "so": "B8",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Từ $D$ kẻ $DE\\perp AB$ tại $E$ và $DF\\perp AC$ tại $F$."
+  ],
+  "cau_hoi": "Chứng minh $AE=AF$.",
+  "tien_de": [
+   {
+    "so": "B7",
+    "phat_bieu": "Chứng minh $DE=DF$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.09",
+  "so": "B9",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Từ $D$ kẻ $DE\\perp AB$ tại $E$ và $DF\\perp AC$ tại $F$.",
+   "Gọi $I$ là trung điểm của $EF$."
+  ],
+  "cau_hoi": "Chứng minh ba điểm $A, I, D$ thẳng hàng.",
+  "tien_de": [
+   {
+    "so": "B7",
+    "phat_bieu": "Chứng minh $DE=DF$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.10",
+  "so": "B10",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Từ $D$ kẻ $DE\\perp AB$ tại $E$ và $DF\\perp AC$ tại $F$.",
+   "Gọi $K$ là giao điểm của $AD$ và $EF$."
+  ],
+  "cau_hoi": "Chứng minh $AK\\perp EF$.",
+  "tien_de": [
+   {
+    "so": "B8",
+    "phat_bieu": "Chứng minh $AE=AF$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.11",
+  "so": "B11",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Từ $D$ kẻ $DE\\perp AB$ tại $E$ và $DF\\perp AC$ tại $F$.",
+   "Gọi $K$ là giao điểm của $AD$ và $EF$."
+  ],
+  "cau_hoi": "Chứng minh $EF\\parallel BC$.",
+  "tien_de": [
+   {
+    "so": "B10",
+    "phat_bieu": "Chứng minh $AK\\perp EF$."
+   },
+   {
+    "so": "B2",
+    "phat_bieu": "Chứng minh $D$ là trung điểm của $BC$ và $AD\\perp BC$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.12",
+  "so": "B12",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Từ $C$ kẻ đường thẳng song song với $AD$ cắt tia $BA$ tại $G$."
+  ],
+  "cau_hoi": "Chứng minh $A$ là trung điểm của $BG$.",
+  "tien_de": [
+   {
+    "so": "B2",
+    "phat_bieu": "Chứng minh $D$ là trung điểm của $BC$ và $AD\\perp BC$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.13",
+  "so": "B13",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Lấy điểm $P$ bất kỳ trên đoạn thẳng $AD$."
+  ],
+  "cau_hoi": "Chứng minh $PB=PC$.",
+  "tien_de": [
+   {
+    "so": "B3",
+    "phat_bieu": "Chứng minh $AD$ là đường trung trực của $BC$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.14",
+  "so": "B14",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Trên cạnh $AB$ lấy điểm $H$, trên cạnh $AC$ lấy điểm $K$ sao cho $AH=AK$. Gọi $I$ là giao điểm của $HK$ và $AD$."
+  ],
+  "cau_hoi": "Chứng minh $AI\\perp HK$.",
+  "tien_de": [
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $\\triangle ABD=\\triangle ACD$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.15",
+  "so": "B15",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Trên cạnh $AB$ lấy điểm $H$, trên cạnh $AC$ lấy điểm $K$ sao cho $AH=AK$. Gọi $I$ là giao điểm của $HK$ và $AD$."
+  ],
+  "cau_hoi": "Chứng minh $HK\\parallel BC$.",
+  "tien_de": [
+   {
+    "so": "B14",
+    "phat_bieu": "Chứng minh $AI\\perp HK$."
+   },
+   {
+    "so": "B2",
+    "phat_bieu": "Chứng minh $D$ là trung điểm của $BC$ và $AD\\perp BC$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.16",
+  "so": "B16",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Trên tia đối của tia $BC$ lấy điểm $E$, trên tia đối của tia $CB$ lấy điểm $F$ sao cho $BE=CF$."
+  ],
+  "cau_hoi": "Chứng minh $AE=AF$.",
+  "tien_de": [
+   {
+    "so": "B4",
+    "phat_bieu": "Chứng minh $\\widehat{ABC}=\\widehat{ACB}$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.17",
+  "so": "B17",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Trên tia đối của tia $BC$ lấy điểm $E$, trên tia đối của tia $CB$ lấy điểm $F$ sao cho $BE=CF$."
+  ],
+  "cau_hoi": "Chứng minh $AD$ là tia phân giác của $\\widehat{EAF}$.",
+  "tien_de": [
+   {
+    "so": "B16",
+    "phat_bieu": "Chứng minh $AE=AF$."
+   },
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $\\triangle ABD=\\triangle ACD$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.18",
+  "so": "B18",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Trên nửa mặt phẳng bờ $BC$ chứa điểm $A$ vẽ tia $Cx\\perp BC$. Trên nửa mặt phẳng bờ $AB$ chứa điểm $C$ vẽ tia $Ay\\parallel BC$."
+  ],
+  "cau_hoi": "Chứng minh $\\widehat{yAC}=\\widehat{ABC}$.",
+  "tien_de": [
+   {
+    "so": "B4",
+    "phat_bieu": "Chứng minh $\\widehat{ABC}=\\widehat{ACB}$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.19",
+  "so": "B19",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Trên nửa mặt phẳng bờ $BC$ chứa điểm $A$ vẽ tia $Cx\\perp BC$. Trên nửa mặt phẳng bờ $AB$ chứa điểm $C$ vẽ tia $Ay\\parallel BC$."
+  ],
+  "cau_hoi": "Chứng minh $AD\\parallel Cx$.",
+  "tien_de": [
+   {
+    "so": "B2",
+    "phat_bieu": "Chứng minh $D$ là trung điểm của $BC$ và $AD\\perp BC$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.20",
+  "so": "B20",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Trên nửa mặt phẳng bờ $BC$ chứa điểm $A$ vẽ tia $Cx\\perp BC$. Trên nửa mặt phẳng bờ $AB$ chứa điểm $C$ vẽ tia $Ay\\parallel BC$.",
+   "Gọi $I$ là trung điểm của $AC$, $K$ là giao điểm của hai tia $Ay$ và $Cx$."
+  ],
+  "cau_hoi": "Chứng minh $I$ là trung điểm của $DK$.",
+  "tien_de": [
+   {
+    "so": "B19",
+    "phat_bieu": "Chứng minh $AD\\parallel Cx$."
+   },
+   {
+    "so": "B18",
+    "phat_bieu": "Chứng minh $\\widehat{yAC}=\\widehat{ABC}$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.21",
+  "so": "B21",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Gọi $P, Q$ lần lượt là trung điểm của $AC, AB$."
+  ],
+  "cau_hoi": "Chứng minh $BP=CQ$.",
+  "tien_de": [
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $\\triangle ABD=\\triangle ACD$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.22",
+  "so": "B22",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Gọi $P, Q$ lần lượt là trung điểm của $AC, AB$.",
+   "Lấy các điểm $M, N$ sao cho $P$ là trung điểm của $BM$, $Q$ là trung điểm của $CN$."
+  ],
+  "cau_hoi": "Chứng minh $A$ là trung điểm của $MN$.",
+  "tien_de": [
+   {
+    "so": "B21",
+    "phat_bieu": "Chứng minh $BP=CQ$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.132.23",
+  "so": "B23",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.",
+  "gia_thiet_them": [
+   "Gọi $P, Q$ lần lượt là trung điểm của $AC, AB$.",
+   "Gọi $G$ là giao điểm của $BP$ và $CQ$."
+  ],
+  "cau_hoi": "Chứng minh ba điểm $A, G, D$ thẳng hàng.",
+  "tien_de": [
+   {
+    "so": "B21",
+    "phat_bieu": "Chứng minh $BP=CQ$."
+   }
+  ]
+ }
+]

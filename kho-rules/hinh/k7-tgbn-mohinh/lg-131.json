@@ -1,0 +1,74 @@
+[
+ {
+  "ma": "BT.07.131.01",
+  "so": "B1",
+  "loi_giai": "Xét $\\triangle AMB$ và $\\triangle DMC$ có:\n$MA=MD$ (gt)\n$\\widehat{AMB}=\\widehat{DMC}$ (hai góc đối đỉnh)\n$MB=MC$ ($M$ là trung điểm của $BC$)\nDo đó $\\triangle AMB=\\triangle DMC$ (c.g.c).\nSuy ra $AB=DC$ (hai cạnh tương ứng).",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.131.02",
+  "so": "B2",
+  "loi_giai": "Xét $\\triangle AMC$ và $\\triangle DMB$ có:\n$MA=MD$ (gt)\n$\\widehat{AMC}=\\widehat{DMB}$ (hai góc đối đỉnh)\n$MC=MB$ ($M$ là trung điểm của $BC$)\nDo đó $\\triangle AMC=\\triangle DMB$ (c.g.c).\nSuy ra $\\widehat{ACM}=\\widehat{DBM}$ (hai góc tương ứng).\nHay $\\widehat{ACB}=\\widehat{DBC}$ ($M$ thuộc đoạn $BC$).\nHai góc này ở vị trí so le trong\n($A, D$ khác phía đối với $BC$ vì $M$ nằm giữa $A$ và $D$).\nVậy $BD\\parallel AC$ (dấu hiệu nhận biết hai đường thẳng song song).",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.131.03",
+  "so": "B3",
+  "loi_giai": "Vì $\\triangle AMB=\\triangle DMC$ (theo B1) nên:\n$AB=DC$ (theo B1)\n$\\widehat{ABM}=\\widehat{DCM}$ (hai góc tương ứng)\nHay $\\widehat{ABC}=\\widehat{DCB}$ ($M$ thuộc đoạn $BC$).\nXét $\\triangle ABC$ và $\\triangle DCB$ có:\n$AB=DC$ (cmt)\n$\\widehat{ABC}=\\widehat{DCB}$ (cmt)\n$BC$ là cạnh chung\nDo đó $\\triangle ABC=\\triangle DCB$ (c.g.c).",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.131.04",
+  "so": "B4",
+  "loi_giai": "$BD\\parallel AC$ (theo B2)\n$MI\\perp AC$ (gt)\nSuy ra $MI\\perp BD$\n(đường thẳng vuông góc với một trong hai đường thẳng song song\nthì vuông góc với đường thẳng kia).\nLại có $MK\\perp BD$ (gt).\nQua $M$ chỉ có một đường thẳng vuông góc với $BD$\n(tính chất đường vuông góc).\nNên hai đường thẳng $MI$ và $MK$ trùng nhau.\nVậy ba điểm $I, M, K$ thẳng hàng.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.131.05",
+  "so": "B5",
+  "loi_giai": "Trường hợp 1: $H$ trùng $M$.\nKhi đó $AM\\perp BC$ (gt).\nMà $M$ nằm giữa $A$ và $D$ nên $DM\\perp BC$ (gt).\nLại có $DK\\perp BC$ (gt).\nQua $D$ chỉ có một đường thẳng vuông góc với $BC$\nnên $K$ trùng $M$ (tính chất đường vuông góc).\nSuy ra $AH=AM$ và $DK=DM$.\nMà $MA=MD$ (gt) nên $AH=DK$.\nTrường hợp 2: $H$ khác $M$.\nLấy điểm $K'$ thuộc $BC$ sao cho $M$ là trung điểm của $HK'$.\nXét $\\triangle AMH$ và $\\triangle DMK'$ có:\n$MA=MD$ (gt)\n$\\widehat{AMH}=\\widehat{DMK'}$ (hai góc đối đỉnh)\n$MH=MK'$ ($M$ là trung điểm của $HK'$)\nDo đó $\\triangle AMH=\\triangle DMK'$ (c.g.c).\nSuy ra $AH=DK'$ (hai cạnh tương ứng)\nvà $\\widehat{DK'M}=\\widehat{AHM}=90^\\circ$ (hai góc tương ứng).\nNên $DK'\\perp BC$.\nMà $DK\\perp BC$ (gt).\nQua $D$ chỉ có một đường thẳng vuông góc với $BC$\nnên $K'$ trùng $K$ (tính chất đường vuông góc).\nVậy $AH=DK$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.131.06",
+  "so": "B6",
+  "loi_giai": "Xét $\\triangle AIB$ và $\\triangle CIE$ có:\n$IA=IC$ ($I$ là trung điểm của $AC$)\n$\\widehat{AIB}=\\widehat{CIE}$ (hai góc đối đỉnh)\n$IB=IE$ ($I$ là trung điểm của $BE$)\nDo đó $\\triangle AIB=\\triangle CIE$ (c.g.c).\nSuy ra $\\widehat{BAI}=\\widehat{ECI}$ (hai góc tương ứng).\nHay $\\widehat{BAC}=\\widehat{ECA}$ ($I$ thuộc đoạn $AC$).\nHai góc này ở vị trí so le trong\n($B, E$ khác phía đối với $AC$ vì $I$ nằm giữa $B$ và $E$).\nNên $AB\\parallel CE$ (dấu hiệu nhận biết hai đường thẳng song song).\nVì $\\triangle AMB=\\triangle DMC$ (theo B1) nên\n$\\widehat{BAM}=\\widehat{CDM}$ (hai góc tương ứng).\nHay $\\widehat{BAD}=\\widehat{CDA}$ ($M$ thuộc đoạn $AD$).\nHai góc này ở vị trí so le trong\n($B, C$ khác phía đối với $AD$ vì $M$ nằm giữa $B$ và $C$).\nNên $AB\\parallel CD$ (dấu hiệu nhận biết hai đường thẳng song song).\nQua $C$ có $CE\\parallel AB$ và $CD\\parallel AB$.\nNên $CE$ và $CD$ trùng nhau (tiên đề Euclid).\nVậy ba điểm $E, C, D$ thẳng hàng.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.131.07",
+  "so": "B7",
+  "loi_giai": "$AB=DC$ (theo B1)\nMà $CE=CD$ (gt) nên $AB=CE$.\nVì $\\triangle AMB=\\triangle DMC$ (theo B1) nên\n$\\widehat{BAM}=\\widehat{CDM}$ (hai góc tương ứng).\nHay $\\widehat{BAD}=\\widehat{CDA}$ ($M$ thuộc đoạn $AD$).\nHai góc này ở vị trí so le trong\n($B, C$ khác phía đối với $AD$ vì $M$ nằm giữa $B$ và $C$).\nNên $AB\\parallel CD$ (dấu hiệu nhận biết hai đường thẳng song song).\nMà $E$ thuộc đường thẳng $CD$ nên $AB\\parallel CE$.\n$C$ nằm giữa $D$ và $E$ (gt) nên $D, E$ khác phía đối với $AC$.\n$M$ nằm giữa $A$ và $D$ (gt) nên $M, D$ cùng phía đối với $AC$.\n$M$ thuộc đoạn $BC$ nên $B, M$ cùng phía đối với $AC$.\nSuy ra $B, E$ khác phía đối với $AC$.\nDo đó $\\widehat{BAC}=\\widehat{ECA}$ (hai góc so le trong, $AB\\parallel CE$).\nXét $\\triangle ABC$ và $\\triangle CEA$ có:\n$AB=CE$ (cmt)\n$\\widehat{BAC}=\\widehat{ECA}$ (cmt)\n$AC$ là cạnh chung\nDo đó $\\triangle ABC=\\triangle CEA$ (c.g.c).\nSuy ra $BC=EA$ (hai cạnh tương ứng).\nVậy $AE=BC$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.131.08",
+  "so": "B8",
+  "loi_giai": "Xét $\\triangle AMB$ và $\\triangle DMC$ có:\n$MA=MD$ (gt)\n$\\widehat{AMB}=\\widehat{DMC}$ (hai góc đối đỉnh)\n$MB=MC$ ($M$ là trung điểm của $BC$)\nDo đó $\\triangle AMB=\\triangle DMC$ (c.g.c).\nSuy ra $AB=DC$ (hai cạnh tương ứng).\nMà $CE=CD$ (gt) nên $AB=CE$.\nXét $\\triangle ABC$ và $\\triangle CEA$ có:\n$AB=CE$ (cmt)\n$BC=EA$ (theo B7)\n$AC$ là cạnh chung\nDo đó $\\triangle ABC=\\triangle CEA$ (c.c.c).\nSuy ra $\\widehat{BAC}=\\widehat{ECA}$ (hai góc tương ứng).\nHay $\\widehat{BAF}=\\widehat{ECF}$ ($F$ thuộc đoạn $AC$).\nXét $\\triangle ABF$ và $\\triangle CEF$ có:\n$AB=CE$ (cmt)\n$\\widehat{BAF}=\\widehat{ECF}$ (cmt)\n$AF=CF$ ($F$ là trung điểm của $AC$)\nDo đó $\\triangle ABF=\\triangle CEF$ (c.g.c).\nSuy ra $\\widehat{AFB}=\\widehat{CFE}$ (hai góc tương ứng).\nMà $\\widehat{AFB}+\\widehat{BFC}=180^\\circ$ (hai góc kề bù).\nNên $\\widehat{CFE}+\\widehat{BFC}=180^\\circ$.\n$C$ nằm giữa $D$ và $E$ (gt) nên $D, E$ khác phía đối với $AC$.\n$M$ nằm giữa $A$ và $D$ (gt) nên $M, D$ cùng phía đối với $AC$.\n$M$ thuộc đoạn $BC$ nên $B, M$ cùng phía đối với $AC$.\nSuy ra $B, E$ khác phía đối với $AC$.\nDo đó $\\widehat{BFC}$ và $\\widehat{CFE}$ là hai góc kề bù.\nSuy ra $FB$ và $FE$ là hai tia đối nhau.\nVậy ba điểm $B, F, E$ thẳng hàng.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.131.09",
+  "so": "B9",
+  "loi_giai": "Vì $\\triangle AMB=\\triangle DMC$ (theo B1) nên\n$\\widehat{BAM}=\\widehat{CDM}$ (hai góc tương ứng).\nHay $\\widehat{BAD}=\\widehat{CDA}$ ($M$ thuộc đoạn $AD$).\nHai góc này ở vị trí so le trong\n($B, C$ khác phía đối với $AD$ vì $M$ nằm giữa $B$ và $C$).\nNên $AB\\parallel CD$ (dấu hiệu nhận biết hai đường thẳng song song).\nMà $AB\\perp AC$ ($\\triangle ABC$ vuông tại $A$, gt).\nVậy $AC\\perp CD$\n(đường thẳng vuông góc với một trong hai đường thẳng song song\nthì vuông góc với đường thẳng kia).",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.131.10",
+  "so": "B10",
+  "loi_giai": "Xét $\\triangle ABC$ và $\\triangle CDA$ có:\n$AB=CD$ (theo B1)\n$\\widehat{BAC}=\\widehat{DCA}=90^\\circ$ (gt và theo B9)\n$AC$ là cạnh chung\nDo đó $\\triangle ABC=\\triangle CDA$ (c.g.c).\nSuy ra $BC=DA$ (hai cạnh tương ứng).\nVì $M$ nằm giữa $A$ và $D$ (gt) nên $AD=AM+MD$.\nMà $MD=MA$ (gt) nên $AD=2AM$.\nVậy $BC=2AM$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.131.11",
+  "so": "B11",
+  "loi_giai": "Xét $\\triangle ANC$ và $\\triangle BNK$ có:\n$NA=NB$ ($N$ là trung điểm của $AB$)\n$\\widehat{ANC}=\\widehat{BNK}$ (hai góc đối đỉnh)\n$NC=NK$ (gt)\nDo đó $\\triangle ANC=\\triangle BNK$ (c.g.c).\nSuy ra $\\widehat{NAC}=\\widehat{NBK}$ (hai góc tương ứng).\nHay $\\widehat{BAC}=\\widehat{ABK}$ ($N$ thuộc đoạn $AB$).\nHai góc này ở vị trí so le trong\n($C, K$ khác phía đối với $AB$ vì $N$ nằm giữa $C$ và $K$).\nNên $AC\\parallel BK$ (dấu hiệu nhận biết hai đường thẳng song song).\nMà $BD\\parallel AC$ (theo B2).\nQua $B$ có $BK\\parallel AC$ và $BD\\parallel AC$.\nNên $BK$ và $BD$ trùng nhau (tiên đề Euclid).\nVậy ba điểm $D, B, K$ thẳng hàng.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.131.12",
+  "so": "B12",
+  "loi_giai": "Trường hợp $F$ trùng $C$:\nKhi đó $BC\\perp AC$ (gt).\nMà $BD\\parallel AC$ (theo B2) nên $BC\\perp BD$\n(đường thẳng vuông góc với một trong hai đường thẳng song song\nthì vuông góc với đường thẳng kia).\nLại có $CE\\perp BD$ (gt).\nQua $C$ chỉ có một đường thẳng vuông góc với $BD$\nnên $E$ trùng $B$ (tính chất đường vuông góc).\nVì $\\triangle ABC=\\triangle DCB$ (theo B3)\nnên $AC=DB$ (hai cạnh tương ứng).\nDo đó $AF=AC=DB=DE$.\nTrường hợp $F$ trùng $A$:\nKhi đó $\\widehat{BAC}=90^\\circ$ (gt).\nVì $\\triangle ABC=\\triangle DCB$ (theo B3)\nnên $\\widehat{CDB}=\\widehat{BAC}=90^\\circ$ (hai góc tương ứng).\nDo đó $CD\\perp BD$, mà $CE\\perp BD$ (gt).\nQua $C$ chỉ có một đường thẳng vuông góc với $BD$\nnên $E$ trùng $D$ (tính chất đường vuông góc).\nVậy $DE=AF=0$.\nTrường hợp $F$ khác $A$ và khác $C$:\nLấy điểm $F'$ sao cho $M$ là trung điểm của $FF'$.\nXét $\\triangle MAF$ và $\\triangle MDF'$ có:\n$MA=MD$ (gt)\n$\\widehat{AMF}=\\widehat{DMF'}$ (hai góc đối đỉnh)\n$MF=MF'$ ($M$ là trung điểm của $FF'$)\nDo đó $\\triangle MAF=\\triangle MDF'$ (c.g.c).\nSuy ra $AF=DF'$ (hai cạnh tương ứng)\nvà $\\widehat{MAF}=\\widehat{MDF'}$ (hai góc tương ứng).\nHay $\\widehat{DAF}=\\widehat{ADF'}$ ($M$ thuộc đoạn $AD$).\nHai góc này ở vị trí so le trong\n($F, F'$ khác phía đối với $AD$ vì $M$ nằm giữa $F$ và $F'$).\nNên $DF'\\parallel AF$, tức là $DF'\\parallel AC$\n(dấu hiệu nhận biết hai đường thẳng song song).\nMà $BD\\parallel AC$ (theo B2).\nQua $D$ có $DF'\\parallel AC$ và $DB\\parallel AC$.\nNên $DF'$ và $DB$ trùng nhau (tiên đề Euclid).\nDo đó $F'$ thuộc đường thẳng $BD$.\nXét $\\triangle MBF$ và $\\triangle MCF'$ có:\n$MB=MC$ ($M$ là trung điểm của $BC$)\n$\\widehat{BMF}=\\widehat{CMF'}$ (hai góc đối đỉnh)\n$MF=MF'$ ($M$ là trung điểm của $FF'$)\nDo đó $\\triangle MBF=\\triangle MCF'$ (c.g.c).\nSuy ra $\\widehat{MBF}=\\widehat{MCF'}$ (hai góc tương ứng).\nHay $\\widehat{CBF}=\\widehat{BCF'}$ ($M$ thuộc đoạn $BC$).\nHai góc này ở vị trí so le trong\n($F, F'$ khác phía đối với $BC$ vì $M$ nằm giữa $F$ và $F'$).\nNên $CF'\\parallel BF$\n(dấu hiệu nhận biết hai đường thẳng song song).\nMà $BF\\perp AC$ (gt) nên $CF'\\perp AC$\n(đường thẳng vuông góc với một trong hai đường thẳng song song\nthì vuông góc với đường thẳng kia).\nLại có $BD\\parallel AC$ (theo B2) nên $CF'\\perp BD$\n(đường thẳng vuông góc với một trong hai đường thẳng song song\nthì vuông góc với đường thẳng kia).\nMà $CE\\perp BD$ (gt) và $E, F'$ cùng thuộc $BD$.\nQua $C$ chỉ có một đường thẳng vuông góc với $BD$\nnên $F'$ trùng $E$ (tính chất đường vuông góc).\nDo đó $DE=DF'$.\nMà $DF'=AF$ (cmt).\nVậy $DE=AF$.",
+  "ghi_chu": ""
+ }
+]

@@ -1,0 +1,50 @@
+[
+ {
+  "ma": "BT.07.130.01",
+  "so": "B1",
+  "loi_giai": "Vì $K$ thuộc cạnh $AC$ nên tia $AK$ trùng tia $AC$.\nMà $AI$ là tia phân giác của $\\widehat{BAC}$ (gt)\nnên $\\widehat{BAI}=\\widehat{KAI}$ (tia phân giác).\nXét $\\triangle ABI$ và $\\triangle AKI$ có:\n$AB=AK$ (gt)\n$\\widehat{BAI}=\\widehat{KAI}$ (cmt)\n$AI$ là cạnh chung\nDo đó $\\triangle ABI=\\triangle AKI$ (c.g.c).",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.130.02",
+  "so": "B2",
+  "loi_giai": "Vì tia $AI$ nằm giữa hai tia $AB$, $AK$ (tia phân giác)\nnên $B$, $K$ nằm khác phía đối với đường thẳng $AI$.\nDo đó giao điểm $O$ của $AI$ và $BK$ nằm giữa $B$ và $K$,\nvà $O$ thuộc tia $AI$ nên tia $AO$ trùng tia $AI$.\nSuy ra $\\widehat{BAO}=\\widehat{KAO}$ (tia phân giác).\nXét $\\triangle ABO$ và $\\triangle AKO$ có:\n$AB=AK$ (gt)\n$\\widehat{BAO}=\\widehat{KAO}$ (cmt)\n$AO$ là cạnh chung\nDo đó $\\triangle ABO=\\triangle AKO$ (c.g.c).\nSuy ra $\\widehat{AOB}=\\widehat{AOK}$ (hai góc tương ứng).\nMà $\\widehat{AOB}+\\widehat{AOK}=180^\\circ$ (hai góc kề bù)\nnên $2.\\widehat{AOB}=180^\\circ$\nSuy ra $\\widehat{AOB}=90^\\circ$.\nVậy $AI\\perp BK$ tại $O$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.130.03",
+  "so": "B3",
+  "loi_giai": "Vì $\\triangle ABI=\\triangle AKI$ (theo B1) nên:\n$BI=KI$ (hai cạnh tương ứng)\n$\\widehat{ABI}=\\widehat{AKI}$ (hai góc tương ứng)\nVì $E$ thuộc tia đối của tia $BA$ nên\n$\\widehat{ABI}+\\widehat{EBI}=180^\\circ$ (hai góc kề bù).\nVì $K$ nằm giữa $A$ và $C$ nên\n$\\widehat{AKI}+\\widehat{CKI}=180^\\circ$ (hai góc kề bù).\nMà $\\widehat{ABI}=\\widehat{AKI}$ (cmt)\nnên $\\widehat{EBI}=\\widehat{CKI}$ (cùng bù với hai góc bằng nhau).\nVì $I$ nằm giữa $B$, $C$ và $I$ nằm giữa $E$, $K$ nên\n$\\widehat{BIE}=\\widehat{KIC}$ (hai góc đối đỉnh).\nXét $\\triangle BIE$ và $\\triangle KIC$ có:\n$\\widehat{EBI}=\\widehat{CKI}$ (cmt)\n$BI=KI$ (cmt)\n$\\widehat{BIE}=\\widehat{KIC}$ (cmt)\nDo đó $\\triangle BIE=\\triangle KIC$ (g.c.g).",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.130.04",
+  "so": "B4",
+  "loi_giai": "Vì $\\triangle ABI=\\triangle AKI$ (theo B1) nên\n$\\widehat{AIB}=\\widehat{AIK}$ (hai góc tương ứng).\nMà $\\widehat{AIB}+\\widehat{AIC}=180^\\circ$ (hai góc kề bù)\nvà $\\widehat{AIK}+\\widehat{AIE}=180^\\circ$ (hai góc kề bù)\nnên $\\widehat{AIC}=\\widehat{AIE}$.\nVì tia $AE$ trùng tia $AB$, tia $AC$ trùng tia $AK$ nên\n$\\widehat{EAI}=\\widehat{BAI}=\\widehat{CAI}$ (tia phân giác).\nXét $\\triangle AIE$ và $\\triangle AIC$ có:\n$\\widehat{EAI}=\\widehat{CAI}$ (cmt)\n$AI$ là cạnh chung\n$\\widehat{AIE}=\\widehat{AIC}$ (cmt)\nDo đó $\\triangle AIE=\\triangle AIC$ (g.c.g).\nSuy ra $AE=AC$ (hai cạnh tương ứng).\nVì $AB=AK$ (gt) nên $\\triangle ABK$ cân tại $A$\n(dấu hiệu nhận biết tam giác cân).\nSuy ra $\\widehat{ABK}=\\widehat{AKB}$ (tính chất tam giác cân).\nMà $\\widehat{ABK}+\\widehat{AKB}+\\widehat{BAK}=180^\\circ$\n(tổng ba góc của tam giác)\nvà $\\widehat{BAK}=\\widehat{BAC}$ (tia $AK$ trùng tia $AC$)\nnên $2.\\widehat{ABK}=180^\\circ-\\widehat{BAC}$.\nVì $AE=AC$ (cmt) nên $\\triangle AEC$ cân tại $A$\n(dấu hiệu nhận biết tam giác cân).\nSuy ra $\\widehat{AEC}=\\widehat{ACE}$ (tính chất tam giác cân).\nMà $\\widehat{AEC}+\\widehat{ACE}+\\widehat{EAC}=180^\\circ$\n(tổng ba góc của tam giác)\nvà $\\widehat{EAC}=\\widehat{BAC}$ (tia $AE$ trùng tia $AB$)\nnên $2.\\widehat{AEC}=180^\\circ-\\widehat{BAC}$.\nDo đó $\\widehat{ABK}=\\widehat{AEC}$.\nHai góc này ở vị trí đồng vị\nnên $BK\\parallel EC$ (hai góc đồng vị bằng nhau).",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.130.05",
+  "so": "B5",
+  "loi_giai": "Vì $\\triangle BIE=\\triangle KIC$ (theo B3) nên\n$BE=KC$ (hai cạnh tương ứng).\nVì $B$ nằm giữa $A$ và $E$, $K$ nằm giữa $A$ và $C$ nên\n$AE=AB+BE$ và $AC=AK+KC$.\nMà $AB=AK$ (gt) và $BE=KC$ (cmt)\nnên $AE=AC$.\nXét $\\triangle AEH$ và $\\triangle ACH$ có:\n$AE=AC$ (cmt)\n$EH=CH$ ($H$ là trung điểm của $EC$)\n$AH$ là cạnh chung\nDo đó $\\triangle AEH=\\triangle ACH$ (c.c.c).\nSuy ra $\\widehat{EAH}=\\widehat{CAH}$ (hai góc tương ứng).\nMà $H$ thuộc đoạn $EC$ nên tia $AH$ nằm giữa hai tia $AE$, $AC$.\nDo đó $AH$ là tia phân giác của $\\widehat{EAC}$.\nMà $\\widehat{EAC}=\\widehat{BAC}$ (tia $AE$ trùng tia $AB$)\nvà $AI$ là tia phân giác của $\\widehat{BAC}$ (gt).\nMỗi góc chỉ có một tia phân giác nên tia $AH$ trùng tia $AI$.\nVậy ba điểm $A, I, H$ thẳng hàng.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.133.01",
+  "so": "B1",
+  "loi_giai": "Vì $D$ là trung điểm của $AC$ nên $DA=DC$ (trung điểm).\nVì $M$ thuộc tia đối của tia $DB$ nên $D$ nằm giữa $B$ và $M$.\nDo đó $\\widehat{ADM}=\\widehat{CDB}$ (hai góc đối đỉnh).\nXét $\\triangle ADM$ và $\\triangle CDB$ có:\n$DA=DC$ (cmt)\n$\\widehat{ADM}=\\widehat{CDB}$ (cmt)\n$DM=DB$ (gt)\nDo đó $\\triangle ADM=\\triangle CDB$ (c.g.c).\nSuy ra $AM=CB$ (hai cạnh tương ứng).\nVậy $AM=BC$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.133.02",
+  "so": "B2",
+  "loi_giai": "Xét $\\triangle ADM$ và $\\triangle CDB$ có:\n$DA=DC$ ($D$ là trung điểm của $AC$)\n$DM=DB$ (gt)\n$AM=CB$ (theo B1)\nDo đó $\\triangle ADM=\\triangle CDB$ (c.c.c).\nSuy ra $\\widehat{MAD}=\\widehat{BCD}$ (hai góc tương ứng).\nMà $D$ thuộc đoạn $AC$ nên $\\widehat{MAC}=\\widehat{ACB}$.\nVì $D$ nằm giữa $B$ và $M$ nên $M$, $B$ nằm khác phía đối với $AC$.\nDo đó $\\widehat{MAC}$ và $\\widehat{ACB}$ là hai góc so le trong.\nMà $\\widehat{MAC}=\\widehat{ACB}$ (cmt)\nnên $AM\\parallel BC$ (hai góc so le trong bằng nhau).",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.133.03",
+  "so": "B3",
+  "loi_giai": "Vì $E$ là trung điểm của $AB$ nên $EA=EB$ (trung điểm).\nVì $N$ thuộc tia đối của tia $EC$ nên $E$ nằm giữa $C$ và $N$.\nDo đó $\\widehat{AEN}=\\widehat{BEC}$ (hai góc đối đỉnh).\nXét $\\triangle AEN$ và $\\triangle BEC$ có:\n$EA=EB$ (cmt)\n$\\widehat{AEN}=\\widehat{BEC}$ (cmt)\n$EN=EC$ (gt)\nDo đó $\\triangle AEN=\\triangle BEC$ (c.g.c).\nSuy ra $AN=BC$ (hai cạnh tương ứng)\nvà $\\widehat{NAE}=\\widehat{CBE}$ (hai góc tương ứng).\nMà $E$ thuộc đoạn $AB$ nên $\\widehat{NAB}=\\widehat{ABC}$.\nVì $AM\\parallel BC$ (theo B2) nên\n$\\widehat{MAC}=\\widehat{ACB}$ (hai góc so le trong).\nĐoạn $MB$ cắt tia $AC$ tại $D$ ($D$ thuộc đoạn $AC$)\nnên tia $AC$ nằm giữa hai tia $AM$, $AB$.\nDo đó $\\widehat{MAB}=\\widehat{MAC}+\\widehat{CAB}$.\nSuy ra $\\widehat{MAB}+\\widehat{BAN}=\\widehat{ACB}+\\widehat{CAB}+\\widehat{ABC}$.\nMà $\\widehat{ACB}+\\widehat{CAB}+\\widehat{ABC}=180^\\circ$\n(tổng ba góc của tam giác)\nnên $\\widehat{MAB}+\\widehat{BAN}=180^\\circ$.\nVì $D$ nằm giữa $B$ và $M$, $D$ thuộc đoạn $AC$\nnên $M$, $C$ nằm cùng phía đối với $AB$.\nVì $E$ nằm giữa $C$ và $N$, $E$ thuộc $AB$\nnên $N$, $C$ nằm khác phía đối với $AB$.\nDo đó $M$, $N$ nằm khác phía đối với $AB$.\nSuy ra $\\widehat{MAB}$, $\\widehat{BAN}$ là hai góc kề bù\n(hai góc kề nhau có tổng bằng $180^\\circ$).\nDo đó hai tia $AM$, $AN$ đối nhau,\ntức $A$ nằm giữa $M$ và $N$.\nLại có $AM=BC$ (theo B1) và $AN=BC$ (cmt)\nnên $AM=AN$.\nVậy $A$ là trung điểm của đoạn thẳng $MN$.",
+  "ghi_chu": ""
+ }
+]

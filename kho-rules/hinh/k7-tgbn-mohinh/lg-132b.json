@@ -1,0 +1,62 @@
+[
+ {
+  "ma": "BT.07.132.14",
+  "so": "B14",
+  "loi_giai": "Tia $AD$ nằm giữa hai tia $AB$, $AC$ (tia phân giác)\nnên $H$, $K$ khác phía đối với $AD$, do đó $I$ thuộc đoạn $HK$.\nXét $\\triangle AHI$ và $\\triangle AKI$ có:\n$AH=AK$ (gt)\n$\\widehat{HAI}=\\widehat{KAI}$ (tia phân giác $AD$ của $\\widehat{BAC}$)\n$AI$ là cạnh chung\nDo đó $\\triangle AHI=\\triangle AKI$ (c.g.c).\nSuy ra $\\widehat{AIH}=\\widehat{AIK}$ (hai góc tương ứng).\nMà $\\widehat{AIH}+\\widehat{AIK}=180^\\circ$ (hai góc kề bù).\nNên $\\widehat{AIH}=\\widehat{AIK}=90^\\circ$.\nVậy $AI\\perp HK$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.132.15",
+  "so": "B15",
+  "loi_giai": "Ta có $AI\\perp HK$ (theo B14).\nMà $I$ thuộc $AD$ nên $HK\\perp AD$.\nLại có $AD\\perp BC$ (theo B2).\nVậy $HK\\parallel BC$ (cùng vuông góc với $AD$).",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.132.16",
+  "so": "B16",
+  "loi_giai": "Vì $E$ thuộc tia đối của tia $BC$ nên\n$\\widehat{ABE}+\\widehat{ABC}=180^\\circ$ (hai góc kề bù).\nVì $F$ thuộc tia đối của tia $CB$ nên\n$\\widehat{ACF}+\\widehat{ACB}=180^\\circ$ (hai góc kề bù).\nMà $\\widehat{ABC}=\\widehat{ACB}$ (theo B4).\nNên $\\widehat{ABE}=\\widehat{ACF}$.\nXét $\\triangle ABE$ và $\\triangle ACF$ có:\n$AB=AC$ (gt)\n$\\widehat{ABE}=\\widehat{ACF}$ (cmt)\n$BE=CF$ (gt)\nDo đó $\\triangle ABE=\\triangle ACF$ (c.g.c).\nSuy ra $AE=AF$ (hai cạnh tương ứng).",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.132.17",
+  "so": "B17",
+  "loi_giai": "Vì $E$ thuộc tia đối của tia $BC$, $D$ thuộc đoạn $BC$\nnên $B$ nằm giữa $E$ và $D$, do đó $DE=DB+BE$.\nVì $F$ thuộc tia đối của tia $CB$, $D$ thuộc đoạn $BC$\nnên $C$ nằm giữa $D$ và $F$, do đó $DF=DC+CF$.\nTa có $DB=DC$ (theo B1, hai cạnh tương ứng) và $BE=CF$ (gt).\nNên $DE=DF$.\nXét $\\triangle AED$ và $\\triangle AFD$ có:\n$AE=AF$ (theo B16)\n$DE=DF$ (cmt)\n$AD$ là cạnh chung\nDo đó $\\triangle AED=\\triangle AFD$ (c.c.c).\nSuy ra $\\widehat{EAD}=\\widehat{FAD}$ (hai góc tương ứng).\nLại có $D$ nằm giữa $E$ và $F$ nên tia $AD$ nằm giữa hai tia $AE$, $AF$.\nVậy $AD$ là tia phân giác của $\\widehat{EAF}$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.132.18",
+  "so": "B18",
+  "loi_giai": "Tia $Ay$ cùng phía với $C$ đối với $AB$ (gt).\nNếu $y$ cùng phía với $B$ đối với $AC$ thì $Ay$ nằm trong $\\widehat{BAC}$\nnên $Ay$ cắt $BC$, trái với $Ay\\parallel BC$.\nDo đó $y$ và $B$ nằm khác phía đối với $AC$.\nVì $Ay\\parallel BC$ nên $\\widehat{yAC}=\\widehat{ACB}$ (hai góc so le trong).\nMà $\\widehat{ACB}=\\widehat{ABC}$ (theo B4).\nVậy $\\widehat{yAC}=\\widehat{ABC}$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.132.19",
+  "so": "B19",
+  "loi_giai": "Ta có $AD\\perp BC$ (theo B2).\nLại có $Cx\\perp BC$ (gt).\nVậy $AD\\parallel Cx$ (cùng vuông góc với $BC$).",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.132.20",
+  "so": "B20",
+  "loi_giai": "Trên tia đối của tia $ID$ lấy điểm $K'$ sao cho $IK'=ID$.\nXét $\\triangle IAD$ và $\\triangle ICK'$ có:\n$IA=IC$ ($I$ là trung điểm của $AC$)\n$\\widehat{AID}=\\widehat{CIK'}$ (hai góc đối đỉnh)\n$ID=IK'$ (cách lấy $K'$)\nDo đó $\\triangle IAD=\\triangle ICK'$ (c.g.c).\nSuy ra $\\widehat{IAD}=\\widehat{ICK'}$ (hai góc tương ứng).\nVì $I$ thuộc $AC$ và $I$ nằm giữa $D$, $K'$\nnên $D$, $K'$ khác phía đối với $AC$.\nDo đó hai góc trên ở vị trí so le trong\nnên $AD\\parallel CK'$.\nMà $AD\\parallel Cx$ (theo B19).\nQua $C$ chỉ có một đường thẳng song song với $AD$ (tiên đề Ơ-clit)\nnên $CK'$ trùng $Cx$, tức $K'$ thuộc đường thẳng $Cx$.\nXét $\\triangle IAK'$ và $\\triangle ICD$ có:\n$IA=IC$ ($I$ là trung điểm của $AC$)\n$\\widehat{AIK'}=\\widehat{CID}$ (hai góc đối đỉnh)\n$IK'=ID$ (cách lấy $K'$)\nDo đó $\\triangle IAK'=\\triangle ICD$ (c.g.c).\nSuy ra $\\widehat{IAK'}=\\widehat{ICD}$ (hai góc tương ứng).\nMà $K'$, $D$ khác phía đối với $AC$ (cmt)\nnên hai góc trên ở vị trí so le trong.\nDo đó $AK'\\parallel CD$, tức $AK'\\parallel BC$.\nMà $Ay\\parallel BC$ (gt).\nQua $A$ chỉ có một đường thẳng song song với $BC$ (tiên đề Ơ-clit)\nnên $AK'$ trùng $Ay$, tức $K'$ thuộc đường thẳng $Ay$.\nHai đường thẳng $Ay$, $Cx$ cắt nhau tại đúng một điểm\n(vì $Ay\\parallel BC$ còn $Cx\\perp BC$) và $K$ thuộc cả hai đường.\nNên $K'$ trùng $K$.\nVậy $I$ là trung điểm của $DK$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.132.21",
+  "so": "B21",
+  "loi_giai": "Vì $P$ là trung điểm của $AC$ nên $AP=\\dfrac{AC}{2}$ (trung điểm).\nVì $Q$ là trung điểm của $AB$ nên $AQ=\\dfrac{AB}{2}$ (trung điểm).\nMà $AB=AC$ (gt) nên $AP=AQ$.\nXét $\\triangle ABP$ và $\\triangle ACQ$ có:\n$AB=AC$ (gt)\n$\\widehat{BAP}=\\widehat{CAQ}$ (cùng là $\\widehat{BAC}$)\n$AP=AQ$ (cmt)\nDo đó $\\triangle ABP=\\triangle ACQ$ (c.g.c).\nVậy $BP=CQ$ (hai cạnh tương ứng).",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.132.22",
+  "so": "B22",
+  "loi_giai": "Xét $\\triangle APM$ và $\\triangle CPB$ có:\n$PA=PC$ ($P$ là trung điểm của $AC$)\n$\\widehat{APM}=\\widehat{CPB}$ (hai góc đối đỉnh)\n$PM=PB$ ($P$ là trung điểm của $BM$)\nDo đó $\\triangle APM=\\triangle CPB$ (c.g.c).\nSuy ra $AM=CB$ (hai cạnh tương ứng).\nVà $\\widehat{PAM}=\\widehat{PCB}$ (hai góc tương ứng).\nVì $P$ nằm giữa $B$ và $M$, $P$ thuộc $AC$\nnên $M$, $B$ khác phía đối với $AC$.\nMà $\\widehat{PAM}=\\widehat{CAM}$, $\\widehat{PCB}=\\widehat{ACB}$\n(vì $P$ thuộc đoạn $AC$) nên $\\widehat{CAM}=\\widehat{ACB}$.\nHai góc này so le trong nên $AM\\parallel BC$.\nXét $\\triangle AQN$ và $\\triangle BQC$ có:\n$QA=QB$ ($Q$ là trung điểm của $AB$)\n$\\widehat{AQN}=\\widehat{BQC}$ (hai góc đối đỉnh)\n$QN=QC$ ($Q$ là trung điểm của $CN$)\nDo đó $\\triangle AQN=\\triangle BQC$ (c.g.c).\nSuy ra $AN=BC$ (hai cạnh tương ứng).\nVà $\\widehat{QAN}=\\widehat{QBC}$ (hai góc tương ứng).\nVì $Q$ nằm giữa $C$ và $N$, $Q$ thuộc $AB$\nnên $N$, $C$ khác phía đối với $AB$.\nMà $\\widehat{QAN}=\\widehat{BAN}$, $\\widehat{QBC}=\\widehat{ABC}$\n(vì $Q$ thuộc đoạn $AB$) nên $\\widehat{BAN}=\\widehat{ABC}$.\nHai góc này so le trong nên $AN\\parallel BC$.\nQua $A$ chỉ có một đường thẳng song song với $BC$ (tiên đề Ơ-clit)\nnên $AM$ trùng $AN$, tức $M$, $A$, $N$ thẳng hàng.\nTa có $M$, $B$ khác phía đối với $AC$ (cmt).\nVì $Q$ thuộc đoạn $AB$ nên $Q$, $B$ cùng phía đối với $AC$.\nVì $Q$ nằm giữa $C$ và $N$ nên $N$, $Q$ cùng phía đối với $AC$.\nSuy ra $N$, $B$ cùng phía đối với $AC$.\nDo đó $M$, $N$ khác phía đối với $AC$.\nMà $M$, $A$, $N$ thẳng hàng nên $A$ nằm giữa $M$ và $N$.\nLại có $AM=BC$ và $AN=BC$ (cmt) nên $AM=AN$.\nVậy $A$ là trung điểm của $MN$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.07.132.23",
+  "so": "B23",
+  "loi_giai": "Vì $P$, $Q$ là trung điểm của $AC$, $AB$ và $AB=AC$ (gt)\nnên $AP=AQ$.\nXét $\\triangle ABP$ và $\\triangle ACQ$ có:\n$AB=AC$ (gt)\n$AP=AQ$ (cmt)\n$BP=CQ$ (theo B21)\nDo đó $\\triangle ABP=\\triangle ACQ$ (c.c.c).\nSuy ra $\\widehat{ABP}=\\widehat{ACQ}$ (hai góc tương ứng).\nMà $\\widehat{ABC}=\\widehat{ACB}$ ($\\triangle ABC$ cân tại $A$).\nVì $P$ nằm giữa $A$, $C$ nên $A$, $C$ khác phía đối với $BP$.\nVì $Q$ thuộc đoạn $AB$ nên $Q$, $A$ cùng phía đối với $BP$.\nDo đó $Q$, $C$ khác phía đối với $BP$,\nnên $G$ thuộc đoạn $CQ$.\nTương tự, $G$ thuộc đoạn $BP$.\nTia $BP$ nằm giữa hai tia $BA$, $BC$ ($P$ thuộc đoạn $AC$),\ntia $CQ$ nằm giữa hai tia $CA$, $CB$ ($Q$ thuộc đoạn $AB$).\nDo đó $\\widehat{GBC}=\\widehat{ABC}-\\widehat{ABP}$,\n$\\widehat{GCB}=\\widehat{ACB}-\\widehat{ACQ}$.\nSuy ra $\\widehat{GBC}=\\widehat{GCB}$.\nNên $\\triangle GBC$ cân tại $G$ (dấu hiệu nhận biết tam giác cân).\nDo đó $GB=GC$.\nXét $\\triangle ABG$ và $\\triangle ACG$ có:\n$AB=AC$ (gt)\n$GB=GC$ (cmt)\n$AG$ là cạnh chung\nDo đó $\\triangle ABG=\\triangle ACG$ (c.c.c).\nSuy ra $\\widehat{BAG}=\\widehat{CAG}$ (hai góc tương ứng).\nVì $G$ thuộc đoạn $CQ$, $Q$ thuộc đoạn $AB$\nnên tia $AG$ nằm giữa hai tia $AB$, $AC$.\nNên $AG$ là tia phân giác của $\\widehat{BAC}$.\nMà $AD$ cũng là tia phân giác của $\\widehat{BAC}$ (gt).\nMột góc chỉ có một tia phân giác nên tia $AG$ trùng tia $AD$.\nVậy ba điểm $A$, $G$, $D$ thẳng hàng.",
+  "ghi_chu": ""
+ }
+]
