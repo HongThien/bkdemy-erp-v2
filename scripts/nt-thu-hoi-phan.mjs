@@ -7,6 +7,8 @@ import pg from 'pg'
 import fs from 'fs'
 
 const GHI = process.argv.includes('--ghi')
+// BƯỚC 1 (mặc định) = chỉ rút EXP/xu game + sổ. Hoàn ĐHT + thông báo là bước riêng: cờ --kem-diem-tin (chưa dùng khi đã chạy bước 1 — cần viết chế độ bổ sung theo sổ).
+const DIEM = process.argv.includes('--kem-diem-tin')
 const REF = 'nt_phan:20261107'
 const env = Object.fromEntries(fs.readFileSync('.env', 'utf8').split('\n').filter(l => l.includes('=') && !l.startsWith('#'))
   .map(l => [l.slice(0, l.indexOf('=')), l.slice(l.indexOf('=') + 1).trim().replace(/^["']|["']$/g, '')]))
@@ -62,12 +64,12 @@ try {
     const t = tinh(r.state)
     if (!t) continue
     delete t.moi.__k; delete r.state.__k
-    await c.query(`insert into dht_hoan (hoc_sinh_id, so, ly_do, ma_tham_chieu) values ($1,$2,$3,$4)`,
+    if (DIEM) await c.query(`insert into dht_hoan (hoc_sinh_id, so, ly_do, ma_tham_chieu) values ($1,$2,$3,$4)`,
       [r.id, t.ban * 3, 'Hoàn điểm học tập — lỗi bán phân bón Nông Trại', REF])
     await c.query(`insert into nt_thu_hoi_phan (hoc_sinh_id, so_bao, dht_hoan, exp_phai_rut, exp_rut_vi, xu_game_rut, exp_tra_lai, exp_con_thieu, state_truoc)
-      values ($1,$2,$3,$4,$5,$6,$7,$8,$9)`, [r.id, t.ban, t.ban * 3, t.F, t.rutVi, t.xuRut, t.traLai, t.thieu, JSON.stringify(r.state)])
+      values ($1,$2,$3,$4,$5,$6,$7,$8,$9)`, [r.id, t.ban, DIEM ? t.ban * 3 : 0, t.F, t.rutVi, t.xuRut, t.traLai, t.thieu, JSON.stringify(r.state)])
     await c.query(`update nt_luu set state = $2, cap_nhat = clock_timestamp() where hoc_sinh_id = $1`, [r.id, JSON.stringify(t.moi)])
-    await c.query(`insert into hs_tin_moi (hoc_sinh_id, loai, tieu_de, noi_dung, bieu_tuong, ref) values ($1,'nong_trai',$2,$3,'🌱',$4)`,
+    if (DIEM) await c.query(`insert into hs_tin_moi (hoc_sinh_id, loai, tieu_de, noi_dung, bieu_tuong, ref) values ($1,'nong_trai',$2,$3,'🌱',$4)`,
       [r.id, 'Nông Trại: hoàn điểm học tập phân bón', loiNhan(t), REF])
     bang.push({ id: r.id, ma: r.ma_hs, bao: t.ban, hoan_dht: t.ban * 3, exp_rut_vi: t.rutVi, xu_game_rut: t.xuRut, exp_tra_lai: t.traLai, con_thieu: t.thieu })
   }
@@ -75,7 +77,7 @@ try {
   const tong = k => bang.reduce((a, x) => a + x[k], 0)
   console.log(`Số em: ${bang.length} · bao: ${tong('bao')} · hoàn ĐHT: ${tong('hoan_dht')} · EXP rút ví: ${tong('exp_rut_vi')} · xu game rút: ${tong('xu_game_rut')} · EXP còn thiếu: ${tong('con_thieu')}`)
   // kiểm: số dư ĐHT sau hoàn tính được, không lỗi
-  for (const m of bang.filter(x => ['HS0527', 'HS0421', 'HS0631'].includes(x.ma))) {
+  for (const m of DIEM ? bang.filter(x => ['HS0527', 'HS0421', 'HS0631'].includes(x.ma)) : []) {
     const chk = await c.query(`select public._dht_so_du($1) j`, [m.id])
     console.log(m.ma, '_dht_so_du sau hoàn:', JSON.stringify(chk.rows[0].j))
   }
