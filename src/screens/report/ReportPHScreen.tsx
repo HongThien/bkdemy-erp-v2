@@ -52,16 +52,37 @@ const mucBg = (i: number) => i <= 2 ? 'bg-rose-500' : i === 3 ? 'bg-amber-500' :
 
 type RosterHS = { id: string; ho_ten: string; ma_hs: string | null; anh_url: string | null }
 
+// Nhớ màn khi rời tab (Thùy 07/11 "thoát ra tab khác vào lại không phải chọn lại từ đầu"): màn bị unmount khi đổi tab ⇒ giữ
+// lựa chọn + vị trí cuộn ở module-level (sống tới F5). Lần mount sau dùng lại, KHÔNG xoá lớp/em như khi người dùng tự đổi môn/lớp.
+const NHO_RP: { mon: string; lopId: string | null; hsId: string | null; ym: string; cheDo: 'thang' | 'ky'; kyId: string | null; cuon: number } =
+  { mon: 'Toán', lopId: null, hsId: null, ym: curYM(), cheDo: 'thang', kyId: null, cuon: 0 }
+
 export default function ReportPHScreen() {
-  const [mon, setMon] = useState('Toán')
-  const [lopId, setLopId] = useState<string | null>(null)
+  const [mon, setMon] = useState(NHO_RP.mon)
+  const [lopId, setLopId] = useState<string | null>(NHO_RP.lopId)
   const [lopOpts, setLopOpts] = useState<Opt[]>([])
-  const [hsId, setHsId] = useState<string | null>(null)
+  const [hsId, setHsId] = useState<string | null>(NHO_RP.hsId)
   const [roster, setRoster] = useState<RosterHS[]>([])
-  const [ym, setYm] = useState(curYM())
+  const [ym, setYm] = useState(NHO_RP.ym)
   // Học kì (spec-bao-cao-ky.md, 04/11): báo cáo khác hẳn tháng — dùng chung chọn Môn → Lớp → HS.
-  const [cheDo, setCheDo] = useState<'thang' | 'ky'>('thang')
-  const [kyId, setKyId] = useState<string | null>(null)
+  const [cheDo, setCheDo] = useState<'thang' | 'ky'>(NHO_RP.cheDo)
+  const [kyId, setKyId] = useState<string | null>(NHO_RP.kyId)
+  useEffect(() => { Object.assign(NHO_RP, { mon, lopId, hsId, ym, cheDo, kyId }) }, [mon, lopId, hsId, ym, cheDo, kyId])
+  // "đổi môn ⇒ xoá lớp", "đổi lớp ⇒ xoá em" chỉ khi giá trị THẬT SỰ đổi so với lần trước — lúc khôi phục (kể cả StrictMode chạy
+  // effect 2 lần) giá trị trùng ⇒ giữ nguyên lựa chọn đã nhớ
+  const monTruoc = useRef(mon), lopTruoc = useRef(lopId)
+  const cuonRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {   // trả vị trí cuộn: chờ nội dung (danh sách + báo cáo) tải đủ cao rồi mới đặt
+    const muc = NHO_RP.cuon
+    if (!muc) return
+    let n = 0
+    const id = setInterval(() => {
+      const el = cuonRef.current; n++
+      if (el && el.scrollHeight - el.clientHeight >= muc - 4) { el.scrollTop = muc; clearInterval(id) }
+      else if (n > 40) clearInterval(id)
+    }, 150)
+    return () => clearInterval(id)
+  }, [])
   const [ttKy, setTtKy] = useState<Record<string, BcKyTT>>({})
   const [kyBusy, setKyBusy] = useState(false)
   // Chốt số liệu kì (Thùy 05/11: snap 1 lần, không tính lại) — chỉ admin; từng em 1 lời gọi (tránh trần thời gian của API)
@@ -113,12 +134,13 @@ Số liệu tính lúc này sẽ được giữ cố định, không tính lại
   }
 
   useEffect(() => {
-    setLopId(null); setHsId(null)
+    if (monTruoc.current !== mon) { monTruoc.current = mon; setLopId(null); setHsId(null) }
     listLop().then((ls) => setLopOpts(ls.filter((l: any) => l.mon === mon).map((l: any) => ({ id: l.id, label: l.ten_lop, sub: l.khoi ? `K${l.khoi}` : undefined })))).catch(() => setLopOpts([]))
   }, [mon])
   // Đổi lớp → nạp CẢ DANH SÁCH (cột trái, click chọn thẳng — giống "Kết quả học tập"), khỏi phải gõ dropdown.
   useEffect(() => {
-    setHsId(null); setRoster([])
+    if (lopTruoc.current !== lopId) { lopTruoc.current = lopId; setHsId(null) }
+    setRoster([])
     if (!lopId) return
     listHSCuaLop(lopId).then((rows: any[]) => setRoster(rows.map((r) => r.hoc_sinh).filter(Boolean)
       .sort((a: any, b: any) => String(a.ho_ten).localeCompare(String(b.ho_ten), 'vi'))
@@ -181,7 +203,7 @@ Số liệu tính lúc này sẽ được giữ cố định, không tính lại
         {cheDo === 'ky' && roster.length > 0 && kyId && <button disabled={kyBusy} onClick={() => void congBoLopKy()} title="Công bố báo cáo học kì cho cả lớp (chụp số liệu ở DB)" className={`ml-auto rounded-md bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-50`}>✓ Công bố cả lớp ({roster.length})</button>}
         {cheDo === 'thang' && roster.length > 0 && <button disabled={!!bulk?.running} onClick={() => void bulkCongBoLop()} title="Chụp ảnh + công bố báo cáo cho cả lớp" className="ml-auto rounded-md bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-50">✓ Chốt cả lớp ({roster.length})</button>}
       </div>
-      <div className="min-h-0 flex-1 overflow-auto p-3 md:p-6">
+      <div ref={cuonRef} onScroll={(e) => { NHO_RP.cuon = e.currentTarget.scrollTop }} className="min-h-0 flex-1 overflow-auto p-3 md:p-6">
         {!lopId ? (
           <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn lớp để xem danh sách học sinh.</div>
         ) : (
