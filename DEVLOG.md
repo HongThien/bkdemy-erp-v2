@@ -79153,3 +79153,8 @@ Thùy nêu 4 việc, làm được 3:
 - **Ghi DB:** 20 hình ví dụ K12 · 9 hình lý thuyết nhóm (K12 6, K11 4 — tính cả 01227 hai hình) · thay 6 hình ví dụ K11 cũ. Hình cũ giữ trên bucket `kho-anh`.
 - **Sai/bẫy:** (1) lưới ghép nhiều SVG inline trong 1 trang HTML dùng chung id `kh`/`mt` ⇒ clip sai, hình trông cụt — khi xem lưới phải nhúng bằng `<img data-uri>`; (2) heredoc Git Bash nuốt `\` (regex `\d` thành `d`) — sửa file bằng Edit, không dùng node heredoc; (3) hình K12 bài tập (535 câu) là ảnh cắt, nhiều đường cong tự do — vẽ lại tự động không đáng tin, cần HTML trước/sau cho Thùy duyệt.
 - **Chờ Thùy:** gỡ/vẽ lại NDB00779 + NDB00780 hình 1; có làm bài tập theo lô không (đề xuất NDB00777→00775→00787→00631).
+
+## 2026-11-07 (chiều) — Lô bài tập NDB00777 (diện tích hình phẳng trên đồ thị): xem 89 ảnh, vẽ lại 11 câu, CHỜ duyệt
+- **Xem:** 89 câu có ảnh đề. Đa số đã là hình TikZ/GeoGebra sạch ⇒ giữ. Yếu mà hàm xác định đủ từ đề/lời giải ⇒ vẽ lại 11 câu (9 hình; 005422/007185/007574 dùng chung 1 hình). Đường cong tự do (chỉ cho S₁, S₂, f'(x)…) ⇒ giữ ảnh gốc: T…002584, 002713, 002718, 002722, 005529, 006888, 007428, 105001, 105018, v.v.
+- **Kiểm:** diện tích vùng tô (tích phân số) khớp đáp số lời giải cả 9 hình. Trang duyệt: `kho-rules/dai/k12-bt-NDB00777-truoc-sau.html`. Chưa ghi `anh_de`.
+- **Công cụ:** `scripts/kho/html-truoc-sau-bt.mjs`; máy vẽ thêm gạch chéo (`kieu:'gach'`) và sửa `-x^2` (JS cấm dấu âm đứng trước `**`).

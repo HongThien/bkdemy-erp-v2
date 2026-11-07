@@ -1,0 +1,35 @@
+// Lô vẽ lại hình BÀI TẬP dạng NDB00777 (diện tích hình phẳng trên đồ thị) — CHỜ Thùy duyệt, chưa ghi DB.
+// Chỉ vẽ lại câu (1) hình cũ yếu (nhỏ / mờ / ảnh chụp) VÀ (2) hàm số xác định hoàn toàn bởi đề/lời giải. Đường cong tự do (chỉ cho S₁, S₂) ⇒ giữ ảnh gốc.
+// Mỗi mục: { cau: [ma_cau…], ten, mt } — hình dùng chung cho các câu cùng một hình.
+const G = 'gach'
+export const BT_777 = [
+  { cau: ['T1120000002565'], ten: 'y = 3ˣ, y = x, x=0..1', S: 2 / Math.log(3) - 0.5, mt: { loai: 'giai_tich', x: [-1.2, 2.2], y: [-0.8, 5], nhanX: [1], nhanY: [1, 3],
+    ham: [{ f: '3^x', tu: -1.1, den: 1.5, nhan: 'y = 3ˣ', xnhan: 1.45, neo: 'end', dx: -6, dy: -6, mau: 'xanh' }, { f: 'x', tu: -0.5, den: 2.1, nhan: 'y = x', xnhan: 2.05, neo: 'end', dx: 0, dy: 16, mau: 'do' }],
+    to: [{ tren: 'h0', duoi: 'h1', tu: 0, den: 1, mau: 'cam' }], doc: [{ x: 1, den: 'h0' }], diem: [{ x: 0, y: 1, tren: 0 }, { x: 1, y: 3, tren: 0 }] } },
+  { cau: ['T1120000002566'], ten: 'y = (1/3)ˣ, y = −2x+1, x=−1..0', S: 2 - 2 / Math.log(3), mt: { loai: 'giai_tich', x: [-1.6, 1.6], y: [-0.6, 3.8], nhanX: [-1], nhanY: [1, 3],
+    ham: [{ f: '(1/3)^x', tu: -1.5, den: 1.5, nhan: 'y = (1/3)ˣ', xnhan: 1.45, neo: 'end', dy: -10, mau: 'xanh' }, { f: '-2*x+1', tu: -1.5, den: 1.5, nhan: 'y = −2x + 1', xnhan: 1.0, neo: 'start', dx: 8, dy: 18, mau: 'do' }],
+    to: [{ tren: 'h1', duoi: 'h0', tu: -1, den: 0, mau: 'cam' }], doc: [{ x: -1, den: 'h0' }], diem: [{ x: -1, y: 3, tren: 0 }, { x: 0, y: 1, tren: 0 }] } },
+  { cau: ['T1120000002568'], ten: 'y = −x²+x+2, y = 2x; A, B', S: 7 / 3, mt: { loai: 'giai_tich', x: [-1.6, 2.8], y: [-0.7, 3.2], deu: true, nhanX: [-1, 1, 2], nhanY: [2],
+    ham: [{ f: '-x^2+x+2', tu: -1.3, den: 2.4, nhan: 'y = −x² + x + 2', xnhan: 0.5, neo: 'middle', dx: 0, dy: -14, mau: 'xanh' }, { f: '2*x', tu: -0.3, den: 1.5, nhan: 'y = 2x', xnhan: 1.5, neo: 'start', dx: 6, dy: 4, mau: 'do' }],
+    to: [{ tren: 'h0', duoi: 0, tu: -1, den: 0, kieu: G }, { tren: 'h0', duoi: 'h1', tu: 0, den: 1, kieu: G }], doc: [{ x: 1, den: 'h0' }],
+    chu: [{ x: -0.55, y: 0.75, t: 'A' }, { x: 0.42, y: 1.55, t: 'B' }] } },
+  { cau: ['T112000000493'], ten: 'y = −x²+3x+4, y = 7−x, x=1..3', S: 4 / 3, mt: { loai: 'giai_tich', x: [-0.8, 4.8], y: [-0.8, 7.6], nhanX: [1, 3],
+    ham: [{ f: '-x^2+3*x+4', tu: 0.2, den: 4.4, nhan: 'y = −x² + 3x + 4', xnhan: 4.3, neo: 'end', dx: 8, dy: 22, mau: 'xanh' }, { f: '7-x', tu: -0.4, den: 4.4, nhan: 'y = 7 − x', xnhan: 4.2, neo: 'start', dx: 6, dy: -8, mau: 'do' }],
+    to: [{ tren: 'h0', duoi: 'h1', tu: 1, den: 3, kieu: G }], doc: [{ x: 1, den: 'h1' }, { x: 3, den: 'h1' }], diem: [{ x: 1, y: 6, tren: 0 }, { x: 3, y: 4, tren: 0 }] } },
+  { cau: ['T112000000612'], ten: 'y = x²+x−2, y = −x+1, x=−3..1', S: 32 / 3, mt: { loai: 'giai_tich', x: [-4, 3], y: [-3, 5.5], nhanX: [-3, 1],
+    ham: [{ f: 'x^2+x-2', tu: -3.4, den: 2.1, nhan: 'y = x² + x − 2', xnhan: 2.05, neo: 'end', dy: -8, mau: 'xanh' }, { f: '-x+1', tu: -3.6, den: 2.4, nhan: 'y = −x + 1', xnhan: 2.3, neo: 'start', dx: 6, dy: 16, mau: 'do' }],
+    to: [{ tren: 'h1', duoi: 'h0', tu: -3, den: 1, kieu: G }], doc: [{ x: -3, den: 'h1' }], diem: [{ x: -3, y: 4, tren: 0 }, { x: 1, y: 0, tren: 0 }] } },
+  { cau: ['T1120000005422', 'T1120000007185', 'T1120000007574'], ten: 'y = −x²+3, y = x²−2x−1, x=−1..2', S: 9, mt: { loai: 'giai_tich', x: [-2.2, 3.2], y: [-2.4, 3.8], deu: true, nhanX: [-1, 2],
+    ham: [{ f: '-x^2+3', tu: -1.7, den: 2.5, nhan: 'y = −x² + 3', xnhan: 0.2, neo: 'middle', dx: 0, dy: -14, mau: 'xanh' }, { f: 'x^2-2*x-1', tu: -1.3, den: 2.9, nhan: 'y = x² − 2x − 1', xnhan: 2.8, neo: 'end', dx: -8, dy: 6, mau: 'do' }],
+    to: [{ tren: 'h0', duoi: 'h1', tu: -1, den: 2, kieu: G }], doc: [{ x: 2, den: 'h0' }, { x: -1, den: 'h0' }], diem: [{ x: -1, y: 2, tren: 0 }, { x: 2, y: -1, tren: 0 }] } },
+  { cau: ['T1120000007547'], ten: 'hình thang cong ABCD: y = 3ˣ, y = x, x=1..2', S: 6 / Math.log(3) - 1.5, mt: { loai: 'giai_tich', x: [-1, 3], y: [-1, 10.5], nhanX: [1, 2],
+    ham: [{ f: '3^x', tu: -0.9, den: 2.1, nhan: 'y = 3ˣ', xnhan: 1.75, neo: 'end', dx: -6, dy: -6, mau: 'xanh' }, { f: 'x', tu: -0.7, den: 2.9, nhan: 'y = x', xnhan: 2.8, neo: 'start', dx: 6, dy: 12, mau: 'do' }],
+    to: [{ tren: 'h0', duoi: 'h1', tu: 1, den: 2, mau: 'cam' }], doc: [{ x: 1, den: 'h0' }, { x: 2, den: 'h0' }],
+    diem: [{ x: 1, y: 3, ten: 'A', tren: 0, vi: 'tl' }, { x: 2, y: 9, ten: 'B', tren: 0, vi: 'tl' }, { x: 2, y: 2, ten: 'C', tren: 1, vi: 'br' }, { x: 1, y: 1, ten: 'D', tren: 1, vi: 'br' }] } },
+  { cau: ['T112000000934'], ten: 'y = 3ˣ, y = 3, x=1..2', S: 6 / Math.log(3) - 3, mt: { loai: 'giai_tich', x: [-1, 3], y: [-1, 10.5], nhanX: [1, 2], nhanY: [3],
+    ham: [{ f: '3^x', tu: -0.9, den: 2.1, nhan: 'y = 3ˣ', xnhan: 1.75, neo: 'end', dx: -6, dy: -6, mau: 'xanh' }],
+    to: [{ tren: 'h0', duoi: 3, tu: 1, den: 2, kieu: G }], ngang: [{ y: 3, den: 2.9 }], doc: [{ x: 1, den: 'h0' }, { x: 2, den: 'h0' }] } },
+  { cau: ['T1120000002607'], ten: 'y = −x²+5x+1, y = x²−3x+1, x=0..4', S: 64 / 3, mt: { loai: 'giai_tich', x: [-1.5, 7.6], y: [-2.2, 8], nhanX: [4], nhanY: [1, 5],
+    ham: [{ f: '-x^2+5*x+1', tu: -0.4, den: 5.2, nhan: 'y = −x² + 5x + 1', xnhan: 5.0, neo: 'start', dx: 8, dy: 4, mau: 'xanh' }, { f: 'x^2-3*x+1', tu: -0.4, den: 4.5, nhan: 'y = x² − 3x + 1', xnhan: 4.4, neo: 'start', dx: 4, dy: 6, mau: 'do' }],
+    to: [{ tren: 'h0', duoi: 'h1', tu: 0, den: 4, mau: 'cam' }], doc: [{ x: 4, den: 'h0' }], diem: [{ x: 0, y: 1, tren: 0 }, { x: 4, y: 5, tren: 0 }] } },
+]
