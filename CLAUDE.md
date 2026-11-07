@@ -363,6 +363,16 @@
   Tổng kết tuần = dashboard theo BẢNG, ngưỡng của mọi chỉ số là **thường đạt** (trung bình 8 tuần gần nhất đã lọc nhiễu), trình chiếu mỗi bảng một màn ·
   cả hai KHÔNG realtime (lưu DB). Mọi con số tính ở `fn_troly_*`/`_troly_*`; thêm chỉ số = thêm 1 dòng vào `_troly_tuan_danh_muc()`.
   Kiểm bằng `scripts/check-troly-cong-cu.mjs` rồi **mở trên app bằng phiên đăng nhập thật** (script không thấy RLS và trần 8 giây).
+
+## Worktree tạm để commit/push (Thùy chốt 07/11 — máy đầy vì nó)
+Mỗi worktree là nguyên một bản repo **~1.3 GB**. 04–06/11 các phiên tạo `wt-push`, `wt-push2`…`wt-push7`, `wt-et`, `wt-handoff`… trong scratchpad
+để push khi checkout chính có file phiên khác sửa dở, push xong **bỏ lại** ⇒ 11 bản = **~14 GB trong 3 ngày**, ổ C còn 9 GB.
+- **Ưu tiên KHÔNG tạo worktree:** commit đúng file của mình ngay trong checkout chính (stage + commit 1 lệnh, kiểm danh sách đã stage — xem memory "nhiều phiên song song").
+- **Bắt buộc phải tạo ⇒ một worktree, dùng lại suốt phiên** (đưa về `origin/main` bằng `git checkout --detach origin/main` trước mỗi lượt) — **cấm** đẻ `wt-push2`, `wt-push3`… mỗi lần push.
+- **Push xong và đã kiểm `git status -sb` ⇒ gỡ ngay** bằng `git worktree remove <đường dẫn>` (đường dẫn quá dài: robocopy thư mục rỗng `/MIR` rồi `git worktree prune`).
+  Đây là ngoại lệ của Luật xoá bên dưới, **không cần hỏi**, chỉ khi đủ cả 3: worktree do **chính phiên này** tạo · `git status --porcelain` rỗng · `git rev-list origin/main..HEAD` = 0. Thiếu một điều kiện ⇒ hỏi như thường.
+- Không bao giờ gỡ worktree của phiên khác đang chạy (thư mục vừa đổi trong vài giờ, hoặc còn file đang sửa).
+
 ## Luật xoá (bắt buộc)
 Trước khi XOÁ bất cứ gì — xoá file, drop/alter/delete bảng/cột/dòng DB,
 hay lệnh git phá lịch sử (reset --hard, push -f, branch -D, clean) — DỪNG lại:
