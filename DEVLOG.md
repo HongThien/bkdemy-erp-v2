@@ -79147,3 +79147,9 @@ Thùy nêu 4 việc, làm được 3:
 - **Làm:** game `1671934` — ngân sách 2.000 EXP/tháng (cây+máy 1.500 · gà/bò 200 · giúp/trộm 300): `RUONG` goc/gia mới, máy chế biến ×1,3 nguyên liệu mới, trứng 2 sữa 5, đồng xu cổ 20, giúp bạn 1 EXP; chơi theo tài khoản chặn bán phân bón (engine + ẩn ở chợ). Mig `202611071152` ĐÃ ÁP: `nt_cay` goc/gia + `_nt_luat().expGiup = 1`. Test engine ✓, test JS↔SQL ✓ (sửa test cũ: 10 lượt giúp, ô < 3 quả không hái được, em ngoài lớp có thể đã có vườn ⇒ upsert).
 - **Giả lập:** mẫu mực 7,6/9,7/16,6 xu (8/10/12 ô) + giúp ~3 + máy ⇒ ~20 lúc đủ 12 ô.
 - **Dở:** Thùy giao hoàn điểm học tập + trừ xu + thông báo cho 45 em bán phân. Phát hiện phần lớn EXP bán phân chưa thành xu thật (HS0527: 3.000 EXP, 0 xu nhận) ⇒ thiết kế 5 bước ở HANDOFF, CHƯA ghi DB. Thùy về nhà làm tiếp.
+
+## 2026-11-07 (Thùy) — Hình K11 Giới hạn + K12 Tích phân: máy vẽ giải tích + 29 hình lý thuyết/ví dụ
+- **Làm:** kiểm bản đồ 2 chương (bảng + việc cần Thùy quyết ở `reports/hinh-gioi-han-tich-phan-07-11.md`). Máy vẽ mới `scripts/kho/hinh-giai-tich.mjs` (miền tô, cận có dóng, tiệm cận, tròn xoay Ox/Oy, thiết diện không đổi) nối vào `veHinh` loai `giai_tich`; `scripts/kho/ghi-hinh-bdm.mjs` chèn/thay hình (chạy thử mặc định, sao lưu `reports/sao-luu-hinh-bdm-*.json`).
+- **Ghi DB:** 20 hình ví dụ K12 · 9 hình lý thuyết nhóm (K12 6, K11 4 — tính cả 01227 hai hình) · thay 6 hình ví dụ K11 cũ. Hình cũ giữ trên bucket `kho-anh`.
+- **Sai/bẫy:** (1) lưới ghép nhiều SVG inline trong 1 trang HTML dùng chung id `kh`/`mt` ⇒ clip sai, hình trông cụt — khi xem lưới phải nhúng bằng `<img data-uri>`; (2) heredoc Git Bash nuốt `\` (regex `\d` thành `d`) — sửa file bằng Edit, không dùng node heredoc; (3) hình K12 bài tập (535 câu) là ảnh cắt, nhiều đường cong tự do — vẽ lại tự động không đáng tin, cần HTML trước/sau cho Thùy duyệt.
+- **Chờ Thùy:** gỡ/vẽ lại NDB00779 + NDB00780 hình 1; có làm bài tập theo lô không (đề xuất NDB00777→00775→00787→00631).

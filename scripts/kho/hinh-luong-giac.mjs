@@ -7,6 +7,7 @@
 import { mkdirSync, writeFileSync, readFileSync } from 'node:fs'
 import { dirname } from 'node:path'
 import { pathToFileURL } from 'node:url'
+import { svgGiaiTich } from './hinh-giai-tich.mjs'
 
 const rad = (d) => (d * Math.PI) / 180
 const dau = (s) => String(s).replace('-', '−')
@@ -196,8 +197,8 @@ export function svgDoThiHam(mt) {
   return { svg: o.join('\n'), w: W, h: H }
 }
 
-const VE = { goc: svgGoc, duong_tron: svgDuongTron, do_thi: svgDoThiLG, do_thi_ham: svgDoThiHam }
-export const veHinh = (mt) => { const f = VE[mt.loai]; if (!f) throw new Error('loai phải là goc | duong_tron | do_thi'); return f(mt) }
+const VE = { goc: svgGoc, duong_tron: svgDuongTron, do_thi: svgDoThiLG, do_thi_ham: svgDoThiHam, giai_tich: svgGiaiTich }
+export const veHinh = (mt) => { const f = VE[mt.loai]; if (!f) throw new Error('loai phải là goc | duong_tron | do_thi | do_thi_ham | giai_tich'); return f(mt) }
 
 const CHROME = process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe'
 /** ds = [{ mo_ta, file }] — ghi <file>.svg + <file>.png (2x) */
