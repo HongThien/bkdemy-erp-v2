@@ -5290,6 +5290,8 @@ END |  |  |
 | exp_con_thieu | integer |  |  |  |  |
 | state_truoc | jsonb |  |  |  |  |
 | tao_at | timestamp with time zone |  | now() |  |  |
+| xu_vi_tru | integer |  | 0 |  |  |
+| xu_vi_xong | boolean |  | false |  |  |
 
 ## nt_xu
 
