@@ -79170,3 +79170,12 @@ Thùy nêu 4 việc, làm được 3:
 - **Sai:** máy vẽ `hinh-giai-tich.mjs` ban đầu chỉ vẽ trục + hàm (không lưới) ⇒ hình khác kiểu SGK/đề. Thùy kiểm lại sau khi đã ghi 29 + 18 hình.
 - **Sửa:** lưới ô VUÔNG mặc định bật (dx = dy; quá cao thì thu cả hai trục cùng tỉ lệ), vạch lưới nguyên có số ghi trên trục (1, 2, 3, 4…), nhãn chữ (a, b, x₀…) thêm vào; `minhHoa:true` cho hình khái niệm lý thuyết (không số), `luoi:false` / `nhanX:'khong'` tắt; thêm lề phải 46px cho nhãn đường cong.
 - **Ghi lại DB:** `ghi-hinh-bdm.mjs --thay` (20 ví dụ K12 · 9 lý thuyết · 6 ví dụ K11) + `ghi-anh-cau.mjs` (11 câu NDB00777 · 7 câu NDB00775). Bài học: duyệt hình xong mới ghi — nhưng nhìn lại từ góc người dùng thật (có lưới không?) TRƯỚC khi trình duyệt.
+
+## 2026-11-07 (tối) — Thu hồi lỗi bán phân bón Nông Trại: ĐÃ GHI THẬT 3 bước cho 46 em (Thùy duyệt từng bước)
+- **Làm:** (mig `202611071236` bảng `dht_hoan` + `_dht_so_du` trừ phần hoàn · `202611071253` sổ `nt_thu_hoi_phan` (state_truoc, hoàn tác được) · `202611071319` cột `xu_vi_tru`/`xu_vi_xong`), 3 script chạy thử ROLLBACK rồi `--ghi`:
+  1. `scripts/nt-thu-hoi-phan.mjs`: rút F = 5 × bao khỏi `nt_luu.state`: `vi.exp` trước, thiếu thì lấy xu game (100 EXP = 1 xu, phần dư trả lại EXP), hạ `dem.xuRa` + `thang.ra` (chỉ khi state đúng tháng). 46 em · 4.883 bao · −5.785 EXP · −202 xu game · không em nào thiếu.
+  2. `scripts/nt-thu-hoi-phan-diem.mjs`: hoàn 3 ĐHT/bao vào `dht_hoan` (14.649) + tin `hs_tin_moi` loai `nong_trai` ref `nt_phan:20261107` (46 tin).
+  3. `scripts/nt-thu-hoi-phan-xu-vi.mjs`: trừ xu ví thật D = max(0, `nt_xu.da_nhan` tháng − `thang.ra` hiện tại): 13 em · 84 xu, ledger `nong_trai` âm + hạ `nt_xu.da_nhan` + tin riêng (ref `…:vi`).
+- **Sai/nhầm:** (a) tôi gợi ý ghi nợ cấn dần rồi nhầm "lỗ" ↔ "lơ" ↔ "nợ"; Thùy chốt thứ tự trả: EXP game → xu game → xu ví, EXP phân bón chắc chắn đã quy ra xu thật nên trừ ví luôn. (b) `nt_xu.da_nhan` có CHECK > 0 ⇒ em bị trừ hết giữ tối thiểu 1 (không xoá dòng — luật xoá), hệ quả em phải kiếm thêm 1 xu nữa mới nhận lại xu nông trại.
+- **Chưa làm / quyết định:** xu các THÁNG TRƯỚC đã vào ví không đụng (state game chỉ có tháng hiện tại, không tách được phần phân bón); thứ tự trả nợ cho thấy game đủ bù hết nên không có phần thiếu cần xuống ví ngoài 84 xu. 3 em state tháng 10 (HS0394/0691/0577) `da_nhan` tháng 11 = 0 ⇒ không trừ.
+- **Còn:** deploy game `1671934` (bản chặn bán phân bón) — Thùy bấm Create Deployment; tin nói "không bán được nữa" nên deploy sớm.
