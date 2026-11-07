@@ -79188,3 +79188,4 @@ Thùy nêu 4 việc, làm được 3:
 - **Làm:** game `nhip-ngay` 89ffddf: `LUAT.oDau 4→8`, `oMo` chỉ còn ô 9–12 (cấp 12/14/16/18, 30/40/50/60 điểm); bản lưu cũ 4–6 ô được `engine` nâng lên 8 lúc nạp (dòng 60). `tools/test-engine.mjs` sửa theo (4→`L.oDau`) ⇒ "Tất cả luật đúng". Sync vào ERP (chỉ commit `data.js`; sync còn kéo theo ~300 file đổi dòng CRLF/LF, không commit).
 - **Giả lập `kich-ban.mjs` (khởi đầu 8 ô):** chăm mẫu mực xu ròng T10/T11/T12 = 7/5/10 · học vừa phải 5/6/7 · chỉ chơi không học 5/7/7. Chưa chạm trần 20 xu; mục tiêu ngân sách ≈20 xu chỉ ở em đủ 12 ô + học đều ⇒ có thể cần chỉnh lại `goc/gia` nếu muốn.
 - **Lưu ý:** số hạt mua tối đa/ngày = số ô ⇒ 4-ô cũ giờ mua được 8 hạt/ngày; chưa deploy.
+- **Ghi DB (Thùy duyệt, 07/11):** 3 câu NDB00787 đổi `anh_de` sang SVG máy vẽ, sao lưu `reports/sao-luu-anh-cau-*.json`.
