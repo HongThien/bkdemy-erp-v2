@@ -79117,3 +79117,8 @@ Thùy nêu 4 việc, làm được 3:
 - **12A1 thiếu 4 câu trên lưới chấm (18/22):** 4 câu hình giải tích (kho hgt) chưa khai `cau_hinh.nhanhByCau[ma_cau]='hinh_gt'` ⇒ app tra kho Đại không thấy. `sua-nhanh-hgt.mjs` khai cho đề gốc + bản buổi 12A1 (12B1 không có câu hgt). **Bài học: đề MT có câu kho HGT phải ghi nhanhByCau='hinh_gt' (mẫu "Kiểm tra Khảo sát tháng 8 - Khối 9") — script tạo MT lần sau làm ngay lúc tạo.**
 - **Xoá buổi 30/10:** Thùy gật xoá; chạy thử bị chặn bởi `viec_phu_trach_snap` (6 dòng hệ thống tự chụp, trigger "bản chụp bất biến — không sửa, không xoá (Thùy 04/11)") ⇒ KHÔNG lách. Thay bằng `huy-buoi-3010.mjs`: 2 buổi `trang_thai='huy'` (+ly_do_huy), xoá kỳ thi mồ côi 'MT 12A1 2026-10-30' (0 điểm). Còn lại bám buổi huỷ: sĩ số 15, câu MT 18, nhật ký phase 8, snap 6 (vô hại, danh sách chấm MT loại buổi huỷ).
 - **Dùng từ:** Oxyz = kho HÌNH GIẢI TÍCH (hgt), không phải "hình học" (Thùy nhắc 06/11).
+
+
+## 2026-11-07 — Báo cáo HỌC KÌ: tạm thu hồi khỏi app PH bằng công tắc theo kì (mig 202611071041 ĐÃ ÁP) — Thùy 'tạm thu hồi để t check'
+- Không mở lại 196 báo cáo (mất trạng thái công bố). Thêm ky_hoc.mo_ph mặc định false + log; policy FDW app PH = đã công bố VÀ kì mở. Áp xong 'Nửa kì 1' tắt ⇒ app PH local (cùng DB thật, link xem-thử PH em Hoàng Nhật Minh): 'Chưa có báo cáo học kì', không bật hướng dẫn.
+- ERP: nút '📱 App PH: đang ẩn/đang hiện' cạnh ô chọn kì (admin, có hỏi lại trước khi đổi); người khác thấy dòng 'chưa hiện trên app PH'. Chưa bấm thử (bấm = mở thật cho PH).

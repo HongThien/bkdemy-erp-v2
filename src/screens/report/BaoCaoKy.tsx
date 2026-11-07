@@ -4,7 +4,7 @@
 // ERP chỉ NHẬP + TÍNH + CHỤP SNAPSHOT; PDF gửi PH dựng ngoài ERP từ snapshot (spec A8).
 import { useEffect, useRef, useState } from 'react'
 import {
-  listKyHoc, themKyHoc, xemBcKy, listBcKyTrangThai, type BcKyTT, getBcKyNhap, luuBcKyNhap, congBoBcKy, moLaiBcKy,
+  listKyHoc, themKyHoc, datMoPhKy, laAdminBcKy, xemBcKy, listBcKyTrangThai, type BcKyTT, getBcKyNhap, luuBcKyNhap, congBoBcKy, moLaiBcKy,
   BC_KY_NHAP_TRONG, type KyHoc, type BcKyData, type BcKyNhap, type BcKyDonVi, type BcKyChuDe, type BcKyGoiY,
 } from '../../lib/baoCaoKy'
 import { SoLieuKy, PhuLucKy } from './SoLieuKy'
@@ -24,7 +24,17 @@ export function ChonKy({ kyId, onChange }: { kyId: string | null; onChange: (id:
   const [tao, setTao] = useState(false)
   const [f, setF] = useState({ ten: '', tu: '', den: '' })
   const [loi, setLoi] = useState<string | null>(null)
-  useEffect(() => { listKyHoc().then((k) => { setDs(k); if (!kyId && k[0]) onChange(k[0].id) }).catch(() => setDs([])) }, []) // eslint-disable-line
+  const [admin, setAdmin] = useState(false)
+  useEffect(() => { listKyHoc().then((k) => { setDs(k); if (!kyId && k[0]) onChange(k[0].id) }).catch(() => setDs([])); laAdminBcKy().then(setAdmin) }, []) // eslint-disable-line
+  const ky = ds.find((k) => k.id === kyId)
+  async function doiMoPh() {
+    if (!ky) return
+    const mo = !ky.mo_ph
+    if (!confirm(mo ? `HIỆN báo cáo kì "${ky.ten}" trên app phụ huynh?
+Phụ huynh sẽ thấy ngay mọi báo cáo đã công bố của kì này.` : `ẨN báo cáo kì "${ky.ten}" khỏi app phụ huynh?
+Báo cáo vẫn giữ trạng thái đã công bố, chỉ tạm không hiện.`)) return
+    try { await datMoPhKy(ky.id, mo); setDs((d) => d.map((k) => (k.id === ky.id ? { ...k, mo_ph: mo } : k))) } catch (e: any) { alert(e?.message ?? String(e)) }
+  }
   async function luu() {
     setLoi(null)
     try { const k = await themKyHoc(f.ten.trim(), f.tu, f.den); setDs((d) => [k, ...d]); onChange(k.id); setTao(false); setF({ ten: '', tu: '', den: '' }) }
@@ -37,6 +47,11 @@ export function ChonKy({ kyId, onChange }: { kyId: string | null; onChange: (id:
         {ds.map((k) => <option key={k.id} value={k.id}>{k.ten} ({thangNhan(k.tu_thang)} → {thangNhan(k.den_thang)})</option>)}
       </select>
       <button onClick={() => setTao((v) => !v)} className="h-7 rounded-md px-2 text-[12px] font-semibold text-indigo-600 hover:bg-indigo-50" title="Tạo kì mới (chỉ admin)">＋ Kì</button>
+      {ky && (admin
+        ? <button onClick={() => void doiMoPh()} title="Bật/tắt hiện báo cáo kì này trên app phụ huynh"
+            className={`h-7 whitespace-nowrap rounded-md px-2 text-[12px] font-semibold ring-1 ${ky.mo_ph ? 'bg-emerald-50 text-emerald-700 ring-emerald-200' : 'bg-slate-50 text-slate-500 ring-slate-200'}`}>
+            📱 {ky.mo_ph ? 'App PH: đang hiện' : 'App PH: đang ẩn'}</button>
+        : !ky.mo_ph && <span className="whitespace-nowrap text-[11.5px] text-slate-400" title="Admin chưa mở kì này cho app phụ huynh">📱 chưa hiện trên app PH</span>)}
       {tao && (
         <div className="absolute left-0 top-9 z-30 w-72 rounded-xl border border-slate-200 bg-white p-3 shadow-xl">
           <div className="mb-2 text-[13px] font-semibold text-slate-700">Kì mới</div>

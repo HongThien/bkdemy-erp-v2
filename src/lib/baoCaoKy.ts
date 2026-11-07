@@ -3,7 +3,8 @@
 // Client chỉ: list kì, CRUD dòng nhập (điểm dự đoán · sai số · nhận xét), gọi RPC công bố / mở lại.
 import { supabase } from './supabase'
 
-export type KyHoc = { id: string; ten: string; tu_thang: string; den_thang: string }
+// mo_ph = kì đang MỞ cho app phụ huynh (Thùy 07/11, mig 202611071041): tắt ⇒ app PH không thấy báo cáo dù đã công bố
+export type KyHoc = { id: string; ten: string; tu_thang: string; den_thang: string; mo_ph?: boolean }
 
 // n = số LẦN đánh giá (luật mới 04/11: đếm theo lần, 60 ngày); hang/tong = hạng % trong khối × môn (em có lần đánh giá ở đơn vị đó)
 export type BcKyDonVi = { ma: string; ten: string; p: number | null; n: number; n_toi_da: number; muc?: 'co_ban' | 'nang_cao' | null; hang?: number | null; tong?: number | null }
@@ -47,7 +48,7 @@ export type BcKyNhap = { diem_du_doan: number | null; sai_so: number | null; nha
 export const BC_KY_NHAP_TRONG: BcKyNhap = { diem_du_doan: null, sai_so: null, nhan_xet: null, ke_hoach: null, nx_chon: {}, kh_chon: [], nx_them: {}, ket_luan_muc: null, ket_luan: null, cong_bo_at: null }
 
 export async function listKyHoc(): Promise<KyHoc[]> {
-  const { data, error } = await supabase.from('ky_hoc').select('id, ten, tu_thang, den_thang').order('tu_thang', { ascending: false }).limit(50)
+  const { data, error } = await supabase.from('ky_hoc').select('id, ten, tu_thang, den_thang, mo_ph').order('tu_thang', { ascending: false }).limit(50)
   if (error) throw error
   return (data ?? []) as KyHoc[]
 }
@@ -58,6 +59,11 @@ export async function themKyHoc(ten: string, tu_thang: string, den_thang: string
   return data as KyHoc
 }
 
+// Bật/tắt hiện báo cáo kì trên app PH (chỉ admin — RLS ky_hoc_sua; DB ghi vết ky_hoc_mo_ph_log).
+export async function datMoPhKy(kyId: string, mo: boolean): Promise<void> {
+  const { error } = await supabase.from('ky_hoc').update({ mo_ph: mo }).eq('id', kyId)
+  if (error) throw error
+}
 export async function xemBcKy(hsId: string, mon: string, kyId: string): Promise<BcKyXem> {
   const { data, error } = await supabase.rpc('fn_bc_ky_xem', { p_hs: hsId, p_mon: mon, p_ky: kyId })
   if (error) throw error

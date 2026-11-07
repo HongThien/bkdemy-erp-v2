@@ -109,3 +109,8 @@
 - Hạng 1–10 (phụ lục + "Cả học kì") chỉ dành cho em đã thi **≥ 70% số lần thi** của khối × môn trong kì (số cột phụ lục; K9 Toán 5 lần ⇒ ≥ 4).
 - Trong nhóm đủ: xếp theo hạng TB như cũ (bằng nhau cùng hạng). Mọi em còn lại (đủ nhưng ngoài 10 + chưa đủ) xếp tiếp sau nhóm top theo hạng TB ⇒ em thi 1 lần điểm cao tốt nhất đứng thứ 11.
 - Một nơi: `_bc_ky_xep_hang_lai` trong `fn_bc_ky_du_lieu` (mig 202611061942) — áp cả số liệu đã chốt, không phải chốt lại. Báo cáo ĐÃ CÔNG BỐ giữ nguyên bản đóng băng; muốn theo luật mới phải Mở lại → công bố lại.
+
+## F. CÔNG TẮC APP PHỤ HUYNH THEO KÌ (Thùy 07/11)
+- `ky_hoc.mo_ph` (mặc định TẮT): app PH chỉ đọc báo cáo ĐÃ CÔNG BỐ của kì đang MỞ (policy `fdw_bkdemy_web_read` + `_bc_ky_mo_ph`). Tắt không đụng trạng thái công bố / snapshot.
+- Bật/tắt: nút "📱 App PH: đang ẩn / đang hiện" cạnh ô chọn kì ở Report phụ huynh → Học kì (chỉ admin), mỗi lần đổi ghi `ky_hoc_mo_ph_log`.
+- Quy trình: GV điền → công bố → admin soát (ERP / PDF) → bật app PH cho cả kì.
