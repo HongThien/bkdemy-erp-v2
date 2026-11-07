@@ -99,15 +99,15 @@ export function svgGiaiTich(mt) {
   }
 
   // 5) phác khối tròn xoay quanh Ox (nét đứt đối xứng + elip hai đầu)
-  if (mt.xoay && mt.xoay.quanh === 'Oy') {
-    const xo = mt.xoay, g = gt('h' + (xo.ham ?? 0)), tu = xo.tu, den = xo.den
+  for (const XO of [].concat(mt.xoay ?? [])) if (XO.quanh === 'Oy') {
+    const xo = XO, g = gt('h' + (xo.ham ?? 0)), tu = xo.tu, den = xo.den
     if (!(tu < den)) throw new Error('xoay: tu < den')
     const N = 300, dup = []
     for (let k = 0; k <= N; k++) { const xv = tu + ((den - tu) * k) / N, v = g(xv); if (Number.isFinite(v)) dup.push(`${r2(X(-xv))},${r2(Y(v))}`) }
     o.push(`<polyline clip-path="url(#kh)" fill="none" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="6 4" points="${dup.join(' ')}"/>`)
     for (const yn of [].concat(xo.nap ?? [])) { const rx = den * dx, ry = Math.max(7, Math.min(18, rx * 0.28)); o.push(`<ellipse cx="${r2(X(0))}" cy="${r2(Y(yn))}" rx="${r2(rx)}" ry="${r2(ry)}" fill="none" stroke="#6b7280" stroke-width="1.4"/>`) }
-  } else if (mt.xoay) {
-    const xo = mt.xoay, g = gt('h' + (xo.ham ?? 0)), tu = xo.tu, den = xo.den
+  } else {
+    const xo = XO, g = gt('h' + (xo.ham ?? 0)), tu = xo.tu, den = xo.den
     if (!(tu < den)) throw new Error('xoay: tu < den')
     const N = 300, dup = []
     for (let k = 0; k <= N; k++) { const xv = tu + ((den - tu) * k) / N, v = g(xv); if (Number.isFinite(v)) dup.push(`${r2(X(xv))},${r2(Y(-v))}`) }

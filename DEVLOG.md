@@ -79195,3 +79195,9 @@ Thùy nêu 4 việc, làm được 3:
 - **Bỏ qua (nói rõ):** T…2425 (lời giải A(16;90) mâu thuẫn "15 s"), T…2476 (đề "1 giờ" vs lời giải), T…863 và 880 (đề không cho số liệu), mọi hình đã đủ đọc (1000, 12/16, 3/2…). Trang duyệt: `kho-rules/dai/k12-bt-NDB00631-truoc-sau.html`. Chưa ghi DB.
 - Máy vẽ: sửa chiều cao khi `deu:false` (hình t–v đơn vị lệch hẳn, vd v tới 90 mà t tới 4,5).
 - **Ghi DB (Thùy duyệt, 07/11):** 13 câu NDB00631 đổi `anh_de` sang SVG máy vẽ, sao lưu `reports/sao-luu-anh-cau-*.json`.
+
+## 2026-11-07 (đêm) — NDB00780 / NDB00781 / NDB00636: xem ảnh; chỉ NDB00636 vẽ lại 4 câu, CHỜ duyệt
+- **NDB00780 (38 câu, thiết diện) và NDB00781 (32 câu, vật thể tròn xoay thực tế):** toàn hình 3D vẽ tay / ảnh chụp (lều, thùng rượu, cốc, nón…) — máy vẽ giải tích KHÔNG làm được ⇒ **giữ hết, không vẽ lại câu nào**. Cần máy vẽ 3D (`toan-site/the-tich/` đã có khung 3D riêng, spec-day-hinh-3d.md) nếu Thùy muốn.
+- **NDB00636 (30 câu):** đa số đã là TikZ có phác khối quay (giữ). Vẽ lại 4 câu hình yếu: T…2600 (cos x), 5049 (3√x), 7042 (√x và 2−x), 4846 (hình thang quay Ox). Kiểm thể tích π∫|f²−g²| khớp đáp số cả 4.
+- **PHÁT HIỆN lỗi lời giải gốc T…4846:** lời giải ghi "= 14π ≈ 44,0" nhưng 8/3 + 8 + 4/3 = 12 ⇒ V = 12π ≈ 37,7 (khớp đáp số 37,7). Chỉ sai phép cộng trong lời giải, đáp số đúng — chờ Thùy cho sửa lời giải.
+- Máy vẽ: `xoay` nhận MẢNG (nhiều đoạn quay); trang duyệt kiểm cả thể tích (`V:`). Trang duyệt: `kho-rules/dai/k12-bt-NDB00636-truoc-sau.html`. Chưa ghi DB.
