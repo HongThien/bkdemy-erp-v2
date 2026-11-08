@@ -79374,3 +79374,7 @@ Thùy nêu 4 việc, làm được 3:
 - Chấm 9A1 Lưu Phương Linh (10) + 6 bài 9A2 buổi 38 (Phương Trang 8,5 · Hương Giang 5,5 · Bảo Quân 6,5 · Khôi Nguyên 7,25 · Phương Linh 7,5 · Hà Thu 6,75). Đề Hình không có trong kho ⇒ 1 agent giải đề trước làm đáp án chung, 6 agent chấm theo ⇒ chấm đồng nhất.
 - 3 em 9A2 thiếu ẢNH trang 6/6 (câu 7) ⇒ để TRỐNG câu 7 (không ghi "Con chưa làm" lên bài gửi PH khi chưa chắc em bỏ). Ý có trên trang nhưng em bỏ trống ⇒ S + "Con chưa làm câu X" (CEO 08/11, ca Minh Phương 2b).
 - App TA: nút 📄 Tải PDF / 🖼 Tải ảnh / 📤 Gửi (bảng chia sẻ điện thoại) cho bài đã chấm, CHỈ hiện sau khi TA xác nhận Đ/C/S (`src/lib/btvnTaiBai.ts`, gom ở trình duyệt bằng jspdf, mỗi ảnh 1 trang A4). Chưa thử trên app thật (cần đăng nhập TA).
+
+### 08/11 — Popup ✎ Chọn câu (giáo trình bản đồ mới) có hàng chọn DẠNG (Thùy "cần 1 chỗ chọn dạng để câu hiện theo từng dạng cho đỡ phải kéo nhiều")
+- ChonCauBdm: hàng nút "Dạng:" — Tất cả · từng dạng bài (★ dạng đang soạn) · chưa phân, kèm số câu theo nguồn (trên lớp / luyện tập) + lọc loại đang mở. Mở sẵn dạng đang soạn; BTVN nhóm (không uuTien) mở Tất cả. Chỉ lọc hiển thị — câu đã tick ở dạng khác vẫn giữ. Dùng chung mọi chỗ gọi ChonCauBdm (giáo trình, chuyên đề, ET, MT).
+- Kiểm app (không ghi): Giáo trình 10A1 › ✎ Chọn câu: trên lớp Tất cả 12 / ★ 3; luyện tập 393 / ★ 84 / Biểu diễn véc tơ 184…; bấm dạng ⇒ chỉ hiện câu dạng đó.
