@@ -2,6 +2,9 @@
 // Kho = câu kho chuẩn của NHÓM (fn_tl_bdm_cau), chia theo dạng bài; dạng bài đang soạn lên đầu, câu chưa phân dạng bài cuối.
 // Câu đã dùng ở phần khác cùng buổi ⇒ khoá (DB cũng chặn lần nữa khi ghi). Thứ tự = thứ tự bấm (giống KhoPicker cũ).
 // 2 NGUỒN (Thùy 22/10): 🏫 Kho trên lớp (bài giảng + luyện trên lớp, dai_cau_lop) · 📚 Kho luyện tập — chọn trộn, 1 danh sách.
+// ⭐ Thùy 08/11 "cần 1 chỗ chọn dạng — câu hiện theo từng dạng cho đỡ phải kéo nhiều": hàng nút DẠNG (Tất cả · từng dạng bài · chưa phân,
+//   kèm số câu theo nguồn + lọc loại đang mở). Mở sẵn dạng đang soạn (uuTien); BTVN nhóm (không uuTien) mở Tất cả. Chỉ lọc HIỂN THỊ —
+//   câu đã tick ở dạng khác vẫn giữ trong lựa chọn.
 import { useEffect, useState } from 'react'
 import { cauCuaNhom, cauLopCuaNhom, dangBaiCuaNhom, type CauKho, type CauLopKho } from '../../../lib/tailieuBdm'
 import { fetchCausCuaTaiLieu, type TaiLieuNhanhCtx } from '../../../lib/tailieu'
@@ -29,6 +32,7 @@ export default function ChonCauBdm({ tl, nhomId, uuTien, selected, khoa, macDinh
   const [err, setErr] = useState<string | null>(null)
   const [sel, setSel] = useState<Set<string>>(new Set(selected))
   const [fLoai, setFLoai] = useState<Set<string>>(new Set())
+  const [fDang, setFDang] = useState<string>(uuTien ?? '*')   // '*' = tất cả · '' = chưa phân dạng bài · còn lại = id dạng bài
   const [busy, setBusy] = useState(false)
   const [loiGhi, setLoiGhi] = useState<string | null>(null)
   const khoaSet = new Set(khoa.filter((m) => !selected.includes(m)))
@@ -61,6 +65,11 @@ export default function ChonCauBdm({ tl, nhomId, uuTien, selected, khoa, macDinh
         id, vai, ten: `${tenDb(id)} · ${vai === 'giang' ? '🎓 Bài giảng' : '✏️ Luyện trên lớp'}`,
         caus: (lop ?? []).filter((c) => c.dang_bai_id === id && c.vai === vai && (!fLoai.size || fLoai.has(c.loai_cau))).map((c) => ({ ...c, la_goc: true, cum: c.ma_cau })),
       }))).filter((g) => g.caus.length > 0)
+  // số câu từng dạng (đúng nguồn + lọc loại đang mở) cho hàng nút Dạng; nhóm hiện = theo dạng đang chọn
+  const demDang = new Map<string, number>()
+  for (const g of nhomCau) demDang.set(g.id ?? '', (demDang.get(g.id ?? '') ?? 0) + g.caus.length)
+  const nutDang = thuTu.map((id) => ({ k: id ?? '', ten: tenDb(id), n: demDang.get(id ?? '') ?? 0 })).filter((x) => x.n > 0 || x.k === fDang)
+  const nhomHien = fDang === '*' ? nhomCau : nhomCau.filter((g) => (g.id ?? '') === fDang)
   const soChon = (ds: { ma_cau: string }[] | null) => (ds ?? []).filter((x) => sel.has(x.ma_cau)).length   // đếm câu đang hiện (badge)
 
   async function xong() {
@@ -90,11 +99,24 @@ export default function ChonCauBdm({ tl, nhomId, uuTien, selected, khoa, macDinh
           ))}
           {fLoai.size > 0 && <button onClick={() => setFLoai(new Set())} className="ml-1 text-[12px] font-medium text-slate-400 hover:text-rose-600">Xoá lọc</button>}
         </div>
+        {kho && lop && nutDang.length > 0 && (
+          <div className="flex max-h-24 flex-wrap items-center gap-1.5 overflow-auto border-b border-slate-100 px-6 py-2 max-md:px-3">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Dạng:</span>
+            {[{ k: '*', ten: 'Tất cả', n: nhomCau.reduce((s, g) => s + g.caus.length, 0) }, ...nutDang].map((d) => (
+              <button key={d.k} onClick={() => setFDang(d.k)} title={d.ten}
+                className={`inline-flex max-w-[20rem] items-center gap-1 rounded-md px-2.5 py-1 text-[12px] font-medium transition ${fDang === d.k ? 'bg-indigo-600 text-white shadow-sm' : d.k === '' ? 'border border-dashed border-slate-300 text-slate-500 hover:border-indigo-300' : 'border border-slate-200 text-slate-600 hover:border-indigo-300 hover:text-indigo-700'}`}>
+                <span className="min-w-0 truncate">{d.k === uuTien && d.k ? '★ ' : ''}{d.ten}</span>
+                <span className={`shrink-0 ${fDang === d.k ? 'text-indigo-100' : 'text-slate-400'}`}>{d.n}</span>
+              </button>
+            ))}
+          </div>
+        )}
         <div className="min-h-0 flex-1 overflow-auto p-5 max-md:p-2.5">
           {err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
             : !kho || !lop ? <p className="text-sm text-slate-400">Đang tải kho…</p>
+            : nhomCau.length > 0 && nhomHien.length === 0 ? <p className="text-sm text-slate-400">Dạng này chưa có câu ở {nguon === 'lop' ? 'kho trên lớp' : 'kho luyện tập'}{fLoai.size ? ' khớp lọc' : ''} — chọn dạng khác hoặc <button onClick={() => setFDang('*')} className="font-medium text-indigo-600 underline">xem tất cả</button>.</p>
             : nhomCau.length === 0 ? <p className="text-sm text-slate-400">{nguon === 'lop' ? `Nhóm này chưa có câu ở kho trên lớp${fLoai.size ? ' khớp lọc' : ''} — soạn ở Bản đồ mới › dạng bài › 🏫 Kho trên lớp.` : `Nhóm này chưa có câu kho chuẩn${fLoai.size ? ' khớp lọc' : ''}.`}</p>
-            : nhomCau.map((g) => (
+            : nhomHien.map((g) => (
               <div key={`${g.id ?? '__chua_phan__'}${'vai' in g ? g.vai : ''}`} className="mb-5">
                 <div className="mb-1.5 flex items-center gap-2">
                   <span className={`text-[12.5px] font-semibold ${g.id ? 'text-indigo-700' : 'text-slate-400'}`}>{g.id === uuTien && g.id ? '★ ' : ''}{g.ten}</span>
