@@ -79331,3 +79331,8 @@ Thùy nêu 4 việc, làm được 3:
 - In: ETPrintView (chỉ ET ban_do='moi') in thêm "Phần · Hình học" sau câu Đại, "Bài 1, 2…" khớp nhãn "Bài 1a" ở tab chấm; mỗi bài 1 ô Đ/C/S đầu phiếu; mã đề theo HS. Mở từ Kho tài liệu thì tự đọc bài Hình từ buổi Hình. ET bản đồ cũ không đổi.
 - Soát DB: không hàm ET nào chia miền "hinh_baitoan_id is null ⇒ Đại" (chỉ 3 hàm MT, đã sửa 29/10) ⇒ ô bài kho (chỉ hinh_y_id) an toàn như MT; không vào mastery Hình khi ý chưa gắn node (đúng §1.5).
 - Kiểm trên app (admin, KHÔNG lưu): 8A1 hôm nay › + Thêm bài Hình – Luyện › MH.072 › Bài trong kho › HLB00099 ⇒ hiện đề + 4 ý + hình; 🎲 Sinh đề 2&3 ⇒ "✓ đủ 3 mã đề"; Xem/In 5 trang, 3 mã đề ra 3 bài khác nhau. Chưa thử bấm Lưu thật (sẽ ghi ET thật cho lớp).
+
+### 08/11 — Bài Hình – Luyện trong ET chỉnh được cỡ hình (Thùy "sao ko có chỉnh tỉ lệ hình vậy")
+- Nguyên nhân: khuôn in Hình (MucsBlock/HinhPrintView) cố định ảnh 36% bề ngang, cao ≤ 50mm — chưa từng có cỡ tay như câu Đại (AnhMmCtl, 12/10).
+- Làm: MucIn 'de' thêm anhMm (thiếu = tự động như cũ ⇒ giáo trình/MT/ET cũ không đổi). ET bản đồ mới: ô "cỡ %" (dùng lại AnhMmCtl + 50/75/100) cạnh nút hình vẽ từng bài; lưu ở hinh_gt_buoi.cau_hinh.et.anhMm/anhPct, khoá = sig bài (như maDe); đề 2/3 kế thừa cỡ bài gốc. ETPrintView dựng TỪNG bài một lượt để gắn cỡ đúng bài, không đoán theo vị trí.
+- Kiểm trên app (không lưu): 8A1 › HLB00099 › cỡ 50% = 102.13mm ⇒ bản in 3 mã đề đều 102.13mm.

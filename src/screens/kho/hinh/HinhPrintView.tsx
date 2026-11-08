@@ -37,7 +37,8 @@ export type YIn = {
 export type MucIn =
   | { kieu: 'chuong'; tieuDe: string; moTa?: string | null }
   | { kieu: 'nhac_lai'; items: { ma: string; phatBieu: string; cap: number }[] }
-  | { kieu: 'de'; deBai: string; anhDe?: string | null; nguon?: string | null; ma?: string | null; ys: YIn[]; cheDo?: CheDoHinh; soDong?: number | null; moHinhId?: string | null }
+  | { kieu: 'de'; deBai: string; anhDe?: string | null; nguon?: string | null; ma?: string | null; ys: YIn[]; cheDo?: CheDoHinh; soDong?: number | null; moHinhId?: string | null; anhMm?: number | null }
+  //   anhMm = bề rộng ảnh đề khi in (mm, quy từ % ảnh gốc — ô "cỡ" của builder, Thùy 08/11). Thiếu = tự động (36% bề ngang, cao ≤ 50mm).
   //   cheDo = 3 trạng thái hình (hien / o_trong / khong). soDong = số dòng kẻ mỗi ý trên bản HS.
   //   moHinhId = mô hình của node sâu nhất — để gom lý thuyết mô hình 1 lần/nhóm khi in (xem `Noi()`).
 
@@ -368,12 +369,17 @@ export function MucsBlock({ mucs, gv, moHinhLyThuyet, batDau = 1, cauTu }: { muc
               {(() => {
                 const cd = m.cheDo ?? 'hien'
                 if (cd === 'khong') return null
+                // cỡ đặt tay (anhMm) ⇒ đúng bề rộng đó, bỏ trần 36% / 50mm (khuôn AnhDe của câu Đại)
+                const co = m.anhMm && m.anhMm > 0 ? m.anhMm : null
+                const fig = (src: string) => co
+                  ? <div className="hp-fig-r" style={{ width: `${co}mm` }}><img src={src} alt="" style={{ width: `${co}mm`, maxHeight: 'none' }} /></div>
+                  : <div className="hp-fig-r"><img src={src} alt="" /></div>
                 if (cd === 'o_trong') {
                   return gv && m.anhDe
-                    ? <div className="hp-fig-r"><img src={m.anhDe} alt="" /></div>
+                    ? fig(m.anhDe)
                     : <div className="hp-draw-r"><span>Vẽ hình</span></div>
                 }
-                return m.anhDe ? <div className="hp-fig-r"><img src={m.anhDe} alt="" /></div> : null
+                return m.anhDe ? fig(m.anhDe) : null
               })()}
               <div className="hp-txt-flow"><MathText>{m.deBai}</MathText></div>
               {/* ⭐ 08-09 (Thùy chốt): dòng kẻ gán theo CẢ BÀI (chuỗi ghép a,b,c = 1 bài), nên đề a,b,c

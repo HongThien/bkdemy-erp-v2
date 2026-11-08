@@ -25,7 +25,7 @@ import { applyBanToPick, findHinhGtBuoi, loadBuoiPicksPhan, getHinhCauHinh, type
 import type { PickItem } from '../../store/useStore'
 
 /** Bài Hình – Luyện của ET (đang soạn, hoặc đọc từ buổi Hình). maDe khoá = sigPickHinh(pick). */
-export type EtHinh = { picks: PickItem[]; cheDo: Record<string, CheDoHinh>; soDong: Record<string, number>; maDe: Record<string, [HinhBanRef | null, HinhBanRef | null]> }
+export type EtHinh = { picks: PickItem[]; cheDo: Record<string, CheDoHinh>; soDong: Record<string, number>; maDe: Record<string, [HinhBanRef | null, HinhBanRef | null]>; anhMm?: Record<string, number>; anhPct?: Record<string, number> }
 /** Khoá mã đề 2/3 của 1 bài Hình (khuôn sigHinh của MT): bài kho = 'bai:<id>', chuỗi = tập node đã sắp. */
 export const sigPickHinh = (p: PickItem): string => (p.kind === 'bai' ? `bai:${p.baiId}` : [...p.nodeIds].sort().join(','))
 type HinhDe = [MucIn[], MucIn[], MucIn[]]   // mã đề 1 / 2 / 3
@@ -111,14 +111,20 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
       let h = hinhOverride ?? null
       if (!h) {
         const bid = await findHinhGtBuoi(tl.lop_id!, tl.ngay!)
-        if (bid) { const [nhap, c2] = await Promise.all([loadBuoiPicksPhan(bid, 'et'), getHinhCauHinh(bid, 'et')]); h = { ...nhap, maDe: c2.maDe ?? {} } }
+        if (bid) { const [nhap, c2] = await Promise.all([loadBuoiPicksPhan(bid, 'et'), getHinhCauHinh(bid, 'et')]); h = { ...nhap, maDe: c2.maDe ?? {}, anhMm: c2.anhMm ?? {}, anhPct: c2.anhPct ?? {} } }
       }
       const picks = (h?.picks ?? []).filter((p) => p.phan === 'et')
       if (!h || !picks.length) { if (alive) { setHinhDe(null); setHinhReady(true) } return }
       const L = await loadLuoi(tl.khoi ?? undefined)
       const cho = (v: 0 | 1) => picks.map((p) => { const alt = h!.maDe[sigPickHinh(p)]?.[v]; return alt ? applyBanToPick(p, alt) : p })
-      const [a, b, c] = await Promise.all([picks, cho(0), cho(1)].map((ps) => banInTheoMoHinh(tl.ten, 'et', ps, L, h!.cheDo, h!.soDong)))
-      if (alive) { setHinhDe([a.mucs, b.mucs, c.mucs]); setHinhReady(true) }
+      // dựng TỪNG bài (1 pick/lượt, khuôn MTPrintView) ⇒ biết chắc muc nào của bài nào để gắn cỡ ảnh — không đoán theo vị trí
+      const dung = (ps: PickItem[]) => Promise.all(ps.map(async (p, i) => {
+        const m = (await banInTheoMoHinh(tl.ten, 'et', [p], L, h!.cheDo, h!.soDong)).mucs.find((x) => x.kieu === 'de')
+        const mm = h!.anhMm?.[sigPickHinh(picks[i])]
+        return m && m.kieu === 'de' ? ({ ...m, anhMm: mm ?? null } as MucIn) : null
+      })).then((ms) => ms.filter((m): m is MucIn => !!m))
+      const [a, b, c] = await Promise.all([dung(picks), dung(cho(0)), dung(cho(1))])
+      if (alive) { setHinhDe([a, b, c]); setHinhReady(true) }
     })().catch(() => { if (alive) { setHinhDe(null); setHinhReady(true) } })
     return () => { alive = false }
   }, [full, hinhOverride])

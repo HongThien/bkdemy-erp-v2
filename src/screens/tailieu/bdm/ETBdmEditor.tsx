@@ -181,7 +181,7 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
       const bid = await findHinhGtBuoi(lopId!, ngay)
       if (!bid) { if (alive) { setHinh(HINH_TRONG); hinhNapRef.current = key }; return }
       const [nhap, c2] = await Promise.all([loadBuoiPicksPhan(bid, 'et'), getHinhCauHinh(bid, 'et')])
-      if (alive) { setHinh({ ...nhap, maDe: c2.maDe ?? {} }); hinhNapRef.current = key }
+      if (alive) { setHinh({ ...nhap, maDe: c2.maDe ?? {}, anhMm: c2.anhMm ?? {}, anhPct: c2.anhPct ?? {} }); hinhNapRef.current = key }
     })().catch((e) => { if (alive) setErr(loiDoc(e)) })
     return () => { alive = false }
   }, [lopId, ngay, coHinh]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -341,6 +341,12 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
     return { ...h, picks: h.picks.map((x, j) => (j === i ? p : x)), cheDo, soDong }
   })
   const xoaHinh = (i: number) => setHinh((h) => ({ ...h, picks: h.picks.filter((_, j) => j !== i) }))
+  // cỡ ảnh khi in của 1 bài (khoá = sig bài) — cùng ô AnhMmCtl của câu Đại / Hình–Học
+  const setAnhHinh = (sig: string, v: { pct: number; mm: number } | null) => setHinh((h) => {
+    const mm = { ...(h.anhMm ?? {}) }, pct = { ...(h.anhPct ?? {}) }
+    if (v && v.mm > 0) { mm[sig] = v.mm; pct[sig] = v.pct } else { delete mm[sig]; delete pct[sig] }
+    return { ...h, anhMm: mm, anhPct: pct }
+  })
   // ↻ Đổi = bản khác ít dùng nhất (bài kho: bài khác cùng mô hình, cùng số ý) — giữ key ⇒ giữ chế độ hình / số dòng
   async function doiHinh(i: number) {
     const p = hinh.picks[i]; if (!p) return
@@ -429,7 +435,10 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
     const h = await tinhMaDeHinh(hinh, true)
     setHinh(h)
     await saveBuoiSelectionPhan(bid, 'et', { picks: h.picks.map((p) => ({ ...p, phan: 'et' as const })), cheDo: h.cheDo, soDong: h.soDong })
-    await patchHinhCauHinh(bid, 'et', { maDe: h.maDe, hsMaDe: hsMaDe ?? {} })
+    // cỡ ảnh chỉ giữ cho bài còn trong ET
+    const con = new Set(h.picks.map(sigPickHinh))
+    const loc = (r?: Record<string, number>) => Object.fromEntries(Object.entries(r ?? {}).filter(([k]) => con.has(k)))
+    await patchHinhCauHinh(bid, 'et', { maDe: h.maDe, hsMaDe: hsMaDe ?? {}, anhMm: loc(h.anhMm), anhPct: loc(h.anhPct) })
   }
   async function luu() {
     const id = await persistET(); if (!id) return
@@ -674,6 +683,11 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
                           <span className="text-[10px] text-slate-300">hình vẽ:</span>
                           <button onClick={() => setHinh((h) => ({ ...h, cheDo: { ...h.cheDo, [p.key]: cheDoKe(h.cheDo[p.key] ?? 'hien') } }))} title={`${cd.goi} — bấm để đổi (hiện → ô trống → không)`}
                             className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-600 hover:bg-slate-200">{cd.icon} {cd.nhan}</button>
+                          {m && m.kieu === 'de' && m.anhDe && (hinh.cheDo[p.key] ?? 'hien') !== 'khong' && (
+                            <AnhMmEditCtx.Provider value={{ mm: hinh.anhMm ?? {}, pct: hinh.anhPct ?? {}, set: setAnhHinh, baChe: true }}>
+                              <AnhMmCtl ma={sigPickHinh(p)} url={m.anhDe} />
+                            </AnhMmEditCtx.Provider>
+                          )}
                           <label className="ml-auto flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ mỗi ý cho HS viết (bản in)">dòng
                             <input type="number" min={0} max={50} value={hinh.soDong[p.key] ?? DONG_BTVN}
                               onChange={(e) => { const v = Math.max(0, Math.min(50, +e.target.value || 0)); setHinh((h) => ({ ...h, soDong: { ...h.soDong, [p.key]: v } })) }}
@@ -691,7 +705,9 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
                                 <div key={yi} className="mt-1">{y.nhan && <b>{y.nhan}) </b>}<MathText>{y.giaThietPhu ? `${y.giaThietPhu}. ${y.noiDung}` : y.noiDung}</MathText></div>
                               ))}
                             </div>
-                            {m.anhDe && <img src={m.anhDe} alt="" className="max-h-40 w-auto max-w-[280px] shrink-0 rounded border border-slate-200 bg-white object-contain" />}
+                            {m.anhDe && (hinh.anhMm?.[sigPickHinh(p)]
+                              ? <img src={m.anhDe} alt="" style={{ width: `${hinh.anhMm[sigPickHinh(p)]}mm` }} className="h-auto max-w-[45%] shrink-0 rounded border border-slate-200 bg-white object-contain" />
+                              : <img src={m.anhDe} alt="" className="max-h-40 w-auto max-w-[280px] shrink-0 rounded border border-slate-200 bg-white object-contain" />)}
                           </>) : <span className="text-[12px] italic text-slate-400">{hinhL ? 'đang dựng đề…' : 'đang tải kho Hình…'}</span>}
                         </div>
                         <div className="ml-8 mt-2 flex flex-wrap items-center gap-2 border-t border-dashed border-amber-100 pt-2 text-[11px] text-slate-500">
