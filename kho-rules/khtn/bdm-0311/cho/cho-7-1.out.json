@@ -1,0 +1,374 @@
+[
+ {
+  "ma_cau": "K07000000101",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chưa có nhóm khái niệm tia tới, pháp tuyến, góc tới trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000102",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chưa có nhóm khái niệm tia tới, pháp tuyến, góc tới trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000103",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chưa có nhóm khái niệm tia tới, pháp tuyến, góc tới trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000104",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chưa có nhóm khái niệm tia tới, pháp tuyến, góc tới trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000105",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chưa có nhóm phát biểu định luật phản xạ ánh sáng"
+ },
+ {
+  "ma_cau": "K07000000106",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chưa có nhóm phát biểu định luật phản xạ ánh sáng"
+ },
+ {
+  "ma_cau": "K07000000107",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chưa có nhóm phát biểu định luật phản xạ ánh sáng"
+ },
+ {
+  "ma_cau": "K07000000108",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chưa có nhóm phát biểu định luật phản xạ ánh sáng"
+ },
+ {
+  "ma_cau": "K07000000109",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Thiếu nhóm yếu tố ảnh hưởng độ mạnh nam châm điện"
+ },
+ {
+  "ma_cau": "K07000000110",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Thiếu nhóm yếu tố ảnh hưởng độ mạnh nam châm điện"
+ },
+ {
+  "ma_cau": "K07000000111",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Thiếu nhóm yếu tố ảnh hưởng độ mạnh nam châm điện"
+ },
+ {
+  "ma_cau": "K07000000112",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Thiếu nhóm yếu tố ảnh hưởng độ mạnh nam châm điện"
+ },
+ {
+  "ma_cau": "K07000000113",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Thiếu nhóm yếu tố ảnh hưởng độ mạnh nam châm điện"
+ },
+ {
+  "ma_cau": "K07000000114",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Thiếu nhóm yếu tố ảnh hưởng độ mạnh nam châm điện"
+ },
+ {
+  "ma_cau": "K07000000115",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Thiếu nhóm yếu tố ảnh hưởng độ mạnh nam châm điện"
+ },
+ {
+  "ma_cau": "K07000000116",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Thiếu nhóm thí nghiệm biến số độ mạnh nam châm điện"
+ },
+ {
+  "ma_cau": "K07000000117",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Thiếu nhóm thí nghiệm biến số độ mạnh nam châm điện"
+ },
+ {
+  "ma_cau": "K07000000118",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Thiếu nhóm thí nghiệm biến số độ mạnh nam châm điện"
+ },
+ {
+  "ma_cau": "K07000000119",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Thiếu nhóm thí nghiệm biến số độ mạnh nam châm điện"
+ },
+ {
+  "ma_cau": "K07000000120",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Thiếu nhóm thí nghiệm biến số độ mạnh nam châm điện"
+ },
+ {
+  "ma_cau": "K07000000121",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Thiếu nhóm thí nghiệm biến số độ mạnh nam châm điện"
+ },
+ {
+  "ma_cau": "K07000000122",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Thiếu nhóm thí nghiệm biến số độ mạnh nam châm điện"
+ },
+ {
+  "ma_cau": "K07000000123",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Thiếu nhóm thí nghiệm biến số độ mạnh nam châm điện"
+ },
+ {
+  "ma_cau": "K07000000124",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Thiếu nhóm thí nghiệm biến số độ mạnh nam châm điện"
+ },
+ {
+  "ma_cau": "K07000000125",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Đề xuất tăng độ mạnh nam châm điện; thiếu nhóm yếu tố độ mạnh"
+ },
+ {
+  "ma_cau": "K07000000126",
+  "nhom_id": "KNB00349",
+  "chac": "vua",
+  "ly_do": "Sửa chữa thiết bị dùng nam châm điện; gần nhóm ứng dụng/điều kiện"
+ },
+ {
+  "ma_cau": "K07000000127",
+  "nhom_id": "KNB00349",
+  "chac": "vua",
+  "ly_do": "Sửa chữa thiết bị dùng nam châm điện; gần nhóm ứng dụng/điều kiện"
+ },
+ {
+  "ma_cau": "K07000000128",
+  "nhom_id": "KNB00349",
+  "chac": "vua",
+  "ly_do": "Sửa chữa thiết bị dùng nam châm điện; gần nhóm ứng dụng/điều kiện"
+ },
+ {
+  "ma_cau": "K07000000129",
+  "nhom_id": "KNB00349",
+  "chac": "vua",
+  "ly_do": "Sửa chữa thiết bị dùng nam châm điện; gần nhóm ứng dụng/điều kiện"
+ },
+ {
+  "ma_cau": "K07000000130",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Đề xuất tăng độ mạnh nam châm điện; thiếu nhóm yếu tố độ mạnh"
+ },
+ {
+  "ma_cau": "K07000000131",
+  "nhom_id": "KNB00349",
+  "chac": "vua",
+  "ly_do": "Kiểm tra nguyên nhân thiết bị nam châm điện; gần nhóm ứng dụng"
+ },
+ {
+  "ma_cau": "K07000000132",
+  "nhom_id": "KNB00349",
+  "chac": "vua",
+  "ly_do": "Kiểm tra nguyên nhân thiết bị nam châm điện; gần nhóm ứng dụng"
+ },
+ {
+  "ma_cau": "K07000000133",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chọn cấu hình nam châm điện mạnh nhất; thiếu nhóm yếu tố độ mạnh"
+ },
+ {
+  "ma_cau": "K07000000134",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chọn cấu hình nam châm điện mạnh nhất; thiếu nhóm yếu tố độ mạnh"
+ },
+ {
+  "ma_cau": "K07000000135",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chọn cấu hình nam châm điện mạnh nhất; thiếu nhóm yếu tố độ mạnh"
+ },
+ {
+  "ma_cau": "K07000000136",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chọn cấu hình nam châm điện mạnh nhất; thiếu nhóm yếu tố độ mạnh"
+ },
+ {
+  "ma_cau": "K07000000137",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chọn cấu hình nam châm điện mạnh nhất; thiếu nhóm yếu tố độ mạnh"
+ },
+ {
+  "ma_cau": "K07000000138",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chọn cấu hình nam châm điện mạnh nhất; thiếu nhóm yếu tố độ mạnh"
+ },
+ {
+  "ma_cau": "K07000000139",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chọn cấu hình nam châm điện mạnh nhất; thiếu nhóm yếu tố độ mạnh"
+ },
+ {
+  "ma_cau": "K07000000140",
+  "nhom_id": "KNB00355",
+  "chac": "cao",
+  "ly_do": "Chuyển hoá năng lượng trong quang hợp"
+ },
+ {
+  "ma_cau": "K07000000141",
+  "nhom_id": "KNB00357",
+  "chac": "cao",
+  "ly_do": "Đồ thị ảnh hưởng ánh sáng/nhiệt độ đến quang hợp"
+ },
+ {
+  "ma_cau": "K07000000142",
+  "nhom_id": "KNB00357",
+  "chac": "cao",
+  "ly_do": "Đồ thị ảnh hưởng ánh sáng/nhiệt độ đến quang hợp"
+ },
+ {
+  "ma_cau": "K07000000143",
+  "nhom_id": "KNB00357",
+  "chac": "cao",
+  "ly_do": "Đồ thị ảnh hưởng ánh sáng/nhiệt độ đến quang hợp"
+ },
+ {
+  "ma_cau": "K07000000144",
+  "nhom_id": "KNB00355",
+  "chac": "vua",
+  "ly_do": "Thí nghiệm tinh bột quang hợp, dự đoán điều kiện thí nghiệm"
+ },
+ {
+  "ma_cau": "K07000000145",
+  "nhom_id": "KNB00355",
+  "chac": "vua",
+  "ly_do": "Thí nghiệm tinh bột quang hợp, dự đoán điều kiện thí nghiệm"
+ },
+ {
+  "ma_cau": "K07000000146",
+  "nhom_id": "KNB00355",
+  "chac": "vua",
+  "ly_do": "Thí nghiệm rong đuôi chó thải oxygen"
+ },
+ {
+  "ma_cau": "K07000000147",
+  "nhom_id": "KNB00355",
+  "chac": "vua",
+  "ly_do": "Thí nghiệm rong đuôi chó thải oxygen"
+ },
+ {
+  "ma_cau": "K07000000148",
+  "nhom_id": "KNB00357",
+  "chac": "vua",
+  "ly_do": "Đồ thị yếu tố ánh sáng, CO2, nhiệt độ; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K07000000149",
+  "nhom_id": "KNB00357",
+  "chac": "vua",
+  "ly_do": "Đồ thị yếu tố ánh sáng, CO2, nhiệt độ; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K07000000150",
+  "nhom_id": "KNB00357",
+  "chac": "vua",
+  "ly_do": "Đồ thị yếu tố ánh sáng, CO2, nhiệt độ; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K07000000151",
+  "nhom_id": "KNB00357",
+  "chac": "vua",
+  "ly_do": "Đồ thị yếu tố ánh sáng, CO2, nhiệt độ; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K07000000152",
+  "nhom_id": "KNB00355",
+  "chac": "vua",
+  "ly_do": "Thí nghiệm quang hợp (tinh bột, oxygen, CO2)"
+ },
+ {
+  "ma_cau": "K07000000153",
+  "nhom_id": "KNB00355",
+  "chac": "vua",
+  "ly_do": "Thí nghiệm quang hợp (tinh bột, oxygen, CO2)"
+ },
+ {
+  "ma_cau": "K07000000154",
+  "nhom_id": "KNB00355",
+  "chac": "vua",
+  "ly_do": "Thí nghiệm quang hợp (tinh bột, oxygen, CO2)"
+ },
+ {
+  "ma_cau": "K07000000155",
+  "nhom_id": "KNB00355",
+  "chac": "vua",
+  "ly_do": "Thí nghiệm quang hợp (tinh bột, oxygen, CO2)"
+ },
+ {
+  "ma_cau": "K07000000156",
+  "nhom_id": "KNB00355",
+  "chac": "vua",
+  "ly_do": "Thí nghiệm quang hợp (tinh bột, oxygen, CO2)"
+ },
+ {
+  "ma_cau": "K07000000157",
+  "nhom_id": "KNB00355",
+  "chac": "vua",
+  "ly_do": "Thí nghiệm quang hợp (tinh bột, oxygen, CO2)"
+ },
+ {
+  "ma_cau": "K07000000158",
+  "nhom_id": "KNB00355",
+  "chac": "vua",
+  "ly_do": "Thí nghiệm quang hợp (tinh bột, oxygen, CO2)"
+ },
+ {
+  "ma_cau": "K07000000159",
+  "nhom_id": "KNB00355",
+  "chac": "vua",
+  "ly_do": "Thí nghiệm quang hợp (tinh bột, oxygen, CO2)"
+ },
+ {
+  "ma_cau": "K07000000160",
+  "nhom_id": "KNB00355",
+  "chac": "vua",
+  "ly_do": "Thí nghiệm quang hợp (tinh bột, oxygen, CO2)"
+ },
+ {
+  "ma_cau": "K07000000161",
+  "nhom_id": "KNB00359",
+  "chac": "vua",
+  "ly_do": "Đồ thị quang hợp và hô hấp; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K07000000162",
+  "nhom_id": "KNB00359",
+  "chac": "vua",
+  "ly_do": "Đồ thị quang hợp và hô hấp; phụ thuộc hình"
+ }
+]

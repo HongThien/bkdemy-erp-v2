@@ -1,0 +1,430 @@
+=== N H2.1
+@ly_thuyet:
+##TC Điểm cực trị và điều kiện cực trị
+- Hàm $f$ xác định trên khoảng $(a;b)$, $x_0\in(a;b)$. Nếu có khoảng $(x_0-h;x_0+h)\subset(a;b)$ sao cho $f(x)<f(x_0)$ với mọi $x\ne x_0$ thuộc khoảng đó thì $x_0$ là **điểm cực đại**; nếu $f(x)>f(x_0)$ thì $x_0$ là **điểm cực tiểu**.
+- Điều kiện cần: $f$ có đạo hàm tại $x_0$ và đạt cực trị tại $x_0$ thì $f'(x_0)=0$. Điều ngược lại không đúng.
+- Quy tắc I (điều kiện đủ): $f'$ đổi dấu từ $+$ sang $-$ khi qua $x_0$ thì $x_0$ là điểm cực đại; đổi dấu từ $-$ sang $+$ thì $x_0$ là điểm cực tiểu.
+- Quy tắc II: nếu $f'(x_0)=0$ và $f''(x_0)<0$ thì $x_0$ là điểm cực đại; nếu $f'(x_0)=0$ và $f''(x_0)>0$ thì $x_0$ là điểm cực tiểu (khi $f''(x_0)=0$ không kết luận được).
+
+##TC Cách gọi tên
+- $x_0$ là **điểm cực trị** của hàm số; $f(x_0)$ là **giá trị cực trị** ($y_{\text{CĐ}}$ hoặc $y_{\text{CT}}$); $M(x_0;f(x_0))$ là **điểm cực trị của đồ thị**.
+
+##PP Tìm cực trị theo quy tắc I
+Tìm tập xác định của hàm số.
+Tính $y'$, tìm các điểm $y'=0$ và các điểm $y'$ không tồn tại nhưng hàm số vẫn xác định.
+Lập bảng xét dấu $y'$ (xếp các điểm trên theo thứ tự tăng dần).
+Căn cứ chỗ $y'$ đổi dấu để kết luận điểm cực đại, điểm cực tiểu rồi tính giá trị cực trị.
+
+##CY
+- $y'(x_0)=0$ mới chỉ là điều kiện cần: nghiệm kép (bội chẵn) của $y'$ không làm $y'$ đổi dấu nên không phải điểm cực trị.
+- Phân biệt rõ điểm cực trị $x_0$, giá trị cực trị $y(x_0)$ và điểm cực trị của đồ thị $(x_0;y(x_0))$; giá trị cực đại có thể nhỏ hơn giá trị cực tiểu.
+- Cực trị chỉ là so sánh trong lân cận của điểm, không phải giá trị lớn nhất hay nhỏ nhất trên cả tập xác định.
+
+=== H2.1.1
+@ly_thuyet:
+##TC Hàm bậc ba $y=ax^3+bx^2+cx+d$ $(a\ne0)$
+- $y'=3ax^2+2bx+c$ là tam thức bậc hai, $\Delta'_{y'}=b^2-3ac$.
+- $\Delta'_{y'}>0$: $y'$ có hai nghiệm phân biệt đổi dấu nên hàm số có một cực đại và một cực tiểu.
+- $\Delta'_{y'}\le0$: $y'$ không đổi dấu nên hàm số không có cực trị.
+- Hệ số $a>0$: điểm cực đại là nghiệm nhỏ hơn; $a<0$: điểm cực đại là nghiệm lớn hơn.
+
+##PP Tìm cực trị hàm bậc ba
+Tính $y'$ rồi giải $y'=0$ (phân tích nhân tử hoặc dùng $\Delta'$).
+Lập bảng xét dấu: $y'$ cùng dấu với $a$ ngoài hai nghiệm, trái dấu với $a$ giữa hai nghiệm.
+Kết luận điểm cực đại, điểm cực tiểu.
+Thay hoành độ vào $y$ để tính giá trị cực trị.
+
+##CY
+- Hàm bậc ba có đúng hai cực trị hoặc không có cực trị nào, không bao giờ có đúng một cực trị.
+- Khi $y'$ có nghiệm kép thì hàm số vẫn đơn điệu trên $\mathbb{R}$, không có cực trị.
+
+@vi_du:
+##VD
+Tìm điểm cực đại, điểm cực tiểu và giá trị cực trị của hàm số $y=x^3-3x^2-9x+5$.
+
+Bài giải:
+Hàm số xác định trên $\mathbb{R}$ và $y'=3x^2-6x-9=3(x+1)(x-3)$.
+$y'=0\Leftrightarrow x=-1$ hoặc $x=3$.
+Vì $a=1>0$ nên $y'>0$ trên $(-\infty;-1)$ và $(3;+\infty)$, $y'<0$ trên $(-1;3)$.
+$y'$ đổi dấu từ $+$ sang $-$ khi qua $x=-1$ nên hàm số đạt cực đại tại $x=-1$, $y_{\text{CĐ}}=y(-1)=-1-3+9+5=10$.
+$y'$ đổi dấu từ $-$ sang $+$ khi qua $x=3$ nên hàm số đạt cực tiểu tại $x=3$, $y_{\text{CT}}=y(3)=27-27-27+5=-22$.
+Vậy điểm cực đại là $x=-1$ với $y_{\text{CĐ}}=10$; điểm cực tiểu là $x=3$ với $y_{\text{CT}}=-22$.
+
+##VD
+Tìm cực trị (nếu có) của mỗi hàm số sau:
+a) $y=x^3+3x^2+3x-5$
+b) $y=2x^3-3x^2-12x+1$ (tính cả tích của giá trị cực đại và giá trị cực tiểu)
+
+Bài giải:
+a) $y'=3x^2+6x+3=3(x+1)^2\ge0$ với mọi $x$, dấu bằng chỉ xảy ra tại $x=-1$ nên $y'$ không đổi dấu.
+Hàm số đồng biến trên $\mathbb{R}$ nên không có cực trị.
+b) $y'=6x^2-6x-12=6(x+1)(x-2)$, $y'=0\Leftrightarrow x=-1$ hoặc $x=2$.
+Vì $a=2>0$ nên $y'$ đổi dấu từ $+$ sang $-$ tại $x=-1$ và từ $-$ sang $+$ tại $x=2$.
+$y_{\text{CĐ}}=y(-1)=-2-3+12+1=8$ tại $x=-1$; $y_{\text{CT}}=y(2)=16-12-24+1=-19$ tại $x=2$.
+Tích hai giá trị cực trị là $8\cdot(-19)=-152$.
+Vậy hàm số ở câu a) không có cực trị; hàm số ở câu b) đạt cực đại tại $x=-1$, cực tiểu tại $x=2$ và $y_{\text{CĐ}}\cdot y_{\text{CT}}=-152$.
+
+=== H2.1.2
+@ly_thuyet:
+##TC Hàm trùng phương $y=ax^4+bx^2+c$ $(a\ne0)$ và hàm bậc bốn
+- $y'=4ax^3+2bx=2x(2ax^2+b)$ luôn có nghiệm $x=0$.
+- $ab\ge0$: $y'$ chỉ đổi dấu tại $x=0$, hàm số có đúng một cực trị (cực tiểu nếu $a>0$, cực đại nếu $a<0$).
+- $ab<0$: $y'=0$ có ba nghiệm phân biệt $x=0$, $x=\pm\sqrt{-\dfrac{b}{2a}}$, hàm số có ba cực trị (với $a>0$: hai cực tiểu, một cực đại; với $a<0$: hai cực đại, một cực tiểu).
+- Hàm bậc bốn tổng quát: $y'$ là đa thức bậc ba, chỉ nghiệm mà $y'$ đổi dấu mới cho cực trị.
+
+##PP Tìm cực trị hàm trùng phương, bậc bốn
+Tính $y'$ rồi phân tích thành nhân tử (với hàm trùng phương đặt $2x$ ra ngoài).
+Giải $y'=0$ và xét xem nghiệm nào là nghiệm bội lẻ (làm $y'$ đổi dấu).
+Lập bảng xét dấu $y'$ theo dấu của hệ số cao nhất.
+Kết luận các điểm cực trị và tính giá trị cực trị.
+
+##CY
+- Nghiệm kép $x=0$ của $y'=4x^2(x-3)$ không phải điểm cực trị vì $y'$ không đổi dấu qua $0$.
+- Với hàm trùng phương, hai cực trị ở hai bên đối xứng nhau qua trục $Oy$ nên có cùng giá trị cực trị.
+
+@vi_du:
+##VD
+Tìm điểm cực trị và giá trị cực trị của hàm số $y=x^4-2x^2+3$.
+
+Bài giải:
+Hàm số xác định trên $\mathbb{R}$ và $y'=4x^3-4x=4x(x-1)(x+1)$.
+$y'=0\Leftrightarrow x=-1$ hoặc $x=0$ hoặc $x=1$.
+Vì $a=1>0$ nên $y'<0$ trên $(-\infty;-1)$, $y'>0$ trên $(-1;0)$, $y'<0$ trên $(0;1)$, $y'>0$ trên $(1;+\infty)$.
+Hàm số đạt cực tiểu tại $x=-1$ và $x=1$ với $y_{\text{CT}}=1-2+3=2$.
+Hàm số đạt cực đại tại $x=0$ với $y_{\text{CĐ}}=3$.
+Vậy hàm số có ba điểm cực trị: cực đại tại $x=0$ ($y_{\text{CĐ}}=3$), cực tiểu tại $x=\pm1$ ($y_{\text{CT}}=2$).
+
+##VD
+Tìm số điểm cực trị và cực trị của mỗi hàm số sau:
+a) $y=x^4+4x^2-1$
+b) $y=x^4-4x^3+1$
+
+Bài giải:
+a) $y'=4x^3+8x=4x(x^2+2)$. Vì $x^2+2>0$ nên $y'$ cùng dấu với $x$: đổi dấu từ $-$ sang $+$ duy nhất tại $x=0$.
+Hàm số có một điểm cực trị: cực tiểu tại $x=0$, $y_{\text{CT}}=-1$.
+b) $y'=4x^3-12x^2=4x^2(x-3)$, $y'=0\Leftrightarrow x=0$ (nghiệm kép) hoặc $x=3$.
+Trên $(-\infty;0)$ và $(0;3)$ đều có $y'<0$ nên $y'$ không đổi dấu tại $x=0$, đó không phải điểm cực trị.
+$y'$ đổi dấu từ $-$ sang $+$ tại $x=3$ nên hàm số đạt cực tiểu tại $x=3$, $y_{\text{CT}}=81-108+1=-26$.
+Vậy cả hai hàm số đều có đúng một điểm cực trị (đều là cực tiểu): câu a) tại $x=0$ với $y_{\text{CT}}=-1$, câu b) tại $x=3$ với $y_{\text{CT}}=-26$.
+
+=== H2.1.3
+@ly_thuyet:
+##TC Hàm phân thức
+- Hàm $y=\dfrac{ax+b}{cx+d}$ $(c\ne0,\ ad-bc\ne0)$: $y'=\dfrac{ad-bc}{(cx+d)^2}$ không đổi dấu, hàm số không có cực trị.
+- Hàm $y=\dfrac{ax^2+bx+c}{dx+e}$ ($d\ne0$, tử và mẫu không có nghiệm chung): $y'=\dfrac{P(x)}{(dx+e)^2}$ với $P$ là tam thức bậc hai, dấu của $y'$ là dấu của $P(x)$.
+- $P(x)=0$ có hai nghiệm phân biệt (khác nghiệm của mẫu) thì hàm số có hai cực trị; điểm làm mẫu bằng $0$ không thuộc tập xác định nên không là điểm cực trị.
+- Có thể viết $y=\alpha x+\beta+\dfrac{\gamma}{x-x_1}$ để tính đạo hàm nhanh hơn.
+
+##PP Tìm cực trị hàm phân thức
+Tìm tập xác định (loại các nghiệm của mẫu).
+Tính $y'$ bằng công thức thương hoặc viết hàm về dạng $\alpha x+\beta+\dfrac{\gamma}{x-x_1}$; giải tử của $y'$ bằng $0$.
+Lập bảng xét dấu $y'$, ghi rõ điểm không xác định của hàm số.
+Kết luận và tính giá trị cực trị.
+
+##CY
+- Hàm bậc nhất trên bậc nhất không có cực trị, đừng đi giải $y'=0$ (phương trình vô nghiệm).
+- Với phân thức bậc hai trên bậc nhất, giá trị cực đại có thể nhỏ hơn giá trị cực tiểu vì đồ thị bị ngắt tại tiệm cận đứng.
+
+@vi_du:
+##VD
+Tìm cực trị của hàm số $y=x+\dfrac{4}{x}$.
+
+Bài giải:
+Tập xác định $D=\mathbb{R}\setminus\{0\}$ và $y'=1-\dfrac{4}{x^2}=\dfrac{x^2-4}{x^2}$.
+$y'=0\Leftrightarrow x=-2$ hoặc $x=2$.
+$y'>0$ trên $(-\infty;-2)$ và $(2;+\infty)$, $y'<0$ trên $(-2;0)$ và $(0;2)$.
+Hàm số đạt cực đại tại $x=-2$ với $y_{\text{CĐ}}=-2-2=-4$.
+Hàm số đạt cực tiểu tại $x=2$ với $y_{\text{CT}}=2+2=4$.
+Vậy $y_{\text{CĐ}}=-4$ tại $x=-2$ và $y_{\text{CT}}=4$ tại $x=2$ (giá trị cực đại nhỏ hơn giá trị cực tiểu).
+
+##VD
+Tìm cực trị (nếu có) của mỗi hàm số sau:
+a) $y=\dfrac{2x-1}{x+3}$
+b) $y=\dfrac{x^2-3x+6}{x-1}$
+
+Bài giải:
+a) Tập xác định $D=\mathbb{R}\setminus\{-3\}$, $y'=\dfrac{2\cdot3-(-1)\cdot1}{(x+3)^2}=\dfrac{7}{(x+3)^2}>0$ với mọi $x\in D$.
+Hàm số đồng biến trên từng khoảng xác định nên không có cực trị.
+b) Tập xác định $D=\mathbb{R}\setminus\{1\}$, viết $y=x-2+\dfrac{4}{x-1}$ nên $y'=1-\dfrac{4}{(x-1)^2}=\dfrac{(x-3)(x+1)}{(x-1)^2}$.
+$y'=0\Leftrightarrow x=-1$ hoặc $x=3$; $y'>0$ trên $(-\infty;-1)$ và $(3;+\infty)$, $y'<0$ trên $(-1;1)$ và $(1;3)$.
+Hàm số đạt cực đại tại $x=-1$, $y_{\text{CĐ}}=-3+\dfrac{4}{-2}=-5$; đạt cực tiểu tại $x=3$, $y_{\text{CT}}=1+\dfrac{4}{2}=3$.
+Vậy hàm số ở câu a) không có cực trị; hàm số ở câu b) có $y_{\text{CĐ}}=-5$ tại $x=-1$ và $y_{\text{CT}}=3$ tại $x=3$.
+
+=== H2.1.4
+@ly_thuyet:
+##TC Hàm mũ, logarit, căn, lượng giác và điểm không khả vi
+- Hàm có thể đạt cực trị tại điểm $x_0$ mà $y'(x_0)=0$ **hoặc** tại điểm hàm số liên tục nhưng $y'(x_0)$ không tồn tại.
+- Quy tắc I vẫn dùng được: chỉ cần $y$ liên tục tại $x_0$ và $y'$ đổi dấu khi qua $x_0$.
+- Ví dụ: $y=|x|$ có cực tiểu tại $x=0$; $y=\sqrt[3]{x^2}$ có cực tiểu tại $x=0$ (đồ thị nhọn), dù $y'(0)$ không tồn tại.
+- Hàm lượng giác tuần hoàn có vô số điểm cực trị; chỉ xét trên khoảng hoặc đoạn đề cho.
+
+##PP Tìm cực trị khi hàm có điều kiện xác định
+Tìm tập xác định (điều kiện của căn, logarit, mẫu) và kiểm tra tính liên tục.
+Tính $y'$, tìm cả điểm $y'=0$ lẫn điểm $y'$ không tồn tại mà $y$ xác định.
+Lập bảng xét dấu $y'$ trên từng khoảng của tập xác định.
+Kết luận cực trị, loại các điểm nằm ngoài tập xác định.
+
+##CY
+- Chỉ nhận nghiệm của $y'=0$ nằm trong tập xác định (như $x>0$ với $\ln x$).
+- Điểm $y'$ không tồn tại mà $y$ không xác định thì không phải điểm cực trị.
+- Với $\sqrt[3]{x^2}$, $|x|$: đừng bỏ sót điểm $x=0$ khi chỉ giải $y'=0$.
+
+@vi_du:
+##VD
+Tìm cực trị của hàm số $y=x-\ln x$.
+
+Bài giải:
+Tập xác định $D=(0;+\infty)$ và $y'=1-\dfrac{1}{x}=\dfrac{x-1}{x}$.
+$y'=0\Leftrightarrow x=1\in D$.
+$y'<0$ trên $(0;1)$ và $y'>0$ trên $(1;+\infty)$ nên $y'$ đổi dấu từ $-$ sang $+$ tại $x=1$.
+Hàm số đạt cực tiểu tại $x=1$, $y_{\text{CT}}=1-\ln1=1$ và không có cực đại.
+Vậy hàm số chỉ có một cực trị là cực tiểu tại $x=1$ với $y_{\text{CT}}=1$.
+
+##VD
+Tìm cực trị của hàm số $y=\sqrt[3]{x^2}\,(x-5)$.
+
+Bài giải:
+Hàm số xác định và liên tục trên $\mathbb{R}$. Với $x\ne0$ ta có $y=x^{\frac{2}{3}}(x-5)$ nên $y'=\dfrac{2}{3\sqrt[3]{x}}(x-5)+\sqrt[3]{x^2}=\dfrac{2(x-5)+3x}{3\sqrt[3]{x}}=\dfrac{5(x-2)}{3\sqrt[3]{x}}$.
+$y'=0\Leftrightarrow x=2$ và $y'$ không tồn tại tại $x=0$ (nhưng $y(0)=0$ xác định, $y$ liên tục).
+Xét dấu: $x<0$ thì $\sqrt[3]{x}<0$ và $x-2<0$ nên $y'>0$; $0<x<2$ thì $y'<0$; $x>2$ thì $y'>0$.
+$y'$ đổi dấu từ $+$ sang $-$ qua $x=0$ nên hàm số đạt cực đại tại $x=0$, $y_{\text{CĐ}}=0$.
+$y'$ đổi dấu từ $-$ sang $+$ qua $x=2$ nên hàm số đạt cực tiểu tại $x=2$, $y_{\text{CT}}=\sqrt[3]{4}\cdot(-3)=-3\sqrt[3]{4}$.
+Vậy hàm số đạt cực đại tại $x=0$ ($y_{\text{CĐ}}=0$) và cực tiểu tại $x=2$ ($y_{\text{CT}}=-3\sqrt[3]{4}$).
+
+=== N H2.2
+@ly_thuyet:
+##TC Hình của hàm số $f$ cho trước
+- Bảng biến thiên: cột mà $y'$ đổi dấu (mũi tên đổi chiều) và hàm số xác định ở đó là điểm cực trị.
+- Đồ thị: điểm cao nhất trong một lân cận là cực đại, điểm thấp nhất trong một lân cận là cực tiểu.
+- Điểm cực trị là hoành độ $x_0$; giá trị cực trị là tung độ $y_0$; điểm cực trị của đồ thị là cặp $(x_0;y_0)$.
+
+##PP Đọc cực trị từ hình
+Xác định các vị trí hàm số đổi chiều biến thiên (đổi dấu $y'$ trong bảng; đỉnh hoặc đáy trong đồ thị).
+Phân loại: từ tăng sang giảm là cực đại, từ giảm sang tăng là cực tiểu.
+Đọc hoành độ, tung độ tương ứng.
+Trả lời đúng đại lượng đề hỏi: điểm cực trị, giá trị cực trị, hay điểm cực trị của đồ thị.
+
+##CY
+- Điểm tại đó hàm số không xác định (cột gián đoạn, tiệm cận đứng) không phải điểm cực trị dù hai bên biến thiên khác nhau.
+- Đầu mút và hai đầu của đồ thị không phải điểm cực trị.
+- Giá trị cực đại không nhất thiết lớn hơn giá trị cực tiểu.
+
+=== H2.2.1
+@ly_thuyet:
+##TC Đọc từ bảng biến thiên
+- Hàng $y'$: đổi dấu $+$ sang $-$ ở cột $x_0$ thì $x_0$ là điểm cực đại, $y_{\text{CĐ}}$ là số đứng ở vị trí cao tại cột đó.
+- Đổi dấu $-$ sang $+$ thì $x_0$ là điểm cực tiểu, $y_{\text{CT}}$ là số đứng ở vị trí thấp.
+- Cột có hai vạch kẻ đôi là điểm hàm số không xác định.
+- Số điểm cực trị bằng số cột (có $y$ xác định) mà $y'$ đổi dấu.
+
+##PP Đọc cực trị từ bảng biến thiên
+Gạch dưới các cột có $y'$ đổi dấu và hàm số xác định.
+Dấu đổi từ $+$ sang $-$ là cực đại, từ $-$ sang $+$ là cực tiểu.
+Đọc giá trị $y$ ở cùng cột để có giá trị cực trị.
+Cộng, nhân hoặc đếm theo yêu cầu (tổng, tích giá trị cực trị, số điểm cực trị).
+
+##CY
+- Cột ghi $y'=0$ nhưng dấu hai bên không đổi thì không phải cực trị.
+- Cột kẻ đôi (hàm số không xác định) không tính là cực trị.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có bảng biến thiên như hình vẽ. Hàm số có bao nhiêu điểm cực trị? Tìm các điểm cực đại, cực tiểu và tổng các giá trị cực trị.
+[[HINH {"loai":"bbt","x":["-∞","-1","1","3","+∞"],"dau":["+","-","+","-"],"y":["-∞","3","-1","5","-∞"],"ten_dao":"f'(x)","ten_ham":"f(x)"}]]
+
+Bài giải:
+$y'$ đổi dấu từ $+$ sang $-$ khi qua $x=-1$ nên hàm số đạt cực đại tại $x=-1$, $y_{\text{CĐ}}=3$.
+$y'$ đổi dấu từ $-$ sang $+$ khi qua $x=1$ nên hàm số đạt cực tiểu tại $x=1$, $y_{\text{CT}}=-1$.
+$y'$ đổi dấu từ $+$ sang $-$ khi qua $x=3$ nên hàm số đạt cực đại tại $x=3$, $y_{\text{CĐ}}=5$.
+Có ba cột mà $y'$ đổi dấu nên hàm số có $3$ điểm cực trị; tổng các giá trị cực trị là $3+(-1)+5=7$.
+Vậy hàm số có $3$ điểm cực trị, cực đại tại $x=-1$ và $x=3$, cực tiểu tại $x=1$, tổng các giá trị cực trị bằng $7$.
+
+##VD
+Cho hàm số $y=f(x)$ xác định trên $\mathbb{R}\setminus\{1\}$ có bảng biến thiên như hình vẽ. Tìm số điểm cực trị, giá trị cực đại và giá trị cực tiểu của hàm số.
+[[HINH {"loai":"bbt","x":["-∞","-1","1","3","+∞"],"dau":["+","-","-","+"],"kd":{"2":"||"},"y":["-∞","-2",["-∞","+∞"],"6","+∞"],"ten_dao":"f'(x)","ten_ham":"f(x)"}]]
+
+Bài giải:
+$y'$ đổi dấu từ $+$ sang $-$ qua $x=-1$ nên hàm số đạt cực đại tại $x=-1$, $y_{\text{CĐ}}=-2$.
+$y'$ đổi dấu từ $-$ sang $+$ qua $x=3$ nên hàm số đạt cực tiểu tại $x=3$, $y_{\text{CT}}=6$.
+Tại $x=1$ hàm số không xác định (cột kẻ đôi) và $y'<0$ ở cả hai bên nên đây không phải điểm cực trị.
+Vậy hàm số có $2$ điểm cực trị, $y_{\text{CĐ}}=-2$ tại $x=-1$ và $y_{\text{CT}}=6$ tại $x=3$ (giá trị cực đại nhỏ hơn giá trị cực tiểu).
+
+=== H2.2.2
+@ly_thuyet:
+##TC Đọc từ đồ thị
+- Đỉnh của đường cong (cao nhất trong lân cận) là điểm cực đại của đồ thị; đáy (thấp nhất trong lân cận) là điểm cực tiểu của đồ thị.
+- Đỉnh $M(x_0;y_0)$: điểm cực đại của hàm số là $x_0$, giá trị cực đại là $y_0$.
+- Đáy $N(x_1;y_1)$: điểm cực tiểu của hàm số là $x_1$, giá trị cực tiểu là $y_1$.
+
+##PP Đọc cực trị từ đồ thị
+Tìm các điểm đồ thị đổi chiều từ đi lên sang đi xuống (đỉnh) hoặc ngược lại (đáy).
+Đọc toạ độ $(x;y)$ của từng điểm đó trên lưới ô vuông.
+Gán hoành độ cho điểm cực trị, tung độ cho giá trị cực trị, cả cặp cho điểm cực trị của đồ thị.
+Tính đại lượng đề hỏi (đếm, hiệu, tổng, tích).
+
+##CY
+- Đề hỏi "điểm cực tiểu của hàm số" thì trả lời $x$; hỏi "điểm cực tiểu của đồ thị" thì trả lời $(x;y)$; hỏi "giá trị cực tiểu" thì trả lời $y$.
+- Chỉ lấy đỉnh và đáy thật sự; điểm đồ thị cắt trục hay điểm uốn không phải điểm cực trị.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Hàm số có bao nhiêu điểm cực trị? Tìm giá trị cực đại và các điểm cực tiểu của đồ thị.
+[[HINH {"loai":"dothi","x":[-4,4],"y":[-5,3],"f":[{"e":"x^4/4-2*x^2","ten":"y=f(x)"}]}]]
+
+Bài giải:
+Đồ thị có một đỉnh tại $O(0;0)$ và hai đáy tại các điểm có hoành độ $x=-2$ và $x=2$, cùng tung độ $y=-4$.
+Vậy hàm số có $3$ điểm cực trị, giá trị cực đại $y_{\text{CĐ}}=0$ và hai điểm cực tiểu của đồ thị là $(-2;-4)$, $(2;-4)$.
+
+##VD
+Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Tìm hiệu $y_{\text{CĐ}}-y_{\text{CT}}$ và tìm điểm cực tiểu của hàm số.
+[[HINH {"loai":"dothi","x":[-1,5],"y":[-2,6],"f":[{"e":"x^3-6*x^2+9*x","ten":"y=f(x)"}]}]]
+
+Bài giải:
+Đồ thị có đỉnh tại điểm có hoành độ $x=1$, tung độ $y=4$ nên $y_{\text{CĐ}}=4$.
+Đồ thị có đáy tại điểm có hoành độ $x=3$, tung độ $y=0$ (đồ thị tiếp xúc trục hoành) nên $y_{\text{CT}}=0$ và điểm cực tiểu của hàm số là $x=3$.
+Do đó $y_{\text{CĐ}}-y_{\text{CT}}=4-0=4$.
+Vậy hiệu $y_{\text{CĐ}}-y_{\text{CT}}=4$ và hàm số đạt cực tiểu tại $x=3$.
+
+=== N H2.3
+@ly_thuyet:
+##TC Cực trị của $f$ chỉ phụ thuộc dấu của $f'$
+- Nếu $f$ liên tục tại $x_0$ và $f'$ đổi dấu khi qua $x_0$ thì $x_0$ là điểm cực trị của $f$ (kể cả khi $f'(x_0)$ không tồn tại).
+- Nghiệm bội lẻ của $f'(x)=0$ làm $f'$ đổi dấu; nghiệm bội chẵn thì $f'$ không đổi dấu nên không có cực trị.
+- Đồ thị của $f'$: cắt trục hoành thì $f'$ đổi dấu; chỉ tiếp xúc trục hoành thì $f'$ không đổi dấu.
+- Đồ thị $f'$ nằm trên trục hoành thì $f'>0$ ($f$ đồng biến); nằm dưới trục hoành thì $f'<0$ ($f$ nghịch biến).
+
+##PP Tìm cực trị của $f$ khi biết $f'$
+Tìm các điểm $f'(x)=0$ (hoặc $f'$ không xác định) từ bảng xét dấu, đồ thị hay biểu thức.
+Xét xem $f'$ có đổi dấu khi qua mỗi điểm đó không (bội của nghiệm, cắt hay tiếp xúc).
+Chiều đổi dấu $+\to-$ cho cực đại, $-\to+$ cho cực tiểu.
+Kết luận số điểm cực trị và loại cực trị.
+
+##CY
+- Đồ thị cho là đồ thị của $f'$, đừng đọc đỉnh/đáy của đường cong đó thành cực đại/cực tiểu của $f$; chỉ có giao điểm với trục hoành mới quan trọng.
+- Giá trị cực trị của $f$ không đọc được từ $f'$; chỉ biết điểm và loại cực trị.
+
+=== H2.3.1
+@ly_thuyet:
+##TC Bảng xét dấu hoặc đồ thị của $f'$
+- Số điểm cực trị của $f$ là số điểm mà $f'$ đổi dấu (bảng xét dấu) hoặc số giao điểm đồ thị $f'$ cắt trục hoành mà đường cong qua được bên kia.
+- Chiều đổi dấu của $f'$ cho loại cực trị: $+\to-$ cực đại, $-\to+$ cực tiểu.
+- Điểm $f'(x_0)=0$ mà $f'$ giữ nguyên dấu hai bên hoặc đồ thị chỉ chạm trục hoành thì không có cực trị.
+
+##PP Đếm cực trị từ bảng xét dấu hoặc đồ thị của $f'$
+Tìm các nghiệm của $f'(x)=0$ trong bảng hoặc các giao điểm của đồ thị $f'$ với trục hoành.
+Với mỗi điểm, so dấu của $f'$ hai bên (đồ thị: phần nằm trên hay dưới trục).
+Loại các điểm $f'$ không đổi dấu, đồ thị chỉ tiếp xúc trục hoành.
+Đếm các điểm còn lại và phân loại theo chiều đổi dấu.
+
+##CY
+- Cột ghi số $0$ trong bảng xét dấu chưa chắc là cực trị: phải nhìn dấu hai bên.
+- Đồ thị $f'$ chỉ chạm trục hoành (tiếp xúc) là nghiệm bội chẵn, không phải cực trị của $f$.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ liên tục trên $\mathbb{R}$, có bảng xét dấu của $f'(x)$ như hình vẽ. Hàm số có bao nhiêu điểm cực trị? Chỉ rõ cực đại, cực tiểu.
+[[HINH {"loai":"bbt","hang":"dau","x":["-∞","-1","2","5","+∞"],"dau":["+","-","-","+"],"ten_dao":"f'(x)"}]]
+
+Bài giải:
+$f'$ đổi dấu từ $+$ sang $-$ khi qua $x=-1$ nên $x=-1$ là điểm cực đại.
+$f'$ không đổi dấu khi qua $x=2$ (vẫn âm hai bên) nên $x=2$ không là điểm cực trị.
+$f'$ đổi dấu từ $-$ sang $+$ khi qua $x=5$ nên $x=5$ là điểm cực tiểu.
+Vậy hàm số có $2$ điểm cực trị: cực đại tại $x=-1$ và cực tiểu tại $x=5$.
+
+##VD
+Cho hàm số $y=f(x)$ liên tục trên $\mathbb{R}$. Đồ thị của hàm số $y=f'(x)$ như hình vẽ (cắt trục hoành tại $x=-1$ và $x=3$, chỉ tiếp xúc trục hoành tại $x=1$). Hàm số $y=f(x)$ có bao nhiêu điểm cực trị?
+[[HINH {"loai":"dothi","x":[-2,4],"y":[-3,4],"f":[{"e":"(x+1)*(x-1)^2*(x-3)/4","ten":"y=f'(x)"}]}]]
+
+Bài giải:
+Đồ thị $y=f'(x)$ nằm trên trục hoành khi $x<-1$, nằm dưới trục hoành khi $-1<x<3$ (trừ điểm chạm $x=1$) và nằm trên trục hoành khi $x>3$.
+Tại $x=-1$: $f'$ đổi dấu từ $+$ sang $-$ nên $f$ đạt cực đại.
+Tại $x=1$: đồ thị chỉ chạm trục hoành, $f'\le0$ ở hai bên nên $f'$ không đổi dấu, không có cực trị.
+Tại $x=3$: $f'$ đổi dấu từ $-$ sang $+$ nên $f$ đạt cực tiểu.
+Vậy hàm số $y=f(x)$ có $2$ điểm cực trị: cực đại tại $x=-1$ và cực tiểu tại $x=3$.
+
+=== H2.3.2
+@ly_thuyet:
+##TC $f'$ cho bằng biểu thức nhân tử
+- Dạng $f'(x)=(x-x_1)^{m_1}(x-x_2)^{m_2}\cdots(x-x_k)^{m_k}\cdot g(x)$ với $g(x)$ không đổi dấu hoặc đã biết dấu.
+- $m_i$ lẻ: $f'$ đổi dấu qua $x_i$, $x_i$ là điểm cực trị; $m_i$ chẵn: $f'$ không đổi dấu, $x_i$ không là điểm cực trị.
+- Khi qua một nghiệm bội lẻ, dấu của $f'$ đảo; khi qua nghiệm bội chẵn, dấu của $f'$ giữ nguyên.
+- Cần $f$ liên tục (đề thường cho $f$ xác định trên $\mathbb{R}$).
+
+##PP Lập bảng xét dấu từ biểu thức nhân tử
+Phân tích $f'(x)$ thành nhân tử, tìm các nghiệm và bội của từng nghiệm.
+Sắp xếp các nghiệm tăng dần và xét dấu $f'$ trên khoảng ngoài cùng bên phải (dấu của hệ số cao nhất).
+Đi từ phải sang trái: đổi dấu qua nghiệm bội lẻ, giữ dấu qua nghiệm bội chẵn.
+Đọc điểm cực trị và loại cực trị từ bảng.
+
+##CY
+- Nghiệm bội chẵn như $(x-1)^2$ hay $(x+2)^4$ không cho cực trị, kể cả khi $f'(x)=0$ ở đó.
+- Nhân tử vô nghiệm như $x^2+1$ không ảnh hưởng đến dấu của $f'$.
+- Chú ý nhân tử dạng $(1-x)$ hay $(3-x)$: đưa về $-(x-1)$, $-(x-3)$ để xác định dấu cho đúng.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có đạo hàm $f'(x)=x(x-1)^2(x+2)$ với mọi $x\in\mathbb{R}$. Tìm các điểm cực trị của hàm số $f$.
+
+Bài giải:
+$f'(x)=0\Leftrightarrow x=-2$ (bội $1$), $x=0$ (bội $1$), $x=1$ (bội $2$).
+Với $x>1$: các nhân tử đều dương nên $f'>0$. Qua $x=1$ (bội chẵn) $f'$ không đổi dấu nên $f'>0$ trên $(0;1)$.
+Qua $x=0$ (bội lẻ) $f'$ đổi dấu nên $f'<0$ trên $(-2;0)$.
+Qua $x=-2$ (bội lẻ) $f'$ đổi dấu nên $f'>0$ trên $(-\infty;-2)$.
+$f'$ đổi dấu từ $+$ sang $-$ tại $x=-2$ và từ $-$ sang $+$ tại $x=0$.
+Vậy hàm số có hai điểm cực trị: cực đại tại $x=-2$, cực tiểu tại $x=0$; $x=1$ không là điểm cực trị.
+
+##VD
+Cho hàm số $y=f(x)$ xác định trên $\mathbb{R}$ có đạo hàm $f'(x)=(x^2-1)(x-2)^2(x+3)^3$. Hàm số có bao nhiêu điểm cực trị? Xác định loại cực trị.
+
+Bài giải:
+$f'(x)=(x-1)(x+1)(x-2)^2(x+3)^3$, các nghiệm: $x=-3$ (bội $3$), $x=-1$ (bội $1$), $x=1$ (bội $1$), $x=2$ (bội $2$).
+Với $x>2$: mọi nhân tử đều dương nên $f'>0$; qua $x=2$ (bội chẵn) $f'$ không đổi dấu nên $f'>0$ trên $(1;2)$.
+Qua $x=1$ (bội lẻ) $f'$ đổi dấu nên $f'<0$ trên $(-1;1)$; qua $x=-1$ (bội lẻ) nên $f'>0$ trên $(-3;-1)$; qua $x=-3$ (bội lẻ) nên $f'<0$ trên $(-\infty;-3)$.
+Do đó $f'$ đổi dấu từ $-$ sang $+$ tại $x=-3$ (cực tiểu), từ $+$ sang $-$ tại $x=-1$ (cực đại), từ $-$ sang $+$ tại $x=1$ (cực tiểu); tại $x=2$ không đổi dấu.
+Vậy hàm số có $3$ điểm cực trị: cực tiểu tại $x=-3$ và $x=1$, cực đại tại $x=-1$.
+
+=== H2.3.3
+@ly_thuyet:
+##TC Hàm $g(x)=f(x)+ax$ khi biết đồ thị $f'$
+- $g'(x)=f'(x)+a$, nên $g'(x)=0\Leftrightarrow f'(x)=-a$: nghiệm là hoành độ giao điểm của đồ thị $y=f'(x)$ với đường thẳng ngang $y=-a$.
+- $g'$ đổi dấu khi qua $x_0$ nếu đồ thị $y=f'(x)$ **cắt** (qua) đường thẳng $y=-a$ tại $x_0$; nếu chỉ **tiếp xúc** thì $g'$ không đổi dấu.
+- Số điểm cực trị của $g$ bằng số giao điểm đồ thị $f'$ qua đường $y=-a$ (không tính điểm tiếp xúc).
+- $g'>0$ khi đồ thị $f'$ nằm trên đường $y=-a$.
+
+##PP Đếm cực trị của $g(x)=f(x)+ax$
+Tính $g'(x)=f'(x)+a$ và đưa $g'(x)=0$ về $f'(x)=-a$.
+Vẽ đường thẳng ngang $y=-a$ lên đồ thị $y=f'(x)$.
+Đếm các giao điểm mà đồ thị $f'$ cắt đường thẳng (đổi bên); loại giao điểm tiếp xúc.
+Kết luận số điểm cực trị và loại theo chiều đổi dấu của $f'(x)+a$.
+
+##CY
+- Đường ngang là $y=-a$, không phải $y=a$: nhầm dấu là sai cả đáp án.
+- Giao điểm tiếp xúc (đồ thị chạm đường thẳng rồi quay lại) không là cực trị của $g$.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có đạo hàm trên $\mathbb{R}$, đồ thị của hàm số $y=f'(x)$ như hình vẽ. Hàm số $g(x)=f(x)+2x$ có bao nhiêu điểm cực trị?
+[[HINH {"loai":"dothi","x":[-3,3],"y":[-4,4],"f":[{"e":"x^3-3*x","ten":"y=f'(x)"}]}]]
+
+Bài giải:
+$g'(x)=f'(x)+2$, $g'(x)=0\Leftrightarrow f'(x)=-2$.
+Đồ thị $y=f'(x)$ có đáy tại $(1;-2)$ nên chạm đường thẳng $y=-2$ tại $x=1$ (tiếp xúc), và cắt đường thẳng này tại điểm $(-2;-2)$.
+Tại $x=1$, $g'$ không đổi dấu (vẫn dương hai bên) nên không có cực trị; tại $x=-2$, $g'$ đổi dấu từ $-$ sang $+$.
+Vậy hàm số $g(x)$ có $1$ điểm cực trị (cực tiểu).
+
+##VD
+Cho hàm số $y=f(x)$ có đạo hàm trên $\mathbb{R}$, đồ thị của hàm số $y=f'(x)$ như hình vẽ. Tìm số điểm cực trị của mỗi hàm số:
+a) $g(x)=f(x)+x$
+b) $h(x)=f(x)-x$
+[[HINH {"loai":"dothi","x":[-2,2],"y":[-2,3],"f":[{"e":"x^4-2*x^2","ten":"y=f'(x)"}]}]]
+
+Bài giải:
+Đồ thị $y=f'(x)$ có hai đáy tại $(-1;-1)$ và $(1;-1)$, một đỉnh địa phương tại $O(0;0)$ và cắt trục hoành tại các điểm có hoành độ $0,\ \pm\sqrt{2}$.
+a) $g'(x)=f'(x)+1=0\Leftrightarrow f'(x)=-1$. Đường thẳng $y=-1$ chạm đồ thị đúng tại hai đáy $(-1;-1)$ và $(1;-1)$ (tiếp xúc), không cắt thêm nên $g'\ge0$ và không đổi dấu: $g$ không có cực trị.
+b) $h'(x)=f'(x)-1=0\Leftrightarrow f'(x)=1$. Đường thẳng $y=1$ cắt đồ thị $y=f'(x)$ tại hai điểm (hai nhánh ngoài, ở hai phía của trục $Oy$), tại cả hai điểm $h'$ đổi dấu.
+Hai điểm đó có $h'>0$ ở ngoài và $h'<0$ ở giữa: cực đại ở điểm bên trái, cực tiểu ở điểm bên phải.
+Vậy hàm số $g(x)$ không có điểm cực trị nào, hàm số $h(x)$ có $2$ điểm cực trị.
+
+## GHI CHÚ CHO CEO
+- H2.3.2: dạng ghi cột hình "bbt" nhưng đề cho f' bằng biểu thức nên đề không cần hình; lời giải dùng bảng xét dấu nói bằng chữ. Cả hai ví dụ không có hình (máy kiểm sẽ cảnh báo), đây là chủ ý.
+- H2.1.4: ví dụ 2 dùng $\sqrt[3]{x^2}(x-5)$ để minh hoạ điểm cực đại tại chỗ $y'$ không tồn tại.

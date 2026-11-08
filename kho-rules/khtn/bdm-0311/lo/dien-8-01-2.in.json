@@ -1,0 +1,1096 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00377",
+   "khoi": "8",
+   "chu_de": "Phản ứng Hóa học",
+   "chuyen_de": "Phương trình Hóa học",
+   "nhom": "Tính toán theo PTHH (Cơ bản)",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "- Công thức cần nhớ: $n = \\mathrm{m}/\\mathrm{M}$ (số mol từ khối lượng); $n = \\mathrm{V}/24,79$ (số mol khí ở đktc, 1 mol khí ở đktc có thể tích 24,79 lít).\n- Các bước làm: (1) đổi dữ kiện đề bài ra số mol; (2) dùng tỉ lệ hệ số trong PTHH để suy ra số mol chất cần tìm; (3) đổi số mol đó ra khối lượng hoặc thể tích theo yêu cầu đề bài.\n- Riêng với 2 chất khí đó ở CÙNG điều kiện nhiệt độ, áp suất: tỉ lệ thể tích = tỉ lệ hệ số, có thể tính thẳng mà không cần quy đổi qua số mol.\nVÍ DỤ MINH HỌA:\nCho 4,8 gam magie ($\\mathrm{Mg}$) tác dụng hết với dung dịch axit clohiđric ($\\mathrm{HCl}$) dư theo PTHH: $\\mathrm{Mg} + 2\\mathrm{HCl} \\rightarrow \\mathrm{MgCl_2} + \\mathrm{H_2}$. Tính thể tích khí $\\mathrm{H_2}$ sinh ra (đo ở đktc mới, 1 mol khí = 24,79 lít).\nBài giải:\n- Bước 1 — đổi ra số mol: $n(\\mathrm{Mg}) = \\mathrm{m}/\\mathrm{M} = 4,8/24 = 0,2$ mol.\n- Bước 2 — dùng tỉ lệ PTHH: tỉ lệ $\\mathrm{Mg} : \\mathrm{H_2} = 1 : 1 \\rightarrow n(\\mathrm{H_2}) = n(\\mathrm{Mg}) = 0,2$ mol.\n- Bước 3 — đổi ra đại lượng đề hỏi: $V(\\mathrm{H_2}) = n \\times 24,79 = 0,2 \\times 24,79 = 4,958$ lít.\nChú ý (khi cùng điều kiện): với PTHH $\\mathrm{N_2} + 3\\mathrm{H_2} \\rightarrow 2\\mathrm{NH_3}$, nếu $\\mathrm{N_2}$ và $\\mathrm{H_2}$ đo ở cùng điều kiện thì $V(\\mathrm{N_2}) : V(\\mathrm{H_2}) : V(\\mathrm{NH_3}) = 1 : 3 : 2$ — lấy thẳng theo hệ số, không cần đổi qua số mol.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00378",
+   "khoi": "8",
+   "chu_de": "Phản ứng Hóa học",
+   "chuyen_de": "Phương trình Hóa học",
+   "nhom": "TÍNH THEO PHƯƠNG TRÌNH HOÁ HỌC (NÂNG CAO / TỔNG HỢP)",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "- Khi bài toán có từ 2 PTHH liên tiếp (sản phẩm của phản ứng trước là chất tham gia của phản ứng sau), phải tính số mol tuần tự qua từng phương trình, đi hết PTHH này mới sang PTHH kế tiếp.\n- Khi đề cho biết lượng của CẢ HAI chất tham gia trong một phản ứng: so sánh tỉ lệ mol thực tế của hai chất với tỉ lệ hệ số trong PTHH để xác định chất phản ứng HẾT (chất còn lại DƯ), rồi tính toán theo chất đã phản ứng hết — không được tính theo chất còn dư.\nVÍ dụ minh họa 1:\nĐốt cháy hoàn toàn $11,2$ gam sắt ($\\mathrm{Fe}$) trong khí clo ($\\mathrm{Cl_2}$) dư, thu được muối sắt(III) clorua ($\\mathrm{FeCl_3}$). Toàn bộ lượng $\\mathrm{FeCl_3}$ sinh ra tác dụng vừa đủ với dung dịch $\\mathrm{NaOH}$, thu được kết tủa $\\mathrm{Fe(OH)_3}$. Tính khối lượng $\\mathrm{Fe(OH)_3}$ thu được.\nBài giải:\n– PTHH (1): $\\mathrm{2Fe + 3Cl_2 \\to 2FeCl_3}$. $\\mathrm{n(Fe) = 11,2/56 = 0,2}$ mol $\\to$ tỉ lệ $\\mathrm{Fe : FeCl_3 = 1 : 1 \\to n(FeCl_3) = 0,2}$ mol.\n– PTHH (2): $\\mathrm{FeCl_3 + 3NaOH \\to Fe(OH)_3 + 3NaCl}$. Tỉ lệ $\\mathrm{FeCl_3 : Fe(OH)_3 = 1 : 1 \\to n(Fe(OH)_3) = 0,2}$ mol.\n– $\\mathrm{m(Fe(OH)_3) = 0,2 \\times 107 = 21,4}$ gam.\n– Chú ý: $\\mathrm{n(FeCl_3)}$ tính ra ở PTHH (1) chính là \"cầu nối\" đưa sang PTHH (2) — không tính lại từ đầu.\nVÍ dụ minh họa 2:\n(Ví dụ về chất dư) Cho $5,6$ gam $\\mathrm{Fe}$ (tương ứng $0,1$ mol) tác dụng với dung dịch chứa $0,3$ mol $\\mathrm{HCl}$ theo PTHH: $\\mathrm{Fe + 2HCl \\to FeCl_2 + H_2}$. Hỏi sau phản ứng chất nào còn dư?\nBài giải:\n– Tỉ lệ hệ số trong PTHH: $\\mathrm{Fe : HCl = 1 : 2}$.\n– Tỉ lệ mol đề cho: $\\mathrm{n(Fe) : n(HCl) = 0,1 : 0,3 = 1 : 3}$.\n– Vì $1 : 3$ lớn hơn tỉ lệ cần thiết $1 : 2$ ($\\mathrm{HCl}$ đang có nhiều hơn mức cần) nên $\\mathrm{HCl}$ dư, $\\mathrm{Fe}$ phản ứng hết.\n– Mọi tính toán tiếp theo phải dựa theo $\\mathrm{Fe}$ (chất phản ứng hết), tuyệt đối không tính theo $\\mathrm{HCl}$.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00592",
+   "khoi": "8",
+   "chu_de": "Phản ứng Hóa học",
+   "chuyen_de": "Phương trình Hóa học",
+   "nhom": "Tính hiệu suất phản ứng",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB00837",
+   "nhom_id": "KNB00377",
+   "thu_tu": 1,
+   "dang": "Tính khối lượng chất này từ khối lượng chất kia (cùng đơn vị gam)",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010304002",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình: $\\mathrm{Fe} + \\mathrm{S} \\stackrel{\\mathrm{t^o}}{\\longrightarrow} \\mathrm{FeS}$. Cho $5,6 \\mathrm{\\,g\\,}$ $\\mathrm{Fe}$ phản ứng vừa đủ với lưu huỳnh, tính khối lượng $\\mathrm{FeS}$ tạo thành.",
+     "lua_chon": [
+      "$17,6 \\mathrm{\\,g\\,}$",
+      "$5,6 \\mathrm{\\,g\\,}$",
+      "$6,8 \\mathrm{\\,g\\,}$",
+      "$8,8 \\mathrm{\\,g\\,}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi số mol: $\\mathrm{n(Fe)} = 5,6/56 = 0,1 \\mathrm{\\,mol\\,}$.\nTheo PTHH, tỉ lệ $\\mathrm{Fe} : \\mathrm{FeS} = 1 : 1 \\Rightarrow \\mathrm{n(FeS)} = 0,1 \\mathrm{\\,mol\\,}$.\nKhối lượng $\\mathrm{FeS} = 0,1 \\times 88 = 8,8 \\mathrm{\\,g\\,}$."
+    },
+    {
+     "ma_cau": "K08010304005",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình: $\\mathrm{Zn} + \\mathrm{CuSO_4} \\to \\mathrm{ZnSO_4} + \\mathrm{Cu}$. Cho $13\\ \\mathrm{g}$ $\\mathrm{Zn}$ phản ứng vừa đủ với dung dịch $\\mathrm{CuSO_4}$, tính khối lượng $\\mathrm{Cu}$ sinh ra.",
+     "lua_chon": [
+      "$13\\ \\mathrm{g}$",
+      "$12,8\\ \\mathrm{g}$",
+      "$6,4\\ \\mathrm{g}$",
+      "$25,6\\ \\mathrm{g}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi số mol: $\\mathrm{n(Zn)} = 13/65 = 0,2\\ \\mathrm{mol}$.\nTheo $\\mathrm{PTHH}$, tỉ lệ $\\mathrm{Zn} : \\mathrm{Cu} = 1 : 1 \\Rightarrow \\mathrm{n(Cu)} = 0,2\\ \\mathrm{mol}$.\nKhối lượng $\\mathrm{Cu} = 0,2 \\times 64 = 12,8\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010304004",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình: $2\\mathrm{Al} + 3\\mathrm{CuSO_4} \\to \\mathrm{Al_2(SO_4)_3} + 3\\mathrm{Cu}$. Cho $5,4\\ \\mathrm{g}$ $\\mathrm{Al}$ phản ứng vừa đủ với dung dịch $\\mathrm{CuSO_4}$, tính khối lượng $\\mathrm{Cu}$ sinh ra.",
+     "lua_chon": [
+      "$5,4\\ \\mathrm{g}$",
+      "$12,8\\ \\mathrm{g}$",
+      "$19,2\\ \\mathrm{g}$",
+      "$25,2\\ \\mathrm{g}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi số mol: $\\mathrm{n(Al)} = 5,4/27 = 0,2\\ \\mathrm{mol}$.\nTheo $\\mathrm{PTHH}$, tỉ lệ $\\mathrm{Al} : \\mathrm{Cu} = 2 : 3 \\Rightarrow \\mathrm{n(Cu)} = 0,2 \\times 3/2 = 0,3\\ \\mathrm{mol}$.\nKhối lượng $\\mathrm{Cu} = 0,3 \\times 64 = 19,2\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010304001",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình: $\\mathrm{CaCO_3} \\stackrel{\\mathrm{t^o}}{\\longrightarrow} \\mathrm{CaO} + \\mathrm{CO_2}$. Nung hoàn toàn $20 \\mathrm{\\,g\\,}$ $\\mathrm{CaCO_3}$, tính khối lượng $\\mathrm{CaO}$ tạo thành.",
+     "lua_chon": [
+      "$22,4 \\mathrm{\\,g\\,}$",
+      "$5,6 \\mathrm{\\,g\\,}$",
+      "$20 \\mathrm{\\,g\\,}$",
+      "$11,2 \\mathrm{\\,g\\,}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi số mol: $\\mathrm{n(CaCO_3)} = 20/100 = 0,2 \\mathrm{\\,mol\\,}$.\nTheo PTHH, tỉ lệ $\\mathrm{CaCO_3} : \\mathrm{CaO} = 1 : 1 \\Rightarrow \\mathrm{n(CaO)} = 0,2 \\mathrm{\\,mol\\,}$.\nKhối lượng $\\mathrm{CaO} = 0,2 \\times 56 = 11,2 \\mathrm{\\,g\\,}$."
+    },
+    {
+     "ma_cau": "K08010304003",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình: $2\\mathrm{Mg} + \\mathrm{O_2} \\stackrel{\\mathrm{t^o}}{\\longrightarrow} 2\\mathrm{MgO}$. Đốt cháy hoàn toàn $4,8 \\mathrm{\\,g\\,}$ $\\mathrm{Mg}$ trong khí oxi dư, tính khối lượng $\\mathrm{MgO}$ tạo thành.",
+     "lua_chon": [
+      "$4,8 \\mathrm{\\,g\\,}$",
+      "$16 \\mathrm{\\,g\\,}$",
+      "$8 \\mathrm{\\,g\\,}$",
+      "$4 \\mathrm{\\,g\\,}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi số mol: $\\mathrm{n(Mg)} = 4,8/24 = 0,2 \\mathrm{\\,mol\\,}$.\nTheo PTHH, tỉ lệ $\\mathrm{Mg} : \\mathrm{MgO} = 2 : 2 = 1 : 1 \\Rightarrow \\mathrm{n(MgO)} = 0,2 \\mathrm{\\,mol\\,}$.\nKhối lượng $\\mathrm{MgO} = 0,2 \\times 40 = 8 \\mathrm{\\,g\\,}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00838",
+   "nhom_id": "KNB00377",
+   "thu_tu": 2,
+   "dang": "Tính thể tích khí (ở đkc, 24,79 lít/mol) từ khối lượng một chất rắn/lỏng",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010304008",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình: $\\mathrm{Fe + 2HCl \\longrightarrow FeCl_2 + H_2}$. Cho $11,2 \\mathrm{\\ g\\ Fe}$ phản ứng hết với dung dịch $\\mathrm{HCl}$ dư, tính thể tích khí $\\mathrm{H_2}$ thoát ra ở đkc.",
+     "lua_chon": [
+      "$9,92 \\mathrm{\\ l}$",
+      "$4,96 \\mathrm{\\ l}$",
+      "$11,2 \\mathrm{\\ l}$",
+      "$2,48 \\mathrm{\\ l}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi số mol: $\\mathrm{n(Fe) = 11,2/56 = 0,2\\ mol}$.\nTheo PTHH, tỉ lệ $\\mathrm{Fe : H_2 = 1 : 1 \\Rightarrow n(H_2) = 0,2\\ mol}$.\nThể tích $\\mathrm{H_2}$ (đkc) $= 0,2 \\times 24,79 = 4,96$ lít."
+    },
+    {
+     "ma_cau": "K08010304007",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình: $\\mathrm{Zn + 2HCl \\longrightarrow ZnCl_2 + H_2}$. Cho $6,5 \\mathrm{\\ g\\ Zn}$ phản ứng hết với dung dịch $\\mathrm{HCl}$ dư, tính thể tích khí $\\mathrm{H_2}$ thoát ra ở đkc.",
+     "lua_chon": [
+      "$2,48 \\mathrm{\\ l}$",
+      "$6,5 \\mathrm{\\ l}$",
+      "$1,24 \\mathrm{\\ l}$",
+      "$4,96 \\mathrm{\\ l}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi số mol: $\\mathrm{n(Zn) = 6,5/65 = 0,1\\ mol}$.\nTheo PTHH, tỉ lệ $\\mathrm{Zn : H_2 = 1 : 1 \\Rightarrow n(H_2) = 0,1\\ mol}$.\nThể tích $\\mathrm{H_2}$ (đkc) $= 0,1 \\times 24,79 = 2,48$ lít."
+    },
+    {
+     "ma_cau": "K08010304010",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình: $\\mathrm{CaCO_3} \\xrightarrow{\\mathrm{t^o}} \\mathrm{CaO} + \\mathrm{CO_2}$. Nung hoàn toàn $5$ g $\\mathrm{CaCO_3}$, tính thể tích khí $\\mathrm{CO_2}$ sinh ra ở đkc.",
+     "lua_chon": [
+      "2,48 l",
+      "5 l",
+      "0,62 l",
+      "1,24 l"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi số mol: $\\mathrm{n(CaCO_3)} = 5/100 = 0,05$ mol.\nTheo PTHH, tỉ lệ $\\mathrm{CaCO_3} : \\mathrm{CO_2} = 1 : 1 \\Rightarrow \\mathrm{n(CO_2)} = 0,05$ mol.\nThể tích $\\mathrm{CO_2}$ (đkc) $= 0,05 \\times 24,79 = 1,24$ lít (làm tròn)."
+    },
+    {
+     "ma_cau": "K08010304009",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình: $\\mathrm{C} + \\mathrm{O_2} \\xrightarrow{\\mathrm{t^o}} \\mathrm{CO_2}$. Đốt cháy hoàn toàn $6$ g cacbon trong khí oxi dư, tính thể tích khí $\\mathrm{CO_2}$ sinh ra ở đkc.",
+     "lua_chon": [
+      "24,78 l",
+      "6 l",
+      "12,39 l",
+      "6,2 l"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi số mol: $\\mathrm{n(C)} = 6/12 = 0,5$ mol.\nTheo PTHH, tỉ lệ $\\mathrm{C} : \\mathrm{CO_2} = 1 : 1 \\Rightarrow \\mathrm{n(CO_2)} = 0,5$ mol.\nThể tích $\\mathrm{CO_2}$ (đkc) $= 0,5 \\times 24,79 = 12,39$ lít (làm tròn)."
+    },
+    {
+     "ma_cau": "K08010304006",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình: $\\mathrm{2KClO_3 \\xrightarrow{t^o} 2KCl + 3O_2}$. Nung hoàn toàn $24,5 \\mathrm{\\ g\\ KClO_3}$, tính thể tích khí $\\mathrm{O_2}$ thu được ở đkc ($1$ mol khí ở đkc có thể tích $24,79$ lít).",
+     "lua_chon": [
+      "$3,72 \\mathrm{\\ l}$",
+      "$14,88 \\mathrm{\\ l}$",
+      "$4,96 \\mathrm{\\ l}$",
+      "$7,44 \\mathrm{\\ l}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi số mol: $\\mathrm{n(KClO_3) = 24,5/122,5 = 0,2\\ mol}$.\nTheo PTHH, tỉ lệ $\\mathrm{KClO_3 : O_2 = 2 : 3 \\Rightarrow n(O_2) = 0,2 \\times 3/2 = 0,3\\ mol}$.\nThể tích $\\mathrm{O_2}$ (đkc) $= 0,3 \\times 24,79 = 7,44$ lít (làm tròn $2$ chữ số thập phân)."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00839",
+   "nhom_id": "KNB00377",
+   "thu_tu": 3,
+   "dang": "Tính khối lượng một chất từ thể tích khí (ở đkc) của chất kia",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010304014",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình: $\\mathrm{CO_2} + \\mathrm{Ca(OH)_2} \\to \\mathrm{CaCO_3} + \\mathrm{H_2O}$. Dẫn $7,437$ lít khí $\\mathrm{CO_2}$ (đktc) vào dung dịch $\\mathrm{Ca(OH)_2}$ dư, tính khối lượng kết tủa $\\mathrm{CaCO_3}$ thu được.",
+     "lua_chon": [
+      "90 g",
+      "30 g",
+      "7,44 g",
+      "10 g"
+     ],
+     "dap_an": "30",
+     "loi_giai": "Đổi số mol: $\\mathrm{n(CO_2)} = 7,437/24,79 = 0,3$ mol.\nTheo PTHH, tỉ lệ $\\mathrm{CO_2} : \\mathrm{CaCO_3} = 1 : 1 \\Rightarrow \\mathrm{n(CaCO_3)} = 0,3$ mol.\nKhối lượng $\\mathrm{CaCO_3} = 0,3 \\times 100 = 30$ g."
+    },
+    {
+     "ma_cau": "K08010304011",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình: $\\mathrm{CuO} + \\mathrm{H_2} \\xrightarrow{\\mathrm{t^o}} \\mathrm{Cu} + \\mathrm{H_2O}$. Dẫn 4,958 lít $\\mathrm{H_2}$ (đkc) đi qua $\\mathrm{CuO}$ nung nóng, phản ứng xảy ra vừa đủ, tính khối lượng $\\mathrm{Cu}$ tạo thành.",
+     "lua_chon": [
+      "25,6 g",
+      "12,8 g",
+      "4,96 g",
+      "6,4 g"
+     ],
+     "dap_an": "12.8",
+     "loi_giai": "Đổi số mol: $\\mathrm{n(H_2)} = 4,958/24,79 = 0,2$ mol.\nTheo PTHH, tỉ lệ $\\mathrm{H_2} : \\mathrm{Cu} = 1 : 1 \\Rightarrow \\mathrm{n(Cu)} = 0,2$ mol.\nKhối lượng $\\mathrm{Cu} = 0,2 \\times 64 = 12,8$ g."
+    },
+    {
+     "ma_cau": "K08010304013",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình: $2\\mathrm{H_2} + \\mathrm{O_2} \\xrightarrow{\\mathrm{t^o}} 2\\mathrm{H_2O}$. Đốt cháy hoàn toàn 12,395 lít khí $\\mathrm{H_2}$ (đkc) trong khí oxi dư, tính khối lượng $\\mathrm{H_2O}$ tạo thành.",
+     "lua_chon": [
+      "9 g",
+      "12,39 g",
+      "4,5 g",
+      "18 g"
+     ],
+     "dap_an": "9",
+     "loi_giai": "Đổi số mol: $\\mathrm{n(H_2)} = 12,395/24,79 = 0,5$ mol.\nTheo PTHH, tỉ lệ $\\mathrm{H_2} : \\mathrm{H_2O} = 2 : 2 = 1 : 1 \\Rightarrow \\mathrm{n(H_2O)} = 0,5$ mol.\nKhối lượng $\\mathrm{H_2O} = 0,5 \\times 18 = 9$ g."
+    },
+    {
+     "ma_cau": "K08010304015",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình: $\\mathrm{N_2} + 3\\mathrm{H_2} \\xrightarrow{\\mathrm{t^o}, \\mathrm{p}, \\mathrm{xt}} 2\\mathrm{NH_3}$. Cho $24,79$ lít khí $\\mathrm{N_2}$ (đktc) phản ứng vừa đủ với khí $\\mathrm{H_2}$, tính khối lượng $\\mathrm{NH_3}$ tạo thành.",
+     "lua_chon": [
+      "34 g",
+      "68 g",
+      "24,79 g",
+      "17 g"
+     ],
+     "dap_an": "34",
+     "loi_giai": "Đổi số mol: $\\mathrm{n(N_2)} = 24,79/24,79 = 1$ mol.\nTheo PTHH, tỉ lệ $\\mathrm{N_2} : \\mathrm{NH_3} = 1 : 2 \\Rightarrow \\mathrm{n(NH_3)} = 2$ mol.\nKhối lượng $\\mathrm{NH_3} = 2 \\times 17 = 34$ g."
+    },
+    {
+     "ma_cau": "K08010304012",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình: $\\mathrm{CO_2} + \\mathrm{Ca(OH)_2} \\to \\mathrm{CaCO_3} + \\mathrm{H_2O}$. Dẫn 2,479 lít khí $\\mathrm{CO_2}$ (đkc) vào dung dịch $\\mathrm{Ca(OH)_2}$ dư, tính khối lượng kết tủa $\\mathrm{CaCO_3}$ thu được.",
+     "lua_chon": [
+      "2,48 g",
+      "5 g",
+      "10 g",
+      "20 g"
+     ],
+     "dap_an": "10",
+     "loi_giai": "Đổi số mol: $\\mathrm{n(CO_2)} = 2,479/24,79 = 0,1$ mol.\nTheo PTHH, tỉ lệ $\\mathrm{CO_2} : \\mathrm{CaCO_3} = 1 : 1 \\Rightarrow \\mathrm{n(CaCO_3)} = 0,1$ mol.\nKhối lượng $\\mathrm{CaCO_3} = 0,1 \\times 100 = 10$ g."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00840",
+   "nhom_id": "KNB00377",
+   "thu_tu": 4,
+   "dang": "Tính thể tích khí này từ thể tích khí kia đo ở CÙNG điều kiện nhiệt độ, áp suất (tỉ lệ thể tích = tỉ lệ hệ số, không cần quy đổi qua số mol)",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010304018",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình: $2\\mathrm{CO} + \\mathrm{O_2} \\xrightarrow{\\mathrm{t^o}} 2\\mathrm{CO_2}$. Cho 8 lít khí $\\mathrm{CO}$ phản ứng vừa đủ với khí $\\mathrm{O_2}$, tính thể tích khí $\\mathrm{O_2}$ cần dùng (các thể tích khí đo ở cùng điều kiện nhiệt độ, áp suất).",
+     "lua_chon": [
+      "4 l",
+      "16 l",
+      "2 l",
+      "8 l"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ở cùng điều kiện nhiệt độ, áp suất, tỉ lệ thể tích các khí bằng đúng tỉ lệ hệ số trong PTHH.\nTỉ lệ $\\mathrm{CO} : \\mathrm{O_2} = 2 : 1 \\Rightarrow \\mathrm{V(O_2)} = \\mathrm{V(CO)}/2 = 8/2 = 4$ lít."
+    },
+    {
+     "ma_cau": "K08010304016",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình: $\\mathrm{CH_4} + 2\\mathrm{O_2} \\xrightarrow{\\mathrm{t^o}} \\mathrm{CO_2} + 2\\mathrm{H_2O}$. Đốt cháy hoàn toàn 3 lít khí $\\mathrm{CH_4}$, cần dùng bao nhiêu lít khí $\\mathrm{O_2}$ (các thể tích khí đo ở cùng điều kiện nhiệt độ, áp suất)?",
+     "lua_chon": [
+      "3 l",
+      "9 l",
+      "6 l",
+      "1,5 l"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ở cùng điều kiện nhiệt độ, áp suất, tỉ lệ thể tích các khí bằng đúng tỉ lệ hệ số trong PTHH (không cần quy đổi qua số mol).\nTỉ lệ $\\mathrm{CH_4} : \\mathrm{O_2} = 1 : 2 \\Rightarrow \\mathrm{V(O_2)} = 2 \\times \\mathrm{V(CH_4)} = 2 \\times 3 = 6$ lít."
+    },
+    {
+     "ma_cau": "K08010304020",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình: $\\mathrm{N_2} + 3\\mathrm{H_2} \\xrightarrow{\\mathrm{t^o, p, xt}} 2\\mathrm{NH_3}$. Cho 12 lít khí $\\mathrm{H_2}$ phản ứng vừa đủ với khí $\\mathrm{N_2}$, tính thể tích khí $\\mathrm{N_2}$ cần dùng (các thể tích khí đo ở cùng điều kiện nhiệt độ, áp suất).",
+     "lua_chon": [
+      "6 l",
+      "12 l",
+      "36 l",
+      "4 l"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ở cùng điều kiện nhiệt độ, áp suất, tỉ lệ thể tích các khí bằng đúng tỉ lệ hệ số trong PTHH.\nTỉ lệ $\\mathrm{N_2} : \\mathrm{H_2} = 1:3 \\Rightarrow \\mathrm{V(N_2)} = \\mathrm{V(H_2)}/3 = 12/3 = 4$ lít."
+    },
+    {
+     "ma_cau": "K08010304019",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình: $2\\mathrm{H_2} + \\mathrm{O_2} \\xrightarrow{\\mathrm{t^o}} 2\\mathrm{H_2O}$. Cho 10 lít khí $\\mathrm{H_2}$ phản ứng vừa đủ với khí $\\mathrm{O_2}$, tính thể tích khí $\\mathrm{O_2}$ cần dùng (các thể tích khí đo ở cùng điều kiện nhiệt độ, áp suất).",
+     "lua_chon": [
+      "5 l",
+      "10 l",
+      "2,5 l",
+      "20 l"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ở cùng điều kiện nhiệt độ, áp suất, tỉ lệ thể tích các khí bằng đúng tỉ lệ hệ số trong PTHH.\nTỉ lệ $\\mathrm{H_2}:\\mathrm{O_2} = 2:1 \\Rightarrow \\mathrm{V(O_2)} = \\mathrm{V(H_2)}/2 = 10/2 = 5$ lít."
+    },
+    {
+     "ma_cau": "K08010304017",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình: $\\mathrm{N_2} + 3\\mathrm{H_2} \\xrightarrow{\\mathrm{t^o, p, xt}} 2\\mathrm{NH_3}$. Cho 5 lít khí $\\mathrm{N_2}$ phản ứng vừa đủ với khí $\\mathrm{H_2}$, tính thể tích khí $\\mathrm{H_2}$ đã dùng (các thể tích khí đo ở cùng điều kiện nhiệt độ, áp suất).",
+     "lua_chon": [
+      "1,67 l",
+      "15 l",
+      "5 l",
+      "10 l"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ở cùng điều kiện nhiệt độ, áp suất, tỉ lệ thể tích các khí bằng đúng tỉ lệ hệ số trong PTHH.\nTỉ lệ $\\mathrm{N_2} : \\mathrm{H_2} = 1 : 3 \\Rightarrow \\mathrm{V(H_2)} = 3 \\times \\mathrm{V(N_2)} = 3 \\times 5 = 15$ lít."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00841",
+   "nhom_id": "KNB00377",
+   "thu_tu": 5,
+   "dang": "Phải đổi đơn vị (kg, mg, ml,...) về đơn vị chuẩn (g, l) trước khi tính theo PTHH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010304022",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình: $\\mathrm{Zn} + \\mathrm{2HCl} \\rightarrow \\mathrm{ZnCl_2} + \\mathrm{H_2}$. Cho $6500$ mg $\\mathrm{Zn}$ phản ứng hết với dung dịch $\\mathrm{HCl}$ dư. Tính thể tích khí $\\mathrm{H_2}$ thoát ra ở đkc (làm tròn $2$ chữ số thập phân).",
+     "dap_an": "2.48",
+     "loi_giai": "Đổi đơn vị: $6500$ mg $= 6,5$ g. Số mol $\\mathrm{Zn} = 6,5/65 = 0,1$ mol.\nTheo PTHH, tỉ lệ $\\mathrm{Zn}: \\mathrm{H_2} = 1 : 1 \\Rightarrow \\mathrm{n(H_2)} = 0,1$ mol.\nThể tích $\\mathrm{H_2}$ (đkc) $= 0,1 \\times 24,79 = 2,48$ lít."
+    },
+    {
+     "ma_cau": "K08010304024",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình: $\\mathrm{CuO} + \\mathrm{H_2} \\stackrel{\\mathrm{t^o}}{\\longrightarrow} \\mathrm{Cu} + \\mathrm{H_2O}$. Dẫn $4958$ ml khí $\\mathrm{H_2}$ (đkc) đi qua $\\mathrm{CuO}$ nung nóng, phản ứng xảy ra vừa đủ. Tính khối lượng $\\mathrm{Cu}$ tạo thành (theo gam).",
+     "dap_an": "12.8",
+     "loi_giai": "Đổi đơn vị: $4958$ ml $= 4,958$ lít. Số mol $\\mathrm{H_2} = 4,958/24,79 = 0,2$ mol.\nTheo PTHH, tỉ lệ $\\mathrm{H_2}: \\mathrm{Cu} = 1 : 1 \\Rightarrow \\mathrm{n(Cu)} = 0,2$ mol.\nKhối lượng $\\mathrm{Cu} = 0,2 \\times 64 = 12,8$ g."
+    },
+    {
+     "ma_cau": "K08010304025",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình: $\\mathrm{Fe} + \\mathrm{S} \\stackrel{\\mathrm{t^o}}{\\longrightarrow} \\mathrm{FeS}$. Biết lượng $\\mathrm{FeS}$ tạo thành là $8,8$ kg. Tính khối lượng $\\mathrm{Fe}$ đã phản ứng (theo kg).",
+     "dap_an": "5.6",
+     "loi_giai": "Đổi đơn vị: $8,8$ kg $= 8800$ g. Số mol $\\mathrm{FeS} = 8800/88 = 100$ mol.\nTheo PTHH, tỉ lệ $\\mathrm{Fe}: \\mathrm{FeS} = 1 : 1 \\Rightarrow \\mathrm{n(Fe)} = 100$ mol.\nKhối lượng $\\mathrm{Fe} = 100 \\times 56 = 5600$ g $= 5,6$ kg."
+    },
+    {
+     "ma_cau": "K08010304023",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình: $\\mathrm{CaCO_3} \\stackrel{\\mathrm{t^o}}{\\longrightarrow} \\mathrm{CaO} + \\mathrm{CO_2}$. Nung hoàn toàn $0,1$ kg $\\mathrm{CaCO_3}$. Tính thể tích khí $\\mathrm{CO_2}$ thu được ở đkc.",
+     "dap_an": "24.79",
+     "loi_giai": "Đổi đơn vị: $0,1$ kg $= 100$ g. Số mol $\\mathrm{CaCO_3} = 100/100 = 1$ mol.\nTheo PTHH, tỉ lệ $\\mathrm{CaCO_3}: \\mathrm{CO_2} = 1 : 1 \\Rightarrow \\mathrm{n(CO_2)} = 1$ mol.\nThể tích $\\mathrm{CO_2}$ (đkc) $= 1 \\times 24,79 = 24,79$ lít."
+    },
+    {
+     "ma_cau": "K08010304021",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình: $\\mathrm{2Al} + \\mathrm{3CuSO_4} \\rightarrow \\mathrm{Al_2(SO_4)_3} + \\mathrm{3Cu}$. Cho $0,054$ kg $\\mathrm{Al}$ phản ứng vừa đủ với dung dịch $\\mathrm{CuSO_4}$. Tính khối lượng $\\mathrm{Cu}$ sinh ra (theo gam).",
+     "dap_an": "192",
+     "loi_giai": "Đổi đơn vị: $0,054$ kg $= 54$ g. Số mol $\\mathrm{Al} = 54/27 = 2$ mol.\nTheo PTHH, tỉ lệ $\\mathrm{Al}: \\mathrm{Cu} = 2 : 3 \\Rightarrow \\mathrm{n(Cu)} = 2 \\times 3/2 = 3$ mol.\nKhối lượng $\\mathrm{Cu} = 3 \\times 64 = 192$ g."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00842",
+   "nhom_id": "KNB00377",
+   "thu_tu": 6,
+   "dang": "Đề cho dư một dữ kiện không cần dùng đến, phải chọn đúng số liệu liên quan tới chất cần tính",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010304029",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình: $\\mathrm{CaCO_3} \\xrightarrow{\\mathrm{t^o}} \\mathrm{CaO} + \\mathrm{CO_2}$. Nung $10 \\mathrm{\\ g}$ $\\mathrm{CaCO_3}$ ở $900^{\\circ}\\mathrm{C}$ trong $30 \\mathrm{\\ phút}$ cho đến khi phản ứng xảy ra hoàn toàn, thu được $\\mathrm{CaO}$ và khí $\\mathrm{CO_2}$. Tính khối lượng $\\mathrm{CaO}$ tạo thành.",
+     "dap_an": "5.6",
+     "loi_giai": "Nhiệt độ và thời gian nung chỉ là điều kiện phản ứng, không cần dùng để tính toán. Số $\\mathrm{mol}$ $\\mathrm{CaCO_3} = 10/100 = 0,1 \\mathrm{\\ mol}$.\nTheo $\\mathrm{PTHH}$, tỉ lệ $\\mathrm{CaCO_3} : \\mathrm{CaO} = 1 : 1 \\Rightarrow \\mathrm{n(CaO)} = 0,1 \\mathrm{\\ mol}$.\nKhối lượng $\\mathrm{CaO} = 0,1 \\times 56 = 5,6 \\mathrm{\\ g}$."
+    },
+    {
+     "ma_cau": "K08010304028",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình: $\\mathrm{Fe} + \\mathrm{2HCl} \\longrightarrow \\mathrm{FeCl_2} + \\mathrm{H_2}$. Hoà tan hoàn toàn $11,2 \\mathrm{\\ g}$ $\\mathrm{Fe}$ trong $200 \\mathrm{\\ g}$ dung dịch $\\mathrm{HCl}$ dư, thu được $\\mathrm{FeCl_2}$ và khí $\\mathrm{H_2}$. Tính thể tích khí $\\mathrm{H_2}$ sinh ra ở đkc.",
+     "dap_an": "4.96",
+     "loi_giai": "Khối lượng dung dịch $\\mathrm{HCl}$ ($200 \\mathrm{\\ g}$) không cần dùng vì $\\mathrm{Fe}$ là chất phản ứng hết. Số $\\mathrm{mol}$ $\\mathrm{Fe} = 11,2/56 = 0,2 \\mathrm{\\ mol}$.\nTheo $\\mathrm{PTHH}$, tỉ lệ $\\mathrm{Fe} : \\mathrm{H_2} = 1 : 1 \\Rightarrow \\mathrm{n(H_2)} = 0,2 \\mathrm{\\ mol}$.\nThể tích $\\mathrm{H_2}$ (đkc) $= 0,2 \\times 24,79 = 4,96 \\mathrm{\\ lít}$."
+    },
+    {
+     "ma_cau": "K08010304030",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình: $\\mathrm{Zn} + \\mathrm{CuSO_4} \\longrightarrow \\mathrm{ZnSO_4} + \\mathrm{Cu}$. Cho $13 \\text{ g } \\mathrm{Zn}$ (khối lượng riêng của kẽm là $7.14 \\text{ g/cm}^3$) phản ứng vừa đủ với dung dịch $\\mathrm{CuSO_4}$, thu được $\\mathrm{ZnSO_4}$ và $\\mathrm{Cu}$. Tính khối lượng $\\mathrm{Cu}$ sinh ra.",
+     "dap_an": "12.8",
+     "loi_giai": "Khối lượng riêng của kẽm không cần dùng vì đã biết trực tiếp khối lượng $\\mathrm{Zn}$. Số mol $\\mathrm{Zn} = 13/65 = 0.2 \\text{ mol}.$\nTheo $\\mathrm{PTHH}$, tỉ lệ $\\mathrm{Zn} : \\mathrm{Cu} = 1 : 1 \\Rightarrow \\mathrm{n(Cu)} = 0.2 \\text{ mol}.$\nKhối lượng $\\mathrm{Cu} = 0.2 \\times 64 = 12.8 \\text{ g}.$"
+    },
+    {
+     "ma_cau": "K08010304026",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình: $\\mathrm{Zn} + \\mathrm{2HCl} \\longrightarrow \\mathrm{ZnCl_2} + \\mathrm{H_2}$. Cho $6,5 \\mathrm{\\ g}$ $\\mathrm{Zn}$ phản ứng vừa đủ với dung dịch $\\mathrm{HCl}$ $2\\mathrm{M}$ (dư), thu được $\\mathrm{ZnCl_2}$ và khí $\\mathrm{H_2}$. Tính khối lượng $\\mathrm{ZnCl_2}$ tạo thành.",
+     "dap_an": "13.6",
+     "loi_giai": "Nồng độ $\\mathrm{2M}$ của dung dịch $\\mathrm{HCl}$ không cần dùng đến vì đã biết khối lượng $\\mathrm{Zn}$ (chất phản ứng hết). Số $\\mathrm{mol}$ $\\mathrm{Zn} = 6,5/65 = 0,1 \\mathrm{\\ mol}$.\nTheo $\\mathrm{PTHH}$, tỉ lệ $\\mathrm{Zn} : \\mathrm{ZnCl_2} = 1 : 1 \\Rightarrow \\mathrm{n(ZnCl_2)} = 0,1 \\mathrm{\\ mol}$.\nKhối lượng $\\mathrm{ZnCl_2} = 0,1 \\times 136 = 13,6 \\mathrm{\\ g}$."
+    },
+    {
+     "ma_cau": "K08010304027",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình: $\\mathrm{C} + \\mathrm{O_2} \\xrightarrow{\\mathrm{t^o}} \\mathrm{CO_2}$. Đốt cháy hoàn toàn $6 \\mathrm{\\ g}$ cacbon trong bình chứa $20 \\mathrm{\\ g}$ khí $\\mathrm{O_2}$ (lấy dư), thu được khí $\\mathrm{CO_2}$. Tính khối lượng $\\mathrm{CO_2}$ sinh ra.",
+     "dap_an": "22",
+     "loi_giai": "Khối lượng $\\mathrm{O_2}$ ($20 \\mathrm{\\ g}$, lấy dư) không cần dùng vì $\\mathrm{C}$ là chất phản ứng hết, tính theo lượng $\\mathrm{C}$. Số $\\mathrm{mol}$ $\\mathrm{C} = 6/12 = 0,5 \\mathrm{\\ mol}$.\nTheo $\\mathrm{PTHH}$, tỉ lệ $\\mathrm{C} : \\mathrm{CO_2} = 1 : 1 \\Rightarrow \\mathrm{n(CO_2)} = 0,5 \\mathrm{\\ mol}$.\nKhối lượng $\\mathrm{CO_2} = 0,5 \\times 44 = 22 \\mathrm{\\ g}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00843",
+   "nhom_id": "KNB00377",
+   "thu_tu": 7,
+   "dang": "Khối lượng ban đầu là khối lượng một mẫu/quặng chứa tạp chất theo % khối lượng — phải tách khối lượng chất tinh khiết trước khi tính theo PTHH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010304034",
+     "loai": "tu_luan",
+     "de": "Cho $20 \\ \\mathrm{g}$ mẫu quặng sắt chứa $80\\% \\ \\mathrm{Fe_2O_3}$ về khối lượng (phần còn lại là tạp chất trơ, không phản ứng) tác dụng vừa đủ với khí $\\mathrm{CO}$ ở nhiệt độ cao, thu được $\\mathrm{Fe}$ và khí $\\mathrm{CO_2}$. Tính khối lượng $\\mathrm{Fe}$ tạo thành.",
+     "dap_an": "11.2",
+     "loi_giai": "Khối lượng $\\mathrm{Fe_2O_3}$ nguyên chất $= 20 \\times 80\\% = 16 \\ \\mathrm{g} \\Rightarrow \\mathrm{n(Fe_2O_3)} = 16/160 = 0.1 \\ \\mathrm{mol}$.\n$\\mathrm{PTHH: \\ Fe_2O_3} + \\mathrm{3CO} \\stackrel{\\mathrm{t^o}}{\\longrightarrow} \\mathrm{2Fe} + \\mathrm{3CO_2}$. Tỉ lệ $\\mathrm{Fe_2O_3} : \\mathrm{Fe} = 1 : 2 \\Rightarrow \\mathrm{n(Fe)} = 0.1 \\times 2 = 0.2 \\ \\mathrm{mol}$.\nKhối lượng $\\mathrm{Fe} = 0.2 \\times 56 = 11.2 \\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010304032",
+     "loai": "tu_luan",
+     "de": "Cho $100 \\ \\mathrm{g}$ mẫu quặng kẽm chứa $65\\% \\ \\mathrm{Zn}$ về khối lượng (phần còn lại là tạp chất không phản ứng) tác dụng hết với dung dịch $\\mathrm{HCl}$ dư, thu được $\\mathrm{ZnCl_2}$ và khí $\\mathrm{H_2}$. Tính thể tích khí $\\mathrm{H_2}$ sinh ra ở đkc.",
+     "dap_an": "24.79",
+     "loi_giai": "Khối lượng $\\mathrm{Zn}$ nguyên chất $= 100 \\times 65\\% = 65 \\ \\mathrm{g} \\Rightarrow \\mathrm{n(Zn)} = 65/65 = 1 \\ \\mathrm{mol}$.\n$\\mathrm{PTHH: \\ Zn} + \\mathrm{2HCl} \\longrightarrow \\mathrm{ZnCl_2} + \\mathrm{H_2}$. Tỉ lệ $\\mathrm{Zn} : \\mathrm{H_2} = 1 : 1 \\Rightarrow \\mathrm{n(H_2)} = 1 \\ \\mathrm{mol}$.\nThể tích $\\mathrm{H_2}$ (đkc) $= 1 \\times 24.79 = 24.79 \\ \\mathrm{lít}$."
+    },
+    {
+     "ma_cau": "K08010304031",
+     "loai": "tu_luan",
+     "de": "Nung hoàn toàn $25 \\ \\mathrm{g}$ đá vôi chứa $80\\% \\ \\mathrm{CaCO_3}$ về khối lượng (phần còn lại là tạp chất trơ, không bị nhiệt phân), thu được $\\mathrm{CaO}$ và khí $\\mathrm{CO_2}$. Tính khối lượng $\\mathrm{CaO}$ tạo thành.",
+     "dap_an": "11.2",
+     "loi_giai": "Khối lượng $\\mathrm{CaCO_3}$ nguyên chất $= 25 \\times 80\\% = 20 \\ \\mathrm{g} \\Rightarrow \\mathrm{n(CaCO_3)} = 20/100 = 0.2 \\ \\mathrm{mol}$.\n$\\mathrm{PTHH: \\ CaCO_3} \\stackrel{\\mathrm{t^o}}{\\longrightarrow} \\mathrm{CaO} + \\mathrm{CO_2}$. Tỉ lệ $\\mathrm{CaCO_3} : \\mathrm{CaO} = 1 : 1 \\Rightarrow \\mathrm{n(CaO)} = 0.2 \\ \\mathrm{mol}$.\nKhối lượng $\\mathrm{CaO} = 0.2 \\times 56 = 11.2 \\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010304035",
+     "loai": "tu_luan",
+     "de": "Cho $32.5 \\ \\mathrm{g}$ mẫu kẽm chứa $80\\% \\ \\mathrm{Zn}$ về khối lượng (phần còn lại là tạp chất không phản ứng) tác dụng hết với dung dịch $\\mathrm{H_2SO_4}$ loãng dư, thu được $\\mathrm{ZnSO_4}$ và khí $\\mathrm{H_2}$. Tính khối lượng $\\mathrm{ZnSO_4}$ tạo thành.",
+     "dap_an": "64.4",
+     "loi_giai": "Khối lượng $\\mathrm{Zn}$ nguyên chất $= 32.5 \\times 80\\% = 26 \\ \\mathrm{g} \\Rightarrow \\mathrm{n(Zn)} = 26/65 = 0.4 \\ \\mathrm{mol}$.\n$\\mathrm{PTHH: \\ Zn} + \\mathrm{H_2SO_4} \\longrightarrow \\mathrm{ZnSO_4} + \\mathrm{H_2}$. Tỉ lệ $\\mathrm{Zn} : \\mathrm{ZnSO_4} = 1 : 1 \\Rightarrow \\mathrm{n(ZnSO_4)} = 0.4 \\ \\mathrm{mol}$.\nKhối lượng $\\mathrm{ZnSO_4} = 0.4 \\times 161 = 64.4 \\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010304033",
+     "loai": "tu_luan",
+     "de": "Cho $40 \\ \\mathrm{g}$ mẫu đá vôi chứa $50\\% \\ \\mathrm{CaCO_3}$ về khối lượng (phần còn lại là tạp chất trơ) tác dụng hết với dung dịch $\\mathrm{HCl}$ dư, thu được $\\mathrm{CaCl_2}$, nước và khí $\\mathrm{CO_2}$. Tính khối lượng $\\mathrm{CaCl_2}$ tạo thành.",
+     "dap_an": "22.2",
+     "loi_giai": "Khối lượng $\\mathrm{CaCO_3}$ nguyên chất $= 40 \\times 50\\% = 20 \\ \\mathrm{g} \\Rightarrow \\mathrm{n(CaCO_3)} = 20/100 = 0.2 \\ \\mathrm{mol}$.\n$\\mathrm{PTHH: \\ CaCO_3} + \\mathrm{2HCl} \\longrightarrow \\mathrm{CaCl_2} + \\mathrm{H_2O} + \\mathrm{CO_2}$. Tỉ lệ $\\mathrm{CaCO_3} : \\mathrm{CaCl_2} = 1 : 1 \\Rightarrow \\mathrm{n(CaCl_2)} = 0.2 \\ \\mathrm{mol}$.\nKhối lượng $\\mathrm{CaCl_2} = 0.2 \\times 111 = 22.2 \\ \\mathrm{g}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00844",
+   "nhom_id": "KNB00378",
+   "thu_tu": 1,
+   "dang": "Chuỗi 2 phương trình liên tiếp (kim loại → oxit → muối/kiềm), tính khối lượng chất đầu ra khối lượng chất cuối",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010305002",
+     "loai": "trac_nghiem",
+     "de": "Cho $8\\ \\mathrm{g}\\ \\mathrm{Ca}$ phản ứng hết với khí oxi dư, thu được $\\mathrm{CaO}$ (giai đoạn 1: $2\\mathrm{Ca} + \\mathrm{O_2} \\rightarrow 2\\mathrm{CaO}$); toàn\nbộ $\\mathrm{CaO}$ sinh ra tác dụng hết với nước dư, thu được $\\mathrm{Ca(OH)_2}$ (giai đoạn 2: $\\mathrm{CaO} + \\mathrm{H_2O} \\rightarrow \\mathrm{Ca(OH)_2}$).\nTính khối lượng $\\mathrm{Ca(OH)_2}$ tạo thành.",
+     "lua_chon": [
+      "$14,8\\ \\mathrm{g}$",
+      "$29,6\\ \\mathrm{g}$",
+      "$7,4\\ \\mathrm{g}$",
+      "$8\\ \\mathrm{g}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Số mol $\\mathrm{Ca} = 8/40 = 0,2\\ \\mathrm{mol}$.\nGiai đoạn 1: tỉ lệ $\\mathrm{Ca} : \\mathrm{CaO} = 2 : 2 = 1 : 1 \\Rightarrow \\mathrm{n(CaO)} = 0,2\\ \\mathrm{mol}$.\nGiai đoạn 2: tỉ lệ $\\mathrm{CaO} : \\mathrm{Ca(OH)_2} = 1 : 1 \\Rightarrow \\mathrm{n(Ca(OH)_2)} = 0,2\\ \\mathrm{mol}$.\nKhối lượng $\\mathrm{Ca(OH)_2} = 0,2 \\times 74 = 14,8\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010305004",
+     "loai": "trac_nghiem",
+     "de": "Cho $6,4 \\mathrm{\\ g}$ $\\mathrm{Cu}$ phản ứng hết với khí oxi dư (nung nóng), thu được $\\mathrm{CuO}$ (giai đoạn 1: $2\\mathrm{Cu} + \\mathrm{O_2} \\to 2\\mathrm{CuO}$); toàn bộ $\\mathrm{CuO}$ sinh ra tác dụng vừa đủ với dung dịch $\\mathrm{HCl}$, thu được $\\mathrm{CuCl_2}$ (giai đoạn 2: $\\mathrm{CuO} + 2\\mathrm{HCl} \\to \\mathrm{CuCl_2} + \\mathrm{H_2O}$). Tính khối lượng $\\mathrm{CuCl_2}$ tạo thành.",
+     "lua_chon": [
+      "$6,75 \\mathrm{\\ g}$",
+      "$13,5 \\mathrm{\\ g}$",
+      "$27 \\mathrm{\\ g}$",
+      "$6,4 \\mathrm{\\ g}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Số mol $\\mathrm{Cu} = 6,4/64 = 0,1 \\mathrm{\\ mol}$.\nGiai đoạn 1: tỉ lệ $\\mathrm{Cu} : \\mathrm{CuO} = 2 : 2 = 1 : 1 \\Rightarrow \\mathrm{n(CuO)} = 0,1 \\mathrm{\\ mol}$.\nGiai đoạn 2: tỉ lệ $\\mathrm{CuO} : \\mathrm{CuCl_2} = 1 : 1 \\Rightarrow \\mathrm{n(CuCl_2)} = 0,1 \\mathrm{\\ mol}$.\nKhối lượng $\\mathrm{CuCl_2} = 0,1 \\times 135 = 13,5 \\mathrm{\\ g}$."
+    },
+    {
+     "ma_cau": "K08010305005",
+     "loai": "trac_nghiem",
+     "de": "Cho $5,4 \\text{ g } \\mathrm{Al}$ phản ứng hết với khí oxi dư, thu được $\\mathrm{Al_2O_3}$ (giai đoạn 1: $4\\mathrm{Al} + 3\\mathrm{O_2} \\to 2\\mathrm{Al_2O_3}$);\ntoàn bộ $\\mathrm{Al_2O_3}$ sinh ra tác dụng vừa đủ với dung dịch $\\mathrm{HCl}$, thu được $\\mathrm{AlCl_3}$ (giai đoạn 2: $\\mathrm{Al_2O_3} + 6\\mathrm{HCl} \\to 2\\mathrm{AlCl_3} + 3\\mathrm{H_2O}$). Tính khối lượng $\\mathrm{AlCl_3}$ tạo thành.",
+     "lua_chon": [
+      "$13,35 \\text{ g}$",
+      "$53,4 \\text{ g}$",
+      "$5,4 \\text{ g}$",
+      "$26,7 \\text{ g}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Số mol $\\mathrm{Al} = 5,4/27 = 0,2 \\text{ mol}$.\nGiai đoạn 1: tỉ lệ $\\mathrm{Al} : \\mathrm{Al_2O_3} = 4 : 2 = 2 : 1 \\Rightarrow \\text{n}(\\mathrm{Al_2O_3}) = 0,1 \\text{ mol}$.\nGiai đoạn 2: tỉ lệ $\\mathrm{Al_2O_3} : \\mathrm{AlCl_3} = 1 : 2 \\Rightarrow \\text{n}(\\mathrm{AlCl_3}) = 0,2 \\text{ mol}$.\nKhối lượng $\\mathrm{AlCl_3} = 0,2 \\times 133,5 = 26,7 \\text{ g}$."
+    },
+    {
+     "ma_cau": "K08010305001",
+     "loai": "trac_nghiem",
+     "de": "Cho $4,6\\ \\mathrm{g}\\ \\mathrm{Na}$ phản ứng hết với khí oxi dư, thu được $\\mathrm{Na_2O}$ (giai đoạn 1: $4\\mathrm{Na} + \\mathrm{O_2} \\rightarrow 2\\mathrm{Na_2O}$);\ntoàn bộ $\\mathrm{Na_2O}$ sinh ra tác dụng hết với nước dư, thu được $\\mathrm{NaOH}$ (giai đoạn 2: $\\mathrm{Na_2O} + \\mathrm{H_2O} \\rightarrow 2\\mathrm{NaOH}$).\nTính khối lượng $\\mathrm{NaOH}$ tạo thành.",
+     "lua_chon": [
+      "$4,6\\ \\mathrm{g}$",
+      "$16\\ \\mathrm{g}$",
+      "$4\\ \\mathrm{g}$",
+      "$8\\ \\mathrm{g}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Số mol $\\mathrm{Na} = 4,6/23 = 0,2\\ \\mathrm{mol}$.\nGiai đoạn 1: tỉ lệ $\\mathrm{Na} : \\mathrm{Na_2O} = 4 : 2 = 2 : 1 \\Rightarrow \\mathrm{n(Na_2O)} = 0,1\\ \\mathrm{mol}$.\nGiai đoạn 2: tỉ lệ $\\mathrm{Na_2O} : \\mathrm{NaOH} = 1 : 2 \\Rightarrow \\mathrm{n(NaOH)} = 0,2\\ \\mathrm{mol}$.\nKhối lượng $\\mathrm{NaOH} = 0,2 \\times 40 = 8\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010305003",
+     "loai": "trac_nghiem",
+     "de": "Cho $11,2 \\mathrm{\\ g}$ $\\mathrm{Fe}$ phản ứng hết với khí oxi dư, thu được $\\mathrm{Fe_2O_3}$ (giai đoạn 1: $4\\mathrm{Fe} + 3\\mathrm{O_2} \\to 2\\mathrm{Fe_2O_3}$); toàn bộ $\\mathrm{Fe_2O_3}$ sinh ra tác dụng vừa đủ với dung dịch $\\mathrm{HCl}$, thu được $\\mathrm{FeCl_3}$ (giai đoạn 2: $\\mathrm{Fe_2O_3} + 6\\mathrm{HCl} \\to 2\\mathrm{FeCl_3} + 3\\mathrm{H_2O}$). Tính khối lượng $\\mathrm{FeCl_3}$ tạo thành.",
+     "lua_chon": [
+      "$16,25 \\mathrm{\\ g}$",
+      "$11,2 \\mathrm{\\ g}$",
+      "$65 \\mathrm{\\ g}$",
+      "$32,5 \\mathrm{\\ g}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Số mol $\\mathrm{Fe} = 11,2/56 = 0,2 \\mathrm{\\ mol}$.\nGiai đoạn 1: tỉ lệ $\\mathrm{Fe} : \\mathrm{Fe_2O_3} = 4 : 2 = 2 : 1 \\Rightarrow \\mathrm{n(Fe_2O_3)} = 0,1 \\mathrm{\\ mol}$.\nGiai đoạn 2: tỉ lệ $\\mathrm{Fe_2O_3} : \\mathrm{FeCl_3} = 1 : 2 \\Rightarrow \\mathrm{n(FeCl_3)} = 0,2 \\mathrm{\\ mol}$.\nKhối lượng $\\mathrm{FeCl_3} = 0,2 \\times 162,5 = 32,5 \\mathrm{\\ g}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00845",
+   "nhom_id": "KNB00378",
+   "thu_tu": 2,
+   "dang": "Chuỗi 2 phương trình liên tiếp có chất khí xuất hiện ở giai đoạn giữa hoặc giai đoạn cuối",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010305009",
+     "loai": "tra_loi_ngan",
+     "de": "Cho $19.5 \\mathrm{\\ g}$ $\\mathrm{Zn}$ phản ứng hết với dung dịch $\\mathrm{HCl}$ dư, thu được khí $\\mathrm{H_2}$ (giai đoạn 1: $\\mathrm{Zn + 2HCl \\to ZnCl_2 + H_2}$); toàn bộ khí $\\mathrm{H_2}$ sinh ra phản ứng vừa đủ với khí $\\mathrm{N_2}$, thu được khí $\\mathrm{NH_3}$ (giai đoạn 2: $\\mathrm{N_2 + 3H_2 \\to 2NH_3}$). Tính thể tích khí $\\mathrm{NH_3}$ thu được ở đkc.",
+     "lua_chon": [
+      "9,92 l",
+      "2,48 l",
+      "4,96 l",
+      "19,5 l"
+     ],
+     "dap_an": "4.96",
+     "loi_giai": "Số mol $\\mathrm{Zn} = 19.5/65 = 0.3$ mol.\nGiai đoạn 1: tỉ lệ $\\mathrm{Zn : H_2 = 1 : 1 \\Rightarrow n(H_2) = 0.3}$ mol.\nGiai đoạn 2: tỉ lệ $\\mathrm{H_2 : NH_3 = 3 : 2 \\Rightarrow n(NH_3) = 0.3 \\times 2/3 = 0.2}$ mol.\nThể tích $\\mathrm{NH_3}$ (đkc) $= 0.2 \\times 24.79 = 4.96$ lít."
+    },
+    {
+     "ma_cau": "K08010305010",
+     "loai": "tra_loi_ngan",
+     "de": "Nung $24,5 \\mathrm{\\ g\\ KClO_3}$ đến khi phản ứng hoàn toàn, thu được khí $\\mathrm{O_2}$ (giai đoạn 1: $2\\mathrm{KClO_3} \\to 2\\mathrm{KCl} + 3\\mathrm{O_2}$); toàn bộ khí $\\mathrm{O_2}$ sinh ra dùng để đốt cháy hết cacbon (dư), thu được khí $\\mathrm{CO_2}$ (giai đoạn 2: $\\mathrm{C} + \\mathrm{O_2} \\to \\mathrm{CO_2}$). Tính thể tích khí $\\mathrm{CO_2}$ thu được ở đkc.",
+     "lua_chon": [
+      "7,44 l",
+      "24,5 l",
+      "3,72 l",
+      "14,88 l"
+     ],
+     "dap_an": "7.44",
+     "loi_giai": "Số mol $\\mathrm{KClO_3} = 24,5/122,5 = 0,2$ mol.\nGiai đoạn 1: tỉ lệ $\\mathrm{KClO_3} : \\mathrm{O_2} = 2 : 3 \\Rightarrow \\mathrm{n(O_2)} = 0,3$ mol.\nGiai đoạn 2: tỉ lệ $\\mathrm{O_2} : \\mathrm{CO_2} = 1 : 1 \\Rightarrow \\mathrm{n(CO_2)} = 0,3$ mol.\nThể tích $\\mathrm{CO_2}$ (đkc) $= 0,3 \\times 24,79 = 7,44$ lít."
+    },
+    {
+     "ma_cau": "K08010305008",
+     "loai": "tra_loi_ngan",
+     "de": "Đốt cháy hoàn toàn $6 \\mathrm{\\ g}$ cacbon trong khí oxi dư, thu được khí $\\mathrm{CO_2}$ (giai đoạn 1: $\\mathrm{C + O_2 \\to CO_2}$); toàn bộ khí $\\mathrm{CO_2}$ sinh ra được dẫn vào dung dịch $\\mathrm{Ca(OH)_2}$ dư, thu được kết tủa $\\mathrm{CaCO_3}$ (giai đoạn 2: $\\mathrm{CO_2 + Ca(OH)_2 \\to CaCO_3 + H_2O}$). Tính khối lượng $\\mathrm{CaCO_3}$ tạo thành.",
+     "lua_chon": [
+      "6 g",
+      "25 g",
+      "50 g",
+      "100 g"
+     ],
+     "dap_an": "50",
+     "loi_giai": "Số mol $\\mathrm{C} = 6/12 = 0.5$ mol.\nGiai đoạn 1: tỉ lệ $\\mathrm{C : CO_2 = 1 : 1 \\Rightarrow n(CO_2) = 0.5}$ mol.\nGiai đoạn 2: tỉ lệ $\\mathrm{CO_2 : CaCO_3 = 1 : 1 \\Rightarrow n(CaCO_3) = 0.5}$ mol.\nKhối lượng $\\mathrm{CaCO_3 = 0.5 \\times 100 = 50 \\ g}$."
+    },
+    {
+     "ma_cau": "K08010305006",
+     "loai": "tra_loi_ngan",
+     "de": "Nung $31,6 \\mathrm{\\ g\\ KMnO_4}$ đến khi phản ứng hoàn toàn, thu được khí $\\mathrm{O_2}$ (cùng $\\mathrm{K_2MnO_4}$, $\\mathrm{MnO_2}$) (giai đoạn 1: $\\mathrm{2KMnO_4 \\to K_2MnO_4 + MnO_2 + O_2}$); toàn bộ khí $\\mathrm{O_2}$ sinh ra dùng để đốt cháy hết $\\mathrm{Cu}$ (dư), thu được $\\mathrm{CuO}$ (giai đoạn 2: $\\mathrm{2Cu + O_2 \\to 2CuO}$). Tính khối lượng $\\mathrm{CuO}$ tạo thành.",
+     "lua_chon": [
+      "16 g",
+      "32 g",
+      "8 g",
+      "31,6 g"
+     ],
+     "dap_an": "16",
+     "loi_giai": "Số mol $\\mathrm{KMnO_4} = 31,6 / 158 = 0,2$ mol.\nGiai đoạn 1: tỉ lệ $\\mathrm{KMnO_4} : \\mathrm{O_2} = 2 : 1 \\Rightarrow \\mathrm{n(O_2)} = 0,1$ mol.\nGiai đoạn 2: tỉ lệ $\\mathrm{O_2} : \\mathrm{CuO} = 1 : 2 \\Rightarrow \\mathrm{n(CuO)} = 0,2$ mol.\nKhối lượng $\\mathrm{CuO} = 0,2 \\times 80 = 16$ g."
+    },
+    {
+     "ma_cau": "K08010305007",
+     "loai": "tra_loi_ngan",
+     "de": "Cho $13 \\mathrm{\\ g\\ Zn}$ phản ứng hết với dung dịch $\\mathrm{HCl}$ dư, thu được khí $\\mathrm{H_2}$ (giai đoạn 1: $\\mathrm{Zn + 2HCl \\to ZnCl_2 + H_2}$); toàn bộ khí $\\mathrm{H_2}$ sinh ra dùng để khử hết $\\mathrm{CuO}$ (dư), thu được $\\mathrm{Cu}$ (giai đoạn 2: $\\mathrm{CuO + H_2 \\to Cu + H_2O}$). Tính khối lượng $\\mathrm{Cu}$ tạo thành.",
+     "lua_chon": [
+      "13 g",
+      "12,8 g",
+      "6,4 g",
+      "25,6 g"
+     ],
+     "dap_an": "12.8",
+     "loi_giai": "Số mol $\\mathrm{Zn} = 13/65 = 0,2$ mol.\nGiai đoạn 1: tỉ lệ $\\mathrm{Zn} : \\mathrm{H_2} = 1 : 1 \\Rightarrow \\mathrm{n(H_2)} = 0,2$ mol.\nGiai đoạn 2: tỉ lệ $\\mathrm{H_2} : \\mathrm{Cu} = 1 : 1 \\Rightarrow \\mathrm{n(Cu)} = 0,2$ mol.\nKhối lượng $\\mathrm{Cu} = 0,2 \\times 64 = 12,8$ g."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00846",
+   "nhom_id": "KNB00378",
+   "thu_tu": 3,
+   "dang": "Chuỗi 3 phương trình liên tiếp",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010305011",
+     "loai": "trac_nghiem",
+     "de": "Cho 9,2 g Na phản ứng hết với oxi dư tạo $\\mathrm{Na_2O}$ ($4\\mathrm{Na} + \\mathrm{O_2} \\rightarrow 2\\mathrm{Na_2O}$); toàn bộ $\\mathrm{Na_2O}$ tác dụng hết với nước dư tạo $\\mathrm{NaOH}$ ($\\mathrm{Na_2O} + \\mathrm{H_2O} \\rightarrow 2\\mathrm{NaOH}$); toàn bộ $\\mathrm{NaOH}$ tác dụng vừa đủ với khí $\\mathrm{CO_2}$ tạo $\\mathrm{Na_2CO_3}$ ($2\\mathrm{NaOH} + \\mathrm{CO_2} \\rightarrow \\mathrm{Na_2CO_3} + \\mathrm{H_2O}$). Tính khối lượng $\\mathrm{Na_2CO_3}$ tạo thành.",
+     "lua_chon": [
+      "10,6 g",
+      "9,2 g",
+      "42,4 g",
+      "21,2 g"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Số mol $\\mathrm{Na} = 9,2/23 = 0,4 \\text{ mol} \\Rightarrow \\mathrm{n(Na_2O)} = 0,4 \\times 2/4 = 0,2 \\text{ mol}.$\n$\\mathrm{n(NaOH)} = 0,2 \\times 2 = 0,4 \\text{ mol}.$\n$\\mathrm{n(Na_2CO_3)} = 0,4/2 = 0,2 \\text{ mol} \\Rightarrow \\text{ khối lượng } \\mathrm{Na_2CO_3} = 0,2 \\times 106 = 21,2 \\text{ g}.$"
+    },
+    {
+     "ma_cau": "K08010305014",
+     "loai": "trac_nghiem",
+     "de": "Cho $12,8 \\mathrm{\\ g}$ $\\mathrm{Cu}$ phản ứng hết với oxi dư tạo $\\mathrm{CuO}$ ($2\\mathrm{Cu} + \\mathrm{O_2} \\rightarrow 2\\mathrm{CuO}$); toàn bộ $\\mathrm{CuO}$ tác dụng vừa đủ với dung dịch $\\mathrm{HCl}$ tạo $\\mathrm{CuCl_2}$ ($\\mathrm{CuO} + 2\\mathrm{HCl} \\rightarrow \\mathrm{CuCl_2} + \\mathrm{H_2O}$); toàn bộ $\\mathrm{CuCl_2}$ tác dụng vừa đủ với dung dịch $\\mathrm{NaOH}$ tạo kết tủa $\\mathrm{Cu(OH)_2}$ ($\\mathrm{CuCl_2} + 2\\mathrm{NaOH} \\rightarrow \\mathrm{Cu(OH)_2} + 2\\mathrm{NaCl}$). Tính khối lượng $\\mathrm{Cu(OH)_2}$ tạo thành.",
+     "lua_chon": [
+      "19,6 g",
+      "39,2 g",
+      "9,8 g",
+      "12,8 g"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Số mol $\\mathrm{Cu} = 12,8/64 = 0,2\\ \\mathrm{mol}$.\nCả 3 tỉ lệ đều $1: 1 \\Rightarrow \\mathrm{n(Cu(OH)_2)} = 0,2\\ \\mathrm{mol}$.\nKhối lượng $\\mathrm{Cu(OH)_2} = 0,2 \\times 98 = 19,6\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010305012",
+     "loai": "trac_nghiem",
+     "de": "Cho 4 g $\\mathrm{Ca}$ phản ứng hết với oxi dư tạo $\\mathrm{CaO}$ ($2\\mathrm{Ca} + \\mathrm{O_2} \\rightarrow 2\\mathrm{CaO}$); toàn bộ $\\mathrm{CaO}$ tác dụng hết với nước dư tạo $\\mathrm{Ca(OH)_2}$ ($\\mathrm{CaO} + \\mathrm{H_2O} \\rightarrow \\mathrm{Ca(OH)_2}$); toàn bộ $\\mathrm{Ca(OH)_2}$ tác dụng vừa đủ với khí $\\mathrm{CO_2}$ tạo kết tủa $\\mathrm{CaCO_3}$ ($\\mathrm{Ca(OH)_2} + \\mathrm{CO_2} \\rightarrow \\mathrm{CaCO_3} + \\mathrm{H_2O}$). Tính khối lượng $\\mathrm{CaCO_3}$ tạo thành.",
+     "lua_chon": [
+      "20 g",
+      "5 g",
+      "10 g",
+      "4 g"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Số mol $\\mathrm{Ca} = 4/40 = 0,1 \\text{ mol}$. Cả 3 tỉ lệ đều $1:1 \\Rightarrow \\mathrm{n(CaCO_3)} = 0,1 \\text{ mol}.$\nKhối lượng $\\mathrm{CaCO_3} = 0,1 \\times 100 = 10 \\text{ g}.$"
+    },
+    {
+     "ma_cau": "K08010305013",
+     "loai": "trac_nghiem",
+     "de": "Cho 5,6 g $\\mathrm{Fe}$ phản ứng hết với oxi dư tạo $\\mathrm{Fe_2O_3}$ ($4\\mathrm{Fe} + 3\\mathrm{O_2} \\rightarrow 2\\mathrm{Fe_2O_3}$); toàn bộ $\\mathrm{Fe_2O_3}$ tác dụng vừa đủ với dung dịch $\\mathrm{HCl}$ tạo $\\mathrm{FeCl_3}$ ($\\mathrm{Fe_2O_3} + 6\\mathrm{HCl} \\rightarrow 2\\mathrm{FeCl_3} + 3\\mathrm{H_2O}$); toàn bộ $\\mathrm{FeCl_3}$ tác dụng vừa đủ với dung dịch $\\mathrm{NaOH}$ tạo kết tủa $\\mathrm{Fe(OH)_3}$ ($\\mathrm{FeCl_3} + 3\\mathrm{NaOH} \\rightarrow \\mathrm{Fe(OH)_3} + 3\\mathrm{NaCl}$). Tính khối lượng $\\mathrm{Fe(OH)_3}$ tạo thành.",
+     "lua_chon": [
+      "5,35 g",
+      "21,4 g",
+      "5,6 g",
+      "10,7 g"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Số mol $\\mathrm{Fe} = 5,6/56 = 0,1 \\text{ mol} \\Rightarrow \\mathrm{n(Fe_2O_3)} = 0,05 \\text{ mol} \\Rightarrow \\mathrm{n(FeCl_3)} = 0,1 \\text{ mol} \\Rightarrow \\mathrm{n(Fe(OH)_3)} = 0,1 \\text{ mol}.$\nKhối lượng $\\mathrm{Fe(OH)_3} = 0,1 \\times 107 = 10,7 \\text{ g}.$"
+    },
+    {
+     "ma_cau": "K08010305015",
+     "loai": "trac_nghiem",
+     "de": "Cho $10,8 \\mathrm{\\ g}$ $\\mathrm{Al}$ phản ứng hết với oxi dư tạo $\\mathrm{Al_2O_3}$ ($4\\mathrm{Al} + 3\\mathrm{O_2} \\rightarrow 2\\mathrm{Al_2O_3}$); toàn bộ $\\mathrm{Al_2O_3}$ tác dụng vừa đủ với dung dịch $\\mathrm{HCl}$ tạo $\\mathrm{AlCl_3}$ ($\\mathrm{Al_2O_3} + 6\\mathrm{HCl} \\rightarrow 2\\mathrm{AlCl_3} + 3\\mathrm{H_2O}$); toàn bộ $\\mathrm{AlCl_3}$ tác dụng vừa đủ với dung dịch $\\mathrm{NaOH}$ tạo kết tủa $\\mathrm{Al(OH)_3}$ ($\\mathrm{AlCl_3} + 3\\mathrm{NaOH} \\rightarrow \\mathrm{Al(OH)_3} + 3\\mathrm{NaCl}$). Tính khối lượng $\\mathrm{Al(OH)_3}$ tạo thành.",
+     "lua_chon": [
+      "62,4 g",
+      "31,2 g",
+      "15,6 g",
+      "10,8 g"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Số mol $\\mathrm{Al} = 10,8/27 = 0,4\\ \\mathrm{mol} \\Rightarrow \\mathrm{n(Al_2O_3)} = 0,2\\ \\mathrm{mol} \\Rightarrow \\mathrm{n(AlCl_3)} = 0,4\\ \\mathrm{mol} \\Rightarrow \\mathrm{n(Al(OH)_3)} = 0,4\\ \\mathrm{mol}$.\nKhối lượng $\\mathrm{Al(OH)_3} = 0,4 \\times 78 = 31,2\\ \\mathrm{g}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00847",
+   "nhom_id": "KNB00378",
+   "thu_tu": 4,
+   "dang": "Xác định chất dư/chất hết khi biết lượng cả hai chất tham gia một phương trình, rồi tính theo chất phản ứng hết",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010305019",
+     "loai": "trac_nghiem",
+     "de": "Cho $5,4\\ \\mathrm{g}\\ \\mathrm{Al}$ tác dụng với dung dịch chứa $32\\ \\mathrm{g}\\ \\mathrm{CuSO_4}\\ (2\\mathrm{Al} + 3\\mathrm{CuSO_4} \\rightarrow \\mathrm{Al_2(SO_4)_3} + 3\\mathrm{Cu})$, phản ứng xảy ra hoàn toàn (biết một trong hai chất có thể còn dư). Tính khối lượng $\\mathrm{Cu}$ sinh ra.",
+     "lua_chon": [
+      "$25,6\\ \\mathrm{g}$",
+      "$12,8\\ \\mathrm{g}$",
+      "$5,4\\ \\mathrm{g}$",
+      "$6,4\\ \\mathrm{g}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Số mol $\\mathrm{Al} = 5,4/27 = 0,2\\ \\mathrm{mol}$; số mol $\\mathrm{CuSO_4} = 32/160 = 0,2\\ \\mathrm{mol}$.\nTheo $\\mathrm{PTHH}$, $0,2\\ \\mathrm{mol}\\ \\mathrm{Al}$ cần $0,3\\ \\mathrm{mol}\\ \\mathrm{CuSO_4}$; ta chỉ có $0,2\\ \\mathrm{mol}\\ \\mathrm{CuSO_4}$ (thiếu) $\\Rightarrow \\mathrm{CuSO_4}$ phản ứng hết, tính theo $\\mathrm{CuSO_4}$.\n$\\mathrm{n}(\\mathrm{Cu}) = \\mathrm{n}(\\mathrm{CuSO_4}) = 0,2\\ \\mathrm{mol}\\ \\Rightarrow$ khối lượng $\\mathrm{Cu} = 0,2 \\times 64 = 12,8\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010305017",
+     "loai": "trac_nghiem",
+     "de": "Cho 5,6 g $\\mathrm{Fe}$ tác dụng với dung dịch chứa 3,65 g $\\mathrm{HCl}$ ($\\mathrm{Fe}$ + $\\mathrm{2HCl}$ $\\to$ $\\mathrm{FeCl_2}$ + $\\mathrm{H_2}$), phản ứng xảy ra hoàn toàn (biết một trong hai chất có thể còn dư). Tính thể tích khí $\\mathrm{H_2}$ thoát ra ở đkc.",
+     "lua_chon": [
+      "0,62 l",
+      "2,48 l",
+      "1,24 l",
+      "5,6 l"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Số mol $\\mathrm{Fe}$ = $5,6/56$ = $0,1$ mol; số mol $\\mathrm{HCl}$ = $3,65/36,5$ = $0,1$ mol.\nTheo PTHH, $0,1$ mol $\\mathrm{Fe}$ cần $0,2$ mol $\\mathrm{HCl}$; ta chỉ có $0,1$ mol $\\mathrm{HCl}$ (thiếu) $\\Rightarrow$ $\\mathrm{HCl}$ phản ứng hết, tính theo $\\mathrm{HCl}$.\n$\\mathrm{n(H_2)}$ = $\\mathrm{n(HCl)}/2$ = $0,05$ mol $\\Rightarrow$ thể tích $\\mathrm{H_2}$ (đkc) = $0,05 \\times 24,79$ = $1,24$ lít."
+    },
+    {
+     "ma_cau": "K08010305018",
+     "loai": "trac_nghiem",
+     "de": "Đốt 6 g cacbon trong bình chứa 12,8 g khí $\\mathrm{O_2}$ ($\\mathrm{C}$ + $\\mathrm{O_2}$ $\\to$ $\\mathrm{CO_2}$), phản ứng xảy ra hoàn toàn (biết một trong hai chất có thể còn dư). Tính khối lượng $\\mathrm{CO_2}$ tạo thành.",
+     "lua_chon": [
+      "35,2 g",
+      "17,6 g",
+      "8,8 g",
+      "6 g"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Số mol $\\mathrm{C}$ = $6/12$ = $0,5$ mol; số mol $\\mathrm{O_2}$ = $12,8/32$ = $0,4$ mol.\nTheo PTHH, $0,5$ mol $\\mathrm{C}$ cần $0,5$ mol $\\mathrm{O_2}$; ta chỉ có $0,4$ mol $\\mathrm{O_2}$ (thiếu) $\\Rightarrow$ $\\mathrm{O_2}$ phản ứng hết, tính theo $\\mathrm{O_2}$ (cacbon còn dư).\n$\\mathrm{n(CO_2)}$ = $\\mathrm{n(O_2)}$ = $0,4$ mol $\\Rightarrow$ khối lượng $\\mathrm{CO_2}$ = $0,4 \\times 44$ = $17,6$ g."
+    },
+    {
+     "ma_cau": "K08010305020",
+     "loai": "trac_nghiem",
+     "de": "Cho $3\\ \\mathrm{lít}\\ \\mathrm{N_2}$ tác dụng với $6\\ \\mathrm{lít}\\ \\mathrm{H_2}\\ (\\mathrm{N_2} + 3\\mathrm{H_2} \\rightarrow 2\\mathrm{NH_3})$, các thể tích khí đó ở cùng điều kiện nhiệt độ, áp suất, phản ứng xảy ra hoàn toàn (biết một trong hai khí có thể còn dư). Tính thể tích khí $\\mathrm{NH_3}$ thu được (đo ở cùng điều kiện).",
+     "lua_chon": [
+      "$4\\ \\mathrm{lít}$",
+      "$2\\ \\mathrm{lít}$",
+      "$3\\ \\mathrm{lít}$",
+      "$8\\ \\mathrm{lít}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ở cùng điều kiện nhiệt độ, áp suất, tỉ lệ thể tích các khí bằng tỉ lệ hệ số $\\mathrm{PTHH}$.\nTheo $\\mathrm{PTHH}$, $3\\ \\mathrm{lít}\\ \\mathrm{N_2}$ cần $9\\ \\mathrm{lít}\\ \\mathrm{H_2}$; ta chỉ có $6\\ \\mathrm{lít}\\ \\mathrm{H_2}$ (thiếu) $\\Rightarrow \\mathrm{H_2}$ phản ứng hết, tính theo $\\mathrm{H_2}$ ($\\mathrm{N_2}$ còn dư).\n$\\mathrm{V}(\\mathrm{NH_3}) = \\mathrm{V}(\\mathrm{H_2}) \\times 2/3 = 6 \\times 2/3 = 4\\ \\mathrm{lít}$."
+    },
+    {
+     "ma_cau": "K08010305016",
+     "loai": "trac_nghiem",
+     "de": "Cho 13 g $\\mathrm{Zn}$ tác dụng với dung dịch chứa 21,9 g $\\mathrm{HCl}$ ($\\mathrm{Zn}$ + $\\mathrm{2HCl}$ $\\to$ $\\mathrm{ZnCl_2}$ + $\\mathrm{H_2}$), phản ứng xảy ra hoàn toàn (biết một trong hai chất có thể còn dư). Tính khối lượng $\\mathrm{ZnCl_2}$ tạo thành.",
+     "lua_chon": [
+      "13,6 g",
+      "54,4 g",
+      "27,2 g",
+      "13 g"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Số mol $\\mathrm{Zn}$ = $13/65$ = $0,2$ mol; số mol $\\mathrm{HCl}$ = $21,9/36,5$ = $0,6$ mol.\nTheo PTHH, $0,2$ mol $\\mathrm{Zn}$ cần $0,4$ mol $\\mathrm{HCl}$; ta có $0,6$ mol $\\mathrm{HCl}$ (dư) $\\Rightarrow$ $\\mathrm{Zn}$ phản ứng hết, tính theo $\\mathrm{Zn}$.\n$\\mathrm{n(ZnCl_2)}$ = $\\mathrm{n(Zn)}$ = $0,2$ mol $\\Rightarrow$ khối lượng $\\mathrm{ZnCl_2}$ = $0,2 \\times 136$ = $27,2$ g."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00848",
+   "nhom_id": "KNB00378",
+   "thu_tu": 5,
+   "dang": "Tính NGƯỢC — biết đại lượng chất ở CUỐI chuỗi 2 giai đoạn, suy ngược để tìm khối lượng chất ở ĐẦU chuỗi",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010305025",
+     "loai": "tra_loi_ngan",
+     "de": "Cho chuỗi phản ứng: $\\mathrm{CaCO_3}$ --(1)--> $\\mathrm{CaO}$ --(2)--> $\\mathrm{Ca(OH)_2}$, trong đó (1): $\\mathrm{CaCO_3}$ --($\\mathrm{t^o}$)--> $\\mathrm{CaO}$ + $\\mathrm{CO_2}$ và (2): $\\mathrm{CaO}$ + $\\mathrm{H_2O}$ $\\to$ $\\mathrm{Ca(OH)_2}$. Biết lượng $\\mathrm{Ca(OH)_2}$ tạo thành ở giai đoạn cuối là 29,6 g.\nTính khối lượng $\\mathrm{CaCO_3}$ đã dùng ban đầu.",
+     "dap_an": "40",
+     "loi_giai": "Số mol $\\mathrm{Ca(OH)_2}$ = 29,6/74 = 0,4 mol.\nSuy ngược: tỉ lệ $\\mathrm{CaO}$ : $\\mathrm{Ca(OH)_2}$ = 1 : 1 $\\Rightarrow$ n($\\mathrm{CaO}$) = 0,4 mol; tỉ lệ $\\mathrm{CaCO_3}$ : $\\mathrm{CaO}$ = 1 : 1 $\\Rightarrow$ n($\\mathrm{CaCO_3}$) = 0,4 mol.\nKhối lượng $\\mathrm{CaCO_3}$ = 0,4 $\\times$ 100 = 40 g."
+    },
+    {
+     "ma_cau": "K08010305021",
+     "loai": "tra_loi_ngan",
+     "de": "Cho chuỗi phản ứng: $\\mathrm{Fe\\xrightarrow{(1)} FeCl_2\\xrightarrow{(2)} Fe(OH)_2}$, trong đó (1): $\\mathrm{Fe + 2HCl \\rightarrow FeCl_2 + H_2}$ và (2): $\\mathrm{FeCl_2 + 2NaOH \\rightarrow Fe(OH)_2 + 2NaCl}$. Biết lượng $\\mathrm{Fe(OH)_2}$ kết tủa thu được ở giai đoạn cuối là $9$ g. Tính khối lượng $\\mathrm{Fe}$ đã dùng ban đầu.",
+     "dap_an": "5,6",
+     "loi_giai": "Số mol $\\mathrm{Fe(OH)_2} = 9/90 = 0,1$ mol.\nSuy ngược: tỉ lệ $\\mathrm{FeCl_2: Fe(OH)_2} = 1:1 \\Rightarrow \\mathrm{n(FeCl_2)} = 0,1$ mol; tỉ lệ $\\mathrm{Fe: FeCl_2} = 1:1 \\Rightarrow \\mathrm{n(Fe)} = 0,1$ mol.\nKhối lượng $\\mathrm{Fe} = 0,1 \\times 56 = 5,6$ g."
+    },
+    {
+     "ma_cau": "K08010305024",
+     "loai": "tra_loi_ngan",
+     "de": "Cho chuỗi phản ứng: $\\mathrm{Na\\xrightarrow{(1)} Na_2O\\xrightarrow{(2)} NaOH}$, trong đó (1): $\\mathrm{4Na + O_2 \\rightarrow 2Na_2O}$ và (2): $\\mathrm{Na_2O + H_2O \\rightarrow 2NaOH}$. Biết lượng $\\mathrm{NaOH}$ tạo thành ở giai đoạn cuối là $16$ g. Tính khối lượng $\\mathrm{Na}$ đã dùng ban đầu.",
+     "dap_an": "9,2",
+     "loi_giai": "Số mol $\\mathrm{NaOH} = 16/40 = 0,4$ mol.\nSuy ngược: tỉ lệ $\\mathrm{Na_2O: NaOH} = 1:2 \\Rightarrow \\mathrm{n(Na_2O)} = 0,2$ mol; tỉ lệ $\\mathrm{Na: Na_2O} = 4:2 = 2:1 \\Rightarrow \\mathrm{n(Na)} = 0,4$ mol.\nKhối lượng $\\mathrm{Na} = 0,4 \\times 23 = 9,2$ g."
+    },
+    {
+     "ma_cau": "K08010305023",
+     "loai": "tra_loi_ngan",
+     "de": "Cho chuỗi phản ứng: $\\mathrm{Al\\xrightarrow{(1)} Al_2O_3\\xrightarrow{(2)} AlCl_3}$, trong đó (1): $\\mathrm{4Al + 3O_2 \\rightarrow 2Al_2O_3}$ và (2): $\\mathrm{Al_2O_3 + 6HCl \\rightarrow 2AlCl_3 + 3H_2O}$. Biết lượng $\\mathrm{AlCl_3}$ tạo thành ở giai đoạn cuối là $26,7$ g. Tính khối lượng $\\mathrm{Al}$ đã dùng ban đầu.",
+     "dap_an": "5,4",
+     "loi_giai": "Số mol $\\mathrm{AlCl_3} = 26,7/133,5 = 0,2$ mol.\nSuy ngược: tỉ lệ $\\mathrm{Al_2O_3: AlCl_3} = 1:2 \\Rightarrow \\mathrm{n(Al_2O_3)} = 0,1$ mol; tỉ lệ $\\mathrm{Al: Al_2O_3} = 4:2 = 2:1 \\Rightarrow \\mathrm{n(Al)} = 0,2$ mol.\nKhối lượng $\\mathrm{Al} = 0,2 \\times 27 = 5,4$ g."
+    },
+    {
+     "ma_cau": "K08010305022",
+     "loai": "tra_loi_ngan",
+     "de": "Cho chuỗi phản ứng: $\\mathrm{Cu\\xrightarrow{(1)} CuO\\xrightarrow{(2)} CuCl_2}$, trong đó (1): $\\mathrm{2Cu + O_2 \\rightarrow 2CuO}$ và (2): $\\mathrm{CuO + 2HCl \\rightarrow CuCl_2 + H_2O}$. Biết lượng $\\mathrm{CuCl_2}$ tạo thành ở giai đoạn cuối là $13,5$ g. Tính khối lượng $\\mathrm{Cu}$ đã dùng ban đầu.",
+     "dap_an": "6,4",
+     "loi_giai": "Số mol $\\mathrm{CuCl_2} = 13,5/135 = 0,1$ mol.\nSuy ngược: tỉ lệ $\\mathrm{CuO: CuCl_2} = 1:1 \\Rightarrow \\mathrm{n(CuO)} = 0,1$ mol; tỉ lệ $\\mathrm{Cu: CuO} = 1:1 \\Rightarrow \\mathrm{n(Cu)} = 0,1$ mol.\nKhối lượng $\\mathrm{Cu} = 0,1 \\times 64 = 6,4$ g."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00849",
+   "nhom_id": "KNB00378",
+   "thu_tu": 6,
+   "dang": "Chất dư lồng bên trong một chuỗi 2 giai đoạn (phải xác định dư/hết ở một bước rồi mới tính tiếp bước sau)",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010305027",
+     "loai": "tu_luan",
+     "de": "Cho $9 \\mathrm{\\ g\\ cacbon}$ phản ứng với $19,2 \\mathrm{\\ g\\ khí\\ O_2}$ ($\\mathrm{C + O_2 \\to CO_2}$), phản ứng xảy ra hoàn toàn, thu được khí $\\mathrm{CO_2}$ (biết một trong hai chất có thể còn dư); toàn bộ khí $\\mathrm{CO_2}$ sinh ra được dẫn vào dung dịch $\\mathrm{Ca(OH)_2}$ dư, thu được kết tủa $\\mathrm{CaCO_3}$ ($\\mathrm{CO_2 + Ca(OH)_2 \\to CaCO_3 + H_2O}$). Tính khối lượng $\\mathrm{CaCO_3}$ tạo thành.",
+     "dap_an": "60",
+     "loi_giai": "Số mol $\\mathrm{C} = 9/12 = 0,75 \\mathrm{\\ mol}$; số mol $\\mathrm{O_2} = 19,2/32 = 0,6 \\mathrm{\\ mol}$.\nTheo $\\mathrm{PTHH}$, $0,75 \\mathrm{\\ mol\\ C}$ cần $0,75 \\mathrm{\\ mol\\ O_2}$; ta chỉ có $0,6 \\mathrm{\\ mol\\ O_2}$ (thiếu) $\\Rightarrow \\mathrm{O_2}$ phản ứng hết, tính theo $\\mathrm{O_2}$.\n$\\mathrm{n(CO_2) = n(O_2) = 0,6\\ mol \\Rightarrow n(CaCO_3) = n(CO_2) = 0,6\\ mol}$ (tỉ lệ $1:1$) $\\Rightarrow$ khối lượng $\\mathrm{CaCO_3} = 0,6 \\times 100 = 60 \\mathrm{\\ g}$."
+    },
+    {
+     "ma_cau": "K08010305029",
+     "loai": "tu_luan",
+     "de": "Cho 16,8 g $\\mathrm{Fe}$ tác dụng với dung dịch chứa 25,55 g $\\mathrm{HCl}$ ($\\mathrm{Fe}$ + $\\mathrm{2HCl}$ $\\to$ $\\mathrm{FeCl_2}$ + $\\mathrm{H_2}$), phản ứng xảy ra hoàn toàn, thu được khí $\\mathrm{H_2}$ (biết một trong hai chất có thể còn dư); toàn bộ khí $\\mathrm{H_2}$ sinh ra dùng để khử hết $\\mathrm{Fe_2O_3}$ (dư), thu được $\\mathrm{Fe}$ ($\\mathrm{Fe_2O_3}$ + $\\mathrm{3H_2}$ $\\to$ $\\mathrm{2Fe}$ + $\\mathrm{3H_2O}$). Tính khối lượng $\\mathrm{Fe}$ tạo thành ở giai đoạn sau.",
+     "dap_an": "11.2",
+     "loi_giai": "Số mol $\\mathrm{Fe}$ (ban đầu) = $16,8/56 = 0,3$ mol; số mol $\\mathrm{HCl}$ = $25,55/36,5 = 0,7$ mol.\nTheo $\\mathrm{PTHH}$, $0,3$ mol $\\mathrm{Fe}$ cần $0,6$ mol $\\mathrm{HCl}$; ta có $0,7$ mol $\\mathrm{HCl}$ (dư) $\\Rightarrow$ $\\mathrm{Fe}$ phản ứng hết, tính theo $\\mathrm{Fe}$.\n$\\mathrm{n(H_2)}$ = $\\mathrm{n(Fe)}$ = $0,3$ mol (tỉ lệ $1 : 1$) $\\Rightarrow$ $\\mathrm{n(Fe}$ mới) = $\\mathrm{n(H_2)}$ $\\times$ $2/3 = 0,2$ mol $\\Rightarrow$ khối lượng $\\mathrm{Fe}$ = $0,2 \\times 56 = 11,2$ g."
+    },
+    {
+     "ma_cau": "K08010305026",
+     "loai": "tu_luan",
+     "de": "Cho $19,5 \\mathrm{\\ g\\ Zn}$ tác dụng với dung dịch chứa $18,25 \\mathrm{\\ g\\ HCl}$ ($\\mathrm{Zn + 2HCl \\to ZnCl_2 + H_2}$), phản ứng xảy ra hoàn toàn, thu được khí $\\mathrm{H_2}$ (biết một trong hai chất có thể còn dư); toàn bộ khí $\\mathrm{H_2}$ sinh ra dùng để khử hết $\\mathrm{CuO}$ (dư), thu được $\\mathrm{Cu}$ ($\\mathrm{CuO + H_2 \\to Cu + H_2O}$). Tính khối lượng $\\mathrm{Cu}$ tạo thành.",
+     "dap_an": "16",
+     "loi_giai": "Số mol $\\mathrm{Zn} = 19,5/65 = 0,3 \\mathrm{\\ mol}$; số mol $\\mathrm{HCl} = 18,25/36,5 = 0,5 \\mathrm{\\ mol}$.\nTheo $\\mathrm{PTHH}$, $0,3 \\mathrm{\\ mol\\ Zn}$ cần $0,6 \\mathrm{\\ mol\\ HCl}$; ta chỉ có $0,5 \\mathrm{\\ mol\\ HCl}$ (thiếu) $\\Rightarrow \\mathrm{HCl}$ phản ứng hết, tính theo $\\mathrm{HCl}$.\n$\\mathrm{n(H_2) = n(HCl)/2 = 0,25\\ mol \\Rightarrow n(Cu) = n(H_2) = 0,25\\ mol}$ (tỉ lệ $1:1$) $\\Rightarrow$ khối lượng $\\mathrm{Cu} = 0,25 \\times 64 = 16 \\mathrm{\\ g}$."
+    },
+    {
+     "ma_cau": "K08010305030",
+     "loai": "tu_luan",
+     "de": "Cho $49,58$ lít khí $\\mathrm{N_2}$ tác dụng với $74,37$ lít khí $\\mathrm{H_2}$ (đo ở đktc; $\\mathrm{N_2}$ + $\\mathrm{3H_2}$ $\\to$ $\\mathrm{2NH_3}$), phản ứng xảy ra hoàn toàn, thu được khí $\\mathrm{NH_3}$ (biết một trong hai khí có thể còn dư); toàn bộ khí $\\mathrm{NH_3}$ sinh ra tác dụng vừa đủ với dung dịch $\\mathrm{HCl}$, thu được $\\mathrm{NH_4Cl}$ ($\\mathrm{NH_3}$ + $\\mathrm{HCl}$ $\\to$ $\\mathrm{NH_4Cl}$). Tính khối lượng $\\mathrm{NH_4Cl}$ tạo thành.",
+     "dap_an": "107",
+     "loi_giai": "Số mol $\\mathrm{N_2}$ = $49,58/24,79 = 2$ mol; số mol $\\mathrm{H_2}$ = $74,37/24,79 = 3$ mol.\nTheo $\\mathrm{PTHH}$, $2$ mol $\\mathrm{N_2}$ cần $6$ mol $\\mathrm{H_2}$; ta chỉ có $3$ mol $\\mathrm{H_2}$ (thiếu) $\\Rightarrow$ $\\mathrm{H_2}$ phản ứng hết, tính theo $\\mathrm{H_2}$.\n$\\mathrm{n(NH_3)}$ = $\\mathrm{n(H_2)}$ $\\times$ $2/3 = 2$ mol $\\Rightarrow$ $\\mathrm{n(NH_4Cl)}$ = $\\mathrm{n(NH_3)}$ = $2$ mol (tỉ lệ $1 : 1$) $\\Rightarrow$ khối lượng $\\mathrm{NH_4Cl}$ = $2 \\times 53,5 = 107$ g."
+    },
+    {
+     "ma_cau": "K08010305028",
+     "loai": "tu_luan",
+     "de": "Cho $8,1 \\mathrm{\\ g\\ Al}$ tác dụng với dung dịch chứa $48 \\mathrm{\\ g\\ CuSO_4}$ ($\\mathrm{2Al + 3CuSO_4 \\to Al_2(SO_4)_3 + 3Cu}$), phản ứng xảy ra hoàn toàn, thu được $\\mathrm{Cu}$ (biết một trong hai chất có thể còn dư); toàn bộ $\\mathrm{Cu}$ sinh ra phản ứng vừa đủ với dung dịch $\\mathrm{AgNO_3}$ dư, thu được $\\mathrm{Ag}$ ($\\mathrm{Cu + 2AgNO_3 \\to Cu(NO_3)_2 + 2Ag}$). Tính khối lượng $\\mathrm{Ag}$ tạo thành.",
+     "dap_an": "64.8",
+     "loi_giai": "Số mol $\\mathrm{Al} = 8,1/27 = 0,3 \\mathrm{\\ mol}$; số mol $\\mathrm{CuSO_4} = 48/160 = 0,3 \\mathrm{\\ mol}$.\nTheo $\\mathrm{PTHH}$, $0,3 \\mathrm{\\ mol\\ Al}$ cần $0,45 \\mathrm{\\ mol\\ CuSO_4}$; ta chỉ có $0,3 \\mathrm{\\ mol\\ CuSO_4}$ (thiếu) $\\Rightarrow \\mathrm{CuSO_4}$ phản ứng hết, tính theo $\\mathrm{CuSO_4}$.\n$\\mathrm{n(Cu) = n(CuSO_4) = 0,3\\ mol}$ (tỉ lệ $3:3=1:1$) $\\Rightarrow \\mathrm{n(Ag) = 2 \\times n(Cu) = 0,6\\ mol \\Rightarrow}$ khối lượng $\\mathrm{Ag} = 0,6 \\times 108 = 64,8 \\mathrm{\\ g}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00850",
+   "nhom_id": "KNB00378",
+   "thu_tu": 7,
+   "dang": "Chuỗi 2 phương trình liên tiếp nhưng dữ kiện đầu vào phải đổi đơn vị (kg, mg) về gam trước khi tính",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010305033",
+     "loai": "tra_loi_ngan",
+     "de": "Cho $5600\\ \\mathrm{mg}\\ \\mathrm{Fe}$ phản ứng hết với khí oxi dư, thu được $\\mathrm{Fe_2O_3}$ ($4\\mathrm{Fe} + 3\\mathrm{O_2} \\rightarrow 2\\mathrm{Fe_2O_3}$); toàn bộ $\\mathrm{Fe_2O_3}$ sinh ra tác dụng vừa đủ với dung dịch $\\mathrm{HCl}$, thu được $\\mathrm{FeCl_3}$ ($\\mathrm{Fe_2O_3} + 6\\mathrm{HCl} \\rightarrow 2\\mathrm{FeCl_3} + 3\\mathrm{H_2O}$). Tính khối lượng $\\mathrm{FeCl_3}$ tạo thành (theo gam).",
+     "dap_an": "16.25",
+     "loi_giai": "Đổi đơn vị: $5600\\ \\mathrm{mg} = 5,6\\ \\mathrm{g}$. Số mol $\\mathrm{Fe} = 5,6/56 = 0,1\\ \\mathrm{mol}$.\nGiai đoạn 1: tỉ lệ $\\mathrm{Fe} : \\mathrm{Fe_2O_3} = 4 : 2 = 2 : 1 \\Rightarrow \\mathrm{n(Fe_2O_3)} = 0,05\\ \\mathrm{mol}$.\nGiai đoạn 2: tỉ lệ $\\mathrm{Fe_2O_3} : \\mathrm{FeCl_3} = 1 : 2 \\Rightarrow \\mathrm{n(FeCl_3)} = 0,1\\ \\mathrm{mol} \\Rightarrow \\text{khối lượng}\\ \\mathrm{FeCl_3} = 0,1 \\times 162,5 = 16,25\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010305032",
+     "loai": "tra_loi_ngan",
+     "de": "Cho $0,004\\ \\mathrm{kg}\\ \\mathrm{Ca}$ phản ứng hết với khí oxi dư, thu được $\\mathrm{CaO}$ ($2\\mathrm{Ca} + \\mathrm{O_2} \\rightarrow 2\\mathrm{CaO}$); toàn bộ $\\mathrm{CaO}$ sinh ra tác dụng hết với nước dư, thu được $\\mathrm{Ca(OH)_2}$ ($\\mathrm{CaO} + \\mathrm{H_2O} \\rightarrow \\mathrm{Ca(OH)_2}$). Tính khối lượng $\\mathrm{Ca(OH)_2}$ tạo thành (theo gam).",
+     "dap_an": "7.4",
+     "loi_giai": "Đổi đơn vị: $0,004\\ \\mathrm{kg} = 4\\ \\mathrm{g}$. Số mol $\\mathrm{Ca} = 4/40 = 0,1\\ \\mathrm{mol}$.\nCả 2 giai đoạn đều có tỉ lệ $1 : 1 \\Rightarrow \\mathrm{n(Ca(OH)_2)} = 0,1\\ \\mathrm{mol} \\Rightarrow \\text{khối lượng}\\ \\mathrm{Ca(OH)_2} = 0,1 \\times 74 = 7,4\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010305034",
+     "loai": "tra_loi_ngan",
+     "de": "Cho $0,0128\\ \\mathrm{kg}\\ \\mathrm{Cu}$ phản ứng hết với khí oxi dư (nung nóng), thu được $\\mathrm{CuO}$ ($2\\mathrm{Cu} + \\mathrm{O_2} \\rightarrow 2\\mathrm{CuO}$); toàn bộ $\\mathrm{CuO}$ sinh ra tác dụng vừa đủ với dung dịch $\\mathrm{HCl}$, thu được $\\mathrm{CuCl_2}$ ($\\mathrm{CuO} + 2\\mathrm{HCl} \\rightarrow \\mathrm{CuCl_2} + \\mathrm{H_2O}$). Tính khối lượng $\\mathrm{CuCl_2}$ tạo thành (theo gam).",
+     "dap_an": "27",
+     "loi_giai": "Đổi đơn vị: $0,0128\\ \\mathrm{kg} = 12,8\\ \\mathrm{g}$. Số mol $\\mathrm{Cu} = 12,8/64 = 0,2\\ \\mathrm{mol}$.\nCả 2 giai đoạn đều có tỉ lệ $1 : 1 \\Rightarrow \\mathrm{n(CuCl_2)} = 0,2\\ \\mathrm{mol} \\Rightarrow \\text{khối lượng}\\ \\mathrm{CuCl_2} = 0,2 \\times 135 = 27\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010305031",
+     "loai": "tra_loi_ngan",
+     "de": "Cho $9200\\ \\mathrm{mg}\\ \\mathrm{Na}$ phản ứng hết với khí oxi dư, thu được $\\mathrm{Na_2O}$ ($4\\mathrm{Na} + \\mathrm{O_2} \\rightarrow 2\\mathrm{Na_2O}$); toàn bộ $\\mathrm{Na_2O}$ sinh ra tác dụng hết với nước dư, thu được $\\mathrm{NaOH}$ ($\\mathrm{Na_2O} + \\mathrm{H_2O} \\rightarrow 2\\mathrm{NaOH}$). Tính khối lượng $\\mathrm{NaOH}$ tạo thành (theo gam).",
+     "dap_an": "16",
+     "loi_giai": "Đổi đơn vị: $9200\\ \\mathrm{mg} = 9,2\\ \\mathrm{g}$. Số mol $\\mathrm{Na} = 9,2/23 = 0,4\\ \\mathrm{mol}$.\nGiai đoạn 1: tỉ lệ $\\mathrm{Na} : \\mathrm{Na_2O} = 4 : 2 = 2 : 1 \\Rightarrow \\mathrm{n(Na_2O)} = 0,2\\ \\mathrm{mol}$.\nGiai đoạn 2: tỉ lệ $\\mathrm{Na_2O} : \\mathrm{NaOH} = 1 : 2 \\Rightarrow \\mathrm{n(NaOH)} = 0,4\\ \\mathrm{mol} \\Rightarrow \\text{khối lượng}\\ \\mathrm{NaOH} = 0,4 \\times 40 = 16\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010305035",
+     "loai": "tra_loi_ngan",
+     "de": "Cho $2700\\ \\mathrm{mg}\\ \\mathrm{Al}$ phản ứng hết với khí oxi dư, thu được $\\mathrm{Al_2O_3}$ ($4\\mathrm{Al} + 3\\mathrm{O_2} \\to 2\\mathrm{Al_2O_3}$); toàn bộ $\\mathrm{Al_2O_3}$ sinh ra tác dụng vừa đủ với dung dịch $\\mathrm{HCl}$, thu được $\\mathrm{AlCl_3}$ ($\\mathrm{Al_2O_3} + 6\\mathrm{HCl} \\to 2\\mathrm{AlCl_3} + 3\\mathrm{H_2O}$). Tính khối lượng $\\mathrm{AlCl_3}$ tạo thành (theo gam).",
+     "dap_an": "13.35",
+     "loi_giai": "Đổi đơn vị: $2700\\ \\mathrm{mg} = 2,7\\ \\mathrm{g}$. Số mol $\\mathrm{Al} = 2,7/27 = 0,1\\ \\mathrm{mol}$.\nGiải đoạn 1: tỉ lệ $\\mathrm{Al} : \\mathrm{Al_2O_3} = 4 : 2 = 2 : 1 \\Rightarrow \\mathrm{n(Al_2O_3)} = 0,05\\ \\mathrm{mol}$.\nGiải đoạn 2: tỉ lệ $\\mathrm{Al_2O_3} : \\mathrm{AlCl_3} = 1 : 2 \\Rightarrow \\mathrm{n(AlCl_3)} = 0,1\\ \\mathrm{mol} \\Rightarrow$ khối lượng $\\mathrm{AlCl_3} = 0,1 \\times 133,5 = 13,35\\ \\mathrm{g}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00851",
+   "nhom_id": "KNB00378",
+   "thu_tu": 8,
+   "dang": "Khối lượng ban đầu là mẫu/quặng chứa tạp chất theo % khối lượng, lồng bên trong một chuỗi 2 giai đoạn",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010305039",
+     "loai": "tu_luan",
+     "de": "Cho $32,5\\ \\mathrm{g}$ mẫu kẽm chứa $80\\%\\ \\mathrm{Zn}$ về khối lượng (phần còn lại là tạp chất không phản ứng) tác dụng hết với dung dịch $\\mathrm{H_2SO_4}$ loãng dư, thu được khí $\\mathrm{H_2}$ (giai đoạn 1: $\\mathrm{Zn} + \\mathrm{H_2SO_4} \\rightarrow \\mathrm{ZnSO_4} + \\mathrm{H_2}$); toàn bộ khí $\\mathrm{H_2}$ sinh ra dùng để khử hết $\\mathrm{CuO}$ (dư), thu được $\\mathrm{Cu}$ (giai đoạn 2: $\\mathrm{CuO} + \\mathrm{H_2} \\rightarrow \\mathrm{Cu} + \\mathrm{H_2O}$). Tính khối lượng $\\mathrm{Cu}$ tạo thành.",
+     "dap_an": "25.6",
+     "loi_giai": "Khối lượng $\\mathrm{Zn}$ nguyên chất = $32,5 \\times 80\\% = 26\\ \\mathrm{g} \\Rightarrow \\mathrm{n(Zn)} = 26/65 = 0,4\\ \\mathrm{mol}$.\nGiai đoạn 1: tỉ lệ $\\mathrm{Zn} : \\mathrm{H_2} = 1 : 1 \\Rightarrow \\mathrm{n(H_2)} = 0,4\\ \\mathrm{mol}$.\nGiai đoạn 2: tỉ lệ $\\mathrm{H_2} : \\mathrm{Cu} = 1 : 1 \\Rightarrow \\mathrm{n(Cu)} = 0,4\\ \\mathrm{mol} \\Rightarrow$ khối lượng $\\mathrm{Cu} = 0,4 \\times 64 = 25,6\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010305036",
+     "loai": "tu_luan",
+     "de": "Cho $25\\ \\mathrm{g}$ đá vôi chứa $80\\%\\ \\mathrm{CaCO_3}$ về khối lượng (phần còn lại là tạp chất trơ, không bị nhiệt phân) nung hoàn toàn, thu được $\\mathrm{CaO}$ (giai đoạn 1: $\\mathrm{CaCO_3} \\xrightarrow{t^o} \\mathrm{CaO} + \\mathrm{CO_2}$); toàn bộ $\\mathrm{CaO}$ sinh ra tác dụng hết với nước dư, thu được $\\mathrm{Ca(OH)_2}$ (giai đoạn 2: $\\mathrm{CaO} + \\mathrm{H_2O} \\rightarrow \\mathrm{Ca(OH)_2}$). Tính khối lượng $\\mathrm{Ca(OH)_2}$ tạo thành.",
+     "dap_an": "14.8",
+     "loi_giai": "Khối lượng $\\mathrm{CaCO_3}$ nguyên chất = $25 \\times 80\\% = 20\\ \\mathrm{g} \\Rightarrow \\mathrm{n(CaCO_3)} = 20/100 = 0,2\\ \\mathrm{mol}$.\nGiai đoạn 1: tỉ lệ $\\mathrm{CaCO_3} : \\mathrm{CaO} = 1 : 1 \\Rightarrow \\mathrm{n(CaO)} = 0,2\\ \\mathrm{mol}$.\nGiai đoạn 2: tỉ lệ $\\mathrm{CaO} : \\mathrm{Ca(OH)_2} = 1 : 1 \\Rightarrow \\mathrm{n(Ca(OH)_2)} = 0,2\\ \\mathrm{mol} \\Rightarrow$ khối lượng $\\mathrm{Ca(OH)_2} = 0,2 \\times 74 = 14,8\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010305037",
+     "loai": "tu_luan",
+     "de": "Cho $100\\ \\mathrm{g}$ mẫu quặng kẽm chứa $65\\%\\ \\mathrm{Zn}$ về khối lượng (phần còn lại là tạp chất không phản ứng) tác dụng hết với dung dịch $\\mathrm{HCl}$ dư, thu được khí $\\mathrm{H_2}$ (giai đoạn 1: $\\mathrm{Zn} + 2\\mathrm{HCl} \\rightarrow \\mathrm{ZnCl_2} + \\mathrm{H_2}$); toàn bộ khí $\\mathrm{H_2}$ sinh ra dùng để khử hết $\\mathrm{CuO}$ (dư), thu được $\\mathrm{Cu}$ (giai đoạn 2: $\\mathrm{CuO} + \\mathrm{H_2} \\rightarrow \\mathrm{Cu} + \\mathrm{H_2O}$). Tính khối lượng $\\mathrm{Cu}$ tạo thành.",
+     "dap_an": "64",
+     "loi_giai": "Khối lượng $\\mathrm{Zn}$ nguyên chất = $100 \\times 65\\% = 65\\ \\mathrm{g} \\Rightarrow \\mathrm{n(Zn)} = 65/65 = 1\\ \\mathrm{mol}$.\nGiai đoạn 1: tỉ lệ $\\mathrm{Zn} : \\mathrm{H_2} = 1 : 1 \\Rightarrow \\mathrm{n(H_2)} = 1\\ \\mathrm{mol}$.\nGiai đoạn 2: tỉ lệ $\\mathrm{H_2} : \\mathrm{Cu} = 1 : 1 \\Rightarrow \\mathrm{n(Cu)} = 1\\ \\mathrm{mol} \\Rightarrow$ khối lượng $\\mathrm{Cu} = 1 \\times 64 = 64\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010305040",
+     "loai": "tu_luan",
+     "de": "Cho $20 \\mathrm{\\ g}$ mẫu đá vôi chứa $60\\% \\mathrm{CaCO_3}$ về khối lượng (phần còn lại là tạp chất trơ) tác dụng hết với dung dịch $\\mathrm{HCl}$ dư, thu được khí $\\mathrm{CO_2}$ (giai đoạn 1: $\\mathrm{CaCO_3} + \\mathrm{2HCl} \\to \\mathrm{CaCl_2} + \\mathrm{H_2O} + \\mathrm{CO_2}$); toàn bộ khí $\\mathrm{CO_2}$ sinh ra được dẫn vào dung dịch $\\mathrm{NaOH}$ dư, thu được $\\mathrm{Na_2CO_3}$ (giai đoạn 2: $\\mathrm{CO_2} + \\mathrm{2NaOH} \\to \\mathrm{Na_2CO_3} + \\mathrm{H_2O}$). Tính khối lượng $\\mathrm{Na_2CO_3}$ tạo thành.",
+     "dap_an": "12.72",
+     "loi_giai": "Khối lượng $\\mathrm{CaCO_3}$ nguyên chất $= 20 \\times 60\\% = 12 \\mathrm{\\ g} \\Rightarrow \\mathrm{n(CaCO_3)} = 12/100 = 0,12 \\mathrm{\\ mol}$.\nGiai đoạn 1: tỉ lệ $\\mathrm{CaCO_3} : \\mathrm{CO_2} = 1 : 1 \\Rightarrow \\mathrm{n(CO_2)} = 0,12 \\mathrm{\\ mol}$.\nGiai đoạn 2: tỉ lệ $\\mathrm{CO_2} : \\mathrm{Na_2CO_3} = 1 : 1 \\Rightarrow \\mathrm{n(Na_2CO_3)} = 0,12 \\mathrm{\\ mol} \\Rightarrow$ khối lượng $\\mathrm{Na_2CO_3} = 0,12 \\times 106 = 12,72 \\mathrm{\\ g}$."
+    },
+    {
+     "ma_cau": "K08010305038",
+     "loai": "tu_luan",
+     "de": "Cho $20\\ \\mathrm{g}$ mẫu quặng sắt chứa $80\\%\\ \\mathrm{Fe_2O_3}$ về khối lượng (phần còn lại là tạp chất trơ, không phản ứng) tác dụng vừa đủ với khí $\\mathrm{CO}$ ở nhiệt độ cao, thu được $\\mathrm{Fe}$ (giai đoạn 1: $\\mathrm{Fe_2O_3} + 3\\mathrm{CO} \\rightarrow 2\\mathrm{Fe} + 3\\mathrm{CO_2}$); toàn bộ $\\mathrm{Fe}$ sinh ra tác dụng hết với dung dịch $\\mathrm{HCl}$ dư, thu được $\\mathrm{FeCl_2}$ (giai đoạn 2: $\\mathrm{Fe} + 2\\mathrm{HCl} \\rightarrow \\mathrm{FeCl_2} + \\mathrm{H_2}$). Tính khối lượng $\\mathrm{FeCl_2}$ tạo thành.",
+     "dap_an": "25.4",
+     "loi_giai": "Khối lượng $\\mathrm{Fe_2O_3}$ nguyên chất = $20 \\times 80\\% = 16\\ \\mathrm{g} \\Rightarrow \\mathrm{n(Fe_2O_3)} = 16/160 = 0,1\\ \\mathrm{mol}$.\nGiai đoạn 1: tỉ lệ $\\mathrm{Fe_2O_3} : \\mathrm{Fe} = 1 : 2 \\Rightarrow \\mathrm{n(Fe)} = 0,2\\ \\mathrm{mol}$.\nGiai đoạn 2: tỉ lệ $\\mathrm{Fe} : \\mathrm{FeCl_2} = 1 : 1 \\Rightarrow \\mathrm{n(FeCl_2)} = 0,2\\ \\mathrm{mol} \\Rightarrow$ khối lượng $\\mathrm{FeCl_2} = 0,2 \\times 127 = 25,4\\ \\mathrm{g}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01315",
+   "nhom_id": "KNB00592",
+   "thu_tu": 1,
+   "dang": "Tính H từ lượng thực tế và lý thuyết",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 0,
+   "cau_mau": []
+  },
+  {
+   "dang_id": "KDB01316",
+   "nhom_id": "KNB00592",
+   "thu_tu": 2,
+   "dang": "Tính lượng thực tế khi biết H",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 0,
+   "cau_mau": []
+  },
+  {
+   "dang_id": "KDB01317",
+   "nhom_id": "KNB00592",
+   "thu_tu": 3,
+   "dang": "Tính lượng chất đầu cần dùng khi biết H",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 0,
+   "cau_mau": []
+  },
+  {
+   "dang_id": "KDB01318",
+   "nhom_id": "KNB00592",
+   "thu_tu": 4,
+   "dang": "Tính H từ độ giảm khối lượng chất rắn khi nung",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 0,
+   "cau_mau": []
+  },
+  {
+   "dang_id": "KDB01319",
+   "nhom_id": "KNB00592",
+   "thu_tu": 5,
+   "dang": "Biết H, tính khối lượng chất rắn còn lại sau khi nung",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 0,
+   "cau_mau": []
+  }
+ ]
+}

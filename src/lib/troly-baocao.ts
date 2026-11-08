@@ -91,7 +91,7 @@ export async function getBaoCao(soNgay: number, tinhLai = false): Promise<BaoCao
   return data as BaoCaoTroLy
 }
 
-// Trợ lý CÁ NHÂN theo khối quản lý (CEO 14/10): khối lấy từ sơ đồ tổ chức (vi_tri.khoi_quan_ly) ở DB,
+// Trợ lý CÁ NHÂN theo khối quản lý (CEO 14/10): khối lấy từ bảng phân công Trưởng/Phó khối (phan_cong_quan_ly_khoi, 29/10) ở DB,
 // client KHÔNG truyền người. Là bản lọc của báo cáo trung tâm đã lưu — không có nút "tính lại".
 export async function trolyCaNhanDuocDung(): Promise<boolean> {
   const { data, error } = await supabase.rpc('troly_ca_nhan_duoc_dung')
@@ -103,7 +103,31 @@ export async function getBaoCaoCaNhan(soNgay: number): Promise<BaoCaoTroLy> {
   if (error) throw error
   return data as BaoCaoTroLy
 }
+// Báo cáo Sư phạm "Mọi khối" của PHÒNG TRƯỞNG BỘ MÔN — đúng môn của phòng (mig 202611031255; Trang ⇒ Toán).
+export async function getBaoCaoPhong(soNgay: number): Promise<BaoCaoTroLy> {
+  const { data, error } = await supabase.rpc('fn_troly_phong_lay', { p_so_ngay: soNgay })
+  if (error) throw error
+  return data as BaoCaoTroLy
+}
+// Báo cáo Sư phạm của MỘT ô (môn × khối) — phòng PGĐ chọn khối (mig 202611031237, cùng lõi _troly_bc_theo_lop).
+export async function getBaoCaoO(soNgay: number, mon: string, khoi: string): Promise<BaoCaoTroLy> {
+  const { data, error } = await supabase.rpc('fn_troly_o_lay', { p_so_ngay: soNgay, p_mon: mon, p_khoi: khoi })
+  if (error) throw error
+  return data as BaoCaoTroLy
+}
 
 // ── Ngày giờ VN, KHÔNG toISOString / new Date('YYYY-MM-DD') (CLAUDE.md §2) ──────
 export const homNayVN = (): string => new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' })
 export const ddmm = (ngay: string | null | undefined): string => (ngay ? `${ngay.slice(8, 10)}/${ngay.slice(5, 7)}` : '—')
+
+// Học tập theo lớp 2 tuần gần nhất của phạm vi mình (Thùy 29/10, spec-truong-khoi.md §5) — lọc từ số Tổng kết tuần ĐÃ LƯU ở DB.
+export type LopHocTapTuan = {
+  lop_id: string; ten_lop: string; mon: string; khoi: string
+  et_tb: number | null; et_so_luot: number; btvn_tb: number | null; btvn_so_luot: number
+  et_tb_truoc: number | null; btvn_tb_truoc: number | null
+}
+export async function getHocTapTuanCaNhan(): Promise<{ tuan: string | null; tuan_truoc: string | null; lop: LopHocTapTuan[] }> {
+  const { data, error } = await supabase.rpc('fn_troly_ca_nhan_tuan')
+  if (error) throw error
+  return (data ?? { tuan: null, tuan_truoc: null, lop: [] }) as { tuan: string | null; tuan_truoc: string | null; lop: LopHocTapTuan[] }
+}

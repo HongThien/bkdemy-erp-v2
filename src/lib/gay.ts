@@ -14,7 +14,7 @@
 // ============================================================================
 import { supabase } from './supabase'
 import { myNhanSuId } from './nhansu'
-import { listAllStaffTasks } from './gami'
+import { listAllStaffTasks, nhanViecBuoi } from './gami'
 import { listAllOpsTaskNhom } from './opsvanhanh'
 import { homNayVN, congNgay, vnInstant, ddmmVN } from './tuan'
 
@@ -126,31 +126,14 @@ export async function updateGayHoatDong(id: string, patch: Partial<Pick<GayHoatD
 // 2) QUÉT GẬY TỰ ĐỘNG — đẻ đề xuất 'cho'. Idempotent: ref_key UNIQUE vĩnh viễn
 //    (1 việc trễ = đề xuất đúng 1 lần, kể cả quét lại mỗi lần mở màn).
 //    Chỉ soi deadline RƠI TRONG THÁNG NÀY (tháng cũ đã chốt sổ, không truy hồi).
-//    ⭐ 1 VIỆC TRỄ = 1 NGƯỜI (Thùy 29/08): listAllStaffTasks đẻ task cho MỌI
-//    người được phân lớp (leader khối kèm nhiều lớp cũng dính) → lọc về đúng
-//    NGƯỜI PHỤ TRÁCH CHÍNH theo phan_cong_lop.la_chinh. Không xác định được
-//    chính chủ (≥2 ứng viên, không ai la_chinh) → BỎ TRỐNG, không đánh bừa
-//    (CLAUDE §1.5 "thà bỏ trống còn hơn đánh sai").
+//    ⭐ 1 VIỆC TRỄ = 1 NGƯỜI — NGƯỜI PHỤ TRÁCH LÚC TỚI HẠN (Thùy 04/11): đọc BẢN CHỤP bất biến
+//    viec_phu_trach_snap (mig 202611041642), KHÔNG đọc phân công hiện tại — lớp đổi TA thì việc trễ cũ
+//    vẫn thuộc người giữ lớp lúc hạn. Luật chọn chính chủ (1 người của vai / người 'chính' duy nhất,
+//    mơ hồ ⇒ bỏ trống §1.5) nằm ở DB (_pc_chon), chỉ một nguồn.
 //    ⭐ nhan_su.mien_gay = true → quét tự động bỏ qua (gậy thủ công vẫn đánh được).
 // ════════════════════════════════════════════════════════════════════════════
 type DeXuatMoi = Omit<GayDeXuat, 'id' | 'trang_thai' | 'so_gay' | 'nguoi_quyet' | 'quyet_at' | 'ly_do_bo_qua' | 'ledger_id' | 'created_at'>
-type PhanCongRow = { nhan_su_id: string; lop_id: string; vai_tro: 'gv' | 'tg'; la_chinh: boolean }
-
-// Người phụ trách CHÍNH của 1 khâu trong 1 lớp — danhgia: GV · chấm (ingame/et/btvn):
-// TG, riêng ingame lớp KHÔNG có TG thì về GV. 1 ứng viên → người đó; nhiều ứng viên →
-// người la_chinh duy nhất; vẫn nhập nhằng → null (không đánh ai). MT KHÔNG đi qua đây
-// (owner = trưởng khối khối×môn → GV lớp, chọn ở DB fn_viec_buoi_thuong).
-export function nguoiPhuTrach(pcs: PhanCongRow[], tab: string): string | null {
-  const chon = (vai: 'gv' | 'tg'): string | null => {
-    const cands = pcs.filter((p) => p.vai_tro === vai)
-    if (cands.length === 1) return cands[0].nhan_su_id
-    const chinh = cands.filter((p) => p.la_chinh)
-    return chinh.length === 1 ? chinh[0].nhan_su_id : null
-  }
-  if (tab === 'danhgia') return chon('gv')
-  if (tab === 'ingame') return pcs.some((p) => p.vai_tro === 'tg') ? chon('tg') : chon('gv')
-  return chon('tg') // et / btvn / mt
-}
+type UngVienVh = { nhan_su_id: string; buoi_id: string; lop_id: string; ten_lop: string; ngay: string; tab: string; han: string; et_online: boolean; ref_key: string }
 
 export async function quetGayTuDong(): Promise<number> {
   const today = homNayVN()
@@ -159,39 +142,34 @@ export async function quetGayTuDong(): Promise<number> {
   const now = Date.now()
   const props: DeXuatMoi[] = []
 
-  const [{ data: mienRows }, { data: pcAll }] = await Promise.all([
-    supabase.from('nhan_su').select('id').eq('mien_gay', true).limit(LIMIT),
-    supabase.from('phan_cong_lop').select('nhan_su_id, lop_id, vai_tro, la_chinh').limit(LIMIT),
-  ])
+  const { data: mienRows } = await supabase.from('nhan_su').select('id').eq('mien_gay', true).limit(LIMIT)
   const mien = new Set(((mienRows ?? []) as any[]).map((r) => r.id))
-  const pcByLop = new Map<string, PhanCongRow[]>()
-  for (const p of (pcAll ?? []) as PhanCongRow[]) {
-    if (!pcByLop.has(p.lop_id)) pcByLop.set(p.lop_id, [])
-    pcByLop.get(p.lop_id)!.push(p)
-  }
 
   // ── (a) Việc VẬN HÀNH (chấm bài/đánh giá/ET/BTVN/MT) — tái dùng đúng invariant
   // listAllStaffTasks, KHÔNG tính lại deadline. Lùi 7 ngày để bắt buổi cuối tháng
   // trước có deadline lấn sang tháng này (vd ET trưa hôm sau).
   // ⭐ CEO 08/10: trễ tính theo LẦN ĐÓNG ĐẦU TIÊN (mở lại rồi đóng lại không làm task thành trễ) — số phút
   // trễ do DB tính (fn_viec_tien_do, mig 202610081427), KHÔNG đo ở JS bằng doneAt (= lần đóng CUỐI).
-  const rows = await listAllStaffTasks(congNgay(monthStart, -7), today)
-  const ungVien = rows.filter((r) => {
-    if (r.deadline == null || r.deadline < monthStartMs || r.deadline < GAY_MOC_LICH_SU_MS || r.deadline > now) return false
-    // chỉ tính cho NGƯỜI PHỤ TRÁCH CHÍNH của khâu này — task của người khác bỏ qua.
-    // MT: owner (trưởng khối → GV lớp) đã do fn_viec_buoi_thuong chọn duy nhất — không tra phan_cong_lop.
-    if (r.tab !== 'mt' && nguoiPhuTrach(pcByLop.get(r.lopId) ?? [], r.tab) !== r.nhan_su_id) return false
+  // Chụp trước (idempotent; cron 10 phút cũng chụp) rồi đọc người phụ trách LÚC HẠN từ bản chụp.
+  const tuNgay = congNgay(monthStart, -7)
+  const { error: eChup } = await supabase.rpc('fn_viec_chup_phu_trach', { p_tu: tuNgay })
+  if (eChup) throw eChup
+  const { data: uvData, error: eUv } = await supabase.rpc('fn_gay_ung_vien_vh', { p_tu: tuNgay }).limit(LIMIT)
+  if (eUv) throw eUv
+  const ungVien = ((uvData ?? []) as UngVienVh[]).filter((r) => {
+    const han = new Date(r.han).getTime()
+    if (han < monthStartMs || han < GAY_MOC_LICH_SU_MS || han > now) return false
     return !mien.has(r.nhan_su_id)
   })
-  const tienDo = await tienDoTask(ungVien.map((r) => r.refKey))
+  const tienDo = await tienDoTask(ungVien.map((r) => r.ref_key))
   for (const r of ungVien) {
-    const td = tienDo.get(r.refKey)
+    const td = tienDo.get(r.ref_key)
     if (!td || td.tre_phut == null || td.tre_phut <= 0) continue // đúng hạn ở lần đóng đầu — "1 phút cũng phạt" nên KHÔNG có ân hạn
     props.push({
       nhan_su_id: r.nhan_su_id, nguon: 'vanhanh',
-      ref_key: r.refKey,
-      mo_ta: `${r.label} — ${r.lop} ${ddmmVN(r.ngay)}${td.dong_dau ? '' : ' (chưa xong)'}`,
-      deadline_at: td.han ?? new Date(r.deadline!).toISOString(),
+      ref_key: r.ref_key,
+      mo_ta: `${nhanViecBuoi(r.tab, r.et_online)} — ${r.ten_lop} ${ddmmVN(r.ngay)}${td.dong_dau ? '' : ' (chưa xong)'}`,
+      deadline_at: td.han ?? r.han,
       tre_phut: td.tre_phut,
     })
   }
@@ -311,13 +289,14 @@ export async function danhGayThuCong(p: {
 }
 
 // ── TASK CỦA 1 NHÂN SỰ trong khoảng ngày (picker "đánh gậy vào task") ────────
-// Hai nguồn, cùng shape: (a) việc VẬN HÀNH derive từ listAllStaffTasks (đúng invariant,
-// không tính lại) — MỌI task người đó được phân, không lọc "người phụ trách chính" như
-// quét tự động (đánh tay = leader đã nhìn và quyết); (b) việc GIAO TAY (bảng viec, bỏ
-// huy/chuyen). Lọc khoảng = lựa chọn UI đang mở (§2.0 cho phép); số gậy/task từ DB.
+// Hai nguồn, cùng shape: (a) việc VẬN HÀNH — ĐÃ TỚI HẠN: người phụ trách LÚC HẠN từ bản chụp
+// viec_phu_trach_snap (Thùy 04/11: lớp đổi người thì việc cũ vẫn của người cũ); CHƯA TỚI HẠN: phân công
+// hiện tại (listAllStaffTasks, mọi task người đó được phân — đánh tay = leader đã nhìn và quyết);
+// (b) việc GIAO TAY (bảng viec, bỏ huy/chuyen). Lọc khoảng = lựa chọn UI đang mở (§2.0 cho phép); số gậy/task từ DB.
 export async function listTaskCuaNhanSu(nhanSuId: string, k: KhoangNgay): Promise<TaskCuaNhanSu[]> {
-  const [vh, { data: viecs, error }, { data: gayRows, error: eG }] = await Promise.all([
+  const [vh, snap, { data: viecs, error }, { data: gayRows, error: eG }] = await Promise.all([
     listAllStaffTasks(k.tu, k.den),
+    supabase.rpc('fn_gay_ung_vien_vh', { p_tu: k.tu }).eq('nhan_su_id', nhanSuId).lte('ngay', k.den).limit(LIMIT),
     supabase.from('task_phat_trien').select('id, tieu_de, trang_thai, han, created_at, ket_qua_pct')
       .eq('nguoi_lam_id', nhanSuId).neq('trang_thai', 'huy')
       .order('created_at', { ascending: false }).limit(LIMIT),
@@ -326,9 +305,21 @@ export async function listTaskCuaNhanSu(nhanSuId: string, k: KhoangNgay): Promis
   if (error) throw error
   if (eG) throw eG
   const gayMap = new Map(((gayRows ?? []) as any[]).map((g) => [g.ref_id as string, Number(g.so_gay)]))
+  if (snap.error) throw snap.error
+  const daToiHan = (snap.data ?? []) as UngVienVh[]
+  const tdSnap = await tienDoTask(daToiHan.map((r) => r.ref_key))
   const out: TaskCuaNhanSu[] = []
+  for (const r of daToiHan) {
+    const xong = !!tdSnap.get(r.ref_key)?.dong_cuoi
+    out.push({
+      key: r.ref_key, nguon: 'vanhanh', ten: nhanViecBuoi(r.tab, r.et_online), phu: `${r.ten_lop} · ${ddmmVN(r.ngay)}`, ngay: r.ngay,
+      deadline_at: r.han, xong, trangThai: xong ? 'Xong' : 'Chưa xong', soGay: gayMap.get(r.ref_key) ?? 0,
+    })
+  }
+  const bayGio = Date.now()
   for (const r of vh) {
     if (r.nhan_su_id !== nhanSuId) continue
+    if (r.deadline != null && r.deadline <= bayGio) continue // đã tới hạn ⇒ lấy theo bản chụp ở trên
     const key = `vh:${r.buoiId}|${r.tab}|${r.nhan_su_id}`
     out.push({
       key, nguon: 'vanhanh', ten: r.label, phu: `${r.lop} · ${ddmmVN(r.ngay)}`, ngay: r.ngay,
@@ -432,7 +423,8 @@ export async function listChotThang(ky: string): Promise<GayChotThangFull[]> {
 }
 
 // ── QUYỀN GẬY THEO KHỐI (Thùy 16/10, mig 202610161605/1606) — trục thứ hai bên cạnh cây vị trí.
-// Cấu hình ở bảng gay_quyen_khoi; phạm vi tính ở DB (fn_gay_pham_vi_khoi), trừ chính mình.
+// Nguồn = Trưởng khối được phân công (phan_cong_quan_ly_khoi, 29/10 — thay gay_quyen_khoi); toàn quyền = Lead/Quản lý chất lượng.
+// Phạm vi tính ở DB (fn_gay_pham_vi_khoi), trừ chính mình.
 export type PhamViKhoi = { toanQuyen: boolean; khoi: string[]; nsIds: Set<string>; deXuatIds: Set<string> }
 export const PHAM_VI_KHOI_RONG: PhamViKhoi = { toanQuyen: false, khoi: [], nsIds: new Set(), deXuatIds: new Set() }
 export async function phamViKhoi(): Promise<PhamViKhoi> {
@@ -440,6 +432,19 @@ export async function phamViKhoi(): Promise<PhamViKhoi> {
   if (error) throw error
   const j = (data ?? {}) as { toan_quyen?: boolean; khoi?: string[]; ns_ids?: string[]; de_xuat_ids?: string[] }
   return { toanQuyen: !!j.toan_quyen, khoi: j.khoi ?? [], nsIds: new Set(j.ns_ids ?? []), deXuatIds: new Set(j.de_xuat_ids ?? []) }
+}
+
+// Khối/lớp của từng đề xuất (Thùy 29/10, lọc theo khối) — suy ở DB (fn_gay_de_xuat_lop, mig 202610291307).
+// Đề xuất không gắn buổi học (việc OPS gộp theo ca) KHÔNG có trong Map.
+export type DeXuatLop = { khoi: string | null; mon: string; ten_lop: string }
+export async function deXuatLop(ids: string[]): Promise<Map<string, DeXuatLop>> {
+  const out = new Map<string, DeXuatLop>()
+  for (let i = 0; i < ids.length; i += 400) {
+    const { data, error } = await supabase.rpc('fn_gay_de_xuat_lop', { p_ids: ids.slice(i, i + 400) }).limit(1000)
+    if (error) throw error
+    for (const r of (data ?? []) as ({ id: string } & DeXuatLop)[]) out.set(r.id, { khoi: r.khoi, mon: r.mon, ten_lop: r.ten_lop })
+  }
+  return out
 }
 
 // ── MIỄN GẬY TỰ ĐỘNG (nhan_su.mien_gay) — CEO bật/tắt qua UI Danh mục ────────
@@ -471,4 +476,28 @@ export async function demDeXuatCho(): Promise<number> {
   const { count, error } = await supabase.from('gay_de_xuat').select('id', { count: 'exact', head: true }).eq('trang_thai', 'cho')
   if (error) throw error
   return count ?? 0
+}
+
+// ── HẬU KIỂM (Thùy 29/10, spec-truong-khoi.md §3): trưởng khối quyết gậy có hiệu lực ngay; Trang (toàn hệ) xem lại.
+// Hàng + quyền ở DB (fn_hau_kiem_gay chỉ trả cho toàn hệ). Sửa: gậy đánh/gỡ sai ⇒ thuHoiGay rồi ghi 'da_sua';
+// bỏ qua sai ⇒ mở lại đề xuất (về 'cho', DB ghi luôn hậu kiểm).
+export type HauKiemGay = {
+  loai: 'gay_ledger' | 'gay_bo_qua'; ref_id: string; at: string
+  nguoi_quyet_id: string; nguoi_quyet: string; nhan_su_id: string; nhan_su: string
+  hanh_dong: string; so_gay: number; loi: string | null; ly_do: string | null; viec: string | null; tre_phut?: number | null
+  thu_hoi_at: string | null
+  hk: { ket_qua: 'dong_y' | 'da_sua'; ghi_chu: string | null; at: string; nguoi: string } | null
+}
+export async function hauKiemGay(soNgay = 7): Promise<HauKiemGay[]> {
+  const { data, error } = await supabase.rpc('fn_hau_kiem_gay', { p_so_ngay: soNgay })
+  if (error) throw error
+  return (data ?? []) as HauKiemGay[]
+}
+export async function ghiHauKiem(loai: HauKiemGay['loai'] | 'viec_van_hanh' | 'ca_nhe', refId: string, ketQua: 'dong_y' | 'da_sua', ghiChu: string | null): Promise<void> {
+  const { error } = await supabase.rpc('fn_hau_kiem_ghi', { p_loai: loai, p_ref: refId, p_ket_qua: ketQua, p_ghi_chu: ghiChu })
+  if (error) throw error
+}
+export async function moLaiDeXuat(deXuatId: string, ghiChu: string | null): Promise<void> {
+  const { error } = await supabase.rpc('fn_hau_kiem_mo_lai_de_xuat', { p_de_xuat: deXuatId, p_ghi_chu: ghiChu })
+  if (error) throw error
 }

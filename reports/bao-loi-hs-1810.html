@@ -1,0 +1,350 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Câu HS báo lỗi</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--ink:#1f2328;--mut:#6b7280;--line:#e5e1d8;--red:#b42318;--redbg:#fef3f2;--grn:#067647;--grnbg:#ecfdf3;--amb:#b54708;--ambbg:#fffaeb;--key:#eef4ff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171a;--card:#1e2125;--ink:#e8e6e1;--mut:#9aa0a6;--line:#30343a;--redbg:#3a1d1a;--grnbg:#16301f;--ambbg:#33280f;--key:#1d2a44}}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,sans-serif}
+main{max-width:920px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:22px;margin:0 0 4px}.muted{color:var(--mut)}
+.sum{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0 22px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--grn);border-radius:12px;padding:14px 16px;margin:0 0 16px;overflow-wrap:anywhere}
+.card.loi{border-left-color:var(--red)}.card.cho{border-left-color:var(--amb)}
+header{display:flex;gap:10px;align-items:center;margin-bottom:6px}.badge{font-size:12px;padding:2px 8px;border-radius:99px;background:var(--grnbg);color:var(--grn)}
+.loi .badge{background:var(--redbg);color:var(--red)}.cho .badge{background:var(--ambbg);color:var(--amb)}
+.bao{font-size:13.5px;color:var(--mut);margin-bottom:8px}.de{font-size:16px;margin:6px 0 8px}
+img{max-width:100%;border:1px solid var(--line);border-radius:8px;margin:4px 0}
+.lbl{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);margin-top:8px}
+.opts{margin:4px 0;padding-left:0;list-style:none}.opts li{padding:4px 8px;border-radius:6px}.opts li.key{background:var(--key)}
+.tag{font-size:11px;padding:1px 6px;border-radius:99px;margin-left:4px;white-space:nowrap}.tag.k{background:#dbe7ff;color:#1d4ed8}.tag.c{background:#fde7d9;color:#9a3412}
+.tag.o{background:var(--redbg);color:var(--red)}.tag.n{background:var(--grnbg);color:var(--grn)}
+.ket{margin-top:10px}.fix{margin-top:8px;padding:8px 10px;border:1px dashed var(--line);border-radius:8px}.diff>div{margin:4px 0}
+.cham{margin-top:8px;font-size:13.5px}details{margin-top:6px}summary{cursor:pointer;color:var(--mut);font-size:13px}.lg{margin:6px 0}
+</style></head><body><main>
+<h1>Câu HS báo lỗi · 10–17/10</h1>
+<div class="muted">32 câu bị báo · 21 câu có lỗi thật · 10 câu không lỗi · 1 câu chờ duyệt form</div>
+<div class="sum"><b>Lỗi hệ thống tìm ra khi kiểm:</b> máy sinh trắc nghiệm (claude-fable, lô duyệt 16–20/09) đọc sai đáp số có <b>phẩy thập phân</b> (“12,61” → phương án “12;61”) hoặc <b>dấu cách hàng nghìn</b> (“30 000” → “0”). Đã quét toàn kho: <b>451 form hỏng</b>, chủ yếu Toán 5 số thập phân. 3 form có HS báo đã dựng lại tay; <b>448 form còn lại thu hồi duyệt</b> (app tạm cho trả lời ngắn) — cần sinh lại.<br>
+Ngoài ra: KaTeX hiện số thập phân “1,46” thành “1, 46” (~1.800 câu) — đã sửa bộ hiển thị.</div>
+<section class="card loi">
+  <header><code>077020101050</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Nguyễn Đăng Đức (HS0303, K7)</b> · 11/10 11:37 · Lời giải sai</div></div>
+  <div class="de">Viết các phân số sau dưới dạng số thập phân: $\dfrac{23}{50}$; $\dfrac{5}{12}$; $-\dfrac{7}{20}$; $\dfrac{25}{11}$.</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $\dfrac{23}{25};\dfrac{123}{50};-\dfrac{7}{20};2$</li><li class=""><b>B.</b> $-\dfrac{27}{50};\dfrac{123}{50};-\dfrac{7}{20};2$</li><li class=""><b>C.</b> $\dfrac{23}{50};\dfrac{123}{50};-\dfrac{7}{20};3$</li><li class="key"><b>D.</b> $\dfrac{23}{50};\dfrac{123}{50};-\dfrac{7}{20};2$ <span class="tag k">key lúc làm</span> <span class="tag c">1 em báo chọn</span></li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">$\dfrac{23}{50}=0.46$<br>$\dfrac{5}{12}=0.41(6)$<br>$-\dfrac{7}{20}=-0.35$<br>$\dfrac{25}{11}=2,(27)$</div><div class="muted">Đáp số kho: $0.46$; $0.41(6)$; $-0.35$; $2,(27)$</div></details>
+  <div class="ket"><b>Kết luận:</b> Form trắc nghiệm sai (máy đổi số thập phân thành phân số) — dựng lại 4 phương án; đáp số kho đổi sang dấu phẩy</div>
+  <div class="fix"><div class="lbl">Câu gốc — sửa dap_an, loi_giai</div><div class="diff"><div><span class="tag o">cũ</span> $0.46$; $0.41(6)$; $-0.35$; $2,(27)$</div><div><span class="tag n">mới</span> $0{,}46$; $0{,}41(6)$; $-0{,}35$; $2{,}(27)$</div></div><div class="diff"><div><span class="tag o">cũ</span> $\dfrac{23}{50}=0.46$<br>$\dfrac{5}{12}=0.41(6)$<br>$-\dfrac{7}{20}=-0.35$<br>$\dfrac{25}{11}=2,(27)$</div><div><span class="tag n">mới</span> $\dfrac{23}{50}=0{,}46$<br>$\dfrac{5}{12}=0{,}41(6)$<br>$-\dfrac{7}{20}=-0{,}35$<br>$\dfrac{25}{11}=2{,}(27)$</div></div></div><div class="fix"><div class="lbl">Form trắc nghiệm — mới (đúng: D)</div><ol class="opts"><li class=""><b>A.</b> $0{,}46;\ 0{,}416;\ -0{,}35;\ 2{,}27$</li><li class=""><b>B.</b> $0{,}46;\ 0{,}(416);\ -0{,}35;\ 2{,}(27)$</li><li class=""><b>C.</b> $0{,}46;\ 0{,}41(6);\ 0{,}35;\ 2{,}(27)$</li><li class="key"><b>D.</b> $0{,}46;\ 0{,}41(6);\ -0{,}35;\ 2{,}(27)$</li></ol></div>
+</section>
+<section class="card loi">
+  <header><code>077022220401080</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Nguyễn Đăng Đức (HS0303, K7)</b> · 14/10 22:05 · Đáp án sai</div></div>
+  <div class="de">Tìm GTLN của biểu thức: $D=4,5-\sqrt{3x+9}-|y-2|$.</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $8;5$</li><li class=""><b>B.</b> $5;5$</li><li class="key"><b>C.</b> $4;5$ <span class="tag k">key lúc làm</span></li><li class=""><b>D.</b> $3;5$ <span class="tag c">1 em báo chọn</span></li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">Ta có: $\sqrt{3x+9}\ge0$; $|y-2|\ge0$.<br>$\Rightarrow -\sqrt{3x+9}\le0$; $-|y-2|\le0$.<br>$\Rightarrow 4,5-\sqrt{3x+9}-|y-2|\le4,5$.<br>$\Rightarrow D\le4,5$.<br>Dấu bằng xảy ra khi $\left\{\begin{array}{1}\sqrt{3x+9}=0\\|y-2|=0\end{array}\right.\Rightarrow\left\{\begin{array}{1}x=-3\\y=2\end{array}\right.$.<br>Vậy GTLN của biểu thức $D$ là $4,5$ khi $x=-3$ và $y=2$.</div><div class="muted">Đáp số kho: 4,5</div></details>
+  <div class="ket"><b>Kết luận:</b> Form đọc 4,5 thành "4;5" — dựng lại phương án</div>
+  <div class="fix"><div class="lbl">Form trắc nghiệm — mới (đúng: C)</div><ol class="opts"><li class=""><b>A.</b> $9$</li><li class=""><b>B.</b> $5{,}5$</li><li class="key"><b>C.</b> $4{,}5$</li><li class=""><b>D.</b> $3{,}5$</li></ol></div>
+</section>
+<section class="card loi">
+  <header><code>T104010103026</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Gia Minh (HS0739, K4)</b> · 12/10 21:41 · Đáp án sai</div><div>📣 <b>Bùi Cát Hạnh Nhi (HS0644, K4T)</b> · 15/10 17:43 · Lời giải sai</div></div>
+  <div class="de">Điền số thích hợp vào chỗ chấm:</div>
+  <img src="https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/757dad6b-4815-462c-8f71-7c6823d77c1f.png" alt="hình đề">
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $1;0$ <span class="tag c">2 em báo chọn</span></li><li class=""><b>B.</b> $-1;0$</li><li class=""><b>C.</b> $0;1$</li><li class="key"><b>D.</b> $0;0$ <span class="tag k">key lúc làm</span></li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">Khoảng cách giữa các số là 10 000.<br>Vậy các số cần điền là:<br>20 000 + 10 000 = 30 000<br>50 000 + 10 000 = 60 000</div><div class="muted">Đáp số kho: 30 000; 60 000</div></details>
+  <div class="ket"><b>Kết luận:</b> Form đọc 30 000 thành "0" — dựng lại phương án</div>
+  <div class="fix"><div class="lbl">Form trắc nghiệm — mới (đúng: D)</div><ol class="opts"><li class=""><b>A.</b> $40\,000;\ 60\,000$</li><li class=""><b>B.</b> $25\,000;\ 60\,000$</li><li class=""><b>C.</b> $30\,000;\ 70\,000$</li><li class="key"><b>D.</b> $30\,000;\ 60\,000$</li></ol></div>
+</section>
+<section class="card loi">
+  <header><code>T104010103028</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Gia Minh (HS0739, K4)</b> · 12/10 21:48 · Lời giải sai</div></div>
+  <div class="de">Điền số thích hợp vào chỗ chấm:</div>
+  <img src="https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/93bbb019-9361-4c92-b0f3-9010023c4964.png" alt="hình đề">
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $1;0$ <span class="tag c">1 em báo chọn</span></li><li class="key"><b>B.</b> $0;0$ <span class="tag k">key lúc làm</span></li><li class=""><b>C.</b> $-1;0$</li><li class=""><b>D.</b> $0;1$</li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">Khoảng cách giữa các số là 8 000.<br>Vậy các số cần điền là:<br>24 000 + 8 000 = 32 000<br>48 000 + 8 000 = 56 000</div><div class="muted">Đáp số kho: 32 000; 56 000</div></details>
+  <div class="ket"><b>Kết luận:</b> Form đọc 32 000 thành "0" — dựng lại phương án</div>
+  <div class="fix"><div class="lbl">Form trắc nghiệm — mới (đúng: B)</div><ol class="opts"><li class=""><b>A.</b> $30\,000;\ 56\,000$</li><li class="key"><b>B.</b> $32\,000;\ 56\,000$</li><li class=""><b>C.</b> $36\,000;\ 56\,000$</li><li class=""><b>D.</b> $32\,000;\ 60\,000$</li></ol></div>
+</section>
+<section class="card ok">
+  <header><code>T104020102015</code> <span class="badge">Không lỗi</span></header>
+  <div class="bao"><div>📣 <b>Nguyễn Cát Mỹ Anh (HS0727, K4)</b> · 13/10 20:59 · Khác — “Chưa làm xong  mà chỗ nhấn lại ghi là xem kết quả”</div></div>
+  <div class="de">Tính giá trị biểu thức:<br>$102 500 - 32 700 - 7 300$</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $125000$</li><li class=""><b>B.</b> $62499$</li><li class=""><b>C.</b> $62498$</li><li class="key"><b>D.</b> $62500$ <span class="tag k">key lúc làm</span> <span class="tag c">1 em báo chọn</span></li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">$102 500 - 32 700 - 7 300$<br>$= 102 500 - (32 700 + 7 300)$<br>$= 102 500 - 40 000$<br>$= 62 500$</div><div class="muted">Đáp số kho: 62500</div></details>
+  <div class="ket"><b>Kết luận:</b> Câu đúng (62 500). Ghi chú của em là về nút "Xem kết quả" — chuyển sang lỗi app</div>
+  
+</section>
+<section class="card ok">
+  <header><code>T105010202013</code> <span class="badge">Không lỗi</span></header>
+  <div class="bao"><div>📣 <b>Test 02 · Khối 5 (TEST02, K5)</b> · 16/10 18:01 · Khác — “Không có đáp án đúng”</div></div>
+  <div class="de">Tính giá trị của biểu thức sau:<br>$2000 + (600 + 400) : 2$</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class="key"><b>A.</b> $2500$ <span class="tag k">key lúc làm</span> <span class="tag c">1 em báo chọn</span></li><li class=""><b>B.</b> $2501$</li><li class=""><b>C.</b> $2499$</li><li class=""><b>D.</b> $2498$</li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">Thực hiện phép tính trong ngoặc trước:<br>$600 + 400 = 1000$<br>Thực hiện phép chia:<br>$1000 : 2 = 500$<br>Thực hiện phép cộng:<br>$2000 + 500 = 2500$</div><div class="muted">Đáp số kho: 2500</div></details>
+  <div class="ket"><b>Kết luận:</b> Câu đúng (2500) — tài khoản TEST</div>
+  
+</section>
+<section class="card loi">
+  <header><code>T105040103023</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Đinh Bảo Ngọc (HS0743, K5)</b> · 17/10 11:21 · Lời giải sai</div></div>
+  <div class="de">Viết hỗn số $10\dfrac{145}{1000}$ thành số thập phân.</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $\dfrac{2029}{100}$</li><li class=""><b>B.</b> $\dfrac{2229}{200}$</li><li class="key"><b>C.</b> $\dfrac{2029}{200}$ <span class="tag k">key lúc làm</span> <span class="tag c">1 em báo chọn</span></li><li class=""><b>D.</b> $\dfrac{1629}{200}$</li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">$10\dfrac{145}{1000} = 10,145$.</div><div class="muted">Đáp số kho: 10.145</div></details>
+  <div class="ket"><b>Kết luận:</b> Đề hỏi số thập phân mà phương án là phân số — đổi phương án sang số thập phân</div>
+  <div class="fix"><div class="lbl">Form trắc nghiệm — mới (đúng: C)</div><ol class="opts"><li class=""><b>A.</b> $10{,}0145$</li><li class=""><b>B.</b> $0{,}145$</li><li class="key"><b>C.</b> $10{,}145$</li><li class=""><b>D.</b> $101{,}45$</li></ol></div>
+</section>
+<section class="card loi">
+  <header><code>T105040103028</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Đinh Bảo Ngọc (HS0743, K5)</b> · 17/10 11:10 · Công thức lỗi</div></div>
+  <div class="de">Viết số thập phân 8,5 thành hỗn số có chứa phân số thập phân.</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $17$</li><li class=""><b>B.</b> $\dfrac{15}{2}$ <span class="tag c">1 em báo chọn</span></li><li class=""><b>C.</b> $\dfrac{13}{2}$</li><li class="key"><b>D.</b> $\dfrac{17}{2}$ <span class="tag k">key lúc làm</span></li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">$8,5 = 8\dfrac{5}{10}$.</div><div class="muted">Đáp số kho: $8\dfrac{5}{10}$</div></details>
+  <div class="ket"><b>Kết luận:</b> Đề hỏi hỗn số mà phương án là phân số — đổi phương án sang hỗn số</div>
+  <div class="fix"><div class="lbl">Form trắc nghiệm — mới (đúng: D)</div><ol class="opts"><li class=""><b>A.</b> $8\dfrac{5}{100}$</li><li class=""><b>B.</b> $5\dfrac{8}{10}$</li><li class=""><b>C.</b> $85\dfrac{1}{10}$</li><li class="key"><b>D.</b> $8\dfrac{5}{10}$</li></ol></div>
+</section>
+<section class="card loi">
+  <header><code>T105040205037</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Trần Ngọc Hân (HS0658, K5)</b> · 10/10 21:21 · Công thức lỗi</div></div>
+  <div class="de">Tính bằng cách thuận tiện nhất.<br>$1,46 : 0,1 + 14,6 \times 99 + 14,6 : 0,5$.</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class="key"><b>A.</b> $1460$ <span class="tag k">key lúc làm</span></li><li class=""><b>B.</b> $1461$</li><li class=""><b>C.</b> $1459$ <span class="tag c">1 em báo chọn</span></li><li class=""><b>D.</b> $1458$</li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">Ta có:<br>$1,46 : 0,1 + 14,6 \times 97 + 14,6 : 0,5$<br>$= 14,6 \times 1 + 14,6 \times 97 + 14,6 \times 2$<br>$= 14,6 \times (1 + 97 + 2)$<br>$= 14,6 \times 100$<br>$= 1460.$</div><div class="muted">Đáp số kho: 1460</div></details>
+  <div class="ket"><b>Kết luận:</b> Đề đúng (1460). Lỗi hiển thị: số thập phân trong công thức hiện "1, 46" — sửa bộ hiển thị</div>
+  
+</section>
+<section class="card loi">
+  <header><code>T106020701004</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Đoàn Hữu Minh Đức (HS0724, K6)</b> · 10/10 23:10 · Khác — “sai câu trả lời”</div></div>
+  <div class="de">CLB Stem có số bạn nam nhiều hơn số bạn nữ là 15 bạn. Sau khi 3 bạn nam chuyển sang CLB khác thì lúc này số bạn nữ bằng $\dfrac{3}{5}$ số bạn nam. Hỏi lúc đầu có bao nhiêu bạn nam?</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class="key"><b>A.</b> $30$ <span class="tag k">key lúc làm</span> <span class="tag c">1 em báo chọn</span></li><li class=""><b>B.</b> $31$</li><li class=""><b>C.</b> $29$</li><li class=""><b>D.</b> $28$</li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">Ban đầu, số bạn nam nhiều hơn số bạn nữ là 15 bạn.<br>Gọi số bạn nam ban đầu là $N_0$ và số bạn nữ ban đầu là $U_0$.<br>Theo đề bài ta có: $N_0 - U_0 = 15$  (1)<br>Sau khi 3 bạn nam chuyển sang CLB khác:<br>Số bạn nam còn lại là $N_1 = N_0 - 3$.<br>Số bạn nữ vẫn là $U_1 = U_0$.<br>Lúc này, số bạn nữ bằng $\dfrac{3}{5}$ số bạn nam.<br>Vậy $U_1 = \dfrac{3}{5} N_1$.<br>Thay $U_1 = U_0$ và $N_1 = N_0 - 3$ vào, ta được: $U_0 = \dfrac{3}{5} (N_0 - 3)$  (2)<br>Từ (1), ta có $U_0 = N_0 - 15$.<br>Thay $U_0$ vào (2) ta được:<br>$N_0 - 15 = \dfrac{3}{5} (N_0 - 3)$<br>$5(N_0 - 15) = 3(N_0 - 3)$<br>$5N_0 - 75 = 3N_0 - 9$<br>$5N_0 - 3N_0 = 75 - 9$<br>$2N_0 = 66$<br>$N_0 = \dfrac{66}{2}$<br>$N_0 = 33$<br>Số bạn nữ ban đầu là $U_0 = N_0 - 15 = 33 - 15 = 18$ bạn.<br>Sau khi 3 bạn nam chuyển đi:<br>Số bạn nam còn lại là $33 - 3 = 30$ bạn.<br>Số bạn nữ vẫn là 18 bạn.<br>Kiểm tra lại: $18 = \dfrac{3}{5} \times 30$, $18 = 18$ (đúng).<br>Vậy lúc đầu có 33 bạn nam.<br>Xin lỗi, có sự nhầm lẫn ở bước kiểm tra. Câu hỏi là lúc đầu có bao nhiêu bạn nam. Tôi đã tính đúng $N_0 = 33$. Tôi sẽ điều chỉnh đáp án.</div><div class="muted">Đáp số kho: 30</div></details>
+  <div class="ket"><b>Kết luận:</b> Đáp số kho SAI (30 là số nam SAU khi chuyển) — sửa thành 33, viết lại lời giải + phương án</div>
+  <div class="fix"><div class="lbl">Câu gốc — sửa dap_an, loi_giai</div><div class="diff"><div><span class="tag o">cũ</span> 30</div><div><span class="tag n">mới</span> 33</div></div><div class="diff"><div><span class="tag o">cũ</span> Ban đầu, số bạn nam nhiều hơn số bạn nữ là 15 bạn.<br>Gọi số bạn nam ban đầu là $N_0$ và số bạn nữ ban đầu là $U_0$.<br>Theo đề bài ta có: $N_0 - U_0 = 15$  (1)<br>Sau khi 3 bạn nam chuyển sang CLB khác:<br>Số bạn nam còn lại là $N_1 = N_0 - 3$.<br>Số bạn nữ vẫn là $U_1 = U_0$.<br>Lúc này, số bạn nữ bằng $\dfrac{3}{5}$ số bạn nam.<br>Vậy $U_1 = \dfrac{3}{5} N_1$.<br>Thay $U_1 = U_0$ và $N_1 = N_0 - 3$ vào, ta được: $U_0 = \dfrac{3}{5} (N_0 - 3)$  (2)<br>Từ (1), ta có $U_0 = N_0 - 15$.<br>Thay $U_0$ vào (2) ta được:<br>$N_0 - 15 = \dfrac{3}{5} (N_0 - 3)$<br>$5(N_0 - 15) = 3(N_0 - 3)$<br>$5N_0 - 75 = 3N_0 - 9$<br>$5N_0 - 3N_0 = 75 - 9$<br>$2N_0 = 66$<br>$N_0 = \dfrac{66}{2}$<br>$N_0 = 33$<br>Số bạn nữ ban đầu là $U_0 = N_0 - 15 = 33 - 15 = 18$ bạn.<br>Sau khi 3 bạn nam chuyển đi:<br>Số bạn nam còn lại là $33 - 3 = 30$ bạn.<br>Số bạn nữ vẫn là 18 bạn.<br>Kiểm tra lại: $18 = \dfrac{3}{5} \times 30$, $18 = 18$ (đúng).<br>Vậy lúc đầu có 33 bạn nam.<br>Xin lỗi, có sự nhầm lẫn ở bước kiểm tra. Câu hỏi là lúc đầu có bao nhiêu bạn nam. Tôi đã tính đúng $N_0 = 33$. Tôi sẽ điều chỉnh đáp án.</div><div><span class="tag n">mới</span> Sau khi 3 bạn nam chuyển đi, số bạn nam nhiều hơn số bạn nữ là: $15 - 3 = 12$ (bạn).<br>Lúc này số bạn nữ bằng $\dfrac{3}{5}$ số bạn nam, nên $12$ bạn ứng với $1 - \dfrac{3}{5} = \dfrac{2}{5}$ số bạn nam.<br>Số bạn nam lúc này là: $12 : \dfrac{2}{5} = 30$ (bạn).<br>Số bạn nam lúc đầu là: $30 + 3 = 33$ (bạn).<br>Vậy lúc đầu có $33$ bạn nam.</div></div></div><div class="fix"><div class="lbl">Form trắc nghiệm — mới (đúng: A)</div><ol class="opts"><li class="key"><b>A.</b> $33$</li><li class=""><b>B.</b> $30$</li><li class=""><b>C.</b> $18$</li><li class=""><b>D.</b> $36$</li></ol></div>
+</section>
+<section class="card loi">
+  <header><code>T107010101013</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Nguyễn Minh Đức (HS0493, K7)</b> · 12/10 20:32 · Thiếu dữ kiện</div></div>
+  <div class="de">Trong các cách viết sau, cách viết nào không biểu diễn số hữu tỉ?</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $\dfrac{-8}{11}$</li><li class=""><b>B.</b> $\dfrac{2.3}{4.1}$ <span class="tag c">1 em báo chọn</span></li><li class="key"><b>C.</b> $\dfrac{10}{0}$ <span class="tag k">key lúc làm</span></li><li class=""><b>D.</b> $\dfrac{-5.9}{6}$</li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">C vì mẫu số bằng 0.</div><div class="muted">Đáp số kho: C</div></details>
+  <div class="ket"><b>Kết luận:</b> Đổi 2.3 / 5.9 sang dấu phẩy 2,3 / 5,9</div>
+  <div class="fix"><div class="lbl">Câu gốc — sửa lua_chon</div><div class="diff"><div><span class="tag o">cũ</span> ["$\\dfrac{-8}{11}$","$\\dfrac{2.3}{4.1}$","$\\dfrac{10}{0}$","$\\dfrac{-5.9}{6}$"]</div><div><span class="tag n">mới</span> ["$\\dfrac{-8}{11}$","$\\dfrac{2{,}3}{4{,}1}$","$\\dfrac{10}{0}$","$\\dfrac{-5{,}9}{6}$"]</div></div></div>
+</section>
+<section class="card ok">
+  <header><code>T107010206055</code> <span class="badge">Không lỗi</span></header>
+  <div class="bao"><div>📣 <b>Nguyễn Minh Đức (HS0493, K7)</b> · 12/10 20:36 · Thiếu dữ kiện</div></div>
+  <div class="de">Tính : $11 - (\dfrac{5}{12} + \dfrac{17}{10} - \dfrac{2}{7}) + (\dfrac{7}{10} - \dfrac{19}{12} + \dfrac{12}{7})$</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $\dfrac{449}{35}$</li><li class=""><b>B.</b> $-10$</li><li class="key"><b>C.</b> $10$ <span class="tag k">key lúc làm</span> <span class="tag c">1 em báo chọn</span></li><li class=""><b>D.</b> $\dfrac{389}{35}$</li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">$11 - (\dfrac{5}{12} + \dfrac{17}{10} - \dfrac{2}{7}) + (\dfrac{7}{10} - \dfrac{19}{12} + \dfrac{12}{7})$<br>$= 11 - \dfrac{5}{12} - \dfrac{17}{10} + \dfrac{2}{7} + \dfrac{7}{10} - \dfrac{19}{12} + \dfrac{12}{7}$<br>$= 11 - (\dfrac{5}{12} + \dfrac{19}{12}) - (\dfrac{17}{10} - \dfrac{7}{10}) + (\dfrac{2}{7} + \dfrac{12}{7})$<br>$= 11 - \dfrac{24}{12} - \dfrac{10}{10} + \dfrac{14}{7}$<br>$= 11 - 2 - 1 + 2$<br>$= 10$</div><div class="muted">Đáp số kho: 10</div></details>
+  <div class="ket"><b>Kết luận:</b> Câu đúng (10)</div>
+  
+</section>
+<section class="card ok">
+  <header><code>T107010403001</code> <span class="badge">Không lỗi</span></header>
+  <div class="bao"><div>📣 <b>Nguyễn Minh Đức (HS0493, K7)</b> · 12/10 22:11 · Khác — “ấn câu này chọn câu khác”</div></div>
+  <div class="de">Tìm $x$ biết : $\dfrac{3}{5} - (x + 0,4) = 2,1$</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class="key"><b>A.</b> $-\dfrac{19}{10}$ <span class="tag k">key lúc làm</span></li><li class=""><b>B.</b> $\dfrac{31}{10}$</li><li class=""><b>C.</b> $-\dfrac{11}{10}$ <span class="tag c">1 em báo chọn</span></li><li class=""><b>D.</b> $\dfrac{7}{20}$</li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">$x + 0,4 = \dfrac{3}{5} - 2,1$<br>$x + 0,4 = 0,6 - 2,1$<br>$x + 0,4 = -1,5$<br>$x = -1,5 - 0,4$<br>$x = -1,9$</div><div class="muted">Đáp số kho: -1.9</div></details>
+  <div class="ket"><b>Kết luận:</b> Câu đúng (−19/10). Ghi chú "ấn câu này chọn câu khác" — chuyển sang lỗi app</div>
+  
+</section>
+<section class="card loi">
+  <header><code>T108010402004</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Hồ Hồng Ngân (HS0407, K8)</b> · 12/10 20:15 · Đáp án sai</div></div>
+  <div class="de">Tính: $(8x^4y^2 - 10x^2y^3 + 4x^3y^4) : 2x^2y$</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class="key"><b>A.</b> $2xy^3 + 4x^2y - 5y^2$ <span class="tag k">key lúc làm</span></li><li class=""><b>B.</b> $4x^3y^4 - 10x^2y^3 + 4x^2y$ <span class="tag c">1 em báo chọn</span></li><li class=""><b>C.</b> $2x^5y^5 + 4x^6y^3 - 5x^4y^4$</li><li class=""><b>D.</b> $4xy^3 + 8x^2y - 10y^2$</li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">$(8x^4y^2 - 10x^2y^3 + 4x^3y^4) : 2x^2y$</div><div class="muted">Đáp số kho: $4x^2y - 5y^2 + 2xy^3$</div></details>
+  <div class="ket"><b>Kết luận:</b> Đáp án đúng; lời giải trống (chỉ chép lại đề) — viết lời giải</div>
+  <div class="fix"><div class="lbl">Câu gốc — sửa loi_giai</div><div class="diff"><div><span class="tag o">cũ</span> $(8x^4y^2 - 10x^2y^3 + 4x^3y^4) : 2x^2y$</div><div><span class="tag n">mới</span> $(8x^4y^2 - 10x^2y^3 + 4x^3y^4) : 2x^2y$<br>$= 8x^4y^2 : 2x^2y - 10x^2y^3 : 2x^2y + 4x^3y^4 : 2x^2y$<br>$= 4x^2y - 5y^2 + 2xy^3$</div></div></div>
+</section>
+<section class="card loi">
+  <header><code>T108010402015</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Lê Đình Huy (HS0584, K8)</b> · 12/10 14:40 · Thiếu dữ kiện</div></div>
+  <div class="de">Tính: $(10x^6y^4 + 5x^5y^5 - 15x^4y^6) : 5x^4y^3$</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class="key"><b>A.</b> $xy^2 + 2x^2y - 3y^3$ <span class="tag k">key lúc làm</span></li><li class=""><b>B.</b> $-15x^4y^6 + 5x^5y^5 + 2x^2y$</li><li class=""><b>C.</b> $2x^10y^7 - 3x^8y^9 + x^9y^8$ <span class="tag c">1 em báo chọn</span></li><li class=""><b>D.</b> $5xy^2 + 10x^2y - 15y^3$</li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">$(10x^6y^4 + 5x^5y^5 - 15x^4y^6) : 5x^4y^3$</div><div class="muted">Đáp số kho: $2x^2y + xy^2 - 3y^3$</div></details>
+  <div class="ket"><b>Kết luận:</b> Đáp án đúng; phương án C hỏng công thức x^10 — sửa; viết lời giải</div>
+  <div class="fix"><div class="lbl">Câu gốc — sửa loi_giai</div><div class="diff"><div><span class="tag o">cũ</span> $(10x^6y^4 + 5x^5y^5 - 15x^4y^6) : 5x^4y^3$</div><div><span class="tag n">mới</span> $(10x^6y^4 + 5x^5y^5 - 15x^4y^6) : 5x^4y^3$<br>$= 10x^6y^4 : 5x^4y^3 + 5x^5y^5 : 5x^4y^3 - 15x^4y^6 : 5x^4y^3$<br>$= 2x^2y + xy^2 - 3y^3$</div></div></div><div class="fix"><div class="lbl">Form trắc nghiệm — mới (đúng: A)</div><ol class="opts"><li class="key"><b>A.</b> $xy^2 + 2x^2y - 3y^3$</li><li class=""><b>B.</b> $-15x^4y^6 + 5x^5y^5 + 2x^2y$</li><li class=""><b>C.</b> $2x^{10}y^7 - 3x^8y^9 + x^9y^8$</li><li class=""><b>D.</b> $5xy^2 + 10x^2y - 15y^3$</li></ol></div>
+</section>
+<section class="card loi">
+  <header><code>T108010402019</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Đỗ Quỳnh Anh (HS0571, K8)</b> · 11/10 16:04 · Khác — “Không có đáp án đúng”</div></div>
+  <div class="de">Tính: $(18x^5y^4 + 9x^4y^5 - 3x^3y^6) : 3x^3y^3$</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class="key"><b>A.</b> $3xy^2 + 6x^2y - y^3$ <span class="tag k">key lúc làm</span> <span class="tag c">1 em báo chọn</span></li><li class=""><b>B.</b> $-3x^3y^6 + 9x^4y^5 + 6x^2y$</li><li class=""><b>C.</b> $-x^6y^9 + 3x^7y^8 + 6x^8y^7$</li><li class=""><b>D.</b> $4xy^2 + 6x^2y - y^3$</li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">$(18x^5y^4 + 9x^4y^5 - 3x^3y^6) : 3x^3y^3$</div><div class="muted">Đáp số kho: $6x^2y + 3xy^2 - y^3$</div></details>
+  <div class="ket"><b>Kết luận:</b> Đáp án đúng (A); viết lời giải</div>
+  <div class="fix"><div class="lbl">Câu gốc — sửa loi_giai</div><div class="diff"><div><span class="tag o">cũ</span> $(18x^5y^4 + 9x^4y^5 - 3x^3y^6) : 3x^3y^3$</div><div><span class="tag n">mới</span> $(18x^5y^4 + 9x^4y^5 - 3x^3y^6) : 3x^3y^3$<br>$= 18x^5y^4 : 3x^3y^3 + 9x^4y^5 : 3x^3y^3 - 3x^3y^6 : 3x^3y^3$<br>$= 6x^2y + 3xy^2 - y^3$</div></div></div>
+</section>
+<section class="card loi">
+  <header><code>T108010403018</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Lê Đình Huy (HS0584, K8)</b> · 12/10 15:03 · Đáp án sai</div></div>
+  <div class="de">Tính : $x^3 + 6x^2 + 11x + 12 : (x + 4)$</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class="key"><b>A.</b> $x^2 + 2x + 3 dư 0$ <span class="tag k">key lúc làm</span></li><li class=""><b>B.</b> $x^2 dư 2x^2 + 11x + 12$</li><li class=""><b>C.</b> $x^2 + 10x + 51 dư 216$</li><li class=""><b>D.</b> $2x^2 + 2x + 3 dư 0$ <span class="tag c">1 em báo chọn</span></li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">$x^3 + 6x^2 + 11x + 12 : (x + 4) = x^2 + 2x + 3$ dư $0$</div><div class="muted">Đáp số kho: $x^2 + 2x + 3$ dư $0$</div></details>
+  <div class="ket"><b>Kết luận:</b> Đề thiếu ngoặc; chữ "dư" nằm trong công thức nên dính chữ — sửa đề + phương án</div>
+  <div class="fix"><div class="lbl">Câu gốc — sửa noi_dung, loi_giai</div><div class="diff"><div><span class="tag o">cũ</span> Tính : $x^3 + 6x^2 + 11x + 12 : (x + 4)$</div><div><span class="tag n">mới</span> Tính: $(x^3 + 6x^2 + 11x + 12) : (x + 4)$</div></div><div class="diff"><div><span class="tag o">cũ</span> $x^3 + 6x^2 + 11x + 12 : (x + 4) = x^2 + 2x + 3$ dư $0$</div><div><span class="tag n">mới</span> $(x^3 + 6x^2 + 11x + 12) : (x + 4) = x^2 + 2x + 3$ dư $0$</div></div></div><div class="fix"><div class="lbl">Form trắc nghiệm — mới (đúng: A)</div><ol class="opts"><li class="key"><b>A.</b> $x^2 + 2x + 3$ dư $0$</li><li class=""><b>B.</b> $x^2$ dư $2x^2 + 11x + 12$</li><li class=""><b>C.</b> $x^2 + 10x + 51$ dư $216$</li><li class=""><b>D.</b> $2x^2 + 2x + 3$ dư $0$</li></ol></div>
+</section>
+<section class="card loi">
+  <header><code>T108020501043</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Phạm Gia Linh (HS0522, K8)</b> · 10/10 22:21 · Công thức lỗi</div></div>
+  <div class="de">Vídụ: .............................= $(x+6)(...............)$</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $x^2 + 6x + 36$ <span class="tag c">1 em báo chọn</span></li><li class=""><b>B.</b> $x^2 - 6x + 6$</li><li class=""><b>C.</b> $x^2 - 7x + 36$</li><li class="key"><b>D.</b> $x^2 - 6x + 36$ <span class="tag k">key lúc làm</span></li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">$x^3+216=(x+6)(x^2-6x+36)$</div><div class="muted">Đáp số kho: $x^2-6x+36$</div></details>
+  <div class="ket"><b>Kết luận:</b> Đề mất vế trái (chỉ còn chấm chấm) — viết lại đề x³ + 216 = (x + 6)(…)</div>
+  <div class="fix"><div class="lbl">Câu gốc — sửa noi_dung</div><div class="diff"><div><span class="tag o">cũ</span> Vídụ: .............................= $(x+6)(...............)$</div><div><span class="tag n">mới</span> Điền biểu thức thích hợp vào chỗ chấm: $x^3 + 216 = (x+6)(\ldots)$</div></div></div>
+</section>
+<section class="card loi">
+  <header><code>T110030201019</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Vũ Ngọc Bình (HS0159, K10)</b> · 17/10 10:06 · Đáp án sai</div></div>
+  <div class="de">Tam giác $ABC$ với $BC=a, CA=b, AB=c$. Khẳng định nào sau đây đúng?</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $\dfrac{c}{\sin C}=\dfrac{b}{\sin B}=\dfrac{a}{\sin A}$ <span class="tag c">1 em báo chọn</span></li><li class=""><b>B.</b> $\dfrac{a}{\sin A}=\dfrac{b}{\sin B}=\dfrac{c}{\sin C}=R$</li><li class="key"><b>C.</b> $\dfrac{a}{\sin A}=\dfrac{b}{\sin B}=\dfrac{c}{\sin C}$ <span class="tag k">key lúc làm</span></li><li class=""><b>D.</b> $\dfrac{b}{\sin A}=\dfrac{a}{\sin B}$</li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">Theo định lí sin trong tam giác $ABC$, với $R$ là bán kính đường tròn ngoại tiếp tam giác, ta có $\dfrac{a}{\sin A}=\dfrac{b}{\sin B}=\dfrac{c}{\sin C}=2R$.<br>Do đó, khẳng định đúng là $\dfrac{a}{\sin A}=\dfrac{b}{\sin B}=\dfrac{c}{\sin C}$.</div><div class="muted">Đáp số kho: C</div></details>
+  <div class="ket"><b>Kết luận:</b> Có 2 phương án đúng (A và C chỉ đổi thứ tự) — thay phương án A</div>
+  <div class="fix"><div class="lbl">Câu gốc — sửa lua_chon</div><div class="diff"><div><span class="tag o">cũ</span> ["$\\dfrac{c}{\\sin C}=\\dfrac{b}{\\sin B}=\\dfrac{a}{\\sin A}$","$\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}=R$","$\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}$","$\\dfrac{b}{\\sin A}=\\dfrac{a}{\\sin B}$"]</div><div><span class="tag n">mới</span> ["$\\dfrac{a}{\\sin B}=\\dfrac{b}{\\sin C}=\\dfrac{c}{\\sin A}$","$\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}=R$","$\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}$","$\\dfrac{b}{\\sin A}=\\dfrac{a}{\\sin B}$"]</div></div></div>
+</section>
+<section class="card loi">
+  <header><code>T110030201029</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Nguyễn Đức Thành (HS0188, K10)</b> · 16/10 18:19 · Đáp án sai</div></div>
+  <div class="de">Cho tam giác $ABC$. Khẳng định nào sau đây sai?</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $BC^2 = AB^2 + AC^2 - 2AB \cdot AC \cdot \cos A$</li><li class=""><b>B.</b> $\dfrac{AB}{\sin C} = \dfrac{AC}{\sin B}$</li><li class="key"><b>C.</b> $\dfrac{BC}{\sin A} = \dfrac{AB}{\sin C}$ <span class="tag k">key lúc làm</span></li><li class=""><b>D.</b> $AB^2 = BC^2 + CA^2 - 2BC \cdot CA \cdot \cos B$ <span class="tag c">1 em báo chọn</span></li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">Theo định lí côsin trong tam giác $ABC$, ta có:<br>$AB^2 = BC^2 + CA^2 - 2BC \cdot CA \cdot \cos C$.<br>Do đó, hệ thức $AB^2 = BC^2 + CA^2 - 2BC \cdot CA \cdot \cos B$ là sai.<br>Theo định lí sin, ta có $\dfrac{BC}{\sin A} = \dfrac{AC}{\sin B} = \dfrac{AB}{\sin C} = 2R$ nên các khẳng định ở các phương án khác đều đúng.</div><div class="muted">Đáp số kho: D</div></details>
+  <div class="ket"><b>Kết luận:</b> Key cũ C sai (đã sửa kho 16/10) — chấm lại bài theo key D</div>
+  <div class="cham">🔁 Chấm lại: C→D: 9 bài, sai→đúng 7, đúng→sai 0 · C→D: 11 bài, sai→đúng 6, đúng→sai 2 · C→D: 11 bài, sai→đúng 8, đúng→sai 1</div>
+</section>
+<section class="card ok">
+  <header><code>T110030201031</code> <span class="badge">Không lỗi</span></header>
+  <div class="bao"><div>📣 <b>Mai Thanh Huyền (HS0580, K10)</b> · 12/10 20:49 · Đáp án sai — “có 2 đáp án”</div></div>
+  <div class="de">Cho tam giác $ABC$ với $AB = c, AC = b, BC = a$. Khẳng định nào sau đây là đúng?</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $a^2 = b^2 + c^2$</li><li class=""><b>B.</b> $\cos B = \dfrac{a^2+c^2-b^2}{2ab}$ <span class="tag c">1 em báo chọn</span></li><li class=""><b>C.</b> $a^2 = b^2 + c^2 - c \cdot b \cdot \cos A$</li><li class="key"><b>D.</b> $\cos C = \dfrac{a^2 + b^2 - c^2}{2ab}$ <span class="tag k">key lúc làm</span></li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">Theo định lí côsin trong tam giác $ABC$, ta có<br>$c^2 = a^2 + b^2 - 2ab \cos C \Leftrightarrow \cos C = \dfrac{a^2 + b^2 - c^2}{2ab}$.<br>Vậy khẳng định đúng là $\cos C = \dfrac{a^2 + b^2 - c^2}{2ab}$</div><div class="muted">Đáp số kho: D</div></details>
+  <div class="ket"><b>Kết luận:</b> Chỉ D đúng (B sai mẫu 2ab, C thiếu hệ số 2)</div>
+  
+</section>
+<section class="card loi">
+  <header><code>T110030201032</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Lê Trọng Duy (HS0404, K10)</b> · 12/10 21:13 · Thiếu dữ kiện</div></div>
+  <div class="de">Trong tam giác $ABC$ có $B = 120^\circ$ thì đẳng thức nào sau đây đúng?</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $b^2 = a^2 + c^2 + ac \cdot 2$</li><li class=""><b>B.</b> $b^2 = a^2 + c^2 - 3ac$</li><li class="key"><b>C.</b> $b^2 = a^2 + c^2 - ac$ <span class="tag k">key lúc làm</span></li><li class=""><b>D.</b> $b^2 = a^2 + c^2 + 3ac$ <span class="tag c">1 em báo chọn</span></li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">Theo định lí côsin trong tam giác $ABC$, ta có<br>$b^2 = a^2+c^2-2ac \cos B$.<br>Vì $B = 120^\circ$ nên $\cos B = \cos 120^\circ = -\dfrac{1}{2}$.<br>Thay vào hệ thức trên, ta được<br>$b^2= a^2+c^2-2ac\left(-\dfrac{1}{2}\right)= a^2+c^2+ac$.<br>Vậy đẳng thức đúng là $b^2 = a^2 + c^2 + ac$ .</div><div class="muted">Đáp số kho: C</div></details>
+  <div class="ket"><b>Kết luận:</b> Không phương án nào đúng (đúng là b² = a² + c² + ac) — sửa phương án C</div>
+  <div class="fix"><div class="lbl">Câu gốc — sửa lua_chon</div><div class="diff"><div><span class="tag o">cũ</span> ["$b^2 = a^2 + c^2 + ac \\cdot 2$","$b^2 = a^2 + c^2 - 3ac$","$b^2 = a^2 + c^2 - ac$","$b^2 = a^2 + c^2 + 3ac$"]</div><div><span class="tag n">mới</span> ["$b^2 = a^2 + c^2 + ac \\cdot 2$","$b^2 = a^2 + c^2 - 3ac$","$b^2 = a^2 + c^2 + ac$","$b^2 = a^2 + c^2 + 3ac$"]</div></div></div>
+</section>
+<section class="card loi">
+  <header><code>T110030203035</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Lê Trọng Duy (HS0404, K10)</b> · 16/10 18:41 · Đáp án sai</div><div>📣 <b>Mai Thanh Huyền (HS0580, K10)</b> · 16/10 18:46 · Đáp án sai</div></div>
+  <div class="de">Tam giác $ABC$ có $AB = 3$, $AC = 3\sqrt{2}$ và $\widehat{B} = 45^{\circ}$. Số đo góc $\widehat{C}$ bằng</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $60^{\circ}$</li><li class=""><b>B.</b> $30^{\circ}$ <span class="tag c">2 em báo chọn</span></li><li class=""><b>C.</b> $150^{\circ}$</li><li class="key"><b>D.</b> $45^{\circ}$ <span class="tag k">key lúc làm</span></li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">Áp dụng định lí sin trong tam giác $ABC$, ta có $\dfrac{AC}{\sin B} = \dfrac{AB}{\sin C} \Rightarrow \sin C = \dfrac{AB \cdot \sin B}{AC}$.<br>Thay số: $\sin C = \dfrac{3 \cdot \sin 45^{\circ}}{3\sqrt{2}} = \dfrac{3 \cdot \dfrac{\sqrt{2}}{2}}{3\sqrt{2}} = \dfrac{1}{2}$.<br>Vì $AB &lt; AC$ ($3 &lt; 3\sqrt{2}$) nên $\widehat{C} &lt; \widehat{B} = 45^{\circ}$, suy ra góc $C$ nhọn.<br>Do đó $\widehat{C} = 30^{\circ}$.<br>Chọn B.</div><div class="muted">Đáp số kho: D</div></details>
+  <div class="ket"><b>Kết luận:</b> Đáp án kho D sai, đúng là B (30°) — sửa + chấm lại</div>
+  <div class="fix"><div class="lbl">Câu gốc — sửa dap_an</div><div class="diff"><div><span class="tag o">cũ</span> D</div><div><span class="tag n">mới</span> B</div></div></div><div class="cham">🔁 Chấm lại: D→B: 9 bài, sai→đúng 6, đúng→sai 2 · D→B: 11 bài, sai→đúng 10, đúng→sai 1</div>
+</section>
+<section class="card cho">
+  <header><code>T111040201019</code> <span class="badge">Chờ Thùy duyệt form</span></header>
+  <div class="bao"><div>📣 <b>Nguyễn Văn Đức Huy (HS0059, K11)</b> · 14/10 20:50 · Khác — “Đáp án ngu”</div><div>📣 <b>Doãn Hữu Hưng (HS0280, K11)</b> · 14/10 20:53 · Khác — “đáp án ngu”</div></div>
+  <div class="de">Giải phương trình: $\sin \left(2x + \dfrac{\pi}{3}\right) + \cos \left(3x - \dfrac{\pi}{6}\right) = 0$</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><p class="muted">Trả lời ngắn — key: <code>"x = \\pi + k2\\pi; x = \\dfrac{4\\pi}{15} + \\dfrac{k2\\pi}{5}"</code>; em gõ: <code>"H"</code>, <code>"x = \\pi + k2\\pi; x = \\dfrac{4\\pi}{15} + \\dfrac{k2\\pi}{5"</code></p>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">Phương trình đã cho tương đương với:<br>$\sin \left(2x + \dfrac{\pi}{3}\right) = -\cos \left(3x - \dfrac{\pi}{6}\right)$<br>$\Leftrightarrow \sin \left(2x + \dfrac{\pi}{3}\right) = \sin \left(3x - \dfrac{2\pi}{3}\right)$<br>$\Leftrightarrow \left[\begin{array}{l}2x + \dfrac{\pi}{3} = 3x - \dfrac{2\pi}{3} + k2\pi\\2x + \dfrac{\pi}{3} = \pi - \left(3x - \dfrac{2\pi}{3}\right) + k2\pi\end{array}\right.$ $(k \in \mathbb{Z})$<br>$\Leftrightarrow \left[\begin{array}{l}-x = -\pi + k2\pi\\5x = \dfrac{4\pi}{3} + k2\pi\end{array}\right.$<br>$\Leftrightarrow \left[\begin{array}{l}x = \pi + k2\pi\\x = \dfrac{4\pi}{15} + \dfrac{k2\pi}{5}\end{array}\right.$<br>Vậy phương trình có các họ nghiệm là $x = \pi + k2\pi$ và $x = \dfrac{4\pi}{15} + \dfrac{k2\pi}{5}$ $(k \in \mathbb{Z})$.</div><div class="muted">Đáp số kho: x = \pi + k2\pi; x = \dfrac{4\pi}{15} + \dfrac{k2\pi}{5}</div></details>
+  <div class="ket"><b>Kết luận:</b> Form trắc nghiệm đúng (đã kiểm phương án D) nhưng CHƯA duyệt ⇒ app cho trả lời ngắn, em phải gõ LaTeX. Thùy duyệt form là xong.</div>
+  
+</section>
+<section class="card loi">
+  <header><code>T111060204042</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Vũ Khắc Triệu (HS0055, K11)</b> · 16/10 18:39 · Thiếu dữ kiện</div><div>📣 <b>Nguyễn Văn Đức Huy (HS0059, K11)</b> · 16/10 19:14 · Đáp án sai — “lời giải bị đơ”</div></div>
+  <div class="de">Cho cấp số cộng $(u_n)$ thỏa mãn $\begin{cases}3u_2+S_3=25\\ S_6+2u_5=54\end{cases}$. Tìm số hạng đầu $u_1$ và công sai $d$.</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $u_1 = 2, d = 1$ <span class="tag c">2 em báo chọn</span></li><li class=""><b>B.</b>  $u_1 = -1, d = 2$</li><li class=""><b>C.</b>  $u_1 = 1, d = -2$</li><li class="key"><b>D.</b>  $u_1 = 1, d = 2$ <span class="tag k">key lúc làm</span></li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">Sử dụng công thức của cấp số cộng, ta có hệ:\n$$ \begin{cases} 3(u_1 + d) + \dfrac{3}{2}(2u_1 + 2d) = 25 \\ \dfrac{6}{2}(2u_1 + 5d) + 2(u_1 + 4d) = 54 \end{cases} \Leftrightarrow \begin{cases} 7u_1 + 9d = 25 \\ 8u_1 + 23d = 54 \end{cases} \Leftrightarrow \begin{cases} u_1 = 1 \\ d = 2 \end{cases} $$\nChọn D.</div><div class="muted">Đáp số kho: D</div></details>
+  <div class="ket"><b>Kết luận:</b> Đề mâu thuẫn đáp án (với S_3 không phương án nào đúng; lời giải tính ra 7u₁+9d=25 ứng với S_4) — sửa đề thành S_4, viết lại lời giải (đang lỗi \\n)</div>
+  <div class="fix"><div class="lbl">Câu gốc — sửa noi_dung, lua_chon, loi_giai</div><div class="diff"><div><span class="tag o">cũ</span> Cho cấp số cộng $(u_n)$ thỏa mãn $\begin{cases}3u_2+S_3=25\\ S_6+2u_5=54\end{cases}$. Tìm số hạng đầu $u_1$ và công sai $d$.</div><div><span class="tag n">mới</span> Cho cấp số cộng $(u_n)$ thỏa mãn $\begin{cases}3u_2+S_4=25\\ S_6+2u_5=54\end{cases}$. Tìm số hạng đầu $u_1$ và công sai $d$.</div></div><div class="diff"><div><span class="tag o">cũ</span> ["$u_1 = 2, d = 1$"," $u_1 = -1, d = 2$"," $u_1 = 1, d = -2$"," $u_1 = 1, d = 2$"]</div><div><span class="tag n">mới</span> ["$u_1 = 2, d = 1$","$u_1 = -1, d = 2$","$u_1 = 1, d = -2$","$u_1 = 1, d = 2$"]</div></div><div class="diff"><div><span class="tag o">cũ</span> Sử dụng công thức của cấp số cộng, ta có hệ:\n$$ \begin{cases} 3(u_1 + d) + \dfrac{3}{2}(2u_1 + 2d) = 25 \\ \dfrac{6}{2}(2u_1 + 5d) + 2(u_1 + 4d) = 54 \end{cases} \Leftrightarrow \begin{cases} 7u_1 + 9d = 25 \\ 8u_1 + 23d = 54 \end{cases} \Leftrightarrow \begin{cases} u_1 = 1 \\ d = 2 \end{cases} $$\nChọn D.</div><div><span class="tag n">mới</span> Ta có $u_2 = u_1 + d$, $u_5 = u_1 + 4d$, $S_4 = 2(2u_1 + 3d)$, $S_6 = 3(2u_1 + 5d)$.<br>Hệ đã cho tương đương $\begin{cases} 3(u_1 + d) + 2(2u_1 + 3d) = 25 \\ 3(2u_1 + 5d) + 2(u_1 + 4d) = 54 \end{cases} \Leftrightarrow \begin{cases} 7u_1 + 9d = 25 \\ 8u_1 + 23d = 54 \end{cases} \Leftrightarrow \begin{cases} u_1 = 1 \\ d = 2 \end{cases}$<br>Chọn D.</div></div></div>
+</section>
+<section class="card ok">
+  <header><code>T14T180201057</code> <span class="badge">Không lỗi</span></header>
+  <div class="bao"><div>📣 <b>Trần Ngọc Diệp (HS0496, K4T)</b> · 11/10 13:19 · Khác — “Sao lại có phân số hả thầy, đã học đến đâu ạ?”</div></div>
+  <div class="de">Tính $\dfrac{10}{24} \times \dfrac{36}{15} \times \dfrac{20}{25}$</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $\dfrac{3}{4}$</li><li class=""><b>B.</b> $\dfrac{1}{2}$</li><li class=""><b>C.</b> $\dfrac{2}{3}$</li><li class="key"><b>D.</b> $\dfrac{4}{5}$ <span class="tag k">key lúc làm</span></li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">Nhận xét : Các cặp số có thể rút gọn là $10$ và $15$ (cùng chia hết cho $5$), $36$ và $24$ (cùng chia hết cho $12$), $20$ và $25$ (cùng chia hết cho $5$).<br>Ta có:<br>$\dfrac{10}{24} \times \dfrac{36}{15} \times \dfrac{20}{25} = \dfrac{10 \times 36 \times 20}{24 \times 15 \times 25}$<br>Phân tích và rút gọn:<br>$10$ (chia cho $5$) được $2$; $15$ (chia cho $5$) được $3$.<br>$36$ (chia cho $12$) được $3$; $24$ (chia cho $12$) được $2$.<br>$20$ (chia cho $5$) được $4$; $25$ (chia cho $5$) được $5$.<br>Vậy biểu thức trở thành:<br>$= \dfrac{2 \times 3 \times 4}{2 \times 3 \times 5}$<br>$= \dfrac{24}{30} = \dfrac{4}{5}$.<br>Vậy đáp án đúng là D.</div><div class="muted">Đáp số kho: D</div></details>
+  <div class="ket"><b>Kết luận:</b> Câu đúng (4/5). Em hỏi vì sao 4T có phân số — câu hỏi chương trình, chuyển Thùy</div>
+  
+</section>
+<section class="card ok">
+  <header><code>T15T010101052</code> <span class="badge">Không lỗi</span></header>
+  <div class="bao"><div>📣 <b>Đào Đức Minh Hiếu (HS0645, K5T)</b> · 17/10 21:12 · Khác — “ko có đáp án đúng”</div></div>
+  <div class="de">Trong một cửa hàng văn phòng phẩm có bút xanh và bút đỏ. Biết rằng $\dfrac{5}{6}$ số bút xanh bằng $\dfrac{10}{11}$ số bút đỏ. Biết rằng số bút xanh nhiều hơn số bút đỏ là 23 cây. Tính số bút xanh và bút đỏ ?</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $552;253$</li><li class=""><b>B.</b> $277;253$ <span class="tag c">1 em báo chọn</span></li><li class=""><b>C.</b> $275;253$</li><li class="key"><b>D.</b> $276;253$ <span class="tag k">key lúc làm</span></li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">Đổi $\dfrac{5}{6} = \dfrac{10}{12}$<br>Như vậy, $\dfrac{10}{12}$ số bút xanh bằng $\dfrac{10}{11}$ số bút đỏ. Vậy ta coi số bút xanh là 12 phần thì số bút đỏ sẽ là 11 phần.<br>Giá trị 1 phần sẽ là : 23 : (12 – 11) = 23 (cây)<br>Số bút xanh là : 23 \times 12 = 276 (cây)<br>Số bút đỏ là : 23 \times 11 = 253 (cây)</div><div class="muted">Đáp số kho: 276, 253</div></details>
+  <div class="ket"><b>Kết luận:</b> Câu đúng (276; 253) — phương án D</div>
+  
+</section>
+<section class="card ok">
+  <header><code>T15T010103023</code> <span class="badge">Không lỗi</span></header>
+  <div class="bao"><div>📣 <b>Trần Nguyễn Khánh An (HS0608, K5T)</b> · 13/10 22:28 · Khác — “chia ra số thập phân”</div></div>
+  <div class="de">Hiện tại tổng số tuổi của mẹ và con là 44 tuổi. 3 năm nữa tuổi mẹ gấp 4 lần tuổi con. Hỏi hiện tại mẹ bao nhiêu tuổi ?</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class="key"><b>A.</b> $37$ <span class="tag k">key lúc làm</span></li><li class=""><b>B.</b> $74$</li><li class=""><b>C.</b> $38$</li><li class=""><b>D.</b> $35$</li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">3 năm nữa thì tổng số tuổi của mẹ và con là : $44 + 3 + 3 = 50$ (tuổi).<br>Coi tuổi con 3 năm nữa là 1 phần thì tuổi mẹ lúc đó là 4 phần.<br>Giá trị 1 phần là : $50 : (1 + 4) = 10$ (tuổi)<br>Tuổi mẹ 3 năm nữa là : $10 \times 4 = 40$ (tuổi)<br>Tuổi mẹ hiện tại là : $40 - 3 = 37$ (tuổi)</div><div class="muted">Đáp số kho: 37</div></details>
+  <div class="ket"><b>Kết luận:</b> Câu đúng (37)</div>
+  
+</section>
+<section class="card ok">
+  <header><code>T15T010103038</code> <span class="badge">Không lỗi</span></header>
+  <div class="bao"><div>📣 <b>Hồ Hà Chi (HS0642, K5T)</b> · 16/10 22:19 · Thiếu dữ kiện</div></div>
+  <div class="de">Hiện tại tổng số tuổi của chú và cháu là 50 tuổi. 3 năm nữa tuổi chú gấp 3 lần tuổi cháu. Hỏi hiện tại chú bao nhiêu tuổi ?</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $78$</li><li class=""><b>B.</b> $40$ <span class="tag c">1 em báo chọn</span></li><li class=""><b>C.</b> $38$</li><li class="key"><b>D.</b> $39$ <span class="tag k">key lúc làm</span></li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">3 năm nữa thì tổng số tuổi của chú và cháu là : $50 + 3 + 3 = 56$ (tuổi).<br>Coi tuổi cháu 3 năm nữa là 1 phần thì tuổi chú lúc đó là 3 phần.<br>Giá trị 1 phần là : $56 : (1 + 3) = 14$ (tuổi).<br>Tuổi chú 3 năm nữa là : $14 \times 3 = 42$ (tuổi).<br>Tuổi chú hiện tại là : $42 - 3 = 39$ (tuổi).</div><div class="muted">Đáp số kho: 39</div></details>
+  <div class="ket"><b>Kết luận:</b> Câu đúng (39)</div>
+  
+</section>
+<section class="card ok">
+  <header><code>T15T010202005</code> <span class="badge">Không lỗi</span></header>
+  <div class="bao"><div>📣 <b>Vũ Phan Gia Bảo (HS0655, K5T)</b> · 10/10 22:25 · Khác — “ko chia hết”</div></div>
+  <div class="de">Việt, Lộc và Sơn cùng sưu tập miếng dán. Biết rằng $\dfrac{4}{7}$ số miếng dán của Việt bằng $\dfrac{2}{3}$ số miếng dán của Lộc và bằng $\dfrac{1}{2}$ số miếng dán của Sơn. Biết rằng cả 3 bạn có 147 miếng dán. Hỏi mỗi bạn có bao nhiêu miếng dán ?</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $98;42;56$</li><li class="key"><b>B.</b> $49;42;56$ <span class="tag k">key lúc làm</span> <span class="tag c">1 em báo chọn</span></li><li class=""><b>C.</b> $48;42;56$</li><li class=""><b>D.</b> $49;42;57$</li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">Đổi $\dfrac{4}{7} = \dfrac{4}{7}$; $\dfrac{2}{3} = \dfrac{4}{6}$; $\dfrac{1}{2} = \dfrac{4}{8}$<br>Suy ra $\dfrac{4}{7}$ số miếng dán của Việt bằng $\dfrac{4}{6}$ số miếng dán của Lộc và bằng $\dfrac{4}{8}$ số miếng dán của Sơn<br>Coi số miếng dán của Việt là 7 phần thì của Lộc là 6 phần và của Sơn là 8 phần.<br>Tổng số phần của cả 3 bạn là : $7 + 6 + 8 = 21$ (phần)<br>Cả 3 bạn có 147 miếng dán ứng với 21 phần.<br>Vậy số miếng dán ứng với 1 phần là : $147 : 21 = 7$ (miếng)<br>Số miếng dán của Việt là : $7 \times 7 = 49$ (miếng)<br>Số miếng dán của Lộc là : $7 \times 6 = 42$ (miếng)<br>Số miếng dán của Sơn là : $7 \times 8 = 56$ (miếng)</div><div class="muted">Đáp số kho: 49; 42; 56</div></details>
+  <div class="ket"><b>Kết luận:</b> Câu đúng (49; 42; 56)</div>
+  
+</section>
+<section class="card loi">
+  <header><code>T306010101038</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Nguyễn Quyền Minh Trí (HS0333, K6)</b> · 11/10 16:48 · Thiếu dữ kiện — “Thiếu hình”</div></div>
+  <div class="de">a)Tính diện tích mảnh vườn.<br>b)Tính diện tích phần đất trồng hoa.<br>c)Bà Lan thuê người về chăm sóc cho mảnh vườn cùng mình trong một năm. Biết mỗi mét vuông trồng hoa bà phải trả công 200 000 đ, mỗi mét vuông trồng cỏ bà phải trả công 100 000 đ.<br>Tính số tiền mà bà Lan phải trả công cho người chăm sóc cả mảnh vườn của mình trong một năm ?</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><p class="muted">Trả lời ngắn — key: <code>"a) 100 b)25 c)12500000"</code>; em gõ: <code>"67"</code></p>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">a) Diện tích mảnh vườn hình chữ nhật là:<br>$20\times5=100\mathrm{m^2}$.<br>Vậy diện tích mảnh vườn là $100\mathrm{m^2}$.<br>b) Phần đất trồng hoa là hình vuông có cạnh bằng chiều rộng mảnh vườn, tức là $5\mathrm{m}$.<br>Diện tích phần đất trồng hoa là:<br>$5\times5=25\mathrm{m^2}$.<br>Vậy diện tích phần đất trồng hoa là $25\mathrm{m^2}$.<br>c) Diện tích phần đất trồng cỏ là:<br>$100-25=75\mathrm{m^2}$.<br>Tiền công chăm sóc phần trồng hoa là:<br>$25\times200000 = 5000000$ đồng.<br>Tiền công chăm sóc phần trồng cỏ là:<br>$75\times100000 = 7500000$ đồng.<br>Tổng số tiền công bà Lan phải trả là:<br>$5000000+7500000=12500000$ đồng.<br>Vậy bà Lan phải trả 12 500 000 đồng trong một năm.</div><div class="muted">Đáp số kho: a) 100 b)25 c)12500000</div></details>
+  <div class="ket"><b>Kết luận:</b> Đề thiếu dữ kiện (kích thước vườn) — bổ sung từ lời giải</div>
+  <div class="fix"><div class="lbl">Câu gốc — sửa noi_dung</div><div class="diff"><div><span class="tag o">cũ</span> a)Tính diện tích mảnh vườn.<br>b)Tính diện tích phần đất trồng hoa.<br>c)Bà Lan thuê người về chăm sóc cho mảnh vườn cùng mình trong một năm. Biết mỗi mét vuông trồng hoa bà phải trả công 200 000 đ, mỗi mét vuông trồng cỏ bà phải trả công 100 000 đ.<br>Tính số tiền mà bà Lan phải trả công cho người chăm sóc cả mảnh vườn của mình trong một năm ?</div><div><span class="tag n">mới</span> Bà Lan có một mảnh vườn hình chữ nhật chiều dài $20\,\text{m}$, chiều rộng $5\,\text{m}$. Bà dùng một phần đất hình vuông có cạnh bằng chiều rộng mảnh vườn để trồng hoa, phần còn lại trồng cỏ.<br>a)Tính diện tích mảnh vườn.<br>b)Tính diện tích phần đất trồng hoa.<br>c)Bà Lan thuê người về chăm sóc cho mảnh vườn cùng mình trong một năm. Biết mỗi mét vuông trồng hoa bà phải trả công 200 000 đ, mỗi mét vuông trồng cỏ bà phải trả công 100 000 đ.<br>Tính số tiền mà bà Lan phải trả công cho người chăm sóc cả mảnh vườn của mình trong một năm ?</div></div></div>
+</section>
+<section class="card loi">
+  <header><code>T310010102064</code> <span class="badge">CÓ LỖI — đã sửa</span></header>
+  <div class="bao"><div>📣 <b>Vũ Trung Hiếu (HS0733, K10)</b> · 16/10 19:54 · Đáp án sai</div></div>
+  <div class="de">Cho hình bình hành $ABCD$ và $O$ là một điểm bất kỳ. Khẳng định nào sau đây đúng?</div>
+  
+  <div class="lbl">Học sinh đã thấy</div><ol class="opts"><li class=""><b>A.</b> $\vec{OA}-\vec{OB}=\vec{OC}-\vec{OD}$.</li><li class="key"><b>B.</b> $\vec{OB}-\vec{OA}=\vec{OD}-\vec{OC}$. <span class="tag k">key lúc làm</span> <span class="tag c">1 em báo chọn</span></li><li class=""><b>C.</b> $\vec{OA}-\vec{OB}=\vec{OC}+\vec{OD}$.</li><li class=""><b>D.</b> $\vec{OB}-\vec{OA}=\vec{OC}-\vec{OD}$.</li></ol>
+  <details><summary>Lời giải trong kho (cũ)</summary><div class="lg">Ta có khẳng định $\vec{OB}-\vec{OA}=\vec{OC}-\vec{OD}$ đúng vì $\vec{OB}-\vec{OA}=\vec{OC}-\vec{OD} \Leftrightarrow \vec{AB}=\vec{DC}$ (theo tính chất hình bình hành)</div><div class="muted">Đáp số kho: B</div></details>
+  <div class="ket"><b>Kết luận:</b> Đáp án kho B sai, đúng là D (AB = DC) — sửa + chấm lại</div>
+  <div class="fix"><div class="lbl">Câu gốc — sửa dap_an</div><div class="diff"><div><span class="tag o">cũ</span> B</div><div><span class="tag n">mới</span> D</div></div></div><div class="cham">🔁 Chấm lại: B→D: 9 bài, sai→đúng 4, đúng→sai 4</div>
+</section>
+</main><script>document.addEventListener('DOMContentLoaded',()=>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,preProcess:s=>s.replace(/(\d),(?=\d)/g,'$1{,}')}))</script></body></html>

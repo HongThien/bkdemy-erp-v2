@@ -7,8 +7,11 @@ import { ReportCardView, renderCardToUrl } from './ReportCard'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listLop, listHSCuaLop } from '../../lib/nhansu'
 import { getTongQuanHS, type TongQuanHS } from '../../lib/mastery'
-import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, getKhoiRankDiemMT, getLopRankDiemMT, getHeRankDiemMT, listNxPreset, addNxPreset, updateNxPreset, deleteNxPreset, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH, type KhoiRankMT, type LopRankMT, type HeRankMT, type NxTruc, type NxPreset } from '../../lib/report'
+import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, getKhoiRankDiemMT, getLopRankDiemMT, getHeRankDiemMT, getKSDiemThang, type KSThang, listNxPreset, addNxPreset, updateNxPreset, deleteNxPreset, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH, type KhoiRankMT, type LopRankMT, type HeRankMT, type NxTruc, type NxPreset } from '../../lib/report'
 import { tenHienThiDs } from '../../lib/hoten'
+import { ChonKy, BaoCaoKyBody } from './BaoCaoKy'
+import { NutThangNhanXet } from './ThangNhanXet'
+import { congBoLopBcKy, listBcKyTrangThai, chotSoLieuBcKy, laAdminBcKy, nghiLechBcKy, type BcKyTT } from '../../lib/baoCaoKy'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
 const curYM = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` }
@@ -49,21 +52,95 @@ const mucBg = (i: number) => i <= 2 ? 'bg-rose-500' : i === 3 ? 'bg-amber-500' :
 
 type RosterHS = { id: string; ho_ten: string; ma_hs: string | null; anh_url: string | null }
 
+// Nhớ màn khi rời tab (Thùy 07/11 "thoát ra tab khác vào lại không phải chọn lại từ đầu"): màn bị unmount khi đổi tab ⇒ giữ
+// lựa chọn + vị trí cuộn ở module-level (sống tới F5). Lần mount sau dùng lại, KHÔNG xoá lớp/em như khi người dùng tự đổi môn/lớp.
+const NHO_RP: { mon: string; lopId: string | null; hsId: string | null; ym: string; cheDo: 'thang' | 'ky'; kyId: string | null; cuon: number } =
+  { mon: 'Toán', lopId: null, hsId: null, ym: curYM(), cheDo: 'thang', kyId: null, cuon: 0 }
+
 export default function ReportPHScreen() {
-  const [mon, setMon] = useState('Toán')
-  const [lopId, setLopId] = useState<string | null>(null)
+  const [mon, setMon] = useState(NHO_RP.mon)
+  const [lopId, setLopId] = useState<string | null>(NHO_RP.lopId)
   const [lopOpts, setLopOpts] = useState<Opt[]>([])
-  const [hsId, setHsId] = useState<string | null>(null)
+  const [hsId, setHsId] = useState<string | null>(NHO_RP.hsId)
   const [roster, setRoster] = useState<RosterHS[]>([])
-  const [ym, setYm] = useState(curYM())
+  const [ym, setYm] = useState(NHO_RP.ym)
+  // Học kì (spec-bao-cao-ky.md, 04/11): báo cáo khác hẳn tháng — dùng chung chọn Môn → Lớp → HS.
+  const [cheDo, setCheDo] = useState<'thang' | 'ky'>(NHO_RP.cheDo)
+  const [kyId, setKyId] = useState<string | null>(NHO_RP.kyId)
+  useEffect(() => { Object.assign(NHO_RP, { mon, lopId, hsId, ym, cheDo, kyId }) }, [mon, lopId, hsId, ym, cheDo, kyId])
+  // "đổi môn ⇒ xoá lớp", "đổi lớp ⇒ xoá em" chỉ khi giá trị THẬT SỰ đổi so với lần trước — lúc khôi phục (kể cả StrictMode chạy
+  // effect 2 lần) giá trị trùng ⇒ giữ nguyên lựa chọn đã nhớ
+  const monTruoc = useRef(mon), lopTruoc = useRef(lopId)
+  const cuonRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {   // trả vị trí cuộn: chờ nội dung (danh sách + báo cáo) tải đủ cao rồi mới đặt
+    const muc = NHO_RP.cuon
+    if (!muc) return
+    let n = 0
+    const id = setInterval(() => {
+      const el = cuonRef.current; n++
+      if (el && el.scrollHeight - el.clientHeight >= muc - 4) { el.scrollTop = muc; clearInterval(id) }
+      else if (n > 40) clearInterval(id)
+    }, 150)
+    return () => clearInterval(id)
+  }, [])
+  const [ttKy, setTtKy] = useState<Record<string, BcKyTT>>({})
+  const [kyBusy, setKyBusy] = useState(false)
+  // Chốt số liệu kì (Thùy 05/11: snap 1 lần, không tính lại) — chỉ admin; từng em 1 lời gọi (tránh trần thời gian của API)
+  const [laAdmin, setLaAdmin] = useState(false)
+  const [chotTd, setChotTd] = useState<{ xong: number; tong: number; loi: number } | null>(null)
+  const [phienKy, setPhienKy] = useState(0)
+  useEffect(() => { laAdminBcKy().then(setLaAdmin) }, [])
+  // Em có bản chốt nhưng điểm thi đổi SAU lúc chốt (Thùy 06/11, vụ MT tháng 10 sửa muộn) — chỉ báo cho admin (chỉ admin chốt được).
+  const [lech, setLech] = useState<string[]>([])
+  useEffect(() => {
+    setLech([])
+    if (cheDo !== 'ky' || !kyId || !roster.length || !laAdmin) return
+    nghiLechBcKy(roster.map((r) => r.id), mon, kyId).then(setLech).catch(() => setLech([]))
+  }, [cheDo, kyId, roster, mon, laAdmin, phienKy])
+  async function chotSoLieuLop(chiEm?: string[]) {
+    if (!kyId || !roster.length) return
+    const ds = chiEm ? roster.filter((r) => chiEm.includes(r.id)) : roster
+    const lopTen = lopOpts.find((o) => o.id === lopId)?.label ?? ''
+    if (!confirm(chiEm
+      ? `Chốt lại số liệu báo cáo kì cho ${ds.length} em có điểm thi đổi sau lúc chốt (lớp ${lopTen})?
+Số liệu tính lại tới lúc này; bản cũ vẫn lưu trong lịch sử. Báo cáo đã công bố không bị đụng.`
+      : `Chốt số liệu báo cáo kì cho lớp ${lopTen} (${ds.length} em)?
+Số liệu tính lúc này sẽ được giữ cố định, không tính lại nữa. Em đã chốt trước đó sẽ được chốt lại (bản cũ vẫn lưu trong lịch sử).`)) return
+    let loi = 0
+    for (let i = 0; i < ds.length; i++) {
+      setChotTd({ xong: i, tong: ds.length, loi })
+      try { await chotSoLieuBcKy(ds[i].id, mon, kyId) } catch { loi++ }
+    }
+    setChotTd({ xong: ds.length, tong: ds.length, loi })
+    setPhienKy((x) => x + 1)   // em đang mở đọc lại bản vừa chốt
+    setTimeout(() => setChotTd(null), 4000)
+  }
+  useEffect(() => {
+    setTtKy({})
+    if (cheDo !== 'ky' || !kyId || !roster.length) return
+    listBcKyTrangThai(roster.map((r) => r.id), mon, kyId).then(setTtKy).catch(() => setTtKy({}))
+  }, [cheDo, kyId, roster, mon])
+  async function congBoLopKy() {
+    if (!lopId || !kyId) return
+    const lopTen = lopOpts.find((o) => o.id === lopId)?.label ?? ''
+    if (!confirm(`Công bố báo cáo HỌC KÌ cho cả lớp ${lopTen}?\nChỉ em đã nhập đủ điểm dự đoán, sai số và nhận xét; hệ thống chụp lại toàn bộ số liệu lúc này.`)) return
+    setKyBusy(true)
+    try {
+      const r = await congBoLopBcKy(lopId, mon, kyId)
+      setTtKy(await listBcKyTrangThai(roster.map((x) => x.id), mon, kyId))
+      setHsId(null) // em đang mở có thể vừa được công bố — chọn lại để đọc bản đóng băng
+      alert(`Đã công bố ${r.cong_bo} em · bỏ qua ${r.bo_qua} em chưa nhập đủ.`)
+    } catch (e: any) { alert(e?.message ?? String(e)) } finally { setKyBusy(false) }
+  }
 
   useEffect(() => {
-    setLopId(null); setHsId(null)
+    if (monTruoc.current !== mon) { monTruoc.current = mon; setLopId(null); setHsId(null) }
     listLop().then((ls) => setLopOpts(ls.filter((l: any) => l.mon === mon).map((l: any) => ({ id: l.id, label: l.ten_lop, sub: l.khoi ? `K${l.khoi}` : undefined })))).catch(() => setLopOpts([]))
   }, [mon])
   // Đổi lớp → nạp CẢ DANH SÁCH (cột trái, click chọn thẳng — giống "Kết quả học tập"), khỏi phải gõ dropdown.
   useEffect(() => {
-    setHsId(null); setRoster([])
+    if (lopTruoc.current !== lopId) { lopTruoc.current = lopId; setHsId(null) }
+    setRoster([])
     if (!lopId) return
     listHSCuaLop(lopId).then((rows: any[]) => setRoster(rows.map((r) => r.hoc_sinh).filter(Boolean)
       .sort((a: any, b: any) => String(a.ho_ten).localeCompare(String(b.ho_ten), 'vi'))
@@ -87,15 +164,16 @@ export default function ReportPHScreen() {
         const hasContent = !!(bc.nl_band || bc.ket_luan || bc.ket_luan_muc || bc.muc_tieu || bc.thai_do || bc.kien_thuc_ky_nang || bc.muc_kien_thuc || bc.muc_thai_do
           || [bc.cs_thai_do, bc.cs_tap_trung, bc.cs_tiep_thu, bc.cs_tu_duy, bc.cs_ky_nang, bc.cs_van_dung, bc.cs_vuot_kho].some((x) => x != null))
         if (!hasContent) { skipped++; continue }
-        const [rows, tq, khoiRank, lopRank, heRank] = await Promise.all([
+        const [rows, tq, khoiRank, lopRank, heRank, ks] = await Promise.all([
           getReportBuoiHS(h.id, mon, ym),
           getTongQuanHS(h.id, mon, { ym }),
           getKhoiRankDiemMT(h.id, mon, ym),
           getLopRankDiemMT(h.id, lopId, mon, ym),
           getHeRankDiemMT(h.id, mon, ym),
+          getKSDiemThang(h.id, mon, ym).catch(() => null),
         ])
         const missCount = rows.filter((r) => r.btvnTrangThai === 'khong_lam' || r.btvnTrangThai === 'xin_phep').length
-        const url = await renderCardToUrl({ hsName: h.ho_ten, hsImg: h.anh_url, lopTen, mon, ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank }, `${h.id}_${ym}`)
+        const url = await renderCardToUrl({ hsName: h.ho_ten, hsImg: h.anh_url, lopTen, mon, ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank, ks }, `${h.id}_${ym}`)
         await upsertBaoCaoPH(h.id, mon, ym, { cong_bo_at: new Date().toISOString(), anh_bao_cao_url: url })
         published++
       } catch { failed++ }
@@ -108,26 +186,54 @@ export default function ReportPHScreen() {
   const hs = roster.find((r) => r.id === hsId) ?? null
   return (
     <div className="flex h-full min-w-0 flex-col bg-[#fafafb]">
-      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-6 py-2.5">
+      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-3 py-2.5 md:px-6">
         <span className="mr-2 text-sm font-semibold text-slate-900">Report phụ huynh</span>
         {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
         <div className="ml-2 w-44"><SearchSelect value={lopId} onChange={setLopId} options={lopOpts} placeholder="Chọn lớp…" /></div>
+        <div className="ml-2 flex rounded-md bg-slate-100 p-0.5">
+          <button onClick={() => setCheDo('thang')} className={monBtn(cheDo === 'thang')}>Tháng</button>
+          <button onClick={() => setCheDo('ky')} className={monBtn(cheDo === 'ky')}>Học kì</button>
+        </div>
+        {cheDo === 'ky' ? <div className="ml-2 flex items-center gap-1"><ChonKy kyId={kyId} onChange={setKyId} /><NutThangNhanXet /></div> : <>
         <div className="ml-2 flex items-center gap-0.5 rounded-md ring-1 ring-slate-200">
           <button onClick={() => setYm(shiftYM(ym, -1))} className="h-7 rounded-l-md px-2 text-slate-500 hover:bg-slate-100" title="Tháng trước">‹</button>
           <span className="min-w-[92px] text-center text-[13px] font-semibold tabular-nums text-slate-700">Tháng {Number(mm)}/{yy}</span>
           <button onClick={() => setYm(shiftYM(ym, +1))} className="h-7 rounded-r-md px-2 text-slate-500 hover:bg-slate-100" title="Tháng sau">›</button>
-        </div>
-        {roster.length > 0 && <button disabled={!!bulk?.running} onClick={() => void bulkCongBoLop()} title="Chụp ảnh + công bố báo cáo cho cả lớp" className="ml-auto rounded-md bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-50">✓ Chốt cả lớp ({roster.length})</button>}
+        </div></>}
+        {cheDo === 'ky' && roster.length > 0 && kyId && <button disabled={kyBusy} onClick={() => void congBoLopKy()} title="Công bố báo cáo học kì cho cả lớp (chụp số liệu ở DB)" className={`ml-auto rounded-md bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-50`}>✓ Công bố cả lớp ({roster.length})</button>}
+        {cheDo === 'thang' && roster.length > 0 && <button disabled={!!bulk?.running} onClick={() => void bulkCongBoLop()} title="Chụp ảnh + công bố báo cáo cho cả lớp" className="ml-auto rounded-md bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-50">✓ Chốt cả lớp ({roster.length})</button>}
       </div>
-      <div className="min-h-0 flex-1 overflow-auto p-6">
+      <div ref={cuonRef} onScroll={(e) => { NHO_RP.cuon = e.currentTarget.scrollTop }} className="min-h-0 flex-1 overflow-auto p-3 md:p-6">
         {!lopId ? (
           <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn lớp để xem danh sách học sinh.</div>
         ) : (
-          <div className="flex gap-4">
+          <div className="flex flex-col gap-3 md:flex-row md:gap-4">
+            {/* ĐIỆN THOẠI: danh sách HS thành ô chọn + ‹ › (cột trái chỉ hiện từ md) */}
+            {(() => { const i = roster.findIndex((r) => r.id === hsId); return (
+              <div className="flex items-center gap-1.5 md:hidden">
+                <button disabled={i <= 0} onClick={() => setHsId(roster[i - 1].id)} className="h-10 w-10 shrink-0 rounded-lg border border-slate-200 bg-white text-[18px] text-slate-600 disabled:opacity-30">‹</button>
+                <select value={hsId ?? ''} onChange={(e) => setHsId(e.target.value || null)} className="h-10 min-w-0 flex-1 rounded-lg border border-slate-200 bg-white px-2 text-[14px] font-semibold text-slate-800">
+                  <option value="">— Chọn học sinh ({roster.length}) —</option>
+                  {roster.map((r) => <option key={r.id} value={r.id}>{cheDo === 'ky' && ttKy[r.id] ? (ttKy[r.id] === 'cong_bo' ? '✓ ' : ttKy[r.id] === 'du' ? '● ' : '○ ') : ''}{r.ho_ten}</option>)}
+                </select>
+                <button disabled={i < 0 || i >= roster.length - 1} onClick={() => setHsId(roster[i + 1].id)} className="h-10 w-10 shrink-0 rounded-lg border border-slate-200 bg-white text-[18px] text-slate-600 disabled:opacity-30">›</button>
+              </div>) })()}
             {/* CỘT TRÁI: danh sách cả lớp, click chọn thẳng — giống "Kết quả học tập" */}
-            <aside className="w-56 shrink-0">
+            <aside className="hidden w-56 shrink-0 md:block">
               <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-                <div className="border-b border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-slate-500">{roster.length} học sinh</div>
+                <div className="flex items-center border-b border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-slate-500">{roster.length} học sinh
+                  {cheDo === 'ky' && roster.length > 0 && kyId && laAdmin && (
+                    <button disabled={!!chotTd && chotTd.xong < chotTd.tong} onClick={() => void chotSoLieuLop()} title="Giữ cố định số liệu kì của cả lớp — không tính lại nữa (chỉ admin)"
+                      className="ml-auto rounded px-1.5 py-0.5 text-[11px] font-semibold normal-case tracking-normal text-slate-600 hover:bg-white disabled:opacity-60">
+                      {chotTd ? (chotTd.xong < chotTd.tong ? `Đang chốt ${chotTd.xong}/${chotTd.tong}…` : `✓ Đã chốt ${chotTd.tong - chotTd.loi}/${chotTd.tong}${chotTd.loi ? ` · ${chotTd.loi} lỗi` : ''}`) : '📌 Chốt số liệu'}
+                    </button>)}
+                </div>
+                {lech.length > 0 && (
+                  <div className="border-b border-amber-200 bg-amber-50 px-3 py-2 text-[12px] text-amber-900">
+                    ⚠ <b>{lech.length} em</b> có điểm thi đổi sau lúc chốt — số liệu kì (điểm các lần thi, hạng khối) có thể cũ.
+                    <button disabled={!!chotTd && chotTd.xong < chotTd.tong} onClick={() => void chotSoLieuLop(lech)}
+                      className="ml-1.5 rounded bg-amber-500 px-2 py-0.5 text-[11.5px] font-semibold text-white hover:bg-amber-600 disabled:opacity-60">Chốt lại {lech.length} em</button>
+                  </div>)}
                 <div className="max-h-[75vh] overflow-auto">
                   {(() => { const tenHT = tenHienThiDs(roster.map((r) => r.ho_ten)); return roster.map((r, i) => (
                     <button key={r.id} onClick={() => setHsId(r.id)} title={r.ho_ten}
@@ -136,6 +242,11 @@ export default function ReportPHScreen() {
                         ? <img src={r.anh_url} alt="" className="h-6 w-6 shrink-0 rounded-full object-cover" />
                         : <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-[10px] font-semibold text-indigo-600">{r.ho_ten.trim().split(/\s+/).pop()?.[0]?.toUpperCase() ?? '?'}</span>}
                       <span className="truncate">{tenHT[i]}</span>
+                      {lech.includes(r.id) && <span title="Điểm thi đổi sau lúc chốt số liệu" className="shrink-0 text-[11px] text-amber-600">⚠</span>}
+                      {/* vàng = đang nhập dở · xanh lá = điền đủ (sẵn sàng công bố) · ✓ xanh = đã công bố (Thùy 06/11) */}
+                      {cheDo === 'ky' && ttKy[r.id] && (ttKy[r.id] === 'cong_bo'
+                        ? <span title="Đã công bố báo cáo kì" className="ml-auto shrink-0 text-[12px] font-bold leading-none text-emerald-600">✓</span>
+                        : <span title={ttKy[r.id] === 'du' ? 'Đã điền đủ — sẵn sàng công bố' : 'Đang nhập dở'} className={`ml-auto h-2 w-2 shrink-0 rounded-full ${ttKy[r.id] === 'du' ? 'bg-emerald-500' : 'bg-amber-400'}`} />)}
                     </button>
                   )) })()}
                   {roster.length === 0 && <p className="px-3 py-2 text-[12px] text-slate-500">Lớp trống.</p>}
@@ -146,6 +257,9 @@ export default function ReportPHScreen() {
             <div className="min-w-0 flex-1">
               {!hs ? (
                 <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chọn học sinh ở cột trái để xem report.</div>
+              ) : cheDo === 'ky' ? (
+                kyId ? <BaoCaoKyBody key={hs.id + mon + kyId + phienKy} hsId={hs.id} mon={mon} kyId={kyId} onTrangThai={(id, tt) => setTtKy((m) => ({ ...m, [id]: tt }))} />
+                  : <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Chưa có kì nào — admin bấm "＋ Kì" để tạo kì (tên, từ tháng → đến tháng).</div>
               ) : <ReportBody key={hs.id + mon + ym} hsId={hs.id} mon={mon} ym={ym} lopId={lopId} hsName={hs.ho_ten} hsImg={hs.anh_url} lopTen={lopOpts.find((o) => o.id === lopId)?.label ?? ''} />}
             </div>
           </div>
@@ -171,9 +285,11 @@ export default function ReportPHScreen() {
 function ReportBody({ hsId, mon, ym, lopId, hsName, hsImg, lopTen }: { hsId: string; mon: string; ym: string; lopId: string | null; hsName: string; hsImg: string | null; lopTen: string }) {
   const [rows, setRows] = useState<ReportBuoiRow[] | null>(null)
   const [tq, setTq] = useState<TongQuanHS | null>(null)
+  const [ks, setKs] = useState<KSThang | null>(null)
   const [gvName, setGvName] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [anh, setAnh] = useState(false)
+  useEffect(() => { setKs(null); getKSDiemThang(hsId, mon, ym).then(setKs).catch(() => {}) }, [hsId, mon, ym])
   useEffect(() => {
     setLoading(true)
     Promise.all([getReportBuoiHS(hsId, mon, ym), getTongQuanHS(hsId, mon, { ym })])
@@ -185,13 +301,14 @@ function ReportBody({ hsId, mon, ym, lopId, hsName, hsImg, lopTen }: { hsId: str
   // Chụp ảnh báo cáo (snapshot) lúc GV chốt → lưu storage → trả URL để gắn vào bao_cao_ph.
   async function captureReport(): Promise<string | null> {
     if (!tq) return null
-    const [bc, khoiRank, lopRank, heRank] = await Promise.all([
+    const [bc, khoiRank, lopRank, heRank, ksMoi] = await Promise.all([
       getBaoCaoPH(hsId, mon, ym),
       getKhoiRankDiemMT(hsId, mon, ym),
       lopId ? getLopRankDiemMT(hsId, lopId, mon, ym) : Promise.resolve(null),
       getHeRankDiemMT(hsId, mon, ym),
+      getKSDiemThang(hsId, mon, ym).catch(() => null),
     ])
-    return renderCardToUrl({ hsName, hsImg, lopTen, mon, ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank }, `${hsId}_${ym}`)
+    return renderCardToUrl({ hsName, hsImg, lopTen, mon, ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank, ks: ksMoi }, `${hsId}_${ym}`)
   }
   return (
     <>
@@ -202,7 +319,7 @@ function ReportBody({ hsId, mon, ym, lopId, hsName, hsImg, lopTen }: { hsId: str
     <div className="grid gap-5 xl:grid-cols-[1fr_400px]">
       {/* ── TRÁI: SỐ LIỆU ── */}
       <div className="space-y-5">
-        {tq && <TongQuanCards tq={tq} missCount={missCount} />}
+        {tq && <TongQuanCards tq={tq} missCount={missCount} ks={ks} />}
         <div>
           <h3 className="mb-2 text-[13px] font-semibold uppercase tracking-wider text-slate-500">Chi tiết theo buổi · tháng {Number(ym.split('-')[1])}</h3>
           {!rows || rows.length === 0 ? (
@@ -239,19 +356,13 @@ function BuoiRow({ r }: { r: ReportBuoiRow }) {
     <tr className="border-b border-slate-100 last:border-0">
       <td className="px-4 py-1.5 font-medium text-slate-700">{fmtNgay(r.ngay)}</td>
       <td className="px-3 py-1.5 text-center">{r.vang ? <span className="rounded bg-rose-100 px-1.5 py-0.5 text-[12px] font-semibold text-rose-700">Vắng</span> : r.etPct != null ? <span className={`font-bold tabular-nums ${pctCls(r.etPct)}`}>{r.etPct}%</span> : <span className="text-slate-300">—</span>}</td>
-      <td className="px-3 py-1.5 text-center">{btvnCell}</td>
+      <td className="px-3 py-1.5 text-center">{btvnCell}{r.btvnBuNgay && <div className="text-[10px] font-medium text-indigo-500">học bù {fmtNgay(r.btvnBuNgay)}</div>}</td>
       <td className="px-4 py-1.5">{r.btvnThaiDo ? <span className={`text-[12px] ${TD_CLS[r.btvnThaiDo] ?? 'text-slate-600'}`}>{TD_LABEL[r.btvnThaiDo] ?? r.btvnThaiDo}</span> : <span className="text-slate-300">—</span>}</td>
     </tr>
   )
 }
 
 type Bucket = { pct: number | null; n: number }
-function tongPct(a: Bucket, b: Bucket): number | null {
-  const parts = [a, b].filter((x) => x.pct != null && x.n > 0)
-  if (!parts.length) return null
-  const N = parts.reduce((s, x) => s + x.n, 0)
-  return Math.round(parts.reduce((s, x) => s + (x.pct as number) * x.n, 0) / N)
-}
 function NumCol({ label, pct, big }: { label: string; pct: number | null; big?: boolean }) {
   return (
     <div className="flex-1 px-3 text-center first:pl-0">
@@ -302,12 +413,12 @@ function DiemRow({ chinh, thiLai, truong }: { chinh: MTDiem; thiLai?: MTDiem | n
     </div>
   )
 }
-function ActCard({ icon, ten, cb, nc, warn, diem }: { icon: string; ten: string; cb: Bucket; nc: Bucket; warn?: string; diem?: { chinh: MTDiem; thiLai?: MTDiem | null; truong?: number | null } }) {
+function ActCard({ icon, ten, tong, cb, nc, warn, diem }: { icon: string; ten: string; tong: Bucket; cb: Bucket; nc: Bucket; warn?: string; diem?: { chinh: MTDiem; thiLai?: MTDiem | null; truong?: number | null } }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
       <div className="mb-3 text-[14px] font-bold text-slate-700">{icon} {ten}</div>
       <div className="flex divide-x divide-slate-100">
-        <NumCol label="Tổng" pct={tongPct(cb, nc)} big />
+        <NumCol label="Tổng" pct={tong.pct} big />
         <NumCol label="Cơ bản" pct={cb.pct} />
         <NumCol label="Nâng cao" pct={nc.pct} />
       </div>
@@ -316,7 +427,7 @@ function ActCard({ icon, ten, cb, nc, warn, diem }: { icon: string; ten: string;
     </div>
   )
 }
-function TongQuanCards({ tq, missCount }: { tq: TongQuanHS; missCount: number }) {
+function TongQuanCards({ tq, missCount, ks }: { tq: TongQuanHS; missCount: number; ks?: KSThang | null }) {
   const h = tq.hoanThanh.toanBo.etMt, a = tq.hoatDong
   const tl = tq.diem.mt.thiLai
   return (
@@ -330,14 +441,22 @@ function TongQuanCards({ tq, missCount }: { tq: TongQuanHS; missCount: number })
         </div>
         <div className="mt-1.5 text-[11px] text-slate-400">Đã tính cả bài tập về nhà và bổ trợ</div>
       </div>
-      <ActCard icon="📝" ten="Test cuối giờ (ET)" cb={a.etCoBan} nc={a.etNangCao} />
-      <ActCard icon="🏠" ten="Bài tập về nhà" cb={a.btvnCoBan} nc={a.btvnNangCao} warn={missCount > 0 ? `Chưa hoàn thành BTVN ${missCount} lần trong tháng này` : undefined} />
-      <ActCard icon="📅" ten="Test tháng (MT)" cb={a.mtCoBan} nc={a.mtNangCao}
+      <ActCard icon="📝" ten="Test cuối giờ (ET)" tong={a.etTong} cb={a.etCoBan} nc={a.etNangCao} />
+      <ActCard icon="🏠" ten="Bài tập về nhà" tong={a.btvnTong} cb={a.btvnCoBan} nc={a.btvnNangCao} warn={missCount > 0 ? `Chưa hoàn thành BTVN ${missCount} lần trong tháng này` : undefined} />
+      <ActCard icon="📅" ten="Test tháng (MT)" tong={a.mtTong} cb={a.mtCoBan} nc={a.mtNangCao}
         diem={{
           chinh: { tong: tq.diem.mt.tb, pctCB: tq.diem.mt.pctCoBan, pctNC: tq.diem.mt.pctNangCao },
           thiLai: tl.n || tl.nCoBan || tl.nNangCao ? { tong: tl.tb, pctCB: tl.pctCoBan, pctNC: tl.pctNangCao } : null,
           truong: tq.diem.truong.tb,
         }} />
+      {/* 23/10: khảo sát giữa tháng — chỉ hiện khi tháng này em có khảo sát (số từ fn_ks_diem_thang) */}
+      {ks && (
+        <div className="rounded-2xl border border-teal-200 bg-white p-4 shadow-sm">
+          <div className="mb-1 flex items-baseline gap-2 text-[14px] font-bold text-slate-700">🧪 Khảo sát giữa tháng
+            {ks.rankNow != null && <span className="text-[12px] font-medium text-teal-700">· hạng {ks.rankNow}/{ks.rankTotal} khối {ks.khoi}</span>}</div>
+          <DiemRow chinh={{ tong: ks.tb, pctCB: ks.pctCoBan, pctNC: ks.pctNangCao }} thiLai={ks.tlN ? { tong: ks.tlTb, pctCB: null, pctNC: null } : null} />
+        </div>
+      )}
     </div>
   )
 }
@@ -642,7 +761,9 @@ function PhAnhModal({ hsId, mon, ym, lopId, hsName, hsImg, lopTen, gvName, tq, m
   const [khoiRank, setKhoiRank] = useState<KhoiRankMT | null>(null)
   const [lopRank, setLopRank] = useState<LopRankMT | null>(null)
   const [heRank, setHeRank] = useState<HeRankMT | null>(null)
+  const [ks, setKs] = useState<KSThang | null>(null)
   const cardRef = useRef<HTMLDivElement>(null)
+  useEffect(() => { setKs(null); getKSDiemThang(hsId, mon, ym).then(setKs).catch(() => {}) }, [hsId, mon, ym])
   useEffect(() => { getBaoCaoPH(hsId, mon, ym).then(setBc).catch(() => {}) }, [hsId, mon, ym])
   useEffect(() => { setKhoiRank(null); getKhoiRankDiemMT(hsId, mon, ym).then(setKhoiRank).catch(() => {}) }, [hsId, mon, ym])
   useEffect(() => { setLopRank(null); if (lopId) getLopRankDiemMT(hsId, lopId, mon, ym).then(setLopRank).catch(() => {}) }, [hsId, lopId, mon, ym])
@@ -672,7 +793,7 @@ function PhAnhModal({ hsId, mon, ym, lopId, hsName, hsImg, lopTen, gvName, tq, m
         <button onClick={onClose} className="rounded-md border border-slate-500 px-3 py-1 text-sm hover:bg-slate-700">Đóng</button>
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-4" onClick={(e) => e.stopPropagation()}>
-        <ReportCardView ref={cardRef} hsName={hsName} hsImg={hsImg} lopTen={lopTen} mon={mon} ym={ym} gvName={gvName} tq={tq} missCount={missCount} bc={bc} khoiRank={khoiRank} lopRank={lopRank} heRank={heRank} />
+        <ReportCardView ref={cardRef} hsName={hsName} hsImg={hsImg} lopTen={lopTen} mon={mon} ym={ym} gvName={gvName} tq={tq} missCount={missCount} bc={bc} khoiRank={khoiRank} lopRank={lopRank} heRank={heRank} ks={ks} />
       </div>
     </div>,
     document.body,

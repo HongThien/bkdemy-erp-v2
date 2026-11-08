@@ -1,0 +1,578 @@
+{
+ "chuong": "PPTD",
+ "them": [
+  {
+   "id": "M1",
+   "nhom": "NNB01507",
+   "ten": "Nhận biết dạng phương trình mặt phẳng, đường thẳng",
+   "mo_ta": "Đề hỏi \"phương trình nào là phương trình tổng quát của mặt phẳng / chính tắc của đường thẳng\" hoặc \"mặt phẳng (Oxy)/(Oyz)/(Oxz) có phương trình là\". Việc làm: nhớ dạng Ax+By+Cz+D=0 với (A;B;C)≠0, dạng chính tắc (mẫu khác 0), và (Oxy): z=0, (Oyz): x=0, (Oxz): y=0. Mức 1, gặp nhiều ở đề giữa kì theo SGK mới.",
+   "moi": [
+    "nhận biết phương trình tổng quát của mặt phẳng",
+    "nhận diện phương trình tổng quát của mặt phẳng",
+    "nhận dạng phương trình tổng quát của mặt phẳng",
+    "viết phương trình mặt phẳng toạ độ Oxy, Oyz, Oxz",
+    "phương trình mặt phẳng toạ độ",
+    "viết phương trình mặt phẳng toạ độ Oxz",
+    "nhận biết phương trình mặt phẳng toạ độ Oxy, Oyz, Oxz",
+    "phương trình mặt phẳng toạ độ Oxy, Oyz, Oxz",
+    "nhận biết phương trình mặt phẳng toạ độ",
+    "nhận dạng phương trình chính tắc của đường thẳng",
+    "nhận biết dạng phương trình chính tắc của đường thẳng"
+   ],
+   "so_cau": 15,
+   "muc_do": 1
+  },
+  {
+   "id": "M2",
+   "nhom": "NNB01512",
+   "ten": "Mặt phẳng, đường thẳng tạo góc lớn nhất hoặc nhỏ nhất",
+   "hiem": true,
+   "mo_ta": "Dạng hiếm (3 câu, VDC). Mặt phẳng chứa d (hoặc đường thẳng nằm trong mp qua điểm) tạo với đường/mặt cho trước góc lớn nhất/nhỏ nhất. Việc làm: tham số hoá vectơ pháp tuyến/chỉ phương, đưa cos góc về hàm một biến, hoặc dùng mặt phẳng phụ chứa hình chiếu. Cùng nhóm với NDB00865.",
+   "moi": [
+    "mặt phẳng chứa đường thẳng tạo góc lớn nhất với đường thẳng khác",
+    "đường thẳng nằm trong mặt phẳng tạo góc nhỏ nhất với đường thẳng cho trước",
+    "mp chứa đường thẳng tạo góc nhỏ nhất với mp cho trước, tính khoảng cách"
+   ],
+   "so_cau": 3,
+   "muc_do": 5
+  },
+  {
+   "id": "M3",
+   "nhom": "MỚI: Cực trị trong không gian Oxyz",
+   "ten": "Tổng khoảng cách nhỏ nhất: lấy đối xứng qua mặt phẳng",
+   "mo_ta": "Tìm M trên mặt phẳng (hoặc đường đi qua các mặt phẳng) để MA+MB, tổng quãng đường, chu vi tam giác nhỏ nhất. Việc làm: xét A, B cùng/khác phía, lấy đối xứng qua mặt phẳng (hoặc trải phẳng), độ dài nhỏ nhất = đoạn thẳng nối. Có bài thực tế (trạm thu sóng, ong bay).",
+   "moi": [
+    "cực trị MA+MB với M thuộc mặt phẳng",
+    "điểm trên mặt phẳng làm MA+MB nhỏ nhất (đối xứng)",
+    "thực tế toạ độ: cực trị tổng khoảng cách qua điểm trên mặt phẳng",
+    "quãng đường ngắn nhất qua các mặt phẳng trong Oxyz thực tế",
+    "cực trị chu vi tam giác có hai đỉnh di động trên hai đường thẳng"
+   ],
+   "so_cau": 5,
+   "muc_do": 5
+  },
+  {
+   "id": "M4",
+   "nhom": "MỚI: Cực trị trong không gian Oxyz",
+   "ten": "Điểm thoả hệ thức chạy trên đường tròn: tìm khoảng cách lớn nhất, nhỏ nhất",
+   "mo_ta": "Điểm M thoả MA=k·MB, góc AMB vuông, OM·AM=hằng, tia tạo góc cố định, hình chiếu lên mặt phẳng quay quanh d… ⇒ M chạy trên mặt cầu/đường tròn (giao với mặt phẳng). Việc làm: nhận ra quỹ tích (tâm, bán kính), rồi khoảng cách lớn nhất/nhỏ nhất = d(tâm) ± r.",
+   "moi": [
+    "cực trị: điểm trên mặt phẳng thoả hệ thức độ dài, tìm max min khoảng cách",
+    "quỹ tích điểm là đường tròn giao mặt cầu và mặt phẳng, tìm khoảng cách lớn nhất",
+    "điểm thuộc mặt phẳng thoả góc vuông, tìm độ dài lớn nhất",
+    "tia thay đổi tạo góc cố định với trục, khoảng cách lớn nhất của vệt trên mặt phẳng",
+    "quỹ tích vệt tia sáng trên mặt phẳng toạ độ, khoảng cách lớn nhất",
+    "điểm di động trong mặt phẳng, tìm khoảng cách nhỏ nhất",
+    "cực trị khoảng cách từ gốc đến hình chiếu của điểm lên mặt phẳng chứa đường thẳng cố định",
+    "điểm di động trên mặt cầu thoả hệ thức vectơ, tìm mặt phẳng cố định"
+   ],
+   "so_cau": 8,
+   "muc_do": 5
+  },
+  {
+   "id": "M5",
+   "nhom": "MỚI: Cực trị trong không gian Oxyz",
+   "ten": "Cực trị với điểm chạy trên mặt cầu",
+   "mo_ta": "M thuộc mặt cầu (hoặc đường tròn giao tuyến): khoảng cách đến mặt phẳng nhỏ nhất/lớn nhất, biểu thức ax+by+cz nhỏ nhất, tổng khoảng cách tới hai điểm, khoảng cách nhỏ nhất giữa điểm trên mặt cầu và điểm trên mặt phẳng. Việc làm: đi qua tâm I — đường thẳng qua I vuông góc mặt phẳng cắt mặt cầu, max/min = d(I,P) ± R.",
+   "moi": [
+    "điểm trên mặt cầu có khoảng cách đến mặt phẳng nhỏ nhất",
+    "cực trị biểu thức tuyến tính của điểm trên mặt cầu",
+    "cực trị tổng khoảng cách hai điểm với điểm thuộc mặt cầu",
+    "khoảng cách nhỏ nhất hai điểm chạy trên mặt cầu và mặt phẳng theo phương cho trước",
+    "cực trị khoảng cách điểm trên đường tròn giao tuyến mặt phẳng và mặt cầu"
+   ],
+   "so_cau": 5,
+   "muc_do": 5
+  },
+  {
+   "id": "M6",
+   "nhom": "MỚI: Cực trị trong không gian Oxyz",
+   "ten": "Mặt phẳng qua điểm cố định: cách gốc xa nhất, chắn ba trục tối ưu",
+   "mo_ta": "Mặt phẳng qua M cố định: cách O xa nhất (pháp tuyến = OM), hoặc cắt ba trục tại A, B, C để thể tích OABC / diện tích ABC / biểu thức 1/OA²+… nhỏ nhất, hoặc tổng khoảng cách từ hai điểm nhỏ nhất. Việc làm: phương trình đoạn chắn x/a+y/b+z/c=1 qua M rồi AM-GM/Bunhia, hoặc nhận ra pháp tuyến. Nhiều bài thực tế (góc tường, cốt pha, kho mini).",
+   "moi": [
+    "mặt phẳng qua điểm cách gốc lớn nhất, tính thể tích tứ diện chắn",
+    "mặt phẳng qua điểm cách gốc lớn nhất, tính thể tích tứ diện",
+    "cực trị: mặt phẳng qua điểm cố định cắt ba trục, thể tích nhỏ nhất",
+    "thực tế: mặt phẳng qua điểm cố định chắn ba trục, thể tích tứ diện nhỏ nhất",
+    "mặt phẳng qua điểm cắt ba trục, cực trị biểu thức",
+    "thực tế gắn Oxyz: mặt phẳng qua điểm, tối ưu độ dài",
+    "cực trị tổng khoảng cách từ hai điểm đến mặt phẳng qua điểm cố định"
+   ],
+   "so_cau": 7,
+   "muc_do": 5
+  },
+  {
+   "id": "M7",
+   "nhom": "MỚI: Cực trị trong không gian Oxyz",
+   "ten": "Điểm chạy trên đường thẳng: tham số hoá tìm độ dài, diện tích nhỏ nhất",
+   "hiem": true,
+   "mo_ta": "Dạng hiếm (3 câu). Điểm C chạy trên d (hoặc đoạn nối hai đường thẳng song song mặt phẳng) — tham số hoá toạ độ theo t, đưa độ dài/diện tích về hàm bậc hai của t rồi tìm nhỏ nhất.",
+   "moi": [
+    "điểm thay đổi trên đường thẳng làm diện tích tam giác nhỏ nhất",
+    "đường thẳng cắt trục và đường thẳng khác, song song mặt phẳng, cực trị độ dài đoạn",
+    "đoạn nối hai đường chéo nhau song song mặt phẳng, ngắn nhất"
+   ],
+   "so_cau": 3,
+   "muc_do": 5
+  }
+ ],
+ "bo_moi": [
+  {
+   "mo_ta": "viết phương trình mặt cầu biết đường kính hai điểm",
+   "ly_do": "Khớp dạng đã có NDB00846 — 12 câu \"mặt cầu đường kính AB\" và 13 câu \"tâm I đi qua A\" đang nằm ở đó (tâm = trung điểm, R = IA)."
+  },
+  {
+   "mo_ta": "viết phương trình mặt cầu biết đường kính AB",
+   "ly_do": "Khớp dạng đã có NDB00846 — 12 câu \"mặt cầu đường kính AB\" và 13 câu \"tâm I đi qua A\" đang nằm ở đó (tâm = trung điểm, R = IA)."
+  },
+  {
+   "mo_ta": "mặt cầu đường kính cho trước: viết phương trình",
+   "ly_do": "Khớp dạng đã có NDB00846 — 12 câu \"mặt cầu đường kính AB\" và 13 câu \"tâm I đi qua A\" đang nằm ở đó (tâm = trung điểm, R = IA)."
+  },
+  {
+   "mo_ta": "viết phương trình mặt cầu biết tâm và điểm đi qua",
+   "ly_do": "Khớp dạng đã có NDB00846 — 12 câu \"mặt cầu đường kính AB\" và 13 câu \"tâm I đi qua A\" đang nằm ở đó (tâm = trung điểm, R = IA)."
+  },
+  {
+   "mo_ta": "mặt phẳng cắt ba tia toạ độ các đoạn bằng nhau (đoạn chắn)",
+   "ly_do": "Khớp dạng đã có NDB00851 (mặt phẳng đoạn chắn qua điểm + điều kiện) — 4 câu cùng kiểu ở NDB00851, 3 câu ở NDB00849."
+  },
+  {
+   "mo_ta": "viết phương trình mặt phẳng cắt ba tia toạ độ theo điều kiện độ dài",
+   "ly_do": "Khớp dạng đã có NDB00851 (mặt phẳng đoạn chắn qua điểm + điều kiện) — 4 câu cùng kiểu ở NDB00851, 3 câu ở NDB00849."
+  },
+  {
+   "mo_ta": "viết phương trình mặt phẳng theo đoạn chắn biết trọng tâm tam giác",
+   "ly_do": "Khớp dạng đã có NDB00851 (mặt phẳng đoạn chắn qua điểm + điều kiện) — 4 câu cùng kiểu ở NDB00851, 3 câu ở NDB00849."
+  },
+  {
+   "mo_ta": "tìm điểm từ khoảng cách tới bốn tâm cho trước (GPS)",
+   "ly_do": "Khớp dạng đã có NDB00856 (điểm cách 4 điểm cho trước — trừ các phương trình mặt cầu, giải hệ); 1 câu GPS đã ở đó. Bài thực tế."
+  },
+  {
+   "mo_ta": "GPS: xác định vị trí điểm từ khoảng cách tới các vệ tinh",
+   "ly_do": "Khớp dạng đã có NDB00856 (điểm cách 4 điểm cho trước — trừ các phương trình mặt cầu, giải hệ); 1 câu GPS đã ở đó. Bài thực tế."
+  },
+  {
+   "mo_ta": "định vị GPS: tìm vị trí vật thể từ khoảng cách tới các vệ tinh",
+   "ly_do": "Khớp dạng đã có NDB00856 (điểm cách 4 điểm cho trước — trừ các phương trình mặt cầu, giải hệ); 1 câu GPS đã ở đó. Bài thực tế."
+  },
+  {
+   "mo_ta": "radar: độ dài đoạn đường thẳng nằm trong mặt cầu",
+   "ly_do": "Khớp dạng đã có NDB00878/NDB00879 (đường thẳng cắt mặt cầu: vùng radar/phủ sóng) — các câu radar cùng kiểu đang ở đó. Bài thực tế."
+  },
+  {
+   "mo_ta": "ứng dụng thực tế: đường bay thẳng và vùng phủ sóng mặt cầu trong Oxyz",
+   "ly_do": "Khớp dạng đã có NDB00878/NDB00879 (đường thẳng cắt mặt cầu: vùng radar/phủ sóng) — các câu radar cùng kiểu đang ở đó. Bài thực tế."
+  },
+  {
+   "mo_ta": "mặt cầu: tiếp tuyến từ điểm ngoài và đường ngắn nhất trên mặt cầu, bài thực tế",
+   "ly_do": "Khớp dạng đã có NDB00881 (đường thẳng tiếp xúc mặt cầu: độ dài tiếp tuyến √(IM²−R²), đường tròn tiếp điểm). Nếu đề tiếp tục hỏi kiểu này, NDB00881 sẽ thành dạng có số câu thật (hiện 2 + 5). Bài thực tế."
+  },
+  {
+   "mo_ta": "mặt cầu: đường ngắn nhất qua tiếp tuyến và cung trên mặt cầu, bài thực tế",
+   "ly_do": "Khớp dạng đã có NDB00881 (đường thẳng tiếp xúc mặt cầu: độ dài tiếp tuyến √(IM²−R²), đường tròn tiếp điểm). Nếu đề tiếp tục hỏi kiểu này, NDB00881 sẽ thành dạng có số câu thật (hiện 2 + 5). Bài thực tế."
+  },
+  {
+   "mo_ta": "thực tế mặt cầu: tiếp điểm tia sáng từ điểm ngoài, so sánh hai mặt cầu",
+   "ly_do": "Khớp dạng đã có NDB00881 (đường thẳng tiếp xúc mặt cầu: độ dài tiếp tuyến √(IM²−R²), đường tròn tiếp điểm). Nếu đề tiếp tục hỏi kiểu này, NDB00881 sẽ thành dạng có số câu thật (hiện 2 + 5). Bài thực tế."
+  },
+  {
+   "mo_ta": "mặt cầu: tiếp điểm tia sáng từ điểm ngoài, mặt phẳng chứa đường tròn tiếp điểm",
+   "ly_do": "Khớp dạng đã có NDB00881 (đường thẳng tiếp xúc mặt cầu: độ dài tiếp tuyến √(IM²−R²), đường tròn tiếp điểm). Nếu đề tiếp tục hỏi kiểu này, NDB00881 sẽ thành dạng có số câu thật (hiện 2 + 5). Bài thực tế."
+  },
+  {
+   "mo_ta": "tàu rời mặt cầu theo tiếp tuyến, tìm khoảng cách tới đường tròn",
+   "ly_do": "Khớp dạng đã có NDB00881 (đường thẳng tiếp xúc mặt cầu: độ dài tiếp tuyến √(IM²−R²), đường tròn tiếp điểm). Nếu đề tiếp tục hỏi kiểu này, NDB00881 sẽ thành dạng có số câu thật (hiện 2 + 5). Bài thực tế."
+  },
+  {
+   "mo_ta": "mặt cầu tiếp xúc ba mặt phẳng toạ độ, bài toán thực tế",
+   "ly_do": "Khớp dạng đã có NDB00877 (mặt cầu tiếp xúc mặt phẳng) — cùng đề \"bóng rổ góc phòng\" (T312010309005) và \"khinh khí cầu\" (T312000000839) đang ở đó."
+  },
+  {
+   "mo_ta": "viết phương trình mặt phẳng chứa tam giác có ba cạnh tiếp xúc mặt cầu",
+   "ly_do": "Khớp dạng đã có NDB00877 (mặt cầu tiếp xúc mặt phẳng) — cùng đề \"bóng rổ góc phòng\" (T312010309005) và \"khinh khí cầu\" (T312000000839) đang ở đó."
+  },
+  {
+   "mo_ta": "vùng quan sát hình tròn trên mặt phẳng từ khoảng cách điểm đến mặt phẳng",
+   "ly_do": "Khớp dạng đã có NDB00860 (khoảng cách điểm đến mặt phẳng; câu camera cùng kiểu T3120000001051 đang ở đó). Bài thực tế."
+  },
+  {
+   "mo_ta": "bài toán thực tế Oxyz: mặt phẳng, đường thẳng, khoảng cách",
+   "ly_do": "Khớp dạng đã có NDB00860 (khoảng cách điểm đến mặt phẳng; câu camera cùng kiểu T3120000001051 đang ở đó). Bài thực tế."
+  },
+  {
+   "mo_ta": "tia sáng chiếu tới mặt phẳng, tìm giao điểm và toạ độ điểm đích",
+   "ly_do": "Khớp dạng đã có NDB00872 (giao điểm đường thẳng và mặt phẳng). Bài thực tế."
+  },
+  {
+   "mo_ta": "ứng dụng thực tế Oxyz: đường thẳng đường đạn, tính đại lượng yêu cầu",
+   "ly_do": "Khớp dạng đã có NDB00868 (hai đường thẳng cắt nhau: tìm giao điểm rồi tính). Bài thực tế (2 câu sau là cùng một đề bắn bia AK)."
+  },
+  {
+   "mo_ta": "tìm điểm trên đường thẳng cách giao điểm hai đường thẳng một khoảng cho trước",
+   "ly_do": "Khớp dạng đã có NDB00868 (hai đường thẳng cắt nhau: tìm giao điểm rồi tính). Bài thực tế (2 câu sau là cùng một đề bắn bia AK)."
+  },
+  {
+   "mo_ta": "điểm trên đường thẳng cách giao điểm hai đường thẳng một khoảng cho trước (thực tế)",
+   "ly_do": "Khớp dạng đã có NDB00868 (hai đường thẳng cắt nhau: tìm giao điểm rồi tính). Bài thực tế (2 câu sau là cùng một đề bắn bia AK)."
+  },
+  {
+   "mo_ta": "tìm hình chiếu vuông góc của điểm lên đường thẳng, bài thực tế",
+   "ly_do": "Khớp dạng đã có NDB00853 (đường thẳng qua A vuông góc và cắt d — hình chiếu). Bài thực tế đường ống."
+  },
+  {
+   "mo_ta": "thực tế: giao hai mặt phẳng, tìm điểm cao nhất",
+   "ly_do": "Khớp dạng đã có NDB00867 (giao tuyến hai mái song song sàn ⇒ chiều cao = khoảng cách hai mặt phẳng song song; câu ngôi nhà cùng kiểu T312010801010 đang ở đó)."
+  },
+  {
+   "mo_ta": "khoảng cách từ giao tuyến hai mặt phẳng đến mặt phẳng, thực tế",
+   "ly_do": "Khớp dạng đã có NDB00867 (giao tuyến hai mái song song sàn ⇒ chiều cao = khoảng cách hai mặt phẳng song song; câu ngôi nhà cùng kiểu T312010801010 đang ở đó)."
+  },
+  {
+   "mo_ta": "góc nhị diện giữa hai nửa mặt phẳng theo toạ độ",
+   "ly_do": "Khớp dạng đã có NDB00857 (góc giữa hai mặt phẳng qua vectơ pháp tuyến)."
+  },
+  {
+   "mo_ta": "mô hình giá đỡ ba chân: độ dài trụ để mặt phẳng nghiêng góc cho trước",
+   "ly_do": "Khớp dạng đã có NDB00857 (góc giữa hai mặt phẳng qua vectơ pháp tuyến)."
+  },
+  {
+   "mo_ta": "vectơ chỉ phương của giao tuyến hai mặt phẳng",
+   "ly_do": "Khớp dạng đã có NDB00844 (VTCP = tích có hướng hai VTPT)."
+  },
+  {
+   "mo_ta": "quỹ đạo parabol trong không gian Oxyz bóng rổ thực tế",
+   "ly_do": "Quá lẻ: 6 câu nhưng 3 câu là CÙNG một đề (Nam–An chuyền bóng: T3120000001111, T3120000001102, T1120000006967) ⇒ chỉ 4 bài khác nhau. Phần \"mặt phẳng chứa quỹ đạo\" về phương pháp là NDB00851; phần độ cao parabol là hàm bậc hai. Theo dõi — đề mới (2025) hỏi kiểu này tăng thì thành dạng (xem T2)."
+  },
+  {
+   "mo_ta": "thực tế: lập phương trình mặt phẳng chứa quỹ đạo từ các điểm trong Oxyz",
+   "ly_do": "Quá lẻ: 6 câu nhưng 3 câu là CÙNG một đề (Nam–An chuyền bóng: T3120000001111, T3120000001102, T1120000006967) ⇒ chỉ 4 bài khác nhau. Phần \"mặt phẳng chứa quỹ đạo\" về phương pháp là NDB00851; phần độ cao parabol là hàm bậc hai. Theo dõi — đề mới (2025) hỏi kiểu này tăng thì thành dạng (xem T2)."
+  },
+  {
+   "mo_ta": "thực tế: tìm hệ số phương trình mặt phẳng chứa quỹ đạo",
+   "ly_do": "Quá lẻ: 6 câu nhưng 3 câu là CÙNG một đề (Nam–An chuyền bóng: T3120000001111, T3120000001102, T1120000006967) ⇒ chỉ 4 bài khác nhau. Phần \"mặt phẳng chứa quỹ đạo\" về phương pháp là NDB00851; phần độ cao parabol là hàm bậc hai. Theo dõi — đề mới (2025) hỏi kiểu này tăng thì thành dạng (xem T2)."
+  },
+  {
+   "mo_ta": "thực tế: quỹ đạo parabol, tính độ cao theo khoảng cách đến trục đối xứng",
+   "ly_do": "Quá lẻ: 6 câu nhưng 3 câu là CÙNG một đề (Nam–An chuyền bóng: T3120000001111, T3120000001102, T1120000006967) ⇒ chỉ 4 bài khác nhau. Phần \"mặt phẳng chứa quỹ đạo\" về phương pháp là NDB00851; phần độ cao parabol là hàm bậc hai. Theo dõi — đề mới (2025) hỏi kiểu này tăng thì thành dạng (xem T2)."
+  },
+  {
+   "mo_ta": "mô hình thực tế lập phương trình mặt phẳng từ khoảng cách trong Oxyz",
+   "ly_do": "Quá lẻ: 6 câu nhưng 3 câu là CÙNG một đề (Nam–An chuyền bóng: T3120000001111, T3120000001102, T1120000006967) ⇒ chỉ 4 bài khác nhau. Phần \"mặt phẳng chứa quỹ đạo\" về phương pháp là NDB00851; phần độ cao parabol là hàm bậc hai. Theo dõi — đề mới (2025) hỏi kiểu này tăng thì thành dạng (xem T2)."
+  },
+  {
+   "mo_ta": "thực tế quỹ đạo parabol trong Oxyz và giao mặt phẳng khung thành",
+   "ly_do": "Quá lẻ: 6 câu nhưng 3 câu là CÙNG một đề (Nam–An chuyền bóng: T3120000001111, T3120000001102, T1120000006967) ⇒ chỉ 4 bài khác nhau. Phần \"mặt phẳng chứa quỹ đạo\" về phương pháp là NDB00851; phần độ cao parabol là hàm bậc hai. Theo dõi — đề mới (2025) hỏi kiểu này tăng thì thành dạng (xem T2)."
+  },
+  {
+   "mo_ta": "mặt cầu có tâm thuộc trục đi qua hai điểm, tính bán kính",
+   "ly_do": "Quá lẻ (3 câu): mặt cầu qua hai điểm, tâm thuộc đường/mặt cho trước (IA=IB + điều kiện tâm). Gần NDB00856 (mặt cầu qua 4 điểm); đề tăng thì thêm dạng \"mặt cầu qua điểm, tâm thuộc đường/mặt\" vào NNB01509."
+  },
+  {
+   "mo_ta": "viết phương trình mặt cầu có tâm thuộc mặt cầu khác và đi qua hai điểm",
+   "ly_do": "Quá lẻ (3 câu): mặt cầu qua hai điểm, tâm thuộc đường/mặt cho trước (IA=IB + điều kiện tâm). Gần NDB00856 (mặt cầu qua 4 điểm); đề tăng thì thêm dạng \"mặt cầu qua điểm, tâm thuộc đường/mặt\" vào NNB01509."
+  },
+  {
+   "mo_ta": "thực tế mặt cầu tâm tìm chân cột từ hai điểm trên mặt cầu",
+   "ly_do": "Quá lẻ (3 câu): mặt cầu qua hai điểm, tâm thuộc đường/mặt cho trước (IA=IB + điều kiện tâm). Gần NDB00856 (mặt cầu qua 4 điểm); đề tăng thì thêm dạng \"mặt cầu qua điểm, tâm thuộc đường/mặt\" vào NNB01509."
+  },
+  {
+   "mo_ta": "chiếu xuyên tâm hình tròn lên mặt phẳng, tính diện tích bóng",
+   "ly_do": "Quá lẻ (2 câu, VDC): bóng của hình qua nguồn sáng điểm — phép vị tự tâm nguồn sáng; câu sau còn dính đạo hàm."
+  },
+  {
+   "mo_ta": "mô hình chuyển động trong Oxyz: tốc độ thay đổi diện tích bóng",
+   "ly_do": "Quá lẻ (2 câu, VDC): bóng của hình qua nguồn sáng điểm — phép vị tự tâm nguồn sáng; câu sau còn dính đạo hàm."
+  },
+  {
+   "mo_ta": "mặt cầu chứa hai đường tròn chung dây cung: tính bán kính",
+   "ly_do": "Quá lẻ (mỗi kiểu 1 câu, VDC): xác định tâm mặt cầu bằng trục đường tròn / đường cao tứ diện đều."
+  },
+  {
+   "mo_ta": "tứ diện đều trong Oxyz: tìm tâm mặt cầu ngoại tiếp từ đỉnh và chân đường cao",
+   "ly_do": "Quá lẻ (mỗi kiểu 1 câu, VDC): xác định tâm mặt cầu bằng trục đường tròn / đường cao tứ diện đều."
+  },
+  {
+   "mo_ta": "đường tròn qua ba điểm trong Oxyz: tâm, bán kính, độ dài cung",
+   "ly_do": "Quá lẻ (mỗi kiểu 1 câu): đường tròn trong không gian — chương trình 2018 không có phương trình đường tròn trong Oxyz."
+  },
+  {
+   "mo_ta": "đường tròn trong mặt phẳng tiếp xúc hai đường thẳng song song",
+   "ly_do": "Quá lẻ (mỗi kiểu 1 câu): đường tròn trong không gian — chương trình 2018 không có phương trình đường tròn trong Oxyz."
+  },
+  {
+   "mo_ta": "mô hình thực tế chỏm cầu gắn hệ trục Oxyz, tính khoảng cách",
+   "ly_do": "Quá lẻ (mỗi kiểu 1 câu): bài thực tế dựng hình riêng (chỏm cầu cách đều 4 đèn; điểm trên giao tuyến tạo tam giác đều), không thành kiểu lặp."
+  },
+  {
+   "mo_ta": "mô hình thực tế mặt phẳng: tìm điểm thoả tam giác đều, độ cao",
+   "ly_do": "Quá lẻ (mỗi kiểu 1 câu): bài thực tế dựng hình riêng (chỏm cầu cách đều 4 đèn; điểm trên giao tuyến tạo tam giác đều), không thành kiểu lặp."
+  },
+  {
+   "mo_ta": "điểm trên đường thẳng để hai tia tạo góc bằng nhau với mặt phẳng",
+   "ly_do": "Quá lẻ (1 câu, thực tế hai cột đèn): góc với mặt phẳng bằng nhau ⇔ tỉ số chiều cao/khoảng cách bằng nhau (tam giác đồng dạng), rồi tìm điểm trên đường nối hai chân cột."
+  },
+  {
+   "mo_ta": "toạ độ Trái Đất hệ Oxyz: tính khoảng cách trên mặt đất",
+   "ly_do": "Quá lẻ (1 câu): đổi kinh độ/vĩ độ ra toạ độ rồi tính cung trên mặt cầu — ranh giới với chương VT (toạ độ điểm, góc giữa hai vectơ)."
+  },
+  {
+   "mo_ta": "thực tế: hai vật chuyển động trong Oxyz, khoảng cách theo thời gian",
+   "ly_do": "Quá lẻ (1 câu): toạ độ điểm theo thời gian theo vectơ vận tốc — thuộc chương VT (toạ độ vectơ) hơn là PPTD."
+  },
+  {
+   "mo_ta": "chuyển động bay trong Oxyz: vận tốc tích phân, quãng đường, radar",
+   "ly_do": "Quá lẻ (1 câu): bài liên chương — tích phân vận tốc (NHTP) + đường thẳng ra khỏi mặt cầu radar (NDB00878)."
+  },
+  {
+   "mo_ta": "thực tế hình hộp gắn toạ độ: tối ưu góc giữa hai mặt phẳng",
+   "ly_do": "DỮ LIỆU HỎNG: id T1120000004463 có nội dung \"Khoảng nghịch biến của hàm số y=x³+3x²−9x\" (chương HS), không khớp mô tả — người đọc gắn nhầm câu/nhầm id. Cần soát lại lô chứa câu này."
+  }
+ ],
+ "dang_cu_khong_xuat_hien": [
+  {
+   "ma": "NDB00844",
+   "ten": "Viết phương trình đường thẳng biết 2 vector pháp tuyến",
+   "so_cau": 1
+  },
+  {
+   "ma": "NDB00845",
+   "ten": "Chuyển dạng của phương trình đường thẳng",
+   "so_cau": 1
+  },
+  {
+   "ma": "NDB00864",
+   "ten": "Khoảng cách giữa đường thẳng và mặt phẳng",
+   "so_cau": 0
+  },
+  {
+   "ma": "NDB00865",
+   "ten": "Viết phương trình mặt phẳng hợp với mặt phẳng khác góc cho trước",
+   "so_cau": 1
+  },
+  {
+   "ma": "NDB00870",
+   "ten": "Bài toán về đường vuông góc chung của 2 đường thẳng chéo nhau",
+   "so_cau": 1
+  },
+  {
+   "ma": "NDB00875",
+   "ten": "Viết phương trình mặt phẳng khi biết thiết diện cắt mặt cầu",
+   "so_cau": 0
+  },
+  {
+   "ma": "NDB00876",
+   "ten": "Viết phương trình mặt cầu khi biết thiết diện cắt mặt phẳng",
+   "so_cau": 2
+  },
+  {
+   "ma": "NDB00880",
+   "ten": "Viết phương trình mặt cầu cắt đường thẳng",
+   "so_cau": 1
+  },
+  {
+   "ma": "NDB00881",
+   "ten": "Bài toán đường thẳng tiếp xúc với mặt cầu",
+   "so_cau": 2
+  }
+ ],
+ "nghi_gan_nham": [
+  {
+   "id": "T312000000828",
+   "dang_cu": "NDB00846",
+   "ly_do": "NEW «viết phương trình mặt cầu biết đường kính hai điểm» — Khớp dạng đã có NDB00846 — 12 câu \"mặt cầu đường kính AB\" và 13 câu \"tâm I đi qua A\" đang nằm ở đó (tâm = trung điểm, R = IA)."
+  },
+  {
+   "id": "T312010301080",
+   "dang_cu": "NDB00846",
+   "ly_do": "NEW «viết phương trình mặt cầu biết đường kính AB» — Khớp dạng đã có NDB00846 — 12 câu \"mặt cầu đường kính AB\" và 13 câu \"tâm I đi qua A\" đang nằm ở đó (tâm = trung điểm, R = IA)."
+  },
+  {
+   "id": "T312010301139",
+   "dang_cu": "NDB00846",
+   "ly_do": "NEW «mặt cầu đường kính cho trước: viết phương trình» — Khớp dạng đã có NDB00846 — 12 câu \"mặt cầu đường kính AB\" và 13 câu \"tâm I đi qua A\" đang nằm ở đó (tâm = trung điểm, R = IA)."
+  },
+  {
+   "id": "T312000000952",
+   "dang_cu": "NDB00846",
+   "ly_do": "NEW «viết phương trình mặt cầu biết tâm và điểm đi qua» — Khớp dạng đã có NDB00846 — 12 câu \"mặt cầu đường kính AB\" và 13 câu \"tâm I đi qua A\" đang nằm ở đó (tâm = trung điểm, R = IA)."
+  },
+  {
+   "id": "T312000000759",
+   "dang_cu": "NDB00851",
+   "ly_do": "NEW «mặt phẳng cắt ba tia toạ độ các đoạn bằng nhau (đoạn chắn)» — Khớp dạng đã có NDB00851 (mặt phẳng đoạn chắn qua điểm + điều kiện) — 4 câu cùng kiểu ở NDB00851, 3 câu ở NDB00849."
+  },
+  {
+   "id": "T3120000001063",
+   "dang_cu": "NDB00851",
+   "ly_do": "NEW «viết phương trình mặt phẳng cắt ba tia toạ độ theo điều kiện độ dài» — Khớp dạng đã có NDB00851 (mặt phẳng đoạn chắn qua điểm + điều kiện) — 4 câu cùng kiểu ở NDB00851, 3 câu ở NDB00849."
+  },
+  {
+   "id": "T312000000563",
+   "dang_cu": "NDB00851",
+   "ly_do": "NEW «viết phương trình mặt phẳng theo đoạn chắn biết trọng tâm tam giác» — Khớp dạng đã có NDB00851 (mặt phẳng đoạn chắn qua điểm + điều kiện) — 4 câu cùng kiểu ở NDB00851, 3 câu ở NDB00849."
+  },
+  {
+   "id": "T312000000393",
+   "dang_cu": "NDB00856",
+   "ly_do": "NEW «tìm điểm từ khoảng cách tới bốn tâm cho trước (GPS)» — Khớp dạng đã có NDB00856 (điểm cách 4 điểm cho trước — trừ các phương trình mặt cầu, giải hệ); 1 câu GPS đã ở đó. Bài thực tế."
+  },
+  {
+   "id": "T312000000218",
+   "dang_cu": "NDB00856",
+   "ly_do": "NEW «GPS: xác định vị trí điểm từ khoảng cách tới các vệ tinh» — Khớp dạng đã có NDB00856 (điểm cách 4 điểm cho trước — trừ các phương trình mặt cầu, giải hệ); 1 câu GPS đã ở đó. Bài thực tế."
+  },
+  {
+   "id": "T1120000004139",
+   "dang_cu": "NDB00856",
+   "ly_do": "NEW «định vị GPS: tìm vị trí vật thể từ khoảng cách tới các vệ tinh» — Khớp dạng đã có NDB00856 (điểm cách 4 điểm cho trước — trừ các phương trình mặt cầu, giải hệ); 1 câu GPS đã ở đó. Bài thực tế."
+  },
+  {
+   "id": "T312000000927",
+   "dang_cu": "NDB00878",
+   "ly_do": "NEW «radar: độ dài đoạn đường thẳng nằm trong mặt cầu» — Khớp dạng đã có NDB00878/NDB00879 (đường thẳng cắt mặt cầu: vùng radar/phủ sóng) — các câu radar cùng kiểu đang ở đó. Bài thực tế."
+  },
+  {
+   "id": "T312000000582",
+   "dang_cu": "NDB00878",
+   "ly_do": "NEW «ứng dụng thực tế: đường bay thẳng và vùng phủ sóng mặt cầu trong Oxyz» — Khớp dạng đã có NDB00878/NDB00879 (đường thẳng cắt mặt cầu: vùng radar/phủ sóng) — các câu radar cùng kiểu đang ở đó. Bài thực tế."
+  },
+  {
+   "id": "T312010803031",
+   "dang_cu": "NDB00881",
+   "ly_do": "NEW «mặt cầu: tiếp tuyến từ điểm ngoài và đường ngắn nhất trên mặt cầu, bài thực tế» — Khớp dạng đã có NDB00881 (đường thẳng tiếp xúc mặt cầu: độ dài tiếp tuyến √(IM²−R²), đường tròn tiếp điểm). Nếu đề tiếp tục hỏi kiểu này, NDB00881 sẽ thành dạng có số câu thật (hiện 2 + 5). Bài thực tế."
+  },
+  {
+   "id": "T312010803030",
+   "dang_cu": "NDB00881",
+   "ly_do": "NEW «mặt cầu: đường ngắn nhất qua tiếp tuyến và cung trên mặt cầu, bài thực tế» — Khớp dạng đã có NDB00881 (đường thẳng tiếp xúc mặt cầu: độ dài tiếp tuyến √(IM²−R²), đường tròn tiếp điểm). Nếu đề tiếp tục hỏi kiểu này, NDB00881 sẽ thành dạng có số câu thật (hiện 2 + 5). Bài thực tế."
+  },
+  {
+   "id": "T312010803033",
+   "dang_cu": "NDB00881",
+   "ly_do": "NEW «thực tế mặt cầu: tiếp điểm tia sáng từ điểm ngoài, so sánh hai mặt cầu» — Khớp dạng đã có NDB00881 (đường thẳng tiếp xúc mặt cầu: độ dài tiếp tuyến √(IM²−R²), đường tròn tiếp điểm). Nếu đề tiếp tục hỏi kiểu này, NDB00881 sẽ thành dạng có số câu thật (hiện 2 + 5). Bài thực tế."
+  },
+  {
+   "id": "T312010801007",
+   "dang_cu": "NDB00881",
+   "ly_do": "NEW «mặt cầu: tiếp điểm tia sáng từ điểm ngoài, mặt phẳng chứa đường tròn tiếp điểm» — Khớp dạng đã có NDB00881 (đường thẳng tiếp xúc mặt cầu: độ dài tiếp tuyến √(IM²−R²), đường tròn tiếp điểm). Nếu đề tiếp tục hỏi kiểu này, NDB00881 sẽ thành dạng có số câu thật (hiện 2 + 5). Bài thực tế."
+  },
+  {
+   "id": "T1120000005204",
+   "dang_cu": "NDB00881",
+   "ly_do": "NEW «tàu rời mặt cầu theo tiếp tuyến, tìm khoảng cách tới đường tròn» — Khớp dạng đã có NDB00881 (đường thẳng tiếp xúc mặt cầu: độ dài tiếp tuyến √(IM²−R²), đường tròn tiếp điểm). Nếu đề tiếp tục hỏi kiểu này, NDB00881 sẽ thành dạng có số câu thật (hiện 2 + 5). Bài thực tế."
+  },
+  {
+   "id": "T3120000001143",
+   "dang_cu": "NDB00877",
+   "ly_do": "NEW «mặt cầu tiếp xúc ba mặt phẳng toạ độ, bài toán thực tế» — Khớp dạng đã có NDB00877 (mặt cầu tiếp xúc mặt phẳng) — cùng đề \"bóng rổ góc phòng\" (T312010309005) và \"khinh khí cầu\" (T312000000839) đang ở đó."
+  },
+  {
+   "id": "T312000000550",
+   "dang_cu": "NDB00877",
+   "ly_do": "NEW «viết phương trình mặt phẳng chứa tam giác có ba cạnh tiếp xúc mặt cầu» — Khớp dạng đã có NDB00877 (mặt cầu tiếp xúc mặt phẳng) — cùng đề \"bóng rổ góc phòng\" (T312010309005) và \"khinh khí cầu\" (T312000000839) đang ở đó."
+  },
+  {
+   "id": "T3120000001132",
+   "dang_cu": "NDB00860",
+   "ly_do": "NEW «vùng quan sát hình tròn trên mặt phẳng từ khoảng cách điểm đến mặt phẳng» — Khớp dạng đã có NDB00860 (khoảng cách điểm đến mặt phẳng; câu camera cùng kiểu T3120000001051 đang ở đó). Bài thực tế."
+  },
+  {
+   "id": "T312000000184",
+   "dang_cu": "NDB00860",
+   "ly_do": "NEW «bài toán thực tế Oxyz: mặt phẳng, đường thẳng, khoảng cách» — Khớp dạng đã có NDB00860 (khoảng cách điểm đến mặt phẳng; câu camera cùng kiểu T3120000001051 đang ở đó). Bài thực tế."
+  },
+  {
+   "id": "T312000000319",
+   "dang_cu": "NDB00872",
+   "ly_do": "NEW «tia sáng chiếu tới mặt phẳng, tìm giao điểm và toạ độ điểm đích» — Khớp dạng đã có NDB00872 (giao điểm đường thẳng và mặt phẳng). Bài thực tế."
+  },
+  {
+   "id": "T312010802036",
+   "dang_cu": "NDB00868",
+   "ly_do": "NEW «ứng dụng thực tế Oxyz: đường thẳng đường đạn, tính đại lượng yêu cầu» — Khớp dạng đã có NDB00868 (hai đường thẳng cắt nhau: tìm giao điểm rồi tính). Bài thực tế (2 câu sau là cùng một đề bắn bia AK)."
+  },
+  {
+   "id": "T3120000001028",
+   "dang_cu": "NDB00868",
+   "ly_do": "NEW «tìm điểm trên đường thẳng cách giao điểm hai đường thẳng một khoảng cho trước» — Khớp dạng đã có NDB00868 (hai đường thẳng cắt nhau: tìm giao điểm rồi tính). Bài thực tế (2 câu sau là cùng một đề bắn bia AK)."
+  },
+  {
+   "id": "T3120000001095",
+   "dang_cu": "NDB00868",
+   "ly_do": "NEW «điểm trên đường thẳng cách giao điểm hai đường thẳng một khoảng cho trước (thực tế)» — Khớp dạng đã có NDB00868 (hai đường thẳng cắt nhau: tìm giao điểm rồi tính). Bài thực tế (2 câu sau là cùng một đề bắn bia AK)."
+  },
+  {
+   "id": "T312000000581",
+   "dang_cu": "NDB00853",
+   "ly_do": "NEW «tìm hình chiếu vuông góc của điểm lên đường thẳng, bài thực tế» — Khớp dạng đã có NDB00853 (đường thẳng qua A vuông góc và cắt d — hình chiếu). Bài thực tế đường ống."
+  },
+  {
+   "id": "T312000000614",
+   "dang_cu": "NDB00867",
+   "ly_do": "NEW «thực tế: giao hai mặt phẳng, tìm điểm cao nhất» — Khớp dạng đã có NDB00867 (giao tuyến hai mái song song sàn ⇒ chiều cao = khoảng cách hai mặt phẳng song song; câu ngôi nhà cùng kiểu T312010801010 đang ở đó)."
+  },
+  {
+   "id": "T312010801006",
+   "dang_cu": "NDB00867",
+   "ly_do": "NEW «khoảng cách từ giao tuyến hai mặt phẳng đến mặt phẳng, thực tế» — Khớp dạng đã có NDB00867 (giao tuyến hai mái song song sàn ⇒ chiều cao = khoảng cách hai mặt phẳng song song; câu ngôi nhà cùng kiểu T312010801010 đang ở đó)."
+  },
+  {
+   "id": "T312010601032",
+   "dang_cu": "NDB00857",
+   "ly_do": "NEW «góc nhị diện giữa hai nửa mặt phẳng theo toạ độ» — Khớp dạng đã có NDB00857 (góc giữa hai mặt phẳng qua vectơ pháp tuyến)."
+  },
+  {
+   "id": "T312000000942",
+   "dang_cu": "NDB00857",
+   "ly_do": "NEW «mô hình giá đỡ ba chân: độ dài trụ để mặt phẳng nghiêng góc cho trước» — Khớp dạng đã có NDB00857 (góc giữa hai mặt phẳng qua vectơ pháp tuyến)."
+  },
+  {
+   "id": "T312000000700",
+   "dang_cu": "NDB00844",
+   "ly_do": "NEW «vectơ chỉ phương của giao tuyến hai mặt phẳng» — Khớp dạng đã có NDB00844 (VTCP = tích có hướng hai VTPT)."
+  }
+ ],
+ "cau_hoi": [
+  {
+   "ma": "T1",
+   "tieu_de": "Có lập nhóm \"Cực trị trong không gian Oxyz\" không, và tách mấy dạng?",
+   "mo_ta": "Bản đồ hiện tại không có chỗ cho bài cực trị (VDC). 28 câu NEW (M3–M7, chiếm 28/99 câu NEW, ~2,7% câu không Đ/S của chương) là cực trị, toàn trả lời ngắn mức 4 ở đề thi thử/khảo sát; 3 câu góc lớn/nhỏ nhất (M2) để riêng vào NNB01512. Phương pháp tách khá rõ: đối xứng (5) · quỹ tích đường tròn (8) · điểm trên mặt cầu (5) · mặt phẳng qua điểm cố định (7) · tham số hoá trên đường thẳng (3).",
+   "chon": [
+    [
+     "Nhóm mới, 5 dạng M3–M7 (M7 là dạng hiếm)",
+     "Mỗi dạng một cách giải; dạng nhỏ (3–8 câu) nhưng đúng luật \"phương pháp khác hẳn\"",
+     true
+    ],
+    [
+     "Nhóm mới, gộp còn 2 dạng: \"điểm di động\" (M3+M4+M5+M7) và \"mặt phẳng qua điểm cố định\" (M6)",
+     "Dạng đủ cỡ (21 và 7 câu); một dạng lẫn 4 cách giải, khó chẩn đoán HS yếu chỗ nào",
+     false
+    ],
+    [
+     "Không lập — bỏ cực trị khỏi bản đồ dạng (để kho câu khó riêng)",
+     "Cây gọn; 28 câu VDC không có chỗ đo",
+     false
+    ]
+   ]
+  },
+  {
+   "ma": "T2",
+   "tieu_de": "Bài thực tế Oxyz (radar, GPS, flycam, camera, quỹ đạo bóng) đặt theo phương pháp hay thành nhóm riêng?",
+   "mo_ta": "Trong 99 câu NEW có khoảng 40 câu bối cảnh thực tế. Bản đồ của chị đang đặt bài thực tế theo PHƯƠNG PHÁP (radar ở NDB00878/879/861, máy bay ở NDB00859/872, nhà mái ở NDB00867…), nên CTO đã xếp các câu NEW thực tế theo đúng lối đó (vào nghi_gan_nham dạng cũ) hoặc vào nhóm Cực trị. Còn lại 6 câu quỹ đạo bóng (4 bài khác nhau) và vài câu lẻ chưa có chỗ. Ranh giới với chương VT (toạ độ điểm theo thời gian, Trái Đất kinh–vĩ độ) do agent VT lo — 2 câu ở đây CTO để bo_moi, ghi rõ.",
+   "chon": [
+    [
+     "Giữ theo phương pháp như bản đồ hiện tại; câu NEW thực tế gắn vào dạng cũ khớp phương pháp",
+     "Đo đúng kỹ năng toán; không có dạng \"thực tế\" chung chung lẫn nhiều cách giải",
+     true
+    ],
+    [
+     "Thêm nhóm \"Bài toán thực tế Oxyz\" (radar/phủ sóng · GPS · quỹ đạo · mái nhà)",
+     "Dễ tìm bài thực tế để luyện đề mới; nhưng phải rút vài chục câu thực tế đang nằm ở dạng cũ ra, và một dạng lẫn nhiều phương pháp",
+     false
+    ]
+   ]
+  }
+ ]
+}

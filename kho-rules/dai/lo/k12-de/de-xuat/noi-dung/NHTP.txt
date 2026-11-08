@@ -1,0 +1,56 @@
+=== M1
+@ly_thuyet:
+##TC Những điều đề hay khai thác ở công thức Newton–Leibniz
+- Kết quả không phụ thuộc nguyên hàm được chọn: nếu $F$, $G$ đều là nguyên hàm của $f$ trên $[a;b]$ thì $F(b)-F(a)=G(b)-G(a)=\int_{a}^{b} f(x)\,dx$.
+- Hiệu theo thứ tự ngược là tích phân đảo cận: $F(a)-F(b)=\int_{b}^{a} f(x)\,dx$.
+- Đề cho sẵn công thức của $f$ mà hỏi $\int_{a}^{b} f'(x)\,dx$ thì chỉ cần tính $f(b)-f(a)$, không cần tính $f'(x)$.
+- Giá trị $f(a)$, $f(b)$ có thể cho bằng số, đọc trên đồ thị, hoặc suy từ điểm thuộc một đường đã biết phương trình.
+
+##PP Tính tích phân từ nguyên hàm hoặc từ giá trị tại hai cận
+Xác định đề cho nguyên hàm $F$ của hàm dưới dấu tích phân, hay cho chính hàm $f$ mà dưới dấu tích phân là $f'$.
+Tách biểu thức dưới dấu tích phân: phần chứa $f$ (hoặc $f'$) dùng Newton–Leibniz, phần còn lại tính trực tiếp.
+Thay hai cận vào $F$ (hoặc $f$; đọc trên đồ thị nếu đề cho hình) rồi lấy giá trị tại cận trên trừ giá trị tại cận dưới.
+Đề cho tích phân và hỏi ngược một giá trị như $F(a)$, $f(b)$ thì viết đẳng thức Newton–Leibniz rồi giải phương trình một ẩn.
+
+##CY
+- Lấy giá trị tại cận trên trừ giá trị tại cận dưới; cận âm thì thay cả dấu âm vào.
+- Hằng số nhân hay cộng thêm phải xử lý riêng: $\int_{a}^{b} \big[k\,f(x)+c\big]dx=k\big[F(b)-F(a)\big]+c\,(b-a)$; tương tự $\int_{a}^{b} k\,f'(x)\,dx=k\big[f(b)-f(a)\big]$.
+- Phân biệt $\int_{a}^{b} f(x)\,dx=F(b)-F(a)$ với $\int_{a}^{b} f'(x)\,dx=f(b)-f(a)$; không viết $\int_{a}^{b} f(x)\,dx=f(b)-f(a)$.
+
+@vi_du:
+##VD
+a) Biết $F(x)=x^3-2x$ là một nguyên hàm của hàm số $f(x)$ trên $\mathbb{R}$. Tính $\int_{0}^{2} f(x)\,dx$.
+b) Biết $F(x)$ là một nguyên hàm của $f(x)$ trên $\mathbb{R}$ và $F(1)=3$, $F(5)=11$. Tính $\int_{5}^{1} f(x)\,dx$.
+c) Cho hàm số $f(x)$ có đạo hàm liên tục trên $[2;7]$, $f(2)=-1$ và $f(7)=4$. Tính $\int_{2}^{7} f'(x)\,dx$.
+
+Bài giải:
+a) Theo công thức Newton–Leibniz, $\int_{0}^{2} f(x)\,dx=F(2)-F(0)$.
+Ta có $F(2)=2^3-2\cdot2=4$ và $F(0)=0$.
+Do đó $\int_{0}^{2} f(x)\,dx=4-0=4$.
+b) Cận trên là $1$, cận dưới là $5$ nên $\int_{5}^{1} f(x)\,dx=F(1)-F(5)=3-11=-8$.
+c) Vì $f$ là một nguyên hàm của $f'$ nên $\int_{2}^{7} f'(x)\,dx=f(7)-f(2)=4-(-1)=5$.
+Vậy ba giá trị lần lượt là $4$, $-8$ và $5$.
+
+##VD
+a) Biết $F(x)=x\ln x$ là một nguyên hàm của hàm số $f(x)$ trên $(0;+\infty)$. Tính $I=\int_{1}^{e} \big[2f(x)-3\big]dx$.
+b) Cho hàm số $y=f(x)$ có đạo hàm liên tục trên $\mathbb{R}$ và có đồ thị như hình dưới. Tính $J=\int_{-1}^{1} 2f'(x)\,dx$.
+[[HINH {"loai":"dothi","x":[-2.5,2.5],"y":[-2,4],"f":[{"e":"x^3-3*x+1","ten":"y=f(x)"}],"diem":[{"x":-1,"y":3,"chi":true},{"x":1,"y":-1,"chi":true}]}]]
+c) Cho hàm số $g(x)$ có đạo hàm liên tục trên $[0;2]$, $g(0)=3$ và $\int_{0}^{2} \big[g'(x)+2x\big]dx=2$. Tính $g(2)$.
+
+Bài giải:
+a) Tách tích phân: $I=2\int_{1}^{e} f(x)\,dx-\int_{1}^{e} 3\,dx$.
+Vì $F$ là nguyên hàm của $f$ nên $\int_{1}^{e} f(x)\,dx=F(e)-F(1)=e\ln e-1\cdot\ln 1=e$.
+Phần hằng số: $\int_{1}^{e} 3\,dx=3(e-1)$.
+Do đó $I=2e-3(e-1)=3-e$.
+b) Đọc trên đồ thị: $f(-1)=3$ và $f(1)=-1$.
+$J=2\int_{-1}^{1} f'(x)\,dx=2\big[f(1)-f(-1)\big]=2(-1-3)=-8$.
+c) Tách tích phân: $\int_{0}^{2} g'(x)\,dx+\int_{0}^{2} 2x\,dx=2$.
+Ta có $\int_{0}^{2} 2x\,dx=x^2\Big|_{0}^{2}=4$ nên $\int_{0}^{2} g'(x)\,dx=2-4=-2$.
+Mặt khác $\int_{0}^{2} g'(x)\,dx=g(2)-g(0)=g(2)-3$.
+Suy ra $g(2)-3=-2$, tức $g(2)=1$.
+Vậy $I=3-e$, $J=-8$ và $g(2)=1$.
+
+## GHI CHÚ CHO CEO
+- Lý thuyết nhóm NNB01217 (DB) đã có định nghĩa $F(b)-F(a)$, các tính chất và $\int f'=f(b)-f(a)$; khối M1 chỉ giữ những điều riêng mà đề M1 hay khai thác (hai nguyên hàm cho cùng kết quả, hiệu ngược = đảo cận, cho công thức $f$ thì khỏi tính $f'$, đọc giá trị trên đồ thị), không lặp lại khung nhóm.
+- Đã đối chiếu sách: Từ Tâm C4-B2-TÍCH PHÂN-P1 (lý thuyết + Dạng 1 "Áp dụng định nghĩa – tính chất"), NBV 12-17 A. LÝ THUYẾT, PNL Bài 02_Dạng 01 (_GV). Công thức thống nhất với SGK ("$F$ là một nguyên hàm bất kì", $\int f'=f(b)-f(a)$). Công thức trong sách là ảnh WMF nên chỉ đối chiếu được phần chữ.
+- Kiểu câu đề M1 (53 câu): khoảng một nửa là trắc nghiệm "chọn mệnh đề/định nghĩa đúng"; ví dụ tự luận không hỏi kiểu này, phần lý thuyết và ##CY đã phủ các phương án nhiễu thường gặp ($F(a)-F(b)$, $F(b)+F(a)$, $f(b)-f(a)$, $F(b)-G(a)$).

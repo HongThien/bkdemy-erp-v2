@@ -1,0 +1,542 @@
+[
+ {
+  "id": "X0421",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "KHAC",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Nội dung chỉ là bảng đáp án rác, không có đề."
+ },
+ {
+  "id": "X0422",
+  "dap_an": "6.3",
+  "loi_giai": "Cỡ mẫu: $n=9+17+8+6+5=45$.\nGiá trị đại diện các nhóm: $27{,}5;\\ 32{,}5;\\ 37{,}5;\\ 42{,}5;\\ 47{,}5$.\nSố trung bình: $\\bar{x}=\\dfrac{9\\cdot27{,}5+17\\cdot32{,}5+8\\cdot37{,}5+6\\cdot42{,}5+5\\cdot47{,}5}{45}=\\dfrac{1592{,}5}{45}\\approx35{,}39$.\nPhương sai: $s^2=\\dfrac{9\\cdot27{,}5^2+17\\cdot32{,}5^2+8\\cdot37{,}5^2+6\\cdot42{,}5^2+5\\cdot47{,}5^2}{45}-\\bar{x}^2=\\dfrac{58131{,}25}{45}-\\bar{x}^2\\approx39{,}43$.\nĐộ lệch chuẩn: $s=\\sqrt{s^2}\\approx6{,}3$.\nVậy độ lệch chuẩn của mẫu số liệu là $6{,}3$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng máy: 6.279."
+ },
+ {
+  "id": "X0423",
+  "dap_an": "52",
+  "loi_giai": "Lợi nhuận: $f(x)=TR-TC=-2x^2+1312x-\\left(x^3-77x^2+1000x+40000\\right)=-x^3+75x^2+312x-40000$, với $x>0$.\n$f'(x)=-3x^2+150x+312$.\n$f'(x)=0\\Leftrightarrow x^2-50x-104=0\\Leftrightarrow x=52$ hoặc $x=-2$ (loại).\n$f''(x)=-6x+150$, $f''(52)=-162<0$ nên $f$ đạt cực đại tại $x=52$; trên $(0;+\\infty)$ đó cũng là điểm lớn nhất vì $f'$ đổi dấu từ $+$ sang $-$.\nVậy lợi nhuận lớn nhất khi sản xuất $52$ sản phẩm.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0424",
+  "dap_an": "B",
+  "loi_giai": "$v(t)=-t^2+4t+2=-(t-2)^2+6\\le6$ với mọi $t\\ge0$.\nDấu \"=\" xảy ra khi $t=2$.\nVậy vận tốc lớn nhất tại thời điểm $t=2$ giây. Chọn B.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0425",
+  "dap_an": "5",
+  "loi_giai": "TXĐ: $D=(0;+\\infty)$.\n$y'=5e\\cdot\\dfrac{1-\\ln x}{x^2}$.\n$y'=0\\Leftrightarrow\\ln x=1\\Leftrightarrow x=e$.\n$y'>0$ khi $0<x<e$; $y'<0$ khi $x>e$ nên hàm số đạt cực đại tại $x=e$.\n$y(e)=\\dfrac{5e\\ln e}{e}=5$.\nVậy giá trị cực đại của hàm số bằng $5$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0426",
+  "dap_an": "2045",
+  "loi_giai": "$f'(t)=\\dfrac{26(t+5)-(26t+30)}{(t+5)^2}=\\dfrac{100}{(t+5)^2}$.\nTốc độ gia tăng là $0{,}16$ nên $\\dfrac{100}{(t+5)^2}=0{,}16\\Leftrightarrow(t+5)^2=625$.\nDo $t\\ge0$ nên $t+5=25\\Leftrightarrow t=20$.\nNăm tương ứng: $2025+20=2045$.\nVậy vào năm $2045$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0427",
+  "dap_an": "A",
+  "loi_giai": "$\\lim_{x\\to\\pm\\infty}\\dfrac{3x-5}{x+4}=3$.\nVậy tiệm cận ngang là $y=3$. Chọn A.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0428",
+  "dap_an": "C",
+  "loi_giai": "Số tháng ở nhóm thứ hai là $12$ (ô ghi \"1 2\").\nCỡ mẫu bằng tổng số tháng của các nhóm: $3+12+17+9+2=43$.\nVậy cỡ mẫu là $43$. Chọn C.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Ô \"1 2\" đọc là 12; khớp phương án 43. Dữ liệu 43 tháng vô lý nhưng đề như vậy."
+ },
+ {
+  "id": "X0429",
+  "dap_an": "B",
+  "loi_giai": "Vì $C$ thuộc trục hoành nên $C(a;0;0)$, tức $b=c=0$.\n$\\overrightarrow{CA}=(1-a;2;0)$, $\\overrightarrow{CB}=(2-a;-1;1)$.\nTam giác vuông tại $C$ nên $\\overrightarrow{CA}\\cdot\\overrightarrow{CB}=0\\Leftrightarrow(1-a)(2-a)-2=0\\Leftrightarrow a^2-3a=0$.\nDo $a>0$ nên $a=3$.\n$T=a+3b+4c=3$. Chọn B.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0430",
+  "dap_an": "2",
+  "loi_giai": "TXĐ: $D=(0;+\\infty)$.\n$y'=2e\\cdot\\dfrac{1-\\ln x}{x^2}$; $y'=0\\Leftrightarrow x=e$.\n$y'>0$ khi $0<x<e$, $y'<0$ khi $x>e$ nên hàm số đạt cực đại tại $x=e$.\n$y(e)=\\dfrac{2e\\ln e}{e}=2$.\nVậy giá trị cực đại bằng $2$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0431",
+  "dap_an": "A",
+  "loi_giai": "$v(t)=-t^2+4t+2=-(t-2)^2+6\\le6$ với mọi $t\\ge0$.\nDấu \"=\" xảy ra khi $t=2$.\nVậy vận tốc lớn nhất tại $t=2$ giây. Chọn A.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0432",
+  "dap_an": "2035",
+  "loi_giai": "$f'(t)=\\dfrac{16(t+5)-(16t-10)}{(t+5)^2}=\\dfrac{90}{(t+5)^2}$.\nTốc độ gia tăng là $0{,}4$ nên $\\dfrac{90}{(t+5)^2}=0{,}4\\Leftrightarrow(t+5)^2=225$.\nDo $t\\ge0$ nên $t+5=15\\Leftrightarrow t=10$.\nNăm tương ứng: $2025+10=2035$.\nVậy vào năm $2035$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0433",
+  "dap_an": "23.7",
+  "loi_giai": "Cỡ mẫu: $n=9+17+8+6=40$.\nGiá trị đại diện: $27{,}5;\\ 32{,}5;\\ 37{,}5;\\ 42{,}5$.\nSố trung bình: $\\bar{x}=\\dfrac{9\\cdot27{,}5+17\\cdot32{,}5+8\\cdot37{,}5+6\\cdot42{,}5}{40}=\\dfrac{1355}{40}=33{,}875$.\nPhương sai: $s^2=\\dfrac{9\\cdot27{,}5^2+17\\cdot32{,}5^2+8\\cdot37{,}5^2+6\\cdot42{,}5^2}{40}-\\bar{x}^2=\\dfrac{46850}{40}-33{,}875^2\\approx23{,}73$.\nVậy phương sai của mẫu số liệu là $23{,}7$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng máy: 23.734."
+ },
+ {
+  "id": "X0434",
+  "dap_an": "D",
+  "loi_giai": "$\\lim_{x\\to\\pm\\infty}\\dfrac{5x-3}{x+4}=5$.\nVậy tiệm cận ngang là $y=5$. Chọn D.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0435",
+  "dap_an": "26",
+  "loi_giai": "Xét $P(x)=-x^3+24x^2+780x-1000$ trên $[0;40]$.\n$P'(x)=-3x^2+48x+780$.\n$P'(x)=0\\Leftrightarrow x^2-16x-260=0\\Leftrightarrow x=26$ hoặc $x=-10$ (loại).\n$P(0)=-1000$; $P(26)=17928$; $P(40)=4600$.\nSo sánh: $P$ lớn nhất tại $x=26$.\nVậy xưởng cần sản xuất $26$ tấn sản phẩm.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0436",
+  "dap_an": "B",
+  "loi_giai": "Nhóm đầu tiên là $[20;30)$, nhóm cuối cùng là $[60;70)$.\nKhoảng biến thiên: $R=70-20=50$.\nChọn B.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0437",
+  "dap_an": "A",
+  "loi_giai": "Số tháng ở nhóm thứ hai là $12$ (ô ghi \"1 2\").\nCỡ mẫu: $3+12+7+6+2=30$.\nVậy cỡ mẫu là $30$. Chọn A.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Ô \"1 2\" đọc là 12; khớp phương án 30."
+ },
+ {
+  "id": "X0438",
+  "dap_an": "A",
+  "loi_giai": "Vì $C$ thuộc trục hoành nên $C(a;0;0)$, tức $b=c=0$.\n$\\overrightarrow{CA}=(1-a;2;0)$, $\\overrightarrow{CB}=(2-a;-1;1)$.\nTam giác vuông tại $C$ nên $\\overrightarrow{CA}\\cdot\\overrightarrow{CB}=0\\Leftrightarrow(1-a)(2-a)-2=0\\Leftrightarrow a^2-3a=0$.\nDo $a>0$ nên $a=3$.\n$T=2a+3b+4c=6$. Chọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0439",
+  "dap_an": "D",
+  "loi_giai": "Theo quy tắc ba điểm: $\\overrightarrow{AB}+\\overrightarrow{BC}=\\overrightarrow{AC}$.\nChọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0440",
+  "dap_an": "B",
+  "loi_giai": "Trung điểm $I$ của $AB$ có $x_I=\\dfrac{2+2}{2}=2$, $y_I=\\dfrac{-4+2}{2}=-1$, $z_I=\\dfrac{3+7}{2}=5$.\nVậy $I(2;-1;5)$. Chọn B.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0441",
+  "dap_an": "2",
+  "loi_giai": "$y=\\dfrac{x^2+2x+4}{x+2}=x+\\dfrac{4}{x+2}$ trên $[-1;2]$.\n$y'=1-\\dfrac{4}{(x+2)^2}=\\dfrac{x^2+4x}{(x+2)^2}$; $y'=0\\Leftrightarrow x=0$ hoặc $x=-4$ (loại).\n$y(-1)=3$; $y(0)=2$; $y(2)=3$.\nVậy giá trị nhỏ nhất bằng $2$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0442",
+  "dap_an": "B",
+  "loi_giai": "$3\\overrightarrow{v}=(-3;-6;3)$.\n$\\overrightarrow{u}+3\\overrightarrow{v}=(1-3;-4-6;0+3)=(-2;-10;3)$.\nChọn B.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0443",
+  "dap_an": "3",
+  "loi_giai": "$G$ là trọng tâm nên $2=\\dfrac{1+3+a}{3}\\Rightarrow a=2$.\n$c=\\dfrac{-3-5-1}{3}=-3$.\n$3=\\dfrac{1+4+b}{3}\\Rightarrow b=4$.\nVậy $a+b+c=2+4-3=3$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0444",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{AB}=(2-1;3-1;2+1)=(1;2;3)$. Chọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0445",
+  "dap_an": "A",
+  "loi_giai": "$\\vec{a}=-\\vec{i}+2\\vec{j}-3\\vec{k}$ nên $\\vec{a}=(-1;2;-3)$. Chọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0446",
+  "dap_an": "D",
+  "loi_giai": "$\\overrightarrow{u}-\\overrightarrow{v}=(1-2;3-1;-2+1)=(-1;2;-1)$. Chọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0447",
+  "dap_an": "B",
+  "loi_giai": "Hình chiếu của $M(x;y;z)$ lên trục $Oy$ là $(0;y;0)$.\nVậy hình chiếu của $M(1;2;3)$ là $Q(0;2;0)$. Chọn B.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0448",
+  "dap_an": "A",
+  "loi_giai": "$\\lim_{x\\to\\pm\\infty}\\dfrac{2x-1}{2x+4}=1$.\nVậy tiệm cận ngang là $y=1$. Chọn A.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0449",
+  "dap_an": "C",
+  "loi_giai": "Điểm đối xứng của $(x;y;z)$ qua mặt phẳng $(Oyz)$ là $(-x;y;z)$.\nVậy điểm đối xứng của $A(1;2;3)$ là $Q(-1;2;3)$. Chọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0450",
+  "dap_an": "C",
+  "loi_giai": "$x_I=\\dfrac{3-1}{2}=1$, $y_I=\\dfrac{-2+2}{2}=0$, $z_I=\\dfrac{3+5}{2}=4$.\nVậy $I(1;0;4)$. Chọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0451",
+  "dap_an": "7",
+  "loi_giai": "$y=\\dfrac{x^2+3x+9}{x+3}=x+\\dfrac{9}{x+3}$ trên $[-2;6]$.\n$y'=1-\\dfrac{9}{(x+3)^2}=\\dfrac{x^2+6x}{(x+3)^2}$; $y'=0\\Leftrightarrow x=0$ hoặc $x=-6$ (loại).\n$y(-2)=7$; $y(0)=3$; $y(6)=7$.\nVậy giá trị lớn nhất bằng $7$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0452",
+  "dap_an": "C",
+  "loi_giai": "Điểm đối xứng của $(x;y;z)$ qua trục $Oy$ là $(-x;y;-z)$.\nVậy $A'(-1;2;-3)$. Chọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0453",
+  "dap_an": "A",
+  "loi_giai": "Hình chiếu của $M(x;y;z)$ lên trục $Oz$ là $(0;0;z)$.\nVậy hình chiếu của $M(-1;2;-2)$ là $F(0;0;-2)$. Chọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0454",
+  "dap_an": "-19",
+  "loi_giai": "$G$ là trọng tâm nên $-3=\\dfrac{5+6+a}{3}\\Rightarrow a=-20$.\n$c=\\dfrac{-3-2-7}{3}=-4$.\n$5=\\dfrac{7+3+b}{3}\\Rightarrow b=5$.\nVậy $a+b+c=-20+5-4=-19$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0455",
+  "dap_an": "C",
+  "loi_giai": "Theo quy tắc ba điểm: $\\overrightarrow{PM}+\\overrightarrow{MN}=\\overrightarrow{PN}$. Chọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0456",
+  "dap_an": "A",
+  "loi_giai": "$\\vec{a}-\\vec{b}=(2-1;3-1;2+1)=(1;2;3)$. Chọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0457",
+  "dap_an": "C",
+  "loi_giai": "$\\overrightarrow{OA}=(-2;3;5)$. Chọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0458",
+  "dap_an": "A",
+  "loi_giai": "Mẫu $x-2=0\\Leftrightarrow x=2$, tại đó tử $3\\cdot2-1=5\\ne0$.\nVậy tiệm cận đứng là $x=2$. Chọn A.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0459",
+  "dap_an": "A",
+  "loi_giai": "$2\\overrightarrow{y}=(2;0;-2)$.\n$\\overrightarrow{a}=\\overrightarrow{x}+2\\overrightarrow{y}=(2+2;1+0;-3-2)=(4;1;-5)$. Chọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0460",
+  "dap_an": "Đồng biến trên (-∞;1) và (3;+∞), nghịch biến trên (1;2) và (2;3); cực đại tại x=1 (y=-1), cực tiểu tại x=3 (y=3)",
+  "loi_giai": "TXĐ: $D=\\mathbb{R}\\setminus\\{2\\}$.\n$y'=\\dfrac{(2x-3)(x-2)-(x^2-3x+3)}{(x-2)^2}=\\dfrac{x^2-4x+3}{(x-2)^2}$.\n$y'=0\\Leftrightarrow x^2-4x+3=0\\Leftrightarrow x=1$ hoặc $x=3$.\nBảng xét dấu: $y'>0$ trên $(-\\infty;1)$ và $(3;+\\infty)$; $y'<0$ trên $(1;2)$ và $(2;3)$.\nHàm số đồng biến trên $(-\\infty;1)$ và $(3;+\\infty)$; nghịch biến trên $(1;2)$ và $(2;3)$.\n$y(1)=\\dfrac{1-3+3}{1-2}=-1$; $y(3)=\\dfrac{9-9+3}{3-2}=3$.\nVậy hàm số đạt cực đại tại $x=1$ với $y_{CĐ}=-1$, đạt cực tiểu tại $x=3$ với $y_{CT}=3$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đề tự luận, đáp án dạng tóm tắt."
+ },
+ {
+  "id": "X0461",
+  "dap_an": "Nghịch biến trên (-∞;-5) và (1;+∞), đồng biến trên (-5;-2) và (-2;1); cực tiểu tại x=-5 (y=13), cực đại tại x=1 (y=1)",
+  "loi_giai": "TXĐ: $D=\\mathbb{R}\\setminus\\{-2\\}$.\n$y'=\\dfrac{(-2x+3)(x+2)-(-x^2+3x+1)}{(x+2)^2}=\\dfrac{-x^2-4x+5}{(x+2)^2}$.\n$y'=0\\Leftrightarrow x^2+4x-5=0\\Leftrightarrow x=1$ hoặc $x=-5$.\nBảng xét dấu: $y'>0$ trên $(-5;-2)$ và $(-2;1)$; $y'<0$ trên $(-\\infty;-5)$ và $(1;+\\infty)$.\nHàm số đồng biến trên $(-5;-2)$ và $(-2;1)$; nghịch biến trên $(-\\infty;-5)$ và $(1;+\\infty)$.\n$y(1)=\\dfrac{-1+3+1}{3}=1$; $y(-5)=\\dfrac{-25-15+1}{-3}=13$.\nVậy hàm số đạt cực đại tại $x=1$ với $y_{CĐ}=1$, đạt cực tiểu tại $x=-5$ với $y_{CT}=13$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đề tự luận, đáp án dạng tóm tắt."
+ },
+ {
+  "id": "X0462",
+  "dap_an": "M(7/2;10/3;0), P_min=887/6",
+  "loi_giai": "Gọi $M(x;y;0)$. $\\overrightarrow{MA}=(1-x;2-y;3)$, $\\overrightarrow{MB}=(3-x;-y;1)$, $\\overrightarrow{MC}=(5-x;-1-y;2)$, $\\overrightarrow{MD}=(3-x;7-y;4)$.\n$\\overrightarrow{MA}\\cdot\\overrightarrow{MB}=(x-1)(x-3)+y(y-2)+3$.\n$\\overrightarrow{MC}^2=(x-5)^2+(y+1)^2+4$; $\\overrightarrow{MD}^2=(x-3)^2+(y-7)^2+16$.\n$P=(x-1)(x-3)+y(y-2)+3+2\\left[(x-5)^2+(y+1)^2+4\\right]+3\\left[(x-3)^2+(y-7)^2+16\\right]=6x^2+6y^2-42x-40y+288$.\n$P=6\\left[\\left(x-\\dfrac{7}{2}\\right)^2+\\left(y-\\dfrac{10}{3}\\right)^2\\right]+\\dfrac{887}{6}\\ge\\dfrac{887}{6}$.\nDấu \"=\" xảy ra khi $x=\\dfrac{7}{2}$, $y=\\dfrac{10}{3}$.\nVậy $M\\left(\\dfrac{7}{2};\\dfrac{10}{3};0\\right)$ và giá trị nhỏ nhất của $P$ bằng $\\dfrac{887}{6}$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Tự luận; khớp barem đề; kiểm bằng máy."
+ },
+ {
+  "id": "X0463",
+  "dap_an": "M(-2;0;3/2), P_min=-13.5",
+  "loi_giai": "Gọi $M(x;0;z)$. $\\overrightarrow{MA}=(1-x;1;1-z)$, $\\overrightarrow{MB}=(3-x;3;1-z)$, $\\overrightarrow{MC}=(6-x;0;2-z)$, $\\overrightarrow{MD}=(2-x;4;2-z)$.\n$\\overrightarrow{MA}\\cdot\\overrightarrow{MB}=(x-1)(x-3)+3+(z-1)^2$.\n$P=(x-1)(x-3)+3+(z-1)^2-2\\left[(x-6)^2+(z-2)^2\\right]+3\\left[(x-2)^2+16+(z-2)^2\\right]=2x^2+2z^2+8x-6z-1$.\n$P=2\\left[(x+2)^2+\\left(z-\\dfrac{3}{2}\\right)^2\\right]-\\dfrac{27}{2}\\ge-\\dfrac{27}{2}=-13{,}5$.\nDấu \"=\" xảy ra khi $x=-2$, $z=\\dfrac{3}{2}$.\nVậy $M\\left(-2;0;\\dfrac{3}{2}\\right)$ và giá trị nhỏ nhất của $P$ bằng $-13{,}5$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Tự luận; khớp barem đề; kiểm bằng máy."
+ },
+ {
+  "id": "X0464",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "KHAC",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Nội dung là bảng đáp án rác, không có đề."
+ },
+ {
+  "id": "X0465",
+  "dap_an": "10",
+  "loi_giai": "$G$ là trọng tâm tam giác $A'AC$ nên $\\overrightarrow{AG}=\\dfrac{1}{3}\\left(\\overrightarrow{AA'}+\\overrightarrow{AA}+\\overrightarrow{AC}\\right)=\\dfrac{1}{3}\\left(\\overrightarrow{AA'}+\\overrightarrow{AC}\\right)$.\nMà $\\overrightarrow{AC}=\\overrightarrow{AB}+\\overrightarrow{AD}$ nên $\\overrightarrow{AA'}+\\overrightarrow{AC}=\\overrightarrow{AA'}+\\overrightarrow{AB}+\\overrightarrow{AD}=\\overrightarrow{AC'}$.\nSuy ra $\\overrightarrow{AG}=\\dfrac{1}{3}\\overrightarrow{AC'}$, tức $a=1$, $b=3$.\nVậy $M=1^2+3^2=10$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0466",
+  "dap_an": "288",
+  "loi_giai": "Gọi chiều rộng đáy là $x$ ($x>0$), chiều dài $2x$, chiều cao $h$.\nDiện tích vật liệu (không nắp): $2x^2+2\\cdot2xh+2xh=2x^2+6xh=216\\Rightarrow h=\\dfrac{108-x^2}{3x}$.\nThể tích: $V=2x^2h=\\dfrac{2x(108-x^2)}{3}=\\dfrac{216x-2x^3}{3}$, với $0<x<\\sqrt{108}$.\n$V'=\\dfrac{216-6x^2}{3}=0\\Leftrightarrow x=6$.\n$V'$ đổi dấu từ $+$ sang $-$ tại $x=6$ nên $V$ lớn nhất khi $x=6$: $V=\\dfrac{216\\cdot6-2\\cdot216}{3}=288$.\nVậy thể tích lớn nhất bằng $288\\ cm^3$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0467",
+  "dap_an": "14.5",
+  "loi_giai": "Cỡ mẫu: $n=2+10+16+8+2+2=40$.\nTứ phân vị thứ nhất: $\\dfrac{n}{4}=10$; tần số tích luỹ $2;12;\\dots$ nên $Q_1$ thuộc nhóm $[40;50)$.\n$Q_1=40+\\dfrac{10-2}{10}\\cdot10=48$.\nTứ phân vị thứ ba: $\\dfrac{3n}{4}=30$; tần số tích luỹ $2;12;28;36;\\dots$ nên $Q_3$ thuộc nhóm $[60;70)$.\n$Q_3=60+\\dfrac{30-28}{8}\\cdot10=62{,}5$.\nKhoảng tứ phân vị: $\\Delta_Q=Q_3-Q_1=62{,}5-48=14{,}5$.\nVậy khoảng tứ phân vị là $14{,}5$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0468",
+  "dap_an": "204",
+  "loi_giai": "Radar phát hiện được điểm $A$ khi $OA\\le400$, tức $185^2+290^2+z^2\\le400^2$.\n$z^2\\le160000-34225-84100=41675$.\n$z\\le\\sqrt{41675}\\approx204{,}14$.\nVậy độ cao lớn nhất khoảng $204$ km.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng máy: 204.14."
+ },
+ {
+  "id": "X0469",
+  "dap_an": "B",
+  "loi_giai": "Cỡ mẫu: $n=1+9+11+9+9+4=43$.\nTần số tích luỹ: $1;10;21;30;39;43$.\n$\\dfrac{3n}{4}=32{,}25$ nên $Q_3$ thuộc nhóm đầu tiên có tần số tích luỹ $\\ge32{,}25$, đó là nhóm $[165;170)$ (tần số tích luỹ $39$; nhóm trước chỉ có $30<32{,}25$).\nChọn B.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0470",
+  "dap_an": "D",
+  "loi_giai": "$\\overrightarrow{AB}=(1-3;-2-2;2+1)=(-2;-4;3)$.\n$\\overrightarrow{AC}=(-2-3;1-2;3+1)=(-5;-1;4)$.\n$\\overrightarrow{AB}\\cdot\\overrightarrow{AC}=(-2)(-5)+(-4)(-1)+3\\cdot4=10+4+12=26$.\nChọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đọc C(-2,1,3) là C(-2;1;3)."
+ },
+ {
+  "id": "X0471",
+  "dap_an": "A",
+  "loi_giai": "$\\vec{u}\\cdot\\vec{v}=0-1-2=-3$; $|\\vec{u}|=\\sqrt{4+1+4}=3$; $|\\vec{v}|=\\sqrt{0+1+1}=\\sqrt{2}$.\n$\\cos(\\vec{u},\\vec{v})=\\dfrac{-3}{3\\sqrt{2}}=-\\dfrac{\\sqrt{2}}{2}$.\nSuy ra góc giữa hai vectơ bằng $135^\\circ$. Chọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0472",
+  "dap_an": "D",
+  "loi_giai": "$\\overrightarrow{AB}=(-1;3;1)$.\n$AB=\\sqrt{1+9+1}=\\sqrt{11}$. Chọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0473",
+  "dap_an": "B",
+  "loi_giai": "Đồ thị $y=\\dfrac{3x+2}{1-x}=\\dfrac{-3x-2}{x-1}$ có tiệm cận đứng $x=1$ và tiệm cận ngang $y=-3$.\nTâm đối xứng là giao hai tiệm cận: $P(1;-3)$. Chọn B.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0474",
+  "dap_an": "C",
+  "loi_giai": "$\\vec{u}=2\\vec{i}+0\\vec{j}+1\\vec{k}$ nên $\\vec{u}=(2;0;1)$. Chọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0475",
+  "dap_an": "500",
+  "loi_giai": "Radar phát hiện được điểm $A$ khi $OA\\le600$, tức $185^2+275^2+z^2\\le600^2$.\n$z^2\\le360000-34225-75625=250150$.\n$z\\le\\sqrt{250150}\\approx500{,}15$.\nVậy độ cao lớn nhất khoảng $500$ km.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Kiểm bằng máy: 500.15."
+ },
+ {
+  "id": "X0476",
+  "dap_an": "1152",
+  "loi_giai": "Gọi chiều rộng đáy là $x$ ($x>0$), chiều dài $3x$, chiều cao $h$.\nDiện tích vật liệu (không nắp): $3x^2+2\\cdot3xh+2xh=3x^2+8xh=576\\Rightarrow h=\\dfrac{576-3x^2}{8x}$.\nThể tích: $V=3x^2h=\\dfrac{3x(576-3x^2)}{8}=\\dfrac{1728x-9x^3}{8}$, với $0<x<\\sqrt{192}$.\n$V'=\\dfrac{1728-27x^2}{8}=0\\Leftrightarrow x=8$.\n$V'$ đổi dấu từ $+$ sang $-$ tại $x=8$ nên $V$ lớn nhất khi $x=8$: $V=\\dfrac{1728\\cdot8-9\\cdot512}{8}=1152$.\nVậy thể tích lớn nhất bằng $1152\\ cm^3$.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0477",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{AB}=(-2;-4;3)$.\n$\\overrightarrow{BC}=(-2-1;1+2;3-2)=(-3;3;1)$.\n$\\overrightarrow{AB}\\cdot\\overrightarrow{BC}=6-12+3=-3$. Chọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đọc C(-2,1,3) là C(-2;1;3)."
+ },
+ {
+  "id": "X0478",
+  "dap_an": "37",
+  "loi_giai": "Chọn hệ toạ độ: $A(0;0;0)$, $B(1;0;0)$, $D(0;1;0)$, $E(0;0;1)$, khi đó $F(1;0;1)$, $H(0;1;1)$, $O\\left(\\dfrac{1}{2};\\dfrac{1}{2};\\dfrac{1}{2}\\right)$.\n$I$ là trọng tâm tam giác $BFD$ nên $I\\left(\\dfrac{2}{3};\\dfrac{1}{3};\\dfrac{1}{3}\\right)$.\n$\\overrightarrow{IO}=\\left(-\\dfrac{1}{6};\\dfrac{1}{6};\\dfrac{1}{6}\\right)$, $\\overrightarrow{BH}=(-1;1;1)$.\nSuy ra $\\overrightarrow{IO}=\\dfrac{1}{6}\\overrightarrow{BH}$, tức $a=1$, $b=6$.\nVậy $M=1^2+6^2=37$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0479",
+  "dap_an": "D",
+  "loi_giai": "$\\overrightarrow{OM}=2\\vec{i}-\\vec{j}+3\\vec{k}$ nên $M(2;-1;3)$. Chọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0480",
+  "dap_an": "C",
+  "loi_giai": "$\\overrightarrow{a}\\cdot\\overrightarrow{b}=0+0-2=-2$; $|\\overrightarrow{a}|=\\sqrt{4+0+4}=2\\sqrt{2}$; $|\\overrightarrow{b}|=\\sqrt{2}$.\n$\\cos(\\overrightarrow{a},\\overrightarrow{b})=\\dfrac{-2}{2\\sqrt{2}\\cdot\\sqrt{2}}=-\\dfrac{1}{2}$.\nSuy ra góc giữa hai vectơ bằng $120^\\circ$. Chọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ }
+]

@@ -1,0 +1,289 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00420",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Thế năng",
+   "nhom": "BÀI TOÁN TỔNG HỢP NHIỀU BƯỚC VỀ THẾ NĂNG",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nThế năng trọng trường: $W_t = 10mh$, với $m$ tính bằng kg, $h$ bằng m, $W_t$ bằng J.\nĐộ tăng thế năng: $\\Delta W_t = W_2 - W_1$; thế năng còn lại là thế năng sau thay đổi.\nĐổi đơn vị trước khi tính: $1$ g $= 0,001$ kg; $1$ cm $= 0,01$ m.\nTăng thêm $p\\%$ so với giá trị hiện có thì nhân giá trị đó với $\\left(1 + \\dfrac{p}{100}\\right)$; hai lần tăng liên tiếp thì nhân lần lượt, lần sau tính trên kết quả lần trước (không cộng gộp phần trăm).\nHai vật có thế năng bằng nhau thì $10m_Ah_A = 10m_Bh_B$; khi một vật hạ bớt $\\Delta h$ (khối lượng không đổi) thế năng giảm $10m\\Delta h$.\nThế năng của hệ nhiều vật bằng tổng thế năng từng vật.\n\n##PP\n2. Các bước làm bài\nXác định đại lượng nào thay đổi (khối lượng, độ cao, hay cả hai) và thay đổi qua mấy giai đoạn.\nĐổi mọi số liệu về kg và m nếu đề cho gam, xentimét.\nTính từng đại lượng trung gian (khối lượng mới, độ cao mới) rồi thế năng bằng $W_t = 10mh$.\nLấy hiệu hoặc tổng theo yêu cầu đề (độ tăng, thế năng còn lại, tổng thế năng của hệ).\n\n##CY\n3. Lưu ý\nĐề hỏi độ tăng thì phải lấy $W_2 - W_1$, không lấy $10\\Delta m\\Delta h$.\nKhông cộng gộp hai phần trăm liên tiếp; không quên đổi đơn vị.\nThế năng $W_t$ chỉ ở bậc 1 theo $m$ và $h$, không bình phương.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01042",
+     "thu_tu": 1,
+     "ten": "Khối lượng và độ cao cùng thay đổi, tính độ tăng thế năng",
+     "mo_ta": "Đề cho: vật có khối lượng và độ cao ban đầu; thêm một khối lượng, đồng thời nâng vật lên thêm một đoạn (các số ở đơn vị chuẩn kg, m); hỏi độ tăng thế năng (trắc nghiệm).\nTính thế năng trước và sau rồi lấy hiệu.\nLưu ý: số liệu cho bằng g hoặc cm cần đổi ⇒ thuộc dạng \"Đổi đơn vị khối lượng và độ cao rồi tính độ tăng thế năng\"; đề hỏi thế năng sau hai giai đoạn tăng phần trăm ⇒ thuộc dạng \"Độ cao tăng qua hai giai đoạn phần trăm liên tiếp, tính thế năng sau cùng\".",
+     "ly_thuyet": "##TC Độ tăng thế năng\n$W_t = 10mh$; độ tăng thế năng $\\Delta W_t = W_2 - W_1$ (đơn vị J).\nKhối lượng mới $m_2 = m_1 + \\Delta m$, độ cao mới $h_2 = h_1 + \\Delta h$.\n\n##PP\nTính thế năng ban đầu $W_1 = 10m_1h_1$.\nTính khối lượng mới $m_2$ và độ cao mới $h_2$.\nTính thế năng mới $W_2 = 10m_2h_2$.\nLấy hiệu $\\Delta W_t = W_2 - W_1$.\n\n##CY\nKhông tính độ tăng bằng $10 \\times \\Delta m \\times \\Delta h$: thế năng không cộng theo từng phần, phải tính $W_2$ và $W_1$ riêng rồi trừ.\nĐề hỏi độ tăng, không phải thế năng mới: kết quả cuối phải là $W_2 - W_1$.",
+     "vi_du": "##VD\nMột vật khối lượng 4 kg, ở độ cao 6 m so với mặt đất. Người ta thêm vào vật một khối lượng 1 kg, đồng thời nâng vật lên thêm 2 m. Tính độ tăng thế năng của vật.\nA. 140 J.\nB. 160 J.\nC. 60 J.\nD. 80 J.\n\nBài giải:\nThế năng ban đầu: $W_1 = 10 \\times 4 \\times 6 = 240$ J.\nKhối lượng mới: $m_2 = 4 + 1 = 5$ kg; độ cao mới: $h_2 = 6 + 2 = 8$ m.\nThế năng mới: $W_2 = 10 \\times 5 \\times 8 = 400$ J.\nĐộ tăng: $\\Delta W_t = W_2 - W_1 = 400 - 240 = 160$ J.\nChọn B.\n\n##VD\nMột vật khối lượng 2 kg, ở độ cao 6 m so với mặt đất. Người ta thêm vào vật một khối lượng 3 kg, đồng thời nâng vật lên thêm 2 m. Tính độ tăng thế năng của vật.\nA. 220 J.\nB. 280 J.\nC. 180 J.\nD. 40 J.\n\nBài giải:\nThế năng ban đầu: $W_1 = 10 \\times 2 \\times 6 = 120$ J.\nKhối lượng mới: $m_2 = 2 + 3 = 5$ kg; độ cao mới: $h_2 = 6 + 2 = 8$ m.\nThế năng mới: $W_2 = 10 \\times 5 \\times 8 = 400$ J.\nĐộ tăng: $\\Delta W_t = 400 - 120 = 280$ J.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01043",
+     "thu_tu": 2,
+     "ten": "Độ cao tăng qua hai giai đoạn phần trăm liên tiếp, tính thế năng sau cùng",
+     "mo_ta": "Đề cho: vật có khối lượng và độ cao ban đầu; độ cao được nâng qua hai giai đoạn liên tiếp, mỗi giai đoạn tăng thêm một số phần trăm (giai đoạn sau tính trên độ cao sau giai đoạn trước); hỏi thế năng sau cả hai giai đoạn (trắc nghiệm, số ở đơn vị chuẩn).\nTính độ cao sau từng giai đoạn rồi tính thế năng.\nLưu ý: độ cao ban đầu cho bằng cm cần đổi ⇒ thuộc dạng \"Đổi đơn vị độ cao rồi tính thế năng sau hai giai đoạn tăng phần trăm liên tiếp\"; đề hỏi độ tăng thế năng khi thêm khối lượng và nâng thêm độ cao ⇒ thuộc dạng \"Khối lượng và độ cao cùng thay đổi, tính độ tăng thế năng\".",
+     "ly_thuyet": "##TC Tăng phần trăm liên tiếp\nTăng thêm $p\\%$ so với giá trị hiện có: nhân giá trị đó với $\\left(1 + \\dfrac{p}{100}\\right)$.\nHai giai đoạn liên tiếp: $h_2 = h_0\\left(1 + \\dfrac{p_1}{100}\\right)\\left(1 + \\dfrac{p_2}{100}\\right)$, rồi $W_t = 10mh_2$.\n\n##PP\nTính độ cao sau giai đoạn 1: $h_1 = h_0\\left(1 + \\dfrac{p_1}{100}\\right)$.\nTính độ cao sau giai đoạn 2 từ $h_1$: $h_2 = h_1\\left(1 + \\dfrac{p_2}{100}\\right)$.\nTính thế năng $W_t = 10mh_2$.\n\n##CY\nGiai đoạn 2 tính theo độ cao sau giai đoạn 1, không cộng gộp hai phần trăm: lấy $h_0 \\times (1 + 0,25 + 0,1)$ cho kết quả sai (đó là phương án nhiễu 202,5 J).\nChỉ tính một giai đoạn (nhân $1,25$ hoặc $1,1$) cũng cho kết quả sai: phải đủ cả hai giai đoạn.",
+     "vi_du": "##VD\nMột vật khối lượng 3 kg, ở độ cao 2 m so với mặt đất. Độ cao được nâng qua hai giai đoạn liên tiếp: giai đoạn 1 tăng thêm 30% (so với độ cao ban đầu), giai đoạn 2 tăng tiếp 20% (so với độ cao sau giai đoạn 1). Tính thế năng của vật sau cả hai giai đoạn.\nA. 90 J.\nB. 78 J.\nC. 72 J.\nD. 93,6 J.\n\nBài giải:\nĐộ cao sau giai đoạn 1: $h_1 = 2 \\times (1 + 30/100) = 2,6$ m.\nĐộ cao sau giai đoạn 2: $h_2 = 2,6 \\times (1 + 20/100) = 3,12$ m.\nThế năng: $W_t = 10 \\times 3 \\times 3,12 = 93,6$ J.\nChọn D.\n\n##VD\nMột vật khối lượng 3 kg, ở độ cao 5 m so với mặt đất. Độ cao được nâng qua hai giai đoạn liên tiếp: giai đoạn 1 tăng thêm 25% (so với độ cao ban đầu), giai đoạn 2 tăng tiếp 10% (so với độ cao sau giai đoạn 1). Tính thế năng của vật sau cả hai giai đoạn.\nA. 202,5 J.\nB. 187,5 J.\nC. 165 J.\nD. 206,25 J.\n\nBài giải:\nĐộ cao sau giai đoạn 1: $h_1 = 5 \\times (1 + 25/100) = 6,25$ m.\nĐộ cao sau giai đoạn 2: $h_2 = 6,25 \\times (1 + 10/100) = 6,875$ m.\nThế năng: $W_t = 10 \\times 3 \\times 6,875 = 206,25$ J.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01044",
+     "thu_tu": 3,
+     "ten": "Hai vật có thế năng ban đầu bằng nhau, một vật hạ độ cao, tính thế năng còn lại",
+     "mo_ta": "Đề cho: vật A có khối lượng và độ cao; vật B có khối lượng khác, ban đầu có thế năng bằng thế năng vật A; sau đó vật B được hạ xuống bớt một đoạn; hỏi thế năng của vật B sau khi hạ (trắc nghiệm, số ở đơn vị chuẩn).\nThế năng B còn lại bằng thế năng A trừ phần thế năng mất đi khi hạ.\nLưu ý: khối lượng hoặc độ cao hạ bớt cho bằng g, cm cần đổi ⇒ thuộc dạng \"Đổi đơn vị khối lượng và độ cao hạ rồi tính thế năng còn lại\"; đề cho hai vật có thế năng ban đầu khác nhau rồi chuyển khối lượng ⇒ thuộc dạng \"Chuyển bớt khối lượng từ vật này sang vật kia, tính tổng thế năng của hệ sau khi chuyển\".",
+     "ly_thuyet": "##TC Hai vật bằng thế năng, một vật hạ độ cao\n$W_t = 10mh$. Ban đầu $W_B = W_A = 10m_Ah_A$.\nKhi vật B hạ bớt $\\Delta h$ (khối lượng không đổi), thế năng giảm $10m_B\\Delta h$, nên $W_B' = W_A - 10m_B\\Delta h$.\n\n##PP\nTính thế năng vật A: $W_A = 10m_Ah_A$; đó cũng là thế năng ban đầu của vật B.\nTính phần thế năng B mất đi khi hạ: $10m_B\\Delta h$.\nLấy $W_B' = W_A - 10m_B\\Delta h$.\n\n##CY\nKhông cần tính độ cao ban đầu của B (thường ra số thập phân không tròn); dùng thẳng $W_B' = W_A - 10m_B\\Delta h$ để tránh sai số.\nĐáp số là thế năng CÒN LẠI, không phải phần mất đi ($10m_B\\Delta h$) và cũng không phải $W_A$ cộng phần mất đi.",
+     "vi_du": "##VD\nVật A khối lượng 7 kg, ở độ cao 4 m so với mặt đất. Vật B khối lượng 5 kg, ban đầu có thế năng bằng thế năng vật A. Sau đó vật B được hạ xuống bớt 1,2 m. Tính thế năng của vật B sau khi hạ.\nA. 220 J.\nB. 340 J.\nC. 196 J.\nD. 60 J.\n\nBài giải:\nThế năng vật A: $W_A = 10 \\times 7 \\times 4 = 280$ J, cũng là thế năng ban đầu của vật B.\nĐộ cao ban đầu của B: $h_B = 280 : (10 \\times 5) = 5,6$ m.\nSau khi hạ: $h_B' = 5,6 - 1,2 = 4,4$ m.\nThế năng còn lại: $W_B' = 10 \\times 5 \\times 4,4 = 220$ J.\nChọn A.\n\n##VD\nVật A khối lượng 5 kg, ở độ cao 7 m so với mặt đất. Vật B khối lượng 4 kg, ban đầu có thế năng bằng thế năng vật A. Sau đó vật B được hạ xuống bớt 0,6 m. Tính thế năng của vật B sau khi hạ.\nA. 374 J.\nB. 320 J.\nC. 326 J.\nD. 24 J.\n\nBài giải:\nThế năng vật A: $W_A = 10 \\times 5 \\times 7 = 350$ J, cũng là thế năng ban đầu của vật B.\nPhần thế năng B mất đi khi hạ: $10 \\times 4 \\times 0,6 = 24$ J.\nThế năng còn lại: $W_B' = 350 - 24 = 326$ J.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01045",
+     "thu_tu": 4,
+     "ten": "Chuyển bớt khối lượng từ vật này sang vật kia, tính tổng thế năng của hệ sau khi chuyển",
+     "mo_ta": "Đề cho: hai vật A, B cố định ở hai độ cao khác nhau; chuyển một lượng khối lượng từ vật A sang vật B (độ cao mỗi vật không đổi); hỏi tổng thế năng của hệ sau khi chuyển (trắc nghiệm, số ở đơn vị chuẩn).\nTính khối lượng mới của từng vật rồi cộng thế năng hai vật.\nLưu ý: khối lượng cho bằng gam cần đổi ⇒ thuộc dạng \"Đổi đơn vị khối lượng rồi tính tổng thế năng của hệ sau khi chuyển bớt khối lượng\"; đề cho hai vật bằng thế năng và có một vật hạ độ cao ⇒ thuộc dạng \"Hai vật có thế năng ban đầu bằng nhau, một vật hạ độ cao, tính thế năng còn lại\".",
+     "ly_thuyet": "##TC Tổng thế năng của hệ hai vật\nThế năng của hệ bằng tổng thế năng từng vật: $W = 10m_Ah_A + 10m_Bh_B = 10(m_Ah_A + m_Bh_B)$.\nChuyển $\\Delta m$ từ A sang B: $m_A' = m_A - \\Delta m$, $m_B' = m_B + \\Delta m$; độ cao $h_A$, $h_B$ giữ nguyên.\n\n##PP\nTính khối lượng mới của A và B sau khi chuyển.\nGiữ nguyên độ cao của mỗi vật.\nTính $W = 10(m_A'h_A + m_B'h_B)$.\n\n##CY\nKhối lượng giảm ở vật A (trừ) và tăng ở vật B (cộng); đảo chiều chuyển cho kết quả sai (vd phương án nhiễu 390 J).\nTổng khối lượng không đổi nhưng tổng thế năng vẫn đổi vì hai vật ở hai độ cao khác nhau.",
+     "vi_du": "##VD\nVật A khối lượng 8 kg, cố định ở độ cao 3 m so với mặt đất. Vật B khối lượng 4 kg, cố định ở độ cao 4 m so với mặt đất. Người ta chuyển 1 kg khối lượng từ vật A sang vật B, độ cao mỗi vật không đổi. Tính tổng thế năng của hệ hai vật sau khi chuyển.\nA. 400 J.\nB. 430 J.\nC. 390 J.\nD. 410 J.\n\nBài giải:\nKhối lượng sau khi chuyển: $m_A' = 8 - 1 = 7$ kg; $m_B' = 4 + 1 = 5$ kg.\nĐộ cao mỗi vật không đổi: $h_A = 3$ m, $h_B = 4$ m.\nTổng thế năng: $W = 10 \\times (7 \\times 3 + 5 \\times 4) = 10 \\times 41 = 410$ J.\nChọn D.\n\n##VD\nVật A khối lượng 5 kg, cố định ở độ cao 3 m so với mặt đất. Vật B khối lượng 3 kg, cố định ở độ cao 2 m so với mặt đất. Người ta chuyển 1,7 kg khối lượng từ vật A sang vật B, độ cao mỗi vật không đổi. Tính tổng thế năng của hệ hai vật sau khi chuyển.\nA. 210 J.\nB. 193 J.\nC. 207 J.\nD. 227 J.\n\nBài giải:\nKhối lượng sau khi chuyển: $m_A' = 5 - 1,7 = 3,3$ kg; $m_B' = 3 + 1,7 = 4,7$ kg.\nĐộ cao mỗi vật không đổi: $h_A = 3$ m, $h_B = 2$ m.\nTổng thế năng: $W = 10 \\times (3,3 \\times 3 + 4,7 \\times 2) = 10 \\times 19,3 = 193$ J.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01046",
+     "thu_tu": 5,
+     "ten": "Đổi đơn vị khối lượng và độ cao rồi tính độ tăng thế năng",
+     "mo_ta": "Đề cho: vật có khối lượng (gam) và độ cao (mét); thêm một khối lượng (gam), đồng thời nâng vật lên thêm một đoạn (xentimét); hỏi độ tăng thế năng (trả lời ngắn).\nĐổi g ra kg và cm ra m trước, rồi tính thế năng trước/sau và lấy hiệu.\nLưu ý: số liệu đã ở kg, m ⇒ thuộc dạng \"Khối lượng và độ cao cùng thay đổi, tính độ tăng thế năng\"; đề hỏi thế năng sau hai giai đoạn tăng phần trăm ⇒ thuộc dạng \"Đổi đơn vị độ cao rồi tính thế năng sau hai giai đoạn tăng phần trăm liên tiếp\".",
+     "ly_thuyet": "##TC Đổi đơn vị rồi tính độ tăng thế năng\nĐổi: $1\\ \\mathrm{g} = 0,001\\ \\mathrm{kg}$; $1\\ \\mathrm{cm} = 0,01\\ \\mathrm{m}$.\n$W_t = 10mh$ chỉ dùng khi $m$ tính bằng kg và $h$ bằng m; $\\Delta W_t = W_2 - W_1$ (J).\n\n##PP\nĐổi khối lượng sang kg và độ cao sang m.\nTính thế năng ban đầu $W_1 = 10m_1h_1$.\nTính khối lượng mới, độ cao mới rồi thế năng mới $W_2 = 10m_2h_2$.\nLấy hiệu $\\Delta W_t = W_2 - W_1$.\n\n##CY\nQuên đổi đơn vị (dùng thẳng gam, xentimét) làm kết quả sai hàng nghìn lần.\nCả khối lượng thêm vào và độ cao nâng thêm đều phải đổi, không chỉ khối lượng ban đầu và độ cao ban đầu.",
+     "vi_du": "##VD\nMột vật khối lượng $4000\\text{ g}$, ở độ cao $2\\text{ m}$ so với mặt đất. Người ta thêm vào vật một khối lượng $2000\\text{ g}$, đồng thời nâng vật lên thêm $200\\text{ cm}$. Tính độ tăng thế năng của vật.\n\nBài giải:\nĐổi: $m = 4000\\text{ g} = 4\\text{ kg}$; $\\Delta m = 2000\\text{ g} = 2\\text{ kg}$; $\\Delta h = 200\\text{ cm} = 2\\text{ m}$.\nThế năng ban đầu: $W_1 = 10 \\times 4 \\times 2 = 80\\text{ J}$.\nKhối lượng mới: $m_2 = 4 + 2 = 6\\text{ kg}$; độ cao mới: $h_2 = 2 + 2 = 4\\text{ m}$.\nThế năng mới: $W_2 = 10 \\times 6 \\times 4 = 240\\text{ J}$.\nĐộ tăng: $\\Delta W_t = 240 - 80 = 160\\text{ J}$.\nĐáp án: 160 J.\n\n##VD\nMột vật khối lượng $5000\\text{ g}$, ở độ cao $8\\text{ m}$ so với mặt đất. Người ta thêm vào vật một khối lượng $2000\\text{ g}$, đồng thời nâng vật lên thêm $250\\text{ cm}$. Tính độ tăng thế năng của vật.\n\nBài giải:\nĐổi: $m = 5000\\text{ g} = 5\\text{ kg}$; $\\Delta m = 2000\\text{ g} = 2\\text{ kg}$; $\\Delta h = 250\\text{ cm} = 2,5\\text{ m}$.\nThế năng ban đầu: $W_1 = 10 \\times 5 \\times 8 = 400\\text{ J}$.\nKhối lượng mới: $m_2 = 5 + 2 = 7\\text{ kg}$; độ cao mới: $h_2 = 8 + 2,5 = 10,5\\text{ m}$.\nThế năng mới: $W_2 = 10 \\times 7 \\times 10,5 = 735\\text{ J}$.\nĐộ tăng: $\\Delta W_t = 735 - 400 = 335\\text{ J}$.\nĐáp án: 335 J."
+    },
+    {
+     "dang_id": "KDB01047",
+     "thu_tu": 6,
+     "ten": "Đổi đơn vị độ cao rồi tính thế năng sau hai giai đoạn tăng phần trăm liên tiếp",
+     "mo_ta": "Đề cho: vật có khối lượng (kg) và độ cao ban đầu cho bằng xentimét; độ cao được nâng qua hai giai đoạn liên tiếp tăng thêm một số phần trăm; hỏi thế năng sau cả hai giai đoạn (trả lời ngắn).\nĐổi cm ra m trước, tính độ cao sau từng giai đoạn rồi tính thế năng.\nLưu ý: độ cao đã ở mét ⇒ thuộc dạng \"Độ cao tăng qua hai giai đoạn phần trăm liên tiếp, tính thế năng sau cùng\"; đề hỏi độ tăng thế năng khi thêm khối lượng ⇒ thuộc dạng \"Đổi đơn vị khối lượng và độ cao rồi tính độ tăng thế năng\".",
+     "ly_thuyet": "##TC Đổi cm rồi tăng phần trăm liên tiếp\nĐổi $1\\ \\mathrm{cm} = 0,01\\ \\mathrm{m}$.\nTăng thêm $p\\%$ so với giá trị hiện có: nhân với $\\left(1 + \\dfrac{p}{100}\\right)$; hai giai đoạn thì nhân lần lượt, giai đoạn sau tính trên kết quả giai đoạn trước.\n$W_t = 10mh$ với $h$ là độ cao cuối (m).\n\n##PP\nĐổi độ cao ban đầu sang mét.\nTính độ cao sau giai đoạn 1 rồi sau giai đoạn 2.\nTính $W_t = 10mh_2$.\n\n##CY\nKhông cộng gộp hai phần trăm: giai đoạn 2 tính trên độ cao sau giai đoạn 1.\nQuên đổi cm ra m làm thế năng sai 100 lần.",
+     "vi_du": "##VD\nMột vật khối lượng 2 kg, ở độ cao 500 cm so với mặt đất. Độ cao được nâng qua hai giai đoạn liên tiếp: giai đoạn 1 tăng thêm 20% (so với độ cao ban đầu), giai đoạn 2 tăng tiếp 25% (so với độ cao sau giai đoạn 1). Tính thế năng của vật sau cả hai giai đoạn.\n\nBài giải:\nĐổi $h_0 = 500\\ \\mathrm{cm} = 5\\ \\mathrm{m}$.\nĐộ cao sau giai đoạn 1: $h_1 = 5 \\times (1 + 20/100) = 6\\ \\mathrm{m}$.\nĐộ cao sau giai đoạn 2: $h_2 = 6 \\times (1 + 25/100) = 7,5\\ \\mathrm{m}$.\nThế năng: $W_t = 10 \\times 2 \\times 7,5 = 150\\ \\mathrm{J}$.\nĐáp án: 150 J.\n\n##VD\nMột vật khối lượng 2 kg, ở độ cao 300 cm so với mặt đất. Độ cao được nâng qua hai giai đoạn liên tiếp: giai đoạn 1 tăng thêm 15% (so với độ cao ban đầu), giai đoạn 2 tăng tiếp 30% (so với độ cao sau giai đoạn 1). Tính thế năng của vật sau cả hai giai đoạn.\n\nBài giải:\nĐổi $h_0 = 300\\ \\mathrm{cm} = 3\\ \\mathrm{m}$.\nĐộ cao sau giai đoạn 1: $h_1 = 3 \\times (1 + 15/100) = 3,45\\ \\mathrm{m}$.\nĐộ cao sau giai đoạn 2: $h_2 = 3,45 \\times (1 + 30/100) = 4,485\\ \\mathrm{m}$.\nThế năng: $W_t = 10 \\times 2 \\times 4,485 = 89,7\\ \\mathrm{J}$.\nĐáp án: 89,7 J."
+    },
+    {
+     "dang_id": "KDB01048",
+     "thu_tu": 7,
+     "ten": "Đổi đơn vị khối lượng và độ cao hạ rồi tính thế năng còn lại",
+     "mo_ta": "Đề cho: vật A (kg, m); vật B có khối lượng cho bằng gam, ban đầu có thế năng bằng thế năng vật A; sau đó vật B hạ bớt một đoạn cho bằng xentimét; hỏi thế năng vật B sau khi hạ (trả lời ngắn).\nĐổi g, cm sang kg, m rồi lấy thế năng A trừ phần thế năng B mất đi.\nLưu ý: số liệu đã ở kg, m ⇒ thuộc dạng \"Hai vật có thế năng ban đầu bằng nhau, một vật hạ độ cao, tính thế năng còn lại\"; đề cho hai vật cố định và chuyển khối lượng ⇒ thuộc dạng \"Đổi đơn vị khối lượng rồi tính tổng thế năng của hệ sau khi chuyển bớt khối lượng\".",
+     "ly_thuyet": "##TC Đổi đơn vị, hai vật bằng thế năng, một vật hạ độ cao\nĐổi: $1\\ \\mathrm{g} = 0,001\\ \\mathrm{kg}$; $1\\ \\mathrm{cm} = 0,01\\ \\mathrm{m}$.\nBan đầu $W_B = W_A = 10m_Ah_A$; vật B hạ bớt $\\Delta h$ thì $W_B' = W_A - 10m_B\\Delta h$.\n\n##PP\nĐổi khối lượng B sang kg và độ cao hạ bớt sang m.\nTính thế năng vật A: $W_A = 10m_Ah_A$.\nTính phần thế năng B mất đi: $10m_B\\Delta h$.\nLấy $W_B' = W_A - 10m_B\\Delta h$.\n\n##CY\nQuên đổi gam hoặc xentimét làm kết quả sai nhiều lần.\nĐáp số là thế năng còn lại sau khi hạ, không phải thế năng A và không phải phần mất đi.",
+     "vi_du": "##VD\nVật A khối lượng $2$ kg, ở độ cao $8$ m so với mặt đất. Vật B khối lượng $4000$ g, ban đầu có thế năng bằng thế năng vật A. Sau đó vật B được hạ xuống bớt $120$ cm. Tính thế năng của vật B sau khi hạ.\n\nBài giải:\nĐổi $m_B = 4000$ g $= 4$ kg; $\\Delta h = 120$ cm $= 1,2$ m.\nThế năng vật A: $W_A = 10 \\times 2 \\times 8 = 160$ J, cũng là thế năng ban đầu của vật B.\nPhần thế năng B mất đi khi hạ: $10 \\times 4 \\times 1,2 = 48$ J.\nThế năng còn lại: $W_B' = 160 - 48 = 112$ J.\nĐáp án: 112 J.\n\n##VD\nVật A khối lượng $5$ kg, ở độ cao $7$ m so với mặt đất. Vật B khối lượng $2500$ g, ban đầu có thế năng bằng thế năng vật A. Sau đó vật B được hạ xuống bớt $120$ cm. Tính thế năng của vật B sau khi hạ.\n\nBài giải:\nĐổi $m_B = 2500$ g $= 2,5$ kg; $\\Delta h = 120$ cm $= 1,2$ m.\nThế năng vật A: $W_A = 10 \\times 5 \\times 7 = 350$ J, cũng là thế năng ban đầu của vật B.\nPhần thế năng B mất đi khi hạ: $10 \\times 2,5 \\times 1,2 = 30$ J.\nThế năng còn lại: $W_B' = 350 - 30 = 320$ J.\nĐáp án: 320 J."
+    },
+    {
+     "dang_id": "KDB01049",
+     "thu_tu": 8,
+     "ten": "Đổi đơn vị khối lượng rồi tính tổng thế năng của hệ sau khi chuyển bớt khối lượng",
+     "mo_ta": "Đề cho: hai vật A, B có khối lượng cho bằng gam, cố định ở hai độ cao (m); chuyển một lượng khối lượng (gam) từ vật A sang vật B; hỏi tổng thế năng của hệ sau khi chuyển (trả lời ngắn).\nĐổi g sang kg, tính khối lượng mới của từng vật rồi cộng thế năng hai vật.\nLưu ý: khối lượng đã ở kg ⇒ thuộc dạng \"Chuyển bớt khối lượng từ vật này sang vật kia, tính tổng thế năng của hệ sau khi chuyển\"; đề cho thế năng hai vật bằng nhau, một vật hạ độ cao ⇒ thuộc dạng \"Đổi đơn vị khối lượng và độ cao hạ rồi tính thế năng còn lại\".",
+     "ly_thuyet": "##TC Đổi đơn vị, tổng thế năng sau khi chuyển khối lượng\nĐổi $1\\ \\mathrm{g} = 0,001\\ \\mathrm{kg}$.\nChuyển $\\Delta m$ từ A sang B: $m_A' = m_A - \\Delta m$, $m_B' = m_B + \\Delta m$; tổng thế năng $W = 10(m_A'h_A + m_B'h_B)$.\n\n##PP\nĐổi mọi khối lượng sang kg (gồm cả lượng chuyển).\nTính khối lượng mới của A (trừ) và của B (cộng).\nTính $W = 10(m_A'h_A + m_B'h_B)$.\n\n##CY\nPhải đổi cả lượng khối lượng chuyển sang kg, không chỉ khối lượng hai vật.\nTrừ ở A, cộng ở B; đảo chiều cho kết quả sai.",
+     "vi_du": "##VD\nVật A khối lượng $5000\\,\\mathrm{g}$, cố định ở độ cao $3\\,\\mathrm{m}$ so với mặt đất. Vật B khối lượng $2000\\,\\mathrm{g}$, cố định ở độ cao $2\\,\\mathrm{m}$ so với mặt đất. Người ta chuyển $1000\\,\\mathrm{g}$ khối lượng từ vật A sang vật B, độ cao mỗi vật không đổi. Tính tổng thế năng của hệ hai vật sau khi chuyển.\n\nBài giải:\nĐổi $m_A = 5\\,\\mathrm{kg}$, $m_B = 2\\,\\mathrm{kg}$, khối lượng chuyển $= 1\\,\\mathrm{kg}$.\nSau khi chuyển: $m_A' = 5 - 1 = 4\\,\\mathrm{kg}$; $m_B' = 2 + 1 = 3\\,\\mathrm{kg}$.\nTổng thế năng: $W = 10 \\times (4 \\times 3 + 3 \\times 2) = 10 \\times 18 = 180\\,\\mathrm{J}$.\nĐáp án: 180 J.\n\n##VD\nVật A khối lượng $7000\\,\\mathrm{g}$, cố định ở độ cao $5\\,\\mathrm{m}$ so với mặt đất. Vật B khối lượng $3000\\,\\mathrm{g}$, cố định ở độ cao $7\\,\\mathrm{m}$ so với mặt đất. Người ta chuyển $1200\\,\\mathrm{g}$ khối lượng từ vật A sang vật B, độ cao mỗi vật không đổi. Tính tổng thế năng của hệ hai vật sau khi chuyển.\n\nBài giải:\nĐổi $m_A = 7\\,\\mathrm{kg}$, $m_B = 3\\,\\mathrm{kg}$, khối lượng chuyển $= 1,2\\,\\mathrm{kg}$.\nSau khi chuyển: $m_A' = 7 - 1,2 = 5,8\\,\\mathrm{kg}$; $m_B' = 3 + 1,2 = 4,2\\,\\mathrm{kg}$.\nTổng thế năng: $W = 10 \\times (5,8 \\times 5 + 4,2 \\times 7) = 10 \\times 58,4 = 584\\,\\mathrm{J}$.\nĐáp án: 584 J."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09010207051",
+   "nhom_id": "KNB00420",
+   "loai": "trac_nghiem",
+   "de": "Vật A (2 kg) ở độ cao 5 m so với sàn tầng 1 (mốc ban đầu). Vật B (3 kg) ở độ cao 3 m so với sàn tầng 1. Đổi mốc thế năng sang một kệ cao 2 m so với sàn tầng 1. Vật nào có thế năng lớn hơn so với mốc mới? (cho P = 10m)",
+   "lua_chon": [
+    "A lớn hơn",
+    "B lớn hơn",
+    "Bằng nhau",
+    "Không xác định được"
+   ],
+   "dap_an": "A",
+   "loi_giai": "So với mốc mới (kệ cao 2 m): h<sub>A</sub>=5−2=3 m, Wt<sub>A</sub>=10×2×3=60 J. h<sub>B</sub>=3−2=1 m, Wt<sub>B</sub>=10×3×1=30 J. Vì 60 J>30 J nên A có thế năng lớn hơn.\n\nVì sao các phương án khác sai:\n- B: Đã so sánh ngược hoặc quên trừ độ cao mốc cho một trong hai vật; sau khi đổi mốc, A vẫn có thế năng lớn hơn (60 J>30 J).\n- C: 60 J ≠ 30 J, hai giá trị khác nhau rõ rệt, không bằng nhau.\n- D: Có đủ dữ kiện để tính lại độ cao theo mốc mới rồi so sánh, không phải không xác định được."
+  },
+  {
+   "ma_cau": "K09010207052",
+   "nhom_id": "KNB00420",
+   "loai": "trac_nghiem",
+   "de": "Vật A (2 kg) ở độ cao 10 m so với sàn tầng 1 (mốc ban đầu). Vật B (5 kg) ở độ cao 3 m so với sàn tầng 1. Đổi mốc thế năng sang sàn tầng hầm, THẤP hơn sàn tầng 1 là 2 m. Vật nào có thế năng lớn hơn so với mốc mới? (cho P = 10m)",
+   "lua_chon": [
+    "A lớn hơn",
+    "B lớn hơn",
+    "Bằng nhau",
+    "Không xác định được"
+   ],
+   "dap_an": "B",
+   "loi_giai": "So với mốc mới (tầng hầm, thấp hơn sàn tầng 1 là 2 m): h<sub>A</sub>=10+2=12 m, Wt<sub>A</sub>=10×2×12=240 J. h<sub>B</sub>=3+2=5 m, Wt<sub>B</sub>=10×5×5=250 J. Vì 250 J>240 J nên B có thế năng lớn hơn. (Lưu ý: so với mốc sàn tầng 1 ban đầu thì A mới lớn hơn: 200 J>150 J — đổi mốc đã làm đảo thứ tự.)\n\nVì sao các phương án khác sai:\n- A: Ở mốc sàn tầng 1 ban đầu A đúng là lớn hơn, nhưng khi đổi sang mốc tầng hầm, B mới có thế năng lớn hơn (250 J>240 J).\n- C: 240 J ≠ 250 J, hai giá trị khác nhau, không bằng nhau.\n- D: Có đủ dữ kiện để tính lại độ cao theo mốc mới rồi so sánh, không phải không xác định được."
+  },
+  {
+   "ma_cau": "K09010207053",
+   "nhom_id": "KNB00420",
+   "loai": "trac_nghiem",
+   "de": "Vật A (4 kg) ở độ cao 6 m so với sàn tầng 1 (mốc ban đầu). Vật B (1 kg) ở độ cao 9 m so với sàn tầng 1. Đổi mốc thế năng sang một kệ cao 3 m so với sàn tầng 1. Vật nào có thế năng lớn hơn so với mốc mới? (cho P = 10m)",
+   "lua_chon": [
+    "B lớn hơn",
+    "Không xác định được",
+    "A lớn hơn",
+    "Bằng nhau"
+   ],
+   "dap_an": "C",
+   "loi_giai": "So với mốc mới (kệ cao 3 m): h<sub>A</sub>=6−3=3 m, Wt<sub>A</sub>=10×4×3=120 J. h<sub>B</sub>=9−3=6 m, Wt<sub>B</sub>=10×1×6=60 J. Vì 120 J>60 J nên A có thế năng lớn hơn.\n\nVì sao các phương án khác sai:\n- A: Đã so sánh ngược; sau khi đổi mốc, A vẫn có thế năng lớn hơn (120 J>60 J).\n- B: Có đủ dữ kiện để tính lại độ cao theo mốc mới rồi so sánh, không phải không xác định được.\n- D: 120 J ≠ 60 J, hai giá trị khác nhau rõ rệt, không bằng nhau."
+  },
+  {
+   "ma_cau": "K09010207054",
+   "nhom_id": "KNB00420",
+   "loai": "trac_nghiem",
+   "de": "Vật A (1 kg) ở độ cao 12 m so với sàn tầng 1 (mốc ban đầu). Vật B (6 kg) ở độ cao 4 m so với sàn tầng 1. Đổi mốc thế năng sang sàn tầng hầm, THẤP hơn sàn tầng 1 là 1 m. Vật nào có thế năng lớn hơn so với mốc mới? (cho P = 10m)",
+   "lua_chon": [
+    "A lớn hơn",
+    "Bằng nhau",
+    "Không xác định được",
+    "B lớn hơn"
+   ],
+   "dap_an": "D",
+   "loi_giai": "So với mốc mới (tầng hầm, thấp hơn sàn tầng 1 là 1 m): h<sub>A</sub>=12+1=13 m, Wt<sub>A</sub>=10×1×13=130 J. h<sub>B</sub>=4+1=5 m, Wt<sub>B</sub>=10×6×5=300 J. Vì 300 J>130 J nên B có thế năng lớn hơn.\n\nVì sao các phương án khác sai:\n- A: Đã so sánh ngược; sau khi đổi mốc, B mới có thế năng lớn hơn (300 J>130 J).\n- B: 130 J ≠ 300 J, hai giá trị khác nhau rõ rệt, không bằng nhau.\n- C: Có đủ dữ kiện để tính lại độ cao theo mốc mới rồi so sánh, không phải không xác định được."
+  },
+  {
+   "ma_cau": "K09010207055",
+   "nhom_id": "KNB00420",
+   "loai": "trac_nghiem",
+   "de": "Vật A (5 kg) ở độ cao 7 m so với sàn tầng 1 (mốc ban đầu). Vật B (2 kg) ở độ cao 2 m so với sàn tầng 1. Đổi mốc thế năng sang một kệ cao 1 m so với sàn tầng 1. Vật nào có thế năng lớn hơn so với mốc mới? (cho P = 10m)",
+   "lua_chon": [
+    "Bằng nhau",
+    "A lớn hơn",
+    "Không xác định được",
+    "B lớn hơn"
+   ],
+   "dap_an": "B",
+   "loi_giai": "So với mốc mới (kệ cao 1 m): h<sub>A</sub>=7−1=6 m, Wt<sub>A</sub>=10×5×6=300 J. h<sub>B</sub>=2−1=1 m, Wt<sub>B</sub>=10×2×1=20 J. Vì 300 J>20 J nên A có thế năng lớn hơn.\n\nVì sao các phương án khác sai:\n- A: 300 J ≠ 20 J, hai giá trị khác nhau rõ rệt, không bằng nhau.\n- C: Có đủ dữ kiện để tính lại độ cao theo mốc mới rồi so sánh, không phải không xác định được.\n- D: Đã so sánh ngược; sau khi đổi mốc, A vẫn có thế năng lớn hơn (300 J>20 J)."
+  },
+  {
+   "ma_cau": "K09010207056",
+   "nhom_id": "KNB00420",
+   "loai": "trac_nghiem",
+   "de": "Vật A (3 kg) ở độ cao 8 m so với sàn tầng 1 (mốc ban đầu). Vật B (4 kg) ở độ cao 5 m so với sàn tầng 1. Đổi mốc thế năng sang một kệ cao 4 m so với sàn tầng 1. Vật nào có thế năng lớn hơn so với mốc mới? (cho P = 10m)",
+   "lua_chon": [
+    "B lớn hơn",
+    "A lớn hơn",
+    "Bằng nhau",
+    "Không xác định được"
+   ],
+   "dap_an": "B",
+   "loi_giai": "So với mốc mới (kệ cao 4 m): h<sub>A</sub>=8−4=4 m, Wt<sub>A</sub>=10×3×4=120 J. h<sub>B</sub>=5−4=1 m, Wt<sub>B</sub>=10×4×1=40 J. Vì 120 J>40 J nên A có thế năng lớn hơn.\n\nVì sao các phương án khác sai:\n- A: Đã so sánh ngược; sau khi đổi mốc, A vẫn có thế năng lớn hơn (120 J>40 J).\n- C: 120 J ≠ 40 J, hai giá trị khác nhau rõ rệt, không bằng nhau.\n- D: Có đủ dữ kiện để tính lại độ cao theo mốc mới rồi so sánh, không phải không xác định được."
+  },
+  {
+   "ma_cau": "K09010207057",
+   "nhom_id": "KNB00420",
+   "loai": "trac_nghiem",
+   "de": "Vật A (3 kg) ở độ cao 9 m so với sàn tầng 1 (mốc ban đầu). Vật B (6 kg) ở độ cao 4 m so với sàn tầng 1. Đổi mốc thế năng sang sàn tầng hầm, THẤP hơn sàn tầng 1 là 1 m. Vật nào có thế năng lớn hơn so với mốc mới? (cho P = 10m)",
+   "lua_chon": [
+    "A lớn hơn",
+    "Không xác định được",
+    "B lớn hơn",
+    "Bằng nhau"
+   ],
+   "dap_an": "D",
+   "loi_giai": "So với mốc mới (tầng hầm, thấp hơn sàn tầng 1 là 1 m): h<sub>A</sub>=9+1=10 m, Wt<sub>A</sub>=10×3×10=300 J. h<sub>B</sub>=4+1=5 m, Wt<sub>B</sub>=10×6×5=300 J. Hai giá trị bằng nhau nên hai vật có thế năng bằng nhau so với mốc mới.\n\nVì sao các phương án khác sai:\n- A: Ở mốc sàn tầng 1 ban đầu A đúng là lớn hơn (270 J>240 J), nhưng khi đổi mốc, hai giá trị mới bằng nhau (300 J = 300 J).\n- B: Có đủ dữ kiện để tính lại độ cao theo mốc mới rồi so sánh, không phải không xác định được.\n- C: Tính lại đúng thì Wt<sub>A</sub>=Wt<sub>B</sub>=300 J, không phải B lớn hơn."
+  },
+  {
+   "ma_cau": "K09010207058",
+   "nhom_id": "KNB00420",
+   "loai": "trac_nghiem",
+   "de": "Vật A (6 kg) ở độ cao 5 m so với sàn tầng 1 (mốc ban đầu). Vật B (2 kg) ở độ cao 11 m so với sàn tầng 1. Đổi mốc thế năng sang một kệ cao 3 m so với sàn tầng 1. Vật nào có thế năng lớn hơn so với mốc mới? (cho P = 10m)",
+   "lua_chon": [
+    "Bằng nhau",
+    "Không xác định được",
+    "A lớn hơn",
+    "B lớn hơn"
+   ],
+   "dap_an": "D",
+   "loi_giai": "So với mốc mới (kệ cao 3 m): h<sub>A</sub>=5−3=2 m, Wt<sub>A</sub>=10×6×2=120 J. h<sub>B</sub>=11−3=8 m, Wt<sub>B</sub>=10×2×8=160 J. Vì 160 J>120 J nên B có thế năng lớn hơn.\n\nVì sao các phương án khác sai:\n- A: 120 J ≠ 160 J, hai giá trị khác nhau rõ rệt, không bằng nhau.\n- B: Có đủ dữ kiện để tính lại độ cao theo mốc mới rồi so sánh, không phải không xác định được.\n- C: Đã so sánh ngược; sau khi đổi mốc, B mới có thế năng lớn hơn (160 J>120 J)."
+  },
+  {
+   "ma_cau": "K09010207059",
+   "nhom_id": "KNB00420",
+   "loai": "trac_nghiem",
+   "de": "Trên công trường, một chiếc búa (2 kg) rơi từ độ cao 15 m; một chiếc cờ lê (0,5 kg) rơi từ độ cao 25 m (so với mặt đất). Dụng cụ nào có thế năng lớn hơn, tức nguy hiểm hơn nếu rơi trúng người? (cho P = 10m)",
+   "lua_chon": [
+    "Búa",
+    "Cờ lê",
+    "Nguy hiểm như nhau",
+    "Không so sánh được"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Wt búa=10×2×15=300 J. Wt cờ lê=10×0,5×25=125 J. Vì 300 J>125 J nên búa rơi nguy hiểm hơn dù ở độ cao thấp hơn.\n\nVì sao các phương án khác sai:\n- B: Đã so sánh chỉ theo độ cao (25 m>15 m) mà quên nhân với khối lượng; búa nặng hơn nhiều nên thế năng vẫn lớn hơn.\n- C: 300 J ≠ 125 J, khác nhau rõ rệt, không phải nguy hiểm như nhau.\n- D: Có đủ dữ kiện để tính thế năng và so sánh, không phải không so sánh được."
+  },
+  {
+   "ma_cau": "K09010207060",
+   "nhom_id": "KNB00420",
+   "loai": "trac_nghiem",
+   "de": "Trên công trường, một xô sơn (4 kg) rơi từ độ cao 8 m; một chiếc búa (1 kg) rơi từ độ cao 20 m (so với mặt đất). Dụng cụ nào có thế năng lớn hơn, tức nguy hiểm hơn nếu rơi trúng người? (cho P = 10m)",
+   "lua_chon": [
+    "Búa",
+    "Không so sánh được",
+    "Xô sơn",
+    "Nguy hiểm như nhau"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Wt xô sơn=10×4×8=320 J. Wt búa=10×1×20=200 J. Vì 320 J>200 J nên xô sơn rơi nguy hiểm hơn dù ở độ cao thấp hơn.\n\nVì sao các phương án khác sai:\n- A: Đã so sánh chỉ theo độ cao (20 m>8 m) mà quên nhân với khối lượng; xô sơn nặng hơn nhiều nên thế năng vẫn lớn hơn.\n- B: Có đủ dữ kiện để tính thế năng và so sánh, không phải không so sánh được.\n- D: 320 J ≠ 200 J, khác nhau rõ rệt, không phải nguy hiểm như nhau."
+  },
+  {
+   "ma_cau": "K09010207061",
+   "nhom_id": "KNB00420",
+   "loai": "trac_nghiem",
+   "de": "Trên công trường, một viên gạch (3 kg) rơi từ độ cao 18 m; một xô vữa (6 kg) rơi từ độ cao 9 m (so với mặt đất). Dụng cụ nào có thế năng lớn hơn, tức nguy hiểm hơn nếu rơi trúng người? (cho P = 10m)",
+   "lua_chon": [
+    "Viên gạch",
+    "Xô vữa",
+    "Không so sánh được",
+    "Nguy hiểm như nhau"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Wt gạch=10×3×18=540 J. Wt vữa=10×6×9=540 J. Hai giá trị bằng nhau nên hai dụng cụ nguy hiểm như nhau nếu rơi trúng người.\n\nVì sao các phương án khác sai:\n- A: Wt gạch và Wt vữa đều bằng 540 J, bằng nhau, không phải gạch lớn hơn.\n- B: Wt gạch và Wt vữa đều bằng 540 J, bằng nhau, không phải xô vữa lớn hơn.\n- C: Có đủ dữ kiện để tính thế năng và so sánh; kết quả là hai giá trị bằng nhau, không phải không so sánh được."
+  },
+  {
+   "ma_cau": "K09010207062",
+   "nhom_id": "KNB00420",
+   "loai": "trac_nghiem",
+   "de": "Trên công trường, một thanh thép (5 kg) rơi từ độ cao 12 m; một hộp đinh (2 kg) rơi từ độ cao 25 m (so với mặt đất). Dụng cụ nào có thế năng lớn hơn, tức nguy hiểm hơn nếu rơi trúng người? (cho P = 10m)",
+   "lua_chon": [
+    "Hộp đinh",
+    "Thanh thép",
+    "Nguy hiểm như nhau",
+    "Không so sánh được"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Wt thanh thép=10×5×12=600 J. Wt hộp đinh=10×2×25=500 J. Vì 600 J>500 J nên thanh thép rơi nguy hiểm hơn dù ở độ cao thấp hơn.\n\nVì sao các phương án khác sai:\n- A: Đã so sánh chỉ theo độ cao (25 m>12 m) mà quên nhân với khối lượng; thanh thép nặng hơn nhiều nên thế năng vẫn lớn hơn (600 J>500 J).\n- C: 600 J ≠ 500 J, khác nhau, không phải nguy hiểm như nhau.\n- D: Có đủ dữ kiện để tính thế năng và so sánh, không phải không so sánh được."
+  },
+  {
+   "ma_cau": "K09010207063",
+   "nhom_id": "KNB00420",
+   "loai": "trac_nghiem",
+   "de": "Trên công trường, một cuộn dây điện (1,5 kg) rơi từ độ cao 16 m; một bình sơn (3 kg) rơi từ độ cao 10 m (so với mặt đất). Dụng cụ nào có thế năng lớn hơn, tức nguy hiểm hơn nếu rơi trúng người? (cho P = 10m)",
+   "lua_chon": [
+    "Cuộn dây điện",
+    "Nguy hiểm như nhau",
+    "Không so sánh được",
+    "Bình sơn"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Wt cuộn dây=10×1,5×16=240 J. Wt bình sơn=10×3×10=300 J. Vì 300 J>240 J nên bình sơn rơi nguy hiểm hơn dù ở độ cao thấp hơn.\n\nVì sao các phương án khác sai:\n- A: Đã so sánh chỉ theo độ cao (16 m>10 m) mà quên nhân với khối lượng; bình sơn nặng hơn nên thế năng vẫn lớn hơn (300 J>240 J).\n- B: 240 J ≠ 300 J, khác nhau, không phải nguy hiểm như nhau.\n- C: Có đủ dữ kiện để tính thế năng và so sánh, không phải không so sánh được."
+  },
+  {
+   "ma_cau": "K09010207064",
+   "nhom_id": "KNB00420",
+   "loai": "trac_nghiem",
+   "de": "Trên công trường, một cuộn cáp thép (7 kg) rơi từ độ cao 6 m; một chiếc kìm (1 kg) rơi từ độ cao 30 m (so với mặt đất). Dụng cụ nào có thế năng lớn hơn, tức nguy hiểm hơn nếu rơi trúng người? (cho P = 10m)",
+   "lua_chon": [
+    "Kìm",
+    "Nguy hiểm như nhau",
+    "Không so sánh được",
+    "Cuộn cáp thép"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Wt cuộn cáp=10×7×6=420 J. Wt kìm=10×1×30=300 J. Vì 420 J>300 J nên cuộn cáp thép rơi nguy hiểm hơn dù ở độ cao thấp hơn.\n\nVì sao các phương án khác sai:\n- A: Đã so sánh chỉ theo độ cao (30 m>6 m) mà quên nhân với khối lượng; cuộn cáp nặng hơn nhiều nên thế năng vẫn lớn hơn.\n- B: 420 J ≠ 300 J, khác nhau rõ rệt, không phải nguy hiểm như nhau.\n- C: Có đủ dữ kiện để tính thế năng và so sánh, không phải không so sánh được."
+  },
+  {
+   "ma_cau": "K09010207065",
+   "nhom_id": "KNB00420",
+   "loai": "trac_nghiem",
+   "de": "Trên công trường, một thùng sơn (2,5 kg) rơi từ độ cao 24 m; một búa tạ (10 kg) rơi từ độ cao 6 m (so với mặt đất). Dụng cụ nào có thế năng lớn hơn, tức nguy hiểm hơn nếu rơi trúng người? (cho P = 10m)",
+   "lua_chon": [
+    "Búa tạ",
+    "Thùng sơn",
+    "Không so sánh được",
+    "Nguy hiểm như nhau"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Wt thùng sơn=10×2,5×24=600 J. Wt búa tạ=10×10×6=600 J. Hai giá trị bằng nhau nên hai dụng cụ nguy hiểm như nhau nếu rơi trúng người.\n\nVì sao các phương án khác sai:\n- A: Wt búa tạ và Wt thùng sơn đều bằng 600 J, bằng nhau, không phải búa tạ lớn hơn.\n- B: Wt búa tạ và Wt thùng sơn đều bằng 600 J, bằng nhau, không phải thùng sơn lớn hơn.\n- C: Có đủ dữ kiện để tính thế năng và so sánh; kết quả là hai giá trị bằng nhau, không phải không so sánh được."
+  }
+ ]
+}

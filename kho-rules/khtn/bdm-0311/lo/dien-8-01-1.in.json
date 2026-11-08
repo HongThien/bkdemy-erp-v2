@@ -1,0 +1,2602 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00369",
+   "khoi": "8",
+   "chu_de": "Phản ứng Hóa học",
+   "chuyen_de": "Phản ứng Hóa học",
+   "nhom": "Chất phản ứng, sản phẩm, phương trình hóa học dạng chữ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nPhản ứng hoá học là quá trình biến đổi từ chất này thành chất khác. Chất ban đầu bị biến đổi là chất tham gia (chất phản ứng); chất mới sinh ra là sản phẩm. Trong quá trình phản ứng, lượng chất tham gia giảm dần, lượng sản phẩm tăng dần.\nPhương trình chữ: Tên các chất tham gia $\\rightarrow$ Tên các sản phẩm.\nCách đọc: dấu \"+\" giữa các chất tham gia đọc là 'tác dụng với' hoặc 'phản ứng với'; dấu \"+\" giữa các sản phẩm đọc là 'và'; mũi tên đọc là 'tạo thành' hoặc 'tạo ra'. Phản ứng chỉ có một chất tham gia thường đọc là '... bị phân huỷ tạo thành ...'.\nDiễn biến ở mức nguyên tử: liên kết giữa các nguyên tử trong chất tham gia bị phá vỡ, các nguyên tử liên kết lại theo cách khác tạo thành sản phẩm. Số nguyên tử mỗi loại trước và sau phản ứng không đổi.\n\n##TC 2. Công thức\nSố nguyên tử của một nguyên tố = số phân tử $\\times$ số nguyên tử nguyên tố đó trong một phân tử.\n\n##VD Ví dụ: \nsố nguyên tử $\\mathrm{H}$ trong 2 phân tử $\\mathrm{H_2O}$ là $2 \\times 2 = 4$.\n\n##PP 3. Các bước làm bài\nBước 1. Đọc mô tả, xác định chất mất đi (chất tham gia) và chất mới xuất hiện (sản phẩm).\nBước 2. Viết hoặc đọc phương trình chữ: chất tham gia bên trái, sản phẩm bên phải mũi tên.\nBước 3. Với câu ở mức nguyên tử: đếm từng loại nguyên tử ở hai phía, hoặc so sánh các cặp nguyên tử liên kết với nhau trước và sau phản ứng.\n\n##CY 4. Lưu ý\nKhông ghi chất xúc tác, điều kiện phản ứng vào chỗ của chất tham gia hay sản phẩm.\nNguyên tử không tự sinh ra, không mất đi, không biến đổi thành nguyên tử của nguyên tố khác.\nChất còn lại sau phản ứng mà không thay đổi là chất dư, không phải sản phẩm.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00371",
+   "khoi": "8",
+   "chu_de": "Phản ứng Hóa học",
+   "chuyen_de": "Phản ứng Hóa học",
+   "nhom": "Nhận biết dấu hiệu có phản ứng hóa học xảy ra",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nCó thể nhận biết phản ứng hoá học xảy ra nhờ bốn nhóm dấu hiệu:\n– Thay đổi màu sắc, mùi: dây đồng hơ lửa hoá đen, quỳ tím gặp acid hoá đỏ, trứng hỏng có mùi hôi.\n– Tạo thành chất khí: sủi bọt khí khi cho kiềm vào acid, khi nhỏ giấm vào baking soda.\n– Tạo thành chất kết tủa: chất rắn không tan xuất hiện khi trộn hai dung dịch.\n– Toả nhiệt hoặc thu nhiệt, có thể kèm phát sáng: vôi sống cho vào nước làm nước nóng lên, gas cháy toả nhiệt và phát sáng.\n\n##PP2. Các bước làm bài\nBước 1. Ghi lại hiện tượng quan sát được trước và sau.\nBước 2. Xếp hiện tượng vào một trong bốn nhóm dấu hiệu.\nBước 3. Kiểm tra dấu hiệu đó có do chất mới gây ra không, rồi kết luận.\n\n##CY 3. Lưu ý\nMột số quá trình vật lí cũng có hiện tượng giống phản ứng: nước sôi có bọt khí (hơi nước), mực tan làm nước đổi màu, nước đường đặc để lạnh tách ra tinh thể đường, bàn là nóng lên khi có dòng điện. Phải dựa vào việc có chất mới hay không.\nCó phản ứng chỉ có một dấu hiệu khó thấy, ví dụ hydrochloric acid tác dụng với sodium hydroxide chỉ làm ống nghiệm ấm lên.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00372",
+   "khoi": "8",
+   "chu_de": "Phản ứng Hóa học",
+   "chuyen_de": "Phản ứng Hóa học",
+   "nhom": "Vận dụng giải thích hiện tượng thực tế",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nGiải thích một hiện tượng thực tế dựa trên ba ý: có chất mới tạo thành hay không (biến đổi vật lí hay hoá học); dấu hiệu nào cho thấy điều đó; phản ứng toả nhiệt hay thu nhiệt.\nMột số phản ứng thường gặp: acid (trong giấm, chanh, canh chua, dạ dày) tác dụng với đá vôi, cặn ấm đun nước, baking soda tạo khí carbon dioxide; vôi tôi tác dụng với khí carbon dioxide trong không khí tạo calcium carbonate rắn; kim loại để lâu trong không khí ẩm bị phủ lớp chất mới; nhiên liệu cháy cần oxygen và toả nhiệt.\nCó phản ứng xảy ra nhanh (cháy, nổ), có phản ứng xảy ra chậm (gỗ mục, đá vôi bị hoà tan tạo hang động, kim loại bị gỉ).\nSự cháy cần chất cháy, oxygen và nhiệt độ thích hợp; ngăn oxygen tiếp xúc với chất cháy thì phản ứng cháy dừng lại.\n\n##PP 2. Các bước làm bài\nBước 1. Xác định chất trước và sau trong tình huống.\nBước 2. Chọn dấu hiệu chính (màu, mùi, khí, kết tủa, nhiệt) để kết luận loại biến đổi.\nBước 3. Nêu phản ứng xảy ra và chiều nhiệt (nếu cần), ghép thành lời giải thích cho tình huống.\n\n##CY 3. Lưu ý\nGas, cồn, xăng dễ bay hơi; hơi của chúng trộn với không khí gặp lửa sẽ cháy bùng hoặc nổ vì phản ứng toả nhiệt xảy ra cùng lúc trong cả khối khí.\nThan, củi cháy thiếu oxygen sinh ra khí carbon monoxide độc.\nNgọn lửa màu vàng, có muội là dấu hiệu nhiên liệu cháy không hoàn toàn, gây lãng phí.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00374",
+   "khoi": "8",
+   "chu_de": "Phản ứng Hóa học",
+   "chuyen_de": "Phương trình Hóa học",
+   "nhom": "ĐỌC HIỂU PHƯƠNG TRÌNH HOÁ HỌC ĐÃ CHO SẴN",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "- Hệ số đứng trước mỗi chất trong một PTHH đã cân bằng cho biết tỉ lệ số phân tử/nguyên tử giữa các chất với nhau.\n- Ví dụ: $\\mathrm{2H_2} + \\mathrm{O_2} \\rightarrow \\mathrm{2H_2O}$ nghĩa là cứ 2 phân tử $\\mathrm{H_2}$ phản ứng vừa đủ với 1 phân tử $\\mathrm{O_2}$, tạo ra 2 phân tử $\\mathrm{H_2O}$.\n- Ở dạng này chỉ ĐỌC và suy luận tỉ lệ có sẵn trên PTHH đã cân bằng, không được tự sửa hệ số hay chỉ số.\nVí dụ minh hoạ:\nCho PTHH đã cân bằng: $\\mathrm{2Al} + \\mathrm{3H_2SO_4} \\rightarrow \\mathrm{Al_2(SO_4)_3} + \\mathrm{3H_2}$. Nếu có 4 phân tử $\\mathrm{Al}$ phản ứng vừa đủ thì cần bao nhiêu phân tử $\\mathrm{H_2SO_4}$, và tạo ra bao nhiêu phân tử khí $\\mathrm{H_2}$?\nBài giải:\n- Theo PTHH, tỉ lệ $\\mathrm{Al} : \\mathrm{H_2SO_4} : \\mathrm{H_2} = 2 : 3 : 3$.\n- 4 phân tử $\\mathrm{Al}$ gấp 2 lần hệ số của $\\mathrm{Al}$ trong PTHH ($4 : 2 = 2$) $\\rightarrow$ nhân cả tỉ lệ $\\mathrm{H_2SO_4}$ và $\\mathrm{H_2}$ lên 2 lần.\n- Cần: $3 \\times 2 = 6$ phân tử $\\mathrm{H_2SO_4}$. Tạo ra: $3 \\times 2 = 6$ phân tử $\\mathrm{H_2}$.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00375",
+   "khoi": "8",
+   "chu_de": "Phản ứng Hóa học",
+   "chuyen_de": "Phương trình Hóa học",
+   "nhom": "Định luật bảo toàn khối lượng",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "- Trong một phản ứng hoá học, tổng khối lượng các chất tham gia bằng tổng khối lượng các chất sản phẩm.\n- Công thức: $\\mathrm{m(A)} + \\mathrm{m(B)} = \\mathrm{m(C)} + \\mathrm{m(D)}$ (A, B là chất tham gia; C, D là chất sản phẩm).\n- Dùng để tìm khối lượng một chất còn thiếu khi đã biết khối lượng các chất còn lại — KHÔNG cần biết PTHH cụ thể, không cần tính số mol.\nVí dụ minh họa:\nĐốt cháy hoàn toàn 6,5 gam kẽm ($\\mathrm{Zn}$) trong khí oxi, sau phản ứng thu được 8,1 gam kẽm oxit ($\\mathrm{ZnO}$).\nTính khối lượng khí oxi đã phản ứng.\nBài giải:\n– Phản ứng: $\\mathrm{Zn} + \\mathrm{O_2} \\rightarrow \\mathrm{ZnO}$.\n– Theo định luật bảo toàn khối lượng: $\\mathrm{m(Zn)} + \\mathrm{m(O_2)} = \\mathrm{m(ZnO)}$.\n$\\rightarrow \\mathrm{m(O_2)} = \\mathrm{m(ZnO)} - \\mathrm{m(Zn)} = 8,1 - 6,5 = 1,6$ gam.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00376",
+   "khoi": "8",
+   "chu_de": "Phản ứng Hóa học",
+   "chuyen_de": "Phương trình Hóa học",
+   "nhom": "LẬP PHƯƠNG TRÌNH HOÁ HỌC / CÂN BẰNG HỆ SỐ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "- Cân bằng PTHH là tìm hệ số thích hợp đặt trước mỗi công thức hoá học sao cho số nguyên tử của từng nguyên tố ở hai vế bằng nhau.\n- Chỉ được thêm hoặc sửa HỆ SỐ đứng trước công thức; TUYỆT ĐỐI không được sửa CHỈ SỐ trong công thức hoá học vì sẽ biến thành một chất khác.\nVídụ minh họa:\nCân bằng PTHH sau: $\\mathrm{Al} + \\mathrm{O_2} \\to \\mathrm{Al_2O_3}$\nBài giải:\n- $\\mathrm{Al_2O_3}$ có 2 nguyên tử $\\mathrm{Al}$ và 3 nguyên tử $\\mathrm{O}$. Cân bằng nguyên tố $\\mathrm{O}$ trước: $\\mathrm{BCNN}(2, 3) = 6 \\to$ đặt $3\\mathrm{O_2}$ (vế trái) và $2\\mathrm{Al_2O_3}$ (vế phải) để cả hai vế đều có $6\\mathrm{O}$.\n- Cân bằng tiếp nguyên tố $\\mathrm{Al}$: vế phải có $2 \\times 2 = 4\\mathrm{Al} \\to$ đặt $4\\mathrm{Al}$ ở vế trái.\n- PTHH đã cân bằng: $4\\mathrm{Al} + 3\\mathrm{O_2} \\to 2\\mathrm{Al_2O_3}$.\n- Kiểm tra lại: vế trái có $4\\mathrm{Al}, 6\\mathrm{O}$ — vế phải có $4\\mathrm{Al}$ ($2\\times2$), $6\\mathrm{O}$ ($2\\times3$) $\\to$ hai vế đã bằng nhau.",
+   "can_dien_ly_thuyet_nhom": false
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB00804",
+   "nhom_id": "KNB00369",
+   "thu_tu": 1,
+   "dang": "XÁC ĐỊNH CHẤT ĐẦU – SẢN PHẨM TỪ MÔ TẢ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010202026",
+     "loai": "trac_nghiem",
+     "de": "Trong phản ứng hoá học, chất ban đầu bị biến đổi được gọi là",
+     "lua_chon": [
+      "sản phẩm.",
+      "chất tham gia.",
+      "chất xúc tác.",
+      "dung môi."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chất ban đầu bị biến đổi trong phản ứng được gọi là chất tham gia (chất phản ứng); chất mới sinh ra là sản phẩm."
+    },
+    {
+     "ma_cau": "K08010202027",
+     "loai": "trac_nghiem",
+     "de": "Đốt sulfur trong không khí, sulfur cháy với ngọn lửa màu xanh nhạt, phản ứng với oxygen tạo thành khí sulfur dioxide có mùi hắc. Sản phẩm của phản ứng là",
+     "lua_chon": [
+      "sulfur.",
+      "oxygen.",
+      "không khí.",
+      "sulfur dioxide."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Sulfur và oxygen là chất tham gia, chất mới tạo thành là sulfur dioxide.Vậy sản phẩm là sulfur dioxide."
+    },
+    {
+     "ma_cau": "K08010202028",
+     "loai": "trac_nghiem",
+     "de": "Trong lò nung vôi, đá vôi (calcium carbonate) bị phân huỷ thành vôi sống (calcium oxide) và khí carbon dioxide. Chất tham gia phản ứng là",
+     "lua_chon": [
+      "calcium carbonate.",
+      "calcium oxide.",
+      "carbon dioxide.",
+      "calcium oxide và carbon dioxide."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Chất ban đầu bị biến đổi là calcium carbonate; calcium oxide và carbon dioxide là chất mới tạo thành.Vậy chất tham gia là calcium carbonate."
+    },
+    {
+     "ma_cau": "K08010202029",
+     "loai": "trac_nghiem",
+     "de": "Cho viên kẽm (zinc) vào dung dịch hydrochloric acid, thu được dung dịch zinc chloride và khí hydrogen thoát ra. Các sản phẩm của phản ứng là",
+     "lua_chon": [
+      "zinc và hydrochloric acid.",
+      "zinc và hydrogen.",
+      "zinc chloride và hydrogen.",
+      "zinc chloride và hydrochloric acid."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Zinc và hydrochloric acid là chất tham gia; zinc chloride và hydrogen là các chất mới tạo thành.\nVậy các sản phẩm là zinc chloride và hydrogen."
+    },
+    {
+     "ma_cau": "K08010202030",
+     "loai": "trac_nghiem",
+     "de": "Khí hydrogen cháy trong khí oxygen tạo thành nước. Trong quá trình phản ứng, lượng chất nào sau đây giảm dần?",
+     "lua_chon": [
+      "Nước.",
+      "Hydrogen và nước.",
+      "Oxygen và nước.",
+      "Hydrogen và oxygen."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trong phản ứng, lượng chất tham gia giảm dần, lượng sản phẩm tăng dần.\nChất tham gia là hydrogen và oxygen nên lượng hai chất này giảm dần."
+    },
+    {
+     "ma_cau": "K08010202031",
+     "loai": "trac_nghiem",
+     "de": "Nhỏ dung dịch sodium hydroxide (lấy dư) vào dung dịch copper(II) sulfate, thu được chất rắn màu xanh là copper(II) hydroxide và dung dịch sodium sulfate. Sau khi phản ứng kết thúc, chất nào sau đây không còn trong ống nghiệm?",
+     "lua_chon": [
+      "Sodium hydroxide.",
+      "Copper(II) sulfate.",
+      "Copper(II) hydroxide.",
+      "Sodium sulfate."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Sodium hydroxide lấy dư nên copper(II) sulfate phản ứng hết, không còn trong ống nghiệm.\nTrong ống nghiệm còn các sản phẩm copper(II) hydroxide, sodium sulfate và phần sodium hydroxide dư."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00805",
+   "nhom_id": "KNB00369",
+   "thu_tu": 2,
+   "dang": "VIẾT PHƯƠNG TRÌNH CHỮ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010202035",
+     "loai": "trac_nghiem",
+     "de": "Đun nóng hỗn hợp bột sắt (iron) và bột sulfur, thu được iron(II) sulfide. Phương trình chữ của phản ứng là",
+     "lua_chon": [
+      "iron(II) sulfide \\rightarrow iron + sulfur.",
+      "iron + sulfur \\rightarrow iron(II) sulfide.",
+      "iron + iron(II) sulfide \\rightarrow sulfur.",
+      "iron \\rightarrow sulfur + iron(II) sulfide."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chất tham gia: iron, sulfur. Sản phẩm: iron(II) sulfide.\nPhương trình chữ: iron + sulfur \\rightarrow iron(II) sulfide."
+    },
+    {
+     "ma_cau": "K08010202033",
+     "loai": "trac_nghiem",
+     "de": "Đốt cháy dải magnesium trong khí oxygen, thu được magnesium oxide. Phương trình chữ của phản ứng là",
+     "lua_chon": [
+      "magnesium + oxygen \\rightarrow magnesium oxide.",
+      "magnesium oxide \\rightarrow magnesium + oxygen.",
+      "magnesium \\rightarrow oxygen + magnesium oxide.",
+      "magnesium oxide + oxygen \\rightarrow magnesium."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Chất tham gia: magnesium, oxygen. Sản phẩm: magnesium oxide.\nPhương trình chữ: magnesium + oxygen \\rightarrow magnesium oxide."
+    },
+    {
+     "ma_cau": "K08010202032",
+     "loai": "trac_nghiem",
+     "de": "Phương trình chữ của một phản ứng hoá học được viết theo dạng",
+     "lua_chon": [
+      "Tên các sản phẩm \\rightarrow Tên các chất tham gia.",
+      "Tên chất tham gia + Tên sản phẩm \\rightarrow Tên chất tham gia.",
+      "Tên các chất tham gia \\rightarrow Tên các sản phẩm.",
+      "Tên các nguyên tố \\rightarrow Tên các chất tham gia."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Phương trình chữ ghi tên các chất tham gia ở bên trái, tên các sản phẩm ở bên phải mũi tên."
+    },
+    {
+     "ma_cau": "K08010202037",
+     "loai": "trac_nghiem",
+     "de": "Thổi hơi thở vào cốc nước vôi trong (dung dịch calcium hydroxide), khí carbon dioxide trong hơi thở phản ứng với calcium hydroxide làm nước vôi vẩn đục do tạo thành calcium carbonate không tan; phản ứng còn tạo ra nước. Phương trình chữ của phản ứng là",
+     "lua_chon": [
+      "calcium carbonate + nước \\rightarrow carbon dioxide + calcium hydroxide.",
+      "carbon dioxide + calcium hydroxide + nước \\rightarrow calcium carbonate.",
+      "carbon dioxide + calcium hydroxide \\rightarrow calcium carbonate + nước.",
+      "carbon dioxide + nước \\rightarrow calcium carbonate + calcium hydroxide."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Chất tham gia: carbon dioxide, calcium hydroxide. Sản phẩm: calcium carbonate, nước.\nPhương trình chữ: carbon dioxide + calcium hydroxide \\rightarrow calcium carbonate + nước."
+    },
+    {
+     "ma_cau": "K08010202036",
+     "loai": "trac_nghiem",
+     "de": "Cho đinh sắt (iron) vào dung dịch hydrochloric acid, thu được dung dịch iron(II) chloride và khí hydrogen. Phương trình chữ của phản ứng là",
+     "lua_chon": [
+      "iron + hydrochloric acid \\rightarrow iron(II) chloride + hydrogen.",
+      "iron(II) chloride + hydrogen \\rightarrow iron + hydrochloric acid.",
+      "iron + hydrogen \\rightarrow iron(II) chloride + hydrochloric acid.",
+      "iron + hydrochloric acid + hydrogen \\rightarrow iron(II) chloride."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Chất tham gia: iron, hydrochloric acid. Sản phẩm: iron(II) chloride, hydrogen.\nPhương trình chữ: iron + hydrochloric acid \\rightarrow iron(II) chloride + hydrogen."
+    },
+    {
+     "ma_cau": "K08010202034",
+     "loai": "trac_nghiem",
+     "de": "Nung đá vôi (calcium carbonate) ở nhiệt độ cao, thu được vôi sống (calcium oxide) và khí carbon dioxide. Phương trình chữ của phản ứng là",
+     "lua_chon": [
+      "calcium oxide + carbon dioxide \\rightarrow calcium carbonate.",
+      "calcium oxide \\rightarrow calcium carbonate + carbon dioxide.",
+      "calcium carbonate + carbon dioxide \\rightarrow calcium oxide.",
+      "calcium carbonate \\rightarrow calcium oxide + carbon dioxide."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Chất tham gia: calcium carbonate. Sản phẩm: calcium oxide, carbon dioxide.\nPhương trình chữ: calcium carbonate \\rightarrow calcium oxide + carbon dioxide."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00806",
+   "nhom_id": "KNB00369",
+   "thu_tu": 3,
+   "dang": "ĐỌC PHƯƠNG TRÌNH CHỮ THÀNH LỜI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010202040",
+     "loai": "trac_nghiem",
+     "de": "Khi đun nóng, xảy ra phản ứng: copper(II) hydroxide → copper(II) oxide + nước. Cách đọc đúng phương trình chữ này là",
+     "lua_chon": [
+      "Copper(II) oxide tác dụng với nước tạo thành copper(II) hydroxide.",
+      "Copper(II) hydroxide tác dụng với nước tạo thành copper(II) oxide.",
+      "Copper(II) hydroxide bị phân huỷ tạo thành copper(II) oxide và nước.",
+      "Copper(II) oxide bị phân huỷ tạo thành copper(II) hydroxide và nước."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Phản ứng có một chất tham gia là copper(II) hydroxide, hai sản phẩm là copper(II) oxide và nước.\nĐọc: Copper(II) hydroxide bị phân huỷ tạo thành copper(II) oxide và nước."
+    },
+    {
+     "ma_cau": "K08010202041",
+     "loai": "trac_nghiem",
+     "de": "Cách đọc đúng phương trình chữ zinc + hydrochloric acid \\rightarrow zinc chloride + hydrogen là",
+     "lua_chon": [
+      "Zinc tác dụng với hydrochloric acid tạo thành zinc chloride và hydrogen.",
+      "Zinc chloride tác dụng với hydrogen tạo thành zinc và hydrochloric acid.",
+      "Zinc tác dụng với hydrogen tạo thành zinc chloride và hydrochloric acid.",
+      "Zinc tác dụng với zinc chloride tạo thành hydrochloric acid và hydrogen."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Chất tham gia là zinc và hydrochloric acid, sản phẩm là zinc chloride và hydrogen.\nĐọc: Zinc tác dụng với hydrochloric acid tạo thành zinc chloride và hydrogen."
+    },
+    {
+     "ma_cau": "K08010202038",
+     "loai": "trac_nghiem",
+     "de": "Trong phương trình chữ, dấu '+' giữa các chất tham gia được đọc là",
+     "lua_chon": [
+      "'tạo thành'.",
+      "'phân huỷ thành'.",
+      "'sinh ra'.",
+      "'tác dụng với'."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Dấu '+' giữa các chất tham gia đọc là 'tác dụng với' hoặc 'phản ứng với'; mũi tên đọc là 'tạo thành' hoặc 'tạo ra'."
+    },
+    {
+     "ma_cau": "K08010202043",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình chữ: calcium oxide + nước \\rightarrow calcium hydroxide. Nhận xét nào sau đây đúng?",
+     "lua_chon": [
+      "Phản ứng có hai chất tham gia và một sản phẩm.",
+      "Phản ứng có một chất tham gia và hai sản phẩm.",
+      "Phản ứng có hai chất tham gia và hai sản phẩm.",
+      "Phản ứng có một chất tham gia và một sản phẩm."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Bên trái mũi tên có hai chất: calcium oxide và nước; bên phải có một chất: calcium hydroxide.\nVậy phản ứng có hai chất tham gia và một sản phẩm."
+    },
+    {
+     "ma_cau": "K08010202042",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình chữ: sodium hydroxide + hydrochloric acid \\rightarrow sodium chloride + nước. Phát biểu nào sau đây đúng?",
+     "lua_chon": [
+      "Nước là một chất tham gia phản ứng.",
+      "Sodium chloride là một chất tham gia phản ứng.",
+      "Hydrochloric acid là một sản phẩm của phản ứng.",
+      "Nước là một sản phẩm của phản ứng."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Các chất ở bên phải mũi tên là sản phẩm: sodium chloride và nước.\nVậy nước là một sản phẩm của phản ứng."
+    },
+    {
+     "ma_cau": "K08010202039",
+     "loai": "trac_nghiem",
+     "de": "Cách đọc đúng phương trình chữ carbon + oxygen → carbon dioxide là",
+     "lua_chon": [
+      "Carbon dioxide tác dụng với oxygen tạo thành carbon.",
+      "Carbon tác dụng với oxygen tạo thành carbon dioxide.",
+      "Carbon tác dụng với carbon dioxide tạo thành oxygen.",
+      "Carbon dioxide phân huỷ thành carbon và oxygen."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chất tham gia là carbon và oxygen, sản phẩm là carbon dioxide.\nĐọc: Carbon tác dụng với oxygen tạo thành carbon dioxide."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00807",
+   "nhom_id": "KNB00369",
+   "thu_tu": 4,
+   "dang": "ĐẾM SỐ NGUYÊN TỬ TRƯỚC VÀ SAU PHẢN ỨNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010202044",
+     "loai": "tra_loi_ngan",
+     "de": "Một phân tử nitrogen ($\\mathrm{N_2}$) phản ứng với ba phân tử hydrogen ($\\mathrm{H_2}$) tạo thành hai phân tử ammonia ($\\mathrm{NH_3}$). Có bao nhiêu nguyên tử hydrogen trong các phân tử ammonia tạo thành?",
+     "dap_an": "6",
+     "loi_giai": "Mỗi phân tử $\\mathrm{NH_3}$ có 3 nguyên tử $\\mathrm{H}$.\nSố nguyên tử $\\mathrm{H}$ trong 2 phân tử $\\mathrm{NH_3}$:\n$2 \\times 3 = 6$\nKết quả bằng số nguyên tử $\\mathrm{H}$ trong 3 phân tử $\\mathrm{H_2}$ ban đầu."
+    },
+    {
+     "ma_cau": "K08010202048",
+     "loai": "tra_loi_ngan",
+     "de": "Phosphorus (P) cháy trong khí oxygen  $\\mathrm{O_2}$ tạo thành diphosphorus pentoxide  $\\mathrm{P_2O_5}$. Để tạo thành 2 phân tử  $\\mathrm{P_2O_5}$ thì cần bao nhiêu phân tử oxygen phản ứng?",
+     "dap_an": "5",
+     "loi_giai": "Số nguyên tử O trong 2 phân tử $\\mathrm{P_2O_5}$:\n$2 \\times 5 = 10$\nSố nguyên tử O được bảo toàn, mỗi phân tử $\\mathrm{O_2}$ có 2 nguyên tử O.\nSố phân tử $\\mathrm{O_2}$ cần dùng:\n$10 : 2 = 5$"
+    },
+    {
+     "ma_cau": "K08010202049",
+     "loai": "tra_loi_ngan",
+     "de": "Khi có chất xúc tác và đun nóng, sulfur dioxide ($\\mathrm{SO_2}$) phản ứng với oxygen ($\\mathrm{O_2}$) tạo thành sulfur trioxide ($\\mathrm{SO_3}$). Cho 4 phân tử $\\mathrm{SO_2}$ phản ứng vừa đủ với oxygen. Có bao nhiêu phân tử oxygen đã phản ứng?",
+     "dap_an": "2",
+     "loi_giai": "Số nguyên tử S được bảo toàn, mỗi phân tử $\\mathrm{SO_3}$ có 1 nguyên tử S nên tạo thành 4 phân tử $\\mathrm{SO_3}$.\nSố nguyên tử O trong 4 phân tử $\\mathrm{SO_3}$:\n$4 \\times 3 = 12$\nSố nguyên tử O trong 4 phân tử $\\mathrm{SO_2}$:\n$4 \\times 2 = 8$\nSố nguyên tử O do oxygen cung cấp:\n$12 - 8 = 4$\nSố phân tử $\\mathrm{O_2}$ đã phản ứng:\n$4 : 2 = 2$"
+    },
+    {
+     "ma_cau": "K08010202045",
+     "loai": "tra_loi_ngan",
+     "de": "Một nguyên tử carbon ($\\mathrm{C}$) phản ứng với một phân tử oxygen ($\\mathrm{O_2}$) tạo thành một phân tử carbon dioxide ($\\mathrm{CO_2}$). Có bao nhiêu nguyên tử trong các chất tham gia?",
+     "dap_an": "3",
+     "loi_giai": "Chất tham gia gồm 1 nguyên tử $\\mathrm{C}$ và 1 phân tử $\\mathrm{O_2}$ có 2 nguyên tử $\\mathrm{O}$.\nTổng số nguyên tử:\n$1 + 2 = 3$"
+    },
+    {
+     "ma_cau": "K08010202047",
+     "loai": "tra_loi_ngan",
+     "de": "Khí hydrogen ($\\mathrm{H_2}$) phản ứng với khí chlorine ($\\mathrm{Cl_2}$) tạo thành hydrogen chloride ($\\mathrm{HCl}$). Cho 3 phân tử hydrogen phản ứng vừa đủ với 3 phân tử chlorine. Có bao nhiêu phân tử hydrogen chloride được tạo thành?",
+     "dap_an": "6",
+     "loi_giai": "Số nguyên tử $\\mathrm{H}$ trước phản ứng:\n$3 \\times 2 = 6$\nSố nguyên tử $\\mathrm{H}$ được bảo toàn, mỗi phân tử $\\mathrm{HCl}$ có 1 nguyên tử $\\mathrm{H}$ nên số phân tử $\\mathrm{HCl}$ tạo thành là 6.\nKiểm tra: số nguyên tử $\\mathrm{Cl}$ là $3 \\times 2 = 6$, đủ cho 6 phân tử $\\mathrm{HCl}$."
+    },
+    {
+     "ma_cau": "K08010202046",
+     "loai": "tra_loi_ngan",
+     "de": "Hai phân tử carbon monoxide ($\\mathrm{CO}$) phản ứng với một phân tử oxygen ($\\mathrm{O_2}$) tạo thành hai phân tử carbon dioxide ($\\mathrm{CO_2}$). Có bao nhiêu nguyên tử oxygen trong các phân tử carbon dioxide tạo thành?",
+     "dap_an": "4",
+     "loi_giai": "Mỗi phân tử $\\mathrm{CO_2}$ có 2 nguyên tử $\\mathrm{O}$.\nSố nguyên tử $\\mathrm{O}$ trong 2 phân tử $\\mathrm{CO_2}$:\n$2 \\times 2 = 4$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00808",
+   "nhom_id": "KNB00369",
+   "thu_tu": 5,
+   "dang": "LIÊN KẾT BỊ PHÁ VỠ – HÌNH THÀNH, ĐỌC SƠ ĐỒ MÔ HÌNH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010202050",
+     "loai": "trac_nghiem",
+     "de": "Hình bên mô tả sơ đồ một phản ứng ở mức nguyên tử; mỗi quả cầu là một nguyên tử, kí hiệu nguyên tố ghi trên quả cầu. Trong phản ứng này, liên kết nào bị phá vỡ? [hình]",
+     "lua_chon": [
+      "Liên kết giữa nguyên tử $\\mathrm{H}$ và nguyên tử $\\mathrm{Cl}$ trong phân tử mới.",
+      "Liên kết giữa hai nguyên tử $\\mathrm{H}$ và liên kết giữa hai nguyên tử $\\mathrm{Cl}$.",
+      "Chỉ có liên kết giữa hai nguyên tử $\\mathrm{H}$ trong phân tử hydrogen.",
+      "Chỉ có liên kết giữa hai nguyên tử $\\mathrm{Cl}$ trong phân tử chlorine."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Trước phản ứng, $\\mathrm{H}$ liên kết với $\\mathrm{H}$ và $\\mathrm{Cl}$ liên kết với $\\mathrm{Cl}$. Sau phản ứng, $\\mathrm{H}$ liên kết với $\\mathrm{Cl}$. Vậy liên kết giữa hai nguyên tử $\\mathrm{H}$ và liên kết giữa hai nguyên tử $\\mathrm{Cl}$ bị phá vỡ.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08010202054",
+     "loai": "trac_nghiem",
+     "de": "Hình bên mô tả hỗn hợp trong bình trước và sau phản ứng ở mức nguyên tử; mỗi quả cầu là một nguyên tử, kí hiệu nguyên tố ghi trên quả cầu. Sau phản ứng, trong bình còn chất nào chưa phản ứng hết?",
+     "lua_chon": [
+      "Oxygen.",
+      "Nước.",
+      "Hydrogen.",
+      "Không còn chất nào."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Trước phản ứng có 3 phân tử hydrogen và 1 phân tử oxygen.\nSau phản ứng có 2 phân tử nước và còn 1 phân tử gồm hai nguyên tử H. Vậy hydrogen chưa phản ứng hết.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08010202051",
+     "loai": "trac_nghiem",
+     "de": "Hình bên mô tả sơ đồ một phản ứng ở mức nguyên tử; mỗi quả cầu là một nguyên tử, kí hiệu nguyên tố ghi trên quả cầu. Liên kết mới được hình thành trong phản ứng này là liên kết giữa [hình]",
+     "lua_chon": [
+      "hai nguyên tử $\\mathrm{H}$.",
+      "hai nguyên tử $\\mathrm{O}$.",
+      "nguyên tử $\\mathrm{O}$ và nguyên tử $\\mathrm{H}$.",
+      "hai phân tử nước."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Sau phản ứng, mỗi nguyên tử $\\mathrm{O}$ liên kết với hai nguyên tử $\\mathrm{H}$ tạo thành phân tử nước. Vậy liên kết mới hình thành là liên kết giữa nguyên tử $\\mathrm{O}$ và nguyên tử $\\mathrm{H}$.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08010202053",
+     "loai": "trac_nghiem",
+     "de": "Hình bên mô tả sơ đồ một phản ứng ở mức nguyên tử; mỗi quả cầu là một nguyên tử, kí hiệu nguyên tố ghi trên quả cầu. Diễn biến của phản ứng này được mô tả đúng là\n[hình]",
+     "lua_chon": [
+      "liên kết trong các phân tử ban đầu bị phá vỡ, nguyên tử N liên kết với nguyên tử H.",
+      "các phân tử ban đầu giữ nguyên liên kết, chỉ thay đổi vị trí trong bình.",
+      "nguyên tử H biến đổi thành nguyên tử N để tạo thành phân tử mới.",
+      "số nguyên tử H giảm đi khi tạo thành các phân tử mới."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trước phản ứng, N liên kết với N và H liên kết với H.\nSau phản ứng, mỗi nguyên tử N liên kết với 3 nguyên tử H. Liên kết cũ bị phá vỡ, liên kết mới giữa N và H được hình thành; số nguyên tử mỗi loại không đổi.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08010202052",
+     "loai": "trac_nghiem",
+     "de": "Hình bên mô tả sơ đồ một phản ứng ở mức nguyên tử; mỗi quả cầu là một nguyên tử, kí hiệu nguyên tố ghi trên quả cầu. Nhận xét nào sau đây đúng về phản ứng này?\n[hình]",
+     "lua_chon": [
+      "Số nguyên tử O tăng lên sau phản ứng vì có thêm oxygen.",
+      "Nguyên tử C đã biến đổi thành nguyên tử O trong phân tử mới.",
+      "Liên kết giữa hai nguyên tử O vẫn giữ nguyên sau phản ứng.",
+      "Số nguyên tử mỗi loại không đổi, chỉ liên kết giữa các nguyên tử thay đổi."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trước và sau phản ứng đều có 1 nguyên tử C và 2 nguyên tử O.\nLiên kết giữa hai nguyên tử O bị phá vỡ, hình thành liên kết giữa C và O. Vậy số nguyên tử mỗi loại không đổi, chỉ liên kết thay đổi.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08010202055",
+     "loai": "trac_nghiem",
+     "de": "Hình bên mô tả sơ đồ một phản ứng ở mức nguyên tử; mỗi quả cầu là một nguyên tử, kí hiệu nguyên tố ghi trên quả cầu. Liên kết mới được hình thành trong phản ứng này là",
+     "lua_chon": [
+      "liên kết giữa nguyên tử $\\mathrm{O}$ và nguyên tử $\\mathrm{H}$ trong phân tử nước.",
+      "liên kết giữa hai nguyên tử $\\mathrm{H}$ và liên kết giữa hai nguyên tử $\\mathrm{O}$.",
+      "chỉ có liên kết giữa hai nguyên tử $\\mathrm{H}$ trong phân tử hydrogen.",
+      "chỉ có liên kết giữa hai nguyên tử $\\mathrm{O}$ trong phân tử oxygen."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Trước phản ứng, trong phân tử nước nguyên tử $\\mathrm{O}$ liên kết với nguyên tử $\\mathrm{H}$.\nSau phản ứng, $\\mathrm{H}$ liên kết với $\\mathrm{H}$, $\\mathrm{O}$ liên kết với $\\mathrm{O}$. Vậy liên kết mới là liên kết giữa hai nguyên tử $\\mathrm{H}$ và liên kết giữa hai nguyên tử $\\mathrm{O}$.",
+     "co_hinh": true
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00812",
+   "nhom_id": "KNB00371",
+   "thu_tu": 1,
+   "dang": "THAY ĐỔI MÀU SẮC, MÙI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010204003",
+     "loai": "trac_nghiem",
+     "de": "Nhỏ một giọt dung dịch hydrochloric acid lên mẫu giấy quỳ tím, chỗ giấy quỳ thấm acid chuyển sang màu đỏ. Dấu hiệu cho biết có phản ứng hoá học xảy ra là",
+     "lua_chon": [
+      "sự tạo thành chất khí.",
+      "sự tạo thành chất kết tủa.",
+      "sự phát sáng.",
+      "sự thay đổi màu sắc."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Giấy quỳ tím chuyển sang màu đỏ do có chất mới tạo thành. Dấu hiệu là sự thay đổi màu sắc."
+    },
+    {
+     "ma_cau": "K08010204006",
+     "loai": "trac_nghiem",
+     "de": "Rượu nho để trong chai hở nắp một thời gian dài thì có vị chua và mùi chua của giấm. Dấu hiệu cho biết có phản ứng hoá học xảy ra là",
+     "lua_chon": [
+      "xuất hiện mùi và vị chua của chất mới.",
+      "rượu nho vẫn ở thể lỏng.",
+      "lượng rượu trong chai giảm đi.",
+      "chai đựng rượu không bị thay đổi."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mùi và vị chua là của chất mới (acetic acid) tạo thành từ rượu.\nVậy có phản ứng hoá học xảy ra."
+    },
+    {
+     "ma_cau": "K08010204008",
+     "loai": "trac_nghiem",
+     "de": "Trường hợp nào sau đây mùi xuất hiện là dấu hiệu của phản ứng hoá học?",
+     "lua_chon": [
+      "Mở lọ nước hoa, mùi thơm lan khắp phòng.",
+      "Đốt sulfur, ngửi thấy mùi hắc của khí sulfur dioxide.",
+      "Bóc vỏ quả cam, mùi thơm của tinh dầu toả ra.",
+      "Mở chai giấm ăn, ngửi thấy mùi chua."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khi sulfur dioxide có mùi hắc là chất mới tạo thành khi đốt sulfur.\nỞ các trường hợp còn lại, mùi là của chất có sẵn bay hơi ra, không có chất mới."
+    },
+    {
+     "ma_cau": "K08010204007",
+     "loai": "trac_nghiem",
+     "de": "Trường hợp nào sau đây có sự thay đổi màu sắc nhưng không phải là dấu hiệu của phản ứng hoá học?",
+     "lua_chon": [
+      "Hơ nóng dây đồng trên lửa, dây đồng chuyển màu đen.",
+      "Nhỏ acid lên giấy quỳ tím, giấy quỳ chuyển màu đỏ.",
+      "Đinh sắt để nơi ẩm, bề mặt chuyển màu nâu đỏ.",
+      "Nhỏ vài giọt mực xanh vào cốc nước, nước chuyển màu xanh."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Màu xanh của nước là màu của chính mực khi phân tán vào nước, không có chất mới tạo thành.\nCác trường hợp còn lại đều có chất mới tạo thành."
+    },
+    {
+     "ma_cau": "K08010204001",
+     "loai": "trac_nghiem",
+     "de": "Khi một chất có màu tham gia phản ứng hoá học, dấu hiệu dễ nhận ra có phản ứng xảy ra là",
+     "lua_chon": [
+      "màu sắc của chất trong ống nghiệm thay đổi.",
+      "hình dạng của ống nghiệm thay đổi.",
+      "thể tích chất trong ống nghiệm không đổi.",
+      "chất trong ống nghiệm bị chia nhỏ hơn."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Chất mới tạo thành thường có màu khác chất ban đầu, nên sự thay đổi màu sắc là dấu hiệu có phản ứng hoá học."
+    },
+    {
+     "ma_cau": "K08010204004",
+     "loai": "trac_nghiem",
+     "de": "Trứng gà để lâu ngày bị hỏng, khi đập ra có mùi hôi khó chịu mà trứng tươi không có. Mùi hôi này chứng tỏ",
+     "lua_chon": [
+      "quả trứng chỉ bị thay đổi trạng thái.",
+      "đã có chất mới tạo thành trong quả trứng.",
+      "quả trứng đã bị bay hơi một phần.",
+      "vỏ trứng đã bị vỡ từ trước."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Trứng tươi không có mùi hôi; mùi hôi là của chất mới (hydrogen sulfide) sinh ra khi trứng bị hỏng.\nVậy đã có chất mới tạo thành, tức là có phản ứng hoá học."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00813",
+   "nhom_id": "KNB00371",
+   "thu_tu": 2,
+   "dang": "TẠO CHẤT KHÍ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010204022",
+     "loai": "trac_nghiem",
+     "de": "Đốt một mẩu than trong bình chứa khí oxygen, mẩu than cháy sáng và nhỏ dần. Sau đó rót nước vôi trong vào bình và lắc, nước vôi bị vẩn đục. Hiện tượng nước vôi vẩn đục chứng tỏ",
+     "lua_chon": [
+      "mẩu than đã bị chia nhỏ thành bột than mịn.",
+      "khí oxygen vẫn còn lại nhiều trong bình.",
+      "nước vôi trong đã bị mẩu than làm nóng lên.",
+      "đã có chất khí mới là carbon dioxide tạo thành."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khí carbon dioxide làm vẩn đục nước vôi trong.Vậy khi than cháy đã có chất khí mới là carbon dioxide tạo thành."
+    },
+    {
+     "ma_cau": "K08010204024",
+     "loai": "trac_nghiem",
+     "de": "Cho một thìa muối ăn vào cốc giấm thứ nhất và một thìa bột đá vôi vào cốc giấm thứ hai. Chỉ cốc thứ hai có bọt khí thoát ra. Kết luận nào sau đây đúng?",
+     "lua_chon": [
+      "Ở cả hai cốc đều có phản ứng hóa học xảy ra.",
+      "Chỉ ở cốc thứ nhất có phản ứng hóa học xảy ra.",
+      "Chỉ ở cốc thứ hai có phản ứng hóa học xảy ra.",
+      "Ở cả hai cốc đều không có phản ứng hóa học."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ở cốc thứ hai, đá vôi phản ứng với giấm tạo ra khí carbon dioxide. Ở cốc thứ nhất, muối ăn chỉ tan vào giấm, không có dấu hiệu của chất mới."
+    },
+    {
+     "ma_cau": "K08010204018",
+     "loai": "trac_nghiem",
+     "de": "Thả một viên kẽm vào ống nghiệm chứa dung dịch hydrochloric acid. Hiện tượng nào sau đây chứng tỏ có phản ứng hoá học xảy ra?",
+     "lua_chon": [
+      "Viên kẽm chìm xuống đáy ống nghiệm.",
+      "Có bọt khí thoát ra trên bề mặt viên kẽm.",
+      "Dung dịch trong ống nghiệm vẫn không màu.",
+      "Viên kẽm vẫn có màu trắng xám."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Bọt khí là khí hydrogen mới tạo thành do kẽm phản ứng với acid. Vậy sự xuất hiện bọt khí chứng tỏ có phản ứng hoá học."
+    },
+    {
+     "ma_cau": "K08010204023",
+     "loai": "trac_nghiem",
+     "de": "Trường hợp nào sau đây có bọt khí thoát ra nhưng không phải là dấu hiệu của phản ứng hoá học?",
+     "lua_chon": [
+      "Đun nước trong ấm đến sôi, có bọt khí sủi lên.",
+      "Thả viên kẽm vào dung dịch hydrochloric acid, có bọt khí.",
+      "Nhỏ giấm lên vỏ trứng, có bọt khí.",
+      "Cho bột magnesium vào giấm ăn, có bọt khí."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khi đun sôi, bọt khí là hơi nước, nước chỉ chuyển từ thể lỏng sang thể hơi. Các trường hợp còn lại đều có chất khí mới tạo thành."
+    },
+    {
+     "ma_cau": "K08010204021",
+     "loai": "trac_nghiem",
+     "de": "Đun nóng thuốc tím (potassium permanganate) trong ống nghiệm, rồi đưa que đóm còn tàn đó vào miệng ống nghiệm thì que đóm bùng cháy. Hiện tượng này chứng tỏ",
+     "lua_chon": [
+      "thuốc tím đã bị nóng chảy.",
+      "đã có khí oxygen mới tạo thành.",
+      "ống nghiệm đã bị đun quá nóng.",
+      "thuốc tím đã bay hơi thành khí."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Que đóm còn tàn đó bùng cháy khi gặp khí oxygen.Vậy khi đun nóng, thuốc tím đã bị phân huỷ tạo thành khí oxygen là chất mới."
+    },
+    {
+     "ma_cau": "K08010204017",
+     "loai": "trac_nghiem",
+     "de": "Nhỏ giấm ăn vào cốc đựng bột baking soda (sodium hydrogencarbonate), thấy sủi bọt khí mạnh. Dấu hiệu cho biết có phản ứng hoá học xảy ra là",
+     "lua_chon": [
+      "sự tạo thành chất kết tủa.",
+      "sự thay đổi màu sắc.",
+      "sự phát sáng.",
+      "sự tạo thành chất khí."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Bọt khí là khí carbon dioxide mới tạo thành. Dấu hiệu là sự tạo thành chất khí."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00814",
+   "nhom_id": "KNB00371",
+   "thu_tu": 3,
+   "dang": "TẠO CHẤT KẾT TỦA",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010204029",
+     "loai": "trac_nghiem",
+     "de": "Trộn dung dịch sodium carbonate với dung dịch calcium chloride, hai dung dịch ban đầu đều trong suốt. Sau khi trộn, hỗn hợp bị vẩn đục màu trắng. Kết luận nào sau đây đúng?",
+     "lua_chon": [
+      "Đã có phản ứng hoá học tạo thành chất không tan.",
+      "Hai dung dịch chỉ trộn lẫn, không có phản ứng.",
+      "Đã có phản ứng hoá học tạo thành chất khí.",
+      "Nước trong dung dịch đã bị đông đặc."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hai dung dịch trong suốt khi trộn lại tạo ra chất rắn màu trắng (calcium carbonate) là chất mới.Vậy đã có phản ứng hoá học tạo thành chất kết tủa."
+    },
+    {
+     "ma_cau": "K08010204031",
+     "loai": "trac_nghiem",
+     "de": "Có hai cốc chất lỏng trong suốt, một cốc là nước cất, một cốc là nước vôi trong. Thổi hơi thở qua ống hút vào mỗi cốc, chỉ một cốc bị vẩn đục. Cốc bị vẩn đục và lí do đúng là",
+     "lua_chon": [
+      "cốc nước cất, vì khí carbon dioxide phản ứng với nước cất tạo chất không tan.",
+      "cốc nước vôi trong, vì calcium hydroxide phản ứng với carbon dioxide tạo chất không tan.",
+      "cốc nước vôi trong, vì hơi thở làm calcium hydroxide trong cốc đông đặc lại.",
+      "cốc nước cất, vì hơi thở làm một phần nước cất đông đặc thành chất rắn."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khí carbon dioxide trong hơi thở phản ứng với calcium hydroxide tạo thành calcium carbonate không tan, làm nước vôi vẩn đục.\nNước cất không tạo chất không tan với khí carbon dioxide."
+    },
+    {
+     "ma_cau": "K08010204026",
+     "loai": "trac_nghiem",
+     "de": "Nhỏ dung dịch barium chloride vào dung dịch sulfuric acid, xuất hiện chất rắn màu trắng không tan. Dấu hiệu cho biết có phản ứng hoá học xảy ra là",
+     "lua_chon": [
+      "sự tạo thành chất kết tủa.",
+      "sự tạo thành chất khí.",
+      "sự phát sáng.",
+      "sự thu nhiệt."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Chất rắn màu trắng không tan (barium sulfate) là chất mới tạo thành. Dấu hiệu là sự tạo thành chất kết tủa."
+    },
+    {
+     "ma_cau": "K08010204030",
+     "loai": "trac_nghiem",
+     "de": "Trường hợp nào sau đây có chất rắn xuất hiện nhưng không phải do phản ứng hoá học?",
+     "lua_chon": [
+      "Thổi khí carbon dioxide vào nước vôi trong, nước vôi vẫn đục.",
+      "Nhỏ sodium hydroxide vào copper(II) sulfate, có chất rắn màu xanh.",
+      "Nhỏ silver nitrate vào nước muối, có chất rắn màu trắng.",
+      "Làm lạnh nước đường đặc, có tinh thể đường tách ra."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tinh thể đường tách ra vẫn là đường, không có chất mới tạo thành.Các trường hợp còn lại đều có chất kết tủa mới tạo thành."
+    },
+    {
+     "ma_cau": "K08010204025",
+     "loai": "trac_nghiem",
+     "de": "Trong phản ứng hoá học, chất kết tủa là",
+     "lua_chon": [
+      "chất khí thoát ra khỏi dung dịch.",
+      "chất rắn không tan tạo thành trong dung dịch.",
+      "chất lỏng có màu tạo thành trong dung dịch.",
+      "chất rắn tan hoàn toàn trong dung dịch."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chất kết tủa là chất rắn không tan được tạo thành khi các dung dịch phản ứng với nhau."
+    },
+    {
+     "ma_cau": "K08010204027",
+     "loai": "trac_nghiem",
+     "de": "Silver nitrate phản ứng với sodium chloride tạo thành silver chloride là chất không tan trong nước. Nhỏ vài giọt dung dịch silver nitrate vào nước muối ăn, hiện tượng quan sát được là",
+     "lua_chon": [
+      "có bọt khí không màu thoát ra.",
+      "dung dịch chuyển sang màu xanh lam.",
+      "không có hiện tượng gì xảy ra.",
+      "xuất hiện chất rắn màu trắng không tan."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Silver chloride tạo thành là chất không tan nên xuất hiện kết tủa màu trắng."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00815",
+   "nhom_id": "KNB00371",
+   "thu_tu": 4,
+   "dang": "TOẢ NHIỆT – THU NHIỆT KÈM THEO",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010204034",
+     "loai": "trac_nghiem",
+     "de": "Nhỏ từ từ dung dịch hydrochloric acid vào ống nghiệm chứa dung dịch sodium hydroxide. Không thấy khí thoát ra, không có kết tủa, không đổi màu, nhưng cầm ống nghiệm thấy ấm lên. Dấu hiệu cho biết có phản ứng hoá học xảy ra là",
+     "lua_chon": [
+      "Sự toả nhiệt làm ống nghiệm ấm lên.",
+      "Sự thay đổi màu sắc của dung dịch.",
+      "Sự tạo thành chất khí trong ống nghiệm.",
+      "Sự tạo thành chất kết tủa màu trắng."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Phản ứng giữa hydrochloric acid và sodium hydroxide toả nhiệt làm ống nghiệm ấm lên.Đây là dấu hiệu duy nhất quan sát được."
+    },
+    {
+     "ma_cau": "K08010204037",
+     "loai": "trac_nghiem",
+     "de": "Hai cốc nước cùng ở $25^{\\circ}\\mathrm{C}$. Cho vào cốc 1 một thìa đường, cốc 2 một thìa vôi sống rồi khuấy đều. Sau 1 phút, cốc 1 vẫn ở $25^{\\circ}\\mathrm{C}$, cốc 2 nóng lên $60^{\\circ}\\mathrm{C}$ và có chất màu trắng đục. Kết luận nào sau đây đúng?",
+     "lua_chon": [
+      "Chỉ ở cốc 2 có phản ứng hoá học xảy ra.",
+      "Chỉ ở cốc 1 có phản ứng hoá học xảy ra.",
+      "Ở cả hai cốc đều có phản ứng hoá học xảy ra.",
+      "Ở cả hai cốc đều không có phản ứng hoá học."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cốc 2 nóng lên và có chất trắng đục mới (vôi tôi) nên có phản ứng hoá học.Ở cốc 1, đường chỉ tan vào nước, nhiệt độ không đổi, không có chất mới."
+    },
+    {
+     "ma_cau": "K08010204032",
+     "loai": "trac_nghiem",
+     "de": "Cho vài cục vôi sống vào chậu nước, nước sôi lục bục và bốc hơi nóng, tạo thành vôi tôi màu trắng. Dấu hiệu liên quan đến nhiệt cho biết có phản ứng hoá học xảy ra là",
+     "lua_chon": [
+      "Sự thu nhiệt làm nước lạnh đi.",
+      "Sự phát sáng làm nước sáng lên.",
+      "Sự toả nhiệt làm nước nóng lên.",
+      "Sự đông đặc làm nước hoá rắn."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vôi sống phản ứng với nước toả ra nhiều nhiệt làm nước nóng lên, sôi lục bục.Sự toả nhiệt là dấu hiệu có phản ứng hoá học."
+    },
+    {
+     "ma_cau": "K08010204036",
+     "loai": "trac_nghiem",
+     "de": "Trường hợp nào sau đây có sự thay đổi nhiệt độ nhưng không có phản ứng hoá học xảy ra?",
+     "lua_chon": [
+      "Than cháy trong lò sưởi.",
+      "Vôi sống cho vào nước làm nước nóng lên.",
+      "Bàn là điện nóng lên khi cắm điện.",
+      "Cồn cháy trong đèn cồn."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Bàn là nóng lên do có dòng điện chạy qua, không có chất mới tạo thành.Các trường hợp còn lại đều có chất mới tạo thành."
+    },
+    {
+     "ma_cau": "K08010204035",
+     "loai": "trac_nghiem",
+     "de": "Cho baking soda vào cốc giấm ăn có cắm nhiệt kế, thấy sủi bọt khí và nhiệt kế chỉ nhiệt độ giảm từ $25^{\\circ}\\mathrm{C}$ xuống $19^{\\circ}\\mathrm{C}$. Ngoài sự sủi bọt khí, dấu hiệu khác cho biết có phản ứng hoá học là",
+     "lua_chon": [
+      "màu của hỗn hợp chuyển sang đỏ.",
+      "nhiệt độ của hỗn hợp giảm xuống.",
+      "có chất kết tủa màu trắng xuất hiện.",
+      "hỗn hợp phát ra ánh sáng."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Phản ứng giữa baking soda và giấm thu nhiệt nên nhiệt độ hỗn hợp giảm.Sự thay đổi nhiệt độ là dấu hiệu có phản ứng hoá học."
+    },
+    {
+     "ma_cau": "K08010204038",
+     "loai": "trac_nghiem",
+     "de": "Khi có dòng điện, dây tóc bóng đèn nóng sáng; khi thắp nến, ngọn nến cũng nóng sáng. Điểm khác nhau giữa hai quá trình này là",
+     "lua_chon": [
+      "dây tóc nóng sáng có chất mới tạo thành, nến cháy thì không.",
+      "cả hai quá trình đều có chất mới tạo thành.",
+      "cả hai quá trình đều không có chất mới tạo thành.",
+      "nến cháy có chất mới tạo thành, dây tóc nóng sáng thì không."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nến cháy tạo ra khí carbon dioxide và hơi nước là chất mới, đó là phản ứng hoá học.\nDây tóc bóng đèn chỉ nóng lên và phát sáng, khi tắt điện vẫn là dây tóc như cũ."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00816",
+   "nhom_id": "KNB00372",
+   "thu_tu": 1,
+   "dang": "HIỆN TƯỢNG TRONG NHÀ BẾP, ĐỜI SỐNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010205009",
+     "loai": "trac_nghiem",
+     "de": "Khi pha nước chanh, cho đường vào thì không sủi bọt; một bạn lỡ cho nhầm baking soda thì cốc nước chanh sủi bọt mạnh. Giải thích nào sau đây đúng?",
+     "lua_chon": [
+      "Baking soda phản ứng với acid trong chanh tạo khí carbon dioxide, còn đường chỉ tan vào nước.",
+      "Baking soda và đường đều phản ứng với acid trong chanh, nhưng đường phản ứng chậm hơn.",
+      "Baking soda tan nhanh hơn đường nên đẩy không khí trong nước ra ngoài.",
+      "Đường phản ứng với acid trong chanh tạo khí, còn baking soda chỉ tan vào nước."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Sủi bọt mạnh chứng tỏ có chất khí mới tạo thành: baking soda đã phản ứng với acid trong nước chanh tạo khí carbon dioxide. Đường tan vào nước không tạo chất mới nên không sủi bọt."
+    },
+    {
+     "ma_cau": "K08010205008",
+     "loai": "trac_nghiem",
+     "de": "Khi quẹt que diêm, đầu que cọ xát vào vỏ bao và nóng lên, sau đó thuốc ở đầu que bốc cháy, có khói mùi hắc. Nhận xét nào sau đây đúng?",
+     "lua_chon": [
+      "Que diêm nóng lên khi cọ xát là biến đổi hoá học; thuốc đầu que cháy là biến đổi vật lí.",
+      "Cả hai quá trình đều là biến đổi hoá học vì đều toả nhiệt.",
+      "Que diêm nóng lên khi cọ xát là biến đổi vật lí; thuốc đầu que cháy là biến đổi hoá học.",
+      "Cả hai quá trình đều là biến đổi vật lí vì không có chất mới."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cọ xát chỉ làm đầu que nóng lên, chưa có chất mới: biến đổi vật lí. Thuốc đầu que cháy tạo ra khói có mùi hắc là chất mới, có toả nhiệt và phát sáng: biến đổi hoá học."
+    },
+    {
+     "ma_cau": "K08010205010",
+     "loai": "trac_nghiem",
+     "de": "Người ta khuyên không nên dùng nồi nhôm để đựng canh chua trong thời gian dài, vì lâu ngày mặt trong nồi bị rỗ. Giải thích nào sau đây đúng?",
+     "lua_chon": [
+      "Nhôm bị nóng chảy dần khi đựng canh chua nóng.",
+      "Acid trong canh chua làm nhôm bay hơi dần theo thời gian.",
+      "Nhôm hoà tan vào nước canh mà không tạo ra chất mới.",
+      "Nhôm phản ứng chậm với acid trong canh chua nên bị ăn mòn."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Acid trong canh chua phản ứng chậm với nhôm, tạo thành chất tan vào nước canh.\nNhôm bị mất dần nên mặt trong nồi bị rỗ; chất tạo thành lẫn vào thức ăn không có lợi cho sức khoẻ."
+    },
+    {
+     "ma_cau": "K08010205006",
+     "loai": "trac_nghiem",
+     "de": "Người bị thừa acid trong dạ dày có thể được bác sĩ cho uống thuốc chứa sodium hydrogencarbonate. Sau khi uống, người bệnh thường bị ợ hơi. Hiện tượng ợ hơi là do",
+     "lua_chon": [
+      "sodium hydrogencarbonate tan trong nước tạo ra nhiều hơi nước.",
+      "acid trong dạ dày bị bay hơi khi gặp thuốc uống vào.",
+      "không khí bị nuốt vào dạ dày cùng với nước khi uống thuốc.",
+      "thuốc phản ứng với acid trong dạ dày tạo ra khí carbon dioxide."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Sodium hydrogencarbonate phản ứng với acid trong dạ dày, làm giảm lượng acid và tạo ra khí carbon dioxide.Khí này thoát ra qua đường miệng gây ợ hơi."
+    },
+    {
+     "ma_cau": "K08010205007",
+     "loai": "trac_nghiem",
+     "de": "Khi bị kiến đốt, chỗ bị đốt sưng đau do acid kiến tiết ra. Người ta thường bôi một ít vôi tôi vào chỗ bị đốt để giảm đau, vì",
+     "lua_chon": [
+      "vôi tôi phản ứng với acid, làm giảm lượng acid ở vết đốt.",
+      "vôi tôi hoà tan acid giống như nước hoà tan đường.",
+      "vôi tôi làm acid ở vết đốt đông đặc lại.",
+      "vôi tôi phủ kín vết đốt để acid không bay hơi."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vôi tôi (calcium hydroxide) phản ứng với acid do kiến tiết ra, tạo thành chất khác ít gây hại hơn. Lượng acid giảm nên chỗ bị đốt bớt đau."
+    },
+    {
+     "ma_cau": "K08010205003",
+     "loai": "trac_nghiem",
+     "de": "Ấm đun nước lâu ngày có lớp cặn trắng bám ở đáy (thành phần chính là calcium carbonate). Ngâm ấm với giấm ăn, lớp cặn sủi bọt và tan dần. Giải thích nào sau đây đúng?",
+     "lua_chon": [
+      "Acid trong giấm phản ứng với calcium carbonate tạo chất tan và khí.",
+      "Giấm hoà tan lớp cặn giống như nước hoà tan muối ăn, không có chất mới.",
+      "Lớp cặn bị nóng chảy dần khi tiếp xúc lâu với giấm ăn.",
+      "Giấm ăn làm lớp cặn bay hơi dần thành các bọt khí."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Lớp cặn sủi bọt khí là dấu hiệu có chất mới (carbon dioxide) tạo thành.\nAcid trong giấm đã phản ứng với calcium carbonate, tạo ra chất tan được trong nước nên cặn tan dần."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00817",
+   "nhom_id": "KNB00372",
+   "thu_tu": 2,
+   "dang": "HIỆN TƯỢNG TRONG TỰ NHIÊN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010205011",
+     "loai": "trac_nghiem",
+     "de": "Trong quá trình quang hợp, lá cây hấp thụ khí carbon dioxide và nước, nhờ năng lượng ánh sáng tạo thành tinh bột và khí oxygen. Quang hợp là",
+     "lua_chon": [
+      "biến đổi vật lí, vì lá cây chỉ hấp thụ ánh sáng.",
+      "biến đổi hoá học, vì lá cây có màu xanh.",
+      "biến đổi hoá học, vì có chất mới tạo thành.",
+      "biến đổi vật lí, vì nước chỉ chuyển vào trong lá."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Từ carbon dioxide và nước tạo thành tinh bột và oxygen là các chất mới.\nVậy quang hợp là biến đổi hoá học."
+    },
+    {
+     "ma_cau": "K08010205012",
+     "loai": "trac_nghiem",
+     "de": "Buổi sáng ở vùng núi thường có sương mù; khi mặt trời lên cao, sương mù tan dần. Hiện tượng sương mù tan là",
+     "lua_chon": [
+      "biến đổi hoá học, vì sương mù biến mất.",
+      "biến đổi vật lí, vì các giọt nước nhỏ chỉ bay hơi.",
+      "biến đổi hoá học, vì ánh nắng làm sương mù nóng lên.",
+      "biến đổi vật lí, vì sương mù đã thành chất khác."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Sương mù là các giọt nước nhỏ; khi trời nắng, nước chuyển sang thể hơi, không có chất mới.\nVậy đây là biến đổi vật lí."
+    },
+    {
+     "ma_cau": "K08010205015",
+     "loai": "trac_nghiem",
+     "de": "Thân cây gỗ đổ trong rừng bị mục nát dần thành mùn sau nhiều năm. Nhận xét nào sau đây đúng?",
+     "lua_chon": [
+      "Đây là biến đổi vật lí xảy ra chậm, gỗ chỉ bị vỡ vụn.",
+      "Đây là biến đổi hoá học xảy ra chậm, gỗ chuyển thành chất mới.",
+      "Đây là biến đổi hoá học xảy ra nhanh, toả nhiều nhiệt.",
+      "Đây là biến đổi vật lí xảy ra nhanh, mùn vẫn là gỗ."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mùn có tính chất khác gỗ (mềm, tơi xốp, không cháy được như gỗ), đó là chất mới.\nQuá trình kéo dài nhiều năm. Vậy đây là biến đổi hoá học xảy ra chậm."
+    },
+    {
+     "ma_cau": "K08010205018",
+     "loai": "trac_nghiem",
+     "de": "Trong tế bào, glucose phản ứng với oxygen tạo thành carbon dioxide và nước, đồng thời giải phóng năng lượng giúp cơ thể hoạt động và giữ ấm. Nhận xét nào sau đây đúng về quá trình này?",
+     "lua_chon": [
+      "Đây là phản ứng hoá học toả nhiệt.",
+      "Đây là phản ứng hoá học thu nhiệt.",
+      "Đây là biến đổi vật lí toả nhiệt.",
+      "Đây là biến đổi vật lí thu nhiệt."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Từ glucose và oxygen tạo thành carbon dioxide và nước là chất mới: phản ứng hoá học.\nPhản ứng giải phóng năng lượng, giúp giữ ấm cơ thể: phản ứng toả nhiệt."
+    },
+    {
+     "ma_cau": "K08010205016",
+     "loai": "trac_nghiem",
+     "de": "Vào mùa khô, một đám cháy nhỏ trong rừng có thể lan rộng nhanh chóng. Giải thích nào sau đây đúng?",
+     "lua_chon": [
+      "Lá, cành khô cháy thu nhiệt, làm các cây xung quanh khô lại rồi tự cháy.",
+      "Lá, cành khô cháy tạo ra thêm khí oxygen làm lửa lan rộng ra.",
+      "Lá, cành khô cháy toả nhiệt, làm nóng các cây xung quanh khiến chúng bốc cháy theo.",
+      "Lá, cành khô bị nóng cháy rồi cháy sang làm cháy các cây bên cạnh."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Sự cháy là phản ứng toả nhiệt.\nNhiệt toả ra làm nóng lá, cành xung quanh đến khi chúng bắt cháy, nên đám cháy lan rộng nhanh."
+    },
+    {
+     "ma_cau": "K08010205019",
+     "loai": "trac_nghiem",
+     "de": "Nước giếng khoan ở một số vùng mới bơm lên thì trong, nhưng để ngoài không khí một thời gian thì chuyển màu vàng đục và có cặn màu nâu đỏ lắng xuống. Giải thích nào sau đây đúng?",
+     "lua_chon": [
+      "Cát bụi có sẵn trong nước giếng lắng dần xuống làm nước chuyển màu.",
+      "Nước giếng bay hơi bớt làm sắt có trong nước đông đặc lại thành cặn.",
+      "Chất chứa sắt trong nước phản ứng với oxygen tạo chất không tan màu nâu đỏ.",
+      "Ánh nắng làm nước giếng đổi màu nhưng không tạo ra chất mới nào."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nước mới bơm lên trong suốt, để ngoài không khí mới có cặn nâu đỏ, chứng tỏ có chất mới không tan tạo thành.\nChất chứa sắt tan trong nước đã phản ứng với oxygen của không khí."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00818",
+   "nhom_id": "KNB00372",
+   "thu_tu": 3,
+   "dang": "AN TOÀN VÀ TIẾT KIỆM NHIÊN LIỆU",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010205022",
+     "loai": "trac_nghiem",
+     "de": "Không được đốt bếp than trong phòng kín, vì",
+     "lua_chon": [
+      "than cháy thiếu oxygen sinh ra khí carbon monoxide độc.",
+      "than cháy trong phòng kín toả ra ít nhiệt hơn bình thường.",
+      "than cháy trong phòng kín sinh ra thêm nhiều khí oxygen.",
+      "than cháy trong phòng kín làm không khí trong phòng lạnh đi."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trong phòng kín, oxygen giảm dần, than cháy không hoàn toàn sinh ra khí carbon monoxide.\nKhí này không màu, không mùi, gây ngộ độc, có thể dẫn đến tử vong."
+    },
+    {
+     "ma_cau": "K08010205021",
+     "loai": "trac_nghiem",
+     "de": "Khi ngửi thấy mùi gas trong bếp, việc không được làm là",
+     "lua_chon": [
+      "khoá van bình gas.",
+      "mở cửa cho thoáng khí.",
+      "ra khỏi bếp và báo người lớn.",
+      "bật công tắc đèn hoặc quạt điện."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Bật công tắc điện có thể tạo tia lửa nhỏ, làm khí gas bắt cháy, gây cháy nổ."
+    },
+    {
+     "ma_cau": "K08010205027",
+     "loai": "trac_nghiem",
+     "de": "Trong phòng thí nghiệm, cách tắt đèn cồn đúng là",
+     "lua_chon": [
+      "đậy nắp đèn để ngăn oxygen tiếp xúc với ngọn lửa.",
+      "thổi thật mạnh vào ngọn lửa cho đến khi tắt.",
+      "đổ một ít nước lên ngọn lửa của đèn cồn.",
+      "rút nhanh bấc đèn ra khỏi lọ đựng cồn."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đậy nắp làm ngọn lửa thiếu oxygen nên phản ứng cháy dừng lại.\nThổi có thể làm lửa bùng lên hoặc lan vào lọ cồn, gây nguy hiểm."
+    },
+    {
+     "ma_cau": "K08010205024",
+     "loai": "trac_nghiem",
+     "de": "Bếp gas có ngọn lửa màu vàng, nhiều khói và đáy nồi bị bám muội đen. Điều này chứng tỏ",
+     "lua_chon": [
+      "khí gas cháy hoàn toàn và toả ra nhiều nhiệt nhất có thể.",
+      "phản ứng cháy của khí gas đang thu nhiệt từ nồi nấu.",
+      "khí gas cháy không hoàn toàn do thiếu oxygen, gây lãng phí.",
+      "khí gas cháy chỉ là biến đổi vật lí, không có chất mới."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ngọn lửa vàng, có muội than chứng tỏ thiếu oxygen, khí gas cháy không hoàn toàn.\nNhiên liệu không cháy hết nên toả ít nhiệt hơn, gây lãng phí; cần điều chỉnh cho ngọn lửa màu xanh."
+    },
+    {
+     "ma_cau": "K08010205026",
+     "loai": "trac_nghiem",
+     "de": "Khi xăng dầu bị cháy, người ta dùng cát hoặc bình chữa cháy chuyên dụng mà không dùng nước.\nDùng cát dập được đám cháy vì",
+     "lua_chon": [
+      "cát phản ứng với xăng dầu tạo thành chất không cháy được.",
+      "cát phủ kín ngăn oxygen tiếp xúc với xăng dầu nên sự cháy dừng lại.",
+      "cát thu nhiệt của đám cháy làm xăng dầu đông đặc lại.",
+      "cát hút xăng dầu và làm chúng bay hơi hết khỏi đám cháy."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Sự cháy cần oxygen. Cát phủ lên đám cháy ngăn không khí tiếp xúc với xăng dầu nên phản ứng cháy dừng lại.\nKhông dùng nước vì xăng dầu nhẹ hơn nước, nổi lên và loang rộng làm đám cháy lan ra."
+    },
+    {
+     "ma_cau": "K08010205029",
+     "loai": "trac_nghiem",
+     "de": "Không được dùng xăng để nhóm bếp than, vì",
+     "lua_chon": [
+      "xăng không cháy được trong không khí nên than không bắt lửa.",
+      "xăng cháy là phản ứng thu nhiệt nên làm than bị tắt đi.",
+      "xăng làm than biến đổi thành chất không còn cháy được.",
+      "xăng bay hơi nhanh, cháy bùng lên và toả nhiều nhiệt, dễ gây bỏng, cháy."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Xăng bay hơi nhanh, hơi xăng trộn với không khí khi gặp lửa cháy bùng lên cùng lúc.\nNhiệt toả ra đột ngột, ngọn lửa lớn dễ gây bỏng và cháy lan."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00819",
+   "nhom_id": "KNB00374",
+   "thu_tu": 1,
+   "dang": "Đọc hệ số của một chất được chỉ định trong PTHH đã cân bằng sẵn",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010301005",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $2\\mathrm{Al} + 3\\mathrm{H_2SO_4} \\to \\mathrm{Al_2(SO_4)_3} + 3\\mathrm{H_2}$. Hệ số của nhôm sunfat ($\\mathrm{Al_2(SO_4)_3}$) trong phương trình trên là:",
+     "lua_chon": [
+      "3",
+      "2",
+      "1",
+      "4"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Trước $\\mathrm{Al_2(SO_4)_3}$ không viết số nào, tức là hệ số ngầm định bằng 1, khác với hệ số 2 của $\\mathrm{Al}$ và hệ số 3 của $\\mathrm{H_2SO_4}$, $\\mathrm{H_2}$."
+    },
+    {
+     "ma_cau": "K08010301003",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $4\\mathrm{Al} + 3\\mathrm{O_2} \\rightarrow 2\\mathrm{Al_2O_3}$. Hệ số của nhôm oxit ($\\mathrm{Al_2O_3}$) trong phương trình trên là:",
+     "lua_chon": [
+      "1",
+      "2",
+      "4",
+      "3"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hệ số đứng ngay trước $\\mathrm{Al_2O_3}$ là $2$, khác với hệ số $4$ của $\\mathrm{Al}$ và hệ số $3$ của $\\mathrm{O_2}$ — cần đọc đúng số đứng trước từng chất, không nhầm giữa các chất."
+    },
+    {
+     "ma_cau": "K08010301004",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $2\\mathrm{KClO_3} \\to 2\\mathrm{KCl} + 3\\mathrm{O_2}$. Hệ số của kali clorua (\\mathrm{KCl}) trong phương trình trên là:",
+     "lua_chon": [
+      "3",
+      "4",
+      "1",
+      "2"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hệ số đứng trước $\\mathrm{KCl}$ là 2. Phương án 3 là hệ số của $\\mathrm{O_2}$ (dễ nhầm nếu đọc lướt), không phải hệ số của $\\mathrm{KCl}$."
+    },
+    {
+     "ma_cau": "K08010301001",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học đã cân bằng: $2\\mathrm{H_2} + \\mathrm{O_2} \\rightarrow 2\\mathrm{H_2O}$. Hệ số của khí oxi ($\\mathrm{O_2}$) trong phương trình trên là:",
+     "lua_chon": [
+      "3",
+      "4",
+      "1",
+      "2"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Trước $\\mathrm{O_2}$ không viết số nào, tức là hệ số ngầm định bằng $1$ (khác với $\\mathrm{H_2}$ và $\\mathrm{H_2O}$ đều có hệ số viết rõ là $2$)."
+    },
+    {
+     "ma_cau": "K08010301002",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $\\mathrm{N_2} + 3\\mathrm{H_2} \\rightarrow 2\\mathrm{NH_3}$. Hệ số của khí nitơ ($\\mathrm{N_2}$) trong phương trình trên là:",
+     "lua_chon": [
+      "3",
+      "1",
+      "4",
+      "2"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Trước $\\mathrm{N_2}$ không viết số nào, tức là hệ số ngầm định bằng $1$, khác với hệ số $3$ của $\\mathrm{H_2}$ và hệ số $2$ của $\\mathrm{NH_3}$."
+    },
+    {
+     "ma_cau": "K08010301006",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $4\\mathrm{P} + 5\\mathrm{O_2} \\to 2\\mathrm{P_2O_5}$. Hệ số của photpho ($\\mathrm{P}$) trong phương trình trên là:",
+     "lua_chon": [
+      "1",
+      "4",
+      "5",
+      "2"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hệ số đứng trước $\\mathrm{P}$ là 4, khác với hệ số 5 của $\\mathrm{O_2}$ và hệ số 2 của $\\mathrm{P_2O_5}$ — ba số này dễ gây nhầm lẫn nếu không đọc kỹ."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00820",
+   "nhom_id": "KNB00374",
+   "thu_tu": 2,
+   "dang": "Đọc tỉ lệ số phân tử/nguyên tử giữa hai chất trong PTHH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010301008",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình hoá học: $\\mathrm{2KMnO_4} \\to \\mathrm{K_2MnO_4} + \\mathrm{MnO_2} + \\mathrm{O_2}$. Tỉ lệ số phân tử kali pemanganat ($\\mathrm{KMnO_4}$) : số phân tử khí oxi ($\\mathrm{O_2}$) là:",
+     "lua_chon": [
+      "1 : 2",
+      "1 : 1",
+      "2 : 1",
+      "2 : 2"
+     ],
+     "dap_an": "2:1",
+     "loi_giai": "Hệ số của $\\mathrm{KMnO_4}$ là 2, hệ số của $\\mathrm{O_2}$ là 1 (ngầm định) $\\Rightarrow$ tỉ lệ số phân tử $\\mathrm{KMnO_4} : \\mathrm{O_2} = 2 : 1$."
+    },
+    {
+     "ma_cau": "K08010301011",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình hoá học: $\\mathrm{2Fe + 3Cl_2 \\to 2FeCl_3}$. Tỉ lệ số nguyên tử sắt ($\\mathrm{Fe}$) : số phân tử khí clo ($\\mathrm{Cl_2}$) là:",
+     "lua_chon": [
+      "1 : 3",
+      "2 : 3",
+      "2 : 2",
+      "3 : 2"
+     ],
+     "dap_an": "2 : 3",
+     "loi_giai": "Hệ số của $\\mathrm{Fe}$ là $2$, hệ số của $\\mathrm{Cl_2}$ là $3 \\Rightarrow$ tỉ lệ số nguyên tử $\\mathrm{Fe}$ : số phân tử $\\mathrm{Cl_2} = 2 : 3$."
+    },
+    {
+     "ma_cau": "K08010301009",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình hoá học: $\\mathrm{2Mg} + \\mathrm{O_2} \\to \\mathrm{2MgO}$. Tỉ lệ số nguyên tử magie ($\\mathrm{Mg}$) : số phân tử khí oxi ($\\mathrm{O_2}$) là:",
+     "lua_chon": [
+      "2 : 1",
+      "1 : 2",
+      "1 : 1",
+      "2 : 2"
+     ],
+     "dap_an": "2:1",
+     "loi_giai": "Hệ số của $\\mathrm{Mg}$ là 2, hệ số của $\\mathrm{O_2}$ là 1 (ngầm định) $\\Rightarrow$ tỉ lệ số nguyên tử $\\mathrm{Mg}$ : số phân tử $\\mathrm{O_2} = 2 : 1$."
+    },
+    {
+     "ma_cau": "K08010301012",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình hoá học: $\\mathrm{2Cu + O_2 \\to 2CuO}$. Tỉ lệ số nguyên tử đồng ($\\mathrm{Cu}$) : số phân tử khí oxi ($\\mathrm{O_2}$) là:",
+     "lua_chon": [
+      "1 : 1",
+      "2 : 2",
+      "1 : 2",
+      "2 : 1"
+     ],
+     "dap_an": "2 : 1",
+     "loi_giai": "Hệ số của $\\mathrm{Cu}$ là $2$, hệ số của $\\mathrm{O_2}$ là $1$ (ngầm định) $\\Rightarrow$ tỉ lệ số nguyên tử $\\mathrm{Cu}$ : số phân tử $\\mathrm{O_2} = 2 : 1$."
+    },
+    {
+     "ma_cau": "K08010301007",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình hoá học: $\\mathrm{CaCO_3} \\to \\mathrm{CaO} + \\mathrm{CO_2}$. Tỉ lệ số phân tử canxi cacbonat ($\\mathrm{CaCO_3}$) : số phân tử khí cacbon đioxit ($\\mathrm{CO_2}$) là:",
+     "lua_chon": [
+      "1 : 2",
+      "2 : 1",
+      "1 : 1",
+      "2 : 2"
+     ],
+     "dap_an": "1:1",
+     "loi_giai": "Hệ số của $\\mathrm{CaCO_3}$ là 1 (ngầm định), hệ số của $\\mathrm{CO_2}$ cũng là 1 (ngầm định) $\\Rightarrow$ tỉ lệ 1 : 1."
+    },
+    {
+     "ma_cau": "K08010301010",
+     "loai": "tra_loi_ngan",
+     "de": "Cho phương trình hoá học: $\\mathrm{CH_4} + \\mathrm{2O_2} \\to \\mathrm{CO_2} + \\mathrm{2H_2O}$. Tỉ lệ số phân tử khí metan ($\\mathrm{CH_4}$) : số phân tử khí oxi ($\\mathrm{O_2}$) là:",
+     "lua_chon": [
+      "1 : 1",
+      "1 : 2",
+      "2 : 2",
+      "2 : 1"
+     ],
+     "dap_an": "1:2",
+     "loi_giai": "Hệ số của $\\mathrm{CH_4}$ là 1 (ngầm định), hệ số của $\\mathrm{O_2}$ là 2 $\\Rightarrow$ tỉ lệ số phân tử $\\mathrm{CH_4} : \\mathrm{O_2} = 1 : 2$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00821",
+   "nhom_id": "KNB00374",
+   "thu_tu": 3,
+   "dang": "Suy số phân tử của một chất từ tỉ lệ hệ số (cho biết số phân tử chất này, tìm chất kia)",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010301014",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $\\mathrm{N_2} + 3\\mathrm{H_2} \\rightarrow 2\\mathrm{NH_3}$. Nếu có 4 phân tử $\\mathrm{N_2}$ phản ứng hết thì tạo ra bao nhiêu phân tử $\\mathrm{NH_3}$?",
+     "lua_chon": [
+      "4",
+      "12",
+      "6",
+      "8"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tỉ lệ số phân tử $\\mathrm{N_2}$ : $\\mathrm{NH_3}$ trên phương trình là $1 : 2$.\r\nVậy 4 phân tử $\\mathrm{N_2}$ tạo ra số phân tử $\\mathrm{NH_3}$ gấp đôi: $4 \\times 2 = 8$ phân tử $\\mathrm{NH_3}$."
+    },
+    {
+     "ma_cau": "K08010301016",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $\\mathrm{2KClO_3 \\to 2KCl + 3O_2}$. Nếu thu được 12 phân tử $\\mathrm{O_2}$ thì đã có bao nhiêu phân tử $\\mathrm{KClO_3}$ bị nhiệt phân?",
+     "lua_chon": [
+      "8",
+      "18",
+      "6",
+      "12"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tỉ lệ số phân tử $\\mathrm{KClO_3}$ : $\\mathrm{O_2}$ trên phương trình là $2 : 3$. \n12 phân tử $\\mathrm{O_2}$ gấp 4 lần 3, nên số phân tử $\\mathrm{KClO_3}$ cũng gấp 4 lần $2: 2 \\times 4 = 8$ phân tử $\\mathrm{KClO_3}$."
+    },
+    {
+     "ma_cau": "K08010301018",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $\\mathrm{CH_4 + 2O_2 \\to CO_2 + 2H_2O}$. Nếu có 6 phân tử $\\mathrm{CH_4}$ cháy hết thì cần bao nhiêu phân tử $\\mathrm{O_2}$?",
+     "lua_chon": [
+      "12",
+      "6",
+      "24",
+      "3"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tỉ lệ số phân tử $\\mathrm{CH_4}$ : $\\mathrm{O_2}$ trên phương trình là $1 : 2$. \n6 phân tử $\\mathrm{CH_4}$ gấp 6 lần 1, nên số phân tử $\\mathrm{O_2}$ cần cũng gấp 6 lần $2: 2 \\times 6 = 12$ phân tử $\\mathrm{O_2}$."
+    },
+    {
+     "ma_cau": "K08010301017",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $\\mathrm{Zn + 2HCl \\to ZnCl_2 + H_2}$. Nếu cần dùng 14 phân tử $\\mathrm{HCl}$ thì có bao nhiêu phân tử $\\mathrm{Zn}$ phản ứng vừa đủ?",
+     "lua_chon": [
+      "10",
+      "7",
+      "28",
+      "14"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tỉ lệ số phân tử $\\mathrm{Zn}$ : $\\mathrm{HCl}$ trên phương trình là $1 : 2$. \n14 phân tử $\\mathrm{HCl}$ gấp 7 lần 2, nên số phân tử $\\mathrm{Zn}$ cũng gấp 7 lần $1 : 1 \\times 7 = 7$ phân tử $\\mathrm{Zn}$."
+    },
+    {
+     "ma_cau": "K08010301015",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $4\\mathrm{Al} + 3\\mathrm{O_2} \\rightarrow 2\\mathrm{Al_2O_3}$. Nếu có 8 phân tử $\\mathrm{Al}$ phản ứng hết thì cần bao nhiêu phân tử $\\mathrm{O_2}$?",
+     "lua_chon": [
+      "12",
+      "4",
+      "6",
+      "8"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tỉ lệ số phân tử $\\mathrm{Al}$ : $\\mathrm{O_2}$ trên phương trình là $4 : 3$.\r\n8 phân tử $\\mathrm{Al}$ gấp 2 lần 4, nên số phân tử $\\mathrm{O_2}$ cần cũng gấp 2 lần 3: $3 \\times 2 = 6$ phân tử $\\mathrm{O_2}$."
+    },
+    {
+     "ma_cau": "K08010301013",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $\\mathrm{Fe} + 2\\mathrm{HCl} \\rightarrow \\mathrm{FeCl_2} + \\mathrm{H_2}$. Nếu có 5 phân tử $\\mathrm{Fe}$ phản ứng vừa đủ thì cần bao nhiêu phân tử $\\mathrm{HCl}$?",
+     "lua_chon": [
+      "2",
+      "10",
+      "15",
+      "5"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tỉ lệ số phân tử $\\mathrm{Fe}$ : $\\mathrm{HCl}$ trên phương trình là $1 : 2$.\r\nVậy 5 phân tử $\\mathrm{Fe}$ cần số phân tử $\\mathrm{HCl}$ gấp đôi: $5 \\times 2 = 10$ phân tử $\\mathrm{HCl}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00822",
+   "nhom_id": "KNB00374",
+   "thu_tu": 4,
+   "dang": "Nhận định đúng/sai về hệ số - tỉ lệ trong một PTHH cho sẵn",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010301019",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $\\mathrm{C} + \\mathrm{O_2} \\to \\mathrm{CO_2}$. Phát biểu nào sau đây ĐÚNG?",
+     "lua_chon": [
+      "Cứ $2$ nguyên tử $\\mathrm{C}$ phản ứng với $1$ phân tử $\\mathrm{O_2}$",
+      "Hệ số của $\\mathrm{CO_2}$ là $2$",
+      "Phản ứng trên tạo ra hai chất sản phẩm",
+      "Tỉ lệ số nguyên tử $\\mathrm{C}$ : số phân tử $\\mathrm{O_2}$ : số phân tử $\\mathrm{CO_2} = 1 : 1 : 1$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cả ba chất $\\mathrm{C}$, $\\mathrm{O_2}$, $\\mathrm{CO_2}$ đều có hệ số ngầm định là $1 \\Rightarrow$ tỉ lệ $1 : 1 : 1$. Các phát biểu còn lại đều sai hệ số hoặc sai số chất sản phẩm (phản ứng chỉ có $1$ sản phẩm là $\\mathrm{CO_2}$)."
+    },
+    {
+     "ma_cau": "K08010301021",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $\\mathrm{Na_2O} + \\mathrm{H_2O} \\to \\mathrm{2NaOH}$. Phát biểu nào sau đây SAI?",
+     "lua_chon": [
+      "Sản phẩm duy nhất của phản ứng là $\\mathrm{NaOH}$",
+      "Tỉ lệ số phân tử $\\mathrm{Na_2O} : \\mathrm{H_2O} : \\mathrm{NaOH} = 1 : 1 : 2$",
+      "Hệ số của $\\mathrm{NaOH}$ là $2$",
+      "Cứ $1$ phân tử $\\mathrm{Na_2O}$ phản ứng với $2$ phân tử $\\mathrm{H_2O}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hệ số của $\\mathrm{H_2O}$ trên phương trình là $1$ (ngầm định), không phải $2$, nên phát biểu '$\\mathrm{1}$ phân tử $\\mathrm{Na_2O}$ phản ứng với $2$ phân tử $\\mathrm{H_2O}$' là SAI — tỉ lệ đúng phải là $\\mathrm{Na_2O} : \\mathrm{H_2O} = 1 : 1$."
+    },
+    {
+     "ma_cau": "K08010301023",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $2\\mathrm{Na} + 2\\mathrm{H_2O} \\to 2\\mathrm{NaOH} + \\mathrm{H_2}$. Phát biểu nào sau đây SAI?",
+     "lua_chon": [
+      "Hệ số của khí $\\mathrm{H_2}$ là 2",
+      "Phản ứng trên có 2 chất tham gia",
+      "Sản phẩm của phản ứng gồm $\\mathrm{NaOH}$ và khí $\\mathrm{H_2}$",
+      "Tỉ lệ số nguyên tử $\\mathrm{Na}$ : số phân tử $\\mathrm{H_2O}$ : số phân tử $\\mathrm{NaOH}$ : số phân tử $\\mathrm{H_2} = 2 : 2 : 2 : 1$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trước $\\mathrm{H_2}$ không viết số nào, tức là hệ số của $\\mathrm{H_2}$ ngầm định bằng 1, không phải 2 $\\Rightarrow$ phát biểu này SAI. Tỉ lệ đúng theo phương trình là $\\mathrm{Na} : \\mathrm{H_2O} : \\mathrm{NaOH} : \\mathrm{H_2} = 2 : 2 : 2 : 1$."
+    },
+    {
+     "ma_cau": "K08010301022",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $\\mathrm{BaCl_2} + \\mathrm{Na_2SO_4} \\to \\mathrm{BaSO_4} + \\mathrm{2NaCl}$. Phát biểu nào sau đây ĐÚNG?",
+     "lua_chon": [
+      "Tỉ lệ số phân tử $\\mathrm{BaCl_2} : \\mathrm{Na_2SO_4} : \\mathrm{BaSO_4} : \\mathrm{NaCl} = 1 : 1 : 1 : 2$",
+      "Hệ số của $\\mathrm{NaCl}$ là $1$",
+      "Phản ứng trên chỉ tạo ra một chất sản phẩm",
+      "Tỉ lệ số phân tử $\\mathrm{BaCl_2} : \\mathrm{NaCl} = 1 : 1$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hệ số lần lượt của $\\mathrm{BaCl_2}$, $\\mathrm{Na_2SO_4}$, $\\mathrm{BaSO_4}$, $\\mathrm{NaCl}$ trên phương trình là $1, 1, 1, 2 \\Rightarrow$ tỉ lệ $1 : 1 : 1 : 2$. Phản ứng có $2$ sản phẩm ($\\mathrm{BaSO_4}$ và $\\mathrm{NaCl}$), và tỉ lệ $\\mathrm{BaCl_2}$ : $\\mathrm{NaCl}$ đúng phải là $1 : 2$."
+    },
+    {
+     "ma_cau": "K08010301024",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $4\\mathrm{Na} + \\mathrm{O_2} \\to 2\\mathrm{Na_2O}$. Phát biểu nào sau đây ĐÚNG?",
+     "lua_chon": [
+      "Hệ số của khí $\\mathrm{O_2}$ là 2",
+      "Tỉ lệ số nguyên tử $\\mathrm{Na}$ : số phân tử $\\mathrm{O_2}$ : số phân tử $\\mathrm{Na_2O} = 4 : 1 : 2$",
+      "Cứ 2 nguyên tử $\\mathrm{Na}$ phản ứng với 1 phân tử $\\mathrm{O_2}$",
+      "Sản phẩm của phản ứng là $\\mathrm{NaO}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hệ số lần lượt của $\\mathrm{Na}$, $\\mathrm{O_2}$, $\\mathrm{Na_2O}$ trên phương trình là 4, 1 (ngầm định), 2 $\\Rightarrow$ tỉ lệ $4 : 1 : 2$. Sản phẩm đúng là $\\mathrm{Na_2O}$ (natri oxit), không phải $\\mathrm{NaO}$."
+    },
+    {
+     "ma_cau": "K08010301020",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $\\mathrm{CaO} + \\mathrm{H_2O} \\to \\mathrm{Ca(OH)_2}$. Phát biểu nào sau đây ĐÚNG?",
+     "lua_chon": [
+      "Tỉ lệ số phân tử $\\mathrm{CaO} : \\mathrm{H_2O} : \\mathrm{Ca(OH)_2} = 1 : 1 : 1$",
+      "Phản ứng trên tạo ra hai chất sản phẩm",
+      "Cứ $2$ phân tử $\\mathrm{CaO}$ phản ứng với $1$ phân tử $\\mathrm{H_2O}$",
+      "Hệ số của $\\mathrm{Ca(OH)_2}$ là $2$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cả ba chất $\\mathrm{CaO}$, $\\mathrm{H_2O}$, $\\mathrm{Ca(OH)_2}$ đều có hệ số ngầm định là $1 \\Rightarrow$ tỉ lệ $1 : 1 : 1$. Phản ứng chỉ tạo ra $1$ sản phẩm duy nhất là $\\mathrm{Ca(OH)_2}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00823",
+   "nhom_id": "KNB00374",
+   "thu_tu": 5,
+   "dang": "Vận dụng đọc hệ số - tỉ lệ vào một tình huống/thí nghiệm ngắn",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010301025",
+     "loai": "trac_nghiem",
+     "de": "Trong phòng thí nghiệm, để điều chế khí oxi, người ta nung nóng kali pemanganat (thuốc tím) theo phương trình: $2\\mathrm{KMnO_4} \\to \\mathrm{K_2MnO_4} + \\mathrm{MnO_2} + \\mathrm{O_2}$. Một bạn học sinh ghi lại: 'cứ 2 phân tử kali pemanganat bị nhiệt phân thì thu được 1 phân tử khí oxi.' Nhận định này:",
+     "lua_chon": [
+      "Đúng, vì hệ số của $\\mathrm{KMnO_4}$ là 2 và hệ số của $\\mathrm{O_2}$ là 1 (ngầm định) trong phương trình",
+      "Sai, vì tỉ lệ đúng phải là 1 : 1",
+      "Đúng, nhưng chỉ là sự trùng hợp chứ không theo đúng hệ số phương trình",
+      "Sai, vì tỉ lệ đúng phải là 2 : 2"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đọc đúng hệ số trên phương trình: $\\mathrm{KMnO_4}$ có hệ số 2, $\\mathrm{O_2}$ có hệ số 1 (ngầm định) $\\Rightarrow$ tỉ lệ 2 : 1, khớp với nhận định của bạn học sinh."
+    },
+    {
+     "ma_cau": "K08010301028",
+     "loai": "trac_nghiem",
+     "de": "Trong phòng thí nghiệm, để điều chế sắt(III) clorua, người ta đốt dây sắt nóng đỏ trong khí clo theo phương trình: $\\mathrm{2Fe + 3Cl_2 \\to 2FeCl_3}$. Bạn Hùng ghi lại: 'tỉ lệ số nguyên tử $\\mathrm{Fe}$ với số phân tử $\\mathrm{Cl_2}$ tham gia phản ứng ứng là $2:3$.' Nhận định này:",
+     "lua_chon": [
+      "Sai, vì tỉ lệ đúng phải là $2:2$",
+      "Đúng, nhưng chỉ là sự trùng hợp chứ không theo đúng hệ số phương trình",
+      "Sai, vì tỉ lệ đúng phải là $3:2$",
+      "Đúng, vì hệ số của $\\mathrm{Fe}$ là $2$ và hệ số của $\\mathrm{Cl_2}$ là $3$ trong phương trình"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đọc đúng hệ số trên phương trình: $\\mathrm{Fe}$ có hệ số $2$, $\\mathrm{Cl_2}$ có hệ số $3 \\Rightarrow$ tỉ lệ $2:3$, khớp với nhận định của Hùng."
+    },
+    {
+     "ma_cau": "K08010301030",
+     "loai": "trac_nghiem",
+     "de": "Trong phòng thí nghiệm, để điều chế khí hidro, người ta cho kẽm viên tác dụng với dung dịch axit clohidric theo phương trình: $\\mathrm{Zn + 2HCl \\to ZnCl_2 + H_2}$. Bạn Hoa ghi vào vở: 'tỉ lệ số nguyên tử $\\mathrm{Zn}$ : số phân tử $\\mathrm{HCl}$ : số phân tử $\\mathrm{H_2 = 1:2:1}$.' Nhận định này:",
+     "lua_chon": [
+      "Sai, vì tỉ lệ đúng phải là $1:2:2$",
+      "Đúng, nhưng thiếu chất $\\mathrm{ZnCl_2}$ nên tỉ lệ ghi chưa đầy đủ",
+      "Sai, vì tỉ lệ đúng phải là $2:2:1$",
+      "Đúng, vì hệ số của $\\mathrm{Zn}$, $\\mathrm{HCl}$, $\\mathrm{H_2}$ trong phương trình lần lượt là $1,2,1$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đọc đúng hệ số trên phương trình: $\\mathrm{Zn}$ có hệ số $1$ (ngầm định), $\\mathrm{HCl}$ có hệ số $2$, $\\mathrm{H_2}$ có hệ số $1$ (ngầm định) $\\Rightarrow$ tỉ lệ $1:2:1$, khớp với ghi chú của Hoa."
+    },
+    {
+     "ma_cau": "K08010301029",
+     "loai": "trac_nghiem",
+     "de": "Trong công nghiệp, người ta đốt lưu huỳnh trong không khí để sản xuất khí lưu huỳnh đioxit theo phương trình: $\\mathrm{S + O_2 \\to SO_2}$. Bạn Tâm nói: 'cứ $1$ nguyên tử lưu huỳnh cháy hết thì cần đúng $2$ phân tử khí oxi.' Nhận định của Tâm:",
+     "lua_chon": [
+      "Đúng, vì phân tử $\\mathrm{SO_2}$ có $2$ nguyên tử oxi nên cần $2$ phân tử $\\mathrm{O_2}$",
+      "Sai, vì cần đúng $3$ phân tử $\\mathrm{O_2}$ mới đúng",
+      "Sai, vì theo phương trình chỉ cần $1$ phân tử $\\mathrm{O_2}$ (không phải $2$) cho mỗi nguyên tử lưu huỳnh",
+      "Đúng, vì hệ số của $\\mathrm{O_2}$ là $2$ trong phương trình"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đọc đúng hệ số trên phương trình: $\\mathrm{S}$ có hệ số $1$ (ngầm định), $\\mathrm{O_2}$ cũng có hệ số $1$ (ngầm định) $\\Rightarrow$ tỉ lệ $1:1$, không phải $1:2$ như Tâm nói.\nLưu ý: $2$ nguyên tử oxi trong PHÂN TỬ $\\mathrm{SO_2}$ là do bên trong công thức của $\\mathrm{SO_2}$, không liên quan đến SỐ PHÂN TỬ $\\mathrm{O_2}$ cần dùng — đây là bẫy dễ nhầm ở phương án D."
+    },
+    {
+     "ma_cau": "K08010301027",
+     "loai": "trac_nghiem",
+     "de": "Khi hoà tan nhôm vào dung dịch axit sunfuric loãng để điều chế khí hidro, phản ứng xảy ra theo phương trình: $2\\mathrm{Al} + 3\\mathrm{H_2SO_4} \\to \\mathrm{Al_2(SO_4)_3} + 3\\mathrm{H_2}$. Bạn Minh cho rằng: 'tỉ lệ số nguyên tử $\\mathrm{Al}$ với số phân tử $\\mathrm{H_2SO_4}$ tham gia phản ứng là 3 : 2.' Nhận định này:",
+     "lua_chon": [
+      "Đúng, vì tổng hệ số của hai chất tham gia bằng 5",
+      "Sai, vì tỉ lệ đúng phải là 2 : 2",
+      "Sai, vì tỉ lệ đúng theo phương trình phải là 2 : 3 ($\\mathrm{Al}$ có hệ số 2, $\\mathrm{H_2SO_4}$ có hệ số 3)",
+      "Đúng, vì hệ số của $\\mathrm{Al}$ là 3 trong phương trình"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đọc đúng hệ số trên phương trình: $\\mathrm{Al}$ có hệ số 2, $\\mathrm{H_2SO_4}$ có hệ số 3 $\\Rightarrow$ tỉ lệ đúng là 2 : 3, không phải 3 : 2 như bạn Minh nói (Minh đã đọc ngược tỉ lệ)."
+    },
+    {
+     "ma_cau": "K08010301026",
+     "loai": "trac_nghiem",
+     "de": "Trong phòng thí nghiệm, để điều chế khí hidro, người ta cho sắt tác dụng với dung dịch axit clohidric theo phương trình: $\\mathrm{Fe} + 2\\mathrm{HCl} \\to \\mathrm{FeCl_2} + \\mathrm{H_2}$. Bạn Lan nói: 'cứ 1 nguyên tử sắt phản ứng thì cần đúng 2 phân tử axit clohidric.' Nhận định của Lan:",
+     "lua_chon": [
+      "Đúng, vì hệ số của $\\mathrm{Fe}$ là 1 (ngầm định) và hệ số của $\\mathrm{HCl}$ là 2 trong phương trình",
+      "Không xác định được nếu không biết khối lượng sắt đem phản ứng",
+      "Sai, vì cần đúng 4 phân tử $\\mathrm{HCl}$ mới đúng",
+      "Sai, vì cần đúng 1 phân tử $\\mathrm{HCl}$ mới đúng"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đọc đúng hệ số trên phương trình: $\\mathrm{Fe}$ có hệ số 1 (ngầm định), $\\mathrm{HCl}$ có hệ số 2 $\\Rightarrow$ tỉ lệ 1 : 2, khớp với nhận định của Lan."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00824",
+   "nhom_id": "KNB00375",
+   "thu_tu": 1,
+   "dang": "Tìm khối lượng sản phẩm còn thiếu (2 chất tham gia, 2 chất sản phẩm, số liệu cùng đơn vị)",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010302003",
+     "loai": "trac_nghiem",
+     "de": "Cho 16 g bari clorua tác dụng vừa đủ với 34 g natri sunfat, thu được 45 g bari sunfat (kết tủa\ntrắng) và một lượng natri clorua. Tính khối lượng natri clorua tạo thành.",
+     "lua_chon": [
+      "11",
+      "50",
+      "95",
+      "5"
+     ],
+     "dap_an": "D",
+     "loi_giai": "m(bari clorua) + m(natri sunfat) = m(bari sunfat) + m(natri clorua).\n$\\Rightarrow$ m(natri clorua) = $16 + 34 - 45 = 5$ g."
+    },
+    {
+     "ma_cau": "K08010302004",
+     "loai": "trac_nghiem",
+     "de": "Cho 9 g sắt tác dụng vừa đủ với 27 g axit sunfuric loãng, thu được 30 g sắt(II) sunfat và một lượng khí hiđro. Tính khối lượng khí hiđro sinh ra.",
+     "lua_chon": [
+      "3",
+      "6",
+      "36",
+      "66"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{m(sắt)} + \\mathrm{m(axit sunfuric)} = \\mathrm{m(sắt(II) sunfat)} + \\mathrm{m(khí hiđro)}$.\n$\\Rightarrow \\mathrm{m(khí hiđro)} = 9 + 27 - 30 = 6\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010302002",
+     "loai": "trac_nghiem",
+     "de": "Cho 24 g nhôm tác dụng vừa đủ với 18 g axit clohidric, thu được 30 g nhôm clorua và một\nlượng khí hidro. Tính khối lượng khí hidro sinh ra.",
+     "lua_chon": [
+      "6",
+      "42",
+      "12",
+      "72"
+     ],
+     "dap_an": "C",
+     "loi_giai": "m(nhôm) + m(axit clohidric) = m(nhôm clorua) + m(khí hidro).\n$\\Rightarrow$ m(khí hidro) = $24 + 18 - 30 = 12$ g."
+    },
+    {
+     "ma_cau": "K08010302005",
+     "loai": "trac_nghiem",
+     "de": "Cho 22 g bạc nitrat tác dụng vừa đủ với 8 g natri clorua, thu được 17 g bạc clorua (kết tủa trắng) và một lượng natri nitrat. Tính khối lượng natri nitrat tạo thành.",
+     "lua_chon": [
+      "30",
+      "13",
+      "5",
+      "47"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{m(bạc nitrat)} + \\mathrm{m(natri clorua)} = \\mathrm{m(bạc clorua)} + \\mathrm{m(natri nitrat)}$.\n$\\Rightarrow \\mathrm{m(natri nitrat)} = 22 + 8 - 17 = 13\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010302001",
+     "loai": "trac_nghiem",
+     "de": "Cho 13 g kẽm tác dụng vừa đủ với 20 g axit clohidric, thu được 25 g kẽm clorua và một lượng\nkhí hidro. Tính khối lượng khí hidro sinh ra.",
+     "lua_chon": [
+      "8",
+      "58",
+      "33",
+      "12"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Theo định luật bảo toàn khối lượng: m(kẽm) + m(axit clohidric) = m(kẽm clorua) + m(khí hidro).\n$\\Rightarrow$ m(khí hidro) = $13 + 20 - 25 = 8$ g."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00825",
+   "nhom_id": "KNB00375",
+   "thu_tu": 2,
+   "dang": "Tìm khối lượng chất tham gia còn thiếu (2 chất tham gia, 2 chất sản phẩm, số liệu cùng đơn vị)",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010302010",
+     "loai": "trac_nghiem",
+     "de": "Một lượng sắt tác dụng vừa đủ với 49 g axit sunfuric loãng, thu được 56 g sắt(II) sunfat và 1 g khí hiđro. Tính khối lượng sắt đã phản ứng.",
+     "lua_chon": [
+      "8",
+      "57",
+      "7",
+      "106"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{m(sắt) + m(axit sunfuric) = m(sắt(II) sunfat) + m(khí hiđro)}$\n$\\Rightarrow \\mathrm{m(sắt) = (56 + 1) - 49 = 8 g}$."
+    },
+    {
+     "ma_cau": "K08010302006",
+     "loai": "trac_nghiem",
+     "de": "Một lượng natri tác dụng hết với 20 g nước, thu được 20 g natri hiđroxit và 0,5 g khí hiđro. Tính khối lượng natri đã phản ứng.",
+     "lua_chon": [
+      "20,5",
+      "9",
+      "8,5",
+      "32"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{m(natri)} + \\mathrm{m(nước)} = \\mathrm{m(natri\\ hiđroxit)} + \\mathrm{m(khí\\ hiđro)}$.\n$\\Rightarrow \\mathrm{m(natri)} = (20 + 0,5) - 11,5 = 9\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010302008",
+     "loai": "trac_nghiem",
+     "de": "Một lượng kẽm tác dụng vừa đủ với 26 g axit clohiđric, thu được 35 g kẽm clorua và 1 g khí hiđro. Tính khối lượng kẽm đã phản ứng.",
+     "lua_chon": [
+      "62",
+      "36",
+      "9",
+      "10"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{m(kẽm)} + \\mathrm{m(axit\\ clohiđric)} = \\mathrm{m(kẽm\\ clorua)} + \\mathrm{m(khí\\ hiđro)}$.\n$\\Rightarrow \\mathrm{m(kẽm)} = (35 + 1) - 26 = 10\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010302007",
+     "loai": "trac_nghiem",
+     "de": "Cho 8 g nhôm tác dụng vừa đủ với một lượng axit sunfuric, thu được 41 g nhôm sunfat và 1 g khí hiđro. Tính khối lượng axit sunfuric đã dùng.",
+     "lua_chon": [
+      "42",
+      "50",
+      "33",
+      "34"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{m(nhôm)} + \\mathrm{m(axit\\ sunfuric)} = \\mathrm{m(nhôm\\ sunfat)} + \\mathrm{m(khí\\ hiđro)}$.\n$\\Rightarrow \\mathrm{m(axit\\ sunfuric)} = (41 + 1) - 8 = 34\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010302009",
+     "loai": "trac_nghiem",
+     "de": "Cho 15 g bari clorua tác dụng vừa đủ với một lượng natri sunfat, thu được 19 g bari sunfat và 9 g natri clorua. Tính khối lượng natri sunfat đã dùng.",
+     "lua_chon": [
+      "13",
+      "28",
+      "43",
+      "4"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{m(bari clorua) + m(natri sunfat) = m(bari sunfat) + m(natri clorua)}$\n$\\Rightarrow \\mathrm{m(natri sunfat) = (19 + 9) - 15 = 13 g}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00826",
+   "nhom_id": "KNB00375",
+   "thu_tu": 3,
+   "dang": "Tìm khối lượng còn thiếu khi số liệu cho khác đơn vị (phải đổi cùng đơn vị trước khi tính)",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010302013",
+     "loai": "trac_nghiem",
+     "de": "Đốt cháy $480 \\mathrm{\\ mg}$ lưu huỳnh trong $0,5 \\mathrm{\\ g}$ khí oxi (phản ứng vừa đủ), thu được khí lưu huỳnh đioxit. Tính khối lượng khí lưu huỳnh đioxit tạo thành (theo gam).",
+     "lua_chon": [
+      "0,5",
+      "480,5",
+      "5,3",
+      "0,98"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $480 \\mathrm{\\ mg} = 0,48 \\mathrm{\\ g}$ để cùng đơn vị gam với khối lượng oxi.\n$\\mathrm{m(khí \\ lưu \\ huỳnh \\ đioxit)} = 0,48 + 0,5 = 0,98 \\mathrm{\\ g}$.\nNếu quên đổi $\\mathrm{mg}$ sang $\\mathrm{g}$ mà cộng thẳng $480$ với $0,5$ sẽ ra kết quả sai $480,5 \\mathrm{\\ g}$."
+    },
+    {
+     "ma_cau": "K08010302015",
+     "loai": "trac_nghiem",
+     "de": "Nhiệt phân $4,9\\ \\mathrm{kg}$ kali clorat, thu được $3\\ \\mathrm{kg}$ kali clorua và một lượng khí oxi. Tính khối lượng khí oxi sinh ra (theo kg).",
+     "lua_chon": [
+      "1,9",
+      "7,9",
+      "19",
+      "0,19"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vì hai số liệu đã cùng đơn vị $\\mathrm{kg}$ nên không cần đổi đơn vị, chỉ cần áp dụng đúng công thức.\n$\\mathrm{m}(\\mathrm{khí\\ oxi}) = \\mathrm{m}(\\mathrm{kali\\ clorat}) - \\mathrm{m}(\\mathrm{kali\\ clorua}) = 4,9 - 3 = 1,9\\ \\mathrm{kg}$.\nCác phương án $19$ và $0,19$ là lỗi đặt sai dấu phẩy thập phân --- một lỗi rất hay gặp khi làm tròn/ghi kết quả."
+    },
+    {
+     "ma_cau": "K08010302012",
+     "loai": "trac_nghiem",
+     "de": "Nung $2,5 \\mathrm{\\ kg}$ đá vôi, thu được $1400 \\mathrm{\\ g}$ vôi sống và một lượng khí cacbonic. Tính khối lượng khí cacbonic sinh ra (theo gam).",
+     "lua_chon": [
+      "23600",
+      "3900",
+      "1100",
+      "1,1"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $2,5 \\mathrm{\\ kg} = 2500 \\mathrm{\\ g}$ để cùng đơn vị gam với khối lượng vôi sống.\n$\\mathrm{m(khí \\ cacbonic)} = \\mathrm{m(đá \\ vôi)} - \\mathrm{m(vôi \\ sống)} = 2500 - 1400 = 1100 \\mathrm{\\ g}$.\nNếu chỉ tính ra $1,1$ (đơn vị $\\mathrm{kg}$) mà quên đổi sang gam theo yêu cầu đề bài thì vẫn chưa đúng đáp số cần tìm."
+    },
+    {
+     "ma_cau": "K08010302011",
+     "loai": "trac_nghiem",
+     "de": "Đốt cháy hoàn toàn $0,6 \\mathrm{\\ kg}$ bột magie trong bình chứa $400 \\mathrm{\\ g}$ khí oxi (phản ứng vừa đủ), thu được magie oxit. Tính khối lượng magie oxit tạo thành (theo gam).",
+     "lua_chon": [
+      "1000",
+      "600",
+      "460",
+      "400,6"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $0,6 \\mathrm{\\ kg} = 600 \\mathrm{\\ g}$ để cùng đơn vị gam với khối lượng oxi.\n$\\mathrm{m(magie \\ oxit)} = \\mathrm{m(magie)} + \\mathrm{m(oxi)} = 600 + 400 = 1000 \\mathrm{\\ g}$.\nNếu quên đổi đơn vị mà cộng thẳng $0,6$ với $400$ sẽ ra kết quả sai $400,6 \\mathrm{\\ g}$."
+    },
+    {
+     "ma_cau": "K08010302014",
+     "loai": "trac_nghiem",
+     "de": "Cho $1,2\\ \\mathrm{kg}$ nhôm tác dụng vừa đủ với $10,8\\ \\mathrm{kg}$ axit clohiđric, thu được $5340\\ \\mathrm{g}$ nhôm clorua và một lượng khí hiđro. Tính khối lượng khí hiđro sinh ra (theo gam).",
+     "lua_chon": [
+      "4140",
+      "12000",
+      "6660",
+      "5460"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $1,2\\ \\mathrm{kg} = 1200\\ \\mathrm{g}$ và $10,8\\ \\mathrm{kg} = 10800\\ \\mathrm{g}$ để cùng đơn vị gam với khối lượng nhôm clorua.\n$\\mathrm{m}(\\mathrm{khí\\ hiđro}) = (1200 + 10800) - 5340 = 12000 - 5340 = 6660\\ \\mathrm{g}$.\nNếu quên trừ đi khối lượng nhôm clorua đã biết, sẽ nhầm lấy luôn $12000\\ \\mathrm{g}$ làm đáp số."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00827",
+   "nhom_id": "KNB00375",
+   "thu_tu": 4,
+   "dang": "Tìm khối lượng còn thiếu khi phản ứng có từ 3 chất trở lên",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010302020",
+     "loai": "trac_nghiem",
+     "de": "Đốt cháy hoàn toàn 68 g một hợp chất X trong khí oxi (khối lượng oxi đã tính vào 68 g chất tham gia), thu được 3 sản phẩm khí gồm 22 g khí M, 14 g khí N và một lượng khí P. Tính khối lượng khí P.",
+     "lua_chon": [
+      "54",
+      "104",
+      "46",
+      "32"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$m(\\text{chất tham gia}) = m(\\mathrm{M}) + m(\\mathrm{N}) + m(\\mathrm{P}) \\Rightarrow m(\\mathrm{P}) = 68 - 22 - 14 = 32\\ \\mathrm{g}.$\nNếu quên trừ một trong hai khí M, N sẽ ra 46 g hoặc 54 g \\text{---} đều sai vì bỏ sót một số hạng."
+    },
+    {
+     "ma_cau": "K08010302016",
+     "loai": "trac_nghiem",
+     "de": "Trộn $12 \\mathrm{~g}$ cacbon, $32 \\mathrm{~g}$ lưu huỳnh và $48 \\mathrm{~g}$ khí oxi cho phản ứng hết với nhau, thu được một hỗn hợp khí duy nhất (gồm khí cacbon đioxit và khí lưu huỳnh đioxit). Tính tổng khối lượng hỗn hợp khí thu được.",
+     "lua_chon": [
+      "60",
+      "44",
+      "92",
+      "80"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tổng khối lượng chất tham gia = tổng khối lượng sản phẩm (dù sản phẩm gồm nhiều chất khí, vẫn cộng tất cả).\n$\\mathrm{m}$ (hỗn hợp khí) $= 12 + 32 + 48 = 92 \\mathrm{~g}$.\nCác phương án $60, 80, 44$ đều do bỏ sót một trong ba chất tham gia khi cộng."
+    },
+    {
+     "ma_cau": "K08010302018",
+     "loai": "trac_nghiem",
+     "de": "Ba chất $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}$ phản ứng vừa đủ với nhau tạo thành duy nhất chất $\\mathrm{D}$. Biết khối lượng chất $\\mathrm{A}$ là $15 \\mathrm{~g}$, khối lượng chất $\\mathrm{B}$ là $24 \\mathrm{~g}$, khối lượng chất $\\mathrm{D}$ thu được là $60 \\mathrm{~g}$. Tính khối lượng chất $\\mathrm{C}$ đã phản ứng.",
+     "lua_chon": [
+      "45",
+      "99",
+      "21",
+      "36"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{m}(\\mathrm{A}) + \\mathrm{m}(\\mathrm{B}) + \\mathrm{m}(\\mathrm{C}) = \\mathrm{m}(\\mathrm{D}) \\Rightarrow \\mathrm{m}(\\mathrm{C}) = 60 - 15 - 24 = 21 \\mathrm{~g}$.\nNếu quên trừ một trong hai chất $\\mathrm{A}, \\mathrm{B}$ sẽ ra $45 \\mathrm{~g}$ hoặc $36 \\mathrm{~g}$ — đều sai vì bỏ sót một số hạng."
+    },
+    {
+     "ma_cau": "K08010302019",
+     "loai": "trac_nghiem",
+     "de": "Ba chất P, Q, R phản ứng vừa đủ với nhau, biết khối lượng P là 8 g, khối lượng Q là 25 g, thu được 50 g sản phẩm duy nhất. Tính khối lượng chất R đã phản ứng.",
+     "lua_chon": [
+      "25",
+      "17",
+      "42",
+      "83"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$m(\\mathrm{P}) + m(\\mathrm{Q}) + m(\\mathrm{R}) = m(\\text{sản phẩm}) \\Rightarrow m(\\mathrm{R}) = 50 - 8 - 25 = 17\\ \\mathrm{g}.$\nNếu quên trừ Q (chỉ trừ P) sẽ ra 42 g; nếu quên trừ P (chỉ trừ Q) sẽ ra 25 g \\text{---} đều sai."
+    },
+    {
+     "ma_cau": "K08010302017",
+     "loai": "trac_nghiem",
+     "de": "Nhiệt phân hoàn toàn $100 \\mathrm{~g}$ một loại phân bón hỗn hợp, thu được $42 \\mathrm{~g}$ chất rắn $\\mathrm{X}$, $35 \\mathrm{~g}$ chất khí $\\mathrm{Y}$ và một lượng chất khí $\\mathrm{Z}$. Tính khối lượng khí $\\mathrm{Z}$.",
+     "lua_chon": [
+      "177",
+      "23",
+      "58",
+      "65"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{m}$ (phân bón) $= \\mathrm{m}(\\mathrm{X}) + \\mathrm{m}(\\mathrm{Y}) + \\mathrm{m}(\\mathrm{Z}) \\Rightarrow \\mathrm{m}(\\mathrm{Z}) = 100 - 42 - 35 = 23 \\mathrm{~g}$.\nNếu chỉ trừ một trong hai chất đã biết (quên chất còn lại) sẽ ra $58 \\mathrm{~g}$ hoặc $65 \\mathrm{~g}$ — đều sai."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00828",
+   "nhom_id": "KNB00375",
+   "thu_tu": 5,
+   "dang": "Suy luận khối lượng qua độ TĂNG/GIẢM được mô tả (không cho thẳng khối lượng từng chất)",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010302024",
+     "loai": "tra_loi_ngan",
+     "de": "Nung $12$ g một mẫu đồng(II) cacbonat cho đến khi phản ứng hoàn toàn, thu được $8,2$ g chất rắn đồng(II) oxit và khí cacbonic thoát ra hết. Hỏi khối lượng chất rắn đã giảm đi bao nhiêu gam so với ban đầu?",
+     "dap_an": "3,8",
+     "loi_giai": "Khối lượng chất rắn giảm đúng bằng khối lượng khí cacbonic đã thoát ra.\nĐộ giảm $= 12 - 8,2 = 3,8$ g."
+    },
+    {
+     "ma_cau": "K08010302022",
+     "loai": "tra_loi_ngan",
+     "de": "Đốt cháy hoàn toàn một lượng bột nhôm trong khí oxi, thu được $20,4$ g nhôm oxit; khối lượng chất rắn đã TĂNG THÊM $8,7$ g so với lượng nhôm ban đầu (đây là khối lượng khí oxi đã phản ứng).\nTính khối lượng nhôm ban đầu.",
+     "dap_an": "11,7",
+     "loi_giai": "Độ tăng $8,7$ g chính là khối lượng khí oxi đã phản ứng.\n$\\mathrm{m(nhom) = m(nhom \\ oxit) - m(oxi) = 20,4 - 8,7 = 11,7}$ g."
+    },
+    {
+     "ma_cau": "K08010302025",
+     "loai": "tra_loi_ngan",
+     "de": "Đốt cháy hoàn toàn một mẫu dây sắt trong khí oxi, khối lượng chất rắn TĂNG THÊM $3,2$ g so với sắt ban đầu (đây là khối lượng khí oxi đã hoá hợp). Biết oxit sắt từ thu được có khối lượng $19,6$ g.\nTính khối lượng sắt ban đầu.",
+     "dap_an": "16,4",
+     "loi_giai": "Độ tăng $3,2$ g chính là khối lượng khí oxi đã phản ứng.\n$\\mathrm{m(sat) = m(oxit \\ sat \\ tu) - m(oxi) = 19,6 - 3,2 = 16,4}$ g."
+    },
+    {
+     "ma_cau": "K08010302023",
+     "loai": "tra_loi_ngan",
+     "de": "Nung $15$ g kali clorat đến khi phản ứng hoàn toàn, khối lượng chất rắn GIẢM ĐI $5,76$ g so với ban đầu (đây là khối lượng khí oxi đã thoát ra). Tính khối lượng kali clorua (chất rắn) còn lại sau khi nung.",
+     "dap_an": "9,24",
+     "loi_giai": "Độ giảm $5,76$ g chính là khối lượng khí oxi đã thoát ra.\n$\\mathrm{m(kali \\ clorua) = m(kali \\ clorat) - m(khi \\ oxi) = 15 - 5,76 = 9,24}$ g."
+    },
+    {
+     "ma_cau": "K08010302021",
+     "loai": "tra_loi_ngan",
+     "de": "Đốt cháy hoàn toàn một lượng bột magie trong không khí, nhận thấy khối lượng chất rắn thu được (magie oxit) TĂNG THÊM 6,4 g so với khối lượng magie ban đầu (đây chính là khối lượng khí oxi đã hoá hợp). Biết khối lượng magie ban đầu là 9,6 g. Tính khối lượng magie oxit thu được.",
+     "dap_an": "16",
+     "loi_giai": "Độ tăng $6,4$ g chính là khối lượng khí oxi đã phản ứng: $\\mathrm{m(oxi) = 6,4}$ g.\n$\\mathrm{m(magie \\ oxit) = m(magie) + m(oxi) = 9,6 + 6,4 = 16}$ g."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00829",
+   "nhom_id": "KNB00375",
+   "thu_tu": 6,
+   "dang": "Kết hợp bảo toàn khối lượng với tỉ lệ giữa hai đại lượng chưa biết",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010302028",
+     "loai": "tra_loi_ngan",
+     "de": "Trộn 15 g bari clorua với 34 g natri sunfat cho phản ứng vừa đủ, thu được bari sunfat (kết tủa) và natri clorua, trong đó khối lượng natri clorua bằng 1/4 khối lượng bari sunfat. Tính khối lượng bari sunfat tạo thành.",
+     "dap_an": "39.2",
+     "loi_giai": "Tổng khối lượng 2 sản phẩm = $15 + 34 = 49 \\, \\mathrm{g}$.\nGọi $\\mathrm{m(bari \\, sunfat)} = \\mathrm{y}$ thì $\\mathrm{m(natri \\, clorua)} = \\mathrm{y}/4 \\Rightarrow \\mathrm{y} + \\mathrm{y}/4 = 49 \\Rightarrow 1,25\\mathrm{y} = 49 \\Rightarrow \\mathrm{y} = 39,2 \\, \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010302027",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 4,6 g natri tác dụng hết với 5,4 g nước, thu được natri hiđroxit và khí hiđro, trong đó khối lượng natri hiđroxit gấp 39 lần khối lượng khí hiđro. Tính khối lượng natri hiđroxit tạo thành.",
+     "dap_an": "9.75",
+     "loi_giai": "Tổng khối lượng 2 sản phẩm = $4,6 + 5,4 = 10 \\, \\mathrm{g}$.\nGọi $\\mathrm{m(khí \\, hiđro)} = \\mathrm{x}$ thì $\\mathrm{m(natri \\, hiđroxit)} = 39\\mathrm{x} \\Rightarrow 40\\mathrm{x} = 10 \\Rightarrow \\mathrm{x} = 0,25 \\, \\mathrm{g} \\Rightarrow \\mathrm{m(natri \\, hiđroxit)} = 39 \\times 0,25 = 9,75 \\, \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010302030",
+     "loai": "tra_loi_ngan",
+     "de": "Cho một lượng sắt tác dụng vừa đủ với 4,8 g khí oxi, thu được oxit sắt từ. Biết khối lượng oxit sắt từ gấp 4 lần khối lượng khí oxi đã dùng. Tính khối lượng sắt đã phản ứng.",
+     "dap_an": "14.4",
+     "loi_giai": "$\\mathrm{m(oxit \\, sắt \\, từ)} = 4 \\times 4,8 = 19,2 \\, \\mathrm{g}$.\n$\\mathrm{m(sắt)} = \\mathrm{m(oxit \\, sắt \\, từ)} - \\mathrm{m(oxi)} = 19,2 - 4,8 = 14,4 \\, \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010302026",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 3,25 g kẽm tác dụng vừa đủ với 3,65 g axit clohidric, thu được kẽm clorua và khí hiđro, trong đó khối lượng kẽm clorua gấp 22 lần khối lượng khí hiđro sinh ra. Tính khối lượng khí hiđro sinh ra.",
+     "dap_an": "0.3",
+     "loi_giai": "Tổng khối lượng 2 sản phẩm = $\\mathrm{m(kẽm)} + \\mathrm{m(axit \\, clohiđric)} = 3,25 + 3,65 = 6,9 \\, \\mathrm{g}$.\nGọi $\\mathrm{m(khí \\, hiđro)} = \\mathrm{x}$ thì $\\mathrm{m(kẽm \\, clorua)} = 22\\mathrm{x} \\Rightarrow 23\\mathrm{x} = 6,9 \\Rightarrow \\mathrm{x} = 0,3 \\, \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K08010302029",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 9 g magie tác dụng hết với một lượng khí oxi, thu được magie oxit. Biết khối lượng khí oxi đã dùng bằng 2/3 khối lượng magie oxit thu được. Tính khối lượng magie oxit tạo thành.",
+     "dap_an": "27",
+     "loi_giai": "$\\mathrm{m(magie)} + \\mathrm{m(oxi)} = \\mathrm{m(magie \\, oxit)}$; gọi $\\mathrm{m(magie \\, oxit)} = \\mathrm{z}$ thì $\\mathrm{m(oxi)} = (2/3)\\mathrm{z}$.\n$9 + (2/3)\\mathrm{z} = \\mathrm{z} \\Rightarrow 9 = (1/3)\\mathrm{z} \\Rightarrow \\mathrm{z} = 27 \\, \\mathrm{g}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00830",
+   "nhom_id": "KNB00375",
+   "thu_tu": 7,
+   "dang": "Bài toán 2 giai đoạn phản ứng liên tiếp (áp dụng bảo toàn khối lượng 2 lần)",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010302034",
+     "loai": "tu_luan",
+     "de": "Cho 9 g magie tác dụng hết với một lượng khí oxi, thu được magie oxit. Biết khối lượng khí oxi đã dùng bằng $\\dfrac{2}{3}$ khối lượng magie oxit thu được. Tính khối lượng magie oxit tạo thành.",
+     "dap_an": "27",
+     "loi_giai": "$\\mathrm{m(magie) + m(oxi) = m(magie\\ oxit)}$; gọi $\\mathrm{m(magie\\ oxit)} = z$ thì $\\mathrm{m(oxi)} = (2/3)z$.\n$9 + (2/3)z = z \\Rightarrow 9 = (1/3)z \\Rightarrow z = 27$ g."
+    },
+    {
+     "ma_cau": "K08010302032",
+     "loai": "tu_luan",
+     "de": "Cho 4,6 g natri tác dụng hết với 5,4 g nước, thu được natri hiđroxit và khí hiđro, trong đó khối lượng natri hiđroxit gấp 39 lần khối lượng khí hiđro. Tính khối lượng natri hiđroxit tạo thành.",
+     "dap_an": "9.75",
+     "loi_giai": "Tổng khối lượng 2 sản phẩm = $4,6 + 5,4 = 10$ g.\nGọi $\\mathrm{m(khí\\ hiđro)} = x$ thì $\\mathrm{m(natri\\ hiđroxit)} = 39x \\Rightarrow 40x = 10 \\Rightarrow x = 0,25$ g $\\Rightarrow \\mathrm{m(natri\\ hiđroxit)} = 39 \\times 0,25 = 9,75$ g."
+    },
+    {
+     "ma_cau": "K08010302031",
+     "loai": "tu_luan",
+     "de": "Cho 3,25 g kẽm tác dụng vừa đủ với 3,65 g axit clohidric, thu được kẽm clorua và khí hiđro, trong đó khối lượng kẽm clorua gấp 22 lần khối lượng khí hiđro sinh ra. Tính khối lượng khí hiđro sinh ra.",
+     "dap_an": "0.3",
+     "loi_giai": "Tổng khối lượng 2 sản phẩm = $\\mathrm{m(kẽm) + m(axit\\ clohidric)} = 3,25 + 3,65 = 6,9$ g.\nGọi $\\mathrm{m(khí\\ hiđro)} = x$ thì $\\mathrm{m(kẽm\\ clorua)} = 22x \\Rightarrow 23x = 6,9 \\Rightarrow x = 0,3$ g."
+    },
+    {
+     "ma_cau": "K08010302035",
+     "loai": "tu_luan",
+     "de": "Cho một lượng sắt tác dụng vừa đủ với 4,8 g khí oxi, thu được oxit sắt từ. Biết khối lượng oxit sắt từ gấp 4 lần khối lượng khí oxi đã dùng. Tính khối lượng sắt đã phản ứng.",
+     "dap_an": "14.4",
+     "loi_giai": "$\\mathrm{m(oxit\\ sắt\\ từ)} = 4 \\times 4,8 = 19,2$ g.\n$\\mathrm{m(sắt)} = \\mathrm{m(oxit\\ sắt\\ từ) - m(oxi)} = 19,2 - 4,8 = 14,4$ g."
+    },
+    {
+     "ma_cau": "K08010302033",
+     "loai": "tu_luan",
+     "de": "Trộn 15 g bari clorua với 34 g natri sunfat cho phản ứng vừa đủ, thu được bari sunfat (kết tủa) và natri clorua, trong đó khối lượng natri clorua bằng $\\dfrac{1}{4}$ khối lượng bari sunfat. Tính khối lượng bari sunfat tạo thành.",
+     "dap_an": "39.2",
+     "loi_giai": "Tổng khối lượng 2 sản phẩm = $15 + 34 = 49$ g.\nGọi $\\mathrm{m(bari\\ sunfat)} = y$ thì $\\mathrm{m(natri\\ clorua)} = y/4 \\Rightarrow y + y/4 = 49 \\Rightarrow 1,25y = 49 \\Rightarrow y = 39,2$ g."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00831",
+   "nhom_id": "KNB00375",
+   "thu_tu": 8,
+   "dang": "Kết hợp bảo toàn khối lượng với phần trăm khối lượng của hỗn hợp",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010302038",
+     "loai": "tu_luan",
+     "de": "Một mẫu hợp kim nặng 20 g gồm nhôm và tạp chất trơ (không cháy), trong đó nhôm chiếm 81% khối lượng hợp kim. Toàn bộ nhôm trong mẫu phản ứng hết với khí oxi tạo ra nhôm oxit. Biết khối lượng khí oxi đã phản ứng là 14,4 g. Tính khối lượng nhôm oxit tạo thành.",
+     "dap_an": "30.6",
+     "loi_giai": "Khối lượng nhôm trong mẫu = $81\\% \\times 20 = 16,2$ g (tạp chất 3,8 g không tham gia phản ứng).\nm(nhôm oxit) = m(nhôm) + m(khí oxi) = $16,2 + 14,4 = 30,6$ g."
+    },
+    {
+     "ma_cau": "K08010302039",
+     "loai": "tu_luan",
+     "de": "Một mẫu hỗn hợp nặng 50 g gồm sắt và tạp chất không phản ứng, trong đó tạp chất chiếm 8% khối lượng mẫu. Toàn bộ lượng sắt trong mẫu tác dụng hết với khí oxi, dùng hết 18 g khí oxi, tạo thành oxit sắt từ. Tính khối lượng oxit sắt từ thu được.",
+     "dap_an": "64",
+     "loi_giai": "Khối lượng sắt trong mẫu = $(100\\% – 8\\%) \\times 50 = 92\\% \\times 50 = 46$ g.\nm(oxit sắt từ) = m(sắt) + m(khí oxi) = $46 + 18 = 64$ g."
+    },
+    {
+     "ma_cau": "K08010302037",
+     "loai": "tu_luan",
+     "de": "Một mẫu đá vôi nặng 10 g, trong đó canxi cacbonat chiếm 90% khối lượng mẫu (còn lại là tạp chất không bị nhiệt phân). Nung mẫu đá vôi đến khi toàn bộ canxi cacbonat phản ứng hết, thu được 4 g khí cacbon đioxit và một lượng vôi sống. Tính khối lượng vôi sống thu được.",
+     "dap_an": "5",
+     "loi_giai": "Khối lượng canxi cacbonat đã phản ứng = $90\\% \\times 10 = 9$ g (tạp chất 1 g không tham gia phản ứng).\nm(vôi sống) = m(canxi cacbonat) $–$ m(khí cacbon đioxit) = $9 – 4 = 5$ g."
+    },
+    {
+     "ma_cau": "K08010302040",
+     "loai": "tu_luan",
+     "de": "Một mẫu hợp kim đồng-kẽm nặng 40 g, trong đó đồng chiếm 35% khối lượng mẫu, còn lại là kẽm (đồng không phản ứng với axit clohidric loãng). Toàn bộ lượng kẽm trong mẫu tác dụng vừa đủ với 28,4 g axit clohidric, thu được kẽm clorua và 0,8 g khí hiđro. Tính khối lượng kẽm clorua tạo thành.",
+     "dap_an": "53.6",
+     "loi_giai": "Khối lượng kẽm trong mẫu = $(100\\% – 35\\%) \\times 40 = 65\\% \\times 40 = 26$ g.\nm(kẽm clorua) = (m(kẽm) + m(axit clohidric)) $–$ m(khí hiđro) = $(26 + 28,4) – 0,8 = 53,6$ g."
+    },
+    {
+     "ma_cau": "K08010302036",
+     "loai": "tu_luan",
+     "de": "Một mẫu quặng nặng 18 g chỉ gồm lưu huỳnh và tạp chất không cháy, trong đó lưu huỳnh nguyên chất chiếm 12 g. Đốt cháy hoàn toàn lượng lưu huỳnh này trong khí oxi, thu được khí lưu huỳnh đioxit có khối lượng gấp đúng 2 lần khối lượng lưu huỳnh đã đốt (tạp chất không tham gia phản ứng). Tính khối lượng khí oxi đã phản ứng.",
+     "dap_an": "12",
+     "loi_giai": "Khối lượng khí lưu huỳnh đioxit = $2 \\times 12 = 24$ g (tạp chất 6 g trong mẫu không liên quan đến phản ứng nên bỏ qua).\nm(khí oxi) = m(khí lưu huỳnh đioxit) $–$ m(lưu huỳnh) = $24 – 12 = 12$ g."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00832",
+   "nhom_id": "KNB00376",
+   "thu_tu": 1,
+   "dang": "Điền hệ số còn thiếu (chỉ 1 chỗ trống, các hệ số khác đã đúng)",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010303002",
+     "loai": "trac_nghiem",
+     "de": "Cho sơ đồ phản ứng: $\\mathrm{2Al} + ? \\mathrm{HCl} \\to \\mathrm{2AlCl_3} + \\mathrm{3H_2}$ (các hệ số khác đã đúng, chỉ còn thiếu hệ số của $\\mathrm{HCl}$). Hệ số còn thiếu của $\\mathrm{HCl}$ là:",
+     "lua_chon": [
+      "3",
+      "6",
+      "4",
+      "2"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cân bằng đúng: $\\mathrm{2Al} + \\mathrm{6HCl} \\to \\mathrm{2AlCl_3} + \\mathrm{3H_2}$.\nKiểm tra: vế trái có $6$ nguyên tử $\\mathrm{Cl}$ và $6$ nguyên tử $\\mathrm{H}$; vế phải có $2 \\times 3 = 6$ nguyên tử $\\mathrm{Cl}$ (từ $\\mathrm{AlCl_3}$) và $3 \\times 2 = 6$ nguyên tử $\\mathrm{H}$ (từ $\\mathrm{H_2}$) — bằng nhau."
+    },
+    {
+     "ma_cau": "K08010303006",
+     "loai": "trac_nghiem",
+     "de": "Cho sơ đồ phản ứng: $\\mathrm{Fe_2O_3} + ?\\mathrm{H_2} \\longrightarrow 2\\mathrm{Fe} + 3\\mathrm{H_2O}$ (các hệ số khác đã đúng, chỉ còn thiếu hệ số của $\\mathrm{H_2}$). Hệ số còn thiếu của $\\mathrm{H_2}$ là:",
+     "lua_chon": [
+      "1",
+      "3",
+      "6",
+      "2"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cân bằng đúng: $\\mathrm{Fe_2O_3} + 3\\mathrm{H_2} \\longrightarrow 2\\mathrm{Fe} + 3\\mathrm{H_2O}$.\nKiểm tra: vế trái có $3\\times 2 = 6$ nguyên tử $\\mathrm{H}$; vế phải $3\\mathrm{H_2O}$ có $3\\times 2 = 6$ nguyên tử $\\mathrm{H}$ — bằng nhau."
+    },
+    {
+     "ma_cau": "K08010303001",
+     "loai": "trac_nghiem",
+     "de": "Cho sơ đồ phản ứng: $? \\mathrm{Fe} + \\mathrm{2O_2} \\to \\mathrm{Fe_3O_4}$ (các hệ số khác đã đúng, chỉ còn thiếu hệ số của $\\mathrm{Fe}$). Hệ số còn thiếu của $\\mathrm{Fe}$ là:",
+     "lua_chon": [
+      "4",
+      "1",
+      "2",
+      "3"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cân bằng đúng: $\\mathrm{3Fe} + \\mathrm{2O_2} \\to \\mathrm{Fe_3O_4}$.\nKiểm tra: vế trái có $3$ nguyên tử $\\mathrm{Fe}$ và $2 \\times 2 = 4$ nguyên tử $\\mathrm{O}$; vế phải $\\mathrm{Fe_3O_4}$ có $3$ nguyên tử $\\mathrm{Fe}$ và $4$ nguyên tử $\\mathrm{O}$ — hai vế đã bằng nhau."
+    },
+    {
+     "ma_cau": "K08010303005",
+     "loai": "trac_nghiem",
+     "de": "Cho sơ đồ phản ứng: $\\mathrm{CH_4} + ?\\mathrm{O_2} \\longrightarrow \\mathrm{CO_2} + 2\\mathrm{H_2O}$ (các hệ số khác đã đúng, chỉ còn thiếu hệ số của $\\mathrm{O_2}$). Hệ số còn thiếu của $\\mathrm{O_2}$ là:",
+     "lua_chon": [
+      "3",
+      "4",
+      "2",
+      "1"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cân bằng đúng: $\\mathrm{CH_4} + 2\\mathrm{O_2} \\longrightarrow \\mathrm{CO_2} + 2\\mathrm{H_2O}$.\nKiểm tra: vế trái có $2\\times 2 = 4$ nguyên tử $\\mathrm{O}$; vế phải có $2$ (từ $\\mathrm{CO_2}$) $+ 2\\times 1$ (từ $2\\mathrm{H_2O}$) $= 4$ nguyên tử $\\mathrm{O}$ — bằng nhau."
+    },
+    {
+     "ma_cau": "K08010303003",
+     "loai": "trac_nghiem",
+     "de": "Cho sơ đồ phản ứng: $? \\mathrm{Na} + \\mathrm{O_2} \\to \\mathrm{2Na_2O}$ (các hệ số khác đã đúng, chỉ còn thiếu hệ số của $\\mathrm{Na}$). Hệ số còn thiếu của $\\mathrm{Na}$ là:",
+     "lua_chon": [
+      "4",
+      "2",
+      "1",
+      "3"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cân bằng đúng: $\\mathrm{4Na} + \\mathrm{O_2} \\to \\mathrm{2Na_2O}$.\nKiểm tra: vế trái có $4$ nguyên tử $\\mathrm{Na}$; vế phải $\\mathrm{2Na_2O}$ có $2 \\times 2 = 4$ nguyên tử $\\mathrm{Na}$ — bằng nhau."
+    },
+    {
+     "ma_cau": "K08010303004",
+     "loai": "trac_nghiem",
+     "de": "Cho sơ đồ phản ứng: $4\\mathrm{P} + ?\\mathrm{O_2} \\longrightarrow 2\\mathrm{P_2O_5}$ (các hệ số khác đã đúng, chỉ còn thiếu hệ số của $\\mathrm{O_2}$). Hệ số còn thiếu của $\\mathrm{O_2}$ là:",
+     "lua_chon": [
+      "4",
+      "2",
+      "10",
+      "5"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cân bằng đúng: $4\\mathrm{P} + 5\\mathrm{O_2} \\longrightarrow 2\\mathrm{P_2O_5}$.\nKiểm tra: vế trái có $5\\times 2 = 10$ nguyên tử $\\mathrm{O}$; vế phải $2\\mathrm{P_2O_5}$ có $2\\times 5 = 10$ nguyên tử $\\mathrm{O}$ — bằng nhau."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00833",
+   "nhom_id": "KNB00376",
+   "thu_tu": 2,
+   "dang": "Chọn bộ hệ số đúng để cân bằng toàn bộ phương trình",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010303007",
+     "loai": "trac_nghiem",
+     "de": "Cho sơ đồ phản ứng: $ \\_ \\mathrm{Al} + \\_ \\mathrm{O_2} \\longrightarrow \\_ \\mathrm{Al_2O_3} $. Bộ hệ số đúng theo thứ tự $\\mathrm{Al}$, $\\mathrm{O_2}$, $\\mathrm{Al_2O_3}$ lần lượt là:",
+     "lua_chon": [
+      "4, 3, 2",
+      "3, 4, 2",
+      "4, 3, 1",
+      "2, 3, 2"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Phương trình cân bằng đúng: $4\\mathrm{Al} + 3\\mathrm{O_2} \\longrightarrow 2\\mathrm{Al_2O_3} \\Rightarrow$ bộ hệ số 4, 3, 2."
+    },
+    {
+     "ma_cau": "K08010303011",
+     "loai": "trac_nghiem",
+     "de": "Cho sơ đồ phản ứng: ___ $\\mathrm{Mg}$ + ___ $\\mathrm{HCl}$ $\\rightarrow$ ___ $\\mathrm{MgCl_2}$ + ___ $\\mathrm{H_2}$. Bộ hệ số đúng theo thứ tự $\\mathrm{Mg}$, $\\mathrm{HCl}$, $\\mathrm{MgCl_2}$, $\\mathrm{H_2}$ lần lượt là:",
+     "lua_chon": [
+      "1, 1, 1, 1",
+      "1, 2, 1, 2",
+      "1, 2, 1, 1",
+      "2, 2, 1, 1"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Phương trình cân bằng đúng: $\\mathrm{Mg}$ + $\\mathrm{2HCl}$ $\\rightarrow$ $\\mathrm{MgCl_2}$ + $\\mathrm{H_2}$ $\\Rightarrow$ bộ hệ số 1, 2, 1, 1."
+    },
+    {
+     "ma_cau": "K08010303012",
+     "loai": "trac_nghiem",
+     "de": "Cho sơ đồ phản ứng: ___ $\\mathrm{Na_2CO_3}$ + ___ $\\mathrm{CaCl_2}$ $\\rightarrow$ ___ $\\mathrm{CaCO_3}$ + ___ $\\mathrm{NaCl}$. Bộ hệ số đúng theo thứ tự $\\mathrm{Na_2CO_3}$, $\\mathrm{CaCl_2}$, $\\mathrm{CaCO_3}$, $\\mathrm{NaCl}$ lần lượt là:",
+     "lua_chon": [
+      "1, 1, 1, 2",
+      "1, 2, 1, 2",
+      "2, 1, 1, 2",
+      "1, 1, 1, 1"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Phương trình cân bằng đúng: $\\mathrm{Na_2CO_3}$ + $\\mathrm{CaCl_2}$ $\\rightarrow$ $\\mathrm{CaCO_3}$ + $\\mathrm{2NaCl}$ $\\Rightarrow$ bộ hệ số 1, 1, 1, 2."
+    },
+    {
+     "ma_cau": "K08010303010",
+     "loai": "trac_nghiem",
+     "de": "Cho sơ đồ phản ứng: $ \\_ \\mathrm{Fe} + \\_ \\mathrm{Cl_2} \\longrightarrow \\_ \\mathrm{FeCl_3} $. Bộ hệ số đúng theo thứ tự $\\mathrm{Fe}$, $\\mathrm{Cl_2}$, $\\mathrm{FeCl_3}$ lần lượt là:",
+     "lua_chon": [
+      "1, 3, 2",
+      "3, 2, 2",
+      "2, 3, 1",
+      "2, 3, 2"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Phương trình cân bằng đúng: $2\\mathrm{Fe} + 3\\mathrm{Cl_2} \\longrightarrow 2\\mathrm{FeCl_3} \\Rightarrow$ bộ hệ số 2, 3, 2."
+    },
+    {
+     "ma_cau": "K08010303008",
+     "loai": "trac_nghiem",
+     "de": "Cho sơ đồ phản ứng: $ \\_ \\mathrm{Zn} + \\_ \\mathrm{HCl} \\longrightarrow \\_ \\mathrm{ZnCl_2} + \\_ \\mathrm{H_2} $. Bộ hệ số đúng theo thứ tự $\\mathrm{Zn}$, $\\mathrm{HCl}$, $\\mathrm{ZnCl_2}$, $\\mathrm{H_2}$ lần lượt là:",
+     "lua_chon": [
+      "1, 2, 2, 1",
+      "2, 2, 1, 1",
+      "1, 1, 1, 1",
+      "1, 2, 1, 1"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Phương trình cân bằng đúng: $\\mathrm{Zn} + 2\\mathrm{HCl} \\longrightarrow \\mathrm{ZnCl_2} + \\mathrm{H_2} \\Rightarrow$ bộ hệ số 1, 2, 1, 1."
+    },
+    {
+     "ma_cau": "K08010303009",
+     "loai": "trac_nghiem",
+     "de": "Cho sơ đồ phản ứng: $ \\_ \\mathrm{Cu} + \\_ \\mathrm{AgNO_3} \\longrightarrow \\_ \\mathrm{Cu(NO_3)_2} + \\_ \\mathrm{Ag} $. Bộ hệ số đúng theo thứ tự $\\mathrm{Cu}$, $\\mathrm{AgNO_3}$, $\\mathrm{Cu(NO_3)_2}$, $\\mathrm{Ag}$ lần lượt là:",
+     "lua_chon": [
+      "1, 2, 1, 2",
+      "1, 2, 1, 1",
+      "2, 2, 1, 2",
+      "1, 1, 1, 1"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Phương trình cân bằng đúng: $\\mathrm{Cu} + 2\\mathrm{AgNO_3} \\longrightarrow \\mathrm{Cu(NO_3)_2} + 2\\mathrm{Ag} \\Rightarrow$ bộ hệ số 1, 2, 1, 2."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00834",
+   "nhom_id": "KNB00376",
+   "thu_tu": 3,
+   "dang": "Chọn phương trình đã được cân bằng ĐÚNG trong 4 phương trình cho sẵn",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010303015",
+     "loai": "trac_nghiem",
+     "de": "Trong 4 phương trình mô tả phản ứng nhiệt phân kali clorat sau, phương trình nào đã được cân bằng ĐÚNG?",
+     "lua_chon": [
+      "$\\mathrm{KClO_3} \\to 2\\mathrm{KCl} + 3\\mathrm{O_2}$",
+      "$\\mathrm{KClO_3} \\to \\mathrm{KCl} + \\mathrm{O_2}$",
+      "$2\\mathrm{KClO_3} \\to 2\\mathrm{KCl} + 2\\mathrm{O_2}$",
+      "$2\\mathrm{KClO_3} \\to 2\\mathrm{KCl} + 3\\mathrm{O_2}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Chỉ có $2\\mathrm{KClO_3} \\to 2\\mathrm{KCl} + 3\\mathrm{O_2}$ cân bằng đúng (K: $2=2$; Cl: $2=2$; O: $6=6$)."
+    },
+    {
+     "ma_cau": "K08010303018",
+     "loai": "trac_nghiem",
+     "de": "Trong 4 phương trình mô tả phản ứng giữa nhôm oxit và axit sunfuric sau, phương trình nào đã được cân bằng ĐÚNG?",
+     "lua_chon": [
+      "$\\mathrm{Al_2O_3} + 3\\mathrm{H_2SO_4} \\rightarrow \\mathrm{Al_2(SO_4)_3} + 3\\mathrm{H_2O}$",
+      "$2\\mathrm{Al_2O_3} + 3\\mathrm{H_2SO_4} \\rightarrow \\mathrm{Al_2(SO_4)_3} + 3\\mathrm{H_2O}$",
+      "$\\mathrm{Al_2O_3} + 3\\mathrm{H_2SO_4} \\rightarrow \\mathrm{Al_2(SO_4)_3} + \\mathrm{H_2O}$",
+      "$\\mathrm{Al_2O_3} + \\mathrm{H_2SO_4} \\rightarrow \\mathrm{Al_2(SO_4)_3} + \\mathrm{H_2O}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Chỉ có $\\mathrm{Al_2O_3} + 3\\mathrm{H_2SO_4} \\rightarrow \\mathrm{Al_2(SO_4)_3} + 3\\mathrm{H_2O}$ cân bằng đúng ($\\mathrm{Al}$: $2=2$; $\\mathrm{S}$: $3=3$; $\\mathrm{H}$: $6=6$; $\\mathrm{O}$: $3+12=15=12+3=15$)."
+    },
+    {
+     "ma_cau": "K08010303016",
+     "loai": "trac_nghiem",
+     "de": "Trong 4 phương trình mô tả phản ứng giữa natri và nước sau, phương trình nào đã được cân bằng ĐÚNG?",
+     "lua_chon": [
+      "$2\\mathrm{Na} + 2\\mathrm{H_2O} \\to \\mathrm{NaOH} + \\mathrm{H_2}$",
+      "$2\\mathrm{Na} + 2\\mathrm{H_2O} \\to 2\\mathrm{NaOH} + \\mathrm{H_2}$",
+      "$2\\mathrm{Na} + \\mathrm{H_2O} \\to 2\\mathrm{NaOH} + \\mathrm{H_2}$",
+      "$\\mathrm{Na} + \\mathrm{H_2O} \\to \\mathrm{NaOH} + \\mathrm{H_2}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chỉ có $2\\mathrm{Na} + 2\\mathrm{H_2O} \\to 2\\mathrm{NaOH} + \\mathrm{H_2}$ cân bằng đúng (Na: $2=2$; O: $2=2$; H: $4=2+2=4$)."
+    },
+    {
+     "ma_cau": "K08010303013",
+     "loai": "trac_nghiem",
+     "de": "Trong 4 phương trình mô tả phản ứng giữa bari clorua và bạc nitrat sau, phương trình nào đã được cân bằng ĐÚNG?",
+     "lua_chon": [
+      "$2\\mathrm{BaCl_2} + \\mathrm{AgNO_3} \\to \\mathrm{AgCl} + 2\\mathrm{Ba(NO_3)_2}$",
+      "$\\mathrm{BaCl_2} + \\mathrm{AgNO_3} \\to \\mathrm{AgCl} + \\mathrm{Ba(NO_3)_2}$",
+      "$\\mathrm{BaCl_2} + 2\\mathrm{AgNO_3} \\to \\mathrm{AgCl} + \\mathrm{Ba(NO_3)_2}$",
+      "$\\mathrm{BaCl_2} + 2\\mathrm{AgNO_3} \\to 2\\mathrm{AgCl} + \\mathrm{Ba(NO_3)_2}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Chỉ có $\\mathrm{BaCl_2} + 2\\mathrm{AgNO_3} \\to 2\\mathrm{AgCl} + \\mathrm{Ba(NO_3)_2}$ cân bằng đúng cả Ba, Cl, Ag, N, O ở hai vế."
+    },
+    {
+     "ma_cau": "K08010303014",
+     "loai": "trac_nghiem",
+     "de": "Trong 4 phương trình mô tả phản ứng tổng hợp khí amoniac từ nitơ và hidro sau, phương trình nào đã được cân bằng ĐÚNG?",
+     "lua_chon": [
+      "$2\\mathrm{N_2} + 3\\mathrm{H_2} \\to 2\\mathrm{NH_3}$",
+      "$\\mathrm{N_2} + 3\\mathrm{H_2} \\to \\mathrm{NH_3}$",
+      "$\\mathrm{N_2} + 3\\mathrm{H_2} \\to 2\\mathrm{NH_3}$",
+      "$\\mathrm{N_2} + 2\\mathrm{H_2} \\to 2\\mathrm{NH_3}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Chỉ có $\\mathrm{N_2} + 3\\mathrm{H_2} \\to 2\\mathrm{NH_3}$ cân bằng đúng (N: $2=2$; H: $6=6$)."
+    },
+    {
+     "ma_cau": "K08010303017",
+     "loai": "trac_nghiem",
+     "de": "Trong 4 phương trình mô tả phản ứng giữa canxi oxit và axit clohidric sau, phương trình nào đã được cân bằng ĐÚNG?",
+     "lua_chon": [
+      "$\\mathrm{CaO} + 2\\mathrm{HCl} \\rightarrow \\mathrm{CaCl_2} + 2\\mathrm{H_2O}$",
+      "$\\mathrm{CaO} + \\mathrm{HCl} \\rightarrow \\mathrm{CaCl_2} + \\mathrm{H_2O}$",
+      "$\\mathrm{CaO} + 2\\mathrm{HCl} \\rightarrow \\mathrm{CaCl_2} + \\mathrm{H_2O}$",
+      "$2\\mathrm{CaO} + 2\\mathrm{HCl} \\rightarrow \\mathrm{CaCl_2} + \\mathrm{H_2O}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Chỉ có $\\mathrm{CaO} + 2\\mathrm{HCl} \\rightarrow \\mathrm{CaCl_2} + \\mathrm{H_2O}$ cân bằng đúng ($\\mathrm{Ca}$: $1=1$; $\\mathrm{Cl}$: $2=2$; $\\mathrm{H}$: $2=2$; $\\mathrm{O}$: $2=1+1=2$)."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00835",
+   "nhom_id": "KNB00376",
+   "thu_tu": 4,
+   "dang": "Cân bằng rồi tính tổng các hệ số",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010303024",
+     "loai": "trac_nghiem",
+     "de": "Cân bằng phương trình $\\mathrm{Fe_2O_3} + \\mathrm{H_2} \\to \\mathrm{Fe} + \\mathrm{H_2O}$ rồi tính tổng các hệ số (kể cả hệ số 1) trong phương trình đã cân bằng.",
+     "lua_chon": [
+      "7",
+      "9",
+      "10",
+      "8"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Phương trình cân bằng: $\\mathrm{Fe_2O_3} + 3\\mathrm{H_2} \\to 2\\mathrm{Fe} + 3\\mathrm{H_2O}$ (hệ số 1, 3, 2, 3). Tổng hệ số $= 1 + 3 + 2 + 3 = 9$."
+    },
+    {
+     "ma_cau": "K08010303019",
+     "loai": "trac_nghiem",
+     "de": "Cân bằng phương trình $\\mathrm{Fe} + \\mathrm{O_2} \\rightarrow \\mathrm{Fe_3O_4}$ rồi tính tổng các hệ số (kể cả hệ số 1) trong phương trình đã cân bằng.",
+     "lua_chon": [
+      "4",
+      "7",
+      "6",
+      "5"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Phương trình cân bằng: $3\\mathrm{Fe} + 2\\mathrm{O_2} \\rightarrow \\mathrm{Fe_3O_4}$ (hệ số 3, 2, 1). Tổng hệ số $= 3 + 2 + 1 = 6$."
+    },
+    {
+     "ma_cau": "K08010303022",
+     "loai": "trac_nghiem",
+     "de": "Cân bằng phương trình $\\mathrm{KMnO_4} \\rightarrow \\mathrm{K_2MnO_4} + \\mathrm{MnO_2} + \\mathrm{O_2}$ rồi tính tổng các hệ số (kể cả hệ số 1) trong phương trình đã cân bằng.",
+     "lua_chon": [
+      "4",
+      "3",
+      "5",
+      "6"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Phương trình cân bằng: $2\\mathrm{KMnO_4} \\rightarrow \\mathrm{K_2MnO_4} + \\mathrm{MnO_2} + \\mathrm{O_2}$ (hệ số 2, 1, 1, 1). Tổng hệ số $= 2 + 1 + 1 + 1 = 5$."
+    },
+    {
+     "ma_cau": "K08010303021",
+     "loai": "trac_nghiem",
+     "de": "Cân bằng phương trình $\\mathrm{Al} + \\mathrm{HCl} \\rightarrow \\mathrm{AlCl_3} + \\mathrm{H_2}$ rồi tính tổng các hệ số trong phương trình đã cân bằng.",
+     "lua_chon": [
+      "13",
+      "12",
+      "10",
+      "11"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Phương trình cân bằng: $2\\mathrm{Al} + 6\\mathrm{HCl} \\rightarrow 2\\mathrm{AlCl_3} + 3\\mathrm{H_2}$ (hệ số 2, 6, 2, 3). Tổng hệ số $= 2 + 6 + 2 + 3 = 13$."
+    },
+    {
+     "ma_cau": "K08010303020",
+     "loai": "trac_nghiem",
+     "de": "Cân bằng phương trình $\\mathrm{P} + \\mathrm{O_2} \\rightarrow \\mathrm{P_2O_5}$ rồi tính tổng các hệ số trong phương trình đã cân bằng.",
+     "lua_chon": [
+      "12",
+      "11",
+      "9",
+      "10"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Phương trình cân bằng: $4\\mathrm{P} + 5\\mathrm{O_2} \\rightarrow 2\\mathrm{P_2O_5}$ (hệ số 4, 5, 2). Tổng hệ số $= 4 + 5 + 2 = 11$."
+    },
+    {
+     "ma_cau": "K08010303023",
+     "loai": "trac_nghiem",
+     "de": "Cân bằng phương trình $\\mathrm{CH_4} + \\mathrm{O_2} \\to \\mathrm{CO_2} + \\mathrm{H_2O}$ rồi tính tổng các hệ số trong phương trình đã cân bằng.",
+     "lua_chon": [
+      "6",
+      "5",
+      "7",
+      "8"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Phương trình cân bằng: $\\mathrm{CH_4} + 2\\mathrm{O_2} \\to \\mathrm{CO_2} + 2\\mathrm{H_2O}$ (hệ số 1, 2, 1, 2). Tổng hệ số $= 1 + 2 + 1 + 2 = 6$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00836",
+   "nhom_id": "KNB00376",
+   "thu_tu": 5,
+   "dang": "Nhận xét đúng/sai về một cách cân bằng cụ thể (lỗi thường gặp)",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010303030",
+     "loai": "trac_nghiem",
+     "de": "Bạn Lâm cân bằng phương trình $\\mathrm{Na} + \\mathrm{H_2O} \\rightarrow \\mathrm{NaOH} + \\mathrm{H_2}$ và đưa ra kết quả: \"$2\\mathrm{Na} + 2\\mathrm{H_2O} \\rightarrow 2\\mathrm{NaOH} + \\mathrm{H_2}$\". Nhận xét nào đúng?",
+     "lua_chon": [
+      "Sai, vì hệ số của $\\mathrm{H_2O}$ phải là $1$",
+      "Sai, vì tổng hệ số hai vế không bằng nhau nên chưa cân bằng đúng",
+      "Đúng, vì số nguyên tử $\\mathrm{Na}$, $\\mathrm{O}$, $\\mathrm{H}$ ở hai vế đều bằng nhau ($\\mathrm{Na}$: $2=2$; $\\mathrm{O}$: $2=2$; $\\mathrm{H}$: $4=2+2=4$)",
+      "Sai, vì hệ số của $\\mathrm{H_2}$ phải là $2$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Kiểm tra từng nguyên tố: $\\mathrm{Na}$ ($2=2$), $\\mathrm{O}$ ($2=2$), $\\mathrm{H}$ ($2\\times 2=4$ ở vế trái; $2\\times 1+1\\times 2=4$ ở vế phải) — tất cả đều bằng nhau, Lâm làm đúng."
+    },
+    {
+     "ma_cau": "K08010303026",
+     "loai": "trac_nghiem",
+     "de": "Bạn Bình cân bằng phương trình $\\mathrm{Fe + Cl_2 \\to FeCl_3}$ và đưa ra kết quả: \"$\\mathrm{Fe + Cl_2 \\to FeCl_2}$\"\n(Bình đổi chỉ số 3 thành 2 trong $\\mathrm{FeCl_3}$ cho dễ cân bằng). Nhận xét nào đúng?",
+     "lua_chon": [
+      "Sai, vì Bình quên hệ số của $\\mathrm{Fe}$",
+      "Sai, vì Bình đã tự ý đổi công thức hoá học của sản phẩm (từ $\\mathrm{FeCl_3}$ thành $\\mathrm{FeCl_2}$) — đây là một chất khác hẳn, không được phép đổi chỉ số khi cân bằng",
+      "Đúng, vì phương trình đã cân bằng số nguyên tử $\\mathrm{Cl}$",
+      "Đúng, vì đây chỉ là một cách viết tắt cho gọn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{FeCl_2}$ (sắt(II) clorua) và $\\mathrm{FeCl_3}$ (sắt(III) clorua) là hai chất hoàn toàn khác nhau. Cân bằng đúng phải giữ nguyên $\\mathrm{FeCl_3}$ và thêm hệ số: $\\mathrm{2Fe + 3Cl_2 \\to 2FeCl_3}$."
+    },
+    {
+     "ma_cau": "K08010303027",
+     "loai": "trac_nghiem",
+     "de": "Bạn Cường cân bằng phương trình $\\mathrm{N_2 + H_2 \\to NH_3}$ và đưa ra kết quả: \"$\\mathrm{N_2 + 3H_2 \\to 2NH_3}$\". Nhận xét nào đúng về cách làm của Cường?",
+     "lua_chon": [
+      "Sai, vì phải viết là $\\mathrm{N_2 + 3H_2 \\to NH_3}$",
+      "Đúng, vì số nguyên tử $\\mathrm{N}$ hai vế đều bằng 2 và số nguyên tử $\\mathrm{H}$ hai vế đều bằng 6",
+      "Sai, vì tổng hệ số hai vế phải bằng nhau",
+      "Sai, vì hệ số của $\\mathrm{NH_3}$ phải là 3"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Kiểm tra: vế trái $\\mathrm{N}$: 2, $\\mathrm{H}$: $3 \\times 2 = 6$; vế phải $\\mathrm{NH_3}$ với hệ số 2: $\\mathrm{N}$: $2 \\times 1 = 2$, $\\mathrm{H}$: $2 \\times 3 = 6$ — hai vế bằng nhau, Cường làm đúng."
+    },
+    {
+     "ma_cau": "K08010303028",
+     "loai": "trac_nghiem",
+     "de": "Bạn Dũng cân bằng phương trình $\\mathrm{Zn} + \\mathrm{HCl} \\rightarrow \\mathrm{ZnCl_2} + \\mathrm{H_2}$ bằng cách thêm hệ số $2$ vào trước $\\mathrm{ZnCl_2}$: \"$\\mathrm{Zn} + \\mathrm{HCl} \\rightarrow 2\\mathrm{ZnCl_2} + \\mathrm{H_2}$\". Nhận xét nào đúng?",
+     "lua_chon": [
+      "Sai, vì thêm hệ số vào $\\mathrm{ZnCl_2}$ khiến vế phải có $4$ nguyên tử $\\mathrm{Cl}$ trong khi vế trái ($\\mathrm{HCl}$ hệ số $1$) chỉ có $1$ nguyên tử $\\mathrm{Cl}$; cách cân bằng đúng là thêm hệ số $2$ vào trước $\\mathrm{HCl}$: $\\mathrm{Zn} + 2\\mathrm{HCl} \\rightarrow \\mathrm{ZnCl_2} + \\mathrm{H_2}$",
+      "Sai, vì phải thêm hệ số $2$ vào trước $\\mathrm{Zn}$",
+      "Đúng, vì đã thêm được một hệ số vào phương trình",
+      "Đúng, vì tổng số chất ở hai vế không đổi"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Phải cân bằng đúng nguyên tố cần thêm hệ số vào chất chứa nguyên tố đó đang thiếu (ở đây là $\\mathrm{Cl}$, cần thêm hệ số vào $\\mathrm{HCl}$), không phải thêm tuỳ ý vào bất kỳ chất nào."
+    },
+    {
+     "ma_cau": "K08010303025",
+     "loai": "trac_nghiem",
+     "de": "Bạn An cân bằng phương trình $\\mathrm{Al + O_2 \\to Al_2O_3}$ và đưa ra kết quả: '$\\mathrm{Al + O_3 \\to AlO_3}$' (An đã đổi chỉ số oxi trong công thức thay vì thêm hệ số). Nhận xét nào đúng về cách làm của An?",
+     "lua_chon": [
+      "Đúng, vì An đã cân bằng được số nguyên tử nhôm",
+      "Đúng, vì hai vế đã có số nguyên tử oxi bằng nhau",
+      "Sai, vì An quên hệ số của $\\mathrm{Al}$",
+      "Sai, vì An đã tự ý đổi CHỈ SỐ trong công thức hoá học ($\\mathrm{O_2}$ thành $\\mathrm{O_3}$, $\\mathrm{Al_2O_3}$ thành $\\mathrm{AlO_3}$) — điều này làm thay đổi bản chất chất, khi cân bằng chỉ được thêm HỆ SỐ đứng trước, không được đổi chỉ số"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khi cân bằng PTHH, chỉ được thêm HỆ SỐ đứng trước công thức, tuyệt đối không được đổi CHỈ SỐ trong công thức hoá học vì sẽ biến thành một chất khác ($\\mathrm{AlO_3}$, $\\mathrm{O_3}$ không phải $\\mathrm{Al_2O_3}$, $\\mathrm{O_2}$)."
+    },
+    {
+     "ma_cau": "K08010303029",
+     "loai": "trac_nghiem",
+     "de": "Bạn Hà cân bằng phương trình $\\mathrm{KMnO_4} \\rightarrow \\mathrm{K_2MnO_4} + \\mathrm{MnO_2} + \\mathrm{O_2}$ bằng cách thêm hệ số $2$ vào trước $\\mathrm{K_2MnO_4}$: \"$\\mathrm{KMnO_4} \\rightarrow 2\\mathrm{K_2MnO_4} + \\mathrm{MnO_2} + \\mathrm{O_2}$\". Nhận xét nào đúng?",
+     "lua_chon": [
+      "Sai, vì phải thêm hệ số vào $\\mathrm{MnO_2}$",
+      "Sai, vì thêm hệ số vào $\\mathrm{K_2MnO_4}$ khiến vế phải có $4$ nguyên tử $\\mathrm{K}$ trong khi vế trái ($\\mathrm{KMnO_4}$ hệ số $1$) chỉ có $1$ nguyên tử $\\mathrm{K}$; cách cân bằng đúng là thêm hệ số $2$ vào trước $\\mathrm{KMnO_4}$: $2\\mathrm{KMnO_4} \\rightarrow \\mathrm{K_2MnO_4} + \\mathrm{MnO_2} + \\mathrm{O_2}$",
+      "Đúng, vì $\\mathrm{K_2MnO_4}$ là chất phức tạp nhất nên cần hệ số lớn hơn",
+      "Đúng, vì đã thêm được một hệ số vào phương trình"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nguyên tố đang lệch là $\\mathrm{K}$ (vế trái có $1$, vế phải $\\mathrm{K_2MnO_4}$ đã có sẵn $2$), nên phải thêm hệ số vào chất tham gia $\\mathrm{KMnO_4}$ (bên trái) chứ không phải thêm vào sản phẩm $\\mathrm{K_2MnO_4}$ (bên phải)."
+    }
+   ]
+  }
+ ]
+}

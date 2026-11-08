@@ -303,21 +303,34 @@ function thuVat(s, k) {
   return xong(su);
 }
 
-// ---------- LÒ BÁNH (1 mẻ, sáng hôm sau xong) ----------
-function loTT(s) { if (s.cap < LO_CAP) return { tt: 'khoa' }; if (!s.lo) return { tt: 'trong' }; return { tt: homNay(s) > s.lo.d ? 'xong' : 'dang', mon: s.lo.mon }; }
+// ---------- MÁY CHẾ BIẾN (tên cũ "lò bánh"): 1 mẻ một lúc, xong sau BANH[mon].phut phút theo giờ game (giờ server khi chơi theo tài khoản) ----------
+// s.lo = { mon, xong: mốc ms } · bản lưu cũ { mon, d } (lò theo ngày) ⇒ xong lúc 5 giờ sáng hôm sau như luật cũ
+function loTT(s) {
+  if (s.cap < LO_CAP) return { tt: 'khoa' }; if (!s.lo) return { tt: 'trong' };
+  const xong = s.lo.xong != null ? s.lo.xong : dauNgay(s.lo.d + 1), con = xong - gio(s);
+  return { tt: con <= 0 ? 'xong' : 'dang', mon: s.lo.mon, con: Math.max(0, con) };
+}
 function nuong(s, id) {
   const B = BANH[id], tt = loTT(s);
   if (!B) return loi('');
-  if (tt.tt === 'khoa') return loi('Lò bánh mở ở cấp ' + LO_CAP);
-  if (tt.tt !== 'trong') return loi(tt.tt === 'xong' ? 'Lấy mẻ bánh cũ ra trước' : 'Lò đang nướng — sáng mai xong');
+  if (tt.tt === 'khoa') return loi('Máy chế biến mở ở cấp ' + LO_CAP);
+  if (tt.tt !== 'trong') return loi(tt.tt === 'xong' ? 'Lấy món đã làm xong ra trước' : 'Máy đang làm — còn ' + Math.ceil(tt.con / 60e3) + ' phút');
   if (s.cap < B.cap) return loi(B.ten + ' mở ở cấp ' + B.cap);
   for (const k in B.can) if (so(s, k) < B.can[k]) return loi('Thiếu ' + ten(k).toLowerCase() + ' (cần ' + B.can[k] + ', có ' + so(s, k) + ')');
   for (const k in B.can) them(s, k, -B.can[k]);
-  s.lo = { mon: id, d: homNay(s) }; dem(s, 'nuong');
+  const t = gio(s); s.lo = { mon: id, bd: t, xong: t + B.phut * 60e3 }; dem(s, 'nuong'); dem(s, 'nuong:' + id);
   return xong([{ loai: 'nuong', mon: id }]);
 }
+// TĂNG TỐC BẰNG TOÁN (03/11): app + server chấm 3 câu; đạt thì app trả giam (0..1) ⇒ rút phần thời gian CÒN LẠI của mẻ đang làm.
+// Luật đạt/không, số lần/ngày, thời gian chờ đều ở SERVER (fn_nt_tang_toc_*) — ở đây chỉ áp kết quả.
+function tangTocLo(s, giam) {
+  const tt = loTT(s); if (tt.tt !== 'dang') return loi('Máy không có mẻ nào đang làm');
+  const g = Math.max(0, Math.min(1, +giam || 0)); if (!g) return loi('');
+  const t = gio(s); s.lo.xong = t + Math.round(tt.con * (1 - g)); dem(s, 'tangToc');
+  return xong([{ loai: 'tangToc', con: s.lo.xong - t }]);
+}
 function layBanh(s) {
-  const tt = loTT(s); if (tt.tt !== 'xong') return loi('Bánh chưa xong — sáng mai nhé');
+  const tt = loTT(s); if (tt.tt !== 'xong') return loi(tt.tt === 'dang' ? 'Chưa xong — còn ' + Math.ceil(tt.con / 60e3) + ' phút' : 'Máy chưa làm gì');
   const id = s.lo.mon, su = [{ loai: 'layBanh', mon: id }, { loai: 'mon', id, n: 1 }];
   them(s, id, 1); s.lo = null; themNn(s, 2, su); dem(s, 'banh');
   return xong(su);
@@ -326,6 +339,8 @@ function layBanh(s) {
 // ---------- CHỢ ----------
 function ban(s, id, n) {
   const P = I[id]; if (!P || !P.gia) return loi('Món này không bán được');
+  // chơi theo tài khoản: phân bón mua bằng ĐIỂM HỌC TẬP ⇒ bán ra EXP là đổi điểm ra xu (07/11: 1 em mua 196 bao) — chỉ được bón
+  if (theoServer() && P.loai === 'phan') return loi('Phân bón để bón cây, không bán được');
   n = Math.min(Math.floor(n), so(s, id)); if (n < 1) return loi('Hết ' + P.ten.toLowerCase());
   them(s, id, -n); const su = [{ loai: 'ban', id, n }];
   nhanExp(s, P.gia * n, su); dem(s, 'ban', n);
@@ -422,7 +437,7 @@ function banTT(s, k) {
   if (laBanThat(k)) {
     const F = banThatCua(k), V = F && BAN_THAT.vuon[F.id];
     if (!V) return { k, ten: F ? F.ten : '?', cap: F ? F.cap : 1, hat: 'x', ngay0: s.ngay0, oMo: 0, ruong: [], vat: { ga: { con: [] }, bo: { con: [] } }, lo: null, trangTri: [], thu: { cho: { tc: 0, d: -1 }, meo: { tc: 0, d: -1 }, chim: { tc: 0, d: -1 } }, laBan: true, that: true, id: F && F.id };
-    return { k, ten: V.ten, cap: V.cap, hat: V.hat, ngay0: V.ngay0, oMo: V.oMo, ruong: V.ruong, vat: V.vat, lo: null, trangTri: V.trangTri, thu: V.thu, laBan: true, that: true, id: V.id };
+    return { k, ten: V.ten, cap: V.cap, hat: V.hat, ngay0: V.ngay0, oMo: V.oMo, ruong: V.ruong, vat: V.vat, lo: null, trangTri: V.trangTri, thu: V.thu, laBan: true, that: true, id: V.id, giaoDien: V.giaoDien };   // giaoDien = nhà & cảnh BẠN chọn (fn_nt_ban_vuon)
   }
   const B = BAN_AO[k], t = gio(s), Dn = ngayCua(t), vao = daVaoCua(B, Dn, gioVN(t)), my = s.ban[k] || {}, hat = 'b' + k;
   const ruong = B.cay.map(() => ({ cay: null }));
@@ -448,7 +463,7 @@ function banTT(s, k) {
   });
   const vat = { ga: { con: Array.from({ length: B.ga }, () => ({ an: lanCuoi })) }, bo: { con: Array.from({ length: B.bo }, () => ({ an: lanCuoi })) } };
   const tts = Object.keys(TRANG_TRI), trangTri = Array.from({ length: LUAT.soChoTrangTri }, (_, o) => bam(hat + '|tt' + o) < 0.4 ? tts[Math.floor(bam(hat + '|ttl' + o) * tts.length)] : null);
-  return { k, ten: B.ten, cap: B.cap, hat, oMo: ruong.length, ruong, vat, lo: null, trangTri, thu: { cho: { tc: [0, 20, 50, 100][B.cho], d: -1 }, meo: { tc: 0, d: -1 }, chim: { tc: 0, d: -1 } }, laBan: true };
+  return { k, ten: B.ten, cap: B.cap, hat, oMo: ruong.length, ruong, vat, lo: null, trangTri, thu: { cho: { tc: [0, 20, 50, 100][B.cho], d: -1 }, meo: { tc: 0, d: -1 }, chim: { tc: 0, d: -1 } }, giaoDien: { nha: ['viet', 'nhat', 'hylap', 'go'][k % 4], nen: ['tet', 'tuyet', 'dem', 'thu', 'trungthu', 'thuong'][k % 6] }, laBan: true };
 }
 // bạn thật: khoá ô = hat|o{j} (khoaO của chủ vườn), bonus mùa theo ngày gieo + ngay0 của CHỦ — khớp hàm server _nt_o_tt
 function oBanTT(s, st, j) {
@@ -486,6 +501,8 @@ function ketQuaBanThat(s, k, j, loaiViec, kq) {
   const F = banThatCua(k), id = F ? F.id : String(k), su = [];
   if (loaiViec === 'giup') {
     dem(s, 'giup'); su.push({ loai: kq.loai === 'tuoi' ? 'giupTuoi' : 'giupBat', ban: k, j });
+    const e = typeof kq.exp === 'number' ? kq.exp : 0;   // thưởng EXP do SERVER quyết (_nt_luat().expGiup) — server cũ không trả thì 0
+    if (e > 0) { nhanExp(s, e, su); dem(s, 'expGiup', e); }
     themNn(s, 1, su); roiDo(s, s.hat + '|giup|' + id + '|' + j + '|' + homNay(s) + '|' + s.hom.giup, LUAT.roiGiup, su);
     return xong(su);
   }
@@ -523,6 +540,7 @@ function giupBan(s, k, j) {
   else if (tt.sau) { my.bat = my.bat || {}; (my.bat[key] = my.bat[key] || []).push(...sauCua(r, st.hat + '|' + j, Dn)); su.push({ loai: 'giupBat', ban: k, j }); }
   else return loi('Ô này không cần giúp');
   s.hom.giup++; dem(s, 'giup');
+  if (LUAT.expGiup) { nhanExp(s, LUAT.expGiup, su); dem(s, 'expGiup', LUAT.expGiup); }
   themNn(s, 1, su); roiDo(s, s.hat + '|giup|' + k + '|' + key + '|' + Dn + '|' + s.hom.giup, LUAT.roiGiup, su);
   return xong(su);
 }
@@ -546,7 +564,7 @@ function viecHom(s) {
   viec('tuoi', 'Tưới', '💧', lon.filter(t => t.tuoiHom).length, lon.length);
   viec('sau', 'Bắt sâu', '🐛', 0, lon.reduce((a, t) => a + t.sau, 0));   // sâu trên ô chín: thu hoạch tự bắt luôn
   for (const k in VAT) { const con = s.vat[k].con; if (s.cap >= VAT[k].cap) viec('an_' + k, 'Cho ' + VAT[k].ten.toLowerCase() + ' ăn', IC_VIEC[k], con.filter(c => c.an === Dn).length, con.length); }
-  for (const k in THU) { const x = thuTT(s, k); if (x.mo) viec('tc_' + k, TEN_THU[k] || THU[k].viec, IC_VIEC[k] || '💗', x.roi ? 1 : 0, 1); }
+  for (const k in THU) { if (THU[k].ngoai) continue; const x = thuTT(s, k); if (x.mo) viec('tc_' + k, TEN_THU[k] || THU[k].viec, IC_VIEC[k] || '💗', x.roi ? 1 : 0, 1); }
   // vườn bạn: cần = đã làm + còn làm được, chặn ở trần lượt/ngày
   const tong = banTong(s), giup = tong.giup, hai = tong.hai;
   viec('giup', 'Giúp bạn', '🤝', s.hom.giup, Math.min(LUAT.giup, s.hom.giup + giup));
@@ -602,6 +620,6 @@ window.NT_ENGINE = {
   oTT, ttO, sauCua, hatHom, bangLai, toiDaVat, vatTT, loTT, thuTT, mocTc, banTT, oBanTT, tomTatBan, viecHom,
   datDiem, thuMo, muaThu,
   BAN_THAT_K0, BAN_THAT, laBanThat, datBanThatDs, datVuonBan, banThatCua, banTong, soBanCoViec, ketQuaBanThat, apDungViec, tromCua,
-  moO, gieo, tuoi, bon, batSau, thu, muaVat, choAn, thuVat, nuong, layBanh, ban, muaPhan, lamLuot, choiThu, datTT, goTT, tromBan, giupBan, capNhat,
+  moO, gieo, tuoi, bon, batSau, thu, muaVat, choAn, thuVat, nuong, tangTocLo, layBanh, ban, muaPhan, lamLuot, choiThu, datTT, goTT, tromBan, giupBan, capNhat,
 };
 })();

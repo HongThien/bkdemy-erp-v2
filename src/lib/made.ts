@@ -38,7 +38,12 @@ export async function buildMaDe(
     // Ứng viên = câu CÙNG CỤM BÀI + in được cùng form. KHÔNG lấy sang cụm KHÁC dù cùng dạng — đó chính
     // là chỗ gây "loạn": bài thay thế phải TƯƠNG ĐƯƠNG câu gốc, không chỉ tình cờ cùng dạng.
     // Dạng vẫn tự khớp vì cụm nằm gọn trong 1 dạng.
+    // ⭐ Thùy 04/11 "nếu có câu clone thì phải chọn câu clone": trong cụm, câu CÙNG GỐC (clone của câu đề 1 / anh em khi câu đề 1
+    // là clone) xếp lên đầu — cụm gom nhiều câu gốc thì gốc khác không được chen trước clone. Sort ổn định: phần còn lại giữ thứ tự cũ.
+    const gocOf = (c: CauHoi) => c.parent_ma_cau ?? c.ma_cau
+    const goc = baseCau ? gocOf(baseCau) : b.maCau
     const candidates = (pools[b.maDang] ?? []).filter((c) => rootOf(c) === root && canBeETForm(c, form))
+      .sort((x, y) => Number(gocOf(x) !== goc) - Number(gocOf(y) !== goc))
     const picks: (string | null)[] = []
     for (let v = 0; v < 2; v++) {
       const fresh = candidates.find((c) => !used.has(c.ma_cau))   // biến thể KHÁC chưa dùng ở bất kỳ đề nào
@@ -87,4 +92,18 @@ export function setVarInCh(ch: CauHinh, baseMaCau: string, v: number, maCau: str
   const cur = ch.etMaDe?.[baseMaCau] ?? [null, null]
   const next = [...cur]; next[v] = maCau
   return { ...ch, etMaDe: { ...(ch.etMaDe ?? {}), [baseMaCau]: next }, etFormByCau: { ...(ch.etFormByCau ?? {}), [maCau]: form } }
+}
+
+// Đổi form in của 1 câu GỐC — mã đề 2/3 của nó phải đi THEO (cùng form là luật của 3 mã đề), nếu không
+// đổi gốc sau khi đã sinh thì đề 2/3 giữ form cũ (bug ÂM THẦM: gốc Tự luận, đề 2/3 ra Trả lời ngắn).
+// Form trắc nghiệm cần phương án: chỉ kéo theo câu biến thể in được (`canBeETForm` qua `tra`); câu không
+// kiểm được/không in được thì giữ nguyên form cũ. Trả cau_hinh mới (không setState — caller lưu).
+export function setFormInCh(ch: CauHinh, maCau: string, form: ETForm, tra?: (ma: string) => Parameters<typeof canBeETForm>[0] | null | undefined): CauHinh {
+  const byCau: Record<string, string> = { ...(ch.etFormByCau ?? {}), [maCau]: form }
+  for (const m of ch.etMaDe?.[maCau] ?? []) {
+    if (!m) continue
+    if (form === 'trac_nghiem') { const c = tra?.(m); if (!c || !canBeETForm(c, form)) continue }
+    byCau[m] = form
+  }
+  return { ...ch, etFormByCau: byCau }
 }

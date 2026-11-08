@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T110010204075",
+  "dang_bai_id": "NDB00525",
+  "chac": "cao",
+  "ly_do": "Cho n(A), n(B), n(A∩B), tính n(A∪B)."
+ },
+ {
+  "ma_cau": "T110010202084",
+  "dang_bai_id": "NDB00522",
+  "chac": "cao",
+  "ly_do": "Phần bù của B trong A."
+ },
+ {
+  "ma_cau": "T110010201070",
+  "dang_bai_id": "NDB00829",
+  "chac": "cao",
+  "ly_do": "Đếm tập con / tập có đúng hai tập con."
+ },
+ {
+  "ma_cau": "T110010101123",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu không phải mệnh đề."
+ },
+ {
+  "ma_cau": "T110020202058",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Hình miền nghiệm của hệ; các đáp án khác đường biên nên phải lập phương trình đường thẳng; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110020102061",
+  "dang_bai_id": "NDB00884",
+  "chac": "vua",
+  "ly_do": "Hình miền nghiệm BPT; đường biên phải lập từ hình; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110020203019",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm điểm thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110020202041",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Hình miền nghiệm của hệ; đáp án khác đường biên nên phải lập đường thẳng; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110030106049",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos, tìm các giá trị lượng giác còn lại."
+ },
+ {
+  "ma_cau": "T110010203160",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai khoảng."
+ },
+ {
+  "ma_cau": "T110020102031",
+  "dang_bai_id": "NDB00540",
+  "chac": "vua",
+  "ly_do": "Hình miền nghiệm BPT, đáp án cùng hệ số khác chiều; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110010102084",
+  "dang_bai_id": "NDB00819",
+  "chac": "cao",
+  "ly_do": "Nhận diện mệnh đề kéo theo."
+ },
+ {
+  "ma_cau": "T110030103016",
+  "dang_bai_id": "NDB00553",
+  "chac": "cao",
+  "ly_do": "Các đẳng thức với góc phụ 90°-x."
+ },
+ {
+  "ma_cau": "T110020202102",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Hình miền nghiệm của hệ; đáp án khác đường biên; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110010202063",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai tập hợp liệt kê."
+ },
+ {
+  "ma_cau": "T110020203053",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm điểm thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110030106072",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot, tính sin."
+ },
+ {
+  "ma_cau": "T110020202081",
+  "dang_bai_id": "NDB00546",
+  "chac": "cao",
+  "ly_do": "Cho hệ, chọn hình biểu diễn miền nghiệm."
+ },
+ {
+  "ma_cau": "T110030105020",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức sin²+cos²=1."
+ },
+ {
+  "ma_cau": "T110010204013",
+  "dang_bai_id": "NDB00526",
+  "chac": "cao",
+  "ly_do": "Cho n(A), n(B), n(A∪B), tính n(A∩B)."
+ },
+ {
+  "ma_cau": "T110010101059",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu là mệnh đề."
+ },
+ {
+  "ma_cau": "T110020202080",
+  "dang_bai_id": "NDB00546",
+  "chac": "cao",
+  "ly_do": "Cho hệ, chọn hình biểu diễn miền nghiệm."
+ },
+ {
+  "ma_cau": "T110010201068",
+  "dang_bai_id": "NDB00829",
+  "chac": "cao",
+  "ly_do": "Đếm tập con có 2 phần tử."
+ },
+ {
+  "ma_cau": "T110010202028",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Hợp của tập với tập rỗng."
+ },
+ {
+  "ma_cau": "T110010201079",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Đếm phần tử của tập cho bằng tính chất đặc trưng."
+ },
+ {
+  "ma_cau": "T110020102024",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Tìm cặp số là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110010201019",
+  "dang_bai_id": "NDB00829",
+  "chac": "cao",
+  "ly_do": "Dùng cả ∈ và ⊂; theo luật dạng sau cùng là tập con."
+ },
+ {
+  "ma_cau": "T110010201069",
+  "dang_bai_id": "NDB00829",
+  "chac": "cao",
+  "ly_do": "Đếm tập X kẹp giữa hai tập."
+ },
+ {
+  "ma_cau": "T110030105036",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện đẳng thức lượng giác cơ bản sai."
+ },
+ {
+  "ma_cau": "T110020203039",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm điểm không thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110010102051",
+  "dang_bai_id": "NDB00820",
+  "chac": "cao",
+  "ly_do": "Tìm mệnh đề có mệnh đề đảo đúng."
+ },
+ {
+  "ma_cau": "T110020202059",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Hình miền nghiệm của hệ; đáp án khác đường biên; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110030106048",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos, tính tan."
+ },
+ {
+  "ma_cau": "T110030105019",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức cot=cos/sin."
+ },
+ {
+  "ma_cau": "T110010203059",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Hiệu AB của hai tập số thực."
+ },
+ {
+  "ma_cau": "T110030106047",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos, tính sin và cot."
+ },
+ {
+  "ma_cau": "T110020202061",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Hình miền nghiệm của hệ; đáp án khác đường biên; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110010103049",
+  "dang_bai_id": "NDB00818",
+  "chac": "vua",
+  "ly_do": "Xét mệnh đề sai trong các mệnh đề chứa ∀∃; cũng có thể thuộc nhóm ∀∃."
+ },
+ {
+  "ma_cau": "T110010202120",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Hợp hai tập hợp liệt kê."
+ },
+ {
+  "ma_cau": "T110010202097",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai tập hợp liệt kê."
+ },
+ {
+  "ma_cau": "T110010201086",
+  "dang_bai_id": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Trục số, phần không bị gạch là tập nào."
+ },
+ {
+  "ma_cau": "T110010103077",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Phủ định mệnh đề có ∀."
+ },
+ {
+  "ma_cau": "T110030103003",
+  "dang_bai_id": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện đẳng thức góc bù 180°-α."
+ },
+ {
+  "ma_cau": "T110030102014",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xác định dấu giá trị lượng giác của góc tù."
+ },
+ {
+  "ma_cau": "T110010206033",
+  "dang_bai_id": "NDB00537",
+  "chac": "cao",
+  "ly_do": "Tìm m để A giao B khác rỗng."
+ },
+ {
+  "ma_cau": "T110020203030",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm điểm thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110010103068",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Phủ định mệnh đề có ∀."
+ },
+ {
+  "ma_cau": "T110020202096",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Hình miền nghiệm của hệ; đáp án khác đường biên; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110010203013",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Hiệu AB của hai khoảng."
+ },
+ {
+  "ma_cau": "T110010102066",
+  "dang_bai_id": "NDB00821",
+  "chac": "cao",
+  "ly_do": "Xét đúng sai các mệnh đề tương đương."
+ },
+ {
+  "ma_cau": "T110000000139",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hàm số: đọc đồ thị xác định khoảng nghịch biến; bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110020203033",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm điểm thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110010203074",
+  "dang_bai_id": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Trục số, phần không bị gạch là tập nào."
+ },
+ {
+  "ma_cau": "T110010203155",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Dùng giao, hợp, hiệu; theo luật dạng sau cùng là hiệu."
+ },
+ {
+  "ma_cau": "T110010203079",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai nửa khoảng."
+ },
+ {
+  "ma_cau": "T110010103075",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Phủ định mệnh đề có ∀."
+ },
+ {
+  "ma_cau": "T110020203052",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm hệ mà điểm O không thuộc miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020203077",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm cặp số không là nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110030105004",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức 1+tan²=1/cos²."
+ },
+ {
+  "ma_cau": "T110010103059",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Phủ định mệnh đề \"tất cả\"."
+ },
+ {
+  "ma_cau": "T110010201062",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Liệt kê và đếm phần tử của tập theo phương trình."
+ },
+ {
+  "ma_cau": "T110020203060",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm cặp số là nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110020202106",
+  "dang_bai_id": "NDB00544",
+  "chac": "vua",
+  "ly_do": "Hình miền nghiệm của hệ, đáp án cùng hệ số khác chiều; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110030106065",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính cos."
+ },
+ {
+  "ma_cau": "T110010202121",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Hiệu AB hai tập liệt kê."
+ },
+ {
+  "ma_cau": "T110010101111",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Xét tính đúng sai của mệnh đề chứa biến tại giá trị cụ thể."
+ },
+ {
+  "ma_cau": "T110030106094",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin, tính cos."
+ },
+ {
+  "ma_cau": "T110010201037",
+  "dang_bai_id": "NDB01399",
+  "chac": "cao",
+  "ly_do": "Viết lại tập hợp số từ tính chất đặc trưng sang khoảng."
+ },
+ {
+  "ma_cau": "T110030102021",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xác định dấu giá trị lượng giác của góc nhọn."
+ },
+ {
+  "ma_cau": "T110030107001",
+  "dang_bai_id": "NDB00561",
+  "chac": "cao",
+  "ly_do": "Tổng sin² dài các góc phụ nhau, ghép cặp."
+ }
+]

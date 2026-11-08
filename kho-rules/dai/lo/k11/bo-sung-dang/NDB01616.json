@@ -1,0 +1,20 @@
+{
+ "id": "NDB01616",
+ "ten": "Cho mối quan hệ giữa 2 trong 3 số hạng liên tiếp của một cấp số cộng. Tìm số hạng còn lại",
+ "mo_ta": "Cấp số cộng có hai số hạng nằm đối xứng qua số hạng thứ ba (hoặc ba số hạng liên tiếp), đề cho tổng hay quan hệ của hai số hạng, yêu cầu tìm số hạng còn lại bằng tính chất trung bình cộng, không cần tìm $u_1$, $d$. Không thuộc dạng này: cho hai số hạng bất kỳ không đối xứng (phải tìm $u_1$, $d$).",
+ "ly_thuyet": "##TC\n• Với cấp số cộng $(u_n)$, ba số hạng liên tiếp thoả $u_{n-1}+u_{n+1}=2u_n$ với $n\\ge2$.\n• Tổng quát: $u_{k-m}+u_{k+m}=2u_k$ ($1\\le m<k$), tức mỗi số hạng là trung bình cộng của hai số hạng cách đều nó.\n• Chứng minh: $u_{k-m}+u_{k+m}=\\left[u_1+(k-m-1)d\\right]+\\left[u_1+(k+m-1)d\\right]=2\\left[u_1+(k-1)d\\right]=2u_k$.\n• Hệ quả: $u_{n+1}=2u_n-u_{n-1}$.\n\n##PP Tìm số hạng còn lại nhờ tính chất trung bình cộng\nXác định chỉ số của hai số hạng đã cho, kiểm tra tổng hai chỉ số bằng hai lần chỉ số của số hạng giữa.\nNếu cần tìm số giữa: $u_{giữa}=\\dfrac{u_p+u_q}{2}$.\nNếu cần tìm một đầu: $u_q=2u_{giữa}-u_p$.\nNếu cần số hạng khác, tìm công sai $d$ từ hai số hạng liền nhau rồi cộng hoặc trừ.\n\n##CY\nChỉ số của hai số hạng phải cách đều số hạng cần tìm: kiểm tra $p+q=2k$ trước khi áp dụng; nếu không đối xứng thì chuyển sang tìm $u_1$, $d$.",
+ "vi_du": "##VD\nCho cấp số cộng $(u_n)$ có $u_3+u_7=26$. Tính $u_5$.\n\nBài giải:\nCác chỉ số $3$ và $7$ cách đều chỉ số $5$ ($3+7=2\\cdot5$) nên $u_3+u_7=2u_5$.\nSuy ra $2u_5=26$, tức $u_5=13$.\nVậy $u_5=13$.\n\n##VD\nCho cấp số cộng $(u_n)$ có $u_7+u_{19}=90$. Tính $u_{13}$.\n\nBài giải:\nVì $7+19=26=2\\cdot13$ nên $u_7+u_{19}=2u_{13}$.\nSuy ra $u_{13}=\\dfrac{90}{2}=45$.\nVậy $u_{13}=45$.\n\n##VD\nCho cấp số cộng $(u_n)$ thoả mãn $u_{n-1}+u_{n+3}=20$ và $u_{n+2}=11$. Tính $u_n$.\n\nBài giải:\nCác chỉ số $n-1$ và $n+3$ cách đều chỉ số $n+1$ (vì $(n-1)+(n+3)=2(n+1)$) nên $u_{n-1}+u_{n+3}=2u_{n+1}$.\nSuy ra $u_{n+1}=\\dfrac{20}{2}=10$.\nCông sai $d=u_{n+2}-u_{n+1}=11-10=1$.\nDo đó $u_n=u_{n+1}-d=10-1=9$.\nVậy $u_n=9$.",
+ "nguon": [
+  {
+   "sach": "PNL Toán 11 2026",
+   "bai/tep": "Bài 02. Cấp số cộng, Dạng 02 (GV), phần Nhận xét về ba số hạng liên tiếp",
+   "ghi_chu": "Xác nhận tính chất trung bình cộng. Công thức trong file .docx nguồn không trích được bằng zipfile+xml (MathType/ảnh) nên đề và lời giải TỰ VIẾT lại bằng LaTeX và TỰ KIỂM TOÁN; sách chỉ dùng xác nhận kiểu bài."
+  },
+  {
+   "sach": "Toán 11 Từ Tâm",
+   "bai/tep": "C2-B2-CẤP SỐ CỘNG-P1.docx, mục tính chất ba số hạng liên tiếp",
+   "ghi_chu": "3 ví dụ do soạn; ví dụ 2 cùng kiểu với câu thật T111060202179."
+  }
+ ],
+ "ghi_chu": "Câu thật gán dạng này: T111060202179 ($u_4+u_{16}=48$ thì $u_{10}=24$). Ví dụ tự soạn, đã kiểm lại."
+}

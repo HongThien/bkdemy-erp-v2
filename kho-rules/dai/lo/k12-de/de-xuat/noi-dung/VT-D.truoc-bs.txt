@@ -1,0 +1,402 @@
+=== N C3.5
+@ly_thuyet:
+##TC Điểm M di động trên mặt phẳng, trục toạ độ
+- $M\in(Oxy)$: $M(x;y;0)$; $M\in(Oyz)$: $M(0;y;z)$; $M\in(Oxz)$: $M(x;0;z)$; $M\in Oz$: $M(0;0;z)$ (tương tự với $Ox$, $Oy$).
+- Hình chiếu vuông góc của $I(a;b;c)$ lên $(Oxy)$, $(Oyz)$, $(Oxz)$ lần lượt là $(a;b;0)$, $(0;b;c)$, $(a;0;c)$; lên $Ox$, $Oy$, $Oz$ lần lượt là $(a;0;0)$, $(0;b;0)$, $(0;0;c)$.
+- Khoảng cách từ $I(a;b;c)$ đến $(Oxy)$, $(Oyz)$, $(Oxz)$ lần lượt là $|c|$, $|a|$, $|b|$.
+- Điểm đối xứng của $A(a;b;c)$ qua $(Oxy)$, $(Oyz)$, $(Oxz)$ lần lượt là $(a;b;-c)$, $(-a;b;c)$, $(a;-b;c)$.
+- Hai điểm nằm **cùng phía** của $(Oxy)$ khi cao độ $z$ của chúng cùng dấu, **khác phía** khi trái dấu (tương tự với $x$ cho $(Oyz)$, $y$ cho $(Oxz)$).
+
+##PP Giải bài toán cực trị với M thuộc mặt phẳng, trục toạ độ
+Viết điều kiện của $M$ (vd $M\in(Oxy)$ thì $z_M=0$) và xác định đại lượng cần cực trị.
+Chọn hướng: đưa biểu thức về độ dài một đoạn cố định (tâm tỉ cự, đối xứng) hoặc đặt $M(x;y;0)$ rồi đưa về tam thức bậc hai.
+Tìm vị trí $M$ đặc biệt (hình chiếu của một điểm cố định, giao điểm của một đoạn thẳng với mặt phẳng toạ độ) làm đại lượng đạt cực trị.
+Tính giá trị cực trị, đối chiếu đề hỏi toạ độ $M$ hay giá trị cực trị hay biểu thức nào đó của toạ độ $M$.
+
+##CY
+- Đề hỏi "tính $a+b+c$" thì phải cộng đủ **cả** toạ độ bằng $0$ theo điều kiện $M\in(Oxy)$, $M\in Oz$…
+- Đừng nhầm giá trị nhỏ nhất của biểu thức với toạ độ điểm $M$ đạt giá trị đó.
+
+=== C3.5.1
+@ly_thuyet:
+##TC Tâm tỉ cự và biểu thức vectơ, tổng bình phương
+- Với các hệ số $\alpha+\beta+\gamma=k\ne0$ có đúng một điểm $I$ thoả $\alpha\overrightarrow{IA}+\beta\overrightarrow{IB}+\gamma\overrightarrow{IC}=\overrightarrow{0}$, gọi là **tâm tỉ cự**, có toạ độ $I\left(\dfrac{\alpha x_A+\beta x_B+\gamma x_C}{k};\dfrac{\alpha y_A+\beta y_B+\gamma y_C}{k};\dfrac{\alpha z_A+\beta z_B+\gamma z_C}{k}\right)$.
+- Với mọi điểm $M$: $\alpha\overrightarrow{MA}+\beta\overrightarrow{MB}+\gamma\overrightarrow{MC}=k\overrightarrow{MI}$, nên $\left|\alpha\overrightarrow{MA}+\beta\overrightarrow{MB}+\gamma\overrightarrow{MC}\right|=|k|\cdot MI$.
+- $\alpha MA^2+\beta MB^2+\gamma MC^2=k\cdot MI^2+\left(\alpha IA^2+\beta IB^2+\gamma IC^2\right)$, với $k=\alpha+\beta+\gamma$.
+- Nếu $k>0$ biểu thức tổng bình phương có giá trị nhỏ nhất, nếu $k<0$ có giá trị lớn nhất; cả hai trường hợp đều đạt khi $MI$ nhỏ nhất.
+- Tổng tích vô hướng $a\,\overrightarrow{MA}\cdot\overrightarrow{MB}+b\,\overrightarrow{MB}\cdot\overrightarrow{MC}+c\,\overrightarrow{MC}\cdot\overrightarrow{MA}$ (với $a+b+c\ne0$) bằng $(a+b+c)MI^2$ cộng một hằng số, trong đó $I$ là tâm tỉ cự của $A$, $B$, $C$ với các hệ số $a+c$, $a+b$, $b+c$.
+- $M$ thuộc mặt phẳng, trục toạ độ: $MI$ nhỏ nhất khi $M$ là hình chiếu vuông góc của $I$; khi đó $MI_{\min}$ bằng khoảng cách từ $I$ đến mặt phẳng (trục).
+- $M$ chạy trên một cạnh $PQ$ của hình khối (đã gắn hệ trục): đặt $\overrightarrow{PM}=t\overrightarrow{PQ}$ với $t\in[0;1]$, biểu thức trở thành tam thức bậc hai theo $t$.
+
+##PP Đưa biểu thức về MI
+Tính $k=\alpha+\beta+\gamma$; nếu $k=0$ thì không có tâm tỉ cự, chuyển sang đặt toạ độ $M$ theo điều kiện của đề.
+Tính toạ độ tâm tỉ cự $I$ theo công thức trên rồi viết biểu thức theo $MI$.
+Tìm $M$ làm $MI$ nhỏ nhất: hình chiếu của $I$ lên mặt phẳng, trục toạ độ mà $M$ chạy.
+Với tổng bình phương, nhớ cộng thêm hằng $\alpha IA^2+\beta IB^2+\gamma IC^2$ khi tính giá trị cực trị.
+Biểu thức không đưa được về $MI$, hoặc $M$ chạy trên cạnh hình khối: đặt toạ độ $M$ theo một hoặc hai ẩn ($M(x;y;0)$, $\overrightarrow{PM}=t\overrightarrow{PQ}$…), khai triển thành tam thức bậc hai rồi tìm cực trị.
+
+##CY
+- Tổng hệ số $k=0$ thì $\alpha\overrightarrow{MA}+\beta\overrightarrow{MB}+\gamma\overrightarrow{MC}$ là vectơ không đổi, không có $I$.
+- Hệ số âm làm đổi dấu $k$: $k<0$ thì tổng bình phương chỉ có giá trị lớn nhất, không có giá trị nhỏ nhất.
+- Giá trị nhỏ nhất của $|\ldots|$ là $|k|\cdot MI_{\min}$, đừng quên nhân $|k|$.
+
+@vi_du:
+##VD
+Trong không gian $Oxyz$, cho $A(2;0;1)$, $B(0;4;-1)$, $C(1;2;4)$. Điểm $M$ di động trên mặt phẳng $(Oxy)$. Tìm toạ độ điểm $M$ để $\left|\overrightarrow{MA}+\overrightarrow{MB}+2\overrightarrow{MC}\right|$ nhỏ nhất và tính giá trị nhỏ nhất đó.
+
+Bài giải:
+Tổng hệ số $1+1+2=4\ne0$. Gọi $I$ là điểm thoả $\overrightarrow{IA}+\overrightarrow{IB}+2\overrightarrow{IC}=\overrightarrow{0}$.
+Toạ độ $I$: $x_I=\dfrac{2+0+2\cdot1}{4}=1$, $y_I=\dfrac{0+4+2\cdot2}{4}=2$, $z_I=\dfrac{1-1+2\cdot4}{4}=2$, tức $I(1;2;2)$.
+Với mọi $M$ ta có $\overrightarrow{MA}+\overrightarrow{MB}+2\overrightarrow{MC}=4\overrightarrow{MI}$ nên $\left|\overrightarrow{MA}+\overrightarrow{MB}+2\overrightarrow{MC}\right|=4MI$.
+$MI$ nhỏ nhất khi $M$ là hình chiếu vuông góc của $I$ trên $(Oxy)$, tức $M(1;2;0)$, khi đó $MI=d(I,(Oxy))=2$.
+Vậy $M(1;2;0)$ và giá trị nhỏ nhất của biểu thức bằng $4\cdot2=8$.
+
+##VD
+Trong không gian $Oxyz$, cho $A(1;0;2)$, $B(3;2;-2)$, $C(-1;4;0)$. Điểm $M$ di động trên trục $Oz$. Tìm giá trị nhỏ nhất của $T=MA^2+2MB^2-MC^2$.
+
+Bài giải:
+Tổng hệ số $1+2-1=2>0$ nên $T$ có giá trị nhỏ nhất. Gọi $I$ thoả $\overrightarrow{IA}+2\overrightarrow{IB}-\overrightarrow{IC}=\overrightarrow{0}$.
+Toạ độ $I$: $x_I=\dfrac{1+6+1}{2}=4$, $y_I=\dfrac{0+4-4}{2}=0$, $z_I=\dfrac{2-4-0}{2}=-1$, tức $I(4;0;-1)$.
+Ta có $IA^2=3^2+0^2+3^2=18$, $IB^2=1^2+2^2+1^2=6$, $IC^2=5^2+4^2+1^2=42$.
+Do đó $T=2MI^2+\left(IA^2+2IB^2-IC^2\right)=2MI^2+18+12-42=2MI^2-12$.
+$M\in Oz$ nên $MI$ nhỏ nhất khi $M$ là hình chiếu của $I$ trên $Oz$, tức $M(0;0;-1)$ và $MI^2=4^2+0^2+0^2=16$.
+Vậy giá trị nhỏ nhất của $T$ bằng $2\cdot16-12=20$.
+
+=== C3.5.2
+@ly_thuyet:
+##TC Tổng MA+MB nhỏ nhất với M thuộc mặt phẳng toạ độ
+- Gọi $(P)$ là mặt phẳng toạ độ chứa $M$. Nếu $A$, $B$ **khác phía** $(P)$ thì $MA+MB\ge AB$, dấu bằng khi $M$ là giao điểm của đoạn $AB$ với $(P)$.
+- Nếu $A$, $B$ **cùng phía** $(P)$: gọi $A'$ đối xứng của $A$ qua $(P)$, khi đó $MA=MA'$ và $MA+MB=MA'+MB\ge A'B$, dấu bằng khi $M$ là giao điểm của đoạn $A'B$ với $(P)$; giá trị nhỏ nhất là $A'B$.
+- Tìm giao điểm $M$ của đoạn $A'B$ với $(Oxy)$: $A'$, $M$, $B$ thẳng hàng nên $\overrightarrow{A'M}=t\overrightarrow{A'B}$, cho cao độ của $M$ bằng $0$ để tìm $t$ (tương tự với $(Oyz)$, $(Oxz)$).
+- Biểu thức dạng $p\left|\alpha\overrightarrow{MA}+\beta\overrightarrow{MB}+\ldots\right|+q\left|\ldots\right|$: đưa mỗi độ dài vectơ về $|k|\cdot MI$ bằng tâm tỉ cự (dạng trước) để được tổng $c\,(MI+MJ)$, rồi xét như tổng $MA+MB$ ở trên.
+
+##PP Tổng khoảng cách nhỏ nhất khi M thuộc mặt phẳng toạ độ
+Xác định mặt phẳng toạ độ chứa $M$ rồi so dấu toạ độ tương ứng của $A$, $B$ để biết hai điểm cùng phía hay khác phía.
+Khác phía thì giữ nguyên $A$; cùng phía thì thay $A$ bằng điểm đối xứng $A'$ qua mặt phẳng đó.
+Viết $\overrightarrow{A'M}=t\overrightarrow{A'B}$ (hoặc $\overrightarrow{AM}=t\overrightarrow{AB}$) rồi cho toạ độ tương ứng của $M$ bằng $0$ để tìm $t$ và toạ độ $M$.
+Giá trị nhỏ nhất bằng độ dài $AB$ hoặc $A'B$; trả lời đúng điều đề hỏi (giá trị hay toạ độ $M$, khoảng cách từ $M$ đến gốc…).
+
+##CY
+- Hai điểm khác phía thì **không** lấy đối xứng; lấy đối xứng sẽ ra giá trị sai.
+- Giá trị nhỏ nhất của tổng khi cùng phía là $A'B$, không phải $AB$.
+- Bài thực tế đổi hướng trục (vd $Ox$ hướng Nam, $Oy$ hướng Đông): đọc toạ độ theo đúng hệ trục đề cho, phía Bắc/Tây mang dấu âm.
+
+@vi_du:
+##VD
+Trong không gian $Oxyz$, cho $A(1;2;3)$ và $B(5;-2;-1)$. Điểm $M$ thuộc mặt phẳng $(Oxy)$ sao cho $MA+MB$ nhỏ nhất. Tìm toạ độ $M$ và giá trị nhỏ nhất của $MA+MB$.
+
+Bài giải:
+Cao độ của $A$ là $3>0$, của $B$ là $-1<0$ nên $A$, $B$ nằm khác phía $(Oxy)$.
+Do đó $MA+MB\ge AB$, dấu bằng khi $M$ là giao điểm của $AB$ với $(Oxy)$.
+Ta có $\overrightarrow{AB}=(4;-4;-4)$. Vì $A$, $M$, $B$ thẳng hàng nên $\overrightarrow{AM}=t\overrightarrow{AB}$, suy ra $M(1+4t;2-4t;3-4t)$. Cho $z_M=0$ được $3-4t=0$, suy ra $t=\dfrac{3}{4}\in[0;1]$ và $M(4;-1;0)$.
+$AB=\sqrt{4^2+4^2+4^2}=4\sqrt{3}$.
+Vậy $M(4;-1;0)$ và giá trị nhỏ nhất của $MA+MB$ bằng $4\sqrt{3}$.
+
+##VD
+Hai khinh khí cầu bay lên từ cùng một điểm $O$. Chọn hệ trục $Oxyz$ với $(Oxy)$ là mặt đất, trục $Ox$ hướng về phía Đông, $Oy$ hướng về phía Bắc, $Oz$ hướng thẳng đứng lên trên, đơn vị là kilômét. Khinh khí cầu thứ nhất cách $O$ $3$ km về phía Đông, $2$ km về phía Nam, cách mặt đất $1$ km; khinh khí cầu thứ hai cách $O$ $1$ km về phía Đông, $8$ km về phía Nam, cách mặt đất $2$ km. Một người đứng ở điểm $M$ trên mặt đất sao cho tổng khoảng cách từ $M$ đến hai khinh khí cầu là nhỏ nhất. Tính tổng khoảng cách nhỏ nhất đó và hoành độ của $M$.
+
+Bài giải:
+Hai khinh khí cầu ở $A(3;-2;1)$ và $B(1;-8;2)$. Cả hai có cao độ dương nên nằm cùng phía mặt đất $(Oxy)$.
+Gọi $A'$ là điểm đối xứng của $A$ qua $(Oxy)$, tức $A'(3;-2;-1)$. Khi đó $MA=MA'$ nên $MA+MB=MA'+MB\ge A'B$, dấu bằng khi $M=A'B\cap(Oxy)$.
+$\overrightarrow{A'B}=(-2;-6;3)$ nên $A'B=\sqrt{4+36+9}=7$. Từ $\overrightarrow{A'M}=t\overrightarrow{A'B}$ suy ra $M(3-2t;-2-6t;-1+3t)$.
+Cho $-1+3t=0$ được $t=\dfrac{1}{3}$, suy ra $M\left(\dfrac{7}{3};-4;0\right)$.
+Vậy tổng khoảng cách nhỏ nhất bằng $7$ km và hoành độ của $M$ là $\dfrac{7}{3}$.
+
+=== N C4.1
+@ly_thuyet:
+##TC Lực là vectơ, hợp lực, trọng lực
+- Lực là một vectơ: độ lớn là độ dài vectơ (đơn vị Newton, ký hiệu N), hướng là hướng tác dụng.
+- Hợp lực của các lực cùng tác dụng lên một vật là tổng vectơ: $\overrightarrow{F}=\overrightarrow{F_1}+\overrightarrow{F_2}+\overrightarrow{F_3}$. Vật cân bằng khi $\overrightarrow{F_1}+\overrightarrow{F_2}+\overrightarrow{F_3}+\ldots=\overrightarrow{0}$.
+- Trọng lực $\overrightarrow{P}=m\overrightarrow{g}$ hướng thẳng đứng xuống, độ lớn $P=mg$ ($m$ tính bằng kg, $g$ lấy theo đề, thường $9{,}8$ hoặc $10$ m/s$^2$).
+- Với hệ trục có $Oz$ thẳng đứng hướng lên: $\overrightarrow{P}=(0;0;-P)$.
+
+##PP Giải bài toán lực trong không gian
+Gọi tên các lực, nêu độ lớn và vị trí, góc giữa các lực; đổi khối lượng sang trọng lực bằng $P=mg$ nếu cần.
+Chọn cách: tính độ dài của tổng bằng bình phương vô hướng, hoặc đặt hệ trục rồi dùng toạ độ.
+Vật cân bằng thì viết $\sum\overrightarrow{F_i}=\overrightarrow{0}$ rồi chiếu lên từng trục hoặc lên phương thẳng đứng.
+Kiểm tra đơn vị và làm tròn theo yêu cầu của đề.
+
+##CY
+- Tổng độ lớn của các lực chỉ bằng độ lớn của tổng khi chúng cùng hướng.
+- Lực căng dây hướng dọc theo dây về phía điểm treo; trọng lực hướng xuống, hai vectơ này trái dấu ở thành phần $z$.
+
+=== C4.1.1
+@ly_thuyet:
+##TC Độ lớn hợp lực qua bình phương vô hướng
+- $\left|\overrightarrow{F_1}+\overrightarrow{F_2}+\overrightarrow{F_3}\right|^2=F_1^2+F_2^2+F_3^2+2\overrightarrow{F_1}\cdot\overrightarrow{F_2}+2\overrightarrow{F_2}\cdot\overrightarrow{F_3}+2\overrightarrow{F_1}\cdot\overrightarrow{F_3}$.
+- $\overrightarrow{F_i}\cdot\overrightarrow{F_j}=F_iF_j\cos\varphi$, với $\varphi$ là góc giữa hai lực; hai lực vuông góc thì tích vô hướng bằng $0$.
+- Ba lực đôi một vuông góc: $F=\sqrt{F_1^2+F_2^2+F_3^2}$.
+- Hai lực hợp góc $\alpha$: $|\overrightarrow{F_1}+\overrightarrow{F_2}|^2=F_1^2+F_2^2+2F_1F_2\cos\alpha$. Nếu lực thứ ba vuông góc với cả hai lực này thì nó vuông góc với tổng của chúng, nên $F^2=|\overrightarrow{F_1}+\overrightarrow{F_2}|^2+F_3^2$.
+- Vật đứng yên dưới tác dụng của các lực: lực còn lại (hoặc trọng lực) có độ lớn bằng độ lớn hợp lực của các lực kia, vd $\overrightarrow{F_1}+\overrightarrow{F_2}+\overrightarrow{F_3}=\overrightarrow{0}$ thì $F_3=|\overrightarrow{F_1}+\overrightarrow{F_2}|$.
+- Vận tốc cũng là vectơ: máy bay bay với vận tốc $\overrightarrow{v_1}$ gặp gió $\overrightarrow{v_2}$ thì vận tốc thực là $\overrightarrow{v_1}+\overrightarrow{v_2}$, độ lớn tính như hợp lực.
+
+##PP Tính độ lớn hợp lực khi biết độ lớn và góc
+Liệt kê độ lớn từng lực và góc giữa từng cặp lực; cặp nào vuông góc thì tích vô hướng bằng $0$.
+Nếu có hai lực hợp góc $\alpha$, gộp chúng trước: tính $|\overrightarrow{F_1}+\overrightarrow{F_2}|^2$.
+Cộng bình phương độ lớn của lực còn lại (khi nó vuông góc) hoặc cộng các tích vô hướng còn lại.
+Khai căn, ghi đơn vị N và làm tròn theo đề.
+
+##CY
+- Khi góc giữa hai lực tù, $\cos\alpha<0$, tích vô hướng âm làm hợp lực giảm.
+- Góc $135^\circ$ giữa hai lực là góc giữa hai **vectơ lực** có chung gốc; đừng dùng góc bù.
+
+@vi_du:
+##VD
+Ba lực $\overrightarrow{F_1},\overrightarrow{F_2},\overrightarrow{F_3}$ cùng tác động vào một vật, có phương đôi một vuông góc và có độ lớn lần lượt là $3$ N, $4$ N, $12$ N. Tính độ lớn hợp lực của ba lực đó.
+
+Bài giải:
+Ba lực đôi một vuông góc nên các tích vô hướng $\overrightarrow{F_1}\cdot\overrightarrow{F_2}$, $\overrightarrow{F_2}\cdot\overrightarrow{F_3}$, $\overrightarrow{F_1}\cdot\overrightarrow{F_3}$ đều bằng $0$.
+Do đó $\left|\overrightarrow{F_1}+\overrightarrow{F_2}+\overrightarrow{F_3}\right|^2=3^2+4^2+12^2=9+16+144=169$.
+Vậy độ lớn hợp lực bằng $\sqrt{169}=13$ N.
+
+##VD
+Ba lực $\overrightarrow{F_1},\overrightarrow{F_2},\overrightarrow{F_3}$ cùng tác động vào một vật, có độ lớn lần lượt là $7$ N, $8$ N, $10$ N. Biết góc giữa $\overrightarrow{F_1}$ và $\overrightarrow{F_2}$ bằng $60^\circ$, lực $\overrightarrow{F_3}$ vuông góc với cả $\overrightarrow{F_1}$ và $\overrightarrow{F_2}$. Tính độ lớn hợp lực của ba lực đó (làm tròn đến hàng phần mười).
+
+Bài giải:
+Ta có $|\overrightarrow{F_1}+\overrightarrow{F_2}|^2=7^2+8^2+2\cdot7\cdot8\cdot\cos60^\circ=49+64+56=169$, suy ra $|\overrightarrow{F_1}+\overrightarrow{F_2}|=13$ N.
+Vì $\overrightarrow{F_3}\cdot\overrightarrow{F_1}=0$ và $\overrightarrow{F_3}\cdot\overrightarrow{F_2}=0$ nên $\overrightarrow{F_3}\cdot\left(\overrightarrow{F_1}+\overrightarrow{F_2}\right)=0$, tức $\overrightarrow{F_3}$ vuông góc với $\overrightarrow{F_1}+\overrightarrow{F_2}$.
+Do đó $\left|\overrightarrow{F_1}+\overrightarrow{F_2}+\overrightarrow{F_3}\right|^2=13^2+10^2=269$.
+Vậy độ lớn hợp lực là $\sqrt{269}\approx16{,}4$ N.
+
+=== C4.1.2
+@ly_thuyet:
+##TC Cân bằng của vật treo, vật đặt trên giá đỡ
+- Vật treo bởi các dây: các lực căng $\overrightarrow{F_i}$ cùng trọng lực $\overrightarrow{P}$ có tổng bằng $\overrightarrow{0}$, tức $\sum\overrightarrow{F_i}=-\overrightarrow{P}$.
+- Lực căng của dây nối vật $D$ với điểm treo $A_i$ cùng hướng với $\overrightarrow{DA_i}$: $\overrightarrow{F_i}=t_i\cdot\dfrac{\overrightarrow{DA_i}}{|\overrightarrow{DA_i}|}$, độ lớn $F_i=t_i$.
+- Vật đặt trên giá đỡ ba chân đỉnh $S$, chân $A_1,A_2,A_3$ đối xứng: lực tác dụng lên chân thứ $i$ có dạng $\overrightarrow{F_i}=k\cdot\overrightarrow{SA_i}$ ($k>0$), và tổng ba lực bằng trọng lực.
+- Khi $S.ABCD$ là chóp đều, bốn lực căng có độ lớn bằng nhau và thành phần ngang triệt tiêu; chỉ cần cộng các thành phần thẳng đứng.
+- Công của lực $\overrightarrow{F}=(a;b;c)$ làm vật dịch chuyển từ $M$ đến $N$: $A=\overrightarrow{F}\cdot\overrightarrow{MN}$.
+
+##PP Tìm lực căng, lực lên chân giá đỡ khi vật cân bằng
+Đặt hệ trục (nếu đề chưa có), đọc toạ độ điểm treo, điểm tựa và vật; viết trọng lực $\overrightarrow{P}=(0;0;-P)$.
+Viết lực mỗi dây (hoặc mỗi chân) dưới dạng $t_i\cdot\dfrac{\overrightarrow{DA_i}}{|\overrightarrow{DA_i}|}$ hoặc $k\cdot\overrightarrow{SA_i}$.
+Cho tổng các lực bằng $-\overrightarrow{P}$ rồi so sánh từng thành phần, được hệ phương trình ẩn các lực căng (hoặc ẩn $k$).
+Giải hệ, kết luận độ lớn hoặc toạ độ lực theo yêu cầu.
+
+##CY
+- Độ lớn lực căng là $t_i$, còn toạ độ lực là $t_i\cdot\dfrac{\overrightarrow{DA_i}}{|\overrightarrow{DA_i}|}$; đề hỏi toạ độ hay độ lớn thì trả lời đúng cái đó.
+- Bốn dây là cạnh bên của hình chóp đều: thành phần thẳng đứng của mỗi lực căng chỉ là $F\cos\varphi$ ($\varphi$ là góc giữa dây và phương thẳng đứng), nên $4F\cos\varphi=P$; đừng cộng thẳng độ lớn bốn lực.
+
+@vi_du:
+##VD
+Một chiếc máy được đặt trên giá đỡ ba chân có điểm đặt $S(0;0;8)$ và các điểm chạm đất của ba chân lần lượt là $A(0;-6;0)$, $B(3\sqrt{3};3;0)$, $C(-3\sqrt{3};3;0)$ (đơn vị: dm, trục $Oz$ thẳng đứng hướng lên). Trọng lực của chiếc máy có độ lớn $48$ N, được phân bố thành ba lực $\overrightarrow{F_1},\overrightarrow{F_2},\overrightarrow{F_3}$ tác dụng lên ba chân theo các hướng $\overrightarrow{SA},\overrightarrow{SB},\overrightarrow{SC}$ và có độ lớn bằng nhau. Tìm toạ độ của $\overrightarrow{F_1}$ và tính độ lớn của nó.
+
+Bài giải:
+Ta có $\overrightarrow{SA}=(0;-6;-8)$, $\overrightarrow{SB}=(3\sqrt{3};3;-8)$, $\overrightarrow{SC}=(-3\sqrt{3};3;-8)$ và $SA=SB=SC=\sqrt{36+64}=10$.
+Ba lực cùng độ lớn và cùng hướng với ba vectơ có độ dài bằng nhau nên $\overrightarrow{F_1}=k\overrightarrow{SA}$, $\overrightarrow{F_2}=k\overrightarrow{SB}$, $\overrightarrow{F_3}=k\overrightarrow{SC}$ với cùng $k>0$.
+Ba lực có tổng bằng trọng lực $\overrightarrow{P}=(0;0;-48)$. Vì $\overrightarrow{SA}+\overrightarrow{SB}+\overrightarrow{SC}=(0;0;-24)$ nên $-24k=-48$, suy ra $k=2$.
+Vậy $\overrightarrow{F_1}=2\overrightarrow{SA}=(0;-12;-16)$ và $|\overrightarrow{F_1}|=2\cdot10=20$ N.
+
+##VD
+Một vật nặng $40$ N được treo tại điểm $D(0;0;0)$ bằng ba sợi dây $DA$, $DB$, $DC$, đầu kia của các dây buộc vào trần nhà tại $A(-4;-4;2)$, $B(-4;4;2)$, $C(2;-1;2)$ (đơn vị: m, trục $Oz$ thẳng đứng hướng lên). Vật đứng yên. Tính lực căng của mỗi sợi dây (đơn vị: N).
+
+Bài giải:
+Ta có $DA=\sqrt{16+16+4}=6$, $DB=6$, $DC=\sqrt{4+1+4}=3$.
+Các vectơ đơn vị theo hướng dây: $\dfrac{\overrightarrow{DA}}{6}=\left(-\dfrac{2}{3};-\dfrac{2}{3};\dfrac{1}{3}\right)$, $\dfrac{\overrightarrow{DB}}{6}=\left(-\dfrac{2}{3};\dfrac{2}{3};\dfrac{1}{3}\right)$, $\dfrac{\overrightarrow{DC}}{3}=\left(\dfrac{2}{3};-\dfrac{1}{3};\dfrac{2}{3}\right)$.
+Gọi các lực căng là $a$, $b$, $c$ (N). Vật cân bằng nên tổng ba lực căng bằng $-\overrightarrow{P}=(0;0;40)$, tức:
+$\begin{cases} -2a-2b+2c=0 \\ -2a+2b-c=0 \\ a+b+2c=120 \end{cases}$
+Từ phương trình đầu có $c=a+b$. Thế vào phương trình hai: $-3a+b=0$, suy ra $b=3a$ và $c=4a$.
+Thế vào phương trình ba: $a+3a+8a=120$, suy ra $a=10$, $b=30$, $c=40$.
+Vậy lực căng của ba dây $DA$, $DB$, $DC$ lần lượt là $10$ N, $30$ N, $40$ N.
+
+=== N C4.2
+@ly_thuyet:
+##TC Lập hệ trục cho vật thể thật
+- Chọn gốc $O$ tại một góc phòng, tâm đáy hoặc chân công trình; ba trục dọc theo ba cạnh (hoặc phương) đôi một vuông góc xuất phát từ $O$, trục $Oz$ hướng lên trên.
+- Hình hộp chữ nhật có ba kích thước $a$, $b$, $c$ đặt ở góc $O$: các đỉnh có toạ độ $(0\text{ hoặc }a;\ 0\text{ hoặc }b;\ 0\text{ hoặc }c)$. Hình chóp đều đáy vuông cạnh $a$, tâm đáy $O$, chiều cao $h$: đáy $\left(\pm\dfrac{a}{2};\pm\dfrac{a}{2};0\right)$ và đỉnh $(0;0;h)$.
+- Đổi dữ kiện thực tế (cách tường, cách mặt đất, hướng Đông–Bắc…) thành toạ độ: khoảng cách đến mặt phẳng toạ độ là giá trị tuyệt đối của toạ độ tương ứng.
+- Khoảng cách $AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2+(z_B-z_A)^2}$; góc giữa hai vectơ có $\cos\varphi=\dfrac{\overrightarrow{u}\cdot\overrightarrow{v}}{|\overrightarrow{u}||\overrightarrow{v}|}$.
+- Đơn vị trên trục theo đề (m, cm, chục mét…); phải đổi về cùng đơn vị trước khi tính.
+
+##PP Mô hình hoá công trình bằng toạ độ
+Đọc kích thước đề cho, chọn gốc và hướng trục sao cho nhiều đỉnh có toạ độ $0$ hoặc đối xứng.
+Ghi toạ độ các điểm cần dùng, kiểm tra từng toạ độ bằng khoảng cách tới mặt phẳng toạ độ đề cho.
+Dùng công thức khoảng cách, tích vô hướng, góc theo yêu cầu.
+Trả lời bằng ngữ cảnh thực tế kèm đơn vị.
+
+##CY
+- Hệ trục do đề cho (hoặc theo hình) thì **không tự đổi** gốc, hướng trục.
+- Chiều cao treo đèn tính **từ sàn** (cao độ), không tính từ trần.
+
+=== C4.2.1
+@ly_thuyet:
+##TC Phòng, nhà, lều, sân trong hệ trục toạ độ
+- Căn phòng hình hộp: sàn là $(Oxy)$, tường là các mặt phẳng song song với $(Oyz)$ hoặc $(Oxz)$; điểm "giữa phòng" có hoành độ, tung độ bằng một nửa kích thước tương ứng.
+- Ổ cắm, công tắc, bóng đèn là các điểm: đọc cao độ từ sàn, đọc hoành độ, tung độ từ hai tường kề góc $O$.
+- Điểm "cách trần $d$" có cao độ bằng chiều cao phòng trừ $d$; điểm "chính giữa bức tường" có toạ độ ngang bằng một nửa chiều dài bức tường đó và toạ độ còn lại bằng $0$ hoặc bằng kích thước phòng.
+- Lều, mái nhà hình chóp: cạnh bên là độ dài của $\overrightarrow{SA}$, góc ở đỉnh là góc giữa hai vectơ cạnh bên cùng gốc $S$.
+- Dây điện, dây cáp căng thẳng giữa hai điểm có độ dài đúng bằng khoảng cách hai điểm đó.
+
+##PP Từ mô tả phòng, nhà đến khoảng cách, góc
+Ghép từng kích thước (dài, rộng, cao) với đúng trục theo hình hoặc lời đề.
+Đọc toạ độ từng điểm đề nhắc (đèn, quạt, ổ điện, đỉnh lều): điểm trên tường nào thì toạ độ tương ứng bằng $0$ hoặc bằng kích thước, "giữa" lấy một nửa, "cách trần" lấy chiều cao trừ đi.
+Lập vectơ nối hai điểm, tính độ dài hoặc $\cos$ của góc giữa hai vectơ.
+Làm tròn theo đề, trả lời bằng ngữ cảnh (mét, độ).
+
+##CY
+- Khi "đèn treo giữa phòng" phải tính cả hai toạ độ ngang bằng một nửa kích thước, không chỉ một toạ độ.
+- Góc giữa hai cạnh của hình chóp tính bằng góc giữa **hai vectơ cùng gốc** (cùng xuất phát từ đỉnh), nếu lấy vectơ ngược chiều sẽ ra góc bù.
+
+@vi_du:
+##VD
+Một phòng học hình hộp chữ nhật dài $8$ m, rộng $6$ m, cao $3$ m. Chọn hệ trục $Oxyz$ có gốc $O$ tại một góc phòng ở sàn, tia $Ox$ theo chiều dài, tia $Oy$ theo chiều rộng, tia $Oz$ hướng lên trần (đơn vị: mét). Một bóng đèn treo đúng giữa phòng theo chiều ngang (cách đều các tường đối diện), cách sàn $2$ m. Một ổ điện gắn trên mép tường đứng đi qua điểm $(0;6;0)$ (chỗ hai bức tường gặp nhau), cách sàn $2$ m. Tìm toạ độ bóng đèn, toạ độ ổ điện và độ dài dây điện nối thẳng từ ổ điện tới bóng đèn.
+
+Bài giải:
+Đèn cách đều hai tường theo chiều dài ($8$ m) nên hoành độ bằng $\dfrac{8}{2}=4$, theo chiều rộng ($6$ m) nên tung độ bằng $\dfrac{6}{2}=3$, cách sàn $2$ m nên cao độ bằng $2$. Vậy đèn ở $D(4;3;2)$.
+Ổ điện nằm trên mép tường thẳng đứng qua $(0;6;0)$, cách sàn $2$ m nên $P(0;6;2)$.
+Ta có $\overrightarrow{PD}=(4;-3;0)$ nên $PD=\sqrt{4^2+(-3)^2+0^2}=5$.
+Vậy đèn ở $D(4;3;2)$, ổ điện ở $P(0;6;2)$ và dây điện dài $5$ m.
+
+##VD
+Một chiếc lều có dạng hình chóp tứ giác đều $S.ABCD$ với đáy $ABCD$ là hình vuông cạnh $8$ m và chiều cao $4$ m. Chọn hệ trục $Oxyz$ với gốc $O$ là tâm của đáy, tia $Ox$, $Oy$ song song với các cạnh đáy sao cho $A(4;-4;0)$, $B(4;4;0)$, $C(-4;4;0)$, $D(-4;-4;0)$, tia $Oz$ đi qua $S$ (đơn vị: mét). Tính độ dài cạnh bên $SA$ và góc $\widehat{ASC}$ giữa hai gờ lều $SA$, $SC$ (làm tròn đến hàng phần mười của độ).
+
+Bài giải:
+Đỉnh $S$ nằm trên $Oz$, cách đáy $4$ m nên $S(0;0;4)$.
+Ta có $\overrightarrow{SA}=(4;-4;-4)$ nên $SA=\sqrt{16+16+16}=4\sqrt{3}$ m; $\overrightarrow{SC}=(-4;4;-4)$ nên $SC=4\sqrt{3}$ m.
+$\overrightarrow{SA}\cdot\overrightarrow{SC}=4\cdot(-4)+(-4)\cdot4+(-4)\cdot(-4)=-16$.
+Do đó $\cos\widehat{ASC}=\dfrac{-16}{4\sqrt{3}\cdot4\sqrt{3}}=-\dfrac{1}{3}$.
+Suy ra $\widehat{ASC}\approx109{,}5^\circ$.
+Vậy cạnh bên $SA=4\sqrt{3}$ m và góc $\widehat{ASC}\approx109{,}5^\circ$.
+
+=== C4.2.2
+@ly_thuyet:
+##TC Toạ độ điểm từ độ dài và góc
+- Điểm $M$ cách gốc $O$ một đoạn $OM=\ell$, đường $OM$ hợp mặt đất $(Oxy)$ góc $\alpha$: cao độ $z_M=\ell\sin\alpha$, khoảng cách từ $O$ đến hình chiếu $H$ của $M$ lên $(Oxy)$ là $OH=\ell\cos\alpha$.
+- Hình chiếu $H$ hợp với tia $Ox$ góc $\beta$ (nghiêng về phía $y>0$): $x_M=OH\cos\beta$, $y_M=OH\sin\beta$.
+- Đoạn $KM$ hợp với tia $Oz$ (vectơ $\overrightarrow{k}$) góc $\gamma$ và $K(0;0;h)$: $z_M=h+KM\cos\gamma$, khoảng cách ngang $OH=KM\sin\gamma$.
+- Vectơ độ dài $\ell$ có toạ độ $\overrightarrow{OM}=(OH\cos\beta;OH\sin\beta;\ell\sin\alpha)$; độ dài $|\overrightarrow{OM}|=\ell$ kiểm tra lại kết quả.
+
+##PP Tìm toạ độ điểm từ độ dài và góc
+Vẽ phác đoạn cần tìm và hình chiếu của nó lên mặt đất, ghi các góc đề cho (với mặt đất, với trục).
+Tách độ dài thành thành phần thẳng đứng ($\sin$ hoặc $\cos$ theo góc) và thành phần nằm ngang.
+Chiếu thành phần nằm ngang lên $Ox$, $Oy$ bằng góc $\beta$ để được $x_M$, $y_M$.
+Cộng với toạ độ gốc của đoạn (nếu có), kiểm tra bằng độ dài $|\overrightarrow{OM}|$ hoặc $|\overrightarrow{KM}|$.
+
+##CY
+- Góc với mặt đất dùng $\sin$ cho phần cao, $\cos$ cho phần ngang; góc với trục $Oz$ thì ngược lại.
+- Nhớ đoạn nằm ngang là hình chiếu của đoạn nghiêng, không phải chính độ dài đoạn nghiêng.
+- Hướng nghiêng (về $y>0$ hay $y<0$) quyết định dấu của $y_M$, đọc kỹ đề hoặc hình.
+
+@vi_du:
+##VD
+Một máy bay cất cánh từ điểm $O$ trên đường băng. Chọn hệ trục $Oxyz$ với $(Oxy)$ là mặt đất, tia $Ox$ hướng Đông, tia $Oy$ hướng Bắc, tia $Oz$ hướng lên trên (đơn vị: mét). Tại một thời điểm, máy bay ở điểm $M$ cách $O$ một đoạn $100$ m, đường $OM$ hợp với mặt đất góc $30^\circ$, hình chiếu $H$ của $M$ lên mặt đất hợp với tia $Ox$ góc $30^\circ$ và nằm về phía Bắc. Tìm toạ độ điểm $M$.
+
+Bài giải:
+Cao độ $z_M=OM\sin30^\circ=100\cdot\dfrac{1}{2}=50$.
+Khoảng cách ngang $OH=OM\cos30^\circ=100\cdot\dfrac{\sqrt{3}}{2}=50\sqrt{3}$.
+Hình chiếu $H$ hợp với $Ox$ góc $30^\circ$ về phía Bắc nên $x_M=OH\cos30^\circ=50\sqrt{3}\cdot\dfrac{\sqrt{3}}{2}=75$ và $y_M=OH\sin30^\circ=50\sqrt{3}\cdot\dfrac{1}{2}=25\sqrt{3}$.
+Vậy $M(75;25\sqrt{3};50)$.
+
+##VD
+Một cần trục có chân đế đặt tại gốc $O$ của hệ trục $Oxyz$ ($(Oxy)$ song song mặt đất, tia $Oz$ thẳng đứng hướng lên, đơn vị: mét). Trục cần $OK$ thẳng đứng, dài $30$ m. Tay cần $KM$ dài $20$ m, hợp với tia $Oz$ góc $60^\circ$ (góc giữa $\overrightarrow{k}$ và $\overrightarrow{KM}$ bằng $60^\circ$). Gọi $H$ là hình chiếu của $M$ lên $(Oxy)$, biết góc giữa $\overrightarrow{i}$ và $\overrightarrow{OH}$ bằng $30^\circ$ và $y_M>0$. Tìm toạ độ điểm $M$ và tính khoảng cách $OM$ (làm tròn đến hàng phần mười của mét).
+
+Bài giải:
+Do $K(0;0;30)$ nên cao độ của $M$ là $z_M=30+KM\cos60^\circ=30+20\cdot\dfrac{1}{2}=40$.
+Khoảng cách ngang $OH=KM\sin60^\circ=20\cdot\dfrac{\sqrt{3}}{2}=10\sqrt{3}$.
+Vì góc giữa $\overrightarrow{i}$ và $\overrightarrow{OH}$ bằng $30^\circ$ và $y_M>0$ nên $x_M=10\sqrt{3}\cos30^\circ=15$ và $y_M=10\sqrt{3}\sin30^\circ=5\sqrt{3}$.
+Vậy $M(15;5\sqrt{3};40)$.
+$OM=\sqrt{15^2+(5\sqrt{3})^2+40^2}=\sqrt{225+75+1600}=\sqrt{1900}=10\sqrt{19}\approx43{,}6$ m.
+
+=== N C4.3
+@ly_thuyet:
+##TC Chuyển động thẳng đều trong Oxyz
+- Vật chuyển động thẳng đều từ $A$ với vectơ vận tốc $\overrightarrow{v}=(v_1;v_2;v_3)$: vị trí sau thời gian $t$ là $M(t)=A+t\overrightarrow{v}$, tức $(x_A+tv_1;\ y_A+tv_2;\ z_A+tv_3)$.
+- Tốc độ là độ dài của vận tốc $|\overrightarrow{v}|$; quãng đường từ $A$ đến $B$ là $AB$ và thời gian $t=\dfrac{AB}{|\overrightarrow{v}|}$.
+- Biết vật đi từ $A$ đến $B$ trong $t_0$ thì vận tốc $\overrightarrow{v}=\dfrac{\overrightarrow{AB}}{t_0}$.
+- Khoảng cách giữa hai vật tại một thời điểm là độ dài vectơ nối vị trí của chúng tại thời điểm đó.
+- Đơn vị độ dài trên trục và đơn vị thời gian phải thống nhất với tốc độ đề cho (km, km/h; m, m/s…).
+
+##PP Giải bài toán vật chuyển động thẳng đều
+Đọc dữ kiện thành toạ độ (vị trí đầu, hướng, độ cao) và đổi mọi đại lượng về một hệ đơn vị.
+Tìm vectơ vận tốc của từng vật, viết vị trí $M(t)=A+t\overrightarrow{v}$.
+Thay thời điểm đề hỏi để được toạ độ, rồi tính khoảng cách, quãng đường hoặc thời gian theo yêu cầu.
+
+##CY
+- Vận tốc $\overrightarrow{v}$ là vectơ ($\overrightarrow{v}=\dfrac{\overrightarrow{AB}}{t_0}$), tốc độ mới là số $|\overrightarrow{v}|$.
+- "Máy bay giữ nguyên vận tốc và hướng bay" nghĩa là sau cùng khoảng thời gian đó nó đi thêm đúng vectơ $\overrightarrow{AB}$.
+- Đừng lấy $t$ âm hoặc nằm ngoài khoảng thời gian chuyển động.
+
+=== C4.3.1
+@ly_thuyet:
+##TC Vị trí, thời gian, vận tốc của vật bay thẳng đều
+- Biết hướng bay $\overrightarrow{u}$ và tốc độ $v$: vectơ vận tốc là $\overrightarrow{v}=\dfrac{v}{|\overrightarrow{u}|}\overrightarrow{u}$; sau thời gian $t$, vật ở $M=A+\dfrac{vt}{|\overrightarrow{u}|}\overrightarrow{u}$.
+- Biết vật đi từ $A$ đến $B$ trong $t_0$ và giữ nguyên vận tốc: sau thời gian $t$ kể từ $A$ vật ở $A+\dfrac{t}{t_0}\overrightarrow{AB}$; sau thêm thời gian $t_1$ kể từ $B$ vật ở $B+\dfrac{t_1}{t_0}\overrightarrow{AB}$.
+- Hai vật chuyển động thẳng đều có $\overrightarrow{AB}(t)=\overrightarrow{AB}(0)+t(\overrightarrow{v_2}-\overrightarrow{v_1})$; khoảng cách nhỏ nhất đạt khi $|\overrightarrow{AB}(t)|^2$ (tam thức bậc hai theo $t$) nhỏ nhất, tại đỉnh.
+
+##PP Xác định vị trí, thời gian, khoảng cách nhỏ nhất
+Biết hướng $\overrightarrow{u}$ và tốc độ thì tính $\dfrac{v}{|\overrightarrow{u}|}\overrightarrow{u}$; biết đi từ $A$ đến $B$ trong $t_0$ thì dùng tỉ số $\dfrac{t}{t_0}$ nhân $\overrightarrow{AB}$.
+Hỏi vị trí: thay $t$; hỏi thời gian đến một điểm có toạ độ cho trước: cho một toạ độ bằng giá trị đó rồi giải tìm $t$.
+Hỏi khoảng cách nhỏ nhất: lập vectơ nối hai vật (hoặc vật và điểm đứng yên) theo $t$, đưa bình phương độ dài về dạng $a(t-t_1)^2+c$ với $a>0$.
+Đối chiếu $t$ với khoảng thời gian chuyển động rồi trả lời kèm đơn vị.
+
+##CY
+- Hướng bay $\overrightarrow{u}$ chưa phải vận tốc; phải chia cho $|\overrightarrow{u}|$ rồi nhân tốc độ.
+- Khoảng cách nhỏ nhất theo $t$ chỉ có nghĩa nếu $t$ nằm trong thời gian chuyển động của cả hai vật.
+
+@vi_du:
+##VD
+Trong không gian $Oxyz$ (đơn vị trên mỗi trục là mét), một drone xuất phát từ điểm $A(1;-2;3)$, bay thẳng đều theo hướng vectơ $\overrightarrow{u}=(2;3;6)$ với tốc độ $14$ m/s. Tìm toạ độ của drone sau $5$ giây.
+
+Bài giải:
+Ta có $|\overrightarrow{u}|=\sqrt{4+9+36}=7$ nên vectơ vận tốc là $\overrightarrow{v}=\dfrac{14}{7}\overrightarrow{u}=2\overrightarrow{u}=(4;6;12)$ (m/s).
+Sau $5$ giây, drone ở $M=A+5\overrightarrow{v}=(1+20;\ -2+30;\ 3+60)$.
+Vậy drone ở $M(21;28;63)$.
+
+##VD
+Hai flycam bay thẳng đều trong không gian $Oxyz$ (đơn vị độ dài là mét, thời gian là giây). Lúc $t=0$, flycam $P$ ở $P_0(0;0;8)$ và có vận tốc $(1;2;0)$ m/s; flycam $Q$ ở $Q_0(30;40;20)$ và có vận tốc $(-2;-2;0)$ m/s. Tìm khoảng cách nhỏ nhất giữa hai flycam và thời điểm đạt được.
+
+Bài giải:
+Sau $t$ giây: $P(t)=(t;2t;8)$ và $Q(t)=(30-2t;40-2t;20)$.
+Suy ra $\overrightarrow{PQ}=(30-3t;\ 40-4t;\ 12)$.
+Ta có $PQ^2=(30-3t)^2+(40-4t)^2+144=9(t-10)^2+16(t-10)^2+144=25(t-10)^2+144$.
+$PQ^2\ge144$, dấu bằng khi $t=10$.
+Vậy khoảng cách nhỏ nhất giữa hai flycam bằng $\sqrt{144}=12$ m, đạt lúc $t=10$ giây.
+
+=== C4.3.2
+@ly_thuyet:
+##TC Radar, định vị: khoảng cách giữa các vật
+- Đề cho vị trí theo hướng và độ cao ("cách $a$ km về phía Đông, $b$ km về phía Bắc, cách mặt đất $c$ km") thì đọc thành toạ độ $(a;b;c)$ khi trục $Ox$ hướng Đông, $Oy$ hướng Bắc, $Oz$ hướng lên; phía Tây, phía Nam mang dấu âm.
+- Radar đặt tại $I$ có phạm vi theo dõi $R$ thấy được vật ở vị trí $M$ khi $IM\le R$, với $IM=\sqrt{(x_M-x_I)^2+(y_M-y_I)^2+(z_M-z_I)^2}$.
+- Hai vật cùng xuất phát từ gốc $O$ và bay thẳng đều: vị trí sau thời gian $kt_0$ bằng $k$ lần vị trí sau $t_0$ ($\overrightarrow{OA_k}=k\overrightarrow{OA}$), nên khoảng cách giữa chúng cũng gấp $k$ lần.
+- Nhiều vật (drone, flycam): khoảng cách mỗi cặp là độ dài vectơ nối hai vị trí; tổng, so sánh các khoảng cách tính lần lượt từng cặp.
+
+##PP Radar và khoảng cách giữa các vật
+Đọc dữ kiện thành toạ độ (gốc tại tháp, trạm hoặc điểm xuất phát), nhớ độ cao của radar nếu đặt trên tháp.
+Nếu vật đang bay thì tìm vị trí của nó tại thời điểm đề hỏi (tỉ lệ thời gian hoặc $A+t\overrightarrow{v}$).
+Tính khoảng cách giữa các vật (hoặc từ radar đến vật) bằng công thức độ dài vectơ.
+So sánh với phạm vi $R$ hoặc trả lời khoảng cách theo yêu cầu, kèm đơn vị.
+
+##CY
+- Tháp radar có chiều cao: toạ độ radar là $(0;0;\text{chiều cao tháp})$, không phải gốc $O$.
+- Đơn vị độ dài trên trục (km, m, chục m) có thể khác đơn vị của $R$; đổi trước khi so sánh.
+- Khoảng cách sau $45$ phút của hai vật cùng xuất phát gấp $3$ lần khoảng cách sau $15$ phút, **không** phải cộng thêm.
+
+@vi_du:
+##VD
+Một đài kiểm soát không lưu có radar đặt trên đỉnh tháp cao $0{,}1$ km, phạm vi theo dõi $250$ km. Chọn hệ trục $Oxyz$ với $O$ là chân tháp, $(Oxy)$ là mặt đất, tia $Ox$ hướng Đông, $Oy$ hướng Bắc, $Oz$ hướng lên trên (đơn vị: kilômét). Một máy bay ở vị trí $A$ cách tháp $120$ km về phía Đông, $160$ km về phía Bắc và cách mặt đất $9$ km. Tính khoảng cách từ radar đến máy bay (làm tròn đến hàng phần mười) và cho biết radar có phát hiện được máy bay hay không.
+
+Bài giải:
+Radar ở đỉnh tháp nên có toạ độ $I(0;0;0{,}1)$; máy bay ở $A(120;160;9)$.
+$\overrightarrow{IA}=(120;160;8{,}9)$ nên $IA=\sqrt{120^2+160^2+8{,}9^2}=\sqrt{40079{,}21}\approx200{,}2$ km.
+Vì $200{,}2<250$ nên máy bay nằm trong phạm vi theo dõi của radar.
+Vậy khoảng cách khoảng $200{,}2$ km và radar phát hiện được máy bay.
+
+##VD
+Hai chiếc máy bay không người lái cùng xuất phát từ một điểm $O$ trên mặt đất và mỗi chiếc bay thẳng đều theo một hướng không đổi. Chọn hệ trục $Oxyz$ với $(Oxy)$ là mặt đất, tia $Ox$ hướng Đông, tia $Oy$ hướng Bắc, tia $Oz$ hướng lên trên (đơn vị: kilômét). Bay được $15$ phút thì chiếc thứ nhất cách điểm xuất phát $4$ km về phía Tây, $3$ km về phía Bắc và cách mặt đất $2$ km; chiếc thứ hai cách điểm xuất phát $4$ km về phía Đông, $7$ km về phía Bắc và cách mặt đất $3$ km. Hỏi sau $45$ phút kể từ lúc xuất phát, hai máy bay cách nhau bao nhiêu kilômét?
+
+Bài giải:
+Sau $15$ phút, hai máy bay ở $A(-4;3;2)$ và $B(4;7;3)$.
+Mỗi máy bay bay thẳng đều từ $O$ nên sau $45$ phút ($=3\cdot15$ phút) chúng ở $A_1$, $B_1$ với $\overrightarrow{OA_1}=3\overrightarrow{OA}$, $\overrightarrow{OB_1}=3\overrightarrow{OB}$, tức $A_1(-12;9;6)$ và $B_1(12;21;9)$.
+Ta có $\overrightarrow{A_1B_1}=(24;12;3)$ nên $A_1B_1=\sqrt{24^2+12^2+3^2}=\sqrt{729}=27$.
+Vậy sau $45$ phút hai máy bay cách nhau $27$ km.
+
+## GHI CHÚ CHO CEO
+- Sách đã đọc/trích (vào `S\sach\vt\`): Từ Tâm C2-B1-P1, C2-B1-P2, C2-B3-P1 (có "Dạng 6. Tâm tỷ cự": VD6.1 điểm trên mặt phẳng, VD6.2 điểm trên trục), C2-B3-P2; PNL Chương 2: Bài 1 Dạng 02 (hợp lực), Bài 2 Dạng 01, Dạng 02 (toạ độ hoá, máy bay/radar), Bài 3 Dạng 01, Dạng 02 (có bài radar giàn khoan, bài hai UAV) và Đề 03 GV (cực trị M thuộc mặt phẳng). Trạm soát đối chiếu thêm NBV 12-9 (bản trạm soạn VT-B/VT-C đã trích ở `S\sach\vt-nbv\`: A. Lý thuyết, B. Tự luận Dạng 3 Ứng dụng, C. Trắc nghiệm, E. Trả lời ngắn) — khớp cách giải của các dạng này (tâm tỉ cự với M thuộc (Oxy), tổng khoảng cách hai flycam bằng đối xứng, chóp đều đèn chùm, ba dây cáp đều, radar). Công thức trong Word là ảnh WMF nên chỉ đối chiếu lời văn/cách giải; mọi ví dụ đã tự giải lại bằng số (trạm soạn `S\soan\VT\thu.mjs`; trạm soát `S\soat\VT-D\kiem.mjs`, 34/34 OK).
+- C3.5.1: nhiều câu đề thật gắn dạng này cho M thuộc mặt phẳng $(P)$ cho bằng phương trình, mặt cầu, đường thẳng (T312000000560, 819, 148, 7080, T312010403001…) — thuộc chương Phương pháp toạ độ nên không đưa; lý thuyết chỉ cho M thuộc mặt phẳng/trục toạ độ hoặc cạnh hình khối gắn hệ trục.
+- Câu T312000000296 (tổng tích vô hướng) và T312000000166 ($(MA/MD)^2$…) đang xếp ở C3.5.2 nhưng giải bằng tâm tỉ cự (đã kiểm bằng số: T296 dùng $I$ với hệ số $5,3,4$ ra $T=12$; T166 dùng tâm tỉ cự trùng hình chiếu của $D$, ra $y=6$) — đề nghị gắn sang C3.5.1. Cũng vậy với T1120000003441, T1120000004026, T1120000004316, T112070307043 (tổng bình phương, đang ở C3.5.2). Lý thuyết C3.5.1 đã thêm ý tổng tích vô hướng.
+- C3.5.2: mô tả có "|MA−MB| lớn nhất" nhưng toàn bộ kho đề không có câu nào hỏi hiệu ⇒ trạm soát đã xoá ý này khỏi lý thuyết (luật "không đề nào hỏi thì không đưa"); đề nghị bỏ khỏi mô tả. Đề có 2 kiểu chưa vào lý thuyết: hai điểm $M$, $N$ trên $(Oxy)$ với $MN$ không đổi (T312000000069, T312000000090; NBV có 1 câu) và $M$ thuộc trục toạ độ (T312000000269) — CEO chốt có đưa không.
+- C4.1.2: ví dụ 1 (giá đỡ ba chân) bám T312000000255/T1120000004160 nhưng số liệu khác; công của lực chỉ có trong ##TC (đề ~1 câu). Theo mô tả, các câu dây treo chóp đều/đèn tròn ba dây hiện vẫn nằm ở C4.1.1 (P1.5.1) chờ gắn lại.
+- C4.2.1: các mục "moi" (dây điện ngắn nhất dọc tường, bóng nảy parabol, độ dài cung trên Trái Đất) chưa có ví dụ; bài Trái Đất (T312000000072) cho mặt cầu bằng phương trình — nếu đưa vào thì chỉ nên lấy phần góc giữa hai vectơ. C4.2.2: mục "moi" hình hộp nghiêng (bể nước T312000000213) chưa có trong lý thuyết.
+- C4.3.1: đề thật có câu viên đạn cho bằng phương trình tham số đường thẳng (T312000000676) — thuộc PP toạ độ theo ranh giới; ví dụ chỉ dùng $A+t\overrightarrow{v}$.
+- C4.3.2: trạm soát đã thay ví dụ 2 cũ (flycam trong vùng kết nối, giải $OM(t)^2\le R^2$ — thực chất là đường bay cắt hình cầu tâm cố định) bằng ví dụ khoảng cách hai UAV sau 45 phút (27 km), và bỏ ý "vào–ra vùng phủ theo $t$" khỏi lý thuyết. Mô tả dạng trong `VT.json` vẫn ghi "giải |IM(t)| = R, hoặc giải hệ khoảng cách (GPS)" — trái ranh giới Thùy chốt, đề nghị sửa mô tả.
+- Gắn nhầm chương: T112010102173 (khảo sát hàm số $y=x^3-3x^2$) và T312000000630 (hải đăng phủ sáng bán kính 4 km, người đi trên đoạn ID — vùng phủ hình cầu, thuộc PP toạ độ) đang xếp ở C4.3.2.

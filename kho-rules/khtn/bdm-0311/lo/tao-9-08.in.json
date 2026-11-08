@@ -1,0 +1,1219 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00522",
+   "khoi": "9",
+   "chu_de": "Ethylic alcohol & Acetic acid",
+   "chuyen_de": "Ethylic alcohol",
+   "nhom": "Các dạng bài tập cơ bản về ethylic alcohol",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09080101001",
+     "loai": "trac_nghiem",
+     "de": "Công thức phân tử của ethylic alcohol là",
+     "lua_chon": [
+      "C₂H₆O",
+      "C₂H₄O₂",
+      "C₃H₈O",
+      "CH₄O"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ethylic alcohol có công thức phân tử C₂H₆O (viết thu gọn C₂H₅OH), gồm 2 carbon, 6 hydrogen, 1 oxygen.\n\nVì sao các phương án khác sai:\n- B: C₂H₄O₂ là công thức phân tử của acetic acid, không phải ethylic alcohol.\n- C: C₃H₈O có 3 nguyên tử carbon, không đúng số carbon của ethylic alcohol.\n- D: CH₄O chỉ có 1 nguyên tử carbon, ít hơn 2 carbon của ethylic alcohol."
+    },
+    {
+     "ma_cau": "K09080101002",
+     "loai": "trac_nghiem",
+     "de": "Công thức cấu tạo thu gọn nào viết đúng ethylic alcohol?",
+     "lua_chon": [
+      "CH₃-O-CH₃",
+      "CH₂=CH-OH",
+      "CH₃-CH₂-OH",
+      "CH₃-CH₃-OH"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ethylic alcohol có mạch carbon no, nhóm -OH liên kết với carbon: công thức đúng là CH₃-CH₂-OH.\n\nVì sao các phương án khác sai:\n- A: CH₃-O-CH₃ là cấu tạo của dimethyl ether, không có nhóm -OH của alcohol.\n- B: CH₂=CH-OH có liên kết đôi C=C, không đúng cấu tạo mạch no.\n- D: Công thức này thừa liên kết, carbon không thể tạo quá 4 liên kết."
+    },
+    {
+     "ma_cau": "K09080101003",
+     "loai": "trac_nghiem",
+     "de": "Nhóm nguyên tử nào quyết định tính chất hoá học đặc trưng của ethylic alcohol? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H080101-01-003-de.png)",
+     "lua_chon": [
+      "Nhóm -CH₃",
+      "Nhóm -OH",
+      "Gốc C₂H₅-",
+      "Nhóm =O"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nhóm -OH (nhóm chức của alcohol) quyết định tính chất hoá học đặc trưng như phản ứng cháy, phản ứng với sodium.\n\nVì sao các phương án khác sai:\n- A: Nhóm -CH₃ là nhóm alkyl, không quyết định tính chất hoá học đặc trưng.\n- C: Gốc C₂H₅- chỉ là gốc hydrocarbon, không phải nhóm chức.\n- D: Ethylic alcohol không có liên kết đôi C=O trong phân tử."
+    },
+    {
+     "ma_cau": "K09080101004",
+     "loai": "trac_nghiem",
+     "de": "Phân tử ethylic alcohol (C₂H₆O) có bao nhiêu nguyên tử hydrogen?",
+     "lua_chon": [
+      "5",
+      "4",
+      "8",
+      "6"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Công thức phân tử C₂H₆O cho biết phân tử có 2 carbon, 6 hydrogen và 1 oxygen.\n\nVì sao các phương án khác sai:\n- A: Công thức C₂H₆O có 6 nguyên tử H, không phải 5.\n- B: Đã đếm thiếu 2 nguyên tử H so với công thức C₂H₆O.\n- C: Đã đếm dư 2 nguyên tử H so với công thức C₂H₆O."
+    },
+    {
+     "ma_cau": "K09080101005",
+     "loai": "trac_nghiem",
+     "de": "Ethylic alcohol có bao nhiêu nguyên tử carbon trong phân tử?",
+     "lua_chon": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Công thức phân tử C₂H₆O cho biết ethylic alcohol có 2 nguyên tử carbon.\n\nVì sao các phương án khác sai:\n- A: Công thức C₂H₆O có 2 nguyên tử carbon, không phải 1.\n- C: Công thức C₂H₆O có 2 nguyên tử carbon, không phải 3.\n- D: Công thức C₂H₆O có 2 nguyên tử carbon, không phải 4."
+    },
+    {
+     "ma_cau": "K09080101006",
+     "loai": "trac_nghiem",
+     "de": "Ở điều kiện thường, ethylic alcohol tinh khiết là chất có trạng thái và màu như thế nào?",
+     "lua_chon": [
+      "Chất rắn, không màu",
+      "Chất lỏng, không màu",
+      "Chất khí, không màu",
+      "Chất lỏng, màu vàng nhạt"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ở điều kiện thường, ethylic alcohol là chất lỏng, không màu, có mùi đặc trưng, dễ bay hơi.\n\nVì sao các phương án khác sai:\n- A: Ethylic alcohol là chất lỏng ở điều kiện thường, không phải chất rắn.\n- C: Ethylic alcohol là chất lỏng, không phải chất khí ở điều kiện thường.\n- D: Ethylic alcohol tinh khiết không màu, không phải màu vàng nhạt."
+    },
+    {
+     "ma_cau": "K09080101007",
+     "loai": "trac_nghiem",
+     "de": "Ethylic alcohol có khả năng tan trong nước như thế nào?",
+     "lua_chon": [
+      "Không tan trong nước",
+      "Chỉ tan một phần nhỏ",
+      "Tan trong nước nhưng tạo kết tủa",
+      "Tan vô hạn trong nước"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nhờ nhóm -OH tạo liên kết hydrogen với nước, ethylic alcohol tan vô hạn trong nước.\n\nVì sao các phương án khác sai:\n- A: Ethylic alcohol tan tốt trong nước, không phải không tan.\n- B: Ethylic alcohol tan vô hạn ở mọi tỉ lệ, không chỉ tan một phần.\n- C: Ethylic alcohol tan tạo dung dịch đồng nhất, không tạo kết tủa."
+    },
+    {
+     "ma_cau": "K09080101008",
+     "loai": "trac_nghiem",
+     "de": "So với nước, khối lượng riêng của ethylic alcohol như thế nào?",
+     "lua_chon": [
+      "Nhẹ hơn nước",
+      "Nặng hơn nước",
+      "Bằng khối lượng riêng của nước",
+      "Không xác định được"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ethylic alcohol có khối lượng riêng khoảng 0,8 g/mL, nhỏ hơn khối lượng riêng nước (1 g/mL) nên nhẹ hơn nước.\n\nVì sao các phương án khác sai:\n- B: Ethylic alcohol có khối lượng riêng khoảng 0,8 g/mL, nhỏ hơn nước, không nặng hơn.\n- C: Khối lượng riêng ethylic alcohol (0,8 g/mL) khác khối lượng riêng nước (1 g/mL).\n- D: Khối lượng riêng của ethylic alcohol đã xác định, khoảng 0,8 g/mL."
+    },
+    {
+     "ma_cau": "K09080101009",
+     "loai": "trac_nghiem",
+     "de": "Ethylic alcohol có nhiệt độ sôi như thế nào so với nước?",
+     "lua_chon": [
+      "Cao hơn nước",
+      "Bằng nhiệt độ sôi của nước",
+      "Thấp hơn nước",
+      "Không có nhiệt độ sôi xác định"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ethylic alcohol sôi ở khoảng 78,3 độ C, thấp hơn nhiệt độ sôi của nước (100 độ C) nên dễ bay hơi hơn nước.\n\nVì sao các phương án khác sai:\n- A: Ethylic alcohol sôi ở khoảng 78,3 độ C, thấp hơn 100 độ C của nước, không cao hơn.\n- B: Nhiệt độ sôi ethylic alcohol (78,3 độ C) khác nhiệt độ sôi nước (100 độ C).\n- D: Ethylic alcohol có nhiệt độ sôi xác định, khoảng 78,3 độ C."
+    },
+    {
+     "ma_cau": "K09080101010",
+     "loai": "trac_nghiem",
+     "de": "Ethylic alcohol có mùi đặc trưng và dễ bay hơi ở điều kiện thường. Đặc điểm này liên quan đến tính chất nào?",
+     "lua_chon": [
+      "Nhiệt độ sôi thấp, dễ chuyển thành hơi",
+      "Không tan trong nước",
+      "Khối lượng riêng lớn hơn nước",
+      "Không cháy được"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ethylic alcohol có nhiệt độ sôi thấp (khoảng 78,3°C) nên dễ chuyển từ thể lỏng sang hơi ở điều kiện thường, tạo mùi đặc trưng dễ nhận biết.\n\nVì sao các phương án khác sai:\n- B: Ethylic alcohol tan vô hạn trong nước, không liên quan đến việc dễ bay hơi.\n- C: Ethylic alcohol có khối lượng riêng nhỏ hơn nước, không liên quan đến việc dễ bay hơi.\n- D: Ethylic alcohol cháy được; đây không phải nguyên nhân của việc dễ bay hơi."
+    },
+    {
+     "ma_cau": "K09080101011",
+     "loai": "trac_nghiem",
+     "de": "Trên nhãn một chai rượu ghi '30°'. Số này cho biết điều gì?",
+     "lua_chon": [
+      "Trong 100 mL rượu có 30 gam ethylic alcohol",
+      "Rượu sôi ở 30 độ C",
+      "Rượu có 30% khối lượng là nước",
+      "Trong 100 mL rượu có 30 mL ethylic alcohol nguyên chất"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Độ cồn (độ) là số mL ethylic alcohol nguyên chất có trong 100 mL dung dịch rượu; rượu 30° có 30 mL ethylic alcohol trong 100 mL dung dịch.\n\nVì sao các phương án khác sai:\n- A: Độ cồn tính theo thể tích ethylic alcohol nguyên chất, không tính theo khối lượng.\n- B: Số ghi trên nhãn là độ cồn, không phải nhiệt độ sôi của rượu.\n- C: Độ cồn cho biết tỉ lệ thể tích ethylic alcohol, không phải tỉ lệ nước."
+    },
+    {
+     "ma_cau": "K09080101012",
+     "loai": "trac_nghiem",
+     "de": "Nhãn chai bia ghi '5°'. So với rượu vang '12°' cùng thể tích, loại nào chứa tỉ lệ ethylic alcohol cao hơn?",
+     "lua_chon": [
+      "Rượu vang 12°",
+      "Bia 5°",
+      "Cả hai bằng nhau",
+      "Không thể so sánh"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Độ cồn càng lớn thì tỉ lệ thể tích ethylic alcohol trong 100 mL dung dịch càng cao; 12° > 5° nên rượu vang có tỉ lệ cao hơn.\n\nVì sao các phương án khác sai:\n- B: Bia có độ cồn 5°, thấp hơn 12° của rượu vang.\n- C: 12° khác 5°, hai loại không có cùng tỉ lệ ethylic alcohol.\n- D: Có thể so sánh trực tiếp qua độ cồn vì cùng đơn vị %V."
+    },
+    {
+     "ma_cau": "K09080101013",
+     "loai": "trac_nghiem",
+     "de": "Một chai nước giải khát ghi '0°'. Điều này có nghĩa là gì?",
+     "lua_chon": [
+      "Chứa 100% là ethylic alcohol",
+      "Chai chưa được đo độ cồn",
+      "Không chứa ethylic alcohol",
+      "Chai chứa 0% là nước"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Độ cồn 0° nghĩa là trong 100 mL dung dịch không có mL ethylic alcohol nguyên chất nào, tức không chứa ethylic alcohol.\n\nVì sao các phương án khác sai:\n- A: Độ cồn 0° nghĩa là không có ethylic alcohol, ngược lại với 100%.\n- B: Ghi 0° là kết quả đã đo được, không phải chưa đo.\n- D: Độ cồn không cho biết tỉ lệ nước, chỉ cho biết tỉ lệ ethylic alcohol."
+    },
+    {
+     "ma_cau": "K09080101014",
+     "loai": "trac_nghiem",
+     "de": "Rượu 45° và rượu 45% (theo cách ghi độ cồn %V) có ý nghĩa như thế nào so với nhau?",
+     "lua_chon": [
+      "Rượu 45° có tỉ lệ ethylic alcohol cao hơn rượu 45%",
+      "Chỉ giống nhau khi rượu để trong tủ lạnh",
+      "Giống nhau, đều chỉ 45 mL ethylic alcohol trong 100 mL dung dịch",
+      "Rượu 45% có tỉ lệ ethylic alcohol cao hơn rượu 45°"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Độ cồn thường được ghi bằng kí hiệu \"°\" nhưng về bản chất là phần trăm thể tích ethylic alcohol nguyên chất trong 100 mL dung dịch, nên 45° và 45% (theo %V) có cùng ý nghĩa.\n\nVì sao các phương án khác sai:\n- A: Ký hiệu \"°\" và \"%\" trong trường hợp này biểu diễn cùng một giá trị độ cồn, không có sự khác biệt.\n- B: Độ cồn không phụ thuộc nơi cất giữ; 45° và 45% (theo thể tích) như nhau.\n- D: Ký hiệu \"°\" và \"%\" trong trường hợp này biểu diễn cùng một giá trị độ cồn, không có sự khác biệt."
+    },
+    {
+     "ma_cau": "K09080101015",
+     "loai": "trac_nghiem",
+     "de": "Hai chai rượu cùng thể tích 500 mL, một chai ghi 20°, một chai ghi 40°. Chai nào chứa nhiều mL ethylic alcohol nguyên chất hơn?",
+     "lua_chon": [
+      "Chai 20°",
+      "Hai chai chứa lượng bằng nhau",
+      "Không thể xác định vì thiếu dữ kiện",
+      "Chai 40°"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Với cùng thể tích dung dịch, độ cồn càng cao thì thể tích ethylic alcohol nguyên chất càng lớn; chai 40° có V(alcohol) = 500×40%=200 mL, nhiều hơn chai 20° có V=100 mL.\n\nVì sao các phương án khác sai:\n- A: Độ cồn càng lớn thì lượng ethylic alcohol nguyên chất trong cùng thể tích càng nhiều, không phải ít hơn.\n- B: Độ cồn khác nhau (20° và 40°) nên lượng ethylic alcohol trong hai chai khác nhau, không bằng nhau.\n- C: Đã biết thể tích dung dịch và độ cồn của cả hai chai, đủ dữ kiện để so sánh."
+    },
+    {
+     "ma_cau": "K09080101016",
+     "loai": "trac_nghiem",
+     "de": "Vì sao ethylic alcohol thường được pha vào xăng để làm nhiên liệu (ví dụ xăng E₅)?",
+     "lua_chon": [
+      "Không cháy được nên an toàn khi vận chuyển",
+      "Cháy cháy sạch hơn, ít gây ô nhiễm hơn nhiên liệu khác",
+      "Có khối lượng riêng lớn hơn xăng nên tiết kiệm nhiên liệu",
+      "Không tan trong xăng nên dễ tách riêng"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ethylic alcohol cháy sạch hơn, ít khí độc và khi cháy sinh ít khí gây ô nhiễm hơn một số nhiên liệu hoá thạch nên được pha vào xăng (xăng E₅).\n\nVì sao các phương án khác sai:\n- A: Ethylic alcohol cháy được và cháy sạch hơn, đó chính là lí do dùng làm nhiên liệu.\n- C: Ethylic alcohol có khối lượng riêng nhỏ hơn nước và nhỏ hơn xăng, không phải lớn hơn.\n- D: Ethylic alcohol tan tốt trong xăng, nhờ đó mới pha trộn được thành xăng E₅."
+    },
+    {
+     "ma_cau": "K09080101017",
+     "loai": "trac_nghiem",
+     "de": "Vì sao ethylic alcohol được dùng làm dung môi hoặc chất sát trùng trong y tế?",
+     "lua_chon": [
+      "Có màu đặc trưng giúp nhận biết vết thương",
+      "Có nhiệt độ sôi cao nên bảo quản lâu",
+      "Hoà tan tốt nhiều chất và có khả năng diệt khuẩn",
+      "Không tan trong nước nên không bị rửa trôi"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ethylic alcohol hoà tan tốt nhiều chất hữu cơ và có khả năng diệt khuẩn nên được dùng làm dung môi, chất sát trùng (cồn y tế thường là dung dịch 70°).\n\nVì sao các phương án khác sai:\n- A: Ethylic alcohol tinh khiết không màu, không dùng để nhận biết vết thương qua màu.\n- B: Ethylic alcohol có nhiệt độ sôi khoảng 78,3 độ C, thấp hơn nước, không phải cao.\n- D: Ethylic alcohol tan vô hạn trong nước, không phải không tan."
+    },
+    {
+     "ma_cau": "K09080101018",
+     "loai": "trac_nghiem",
+     "de": "Ethylic alcohol được dùng làm nguyên liệu điều chế acetic acid (giấm ăn) và nhiều hợp chất hữu cơ khác vì lí do nào?",
+     "lua_chon": [
+      "Vì có nhóm –OH, tham gia được nhiều phản ứng",
+      "Vì không phản ứng được với chất nào khác",
+      "Vì có giá thành rất cao",
+      "Vì chỉ tồn tại ở dạng khí"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nhờ có nhóm chức -OH hoạt động hoá học, ethylic alcohol dễ tham gia phản ứng oxi hoá để tạo acetic acid và nhiều phản ứng khác, nên được dùng làm nguyên liệu hoá học quan trọng.\n\nVì sao các phương án khác sai:\n- B: Ethylic alcohol tham gia nhiều phản ứng hoá học.\n- C: Giá cao không phải lí do làm nguyên liệu.\n- D: Ethylic alcohol là chất lỏng ở điều kiện thường."
+    },
+    {
+     "ma_cau": "K09080101019",
+     "loai": "trac_nghiem",
+     "de": "Vì sao ethylic alcohol được dùng để pha chế nước rửa tay khô sát khuẩn?",
+     "lua_chon": [
+      "Vì có màu sắc giúp nhận biết vùng đã sát khuẩn",
+      "Vì có khả năng diệt khuẩn và bay hơi nhanh, không để lại cặn ướt",
+      "Vì có vị ngọt dễ chịu",
+      "Vì không cháy được nên an toàn khi mang theo"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ethylic alcohol có khả năng diệt khuẩn và bay hơi nhanh (nhiệt độ sôi thấp) nên không để lại cặn ướt trên da, phù hợp pha chế nước rửa tay khô sát khuẩn.\n\nVì sao các phương án khác sai:\n- A: Ethylic alcohol tinh khiết không màu, không dùng để nhận biết vùng đã sát khuẩn qua màu sắc.\n- C: Ethylic alcohol không có vị ngọt; đây không phải lí do được dùng sát khuẩn.\n- D: Ethylic alcohol dễ cháy nên nước rửa tay khô cần bảo quản tránh xa lửa, không phải vì \"không cháy được\"."
+    },
+    {
+     "ma_cau": "K09080101020",
+     "loai": "trac_nghiem",
+     "de": "Rượu, bia làm giảm khả năng phản ứng và phối hợp của cơ thể. Vì vậy, hành vi nào sau đây KHÔNG an toàn?",
+     "lua_chon": [
+      "Nghỉ ngơi tại nhà sau khi uống rượu, bia",
+      "Điều khiển xe máy, ô tô sau khi uống rượu, bia",
+      "Uống nhiều nước và ăn nhẹ sau khi uống rượu, bia",
+      "Gọi người thân đưa về nhà sau khi uống rượu, bia"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Rượu, bia làm giảm khả năng phản ứng, phối hợp và tỉnh táo; điều khiển xe máy, ô tô khi đó rất nguy hiểm, dễ gây tai nạn giao thông.\n\nVì sao các phương án khác sai:\n- A: Nghỉ ngơi tại nhà là hành vi an toàn, không gây nguy hiểm cho bản thân và người khác.\n- C: Uống nước, ăn nhẹ giúp cơ thể hồi phục, là hành vi an toàn.\n- D: Gọi người thân đưa về là cách xử lí an toàn, không tự điều khiển phương tiện."
+    },
+    {
+     "ma_cau": "K09080101021",
+     "loai": "trac_nghiem",
+     "de": "Lạm dụng rượu, bia trong thời gian dài ảnh hưởng như thế nào đến cơ thể?",
+     "lua_chon": [
+      "Giúp tăng cường sức khoẻ hệ tiêu hoá",
+      "Làm tăng khả năng tập trung khi làm việc",
+      "Không ảnh hưởng nếu uống đủ nước",
+      "Gây hại cho gan và hệ thần kinh"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ethylic alcohol trong rượu, bia khi lạm dụng lâu dài gây tổn hại cho gan (gan nhiễm mỡ, xơ gan) và hệ thần kinh.\n\nVì sao các phương án khác sai:\n- A: Lạm dụng rượu, bia gây hại, không giúp tăng cường sức khoẻ hệ tiêu hoá.\n- B: Rượu, bia làm giảm khả năng tập trung và phản ứng, không làm tăng.\n- C: Lạm dụng rượu, bia vẫn gây hại cho gan, hệ thần kinh dù uống nhiều nước."
+    },
+    {
+     "ma_cau": "K09080101022",
+     "loai": "trac_nghiem",
+     "de": "Vì sao không nên cho trẻ em uống các loại nước có chứa ethylic alcohol dù chỉ một lượng nhỏ?",
+     "lua_chon": [
+      "Vì ethylic alcohol không có mùi vị gì",
+      "Vì trẻ em không tiêu hoá được alcohol",
+      "Vì gan, thần kinh của trẻ chưa hoàn thiện, dễ tổn thương",
+      "Vì alcohol chỉ gây hại cho người lớn tuổi"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cơ thể trẻ em, đặc biệt là gan và hệ thần kinh, chưa phát triển hoàn thiện nên rất dễ bị tổn thương khi tiếp xúc với ethylic alcohol, dù chỉ một lượng nhỏ.\n\nVì sao các phương án khác sai:\n- A: Mùi vị không phải lí do; alcohol gây hại cho cơ thể trẻ.\n- B: Lí do là gan, thần kinh của trẻ chưa hoàn thiện, dễ tổn thương.\n- D: Alcohol gây hại cho mọi người, nhất là trẻ em."
+    },
+    {
+     "ma_cau": "K09080101023",
+     "loai": "trac_nghiem",
+     "de": "Hành vi nào sau đây thể hiện việc sử dụng rượu, bia có trách nhiệm, giảm tác hại tới sức khoẻ và cộng đồng?",
+     "lua_chon": [
+      "Uống thật nhiều để thể hiện bản lĩnh",
+      "Ép người khác uống cùng cho vui",
+      "Uống rượu, bia thay nước lọc hằng ngày",
+      "Không uống rượu, bia khi lái xe"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Không uống rượu, bia trước khi lái xe hoặc vận hành máy móc giúp đảm bảo an toàn cho bản thân và những người xung quanh, thể hiện việc sử dụng có trách nhiệm.\n\nVì sao các phương án khác sai:\n- A: Uống nhiều không phải bản lĩnh, mà gây hại nghiêm trọng cho sức khoẻ.\n- B: Ép người khác uống rượu, bia là hành vi thiếu trách nhiệm, có thể gây hại cho người khác.\n- C: Thay thế nước lọc bằng rượu, bia hằng ngày là lạm dụng, rất có hại cho sức khoẻ."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00523",
+   "khoi": "9",
+   "chu_de": "Ethylic alcohol & Acetic acid",
+   "chuyen_de": "Ethylic alcohol",
+   "nhom": "Viết phương trình hóa học mô tả tính chất của Ethylic alcohol",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09080102001",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây viết đúng khi đốt cháy hoàn toàn ethylic alcohol trong khí oxygen?",
+     "lua_chon": [
+      "C₂H₅OH + 2O₂ → 2CO₂ + 3H₂O",
+      "C₂H₅OH + 3O₂ → 2CO₂ + 3H₂O",
+      "C₂H₅OH + 3O₂ → 2CO + 3H₂O",
+      "C₂H₅OH + 3O₂ → 2CO₂ + 2H₂O"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cân bằng C, H, O: C₂H₅OH + 3O₂ → 2CO₂ + 3H₂O (2C = 2C; 6H = 6H; 1+6 = 4+3 = 7O).\n\nVì sao các phương án khác sai:\n- A: Vế trái chỉ có 2 nguyên tử O do O₂ mang tới, chưa đủ cân bằng với vế phải.\n- C: Đốt cháy hoàn toàn phải tạo CO₂, không tạo khí CO (đốt cháy chưa hoàn toàn).\n- D: Vế phải thiếu nguyên tử H và O so với 3H₂O, chưa cân bằng."
+    },
+    {
+     "ma_cau": "K09080102002",
+     "loai": "trac_nghiem",
+     "de": "Đốt cháy hoàn toàn ethylic alcohol trong khí oxygen tạo ra hai sản phẩm là",
+     "lua_chon": [
+      "Khí CO₂ và hơi nước",
+      "Khí CO và hơi nước",
+      "Carbon (muội than) và hơi nước",
+      "Khí CO₂ và khí hydrogen"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ethylic alcohol (C₂H₅OH) chứa C, H, O; khi cháy hoàn toàn trong oxygen tạo khí carbon dioxide (CO₂) và hơi nước (H₂O).\n\nVì sao các phương án khác sai:\n- B: Đốt cháy hoàn toàn (đủ oxygen) tạo CO₂, không tạo khí CO.\n- C: Đốt cháy hoàn toàn không sinh ra carbon (muội than) riêng lẻ.\n- D: Sản phẩm cháy không có khí hydrogen, hydrogen đã kết hợp với oxygen tạo nước."
+    },
+    {
+     "ma_cau": "K09080102003",
+     "loai": "trac_nghiem",
+     "de": "Ngọn lửa khi đốt cháy ethylic alcohol có màu gì đặc trưng?",
+     "lua_chon": [
+      "Màu đỏ cam rực",
+      "Màu xanh, ít khói",
+      "Màu vàng kèm nhiều khói đen",
+      "Màu tím"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ethylic alcohol cháy trong không khí cho ngọn lửa màu xanh, gần như không có khói do cháy khá hoàn toàn, sinh CO₂ và hơi nước.\n\nVì sao các phương án khác sai:\n- A: Màu đỏ cam thường gặp khi cháy có nhiều tạp chất hoặc thiếu oxygen, không phải đặc trưng của ethanol tinh khiết.\n- C: Màu vàng kèm khói đen là dấu hiệu cháy không hoàn toàn, không đặc trưng cho ethanol cháy trong điều kiện đủ oxygen.\n- D: Ethylic alcohol khi cháy không cho ngọn lửa màu tím."
+    },
+    {
+     "ma_cau": "K09080102004",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây viết đúng khi cho ethylic alcohol tác dụng với sodium?",
+     "lua_chon": [
+      "C₂H₅OH + Na → C₂H₅ONa + H₂",
+      "2C₂H₅OH + Na → 2C₂H₅ONa + H₂",
+      "C₂H₅OH + 2Na → C₂H₅ONa + H₂",
+      "2C₂H₅OH + 2Na → 2C₂H₅ONa + H₂"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cân bằng Na, H: 2C₂H₅OH + 2Na → 2C₂H₅ONa + H₂ (2Na = 2Na; 12H = 10H + 2H).\n\nVì sao các phương án khác sai:\n- A: Vế trái chỉ có 1 Na nhưng cần 2 Na để tạo đủ khí H₂, chưa cân bằng.\n- B: Vế trái chỉ có 1 Na nhưng vế phải có 2 nhóm C₂H₅ONa, chưa cân bằng Na.\n- C: Vế trái có 2 Na nhưng vế phải chỉ có 1 nhóm C₂H₅ONa, chưa cân bằng."
+    },
+    {
+     "ma_cau": "K09080102005",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây viết đúng khi cho ethylic alcohol tác dụng với potassium?",
+     "lua_chon": [
+      "2C₂H₅OH + 2K → 2C₂H₅OK + H₂",
+      "C₂H₅OH + K → C₂H₅OK + H₂",
+      "2C₂H₅OH + K → 2C₂H₅OK + H₂",
+      "2C₂H₅OH + 2K → C₂H₅OK + H₂"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Potassium (kim loại kiềm) phản ứng với ethylic alcohol giống sodium: 2C₂H₅OH + 2K → 2C₂H₅OK + H₂.\n\nVì sao các phương án khác sai:\n- B: Vế trái chỉ có 1 K nhưng cần 2 K để tạo đủ khí H₂, chưa cân bằng.\n- C: Vế trái chỉ có 1 K nhưng vế phải có 2 nhóm C₂H₅OK, chưa cân bằng K.\n- D: Vế phải chỉ có 1 nhóm C₂H₅OK nhưng vế trái có 2C₂H₅OH, chưa cân bằng."
+    },
+    {
+     "ma_cau": "K09080102006",
+     "loai": "trac_nghiem",
+     "de": "Cho ethylic alcohol tác dụng với potassium (K), khí sinh ra là khí nào?",
+     "lua_chon": [
+      "Khí hydrogen",
+      "Khí oxygen",
+      "Khí carbon dioxide",
+      "Khí hơi nước"
+     ],
+     "dap_an": "A",
+     "loi_giai": "2C₂H₅OH + 2K → 2C₂H₅OK + H₂: phản ứng của alcohol với kim loại kiềm sinh ra khí hydrogen (H₂).\n\nVì sao các phương án khác sai:\n- B: Phản ứng của alcohol với kim loại kiềm không sinh ra khí oxygen.\n- C: Phản ứng của alcohol với kim loại kiềm không sinh ra khí carbon dioxide (khác phản ứng cháy).\n- D: Hơi nước không phải là khí sinh ra từ phản ứng này; sản phẩm khí là hydrogen."
+    },
+    {
+     "ma_cau": "K09080102007",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây viết đúng khi điều chế ethylic alcohol bằng cách lên men glucose?",
+     "lua_chon": [
+      "C₆H₁₂O₆ → C₂H₅OH + CO₂",
+      "C₆H₁₂O₆ → 2C₂H₅OH + CO₂",
+      "C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂",
+      "C₆H₁₂O₆ → 2C₂H₅OH + 2O₂"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cân bằng C, H, O: C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂ (6C = 4C + 2C; 12H = 12H; 6O = 2O + 4O).\n\nVì sao các phương án khác sai:\n- A: Vế phải chỉ có 1 C₂H₅OH và 1 CO₂, chưa đủ số nguyên tử C so với vế trái.\n- B: Vế phải chỉ có 1 CO₂ nhưng cần 2 CO₂ để cân bằng đủ 6 carbon.\n- D: Sản phẩm của lên men là khí CO₂, không phải khí O₂."
+    },
+    {
+     "ma_cau": "K09080102008",
+     "loai": "trac_nghiem",
+     "de": "Điều chế ethylic alcohol từ ethylene cần dùng nguyên liệu và điều kiện nào?",
+     "lua_chon": [
+      "Ethylene, nước, xúc tác acid, đun nóng",
+      "Ethylene, nước, không cần xúc tác, ở nhiệt độ thường",
+      "Glucose, nước, xúc tác acid",
+      "Ethylene, khí hydrogen, xúc tác nickel"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ethylic alcohol được điều chế từ ethylene bằng phản ứng cộng nước: C₂H₄ + H₂O → C₂H₅OH, cần xúc tác acid và đun nóng.\n\nVì sao các phương án khác sai:\n- B: Phản ứng cộng nước vào ethylene cần có xúc tác acid, không xảy ra khi không có xúc tác.\n- C: Glucose dùng để lên men rượu, không phải nguyên liệu của phản ứng cộng nước với ethylene.\n- D: Ethylene tác dụng hydrogen (xúc tác nickel) tạo ethane, không tạo ethylic alcohol."
+    },
+    {
+     "ma_cau": "K09080102009",
+     "loai": "trac_nghiem",
+     "de": "Phương pháp nào sau đây KHÔNG dùng để điều chế ethylic alcohol trong công nghiệp/đời sống?",
+     "lua_chon": [
+      "Lên men tinh bột hoặc glucose",
+      "Cho ethylene tác dụng nước có xúc tác acid",
+      "Chưng cất dung dịch sau lên men",
+      "Cho methane tác dụng trực tiếp với nước"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Methane không phản ứng trực tiếp với nước để tạo ethylic alcohol; hai phương pháp chính là lên men glucose/tinh bột và cho ethylene tác dụng nước (xúc tác acid), sau đó có thể chưng cất để tinh chế.\n\nVì sao các phương án khác sai:\n- A: Lên men tinh bột/glucose là phương pháp truyền thống điều chế ethylic alcohol (rượu), có sử dụng.\n- B: Cho ethylene tác dụng nước (xúc tác acid) là phương pháp công nghiệp điều chế ethylic alcohol, có sử dụng.\n- C: Chưng cất dung dịch sau lên men để thu ethylic alcohol đậm đặc hơn là bước thực tế được dùng."
+    },
+    {
+     "ma_cau": "K09080102010",
+     "loai": "trac_nghiem",
+     "de": "Trong chuỗi chuyển hoá C₂H₄ → C₂H₅OH → CH₃COOH, phương trình hoá học của chuyển hoá thứ nhất (C₂H₄ → C₂H₅OH) là ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H080204-01-001-de.png)",
+     "lua_chon": [
+      "C₂H₄ + O₂ → C₂H₅OH",
+      "C₂H₄ + H₂O → C₂H₅OH + H₂",
+      "2C₂H₄ + H₂O → 2C₂H₅OH",
+      "C₂H₄ + H₂O → C₂H₅OH"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ethylene cộng nước (xúc tác acid) tạo ethylic alcohol theo tỉ lệ 1:1: C₂H₄ + H₂O → C₂H₅OH.\n\nVì sao các phương án khác sai:\n- A: Chuyển hoá này là phản ứng cộng nước, không phải phản ứng với oxygen.\n- B: Phản ứng cộng nước vào ethylene không sinh ra khí H₂.\n- C: Tỉ lệ phản ứng cộng nước của ethylene là 1:1, không cần hệ số 2."
+    },
+    {
+     "ma_cau": "K09080102011",
+     "loai": "trac_nghiem",
+     "de": "Trong chuỗi chuyển hoá C₆H₁₂O₆ → C₂H₅OH → CH₃COOH, chuyển hoá thứ nhất (C₆H₁₂O₆ → C₂H₅OH) thuộc loại phản ứng nào?",
+     "lua_chon": [
+      "Phản ứng lên men rượu",
+      "Phản ứng ester hoá",
+      "Phản ứng cộng nước",
+      "Phản ứng trung hoà"
+     ],
+     "dap_an": "A",
+     "loi_giai": "C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂ là phản ứng lên men rượu, nhờ men rượu (nấm men) chuyển hoá glucose thành ethylic alcohol.\n\nVì sao các phương án khác sai:\n- B: Phản ứng ester hoá là phản ứng giữa acid và alcohol tạo ester, không phải bước này.\n- C: Phản ứng cộng nước là cách điều chế ethylic alcohol từ ethylene, không phải từ glucose.\n- D: Phản ứng trung hoà xảy ra giữa acid và base, không liên quan bước này."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00524",
+   "khoi": "9",
+   "chu_de": "Ethylic alcohol & Acetic acid",
+   "chuyen_de": "Ethylic alcohol",
+   "nhom": "Bài toán tính Thể tích và Khối lượng cồn",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09080103001",
+     "loai": "trac_nghiem",
+     "de": "Trộn 30 mL ethylic alcohol nguyên chất với nước để được 150 mL dung dịch rượu. Độ cồn của dung dịch là bao nhiêu?",
+     "lua_chon": [
+      "80°",
+      "25°",
+      "20°",
+      "30°"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Độ cồn = V(ethylic alcohol) × 100 / V(dung dịch) = 30 × 100 / 150 = 20°.\n\nVì sao các phương án khác sai:\n- A: Đã lấy thể tích nước (150 - 30 = 120 mL) thay cho thể tích ethylic alcohol ở tử số.\n- B: Đã chia cho thể tích nước (120 mL) thay vì chia cho thể tích dung dịch (150 mL).\n- D: Đã quên chia cho thể tích dung dịch, lấy luôn thể tích ethylic alcohol làm độ cồn."
+    },
+    {
+     "ma_cau": "K09080103002",
+     "loai": "trac_nghiem",
+     "de": "Trộn 45 mL ethylic alcohol nguyên chất với nước để được 180 mL dung dịch rượu. Độ cồn của dung dịch là bao nhiêu?",
+     "lua_chon": [
+      "75°",
+      "25°",
+      "45°",
+      "20°"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Độ cồn = V(ethylic alcohol) × 100 / V(dung dịch) = 45 × 100 / 180 = 25°.\n\nVì sao các phương án khác sai:\n- A: Đã lấy thể tích nước (180 - 45 = 135 mL) thay cho thể tích ethylic alcohol ở tử số.\n- C: Đã quên chia cho thể tích dung dịch, lấy luôn thể tích ethylic alcohol làm độ cồn.\n- D: Đã cộng nhầm thể tích ethylic alcohol vào thể tích dung dịch: 45 × 100 / (180 + 45)."
+    },
+    {
+     "ma_cau": "K09080103003",
+     "loai": "trac_nghiem",
+     "de": "Trộn 60 mL ethylic alcohol nguyên chất với nước để được 240 mL dung dịch rượu. Độ cồn của dung dịch là bao nhiêu?",
+     "lua_chon": [
+      "60°",
+      "33,3°",
+      "25°",
+      "75°"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Độ cồn = V(ethylic alcohol) × 100 / V(dung dịch) = 60×100/240=25°.\n\nVì sao các phương án khác sai:\n- A: Đã quên chia cho thể tích dung dịch, lấy luôn thể tích ethylic alcohol làm độ cồn.\n- B: Đã chia cho thể tích nước (180 mL) thay vì chia cho thể tích dung dịch (240 mL): 60×100/180≈33,3.\n- D: Đã lấy thể tích nước (240-60=180 mL) thay cho thể tích ethylic alcohol ở tử số, tính sai: 180×100/240=75."
+    },
+    {
+     "ma_cau": "K09080103004",
+     "loai": "trac_nghiem",
+     "de": "Có 500 mL rượu 40°. Thể tích ethylic alcohol nguyên chất có trong dung dịch này là bao nhiêu?",
+     "lua_chon": [
+      "1 250 mL",
+      "20 000 mL",
+      "40 mL",
+      "200 mL"
+     ],
+     "dap_an": "D",
+     "loi_giai": "V(ethylic alcohol) = độ cồn × V(dung dịch) / 100 = 40 × 500 / 100 = 200 mL.\n\nVì sao các phương án khác sai:\n- A: Đã đảo tỉ số của công thức, lấy V(dung dịch) × 100 / độ cồn.\n- B: Đã quên chia cho 100 khi tính theo công thức độ cồn.\n- C: Đã lấy luôn số độ cồn làm thể tích ethylic alcohol, quên nhân với thể tích dung dịch."
+    },
+    {
+     "ma_cau": "K09080103005",
+     "loai": "trac_nghiem",
+     "de": "Có 250 mL rượu 30°. Thể tích ethylic alcohol nguyên chất có trong dung dịch này là bao nhiêu?",
+     "lua_chon": [
+      "75 mL",
+      "7 500 mL",
+      "30 mL",
+      "175 mL"
+     ],
+     "dap_an": "A",
+     "loi_giai": "V(ethylic alcohol) = độ cồn × V(dung dịch) / 100 = 30 × 250 / 100 = 75 mL.\n\nVì sao các phương án khác sai:\n- B: Đã quên chia cho 100 khi tính theo công thức độ cồn.\n- C: Đã lấy luôn số độ cồn làm thể tích ethylic alcohol, quên nhân với thể tích dung dịch.\n- D: Đây là thể tích nước trong dung dịch (250 - 75), không phải thể tích ethylic alcohol."
+    },
+    {
+     "ma_cau": "K09080103006",
+     "loai": "trac_nghiem",
+     "de": "Có 400 mL rượu 15°. Thể tích ethylic alcohol nguyên chất có trong dung dịch này là bao nhiêu?",
+     "lua_chon": [
+      "6 000 mL",
+      "60 mL",
+      "15 mL",
+      "340 mL"
+     ],
+     "dap_an": "B",
+     "loi_giai": "V(ethylic alcohol) = độ cồn × V(dung dịch) / 100 = 15 × 400 / 100 = 60 mL.\n\nVì sao các phương án khác sai:\n- A: Đã quên chia cho 100 khi tính theo công thức độ cồn.\n- C: Đã lấy luôn số độ cồn làm thể tích ethylic alcohol, quên nhân với thể tích dung dịch.\n- D: Đây là thể tích nước trong dung dịch (400-60), không phải thể tích ethylic alcohol."
+    },
+    {
+     "ma_cau": "K09080103007",
+     "loai": "trac_nghiem",
+     "de": "Có 200 mL rượu 45°. Cần thêm bao nhiêu mL nước để được rượu 30°?",
+     "lua_chon": [
+      "300 mL",
+      "30 mL",
+      "90 mL",
+      "100 mL"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thể tích ethylic alcohol không đổi: 200 × 45 / 100 = 90 mL. Thể tích dung dịch mới: 90 × 100 / 30 = 300 mL. Nước cần thêm: 300 - 200 = 100 mL.\n\nVì sao các phương án khác sai:\n- A: Đã quên trừ thể tích dung dịch ban đầu (200 mL), lấy luôn thể tích dung dịch mới làm lượng nước cần thêm.\n- B: Đã lấy hiệu độ cồn (45 - 30) nhân thể tích ban đầu rồi chia 100, không đúng cách pha loãng.\n- C: Đã nhầm lấy thể tích ethylic alcohol nguyên chất (không đổi khi pha loãng) làm lượng nước cần thêm."
+    },
+    {
+     "ma_cau": "K09080103008",
+     "loai": "trac_nghiem",
+     "de": "Có 300 mL rượu 25°. Cần thêm bao nhiêu mL nước để được rượu 15°?",
+     "lua_chon": [
+      "500 mL",
+      "200 mL",
+      "30 mL",
+      "75 mL"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thể tích ethylic alcohol không đổi: 300 × 25 / 100 = 75 mL. Thể tích dung dịch mới: 75 × 100 / 15 = 500 mL. Nước cần thêm: 500 - 300 = 200 mL.\n\nVì sao các phương án khác sai:\n- A: Đã quên trừ thể tích dung dịch ban đầu (300 mL), lấy luôn thể tích dung dịch mới làm lượng nước cần thêm.\n- C: Đã lấy hiệu độ cồn (25 - 15) nhân thể tích ban đầu rồi chia 100, không đúng cách pha loãng.\n- D: Đã nhầm lấy thể tích ethylic alcohol nguyên chất (không đổi khi pha loãng) làm lượng nước cần thêm."
+    },
+    {
+     "ma_cau": "K09080103009",
+     "loai": "trac_nghiem",
+     "de": "Có 400 mL rượu 20°. Cần thêm bao nhiêu mL nước để được rượu 10°?",
+     "lua_chon": [
+      "400 mL",
+      "80 mL",
+      "800 mL",
+      "200 mL"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thể tích ethylic alcohol không đổi: 400×20/100=80mL. Thể tích dung dịch mới: 80×100/10=800mL. Nước cần thêm: 800-400=400mL.\n\nVì sao các phương án khác sai:\n- B: Đã nhầm lấy thể tích ethylic alcohol nguyên chất (không đổi khi pha loãng) làm lượng nước cần thêm.\n- C: Đã quên trừ thể tích dung dịch ban đầu (400 mL), lấy luôn thể tích dung dịch mới làm lượng nước cần thêm.\n- D: Đã lấy hiệu độ cồn (20-10) nhân thể tích ban đầu rồi chia 100, không đúng cách pha loãng."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00525",
+   "khoi": "9",
+   "chu_de": "Ethylic alcohol & Acetic acid",
+   "chuyen_de": "Ethylic alcohol",
+   "nhom": "Bài toán Hiệu suất phản ứng lên men rượu",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09080104001",
+     "loai": "trac_nghiem",
+     "de": "Lên men 180 g glucose với hiệu suất phản ứng 80%. Pha toàn bộ lượng ethylic alcohol tạo thành với nước để được rượu 20°. Thể tích dung dịch rượu thu được là",
+     "lua_chon": [
+      "92 mL",
+      "230 mL",
+      "460 mL",
+      "575 mL"
+     ],
+     "dap_an": "C",
+     "loi_giai": "n(glucose) = 180:180 = 1 mol. PTHH: C₆H₁₂O₆ →(men rượu) 2C₂H₅OH + 2CO₂, n(ethanol) lí thuyết = 2×1 = 2 mol → m lí thuyết = 92 g. Vì hiệu suất 80% nên khối lượng ethanol thực tế = 92×80% = 73,6 g → V(ethanol) = 73,6:0,8 = 92 mL. Rượu 20° nghĩa là ethanol chiếm 20% thể tích dung dịch, nên V(dung dịch rượu) = 92×100:20 = 460 mL.\n\nVì sao các phương án khác sai:\n- A: 92 mL chỉ là thể tích ethanol nguyên chất, chưa pha loãng với nước để đạt độ cồn 20°.\n- B: Đã quên hệ số 2 trong PTHH lên men (1 mol glucose tạo 2 mol ethanol, không phải 1 mol).\n- D: Đây là thể tích dung dịch tính theo khối lượng ethanol LÍ THUYẾT (hiệu suất 100%), chưa nhân với hiệu suất thực tế 80%."
+    },
+    {
+     "ma_cau": "K09080104002",
+     "loai": "trac_nghiem",
+     "de": "Lên men 360 g glucose với hiệu suất phản ứng 75%. Pha toàn bộ lượng ethylic alcohol tạo thành với nước để được rượu 25°. Thể tích dung dịch rượu thu được là",
+     "lua_chon": [
+      "690 mL",
+      "172,5 mL",
+      "345 mL",
+      "920 mL"
+     ],
+     "dap_an": "A",
+     "loi_giai": "n(glucose) = 360:180 = 2 mol. PTHH: C₆H₁₂O₆ →(men rượu) 2C₂H₅OH + 2CO₂, n(ethanol) lí thuyết = 2×2 = 4 mol → m lí thuyết = 184 g. Vì hiệu suất 75% nên khối lượng ethanol thực tế = 184×75% = 138 g → V(ethanol) = 138:0,8 = 172,5 mL. Rượu 25° nên V(dung dịch rượu) = 172,5×100:25 = 690 mL.\n\nVì sao các phương án khác sai:\n- B: 172,5 mL chỉ là thể tích ethanol nguyên chất, chưa pha loãng với nước để đạt độ cồn 25°.\n- C: Đã quên hệ số 2 trong PTHH lên men (2 mol glucose tạo 4 mol ethanol, không phải 2 mol).\n- D: Đây là thể tích dung dịch tính theo khối lượng ethanol LÍ THUYẾT (hiệu suất 100%), chưa nhân với hiệu suất thực tế 75%."
+    },
+    {
+     "ma_cau": "K09080104003",
+     "loai": "trac_nghiem",
+     "de": "Lên men 90 g glucose với hiệu suất phản ứng 90%. Pha toàn bộ lượng ethylic alcohol tạo thành với nước để được rượu 25°. Thể tích dung dịch rượu thu được là",
+     "lua_chon": [
+      "51,75 mL",
+      "103,5 mL",
+      "230 mL",
+      "207 mL"
+     ],
+     "dap_an": "D",
+     "loi_giai": "n(glucose) = 90:180 = 0,5 mol. PTHH: C₆H₁₂O₆ →(men rượu) 2C₂H₅OH + 2CO₂, n(ethanol) lí thuyết = 2×0,5 = 1 mol → m lí thuyết = 46 g. Vì hiệu suất 90% nên khối lượng ethanol thực tế = 46×90% = 41,4 g → V(ethanol) = 41,4:0,8 = 51,75 mL. Rượu 25° nên V(dung dịch rượu) = 51,75×100:25 = 207 mL.\n\nVì sao các phương án khác sai:\n- A: 51,75 mL chỉ là thể tích ethanol nguyên chất, chưa pha loãng với nước để đạt độ cồn 25°.\n- B: Đã quên hệ số 2 trong PTHH lên men (0,5 mol glucose tạo 1 mol ethanol, không phải 0,5 mol).\n- C: Đây là thể tích dung dịch tính theo khối lượng ethanol LÍ THUYẾT (hiệu suất 100%), chưa nhân với hiệu suất thực tế 90%."
+    },
+    {
+     "ma_cau": "K09080104004",
+     "loai": "trac_nghiem",
+     "de": "Lên men 270 g glucose với hiệu suất phản ứng 60%. Pha toàn bộ lượng ethylic alcohol tạo thành với nước để được rượu 20°. Thể tích dung dịch rượu thu được là",
+     "lua_chon": [
+      "103,5 mL",
+      "517,5 mL",
+      "258,75 mL",
+      "862,5 mL"
+     ],
+     "dap_an": "B",
+     "loi_giai": "n(glucose) = 270:180 = 1,5 mol. PTHH: C₆H₁₂O₆ →(men rượu) 2C₂H₅OH + 2CO₂, n(ethanol) lí thuyết = 2×1,5 = 3 mol → m lí thuyết = 138 g. Vì hiệu suất 60% nên khối lượng ethanol thực tế = 138×60% = 82,8 g → V(ethanol) = 82,8:0,8 = 103,5 mL. Rượu 20° nên V(dung dịch rượu) = 103,5×100:20 = 517,5 mL.\n\nVì sao các phương án khác sai:\n- A: 103,5 mL chỉ là thể tích ethanol nguyên chất, chưa pha loãng với nước để đạt độ cồn 20°.\n- C: Đã quên hệ số 2 trong PTHH lên men (1,5 mol glucose tạo 3 mol ethanol, không phải 1,5 mol).\n- D: Đây là thể tích dung dịch tính theo khối lượng ethanol LÍ THUYẾT (hiệu suất 100%), chưa nhân với hiệu suất thực tế 60%."
+    },
+    {
+     "ma_cau": "K09080104005",
+     "loai": "trac_nghiem",
+     "de": "Lên men 90 g glucose với hiệu suất phản ứng 80%. Pha toàn bộ lượng ethylic alcohol tạo thành với nước để được rượu 23°. Thể tích dung dịch rượu thu được là",
+     "lua_chon": [
+      "200 mL",
+      "46 mL",
+      "100 mL",
+      "250 mL"
+     ],
+     "dap_an": "A",
+     "loi_giai": "n(glucose) = 90:180 = 0,5 mol. PTHH: C₆H₁₂O₆ →(men rượu) 2C₂H₅OH + 2CO₂, n(ethanol) lí thuyết = 2×0,5 = 1 mol → m lí thuyết = 46 g. Vì hiệu suất 80% nên khối lượng ethanol thực tế = 46×80% = 36,8 g → V(ethanol) = 36,8:0,8 = 46 mL. Rượu 23° nên V(dung dịch rượu) = 46×100:23 = 200 mL.\n\nVì sao các phương án khác sai:\n- B: 46 mL chỉ là thể tích ethanol nguyên chất, chưa pha loãng với nước để đạt độ cồn 23°.\n- C: Đã quên hệ số 2 trong PTHH lên men (0,5 mol glucose tạo 1 mol ethanol, không phải 0,5 mol).\n- D: Đây là thể tích dung dịch tính theo khối lượng ethanol LÍ THUYẾT (hiệu suất 100%), chưa nhân với hiệu suất thực tế 80%."
+    },
+    {
+     "ma_cau": "K09080104006",
+     "loai": "trac_nghiem",
+     "de": "Lên men 180 g glucose với hiệu suất phản ứng 50%. Pha toàn bộ lượng ethylic alcohol tạo thành với nước để được rượu 20°. Thể tích dung dịch rượu thu được là",
+     "lua_chon": [
+      "57,5 mL",
+      "115 mL",
+      "230 mL",
+      "287,5 mL"
+     ],
+     "dap_an": "D",
+     "loi_giai": "n(glucose)=180:180=1mol. PTHH: C₆H₁₂O₆→2C₂H₅OH+2CO₂, n(ethanol) lí thuyết=2mol→m lí thuyết=92g. Hiệu suất 50% nên khối lượng ethanol thực tế=92×50%=46g→V(ethanol)=46:0,8=57,5mL. Rượu 20° nên V(dung dịch)=57,5×100:20=287,5mL.\n\nVì sao các phương án khác sai:\n- A: 57,5 mL chỉ là thể tích ethanol nguyên chất, chưa pha loãng với nước để đạt độ cồn 20°.\n- B: Đã quên hệ số 2 trong PTHH lên men (1 mol glucose tạo 2 mol ethanol, không phải 1 mol), rồi tính tiếp sai.\n- C: Đây là thể tích dung dịch tính theo khối lượng ethanol LÍ THUYẾT (hiệu suất 100%), chưa nhân với hiệu suất thực tế 50%."
+    },
+    {
+     "ma_cau": "K09080104007",
+     "loai": "trac_nghiem",
+     "de": "Lên men 270 g glucose với hiệu suất phản ứng 80%. Pha toàn bộ lượng ethylic alcohol tạo thành với nước để được rượu 24°. Thể tích dung dịch rượu thu được là",
+     "lua_chon": [
+      "575 mL",
+      "138 mL",
+      "172,5 mL",
+      "690 mL"
+     ],
+     "dap_an": "A",
+     "loi_giai": "n(glucose)=270:180=1,5mol. PTHH: C₆H₁₂O₆→2C₂H₅OH+2CO₂, n(ethanol) lí thuyết=3mol→m lí thuyết=138g. Hiệu suất 80% nên khối lượng ethanol thực tế=138×80%=110,4g→V(ethanol)=110,4:0,8=138mL. Rượu 24° nên V(dung dịch)=138×100:24=575mL.\n\nVì sao các phương án khác sai:\n- B: 138 mL chỉ là thể tích ethanol nguyên chất, chưa pha loãng với nước để đạt độ cồn 24°.\n- C: Đã quên hệ số 2 trong PTHH lên men (1,5 mol glucose tạo 3 mol ethanol, không phải 1,5 mol), rồi tính tiếp sai.\n- D: Đây là thể tích dung dịch tính theo khối lượng ethanol LÍ THUYẾT (hiệu suất 100%), chưa nhân với hiệu suất thực tế 80%."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00526",
+   "khoi": "9",
+   "chu_de": "Ethylic alcohol & Acetic acid",
+   "chuyen_de": "Acetic acid",
+   "nhom": "Các dạng bài tập cơ bản về acetic acid",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09080201001",
+     "loai": "trac_nghiem",
+     "de": "Nhóm nguyên tử nào quyết định tính acid của acetic acid? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H080201-01-001-de.png)",
+     "lua_chon": [
+      "nhóm –COOH (carboxyl)",
+      "nhóm –OH (hydroxyl)",
+      "nhóm –CHO (aldehyde)",
+      "nhóm =O (carbonyl đơn lẻ)"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nhóm –COOH (carboxyl) trong acetic acid ion hoá nhẹ trong nước tạo H+ nên chất có tính acid.\n\nVì sao các phương án khác sai:\n- B: Nhóm –OH là nhóm chức của ethylic alcohol, không tạo tính acid.\n- C: Nhóm –CHO là nhóm chức aldehyde, không có trong acetic acid.\n- D: Nhóm =O là một phần cấu tạo của –COOH nhưng riêng nó không quyết định tính acid."
+    },
+    {
+     "ma_cau": "K09080201002",
+     "loai": "trac_nghiem",
+     "de": "Công thức phân tử viết đúng của acetic acid là",
+     "lua_chon": [
+      "C₂H₆O",
+      "CH₃COOH",
+      "CH₄",
+      "C₆H₁₂O₆"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Acetic acid có công thức phân tử CH₃COOH (hay C₂H₄O₂), gồm 2C, 4H, 2O.\n\nVì sao các phương án khác sai:\n- A: C₂H₆O là công thức của ethylic alcohol, không phải acetic acid.\n- C: CH₄ là công thức của methane, không có nhóm –COOH.\n- D: C₆H₁₂O₆ là công thức của glucose, không phải acetic acid."
+    },
+    {
+     "ma_cau": "K09080201003",
+     "loai": "trac_nghiem",
+     "de": "Số nguyên tử oxygen có trong một phân tử acetic acid là",
+     "lua_chon": [
+      "1",
+      "3",
+      "2",
+      "4"
+     ],
+     "dap_an": "C",
+     "loi_giai": "CH₃COOH có công thức C₂H₄O₂, chứa 2 nguyên tử oxygen.\n\nVì sao các phương án khác sai:\n- A: Đếm thiếu 1 nguyên tử O, nhóm –COOH có 2 nguyên tử oxygen.\n- B: Đếm dư 1 nguyên tử O so với công thức thực của acetic acid.\n- D: Nhầm gấp đôi số nguyên tử oxygen thực có trong phân tử."
+    },
+    {
+     "ma_cau": "K09080201004",
+     "loai": "trac_nghiem",
+     "de": "Số nguyên tử hydrogen có trong một phân tử acetic acid là",
+     "lua_chon": [
+      "2",
+      "3",
+      "6",
+      "4"
+     ],
+     "dap_an": "D",
+     "loi_giai": "CH₃COOH (C₂H₄O₂): nhóm CH₃ có 3H, nhóm COOH có 1H, tổng cộng 4 nguyên tử H.\n\nVì sao các phương án khác sai:\n- A: Chỉ đếm số H trong nhóm –COOH, quên 3H của nhóm CH₃.\n- B: Chỉ đếm số H trong nhóm CH₃, quên 1H của nhóm –COOH.\n- C: Nhầm với số nguyên tử hydrogen của ethylic alcohol (C₂H₆O)."
+    },
+    {
+     "ma_cau": "K09080201005",
+     "loai": "trac_nghiem",
+     "de": "Khối lượng phân tử của acetic acid (theo amu, dùng C = 12, H = 1, O = 16) là",
+     "lua_chon": [
+      "60",
+      "44",
+      "58",
+      "46"
+     ],
+     "dap_an": "A",
+     "loi_giai": "M = 12×2 + 1×4 + 16×2 = 24 + 4 + 32 = 60 amu.\n\nVì sao các phương án khác sai:\n- B: Quên 1 nguyên tử oxygen: 12×2 + 1×4 + 16 = 44.\n- C: Nhầm số nguyên tử hydrogen thành 2: 12×2 + 1×2 + 16×2 = 58.\n- D: Nhầm với khối lượng phân tử của ethylic alcohol (46 amu)."
+    },
+    {
+     "ma_cau": "K09080201006",
+     "loai": "trac_nghiem",
+     "de": "Công thức cấu tạo viết thu gọn đúng của acetic acid là",
+     "lua_chon": [
+      "HCOO–CH₃",
+      "CH₃–COOH",
+      "HO–CH₂–CHO",
+      "CH₃–O–OH"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Acetic acid gồm nhóm CH₃ liên kết với nhóm –COOH: CH₃–COOH.\n\nVì sao các phương án khác sai:\n- A: HCOO–CH₃ là methyl formate, một đồng phân khác của C₂H₄O₂, không có nhóm –COOH.\n- C: HO–CH₂–CHO là một đồng phân khác của C₂H₄O₂ (glycolaldehyde), không phải acetic acid.\n- D: CH₃–O–OH không đúng cách liên kết hoá trị của oxygen trong acetic acid."
+    },
+    {
+     "ma_cau": "K09080201007",
+     "loai": "trac_nghiem",
+     "de": "Nhóm –COOH trong acetic acid được cấu tạo từ nhóm nào kết hợp lại?",
+     "lua_chon": [
+      "Nhóm –OH và nhóm =O",
+      "Hai nhóm –OH",
+      "Nhóm –CHO và –OH",
+      "Hai nhóm =O"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nhóm carboxyl –COOH gồm 1 nhóm carbonyl (=O) và 1 nhóm hydroxyl (–OH) cùng liên kết vào 1 nguyên tử carbon.\n\nVì sao các phương án khác sai:\n- B: Nhóm –COOH chỉ có 1 nhóm –OH, kết hợp thêm với nhóm =O (carbonyl), không phải 2 nhóm –OH.\n- C: Nhóm –COOH không chứa nhóm –CHO (aldehyde).\n- D: Nhóm –COOH chỉ có 1 nhóm =O, kết hợp thêm với nhóm –OH, không phải 2 nhóm =O."
+    },
+    {
+     "ma_cau": "K09080201008",
+     "loai": "trac_nghiem",
+     "de": "Số nguyên tử carbon có trong một phân tử acetic acid là",
+     "lua_chon": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ],
+     "dap_an": "B",
+     "loi_giai": "CH₃COOH có công thức phân tử C₂H₄O₂, chứa 2 nguyên tử carbon (1 trong nhóm CH₃, 1 trong nhóm COOH).\n\nVì sao các phương án khác sai:\n- A: Công thức CH₃COOH (C₂H₄O₂) có 2 nguyên tử carbon, không phải 1.\n- C: Công thức CH₃COOH (C₂H₄O₂) có 2 nguyên tử carbon, không phải 3.\n- D: Công thức CH₃COOH (C₂H₄O₂) có 2 nguyên tử carbon, không phải 4."
+    },
+    {
+     "ma_cau": "K09080201009",
+     "loai": "trac_nghiem",
+     "de": "Ở điều kiện thường, acetic acid nguyên chất là chất",
+     "lua_chon": [
+      "khí không màu",
+      "rắn màu trắng",
+      "lỏng, không màu, vị chua",
+      "lỏng, màu xanh"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Acetic acid nguyên chất là chất lỏng, không màu, có vị chua, mùi giấm đặc trưng.\n\nVì sao các phương án khác sai:\n- A: Acetic acid ở thể lỏng ở điều kiện thường, không phải thể khí.\n- B: Acetic acid là chất lỏng, không phải chất rắn.\n- D: Acetic acid không màu, không có màu xanh."
+    },
+    {
+     "ma_cau": "K09080201010",
+     "loai": "trac_nghiem",
+     "de": "Giấm ăn là dung dịch loãng của chất nào sau đây?",
+     "lua_chon": [
+      "ethylic alcohol",
+      "glucose",
+      "sodium chloride",
+      "acetic acid"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Giấm ăn là dung dịch acetic acid loãng, nồng độ khoảng 2–5%.\n\nVì sao các phương án khác sai:\n- A: Ethylic alcohol là thành phần chính của rượu, không phải giấm.\n- B: Glucose là đường đơn, không tạo vị chua đặc trưng của giấm.\n- C: Sodium chloride là muối ăn, tạo vị mặn, không phải vị chua."
+    },
+    {
+     "ma_cau": "K09080201011",
+     "loai": "trac_nghiem",
+     "de": "Acetic acid tan trong nước theo tỉ lệ như thế nào?",
+     "lua_chon": [
+      "tan vô hạn (tan tốt trong mọi tỉ lệ)",
+      "không tan",
+      "chỉ tan khi đun nóng trên 80°C",
+      "chỉ tan trong dung môi hữu cơ"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Acetic acid tan vô hạn trong nước nhờ tạo liên kết hydrogen với các phân tử nước.\n\nVì sao các phương án khác sai:\n- B: Acetic acid tan tốt trong nước, không phải chất không tan.\n- C: Acetic acid tan trong nước ngay ở nhiệt độ thường, không cần đun nóng.\n- D: Acetic acid tan tốt trong nước, không chỉ tan trong dung môi hữu cơ."
+    },
+    {
+     "ma_cau": "K09080201012",
+     "loai": "trac_nghiem",
+     "de": "Acetic acid được dùng phổ biến trong đời sống để làm",
+     "lua_chon": [
+      "nhiên liệu đốt cho động cơ",
+      "gia vị và bảo quản thực phẩm (giấm ăn)",
+      "chất tẩy rửa gia dụng mạnh",
+      "thuốc nổ dùng trong khai thác mỏ"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Acetic acid ở dạng giấm ăn được dùng làm gia vị, ngâm chua và bảo quản thực phẩm.\n\nVì sao các phương án khác sai:\n- A: Acetic acid không được dùng làm nhiên liệu đốt phổ biến như ethylic alcohol.\n- C: Giấm ăn có tính acid yếu, không dùng làm chất tẩy rửa mạnh.\n- D: Acetic acid không có tính chất tạo thuốc nổ."
+    },
+    {
+     "ma_cau": "K09080201013",
+     "loai": "trac_nghiem",
+     "de": "So với ethylic alcohol, acetic acid có tính chất khác biệt nổi bật là",
+     "lua_chon": [
+      "không tan được trong nước",
+      "không có vị chua hay ngọt",
+      "có tính acid, làm quỳ tím chuyển hồng",
+      "ở thể khí lúc thường"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Acetic acid có nhóm –COOH nên có tính acid, làm quỳ tím hoá hồng; ethylic alcohol không có tính acid.\n\nVì sao các phương án khác sai:\n- A: Cả acetic acid và ethylic alcohol đều tan tốt trong nước.\n- B: Acetic acid có vị chua đặc trưng, không phải không có vị.\n- D: Cả hai chất đều ở thể lỏng ở điều kiện thường, không phải khí."
+    },
+    {
+     "ma_cau": "K09080201014",
+     "loai": "trac_nghiem",
+     "de": "Acetic acid nguyên chất (băng acetic) khi để ở nhiệt độ thấp (dưới khoảng 16°C) có hiện tượng gì?",
+     "lua_chon": [
+      "Bốc cháy tự nhiên",
+      "Chuyển thành khí không màu",
+      "Đông đặc thành tinh thể giống băng",
+      "Đổi màu thành xanh đậm"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Acetic acid nguyên chất có nhiệt độ đông đặc khoảng 16°C, khi để lạnh sẽ đông thành tinh thể giống băng nên còn được gọi là \"băng acetic\".\n\nVì sao các phương án khác sai:\n- A: Acetic acid không tự bốc cháy khi hạ nhiệt độ; đây không phải hiện tượng liên quan nhiệt độ thấp.\n- B: Acetic acid có nhiệt độ sôi khoảng 118°C, không chuyển thành khí ở nhiệt độ thấp.\n- D: Acetic acid không màu ở mọi trạng thái, không đổi màu xanh khi lạnh."
+    },
+    {
+     "ma_cau": "K09080201015",
+     "loai": "trac_nghiem",
+     "de": "Mùi đặc trưng của giấm ăn (dung dịch acetic acid loãng) là do đâu?",
+     "lua_chon": [
+      "Do nước trong giấm bay hơi",
+      "Do phản ứng giữa giấm với không khí sinh mùi mới",
+      "Do vi khuẩn giấm còn sống trong dung dịch tạo mùi",
+      "Do bản thân acetic acid có mùi chua đặc trưng"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Acetic acid là chất có mùi chua, hăng đặc trưng (mùi giấm); dung dịch loãng của nó (giấm ăn) mang mùi đặc trưng này.\n\nVì sao các phương án khác sai:\n- A: Nước bay hơi không có mùi đặc trưng như mùi giấm.\n- B: Giấm không phản ứng với không khí ở điều kiện thường để sinh mùi mới.\n- C: Mùi giấm là do chính acetic acid, không phải do vi khuẩn còn sống tạo ra."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00527",
+   "khoi": "9",
+   "chu_de": "Ethylic alcohol & Acetic acid",
+   "chuyen_de": "Acetic acid",
+   "nhom": "Viết phương trình hóa học mô tả tính chất của acetic acid",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09080202001",
+     "loai": "trac_nghiem",
+     "de": "Nhỏ vài giọt dung dịch acetic acid vào giấy quỳ tím, hiện tượng quan sát được là",
+     "lua_chon": [
+      "quỳ tím không đổi màu",
+      "quỳ tím chuyển xanh",
+      "quỳ tím mất màu",
+      "quỳ tím chuyển hồng"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Acetic acid là acid yếu, làm quỳ tím chuyển hồng (đỏ nhạt).\n\nVì sao các phương án khác sai:\n- A: Acetic acid có tính acid nên phải làm quỳ tím đổi màu.\n- B: Quỳ tím chuyển xanh là dấu hiệu của base, không phải acid.\n- C: Acetic acid không có tính oxi hoá mạnh để làm mất màu quỳ tím."
+    },
+    {
+     "ma_cau": "K09080202002",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây viết đúng khi cho acetic acid tác dụng kim loại zinc?",
+     "lua_chon": [
+      "2CH₃COOH + Zn → (CH₃COO)₂Zn + H₂",
+      "CH₃COOH + Zn → CH₃COOZn + H₂",
+      "2CH₃COOH + Zn → (CH₃COO)₂Zn + H₂O",
+      "CH₃COOH + Zn → (CH₃COO)₂Zn + H₂"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Zn hoá trị II cần 2 nhóm CH₃COO– để trung hoà điện tích, sản phẩm khí là H₂: 2CH₃COOH + Zn → (CH₃COO)₂Zn + H₂.\n\nVì sao các phương án khác sai:\n- B: Zn hoá trị II cần 2 nhóm CH₃COO, không thể viết muối \"CH₃COOZn\".\n- C: Kim loại tác dụng acid sinh khí H₂, không phải H₂O.\n- D: Vế trái chỉ có 1 CH₃COOH nhưng vế phải cần 2 nhóm CH₃COO, chưa cân bằng."
+    },
+    {
+     "ma_cau": "K09080202003",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây viết đúng khi cho acetic acid tác dụng dung dịch NaOH?",
+     "lua_chon": [
+      "2CH₃COOH + NaOH → 2CH₃COONa + H₂O",
+      "CH₃COOH + NaOH → CH₃COONa + H₂O",
+      "CH₃COOH + NaOH → CH₃COONa + H₂",
+      "CH₃COOH + 2NaOH → CH₃COONa + 2H₂O"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Phản ứng trung hoà tỉ lệ 1:1: CH₃COOH + NaOH → CH₃COONa + H₂O.\n\nVì sao các phương án khác sai:\n- A: Tỉ lệ phản ứng trung hoà là 1:1, không cần hệ số 2.\n- C: Phản ứng acid với base sinh nước, không sinh khí H₂.\n- D: Vế trái dư 1 NaOH không cần thiết, tỉ lệ đúng là 1:1."
+    },
+    {
+     "ma_cau": "K09080202004",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây viết đúng khi cho acetic acid tác dụng calcium carbonate?",
+     "lua_chon": [
+      "CH₃COOH + CaCO₃ → (CH₃COO)₂Ca + H₂O + CO₂",
+      "CH₃COOH + CaCO₃ → CH₃COOCa + H₂O + CO₂",
+      "2CH₃COOH + CaCO₃ → (CH₃COO)₂Ca + H₂O + CO₂",
+      "2CH₃COOH + CaCO₃ → (CH₃COO)₂Ca + 2H₂O + CO₂"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ca hoá trị II cần 2 nhóm CH₃COO–, cân bằng H và O cho 1 phân tử H₂O: 2CH₃COOH + CaCO₃ → (CH₃COO)₂Ca + H₂O + CO₂.\n\nVì sao các phương án khác sai:\n- A: Vế trái chỉ có 1 CH₃COOH nhưng cần 2 nhóm CH₃COO cho Ca(II), chưa cân bằng.\n- B: Ca hoá trị II cần 2 nhóm CH₃COO, không thể viết muối \"CH₃COOCa\".\n- D: Chỉ tạo 1 phân tử H₂O vì chỉ có 1 gốc CO₃ phản ứng, không phải 2."
+    },
+    {
+     "ma_cau": "K09080202005",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây viết đúng khi cho acetic acid tác dụng với magnesium (Mg)?",
+     "lua_chon": [
+      "2CH₃COOH + Mg → (CH₃COO)₂Mg + H₂",
+      "CH₃COOH + Mg → CH₃COOMg + H₂",
+      "CH₃COOH + Mg → (CH₃COO)₂Mg + H₂",
+      "2CH₃COOH + Mg → (CH₃COO)₂Mg + H₂O"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mg hoá trị II cần 2 nhóm CH₃COO– để trung hoà điện tích, sản phẩm khí là H₂: 2CH₃COOH + Mg → (CH₃COO)₂Mg + H₂.\n\nVì sao các phương án khác sai:\n- B: Mg hoá trị II cần 2 nhóm CH₃COO– để trung hoà điện tích, không thể viết muối \"CH₃COOMg\".\n- C: Vế trái chỉ có 1 CH₃COOH nhưng vế phải cần 2 nhóm CH₃COO, chưa cân bằng.\n- D: Kim loại tác dụng acid sinh khí H₂, không phải H₂O."
+    },
+    {
+     "ma_cau": "K09080202006",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây viết đúng khi cho acetic acid tác dụng dung dịch KOH?",
+     "lua_chon": [
+      "CH₃COOH + KOH → CH₃COOK + H₂",
+      "CH₃COOH + KOH → CH₃COOK + H₂O",
+      "2CH₃COOH + KOH → 2CH₃COOK + H₂O",
+      "CH₃COOH + 2KOH → CH₃COOK + 2H₂O"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Phản ứng trung hoà tỉ lệ 1:1: CH₃COOH + KOH → CH₃COOK + H₂O.\n\nVì sao các phương án khác sai:\n- A: Phản ứng acid với base sinh nước, không sinh khí H₂.\n- C: Tỉ lệ phản ứng trung hoà là 1:1, không cần hệ số 2.\n- D: Vế trái dư 1 KOH không cần thiết, tỉ lệ đúng là 1:1."
+    },
+    {
+     "ma_cau": "K09080202007",
+     "loai": "trac_nghiem",
+     "de": "Phản ứng giữa acetic acid và ethylic alcohol tạo ra ester cần điều kiện nào?",
+     "lua_chon": [
+      "chỉ cần đun nóng, không cần xúc tác",
+      "ánh sáng và nhiệt độ cao",
+      "áp suất cao, không cần xúc tác",
+      "xúc tác H₂SO₄ đặc và nhiệt độ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Phản ứng ester hoá cần xúc tác H₂SO₄ đặc và đun nóng để tăng tốc độ, tăng hiệu suất.\n\nVì sao các phương án khác sai:\n- A: Phản ứng ester hoá cần xúc tác H₂SO₄ đặc, không xảy ra tốt nếu chỉ đun nóng.\n- B: Phản ứng ester hoá không cần ánh sáng, chỉ cần xúc tác acid và nhiệt độ.\n- C: Phản ứng ester hoá không cần áp suất cao, cần xúc tác H₂SO₄ đặc."
+    },
+    {
+     "ma_cau": "K09080202008",
+     "loai": "trac_nghiem",
+     "de": "Tên gọi của ester tạo thành khi acetic acid phản ứng với ethylic alcohol là",
+     "lua_chon": [
+      "methyl acetate",
+      "ethyl acetate",
+      "ethyl formate",
+      "acetic ester alcohol"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ester tạo từ acetic acid và ethylic alcohol có tên ethyl acetate (CH₃COOC₂H₅).\n\nVì sao các phương án khác sai:\n- A: Methyl acetate được tạo từ acetic acid và methyl alcohol, không phải ethylic alcohol.\n- C: Ethyl formate được tạo từ formic acid, không phải acetic acid.\n- D: \"Acetic ester alcohol\" không phải tên gọi đúng theo quy tắc gọi tên ester."
+    },
+    {
+     "ma_cau": "K09080202009",
+     "loai": "trac_nghiem",
+     "de": "Phản ứng ester hoá giữa acetic acid và ethylic alcohol có đặc điểm là",
+     "lua_chon": [
+      "phản ứng một chiều, không thể đảo ngược",
+      "không sinh ra nước",
+      "phản ứng thuận nghịch, không xảy ra hoàn toàn",
+      "chỉ xảy ra ở nhiệt độ phòng, không cần xúc tác"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Phản ứng ester hoá là phản ứng thuận nghịch (⇌), không xảy ra hoàn toàn nên hiệu suất luôn dưới 100%.\n\nVì sao các phương án khác sai:\n- A: Phản ứng ester hoá là thuận nghịch (có thể đảo ngược), không phải một chiều.\n- B: Phản ứng ester hoá luôn sinh ra nước là sản phẩm phụ.\n- D: Phản ứng cần xúc tác H₂SO₄ đặc và đun nóng, không xảy ra ở nhiệt độ phòng."
+    },
+    {
+     "ma_cau": "K09080202010",
+     "loai": "trac_nghiem",
+     "de": "Ester tạo thành khi acetic acid phản ứng với methyl alcohol (CH₃OH) có công thức là",
+     "lua_chon": [
+      "CH₃COOC₂H₅",
+      "HCOOCH₃",
+      "CH₃COOCH₃",
+      "CH₃COOH"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Phản ứng ester hoá giữa acetic acid (CH₃COOH) và methyl alcohol (CH₃OH) tạo ester CH₃COOCH₃ (methyl acetate) và nước.\n\nVì sao các phương án khác sai:\n- A: CH₃COOC₂H₅ là ethyl acetate, tạo từ acetic acid với ethylic alcohol, không phải methyl alcohol.\n- B: HCOOCH₃ là methyl formate, tạo từ formic acid, không phải acetic acid.\n- D: CH₃COOH là acetic acid ban đầu, chưa phải sản phẩm ester."
+    },
+    {
+     "ma_cau": "K09080202011",
+     "loai": "trac_nghiem",
+     "de": "Vai trò của H₂SO₄ đặc trong phản ứng ester hoá giữa acetic acid và ethylic alcohol là gì?",
+     "lua_chon": [
+      "Là chất tham gia, bị tiêu hao sau phản ứng",
+      "Là chất oxi hoá, biến ethylic alcohol thành acetic acid",
+      "Là dung môi hoà tan cả hai chất phản ứng",
+      "Là xúc tác, giúp phản ứng xảy ra nhanh hơn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "H₂SO₄ đặc đóng vai trò xúc tác trong phản ứng ester hoá, giúp phản ứng xảy ra nhanh hơn và hút bớt nước sinh ra để tăng hiệu suất.\n\nVì sao các phương án khác sai:\n- A: H₂SO₄ đặc là chất xúc tác, không bị tiêu hao (mất đi) theo phản ứng.\n- B: H₂SO₄ đặc trong phản ứng này đóng vai trò xúc tác, không phải chất oxi hoá alcohol.\n- C: H₂SO₄ đặc là xúc tác hút nước, không phải dung môi hoà tan chất phản ứng."
+    },
+    {
+     "ma_cau": "K09080202012",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây viết đúng phản ứng lên men giấm?",
+     "lua_chon": [
+      "C₂H₅OH + O₂ → CH₃COOH + H₂O",
+      "C₂H₅OH + O₂ → CH₃COOH",
+      "2C₂H₅OH + O₂ → 2CH₃COOH + H₂O",
+      "C₂H₅OH + O₂ → CH₃COOH + H₂"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cân bằng đầy đủ nguyên tử (nhờ vi khuẩn giấm): C₂H₅OH + O₂ → CH₃COOH + H₂O.\n\nVì sao các phương án khác sai:\n- B: Thiếu sản phẩm H₂O để cân bằng nguyên tử oxygen và hydrogen.\n- C: Vế trái dư 1 C₂H₅OH không cần thiết, hệ số đúng là 1.\n- D: Sản phẩm phụ của phản ứng lên men giấm là H₂O, không phải khí H₂."
+    },
+    {
+     "ma_cau": "K09080202013",
+     "loai": "trac_nghiem",
+     "de": "Trong phản ứng lên men giấm, chất đóng vai trò tác nhân sinh học là",
+     "lua_chon": [
+      "nấm men",
+      "vi khuẩn giấm (Acetobacter)",
+      "enzyme amylase",
+      "khí oxygen"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vi khuẩn giấm (Acetobacter) là tác nhân sinh học oxi hoá ethylic alcohol thành acetic acid.\n\nVì sao các phương án khác sai:\n- A: Nấm men dùng trong lên men rượu tạo ethylic alcohol, không phải lên men giấm.\n- C: Enzyme amylase thuỷ phân tinh bột thành đường, không liên quan lên men giấm.\n- D: Oxygen là chất tham gia phản ứng, không phải tác nhân sinh học."
+    },
+    {
+     "ma_cau": "K09080202014",
+     "loai": "trac_nghiem",
+     "de": "Điều kiện cần thiết để quá trình lên men giấm xảy ra là",
+     "lua_chon": [
+      "không có oxygen (kị khí)",
+      "nhiệt độ trên 100°C",
+      "có oxygen và vi khuẩn giấm",
+      "áp suất cao"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Lên men giấm là quá trình oxi hoá, cần oxygen không khí và có mặt vi khuẩn giấm, ở nhiệt độ thường.\n\nVì sao các phương án khác sai:\n- A: Lên men giấm là quá trình oxi hoá, cần oxygen (hiếu khí), không phải kị khí.\n- B: Lên men giấm xảy ra ở nhiệt độ thường, không cần đun tới trên 100°C.\n- D: Lên men giấm không cần áp suất cao, chỉ cần oxygen không khí ở điều kiện thường."
+    },
+    {
+     "ma_cau": "K09080202015",
+     "loai": "trac_nghiem",
+     "de": "Ngoài phương pháp lên men giấm từ ethylic alcohol, acetic acid còn có thể được sản xuất trong công nghiệp bằng cách nào?",
+     "lua_chon": [
+      "Oxi hoá butane (có xúc tác)",
+      "Điện phân dung dịch NaCl",
+      "Nung đá vôi ở nhiệt độ cao",
+      "Cho glucose tác dụng H₂SO₄ đặc"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trong công nghiệp, ngoài lên men giấm, acetic acid còn được sản xuất bằng cách oxi hoá butane (có xúc tác) hoặc từ methanol và carbon monoxide.\n\nVì sao các phương án khác sai:\n- B: Điện phân dung dịch NaCl tạo NaOH, Cl₂, H₂, không liên quan sản xuất acetic acid.\n- C: Nung đá vôi tạo vôi sống CaO, không liên quan sản xuất acetic acid.\n- D: Glucose tác dụng H₂SO₄ đặc không phải phương pháp điều chế acetic acid trong công nghiệp."
+    },
+    {
+     "ma_cau": "K09080202016",
+     "loai": "trac_nghiem",
+     "de": "Trong sản xuất giấm ăn thủ công tại nhà, người ta thường dùng nguyên liệu ban đầu nào để lên men?",
+     "lua_chon": [
+      "Dung dịch đường glucose đậm đặc",
+      "Rượu nhạt (dung dịch ethylic alcohol loãng)",
+      "Dung dịch NaOH loãng",
+      "Nước vôi trong"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Lên men giấm cần nguyên liệu là ethylic alcohol loãng (rượu nhạt); vi khuẩn giấm oxi hoá ethylic alcohol có mặt oxygen để tạo acetic acid.\n\nVì sao các phương án khác sai:\n- A: Glucose là nguyên liệu để lên men rượu (tạo ethylic alcohol), không phải nguyên liệu trực tiếp lên men giấm.\n- C: NaOH là base, không phải nguyên liệu để lên men giấm.\n- D: Nước vôi trong là dung dịch Ca(OH)₂, không phải nguyên liệu để lên men giấm."
+    },
+    {
+     "ma_cau": "K09080202017",
+     "loai": "trac_nghiem",
+     "de": "Trong chuỗi chuyển hoá C₂H₅OH → CH₃COOH → CH₃COOC₂H₅, để thực hiện chuyển hoá thứ hai (CH₃COOH → CH₃COOC₂H₅) cần thêm chất nào và điều kiện gì? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H080204-01-002-de.png)",
+     "lua_chon": [
+      "thêm C₂H₅OH, xúc tác H₂SO₄ đặc, đun nóng",
+      "thêm O₂, xúc tác vi khuẩn giấm",
+      "thêm NaOH, đun nóng",
+      "thêm H₂, xúc tác Ni"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Để tạo ester CH₃COOC₂H₅ từ acetic acid cần phản ứng ester hoá với C₂H₅OH, xúc tác H₂SO₄ đặc và đun nóng.\n\nVì sao các phương án khác sai:\n- B: Đó là điều kiện của phản ứng lên men giấm, không phải phản ứng tạo ester.\n- C: NaOH phản ứng với acetic acid tạo muối CH₃COONa, không tạo ester.\n- D: H₂ và xúc tác Ni dùng cho phản ứng cộng vào liên kết đôi, không liên quan ester hoá."
+    },
+    {
+     "ma_cau": "K09080202018",
+     "loai": "trac_nghiem",
+     "de": "Trong chuỗi chuyển hoá C₂H₄ → C₂H₅OH → CH₃COOH, chuyển hoá thứ hai (C₂H₅OH → CH₃COOH) là quá trình nào?",
+     "lua_chon": [
+      "Lên men giấm",
+      "Ester hoá",
+      "Cộng nước",
+      "Trung hoà"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ethylic alcohol bị vi khuẩn giấm oxi hoá (có oxygen) tạo acetic acid: đó là quá trình lên men giấm.\n\nVì sao các phương án khác sai:\n- B: Ester hoá là phản ứng giữa acid và alcohol tạo ester.\n- C: Cộng nước là bước C₂H₄ → C₂H₅OH.\n- D: Trung hoà là phản ứng giữa acid và base."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00528",
+   "khoi": "9",
+   "chu_de": "Ethylic alcohol & Acetic acid",
+   "chuyen_de": "Acetic acid",
+   "nhom": "Toán tính Hiệu suất phản ứng Este hóa",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09080203001",
+     "loai": "trac_nghiem",
+     "de": "Cho 6 g acetic acid tác dụng vừa đủ với ethylic alcohol (xúc tác H₂SO₄ đặc, t°), hiệu suất phản ứng đạt 80%. Khối lượng ethyl acetate thu được là bao nhiêu? (dùng C = 12, H = 1, O = 16)",
+     "lua_chon": [
+      "8,8 g",
+      "7,04 g",
+      "6,16 g",
+      "10 g"
+     ],
+     "dap_an": "B",
+     "loi_giai": "n(CH₃COOH) = 6:60 = 0,1 mol; theo PTHH n(ester) lí thuyết = 0,1 mol, m lí thuyết = 0,1×88 = 8,8 g; thực tế = 8,8×80% = 7,04 g.\n\nVì sao các phương án khác sai:\n- A: Đây là khối lượng ester lí thuyết, quên nhân với hiệu suất 80%.\n- C: Nhầm hiệu suất thành 70% khi tính, không phải 80% đề cho.\n- D: Nhầm tính khối lượng ester bằng số mol ×100 thay vì ×88 (M đúng của ester)."
+    },
+    {
+     "ma_cau": "K09080203002",
+     "loai": "trac_nghiem",
+     "de": "Thực hiện phản ứng ester hoá giữa acetic acid và ethylic alcohol, thu được 4,4 g ethyl acetate với hiệu suất 50%. Khối lượng acetic acid đã dùng là bao nhiêu? (dùng C = 12, H = 1, O = 16)",
+     "lua_chon": [
+      "3 g",
+      "12 g",
+      "6 g",
+      "2,2 g"
+     ],
+     "dap_an": "C",
+     "loi_giai": "n(ester) thực tế = 4,4:88 = 0,05 mol; vì hiệu suất 50% nên n(ester) lí thuyết = 0,05:0,5 = 0,1 mol; n(CH₃COOH) ban đầu = 0,1 mol (tỉ lệ 1:1); m = 0,1×60 = 6 g.\n\nVì sao các phương án khác sai:\n- A: Nhầm lấy n(ester) thực tế làm số mol acid, quên chia lại theo hiệu suất.\n- B: Nhầm nhân hiệu suất thêm 1 lần nữa thay vì chia hiệu suất để tìm lượng ban đầu.\n- D: Đây là khối lượng ester thực tế đã cho, không phải khối lượng acid ban đầu."
+    },
+    {
+     "ma_cau": "K09080203003",
+     "loai": "trac_nghiem",
+     "de": "Cho 12 g acetic acid tác dụng vừa đủ với ethylic alcohol (xúc tác H₂SO₄ đặc, t°), hiệu suất phản ứng đạt 75%. Khối lượng ethyl acetate thu được là bao nhiêu?",
+     "lua_chon": [
+      "17,6 g",
+      "8,8 g",
+      "13,2 g",
+      "20 g"
+     ],
+     "dap_an": "C",
+     "loi_giai": "n(CH₃COOH)=12:60=0,2mol; theo PTHH n(ester) lí thuyết=0,2mol, m lí thuyết=0,2×88=17,6g; thực tế=17,6×75%=13,2g.\n\nVì sao các phương án khác sai:\n- A: Đây là khối lượng ester lí thuyết, quên nhân với hiệu suất 75%.\n- B: Nhầm hiệu suất thành 50% khi tính, không phải 75% đề cho.\n- D: Nhầm tính khối lượng ester bằng số mol ×100 thay vì ×88 (M đúng của ester) trước khi nhân hiệu suất."
+    },
+    {
+     "ma_cau": "K09080203004",
+     "loai": "trac_nghiem",
+     "de": "Thực hiện phản ứng ester hoá giữa acetic acid và ethylic alcohol, thu được 8,8 g ethyl acetate với hiệu suất 40%. Khối lượng acetic acid đã dùng là bao nhiêu?",
+     "lua_chon": [
+      "6 g",
+      "24 g",
+      "4,4 g",
+      "15 g"
+     ],
+     "dap_an": "D",
+     "loi_giai": "n(ester) thực tế=8,8:88=0,1mol; vì hiệu suất 40% nên n(ester) lí thuyết=0,1:0,4=0,25mol; n(CH₃COOH) ban đầu=0,25mol (tỉ lệ 1:1); m=0,25×60=15g.\n\nVì sao các phương án khác sai:\n- A: Nhầm lấy n(ester) thực tế làm số mol acid, quên chia lại theo hiệu suất.\n- B: Nhầm nhân hiệu suất thêm 1 lần nữa thay vì chia hiệu suất để tìm lượng ban đầu.\n- C: Đây là khối lượng ester thực tế đã cho, không phải khối lượng acid ban đầu."
+    }
+   ]
+  }
+ ]
+}

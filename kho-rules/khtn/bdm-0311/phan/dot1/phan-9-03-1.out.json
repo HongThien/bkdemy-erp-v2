@@ -1,0 +1,290 @@
+[
+ {
+  "ma_cau": "K09030304001",
+  "dang_bai_id": "KDB01664",
+  "chac": "cao",
+  "ly_do": "Một thiết bị, công suất và thời gian, tính kWh"
+ },
+ {
+  "ma_cau": "K09030304002",
+  "dang_bai_id": "KDB01664",
+  "chac": "cao",
+  "ly_do": "Một thiết bị, công suất và thời gian, tính kWh"
+ },
+ {
+  "ma_cau": "K09030304003",
+  "dang_bai_id": "KDB01664",
+  "chac": "cao",
+  "ly_do": "Một thiết bị, công suất và thời gian, tính kWh"
+ },
+ {
+  "ma_cau": "K09030304004",
+  "dang_bai_id": "KDB01665",
+  "chac": "cao",
+  "ly_do": "Hai thiết bị, tính tổng điện năng"
+ },
+ {
+  "ma_cau": "K09030304005",
+  "dang_bai_id": "KDB01665",
+  "chac": "cao",
+  "ly_do": "Hai thiết bị, tính tổng điện năng"
+ },
+ {
+  "ma_cau": "K09030304006",
+  "dang_bai_id": "KDB01665",
+  "chac": "cao",
+  "ly_do": "Hai thiết bị, tính tổng điện năng"
+ },
+ {
+  "ma_cau": "K09030304007",
+  "dang_bai_id": "KDB01666",
+  "chac": "cao",
+  "ly_do": "Chỉ số công tơ và giá điện, tính tiền"
+ },
+ {
+  "ma_cau": "K09030304008",
+  "dang_bai_id": "KDB01666",
+  "chac": "cao",
+  "ly_do": "Chỉ số công tơ và giá điện, tính tiền"
+ },
+ {
+  "ma_cau": "K09030304009",
+  "dang_bai_id": "KDB01666",
+  "chac": "cao",
+  "ly_do": "Chỉ số công tơ và giá điện, tính tiền"
+ },
+ {
+  "ma_cau": "K09030304010",
+  "dang_bai_id": "KDB01666",
+  "chac": "cao",
+  "ly_do": "Chỉ số công tơ và giá điện, tính tiền"
+ },
+ {
+  "ma_cau": "K09030304011",
+  "dang_bai_id": "KDB01667",
+  "chac": "cao",
+  "ly_do": "So sánh/tiết kiệm điện năng đèn LED và đèn thường"
+ },
+ {
+  "ma_cau": "K09030304012",
+  "dang_bai_id": "KDB01667",
+  "chac": "cao",
+  "ly_do": "So sánh/tiết kiệm điện năng đèn LED và đèn thường"
+ },
+ {
+  "ma_cau": "K09030304013",
+  "dang_bai_id": "KDB01667",
+  "chac": "cao",
+  "ly_do": "So sánh/tiết kiệm điện năng đèn LED và đèn thường"
+ },
+ {
+  "ma_cau": "K09030304014",
+  "dang_bai_id": "KDB01667",
+  "chac": "cao",
+  "ly_do": "So sánh/tiết kiệm điện năng đèn LED và đèn thường"
+ },
+ {
+  "ma_cau": "K09030105001",
+  "dang_bai_id": "KDB01670",
+  "chac": "cao",
+  "ly_do": "Tìm l_B từ R_A và U,I của dây B"
+ },
+ {
+  "ma_cau": "K09030105002",
+  "dang_bai_id": "KDB01670",
+  "chac": "cao",
+  "ly_do": "Tìm l_B từ R_A và U,I của dây B"
+ },
+ {
+  "ma_cau": "K09030105003",
+  "dang_bai_id": "KDB01670",
+  "chac": "cao",
+  "ly_do": "Tìm l_B từ R_A và U,I của dây B"
+ },
+ {
+  "ma_cau": "K09030105004",
+  "dang_bai_id": "KDB01670",
+  "chac": "cao",
+  "ly_do": "Tìm l_B từ R_A và U,I của dây B"
+ },
+ {
+  "ma_cau": "K09030105005",
+  "dang_bai_id": "KDB01670",
+  "chac": "cao",
+  "ly_do": "Tìm l_B từ R_A và U,I của dây B"
+ },
+ {
+  "ma_cau": "K09030105006",
+  "dang_bai_id": "KDB01670",
+  "chac": "cao",
+  "ly_do": "Tìm l_B từ R_A và U,I của dây B"
+ },
+ {
+  "ma_cau": "K09030105007",
+  "dang_bai_id": "KDB01670",
+  "chac": "cao",
+  "ly_do": "Tìm l_B từ R_A và U,I của dây B"
+ },
+ {
+  "ma_cau": "K09030105008",
+  "dang_bai_id": "KDB01670",
+  "chac": "cao",
+  "ly_do": "Tìm l_B từ R_A và U,I của dây B"
+ },
+ {
+  "ma_cau": "K09030105009",
+  "dang_bai_id": "KDB01671",
+  "chac": "vua",
+  "ly_do": "So sánh tiết diện từ đồ thị I-U; đề có hình đồ thị"
+ },
+ {
+  "ma_cau": "K09030105010",
+  "dang_bai_id": "KDB01671",
+  "chac": "vua",
+  "ly_do": "So sánh tiết diện từ đồ thị I-U; đề có hình đồ thị"
+ },
+ {
+  "ma_cau": "K09030105011",
+  "dang_bai_id": "KDB01671",
+  "chac": "vua",
+  "ly_do": "So sánh tiết diện từ đồ thị I-U; đề có hình đồ thị"
+ },
+ {
+  "ma_cau": "K09030105012",
+  "dang_bai_id": "KDB01671",
+  "chac": "vua",
+  "ly_do": "So sánh tiết diện từ đồ thị I-U; đề có hình đồ thị"
+ },
+ {
+  "ma_cau": "K09030105013",
+  "dang_bai_id": "KDB01671",
+  "chac": "vua",
+  "ly_do": "So sánh tiết diện từ đồ thị I-U; đề có hình đồ thị"
+ },
+ {
+  "ma_cau": "K09030105014",
+  "dang_bai_id": "KDB01671",
+  "chac": "vua",
+  "ly_do": "So sánh tiết diện từ đồ thị I-U; đề có hình đồ thị"
+ },
+ {
+  "ma_cau": "K09030105015",
+  "dang_bai_id": "KDB01671",
+  "chac": "vua",
+  "ly_do": "So sánh tiết diện từ đồ thị I-U; đề có hình đồ thị"
+ },
+ {
+  "ma_cau": "K09030106001",
+  "dang_bai_id": "KDB01646",
+  "chac": "cao",
+  "ly_do": "Độ sáng đèn khi đổi biến trở nối tiếp"
+ },
+ {
+  "ma_cau": "K09030107001",
+  "dang_bai_id": "KDB01647",
+  "chac": "cao",
+  "ly_do": "Cắt ngắn dây, giữ nguyên tiết diện"
+ },
+ {
+  "ma_cau": "K09030107002",
+  "dang_bai_id": "KDB01647",
+  "chac": "cao",
+  "ly_do": "Cắt ngắn dây, giữ nguyên tiết diện"
+ },
+ {
+  "ma_cau": "K09030107003",
+  "dang_bai_id": "KDB01648",
+  "chac": "cao",
+  "ly_do": "Kéo dài/gập dây giữ nguyên thể tích"
+ },
+ {
+  "ma_cau": "K09030107004",
+  "dang_bai_id": "KDB01648",
+  "chac": "cao",
+  "ly_do": "Kéo dài/gập dây giữ nguyên thể tích"
+ },
+ {
+  "ma_cau": "K09030107005",
+  "dang_bai_id": "KDB01648",
+  "chac": "cao",
+  "ly_do": "Kéo dài/gập dây giữ nguyên thể tích"
+ },
+ {
+  "ma_cau": "K09030107006",
+  "dang_bai_id": "KDB01648",
+  "chac": "cao",
+  "ly_do": "Kéo dài/gập dây giữ nguyên thể tích"
+ },
+ {
+  "ma_cau": "K09030307001",
+  "dang_bai_id": "KDB01668",
+  "chac": "cao",
+  "ly_do": "Đèn định mức nối tiếp điện trở, so U_d với định mức"
+ },
+ {
+  "ma_cau": "K09030307002",
+  "dang_bai_id": "KDB01668",
+  "chac": "cao",
+  "ly_do": "Đèn định mức nối tiếp điện trở, so U_d với định mức"
+ },
+ {
+  "ma_cau": "K09030307003",
+  "dang_bai_id": "KDB01668",
+  "chac": "cao",
+  "ly_do": "Đèn định mức nối tiếp điện trở, so U_d với định mức"
+ },
+ {
+  "ma_cau": "K09030307004",
+  "dang_bai_id": "KDB01668",
+  "chac": "cao",
+  "ly_do": "Đèn định mức nối tiếp điện trở, so U_d với định mức"
+ },
+ {
+  "ma_cau": "K09030307005",
+  "dang_bai_id": "KDB01668",
+  "chac": "cao",
+  "ly_do": "Đèn định mức nối tiếp điện trở, so U_d với định mức"
+ },
+ {
+  "ma_cau": "K09030307006",
+  "dang_bai_id": "KDB01668",
+  "chac": "cao",
+  "ly_do": "Đèn định mức nối tiếp điện trở, so U_d với định mức"
+ },
+ {
+  "ma_cau": "K09030307007",
+  "dang_bai_id": "KDB01669",
+  "chac": "cao",
+  "ly_do": "So sánh độ sáng hai đèn bằng công suất thực tế"
+ },
+ {
+  "ma_cau": "K09030307008",
+  "dang_bai_id": "KDB01669",
+  "chac": "cao",
+  "ly_do": "So sánh độ sáng hai đèn bằng công suất thực tế"
+ },
+ {
+  "ma_cau": "K09030307009",
+  "dang_bai_id": "KDB01669",
+  "chac": "cao",
+  "ly_do": "So sánh độ sáng hai đèn bằng công suất thực tế"
+ },
+ {
+  "ma_cau": "K09030307010",
+  "dang_bai_id": "KDB01669",
+  "chac": "cao",
+  "ly_do": "So sánh độ sáng hai đèn bằng công suất thực tế"
+ },
+ {
+  "ma_cau": "K09030307011",
+  "dang_bai_id": "KDB01669",
+  "chac": "cao",
+  "ly_do": "So sánh độ sáng hai đèn bằng công suất thực tế"
+ },
+ {
+  "ma_cau": "K09030307012",
+  "dang_bai_id": "KDB01669",
+  "chac": "cao",
+  "ly_do": "So sánh độ sáng hai đèn bằng công suất thực tế"
+ }
+]

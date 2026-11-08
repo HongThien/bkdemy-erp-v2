@@ -14,6 +14,7 @@
 //   "tong": "41 tuổi",                                 // tuỳ chọn: ngoặc nhọn bên phải gộp tất cả hàng
 //   "hieu": "27 tuổi",                                 // tuỳ chọn: ngoặc giữa 2 hàng đầu cho phần chênh (hiệu–tỉ)
 //   "dau_hoi": ["Tuổi con"]                            // tuỳ chọn: hàng nào ghi "?" dưới đoạn
+//   hàng có thể thêm "ghi": "26 + 30 = 56" — chữ ghi ngay sau đầu phải hàng (số liệu của hàng gộp, gợi bước tiếp theo)
 // }
 // ⭐ ĐÚNG TỈ LỆ (CEO 08/10: "vẽ sơ đồ phải đúng tỉ lệ với số liệu bài toán"): mọi đoạn — phần, đoạn thêm, đoạn thiếu — dài theo
 // giá trị thật. Giá trị mỗi hàng = phan × gia_tri_phan + them − bot. MÁY TỰ KIỂM: số trong nhãn "tong" phải bằng tổng các hàng,
@@ -76,12 +77,15 @@ export function veSoDo(m) {
   // tỉ lệ: hàng dài nhất rộng MAXW px; 1 đơn vị = MAXW / giá trị lớn nhất
   const maxPhan = Math.max(...gt.map((g) => g.n))
   const MAXW = Math.min(480, Math.max(300, maxPhan * 56))
-  const maxGt = Math.max(...gt.map((g) => g.tong))
+  // phạm vi VẼ thật của hàng: khúc nét đứt (bot) vẫn chiếm chỗ tới n×gtp, nên không thể lấy `tong` (đã trừ bot) làm mốc — trước đây
+  // hàng 2 phần có bot dài hơn khung ⇒ vạch đóng bị cắt ở mép phải (đo 24/10 trên 4 sơ đồ trung bình cộng)
+  const maxGt = Math.max(...gt.map((g) => Math.max(g.tong, g.n * gtp, g.n * gtp - g.bot + g.them)))
   const U = MAXW / maxGt, PHAN = gtp * U
   // lề trái nới theo nhãn dài nhất (≈7,6 px/ký tự cỡ 14) để nhãn như "Trung bình cộng:" không bị cắt
   const LEFT = Math.max(110, Math.ceil(Math.max(...hang.map((h) => String(h.nhan).length + 1)) * 7.6) + 20)
   // lề phải: ngoặc tổng (14 + 22 px) + chữ nhãn tổng (≈ 8 px/ký tự cỡ 14) — trước để cố định 70 px ⇒ "41 tuổi", "520 quả" bị cắt mép
-  const W = Math.ceil(LEFT + MAXW + (m.tong ? 36 + String(m.tong).length * 8.5 : 24) + 10)
+  const GHI_W = Math.max(0, ...hang.map((h) => (h.ghi ? String(h.ghi).length * 7.4 + 14 : 0)))
+  const W = Math.ceil(LEFT + MAXW + (m.tong ? 36 + String(m.tong).length * 8.5 : 24) + GHI_W + 10)
   const Hh = TOP + hang.length * H + 10 + (m.hieu ? 38 : 0)
   const out = []
   out.push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${Hh}" width="${W}" height="${Hh}" font-family="Arial, Helvetica, sans-serif" font-size="14">`)
@@ -113,6 +117,7 @@ export function veSoDo(m) {
       nhanTren(end + w / 2, y, h.them)
       end += w
     }
+    if (h.ghi) out.push(`<text x="${r1(Math.max(end, LEFT + len) + 10)}" y="${y + 5}" fill="#334155" font-size="13">${esc(h.ghi)}</text>`)   // sau đầu mút XA NHẤT (khúc nét đứt `bot` kéo dài tới LEFT+len)
     if ((m.dau_hoi || []).includes(h.nhan)) out.push(`<text x="${r1((LEFT + end) / 2)}" y="${y + 20}" text-anchor="middle" fill="#dc2626">?</text>`)
     h._end = end; h._y = y
   })

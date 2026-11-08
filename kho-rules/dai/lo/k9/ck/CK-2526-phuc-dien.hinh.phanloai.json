@@ -1,0 +1,16 @@
+{
+  "P1 Bài 1": { "tt": "khong_tt", "ghi": "tỉ số lượng giác thực tế (tàu ngầm lặn)" },
+  "P1 Bài 2": { "tt": "khong_tt", "ghi": "tỉ số lượng giác thực tế (chiều cao tháp qua bóng)" },
+  "P1 Bài 3": { "tt": "khong_tt", "ghi": "tỉ số lượng giác thực tế (hải đăng)" },
+  "P1 Bài 4": { "tt": "khong_tt", "ghi": "chu vi, diện tích hình tròn (đống cát)" },
+  "P1 Bài 5": { "tt": "khong_tt", "ghi": "độ dài cung, diện tích hình quạt, vành khuyên (quạt giấy)" },
+  "P1 Bài 6": { "tt": "khong_tt", "ghi": "diện tích hình tròn, vành khuyên (khu vườn có giếng)" },
+  "P2 Bài 1": { "tt": "khong_tt", "ghi": "tam giác vuông, đồng dạng, thẳng hàng; không có đường tròn" },
+  "P2 Bài 2": { "tt": "khong_tt", "ghi": "tam giác vuông, phân giác, tỉ số lượng giác; không có đường tròn" },
+  "P2 Bài 3": { "tt": "hai_tt", "ghi": "hai tiếp tuyến AB, AC cắt nhau tại A (AB = AC, AO là trung trực của BC), kèm đường kính CD" },
+  "P2 Bài 4": { "tt": "ba_tt", "ghi": "tiếp tuyến tại B, tại A (hai đầu đường kính) và tiếp tuyến thứ ba DC tại C; có cả hai tiếp tuyến DB, DC cắt nhau tại D" },
+  "P2 Bài 5": { "tt": "tt_khac", "ghi": "chứng minh KM là tiếp tuyến của (O) (dấu hiệu nhận biết) và tìm vị trí M để MNKC là hình thoi" },
+  "P2 Bài 6": { "tt": "ba_tt", "ghi": "tiếp tuyến tại A (IA), tại B (By) và tiếp tuyến thứ ba MC tại C cắt hai tiếp tuyến kia tại M và E" },
+  "P3 Bài 2": { "tt": "khong_tt", "ghi": "hình hộp không nắp, hình khai triển; tìm giá trị nhỏ nhất của diện tích bìa" },
+  "P3 Bài 3": { "tt": "khong_tt", "ghi": "hình chữ nhật nội tiếp nửa hình tròn (đỉnh nằm trên đường tròn nhưng không có tiếp tuyến); tìm diện tích lớn nhất" }
+}

@@ -1,0 +1,122 @@
+[
+ {
+  "id": "NDB01598",
+  "vd_so": 1,
+  "dap_so_toi": "5 số hạng (2;4;6;8;10), u4=8",
+  "dap_so_tep": "5 số hạng, u4=8",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01598",
+  "vd_so": 2,
+  "dap_so_toi": "8 số hạng (19;17;13;11;7;5;3;2), u5=7",
+  "dap_so_tep": "8 số hạng, u5=7",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01598",
+  "vd_so": 3,
+  "dap_so_toi": "16;23;32;61, u3=32",
+  "dap_so_tep": "16;23;32;61, u3=32",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01597",
+  "vd_so": 1,
+  "dap_so_toi": "31",
+  "dap_so_tep": "31",
+  "ket_luan": "dung",
+  "ghi_chu": "CSN S1=16, q=1/2"
+ },
+ {
+  "id": "NDB01597",
+  "vd_so": 2,
+  "dap_so_toi": "189/4",
+  "dap_so_tep": "189/4",
+  "ket_luan": "dung",
+  "ghi_chu": "CSN P1=24, q=1/2"
+ },
+ {
+  "id": "NDB01597",
+  "vd_so": 3,
+  "dap_so_toi": "2;4;8",
+  "dap_so_tep": "2;4;8",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01353",
+  "vd_so": 1,
+  "dap_so_toi": "180/7°, 360/7°, 720/7°",
+  "dap_so_tep": "180/7°, 360/7°, 720/7°",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01353",
+  "vd_so": 2,
+  "dap_so_toi": "9°;27°;81°;243°",
+  "dap_so_tep": "9°;27°;81°;243°",
+  "ket_luan": "nghi_ngo",
+  "ghi_chu": "Toán đúng, lời giải có ghi chú tứ giác lõm; nhưng góc 243° > 180° là bất thường với HS (thường ngầm hiểu tứ giác lồi) — nên cân nhắc đổi số liệu để mọi góc < 180°."
+ },
+ {
+  "id": "NDB01353",
+  "vd_so": 3,
+  "dap_so_toi": "A=C=60°",
+  "dap_so_tep": "A=C=60°",
+  "ket_luan": "nghi_ngo",
+  "ghi_chu": "Đáp số đúng, các bước đúng; nhưng lời giải dùng định lí sin và định lí cosin (Toán 10, ngoài chương CSN lớp 11). Có cách thuần lớp 11: sinA·sinC=3/4, A+C=120° → biến đổi tích thành tổng ra cos(A−C)=1 → A=C=60°."
+ },
+ {
+  "id": "NDB01352",
+  "vd_so": 1,
+  "dap_so_toi": "x=6",
+  "dap_so_tep": "x=6",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01352",
+  "vd_so": 2,
+  "dap_so_toi": "x=2 hoặc x=-3",
+  "dap_so_tep": "x=2 hoặc x=-3",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01352",
+  "vd_so": 3,
+  "dap_so_toi": "m=1 (d=2) hoặc m=2 (d=3)",
+  "dap_so_tep": "m=1 (d=2) hoặc m=2 (d=3)",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01616",
+  "vd_so": 1,
+  "dap_so_toi": "u5=13",
+  "dap_so_tep": "u5=13",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01616",
+  "vd_so": 2,
+  "dap_so_toi": "u13=45",
+  "dap_so_tep": "u13=45",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ },
+ {
+  "id": "NDB01616",
+  "vd_so": 3,
+  "dap_so_toi": "u_n=9",
+  "dap_so_tep": "u_n=9",
+  "ket_luan": "dung",
+  "ghi_chu": ""
+ }
+]

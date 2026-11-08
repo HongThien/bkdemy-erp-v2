@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T106040202015",
+  "dang_bai_id": "NDB00408",
+  "chac": "cao",
+  "ly_do": "Tìm BCNN của ba số bằng cách liệt kê bội, đề nêu rõ định nghĩa."
+ },
+ {
+  "ma_cau": "T106000000990",
+  "dang_bai_id": "NDB00371",
+  "chac": "cao",
+  "ly_do": "Xét tổng/hiệu chia hết cho 7 bằng tính chất chia hết của tổng, hiệu."
+ },
+ {
+  "ma_cau": "T106040102014",
+  "dang_bai_id": "NDB00401",
+  "chac": "cao",
+  "ly_do": "Tìm ƯCLN bằng cách liệt kê ước, đề nêu rõ định nghĩa."
+ },
+ {
+  "ma_cau": "T106040303001",
+  "dang_bai_id": "NDB00417",
+  "chac": "cao",
+  "ly_do": "Biết BCNN và hiệu; đặt k=ƯCLN, k thuộc ƯC(12,2) có hai giá trị 1 và 2."
+ },
+ {
+  "ma_cau": "T106030402019",
+  "dang_bai_id": "NDB00382",
+  "chac": "vua",
+  "ly_do": "Cặp biểu thức ax+by, cx+dy chia hết; giải bằng nhân biểu thức, nhưng cũng có thể xếp dạng nhân 2 biểu thức."
+ },
+ {
+  "ma_cau": "T106020403046",
+  "dang_bai_id": "NDB00359",
+  "chac": "cao",
+  "ly_do": "Tìm x ở số mũ của 3^x trong biểu thức không có ngoặc."
+ },
+ {
+  "ma_cau": "T106000000355",
+  "dang_bai_id": "NDB01368",
+  "chac": "cao",
+  "ly_do": "Chứng minh biểu thức một ẩn (5 số chẵn liên tiếp theo k) chia hết cho 10."
+ },
+ {
+  "ma_cau": "T106000000843",
+  "dang_bai_id": "NDB00403",
+  "chac": "cao",
+  "ly_do": "Toán thực tế chia đều hết 54 vở, 45 bút: số học sinh là ước chung kèm điều kiện."
+ },
+ {
+  "ma_cau": "T106000000017",
+  "dang_bai_id": "NDB00371",
+  "chac": "vua",
+  "ly_do": "Tổng nào chia hết cho 5: dùng tính chất tổng, nhưng cũng có thể dùng dấu hiệu chia hết cho 5."
+ },
+ {
+  "ma_cau": "T106040302001",
+  "dang_bai_id": "NDB00416",
+  "chac": "cao",
+  "ly_do": "Biết ƯCLN và tổng a+b; đặt a=km, b=kn."
+ },
+ {
+  "ma_cau": "T106030302037",
+  "dang_bai_id": "NDB00377",
+  "chac": "cao",
+  "ly_do": "Phân tích 132 ra thừa số nguyên tố."
+ },
+ {
+  "ma_cau": "T106040303018",
+  "dang_bai_id": "NDB00417",
+  "chac": "cao",
+  "ly_do": "Biết BCNN và hiệu; k thuộc ƯC(84,9) có hai giá trị 1 và 3."
+ },
+ {
+  "ma_cau": "T106000000853",
+  "dang_bai_id": "NDB00380",
+  "chac": "vua",
+  "ly_do": "Tìm x để (8-x) chia hết cho x; hệ số x ở tử và mẫu đối nhau về dấu, có thể xếp dạng 00381."
+ },
+ {
+  "ma_cau": "T106040203050",
+  "dang_bai_id": "NDB00410",
+  "chac": "cao",
+  "ly_do": "Toán thực tế bội chung của 9, 12, 15 vừa đủ, chặn khoảng 300 đến 500."
+ },
+ {
+  "ma_cau": "T106010103001",
+  "dang_bai_id": "NDB00336",
+  "chac": "cao",
+  "ly_do": "Viết tập hợp số tự nhiên nhỏ hơn 5 bằng cách liệt kê."
+ },
+ {
+  "ma_cau": "T106030501039",
+  "dang_bai_id": "NDB00390",
+  "chac": "cao",
+  "ly_do": "Chứng minh 8n+11 và 5n+7 nguyên tố cùng nhau, hệ số 8 và 5 phải nhân cả hai biểu thức."
+ },
+ {
+  "ma_cau": "T106030401100",
+  "dang_bai_id": "NDB00378",
+  "chac": "cao",
+  "ly_do": "Tìm n để 8n+5 chia hết 3n+1, hệ số 8 không chia hết cho 3."
+ },
+ {
+  "ma_cau": "T106040104023",
+  "dang_bai_id": "NDB00405",
+  "chac": "cao",
+  "ly_do": "Tìm n thuộc ƯC(42,70) kèm điều kiện n<8."
+ },
+ {
+  "ma_cau": "T106000000771",
+  "dang_bai_id": "NDB00346",
+  "chac": "vua",
+  "ly_do": "Rút thừa số chung hai cặp rồi rút tiếp thừa số 30 lần hai; có thể là dạng hai nhân tử chung."
+ },
+ {
+  "ma_cau": "T106030402003",
+  "dang_bai_id": "NDB00382",
+  "chac": "vua",
+  "ly_do": "Cặp biểu thức ax+by, cx+dy chia hết 17; nhân một biểu thức, nhưng cũng có thể xếp dạng nhân 2 biểu thức."
+ },
+ {
+  "ma_cau": "T106030502023",
+  "dang_bai_id": "NDB00394",
+  "chac": "cao",
+  "ly_do": "Tìm số nguyên tố r để r+34, r+20 đều nguyên tố, xét dư cho 3 ra r=3."
+ },
+ {
+  "ma_cau": "T106000000430",
+  "dang_bai_id": "NDB01294",
+  "chac": "cao",
+  "ly_do": "Viết tập hợp số nguyên {x thuộc Z | -1<x<=2} bằng cách liệt kê."
+ },
+ {
+  "ma_cau": "T106030502022",
+  "dang_bai_id": "NDB00394",
+  "chac": "cao",
+  "ly_do": "Tìm số nguyên tố q để q+34, q+14 đều nguyên tố, xét dư cho 3 ra q=3."
+ },
+ {
+  "ma_cau": "T106010103022",
+  "dang_bai_id": "NDB00336",
+  "chac": "cao",
+  "ly_do": "Viết tập hợp số tự nhiên lẻ nhỏ hơn 10 bằng cách liệt kê."
+ },
+ {
+  "ma_cau": "T106030401104",
+  "dang_bai_id": "NDB00379",
+  "chac": "cao",
+  "ly_do": "Tìm x để số tự nhiên 36 chia hết cho x-4."
+ },
+ {
+  "ma_cau": "T106030202016",
+  "dang_bai_id": "NDB00375",
+  "chac": "cao",
+  "ly_do": "Tìm chữ số a để số 630a chia hết cho 9."
+ },
+ {
+  "ma_cau": "T106030301056",
+  "dang_bai_id": "NDB00376",
+  "chac": "cao",
+  "ly_do": "Nhận biết hợp số trong một dãy số cho sẵn."
+ },
+ {
+  "ma_cau": "T106030401083",
+  "dang_bai_id": "NDB00381",
+  "chac": "cao",
+  "ly_do": "Tìm x để 5x+6 chia hết x-1, hệ số 5 chia hết cho hệ số 1."
+ },
+ {
+  "ma_cau": "T106040303039",
+  "dang_bai_id": "NDB00418",
+  "chac": "cao",
+  "ly_do": "Biết BCNN và hiệu; k thuộc ƯC(42,1) chỉ có một giá trị k=1."
+ },
+ {
+  "ma_cau": "T106030501037",
+  "dang_bai_id": "NDB00390",
+  "chac": "cao",
+  "ly_do": "Chứng minh 7n+10 và 5n+7 nguyên tố cùng nhau, phải nhân cả hai biểu thức."
+ },
+ {
+  "ma_cau": "T106040103052",
+  "dang_bai_id": "NDB00404",
+  "chac": "cao",
+  "ly_do": "Toán thực tế chia nhiều phần thưởng nhất: ƯCLN của 180, 84, 132."
+ },
+ {
+  "ma_cau": "T106030502040",
+  "dang_bai_id": "NDB00395",
+  "chac": "cao",
+  "ly_do": "Tìm số nguyên tố n để bốn biểu thức n+2, n+18, n+24, n+26 nguyên tố, xét dư cho 5."
+ },
+ {
+  "ma_cau": "T106000000012",
+  "dang_bai_id": "NDB00338",
+  "chac": "cao",
+  "ly_do": "Viết tập hợp các chữ cái trong từ ĐỒNG BÀO bằng cách liệt kê."
+ },
+ {
+  "ma_cau": "T106010102007",
+  "dang_bai_id": "NDB00335",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định đúng về quan hệ phần tử và tập hợp M."
+ },
+ {
+  "ma_cau": "T106030302043",
+  "dang_bai_id": "NDB00377",
+  "chac": "cao",
+  "ly_do": "Phân tích 156 ra thừa số nguyên tố."
+ },
+ {
+  "ma_cau": "T106040103044",
+  "dang_bai_id": "NDB00404",
+  "chac": "cao",
+  "ly_do": "Toán thực tế chia nhiều phần quà nhất: ƯCLN của 270, 360, 450."
+ },
+ {
+  "ma_cau": "T106030302026",
+  "dang_bai_id": "NDB00377",
+  "chac": "cao",
+  "ly_do": "Phân tích 98 ra thừa số nguyên tố."
+ },
+ {
+  "ma_cau": "T106000000691",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tính tổng các lập phương liên tiếp bằng cách tách k^3=(k-1)k(k+1)+k."
+ },
+ {
+  "ma_cau": "T106000000956",
+  "dang_bai_id": "NDB01329",
+  "chac": "vua",
+  "ly_do": "n+2 là ước của n^2+1 trong N; kỹ thuật bậc hai chia hết bậc nhất, dạng 01329 nằm ở chủ đề Số nguyên."
+ },
+ {
+  "ma_cau": "T106000000231",
+  "dang_bai_id": "NDB00371",
+  "chac": "cao",
+  "ly_do": "Mệnh đề Đúng/Sai về tính chất chia hết của một tổng."
+ },
+ {
+  "ma_cau": "T106000000746",
+  "dang_bai_id": "NDB00360",
+  "chac": "vua",
+  "ly_do": "Tính 76+24:4 theo thứ tự phép tính, không có ngoặc nên chưa khớp hẳn dạng cơ bản."
+ },
+ {
+  "ma_cau": "T106000000741",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tìm ba số nguyên tố thoả bất đẳng thức abc<ab+bc+ca (kẹp thứ tự)."
+ },
+ {
+  "ma_cau": "T106000000925",
+  "dang_bai_id": "NDB01363",
+  "chac": "vua",
+  "ly_do": "Đặt thừa số chung x^4 rồi tích bằng 0 chứa lũy thừa; đề chưa viết sẵn dạng tích."
+ },
+ {
+  "ma_cau": "T106000000904",
+  "dang_bai_id": "NDB00380",
+  "chac": "cao",
+  "ly_do": "Đếm n để n+6 chia hết cho n, hệ số của n ở tử và mẫu bằng nhau."
+ },
+ {
+  "ma_cau": "T106030402014",
+  "dang_bai_id": "NDB00382",
+  "chac": "vua",
+  "ly_do": "Cặp biểu thức ax+by, cx+dy chia hết 19; nhân một biểu thức, nhưng cũng có thể xếp dạng nhân 2 biểu thức."
+ },
+ {
+  "ma_cau": "T106000000361",
+  "dang_bai_id": "NDB00371",
+  "chac": "vua",
+  "ly_do": "Tổng nào chia hết cho 3: dùng tính chất tổng, nhưng cũng có thể dùng dấu hiệu chia hết cho 3."
+ },
+ {
+  "ma_cau": "T106000000011",
+  "dang_bai_id": "NDB00385",
+  "chac": "cao",
+  "ly_do": "Chứng minh tổng lũy thừa của 4 chia hết 21=1+4+4^2 bằng ghép ba số hạng."
+ },
+ {
+  "ma_cau": "T106000000962",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: bài toán thực tế xét dư/bất biến (cắt giấy tăng bội của 5)."
+ },
+ {
+  "ma_cau": "T106000000966",
+  "dang_bai_id": "NDB00375",
+  "chac": "cao",
+  "ly_do": "Tìm chữ số * để số 101*5 chia hết cho 9."
+ },
+ {
+  "ma_cau": "T106000000492",
+  "dang_bai_id": "NDB01306",
+  "chac": "cao",
+  "ly_do": "Bỏ ngoặc rồi nhóm số tròn trăm tính hợp lí; theo luật lấy dạng sau cùng 01306."
+ },
+ {
+  "ma_cau": "T106000000824",
+  "dang_bai_id": "NDB00375",
+  "chac": "cao",
+  "ly_do": "Tìm x để 450x chia hết cho 2, 5 và 9; theo mô tả đề chia hết 2,3,9 chung thuộc dạng 3,9."
+ },
+ {
+  "ma_cau": "T106000000326",
+  "dang_bai_id": "NDB00385",
+  "chac": "cao",
+  "ly_do": "Chứng tỏ tổng lũy thừa của 7 chia hết 57=1+7+7^2 bằng ghép ba số hạng."
+ },
+ {
+  "ma_cau": "T106000000204",
+  "dang_bai_id": "NDB00372",
+  "chac": "cao",
+  "ly_do": "Nhận biết số chia hết cho 2 trong các số cho sẵn."
+ },
+ {
+  "ma_cau": "T1060000001002",
+  "dang_bai_id": "NDB00375",
+  "chac": "cao",
+  "ly_do": "Bốn mệnh đề Đúng/Sai về số 4a3 chia hết cho 3 và 9 theo giá trị a."
+ },
+ {
+  "ma_cau": "T106000000695",
+  "dang_bai_id": "NDB00356",
+  "chac": "vua",
+  "ly_do": "Rút gọn phân số luỹ thừa bằng cách đưa 27^4 và 9^6 về cùng 3^12; dạng ẩn thừa số chung gần nhất."
+ },
+ {
+  "ma_cau": "T106000000690",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tính tổng các tích k.(k+1)^2 bằng tách về tích ba số liên tiếp."
+ },
+ {
+  "ma_cau": "T106000000614",
+  "dang_bai_id": "NDB00365",
+  "chac": "vua",
+  "ly_do": "Tính A=1+2+...+2^2025 bằng nhân 2 rồi trừ để chứng minh liên tiếp với 2^2026."
+ },
+ {
+  "ma_cau": "T106000000924",
+  "dang_bai_id": "NDB01362",
+  "chac": "cao",
+  "ly_do": "Tìm x tự nhiên khi tích (2x-1)(x-3) bằng 0."
+ },
+ {
+  "ma_cau": "T106000000999",
+  "dang_bai_id": "NDB00371",
+  "chac": "vua",
+  "ly_do": "Bài toán lời văn giỏ táo lê dùng tính chất chia hết của hiệu; có thể thiếu dạng toán thực tế chia hết."
+ },
+ {
+  "ma_cau": "T106000000165",
+  "dang_bai_id": "NDB00385",
+  "chac": "cao",
+  "ly_do": "Chứng minh tổng lũy thừa của 3 chia hết 13=1+3+3^2 bằng ghép ba số hạng."
+ },
+ {
+  "ma_cau": "T106000000464",
+  "dang_bai_id": "NDB01307",
+  "chac": "cao",
+  "ly_do": "Rút thừa số chung -57 với số nguyên: (-57).84+(-57).16."
+ },
+ {
+  "ma_cau": "T106000000375",
+  "dang_bai_id": "NDB00375",
+  "chac": "cao",
+  "ly_do": "Tìm chữ số * để số 3*7 chia hết cho 9."
+ },
+ {
+  "ma_cau": "T106000000651",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng/chủ đề: thống kê, kiểm đếm bảng dữ liệu; đề có hình bảng."
+ },
+ {
+  "ma_cau": "T106000000408",
+  "dang_bai_id": "NDB01302",
+  "chac": "vua",
+  "ly_do": "Tính hai ngoặc vuông chứa tổng hiệu số nguyên; gần dạng bỏ ngoặc rồi tính hoặc cộng trừ nhiều số."
+ },
+ {
+  "ma_cau": "T106000000274",
+  "dang_bai_id": "NDB00377",
+  "chac": "cao",
+  "ly_do": "Chọn phân tích đúng của 60 ra thừa số nguyên tố."
+ },
+ {
+  "ma_cau": "T106000000217",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: nhận định đúng/sai tổng hợp về số nguyên tố, chia hết, ước (trộn nhiều dạng)."
+ },
+ {
+  "ma_cau": "T106000000463",
+  "dang_bai_id": "NDB01306",
+  "chac": "cao",
+  "ly_do": "Tính hợp lí tổng có cặp số đối -90 và 90."
+ },
+ {
+  "ma_cau": "T106000000227",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: bài toán lập luận thực tế kiểu Dirichlet/phản chứng (giải bóng đá)."
+ },
+ {
+  "ma_cau": "T106000000661",
+  "dang_bai_id": "NDB00375",
+  "chac": "cao",
+  "ly_do": "Tìm x, y để 1x8y chia hết cho 2 và 3; đề chia hết 2,3 chung thuộc dạng 3,9."
+ },
+ {
+  "ma_cau": "T106000000788",
+  "dang_bai_id": "NDB00350",
+  "chac": "vua",
+  "ly_do": "Tìm x là số bị chia trong x:8=24, một bước; chưa có dạng nhân chia thuần nên gần nhất 00350."
+ }
+]

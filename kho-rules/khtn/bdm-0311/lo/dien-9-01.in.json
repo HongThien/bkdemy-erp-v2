@@ -1,0 +1,2516 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00409",
+   "khoi": "9",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Động năng",
+   "nhom": "KHÁI NIỆM VÀ ĐẶC ĐIỂM ĐỘNG NĂNG",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•\tĐộng năng là năng lượng mà một vật có được do đang chuyển động, kí hiệu Wđ, đơn vị jun (J) — cùng đơn vị với công cơ học.\n•\tVật đứng yên (tốc độ v = 0) thì động năng bằng 0. Vật chỉ có động năng khi đang chuyển động.\nCông thức\n•\tWđ = ½mv2, trong đó m là khối lượng vật (kg), v là tốc độ của vật (m/s).\n•\tĐộng năng phụ thuộc hai yếu tố: khối lượng và tốc độ của vật; không phụ thuộc vị trí hay hướng chuyển động.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00410",
+   "khoi": "9",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Động năng",
+   "nhom": "Tính động năng Wđ khi biết khối lượng m và vận tốc v",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•\tWđ = ½mv2, với m là khối lượng (kg), v là tốc độ (m/s), Wđ tính ra jun (J).\n•\tĐổi khối lượng ra kilôgam: 1 g = 0,001 kg; 1 tấn = 1 000 kg; 1 tạ = 100 kg; 1 yến = 10 kg.\n•\tĐổi tốc độ ra mét trên giây: 1 km/h = 1/3,6 m/s (muốn đổi km/h sang m/s thì chia cho 3,6); 1 cm/s = 0,01 m/s; 1 mm/s = 0,001 m/s.\n•\tNếu đề cho trọng lượng P (N) thay vì khối lượng, dùng P = 10m để suy ra m = P/10 (lấy g = 10 m/s2).",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00411",
+   "khoi": "9",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Động năng",
+   "nhom": "Tính khối lượng m hoặc vận tốc v khi biết động năng Wđ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Mục tiêu: Từ giá trị động năng cho trước, biến đổi công thức để tính đại lượng còn lại.\n\nCác bước giải:\n\n**Bước 1:** Biến đổi công thức gốc $W_đ = \\dfrac{1}{2} mv^2$ sang đại lượng cần tìm:\n\nNếu tìm khối lượng: $m = \\dfrac{2\\cdot W_đ}{v^2}$\n\nNếu tìm vận tốc: $v = \\sqrt{\\dfrac{2\\cdot W_đ}{m}}$\n\n**Bước 2:** Đổi các dữ kiện đề bài về đơn vị chuẩn ($W_đ$ về J, m về kg).\n\n**Bước 3:** Thay số vào công thức biến đổi ở Bước 1 để tìm kết quả.\n\n**Ví dụ minh họa:** Một vật có khối lượng 2 kg đang chuyển động và có động năng bằng 16 J. Tính vận tốc của vật đó.\n\nHướng dẫn giải\n\n**Bước 1:** Công thức tính vận tốc rút ra từ công thức động năng là: $v = \\sqrt{\\dfrac{2\\cdot W_đ}{m}}$.\n\n**Bước 2:** Đơn vị bài cho đã chuẩn ($W_đ = 16$ J, $m = 2$ kg).\n\n**Bước 3:** Thay số vào tính toán: $v = \\sqrt{\\dfrac{2\\times 16}{2}} = \\sqrt{32} = \\sqrt{16} = 4$ m/s .\n\nKết luận: Vận tốc của vật là 4 m/s .",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00412",
+   "khoi": "9",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Động năng",
+   "nhom": "SO SÁNH VÀ TỈ LỆ ĐỘNG NĂNG",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "$W_d = \\dfrac{1}{2}mv^2$: động năng tỉ lệ thuận với khối lượng m (khi v không đổi).\n$W_d = \\dfrac{1}{2}mv^2$: động năng tỉ lệ thuận với bình phương tốc độ v (khi m không đổi).\nNếu m tăng a lần và v tăng b lần đồng thời thì $W_d$ tăng $a \\times b^2$ lần.\nSo sánh hai vật: nếu $m_A = p \\times m_B$ và $v_A = q \\times v_B$ thì $W_{dA} : W_{dB} = p \\times q^2$.\nTrình tự làm bài\nXác định đại lượng nào thay đổi (khối lượng, tốc độ, hay cả hai) và đại lượng nào giữ nguyên.\nÁp dụng đúng bậc của mỗi đại lượng trong công thức $W_d = \\dfrac{1}{2}mv^2$: khối lượng ở bậc 1, tốc độ ở bậc 2.\nNhân các hệ số thay đổi tương ứng để suy ra số lần (hoặc phần trăm) động năng thay đổi; không cần biết giá trị tuyệt đối của m, v.\nVÍ DỤ 1. Một vật đang chuyển động, tốc độ giữ nguyên, khối lượng tăng 3 lần. Hỏi động năng của vật tăng bao nhiêu lần?\nHướng dẫn: $W_d = \\dfrac{1}{2}mv^2$, v không đổi nên $W_d$ tỉ lệ thuận với m. Khối lượng tăng 3 lần thì động năng tăng 3 lần.\nVÍ DỤ 2. Một vật đang chuyển động, khối lượng giữ nguyên, tốc độ tăng 3 lần. Hỏi động năng của vật tăng bao nhiêu lần?\nHướng dẫn: $W_d = \\dfrac{1}{2}mv^2$, m không đổi nên $W_d$ tỉ lệ thuận với $v^2$. Tốc độ tăng 3 lần thì động năng tăng $3^2 = 9$ lần.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00413",
+   "khoi": "9",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Động năng",
+   "nhom": "Ứng dụng thực tế của động năng",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•\tWđ = ½mv2: động năng tỉ lệ thuận với khối lượng, tỉ lệ thuận với bình phương tốc độ.\n•\tVa chạm càng mạnh (hậu quả càng lớn) khi động năng của vật ngay trước va chạm càng lớn.\nTrình tự làm bài\n1.\tXác định hiện tượng thực tế liên quan đến khối lượng, tốc độ hay động năng của vật/phương tiện.\n2.\tLiên hệ với công thức Wđ = ½mv2 để xác định chiều thay đổi của động năng (tăng/giảm) trong tình huống đó.\n3.\tGiải thích hiện tượng hoặc ứng dụng dựa trên vai trò của động năng (mức độ nguy hiểm khi va chạm, khả năng thực hiện công của vật đang chuyển động…).",
+   "can_dien_ly_thuyet_nhom": false
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB00970",
+   "nhom_id": "KNB00409",
+   "thu_tu": 1,
+   "dang": "ĐỊNH NGHĨA VÀ ĐIỀU KIỆN VẬT CÓ ĐỘNG NĂNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010101014",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang đứng yên ($v = 0$) thì động năng của vật",
+     "lua_chon": [
+      "đạt giá trị lớn nhất.",
+      "bằng khối lượng của vật.",
+      "không xác định được.",
+      "bằng 0."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thay $v = 0$ vào $W_đ = \\dfrac{1}{2}mv^2$ được $W_đ = 0$: vật đứng yên không có động năng."
+    },
+    {
+     "ma_cau": "K09010101017",
+     "loai": "trac_nghiem",
+     "de": "Đại lượng nào sau đây KHÔNG xuất hiện trực tiếp trong công thức tính động năng?",
+     "lua_chon": [
+      "Khối lượng của vật.",
+      "Tốc độ của vật.",
+      "Độ cao của vật so với mốc.",
+      "Hệ số $\\dfrac{1}{2}$ trong công thức."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Công thức $W_đ = \\dfrac{1}{2}mv^2$ chỉ chứa khối lượng, tốc độ và hệ số $\\dfrac{1}{2}$; độ cao không xuất hiện trong công thức động năng."
+    },
+    {
+     "ma_cau": "K09010101013",
+     "loai": "trac_nghiem",
+     "de": "Công thức tính động năng của một vật khối lượng $m$, chuyển động với tốc độ $v$ là",
+     "lua_chon": [
+      "$W_đ = mv$.",
+      "$W_đ = 2mv^2$.",
+      "$W_đ = \\dfrac{1}{2}m^2v$.",
+      "$W_đ = \\dfrac{1}{2}mv^2$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Công thức tính động năng là $W_đ = \\dfrac{1}{2}mv^2$, với $m$ là khối lượng (kg) và $v$ là tốc độ (m/s)."
+    },
+    {
+     "ma_cau": "K09010101016",
+     "loai": "trac_nghiem",
+     "de": "Vật nào sau đây KHÔNG có động năng?",
+     "lua_chon": [
+      "Một chiếc xe đạp đang đổ dốc.",
+      "Một viên bi đang nằm yên trên mặt bàn.",
+      "Một viên đạn đang bay trong không khí.",
+      "Một dòng nước đang chảy xiết."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Viên bi nằm yên có tốc độ bằng $0$ nên động năng bằng $0$, tức là không có động năng."
+    },
+    {
+     "ma_cau": "K09010101015",
+     "loai": "trac_nghiem",
+     "de": "Vật nào sau đây đang có động năng?",
+     "lua_chon": [
+      "Một hòn đá đang nằm yên trên mặt đất.",
+      "Một quyển sách đặt yên trên bàn.",
+      "Một chiếc ô tô đang chạy trên đường.",
+      "Một chiếc lò xo đang bị nén nhưng chưa thả ra."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Chỉ vật đang chuyển động mới có động năng; ô tô đang chạy có tốc độ khác $0$ nên có động năng."
+    },
+    {
+     "ma_cau": "K09010101012",
+     "loai": "trac_nghiem",
+     "de": "Đơn vị đo động năng trong hệ SI là",
+     "lua_chon": [
+      "jun (J).",
+      "niu tơn (N).",
+      "oát (W).",
+      "kilôgam (kg)."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Động năng có cùng đơn vị với công cơ học, đó là jun (J)."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00971",
+   "nhom_id": "KNB00409",
+   "thu_tu": 2,
+   "dang": "KÍ HIỆU, ĐƠN VỊ VÀ CÁC ĐẠI LƯỢNG TRONG CÔNG THỨC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010101020",
+     "loai": "trac_nghiem",
+     "de": "Trong công thức $W_\\mathrm{đ} = \\dfrac{1}{2}mv^2$, đại lượng $v$ biểu thị",
+     "lua_chon": [
+      "tốc độ của vật (m/s).",
+      "quãng đường vật đi được (m).",
+      "gia tốc của vật (m/s$^2$).",
+      "thời gian chuyển động của vật (s)."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trong công thức động năng, $v$ là tốc độ của vật, đơn vị mét trên giây (m/s)."
+    },
+    {
+     "ma_cau": "K09010101026",
+     "loai": "trac_nghiem",
+     "de": "Nếu đề bài cho tốc độ vật ở đơn vị km/h thì trước khi thay vào công thức tính động năng, cần",
+     "lua_chon": [
+      "giữ nguyên đơn vị km/h.",
+      "đổi tốc độ ra m/phút.",
+      "nhân tốc độ với 3,6.",
+      "đổi tốc độ ra m/s."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Công thức động năng chỉ đúng đơn vị jun khi tốc độ tính bằng mét trên giây, nên phải đổi km/h sang m/s trước khi thay số."
+    },
+    {
+     "ma_cau": "K09010101021",
+     "loai": "trac_nghiem",
+     "de": "Để động năng tính ra đơn vị jun (J), khối lượng trong công thức phải có đơn vị là",
+     "lua_chon": [
+      "gam (g).",
+      "kilôgam (kg).",
+      "tấn.",
+      "miligam (mg)."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Công thức $W_\\mathrm{đ} = \\dfrac{1}{2}mv^2$ cho kết quả đơn vị jun chỉ khi $m$ tính bằng kilôgam và $v$ tính bằng mét trên giây."
+    },
+    {
+     "ma_cau": "K09010101019",
+     "loai": "trac_nghiem",
+     "de": "Trong công thức $W_\\mathrm{đ} = \\dfrac{1}{2}mv^2$, đại lượng $m$ biểu thị",
+     "lua_chon": [
+      "trọng lượng của vật (N).",
+      "khối lượng riêng của vật (kg/m$^3$).",
+      "momen của vật.",
+      "khối lượng của vật (kg)."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trong công thức động năng, $m$ là khối lượng của vật, đơn vị kilôgam (kg)."
+    },
+    {
+     "ma_cau": "K09010101024",
+     "loai": "trac_nghiem",
+     "de": "Động năng và công cơ học có chung đơn vị đo là",
+     "lua_chon": [
+      "oát (W).",
+      "jun (J).",
+      "niutơn (N).",
+      "jun trên giây (J/s)."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Động năng và công cơ học đều được đo bằng đơn vị jun (J)."
+    },
+    {
+     "ma_cau": "K09010101025",
+     "loai": "trac_nghiem",
+     "de": "Nếu đề bài cho khối lượng vật ở đơn vị gam thì trước khi thay vào công thức tính động năng, cần",
+     "lua_chon": [
+      "đổi khối lượng ra tấn.",
+      "đổi khối lượng ra kilôgam.",
+      "giữ nguyên đơn vị gam.",
+      "nhân khối lượng với 1000."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Công thức động năng chỉ đúng đơn vị jun khi khối lượng tính bằng kilôgam, nên phải đổi gam sang kilôgam trước khi thay số."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00972",
+   "nhom_id": "KNB00409",
+   "thu_tu": 3,
+   "dang": "YẾU TỐ ẢNH HƯỞNG ĐẾN ĐỘ LỚN ĐỘNG NĂNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010101030",
+     "loai": "trac_nghiem",
+     "de": "Hai vật có cùng khối lượng, chuyển động với hai tốc độ khác nhau. Vật có tốc độ lớn hơn thì",
+     "lua_chon": [
+      "có động năng nhỏ hơn.",
+      "có động năng lớn hơn.",
+      "có động năng bằng vật kia.",
+      "không xác định được động năng lớn hơn nếu không biết thêm dữ kiện."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khi khối lượng bằng nhau, động năng chỉ còn phụ thuộc tốc độ; vật có tốc độ lớn hơn có $W_đ$ lớn hơn."
+    },
+    {
+     "ma_cau": "K09010101033",
+     "loai": "trac_nghiem",
+     "de": "Khi tốc độ của một vật giảm đi một nửa (khối lượng không đổi) thì động năng của vật sẽ",
+     "lua_chon": [
+      "giảm còn một nửa giá trị ban đầu.",
+      "không đổi.",
+      "giảm còn một phần tám giá trị ban đầu.",
+      "giảm còn một phần tư giá trị ban đầu."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $W_đ$ tỉ lệ với $v^2$; tốc độ giảm còn một nửa thì $v^2$ giảm còn một phần tư, nên $W_đ$ giảm còn một phần tư giá trị ban đầu."
+    },
+    {
+     "ma_cau": "K09010101027",
+     "loai": "trac_nghiem",
+     "de": "Nếu giữ nguyên tốc độ của vật, khi khối lượng của vật tăng lên thì động năng của vật sẽ",
+     "lua_chon": [
+      "tăng lên.",
+      "giảm xuống.",
+      "không đổi.",
+      "bằng 0."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trong $W_đ = \\dfrac{1}{2}mv^2$, khi $v$ không đổi, $W_đ$ tỉ lệ thuận với $m$ nên $m$ tăng thì $W_đ$ tăng."
+    },
+    {
+     "ma_cau": "K09010101031",
+     "loai": "trac_nghiem",
+     "de": "Hai vật chuyển động với cùng tốc độ nhưng khối lượng khác nhau. Vật có khối lượng lớn hơn thì",
+     "lua_chon": [
+      "có động năng nhỏ hơn.",
+      "có động năng lớn hơn.",
+      "có động năng bằng vật kia.",
+      "có động năng bằng 0."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khi tốc độ bằng nhau, động năng chỉ còn phụ thuộc khối lượng; vật có khối lượng lớn hơn có $W_đ$ lớn hơn."
+    },
+    {
+     "ma_cau": "K09010101032",
+     "loai": "trac_nghiem",
+     "de": "Đại lượng nào sau đây KHÔNG ảnh hưởng đến độ lớn động năng của một vật?",
+     "lua_chon": [
+      "Khối lượng của vật.",
+      "Tốc độ của vật.",
+      "Hướng chuyển động của vật.",
+      "Bình phương tốc độ của vật."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Công thức $W_đ = \\dfrac{1}{2}mv^2$ chỉ phụ thuộc độ lớn của $m$ và $v$, không phụ thuộc hướng chuyển động của vật."
+    },
+    {
+     "ma_cau": "K09010101029",
+     "loai": "trac_nghiem",
+     "de": "Động năng của một vật phụ thuộc vào những yếu tố nào?",
+     "lua_chon": [
+      "Chỉ khối lượng của vật.",
+      "Chỉ tốc độ của vật.",
+      "Khối lượng và độ cao của vật.",
+      "Khối lượng và tốc độ của vật."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Theo công thức $W_đ = \\dfrac{1}{2}mv^2$, động năng phụ thuộc đồng thời vào khối lượng và tốc độ của vật."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00973",
+   "nhom_id": "KNB00409",
+   "thu_tu": 4,
+   "dang": "NHẬN BIẾT ĐỘNG NĂNG QUA VÍ DỤ VÀ HIỆN TƯỢNG THỰC TẾ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010101037",
+     "loai": "trac_nghiem",
+     "de": "Vì sao một viên đạn tuy có khối lượng nhỏ nhưng bay với tốc độ rất lớn lại có thể gây sát thương nghiêm trọng?",
+     "lua_chon": [
+      "Vì động năng của viên đạn tỉ lệ với bình phương tốc độ, nên tốc độ lớn khiến động năng rất lớn dù khối lượng nhỏ.",
+      "Vì khối lượng viên đạn luôn lớn hơn vẻ ngoài của nó.",
+      "Vì viên đạn có thể năng đàn hồi rất lớn.",
+      "Vì tốc độ của viên đạn không ảnh hưởng đến động năng, chỉ có khối lượng mới ảnh hưởng."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Do $W_d = \\frac{1}{2}mv^2$ tỉ lệ với bình phương tốc độ, tốc độ rất lớn của viên đạn khiến động năng vẫn rất lớn dù khối lượng nhỏ."
+    },
+    {
+     "ma_cau": "K09010101038",
+     "loai": "trac_nghiem",
+     "de": "Trong các vật sau, vật nào chắc chắn có động năng bằng 0?",
+     "lua_chon": [
+      "Quyển sách đặt yên trên mặt bàn.",
+      "Chiếc xe máy đang chạy trên đường.",
+      "Quả bóng đang rơi tự do.",
+      "Chiếc thuyền đang trôi theo dòng nước."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Quyển sách đặt yên có tốc độ bằng 0 nên động năng của nó bằng 0; các vật còn lại đều đang chuyển động."
+    },
+    {
+     "ma_cau": "K09010101035",
+     "loai": "trac_nghiem",
+     "de": "Khi một đoàn tàu đang chạy thì hãm phanh và dừng hẳn, động năng của đoàn tàu",
+     "lua_chon": [
+      "giảm dần về 0.",
+      "tăng dần lên.",
+      "không đổi.",
+      "đạt giá trị lớn nhất khi dừng hẳn."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hãm phanh làm tốc độ đoàn tàu giảm dần về 0, nên động năng cũng giảm dần và bằng 0 khi tàu dừng hẳn."
+    },
+    {
+     "ma_cau": "K09010101036",
+     "loai": "trac_nghiem",
+     "de": "Gió thổi làm quay cánh quạt của tuabin điện gió. Điều này chứng tỏ",
+     "lua_chon": [
+      "không khí có thể năng hấp dẫn.",
+      "cánh quạt tự sinh ra động năng không cần gió.",
+      "không khí chuyển động mang động năng.",
+      "gió không mang bất kỳ dạng năng lượng nào."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Không khí đang chuyển động (gió) có động năng; động năng này truyền một phần sang cánh quạt làm cánh quạt quay."
+    },
+    {
+     "ma_cau": "K09010101039",
+     "loai": "trac_nghiem",
+     "de": "Xe tải chở nặng khi chạy cùng tốc độ với một xe con thường khó dừng lại hơn. Cách giải thích đúng dựa trên động năng là",
+     "lua_chon": [
+      "xe tải có thế năng lớn hơn nên khó dừng.",
+      "xe tải có tốc độ thực tế luôn lớn hơn xe con.",
+      "xe tải có khối lượng lớn hơn nên động năng lớn hơn ở cùng tốc độ.",
+      "khối lượng không ảnh hưởng đến động năng nên hai xe khó dừng như nhau."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ở cùng tốc độ, động năng tỉ lệ thuận với khối lượng; xe tải nặng hơn nên có động năng lớn hơn, khó dừng lại hơn."
+    },
+    {
+     "ma_cau": "K09010101034",
+     "loai": "trac_nghiem",
+     "de": "Khi một chiếc ô tô đang chuyển động tăng tốc dần thì động năng của ô tô sẽ",
+     "lua_chon": [
+      "giảm dần.",
+      "không đổi.",
+      "bằng 0 trong suốt quá trình.",
+      "tăng dần."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tốc độ tăng dần trong khi khối lượng ô tô không đổi nên theo $W_\\mathrm{d} = \\frac{1}{2}mv^2$, động năng tăng dần."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00974",
+   "nhom_id": "KNB00410",
+   "thu_tu": 1,
+   "dang": "TÍNH ĐỘNG NĂNG TỪ KHỐI LƯỢNG VÀ TỐC ĐỘ CHO TRỰC TIẾP",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010102013",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 5 kg, chuyển động với tốc độ 2 m/s. Tính động năng của vật.",
+     "lua_chon": [
+      "20 J.",
+      "5 J.",
+      "10 J.",
+      "2 J."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Động năng: $W_d = \\dfrac{1}{2} \\times m \\times v^2 = \\dfrac{1}{2} \\times 5 \\times 2^2 = 10 J$."
+    },
+    {
+     "ma_cau": "K09010102017",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $3 \\ \\mathrm{kg}$, chuyển động với tốc độ $8 \\ \\mathrm{m/s}$. Tính động năng của vật.",
+     "lua_chon": [
+      "192 J.",
+      "96 J.",
+      "12 J.",
+      "32 J."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Động năng của vật là:\n$W_\\mathrm{đ} = \\dfrac{1}{2} \\times m \\times v^2 = \\dfrac{1}{2} \\times 3 \\times 8^2 = 96 \\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010102016",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 9 kg, chuyển động với tốc độ 4 m/s. Tính động năng của vật.",
+     "lua_chon": [
+      "72 J.",
+      "144 J.",
+      "18 J.",
+      "8 J."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Động năng: $W_d = \\dfrac{1}{2} \\times m \\times v^2 = \\dfrac{1}{2} \\times 9 \\times 4^2 = 72 J$."
+    },
+    {
+     "ma_cau": "K09010102020",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $10 \\ \\mathrm{kg}$, chuyển động với tốc độ $3 \\ \\mathrm{m/s}$. Tính động năng của vật.",
+     "lua_chon": [
+      "90 J.",
+      "45 J.",
+      "15 J.",
+      "4,5 J."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Động năng của vật là:\n$W_\\mathrm{đ} = \\dfrac{1}{2} \\times m \\times v^2 = \\dfrac{1}{2} \\times 10 \\times 3^2 = 45 \\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010102015",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 7 kg, chuyển động với tốc độ 3 m/s. Tính động năng của vật.",
+     "lua_chon": [
+      "63 J.",
+      "10,5 J.",
+      "31,5 J.",
+      "4,5 J."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Động năng: $W_d = \\dfrac{1}{2} \\times m \\times v^2 = \\dfrac{1}{2} \\times 7 \\times 3^2 = 31,5 J$."
+    },
+    {
+     "ma_cau": "K09010102018",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $6 \\ \\mathrm{kg}$, chuyển động với tốc độ $7 \\ \\mathrm{m/s}$. Tính động năng của vật.",
+     "lua_chon": [
+      "294 J.",
+      "21 J.",
+      "24,5 J.",
+      "147 J."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Động năng của vật là:\n$W_\\mathrm{đ} = \\dfrac{1}{2} \\times m \\times v^2 = \\dfrac{1}{2} \\times 6 \\times 7^2 = 147 \\ \\mathrm{J}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00975",
+   "nhom_id": "KNB00410",
+   "thu_tu": 2,
+   "dang": "KHỐI LƯỢNG CHO Ở ĐƠN VỊ GAM, CẦN ĐỔI RA KILÔGAM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010102024",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 4 000 gam, chuyển động với tốc độ 5 m/s. Tính động năng của vật.",
+     "lua_chon": [
+      "50 000 J.",
+      "500 J.",
+      "100 J.",
+      "50 J."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $m = 4\\ 000\\ \\mathrm{g} = 4\\ \\mathrm{kg}$. $W_đ = \\dfrac{1}{2} \\times 4 \\times 5^2 = 50\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010102023",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 2 500 gam, chuyển động với tốc độ 2 m/s. Tính động năng của vật.",
+     "lua_chon": [
+      "5 000 J.",
+      "50 J.",
+      "5 J.",
+      "10 J."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $m = 2\\ 500\\ \\mathrm{g} = 2.5\\ \\mathrm{kg}$. $W_đ = \\dfrac{1}{2} \\times 2.5 \\times 2^2 = 5\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010102022",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 1 500 gam, chuyển động với tốc độ 3 m/s. Tính động năng của vật.",
+     "lua_chon": [
+      "6 750 J.",
+      "67,5 J.",
+      "13,5 J.",
+      "6,75 J."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $m = 1\\ 500\\ \\mathrm{g} = 1.5\\ \\mathrm{kg}$. $W_đ = \\dfrac{1}{2} \\times 1.5 \\times 3^2 = 6.75\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010102021",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 500 gam, chuyển động với tốc độ 4 m/s. Tính động năng của vật.",
+     "lua_chon": [
+      "4 000 J.",
+      "4 J.",
+      "40 J.",
+      "8 J."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $m = 500\\ \\mathrm{g} = 0.5\\ \\mathrm{kg}$. $W_đ = \\dfrac{1}{2} \\times 0.5 \\times 4^2 = 4\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010102028",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $1\\ 200$ gam, chuyển động với tốc độ $5$ m/s. Tính động năng của vật.",
+     "lua_chon": [
+      "$15\\ 000\\ J$.",
+      "$15\\ J$.",
+      "$150\\ J$.",
+      "$30\\ J$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $m = 1\\ 200\\ g = 1,2\\ kg$. $W_đ = \\dfrac{1}{2} \\times 1,2 \\times 5^2 = 15\\ J$."
+    },
+    {
+     "ma_cau": "K09010102025",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $6\\ 000$ gam, chuyển động với tốc độ $4$ m/s. Tính động năng của vật.",
+     "lua_chon": [
+      "$48\\ J$.",
+      "$48\\ 000\\ J$.",
+      "$480\\ J$.",
+      "$96\\ J$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $m = 6\\ 000\\ g = 6\\ kg$. $W_đ = \\dfrac{1}{2} \\times 6 \\times 4^2 = 48\\ J$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00976",
+   "nhom_id": "KNB00410",
+   "thu_tu": 3,
+   "dang": "TỐC ĐỘ CHO Ở ĐƠN VỊ KM/H, CẦN ĐỔI RA MÉT TRÊN GIÂY",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010102030",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $5 \\text{ kg}$, chuyển động với tốc độ $54 \\text{ km/h}$. Tính động năng của vật.",
+     "lua_chon": [
+      "7 290 J.",
+      "94 478,4 J.",
+      "562,5 J.",
+      "37,5 J."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $v = 54 \\text{ km/h} = 54 : 3,6 = 15 \\text{ m/s}$.\n$W_đ = \\dfrac{1}{2} \\times 5 \\times 15^2 = 562,5 \\text{ J}$."
+    },
+    {
+     "ma_cau": "K09010102032",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $4 \\text{ kg}$, chuyển động với tốc độ $90 \\text{ km/h}$. Tính động năng của vật.",
+     "lua_chon": [
+      "16 200 J.",
+      "209 952 J.",
+      "50 J.",
+      "1 250 J."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $v = 90 \\text{ km/h} = 90 : 3,6 = 25 \\text{ m/s}$.\n$W_đ = \\dfrac{1}{2} \\times 4 \\times 25^2 = 1 250 \\text{ J}$."
+    },
+    {
+     "ma_cau": "K09010102033",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $6$ kg, chuyển động với tốc độ $108$ km/h. Tính động năng của vật.",
+     "lua_chon": [
+      "34 992 J.",
+      "453 496,32 J.",
+      "90 J.",
+      "2 700 J."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $v = 108$ km/h $= 108 : 3,6 = 30$ m/s.\n$W_d = \\dfrac{1}{2} \\times 6 \\times 30^2 = 2700$ J."
+    },
+    {
+     "ma_cau": "K09010102031",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $2 \\text{ kg}$, chuyển động với tốc độ $72 \\text{ km/h}$. Tính động năng của vật.",
+     "lua_chon": [
+      "400 J.",
+      "5 184 J.",
+      "67 184,64 J.",
+      "20 J."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $v = 72 \\text{ km/h} = 72 : 3,6 = 20 \\text{ m/s}$.\n$W_đ = \\dfrac{1}{2} \\times 2 \\times 20^2 = 400 \\text{ J}$."
+    },
+    {
+     "ma_cau": "K09010102029",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $3 \\text{ kg}$, chuyển động với tốc độ $36 \\text{ km/h}$. Tính động năng của vật.",
+     "lua_chon": [
+      "1 944 J.",
+      "150 J.",
+      "25 194,24 J.",
+      "15 J."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $v = 36 \\text{ km/h} = 36 : 3,6 = 10 \\text{ m/s}$.\n$W_đ = \\dfrac{1}{2} \\times 3 \\times 10^2 = 150 \\text{ J}$."
+    },
+    {
+     "ma_cau": "K09010102035",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $8$ kg, chuyển động với tốc độ $18$ km/h. Tính động năng của vật.",
+     "lua_chon": [
+      "1 296 J.",
+      "100 J.",
+      "16 796,16 J.",
+      "20 J."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $v = 18$ km/h $= 18 : 3,6 = 5$ m/s.\n$W_d = \\dfrac{1}{2} \\times 8 \\times 5^2 = 100$ J."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00977",
+   "nhom_id": "KNB00410",
+   "thu_tu": 4,
+   "dang": "CẢ KHỐI LƯỢNG VÀ TỐC ĐỘ ĐỀU CẦN ĐỔI ĐƠN VỊ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010102038",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $1\\ 500\\text{ g}$, chuyển động với tốc độ $54\\text{ km/h}$. Tính động năng của vật.",
+     "lua_chon": [
+      "$2\\ 187\\ 000\\text{ J}$.",
+      "$\\text{2}\\ 187\\text{ J}$.",
+      "$\\text{168,75}\\text{ J}$.",
+      "$\\text{168}\\ 750\\text{ J}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $m = 1\\ 500\\text{ g} = 1,5\\text{ kg}$; $v = 54\\text{ km/h} = 15\\text{ m/s}$.\n$\\text{W}_d = \\dfrac{1}{2} \\times 1,5 \\times 15^2 = 168,75\\text{ J}$."
+    },
+    {
+     "ma_cau": "K09010102040",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 2 500 g, chuyển động với tốc độ 108 km/h. Tính động năng của vật.",
+     "lua_chon": [
+      "1 125 J.",
+      "14 580 000 J.",
+      "14 580 J.",
+      "1 125 000 J."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $m = 2\\ 500\\ \\mathrm{g} = 2,5\\ \\mathrm{kg}$; $v = 108\\ \\mathrm{km/h} = 30\\ \\mathrm{m/s}$.\n$W_đ = \\dfrac{1}{2} \\times 2,5 \\times 30^2 = 1\\ 125\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010102042",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 3 500 g, chuyển động với tốc độ 18 km/h. Tính động năng của vật.",
+     "lua_chon": [
+      "43,75 J.",
+      "567 000 J.",
+      "567 J.",
+      "43 750 J."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $m = 3\\ 500\\ \\mathrm{g} = 3,5\\ \\mathrm{kg}$; $v = 18\\ \\mathrm{km/h} = 5\\ \\mathrm{m/s}$.\n$W_đ = \\dfrac{1}{2} \\times 3,5 \\times 5^2 = 43,75\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010102039",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $0,5$ tấn, chuyển động với tốc độ $90\\text{ km/h}$. Tính động năng của vật.",
+     "lua_chon": [
+      "$156\\ 250\\text{ J}$.",
+      "$\\text{2}\\ 025\\text{ J}$.",
+      "$\\text{2}\\ 025\\ 000\\text{ J}$.",
+      "$\\text{156,25}\\text{ J}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $m = 0,5\\text{ tấn} = 500\\text{ kg}$; $v = 90\\text{ km/h} = 25\\text{ m/s}$.\n$\\text{W}_d = \\dfrac{1}{2} \\times 500 \\times 25^2 = 156\\ 250\\text{ J}$."
+    },
+    {
+     "ma_cau": "K09010102041",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 0,2 tấn, chuyển động với tốc độ 36 km/h. Tính động năng của vật.",
+     "lua_chon": [
+      "129,6 J.",
+      "129 600 J.",
+      "10 000 J.",
+      "10 J."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $m = 0,2\\ \\mathrm{tấn} = 200\\ \\mathrm{kg}$; $v = 36\\ \\mathrm{km/h} = 10\\ \\mathrm{m/s}$.\n$W_đ = \\dfrac{1}{2} \\times 200 \\times 10^2 = 10\\ 000\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010102037",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $500\\text{ g}$, chuyển động với tốc độ $126\\text{ km/h}$. Tính động năng của vật.",
+     "lua_chon": [
+      "$3\\ 969\\ 000\\text{ J}$.",
+      "$\\text{306,25}\\text{ J}$.",
+      "$\\text{3}\\ 969\\text{ J}$.",
+      "$\\text{306}\\ 250\\text{ J}$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $m = 500\\text{ g} = 0,5\\text{ kg}$; $v = 126\\text{ km/h} = 35\\text{ m/s}$.\n$\\text{W}_d = \\dfrac{1}{2} \\times 0,5 \\times 35^2 = 306,25\\text{ J}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00978",
+   "nhom_id": "KNB00410",
+   "thu_tu": 5,
+   "dang": "KHỐI LƯỢNG CHO Ở ĐƠN VỊ TẠ HOẶC YẾN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010102047",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng 1 tạ, chuyển động với tốc độ 5 m/s. Tính động năng của vật.",
+     "dap_an": "1250",
+     "loi_giai": "Đổi $m = 1$ tạ $= 100$ kg ($1$ tạ $= 100$ kg).\n$W_đ = \\dfrac{1}{2} \\times 100 \\times 5^2 = 1250$ J."
+    },
+    {
+     "ma_cau": "K09010102046",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng 8 yến, chuyển động với tốc độ 5 m/s. Tính động năng của vật.",
+     "dap_an": "1000",
+     "loi_giai": "Đổi $m = 8$ yến $= 80$ kg ($1$ yến $= 10$ kg).\n$W_đ = \\dfrac{1}{2} \\times 80 \\times 5^2 = 1000$ J."
+    },
+    {
+     "ma_cau": "K09010102045",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng 2 tạ, chuyển động với tốc độ 4 m/s. Tính động năng của vật.",
+     "dap_an": "1600",
+     "loi_giai": "Đổi $m = 2$ tạ $= 200$ kg ($1$ tạ $= 100$ kg).\n$W_đ = \\dfrac{1}{2} \\times 200 \\times 4^2 = 1600$ J."
+    },
+    {
+     "ma_cau": "K09010102044",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng 5 yến, chuyển động với tốc độ 6 m/s. Tính động năng của vật.",
+     "dap_an": "900",
+     "loi_giai": "Đổi $m = 5$ yến $= 50$ kg ($1$ yến $= 10$ kg).\n$W_đ = \\dfrac{1}{2} \\times 50 \\times 6^2 = 900$ J."
+    },
+    {
+     "ma_cau": "K09010102043",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng 3 tạ, chuyển động với tốc độ 4 m/s. Tính động năng của vật.",
+     "dap_an": "2400",
+     "loi_giai": "Đổi $m = 3$ tạ $= 300$ kg ($1$ tạ $= 100$ kg).\n$W_đ = \\dfrac{1}{2} \\times 300 \\times 4^2 = 2400$ J."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00979",
+   "nhom_id": "KNB00410",
+   "thu_tu": 6,
+   "dang": "TỐC ĐỘ CHO Ở ĐƠN VỊ CENTIMÉT HOẶC MILIMÉT TRÊN GIÂY",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010102048",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng 4 kg, chuyển động với tốc độ 300 cm/s. Tính động năng của vật.",
+     "dap_an": "18",
+     "loi_giai": "Đổi $v = 300 \\mathrm{\\ cm/s} = 3 \\mathrm{\\ m/s}$ ($1 \\mathrm{\\ cm/s} = 0,01 \\mathrm{\\ m/s}$). $W_đ = \\dfrac{1}{2} \\times 4 \\times 3^2 = 18 \\mathrm{\\ J}$."
+    },
+    {
+     "ma_cau": "K09010102049",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng 2 kg, chuyển động với tốc độ 50 000 mm/s. Tính động năng của vật.",
+     "dap_an": "2500",
+     "loi_giai": "Đổi $v = 50 \\: 000 \\mathrm{\\ mm/s} = 50 \\mathrm{\\ m/s}$ ($1 \\mathrm{\\ mm/s} = 0,001 \\mathrm{\\ m/s}$). $W_đ = \\dfrac{1}{2} \\times 2 \\times 50^2 = 2500 \\mathrm{\\ J}$."
+    },
+    {
+     "ma_cau": "K09010102050",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng 6 kg, chuyển động với tốc độ 200 cm/s. Tính động năng của vật.",
+     "dap_an": "12",
+     "loi_giai": "Đổi $v = 200 \\mathrm{\\ cm/s} = 2 \\mathrm{\\ m/s}$ ($1 \\mathrm{\\ cm/s} = 0,01 \\mathrm{\\ m/s}$). $W_đ = \\dfrac{1}{2} \\times 6 \\times 2^2 = 12 \\mathrm{\\ J}$."
+    },
+    {
+     "ma_cau": "K09010102051",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng 3 kg, chuyển động với tốc độ 80 000 mm/s. Tính động năng của vật.",
+     "dap_an": "9600",
+     "loi_giai": "Đổi $v = 80 \\: 000 \\mathrm{\\ mm/s} = 80 \\mathrm{\\ m/s}$ ($1 \\mathrm{\\ mm/s} = 0,001 \\mathrm{\\ m/s}$). $W_đ = \\dfrac{1}{2} \\times 3 \\times 80^2 = 9600 \\mathrm{\\ J}$."
+    },
+    {
+     "ma_cau": "K09010102052",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng 7 kg, chuyển động với tốc độ 400 cm/s. Tính động năng của vật.",
+     "dap_an": "56",
+     "loi_giai": "Đổi $v = 400 \\mathrm{\\ cm/s} = 4 \\mathrm{\\ m/s}$ ($1 \\mathrm{\\ cm/s} = 0,01 \\mathrm{\\ m/s}$). $W_đ = \\dfrac{1}{2} \\times 7 \\times 4^2 = 56 \\mathrm{\\ J}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00980",
+   "nhom_id": "KNB00410",
+   "thu_tu": 7,
+   "dang": "CHO TRỌNG LƯỢNG THAY VÌ KHỐI LƯỢNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010102054",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có trọng lượng $500\\ \\mathrm{N}$, chuyển động với tốc độ $4\\ \\mathrm{m/s}$. Lấy $\\mathrm{g}=10\\ \\mathrm{m/s^2}$, tính động năng của vật.",
+     "dap_an": "400",
+     "loi_giai": "Khối lượng $\\mathrm{m}=\\mathrm{P}:10=500:10=50\\ \\mathrm{kg}$.\n$\\mathrm{W_d}=1/2 \\times 50 \\times 4^2=400\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010102053",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có trọng lượng $200\\ \\mathrm{N}$, chuyển động với tốc độ $3\\ \\mathrm{m/s}$. Lấy $\\mathrm{g}=10\\ \\mathrm{m/s^2}$, tính động năng của vật.",
+     "dap_an": "90",
+     "loi_giai": "Khối lượng $\\mathrm{m}=\\mathrm{P}:10=200:10=20\\ \\mathrm{kg}$.\n$\\mathrm{W_d}=1/2 \\times 20 \\times 3^2=90\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010102057",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có trọng lượng $800\\ \\mathrm{N}$, chuyển động với tốc độ $2\\ \\mathrm{m/s}$. Lấy $\\mathrm{g}=10\\ \\mathrm{m/s^2}$, tính động năng của vật.",
+     "dap_an": "160",
+     "loi_giai": "Khối lượng $\\mathrm{m}=\\mathrm{P}:10=800:10=80\\ \\mathrm{kg}$.\n$\\mathrm{W_d}=1/2 \\times 80 \\times 2^2=160\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010102055",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có trọng lượng $100\\ \\mathrm{N}$, chuyển động với tốc độ $6\\ \\mathrm{m/s}$. Lấy $\\mathrm{g}=10\\ \\mathrm{m/s^2}$, tính động năng của vật.",
+     "dap_an": "180",
+     "loi_giai": "Khối lượng $\\mathrm{m}=\\mathrm{P}:10=100:10=10\\ \\mathrm{kg}$.\n$\\mathrm{W_d}=1/2 \\times 10 \\times 6^2=180\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010102056",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có trọng lượng $300\\ \\mathrm{N}$, chuyển động với tốc độ $5\\ \\mathrm{m/s}$. Lấy $\\mathrm{g}=10\\ \\mathrm{m/s^2}$, tính động năng của vật.",
+     "dap_an": "375",
+     "loi_giai": "Khối lượng $\\mathrm{m}=\\mathrm{P}:10=300:10=30\\ \\mathrm{kg}$.\n$\\mathrm{W_d}=1/2 \\times 30 \\times 5^2=375\\ \\mathrm{J}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00981",
+   "nhom_id": "KNB00410",
+   "thu_tu": 8,
+   "dang": "KHỐI LƯỢNG CHO QUA TỈ LỆ PHẦN TRĂM CỦA MỘT KHỐI LƯỢNG CHUẨN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010102062",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng bằng 40% khối lượng của một vật khác nặng 50 kg, chuyển động với tốc độ 6 m/s. Tính động năng của vật.",
+     "dap_an": "360",
+     "loi_giai": "Khối lượng vật = $40\\% \\times 50 = 20\\ \\mathrm{kg}$.\nĐộng năng $W_d = \\dfrac{1}{2} \\times 20 \\times 6^2 = 360\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010102059",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng bằng 75% khối lượng của một vật khác nặng 20 kg, chuyển động với tốc độ 4 m/s. Tính động năng của vật.",
+     "dap_an": "120",
+     "loi_giai": "Khối lượng vật = $75\\% \\times 20 = 15\\ \\mathrm{kg}$.\nĐộng năng $W_d = \\dfrac{1}{2} \\times 15 \\times 4^2 = 120\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010102060",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng bằng 50% khối lượng của một vật khác nặng 60 kg, chuyển động với tốc độ 4 m/s. Tính động năng của vật.",
+     "dap_an": "240",
+     "loi_giai": "Khối lượng vật = $50\\% \\times 60 = 30\\ \\mathrm{kg}$.\nĐộng năng $W_d = \\dfrac{1}{2} \\times 30 \\times 4^2 = 240\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010102061",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng bằng 80% khối lượng của một vật khác nặng 25 kg, chuyển động với tốc độ 2 m/s. Tính động năng của vật.",
+     "dap_an": "40",
+     "loi_giai": "Khối lượng vật = $80\\% \\times 25 = 20\\ \\mathrm{kg}$.\nĐộng năng $W_d = \\dfrac{1}{2} \\times 20 \\times 2^2 = 40\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010102058",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng bằng 60% khối lượng của một vật khác nặng 40 kg, chuyển động với tốc độ 3 m/s. Tính động năng của vật.",
+     "dap_an": "108",
+     "loi_giai": "Khối lượng vật = $60\\% \\times 40 = 24\\ \\mathrm{kg}$.\nĐộng năng $W_d = \\dfrac{1}{2} \\times 24 \\times 3^2 = 108\\ \\mathrm{J}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00982",
+   "nhom_id": "KNB00411",
+   "thu_tu": 1,
+   "dang": "CHO ĐỘNG NĂNG VÀ TỐC ĐỘ, TÍNH KHỐI LƯỢNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010103001",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng $1\\ 470\\ \\mathrm{J}$, chuyển động với tốc độ $14\\ \\mathrm{m/s}$. Tính khối lượng của vật.",
+     "lua_chon": [
+      "7,5 kg.",
+      "15 kg.",
+      "210 kg.",
+      "144 060 kg."
+     ],
+     "dap_an": "15",
+     "loi_giai": "Động năng: $m = 2W_d : v^2 = 2 \\times 1\\ 470 : 14^2 = 15\\ \\mathrm{kg}$."
+    },
+    {
+     "ma_cau": "K09010103006",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng 450 J, chuyển động với tốc độ 10 m/s. Tính khối lượng của vật.",
+     "lua_chon": [
+      "4,5 kg.",
+      "90 kg.",
+      "9 kg.",
+      "22 500 kg."
+     ],
+     "dap_an": "9",
+     "loi_giai": "$m = 2W_d : v^2 = 2 \\times 450 : 10^2 = 9$ kg."
+    },
+    {
+     "ma_cau": "K09010103007",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng 245 J, chuyển động với tốc độ 7 m/s. Tính khối lượng của vật.",
+     "lua_chon": [
+      "10 kg.",
+      "5 kg.",
+      "70 kg.",
+      "6 002,5 kg."
+     ],
+     "dap_an": "10",
+     "loi_giai": "$m = 2W_d : v^2 = 2 \\times 245 : 7^2 = 10$ kg."
+    },
+    {
+     "ma_cau": "K09010103008",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng 63 J, chuyển động với tốc độ 3 m/s. Tính khối lượng của vật.",
+     "lua_chon": [
+      "7 kg.",
+      "42 kg.",
+      "14 kg.",
+      "283,5 kg."
+     ],
+     "dap_an": "14",
+     "loi_giai": "$m = 2W_d : v^2 = 2 \\times 63 : 3^2 = 14$ kg."
+    },
+    {
+     "ma_cau": "K09010103003",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng $318,5\\ \\mathrm{J}$, chuyển động với tốc độ $7\\ \\mathrm{m/s}$. Tính khối lượng của vật.",
+     "lua_chon": [
+      "6,5 kg.",
+      "13 kg.",
+      "91 kg.",
+      "7 803,25 kg."
+     ],
+     "dap_an": "13",
+     "loi_giai": "Động năng: $m = 2W_d : v^2 = 2 \\times 318,5 : 7^2 = 13\\ \\mathrm{kg}$."
+    },
+    {
+     "ma_cau": "K09010103004",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng $1\\ 350\\ \\mathrm{J}$, chuyển động với tốc độ $15\\ \\mathrm{m/s}$. Tính khối lượng của vật.",
+     "lua_chon": [
+      "6 kg.",
+      "12 kg.",
+      "180 kg.",
+      "151 875 kg."
+     ],
+     "dap_an": "12",
+     "loi_giai": "Động năng: $m = 2W_d : v^2 = 2 \\times 1\\ 350 : 15^2 = 12\\ \\mathrm{kg}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00983",
+   "nhom_id": "KNB00411",
+   "thu_tu": 2,
+   "dang": "CHO ĐỘNG NĂNG VÀ KHỐI LƯỢNG, TÍNH TỐC ĐỘ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010103010",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $14 \\text{ kg}$, động năng $1\\ 575 \\text{ J}$. Tính tốc độ của vật.",
+     "lua_chon": [
+      "$225 \\text{ m/s}$.",
+      "B. $10,61 \\text{ m/s}$.",
+      "C. $4,01 \\text{ m/s}$.",
+      "D. $15 \\text{ m/s}$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Động năng chi tiết: $v^2 = 2W_đ : m = 2 \\times 1\\ 575 : 14 = 225$, nên $v = 15 \\text{ m/s}$."
+    },
+    {
+     "ma_cau": "K09010103011",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $9 \\text{ kg}$, động năng $544,5 \\text{ J}$. Tính tốc độ của vật.",
+     "lua_chon": [
+      "$121 \\text{ m/s}$.",
+      "B. $11 \\text{ m/s}$.",
+      "C. $7,78 \\text{ m/s}$.",
+      "D. $3,67 \\text{ m/s}$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Động năng chi tiết: $v^2 = 2W_đ : m = 2 \\times 544,5 : 9 = 121$, nên $v = 11 \\text{ m/s}$."
+    },
+    {
+     "ma_cau": "K09010103016",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $4$ kg, động năng $128$ J. Tính tốc độ của vật.",
+     "lua_chon": [
+      "$64$ m/s.",
+      "$5,66$ m/s.",
+      "$8$ m/s.",
+      "$4$ m/s."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$v^2 = 2W_d : m = 2 \\times 128 : 4 = 64$, nên $v = 8$ m/s."
+    },
+    {
+     "ma_cau": "K09010103014",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $18$ kg, động năng $729$ J. Tính tốc độ của vật.",
+     "lua_chon": [
+      "$9$ m/s.",
+      "$81$ m/s.",
+      "$6,36$ m/s.",
+      "$2,12$ m/s."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$v^2 = 2W_d : m = 2 \\times 729 : 18 = 81$, nên $v = 9$ m/s."
+    },
+    {
+     "ma_cau": "K09010103012",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $14 \\text{ kg}$, động năng $28 \\text{ J}$. Tính tốc độ của vật.",
+     "lua_chon": [
+      "$2 \\text{ m/s}$.",
+      "B. $4 \\text{ m/s}$.",
+      "C. $1,41 \\text{ m/s}$.",
+      "D. $0,53 \\text{ m/s}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Động năng chi tiết: $v^2 = 2W_đ : m = 2 \\times 28 : 14 = 4$, nên $v = 2 \\text{ m/s}$."
+    },
+    {
+     "ma_cau": "K09010103013",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $16$ kg, động năng $128$ J. Tính tốc độ của vật.",
+     "lua_chon": [
+      "$16$ m/s.",
+      "$2,83$ m/s.",
+      "$4$ m/s.",
+      "$1$ m/s."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$v^2 = 2W_d : m = 2 \\times 128 : 16 = 16$, nên $v = 4$ m/s."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00984",
+   "nhom_id": "KNB00411",
+   "thu_tu": 3,
+   "dang": "ĐỘNG NĂNG CHO Ở ĐƠN VỊ KILÔJUN, TÍNH KHỐI LƯỢNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010103020",
+     "loai": "trac_nghiem",
+     "de": "Một vật có động năng $10$ kJ, chuyển động với tốc độ $5$ m/s. Tính khối lượng của vật.",
+     "lua_chon": [
+      "0,8 kg.",
+      "0 kg.",
+      "4 000 kg.",
+      "800 kg."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $W_đ = 10$ kJ $= 10 000$ J.\n$m = 2W_đ : v^2 = 2 \\times 10 000 : 5^2 = 800$ kg."
+    },
+    {
+     "ma_cau": "K09010103017",
+     "loai": "trac_nghiem",
+     "de": "Một vật có động năng $244$ kJ, chuyển động với tốc độ $20$ m/s. Tính khối lượng của vật.",
+     "lua_chon": [
+      "1,22 kg.",
+      "1 220 kg.",
+      "0 kg.",
+      "24 400 kg."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $W_đ = 244$ kJ $= 244 000$ J.\n$m = 2W_đ : v^2 = 2 \\times 244 000 : 20^2 = 1 220$ kg."
+    },
+    {
+     "ma_cau": "K09010103023",
+     "loai": "trac_nghiem",
+     "de": "Một vật có động năng $11 \\mathrm{~kJ}$, chuyển động với tốc độ $10 \\mathrm{~m/s}$. Tính khối lượng của vật.",
+     "lua_chon": [
+      "$220 \\mathrm{~kg}$.",
+      "$0,22 \\mathrm{~kg}$.",
+      "$0 \\mathrm{~kg}$.",
+      "$2 \\ 200 \\mathrm{~kg}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $W_đ = 11 \\mathrm{~kJ} = 11 \\ 000 \\mathrm{~J}$.\n$m = 2 W_đ : v^2 = 2 \\times 11 \\ 000 : 10^2 = 220 \\mathrm{~kg}$."
+    },
+    {
+     "ma_cau": "K09010103021",
+     "loai": "trac_nghiem",
+     "de": "Một vật có động năng $13 \\mathrm{~kJ}$, chuyển động với tốc độ $5 \\mathrm{~m/s}$. Tính khối lượng của vật.",
+     "lua_chon": [
+      "$1 \\ 040 \\mathrm{~kg}$.",
+      "$1,04 \\mathrm{~kg}$.",
+      "$0 \\mathrm{~kg}$.",
+      "$5 \\ 200 \\mathrm{~kg}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $W_đ = 13 \\mathrm{~kJ} = 13 \\ 000 \\mathrm{~J}$.\n$m = 2 W_đ : v^2 = 2 \\times 13 \\ 000 : 5^2 = 1 \\ 040 \\mathrm{~kg}$."
+    },
+    {
+     "ma_cau": "K09010103018",
+     "loai": "trac_nghiem",
+     "de": "Một vật có động năng $360$ kJ, chuyển động với tốc độ $20$ m/s. Tính khối lượng của vật.",
+     "lua_chon": [
+      "1,8 kg.",
+      "1 800 kg.",
+      "0 kg.",
+      "36 000 kg."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $W_đ = 360$ kJ $= 360 000$ J.\n$m = 2W_đ : v^2 = 2 \\times 360 000 : 20^2 = 1 800$ kg."
+    },
+    {
+     "ma_cau": "K09010103019",
+     "loai": "trac_nghiem",
+     "de": "Một vật có động năng $108$ kJ, chuyển động với tốc độ $15$ m/s. Tính khối lượng của vật.",
+     "lua_chon": [
+      "0,96 kg.",
+      "0 kg.",
+      "14 400 kg.",
+      "960 kg."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $W_đ = 108$ kJ $= 108 000$ J.\n$m = 2W_đ : v^2 = 2 \\times 108 000 : 15^2 = 960$ kg."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00985",
+   "nhom_id": "KNB00411",
+   "thu_tu": 4,
+   "dang": "CHO ĐỘNG NĂNG VÀ KHỐI LƯỢNG, TÍNH TỐC ĐỘ RA KM/H",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010103027",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $17$ kg, động năng $1\\ 028,5$ J. Tính tốc độ của vật ra đơn vị km/h.",
+     "lua_chon": [
+      "11 km/h.",
+      "39,6 km/h.",
+      "3,06 km/h.",
+      "435,6 km/h."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$v^2 = 2W_d:m = 2 \\times 1\\ 028,5 : 17 = 121$, nên $v = 11$ m/s. Đổi ra km/h: $v = 11 \\times 3,6 = 39,6$ km/h."
+    },
+    {
+     "ma_cau": "K09010103025",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $16$ kg, động năng $392$ J. Tính tốc độ của vật ra đơn vị km/h.",
+     "lua_chon": [
+      "7 km/h.",
+      "1,94 km/h.",
+      "176,4 km/h.",
+      "25,2 km/h."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$v^2 = 2W_d:m = 2 \\times 392 : 16 = 49$, nên $v = 7$ m/s. Đổi ra km/h: $v = 7 \\times 3,6 = 25,2$ km/h."
+    },
+    {
+     "ma_cau": "K09010103024",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $11$ kg, động năng $352$ J. Tính tốc độ của vật ra đơn vị km/h.",
+     "lua_chon": [
+      "8 km/h.",
+      "2,22 km/h.",
+      "230,4 km/h.",
+      "28,8 km/h."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$v^2 = 2W_d:m = 2 \\times 352 : 11 = 64$, nên $v = 8$ m/s. Đổi ra km/h: $v = 8 \\times 3,6 = 28,8$ km/h."
+    },
+    {
+     "ma_cau": "K09010103030",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $19 \\text{ kg}$, động năng $38 \\text{ J}$. Tính tốc độ của vật ra đơn vị $\\text{km/h}$.",
+     "lua_chon": [
+      "$2 \\text{ km/h}$.",
+      "$0,56 \\text{ km/h}$.",
+      "$7,2 \\text{ km/h}$.",
+      "$14,4 \\text{ km/h}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$v^2 = 2W_d : m = 2 \\times 38 : 19 = 4$, nên $v = 2 \\text{ m/s}$. Đổi ra $\\text{km/h}: v = 2 \\times 3,6 = 7,2 \\text{ km/h}$."
+    },
+    {
+     "ma_cau": "K09010103029",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $19 \\text{ kg}$, động năng $85,5 \\text{ J}$. Tính tốc độ của vật ra đơn vị $\\text{km/h}$.",
+     "lua_chon": [
+      "$3 \\text{ km/h}$.",
+      "$0,83 \\text{ km/h}$.",
+      "$32,4 \\text{ km/h}$.",
+      "$10,8 \\text{ km/h}$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$v^2 = 2W_d : m = 2 \\times 85,5 : 19 = 9$, nên $v = 3 \\text{ m/s}$. Đổi ra $\\text{km/h}: v = 3 \\times 3,6 = 10,8 \\text{ km/h}$."
+    },
+    {
+     "ma_cau": "K09010103026",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $10$ kg, động năng $125$ J. Tính tốc độ của vật ra đơn vị km/h.",
+     "lua_chon": [
+      "5 km/h.",
+      "1,39 km/h.",
+      "18 km/h.",
+      "90 km/h."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$v^2 = 2W_d:m = 2 \\times 125 : 10 = 25$, nên $v = 5$ m/s. Đổi ra km/h: $v = 5 \\times 3,6 = 18$ km/h."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00986",
+   "nhom_id": "KNB00411",
+   "thu_tu": 5,
+   "dang": "TÍNH KHỐI LƯỢNG VÀ ĐỔI KẾT QUẢ RA GAM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010103032",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng 288 J, chuyển động với tốc độ 12 m/s. Tính khối lượng của vật, kết quả đổi ra đơn vị gam.",
+     "dap_an": "4000",
+     "loi_giai": "$m = 2W_d : v^2 = 2 \\times 288 : 12^2 = 4\\ \\mathrm{kg} = 4000\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K09010103035",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng 1 125 J, chuyển động với tốc độ 15 m/s. Tính khối lượng của vật, kết quả đổi ra đơn vị gam.",
+     "dap_an": "10000",
+     "loi_giai": "$m = 2W_d : v^2 = 2 \\times 1\\ 125 : 15^2 = 10\\ \\mathrm{kg} = 10000\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K09010103031",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng 76,5 J, chuyển động với tốc độ 3 m/s. Tính khối lượng của vật, kết quả đổi ra đơn vị gam.",
+     "dap_an": "17000",
+     "loi_giai": "$m = 2W_d : v^2 = 2 \\times 76,5 : 3^2 = 17\\ \\mathrm{kg} = 17000\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K09010103033",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng 1 568 J, chuyển động với tốc độ 14 m/s. Tính khối lượng của vật, kết quả đổi ra đơn vị gam.",
+     "dap_an": "16000",
+     "loi_giai": "$m = 2W_d : v^2 = 2 \\times 1\\ 568 : 14^2 = 16\\ \\mathrm{kg} = 16000\\ \\mathrm{g}$."
+    },
+    {
+     "ma_cau": "K09010103034",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng 337,5 J, chuyển động với tốc độ 15 m/s. Tính khối lượng của vật, kết quả đổi ra đơn vị gam.",
+     "dap_an": "3000",
+     "loi_giai": "$m = 2W_d : v^2 = 2 \\times 337,5 : 15^2 = 3\\ \\mathrm{kg} = 3000\\ \\mathrm{g}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00987",
+   "nhom_id": "KNB00411",
+   "thu_tu": 6,
+   "dang": "TỐC ĐỘ CHO Ở ĐƠN VỊ CENTIMÉT TRÊN GIÂY, TÍNH KHỐI LƯỢNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010103039",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng 200 J, chuyển động với tốc độ 1 000 cm/s. Tính khối lượng của vật.",
+     "dap_an": "4",
+     "loi_giai": "Đổi $v = 1\\,000\\,\\mathrm{cm/s} = 10\\,\\mathrm{m/s}$.\n$m = 2W_đ : v^2 = 2 \\times 200 : 10^2 = 4\\,\\mathrm{kg}$."
+    },
+    {
+     "ma_cau": "K09010103037",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng 1 237,5 J, chuyển động với tốc độ 1 500 cm/s. Tính khối lượng của vật.",
+     "dap_an": "11",
+     "loi_giai": "Đổi $v = 1\\,500\\,\\mathrm{cm/s} = 15\\,\\mathrm{m/s}$.\n$m = 2W_đ : v^2 = 2 \\times 1\\,237,5 : 15^2 = 11\\,\\mathrm{kg}$."
+    },
+    {
+     "ma_cau": "K09010103038",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng 490 J, chuyển động với tốc độ 1 400 cm/s. Tính khối lượng của vật.",
+     "dap_an": "5",
+     "loi_giai": "Đổi $v = 1\\,400\\,\\mathrm{cm/s} = 14\\,\\mathrm{m/s}$.\n$m = 2W_đ : v^2 = 2 \\times 490 : 14^2 = 5\\,\\mathrm{kg}$."
+    },
+    {
+     "ma_cau": "K09010103036",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng 504 J, chuyển động với tốc độ 1 200 cm/s. Tính khối lượng của vật.",
+     "dap_an": "7",
+     "loi_giai": "Đổi $v = 1\\,200\\,\\mathrm{cm/s} = 12\\,\\mathrm{m/s}$.\n$m = 2W_đ : v^2 = 2 \\times 504 : 12^2 = 7\\,\\mathrm{kg}$."
+    },
+    {
+     "ma_cau": "K09010103040",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng 169 J, chuyển động với tốc độ 1 300 cm/s. Tính khối lượng của vật.",
+     "dap_an": "2",
+     "loi_giai": "Đổi $v = 1\\,300\\,\\mathrm{cm/s} = 13\\,\\mathrm{m/s}$.\n$m = 2W_đ : v^2 = 2 \\times 169 : 13^2 = 2\\,\\mathrm{kg}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00988",
+   "nhom_id": "KNB00411",
+   "thu_tu": 7,
+   "dang": "CHO TRỌNG LƯỢNG THAY VÌ KHỐI LƯỢNG, TÍNH TỐC ĐỘ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010103041",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng $136\\ \\mathrm{J}$ và trọng lượng $170\\ \\mathrm{N}$. Lấy $g=10\\ \\mathrm{m/s^2}$, tính tốc độ của vật.",
+     "dap_an": "4",
+     "loi_giai": "Khối lượng $m = P : 10 = 170 : 10 = 17\\ \\mathrm{kg}$.\n$v^2 = 2W_đ : m = 2 \\times 136 : 17 = 16$, nên $v = 4\\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010103043",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng $900\\ \\mathrm{J}$ và trọng lượng $180\\ \\mathrm{N}$. Lấy $g=10\\ \\mathrm{m/s^2}$, tính tốc độ của vật.",
+     "dap_an": "10",
+     "loi_giai": "Khối lượng $m = P : 10 = 180 : 10 = 18\\ \\mathrm{kg}$.\n$v^2 = 2W_đ : m = 2 \\times 900 : 18 = 100$, nên $v = 10\\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010103045",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng $1\\ 764\\ \\mathrm{J}$ và trọng lượng $180\\ \\mathrm{N}$. Lấy $g=10\\ \\mathrm{m/s^2}$, tính tốc độ của vật.",
+     "dap_an": "14",
+     "loi_giai": "Khối lượng $m = P : 10 = 180 : 10 = 18\\ \\mathrm{kg}$.\n$v^2 = 2W_đ : m = 2 \\times 1\\ 764 : 18 = 196$, nên $v = 14\\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010103044",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng $507\\ \\mathrm{J}$ và trọng lượng $60\\ \\mathrm{N}$. Lấy $g=10\\ \\mathrm{m/s^2}$, tính tốc độ của vật.",
+     "dap_an": "13",
+     "loi_giai": "Khối lượng $m = P : 10 = 60 : 10 = 6\\ \\mathrm{kg}$.\n$v^2 = 2W_đ : m = 2 \\times 507 : 6 = 169$, nên $v = 13\\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010103042",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng $81\\ \\mathrm{J}$ và trọng lượng $180\\ \\mathrm{N}$. Lấy $g=10\\ \\mathrm{m/s^2}$, tính tốc độ của vật.",
+     "dap_an": "3",
+     "loi_giai": "Khối lượng $m = P : 10 = 180 : 10 = 18\\ \\mathrm{kg}$.\n$v^2 = 2W_đ : m = 2 \\times 81 : 18 = 9$, nên $v = 3\\ \\mathrm{m/s}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00989",
+   "nhom_id": "KNB00411",
+   "thu_tu": 8,
+   "dang": "KHỐI LƯỢNG CHO Ở ĐƠN VỊ YẾN, TÍNH TỐC ĐỘ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010103046",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng $560 \\text{ J}$ và khối lượng $7$ yến. Tính tốc độ của vật.",
+     "dap_an": "4",
+     "loi_giai": "Đổi $m = 7 \\text{ yến} = 70 \\text{ kg}$ ($1 \\text{ yến} = 10 \\text{ kg}$). $v^2 = 2W_đ : m = 2 \\times 560 : 70 = 16$, nên $v = 4 \\text{ m/s}$."
+    },
+    {
+     "ma_cau": "K09010103050",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng $2125 \\text{ J}$ và khối lượng $17$ yến. Tính tốc độ của vật.",
+     "dap_an": "5",
+     "loi_giai": "Đổi $m = 17 \\text{ yến} = 170 \\text{ kg}$ ($1 \\text{ yến} = 10 \\text{ kg}$). $v^2 = 2W_đ : m = 2 \\times 2125 : 170 = 25$, nên $v = 5 \\text{ m/s}$."
+    },
+    {
+     "ma_cau": "K09010103047",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng $855 \\text{ J}$ và khối lượng $19$ yến. Tính tốc độ của vật.",
+     "dap_an": "3",
+     "loi_giai": "Đổi $m = 19 \\text{ yến} = 190 \\text{ kg}$ ($1 \\text{ yến} = 10 \\text{ kg}$). $v^2 = 2W_đ : m = 2 \\times 855 : 190 = 9$, nên $v = 3 \\text{ m/s}$."
+    },
+    {
+     "ma_cau": "K09010103048",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng $4800 \\text{ J}$ và khối lượng $15$ yến. Tính tốc độ của vật.",
+     "dap_an": "8",
+     "loi_giai": "Đổi $m = 15 \\text{ yến} = 150 \\text{ kg}$ ($1 \\text{ yến} = 10 \\text{ kg}$). $v^2 = 2W_đ : m = 2 \\times 4800 : 150 = 64$, nên $v = 8 \\text{ m/s}$."
+    },
+    {
+     "ma_cau": "K09010103049",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng $2160 \\text{ J}$ và khối lượng $3$ yến. Tính tốc độ của vật.",
+     "dap_an": "12",
+     "loi_giai": "Đổi $m = 3 \\text{ yến} = 30 \\text{ kg}$ ($1 \\text{ yến} = 10 \\text{ kg}$). $v^2 = 2W_đ : m = 2 \\times 2160 : 30 = 144$, nên $v = 12 \\text{ m/s}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00990",
+   "nhom_id": "KNB00412",
+   "thu_tu": 1,
+   "dang": "KHỐI LƯỢNG THAY ĐỔI K LẦN, TỐC ĐỘ KHÔNG ĐỔI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010104002",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động, nếu tốc độ giữ nguyên và khối lượng tăng 3 lần thì động năng của vật thay đổi bao nhiêu lần?",
+     "lua_chon": [
+      "9 lần.",
+      "0,33 lần.",
+      "3 lần.",
+      "1,5 lần."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Động năng: $W_\\mathrm{đ} = \\dfrac{1}{2}mv^2$, tốc độ không đổi nên $W_\\mathrm{đ}$ tỉ lệ thuận với $m$. Khối lượng tăng 3 lần thì động năng tăng 3 lần."
+    },
+    {
+     "ma_cau": "K09010104004",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động, nếu tốc độ giữ nguyên và khối lượng tăng 5 lần thì động năng của vật thay đổi bao nhiêu lần?",
+     "lua_chon": [
+      "5 lần.",
+      "25 lần.",
+      "0,2 lần.",
+      "2,5 lần."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Động năng: $W_\\mathrm{đ} = \\dfrac{1}{2}mv^2$, tốc độ không đổi nên $W_\\mathrm{đ}$ tỉ lệ thuận với $m$. Khối lượng tăng 5 lần thì động năng tăng 5 lần."
+    },
+    {
+     "ma_cau": "K09010104006",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động, nếu tốc độ giữ nguyên và khối lượng tăng 7 lần thì động năng của vật thay đổi bao nhiêu lần?",
+     "lua_chon": [
+      "49 lần.",
+      "0,14 lần.",
+      "7 lần.",
+      "3,5 lần."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Động năng: $W_\\mathrm{d} = \\dfrac{1}{2}mv^2$, tốc độ không đổi nên $W_\\mathrm{d}$ tỉ lệ thuận với $m$. Khối lượng tăng 7 lần thì động năng tăng 7 lần."
+    },
+    {
+     "ma_cau": "K09010104007",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động, nếu tốc độ giữ nguyên và khối lượng tăng 8 lần thì động năng của vật thay đổi bao nhiêu lần?",
+     "lua_chon": [
+      "8 lần.",
+      "64 lần.",
+      "0,12 lần.",
+      "4 lần."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Động năng: $W_\\mathrm{d} = \\dfrac{1}{2}mv^2$, tốc độ không đổi nên $W_\\mathrm{d}$ tỉ lệ thuận với $m$. Khối lượng tăng 8 lần thì động năng tăng 8 lần."
+    },
+    {
+     "ma_cau": "K09010104005",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động, nếu tốc độ giữ nguyên và khối lượng tăng 6 lần thì động năng của vật thay đổi bao nhiêu lần?",
+     "lua_chon": [
+      "36 lần.",
+      "0,17 lần.",
+      "6 lần.",
+      "3 lần."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Động năng: $W_\\mathrm{d} = \\dfrac{1}{2}mv^2$, tốc độ không đổi nên $W_\\mathrm{d}$ tỉ lệ thuận với $m$. Khối lượng tăng 6 lần thì động năng tăng 6 lần."
+    },
+    {
+     "ma_cau": "K09010104008",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động, nếu tốc độ giữ nguyên và khối lượng tăng 9 lần thì động năng của vật thay đổi bao nhiêu lần?",
+     "lua_chon": [
+      "81 lần.",
+      "9 lần.",
+      "0,11 lần.",
+      "4,5 lần."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Động năng: $W_\\mathrm{d} = \\dfrac{1}{2}mv^2$, tốc độ không đổi nên $W_\\mathrm{d}$ tỉ lệ thuận với $m$. Khối lượng tăng 9 lần thì động năng tăng 9 lần."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00991",
+   "nhom_id": "KNB00412",
+   "thu_tu": 2,
+   "dang": "TỐC ĐỘ THAY ĐỔI K LẦN, KHỐI LƯỢNG KHÔNG ĐỔI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010104012",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động, nếu khối lượng giữ nguyên và tốc độ tăng 6 lần thì động năng của vật thay đổi bao nhiêu lần?",
+     "lua_chon": [
+      "6 lần.",
+      "36 lần.",
+      "12 lần.",
+      "0,17 lần."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$W_\\mathrm{d} = \\dfrac{1}{2}mv^2$, khối lượng không đổi nên $W_\\mathrm{d}$ tỉ lệ thuận với $v^2$. Tốc độ tăng 6 lần thì động năng tăng $6^2 = 36$ lần."
+    },
+    {
+     "ma_cau": "K09010104013",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động, nếu khối lượng giữ nguyên và tốc độ tăng 7 lần thì động năng của vật thay đổi bao nhiêu lần?",
+     "lua_chon": [
+      "49 lần.",
+      "7 lần.",
+      "14 lần.",
+      "0,14 lần."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$W_\\mathrm{d} = \\dfrac{1}{2}mv^2$, khối lượng không đổi nên $W_\\mathrm{d}$ tỉ lệ thuận với $v^2$. Tốc độ tăng 7 lần thì động năng tăng $7^2 = 49$ lần."
+    },
+    {
+     "ma_cau": "K09010104015",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động, nếu khối lượng giữ nguyên và tốc độ tăng 9 lần thì động năng của vật thay đổi bao nhiêu lần?",
+     "lua_chon": [
+      "9 lần.",
+      "18 lần.",
+      "0,11 lần.",
+      "81 lần."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$W_\\mathrm{d} = \\dfrac{1}{2}mv^2$, khối lượng không đổi nên $W_\\mathrm{d}$ tỉ lệ thuận với $v^2$. Tốc độ tăng 9 lần thì động năng tăng $9^2 = 81$ lần."
+    },
+    {
+     "ma_cau": "K09010104011",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động, nếu khối lượng giữ nguyên và tốc độ tăng 5 lần thì động năng của vật thay đổi bao nhiêu lần?",
+     "lua_chon": [
+      "25 lần.",
+      "5 lần.",
+      "10 lần.",
+      "0,2 lần."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$W_\\mathrm{d} = \\dfrac{1}{2}mv^2$, khối lượng không đổi nên $W_\\mathrm{d}$ tỉ lệ thuận với $v^2$. Tốc độ tăng 5 lần thì động năng tăng $5^2 = 25$ lần."
+    },
+    {
+     "ma_cau": "K09010104016",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động, nếu khối lượng giữ nguyên và tốc độ tăng 10 lần thì động năng của vật thay đổi bao nhiêu lần?",
+     "lua_chon": [
+      "10 lần.",
+      "20 lần.",
+      "100 lần.",
+      "0,1 lần."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$W_\\mathrm{d} = \\dfrac{1}{2}mv^2$, khối lượng không đổi nên $W_\\mathrm{d}$ tỉ lệ thuận với $v^2$. Tốc độ tăng 10 lần thì động năng tăng $10^2 = 100$ lần."
+    },
+    {
+     "ma_cau": "K09010104014",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động, nếu khối lượng giữ nguyên và tốc độ tăng 8 lần thì động năng của vật thay đổi bao nhiêu lần?",
+     "lua_chon": [
+      "8 lần.",
+      "64 lần.",
+      "16 lần.",
+      "0,12 lần."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$W_\\mathrm{d} = \\dfrac{1}{2}mv^2$, khối lượng không đổi nên $W_\\mathrm{d}$ tỉ lệ thuận với $v^2$. Tốc độ tăng 8 lần thì động năng tăng $8^2 = 64$ lần."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00992",
+   "nhom_id": "KNB00412",
+   "thu_tu": 3,
+   "dang": "KHỐI LƯỢNG VÀ TỐC ĐỘ CÙNG THAY ĐỔI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010104018",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động, nếu khối lượng tăng 3 lần và đồng thời tốc độ tăng 2 lần thì động năng của vật tăng bao nhiêu lần?",
+     "lua_chon": [
+      "6 lần.",
+      "36 lần.",
+      "4 lần.",
+      "12 lần."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$W_d = \\dfrac{1}{2}mv^2$. Khối lượng tăng 3 lần, tốc độ tăng 2 lần nên động năng tăng $3 \\times 2^2 = 12$ lần."
+    },
+    {
+     "ma_cau": "K09010104022",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động, nếu khối lượng tăng 4 lần và đồng thời tốc độ tăng 3 lần thì động năng của vật tăng bao nhiêu lần?",
+     "lua_chon": [
+      "12 lần.",
+      "144 lần.",
+      "36 lần.",
+      "9 lần."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$W_đ = \\dfrac{1}{2}mv^2$. Khối lượng tăng 4 lần, tốc độ tăng 3 lần nên động năng tăng $4 \\times 3^2 = 36$ lần."
+    },
+    {
+     "ma_cau": "K09010104019",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động, nếu khối lượng tăng 2 lần và đồng thời tốc độ tăng 4 lần thì động năng của vật tăng bao nhiêu lần?",
+     "lua_chon": [
+      "8 lần.",
+      "32 lần.",
+      "64 lần.",
+      "16 lần."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$W_d = \\dfrac{1}{2}mv^2$. Khối lượng tăng 2 lần, tốc độ tăng 4 lần nên động năng tăng $2 \\times 4^2 = 32$ lần."
+    },
+    {
+     "ma_cau": "K09010104023",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động, nếu khối lượng tăng 2 lần và đồng thời tốc độ tăng 5 lần thì động năng của vật tăng bao nhiêu lần?",
+     "lua_chon": [
+      "10 lần.",
+      "100 lần.",
+      "25 lần.",
+      "50 lần."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$W_đ = \\dfrac{1}{2}mv^2$. Khối lượng tăng 2 lần, tốc độ tăng 5 lần nên động năng tăng $2 \\times 5^2 = 50$ lần."
+    },
+    {
+     "ma_cau": "K09010104021",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động, nếu khối lượng tăng 3 lần và đồng thời tốc độ tăng 4 lần thì động năng của vật tăng bao nhiêu lần?",
+     "lua_chon": [
+      "12 lần.",
+      "144 lần.",
+      "16 lần.",
+      "48 lần."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$W_đ = \\dfrac{1}{2}mv^2$. Khối lượng tăng 3 lần, tốc độ tăng 4 lần nên động năng tăng $3 \\times 4^2 = 48$ lần."
+    },
+    {
+     "ma_cau": "K09010104020",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động, nếu khối lượng tăng 4 lần và đồng thời tốc độ tăng 2 lần thì động năng của vật tăng bao nhiêu lần?",
+     "lua_chon": [
+      "8 lần.",
+      "16 lần.",
+      "64 lần.",
+      "4 lần."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$W_d = \\dfrac{1}{2}mv^2$. Khối lượng tăng 4 lần, tốc độ tăng 2 lần nên động năng tăng $4 \\times 2^2 = 16$ lần."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00993",
+   "nhom_id": "KNB00412",
+   "thu_tu": 4,
+   "dang": "SO SÁNH ĐỘNG NĂNG GIỮA HAI VẬT",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010104027",
+     "loai": "trac_nghiem",
+     "de": "Vật A có khối lượng gấp $6$ lần và tốc độ gấp $2$ lần vật B. Hỏi động năng vật A gấp bao nhiêu lần động năng vật B?",
+     "lua_chon": [
+      "12 lần.",
+      "144 lần.",
+      "4 lần.",
+      "24 lần."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Động năng tỉ lệ với khối lượng và bình phương vận tốc\n$W_{dA} : W_{dB} = (m_A : m_B) \\times (v_A : v_B)^2 = 6 \\times 2^2 = 24$ lần."
+    },
+    {
+     "ma_cau": "K09010104030",
+     "loai": "trac_nghiem",
+     "de": "Vật A có khối lượng gấp 3 lần và tốc độ gấp 6 lần vật B. Hỏi động năng vật A gấp bao nhiêu lần động năng vật B?",
+     "lua_chon": [
+      "18 lần.",
+      "324 lần.",
+      "108 lần.",
+      "36 lần."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$W_{đA} : W_{đB} = (m_A : m_B) \\times (v_A : v_B)^2 = 3 \\times 6^2 = 108$ lần."
+    },
+    {
+     "ma_cau": "K09010104029",
+     "loai": "trac_nghiem",
+     "de": "Vật A có khối lượng gấp 5 lần và tốc độ gấp 4 lần vật B. Hỏi động năng vật A gấp bao nhiêu lần động năng vật B?",
+     "lua_chon": [
+      "20 lần.",
+      "400 lần.",
+      "16 lần.",
+      "80 lần."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$W_{đA} : W_{đB} = (m_A : m_B) \\times (v_A : v_B)^2 = 5 \\times 4^2 = 80$ lần."
+    },
+    {
+     "ma_cau": "K09010104028",
+     "loai": "trac_nghiem",
+     "de": "Vật A có khối lượng gấp 4 lần và tốc độ gấp 5 lần vật B. Hỏi động năng vật A gấp bao nhiêu lần động năng vật B?",
+     "lua_chon": [
+      "20 lần.",
+      "400 lần.",
+      "100 lần.",
+      "25 lần."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$W_{đA} : W_{đB} = (m_A : m_B) \\times (v_A : v_B)^2 = 4 \\times 5^2 = 100$ lần."
+    },
+    {
+     "ma_cau": "K09010104024",
+     "loai": "trac_nghiem",
+     "de": "Vật A có khối lượng gấp $3$ lần và tốc độ gấp $5$ lần vật B. Hỏi động năng vật A gấp bao nhiêu lần động năng vật B?",
+     "lua_chon": [
+      "75 lần.",
+      "15 lần.",
+      "225 lần.",
+      "25 lần."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Động năng tỉ lệ với khối lượng và bình phương vận tốc\n$W_{dA}: W_{dB} = (m_A : m_B) \\times (v_A : v_B)^2 = 3 \\times 5^2 = 75$ lần."
+    },
+    {
+     "ma_cau": "K09010104025",
+     "loai": "trac_nghiem",
+     "de": "Vật A có khối lượng gấp $5$ lần và tốc độ gấp $3$ lần vật B. Hỏi động năng vật A gấp bao nhiêu lần động năng vật B?",
+     "lua_chon": [
+      "15 lần.",
+      "225 lần.",
+      "45 lần.",
+      "9 lần."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Động năng tỉ lệ với khối lượng và bình phương vận tốc\n$W_{dA} : W_{dB} = (m_A : m_B) \\times (v_A : v_B)^2 = 5 \\times 3^2 = 45$ lần."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00994",
+   "nhom_id": "KNB00412",
+   "thu_tu": 5,
+   "dang": "TỐC ĐỘ GIẢM CÒN MỘT PHẦN N, TÍNH PHẦN TRĂM ĐỘNG NĂNG GIẢM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010104032",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động, khối lượng không đổi, nếu tốc độ giảm còn $1/4$ tốc độ ban đầu thì động năng của vật giảm bao nhiêu phần trăm so với ban đầu?",
+     "dap_an": "93.75",
+     "loi_giai": "Tốc độ còn $1/4$ nên $W_đ$ còn $(1/4)^2 = 1/16$ so với ban đầu, tức giảm $1 - 1/16 = 93,75\\%$ so với ban đầu."
+    },
+    {
+     "ma_cau": "K09010104031",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động, khối lượng không đổi, nếu tốc độ giảm còn $1/2$ tốc độ ban đầu thì động năng của vật giảm bao nhiêu phần trăm so với ban đầu?",
+     "dap_an": "75",
+     "loi_giai": "Tốc độ còn $1/2$ nên $W_đ$ còn $(1/2)^2 = 1/4$ so với ban đầu, tức giảm $1 - 1/4 = 75\\%$ so với ban đầu."
+    },
+    {
+     "ma_cau": "K09010104035",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động, khối lượng không đổi, nếu tốc độ giảm còn $1/20$ tốc độ ban đầu thì động năng của vật giảm bao nhiêu phần trăm so với ban đầu?",
+     "dap_an": "99.75",
+     "loi_giai": "Tốc độ còn $1/20$ nên $W_đ$ còn $(1/20)^2 = 1/400$ so với ban đầu, tức giảm $1 - 1/400 = 99,75\\%$ so với ban đầu."
+    },
+    {
+     "ma_cau": "K09010104034",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động, khối lượng không đổi, nếu tốc độ giảm còn $1/10$ tốc độ ban đầu thì động năng của vật giảm bao nhiêu phần trăm so với ban đầu?",
+     "dap_an": "99",
+     "loi_giai": "Tốc độ còn $1/10$ nên $W_đ$ còn $(1/10)^2 = 1/100$ so với ban đầu, tức giảm $1 - 1/100 = 99\\%$ so với ban đầu."
+    },
+    {
+     "ma_cau": "K09010104033",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động, khối lượng không đổi, nếu tốc độ giảm còn $1/5$ tốc độ ban đầu thì động năng của vật giảm bao nhiêu phần trăm so với ban đầu?",
+     "dap_an": "96",
+     "loi_giai": "Tốc độ còn $1/5$ nên $W_đ$ còn $(1/5)^2 = 1/25$ so với ban đầu, tức giảm $1 - 1/25 = 96\\%$ so với ban đầu."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00995",
+   "nhom_id": "KNB00412",
+   "thu_tu": 6,
+   "dang": "KHỐI LƯỢNG TĂNG THÊM P%, TÍNH PHẦN TRĂM ĐỘNG NĂNG TĂNG THÊM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010104037",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động, tốc độ không đổi, nếu khối lượng tăng thêm 35% so với ban đầu thì động năng của vật tăng thêm bao nhiêu phần trăm so với ban đầu?",
+     "dap_an": "35",
+     "loi_giai": "Tốc độ không đổi nên $W_đ$ tỉ lệ thuận với m. Khối lượng tăng thêm 35% thì động năng cũng tăng thêm đúng 35%."
+    },
+    {
+     "ma_cau": "K09010104039",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động, tốc độ không đổi, nếu khối lượng tăng thêm 65% so với ban đầu thì động năng của vật tăng thêm bao nhiêu phần trăm so với ban đầu?",
+     "dap_an": "65",
+     "loi_giai": "Tốc độ không đổi nên $W_đ$ tỉ lệ thuận với m. Khối lượng tăng thêm 65% thì động năng cũng tăng thêm đúng 65%."
+    },
+    {
+     "ma_cau": "K09010104036",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động, tốc độ không đổi, nếu khối lượng tăng thêm 20% so với ban đầu thì động năng của vật tăng thêm bao nhiêu phần trăm so với ban đầu?",
+     "dap_an": "20",
+     "loi_giai": "Tốc độ không đổi nên $W_đ$ tỉ lệ thuận với m. Khối lượng tăng thêm 20% thì động năng cũng tăng thêm đúng 20%."
+    },
+    {
+     "ma_cau": "K09010104040",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động, tốc độ không đổi, nếu khối lượng tăng thêm 80% so với ban đầu thì động năng của vật tăng thêm bao nhiêu phần trăm so với ban đầu?",
+     "dap_an": "80",
+     "loi_giai": "Tốc độ không đổi nên $W_đ$ tỉ lệ thuận với m. Khối lượng tăng thêm 80% thì động năng cũng tăng thêm đúng 80%."
+    },
+    {
+     "ma_cau": "K09010104038",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động, tốc độ không đổi, nếu khối lượng tăng thêm 50% so với ban đầu thì động năng của vật tăng thêm bao nhiêu phần trăm so với ban đầu?",
+     "dap_an": "50",
+     "loi_giai": "Tốc độ không đổi nên $W_đ$ tỉ lệ thuận với m. Khối lượng tăng thêm 50% thì động năng cũng tăng thêm đúng 50%."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00996",
+   "nhom_id": "KNB00412",
+   "thu_tu": 7,
+   "dang": "TỐC ĐỘ GIẢM P%, TÍNH PHẦN TRĂM ĐỘNG NĂNG GIẢM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010104041",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động, khối lượng không đổi, nếu tốc độ giảm 10% so với ban đầu thì động năng của vật giảm bao nhiêu phần trăm so với ban đầu?",
+     "dap_an": "19",
+     "loi_giai": "Tốc độ còn lại $0,9$ lần ban đầu nên $W_đ$ còn $0,9^2 = 0,81$ lần so với ban đầu, tức giảm\n$19\\%$ so với ban đầu."
+    },
+    {
+     "ma_cau": "K09010104043",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động, khối lượng không đổi, nếu tốc độ giảm 30% so với ban đầu thì động năng của vật giảm bao nhiêu phần trăm so với ban đầu?",
+     "dap_an": "51",
+     "loi_giai": "Tốc độ còn lại $0,7$ lần ban đầu nên $W_đ$ còn $0,7^2 = 0,49$ lần so với ban đầu, tức giảm\n$51\\%$ so với ban đầu."
+    },
+    {
+     "ma_cau": "K09010104045",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động, khối lượng không đổi, nếu tốc độ giảm 50% so với ban đầu thì động năng của vật giảm bao nhiêu phần trăm so với ban đầu?",
+     "dap_an": "75",
+     "loi_giai": "Tốc độ còn lại $0,5$ lần ban đầu nên $W_đ$ còn $0,5^2 = 0,25$ lần so với ban đầu, tức giảm\n$75\\%$ so với ban đầu."
+    },
+    {
+     "ma_cau": "K09010104044",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động, khối lượng không đổi, nếu tốc độ giảm 40% so với ban đầu thì động năng của vật giảm bao nhiêu phần trăm so với ban đầu?",
+     "dap_an": "64",
+     "loi_giai": "Tốc độ còn lại $0,6$ lần ban đầu nên $W_đ$ còn $0,6^2 = 0,36$ lần so với ban đầu, tức giảm\n$64\\%$ so với ban đầu."
+    },
+    {
+     "ma_cau": "K09010104042",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động, khối lượng không đổi, nếu tốc độ giảm 20% so với ban đầu thì động năng của vật giảm bao nhiêu phần trăm so với ban đầu?",
+     "dap_an": "36",
+     "loi_giai": "Tốc độ còn lại $0,8$ lần ban đầu nên $W_đ$ còn $0,8^2 = 0,64$ lần so với ban đầu, tức giảm\n$36\\%$ so với ban đầu."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00997",
+   "nhom_id": "KNB00412",
+   "thu_tu": 8,
+   "dang": "CHO TỈ SỐ ĐỘNG NĂNG VÀ TỈ SỐ KHỐI LƯỢNG, TÍNH TỈ SỐ TỐC ĐỘ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010104048",
+     "loai": "tra_loi_ngan",
+     "de": "Vật A có động năng gấp 96 lần và khối lượng gấp 6 lần vật B. Hỏi tốc độ vật A gấp bao nhiêu lần tốc độ vật B?",
+     "dap_an": "4",
+     "loi_giai": "Động năng tỉ lệ với khối lượng và bình phương vận tốc nên ta có: $\\dfrac{W_\\mathrm{dA}}{W_\\mathrm{dB}} = \\dfrac{m_\\mathrm{A}}{m_\\mathrm{B}} \\times (\\dfrac{v_\\mathrm{A}}{v_\\mathrm{B}})^2$.\nTừ đó suy ra $(\\dfrac{v_\\mathrm{A}}{v_\\mathrm{B}})^2 = \\dfrac{96}{6} = 16$.\nVậy $\\dfrac{v_\\mathrm{A}}{v_\\mathrm{B}} = 4$ lần."
+    },
+    {
+     "ma_cau": "K09010104050",
+     "loai": "tra_loi_ngan",
+     "de": "Vật A có động năng gấp 180 lần và khối lượng gấp 5 lần vật B. Hỏi tốc độ vật A gấp bao nhiêu lần tốc độ vật B?",
+     "dap_an": "6",
+     "loi_giai": "Động năng tỉ lệ với khối lượng và bình phương vận tốc nên ta có: $\\dfrac{W_\\mathrm{dA}}{W_\\mathrm{dB}} = \\dfrac{m_\\mathrm{A}}{m_\\mathrm{B}} \\times (\\dfrac{v_\\mathrm{A}}{v_\\mathrm{B}})^2$.\nTừ đó suy ra $(\\dfrac{v_\\mathrm{A}}{v_\\mathrm{B}})^2 = \\dfrac{180}{5} = 36$.\nVậy $\\dfrac{v_\\mathrm{A}}{v_\\mathrm{B}} = 6$ lần."
+    },
+    {
+     "ma_cau": "K09010104046",
+     "loai": "tra_loi_ngan",
+     "de": "Vật A có động năng gấp 20 lần và khối lượng gấp 5 lần vật B. Hỏi tốc độ vật A gấp bao nhiêu lần tốc độ vật B?",
+     "dap_an": "2",
+     "loi_giai": "Động năng tỉ lệ với khối lượng và bình phương vận tốc nên ta có: $\\dfrac{W_\\mathrm{dA}}{W_\\mathrm{dB}} = \\dfrac{m_\\mathrm{A}}{m_\\mathrm{B}} \\times (\\dfrac{v_\\mathrm{A}}{v_\\mathrm{B}})^2$.\nTừ đó suy ra $(\\dfrac{v_\\mathrm{A}}{v_\\mathrm{B}})^2 = \\dfrac{20}{5} = 4$.\nVậy $\\dfrac{v_\\mathrm{A}}{v_\\mathrm{B}} = 2$ lần."
+    },
+    {
+     "ma_cau": "K09010104049",
+     "loai": "tra_loi_ngan",
+     "de": "Vật A có động năng gấp 150 lần và khối lượng gấp 6 lần vật B. Hỏi tốc độ vật A gấp bao nhiêu lần tốc độ vật B?",
+     "dap_an": "5",
+     "loi_giai": "Động năng tỉ lệ với khối lượng và bình phương vận tốc nên ta có: $\\dfrac{W_\\mathrm{dA}}{W_\\mathrm{dB}} = \\dfrac{m_\\mathrm{A}}{m_\\mathrm{B}} \\times (\\dfrac{v_\\mathrm{A}}{v_\\mathrm{B}})^2$.\nTừ đó suy ra $(\\dfrac{v_\\mathrm{A}}{v_\\mathrm{B}})^2 = \\dfrac{150}{6} = 25$.\nVậy $\\dfrac{v_\\mathrm{A}}{v_\\mathrm{B}} = 5$ lần."
+    },
+    {
+     "ma_cau": "K09010104047",
+     "loai": "tra_loi_ngan",
+     "de": "Vật A có động năng gấp 63 lần và khối lượng gấp 7 lần vật B. Hỏi tốc độ vật A gấp bao nhiêu lần tốc độ vật B?",
+     "dap_an": "3",
+     "loi_giai": "Động năng tỉ lệ với khối lượng và bình phương vận tốc nên ta có: $\\dfrac{W_\\mathrm{dA}}{W_\\mathrm{dB}} = \\dfrac{m_\\mathrm{A}}{m_\\mathrm{B}} \\times (\\dfrac{v_\\mathrm{A}}{v_\\mathrm{B}})^2$.\nTừ đó suy ra $(\\dfrac{v_\\mathrm{A}}{v_\\mathrm{B}})^2 = \\dfrac{63}{7} = 9$.\nVậy $\\dfrac{v_\\mathrm{A}}{v_\\mathrm{B}} = 3$ lần."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00998",
+   "nhom_id": "KNB00413",
+   "thu_tu": 1,
+   "dang": "AN TOÀN GIAO THÔNG VÀ TỐC ĐỘ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010106003",
+     "loai": "trac_nghiem",
+     "de": "Hai xe cùng loại, cùng khối lượng, nhưng khi gặp chướng ngại vật phải phanh gấp, xe đang chạy $80\\ \\mathrm{km/h}$ cần quãng đường phanh dài hơn nhiều và nếu va chạm thì gây hậu quả nghiêm trọng hơn xe đang chạy $40\\ \\mathrm{km/h}$. Cách giải thích đúng dựa trên động năng là",
+     "lua_chon": [
+      "vì xe chạy $80\\ \\mathrm{km/h}$ luôn có khối lượng lớn hơn xe chạy $40\\ \\mathrm{km/h}$.",
+      "vì động năng của hai xe là như nhau, chỉ khác về quãng đường phanh.",
+      "vì động năng tỉ lệ thuận đơn giản với tốc độ, tốc độ tăng gấp đôi thì động năng cũng chỉ tăng gấp đôi.",
+      "vì động năng tỉ lệ với bình phương tốc độ, xe chạy $80\\ \\mathrm{km/h}$ có động năng lớn hơn hẳn xe chạy $40\\ \\mathrm{km/h}$ dù cùng khối lượng."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Động năng $W_\\mathrm{d} = \\dfrac{1}{2}mv^2$ tỉ lệ với bình phương tốc độ; tốc độ tăng gấp đôi (từ $40$ lên $80\\ \\mathrm{km/h}$) khiến động năng tăng gấp bốn lần dù khối lượng không đổi, nên hậu quả va chạm nghiêm trọng hơn nhiều."
+    },
+    {
+     "ma_cau": "K09010106004",
+     "loai": "trac_nghiem",
+     "de": "Vì sao tại các khúc cua, đoạn đường đèo dốc, biển báo giao thông thường yêu cầu xe giảm tốc độ?",
+     "lua_chon": [
+      "Vì giảm tốc độ giúp giảm động năng của xe, tăng khả năng kiểm soát xe và giảm nguy hiểm nếu xảy ra sự cố.",
+      "Vì ở khúc cua, đèo dốc, khối lượng xe tự nhiên giảm xuống.",
+      "Vì tốc độ càng cao thì xe càng dễ kiểm soát ở khúc cua.",
+      "Vì biển báo giảm tốc độ không liên quan đến an toàn, chỉ mang tính hình thức."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ở khúc cua, đèo dốc, nguy cơ mất lái cao hơn; giảm tốc độ giúp giảm động năng của xe, hạn chế mức độ nguy hiểm nếu xảy ra va chạm hay trượt bánh."
+    },
+    {
+     "ma_cau": "K09010106002",
+     "loai": "trac_nghiem",
+     "de": "Vì sao khi trời mưa hoặc đường trơn trượt, người lái xe được khuyến cáo giảm tốc độ?",
+     "lua_chon": [
+      "Vì trời mưa làm khối lượng xe tăng lên đáng kể.",
+      "Vì tốc độ xe không ảnh hưởng đến hậu quả khi xảy ra sự cố.",
+      "Vì đường trơn làm tốc độ tối đa cho phép tự động tăng lên.",
+      "Để giảm động năng của xe, hạn chế mức độ nguy hiểm nếu xe mất lái hoặc va chạm."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tốc độ càng lớn thì động năng $W_\\mathrm{d} = \\dfrac{1}{2}mv^2$ càng lớn; giảm tốc độ trên đường trơn giúp giảm động năng, giảm nguy hiểm nếu xảy ra sự cố mất lái hay va chạm."
+    },
+    {
+     "ma_cau": "K09010106001",
+     "loai": "trac_nghiem",
+     "de": "Vì sao pháp luật giao thông thường quy định tốc độ tối đa ở khu vực đông dân cư, gần trường học thấp hơn nhiều so với trên đường cao tốc?",
+     "lua_chon": [
+      "Vì ở khu đông dân cư, khối lượng của phương tiện luôn nhỏ hơn.",
+      "Vì tốc độ không liên quan đến mức độ nguy hiểm khi va chạm.",
+      "Vì tốc độ thấp giúp giảm động năng của phương tiện, hạn chế mức độ nguy hiểm nếu xảy ra va chạm với người đi bộ.",
+      "Vì đường ở khu đông dân cư luôn ngắn hơn đường cao tốc."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Động năng $W_\\mathrm{d} = \\dfrac{1}{2}mv^2$ tỉ lệ với bình phương tốc độ; giảm tốc độ ở nơi đông người giúp giảm mạnh động năng của phương tiện, giảm hậu quả khi va chạm."
+    },
+    {
+     "ma_cau": "K09010106007",
+     "loai": "trac_nghiem",
+     "de": "Ý nghĩa chính của việc quy định các mức tốc độ tối đa khác nhau cho từng loại đường (cao tốc, nội đô, khu dân cư) là gì?",
+     "lua_chon": [
+      "Chỉ nhằm mục đích tiết kiệm nhiên liệu cho phương tiện.",
+      "Chỉ nhằm phân biệt loại đường, không liên quan đến an toàn.",
+      "Kiểm soát động năng của phương tiện phù hợp với mức độ an toàn cần thiết ở từng khu vực, hạn chế hậu quả khi xảy ra va chạm.",
+      "Vì động năng của phương tiện không thay đổi theo tốc độ nên quy định tốc độ không ảnh hưởng đến an toàn."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tốc độ tối đa được quy định nhằm kiểm soát động năng của phương tiện ở mức phù hợp với từng khu vực (đông người, nhiều giao cắt, hay đường thông thoáng), giảm hậu quả nếu xảy ra va chạm."
+    },
+    {
+     "ma_cau": "K09010106008",
+     "loai": "trac_nghiem",
+     "de": "Vì sao khi phát hiện chướng ngại vật phía trước, người lái xe cần phanh giảm tốc độ càng sớm càng tốt thay vì giữ nguyên tốc độ đến sát chướng ngại vật mới phanh?",
+     "lua_chon": [
+      "Vì phanh sớm giúp giảm dần động năng của xe trước khi đến gần chướng ngại vật, giảm mức độ nguy hiểm nếu buộc phải va chạm.",
+      "Vì phanh sớm giúp tăng khối lượng của xe, làm xe khó bị đẩy đi khi va chạm.",
+      "Vì động năng của xe chỉ phụ thuộc vào khoảng cách đến chướng ngại vật, không phụ thuộc tốc độ.",
+      "Vì phanh muộn giúp xe dừng nhanh hơn phanh sớm."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Phanh càng sớm, tốc độ xe giảm dần trong quãng đường dài hơn, động năng $W_\\mathrm{d} = \\dfrac{1}{2}mv^2$ giảm nhiều hơn trước khi đến gần chướng ngại vật, nên nếu buộc phải va chạm thì hậu quả cũng nhẹ hơn."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00999",
+   "nhom_id": "KNB00413",
+   "thu_tu": 2,
+   "dang": "THIẾT BỊ, KẾT CẤU GIẢM TÁC HẠI CỦA ĐỘNG NĂNG KHI VA CHẠM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010106015",
+     "loai": "trac_nghiem",
+     "de": "Vì sao vỏ hộp đựng trứng hoặc đồ dễ vỡ khi vận chuyển thường có lớp xốp hoặc giấy đệm bên trong?",
+     "lua_chon": [
+      "Lớp đệm giúp vật bên trong tăng thêm khối lượng để chắc chắn hơn.",
+      "Lớp đệm hấp thụ bớt động năng của vật khi bị va đập hoặc rung lắc trong quá trình vận chuyển, giảm nguy cơ vỡ.",
+      "Lớp đệm giúp vật bên trong tăng tốc độ khi bị rung lắc.",
+      "Lớp đệm chỉ có tác dụng thẩm mỹ, không liên quan đến va đập."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: Khi hộp bị va đập hoặc rung lắc, vật bên trong có thể va chạm với thành hộp; lớp đệm hấp thụ dần động năng của va chạm đó, giảm lực tác động trực tiếp lên vật dễ vỡ."
+    },
+    {
+     "ma_cau": "K09010106016",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tắc chung của các thiết bị bảo hộ như mũ bảo hiểm, túi khí, đệm an toàn trong việc bảo vệ con người khỏi tác hại của va chạm là gì?",
+     "lua_chon": [
+      "Ngăn hoàn toàn không cho cơ thể người có động năng trước khi va chạm.",
+      "Làm tăng tốc độ va chạm để giảm thời gian tiếp xúc.",
+      "Kéo dài thời gian và hấp thụ dần động năng trong quá trình va chạm, thay vì để cơ thể dừng lại đột ngột.",
+      "Làm giảm khối lượng cơ thể người trong quá trình va chạm."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: Các thiết bị bảo hộ đều hoạt động theo nguyên tắc chung: biến dạng hoặc nén lại để hấp thụ dần động năng của cơ thể trong một khoảng thời gian dài hơn, giảm lực tác động so với va chạm trực tiếp, đột ngột."
+    },
+    {
+     "ma_cau": "K09010106009",
+     "loai": "trac_nghiem",
+     "de": "Túi khí trên ô tô bung ra khi xảy ra va chạm mạnh có tác dụng chính là gì?",
+     "lua_chon": [
+      "Làm tăng động năng của người ngồi trong xe để họ phản ứng nhanh hơn.",
+      "Hấp thụ bớt và làm chậm quá trình động năng của người ngồi trong xe truyền vào các bộ phận cứng của xe, giảm chấn thương.",
+      "Ngăn không cho xe có động năng trước khi va chạm.",
+      "Làm giảm khối lượng của người ngồi trong xe khi va chạm."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khi va chạm, cơ thể người vẫn tiếp tục chuyển động do đang mang động năng; túi khí đóng vai trò như một lớp đệm hấp thụ và làm chậm quá trình dừng lại, giảm lực tác dụng lên cơ thể, giảm chấn thương."
+    },
+    {
+     "ma_cau": "K09010106013",
+     "loai": "trac_nghiem",
+     "de": "Vì sao tại công trường xây dựng, người ta thường lắp lưới an toàn hoặc đệm bên dưới khu vực làm việc trên cao?",
+     "lua_chon": [
+      "Để tăng thêm khối lượng cho khu vực làm việc trên cao.",
+      "Để hấp thụ dần động năng của người hoặc vật rơi xuống, giảm lực tác động khi chạm vào lưới hoặc đệm.",
+      "Để ngăn không cho người hoặc vật có động năng khi rơi.",
+      "Lưới và đệm không liên quan đến việc giảm chấn thương khi rơi."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nếu có người hoặc vật rơi, lưới và đệm biến dạng và hấp thụ dần động năng trong quá trình tiếp xúc, thay vì để va chạm trực tiếp với mặt đất cứng, giúp giảm lực tác động."
+    },
+    {
+     "ma_cau": "K09010106014",
+     "loai": "trac_nghiem",
+     "de": "Đệm hạ cánh trong các môn thể thao như nhảy cao, nhảy sào có tác dụng gì đối với vận động viên khi tiếp đất?",
+     "lua_chon": [
+      "Giúp vận động viên tăng thêm động năng ngay khi tiếp đất.",
+      "Giúp giảm khối lượng cơ thể vận động viên khi tiếp đất.",
+      "Hấp thụ dần động năng của vận động viên khi rơi xuống, giảm lực tác động lên cơ thể so với tiếp đất trên nền cứng.",
+      "Không ảnh hưởng đến lực tác động lên cơ thể vận động viên."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vận động viên rơi xuống mang động năng do tốc độ khi tiếp đất; đệm biến dạng giúp hấp thụ dần động năng này trong một khoảng thời gian dài hơn, giảm lực tác động so với tiếp đất trực tiếp trên nền cứng."
+    },
+    {
+     "ma_cau": "K09010106012",
+     "loai": "trac_nghiem",
+     "de": "Dây an toàn trên ô tô có tác dụng chính là gì khi xe phanh gấp hoặc va chạm?",
+     "lua_chon": [
+      "Giúp tăng tốc độ của người ngồi trong xe để thoát ra ngoài nhanh hơn.",
+      "Giúp người ngồi trong xe tăng thêm khối lượng khi va chạm.",
+      "Giữ người ngồi gắn với ghế, hạn chế cơ thể tiếp tục lao về phía trước do quán tính mang theo động năng, tránh va đập vào các bộ phận cứng của xe.",
+      "Không có tác dụng gì đến chuyển động của người ngồi khi xe phanh gấp."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khi xe phanh gấp, người ngồi trong xe có xu hướng tiếp tục chuyển động do đang mang động năng; dây an toàn giữ cơ thể lại gần ghế, hạn chế va đập mạnh vào các bộ phận cứng phía trước."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01000",
+   "nhom_id": "KNB00413",
+   "thu_tu": 3,
+   "dang": "SO SÁNH MỨC ĐỘ NGUY HIỂM, THIỆT HẠI QUA TÌNH HUỐNG THỰC TẾ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010106022",
+     "loai": "trac_nghiem",
+     "de": "Hai viên bi có khối lượng bằng nhau lăn trên mặt phẳng ngang rồi va vào cùng một vật cản.\nViên bi nào lăn nhanh hơn sẽ tác dụng lực va chạm mạnh hơn lên vật cản?",
+     "lua_chon": [
+      "Viên bi lăn chậm hơn, vì bi lăn chậm có nhiều thời gian tác dụng lực hơn.",
+      "Cả hai viên bi tác dụng lực như nhau, vì khối lượng bằng nhau.",
+      "Viên bi lăn nhanh hơn, vì ở cùng khối lượng, tốc độ lớn hơn tạo ra động năng lớn hơn.",
+      "Không thể xác định được, vì tốc độ không ảnh hưởng đến động năng."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ở cùng khối lượng, động năng $W_đ = \\dfrac{1}{2}mv^2$ tỉ lệ với bình phương tốc độ; viên bi lăn nhanh hơn có động năng lớn hơn nên tác dụng lực va chạm mạnh hơn lên vật cản."
+    },
+    {
+     "ma_cau": "K09010106023",
+     "loai": "trac_nghiem",
+     "de": "Vì sao khi lái ca-nô hoặc thuyền máy, người điều khiển cần giảm tốc độ khi đến gần bờ hoặc khu vực đông người bơi lội?",
+     "lua_chon": [
+      "Vì gần bờ, khối lượng của ca-nô tự động tăng lên.",
+      "Vì tốc độ của ca-nô không ảnh hưởng đến mức độ nguy hiểm khi va chạm.",
+      "Vì giảm tốc độ giúp ca-nô nổi cao hơn trên mặt nước, không liên quan đến an toàn.",
+      "Để giảm động năng của phương tiện, hạn chế mức độ nguy hiểm nếu xảy ra va chạm với người hoặc vật cản."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Giảm tốc độ giúp giảm động năng $W_\\mathrm{đ} = \\dfrac{1}{2}mv^2$ của ca-nô; nếu chẳng may va chạm với người hoặc vật cản ở khu vực đông người, hậu quả sẽ nhẹ hơn nhiều so với khi đi chuyển tốc độ cao."
+    },
+    {
+     "ma_cau": "K09010106019",
+     "loai": "trac_nghiem",
+     "de": "Vì sao rơi từ độ cao lớn xuống đất (tốc độ chạm đất lớn) thường gây chấn thương nặng hơn nhiều so với rơi từ độ cao thấp?",
+     "lua_chon": [
+      "Vì rơi từ độ cao lớn làm khối lượng của vật tăng lên đáng kể.",
+      "Vì độ cao rơi không ảnh hưởng đến động năng của vật khi chạm đất.",
+      "Vì tốc độ chạm đất lớn hơn khiến động năng của vật ngay trước khi chạm đất lớn hơn nhiều.",
+      "Vì rơi từ độ cao thấp luôn có tốc độ chạm đất lớn hơn rơi từ độ cao lớn."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Rơi từ độ cao càng lớn thì tốc độ khi chạm đất càng lớn; theo $W_d = \\dfrac{1}{2}mv^2$, động năng ngay trước khi va chạm với mặt đất tăng nhanh theo bình phương tốc độ đó, nên chấn thương gây ra cũng nghiêm trọng hơn."
+    },
+    {
+     "ma_cau": "K09010106017",
+     "loai": "trac_nghiem",
+     "de": "Trong một vụ va chạm giao thông, xe tải nặng và xe máy nhẹ cùng chạy với tốc độ như nhau. So với xe máy, xe tải có khả năng gây thiệt hại như thế nào khi va chạm?",
+     "lua_chon": [
+      "Gây thiệt hại nhỏ hơn, vì xe tải đi chuyển chậm hơn xe máy.",
+      "Gây thiệt hại như nhau, vì động năng chỉ phụ thuộc tốc độ, không phụ thuộc khối lượng.",
+      "Không thể so sánh được vì động năng của xe tải và xe máy là hai đại lượng khác loại.",
+      "Gây thiệt hại lớn hơn, vì ở cùng tốc độ, xe có khối lượng lớn hơn thì động năng lớn hơn."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$W_d = \\dfrac{1}{2}mv^2$ tỉ lệ thuận với khối lượng; ở cùng tốc độ, xe tải có khối lượng lớn hơn xe máy nên động năng lớn hơn, khả năng gây thiệt hại khi va chạm cũng lớn hơn."
+    },
+    {
+     "ma_cau": "K09010106018",
+     "loai": "trac_nghiem",
+     "de": "Một quả bóng chày ném với tốc độ rất nhanh có thể gây chấn thương nghiêm trọng hơn nhiều so với khi ném chậm, dù khối lượng quả bóng không đổi. Giải thích nào sau đây đúng nhất?",
+     "lua_chon": [
+      "Vì khi ném nhanh, khối lượng quả bóng tăng lên đáng kể.",
+      "Vì động năng của quả bóng không phụ thuộc vào tốc độ ném.",
+      "Vì động năng của quả bóng tỉ lệ với bình phương tốc độ nên tốc độ tăng làm động năng tăng rất nhanh.",
+      "Vì quả bóng ném nhanh có động năng nhỏ hơn quả bóng ném chậm."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$W_d = \\dfrac{1}{2}mv^2$ tỉ lệ với bình phương tốc độ; tốc độ ném tăng khiến động năng của quả bóng tăng rất nhanh, dù khối lượng quả bóng không đổi, nên mức độ chấn thương gây ra cũng tăng mạnh."
+    },
+    {
+     "ma_cau": "K09010106021",
+     "loai": "trac_nghiem",
+     "de": "Vì sao trong bóng đá, một cú sút với tốc độ bóng lớn có thể gây đau hơn nhiều so với cú chạm bóng nhẹ, dù quả bóng có cùng khối lượng?",
+     "lua_chon": [
+      "Vì cú sút mạnh làm khối lượng quả bóng tăng lên.",
+      "Vì tốc độ bóng lớn hơn khiến động năng của quả bóng lớn hơn nhiều (tỉ lệ với bình phương tốc độ).",
+      "Vì động năng của quả bóng không phụ thuộc vào tốc độ sút.",
+      "Vì cú chạm bóng nhẹ luôn có tốc độ lớn hơn cú sút mạnh."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ở cùng khối lượng, động năng $W_đ = \\dfrac{1}{2}mv^2$ tăng theo bình phương tốc độ; cú sút mạnh làm bóng bay với tốc độ lớn hơn nhiều so với cú chạm nhẹ, nên động năng và mức độ gây đau khi va vào cơ thể cũng lớn hơn nhiều."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01001",
+   "nhom_id": "KNB00413",
+   "thu_tu": 4,
+   "dang": "ỨNG DỤNG ĐỘNG NĂNG TRONG ĐỜI SỐNG VÀ KỸ THUẬT",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010106030",
+     "loai": "trac_nghiem",
+     "de": "Vì sao trong các bài toán và tình huống thực tế về va chạm, người ta thường quan tâm đến tốc độ của vật ngay trước khi va chạm hơn là tốc độ trung bình trong suốt quá trình chuyển động trước đó?",
+     "lua_chon": [
+      "Vì tốc độ trung bình luôn lớn hơn tốc độ ngay trước khi va chạm.",
+      "Vì động năng của vật không phụ thuộc vào tốc độ tại bất kỳ thời điểm nào.",
+      "Vì tốc độ ngay trước khi va chạm không liên quan đến động năng của vật.",
+      "Vì động năng, đại lượng quyết định mức độ ảnh hưởng khi va chạm, được tính theo tốc độ của vật ngay tại thời điểm va chạm."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Động năng $W_\\mathrm{đ} = \\dfrac{1}{2}mv^2$ được tính tại một thời điểm cụ thể; mức độ nguy hiểm hay hiệu quả khi va chạm phụ thuộc vào động năng ngay trước lúc va chạm, tức là phụ thuộc vào tốc độ tại thời điểm đó, không phải tốc độ trung bình trước đó."
+    },
+    {
+     "ma_cau": "K09010106026",
+     "loai": "trac_nghiem",
+     "de": "Nhà máy thủy điện sử dụng dòng nước chảy mạnh để làm quay tuabin phát điện. Dòng nước đang chảy mạnh dạng năng lượng chủ yếu nào để làm quay tuabin?",
+     "lua_chon": [
+      "Thế năng đàn hồi của dòng nước.",
+      "Động năng, do dòng nước đang chuyển động với tốc độ lớn.",
+      "Quang năng của dòng nước.",
+      "Dòng nước chảy không mang dạng năng lượng nào có thể sử dụng được."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Dòng nước chảy mạnh đang chuyển động nên mang động năng; động năng này truyền sang tuabin làm tuabin quay, chuyển hóa thành điện năng."
+    },
+    {
+     "ma_cau": "K09010106024",
+     "loai": "trac_nghiem",
+     "de": "Búa máy (máy đóng cọc) sử dụng một khối kim loại nặng được nâng lên cao rồi thả rơi xuống để đóng cọc xuống đất. Ngay trước khi va chạm với cọc, khối kim loại chủ yếu mang dạng năng lượng nào để thực hiện công đóng cọc?",
+     "lua_chon": [
+      "Thế năng đàn hồi, do khối kim loại bị nén lại trước khi rơi.",
+      "Nhiệt năng, do ma sát với không khí khi rơi.",
+      "Khối kim loại không mang năng lượng nào khi đang rơi.",
+      "Động năng, do khối kim loại đang chuyển động với tốc độ lớn ngay trước khi chạm cọc."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khi rơi xuống, khối kim loại chuyển động ngày càng nhanh; ngay trước khi va chạm với cọc, nó mang động năng lớn (do tốc độ lớn), động năng này thực hiện công làm cọc lún sâu xuống đất."
+    },
+    {
+     "ma_cau": "K09010106027",
+     "loai": "trac_nghiem",
+     "de": "Vì sao viên đạn bắn ra từ súng, dù có khối lượng rất nhỏ, vẫn có thể xuyên thủng các vật cản dày?",
+     "lua_chon": [
+      "Vì viên đạn bay với tốc độ rất lớn nên động năng của nó vẫn rất lớn, dù khối lượng nhỏ.",
+      "Vì viên đạn có khối lượng thực tế lớn hơn nhiều so với vẻ ngoài.",
+      "Vì tốc độ của viên đạn không ảnh hưởng đến khả năng xuyên phá.",
+      "Vì viên đạn chỉ mang thế năng, không mang động năng khi bay."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Động năng $W_\\mathrm{đ} = \\dfrac{1}{2}mv^2$ tỉ lệ với bình phương tốc độ; tốc độ rất lớn của viên đạn khiến động năng của nó vẫn rất lớn dù khối lượng nhỏ, đủ để thực hiện công xuyên phá vật cản."
+    },
+    {
+     "ma_cau": "K09010106029",
+     "loai": "trac_nghiem",
+     "de": "Máy nghiền, máy xay công nghiệp sử dụng các bộ phận quay với tốc độ cao để nghiền vỡ vật liệu. Khả năng nghiền vỡ vật liệu của các bộ phận này chủ yếu dựa vào dạng năng lượng nào?",
+     "lua_chon": [
+      "Thế năng hấp dẫn của các bộ phận quay.",
+      "Hóa năng tích trữ trong vật liệu động cơ.",
+      "Các bộ phận quay không mang dạng năng lượng nào tác dụng lên vật liệu.",
+      "Động năng của các bộ phận đang chuyển động (quay) với tốc độ cao."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Các bộ phận quay với tốc độ cao mang động năng lớn; khi va chạm với vật liệu, động năng này thực hiện công làm vật liệu bị nghiền vỡ."
+    },
+    {
+     "ma_cau": "K09010106028",
+     "loai": "trac_nghiem",
+     "de": "Trong môn thể thao bắn cung, mũi tên được bắn đi với tốc độ lớn. Khả năng xuyên vào mục tiêu của mũi tên ngay khi chạm đích chủ yếu phụ thuộc vào dạng năng lượng nào?",
+     "lua_chon": [
+      "Động năng của mũi tên ngay trước khi chạm mục tiêu.",
+      "Thế năng đàn hồi còn lại trong dây cung sau khi bắn.",
+      "Nhiệt năng sinh ra do ma sát với không khí.",
+      "Mũi tên không mang năng lượng nào khi đang bay đến mục tiêu."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ngay trước khi chạm mục tiêu, mũi tên đang chuyển động với tốc độ lớn nên mang động năng lớn; động năng này thực hiện công xuyên vào mục tiêu."
+    }
+   ]
+  }
+ ]
+}

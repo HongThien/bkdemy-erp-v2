@@ -1,0 +1,952 @@
+[
+ {
+  "ma_cau": "HHC001572",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001577",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001580",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm."
+ },
+ {
+  "ma_cau": "HHC001589",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001590",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến."
+ },
+ {
+  "ma_cau": "HHC001596",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001603",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001609",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001615",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, giao điểm, đường chéo nhau."
+ },
+ {
+  "ma_cau": "HHC001620",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001625",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm."
+ },
+ {
+  "ma_cau": "HHC001628",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, đường chéo nhau, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001635",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001640",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến."
+ },
+ {
+  "ma_cau": "HHC001643",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, đường chéo nhau, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001652",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001659",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001666",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: quan hệ điểm–đường–mặt."
+ },
+ {
+  "ma_cau": "HHC001670",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: đường chéo nhau, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001674",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001675",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001676",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: đường chéo nhau, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001681",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001695",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001700",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001715",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001722",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001733",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: đường chéo nhau, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001734",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: quan hệ điểm–đường–mặt."
+ },
+ {
+  "ma_cau": "HHC001742",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001743",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: lăng trụ, giao tuyến, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001749",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: quan hệ điểm–đường–mặt."
+ },
+ {
+  "ma_cau": "HHC001756",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001761",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001769",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: quan hệ điểm–đường–mặt."
+ },
+ {
+  "ma_cau": "HHC001770",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: đường chéo nhau, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001775",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, giao điểm."
+ },
+ {
+  "ma_cau": "HHC001785",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001786",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: quan hệ điểm–đường–mặt."
+ },
+ {
+  "ma_cau": "HHC001787",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001790",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001796",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001801",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001808",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, giao điểm, đường chéo nhau."
+ },
+ {
+  "ma_cau": "HHC001818",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001829",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001835",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001845",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001860",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001871",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001879",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm."
+ },
+ {
+  "ma_cau": "HHC001887",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: quan hệ điểm–đường–mặt."
+ },
+ {
+  "ma_cau": "HHC001896",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001901",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC001902",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến."
+ },
+ {
+  "ma_cau": "HHC001910",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC003590",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, đường chéo nhau, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC003605",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, giao điểm."
+ },
+ {
+  "ma_cau": "HHC003609",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm."
+ },
+ {
+  "ma_cau": "HHC003631",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến."
+ },
+ {
+  "ma_cau": "HHC003632",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC003639",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC003807",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến."
+ },
+ {
+  "ma_cau": "HHC003808",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: quan hệ điểm–đường–mặt."
+ },
+ {
+  "ma_cau": "HHC003809",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: đường chéo nhau, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC003810",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC003811",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC003812",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: lăng trụ, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC003813",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: hình hộp, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC003814",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: đường chéo nhau, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC003815",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC003816",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm."
+ },
+ {
+  "ma_cau": "HHC003817",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: lăng trụ, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC003978",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: đường chéo nhau, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC003983",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC003990",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: lăng trụ, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC003991",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004037",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004038",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm."
+ },
+ {
+  "ma_cau": "HHC004039",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: hình hộp, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004040",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004092",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004093",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004094",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: lăng trụ, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004095",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, đường chéo nhau, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004096",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004105",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: lăng trụ, giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004247",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, giao điểm."
+ },
+ {
+  "ma_cau": "HHC004248",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm."
+ },
+ {
+  "ma_cau": "HHC004249",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: thiết diện, giao tuyến, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004250",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: lăng trụ, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004251",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: hình hộp, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004351",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến."
+ },
+ {
+  "ma_cau": "HHC004352",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến."
+ },
+ {
+  "ma_cau": "HHC004353",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004354",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: đường chéo nhau, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004355",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: thiết diện, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004356",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: thiết diện, giao tuyến, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004357",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004358",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: đường chéo nhau, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC004359",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: lăng trụ, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007010",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007022",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007036",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007053",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007054",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm."
+ },
+ {
+  "ma_cau": "HHC007067",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007068",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007079",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: lăng trụ, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007080",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007091",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007092",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007103",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: hình hộp, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007104",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007115",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007116",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007127",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007128",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007139",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: lăng trụ, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007140",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: quan hệ điểm–đường–mặt."
+ },
+ {
+  "ma_cau": "HHC007151",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: hình hộp, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007152",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: đường chéo nhau, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007164",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007176",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: lăng trụ, giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007190",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007207",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, đường chéo nhau, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007219",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến."
+ },
+ {
+  "ma_cau": "HHC007224",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007231",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến."
+ },
+ {
+  "ma_cau": "HHC007247",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: thiết diện, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007257",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007281",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: lăng trụ, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007295",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007353",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007366",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007380",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007408",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007426",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: lăng trụ, giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007438",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, đường chéo nhau, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007472",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007484",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007500",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007516",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007546",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007556",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007564",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007578",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm."
+ },
+ {
+  "ma_cau": "HHC007587",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007599",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: quan hệ điểm–đường–mặt."
+ },
+ {
+  "ma_cau": "HHC007610",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: hình hộp, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007617",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: hình hộp, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007633",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: hình hộp, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007646",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến."
+ },
+ {
+  "ma_cau": "HHC007661",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007674",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007688",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: lăng trụ, giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007702",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: hình hộp, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007711",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007725",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007741",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến."
+ },
+ {
+  "ma_cau": "HHC007742",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: lăng trụ, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007766",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007812",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007838",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007854",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007863",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007875",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007883",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: đường chéo nhau, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007884",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: hình hộp, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007894",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: hình hộp, đường chéo nhau."
+ },
+ {
+  "ma_cau": "HHC007925",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: hình hộp, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007934",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007959",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007971",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007972",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC007984",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC008019",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC008020",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC008041",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: hình hộp, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC008071",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao tuyến, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC008086",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC008097",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: lăng trụ, thiết diện, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC008126",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: hình hộp, giao điểm, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC008139",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC008155",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: giao điểm."
+ },
+ {
+  "ma_cau": "HHC008156",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: hình hộp, giao tuyến, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC008167",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: thiết diện, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC008175",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: thiết diện, song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC008185",
+  "chu_de": "song_song",
+  "ly_do": "Trọng tâm: song song đường–mặt/mặt–mặt."
+ },
+ {
+  "ma_cau": "HHC008186",
+  "chu_de": "vuong_goc",
+  "ly_do": "SA vuông góc đáy, BC vuông góc (SAB), góc đường–đường: vuông góc chủ đạo."
+ }
+]

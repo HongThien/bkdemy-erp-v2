@@ -1,0 +1,737 @@
+[
+  {
+    "id": "nbv-b2-d-2",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hai hàm số $f(x)=x-1$ và $g(x)=x^{3}$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to1}f(x)=3$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to1}g(x)=1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to1}[3f(x)-g(x)]=-1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to1}\\dfrac{[f(x)]^{2}}{g(x)}=1$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả bốn ý đều là giới hạn tại $x=1$ của hàm đa thức hoặc tổ hợp của chúng, nên thay trực tiếp và dùng quy tắc giới hạn.\n\n**Bước 1.** Với hàm số xác định tại điểm đang xét, thay trực tiếp giá trị của $x$ vào biểu thức để tính giới hạn.\n\n**Bước 2.** Với tổng, hiệu, tích, thương, dùng quy tắc giới hạn của các hàm đã tính được giới hạn.\n\n**Bước 3.** Với thương, kiểm tra giới hạn của mẫu khác $0$ trước khi áp dụng quy tắc.\n\n**Bước 4.** So kết quả vừa tính với giá trị mà từng mệnh đề đã nêu để kết luận đúng hay sai.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $\\lim\\limits_{x\\to1}f(x)=\\lim\\limits_{x\\to1}(x-1)=1-1=0$, khác $3$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to1}g(x)=\\lim\\limits_{x\\to1}x^{3}=1^{3}=1$.\n\nÝ c) Đúng vì $\\lim\\limits_{x\\to1}[3f(x)-g(x)]=3\\cdot0-1=-1$.\n\nÝ d) Sai vì $\\lim\\limits_{x\\to1}g(x)=1\\ne0$ nên $\\lim\\limits_{x\\to1}\\dfrac{[f(x)]^{2}}{g(x)}=\\dfrac{0^{2}}{1}=0$, khác $1$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>x-1,1),3))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>x**3,1),1))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(3*lm(x=>x-1,1)-lm(x=>x**3,1),-1))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>(x-1)**2/x**3,1),1))})()===false"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-d-3",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\dfrac{3x^{2}-10x+3}{x^{2}-5x+6}$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$f(x)=\\dfrac{(x-3)(x-\\frac{1}{3})}{(x-3)(x-2)}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to3}f(x)=8$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to+\\infty}f(x)=1$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to2^{+}}f(x)=-\\infty$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân tích tử và mẫu thành nhân tử, rút nhân tử chung rồi tính từng giới hạn theo điểm đã cho.\n\n**Bước 1.** Phân tích tử và mẫu thành nhân tử để thấy nhân tử chung $x-3$ và so với dạng phân tích ở ý a).\n\n**Bước 2.** Với ý b), rút nhân tử chung rồi thay $x=3$ vào phân thức còn lại.\n\n**Bước 3.** Với ý c), chia cả tử và mẫu cho luỹ thừa cao nhất của $x$ để tính giới hạn tại vô cực.\n\n**Bước 4.** Với ý d), xét dấu tử và mẫu khi $x\\to2^{+}$ để biết giới hạn là $+\\infty$ hay $-\\infty$.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $3x^{2}-10x+3=(x-3)(3x-1)$, nên $f(x)=\\dfrac{(x-3)(3x-1)}{(x-3)(x-2)}$. Hệ số đứng đầu tử là $3$ chứ không phải $1$, nên dạng phân tích ở ý a) không bằng $f(x)$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to3}f(x)=\\lim\\limits_{x\\to3}\\dfrac{(x-3)(3x-1)}{(x-3)(x-2)}=\\lim\\limits_{x\\to3}\\dfrac{3x-1}{x-2}=\\dfrac{9-1}{3-2}=8$.\n\nÝ c) Sai vì $\\lim\\limits_{x\\to+\\infty}f(x)=\\lim\\limits_{x\\to+\\infty}\\dfrac{3-\\frac{10}{x}+\\frac{3}{x^{2}}}{1-\\frac{5}{x}+\\frac{6}{x^{2}}}=\\dfrac{3}{1}=3$, khác $1$.\n\nÝ d) Sai vì với $x\\ne3$, $f(x)=\\dfrac{3x-1}{x-2}$. Khi $x\\to2^{+}$ thì $3x-1\\to5>0$ và $x-2\\to0^{+}$, nên $\\lim\\limits_{x\\to2^{+}}f(x)=+\\infty$, khác $-\\infty$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Sai, Sai.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near((x=>(x-3)*(x-1/3)/((x-3)*(x-2)))(5),(x=>(3*x*x-10*x+3)/(x*x-5*x+6))(5)))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>(3*x*x-10*x+3)/(x*x-5*x+6),3),8))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near((x=>(3*x*x-10*x+3)/(x*x-5*x+6))(1e6),1))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((x=>(3*x*x-10*x+3)/(x*x-5*x+6))(2+1e-6)<-1e5)})()===false"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Sai; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-d-4",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to-2}(x^{2}-x+3)=9$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to6}\\sqrt{\\dfrac{1}{x+3}}=3$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to2}\\dfrac{x^{2}-3x+2}{x-2}=1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to-1}\\dfrac{2x^{2}+3x+1}{x^{2}-1}=\\dfrac{1}{3}$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ý a), b) thay trực tiếp; ý c), d) có tử và mẫu cùng triệt tiêu nên phải phân tích nhân tử trước.\n\n**Bước 1.** Với ý a) và b), kiểm tra hàm xác định tại điểm đó rồi thay trực tiếp để tính giới hạn.\n\n**Bước 2.** Với ý c) và d), thay thử giá trị $x$ vào tử và mẫu để nhận ra dạng $\\dfrac{0}{0}$.\n\n**Bước 3.** Phân tích tử và mẫu thành nhân tử, rút nhân tử chung rồi mới thay giá trị của $x$.\n\n**Bước 4.** So kết quả vừa tính với giá trị mà từng mệnh đề đã nêu để kết luận đúng hay sai.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $\\lim\\limits_{x\\to-2}(x^{2}-x+3)=(-2)^{2}-(-2)+3=4+2+3=9$.\n\nÝ b) Sai vì $\\lim\\limits_{x\\to6}\\sqrt{\\dfrac{1}{x+3}}=\\sqrt{\\dfrac{1}{6+3}}=\\dfrac{1}{3}$, khác $3$.\n\nÝ c) Đúng vì $\\lim\\limits_{x\\to2}\\dfrac{(x-2)(x-1)}{x-2}=\\lim\\limits_{x\\to2}(x-1)=1$.\n\nÝ d) Sai vì $\\lim\\limits_{x\\to-1}\\dfrac{(2x+1)(x+1)}{(x-1)(x+1)}=\\lim\\limits_{x\\to-1}\\dfrac{2x+1}{x-1}=\\dfrac{-1}{-2}=\\dfrac{1}{2}$, khác $\\dfrac{1}{3}$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>x*x-x+3,-2),9))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>Math.sqrt(1/(x+3)),6),3))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>(x*x-3*x+2)/(x-2),2),1))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>(2*x*x+3*x+1)/(x*x-1),-1),1/3))})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-d-5",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}x-2&\\text{khi }x<-1\\\\\\sqrt{x^{2}+1}&\\text{khi }x\\ge-1\\end{cases}$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to-2}f(x)=\\sqrt{5}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to-1^{-}}f(x)=-3$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to-1^{+}}f(x)=\\sqrt{2}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số có giới hạn khi $x\\to-1$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số đổi công thức tại $x=-1$, nên mỗi giới hạn phải dùng đúng công thức của phía $x$ đang tiến tới.\n\n**Bước 1.** Xác định điểm $x$ đang xét nằm ở nhánh nào của hàm số, nhánh $x<-1$ hay nhánh $x\\ge-1$.\n\n**Bước 2.** Với giới hạn một bên, chọn công thức tương ứng với phía bên trái hoặc bên phải của điểm đó.\n\n**Bước 3.** Tính từng giới hạn bằng cách thay trực tiếp vào công thức đã chọn.\n\n**Bước 4.** Giới hạn tại một điểm tồn tại khi và chỉ khi hai giới hạn một bên tồn tại và bằng nhau.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì gần $x=-2$ ta có $x<-1$ nên $f(x)=x-2$, suy ra $\\lim\\limits_{x\\to-2}f(x)=-2-2=-4$, khác $\\sqrt{5}$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to-1^{-}}f(x)=\\lim\\limits_{x\\to-1^{-}}(x-2)=-3$.\n\nÝ c) Đúng vì $\\lim\\limits_{x\\to-1^{+}}f(x)=\\lim\\limits_{x\\to-1^{+}}\\sqrt{x^{2}+1}=\\sqrt{2}$.\n\nÝ d) Sai vì $\\lim\\limits_{x\\to-1^{-}}f(x)=-3\\ne\\sqrt{2}=\\lim\\limits_{x\\to-1^{+}}f(x)$ nên không tồn tại $\\lim\\limits_{x\\to-1}f(x)$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>x<-1?x-2:Math.sqrt(x*x+1),-2),Math.sqrt(5)))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lmL(x=>x<-1?x-2:Math.sqrt(x*x+1),-1),-3))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>x<-1?x-2:Math.sqrt(x*x+1),-1),Math.SQRT2))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>x<-1?x-2:Math.sqrt(x*x+1),-1),lmL(x=>x<-1?x-2:Math.sqrt(x*x+1),-1)))})()===false"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-d-8",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}x-2&\\text{khi }x<-1\\\\\\sqrt{x^{2}+1}&\\text{khi }x\\ge-1\\end{cases}$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to-2}f(x)=\\sqrt{5}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to-1^{-}}f(x)=-3$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to-1^{+}}f(x)=\\sqrt{2}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số có giới hạn khi $x\\to-1$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số đổi công thức tại $x=-1$, nên mỗi giới hạn phải dùng đúng công thức của phía $x$ đang tiến tới.\n\n**Bước 1.** Xác định điểm $x$ đang xét nằm ở nhánh nào của hàm số, nhánh $x<-1$ hay nhánh $x\\ge-1$.\n\n**Bước 2.** Với giới hạn một bên, chọn công thức tương ứng với phía bên trái hoặc bên phải của điểm đó.\n\n**Bước 3.** Tính từng giới hạn bằng cách thay trực tiếp vào công thức đã chọn.\n\n**Bước 4.** Giới hạn tại một điểm tồn tại khi và chỉ khi hai giới hạn một bên tồn tại và bằng nhau.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì gần $x=-2$ ta có $x<-1$ nên $f(x)=x-2$, suy ra $\\lim\\limits_{x\\to-2}f(x)=-2-2=-4$, khác $\\sqrt{5}$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to-1^{-}}f(x)=\\lim\\limits_{x\\to-1^{-}}(x-2)=-3$.\n\nÝ c) Đúng vì $\\lim\\limits_{x\\to-1^{+}}f(x)=\\lim\\limits_{x\\to-1^{+}}\\sqrt{x^{2}+1}=\\sqrt{2}$.\n\nÝ d) Sai vì $\\lim\\limits_{x\\to-1^{-}}f(x)=-3\\ne\\sqrt{2}=\\lim\\limits_{x\\to-1^{+}}f(x)$ nên không tồn tại $\\lim\\limits_{x\\to-1}f(x)$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>x<-1?x-2:Math.sqrt(x*x+1),-2),Math.sqrt(5)))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lmL(x=>x<-1?x-2:Math.sqrt(x*x+1),-1),-3))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>x<-1?x-2:Math.sqrt(x*x+1),-1),Math.SQRT2))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>x<-1?x-2:Math.sqrt(x*x+1),-1),lmL(x=>x<-1?x-2:Math.sqrt(x*x+1),-1)))})()===false"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": "Trùng đề với câu 5 trong sách (cùng hàm số, cùng bốn ý)."
+  },
+  {
+    "id": "nbv-b2-d-6",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $y=f(x)=\\dfrac{x^{2}-4x+3}{x-1}$. Xét tính đúng, sai của các khẳng định sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to2}f(x)=1$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to3}f(x)$ không tồn tại.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to1}f(x)=-2$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to+\\infty}f(x)=+\\infty$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân tích tử $x^{2}-4x+3=(x-1)(x-3)$ để biết với $x\\ne1$ hàm số rút gọn thành đa thức bậc nhất.\n\n**Bước 1.** Phân tích tử thành nhân tử và rút gọn với $x\\ne1$ để có công thức đơn giản của $f(x)$.\n\n**Bước 2.** Với điểm $x=2$ và $x=3$, mẫu khác $0$ nên thay trực tiếp để tính giới hạn.\n\n**Bước 3.** Với $x=1$, mẫu bằng $0$ nên dùng công thức đã rút gọn rồi thay $x=1$.\n\n**Bước 4.** Với $x\\to+\\infty$, rút $x$ ra ngoài rồi dùng quy tắc tích để xác định dấu của vô cực.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì hàm xác định tại $x=2$ nên $\\lim\\limits_{x\\to2}f(x)=\\dfrac{4-8+3}{2-1}=-1$, khác $1$.\n\nÝ b) Sai vì hàm xác định tại $x=3$ nên $\\lim\\limits_{x\\to3}f(x)=\\dfrac{9-12+3}{3-1}=0$, tức giới hạn tồn tại.\n\nÝ c) Đúng vì $\\lim\\limits_{x\\to1}f(x)=\\lim\\limits_{x\\to1}\\dfrac{(x-1)(x-3)}{x-1}=\\lim\\limits_{x\\to1}(x-3)=-2$.\n\nÝ d) Đúng vì $f(x)=x-3=x(1-\\dfrac{3}{x})$ với $x\\ne1$. Vì $\\lim\\limits_{x\\to+\\infty}x=+\\infty$ và $\\lim\\limits_{x\\to+\\infty}(1-\\dfrac{3}{x})=1>0$ nên $\\lim\\limits_{x\\to+\\infty}f(x)=+\\infty$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Sai, Đúng, Đúng.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>(x*x-4*x+3)/(x-1),2),1))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (!near(lm(x=>(x*x-4*x+3)/(x-1),3),lmL(x=>(x*x-4*x+3)/(x-1),3)))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>(x*x-4*x+3)/(x-1),1),-2))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((x=>(x*x-4*x+3)/(x-1))(1e6)>1e5)})()===true"
+    ],
+    "sach_dap_so": "a) Sai; b) Sai; c) Đúng; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-d-7",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $y=f(x)=\\dfrac{x^{2}-4x+3}{1-x}$. Xét tính đúng, sai của các câu sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to2}f(x)=1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to3}f(x)$ không tồn tại.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to1}f(x)=2$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to+\\infty}f(x)=+\\infty$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử $x^{2}-4x+3=(x-1)(x-3)$ còn mẫu là $1-x=-(x-1)$, nên với $x\\ne1$ hàm số rút gọn thành đa thức bậc nhất.\n\n**Bước 1.** Phân tích tử và đổi dấu mẫu để rút gọn với $x\\ne1$, chú ý hệ số âm của $x$ sau khi rút gọn.\n\n**Bước 2.** Với điểm $x=2$ và $x=3$, mẫu khác $0$ nên thay trực tiếp để tính giới hạn.\n\n**Bước 3.** Với $x=1$, dùng công thức đã rút gọn rồi thay $x=1$.\n\n**Bước 4.** Với $x\\to+\\infty$, rút $x$ ra ngoài và xét dấu của thừa số còn lại để suy ra dấu của vô cực.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì hàm xác định tại $x=2$ nên $\\lim\\limits_{x\\to2}f(x)=\\dfrac{4-8+3}{1-2}=1$.\n\nÝ b) Sai vì hàm xác định tại $x=3$ nên $\\lim\\limits_{x\\to3}f(x)=\\dfrac{9-12+3}{1-3}=0$, tức giới hạn tồn tại.\n\nÝ c) Đúng vì $\\lim\\limits_{x\\to1}f(x)=\\lim\\limits_{x\\to1}\\dfrac{(x-1)(x-3)}{1-x}=\\lim\\limits_{x\\to1}(3-x)=2$.\n\nÝ d) Sai vì với $x\\ne1$, $f(x)=3-x=x(\\dfrac{3}{x}-1)$. Vì $\\lim\\limits_{x\\to+\\infty}x=+\\infty$ và $\\lim\\limits_{x\\to+\\infty}(\\dfrac{3}{x}-1)=-1<0$ nên $\\lim\\limits_{x\\to+\\infty}f(x)=-\\infty$, khác $+\\infty$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>(x*x-4*x+3)/(1-x),2),1))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (!near(lm(x=>(x*x-4*x+3)/(1-x),3),lmL(x=>(x*x-4*x+3)/(1-x),3)))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>(x*x-4*x+3)/(1-x),1),2))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((x=>(x*x-4*x+3)/(1-x))(1e6)>1e5)})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-d-9",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=x^{2}-3x+2$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to1}\\dfrac{f(x)}{x-1}=-1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to1}\\dfrac{f(x)}{x^{2}-1}=\\dfrac{1}{4}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to1}\\dfrac{f(x)}{x^{3}-x^{2}+x-1}>0$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Để $\\lim\\limits_{x\\to1}\\dfrac{f(x)}{ax+b}=2$ thì $a+3b=1$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân tích $f(x)=(x-1)(x-2)$ để triệt nhân tử chung $x-1$ với từng mẫu số.\n\n**Bước 1.** Phân tích $f(x)=(x-1)(x-2)$ và phân tích từng mẫu số thành nhân tử có chứa $x-1$.\n\n**Bước 2.** Rút nhân tử chung rồi thay giá trị của $x$ vào biểu thức còn lại để tính giới hạn ở các ý a), b), c).\n\n**Bước 3.** Với ý d), giới hạn hữu hạn khác $0$ buộc mẫu phải triệt tiêu tại $x=1$, từ đó tìm quan hệ giữa $a$ và $b$.\n\n**Bước 4.** Thay quan hệ vừa tìm vào giới hạn, giải ra $a$, $b$ rồi tính biểu thức $a+3b$.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $\\lim\\limits_{x\\to1}\\dfrac{(x-1)(x-2)}{x-1}=\\lim\\limits_{x\\to1}(x-2)=-1$.\n\nÝ b) Sai vì $\\lim\\limits_{x\\to1}\\dfrac{(x-1)(x-2)}{(x-1)(x+1)}=\\lim\\limits_{x\\to1}\\dfrac{x-2}{x+1}=\\dfrac{-1}{2}$, khác $\\dfrac{1}{4}$.\n\nÝ c) Sai vì $x^{3}-x^{2}+x-1=(x-1)(x^{2}+1)$ nên $\\lim\\limits_{x\\to1}\\dfrac{(x-1)(x-2)}{(x-1)(x^{2}+1)}=\\lim\\limits_{x\\to1}\\dfrac{x-2}{x^{2}+1}=-\\dfrac{1}{2}<0$.\n\nÝ d) Đúng vì giới hạn hữu hạn khác $0$ nên $ax+b$ phải triệt tiêu tại $x=1$: $a+b=0$, tức $b=-a$ (với $a\\ne0$).\n\nKhi đó $\\lim\\limits_{x\\to1}\\dfrac{(x-1)(x-2)}{a(x-1)}=\\lim\\limits_{x\\to1}\\dfrac{x-2}{a}=-\\dfrac{1}{a}=2$, suy ra $a=-\\dfrac{1}{2}$ và $b=\\dfrac{1}{2}$.\n\nDo đó $a+3b=-\\dfrac{1}{2}+\\dfrac{3}{2}=1$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>(x=>x*x-3*x+2)(x)/(x-1),1),-1))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>(x=>x*x-3*x+2)(x)/(x*x-1),1),0.25))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (lm(x=>(x=>x*x-3*x+2)(x)/(x**3-x*x+x-1),1)>0)})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((()=>{const a=-0.5,b=0.5;return near(lm(x=>(x=>x*x-3*x+2)(x)/(a*x+b),1),2)&&near(a+3*b,1)})())})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Sai; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-d-10",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\sqrt{x^{2}+ax+5}+x$. Xét tính đúng, sai của các khẳng định sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to0}f(x)=\\sqrt{5}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to-2}f(x)=1$ thì $a=0$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Với $a=0$ thì $\\lim\\limits_{x\\to-\\infty}f(x)=1$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to-\\infty}f(x)=-1\\Leftrightarrow a=2$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ý a), b) thay trực tiếp; ý c), d) có dạng $\\infty-\\infty$ nên nhân với biểu thức liên hợp rồi chia cho luỹ thừa cao nhất của $x$.\n\n**Bước 1.** Với ý a) và b), thay giá trị của $x$ vào hàm số rồi giải phương trình theo $a$ nếu có.\n\n**Bước 2.** Với ý c) và d), nhận ra dạng $\\infty-\\infty$ khi $x\\to-\\infty$ và nhân với biểu thức liên hợp.\n\n**Bước 3.** Khi $x\\to-\\infty$, nhớ $x<0$ nên $\\sqrt{x^{2}}=-x$ khi đưa ra ngoài căn.\n\n**Bước 4.** Chia tử và mẫu cho $x$ rồi tính giới hạn, sau đó giải phương trình theo $a$.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì hàm xác định tại $x=0$ nên $\\lim\\limits_{x\\to0}f(x)=\\sqrt{5}+0=\\sqrt{5}$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to-2}f(x)=\\sqrt{9-2a}-2=1$ nên $\\sqrt{9-2a}=3$, tức $9-2a=9$ và $a=0$.\n\nÝ c) Sai vì với $a=0$: $\\sqrt{x^{2}+5}+x=\\dfrac{5}{\\sqrt{x^{2}+5}-x}$. Khi $x\\to-\\infty$ mẫu dần tới $+\\infty$ nên giới hạn bằng $0$, khác $1$.\n\nÝ d) Đúng vì $f(x)=\\dfrac{ax+5}{\\sqrt{x^{2}+ax+5}-x}$. Với $x<0$, $\\sqrt{x^{2}+ax+5}=-x\\sqrt{1+\\dfrac{a}{x}+\\dfrac{5}{x^{2}}}$.\n\nChia tử và mẫu cho $x$: $\\lim\\limits_{x\\to-\\infty}f(x)=\\lim\\limits_{x\\to-\\infty}\\dfrac{a+\\frac{5}{x}}{-\\sqrt{1+\\frac{a}{x}+\\frac{5}{x^{2}}}-1}=-\\dfrac{a}{2}$.\n\nVậy $-\\dfrac{a}{2}=-1\\Leftrightarrow a=2$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(((x,a)=>Math.sqrt(x*x+a*x+5)+x)(1e-6,3),Math.sqrt(5))&&near(((x,a)=>Math.sqrt(x*x+a*x+5)+x)(1e-6,-1),Math.sqrt(5)))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(((x,a)=>Math.sqrt(x*x+a*x+5)+x)(-2,0),1)&&!near(((x,a)=>Math.sqrt(x*x+a*x+5)+x)(-2,1),1))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(((x,a)=>Math.sqrt(x*x+a*x+5)+x)(-1e5,0),1))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(((x,a)=>Math.sqrt(x*x+a*x+5)+x)(-1e5,2),-1)&&!near(((x,a)=>Math.sqrt(x*x+a*x+5)+x)(-1e5,3),-1))})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-d-11",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho $a$, $b$ là các số nguyên, $f(x)=\\dfrac{ax^{2}+bx-5}{x-1}$ và $\\lim\\limits_{x\\to1}f(x)=7$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$f(0)=-5$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to2}f(x)=4a+2b-5$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$b=5+a$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$S=a^{2}+b^{2}+a+b=18$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn hữu hạn khi mẫu dần tới $0$ buộc tử cũng triệt tiêu tại $x=1$, từ đó có quan hệ giữa $a$ và $b$.\n\n**Bước 1.** Với ý a) và b), thay trực tiếp $x=0$ và $x=2$ vì mẫu khác $0$ tại hai điểm này.\n\n**Bước 2.** Vì giới hạn tại $x=1$ hữu hạn mà mẫu dần tới $0$, tử phải bằng $0$ tại $x=1$.\n\n**Bước 3.** Dùng quan hệ này để phân tích tử có nhân tử $x-1$ rồi rút gọn với $x\\ne1$.\n\n**Bước 4.** Cho giới hạn bằng $7$ để tìm $a$, suy ra $b$ rồi tính biểu thức $S$.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $f(0)=\\dfrac{a\\cdot0+b\\cdot0-5}{0-1}=\\dfrac{-5}{-1}=5$, khác $-5$.\n\nÝ b) Đúng vì hàm xác định tại $x=2$ nên $\\lim\\limits_{x\\to2}f(x)=\\dfrac{4a+2b-5}{2-1}=4a+2b-5$.\n\nÝ c) Sai vì giới hạn tại $x=1$ hữu hạn mà mẫu dần tới $0$ nên $a+b-5=0$, tức $b=5-a$, khác $5+a$.\n\nÝ d) Đúng vì từ $b=5-a$: $ax^{2}+(5-a)x-5=(x-1)(ax+5)$ nên $\\lim\\limits_{x\\to1}f(x)=\\lim\\limits_{x\\to1}(ax+5)=a+5=7$.\n\nSuy ra $a=2$, $b=3$ và $S=4+9+2+3=18$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((()=>{const a=2,b=3,f=x=>(a*x*x+b*x-5)/(x-1);return near(f(0),-5)})())})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((()=>{const a=2,b=3,f=x=>(a*x*x+b*x-5)/(x-1);return near(f(2),4*a+2*b-5)})())})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((()=>{const a=2,b=3;return b===5+a})())})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((()=>{const a=2,b=3,f=x=>(a*x*x+b*x-5)/(x-1);return near(lm(f,1),7)&&a*a+b*b+a+b===18})())})()===true"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Sai; d) Đúng",
+    "ghi_chu": "Sách đánh nhãn ý thứ ba là \"b)\" lần hai (lỗi in), đã đánh lại thành c)."
+  },
+  {
+    "id": "nbv-b2-d-12",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\dfrac{3x-5}{2x-4}$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to2^{+}}(3x-5)=1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to2^{+}}(2x-4)=0$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$2x-4>0,\\ \\forall x>2$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to2^{+}}f(x)=\\dfrac{3}{2}$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba ý đầu chuẩn bị dữ kiện cho ý cuối: tử dần tới số dương, mẫu dần tới $0$ qua giá trị dương.\n\n**Bước 1.** Tính giới hạn của tử và của mẫu khi $x$ tiến tới $2$ từ phía bên phải.\n\n**Bước 2.** Xét dấu của mẫu $2x-4$ với mọi $x>2$ bằng cách đưa về dạng tích.\n\n**Bước 3.** Với dạng thương có tử dần tới số dương, mẫu dần tới $0^{+}$, dùng quy tắc giới hạn vô cực của thương.\n\n**Bước 4.** So kết quả vừa tính với giá trị mà từng mệnh đề đã nêu để kết luận đúng hay sai.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $\\lim\\limits_{x\\to2^{+}}(3x-5)=3\\cdot2-5=1$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to2^{+}}(2x-4)=2\\cdot2-4=0$.\n\nÝ c) Đúng vì $2x-4=2(x-2)$ và $x>2$ nên $x-2>0$, suy ra $2x-4>0$.\n\nÝ d) Sai vì tử dần tới $1>0$, mẫu dần tới $0$ qua giá trị dương nên $\\lim\\limits_{x\\to2^{+}}\\dfrac{3x-5}{2x-4}=+\\infty$, khác $\\dfrac{3}{2}$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(3*(2+1e-6)-5,1))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(2*(2+1e-6)-4,0))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ([2.0001,2.5,3,10,100].every(x=>2*x-4>0))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near((x=>(3*x-5)/(2*x-4))(2+1e-6),1.5))})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": "Sách in thừa chữ \"d)\" cuối lời giải ý c) (lỗi in)."
+  },
+  {
+    "id": "nbv-b2-d-13",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\sqrt{9x^{2}+8x+7}+3x$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to-\\infty}f(x)=\\lim\\limits_{x\\to-\\infty}\\dfrac{8x+7}{\\sqrt{9x^{2}+8x+7}-3x}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to-\\infty}\\dfrac{8x+7}{\\sqrt{9x^{2}+8x+7}-3x}=\\lim\\limits_{x\\to-\\infty}\\dfrac{8+\\frac{7}{x}}{-\\sqrt{9+\\frac{8}{x}+\\frac{7}{x^{2}}}-3}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to-\\infty}\\dfrac{8+\\frac{7}{x}}{-\\sqrt{9+\\frac{8}{x}+\\frac{7}{x^{2}}}-3}=\\dfrac{-8}{3}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to-\\infty}f(x)=-\\infty$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\infty-\\infty$ khi $x\\to-\\infty$: nhân liên hợp, rồi chia cho $x$ với chú ý $x<0$ nên $\\sqrt{x^{2}}=-x$.\n\n**Bước 1.** Nhân và chia với biểu thức liên hợp để khử căn ở tử và đưa về dạng phân thức.\n\n**Bước 2.** Khi $x\\to-\\infty$, ta có $x<0$ nên đưa $x$ ra ngoài căn phải viết $\\sqrt{x^{2}}=-x$.\n\n**Bước 3.** Chia cả tử và mẫu cho $x$ rồi so với biểu thức mà ý b) đã nêu.\n\n**Bước 4.** Tính giới hạn của biểu thức cuối và đối chiếu với giá trị ở ý c) và ý d).\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì nhân và chia với $\\sqrt{9x^{2}+8x+7}-3x$: $f(x)=\\dfrac{(9x^{2}+8x+7)-9x^{2}}{\\sqrt{9x^{2}+8x+7}-3x}=\\dfrac{8x+7}{\\sqrt{9x^{2}+8x+7}-3x}$.\n\nÝ b) Đúng vì khi $x<0$, $\\sqrt{9x^{2}+8x+7}=-x\\sqrt{9+\\dfrac{8}{x}+\\dfrac{7}{x^{2}}}$.\n\nChia tử và mẫu cho $x$: mẫu thành $-\\sqrt{9+\\dfrac{8}{x}+\\dfrac{7}{x^{2}}}-3$, tử thành $8+\\dfrac{7}{x}$.\n\nÝ c) Sai vì khi $x\\to-\\infty$: tử dần tới $8$, mẫu dần tới $-\\sqrt{9}-3=-6$ nên giới hạn bằng $\\dfrac{8}{-6}=-\\dfrac{4}{3}$, khác $-\\dfrac{8}{3}$.\n\nÝ d) Sai vì theo các ý trên, $\\lim\\limits_{x\\to-\\infty}f(x)=-\\dfrac{4}{3}$ là một số hữu hạn, không phải $-\\infty$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Sai.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((()=>{const x=-1000;return near((x=>Math.sqrt(9*x*x+8*x+7)+3*x)(x),(8*x+7)/(Math.sqrt(9*x*x+8*x+7)-3*x))})())})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((()=>{const x=-1e4;return near((8*x+7)/(Math.sqrt(9*x*x+8*x+7)-3*x),(8+7/x)/(-Math.sqrt(9+8/x+7/(x*x))-3))})())})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near((x=>Math.sqrt(9*x*x+8*x+7)+3*x)(-1e5),-8/3))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((x=>Math.sqrt(9*x*x+8*x+7)+3*x)(-1e5)<-1e3)})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-d-14",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Tại một bể bơi dạng hình tròn có đường kính $AB=15\\ \\text{m}$, bạn An xuất phát từ $A$ bơi thẳng theo dây cung $AC$ tạo với đường kính $AB$ một góc $\\alpha\\ (0<\\alpha<\\dfrac{\\pi}{2})$, rồi chạy bộ theo cung nhỏ $CB$ đến điểm $B$. Gọi $S(\\alpha)$ là quãng đường bạn An đã di chuyển. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Công thức tính quãng đường bạn An di chuyển là $S(\\alpha)=15(\\alpha+\\cos\\alpha)$ với $0<\\alpha<\\dfrac{\\pi}{2}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Khi $\\alpha=\\dfrac{\\pi}{3}$, bạn An di chuyển được $15\\ \\text{m}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{\\alpha\\to0^{+}}S(\\alpha)=15$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{\\alpha\\to(\\frac{\\pi}{2})^{+}}S(\\alpha)=15\\pi$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ý a) là mô hình hoá: dây cung $AC$ nhờ tam giác vuông, cung $CB$ nhờ góc nội tiếp và góc ở tâm; các ý còn lại thế vào công thức.\n\n**Bước 1.** Dùng góc nội tiếp chắn nửa đường tròn để thấy tam giác $ABC$ vuông tại $C$, từ đó tính $AC$.\n\n**Bước 2.** Dùng quan hệ góc nội tiếp và góc ở tâm cùng chắn một cung để tính độ dài cung nhỏ.\n\n**Bước 3.** Cộng độ dài dây cung và cung để kiểm tra công thức $S(\\alpha)$ ở ý a).\n\n**Bước 4.** Với các ý còn lại, thay giá trị của $\\alpha$ vào công thức hoặc tính giới hạn của hàm liên tục.\n\n**Phần 2. Trình bày**\n\nLưu ý: ý d) sách viết $\\alpha\\to(\\frac{\\pi}{2})^{+}$, nằm ngoài miền $0<\\alpha<\\dfrac{\\pi}{2}$ (đề sai); lời giải hiểu là $\\alpha$ dần tới $\\dfrac{\\pi}{2}$ từ bên trái, kết luận không đổi.\n\nÝ a) Đúng vì gọi $O$ là tâm hình tròn. Tam giác $ABC$ vuông tại $C$ (góc nội tiếp chắn đường kính) nên $AC=AB\\cos\\alpha=15\\cos\\alpha$.\n\nTa có $\\widehat{BOC}=2\\widehat{BAC}=2\\alpha$, nên độ dài cung nhỏ $CB$ là $7{,}5\\cdot2\\alpha=15\\alpha$.\n\nVậy $S(\\alpha)=AC+\\text{cung }CB=15\\cos\\alpha+15\\alpha=15(\\alpha+\\cos\\alpha)$.\n\nÝ b) Sai vì $S(\\dfrac{\\pi}{3})=15(\\dfrac{\\pi}{3}+\\cos\\dfrac{\\pi}{3})=15(\\dfrac{\\pi}{3}+\\dfrac{1}{2})\\approx23{,}2\\ \\text{m}$, khác $15\\ \\text{m}$.\n\nÝ c) Đúng vì $\\lim\\limits_{\\alpha\\to0^{+}}15(\\alpha+\\cos\\alpha)=15(0+1)=15$.\n\nÝ d) Sai vì $\\lim\\limits_{\\alpha\\to(\\frac{\\pi}{2})^{-}}15(\\alpha+\\cos\\alpha)=15(\\dfrac{\\pi}{2}+\\cos\\dfrac{\\pi}{2})=15(\\dfrac{\\pi}{2}+0)=7{,}5\\pi$, khác $15\\pi$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const ok=al=>{const A=[-7.5,0],B=[7.5,0];const d=15*Math.cos(al);const C=[A[0]+d*Math.cos(al),A[1]+d*Math.sin(al)];if(Math.abs(Math.hypot(C[0],C[1])-7.5)>1e-9)return false;const goc=Math.acos((C[0]*B[0]+C[1]*B[1])/(7.5*7.5));return Math.abs(d+7.5*goc-15*(al+Math.cos(al)))<1e-9};return [0.2,0.7,1.3].every(ok)})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near((a=>15*(a+Math.cos(a)))(Math.PI/3),15))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near((a=>15*(a+Math.cos(a)))(1e-7),15))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near((a=>15*(a+Math.cos(a)))(Math.PI/2),15*Math.PI))})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Sai",
+    "ghi_chu": "LỆCH SÁCH — ý b) sách in ≈ 16,95 m, giá trị đúng 15(π/3 + 1/2) ≈ 23,2 m (kết luận Sai không đổi). Đề sai ý d): α→(π/2)⁺ nằm ngoài miền 0<α<π/2; giải theo α→(π/2)⁻ được 7,5π như sách, kết luận Sai. Đề có [[img:image150.png]] chỉ minh hoạ bể bơi, không cần để giải."
+  },
+  {
+    "id": "nbv-b2-d-15",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Một cái hồ chứa $1000$ lít nước ngọt. Người ta bơm nước biển có nồng độ muối $35\\ \\text{g/lít}$ vào hồ với tốc độ $20$ lít/phút. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Nồng độ muối của nước trong hồ sau $t$ phút được tính bởi công thức $C(t)=\\dfrac{35t}{50+t}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Sau khi bơm $10$ phút, nồng độ muối của nước trong hồ đạt $5{,}38\\ \\text{g/lít}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Để nồng độ muối trong hồ đạt $30\\ \\text{g/lít}$ cần bơm nước biển vào hồ trong khoảng $2$ giờ.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Nồng độ muối của nước trong hồ tiến tới $35\\ \\text{g/lít}$ nếu $t\\to+\\infty$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nồng độ bằng lượng muối chia thể tích dung dịch tại thời điểm $t$; sau khi có công thức, các ý còn lại là thay số, giải phương trình và tính giới hạn.\n\n**Bước 1.** Tính lượng muối và thể tích nước trong hồ sau $t$ phút để lập công thức nồng độ.\n\n**Bước 2.** Thay số vào công thức để tính nồng độ tại thời điểm đã cho ở ý b).\n\n**Bước 3.** Giải phương trình $C(t)=30$ để tìm thời gian rồi đổi từ phút sang giờ.\n\n**Bước 4.** Chia tử và mẫu cho $t$ để tính giới hạn khi $t\\to+\\infty$ ở ý d).\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì sau $t$ phút đã bơm $20t$ lít nước biển, chứa $35\\cdot20t=700t$ gam muối, và thể tích nước trong hồ là $1000+20t$ lít.\n\nVậy $C(t)=\\dfrac{700t}{1000+20t}=\\dfrac{35t}{50+t}$ (g/lít).\n\nÝ b) Sai vì $C(10)=\\dfrac{35\\cdot10}{50+10}=\\dfrac{350}{60}\\approx5{,}83\\ \\text{g/lít}$, khác $5{,}38\\ \\text{g/lít}$.\n\nÝ c) Sai vì $C(t)=30\\Leftrightarrow35t=30(50+t)\\Leftrightarrow5t=1500\\Leftrightarrow t=300$ phút, tức $5$ giờ, khác $2$ giờ.\n\nÝ d) Đúng vì $\\lim\\limits_{t\\to+\\infty}\\dfrac{35t}{50+t}=\\lim\\limits_{t\\to+\\infty}\\dfrac{35}{\\frac{50}{t}+1}=35$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(700*7/(1000+20*7),(t=>35*t/(50+t))(7)))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near((t=>35*t/(50+t))(10),5.38))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near((t=>35*t/(50+t))(120),30))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near((t=>35*t/(50+t))(1e9),35))})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Sai; d) Đúng",
+    "ghi_chu": "Lời giải sách ý b) in C(15) thay cho C(10) (lỗi in), con số 5,83 trùng bản này; ý c) sách ra t = 300 phút (= 5 giờ), trùng. Không lệch đáp số."
+  },
+  {
+    "id": "nbv-b2-d-16",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Giả sử $\\lim\\limits_{x\\to x_{0}}f(x)=a$ và $\\lim\\limits_{x\\to x_{0}}g(x)=b$ với $a,b\\in\\mathbb{R}$. Các khẳng định sau đúng hay sai?",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to x_{0}}[f(x)\\cdot g(x)]=a\\cdot b$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to x_{0}}[2f(x)-g(x)]=2a-b$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to x_{0}}\\dfrac{f(x)}{g(x)}=\\dfrac{a}{b}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to x_{0}}\\dfrac{f(x)+2g(x)}{f(x)}=a+\\dfrac{2b}{a}$ với $a\\ne0$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đối chiếu từng khẳng định với các quy tắc giới hạn của tổng, hiệu, tích, thương; thương cần điều kiện mẫu có giới hạn khác $0$.\n\n**Bước 1.** Nhớ lại các quy tắc giới hạn hữu hạn của tích, hiệu và tích của hằng số với hàm số.\n\n**Bước 2.** Với thương hai hàm số, xác định điều kiện về giới hạn của mẫu để quy tắc được dùng.\n\n**Bước 3.** Với ý d), tách phân thức thành $1$ cộng một thương rồi áp dụng quy tắc.\n\n**Bước 4.** So kết quả thu được với biểu thức mà từng khẳng định đã nêu.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì theo quy tắc giới hạn của tích hai hàm số có giới hạn hữu hạn.\n\nÝ b) Đúng vì theo quy tắc giới hạn của hiệu và quy tắc $\\lim\\limits_{x\\to x_{0}}[c\\,f(x)]=c\\lim\\limits_{x\\to x_{0}}f(x)$.\n\nÝ c) Sai vì quy tắc giới hạn của thương chỉ dùng khi $b\\ne0$; nếu $b=0$ thì $\\dfrac{a}{b}$ không có nghĩa nên khẳng định không đúng với mọi $a,b$.\n\nÝ d) Sai vì với $a\\ne0$: $\\dfrac{f(x)+2g(x)}{f(x)}=1+\\dfrac{2g(x)}{f(x)}$ nên giới hạn bằng $1+\\dfrac{2b}{a}$, khác $a+\\dfrac{2b}{a}$ khi $a\\ne1$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Sai.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((()=>{const f=x=>x+2,g=x=>x+3;return near(lm(x=>f(x)*g(x),0),2*3)})())})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((()=>{const f=x=>x+2,g=x=>x+3;return near(lm(x=>2*f(x)-g(x),0),2*2-3)})())})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((()=>{const f=x=>x+1,g=x=>x;return Math.abs(f(1e-7)/g(1e-7))<1e3})())})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((()=>{const f=x=>x+2,g=x=>x+3;return near(lm(x=>(f(x)+2*g(x))/f(x),0),2+2*3/2)})())})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-d-17",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\sqrt{4x^{2}+ax+1}+bx$ với $a,b\\in\\mathbb{R}$. Các mệnh đề sau đúng hay sai?",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to0}f(x)=1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to-\\infty}(\\sqrt{4x^{2}+ax+1}+bx)=\\lim\\limits_{x\\to-\\infty}[x(-\\sqrt{4+\\frac{a}{x}+\\frac{1}{x^{2}}}+b)]$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Khi $b=2$, $\\lim\\limits_{x\\to-\\infty}f(x)=\\dfrac{a}{4}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Biết $\\lim\\limits_{x\\to-\\infty}(\\sqrt{4x^{2}+ax+1}+bx)=-1$. Khi đó $P=a^{2}-2b^{3}$ có giá trị bằng $0$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi $x\\to-\\infty$ phải đưa $x$ ra ngoài căn với dấu $\\sqrt{x^{2}}=-x$; giới hạn hữu hạn của dạng $\\infty-\\infty$ buộc hệ số $b$ trùng hệ số căn.\n\n**Bước 1.** Thay trực tiếp $x=0$ ở ý a), vì hàm số xác định tại điểm đó.\n\n**Bước 2.** Với $x\\to-\\infty$, đưa $x$ ra ngoài căn và nhớ $x<0$ nên $\\sqrt{x^{2}}=-x$.\n\n**Bước 3.** Với $b=2$, nhân liên hợp để khử dạng $\\infty-\\infty$ rồi chia tử và mẫu cho $x$.\n\n**Bước 4.** Với ý d), xét trường hợp $b$ khác hệ số căn để loại, rồi dùng giới hạn đã tính để tìm $a$.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì hàm xác định tại $x=0$ nên $\\lim\\limits_{x\\to0}f(x)=\\sqrt{1}+0=1$.\n\nÝ b) Đúng vì khi $x<0$, $\\sqrt{4x^{2}+ax+1}=-x\\sqrt{4+\\dfrac{a}{x}+\\dfrac{1}{x^{2}}}$.\n\nDo đó $\\sqrt{4x^{2}+ax+1}+bx=-x\\sqrt{4+\\dfrac{a}{x}+\\dfrac{1}{x^{2}}}+bx=x(-\\sqrt{4+\\dfrac{a}{x}+\\dfrac{1}{x^{2}}}+b)$.\n\nÝ c) Sai vì với $b=2$: $\\sqrt{4x^{2}+ax+1}+2x=\\dfrac{ax+1}{\\sqrt{4x^{2}+ax+1}-2x}=\\dfrac{a+\\frac{1}{x}}{-\\sqrt{4+\\frac{a}{x}+\\frac{1}{x^{2}}}-2}$, dần tới $\\dfrac{a}{-4}=-\\dfrac{a}{4}$, khác $\\dfrac{a}{4}$ khi $a\\ne0$.\n\nÝ d) Đúng vì từ ý b): nếu $b\\ne2$ thì $x(-\\sqrt{4+\\dfrac{a}{x}+\\dfrac{1}{x^{2}}}+b)$ dần tới $\\pm\\infty$, mâu thuẫn với giới hạn bằng $-1$. Vậy $b=2$.\n\nKhi đó giới hạn bằng $-\\dfrac{a}{4}=-1$ nên $a=4$.\n\nSuy ra $P=a^{2}-2b^{3}=16-2\\cdot8=0$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(((x,a,b)=>Math.sqrt(4*x*x+a*x+1)+b*x)(1e-7,3,-5),1))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((()=>{const x=-1e4,a=3,b=1;return near(((x,a,b)=>Math.sqrt(4*x*x+a*x+1)+b*x)(x,a,b),x*(-Math.sqrt(4+a/x+1/(x*x))+b))})())})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(((x,a,b)=>Math.sqrt(4*x*x+a*x+1)+b*x)(-1e5,4,2),4/4))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(((x,a,b)=>Math.sqrt(4*x*x+a*x+1)+b*x)(-1e5,4,2),-1)&&near(16-2*8,0))})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-d-18",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Các mệnh đề sau đúng hay sai?",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to-1}\\dfrac{2x-3x^{2}}{4x+1}=-\\dfrac{3}{4}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\dfrac{2n^{2}+1}{3n^{3}-3n+3}=\\dfrac{2}{3}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to3}\\dfrac{\\sqrt{2x+3}-3}{\\sqrt{x+1}-2}=\\dfrac{4}{3}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to1}\\dfrac{\\sqrt[3]{x+7}-2}{x^{2}-3x+2}=\\dfrac{1}{3}$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ý a) thay trực tiếp; ý b) là dãy phân thức; ý c), d) có dạng $\\dfrac{0}{0}$ chứa căn nên dùng biểu thức liên hợp (bậc hai hoặc bậc ba).\n\n**Bước 1.** Nhận dạng từng giới hạn: thay trực tiếp, giới hạn dãy số hay dạng vô định cần biến đổi.\n\n**Bước 2.** Với dãy phân thức, chia cả tử và mẫu cho luỹ thừa cao nhất của $n$ rồi tính.\n\n**Bước 3.** Với ý c), nhân liên hợp cả tử lẫn mẫu để khử các căn bậc hai.\n\n**Bước 4.** Với ý d), dùng hằng đẳng thức $a^{3}-b^{3}$ để khử căn bậc ba rồi rút nhân tử $x-1$.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì hàm xác định tại $x=-1$ nên giới hạn bằng $\\dfrac{2\\cdot(-1)-3\\cdot(-1)^{2}}{4\\cdot(-1)+1}=\\dfrac{-5}{-3}=\\dfrac{5}{3}$, khác $-\\dfrac{3}{4}$.\n\nÝ b) Sai vì chia tử và mẫu cho $n^{3}$: $\\lim\\dfrac{\\frac{2}{n}+\\frac{1}{n^{3}}}{3-\\frac{3}{n^{2}}+\\frac{3}{n^{3}}}=\\dfrac{0}{3}=0$, khác $\\dfrac{2}{3}$.\n\nÝ c) Đúng vì nhân tử và mẫu với $(\\sqrt{2x+3}+3)(\\sqrt{x+1}+2)$: tử thành $(2x+3-9)(\\sqrt{x+1}+2)$, mẫu thành $(x+1-4)(\\sqrt{2x+3}+3)$.\n\nVới $x\\ne3$: biểu thức $=\\dfrac{2(\\sqrt{x+1}+2)}{\\sqrt{2x+3}+3}$.\n\nSuy ra giới hạn bằng $\\dfrac{2\\cdot4}{6}=\\dfrac{4}{3}$.\n\nÝ d) Sai vì đặt $A=\\sqrt[3]{(x+7)^{2}}+2\\sqrt[3]{x+7}+4$; nhân tử và mẫu với $A$: tử thành $x+7-8=x-1$, mẫu thành $(x-1)(x-2)A$.\n\nVới $x\\ne1$: biểu thức $=\\dfrac{1}{(x-2)A}$, dần tới $\\dfrac{1}{(-1)\\cdot12}=-\\dfrac{1}{12}$, khác $\\dfrac{1}{3}$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Sai, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>(2*x-3*x*x)/(4*x+1),-1),-0.75))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((()=>{const n=1e6;return near((2*n*n+1)/(3*n**3-3*n+3),2/3)})())})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>(Math.sqrt(2*x+3)-3)/(Math.sqrt(x+1)-2),3),4/3))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>(Math.cbrt(x+7)-2)/(x*x-3*x+2),1),1/3))})()===false"
+    ],
+    "sach_dap_so": "a) Sai; b) Sai; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-d-19",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Các mệnh đề sau đúng hay sai?",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to0}\\dfrac{\\sqrt{4+3x}-2}{4x}=\\dfrac{3}{16}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to+\\infty}\\dfrac{3x^{2}-4x+1}{2x^{2}+2x+1}=\\dfrac{3}{2}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to3}\\dfrac{\\sqrt{2x+3}-3}{\\sqrt{x+1}-2}=\\dfrac{4}{3}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to1}\\dfrac{\\sqrt[3]{x+7}-2}{x^{2}-3x+2}=\\dfrac{1}{3}$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhận dạng từng giới hạn (vô định chứa căn tại một điểm hay phân thức tại vô cực) rồi chọn đúng phép biến đổi: nhân liên hợp hoặc chia luỹ thừa cao nhất.\n\n**Bước 1.** Thay thử giá trị của $x$ vào để biết giới hạn có dạng vô định $\\dfrac{0}{0}$ hay không.\n\n**Bước 2.** Với ý a), c), d), nhân liên hợp phù hợp để khử căn rồi rút nhân tử chung.\n\n**Bước 3.** Với ý b), chia tử và mẫu cho luỹ thừa cao nhất của $x$ khi $x\\to+\\infty$.\n\n**Bước 4.** So kết quả vừa tính với giá trị mà từng mệnh đề đã nêu để kết luận đúng hay sai.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì nhân tử và mẫu với $\\sqrt{4+3x}+2$: với $x\\ne0$, biểu thức $=\\dfrac{(4+3x)-4}{4x(\\sqrt{4+3x}+2)}=\\dfrac{3}{4(\\sqrt{4+3x}+2)}$.\n\nSuy ra giới hạn bằng $\\dfrac{3}{4\\cdot4}=\\dfrac{3}{16}$.\n\nÝ b) Đúng vì chia tử và mẫu cho $x^{2}$: $\\lim\\limits_{x\\to+\\infty}\\dfrac{3-\\frac{4}{x}+\\frac{1}{x^{2}}}{2+\\frac{2}{x}+\\frac{1}{x^{2}}}=\\dfrac{3}{2}$.\n\nÝ c) Đúng vì nhân tử và mẫu với $(\\sqrt{2x+3}+3)(\\sqrt{x+1}+2)$; với $x\\ne3$ biểu thức $=\\dfrac{2(\\sqrt{x+1}+2)}{\\sqrt{2x+3}+3}$.\n\nSuy ra giới hạn bằng $\\dfrac{2\\cdot4}{6}=\\dfrac{4}{3}$.\n\nÝ d) Sai vì nhân tử và mẫu với $A=\\sqrt[3]{(x+7)^{2}}+2\\sqrt[3]{x+7}+4$; với $x\\ne1$ biểu thức $=\\dfrac{x+7-8}{(x-1)(x-2)A}=\\dfrac{1}{(x-2)A}$.\n\nGiới hạn bằng $\\dfrac{1}{(-1)\\cdot12}=-\\dfrac{1}{12}$, khác $\\dfrac{1}{3}$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>(Math.sqrt(4+3*x)-2)/(4*x),0),3/16))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near((x=>(3*x*x-4*x+1)/(2*x*x+2*x+1))(1e6),1.5))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>(Math.sqrt(2*x+3)-3)/(Math.sqrt(x+1)-2),3),4/3))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>(Math.cbrt(x+7)-2)/(x*x-3*x+2),1),1/3))})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": "Ý c), d) trùng với ý c), d) câu 18. Lời giải sách ý a) in nhầm $\\sqrt{4+x}$ ở bước cuối (lỗi in), kết quả 3/16 đúng."
+  },
+  {
+    "id": "nbv-b2-d-20",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $y=f(x)=\\dfrac{ax^{2}+bx+c}{x^{2}-x}$. Xét tính đúng, sai của các phát biểu sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Khi $a=1$, $b=-1$, $c=0$ thì $\\lim\\limits_{x\\to1}f(x)=\\lim\\limits_{x\\to1}\\dfrac{x^{2}-x}{x^{2}-x}=1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Nếu $\\lim\\limits_{x\\to+\\infty}f(x)=2$ thì $a=2$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Nếu $\\lim\\limits_{x\\to0}f(x)$ là giới hạn hữu hạn thì $c=0$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Nếu $\\lim\\limits_{x\\to1}f(x)$ là giới hạn hữu hạn và $\\lim\\limits_{x\\to0}f(x)=3$ thì $a+2b+3c=0$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn hữu hạn của phân thức có mẫu dần tới $0$ buộc tử cũng dần tới $0$ tại điểm đó; ngược lại, giới hạn tại vô cực chỉ phụ thuộc hệ số bậc cao nhất.\n\n**Bước 1.** Với ý a), thay các giá trị $a$, $b$, $c$ và rút gọn phân thức với $x\\ne0$, $x\\ne1$.\n\n**Bước 2.** Với giới hạn tại vô cực, chia tử và mẫu cho luỹ thừa cao nhất của $x$.\n\n**Bước 3.** Với giới hạn hữu hạn tại $x=0$ và $x=1$, mẫu dần tới $0$ nên tử phải triệt tiêu tại điểm đó.\n\n**Bước 4.** Kết hợp ba điều kiện để tìm $a$, $b$, $c$ rồi tính biểu thức $a+2b+3c$.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì với $x\\ne0$ và $x\\ne1$, $\\dfrac{x^{2}-x}{x^{2}-x}=1$ nên $\\lim\\limits_{x\\to1}f(x)=1$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to+\\infty}f(x)=\\lim\\limits_{x\\to+\\infty}\\dfrac{a+\\frac{b}{x}+\\frac{c}{x^{2}}}{1-\\frac{1}{x}}=a$, nên $a=2$.\n\nÝ c) Đúng vì mẫu $x^{2}-x\\to0$ khi $x\\to0$ mà giới hạn hữu hạn nên tử phải dần tới $0$: $\\lim\\limits_{x\\to0}(ax^{2}+bx+c)=c=0$.\n\nÝ d) Sai vì giới hạn tại $x=1$ hữu hạn và mẫu dần tới $0$ nên $a+b+c=0$ (1). Giới hạn tại $x=0$ hữu hạn nên $c=0$ (2).\n\nKhi đó $\\lim\\limits_{x\\to0}\\dfrac{ax^{2}+bx}{x^{2}-x}=\\lim\\limits_{x\\to0}\\dfrac{ax+b}{x-1}=-b=3$, suy ra $b=-3$ (3).\n\nTừ (1), (2), (3): $a=3$. Vậy $a+2b+3c=3-6+0=-3$, khác $0$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(((x,a,b,c)=>(a*x*x+b*x+c)/(x*x-x))(1+1e-6,1,-1,0),1))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(((x,a,b,c)=>(a*x*x+b*x+c)/(x*x-x))(1e6,2,5,7),2)&&!near(((x,a,b,c)=>(a*x*x+b*x+c)/(x*x-x))(1e6,3,5,7),2))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (Math.abs(((x,a,b,c)=>(a*x*x+b*x+c)/(x*x-x))(1e-7,1,1,1))>1e6&&near(((x,a,b,c)=>(a*x*x+b*x+c)/(x*x-x))(1e-7,1,2,0),-2))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((()=>{const a=3,b=-3,c=0;return near(((x,a,b,c)=>(a*x*x+b*x+c)/(x*x-x))(1+1e-6,a,b,c),3)&&near(((x,a,b,c)=>(a*x*x+b*x+c)/(x*x-x))(1e-6,a,b,c),3)&&near(a+2*b+3*c,0)})())})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-d-21",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Xét tính đúng, sai của các khẳng định sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to3}(x^{2}-x+3)=9$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Biết $\\lim\\limits_{x\\to1}f(x)=2$, $\\lim\\limits_{x\\to1}g(x)=4$. Khi đó $\\lim\\limits_{x\\to1}[3f(x)-5g(x)]=-13$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to2}\\dfrac{\\sqrt{4x+1}-3}{x^{2}-4}=1$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Biết $\\lim\\limits_{x\\to2}\\dfrac{2x^{2}-ax+4}{x^{2}-3x+2}=b$ (với $a,b\\in\\mathbb{R}$). Khi đó $a^{2}+b^{2}=40$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ý a), b) dùng quy tắc giới hạn trực tiếp; ý c) nhân liên hợp; ý d) dùng điều kiện giới hạn hữu hạn khi mẫu triệt tiêu để tìm tham số.\n\n**Bước 1.** Với ý a) và b), thay trực tiếp hoặc dùng quy tắc giới hạn của hiệu và tích với hằng số.\n\n**Bước 2.** Với ý c), thay thử $x=2$ để thấy dạng vô định rồi nhân liên hợp ở tử.\n\n**Bước 3.** Với ý d), điều kiện giới hạn hữu hạn khi mẫu bằng $0$ cho phép tìm $a$ từ phương trình của tử.\n\n**Bước 4.** Rút gọn phân thức để tìm $b$, rồi tính $a^{2}+b^{2}$ và đối chiếu.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $\\lim\\limits_{x\\to3}(x^{2}-x+3)=3^{2}-3+3=9$.\n\nÝ b) Sai vì $\\lim\\limits_{x\\to1}[3f(x)-5g(x)]=3\\cdot2-5\\cdot4=-14$, khác $-13$.\n\nÝ c) Sai vì nhân tử và mẫu với $\\sqrt{4x+1}+3$: với $x\\ne2$, biểu thức $=\\dfrac{4x+1-9}{(x-2)(x+2)(\\sqrt{4x+1}+3)}=\\dfrac{4}{(x+2)(\\sqrt{4x+1}+3)}$.\n\nGiới hạn bằng $\\dfrac{4}{4\\cdot6}=\\dfrac{1}{6}$, khác $1$.\n\nÝ d) Đúng vì mẫu triệt tiêu tại $x=2$ mà giới hạn hữu hạn nên tử triệt tiêu: $8-2a+4=0$, suy ra $a=6$.\n\nKhi đó $\\dfrac{2x^{2}-6x+4}{x^{2}-3x+2}=2$ với $x\\ne1$, $x\\ne2$ nên $b=2$.\n\nVậy $a^{2}+b^{2}=36+4=40$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>x*x-x+3,3),9))})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(3*2-5*4,-13))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(lm(x=>(Math.sqrt(4*x+1)-3)/(x*x-4),2),1))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return ((()=>{const a=6,b=2;return near(lm(x=>(2*x*x-a*x+4)/(x*x-3*x+2),2),b)&&a*a+b*b===40})())})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Sai; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-d-22",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho giới hạn $\\lim\\limits_{x\\to+\\infty}(\\sqrt{9x^{2}-4x+1}-ax-b)$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Nếu $a=b=0$ thì giới hạn đã cho bằng $+\\infty$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Nếu $a=4$, $b=0$ thì giới hạn đã cho bằng $-\\infty$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Nếu $a=3$, $b=0$ thì giới hạn đã cho bằng $-\\dfrac{5}{3}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Nếu giới hạn đã cho bằng $\\dfrac{10}{3}$ thì $a^{2}+b^{2}=25$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi $x\\to+\\infty$ có $\\sqrt{9x^{2}}\\approx3x$: nếu $a\\ne3$ giới hạn là vô cực theo dấu của $3-a$, nếu $a=3$ thì nhân liên hợp để tính phần còn lại.\n\n**Bước 1.** Đưa $x$ ra ngoài căn với $x>0$ để so sánh hệ số $3$ của căn với $a$.\n\n**Bước 2.** Với $a\\ne3$, xét dấu của thừa số trong ngoặc rồi dùng quy tắc tích với $x\\to+\\infty$.\n\n**Bước 3.** Với $a=3$, nhân và chia với biểu thức liên hợp rồi chia tử và mẫu cho $x$ để tính giới hạn.\n\n**Bước 4.** Với ý d), giới hạn hữu hạn buộc $a=3$, sau đó dùng giá trị đã tính ở ý c) để tìm $b$.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $\\sqrt{9x^{2}-4x+1}=x\\sqrt{9-\\dfrac{4}{x}+\\dfrac{1}{x^{2}}}$ với $x>0$; $\\lim\\limits_{x\\to+\\infty}x=+\\infty$ và căn dần tới $3>0$ nên giới hạn bằng $+\\infty$.\n\nÝ b) Đúng vì $\\sqrt{9x^{2}-4x+1}-4x=x(\\sqrt{9-\\dfrac{4}{x}+\\dfrac{1}{x^{2}}}-4)$; thừa số trong ngoặc dần tới $3-4=-1<0$ và $x\\to+\\infty$ nên giới hạn bằng $-\\infty$.\n\nÝ c) Sai vì nhân liên hợp: $\\sqrt{9x^{2}-4x+1}-3x=\\dfrac{-4x+1}{\\sqrt{9x^{2}-4x+1}+3x}=\\dfrac{-4+\\frac{1}{x}}{\\sqrt{9-\\frac{4}{x}+\\frac{1}{x^{2}}}+3}$.\n\nGiới hạn bằng $\\dfrac{-4}{3+3}=-\\dfrac{2}{3}$, khác $-\\dfrac{5}{3}$.\n\nÝ d) Đúng vì giới hạn hữu hạn nên hệ số của $x$ phải triệt tiêu: $a=3$.\n\nKhi đó $\\lim\\limits_{x\\to+\\infty}(\\sqrt{9x^{2}-4x+1}-3x-b)=-\\dfrac{2}{3}-b=\\dfrac{10}{3}$, suy ra $b=-4$.\n\nVậy $a^{2}+b^{2}=9+16=25$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (((x,a,b)=>Math.sqrt(9*x*x-4*x+1)-a*x-b)(1e5,0,0)>1e4)})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (((x,a,b)=>Math.sqrt(9*x*x-4*x+1)-a*x-b)(1e5,4,0)<-1e4)})()===true",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(((x,a,b)=>Math.sqrt(9*x*x-4*x+1)-a*x-b)(1e5,3,0),-5/3))})()===false",
+      "(()=>{const lm=(f,a)=>f(a+1e-6);const lmL=(f,a)=>f(a-1e-6);const near=(a,b)=>Math.abs(a-b)<1e-3;return (near(((x,a,b)=>Math.sqrt(9*x*x-4*x+1)-a*x-b)(1e5,3,-4),10/3)&&9+16===25)})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Đúng",
+    "ghi_chu": ""
+  }
+]

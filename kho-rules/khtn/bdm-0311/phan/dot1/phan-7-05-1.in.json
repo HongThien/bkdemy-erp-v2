@@ -1,0 +1,497 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00342",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Sự phản xạ ánh sáng",
+   "nhom": "Tính toán góc tới, góc phản xạ",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nPháp tuyến IN tại điểm tới I là đường thẳng vuông góc với mặt gương tại I.\nGóc tới $i$ là góc giữa tia tới SI và pháp tuyến IN; góc phản xạ $i'$ là góc giữa tia phản xạ IR và pháp tuyến IN.\nĐịnh luật phản xạ ánh sáng: tia phản xạ nằm trong mặt phẳng chứa tia tới và pháp tuyến; góc phản xạ bằng góc tới, $i' = i$.\nGóc giữa tia tới và tia phản xạ: $\\widehat{SIR} = i + i' = 2i$; pháp tuyến là đường phân giác của góc SIR.\nGóc giữa tia tới (hoặc tia phản xạ) và mặt gương bằng $90^\\circ - i$.\nTia tới vuông góc với mặt gương thì $i = 0^\\circ$, tia phản xạ bật ngược lại theo đường của tia tới.\n\n##PP 2. Các bước làm bài\nXác định đề cho góc đo với pháp tuyến hay đo với mặt gương\nNếu góc cho đo với mặt gương thì đổi sang góc tới: $i = 90^\\circ - \\alpha$ với $\\alpha$ là góc đo với mặt gương\nÁp dụng $i' = i$ hoặc $\\widehat{SIR} = 2i$\nĐổi kết quả về đúng đại lượng đề hỏi\n\n##CY 3. Lưu ý\nGóc tới, góc phản xạ luôn đo với pháp tuyến, không đo với mặt gương.\nĐổi góc với mặt gương sang góc với pháp tuyến bằng $90^\\circ$ trừ đi, không dùng $180^\\circ$.\nChỉ nhân đôi hoặc chia đôi khi liên quan đến góc SIR: $\\widehat{SIR} = 2i$.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01681",
+     "thu_tu": 1,
+     "ten": "Tính góc phản xạ hoặc góc tới từ góc với pháp tuyến",
+     "mo_ta": "Đề cho góc tới (hoặc góc phản xạ, hoặc góc NIR, SIN) đã đo với pháp tuyến; hỏi góc còn lại.\nLàm bằng cách áp dụng trực tiếp định luật phản xạ $i' = i$, kể cả trường hợp tia tới vuông góc với gương.\nLưu ý: đề cho góc hợp với mặt gương ⇒ thuộc dạng \"Tính góc tới từ góc hợp với mặt gương\"; đề hỏi góc giữa tia tới và tia phản xạ ⇒ thuộc dạng \"Tính góc giữa tia tới và tia phản xạ\".",
+     "ly_thuyet": "##TC Định luật phản xạ\nGóc phản xạ bằng góc tới: $i' = i$, cả hai đo với pháp tuyến.\nTia tới vuông góc với gương: $i = 0^\\circ$ nên $i' = 0^\\circ$.\n\n##CY Chú ý\nKhông chia đôi hay nhân đôi góc tới.\nGóc với mặt gương và góc giữa tia tới với tia phản xạ không phải là góc phản xạ.",
+     "vi_du": "##VD\nChiếu một tia sáng tới gương phẳng với góc tới $35^\\circ$. Góc phản xạ bằng bao nhiêu?\nA. $55^\\circ$\nB. $70^\\circ$\nC. $35^\\circ$\nD. $17{,}5^\\circ$\n\nBài giải:\nTheo định luật phản xạ ánh sáng, góc phản xạ bằng góc tới: $i' = i = 35^\\circ$.\n$55^\\circ$ là góc giữa tia tới và mặt gương, $70^\\circ$ là góc giữa tia tới và tia phản xạ, đều không phải góc phản xạ.\nChọn C.\n\n##VD\nBạn Lan đo được góc phản xạ của một tia sáng trên gương phẳng là $64^\\circ$. Góc tới của tia sáng đó bằng bao nhiêu?\nA. $64^\\circ$\nB. $26^\\circ$\nC. $32^\\circ$\nD. $128^\\circ$\n\nBài giải:\nGóc tới bằng góc phản xạ nên $i = i' = 64^\\circ$.\n$26^\\circ$ là góc giữa tia tới và mặt gương, $128^\\circ$ là góc giữa tia tới và tia phản xạ.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01682",
+     "thu_tu": 2,
+     "ten": "Tính góc tới từ góc hợp với mặt gương",
+     "mo_ta": "Đề cho góc giữa tia tới (hoặc tia phản xạ) và mặt gương; hỏi góc tới hoặc góc phản xạ, hoặc ngược lại cho góc phản xạ và hỏi góc hợp với mặt gương.\nLàm bằng cách đổi qua lại giữa góc với mặt gương và góc với pháp tuyến bằng $90^\\circ$ trừ đi, rồi dùng $i' = i$.\nLưu ý: đề đã cho góc đo với pháp tuyến ⇒ thuộc dạng \"Tính góc phản xạ hoặc góc tới từ góc với pháp tuyến\".",
+     "ly_thuyet": "##TC Đổi góc\nPháp tuyến vuông góc với mặt gương nên góc tới $i = 90^\\circ - \\alpha$, với $\\alpha$ là góc giữa tia tới và mặt gương.\nTương tự, góc giữa tia phản xạ và mặt gương bằng $90^\\circ - i'$.\n\n##PP Cách làm bài\nXác định góc đề cho là góc với mặt gương\nĐổi sang góc so với pháp tuyến bằng $90^\\circ$ trừ đi\nÁp dụng $i' = i$\nNếu đề hỏi góc với mặt gương thì đổi ngược lại\n\n##CY Chú ý\nKhông lấy $180^\\circ$ trừ.\nGóc cho sẵn với mặt gương không phải là góc tới.",
+     "vi_du": "##VD\nChiếu tia sáng SI tới gương phẳng; tia tới hợp với mặt gương một góc $30^\\circ$. Góc phản xạ bằng bao nhiêu?\nA. $30^\\circ$\nB. $120^\\circ$\nC. $150^\\circ$\nD. $60^\\circ$\n\nBài giải:\nPháp tuyến vuông góc với gương nên góc tới $i = 90^\\circ - 30^\\circ = 60^\\circ$.\nGóc phản xạ bằng góc tới: $i' = 60^\\circ$.\nChọn D.\n\n##VD\nTia phản xạ IR hợp với mặt gương phẳng một góc $40^\\circ$. Góc tới của tia sáng bằng bao nhiêu?\nA. $40^\\circ$\nB. $50^\\circ$\nC. $100^\\circ$\nD. $140^\\circ$\n\nBài giải:\nGóc phản xạ $i' = 90^\\circ - 40^\\circ = 50^\\circ$.\nGóc tới bằng góc phản xạ nên $i = 50^\\circ$.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01683",
+     "thu_tu": 3,
+     "ten": "Tính góc giữa tia tới và tia phản xạ",
+     "mo_ta": "Đề cho góc tới hoặc góc hợp với mặt gương, hỏi góc SIR giữa tia tới và tia phản xạ; hoặc ngược lại cho góc SIR và hỏi góc tới.\nLàm bằng cách dùng $\\widehat{SIR} = 2i$ (pháp tuyến là phân giác của góc SIR).\nLưu ý: đề hỏi vị trí đặt gương để có tia phản xạ theo hướng cho trước ⇒ thuộc dạng \"Đặt gương để tia phản xạ đi theo hướng cho trước\".",
+     "ly_thuyet": "##TC Góc SIR\nGóc giữa tia tới và tia phản xạ: $\\widehat{SIR} = i + i' = 2i$.\nNgược lại, khi biết $\\widehat{SIR}$ thì $i = \\widehat{SIR} : 2$.\n\n##PP Cách làm bài\nĐổi góc đề cho về góc tới $i$ (nếu cho góc với mặt gương thì lấy $90^\\circ$ trừ đi)\nTính $\\widehat{SIR} = 2i$, hoặc tính $i = \\widehat{SIR} : 2$ nếu đề cho $\\widehat{SIR}$\n\n##CY Chú ý\nChia đôi hoặc nhân đôi đúng góc: phải làm với góc tới, không làm với góc hợp với mặt gương.",
+     "vi_du": "##VD\nChiếu tia sáng SI tới gương phẳng với góc tới $35^\\circ$. Góc SIR tạo bởi tia tới và tia phản xạ bằng bao nhiêu?\nA. $70^\\circ$\nB. $35^\\circ$\nC. $55^\\circ$\nD. $110^\\circ$\n\nBài giải:\nGóc phản xạ bằng góc tới: $i' = i = 35^\\circ$.\nGóc SIR bằng góc tới cộng góc phản xạ: $\\widehat{SIR} = 35^\\circ + 35^\\circ = 70^\\circ$.\nChọn A.\n\n##VD\nTia tới SI hợp với mặt gương phẳng một góc $50^\\circ$. Góc SIR tạo bởi tia tới và tia phản xạ bằng bao nhiêu?\nA. $100^\\circ$\nB. $80^\\circ$\nC. $40^\\circ$\nD. $50^\\circ$\n\nBài giải:\nGóc tới $i = 90^\\circ - 50^\\circ = 40^\\circ$.\nGóc SIR $= 2i = 2 \\times 40^\\circ = 80^\\circ$.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01684",
+     "thu_tu": 4,
+     "ten": "Chọn hình vẽ đúng tia phản xạ",
+     "mo_ta": "Đề cho góc tới, hoặc góc hợp với mặt gương, hoặc góc giữa tia tới và tia phản xạ; bốn phương án là bốn hình vẽ, chọn hình vẽ đúng tia phản xạ (có khi cả tia tới).\nLàm bằng cách tính góc cần vẽ rồi đối chiếu số đo ghi trên mỗi hình.\nLưu ý: đề hỏi hình hoặc bạn vẽ SAI ⇒ thuộc dạng \"Tìm hình hoặc số đo vẽ sai định luật phản xạ\".",
+     "ly_thuyet": "##TC Dựng tia phản xạ\nTia phản xạ nằm bên kia pháp tuyến so với tia tới và tạo với pháp tuyến góc bằng góc tới.\nHình đúng có góc SIN = góc NIR = $i$.\n\n##PP Cách làm bài\nTính góc tới $i$ từ dữ kiện đề cho\nSuy ra góc phản xạ $i' = i$\nChọn hình có hai góc với pháp tuyến cùng bằng $i$\n\n##CY Chú ý\nPhương án nhiễu thường dùng góc với mặt gương, góc chia đôi hoặc góc nhân đôi làm góc phản xạ.",
+     "vi_du": "##VD\nChiếu tia sáng tới gương phẳng với góc tới $40^\\circ$. Phát biểu nào mô tả đúng tia phản xạ vẽ trên hình?\nA. Góc NIR giữa tia phản xạ và pháp tuyến bằng $40^\\circ$\nB. Góc NIR bằng $50^\\circ$\nC. Góc NIR bằng $20^\\circ$\nD. Góc NIR bằng $80^\\circ$\n\nBài giải:\nTheo định luật phản xạ, góc phản xạ bằng góc tới nên $\\widehat{NIR} = 40^\\circ$.\n$50^\\circ$ là góc đo với mặt gương, $20^\\circ$ là chia đôi góc tới, $80^\\circ$ là nhân đôi góc tới.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01685",
+     "thu_tu": 5,
+     "ten": "Tìm hình hoặc số đo vẽ sai định luật phản xạ",
+     "mo_ta": "Đề đưa bốn hình vẽ hoặc bốn bạn ghi lại số đo (góc tới, góc hợp với gương, góc phản xạ), hỏi hình nào hoặc bạn nào vẽ SAI.\nLàm bằng cách đổi mọi số đo về góc so với pháp tuyến rồi kiểm tra góc phản xạ có bằng góc tới không.\nLưu ý: đề hỏi hình vẽ ĐÚNG ⇒ thuộc dạng \"Chọn hình vẽ đúng tia phản xạ\".",
+     "ly_thuyet": "##TC Kiểm tra định luật phản xạ\nHình hoặc số đo đúng khi góc phản xạ bằng góc tới (cùng đo với pháp tuyến).\nSố đo với mặt gương phải đổi bằng $90^\\circ$ trừ đi trước khi so sánh.\n\n##PP Cách làm bài\nVới mỗi phương án, đổi các số đo về góc so với pháp tuyến\nSo sánh góc tới với góc phản xạ\nChọn phương án có hai góc khác nhau\n\n##CY Chú ý\nMột phương án sai thường do bạn đo góc với mặt gương nhưng coi đó là góc tới hoặc góc phản xạ.",
+     "vi_du": "##VD\nBốn bạn vẽ tia phản xạ trên gương phẳng và ghi lại số đo. Bạn nào vẽ SAI?\nA. An: góc tới $40^\\circ$, IR hợp với gương $50^\\circ$\nB. Chi: góc tới $30^\\circ$, IR hợp với gương $30^\\circ$\nC. Bình: SI hợp với gương $20^\\circ$, góc phản xạ $70^\\circ$\nD. Dũng: góc tới $25^\\circ$, IR hợp với gương $65^\\circ$\n\nBài giải:\nAn: góc phản xạ $= 90^\\circ - 50^\\circ = 40^\\circ$, bằng góc tới nên đúng.\nChi: góc phản xạ $= 90^\\circ - 30^\\circ = 60^\\circ$, khác góc tới $30^\\circ$ nên sai.\nBình: góc tới $= 90^\\circ - 20^\\circ = 70^\\circ$, bằng góc phản xạ nên đúng.\nDũng: góc phản xạ $= 90^\\circ - 65^\\circ = 25^\\circ$, bằng góc tới nên đúng.\nChọn B.\n\n##VD\nBốn nhóm đo góc tới và góc phản xạ trên cùng một gương phẳng, kết quả như sau. Nhóm nào đo hoặc vẽ SAI?\nA. Nhóm 1: góc tới $20^\\circ$, IR hợp với gương $70^\\circ$\nB. Nhóm 2: SI hợp với gương $65^\\circ$, góc phản xạ $25^\\circ$\nC. Nhóm 3: góc tới $55^\\circ$, IR hợp với gương $45^\\circ$\nD. Nhóm 4: góc tới $10^\\circ$, IR hợp với gương $80^\\circ$\n\nBài giải:\nNhóm 1: góc phản xạ $= 90^\\circ - 70^\\circ = 20^\\circ$, bằng góc tới nên đúng.\nNhóm 2: góc tới $= 90^\\circ - 65^\\circ = 25^\\circ$, bằng góc phản xạ nên đúng.\nNhóm 3: góc phản xạ $= 90^\\circ - 45^\\circ = 45^\\circ$, khác góc tới $55^\\circ$ nên sai.\nNhóm 4: góc phản xạ $= 90^\\circ - 80^\\circ = 10^\\circ$, bằng góc tới nên đúng.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01686",
+     "thu_tu": 6,
+     "ten": "Đặt gương để tia phản xạ đi theo hướng cho trước",
+     "mo_ta": "Đề cho hướng tia tới và hướng tia phản xạ mong muốn (hợp với nhau một góc, hoặc cùng hợp với phương ngang, phương thẳng đứng); hỏi góc tới hoặc góc giữa mặt gương và tia tới.\nLàm bằng cách tìm góc SIR từ hai hướng, chia đôi được góc tới, rồi đổi sang góc với mặt gương nếu cần.\nLưu ý: đề cho sẵn góc tới và chỉ hỏi góc SIR ⇒ thuộc dạng \"Tính góc giữa tia tới và tia phản xạ\".",
+     "ly_thuyet": "##TC Đặt gương theo hướng tia phản xạ\nPháp tuyến là phân giác của góc SIR nên $i = \\widehat{SIR} : 2$.\nMặt gương vuông góc với pháp tuyến nên góc giữa mặt gương và tia tới là $90^\\circ - i$.\n\n##PP Cách làm bài\nXác định góc SIR giữa tia tới và tia phản xạ mong muốn (vẽ hình với phương ngang, phương thẳng đứng nếu cần)\nChia đôi góc SIR để được góc tới $i$\nNếu đề hỏi góc với mặt gương thì lấy $90^\\circ - i$\n\n##CY Chú ý\nQuên chia đôi góc SIR hoặc quên đổi sang góc với mặt gương là hai lỗi hay gặp.\nHai tia cùng phía hay khác phía so với I quyết định cách cộng các góc.",
+     "vi_du": "##VD\nBạn Hà muốn đặt một gương phẳng sao cho tia phản xạ IR hợp với tia tới SI một góc $80^\\circ$. Mặt gương phải hợp với tia tới một góc bao nhiêu?\nA. $40^\\circ$\nB. $80^\\circ$\nC. $10^\\circ$\nD. $50^\\circ$\n\nBài giải:\nPháp tuyến là phân giác của góc SIR nên góc tới $i = 80^\\circ : 2 = 40^\\circ$.\nMặt gương vuông góc với pháp tuyến nên góc giữa mặt gương và tia tới là $90^\\circ - 40^\\circ = 50^\\circ$.\nChọn D.\n\n##VD\nTia nắng chiếu xuống, hợp với mặt đất nằm ngang một góc $40^\\circ$. Cần đặt gương phẳng để tia phản xạ chiếu thẳng đứng xuống đáy giếng. Góc tới của tia nắng trên gương phải bằng bao nhiêu?\nA. $130^\\circ$\nB. $65^\\circ$\nC. $25^\\circ$\nD. $45^\\circ$\n\nBài giải:\nTia IS hướng về Mặt Trời hợp với phương nằm ngang $40^\\circ$, tia phản xạ IR thẳng đứng hướng xuống hợp với phương nằm ngang $90^\\circ$ về phía bên kia.\nDo đó $\\widehat{SIR} = 40^\\circ + 90^\\circ = 130^\\circ$.\nPháp tuyến là phân giác của góc SIR nên góc tới $i = 130^\\circ : 2 = 65^\\circ$.\nChọn B."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K07050202001",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Chiếu một tia sáng tới gương phẳng với góc tới 35°. Góc phản xạ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-01-001-de.png)",
+   "lua_chon": [
+    "55°",
+    "70°",
+    "35°",
+    "17,5°"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Theo định luật phản xạ ánh sáng, góc phản xạ bằng góc tới: i′ = i = 35°.\n\nVì sao các phương án khác sai:\n- A: Đây là góc giữa tia phản xạ và mặt gương; góc phản xạ đo với pháp tuyến.\n- B: Đây là góc giữa tia tới và tia phản xạ, không phải góc phản xạ.\n- D: Không chia đôi; góc phản xạ bằng đúng góc tới."
+  },
+  {
+   "ma_cau": "K07050202002",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Hình vẽ tia tới SI chiếu lên gương phẳng. Góc phản xạ của tia sáng này bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-01-002-de.png)",
+   "lua_chon": [
+    "40°",
+    "50°",
+    "100°",
+    "25°"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Trên hình góc tới SIN = 50°; góc phản xạ bằng góc tới nên i′ = 50°.\n\nVì sao các phương án khác sai:\n- A: Đây là góc giữa tia tới và mặt gương; góc phản xạ bằng góc tới đo với pháp tuyến.\n- C: Đây là góc giữa tia tới và tia phản xạ.\n- D: Không chia đôi; góc phản xạ bằng đúng góc tới."
+  },
+  {
+   "ma_cau": "K07050202003",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Một tia laser chiếu tới gương phẳng tại điểm I. Đo được góc SIN giữa tia tới và pháp tuyến là 42°. Góc NIR giữa tia phản xạ và pháp tuyến bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-01-003-de.png)",
+   "lua_chon": [
+    "48°",
+    "42°",
+    "84°",
+    "21°"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Góc NIR là góc phản xạ, bằng góc tới SIN = 42°.\n\nVì sao các phương án khác sai:\n- A: Đây là góc giữa tia phản xạ và mặt gương, không phải góc NIR.\n- C: Đây là góc SIR giữa tia tới và tia phản xạ.\n- D: Không chia đôi; góc NIR là góc phản xạ, bằng góc tới."
+  },
+  {
+   "ma_cau": "K07050202004",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Bạn Lan đo được góc phản xạ của một tia sáng trên gương phẳng là 64°. Góc tới của tia sáng đó bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-01-004-de.png)",
+   "lua_chon": [
+    "64°",
+    "26°",
+    "32°",
+    "128°"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Góc tới bằng góc phản xạ nên i = i′ = 64°.\n\nVì sao các phương án khác sai:\n- B: Đây là góc giữa tia tới và mặt gương, không phải góc tới.\n- C: Không chia đôi; góc tới bằng đúng góc phản xạ.\n- D: Đây là góc giữa tia tới và tia phản xạ."
+  },
+  {
+   "ma_cau": "K07050202005",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Chiếu một tia sáng vuông góc với mặt gương phẳng (góc tới bằng 0°). Tia phản xạ đi theo hướng nào?",
+   "lua_chon": [
+    "Bật ngược lại theo đường của tia tới",
+    "Đi sát theo mặt gương",
+    "Truyền xuyên qua gương",
+    "Hợp với pháp tuyến góc 45°"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Góc tới 0° thì góc phản xạ cũng 0°: tia phản xạ nằm trên pháp tuyến, bật ngược lại theo đường của tia tới.\n\nVì sao các phương án khác sai:\n- B: Đi sát mặt gương thì góc phản xạ là 90°, nhưng góc tới là 0°.\n- C: Gương phẳng phản xạ ánh sáng, không cho ánh sáng truyền qua.\n- D: Góc phản xạ bằng góc tới là 0°, không phải 45°."
+  },
+  {
+   "ma_cau": "K07050202006",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Chiếu tia sáng SI tới gương phẳng; tia tới hợp với mặt gương một góc 30°. Góc phản xạ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-02-001-de.png)",
+   "lua_chon": [
+    "30°",
+    "120°",
+    "150°",
+    "60°"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Pháp tuyến vuông góc với gương nên góc tới i = 90° − 30° = 60°; góc phản xạ bằng góc tới = 60°.\n\nVì sao các phương án khác sai:\n- A: Đây là góc giữa tia tới và mặt gương; góc tới phải đo với pháp tuyến.\n- B: Đây là góc giữa tia tới và tia phản xạ (gấp đôi góc tới).\n- C: Lấy 180° trừ là nhầm; pháp tuyến vuông góc gương nên lấy 90° − 30°."
+  },
+  {
+   "ma_cau": "K07050202007",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Một tia sáng chiếu tới gương phẳng, hợp với mặt gương một góc 25°. Góc tới của tia sáng bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-02-002-de.png)",
+   "lua_chon": [
+    "25°",
+    "155°",
+    "130°",
+    "65°"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Pháp tuyến vuông góc với mặt gương nên góc tới i = 90° − 25° = 65°.\n\nVì sao các phương án khác sai:\n- A: Đây là góc với mặt gương; góc tới đo với pháp tuyến.\n- B: Lấy 180° trừ là nhầm; pháp tuyến vuông góc gương nên lấy 90° − 25°.\n- C: Đây là góc giữa tia tới và tia phản xạ, không phải góc tới."
+  },
+  {
+   "ma_cau": "K07050202008",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Tia phản xạ IR hợp với mặt gương phẳng một góc 40°. Góc tới của tia sáng bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-02-003-de.png)",
+   "lua_chon": [
+    "40°",
+    "50°",
+    "100°",
+    "140°"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Góc phản xạ = 90° − 40° = 50°; góc tới bằng góc phản xạ nên i = 50°.\n\nVì sao các phương án khác sai:\n- A: Đây là góc giữa tia phản xạ và mặt gương, chưa đổi sang góc với pháp tuyến.\n- C: Đây là góc giữa tia tới và tia phản xạ.\n- D: Lấy 180° trừ là nhầm; pháp tuyến vuông góc gương nên lấy 90° − 40°."
+  },
+  {
+   "ma_cau": "K07050202009",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Chiếu tia sáng SI tới gương phẳng với góc tới 35°. Góc SIR tạo bởi tia tới và tia phản xạ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-03-001-de.png)",
+   "lua_chon": [
+    "70°",
+    "35°",
+    "55°",
+    "110°"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Góc SIR = góc tới + góc phản xạ = 35° + 35° = 70°.\n\nVì sao các phương án khác sai:\n- B: Đây mới là góc tới; góc SIR gồm cả góc tới và góc phản xạ.\n- C: Đây là góc giữa tia tới và mặt gương.\n- D: Nhân đôi góc với mặt gương là sai; phải nhân đôi góc tới."
+  },
+  {
+   "ma_cau": "K07050202010",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Góc tạo bởi tia tới SI và tia phản xạ IR trên một gương phẳng là 80°. Góc tới bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-03-002-de.png)",
+   "lua_chon": [
+    "40°",
+    "80°",
+    "160°",
+    "50°"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Pháp tuyến chia đôi góc SIR vì góc tới bằng góc phản xạ: i = 80° : 2 = 40°.\n\nVì sao các phương án khác sai:\n- B: Đây là cả góc SIR; góc tới chỉ là một nửa.\n- C: Phải chia đôi góc SIR, không nhân đôi.\n- D: Đây là góc giữa tia tới và mặt gương."
+  },
+  {
+   "ma_cau": "K07050202011",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Tia tới SI hợp với mặt gương phẳng một góc 50°. Góc SIR tạo bởi tia tới và tia phản xạ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-03-003-de.png)",
+   "lua_chon": [
+    "100°",
+    "80°",
+    "40°",
+    "50°"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Góc tới i = 90° − 50° = 40°; góc SIR = 2 × 40° = 80°.\n\nVì sao các phương án khác sai:\n- A: Nhân đôi góc với mặt gương là sai; phải nhân đôi góc tới.\n- C: Đây mới là góc tới, chưa cộng góc phản xạ.\n- D: Đây là góc giữa tia tới và mặt gương."
+  },
+  {
+   "ma_cau": "K07050202012",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Chiếu tia sáng tới gương phẳng với góc tới 40°. Hình nào vẽ đúng tia phản xạ?",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-001-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-001-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-001-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-001-D.png)"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Góc phản xạ phải bằng góc tới: hình đúng có góc NIR = 40°.\n\nVì sao các phương án khác sai:\n- B: Tia phản xạ vẽ với góc 50° là do đo góc với mặt gương.\n- C: Góc phản xạ 20° là chia đôi góc tới; phải bằng góc tới.\n- D: Góc phản xạ 80° là nhân đôi góc tới; phải bằng góc tới."
+  },
+  {
+   "ma_cau": "K07050202013",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Chiếu tia sáng tới gương phẳng với góc tới 30°. Hình nào vẽ đúng tia phản xạ?",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-002-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-002-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-002-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-002-D.png)"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Góc phản xạ bằng góc tới nên hình đúng có góc NIR = 30°.\n\nVì sao các phương án khác sai:\n- A: Góc phản xạ 60° là góc lấy theo mặt gương (90° − 30°).\n- B: Góc phản xạ 15° là chia đôi góc tới; phải bằng góc tới.\n- C: Góc phản xạ 45° lớn hơn góc tới, sai định luật."
+  },
+  {
+   "ma_cau": "K07050202014",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Chiếu tia sáng tới gương phẳng với góc tới 50°. Hình nào vẽ đúng tia phản xạ?",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-003-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-003-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-003-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-003-D.png)"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Góc phản xạ bằng góc tới nên hình đúng có góc NIR = 50°.\n\nVì sao các phương án khác sai:\n- B: Góc phản xạ 40° là góc lấy theo mặt gương (90° − 50°).\n- C: Góc phản xạ 25° là chia đôi góc tới; phải bằng góc tới.\n- D: Tia phản xạ nằm trên pháp tuyến chỉ khi góc tới bằng 0°."
+  },
+  {
+   "ma_cau": "K07050202015",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Chiếu tia sáng tới gương phẳng với góc tới 65°. Hình nào vẽ đúng tia phản xạ?",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-006-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-006-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-006-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-006-D.png)"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Góc phản xạ phải bằng góc tới: hình đúng có góc NIR = 65°.\n\nVì sao các phương án khác sai:\n- A: Góc phản xạ 25° khác góc tới 65° nên hình này sai.\n- C: Góc phản xạ 90° khác góc tới 65° nên hình này sai.\n- D: Góc phản xạ 45° khác góc tới 65° nên hình này sai."
+  },
+  {
+   "ma_cau": "K07050202016",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Tia tới SI hợp với mặt gương phẳng một góc 60°. Hình nào vẽ đúng cả tia tới và tia phản xạ?",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-004-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-004-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-004-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-004-D.png)"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Góc tới i = 90° − 60° = 30°; góc phản xạ cũng 30°. Hình đúng: góc SIN = góc NIR = 30°.\n\nVì sao các phương án khác sai:\n- A: Hình này lấy 60° (góc với mặt gương) làm góc tới.\n- C: Góc tới đúng 30° nhưng góc phản xạ phải bằng 30°.\n- D: Góc tới vẽ 60° là đo với mặt gương; góc tới phải là 30°."
+  },
+  {
+   "ma_cau": "K07050202017",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Chiếu tia sáng tới gương phẳng thì góc tạo bởi tia tới và tia phản xạ là 80°. Hình nào vẽ đúng?",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-005-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-005-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-005-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-005-D.png)"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Pháp tuyến chia đôi góc SIR: i = i′ = 80° : 2 = 40°.\n\nVì sao các phương án khác sai:\n- A: Hình này lấy cả góc SIR 80° làm góc tới; phải chia đôi.\n- B: Góc tới 40° đúng nhưng góc phản xạ phải bằng 40°.\n- C: Góc 50° là lấy 90° − 40°; góc SIR của hình này là 100°."
+  },
+  {
+   "ma_cau": "K07050202018",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Tia tới SI hợp với mặt gương phẳng một góc 50°. Hình nào vẽ đúng cả tia tới và tia phản xạ?",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-007-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-007-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-007-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-007-D.png)"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Góc tới i = 90° − 50° = 40°; góc phản xạ cũng 40°. Hình đúng: góc SIN = góc NIR = 40°.\n\nVì sao các phương án khác sai:\n- A: Đây là dùng luôn 50° (góc hợp với gương) làm góc tới, quên đổi sang góc so với pháp tuyến.\n- B: Góc tới đúng là 40° nhưng góc phản xạ vẽ sai thành 50°, hai góc phải bằng nhau.\n- C: Hai góc bị hoán đổi ngược so với hình đúng."
+  },
+  {
+   "ma_cau": "K07050202019",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Chiếu tia sáng tới gương phẳng thì góc tạo bởi tia tới và tia phản xạ là 60°. Hình nào vẽ đúng?",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-008-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-008-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-008-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-008-D.png)"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Pháp tuyến chia đôi góc SIR: i = i′ = 60° : 2 = 30°.\n\nVì sao các phương án khác sai:\n- B: Đây là dùng luôn 60° (góc giữa tia tới và tia phản xạ) làm từng góc tới và góc phản xạ, quên chia đôi.\n- C: Góc tới đúng là 30° nhưng góc phản xạ vẽ sai thành 60°, hai góc phải bằng nhau.\n- D: Hai góc bị hoán đổi ngược so với hình đúng (góc tới lại vẽ thành 60°)."
+  },
+  {
+   "ma_cau": "K07050202020",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Trên hình, góc phản xạ là 35°. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-009-de.png) Tia tới SI hợp với mặt gương một góc bao nhiêu?",
+   "lua_chon": [
+    "35°",
+    "55°",
+    "70°",
+    "90°"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Góc phản xạ = góc tới = 35° (so với pháp tuyến); góc giữa tia tới và mặt gương = 90° − 35° = 55°.\n\nVì sao các phương án khác sai:\n- A: 35° là góc so với pháp tuyến (góc tới/góc phản xạ), không phải góc hợp với mặt gương.\n- C: 70° không khớp với phép tính 90° − 35°.\n- D: 90° là góc giữa pháp tuyến và mặt gương, không phải góc giữa tia tới và mặt gương."
+  },
+  {
+   "ma_cau": "K07050202021",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Hình nào vẽ SAI tia phản xạ trên gương phẳng?",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-001-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-001-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-001-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-001-D.png)"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Kiểm từng hình: góc phản xạ phải bằng góc tới. Hình có góc tới 60° mà góc phản xạ 30° là sai; góc phản xạ phải là 60°.\n\nVì sao các phương án khác sai:\n- A: Hình này đúng: góc phản xạ bằng góc tới (30°).\n- C: Hình này đúng: góc phản xạ bằng góc tới (45°).\n- D: Hình này đúng: góc phản xạ bằng góc tới (20°)."
+  },
+  {
+   "ma_cau": "K07050202022",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Bạn Nam vẽ bốn hình tia sáng phản xạ trên gương phẳng. Hình nào Nam vẽ SAI?",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-002-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-002-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-002-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-002-D.png)"
+   ],
+   "dap_an": "D",
+   "loi_giai": "So sánh hai số đo góc trên mỗi hình: góc phản xạ phải bằng góc tới. Hình có góc tới 50° mà góc phản xạ 40° là do đo góc với mặt gương.\n\nVì sao các phương án khác sai:\n- A: Hình này đúng: góc phản xạ bằng góc tới (35°).\n- B: Hình này đúng: góc phản xạ bằng góc tới (70°).\n- C: Hình này đúng: góc phản xạ bằng góc tới (25°)."
+  },
+  {
+   "ma_cau": "K07050202023",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Hình nào vẽ SAI đường đi của tia sáng phản xạ trên gương phẳng?",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-003-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-003-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-003-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-003-D.png)"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Góc phản xạ phải bằng góc tới. Hình có góc tới 40° mà góc phản xạ 80° là nhân đôi góc tới; phải là 40°.\n\nVì sao các phương án khác sai:\n- A: Hình này đúng: góc phản xạ bằng góc tới (15°).\n- B: Hình này đúng: góc phản xạ bằng góc tới (55°).\n- C: Hình này đúng: góc phản xạ bằng góc tới (65°)."
+  },
+  {
+   "ma_cau": "K07050202024",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Hình nào vẽ SAI tia phản xạ trên gương phẳng?",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-006-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-006-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-006-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-006-D.png)"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Kiểm từng hình: góc phản xạ phải bằng góc tới. Hình có góc tới 45° mà góc phản xạ 60° là sai; góc phản xạ phải là 45°.\n\nVì sao các phương án khác sai:\n- B: Hình này có góc tới 25° và góc phản xạ 25°, bằng nhau nên vẽ đúng.\n- C: Hình này có góc tới 70° và góc phản xạ 70°, bằng nhau nên vẽ đúng.\n- D: Hình này có góc tới 55° và góc phản xạ 55°, bằng nhau nên vẽ đúng."
+  },
+  {
+   "ma_cau": "K07050202025",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Bốn bạn vẽ tia phản xạ trên gương phẳng và ghi lại số đo. Bạn nào vẽ SAI?",
+   "lua_chon": [
+    "An: góc tới 40°, IR hợp với gương 50°",
+    "Chi: góc tới 30°, IR hợp với gương 30°",
+    "Bình: SI hợp với gương 20°, góc phản xạ 70°",
+    "Dũng: góc tới 25°, IR hợp với gương 65°"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đổi mọi góc về góc so với pháp tuyến rồi so sánh. Chi: góc phản xạ = 90° − 30° = 60°, khác góc tới 30°, nên Chi vẽ sai (đo góc với mặt gương).\n\nVì sao các phương án khác sai:\n- A: Đúng: góc phản xạ = 90° − 50° = 40°, bằng góc tới.\n- C: Đúng: góc tới = 90° − 20° = 70°, bằng góc phản xạ.\n- D: Đúng: góc phản xạ = 90° − 65° = 25°, bằng góc tới."
+  },
+  {
+   "ma_cau": "K07050202026",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Bốn bạn vẽ tia phản xạ trên gương phẳng và ghi lại số đo. Bạn nào vẽ SAI?",
+   "lua_chon": [
+    "An: góc tới 35°, IR hợp với gương 55°",
+    "Bích: góc tới 60°, IR hợp với gương 20°",
+    "Cường: SI hợp với gương 15°, góc phản xạ 75°",
+    "Dung: góc tới 48°, IR hợp với gương 42°"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đổi các góc hợp với gương sang góc so với pháp tuyến rồi so sánh với góc tới. Bích: góc phản xạ = 90° − 20° = 70°, khác góc tới 60°, nên Bích vẽ sai.\n\nVì sao các phương án khác sai:\n- A: An: góc phản xạ = 90° − 55° = 35°, bằng góc tới 35°, nên An vẽ đúng.\n- C: Cường: góc tới = 90° − 15° = 75°, bằng góc phản xạ 75°, nên Cường vẽ đúng.\n- D: Dung: góc phản xạ = 90° − 42° = 48°, bằng góc tới 48°, nên Dung vẽ đúng."
+  },
+  {
+   "ma_cau": "K07050202027",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Bốn nhóm đo góc tới và góc phản xạ trên cùng một gương phẳng, kết quả như sau. Nhóm nào đo hoặc vẽ SAI?",
+   "lua_chon": [
+    "Nhóm 1: góc tới 20°, IR hợp với gương 70°",
+    "Nhóm 2: SI hợp với gương 65°, góc phản xạ 25°",
+    "Nhóm 3: góc tới 55°, IR hợp với gương 45°",
+    "Nhóm 4: góc tới 10°, IR hợp với gương 80°"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đổi các góc hợp với gương sang góc so với pháp tuyến rồi so sánh. Nhóm 3: góc phản xạ = 90° − 45° = 45°, khác góc tới 55°, nên nhóm 3 đo hoặc vẽ sai.\n\nVì sao các phương án khác sai:\n- A: Nhóm 1: góc phản xạ = 90° − 70° = 20°, bằng góc tới 20°, nên đúng.\n- B: Nhóm 2: góc tới = 90° − 65° = 25°, bằng góc phản xạ 25°, nên đúng.\n- D: Nhóm 4: góc phản xạ = 90° − 80° = 10°, bằng góc tới 10°, nên đúng."
+  },
+  {
+   "ma_cau": "K07050202028",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Bạn Hà muốn đặt một gương phẳng sao cho tia phản xạ IR hợp với tia tới SI một góc 80°. Mặt gương phải hợp với tia tới một góc bao nhiêu?",
+   "lua_chon": [
+    "40°",
+    "80°",
+    "10°",
+    "50°"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Pháp tuyến là phân giác góc SIR nên góc tới = 80° : 2 = 40°; gương vuông góc pháp tuyến nên hợp với tia tới 90° − 40° = 50°.\n\nVì sao các phương án khác sai:\n- A: Đây là góc tới (đo với pháp tuyến), chưa đổi sang góc với mặt gương.\n- B: Đây là góc SIR giữa tia tới và tia phản xạ.\n- C: Quên chia đôi góc SIR trước khi lấy 90° trừ."
+  },
+  {
+   "ma_cau": "K07050202029",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Tia nắng chiếu xuống, hợp với mặt đất nằm ngang một góc 40°. Cần đặt gương phẳng để tia phản xạ chiếu thẳng đứng xuống đáy giếng. Góc tới của tia nắng trên gương phải bằng bao nhiêu?",
+   "lua_chon": [
+    "130°",
+    "65°",
+    "25°",
+    "45°"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Tia IS (từ I hướng về Mặt Trời) hợp với phương nằm ngang 40°, tia IR thẳng đứng hợp với phương nằm ngang 90° nên góc SIR = 130°; pháp tuyến là phân giác nên i = 130° : 2 = 65°.\n\nVì sao các phương án khác sai:\n- A: Đây là góc SIR giữa tia tới và tia phản xạ; phải chia đôi.\n- C: Đây là góc giữa tia tới và mặt gương (90° − 65°).\n- D: Coi góc SIR là 90° là sai; góc SIR = 40° + 90° = 130°."
+  },
+  {
+   "ma_cau": "K07050202030",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Tia tới SI đi xuống từ trái sang phải, hợp với phương nằm ngang một góc 50°. Cần đặt gương phẳng để tia phản xạ đi nằm ngang sang trái, về phía nguồn sáng S. Góc tới phải bằng bao nhiêu?",
+   "lua_chon": [
+    "50°",
+    "40°",
+    "25°",
+    "65°"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Tia IS hợp với phương nằm ngang 50°, tia IR nằm ngang cùng phía với S nên góc SIR = 50°; pháp tuyến là phân giác nên góc tới = 50° : 2 = 25°.\n\nVì sao các phương án khác sai:\n- A: Đây là cả góc SIR; phải chia đôi mới được góc tới.\n- B: Đây là góc giữa tia tới và phương thẳng đứng, không phải góc tới.\n- D: 65° là góc tới khi tia phản xạ đi sang phải; ở đây tia đi sang trái nên góc SIR chỉ 50°."
+  },
+  {
+   "ma_cau": "K07050202031",
+   "nhom_id": "KNB00342",
+   "loai": "trac_nghiem",
+   "de": "Tia tới SI hợp với mặt gương phẳng một góc 35°. Góc SIR giữa tia tới và tia phản xạ bằng bao nhiêu?",
+   "lua_chon": [
+    "70°",
+    "110°",
+    "145°",
+    "55°"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Góc tới (từ pháp tuyến) = 90°−35° = 55°. SIR = 2×55° = 110°.\n\nVì sao các phương án khác sai:\n- A: Nhầm SIR = 2×35° (quên đổi sang góc tới, trừ từ 180°).\n- C: Tính nhầm 180°−35° thay vì 180°−2×35°.\n- D: Chia đôi nhầm kết quả đúng."
+  }
+ ]
+}

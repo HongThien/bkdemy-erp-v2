@@ -1,0 +1,2485 @@
+{
+ "ngay": "2026-10-24",
+ "ghi_chu": "Sao lưu cây bản đồ mới 4T TRƯỚC khi hạ 1 tầng",
+ "chu_de": [
+  {
+   "id": "NCD00112",
+   "khoi": "4T",
+   "ten": "Viết số theo điều kiện cho trước",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00113",
+   "khoi": "4T",
+   "ten": "Đếm số và chữ số",
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00114",
+   "khoi": "4T",
+   "ten": "Đo lường",
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00115",
+   "khoi": "4T",
+   "ten": "Tính toán",
+   "thu_tu": 4,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00116",
+   "khoi": "4T",
+   "ten": "Chu vi và diện tích các hình",
+   "thu_tu": 5,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00117",
+   "khoi": "4T",
+   "ten": "Dãy số cách đều",
+   "thu_tu": 6,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00118",
+   "khoi": "4T",
+   "ten": "Bài toán trồng cây",
+   "thu_tu": 7,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00119",
+   "khoi": "4T",
+   "ten": "Bài toán tổng hiệu",
+   "thu_tu": 8,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00120",
+   "khoi": "4T",
+   "ten": "Quan hệ đại lượng trong phép toán",
+   "thu_tu": 9,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00121",
+   "khoi": "4T",
+   "ten": "Dấu hiệu chia hết",
+   "thu_tu": 10,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00122",
+   "khoi": "4T",
+   "ten": "Phép chia có dư",
+   "thu_tu": 11,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00123",
+   "khoi": "4T",
+   "ten": "Cấu tạo số",
+   "thu_tu": 12,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00124",
+   "khoi": "4T",
+   "ten": "Trung bình cộng",
+   "thu_tu": 13,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00125",
+   "khoi": "4T",
+   "ten": "Rút về đơn vị",
+   "thu_tu": 14,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00126",
+   "khoi": "4T",
+   "ten": "Thống kê - Xác suất",
+   "thu_tu": 15,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00127",
+   "khoi": "4T",
+   "ten": "Phân số",
+   "thu_tu": 16,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00128",
+   "khoi": "4T",
+   "ten": "So sánh phân số",
+   "thu_tu": 17,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00129",
+   "khoi": "4T",
+   "ten": "Các phép tính cơ bản với phân số",
+   "thu_tu": 18,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00130",
+   "khoi": "4T",
+   "ten": "Bài toán về dãy phân số",
+   "thu_tu": 19,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00131",
+   "khoi": "4T",
+   "ten": "Giá trị phân số của một số",
+   "thu_tu": 20,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00132",
+   "khoi": "4T",
+   "ten": "Tìm một số khi biết giá trị phân số",
+   "thu_tu": 21,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00133",
+   "khoi": "4T",
+   "ten": "Bài toán tổng tỉ - hiệu tỉ",
+   "thu_tu": 22,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  },
+  {
+   "id": "NCD00134",
+   "khoi": "4T",
+   "ten": "TÍnh ngược từ cuối",
+   "thu_tu": 23,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "nhanh": "toan"
+  }
+ ],
+ "o": [
+  {
+   "chu_de_id": "NCD00112",
+   "chuyen_de_id": "NCH00358",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00113",
+   "chuyen_de_id": "NCH00359",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00114",
+   "chuyen_de_id": "NCH00360",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00115",
+   "chuyen_de_id": "NCH00361",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00115",
+   "chuyen_de_id": "NCH00362",
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00116",
+   "chuyen_de_id": "NCH00363",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00117",
+   "chuyen_de_id": "NCH00364",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00118",
+   "chuyen_de_id": "NCH00365",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00119",
+   "chuyen_de_id": "NCH00366",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00120",
+   "chuyen_de_id": "NCH00367",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00121",
+   "chuyen_de_id": "NCH00368",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00122",
+   "chuyen_de_id": "NCH00369",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00123",
+   "chuyen_de_id": "NCH00370",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00124",
+   "chuyen_de_id": "NCH00371",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00125",
+   "chuyen_de_id": "NCH00372",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00126",
+   "chuyen_de_id": "NCH00373",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00127",
+   "chuyen_de_id": "NCH00374",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00127",
+   "chuyen_de_id": "NCH00375",
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00128",
+   "chuyen_de_id": "NCH00376",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00128",
+   "chuyen_de_id": "NCH00377",
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00129",
+   "chuyen_de_id": "NCH00378",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00129",
+   "chuyen_de_id": "NCH00379",
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00129",
+   "chuyen_de_id": "NCH00380",
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00130",
+   "chuyen_de_id": "NCH00381",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00130",
+   "chuyen_de_id": "NCH00382",
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00131",
+   "chuyen_de_id": "NCH00383",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00132",
+   "chuyen_de_id": "NCH00384",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00133",
+   "chuyen_de_id": "NCH00385",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00133",
+   "chuyen_de_id": "NCH00386",
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00133",
+   "chuyen_de_id": "NCH00387",
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "chu_de_id": "NCD00134",
+   "chuyen_de_id": "NCH00388",
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  }
+ ],
+ "chuyen_de": [
+  {
+   "id": "NCH00358",
+   "ten": "Viết số khi biết số chữ số",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00359",
+   "ten": "Đếm số các số tạo ra từ các chữ số khác 0",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00360",
+   "ten": "Đổi đơn vị",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00361",
+   "ten": "Nhân số có nhiều chữ số",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00362",
+   "ten": "Chia số có nhiều chữ số",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00363",
+   "ten": "Chu vi các hình",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00364",
+   "ten": "Dãy số cách đều",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00365",
+   "ten": "Bài toán trồng cây trên đường thẳng",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00366",
+   "ten": "Bài toán tổng hiệu có ẩn đại lượng",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00367",
+   "ten": "Quan hệ các đại lượng trong phép cộng",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00368",
+   "ten": "Ứng dụng tính chất chia hết",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00369",
+   "ten": "Ứng dụng dấu hiệu chia hết - chia có dư",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00370",
+   "ten": "Viết thêm chữ số",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00371",
+   "ten": "Trung bình cộng của một nhóm",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00372",
+   "ten": "Rút về đơn vị một đại lượng",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00373",
+   "ten": "Thống kê",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00374",
+   "ten": "Quy đồng phân số",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00375",
+   "ten": "Rút gọn phân số",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00376",
+   "ten": "So sánh phân số trực tiếp",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00377",
+   "ten": "So sánh phân số gián tiếp",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00378",
+   "ten": "Cộng trừ phân số",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00379",
+   "ten": "Phép nhân phân số",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00380",
+   "ten": "Phép chia phân số",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00381",
+   "ten": "Dãy phân số dạng tích",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00382",
+   "ten": "Dãy phân số dạng Hiệu - tích",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00383",
+   "ten": "Giá trị phân số của một số",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00384",
+   "ten": "Tìm đại lượng khi biết giá trị của phân số của đại lượng đó",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00385",
+   "ten": "Bài toán tổng tỉ - hiệu tỉ có đại lượng cố định",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00386",
+   "ten": "Bài toán tỉ số có nhiều đại lượng",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00387",
+   "ten": "Bài toán tỉ số có sự thay đổi đại lượng",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NCH00388",
+   "ten": "Tìm số  ban đầu trong chuỗi phép tính",
+   "mo_ta": "",
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  }
+ ],
+ "nhom": [
+  {
+   "id": "NNB01284",
+   "chu_de_id": "NCD00112",
+   "chuyen_de_id": "NCH00358",
+   "ten": "Viết số tự nhiên lớn nhất khi biết tổng chữ số và số chữ số",
+   "mo_ta": "",
+   "ly_thuyet": "Để viết số tự nhiên lớn nhất khi biết tổng các chữ số và số chữ số ta làm như sau:\n\n* Chọn từ hàng lớn nhất trước và chọn chữ số lớn nhất có thể.\n* Chọn chữ số từ hàng thứ hai và lặp lại cách chọn như hàng 1.\n* Lưu ý điều kiện đề bài có yêu cầu khác nhau hay không\n* Nếu đề bài cho điều kiện về chẵn lẻ, cần lưu ý chữ số cuối cùng.\n\n**Ví dụ 1:** Tìm số tự nhiên lớn nhất có 3 chữ số có tổng là 23.\n\nBài giải:\n\nĐể tìm số tự nhiên lớp nhất có tổng là 23 và có 3 chữ số:\n\n* Chọn chữ số hàng trăm là 9\n* Vì hàng trăm là 9 nên tổng của hàng chục và hàng đơn vị là $23 - 9 = 14$. Vậy chọn hàng chục là 9 (do đề bài không yêu cầu khác nhau)\n* Hàng đơn vị còn: $23 - 9 - 9 = 5$\n* Vậy số cần tìm là 995\n\n**Ví dụ 2:** Tìm số tự nhiên lớn nhất có 3 chữ số khác nhau có tổng là 23.\n\nBài giải:\n\nĐể tìm số tự nhiên lớp nhất có tổng là 23 và có 3 chữ số:\n\n* Chọn chữ số hàng trăm là 9\n* Vì hàng trăm là 9 nên tổng của hàng chục và hàng đơn vị là $23 - 9 = 14$. Do hàng trăm là 9 nên hàng chục không thể là 9, vậy chọn hàng chục lớn nhất là 8.\n* Hàng đơn vị còn: $23 - 9 - 8 = 6$\n* Vậy số cần tìm là 986",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01285",
+   "chu_de_id": "NCD00112",
+   "chuyen_de_id": "NCH00358",
+   "ten": "Viết số tự nhiên lớn nhất khi biết tích các chữ số và số chữ số",
+   "mo_ta": "",
+   "ly_thuyet": "Để viết số tự nhiên lớn nhất có các chữ số khác nhau khi biết tổng các chữ số:\n\n* Ta cần tách tích đó thành tích của nhiều chữ số khác nhau nhất có thể\n* Nếu có nhiều cách tách mà số chữ số giống nhau, ta chọn cách mà các chữ số lớn nhất\n* Sau đó từ các chữ số đó ta sắp xếp để được số lớn nhất\n* Nếu đề bài cho điều kiện về chẵn lẻ, cần lưu ý chữ số cuối cùng.\n\n**Ví dụ :** Viết số tự nhiên lớn nhất có 3 chữ số khác nhau có tích bằng 24\n\nBài giải:\n\nTa có $24 = 1 \\times 3 \\times 8 = 1 \\times 4 \\times 6 = 2 \\times 3 \\times 4$\n\n* Nếu dùng cách $24 = 1 \\times 3 \\times 8$ thì số lớn nhất là 831\n* Nếu dùng cách $24 = 1 \\times 4 \\times 6$ thì số lớn nhất là 641\n* Nếu dùng cách $24 = 2 \\times 3 \\times 4$ thì số lớn nhất là 432\n\nVậy số cần tìm là 831\n\n**Ví dụ :** Viết số tự nhiên lớn nhất có 4 chữ số khác nhau có tích bằng 24\n\nBài giải:\n\nTa có $24 = 1 \\times 2 \\times 3 \\times 4$\n\n* Chỉ có 1 cách tách duy nhất và số lớn nhất là 4 321\n\nVậy số cần tìm là 4321",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01286",
+   "chu_de_id": "NCD00112",
+   "chuyen_de_id": "NCH00358",
+   "ten": "Viết số tự nhiên lớn nhất  khi biết tổng chữ số",
+   "mo_ta": "",
+   "ly_thuyet": "Để viết số tự nhiên lớn nhất có các chữ số khác nhau khi biết tổng các chữ số:\n\n* Ta cần tách tổng đó thành tổng của nhiều chữ số khác nhau nhất có thể\n* Sau đó từ các chữ số đó ta sắp xếp để được số lớn nhất\n* Nếu đề bài cho điều kiện về chẵn lẻ, cần lưu ý chữ số cuối cùng.\n\n**Ví dụ 1:** Tìm số tự nhiên lớn nhất có các chữ số khác nhau có tổng là 19\n\nBài giải:\n\nĐể tách 19 thành tổng nhiều chữ số nhất có thể, ta ưu tiên tách theo các chữ số từ nhỏ nhất trước :\n0,1,2,3,4,\n\nTa có: $19 = 0 + 1 + 2 + 3 + 4 + 9$\n\nDo đó, số cần tìm là “ 943 210\n\n**Ví dụ 2:** Tìm số tự nhiên lớn nhất có các chữ số khác nhau có tổng là 33\n\nBài giải:\n\nĐể tách 33 thành tổng nhiều chữ số nhất có thể, ta ưu tiên tách theo các chữ số từ nhỏ nhất trước :\n0,1,2,3,4,\n\nTa có: $33 = 0 + 1 + 2 + 3 + 4 + 6 + 8 + 9$\n\nDo đó, số cần tìm là : 98 643 210",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01287",
+   "chu_de_id": "NCD00112",
+   "chuyen_de_id": "NCH00358",
+   "ten": "Viết số tự nhiên lớn nhất - nhỏ nhất khi biết số chữ số",
+   "mo_ta": "",
+   "ly_thuyet": "Với số lớn nhất:\n* Từ trái qua phải chọn các chữ số lớn nhất trước\nVới số nhỏ nhất \n* Từ trái qua phải chọn các chữ số nhỏ nhất trước\nLuôn lưu ý điều kiện các chữ số có cần khác nhau nhau không\nLuôn lưu ý điều kiện chẵn lẻ để chọn chữ số cuối cùng.",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 4,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01288",
+   "chu_de_id": "NCD00112",
+   "chuyen_de_id": "NCH00358",
+   "ten": "Viết số tự nhiên nhỏ nhất khi biết tổng chữ số và số chữ số",
+   "mo_ta": "",
+   "ly_thuyet": "Để viết số tự nhiên nhỏ nhất khi biết tổng các chữ số và số chữ số ta làm như sau :\n\nChọn từ hàng lớn nhất trước và chọn chữ số bé nhất có thể (thông thường là số 1)\nChọn chữ số từ hàng thứ hai và lặp lại cách chọn như hàng 1\nLưu ý điều kiện đề bài có yêu cầu khác nhau hay không\n\n**Ví dụ :** Viết số tự nhiên nhỏ nhất có 3 chữ số khác nhau có tổng là 15.\n\nBài giải:\n\nChọn chữ số hàng trăm bé nhất là 1\nKhi đó tổng hàng chục và hàng đơn vị là : $15 - 1 = 14$. Để hàng chục bé nhất thì hàng chục là 5 còn hàng đơn vị là 9\nSố cần tìm là 159\n\n**Ví dụ :** Viết số tự nhiên nhỏ nhất có 4 chữ số khác nhau có tổng là 17\n\nBài giải:\n\nChọn chữ số hàng nghìn bé nhất là 1\nKhi đó tổng hàng trăm – chục – đơn vị là $17 - 1 = 16$.\nHàng trăm chọn bé nhất là số 0. Vậy tổng hàng chục - hàng đơn vị là 16\nVậy hàng chục bé nhất là 7 còn hàng đơn vị là 9\nSố cần tìm là 1079",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 5,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01289",
+   "chu_de_id": "NCD00112",
+   "chuyen_de_id": "NCH00358",
+   "ten": "Viết số tự nhiên nhỏ nhất khi biết tổng các chữ số",
+   "mo_ta": "",
+   "ly_thuyet": "Để viết số tự nhiên bé nhất có các chữ số khác nhau khi biết tổng các chữ số:\n\n* Ta cần tách tổng đó thành tổng của ít chữ số nhất có thể, nên sẽ luôn chọn các chữ số lớn trước.\n* Sau đó từ các chữ số đó ta sắp xếp để được số bé nhất\n\n**Ví dụ:** Tìm số tự nhiên nhỏ nhất có tổng các chữ số là 23\nBài giải:\nTa có: $23 = 9+9+5$ (do đề bài không yêu cầu chữ số khác nhau)\nVậy số nhỏ nhất là 599\n\n**Ví dụ:** Tìm số tự nhiên nhỏ nhất có các chữ số khác nhau có tổng các chữ số là 31\nBài giải:\nTa có: $31 = 9+8+7+6+1$ (do đề bài có yêu cầu chữ số khác nhau)\nVậy số nhỏ nhất là 16 789",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 6,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01290",
+   "chu_de_id": "NCD00112",
+   "chuyen_de_id": "NCH00358",
+   "ten": "Viết số lớn nhất - nhỏ nhất từ các chữ số cho trước",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 7,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01291",
+   "chu_de_id": "NCD00113",
+   "chuyen_de_id": "NCH00359",
+   "ten": "Đếm số các số tạo ra từ các chữ số khác 0 không có điều kiện",
+   "mo_ta": "",
+   "ly_thuyet": "**Ví dụ 1:** Từ các chữ số 4,5,6,7 viết được bao nhiêu số có 3 chữ số khác nhau ?\n\nBài giải:\nSố có 3 chữ số sẽ gồm hàng trăm – hàng chục – hàng đơn vị.\nHàng trăm : chọn từ 4 chữ số nên có 4 cách chọn.\nHàng chục : do hàng trăm đã chọn mất 1 chữ số rồi nên hàng chục chỉ còn 3 cách chọn.\nHàng đơn vị : do hàng trăm và hàng chục đã chọn mất 2 chữ số rồi nên hàng đơn vị chỉ còn 2 cách chọn.\nVậy có tổng cộng : $4 \\times 3 \\times 2 = 24$ (số)",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01292",
+   "chu_de_id": "NCD00113",
+   "chuyen_de_id": "NCH00359",
+   "ten": "Đếm các số tạo ra từ các chữ số có chữ số 0",
+   "mo_ta": "",
+   "ly_thuyet": "**Ví dụ 1:** Từ các chữ số 0,4,5,6, viết được bao nhiêu số có 3 chữ số khác nhau ?\n\nBài giải:\n\nSố có 3 chữ số sẽ gồm hàng trăm – hàng chục – hàng đơn vị.\n\nHàng trăm : chọn từ 5 chữ số nên lẽ ra có 4 cách chọn, nhưng vì chữ số 0 ko đứng được ở đầu nên chỉ còn 3 cách chọn\n\nHàng chục : do hàng trăm đã chọn mất 1 chữ số rồi nên hàng chục chỉ còn 3 cách chọn.\n\nHàng đơn vị : do hàng trăm và hàng chục đã chọn mất 2 chữ số rồi nên hàng đơn vị chỉ còn 2 cách chọn.\n\nVậy có tổng cộng : $3 \\times 3 \\times 2 = 18$ (số)",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01293",
+   "chu_de_id": "NCD00113",
+   "chuyen_de_id": "NCH00359",
+   "ten": "Đếm các số lập từ các chữ số có điều kiện",
+   "mo_ta": "",
+   "ly_thuyet": "**Ví dụ 1:** Từ các chữ số 0,4,5,6, viết được bao nhiêu số chẵn có 3 chữ số khác nhau ?\n\nBài giải:\nBài toán này sẽ phức tạp vì vừa có yêu cầu số chẵn, lại vừa có chữ số 0. Phương án an toàn là ta sẽ tách riêng từng trường hợp.\n\nVì số chẵn nên hàng đơn vị sẽ là 0 , 4 hoặc 6.\n\n**Trường hợp 1:** Hàng đơn vị là 0\nNhư vậy. hàng trăm có 3 cách chọn (4,5,6).\nHàng chục có 2 cách chọn.\nVậy có $3 \\times 2 = 6$ (số).\n\n**Trường hợp 2:** Hàng đơn vị là 4\nHàng trăm có 2 cách chọn (vì phải khác 0,4).\nHàng chục có 2 cách chọn.\nVậy có $2 \\times 2 = 4$ (số).\n\n**Trường hợp 3:** Hàng đơn vị là 6\nHàng trăm có 2 cách chọn (vì phải khác 0,6).\nHàng chục có 2 cách chọn.\nVậy có $2 \\times 2 = 4$ (số).\n\nVậy tổng cộng có : $6 + 4 + 4 = 14$ (số).",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01294",
+   "chu_de_id": "NCD00114",
+   "chuyen_de_id": "NCH00360",
+   "ten": "Đổi đơn vị đo khối lượng",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01295",
+   "chu_de_id": "NCD00115",
+   "chuyen_de_id": "NCH00361",
+   "ten": "Nhân các số có nhiều chữ số sử dụng tính chất phép nhân",
+   "mo_ta": "",
+   "ly_thuyet": "• Muốn nhân 1 số với 10, 100, 1000 ta viết thêm 1,2,3 chữ số 0 vào phía sau của số đó.\n\n**Ví dụ**:\n$12\\times 10=120$\n$12\\times 100=1200$\n$12\\times 1000=12000$\n\n• Muốn nhân 1 số với một số có tận cùng là 0, 00, 000...ta bỏ các số 0 để nhân số như bình thường rồi thêm các số 0 vào\n\n**Ví dụ**:\nMuốn tính $25\\times 300$ thì ta tính $25\\times 3=75$ sau đó thêm 2 số 0 vào, ta sẽ được kết quả là $25\\times 300=7500$\n\n• Muốn nhân 1 số với số có nhiều chữ số, ta sẽ tách phép nhân ra thành nhiều phép nhân đơn giản hơn.\n\n**Ví dụ**:\n$12\\times 15=12\\times (10+5)=12\\times 10+12\\times 5=120+60=180$\n\n$13\\times 42=13\\times (40+2)=13\\times 40+13\\times 2=520+26=546$\n\n$35\\times 123=35\\times (100+20+3)=35\\times 100+35\\times 20+35\\times 3=3500+700+105=4305",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01296",
+   "chu_de_id": "NCD00115",
+   "chuyen_de_id": "NCH00361",
+   "ten": "Nhân số có nhiều chữ số sử dụng đặt tính",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01297",
+   "chu_de_id": "NCD00115",
+   "chuyen_de_id": "NCH00361",
+   "ten": "Tính thuận tiện sử dụng tính chất phân phối của phép nhân với phép cộng trừ",
+   "mo_ta": "",
+   "ly_thuyet": "Ta sử dụng tính chất\n$$A \\times B + A \\times C = A \\times (B + C)$$\n$$A \\times B - A \\times C = A \\times (B - C)$$\n\n**Ví dụ**. Tính thuận tiện :\n$15 \\times 23 + 15 \\times 76 + 15$\n\nBài giải:\n$15 \\times 23 + 15 \\times 76 + 15 = 15 \\times 23 + 15 \\times 76 + 15 \\times 1$\n$= 15 \\times (23 + 76 + 1) = 15 \\times 100 = 1500$\n\n**Ví dụ**. Tính thuận tiện :\n$15 \\times 123 - 15 \\times 24 + 15$\n\nBài giải:\n$15 \\times 123 - 15 \\times 24 + 15 = 15 \\times 123 - 15 \\times 24 + 15 \\times 1$\n$= 15 \\times (123 - 24 + 1) = 15 \\times 100 = 1500$",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01298",
+   "chu_de_id": "NCD00115",
+   "chuyen_de_id": "NCH00362",
+   "ten": "Chia số có 2 chữ số",
+   "mo_ta": "",
+   "ly_thuyet": "Để thực hiện phép chia $576:24$ ta làm các bước sau\nBước 1: Nhẩm tính $57:24$.\nTa ước lượng $5:2=2$. Nhân thử lại : $24 \\times 2 = 48 < 54$. Phù hợp. Vậy $57:24=2$\nBước 2: Viết kết quả nhân ngược: $24 \\times 2 = 48$\nBước 3: Tính $57-48=9$\nBước 4: Hạ số 6 xuống được 96\nBước 5: Nhẩm $96:24$\nTa ước lượng $9:2=4$. Nhân thử lại $24 \\times 4 = 96$. Phù hợp. Vậy $96:24=4$\nBước 6:Viết kết quả nhân ngược: $24 \\times 4=96$\nBước 7: Tính $96-96=0$\n\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/9f59b63d-b90f-4a4f-b30e-6f879b7f3cb0.png)",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01299",
+   "chu_de_id": "NCD00116",
+   "chuyen_de_id": "NCH00363",
+   "ten": "Tính chu vi các hình - dạng cơ bản",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01300",
+   "chu_de_id": "NCD00117",
+   "chuyen_de_id": "NCH00364",
+   "ten": "Tìm số hạng thứ n",
+   "mo_ta": "",
+   "ly_thuyet": "Công thức:  Số hạng thứ n = Số hạng thứ 1 + (n – 1)x khoảng cách.\n            Số hạng thứ n = Số hạng thứ 2 + (n – 2)x khoảng cách.\n            Số hạng thứ n = Số hạng thứ 3 + (n – 3)x khoảng cách.\n\nCho dãy số : 3, 7, 11, 15, 19, …………………, 599, 603. Tìm số hạng thứ 30\nBài giải:\nSố hạng thứ 30 là :  $3+\\left( 30-1 \\right)\\times 4=119$",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01301",
+   "chu_de_id": "NCD00117",
+   "chuyen_de_id": "NCH00364",
+   "ten": "Tính số số hạng của dãy số",
+   "mo_ta": "",
+   "ly_thuyet": "Công thức : Số số hạng = (Số cuối – Số đầu) : Khoảng cách + 1\n\n**Ví dụ :** Cho dãy số : 3, 7, 11, 15, 19, ……………… , 599, 603. Tính số số hạng của dãy số trên\n\nBài giải:\n\nSố số hạng của dãy số : $(603-3):4+1=151$ (số)",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01302",
+   "chu_de_id": "NCD00117",
+   "chuyen_de_id": "NCH00364",
+   "ten": "Tổng của dãy số cách đều",
+   "mo_ta": "",
+   "ly_thuyet": "Công thức : Tổng của dãy số = (Số đầu + Số cuối) x Số số hạng : 2\n\n**Ví dụ.** Cho dãy số : $1, 5, 9, 13, .............397$. Tính tổng dãy số trên ?\nBài giải:\nSố số hạng của dãy số là : $(397-1):4+1=100$ (số)\nTổng của dãy số trên : $(1+397)\\times 100:2 = 19900$\n\n**Ví dụ.** Cho dãy số : $2, 6, 10, 14, 18, ............$.Tính tổng 100 số hạng đầu tiên của dãy ?\nBài giải:\nSố hạng thứ 100 là : $2+(100-1)\\times 4 = 398$\nCoi như dãy số này gồm 100 số hạng thì số hạng 100 chính là số cuối.\nTổng của 100 số hạng đầu tiên là : $(2+398)\\times 100:2 = 20000$",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01303",
+   "chu_de_id": "NCD00117",
+   "chuyen_de_id": "NCH00364",
+   "ten": "Tìm vị trí của một số trong dãy số ?",
+   "mo_ta": "",
+   "ly_thuyet": "Phương pháp :\n\n* Các số trong một dãy số cách đều luôn có cùng số dư khi chia cho khoảng cách. Dựa vào tính chất này để xác định số đã cho có thuộc dãy số không.\n* Nếu số đã cho có thuộc dãy số. Ta coi nó là số cuối của dãy số. Khi đó, vị trí của nó chính là số số hạng của dãy số (Nếu nó ở vị trí số 50 nghĩa là dãy có 50 số hạng )\n\n**Ví dụ.** Cho dãy số : $3, 7, 11, 15, 19, \\ldots, 599, 603$\n\nSố 407 có thuộc dãy trên không ? Nếu có là số hạng thứ mấy ?\n\nBài giải:\n\nTa thấy các số hạng trong dãy số khi chia cho 4 đều dư 3.\nMà 407 cũng chia 4 dư 3, nên 407 có thuộc dãy số.\nVị trí của 407 là số hạng thứ : $(407-3):4+1=102",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 4,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01304",
+   "chu_de_id": "NCD00118",
+   "chuyen_de_id": "NCH00365",
+   "ten": "Bài toán trồng cây trên đường thẳng",
+   "mo_ta": "",
+   "ly_thuyet": "- Công thức tính số cây - khi trồng cây ở cả 2 đầu\n\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/e2e91356-bd53-4a78-9d53-52ac97a0e7b9.png)\n\nLưu ý: Nếu đề bài cho cây thiếu ở 1 đầu hoặc 2 đầu thì ta trừ đi tương ứng 1, 2 cây tương ứng.\nTrong bài toán ngược, khi muốn tính khoảng cách, ta có công thức\n\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/cc09e2c7-6e65-47ca-b764-db243f8693a1.png)\n\nTrong đó số khoảng được tính theo số cây.\nNếu có cây ở 2 đầu thì: số khoảng = số cây - 1\nNếu thiếu 1 đầu thì: số khoảng = số cây\nNếu thiếu 2 đầu thì: số khoảng = số cây + 1\nVÍ DỤ 1. Nhân ngày thành lập Quân đội nhân dân Việt Nam 22/12, các chú bộ đội cắm cờ đỏ sao vàng dọc cả hai bên đoạn đường dài 450 m vào doanh trại. Biết cách 5 m cắm một lá cờ và cả hai đầu đường đều cắm cờ. Hỏi có tất cả bao nhiêu lá cờ trên đoạn đường đó?\nBài giải:\nSố cờ cắm dọc 1 bên đường là: $450:5+1=91$ (cây)\nSố cờ trên cả đoạn đường là: $91\\times 2=182$ (cây)\nĐáp số: 182 cây\nVÍ DỤ 2. Dọc quãng đường từ cơ quan bố Hùng đến bưu điện, người ta mắc đèn cao áp ở một bên đường, đèn nọ cách đèn kia 50 m. Hỏi quãng đường từ cơ quan bố Hùng đến bưu điện dài bao nhiêu mét? Biết số đèn là 35 cái và cổng cơ quan không có đèn, còn ở cổng bưu điện có đèn.\nBài giải:\nVì cổng cơ quan không có đèn, còn ở cổng bưu điện có đèn nên số khoảng cách sẽ bằng số đèn là 35 khoảng.\nQuãng đường từ cơ quan bố Hùng đến bưu điện là: $35\\times 50=1750$(m)\nĐáp số: 1 750 m",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01305",
+   "chu_de_id": "NCD00118",
+   "chuyen_de_id": "NCH00365",
+   "ten": "Bài toán trồng cây khép kín",
+   "mo_ta": "",
+   "ly_thuyet": "Công thức tính số cây:\n\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/0768cd79-af19-4352-ac07-541b90ce3aa2.png)\n\nVÍ DỤ. Một sân bóng có chiều dài $90$ m và rộng $60$m. Người ta cắm cờ xung quanh sân bóng, hai lá cờ liên tiếp cách nhau $3$ m. Hỏi cần bao nhiêu lá cờ để cắm đủ xung quanh sân bóng, biết mỗi góc sân đều cắm cờ?\nBài giải:\nChu vi sân bóng là: $(90 + 60) \\times 2 = 300(m)$\nSố cờ cần cắm là: $300 : 3 = 100(m)$\nĐáp số: $100$m",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01306",
+   "chu_de_id": "NCD00119",
+   "chuyen_de_id": "NCH00366",
+   "ten": "Bài toán tổng hiệu cơ bản",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01307",
+   "chu_de_id": "NCD00120",
+   "chuyen_de_id": "NCH00367",
+   "ten": "Thay đổi đại lượng trong phép cộng",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01308",
+   "chu_de_id": "NCD00121",
+   "chuyen_de_id": "NCH00368",
+   "ten": "Nhận biết số có tính chất chia hết",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01309",
+   "chu_de_id": "NCD00121",
+   "chuyen_de_id": "NCH00368",
+   "ten": "Tìm chữ số để số đó chia hết cho 2,3,5,9",
+   "mo_ta": "",
+   "ly_thuyet": "Tìm số $\\overline{43ab}$ thỏa mãn điều kiện đồng thời chia hết cho cả 2 ; 5 và 9.\n\n**Bài làm:**\n\nTa có $\\overline{43ab}$ chia hết cho 2 và 5 nên $b = 0$.\n\nThay $b=0$ thì $\\overline{43a0}$ chia hết cho 9 khi $4+3+a+0=(7+a)$ chia hết cho 9.\n\nSuy ra $a = 2$. Vậy số cần tìm là 4320.",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01310",
+   "chu_de_id": "NCD00121",
+   "chuyen_de_id": "NCH00368",
+   "ten": "Lập số từ các chữ số để chia hết cho 2,3,5,9",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01311",
+   "chu_de_id": "NCD00122",
+   "chuyen_de_id": "NCH00369",
+   "ten": "Nhận biết số chia có dư theo điều kiện",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01312",
+   "chu_de_id": "NCD00122",
+   "chuyen_de_id": "NCH00369",
+   "ten": "Tìm số thỏa mãn điều kiện chia có dư",
+   "mo_ta": "",
+   "ly_thuyet": "##VD\nTìm các số $\\overline{6a3b}$ thỏa mãn điều kiện sau: chia 2 dư 1, chia 5 dư 3, chia 9 dư 5\n\nBài giải:\n\nVì $\\overline{6a3b}$ chia 2 dư 1 nên b có thể là 1, 3, 5, 7, 9.\n\nVì $\\overline{6a3b}$ chia 5 dư 3 nên b có thể là 3, 8.\n\nVậy b = 3. Ta được số $\\overline{6a33}$.\n\nVì $\\overline{6a33}$ chia 9 dư 5 nên $6+a+3+3$ chia 9 dư 5\n\nHay $12+a$ chia 9 dư 5.\n\nSuy ra $a=2$.\n\nVậy số cần tìm là: 6233",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01313",
+   "chu_de_id": "NCD00122",
+   "chuyen_de_id": "NCH00369",
+   "ten": "Tìm số lượng các số chia hết - chia có dư trong dãy số tự nhiên",
+   "mo_ta": "",
+   "ly_thuyet": "##VD Ví dụ 1. \nCó bao nhiêu số có 3 chữ số chia hết cho 5 ?\n\nBài giải:\nCác số có 3 chữ số chia hết cho 5 là : 100, 105, 110, ..., 995\nSố các số là : $(995-100):5+1=200$ (số)\n\n##VD Ví dụ 2. \nCó bao nhiêu số có 3 chữ số chia hết cho 3 và 5.\n\nBài giải:\nSố vừa chia hết cho 3 và 5 thì sẽ chia hết cho 15.\nCác số có 3 chữ số chia hết cho 15 là : 105, 120, 135, 150, ..., 990\nSố các số là : $(990-105):15+1=60$ (số)\n\n##VD Ví dụ 3\nCó bao nhiêu số có 3 chữ số chia hết cho 3 và không chia hết cho 5.\n\nBài giải:\nĐể tìm các số chia hết cho 3 và không chia hết cho 5, ta sẽ làm như sau:\n* Tìm các số chia hết cho 3\n* Trong các số chia hết cho 3 có 2 loại : chia hết cho 5 và không chia hết cho 5.\n* Loại 1 : Vừa chia hết cho 3 vừa chia hết cho 5.\n* Loại 2 : Chia hết cho 3 nhưng không chia hết cho 5.\nLoại 2 là loại t cần tìm. Vậy ta lấy tổng các số chia hết cho 3 trừ đi loại 1 là xong.\nCác số có 3 chữ số chia hết cho 3 là : 102, 105, 108, ..., 999\nSố các số chia hết cho 3 là : $(999-102):3=300$ (số)\n\nCác số vừa chia hết cho 3, vừa chia hết cho 5 , tức là chia hết cho 15.\nCác số có 3 chữ số chia hết cho 15 là : 105, 120, 135, 150, ..., 990\nSố các số chia hết cho 3 và 5 là : $(990-105):15+1=60$ (số)\n\nVậy số các số chia hết cho 3 mà không chia hết cho 5 là : $300-60=240$ (số)",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01314",
+   "chu_de_id": "NCD00122",
+   "chuyen_de_id": "NCH00369",
+   "ten": "Bài toán về dãy đối tượng lặp lại",
+   "mo_ta": "",
+   "ly_thuyet": "##VD Ví dụ 1 \n Người ta viết liên tiếp cụm từ THÂN ĐỒNG ĐẤT VIỆT thành một dãy chữ liên tiếp THANDONGDATVIETTHANDONGDATVIET... Hỏi chữ cái thứ 352 của dãy là chữ cái nào?\nCủa từ nào?\n\nBài giải:\n\nChữ THANDONGDATVIET gồm tổng cộng 15 chữ cái.\n\nSố 352 chia 15 bằng 23 dư 8.\n\nVậy 352 chữ số ta sẽ viết được 15 lần chữ THANDONGDATVIET và thêm 8 chữ cái nữa.\n\nNên chữ cái thứ 352 là chữ G.\n\n##VD Ví dụ 2\nNgười ta viết liên tiếp cụm từ BK ACADEMY thành một dãy chữ liên tiếp BKACADEMYBKACADEMY...... Người ta đếm được có 60 chữ A thì có bao nhiêu chữ B, bao nhiêu chữ A ? (Biết các cụm từ trong dãy được viết đầy đủ)\n\nBài giải:\n\nMỗi cụm từ BK ACADEMY gồm có 2 chữ A, 1 chữ B.\n\nNgười ta đếm được 60 chữ A. Vậy số cụm từ BKACADEMY là $60 : 2 = 30$ (từ)\n\nSố chữ B là : $30 \\times 1=30$ (chữ)",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 4,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01315",
+   "chu_de_id": "NCD00122",
+   "chuyen_de_id": "NCH00369",
+   "ten": "Tìm số tự nhiên khi biết điều kiện chia cho nhiều số khác nhau",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 5,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01316",
+   "chu_de_id": "NCD00123",
+   "chuyen_de_id": "NCH00370",
+   "ten": "Viết thêm chữ số vào bên trái số cho trước",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01317",
+   "chu_de_id": "NCD00124",
+   "chuyen_de_id": "NCH00371",
+   "ten": "Tính trung bình cộng của một nhóm",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01318",
+   "chu_de_id": "NCD00125",
+   "chuyen_de_id": "NCH00372",
+   "ten": "Rút về đơn vị một đại lượng",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01319",
+   "chu_de_id": "NCD00126",
+   "chuyen_de_id": "NCH00373",
+   "ten": "Xác định các đại lượng cơ bản của thống kê",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01320",
+   "chu_de_id": "NCD00127",
+   "chuyen_de_id": "NCH00374",
+   "ten": "Quy đồng mẫu số 2 phân số",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01321",
+   "chu_de_id": "NCD00127",
+   "chuyen_de_id": "NCH00374",
+   "ten": "Quy đồng tử số 2 phân số",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01322",
+   "chu_de_id": "NCD00127",
+   "chuyen_de_id": "NCH00374",
+   "ten": "Quy đồng mẫu số nhiều phân số",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01323",
+   "chu_de_id": "NCD00127",
+   "chuyen_de_id": "NCH00375",
+   "ten": "Rút gọn phân số dạng chuẩn",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01324",
+   "chu_de_id": "NCD00127",
+   "chuyen_de_id": "NCH00375",
+   "ten": "Rút gọn phân số dạng đặc biệt",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01325",
+   "chu_de_id": "NCD00128",
+   "chuyen_de_id": "NCH00376",
+   "ten": "So sánh phân số bằng quy đồng mẫu số",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01326",
+   "chu_de_id": "NCD00128",
+   "chuyen_de_id": "NCH00376",
+   "ten": "So sánh phân số bằng quy đồng tử số",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01327",
+   "chu_de_id": "NCD00128",
+   "chuyen_de_id": "NCH00377",
+   "ten": "So sánh phân số bằng cách so sánh với 1",
+   "mo_ta": "",
+   "ly_thuyet": "Đề bài. So sánh hai phân số $\\dfrac{3}{5}$ và $\\dfrac{2}{3}$\n\nA. $\\dfrac{3}{5} > \\dfrac{2}{3}$\nB. $\\dfrac{3}{5} < \\dfrac{2}{3}$\nC. $\\dfrac{3}{5} = \\dfrac{2}{3}$\nD. Không so sánh được\n\nĐáp án : B\n\nLời giải chi tiết\n\nQuy đồng mẫu số:\n\nTa có : $\\dfrac{3}{5} = \\dfrac{3 \\times 3}{5 \\times 3} = \\dfrac{9}{15}$ và $\\dfrac{2}{3} = \\dfrac{2 \\times 5}{3 \\times 5} = \\dfrac{10}{15}$\n\nVì $\\dfrac{9}{15} < \\dfrac{10}{15}$ nên $\\dfrac{3}{5} < \\dfrac{2}{3}$.",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01328",
+   "chu_de_id": "NCD00128",
+   "chuyen_de_id": "NCH00377",
+   "ten": "So sánh phân số bằng phân số trung gian",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01329",
+   "chu_de_id": "NCD00128",
+   "chuyen_de_id": "NCH00377",
+   "ten": "So sánh phân số bằng phương pháp phần bù",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01330",
+   "chu_de_id": "NCD00128",
+   "chuyen_de_id": "NCH00377",
+   "ten": "So sánh phân số bằng phương pháp phần bù",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 4,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01331",
+   "chu_de_id": "NCD00128",
+   "chuyen_de_id": "NCH00377",
+   "ten": "Sắp xếp dãy phân số",
+   "mo_ta": "",
+   "ly_thuyet": "Để sắp xếp một dãy phân số nhanh chóng, ta thực hiện các bước sau :\nBước 1: Phân loại phân số thành 2 nhóm : lớn hơn 1 và bé hơn 1.\nBước 2 : Trong từng nhóm, xét các phân số phân dư - phần bù để áp dụng quy tắc so sánh nhanh của phần dư – phần bù\nBước 3 : So sánh các phân số trong nhóm với phân số còn lại nếu có.\n\nVí dụ: Sắp xếp các phân số sau từ bé đến lớn : $\\dfrac{3}{4}, \\dfrac{6}{5}, \\dfrac{2}{5}, \\dfrac{4}{3}, \\dfrac{2}{3}, \\dfrac{9}{7}$\n\nBài giải:\nĐầu tiên ta chia 2 nhóm :\n\nNhóm lớn hơn 1 : $\\dfrac{6}{5}; \\dfrac{4}{3}; \\dfrac{9}{7}$ và nhóm nhỏ hơn 1 : $\\dfrac{3}{4}; \\dfrac{2}{5}; \\dfrac{2}{3}$\n\nTrong nhóm lớn hơn 1, $\\dfrac{6}{5}$ và $\\dfrac{4}{3}$ là dãy phân dư có khoảng cách tử số và mẫu số là 1, còn $\\dfrac{9}{7}$ có khoảng cách tử số và mẫu số là 2. Đến đây có 2 cách xử lý\n\nCách 1: Đưa hết về cùng 1 dãy phần dư có khoảng cách là 2. $\\dfrac{6}{5} = \\dfrac{12}{10}$, $\\dfrac{4}{3} = \\dfrac{8}{6}$\n\nTheo quy tắc của dãy phần dư ta có: $\\dfrac{8}{6} > \\dfrac{9}{7} > \\dfrac{12}{10} \\Rightarrow \\dfrac{4}{3} > \\dfrac{9}{7} > \\dfrac{6}{5} > 1$\n\nCách 2 : Xét riêng. Vì $\\dfrac{6}{5}$ và $\\dfrac{4}{3}$ là cùng dãy phân dư nên ta có $\\dfrac{4}{3} > \\dfrac{6}{5}$\n\nSo sánh $\\dfrac{4}{3}$ và $\\dfrac{9}{7}$: $\\dfrac{4}{3} = \\dfrac{28}{21}$, $\\dfrac{9}{7} = \\dfrac{27}{21} \\Rightarrow \\dfrac{4}{3} > \\dfrac{9}{7}$\n\nSo sánh $\\dfrac{6}{5}$ và $\\dfrac{9}{7}$: $\\dfrac{6}{5} = \\dfrac{42}{35}$, $\\dfrac{9}{7} = \\dfrac{45}{35} \\Rightarrow \\dfrac{6}{5} < \\dfrac{9}{7}$\n\nSuy ra: $\\dfrac{4}{3} > \\dfrac{9}{7} > \\dfrac{6}{5} > 1$\n\nTương tự với nhóm nhỏ hơn 1: $\\dfrac{3}{4}; \\dfrac{2}{5}; \\dfrac{2}{3}$\n\nCó $\\dfrac{2}{3} < \\dfrac{3}{4}$ (tính chất dãy phần bù); $\\dfrac{2}{5} < \\dfrac{2}{3}$ nên $\\dfrac{2}{5} < \\dfrac{2}{3} < \\dfrac{3}{4} < 1$\n\nVậy thứ tự của dãy từ bé đến lớn là : $\\dfrac{2}{5}, \\dfrac{2}{3}, \\dfrac{3}{4}, \\dfrac{6}{5}, \\dfrac{9}{7}, \\dfrac{4}{3}$",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 5,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01332",
+   "chu_de_id": "NCD00129",
+   "chuyen_de_id": "NCH00378",
+   "ten": "Phép cộng trừ hai phân số",
+   "mo_ta": "",
+   "ly_thuyet": "Phép cộng – phép trừ hai phân số\n\nLuôn cần để ý việc quy đồng mẫu số trước khi tính và rút gọn phân số sau khi tính. Phân số không rút gọn sẽ coi là kết quả sai.\n\nCần ghi nhớ quy tắc tìm mẫu số chung :\n\nQuy tắc 1. Nếu 2 mẫu số không cùng chia hết cho số nào thì mẫu số chung là tích của hai mẫu số. Đây là trường hợp quy đồng nhân chéo phổ biến nhất.\n\nVí dụ 1: Tính $\\dfrac{4}{5} + \\dfrac{6}{7}$\n\nVì 5,7 không cùng chia hết cho số nào nên ta nhẩm mẫu số chung là 35. Sử dụng quy đồng nhân chéo.\n$$\\dfrac{4}{5} + \\dfrac{6}{7} = \\dfrac{28}{35} + \\dfrac{30}{35} = \\dfrac{28+30}{35} = \\dfrac{58}{35}$$\n\nQuy tắc 2: Nếu mẫu số lớn chia hết cho mẫu số bé thì mẫu số chung chính là mẫu số lớn.\n\nVí dụ 2: Tính $\\dfrac{4}{5} + \\dfrac{8}{15}$\n\nỞ đây ta thấy 15 chia hết cho 5 nên mẫu số chung là 15 luôn.\n$$\\dfrac{4}{5} + \\dfrac{8}{15} = \\dfrac{12}{15} + \\dfrac{8}{15} = \\dfrac{12+8}{15} = \\dfrac{20}{15} = \\dfrac{4}{3}$$\n\nQuy tắc 3: Nếu hai mẫu số cùng chia hết cho một số thì mẫu số chung là tích của hai mẫu số chia cho số đó. Nhớ chọn số lớn nhất có thể.\n\nVí dụ 3 : Tính    $\\dfrac{7}{12} + \\dfrac{11}{18}$\n\nMẫu số ở đây là 12 và 18 cùng chia hết cho 2,3,6.\nSố lớn nhất là 6 nên mẫu số chung là : $12\\times18:6=36$\n$$\\dfrac{7}{12} + \\dfrac{11}{18} = \\dfrac{21}{36} + \\dfrac{22}{36} = \\dfrac{21+22}{36} = \\dfrac{43}{36}$$",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01333",
+   "chu_de_id": "NCD00129",
+   "chuyen_de_id": "NCH00378",
+   "ten": "Phép cộng trừ nhiều phân số",
+   "mo_ta": "",
+   "ly_thuyet": "Để thực hiện phép cộng trừ nhiều phân số, ta sẽ thực hiện quy đồng tất cả phân số bằng việc tìm mẫu số chung của các phân số.\nThông thường, có 2 trường hợp :\nTrường hợp 1. Các mẫu số không có quan hệ gì với nhau\nVí dụ. Tính $\\dfrac{1}{3} + \\dfrac{3}{4} - \\dfrac{5}{7}$\nVới trường hợp này ta thấy : cặp 3,4 hay 4,7 hay 3,7 đều không cùng chia hết cho số nào . Vậy mẫu số chung sẽ là : $3 \\times 4 \\times 7 = 84$. Vậy ta sẽ quy đồng các phân số về mẫu số chung 84.\nSuy ra :\n$$ \\dfrac{1}{3} + \\dfrac{3}{4} - \\dfrac{5}{7} = \\dfrac{28}{84} + \\dfrac{63}{84} - \\dfrac{60}{84} = \\dfrac{28+63-60}{84} = \\dfrac{31}{84} $$\nTrường hợp 2. Các mẫu số có liên hệ với nhau.\nVí dụ. Tính $\\dfrac{5}{6} + \\dfrac{4}{9} - \\dfrac{11}{12}$\nTa thấy có nhiều liên hệ : 6,9 cùng chia hết cho 3; 12 chia hết cho 6, 9 và 12 cùng chia hết cho 3. Với trường hợp này, thông thường cách nhanh nhất là dựa vào mẫu số lớn nhất. Ta nhân lần lượt mẫu số lớn nhất để nhẩm mẫu số chung.\n•\t12 chia hết cho 6 nhưng không chia hết cho 9. Loại\n•\t$12 \\times 2 = 24$ chia hết cho 6 nhưng không chia hết cho 9. Loại\n•\t$12 \\times 3 = 36$ chia hết cho cả 6 và 9.\nVậy mẫu số chung là 36.\nSuy ra\n$$ \\dfrac{5}{6} + \\dfrac{4}{9} - \\dfrac{11}{12} = \\dfrac{30}{36} + \\dfrac{16}{36} - \\dfrac{33}{36} = \\dfrac{13}{36} $$",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01334",
+   "chu_de_id": "NCD00129",
+   "chuyen_de_id": "NCH00378",
+   "ten": "Tính thuận tiện biểu thức phân số dạng tổng hiệu",
+   "mo_ta": "",
+   "ly_thuyet": "Để thực hiện phép tính thuận tiện, ta sẽ nhóm các phân số có cùng mẫu số lại với nhau. Khi thực hiện nhóm phân số cần tuân theo các quy tắc sau.\n\n* Có thể di chuyển thay đổi thứ tự của phân số, nhưng dấu phải đi kèm.\n* Nắm vững các quy tắc của dấu trừ và ngoặc :\n    * $A-B-C=A-(B+C)$\n    * $A-B+C=A-(B-C)$\n\nVí dụ 1. Tính thuận tiện :\n$$ \\dfrac{15}{13} + \\dfrac{27}{16} + \\dfrac{11}{13} + \\dfrac{11}{16} $$\n\nBài giải:\n\nTa có :\n$$ \\dfrac{15}{13} + \\dfrac{27}{16} + \\dfrac{11}{13} + \\dfrac{11}{16}$$\n$$= \\dfrac{15}{13} + \\dfrac{11}{13} + \\dfrac{27}{16} + \\dfrac{11}{16} $$\n$$ = \\left( \\dfrac{15}{13} + \\dfrac{11}{13} \\right) + \\left( \\dfrac{27}{16} + \\dfrac{11}{16} \\right) $$\n$$ = \\dfrac{26}{13} + \\dfrac{16}{16} = 2+1=3 $$\n\nVí dụ 2. Tính thuận tiện :\n$$ \\dfrac{35}{11} - \\dfrac{11}{16} - \\dfrac{13}{11} - \\dfrac{21}{16} $$\n\nBài giải:\n\nTa có\n$$ \\dfrac{35}{11} - \\dfrac{11}{16} - \\dfrac{13}{11} - \\dfrac{21}{16}$$ \n$$ =\\dfrac{35}{11} - \\dfrac{13}{11} - \\dfrac{11}{16} - \\dfrac{21}{16} $$\n$$ = \\left( \\dfrac{35}{11} - \\dfrac{13}{11} \\right) - \\left( \\dfrac{11}{16} + \\dfrac{21}{16} \\right) $$\n$$ = \\dfrac{22}{11} - \\dfrac{32}{16} = 2-2=0 $$",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01335",
+   "chu_de_id": "NCD00129",
+   "chuyen_de_id": "NCH00379",
+   "ten": "Chuỗi tích các phân số",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01336",
+   "chu_de_id": "NCD00129",
+   "chuyen_de_id": "NCH00379",
+   "ten": "Tính thuận tiện phân số kết hợp phép nhân",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01337",
+   "chu_de_id": "NCD00129",
+   "chuyen_de_id": "NCH00379",
+   "ten": "Tính giá trị biểu thức chứa phép nhân",
+   "mo_ta": "",
+   "ly_thuyet": "Luôn lưu ý quy tắc về thứ tự phép tính\n\n* Nếu biểu thức có ngoặc, tính biểu thức trong ngoặc trước.\n* Nếu biểu thức không có ngoặc, ưu tiên nhân chia trước – cộng trừ sau.\n\nVí dụ 1. Tính $\\dfrac{2}{5} + \\dfrac{3}{5} \\times \\dfrac{7}{6}$\n\nBài giải:\nBiểu thức không có ngoặc. Vậy ta phải thực hiện phép nhân trước.\nTính ngoài nháp, nhớ là 3 và 6 có thể rút gọn : $\\dfrac{3}{5} \\times \\dfrac{7}{6} = \\dfrac{\\overset{1}{3} \\times 7}{5 \\times \\underset{2}{6}} = \\dfrac{1 \\times 7}{5 \\times 2} = \\dfrac{7}{10}$\nTa có $\\dfrac{2}{5} + \\dfrac{3}{5} \\times \\dfrac{7}{6} = \\dfrac{2}{5} + \\dfrac{7}{10} = \\dfrac{4}{10} + \\dfrac{7}{10} = \\dfrac{11}{10}$\nLỗi thường gặp của bài này là thực hiện phép cộng trước do $\\dfrac{2}{5} + \\dfrac{3}{5} = \\dfrac{5}{5} = 1$ rất đẹp.\n\nVí dụ 2. Tính $\\left( \\dfrac{2}{3} + \\dfrac{1}{2} \\right) \\times \\left( \\dfrac{1}{7} + \\dfrac{1}{5} \\right)$\n\nBài giải:\nBiểu thức này có ngoặc nên ta phải tính biểu thức trong ngoặc trước\nTa có $\\left( \\dfrac{2}{3} + \\dfrac{1}{2} \\right) \\times \\left( \\dfrac{1}{7} + \\dfrac{1}{5} \\right) = \\left( \\dfrac{4}{6} + \\dfrac{3}{6} \\right) \\times \\left( \\dfrac{5}{35} + \\dfrac{7}{35} \\right)$\n$= \\dfrac{7}{6} \\times \\dfrac{12}{35} = \\dfrac{\\overset{1}{7} \\times \\overset{2}{12}}{\\underset{1}{6} \\times \\underset{5}{35}} = \\dfrac{1 \\times 2}{1 \\times 5} = \\dfrac{2}{5}$",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01338",
+   "chu_de_id": "NCD00129",
+   "chuyen_de_id": "NCH00380",
+   "ten": "Tính biểu thức phân số chứa phép chia",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01339",
+   "chu_de_id": "NCD00129",
+   "chuyen_de_id": "NCH00380",
+   "ten": "Tính thuận tiện phân số kết hợp phép chia",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01340",
+   "chu_de_id": "NCD00130",
+   "chuyen_de_id": "NCH00381",
+   "ten": "Dãy phân số dạng tích - Dãy đơn",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01341",
+   "chu_de_id": "NCD00130",
+   "chuyen_de_id": "NCH00381",
+   "ten": "Dãy phân số dạng tích -  Dãy kép",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01342",
+   "chu_de_id": "NCD00130",
+   "chuyen_de_id": "NCH00382",
+   "ten": "Dãy phân số dạng hiệu tích chuẩn",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01343",
+   "chu_de_id": "NCD00130",
+   "chuyen_de_id": "NCH00382",
+   "ten": "Dãy phân số dạng Hiệu - tích có tử số chưa chuẩn",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01344",
+   "chu_de_id": "NCD00130",
+   "chuyen_de_id": "NCH00382",
+   "ten": "Dãy phân số dạng Hiệu - tích có mẫu số chưa chuẩn",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01345",
+   "chu_de_id": "NCD00130",
+   "chuyen_de_id": "NCH00382",
+   "ten": "Bài toán tìm x áp dụng tính chất dãy phân số hiệu tích",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 4,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01346",
+   "chu_de_id": "NCD00131",
+   "chuyen_de_id": "NCH00383",
+   "ten": "Ứng dụng tính giá trị phân số của một số",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01347",
+   "chu_de_id": "NCD00131",
+   "chuyen_de_id": "NCH00383",
+   "ten": "Ứng dụng giá trị của phân số nhiều bước",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01348",
+   "chu_de_id": "NCD00132",
+   "chuyen_de_id": "NCH00384",
+   "ten": "Tìm đại lượng khi biết giá trị của phân số của đại lượng đó - Hai đại lượng",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01349",
+   "chu_de_id": "NCD00132",
+   "chuyen_de_id": "NCH00384",
+   "ten": "Tìm đại lượng khi biết giá trị của phân số của đại lượng đó - Ba đại lượng",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01350",
+   "chu_de_id": "NCD00132",
+   "chuyen_de_id": "NCH00384",
+   "ten": "Tìm đại lượng khi biết giá trị của phân số của đại lượng đó - Biết giá trị tổng hiệu các thành phần",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01351",
+   "chu_de_id": "NCD00133",
+   "chuyen_de_id": "NCH00385",
+   "ten": "Bài toán tổng tỉ - hiệu tỉ cơ bản",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01352",
+   "chu_de_id": "NCD00133",
+   "chuyen_de_id": "NCH00385",
+   "ten": "Bài toán tổng tỉ - hiệu tỉ ẩn tổng",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01353",
+   "chu_de_id": "NCD00133",
+   "chuyen_de_id": "NCH00385",
+   "ten": "Bài toán tổng tỉ - hiệu tỉ ẩn hiệu",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01354",
+   "chu_de_id": "NCD00133",
+   "chuyen_de_id": "NCH00385",
+   "ten": "Bài toán tổng tỉ - hiệu tỉ ẩn tỉ số",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 4,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01355",
+   "chu_de_id": "NCD00133",
+   "chuyen_de_id": "NCH00386",
+   "ten": "Bài toán tỉ số nhiều đại lượng - Quy về đại lượng nhỏ nhất",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01356",
+   "chu_de_id": "NCD00133",
+   "chuyen_de_id": "NCH00386",
+   "ten": "Bài toán tỉ số nhiều đại lượng - Có tỉ số đôi một của các đại lượng",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01357",
+   "chu_de_id": "NCD00133",
+   "chuyen_de_id": "NCH00386",
+   "ten": "Bài toán tỉ số nhiều đại lượng - Cho phân số của các đại lượng bằng nhau",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01358",
+   "chu_de_id": "NCD00133",
+   "chuyen_de_id": "NCH00387",
+   "ten": "Bài toán tỉ số có sự thay đổi đại lượng - Chuyển giữa các đại lượng",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01359",
+   "chu_de_id": "NCD00133",
+   "chuyen_de_id": "NCH00387",
+   "ten": "Bài toán tỉ số có sự thay đổi đại lượng - Tăng giảm các đại lượng",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "NNB01360",
+   "chu_de_id": "NCD00134",
+   "chuyen_de_id": "NCH00388",
+   "ten": "Tìm số  ban đầu trong chuỗi phép tính",
+   "mo_ta": "",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z"
+  }
+ ],
+ "dang_bai": [
+  {
+   "id": "NDB00646",
+   "nhom_id": "NNB01302",
+   "ten": "Tính tổng dãy số",
+   "mo_ta": "",
+   "vi_du": "",
+   "vi_du_file_url": null,
+   "vi_du_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null
+  },
+  {
+   "id": "NDB00647",
+   "nhom_id": "NNB01302",
+   "ten": "Tìm x dùng tổng dãy số",
+   "mo_ta": "",
+   "vi_du": "",
+   "vi_du_file_url": null,
+   "vi_du_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null
+  },
+  {
+   "id": "NDB00648",
+   "nhom_id": "NNB01304",
+   "ten": "2 đầu",
+   "mo_ta": "",
+   "vi_du": "",
+   "vi_du_file_url": null,
+   "vi_du_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null
+  },
+  {
+   "id": "NDB00649",
+   "nhom_id": "NNB01304",
+   "ten": "1 đầu",
+   "mo_ta": "",
+   "vi_du": "",
+   "vi_du_file_url": null,
+   "vi_du_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null
+  },
+  {
+   "id": "NDB00650",
+   "nhom_id": "NNB01304",
+   "ten": "0 đầu",
+   "mo_ta": "",
+   "vi_du": "",
+   "vi_du_file_url": null,
+   "vi_du_ten_file": null,
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null
+  },
+  {
+   "id": "NDB00651",
+   "nhom_id": "NNB01304",
+   "ten": "2 cây",
+   "mo_ta": "",
+   "vi_du": "",
+   "vi_du_file_url": null,
+   "vi_du_ten_file": null,
+   "thu_tu": 4,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null
+  },
+  {
+   "id": "NDB00652",
+   "nhom_id": "NNB01308",
+   "ten": "Cụm 1",
+   "mo_ta": "",
+   "vi_du": "",
+   "vi_du_file_url": null,
+   "vi_du_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null
+  },
+  {
+   "id": "NDB00653",
+   "nhom_id": "NNB01309",
+   "ten": "Cụm 1",
+   "mo_ta": "",
+   "vi_du": "",
+   "vi_du_file_url": null,
+   "vi_du_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null
+  },
+  {
+   "id": "NDB00654",
+   "nhom_id": "NNB01309",
+   "ten": "Cụm 2 : 2 chữ số",
+   "mo_ta": "",
+   "vi_du": "",
+   "vi_du_file_url": null,
+   "vi_du_ten_file": null,
+   "thu_tu": 2,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null
+  },
+  {
+   "id": "NDB00655",
+   "nhom_id": "NNB01309",
+   "ten": "CỤm 3",
+   "mo_ta": "",
+   "vi_du": "",
+   "vi_du_file_url": null,
+   "vi_du_ten_file": null,
+   "thu_tu": 3,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null
+  },
+  {
+   "id": "NDB00656",
+   "nhom_id": "NNB01310",
+   "ten": "Cụm 1",
+   "mo_ta": "",
+   "vi_du": "",
+   "vi_du_file_url": null,
+   "vi_du_ten_file": null,
+   "thu_tu": 1,
+   "created_at": "2026-10-08T06:50:40.131Z",
+   "updated_at": "2026-10-08T06:50:40.131Z",
+   "ly_thuyet": "",
+   "ly_thuyet_file_url": null,
+   "ly_thuyet_ten_file": null
+  }
+ ],
+ "doi_ung": [
+  {
+   "id": "1265",
+   "ma_dang_cu": "T14T010101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01284",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1266",
+   "ma_dang_cu": "T14T010102",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01285",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1267",
+   "ma_dang_cu": "T14T010103",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01286",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1268",
+   "ma_dang_cu": "T14T010104",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01287",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1269",
+   "ma_dang_cu": "T14T010105",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01288",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1270",
+   "ma_dang_cu": "T14T010106",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01289",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1271",
+   "ma_dang_cu": "T14T010107",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01290",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1272",
+   "ma_dang_cu": "T14T020101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01291",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1273",
+   "ma_dang_cu": "T14T020102",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01292",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1274",
+   "ma_dang_cu": "T14T020103",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01293",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1275",
+   "ma_dang_cu": "T14T030101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01294",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1276",
+   "ma_dang_cu": "T14T040101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01295",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1277",
+   "ma_dang_cu": "T14T040102",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01296",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1278",
+   "ma_dang_cu": "T14T040103",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01297",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1279",
+   "ma_dang_cu": "T14T040201",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01298",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1280",
+   "ma_dang_cu": "T14T050101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01299",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1281",
+   "ma_dang_cu": "T14T060101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01300",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1282",
+   "ma_dang_cu": "T14T060102",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01301",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1283",
+   "ma_dang_cu": "T14T060103",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01302",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1284",
+   "ma_dang_cu": "T14T060104",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01303",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1285",
+   "ma_dang_cu": "T14T070101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01304",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1286",
+   "ma_dang_cu": "T14T070102",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01305",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1287",
+   "ma_dang_cu": "T14T080101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01306",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1288",
+   "ma_dang_cu": "T14T090101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01307",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1289",
+   "ma_dang_cu": "T14T100101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01308",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1290",
+   "ma_dang_cu": "T14T100102",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01309",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1291",
+   "ma_dang_cu": "T14T100103",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01310",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1292",
+   "ma_dang_cu": "T14T110101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01311",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1293",
+   "ma_dang_cu": "T14T110102",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01312",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1294",
+   "ma_dang_cu": "T14T110103",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01313",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1295",
+   "ma_dang_cu": "T14T110104",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01314",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1296",
+   "ma_dang_cu": "T14T110105",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01315",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1297",
+   "ma_dang_cu": "T14T120101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01316",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1298",
+   "ma_dang_cu": "T14T130101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01317",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1299",
+   "ma_dang_cu": "T14T140101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01318",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1300",
+   "ma_dang_cu": "T14T150101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01319",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1301",
+   "ma_dang_cu": "T14T160101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01320",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1302",
+   "ma_dang_cu": "T14T160102",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01321",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1303",
+   "ma_dang_cu": "T14T160103",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01322",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1304",
+   "ma_dang_cu": "T14T160201",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01323",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1305",
+   "ma_dang_cu": "T14T160202",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01324",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1306",
+   "ma_dang_cu": "T14T170101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01325",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1307",
+   "ma_dang_cu": "T14T170102",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01326",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1308",
+   "ma_dang_cu": "T14T170201",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01327",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1309",
+   "ma_dang_cu": "T14T170202",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01328",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1310",
+   "ma_dang_cu": "T14T170203",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01329",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1311",
+   "ma_dang_cu": "T14T170204",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01330",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1312",
+   "ma_dang_cu": "T14T170205",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01331",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1313",
+   "ma_dang_cu": "T14T180101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01332",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1314",
+   "ma_dang_cu": "T14T180102",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01333",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1315",
+   "ma_dang_cu": "T14T180103",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01334",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1316",
+   "ma_dang_cu": "T14T180201",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01335",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1317",
+   "ma_dang_cu": "T14T180202",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01336",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1318",
+   "ma_dang_cu": "T14T180203",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01337",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1319",
+   "ma_dang_cu": "T14T180301",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01338",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1320",
+   "ma_dang_cu": "T14T180302",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01339",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1321",
+   "ma_dang_cu": "T14T190101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01340",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1322",
+   "ma_dang_cu": "T14T190102",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01341",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1323",
+   "ma_dang_cu": "T14T190201",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01342",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1324",
+   "ma_dang_cu": "T14T190202",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01343",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1325",
+   "ma_dang_cu": "T14T190203",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01344",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1326",
+   "ma_dang_cu": "T14T190204",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01345",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1327",
+   "ma_dang_cu": "T14T200101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01346",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1328",
+   "ma_dang_cu": "T14T200102",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01347",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1329",
+   "ma_dang_cu": "T14T210101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01348",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1330",
+   "ma_dang_cu": "T14T210102",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01349",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1331",
+   "ma_dang_cu": "T14T210103",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01350",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1332",
+   "ma_dang_cu": "T14T220101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01351",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1333",
+   "ma_dang_cu": "T14T220102",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01352",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1334",
+   "ma_dang_cu": "T14T220103",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01353",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1335",
+   "ma_dang_cu": "T14T220104",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01354",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1336",
+   "ma_dang_cu": "T14T220201",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01355",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1337",
+   "ma_dang_cu": "T14T220202",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01356",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1338",
+   "ma_dang_cu": "T14T220203",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01357",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1339",
+   "ma_dang_cu": "T14T220301",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01358",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1340",
+   "ma_dang_cu": "T14T220302",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01359",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  },
+  {
+   "id": "1341",
+   "ma_dang_cu": "T14T230101",
+   "dich_dang_bai": null,
+   "dich_nhom": "NNB01360",
+   "dich_chu_de": null,
+   "dich_chuyen_de": null,
+   "created_at": "2026-10-08T06:50:40.131Z"
+  }
+ ]
+}

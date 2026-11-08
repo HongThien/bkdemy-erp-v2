@@ -1,0 +1,1472 @@
+[
+  {
+    "id": "nbv-b3-d-1",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}x-2&\\text{nếu }x<-1\\\\\\sqrt{x^{2}+1}&\\text{nếu }x\\ge-1\\end{cases}$. Các mệnh đề sau đúng hay sai?",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to-2}f(x)=\\sqrt{5}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to-1^{-}}f(x)=-3$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to-1^{+}}f(x)=\\sqrt{2}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số có giới hạn khi $x\\to-1$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số đổi công thức tại $x=-1$, nên mỗi giới hạn phải dùng đúng công thức của phía $x$ đang tiến tới.\n\n**Bước 1.** Xác định điểm đang xét nằm ở nhánh nào của hàm số, nhánh $x<-1$ hay nhánh $x\\ge-1$.\n\n**Bước 2.** Với giới hạn một bên, chọn công thức ứng với phía bên trái hoặc bên phải của điểm chia nhánh.\n\n**Bước 3.** Tính từng giới hạn bằng cách thay trực tiếp giá trị của $x$ vào công thức đã chọn.\n\n**Bước 4.** Giới hạn tại một điểm tồn tại khi và chỉ khi hai giới hạn một bên cùng tồn tại và bằng nhau.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì gần $x=-2$ ta có $x<-1$ nên $f(x)=x-2$, suy ra $\\lim\\limits_{x\\to-2}f(x)=-2-2=-4$, khác $\\sqrt{5}$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to-1^{-}}f(x)=\\lim\\limits_{x\\to-1^{-}}(x-2)=-1-2=-3$.\n\nÝ c) Đúng vì $\\lim\\limits_{x\\to-1^{+}}f(x)=\\lim\\limits_{x\\to-1^{+}}\\sqrt{x^{2}+1}=\\sqrt{(-1)^{2}+1}=\\sqrt{2}$.\n\nÝ d) Sai vì $\\lim\\limits_{x\\to-1^{-}}f(x)=-3\\ne\\sqrt{2}=\\lim\\limits_{x\\to-1^{+}}f(x)$ nên không tồn tại $\\lim\\limits_{x\\to-1}f(x)$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F1=(x) => (x < -1 ? x - 2 : Math.sqrt(x * x + 1));return (() => nr(R(F1, -2), Math.sqrt(5)))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F1=(x) => (x < -1 ? x - 2 : Math.sqrt(x * x + 1));return (() => nr(L(F1, -1), -3))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F1=(x) => (x < -1 ? x - 2 : Math.sqrt(x * x + 1));return (() => nr(R(F1, -1), Math.SQRT2))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F1=(x) => (x < -1 ? x - 2 : Math.sqrt(x * x + 1));return (() => nr(L(F1, -1), R(F1, -1)))()})()===false"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-6",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}x-2&\\text{nếu }x<-1\\\\\\sqrt{x^{2}+1}&\\text{nếu }x\\ge-1\\end{cases}$. Các mệnh đề sau đúng hay sai?",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to-2}f(x)=\\sqrt{5}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to-1^{-}}f(x)=-3$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to-1^{+}}f(x)=\\sqrt{2}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số có giới hạn khi $x\\to-1$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số đổi công thức tại $x=-1$, nên mỗi giới hạn phải dùng đúng công thức của phía $x$ đang tiến tới.\n\n**Bước 1.** Xác định điểm đang xét nằm ở nhánh nào của hàm số, nhánh $x<-1$ hay nhánh $x\\ge-1$.\n\n**Bước 2.** Với giới hạn một bên, chọn công thức ứng với phía bên trái hoặc bên phải của điểm chia nhánh.\n\n**Bước 3.** Tính từng giới hạn bằng cách thay trực tiếp giá trị của $x$ vào công thức đã chọn.\n\n**Bước 4.** Giới hạn tại một điểm tồn tại khi và chỉ khi hai giới hạn một bên cùng tồn tại và bằng nhau.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì gần $x=-2$ ta có $x<-1$ nên $f(x)=x-2$, suy ra $\\lim\\limits_{x\\to-2}f(x)=-2-2=-4$, khác $\\sqrt{5}$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to-1^{-}}f(x)=\\lim\\limits_{x\\to-1^{-}}(x-2)=-1-2=-3$.\n\nÝ c) Đúng vì $\\lim\\limits_{x\\to-1^{+}}f(x)=\\lim\\limits_{x\\to-1^{+}}\\sqrt{x^{2}+1}=\\sqrt{(-1)^{2}+1}=\\sqrt{2}$.\n\nÝ d) Sai vì $\\lim\\limits_{x\\to-1^{-}}f(x)=-3\\ne\\sqrt{2}=\\lim\\limits_{x\\to-1^{+}}f(x)$ nên không tồn tại $\\lim\\limits_{x\\to-1}f(x)$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F1=(x) => (x < -1 ? x - 2 : Math.sqrt(x * x + 1));return (() => nr(R(F1, -2), Math.sqrt(5)))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F1=(x) => (x < -1 ? x - 2 : Math.sqrt(x * x + 1));return (() => nr(L(F1, -1), -3))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F1=(x) => (x < -1 ? x - 2 : Math.sqrt(x * x + 1));return (() => nr(R(F1, -1), Math.SQRT2))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F1=(x) => (x < -1 ? x - 2 : Math.sqrt(x * x + 1));return (() => nr(L(F1, -1), R(F1, -1)))()})()===false"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": "Đề trùng hệt Câu 1 (sách in lặp)."
+  },
+  {
+    "id": "nbv-b3-d-2",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $y=f(x)=\\begin{cases}\\dfrac{x^{2}-2025}{x-45}&\\text{nếu }x\\ne45\\\\2m+4&\\text{nếu }x=45\\end{cases}$ ($m$ là tham số). Xét tính đúng, sai của các khẳng định sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Tập xác định của hàm số là $\\mathbb{R}\\setminus\\{45\\}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to45}f(x)=90$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số liên tục tại $x=20$ với mọi $m$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số liên tục trên $\\mathbb{R}$ khi $m=44$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân thức đã cho rút gọn được nhân tử $x-45$, nên giới hạn tại $x=45$ tính được và so với $f(45)$ chứa tham số.\n\n**Bước 1.** Nhận ra tại $x=45$ hàm số được cho bằng công thức riêng, còn các điểm khác dùng phân thức.\n\n**Bước 2.** Tính giới hạn của phân thức bằng cách phân tích tử thành nhân tử rồi rút nhân tử chung.\n\n**Bước 3.** Với điểm $x\\ne45$, so sánh giới hạn với giá trị của hàm tại điểm đó.\n\n**Bước 4.** Hàm số liên tục trên $\\mathbb{R}$ khi liên tục tại điểm ghép, nên so giới hạn với $f(45)$ để tìm $m$.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì tại $x=45$ hàm số vẫn có giá trị $f(45)=2m+4$, nên tập xác định là $\\mathbb{R}$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to45}\\dfrac{x^{2}-2025}{x-45}=\\lim\\limits_{x\\to45}\\dfrac{(x-45)(x+45)}{x-45}=\\lim\\limits_{x\\to45}(x+45)=90$.\n\nÝ c) Đúng vì $f(20)=\\dfrac{20^{2}-2025}{20-45}=65$ và $\\lim\\limits_{x\\to20}\\dfrac{x^{2}-2025}{x-45}=\\lim\\limits_{x\\to20}(x+45)=65=f(20)$, giá trị này không phụ thuộc $m$.\n\nÝ d) Sai vì hàm số liên tục trên $\\mathbb{R}$ khi và chỉ khi liên tục tại $x=45$, tức $2m+4=90$, suy ra $m=43$; với $m=44$ thì $f(45)=92\\ne90$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};return (() => !Number.isFinite(2 * 7 + 4))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F2=(x) => (x !== 45 ? (x * x - 2025) / (x - 45) : 0);return (() => nr(R(F2, 45), 90))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F2=(x) => (x !== 45 ? (x * x - 2025) / (x - 45) : 0);return (() => nr(F2(20), 65) && cont(F2, 20))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F2=(x) => (x !== 45 ? (x * x - 2025) / (x - 45) : 0);return (() => nr(2 * 44 + 4, R(F2, 45)))()})()===false"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": "Sách in dòng trung gian \"90=2m+45\" (lỗi in); đáp số m=43 vẫn đúng."
+  },
+  {
+    "id": "nbv-b3-d-45",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $y=f(x)=\\begin{cases}\\dfrac{x^{2}-2025}{x-45}&\\text{nếu }x\\ne45\\\\2m+4&\\text{nếu }x=45\\end{cases}$ ($m$ là tham số). Hãy cho biết tính đúng, sai của mỗi khẳng định sau?",
+    "menh_de": [
+      {
+        "noi_dung": "Tập xác định của hàm số là $\\mathbb{R}\\setminus\\{45\\}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to45}f(x)=90$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số liên tục tại $x=20$ với mọi $m$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số liên tục trên $\\mathbb{R}$ khi $m=44$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân thức đã cho rút gọn được nhân tử $x-45$, nên giới hạn tại $x=45$ tính được và so với $f(45)$ chứa tham số.\n\n**Bước 1.** Nhận ra tại $x=45$ hàm số được cho bằng công thức riêng, còn các điểm khác dùng phân thức.\n\n**Bước 2.** Tính giới hạn của phân thức bằng cách phân tích tử thành nhân tử rồi rút nhân tử chung.\n\n**Bước 3.** Với điểm $x\\ne45$, so sánh giới hạn với giá trị của hàm tại điểm đó.\n\n**Bước 4.** Hàm số liên tục trên $\\mathbb{R}$ khi liên tục tại điểm ghép, nên so giới hạn với $f(45)$ để tìm $m$.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì tại $x=45$ hàm số vẫn có giá trị $f(45)=2m+4$, nên tập xác định là $\\mathbb{R}$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to45}\\dfrac{x^{2}-2025}{x-45}=\\lim\\limits_{x\\to45}\\dfrac{(x-45)(x+45)}{x-45}=\\lim\\limits_{x\\to45}(x+45)=90$.\n\nÝ c) Đúng vì $f(20)=\\dfrac{20^{2}-2025}{20-45}=65$ và $\\lim\\limits_{x\\to20}\\dfrac{x^{2}-2025}{x-45}=\\lim\\limits_{x\\to20}(x+45)=65=f(20)$, giá trị này không phụ thuộc $m$.\n\nÝ d) Sai vì hàm số liên tục trên $\\mathbb{R}$ khi và chỉ khi liên tục tại $x=45$, tức $2m+4=90$, suy ra $m=43$; với $m=44$ thì $f(45)=92\\ne90$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};return (() => !Number.isFinite(2 * 7 + 4))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F2=(x) => (x !== 45 ? (x * x - 2025) / (x - 45) : 0);return (() => nr(R(F2, 45), 90))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F2=(x) => (x !== 45 ? (x * x - 2025) / (x - 45) : 0);return (() => nr(F2(20), 65) && cont(F2, 20))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F2=(x) => (x !== 45 ? (x * x - 2025) / (x - 45) : 0);return (() => nr(2 * 44 + 4, R(F2, 45)))()})()===false"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": "Đề trùng Câu 2 (sách in lặp)."
+  },
+  {
+    "id": "nbv-b3-d-3",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}x-2&\\text{nếu }x<-1\\\\\\sqrt{x^{2}+1}+m&\\text{nếu }x\\ge-1\\end{cases}$ ($m$ là tham số). Khi đó:",
+    "menh_de": [
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to-2}f(x)=\\sqrt{5}+m$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to-1^{-}}f(x)=-3$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to-1^{+}}f(x)=\\sqrt{2}+m$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Khi $m=3+\\sqrt{2}$ thì hàm số có giới hạn tại $x_{0}=-1$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số đổi công thức tại $x=-1$ và nhánh bên phải chứa tham số $m$, nên phải chọn đúng nhánh theo phía tiến tới của $x$.\n\n**Bước 1.** Xét điểm $x$ đang tiến tới nằm ở nhánh $x<-1$ hay nhánh $x\\ge-1$ để chọn công thức.\n\n**Bước 2.** Tính giới hạn một bên bằng cách thay trực tiếp vào công thức của nhánh tương ứng.\n\n**Bước 3.** Giới hạn tại $x=-1$ tồn tại khi hai giới hạn một bên bằng nhau.\n\n**Bước 4.** Cho hai giới hạn một bên bằng nhau để tìm $m$ rồi so với giá trị mệnh đề đưa ra.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì gần $x=-2$ ta có $x<-1$ nên $f(x)=x-2$ và $\\lim\\limits_{x\\to-2}f(x)=-4$, không phải $\\sqrt{5}+m$.\n\nÝ b) Đúng vì với $x<-1$ ta có $f(x)=x-2$ nên $\\lim\\limits_{x\\to-1^{-}}f(x)=-1-2=-3$.\n\nÝ c) Đúng vì với $x>-1$ ta có $f(x)=\\sqrt{x^{2}+1}+m$ nên $\\lim\\limits_{x\\to-1^{+}}f(x)=\\sqrt{(-1)^{2}+1}+m=\\sqrt{2}+m$.\n\nÝ d) Sai vì hàm số có giới hạn tại $x_{0}=-1$ khi $-3=\\sqrt{2}+m$, tức $m=-3-\\sqrt{2}$, khác $3+\\sqrt{2}$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F3=(m) => (x) => (x < -1 ? x - 2 : Math.sqrt(x * x + 1) + m);return (() => [0, 0.7, -3].every((m) => nr(R(F3(m), -2), Math.sqrt(5) + m)))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F3=(m) => (x) => (x < -1 ? x - 2 : Math.sqrt(x * x + 1) + m);return (() => [0, 0.7, -3].every((m) => nr(L(F3(m), -1), -3)))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F3=(m) => (x) => (x < -1 ? x - 2 : Math.sqrt(x * x + 1) + m);return (() => [0, 0.7, -3].every((m) => nr(R(F3(m), -1), Math.SQRT2 + m)))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F3=(m) => (x) => (x < -1 ? x - 2 : Math.sqrt(x * x + 1) + m);return (() => { const m = 3 + Math.SQRT2; return nr(L(F3(m), -1), R(F3(m), -1)) })()})()===false"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-4",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{4-x^{2}}{\\sqrt{x+2}-2}&\\text{nếu }x>2\\\\mx+8&\\text{nếu }x\\le2\\end{cases}$ ($m$ là tham số).",
+    "menh_de": [
+      {
+        "noi_dung": "Tập xác định của hàm số là $D=\\mathbb{R}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số liên tục tại $x=7$ với mọi $m$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số không liên tục tại $x=0$ với mọi $m$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Hàm số liên tục tại $x_{0}=2$ khi $m=-12$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi nhánh của hàm số là một biểu thức liên tục trên khoảng của nó, chỉ điểm chia nhánh $x=2$ cần so sánh các giới hạn một bên.\n\n**Bước 1.** Kiểm tra mỗi nhánh có xác định trên khoảng của nó hay không, chú ý mẫu căn thức khác $0$.\n\n**Bước 2.** Với điểm nằm trong một nhánh, dùng tính liên tục của hàm sơ cấp để kết luận.\n\n**Bước 3.** Tại $x=2$, tính giới hạn bên phải bằng cách nhân liên hợp mẫu thức.\n\n**Bước 4.** Cho giới hạn bên phải, giới hạn bên trái và $f(2)$ bằng nhau để tìm $m$.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì với $x>2$ ta có $\\sqrt{x+2}>2$ nên mẫu khác $0$, còn với $x\\le2$ thì $mx+8$ là đa thức; vậy hàm số xác định trên $\\mathbb{R}$.\n\nÝ b) Đúng vì tại $x=7>2$ ta có $f(x)=\\dfrac{4-x^{2}}{\\sqrt{x+2}-2}$ xác định tại $7$ và $\\lim\\limits_{x\\to7}f(x)=\\dfrac{4-49}{\\sqrt{9}-2}=-45=f(7)$, không phụ thuộc $m$.\n\nÝ c) Sai vì tại $x=0\\le2$ ta có $f(0)=8$ và $\\lim\\limits_{x\\to0}(mx+8)=8=f(0)$ với mọi $m$, nên hàm số liên tục tại $x=0$.\n\nÝ d) Đúng vì $\\lim\\limits_{x\\to2^{+}}f(x)=\\lim\\limits_{x\\to2^{+}}\\dfrac{(2-x)(2+x)(\\sqrt{x+2}+2)}{x-2}=-(2+2)(2+2)=-16$ và $f(2)=\\lim\\limits_{x\\to2^{-}}f(x)=2m+8$; cho $2m+8=-16$ được $m=-12$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};return (() => [2.0001, 3, 7, 100].every((x) => Math.sqrt(x + 2) - 2 !== 0))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F4=(m) => (x) => (x > 2 ? (4 - x * x) / (Math.sqrt(x + 2) - 2) : m * x + 8);return (() => [0, 5, -3].every((m) => cont(F4(m), 7) && nr(F4(m)(7), -45)))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F4=(m) => (x) => (x > 2 ? (4 - x * x) / (Math.sqrt(x + 2) - 2) : m * x + 8);return (() => [0, 5, -3].every((m) => !cont(F4(m), 0)))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F4=(m) => (x) => (x > 2 ? (4 - x * x) / (Math.sqrt(x + 2) - 2) : m * x + 8);return (() => cont(F4(-12), 2))()})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-5",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho các hàm số $f(x)=\\begin{cases}\\dfrac{x^{2}-4}{x-2}&\\text{nếu }x\\ne2\\\\4{,}5&\\text{nếu }x=2\\end{cases}$ và $g(x)=\\dfrac{2}{x-1}$. Khi đó:",
+    "menh_de": [
+      {
+        "noi_dung": "Hàm số $g(x)$ liên tục tại điểm $x_{0}=2$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to2}f(x)=4$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số $f(x)$ liên tục tại điểm $x_{0}=2$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Hàm số $y=\\dfrac{f(x)}{g(x)}$ liên tục tại điểm $x_{0}=2$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục tại $x_{0}$ khi giới hạn tại $x_{0}$ tồn tại và bằng giá trị của hàm tại $x_{0}$.\n\n**Bước 1.** Với mỗi hàm, tính giá trị của hàm tại $x_{0}=2$ theo công thức tương ứng.\n\n**Bước 2.** Tính giới hạn tại $x_{0}=2$, với $f(x)$ thì rút nhân tử chung $x-2$ ở tử và mẫu.\n\n**Bước 3.** So sánh giới hạn với giá trị hàm tại điểm đó để kết luận về tính liên tục.\n\n**Bước 4.** Với thương hai hàm, tính trực tiếp giá trị và giới hạn của thương rồi so sánh.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $g(2)=\\dfrac{2}{2-1}=2$ và $\\lim\\limits_{x\\to2}g(x)=\\lim\\limits_{x\\to2}\\dfrac{2}{x-1}=2=g(2)$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to2}\\dfrac{x^{2}-4}{x-2}=\\lim\\limits_{x\\to2}\\dfrac{(x-2)(x+2)}{x-2}=\\lim\\limits_{x\\to2}(x+2)=4$.\n\nÝ c) Sai vì $f(2)=4{,}5$ còn $\\lim\\limits_{x\\to2}f(x)=4\\ne f(2)$.\n\nÝ d) Sai vì $\\dfrac{f(2)}{g(2)}=\\dfrac{4{,}5}{2}=2{,}25$ trong khi $\\lim\\limits_{x\\to2}\\dfrac{f(x)}{g(x)}=\\lim\\limits_{x\\to2}\\dfrac{(x+2)(x-1)}{2}=2$, hai giá trị khác nhau.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const G5=(x) => 2 / (x - 1);return (() => cont(G5, 2))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F5=(x) => (x !== 2 ? (x * x - 4) / (x - 2) : 4.5);return (() => nr(R(F5, 2), 4))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F5=(x) => (x !== 2 ? (x * x - 4) / (x - 2) : 4.5);return (() => cont(F5, 2))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F5=(x) => (x !== 2 ? (x * x - 4) / (x - 2) : 4.5);const G5=(x) => 2 / (x - 1);const H5=(x) => F5(x) / G5(x);return (() => cont(H5, 2))()})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Sai",
+    "ghi_chu": "Sách ghi f(2)/g(2)=2,5(x-1)=2,5 (sai số: đúng là 4,5/2=2,25); kết luận ý d) vẫn Sai."
+  },
+  {
+    "id": "nbv-b3-d-13",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho các hàm số $f(x)=\\begin{cases}\\dfrac{x^{2}-4}{x-2}&\\text{nếu }x\\ne2\\\\4{,}5&\\text{nếu }x=2\\end{cases}$ và $g(x)=\\dfrac{2}{x-1}$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Hàm số $g(x)$ liên tục tại điểm $x_{0}=2$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to2}f(x)=4$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số $f(x)$ liên tục tại điểm $x_{0}=2$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Hàm số $y=\\dfrac{f(x)}{g(x)}$ liên tục tại điểm $x_{0}=2$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục tại $x_{0}$ khi giới hạn tại $x_{0}$ tồn tại và bằng giá trị của hàm tại $x_{0}$.\n\n**Bước 1.** Với mỗi hàm, tính giá trị của hàm tại $x_{0}=2$ theo công thức tương ứng.\n\n**Bước 2.** Tính giới hạn tại $x_{0}=2$, với $f(x)$ thì rút nhân tử chung $x-2$ ở tử và mẫu.\n\n**Bước 3.** So sánh giới hạn với giá trị hàm tại điểm đó để kết luận về tính liên tục.\n\n**Bước 4.** Với thương hai hàm, tính trực tiếp giá trị và giới hạn của thương rồi so sánh.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $g(2)=\\dfrac{2}{2-1}=2$ và $\\lim\\limits_{x\\to2}g(x)=\\lim\\limits_{x\\to2}\\dfrac{2}{x-1}=2=g(2)$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to2}\\dfrac{x^{2}-4}{x-2}=\\lim\\limits_{x\\to2}\\dfrac{(x-2)(x+2)}{x-2}=\\lim\\limits_{x\\to2}(x+2)=4$.\n\nÝ c) Sai vì $f(2)=4{,}5$ còn $\\lim\\limits_{x\\to2}f(x)=4\\ne f(2)$.\n\nÝ d) Sai vì $\\dfrac{f(2)}{g(2)}=\\dfrac{4{,}5}{2}=2{,}25$ trong khi $\\lim\\limits_{x\\to2}\\dfrac{f(x)}{g(x)}=\\lim\\limits_{x\\to2}\\dfrac{(x+2)(x-1)}{2}=2$, hai giá trị khác nhau.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const G5=(x) => 2 / (x - 1);return (() => cont(G5, 2))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F5=(x) => (x !== 2 ? (x * x - 4) / (x - 2) : 4.5);return (() => nr(R(F5, 2), 4))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F5=(x) => (x !== 2 ? (x * x - 4) / (x - 2) : 4.5);return (() => cont(F5, 2))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F5=(x) => (x !== 2 ? (x * x - 4) / (x - 2) : 4.5);const G5=(x) => 2 / (x - 1);const H5=(x) => F5(x) / G5(x);return (() => cont(H5, 2))()})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Sai",
+    "ghi_chu": "Đề trùng Câu 5 (sách in lặp, lời giải ý d gọn hơn)."
+  },
+  {
+    "id": "nbv-b3-d-7",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{x^{2}-5x+6}{x-3}&\\text{nếu }x<3\\\\a^{2}-2ax+6&\\text{nếu }x\\ge3\\end{cases}$. Khi đó:",
+    "menh_de": [
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to2}f(x)=10$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to3^{-}}f(x)=1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Khi $a=3$ thì $\\lim\\limits_{x\\to3^{+}}f(x)=-3$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Có $2$ giá trị của $a$ để hàm số có giới hạn khi $x\\to3$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân thức ở nhánh $x<3$ rút gọn được nhân tử $x-3$, còn giới hạn bên phải tại $x=3$ chứa tham số $a$.\n\n**Bước 1.** Phân tích tử thành nhân tử để rút gọn nhân tử chung với mẫu ở nhánh $x<3$.\n\n**Bước 2.** Tính giới hạn tại điểm nằm trong một nhánh bằng cách thay trực tiếp.\n\n**Bước 3.** Tính giới hạn bên trái và bên phải tại $x=3$ theo công thức từng nhánh.\n\n**Bước 4.** Giới hạn tại $x=3$ tồn tại khi hai giới hạn một bên bằng nhau, từ đó lập phương trình theo $a$.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $\\lim\\limits_{x\\to2}\\dfrac{x^{2}-5x+6}{x-3}=\\dfrac{4-10+6}{2-3}=0$, khác $10$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to3^{-}}\\dfrac{(x-3)(x-2)}{x-3}=\\lim\\limits_{x\\to3^{-}}(x-2)=1$.\n\nÝ c) Đúng vì khi $a=3$, $\\lim\\limits_{x\\to3^{+}}f(x)=\\lim\\limits_{x\\to3^{+}}(9-6x+6)=15-18=-3$.\n\nÝ d) Đúng vì $\\lim\\limits_{x\\to3^{+}}f(x)=a^{2}-6a+6$; giới hạn tồn tại khi $a^{2}-6a+6=1\\Leftrightarrow a^{2}-6a+5=0\\Leftrightarrow a=1$ hoặc $a=5$, tức có hai giá trị.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F7=(a) => (x) => (x < 3 ? (x * x - 5 * x + 6) / (x - 3) : a * a - 2 * a * x + 6);return (() => nr(R(F7(0), 2), 10))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F7=(a) => (x) => (x < 3 ? (x * x - 5 * x + 6) / (x - 3) : a * a - 2 * a * x + 6);return (() => nr(L(F7(0), 3), 1))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F7=(a) => (x) => (x < 3 ? (x * x - 5 * x + 6) / (x - 3) : a * a - 2 * a * x + 6);return (() => nr(R(F7(3), 3), -3))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F7=(a) => (x) => (x < 3 ? (x * x - 5 * x + 6) / (x - 3) : a * a - 2 * a * x + 6);return (() => { let c = 0; for (let a = -20; a <= 20; a += 0.5) if (nr(R(F7(a), 3), L(F7(a), 3))) c++; return c === 2 })()})()===true"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-8",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{x^{3}-x}{x-1}&\\text{nếu }x>1\\\\2x+a^{2}-1&\\text{nếu }x\\le1\\end{cases}$. Xét tính đúng, sai của các khẳng định sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$f(1)=a^{2}+1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to1^{+}}f(x)=-2$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Với $a=0$ hàm số liên tục tại $x=1$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Với $a$ là giá trị dương để hàm số liên tục tại $x=1$, phương trình $\\sin x=a$ có nghiệm dương nhỏ nhất bằng $\\dfrac{\\pi}{2}$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn xét liên tục tại $x=1$ phải tính giá trị $f(1)$ và hai giới hạn một bên, rồi so sánh chúng.\n\n**Bước 1.** Tính $f(1)$ theo công thức của nhánh $x\\le1$ vì nhánh này chứa dấu bằng.\n\n**Bước 2.** Tính giới hạn bên phải bằng cách phân tích tử $x^{3}-x$ thành nhân tử rồi rút gọn.\n\n**Bước 3.** Tính giới hạn bên trái theo công thức của nhánh $x\\le1$ chứa tham số.\n\n**Bước 4.** Cho giới hạn trái, phải và $f(1)$ bằng nhau để tìm $a$, rồi giải phương trình lượng giác cuối cùng.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $1\\le1$ nên $f(1)=2\\cdot1+a^{2}-1=a^{2}+1$.\n\nÝ b) Sai vì $\\lim\\limits_{x\\to1^{+}}\\dfrac{x(x-1)(x+1)}{x-1}=\\lim\\limits_{x\\to1^{+}}x(x+1)=2$, khác $-2$.\n\nÝ c) Sai vì khi $a=0$ thì $\\lim\\limits_{x\\to1^{-}}f(x)=2-1=1\\ne2=\\lim\\limits_{x\\to1^{+}}f(x)$ nên hàm số gián đoạn tại $x=1$.\n\nÝ d) Đúng vì liên tục tại $x=1$ khi $a^{2}+1=2$, tức $a=\\pm1$, mà $a>0$ nên $a=1$. Phương trình $\\sin x=1\\Leftrightarrow x=\\dfrac{\\pi}{2}+k2\\pi$ $(k\\in\\mathbb{Z})$, nghiệm dương nhỏ nhất ứng với $k=0$ là $x=\\dfrac{\\pi}{2}$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F8=(a) => (x) => (x > 1 ? (x ** 3 - x) / (x - 1) : 2 * x + a * a - 1);return (() => [0, 1, 2, -3].every((a) => nr(F8(a)(1), a * a + 1)))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F8=(a) => (x) => (x > 1 ? (x ** 3 - x) / (x - 1) : 2 * x + a * a - 1);return (() => nr(R(F8(0), 1), -2))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F8=(a) => (x) => (x > 1 ? (x ** 3 - x) / (x - 1) : 2 * x + a * a - 1);return (() => cont(F8(0), 1))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F8=(a) => (x) => (x > 1 ? (x ** 3 - x) / (x - 1) : 2 * x + a * a - 1);return (() => cont(F8(1), 1) && !cont(F8(2), 1) && Array.from({ length: 1000 }, (_, i) => ((i + 1) * Math.PI) / 2 / 1001).every((x) => Math.sin(x) < 1) && nr(Math.sin(Math.PI / 2), 1))()})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Sai; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-9",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Khi nung nóng một vật với nhiệt độ tăng từ $20^\\circ\\text{C}$, mỗi phút tăng $4^\\circ\\text{C}$ trong $70$ phút, sau đó giảm mỗi phút $2^\\circ\\text{C}$ trong $50$ phút. Hàm số biểu thị nhiệt độ (đơn vị $^\\circ\\text{C}$) theo thời gian $t$ (phút) có dạng $T(t)=\\begin{cases}20+4t&\\text{nếu }0\\le t\\le70\\\\a-2t&\\text{nếu }70<t\\le120\\end{cases}$ ($a$ là hằng số). Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Nhiệt độ ban đầu là $20^\\circ\\text{C}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Nhiệt độ lúc $10$ phút là $60^\\circ\\text{C}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$T(t)$ là hàm số liên tục trên tập xác định với mọi $a\\in\\mathbb{R}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Với $a=440$ thì $T(t)$ là hàm số liên tục trên tập xác định.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai nhánh của $T(t)$ là hàm đa thức, nên hàm số liên tục trên tập xác định khi và chỉ khi liên tục tại điểm ghép $t=70$.\n\n**Bước 1.** Tính nhiệt độ tại các thời điểm cho trước bằng cách thay $t$ vào nhánh phù hợp.\n\n**Bước 2.** Tính $T(70)$ theo nhánh có dấu bằng và hai giới hạn một bên tại $t=70$.\n\n**Bước 3.** Hàm số liên tục tại $t=70$ khi hai giới hạn một bên và $T(70)$ bằng nhau.\n\n**Bước 4.** Thử với một giá trị cụ thể của $a$ để bác bỏ mệnh đề nói đúng với mọi $a$, rồi tìm $a$ thích hợp.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $T(0)=20+4\\cdot0=20$.\n\nÝ b) Đúng vì $T(10)=20+4\\cdot10=60$.\n\nÝ c) Sai vì $T(70)=20+4\\cdot70=300$ và $\\lim\\limits_{t\\to70^{-}}T(t)=300$, còn $\\lim\\limits_{t\\to70^{+}}T(t)=a-140$; chẳng hạn $a=300$ thì giới hạn phải bằng $160\\ne300$, hàm số không liên tục tại $t=70$.\n\nÝ d) Đúng vì khi $a=440$: $\\lim\\limits_{t\\to70^{+}}T(t)=440-140=300=T(70)=\\lim\\limits_{t\\to70^{-}}T(t)$, nên $T$ liên tục tại $t=70$ và do đó liên tục trên tập xác định.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const T9=(a) => (t) => (t <= 70 ? 20 + 4 * t : a - 2 * t);return (() => T9(0)(0) === 20)()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const T9=(a) => (t) => (t <= 70 ? 20 + 4 * t : a - 2 * t);return (() => T9(0)(10) === 60)()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const T9=(a) => (t) => (t <= 70 ? 20 + 4 * t : a - 2 * t);return (() => [0, 300, 440, -5].every((a) => cont(T9(a), 70)))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const T9=(a) => (t) => (t <= 70 ? 20 + 4 * t : a - 2 * t);return (() => cont(T9(440), 70))()})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-11",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}x^{2}+mx+n&\\text{nếu }x<-5\\\\x+17&\\text{nếu }-5\\le x\\le10\\\\mx+n+10&\\text{nếu }x>10\\end{cases}$ liên tục trên $\\mathbb{R}$. Khi đó:",
+    "menh_de": [
+      {
+        "noi_dung": "$f(-5)=12$ và $f(10)=27$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$m>0$ và $n>0$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$2m+n$ là số nguyên tố.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Giá trị lớn nhất của hàm số $y=m\\sin x+n\\cos x$ là $\\sqrt{12}$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục trên $\\mathbb{R}$ khi liên tục tại hai điểm ghép $x=-5$ và $x=10$, điều này cho hệ phương trình theo $m$ và $n$.\n\n**Bước 1.** Tính giá trị của hàm tại hai điểm ghép bằng nhánh ở giữa vì nhánh này có dấu bằng.\n\n**Bước 2.** Tính các giới hạn một bên tại $x=-5$ và $x=10$ theo công thức từng nhánh.\n\n**Bước 3.** Cho giới hạn một bên bằng giá trị hàm tại mỗi điểm ghép để lập hệ phương trình theo $m$, $n$.\n\n**Bước 4.** Giải hệ tìm $m$, $n$ rồi kiểm tra từng mệnh đề, với ý cuối dùng giá trị lớn nhất của $m\\sin x+n\\cos x$.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $-5$ và $10$ thuộc đoạn $[-5;10]$ nên $f(-5)=-5+17=12$ và $f(10)=10+17=27$.\n\nÝ b) Sai vì liên tục tại $x=-5$ và $x=10$ cho hệ $\\begin{cases}-5m+n+25=12\\\\10m+n+10=27\\end{cases}$, giải được $m=2$, $n=-3$; $n<0$ nên mệnh đề sai.\n\nÝ c) Sai vì $2m+n=2\\cdot2+(-3)=1$ không phải số nguyên tố.\n\nÝ d) Sai vì $y=2\\sin x-3\\cos x$ có giá trị lớn nhất bằng $\\sqrt{2^{2}+(-3)^{2}}=\\sqrt{13}$, khác $\\sqrt{12}$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Sai, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F11=(m, n) => (x) => (x < -5 ? x * x + m * x + n : x <= 10 ? x + 17 : m * x + n + 10);const mn11=() => { const m = (17 + 13) / 15; return [m, -13 + 5 * m] };return (() => { const [m, n] = mn11(); return F11(m, n)(-5) === 12 && F11(m, n)(10) === 27 })()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F11=(m, n) => (x) => (x < -5 ? x * x + m * x + n : x <= 10 ? x + 17 : m * x + n + 10);const mn11=() => { const m = (17 + 13) / 15; return [m, -13 + 5 * m] };return (() => { const [m, n] = mn11(); return cont(F11(m, n), -5) && cont(F11(m, n), 10) && m > 0 && n > 0 })()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const mn11=() => { const m = (17 + 13) / 15; return [m, -13 + 5 * m] };return (() => { const [m, n] = mn11(); const k = 2 * m + n; return k > 1 && Array.from({ length: Math.max(0, k - 2) }, (_, i) => i + 2).every((d) => k % d) })()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const mn11=() => { const m = (17 + 13) / 15; return [m, -13 + 5 * m] };return (() => { const [m, n] = mn11(); let mx = -1e9; for (let i = 0; i < 100000; i++) { const x = (i * 2 * Math.PI) / 1e5; mx = Math.max(mx, m * Math.sin(x) + n * Math.cos(x)) } return nr(mx, Math.sqrt(12)) })()})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Sai; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-12",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}-\\dfrac{x}{2}&\\text{nếu }x\\le1\\\\\\dfrac{x^{2}-3x+2}{x^{2}-1}&\\text{nếu }x>1\\end{cases}$. Xét tính đúng, sai của các khẳng định sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to0}f(x)=-2$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to3}f(x)=+\\infty$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to+\\infty}f(x)=1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số $f(x)$ liên tục tại $x_{0}=1$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi giới hạn cần dùng đúng nhánh ứng với vị trí của điểm đang xét, còn tại điểm ghép $x=1$ phải so ba giá trị.\n\n**Bước 1.** Xác định điểm đang xét thuộc nhánh nào của hàm số để chọn công thức.\n\n**Bước 2.** Với giới hạn tại điểm bình thường, thay trực tiếp vào công thức nếu mẫu khác $0$.\n\n**Bước 3.** Với giới hạn tại vô cực, chia tử và mẫu cho luỹ thừa cao nhất của $x$.\n\n**Bước 4.** Tại $x=1$, so sánh $f(1)$ với giới hạn bên trái và giới hạn bên phải sau khi rút nhân tử chung.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì gần $x=0$ ta có $x<1$ nên $f(x)=-\\dfrac{x}{2}$ và $\\lim\\limits_{x\\to0}(-\\dfrac{x}{2})=0$, khác $-2$.\n\nÝ b) Sai vì tại $x=3$ mẫu $x^{2}-1=8\\ne0$ nên giới hạn hữu hạn: $\\lim\\limits_{x\\to3}\\dfrac{x^{2}-3x+2}{x^{2}-1}=\\dfrac{2}{8}=\\dfrac14$.\n\nÝ c) Đúng vì $\\lim\\limits_{x\\to+\\infty}\\dfrac{x^{2}-3x+2}{x^{2}-1}=\\lim\\limits_{x\\to+\\infty}\\dfrac{1-\\dfrac{3}{x}+\\dfrac{2}{x^{2}}}{1-\\dfrac{1}{x^{2}}}=1$.\n\nÝ d) Đúng vì $f(1)=-\\dfrac12$, $\\lim\\limits_{x\\to1^{-}}f(x)=-\\dfrac12$ và $\\lim\\limits_{x\\to1^{+}}\\dfrac{(x-1)(x-2)}{(x-1)(x+1)}=\\lim\\limits_{x\\to1^{+}}\\dfrac{x-2}{x+1}=-\\dfrac12$, ba giá trị bằng nhau.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Sai, Đúng, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F12=(x) => (x <= 1 ? -x / 2 : (x * x - 3 * x + 2) / (x * x - 1));return (() => nr(R(F12, 0), -2))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F12=(x) => (x <= 1 ? -x / 2 : (x * x - 3 * x + 2) / (x * x - 1));return (() => R(F12, 3) > 1e6)()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F12=(x) => (x <= 1 ? -x / 2 : (x * x - 3 * x + 2) / (x * x - 1));return (() => nr(F12(1e7), 1))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F12=(x) => (x <= 1 ? -x / 2 : (x * x - 3 * x + 2) / (x * x - 1));return (() => cont(F12, 1))()})()===true"
+    ],
+    "sach_dap_so": "a) Sai; b) Sai; c) Đúng; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-15",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{x^{2}-3x+2}{x-2}&\\text{nếu }x<2\\\\x^{2}-x-1&\\text{nếu }x\\ge2\\end{cases}$. Xét tính đúng, sai của các khẳng định sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to2^{+}}f(x)=1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to2^{-}}f(x)=1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số $f(x)$ gián đoạn tại điểm $x=2$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Hàm số $f(x)$ liên tục trên $\\mathbb{R}$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục trên mỗi khoảng của nhánh, nên chỉ cần so sánh hai giới hạn một bên với $f(2)$ tại điểm ghép $x=2$.\n\n**Bước 1.** Tính giới hạn bên phải bằng cách thay trực tiếp vào đa thức ở nhánh $x\\ge2$.\n\n**Bước 2.** Tính giới hạn bên trái bằng cách phân tích tử thành nhân tử rồi rút gọn với mẫu.\n\n**Bước 3.** So sánh hai giới hạn một bên với giá trị $f(2)$ để kết luận liên tục hay gián đoạn tại $x=2$.\n\n**Bước 4.** Kết hợp tính liên tục trên từng khoảng và tại điểm ghép để kết luận trên $\\mathbb{R}$.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $\\lim\\limits_{x\\to2^{+}}(x^{2}-x-1)=4-2-1=1$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to2^{-}}\\dfrac{(x-1)(x-2)}{x-2}=\\lim\\limits_{x\\to2^{-}}(x-1)=1$.\n\nÝ c) Sai vì $f(2)=1$ và hai giới hạn một bên đều bằng $1$, nên hàm số liên tục tại $x=2$.\n\nÝ d) Đúng vì trên $(-\\infty;2)$ hàm số là phân thức hữu tỉ xác định nên liên tục, trên $(2;+\\infty)$ là đa thức nên liên tục, và liên tục tại $x=2$; vậy liên tục trên $\\mathbb{R}$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F15=(x) => (x < 2 ? (x * x - 3 * x + 2) / (x - 2) : x * x - x - 1);return (() => nr(R(F15, 2), 1))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F15=(x) => (x < 2 ? (x * x - 3 * x + 2) / (x - 2) : x * x - x - 1);return (() => nr(L(F15, 2), 1))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F15=(x) => (x < 2 ? (x * x - 3 * x + 2) / (x - 2) : x * x - x - 1);return (() => !cont(F15, 2))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F15=(x) => (x < 2 ? (x * x - 3 * x + 2) / (x - 2) : x * x - x - 1);return (() => Array.from({ length: 41 }, (_, i) => -3 + i * 0.25).every((x) => cont(F15, x)))()})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-16",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{\\sqrt{x}-1}{x-1}&\\text{nếu }x>1\\\\mx-\\dfrac12&\\text{nếu }x\\le1\\end{cases}$. Các mệnh đề sau đúng hay sai?",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to1^{+}}f(x)=\\lim\\limits_{x\\to1^{+}}(mx-\\dfrac12)$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Hàm số $y=f(x)$ liên tục tại điểm $x=1$ khi $m=1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$f(1)=m-\\dfrac12$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to1^{+}}f(x)=\\lim\\limits_{x\\to1^{+}}\\dfrac{\\sqrt{x}-1}{x-1}$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với $x>1$ hàm số dùng phân thức chứa căn, còn với $x\\le1$ dùng $mx-\\frac12$, nên mỗi giới hạn một bên phải dùng đúng nhánh.\n\n**Bước 1.** Xác định giới hạn bên phải dùng công thức nào và giới hạn bên trái dùng công thức nào.\n\n**Bước 2.** Tính giới hạn bên phải bằng cách nhân liên hợp với $\\sqrt{x}+1$.\n\n**Bước 3.** Tính $f(1)$ theo nhánh $x\\le1$ vì nhánh này chứa dấu bằng.\n\n**Bước 4.** Cho giới hạn trái, phải và $f(1)$ bằng nhau để tìm $m$.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì khi $x\\to1^{+}$ ta có $x>1$ nên $f(x)=\\dfrac{\\sqrt{x}-1}{x-1}$, không phải $mx-\\dfrac12$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to1^{+}}\\dfrac{\\sqrt{x}-1}{x-1}=\\lim\\limits_{x\\to1^{+}}\\dfrac{1}{\\sqrt{x}+1}=\\dfrac12$ và $\\lim\\limits_{x\\to1^{-}}f(x)=f(1)=m-\\dfrac12$; hai vế bằng nhau khi $m-\\dfrac12=\\dfrac12$, tức $m=1$.\n\nÝ c) Đúng vì $1\\le1$ nên $f(1)=m\\cdot1-\\dfrac12=m-\\dfrac12$.\n\nÝ d) Đúng vì khi $x\\to1^{+}$ thì $x>1$ nên $f(x)=\\dfrac{\\sqrt{x}-1}{x-1}$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F16=(m) => (x) => (x > 1 ? (Math.sqrt(x) - 1) / (x - 1) : m * x - 0.5);return (() => [0, 1, 2, 3].every((m) => nr(R(F16(m), 1), m - 0.5)))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F16=(m) => (x) => (x > 1 ? (Math.sqrt(x) - 1) / (x - 1) : m * x - 0.5);return (() => cont(F16(1), 1) && [0, 2, 3].every((m) => !cont(F16(m), 1)))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F16=(m) => (x) => (x > 1 ? (Math.sqrt(x) - 1) / (x - 1) : m * x - 0.5);return (() => [0, 1, 2].every((m) => nr(F16(m)(1), m - 0.5)))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F16=(m) => (x) => (x > 1 ? (Math.sqrt(x) - 1) / (x - 1) : m * x - 0.5);return (() => nr(R(F16(2), 1), R((x) => (Math.sqrt(x) - 1) / (x - 1), 1)))()})()===true"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-17",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}x-2&\\text{nếu }x<-1\\\\\\sqrt{x^{2}+1}&\\text{nếu }x\\ge-1\\end{cases}$. Khi đó các mệnh đề sau đúng hay sai?",
+    "menh_de": [
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to-\\infty}f(x)=-\\infty$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to-1^{+}}f(x)=\\sqrt{3}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Hàm số không có giới hạn khi $x\\to-1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to-1^{-}}f(x)=-3$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn tại vô cực và giới hạn một bên tại $x=-1$ đều tính bằng công thức của nhánh ứng với phía $x$ tiến tới.\n\n**Bước 1.** Xác định khi $x\\to-\\infty$ thì $x$ nằm ở nhánh nào của hàm số.\n\n**Bước 2.** Tính giới hạn tại vô cực bằng cách rút $x$ ra ngoài rồi xét dấu hai thừa số.\n\n**Bước 3.** Tính hai giới hạn một bên tại $x=-1$ bằng cách thay vào công thức của từng nhánh.\n\n**Bước 4.** Giới hạn tại một điểm không tồn tại khi hai giới hạn một bên khác nhau.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì khi $x\\to-\\infty$ thì $x<-1$, $f(x)=x-2=x(1-\\dfrac2x)$ với $\\lim x=-\\infty$ và $\\lim(1-\\dfrac2x)=1>0$, nên giới hạn là $-\\infty$.\n\nÝ b) Sai vì $\\lim\\limits_{x\\to-1^{+}}\\sqrt{x^{2}+1}=\\sqrt{2}$, khác $\\sqrt{3}$.\n\nÝ c) Đúng vì $\\lim\\limits_{x\\to-1^{-}}f(x)=-3\\ne\\sqrt{2}=\\lim\\limits_{x\\to-1^{+}}f(x)$.\n\nÝ d) Đúng vì $\\lim\\limits_{x\\to-1^{-}}(x-2)=-1-2=-3$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F1=(x) => (x < -1 ? x - 2 : Math.sqrt(x * x + 1));return (() => F1(-1e9) < -1e8)()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F1=(x) => (x < -1 ? x - 2 : Math.sqrt(x * x + 1));return (() => nr(R(F1, -1), Math.sqrt(3)))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F1=(x) => (x < -1 ? x - 2 : Math.sqrt(x * x + 1));return (() => !nr(L(F1, -1), R(F1, -1)))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F1=(x) => (x < -1 ? x - 2 : Math.sqrt(x * x + 1));return (() => nr(L(F1, -1), -3))()})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-18",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}-1&\\text{nếu }x<0\\\\0&\\text{nếu }x=0\\\\1&\\text{nếu }x>0\\end{cases}$. Xét tính đúng, sai các khẳng định sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$f(0)=0$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to0^{+}}f(x)=1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to0}f(x)=-1$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Hàm số liên tục tại $x=0$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số này nhận giá trị hằng khác nhau ở hai phía của $x=0$, nên hai giới hạn một bên khác nhau.\n\n**Bước 1.** Đọc trực tiếp giá trị $f(0)$ từ nhánh có điều kiện $x=0$.\n\n**Bước 2.** Tính giới hạn bên phải và bên trái bằng hàm hằng của mỗi nhánh.\n\n**Bước 3.** So sánh hai giới hạn một bên để kết luận giới hạn tại $x=0$ có tồn tại không.\n\n**Bước 4.** Dùng điều kiện giới hạn bằng giá trị hàm để kết luận về tính liên tục tại $x=0$.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì theo định nghĩa hàm số, khi $x=0$ thì $f(x)=0$.\n\nÝ b) Đúng vì với $x>0$ thì $f(x)=1$ nên $\\lim\\limits_{x\\to0^{+}}f(x)=1$.\n\nÝ c) Sai vì $\\lim\\limits_{x\\to0^{+}}f(x)=1$ còn $\\lim\\limits_{x\\to0^{-}}f(x)=-1$, hai giới hạn một bên khác nhau nên không tồn tại $\\lim\\limits_{x\\to0}f(x)$.\n\nÝ d) Sai vì không tồn tại $\\lim\\limits_{x\\to0}f(x)$ nên hàm số không liên tục tại $x=0$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F18=(x) => (x < 0 ? -1 : x === 0 ? 0 : 1);return (() => F18(0) === 0)()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F18=(x) => (x < 0 ? -1 : x === 0 ? 0 : 1);return (() => nr(R(F18, 0), 1))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F18=(x) => (x < 0 ? -1 : x === 0 ? 0 : 1);return (() => nr(R(F18, 0), -1) && nr(L(F18, 0), -1))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F18=(x) => (x < 0 ? -1 : x === 0 ? 0 : 1);return (() => cont(F18, 0))()})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-19",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{x^{2}-x-6}{x+2}&\\text{nếu }x\\ne-2\\\\-6&\\text{nếu }x=-2\\end{cases}$. Xét tính đúng, sai các khẳng định sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$f(-2)=-6$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$f(-2)=6$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to-2}f(x)=-5$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số liên tục tại $x=-2$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Liên tục tại $x=-2$ đòi hỏi giới hạn tại $-2$ bằng $f(-2)$, nên phải tính cả hai đại lượng.\n\n**Bước 1.** Đọc giá trị $f(-2)$ từ nhánh có điều kiện $x=-2$.\n\n**Bước 2.** Phân tích tử $x^{2}-x-6$ thành nhân tử để rút gọn nhân tử $x+2$.\n\n**Bước 3.** Tính giới hạn của phân thức đã rút gọn khi $x$ tiến tới $-2$.\n\n**Bước 4.** So sánh giới hạn với $f(-2)$ để kết luận liên tục hay gián đoạn.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì theo đề, khi $x=-2$ thì $f(x)=-6$.\n\nÝ b) Sai vì $f(-2)=-6$ chứ không phải $6$.\n\nÝ c) Đúng vì $\\lim\\limits_{x\\to-2}\\dfrac{(x+2)(x-3)}{x+2}=\\lim\\limits_{x\\to-2}(x-3)=-5$.\n\nÝ d) Sai vì $\\lim\\limits_{x\\to-2}f(x)=-5\\ne-6=f(-2)$ nên hàm số gián đoạn tại $x=-2$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F19=(x) => (x !== -2 ? (x * x - x - 6) / (x + 2) : -6);return (() => F19(-2) === -6)()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F19=(x) => (x !== -2 ? (x * x - x - 6) / (x + 2) : -6);return (() => F19(-2) === 6)()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F19=(x) => (x !== -2 ? (x * x - x - 6) / (x + 2) : -6);return (() => nr(R(F19, -2), -5))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F19=(x) => (x !== -2 ? (x * x - x - 6) / (x + 2) : -6);return (() => cont(F19, -2))()})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-20",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}ax+3&\\text{nếu }x\\ge1\\\\x^{2}+x-1&\\text{nếu }x<1\\end{cases}$. Các mệnh đề sau đúng hay sai?",
+    "menh_de": [
+      {
+        "noi_dung": "$f(1)=4$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to1^{-}}f(x)=1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to1^{+}}f(x)=a+3$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số liên tục tại $x=1$ khi $a=-2$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điểm $x=1$ thuộc nhánh chứa tham số $a$, nên $f(1)$ và giới hạn bên phải đều phụ thuộc $a$.\n\n**Bước 1.** Tính $f(1)$ theo nhánh $x\\ge1$ vì nhánh này chứa dấu bằng.\n\n**Bước 2.** Tính giới hạn bên trái bằng cách thay vào đa thức của nhánh $x<1$.\n\n**Bước 3.** Tính giới hạn bên phải bằng cách thay vào biểu thức chứa $a$ của nhánh $x\\ge1$.\n\n**Bước 4.** Cho giới hạn trái bằng giới hạn phải để tìm $a$ rồi so với giá trị mệnh đề đưa ra.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $f(1)=a\\cdot1+3=a+3$ phụ thuộc vào $a$, không luôn bằng $4$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to1^{-}}(x^{2}+x-1)=1+1-1=1$.\n\nÝ c) Đúng vì $\\lim\\limits_{x\\to1^{+}}(ax+3)=a+3$.\n\nÝ d) Đúng vì hàm số liên tục tại $x=1$ khi $a+3=1$, tức $a=-2$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F20=(a) => (x) => (x >= 1 ? a * x + 3 : x * x + x - 1);return (() => [0, 1, -2].every((a) => F20(a)(1) === 4))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F20=(a) => (x) => (x >= 1 ? a * x + 3 : x * x + x - 1);return (() => nr(L(F20(0), 1), 1))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F20=(a) => (x) => (x >= 1 ? a * x + 3 : x * x + x - 1);return (() => [0, 1, -2, 5].every((a) => nr(R(F20(a), 1), a + 3)))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F20=(a) => (x) => (x >= 1 ? a * x + 3 : x * x + x - 1);return (() => cont(F20(-2), 1) && [0, 1, 2].every((a) => !cont(F20(a), 1)))()})()===true"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-21",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $y=f(x)=x^{3}+ax^{2}+bx+c$ ($a$, $b$, $c$ là các số thực). Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Với $a=-3$, $b=0$, $c=2$ thì phương trình $f(x)=0$ có ít nhất một nghiệm trên khoảng $(-2;0)$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Với $a=-3$, $b=0$, $c=2$ thì phương trình $f(x)=0$ có ít nhất hai nghiệm trên khoảng $(-2;3)$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Với các số thực $a$, $b$, $c$ thoả $\\begin{cases}-8+4a-2b+c>0\\\\8+4a+2b+c<0\\end{cases}$, đồ thị hàm số $y=x^{3}+ax^{2}+bx+c$ cắt trục $Ox$ tại $2$ điểm.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Với các số thực $a$, $b$, $c$ thoả $\\begin{cases}a+c>b+1\\\\a+b+c+1<0\\end{cases}$, đồ thị hàm số $y=x^{3}+ax^{2}+bx+c$ cắt trục $Ox$ tại $3$ điểm.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm đa thức liên tục trên $\\mathbb{R}$, nên đổi dấu giữa hai điểm thì có nghiệm ở giữa, và bậc ba có tối đa ba nghiệm.\n\n**Bước 1.** Viết hàm số cụ thể rồi tính giá trị tại các điểm đầu mút của khoảng cần xét.\n\n**Bước 2.** Dùng định lí giá trị trung gian: hai giá trị trái dấu trên đoạn liên tục thì có nghiệm bên trong.\n\n**Bước 3.** Với tham số tổng quát, chọn các điểm sao cho dấu của $f$ suy ra được từ giả thiết và giới hạn tại vô cực.\n\n**Bước 4.** Đếm số nghiệm tối thiểu tìm được rồi so với số nghiệm tối đa của đa thức bậc ba.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $f(x)=x^{3}-3x^{2}+2$ liên tục trên $[-2;0]$ có $f(-2)=-18<0$ và $f(0)=2>0$, nên $f(-2)\\cdot f(0)<0$ và phương trình có nghiệm thuộc $(-2;0)$.\n\nÝ b) Đúng vì ngoài nghiệm thuộc $(-2;0)$ còn có $f(0)=2>0$, $f(2)=-2<0$ nên có nghiệm thuộc $(0;2)$; hai khoảng này rời nhau nên có ít nhất hai nghiệm trong $(-2;3)$.\n\nÝ c) Sai vì $f(-2)>0>f(2)$ nên có nghiệm trong $(-2;2)$; $f(2)<0$ và $\\lim\\limits_{x\\to+\\infty}f(x)=+\\infty$ nên có nghiệm trong $(2;+\\infty)$; $f(-2)>0$ và $\\lim\\limits_{x\\to-\\infty}f(x)=-\\infty$ nên có nghiệm trong $(-\\infty;-2)$. Ba khoảng rời nhau và đa thức bậc ba có tối đa $3$ nghiệm, nên đồ thị cắt $Ox$ tại đúng $3$ điểm.\n\nÝ d) Đúng vì $y(-1)=a-b+c-1>0$ và $y(1)=a+b+c+1<0$; cùng với $\\lim\\limits_{x\\to-\\infty}y=-\\infty$, $\\lim\\limits_{x\\to+\\infty}y=+\\infty$ suy ra có nghiệm trên mỗi khoảng $(-\\infty;-1)$, $(-1;1)$, $(1;+\\infty)$. Đa thức bậc ba có tối đa $3$ nghiệm nên đồ thị cắt $Ox$ tại đúng $3$ điểm.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const cub=(a, b, c) => (x) => x ** 3 + a * x * x + b * x + c;return (() => cub(-3, 0, 2)(-2) * cub(-3, 0, 2)(0) < 0 && sc(cub(-3, 0, 2), -2, 0) >= 1)()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const cub=(a, b, c) => (x) => x ** 3 + a * x * x + b * x + c;return (() => sc(cub(-3, 0, 2), -2, 3) >= 2)()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const cub=(a, b, c) => (x) => x ** 3 + a * x * x + b * x + c;return (() => { const r = [[0, -10, 0], [0, -10, 5], [1, -8, -2]].filter(([a, b, c]) => -8 + 4 * a - 2 * b + c > 0 && 8 + 4 * a + 2 * b + c < 0); return r.length === 3 && r.every(([a, b, c]) => sc(cub(a, b, c), -200, 200, 200000) === 2) })()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const cub=(a, b, c) => (x) => x ** 3 + a * x * x + b * x + c;return (() => { const r = [[0, -2, 0], [-1, -3, 0], [1, -5, 0.5]].filter(([a, b, c]) => a + c > b + 1 && a + b + c + 1 < 0); return r.length === 3 && r.every(([a, b, c]) => sc(cub(a, b, c), -200, 200, 200000) === 3) })()})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Đúng",
+    "ghi_chu": "Ý c) và d): sách đặt \"số giao điểm là 2/3\"; kiểm máy bằng ví dụ số. Ý b): x=1 là nghiệm đúng của f nên sách chọn khoảng (0;2)."
+  },
+  {
+    "id": "nbv-b3-d-22",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Số dân của một thị trấn sau $t$ năm kể từ năm $1970$ được ước tính bởi công thức $f(t)=\\dfrac{26t+10}{t+5}$ ($f(t)$ tính bằng nghìn người). Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Số dân của thị trấn vào đầu năm $1980$ là $18$ nghìn người.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Số dân của thị trấn vào đầu năm $1995$ là $23$ nghìn người.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{t\\to5^{+}}f(t)=20$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Số dân của thị trấn không vượt quá $26$ nghìn người.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số dân tại một thời điểm là giá trị của $f(t)$, còn xu hướng lâu dài của số dân là giới hạn của $f(t)$ khi $t$ rất lớn.\n\n**Bước 1.** Xác định giá trị của $t$ ứng với mỗi năm là hiệu của năm đó và năm gốc $1970$.\n\n**Bước 2.** Thay giá trị $t$ vào công thức để tính số dân tại thời điểm tương ứng.\n\n**Bước 3.** Tính giới hạn tại $t=5$ bằng cách thay trực tiếp vì mẫu khác $0$.\n\n**Bước 4.** Tính giới hạn khi $t\\to+\\infty$ bằng cách chia tử và mẫu cho $t$, rồi so với con số $26$.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì năm $1980$ ứng với $t=10$ và $f(10)=\\dfrac{260+10}{15}=18$.\n\nÝ b) Sai vì năm $1995$ ứng với $t=25$ và $f(25)=\\dfrac{650+10}{30}=22$, khác $23$.\n\nÝ c) Sai vì $\\lim\\limits_{t\\to5^{+}}\\dfrac{26t+10}{t+5}=\\dfrac{26\\cdot5+10}{5+5}=14$, khác $20$.\n\nÝ d) Đúng vì $f(t)=26-\\dfrac{120}{t+5}<26$ với mọi $t\\ge0$ và $\\lim\\limits_{t\\to+\\infty}f(t)=26$, nên số dân luôn không vượt quá $26$ nghìn người.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F22=(t) => (26 * t + 10) / (t + 5);return (() => nr(F22(10), 18))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F22=(t) => (26 * t + 10) / (t + 5);return (() => nr(F22(25), 23))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F22=(t) => (26 * t + 10) / (t + 5);return (() => nr(R(F22, 5), 20))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F22=(t) => (26 * t + 10) / (t + 5);return (() => Array.from({ length: 2000 }, (_, i) => i * i * 0.37).every((t) => F22(t) <= 26) && nr(F22(1e9), 26))()})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Sai; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-24",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{\\sqrt{x-1}-1}{x^{2}-3x+2}&\\text{nếu }x\\ne2\\\\\\dfrac{2a+1}{6}&\\text{nếu }x=2\\end{cases}$ và $g(x)=\\sin\\dfrac{\\pi x}{4}$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$g(2)=1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to2}f(x)=\\dfrac12$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số $g(x)$ liên tục tại $x_{0}=1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Khi $a<1$ thì hàm số $y=f(x)+g(x)$ liên tục tại $x_{0}=2$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm $g(x)$ là hàm sơ cấp liên tục, nên tổng $f+g$ liên tục tại $x=2$ khi và chỉ khi $f$ liên tục tại $x=2$.\n\n**Bước 1.** Tính giá trị của $g$ tại các điểm đã cho bằng cách thay trực tiếp.\n\n**Bước 2.** Tính giới hạn của $f$ tại $x=2$ bằng cách nhân liên hợp tử rồi rút nhân tử $x-2$.\n\n**Bước 3.** So giới hạn của $f$ tại $x=2$ với $f(2)$ để tìm điều kiện của $a$.\n\n**Bước 4.** Dùng tính liên tục của $g$ để suy ra điều kiện liên tục của tổng $f+g$.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $g(2)=\\sin\\dfrac{2\\pi}{4}=\\sin\\dfrac{\\pi}{2}=1$.\n\nÝ b) Đúng vì $\\dfrac{\\sqrt{x-1}-1}{(x-2)(x-1)}=\\dfrac{x-2}{(x-2)(x-1)(\\sqrt{x-1}+1)}=\\dfrac{1}{(x-1)(\\sqrt{x-1}+1)}$ nên giới hạn bằng $\\dfrac{1}{1\\cdot2}=\\dfrac12$.\n\nÝ c) Đúng vì $\\lim\\limits_{x\\to1}g(x)=\\sin\\dfrac{\\pi}{4}=g(1)$ (hàm sin liên tục trên $\\mathbb{R}$).\n\nÝ d) Sai vì $g$ liên tục tại $2$ nên $f+g$ liên tục tại $2$ khi và chỉ khi $f$ liên tục tại $2$, tức $\\dfrac{2a+1}{6}=\\dfrac12\\Leftrightarrow a=1$; với $a<1$ thì không thoả.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const G24=(x) => Math.sin((Math.PI * x) / 4);return (() => nr(G24(2), 1))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F24=(a) => (x) => (x !== 2 ? (Math.sqrt(x - 1) - 1) / (x * x - 3 * x + 2) : (2 * a + 1) / 6);return (() => nr(R(F24(0), 2), 0.5))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const G24=(x) => Math.sin((Math.PI * x) / 4);return (() => cont(G24, 1))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F24=(a) => (x) => (x !== 2 ? (Math.sqrt(x - 1) - 1) / (x * x - 3 * x + 2) : (2 * a + 1) / 6);const G24=(x) => Math.sin((Math.PI * x) / 4);return (() => [-3, 0, 0.5, 0.9].every((a) => cont((x) => F24(a)(x) + G24(x), 2)))()})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-25",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $y=f(x)=(m-1)x^{3}+2x+1$ với $m$ là tham số. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Hàm số $y=f(x)$ liên tục trên $\\mathbb{R}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Với $m=\\dfrac12$ thì phương trình $f(x)=0$ có nhiều nhất một nghiệm trên $(-1;3)$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Với mọi $m\\in(-\\infty;-2)\\cup(0;+\\infty)$ thì phương trình $f(x)=0$ có ít nhất một nghiệm trên $(-1;1)$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Với $m<1$ thì phương trình $f(x)=0$ có nghiệm dương.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm đa thức liên tục trên $\\mathbb{R}$, nên chỉ cần tìm hai điểm mà $f$ có hai giá trị trái dấu để suy ra có nghiệm ở giữa.\n\n**Bước 1.** Nhận ra $f(x)$ là hàm đa thức với mọi giá trị của tham số $m$ nên liên tục trên $\\mathbb{R}$.\n\n**Bước 2.** Với $m$ cụ thể, tính $f$ tại các điểm đầu mút và điểm giữa của khoảng cần xét.\n\n**Bước 3.** Với $m$ tổng quát, tính $f(-1)$ và $f(1)$ rồi xét dấu tích của hai giá trị này.\n\n**Bước 4.** Dùng giới hạn tại $+\\infty$ để tìm điểm có $f$ âm khi hệ số bậc ba âm.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì với mọi $m$, $f(x)$ là hàm đa thức nên liên tục trên $\\mathbb{R}$.\n\nÝ b) Sai vì khi $m=\\dfrac12$, $f(x)=-\\dfrac12x^{3}+2x+1$ có $f(-1)=-\\dfrac12<0$, $f(0)=1>0$, $f(3)=-\\dfrac{13}{2}<0$; nên có nghiệm trong $(-1;0)$ và trong $(0;3)$, tức có ít nhất hai nghiệm.\n\nÝ c) Đúng vì $f(-1)=-m$ và $f(1)=m+2$ nên $f(-1)\\cdot f(1)=-m(m+2)<0$ khi $m<-2$ hoặc $m>0$; $f$ liên tục trên $[-1;1]$ nên phương trình có nghiệm thuộc $(-1;1)$.\n\nÝ d) Đúng vì $f(0)=1>0$ và khi $m<1$ ta có $\\lim\\limits_{x\\to+\\infty}f(x)=-\\infty$, nên tồn tại $a>0$ với $f(a)<0$; do $f$ liên tục nên có nghiệm trên $(0;a)$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F25=(m) => (x) => (m - 1) * x ** 3 + 2 * x + 1;return (() => [-3, 0, 0.5, 2].every((m) => Array.from({ length: 21 }, (_, i) => -5 + i * 0.5).every((x) => cont(F25(m), x))))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F25=(m) => (x) => (m - 1) * x ** 3 + 2 * x + 1;return (() => sc(F25(0.5), -1, 3) <= 1)()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F25=(m) => (x) => (m - 1) * x ** 3 + 2 * x + 1;return (() => [-5, -2.5, -2.01, 0.01, 0.5, 3].every((m) => F25(m)(-1) * F25(m)(1) < 0 && sc(F25(m), -1, 1) >= 1) && [-2, -1, 0].every((m) => !(F25(m)(-1) * F25(m)(1) < 0)))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F25=(m) => (x) => (m - 1) * x ** 3 + 2 * x + 1;return (() => [-3, 0, 0.5, 0.99].every((m) => sc(F25(m), 0, 2000, 200000) >= 1))()})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-46",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $y=f(x)=(m-1)x^{3}+2x+1$ ($m$ là tham số). Hãy cho biết tính đúng, sai của mỗi khẳng định sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Hàm số $y=f(x)$ liên tục trên $\\mathbb{R}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Với $m=\\dfrac12$ thì phương trình $f(x)=0$ có nhiều nhất một nghiệm trên $(-1;3)$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Với mọi $m\\in(-\\infty;-2)\\cup(0;+\\infty)$ thì phương trình $f(x)=0$ có ít nhất một nghiệm trên $(-1;1)$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Với $m<1$ thì phương trình $f(x)=0$ có nghiệm dương.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm đa thức liên tục trên $\\mathbb{R}$, nên chỉ cần tìm hai điểm mà $f$ có hai giá trị trái dấu để suy ra có nghiệm ở giữa.\n\n**Bước 1.** Nhận ra $f(x)$ là hàm đa thức với mọi giá trị của tham số $m$ nên liên tục trên $\\mathbb{R}$.\n\n**Bước 2.** Với $m$ cụ thể, tính $f$ tại các điểm đầu mút và điểm giữa của khoảng cần xét.\n\n**Bước 3.** Với $m$ tổng quát, tính $f(-1)$ và $f(1)$ rồi xét dấu tích của hai giá trị này.\n\n**Bước 4.** Dùng giới hạn tại $+\\infty$ để tìm điểm có $f$ âm khi hệ số bậc ba âm.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì với mọi $m$, $f(x)$ là hàm đa thức nên liên tục trên $\\mathbb{R}$.\n\nÝ b) Sai vì khi $m=\\dfrac12$, $f(x)=-\\dfrac12x^{3}+2x+1$ có $f(-1)=-\\dfrac12<0$, $f(0)=1>0$, $f(3)=-\\dfrac{13}{2}<0$; nên có nghiệm trong $(-1;0)$ và trong $(0;3)$, tức có ít nhất hai nghiệm.\n\nÝ c) Đúng vì $f(-1)=-m$ và $f(1)=m+2$ nên $f(-1)\\cdot f(1)=-m(m+2)<0$ khi $m<-2$ hoặc $m>0$; $f$ liên tục trên $[-1;1]$ nên phương trình có nghiệm thuộc $(-1;1)$.\n\nÝ d) Đúng vì $f(0)=1>0$ và khi $m<1$ ta có $\\lim\\limits_{x\\to+\\infty}f(x)=-\\infty$, nên tồn tại $a>0$ với $f(a)<0$; do $f$ liên tục nên có nghiệm trên $(0;a)$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F25=(m) => (x) => (m - 1) * x ** 3 + 2 * x + 1;return (() => [-3, 0, 0.5, 2].every((m) => Array.from({ length: 21 }, (_, i) => -5 + i * 0.5).every((x) => cont(F25(m), x))))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F25=(m) => (x) => (m - 1) * x ** 3 + 2 * x + 1;return (() => sc(F25(0.5), -1, 3) <= 1)()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F25=(m) => (x) => (m - 1) * x ** 3 + 2 * x + 1;return (() => [-5, -2.5, -2.01, 0.01, 0.5, 3].every((m) => F25(m)(-1) * F25(m)(1) < 0 && sc(F25(m), -1, 1) >= 1) && [-2, -1, 0].every((m) => !(F25(m)(-1) * F25(m)(1) < 0)))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F25=(m) => (x) => (m - 1) * x ** 3 + 2 * x + 1;return (() => [-3, 0, 0.5, 0.99].every((m) => sc(F25(m), 0, 2000, 200000) >= 1))()})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Đúng",
+    "ghi_chu": "Đề trùng Câu 25 (sách in lặp)."
+  },
+  {
+    "id": "nbv-b3-d-26",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Một bãi đậu xe ô tô đưa ra giá $T(x)$ (đồng) khi thời gian đậu xe là $x$ (giờ) như sau: $T(x)=\\begin{cases}50000&\\text{nếu }0<x\\le2\\\\120000&\\text{nếu }2<x<4\\\\35000x&\\text{nếu }x\\ge4\\end{cases}$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$T(2)=50000$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to4^{+}}T(x)=120000$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Hàm số $T(x)$ liên tục tại $x=4$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Hàm số $T(x)$ liên tục trên $[4;+\\infty)$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tại điểm ghép $x=4$, hàm số liên tục khi giới hạn trái và giới hạn phải đều bằng $T(4)$, còn trên $[4;+\\infty)$ chỉ cần liên tục phải tại $4$.\n\n**Bước 1.** Tính giá trị $T(2)$ theo nhánh có dấu bằng tại $x=2$.\n\n**Bước 2.** Tính giới hạn bên phải tại $x=4$ bằng công thức $35000x$.\n\n**Bước 3.** Tính giới hạn bên trái tại $x=4$ bằng nhánh hằng và so với giới hạn phải và $T(4)$.\n\n**Bước 4.** Với liên tục trên nửa khoảng $[4;+\\infty)$, kiểm tra liên tục trên $(4;+\\infty)$ và liên tục bên phải tại $x=4$.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $x=2$ thuộc nhánh $0<x\\le2$ nên $T(2)=50000$.\n\nÝ b) Sai vì $\\lim\\limits_{x\\to4^{+}}35000x=35000\\cdot4=140000$, khác $120000$.\n\nÝ c) Sai vì $T(4)=140000=\\lim\\limits_{x\\to4^{+}}T(x)$ nhưng $\\lim\\limits_{x\\to4^{-}}T(x)=120000\\ne140000$, nên hàm số không liên tục tại $x=4$.\n\nÝ d) Đúng vì khi $x>4$, $T(x)=35000x$ là đa thức nên liên tục trên $(4;+\\infty)$, và $\\lim\\limits_{x\\to4^{+}}T(x)=140000=T(4)$ nên liên tục bên phải tại $x=4$; vậy liên tục trên $[4;+\\infty)$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const T26=(x) => (x <= 2 ? 50000 : x < 4 ? 120000 : 35000 * x);return (() => T26(2) === 50000)()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const T26=(x) => (x <= 2 ? 50000 : x < 4 ? 120000 : 35000 * x);return (() => nr(R(T26, 4), 120000))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const T26=(x) => (x <= 2 ? 50000 : x < 4 ? 120000 : 35000 * x);return (() => cont(T26, 4))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const T26=(x) => (x <= 2 ? 50000 : x < 4 ? 120000 : 35000 * x);return (() => nr(R(T26, 4), T26(4)) && Array.from({ length: 50 }, (_, i) => 4.5 + i * 0.7).every((x) => cont(T26, x)))()})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Đúng",
+    "ghi_chu": "LỆCH SÁCH — ý c): sách ghi Đúng nhưng lập luận của chính sách (giới hạn trái 120000 ≠ phải 140000) cho thấy hàm KHÔNG liên tục tại x=4, nên ý c) là Sai; giữ kết quả đúng."
+  },
+  {
+    "id": "nbv-b3-d-28",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}x^{2}+x+1&\\text{nếu }x\\le-1\\\\x+2&\\text{nếu }-1<x<1\\\\2x+3&\\text{nếu }x\\ge1\\end{cases}$. Các mệnh đề sau đúng hay sai?",
+    "menh_de": [
+      {
+        "noi_dung": "Hàm số liên tục tại điểm $x=-2$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số không liên tục tại điểm $x=0$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Hàm số liên tục tại điểm $x=-1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số liên tục tại điểm $x=1$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điểm nằm bên trong một khoảng của nhánh thì hàm liên tục theo tính liên tục của đa thức, chỉ hai điểm ghép $x=-1$ và $x=1$ cần so giới hạn.\n\n**Bước 1.** Xác định điểm cần xét nằm trong khoảng nào của ba nhánh hay là điểm ghép.\n\n**Bước 2.** Với điểm nằm trong một khoảng, dùng tính liên tục của hàm đa thức trên khoảng đó.\n\n**Bước 3.** Với điểm ghép, tính hai giới hạn một bên theo công thức hai nhánh kề nhau.\n\n**Bước 4.** So hai giới hạn một bên với giá trị hàm tại điểm ghép để kết luận.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì trên khoảng $(-\\infty;-1)$ hàm số là đa thức $x^{2}+x+1$ nên liên tục, và $-2$ thuộc khoảng này.\n\nÝ b) Sai vì $0$ thuộc khoảng $(-1;1)$, trên đó $f(x)=x+2$ là đa thức nên hàm số liên tục tại $x=0$.\n\nÝ c) Đúng vì $f(-1)=1-1+1=1$, $\\lim\\limits_{x\\to-1^{-}}(x^{2}+x+1)=1$ và $\\lim\\limits_{x\\to-1^{+}}(x+2)=1$, ba giá trị bằng nhau.\n\nÝ d) Sai vì $\\lim\\limits_{x\\to1^{-}}(x+2)=3$ còn $\\lim\\limits_{x\\to1^{+}}(2x+3)=5$, hai giới hạn một bên khác nhau nên hàm số không liên tục tại $x=1$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F28=(x) => (x <= -1 ? x * x + x + 1 : x < 1 ? x + 2 : 2 * x + 3);return (() => cont(F28, -2))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F28=(x) => (x <= -1 ? x * x + x + 1 : x < 1 ? x + 2 : 2 * x + 3);return (() => !cont(F28, 0))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F28=(x) => (x <= -1 ? x * x + x + 1 : x < 1 ? x + 2 : 2 * x + 3);return (() => cont(F28, -1))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F28=(x) => (x <= -1 ? x * x + x + 1 : x < 1 ? x + 2 : 2 * x + 3);return (() => cont(F28, 1))()})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-29",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{ax^{2}-(a-2)x-2}{\\sqrt{x+3}-2}&\\text{nếu }x\\ne1\\\\8+a^{2}&\\text{nếu }x=1\\end{cases}$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$f(1)=8+a^{2}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to1}f(x)=4a+3$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Hàm số liên tục tại $x=1$ khi $a=0$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Có tất cả $2$ giá trị thực của $a$ để hàm số liên tục tại $x=1$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử thức triệt tiêu tại $x=1$ nên phân tích được nhân tử $x-1$, và mẫu chứa căn được xử lý bằng nhân liên hợp.\n\n**Bước 1.** Đọc $f(1)$ từ nhánh có điều kiện $x=1$.\n\n**Bước 2.** Phân tích tử thành $(x-1)(ax+2)$ và nhân liên hợp với $\\sqrt{x+3}+2$ ở mẫu.\n\n**Bước 3.** Rút nhân tử $x-1$ rồi thay $x=1$ vào biểu thức còn lại để được giới hạn.\n\n**Bước 4.** Cho giới hạn bằng $f(1)$ để lập phương trình theo $a$ rồi đếm số nghiệm.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì theo đề, khi $x=1$ thì $f(x)=8+a^{2}$.\n\nÝ b) Sai vì $\\dfrac{ax^{2}-(a-2)x-2}{\\sqrt{x+3}-2}=(ax+2)(\\sqrt{x+3}+2)$ nên giới hạn bằng $(a+2)\\cdot4=4a+8$, khác $4a+3$.\n\nÝ c) Đúng vì liên tục tại $x=1$ khi $4a+8=8+a^{2}\\Leftrightarrow a^{2}-4a=0\\Leftrightarrow a=0$ hoặc $a=4$; giá trị $a=0$ thoả mãn.\n\nÝ d) Đúng vì phương trình $a^{2}-4a=0$ có hai nghiệm $a=0$ và $a=4$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F29=(a) => (x) => (x !== 1 ? (a * x * x - (a - 2) * x - 2) / (Math.sqrt(x + 3) - 2) : 8 + a * a);return (() => [0, 1, 4, -3].every((a) => F29(a)(1) === 8 + a * a))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F29=(a) => (x) => (x !== 1 ? (a * x * x - (a - 2) * x - 2) / (Math.sqrt(x + 3) - 2) : 8 + a * a);return (() => [0, 1, 4, -3].every((a) => nr(R(F29(a), 1), 4 * a + 3)))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F29=(a) => (x) => (x !== 1 ? (a * x * x - (a - 2) * x - 2) / (Math.sqrt(x + 3) - 2) : 8 + a * a);return (() => cont(F29(0), 1))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F29=(a) => (x) => (x !== 1 ? (a * x * x - (a - 2) * x - 2) / (Math.sqrt(x + 3) - 2) : 8 + a * a);return (() => { let c = 0; for (let a = -10; a <= 10; a += 0.5) if (cont(F29(a), 1)) c++; return c === 2 })()})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-30",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho phương trình $2x^{3}-8x-1=0$ $(1)$. Đặt hàm số $y=f(x)=2x^{3}-8x-1$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Hàm số $y=f(x)=2x^{3}-8x-1$ liên tục trên $\\mathbb{R}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Phương trình $(1)$ không có nghiệm trong khoảng $(-5;-1)$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Phương trình $(1)$ có đúng $3$ nghiệm phân biệt.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Phương trình $f(\\sin x)+1=0$ có đúng $2$ nghiệm phân biệt trên đoạn $[0;\\dfrac{5\\pi}{2}]$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm đa thức liên tục trên $\\mathbb{R}$, nên mỗi khoảng mà $f$ đổi dấu ở hai đầu chứa ít nhất một nghiệm của phương trình.\n\n**Bước 1.** Tính giá trị của $f$ tại các điểm đầu mút của các khoảng cần xét.\n\n**Bước 2.** Dùng định lí giá trị trung gian để chỉ ra nghiệm trong mỗi khoảng đổi dấu.\n\n**Bước 3.** Đếm số khoảng rời nhau có nghiệm rồi so với số nghiệm tối đa của đa thức bậc ba.\n\n**Bước 4.** Với phương trình theo $\\sin x$, đưa về phương trình tích rồi giữ lại nghiệm thoả điều kiện $|\\sin x|\\le1$.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $f$ là hàm đa thức nên liên tục trên $\\mathbb{R}$.\n\nÝ b) Sai vì $f$ liên tục trên $[-5;-1]$ với $f(-5)=-211<0$ và $f(-1)=5>0$, nên $f(-5)\\cdot f(-1)<0$ và phương trình có nghiệm trong $(-5;-1)$.\n\nÝ c) Đúng vì $f(-5)<0$, $f(-1)=5>0$, $f(2)=-1<0$, $f(3)=29>0$ nên có nghiệm trong mỗi khoảng $(-5;-1)$, $(-1;2)$, $(2;3)$; phương trình bậc ba có tối đa $3$ nghiệm nên có đúng $3$ nghiệm.\n\nÝ d) Sai vì $f(\\sin x)+1=0\\Leftrightarrow2\\sin^{3}x-8\\sin x=0\\Leftrightarrow2\\sin x(\\sin^{2}x-4)=0$; do $|\\sin x|\\le1$ nên chỉ còn $\\sin x=0\\Leftrightarrow x=k\\pi$. Trên $[0;\\dfrac{5\\pi}{2}]$ có $x=0$, $x=\\pi$, $x=2\\pi$, tức $3$ nghiệm.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F30=(x) => 2 * x ** 3 - 8 * x - 1;return (() => Array.from({ length: 21 }, (_, i) => -5 + i * 0.5).every((x) => cont(F30, x)))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F30=(x) => 2 * x ** 3 - 8 * x - 1;return (() => sc(F30, -5, -1) === 0)()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F30=(x) => 2 * x ** 3 - 8 * x - 1;return (() => sc(F30, -200, 200, 200000) === 3)()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F30=(x) => 2 * x ** 3 - 8 * x - 1;return (() => { const g = (x) => F30(Math.sin(x)) + 1; const c = 1 + sc(g, 1e-4, (5 * Math.PI) / 2, 200000); return c === 2 })()})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-31",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $y=f(x)=\\begin{cases}\\dfrac{x^{2}-x-2}{x-2}&\\text{nếu }x\\ne2\\\\2x-1&\\text{nếu }x=2\\end{cases}$. Xét tính đúng, sai cho mỗi khẳng định sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Tập xác định của hàm số là $D=\\mathbb{R}\\setminus\\{2\\}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Hàm số liên tục tại điểm $x=2$ khi và chỉ khi $\\lim\\limits_{x\\to2}f(x)=f(2)$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số gián đoạn tại điểm $x=2$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Hàm số không liên tục trên $\\mathbb{R}$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số xác định tại cả $x=2$, và tính liên tục tại $x=2$ phụ thuộc vào việc giới hạn tại $2$ có bằng $f(2)$ hay không.\n\n**Bước 1.** Xác định tập xác định bằng cách xem từng nhánh có nghĩa với những giá trị $x$ nào.\n\n**Bước 2.** Nhớ định nghĩa: liên tục tại $x_{0}$ khi giới hạn tại $x_{0}$ bằng giá trị hàm tại $x_{0}$.\n\n**Bước 3.** Tính giới hạn tại $x=2$ bằng cách phân tích tử thành nhân tử rồi rút gọn.\n\n**Bước 4.** Kết hợp tính liên tục trên từng khoảng và tại $x=2$ để kết luận trên $\\mathbb{R}$.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì tại $x=2$ hàm số vẫn có giá trị $f(2)=2\\cdot2-1=3$, nên tập xác định là $\\mathbb{R}$.\n\nÝ b) Đúng vì đây chính là định nghĩa hàm số liên tục tại một điểm thuộc tập xác định.\n\nÝ c) Sai vì $\\lim\\limits_{x\\to2}\\dfrac{(x+1)(x-2)}{x-2}=3=f(2)$ nên hàm số liên tục tại $x=2$.\n\nÝ d) Sai vì với $x\\ne2$, $f$ là phân thức hữu tỉ xác định nên liên tục trên $(-\\infty;2)$ và $(2;+\\infty)$, lại liên tục tại $x=2$; vậy liên tục trên $\\mathbb{R}$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Sai, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F31=(x) => (x !== 2 ? (x * x - x - 2) / (x - 2) : 3);return (() => !Number.isFinite(F31(2)))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F31=(x) => (x !== 2 ? (x * x - x - 2) / (x - 2) : 3);return (() => cont(F31, 2) === nr(R(F31, 2), F31(2)))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F31=(x) => (x !== 2 ? (x * x - x - 2) / (x - 2) : 3);return (() => !cont(F31, 2))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F31=(x) => (x !== 2 ? (x * x - x - 2) / (x - 2) : 3);return (() => !Array.from({ length: 41 }, (_, i) => -3 + i * 0.25).every((x) => cont(F31, x)))()})()===false"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Sai; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-32",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}2x+a&\\text{nếu }x\\le1\\\\\\dfrac{x^{3}-x^{2}+2x-2}{x-1}&\\text{nếu }x>1\\end{cases}$. Xét tính đúng, sai của các khẳng định sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Hàm số xác định trên $\\mathbb{R}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Nếu $\\lim\\limits_{x\\to1^{+}}f(x)=\\lim\\limits_{x\\to1^{-}}f(x)=f(1)$ thì hàm số $y=f(x)$ liên tục tại điểm $x_{0}=1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số liên tục tại $x_{0}=1$ với $a=-1$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Hàm số liên tục trên $\\mathbb{R}$ với $a=1$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai nhánh đều liên tục trên khoảng của chúng, nên liên tục tại $x=1$ quyết định tính liên tục trên $\\mathbb{R}$.\n\n**Bước 1.** Kiểm tra tập xác định của từng nhánh, chú ý mẫu $x-1$ chỉ xuất hiện khi $x>1$.\n\n**Bước 2.** Tính giới hạn bên phải bằng cách nhóm hạng tử ở tử để rút nhân tử $x-1$.\n\n**Bước 3.** Tính $f(1)$ và giới hạn bên trái theo nhánh $x\\le1$ chứa tham số $a$.\n\n**Bước 4.** Cho các giá trị này bằng nhau để tìm $a$ rồi đối chiếu với mệnh đề.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì nhánh $x\\le1$ là đa thức, nhánh $x>1$ có mẫu $x-1\\ne0$, nên hàm số xác định với mọi $x\\in\\mathbb{R}$.\n\nÝ b) Đúng vì đây là điều kiện định nghĩa hàm số liên tục tại $x_{0}=1$.\n\nÝ c) Sai vì $\\lim\\limits_{x\\to1^{+}}\\dfrac{(x^{2}+2)(x-1)}{x-1}=3$ còn $f(1)=\\lim\\limits_{x\\to1^{-}}(2x+a)=2+a$; liên tục khi $2+a=3$, tức $a=1$, nên $a=-1$ không thoả.\n\nÝ d) Đúng vì trên $(-\\infty;1)$ và $(1;+\\infty)$ hàm số liên tục (đa thức, phân thức hữu tỉ xác định), và với $a=1$ hàm liên tục tại $x=1$; vậy liên tục trên $\\mathbb{R}$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F32=(a) => (x) => (x <= 1 ? 2 * x + a : (x ** 3 - x * x + 2 * x - 2) / (x - 1));return (() => Array.from({ length: 41 }, (_, i) => -3 + i * 0.25).every((x) => Number.isFinite(F32(2)(x))))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F32=(a) => (x) => (x <= 1 ? 2 * x + a : (x ** 3 - x * x + 2 * x - 2) / (x - 1));return (() => cont(F32(1), 1))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F32=(a) => (x) => (x <= 1 ? 2 * x + a : (x ** 3 - x * x + 2 * x - 2) / (x - 1));return (() => cont(F32(-1), 1))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F32=(a) => (x) => (x <= 1 ? 2 * x + a : (x ** 3 - x * x + 2 * x - 2) / (x - 1));return (() => Array.from({ length: 41 }, (_, i) => -3 + i * 0.25).every((x) => cont(F32(1), x)))()})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-33",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho phương trình $x^{2}=\\sqrt{x+1}$ $(1)$ và phương trình $x^{3}-3x+1=0$ $(2)$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Điều kiện xác định của phương trình $(1)$ là $x\\ge-1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Phương trình $(1)$ và $(2)$ có nghiệm trong $(1;2)$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Phương trình $(1)$ và $(2)$ có nghiệm trong $(-1;0)$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Phương trình $(1)$ có nhiều nhất $1$ nghiệm.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đặt hàm số vế trái, hàm này liên tục trên tập xác định, rồi tìm các khoảng mà hàm đổi dấu để suy ra nghiệm.\n\n**Bước 1.** Tìm điều kiện để các biểu thức trong phương trình có nghĩa, đặc biệt là căn thức.\n\n**Bước 2.** Chuyển phương trình về dạng hàm số bằng $0$ và xác nhận hàm liên tục trên khoảng cần xét.\n\n**Bước 3.** Tính giá trị của hàm tại hai đầu mỗi khoảng và xét dấu tích để suy ra có nghiệm.\n\n**Bước 4.** Đếm số khoảng rời nhau có nghiệm để biết phương trình có ít nhất bao nhiêu nghiệm, đối chiếu với bậc đa thức.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì căn $\\sqrt{x+1}$ có nghĩa khi $x+1\\ge0$, tức $x\\ge-1$.\n\nÝ b) Đúng vì $f(x)=x^{2}-\\sqrt{x+1}$ có $f(1)=1-\\sqrt2<0$, $f(2)=4-\\sqrt3>0$, và $g(x)=x^{3}-3x+1$ có $g(1)=-1<0$, $g(2)=3>0$; cả hai hàm liên tục trên $[1;2]$ nên mỗi phương trình có nghiệm trong $(1;2)$.\n\nÝ c) Sai vì $f(-1)=1>0$, $f(0)=-1<0$ nên phương trình $(1)$ có nghiệm trong $(-1;0)$; nhưng phương trình $(2)$ có ba nghiệm nằm trong $(-2;-1)$, $(0;1)$, $(1;2)$ nên không có nghiệm trong $(-1;0)$.\n\nÝ d) Sai vì phương trình $(1)$ có nghiệm trong $(-1;0)$ và có nghiệm trong $(1;2)$, hai khoảng rời nhau nên có ít nhất $2$ nghiệm phân biệt.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};return (() => [-1, -0.5, 0].every((x) => !Number.isNaN(Math.sqrt(x + 1))) && Number.isNaN(Math.sqrt(-1.5 + 1)))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const f33=(x) => x * x - Math.sqrt(x + 1);const g33=(x) => x ** 3 - 3 * x + 1;return (() => sc(f33, 1, 2) >= 1 && sc(g33, 1, 2) >= 1)()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const f33=(x) => x * x - Math.sqrt(x + 1);const g33=(x) => x ** 3 - 3 * x + 1;return (() => sc(f33, -1, 0) >= 1 && sc(g33, -1, 0) >= 1)()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const f33=(x) => x * x - Math.sqrt(x + 1);return (() => sc(f33, -1, 10) <= 1)()})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-39",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho phương trình $x^{2}=\\sqrt{x+1}$ $(1)$ và phương trình $x^{3}-3x+1=0$ $(2)$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Điều kiện xác định của phương trình $(1)$ là $x\\ge-1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Phương trình $(1)$ và $(2)$ có nghiệm trong $(1;2)$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Phương trình $(1)$ và $(2)$ có nghiệm trong $(-1;0)$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Phương trình $(1)$ có nhiều nhất $1$ nghiệm.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đặt hàm số vế trái, hàm này liên tục trên tập xác định, rồi tìm các khoảng mà hàm đổi dấu để suy ra nghiệm.\n\n**Bước 1.** Tìm điều kiện để các biểu thức trong phương trình có nghĩa, đặc biệt là căn thức.\n\n**Bước 2.** Chuyển phương trình về dạng hàm số bằng $0$ và xác nhận hàm liên tục trên khoảng cần xét.\n\n**Bước 3.** Tính giá trị của hàm tại hai đầu mỗi khoảng và xét dấu tích để suy ra có nghiệm.\n\n**Bước 4.** Đếm số khoảng rời nhau có nghiệm để biết phương trình có ít nhất bao nhiêu nghiệm, đối chiếu với bậc đa thức.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì căn $\\sqrt{x+1}$ có nghĩa khi $x+1\\ge0$, tức $x\\ge-1$.\n\nÝ b) Đúng vì $f(x)=x^{2}-\\sqrt{x+1}$ có $f(1)=1-\\sqrt2<0$, $f(2)=4-\\sqrt3>0$, và $g(x)=x^{3}-3x+1$ có $g(1)=-1<0$, $g(2)=3>0$; cả hai hàm liên tục trên $[1;2]$ nên mỗi phương trình có nghiệm trong $(1;2)$.\n\nÝ c) Sai vì $f(-1)=1>0$, $f(0)=-1<0$ nên phương trình $(1)$ có nghiệm trong $(-1;0)$; nhưng phương trình $(2)$ có ba nghiệm nằm trong $(-2;-1)$, $(0;1)$, $(1;2)$ nên không có nghiệm trong $(-1;0)$.\n\nÝ d) Sai vì phương trình $(1)$ có nghiệm trong $(-1;0)$ và có nghiệm trong $(1;2)$, hai khoảng rời nhau nên có ít nhất $2$ nghiệm phân biệt.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};return (() => [-1, -0.5, 0].every((x) => !Number.isNaN(Math.sqrt(x + 1))) && Number.isNaN(Math.sqrt(-1.5 + 1)))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const f33=(x) => x * x - Math.sqrt(x + 1);const g33=(x) => x ** 3 - 3 * x + 1;return (() => sc(f33, 1, 2) >= 1 && sc(g33, 1, 2) >= 1)()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const f33=(x) => x * x - Math.sqrt(x + 1);const g33=(x) => x ** 3 - 3 * x + 1;return (() => sc(f33, -1, 0) >= 1 && sc(g33, -1, 0) >= 1)()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const f33=(x) => x * x - Math.sqrt(x + 1);return (() => sc(f33, -1, 10) <= 1)()})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Sai",
+    "ghi_chu": "Đề trùng Câu 33 (sách in lặp)."
+  },
+  {
+    "id": "nbv-b3-d-34",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{2x^{2}-5x+3}{1-x}&\\text{nếu }x\\ne1\\\\mx-1&\\text{nếu }x=1\\end{cases}$ ($m$ là tham số). Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Tập xác định của hàm số là $D=\\mathbb{R}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số liên tục tại $x=3$ với mọi $m$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số liên tục trên các khoảng $(-\\infty;1)$ và $(1;+\\infty)$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số $f(x)$ liên tục trên $\\mathbb{R}$ khi $m=3$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân thức rút gọn được nhân tử $x-1$, nên giới hạn tại $x=1$ tính được và so với $f(1)=m-1$ để tìm $m$.\n\n**Bước 1.** Kiểm tra tập xác định, chú ý tại $x=1$ hàm có giá trị riêng nên vẫn xác định.\n\n**Bước 2.** Với điểm khác $1$, hàm là phân thức hữu tỉ nên liên tục tại mọi điểm mà mẫu khác $0$.\n\n**Bước 3.** Tính giới hạn tại $x=1$ bằng cách phân tích tử thành nhân tử và rút gọn.\n\n**Bước 4.** Cho giới hạn bằng $f(1)$ để tìm $m$ rồi đối chiếu với giá trị mệnh đề đưa ra.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì tại $x=1$ hàm có giá trị $f(1)=m-1$, còn với $x\\ne1$ mẫu $1-x\\ne0$; hàm xác định trên $\\mathbb{R}$.\n\nÝ b) Đúng vì $f(3)=\\dfrac{18-15+3}{1-3}=-3$ và $\\lim\\limits_{x\\to3}\\dfrac{2x^{2}-5x+3}{1-x}=-3=f(3)$, không phụ thuộc $m$.\n\nÝ c) Đúng vì trên mỗi khoảng này hàm số là phân thức hữu tỉ có mẫu $1-x\\ne0$ nên liên tục.\n\nÝ d) Sai vì $\\dfrac{2x^{2}-5x+3}{1-x}=\\dfrac{(x-1)(2x-3)}{1-x}=3-2x$ với $x\\ne1$ nên $\\lim\\limits_{x\\to1}f(x)=1$; liên tục tại $x=1$ khi $m-1=1$, tức $m=2$, nên $m=3$ không thoả.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F34=(m) => (x) => (x !== 1 ? (2 * x * x - 5 * x + 3) / (1 - x) : m - 1);return (() => [-1, 0, 1, 2, 3].every((x) => Number.isFinite(F34(0)(x))))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F34=(m) => (x) => (x !== 1 ? (2 * x * x - 5 * x + 3) / (1 - x) : m - 1);return (() => [0, 2, 7].every((m) => cont(F34(m), 3)))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F34=(m) => (x) => (x !== 1 ? (2 * x * x - 5 * x + 3) / (1 - x) : m - 1);return (() => [-5, -2, 0, 0.5, 1.5, 3, 10].every((x) => cont(F34(0), x)))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F34=(m) => (x) => (x !== 1 ? (2 * x * x - 5 * x + 3) / (1 - x) : m - 1);return (() => cont(F34(3), 1))()})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-35",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=x^{2}-8x-9$ và $g(x)=x^{2}-1$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Tập xác định của hàm số $y=\\dfrac{f(x)}{g(x)}$ là $D=\\mathbb{R}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Hàm số $y=f(x)-g(x)$ liên tục trên $\\mathbb{R}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số $y=\\dfrac{f(x)}{g(x)}$ liên tục trên $\\mathbb{R}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Phương trình $f(x)\\cdot g(x)=9$ có ít nhất $1$ nghiệm trên khoảng $(0;1)$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức liên tục trên $\\mathbb{R}$, còn thương của hai đa thức chỉ liên tục tại những điểm mà mẫu khác $0$.\n\n**Bước 1.** Tìm tập xác định của thương bằng cách loại các giá trị làm mẫu bằng $0$.\n\n**Bước 2.** Dùng tính chất: tổng, hiệu của hai hàm liên tục là hàm liên tục.\n\n**Bước 3.** Với thương, chỉ ra điểm mà hàm không xác định nên hàm gián đoạn ở đó.\n\n**Bước 4.** Đưa phương trình về dạng đa thức bằng $0$ rồi tìm hai điểm trong $(0;1)$ mà đa thức nhận giá trị trái dấu.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $g(x)=x^{2}-1=0$ khi $x=\\pm1$, nên tập xác định là $D=\\mathbb{R}\\setminus\\{\\pm1\\}$.\n\nÝ b) Đúng vì $f(x)-g(x)=-8x-8$ là hàm đa thức nên liên tục trên $\\mathbb{R}$.\n\nÝ c) Sai vì hàm số không xác định tại $x=1$ và $x=-1$ nên gián đoạn tại hai điểm này, không liên tục trên $\\mathbb{R}$.\n\nÝ d) Đúng vì $f(x)g(x)=9\\Leftrightarrow x^{4}-8x^{3}-10x^{2}+8x=0$. Đặt $h(x)=x^{4}-8x^{3}-10x^{2}+8x$, liên tục trên $\\mathbb{R}$, có $h(\\dfrac12)=\\dfrac{9}{16}>0$ và $h(\\dfrac34)=-\\dfrac{687}{256}<0$ nên $h$ có nghiệm trong $(\\dfrac12;\\dfrac34)\\subset(0;1)$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const f35=(x) => x * x - 8 * x - 9;const g35=(x) => x * x - 1;return (() => Number.isFinite(f35(1) / g35(1)))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const f35=(x) => x * x - 8 * x - 9;const g35=(x) => x * x - 1;return (() => Array.from({ length: 21 }, (_, i) => -5 + i * 0.5).every((x) => cont((t) => f35(t) - g35(t), x)))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const f35=(x) => x * x - 8 * x - 9;const g35=(x) => x * x - 1;return (() => Number.isFinite(f35(1) / g35(1)) && Number.isFinite(f35(-1) / g35(-1)))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const f35=(x) => x * x - 8 * x - 9;const g35=(x) => x * x - 1;const h35=(x) => f35(x) * g35(x) - 9;return (() => h35(0.5) * h35(0.75) < 0 && sc((x) => x ** 4 - 8 * x ** 3 - 10 * x * x + 8 * x, 0, 1) >= 1 && nr(h35(0.5), 9 / 16))()})()===true"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Sai; d) Đúng",
+    "ghi_chu": "Sách viết nhầm ký hiệu f(1/2), f(3/4) khi tính giá trị của h(x); đã sửa thành h trong lời giải."
+  },
+  {
+    "id": "nbv-b3-d-36",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $y=f(x)=\\begin{cases}x^{2}+2\\sqrt{x-2}&\\text{nếu }x\\ge2\\\\5x-3m&\\text{nếu }x<2\\end{cases}$. Xét tính đúng, sai của các mệnh đề dưới đây:",
+    "menh_de": [
+      {
+        "noi_dung": "$f(3)=10$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to2^{+}}f(x)=4$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to2^{-}}f(x)=10$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Hàm số liên tục tại $x=2$ khi $m=2$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi giới hạn một bên dùng đúng nhánh của phía đó, và liên tục tại $x=2$ cần hai giới hạn một bên cùng bằng $f(2)$.\n\n**Bước 1.** Tính $f(3)$ bằng cách thay vào nhánh $x\\ge2$ vì $3>2$.\n\n**Bước 2.** Tính giới hạn bên phải tại $x=2$ bằng công thức chứa căn của nhánh $x\\ge2$.\n\n**Bước 3.** Tính giới hạn bên trái tại $x=2$ bằng công thức chứa $m$ của nhánh $x<2$.\n\n**Bước 4.** Cho hai giới hạn một bên bằng nhau để tìm $m$ rồi đối chiếu.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $3\\ge2$ nên $f(3)=3^{2}+2\\sqrt{3-2}=9+2=11$, khác $10$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to2^{+}}(x^{2}+2\\sqrt{x-2})=4+2\\sqrt{0}=4$.\n\nÝ c) Sai vì $\\lim\\limits_{x\\to2^{-}}(5x-3m)=10-3m$, bằng $10$ chỉ khi $m=0$, không đúng với mọi $m$.\n\nÝ d) Đúng vì liên tục tại $x=2$ khi $4=10-3m$, tức $m=2$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F36=(m) => (x) => (x >= 2 ? x * x + 2 * Math.sqrt(x - 2) : 5 * x - 3 * m);return (() => F36(0)(3) === 10)()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const R9=(f, a) => f(a + 1e-10);const F36=(m) => (x) => (x >= 2 ? x * x + 2 * Math.sqrt(x - 2) : 5 * x - 3 * m);return (() => nr(R9(F36(0), 2), 4))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F36=(m) => (x) => (x >= 2 ? x * x + 2 * Math.sqrt(x - 2) : 5 * x - 3 * m);return (() => [0, 1, 2].every((m) => nr(L(F36(m), 2), 10)))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const R9=(f, a) => f(a + 1e-10);const F36=(m) => (x) => (x >= 2 ? x * x + 2 * Math.sqrt(x - 2) : 5 * x - 3 * m);return (() => nr(R9(F36(2), 2), L(F36(2), 2)) && nr(L(F36(2), 2), F36(2)(2)))()})()===true"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Sai; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-37",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $y=f(x)=\\begin{cases}\\dfrac{x^{2}-4x+3}{x-1}&\\text{nếu }x>1\\\\ax-3&\\text{nếu }x\\le1\\end{cases}$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$f(0)=-3$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số liên tục tại $x=0$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to1^{+}}f(x)=-2$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Với $a=-1$ thì hàm số liên tục trên $\\mathbb{R}$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điểm $x=0$ nằm trong nhánh $x\\le1$ là đa thức, còn tính liên tục trên $\\mathbb{R}$ phụ thuộc vào hai giới hạn một bên tại $x=1$.\n\n**Bước 1.** Xác định điểm đang xét nằm ở nhánh nào để tính giá trị hàm bằng công thức tương ứng.\n\n**Bước 2.** Nhận ra hàm số liên tục trên khoảng bên trong nhánh nên liên tục tại mọi điểm của khoảng đó.\n\n**Bước 3.** Tính giới hạn bên phải tại $x=1$ bằng cách phân tích tử thành nhân tử rồi rút gọn.\n\n**Bước 4.** Với một giá trị cụ thể của $a$, so hai giới hạn một bên tại $x=1$ để kết luận liên tục trên $\\mathbb{R}$.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $0\\le1$ nên $f(0)=a\\cdot0-3=-3$.\n\nÝ b) Đúng vì $0$ nằm trong khoảng $(-\\infty;1)$, trên đó $f(x)=ax-3$ là đa thức nên liên tục tại $x=0$.\n\nÝ c) Đúng vì $\\lim\\limits_{x\\to1^{+}}\\dfrac{(x-1)(x-3)}{x-1}=\\lim\\limits_{x\\to1^{+}}(x-3)=1-3=-2$.\n\nÝ d) Sai vì khi $a=-1$, $\\lim\\limits_{x\\to1^{-}}(-x-3)=-4\\ne-2=\\lim\\limits_{x\\to1^{+}}f(x)$ nên hàm số gián đoạn tại $x=1$, không liên tục trên $\\mathbb{R}$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F37=(a) => (x) => (x > 1 ? (x * x - 4 * x + 3) / (x - 1) : a * x - 3);return (() => [0, 1, -1].every((a) => F37(a)(0) === -3))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F37=(a) => (x) => (x > 1 ? (x * x - 4 * x + 3) / (x - 1) : a * x - 3);return (() => [0, 1, -1].every((a) => cont(F37(a), 0)))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F37=(a) => (x) => (x > 1 ? (x * x - 4 * x + 3) / (x - 1) : a * x - 3);return (() => nr(R(F37(0), 1), -2))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F37=(a) => (x) => (x > 1 ? (x * x - 4 * x + 3) / (x - 1) : a * x - 3);return (() => cont(F37(-1), 1))()})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-41",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{x^{2}-1}{x-1}&\\text{nếu }x\\ne1\\\\mx+2&\\text{nếu }x=1\\end{cases}$ ($m$ là tham số). Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Tập xác định của hàm số $f(x)$ là $D=\\mathbb{R}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to1}f(x)=0$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$f(1)=m+2$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Với $m=-2$ thì hàm số $f(x)$ liên tục tại điểm $x=1$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân thức rút gọn được nhân tử $x-1$, nên giới hạn tại $x=1$ không phụ thuộc $m$, còn $f(1)$ thì phụ thuộc $m$.\n\n**Bước 1.** Kiểm tra tập xác định, chú ý tại $x=1$ hàm có giá trị riêng.\n\n**Bước 2.** Tính giới hạn tại $x=1$ bằng cách phân tích tử thành nhân tử rồi rút gọn.\n\n**Bước 3.** Tính $f(1)$ theo nhánh có điều kiện $x=1$.\n\n**Bước 4.** Cho giới hạn bằng $f(1)$ để tìm $m$ rồi đối chiếu với giá trị mệnh đề đưa ra.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì tại $x=1$ hàm có giá trị $m+2$, còn với $x\\ne1$ mẫu khác $0$; hàm xác định trên $\\mathbb{R}$.\n\nÝ b) Sai vì $\\lim\\limits_{x\\to1}\\dfrac{x^{2}-1}{x-1}=\\lim\\limits_{x\\to1}(x+1)=2$, khác $0$.\n\nÝ c) Đúng vì theo đề, khi $x=1$ thì $f(x)=mx+2$ với $x=1$, tức $f(1)=m+2$.\n\nÝ d) Sai vì liên tục tại $x=1$ khi $m+2=2$, tức $m=0$; với $m=-2$ thì $f(1)=0\\ne2$ nên hàm số không liên tục tại $x=1$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F41=(m) => (x) => (x !== 1 ? (x * x - 1) / (x - 1) : m + 2);return (() => [-2, 0, 1, 2].every((x) => Number.isFinite(F41(0)(x))))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F41=(m) => (x) => (x !== 1 ? (x * x - 1) / (x - 1) : m + 2);return (() => nr(R(F41(0), 1), 0))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F41=(m) => (x) => (x !== 1 ? (x * x - 1) / (x - 1) : m + 2);return (() => [0, 1, -3].every((m) => F41(m)(1) === m + 2))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F41=(m) => (x) => (x !== 1 ? (x * x - 1) / (x - 1) : m + 2);return (() => cont(F41(-2), 1))()})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-42",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}2x^{2}+x-3&\\text{nếu }x\\ge2\\\\mx+2&\\text{nếu }x<2\\end{cases}$ ($m$ là tham số). Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Tập xác định của hàm số $f(x)$ là $D=\\mathbb{R}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to2^{+}}f(x)=7$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to2^{-}}f(x)=-2m+2$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Với $m=\\dfrac52$ thì hàm số $f(x)$ liên tục trên $\\mathbb{R}$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi nhánh là đa thức nên liên tục trên khoảng của nó, chỉ điểm ghép $x=2$ cần so hai giới hạn một bên.\n\n**Bước 1.** Kiểm tra mỗi nhánh có xác định với mọi giá trị của $x$ trong khoảng của nó.\n\n**Bước 2.** Tính giới hạn bên phải tại $x=2$ bằng cách thay vào đa thức của nhánh $x\\ge2$.\n\n**Bước 3.** Tính giới hạn bên trái tại $x=2$ bằng cách thay vào biểu thức chứa $m$.\n\n**Bước 4.** Cho hai giới hạn một bên bằng nhau để tìm $m$, rồi kết hợp tính liên tục trên từng khoảng.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì cả hai nhánh đều là đa thức nên xác định với mọi $x$ thuộc khoảng của chúng, hợp lại được $\\mathbb{R}$.\n\nÝ b) Đúng vì $\\lim\\limits_{x\\to2^{+}}(2x^{2}+x-3)=8+2-3=7$.\n\nÝ c) Sai vì $\\lim\\limits_{x\\to2^{-}}(mx+2)=2m+2$, khác $-2m+2$ khi $m\\ne0$.\n\nÝ d) Đúng vì hai nhánh là đa thức nên liên tục trên $(-\\infty;2)$ và $(2;+\\infty)$; tại $x=2$ liên tục khi $7=2m+2$, tức $m=\\dfrac52$. Vậy với $m=\\dfrac52$ hàm số liên tục trên $\\mathbb{R}$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F42=(m) => (x) => (x >= 2 ? 2 * x * x + x - 3 : m * x + 2);return (() => [-5, 0, 2, 3].every((x) => Number.isFinite(F42(1)(x))))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F42=(m) => (x) => (x >= 2 ? 2 * x * x + x - 3 : m * x + 2);return (() => nr(R(F42(0), 2), 7))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F42=(m) => (x) => (x >= 2 ? 2 * x * x + x - 3 : m * x + 2);return (() => [0, 1, 2, -1].every((m) => nr(L(F42(m), 2), -2 * m + 2)))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F42=(m) => (x) => (x >= 2 ? 2 * x * x + x - 3 : m * x + 2);return (() => Array.from({ length: 41 }, (_, i) => -3 + i * 0.25).every((x) => cont(F42(2.5), x)))()})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b3-d-43",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Một bảng giá cước taxi như sau: giá mở cửa ($1$ km đầu) là $20\\,000$ đồng; giá cước mỗi km tiếp theo đến $25$ km là $14\\,000$ đồng; giá cước từ km thứ $26$ là $11\\,000$ đồng. Gọi $f(x)$ là số tiền khách phải trả theo quãng đường di chuyển $x$ (km). Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$f(x)=\\begin{cases}20\\,000&\\text{nếu }x\\le1\\\\20\\,000+14\\,000(x-1)&\\text{nếu }1<x\\le25\\\\356\\,000+11\\,000(x-25)&\\text{nếu }x>25\\end{cases}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Khách hàng đi $15$ km thì phải trả $369\\,000$ đồng.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Khách hàng đi $30$ km thì phải trả $411\\,000$ đồng.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số $f(x)$ liên tục trên $\\mathbb{R}$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số tiền cước là hàm nhiều công thức nối tiếp, nên mỗi quãng đường phải dùng đúng công thức của đoạn chứa nó.\n\n**Bước 1.** Xác định quãng đường thuộc đoạn nào: $x\\le1$, $1<x\\le25$ hay $x>25$.\n\n**Bước 2.** Tính số tiền bằng công thức của đoạn tương ứng, tính cả phần cước trước đó.\n\n**Bước 3.** Kiểm tra công thức nhiều nhánh có nối tiếp đúng tại các điểm ghép hay không.\n\n**Bước 4.** Hàm số liên tục khi giá trị hai bên bằng nhau tại mỗi điểm ghép.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $25$ km đầu tốn $20\\,000+14\\,000\\cdot24=356\\,000$ đồng, sau đó mỗi km thêm $11\\,000$ đồng nên công thức nhánh thứ ba đúng.\n\nÝ b) Sai vì $f(15)=20\\,000+14\\,000\\cdot14=216\\,000$ đồng, khác $369\\,000$.\n\nÝ c) Đúng vì $f(30)=356\\,000+11\\,000\\cdot5=411\\,000$ đồng.\n\nÝ d) Đúng vì mỗi nhánh là hàm đa thức nên liên tục trên khoảng của nó; tại $x=1$ có $f(1)=20\\,000=\\lim\\limits_{x\\to1^{+}}f(x)$, tại $x=25$ có $f(25)=356\\,000=\\lim\\limits_{x\\to25^{+}}f(x)$; vậy $f$ liên tục trên $\\mathbb{R}$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};return (() => nr(20000 + 14000 * 24, 356000))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F43=(x) => (x <= 1 ? 20000 : x <= 25 ? 20000 + 14000 * (x - 1) : 356000 + 11000 * (x - 25));return (() => F43(15) === 369000)()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F43=(x) => (x <= 1 ? 20000 : x <= 25 ? 20000 + 14000 * (x - 1) : 356000 + 11000 * (x - 25));return (() => F43(30) === 411000)()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F43=(x) => (x <= 1 ? 20000 : x <= 25 ? 20000 + 14000 * (x - 1) : 356000 + 11000 * (x - 25));return (() => [-3, 0, 0.5, 1, 5, 25, 26, 100].every((x) => cont(F43, x)))()})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Đúng",
+    "ghi_chu": "Sách tính 20000+14000·14 = 396000 (sai số); đúng là 216000. Ý b) vẫn Sai (đề nêu 369000). Đề gốc là bảng giá — chép thành chữ."
+  },
+  {
+    "id": "nbv-b3-d-44",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{2x^{2}+x-3}{x-1}&\\text{nếu }x\\ne1\\\\4x&\\text{nếu }x=1\\end{cases}$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Hàm số liên tục tại điểm $x=2$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{x\\to1}f(x)=-\\dfrac32$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Hàm số bị gián đoạn tại điểm $x=1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số $f(x)$ liên tục trên $\\mathbb{R}$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục tại mọi điểm khác $1$ vì là phân thức hữu tỉ, còn tại $x=1$ phải so giới hạn với $f(1)$.\n\n**Bước 1.** Với điểm khác $1$, tính giá trị hàm và giới hạn bằng cách thay trực tiếp vào phân thức.\n\n**Bước 2.** Tại $x=1$, phân tích tử thành nhân tử rồi rút gọn nhân tử $x-1$.\n\n**Bước 3.** Tính $f(1)$ theo nhánh có điều kiện $x=1$.\n\n**Bước 4.** So giới hạn với $f(1)$ để kết luận liên tục hay gián đoạn tại $x=1$ và trên $\\mathbb{R}$.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $f(2)=\\dfrac{8+2-3}{2-1}=7$ và $\\lim\\limits_{x\\to2}f(x)=\\dfrac{8+2-3}{2-1}=7=f(2)$.\n\nÝ b) Sai vì $\\lim\\limits_{x\\to1}\\dfrac{(2x+3)(x-1)}{x-1}=\\lim\\limits_{x\\to1}(2x+3)=5$, khác $-\\dfrac32$.\n\nÝ c) Đúng vì $f(1)=4\\cdot1=4\\ne5=\\lim\\limits_{x\\to1}f(x)$.\n\nÝ d) Sai vì hàm số gián đoạn tại $x=1$ nên không liên tục trên $\\mathbb{R}$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F44=(x) => (x !== 1 ? (2 * x * x + x - 3) / (x - 1) : 4);return (() => cont(F44, 2))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F44=(x) => (x !== 1 ? (2 * x * x + x - 3) / (x - 1) : 4);return (() => nr(R(F44, 1), -1.5))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F44=(x) => (x !== 1 ? (2 * x * x + x - 3) / (x - 1) : 4);return (() => !cont(F44, 1))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const F44=(x) => (x !== 1 ? (2 * x * x + x - 3) / (x - 1) : 4);return (() => Array.from({ length: 41 }, (_, i) => -3 + i * 0.25).every((x) => cont(F44, x)))()})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Sai",
+    "ghi_chu": "Sách ghi lim_{x→2} f = 6 = f(2) (sai số); đúng là 7. Ý a) vẫn Đúng."
+  },
+  {
+    "id": "nbv-b3-d-47",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Giá cước của hai hãng taxi A và B như sau. Hãng A: giá mở cửa $10\\,000$ đồng, các km tiếp theo $12\\,000$ đồng mỗi km (đến hết km thứ $30$), từ km thứ $31$ là $11\\,000$ đồng mỗi km. Hãng B: giá mở cửa $8\\,000$ đồng, các km tiếp theo $13\\,000$ đồng mỗi km (đến hết km thứ $30$), từ km thứ $31$ là $10\\,000$ đồng mỗi km. Giá mở cửa của hai hãng đều là giá cho $500$ m đầu tiên. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Nếu đi xe hãng A $x$ km thì số tiền cần trả là $f(x)=\\begin{cases}10\\,000&\\text{nếu }0<x\\le\\frac12\\\\10\\,000+12\\,000(x-\\frac12)&\\text{nếu }\\frac12<x\\le30\\\\364\\,000+11\\,000(x-30)&\\text{nếu }x>30\\end{cases}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số $f(x)$ không liên tục trên $(0;+\\infty)$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Tồn tại $x_{0}\\in(\\frac12;30)$ để số tiền phải trả khi đi $x_{0}$ km của hãng A và hãng B như nhau.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Luôn có hai giá trị của $x$ để hai khách đi hãng A và hãng B cùng quãng đường $x$ km thì số tiền phải trả như nhau.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số tiền theo quãng đường là hàm nhiều công thức liên tục, và hiệu hai hàm liên tục lại là hàm liên tục nên dùng được định lí giá trị trung gian.\n\n**Bước 1.** Lập công thức số tiền theo quãng đường $x$ cho từng hãng, chia theo ba đoạn $x\\le\\frac12$, $\\frac12<x\\le30$ và $x>30$.\n\n**Bước 2.** Kiểm tra giá trị hai bên tại các điểm ghép $x=\\frac12$ và $x=30$ để kết luận về tính liên tục.\n\n**Bước 3.** Đặt hiệu số tiền của hai hãng và xét dấu hiệu này tại hai đầu đoạn để suy ra có nghiệm.\n\n**Bước 4.** Xét riêng từng đoạn: hiệu là hàm bậc nhất nên mỗi đoạn có tối đa một nghiệm, từ đó đếm các giá trị cần tìm.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $500$ m đầu giá $10\\,000$, các km sau đến km $30$ tính $12\\,000$ mỗi km, và đến $x=30$ số tiền là $10\\,000+12\\,000\\cdot29{,}5=364\\,000$, sau đó $11\\,000$ mỗi km; công thức khớp đề.\n\nÝ b) Sai vì $f$ liên tục trên từng khoảng $(0;\\frac12)$, $(\\frac12;30)$, $(30;+\\infty)$ và $\\lim\\limits_{x\\to\\frac12}f(x)=f(\\frac12)=10\\,000$, $\\lim\\limits_{x\\to30}f(x)=f(30)=364\\,000$; nên $f$ liên tục trên $(0;+\\infty)$.\n\nÝ c) Đúng vì hãng B có $g(x)=8\\,000+13\\,000(x-\\frac12)$ trên $(\\frac12;30)$. Đặt $h=f-g$ liên tục trên $[\\frac12;30]$, $h(\\frac12)=2\\,000>0$ và $h(30)=364\\,000-391\\,500<0$, nên $h(x_{0})=0$ với $x_{0}\\in(\\frac12;30)$.\n\nÝ d) Đúng vì trên $[\\frac12;30]$, $h(x)=2\\,000-1\\,000(x-\\frac12)$ nghịch biến và đổi dấu nên có đúng một nghiệm $x_{0}=2{,}5$; trên $(30;+\\infty)$, $h(x)=-27\\,500+1\\,000(x-30)$ đồng biến, $h(30)<0$ và $h\\to+\\infty$ nên có đúng một nghiệm $x_{1}=57{,}5$. Vậy có hai giá trị của $x$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const fA=(x) => (x <= 0.5 ? 10000 : x <= 30 ? 10000 + 12000 * (x - 0.5) : 364000 + 11000 * (x - 30));return (() => nr(fA(30), 364000) && nr(10000 + 12000 * 29.5, 364000))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const fA=(x) => (x <= 0.5 ? 10000 : x <= 30 ? 10000 + 12000 * (x - 0.5) : 364000 + 11000 * (x - 30));return (() => !([0.1, 0.5, 5, 30, 31, 100].every((x) => cont(fA, x))))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const fA=(x) => (x <= 0.5 ? 10000 : x <= 30 ? 10000 + 12000 * (x - 0.5) : 364000 + 11000 * (x - 30));const gB=(x) => (x <= 0.5 ? 8000 : x <= 30 ? 8000 + 13000 * (x - 0.5) : 391500 + 10000 * (x - 30));return (() => fA(0.5) - gB(0.5) > 0 && fA(30) - gB(30) < 0 && sc((x) => fA(x) - gB(x), 0.5, 30) >= 1)()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const fA=(x) => (x <= 0.5 ? 10000 : x <= 30 ? 10000 + 12000 * (x - 0.5) : 364000 + 11000 * (x - 30));const gB=(x) => (x <= 0.5 ? 8000 : x <= 30 ? 8000 + 13000 * (x - 0.5) : 391500 + 10000 * (x - 30));return (() => sc((x) => fA(x) - gB(x), 0.5, 1000, 400000) === 2 && fA(0.3) !== gB(0.3))()})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Đúng",
+    "ghi_chu": "Đề gốc là bảng giá — chép thành chữ. Tính kiểm: nghiệm x=2,5 và x=57,5."
+  },
+  {
+    "id": "nbv-b3-d-48",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Người ta theo dõi lợi nhuận của một loại cổ phiếu hàng ngày và nhận thấy lợi nhuận tại thời điểm $t\\in[0;24]$ (giờ) tuân theo công thức $P(t)=at^{2}+bt+c$ với $a$, $b$, $c$ thay đổi nhưng luôn thoả mãn điều kiện $a+2b+5c=0$ và $a$, $b$ không đồng thời bằng $0$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Tập hợp tất cả các giá trị của lợi nhuận trong ngày là một đoạn.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Cổ phiếu sẽ thay đổi từ lãi sang lỗ hoặc từ lỗ sang lãi $3$ lần trong một ngày.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Nếu trong một ngày lợi nhuận bằng $0$ tại $t_{0}\\in(0;24)$ thì có vô số thời điểm trong ngày đó cổ phiếu có lợi nhuận dương hoặc âm.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Trong khoảng thời gian từ sau $0$ giờ đến trước $40$ phút đầu tiên có ít nhất một thời điểm cổ phiếu có lợi nhuận bằng $0$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm $P(t)$ là đa thức khác hằng nên liên tục, có tối đa hai nghiệm, và điều kiện $a+2b+5c=0$ cho ta quan hệ giữa $P(0)$ và $P(\\frac12)$.\n\n**Bước 1.** Nhận ra $P(t)$ liên tục trên đoạn $[0;24]$ nên có giá trị nhỏ nhất, lớn nhất và nhận mọi giá trị ở giữa.\n\n**Bước 2.** Đếm số nghiệm tối đa của $P(t)=0$ dựa vào bậc của đa thức để biết tối đa bao nhiêu lần đổi dấu.\n\n**Bước 3.** Với đa thức khác hằng, số điểm mà $P$ bằng $0$ là hữu hạn, nên xét số điểm còn lại trên đoạn.\n\n**Bước 4.** Tính $P(0)$ và $P(\\frac12)$ theo $c$, rồi xét hai trường hợp $c\\ne0$ và $c=0$ để tìm nghiệm trong khoảng cần xét.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $P$ liên tục trên $[0;24]$ nên đạt giá trị nhỏ nhất $m$, giá trị lớn nhất $M$ và mọi giá trị trung gian, do đó tập giá trị là đoạn $[m;M]$.\n\nÝ b) Sai vì $P(t)$ là đa thức bậc nhất hoặc bậc hai nên phương trình $P(t)=0$ có nhiều nhất $2$ nghiệm, nên đổi dấu nhiều nhất $2$ lần.\n\nÝ c) Đúng vì $P$ không đồng nhất bằng $0$ (do $a$, $b$ không đồng thời bằng $0$) nên $P(t)=0$ có nhiều nhất $2$ nghiệm; tại mọi thời điểm còn lại trong ngày $P(t)>0$ hoặc $P(t)<0$, tức có vô số thời điểm như vậy.\n\nÝ d) Đúng vì $40$ phút $=\\dfrac23$ giờ. Ta có $P(0)=c$ và $P(\\dfrac12)=\\dfrac{a+2b}{4}+c=-\\dfrac{c}{4}$ nên $P(0)\\cdot P(\\dfrac12)=-\\dfrac{c^{2}}{4}$. Nếu $c\\ne0$ thì tích âm, $P$ có nghiệm trong $(0;\\dfrac12)\\subset(0;\\dfrac23)$. Nếu $c=0$ thì $a=-2b$ với $b\\ne0$, $P(t)=t(at+b)$ có nghiệm $t=\\dfrac12\\in(0;\\dfrac23)$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Đúng.",
+    "kiem": [
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const P48=(a, b) => { const c = -(a + 2 * b) / 5; return (t) => a * t * t + b * t + c };const PS=[[-3,-3],[-3,-2],[-3,-1],[-3,0],[-3,1],[-3,2],[-3,3],[-2,-3],[-2,-2],[-2,-1],[-2,0],[-2,1],[-2,2],[-2,3],[-1,-3],[-1,-2],[-1,-1],[-1,0],[-1,1],[-1,2],[-1,3],[0,-3],[0,-2],[0,-1],[0,1],[0,2],[0,3],[1,-3],[1,-2],[1,-1],[1,0],[1,1],[1,2],[1,3],[2,-3],[2,-2],[2,-1],[2,0],[2,1],[2,2],[2,3],[3,-3],[3,-2],[3,-1],[3,0],[3,1],[3,2],[3,3]];return (() => PS.every(([a, b]) => { const P = P48(a, b); const v = Array.from({ length: 24001 }, (_, i) => P(i / 1000)).sort((x, y) => x - y); let g = 0; for (let i = 1; i < v.length; i++) g = Math.max(g, v[i] - v[i - 1]); return g <= (v[v.length - 1] - v[0]) / 500 + 1e-9 }))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const P48=(a, b) => { const c = -(a + 2 * b) / 5; return (t) => a * t * t + b * t + c };const PS=[[-3,-3],[-3,-2],[-3,-1],[-3,0],[-3,1],[-3,2],[-3,3],[-2,-3],[-2,-2],[-2,-1],[-2,0],[-2,1],[-2,2],[-2,3],[-1,-3],[-1,-2],[-1,-1],[-1,0],[-1,1],[-1,2],[-1,3],[0,-3],[0,-2],[0,-1],[0,1],[0,2],[0,3],[1,-3],[1,-2],[1,-1],[1,0],[1,1],[1,2],[1,3],[2,-3],[2,-2],[2,-1],[2,0],[2,1],[2,2],[2,3],[3,-3],[3,-2],[3,-1],[3,0],[3,1],[3,2],[3,3]];return (() => PS.some(([a, b]) => sc(P48(a, b), 0, 24, 48000) === 3))()})()===false",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const P48=(a, b) => { const c = -(a + 2 * b) / 5; return (t) => a * t * t + b * t + c };const PS=[[-3,-3],[-3,-2],[-3,-1],[-3,0],[-3,1],[-3,2],[-3,3],[-2,-3],[-2,-2],[-2,-1],[-2,0],[-2,1],[-2,2],[-2,3],[-1,-3],[-1,-2],[-1,-1],[-1,0],[-1,1],[-1,2],[-1,3],[0,-3],[0,-2],[0,-1],[0,1],[0,2],[0,3],[1,-3],[1,-2],[1,-1],[1,0],[1,1],[1,2],[1,3],[2,-3],[2,-2],[2,-1],[2,0],[2,1],[2,2],[2,3],[3,-3],[3,-2],[3,-1],[3,0],[3,1],[3,2],[3,3]];return (() => PS.filter(([a, b]) => { const P = P48(a, b); return sc(P, 0.001, 23.999, 48000) >= 1 }).every(([a, b]) => { const P = P48(a, b); return Array.from({ length: 24001 }, (_, i) => P(i / 1000)).filter((v) => Math.abs(v) > 1e-9).length > 23000 }))()})()===true",
+      "(()=>{const R=(f,a)=>f(a+1e-6),L=(f,a)=>f(a-1e-6),nr=(a,b)=>Math.abs(a-b)<=2e-3*Math.max(1,Math.abs(b)),cont=(f,a)=>nr(R(f,a),f(a))&&nr(L(f,a),f(a)),sc=(f,a,b,n=20000)=>{let c=0,p=f(a+(b-a)*0.37/n);for(let i=1;i<n;i++){const v=f(a+(b-a)*(i+0.37)/n);if(p*v<0)c++;p=v}return c};const P48=(a, b) => { const c = -(a + 2 * b) / 5; return (t) => a * t * t + b * t + c };const PS=[[-3,-3],[-3,-2],[-3,-1],[-3,0],[-3,1],[-3,2],[-3,3],[-2,-3],[-2,-2],[-2,-1],[-2,0],[-2,1],[-2,2],[-2,3],[-1,-3],[-1,-2],[-1,-1],[-1,0],[-1,1],[-1,2],[-1,3],[0,-3],[0,-2],[0,-1],[0,1],[0,2],[0,3],[1,-3],[1,-2],[1,-1],[1,0],[1,1],[1,2],[1,3],[2,-3],[2,-2],[2,-1],[2,0],[2,1],[2,2],[2,3],[3,-3],[3,-2],[3,-1],[3,0],[3,1],[3,2],[3,3]];return (() => PS.every(([a, b]) => { const P = P48(a, b); return sc(P, 0, 2 / 3) >= 1 || Math.abs(P(0.5)) < 1e-9 }))()})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Đúng",
+    "ghi_chu": "Lời giải ý c) của sách rườm; đã viết lại gọn (P khác hằng ⇒ ≤2 nghiệm). Kiểm máy trên lưới tham số a,b ∈ [-3;3]."
+  }
+]

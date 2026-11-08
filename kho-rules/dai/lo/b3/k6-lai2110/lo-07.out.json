@@ -1,0 +1,140 @@
+[
+ {
+  "ma_cau": "T106000000287",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc số nguyên (Chương III): độ cao/độ sâu âm"
+ },
+ {
+  "ma_cau": "T106000000357",
+  "dang_bai_id": "NDB01223",
+  "chac": "cao",
+  "ly_do": "Hỏi số nào là số tự nhiên, khớp nhận biết số tự nhiên."
+ },
+ {
+  "ma_cau": "T106000000969",
+  "dang_bai_id": "NDB00354",
+  "chac": "vua",
+  "ly_do": "Có ngoặc và chia luỹ thừa cùng cơ số; cũng có thể xếp tính toán ngoặc cơ bản."
+ },
+ {
+  "ma_cau": "T106000000429",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng nguyên lý Dirichlet / chọn số ít nhất để chắc chắn có hai số tổng cho trước."
+ },
+ {
+  "ma_cau": "T106020803001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng tìm x, y ứng dụng luỹ thừa và tính chẵn lẻ của tích số liên tiếp."
+ },
+ {
+  "ma_cau": "T106000000531",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc số nguyên (Chương III): so sánh số nguyên âm (nhiệt độ)"
+ },
+ {
+  "ma_cau": "T106000000339",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng chứng minh chia hết cho tổng dãy tích hai số liên tiếp (1.2+2.3+...)."
+ },
+ {
+  "ma_cau": "T106000000498",
+  "dang_bai_id": "NDB01223",
+  "chac": "vua",
+  "ly_do": "Nhận biết tập hợp số tự nhiên N, gần nhận biết số tự nhiên nhưng là tập hợp."
+ },
+ {
+  "ma_cau": "T106000000449",
+  "dang_bai_id": "NDB00356",
+  "chac": "vua",
+  "ly_do": "Đổi 2^2=4 rồi nhóm, rút thừa số chung 34; cũng gần dạng ẩn nhân tử chung."
+ },
+ {
+  "ma_cau": "T106000000922",
+  "dang_bai_id": "NDB00364",
+  "chac": "cao",
+  "ly_do": "Tìm x có ngoặc và luỹ thừa số, x không ở cơ số hay số mũ."
+ },
+ {
+  "ma_cau": "T106000000582",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc số nguyên (Chương III): tính có số âm (-1500)"
+ },
+ {
+  "ma_cau": "T106000000299",
+  "dang_bai_id": "NDB00362",
+  "chac": "cao",
+  "ly_do": "Tìm x, x nằm ở cơ số (x-1)^3=27 có ngoặc."
+ },
+ {
+  "ma_cau": "T106000000572",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc số nguyên (Chương III): tìm x ra kết quả âm"
+ },
+ {
+  "ma_cau": "T106000000573",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc số nguyên (Chương III): tìm x với vế phải là số âm"
+ },
+ {
+  "ma_cau": "T106000000934",
+  "dang_bai_id": "NDB00369",
+  "chac": "cao",
+  "ly_do": "47 chia x dư 2 nên x là ước của 45 và x>=15, tìm ước theo điều kiện."
+ },
+ {
+  "ma_cau": "T106000000612",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc số nguyên (Chương III): toán nhiệt độ tăng giảm với số âm"
+ },
+ {
+  "ma_cau": "T106000000443",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng phần tử chung của hai tập hợp (giao, biểu đồ Venn); đề có hình."
+ },
+ {
+  "ma_cau": "T106000000562",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc số nguyên (Chương III): sắp xếp số nguyên theo thứ tự"
+ },
+ {
+  "ma_cau": "T106000000649",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc số nguyên (Chương III): tìm x ra kết quả âm"
+ },
+ {
+  "ma_cau": "T106000000409",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc số nguyên (Chương III): tìm số nguyên x ra kết quả âm"
+ },
+ {
+  "ma_cau": "T106000000779",
+  "dang_bai_id": "NDB00353",
+  "chac": "vua",
+  "ly_do": "Biểu thức luỹ thừa, nhân và một cặp ngoặc; có thể xếp ngoặc cơ bản."
+ },
+ {
+  "ma_cau": "T106000000581",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc số nguyên (Chương III): cộng các số nguyên âm"
+ },
+ {
+  "ma_cau": "T106000000960",
+  "dang_bai_id": "NDB01230",
+  "chac": "cao",
+  "ly_do": "Nhóm 2xy+6x để đưa đẳng thức tổng về dạng tích hai thừa số."
+ }
+]

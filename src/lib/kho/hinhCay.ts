@@ -6,7 +6,7 @@
 //   · XẾP CHỖ trên màn (`xepCay`) là hiển thị thuần ⇒ chạy ở client, không ghi gì.
 // MÃ GỐC BẤT BIẾN (CLAUDE.md §2): khoá ở mọi chỗ là `id`/`ma`; `so` chỉ để người đọc.
 import { supabase } from '../supabase'
-import type { BaiToan, Luoi, MoHinh } from './hinh'
+import type { Luoi, MoHinh } from './hinh'
 
 // ══════════════════ KIỂU ══════════════════
 /** Một dòng kết quả RPC: bài + số hiển thị + nhánh chứa nó. */
@@ -30,6 +30,15 @@ export async function giaThietHieuLuc(baiToanId: string): Promise<string> {
   const { data, error } = await supabase.rpc('fn_hl_gia_thiet_hieu_luc', { p_baitoan: baiToanId })
   if (error) throw error
   return (data as string | null) ?? ''
+}
+/** Giả thiết hiệu lực TỪNG PHẦN (gốc · từng nhánh trên đường · riêng của bài) cho nhiều bài 1 lượt — mig 202610291648.
+ *  Bài ghép nhiều ý cần phần để tách "đề chung" và "giả thiết thêm của ý" (spec-hinh-cay-nhanh §1.3). */
+export async function giaThietPhanNhieu(ids: string[]): Promise<Map<string, string[]>> {
+  const u = [...new Set(ids)].filter(Boolean)
+  if (!u.length) return new Map()
+  const { data, error } = await supabase.rpc('fn_hl_gia_thiet_phan_nhieu', { p_ids: u })
+  if (error) throw error
+  return new Map(((data ?? []) as { baitoan_id: string; phan: string[] | null }[]).map((r) => [r.baitoan_id, r.phan ?? []]))
 }
 /** Một dòng mô hình/nhánh — dùng để vá sau khi RPC tạo nhánh mới hoặc đổi neo. */
 export async function layMoHinh(id: string): Promise<MoHinh | null> {
@@ -60,6 +69,18 @@ export async function doiNeoCay(nhanhId: string, baiMoiId: string): Promise<KetQ
   if (error) throw error
   return kq(data)
 }
+/** Thêm giả thiết (nhánh chính / phụ) vào một giả thiết cha — Thùy 22/10: nhánh rẽ từ GIẢ THIẾT, không rẽ từ bài. */
+export async function themGiaThiet(chaId: string, ten: string, giaThietThem: string, chinh: boolean): Promise<KetQuaCay> {
+  const { data, error } = await supabase.rpc('fn_hl_them_gia_thiet', { p_cha: chaId, p_ten: ten, p_gia_thiet_them: giaThietThem, p_chinh: chinh })
+  if (error) throw error
+  return kq(data)
+}
+/** Dời giả thiết sang giả thiết cha khác và/hoặc đổi chính ↔ phụ (cùng cây, cấm vòng). */
+export async function doiChaGiaThiet(nhanhId: string, chaId: string, chinh: boolean): Promise<KetQuaCay> {
+  const { data, error } = await supabase.rpc('fn_hl_doi_cha_gia_thiet', { p_nhanh: nhanhId, p_cha: chaId, p_chinh: chinh })
+  if (error) throw error
+  return kq(data)
+}
 /** Sửa tên / giả thiết thêm của một nhánh — CRUD dòng đơn. Mã nhánh không đổi. */
 export async function suaNhanh(id: string, v: { ten: string; gia_thiet_them: string | null }): Promise<void> {
   const { error } = await supabase.from('hinh_mo_hinh')
@@ -68,24 +89,86 @@ export async function suaNhanh(id: string, v: { ten: string; gia_thiet_them: str
 }
 
 // ══════════════════ CẤU TRÚC CÂY (từ snapshot lưới) ══════════════════
-/** Nhánh nào thuộc cây của `gocId`: leo `neo_baitoan_id` → mô hình chứa bài neo, tới khi gặp gốc. */
-export function nhanhCuaCay(moHinh: MoHinh[], baiToan: Pick<BaiToan, 'id' | 'mo_hinh_id'>[], gocId: string): MoHinh[] {
-  const mhCuaBai = new Map(baiToan.map((b) => [b.id, b.mo_hinh_id]))
+/** Giả thiết thuộc cây của `gocId` (Thùy 22/10): gốc + mọi giả thiết con cháu nối bằng cạnh cha (hinh_mo_hinh_cha)
+ *  mà là NHÁNH (la_mo_hinh = false). Mô hình con kiểu cũ (la_mo_hinh = true) là cây riêng. */
+export function nhanhCuaCay(moHinh: MoHinh[], canh: { mo_hinh_id: string; cha_id: string }[], gocId: string): MoHinh[] {
   const byId = new Map(moHinh.map((m) => [m.id, m]))
-  const gocCua = (id: string): string => {
-    let cur = id
-    for (let i = 0; i < 64; i++) {
-      const neo = byId.get(cur)?.neo_baitoan_id
-      const len = neo ? mhCuaBai.get(neo) : undefined
-      if (!len) return cur
-      cur = len
-    }
-    return cur
-  }
-  return moHinh.filter((m) => m.id === gocId || (m.neo_baitoan_id && gocCua(m.id) === gocId))
+  const con = new Map<string, string[]>()
+  for (const c of canh) if (byId.get(c.mo_hinh_id)?.la_mo_hinh === false) con.set(c.cha_id, [...(con.get(c.cha_id) ?? []), c.mo_hinh_id])
+  const ra: MoHinh[] = [], da = new Set<string>()
+  const di = (id: string) => { if (da.has(id) || !byId.has(id)) return; da.add(id); ra.push(byId.get(id)!); (con.get(id) ?? []).forEach(di) }
+  di(gocId)
+  return ra
 }
-/** Các mô hình là GỐC cây (không neo). Mô hình con kiểu cũ (có cha trong `canh`) cũng là gốc riêng. */
-export const gocCayCua = (L: Luoi) => L.moHinh.filter((m) => !m.neo_baitoan_id)
+/** Các mô hình là GỐC cây: không phải nhánh giả thiết. Mô hình con kiểu cũ (la_mo_hinh, có cha) cũng là gốc riêng. */
+export const gocCayCua = (L: Luoi) => L.moHinh.filter((m) => !m.neo_baitoan_id && m.la_mo_hinh !== false)
+
+// ══════════════════ XẾP CHỖ kiểu GIẢ THIẾT (Thùy 22/10, mockup docs/mockup-hinh-gia-thiet-mh072.html) ══════════════════
+// Mỗi giả thiết = một KHỐI (lục giác đầu khối + các bài). Nhánh CHÍNH đi thẳng XUỐNG dưới giả thiết cha; nhánh PHỤ rẽ
+// sang PHẢI. Trong khối, chuỗi bài NẰM NGANG: cột = cấp (theo tiền đề cùng khối); bài con ĐẦU TIÊN (theo số) đi tiếp
+// cùng hàng, mỗi bài con sau xuống một hàng mới (vd B1→B2 · B3→B6→B7 · B4 · B5). `boi` = bài trước đã "đặt" bài này
+// (dây vẽ); tiền đề còn lại hiện thành nhãn ở góc thẻ. Mũi tên đi trong KHE giữa các cột, không đè thẻ.
+// HW × HH = ô HÌNH của giả thiết, bên trái khối (Thùy 22/10: mỗi giả thiết phải có hình để hình dung); bài nằm bên phải ô hình.
+export const KT_GT = { W: 210, H: 74, GX: 40, GY: 18, PAD: 14, HEX: 66, TOP: 92, CACH_DOC: 56, CACH_NGANG: 110, HW: 240, HH: 136 }
+export type HopXY = { x: number; y: number; w: number; h: number }
+export type BoCucGT = { khoi: Map<string, HopXY>; bai: Map<string, { x: number; y: number }>; boi: Map<string, string | null>; rong: number; cao: number }
+export function xepGiaThiet(a: {
+  gocId: string
+  gt: { id: string; cha: string | null; chinh: boolean }[]
+  bai: { id: string; gt: string; so: number; tienDe: string[] }[]
+}): BoCucGT {
+  const { W, H, GX, GY, PAD, TOP, CACH_DOC, CACH_NGANG, HW, HH } = KT_GT
+  const X0 = PAD + HW + 24                                               // bài bắt đầu sau ô hình
+  const gtCua = new Map(a.bai.map((b) => [b.id, b.gt])), soCua = new Map(a.bai.map((b) => [b.id, b.so]))
+  const boi = new Map<string, string | null>()
+  const trong = new Map<string, { lv: Map<string, number>; hang: Map<string, number>; w: number; h: number }>()
+  for (const g of a.gt) {
+    const ds = a.bai.filter((b) => b.gt === g.id).sort((x, y) => x.so - y.so)
+    const cha = new Map(ds.map((b) => [b.id, b.tienDe.filter((t) => gtCua.get(t) === g.id)]))
+    const con = (id: string) => ds.filter((b) => cha.get(b.id)!.includes(id)).map((b) => b.id)
+    const lv = new Map<string, number>()
+    const L = (id: string, sau = 0): number => {
+      if (lv.has(id)) return lv.get(id)!
+      const v = sau > 64 ? 1 : 1 + Math.max(0, ...cha.get(id)!.map((t) => L(t, sau + 1)))
+      lv.set(id, v); return v
+    }
+    ds.forEach((b) => L(b.id))
+    const hang = new Map<string, number>(); let maxR = -1
+    const dat = (id: string, r: number, tu: string | null) => {
+      if (hang.has(id)) return
+      hang.set(id, r); boi.set(id, tu); maxR = Math.max(maxR, r)
+      let dau = true
+      for (const m of con(id).sort((x, y) => soCua.get(x)! - soCua.get(y)!)) {
+        if (hang.has(m) || lv.get(m) !== lv.get(id)! + 1) continue        // bài con ở cấp xa hơn: để bài trước gần nó đặt
+        dat(m, dau ? r : maxR + 1, id); dau = false
+      }
+    }
+    ds.filter((b) => !cha.get(b.id)!.length).forEach((b) => dat(b.id, maxR + 1, null))
+    ds.filter((b) => !hang.has(b.id)).forEach((b) => dat(b.id, maxR + 1, null))
+    const soCot = Math.max(1, ...ds.map((b) => lv.get(b.id)!)), soHang = Math.max(1, maxR + 1)
+    trong.set(g.id, { lv, hang, w: X0 + soCot * W + (soCot - 1) * GX + PAD, h: Math.max(TOP + soHang * (H + GY) - GY + PAD, TOP + HH + PAD) })
+  }
+  const con = (id: string) => a.gt.filter((g) => g.cha === id)
+  const khoi = new Map<string, HopXY>()
+  const datGT = (id: string, x: number, y: number, sau = 0): number => {      // trả chiều cao phần cây chiếm
+    const t = trong.get(id); if (!t || sau > 64) return 0
+    khoi.set(id, { x, y, w: t.w, h: t.h })
+    let yPhu = y
+    for (const p of con(id).filter((g) => !g.chinh)) yPhu += datGT(p.id, x + t.w + CACH_NGANG, yPhu, sau + 1) + 24
+    const cao = Math.max(t.h, yPhu - y - 24)
+    const chinh = con(id).find((g) => g.chinh)
+    return chinh ? cao + CACH_DOC + datGT(chinh.id, x, y + cao + CACH_DOC, sau + 1) : cao
+  }
+  datGT(a.gocId, 0, 0)
+  const bai = new Map<string, { x: number; y: number }>()
+  for (const [id, k] of khoi) {
+    const t = trong.get(id)!
+    for (const [b, r] of t.hang) bai.set(b, { x: k.x + X0 + (t.lv.get(b)! - 1) * (W + GX), y: k.y + TOP + r * (H + GY) })
+  }
+  let rong = 0, cao = 0
+  for (const k of khoi.values()) { rong = Math.max(rong, k.x + k.w); cao = Math.max(cao, k.y + k.h) }
+  return { khoi, bai, boi, rong, cao }
+}
 
 // ══════════════════ XẾP CHỖ (spec §4.2) ══════════════════
 // Chỉ hai hướng: XUỐNG và SANG PHẢI. Thân = hàng 0. Nhánh = một HÀNG NGANG: thẻ giả thiết thêm ở cột bài mẹ,
@@ -174,6 +257,21 @@ export async function themBaiCay(nhanhId: string, b: BaiNhap): Promise<KetQuaCay
   if (error) throw error
   return data as KetQuaCay & { bai_moi: string }
 }
+/** Bài mới chèn NGAY SAU một bài, cùng làn (Thùy 22/10, mig 202610221501). */
+export async function themBaiSau(baiTruoc: string, b: BaiNhap): Promise<KetQuaCay & { bai_moi: string }> {
+  const { data, error } = await supabase.rpc('fn_hl_them_bai_sau', {
+    p_bai_truoc: baiTruoc, p_phat_bieu: b.phatBieu, p_gia_thiet_rieng: b.giaThietRieng, p_loi_giai: b.loiGiai, p_anh: b.anh, p_tien_de: b.tienDe })
+  if (error) throw error
+  return data as KetQuaCay & { bai_moi: string }
+}
+/** Rẽ nhánh mới TỪ CHÍNH một bài (bài mẹ) + bài đầu tiên của nhánh, 1 transaction (Thùy 22/10). */
+export async function reNhanhTuBai(baiMe: string, ten: string, giaThietThem: string, b: BaiNhap): Promise<KetQuaCay & { bai_moi: string }> {
+  const { data, error } = await supabase.rpc('fn_hl_re_nhanh_tu_bai', {
+    p_bai_me: baiMe, p_ten: ten, p_gia_thiet_them: giaThietThem, p_phat_bieu: b.phatBieu, p_gia_thiet_rieng: b.giaThietRieng,
+    p_loi_giai: b.loiGiai, p_anh: b.anh, p_tien_de: b.tienDe })
+  if (error) throw error
+  return data as KetQuaCay & { bai_moi: string }
+}
 /** Sửa bài — mã KHÔNG đổi. */
 export async function suaBaiCay(baiId: string, b: BaiNhap): Promise<KetQuaCay & { bai_moi: string }> {
   const { data, error } = await supabase.rpc('fn_hl_sua_bai', {
@@ -192,17 +290,44 @@ export type BaiKho = {
   id: string; ma_bai: string; khoi: string | null; nguon: string | null; nguon_ma_cau: string | null
   de_bai: string; gia_thiet_chung: string | null; huong_dan: string | null; anh_de: string | null; can_tach_tay: boolean
   mo_hinh_id: string | null   // mô hình luyện đã gán cho CẢ BÀI (null = chưa)
+  loai_cau: LoaiCauHL         // mô hình luyện CHỈ lấy 'tu_luan'; loại khác ở "kho riêng" (mig 202610181623)
+  bo_qua_at: string | null; bo_qua_ly_do: string | null; bo_qua_ten: string | null   // "Bỏ qua" = không duyệt vào kho, kèm lý do
   y: YKho[]
 }
+export type LoaiCauHL = 'tu_luan' | 'trac_nghiem' | 'dung_sai' | 'tra_loi_ngan'
+export const NHAN_LOAI_CAU_HL: Record<LoaiCauHL, string> = { tu_luan: 'Tự luận', trac_nghiem: 'Trắc nghiệm', dung_sai: 'Đúng/Sai', tra_loi_ngan: 'Trả lời ngắn' }
+/** Ba hàng của màn: chờ duyệt (tự luận) · đã bỏ qua · kho riêng (không phải tự luận) */
+export type CheDoHL = 'cho' | 'bo_qua' | 'khac'
 export type BaiMoHinhLuyen = {
   baitoan_id: string; ma: string; so: string; phat_bieu: string
   goc_id: string; goc_ma: string; goc_ten: string; nhanh_id: string; nhanh_ten: string
 }
 /** Bài kho còn ít nhất 1 ý chưa gán bài mô hình — hàng "chưa phân mô hình" của Duyệt kho. Phân trang ở DB. */
-export async function khoChuaPhanMoHinh(khoi: string, gioiHan = 30, boQua = 0): Promise<BaiKho[]> {
-  const { data, error } = await supabase.rpc('fn_hl_kho_chua_phan', { p_khoi: khoi, p_gioi_han: gioiHan, p_bo_qua: boQua })
+export async function khoChuaPhanMoHinh(khoi: string, gioiHan = 30, boQua = 0, cheDo: CheDoHL = 'cho'): Promise<BaiKho[]> {
+  const { data, error } = await supabase.rpc('fn_hl_kho_chua_phan', { p_khoi: khoi, p_gioi_han: gioiHan, p_bo_qua: boQua, p_che_do: cheDo })
   if (error) throw error
   return (data ?? []) as BaiKho[]
+}
+/** Số bài của hai hàng phụ trong một khối: đã bỏ qua · kho riêng (không tự luận). Đếm ở DB. */
+export async function demHangPhuHL(khoi: string): Promise<{ bo_qua: number; khac: number }> {
+  const { data, error } = await supabase.rpc('fn_hl_dem_hang_phu', { p_khoi: khoi })
+  if (error) throw error
+  const r = ((data ?? []) as { bo_qua: number | string; khac: number | string }[])[0]
+  return { bo_qua: Number(r?.bo_qua ?? 0), khac: Number(r?.khac ?? 0) }
+}
+/** "Bỏ qua": không duyệt bài vào kho — BẮT BUỘC có lý do (DB từ chối nếu trống). */
+export async function boQuaBaiKho(baiId: string, lyDo: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_bo_qua_bai', { p_bai: baiId, p_ly_do: lyDo })
+  if (error) throw error
+}
+export async function khoiPhucBaiKho(baiId: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_khoi_phuc_bai', { p_bai: baiId })
+  if (error) throw error
+}
+/** Đổi loại câu của bài (vd máy xếp nhầm trắc nghiệm → đưa về tự luận). */
+export async function doiLoaiBaiKho(baiId: string, loai: LoaiCauHL): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_doi_loai_bai', { p_bai: baiId, p_loai: loai })
+  if (error) throw error
 }
 export async function demChuaPhanMoHinh(): Promise<{ khoi: string | null; so_bai: number; so_y: number }[]> {
   const { data, error } = await supabase.rpc('fn_hl_dem_chua_phan')
@@ -262,4 +387,88 @@ export async function demKhoMoHinh(khoi: string): Promise<Map<string, DemKho>> {
   if (error) throw error
   return new Map(((data ?? []) as { mo_hinh_id: string; so_chuoi: number | string; so_y: number | string; so_y_da_gan: number | string }[])
     .map((r) => [r.mo_hinh_id, { so_chuoi: Number(r.so_chuoi), so_y: Number(r.so_y), so_y_da_gan: Number(r.so_y_da_gan) }]))
+}
+
+// ── NHÓM MÔ HÌNH (mig 202610181651, Thùy 18/10): Chủ đề → Nhóm mô hình → Mô hình. Nhóm chỉ GOM (không kế thừa, không đo riêng).
+export type NhomMoHinh = { id: string; chu_de_id: string; ten: string; mo_ta: string; thu_tu: number }
+export async function nhomMoHinhCuaChuDe(chuDeId: string): Promise<NhomMoHinh[]> {
+  const { data, error } = await supabase.from('hinh_nhom_mo_hinh').select('id, chu_de_id, ten, mo_ta, thu_tu').eq('chu_de_id', chuDeId).order('thu_tu').limit(500)
+  if (error) throw error
+  return (data ?? []) as NhomMoHinh[]
+}
+export async function themNhomMoHinh(chuDeId: string, ten: string, moTa = ''): Promise<NhomMoHinh> {
+  const { data, error } = await supabase.from('hinh_nhom_mo_hinh').insert({ chu_de_id: chuDeId, ten: ten.trim(), mo_ta: moTa.trim() })
+    .select('id, chu_de_id, ten, mo_ta, thu_tu').single()
+  if (error) throw error
+  return data as NhomMoHinh
+}
+export async function suaNhomMoHinh(id: string, v: { ten: string; mo_ta: string }): Promise<void> {
+  const { error } = await supabase.from('hinh_nhom_mo_hinh').update({ ten: v.ten.trim(), mo_ta: v.mo_ta.trim(), updated_at: new Date().toISOString() }).eq('id', id)
+  if (error) throw error
+}
+export async function sapNhomMoHinh(ids: string[]): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_nhom_mh_sap', { p_ids: ids })
+  if (error) throw error
+}
+/** Chỉ xoá được nhóm RỖNG (DB chặn nhóm còn mô hình). */
+export async function xoaNhomMoHinh(id: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_nhom_mh_xoa', { p_id: id })
+  if (error) throw error
+}
+/** Tạo mô hình luyện ngay trong nhóm (khối + chủ đề theo nhóm), 1 transaction. */
+export async function taoMoHinhTrongNhom(nhomId: string, ten: string, giaThiet: string, anh: string | null): Promise<string> {
+  const { data, error } = await supabase.rpc('fn_hl_tao_mo_hinh_trong_nhom', { p_nhom: nhomId, p_ten: ten, p_gia_thiet: giaThiet, p_anh: anh })
+  if (error) throw error
+  return data as string
+}
+/** Chuyển mô hình sang nhóm khác (DB tự khớp chủ đề theo nhóm). */
+export async function doiNhomMoHinh(moHinhId: string, nhomId: string): Promise<void> {
+  const { error } = await supabase.from('hinh_mo_hinh').update({ nhom_mh_id: nhomId, updated_at: new Date().toISOString() }).eq('id', moHinhId)
+  if (error) throw error
+}
+
+// ── NHÃN DẠNG BÀI / BỔ ĐỀ cho từng Ý (mig 202610191644, Thùy 19/10) — để lọc + làm tài liệu, không đo.
+// Luật khối ở DB: nhãn.khoi ≤ khối của bài. Claude gợi ý (hinh_y_nhan_de_xuat) → người nhận/bác.
+export type LoaiNhanY = 'dang' | 'bo_de'
+// Nhãn HIỆU LỰC (mig 202610231746): ý đã gán bài mô hình ⇒ nhãn của bài (nguon 'bai', tu_bai), kèm độ khó (loai 'do_kho', gia_tri).
+export type NhanY = { y_id: string; loai: LoaiNhanY | 'do_kho'; nhan_id: string | null; gia_tri?: number | null; nguon: 'nguoi' | 'ai' | 'bai'; tu_bai?: string | null }
+export type DeXuatNhanY = { id: number; y_id: string; loai: LoaiNhanY; nhan_id: string; ly_do: string }
+export async function nhanCuaCacY(yIds: string[]): Promise<{ nhan: NhanY[]; deXuat: DeXuatNhanY[] }> {
+  const nhan: NhanY[] = [], deXuat: DeXuatNhanY[] = []
+  for (let i = 0; i < yIds.length; i += 100) {
+    const lo = yIds.slice(i, i + 100)
+    const [a, d] = await Promise.all([
+      supabase.rpc('fn_hl_y_nhan_hieu_luc', { p_y: lo }).limit(5000),
+      supabase.from('hinh_y_nhan_de_xuat').select('id, y_id, loai, nhan_id, ly_do').in('y_id', lo).limit(5000),
+    ])
+    if (a.error) throw a.error; if (d.error) throw d.error
+    nhan.push(...((a.data ?? []) as NhanY[]))
+    deXuat.push(...((d.data ?? []) as DeXuatNhanY[]))
+  }
+  return { nhan, deXuat }
+}
+
+// ── NHÃN của BÀI trong mô hình: Độ khó (1–5) · Dạng bài · Bổ đề (mig 202610231746, Thùy 23/10). Ý gán bài kế thừa.
+export type NhanBai = { baitoan_id: string; loai: LoaiNhanY | 'do_kho'; nhan_id: string | null; gia_tri: number | null; nguon: 'nguoi' | 'ai' }
+export async function nhanBaiCay(gocId: string): Promise<NhanBai[]> {
+  const { data, error } = await supabase.rpc('fn_hl_bai_nhan_cay', { p_goc: gocId }).limit(5000)
+  if (error) throw error
+  return (data ?? []) as NhanBai[]
+}
+export async function datNhanBai(baiId: string, loai: LoaiNhanY, nhanId: string, bat: boolean): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_bai_nhan_dat', { p_bai: baiId, p_loai: loai, p_nhan: nhanId, p_bat: bat })
+  if (error) throw error
+}
+/** mucDo null ⇒ gỡ độ khó (về "chưa đánh") */
+export async function datDoKhoBai(baiId: string, mucDo: number | null): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_bai_do_kho_dat', { p_bai: baiId, p_do_kho: mucDo })
+  if (error) throw error
+}
+export async function datNhanY(yId: string, loai: LoaiNhanY, nhanId: string, bat: boolean): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_y_nhan_dat', { p_y: yId, p_loai: loai, p_nhan: nhanId, p_bat: bat })
+  if (error) throw error
+}
+export async function quyetDeXuatNhanY(id: number, nhan: boolean, lyDo = ''): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_y_nhan_quyet', { p_de_xuat: id, p_nhan: nhan, p_ly_do: lyDo })
+  if (error) throw error
 }

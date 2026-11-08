@@ -1,0 +1,398 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00550",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Các quy luật di truyền của Mendel",
+   "nhom": "LAI MỘT CẶP TÍNH TRẠNG",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nMỗi tính trạng do một cặp nhân tố di truyền (cặp allele) quy định.\nKhi giảm phân tạo giao tử, hai allele của cặp phân li đồng đều về các giao tử; mỗi giao tử chỉ mang một allele.\nKhi thụ tinh, các giao tử kết hợp ngẫu nhiên, tạo lại cặp allele ở hợp tử.\nNội dung quy luật phân li: Mỗi tính trạng do một cặp nhân tố di truyền quy định. Trong quá trình phát sinh giao tử, mỗi nhân tố di truyền trong cặp phân li về một giao tử và giữ nguyên bản chất như ở cơ thể thuần chủng của $\\mathrm{P}$.\nLai phân tích\nLai phân tích là phép lai giữa cơ thể mang tính trạng trội cần xác định kiểu gene với cơ thể mang tính trạng lặn.\nCơ thể mang tính trạng lặn (aa) chỉ tạo một loại giao tử a, nên kiểu hình ở đời con phản ánh trực tiếp các loại giao tử của cơ thể mang tính trạng trội.\n\n##TC2. Công thức\nKết quả các phép lai một cặp tính trạng (A trội hoàn toàn so với a):\n$\\begin{array}{|l|l|l|}\\hline\\text{Phép lai} & \\text{Tỉ lệ kiểu gene ở đời con} & \\text{Tỉ lệ kiểu hình ở đời con} \\\\\\hline\\mathrm{AA} \\times \\mathrm{AA} & 100\\% \\mathrm{AA} & 100\\% \\text{ trội} \\\\\\mathrm{AA} \\times \\mathrm{Aa} & 1\\mathrm{AA} : 1\\mathrm{Aa} & 100\\% \\text{ trội} \\\\\\mathrm{AA} \\times \\mathrm{aa} & 100\\% \\mathrm{Aa} & 100\\% \\text{ trội} \\\\\\mathrm{Aa} \\times \\mathrm{Aa} & 1\\mathrm{AA} : 2\\mathrm{Aa} : 1\\mathrm{aa} & 3 \\text{ trội} : 1 \\text{ lặn} \\\\\\mathrm{Aa} \\times \\mathrm{aa} & 1\\mathrm{Aa} : 1\\mathrm{aa} & 1 \\text{ trội} : 1 \\text{ lặn} \\\\\\mathrm{aa} \\times \\mathrm{aa} & 100\\% \\mathrm{aa} & 100\\% \\text{ lặn} \\\\\\hline\\end{array}$\nSố tổ hợp giao tử ở đời con = số loại giao tử của bố $\\times$ số loại giao tử của mẹ.\n\n##PP3. Các bước làm bài\nBước 1: quy ước gene (allele trội chữ in hoa, allele lặn chữ thường). Nếu đề chưa cho tính trạng nào trội, dựa vào kiểu hình của $F_1$ khi lai $P$ thuần chủng để xác định.\nBước 2: xác định kiểu gene của $P$.\nBước 3: viết giao tử của $P$ (dòng $G$).\nBước 4: tổ hợp giao tử, viết kiểu gene của đời con.\nBước 5: thống kê tỉ lệ kiểu gene, sau đó suy ra tỉ lệ kiểu hình.\n\n##CY 4. Lưu ý\nTỉ lệ kiểu gene ($1\\mathrm{AA} : 2\\mathrm{Aa} : 1\\mathrm{aa}$) khác tỉ lệ kiểu hình ($3$ trội : $1$ lặn); đọc kĩ đề hỏi tỉ lệ nào.\nỞ $F_2$, trong số cây mang tính trạng trội có $\\dfrac{1}{3}$ là $\\mathrm{AA}$ và $\\dfrac{2}{3}$ là $\\mathrm{Aa}$.\nTỉ lệ $3 : 1$ và $1 : 1$ là tỉ lệ lí thuyết; số cá thể thực tế chỉ xấp xỉ tỉ lệ này khi số lượng đủ lớn.\nỞ thực vật, $F_2$ thường thu được bằng cách cho $F_1$ tự thụ phấn; ở động vật, cho các cá thể $F_1$ giao phối với nhau.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01271",
+     "thu_tu": 1,
+     "ten": "VIẾT SƠ ĐỒ LAI P THUẦN CHỦNG",
+     "mo_ta": "Đề cho P thuần chủng khác nhau về một cặp tính trạng (có thể cho sẵn trội/lặn hoặc phải suy ra từ F1) và yêu cầu viết sơ đồ lai từ P đến F1 hoặc đến F2.\nLàm bằng cách quy ước gene, viết kiểu gene P, giao tử, F1, rồi (nếu có) cho F1 × F1 để được F2 cùng tỉ lệ kiểu gene và kiểu hình.\nĐây là dạng tự luận viết trọn sơ đồ lai, không chỉ chọn một tỉ lệ.\nLưu ý: chỉ hỏi tỉ lệ kiểu gene, kiểu hình hoặc số cá thể của một phép lai (trắc nghiệm, trả lời ngắn) ⇒ thuộc dạng \"XÁC ĐỊNH TỈ LỆ KIỂU GENE, KIỂU HÌNH\".",
+     "ly_thuyet": "##TC Sơ đồ lai P thuần chủng\nHai bố mẹ P thuần chủng khác nhau về một cặp tính trạng tương phản có kiểu gene AA và aa; F1 đồng tính, mang kiểu gene Aa và biểu hiện tính trạng trội.\nCho F1 tự thụ phấn (hoặc giao phối) thì F2 có tỉ lệ kiểu gene 1AA : 2Aa : 1aa và tỉ lệ kiểu hình 3 trội : 1 lặn.\n\n##PP\nQuy ước gene: allele trội chữ in hoa, allele lặn chữ thường; nếu đề chưa cho, tính trạng biểu hiện ở F1 là trội.\nViết kiểu gene của P thuần chủng (đồng hợp) và giao tử của P.\nViết kiểu gene và kiểu hình của F1.\nCho F1 × F1, viết giao tử của F1, rồi tổ hợp để được kiểu gene và kiểu hình của F2.\n\n##CY\nTrình bày đủ các dòng P, G, F1, F1 × F1, G của F1, F2 và ghi rõ kiểu hình bên cạnh kiểu gene.\nGiao tử chỉ mang một allele; trong sơ đồ lai ♀ ghi trước, ♂ ghi sau khi đề nêu rõ giới tính.",
+     "vi_du": "##VD\nỞ cà chua, allele A quy định quả đỏ trội hoàn toàn so với allele a quy định quả vàng. Cho cây quả đỏ có kiểu gene AA giao phấn với cây quả vàng có kiểu gene aa. Viết sơ đồ lai từ P đến $\\mathrm{F_1}$.\n\nBài giải:\nCây quả đỏ thuần chủng có kiểu gene AA, cây quả vàng có kiểu gene aa.\nSơ đồ lai:\nP (thuần chủng): AA (quả đỏ) × aa (quả vàng)\n$\\mathrm{G_P}$: A ; a\n$\\mathrm{F_1}$: Aa (100% quả đỏ)\nĐáp án: $\\mathrm{F_1}$ có kiểu gene Aa, kiểu hình 100% quả đỏ.\n\n##VD\nỞ ruồi giấm, chiều dài cánh do một gene có hai allele quy định. Cho ruồi cái cánh cụt thuần chủng giao phối với ruồi đực cánh dài thuần chủng, $\\mathrm{F_1}$ thu được toàn ruồi cánh dài. Cho các con $\\mathrm{F_1}$ giao phối với nhau, thu được $\\mathrm{F_2}$. Viết sơ đồ lai từ P đến $\\mathrm{F_2}$.\n\nBài giải:\nP thuần chủng khác nhau về một cặp tính trạng tương phản, $\\mathrm{F_1}$ toàn cánh dài nên cánh dài là tính trạng trội, cánh cụt là tính trạng lặn.\nQuy ước: allele D quy định cánh dài; allele d quy định cánh cụt.\nKiểu gene P: cánh dài thuần chủng là DD, cánh cụt là dd.\nSơ đồ lai:\nP (thuần chủng): ♀ dd (cánh cụt) × ♂ DD (cánh dài)\n$\\mathrm{G_P}$: d ; D\n$\\mathrm{F_1}$: Dd (100% cánh dài)\n$\\mathrm{F_1 \\times F_1}$: Dd (cánh dài) × Dd (cánh dài)\n$\\mathrm{G_{F_1}}$: D, d ; D, d\n$\\mathrm{F_2}$: 1DD : 2Dd : 1dd\nKiểu hình $\\mathrm{F_2}$: 3 cánh dài : 1 cánh cụt"
+    },
+    {
+     "dang_id": "KDB01272",
+     "thu_tu": 2,
+     "ten": "XÁC ĐỊNH TỈ LỆ KIỂU GENE, KIỂU HÌNH",
+     "mo_ta": "Đề cho kiểu gene hoặc kiểu hình của bố mẹ (một cặp tính trạng, trội hoàn toàn) và hỏi tỉ lệ kiểu gene, tỉ lệ kiểu hình, số tổ hợp giao tử hoặc số cá thể thuộc một loại ở đời con.\nBiến thể: tính tỉ lệ ở đời con của một phép lai cho trước (AA × Aa, Aa × Aa...); tính tỉ lệ giao tử, số tổ hợp giao tử; cho số cây F2 rồi tính số cây có kiểu gene hoặc kiểu hình nhất định.\nLưu ý: yêu cầu trình bày trọn sơ đồ lai tự luận từ P thuần chủng ⇒ thuộc dạng \"VIẾT SƠ ĐỒ LAI P THUẦN CHỦNG\".\nLưu ý: đề nêu phép lai phân tích (với cơ thể mang tính trạng lặn) ⇒ thuộc dạng \"LAI PHÂN TÍCH MỘT CẶP TÍNH TRẠNG\".",
+     "ly_thuyet": "##TC Tỉ lệ ở đời con khi lai một cặp tính trạng\nAA × aa cho 100% Aa; AA × AA cho 100% AA; AA × Aa cho 1AA : 1Aa (100% trội).\nAa × Aa cho 1AA : 2Aa : 1aa, tức 3 trội : 1 lặn; Aa × aa cho 1Aa : 1aa, tức 1 trội : 1 lặn.\nCơ thể Aa cho hai loại giao tử A và a với tỉ lệ 1 : 1; số tổ hợp giao tử = số loại giao tử của bố × số loại giao tử của mẹ.\nSố cá thể thuộc một loại = tổng số cá thể đời con × tỉ lệ của loại đó.\n\n##PP\nXác định kiểu gene của P (từ đề hoặc từ kiểu hình thuần chủng) và quy ước gene.\nViết giao tử của P rồi tổ hợp để được tỉ lệ kiểu gene ở đời con.\nTừ kiểu gene suy ra tỉ lệ kiểu hình; nếu đề cho tổng số cá thể, nhân với tỉ lệ của loại cần tìm.\n\n##CY\nPhân biệt tỉ lệ kiểu gene (1 : 2 : 1) với tỉ lệ kiểu hình (3 : 1); đọc kĩ đề hỏi tỉ lệ nào.\nCây dị hợp ở F2 chiếm 1/2, không phải 1/4; chỉ cây aa mới chiếm 1/4.\nCả AA và Aa đều mang kiểu hình trội nên phép lai AA × Aa cho 100% kiểu hình trội.",
+     "vi_du": "##VD\nỞ đậu Hà Lan, allele A quy định hạt vàng trội hoàn toàn so với allele a quy định hạt xanh. Theo lí thuyết, phép lai Aa × Aa cho đời con có tỉ lệ kiểu gene là\nA. 1AA : 2Aa : 1aa\nB. 1AA : 1aa\nC. 3AA : 1aa\nD. 1AA : 1Aa\n\nBài giải:\nMỗi cơ thể Aa tạo hai loại giao tử là A và a với tỉ lệ bằng nhau.\nTổ hợp giao tử: A × A cho AA; A × a cho Aa; a × A cho Aa; a × a cho aa.\nTỉ lệ kiểu gene ở đời con là 1AA : 2Aa : 1aa.\nChọn A.\n\n##VD\nỞ đậu Hà Lan, allele A quy định thân cao trội hoàn toàn so với allele a quy định thân thấp. Cho cây thân cao thuần chủng giao phấn với cây thân thấp, thu được $\\mathrm{F_1}$. Cho $\\mathrm{F_1}$ tự thụ phấn, thu được 1200 cây $\\mathrm{F_2}$. Theo lí thuyết, số cây thân thấp ở $\\mathrm{F_2}$ là\nA. 300\nB. 400\nC. 600\nD. 900\n\nBài giải:\nP: AA × aa, nên $\\mathrm{F_1}$ có kiểu gene Aa.\n$\\mathrm{F_1}$ tự thụ phấn: Aa × Aa, $\\mathrm{F_2}$ có tỉ lệ kiểu gene 1AA : 2Aa : 1aa.\nCây thân thấp (aa) chiếm $\\dfrac{1}{4}$ số cây $\\mathrm{F_2}$.\nSố cây thân thấp là: $1200 \\times \\dfrac{1}{4} = 300$ (cây)\nChọn A."
+    },
+    {
+     "dang_id": "KDB01273",
+     "thu_tu": 3,
+     "ten": "LAI PHÂN TÍCH MỘT CẶP TÍNH TRẠNG",
+     "mo_ta": "Đề nêu phép lai phân tích (lai cơ thể mang tính trạng trội với cơ thể mang tính trạng lặn) và hỏi tỉ lệ kiểu gene, kiểu hình ở đời con, số cá thể hoặc lí do dùng cơ thể lặn.\nBiến thể: lai phân tích cơ thể đồng hợp trội (AA) hoặc dị hợp (Aa); lai phân tích F1 của phép lai P thuần chủng; giải thích vì sao phải dùng cơ thể mang tính trạng lặn.\nLưu ý: đề cho tỉ lệ đời con của một phép lai rồi hỏi kiểu gene của P ⇒ thuộc dạng \"BT ngược lai một cặp tính trạng\".",
+     "ly_thuyet": "##TC Lai phân tích một cặp tính trạng\nLai phân tích là phép lai giữa cơ thể mang tính trạng trội cần xác định kiểu gene với cơ thể mang tính trạng lặn (aa).\nCơ thể aa chỉ tạo một loại giao tử a nên kiểu hình ở đời con phản ánh trực tiếp các loại giao tử của cơ thể trội.\nAA × aa cho 100% Aa (100% trội); Aa × aa cho 1Aa : 1aa (1 trội : 1 lặn).\n\n##PP\nXác định kiểu gene của cơ thể trội đem lai (nếu là F1 của P thuần chủng thì là Aa) và của cơ thể lặn (aa).\nViết giao tử của hai bên, tổ hợp được kiểu gene ở đời con.\nSuy ra tỉ lệ kiểu hình; nếu cho tổng số cá thể thì nhân với tỉ lệ của loại cần tìm.\n\n##CY\nĐời con đồng tính (100% trội) thì cơ thể trội là AA; đời con phân tính 1 : 1 thì cơ thể trội là Aa.\nCơ thể lặn không che lấp allele nào của cơ thể trội, đó là lí do chọn nó làm cơ thể lai phân tích.\nPhân biệt lai phân tích Aa × aa (1 : 1) với Aa × Aa (3 : 1).",
+     "vi_du": "##VD\nỞ cà chua, allele A quy định quả đỏ trội hoàn toàn so với allele a quy định quả vàng. Đem lai phân tích cây quả đỏ có kiểu gene Aa. Theo lí thuyết, tỉ lệ kiểu hình ở đời con là\nA. 1 quả đỏ : 1 quả vàng\nB. 3 quả đỏ : 1 quả vàng\nC. 100% quả đỏ\nD. 100% quả vàng\n\nBài giải:\nLai phân tích cây quả đỏ Aa nghĩa là lai với cây quả vàng aa.\nSơ đồ lai:\nP: Aa × aa\nG: A, a ; a\nĐời con: 1Aa : 1aa\nAa cho quả đỏ, aa cho quả vàng nên tỉ lệ kiểu hình là 1 quả đỏ : 1 quả vàng.\nChọn A.\n\n##VD\nỞ đậu Hà Lan, allele A quy định thân cao trội hoàn toàn so với allele a quy định thân thấp. Cho cây thân cao thuần chủng giao phấn với cây thân thấp, thu được $F_1$. Đem lai phân tích một cây $F_1$. Theo lí thuyết, tỉ lệ kiểu hình ở đời con là\nA. 100% thân cao\nB. 3 thân cao : 1 thân thấp\nC. 1 thân cao : 3 thân thấp\nD. 1 thân cao : 1 thân thấp\n\nBài giải:\nP: AA × aa, nên $F_1$ có kiểu gene Aa.\nLai phân tích $F_1$ là lai với cây thân thấp aa: Aa × aa\nG: A, a ; a\nĐời con: 1Aa : 1aa\nAa là thân cao, aa là thân thấp nên tỉ lệ kiểu hình ở đời con là 1 thân cao : 1 thân thấp.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00563",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Tái bản DNA và phiên mã tạo RNA",
+   "nhom": "Cấu trúc RNA và quá trình phiên mã",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nCấu tạo chung của RNA: RNA (ribonucleic acid) là đại phân tử sinh học, đơn phân là ribonucleotide; mỗi phân tử gồm hàng trăm hoặc hàng nghìn đơn phân liên kết với nhau bằng liên kết cộng hoá trị.\nCó 4 loại ribonucleotide mang bazơ nitơ A, U, G, C; RNA có uracil (U) thay cho thymine (T).\nRNA có cấu trúc một mạch, kích thước và khối lượng thường nhỏ hơn DNA; được tổng hợp trong nhân (hoặc vùng nhân), hầu hết thực hiện chức năng ở tế bào chất.\nBa loại RNA: mRNA truyền đạt thông tin di truyền và làm khuôn tổng hợp chuỗi polypeptide; tRNA vận chuyển amino acid; rRNA là thành phần chủ yếu của ribosome. Ở tRNA và rRNA, một số vùng tự bắt cặp bổ sung (A–U, G–C) tạo cấu trúc không gian ba chiều.\nPhiên mã là quá trình tổng hợp RNA dựa trên trình tự polynucleotide của gene, diễn ra trong nhân tế bào (hoặc vùng nhân). Chỉ một mạch của gene làm khuôn; nguyên liệu là các ribonucleotide tự do; nguyên tắc bổ sung giữa mạch khuôn và ribonucleotide là A–U, T–A, G–C, C–G.\nKết quả: một phân tử RNA có trình tự bổ sung với mạch khuôn của gene. Ý nghĩa: chuyển thông tin di truyền từ gene sang RNA, mRNA làm khuôn tổng hợp protein.\n\n##PP 2. Các bước làm bài\nXác định đề hỏi về cấu tạo chung, cấu trúc, loại RNA hay quá trình phiên mã.\nVới câu về loại RNA, ghép đúng chức năng: mRNA làm khuôn, tRNA vận chuyển amino acid, rRNA cấu tạo ribosome.\nVới câu về phiên mã, xác định mạch khuôn rồi ghép nucleotide với ribonucleotide theo A–U, T–A, G–C, C–G.\nLoại các phương án nhầm RNA với DNA (có T, hai mạch) hoặc nhầm phiên mã với tái bản, dịch mã.\n\n##CY 3. Lưu ý\nRNA không có T mà có U; trên mạch khuôn A ghép với U, còn T ghép với A.\nPhiên mã chỉ dùng một mạch của gene làm khuôn và tạo một phân tử RNA; tái bản dùng hai mạch.\nRNA nhỏ hơn DNA nhưng vẫn là đại phân tử; RNA tổng hợp ở nhân nhưng hoạt động ở tế bào chất.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01289",
+     "thu_tu": 1,
+     "ten": "THÀNH PHẦN VÀ CẤU TẠO CHUNG CỦA RNA",
+     "mo_ta": "Câu hỏi nhận biết về thành phần và cấu tạo chung của RNA: tên đầy đủ, đơn phân, các loại ribonucleotide, bazơ nitơ đặc trưng, loại liên kết giữa các đơn phân, số đơn phân.\nMỗi câu chỉ hỏi một ý ghi nhớ.\nLưu ý: hỏi số mạch, kích thước, nơi tổng hợp, nơi hoạt động của RNA ⇒ thuộc dạng \"ĐẶC ĐIỂM CẤU TRÚC RNA, NƠI TỔNG HỢP VÀ HOẠT ĐỘNG\".\nLưu ý: câu đặt RNA cạnh DNA để tìm điểm khác nhau về đơn phân ⇒ thuộc dạng \"SO SÁNH THÀNH PHẦN ĐƠN PHÂN DNA – RNA\".",
+     "ly_thuyet": "##TC Thành phần và cấu tạo chung của RNA\nRNA là ribonucleic acid, là đại phân tử sinh học cấu tạo theo nguyên tắc đa phân.\nĐơn phân của RNA là ribonucleotide; mỗi phân tử RNA gồm hàng trăm hoặc hàng nghìn đơn phân.\nCó 4 loại ribonucleotide mang các bazơ nitơ adenine (A), uracil (U), guanine (G), cytosine (C); RNA không có thymine (T).\nCác đơn phân liên kết với nhau bằng liên kết cộng hoá trị, tạo thành chuỗi polyribonucleotide.\n\n##CY\nBazơ nitơ đặc trưng của RNA là uracil (U), thay cho thymine (T) của DNA.\nĐơn phân của RNA là ribonucleotide, không phải deoxyribonucleotide (đơn phân của DNA) hay amino acid (đơn phân của protein).",
+     "vi_du": "##VD\nBốn loại ribonucleotide cấu tạo nên RNA là\nA. A, T, G, C.\nB. A, U, G, C.\nC. A, T, G, U.\nD. A, U, T, C.\n\nBài giải:\nRNA gồm 4 loại ribonucleotide mang các bazơ nitơ adenine (A), uracil (U), guanine (G) và cytosine (C).\nRNA không có thymine (T), thymine được thay bằng uracil (U).\nA, C, D đều có T nên sai.\nChọn B.\n\n##VD\nCác đơn phân trong một mạch RNA liên kết với nhau bằng loại liên kết nào?\nA. Liên kết hydrogen.\nB. Liên kết ion.\nC. Liên kết cộng hoá trị.\nD. Liên kết peptide.\n\nBài giải:\nCác ribonucleotide trong một mạch RNA liên kết với nhau bằng liên kết cộng hoá trị, tạo thành chuỗi polyribonucleotide.\nLiên kết hydrogen là liên kết giữa các cặp bazơ bổ sung, không phải liên kết nối các đơn phân trong một mạch.\nLiên kết peptide nối các amino acid trong chuỗi polypeptide của protein; liên kết ion không phải liên kết nối các đơn phân của RNA.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01290",
+     "thu_tu": 2,
+     "ten": "ĐẶC ĐIỂM CẤU TRÚC RNA, NƠI TỔNG HỢP VÀ HOẠT ĐỘNG",
+     "mo_ta": "Câu hỏi nhận biết về đặc điểm cấu trúc của RNA và nơi tổng hợp, nơi hoạt động: số mạch, kích thước và khối lượng so với DNA, có phải đại phân tử hay không, nơi RNA được tổng hợp, nơi RNA thực hiện chức năng.\nLưu ý: hỏi thành phần đơn phân, bazơ nitơ, liên kết giữa các đơn phân ⇒ thuộc dạng \"THÀNH PHẦN VÀ CẤU TẠO CHUNG CỦA RNA\".\nLưu ý: hỏi chức năng của từng loại mRNA, tRNA, rRNA ⇒ thuộc dạng \"BA LOẠI RNA: mRNA, tRNA, rRNA\".",
+     "ly_thuyet": "##TC Cấu trúc, nơi tổng hợp và hoạt động của RNA\nRNA trong tế bào có cấu trúc một mạch đơn, khác với DNA có hai mạch xoắn kép.\nRNA là đại phân tử sinh học nhưng kích thước và khối lượng thường nhỏ hơn DNA.\nRNA được tổng hợp trong nhân tế bào (hoặc vùng nhân ở sinh vật nhân sơ); hầu hết các RNA sau đó di chuyển ra tế bào chất để thực hiện chức năng.\nDựa vào cấu trúc và chức năng, RNA gồm ba loại chính là mRNA, tRNA và rRNA.\n\n##CY\nRNA nhỏ hơn DNA nhưng vẫn là đại phân tử vì được cấu tạo từ nhiều đơn phân.\nNơi tổng hợp RNA (nhân hoặc vùng nhân) khác nơi RNA thực hiện chức năng (tế bào chất).",
+     "vi_du": "##VD\nTrong tế bào, phân tử RNA có cấu trúc gồm\nA. hai mạch xoắn kép, giống DNA.\nB. một mạch đơn, khác với DNA hai mạch.\nC. ba mạch xoắn vào nhau.\nD. không có cấu trúc mạch xác định.\n\nBài giải:\nKhác với DNA có cấu trúc hai mạch xoắn kép, RNA trong tế bào có cấu trúc một mạch đơn.\nA sai vì đó là cấu trúc của DNA; C và D sai vì RNA là chuỗi polyribonucleotide một mạch có trình tự xác định.\nChọn B.\n\n##VD\nSau khi được tổng hợp, hầu hết các phân tử RNA thực hiện chức năng ở đâu trong tế bào?\nA. Tế bào chất.\nB. Nhân tế bào.\nC. Màng nhân.\nD. Thành tế bào.\n\nBài giải:\nRNA được tổng hợp trong nhân tế bào (hoặc vùng nhân ở sinh vật nhân sơ).\nSau đó hầu hết các RNA di chuyển ra tế bào chất, nơi diễn ra quá trình tổng hợp protein, để thực hiện chức năng.\nB sai vì nhân là nơi tổng hợp RNA; C và D không phải nơi RNA hoạt động.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01291",
+     "thu_tu": 3,
+     "ten": "BA LOẠI RNA: mRNA, tRNA, rRNA",
+     "mo_ta": "Câu hỏi về ba loại RNA mRNA, tRNA, rRNA: chức năng của từng loại, loại RNA làm khuôn trực tiếp tổng hợp chuỗi polypeptide, thành phần cấu tạo ribosome, cấu trúc không gian của tRNA và rRNA.\nBiến thể: nhận biết chức năng một loại RNA; chọn loại RNA theo chức năng; nguyên tắc tự bắt cặp bổ sung ở tRNA và rRNA.\nLưu ý: hỏi quá trình phiên mã tạo ra RNA (khuôn, nguyên liệu, kết quả) ⇒ thuộc dạng \"QUÁ TRÌNH PHIÊN MÃ: KHÁI NIỆM, VỊ TRÍ, KHUÔN, NGUYÊN TẮC BỔ SUNG\" hoặc \"KẾT QUẢ VÀ Ý NGHĨA CỦA PHIÊN MÃ\".",
+     "ly_thuyet": "##TC Ba loại RNA\nmRNA (RNA thông tin): chuỗi polyribonucleotide dạng thẳng, mang thông tin di truyền từ gene và làm khuôn trực tiếp cho quá trình tổng hợp chuỗi polypeptide.\ntRNA (RNA vận chuyển): vận chuyển amino acid tương ứng đến nơi tổng hợp protein.\nrRNA (RNA ribosome): là thành phần chủ yếu cấu tạo nên ribosome, bào quan tổng hợp protein.\nỞ tRNA và rRNA, một số vùng tự bắt cặp bổ sung theo nguyên tắc A–U, G–C tạo cấu trúc không gian ba chiều đặc trưng cho từng loại.\n\n##PP\nNhớ cặp chức năng: mRNA truyền đạt thông tin và làm khuôn; tRNA vận chuyển amino acid; rRNA cấu tạo ribosome.\nĐọc đề để xem hỏi loại RNA hay hỏi chức năng, rồi ghép đúng cặp.\nVới câu về tự bắt cặp, dùng nguyên tắc bổ sung của RNA (A–U, G–C) giữa các ribonucleotide trong cùng một mạch.\n\n##CY\nChỉ mRNA làm khuôn trực tiếp cho quá trình dịch mã; tRNA và rRNA có vai trò khác trong tổng hợp protein.\nRNA tự bắt cặp dùng A–U (không dùng A–T) và vẫn là một mạch, không trở thành mạch kép hoàn chỉnh như DNA.",
+     "vi_du": "##VD\nRNA thông tin (mRNA) có chức năng gì?\nA. Vận chuyển amino acid đến nơi tổng hợp protein.\nB. Cấu tạo nên ribosome.\nC. Dự trữ năng lượng cho tế bào.\nD. Truyền đạt thông tin di truyền, làm khuôn trực tiếp cho quá trình tổng hợp chuỗi polypeptide.\n\nBài giải:\nmRNA là chuỗi polyribonucleotide dạng thẳng, mang thông tin di truyền từ gene.\nmRNA làm khuôn trực tiếp cho quá trình dịch mã tổng hợp chuỗi polypeptide.\nA là chức năng của tRNA; B là vai trò của rRNA; C không phải chức năng của RNA thông tin.\nChọn D.\n\n##VD\nỞ tRNA và rRNA, một số vùng trên phân tử tự bắt cặp bổ sung theo nguyên tắc nào?\nA. A liên kết với U, G liên kết với C.\nB. A liên kết với T, G liên kết với C.\nC. A liên kết với G, U liên kết với C.\nD. Không theo nguyên tắc bổ sung nào.\n\nBài giải:\nMột số vùng trên tRNA và rRNA tự bắt cặp bổ sung giữa các ribonucleotide trong cùng một mạch.\nNguyên tắc bổ sung của RNA là A liên kết U, G liên kết C, giúp phân tử cuộn lại thành cấu trúc không gian ba chiều đặc trưng.\nB sai vì RNA không có T; C ghép sai cặp; D sai vì có bắt cặp bổ sung.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01292",
+     "thu_tu": 4,
+     "ten": "QUÁ TRÌNH PHIÊN MÃ: KHÁI NIỆM, VỊ TRÍ, KHUÔN, NGUYÊN TẮC BỔ SUNG",
+     "mo_ta": "Câu hỏi về quá trình phiên mã ở mức khái niệm và nguyên tắc: phiên mã là gì, diễn ra ở đâu, nguyên liệu, khuôn, nucleotide nào của mạch khuôn liên kết với ribonucleotide nào.\nBiến thể: chọn khái niệm đúng (phân biệt với tái bản, dịch mã); chọn nơi diễn ra; chọn nguyên liệu; chọn cặp bổ sung giữa mạch khuôn và ribonucleotide môi trường; số mạch dùng làm khuôn.\nLưu ý: hỏi sản phẩm, ý nghĩa, mRNA làm gì sau phiên mã ⇒ thuộc dạng \"KẾT QUẢ VÀ Ý NGHĨA CỦA PHIÊN MÃ\".\nLưu ý: đề so sánh trực tiếp phiên mã với tái bản ⇒ thuộc nhóm \"So sánh DNA - RNA và tái bản - phiên mã\".",
+     "ly_thuyet": "##TC Quá trình phiên mã\nPhiên mã là quá trình tổng hợp RNA dựa trên trình tự polynucleotide của gene (DNA).\nPhiên mã diễn ra trong nhân tế bào (sinh vật nhân thực) hoặc vùng nhân (sinh vật nhân sơ).\nChỉ một mạch của gene làm khuôn; nguyên liệu là các ribonucleotide tự do A, U, G, C trong môi trường nội bào.\nNguyên tắc bổ sung giữa mạch khuôn và ribonucleotide: A–U, T–A, G–C, C–G.\n\n##PP\nXác định đề hỏi khái niệm, vị trí, nguyên liệu hay cặp bổ sung.\nVới cặp bổ sung, xác định nucleotide trên mạch khuôn rồi ghép với ribonucleotide tương ứng, nhớ RNA không có T.\nLoại các phương án mô tả tái bản (hai mạch làm khuôn, tạo DNA) hoặc dịch mã (tạo chuỗi polypeptide).\n\n##CY\nTrên mạch khuôn A ghép với U (không phải T), còn T ghép với A.\nPhiên mã tạo RNA, không tạo DNA hay protein; tổng hợp chuỗi polypeptide từ mRNA là dịch mã.",
+     "vi_du": "##VD\nPhiên mã là quá trình\nA. tổng hợp các phân tử RNA dựa trên trình tự polynucleotide của gene (DNA).\nB. tổng hợp DNA dựa trên khuôn RNA.\nC. tổng hợp chuỗi polypeptide dựa trên khuôn mRNA.\nD. nhân đôi DNA tạo ra hai phân tử DNA con.\n\nBài giải:\nPhiên mã là quá trình tổng hợp RNA dựa trên trình tự polynucleotide của gene (DNA), nên A đúng.\nB sai vì phiên mã không tạo DNA từ khuôn RNA.\nC mô tả quá trình dịch mã (tổng hợp chuỗi polypeptide từ mRNA).\nD mô tả quá trình tái bản DNA.\nChọn A.\n\n##VD\nTrong quá trình phiên mã, nucleotide loại A trên mạch khuôn liên kết với ribonucleotide loại nào của môi trường?\nA. A.\nB. T.\nC. G.\nD. U.\n\nBài giải:\nNguyên liệu của phiên mã là các ribonucleotide A, U, G, C; RNA không có T.\nTheo nguyên tắc bổ sung, A trên mạch khuôn liên kết với U của môi trường.\nA sai vì A không bổ sung với A; B sai vì môi trường phiên mã không có T; C sai vì G bổ sung với C.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01293",
+     "thu_tu": 5,
+     "ten": "KẾT QUẢ VÀ Ý NGHĨA CỦA PHIÊN MÃ",
+     "mo_ta": "Câu hỏi về kết quả và ý nghĩa của phiên mã: sản phẩm trực tiếp, mối quan hệ gene, phiên mã và RNA, vai trò của mRNA sau phiên mã, ý nghĩa đối với tế bào, nhận định đúng hoặc sai về phiên mã.\nBiến thể: chọn sản phẩm; chọn ý nghĩa; chọn nhận định sai; đếm số phát biểu đúng về phiên mã.\nLưu ý: hỏi khái niệm, nơi diễn ra, nguyên liệu, cặp ghép nucleotide ⇒ thuộc dạng \"QUÁ TRÌNH PHIÊN MÃ: KHÁI NIỆM, VỊ TRÍ, KHUÔN, NGUYÊN TẮC BỔ SUNG\".\nLưu ý: hỏi chức năng của ba loại RNA ⇒ thuộc dạng \"BA LOẠI RNA: mRNA, tRNA, rRNA\".",
+     "ly_thuyet": "##TC Kết quả và ý nghĩa của phiên mã\nSản phẩm của phiên mã là một phân tử RNA có trình tự ribonucleotide bổ sung với mạch khuôn của gene.\nTrình tự ribonucleotide trên RNA được quy định bởi trình tự nucleotide trên mạch khuôn; gene không bị thay đổi sau phiên mã.\nÝ nghĩa: chuyển thông tin di truyền từ gene (DNA) sang RNA; mRNA sau đó làm khuôn tổng hợp protein quy định tính trạng.\nPhiên mã cần enzyme xúc tác cho việc tháo xoắn và tổng hợp RNA.\n\n##PP\nXác định phát biểu nói về khuôn, nguyên tắc, sản phẩm hay ý nghĩa.\nĐối chiếu từng phát biểu với kiến thức: một mạch khuôn, A–U và G–C, sản phẩm là RNA một mạch, cần enzyme.\nVới câu đếm hoặc chọn sai, loại trừ lần lượt các phát biểu đúng.\n\n##CY\nPhiên mã chỉ dùng một mạch của gene làm khuôn, khác với tái bản dùng cả hai mạch.\nSản phẩm của phiên mã là RNA (một mạch), không phải DNA hay chuỗi polypeptide.",
+     "vi_du": "##VD\nKết quả của quá trình phiên mã là tạo ra\nA. một phân tử RNA có trình tự ribonucleotide bổ sung với mạch khuôn của gene.\nB. hai phân tử DNA giống hệt gene ban đầu.\nC. một chuỗi polypeptide hoàn chỉnh.\nD. bốn loại protein khác nhau.\n\nBài giải:\nPhiên mã dùng một mạch của gene làm khuôn, các ribonucleotide tự do liên kết vào theo nguyên tắc bổ sung.\nSản phẩm trực tiếp là một phân tử RNA có trình tự ribonucleotide bổ sung với mạch khuôn.\nB là kết quả của tái bản; C là kết quả của dịch mã; D không phải sản phẩm của phiên mã.\nChọn A.\n\n##VD\nCho các phát biểu sau về phiên mã:\n(1) Diễn ra trong nhân tế bào hoặc vùng nhân.\n(2) Chỉ một mạch của gene được dùng làm khuôn.\n(3) Nguyên tắc bổ sung: A khuôn với U môi trường, G khuôn với C môi trường.\n(4) Sản phẩm là một phân tử RNA.\n(5) Enzyme không tham gia vào quá trình phiên mã.\nSố phát biểu đúng là\nA. 5 phát biểu.\nB. 3 phát biểu.\nC. 2 phát biểu.\nD. 4 phát biểu.\n\nBài giải:\n(1) đúng: phiên mã diễn ra trong nhân tế bào hoặc vùng nhân.\n(2) đúng: chỉ một mạch của gene làm khuôn.\n(3) đúng: A khuôn ghép với U môi trường, G khuôn ghép với C môi trường.\n(4) đúng: sản phẩm là một phân tử RNA.\n(5) sai vì phiên mã cần enzyme xúc tác cho việc tháo xoắn và tổng hợp RNA.\nCó 4 phát biểu đúng.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00559",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Đột biến gene",
+   "nhom": "Giải thích sự thay đổi chiều dài, số liên kết H và nguyên nhân dẫn tới đột biến",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nMất một cặp nucleotide: số cặp giảm 1, chiều dài giảm 3,4 Å.\nThêm một cặp nucleotide: số cặp tăng 1, chiều dài tăng 3,4 Å.\nThay thế một cặp nucleotide: số cặp và chiều dài không đổi.\nCặp A – T có 2 liên kết hydrogen, cặp G – C có 3 liên kết hydrogen.\nThay A – T bằng G – C: số liên kết hydrogen tăng 1; thay G – C bằng A – T: giảm 1.\n\n##PP 2. Các bước làm bài\nSo sánh số cặp nucleotide (hoặc chiều dài) trước và sau đột biến để xác định thay thế, mất hay thêm.\nDựa vào độ thay đổi số liên kết hydrogen để xác định loại cặp A – T hay G – C.\nĐối chiếu với các phương án rồi chọn đáp án.\n\n##CY 3. Lưu ý\nSố cặp nucleotide là dấu hiệu chắc chắn để phân biệt thay thế với mất/thêm.\nMỗi cặp thay thế làm đổi 1 liên kết hydrogen; thay thế 2 cặp thì đổi 2.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01559",
+     "thu_tu": 1,
+     "ten": "Xác định dạng đột biến khi biết số cặp nucleotide và số liên kết hydrogen thay đổi",
+     "mo_ta": "Đề cho sự thay đổi số cặp nucleotide (giữ nguyên, tăng hoặc giảm 1) và sự thay đổi số liên kết hydrogen.\nHỏi đột biến thuộc dạng nào và liên quan cặp A – T hay G – C.\nLưu ý: đề cho chiều dài thay đổi thay vì số cặp ⇒ thuộc dạng \"Xác định dạng đột biến khi biết chiều dài và số liên kết hydrogen thay đổi\".",
+     "ly_thuyet": "##PP Cách làm\nSố cặp nucleotide không đổi ⇒ thay thế; tăng 1 ⇒ thêm; giảm 1 ⇒ mất.\nVới mất hoặc thêm: H đổi 2 là cặp A – T, đổi 3 là cặp G – C.\nVới thay thế: H tăng 1 là A – T thành G – C, H giảm 1 là G – C thành A – T.\n\n##CY Lỗi hay mắc\nChọn sai chiều: thêm làm tăng, mất làm giảm số liên kết hydrogen.",
+     "vi_du": "##VD\nMột gene bị đột biến. So với gene ban đầu, gene sau đột biến có số cặp nucleotide KHÔNG đổi nhưng số liên kết hydrogen tăng thêm 1. Đột biến này thuộc dạng nào?\nA. Mất một cặp nucleotide.\nB. Thêm một cặp nucleotide.\nC. Thay thế một cặp G-C bằng một cặp A-T.\nD. Thay thế một cặp A-T bằng một cặp G-C.\n\nBài giải:\nSố cặp nucleotide không đổi nên đây là đột biến thay thế (loại A, B).\nSố liên kết hydrogen tăng 1 nên cặp A – T (2 liên kết) đã đổi thành cặp G – C (3 liên kết); phương án C làm H giảm.\nChọn D.\n\n##VD\nMột gene bị đột biến. So với gene ban đầu, gene sau đột biến có số cặp nucleotide giảm đi 1 và số liên kết hydrogen giảm đi 3. Đột biến này thuộc dạng nào?\nA. Mất một cặp A-T.\nB. Mất một cặp G-C.\nC. Thêm một cặp G-C.\nD. Thay thế một cặp A-T bằng một cặp G-C.\n\nBài giải:\nSố cặp nucleotide giảm 1 nên đây là đột biến mất (loại C, D).\nSố liên kết hydrogen giảm 3 nên cặp bị mất là G – C (mất A – T chỉ giảm 2).\nChọn B."
+    },
+    {
+     "dang_id": "KDB01560",
+     "thu_tu": 2,
+     "ten": "Xác định dạng đột biến khi biết chiều dài và số liên kết hydrogen thay đổi",
+     "mo_ta": "Đề cho chiều dài gene không đổi hoặc thay đổi 3,4 Å, kèm sự thay đổi số liên kết hydrogen.\nHỏi đột biến thuộc dạng nào, kể cả thay thế nhiều cặp.\nLưu ý: đề nói về số cặp nucleotide ⇒ thuộc dạng \"Xác định dạng đột biến khi biết số cặp nucleotide và số liên kết hydrogen thay đổi\".",
+     "ly_thuyet": "##PP Cách làm\nĐổi chiều dài sang số cặp: mỗi cặp nucleotide dài 3,4 Å.\nChiều dài không đổi ⇒ thay thế; giảm 3,4 Å ⇒ mất 1 cặp; tăng 3,4 Å ⇒ thêm 1 cặp.\nDựa vào độ thay đổi số liên kết hydrogen để xác định loại cặp và số cặp bị thay.\n\n##CY Lỗi hay mắc\nThay thế nhiều cặp: H tăng 2 có thể do thay 2 cặp A – T bằng 2 cặp G – C.",
+     "vi_du": "##VD\nMột gene bị đột biến. So với gene ban đầu, gene sau đột biến có chiều dài giảm 3,4 Å và số liên kết hydrogen giảm 2. Đột biến này thuộc dạng nào?\nA. Mất một cặp G-C.\nB. Thêm một cặp A-T.\nC. Thay thế một cặp A-T bằng một cặp G-C.\nD. Mất một cặp A-T.\n\nBài giải:\nChiều dài giảm 3,4 Å ứng với mất đúng 1 cặp nucleotide (loại B, C).\nSố liên kết hydrogen giảm 2 nên cặp bị mất là A – T (mất G – C sẽ giảm 3).\nChọn D.\n\n##VD\nMột gene bị đột biến. So với gene ban đầu, gene sau đột biến có chiều dài KHÔNG đổi nhưng số liên kết hydrogen tăng thêm 2. Đột biến này thuộc dạng nào?\nA. Thay thế 1 cặp A-T bằng 1 cặp G-C.\nB. Mất 1 cặp A-T.\nC. Thay thế 2 cặp A-T bằng 2 cặp G-C.\nD. Thêm 1 cặp G-C.\n\nBài giải:\nChiều dài không đổi nên đây là đột biến thay thế (loại B, D).\nMỗi cặp A – T thay bằng G – C làm H tăng 1; H tăng 2 nên phải thay 2 cặp.\nChọn C."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09000000244",
+   "nhom_id": "KNB00550",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một quần thể cây ban đầu toàn kiểu gene Aa, cho tự thụ phấn liên tiếp qua 3 thế hệ. Tỉ lệ kiểu gene đồng hợp trội AA ở thế hệ thứ 3 là bao nhiêu?",
+   "lua_chon": [
+    "1/8",
+    "7/16",
+    "3/8",
+    "1/4"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Sau n thế hệ tự thụ từ 100% Aa: tỉ lệ Aa = (1/2)^n = 1/8; tỉ lệ AA = aa = (1 − 1/8)/2 = 7/16.\n\nVì sao các phương án khác sai:\n- A: 1/8 là tỉ lệ kiểu gene dị hợp Aa ở thế hệ 3, không phải đồng hợp trội AA.\n- C: 3/8 là tỉ lệ AA ở thế hệ thứ 2, chưa đủ 3 thế hệ tự thụ như đề bài.\n- D: 1/4 là tỉ lệ Aa ở thế hệ thứ 2, không phải AA ở thế hệ thứ 3."
+  },
+  {
+   "ma_cau": "K09000000245",
+   "nhom_id": "KNB00550",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một quần thể cây ban đầu có 1/2 số cây mang kiểu gene AA, 1/2 số cây mang kiểu gene Aa (không có aa). Cho quần thể tự thụ phấn liên tiếp qua 2 thế hệ. Tỉ lệ kiểu gene Aa ở thế hệ thứ 2 là bao nhiêu?",
+   "lua_chon": [
+    "1/4",
+    "1/8",
+    "1/16",
+    "3/16"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Thế hệ 1: AA giữ nguyên AA; Aa tự thụ → 1/4AA:1/2Aa:1/4aa. Quần thể sau thế hệ 1: AA=1/2+1/2×1/4=5/8, Aa=1/2×1/2=1/4, aa=1/2×1/4=1/8. Thế hệ 2: AA (5/8) giữ nguyên; Aa (1/4) tự thụ tiếp → thêm 1/16AA:1/8Aa:1/16aa; aa (1/8) giữ nguyên. Tổng Aa ở thế hệ 2 = 1/8.\n\nVì sao các phương án khác sai:\n- A: 1/4 là tỉ lệ Aa ở thế hệ thứ nhất, chưa tính thêm một lần tự thụ phấn nữa.\n- C: 1/16 chỉ là một phần trong phép tính trung gian ở thế hệ 2, chưa phải tổng tỉ lệ Aa đúng.\n- D: 3/16 là tỉ lệ kiểu gene aa ở thế hệ thứ hai, không phải tỉ lệ Aa."
+  },
+  {
+   "ma_cau": "K09000000246",
+   "nhom_id": "KNB00550",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Cho cây Aa tự thụ phấn qua 2 thế hệ, sau đó chọn riêng các cây dị hợp Aa ở thế hệ 2 đem tự thụ tiếp 1 thế hệ nữa. Tỉ lệ kiểu gene aa ở thế hệ cuối cùng này là bao nhiêu?",
+   "lua_chon": [
+    "7/16",
+    "3/8",
+    "1/2",
+    "1/4"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chỉ chọn các cây Aa (100% dị hợp) đem tự thụ 1 thế hệ mới tương đương phép lai Aa × Aa chuẩn → 1AA:2Aa:1aa → tỉ lệ aa = 1/4.\n\nVì sao các phương án khác sai:\n- A: 7/16 là kết quả nếu tính liên tục 3 thế hệ từ quần thể ban đầu, không tính việc chỉ chọn cây Aa để tự thụ tiếp.\n- B: 3/8 là tỉ lệ đồng hợp ở thế hệ thứ 2 của quần thể ban đầu, không phải kết quả sau khi chọn lại cây Aa.\n- C: 1/2 là tỉ lệ Aa ở thế hệ đầu tiên, không phải tỉ lệ aa sau khi các cây Aa được chọn tự thụ tiếp."
+  },
+  {
+   "ma_cau": "K09000000247",
+   "nhom_id": "KNB00563",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Mạch gốc (mạch khuôn) của một đoạn gene có trình tự: –T–A–C–G–G–A–. Trình tự mRNA được tổng hợp từ mạch gốc này là gì?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S110302-02-001-hinh.png)",
+   "lua_chon": [
+    "–A–U–G–C–C–U–",
+    "–U–A–C–G–G–A–",
+    "–A–T–G–C–C–T–",
+    "–A–U–C–G–G–U–"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Ghép bổ sung mạch khuôn với ribonucleotide: A→U, T→A, C→G, G→C, G→C, A→U, được mRNA –A–U–G–C–C–U–.\n\nVì sao các phương án khác sai:\n- B: Sai: chỉ đổi T thành U, chưa ghép bổ sung đúng cho A, G, C còn lại.\n- C: Sai: đây là mạch bổ sung của DNA (còn chứa T), không phải mRNA (phải có U).\n- D: Sai: bắt cặp đúng A–U, T–A nhưng quên đổi G thành C, C thành G."
+  },
+  {
+   "ma_cau": "K09000000248",
+   "nhom_id": "KNB00563",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Mạch gốc (mạch khuôn) của một đoạn gene có trình tự: –T–A–G–C–C–C–. Trình tự mRNA được tổng hợp từ mạch gốc này là gì?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S110302-02-002-hinh.png)",
+   "lua_chon": [
+    "–A–T–C–G–G–G–",
+    "–A–U–C–G–G–G–",
+    "–A–U–G–C–C–C–",
+    "–U–A–G–C–C–C–"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ghép bổ sung mạch khuôn: T→A, A→U, G→C, C→G, C→G, C→G, được mRNA –A–U–C–G–G–G–.\n\nVì sao các phương án khác sai:\n- A: Sai: đây là mạch bổ sung của DNA (còn chứa T), không phải mRNA (phải có U).\n- C: Sai: bắt cặp đúng A–U, T–A nhưng quên đổi G thành C, C thành G.\n- D: Sai: chỉ đổi T thành U, chưa ghép bổ sung đúng cho A, G, C còn lại."
+  },
+  {
+   "ma_cau": "K09000000249",
+   "nhom_id": "KNB00563",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Mạch gốc (mạch khuôn) của một đoạn gene có trình tự: –A–T–G–G–C–A–. Trình tự mRNA được tổng hợp từ mạch gốc này là gì?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S110302-02-003-hinh.png)",
+   "lua_chon": [
+    "–A–U–G–G–C–A–",
+    "–T–A–C–C–G–T–",
+    "–U–A–C–C–G–U–",
+    "–U–A–G–G–C–U–"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ghép bổ sung mạch khuôn: A→U, T→A, G→C, G→C, C→G, A→U, được mRNA –U–A–C–C–G–U–.\n\nVì sao các phương án khác sai:\n- A: Sai: chỉ đổi T thành U, chưa ghép bổ sung đúng cho A, G, C còn lại.\n- B: Sai: đây là mạch bổ sung của DNA (còn chứa T), không phải mRNA (phải có U).\n- D: Sai: bắt cặp đúng A–U, T–A nhưng quên đổi G thành C, C thành G."
+  },
+  {
+   "ma_cau": "K09000000250",
+   "nhom_id": "KNB00563",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Mạch gốc (mạch khuôn) của một đoạn gene có trình tự: –T–G–C–A–T–G–. Trình tự mRNA được tổng hợp từ mạch gốc này là gì?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S110302-02-004-hinh.png)",
+   "lua_chon": [
+    "–A–G–C–U–A–G–",
+    "–U–G–C–A–U–G–",
+    "–A–C–G–T–A–C–",
+    "–A–C–G–U–A–C–"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Ghép bổ sung mạch khuôn: T→A, G→C, C→G, A→U, T→A, G→C, được mRNA –A–C–G–U–A–C–.\n\nVì sao các phương án khác sai:\n- A: Sai: bắt cặp đúng A–U, T–A nhưng quên đổi G thành C, C thành G.\n- B: Sai: chỉ đổi T thành U, chưa ghép bổ sung đúng cho A, G, C còn lại.\n- C: Sai: đây là mạch bổ sung của DNA (còn chứa T), không phải mRNA (phải có U)."
+  },
+  {
+   "ma_cau": "K09000000251",
+   "nhom_id": "KNB00563",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Mạch gốc (mạch khuôn) của một đoạn gene có trình tự: –G–A–T–C–C–T–. Trình tự mRNA được tổng hợp từ mạch gốc này là gì?",
+   "lua_chon": [
+    "–G–A–T–C–C–T–",
+    "–C–T–A–G–G–A–",
+    "–A–G–G–A–U–C–",
+    "–C–U–A–G–G–A–"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Áp dụng bổ sung A–U, T–A, G–C, C–G theo từng vị trí: G A T C C T (mạch gốc) → C U A G G A (mRNA).\n\nVì sao các phương án khác sai:\n- A: Đây là mạch gốc, chưa áp dụng nguyên tắc bổ sung để tổng hợp mRNA.\n- B: RNA không có T, vị trí bổ sung với A trên mạch gốc phải là U, không phải T.\n- C: Trình tự mRNA phải giữ đúng thứ tự vị trí tương ứng với mạch gốc, không đảo ngược."
+  },
+  {
+   "ma_cau": "K09000000252",
+   "nhom_id": "KNB00563",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Mạch gốc (mạch khuôn) của một đoạn gene có trình tự: –C–C–A–T–G–A–. Trình tự mRNA được tổng hợp từ mạch gốc này là gì?",
+   "lua_chon": [
+    "–G–G–U–A–C–U–",
+    "–C–C–A–T–G–A–",
+    "–G–G–T–A–C–T–",
+    "–U–C–A–U–G–G–"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Áp dụng bổ sung A–U, T–A, G–C, C–G theo từng vị trí: C C A T G A (mạch gốc) → G G U A C U (mRNA).\n\nVì sao các phương án khác sai:\n- B: Đây là mạch gốc, chưa áp dụng nguyên tắc bổ sung để tổng hợp mRNA.\n- C: RNA không có T, vị trí bổ sung với A trên mạch gốc phải là U, không phải T.\n- D: Trình tự mRNA phải giữ đúng thứ tự vị trí tương ứng với mạch gốc, không đảo ngược."
+  },
+  {
+   "ma_cau": "K09000000253",
+   "nhom_id": "KNB00563",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một bạn giải bài toán: \"Mạch gốc của gene có trình tự 3′-TACGGATTG-5′. Bạn viết trình tự mRNA tương ứng là 5′-ATGCCTAAC-3′ (thay T bằng T, không đổi thành U).\" Bạn đã sai ở bước nào?",
+   "lua_chon": [
+    "Không sai: mRNA là 5′-ATGCCTAAC-3′",
+    "Sai: phải đọc mạch gốc theo chiều 5′ → 3′",
+    "Sai: mRNA đúng là 5′-AUGCCUAAC-3′",
+    "Sai: mRNA đúng là 3′-TACGGATTG-5′"
+   ],
+   "dap_an": "C",
+   "loi_giai": "RNA không chứa base thymine (T) mà chứa uracil (U), thay thế cho T; base A trên mạch gốc sẽ bắt cặp bổ sung với U trên mRNA. Trình tự mRNA đúng ứng với mạch gốc 3′-TACGGATTG-5′ phải là 5′-AUGCCUAAC-3′, trong đó mọi vị trí đối diện A trên mạch gốc chuyển thành U, không phải giữ nguyên T.\n\nVì sao các phương án khác sai:\n- A: RNA không có T; A trên mạch gốc bổ sung với U.\n- B: Chiều đọc đã đúng; lỗi là dùng T thay cho U.\n- D: mRNA bổ sung với mạch gốc, không giống mạch gốc."
+  },
+  {
+   "ma_cau": "K09000000254",
+   "nhom_id": "KNB00559",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Mạch gốc của một gene trước và sau đột biến: Trước ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S110502-01-001-de.png) Sau ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S110502-01-001-de-2.png) . Đột biến trên thuộc dạng nào?",
+   "lua_chon": [
+    "Thêm một cặp nucleotide",
+    "Thay thế một cặp nucleotide",
+    "Không có đột biến xảy ra",
+    "Mất một cặp nucleotide"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Trình tự sau chỉ còn 5 nucleotide so với 6 nucleotide ban đầu (mất chữ T ở giữa), đây là đột biến mất một cặp nucleotide.\n\nVì sao các phương án khác sai:\n- A: Thêm một cặp nucleotide làm số nucleotide TĂNG thêm 1, ở đây số nucleotide lại giảm (từ 6 còn 5).\n- B: Thay thế một cặp nucleotide không làm đổi số nucleotide, ở đây số nucleotide đã giảm.\n- C: Hai trình tự khác nhau cả về số lượng nucleotide nên chắc chắn có đột biến xảy ra."
+  },
+  {
+   "ma_cau": "K09000000255",
+   "nhom_id": "KNB00559",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Mạch gốc của một gene trước và sau đột biến: Trước AATCGG, Sau AATTCGG. Đột biến trên thuộc dạng nào?",
+   "lua_chon": [
+    "Thêm một cặp nucleotide",
+    "Mất một cặp nucleotide",
+    "Thay thế một cặp nucleotide",
+    "Đảo vị trí hai nucleotide cho nhau"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Trình tự sau có 7 nucleotide, nhiều hơn 1 so với 6 nucleotide ban đầu (thêm chữ T), đây là đột biến thêm một cặp nucleotide.\n\nVì sao các phương án khác sai:\n- B: Mất một cặp nucleotide làm số nucleotide GIẢM đi 1, ở đây số nucleotide lại tăng (từ 6 lên 7).\n- C: Thay thế một cặp nucleotide không làm đổi số nucleotide, ở đây số nucleotide đã tăng.\n- D: Đảo vị trí không làm đổi số lượng nucleotide, ở đây số nucleotide đã tăng thêm 1."
+  },
+  {
+   "ma_cau": "K09000000256",
+   "nhom_id": "KNB00559",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Mạch gốc của một gene trước và sau đột biến: Trước CGTACG, Sau CGTTCG. Đột biến trên thuộc dạng nào?",
+   "lua_chon": [
+    "Mất một cặp nucleotide",
+    "Thay thế một cặp nucleotide",
+    "Thêm một cặp nucleotide",
+    "Đảo vị trí hai nucleotide cho nhau"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Hai trình tự có cùng độ dài 6 nucleotide, chỉ khác nhau ở vị trí thứ 4 (A đổi thành T), đây là đột biến thay thế một cặp nucleotide.\n\nVì sao các phương án khác sai:\n- A: Mất một cặp nucleotide làm số nucleotide giảm đi, ở đây hai trình tự vẫn cùng có 6 nucleotide.\n- C: Thêm một cặp nucleotide làm số nucleotide tăng lên, ở đây hai trình tự vẫn cùng có 6 nucleotide.\n- D: Đảo vị trí giữ nguyên thành phần các loại nucleotide, ở đây A đã mất và thay bằng T (thành phần đổi khác)."
+  },
+  {
+   "ma_cau": "K09000000257",
+   "nhom_id": "KNB00559",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Trình tự một đoạn gene trước và sau đột biến: Trước ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S110502-01-004-de.png) Sau ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S110502-01-004-de-2.png) . Đột biến trên thuộc dạng nào?",
+   "lua_chon": [
+    "Thêm một cặp nucleotide",
+    "Thay thế một cặp nucleotide",
+    "Mất một cặp nucleotide",
+    "Không có đột biến xảy ra"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Trình tự sau chỉ còn 6 nucleotide so với 7 nucleotide ban đầu (mất một chữ G), đây là đột biến mất một cặp nucleotide.\n\nVì sao các phương án khác sai:\n- A: Thêm một cặp nucleotide làm số nucleotide tăng lên, ở đây số nucleotide đã giảm (từ 7 còn 6).\n- B: Thay thế một cặp nucleotide không làm đổi số nucleotide, ở đây số nucleotide đã giảm.\n- D: Hai trình tự khác nhau cả về số lượng nucleotide nên chắc chắn có đột biến xảy ra."
+  },
+  {
+   "ma_cau": "K09000000258",
+   "nhom_id": "KNB00559",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Mạch gốc của một gene trước và sau đột biến: Trước TTGCAC, Sau TTGGCAC. Đột biến trên thuộc dạng nào?",
+   "lua_chon": [
+    "Mất một cặp nucleotide",
+    "Thay thế một cặp nucleotide",
+    "Đảo vị trí hai nucleotide cho nhau",
+    "Thêm một cặp nucleotide"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Trình tự sau có 7 nucleotide, nhiều hơn 1 so với 6 nucleotide ban đầu (thêm chữ G), đây là đột biến thêm một cặp nucleotide.\n\nVì sao các phương án khác sai:\n- A: Mất một cặp nucleotide làm số nucleotide giảm đi, ở đây số nucleotide đã tăng (từ 6 lên 7).\n- B: Thay thế một cặp nucleotide không làm đổi số nucleotide, ở đây số nucleotide đã tăng.\n- C: Đảo vị trí không làm đổi số lượng nucleotide, ở đây số nucleotide đã tăng thêm 1."
+  },
+  {
+   "ma_cau": "K09000000259",
+   "nhom_id": "KNB00559",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Mạch gốc của một gene trước và sau đột biến: Trước ACGGTA, Sau ACGCTA. Đột biến trên thuộc dạng nào?",
+   "lua_chon": [
+    "Thay thế một cặp nucleotide",
+    "Mất một cặp nucleotide",
+    "Thêm một cặp nucleotide",
+    "Đảo vị trí hai nucleotide cho nhau"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Hai trình tự có cùng độ dài 6 nucleotide, chỉ khác nhau ở vị trí thứ 4 (G đổi thành C), đây là đột biến thay thế một cặp nucleotide.\n\nVì sao các phương án khác sai:\n- B: Mất một cặp nucleotide làm số nucleotide giảm đi, ở đây hai trình tự vẫn cùng có 6 nucleotide.\n- C: Thêm một cặp nucleotide làm số nucleotide tăng lên, ở đây hai trình tự vẫn cùng có 6 nucleotide.\n- D: Đảo vị trí giữ nguyên thành phần các loại nucleotide, ở đây G đã mất và thay bằng C (thành phần đổi khác)."
+  },
+  {
+   "ma_cau": "K09000000260",
+   "nhom_id": "KNB00559",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Mạch gốc của một gene trước và sau đột biến: Trước: GCATGC, Sau: GCATTGC. Đột biến trên thuộc dạng nào?",
+   "lua_chon": [
+    "Mất một cặp nucleotide",
+    "Thay thế một cặp nucleotide",
+    "Thêm một cặp nucleotide",
+    "Không phải đột biến gene"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mạch gốc dài thêm 1 nucleotide (từ 6 lên 7) → đây là đột biến dạng thêm một cặp nucleotide.\n\nVì sao các phương án khác sai:\n- A: Số nucleotide sau đột biến nhiều hơn trước, không phải dạng mất.\n- B: Thay thế không làm đổi tổng số nucleotide, nhưng ở đây số nucleotide đã tăng thêm 1.\n- D: Trình tự đã thay đổi so với ban đầu, đây vẫn là một dạng đột biến gene."
+  },
+  {
+   "ma_cau": "K09000000261",
+   "nhom_id": "KNB00559",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Mạch gốc của một gene trước và sau đột biến: Trước: TAGGCT, Sau: TAGCT. Đột biến trên thuộc dạng nào?",
+   "lua_chon": [
+    "Mất một cặp nucleotide",
+    "Thêm một cặp nucleotide",
+    "Thay thế một cặp nucleotide",
+    "Không phải đột biến gene"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mạch gốc ngắn đi 1 nucleotide (từ 6 xuống 5) → đây là đột biến dạng mất một cặp nucleotide.\n\nVì sao các phương án khác sai:\n- B: Số nucleotide sau đột biến ít hơn trước, không phải dạng thêm.\n- C: Thay thế không làm đổi tổng số nucleotide, nhưng ở đây số nucleotide đã giảm đi 1.\n- D: Trình tự đã thay đổi so với ban đầu, đây vẫn là một dạng đột biến gene."
+  },
+  {
+   "ma_cau": "K09000000262",
+   "nhom_id": "KNB00559",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Mạch gốc của một gene trước và sau đột biến: Trước: CATGGA, Sau: CATCGA. Đột biến trên thuộc dạng nào?",
+   "lua_chon": [
+    "Thay thế một cặp nucleotide",
+    "Mất một cặp nucleotide",
+    "Thêm một cặp nucleotide",
+    "Không phải đột biến gene"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tổng số nucleotide không đổi (vẫn 6), chỉ có một vị trí đổi từ G sang C → đây là đột biến dạng thay thế một cặp nucleotide.\n\nVì sao các phương án khác sai:\n- B: Tổng số nucleotide không đổi (vẫn 6), không phải dạng mất.\n- C: Tổng số nucleotide không đổi (vẫn 6), không phải dạng thêm.\n- D: Trình tự đã đổi một vị trí (G thành C) so với ban đầu, đây là một dạng đột biến gene."
+  }
+ ]
+}

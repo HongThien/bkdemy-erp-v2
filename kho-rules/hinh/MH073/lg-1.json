@@ -1,0 +1,50 @@
+[
+ {
+  "ma": "BT.08.073.01",
+  "so": "B1",
+  "loi_giai": "Vì $HD \\perp AB$ (gt) nên $\\widehat{ADH} = 90^\\circ$.\nVì $HE \\perp AC$ (gt) nên $\\widehat{AEH} = 90^\\circ$.\nVì $D \\in AB$, $E \\in AC$ và tam giác $ABC$ vuông ở $A$ nên $\\widehat{DAE} = \\widehat{BAC} = 90^\\circ$.\nTứ giác $ADHE$ có $\\widehat{DAE} = \\widehat{ADH} = \\widehat{AEH} = 90^\\circ$ nên $ADHE$ là hình chữ nhật.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.073.02",
+  "so": "B2",
+  "loi_giai": "Vì $ADHE$ là hình chữ nhật (theo B1) nên hai đường chéo $AH$ và $DE$ bằng nhau và cắt nhau tại trung điểm $O$ của mỗi đường, do đó $OA = OE$.\nSuy ra $\\Delta OAE$ cân tại $O$ nên $\\widehat{OEA} = \\widehat{OAE}$, hay $\\widehat{AED} = \\widehat{HAC}$ (vì $O \\in DE$, $O \\in AH$).\nTrong $\\Delta AHC$ vuông ở $H$ có $\\widehat{HAC} + \\widehat{ACB} = 90^\\circ$ nên $\\widehat{AED} + \\widehat{ACB} = 90^\\circ$ (1).\nVì $\\Delta ABC$ vuông ở $A$ có $AM$ là đường trung tuyến ứng với cạnh huyền $BC$ nên $MA = MC = \\dfrac{BC}{2}$.\nSuy ra $\\Delta MAC$ cân tại $M$ nên $\\widehat{MAC} = \\widehat{ACB}$ (2).\nGọi $N$ là giao điểm của $AM$ và $DE$ (điểm $M$ nằm trong góc $\\widehat{DAE}$ nên tia $AM$ cắt đoạn $DE$).\nKhi đó $\\widehat{NAE} = \\widehat{MAC}$ và $\\widehat{AEN} = \\widehat{AED}$.\nTừ (1) và (2) suy ra $\\widehat{NAE} + \\widehat{AEN} = \\widehat{ACB} + \\widehat{AED} = 90^\\circ$.\nTrong $\\Delta ANE$ có $\\widehat{ANE} = 180^\\circ - (\\widehat{NAE} + \\widehat{AEN}) = 90^\\circ$.\nVậy $AM \\perp DE$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.073.03",
+  "so": "B3",
+  "loi_giai": "Gọi $N$ là giao điểm của $AM$ và $DE$. Vì $D, E$ nằm trên các cạnh $AB, AC$ (khác $B, C$) nên đoạn $DE$ nằm trong tam giác $ABC$, do đó $N$ nằm giữa $A$ và $M$, $N \\ne M$. Suy ra $M \\notin DE$ (vì $AM$ và $DE$ chỉ có một điểm chung là $N$), nên $M \\ne O$.\nTheo B2, $AM \\perp DE$.\nNếu $DE \\parallel BC$ thì $AM \\perp BC$. Mà $AH \\perp BC$ nên $AM$ và $AH$ trùng nhau, suy ra $H \\equiv M$. Khi đó $AH$ vừa là đường cao vừa là đường trung tuyến của $\\Delta ABC$ nên $\\Delta ABC$ cân tại $A$, trái với giả thiết $AB \\ne AC$.\nVậy $DE$ cắt $BC$. Gọi $P$ là giao điểm của $DE$ và $BC$. Vì $M \\notin DE$ nên $P \\ne M$.\nXét $\\Delta APM$ (ba điểm $P, H, M$ cùng thuộc $BC$, $A \\notin BC$):\nVì $AH \\perp BC$ nên $AH$ là đường cao kẻ từ $A$.\nVì $P \\in DE$ và $DE \\perp AM$ nên $DE$ là đường cao kẻ từ $P$.\nHai đường cao $AH$ và $DE$ cắt nhau tại $O$ nên $O$ là trực tâm của $\\Delta APM$.\nSuy ra đường cao thứ ba đi qua $M$ cũng đi qua $O$, tức là $MO \\perp AP$.\nĐường thẳng $xy$ đi qua $A$ và vuông góc với $OM$; đường thẳng $AP$ cũng đi qua $A$ và vuông góc với $OM$. Qua $A$ chỉ có một đường thẳng vuông góc với $OM$ nên $AP$ trùng với $xy$.\nSuy ra $P \\in xy$. Mà $P \\in BC$ và $P \\in DE$.\nVậy $xy, BC, DE$ đồng quy tại $P$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.073.04",
+  "so": "B4",
+  "loi_giai": "Vì $ADHE$ là hình chữ nhật (theo B1) nên $DH \\parallel AE$ và $DH = AE$.\nVì $E$ là trung điểm của $AK$ nên $K$ thuộc đường thẳng $AC$ và $EK = AE$.\nSuy ra $DH \\parallel EK$ và $DH = EK$.\nTứ giác $DHKE$ có hai cạnh đối $DH$ và $KE$ song song và bằng nhau nên $DHKE$ là hình bình hành.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.073.05",
+  "so": "B5",
+  "loi_giai": "Vì $DHKE$ là hình bình hành (theo B4) nên hai đường chéo $DK$ và $HE$ cắt nhau tại trung điểm của mỗi đường. Mà $J$ là giao điểm của $DK$ và $HE$ nên $J$ là trung điểm của $DK$.\nVì $ADHE$ là hình chữ nhật (theo B1) nên hai đường chéo cắt nhau tại trung điểm của mỗi đường, do đó $O$ là trung điểm của $DE$, suy ra $OD = OE$.\nLấy điểm $N$ đối xứng với $O$ qua $J$, khi đó $J$ là trung điểm của $ON$.\nTứ giác $ODNK$ có hai đường chéo $DK$ và $ON$ cắt nhau tại trung điểm $J$ của mỗi đường nên là hình bình hành.\nSuy ra $KN \\parallel OD$ và $KN = OD$.\nMà $O, D, E$ thẳng hàng và $OD = OE$ nên $KN \\parallel OE$ và $KN = OE$.\nTứ giác $EONK$ có hai cạnh đối $OE$ và $NK$ song song và bằng nhau nên là hình bình hành.\nSuy ra $ON = EK$.\nVì $E$ là trung điểm của $AK$ nên $EK = AE$, do đó $ON = AE$.\nMà $J$ là trung điểm của $ON$ nên $OJ = \\dfrac{ON}{2} = \\dfrac{AE}{2}$.\nVậy $OJ = \\dfrac{AE}{2}$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.073.06",
+  "so": "B6",
+  "loi_giai": "Vì $ADHE$ là hình chữ nhật (theo B1) nên $EH \\parallel AD$ và $EH = AD$.\nVì $D$ là trung điểm của $AG$ nên $G$ thuộc đường thẳng $AB$ và $DG = AD$.\nSuy ra $EH \\parallel DG$ và $EH = DG$.\nTứ giác $DGHE$ có hai cạnh đối $DG$ và $HE$ song song và bằng nhau nên $DGHE$ là hình bình hành.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.073.07",
+  "so": "B7",
+  "loi_giai": "Vì $DGHE$ là hình bình hành (theo B6) nên hai đường chéo $DH$ và $GE$ cắt nhau tại trung điểm của mỗi đường. Mà $L$ là giao điểm của $EG$ và $HD$ nên $L$ là trung điểm của $DH$.\nVì $ADHE$ là hình chữ nhật (theo B1) nên hai đường chéo $AH$ và $DE$ bằng nhau và cắt nhau tại trung điểm $O$ của mỗi đường, do đó $OD = \\dfrac{DE}{2} = \\dfrac{AH}{2} = OH$.\nĐiểm $O$ không thuộc đường thẳng $DH$ (vì $O \\in DE$, $O \\ne D$ và hai đường thẳng $DE, DH$ chỉ cắt nhau tại $D$) nên $\\Delta ODH$ cân tại $O$.\nTrong tam giác cân $ODH$, $OL$ là đường trung tuyến ứng với cạnh đáy $DH$ nên cũng là đường cao, tức là $OL \\perp DH$.\nMặt khác $HD \\perp AB$ (gt) nên $AB \\perp DH$.\nHai đường thẳng $OL$ và $AB$ cùng vuông góc với $DH$.\nVậy $OL \\parallel AB$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.073.08",
+  "so": "B8",
+  "loi_giai": "Vì $ADHE$ là hình chữ nhật (theo B1) nên hai đường chéo $AH$ và $DE$ bằng nhau và cắt nhau tại trung điểm $O$ của mỗi đường, do đó $OD = OH$; đồng thời $DH \\parallel AE$.\nSuy ra $\\Delta ODH$ cân tại $O$ nên $\\widehat{ODH} = \\widehat{OHD}$.\nVì $O \\in DE$ và $O \\in AH$ nên $\\widehat{HDE} = \\widehat{ODH}$ và $\\widehat{OHD} = \\widehat{AHD}$. Do đó $\\widehat{HDE} = \\widehat{AHD}$.\nVì $DH \\parallel AE$ nên $\\widehat{AHD} = \\widehat{HAE} = \\widehat{HAC}$ (so le trong).\nTrong $\\Delta AHC$ vuông ở $H$ có $\\widehat{HAC} + \\widehat{ACB} = 90^\\circ$; trong $\\Delta ABC$ vuông ở $A$ có $\\widehat{ABC} + \\widehat{ACB} = 90^\\circ$. Suy ra $\\widehat{HAC} = \\widehat{ABC}$.\nVậy $\\widehat{HDE} = \\widehat{AHD} = \\widehat{ABC}$ (1).\nVì $PQ \\parallel AH$ nên $\\widehat{DPQ} = \\widehat{DHA}$ (đồng vị), mà $\\widehat{DHA} = \\widehat{ABC}$ (chứng minh trên) nên $\\widehat{DPQ} = \\widehat{ABC}$ (2).\nVì $P$ thuộc tia $DH$ và $Q$ thuộc tia $DE$ nên $\\widehat{PDQ} = \\widehat{HDE}$. Từ (1) và (2) suy ra $\\widehat{PDQ} = \\widehat{DPQ} = \\widehat{ABC}$.\nDo đó $\\Delta DPQ$ luôn cân tại $Q$, và hai góc ở đáy $D, P$ đều bằng $\\widehat{ABC}$ là góc nhọn.\nĐiều kiện cần: nếu $\\Delta DPQ$ là tam giác vuông cân thì vì hai góc ở $D$ và $P$ đều nhọn nên góc vuông là góc ở $Q$, hai góc còn lại bằng $45^\\circ$. Suy ra $\\widehat{ABC} = 45^\\circ$, do đó $\\widehat{ACB} = 90^\\circ - 45^\\circ = 45^\\circ$, nên $\\Delta ABC$ vuông cân tại $A$.\nĐiều kiện đủ: nếu $\\Delta ABC$ vuông cân tại $A$ thì $\\widehat{ABC} = 45^\\circ$, nên $\\widehat{PDQ} = \\widehat{DPQ} = 45^\\circ$. Khi đó $\\widehat{DQP} = 180^\\circ - 45^\\circ - 45^\\circ = 90^\\circ$ và $\\Delta DPQ$ cân tại $Q$, nên $\\Delta DPQ$ vuông cân tại $Q$.\nVậy tam giác $ABC$ vuông cân tại $A$ thì $\\Delta DPQ$ vuông cân.",
+  "ghi_chu": ""
+ }
+]

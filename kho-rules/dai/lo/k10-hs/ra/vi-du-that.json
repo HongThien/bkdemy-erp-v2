@@ -1,0 +1,761 @@
+{
+  "BPT bậc hai trong thực tế": {
+    "tong": 1,
+    "du": 1,
+    "pick": [
+      {
+        "ma": "T1100000004935",
+        "loai": "tu_luan",
+        "de": "Đề cuối kì 2 Toán 10 năm 2025 - 2026 trường THPT Phạm Hồng Thái - Hà Nội (Mã đề 1002)",
+        "de_bai": "Câu 1. Một trang trại nuôi cá cần kiểm soát lượng thức ăn để đảm bảo cá phát triển khỏe mạnh và tiết kiệm chi phí. Chi phí thức ăn (tính bằng đơn vị triệu đồng) theo khối lượng thức ăn $x$ (tính bằng đơn vị tấn) được biểu diễn bởi hàm số $f(x)=0{,}5x^{2}+x+2$. Trang trại muốn duy trì chi phí thức ăn dưới 8 triệu đồng. Xác định khối lượng thức ăn tối đa mà trang trại có thể sử dụng để đảm bảo chi phí không vượt quá 8 triệu đồng. (Kết quả làm tròn đến hàng phần mười)",
+        "lc": null,
+        "da": "$\\approx2{,}6$ tấn",
+        "lg": "Điều kiện $f(x)\\le8$ với $x\\ge0$: $0{,}5x^{2}+x+2\\le8\\Leftrightarrow x^{2}+2x-12\\le0\\Leftrightarrow-1-\\sqrt{13}\\le x\\le-1+\\sqrt{13}$. Vì $x\\ge0$ nên $0\\le x\\le-1+\\sqrt{13}\\approx2{,}6055$. Khối lượng tối đa $\\approx2{,}6$ tấn.",
+        "anh": null
+      }
+    ]
+  },
+  "Bài toán thực tế hàm bậc hai": {
+    "tong": 57,
+    "du": 46,
+    "pick": [
+      {
+        "ma": "T110000000929",
+        "loai": "tra_loi_ngan",
+        "de": "Đề cuối kì 1 Toán 10 năm 2025 - 2026 - Đề ôn tập CTST cấu trúc mới (bộ 10 đề, Đề số 01)",
+        "de_bai": "Khi một quả bóng được đá lên, nó sẽ đạt đến độ cao nào đó rồi rơi xuống. Hình vẽ bên dưới minh họa quỹ đạo của quả bóng là một phần của cung parabol trong mặt phẳng tọa độ $Oth$, trong đó $t$ là thời gian (tính bằng giây) kể từ khi quả bóng được đá lên và $h$ là độ cao (tính bằng mét) của quả bóng. Giả thiết rằng quả bóng được đá từ mặt đất. Sau khoảng $2$ (s), quả bóng đó lên đến vị trí cao nhất là $8$ (m). Hỏi sau $3$ (s) thì quả bóng cách mặt đất bao nhiêu mét.",
+        "lc": null,
+        "da": "6",
+        "lg": "$h=at^2+bt$ (đi qua gốc), đỉnh $(2;8)$: $h=a(t-2)^2+8$ với $4a+8=0\\Rightarrow a=-2$. $h(3)=-2+8=6$ (m).",
+        "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-11/e92f04f3-1a1c-4c80-81cf-0e735055e93a_2199b8b7_p3c6.png"
+      },
+      {
+        "ma": "T110000000834",
+        "loai": "tra_loi_ngan",
+        "de": "Đề cuối kì 1 Toán 10 năm 2025 - 2026 - Đề ôn tập cấu trúc 3-2-2-3 (Đề số 02, CTST-KN)",
+        "de_bai": "Khi một quả bóng được đá lên, nó sẽ đạt đến độ cao nào đó rồi rơi xuống. Hình vẽ bên dưới minh họa quỹ đạo của quả bóng là một phần của cung parabol trong mặt phẳng tọa độ $Oth$, trong đó $t$ là thời gian kể từ khi quả bóng được đá lên và $h$ là độ cao của quả bóng, trục $Ot$ nằm dưới mặt đất. Giả thiết rằng quả bóng được đá từ mặt đất. Sau khoảng $2\\left( \\text{s} \\right)$, quả bóng đó lên đến vị trí cao nhất là $8\\left( \\text{m} \\right)$. Hỏi sau $3\\left( \\text{s} \\right)$ thì quả bóng cách mặt đất bao nhiêu mét.",
+        "lc": null,
+        "da": "6",
+        "lg": "Parabol có đỉnh $(2;8)$ và đi qua gốc $O(0;0)$: $h=a(t-2)^2+8$, $h(0)=0\\Rightarrow a=-2$. Khi đó $h(3)=-2+8=6$ (m).",
+        "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-11/ab77a806-1199-4e44-823e-0ab59ac4ad8c_bf2409f6_p3c1.png"
+      }
+    ]
+  },
+  "Bảng biến thiên, khoảng đồng biến – nghịch biến": {
+    "tong": 34,
+    "du": 27,
+    "pick": [
+      {
+        "ma": "T1100000005252",
+        "loai": "trac_nghiem",
+        "de": "Đề cuối kì 2 Toán 10 năm 2025 - 2026 trường THPT Việt Đức - Hà Nội (Mã đề 3215)",
+        "de_bai": "Hàm số $y=x^2-4x+11$ đồng biến trên khoảng nào trong các khoảng sau đây?",
+        "lc": [
+          "$(-2;+\\infty)$.",
+          "$(2;+\\infty)$.",
+          "$(-\\infty;2)$.",
+          "$(-\\infty;+\\infty)$."
+        ],
+        "da": "B",
+        "lg": "$a=1>0$, đỉnh có hoành độ $x=2$: hàm số đồng biến trên $(2;+\\infty)$.",
+        "anh": null
+      },
+      {
+        "ma": "T1100000005889",
+        "loai": "trac_nghiem",
+        "de": "Đề giữa kì 1 Toán 10 năm 2025 - 2026 - Bộ đề ôn tập Toán Từ Tâm (Cánh Diều) - Đề số 1",
+        "de_bai": "Khoảng nghịch biến của hàm số $y=x^2-4x+3$ là",
+        "lc": [
+          "$(-\\infty;-4)$.",
+          "$(-\\infty;-4)$.",
+          "$(-\\infty;2)$.",
+          "$(-2;+\\infty)$."
+        ],
+        "da": "C",
+        "lg": "Parabol có $a=1>0$, đỉnh $x=2$ nên hàm nghịch biến trên $(-\\infty;2)$.",
+        "anh": null
+      }
+    ]
+  },
+  "GTLN/GTNN trên ℝ hoặc trên đoạn": {
+    "tong": 10,
+    "du": 9,
+    "pick": [
+      {
+        "ma": "T1100000007312",
+        "loai": "trac_nghiem",
+        "de": "Đề thi thử giữa kì 2 Toán 10 năm 2024 - 2025 (GV. Chu Hoàng Minh, bộ 5 đề, Mã đề 101)",
+        "de_bai": "Tìm giá trị nhỏ nhất của hàm số $y=x^{2}-4x+1$.",
+        "lc": [
+          "$-3$.",
+          "$1$.",
+          "$3$.",
+          "$13$."
+        ],
+        "da": "A",
+        "lg": "Hệ số $a=1>0$, đỉnh $x=2$, $y(2)=4-8+1=-3$ là giá trị nhỏ nhất.",
+        "anh": null
+      },
+      {
+        "ma": "T1100000003292",
+        "loai": "trac_nghiem",
+        "de": "Đề cuối kì 1 Toán 10 năm 2024 - 2025 sở GD&ĐT Bắc Ninh",
+        "de_bai": "Cho hàm số $y=-x^{2}+4x+5$. Khẳng định nào sau đây là đúng?",
+        "lc": [
+          "Giá trị lớn nhất của hàm số bằng $2$.",
+          "Giá trị lớn nhất của hàm số bằng $9$.",
+          "Giá trị nhỏ nhất của hàm số bằng $2$.",
+          "Giá trị nhỏ nhất của hàm số bằng $9$."
+        ],
+        "da": "B",
+        "lg": "$a=-1<0$ nên hàm số có giá trị lớn nhất tại $x=2$: $y(2)=-4+8+5=9$.",
+        "anh": null
+      }
+    ]
+  },
+  "Giải BPT bậc hai": {
+    "tong": 28,
+    "du": 28,
+    "pick": [
+      {
+        "ma": "T1100000003735",
+        "loai": "trac_nghiem",
+        "de": "Đề cuối kì 2 Toán 10 năm 2024 - 2025 trường THPT Nguyễn Thị Giang - Vĩnh Phúc (Mã đề 168)",
+        "de_bai": "Tam thức bậc hai $f(x)=x^{2}-4x+3$ âm trong khoảng nào dưới đây.",
+        "lc": [
+          "$(-\\infty;3)$.",
+          "$(3;+\\infty)$.",
+          "$(1;3)$.",
+          "$(1;+\\infty)$."
+        ],
+        "da": "C",
+        "lg": "$f(x)=(x-1)(x-3)<0\\Leftrightarrow1<x<3$.",
+        "anh": null
+      },
+      {
+        "ma": "T1100000004816",
+        "loai": "trac_nghiem",
+        "de": "Đề cuối kì 2 Toán 10 năm 2025 - 2026 trường THPT Hướng Hóa - Quảng Trị (Mã đề 0101)",
+        "de_bai": "Tam thức $f(x)=x^{2}-x-2$ nhận giá trị âm trên khoảng nào dưới đây ?",
+        "lc": [
+          "$(2;+\\infty)$.",
+          "$(-2;1)$.",
+          "$(-\\infty;-1)$.",
+          "$(-1;2)$."
+        ],
+        "da": "D",
+        "lg": "$f(x)=(x+1)(x-2)<0\\Leftrightarrow -1<x<2$.",
+        "anh": null
+      }
+    ]
+  },
+  "Hàm cho bằng bảng/công thức khúc trong tình huống": {
+    "tong": 10,
+    "du": 7,
+    "pick": [
+      {
+        "ma": "T1100000003448",
+        "loai": "trac_nghiem",
+        "de": "Đề tham khảo cuối kì 1 Toán 10 năm 2024 - 2025 trường THPT Thuận Thành số 1 - Bắc Ninh (Đề 1 - Cô Nguyễn Thị Thắm)",
+        "de_bai": "Một thiết bị đã ghi lại vận tốc $v$ ở thời điểm $t$ của một vật chuyển động như trong bảng sau:\n\n| $t$ | 1 | 2 | 3 | 4 | 5 |\n|---|---|---|---|---|---|\n| $v$ | 3 | 7 | 13 | 20 | 25 |\n\nBảng trên biểu thị một hàm số có tập xác định là",
+        "lc": [
+          "$D=\\mathbb R$.",
+          "$D=[1;5]$.",
+          "$D=[3;25]$.",
+          "$D=\\{1;2;3;4;5\\}$."
+        ],
+        "da": "D",
+        "lg": "Tập xác định là tập các giá trị của $t$ trong bảng: $D=\\{1;2;3;4;5\\}$.",
+        "anh": null
+      },
+      {
+        "ma": "T1100000004528",
+        "loai": "trac_nghiem",
+        "de": "Đề cuối kì 2 Toán 10 năm 2025 - 2026 trường THPT Phan Châu Trinh - Đà Nẵng (Mã đề 101)",
+        "de_bai": "Tại một vùng núi, nhiệt độ ở chân núi đo được khoảng $28^\\circ C$. Người ta nhận thấy rằng, mỗi khi leo lên cao 1 km thì nhiệt độ sẽ giảm đi $5^\\circ C$. Khi đó, hàm số biểu thị nhiệt độ $T(^\\circ C)$ đo ở độ cao $h$ (km) so với chân núi là",
+        "lc": [
+          "$T=5h-28$.",
+          "$T=28+5h$.",
+          "$T=-5h-28$.",
+          "$T=28-5h$."
+        ],
+        "da": "D",
+        "lg": "Ở độ cao $h$ km, nhiệt độ giảm $5h$ độ so với $28^\\circ C$: $T=28-5h$. Chọn D.",
+        "anh": null
+      }
+    ]
+  },
+  "Nhận dạng đồ thị parabol": {
+    "tong": 17,
+    "du": 17,
+    "pick": [
+      {
+        "ma": "T1100000002589",
+        "loai": "trac_nghiem",
+        "de": "Đề cuối kì 1 Toán 10 năm 2024 - 2025 trường THPT Thanh Bình 1 - Đồng Tháp (Mã đề 101)",
+        "de_bai": "Đường cong dưới đây là đồ thị của hàm số nào trong các hàm số sau?",
+        "lc": [
+          "$y=-x^2+2x$.",
+          "$y=x^2+2x$.",
+          "$y=-x^2-2x$.",
+          "$y=x^2-2x$."
+        ],
+        "da": "D",
+        "lg": "Parabol quay lên ($a>0$), cắt trục hoành tại $x=0$ và $x=2$, đỉnh $(1;-1)$: $y=x^2-2x$. Chọn D.",
+        "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-11/d547eb26-7653-40b3-b62e-b0f3cd7997ea_f9e70983_p1c20.png"
+      },
+      {
+        "ma": "T1100000005779",
+        "loai": "trac_nghiem",
+        "de": "Đề ôn tập giữa học kì 1 Toán 10 năm 2025 - 2026 - Đề số 05 (CTST-KN-CKP, Bồi dưỡng văn hóa Lam Sơn)",
+        "de_bai": "Hàm số nào có đồ thị như hình vẽ bên dưới?",
+        "lc": [
+          "$y=-x^{2}+4x-3$.",
+          "$y=-x^{2}-4x-3$.",
+          "$y=-2x^{2}-x-3$.",
+          "$y=x^{2}-4x-3$."
+        ],
+        "da": "A",
+        "lg": "Đồ thị có bề lõm quay xuống dưới nên $a<0$. Loại phương án D.\n\nTrục đối xứng: $x=2$ do đó chọn A.",
+        "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-11/4f3b3057-6a36-4460-919a-c080efcc0666_963997c6_p1c8.png"
+      }
+    ]
+  },
+  "Parabol cắt đường thẳng, số nghiệm f(x)=m": {
+    "tong": 3,
+    "du": 1,
+    "pick": [
+      {
+        "ma": "T110000000848",
+        "loai": "trac_nghiem",
+        "de": "Đề cuối kì 1 Toán 10 năm 2025 - 2026 - Đề ôn tập cấu trúc 3-2-2-3 (Đề số 03, CTST-KN)",
+        "de_bai": "Trong hệ trục tọa độ $Oxy$, cho đường thẳng $d:y=x+1$ cắt parabol $\\left( P \\right):y=x^{2}-1$ tại 2 điểm phân biệt $A,B$. Khi đó diện tích tam giác $OAB$ bằng?",
+        "lc": [
+          "$\\frac{3}{2}$.",
+          "$1$.",
+          "$\\frac{9}{2}$.",
+          "$\\frac{1}{2}$."
+        ],
+        "da": "A",
+        "lg": "Chọn A. $x+1=x^2-1\\Leftrightarrow x^2-x-2=0\\Leftrightarrow x=2$ hoặc $x=-1$. Hai giao điểm $A(2;3)$, $B(-1;0)$. $S_{OAB}=\\frac12|x_Ay_B-x_By_A|=\\frac12|0-(-1)\\cdot3|=\\frac32$.",
+        "anh": null
+      }
+    ]
+  },
+  "TXĐ có tham số m": {
+    "tong": 6,
+    "du": 6,
+    "pick": [
+      {
+        "ma": "T1100000003746",
+        "loai": "tu_luan",
+        "de": "Đề cuối kì 2 Toán 10 năm 2024 - 2025 trường THPT Nguyễn Thị Giang - Vĩnh Phúc (Mã đề 168)",
+        "de_bai": "Cho hàm số $y=\\dfrac{19x+75}{x^{2}+x+m}$. Tìm tất cả các giá trị của tham số $m$ để hàm số xác định trên $\\mathbb{R}$. (1,0 điểm)",
+        "lc": null,
+        "da": "$m>\\dfrac14$",
+        "lg": "Hàm số xác định trên $\\mathbb{R}$ khi và chỉ khi $x^2+x+m\\neq0$ với mọi $x\\in\\mathbb{R}$, tức phương trình $x^2+x+m=0$ vô nghiệm $\\Leftrightarrow\\Delta=1-4m<0\\Leftrightarrow m>\\dfrac14$.",
+        "anh": null
+      },
+      {
+        "ma": "T1100000004545",
+        "loai": "tu_luan",
+        "de": "Đề cuối kì 2 Toán 10 năm 2025 - 2026 trường THPT Phan Châu Trinh - Đà Nẵng (Mã đề 101)",
+        "de_bai": "Cho hàm số $y=f(x)=\\dfrac{1}{\\sqrt{x^2-2mx+9}}$.\na) Khi $m=5$, hãy tìm tập xác định của hàm số $f(x)$.\nb) Tìm tất cả các giá trị của tham số $m$ để hàm số $f(x)$ có tập xác định $D=\\mathbb{R}$.",
+        "lc": null,
+        "da": "a) $D=(-\\infty;1)\\cup(9;+\\infty)$; b) $-3<m<3$.",
+        "lg": "a) Khi $m=5$: điều kiện $x^2-10x+9>0\\Leftrightarrow x<1$ hoặc $x>9$. Vậy $D=(-\\infty;1)\\cup(9;+\\infty)$.\nb) $D=\\mathbb{R}\\Leftrightarrow x^2-2mx+9>0$ với mọi $x$ $\\Leftrightarrow\\Delta'=m^2-9<0\\Leftrightarrow-3<m<3$.",
+        "anh": null
+      }
+    ]
+  },
+  "TXĐ của hàm cho bằng công thức": {
+    "tong": 115,
+    "du": 110,
+    "pick": [
+      {
+        "ma": "T1100000003302",
+        "loai": "trac_nghiem",
+        "de": "Đề cuối kì 1 Toán 10 năm 2025 - 2026 sở GD&ĐT Bắc Ninh",
+        "de_bai": "Tập xác định của hàm số $y=\\sqrt{x-3}$ là",
+        "lc": [
+          "$\\mathbb{R}\\setminus\\left\\{3\\right\\}$.",
+          "$\\left(-\\infty;3\\right]$.",
+          "$\\left[3;+\\infty\\right)$.",
+          "$\\mathbb{R}$."
+        ],
+        "da": "C",
+        "lg": "Điều kiện $x-3\\ge0\\Leftrightarrow x\\ge3$.",
+        "anh": null
+      },
+      {
+        "ma": "T1100000004813",
+        "loai": "trac_nghiem",
+        "de": "Đề cuối kì 2 Toán 10 năm 2025 - 2026 trường THPT Hướng Hóa - Quảng Trị (Mã đề 0101)",
+        "de_bai": "Tập xác định $D$ của hàm số $y=\\sqrt{2-x}$ là",
+        "lc": [
+          "$D=\\mathbb{R}\\setminus\\{2\\}$.",
+          "$D=(-\\infty;2]$.",
+          "$D=(2;+\\infty)$.",
+          "$D=[2;+\\infty)$."
+        ],
+        "da": "B",
+        "lg": "Điều kiện $2-x\\ge0\\Leftrightarrow x\\le2$.",
+        "anh": null
+      }
+    ]
+  },
+  "Tính giá trị / hàm nhiều công thức": {
+    "tong": 28,
+    "du": 16,
+    "pick": [
+      {
+        "ma": "T1100000002988",
+        "loai": "trac_nghiem",
+        "de": "Đề học kì 1 Toán 10 năm 2025 - 2026 trường THPT Giao Thủy - Ninh Bình (Mã đề 101)",
+        "de_bai": "Cho hàm số $y=f(x)=\\begin{cases}2x-1&\\text{khi }x>0\\\\3x^2&\\text{khi }x\\le0\\end{cases}$. Tính $P=f(3)$.",
+        "lc": [
+          "$P=7$.",
+          "$P=5$.",
+          "$P=-27$.",
+          "$P=27$."
+        ],
+        "da": "B",
+        "lg": "Vì $3>0$ nên $f(3)=2\\cdot3-1=5$. Chọn B.",
+        "anh": null
+      },
+      {
+        "ma": "T1100000002279",
+        "loai": "trac_nghiem",
+        "de": "Đề cuối kì 1 Toán 10 năm 2024 - 2025 trường THPT B Bình Lục - Hà Nam (Mã đề 101)",
+        "de_bai": "Cho hàm số $f(x)=\\left\\{\\begin{array}{ll}x^2+3x+1,&x\\le1\\\\ -x+2,&x>1\\end{array}\\right.$. Tính $f(0)$.",
+        "lc": [
+          "$0$.",
+          "$2$.",
+          "$1$.",
+          "$-9$."
+        ],
+        "da": "C",
+        "lg": "$0\\le1$ nên $f(0)=0^2+3\\cdot0+1=1$. Chọn C.",
+        "anh": null
+      }
+    ]
+  },
+  "Tập nghiệm – số nghiệm nguyên – hệ BPT bậc hai": {
+    "tong": 5,
+    "du": 5,
+    "pick": [
+      {
+        "ma": "T1100000003279",
+        "loai": "tra_loi_ngan",
+        "de": "Đề cuối kì 1 Toán 10 năm 2024 - 2025 sở GD&ĐT Bắc Giang (Mã đề 101)",
+        "de_bai": "Cho tam thức bậc hai $f\\left(x\\right)=x^{2}-7x+6$. Có tất cả bao nhiêu giá trị nguyên của $x$ để $f\\left(x\\right)<0$?",
+        "lc": null,
+        "da": "4",
+        "lg": "$f(x)<0\\Leftrightarrow1<x<6$. Các số nguyên: $2;3;4;5$, có $4$ giá trị.",
+        "anh": null
+      },
+      {
+        "ma": "T1100000001244",
+        "loai": "tra_loi_ngan",
+        "de": "Đề ôn tập cuối kì 1 Toán 10 năm 2025 - 2026 sách Cánh Diều - Đề số 10 (bộ đề Vietnam Maths & LaTeX)",
+        "de_bai": "Cho tam thức bậc hai $f(x)=x^2-7x+6$. Có tất cả bao nhiêu giá trị nguyên của $x$ để $f(x)<0$?",
+        "lc": null,
+        "da": "4",
+        "lg": "$f(x)=0\\Leftrightarrow x=1$ hoặc $x=6$. Vì $a=1>0$ nên $f(x)<0\\Leftrightarrow1<x<6$. Các giá trị nguyên là $2,3,4,5$: có $4$ giá trị.",
+        "anh": null
+      }
+    ]
+  },
+  "Vẽ đồ thị, tịnh tiến": {
+    "tong": 21,
+    "du": 21,
+    "pick": [
+      {
+        "ma": "T1100000001246",
+        "loai": "tu_luan",
+        "de": "Đề ôn tập cuối kì 1 Toán 10 năm 2025 - 2026 sách Cánh Diều - Đề số 10 (bộ đề Vietnam Maths & LaTeX)",
+        "de_bai": "Vẽ đồ thị hàm số $y=x^2-4x+3$.",
+        "lc": null,
+        "da": "Parabol có đỉnh $I(2;-1)$, trục đối xứng $x=2$, cắt $Ox$ tại $(1;0),(3;0)$, cắt $Oy$ tại $(0;3)$",
+        "lg": "$a=1>0$ nên parabol quay bề lõm lên trên. Đỉnh $I(2;-1)$, trục đối xứng $x=2$. Giao với $Oy$ là $(0;3)$; giao với $Ox$ là $(1;0)$ và $(3;0)$. Vẽ parabol qua các điểm trên (xem hình).",
+        "anh": null
+      },
+      {
+        "ma": "T1100000007696",
+        "loai": "tu_luan",
+        "de": "Đề giữa kì 2 Toán 10 năm 2024 - 2025 trường THPT Lê Lợi - Kon Tum (Mã đề 101)",
+        "de_bai": "Vẽ parabol $y=x^2+2x-3$.",
+        "lc": null,
+        "da": "Parabol bề lõm lên, đỉnh $I(-1;-4)$, trục đối xứng $x=-1$, cắt $Oy$ tại $A(0;-3)$, cắt $Ox$ tại $B(1;0)$ và $C(-3;0)$ (đồ thị: xem hình lời giải)",
+        "lg": "$a=1>0$ nên parabol có bề lõm quay lên. Tọa độ đỉnh $I\\left(-\\dfrac b{2a};-\\dfrac{\\Delta}{4a}\\right)=(-1;-4)$. Trục đối xứng $x=-\\dfrac b{2a}=-1$. Giao điểm với $Oy$: $A(0;-3)$; giao điểm với $Ox$: $B(1;0)$, $C(-3;0)$. Vẽ đồ thị qua các điểm trên.",
+        "anh": null
+      }
+    ]
+  },
+  "Xác định công thức từ điều kiện": {
+    "tong": 48,
+    "du": 43,
+    "pick": [
+      {
+        "ma": "T1100000005426",
+        "loai": "trac_nghiem",
+        "de": "Đề ôn tập cuối học kì 2 Toán 10 năm 2025 - 2026 trường THPT Triệu Quang Phục - Hưng Yên (Đề 01)",
+        "de_bai": "Cho parabol $(P):y=ax^2+bx+c$ có đồ thị như hình bên. Phương trình của parabol này là",
+        "lc": [
+          "$y=2x^2-4x-1$.",
+          "$y=-2x^2+3x-1$.",
+          "$y=x-1$.",
+          "$y=2x^2-x+1$."
+        ],
+        "da": "A",
+        "lg": "Đỉnh $(1;-3)$ và cắt $Oy$ tại $(0;-1)$: $y=a(x-1)^2-3$, $x=0$: $a-3=-1\\Rightarrow a=2$. $y=2x^2-4x-1$.",
+        "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-11/9c07cb74-a32f-4745-ab6b-4f3bca243163_62dcf28f_p1c1.png"
+      },
+      {
+        "ma": "T1100000003392",
+        "loai": "trac_nghiem",
+        "de": "Đề ôn tập cuối kì 1 Toán 10 năm 2025 - 2026 trường THPT Thủ Đức - TP.HCM (Đề 1)",
+        "de_bai": "Cho parabol $y=ax^2+bx+c$ có đồ thị như hình sau. Phương trình của parabol này là",
+        "lc": [
+          "$y=-x^2+x-1$.",
+          "$y=2x^2+4x-1$.",
+          "$y=x^2-2x-1$.",
+          "$y=2x^2-4x-1$."
+        ],
+        "da": "D",
+        "lg": "Đỉnh $(1;-3)$ và đồ thị cắt $Oy$ tại $(0;-1)$: $y=a(x-1)^2-3$, $a-3=-1\\Rightarrow a=2$, $y=2x^2-4x-1$. Chọn D.",
+        "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-11/328ea891-48ba-41c0-a626-be78b0c3fc96_a6614789_p1c4.png"
+      }
+    ]
+  },
+  "Xét dấu tam thức bậc hai": {
+    "tong": 68,
+    "du": 59,
+    "pick": [
+      {
+        "ma": "T1100000005449",
+        "loai": "trac_nghiem",
+        "de": "Đề cuối kì 2 Toán 10 năm 2024 - 2025 trường THPT Ngô Quyền - Đà Nẵng (Đề tham khảo - Mã đề 101)",
+        "de_bai": "Cho tam thức bậc hai $f(x)=ax^{2}+bx+c$ và $\\Delta=b^{2}-4ac$. Ta có $f\\left( x \\right)>0,\\,\\forall x\\in\\mathbb{R}$ khi :",
+        "lc": [
+          "$\\left\\{ \\begin{array}{l} a<0 \\\\ \\Delta\\le 0 \\end{array} \\right.$.",
+          "$\\left\\{ \\begin{array}{l} a>0 \\\\ \\Delta<0 \\end{array} \\right.$.",
+          "$\\left\\{ \\begin{array}{l} a<0 \\\\ \\Delta<0 \\end{array} \\right.$.",
+          "$\\left\\{ \\begin{array}{l} a>0 \\\\ \\Delta>0 \\end{array} \\right.$."
+        ],
+        "da": "B",
+        "lg": "$f(x)>0$ với mọi $x$ khi $a>0$ và $\\Delta<0$.",
+        "anh": null
+      },
+      {
+        "ma": "T1100000004636",
+        "loai": "trac_nghiem",
+        "de": "Đề cuối kì 2 Toán 10 (cơ bản) năm 2024 - 2025 trường THPT chuyên Thoại Ngọc Hầu - An Giang (Mã đề 132)",
+        "de_bai": "Cho tam thức bậc hai $f(x)=ax^2+bx+c,\\ a\\ne0$. Điều kiện để $f(x)>0\\ \\forall x\\in\\mathbb R$ là:",
+        "lc": [
+          "$\\begin{cases}a>0\\\\\\Delta>0\\end{cases}$.",
+          "$\\begin{cases}a>0\\\\\\Delta\\ge0\\end{cases}$.",
+          "$\\begin{cases}a>0\\\\\\Delta\\le0\\end{cases}$.",
+          "$\\begin{cases}a>0\\\\\\Delta<0\\end{cases}$."
+        ],
+        "da": "D",
+        "lg": "$f(x)>0$ với mọi $x$ khi và chỉ khi $a>0$ và $\\Delta<0$.",
+        "anh": null
+      }
+    ]
+  },
+  "Xét đơn điệu theo định nghĩa / hàm bậc nhất": {
+    "tong": 3,
+    "du": 2,
+    "pick": [
+      {
+        "ma": "T1100000001513",
+        "loai": "trac_nghiem",
+        "de": "Đề cuối kì 1 Toán 10 năm 2024 - 2025 trường THPT Hồ Thị Bi - TP.HCM (Mã đề 963)",
+        "de_bai": "Hàm số nào sau đây đồng biến trên $\\mathbb{R}$?",
+        "lc": [
+          "$y=2x+1$.",
+          "$y=3$.",
+          "$y=-2x+5$.",
+          "$y=-x+3$."
+        ],
+        "da": "A",
+        "lg": "Hàm số bậc nhất $y=ax+b$ đồng biến trên $\\mathbb{R}$ khi $a>0$; chỉ $y=2x+1$.",
+        "anh": null
+      },
+      {
+        "ma": "T1100000003286",
+        "loai": "trac_nghiem",
+        "de": "Đề cuối kì 1 Toán 10 năm 2024 - 2025 sở GD&ĐT Bắc Ninh",
+        "de_bai": "Hàm số nào sau đây đồng biến trên $\\mathbb{R}$?",
+        "lc": [
+          "$y=x^{2}+1$.",
+          "$y=-x+1$.",
+          "$y=-2009x+1$.",
+          "$y=2024x-2$."
+        ],
+        "da": "D",
+        "lg": "Hàm số bậc nhất $y=ax+b$ đồng biến trên $\\mathbb{R}$ khi $a>0$: chỉ $y=2024x-2$.",
+        "anh": null
+      }
+    ]
+  },
+  "m để PT bậc hai có nghiệm thoả điều kiện": {
+    "tong": 2,
+    "du": 1,
+    "pick": [
+      {
+        "ma": "T1100000003536",
+        "loai": "trac_nghiem",
+        "de": "Đề ôn tập cuối học kì 2 Toán 10 năm 2024 - 2025 trường THPT Việt Đức - Hà Nội (Đề ôn tập số 1)",
+        "de_bai": "Tìm giá trị của tham số $a$ để tam thức $y=x^2-ax+1$ có hai nghiệm dương phân biệt?",
+        "lc": [
+          "$a\\le2$.",
+          "$a<2$.",
+          "$a>2$.",
+          "$a\\ge2$."
+        ],
+        "da": null,
+        "lg": "Hai nghiệm dương phân biệt: $\\Delta=a^2-4>0$, $S=a>0$, $P=1>0$ $\\Leftrightarrow a>2$. Phương án đúng là C.",
+        "anh": null
+      }
+    ]
+  },
+  "m để hàm bậc hai thoả điều kiện": {
+    "tong": 9,
+    "du": 7,
+    "pick": [
+      {
+        "ma": "T1100000004629",
+        "loai": "tra_loi_ngan",
+        "de": "Đề cuối kì 2 Toán 10 năm 2024 - 2025 trường THPT chuyên Nguyễn Tất Thành - Kon Tum (Mã đề 101)",
+        "de_bai": "Cho hàm số $y=f\\left( x \\right)=ax^{2}+2x+5$ có đồ thị là parabol $\\left( P \\right)$. Biết $\\left( P \\right)$ có trục đối xứng là đường thẳng $x=-4$, tìm $a$.",
+        "lc": null,
+        "da": "0,25",
+        "lg": "Trục đối xứng $x=-\\frac{2}{2a}=-\\frac1a=-4\\Rightarrow a=\\frac14=0{,}25$.",
+        "anh": null
+      },
+      {
+        "ma": "T1100000002564",
+        "loai": "tra_loi_ngan",
+        "de": "Đề cuối kì 1 Toán 10 năm 2024 - 2025 trường THPT Tân Châu - An Giang (Mã đề 011)",
+        "de_bai": "Cho parabol $(P):y=ax^2-7x+10$, biết parabol có trục đối xứng $x=7$. Tìm $a$.",
+        "lc": null,
+        "da": "0,5",
+        "lg": "Trục đối xứng $x=-\\dfrac{-7}{2a}=\\dfrac{7}{2a}=7\\Rightarrow a=\\dfrac12=0{,}5$.",
+        "anh": null
+      }
+    ]
+  },
+  "m để tam thức / BPT nghiệm đúng ∀x, vô nghiệm, có nghiệm": {
+    "tong": 8,
+    "du": 6,
+    "pick": [
+      {
+        "ma": "T1100000007506",
+        "loai": "trac_nghiem",
+        "de": "Đề kiểm tra giữa học kì 2 Toán 10 năm 2024 - 2025 (Bộ đề Toán Từ Tâm, Chân trời sáng tạo) - Đề số 1",
+        "de_bai": "Cho hàm số $f(x)=x^2-2x+m$. Với giá trị nào của tham số $m$ thì $f(x)\\ge0,\\ \\forall x\\in\\mathbb R$.",
+        "lc": [
+          "$m\\ge1$.",
+          "$m>1$.",
+          "$m>0$.",
+          "$m<2$."
+        ],
+        "da": "A",
+        "lg": "$f(x)\\ge0\\ \\forall x\\Leftrightarrow\\Delta'=1-m\\le0\\Leftrightarrow m\\ge1$. Chọn A.",
+        "anh": null
+      },
+      {
+        "ma": "T1100000003535",
+        "loai": "trac_nghiem",
+        "de": "Đề ôn tập cuối học kì 2 Toán 10 năm 2024 - 2025 trường THPT Việt Đức - Hà Nội (Đề ôn tập số 1)",
+        "de_bai": "Cho tam thức bậc hai $y=f(x)=ax^2+bx+c$ có $\\Delta<0$. Giá trị của $a$ để tam thức luôn dương là",
+        "lc": [
+          "$a=1$.",
+          "$a=-1$.",
+          "$a=-10$.",
+          "$a=-2$."
+        ],
+        "da": "A",
+        "lg": "$\\Delta<0$ thì $f(x)$ luôn cùng dấu với $a$; luôn dương khi $a>0$, nên $a=1$. Chọn A.",
+        "anh": null
+      }
+    ]
+  },
+  "Điểm thuộc đồ thị, tham số để đồ thị qua điểm": {
+    "tong": 16,
+    "du": 15,
+    "pick": [
+      {
+        "ma": "T1100000007596",
+        "loai": "trac_nghiem",
+        "de": "Đề giữa kì 2 Toán 10 năm 2024 - 2025 trường THPT Quách Văn Phẩm - Cà Mau (Mã đề 101)",
+        "de_bai": "Điểm nào sau đây thuộc đồ thị hàm số $y=x^2-3x+2$?",
+        "lc": [
+          "$(-2;0)$.",
+          "$(1;4)$.",
+          "$(-1;6)$.",
+          "$(2;-8)$."
+        ],
+        "da": "C",
+        "lg": "Với $x=-1$: $y=1+3+2=6$ nên $(-1;6)$ thuộc đồ thị. Chọn C.",
+        "anh": null
+      },
+      {
+        "ma": "T1100000002929",
+        "loai": "trac_nghiem",
+        "de": "Đề học kì 1 Toán 10 năm 2025 - 2026 trường THPT Bình Hưng Hòa - TP HCM (Mã đề 4)",
+        "de_bai": "Điểm nào dưới đây thuộc đồ thị hàm số $y=-x^2+2x-5$?",
+        "lc": [
+          "$(-1;-6)$.",
+          "$(-1;-8)$.",
+          "$(-1;-2)$.",
+          "$(-1;-3)$."
+        ],
+        "da": "B",
+        "lg": "Với $x=-1$: $y=-1-2-5=-8$. Điểm $(-1;-8)$ thuộc đồ thị. Chọn B.",
+        "anh": null
+      }
+    ]
+  },
+  "Đỉnh, trục đối xứng, giao với trục": {
+    "tong": 92,
+    "du": 63,
+    "pick": [
+      {
+        "ma": "T1100000007566",
+        "loai": "trac_nghiem",
+        "de": "Đề giữa kì 2 Toán 10 KNTT năm 2024 - 2025 (Bộ đề tham khảo giữa kì 2 - Sở GD&ĐT Thanh Hóa) - Đề 1 (đề không ghi tên trường)",
+        "de_bai": "[Mức độ 1] Cho hàm số bậc hai $y=ax^2+bx+c$ $(a\\ne0)$ có đồ thị là Parabol $(P)$, trục đối xứng của $(P)$ là:",
+        "lc": [
+          "$x=\\dfrac b{2a}$.",
+          "$x=-\\dfrac ba$.",
+          "$x=-\\dfrac b{2a}$.",
+          "$y=-\\dfrac b{2a}$."
+        ],
+        "da": "C",
+        "lg": "Trục đối xứng $x=-\\dfrac b{2a}$. Chọn C.",
+        "anh": null
+      },
+      {
+        "ma": "T1100000001722",
+        "loai": "trac_nghiem",
+        "de": "Đề cuối kì 1 Toán 10 năm 2025 - 2026 trường THPT Nguyễn Du - Đồng Nai (Mã đề 1010)",
+        "de_bai": "Parabol $(P)$: $y=x^2+4x+3$ có đỉnh là:",
+        "lc": [
+          "$I(-2;1)$.",
+          "$I(0;1)$.",
+          "$I(2;-1)$.",
+          "$I(-2;-1)$."
+        ],
+        "da": "D",
+        "lg": "$x_I=-\\frac{4}{2}=-2$, $y_I=4-8+3=-1$. Chọn D.",
+        "anh": null
+      }
+    ]
+  },
+  "Đọc dấu a, b, c từ đồ thị": {
+    "tong": 28,
+    "du": 11,
+    "pick": [
+      {
+        "ma": "T1100000003303",
+        "loai": "trac_nghiem",
+        "de": "Đề cuối kì 1 Toán 10 năm 2025 - 2026 sở GD&ĐT Bắc Ninh",
+        "de_bai": "Cho hàm số $y=ax^{2}+bx+c$ $(a\\ne0)$ có đồ thị như hình vẽ. Đặt $\\Delta=b^{2}-4ac$. Phát biểu nào sau đây đúng?",
+        "lc": [
+          "$a>0$, $\\Delta>0$.",
+          "$a>0$, $\\Delta<0$.",
+          "$a>0$, $\\Delta=0$.",
+          "$a<0$, $\\Delta>0$."
+        ],
+        "da": "A",
+        "lg": "Parabol bề lõm hướng lên nên $a>0$; đồ thị cắt trục hoành tại hai điểm phân biệt ($x=1$ và $x=2$) nên $\\Delta>0$.",
+        "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-11/9b913fd2-1eda-4173-acca-2d5c1d536e71_3f7d41f6_p1c2.png"
+      },
+      {
+        "ma": "T1100000005391",
+        "loai": "trac_nghiem",
+        "de": "Đề ôn tập cuối kì 2 Toán 10 năm 2024 - 2025 trường THPT Nguyễn Trãi - Đà Nẵng (Đề 1)",
+        "de_bai": "Cho hàm số $y=f(x)=ax^2+bx+c$ có đồ thị như hình vẽ. Đặt $\\Delta=b^2-4ac$, tìm dấu của $a$ và $\\Delta$.",
+        "lc": [
+          "$a>0$, $\\Delta>0$.",
+          "$a<0$, $\\Delta>0$.",
+          "$a>0$, $\\Delta=0$.",
+          "$a<0$, $\\Delta=0$."
+        ],
+        "da": "A",
+        "lg": "Parabol có bề lõm hướng lên nên $a>0$; đồ thị cắt trục $Ox$ tại hai điểm phân biệt ($x=1$ và $x=4$) nên $\\Delta>0$.",
+        "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-11/4abbdfa8-f9e4-4389-87ff-b047415ff8c9_af5ef947_p1c3.png"
+      }
+    ]
+  },
+  "Đọc đồ thị / bảng biến thiên": {
+    "tong": 41,
+    "du": 34,
+    "pick": [
+      {
+        "ma": "T110000000866",
+        "loai": "trac_nghiem",
+        "de": "Đề cuối kì 1 Toán 10 năm 2025 - 2026 - Đề ôn tập cấu trúc 3-2-2-3 (Đề số 04)",
+        "de_bai": "Cho hàm số $y=f\\left( x \\right)$ có đồ thị như hình vẽ. Khi đó $f\\left( 0 \\right)$ bằng",
+        "lc": [
+          "$-3$.",
+          "$4$.",
+          "$2$.",
+          "$1$."
+        ],
+        "da": "A",
+        "lg": "Chọn A. Đồ thị cắt trục $Oy$ tại điểm có tung độ $-3$ nên $f(0)=-3$.",
+        "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-11/92ccf181-1f58-4f3c-b58b-3af88b185426_478d54af_p1c3.png"
+      },
+      {
+        "ma": "T1100000005736",
+        "loai": "trac_nghiem",
+        "de": "Đề ôn tập giữa học kì 1 Toán 10 năm 2025 - 2026 - Đề số 03 (CTST-KN-CKP, Bồi dưỡng văn hóa Lam Sơn)",
+        "de_bai": "Cho hàm số $y=f\\left( x \\right)$ có đồ thị như trong hình dưới đây. Chọn khẳng định đúng.",
+        "lc": [
+          "Hàm số nghịch biến trên khoảng $\\left( -2;2 \\right)$.",
+          "Hàm số đồng biến trên khoảng $\\left( 1;3 \\right)$.",
+          "Đồ thị hàm số đi qua điểm $\\left( 2;0 \\right)$.",
+          "Đồ thị hàm số đi qua gốc tọa độ."
+        ],
+        "da": "B",
+        "lg": "Quan sát đồ thị hàm số ta thấy hàm số đồng biến trên khoảng $\\left( 1;3 \\right)$.",
+        "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-11/8b170708-2c54-440b-aa30-a9397a7f447e_0e102811_p1c9.png"
+      }
+    ]
+  },
+  "√f = √g": {
+    "tong": 2,
+    "du": 2,
+    "pick": [
+      {
+        "ma": "T1100000007298",
+        "loai": "trac_nghiem",
+        "de": "Đề ôn tập giữa học kì 2 Toán 10 năm 2025 - 2026 (bộ 5 đề, Bồi dưỡng văn hóa Lam Sơn, Đề số 01)",
+        "de_bai": "Cho đồ thị của hai hàm số bậc hai $f(x)=ax^2+bx+c$ và $g(x)=dx^2+ex+f$ như hình bên dưới. Khẳng định nào sau đây đúng với phương trình $\\sqrt{ax^2+bx+c}=\\sqrt{dx^2+ex+f}$?",
+        "lc": [
+          "Phương trình có hai nghiệm phân biệt là $x=1$ và $x=6$.",
+          "Phương trình có $1$ nghiệm là $x=1$.",
+          "Phương trình có $1$ nghiệm là $x=6$.",
+          "Phương trình vô nghiệm."
+        ],
+        "da": "B",
+        "lg": "Phương trình tương đương $f(x)=g(x)$ với điều kiện $f(x)\\ge0$ (và $g(x)\\ge0$). Hai đồ thị cắt nhau tại $x=1$ và $x=6$. Tại $x=1$ giao điểm nằm phía trên trục hoành (thỏa điều kiện); tại $x=6$ giao điểm nằm phía dưới trục hoành (không thỏa). Vậy phương trình có đúng $1$ nghiệm $x=1$.",
+        "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-11/28ac71e4-7f19-4280-9c8c-7b18a58cfde8_0ab5b85a_p1c11.png"
+      },
+      {
+        "ma": "T1100000005161",
+        "loai": "tra_loi_ngan",
+        "de": "Đề cuối kì 2 Toán 10 năm 2024 - 2025 trường THPT Nguyễn Thượng Hiền - TP HCM (Mã đề 209)",
+        "de_bai": "Cho hai hàm số $y=f(x)$ và $y=g(x)$ có đồ thị như hình vẽ. Khi đó, tổng các nghiệm của phương trình $\\sqrt{f(x)}=\\sqrt{g(x)}$ là bao nhiêu?",
+        "lc": null,
+        "da": "-2",
+        "lg": "Từ đồ thị, $f(x)=2(x+1)^2-1$ (đỉnh $(-1;-1)$, qua $(0;1)$), $g(x)=-2x-3$ (qua $(-2;1)$ và $(-1;-1)$). $f(x)=g(x)\\Leftrightarrow2x^2+6x+4=0\\Leftrightarrow x=-1$ hoặc $x=-2$. Điều kiện $f(x)=g(x)\\ge0$: tại $x=-2$ giá trị bằng $1>0$ (nhận); tại $x=-1$ giá trị bằng $-1<0$ (loại). Phương trình chỉ có nghiệm $x=-2$, tổng $=-2$.",
+        "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-11/34c15a0a-8c0c-48c5-ac1b-59fd1f72030e_361c4817_p3c1.png"
+      }
+    ]
+  }
+}

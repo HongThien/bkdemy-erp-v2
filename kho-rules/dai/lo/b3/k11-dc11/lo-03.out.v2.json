@@ -1,0 +1,653 @@
+[
+ {
+  "ma_cau": "T1110000001416",
+  "dang_bai_id": "NDB00966",
+  "ung_vien": [
+   "NDB00956",
+   "NDB00960",
+   "NDB00966"
+  ],
+  "chac": "cao",
+  "ly_do": "Rút gọn sin b(sin b+sin c) bằng tổng thành tích sau khi rút c theo b."
+ },
+ {
+  "ma_cau": "T1110000001527",
+  "dang_bai_id": "NDB01180",
+  "ung_vien": [
+   "NDB01179",
+   "NDB01180"
+  ],
+  "chac": "cao",
+  "ly_do": "Giới hạn x→+∞ dạng ∞-∞ một căn, nhân liên hợp."
+ },
+ {
+  "ma_cau": "T1110000001100",
+  "dang_bai_id": "NDB00575",
+  "ung_vien": [
+   "NDB00575"
+  ],
+  "chac": "cao",
+  "ly_do": "Lý thuyết công thức nghiệm sinx=sinα."
+ },
+ {
+  "ma_cau": "T111010602036",
+  "dang_bai_id": "NDB00959",
+  "ung_vien": [
+   "NDB00968",
+   "NDB00959"
+  ],
+  "chac": "cao",
+  "ly_do": "Cho tan a, tính biểu thức dùng cộng rồi hạ bậc/nhân đôi."
+ },
+ {
+  "ma_cau": "T1110000001394",
+  "dang_bai_id": "NDB00960",
+  "ung_vien": [
+   "NDB00984",
+   "NDB00960"
+  ],
+  "chac": "cao",
+  "ly_do": "Gộp biểu thức bằng công thức cộng rồi nhân đôi cos2b, dạng rút gọn."
+ },
+ {
+  "ma_cau": "T1110000001574",
+  "dang_bai_id": "NDB01151",
+  "ung_vien": [
+   "NDB01151"
+  ],
+  "chac": "cao",
+  "ly_do": "Phân thức tử mẫu cùng bậc 3."
+ },
+ {
+  "ma_cau": "T1110000001369",
+  "dang_bai_id": "NDB01176",
+  "ung_vien": [
+   "NDB01171",
+   "NDB01176"
+  ],
+  "chac": "cao",
+  "ly_do": "Giới hạn một bên có dấu giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T1110000001238",
+  "dang_bai_id": "NDB01182",
+  "ung_vien": [
+   "NDB01182"
+  ],
+  "chac": "cao",
+  "ly_do": "Giới hạn dạng L/0 một bên, xét dấu mẫu."
+ },
+ {
+  "ma_cau": "T1110000001194",
+  "dang_bai_id": "NDB00576",
+  "ung_vien": [
+   "NDB00576"
+  ],
+  "chac": "cao",
+  "ly_do": "Phương trình cot(3x+1)=-1, dạng cot(ax+b)=cotα."
+ },
+ {
+  "ma_cau": "T1110000001458",
+  "dang_bai_id": "NDB00614",
+  "ung_vien": [
+   "NDB00614"
+  ],
+  "chac": "cao",
+  "ly_do": "Thực tế cấp số cộng cho u1=100, d=100, tính tổng."
+ },
+ {
+  "ma_cau": "T1110000001113",
+  "dang_bai_id": "NDB00607",
+  "ung_vien": [
+   "NDB00607"
+  ],
+  "chac": "cao",
+  "ly_do": "Cho u1 và d, tính u6."
+ },
+ {
+  "ma_cau": "T1110000001252",
+  "dang_bai_id": "NDB00991",
+  "ung_vien": [
+   "NDB00990",
+   "NDB00991"
+  ],
+  "chac": "cao",
+  "ly_do": "Hàm lượng giác tổ hợp, xét chẵn lẻ nhiều hàm mở rộng."
+ },
+ {
+  "ma_cau": "T1110000001329",
+  "dang_bai_id": "NDB00997",
+  "ung_vien": [
+   "NDB00996",
+   "NDB00997"
+  ],
+  "chac": "cao",
+  "ly_do": "Gộp sin x + sin(x+2π/3) thành dạng Asinx+Bcosx rồi tìm min max."
+ },
+ {
+  "ma_cau": "T111000000232",
+  "dang_bai_id": "NDB00568",
+  "ung_vien": [
+   "NDB01631",
+   "NDB00568"
+  ],
+  "chac": "cao",
+  "ly_do": "Thực tế đu quay, tính quãng đường ô xe đi được; đề đủ dữ kiện không cần hình."
+ },
+ {
+  "ma_cau": "T1110000001439",
+  "dang_bai_id": "NDB00607",
+  "ung_vien": [
+   "NDB00607"
+  ],
+  "chac": "vua",
+  "ly_do": "Lý thuyết công thức số hạng tổng quát CSC, không có dạng riêng khớp hẳn."
+ },
+ {
+  "ma_cau": "T1110000001146",
+  "dang_bai_id": "NDB01191",
+  "ung_vien": [
+   "NDB01191"
+  ],
+  "chac": "cao",
+  "ly_do": "Tìm m để liên tục tại x0, tham số ở một nhánh."
+ },
+ {
+  "ma_cau": "T111000000335",
+  "dang_bai_id": "NDB00965",
+  "ung_vien": [
+   "NDB00959",
+   "NDB00965"
+  ],
+  "chac": "cao",
+  "ly_do": "Từ giả thiết dùng tích thành tổng để tính cos2C."
+ },
+ {
+  "ma_cau": "T1110000001317",
+  "dang_bai_id": "NDB00960",
+  "ung_vien": [
+   "NDB00956",
+   "NDB00960"
+  ],
+  "chac": "cao",
+  "ly_do": "Chứng minh biểu thức không đổi, dùng công thức nhân đôi sin2x."
+ },
+ {
+  "ma_cau": "T1110000001350",
+  "dang_bai_id": "NDB00617",
+  "ung_vien": [
+   "NDB00617"
+  ],
+  "chac": "cao",
+  "ly_do": "Lương tăng 5% mỗi năm, tính số hạng thứ sáu cấp số nhân."
+ },
+ {
+  "ma_cau": "T1110000001287",
+  "dang_bai_id": "NDB00592",
+  "ung_vien": [
+   "NDB00592"
+  ],
+  "chac": "cao",
+  "ly_do": "Tính số hạng dãy Fibonacci cho bởi truy hồi."
+ },
+ {
+  "ma_cau": "T1110000001051",
+  "dang_bai_id": "NDB01032",
+  "ung_vien": [
+   "NDB01019",
+   "NDB01032"
+  ],
+  "chac": "cao",
+  "ly_do": "Cấp số nhân cho hệ thức truy hồi, tìm số hạng tổng quát."
+ },
+ {
+  "ma_cau": "T111060201046",
+  "dang_bai_id": "NDB01616",
+  "ung_vien": [
+   "NDB01352",
+   "NDB01616"
+  ],
+  "chac": "cao",
+  "ly_do": "Tìm x để ba số liên tiếp là cấp số cộng."
+ },
+ {
+  "ma_cau": "T1110000001355",
+  "dang_bai_id": "NDB01354",
+  "ung_vien": [
+   "NDB01354"
+  ],
+  "chac": "cao",
+  "ly_do": "Số trung bình, mốt, tứ phân vị mẫu ghép nhóm."
+ },
+ {
+  "ma_cau": "T1110000001272",
+  "dang_bai_id": "NDB01190",
+  "ung_vien": [
+   "NDB01187",
+   "NDB01190"
+  ],
+  "chac": "cao",
+  "ly_do": "Mệnh đề đúng về liên tục/gián đoạn tại x=2 của hàm phân thức."
+ },
+ {
+  "ma_cau": "T1110000001893",
+  "dang_bai_id": "NDB01149",
+  "ung_vien": [
+   "NDB01149"
+  ],
+  "chac": "vua",
+  "ly_do": "Giới hạn dãy truy hồi căn bậc ba, dùng kẹp nhưng nặng truy hồi."
+ },
+ {
+  "ma_cau": "T1110000001160",
+  "dang_bai_id": "NDB01151",
+  "ung_vien": [
+   "NDB01151"
+  ],
+  "chac": "cao",
+  "ly_do": "Phân thức tử mẫu cùng bậc 2."
+ },
+ {
+  "ma_cau": "T1110000001348",
+  "dang_bai_id": "NDB00615",
+  "ung_vien": [
+   "NDB00615"
+  ],
+  "chac": "cao",
+  "ly_do": "Cho u1,d,Sn tìm n."
+ },
+ {
+  "ma_cau": "T1110000001579",
+  "dang_bai_id": "NDB01173",
+  "ung_vien": [
+   "NDB01172",
+   "NDB01173"
+  ],
+  "chac": "cao",
+  "ly_do": "Giới hạn 0/0 có hai căn ở tử và mẫu."
+ },
+ {
+  "ma_cau": "T1110000001617",
+  "dang_bai_id": "NDB01173",
+  "ung_vien": [
+   "NDB01172",
+   "NDB01173"
+  ],
+  "chac": "cao",
+  "ly_do": "Giới hạn 0/0 có căn bậc hai và căn bậc ba."
+ },
+ {
+  "ma_cau": "T1110000001095",
+  "dang_bai_id": "NDB00998",
+  "ung_vien": [
+   "NDB00998"
+  ],
+  "chac": "cao",
+  "ly_do": "Tập giá trị của y=sin2x."
+ },
+ {
+  "ma_cau": "T1110000001480",
+  "dang_bai_id": "NDB01354",
+  "ung_vien": [
+   "NDB01354"
+  ],
+  "chac": "cao",
+  "ly_do": "Giá trị đại diện nhóm mẫu số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T1110000001365",
+  "dang_bai_id": "NDB01169",
+  "ung_vien": [
+   "NDB01169"
+  ],
+  "chac": "cao",
+  "ly_do": "Thay trực tiếp vào phân thức xác định tại điểm."
+ },
+ {
+  "ma_cau": "T1110000001166",
+  "dang_bai_id": "NDB01169",
+  "ung_vien": [
+   "NDB01169"
+  ],
+  "chac": "cao",
+  "ly_do": "Thay trực tiếp, mẫu khác 0."
+ },
+ {
+  "ma_cau": "T111000000287",
+  "dang_bai_id": "NDB01354",
+  "ung_vien": [
+   "NDB01354"
+  ],
+  "chac": "cao",
+  "ly_do": "Nhóm chứa tứ phân vị Q3 mẫu ghép nhóm."
+ },
+ {
+  "ma_cau": "T1110000001454",
+  "dang_bai_id": "NDB01030",
+  "ung_vien": [
+   "NDB01030"
+  ],
+  "chac": "cao",
+  "ly_do": "Cấp số nhân cho hai số hạng u1,u8, tìm u15."
+ },
+ {
+  "ma_cau": "T1110000003113",
+  "dang_bai_id": "NDB01168",
+  "ung_vien": [
+   "NDB01168"
+  ],
+  "chac": "vua",
+  "ly_do": "Giới hạn tại +∞ chặn kẹp qua dãy x_n; không có dạng riêng chắc."
+ },
+ {
+  "ma_cau": "T111040102067",
+  "dang_bai_id": "NDB01634",
+  "ung_vien": [
+   "NDB00577",
+   "NDB01634"
+  ],
+  "chac": "cao",
+  "ly_do": "Phương trình cos(sin x)=1 trên đoạn, biến thể giải trên đoạn."
+ },
+ {
+  "ma_cau": "T1110000001381",
+  "dang_bai_id": "NDB01197",
+  "ung_vien": [
+   "NDB01197"
+  ],
+  "chac": "cao",
+  "ly_do": "Tìm a để hàm liên tục trên R, điều kiện tại điểm ghép."
+ },
+ {
+  "ma_cau": "T1110000001178",
+  "dang_bai_id": null,
+  "ung_vien": [],
+  "chac": null,
+  "ly_do": "Bài thực tế vật lí quỹ đạo đạn pháo (phương trình lượng giác theo góc bắn); bản đồ thiếu dạng thực tế ném xiên."
+ },
+ {
+  "ma_cau": "T1110000001576",
+  "dang_bai_id": "NDB01163",
+  "ung_vien": [
+   "NDB01156",
+   "NDB01163"
+  ],
+  "chac": "cao",
+  "ly_do": "Tổng cấp số nhân lùi vô hạn q=1/2."
+ },
+ {
+  "ma_cau": "T1110000002230",
+  "dang_bai_id": null,
+  "ung_vien": [],
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng giới hạn hàm số chứa lượng giác (0/0 với cos)."
+ },
+ {
+  "ma_cau": "T1110000001243",
+  "dang_bai_id": "NDB01188",
+  "ung_vien": [
+   "NDB01188"
+  ],
+  "chac": "cao",
+  "ly_do": "Xét liên tục tại điểm chia nhánh."
+ },
+ {
+  "ma_cau": "T1110000001203",
+  "dang_bai_id": "NDB00991",
+  "ung_vien": [
+   "NDB00991"
+  ],
+  "chac": "cao",
+  "ly_do": "Chẵn lẻ của hàm sin2x/x, hàm mở rộng."
+ },
+ {
+  "ma_cau": "T1110000001482",
+  "dang_bai_id": "NDB01354",
+  "ung_vien": [
+   "NDB01354"
+  ],
+  "chac": "cao",
+  "ly_do": "Số trung bình mẫu ghép nhóm."
+ },
+ {
+  "ma_cau": "T1110000001334",
+  "dang_bai_id": "NDB01009",
+  "ung_vien": [
+   "NDB00577",
+   "NDB01009"
+  ],
+  "chac": "cao",
+  "ly_do": "Phương trình sin2x=√2/2 trên đoạn, hai họ nghiệm."
+ },
+ {
+  "ma_cau": "T1110000001511",
+  "dang_bai_id": "NDB01178",
+  "ung_vien": [
+   "NDB01178"
+  ],
+  "chac": "cao",
+  "ly_do": "Phân thức hữu tỉ khi x→-∞."
+ },
+ {
+  "ma_cau": "T1110000001596",
+  "dang_bai_id": "NDB01151",
+  "ung_vien": [
+   "NDB01151"
+  ],
+  "chac": "cao",
+  "ly_do": "Phân thức tử mẫu cùng bậc 2."
+ },
+ {
+  "ma_cau": "T1110000001072",
+  "dang_bai_id": "NDB01354",
+  "ung_vien": [
+   "NDB01354"
+  ],
+  "chac": "cao",
+  "ly_do": "Nhóm chứa tứ phân vị thứ ba."
+ },
+ {
+  "ma_cau": "T1110000001571",
+  "dang_bai_id": "NDB01149",
+  "ung_vien": [
+   "NDB01148",
+   "NDB01149"
+  ],
+  "chac": "cao",
+  "ly_do": "Dùng nguyên lí kẹp |u_n-2|<1/n^3."
+ },
+ {
+  "ma_cau": "T1110000001391",
+  "dang_bai_id": "NDB00967",
+  "ung_vien": [
+   "NDB00967"
+  ],
+  "chac": "cao",
+  "ly_do": "Nhận dạng công thức cộng của tan."
+ },
+ {
+  "ma_cau": "T1110000001583",
+  "dang_bai_id": "NDB01177",
+  "ung_vien": [
+   "NDB01175",
+   "NDB01177"
+  ],
+  "chac": "cao",
+  "ly_do": "Hàm nhiều công thức, so giới hạn trái phải để kết luận giới hạn."
+ },
+ {
+  "ma_cau": "T1110000001598",
+  "dang_bai_id": "NDB01151",
+  "ung_vien": [
+   "NDB01151"
+  ],
+  "chac": "cao",
+  "ly_do": "Phân thức tích đa thức, cùng bậc 5."
+ },
+ {
+  "ma_cau": "T1110000001597",
+  "dang_bai_id": "NDB01151",
+  "ung_vien": [
+   "NDB01151"
+  ],
+  "chac": "cao",
+  "ly_do": "Phân thức tử bậc thấp hơn mẫu."
+ },
+ {
+  "ma_cau": "T1110000001557",
+  "dang_bai_id": "NDB01354",
+  "ung_vien": [
+   "NDB01354"
+  ],
+  "chac": "cao",
+  "ly_do": "Nhóm chứa mốt mẫu ghép nhóm."
+ },
+ {
+  "ma_cau": "T1110000001552",
+  "dang_bai_id": "NDB00592",
+  "ung_vien": [
+   "NDB00592"
+  ],
+  "chac": "cao",
+  "ly_do": "Tính số hạng dãy cho bởi hệ thức truy hồi."
+ },
+ {
+  "ma_cau": "T1110000003121",
+  "dang_bai_id": "NDB01179",
+  "ung_vien": [
+   "NDB01179"
+  ],
+  "chac": "cao",
+  "ly_do": "Giới hạn x→+∞ chứa căn, tìm tham số a."
+ },
+ {
+  "ma_cau": "T1110000001335",
+  "dang_bai_id": "NDB01009",
+  "ung_vien": [
+   "NDB00577",
+   "NDB01009"
+  ],
+  "chac": "cao",
+  "ly_do": "Phương trình cos(2x-π/4)=1/2 trên đoạn, hai họ nghiệm."
+ },
+ {
+  "ma_cau": "T1110000001265",
+  "dang_bai_id": "NDB01154",
+  "ung_vien": [
+   "NDB01154"
+  ],
+  "chac": "cao",
+  "ly_do": "Thương các luỹ thừa a^n, b^n."
+ },
+ {
+  "ma_cau": "T1110000001052",
+  "dang_bai_id": "NDB01153",
+  "ung_vien": [
+   "NDB01153"
+  ],
+  "chac": "cao",
+  "ly_do": "Giới hạn phân thức chứa tham số a."
+ },
+ {
+  "ma_cau": "T1110000001074",
+  "dang_bai_id": null,
+  "ung_vien": [],
+  "chac": null,
+  "ly_do": "Thực tế vật lí định luật khúc xạ sin i/sin r có hình; bản đồ thiếu dạng thực tế giải sin=giá trị bằng máy tính."
+ },
+ {
+  "ma_cau": "T1110000001561",
+  "dang_bai_id": "NDB01163",
+  "ung_vien": [
+   "NDB01156",
+   "NDB01163"
+  ],
+  "chac": "cao",
+  "ly_do": "Tổng cấp số nhân lùi vô hạn q=1/3."
+ },
+ {
+  "ma_cau": "T1110000001586",
+  "dang_bai_id": "NDB01156",
+  "ung_vien": [
+   "NDB01151",
+   "NDB01156"
+  ],
+  "chac": "cao",
+  "ly_do": "Dãy là tổng n số hạng CSC chia mẫu."
+ },
+ {
+  "ma_cau": "T1110000001568",
+  "dang_bai_id": "NDB01150",
+  "ung_vien": [
+   "NDB01150"
+  ],
+  "chac": "cao",
+  "ly_do": "Cho giới hạn các dãy thành phần, tính hiệu."
+ },
+ {
+  "ma_cau": "T1110000001599",
+  "dang_bai_id": "NDB01157",
+  "ung_vien": [
+   "NDB01151",
+   "NDB01157"
+  ],
+  "chac": "cao",
+  "ly_do": "Căn bậc hai của n^4, đưa n^2 ra ngoài căn."
+ },
+ {
+  "ma_cau": "T1110000001097",
+  "dang_bai_id": "NDB00576",
+  "ung_vien": [
+   "NDB00576"
+  ],
+  "chac": "cao",
+  "ly_do": "Phương trình tan(x-π/4)=1."
+ },
+ {
+  "ma_cau": "T1110000001390",
+  "dang_bai_id": "NDB00958",
+  "ung_vien": [
+   "NDB00958"
+  ],
+  "chac": "cao",
+  "ly_do": "Nhận dạng công thức nhân đôi cos2a."
+ },
+ {
+  "ma_cau": "T1110000001136",
+  "dang_bai_id": "NDB01156",
+  "ung_vien": [
+   "NDB01151",
+   "NDB01156"
+  ],
+  "chac": "cao",
+  "ly_do": "Tử là tổng cấp số cộng, lấy giới hạn."
+ },
+ {
+  "ma_cau": "T1110000001528",
+  "dang_bai_id": "NDB01173",
+  "ung_vien": [
+   "NDB01172",
+   "NDB01173"
+  ],
+  "chac": "cao",
+  "ly_do": "Giới hạn 0/0 hai căn khác bậc."
+ },
+ {
+  "ma_cau": "T111030101102",
+  "dang_bai_id": "NDB00990",
+  "ung_vien": [
+   "NDB00990"
+  ],
+  "chac": "vua",
+  "ly_do": "Câu tổng hợp tính chất hàm cos, đáp án về tính chẵn lẻ nhưng trộn nhiều ý."
+ },
+ {
+  "ma_cau": "T1110000001434",
+  "dang_bai_id": "NDB00593",
+  "ung_vien": [
+   "NDB00593"
+  ],
+  "chac": "cao",
+  "ly_do": "Đáp án sai là liệt kê 5 số hạng đầu từ công thức."
+ }
+]

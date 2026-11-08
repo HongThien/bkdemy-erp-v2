@@ -18,7 +18,7 @@ export type HoiDap = {
   done_at: string | null
 }
 
-// Whitelist pilot (TẠM THỜI, CEO 29/08): nguồn chân lý = hàm DB hoi_dap_duoc_dung() —
+// Nguồn chân lý = hàm DB hoi_dap_duoc_dung() (29/10: người có ghế team core, không còn 3 uuid gõ cứng; mở cho Trưởng khối ở P4 spec-truong-khoi.md) —
 // RLS chặn thật bằng nó, đây chỉ hỏi để ẩn/hiện tab. KHÔNG hardcode danh sách ở client.
 export async function hoiDapDuocDung(): Promise<boolean> {
   const { data, error } = await supabase.rpc('hoi_dap_duoc_dung')

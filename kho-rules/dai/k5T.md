@@ -309,6 +309,54 @@ không đổi mã câu / đề / lời giải; trigger DB tự ghi vết đổi 
 - Dữ liệu lượt gán: `lo/k5T-gan-tile.json` (30 câu: 24 gán, 6 lệch) · `lo/k5T-gan-tile-2.json` (6 câu lệch, gán sau khi CEO chốt). Cả 30 câu đã vào bản đồ
   (`030101`: 3 · `030102`: 4 · `030103`: 12 · `030104`: 11). Dạng chờ 5T còn 819 câu.
 
+### 8.2 Chuyên đề `T15T0302` Bài toán công việc chung riêng (CEO tạo 18/10, 2 dạng, chưa có mô tả nhận biết) ↔ CĐ3 của sách + ON 72–77
+
+| Dạng | Dấu hiệu (theo phương pháp của lời giải đã ghi kho) | Câu đã gán 18/10 |
+|---|---|---|
+| `030201` Công việc chung riêng cơ bản | người / vòi tham gia **suốt từ đầu**: đổi ra "phần việc trong 1 đơn vị thời gian" rồi cộng (làm chung), trừ (tìm người còn lại, vòi tháo), hoặc cho theo cặp / theo từng phần | VD 3.1 · VD 3.2 · LT 3.1–3.8 · LT 3.13–3.15 · ON 72 · 73 · 74 · 76 · 77 |
+| `030202` Có thay đổi công việc giữa chừng | **giai đoạn đầu và giai đoạn sau khác nhau** (có người vào, rút, thay thế sau một lúc) ⇒ tính phần việc giai đoạn đầu, lấy phần còn lại cho giai đoạn sau | LT 3.9 · LT 3.10 · LT 3.11 · LT 3.12 · ON 75 |
+
+- Bể **có sẵn** một phần nước (LT 3.7, LT 3.8) là điều kiện đầu, không phải đổi người giữa chừng ⇒ dạng cơ bản. Vòi vào trừ vòi ra mở cùng lúc từ đầu (LT 3.4, ON 76) ⇒ cơ bản.
+- Opus xếp và Sonnet gán mù **trùng 23/23** ⇒ ghi không cần hỏi. Hai trạm tự dùng cùng một ranh giới (tên dạng chưa có mô tả).
+- ⏳ Nếu CEO muốn "công việc chung riêng cơ bản" chỉ gồm bài KHÔNG có vòi tháo (LT 3.4, ON 76 sang dạng khác), hoặc LT 3.7 / 3.8 sang `030202` — báo, đổi bằng `gan-dang.mjs`.
+- **Loại khỏi chuyên đề:** LT 7.12 (thừa–thiếu, nhắc "hoàn thành công việc" nhưng không phải bài công việc chung). Các bài LT 5.x, ON 68 nhắc "một công việc" nằm ở `T15T0301` (tỉ lệ), giữ nguyên.
+- Dữ liệu lượt gán: `lo/k5T-gan-cv.json` (23 câu). Dạng chờ 5T còn 796 câu.
+
+### 8.3 BẢN ĐỒ MỚI (`dai_bdm_*`) — chuyên đề `NCH00638` "Tỉ số phầm trăm" (4 nhóm · 12 dạng; chủ đề "Bài toán tỉ số" khối 5T; Thùy dựng lại 08/11) ↔ CĐ14–17 của sách + ON 3, 79–89
+
+> **Lịch sử:** 25/10 Thùy dựng nhóm `NNB01747` (5 dạng `NDB01611–15`) và tôi gán 73 câu. **31/10 17:10** migration chuyển bản đồ 5T cũ sang bản đồ mới xoá cả nhóm đó
+> (cùng chuyên đề `NCH00526`, 160 dòng `dai_bdm_gan_cau`) vì bản đồ cũ 5T chưa từng có phần trăm. 08/11 Thùy dựng lại (cấu trúc khác) ⇒ làm lại lượt gán bên dưới.
+> *(Bài học: gán vào bản đồ mới xong phải kiểm lại sau mỗi đợt migration bản đồ — dòng gán mất theo nhóm, câu vẫn `da_duyet` nên nhìn không ra.)*
+
+Khác §8.1–8.2 (bản đồ CŨ `dai_ban_do`, đổi `dang_chinh`): ở bản đồ mới câu **giữ nguyên `dang_chinh` = dạng chờ** `T15T000000`, gán nằm ở `dai_bdm_gan_cau` (luồng B3, spec-ban-do-4-tang §13).
+Lệnh: `lo/k5T-gan-pt-<NNB…>.json` (mỗi nhóm một tệp) → `node scripts/kho/sach/gan-bdm-nhom.mjs <tệp> [--ghi]` (cao ⇒ gán chắc, DB tự duyệt qua `_bdm_tu_duyet_sau_gan` · vừa ⇒ `dai_bdm_de_xuat` · không có dạng ⇒ `dai_bdm_cau_thieu_dang`;
+không đè quyết định của người). Hai trạm: tôi xếp (đọc đề + lời giải) và Sonnet gán MÙ (câu xáo theo hash, mã ẩn `q001…`, chỉ thấy tên + mô tả dạng); **cùng dạng ⇒ gán chắc, lệch ⇒ đề xuất, cả hai không thấy dạng ⇒ thiếu dạng**.
+
+| Dạng | Dấu hiệu (theo phương pháp lời giải) | Gán chắc 08/11 |
+|---|---|---|
+| `NDB02767` Cộng trừ nhân chia tỉ số % | phép tính trực tiếp giữa các số có dấu % (kết quả dạng % hoặc số thập phân), biểu thức | 16: LT 14.4a–d · 14.5a–i, k, l · 14.6c |
+| `NDB02768` Tính thuận tiện liên quan tỉ số % | — | 0 (tài liệu chưa có bài) |
+| `NDB02769` Tìm % của một số | nhân số với a% (kể cả nhiều bước, "phần còn lại", tăng thêm a% rồi cộng) | 11: LT 15.7a–f · 15.8 · 15.10–15.13 |
+| `NDB02770` Tìm một số khi biết % của nó | chia cho a% (kể cả "chiếm a% tổng số", gốc lẫn lãi) | 14: LT 15.14a–f · 15.15–15.20 · ON 81–82 |
+| `NDB02771` Bán hàng cơ bản | giá vốn · lãi a% · giá bán, lãi lỗ nhiều phần hàng | 5: LT 15.6 · 15.9 · 17.20 · 17.21 · ON 80 |
+| `NDB02772` Cho lãi theo giá bán | lãi tính theo % của giá BÁN | 0 |
+| `NDB02773` Giảm giá | giảm giá nhưng vẫn lãi ⇒ so lãi thực tế với lãi ban đầu | 3: LT 17.18 · 17.19 · ON 84 |
+| `NDB02774` Giảm giá kép | giảm lần 1 rồi lần 2 theo giá đã giảm (nhân, không cộng) | 2: LT 17.3 · 17.4 |
+| `NDB02775` Doanh thu – chi phí | đơn giá × số lượng, thay đổi % hai thừa số, hỏi tích | 1: LT 17.16 |
+| `NDB02776` Diện tích | chiều dài × chiều rộng đổi % | 4: LT 17.6–17.9 |
+| `NDB02777` Trộn A và B → hỗn hợp | cho %/khối lượng hai phần, trộn, tìm % sau trộn | 6: VD 16.3 · LT 16.3–16.6 · ON 87 |
+| `NDB02778` Hỗn hợp tìm ngược A, B | cho hỗn hợp, tìm lượng/% của A hoặc B | 1: LT 16.7 |
+
+- **Tổng: 117 câu phần trăm = 17 đã nằm ở dạng 5T khác + 63 gán chắc + 12 đề xuất + 25 chưa có dạng.** 17 câu (LT 14.6a, b, d · 14.7a–d · 14.8–14.10 · 14.12–14.17 · ON 3) do lượt gán 5T ngày 01/11 xếp sang các dạng tổng–tỉ / hai tỉ số / số thập phân của chủ đề "Bài toán tỉ số" (phương pháp thắng chủ đề) — không đụng.
+- **12 câu đề xuất, chờ Thùy gật** (hai trạm lệch): ① **thêm nước cất / thêm muối / thêm sắt / đun cho bay hơi, chất tan KHÔNG đổi** — VD 16.1, LT 16.1, 16.2, 16.8, 16.9, 16.10, ON 88, ON 89 (tôi xếp vào `02777`/`02778`, trạm mù thấy đây là pha loãng/cô đặc chứ không phải "trộn hai dung dịch" ⇒ **cần Thùy quyết: nhóm "Bài toán hỗn hợp" có nhận kiểu pha loãng này không**) ·
+  ② LT 14.5j (36 × 28%: tôi `02767`, mù `02769`) · ③ LT 14.11 (chuyển 25% công nhân: mù `02770`) · ④ LT 17.15 (sản lượng = diện tích × năng suất) và ON 83 (thể tích hộp: ba kích thước) — tôi `02775` / `02776`, mù thấy không phải diện tích hay doanh thu.
+- **25 câu CHƯA CÓ DẠNG** (`dai_bdm_cau_thieu_dang`, hai trạm cùng nói không dạng nào khớp, không ép): ① **tính tỉ số % của hai đại lượng** — LT 15.1–15.5 · ON 79 (6; nhóm cũ có dạng này, bản mới của Thùy không có) · ② **đổi số ↔ %** — LT 14.1–14.3 (3) ·
+  ③ **hạt tươi – hạt khô** — VD 16.2 · LT 16.11–16.15 (6; LT 16.11 cổng gắn cờ `nghi`) · ④ **tăng/giảm liên tiếp một đại lượng, lãi nhập vốn** — LT 17.1 · 17.2 · 17.17 · ON 85 (4) · ⑤ **năng suất – thời gian – người, chu vi, thương hai số** — LT 17.5 · 17.11–17.14 (5) · ON 86 (giảm 10% giá áo, tăng 20% giá mũ rồi tổng–tỉ).
+- LT 16.4 (quặng + sắt, cờ `nghi` vì đề viết lại có chủ ý): gán `02777`; DB tự duyệt vì trigger `_bdm_tu_duyet_sau_gan` không xét cờ `nghi` (khác `gan-bdm-nhom.mjs`).
+- Không đưa vào (phương pháp thắng chủ đề, % chỉ là một bước của bài hình / chuyển động): LT 18.10, 20.8, 20.15, 22.26, 28.4 · các câu "viết số thập phân gồm … phần trăm" · LT 7.12 (thừa–thiếu).
+- Lý thuyết / ví dụ của 4 nhóm và 12 dạng đang TRỐNG (Thùy chưa điền); 7/12 dạng có mô tả 1 dòng.
+- Dữ liệu: `lo/k5T-gan-pt-NNB02088/89/90/91.json` (68 + 10 + 7 + 15 câu). Bản cũ `lo/k5T-gan-bdm-pt.json` (nhóm `NNB01747` đã xoá) giữ làm nguồn tra.
+
 ## 9. NHẬT KÝ SỬA (append-only — CEO sửa gì ghi đó, rồi nâng thành luật ở trên)
 
 | Ngày | Câu | CEO sửa gì | Luật rút ra |
@@ -328,3 +376,5 @@ không đổi mã câu / đề / lời giải; trigger DB tự ghi vết đổi 
 | 09/10 | Lô 3 + lô 4 — 4 câu hỏi | *"1. OK · 2. Câu đấy nên viết đầy đủ là Tam giác AMC và ABC có chung đường cao hạ từ … suy ra … · 3. Vẽ được sơ đồ minh hoạ là chuẩn. Bài chuyển động rất cần · 4. Bài thêm bớt chữ số bên trái bên phải là bài toán tỉ số, giải kiểu sơ đồ được. Còn bài đề cho cấu tạo số thì giải như cấu tạo số."* | §1: hình hỏng vẽ lại bằng code; tỉ số diện tích viết đầy đủ câu (sửa lô 3, 7 dòng); chuyển động bắt buộc sơ đồ minh hoạ — máy vẽ mới `so-do-chuyen-dong.mjs`, chèn 11 câu lô 4; cấu tạo số tách 2 loại. |
 | 09/10 | Cả 4 lô sách (101 câu) | *"OK rồi. Lên V1 thôi."* | **v1.** Sang bước 2: giải toàn bộ sách theo dây chuyền README §2b, ghi dạng chờ. |
 | 11/10 | Gán dạng chuyên đề Tỉ lệ thuận – nghịch: 6 câu thêm / bớt người từ đầu (LT 5.2–5.5, 5.8, 5.9) | *"Thay đổi số người: có 2 loại, đổi từ đầu và đổi giữa chừng. Cùng tư duy nên dạy cùng nhau."* | §8.1: `030104` gồm cả hai loại; ở dạng này dấu hiệu đề (có người đến / đi) thắng phương pháp. 6 câu đã gán `030104`. |
+| 25/10 | Đưa tài liệu 5T vào bản đồ mới, nhóm "Bài toán tính toán với tỉ số phần trăm" | *"Đưa bài vào kho, nhóm … Tự động duyệt"* | §8.3: gán qua `dai_bdm_gan_cau`, câu gán chắc tự duyệt (`duyet_nguon='ai'`); câu máy chưa quyết ⇒ đề xuất / thiếu dạng + trang HTML cho CEO. |
+| 08/11 | 117 câu phần trăm 5T vào chuyên đề `NCH00638` "Tỉ số phầm trăm" (bản đồ mới, Thùy dựng lại sau khi nhóm 25/10 bị migration 31/10 xoá) | *"Phân bài vào tỉ số phần trăm đi. t tạo rồi đấy"* | §8.3: làm lại lượt gán trên 12 dạng mới (63 gán chắc, 12 đề xuất, 25 chưa có dạng, 17 câu đã ở dạng 5T khác); câu hỏi mở: kiểu pha loãng/bay hơi có thuộc "Bài toán hỗn hợp" không |

@@ -1,0 +1,595 @@
+=== N H4.4
+@ly_thuyet:
+##TC Tiệm cận của hàm phân thức $y=\dfrac{P(x)}{Q(x)}$
+- Tiệm cận đứng $x=x_0$: $x_0$ là nghiệm của mẫu $Q(x)$ nhưng không làm tử $P(x)$ triệt tiêu (nếu cả tử và mẫu cùng nhận $x_0$ làm nghiệm thì phải rút gọn rồi xét lại).
+- Tiệm cận ngang: bậc tử nhỏ hơn bậc mẫu thì $y=0$; bậc tử bằng bậc mẫu thì $y$ bằng thương của hệ số cao nhất ở tử và hệ số cao nhất ở mẫu; bậc tử lớn hơn bậc mẫu thì không có tiệm cận ngang.
+- Bậc tử lớn hơn bậc mẫu đúng $1$ đơn vị thì đồ thị có tiệm cận xiên $y=\alpha x+\beta$ (là thương của phép chia đa thức), với điều kiện số dư khác $0$.
+
+##PP Giải bài tiệm cận chứa tham số $m$
+Xác định bậc của tử và mẫu để biết đồ thị có tiệm cận ngang hay xiên hay không, và tiệm cận đó có phụ thuộc $m$ hay không.
+Tìm các giá trị $x$ làm mẫu bằng $0$, xét số nghiệm của mẫu theo $m$ (dùng $\Delta$ hoặc $\Delta'$ nếu mẫu bậc hai).
+Loại các nghiệm của mẫu đồng thời là nghiệm của tử: thay nghiệm của tử vào mẫu để tìm giá trị $m$ cần loại.
+Đếm tiệm cận theo từng trường hợp của $m$, lập điều kiện theo yêu cầu đề rồi kết luận.
+
+##CY
+- Khi mẫu và tử có nghiệm chung, phải xét riêng giá trị $m$ đó: đồ thị có thể mất tiệm cận đứng.
+- Hàm chứa căn: giới hạn khi $x\to+\infty$ và $x\to-\infty$ có thể khác nhau, mỗi phía có thể cho một tiệm cận ngang riêng.
+
+=== H4.4.1
+@ly_thuyet:
+##TC Đếm số tiệm cận
+- Mẫu bậc hai $x^2+px+q$ có hai nghiệm phân biệt khi $\Delta>0$, nghiệm kép khi $\Delta=0$, vô nghiệm khi $\Delta<0$.
+- Số tiệm cận đứng $=$ số nghiệm của mẫu mà tử khác $0$ tại nghiệm đó.
+- Tổng số tiệm cận $=$ số tiệm cận đứng $+$ số tiệm cận ngang (hai tiệm cận ngang khác nhau chỉ xuất hiện ở hàm chứa căn hoặc giá trị tuyệt đối).
+
+##PP Tìm $m$ để đồ thị có đúng $k$ tiệm cận
+Tìm tiệm cận ngang theo bậc tử, bậc mẫu để biết còn cần mấy tiệm cận đứng.
+Tính $\Delta$ (hoặc $\Delta'$) của mẫu và chia ba trường hợp: vô nghiệm, nghiệm kép, hai nghiệm phân biệt.
+Ở mỗi trường hợp, kiểm tra nghiệm của mẫu có trùng nghiệm của tử không (thay nghiệm của tử vào mẫu tìm $m$).
+Đối chiếu số tiệm cận ở từng trường hợp với yêu cầu $k$, gộp các giá trị $m$ thoả mãn.
+
+##CY
+- Đề hỏi "đúng $k$ tiệm cận" thì phải đếm cả tiệm cận ngang, đừng chỉ đếm tiệm cận đứng.
+- Khi mẫu có nghiệm kép, đó vẫn chỉ là một tiệm cận đứng.
+
+@vi_du:
+##VD
+Tìm tất cả giá trị của $m$ để đồ thị hàm số $y=\dfrac{2x+1}{x^2-2x+m}$ có đúng $3$ đường tiệm cận.
+
+Bài giải:
+Bậc tử nhỏ hơn bậc mẫu nên $\lim\limits_{x\to\pm\infty}y=0$, đồ thị luôn có tiệm cận ngang $y=0$.
+Do đó đồ thị có đúng $3$ tiệm cận khi và chỉ khi có đúng $2$ tiệm cận đứng, tức là mẫu có hai nghiệm phân biệt và cả hai đều khác nghiệm $x=-\dfrac12$ của tử.
+Mẫu có hai nghiệm phân biệt khi $\Delta'=1-m>0$, tức là $m<1$.
+Thay $x=-\dfrac12$ vào mẫu: $\dfrac14+1+m=0\Leftrightarrow m=-\dfrac54$. Khi đó mẫu có một nghiệm trùng nghiệm của tử nên chỉ còn $1$ tiệm cận đứng, ta loại giá trị này.
+Vậy $m<1$ và $m\ne-\dfrac54$.
+
+##VD
+Tìm tất cả giá trị của $m$ để đồ thị hàm số $y=\dfrac{2x-1}{x^2-2mx+3m-2}$ có đúng $2$ đường tiệm cận.
+
+Bài giải:
+Bậc tử nhỏ hơn bậc mẫu nên đồ thị luôn có tiệm cận ngang $y=0$. Vậy cần đúng $1$ tiệm cận đứng.
+Mẫu có $\Delta'=m^2-3m+2=(m-1)(m-2)$.
+Trường hợp $\Delta'<0$, tức $1<m<2$: mẫu vô nghiệm, không có tiệm cận đứng, đồ thị chỉ có $1$ tiệm cận. Loại.
+Trường hợp $\Delta'=0$, tức $m=1$ hoặc $m=2$: mẫu có nghiệm kép $x=m$; tử tại $x=m$ bằng $2m-1\ne0$ (bằng $1$ và $3$) nên có đúng $1$ tiệm cận đứng. Nhận.
+Trường hợp $\Delta'>0$, tức $m<1$ hoặc $m>2$: mẫu có hai nghiệm phân biệt, muốn chỉ có $1$ tiệm cận đứng thì một nghiệm phải là $x=\dfrac12$ (nghiệm của tử).
+Thay $x=\dfrac12$ vào mẫu: $\dfrac14-m+3m-2=0\Leftrightarrow m=\dfrac78$ (thoả $m<1$). Khi đó tổng hai nghiệm bằng $2m=\dfrac74$ nên nghiệm còn lại là $\dfrac54\ne\dfrac12$, đúng $1$ tiệm cận đứng. Nhận.
+Vậy $m\in\left\{\dfrac78;1;2\right\}$.
+
+=== H4.4.2
+@ly_thuyet:
+##TC Tiệm cận theo hệ số
+- Hàm $y=\dfrac{ax+b}{cx+d}$ ($c\ne0$, $ad-bc\ne0$): tiệm cận đứng $x=-\dfrac{d}{c}$, tiệm cận ngang $y=\dfrac{a}{c}$.
+- Hàm $y=\dfrac{ax^2+bx+c}{dx+e}$: chia đa thức được $y=\alpha x+\beta+\dfrac{r}{dx+e}$; tiệm cận xiên $y=\alpha x+\beta$ (cần $r\ne0$), tiệm cận đứng $x=-\dfrac{e}{d}$.
+
+##PP Biết tiệm cận, tìm hệ số
+Viết tiệm cận của hàm số theo các hệ số cần tìm (dùng công thức hoặc chia đa thức).
+Cho các tiệm cận ấy trùng với tiệm cận đề bài cho, lập hệ phương trình ẩn là các hệ số.
+Giải hệ để tìm hệ số.
+Thử lại điều kiện để đồ thị đúng dạng (như $ad-bc\ne0$, số dư $r\ne0$) rồi kết luận.
+
+##CY
+- Quên điều kiện $ad-bc\ne0$: khi $ad-bc=0$ hàm số rút gọn thành hằng số, đồ thị không còn tiệm cận.
+- Dư của phép chia bằng $0$ thì đồ thị là đường thẳng (bỏ một điểm), không có tiệm cận xiên.
+
+@vi_du:
+##VD
+Tìm $a$, $b$ để đồ thị hàm số $y=\dfrac{ax-1}{bx+2}$ nhận đường thẳng $x=1$ làm tiệm cận đứng và đường thẳng $y=-2$ làm tiệm cận ngang.
+
+Bài giải:
+Với $b\ne0$, đồ thị có tiệm cận đứng $x=-\dfrac{2}{b}$ và tiệm cận ngang $y=\dfrac{a}{b}$.
+Tiệm cận đứng là $x=1$ nên $-\dfrac{2}{b}=1$, suy ra $b=-2$.
+Tiệm cận ngang là $y=-2$ nên $\dfrac{a}{b}=-2$, suy ra $a=-2b=4$.
+Kiểm tra: $ad-bc=4\cdot2-(-1)\cdot(-2)=6\ne0$ nên đồ thị đúng là hypebol.
+Vậy $a=4$, $b=-2$.
+
+##VD
+Biết đồ thị hàm số $y=\dfrac{ax^2+bx+2}{x+1}$ có tiệm cận xiên là đường thẳng $y=2x-1$. Tìm $a$, $b$.
+
+Bài giải:
+Chia đa thức: $ax^2+bx+2=(x+1)(ax+b-a)+(a-b+2)$.
+Do đó $y=ax+(b-a)+\dfrac{a-b+2}{x+1}$.
+Nếu $a-b+2\ne0$ thì tiệm cận xiên là $y=ax+(b-a)$. Cho trùng với $y=2x-1$: $a=2$ và $b-a=-1$, suy ra $b=1$.
+Kiểm tra số dư: $a-b+2=2-1+2=3\ne0$ nên đồ thị đúng có tiệm cận xiên (và tiệm cận đứng $x=-1$).
+Vậy $a=2$, $b=1$.
+
+=== N H4.5
+@ly_thuyet:
+##TC Công thức dùng chung
+- Hàm $y=\dfrac{ax+b}{cx+d}$ và $y=\alpha x+\beta+\dfrac{r}{x-x_0}$ có đồ thị đối xứng qua giao điểm của hai tiệm cận.
+- Khoảng cách từ $M(x_M;y_M)$ tới đường thẳng $x=x_0$ là $|x_M-x_0|$, tới đường thẳng $y=y_0$ là $|y_M-y_0|$, tới đường thẳng $Ax+By+C=0$ là $\dfrac{|Ax_M+By_M+C|}{\sqrt{A^2+B^2}}$.
+- Bất đẳng thức Cô-si: với $u,v\ge0$ thì $u+v\ge2\sqrt{uv}$, dấu bằng xảy ra khi $u=v$.
+- Góc $\varphi$ giữa hai đường thẳng có vectơ pháp tuyến $\vec{n}_1$, $\vec{n}_2$: $\cos\varphi=\dfrac{|\vec{n}_1\cdot\vec{n}_2|}{|\vec{n}_1|\cdot|\vec{n}_2|}$ ($0^\circ\le\varphi\le90^\circ$).
+
+##PP Bài hình học gắn với tiệm cận
+Viết phương trình các tiệm cận của đồ thị (có thể phải chia đa thức hoặc tìm điều kiện của $m$).
+Gọi điểm $M$ trên đồ thị theo hoành độ, viết toạ độ $M$ bằng một ẩn.
+Dùng công thức khoảng cách, diện tích hoặc góc để lập biểu thức theo ẩn đó.
+Giải phương trình hoặc dùng bất đẳng thức (Cô-si) rồi đối chiếu điều kiện xác định.
+
+##CY
+- Khoảng cách phải lấy giá trị tuyệt đối, và các độ dài dùng trong diện tích phải dương.
+- Dấu bằng của bất đẳng thức Cô-si phải kiểm tra có đạt được trong tập xác định của hoành độ $M$.
+
+=== H4.5.1
+@ly_thuyet:
+##TC Tâm đối xứng
+- Đồ thị $y=\dfrac{ax+b}{cx+d}$ ($c\ne0$, $ad-bc\ne0$) có tâm đối xứng $I\left(-\dfrac{d}{c};\dfrac{a}{c}\right)$, là giao điểm tiệm cận đứng và tiệm cận ngang.
+- Đồ thị $y=\alpha x+\beta+\dfrac{r}{x-x_0}$ ($\alpha\ne0$, $r\ne0$) có tâm đối xứng $I(x_0;\alpha x_0+\beta)$, là giao điểm tiệm cận đứng $x=x_0$ và tiệm cận xiên.
+
+##PP Tìm tâm đối xứng
+Viết tiệm cận đứng của đồ thị (từ nghiệm của mẫu).
+Viết tiệm cận ngang (hàm bậc nhất trên bậc nhất) hoặc tiệm cận xiên (chia đa thức).
+Giao điểm của hai tiệm cận là tâm đối xứng $I$.
+Khi đề cho $I$ thuộc một đường hay có tính chất khác, thay toạ độ $I$ (theo $m$) vào điều kiện rồi giải.
+
+##CY
+- Hàm bậc ba cũng có tâm đối xứng (điểm uốn) nhưng cách tìm khác: không dùng tiệm cận.
+- Cần kiểm tra điều kiện để đồ thị đúng dạng hypebol (như $ad-bc\ne0$) trước khi nói đến tâm đối xứng.
+
+@vi_du:
+##VD
+Tìm toạ độ tâm đối xứng của đồ thị mỗi hàm số sau:
+a) $y=\dfrac{2x-1}{x+3}$
+b) $y=\dfrac{x^2-3x+3}{x-2}$
+
+Bài giải:
+a) Có $ad-bc=2\cdot3-(-1)\cdot1=7\ne0$. Tiệm cận đứng $x=-3$, tiệm cận ngang $y=2$. Tâm đối xứng là $I(-3;2)$.
+b) Chia đa thức: $x^2-3x+3=(x-2)(x-1)+1$ nên $y=x-1+\dfrac{1}{x-2}$.
+Tiệm cận đứng $x=2$, tiệm cận xiên $y=x-1$. Giao điểm: $x=2$, $y=2-1=1$.
+Vậy tâm đối xứng của hai đồ thị lần lượt là $I(-3;2)$ và $I(2;1)$.
+
+##VD
+Cho đồ thị $(C_m)$ của hàm số $y=\dfrac{mx-1}{x+m-1}$. Tìm $m$ để tâm đối xứng của $(C_m)$ nằm trên đường thẳng $d: y=2x+1$.
+
+Bài giải:
+Có $ad-bc=m(m-1)-(-1)\cdot1=m^2-m+1>0$ với mọi $m$ nên $(C_m)$ luôn là hypebol.
+Tiệm cận đứng $x=1-m$, tiệm cận ngang $y=m$ nên tâm đối xứng $I(1-m;m)$.
+$I\in d$ khi $m=2(1-m)+1\Leftrightarrow3m=3\Leftrightarrow m=1$.
+Vậy $m=1$.
+
+=== H4.5.2
+@ly_thuyet:
+##TC Khoảng cách tới hai tiệm cận
+- Với $y=y_I+\dfrac{k}{x-x_I}$ ($k\ne0$) và $M(x_0;y_0)$ thuộc đồ thị: $d_1=d(M,\text{TCĐ})=|x_0-x_I|$, $d_2=d(M,\text{TCN})=|y_0-y_I|=\dfrac{|k|}{|x_0-x_I|}$.
+- Do đó $d_1\cdot d_2=|k|$ không đổi, không phụ thuộc vị trí của $M$.
+- Tổng $d_1+d_2\ge2\sqrt{d_1d_2}=2\sqrt{|k|}$, dấu bằng khi $d_1=d_2=\sqrt{|k|}$.
+
+##PP Tính khoảng cách và tìm tổng nhỏ nhất
+Đưa hàm số về dạng $y=y_I+\dfrac{k}{x-x_I}$ (chia đa thức), đọc ra hai tiệm cận.
+Gọi $M(x_0;y_0)$ thuộc đồ thị, viết $d_1$, $d_2$ theo $x_0$.
+Nhân hai khoảng cách để chứng tỏ tích không đổi, hoặc áp dụng Cô-si cho tổng $d_1+d_2$.
+Tìm $x_0$ làm dấu bằng xảy ra, đối chiếu điều kiện (như $x_0>x_I$ hay $x_0\ne x_I$), tính $y_0$ rồi kết luận.
+
+##CY
+- Khoảng cách từ $M$ tới tiệm cận ngang là $|y_0-y_I|$, không phải $|y_0|$.
+- Áp dụng Cô-si cần hai số không âm; nếu đề không rào miền của $x_0$ thì phải lấy giá trị tuyệt đối của $x_0-x_I$.
+
+@vi_du:
+##VD
+Cho đồ thị $(C)$ của hàm số $y=\dfrac{3x-2}{x+1}$. Chứng minh rằng với mọi điểm $M$ thuộc $(C)$, tích các khoảng cách từ $M$ tới hai tiệm cận của $(C)$ là một hằng số, và tính hằng số đó.
+
+Bài giải:
+Ta có $y=3-\dfrac{5}{x+1}$ nên $(C)$ có tiệm cận đứng $x=-1$ và tiệm cận ngang $y=3$.
+Gọi $M(x_0;y_0)\in(C)$ với $x_0\ne-1$ thì $y_0=3-\dfrac{5}{x_0+1}$.
+Khoảng cách tới tiệm cận đứng: $d_1=|x_0+1|$.
+Khoảng cách tới tiệm cận ngang: $d_2=|y_0-3|=\dfrac{5}{|x_0+1|}$.
+Do đó $d_1\cdot d_2=|x_0+1|\cdot\dfrac{5}{|x_0+1|}=5$.
+Vậy tích hai khoảng cách luôn bằng $5$, không phụ thuộc vị trí của $M$.
+
+##VD
+Cho đồ thị $(C)$ của hàm số $y=\dfrac{2x+1}{x-1}$. Tìm điểm $M$ thuộc $(C)$ có hoành độ lớn hơn $1$ sao cho tổng khoảng cách từ $M$ tới hai tiệm cận của $(C)$ nhỏ nhất.
+
+Bài giải:
+Ta có $y=2+\dfrac{3}{x-1}$ nên $(C)$ có tiệm cận đứng $x=1$ và tiệm cận ngang $y=2$.
+Gọi $M\left(x_0;2+\dfrac{3}{x_0-1}\right)$ với $x_0>1$.
+$d_1=x_0-1>0$ và $d_2=\left|\dfrac{3}{x_0-1}\right|=\dfrac{3}{x_0-1}$.
+Theo bất đẳng thức Cô-si: $d_1+d_2=(x_0-1)+\dfrac{3}{x_0-1}\ge2\sqrt{3}$.
+Dấu bằng xảy ra khi $(x_0-1)^2=3$, tức $x_0=1+\sqrt3$ (thoả $x_0>1$), khi đó $y_0=2+\dfrac{3}{\sqrt3}=2+\sqrt3$.
+Vậy tổng khoảng cách nhỏ nhất bằng $2\sqrt3$, đạt tại $M(1+\sqrt3;2+\sqrt3)$.
+
+=== H4.5.3
+@ly_thuyet:
+##TC Diện tích hình tạo bởi tiệm cận và trục toạ độ
+- Tiệm cận đứng $x=\alpha$ và tiệm cận ngang $y=\beta$ cùng hai trục $Ox$, $Oy$ tạo thành hình chữ nhật có hai kích thước $|\alpha|$ và $|\beta|$, diện tích $S=|\alpha\beta|$.
+- Tiệm cận xiên $y=kx+b$ ($k\ne0$, $b\ne0$) cắt $Ox$ tại $A\left(-\dfrac{b}{k};0\right)$, cắt $Oy$ tại $B(0;b)$, tạo với hai trục tam giác vuông $OAB$ có diện tích $S=\dfrac12\cdot\dfrac{|b|}{|k|}\cdot|b|=\dfrac{b^2}{2|k|}$.
+
+##PP Tính diện tích theo tiệm cận
+Tìm các tiệm cận cần thiết (chia đa thức nếu là tiệm cận xiên), kể cả khi chúng chứa tham số $m$.
+Xác định các giao điểm của tiệm cận với $Ox$, $Oy$ và vẽ phác để biết hình nào được tạo (chữ nhật, tam giác vuông, hình thang).
+Tính độ dài các cạnh bằng giá trị tuyệt đối của toạ độ, từ đó tính diện tích.
+Nếu diện tích cho trước, lập phương trình theo $m$ rồi đối chiếu điều kiện để đồ thị có tiệm cận.
+
+##CY
+- Độ dài là giá trị tuyệt đối của toạ độ, nên phương trình diện tích thường cho hai nghiệm $m$.
+- Tiệm cận xiên chỉ tồn tại khi số dư của phép chia khác $0$; kiểm tra điều kiện này sau khi giải ra $m$.
+
+@vi_du:
+##VD
+Tính diện tích hình chữ nhật tạo bởi hai tiệm cận của đồ thị hàm số $y=\dfrac{2x-1}{x-3}$ cùng hai trục toạ độ.
+
+Bài giải:
+Đồ thị có tiệm cận đứng $x=3$ và tiệm cận ngang $y=2$.
+Bốn đường $x=0$, $y=0$, $x=3$, $y=2$ tạo thành hình chữ nhật với các đỉnh $O(0;0)$, $(3;0)$, $(3;2)$, $(0;2)$.
+Hai kích thước là $3$ và $2$ nên diện tích $S=3\cdot2=6$.
+Vậy diện tích cần tìm bằng $6$.
+
+##VD
+Cho hàm số $y=\dfrac{x^2+mx+1}{x-1}$. Tìm $m$ để tiệm cận xiên của đồ thị cùng hai trục toạ độ tạo thành tam giác có diện tích bằng $8$.
+
+Bài giải:
+Chia đa thức: $x^2+mx+1=(x-1)(x+m+1)+(m+2)$ nên $y=x+m+1+\dfrac{m+2}{x-1}$.
+Đồ thị có tiệm cận xiên khi $m+2\ne0$, khi đó tiệm cận xiên là $y=x+m+1$.
+Tiệm cận xiên cắt $Ox$ tại $A(-(m+1);0)$ và cắt $Oy$ tại $B(0;m+1)$. Để tạo được tam giác thì $m\ne-1$.
+Tam giác $OAB$ vuông tại $O$ nên $S=\dfrac12\cdot|m+1|\cdot|m+1|=\dfrac{(m+1)^2}{2}$.
+$S=8\Leftrightarrow(m+1)^2=16\Leftrightarrow m=3$ hoặc $m=-5$. Cả hai giá trị đều thoả $m\ne-2$ và $m\ne-1$.
+Vậy $m\in\{-5;3\}$.
+
+=== H4.5.4
+@ly_thuyet:
+##TC Góc giữa hai đường
+- Hai đường thẳng có vectơ pháp tuyến $\vec{n}_1$, $\vec{n}_2$ tạo góc $\varphi$ với $\cos\varphi=\dfrac{|\vec{n}_1\cdot\vec{n}_2|}{|\vec{n}_1|\cdot|\vec{n}_2|}$.
+- Hai đường thẳng có hệ số góc $k_1$, $k_2$ tạo góc $\varphi$ với $\tan\varphi=\left|\dfrac{k_1-k_2}{1+k_1k_2}\right|$ (góc bằng $90^\circ$ khi $1+k_1k_2=0$).
+- Tiệm cận đứng $x=x_0$ có vectơ pháp tuyến $(1;0)$; tiệm cận ngang $y=y_0$ có vectơ pháp tuyến $(0;1)$ nên hai đường này vuông góc; tiệm cận xiên $y=kx+b$ có vectơ pháp tuyến $(k;-1)$.
+
+##PP Tính góc
+Tìm các tiệm cận (đứng, ngang hoặc xiên) và viết phương trình tổng quát của hai đường cần xét.
+Lấy vectơ pháp tuyến của hai đường.
+Tính $\cos\varphi$ bằng công thức, hoặc $\tan\varphi$ nếu dùng hệ số góc.
+Suy ra góc $\varphi$ (trong khoảng từ $0^\circ$ đến $90^\circ$).
+
+##CY
+- Góc giữa hai đường thẳng luôn không vượt quá $90^\circ$, nên phải lấy giá trị tuyệt đối trong tử số của $\cos\varphi$.
+- Tiệm cận đứng và tiệm cận ngang luôn vuông góc, không cần tính.
+
+@vi_du:
+##VD
+Tìm góc giữa tiệm cận đứng và tiệm cận xiên của đồ thị hàm số $y=\dfrac{x^2+x+1}{x-1}$.
+
+Bài giải:
+Chia đa thức: $x^2+x+1=(x-1)(x+2)+3$ nên $y=x+2+\dfrac{3}{x-1}$.
+Đồ thị có tiệm cận đứng $x-1=0$ với vectơ pháp tuyến $\vec{n}_1=(1;0)$ và tiệm cận xiên $x-y+2=0$ với vectơ pháp tuyến $\vec{n}_2=(1;-1)$.
+$\cos\varphi=\dfrac{|1\cdot1+0\cdot(-1)|}{1\cdot\sqrt2}=\dfrac{1}{\sqrt2}$.
+Suy ra $\varphi=45^\circ$.
+Vậy góc giữa tiệm cận đứng và tiệm cận xiên bằng $45^\circ$.
+
+##VD
+Cho hàm số $y=\dfrac{2x^2+3x+4}{x+1}$. Tính góc giữa tiệm cận xiên của đồ thị và đường thẳng $d: 3x+y-1=0$.
+
+Bài giải:
+Chia đa thức: $2x^2+3x+4=(x+1)(2x+1)+3$ nên $y=2x+1+\dfrac{3}{x+1}$ và tiệm cận xiên là $y=2x+1$, tức $2x-y+1=0$.
+Vectơ pháp tuyến của tiệm cận xiên là $\vec{n}_1=(2;-1)$, của $d$ là $\vec{n}_2=(3;1)$.
+$\cos\varphi=\dfrac{|2\cdot3+(-1)\cdot1|}{\sqrt{2^2+1}\cdot\sqrt{3^2+1}}=\dfrac{5}{\sqrt5\cdot\sqrt{10}}=\dfrac{5}{\sqrt{50}}=\dfrac{1}{\sqrt2}$.
+Suy ra $\varphi=45^\circ$.
+Vậy góc giữa tiệm cận xiên và đường thẳng $d$ bằng $45^\circ$.
+
+=== N H5.1
+@ly_thuyet:
+##TC Sơ đồ khảo sát hàm số
+- Bước 1, tập xác định: tìm $D$ và nhận xét tính chất (tuần hoàn, chẵn lẻ nếu có).
+- Bước 2, sự biến thiên: tính $y'$, giải $y'=0$, xét dấu $y'$; suy ra khoảng đồng biến, nghịch biến và cực trị; tìm giới hạn và tiệm cận; lập bảng biến thiên.
+- Bước 3, đồ thị: tìm giao điểm với hai trục và vài điểm đặc biệt (cực trị, tâm đối xứng), nhận xét tính đối xứng rồi vẽ.
+- Đồ thị vẽ phải thể hiện đúng các đặc điểm đã nêu trong bảng biến thiên: cực trị, tiệm cận, chiều biến thiên.
+
+##PP Trình bày bài khảo sát và vẽ đồ thị
+Viết tập xác định và các giới hạn tại biên của tập xác định (kể cả tại $\pm\infty$ và tại điểm làm hàm không xác định).
+Tính $y'$, tìm nghiệm $y'=0$ và các điểm $y'$ không xác định, xét dấu $y'$ rồi nêu khoảng đơn điệu, cực trị.
+Lập bảng biến thiên gồm cột nghiệm, cột điểm không xác định, dấu $y'$, mũi tên biến thiên, giá trị cực trị và giới hạn.
+Tìm giao điểm với $Oy$, $Ox$ (nếu giải được), thêm điểm đối xứng hay điểm đặc biệt để đồ thị chính xác.
+Vẽ đồ thị: vẽ tiệm cận trước (nét đứt), chấm các điểm đặc biệt rồi nối bằng nét trơn, ghi tên các điểm.
+
+##CY
+- Bảng biến thiên và đồ thị phải khớp nhau: đồ thị phải đi qua đúng điểm cực trị và bám đúng tiệm cận.
+- Khi vẽ cần ghi rõ tâm đối xứng và các giao điểm với trục; chọn thêm điểm nếu cần để hình dạng rõ.
+
+=== H5.1.1
+@ly_thuyet:
+##TC Hàm bậc ba $y=ax^3+bx^2+cx+d$ ($a\ne0$)
+- Tập xác định $\mathbb{R}$; $y'=3ax^2+2bx+c$ và $y''=6ax+2b$.
+- Hai cực trị khi $y'=0$ có hai nghiệm phân biệt ($\Delta'_{y'}>0$); không có cực trị khi $\Delta'_{y'}\le0$ (hàm đơn điệu trên $\mathbb{R}$).
+- Giới hạn: $a>0$ thì $\lim\limits_{x\to+\infty}y=+\infty$, $\lim\limits_{x\to-\infty}y=-\infty$; $a<0$ thì ngược lại.
+- Điểm uốn $I\left(-\dfrac{b}{3a};y\left(-\dfrac{b}{3a}\right)\right)$ (nghiệm của $y''=0$) là tâm đối xứng của đồ thị.
+
+##PP Khảo sát và vẽ hàm bậc ba
+Tập xác định $\mathbb{R}$; tính $y'$, giải $y'=0$ rồi xét dấu $y'$ (hai nghiệm thì dấu $y'$ trái dấu với $a$ giữa hai nghiệm).
+Nêu đơn điệu, cực trị và tính giới hạn ở $\pm\infty$ theo dấu $a$; lập bảng biến thiên.
+Tính $y''$, tìm điểm uốn là tâm đối xứng; tìm giao với $Oy$ (là $(0;d)$) và với $Ox$ nếu giải được.
+Vẽ đồ thị đi qua các điểm cực trị, điểm uốn, các giao điểm với trục; đồ thị đối xứng qua điểm uốn.
+
+##CY
+- Bậc ba có hai dạng đồ thị theo dấu $a$: $a>0$ thì đồ thị đi lên về phía phải, $a<0$ thì đi xuống về phía phải.
+- Hàm bậc ba không có tiệm cận; khi $y'\le0$ (hoặc $y'\ge0$) mọi $x$ thì hàm số không có cực trị.
+
+@vi_du:
+##VD
+Khảo sát sự biến thiên và vẽ đồ thị hàm số $y=x^3-3x^2+2$.
+
+Bài giải:
+**Tập xác định:** $\mathbb{R}$.
+**Sự biến thiên:** $y'=3x^2-6x=3x(x-2)$, $y'=0\Leftrightarrow x=0$ hoặc $x=2$.
+$y'>0$ trên $(-\infty;0)$ và $(2;+\infty)$, $y'<0$ trên $(0;2)$.
+Hàm số đồng biến trên $(-\infty;0)$ và $(2;+\infty)$, nghịch biến trên $(0;2)$.
+Hàm số đạt cực đại tại $x=0$, $y_{\text{CĐ}}=2$; đạt cực tiểu tại $x=2$, $y_{\text{CT}}=-2$.
+Giới hạn: $\lim\limits_{x\to-\infty}y=-\infty$ và $\lim\limits_{x\to+\infty}y=+\infty$. Bảng biến thiên:
+[[HINH {"loai":"bbt","x":["-∞","0","2","+∞"],"dau":["+","-","+"],"y":["-∞","2","-2","+∞"],"ten_ham":"y"}]]
+**Đồ thị:** $y''=6x-6=0\Leftrightarrow x=1$, điểm uốn $I(1;0)$ là tâm đối xứng của đồ thị.
+Giao với $Oy$: $(0;2)$. Giao với $Ox$: $x^3-3x^2+2=(x-1)(x^2-2x-2)=0\Leftrightarrow x=1$ hoặc $x=1\pm\sqrt3$.
+[[HINH {"loai":"dothi","x":[-2,4],"y":[-4,4],"f":[{"e":"x^3-3*x^2+2","ten":"y=x^3-3x^2+2"}],"diem":[{"x":0,"y":2,"nhan":"CĐ"},{"x":2,"y":-2,"nhan":"CT"},{"x":1,"y":0,"nhan":"I"}]}]]
+Vậy đồ thị là đường cong đi qua các điểm trên, đối xứng qua $I(1;0)$.
+
+##VD
+Khảo sát sự biến thiên và vẽ đồ thị hàm số $y=-x^3+3x^2-3x+2$.
+
+Bài giải:
+**Tập xác định:** $\mathbb{R}$.
+**Sự biến thiên:** $y'=-3x^2+6x-3=-3(x-1)^2\le0$ với mọi $x$, dấu bằng chỉ tại $x=1$.
+Hàm số nghịch biến trên $\mathbb{R}$ và không có cực trị.
+Giới hạn: $\lim\limits_{x\to-\infty}y=+\infty$ và $\lim\limits_{x\to+\infty}y=-\infty$. Bảng biến thiên:
+[[HINH {"loai":"bbt","x":["-∞","+∞"],"dau":["-"],"y":["+∞","-∞"],"ten_ham":"y"}]]
+**Đồ thị:** $y''=-6x+6=0\Leftrightarrow x=1$, $y(1)=1$ nên điểm uốn $I(1;1)$ là tâm đối xứng.
+Ta có $y=1-(x-1)^3$. Giao với $Oy$: $(0;2)$. Giao với $Ox$: $(x-1)^3=1\Leftrightarrow x=2$, điểm $(2;0)$.
+[[HINH {"loai":"dothi","x":[-1,3],"y":[-3,5],"f":[{"e":"-(x^3)+3*x^2-3*x+2","ten":"y=-x^3+3x^2-3x+2"}],"diem":[{"x":0,"y":2},{"x":1,"y":1,"nhan":"I"},{"x":2,"y":0}]}]]
+Vậy đồ thị là đường cong đi xuống từ trái sang phải, đối xứng qua $I(1;1)$.
+
+=== H5.1.2
+@ly_thuyet:
+##TC Hàm $y=\dfrac{ax+b}{cx+d}$ ($c\ne0$, $ad-bc\ne0$)
+- Tập xác định $\mathbb{R}\setminus\left\{-\dfrac{d}{c}\right\}$; $y'=\dfrac{ad-bc}{(cx+d)^2}$ nên dấu $y'$ là dấu của $ad-bc$ trên cả hai khoảng.
+- $ad-bc>0$: đồng biến trên từng khoảng xác định; $ad-bc<0$: nghịch biến trên từng khoảng xác định; luôn không có cực trị.
+- Tiệm cận đứng $x=-\dfrac{d}{c}$, tiệm cận ngang $y=\dfrac{a}{c}$; tâm đối xứng $I\left(-\dfrac{d}{c};\dfrac{a}{c}\right)$.
+
+##PP Khảo sát và vẽ hàm bậc nhất trên bậc nhất
+Tập xác định $\mathbb{R}\setminus\{x_0\}$ với $x_0$ là nghiệm mẫu; tính $y'$ và nêu dấu $y'$ theo dấu $ad-bc$.
+Tính $\lim\limits_{x\to\pm\infty}y$ (tiệm cận ngang) và các giới hạn một phía tại $x_0$ (tiệm cận đứng).
+Lập bảng biến thiên có cột $x_0$ ghi hai vạch song song.
+Tìm giao với $Oy$ và $Ox$; vẽ hai tiệm cận bằng nét đứt rồi vẽ hai nhánh hypebol đối xứng qua tâm $I$.
+
+##CY
+- Hàm số không đơn điệu trên cả tập xác định mà chỉ trên từng khoảng; không viết "hàm số đồng biến trên $\mathbb{R}\setminus\{x_0\}$".
+- Dấu của giới hạn một phía tại tiệm cận đứng phải xét cẩn thận theo dấu của tử và của mẫu.
+
+@vi_du:
+##VD
+Khảo sát sự biến thiên và vẽ đồ thị hàm số $y=\dfrac{2x-1}{x+1}$.
+
+Bài giải:
+**Tập xác định:** $\mathbb{R}\setminus\{-1\}$.
+**Sự biến thiên:** $y'=\dfrac{2\cdot1-(-1)\cdot1}{(x+1)^2}=\dfrac{3}{(x+1)^2}>0$ với mọi $x\ne-1$.
+Hàm số đồng biến trên $(-\infty;-1)$ và $(-1;+\infty)$, không có cực trị.
+Giới hạn: $\lim\limits_{x\to\pm\infty}y=2$ nên tiệm cận ngang $y=2$.
+$\lim\limits_{x\to-1^-}y=+\infty$ và $\lim\limits_{x\to-1^+}y=-\infty$ nên tiệm cận đứng $x=-1$. Bảng biến thiên:
+[[HINH {"loai":"bbt","x":["-∞","-1","+∞"],"dau":["+","+"],"y":["2",["+∞","-∞"],"2"],"kd":{"1":"||"},"ten_ham":"y"}]]
+**Đồ thị:** giao với $Oy$: $(0;-1)$; giao với $Ox$: $\left(\dfrac12;0\right)$. Tâm đối xứng $I(-1;2)$.
+[[HINH {"loai":"dothi","x":[-4,4],"y":[-4,6],"f":[{"e":"(2*x-1)/(x+1)","ten":"y=(2x-1)/(x+1)"}],"duong":[{"dung":-1,"ten":"x=-1"},{"ngang":2,"ten":"y=2"}],"diem":[{"x":0,"y":-1},{"x":0.5,"y":0}]}]]
+Vậy đồ thị gồm hai nhánh hypebol nằm ở hai phía của tiệm cận đứng, nhận $I(-1;2)$ làm tâm đối xứng.
+
+##VD
+Khảo sát sự biến thiên và vẽ đồ thị hàm số $y=\dfrac{-x+3}{2x-2}$.
+
+Bài giải:
+**Tập xác định:** $\mathbb{R}\setminus\{1\}$.
+**Sự biến thiên:** $y'=\dfrac{(-1)\cdot(-2)-3\cdot2}{(2x-2)^2}=\dfrac{-4}{4(x-1)^2}=-\dfrac{1}{(x-1)^2}<0$ với mọi $x\ne1$.
+Hàm số nghịch biến trên $(-\infty;1)$ và $(1;+\infty)$, không có cực trị.
+Giới hạn: $\lim\limits_{x\to\pm\infty}y=-\dfrac12$ nên tiệm cận ngang $y=-\dfrac12$.
+$\lim\limits_{x\to1^-}y=-\infty$ và $\lim\limits_{x\to1^+}y=+\infty$ nên tiệm cận đứng $x=1$. Bảng biến thiên:
+[[HINH {"loai":"bbt","x":["-∞","1","+∞"],"dau":["-","-"],"y":["-1/2",["-∞","+∞"],"-1/2"],"kd":{"1":"||"},"ten_ham":"y"}]]
+**Đồ thị:** giao với $Oy$: $\left(0;-\dfrac32\right)$; giao với $Ox$: $(3;0)$. Tâm đối xứng $I\left(1;-\dfrac12\right)$.
+[[HINH {"loai":"dothi","x":[-3,5],"y":[-4,4],"f":[{"e":"(-x+3)/(2*x-2)","ten":"y=(-x+3)/(2x-2)"}],"duong":[{"dung":1,"ten":"x=1"},{"ngang":-0.5,"ten":"y=-1/2"}],"diem":[{"x":3,"y":0},{"x":0,"y":-1.5}]}]]
+Vậy đồ thị gồm hai nhánh hypebol, nhận $I\left(1;-\dfrac12\right)$ làm tâm đối xứng.
+
+=== H5.1.3
+@ly_thuyet:
+##TC Hàm $y=\dfrac{ax^2+bx+c}{dx+e}$ (không chia hết)
+- Chia đa thức: $y=\alpha x+\beta+\dfrac{\gamma}{x-x_0}$ ($\alpha\ne0$, $\gamma\ne0$, $x_0=-\dfrac{e}{d}$).
+- Tập xác định $\mathbb{R}\setminus\{x_0\}$; $y'=\alpha-\dfrac{\gamma}{(x-x_0)^2}$.
+- Tiệm cận đứng $x=x_0$, tiệm cận xiên $y=\alpha x+\beta$; tâm đối xứng $I(x_0;\alpha x_0+\beta)$.
+- Có hai cực trị khi $\alpha\gamma>0$ (nghiệm $x=x_0\pm\sqrt{\gamma/\alpha}$); không có cực trị khi $\alpha\gamma<0$.
+
+##PP Khảo sát và vẽ hàm bậc hai trên bậc nhất
+Chia đa thức để viết $y=\alpha x+\beta+\dfrac{\gamma}{x-x_0}$; nêu tập xác định.
+Tính $y'$, giải $y'=0$, xét dấu $y'$ (chú ý điểm $x_0$ không thuộc tập xác định); nêu đơn điệu và cực trị.
+Tìm tiệm cận đứng (giới hạn một phía tại $x_0$) và tiệm cận xiên (giới hạn $y-(\alpha x+\beta)$ tại $\pm\infty$); lập bảng biến thiên.
+Tìm giao với trục, vẽ tiệm cận bằng nét đứt rồi vẽ hai nhánh, nhớ tâm đối xứng $I$ là giao hai tiệm cận.
+
+##CY
+- Bảng biến thiên có $5$ cột khi có hai cực trị: hai nghiệm $y'=0$ và điểm $x_0$ gián đoạn; cột $x_0$ phải ghi hai vạch song song.
+- Cực đại không nhất thiết lớn hơn cực tiểu; đồ thị có hai nhánh riêng biệt, hai nhánh nằm hai phía của tiệm cận đứng.
+
+@vi_du:
+##VD
+Khảo sát sự biến thiên và vẽ đồ thị hàm số $y=\dfrac{x^2-x+1}{x-1}$.
+
+Bài giải:
+**Tập xác định:** $\mathbb{R}\setminus\{1\}$.
+Chia đa thức: $x^2-x+1=x(x-1)+1$ nên $y=x+\dfrac{1}{x-1}$.
+**Sự biến thiên:** $y'=1-\dfrac{1}{(x-1)^2}=\dfrac{x(x-2)}{(x-1)^2}$, $y'=0\Leftrightarrow x=0$ hoặc $x=2$.
+$y'>0$ trên $(-\infty;0)$ và $(2;+\infty)$, $y'<0$ trên $(0;1)$ và $(1;2)$.
+Hàm số đồng biến trên $(-\infty;0)$ và $(2;+\infty)$, nghịch biến trên $(0;1)$ và $(1;2)$.
+Cực đại tại $x=0$, $y_{\text{CĐ}}=-1$; cực tiểu tại $x=2$, $y_{\text{CT}}=3$.
+Giới hạn: $\lim\limits_{x\to1^-}y=-\infty$, $\lim\limits_{x\to1^+}y=+\infty$ nên tiệm cận đứng $x=1$; $\lim\limits_{x\to\pm\infty}\left(y-x\right)=0$ nên tiệm cận xiên $y=x$. Bảng biến thiên:
+[[HINH {"loai":"bbt","x":["-∞","0","1","2","+∞"],"dau":["+","-","-","+"],"y":["-∞","-1",["-∞","+∞"],"3","+∞"],"kd":{"2":"||"},"ten_ham":"y"}]]
+**Đồ thị:** giao với $Oy$: $(0;-1)$; $x^2-x+1=0$ vô nghiệm nên không cắt $Ox$. Tâm đối xứng $I(1;1)$.
+[[HINH {"loai":"dothi","x":[-3,5],"y":[-5,7],"f":[{"e":"(x^2-x+1)/(x-1)","ten":"y=(x^2-x+1)/(x-1)"}],"duong":[{"dung":1,"ten":"x=1"},{"xien":[1,0],"ten":"y=x"}],"diem":[{"x":0,"y":-1,"nhan":"CĐ"},{"x":2,"y":3,"nhan":"CT"}]}]]
+Vậy đồ thị gồm hai nhánh nằm ở hai phía của tiệm cận đứng $x=1$, bám tiệm cận xiên $y=x$ và nhận $I(1;1)$ làm tâm đối xứng.
+
+##VD
+Khảo sát sự biến thiên và vẽ đồ thị hàm số $y=\dfrac{-x^2+2x-2}{x-1}$.
+
+Bài giải:
+**Tập xác định:** $\mathbb{R}\setminus\{1\}$.
+Chia đa thức: $-x^2+2x-2=(x-1)(-x+1)-1$ nên $y=-x+1-\dfrac{1}{x-1}$.
+**Sự biến thiên:** $y'=-1+\dfrac{1}{(x-1)^2}=\dfrac{-x(x-2)}{(x-1)^2}$, $y'=0\Leftrightarrow x=0$ hoặc $x=2$.
+$y'<0$ trên $(-\infty;0)$ và $(2;+\infty)$, $y'>0$ trên $(0;1)$ và $(1;2)$.
+Hàm số nghịch biến trên $(-\infty;0)$ và $(2;+\infty)$, đồng biến trên $(0;1)$ và $(1;2)$.
+Cực tiểu tại $x=0$, $y_{\text{CT}}=2$; cực đại tại $x=2$, $y_{\text{CĐ}}=-2$.
+Giới hạn: $\lim\limits_{x\to1^-}y=+\infty$, $\lim\limits_{x\to1^+}y=-\infty$ nên tiệm cận đứng $x=1$; $\lim\limits_{x\to\pm\infty}\left[y-(-x+1)\right]=0$ nên tiệm cận xiên $y=-x+1$. Bảng biến thiên:
+[[HINH {"loai":"bbt","x":["-∞","0","1","2","+∞"],"dau":["-","+","+","-"],"y":["+∞","2",["+∞","-∞"],"-2","-∞"],"kd":{"2":"||"},"ten_ham":"y"}]]
+**Đồ thị:** giao với $Oy$: $(0;2)$; $-x^2+2x-2=0$ vô nghiệm nên không cắt $Ox$. Tâm đối xứng $I(1;0)$.
+[[HINH {"loai":"dothi","x":[-3,5],"y":[-6,6],"f":[{"e":"(-(x^2)+2*x-2)/(x-1)","ten":"y=(-x^2+2x-2)/(x-1)"}],"duong":[{"dung":1,"ten":"x=1"},{"xien":[-1,1],"ten":"y=-x+1"}],"diem":[{"x":0,"y":2,"nhan":"CT"},{"x":2,"y":-2,"nhan":"CĐ"}]}]]
+Vậy đồ thị gồm hai nhánh bám tiệm cận xiên $y=-x+1$, nhận $I(1;0)$ làm tâm đối xứng.
+
+=== N H5.2
+@ly_thuyet:
+##TC Nhận dạng qua đặc điểm của đồ thị
+- Cho hình, chọn công thức: đọc các đặc điểm (tiệm cận, cực trị, hướng đi của hai đầu đồ thị, giao với trục) rồi loại dần phương án.
+- Điểm $(x_0;y_0)$ thuộc đồ thị khi và chỉ khi $y(x_0)=y_0$: thay toạ độ vào các phương án để loại.
+- Đặc điểm của công thức: hàm đa thức không có tiệm cận; hàm hữu tỉ có tiệm cận đứng tại nghiệm của mẫu.
+
+##PP Chọn công thức đúng từ đồ thị
+Quan sát hình: có tiệm cận không, có mấy cực trị, hai đầu đồ thị đi lên hay đi xuống.
+Loại các phương án sai dạng (đa thức hay phân thức, có cực trị hay không).
+Loại theo dấu hệ số cao nhất hoặc theo vị trí tiệm cận.
+Thử toạ độ giao điểm với trục hoặc điểm cực trị để chọn phương án còn lại.
+
+##CY
+- Một đặc điểm thường chỉ loại được vài phương án; phải kết hợp nhiều đặc điểm và thử điểm.
+- Đừng nhầm hướng đi của hai đầu đồ thị với hướng của cả đồ thị: dấu $a$ xác định theo đầu bên phải.
+
+=== H5.2.1
+@ly_thuyet:
+##TC Nhận dạng hàm bậc ba
+- Đồ thị hàm bậc ba $y=ax^3+bx^2+cx+d$ không có tiệm cận.
+- Đầu bên phải đi lên thì $a>0$, đi xuống thì $a<0$.
+- Có hai cực trị khi $y'=0$ có hai nghiệm phân biệt; đồ thị đơn điệu, không có cực trị khi $y'$ không đổi dấu.
+- Giao với $Oy$ là điểm $(0;d)$; điểm uốn là tâm đối xứng.
+
+##PP Chọn hàm bậc ba theo hình
+Đọc dáng đồ thị: có hai cực trị hay không, đầu bên phải đi lên hay đi xuống để suy ra dấu $a$.
+Loại phương án có dấu $a$ sai hoặc có số cực trị sai (xét $y'$).
+Dùng giao với $Oy$ và điểm cực trị hoặc điểm đi qua để loại tiếp.
+
+##CY
+- Hệ số $d$ bằng tung độ giao điểm với $Oy$ chứ không phải tung độ cực đại.
+- Đừng quên kiểm tra hoành độ cực trị: hai phương án cùng dấu $a$ và cùng $d$ vẫn có thể khác ở vị trí cực trị.
+
+@vi_du:
+##VD
+Đồ thị trong hình bên là đồ thị của hàm số nào dưới đây?
+[[HINH {"loai":"dothi","x":[-3,3],"y":[-3,5],"f":[{"e":"x^3-3*x+1","ten":"y=f(x)"}],"diem":[{"x":-1,"y":3,"nhan":"(-1;3)"},{"x":1,"y":-1,"nhan":"(1;-1)"},{"x":0,"y":1,"nhan":"(0;1)","chi":false}]}]]
+a) $y=x^3-3x+1$
+b) $y=-x^3+3x+1$
+c) $y=x^3+3x+1$
+d) $y=x^3-3x^2+1$
+
+Bài giải:
+Đồ thị có hai cực trị và đi lên ở bên phải nên $a>0$.
+Phương án b) có $a=-1<0$: loại.
+Phương án c) có $y'=3x^2+3>0$, hàm đồng biến, không có cực trị: loại.
+Còn a) và d). Với d), $y'=3x^2-6x=0$ cho cực trị tại $x=0$ và $x=2$, không khớp với hình (cực trị tại $x=\pm1$): loại.
+Với a), $y'=3x^2-3=0$ cho $x=\pm1$; $y(-1)=3$, $y(1)=-1$, $y(0)=1$, khớp với hình.
+Vậy chọn a) $y=x^3-3x+1$.
+
+##VD
+Đồ thị trong hình bên là đồ thị của hàm số nào dưới đây?
+[[HINH {"loai":"dothi","x":[-1,3],"y":[-6,10],"f":[{"e":"-(x^3)+3*x^2-3*x+3","ten":"y=f(x)"}],"diem":[{"x":0,"y":3,"nhan":"(0;3)"},{"x":1,"y":2,"nhan":"(1;2)"},{"x":2,"y":1,"nhan":"(2;1)"}]}]]
+a) $y=x^3-3x^2+3x+3$
+b) $y=-x^3+3x^2-3x+3$
+c) $y=-x^3+3x+3$
+d) $y=-x^3+3x^2-3x-1$
+
+Bài giải:
+Đồ thị đi xuống từ trái sang phải, không có cực trị, đầu bên phải đi xuống nên $a<0$.
+Phương án a) có $a=1>0$: loại.
+Phương án c) có $y'=-3x^2+3=0$ tại $x=\pm1$, có hai cực trị: loại.
+Còn b) và d). Đồ thị cắt $Oy$ tại $(0;3)$; d) có $y(0)=-1$: loại.
+Với b), $y(0)=3$, $y(1)=2$, $y(2)=1$, $y'=-3(x-1)^2\le0$, khớp với hình.
+Vậy chọn b) $y=-x^3+3x^2-3x+3$.
+
+=== H5.2.2
+@ly_thuyet:
+##TC Nhận dạng hàm $y=\dfrac{ax+b}{cx+d}$
+- Tiệm cận đứng $x=-\dfrac{d}{c}$ và tiệm cận ngang $y=\dfrac{a}{c}$; đồ thị cắt $Oy$ tại $\left(0;\dfrac{b}{d}\right)$, cắt $Ox$ tại $\left(-\dfrac{b}{a};0\right)$.
+- Đồ thị đi lên trên từng nhánh (đồng biến) thì $ad-bc>0$; đi xuống (nghịch biến) thì $ad-bc<0$.
+
+##PP Chọn công thức theo đồ thị
+Đọc tiệm cận đứng $x=x_0$ và tiệm cận ngang $y=y_0$ từ đường mà đồ thị tiến sát.
+So tiệm cận của từng phương án với $x_0$ và $y_0$ để loại.
+Dùng điểm cắt $Oy$, cắt $Ox$ hoặc chiều biến thiên để chọn phương án đúng.
+
+##CY
+- Tiệm cận đứng đọc từ mẫu số, tiệm cận ngang là tỉ số hai hệ số của $x$; đừng nhầm hai cái này.
+- Hai phương án có cùng tiệm cận vẫn có thể khác nhau ở điểm cắt trục hoặc chiều biến thiên.
+
+@vi_du:
+##VD
+Đồ thị trong hình bên là đồ thị của hàm số nào dưới đây?
+[[HINH {"loai":"dothi","x":[-5,3],"y":[-5,7],"f":[{"e":"(2*x-1)/(x+1)","ten":"y=f(x)"}],"duong":[{"dung":-1,"ten":"x=-1"},{"ngang":2,"ten":"y=2"}],"diem":[{"x":0,"y":-1,"nhan":"(0;-1)","chi":false}]}]]
+a) $y=\dfrac{2x-1}{x+1}$
+b) $y=\dfrac{2x+1}{x-1}$
+c) $y=\dfrac{x-2}{x+1}$
+d) $y=\dfrac{2x-1}{x-1}$
+
+Bài giải:
+Đồ thị có tiệm cận đứng $x=-1$ và tiệm cận ngang $y=2$, cắt $Oy$ tại $(0;-1)$.
+Tiệm cận đứng $x=-1$ nên mẫu là $x+1$: loại b) và d) (mẫu $x-1$).
+Tiệm cận ngang $y=2$ nên loại c) (tiệm cận ngang $y=1$).
+Với a), $y(0)=\dfrac{-1}{1}=-1$, khớp với hình.
+Vậy chọn a) $y=\dfrac{2x-1}{x+1}$.
+
+##VD
+Đồ thị trong hình bên là đồ thị của hàm số nào dưới đây?
+[[HINH {"loai":"dothi","x":[-3,7],"y":[-5,4],"f":[{"e":"(-x+1)/(x-2)","ten":"y=f(x)"}],"duong":[{"dung":2,"ten":"x=2"},{"ngang":-1,"ten":"y=-1"}],"diem":[{"x":1,"y":0,"nhan":"(1;0)"}]}]]
+a) $y=\dfrac{x-1}{x-2}$
+b) $y=\dfrac{-x+1}{x-2}$
+c) $y=\dfrac{-x+1}{x+2}$
+d) $y=\dfrac{-x+2}{x-1}$
+
+Bài giải:
+Đồ thị có tiệm cận đứng $x=2$, tiệm cận ngang $y=-1$, cắt $Ox$ tại $(1;0)$ và đi lên trên từng nhánh.
+Tiệm cận đứng $x=2$ nên loại c) (mẫu $x+2$, tiệm cận $x=-2$) và d) (mẫu $x-1$, tiệm cận $x=1$).
+Tiệm cận ngang $y=-1$ nên loại a) (tiệm cận ngang $y=1$).
+Với b), tiệm cận ngang $y=\dfrac{-1}{1}=-1$, $y(1)=0$, và $y'=\dfrac{(-1)(-2)-1\cdot1}{(x-2)^2}=\dfrac{1}{(x-2)^2}>0$, khớp với hình.
+Vậy chọn b) $y=\dfrac{-x+1}{x-2}$.
+
+=== H5.2.3
+@ly_thuyet:
+##TC Nhận dạng hàm $y=\dfrac{ax^2+bx+c}{dx+e}$
+- Tiệm cận đứng $x=-\dfrac{e}{d}$; tiệm cận xiên $y=\alpha x+\beta$ (thương của phép chia đa thức).
+- Đồ thị cắt $Oy$ tại $\left(0;\dfrac{c}{e}\right)$.
+- Có cực trị khi $\alpha\gamma>0$ (với $y=\alpha x+\beta+\dfrac{\gamma}{x-x_0}$): đồ thị có hai cực trị; $\alpha\gamma<0$ thì hàm số đơn điệu trên từng khoảng.
+
+##PP Chọn công thức theo đồ thị
+Đọc tiệm cận đứng và tiệm cận xiên (đường chéo mà đồ thị bám theo).
+Chia đa thức từng phương án để tìm tiệm cận đứng và tiệm cận xiên, loại phương án không khớp.
+Xét có cực trị hay không và vị trí cực trị, rồi thử giao với $Oy$ để chọn phương án còn lại.
+
+##CY
+- Hai phương án có thể trùng tiệm cận đứng và giao với $Oy$ nhưng khác tiệm cận xiên: phải chia đa thức để kiểm tra.
+- Không chỉ nhìn vào bậc của tử và mẫu: phải so tiệm cận và cực trị với hình.
+
+@vi_du:
+##VD
+Đồ thị trong hình bên là đồ thị của hàm số nào dưới đây?
+[[HINH {"loai":"dothi","x":[-3,5],"y":[-5,7],"f":[{"e":"(x^2-x+1)/(x-1)","ten":"y=f(x)"}],"duong":[{"dung":1,"ten":"x=1"},{"xien":[1,0],"ten":"y=x"}],"diem":[{"x":0,"y":-1,"nhan":"(0;-1)"},{"x":2,"y":3,"nhan":"(2;3)"}]}]]
+a) $y=\dfrac{x^2-x+1}{x-1}$
+b) $y=\dfrac{x^2-x+1}{x+1}$
+c) $y=\dfrac{x^2+x+1}{x-1}$
+d) $y=\dfrac{-x^2+x-1}{x-1}$
+
+Bài giải:
+Đồ thị có tiệm cận đứng $x=1$, tiệm cận xiên $y=x$, và hai cực trị tại $(0;-1)$ và $(2;3)$.
+Tiệm cận đứng $x=1$ nên loại b) (mẫu $x+1$).
+Chia đa thức: c) $y=x+2+\dfrac{3}{x-1}$ có tiệm cận xiên $y=x+2$: loại. d) $y=-x+\dfrac{-1}{x-1}$ có tiệm cận xiên $y=-x$: loại.
+Với a), $y=x+\dfrac{1}{x-1}$ có tiệm cận xiên $y=x$, $y(0)=-1$ và $y(2)=3$, khớp với hình.
+Vậy chọn a) $y=\dfrac{x^2-x+1}{x-1}$.
+
+##VD
+Đồ thị trong hình bên là đồ thị của hàm số nào dưới đây?
+[[HINH {"loai":"dothi","x":[-3,5],"y":[-5,6],"f":[{"e":"(x^2-x-1)/(x-1)","ten":"y=f(x)"}],"duong":[{"dung":1,"ten":"x=1"},{"xien":[1,0],"ten":"y=x"}],"diem":[{"x":0,"y":1,"nhan":"(0;1)"}]}]]
+a) $y=\dfrac{x^2-x-1}{x-1}$
+b) $y=\dfrac{x^2-x+1}{x-1}$
+c) $y=\dfrac{x^2+x-1}{x-1}$
+d) $y=\dfrac{x^2-x-1}{x+1}$
+
+Bài giải:
+Đồ thị có tiệm cận đứng $x=1$, tiệm cận xiên $y=x$, không có cực trị (đồng biến trên từng nhánh) và cắt $Oy$ tại $(0;1)$.
+Tiệm cận đứng $x=1$ nên loại d) (mẫu $x+1$).
+Chia đa thức: c) $y=x+2+\dfrac{1}{x-1}$ có tiệm cận xiên $y=x+2$: loại.
+Còn a) và b), đều có tiệm cận xiên $y=x$. Với b), $y=x+\dfrac{1}{x-1}$ có $y'=\dfrac{x(x-2)}{(x-1)^2}$ đổi dấu nên có hai cực trị, và $y(0)=-1$: loại.
+Với a), $y=x-\dfrac{1}{x-1}$ có $y'=1+\dfrac{1}{(x-1)^2}>0$ nên đồng biến trên từng khoảng, $y(0)=1$, khớp với hình.
+Vậy chọn a) $y=\dfrac{x^2-x-1}{x-1}$.
+
+## GHI CHÚ CHO CEO
+- H5.1: đúng chỉ dẫn lượt, hình BBT và hình đồ thị đặt TRONG lời giải của ví dụ khảo sát (brief mục 3 nói hình chỉ nằm trong đề); nếu app chỉ hiển thị hình ở phần đề thì cần chuyển hình vào đề hoặc cho phép hình trong Bài giải.
+- H5.1.1 ví dụ 1 và 2 cùng dạng bậc ba (có hai cực trị / không cực trị, a>0 / a<0); chưa có ví dụ với a<0 mà có hai cực trị.
+- H5.2: ví dụ viết phương án a) b) c) d) theo cho phép; đồ thị vẽ từ công thức nên điểm đọc được đã khớp.
+- H4.4.1: nguồn không có lỗi; lý thuyết đã nêu rõ trường hợp mẫu nghiệm kép vẫn chỉ cho một tiệm cận đứng.

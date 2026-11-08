@@ -1,0 +1,783 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00324",
+   "khoi": "7",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Tốc độ chuyển động",
+   "nhom": "Bài toán tốc độ trung bình trên nhiều đoạn đường",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "I. LÝ THUYẾT DẠNG BÀI\nKhi một vật đi qua nhiều đoạn đường với tốc độ khác nhau, tốc độ trung bình của cả hành trình được tính bằng tổng quãng đường chia cho tổng thời gian:\n●\tv_tb = (s₁ + s₂ + … ) : (t₁ + t₂ + … ).\nBa lưu ý quan trọng:\n●\tTốc độ trung bình nói chung không bằng trung bình cộng của các tốc độ thành phần. Hai cách tính chỉ cho cùng kết quả khi thời gian đi trên các đoạn bằng nhau.\n●\tThời gian nghỉ giữa đường vẫn được tính vào tổng thời gian của hành trình.\n●\tMọi đại lượng phải được đổi về cùng hệ đơn vị trước khi cộng.\nTrình tự làm bài: với mỗi đoạn, tính đại lượng còn thiếu bằng s = v × t hoặc t = s : v; cộng tất cả quãng đường được tổng quãng đường, cộng tất cả thời gian kể cả thời gian nghỉ được tổng thời gian; sau đó lấy thương của hai tổng.\nII. VÍ DỤ MINH HỌA\nVí dụ 1. Một ô tô đi đoạn đường thứ nhất dài 60 km trong 1 giờ, sau đó đi tiếp đoạn thứ hai dài 90 km trong 2 giờ. Tính tốc độ trung bình của ô tô trên cả hành trình.\nHướng dẫn: Tổng quãng đường là 60 + 90 = 150 (km); tổng thời gian là 1 + 2 = 3 (h). Tốc độ trung bình v_tb = 150 : 3 = 50 (km/h). Lưu ý kết quả này khác trung bình cộng của 60 km/h và 45 km/h.\nVí dụ 2. Một người đi xe máy 30 km đầu với tốc độ 30 km/h, rồi đi tiếp 30 km sau với tốc độ 60 km/h. Tính tốc độ trung bình trên cả quãng đường.\nHướng dẫn: Thời gian đoạn đầu t₁ = 30 : 30 = 1 (h); thời gian đoạn sau t₂ = 30 : 60 = 0,5 (h). Tổng quãng đường 60 km, tổng thời gian 1,5 h nên v_tb = 60 : 1,5 = 40 (km/h), nhỏ hơn trung bình cộng 45 km/h.",
+   "can_dien_ly_thuyet_nhom": false,
+   "cau": [
+    {
+     "ma_cau": "K07030103001",
+     "loai": "trac_nghiem",
+     "de": "Một ô tô đi 60 km trong 1 giờ, sau đó đi 90 km trong 2 giờ. Tốc độ trung bình của ô tô trên cả hành trình là",
+     "lua_chon": [
+      "45 km/h",
+      "50 km/h",
+      "52,5 km/h",
+      "75 km/h"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$v_\\text{tb} = (60 + 90) : (1 + 2) = 150 : 3 = 50 \\ (km/h).$"
+    },
+    {
+     "ma_cau": "K07030103002",
+     "loai": "trac_nghiem",
+     "de": "Một ô tô chạy 2 giờ với tốc độ 50 km/h, nghỉ 30 phút, rồi chạy tiếp 1,5 giờ với tốc độ 60 km/h. Tốc độ trung bình của ô tô trên cả hành trình là",
+     "lua_chon": [
+      "45 km/h",
+      "47,5 km/h",
+      "54,3 km/h",
+      "55 km/h"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Quãng đường là $100 + 90 = 190$ (km);\ntổng thời gian kể cả nghỉ là $2 + 0,5 + 1,5 = 4$ (h).\nVậy $v_{tb} = 190 : 4 = 47,5$ (km/h)."
+    },
+    {
+     "ma_cau": "K07030103003",
+     "loai": "trac_nghiem",
+     "de": "Một vật đi 120 m trong 40 giây rồi đi tiếp 180 m trong 60 giây. Tốc độ trung bình của vật là",
+     "lua_chon": [
+      "2,5 m/s",
+      "3 m/s",
+      "3,5 m/s",
+      "6 m/s"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$v_{tb} = (120 + 180) : (40 + 60) = 300 : 100 = 3$ (m/s)."
+    },
+    {
+     "ma_cau": "K07030103004",
+     "loai": "trac_nghiem",
+     "de": "Một vật chuyển động 30 giây đầu với tốc độ 10 m/s và 30 giây sau với tốc độ 20 m/s. Tốc độ trung bình của vật là",
+     "lua_chon": [
+      "12 m/s",
+      "13,3 m/s",
+      "15 m/s",
+      "30 m/s"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Quãng đường hai đoạn là 300 m và 600 m, tổng thời gian 60 s nên $v_{tb} = 900 : 60 = 15$ (m/s)."
+    },
+    {
+     "ma_cau": "K07030103005",
+     "loai": "trac_nghiem",
+     "de": "Một người đi bộ 1,2 km trong 10 phút rồi đi tiếp 1,8 km trong 20 phút. Tốc độ trung bình của người đó là",
+     "lua_chon": [
+      "5 km/h",
+      "6 km/h",
+      "7,2 km/h",
+      "9 km/h"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tổng quãng đường 3 km, tổng thời gian 30 phút $= 0,5$ h nên $v_{tb} = 3 : 0,5 = 6$ (km/h)."
+    },
+    {
+     "ma_cau": "K07030103006",
+     "loai": "trac_nghiem",
+     "de": "Một ô tô đi nửa quãng đường đầu với tốc độ $40 \\mathrm{\\ km/h}$ và nửa quãng đường sau với tốc độ $60 \\mathrm{\\ km/h}$. Biết cả quãng đường dài $120 \\mathrm{\\ km}$, tốc độ trung bình của ô tô là",
+     "lua_chon": [
+      "A. $45 \\mathrm{\\ km/h}$",
+      "B. $48 \\mathrm{\\ km/h}$",
+      "C. $50 \\mathrm{\\ km/h}$",
+      "D. $52 \\mathrm{\\ km/h}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: Mỗi nửa dài $60 \\mathrm{\\ km}$. Thời gian là $60 : 40 = 1,5 \\mathrm{\\ (h)}$ và $60 : 60 = 1 \\mathrm{\\ (h)}$. Vậy $v\\_tb = 120 : 2,5 = 48 \\mathrm{\\ (km/h)}$, nhỏ hơn trung bình cộng $50 \\mathrm{\\ km/h}$."
+    },
+    {
+     "ma_cau": "K07030103007",
+     "loai": "trac_nghiem",
+     "de": "Một xe chạy $1$ giờ đầu với tốc độ $60 \\mathrm{\\ km/h}$ và $2$ giờ sau với tốc độ $45 \\mathrm{\\ km/h}$. Tốc độ trung bình của xe là",
+     "lua_chon": [
+      "A. $50 \\mathrm{\\ km/h}$",
+      "B. $52,5 \\mathrm{\\ km/h}$",
+      "C. $55 \\mathrm{\\ km/h}$",
+      "D. $105 \\mathrm{\\ km/h}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: Quãng đường là $60 + 90 = 150 \\mathrm{\\ (km)}$, tổng thời gian $3 \\mathrm{\\ h}$ nên $v\\_tb = 150 : 3 = 50 \\mathrm{\\ (km/h)}$."
+    },
+    {
+     "ma_cau": "K07030103008",
+     "loai": "trac_nghiem",
+     "de": "Cách tính tốc độ trung bình bằng trung bình cộng của các tốc độ thành phần chỉ cho kết quả đúng khi",
+     "lua_chon": [
+      "A. vật chuyển động theo đường thẳng.",
+      "B. các tốc độ thành phần bằng nhau.",
+      "C. thời gian đi trên các đoạn bằng nhau.",
+      "D. quãng đường các đoạn bằng nhau."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: Khi thời gian các đoạn bằng nhau, tổng quãng đường chia tổng thời gian trùng với trung bình cộng của các tốc độ. Nếu quãng đường bằng nhau mà tốc độ khác nhau thì thời gian khác nhau nên hai cách tính cho kết quả khác nhau."
+    },
+    {
+     "ma_cau": "K07030103009",
+     "loai": "trac_nghiem",
+     "de": "Một vật đi $800 \\mathrm{\\ m}$ trong $100$ giây rồi đi tiếp $1200 \\mathrm{\\ m}$ trong $150$ giây. Tốc độ trung bình của vật là",
+     "lua_chon": [
+      "A. $4 \\mathrm{\\ m/s}$",
+      "B. $8 \\mathrm{\\ m/s}$",
+      "C. $12 \\mathrm{\\ m/s}$",
+      "D. $20 \\mathrm{\\ m/s}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $v\\_tb = (800 + 1200) : (100 + 150) = 2000 : 250 = 8 \\mathrm{\\ (m/s)}$."
+    },
+    {
+     "ma_cau": "K07030103010",
+     "loai": "trac_nghiem",
+     "de": "Một vật chuyển động 60 giây đầu với tốc độ 5 m/s và 90 giây sau với tốc độ 8 m/s.\nTốc độ trung bình của vật là",
+     "lua_chon": [
+      "6,5 m/s",
+      "6,8 m/s",
+      "7 m/s",
+      "13 m/s"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Quãng đường là $300$ m và $720$ m, tổng thời gian $150$ s nên $v_{tb} = 1020 : 150 = 6,8$ (m/s)."
+    },
+    {
+     "ma_cau": "K07030103011",
+     "loai": "trac_nghiem",
+     "de": "Một ô tô đi 120 km trong 2 giờ, dừng nghỉ 30 phút, rồi đi tiếp 60 km trong 1,5 giờ.\nTốc độ trung bình của ô tô trên cả hành trình là",
+     "lua_chon": [
+      "45 km/h",
+      "50 km/h",
+      "51,4 km/h",
+      "60 km/h"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tổng quãng đường $180$ km; tổng thời gian $2 + 0,5 + 1,5 = 4$ (h). Vậy $v_{tb} = 180 : 4 = 45$ (km/h)."
+    },
+    {
+     "ma_cau": "K07030103012",
+     "loai": "trac_nghiem",
+     "de": "Một xe đi ba đoạn: 20 km trong 0,5 giờ, 30 km trong 0,5 giờ và 50 km trong 1 giờ.\nTốc độ trung bình của xe là",
+     "lua_chon": [
+      "40 km/h",
+      "45 km/h",
+      "50 km/h",
+      "55 km/h"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tổng quãng đường $100$ km, tổng thời gian $2$ h nên $v_{tb} = 100 : 2 = 50$ (km/h)."
+    },
+    {
+     "ma_cau": "K07030103013",
+     "loai": "trac_nghiem",
+     "de": "Một vật đi 240 m với tốc độ 12 m/s rồi đi tiếp 360 m với tốc độ 9 m/s. Tốc độ trung bình của vật là",
+     "lua_chon": [
+      "9,5 m/s",
+      "10 m/s",
+      "10,5 m/s",
+      "21 m/s"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$t_1 = 240 : 12 = 20$ (s); $t_2 = 360 : 9 = 40$ (s). Vậy $v_{tb} = 600 : 60 = 10$ (m/s)."
+    },
+    {
+     "ma_cau": "K07030103014",
+     "loai": "trac_nghiem",
+     "de": "Một ô tô chạy $1,5$ giờ với tốc độ $60\\ \\mathrm{km/h}$ rồi chạy tiếp $0,5$ giờ với tốc độ $80\\ \\mathrm{km/h}$. Tốc độ trung bình của ô tô là",
+     "lua_chon": [
+      "65 km/h",
+      "70 km/h",
+      "72 km/h",
+      "140 km/h"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: Quãng đường là $90\\ \\mathrm{km}$ và $40\\ \\mathrm{km}$, tổng thời gian $2\\ \\mathrm{h}$ nên $v\\_tb = 130 : 2 = 65\\ \\mathrm{(km/h)}$."
+    },
+    {
+     "ma_cau": "K07030103015",
+     "loai": "trac_nghiem",
+     "de": "Một xe chạy $1$ giờ với tốc độ $40\\ \\mathrm{km/h}$ rồi chạy tiếp $1$ giờ với tốc độ $60\\ \\mathrm{km/h}$. Tốc độ trung bình của xe là",
+     "lua_chon": [
+      "45 km/h",
+      "48 km/h",
+      "50 km/h",
+      "100 km/h"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: Tổng quãng đường $100\\ \\mathrm{km}$, tổng thời gian $2\\ \\mathrm{h}$ nên $v\\_tb = 50\\ \\mathrm{km/h}$. Ở đây thời gian hai đoạn bằng nhau nên kết quả trùng với trung bình cộng."
+    },
+    {
+     "ma_cau": "K07030103016",
+     "loai": "trac_nghiem",
+     "de": "Một người đi $2\\ \\mathrm{km}$ trong $10$ phút rồi đi tiếp $4\\ \\mathrm{km}$ trong $20$ phút. Tốc độ trung bình của người đó là",
+     "lua_chon": [
+      "10 km/h",
+      "12 km/h",
+      "15 km/h",
+      "20 km/h"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: Tổng quãng đường $6\\ \\mathrm{km}$, tổng thời gian $30$ phút $= 0,5\\ \\mathrm{h}$ nên $v\\_tb = 6 : 0,5 = 12\\ \\mathrm{(km/h)}$."
+    },
+    {
+     "ma_cau": "K07030103017",
+     "loai": "trac_nghiem",
+     "de": "Một người chạy $100\\ \\mathrm{m}$ hết $12$ giây rồi đi bộ $100\\ \\mathrm{m}$ hết $88$ giây. Tốc độ trung bình của người đó trên cả quãng đường là",
+     "lua_chon": [
+      "1 m/s",
+      "2 m/s",
+      "4,5 m/s",
+      "8,3 m/s"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: Tổng quãng đường $200\\ \\mathrm{m}$, tổng thời gian $100\\ \\mathrm{s}$ nên $v\\_tb = 200 : 100 = 2\\ \\mathrm{(m/s)}$."
+    },
+    {
+     "ma_cau": "K07030103018",
+     "loai": "trac_nghiem",
+     "de": "Một ô tô có tốc độ trung bình 50 km/h trong suốt 3 giờ. Tổng quãng đường ô tô đi được là",
+     "lua_chon": [
+      "100 km",
+      "150 km",
+      "153 km",
+      "300 km"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Từ $v_{tb} = \\dfrac{s}{t}$ suy ra $s = v_{tb} \\times t = 50 \\times 3 = 150$ (km)."
+    },
+    {
+     "ma_cau": "K07030103019",
+     "loai": "trac_nghiem",
+     "de": "Một ô tô đi đoạn thứ nhất dài 60 km trong 1 giờ. Biết cả hành trình kéo dài 3 giờ với tốc độ trung bình 50 km/h, quãng đường của đoạn thứ hai là",
+     "lua_chon": [
+      "60 km",
+      "75 km",
+      "90 km",
+      "150 km"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tổng quãng đường là $50 \\times 3 = 150$ (km), do đó đoạn thứ hai dài $150 - 60 = 90$ (km)."
+    },
+    {
+     "ma_cau": "K07030103020",
+     "loai": "trac_nghiem",
+     "de": "Một xe máy đi 30 phút với tốc độ 40 km/h rồi đi tiếp 30 phút với tốc độ 60 km/h.\nTốc độ trung bình của xe máy là",
+     "lua_chon": [
+      "45 km/h",
+      "48 km/h",
+      "50 km/h",
+      "55 km/h"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Quãng đường là 20 km và 30 km, tổng thời gian 1 h nên $v_{tb} = 50$ km/h."
+    },
+    {
+     "ma_cau": "K07030103021",
+     "loai": "trac_nghiem",
+     "de": "Một vật đi ba đoạn: 100 m trong 10 giây, 200 m trong 40 giây và 300 m trong 50 giây. Tốc độ trung bình của vật là",
+     "lua_chon": [
+      "5 m/s",
+      "6 m/s",
+      "7 m/s",
+      "10 m/s"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tổng quãng đường 600 m, tổng thời gian 100 s nên $v_{tb} = 600 : 100 = 6$ (m/s)."
+    },
+    {
+     "ma_cau": "K07030103022",
+     "loai": "trac_nghiem",
+     "de": "Một người đi 5 km trong 15 phút rồi đi tiếp 10 km trong 15 phút. Tốc độ trung bình của người đó là",
+     "lua_chon": [
+      "20 km/h",
+      "25 km/h",
+      "30 km/h",
+      "60 km/h"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: Tổng quãng đường 15 km, tổng thời gian 30 phút = 0,5 h nên $v_{tb} = 15 : 0,5 = 30$ (km/h)."
+    },
+    {
+     "ma_cau": "K07030103023",
+     "loai": "trac_nghiem",
+     "de": "Một xe khách đi được 180 km, tổng thời gian của hành trình là 3 giờ trong đó có 30 phút dừng nghỉ. Tốc độ trung bình của xe trên cả hành trình là",
+     "lua_chon": [
+      "50 km/h",
+      "60 km/h",
+      "72 km/h",
+      "90 km/h"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: Tốc độ trung bình tính trên tổng thời gian của hành trình, kể cả thời gian nghỉ: $v_{tb} = 180 : 3 = 60$ (km/h)."
+    },
+    {
+     "ma_cau": "K07030103024",
+     "loai": "trac_nghiem",
+     "de": "Một người đi 1,8 km trong 5 phút rồi đi tiếp 3 km trong 15 phút. Tốc độ trung bình của người đó tính theo m/s là",
+     "lua_chon": [
+      "3 m/s",
+      "4 m/s",
+      "5 m/s",
+      "6 m/s"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: Tổng quãng đường 4 800 m, tổng thời gian 20 phút = 1 200 s nên $v_{tb} = 4800 : 1200 = 4$ (m/s)."
+    },
+    {
+     "ma_cau": "K07030103025",
+     "loai": "trac_nghiem",
+     "de": "Một ô tô đi nửa thời gian đầu với tốc độ 30 km/h và nửa thời gian sau với tốc độ 50 km/h. Tốc độ trung bình của ô tô là",
+     "lua_chon": [
+      "37,5 km/h",
+      "40 km/h",
+      "42 km/h",
+      "80 km/h"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: Vì thời gian hai đoạn bằng nhau nên tốc độ trung bình bằng trung bình cộng: $(30 + 50) : 2 = 40$ (km/h)."
+    },
+    {
+     "ma_cau": "K07030103026",
+     "loai": "trac_nghiem",
+     "de": "Một vật đi $1\\ 000\\ m$ với tốc độ $5\\ m/s$ rồi đi tiếp $800\\ m$ với tốc độ $4\\ m/s$. Tốc độ trung bình của vật là",
+     "lua_chon": [
+      "$4,4\\ m/s$",
+      "$4,5\\ m/s$",
+      "$4,6\\ m/s$",
+      "$9\\ m/s$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$t_1 = 1\\ 000 : 5 = 200\\ (s)$; $t_2 = 800 : 4 = 200\\ (s)$. Vậy $v_{tb} = 1\\ 800 : 400 = 4,5\\ (m/s)$."
+    },
+    {
+     "ma_cau": "K07030103027",
+     "loai": "trac_nghiem",
+     "de": "Một xe máy chạy $20$ phút với tốc độ $36\\ km/h$ rồi chạy tiếp $40$ phút với tốc độ $54\\ km/h$. Tốc độ trung bình của xe máy là",
+     "lua_chon": [
+      "$45\\ km/h$",
+      "$46\\ km/h$",
+      "$48\\ km/h$",
+      "$90\\ km/h$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Quãng đường là $12\\ km$ và $36\\ km$, tổng thời gian $1\\ h$ nên $v_{tb} = 48\\ (km/h)$."
+    },
+    {
+     "ma_cau": "K07030103028",
+     "loai": "trac_nghiem",
+     "de": "Một ô tô đi tổng cộng $240\\ km$ trong $4$ giờ kể cả thời gian nghỉ. Tốc độ trung bình của ô tô là",
+     "lua_chon": [
+      "$40\\ km/h$",
+      "$60\\ km/h$",
+      "$80\\ km/h$",
+      "$960\\ km/h$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$v_{tb} = 240 : 4 = 60\\ (km/h)$."
+    },
+    {
+     "ma_cau": "K07030103029",
+     "loai": "trac_nghiem",
+     "de": "Một xe đi đoạn AB dài $30\\ km$ hết $45$ phút, rồi đi đoạn BC dài $50\\ km$ hết $1$ giờ $15$ phút. Tốc độ trung bình trên cả quãng đường AB rồi BC là",
+     "lua_chon": [
+      "$35\\ km/h$",
+      "$40\\ km/h$",
+      "$45\\ km/h$",
+      "$80\\ km/h$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tổng quãng đường $80\\ km$, tổng thời gian $0,75 + 1,25 = 2\\ (h)$. Vậy $v_{tb} = 80 : 2 = 40\\ (km/h)$."
+    },
+    {
+     "ma_cau": "K07030103030",
+     "loai": "trac_nghiem",
+     "de": "Một vật chuyển động với tốc độ trung bình $8$ m/s trên quãng đường $400$ m. Tổng thời gian chuyển động của vật là",
+     "lua_chon": [
+      "50 s",
+      "60 s",
+      "40 s",
+      "3 200 s"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Từ $v_{tb} = \\dfrac{s}{t}$ suy ra $t = 400 : 8 = 50$ (s)."
+    },
+    {
+     "ma_cau": "K07030103031",
+     "loai": "trac_nghiem",
+     "de": "Một xe đi ba đoạn: $2$ km trong $5$ phút, $3$ km trong $10$ phút và $5$ km trong $15$ phút.\nTốc độ trung bình của xe là",
+     "lua_chon": [
+      "15 km/h",
+      "18 km/h",
+      "20 km/h",
+      "24 km/h"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tổng quãng đường $10$ km, tổng thời gian $30$ phút $= 0,5$ h nên $v_{tb} = 10 : 0,5 = 20$ (km/h)."
+    },
+    {
+     "ma_cau": "K07030103032",
+     "loai": "trac_nghiem",
+     "de": "Một học sinh tính tốc độ trung bình của xe đi hai đoạn đường dài bằng nhau với tốc độ $40$ km/h và $60$ km/h bằng cách lấy $(40 + 60) : 2 = 50$ km/h. Nhận xét đúng là",
+     "lua_chon": [
+      "cách làm đúng với mọi trường hợp.",
+      "cách làm sai vì phải lấy hiệu hai tốc độ.",
+      "cách làm sai vì thời gian đi hai đoạn không bằng nhau.",
+      "cách làm đúng vì hai đoạn đường dài bằng nhau."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khi hai đoạn đường dài bằng nhau nhưng tốc độ khác nhau thì thời gian đi hai đoạn khác nhau, nên phải lấy tổng quãng đường chia tổng thời gian; kết quả đúng là $48$ km/h chứ không phải $50$ km/h."
+    },
+    {
+     "ma_cau": "K07030103033",
+     "loai": "tra_loi_ngan",
+     "de": "Một xe đi $40\\text{ km}$ trong $1$ giờ rồi đi tiếp $80\\text{ km}$ trong $2$ giờ. Tốc độ trung bình của xe là bao nhiêu $\\text{km/h}$?",
+     "dap_an": "40",
+     "loi_giai": "$v_{tb} = (40 + 80) : (1 + 2) = 120 : 3 = 40 (\\text{km/h})$."
+    },
+    {
+     "ma_cau": "K07030103034",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật chuyển động $20$ giây đầu với tốc độ $6\\text{ m/s}$ và $20$ giây sau với tốc độ $10\\text{ m/s}$. Tốc độ trung bình của vật là bao nhiêu $\\text{m/s}$?",
+     "dap_an": "8",
+     "loi_giai": "Quãng đường là $120\\text{ m}$ và $200\\text{ m}$, tổng thời gian $40\\text{ s}$ nên $v_{tb} = 320 : 40 = 8 (\\text{m/s})$."
+    },
+    {
+     "ma_cau": "K07030103035",
+     "loai": "tra_loi_ngan",
+     "de": "Một ô tô đi $60\\text{ km}$ trong $1$ giờ, nghỉ $30$ phút, rồi đi tiếp $30\\text{ km}$ trong $0.5$ giờ. Tốc độ trung bình trên cả hành trình là bao nhiêu $\\text{km/h}$?",
+     "dap_an": "45",
+     "loi_giai": "Tổng quãng đường $90\\text{ km}$, tổng thời gian $1 + 0.5 + 0.5 = 2 (\\text{h})$ nên $v_{tb} = 45 (\\text{km/h})$."
+    },
+    {
+     "ma_cau": "K07030103036",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đi $150\\text{ m}$ trong $30$ giây rồi đi tiếp $250\\text{ m}$ trong $50$ giây. Tốc độ trung bình của vật là bao nhiêu $\\text{m/s}$?",
+     "dap_an": "5",
+     "loi_giai": "$v_{tb} = (150 + 250) : (30 + 50) = 400 : 80 = 5 (\\text{m/s})$."
+    },
+    {
+     "ma_cau": "K07030103037",
+     "loai": "tra_loi_ngan",
+     "de": "Một xe đi nửa quãng đường đầu với tốc độ $30\\text{ km/h}$ và nửa sau với tốc độ $60\\text{ km/h}$. Tốc độ trung bình trên cả quãng đường là bao nhiêu $\\text{km/h}$?",
+     "dap_an": "40",
+     "loi_giai": "Chọn cả quãng đường là $60\\text{ km}$, thời gian hai nửa là $1\\text{ h}$ và $0.5\\text{ h}$ nên $v_{tb} = 60 : 1.5 = 40 (\\text{km/h})$."
+    },
+    {
+     "ma_cau": "K07030103038",
+     "loai": "tra_loi_ngan",
+     "de": "Một người đi $2\\text{ km}$ trong $8$ phút rồi đi tiếp $4\\text{ km}$ trong $12$ phút. Tốc độ trung bình của người đó là bao nhiêu $\\text{km/h}$?",
+     "dap_an": "18",
+     "loi_giai": "Tổng quãng đường $6\\text{ km}$, tổng thời gian $20$ phút $= 1/3\\text{ h}$ nên $v_{tb} = 6 \\times 3 = 18 (\\text{km/h})$."
+    },
+    {
+     "ma_cau": "K07030103039",
+     "loai": "tra_loi_ngan",
+     "de": "Một ô tô đi tổng cộng $180\\text{ km}$ trong $3$ giờ. Tốc độ trung bình của ô tô là bao nhiêu $\\text{km/h}$?",
+     "dap_an": "60",
+     "loi_giai": "$v_{tb} = 180 : 3 = 60 (\\text{km/h})$."
+    },
+    {
+     "ma_cau": "K07030103040",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật chuyển động với tốc độ trung bình $12 \\text{ m/s}$ trong $25 \\text{ giây}$. Tổng quãng đường vật đi được là bao nhiêu mét?",
+     "dap_an": "300",
+     "loi_giai": "$s = v_{\\text{tb}} \\times t = 12 \\times 25 = 300 (\\text{m})$."
+    },
+    {
+     "ma_cau": "K07030103041",
+     "loai": "tra_loi_ngan",
+     "de": "Một xe đi $90 \\text{ km}$ với tốc độ $45 \\text{ km/h}$ rồi đi tiếp $90 \\text{ km}$ với tốc độ $90 \\text{ km/h}$. Tốc độ trung bình của xe là bao nhiêu $\\text{km/h}$?",
+     "dap_an": "60",
+     "loi_giai": "$t_1 = 2 \\text{ h}$, $t_2 = 1 \\text{ h}$ nên $v_{\\text{tb}} = 180 : 3 = 60 (\\text{km/h})$."
+    },
+    {
+     "ma_cau": "K07030103042",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đi ba đoạn: $100 \\text{ m}$ trong $20 \\text{ giây}$, $150 \\text{ m}$ trong $30 \\text{ giây}$ và $250 \\text{ m}$ trong $50 \\text{ giây}$. Tốc độ trung bình của vật là bao nhiêu $\\text{m/s}$?",
+     "dap_an": "5",
+     "loi_giai": "Tổng quãng đường $500 \\text{ m}$, tổng thời gian $100 \\text{ s}$ nên $v_{\\text{tb}} = 5 (\\text{m/s})$."
+    },
+    {
+     "ma_cau": "K07030103043",
+     "loai": "tra_loi_ngan",
+     "de": "Tốc độ trung bình bằng trung bình cộng của các tốc độ thành phần khi đại lượng nào của các đoạn bằng nhau?",
+     "dap_an": "thời gian",
+     "loi_giai": "Chỉ khi thời gian đi trên các đoạn bằng nhau thì hai cách tính mới cho cùng kết quả."
+    },
+    {
+     "ma_cau": "K07030103044",
+     "loai": "tra_loi_ngan",
+     "de": "Một ô tô chạy $1.5 \\text{ giờ}$ với tốc độ $40 \\text{ km/h}$ rồi chạy tiếp $0.5 \\text{ giờ}$ với tốc độ $80 \\text{ km/h}$. Tốc độ trung bình của ô tô là bao nhiêu $\\text{km/h}$?",
+     "dap_an": "50",
+     "loi_giai": "Quãng đường là $60 \\text{ km}$ và $40 \\text{ km}$, tổng thời gian $2 \\text{ h}$ nên $v_{\\text{tb}} = 100 : 2 = 50 (\\text{km/h})$."
+    },
+    {
+     "ma_cau": "K07030103045",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đi $600 \\text{ m}$ trong $2 \\text{ phút}$ rồi đi tiếp $1200 \\text{ m}$ trong $3 \\text{ phút}$. Tốc độ trung bình của vật là bao nhiêu $\\text{m/s}$?",
+     "dap_an": "6",
+     "loi_giai": "Tổng quãng đường $1800 \\text{ m}$, tổng thời gian $300 \\text{ s}$ nên $v_{\\text{tb}} = 6 (\\text{m/s})$."
+    },
+    {
+     "ma_cau": "K07030103046",
+     "loai": "tra_loi_ngan",
+     "de": "Một ô tô có tốc độ trung bình $50 \\text{ km/h}$ trên quãng đường $200 \\text{ km}$. Tổng thời gian của hành trình là bao nhiêu giờ?",
+     "dap_an": "4",
+     "loi_giai": "$t = s : v_{\\text{tb}} = 200 : 50 = 4 (\\text{h})$."
+    },
+    {
+     "ma_cau": "K07030103047",
+     "loai": "tra_loi_ngan",
+     "de": "Một xe đi 20 km trong 30 phút rồi đi tiếp 40 km trong 30 phút. Tốc độ trung bình của xe là bao nhiêu km/h?",
+     "dap_an": "60",
+     "loi_giai": "Tổng quãng đường $60\\text{ km}$, tổng thời gian $1\\text{ h}$ nên $\\mathrm{v_{tb}} = 60\\text{ (km/h)}$."
+    },
+    {
+     "ma_cau": "K07030103048",
+     "loai": "trac_nghiem",
+     "de": "Một người đi xe đạp: đoạn đầu dài 12 km đi hết 1 h, đoạn sau dài 12 km đi hết 2 h. Tốc độ của người đó trên cả quãng đường là",
+     "lua_chon": [
+      "9 km/h",
+      "18 km/h",
+      "8 km/h",
+      "12 km/h"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tổng quãng đường 24 km, tổng thời gian 3 h, nên v = 24 : 3 = 8 km/h.\n\nVì sao các phương án khác sai:\n- A: Đã lấy trung bình cộng hai tốc độ (12 + 6) : 2.\n- B: Đã cộng hai tốc độ 12 km/h và 6 km/h.\n- D: Đã chia tổng quãng đường 24 km cho 2 đoạn thay vì cho tổng thời gian."
+    },
+    {
+     "ma_cau": "K07030103049",
+     "loai": "trac_nghiem",
+     "de": "Lan đạp xe 1,2 km hết 10 phút, rồi đi xe buýt 10,8 km hết 30 phút. Tốc độ của Lan trên cả quãng đường là",
+     "lua_chon": [
+      "18 km/h",
+      "14,4 km/h",
+      "0,3 km/h",
+      "6 km/h"
+     ],
+     "dap_an": "A",
+     "loi_giai": "s = 1,2 + 10,8 = 12 km; t = 10 + 30 = 40 phút = 2/3 h; v = 12 : 2/3 = 18 km/h.\n\nVì sao các phương án khác sai:\n- B: Đã lấy trung bình cộng hai tốc độ 7,2 km/h và 21,6 km/h.\n- C: 12 : 40 = 0,3 là km/phút; quên đổi 40 phút = 2/3 h.\n- D: Đã chia 12 km cho 2 đoạn thay vì cho tổng thời gian."
+    },
+    {
+     "ma_cau": "K07030103050",
+     "loai": "trac_nghiem",
+     "de": "Một xe máy đi trong khu dân cư dài 4 km hết 20 phút, rồi đi tiếp trên quốc lộ bị tắc đường dài 8 km hết 1 giờ. Tốc độ trên cả quãng đường là",
+     "lua_chon": [
+      "12 km/h",
+      "10 km/h",
+      "9 km/h",
+      "8 km/h"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tổng quãng đường 4 + 8 = 12 km; tổng thời gian 20 phút + 60 phút = 80 phút = 4/3 h; v = 12 : 4/3 = 9 km/h.\n\nVì sao các phương án khác sai:\n- A: 12 km/h chỉ là tốc độ ở đoạn đầu (trong khu dân cư), không phải tốc độ cả quãng đường.\n- B: 10 km/h là lấy trung bình cộng hai tốc độ từng đoạn, không đúng vì hai đoạn có thời gian khác nhau.\n- D: 8 km/h chỉ là tốc độ ở đoạn sau (trên quốc lộ), không phải tốc độ cả quãng đường."
+    },
+    {
+     "ma_cau": "K07030103051",
+     "loai": "trac_nghiem",
+     "de": "Một người chạy bộ: đoạn đường bằng phẳng dài 2 km hết 10 phút, đoạn đường dốc dài 3 km hết 20 phút. Tốc độ trên cả quãng đường là",
+     "lua_chon": [
+      "10,5 km/h",
+      "12 km/h",
+      "9 km/h",
+      "10 km/h"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tổng quãng đường 2 + 3 = 5 km; tổng thời gian 10 + 20 = 30 phút = 0,5 h; v = 5 : 0,5 = 10 km/h.\n\nVì sao các phương án khác sai:\n- A: 10,5 km/h là trung bình cộng hai tốc độ từng đoạn, không đúng vì thời gian hai đoạn khác nhau.\n- B: 12 km/h chỉ là tốc độ ở đoạn đường bằng phẳng, chưa tính cả quãng đường.\n- C: 9 km/h chỉ là tốc độ ở đoạn đường dốc, chưa tính cả quãng đường."
+    },
+    {
+     "ma_cau": "K07030103052",
+     "loai": "trac_nghiem",
+     "de": "Hai bạn chạy thi 100 m. A chạy liên tục với tốc độ 5 m/s. B chạy 60 m đầu với tốc độ 10 m/s, dừng lại 5 s, rồi chạy 40 m còn lại với tốc độ 8 m/s. Ai về đích trước, trước bao lâu?",
+     "lua_chon": [
+      "A, trước 5 s",
+      "B, trước 9 s",
+      "B, trước 4 s",
+      "A, trước 4 s"
+     ],
+     "dap_an": "C",
+     "loi_giai": "A mất 100 : 5 = 20 s. B mất 60 : 10 = 6 s, nghỉ 5 s, rồi 40 : 8 = 5 s, tổng 16 s. B về trước, sớm hơn 20 − 16 = 4 s.\n\nVì sao các phương án khác sai:\n- A: Đã tính đúng khoảng cách thời gian nhưng dùng nhầm thời gian nghỉ (5 s) làm hiệu số.\n- B: Đã lấy hiệu tổng thời gian của A (20 s) với thời gian DI CHUYỂN của B (11 s), quên cộng 5 s nghỉ của B.\n- D: Đã tính đúng hiệu số (4 s) nhưng xác định nhầm ai về đích trước."
+    },
+    {
+     "ma_cau": "K07030103053",
+     "loai": "trac_nghiem",
+     "de": "Xe đạp đi liên tục 6 km với tốc độ 15 km/h. Xe máy đi 3 km đầu với tốc độ 60 km/h, dừng đổ xăng 21 phút, rồi đi 3 km còn lại với tốc độ 60 km/h. Xe nào đến đích trước, trước bao lâu?",
+     "lua_chon": [
+      "Xe máy, trước 3 phút",
+      "Xe đạp, trước 3 phút",
+      "Xe máy, trước 21 phút",
+      "Xe đạp, trước 6 phút"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Xe đạp mất 6 : 15 = 0,4 h = 24 phút. Xe máy mất 3 : 60 + 3 : 60 = 0,1 h = 6 phút đi, cộng 21 phút dừng = 27 phút. Xe đạp đến trước, sớm hơn 27 − 24 = 3 phút.\n\nVì sao các phương án khác sai:\n- A: Đã xác định nhầm xe đến trước; xe máy hết 27 phút, nhiều hơn xe đạp.\n- C: 21 phút là thời gian xe máy dừng đổ xăng, không phải hiệu thời gian đến đích của hai xe.\n- D: Đã lấy thời gian DI CHUYỂN của xe máy (6 phút) làm hiệu số, bỏ qua thời gian dừng."
+    },
+    {
+     "ma_cau": "K07030103054",
+     "loai": "trac_nghiem",
+     "de": "Hai tàu cùng đi quãng đường 40 km. Tàu A chạy liên tục với tốc độ 20 km/h. Tàu B chạy 24 km đầu với tốc độ 24 km/h, dừng tránh bão 1,5 h, rồi chạy 16 km còn lại hết 0,5 h. Tàu nào đến trước, trước bao lâu?",
+     "lua_chon": [
+      "Tàu B, trước 1 giờ",
+      "Tàu A, trước 1,5 giờ",
+      "Tàu B, trước 0,5 giờ",
+      "Tàu A, trước 1 giờ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tàu A mất 40 : 20 = 2 h. Tàu B mất 24 : 24 = 1 h, dừng 1,5 h, rồi 0,5 h, tổng 3 h. Tàu A đến trước, sớm hơn 3 − 2 = 1 h.\n\nVì sao các phương án khác sai:\n- A: Đã tính đúng hiệu số (1 giờ) nhưng xác định nhầm tàu đến trước.\n- B: 1,5 giờ là thời gian tàu B dừng tránh bão, không phải hiệu thời gian đến đích của hai tàu.\n- C: Đã lấy nhầm thời gian đoạn cuối của tàu B (0,5 h) làm hiệu số."
+    },
+    {
+     "ma_cau": "K07030103055",
+     "loai": "trac_nghiem",
+     "de": "Hai người bơi 200 m. A bơi liên tục với tốc độ 1,25 m/s. B bơi 90 m đầu với tốc độ 1,5 m/s, nghỉ 30 s vì mỏi tay, rồi bơi 110 m còn lại với tốc độ 1,1 m/s. Kết luận nào đúng?",
+     "lua_chon": [
+      "A về đích trước, sớm hơn 30 s",
+      "B về đích trước, sớm hơn 30 s",
+      "Cả hai về đích cùng lúc",
+      "B về đích trước, sớm hơn 190 s"
+     ],
+     "dap_an": "A",
+     "loi_giai": "A bơi hết 200 : 1,25 = 160 s. B bơi 90 : 1,5 = 60 s và 110 : 1,1 = 100 s, cộng 160 s bơi, thêm 30 s nghỉ = 190 s. A về trước, sớm hơn 190 − 160 = 30 s.\n\nVì sao các phương án khác sai:\n- B: Đã tính đúng hiệu số (30 s) nhưng xác định nhầm ai về đích trước.\n- C: Thời gian BƠI của hai người bằng nhau (đều 160 s) nhưng B còn nghỉ thêm 30 s nên về sau, không phải cùng lúc.\n- D: 190 s là tổng thời gian của B, không phải hiệu thời gian giữa hai người."
+    },
+    {
+     "ma_cau": "K07030103056",
+     "loai": "trac_nghiem",
+     "de": "Hai ô tô cùng đi quãng đường 120 km. Xe A chạy liên tục với tốc độ 60 km/h. Xe B chạy 80 km đầu với tốc độ 80 km/h, dừng nghỉ trưa 1 giờ, rồi chạy 40 km còn lại hết 0,5 giờ. Xe nào đến trước, trước bao lâu?",
+     "lua_chon": [
+      "Xe B, trước 1 giờ",
+      "Xe A, trước 1,5 giờ",
+      "Xe B, trước 0,5 giờ",
+      "Xe A, trước 0,5 giờ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Xe A mất 120 : 60 = 2 h. Xe B mất 80 : 80 = 1 h, nghỉ 1 h, rồi 0,5 h, tổng 2,5 h. Xe A đến trước, sớm hơn 2,5 − 2 = 0,5 h.\n\nVì sao các phương án khác sai:\n- A: Đã tính đúng hiệu số (0,5 giờ) nhưng xác định nhầm xe đến trước.\n- B: Đã dùng nhầm thời gian nghỉ trưa (1 giờ) làm hiệu số, thay vì hiệu tổng thời gian (0,5 giờ).\n- C: Đã lấy nhầm thời gian đoạn cuối của xe B (0,5 h) gán cho xe B đến trước."
+    },
+    {
+     "ma_cau": "K07030103057",
+     "loai": "trac_nghiem",
+     "de": "Hai bạn đạp xe thi 12 km. Hùng đạp liên tục với tốc độ 20 km/h. Việt đạp 8 km đầu với tốc độ 24 km/h, dừng sửa xe 15 phút, rồi đạp 4 km còn lại với tốc độ 16 km/h. Ai về đích trước, trước bao lâu?",
+     "lua_chon": [
+      "Việt, trước 14 phút",
+      "Hùng, trước 14 phút",
+      "Hùng, trước 1 phút",
+      "Việt, trước 1 phút"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hùng đi hết 12 : 20 = 0,6 h = 36 phút. Việt đi hết 8 : 24 = 20 phút, dừng 15 phút, rồi 4 : 16 = 15 phút, tổng 50 phút. Hùng về trước, sớm hơn 50 − 36 = 14 phút.\n\nVì sao các phương án khác sai:\n- A: Tổng thời gian của Việt (50 phút) dài hơn của Hùng (36 phút) nên Hùng mới là người về trước, không phải Việt.\n- C: 1 phút là do quên cộng 15 phút dừng sửa xe của Việt (20 + 15 = 35 phút thay vì 50 phút).\n- D: Sai cả hai: vừa nhầm ai về trước, vừa quên cộng thời gian dừng sửa xe của Việt."
+    },
+    {
+     "ma_cau": "K07030103058",
+     "loai": "trac_nghiem",
+     "de": "Hai tàu thủy đi cùng quãng đường 100 km. Tàu A chạy liên tục với tốc độ 25 km/h. Tàu B chạy 60 km đầu với tốc độ 30 km/h, dừng tránh sóng lớn 1 giờ, rồi chạy 40 km còn lại với tốc độ 20 km/h. Tàu nào đến trước, trước bao lâu?",
+     "lua_chon": [
+      "Tàu B, trước 1 giờ",
+      "Tàu A, trước 2 giờ",
+      "Tàu A, trước 1 giờ",
+      "Hai tàu đến cùng một lúc"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tàu A đi hết 100 : 25 = 4 h. Tàu B đi hết 60 : 30 = 2 h, dừng 1 h, rồi 40 : 20 = 2 h, tổng 5 h. Tàu A đến trước, sớm hơn 5 − 4 = 1 h.\n\nVì sao các phương án khác sai:\n- A: Tổng thời gian của tàu B (5 h) dài hơn của tàu A (4 h) nên tàu A mới đến trước, không phải tàu B.\n- B: 2 giờ là tính sai hiệu số (nhầm 6 − 4 thay vì 5 − 4).\n- D: Nếu bỏ qua 1 giờ dừng tránh sóng của tàu B thì hai tàu mới đến cùng lúc; thực tế tàu B có dừng nên tàu B đến sau tàu A."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00325",
+   "khoi": "7",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Đo tốc độ",
+   "nhom": "Lựa chọn thiết bị đo tốc độ phù hợp",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K07030201001",
+     "loai": "trac_nghiem",
+     "de": "Khi đo tốc độ bằng đồng hồ bấm giây, ta cần những dụng cụ đo nào?",
+     "lua_chon": [
+      "Chỉ cần đồng hồ bấm giây",
+      "Cân và đồng hồ bấm giây",
+      "Thước đo độ dài và đồng hồ bấm giây",
+      "Thước đo độ dài và nhiệt kế"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Muốn tính v = s/t phải đo quãng đường s bằng thước và đo thời gian t bằng đồng hồ bấm giây.\n\nVì sao các phương án khác sai:\n- A: Còn phải đo quãng đường bằng thước.\n- B: Cân đo khối lượng, không cần khi đo tốc độ.\n- D: Nhiệt kế đo nhiệt độ; cần đồng hồ để đo thời gian."
+    },
+    {
+     "ma_cau": "K07030201002",
+     "loai": "trac_nghiem",
+     "de": "Trong phòng thí nghiệm, dụng cụ nào giúp đo thời gian vật đi giữa hai vị trí chính xác hơn đồng hồ bấm giây?",
+     "lua_chon": [
+      "Đồng hồ đo thời gian hiện số nối cổng quang điện",
+      "Đồng hồ treo tường có kim giây",
+      "Đồng hồ cát loại một phút",
+      "Đồng hồ đeo tay chỉ có kim phút"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đồng hồ đo thời gian hiện số dùng cổng quang điện tự bắt đầu và dừng đo khi vật đi qua hai cổng, nên chính xác hơn.\n\nVì sao các phương án khác sai:\n- B: Đồng hồ treo tường không đo chính xác được khoảng thời gian ngắn.\n- C: Đồng hồ cát chỉ đo một khoảng thời gian cố định, rất kém chính xác.\n- D: Không có kim giây thì không đo được khoảng thời gian vài giây."
+    },
+    {
+     "ma_cau": "K07030201003",
+     "loai": "trac_nghiem",
+     "de": "Dụng cụ nào dưới đây dùng để đo tốc độ của phương tiện giao thông?",
+     "lua_chon": [
+      "Nhiệt kế điện tử",
+      "Cân đồng hồ",
+      "Súng bắn tốc độ",
+      "Máy đo huyết áp"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Súng bắn tốc độ đo tốc độ tức thời của xe đang chạy để phát hiện xe vượt quá tốc độ cho phép.\n\nVì sao các phương án khác sai:\n- A: Sai: nhiệt kế điện tử dùng để đo nhiệt độ, không đo tốc độ.\n- B: Sai: cân đồng hồ dùng để đo khối lượng, không đo tốc độ.\n- D: Sai: máy đo huyết áp là một loại áp kế, dùng đo áp suất máu, không đo tốc độ."
+    },
+    {
+     "ma_cau": "K07030201004",
+     "loai": "trac_nghiem",
+     "de": "Trên bảng đồng hồ (đồng hồ táp lô) của ô tô, xe máy, bộ phận nào cho biết trực tiếp tốc độ xe đang chạy?",
+     "lua_chon": [
+      "Đồng hồ đo quãng đường đã đi",
+      "Đồng hồ đo mức nhiên liệu",
+      "Đồng hồ đo tốc độ (tốc kế)",
+      "Đồng hồ đo vòng tua động cơ"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đồng hồ đo tốc độ (tốc kế) trên bảng táp lô hiển thị trực tiếp tốc độ xe đang chạy tại mỗi thời điểm.\n\nVì sao các phương án khác sai:\n- A: Đây là đồng hồ đo tổng quãng đường xe đã đi được, không phải tốc độ hiện tại.\n- B: Đồng hồ nhiên liệu cho biết lượng xăng còn lại, không liên quan tốc độ.\n- D: Vòng tua động cơ (số vòng/phút) khác với tốc độ xe chạy trên đường."
+    },
+    {
+     "ma_cau": "K07030201005",
+     "loai": "trac_nghiem",
+     "de": "Vì sao đo thời gian bằng cổng quang điện nối đồng hồ hiện số chính xác hơn dùng đồng hồ bấm giây?",
+     "lua_chon": [
+      "Cổng quang điện tự đo được quãng đường",
+      "Không phụ thuộc thời gian phản ứng của người bấm",
+      "Vật đi qua cổng quang điện nhanh hơn",
+      "Cổng quang điện làm vật chuyển động đều"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đồng hồ tự bắt đầu và dừng đo khi vật đi qua hai cổng, nên tránh được sai số do người bấm phản ứng chậm.\n\nVì sao các phương án khác sai:\n- A: Quãng đường giữa hai cổng vẫn phải đo bằng thước.\n- C: Cổng quang điện không làm thay đổi tốc độ của vật.\n- D: Cổng quang điện chỉ đo thời gian, không tác động lên vật."
+    },
+    {
+     "ma_cau": "K07030201006",
+     "loai": "trac_nghiem",
+     "de": "Hai bạn cùng dùng đồng hồ bấm giây đo thời gian một xe lăn đi hết cùng một quãng đường, nhưng thu được hai kết quả hơi khác nhau. Nguyên nhân chủ yếu là gì?",
+     "lua_chon": [
+      "Thời gian phản ứng bấm nút khác nhau giữa hai bạn",
+      "Xe lăn tự thay đổi tốc độ giữa hai lần đo",
+      "Thước đo quãng đường của hai bạn khác loại",
+      "Xe lăn đi được quãng đường khác nhau ở hai lần đo"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đồng hồ bấm giây phụ thuộc thao tác tay người bấm; mỗi người có thời gian phản ứng bấm nút hơi khác nhau nên kết quả đo thời gian lệch nhau.\n\nVì sao các phương án khác sai:\n- B: Nếu cùng một xe lăn, cùng cách thả thì tốc độ thực tế không đổi giữa hai lần đo.\n- C: Quãng đường đo bằng thước không phụ thuộc vào việc ai đo thời gian.\n- D: Quãng đường được đánh dấu cố định trước, không đổi giữa hai lần đo."
+    },
+    {
+     "ma_cau": "K07030201007",
+     "loai": "trac_nghiem",
+     "de": "Vì sao khi đo tốc độ bằng đồng hồ bấm giây, người ta thường đo thời gian nhiều lần rồi lấy giá trị trung bình?",
+     "lua_chon": [
+      "Để quãng đường đo được dài hơn",
+      "Để giảm sai số do thao tác bấm giờ",
+      "Để đổi đơn vị tốc độ dễ dàng hơn",
+      "Để không cần dùng thước đo quãng đường"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mỗi lần bấm giờ có sai số ngẫu nhiên nhỏ; đo nhiều lần rồi lấy trung bình giúp kết quả gần với giá trị thực hơn.\n\nVì sao các phương án khác sai:\n- A: Số lần đo thời gian không làm thay đổi quãng đường thực tế của vật.\n- C: Việc đổi đơn vị tốc độ không liên quan đến số lần đo thời gian.\n- D: Vẫn phải dùng thước đo quãng đường dù đo thời gian bao nhiêu lần."
+    }
+   ]
+  }
+ ]
+}

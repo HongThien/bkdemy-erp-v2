@@ -1,0 +1,188 @@
+[
+ {
+  "ma_bai": "HH00001",
+  "noi_dung": "Định lí : Tổng ba góc của một tam giác bằng $180^\\circ$.\nTrong tam giác ABC ta có : $\\widehat{A} + \\widehat{B} + \\widehat{C} = 180^\\circ$ \n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/43879837-d322-4287-8078-ac5b2f0617ed.png)\n\nChú ý:\n- Tam giác có ba góc nhọn là tam giác nhọn;\n- Tam giác có một góc tù là tam giác tù;\n- Tam giác có một góc vuông là tam giác vuông.\nTrong tam giác vuông, hai góc nhọn phụ nhau. \n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/37eaed8c-2d5f-4327-9fac-0cf287209e0e.png)\n\nTam giác ABC vuông ở A.\nSuy ra : $\\widehat{B} + \\widehat{C} = 90^\\circ$\n2. Góc ngoài tam giác\nĐịnh nghĩa: Tam giác ABC có Cx là tia đối của tia CB thì góc $\\widehat{ACx}$ là góc ngoài tại đỉnh $\\widehat{C}$ của tam giác ABC. \n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/afb2bd17-05ed-4da4-a383-e14cfb700fb4.png)\n\nGóc ngoài của một tam giác có số đo bằng tổng hai góc trong không kề với nó.\n$\\widehat{ACx} = \\widehat{A} + \\widehat{B}$",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-16T10:10:17.821Z"
+ },
+ {
+  "ma_bai": "HH00020",
+  "noi_dung": "Cho hai tia $Ox$ và $Oy$ đối nhau, tia $Oz$ nằm giữa hai tia $Ox$ và $Oy$.\n\n![Cấu hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/66aa5634-3a1b-4b6e-a973-6465e841b794.png)",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T11:26:19.119Z"
+ },
+ {
+  "ma_bai": "HH00021",
+  "noi_dung": "Cho hình vẽ. Biết $Ox$ và $Ox'$, $Oy$ và $Oy'$ là các tia đối nhau.\n\n![Cấu hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/dbd3e77c-c152-4bc1-8c0d-f96732112e82.svgxml)",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T11:26:19.119Z"
+ },
+ {
+  "ma_bai": "HH00022",
+  "noi_dung": "Cho góc $xOy$. Kẻ tia $Oz$ là tia phân giác của góc $xOy$.\n\n![Cấu hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/3beced58-c611-4ee2-beb9-88ffc0c03979.svgxml)",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T11:26:19.119Z"
+ },
+ {
+  "ma_bai": "HH00023",
+  "noi_dung": "Cho hình vẽ.\n\n![Cấu hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/aa86a91d-6e7b-4511-b648-5fd0f861136f.png)",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T11:26:19.119Z"
+ },
+ {
+  "ma_bai": "HH00024",
+  "noi_dung": "Cho hình vẽ.\n\n![Cấu hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/6bdb9945-2c80-4953-bc9c-b44933007cc7.png)",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T11:26:19.119Z"
+ },
+ {
+  "ma_bai": "HH00025",
+  "noi_dung": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$.",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T11:26:19.119Z"
+ },
+ {
+  "ma_bai": "HH00026",
+  "noi_dung": "Cho $\\triangle ABC$ vuông tại $A$, tia phân giác của góc $B$ cắt $AC$ tại $D$. Trên $BC$ lấy $E$ sao cho $BE = BA$.\n\n![Cấu hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/26b9bfa4-0228-4b00-9a8e-30f76a91c3f8.png)",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T11:26:19.119Z"
+ },
+ {
+  "ma_bai": "HH00027",
+  "noi_dung": "Cho hai tia $Ox$ và $Oy$ đối nhau, tia $Oz$ và $Ot$ nằm giữa hai tia đó.\n\n![Cấu hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/1dc3cd82-f476-4bd5-9f1d-374a059e2620.svgxml)",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T11:26:19.119Z"
+ },
+ {
+  "ma_bai": "HH00028",
+  "noi_dung": "Cho hình vẽ. Biết $Ox$ và $Ox'$, $Oy$ và $Oy'$ là các tia đối nhau.; Kẻ tia $Oa$.\n\n![Cấu hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/d513dc58-1212-40ed-9168-83269fb783b5.svgxml)",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T11:26:19.119Z"
+ },
+ {
+  "ma_bai": "HH00058",
+  "noi_dung": "Cho tứ giác ABCD\n\n![Cấu hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/9595cdea-1f8e-4ca4-91ee-f1da3842c9f9.png)",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T15:22:20.386Z"
+ },
+ {
+  "ma_bai": "HH00059",
+  "noi_dung": "Cho hình thang ABCD có AB // CD.\n\n![Cấu hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/84b6c8e5-115b-476c-9eeb-90b7fff865c7.png)",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T15:22:20.386Z"
+ },
+ {
+  "ma_bai": "HH00060",
+  "noi_dung": "Cho hình thang cân ABCD, AB // CD.\n\n![Cấu hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/53203313-a184-42d4-aabc-a04063e6cf5b.png)",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T15:22:20.386Z"
+ },
+ {
+  "ma_bai": "HH00061",
+  "noi_dung": "Cho hình bình hành ABCD.\n\n![Cấu hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/33bff848-b572-498d-a0cb-3371f25dbb95.png)",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T15:22:20.386Z"
+ },
+ {
+  "ma_bai": "HH00062",
+  "noi_dung": "Cho hình chữ nhật ABCD. AC cắt BD tại O\n\n![Cấu hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/b7883534-e0b6-442b-8c5c-e6cf9536f92f.png)",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T15:22:20.386Z"
+ },
+ {
+  "ma_bai": "HH00063",
+  "noi_dung": "Cho hình thoi ABCD. AC cắt BD tại O.\n\n![Cấu hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/c5d91fcf-efb2-40e6-b025-a7331d1726d7.png)",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T15:22:20.386Z"
+ },
+ {
+  "ma_bai": "HH00064",
+  "noi_dung": "Cho hình vuông ABCD.\n\n![Cấu hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/1e495d00-342d-4672-a3f2-945b11ccfe1a.png)",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T15:22:20.386Z"
+ },
+ {
+  "ma_bai": "HH00065",
+  "noi_dung": "Cho tam giác $ABC$ vuông tại A. M là trung điểm của BC",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T15:22:20.386Z"
+ },
+ {
+  "ma_bai": "HH00066",
+  "noi_dung": "Cho $\\triangle ABC$ nhọn có AM là trung tuyến. Trên tia đối của tia AM lấy điểm D sao cho $AM = MD$.",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T15:22:20.386Z"
+ },
+ {
+  "ma_bai": "HH00084",
+  "noi_dung": "Cho tam giác $ABC$ vuông ở $A$.\n\n![Cấu hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/a1bbf797-1ac4-4951-ad69-bdc4c7510f8d.png)",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T15:22:22.006Z"
+ },
+ {
+  "ma_bai": "HH00085",
+  "noi_dung": "test",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T15:22:22.006Z"
+ },
+ {
+  "ma_bai": "HH00086",
+  "noi_dung": "Cho tam giác $ABC$ vuông ở $A$.; Đường cao $AH$\n\n![Cấu hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/f11268c6-217a-427f-89ca-060a58ee682e.png)",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-17T15:22:22.006Z"
+ },
+ {
+  "ma_bai": "HH00087",
+  "noi_dung": "**1. Khái niệm mở đầu**\n**Mặt phẳng**: Người ta thường biểu diễn một mặt phẳng bằng một hình bình hành và dùng các chữ cái đặt trong dấu ngoặc đơn để đặt tên cho mặt phẳng ấy. Ví dụ: mặt phẳng $(P)$, mặt phẳng $(Q)$, mặt phẳng $(\\alpha)$, mặt phẳng $(\\beta)$,...\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/9ea3a705-5426-43d1-abcc-1205085a7c59.png)\n**Điểm thuộc mặt phẳng**: Với mỗi điểm $A$ và mặt phẳng $(P)$, chỉ xảy ra một trong hai khả năng sau:\nĐiểm $A$ thuộc mặt phẳng $(P)$, ta kí hiệu $A \\in (P)$\nĐiểm $A$ không thuộc mặt phẳng $(P)$ hay $A$ nằm ngoài $(P)$, ta kí hiệu $A \\notin (P)$\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/28725361-1094-45d0-8ee8-15af1de17699.png)\n**Hình biểu diễn của một hình trong không gian:**\na) Hình được vẽ trong mặt phẳng để giúp ta hình dung được về một hình trong không gian gọi là hình biểu diễn của hình không gian đó.\nb) Quy tắc vẽ hình biểu diễn của một hình trong không gian: Để việc vẽ hình biểu diễn của một hình trong không gian được thuận lợi và thống nhất, ta quy ước như sau:\nĐường thẳng được biểu diễn bởi đường thẳng. Đoạn thẳng được biểu diễn bởi đoạn thẳng.\nHai đường thẳng song song (hoặc cắt nhau) được biểu diễn bởi đường thẳng song song (hoặc cắt nhau).\nHình biểu diễn giữ nguyên tính liên thuộc giữa điểm với đường thẳng hoặc với đoạn thẳng.\nNhững đường nhìn thấy được vẽ bằng nét liền, những đường không nhìn thấy được vẽ bằng nét đứt.\n\n**2. Các tính chất thừa nhận của hình học không gian**\nDo thực tiễn, kinh nghiệm và quan sát, người ta thừa nhận một số tính chất sau của hình học không gian\nTính chất 1: Có một và chỉ một đường thẳng đi qua hai điểm phân biệt cho trước.\nTính chất 2: Có một và chỉ một mặt phẳng đi qua ba điểm không thẳng hàng cho trước.\nTính chất 3: Tồn tại bốn điểm không cùng thuộc một mặt phẳng.\nTính chất 4: Nếu một đường thẳng có hai điểm phân biệt cùng thuộc một mặt phẳng thì mọi điểm của đường thẳng đều thuộc mặt phẳng đó.\nTính chất 5: Nếu hai mặt phẳng phân biệt có một điểm chung thì chúng còn có một điểm chung khác nữa.\nNhận xét: Nếu hai mặt phẳng phân biệt có một điểm chung thì chúng có một đường thẳng chung đi qua điểm chung ấy. Đường thẳng đó được gọi là giao tuyến của hai mặt phẳng.\nTính chất 6: Trên mỗi mặt phẳng các, kết quả đã biết trong hình học phẳng đều đúng.\n**3. Một số cách xác định mặt phẳng**\nĐịnh lí 1: Cho điểm $A$ không thuộc đường thẳng $d$. Khi đó qua điểm $A$ và đường thẳng $d$ có một và chỉ một mặt phẳng, kí hiệu mp $(A,d)$ hoặc $(A,d)$.\nĐịnh lí 2: Cho hai đường thẳng $a$ và $b$ cắt nhau. Khi đó qua $a$ và $b$ có một và chỉ một mặt phẳng, kí hiệu là mp $(a,b)$.\nMột mặt phẳng hoàn toàn xác định khi biết:\nNó đi qua ba điểm không thẳng hàng.\nNó đi qua một điểm và một đường thẳng không đi qua điểm đó.\nNó chứa hai đường thẳng cắt nhau.\n**4. Hình chóp và hình tứ diện**\nHình chóp: Trong mặt phẳng $(\\alpha)$ cho đa giác lồi $A_1A_2...A_n$ ($n \\ge 3$). Lấy điểm $S$ nằm ngoài $(\\alpha)$. Lần lượt nối $S$ với các đỉnh $A_1, A_2,..., A_n$ ta được $n$ tam giác $SA_1A_2, SA_2A_3,..., SA_nA_1$. Hình gồm đa giác $A_1A_2...A_n$ và $n$ tam giác $SA_1A_2, SA_2A_3,..., SA_nA_1$ được gọi là hình chóp, kí hiệu là $S.A_1A_2...A_n$\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/9acd51aa-3a40-49e6-8553-a913003502ad.png)\nTa gọi $S$ là đỉnh, đa giác $A_1A_2...A_n$ là đáy, các đoạn $SA_1,SA_2,...,SA_n$ là các cạnh bên, $A_1A_2,A_2A_3,...,A_nA_1$ là các cạnh đáy, các tam giác $SA_1A_2,SA_2A_3,...,SA_nA_1$ là các mặt bên.\nNếu đáy của hình chóp là một tam giác, tứ giác, ngũ giác,... thì hình chóp tương ứng gọi là hình chóp tam giác, hình chóp tứ giác, hình chóp ngũ giác,...\nTứ diện: Cho bốn điểm $A,B,C,D$ không cùng nằm trong một mặt phẳng. Hình gồm bốn tam giác $ABC,ABD,ACD$ và $BCD$ được gọi là hình tứ diện $ABCD$ (hay gọi tắt là tứ diện), kí hiệu là $ABCD$.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/91c29e8c-c7a5-4be9-a45d-670a64771b85.png)",
+  "file_url": null,
+  "cap_nhat_at": "2026-09-19T02:23:22.189Z"
+ },
+ {
+  "ma_bai": "HH00105",
+  "noi_dung": "**1. Đường tròn**\nĐường tròn tâm $O$ bán kính $R$ $(R>0)$, kí hiệu $(O;R)$, là hình gồm tất cả các điểm cách điểm $O$ một khoảng bằng $R$. Khi không cần để ý đến bán kính ta kí hiệu là $(O)$.\nNếu $A$ là một điểm của đường tròn $(O)$ ta viết $A\\in(O)$; ta còn nói đường tròn $(O)$ đi qua điểm $A$.\nCho đường tròn $(O;R)$ và điểm $M$:\n- $M$ nằm trên đường tròn $(O;R)$ nếu $OM=R$;\n- $M$ nằm trong đường tròn $(O;R)$ nếu $OM<R$;\n- $M$ nằm ngoài đường tròn $(O;R)$ nếu $OM>R$.\nHình tròn tâm $O$ bán kính $R$ là hình gồm các điểm nằm trên và nằm trong đường tròn $(O;R)$.\n\n**2. Tính đối xứng của đường tròn**\nHai điểm $M$ và $M'$ đối xứng với nhau qua điểm $I$ nếu $I$ là trung điểm của đoạn thẳng $MM'$.\nHai điểm $M$ và $M'$ đối xứng với nhau qua đường thẳng $d$ nếu $d$ là đường trung trực của đoạn thẳng $MM'$.\nĐường tròn là hình có tâm đối xứng; tâm của đường tròn là tâm đối xứng của nó.\nĐường tròn là hình có trục đối xứng; mỗi đường thẳng đi qua tâm (mỗi đường kính) là một trục đối xứng của nó. Đường tròn có vô số trục đối xứng.\n\n**3. Chứng minh nhiều điểm cùng thuộc một đường tròn**\nChỉ ra một điểm cách đều tất cả các điểm đó.\nTrong tam giác vuông, đường trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền ⇒ ba đỉnh của tam giác vuông cùng thuộc đường tròn có tâm là trung điểm cạnh huyền.\nNgược lại, nếu điểm $A$ (khác $B$, $C$) nằm trên đường tròn đường kính $BC$ thì tam giác $ABC$ vuông tại $A$ (đường trung tuyến $AO$ bằng nửa cạnh $BC$).\nBốn đỉnh của hình chữ nhật (hình vuông) cùng thuộc đường tròn có tâm là giao điểm hai đường chéo.\n\n**4. Dây và đường kính**\nĐoạn thẳng nối hai điểm của đường tròn gọi là dây (dây cung). Dây đi qua tâm gọi là đường kính; đường kính của đường tròn bán kính $R$ có độ dài $2R$.\nTrong một đường tròn, đường kính là dây lớn nhất: nếu $AB$ là một dây của $(O;R)$ thì $AB\\le2R$; khi $AB$ không đi qua tâm thì $AB<2R$.\n\n**5. Góc ở tâm, cung và số đo cung**\nGóc ở tâm là góc có đỉnh trùng với tâm của đường tròn.\nKhi $\\widehat{AOB}$ không bẹt, cung nằm trong góc gọi là cung nhỏ, cung còn lại gọi là cung lớn. Khi $\\widehat{AOB}$ bẹt thì mỗi cung $AB$ là một nửa đường tròn. Ta nói góc $\\widehat{AOB}$ chắn cung $AB$.\nSố đo của cung nhỏ bằng số đo của góc ở tâm chắn cung đó. Số đo của cung lớn bằng $360^\\circ$ trừ số đo cung nhỏ có chung hai mút. Số đo nửa đường tròn bằng $180^\\circ$. Cả đường tròn là cung $360^\\circ$.\nKí hiệu số đo cung $AB$ là sđ$\\overset{\\frown}{AB}$. Hai cung trên một đường tròn bằng nhau nếu chúng có cùng số đo.\nNếu $C$ là một điểm nằm trên cung $AB$ thì sđ$\\overset{\\frown}{AB}=$ sđ$\\overset{\\frown}{AC}+$ sđ$\\overset{\\frown}{CB}$.",
+  "file_url": null,
+  "cap_nhat_at": "2026-10-09T07:31:25.621Z"
+ },
+ {
+  "ma_bai": "HH00106",
+  "noi_dung": "**1. Độ dài đường tròn**\nTỉ số giữa độ dài đường tròn và đường kính của nó luôn bằng một số không đổi, kí hiệu là $\\pi$ ($\\pi\\approx3{,}14$).\nĐộ dài (chu vi) $C$ của đường tròn bán kính $R$, đường kính $d=2R$: $C=\\pi d=2\\pi R$.\n\n**2. Độ dài cung tròn**\nĐộ dài $l$ của cung $n^\\circ$ trên đường tròn bán kính $R$: $l=\\dfrac{\\pi Rn}{180}$.\nTỉ số giữa độ dài cung $n^\\circ$ và độ dài đường tròn (cùng bán kính) bằng $\\dfrac{n}{360}$: $l=\\dfrac{n}{360}C$.\nTừ công thức suy ra: $R=\\dfrac{180\\,l}{\\pi n}$; $n=\\dfrac{180\\,l}{\\pi R}$.\n\n**3. Chú ý**\nNếu không nói gì thêm thì lấy $\\pi$ theo máy tính; kết quả làm tròn theo yêu cầu đề bài, chỉ làm tròn ở bước cuối.",
+  "file_url": null,
+  "cap_nhat_at": "2026-10-09T07:31:25.621Z"
+ },
+ {
+  "ma_bai": "HH00107",
+  "noi_dung": "**1. Diện tích hình tròn**\nDiện tích hình tròn bán kính $R$: $S=\\pi R^2$.\n\n**2. Hình quạt tròn**\nHình quạt tròn là phần hình tròn giới hạn bởi một cung tròn và hai bán kính đi qua hai mút của cung đó.\nDiện tích hình quạt tròn bán kính $R$ ứng với cung $n^\\circ$: $S_q=\\dfrac{\\pi R^2n}{360}=\\dfrac{l\\cdot R}{2}$ ($l$ là độ dài cung).\nTỉ số giữa diện tích hình quạt ứng với cung $n^\\circ$ và diện tích hình tròn (cùng bán kính) bằng $\\dfrac{n}{360}$.\n\n**3. Hình viên phân**\nHình viên phân là hình giới hạn bởi một cung tròn và dây căng cung đó.\n$S_{\\text{viên phân}}=S_{\\text{quạt }OAB}-S_{\\triangle OAB}$.\nDiện tích tam giác: $S=\\dfrac12a\\cdot h$ ($h$ là chiều cao ứng với cạnh $a$).\n\n**4. Hình vành khuyên**\nHình vành khuyên (hình vành khăn) là phần nằm giữa hai đường tròn cùng tâm $(O;R)$ và $(O;r)$ với $R>r$.\nDiện tích hình vành khuyên: $S=\\pi\\left(R^2-r^2\\right)$.",
+  "file_url": null,
+  "cap_nhat_at": "2026-10-09T07:31:25.621Z"
+ },
+ {
+  "ma_bai": "HH00108",
+  "noi_dung": "**1. Vị trí tương đối của đường thẳng và đường tròn**\nGọi $d$ là khoảng cách từ tâm $O$ đến đường thẳng $a$ ($d=OH$, $H$ là chân đường vuông góc kẻ từ $O$ đến $a$).\n- Đường thẳng $a$ và $(O;R)$ cắt nhau (có đúng hai điểm chung) khi $d<R$.\n- Đường thẳng $a$ và $(O;R)$ tiếp xúc nhau (có duy nhất một điểm chung $H$) khi $d=R$. Điểm chung gọi là tiếp điểm, đường thẳng $a$ gọi là tiếp tuyến của $(O)$ tại $H$.\n- Đường thẳng $a$ và $(O;R)$ không giao nhau (không có điểm chung) khi $d>R$.\n\n**2. Tính chất của tiếp tuyến**\nNếu một đường thẳng là tiếp tuyến của đường tròn thì nó vuông góc với bán kính đi qua tiếp điểm.\n\n**3. Dấu hiệu nhận biết tiếp tuyến**\nNếu một đường thẳng đi qua một điểm nằm trên đường tròn và vuông góc với bán kính đi qua điểm đó thì đường thẳng ấy là một tiếp tuyến của đường tròn.",
+  "file_url": null,
+  "cap_nhat_at": "2026-10-09T07:31:25.621Z"
+ },
+ {
+  "ma_bai": "HH00109",
+  "noi_dung": "**1. Hai tiếp tuyến cắt nhau của một đường tròn**\nNếu hai tiếp tuyến của đường tròn $(O)$ tại $A$ và $B$ cắt nhau tại điểm $P$ thì:\n- Điểm $P$ cách đều hai tiếp điểm: $PA=PB$;\n- $PO$ là tia phân giác của góc tạo bởi hai tiếp tuyến: $\\widehat{APO}=\\widehat{BPO}$;\n- $OP$ là tia phân giác của góc tạo bởi hai bán kính đi qua hai tiếp điểm: $\\widehat{AOP}=\\widehat{BOP}$.\n\n**2. Nhắc lại**\nTiếp tuyến vuông góc với bán kính tại tiếp điểm. Đường thẳng đi qua một điểm của đường tròn và vuông góc với bán kính tại điểm đó là tiếp tuyến.\nĐường tròn tiếp xúc với ba cạnh của tam giác gọi là đường tròn nội tiếp tam giác; tâm của nó cách đều ba cạnh.",
+  "file_url": null,
+  "cap_nhat_at": "2026-10-09T07:31:25.621Z"
+ },
+ {
+  "ma_bai": "HH00110",
+  "noi_dung": "**1. Hai đường tròn cắt nhau**\nHai đường tròn có đúng hai điểm chung gọi là hai đường tròn cắt nhau; hai điểm chung gọi là hai giao điểm.\n$(O;R)$ và $(O';R')$ với $R\\ge R'$ cắt nhau khi $R-R'<OO'<R+R'$.\n\n**2. Hai đường tròn tiếp xúc nhau**\nHai đường tròn có duy nhất một điểm chung gọi là hai đường tròn tiếp xúc nhau; điểm chung gọi là tiếp điểm.\nTiếp xúc ngoài khi $OO'=R+R'$; tiếp xúc trong khi $OO'=R-R'>0$.\nNếu hai đường tròn tiếp xúc nhau thì tiếp điểm nằm trên đường nối tâm (thẳng hàng với hai tâm).\n\n**3. Hai đường tròn không giao nhau**\nHai đường tròn không có điểm chung gọi là hai đường tròn không giao nhau.\nỞ ngoài nhau khi $OO'>R+R'$; đường tròn $(O)$ đựng đường tròn $(O')$ khi $OO'<R-R'$. Khi $O$ trùng $O'$ và $R\\ne R'$ ta có hai đường tròn đồng tâm.\n\n**4. Bảng tổng kết** ($R\\ge R'$)\nCắt nhau: 2 điểm chung, $R-R'<OO'<R+R'$.\nTiếp xúc ngoài: 1 điểm chung, $OO'=R+R'$.\nTiếp xúc trong: 1 điểm chung, $OO'=R-R'>0$.\nỞ ngoài nhau: 0 điểm chung, $OO'>R+R'$.\n$(O)$ đựng $(O')$: 0 điểm chung, $OO'<R-R'$.\n\n**5. Tiếp tuyến chung**\nĐường thẳng tiếp xúc với cả hai đường tròn gọi là tiếp tuyến chung của hai đường tròn đó.",
+  "file_url": null,
+  "cap_nhat_at": "2026-10-09T07:31:25.621Z"
+ },
+ {
+  "ma_bai": "HH00111",
+  "noi_dung": "**1. Tứ giác**\n\na) Tứ giác $ABCD$ là hình gồm bốn đoạn thẳng $AB, BC, CD, DA$, trong đó không có hai đoạn thẳng nào nằm trên cùng một đường thẳng.\nb) Tứ giác lồi là tứ giác mà hai đỉnh thuộc một cạnh bất kì luôn nằm về một phía của đường thẳng đi qua hai đỉnh còn lại. Khi nói đến tứ giác mà không chú thích gì thêm, ta hiểu đó là tứ giác lồi.\nc) Định lí: Tổng các góc của một tứ giác bằng $360^\\circ$.\n\n**2. Hình thang. Hình thang cân**\n\na) Hình thang là tứ giác có hai cạnh đối song song.\nb) Hình thang cân là hình thang có hai góc kề một đáy bằng nhau.\nc) Tính chất: Trong hình thang cân, hai cạnh bên bằng nhau; hai đường chéo bằng nhau.\nd) Dấu hiệu nhận biết: Hình thang có hai đường chéo bằng nhau là hình thang cân.\n\n**3. Hình bình hành**\n\na) Hình bình hành là tứ giác có các cạnh đối song song.\nb) Tính chất: Trong hình bình hành, các cạnh đối bằng nhau; các góc đối bằng nhau; hai đường chéo cắt nhau tại trung điểm của mỗi đường.\nc) Dấu hiệu nhận biết:\n- Tứ giác có các cạnh đối bằng nhau là hình bình hành.\n- Tứ giác có một cặp cạnh đối song song và bằng nhau là hình bình hành.\n- Tứ giác có các góc đối bằng nhau là hình bình hành.\n- Tứ giác có hai đường chéo cắt nhau tại trung điểm của mỗi đường là hình bình hành.\n\n**4. Hình chữ nhật**\n\na) Hình chữ nhật là tứ giác có bốn góc vuông.\nb) Tính chất: Trong hình chữ nhật, hai đường chéo bằng nhau và cắt nhau tại trung điểm của mỗi đường.\nc) Dấu hiệu nhận biết:\n- Hình bình hành có một góc vuông là hình chữ nhật.\n- Hình bình hành có hai đường chéo bằng nhau là hình chữ nhật.\nd) Trong tam giác vuông, đường trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền.\nNgược lại, nếu một tam giác có một đường trung tuyến bằng nửa cạnh tương ứng thì tam giác đó là tam giác vuông.\n\n**5. Hình thoi**\n\na) Hình thoi là tứ giác có bốn cạnh bằng nhau.\nb) Tính chất: Trong hình thoi, hai đường chéo vuông góc với nhau và là các đường phân giác của các góc của hình thoi.\nc) Dấu hiệu nhận biết:\n- Hình bình hành có hai cạnh kề bằng nhau là hình thoi.\n- Hình bình hành có hai đường chéo vuông góc với nhau là hình thoi.\n- Hình bình hành có một đường chéo là đường phân giác của một góc là hình thoi.\n\n**6. Hình vuông**\n\na) Hình vuông là tứ giác có bốn góc vuông và bốn cạnh bằng nhau.\nb) Tính chất: Trong hình vuông, hai đường chéo bằng nhau, vuông góc với nhau, cắt nhau tại trung điểm của mỗi đường và là các đường phân giác của các góc của hình vuông.\nc) Dấu hiệu nhận biết:\n- Hình chữ nhật có hai cạnh kề bằng nhau là hình vuông.\n- Hình chữ nhật có hai đường chéo vuông góc với nhau là hình vuông.\n- Hình chữ nhật có một đường chéo là đường phân giác của một góc là hình vuông.\n- Hình thoi có một góc vuông là hình vuông.\n- Hình thoi có hai đường chéo bằng nhau là hình vuông.",
+  "file_url": null,
+  "cap_nhat_at": "2026-10-09T07:32:22.048Z"
+ },
+ {
+  "ma_bai": "HH00112",
+  "noi_dung": "**1. Hai góc kề bù, hai góc đối đỉnh**\n\na) Hai góc kề bù là hai góc có một cạnh chung và hai cạnh còn lại là hai tia đối nhau. Hai góc kề bù có tổng bằng $180^\\circ$.\nb) Hai góc đối đỉnh là hai góc mà mỗi cạnh của góc này là tia đối của một cạnh của góc kia. Hai góc đối đỉnh thì bằng nhau.\nHai đường thẳng cắt nhau tạo thành hai cặp góc đối đỉnh và bốn cặp góc kề bù.\nGóc bẹt là góc có số đo $180^\\circ$.\n\n**2. Tia phân giác của một góc**\n\nTia $Oz$ là tia phân giác của góc $xOy$ nếu $Oz$ nằm giữa hai tia $Ox$, $Oy$ và $\\widehat{xOz}=\\widehat{zOy}=\\dfrac{1}{2}\\widehat{xOy}$.\nNếu tia $Oz$ nằm giữa hai tia $Ox$, $Oy$ thì $\\widehat{xOz}+\\widehat{zOy}=\\widehat{xOy}$.\n\n**3. Hai đường thẳng song song. Dấu hiệu nhận biết**\n\na) Khi đường thẳng $c$ cắt hai đường thẳng $a$, $b$ thì tạo ra các cặp góc so le trong, các cặp góc đồng vị và các cặp góc trong cùng phía.\nb) Dấu hiệu nhận biết hai đường thẳng song song: nếu đường thẳng $c$ cắt hai đường thẳng $a$, $b$ và có một cặp góc so le trong bằng nhau (hoặc một cặp góc đồng vị bằng nhau) thì $a \\parallel b$.\n\n**4. Tiên đề Euclid. Tính chất của hai đường thẳng song song**\n\na) Tiên đề Euclid: Qua một điểm nằm ngoài một đường thẳng, chỉ có một đường thẳng song song với đường thẳng đó.\nb) Nếu một đường thẳng cắt hai đường thẳng song song thì:\n- hai góc so le trong bằng nhau;\n- hai góc đồng vị bằng nhau;\n- hai góc trong cùng phía bù nhau (có tổng bằng $180^\\circ$).\nc) Hai đường thẳng phân biệt cùng song song với một đường thẳng thứ ba thì chúng song song với nhau.\nd) Hai đường thẳng phân biệt cùng vuông góc với một đường thẳng thứ ba thì chúng song song với nhau.\ne) Một đường thẳng vuông góc với một trong hai đường thẳng song song thì cũng vuông góc với đường thẳng còn lại.\n\n**5. Định lí và chứng minh định lí**\n\na) Định lí là một khẳng định được suy ra từ những khẳng định đúng đã biết. Định lí thường được phát biểu dưới dạng \"Nếu $\\ldots$ thì $\\ldots$\": phần sau chữ \"nếu\" là giả thiết (GT), phần sau chữ \"thì\" là kết luận (KL).\nb) Chứng minh một định lí là dùng lập luận để từ giả thiết suy ra kết luận.\nc) Hình bình hành là tứ giác có các cạnh đối song song.",
+  "file_url": null,
+  "cap_nhat_at": "2026-10-09T07:49:03.975Z"
+ }
+]

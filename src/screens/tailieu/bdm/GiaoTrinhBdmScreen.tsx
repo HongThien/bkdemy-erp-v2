@@ -1,48 +1,87 @@
 // Lá "Giáo trình (bản đồ mới)" — chức năng RIÊNG, song song lá "Giáo trình" cũ (Thùy 18/10: "2 lá khác nhau trên tree,
 // giống bản đồ cũ / mới; hoàn thiện cái mới rồi mới bỏ cái cũ"). Chỉ thấy + tạo giáo trình ban_do='moi'.
-// Hiện chỉ Toán · Đại (khuôn 4 tầng); Hình giải tích mở ở đợt 2 (spec-builder-ban-do-moi.md B6 bước 6).
-import { useEffect, useState } from 'react'
+// Toán · 3 nhánh như giáo trình cũ (Thùy 27/10 "Luồng làm giáo trình đang mới chỉ có Đại. Còn cần Giải tích và Hình nữa"):
+// Đại + Hình giải tích = BuilderBanDoMoi (nhóm bài · dạng bài) · Hình = HinhGiaoTrinhBuilder (bài học Học + mô hình Luyện).
+// ⭐ Thùy 21/10: CÙNG màn này phục vụ lá "Chuyên đề" (loai='chuyen_de') — builder y giáo trình nhưng KHÔNG đi với lớp nào
+// (không Gán lớp), mỗi chuyên đề 1 nhánh chọn lúc tạo: Đại (bản đồ mới) · Hình giải tích · Hình (Hình–Luyện) — 2 nhánh sau đang làm.
+// ⭐ Thùy 03/11 "luồng làm ET, giáo trình theo bản đồ mới cho KHTN giống với Toán": công tắc MÔN theo registry BDM_MON (Toán · KHTN).
+//   KHTN một vùng ⇒ không chọn nhánh; cùng BuilderBanDoMoi (hàm fn_tl_bdm_* đi theo môn, mig 202611031655). Lá cũ KHTN vẫn chạy song song.
+import { useEffect, useMemo, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../../lib/kho/api'
 import { listTaiLieu, createTaiLieu, deleteTaiLieu, type TaiLieu } from '../../../lib/tailieu'
+import { listLop, type Lop } from '../../../lib/nhansu'
 import { useStore } from '../../../store/useStore'
 import { useMonScope } from '../../../hooks/useMonScope'
 import { usePagedList } from '../../../hooks/usePagedList'
 import { Shell, Field, inp } from '../../kho/ui'
 import BuilderBanDoMoi from './BuilderBanDoMoi'
+import { BDM_DS_MON, BDM_MON, type BdmMon } from '../../../lib/kho/banDoMoi'
+import ChuyenDeHinhBuilder from './ChuyenDeHinhBuilder'
 
 const PAGE = 20
 const ALL = '__all__'
-const MON = 'Toán'
+const KEY_MON = 'bk.gtBdm.mon'   // môn đang xem — tiện ích riêng người xem
+function monDaNho(): BdmMon { try { const m = localStorage.getItem(KEY_MON); return m && (BDM_DS_MON as string[]).includes(m) ? m as BdmMon : 'Toán' } catch { return 'Toán' } }
 function fmtNgay(iso?: string): string {
   if (!iso) return '—'
   return new Date(iso).toLocaleDateString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit', year: 'numeric' })
 }
 
-export default function GiaoTrinhBdmScreen() {
+type LoaiTL = 'giao_trinh' | 'chuyen_de'
+const TEN: Record<LoaiTL, { mot: string; nhieu: string }> = { giao_trinh: { mot: 'giáo trình', nhieu: 'Giáo trình' }, chuyen_de: { mot: 'chuyên đề', nhieu: 'Chuyên đề' } }
+
+export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: LoaiTL }) {
+  const T = TEN[loai]
   const [khoi, setKhoi] = useState<string>(DEFAULT_KHOI)
+  const [mon, setMonRaw] = useState<BdmMon>(monDaNho)
+  const setMon = (m: BdmMon) => { setMonRaw(m); try { localStorage.setItem(KEY_MON, m) } catch { /* bỏ qua */ } }
   const [creating, setCreating] = useState(false)
-  const [openId, setOpenId] = useState<string | null>(null)
+  const [openId, setOpenIdRaw] = useState<string | null>(null)
+  const [openHinh, setOpenHinh] = useState(false)   // nhánh Hình ⇒ builder Hình riêng (chuyên đề: Luyện · giáo trình: Học + Luyện)
+  const setOpenId = (id: string | null, nhanh?: string | null) => { setOpenIdRaw(id); setOpenHinh(nhanh === 'hinh') }
   const [qLive, setQLive] = useState('')
   const [q, setQ] = useState('')
   useEffect(() => { const t = setTimeout(() => setQ(qLive), 300); return () => clearTimeout(t) }, [qLive])
+  // ⭐ Thùy 28/10: giáo trình chuyển từ cũ (phase=0) ẨN khỏi danh sách giáo trình mới; chọn "Lưu trữ" mới thấy.
+  //   Giữ 1 chiều rõ: Hiện tại (giáo trình soạn thẳng) · Lưu trữ (29 bản chuyển bản đồ cũ → mới, 28/10, mig 202610281051).
+  const [luuTru, setLuuTru] = useState(false)
   const me = useStore((s) => s.me)
   const { allowedMons, isAll } = useMonScope()
-  const coQuyen = isAll || allowedMons.includes(MON)
+  const coQuyen = isAll || allowedMons.includes(mon)
+  const dsMon = BDM_DS_MON.filter((m) => isAll || allowedMons.includes(m))
+  // người chỉ được phân KHTN (vd trưởng bộ môn KHTN) ⇒ vào thẳng KHTN, không kẹt ở Toán
+  useEffect(() => { if (dsMon.length && !dsMon.includes(mon)) setMonRaw(dsMon[0]) }, [dsMon.join('|')]) // eslint-disable-line react-hooks/exhaustive-deps
   const profileLoading = !isAll && me === null
+  // Map lop_id → ten_lop để hiện chip "Lớp 7S2" trên card (card hiện tên trước, không chờ fetch chi tiết).
+  const [lopAll, setLopAll] = useState<Lop[]>([])
+  useEffect(() => { listLop().then((ls) => setLopAll(ls.filter((l) => l.mon === mon))).catch(() => {}) }, [mon])
+  const lopMap = useMemo(() => new Map(lopAll.map((l) => [l.id, l.ten_lop])), [lopAll])
 
   const { rows: list, loading, loadingMore, hasMore, err, reload, loadMore } = usePagedList<TaiLieu>(
-    async ({ before, search }) => coQuyen ? listTaiLieu(khoi === ALL ? undefined : khoi, 'giao_trinh', MON, null, { before, search, limit: PAGE, banDo: 'moi' }) : [],
+    // mọi nhánh (Đại · HGT · Hình) — cả giáo trình lẫn chuyên đề
+    async ({ before, search }) => coQuyen ? listTaiLieu(khoi === ALL ? undefined : khoi, loai, mon, undefined, { before, search, limit: PAGE, banDo: 'moi', luuTru }) : [],
     (t) => t.created_at,
-    PAGE, q, [khoi, coQuyen],
+    PAGE, q, [khoi, coQuyen, loai, luuTru, mon],
   )
 
-  if (openId) return <BuilderBanDoMoi id={openId} onClose={() => { setOpenId(null); reload() }} />
+  if (openId && openHinh) return <ChuyenDeHinhBuilder id={openId} laGiaoTrinh={loai === 'giao_trinh'} onClose={() => { setOpenId(null); reload() }} />
+  if (openId) return <BuilderBanDoMoi id={openId} laChuyenDe={loai === 'chuyen_de'} onClose={() => { setOpenId(null); reload() }} />
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex items-center gap-4 border-b border-slate-200 bg-white px-6 py-2.5">
-        <span className="rounded bg-emerald-50 px-2 py-0.5 text-[12px] font-semibold text-emerald-700">🆕 Giáo trình · bản đồ mới</span>
-        <span className="text-[12px] text-slate-400">Toán · Đại — nhóm bài · dạng bài</span>
+        <span className="rounded bg-emerald-50 px-2 py-0.5 text-[12px] font-semibold text-emerald-700">🆕 {T.nhieu} · bản đồ mới</span>
+        {dsMon.length > 1 && (
+          <div className="inline-flex overflow-hidden rounded-md border border-slate-200 text-[12px] font-medium">
+            {dsMon.map((m, i) => <button key={m} onClick={() => setMon(m)} className={`px-2.5 py-1 transition ${i ? 'border-l border-slate-200' : ''} ${mon === m ? 'bg-emerald-600 text-white' : 'bg-white text-slate-500 hover:bg-slate-50'}`}>{m}</button>)}
+          </div>
+        )}
+        <span className="text-[12px] text-slate-400">{loai === 'chuyen_de' ? 'Tài liệu độc lập, không gắn lớp' : mon}{BDM_MON[mon].coVung ? ' — Đại · Hình giải tích · Hình' : ''}</span>
+        {/* ⭐ Thùy 28/10: ẨN giáo trình chuyển từ bản đồ cũ (phase=0) khỏi lá chính; bấm "Lưu trữ" mới hiện. */}
+        <div className="ml-1 inline-flex overflow-hidden rounded-md border border-slate-200 text-[12px] font-medium">
+          <button onClick={() => setLuuTru(false)} className={`px-2.5 py-1 transition ${!luuTru ? 'bg-indigo-600 text-white' : 'bg-white text-slate-500 hover:bg-slate-50'}`}>Hiện tại</button>
+          <button onClick={() => setLuuTru(true)} className={`border-l border-slate-200 px-2.5 py-1 transition ${luuTru ? 'bg-violet-600 text-white' : 'bg-white text-slate-500 hover:bg-slate-50'}`} title="29 giáo trình cũ đã chuyển sang bản đồ mới (phase 0, 28/10)">Lưu trữ</button>
+        </div>
         <div className="ml-auto flex items-center gap-1">
           <input value={qLive} onChange={(e) => setQLive(e.target.value)} placeholder="Tìm theo tên…" className="mr-2 h-7 w-44 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
           <span className="mr-1 text-[12px] font-semibold uppercase tracking-wider text-slate-600">Khối</span>
@@ -50,34 +89,40 @@ export default function GiaoTrinhBdmScreen() {
           {KHOI_OPTIONS.map((k) => (
             <button key={k} onClick={() => setKhoi(k)} className={`h-7 min-w-7 rounded-md px-1.5 text-xs font-semibold transition ${khoi === k ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`}>{k}</button>
           ))}
-          {coQuyen && <button onClick={() => setCreating(true)} className="ml-3 whitespace-nowrap rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Tạo giáo trình</button>}
+          {coQuyen && !luuTru && <button onClick={() => setCreating(true)} className="ml-3 whitespace-nowrap rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Tạo {T.mot}</button>}
         </div>
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {profileLoading ? <p className="text-sm text-slate-400">Đang tải hồ sơ…</p>
-          : !coQuyen ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Bạn chưa được phân môn Toán — liên hệ quản trị để soạn giáo trình.</div>
+          : !coQuyen ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Bạn chưa được phân môn {mon} — liên hệ quản trị để soạn {T.mot}.</div>
           : loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
           : list.length === 0 ? (
             <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">
-              {qLive.trim() ? <>Không có giáo trình khớp “{qLive}”.</> : <>Chưa có giáo trình bản đồ mới {khoi === ALL ? '' : `khối ${khoi}`}. Bấm <b className="text-slate-600">+ Tạo giáo trình</b>.</>}
+              {qLive.trim() ? <>Không có {T.mot} khớp “{qLive}”.</>
+                : luuTru ? <>Chưa có {T.mot} ở lưu trữ {khoi === ALL ? '' : `khối ${khoi}`}.</>
+                : <>Chưa có {T.mot} bản đồ mới {khoi === ALL ? '' : `khối ${khoi}`}. Bấm <b className="text-slate-600">+ Tạo {T.mot}</b>.</>}
             </div>
           ) : (
             <>
-              <div className="mb-3 text-[12px] text-slate-400">{list.length} giáo trình</div>
+              <div className="mb-3 text-[12px] text-slate-400">{list.length} {T.mot}</div>
               <div className="grid grid-cols-1 gap-3 lg:grid-cols-2 2xl:grid-cols-3">
                 {list.map((t) => (
                   <div key={t.id} className="flex flex-col rounded-xl border border-slate-200 bg-white p-4">
                     <div className="flex items-start gap-2">
                       <div className="min-w-0 flex-1 text-[16px] font-semibold text-slate-900">{t.ten}</div>
                       {t.luu_tru_tu && <span className="shrink-0 rounded bg-amber-50 px-1.5 py-0.5 text-[10.5px] font-semibold text-amber-700">Lưu trữ</span>}
+                      {t.phase === 0 && <span className="shrink-0 rounded bg-violet-50 px-1.5 py-0.5 text-[10.5px] font-semibold text-violet-700">Phase 0</span>}
                     </div>
-                    <div className="mt-1 text-[12px] text-slate-400">Khối {t.khoi}</div>
+                    <div className="mt-1 text-[12px] text-slate-500">
+                      {t.lop_id && <span className="mr-1 rounded bg-sky-50 px-1.5 py-0.5 text-[10.5px] font-semibold text-sky-700">Lớp {lopMap.get(t.lop_id) ?? '…'}</span>}
+                      Khối {t.khoi} · {!BDM_MON[mon].coVung ? mon : t.nhanh === 'hinh' ? 'Hình' : t.nhanh === 'hinh_gt' ? 'Hình giải tích' : 'Đại số'}
+                    </div>
                     <div className="mt-1 text-[11px] text-slate-400">Tạo {fmtNgay(t.created_at)}{t.updated_at && t.updated_at !== t.created_at ? ` · sửa ${fmtNgay(t.updated_at)}` : ''}</div>
                     <div className="mt-3 flex gap-2">
-                      <button onClick={() => setOpenId(t.id)} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500">Mở / Xuất</button>
-                      <button onClick={async () => { if (confirm(`Xoá giáo trình "${t.ten}"?`)) { await deleteTaiLieu(t.id); reload() } }} className="rounded-md border border-slate-200 px-3 py-1.5 text-[13px] text-slate-500 hover:border-rose-300 hover:text-rose-600">Xoá</button>
+                      <button onClick={() => setOpenId(t.id, t.nhanh)} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500">Mở / Xuất</button>
+                      <button onClick={async () => { if (confirm(`Xoá ${T.mot} "${t.ten}"?`)) { await deleteTaiLieu(t.id); reload() } }} className="rounded-md border border-slate-200 px-3 py-1.5 text-[13px] text-slate-500 hover:border-rose-300 hover:text-rose-600">Xoá</button>
                     </div>
                   </div>
                 ))}
@@ -91,29 +136,74 @@ export default function GiaoTrinhBdmScreen() {
           )}
       </div>
 
-      {creating && <TaoMoi khoi={khoi === ALL ? DEFAULT_KHOI : khoi} onClose={() => setCreating(false)} onCreated={(id) => { setCreating(false); reload(); setOpenId(id) }} />}
+      {creating && <TaoMoi loai={loai} mon={mon} khoi={khoi === ALL ? DEFAULT_KHOI : khoi} lopAll={lopAll} onClose={() => setCreating(false)} onCreated={(id, nhanh) => { setCreating(false); reload(); setOpenId(id, nhanh) }} />}
     </div>
   )
 }
 
-function TaoMoi({ khoi, onClose, onCreated }: { khoi: string; onClose: () => void; onCreated: (id: string) => void }) {
+// Nhánh của chuyên đề (chọn 1 lần lúc tạo). Đại + HGT: builder bản đồ mới (HGT mig 202610211629); Hình: ChuyenDeHinhBuilder (mig 202610211633).
+const NHANH_CD: { id: string | null; ten: string; mo: boolean; ghi: string }[] = [
+  { id: null, ten: 'Đại số', mo: true, ghi: 'nhóm bài · dạng bài (bản đồ mới)' },
+  { id: 'hinh_gt', ten: 'Hình giải tích', mo: true, ghi: 'nhóm bài · dạng bài (bản đồ mới)' },
+  { id: 'hinh', ten: 'Hình', mo: true, ghi: 'Hình–Luyện: mô hình → bài trong kho (trọn ý)' },
+]
+
+function TaoMoi({ loai, mon, khoi, lopAll, onClose, onCreated }: { loai: LoaiTL; mon: BdmMon; khoi: string; lopAll: Lop[]; onClose: () => void; onCreated: (id: string, nhanh: string | null) => void }) {
+  const T = TEN[loai]
+  const [nhanh, setNhanh] = useState<string | null>(null)
   const [ten, setTen] = useState('')
+  // ⭐ Thùy 28/10: giáo trình đi theo LỚP — bắt buộc chọn lớp lúc tạo. Chuyên đề KHÔNG gắn lớp (giữ nguyên).
+  const [lopId, setLopId] = useState<string | null>(null)
+  const lopKhoi = useMemo(() => lopAll.filter((l) => l.khoi === khoi && l.trang_thai === 'dang_hoc').sort((a, b) => a.ten_lop.localeCompare(b.ten_lop)), [lopAll, khoi])
+  const canCapLop = loai === 'giao_trinh'
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   async function create() {
     if (!ten.trim()) return
+    if (canCapLop && !lopId) { setError('Giáo trình phải gắn 1 lớp. Chọn lớp ở trên.'); return }
     setBusy(true); setError(null)
-    try { const tl = await createTaiLieu({ ten: ten.trim(), khoi, mon: MON, nhanh: null, ban_do: 'moi' }); onCreated(tl.id) }
+    try { const tl = await createTaiLieu({ loai, ten: ten.trim(), khoi, mon, nhanh, ban_do: 'moi', lopId: canCapLop ? lopId : null }); onCreated(tl.id, nhanh) }
     catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
   }
+  // Gợi ý tên GT theo lớp đã chọn (chỉ khi người dùng chưa gõ tên).
+  useEffect(() => {
+    if (!canCapLop || !lopId) return
+    const l = lopKhoi.find((x) => x.id === lopId); if (!l) return
+    if (!ten.trim()) setTen(`Giáo trình ${l.ten_lop}`)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lopId])
   return (
-    <Shell title={`Tạo giáo trình bản đồ mới · Toán · Khối ${khoi}`} onClose={onClose}>
-      <Field label="Tên giáo trình"><input value={ten} onChange={(e) => setTen(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && create()} className={inp} placeholder="vd: Giáo trình 7A" autoFocus /></Field>
-      <div className="mb-3 text-[11px] text-slate-400">Tạo xong vào builder → <b>+ Thêm buổi</b> → <b>+ Chọn nhóm / dạng bài</b>.</div>
+    <Shell title={`Tạo ${T.mot} bản đồ mới · ${mon} · Khối ${khoi}`} onClose={onClose}>
+      {BDM_MON[mon].coVung && (   // KHTN một vùng ⇒ không chọn nhánh (nhanh = null như giáo trình KHTN cũ)
+        <Field label="Nhánh">
+          <div className="flex flex-col gap-1.5">
+            {NHANH_CD.map((n) => ({ ...n, ghi: loai === 'giao_trinh' && n.id === 'hinh' ? 'Học: bài học (lý thuyết + câu) · Luyện: mô hình → bài' : n.ghi })).map((n) => (
+              <label key={n.ten} className={`flex items-center gap-2 rounded-md border px-2.5 py-1.5 text-[13px] ${!n.mo ? 'cursor-not-allowed border-slate-100 text-slate-300' : nhanh === n.id ? 'border-indigo-400 bg-indigo-50 text-indigo-800' : 'border-slate-200 text-slate-700'}`}>
+                <input type="radio" disabled={!n.mo} checked={nhanh === n.id} onChange={() => setNhanh(n.id)} />
+                <b className="font-semibold">{n.ten}</b><span className="text-[11px] text-slate-400">· {n.ghi}</span>
+              </label>
+            ))}
+          </div>
+        </Field>
+      )}
+      {canCapLop && (
+        <Field label="Lớp (bắt buộc)">
+          {lopKhoi.length === 0 ? (
+            <div className="rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-[12px] text-amber-700">Khối {khoi} chưa có lớp đang học. Vào Nhân sự → Lớp để tạo trước.</div>
+          ) : (
+            <select value={lopId ?? ''} onChange={(e) => setLopId(e.target.value || null)} className={inp}>
+              <option value="">— Chọn lớp —</option>
+              {lopKhoi.map((l) => <option key={l.id} value={l.id}>{l.ten_lop}{l.bac ? ` · bậc ${l.bac}` : ''}</option>)}
+            </select>
+          )}
+        </Field>
+      )}
+      <Field label={`Tên ${T.mot}`}><input value={ten} onChange={(e) => setTen(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && create()} className={inp} placeholder={loai === 'chuyen_de' ? 'vd: Chuyên đề Số hữu tỉ' : 'vd: Giáo trình 7A'} autoFocus /></Field>
+      <div className="mb-3 text-[11px] text-slate-400">Tạo xong vào builder → <b>+ Thêm {loai === 'chuyen_de' ? 'phần' : 'buổi'}</b> → <b>+ Chọn nhóm / dạng bài</b>, hoặc <b>📥 Lấy bài từ lớp khác</b> để copy từ giáo trình lớp cùng hệ.{loai === 'chuyen_de' && ' Chuyên đề không gắn lớp — in / xuất PDF dùng ở đâu cũng được.'}</div>
       {error && <p className="mb-2 text-xs text-rose-600">{error}</p>}
       <div className="flex justify-end gap-2">
         <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
-        <button onClick={create} disabled={!ten.trim() || busy} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang tạo…' : 'Tạo'}</button>
+        <button onClick={create} disabled={!ten.trim() || (canCapLop && !lopId) || busy} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang tạo…' : 'Tạo'}</button>
       </div>
     </Shell>
   )

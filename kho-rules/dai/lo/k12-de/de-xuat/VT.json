@@ -1,0 +1,543 @@
+{
+ "chuong": "VT",
+ "chuyen_de": [
+  {
+   "id": "C1",
+   "ten": "Vectơ trong không gian (trên hình, chưa có toạ độ)",
+   "mo_ta": "Phép toán, phân tích và tích vô hướng của vectơ trên hình hộp, lăng trụ, chóp, tứ diện — không dùng hệ trục. ~666 câu.",
+   "nhom": [
+    {
+     "id": "C1.1",
+     "ten": "Vectơ và độ dài vectơ trên hình khối",
+     "dang": [
+      {
+       "id": "C1.1.1",
+       "ten": "Nhận biết vectơ bằng nhau, cùng phương, đối nhau trên hình khối",
+       "mo_ta": "Đề cho hình hộp/lăng trụ/chóp, hỏi vectơ nào bằng, cùng phương, ngược hướng với vectơ cho trước. Đọc hướng và độ dài cạnh trên hình.",
+       "tu": [
+        "P1.1.1"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 1
+      },
+      {
+       "id": "C1.1.2",
+       "ten": "Tính độ dài tổng, hiệu hai vectơ trên hình đặc biệt",
+       "mo_ta": "Đề hỏi |a+b|, |a−b| trên lập phương, tứ diện đều… Rút gọn về một vectơ rồi tính độ dài đoạn (Pythagore, đường chéo).",
+       "tu": [
+        "P1.1.2"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      }
+     ]
+    },
+    {
+     "id": "C1.2",
+     "ten": "Cộng, trừ vectơ và nhân vectơ với một số",
+     "dang": [
+      {
+       "id": "C1.2.1",
+       "ten": "Rút gọn tổng, hiệu vectơ trong hình hộp, lăng trụ",
+       "mo_ta": "Đề cho hình hộp ABCD.A'B'C'D' (hoặc lăng trụ), hỏi tổng/hiệu vectơ bằng vectơ nào. Dùng quy tắc hình hộp, hình bình hành ở các mặt bên.",
+       "tu": [
+        "P1.2.1",
+        "P1.2.2"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 1
+      },
+      {
+       "id": "C1.2.2",
+       "ten": "Rút gọn tổng, hiệu vectơ trong hình chóp, tứ diện",
+       "mo_ta": "Đề cho hình chóp/tứ diện, hỏi đẳng thức vectơ đúng hoặc rút gọn biểu thức. Dùng quy tắc ba điểm, quy tắc trừ, chèn điểm; gồm cả câu chứng minh đẳng thức vectơ.",
+       "tu": [
+        "P1.2.3",
+        "P1.2.4"
+       ],
+       "moi": [
+        "quy tắc ba điểm cộng vectơ"
+       ],
+       "hiem": false,
+       "muc_do": 1
+      },
+      {
+       "id": "C1.2.3",
+       "ten": "Dùng hệ thức trung điểm, trọng tâm trên hình khối",
+       "mo_ta": "Đề có trung điểm, trọng tâm tam giác/tứ diện, điểm chia đoạn theo tỉ số; hỏi đẳng thức vectơ, tỉ số hoặc ba điểm thẳng hàng. Dùng MA+MB=2MI, GA+GB+GC=0, vectơ cùng phương.",
+       "tu": [
+        "P1.2.5",
+        "P1.2.7"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      },
+      {
+       "id": "C1.2.4",
+       "ten": "Phân tích một vectơ theo ba vectơ không đồng phẳng",
+       "mo_ta": "Đề đặt a, b, c là ba vectơ cạnh, yêu cầu biểu diễn vectơ khác theo a, b, c (tìm hệ số x+y+z…). Gồm cả câu nhận biết/chứng minh ba vectơ đồng phẳng.",
+       "tu": [
+        "P1.2.6",
+        "P1.3.1",
+        "P1.3.2"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      }
+     ]
+    },
+    {
+     "id": "C1.3",
+     "ten": "Tích vô hướng và góc giữa hai vectơ trên hình",
+     "dang": [
+      {
+       "id": "C1.3.1",
+       "ten": "Tính tích vô hướng khi biết độ dài và góc",
+       "mo_ta": "Đề cho |a|, |b| và góc (a,b) (hoặc lực và quãng đường dịch chuyển), tính a·b, công của lực, hoặc khai triển (a+b)² rồi suy độ dài.",
+       "tu": [
+        "P1.4.1",
+        "P1.4.5",
+        "P1.5.2"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 1
+      },
+      {
+       "id": "C1.3.2",
+       "ten": "Tính tích vô hướng hai vectơ trên hình khối",
+       "mo_ta": "Đề cho hình lập phương/tứ diện đều/chóp, tính AB·CD… Chuyển về hai vectơ chung gốc hoặc phân tích theo các cạnh đã biết góc.",
+       "tu": [
+        "P1.4.2"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      },
+      {
+       "id": "C1.3.3",
+       "ten": "Tính góc giữa hai vectơ trên hình khối",
+       "mo_ta": "Đề hỏi góc (AB, CD) trên hình đặc biệt, hoặc cho tích vô hướng rồi hỏi góc, hoặc chứng minh hai đường vuông góc. Tịnh tiến về chung gốc hoặc dùng cos = a·b/(|a||b|).",
+       "tu": [
+        "P1.4.3",
+        "P1.4.4",
+        "P1.4.6"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "C2",
+   "ten": "Hệ trục toạ độ trong không gian",
+   "mo_ta": "Toạ độ điểm và vectơ trong Oxyz; hình chiếu, đối xứng; gắn hệ trục vào hình khối. ~236 câu. (Chỉ 2 nhóm vì đề thi hỏi tập trung vào 4 việc này.)",
+   "nhom": [
+    {
+     "id": "C2.1",
+     "ten": "Toạ độ của điểm và của vectơ",
+     "dang": [
+      {
+       "id": "C2.1.1",
+       "ten": "Đọc toạ độ vectơ viết theo i, j, k",
+       "mo_ta": "Đề cho u = 2i − 3k… hoặc OM = …, hỏi toạ độ vectơ/điểm. Đọc hệ số của i, j, k (thiếu thành phần là 0).",
+       "tu": [
+        "P2.1.3"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 1
+      },
+      {
+       "id": "C2.1.2",
+       "ten": "Tìm hình chiếu, điểm đối xứng qua trục, mặt phẳng toạ độ",
+       "mo_ta": "Đề cho M(a;b;c), hỏi hình chiếu/điểm đối xứng trên Ox, (Oxy)…, hoặc vị trí của điểm so với trục, mặt phẳng toạ độ. Giữ/đổi dấu/xoá đúng thành phần.",
+       "tu": [
+        "P2.1.2",
+        "P2.1.1"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 1
+      }
+     ]
+    },
+    {
+     "id": "C2.2",
+     "ten": "Gắn hệ trục toạ độ vào hình khối",
+     "dang": [
+      {
+       "id": "C2.2.1",
+       "ten": "Gắn hệ trục vào hình hộp chữ nhật, lập phương",
+       "mo_ta": "Đề cho hình hộp/lập phương đã đặt Oxyz (hoặc yêu cầu đặt), hỏi toạ độ đỉnh, trung điểm, vectơ. Đặt gốc tại một đỉnh, ba cạnh làm ba trục.",
+       "tu": [
+        "P2.2.1"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      },
+      {
+       "id": "C2.2.2",
+       "ten": "Gắn hệ trục vào hình chóp, tứ diện; toạ độ đỉnh",
+       "mo_ta": "Đề cho chóp/tứ diện có ba cạnh vuông góc hoặc có góc cho trước, hỏi toạ độ đỉnh. Chọn gốc tại chân đường cao/đỉnh vuông, tính toạ độ bằng lượng giác.",
+       "tu": [
+        "P2.2.2",
+        "P2.2.3"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "C3",
+   "ten": "Biểu thức toạ độ của các phép toán vectơ",
+   "mo_ta": "Tính toán bằng toạ độ: phép toán vectơ, tìm điểm, độ dài, tích vô hướng, tích có hướng, cực trị. ~465 câu.",
+   "nhom": [
+    {
+     "id": "C3.1",
+     "ten": "Phép toán vectơ bằng toạ độ",
+     "dang": [
+      {
+       "id": "C3.1.1",
+       "ten": "Tính toạ độ tổng, hiệu, tích vectơ với một số",
+       "mo_ta": "Đề cho a, b (có thể c) bằng toạ độ, hỏi toạ độ 2a − 3b…, hoặc tìm vectơ x thoả đẳng thức. Cộng/trừ/nhân từng thành phần.",
+       "tu": [
+        "P3.1.1",
+        "P3.1.3"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 1
+      },
+      {
+       "id": "C3.1.2",
+       "ten": "Tính toạ độ vectơ AB từ hai điểm",
+       "mo_ta": "Đề cho A, B, hỏi toạ độ AB (hoặc ngược lại cho AB và A tìm B). Lấy toạ độ ngọn trừ toạ độ gốc.",
+       "tu": [
+        "P3.2.1"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 1
+      },
+      {
+       "id": "C3.1.3",
+       "ten": "Xét hai vectơ cùng phương, ba điểm thẳng hàng",
+       "mo_ta": "Đề hỏi tham số để a, b cùng phương hoặc A, B, C thẳng hàng. Lập tỉ lệ các thành phần (hoặc AB = k·AC).",
+       "tu": [
+        "P3.1.2"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      }
+     ]
+    },
+    {
+     "id": "C3.2",
+     "ten": "Tìm toạ độ điểm",
+     "dang": [
+      {
+       "id": "C3.2.1",
+       "ten": "Tìm toạ độ trung điểm, trọng tâm",
+       "mo_ta": "Đề cho các đỉnh, hỏi trung điểm đoạn, trọng tâm tam giác/tứ diện (hoặc ngược lại tìm đỉnh khi biết trọng tâm). Trung bình cộng toạ độ.",
+       "tu": [
+        "P3.2.2"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 1
+      },
+      {
+       "id": "C3.2.2",
+       "ten": "Tìm đỉnh còn lại của hình bình hành, hình hộp, hình thang",
+       "mo_ta": "Đề cho ba đỉnh hình bình hành (hoặc bốn đỉnh hình hộp, hình thang có điều kiện), tìm đỉnh còn lại. Lập đẳng thức vectơ AB = DC (hoặc AB = k·DC).",
+       "tu": [
+        "P3.2.3"
+       ],
+       "moi": [
+        "hình thang vuông trong Oxyz: tìm đỉnh còn lại từ diện tích",
+        "tìm toạ độ đỉnh hình thang cân biết ba đỉnh"
+       ],
+       "hiem": false,
+       "muc_do": 2
+      },
+      {
+       "id": "C3.2.3",
+       "ten": "Tìm điểm chia đoạn theo tỉ số, điểm thoả đẳng thức vectơ",
+       "mo_ta": "Đề cho MA = k·MB, chân phân giác, điểm trên trục/mặt phẳng toạ độ chia đoạn, hoặc điểm thoả đẳng thức vectơ. Gọi M(x;y;z), lập phương trình theo từng thành phần.",
+       "tu": [
+        "P3.2.4",
+        "P3.2.5"
+       ],
+       "moi": [
+        "chân phân giác trong tam giác Oxyz và bán kính ngoại tiếp"
+       ],
+       "hiem": false,
+       "muc_do": 2
+      }
+     ]
+    },
+    {
+     "id": "C3.3",
+     "ten": "Độ dài vectơ và khoảng cách giữa hai điểm",
+     "dang": [
+      {
+       "id": "C3.3.1",
+       "ten": "Tính độ dài vectơ, khoảng cách giữa hai điểm",
+       "mo_ta": "Đề hỏi |u|, AB, chu vi hoặc loại tam giác. Dùng căn tổng bình phương các thành phần.",
+       "tu": [
+        "P3.3.1",
+        "P3.3.2"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 1
+      },
+      {
+       "id": "C3.3.2",
+       "ten": "Tìm điểm cách đều hoặc có khoảng cách cho trước",
+       "mo_ta": "Đề hỏi điểm trên trục/mặt phẳng toạ độ cách đều hai điểm, hoặc cách một điểm một khoảng cho trước. Gọi toạ độ ẩn, bình phương hai vế, giải hệ. Dạng hiếm nhưng cách giải riêng (cùng cách với bài GPS ở C4.3.2).",
+       "tu": [
+        "P3.3.3"
+       ],
+       "moi": [],
+       "hiem": true,
+       "muc_do": 2
+      }
+     ]
+    },
+    {
+     "id": "C3.4",
+     "ten": "Tích vô hướng, góc, vuông góc và tích có hướng theo toạ độ",
+     "dang": [
+      {
+       "id": "C3.4.1",
+       "ten": "Tính tích vô hướng và góc giữa hai vectơ theo toạ độ",
+       "mo_ta": "Đề cho toạ độ hai vectơ (hoặc ba điểm, bốn đỉnh), hỏi a·b, cos góc, góc trong tam giác/tứ diện. Dùng x1x2+y1y2+z1z2 và công thức cos.",
+       "tu": [
+        "P3.4.1",
+        "P3.4.3"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      },
+      {
+       "id": "C3.4.2",
+       "ten": "Dùng điều kiện vuông góc tìm tham số, tìm điểm",
+       "mo_ta": "Đề hỏi m để a ⊥ b, toạ độ chân đường cao, trực tâm, hoặc điểm thoả các hệ thức tích vô hướng. Cho tích vô hướng bằng 0 (hoặc giá trị cho trước), giải phương trình/hệ.",
+       "tu": [
+        "P3.4.2"
+       ],
+       "moi": [
+        "tìm toạ độ chân đường cao hạ từ đỉnh tam giác trong Oxyz",
+        "tìm toạ độ điểm từ các hệ thức tích vô hướng cho trước",
+        "quỹ tích trực tâm tam giác khi điểm di động trên trục Oxyz"
+       ],
+       "hiem": false,
+       "muc_do": 3
+      },
+      {
+       "id": "C3.4.3",
+       "ten": "Tính tích có hướng, diện tích, thể tích bằng toạ độ",
+       "mo_ta": "Đề hỏi [a,b], vectơ vuông góc với hai vectơ, diện tích tam giác/hình bình hành, thể tích tứ diện, xét đồng phẳng. Dùng định thức cấp hai và công thức ½|[AB,AC]|, |[AB,AC]·AD|.",
+       "tu": [
+        "P3.5.1",
+        "P3.5.2",
+        "P3.5.3"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      }
+     ]
+    },
+    {
+     "id": "C3.5",
+     "ten": "Cực trị bằng toạ độ",
+     "dang": [
+      {
+       "id": "C3.5.1",
+       "ten": "Tìm cực trị biểu thức vectơ bằng tâm tỉ cự",
+       "mo_ta": "Đề hỏi M làm |αMA+βMB+γMC| hoặc Σk·MA² nhỏ nhất/lớn nhất (có thể M thuộc trục, mặt phẳng toạ độ, cạnh hình khối). Tìm tâm tỉ cự I rồi đưa về MI nhỏ nhất, hoặc khảo sát theo tham số.",
+       "tu": [
+        "P3.6.1",
+        "P3.6.3"
+       ],
+       "moi": [
+        "cực trị độ dài đoạn nối hai cạnh chéo trong lăng trụ (gắn hệ trục)"
+       ],
+       "hiem": false,
+       "muc_do": 5
+      },
+      {
+       "id": "C3.5.2",
+       "ten": "Điểm trên mặt phẳng toạ độ làm MA+MB nhỏ nhất",
+       "mo_ta": "Đề hỏi M ∈ (Oxy)/(Oyz)… để MA+MB nhỏ nhất. Xét A, B cùng/khác phía, lấy đối xứng qua mặt phẳng toạ độ rồi cho ba điểm thẳng hàng.",
+       "tu": [
+        "P3.6.2"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "C4",
+   "ten": "Ứng dụng thực tế của vectơ và toạ độ",
+   "mo_ta": "Câu bối cảnh thực tế: lực, công trình, vật bay, radar. ~263 câu (lực 89 · công trình 51 · chuyển động & radar 121). Ranh giới với chương PPTD: xem câu hỏi H1.",
+   "nhom": [
+    {
+     "id": "C4.1",
+     "ten": "Lực trong không gian",
+     "dang": [
+      {
+       "id": "C4.1.1",
+       "ten": "Tính độ lớn hợp lực khi biết độ lớn và góc",
+       "mo_ta": "Đề cho ba lực (đôi một vuông góc, hoặc hai lực hợp góc α và lực thứ ba vuông góc mặt phẳng của chúng), hỏi độ lớn hợp lực; cả trọng lực P = mg, vận tốc cộng gió. Cộng vectơ rồi bình phương vô hướng. (Theo đề thật ~35 câu của P1.5.1 thuộc dạng này — cần gắn lại từng câu, xem C4.1.2.)",
+       "tu": [
+        "P1.5.1"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      },
+      {
+       "id": "C4.1.2",
+       "ten": "Tính lực căng dây treo, chân giá đỡ khi vật cân bằng",
+       "mo_ta": "Đề cho vật treo bằng 3–4 dây (đèn chùm, khung sắt, cân đòn) hoặc đặt trên giá đỡ ba chân, có hình chóp đều hoặc toạ độ các đầu dây; hỏi lực căng mỗi dây. Tổng các lực căng cân bằng trọng lực: chiếu lên phương thẳng đứng hoặc viết F_i = k·SA_i theo toạ độ. Gồm cả công của lực viết bằng toạ độ. (Hiện chỉ nhận P3.7.3; ~37 câu dây treo đang nằm trong P1.5.1 cần chuyển sang đây khi gắn lại.)",
+       "tu": [
+        "P3.7.3"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 3
+      }
+     ]
+    },
+    {
+     "id": "C4.2",
+     "ten": "Mô hình công trình, đồ vật bằng toạ độ",
+     "dang": [
+      {
+       "id": "C4.2.1",
+       "ten": "Lập hệ trục cho phòng, nhà, sân rồi tính khoảng cách, góc",
+       "mo_ta": "Đề tả phòng học, nhà, lều, sân, sân cầu lông… kèm hệ trục (hoặc vị trí theo hướng Bắc–Nam–Đông–Tây và độ cao), hỏi toạ độ điểm, khoảng cách, góc, dây ngắn nhất. Đọc kích thước thành toạ độ rồi dùng công thức toạ độ.",
+       "tu": [
+        "P2.3.1"
+       ],
+       "moi": [
+        "dây điện ngắn nhất dọc các tường phòng hộp chữ nhật toạ độ",
+        "bóng nảy parabol: tổng cấp số nhân, toạ độ điểm cao nhất",
+        "toạ độ mô hình Trái Đất: tính độ dài cung qua góc giữa hai vectơ"
+       ],
+       "hiem": false,
+       "muc_do": 3
+      },
+      {
+       "id": "C4.2.2",
+       "ten": "Toạ độ vật từ độ dài và góc: cần trục, dây cáp",
+       "mo_ta": "Đề cho độ dài cần trục/dây cáp và góc với mặt đất, với trục (máy bay cất cánh OM, cần cẩu, xe kéo cáp AB, vật nghiêng), hỏi toạ độ điểm hoặc vectơ. Chiếu độ dài xuống mặt đất và lên trục cao bằng sin, cos.",
+       "tu": [
+        "P2.3.2"
+       ],
+       "moi": [
+        "bài thực tế hình hộp nghiêng trong Oxyz, tìm toạ độ điểm"
+       ],
+       "hiem": false,
+       "muc_do": 3
+      }
+     ]
+    },
+    {
+     "id": "C4.3",
+     "ten": "Vật chuyển động và radar trong Oxyz",
+     "dang": [
+      {
+       "id": "C4.3.1",
+       "ten": "Tìm vị trí, thời gian, vận tốc của vật bay thẳng đều",
+       "mo_ta": "Đề: radar thấy máy bay đi từ A đến B trong t phút, cabin cáp treo, drone, viên đạn đi theo vectơ u với tốc độ v; hỏi vị trí sau thời gian t, thời gian, vận tốc. Vị trí = A + (t/t0)·AB hoặc A + (v·t/|u|)·u. Gồm ~7 câu khoảng cách nhỏ nhất giữa hai vật/vật và điểm theo thời gian (khảo sát bậc hai theo t) — dưới 12 câu nên gộp.",
+       "tu": [
+        "P3.7.1"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 3
+      },
+      {
+       "id": "C4.3.2",
+       "ten": "Vị trí, khoảng cách giữa các vật chuyển động trong Oxyz (flycam, máy bay, tàu)",
+       "mo_ta": "Hai vật (flycam, máy bay, tàu) chuyển động thẳng đều: lập toạ độ M(t), tính khoảng cách giữa hai vật theo t, khoảng cách nhỏ nhất, thời điểm gặp. Chỉ dùng vectơ; bài cần phương trình mặt cầu/mặt phẳng/đường thẳng (vùng phủ radar hình cầu, GPS giải hệ khoảng cách, mặt chắn sóng) thuộc chương PP toạ độ.",
+       "tu": [
+        "P3.7.2"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 3
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "gop": [],
+ "bo_moi": [],
+ "cau_hoi": [
+  {
+   "ma": "H1",
+   "tieu_de": "Câu thực tế bằng toạ độ (radar, GPS, flycam, cáp treo…) đặt ở chương VT hay chương PPTD?",
+   "mo_ta": "Đã đọc từng câu thực tế trong VT: 188 câu (P2.3.x 51 + P3.7.x 133 + 4 câu NEW; đã trừ 1 câu gắn nhầm). Chia theo VIỆC PHẢI TÍNH: (1) 149 câu chỉ cần toạ độ điểm/vectơ, vị trí = A + k·AB, khoảng cách, góc, lực; (2) 11 câu khoảng cách nhỏ nhất (7 theo thời gian, 4 điểm trên mặt đất có tổng khoảng cách nhỏ nhất) — giải được bằng toạ độ điểm; (3) 5 câu GPS/UWB (tìm điểm biết khoảng cách tới 4 trạm) — trừ từng cặp phương trình là ra hệ bậc nhất, vẫn là kiến thức VT; (4) 19 câu vùng phủ sóng hình cầu (thời điểm vào/ra radar, hải đăng, vùng cấm bay, chỏm cầu) — bản chất là đường thẳng cắt mặt cầu; (5) 4 câu mặt phẳng chắn sóng/chiếu bóng — cần mặt phẳng. Phía PPTD còn ~33 câu thực tế đang là NEW (quỹ đạo, đường đạn, mặt phẳng chứa quỹ đạo, radar với mặt cầu…). Thêm chứng cứ: người gắn nhãn tự đánh 'không chắc' nhiều nhất ở P3.7.2 (chỉ 15/48 câu chắc) — đúng chỗ giáp ranh. Theo trí nhớ (chưa kiểm lại sách): bài radar 'A(800;500;7)→B(940;550;8) trong 10 phút' nằm ở chương vectơ–toạ độ (học kì 1), còn bài radar '417 km' nằm ở phần mặt cầu (học kì 2).",
+   "chon": [
+    [
+     "Chia theo việc phải tính (đề xuất)",
+     "VT giữ 165 câu (nhóm 1+2+3) — chỉ cần toạ độ điểm, vectơ, khoảng cách. PPTD nhận 23 câu (19 vùng phủ hình cầu + 4 mặt phẳng) gộp với ~33 câu thực tế của PPTD thành một dạng 'Thực tế: đường thẳng, mặt phẳng, mặt cầu' (~56 câu). Luật dễ nhớ: câu thực tế về chương của công cụ CUỐI CÙNG phải dùng. Đúng thứ tự học (HK1 chưa học mặt cầu). Cần gắn lại từng câu P3.7.2 (đã có danh sách phân loại).",
+     true
+    ],
+    [
+     "Tất cả ở VT",
+     "VT giữ đủ 188 câu, thêm ~33 câu thực tế của PPTD (~221). Một chỗ duy nhất cho mọi câu thực tế toạ độ, nhưng HS gặp bài mặt cầu/mặt phẳng trước khi học PPTD; dạng radar trộn hai cách giải.",
+     false
+    ],
+    [
+     "Tất cả ở PPTD",
+     "PPTD nhận 188 + 33 ≈ 221 câu; VT mất gần hết phần thực tế dù đề giữa kì 1 hỏi nhiều (radar A→B, cáp treo, flycam chỉ cần vectơ). Mastery đo muộn một học kì.",
+     false
+    ]
+   ]
+  },
+  {
+   "ma": "H2",
+   "tieu_de": "Câu lực (hợp lực, lực căng dây — không có toạ độ) đặt ở 'Vectơ trong không gian' hay ở 'Ứng dụng thực tế'?",
+   "mo_ta": "P1.5.1 + P1.5.2 = 76 câu lực trên hình (chưa gắn hệ trục), P3.7.3 = 13 câu lực viết bằng toạ độ. Đề xuất hiện tại gom cả 89 câu vào nhóm C4.1 'Lực trong không gian' (chuyên đề Ứng dụng thực tế) và chia theo cách giải: hợp lực (~39) / lực căng dây treo, giá đỡ cân bằng (~50, cần gắn lại ~37 câu từ P1.5.1). Đây là chọn cách xếp cây (theo bối cảnh hay theo kiến thức), không có đáp án kỹ thuật.",
+   "chon": [
+    [
+     "Gom vào chuyên đề Ứng dụng thực tế (đề xuất)",
+     "Giữ như cây hiện tại: cách giải lực giống nhau dù có toạ độ hay không; khớp với 'câu vận dụng thực tế' trong đề.",
+     true
+    ],
+    [
+     "Lực trên hình về chuyên đề Vectơ trong không gian",
+     "C1 thêm nhóm 'Lực' (76 câu); C4.1 chỉ còn lực viết bằng toạ độ (13 câu) → nhập vào C4.2. Hai dạng lực căng (hình / toạ độ) nằm hai chỗ.",
+     false
+    ]
+   ]
+  }
+ ]
+}

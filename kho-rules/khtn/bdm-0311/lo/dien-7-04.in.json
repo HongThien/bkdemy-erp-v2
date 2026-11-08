@@ -1,0 +1,2021 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00331",
+   "khoi": "7",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "SÓNG ÂM",
+   "nhom": "NGUỒN ÂM, SÓNG ÂM VÀ MÔI TRƯỜNG TRUYỀN ÂM",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Nguồn âm:\n●\tVật phát ra âm gọi là nguồn âm. Mọi nguồn âm đều dao động.\n●\tDao động là chuyển động qua lại quanh một vị trí cân bằng.\n●\tVật ngừng dao động thì ngừng phát ra âm.\nSóng âm:\n●\tSóng âm là sự lan truyền dao động của nguồn âm trong môi trường.\n●\tCác hạt của môi trường chỉ dao động tại chỗ; dao động được truyền từ lớp hạt này sang lớp hạt khác.\nMôi trường truyền âm:\n●\tÂm truyền được qua chất rắn, chất lỏng, chất khí.\n●\tÂm không truyền được qua chân không vì chân không không có hạt vật chất.\nVí dụ 1. Khi kéo đàn nhị, bộ phận nào dao động phát ra âm?\nHướng dẫn: Dây đàn nhị dao động phát ra âm, nên dây đàn là nguồn âm.\nVí dụ 2. Ngư dân gõ vào mạn thuyền gỗ để lùa cá. Âm truyền tới cá qua những môi trường nào?\nHướng dẫn: Âm truyền qua mạn thuyền (chất rắn) rồi qua nước (chất lỏng) tới cá.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00332",
+   "khoi": "7",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "SÓNG ÂM",
+   "nhom": "TỐC ĐỘ TRUYỀN ÂM",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Tốc độ truyền âm:\n●\tTốc độ âm trong chất rắn lớn hơn trong chất lỏng, trong chất lỏng lớn hơn trong chất khí.\n●\tSố liệu dùng trong dạng này: không khí 340 m/s; nước 1 500 m/s; thép 6 100 m/s.\nCông thức (âm truyền một chiều):\n●\ts = v × t; t = s : v; v = s : t.\n●\ts là quãng đường âm truyền (m), t là thời gian (s), v là tốc độ âm (m/s).\nBài toán tia chớp – tiếng sét:\n●\tÁnh sáng truyền rất nhanh (khoảng 300 000 km/s) nên coi như thấy tia chớp ngay lúc sét đánh.\n●\tKhoảng cách tới chỗ sét đánh: s = 340 × t, với t là thời gian từ lúc thấy chớp đến lúc nghe tiếng sét.\nTrình tự làm bài:\n●\tXác định môi trường truyền âm, chọn đúng tốc độ.\n●\tĐổi đơn vị về m, s, m/s.\n●\tÁp dụng công thức, tính kết quả.\nLỗi thường gặp:\n●\tLấy nhầm tốc độ âm của môi trường khác.\n●\tQuên đổi km sang m, ms sang s.\n●\tChia ngược: lấy v : t hoặc v : s.\nVí dụ 1. Âm truyền trong không khí mất 0,6 s. Tính quãng đường âm truyền được.\nHướng dẫn: s = v × t = 340 × 0,6 = 204 m.\nVí dụ 2. Một người thấy tia chớp, sau 12 s thì nghe tiếng sét. Tính khoảng cách từ người đó đến chỗ sét đánh.\nHướng dẫn: Coi ánh sáng tới ngay. s = 340 × 12 = 4 080 m = 4,08 km.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00333",
+   "khoi": "7",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "Đặc trưng của âm",
+   "nhom": "TẦN SỐ, BIÊN ĐỘ VÀ MỐI LIÊN HỆ VỚI ĐỘ CAO, ĐỘ TO",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC1. Kiến thức cần nhớ\nTần số\nTần số là số dao động mà vật thực hiện được trong một giây, kí hiệu $f$. Đơn vị của tần số là hertz, kí hiệu $\\mathrm{Hz}$. Tần số $1\\ \\mathrm{Hz}$ nghĩa là vật thực hiện $1$ dao động trong $1$ giây. Vật dao động càng nhanh thì tần số càng lớn.\nBiên độ\nBiên độ dao động là độ lệch lớn nhất của vật dao động so với vị trí cân bằng.\nĐộ cao của âm\nĐộ cao của âm phụ thuộc vào tần số dao động của nguồn âm. Tần số càng lớn thì âm càng cao (bổng). Tần số càng nhỏ thì âm càng thấp (trầm).\nĐộ to của âm\nĐộ to của âm phụ thuộc vào biên độ dao động của nguồn âm. Biên độ càng lớn thì âm càng to. Biên độ càng nhỏ thì âm càng nhỏ. Độ to của âm được đo bằng đơn vị đêxiben, kí hiệu $\\mathrm{dB}$.\nNgưỡng nghe của tai người, hạ âm và siêu âm\nTai người nghe được những âm có tần số từ khoảng $20\\ \\mathrm{Hz}$ đến $20000\\ \\mathrm{Hz}$. Âm có tần số nhỏ hơn $20\\ \\mathrm{Hz}$ gọi là hạ âm. Âm có tần số lớn hơn $20000\\ \\mathrm{Hz}$ gọi là siêu âm. Hạ âm và siêu âm vẫn là sóng âm nhưng tai người không nghe được.\n\n##PP 2. Các bước làm bài\nBước 1. Xác định đề hỏi về độ cao hay độ to của âm, hay về tần số, biên độ, ngưỡng nghe.\nBước 2. Độ cao của âm gắn với tần số, độ to của âm gắn với biên độ.\nBước 3. Với hạ âm và siêu âm: so sánh tần số của âm với $20\\ \\mathrm{Hz}$ và $20000\\ \\mathrm{Hz}$.\n\n##CY3. Lưu ý\nĐộ cao và độ to của âm do hai đại lượng khác nhau quyết định. Gãy mạnh hơn vào cùng một dây đàn chỉ làm biên độ tăng, tần số không đổi nên âm to hơn nhưng độ cao không đổi.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00334",
+   "khoi": "7",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "Đặc trưng của âm",
+   "nhom": "Tính tần số dao động và so sánh độ cao của âm",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nTần số là số dao động thực hiện được trong một giây. Nguồn âm thực hiện N dao động trong khoảng thời gian t thì tần số dao động của nguồn âm là f. Âm có tần số lớn hơn thì cao hơn.\nTai người nghe được âm có tần số từ khoảng $20 \\mathrm{Hz}$ đến $20000 \\mathrm{Hz}$. Âm có tần số nhỏ hơn $20 \\mathrm{Hz}$ là hạ âm, lớn hơn $20000 \\mathrm{Hz}$ là siêu âm.\n\n##TC 2. Công thức\nTần số dao động:\n$$\nf = \\dfrac{N}{t}\n$$\nTrong đó N là số dao động, t là thời gian thực hiện số dao động đó, đơn vị $\\mathrm{s}$, f là tần số, đơn vị $\\mathrm{Hz}$.\nKhi thời gian cho theo phút, đổi sang giây trước khi tính:\n$1 \\mathrm{min} = 60 \\mathrm{s}$\n\n##PP 3. Các bước làm bài\nBước 1. Xác định số dao động N và thời gian t của từng nguồn âm.\nBước 2. Đổi thời gian về đơn vị giây.\nBước 3. Tính tần số $f = \\dfrac{N}{t}$.\nBước 4. So sánh các tần số để kết luận âm nào cao hơn, hoặc so sánh tần số với $20 \\mathrm{Hz}$ và $20000 \\mathrm{Hz}$ để kết luận âm có nghe được hay không.\n\n##CY 4. Lưu ý\nKhi so sánh độ cao của hai âm, phải so sánh tần số, không so sánh số dao động khi thời gian thực hiện khác nhau.\nHai nguồn âm có số dao động khác nhau và thời gian khác nhau vẫn có thể có cùng tần số, khi đó hai âm có độ cao như nhau.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00335",
+   "khoi": "7",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "Đặc trưng của âm",
+   "nhom": "Đọc đồ thị dao động âm",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nĐồ thị dao động âm có trục nằm ngang là thời gian (đơn vị s) và trục thẳng đứng là độ lệch của vật so với vị trí cân bằng (đơn vị cm). Đường nằm ngang ứng với độ lệch bằng $0$ là vị trí cân bằng.\nMột dao động ứng với một đoạn của đường cong từ một đỉnh đến đỉnh kế tiếp. Số đỉnh trong khoảng thời gian đã cho cho biết số dao động.\nTrong cùng một khoảng thời gian, đồ thị có nhiều dao động hơn (đường cong dày hơn) thì có tần số lớn hơn và âm cao hơn.\nBiên độ dao động là độ lệch từ vị trí cân bằng tới đỉnh cao nhất của đường cong. Đồ thị có đỉnh cao hơn thì biên độ lớn hơn và âm to hơn.\n\n##TC 2. Công thức\nTần số dao động:\n$$f=\\dfrac{\\mathrm{N}}{\\mathrm{t}}$$\n\n##PP 3. Các bước làm bài\nBước 1. Đọc thang thời gian và thang độ lệch ghi trên đồ thị.\nBước 2. Đếm số dao động N trong khoảng thời gian t của từng đồ thị.\nBước 3. Nếu hai đồ thị có thang thời gian khác nhau thì tính tần số $f = \\dfrac{\\mathrm{N}}{\\mathrm{t}}$ rồi so sánh. Nếu cùng khoảng thời gian thì so sánh số dao động.\nBước 4. Độ cao của âm gắn với tần số. Độ to của âm gắn với biên độ, đọc biên độ ở đỉnh cao nhất của đường cong. Để so sánh biên độ của hai đồ thị, lấy biên độ lớn chia cho biên độ nhỏ; thường cho biết biên độ lớn gấp bao nhiêu lần biên độ nhỏ.\n\n##CY 4. Lưu ý\nĐộ cao của âm không phụ thuộc vào biên độ, độ to của âm không phụ thuộc vào số dao động. Đồ thị có đỉnh cao chưa chắc có nhiều dao động, đồ thị có nhiều dao động chưa chắc có đỉnh cao.\nKhi thang thời gian của các đồ thị khác nhau, không so sánh trực tiếp số dao động đếm được.\nHai đồ thị có biên độ bằng nhau thì hai âm to như nhau, dù tần số khác nhau. Hai đồ thị có tần số bằng nhau thì hai âm có độ cao như nhau, dù biên độ khác nhau.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00336",
+   "khoi": "7",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "Phản xạ âm và chống ô nhiễm tiếng ồn",
+   "nhom": "Phản xạ âm, tiếng vang và vật phản xạ âm",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nPhản xạ âm\nKhi sóng âm gặp một vật chắn, một phần sóng âm bị dội trở lại. Âm dội trở lại gọi là âm phản xạ.\nVật phản xạ âm tốt và vật phản xạ âm kém\nVật cứng, có bề mặt nhẵn phản xạ âm tốt. Ví dụ: tấm kim loại, tường bê tông nhẵn, gạch men, mặt đá hoa cương, kính.\nVật mềm, xốp, có bề mặt gồ ghề hấp thụ âm nhiều nên phản xạ âm kém. Ví dụ: bông, mút xốp, thảm len, rèm nhung, chăn, nệm.\nTiếng vang\nTiếng vang là âm phản xạ nghe được tách biệt hẳn với âm phát ra trực tiếp từ nguồn. Ta nghe được tiếng vang khi âm phản xạ đến tai chậm hơn âm truyền trực tiếp ít nhất $\\dfrac{1}{15}$ s. Nếu âm phản xạ đến tai chậm hơn âm trực tiếp chưa tới $\\dfrac{1}{15}$ s thì âm phản xạ hoà lẫn với âm trực tiếp, ta nghe thấy một âm to hơn.\nVật chắn phản xạ âm tốt và ở cách nguồn âm đủ xa thì ta nghe được tiếng vang.\nỨng dụng\nĐơi phát ra siêu âm và thu lại siêu âm phản xạ để nhận biết vật cản. Tàu phát siêu âm xuống đáy biển và thu lại siêu âm phản xạ để xác định độ sâu của đáy biển.\n\n##PP 2. Các bước làm bài\nBước 1. Xác định đề hỏi về khả năng phản xạ âm của vật hay về điều kiện nghe được tiếng vang.\nBước 2. Với khả năng phản xạ âm: xét vật cứng, nhẵn hay mềm, xốp.\nBước 3. Với tiếng vang: so sánh khoảng thời gian chậm giữa âm phản xạ và âm trực tiếp với $\\dfrac{1}{15}$ s, đồng thời xét vật chắn có phản xạ âm tốt và ở đủ xa hay không.\n\n##CY 3. Lưu ý\nVật mềm, xốp hấp thụ âm nhiều nên được dùng để giảm âm phản xạ và giảm tiếng vang trong phòng.\nTiếng vang là một trường hợp của âm phản xạ, không phải mọi âm phản xạ đều là tiếng vang.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00337",
+   "khoi": "7",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "Phản xạ âm và chống ô nhiễm tiếng ồn",
+   "nhom": "TÍNH KHOẢNG CÁCH BẰNG ÂM PHẢN XẠ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nÂm phát ra từ nguồn truyền tới vật phản xạ rồi dội trở lại nguồn. Quãng đường âm truyền đi gồm quãng đường đi và quãng đường về, bằng hai lần khoảng cách từ nguồn tới vật phản xạ.\nTa nghe được tiếng vang khi âm phản xạ đến tai chậm hơn âm truyền trực tiếp ít nhất $\\dfrac{1}{15}$ s.\n\n##TC 2. Công thức\nQuãng đường âm truyền đi và về trong thời gian t:\n$s = v \\times t$\nKhoảng cách từ nguồn âm tới vật phản xạ:\n$d = \\dfrac{s}{2} = \\dfrac{v \\times t}{2}$\nKhoảng cách nhỏ nhất từ nguồn âm tới vật phản xạ để nghe được tiếng vang:\n$d_{min} = \\dfrac{v \\times \\dfrac{1}{15}}{2}$\nTrong đó v là tốc độ truyền âm, đơn vị m/s; t là thời gian từ lúc phát âm đến lúc nhận được âm phản xạ, đơn vị s; s là quãng đường âm truyền đi và về, đơn vị m; d là khoảng cách tới vật phản xạ, đơn vị m; $d_{min}$ là khoảng cách nhỏ nhất từ nguồn âm tới vật phản xạ để nghe được tiếng vang, đơn vị m.\n\n##PP 3. Các bước làm bài\nBước 1. Xác định môi trường truyền âm và tốc độ truyền âm v trong môi trường đó (thường dùng: khoảng $340$ m/s trong không khí, khoảng $1500$ m/s trong nước biển).\nBước 2. Xác định thời gian t từ lúc phát âm đến lúc nhận được âm phản xạ.\nBước 3. Tính quãng đường âm truyền đi và về $s = v \\times t$.\nBước 4. Lấy quãng đường chia cho $2$ để được khoảng cách d, rồi đổi đơn vị và làm tròn theo yêu cầu.\n\n##CY 4. Lưu ý\nThời gian đo được là thời gian âm đi và về, nên khoảng cách bằng một nửa quãng đường âm truyền đi.\nKhi tính khoảng cách nhỏ nhất để nghe được tiếng vang, thời gian lấy bằng $\\dfrac{1}{15}$ s.\nKhi đề yêu cầu đơn vị kilômét, đổi $1$ km = $1000$ m.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00338",
+   "khoi": "7",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "Phản xạ âm và chống ô nhiễm tiếng ồn",
+   "nhom": "Ô NHIỄM TIẾNG ỒN VÀ BIỆN PHÁP CHỐNG",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nÔ nhiễm tiếng ồn xảy ra khi tiếng ồn to, kéo dài và ảnh hưởng xấu tới sức khoẻ, sinh hoạt của con người. Tiếng ồn to và kéo dài có thể gây mất ngủ, mệt mỏi, giảm khả năng tập trung và giảm thính lực.\nBiện pháp chống ô nhiễm tiếng ồn\nGiảm độ to của nguồn phát tiếng ồn: hạ âm lượng loa, lắp bộ giảm thanh cho máy và xe, cấm bấm còi ở khu vực cần yên tĩnh.\nNgăn cản đường truyền của tiếng ồn: xây tường chắn âm, lắp cửa kính hai lớp, đóng kín cửa, trồng cây xanh dày.\nDùng vật liệu hấp thụ âm: ốp mút xốp, treo rèm dày, trải thảm len.\n\n##PP 2. Các bước làm bài\nBước 1. Xác định nguồn ồn và đặc điểm của tiếng ồn: to hay nhỏ, kéo dài hay thoáng qua, ảnh hưởng tới ai.\nBước 2. Kết luận có ô nhiễm tiếng ồn hay không: tiếng ồn phải có đủ các đặc điểm to, kéo dài và ảnh hưởng xấu.\nBước 3. Xác định vị trí tác động của biện pháp: tại nguồn phát, trên đường truyền hay bằng vật liệu hấp thụ âm.\nBước 4. Chọn biện pháp làm giảm tiếng ồn tới nơi cần yên tĩnh.\n\n##CY 3. Lưu ý\nTiếng ồn to nhưng chỉ thoáng qua, hoặc kéo dài nhưng nhỏ và không ảnh hưởng xấu, thì không gây ô nhiễm tiếng ồn.\nTăng âm lượng để át tiếng ồn làm tiếng ồn to hơn nên không phải là biện pháp chống ô nhiễm tiếng ồn.",
+   "can_dien_ly_thuyet_nhom": false
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB00737",
+   "nhom_id": "KNB00331",
+   "thu_tu": 1,
+   "dang": "Nhận ra nguồn âm và bộ phận dao động",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040101001",
+     "loai": "trac_nghiem",
+     "de": "Nguồn âm là",
+     "lua_chon": [
+      "môi trường truyền âm.",
+      "vật thu nhận âm.",
+      "vật phát ra âm.",
+      "vật phản xạ âm."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vật phát ra âm gọi là nguồn âm."
+    },
+    {
+     "ma_cau": "K07040101010",
+     "loai": "trac_nghiem",
+     "de": "Con muỗi bay phát ra tiếng vo ve. Bộ phận nào dao động phát ra âm?",
+     "lua_chon": [
+      "Vòi muỗi.",
+      "Râu muỗi.",
+      "Chân muỗi.",
+      "Cánh muỗi."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cánh muỗi đập liên tục (dao động) phát ra tiếng vo ve."
+    },
+    {
+     "ma_cau": "K07040101014",
+     "loai": "trac_nghiem",
+     "de": "Rắc một ít hạt gạo lên mặt trống rồi gõ trống, thấy các hạt gạo nảy lên. Hiện tượng này chứng tỏ",
+     "lua_chon": [
+      "hạt gạo là nguồn âm.",
+      "âm làm hạt gạo nóng lên.",
+      "mặt trống đứng yên khi phát ra âm.",
+      "mặt trống dao động khi phát ra âm."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hạt gạo nảy lên do mặt trống dao động."
+    },
+    {
+     "ma_cau": "K07040101006",
+     "loai": "trac_nghiem",
+     "de": "Khi thổi sáo trúc, bộ phận nào dao động phát ra âm?",
+     "lua_chon": [
+      "Thân ống sáo bằng tre.",
+      "Các lỗ bấm trên thân sáo.",
+      "Ngón tay người thổi.",
+      "Cột không khí trong ống sáo."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cột không khí trong ống sáo dao động phát ra âm."
+    },
+    {
+     "ma_cau": "K07040101004",
+     "loai": "trac_nghiem",
+     "de": "Khi gảy đàn ghi-ta, bộ phận nào dao động phát ra âm?",
+     "lua_chon": [
+      "Cần đàn.",
+      "Dây đàn.",
+      "Phím đàn.",
+      "Chân đàn."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Dây đàn dao động khi được gảy nên phát ra âm."
+    },
+    {
+     "ma_cau": "K07040101012",
+     "loai": "trac_nghiem",
+     "de": "Đang gảy đàn, người chơi áp chặt tay lên dây đàn thì âm tắt. Nguyên nhân là",
+     "lua_chon": [
+      "dây đàn bị đứt.",
+      "không khí ngừng truyền âm.",
+      "dây đàn ngừng dao động.",
+      "tay người hấp thụ hết ánh sáng."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vật ngừng dao động thì ngừng phát ra âm."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00738",
+   "nhom_id": "KNB00331",
+   "thu_tu": 2,
+   "dang": "Môi trường truyền âm",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040101023",
+     "loai": "trac_nghiem",
+     "de": "Áp tai xuống mặt đất có thể nghe được tiếng bước chân người đi từ xa. Hiện tượng này chứng tỏ",
+     "lua_chon": [
+      "âm không truyền được qua chất rắn.",
+      "âm truyền được qua đất (chất rắn).",
+      "đất là nguồn âm.",
+      "âm chỉ truyền được qua không khí."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tiếng bước chân truyền qua đất, là chất rắn, tới tai."
+    },
+    {
+     "ma_cau": "K07040101017",
+     "loai": "trac_nghiem",
+     "de": "Âm truyền được qua những môi trường nào?",
+     "lua_chon": [
+      "Chỉ chất khí.",
+      "Chỉ chất rắn và chất khí.",
+      "Chất rắn, chất lỏng và chất khí.",
+      "Chất rắn, chất lỏng, chất khí và chân không."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Âm truyền được qua chất rắn, chất lỏng, chất khí; không truyền được qua chân không."
+    },
+    {
+     "ma_cau": "K07040101022",
+     "loai": "trac_nghiem",
+     "de": "Trên Mặt Trăng không có không khí, hai nhà du hành chạm mũ bảo hiểm vào nhau thì nghe được tiếng nói của nhau. Âm đã truyền qua",
+     "lua_chon": [
+      "mũ bảo hiểm (chất rắn).",
+      "chân không giữa hai người.",
+      "ánh sáng phản chiếu từ Mặt Trăng.",
+      "không khí giữa hai người."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hai mũ chạm nhau tạo thành môi trường chất rắn liên tục nên âm truyền được."
+    },
+    {
+     "ma_cau": "K07040101021",
+     "loai": "trac_nghiem",
+     "de": "Hai nhà du hành đứng cạnh nhau ngoài không gian vũ trụ không thể nói chuyện trực tiếp mà phải dùng máy vô tuyến. Nguyên nhân là",
+     "lua_chon": [
+      "dây thanh quản không dao động ngoài vũ trụ.",
+      "mũ du hành phát ra tiếng ồn quá lớn.",
+      "ngoài không gian vũ trụ là chân không, âm không truyền được.",
+      "ánh sáng Mặt Trời cản trở âm."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khoảng không gian vũ trụ là chân không nên âm không truyền được."
+    },
+    {
+     "ma_cau": "K07040101020",
+     "loai": "trac_nghiem",
+     "de": "Đặt một chuông điện đang reo trong bình kín rồi hút dần không khí ra. Khi không khí trong bình gần như được hút hết thì hầu như không còn nghe thấy tiếng chuông. Kết luận rút ra là",
+     "lua_chon": [
+      "âm không truyền được qua chân không.",
+      "chuông ngừng dao động khi hút không khí.",
+      "âm chỉ truyền được qua chất rắn.",
+      "thủy tinh không truyền được âm."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Chuông vẫn dao động nhưng môi trường trong bình gần như là chân không nên âm không truyền ra được."
+    },
+    {
+     "ma_cau": "K07040101027",
+     "loai": "trac_nghiem",
+     "de": "Khi đứng cạnh nhau nói chuyện trong lớp học, âm từ miệng người nói truyền tới tai người nghe qua môi trường nào?",
+     "lua_chon": [
+      "Không khí.",
+      "Chân không.",
+      "Thép.",
+      "Nước."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Giữa hai người là không khí (chất khí) nên âm truyền qua không khí."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00739",
+   "nhom_id": "KNB00332",
+   "thu_tu": 1,
+   "dang": "So sánh tốc độ âm trong chất rắn, lỏng, khí",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040102007",
+     "loai": "trac_nghiem",
+     "de": "Tốc độ âm trong nước lớn gấp khoảng bao nhiêu lần tốc độ âm trong không khí?",
+     "lua_chon": [
+      "0,23 lần.",
+      "4,1 lần.",
+      "4,4 lần.",
+      "18 lần."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$1\\ 500 : 340 \\approx 4,4$ lần."
+    },
+    {
+     "ma_cau": "K07040102005",
+     "loai": "trac_nghiem",
+     "de": "Một tiếng nổ phát ra đồng thời trong nước và trong không khí ngay trên mặt hồ. Một thiết bị thu âm đặt ở bờ hồ bên kia có thể thu cả âm truyền qua nước và qua không khí. Âm tới thiết bị trước là âm truyền qua",
+     "lua_chon": [
+      "không khí.",
+      "cả hai tới cùng lúc.",
+      "không có âm nào tới.",
+      "nước."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tốc độ âm trong nước lớn hơn trong không khí nên âm qua nước tới trước."
+    },
+    {
+     "ma_cau": "K07040102002",
+     "loai": "trac_nghiem",
+     "de": "Sắp xếp tốc độ truyền âm trong các môi trường theo thứ tự tăng dần.",
+     "lua_chon": [
+      "Không khí, nước, thép.",
+      "Thép, nước, không khí.",
+      "Không khí, thép, nước.",
+      "Nước, không khí, thép."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tốc độ âm: chất khí < chất lỏng < chất rắn."
+    },
+    {
+     "ma_cau": "K07040102009",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây sai?",
+     "lua_chon": [
+      "Âm truyền trong nước nhanh hơn trong không khí.",
+      "Âm truyền trong thép nhanh hơn trong không khí.",
+      "Âm truyền trong thép nhanh hơn trong nước.",
+      "Âm truyền trong không khí nhanh hơn trong nước."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tốc độ âm trong nước (chất lỏng) lớn hơn trong không khí (chất khí)."
+    },
+    {
+     "ma_cau": "K07040102001",
+     "loai": "trac_nghiem",
+     "de": "Âm truyền nhanh nhất trong môi trường nào sau đây?",
+     "lua_chon": [
+      "Nước.",
+      "Không khí.",
+      "Dầu ăn.",
+      "Thép."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tốc độ âm trong chất rắn lớn nhất; thép là chất rắn."
+    },
+    {
+     "ma_cau": "K07040102003",
+     "loai": "trac_nghiem",
+     "de": "Nhận định nào sau đây đúng về tốc độ truyền âm?",
+     "lua_chon": [
+      "Tốc độ âm trong chất lỏng lớn hơn trong chất rắn.",
+      "Tốc độ âm trong chất rắn lớn hơn trong chất lỏng, trong chất lỏng lớn hơn trong chất khí.",
+      "Tốc độ âm trong chất khí lớn hơn trong chất lỏng.",
+      "Tốc độ âm như nhau trong mọi môi trường."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tốc độ âm giảm dần theo thứ tự: chất rắn, chất lỏng, chất khí."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00740",
+   "nhom_id": "KNB00332",
+   "thu_tu": 2,
+   "dang": "Tính khoảng cách, thời gian truyền âm",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040102016",
+     "loai": "trac_nghiem",
+     "de": "Âm truyền được $1\\ 830\\ \\mathrm{m}$ trong $0,3\\ \\mathrm{s}$. Âm đã truyền trong môi trường nào?",
+     "lua_chon": [
+      "Không khí.",
+      "Chân không.",
+      "Thép.",
+      "Nước."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$v = s : t = 1830 : 0,3 = 6\\ 100\\ \\mathrm{m/s}$, đúng bằng tốc độ âm trong thép."
+    },
+    {
+     "ma_cau": "K07040102017",
+     "loai": "trac_nghiem",
+     "de": "Âm truyền được $510\\ \\mathrm{m}$ trong $1\\ 500\\ \\mathrm{ms}$. Tốc độ truyền âm là",
+     "lua_chon": [
+      "0,003 m/s.",
+      "0,34 m/s.",
+      "340 m/s.",
+      "765 m/s."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $1\\ 500\\ \\mathrm{ms} = 1,5\\ \\mathrm{s}$.\n$v = s : t = 510 : 1,5 = 340\\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K07040102015",
+     "loai": "trac_nghiem",
+     "de": "Âm truyền trong nước đi được quãng đường 3 km. Thời gian âm truyền là",
+     "lua_chon": [
+      "0,002 s.",
+      "0,5 s.",
+      "2 s.",
+      "8,82 s."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $3\\ \\mathrm{km} = 3000\\ \\mathrm{m}$.\n$t = s : v = 3000 : 1500 = 2\\ \\mathrm{s}$."
+    },
+    {
+     "ma_cau": "K07040102011",
+     "loai": "trac_nghiem",
+     "de": "Âm truyền trong không khí mất $2,5 \\mathrm{~s}$. Quảng đường âm truyền được là",
+     "lua_chon": [
+      "$136 \\mathrm{~m}$.",
+      "$850 \\mathrm{~m}$.",
+      "$3750 \\mathrm{~m}$.",
+      "$15250 \\mathrm{~m}$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$s = v \\times t = 340 \\times 2,5 = 850 \\mathrm{~m}$."
+    },
+    {
+     "ma_cau": "K07040102018",
+     "loai": "trac_nghiem",
+     "de": "Âm truyền trong không khí từ bục giảng tới cuối lớp mất $0,05\\ \\mathrm{s}$. Khoảng cách từ bục giảng tới cuối lớp là",
+     "lua_chon": [
+      "17 m.",
+      "75 m.",
+      "305 m.",
+      "6 800 m."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$s = v \\times t = 340 \\times 0,05 = 17\\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K07040102012",
+     "loai": "trac_nghiem",
+     "de": "Âm truyền trong nước mất $0,4 \\mathrm{~s}$. Quảng đường âm truyền được là",
+     "lua_chon": [
+      "$136 \\mathrm{~m}$.",
+      "$600 \\mathrm{~m}$.",
+      "$2440 \\mathrm{~m}$.",
+      "$3750 \\mathrm{~m}$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$s = v \\times t = 1500 \\times 0,4 = 600 \\mathrm{~m}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00741",
+   "nhom_id": "KNB00332",
+   "thu_tu": 3,
+   "dang": "Thấy chớp trước khi nghe tiếng sét",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040102025",
+     "loai": "trac_nghiem",
+     "de": "Sét đánh ở nơi cách một người $3740$ m. Sau khi thấy tia chớp, người đó nghe tiếng sét sau",
+     "lua_chon": [
+      "$0,09$ s.",
+      "$0,61$ s.",
+      "$2,49$ s.",
+      "$11$ s."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$t = s:v = 3740:340 = 11$ s."
+    },
+    {
+     "ma_cau": "K07040102028",
+     "loai": "trac_nghiem",
+     "de": "Ta thấy tia chớp trước khi nghe tiếng sét vì",
+     "lua_chon": [
+      "tại người nhận biết âm chậm hơn mắt nhận biết ánh sáng.",
+      "âm không truyền được trong không khí.",
+      "tia chớp xuất hiện trước tiếng sét.",
+      "tốc độ ánh sáng lớn hơn rất nhiều so với tốc độ âm trong không khí."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Chớp và sét xảy ra cùng lúc; ánh sáng (khoảng $300\\ 000\\ \\mathrm{km/s}$) tới mắt gần như tức thời, \nâm ($340\\ \\mathrm{m/s}$) tới tai sau."
+    },
+    {
+     "ma_cau": "K07040102026",
+     "loai": "trac_nghiem",
+     "de": "Sét đánh ở nơi cách một người $3,57$ km. Thời gian từ lúc người đó thấy tia chớp đến lúc nghe tiếng sét là",
+     "lua_chon": [
+      "$0,0105$ s.",
+      "$0,095$ s.",
+      "$2,38$ s.",
+      "$10,5$ s."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $3,57$ km $= 3570$ m.\n$t = 3570:340 = 10,5$ s."
+    },
+    {
+     "ma_cau": "K07040102030",
+     "loai": "trac_nghiem",
+     "de": "Một cách ước lượng nhanh: cứ khoảng $3\\ \\mathrm{s}$ từ lúc thấy tia chớp đến lúc nghe tiếng sét thì chỗ sét đánh cách xa thêm khoảng",
+     "lua_chon": [
+      "$340\\ \\mathrm{m}$.",
+      "$100\\ \\mathrm{m}$.",
+      "$1\\ \\mathrm{km}$.",
+      "$3\\ \\mathrm{km}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$340 \\times 3 = 1\\ 020\\ \\mathrm{m} \\approx 1\\ \\mathrm{km}$."
+    },
+    {
+     "ma_cau": "K07040102022",
+     "loai": "trac_nghiem",
+     "de": "Từ lúc thấy tia chớp đến lúc nghe tiếng sét là $4,5$ s. Khoảng cách tới chỗ sét đánh là",
+     "lua_chon": [
+      "75,6 m.",
+      "1 530 m.",
+      "6 750 m.",
+      "27 450 m."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$s = 340 \\times 4,5 = 1 530$ m."
+    },
+    {
+     "ma_cau": "K07040102021",
+     "loai": "trac_nghiem",
+     "de": "Một người thầy tia chớp, sau $2,8$ s thì nghe tiếng sét. Khoảng cách từ người đó tới chỗ sét đánh là",
+     "lua_chon": [
+      "121 m.",
+      "952 m.",
+      "4 200 m.",
+      "17 080 m."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$s = 340 \\times 2,8 = 952$ m."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00742",
+   "nhom_id": "KNB00332",
+   "thu_tu": 4,
+   "dang": "Tính khoảng cách, thời gian truyền âm",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 12,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040102045",
+     "loai": "tu_luan",
+     "de": "Trong một môi trường, âm truyền được $4\\,200$ m trong $2.8$ s. Trong môi trường đó, âm truyền quãng đường $9$ km mất bao lâu?",
+     "dap_an": "6",
+     "loi_giai": "Tốc độ âm:\n$v = 4\\,200 : 2.8 = 1\\,500 \\,m/s$.\nĐổi $9 \\,km = 9\\,000 \\,m$.\n$t = 9\\,000 : 1\\,500 = 6 \\,s$."
+    },
+    {
+     "ma_cau": "K07040102046",
+     "loai": "tu_luan",
+     "de": "Trong khoảng thời gian âm truyền được $2\\,380$ m trong không khí, âm truyền trong nước được quãng đường bao nhiêu?",
+     "dap_an": "10500",
+     "loi_giai": "Thời gian:\n$t = 2\\,380 : 340 = 7 \\,s$.\nQuãng đường trong nước:\n$s = 1\\,500 \\times 7 = 10\\,500 \\,m$."
+    },
+    {
+     "ma_cau": "K07040102042",
+     "loai": "tu_luan",
+     "de": "Gõ một lần vào đầu một thanh ray thép dài $854$ m. Người áp tai ở đầu kia nghe được hai tiếng: một tiếng truyền qua thép, một tiếng truyền qua không khí. Tính khoảng thời gian giữa hai tiếng (làm tròn đến hàng phần trăm).",
+     "dap_an": "2,37",
+     "loi_giai": "$t_{thép} = 854 : 6\\ 100 = 0,14$ s.\n$t_{kk} = 854 : 340 \\approx 2,51$ s.\n$\\Delta t = 2,51 - 0,14 = 2,37$ s."
+    },
+    {
+     "ma_cau": "K07040102041",
+     "loai": "tu_luan",
+     "de": "Âm truyền qua không khí trên một đoạn đường mất $0,25$ s. Âm truyền qua một thanh thép có chiều dài bằng đoạn đường đó mất bao lâu? (làm tròn đến hàng phần nghìn)",
+     "dap_an": "0,014",
+     "loi_giai": "Chiều dài đoạn đường:\n$s = 340 \\times 0,25 = 85$ m.\nThời gian âm truyền qua thép:\n$t = 85 : 6\\ 100 \\approx 0,014$ s."
+    },
+    {
+     "ma_cau": "K07040102043",
+     "loai": "tu_luan",
+     "de": "Gõ một lần vào đầu một thanh ray thép. Người áp tai ở đầu kia nghe tiếng qua thép sớm hơn tiếng qua không khí $2$ s. Tính chiều dài thanh ray (làm tròn đến hàng đơn vị).",
+     "dap_an": "720",
+     "loi_giai": "Gọi chiều dài thanh ray là s.\nTa có: $s : 340 - s : 6\\ 100 = 2$.\nSuy ra $s \\times (1/340 - 1/6\\ 100) = 2$, nên $s \\approx 720$ m."
+    },
+    {
+     "ma_cau": "K07040102044",
+     "loai": "tu_luan",
+     "de": "Một tiếng động phát ra đồng thời trong nước và trong không khí, truyền tới một điểm cách nguồn $1\\ 700$ m. Âm qua nước tới điểm đó sớm hơn âm qua không khí bao lâu? (làm tròn đến hàng phần trăm)",
+     "dap_an": "3,87",
+     "loi_giai": "$t_{nước} = 1\\ 700 : 1\\ 500 \\approx 1,13$ s.\n$t_{kk} = 1\\ 700 : 340 = 5$ s.\n$\\Delta t = 5 - 1,13 = 3,87$ s."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00743",
+   "nhom_id": "KNB00332",
+   "thu_tu": 5,
+   "dang": "Thấy chớp trước khi nghe tiếng sét",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040102047",
+     "loai": "tra_loi_ngan",
+     "de": "Một bạn thấy tia chớp và bắt đầu đếm nhịp đều, mỗi nhịp 0,5 s. Đếm được 17 nhịp thì nghe tiếng sét. Tính khoảng cách từ bạn đó tới chỗ sét đánh.",
+     "dap_an": "2890",
+     "loi_giai": "Thời gian: $t = 17 \\times 0,5 = 8,5$ s.\nKhoảng cách: $s = 340 \\times 8,5 = 2890$ m."
+    },
+    {
+     "ma_cau": "K07040102039",
+     "loai": "tra_loi_ngan",
+     "de": "Sét đánh cách một người $4760$ m. Tính thời gian từ lúc người đó thấy tia chớp đến lúc nghe tiếng sét (đơn vị s).",
+     "dap_an": "14",
+     "loi_giai": "$t = 4760 : 340 = 14$ s."
+    },
+    {
+     "ma_cau": "K07040102040",
+     "loai": "tra_loi_ngan",
+     "de": "Lần thứ nhất nghe tiếng sét sau khi thấy chớp $20$ s, lần thứ hai là $15$ s. Chỗ sét đánh lần thứ hai gần người quan sát hơn lần thứ nhất bao nhiêu mét?",
+     "dap_an": "1700",
+     "loi_giai": "$\\Delta s = 340 \\times (20 - 15) = 1700$ m."
+    },
+    {
+     "ma_cau": "K07040102048",
+     "loai": "tra_loi_ngan",
+     "de": "Trong một cơn dông, lần thứ nhất nghe tiếng sét sau khi thấy chớp 10 s, lần thứ hai sau 1 s. Chỗ sét đánh lần thứ hai gần người quan sát hơn lần thứ nhất bao nhiêu mét?",
+     "dap_an": "3060",
+     "loi_giai": "$s_1 = 340 \\times 10 = 3400$ m.\n$s_2 = 340 \\times 1 = 340$ m.\n$\\Delta s = 3400 - 340 = 3060$ m."
+    },
+    {
+     "ma_cau": "K07040102049",
+     "loai": "tra_loi_ngan",
+     "de": "Sét đánh ở nơi cách một người 1 190 m. Tính thời gian từ lúc người đó thấy tia chớp đến lúc nghe tiếng sét.",
+     "dap_an": "3.5",
+     "loi_giai": "Coi ánh sáng tới ngay. $t = 1190 : 340 = 3,5$ s."
+    },
+    {
+     "ma_cau": "K07040102038",
+     "loai": "tra_loi_ngan",
+     "de": "Thời gian từ lúc thấy tia chớp đến lúc nghe tiếng sét là $6,5$ s. Tính khoảng cách tới chỗ sét đánh (đơn vị m).",
+     "dap_an": "2210",
+     "loi_giai": "$s = 340 \\times 6,5 = 2210$ m."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00744",
+   "nhom_id": "KNB00333",
+   "thu_tu": 1,
+   "dang": "TẦN SỐ VÀ ĐƠN VỊ HERTZ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 9,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040201037",
+     "loai": "trac_nghiem",
+     "de": "Một vật thực hiện 200 dao động trong 1 giây. Tần số dao động của vật là",
+     "lua_chon": [
+      "200 dB",
+      "200 m/s",
+      "200 s",
+      "200 Hz"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vật thực hiện 200 dao động trong 1 giây nên tần số dao động của vật là 200 Hz."
+    },
+    {
+     "ma_cau": "K07040201035",
+     "loai": "trac_nghiem",
+     "de": "Tần số dao động thường được kí hiệu bằng chữ cái nào sau đây?",
+     "lua_chon": [
+      "s",
+      "f",
+      "t",
+      "v"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tần số dao động được kí hiệu bằng chữ f."
+    },
+    {
+     "ma_cau": "K07040201033",
+     "loai": "trac_nghiem",
+     "de": "Đơn vị đo tần số là",
+     "lua_chon": [
+      "hertz (\\mathrm{Hz})",
+      "mét trên giây (\\mathrm{m/s})",
+      "giây (\\mathrm{s})",
+      "đêxiben (\\mathrm{dB})"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tần số được đo bằng đơn vị hertz, kí hiệu \\mathrm{Hz}."
+    },
+    {
+     "ma_cau": "K07040201032",
+     "loai": "trac_nghiem",
+     "de": "Đại lượng nào sau đây cho biết số dao động mà vật thực hiện được trong một giây?",
+     "lua_chon": [
+      "Tần số",
+      "Biên độ",
+      "Thời gian dao động",
+      "Độ to"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Số dao động mà vật thực hiện được trong một giây là tần số dao động."
+    },
+    {
+     "ma_cau": "K07040201036",
+     "loai": "trac_nghiem",
+     "de": "Khi tần số dao động của một vật tăng lên thì vật đó dao động",
+     "lua_chon": [
+      "chậm hơn",
+      "lệch xa vị trí cân bằng hơn",
+      "nhanh hơn",
+      "lệch ít hơn khỏi vị trí cân bằng"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tần số là số dao động trong một giây nên tần số tăng thì vật dao động nhanh hơn."
+    },
+    {
+     "ma_cau": "K07040201039",
+     "loai": "trac_nghiem",
+     "de": "Hai vật P và Q dao động với tần số lần lượt là 30 Hz và 45 Hz. Nhận xét nào sau đây đúng?",
+     "lua_chon": [
+      "Trong mỗi giây, vật P thực hiện nhiều dao động hơn vật Q",
+      "Trong mỗi giây, hai vật thực hiện số dao động như nhau",
+      "Trong mỗi giây, vật P thực hiện 45 dao động",
+      "Trong mỗi giây, vật Q thực hiện nhiều dao động hơn vật P"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vật P thực hiện 30 dao động trong mỗi giây, vật Q thực hiện 45 dao động trong mỗi giây.\nVậy trong mỗi giây, vật Q thực hiện nhiều dao động hơn vật P."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00745",
+   "nhom_id": "KNB00333",
+   "thu_tu": 2,
+   "dang": "ÂM CAO – THẤP, TO – NHỎ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040201050",
+     "loai": "trac_nghiem",
+     "de": "Hai âm thoa A và B cùng được gõ mạnh như nhau, âm thoa A phát ra âm cao hơn âm thoa B.Nhận xét nào sau đây đúng?",
+     "lua_chon": [
+      "Âm thoa A dao động với tần số lớn hơn âm thoa B",
+      "Âm thoa A dao động với biên độ nhỏ hơn âm thoa B",
+      "Âm thoa A dao động với tần số nhỏ hơn âm thoa B",
+      "Âm thoa A dao động với biên độ lớn hơn âm thoa B"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hai âm thoa được gõ mạnh như nhau nên chúng dao động với biên độ như nhau.Âm thoa A phát ra âm cao hơn nên âm thoa A dao động với tần số lớn hơn âm thoa B."
+    },
+    {
+     "ma_cau": "K07040201045",
+     "loai": "trac_nghiem",
+     "de": "Vặn chốt đàn cho dây đàn căng hơn thì tiếng đàn cao hơn. Khi đó dây đàn dao động",
+     "lua_chon": [
+      "với biên độ nhỏ hơn",
+      "với biên độ lớn hơn",
+      "chậm hơn",
+      "nhanh hơn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Âm cao hơn có nghĩa là tần số dao động lớn hơn.\nTần số lớn hơn nên dây đàn dao động nhanh hơn."
+    },
+    {
+     "ma_cau": "K07040201046",
+     "loai": "trac_nghiem",
+     "de": "Giọng nói của bạn Lan bổng hơn giọng nói của bạn Nam. Dây thanh của bạn Lan so với dây thanh của bạn Nam dao động",
+     "lua_chon": [
+      "với tần số lớn hơn",
+      "với biên độ nhỏ hơn",
+      "với tần số nhỏ hơn",
+      "với biên độ lớn hơn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Giọng nói bổng hơn là âm cao hơn.\nÂm cao hơn thì tần số dao động lớn hơn nên dây thanh của bạn Lan dao động với tần số lớn hơn."
+    },
+    {
+     "ma_cau": "K07040201041",
+     "loai": "trac_nghiem",
+     "de": "Độ cao của âm phụ thuộc trực tiếp vào đại lượng nào của nguồn âm?",
+     "lua_chon": [
+      "Thời gian nguồn âm đã dao động",
+      "Tần số dao động của nguồn âm",
+      "Biên độ dao động của nguồn âm",
+      "Tốc độ truyền âm trong không khí"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tần số dao động của nguồn âm quyết định độ cao của âm."
+    },
+    {
+     "ma_cau": "K07040201043",
+     "loai": "trac_nghiem",
+     "de": "Đơn vị đo độ to của âm là",
+     "lua_chon": [
+      "giây (s)",
+      "hertz (Hz)",
+      "mét trên giây (m/s)",
+      "đêxiben (dB)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Độ to của âm được đo bằng đơn vị đêxiben, kí hiệu $\\mathrm{dB}$."
+    },
+    {
+     "ma_cau": "K07040201044",
+     "loai": "trac_nghiem",
+     "de": "Khi gảy mạnh hơn vào một dây đàn thì tiếng đàn to hơn. Nguyên nhân là",
+     "lua_chon": [
+      "tần số dao động của dây đàn tăng",
+      "tần số dao động của dây đàn giảm",
+      "biên độ dao động của dây đàn tăng",
+      "biên độ dao động của dây đàn giảm"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Gảy mạnh hơn thì dây đàn lệch xa vị trí cân bằng hơn, tức là biên độ dao động tăng.\nBiên độ dao động tăng thì âm phát ra to hơn."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00746",
+   "nhom_id": "KNB00333",
+   "thu_tu": 3,
+   "dang": "HẠ ÂM, SIÊU ÂM VÀ NGƯỠNG NGHE CỦA NGƯỜI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040201056",
+     "loai": "trac_nghiem",
+     "de": "Tai người không nghe được siêu âm vì",
+     "lua_chon": [
+      "tần số của siêu âm nhỏ hơn $20\\ \\mathrm{Hz}$",
+      "tần số của siêu âm lớn hơn $20000\\ \\mathrm{Hz}$",
+      "biên độ của siêu âm nhỏ",
+      "siêu âm không truyền được trong không khí"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tai người chỉ nghe được âm có tần số từ $20\\ \\mathrm{Hz}$ đến $20000\\ \\mathrm{Hz}$.\nSiêu âm có tần số lớn hơn $20000\\ \\mathrm{Hz}$ nên tai người không nghe được."
+    },
+    {
+     "ma_cau": "K07040201060",
+     "loai": "trac_nghiem",
+     "de": "Bạn Hà nói: 'Hạ âm và siêu âm không phải là sóng âm vì tai người không nghe được.' Nhận xét nào sau đây đúng?",
+     "lua_chon": [
+      "Sai, vì hạ âm và siêu âm là sóng âm mà tai người vẫn nghe được",
+      "Đúng, vì sóng âm chỉ gồm những âm mà tai người nghe được",
+      "Sai, vì hạ âm và siêu âm vẫn là sóng âm, tai người chỉ không nghe được",
+      "Đúng, vì hạ âm và siêu âm không truyền được trong môi trường không khí"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hạ âm và siêu âm đều là sự lan truyền dao động trong môi trường nên vẫn là sóng âm.Chúng chỉ khác âm nghe được ở chỗ tần số nằm ngoài khoảng từ $20 \\mathrm{~Hz}$ đến $20000 \\mathrm{~Hz}$ nên tai người không nghe được."
+    },
+    {
+     "ma_cau": "K07040201053",
+     "loai": "trac_nghiem",
+     "de": "Âm có tần số nhỏ hơn 20 Hz được gọi là",
+     "lua_chon": [
+      "siêu âm",
+      "hạ âm",
+      "âm nghe được",
+      "âm to"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Âm có tần số nhỏ hơn 20 Hz gọi là hạ âm."
+    },
+    {
+     "ma_cau": "K07040201051",
+     "loai": "trac_nghiem",
+     "de": "Tại người bình thường nghe được âm có tần số trong khoảng nào sau đây?",
+     "lua_chon": [
+      "Từ 0 Hz đến 20 Hz",
+      "Từ 200 Hz đến 200000 Hz",
+      "Từ 20 Hz đến 20000 Hz",
+      "Từ 2 Hz đến 2000 Hz"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tai người bình thường nghe được âm có tần số từ 20 Hz đến 20000 Hz."
+    },
+    {
+     "ma_cau": "K07040201058",
+     "loai": "trac_nghiem",
+     "de": "Trong các âm có tần số sau, âm nào tai người không nghe được?",
+     "lua_chon": [
+      "$1000 \\mathrm{~Hz}$",
+      "$300 \\mathrm{~Hz}$",
+      "$5000 \\mathrm{~Hz}$",
+      "$12 \\mathrm{~Hz}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tai người nghe được âm có tần số từ $20 \\mathrm{~Hz}$ đến $20000 \\mathrm{~Hz}$. Chỉ có tần số $12 \\mathrm{~Hz}$ nằm ngoài khoảng này."
+    },
+    {
+     "ma_cau": "K07040201052",
+     "loai": "trac_nghiem",
+     "de": "Âm có tần số lớn hơn 20000 Hz được gọi là",
+     "lua_chon": [
+      "hạ âm",
+      "âm nhỏ",
+      "siêu âm",
+      "âm nghe được"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Âm có tần số lớn hơn 20000 Hz gọi là siêu âm."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00747",
+   "nhom_id": "KNB00334",
+   "thu_tu": 1,
+   "dang": "TÍNH TẦN SỐ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040202033",
+     "loai": "tra_loi_ngan",
+     "de": "Một dây đàn guitar thực hiện 1500 dao động trong 5 s. Tính tần số dao động của dây đàn, đơn vị Hz.",
+     "dap_an": "300",
+     "loi_giai": "Tần số dao động bằng số dao động thực hiện được chia cho thời gian dao động:\n$f = \\dfrac{N}{t} = \\dfrac{1500}{5} = 300\\,Hz$"
+    },
+    {
+     "ma_cau": "K07040202035",
+     "loai": "tra_loi_ngan",
+     "de": "Cánh của một con ong thực hiện 1260 dao động trong 6 s. Tính tần số dao động của cánh ong, đơn vị Hz.",
+     "dap_an": "210",
+     "loi_giai": "Tần số dao động bằng số dao động thực hiện được chia cho thời gian dao động:\n$f = \\dfrac{N}{t} = \\dfrac{1260}{6} = 210$ Hz"
+    },
+    {
+     "ma_cau": "K07040202030",
+     "loai": "tra_loi_ngan",
+     "de": "Một âm thoa thực hiện 880 dao động trong 2 s. Tính tần số dao động của âm thoa, đơn vị Hz.",
+     "dap_an": "440",
+     "loi_giai": "Tần số dao động bằng số dao động thực hiện được chia cho thời gian dao động:\n$f = \\dfrac{N}{t} = \\dfrac{880}{2} = 440\\,Hz$"
+    },
+    {
+     "ma_cau": "K07040202037",
+     "loai": "tra_loi_ngan",
+     "de": "Cột không khí trong một ống sáo thực hiện 3200 dao động trong 8 s. Tính tần số dao động của cột không khí, đơn vị Hz.",
+     "dap_an": "400",
+     "loi_giai": "Tần số dao động bằng số dao động thực hiện được chia cho thời gian dao động:\n$f = \\dfrac{N}{t} = \\dfrac{3200}{8} = 400$ Hz"
+    },
+    {
+     "ma_cau": "K07040202032",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật thực hiện 250 dao động trong 5 s. Tính tần số dao động của vật, đơn vị Hz.",
+     "dap_an": "50",
+     "loi_giai": "Tần số dao động bằng số dao động thực hiện được chia cho thời gian dao động:\n$f = \\dfrac{N}{t} = \\dfrac{250}{5} = 50\\,Hz$"
+    },
+    {
+     "ma_cau": "K07040202031",
+     "loai": "tra_loi_ngan",
+     "de": "Một lá thép mỏng thực hiện 600 dao động trong 10 s. Tính tần số dao động của lá thép, đơn vị Hz.",
+     "dap_an": "60",
+     "loi_giai": "Tần số dao động bằng số dao động thực hiện được chia cho thời gian dao động:\n$f = \\dfrac{N}{t} = \\dfrac{600}{10} = 60\\,Hz$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00748",
+   "nhom_id": "KNB00334",
+   "thu_tu": 2,
+   "dang": "ĐỔI THỜI GIAN SANG GIÂY TRƯỚC KHI TÍNH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040202045",
+     "loai": "tra_loi_ngan",
+     "de": "Cánh của một con ruồi thực hiện 5100 dao động trong 0,5 min. Tính tần số dao động của cánh ruồi, đơn vị Hz.",
+     "dap_an": "170",
+     "loi_giai": "Đổi thời gian sang giây:\n$t = 0,5 \\times 60 = 30$ s\nTần số dao động là:\n$f = \\dfrac{N}{t} = \\dfrac{5100}{30} = 170$ Hz"
+    },
+    {
+     "ma_cau": "K07040202049",
+     "loai": "tra_loi_ngan",
+     "de": "Một sợi dây đàn thực hiện 19500 dao động trong 2,5 min. Tính tần số dao động của sợi dây, đơn vị Hz.",
+     "dap_an": "130",
+     "loi_giai": "Đổi thời gian sang giây:\n$t = 2,5 \\times 60 = 150$ s\nTần số dao động là:\n$f = \\dfrac{N}{t} = \\dfrac{19500}{150} = 130$ Hz"
+    },
+    {
+     "ma_cau": "K07040202043",
+     "loai": "tra_loi_ngan",
+     "de": "Màng của một chiếc loa thực hiện 14400 dao động trong 1,5 min. Tính tần số dao động của màng loa, đơn vị Hz.",
+     "dap_an": "160",
+     "loi_giai": "Đổi thời gian sang giây:\nt = $1,5 \\times 60 = 90$ s\nTần số dao động là:\n$f = \\dfrac{N}{t} = \\dfrac{14400}{90} = 160$ Hz"
+    },
+    {
+     "ma_cau": "K07040202042",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật thực hiện 15300 dao động trong 3 min. Tính tần số dao động của vật, đơn vị Hz.",
+     "dap_an": "85",
+     "loi_giai": "Đổi thời gian sang giây:\nt = $3 \\times 60 = 180$ s\nTần số dao động là:\n$f = \\dfrac{N}{t} = \\dfrac{15300}{180} = 85$ Hz"
+    },
+    {
+     "ma_cau": "K07040202046",
+     "loai": "tra_loi_ngan",
+     "de": "Một dây đàn guitar thực hiện 43200 dao động trong 2 min. Tính tần số dao động của dây đàn, đơn vị Hz.",
+     "dap_an": "360",
+     "loi_giai": "Đổi thời gian sang giây:\n$t = 2 \\times 60 = 120$ s\nTần số dao động là:\n$f = \\dfrac{N}{t} = \\dfrac{43200}{120} = 360$ Hz"
+    },
+    {
+     "ma_cau": "K07040202044",
+     "loai": "tra_loi_ngan",
+     "de": "Một dây đàn thực hiện 26400 dao động trong 4 min. Tính tần số dao động của dây đàn, đơn vị Hz.",
+     "dap_an": "110",
+     "loi_giai": "Đổi thời gian sang giây:\n$t = 4 \\times 60 = 240$ s\nTần số dao động là:\n$f = \\dfrac{N}{t} = \\dfrac{26400}{240} = 110$ Hz"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00749",
+   "nhom_id": "KNB00334",
+   "thu_tu": 3,
+   "dang": "SO SÁNH ĐỘ CAO CỦA HAI ÂM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040202062",
+     "loai": "trac_nghiem",
+     "de": "Ba lá thép 1, 2 và 3 cùng dao động: lá thép 1 thực hiện 3000 dao động trong 6 s, lá thép 2 thực hiện 2400 dao động trong 4 s và lá thép 3 thực hiện 2800 dao động trong 7 s. Âm phát ra từ lá thép nào cao nhất?",
+     "lua_chon": [
+      "Không so sánh được vì số dao động của các nguồn khác nhau",
+      "Âm phát ra từ lá thép 2",
+      "Âm phát ra từ lá thép 1",
+      "Âm phát ra từ lá thép 3"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tần số của lá thép 1 là:\n$f = \\dfrac{N}{t} = \\dfrac{3000}{6} = 500 \\mathrm{Hz}$\nTần số của lá thép 2 là:\n$f = \\dfrac{N}{t} = \\dfrac{2400}{4} = 600 \\mathrm{Hz}$\nTần số của lá thép 3 là:\n$f = \\dfrac{N}{t} = \\dfrac{2800}{7} = 400 \\mathrm{Hz}$\nTần số của lá thép 2 lớn nhất nên âm phát ra từ lá thép 2 cao nhất."
+    },
+    {
+     "ma_cau": "K07040202050",
+     "loai": "trac_nghiem",
+     "de": "Hai lá thép 1 và 2 cùng dao động trong 2 s: lá thép 1 thực hiện 300 dao động, lá thép 2 thực hiện 500 dao động. Âm phát ra từ lá thép nào cao hơn?",
+     "lua_chon": [
+      "Không so sánh được vì chưa biết biên độ dao động",
+      "Âm phát ra từ lá thép 1 cao hơn",
+      "Hai âm phát ra có độ cao như nhau",
+      "Âm phát ra từ lá thép 2 cao hơn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tần số của lá thép 1 là:\n$f = \\dfrac{N}{t} = \\dfrac{300}{2} = 150 \\mathrm{~Hz}$\nTần số của lá thép 2 là:\n$f = \\dfrac{N}{t} = \\dfrac{500}{2} = 250 \\mathrm{~Hz}$\nTần số của lá thép 2 lớn hơn nên âm phát ra từ lá thép 2 cao hơn."
+    },
+    {
+     "ma_cau": "K07040202056",
+     "loai": "trac_nghiem",
+     "de": "Hai màng loa 1 và 2 cùng dao động: màng loa 1 thực hiện 1350 dao động trong 5 s, màng loa 2 thực hiện 1560 dao động trong 4 s. Âm phát ra từ màng loa nào cao hơn?",
+     "lua_chon": [
+      "Âm phát ra từ màng loa 1 cao hơn",
+      "Không so sánh được vì chưa biết biên độ dao động",
+      "Hai âm phát ra có độ cao như nhau",
+      "Âm phát ra từ màng loa 2 cao hơn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tần số của màng loa 1 là:\n$f = \\dfrac{N}{t} = \\dfrac{1350}{5} = 270\\ \\mathrm{Hz}$\nTần số của màng loa 2 là:\n$f = \\dfrac{N}{t} = \\dfrac{1560}{4} = 390\\ \\mathrm{Hz}$\nTần số của màng loa 2 lớn hơn nên âm phát ra từ màng loa 2 cao hơn."
+    },
+    {
+     "ma_cau": "K07040202063",
+     "loai": "trac_nghiem",
+     "de": "Hai dây đàn 1 và 2 cùng dao động: dây đàn 1 thực hiện 800 dao động trong 2 s, dây đàn 2 thực hiện 1200 dao động trong 3 s. Âm phát ra từ dây đàn nào cao hơn?",
+     "lua_chon": [
+      "Âm phát ra từ dây đàn 1 cao hơn",
+      "Không so sánh được vì số dao động của hai dây đàn khác nhau",
+      "Hai âm phát ra có độ cao như nhau",
+      "Âm phát ra từ dây đàn 2 cao hơn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tần số của dây đàn 1 là:\n$f = \\dfrac{N}{t} = \\dfrac{800}{2} = 400 \\mathrm{Hz}$\nTần số của dây đàn 2 là:\n$f = \\dfrac{N}{t} = \\dfrac{1200}{3} = 400 \\mathrm{Hz}$\nHai tần số bằng nhau nên hai âm có độ cao như nhau."
+    },
+    {
+     "ma_cau": "K07040202057",
+     "loai": "trac_nghiem",
+     "de": "Hai cột không khí 1 và 2 cùng dao động: cột không khí 1 thực hiện 1500 dao động trong 6 s, cột không khí 2 thực hiện 1800 dao động trong 9 s. Âm phát ra từ cột không khí nào cao hơn?",
+     "lua_chon": [
+      "Không so sánh được vì chưa biết độ to của hai âm",
+      "Âm phát ra từ cột không khí 1 cao hơn",
+      "Hai âm phát ra có độ cao như nhau",
+      "Âm phát ra từ cột không khí 2 cao hơn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tần số của cột không khí 1 là:\n$f = \\dfrac{N}{t} = \\dfrac{1500}{6} = 250\\ \\mathrm{Hz}$\nTần số của cột không khí 2 là:\n$f = \\dfrac{N}{t} = \\dfrac{1800}{9} = 200\\ \\mathrm{Hz}$\nTần số của cột không khí 1 lớn hơn nên âm phát ra từ cột không khí 1 cao hơn."
+    },
+    {
+     "ma_cau": "K07040202054",
+     "loai": "trac_nghiem",
+     "de": "Hai sợi dây 1 và 2 cùng dao động: sợi dây 1 thực hiện 2000 dao động trong 5 s, sợi dây 2 thực hiện 1500 dao động trong 5 s. Âm phát ra từ sợi dây nào cao hơn?",
+     "lua_chon": [
+      "Âm phát ra từ sợi dây 1 cao hơn",
+      "Hai âm phát ra có độ cao như nhau",
+      "Không so sánh được vì chưa biết độ to của hai âm",
+      "Âm phát ra từ sợi dây 2 cao hơn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tần số của sợi dây 1 là:\n$f = \\dfrac{N}{t} = \\dfrac{2000}{5} = 400 \\mathrm{Hz}$\nTần số của sợi dây 2 là:\n$f = \\dfrac{N}{t} = \\dfrac{1500}{5} = 300 \\mathrm{Hz}$\nTần số của sợi dây 1 lớn hơn nên âm phát ra từ sợi dây 1 cao hơn."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00750",
+   "nhom_id": "KNB00334",
+   "thu_tu": 4,
+   "dang": "NGƯỜI CÓ NGHE ĐƯỢC ÂM HAY KHÔNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040202065",
+     "loai": "trac_nghiem",
+     "de": "Một nguồn âm có tần số 8 Hz. Coi độ to của âm đủ lớn. Đối với tai người, âm do nguồn này phát ra thuộc loại nào sau đây?",
+     "lua_chon": [
+      "Âm nghe được",
+      "Siêu âm",
+      "Không phải là âm",
+      "Hạ âm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tần số 8 Hz nhỏ hơn 20 Hz nên đó là hạ âm."
+    },
+    {
+     "ma_cau": "K07040202070",
+     "loai": "trac_nghiem",
+     "de": "Một màng loa thực hiện 24000 dao động trong 8 s. Coi độ to của âm đủ lớn. Đối với tai người, âm do nguồn này phát ra thuộc loại nào sau đây?",
+     "lua_chon": [
+      "Hạ âm",
+      "Âm nghe được",
+      "Siêu âm",
+      "Không phải là âm"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tần số dao động của nguồn âm là:\n$f = \\dfrac{N}{t} = \\dfrac{24000}{8} = 3000\\ \\mathrm{Hz}$\nTần số nằm trong khoảng từ 20 Hz đến 20000 Hz nên đó là âm tai người nghe được."
+    },
+    {
+     "ma_cau": "K07040202066",
+     "loai": "trac_nghiem",
+     "de": "Một nguồn âm thực hiện 45 dao động trong 5 s. Coi độ to của âm đủ lớn. Đối với tai người, âm do nguồn này phát ra thuộc loại nào sau đây?",
+     "lua_chon": [
+      "Siêu âm",
+      "Không phải là âm",
+      "Hạ âm",
+      "Âm nghe được"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tần số dao động của nguồn âm là:\n$f = \\dfrac{N}{t} = \\dfrac{45}{5} = 9$ Hz\nTần số nhỏ hơn 20 Hz nên đó là hạ âm."
+    },
+    {
+     "ma_cau": "K07040202069",
+     "loai": "trac_nghiem",
+     "de": "Một vật thực hiện 60 dao động trong 6 s. Coi độ to của âm đủ lớn. Đối với tai người, âm do nguồn này phát ra thuộc loại nào sau đây?",
+     "lua_chon": [
+      "Hạ âm",
+      "Siêu âm",
+      "Không phải là âm",
+      "Âm nghe được"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tần số dao động của nguồn âm là:\n$$f = \\dfrac{N}{t} = \\dfrac{60}{6} = 10\\ \\mathrm{Hz}$$\nTần số nhỏ hơn 20 Hz nên đó là hạ âm."
+    },
+    {
+     "ma_cau": "K07040202068",
+     "loai": "trac_nghiem",
+     "de": "Một sợi dây thực hiện 100000 dao động trong 4 s. Coi độ to của âm đủ lớn. Đối với tai người, âm do nguồn này phát ra thuộc loại nào sau đây?",
+     "lua_chon": [
+      "Âm nghe được",
+      "Siêu âm",
+      "Không phải là âm",
+      "Hạ âm"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tần số dao động của nguồn âm là:\n$$f = \\dfrac{N}{t} = \\dfrac{100000}{4} = 25000\\ \\mathrm{Hz}$$\nTần số lớn hơn 20000 Hz nên đó là siêu âm."
+    },
+    {
+     "ma_cau": "K07040202078",
+     "loai": "trac_nghiem",
+     "de": "Bốn vật 1, 2, 3 và 4 cùng dao động: vật 1 thực hiện 60 dao động trong 6 s, vật 2 thực hiện 180000 dao động trong 6 s, vật 3 thực hiện 4800 dao động trong 8 s và vật 4 thực hiện 30 dao động trong 2 s. Coi độ to của âm đủ lớn. Tai người nghe được âm do vật nào phát ra?",
+     "lua_chon": [
+      "Vật 2",
+      "Vật 1",
+      "Vật 3",
+      "Vật 4"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tần số của vật 1 là:\n$f = \\dfrac{N}{t} = \\dfrac{60}{6} = 10\\ \\mathrm{Hz}$\nĐó là hạ âm.\nTần số của vật 2 là:\n$f = \\dfrac{N}{t} = \\dfrac{180000}{6} = 30000\\ \\mathrm{Hz}$\nĐó là siêu âm.\nTần số của vật 3 là:\n$f = \\dfrac{N}{t} = \\dfrac{4800}{8} = 600\\ \\mathrm{Hz}$\nĐó là âm tai người nghe được.\nTần số của vật 4 là:\n$f = \\dfrac{N}{t} = \\dfrac{30}{2} = 15\\ \\mathrm{Hz}$\nĐó là hạ âm.\nVậy âm tai người nghe được do vật 3 phát ra."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00751",
+   "nhom_id": "KNB00335",
+   "thu_tu": 1,
+   "dang": "So sánh độ cao từ đồ thị",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 13,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040203001",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới gồm hai đồ thị dao động âm: hình 1 và hình 2. Các đồ thị được vẽ trong cùng một khoảng thời gian và cùng tỉ lệ. Âm nào cao hơn?",
+     "lua_chon": [
+      "Hai âm có độ cao như nhau",
+      "Âm ở hình 1",
+      "Âm ở hình 2",
+      "Không so sánh được vì hai nguồn âm khác nhau"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Trong khoảng thời gian $0,02$ s, đồ thị ở hình 1 có 3 dao động.\nTrong khoảng thời gian $0,02$ s, đồ thị ở hình 2 có 6 dao động.\nTrong cùng một khoảng thời gian, đồ thị ở hình 2 có nhiều dao động hơn nên tần số lớn hơn và âm cao hơn.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07040203009",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới là đồ thị dao động của hai nguồn âm: hình 1 và hình 2. Thang thời gian của mỗi đồ thị được ghi trên trục nằm ngang của đồ thị đó. Âm nào cao hơn?",
+     "lua_chon": [
+      "Không so sánh được vì chưa biết hai nguồn âm phát ra âm to hay nhỏ",
+      "Âm ở hình 2",
+      "Hai âm có độ cao như nhau",
+      "Âm ở hình 1"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Trong khoảng thời gian $0,04\\ \\mathrm{s}$, đồ thị ở hình 1 có 12 dao động.\nTần số của âm ở hình 1 là:\n$f = \\dfrac{N}{t} = \\dfrac{12}{0,04} = 300\\ \\mathrm{Hz}$\nTrong khoảng thời gian $0,02\\ \\mathrm{s}$, đồ thị ở hình 2 có 6 dao động.\nTần số của âm ở hình 2 là:\n$f = \\dfrac{N}{t} = \\dfrac{6}{0,02} = 300\\ \\mathrm{Hz}$\nHai tần số bằng nhau nên hai âm có độ cao như nhau.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07040203002",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới biểu diễn dao động của hai nguồn âm ở hình 1 và hình 2. Các đồ thị được vẽ trong cùng một khoảng thời gian và cùng tỉ lệ. Âm nào cao hơn?",
+     "lua_chon": [
+      "Âm ở hình 2",
+      "Không so sánh được vì hai nguồn âm khác nhau",
+      "Hai âm có độ cao như nhau",
+      "Âm ở hình 1"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trong khoảng thời gian $0,01$ s, đồ thị ở hình 1 có $5$ dao động. Trong khoảng thời gian $0,01$ s, đồ thị ở hình 2 có $3$ dao động. Trong cùng một khoảng thời gian, đồ thị ở hình 1 có nhiều dao động hơn nên tần số lớn hơn và âm cao hơn.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07040203008",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới biểu diễn dao động của hai nguồn âm ở hình 1 và hình 2. Thang thời gian của mỗi đồ thị được ghi trên trục nằm ngang của đồ thị đó. Âm nào cao hơn?",
+     "lua_chon": [
+      "Không so sánh được vì biên độ dao động của hai âm khác nhau",
+      "Âm ở hình 1",
+      "Âm ở hình 2",
+      "Hai âm có độ cao như nhau"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Trong khoảng thời gian $0,01$ s, đồ thị ở hình 1 có 4 dao động.\nTần số của âm ở hình 1 là:\n$f = \\dfrac{\\mathrm{N}}{\\mathrm{t}} = \\dfrac{4}{0,01} = 400 \\mathrm{~Hz}$\nTrong khoảng thời gian $0,02 \\mathrm{~s}$, đồ thị ở hình 2 có 6 dao động.\nTần số của âm ở hình 2 là:\n$f = \\dfrac{\\mathrm{N}}{\\mathrm{t}} = \\dfrac{6}{0,02} = 300 \\mathrm{~Hz}$\nTần số của âm ở hình 1 lớn hơn nên âm ở hình 1 cao hơn.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07040203004",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới gồm ba đồ thị dao động âm: hình 1, hình 2 và hình 3. Các đồ thị được vẽ trong cùng một khoảng thời gian và cùng tỉ lệ. Âm nào cao nhất?",
+     "lua_chon": [
+      "Âm ở hình 3",
+      "Âm ở hình 1",
+      "Âm ở hình 2",
+      "Không so sánh được vì ba nguồn âm khác nhau"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Trong khoảng thời gian $0,02\\,\\mathrm{s}$, đồ thị ở hình 1 có 7 dao động.\nTrong khoảng thời gian $0,02\\,\\mathrm{s}$, đồ thị ở hình 2 có 3 dao động.\nTrong khoảng thời gian $0,02\\,\\mathrm{s}$, đồ thị ở hình 3 có 5 dao động.\nTrong cùng một khoảng thời gian, đồ thị ở hình 1 có nhiều dao động nhất nên tần số lớn nhất và âm ở\nhình 1 cao nhất.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07040203005",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới biểu diễn dao động của ba nguồn âm ở hình 1, hình 2 và hình 3. Các đồ thị được vẽ trong cùng một khoảng thời gian và cùng tỉ lệ. Âm nào trầm nhất?",
+     "lua_chon": [
+      "Không so sánh được vì biên độ dao động của ba âm khác nhau",
+      "Âm ở hình 3",
+      "Âm ở hình 1",
+      "Âm ở hình 2"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trong khoảng thời gian $0,04\\ \\mathrm{s}$, đồ thị ở hình 1 có 6 dao động.\nTrong khoảng thời gian $0,04\\ \\mathrm{s}$, đồ thị ở hình 2 có 3 dao động.\nTrong khoảng thời gian $0,04\\ \\mathrm{s}$, đồ thị ở hình 3 có 9 dao động.\nTrong cùng một khoảng thời gian, đồ thị ở hình 2 có ít dao động nhất nên tần số nhỏ nhất và âm ở hình 2 trầm nhất.",
+     "co_hinh": true
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00752",
+   "nhom_id": "KNB00335",
+   "thu_tu": 2,
+   "dang": "SO SÁNH ĐỘ TO TỪ ĐỒ THỊ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040203020",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới là đồ thị dao động của ba nguồn âm: hình 1, hình 2 và hình 3. Các đồ thị được vẽ cùng tỉ lệ trên trục thẳng đứng (độ lệch so với vị trí cân bằng, đơn vị cm). Âm nào nhỏ nhất?",
+     "lua_chon": [
+      "Âm ở hình 1",
+      "Không so sánh được vì chưa biết ba nguồn âm phát ra âm cao hay thấp",
+      "Âm ở hình 2",
+      "Âm ở hình 3"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Biên độ dao động của âm ở hình 1 là 3 cm.\nBiên độ dao động của âm ở hình 2 là 4 cm.\nBiên độ dao động của âm ở hình 3 là 1 cm.\nBiên độ dao động của âm ở hình 3 nhỏ nhất nên âm ở hình 3 nhỏ nhất.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07040203014",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới gồm hai đồ thị dao động âm: hình 1 và hình 2. Các đồ thị được vẽ cùng tỉ lệ trên trục thẳng đứng (độ lệch so với vị trí cân bằng, đơn vị cm). Âm nào to hơn?",
+     "lua_chon": [
+      "Không so sánh được vì hai nguồn âm khác nhau",
+      "Âm ở hình 1",
+      "Âm ở hình 2",
+      "Hai âm to như nhau vì có cùng tần số"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Biên độ dao động của âm ở hình 1 là 3 cm.Biên độ dao động của âm ở hình 2 là 1 cm.Biên độ dao động của âm ở hình 1 lớn hơn nên âm ở hình 1 to hơn.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07040203016",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới là đồ thị dao động của hai nguồn âm: hình 1 và hình 2. Các đồ thị được vẽ cùng tỉ lệ trên trục thẳng đứng (độ lệch so với vị trí cân bằng, đơn vị cm). Âm nào nhỏ hơn?",
+     "lua_chon": [
+      "Âm ở hình 2",
+      "Âm ở hình 1",
+      "Không so sánh được vì chưa biết hai nguồn âm phát ra âm cao hay thấp",
+      "Hai âm to như nhau vì có cùng tần số"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Biên độ dao động của âm ở hình 1 là 4 cm.\nBiên độ dao động của âm ở hình 2 là 3 cm.\nBiên độ dao động của âm ở hình 2 nhỏ hơn nên âm ở hình 2 nhỏ hơn.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07040203019",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới biểu diễn dao động của ba nguồn âm ở hình 1, hình 2 và hình 3. Các đồ thị được vẽ cùng tỉ lệ trên trục thẳng đứng (độ lệch so với vị trí cân bằng, đơn vị cm). Âm nào nhỏ nhất?",
+     "lua_chon": [
+      "Âm ở hình 1",
+      "Âm ở hình 2",
+      "Âm ở hình 3",
+      "Không so sánh được vì tần số dao động của ba âm khác nhau"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Biên độ dao động của âm ở hình 1 là 3 cm.Biên độ dao động của âm ở hình 2 là 1 cm.Biên độ dao động của âm ở hình 3 là 4 cm.Biên độ dao động của âm ở hình 2 nhỏ nhất nên âm ở hình 2 nhỏ nhất.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07040203017",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới là đồ thị dao động của hai nguồn âm: hình 1 và hình 2. Các đồ thị được vẽ cùng tỉ lệ trên trục thẳng đứng (độ lệch so với vị trí cân bằng, đơn vị cm). Âm nào nhỏ hơn?",
+     "lua_chon": [
+      "Âm ở hình 2",
+      "Âm ở hình 1",
+      "Không so sánh được vì chưa biết hai nguồn âm phát ra âm cao hay thấp",
+      "Hai âm to như nhau vì có cùng tần số"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Biên độ dao động của âm ở hình 1 là 4 cm.\nBiên độ dao động của âm ở hình 2 là 3 cm.\nBiên độ dao động của âm ở hình 2 nhỏ hơn nên âm ở hình 2 nhỏ hơn.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07040203022",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới biểu diễn dao động của hai nguồn âm ở hình 1 và hình 2. Các đồ thị được vẽ cùng tỉ lệ trên trục thẳng đứng (độ lệch so với vị trí cân bằng, đơn vị cm). Âm nào to hơn?",
+     "lua_chon": [
+      "Âm ở hình 1",
+      "Không so sánh được vì tần số dao động của hai âm khác nhau",
+      "Hai âm to như nhau",
+      "Âm ở hình 2"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Biên độ dao động của âm ở hình 1 là 3 cm.Biên độ dao động của âm ở hình 2 là 3 cm.Hai âm có cùng biên độ dao động nên độ to bằng nhau, độ to không phụ thuộc vào tần số.",
+     "co_hinh": true
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00753",
+   "nhom_id": "KNB00336",
+   "thu_tu": 1,
+   "dang": "Vật phản xạ âm tốt và kém",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040301039",
+     "loai": "trac_nghiem",
+     "de": "Trong một hồ bơi trong nhà có tường ốp gạch men, tiếng người nói chuyện nghe ồn ào và dội lại nhiều. Nguyên nhân chính là",
+     "lua_chon": [
+      "gạch men và mặt nước phẳng làm tăng tần số của âm",
+      "gạch men và mặt nước phẳng hấp thụ âm nhiều",
+      "gạch men và mặt nước phẳng làm âm đi nhanh hơn",
+      "gạch men và mặt nước phẳng phản xạ âm tốt"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Gạch men và mặt nước phẳng là những bề mặt cứng, nhẵn nên phản xạ âm tốt.\nÂm dội lại nhiều nên tiếng người nói chuyện nghe ồn ào."
+    },
+    {
+     "ma_cau": "K07040301038",
+     "loai": "trac_nghiem",
+     "de": "Vật nào sau đây phản xạ âm kém?",
+     "lua_chon": [
+      "Mặt bàn đá hoa cương",
+      "Tấm kính cửa sổ",
+      "Tấm rèm nhung dày",
+      "Bức tường gạch nhẵn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vật mềm, xốp hấp thụ âm nhiều nên phản xạ âm kém.\nTấm rèm nhung dày là vật mềm nên phản xạ âm kém."
+    },
+    {
+     "ma_cau": "K07040301048",
+     "loai": "trac_nghiem",
+     "de": "Cùng phát một âm về phía hai bề mặt: tấm thép nhẵn và tấm len dày. Nhận xét nào sau đây đúng?",
+     "lua_chon": [
+      "Cả hai tấm đều không phản xạ âm",
+      "Tấm thép nhẵn phản xạ âm tốt hơn tấm len dày",
+      "Hai tấm phản xạ âm như nhau",
+      "Tấm len dày phản xạ âm tốt hơn tấm thép nhẵn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tấm thép nhẵn là vật cứng, nhẵn nên phản xạ âm tốt.\nTấm len dày là vật mềm, xốp nên hấp thụ âm nhiều và phản xạ âm kém.\nVậy tấm thép nhẵn phản xạ âm tốt hơn tấm len dày."
+    },
+    {
+     "ma_cau": "K07040301040",
+     "loai": "trac_nghiem",
+     "de": "Vật nào sau đây hấp thụ âm nhiều nhất?",
+     "lua_chon": [
+      "Sàn gạch men",
+      "Cánh cửa sắt",
+      "Mặt gương phẳng",
+      "Tấm cao su xốp"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vật mềm, xốp hấp thụ âm nhiều.\nTấm cao su xốp là vật mềm, xốp nên hấp thụ âm nhiều nhất."
+    },
+    {
+     "ma_cau": "K07040301044",
+     "loai": "trac_nghiem",
+     "de": "Dãy nào sau đây gồm các vật đều phản xạ âm kém?",
+     "lua_chon": [
+      "Mút xốp, tấm thép, rèm nhung",
+      "Bông, kính, mút xốp",
+      "Thảm len, gạch men, mút xốp",
+      "Bông, mút xốp, thảm len"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vật mềm, xốp hấp thụ âm nhiều nên phản xạ âm kém: bông, mút xốp, thảm len đều là vật mềm, xốp."
+    },
+    {
+     "ma_cau": "K07040301049",
+     "loai": "trac_nghiem",
+     "de": "Hai căn phòng cùng kích thước: phòng A có tường gạch nhẵn, sàn gạch men và không có đồ đạc; phòng B có rèm nhung, thảm len và ghế sofa. Nói chuyện ở hai phòng, ta nghe tiếng nói to hơn ở phòng A vì",
+     "lua_chon": [
+      "tường và sàn ở phòng A phản xạ âm tốt hơn các vật ở phòng B",
+      "tường và sàn ở phòng A làm âm truyền nhanh hơn các vật ở phòng B",
+      "các vật ở phòng B làm tần số của âm giảm nhiều hơn phòng A",
+      "các vật ở phòng B phản xạ âm tốt hơn tường và sàn ở phòng A"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tường gạch nhẵn và sàn gạch men là vật cứng, nhẵn nên phản xạ âm tốt.\nRèm nhung, thảm len, ghế sofa là vật mềm nên hấp thụ âm nhiều.\nVì vậy âm phản xạ ở phòng A mạnh hơn, ta nghe tiếng nói to hơn ở phòng A."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00754",
+   "nhom_id": "KNB00336",
+   "thu_tu": 2,
+   "dang": "ĐIỀU KIỆN NGHE ĐƯỢC TIẾNG VANG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040301061",
+     "loai": "trac_nghiem",
+     "de": "Âm phản xạ và âm truyền trực tiếp cùng truyền trong không khí. Nhận xét nào sau đây về tốc độ của hai âm là đúng?",
+     "lua_chon": [
+      "Âm phản xạ truyền chậm hơn âm trực tiếp",
+      "Âm trực tiếp truyền nhanh gấp đôi âm phản xạ",
+      "Hai âm truyền với tốc độ bằng nhau",
+      "Âm phản xạ truyền nhanh hơn âm trực tiếp"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tốc độ truyền âm chỉ phụ thuộc vào môi trường truyền âm.Hai âm cùng truyền trong không khí nên có tốc độ truyền bằng nhau."
+    },
+    {
+     "ma_cau": "K07040301052",
+     "loai": "trac_nghiem",
+     "de": "Ta chỉ nghe được tiếng vang khi âm phản xạ đến tai chậm hơn âm truyền trực tiếp ít nhất",
+     "lua_chon": [
+      "$\\dfrac{1}{5}$ s",
+      "$15$ s",
+      "$\\dfrac{1}{50}$ s",
+      "$\\dfrac{1}{15}$ s"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tai người phân biệt được hai âm riêng rẽ khi chúng đến tai cách nhau ít nhất $\\dfrac{1}{15}$ s.\nVậy ta chỉ nghe được tiếng vang khi âm phản xạ đến tai chậm hơn âm trực tiếp ít nhất $\\dfrac{1}{15}$ s."
+    },
+    {
+     "ma_cau": "K07040301059",
+     "loai": "trac_nghiem",
+     "de": "Âm phản xạ đến tai chậm hơn âm truyền trực tiếp vì",
+     "lua_chon": [
+      "âm phản xạ đi quãng đường dài hơn âm trực tiếp",
+      "âm phản xạ có tần số nhỏ hơn âm trực tiếp",
+      "âm phản xạ truyền theo hướng ngược với âm trực tiếp",
+      "âm phản xạ có biên độ lớn hơn âm trực tiếp"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Âm trực tiếp truyền thẳng từ nguồn tới tai.Âm phản xạ phải truyền tới vật chắn rồi dội lại tai nên đi quãng đường dài hơn, do đó đến tai chậm hơn."
+    },
+    {
+     "ma_cau": "K07040301062",
+     "loai": "trac_nghiem",
+     "de": "Một hội trường lớn có tường nhẵn nên tiếng nói nghe vang, khó nghe rõ. Cách nào sau đây giúp giảm tiếng vang trong hội trường?",
+     "lua_chon": [
+      "Ốp thêm gạch men nhẵn lên tường",
+      "Sơn thêm lớp sơn bóng lên tường",
+      "Thay tường bằng các tấm kính lớn",
+      "Ốp vật liệu mềm, xốp lên tường"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vật mềm, xốp hấp thụ âm nhiều, phản xạ âm kém.Ốp vật liệu mềm, xốp lên tường làm giảm âm phản xạ nên giảm tiếng vang."
+    },
+    {
+     "ma_cau": "K07040301054",
+     "loai": "trac_nghiem",
+     "de": "Ở nơi nào sau đây ta dễ nghe được tiếng vang?",
+     "lua_chon": [
+      "Trong chiếc ô tô con đang đóng kín cửa",
+      "Bên trong chiếc tủ quần áo gỗ nhỏ hẹp",
+      "Trước vách núi đá bên kia thung lũng",
+      "Trong phòng ngủ nhỏ có đệm và rèm dày"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nghe được tiếng vang khi vật phản xạ âm tốt và ở đủ xa để âm phản xạ đến tai chậm hơn âm trực tiếp ít nhất $\\dfrac{1}{15}$ s.\nVách núi đá ở phía bên kia thung lũng là vật cứng và ở xa nên dễ nghe được tiếng vang."
+    },
+    {
+     "ma_cau": "K07040301065",
+     "loai": "trac_nghiem",
+     "de": "Trong một phòng học nhỏ, bạn Lan nói to nhưng không nghe được tiếng vang. Nguyên nhân nào sau đây đúng?",
+     "lua_chon": [
+      "Tường ở gần nên âm phản xạ chậm hơn âm trực tiếp chưa tới $\\dfrac{1}{15}$ s",
+      "Tường ở gần nên âm phản xạ có tần số nhỏ hơn tần số âm trực tiếp",
+      "Tường ở gần nên âm phản xạ có tốc độ truyền nhỏ hơn âm trực tiếp",
+      "Tường ở gần nên âm phản xạ chậm hơn âm trực tiếp hơn $\\dfrac{1}{15}$ s"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tường ở gần nên quãng đường âm đi và về ngắn, âm phản xạ đến tai ngay sau âm trực tiếp.\nKhoảng thời gian giữa hai âm chưa tới $\\dfrac{1}{15}$ s nên tai không phân biệt được, ta không nghe được tiếng vang."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00755",
+   "nhom_id": "KNB00337",
+   "thu_tu": 1,
+   "dang": "ĐO ĐỘ SÂU ĐÁY BIỂN BẰNG SIÊU ÂM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 20,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040302030",
+     "loai": "trac_nghiem",
+     "de": "Máy dò của một tàu đánh cá phát siêu âm xuống đáy biển, sau $0,6\\ \\mathrm{s}$ kể từ lúc phát thì thu lại siêu âm phản xạ từ đáy biển. Biết tốc độ truyền siêu âm trong nước biển là $1520\\ \\mathrm{m/s}$. Độ sâu của đáy biển tại nơi đó là",
+     "lua_chon": [
+      "228 m",
+      "304 m",
+      "456 m",
+      "912 m"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Quãng đường siêu âm truyền đi (cả đi và về) là:\n$s = v \\times t = 1520 \\times 0,6 = 912\\ \\mathrm{m}$\nSiêu âm truyền từ tàu tới đáy rồi phản xạ trở lại nên độ sâu bằng một nửa quãng đường:\n$d = \\dfrac{s}{2} = \\dfrac{912}{2} = 456\\ \\mathrm{m}$"
+    },
+    {
+     "ma_cau": "K07040302041",
+     "loai": "trac_nghiem",
+     "de": "Tàu khảo sát phát siêu âm xuống một vực biển sâu và thu được tín hiệu phản xạ từ đáy vực sau 8 s. Biết tốc độ truyền siêu âm trong nước biển là 1500 m/s. Độ sâu của vực biển tại nơi đó, tính theo kilômét, là",
+     "lua_chon": [
+      "3 km",
+      "4 km",
+      "6 km",
+      "12 km"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Quãng đường siêu âm truyền đi (cả đi và về) là:\n$s = v \\times t = 1500 \\times 8 = 12000$ m\nSiêu âm truyền từ tàu tới đáy rồi phản xạ trở lại nên độ sâu bằng một nửa quãng đường:\n$d = \\dfrac{s}{2} = \\dfrac{12000}{2} = 6000$ m\nĐổi đơn vị:\n$6000$ m = $6$ km"
+    },
+    {
+     "ma_cau": "K07040302038",
+     "loai": "trac_nghiem",
+     "de": "Thiết bị đo độ sâu của một tàu biển ghi nhận siêu âm phản xạ từ đáy biển trở về sau 5 s kể từ lúc phát. Biết tốc độ truyền siêu âm trong nước biển là 1520 m/s. Độ sâu của đáy biển tại nơi đó là",
+     "lua_chon": [
+      "1900 m",
+      "2850 m",
+      "3800 m",
+      "7600 m"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Quãng đường siêu âm truyền đi (cả đi và về) là:\n$s = v \\times t = 1520 \\times 5 = 7600$ m\nSiêu âm truyền từ tàu tới đáy rồi phản xạ trở lại nên độ sâu bằng một nửa quãng đường:\n$d = \\dfrac{s}{2} = \\dfrac{7600}{2} = 3800$ m"
+    },
+    {
+     "ma_cau": "K07040302040",
+     "loai": "trac_nghiem",
+     "de": "Một tàu tuần tra ngoài khơi phát siêu âm thẳng đứng xuống đáy biển và thu được tín hiệu phản xạ sau 1,8 s. Biết tốc độ truyền siêu âm trong nước biển là 1500 m/s. Độ sâu của đáy biển tại nơi đó là",
+     "lua_chon": [
+      "675 m",
+      "900 m",
+      "1350 m",
+      "2700 m"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Quãng đường siêu âm truyền đi (cả đi và về) là:\n$s = v \\times t = 1500 \\times 1,8 = 2700$ m\nSiêu âm truyền từ tàu tới đáy rồi phản xạ trở lại nên độ sâu bằng một nửa quãng đường:\n$d = \\dfrac{s}{2} = \\dfrac{2700}{2} = 1350$ m"
+    },
+    {
+     "ma_cau": "K07040302035",
+     "loai": "trac_nghiem",
+     "de": "Một tàu hải dương học phát siêu âm xuống đáy biển và thu lại tín hiệu phản xạ sau $3 \\mathrm{~s}$. Biết tốc độ truyền siêu âm trong nước biển là $1500 \\mathrm{~m} / \\mathrm{s}$. Độ sâu của đáy biển tại nơi đó là",
+     "lua_chon": [
+      "$500 \\mathrm{~m}$",
+      "$1125 \\mathrm{~m}$",
+      "$2250 \\mathrm{~m}$",
+      "$4500 \\mathrm{~m}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Quãng đường siêu âm truyền đi (cả đi và về) là:\n$s = v \\times t = 1500 \\times 3 = 4500 \\mathrm{~m}$\nSiêu âm truyền từ tàu tới đáy rồi phản xạ trở lại nên độ sâu bằng một nửa quãng đường:\n$d = \\dfrac{s}{2} = \\dfrac{4500}{2} = 2250 \\mathrm{~m}$"
+    },
+    {
+     "ma_cau": "K07040302034",
+     "loai": "trac_nghiem",
+     "de": "Tàu khảo sát đo độ sâu vùng biển khơi: siêu âm phát xuống đáy biển được thu lại sau $2,2 \\mathrm{~s}$. Biết tốc độ truyền siêu âm trong nước biển là $1540 \\mathrm{~m} / \\mathrm{s}$. Độ sâu của đáy biển tại nơi đó là",
+     "lua_chon": [
+      "$350 \\mathrm{~m}$",
+      "$700 \\mathrm{~m}$",
+      "$847 \\mathrm{~m}$",
+      "$1694 \\mathrm{~m}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Quãng đường siêu âm truyền đi (cả đi và về) là:\n$s = v \\times t = 1540 \\times 2,2 = 3388 \\mathrm{~m}$\nSiêu âm truyền từ tàu tới đáy rồi phản xạ trở lại nên độ sâu bằng một nửa quãng đường:\n$d = \\dfrac{s}{2} = \\dfrac{3388}{2} = 1694 \\mathrm{~m}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00756",
+   "nhom_id": "KNB00337",
+   "thu_tu": 2,
+   "dang": "KHOẢNG CÁCH TỚI VÁCH NÚI, BỨC TƯỜNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040302054",
+     "loai": "tra_loi_ngan",
+     "de": "Người leo núi hét về phía vách núi đối diện và nghe thấy tiếng vang sau 2,6 s. Biết tốc độ truyền âm trong không khí là $340 \\mathrm{~m/s}$. Tính khoảng cách từ người leo núi tới vách núi, đơn vị $\\mathrm{m}$.",
+     "dap_an": "442",
+     "loi_giai": "Quãng đường âm truyền đi (cả đi và về) là:\n$s = v \\times t = 340 \\times 2,6 = 884 \\mathrm{~m}$\nÂm đi tới vật phản xạ rồi dội trở lại nên khoảng cách bằng một nửa quãng đường:\n$d = \\dfrac{s}{2} = \\dfrac{884}{2} = 442 \\mathrm{~m}$"
+    },
+    {
+     "ma_cau": "K07040302048",
+     "loai": "tra_loi_ngan",
+     "de": "Bạn Minh đứng ở sân trường, hét về phía bức tường của dãy nhà đối diện và nghe thấy tiếng vang sau $0,9$ s. Biết tốc độ truyền âm trong không khí là $343$ m/s. Tính quãng đường âm đã truyền đi từ lúc phát ra đến lúc nghe thấy tiếng vang (cả đi và về), đơn vị m.",
+     "dap_an": "308.7",
+     "loi_giai": "Quãng đường âm truyền đi (cả đi và về) là:\n$s = v \\times t = 343 \\times 0,9 = 308,7$ m"
+    },
+    {
+     "ma_cau": "K07040302046",
+     "loai": "tra_loi_ngan",
+     "de": "Một người đứng bên này thung lũng gọi to về phía vách đá đối diện và nghe thấy tiếng vang sau $2,5 \\mathrm{~s}$. Biết tốc độ truyền âm trong không khí là $340 \\mathrm{~m} / \\mathrm{s}$. Tính quãng đường âm đã truyền đi từ lúc phát ra đến lúc nghe thấy tiếng vang (cả đi và về), đơn vị $\\mathrm{m}$.",
+     "dap_an": "850",
+     "loi_giai": "Quãng đường âm truyền đi (cả đi và về) là:\n$s = \\mathrm{v} \\times \\mathrm{t} = 340 \\times 2,5 = 850 \\mathrm{~m}$"
+    },
+    {
+     "ma_cau": "K07040302058",
+     "loai": "tra_loi_ngan",
+     "de": "Một người đứng trước bức tường của một toà tháp cổ, vỗ tay và nghe thấy tiếng vang sau 3,4 s. Biết tốc độ truyền âm trong không khí là 340 m/s. Tính khoảng cách từ người đó tới bức tường tháp, đơn vị m.",
+     "dap_an": "578",
+     "loi_giai": "Quãng đường âm truyền đi (cả đi và về) là:\ns = v \\times t = 340 \\times 3,4 = 1156 m\nÂm đi tới vật phản xạ rồi dội trở lại nên khoảng cách bằng một nửa quãng đường:\nd = \\dfrac{s}{2} = \\dfrac{1156}{2} = 578 m"
+    },
+    {
+     "ma_cau": "K07040302051",
+     "loai": "tra_loi_ngan",
+     "de": "Khi thổi còi về phía vách đá ở bờ bên kia của một hẻm núi, một hướng dẫn viên nghe thấy tiếng vang sau $1,8$ s. Biết tốc độ truyền âm trong không khí là $340$ m/s. Tính khoảng cách từ hướng dẫn viên tới vách đá, đơn vị m.",
+     "dap_an": "306",
+     "loi_giai": "Quãng đường âm truyền đi (cả đi và về) là:\ns = v \\times t = 340 \\times 1,8 = 612 m\nÂm đi tới vật phản xạ rồi dội trở lại nên khoảng cách bằng một nửa quãng đường:\nd = \\dfrac{s}{2} = \\dfrac{612}{2} = 306 m"
+    },
+    {
+     "ma_cau": "K07040302052",
+     "loai": "tra_loi_ngan",
+     "de": "Một bạn học sinh hét về phía toà nhà cao tầng ở phía đối diện và nghe thấy tiếng vang sau $2,2$ s. Biết tốc độ truyền âm trong không khí là $340$ m/s. Tính khoảng cách từ bạn học sinh tới toà nhà, đơn vị m.",
+     "dap_an": "374",
+     "loi_giai": "Quãng đường âm truyền đi (cả đi và về) là:\ns = v \\times t = 340 \\times 2,2 = 748 m\nÂm đi tới vật phản xạ rồi dội trở lại nên khoảng cách bằng một nửa quãng đường:\nd = \\dfrac{s}{2} = \\dfrac{748}{2} = 374 m"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00757",
+   "nhom_id": "KNB00337",
+   "thu_tu": 3,
+   "dang": "KHOẢNG CÁCH TỐI THIỂU ĐỂ NGHE TIẾNG VANG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040302071",
+     "loai": "tu_luan",
+     "de": "Một người gõ vào chiếc chiêng trong một hang động lớn và lạnh, âm phản xạ từ vách hang. Người nghe (hoặc máy thu) ở sát nguồn âm. Tiếng vang chỉ nghe được khi âm phản xạ đến tai chậm hơn âm truyền trực tiếp ít nhất $\\dfrac{1}{15}$ s. Biết tốc độ truyền âm trong không khí trong hang lạnh là $334$ m/s. Tính khoảng cách nhỏ nhất từ nguồn âm tới vật phản xạ để nghe được tiếng vang, làm tròn đến hàng phần mười, đơn vị m.",
+     "dap_an": "11.1",
+     "loi_giai": "Thời gian nhỏ nhất giữa âm trực tiếp và âm phản xạ là $\\dfrac{1}{15}$ s.\nQuãng đường nhỏ nhất âm truyền đi (cả đi và về) là:\n$s = v \\times t = 334 \\times \\dfrac{1}{15} = \\dfrac{334}{15}$ m\nÂm đi tới vật phản xạ rồi dội trở lại nên khoảng cách nhỏ nhất bằng một nửa quãng đường:\n$d = \\dfrac{s}{2} = \\dfrac{167}{15} \\approx 11,1$ m"
+    },
+    {
+     "ma_cau": "K07040302060",
+     "loai": "tu_luan",
+     "de": "Một tàu ngầm nhỏ phát tín hiệu âm hướng về phía thân một con tàu đắm nằm dưới đáy biển. Người nghe (hoặc máy thu) ở sát nguồn âm. Tiếng vang chỉ nghe được khi âm phản xạ đến tai chậm hơn âm truyền trực tiếp ít nhất $\\dfrac{1}{15}$ s. Biết tốc độ truyền âm trong nước biển là $1530$ m/s. Tính khoảng cách nhỏ nhất từ nguồn âm tới vật phản xạ để nghe được tiếng vang, làm tròn đến hàng phần mười, đơn vị m.",
+     "dap_an": "51.0",
+     "loi_giai": "Thời gian nhỏ nhất giữa âm trực tiếp và âm phản xạ là $\\dfrac{1}{15}$ s.\nQuãng đường nhỏ nhất âm truyền đi (cả đi và về) là:\n$s = v \\times t = 1530 \\times \\dfrac{1}{15} = 102$ m\nÂm đi tới vật phản xạ rồi dội trở lại nên khoảng cách nhỏ nhất bằng một nửa quãng đường:\n$d = \\dfrac{s}{2} = \\dfrac{102}{2} = 51.0$ m"
+    },
+    {
+     "ma_cau": "K07040302064",
+     "loai": "tu_luan",
+     "de": "Một học sinh vỗ tay trước bức tường đá của một công trình cổ ở vùng lạnh. Người nghe (hoặc máy thu) ở sát nguồn âm. Tiếng vang chỉ nghe được khi âm phản xạ đến tai chậm hơn âm truyền trực tiếp ít nhất $\\dfrac{1}{15}$ s. Biết tốc độ truyền âm trong không khí ở vùng đó là $331$ m/s. Tính khoảng cách nhỏ nhất từ nguồn âm tới vật phản xạ để nghe được tiếng vang, làm tròn đến hàng phần mười, đơn vị m.",
+     "dap_an": "11.0",
+     "loi_giai": "Thời gian nhỏ nhất giữa âm trực tiếp và âm phản xạ là $\\dfrac{1}{15}$ s.\nQuãng đường nhỏ nhất âm truyền đi (cả đi và về) là:\n$s = v \\times t = 331 \\times \\dfrac{1}{15} = \\dfrac{331}{15}$ m\nÂm đi tới vật phản xạ rồi dội trở lại nên khoảng cách nhỏ nhất bằng một nửa quãng đường:\n$d = \\dfrac{s}{2} = \\dfrac{331}{30} \\approx 11,0$ m"
+    },
+    {
+     "ma_cau": "K07040302062",
+     "loai": "tu_luan",
+     "de": "Bạn Nam đứng trong một căn phòng lớn, trống trải, vỗ tay về phía bức tường nhẵn. Người nghe (hoặc máy thu) ở sát nguồn âm. Tiếng vang chỉ nghe được khi âm phản xạ đến tai chậm hơn âm truyền trực tiếp ít nhất $\\dfrac{1}{15}$ s. Biết tốc độ truyền âm trong không khí là $343$ m/s. Tính khoảng cách nhỏ nhất từ nguồn âm tới vật phản xạ để nghe được tiếng vang, làm tròn đến hàng phần mười, đơn vị m.",
+     "dap_an": "11.4",
+     "loi_giai": "Thời gian nhỏ nhất giữa âm trực tiếp và âm phản xạ là $\\dfrac{1}{15}$ s.\nQuãng đường nhỏ nhất âm truyền đi (cả đi và về) là:\n$s = v \\times t = 343 \\times \\dfrac{1}{15} = \\dfrac{343}{15}$ m\nÂm đi tới vật phản xạ rồi dội trở lại nên khoảng cách nhỏ nhất bằng một nửa quãng đường:\n$d = \\dfrac{s}{2} = \\dfrac{343}{30} \\approx 11,4$ m"
+    },
+    {
+     "ma_cau": "K07040302067",
+     "loai": "tu_luan",
+     "de": "Một tàu nghiên cứu phát âm xuống vùng biển ấm, hướng về phía sườn núi ngầm. Người nghe (hoặc máy thu) ở sát nguồn âm. Tiếng vang chỉ nghe được khi âm phản xạ đến tai chậm hơn âm truyền trực tiếp ít nhất $\\dfrac{1}{15}$ s. Biết tốc độ truyền âm trong nước biển ấm là $1520$ m/s. Tính khoảng cách nhỏ nhất từ nguồn âm tới vật phản xạ để nghe được tiếng vang, làm tròn đến hàng phần mười, đơn vị m.",
+     "dap_an": "50.7",
+     "loi_giai": "Thời gian nhỏ nhất giữa âm trực tiếp và âm phản xạ là $\\dfrac{1}{15}$ s.\nQuãng đường nhỏ nhất âm truyền đi (cả đi và về) là:\n$s = v \\times t = 1520 \\times \\dfrac{1}{15} = \\dfrac{304}{3}$ m\nÂm đi tới vật phản xạ rồi dội trở lại nên khoảng cách nhỏ nhất bằng một nửa quãng đường:\n$d = \\dfrac{s}{2} = \\dfrac{152}{3} \\approx 50.7$ m"
+    },
+    {
+     "ma_cau": "K07040302059",
+     "loai": "tu_luan",
+     "de": "Một hướng dẫn viên thổi còi về phía vách đá vào buổi chiều dịu mát. Người nghe (hoặc máy thu) ở sát nguồn âm. Tiếng vang chỉ nghe được khi âm phản xạ đến tai chậm hơn âm truyền trực tiếp ít nhất $\\dfrac{1}{15}$ s. Biết tốc độ truyền âm trong không khí lúc chiều dịu mát là $345$ m/s. Tính khoảng cách nhỏ nhất từ nguồn âm tới vật phản xạ để nghe được tiếng vang, làm tròn đến hàng phần mười, đơn vị m.",
+     "dap_an": "11.5",
+     "loi_giai": "Thời gian nhỏ nhất giữa âm trực tiếp và âm phản xạ là $\\dfrac{1}{15}$ s.\nQuãng đường nhỏ nhất âm truyền đi (cả đi và về) là:\n$s = v \\times t = 345 \\times \\dfrac{1}{15} = 23$ m\nÂm đi tới vật phản xạ rồi dội trở lại nên khoảng cách nhỏ nhất bằng một nửa quãng đường:\n$d = \\dfrac{s}{2} = \\dfrac{23}{2} = 11.5$ m"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00758",
+   "nhom_id": "KNB00338",
+   "thu_tu": 1,
+   "dang": "Nhận biết ô nhiễm tiếng ồn",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040303012",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc còi tàu hoả vang lên một lần khi tàu vào ga. Tiếng còi này không được xem là ô nhiễm tiếng ồn vì",
+     "lua_chon": [
+      "tiếng còi không truyền được tới tai những người ở xa nhà ga",
+      "tiếng còi có độ to nhỏ hơn tiếng nói chuyện thông thường",
+      "tiếng còi chỉ vang lên trong thời gian ngắn, không kéo dài",
+      "tiếng còi truyền trong không khí chậm hơn hầu hết các âm khác"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ô nhiễm tiếng ồn xảy ra khi tiếng ồn to, kéo dài và ảnh hưởng xấu tới sức khoẻ, sinh hoạt của con người.\nTiếng còi tàu chỉ vang lên một lần trong thời gian ngắn, không kéo dài nên không được xem là ô nhiễm tiếng ồn."
+    },
+    {
+     "ma_cau": "K07040303010",
+     "loai": "trac_nghiem",
+     "de": "Trường hợp nào sau đây không gây ô nhiễm tiếng ồn?",
+     "lua_chon": [
+      "Hai bạn trao đổi nhỏ với nhau suốt buổi sáng ở thư viện",
+      "Máy cắt cỏ chạy suốt buổi sáng ngoài sân sát cửa sổ thư viện",
+      "Học sinh la hét liên tục suốt buổi sáng ngay cạnh thư viện",
+      "Tiếng khoan tường ở căn hộ bên cạnh kéo dài nhiều giờ"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ô nhiễm tiếng ồn xảy ra khi tiếng ồn to, kéo dài và ảnh hưởng xấu tới sức khoẻ, sinh hoạt của con người.\nHai bạn trao đổi nhỏ với nhau nên tiếng ồn không to và không ảnh hưởng xấu tới người khác, do đó không gây ô nhiễm tiếng ồn."
+    },
+    {
+     "ma_cau": "K07040303002",
+     "loai": "trac_nghiem",
+     "de": "Tiếng ồn to và kéo dài có thể gây ra tác hại nào sau đây đối với con người?",
+     "lua_chon": [
+      "Làm hạ huyết áp, giảm nhịp tim khi nghe",
+      "Làm tai người nghe ngày càng nhạy hơn",
+      "Gây mất ngủ, mệt mỏi, giảm tập trung",
+      "Làm tăng khả năng tập trung khi học bài"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tiếng ồn to và kéo dài ảnh hưởng xấu tới sức khoẻ và sinh hoạt của con người.Tác hại thường gặp là mất ngủ, mệt mỏi, giảm khả năng tập trung."
+    },
+    {
+     "ma_cau": "K07040303005",
+     "loai": "trac_nghiem",
+     "de": "Trường hợp nào sau đây gây ô nhiễm tiếng ồn?",
+     "lua_chon": [
+      "Tiếng nước nhỏ chảy róc rách từ vòi ở góc sân suốt chiều",
+      "Tiếng sấm to nổ vang lên trong chốc lát khi có cơn giông",
+      "Tiếng pháo hoa to nổ suốt đêm ở bãi đất trống xa khu dân cư",
+      "Loa quán ăn mở to liên tục đến tận khuya sát khu nhà ở"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ô nhiễm tiếng ồn xảy ra khi tiếng ồn to, kéo dài và ảnh hưởng xấu tới sức khoẻ, sinh hoạt của con người. Loa quán ăn mở to liên tục đến tận khuya sát khu nhà ở tạo ra tiếng ồn to, kéo dài, ảnh hưởng giấc ngủ của người dân nên gây ô nhiễm tiếng ồn."
+    },
+    {
+     "ma_cau": "K07040303008",
+     "loai": "trac_nghiem",
+     "de": "Trường hợp nào sau đây không gây ô nhiễm tiếng ồn?",
+     "lua_chon": [
+      "Máy khoan bê tông chạy to suốt ngày ở công trường sát nhà dân",
+      "Loa kéo mở to suốt buổi tối trong khu tập thể",
+      "Máy phát điện chạy to liên tục cả đêm cạnh phòng ngủ",
+      "Máy xúc chạy to cả ngày ở vùng đồi hoang, xa khu dân cư"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ô nhiễm tiếng ồn xảy ra khi tiếng ồn to, kéo dài và ảnh hưởng xấu tới sức khoẻ, sinh hoạt của con người.\nMáy xúc chạy ở vùng đồi hoang, xa khu dân cư nên tiếng ồn không ảnh hưởng xấu tới sức khoẻ, sinh hoạt của người dân, do đó không gây ô nhiễm tiếng ồn."
+    },
+    {
+     "ma_cau": "K07040303013",
+     "loai": "trac_nghiem",
+     "de": "Tiếng suối chảy nhẹ suốt cả ngày ở một khu nghỉ dưỡng không được xem là ô nhiễm tiếng ồn vì",
+     "lua_chon": [
+      "tiếng suối chỉ vang lên vào ban ngày nên không gây hại",
+      "tiếng suối không truyền được tới tai người ở khu nghỉ dưỡng",
+      "tiếng suối là âm thanh của thiên nhiên nên không thể gây hại",
+      "tiếng suối nhỏ và không gây ảnh hưởng xấu tới khách du lịch"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ô nhiễm tiếng ồn xảy ra khi tiếng ồn to, kéo dài và ảnh hưởng xấu tới sức khoẻ, sinh hoạt của con người.\nTiếng suối chảy nhẹ tuy kéo dài nhưng không to và không ảnh hưởng xấu tới người nghe nên không được xem là ô nhiễm tiếng ồn."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00759",
+   "nhom_id": "KNB00338",
+   "thu_tu": 2,
+   "dang": "CHỌN BIỆN PHÁP CHỐNG ỒN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07040303023",
+     "loai": "trac_nghiem",
+     "de": "Công nhân trong một xưởng cơ khí chịu tiếng ồn lớn từ các máy chạy suốt ngày. Biện pháp nào sau đây giúp giảm tiếng ồn ngay tại nguồn?",
+     "lua_chon": [
+      "Đóng kín cửa xưởng mỗi khi máy chạy",
+      "Treo tấm vải dày lên tường của xưởng",
+      "Xây tường chắn âm bao quanh khu vực xưởng",
+      "Lắp bộ giảm âm cho các máy của xưởng"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Máy chạy trong xưởng là nguồn gây ồn.Lắp bộ giảm âm cho các máy của xưởng làm giảm độ to của tiếng ồn ngay tại nguồn."
+    },
+    {
+     "ma_cau": "K07040303030",
+     "loai": "trac_nghiem",
+     "de": "Biện pháp nào sau đây dùng vật liệu hấp thụ âm để giảm tiếng ồn trong phòng?",
+     "lua_chon": [
+      "Xây thêm bức tường gạch dày giữa hai phòng",
+      "Trải thảm len dày lên sàn nhà trong phòng",
+      "Hạ thấp âm lượng của các loa trong phòng",
+      "Tắt bớt các thiết bị phát âm trong phòng"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vật liệu hấp thụ âm là các vật mềm, xốp như thảm len, tấm xốp.Trải thảm len dày lên sàn nhà hấp thụ bớt âm nên giảm tiếng ồn trong phòng."
+    },
+    {
+     "ma_cau": "K07040303024",
+     "loai": "trac_nghiem",
+     "de": "Việc làm nào sau đây không phải là biện pháp chống ô nhiễm tiếng ồn?",
+     "lua_chon": [
+      "Trồng cây xanh dày hai bên các tuyến đường",
+      "Lắp bộ giảm thanh cho các máy phát điện lớn",
+      "Tăng âm lượng loa phát thanh để át tiếng xe cộ",
+      "Ốp vật liệu xốp lên tường các phòng học nhạc"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Biện pháp chống ô nhiễm tiếng ồn là giảm độ to của nguồn ồn, ngăn cản đường truyền hoặc dùng vật liệu hấp thụ âm.Tăng âm lượng loa làm tiếng ồn to hơn nên không phải là biện pháp chống ô nhiễm tiếng ồn."
+    },
+    {
+     "ma_cau": "K07040303026",
+     "loai": "trac_nghiem",
+     "de": "Biện pháp nào sau đây giảm tiếng ồn ngay tại nguồn phát?",
+     "lua_chon": [
+      "Hạ âm lượng của chiếc loa đang mở",
+      "Trồng cây xanh xung quanh ngôi nhà đặt chiếc loa",
+      "Xây tường chắn âm giữa chiếc loa và người nghe",
+      "Treo rèm dày trong phòng đặt chiếc loa"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Biện pháp giảm tiếng ồn ngay tại nguồn phát là làm nguồn ồn phát ra âm nhỏ hơn.\nHạ âm lượng của chiếc loa làm giảm độ to của nguồn ồn ngay tại nguồn phát."
+    },
+    {
+     "ma_cau": "K07040303027",
+     "loai": "trac_nghiem",
+     "de": "Biện pháp nào sau đây ngăn cản tiếng ồn trên đường truyền từ nguồn ồn tới người nghe?",
+     "lua_chon": [
+      "Xây tường chắn âm dọc theo đường cao tốc",
+      "Cấm xe tải bấm còi khi đi trong khu dân cư",
+      "Lắp bộ giảm thanh cho ống xả của xe tải",
+      "Yêu cầu xe giảm tốc khi đi qua khu dân cư"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Biện pháp ngăn cản tiếng ồn trên đường truyền là đặt vật chắn giữa nguồn ồn và người nghe.\nTường chắn âm xây dọc theo đường cao tốc nằm giữa nguồn ồn và khu dân cư nên ngăn cản tiếng ồn trên đường truyền."
+    },
+    {
+     "ma_cau": "K07040303016",
+     "loai": "trac_nghiem",
+     "de": "Trong hàng cây xanh dày dọc đường sát khu nhà ở là biện pháp chống ồn thuộc nhóm nào sau đây?",
+     "lua_chon": [
+      "Dùng vật liệu hấp thụ âm để giảm tiếng ồn ở nhà",
+      "Dùng nút bịt tai để bảo vệ người nghe ở nhà",
+      "Ngăn cản đường truyền của tiếng ồn tới khu nhà",
+      "Giảm độ to của nguồn phát tiếng ồn trên đường"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hàng cây xanh dày nằm giữa đường và khu nhà ở, chắn và làm yếu tiếng ồn trên đường truyền.\nVậy đó là biện pháp ngăn cản đường truyền của tiếng ồn tới khu nhà ở."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "T1110000002027",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Hàm xác định tại x=5 (mẫu 3≠0), thay trực tiếp.",
+  "can_cu": "Hàm xác định tại x_0, mẫu khác 0"
+ },
+ {
+  "ma_cau": "T1110000002010",
+  "dang_bai_id": "NDB01182",
+  "chac": "cao",
+  "ly_do": "Dạng L/0, xét dấu mẫu khi x→3 bên trái.",
+  "can_cu": "Giới hạn một bên bằng +∞ hoặc -∞"
+ },
+ {
+  "ma_cau": "T1110000002065",
+  "dang_bai_id": "NDB01180",
+  "chac": "cao",
+  "ly_do": "x→-∞, căn cộng x dạng ∞-∞ có tham số a.",
+  "can_cu": "Nhân liên hợp đưa về ∞/∞"
+ },
+ {
+  "ma_cau": "T1110000002211",
+  "dang_bai_id": "NDB01173",
+  "chac": "cao",
+  "ly_do": "0/0 với căn bậc ba ở tử và căn bậc hai ở mẫu, liên hợp từng phần.",
+  "can_cu": "Tách thành hiệu rồi liên hợp từng phần"
+ },
+ {
+  "ma_cau": "T1110000003148",
+  "dang_bai_id": "NDB01185",
+  "chac": "cao",
+  "ly_do": "Nồng độ muối C(t) khi t→+∞ trong mô hình bơm nước biển.",
+  "can_cu": "Khối lượng theo vận tốc (v→ c^-), chi phí trung bình, nồng độ"
+ },
+ {
+  "ma_cau": "T1110000002726",
+  "dang_bai_id": "NDB01178",
+  "chac": "cao",
+  "ly_do": "x→+∞, tử bậc thấp hơn mẫu nên giới hạn 0.",
+  "can_cu": "Chia tử và mẫu cho luỹ thừa cao nhất của x"
+ },
+ {
+  "ma_cau": "T1110000003190",
+  "dang_bai_id": "NDB01200",
+  "chac": "cao",
+  "ly_do": "Đa thức bậc 3 đổi dấu f(-2),f(2) và ở ±∞, đếm 3 giao điểm với Ox.",
+  "can_cu": "Chia thành nhiều khoảng, mỗi khoảng đổi dấu"
+ },
+ {
+  "ma_cau": "T1110000002633",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Hiệu hai căn của dãy số, nhân liên hợp.",
+  "can_cu": "Nhân và chia cho biểu thức liên hợp"
+ },
+ {
+  "ma_cau": "T1110000002911",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Tham số m ở giá trị tại điểm x=1, liên tục tại x0=1.",
+  "can_cu": "tham số chỉ nằm ở 1 nhánh"
+ },
+ {
+  "ma_cau": "T1110000002399",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Tham số m chỉ ở một nhánh, liên tục tại x0=1.",
+  "can_cu": "tham số chỉ nằm ở 1 nhánh"
+ },
+ {
+  "ma_cau": "T1110000002013",
+  "dang_bai_id": "NDB01182",
+  "chac": "cao",
+  "ly_do": "Dạng L/0, xét dấu mẫu khi x→2 bên phải.",
+  "can_cu": "Giới hạn một bên bằng +∞ hoặc -∞"
+ },
+ {
+  "ma_cau": "T1110000002115",
+  "dang_bai_id": "NDB01180",
+  "chac": "cao",
+  "ly_do": "x→+∞, hiệu hai căn dạng ∞-∞, tìm a.",
+  "can_cu": "Nhân liên hợp đưa về ∞/∞"
+ },
+ {
+  "ma_cau": "T1110000001897",
+  "dang_bai_id": "NDB01167",
+  "chac": "cao",
+  "ly_do": "Tổng diện tích dãy hình vuông lặp vô hạn, cấp số nhân lùi vô hạn.",
+  "can_cu": "Lập cấp số nhân lùi vô hạn của độ dài hoặc diện tích, tính tổng"
+ },
+ {
+  "ma_cau": "T1110000002303",
+  "dang_bai_id": "NDB01200",
+  "chac": "cao",
+  "ly_do": "Đa thức bậc 4 đếm số nghiệm trong các khoảng, đổi dấu từng khoảng.",
+  "can_cu": "Chia thành nhiều khoảng, mỗi khoảng đổi dấu"
+ },
+ {
+  "ma_cau": "T1110000003200",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Tham số m ở giá trị tại điểm x=2, liên tục tại x0=2.",
+  "can_cu": "tham số chỉ nằm ở 1 nhánh"
+ },
+ {
+  "ma_cau": "T1110000002128",
+  "dang_bai_id": "NDB01185",
+  "chac": "cao",
+  "ly_do": "Chi phí trung bình rồi lấy giới hạn khi x→+∞.",
+  "can_cu": "Khối lượng theo vận tốc (v→ c^-), chi phí trung bình, nồng độ"
+ },
+ {
+  "ma_cau": "T1110000001913",
+  "dang_bai_id": "NDB01159",
+  "chac": "vua",
+  "ly_do": "Căn bậc ba rút n ra ngoài ra -∞; không liên hợp nhưng gần dạng căn bậc ba.",
+  "can_cu": "Dùng a-b=(a³-b³)/(a²+ab+b²) cho căn bậc ba"
+ },
+ {
+  "ma_cau": "T1110000002731",
+  "dang_bai_id": "NDB01179",
+  "chac": "cao",
+  "ly_do": "x→+∞, đưa x ra ngoài căn rồi chia.",
+  "can_cu": "Đưa |x| ra ngoài căn, √(x²)=-x khi x<0"
+ },
+ {
+  "ma_cau": "T1110000001999",
+  "dang_bai_id": "NDB01174",
+  "chac": "cao",
+  "ly_do": "Mẫu về 0 mà giới hạn hữu hạn, tử phải có nghiệm x=1, tìm a,b.",
+  "can_cu": "Điều kiện tử có nghiệm x_0, phân tích rồi so giới hạn"
+ },
+ {
+  "ma_cau": "T1110000002756",
+  "dang_bai_id": "NDB01185",
+  "chac": "cao",
+  "ly_do": "Lập nồng độ muối C(x) và lấy giới hạn khi x→+∞.",
+  "can_cu": "Khối lượng theo vận tốc (v→ c^-), chi phí trung bình, nồng độ"
+ },
+ {
+  "ma_cau": "T1110000001704",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Dãy phân thức tử và mẫu cùng bậc 2.",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000002321",
+  "dang_bai_id": "NDB01197",
+  "chac": "cao",
+  "ly_do": "Liên tục trên R, tham số m ở giá trị tại x=-1.",
+  "can_cu": "Điều kiện liên tục tại điểm ghép"
+ },
+ {
+  "ma_cau": "T111000000936",
+  "dang_bai_id": "NDB01160",
+  "chac": "vua",
+  "ly_do": "Câu sai nằm ở lim q^n với |q|>1 (phải là vô cực); cũng liên quan giới hạn cơ bản 0.",
+  "can_cu": "dãy vượt mọi số dương kể từ một số hạng nào đó"
+ },
+ {
+  "ma_cau": "T1110000001854",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Thương luỹ thừa 2^n,3^n,4^n, chia cho cơ số lớn nhất 4^n.",
+  "can_cu": "Chia tử và mẫu cho luỹ thừa có cơ số lớn nhất"
+ },
+ {
+  "ma_cau": "T1110000002552",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Thương luỹ thừa, tách 5^{n+1} và chia cho 5^n.",
+  "can_cu": "Chia tử và mẫu cho luỹ thừa có cơ số lớn nhất"
+ },
+ {
+  "ma_cau": "T1110000003039",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Hiệu hai căn có luỹ thừa của 4,16,3, nhân liên hợp.",
+  "can_cu": "Nhân và chia cho biểu thức liên hợp"
+ },
+ {
+  "ma_cau": "T1110000003026",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Dãy phân thức cùng bậc 1.",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000002621",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Căn của 5n²+n trên (3n+1), đưa n ra ngoài căn.",
+  "can_cu": "Chia tử và mẫu cho n, chú ý √(n²)=n"
+ },
+ {
+  "ma_cau": "T1110000003117",
+  "dang_bai_id": "NDB01177",
+  "chac": "cao",
+  "ly_do": "Giới hạn hữu hạn khi x→-2 của hàm hai nhánh, tìm a,b cho giới hạn trái bằng phải.",
+  "can_cu": "Kết luận lim tồn tại hay không, tìm tham số để tồn tại"
+ },
+ {
+  "ma_cau": "T1110000002422",
+  "dang_bai_id": "NDB01197",
+  "chac": "cao",
+  "ly_do": "Liên tục trên R, tham số m ở giá trị tại x=1, giới hạn 0/0 có căn bậc ba.",
+  "can_cu": "Điều kiện liên tục tại điểm ghép"
+ },
+ {
+  "ma_cau": "T1110000001875",
+  "dang_bai_id": "NDB01156",
+  "chac": "cao",
+  "ly_do": "Tổng 1+2+...+n là cấp số cộng, tính tổng rồi lấy giới hạn.",
+  "can_cu": "Tính tổng theo công thức rồi lấy giới hạn"
+ },
+ {
+  "ma_cau": "T1110000001733",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Hiệu căn trừ n của dãy số, nhân liên hợp.",
+  "can_cu": "Nhân và chia cho biểu thức liên hợp"
+ },
+ {
+  "ma_cau": "T1110000002736",
+  "dang_bai_id": "NDB01181",
+  "chac": "vua",
+  "ly_do": "x·(1-1/x) với x→0 là 0·∞ nhưng rút gọn thành x-1; cũng gần thay trực tiếp.",
+  "can_cu": "Đưa về 0/0 hoặc ∞/∞"
+ },
+ {
+  "ma_cau": "T1110000002671",
+  "dang_bai_id": "NDB01157",
+  "chac": "vua",
+  "ly_do": "Phân thức chứa √n và n√n, chia cho n√n; cũng gần dạng bậc tử cao hơn mẫu.",
+  "can_cu": "Chia tử và mẫu cho n, chú ý √(n²)=n"
+ },
+ {
+  "ma_cau": "T1110000002003",
+  "dang_bai_id": "NDB01185",
+  "chac": "cao",
+  "ly_do": "Mô hình số xe vào hầm theo vận tốc, tính giới hạn và giải thích ý nghĩa.",
+  "can_cu": "Khối lượng theo vận tốc (v→ c^-), chi phí trung bình, nồng độ"
+ },
+ {
+  "ma_cau": "T1110000002436",
+  "dang_bai_id": "NDB01197",
+  "chac": "cao",
+  "ly_do": "Liên tục trên R, tham số m ở nhánh x≤4, điều kiện tại điểm ghép x=4.",
+  "can_cu": "Điều kiện liên tục tại điểm ghép"
+ },
+ {
+  "ma_cau": "T1110000002221",
+  "dang_bai_id": "NDB01179",
+  "chac": "cao",
+  "ly_do": "x→+∞, x√x trên x²+x+1, có căn của x.",
+  "can_cu": "Đưa |x| ra ngoài căn, √(x²)=-x khi x<0"
+ },
+ {
+  "ma_cau": "T1110000001858",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Hiệu căn trừ 2n của dãy số, nhân liên hợp.",
+  "can_cu": "Nhân và chia cho biểu thức liên hợp"
+ },
+ {
+  "ma_cau": "T1110000002034",
+  "dang_bai_id": "NDB01182",
+  "chac": "cao",
+  "ly_do": "Dạng L/0, xét dấu mẫu khi x→2 bên phải.",
+  "can_cu": "Giới hạn một bên bằng +∞ hoặc -∞"
+ },
+ {
+  "ma_cau": "T1110000002202",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "0/0 phân thức hữu tỉ, phân tích nhân tử.",
+  "can_cu": "Triệt nhân tử chung x-x_0"
+ },
+ {
+  "ma_cau": "T1110000003028",
+  "dang_bai_id": "NDB01148",
+  "chac": "cao",
+  "ly_do": "Dãy (n+1)/n có giới hạn 1 khác 0; các dãy còn lại có giới hạn 0.",
+  "can_cu": "kể từ số hạng nào |u_n| nhỏ hơn một số dương cho trước"
+ },
+ {
+  "ma_cau": "T1110000002553",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Thương luỹ thừa 3^n,2^{n+1},4^n, chia cho 4^n.",
+  "can_cu": "Chia tử và mẫu cho luỹ thừa có cơ số lớn nhất"
+ },
+ {
+  "ma_cau": "T1110000001947",
+  "dang_bai_id": "NDB01179",
+  "chac": "cao",
+  "ly_do": "x→+∞, đưa x ra ngoài căn rồi chia.",
+  "can_cu": "Đưa |x| ra ngoài căn, √(x²)=-x khi x<0"
+ },
+ {
+  "ma_cau": "T1110000002702",
+  "dang_bai_id": "NDB01180",
+  "chac": "cao",
+  "ly_do": "x→-∞, x+√(x²+2) dạng ∞-∞ kèm căn bậc ba ở mẫu.",
+  "can_cu": "Nhân liên hợp đưa về ∞/∞"
+ },
+ {
+  "ma_cau": "T1110000003051",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Hiệu hai căn của dãy số với hệ số khác nhau, dạng ∞-∞.",
+  "can_cu": "Nhân và chia cho biểu thức liên hợp"
+ },
+ {
+  "ma_cau": "T1110000003069",
+  "dang_bai_id": "NDB01167",
+  "chac": "vua",
+  "ly_do": "Tổng quãng đường bóng nảy tỉ số 3/4, tổng độ dài cấp số nhân; cũng gần dạng bóng nảy.",
+  "can_cu": "Lập cấp số nhân lùi vô hạn của độ dài hoặc diện tích, tính tổng"
+ },
+ {
+  "ma_cau": "T1110000002828",
+  "dang_bai_id": "NDB01185",
+  "chac": "cao",
+  "ly_do": "Lập nồng độ muối C(t) trong mô hình bơm nước biển.",
+  "can_cu": "Khối lượng theo vận tốc (v→ c^-), chi phí trung bình, nồng độ"
+ },
+ {
+  "ma_cau": "T1110000002293",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Tham số m ở giá trị tại điểm x=2, liên tục tại x=2.",
+  "can_cu": "tham số chỉ nằm ở 1 nhánh"
+ },
+ {
+  "ma_cau": "T1110000002904",
+  "dang_bai_id": "NDB01190",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm mệnh đề về giới hạn và liên tục tại x=2 (4-x²)/(x-2) khác -3.",
+  "can_cu": "có giới hạn nhưng không liên tục"
+ },
+ {
+  "ma_cau": "T1110000001682",
+  "dang_bai_id": "NDB01164",
+  "chac": "cao",
+  "ly_do": "Số thập phân vô hạn tuần hoàn 3,(23) đổi ra phân số.",
+  "can_cu": "Tách thành tổng cấp số nhân lùi vô hạn"
+ },
+ {
+  "ma_cau": "T1110000002971",
+  "dang_bai_id": "NDB01198",
+  "chac": "cao",
+  "ly_do": "Bảng giá cước taxi, xét liên tục tại mốc 0,7 km.",
+  "can_cu": "Cước taxi, bảng giá bậc thang, hàm Heaviside, hàm dấu"
+ },
+ {
+  "ma_cau": "T1110000002901",
+  "dang_bai_id": "NDB01190",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm tìm mệnh đề sai về giới hạn và liên tục tại 0.",
+  "can_cu": "có giới hạn nhưng không liên tục"
+ },
+ {
+  "ma_cau": "T1110000001669",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Hiệu căn trừ n trừ 2 của dãy số, nhân liên hợp.",
+  "can_cu": "Nhân và chia cho biểu thức liên hợp"
+ },
+ {
+  "ma_cau": "T1110000001716",
+  "dang_bai_id": "NDB01148",
+  "chac": "cao",
+  "ly_do": "Dãy (3/5)^n có giới hạn 0.",
+  "can_cu": "kể từ số hạng nào |u_n| nhỏ hơn một số dương cho trước"
+ },
+ {
+  "ma_cau": "T1110000001981",
+  "dang_bai_id": "NDB01180",
+  "chac": "cao",
+  "ly_do": "x→+∞, căn trừ x trừ 1 dạng ∞-∞.",
+  "can_cu": "Nhân liên hợp đưa về ∞/∞"
+ },
+ {
+  "ma_cau": "T1110000001654",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Thương luỹ thừa 3^n và 4^n-1, chia cho 4^n.",
+  "can_cu": "Chia tử và mẫu cho luỹ thừa có cơ số lớn nhất"
+ },
+ {
+  "ma_cau": "T1110000003115",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "0/0 phân thức hữu tỉ, phân tích nhân tử.",
+  "can_cu": "Triệt nhân tử chung x-x_0"
+ },
+ {
+  "ma_cau": "T1110000003100",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Hàm xác định tại x=1 (mẫu 1), thay trực tiếp.",
+  "can_cu": "Hàm xác định tại x_0, mẫu khác 0"
+ },
+ {
+  "ma_cau": "T1110000001809",
+  "dang_bai_id": "NDB01149",
+  "chac": "cao",
+  "ly_do": "Chứng minh giới hạn 0 bằng |u_n|≤1/n^4 theo nguyên lí kẹp.",
+  "can_cu": "hoặc dùng |u_n|≤ v_n, v_n→0"
+ },
+ {
+  "ma_cau": "T1110000002834",
+  "dang_bai_id": "NDB01185",
+  "chac": "cao",
+  "ly_do": "Lập nồng độ muối C(t) khi bơm nước ngọt vào hồ.",
+  "can_cu": "Khối lượng theo vận tốc (v→ c^-), chi phí trung bình, nồng độ"
+ },
+ {
+  "ma_cau": "T1110000002204",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "0/0 phân thức hữu tỉ, phân tích nhân tử.",
+  "can_cu": "Triệt nhân tử chung x-x_0"
+ },
+ {
+  "ma_cau": "T1110000002463",
+  "dang_bai_id": "NDB01197",
+  "chac": "cao",
+  "ly_do": "Liên tục trên [0;+∞), tìm m ở điểm ghép x=0 và kiểm điểm x=9.",
+  "can_cu": "Điều kiện liên tục tại điểm ghép"
+ },
+ {
+  "ma_cau": "T1110000002238",
+  "dang_bai_id": "NDB01195",
+  "chac": "cao",
+  "ly_do": "Hàm tổng hai phân thức, liên tục trên từng khoảng của tập xác định.",
+  "can_cu": "Đa thức, phân thức, căn, lượng giác, tổng hiệu tích thương hàm liên tục"
+ },
+ {
+  "ma_cau": "T111000000970",
+  "dang_bai_id": "NDB01199",
+  "chac": "cao",
+  "ly_do": "Chọn mệnh đề đúng về nghiệm khi hàm liên tục và f(a)f(b)>0.",
+  "can_cu": "Hàm liên tục trên [a;b] và f(a)f(b)<0"
+ },
+ {
+  "ma_cau": "T1110000002353",
+  "dang_bai_id": "NDB01190",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm hàm nào gián đoạn tại x=2.",
+  "can_cu": "có giới hạn nhưng không liên tục"
+ },
+ {
+  "ma_cau": "T1110000001934",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Giới hạn đa thức, thay trực tiếp.",
+  "can_cu": "Hàm xác định tại x_0, mẫu khác 0"
+ },
+ {
+  "ma_cau": "T1110000002479",
+  "dang_bai_id": "NDB01183",
+  "chac": "cao",
+  "ly_do": "Đa thức bậc 3 khi x→-∞, hệ số dương bậc lẻ ra -∞.",
+  "can_cu": "Dùng x^k chẵn hoặc lẻ khi x→-∞"
+ },
+ {
+  "ma_cau": "T1110000001730",
+  "dang_bai_id": "NDB01150",
+  "chac": "cao",
+  "ly_do": "Cho lim u_n và lim v_n, tính giới hạn hiệu u_n-v_n.",
+  "can_cu": "tính giới hạn của tổng, hiệu, tích, thương, căn các dãy đó"
+ },
+ {
+  "ma_cau": "T1110000004042",
+  "dang_bai_id": "NDB01167",
+  "chac": "cao",
+  "ly_do": "Tổng diện tích dãy tam giác đều lặp vô hạn, cấp số nhân lùi vô hạn.",
+  "can_cu": "Lập cấp số nhân lùi vô hạn của độ dài hoặc diện tích, tính tổng"
+ },
+ {
+  "ma_cau": "T1110000001742",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Hiệu căn trừ n của dãy số, nhân liên hợp.",
+  "can_cu": "Nhân và chia cho biểu thức liên hợp"
+ }
+]

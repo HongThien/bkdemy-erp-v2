@@ -1,0 +1,643 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00485",
+   "chu_de": "Điện từ học",
+   "chuyen_de": "Cảm ứng điện từ & dòng điện xoay chiều",
+   "nhom": "Các dạng bài tập cơ bản của dòng điện xoay chiều",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nHiện tượng cảm ứng điện từ: khi số đường sức từ xuyên qua tiết diện của cuộn dây dẫn kín biến thiên thì trong cuộn dây xuất hiện dòng điện, gọi là dòng điện cảm ứng.\nDòng điện cảm ứng xuất hiện không cần nguồn điện; chỉ có khi số đường sức từ còn đang thay đổi, nam châm hoặc cuộn dây đứng yên thì không có.\nDòng điện xoay chiều là dòng điện luân phiên đổi chiều theo thời gian; dòng điện một chiều (pin, acquy) chạy theo một chiều không đổi.\nMáy phát điện xoay chiều gồm hai bộ phận chính là nam châm và cuộn dây dẫn; một trong hai bộ phận quay thì số đường sức từ qua cuộn dây biến thiên và sinh ra dòng điện xoay chiều. Cơ năng được chuyển hoá thành điện năng.\nDòng điện xoay chiều có tác dụng nhiệt, tác dụng phát sáng, tác dụng từ và tác dụng sinh lí. Đo dòng điện xoay chiều phải dùng ampe kế, vôn kế xoay chiều (kí hiệu AC).\n\n##PP 2. Các bước làm bài\nĐọc đề, xác định bộ phận nào chuyển động (nam châm, cuộn dây hay dòng điện trong nam châm điện)\nKiểm tra số đường sức từ qua cuộn dây kín có biến thiên hay không\nKết luận có hiện tượng cảm ứng điện từ hay không; nếu hỏi về dòng điện, xét chiều dòng điện có luân phiên đổi hay không\nVới câu về tác dụng, đối chiếu dấu hiệu quan sát được (nóng lên, phát sáng, hút sắt, co giật cơ) với từng tác dụng\n\n##CY 3. Lưu ý\nCảm ứng điện từ khác nhiễm điện do cọ xát, nhiễm từ và đoản mạch: ở đây không có nguồn điện nhưng nam châm hoặc nam châm điện làm số đường sức từ qua cuộn dây biến thiên.\nNam châm đứng yên bên trong cuộn dây thì không có dòng điện cảm ứng.\nDòng điện xoay chiều vẫn có đủ các tác dụng như dòng một chiều, nhưng ampe kế, vôn kế một chiều không đo đúng được.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01442",
+     "thu_tu": 1,
+     "ten": "Nhận biết hiện tượng cảm ứng điện từ qua thí nghiệm",
+     "mo_ta": "Đề mô tả một thí nghiệm có nam châm, nam châm điện hoặc máy phát (kim điện kế lệch, đèn LED loé sáng dù không có nguồn điện); hỏi đó là hiện tượng gì.\nChọn đáp án trong các phương án: cảm ứng điện từ, nhiễm điện do cọ xát, đoản mạch, nhiễm từ, phóng điện.\nLưu ý: hỏi điều kiện để có dòng điện cảm ứng ⇒ thuộc dạng \"Xác định điều kiện xuất hiện dòng điện cảm ứng\".",
+     "ly_thuyet": "##TC Dấu hiệu nhận biết cảm ứng điện từ\nCuộn dây dẫn kín không nối nguồn điện nhưng vẫn có dòng điện (kim điện kế lệch, đèn LED sáng) khi nam châm hoặc nam châm điện chuyển động, đóng ngắt khoá K lại gần cuộn dây.\nĐó là hiện tượng cảm ứng điện từ, dòng điện sinh ra gọi là dòng điện cảm ứng.\n\n##PP Cách làm\nTìm trong đề dấu hiệu: có dòng điện nhưng không có nguồn điện\nTìm nguyên nhân: nam châm hoặc nam châm điện chuyển động, thay đổi dòng điện\nLoại các phương án nhiễu điện cọ xát, đoản mạch, nhiễm từ\nChọn cảm ứng điện từ\n\n##CY Phương án nhiễu\nĐoản mạch là nối tắt hai cực nguồn điện, nhiễm từ là sắt bị nam châm hút nên không sinh dòng điện.",
+     "vi_du": "##VD\nCho một nam châm rơi xuyên qua một ống dây dẫn kín nối với điện kế. Trong lúc nam châm rơi qua ống dây, kim điện kế bị lệch. Đó là hiện tượng gì?\nA. Hiện tượng nhiễm từ của sắt\nB. Hiện tượng phóng điện trong không khí\nC. Hiện tượng từ hoá vĩnh viễn cuộn dây\nD. Hiện tượng cảm ứng điện từ\n\nBài giải:\nỐng dây kín không nối với nguồn điện nào nhưng kim điện kế vẫn lệch, tức có dòng điện.\nNam châm rơi qua ống dây làm số đường sức từ qua ống dây biến thiên nên sinh ra dòng điện cảm ứng.\nĐó là hiện tượng cảm ứng điện từ. Chọn D.\n\n##VD\nĐóng khoá K của một nam châm điện đặt cạnh một cuộn dây dẫn kín khác nối với điện kế, kim điện kế bị lệch trong chốc lát. Đó là hiện tượng gì?\nA. Hiện tượng từ hoá vĩnh viễn cuộn dây\nB. Hiện tượng quá tải dòng điện\nC. Hiện tượng cảm ứng điện từ\nD. Hiện tượng nhiễm điện do cọ xát\n\nBài giải:\nKhi đóng khoá K, dòng điện trong nam châm điện tăng từ 0 nên từ trường của nó mạnh dần.\nSố đường sức từ qua cuộn dây bên cạnh biến thiên nên trong cuộn dây có dòng điện cảm ứng làm kim điện kế lệch.\nĐó là hiện tượng cảm ứng điện từ. Chọn C."
+    },
+    {
+     "dang_id": "KDB01443",
+     "thu_tu": 2,
+     "ten": "Xác định điều kiện xuất hiện dòng điện cảm ứng",
+     "mo_ta": "Đề hỏi điều kiện (hoặc trường hợp) làm cuộn dây dẫn kín có dòng điện cảm ứng, hoặc hỏi vì sao có / không có dòng điện cảm ứng.\nGồm: chọn điều kiện đúng, chọn trường hợp KHÔNG có dòng cảm ứng (nam châm đứng yên trong cuộn dây), giải thích khi lắc cuộn dây gần nam châm đứng yên.\nLưu ý: đề chỉ mô tả thí nghiệm rồi hỏi tên hiện tượng ⇒ thuộc dạng \"Nhận biết hiện tượng cảm ứng điện từ qua thí nghiệm\".",
+     "ly_thuyet": "##TC Điều kiện có dòng điện cảm ứng\nTrong cuộn dây dẫn kín xuất hiện dòng điện cảm ứng khi số đường sức từ qua tiết diện cuộn dây biến thiên.\nKhông cần nguồn điện; chỉ cần có chuyển động tương đối giữa nam châm và cuộn dây (vật nào chuyển động cũng được) làm số đường sức từ thay đổi.\nNam châm hoặc cuộn dây đứng yên thì số đường sức từ không đổi, không có dòng điện cảm ứng.\n\n##PP Cách làm\nXem số đường sức từ qua cuộn dây có thay đổi theo thời gian không\nCó biến thiên thì có dòng cảm ứng, không biến thiên thì không có\nLoại phương án nhắc tới nguồn điện, chất liệu dây hay khối lượng nam châm\n\n##CY Chú ý\nNam châm đặt yên trong lòng cuộn dây vẫn không có dòng cảm ứng vì từ trường xuyên qua cuộn dây không đổi.",
+     "vi_du": "##VD\nĐiều kiện nào sau đây làm cuộn dây dẫn kín xuất hiện dòng điện cảm ứng?\nA. Cuộn dây phải nối với một nguồn điện\nB. Số đường sức từ qua cuộn dây biến thiên\nC. Nam châm phải đặt cố định bên trong cuộn dây\nD. Cuộn dây phải được làm bằng kim loại quý\n\nBài giải:\nDòng điện cảm ứng xuất hiện khi số đường sức từ qua cuộn dây dẫn kín biến thiên.\nKhông cần nối nguồn điện (A sai), nam châm cố định thì số đường sức không đổi (C sai), chất liệu dây không quyết định (D sai).\nChọn B.\n\n##VD\nVì sao khi lắc nhẹ một cuộn dây dẫn kín qua lại gần một nam châm đứng yên, trong cuộn dây vẫn xuất hiện dòng điện cảm ứng?\nA. Vì cuộn dây tự phát sinh điện tích khi lắc\nB. Vì nam châm tự thay đổi từ tính khi có vật chuyển động gần nó\nC. Vì chuyển động của cuộn dây làm số đường sức từ qua nó biến thiên\nD. Vì không khí ma sát với cuộn dây sinh ra điện\n\nBài giải:\nNam châm đứng yên nhưng cuộn dây chuyển động nên có chuyển động tương đối giữa chúng.\nChuyển động đó làm số đường sức từ qua cuộn dây biến thiên nên sinh ra dòng điện cảm ứng.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01444",
+     "thu_tu": 3,
+     "ten": "Nhận biết dòng điện xoay chiều và đặc điểm về chiều dòng điện",
+     "mo_ta": "Đề hỏi đặc điểm của dòng điện xoay chiều, hoặc nguồn nào cho dòng xoay chiều / một chiều (pin, ắc quy, ổ điện, máy phát điện).\nGồm: định nghĩa dòng điện xoay chiều, vì sao gọi là xoay chiều, so sánh chiều dòng điện của pin, ắc quy với ổ điện, máy phát.\nLưu ý: hỏi dụng cụ đo dòng điện xoay chiều (ampe kế, vôn kế AC) ⇒ thuộc dạng \"Dụng cụ đo dòng điện và hiệu điện thế xoay chiều\".",
+     "ly_thuyet": "##TC Dòng điện xoay chiều và một chiều\nDòng điện xoay chiều có chiều luân phiên thay đổi theo thời gian; nguồn: máy phát điện xoay chiều, ổ điện trong nhà.\nDòng điện một chiều có chiều không đổi; nguồn: pin, ắc quy.\nBóng đèn sợi đốt vẫn sáng bình thường với dòng xoay chiều vì phát sáng nhờ nhiệt, không phụ thuộc chiều dòng điện.\n\n##PP Cách làm\nXác định nguồn điện nói tới trong đề\nNhớ pin, ắc quy cho dòng một chiều; ổ điện, máy phát xoay chiều cho dòng đổi chiều liên tục\nChọn phương án nói về chiều dòng điện luân phiên đổi hoặc không đổi cho đúng loại nguồn\n\n##CY Chú ý\nCường độ thay đổi không phải đặc điểm quyết định tên gọi xoay chiều; điều quyết định là chiều đổi luân phiên.",
+     "vi_du": "##VD\nDòng điện nào sau đây là dòng điện xoay chiều?\nA. Dòng điện chạy trong mạch nối với pin\nB. Dòng điện không đổi lấy từ acquy\nC. Dòng điện chỉ chạy từ cực dương sang cực âm\nD. Dòng điện của máy phát điện có chiều luân phiên đổi\n\nBài giải:\nDòng điện xoay chiều là dòng có chiều luân phiên thay đổi theo thời gian.\nPin và acquy cho dòng một chiều không đổi (A, B sai); chạy từ cực dương sang cực âm là dòng một chiều (C sai).\nChọn D.\n\n##VD\nMáy phát điện xoay chiều ở nhà máy điện cung cấp dòng điện có đặc điểm gì về chiều, khác với ắc quy?\nA. Chỉ chạy theo một chiều không đổi, giống ắc quy\nB. Không có chiều xác định\nC. Chỉ chạy khi trời có gió\nD. Đổi chiều liên tục theo thời gian, khác với ắc quy\n\nBài giải:\nẮc quy là nguồn một chiều, dòng điện luôn chạy theo một chiều.\nMáy phát điện xoay chiều cho dòng điện đổi chiều liên tục theo thời gian nên khác với ắc quy.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01445",
+     "thu_tu": 4,
+     "ten": "Dụng cụ đo dòng điện và hiệu điện thế xoay chiều",
+     "mo_ta": "Đề hỏi loại ampe kế, vôn kế dùng để đo dòng điện xoay chiều, kí hiệu AC, khác gì so với dụng cụ đo dòng một chiều.\nChọn phương án đúng về loại dòng điện mà dụng cụ AC đo được.\nLưu ý: đề hỏi chung về chiều dòng điện của nguồn (không nói tới dụng cụ đo) ⇒ thuộc dạng \"Nhận biết dòng điện xoay chiều và đặc điểm về chiều dòng điện\".",
+     "ly_thuyet": "##TC Dụng cụ đo xoay chiều\nDòng điện xoay chiều đổi chiều liên tục nên phải dùng ampe kế, vôn kế loại xoay chiều có kí hiệu AC.\nAmpe kế, vôn kế một chiều (DC) không cho số đo đúng với dòng xoay chiều.\nAmpe kế vẫn mắc nối tiếp, vôn kế mắc song song như khi đo dòng một chiều.\n\n##CY Chú ý\nKí hiệu AC trên dụng cụ cho biết dụng cụ dùng cho dòng xoay chiều, không phải chỉ đo dòng yếu hay dòng của pin.",
+     "vi_du": "##VD\nVôn kế xoay chiều, kí hiệu AC, dùng để đo hiệu điện thế của loại dòng điện nào?\nA. Dòng điện chỉ có trong pin\nB. Dòng điện chỉ có trong ắc quy\nC. Dòng điện chỉ chạy theo một chiều không đổi\nD. Dòng điện đổi chiều liên tục theo thời gian\n\nBài giải:\nKí hiệu AC chỉ vôn kế dùng cho dòng điện xoay chiều.\nDòng điện xoay chiều là dòng đổi chiều liên tục theo thời gian; pin, ắc quy cho dòng một chiều (A, B, C sai).\nChọn D.\n\n##VD\nVôn kế hoặc ampe kế dùng để đo dòng điện xoay chiều cần có đặc điểm gì khác so với đo dòng điện một chiều?\nA. Phải là loại chuyên dùng cho dòng xoay chiều\nB. Không cần đặc điểm gì khác, dùng chung loại với dòng một chiều\nC. Phải có kim chỉ quay liên tục không dừng\nD. Phải nối trực tiếp với hai cực của nguồn điện một chiều\n\nBài giải:\nDòng điện xoay chiều đổi chiều liên tục nên không đo đúng được bằng dụng cụ một chiều.\nCần dùng ampe kế, vôn kế chuyên dùng cho dòng xoay chiều (kí hiệu AC).\nChọn A."
+    },
+    {
+     "dang_id": "KDB01446",
+     "thu_tu": 5,
+     "ten": "Cấu tạo và nguyên tắc hoạt động của máy phát điện xoay chiều",
+     "mo_ta": "Đề hỏi máy phát điện xoay chiều (đơn giản, dynamo xe đạp, nhà máy điện) gồm những bộ phận nào, bộ phận nào quay, vì sao có dòng điện, năng lượng nào chuyển hoá thành điện năng.\nDùng kiến thức: nam châm quay làm số đường sức từ qua cuộn dây biến thiên.\nLưu ý: hỏi vì sao dòng điện đổi chiều (đường sức tăng ⇒ giảm) ⇒ thuộc nhóm \"Giải thích hiện tượng đổi chiều dòng điện\".",
+     "ly_thuyet": "##TC Máy phát điện xoay chiều\nHai bộ phận chính: nam châm và cuộn dây dẫn; một trong hai bộ phận quay.\nKhi nam châm (hoặc cuộn dây) quay, số đường sức từ qua cuộn dây biến thiên nên có dòng điện cảm ứng xoay chiều.\nCơ năng của chuyển động quay (tua bin, bánh xe) được chuyển hoá thành điện năng.\n\n##PP Cách làm\nXác định bộ phận quay và bộ phận đứng yên trong thiết bị\nGiải thích bằng sự biến thiên số đường sức từ qua cuộn dây\nXác định dạng năng lượng ban đầu (cơ năng) chuyển hoá thành điện năng\n\n##CY Chú ý\nMáy phát điện không tự sinh điện tích hay dùng pin; điện năng có được nhờ cơ năng làm quay.",
+     "vi_du": "##VD\nTrong máy phát điện xoay chiều ở nhà máy điện, năng lượng nào được chuyển hoá thành điện năng nhờ hiện tượng cảm ứng điện từ?\nA. Năng lượng của tua bin quay (cơ năng)\nB. Năng lượng ánh sáng mặt trời chiếu trực tiếp vào máy phát\nC. Năng lượng hoá học dự trữ sẵn trong máy phát\nD. Năng lượng nhiệt toả ra từ cuộn dây\n\nBài giải:\nTua bin quay nhờ nước, hơi nước hoặc gió làm quay nam châm hoặc cuộn dây của máy phát.\nSố đường sức từ qua cuộn dây biến thiên nên có dòng điện cảm ứng; cơ năng được chuyển hoá thành điện năng.\nChọn A.\n\n##VD\nDynamo xe đạp là một máy phát điện xoay chiều nhỏ, tiếp xúc với bánh xe. Khi xe chuyển động, bộ phận nào của dynamo quay?\nA. Cuộn dây bên trong dynamo quay theo bánh xe\nB. Cả nam châm và cuộn dây cùng đứng yên\nC. Trục xe đạp tự phát sinh ra điện tích\nD. Nam châm bên trong dynamo quay theo bánh xe\n\nBài giải:\nBánh xe quay làm nam châm bên trong dynamo quay theo, còn cuộn dây đứng yên.\nSố đường sức từ qua cuộn dây biến thiên nên trong cuộn dây có dòng điện cảm ứng xoay chiều.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01447",
+     "thu_tu": 6,
+     "ten": "Nhận biết tác dụng của dòng điện xoay chiều qua hiện tượng",
+     "mo_ta": "Đề mô tả một hiện tượng quan sát được khi có dòng điện xoay chiều (đèn sáng, đinh sắt bị hút, cơ co giật, dây điện trở nóng lên); hỏi đó là tác dụng gì.\nGồm cả câu hỏi dòng xoay chiều có những tác dụng nào.\nLưu ý: đề nêu tên một thiết bị cụ thể trong đời sống (bếp điện, cần cẩu, quạt…) ⇒ thuộc nhóm \"Ứng dụng thực tế của dòng điện xoay chiều\".",
+     "ly_thuyet": "##TC Bốn tác dụng của dòng điện xoay chiều\nTác dụng nhiệt: dây dẫn, dây điện trở nóng lên.\nTác dụng phát sáng: bóng đèn huỳnh quang, đèn LED sáng.\nTác dụng từ: ống dây, nam châm điện hút được vật bằng sắt.\nTác dụng sinh lí: dòng điện đi qua cơ thể gây co giật cơ.\n\n##PP Cách làm\nTìm dấu hiệu quan sát được trong đề\nĐối chiếu dấu hiệu với bốn tác dụng\nLoại các phương án còn lại và chọn\n\n##CY Chú ý\nDòng điện xoay chiều có đủ bốn tác dụng nhiệt, phát sáng, từ và sinh lí.",
+     "vi_du": "##VD\nBóng đèn huỳnh quang sáng lên khi mắc vào nguồn điện xoay chiều của lưới điện. Đó là tác dụng gì của dòng điện xoay chiều?\nA. Tác dụng nhiệt\nB. Tác dụng phát sáng\nC. Tác dụng từ\nD. Tác dụng sinh lí\n\nBài giải:\nĐèn huỳnh quang phát ra ánh sáng khi có dòng điện xoay chiều chạy qua.\nĐó là tác dụng phát sáng. Chọn B.\n\n##VD\nKhi vô ý chạm tay vào dây điện xoay chiều bị hở lõi, cơ tay của người bị co giật mạnh không kiểm soát được. Đó là tác dụng gì của dòng điện xoay chiều?\nA. Tác dụng nhiệt\nB. Tác dụng phát sáng\nC. Tác dụng từ\nD. Tác dụng sinh lí\n\nBài giải:\nDòng điện chạy qua cơ thể gây co giật cơ.\nĐó là dấu hiệu của tác dụng sinh lí. Chọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00487",
+   "chu_de": "Điện từ học",
+   "chuyen_de": "Cảm ứng điện từ & dòng điện xoay chiều",
+   "nhom": "Ứng dụng thực tế của dòng điện xoay chiều",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nDòng điện xoay chiều có bốn tác dụng: nhiệt, phát sáng, từ, sinh lí.\nTác dụng nhiệt: bếp điện, ấm đun nước siêu tốc, bàn là. Tác dụng phát sáng: đèn huỳnh quang, đèn LED, bảng hiệu neon. Tác dụng từ: nam châm điện, chuông điện, quạt điện, cần cẩu điện từ. Tác dụng sinh lí: máy kích thích điện, dòng điện gây co giật cơ khi chạm vào dây điện.\nNam châm điện dùng dòng xoay chiều vẫn hút được vật bằng sắt khi còn dòng điện; việc đổi chiều của dòng không làm vật bị nhả ra.\n\n##PP 2. Các bước làm bài\nXác định thiết bị trong đề hoạt động dựa vào dấu hiệu gì (nóng lên, sáng, hút sắt, quay, kích thích cơ)\nGắn dấu hiệu đó với một trong bốn tác dụng\nVới câu tìm mô tả SAI, kiểm tra từng phương án và chọn phương án nói sai bản chất tác dụng\n\n##CY 3. Lưu ý\nĐộng cơ điện, nam châm điện (quạt, chuông, cần cẩu) dùng tác dụng từ, không phải tác dụng nhiệt.\nPhát biểu \"nam châm điện dùng dòng xoay chiều nhả vật sắt mỗi khi dòng đổi chiều\" là sai.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01452",
+     "thu_tu": 1,
+     "ten": "Xác định tác dụng chính của dòng điện xoay chiều trong một thiết bị",
+     "mo_ta": "Đề nêu một thiết bị trong đời sống dùng dòng điện xoay chiều (bếp điện, đèn huỳnh quang, cần cẩu, máy kích thích điện, quạt điện…) và công dụng của nó; hỏi thiết bị ứng dụng chủ yếu tác dụng nào.\nChọn một trong bốn tác dụng: nhiệt, phát sáng, từ, sinh lí.\nLưu ý: đề đưa bốn mô tả và hỏi mô tả SAI ⇒ thuộc dạng \"Tìm phát biểu sai về ứng dụng của dòng điện xoay chiều\".",
+     "ly_thuyet": "##TC Tác dụng theo thiết bị\nDây đốt nóng (bếp điện, ấm siêu tốc, bàn là): tác dụng nhiệt.\nĐèn huỳnh quang, đèn LED, bảng hiệu: tác dụng phát sáng.\nNam châm điện, động cơ quạt, chuông điện, cần cẩu điện từ: tác dụng từ.\nMáy kích thích điện trị liệu: tác dụng sinh lí.\n\n##PP Cách làm\nTìm bộ phận chính tạo ra công dụng của thiết bị (dây đốt nóng, bóng đèn, nam châm điện, điện cực)\nGắn bộ phận đó với tác dụng tương ứng\nChọn phương án trùng khớp\n\n##CY Chú ý\nQuạt điện và cần cẩu dùng nam châm điện hoặc động cơ nên là tác dụng từ, dù ta thấy cánh quạt quay hoặc vật sắt bị nhấc lên.",
+     "vi_du": "##VD\nĐèn huỳnh quang mắc vào điện lưới xoay chiều để chiếu sáng phòng học. Đèn huỳnh quang ứng dụng chủ yếu tác dụng gì của dòng điện xoay chiều?\nA. Tác dụng nhiệt\nB. Tác dụng từ\nC. Tác dụng phát sáng\nD. Tác dụng sinh lí\n\nBài giải:\nĐèn huỳnh quang phát ra ánh sáng để chiếu sáng khi có dòng điện xoay chiều chạy qua.\nĐó là ứng dụng chủ yếu của tác dụng phát sáng. Chọn C.\n\n##VD\nCần cẩu ở bãi phế liệu dùng nam châm điện chạy bằng dòng điện xoay chiều để hút, nhả các vật bằng sắt. Cần cẩu ứng dụng chủ yếu tác dụng gì?\nA. Tác dụng nhiệt\nB. Tác dụng phát sáng\nC. Tác dụng sinh lí\nD. Tác dụng từ\n\nBài giải:\nCần cẩu dùng nam châm điện để hút và nhả vật bằng sắt.\nHút vật bằng sắt là dấu hiệu của tác dụng từ. Chọn D."
+    },
+    {
+     "dang_id": "KDB01453",
+     "thu_tu": 2,
+     "ten": "Tìm phát biểu sai về ứng dụng của dòng điện xoay chiều",
+     "mo_ta": "Đề đưa bốn mô tả về tác dụng của dòng điện xoay chiều (bếp điện, đèn, nam châm điện, cần cẩu, chuông, rơ-le, khoá cửa điện từ…) và hỏi mô tả nào SAI.\nPhương án sai thường là: nam châm điện, cần cẩu, chuông, rơ-le, khoá điện từ dùng dòng xoay chiều bị nhả vật mỗi khi dòng đổi chiều.\nLưu ý: đề chỉ nêu một thiết bị và hỏi tác dụng ⇒ thuộc dạng \"Xác định tác dụng chính của dòng điện xoay chiều trong một thiết bị\".",
+     "ly_thuyet": "##TC Hoạt động của nam châm điện xoay chiều\nNam châm điện dùng dòng xoay chiều vẫn hút được vật bằng sắt liên tục khi còn dòng điện; sắt bị hút về cả hai cực nên đổi chiều dòng không làm vật bị nhả ra.\nChuông điện, cần cẩu điện từ, rơ-le, khoá cửa điện từ chạy bằng nam châm điện đều dùng tác dụng từ.\nBếp điện, ấm siêu tốc dùng tác dụng nhiệt; đèn huỳnh quang, đèn LED dùng tác dụng phát sáng; máy kích thích điện dùng tác dụng sinh lí.\n\n##PP Cách làm\nĐọc từng phương án và xác định thiết bị dùng tác dụng nào\nKiểm tra phương án đó có khớp với bốn tác dụng không\nChọn phương án nói thiết bị nhả vật hoặc mất tác dụng mỗi khi dòng đổi chiều\n\n##CY Chú ý\nChữ \"SAI\" trong đề nghĩa là chọn phát biểu không đúng, đừng chọn phát biểu đúng.",
+     "vi_du": "##VD\nBốn mô tả về tác dụng của dòng điện xoay chiều (xem các phương án). Mô tả nào SAI?\nA. Bếp điện dùng tác dụng nhiệt của dòng xoay chiều\nB. Nam châm điện AC vẫn hút được vật bằng sắt\nC. Đèn huỳnh quang dùng tác dụng phát sáng\nD. Cần cẩu AC nhả vật sắt mỗi khi dòng đổi chiều\n\nBài giải:\nBếp điện dùng tác dụng nhiệt, đèn huỳnh quang dùng tác dụng phát sáng nên A, C đúng.\nNam châm điện dùng dòng xoay chiều vẫn hút vật bằng sắt khi còn dòng điện nên B đúng.\nCần cẩu dùng nam châm điện, sắt bị hút về cả hai cực nên dòng đổi chiều không làm vật bị nhả ra, D sai.\nChọn D.\n\n##VD\nBốn mô tả về tác dụng của dòng điện xoay chiều (xem các phương án). Mô tả nào SAI?\nA. Chuông điện AC dùng nam châm điện hút thanh sắt để gõ chuông\nB. Ấm siêu tốc AC dùng tác dụng nhiệt để đun sôi nước\nC. Cần cẩu điện từ AC bỏ rơi vật sắt mỗi lần dòng điện đổi chiều\nD. Quạt điện AC dùng tác dụng từ để quay cánh quạt\n\nBài giải:\nChuông điện dùng nam châm điện hút thanh sắt (A đúng); ấm siêu tốc dùng tác dụng nhiệt (B đúng); quạt điện dùng tác dụng từ để quay (D đúng).\nNam châm điện dùng dòng xoay chiều vẫn hút vật bằng sắt khi còn dòng điện, nên cần cẩu không bỏ rơi vật khi dòng đổi chiều, C sai.\nChọn C."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09000000081",
+   "nhom_id": "KNB00485",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đèn có U = 120V mắc vào điện trở R = 48Ω. Tính công suất của đèn bằng công thức P = U²/R.",
+   "lua_chon": [
+    "2,5W",
+    "14400W",
+    "300W",
+    "48W"
+   ],
+   "dap_an": "C",
+   "loi_giai": "P = U²/R = 120² / 48 = 14 400 / 48 = 300W.\n\nVì sao các phương án khác sai:\n- A: Đã quên bình phương U, chỉ lấy U chia cho R.\n- B: Đã quên chia cho R, chỉ tính U² mà không chia tiếp.\n- D: Đã nhầm lấy giá trị điện trở R làm đáp số công suất."
+  },
+  {
+   "ma_cau": "K09000000082",
+   "nhom_id": "KNB00485",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Trong các trường hợp sau, trường hợp nào cuộn dây dẫn kín xuất hiện dòng điện cảm ứng?",
+   "lua_chon": [
+    "Đưa nam châm lại gần cuộn dây",
+    "Nam châm đứng yên bên trong cuộn dây",
+    "Nam châm đứng yên cách xa cuộn dây",
+    "Nam châm và cuộn dây cùng đứng yên"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Chỉ khi có chuyển động tương đối giữa nam châm và cuộn dây, số đường sức từ mới biến thiên và sinh ra dòng cảm ứng.\n\nVì sao các phương án khác sai:\n- B: Nam châm đứng yên thì số đường sức từ không biến thiên.\n- C: Đứng yên dù ở xa vẫn không làm số đường sức từ thay đổi.\n- D: Cả hai đứng yên thì không có sự biến thiên đường sức từ."
+  },
+  {
+   "ma_cau": "K09000000083",
+   "nhom_id": "KNB00485",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Người ta rút một nam châm ra xa cuộn dây dẫn kín rồi dừng hẳn, giữ yên tại chỗ mới. Trong cả quá trình đó, cuộn dây có dòng điện cảm ứng vào lúc nào?",
+   "lua_chon": [
+    "Trong suốt quá trình kể cả lúc đã dừng",
+    "Chỉ sau khi nam châm đã dừng hẳn",
+    "Chỉ trong lúc đang rút nam châm ra",
+    "Không có lúc nào xuất hiện dòng điện"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Dòng cảm ứng chỉ tồn tại khi số đường sức từ đang biến thiên, tức là trong lúc nam châm đang chuyển động.\n\nVì sao các phương án khác sai:\n- A: Sau khi dừng, số đường sức từ không đổi nên không còn dòng cảm ứng.\n- B: Lúc dừng hẳn, số đường sức từ không biến thiên nữa.\n- D: Trong lúc đang rút ra, số đường sức từ đang giảm nên vẫn có dòng."
+  },
+  {
+   "ma_cau": "K09000000084",
+   "nhom_id": "KNB00485",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Nam châm chuyển động lại gần rồi dừng hẳn bên trong một cuộn dây dẫn kín nối điện kế. Lúc đó kim điện kế có còn lệch không?",
+   "lua_chon": [
+    "Có, vì nam châm vẫn ở gần cuộn dây",
+    "Không, vì nam châm đã đứng yên",
+    "Có, vì từ trường của nam châm vẫn còn",
+    "Có, vì cuộn dây vẫn còn nhiễm từ"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khi nam châm dừng hẳn, số đường sức từ qua cuộn dây không còn biến thiên nên kim điện kế trở về 0.\n\nVì sao các phương án khác sai:\n- A: Ở gần nhưng đứng yên thì số đường sức từ không đổi.\n- C: Từ trường không đổi theo thời gian thì không sinh ra dòng cảm ứng.\n- D: Cuộn dây nhiễm từ không tự sinh ra dòng điện cảm ứng."
+  },
+  {
+   "ma_cau": "K09000000085",
+   "nhom_id": "KNB00485",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Cuộn dây dẫn kín được giữ cố định, còn nam châm bên cạnh liên tục dao động qua lại. Trong cuộn dây có dòng điện cảm ứng không?",
+   "lua_chon": [
+    "Không, vì cuộn dây đứng yên",
+    "Chỉ có khi cuộn dây cũng chuyển động",
+    "Có, vì có chuyển động tương đối giữa nam châm và cuộn dây",
+    "Không, vì chỉ nam châm chuyển động chứ không phải cuộn dây"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Dòng điện cảm ứng xuất hiện khi có chuyển động TƯƠNG ĐỐI giữa nam châm và cuộn dây; nam châm dao động qua lại vẫn làm số đường sức từ qua cuộn dây biến thiên.\n\nVì sao các phương án khác sai:\n- A: Chỉ cần một trong hai vật chuyển động tương đối với vật kia là đủ để sinh dòng cảm ứng, không cần cuộn dây phải chuyển động.\n- B: Không cần cả hai cùng chuyển động, chỉ cần có chuyển động tương đối.\n- D: Chuyển động của nam châm so với cuộn dây đứng yên vẫn là chuyển động tương đối, đủ điều kiện sinh dòng cảm ứng."
+  },
+  {
+   "ma_cau": "K09000000086",
+   "nhom_id": "KNB00485",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Nam châm điện đang có dòng điện ổn định chạy qua, đặt cạnh cuộn dây dẫn kín nối điện kế. Khi ngắt khoá K của nam châm điện, hiện tượng gì xảy ra?",
+   "lua_chon": [
+    "Kim điện kế lệch trong khoảnh khắc dòng điện giảm về 0",
+    "Không có gì thay đổi vì mạch nam châm đã ngắt",
+    "Cuộn dây kín bị nhiễm từ vĩnh viễn",
+    "Kim điện kế lệch liên tục đến khi đóng lại K"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khi ngắt khoá K, dòng điện và số đường sức từ giảm nhanh về 0, làm kim điện kế lệch trong khoảnh khắc rồi trở về 0.\n\nVì sao các phương án khác sai:\n- B: Lúc dòng điện giảm về 0, số đường sức từ vẫn đang biến thiên.\n- C: Cuộn dây dẫn kín không tự nhiễm từ vĩnh viễn trong thí nghiệm này.\n- D: Kim chỉ lệch trong lúc dòng điện đang giảm, không lệch liên tục sau đó."
+  },
+  {
+   "ma_cau": "K09000000087",
+   "nhom_id": "KNB00485",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Dùng biến trở làm dòng điện qua nam châm điện tăng dần trong 2 giây rồi giữ không đổi. Cuộn dây dẫn kín đặt gần có dòng điện cảm ứng trong khoảng thời gian nào?",
+   "lua_chon": [
+    "Chỉ tại thời điểm bắt đầu tăng dòng điện",
+    "Chỉ sau khi dòng điện đã không đổi",
+    "Trong suốt 2 giây dòng điện đang tăng dần",
+    "Không lúc nào có dòng điện cảm ứng"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Số đường sức từ qua cuộn dây biến thiên liên tục trong suốt 2 giây dòng điện tăng dần, nên dòng cảm ứng tồn tại suốt khoảng thời gian đó.\n\nVì sao các phương án khác sai:\n- A: Trong cả 2 giây dòng điện vẫn đang tăng, không chỉ một thời điểm.\n- B: Khi dòng điện không đổi, số đường sức từ không còn biến thiên.\n- D: Trong lúc dòng điện đang tăng, số đường sức từ đang biến thiên nên vẫn có dòng."
+  },
+  {
+   "ma_cau": "K09000000088",
+   "nhom_id": "KNB00485",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Nam châm điện có dòng điện không đổi chạy qua trong một thời gian dài, đặt cạnh cuộn dây dẫn kín nối điện kế. Trong suốt thời gian đó, kim điện kế có lệch không?",
+   "lua_chon": [
+    "Có, vì nam châm điện vẫn đang có dòng điện",
+    "Không, vì số đường sức từ không biến thiên",
+    "Có, nhưng chỉ lệch nhẹ",
+    "Không, vì nam châm điện đã hết từ tính"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Dòng điện không đổi tạo ra số đường sức từ không đổi qua cuộn dây bên cạnh, không có sự biến thiên nên không xuất hiện dòng điện cảm ứng, kim điện kế không lệch.\n\nVì sao các phương án khác sai:\n- A: Có dòng điện qua nam châm điện chưa đủ; phải có sự BIẾN THIÊN số đường sức từ mới sinh ra dòng cảm ứng.\n- C: Không có sự biến thiên đường sức từ nên kim hoàn toàn không lệch, không phải lệch nhẹ.\n- D: Nam châm điện vẫn còn từ tính do vẫn có dòng điện chạy qua, không mất từ tính."
+  },
+  {
+   "ma_cau": "K09000000089",
+   "nhom_id": "KNB00485",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Nam châm được đưa lại gần một cuộn dây dẫn kín nối đèn LED, sau đó dừng hẳn và giữ yên sát cuộn dây. Đèn LED sáng ở giai đoạn nào?",
+   "lua_chon": [
+    "Chỉ sáng trong lúc đưa nam châm lại gần",
+    "Sáng liên tục kể cả khi đã dừng lại",
+    "Chỉ sáng sau khi nam châm đã dừng hẳn",
+    "Không sáng ở bất kì giai đoạn nào"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đèn LED chỉ sáng khi số đường sức từ đang biến thiên, tức là trong lúc nam châm đang chuyển động lại gần.\n\nVì sao các phương án khác sai:\n- B: Khi dừng lại, số đường sức từ không đổi nên đèn tắt.\n- C: Lúc đã dừng hẳn, số đường sức từ không còn biến thiên.\n- D: Trong lúc đưa lại gần, số đường sức từ đang tăng nên đèn có sáng."
+  },
+  {
+   "ma_cau": "K09000000090",
+   "nhom_id": "KNB00485",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Nam châm được giữ yên cạnh một cuộn dây dẫn kín nối điện kế, sau đó rút nhanh ra xa. Kim điện kế lệch ở giai đoạn nào?",
+   "lua_chon": [
+    "Lệch trong lúc nam châm còn đang giữ yên",
+    "Lệch liên tục từ đầu đến cuối quá trình",
+    "Không lệch ở bất kì giai đoạn nào",
+    "Lệch trong lúc rút nam châm ra xa"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Kim điện kế chỉ lệch khi số đường sức từ qua cuộn dây đang biến thiên, tức là trong lúc rút nam châm ra.\n\nVì sao các phương án khác sai:\n- A: Lúc giữ yên, số đường sức từ chưa biến thiên nên kim chưa lệch.\n- B: Trước khi rút ra, số đường sức từ chưa hề thay đổi.\n- C: Trong lúc rút ra, số đường sức từ đang giảm nên kim vẫn lệch."
+  },
+  {
+   "ma_cau": "K09000000091",
+   "nhom_id": "KNB00485",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Một cuộn dây dẫn kín nối đèn LED được đưa nhanh vào lòng một nam châm hình chữ U đang đứng yên, sau đó dừng lại. Đèn LED sáng khi nào?",
+   "lua_chon": [
+    "Sáng liên tục kể cả khi cuộn dây đã dừng",
+    "Chỉ sáng trong lúc cuộn dây đang chuyển động vào",
+    "Chỉ sáng sau khi cuộn dây đã dừng hẳn",
+    "Không sáng vì nam châm đang đứng yên"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Dù nam châm đứng yên, cuộn dây chuyển động vào lòng nam châm vẫn làm số đường sức từ qua nó biến thiên, nên đèn sáng trong lúc đó.\n\nVì sao các phương án khác sai:\n- A: Khi cuộn dây dừng, số đường sức từ qua nó không đổi.\n- C: Lúc đã dừng, số đường sức từ không còn biến thiên nữa.\n- D: Chuyển động tương đối của cuộn dây vẫn làm đường sức từ biến thiên."
+  },
+  {
+   "ma_cau": "K09000000092",
+   "nhom_id": "KNB00485",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Nam châm điện nối nguồn qua khoá K, đặt gần cuộn dây kín có đèn LED. Người ta đóng khoá K, giữ nguyên một lúc rồi ngắt khoá K. Đèn LED loé sáng vào những thời điểm nào?",
+   "lua_chon": [
+    "Vào lúc đóng khoá K và lúc ngắt khoá K",
+    "Chỉ vào lúc đóng khoá K",
+    "Chỉ vào lúc ngắt khoá K",
+    "Sáng liên tục trong suốt cả quá trình"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Dòng điện qua nam châm điện biến thiên đột ngột tại cả hai thời điểm đóng và ngắt khoá K, nên đèn LED loé sáng ở cả hai thời điểm đó.\n\nVì sao các phương án khác sai:\n- B: Lúc ngắt khoá K, dòng điện cũng biến thiên đột ngột nên đèn vẫn sáng.\n- C: Lúc đóng khoá K, dòng điện cũng biến thiên đột ngột nên đèn vẫn sáng.\n- D: Khi dòng điện đã ổn định giữa hai thời điểm, đèn không sáng."
+  },
+  {
+   "ma_cau": "K09000000093",
+   "nhom_id": "KNB00485",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Cho nam châm quay đều trước một cuộn dây dẫn kín nối điện kế trong 5 giây rồi dừng nam châm lại. Kim điện kế lệch trong khoảng thời gian nào?",
+   "lua_chon": [
+    "Chỉ lệch ở giây đầu tiên của quá trình quay",
+    "Chỉ lệch sau khi nam châm đã dừng lại",
+    "Lệch liên tục trong 5 giây, ngừng khi nam châm dừng",
+    "Không lệch vì nam châm chỉ quay tại chỗ"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Trong suốt 5 giây nam châm quay đều, số đường sức từ liên tục biến thiên nên kim điện kế lệch liên tục, rồi dừng lệch khi nam châm dừng quay.\n\nVì sao các phương án khác sai:\n- A: Nam châm vẫn tiếp tục quay suốt 5 giây nên kim vẫn lệch.\n- B: Khi nam châm đã dừng, số đường sức từ không còn biến thiên.\n- D: Quay tại chỗ vẫn làm số đường sức từ qua cuộn dây biến thiên."
+  },
+  {
+   "ma_cau": "K09000000094",
+   "nhom_id": "KNB00485",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đưa nam châm lại gần rồi lập tức rút ra xa một cuộn dây dẫn kín nối đèn LED, thao tác này lặp lại hai lần liên tiếp. Đèn LED loé sáng mấy lần?",
+   "lua_chon": [
+    "Hai lần, mỗi lần thao tác loé sáng một lần",
+    "Một lần duy nhất trong cả quá trình",
+    "Không sáng lần nào vì thao tác quá nhanh",
+    "Bốn lần, ứng với hai lần đưa vào và rút ra"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mỗi lần đưa nam châm lại gần hoặc rút ra đều làm số đường sức từ biến thiên một lần, hai lần thao tác lặp lại gồm bốn lần biến thiên nên đèn loé sáng bốn lần.\n\nVì sao các phương án khác sai:\n- A: Mỗi lần đưa vào và mỗi lần rút ra đều làm đèn loé sáng riêng.\n- B: Mỗi lần đường sức từ biến thiên đều làm đèn loé sáng, không chỉ một lần.\n- C: Tốc độ thao tác không quyết định việc đèn có sáng hay không."
+  },
+  {
+   "ma_cau": "K09000000095",
+   "nhom_id": "KNB00485",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một cuộn dây dẫn kín nối vôn kế (đo được cả giá trị 0) được đưa nhanh ra xa một nam châm rồi bất ngờ dừng lại và đứng yên luôn. Số chỉ vôn kế thay đổi thế nào theo thời gian?",
+   "lua_chon": [
+    "Khác 0 lúc chuyển động, về 0 khi dừng",
+    "Tăng dần đều từ 0",
+    "Luôn bằng 0",
+    "Khác 0 mãi mãi kể cả khi đã dừng"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Trong lúc cuộn dây đang chuyển động ra xa, số đường sức từ đang biến thiên nên có dòng cảm ứng, vôn kế chỉ khác 0; khi dừng lại, số đường sức từ không đổi nên vôn kế trở về 0.\n\nVì sao các phương án khác sai:\n- B: Số chỉ vôn kế không tăng dần đều, nó phụ thuộc tốc độ biến thiên đường sức từ rồi về 0 khi dừng.\n- C: Trong lúc đang chuyển động, vẫn có dòng cảm ứng nên vôn kế không thể luôn bằng 0.\n- D: Khi đã dừng hẳn, số đường sức từ không đổi nên vôn kế phải trở về 0, không khác 0 mãi mãi."
+  },
+  {
+   "ma_cau": "K09000000096",
+   "nhom_id": "KNB00485",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một cuộn dây dẫn kín nối đèn LED được đặt trong lòng một nam châm hình chữ U. Nếu giữ cuộn dây đứng yên nhưng làm nam châm rung nhẹ liên tục tại chỗ (dao động rất nhỏ quanh vị trí cân bằng), đèn LED sẽ thế nào?",
+   "lua_chon": [
+    "Không sáng vì nam châm không di chuyển xa",
+    "Nhấp nháy sáng liên tục theo nhịp rung của nam châm",
+    "Sáng liên tục với độ sáng không đổi",
+    "Chỉ sáng một lần duy nhất rồi tắt hẳn"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Nam châm rung liên tục làm số đường sức từ qua cuộn dây biến thiên liên tục, nên dòng điện cảm ứng cũng xuất hiện liên tục theo nhịp rung, đèn LED nhấp nháy sáng theo.\n\nVì sao các phương án khác sai:\n- A: Chỉ cần có biến thiên đường sức từ (dù dao động nhỏ) là đủ sinh dòng cảm ứng, không cần di chuyển xa.\n- C: Vì nam châm rung liên tục (không đứng yên hẳn), dòng cảm ứng cũng biến đổi liên tục, đèn không sáng đều mà nhấp nháy.\n- D: Nam châm vẫn tiếp tục rung nên vẫn liên tục sinh dòng cảm ứng, không chỉ sáng một lần."
+  },
+  {
+   "ma_cau": "K09000000097",
+   "nhom_id": "KNB00485",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một học sinh dự đoán: 'Nếu giữ nam châm đứng yên bên trong cuộn dây dẫn kín thì đèn LED nối với cuộn dây sáng liên tục.' Dự đoán này có phù hợp với hiện tượng cảm ứng điện từ không?",
+   "lua_chon": [
+    "Phù hợp, vì nam châm ở rất gần cuộn dây",
+    "Phù hợp, vì từ trường trong cuộn dây rất mạnh",
+    "Không phù hợp, vì số đường sức từ không biến thiên",
+    "Không phù hợp, vì đèn LED không sáng với dòng điện"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Dòng điện cảm ứng chỉ xuất hiện khi số đường sức từ qua cuộn dây biến thiên. Nam châm đứng yên thì số đường sức từ không đổi nên không có dòng cảm ứng, đèn không sáng.\n\nVì sao các phương án khác sai:\n- A: Ở gần nhưng đứng yên thì số đường sức từ không biến thiên, không có dòng cảm ứng.\n- B: Từ trường mạnh nhưng không đổi thì không sinh dòng cảm ứng.\n- D: Đèn LED sáng khi có dòng điện đúng chiều; ở đây không có dòng cảm ứng."
+  },
+  {
+   "ma_cau": "K09000000098",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Vỏ kim loại của một chiếc máy giặt bị rò điện nhưng người dùng không biết. Biện pháp nào giúp dòng điện rò rỉ này thoát an toàn xuống đất, tránh gây giật cho người chạm vào vỏ máy?",
+   "lua_chon": [
+    "Nối đất vỏ kim loại của máy giặt",
+    "Dùng vỏ máy bằng kim loại dày hơn",
+    "Đặt máy giặt cách xa ổ điện",
+    "Tăng cường độ dòng điện định mức của cầu chì"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Dây tiếp đất nối vỏ kim loại với đất, giúp dòng điện rò rỉ thoát xuống đất thay vì qua người khi chạm vào vỏ máy.\n\nVì sao các phương án khác sai:\n- B: Vỏ dày hơn không giúp dòng điện rò thoát xuống đất.\n- C: Khoảng cách tới ổ điện không ảnh hưởng đến việc dòng điện rò có thoát xuống đất hay không.\n- D: Tăng dòng định mức cầu chì làm mạch khó ngắt hơn khi có sự cố, không giúp thoát điện rò."
+  },
+  {
+   "ma_cau": "K09000000099",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Trong nhà tắm ẩm ướt, một người cắm sạc điện thoại vào ổ điện xoay chiều rồi để tay ướt chạm vào phích cắm. Thiết bị nào, khi lắp đặt, giúp tự động ngắt mạch nếu có dòng điện rò qua người?",
+   "lua_chon": [
+    "Công tơ điện",
+    "Bóng đèn báo hiệu",
+    "Cầu dao chống giật",
+    "Ổ cắm nhiều lỗ"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Cầu dao chống giật (aptomat chống giật) phát hiện dòng điện rò qua người rồi tự động ngắt mạch trong thời gian rất ngắn để phòng điện giật.\n\nVì sao các phương án khác sai:\n- A: Công tơ điện chỉ đo lượng điện tiêu thụ, không tự ngắt mạch khi có dòng rò.\n- B: Bóng đèn báo hiệu chỉ cho biết mạch có điện, không tự ngắt mạch khi có sự cố.\n- D: Ổ cắm nhiều lỗ chỉ giúp cắm nhiều thiết bị, không có chức năng ngắt mạch khi rò điện."
+  },
+  {
+   "ma_cau": "K09000000100",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một đoạn dây dẫn điện trong nhà bị bong lớp vỏ bọc, để lộ lõi kim loại nhưng vẫn cắm vào nguồn điện xoay chiều. Biện pháp nào xử lí đúng để tránh nguy cơ điện giật khi vô ý chạm vào đoạn dây?",
+   "lua_chon": [
+    "Dùng khăn ướt che đoạn dây hở",
+    "Bọc dây hở bằng băng dính cách điện",
+    "Quấn thêm dây kim loại quanh đoạn hở",
+    "Tăng khoảng cách giữa các ổ điện trong nhà"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Vật liệu cách điện như băng dính cách điện ngăn dòng điện tiếp xúc trực tiếp với người, đó là biện pháp đúng khi dây bị hở lõi.\n\nVì sao các phương án khác sai:\n- A: Khăn ướt dẫn điện tốt, càng làm tăng nguy cơ điện giật khi chạm vào.\n- C: Dây kim loại dẫn điện, quấn thêm vào chỗ hở không cách điện được, còn nguy hiểm hơn.\n- D: Khoảng cách giữa các ổ điện không liên quan tới đoạn dây bị hở đang gây nguy hiểm."
+  },
+  {
+   "ma_cau": "K09000000101",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một cửa hàng sửa chữa muốn kiểm tra bằng tay xem một ổ điện xoay chiều có đang có điện hay không trước khi lắp thiết bị mới. Cách làm nào tránh được nguy cơ điện giật khi kiểm tra?",
+   "lua_chon": [
+    "Dùng ngón tay chạm trực tiếp vào lỗ cắm",
+    "Dùng kìm kim loại không bọc cách điện để chạm vào",
+    "Dùng dây đồng trần nối hai lỗ cắm lại với nhau",
+    "Dùng bút thử điện chuyên dụng để kiểm tra"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Bút thử điện có bộ phận cách điện và chỉ báo bằng đèn, giúp kiểm tra ổ điện có điện hay không mà không cần tiếp xúc trực tiếp với phần dẫn điện.\n\nVì sao các phương án khác sai:\n- A: Chạm tay trực tiếp vào lỗ cắm có thể khiến dòng điện đi qua cơ thể, gây điện giật.\n- B: Kìm kim loại không bọc cách điện vẫn dẫn điện, không an toàn khi chạm vào ổ điện.\n- C: Nối trực tiếp hai lỗ cắm bằng dây trần gây đoản mạch, không phải cách kiểm tra an toàn."
+  },
+  {
+   "ma_cau": "K09000000102",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Trong nhà có trẻ nhỏ, cha mẹ nên làm gì với các ổ điện thấp trong tầm với của trẻ để phòng tránh điện giật?",
+   "lua_chon": [
+    "Không cần làm gì vì trẻ nhỏ chưa biết dùng điện",
+    "Dán giấy màu che ổ điện cho đẹp mắt",
+    "Lắp nắp đậy an toàn hoặc ổ điện có cửa chắn cho ổ điện",
+    "Đặt đồ chơi che trước ổ điện"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Nắp đậy an toàn hoặc ổ điện có cửa chắn ngăn trẻ nhỏ đưa vật hoặc ngón tay vào lỗ cắm, giúp phòng tránh nguy cơ điện giật.\n\nVì sao các phương án khác sai:\n- A: Trẻ nhỏ tò mò có thể đưa vật vào ổ điện dù chưa biết dùng điện, cần chủ động phòng tránh.\n- B: Giấy dán không ngăn được vật dẫn điện đưa vào ổ điện, không phải biện pháp an toàn.\n- D: Đồ chơi có thể bị trẻ di chuyển, không phải biện pháp an toàn đáng tin cậy."
+  },
+  {
+   "ma_cau": "K09000000103",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Khi thấy dây điện của một thiết bị gia dụng bị nóng bất thường trong lúc đang sử dụng, nên làm gì đầu tiên?",
+   "lua_chon": [
+    "Tiếp tục sử dụng cho đến khi thiết bị ngừng hoạt động hẳn",
+    "Đổ nước lên dây điện để làm nguội",
+    "Dùng tay chạm thử xem nóng đến mức nào",
+    "Rút phích cắm ra khỏi ổ điện ngay và kiểm tra"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Dây điện nóng bất thường là dấu hiệu nguy hiểm; cần rút phích cắm ngay để ngắt dòng điện rồi mới kiểm tra, tránh nguy cơ cháy nổ hoặc điện giật.\n\nVì sao các phương án khác sai:\n- A: Tiếp tục sử dụng khi dây nóng bất thường có thể dẫn đến cháy nổ hoặc hỏng thiết bị nặng hơn.\n- B: Đổ nước lên thiết bị điện đang có điện rất nguy hiểm vì nước dẫn điện.\n- C: Chạm tay trực tiếp vào dây điện nóng bất thường có thể gây bỏng hoặc điện giật nếu dây bị hở."
+  },
+  {
+   "ma_cau": "K09000000104",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Vì sao không nên cắm quá nhiều thiết bị công suất lớn (như bàn là, ấm điện, lò sưởi) vào chung một ổ cắm hoặc một dây nối dài?",
+   "lua_chon": [
+    "Vì có thể gây quá tải dòng điện, dây nóng lên và có nguy cơ cháy",
+    "Vì làm tốn tiền điện hơn bình thường",
+    "Vì làm các thiết bị hoạt động yếu hơn",
+    "Vì làm giảm tuổi thọ của ổ cắm về mặt thẩm mỹ"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nhiều thiết bị công suất lớn dùng chung một ổ cắm làm tổng dòng điện qua dây tăng cao, vượt khả năng chịu tải, khiến dây nóng lên quá mức, dễ gây cháy, chập điện.\n\nVì sao các phương án khác sai:\n- B: Tốn tiền điện đúng nhưng không phải nguy cơ an toàn chính cần cảnh báo ở đây.\n- C: Các thiết bị vẫn hoạt động ở công suất định mức, vấn đề là dây dẫn/ổ cắm quá tải chứ không phải thiết bị yếu đi.\n- D: Đây không chỉ là vấn đề thẩm mỹ mà là nguy cơ cháy nổ thực sự."
+  },
+  {
+   "ma_cau": "K09000000105",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một người đang sửa quạt điện thì bị điện giật, tay vẫn còn chạm vào dây điện trần có dòng điện xoay chiều chạy qua và không tự rời ra được. Người xung quanh cần làm gì đầu tiên?",
+   "lua_chon": [
+    "Ngắt nguồn điện trước khi chạm vào nạn nhân",
+    "Dùng tay không kéo nạn nhân ra ngay",
+    "Dội nước vào người nạn nhân để dập điện",
+    "Đợi nạn nhân tự buông tay ra khỏi dây điện"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Việc đầu tiên khi cứu người bị điện giật là ngắt nguồn điện (rút phích cắm hoặc gạt cầu dao) để chấm dứt dòng điện qua cơ thể nạn nhân, tránh nguy hiểm cho cả nạn nhân và người cứu.\n\nVì sao các phương án khác sai:\n- B: Dùng tay không chạm vào nạn nhân khi mạch chưa ngắt sẽ khiến người cứu cũng bị điện giật.\n- C: Dội nước làm tăng khả năng dẫn điện, càng nguy hiểm hơn cho nạn nhân và người cứu.\n- D: Cơ co giật do dòng điện có thể khiến nạn nhân không tự buông tay được, chờ đợi làm chậm trễ cứu người."
+  },
+  {
+   "ma_cau": "K09000000106",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Không thể ngắt được nguồn điện ngay vì cầu dao ở quá xa. Nạn nhân vẫn đang chạm vào dây điện xoay chiều bị hở. Người cứu nên dùng vật nào để tách nạn nhân ra khỏi dây điện an toàn?",
+   "lua_chon": [
+    "Thanh kim loại",
+    "Dây kim loại trần",
+    "Gậy gỗ khô hoặc que nhựa khô",
+    "Tay không đã rửa sạch"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Vật liệu cách điện khô như gỗ, nhựa không dẫn điện, giúp người cứu tách nạn nhân ra khỏi dây điện mà không bị điện giật theo.\n\nVì sao các phương án khác sai:\n- A: Thanh kim loại dẫn điện tốt, chạm vào dây điện sẽ khiến người cứu bị điện giật.\n- B: Dây kim loại trần dẫn điện, không cách điện được cho người cứu.\n- D: Tay không, dù đã rửa sạch, vẫn dẫn điện và không cách điện được với dây điện."
+  },
+  {
+   "ma_cau": "K09000000107",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Sau khi ngắt được nguồn điện, nạn nhân bị điện giật nằm bất tỉnh nhưng vẫn còn thở. Bước tiếp theo nào là phù hợp trước khi có nhân viên y tế đến?",
+   "lua_chon": [
+    "Cho nạn nhân uống nước ngay",
+    "Đặt nạn nhân nằm nơi thoáng, theo dõi và gọi cấp cứu",
+    "Xoa dầu nóng khắp người nạn nhân",
+    "Lay gọi mạnh và di chuyển nạn nhân đi xa"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Sau khi ngắt nguồn điện, cần đặt nạn nhân ở nơi thoáng, theo dõi tình trạng và gọi cấp cứu để được xử lí y tế kịp thời.\n\nVì sao các phương án khác sai:\n- A: Nạn nhân đang bất tỉnh, cho uống nước có thể gây sặc, không phải bước xử lí phù hợp.\n- C: Xoa dầu nóng không xử lí được ảnh hưởng của dòng điện lên cơ thể nạn nhân.\n- D: Di chuyển mạnh nạn nhân đang bất tỉnh có thể gây thêm chấn thương, không phải bước cần làm ngay."
+  },
+  {
+   "ma_cau": "K09000000108",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một học sinh thấy bạn mình bị điện giật do chạm vào dây sạc điện thoại bị hở đang cắm vào nguồn điện xoay chiều, tay bạn dính chặt vào dây. Học sinh này KHÔNG nên làm điều gì sau đây?",
+   "lua_chon": [
+    "Hô hoán gọi người lớn giúp đỡ",
+    "Tìm cách rút phích cắm ra khỏi ổ điện",
+    "Tìm vật cách điện khô để tách nạn nhân ra",
+    "Dùng tay không kéo bạn ra khỏi dây điện ngay"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Dùng tay không chạm vào nạn nhân khi mạch điện chưa ngắt sẽ khiến người cứu cũng bị điện giật theo, đây là điều không nên làm.\n\nVì sao các phương án khác sai:\n- A: Gọi người lớn giúp đỡ là hành động nên làm, không phải điều cần tránh.\n- B: Rút phích cắm để ngắt nguồn điện là hành động đúng cần làm ngay.\n- C: Dùng vật cách điện khô để tách nạn nhân là cách xử lí an toàn, nên làm."
+  },
+  {
+   "ma_cau": "K09000000109",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một người thợ điện đang sửa dây điện xoay chiều trên cột thì bị điện giật, ngã treo lơ lửng trên dây an toàn nhưng tay vẫn chạm vào dây trần có điện. Người dưới đất cần ưu tiên làm gì trước tiên?",
+   "lua_chon": [
+    "Báo ngay điện lực cắt điện đường dây",
+    "Trèo lên kéo nạn nhân xuống bằng tay không",
+    "Đợi nạn nhân tự tỉnh rồi mới xử lí",
+    "Phun nước lên để dập dòng điện"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Với đường dây điện trên cao, cần báo ngay cho đơn vị điện lực cắt điện hoặc dùng thiết bị cách điện chuyên dụng của người có chuyên môn, tránh người không có kỹ năng và thiết bị bảo hộ tiếp cận trực tiếp gây nguy hiểm thêm.\n\nVì sao các phương án khác sai:\n- B: Chạm vào người đang bị giật có thể bị giật theo.\n- C: Cần ngắt điện ngay, chờ đợi rất nguy hiểm.\n- D: Nước dẫn điện, làm tình huống nguy hiểm hơn."
+  },
+  {
+   "ma_cau": "K09000000110",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Sau khi ngắt được nguồn điện và đưa nạn nhân bị điện giật ra khỏi khu vực nguy hiểm, phát hiện nạn nhân ngừng thở. Cần làm gì ngay?",
+   "lua_chon": [
+    "Chờ xe cấp cứu tới rồi mới xử lí gì thêm",
+    "Hô hấp nhân tạo ngay trong khi chờ cấp cứu",
+    "Cho nạn nhân uống nước ấm để hồi tỉnh",
+    "Đặt nạn nhân ngồi dậy ngay để dễ thở hơn"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khi nạn nhân ngừng thở, cần thực hiện hô hấp nhân tạo ngay trong khi chờ nhân viên y tế, vì mỗi giây chậm trễ đều ảnh hưởng tới khả năng cứu sống.\n\nVì sao các phương án khác sai:\n- A: Chờ đợi mà không hành động gì có thể khiến nạn nhân nguy kịch hơn do thiếu oxy.\n- C: Nạn nhân đang ngừng thở, cho uống nước có thể gây sặc, rất nguy hiểm.\n- D: Đặt ngồi dậy đột ngột không giúp ích khi nạn nhân ngừng thở, cần hô hấp nhân tạo ngay."
+  },
+  {
+   "ma_cau": "K09000000111",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Người bị điện giật do chạm dây điện xoay chiều trần bị hở, tay dính chặt, cầu dao ở xa không kịp ngắt. Phương án nào có CẢ HAI bước đều đúng?",
+   "lua_chon": [
+    "Tay không kéo ra; gọi cấp cứu ngay",
+    "Gậy gỗ khô đẩy dây ra; kiểm tra hô hấp rồi gọi cấp cứu",
+    "Gậy gỗ khô đẩy dây ra; lay gọi mạnh ngay, không kiểm tra",
+    "Đứng chờ người khác đến; không hành động gì"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khi không thể ngắt nguồn ngay, cần dùng vật cách điện khô (gậy gỗ...) để tách nạn nhân khỏi dây điện, tuyệt đối không chạm tay trần; sau đó kiểm tra hô hấp rồi mới gọi cấp cứu.\n\nVì sao các phương án khác sai:\n- A: Không được dùng TAY KHÔNG kéo nạn nhân vì người cứu cũng sẽ bị điện giật; phải dùng vật cách điện.\n- C: Sau khi tách nạn nhân ra, cần kiểm tra hô hấp trước, không nên lay gọi mạnh ngay mà bỏ qua bước kiểm tra.\n- D: Không nên đứng chờ, không hành động gì, khi có thể dùng vật cách điện tách nạn nhân ngay để giảm thời gian nguy hiểm."
+  },
+  {
+   "ma_cau": "K09000000112",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Người bị điện giật do chạm dây điện xoay chiều trần bị hở trong sân trường, tay dính chặt, không có cầu dao gần đó. Phương án nào có CẢ HAI bước đều đúng?",
+   "lua_chon": [
+    "Ghế nhựa khô đẩy dây ra; kiểm tra hô hấp rồi gọi cấp cứu",
+    "Tay ướt kéo nhanh ra; gọi cấp cứu",
+    "Ghế nhựa khô đẩy dây ra; cho uống nước ngay",
+    "Hét gọi người khác, không hành động gì; gọi cấp cứu"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Dùng ghế nhựa khô (vật cách điện) đẩy dây điện ra xa nạn nhân là đúng; sau đó cần kiểm tra hô hấp trước khi gọi cấp cứu.\n\nVì sao các phương án khác sai:\n- B: Tay ƯỚT dẫn điện tốt, kéo nạn nhân bằng tay ướt sẽ khiến người cứu cũng bị điện giật.\n- C: Cho uống nước ngay không phải bước xử lí phù hợp; cần kiểm tra hô hấp trước.\n- D: Không nên chỉ hét gọi mà không hành động gì khi có vật cách điện sẵn có để tách nạn nhân ngay."
+  },
+  {
+   "ma_cau": "K09000000113",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Người bị điện giật do chạm dây điện xoay chiều trần bị hở trong nhà kho, tay dính chặt, cầu dao ở xa. Phương án nào có CẢ HAI bước đều đúng?",
+   "lua_chon": [
+    "Đứng chờ, không tự làm gì; gọi cấp cứu",
+    "Sào nhựa khô gạt dây ra xa; xoa bóp ngay, không kiểm tra hô hấp",
+    "Sào nhựa khô gạt dây ra xa; kiểm tra hô hấp rồi gọi cấp cứu",
+    "Tay không kéo dây điện ra; kiểm tra hô hấp"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Dùng sào nhựa khô (vật cách điện) gạt dây điện ra xa nạn nhân là đúng; sau đó cần kiểm tra hô hấp trước khi gọi cấp cứu.\n\nVì sao các phương án khác sai:\n- A: Không nên chỉ đứng chờ khi có vật cách điện sẵn có để tách nạn nhân ngay.\n- B: Cần kiểm tra hô hấp trước khi xoa bóp hay có hành động khác.\n- D: Không được dùng TAY KHÔNG kéo dây điện vì người cứu cũng sẽ bị điện giật."
+  },
+  {
+   "ma_cau": "K09000000114",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Người bị điện giật do chạm dây điện xoay chiều trần bị hở tại công trường, tay dính chặt, cầu dao ở xa. Phương án nào có CẢ HAI bước đều đúng?",
+   "lua_chon": [
+    "Tay không kéo ra nhanh nhất; gọi cấp cứu",
+    "Không làm gì, chạy tìm cầu dao ở xa; gọi cấp cứu",
+    "Gậy tre khô đẩy nạn nhân ra; để nằm yên, không kiểm tra gì",
+    "Gậy tre khô đẩy nạn nhân ra khỏi dây; kiểm tra hô hấp rồi gọi cấp cứu"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Dùng gậy tre khô (vật cách điện) đẩy nạn nhân ra khỏi dây điện là đúng; sau đó cần kiểm tra hô hấp trước khi gọi cấp cứu.\n\nVì sao các phương án khác sai:\n- A: Không được dùng TAY KHÔNG kéo nạn nhân vì người cứu cũng sẽ bị điện giật.\n- B: Chạy đi tìm cầu dao ở xa làm chậm trễ trong khi có thể dùng vật cách điện tách nạn nhân ngay.\n- C: Cần kiểm tra hô hấp cho nạn nhân, không nên chỉ để nằm yên mà không kiểm tra gì."
+  },
+  {
+   "ma_cau": "K09000000115",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Người bị điện giật do chạm dây điện xoay chiều trần bị hở tại nhà, tay dính chặt, cầu dao ở xa. Phương án nào có CẢ HAI bước đều đúng?",
+   "lua_chon": [
+    "Găng tay cao su khô kéo ra; cho uống thuốc an thần ngay",
+    "Găng tay cao su khô kéo ra; kiểm tra hô hấp rồi gọi cấp cứu",
+    "Tay không đẩy dây điện ra xa; kiểm tra hô hấp",
+    "Hô hoán rồi bỏ đi tìm người lớn, không làm gì; gọi cấp cứu"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đeo găng tay cao su khô (vật cách điện) rồi kéo nạn nhân ra là đúng; sau đó cần kiểm tra hô hấp trước khi gọi cấp cứu.\n\nVì sao các phương án khác sai:\n- A: Cho uống thuốc an thần ngay không phải bước xử lí phù hợp; cần kiểm tra hô hấp trước.\n- C: Không được dùng TAY KHÔNG đẩy dây điện vì người cứu cũng sẽ bị điện giật.\n- D: Không nên chỉ hô hoán rồi bỏ đi mà không hành động gì khi có thể tách nạn nhân ngay bằng vật cách điện."
+  },
+  {
+   "ma_cau": "K09000000116",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Người bị điện giật do chạm dây điện xoay chiều trần bị hở trong xưởng may, tay dính chặt, cầu dao ở xa. Phương án nào có CẢ HAI bước đều đúng?",
+   "lua_chon": [
+    "Thước gỗ khô đẩy dây ra; kiểm tra hô hấp rồi gọi cấp cứu",
+    "Tay không kéo nạn nhân ra ngay; gọi cấp cứu",
+    "Thước gỗ khô đẩy dây ra; cho uống nước đường ngay",
+    "Đứng hô hoán, không hành động gì; gọi cấp cứu"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Dùng thước gỗ khô (vật cách điện) đẩy dây điện ra xa nạn nhân là đúng; sau đó cần kiểm tra hô hấp trước khi gọi cấp cứu.\n\nVì sao các phương án khác sai:\n- B: Không được dùng TAY KHÔNG kéo nạn nhân vì người cứu cũng sẽ bị điện giật.\n- C: Cho uống nước đường không phải bước xử lí phù hợp; cần kiểm tra hô hấp trước.\n- D: Không nên chỉ hô hoán mà không hành động gì khi có vật cách điện sẵn có để tách nạn nhân ngay."
+  },
+  {
+   "ma_cau": "K09000000117",
+   "nhom_id": "KNB00487",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Người bị điện giật do chạm dây điện xoay chiều trần bị hở ở sân vườn, tay dính chặt, không có cầu dao gần đó. Phương án nào có CẢ HAI bước đều đúng?",
+   "lua_chon": [
+    "Cán chổi nhựa khô đẩy dây ra; xoa dầu gió khắp người ngay",
+    "Cán chổi nhựa khô đẩy dây ra; kiểm tra hô hấp rồi gọi cấp cứu",
+    "Tay ướt kéo nhanh ra khỏi dây; gọi cấp cứu",
+    "Chạy đi tìm cầu dao thật xa trước; gọi cấp cứu"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Dùng cán chổi nhựa khô (vật cách điện) đẩy dây điện ra xa nạn nhân là đúng; sau đó cần kiểm tra hô hấp trước khi gọi cấp cứu.\n\nVì sao các phương án khác sai:\n- A: Xoa dầu gió không phải bước xử lí phù hợp; cần kiểm tra hô hấp trước.\n- C: Tay ƯỚT dẫn điện tốt, kéo nạn nhân bằng tay ướt sẽ khiến người cứu cũng bị điện giật.\n- D: Chạy đi tìm cầu dao ở xa làm chậm trễ trong khi có thể dùng vật cách điện tách nạn nhân ngay."
+  }
+ ]
+}

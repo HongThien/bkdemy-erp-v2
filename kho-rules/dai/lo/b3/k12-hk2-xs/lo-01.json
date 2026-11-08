@@ -1,0 +1,250 @@
+[
+ {
+  "ma_cau": "T11200000010459",
+  "loai": "tra_loi_ngan",
+  "de": "Trong đợt kiểm tra cuối học kì I lớp 12 của các trường trung học phổ thông, thống kê cho thấy có $80\\%$ học sinh tỉnh $X$ đạt yêu cầu; $90\\%$ học sinh tỉnh $Y$ đạt yêu cầu. Chọn ngẫu nhiên một học sinh của tỉnh $X$ và một học sinh của tỉnh $Y$. Giả thiết rằng chất lượng học tập của hai tỉnh là độc lập. Tính xác suất để có ít nhất một trong hai học sinh được chọn đạt yêu cầu.",
+  "dap_an": "0.98",
+  "loi_giai": "Xác suất học sinh tỉnh $X$ không đạt là $1-0{,}8=0{,}2$; tỉnh $Y$ không đạt là $1-0{,}9=0{,}1$.\nDo hai biến cố độc lập, xác suất cả hai không đạt là $0{,}2\\cdot0{,}1=0{,}02$.\nXác suất có ít nhất một học sinh đạt yêu cầu là $1-0{,}02=0{,}98$.\nVậy xác suất cần tìm bằng $0{,}98$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010411",
+  "loai": "tra_loi_ngan",
+  "de": "Một trường đại học kĩ thuật có 80% sinh viên nam và 20% sinh viên nữ. Trong số sinh viên nam có 85% là người bản địa, số còn lại là sinh viên quốc tế. Trong số sinh viên nữ có 90% là người bản địa, số còn lại là sinh viên quốc tế. Chọn ngẫu nhiên một sinh viên nam và một sinh viên nữ. Biết rằng trong hai sinh viên được chọn ra có một sinh viên là người bản địa và một là sinh viên quốc tế, tính xác suất để sinh viên quốc tế được chọn ra là nữ. (làm tròn kết quả đến hàng phần trăm)\n-------- HẾT--------",
+  "dap_an": "0.39",
+  "loi_giai": "Chọn một sinh viên nam và một sinh viên nữ nên tỉ lệ $80\\%$, $20\\%$ không ảnh hưởng.\nNam: bản địa $0{,}85$, quốc tế $0{,}15$. Nữ: bản địa $0{,}9$, quốc tế $0{,}1$.\nGọi $B$ là biến cố \"có đúng một sinh viên quốc tế\": $P(B)=0{,}15\\cdot 0{,}9+0{,}85\\cdot 0{,}1=0{,}135+0{,}085=0{,}22$.\nGọi $A$ là biến cố \"sinh viên quốc tế là nữ\" (nam bản địa, nữ quốc tế): $P(A\\cap B)=0{,}85\\cdot 0{,}1=0{,}085$.\n$P(A\\mid B)=\\dfrac{0{,}085}{0{,}22}=\\dfrac{17}{44}\\approx 0{,}39$.\nVậy xác suất cần tìm xấp xỉ $0{,}39$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010402",
+  "loai": "tra_loi_ngan",
+  "de": "Một trường đại học kĩ thuật có 80% sinh viên nam và 20% sinh viên nữ. Trong số sinh viên nam có 85% là người bản địa, số còn lại là sinh viên quốc tế. Trong số sinh viên nữ có 90% là người bản địa, số còn lại là sinh viên quốc tế. Chọn ngẫu nhiên một sinh viên nam và một sinh viên nữ. Biết rằng trong hai sinh viên được chọn ra có một sinh viên là người bản địa và một là sinh viên quốc tế, tính xác suất để sinh viên quốc tế được chọn ra là nữ. (làm tròn kết quả đến hàng phần trăm)",
+  "dap_an": "0.39",
+  "loi_giai": "Chọn một nam và một nữ. Biến cố $A$: \"một người bản địa, một người quốc tế\"; biến cố $B$: \"người quốc tế là nữ\".\nNam bản địa $0{,}85$, nam quốc tế $0{,}15$; nữ bản địa $0{,}9$, nữ quốc tế $0{,}1$.\n$P(A\\cap B)$: nam bản địa, nữ quốc tế: $0{,}85\\cdot0{,}1=0{,}085$.\n$P(A)$: ($0{,}85\\cdot0{,}1$) $+$ ($0{,}15\\cdot0{,}9$) $=0{,}085+0{,}135=0{,}22$.\n$P(B|A)=\\dfrac{0{,}085}{0{,}22}\\approx0{,}39$.\nVậy xác suất cần tìm xấp xỉ $0{,}39$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010409",
+  "loai": "tra_loi_ngan",
+  "de": "Một trường đại học nghệ thuật có $20$% sinh viên nam và $80$% sinh viên nữ. Trong số sinh viên nam có $90$% là người bản địa, số còn lại là sinh viên quốc tế. Trong số sinh viên nữ có $85$% là người bản địa, số còn lại là sinh viên quốc tế. Chọn ngẫu nhiên một sinh viên nam và một sinh viên nữ. Biết rằng trong hai sinh viên được chọn ra có một sinh viên là người bản địa và một là sinh viên quốc tế, tính xác suất để sinh viên quốc tế được chọn ra là nữ. (làm tròn kết quả đến hàng phần trăm)",
+  "dap_an": "0.61",
+  "loi_giai": "Chọn một sinh viên nam và một sinh viên nữ nên tỉ lệ $20\\%$, $80\\%$ không ảnh hưởng.\nNam: bản địa $0{,}9$, quốc tế $0{,}1$. Nữ: bản địa $0{,}85$, quốc tế $0{,}15$.\nGọi $B$ là biến cố \"có đúng một sinh viên quốc tế\": $P(B)=0{,}1\\cdot 0{,}85+0{,}9\\cdot 0{,}15=0{,}085+0{,}135=0{,}22$.\nGọi $A$ là biến cố \"sinh viên quốc tế là nữ\" (nam bản địa, nữ quốc tế): $P(A\\cap B)=0{,}9\\cdot 0{,}15=0{,}135$.\n$P(A\\mid B)=\\dfrac{0{,}135}{0{,}22}=\\dfrac{27}{44}\\approx 0{,}61$.\nVậy xác suất cần tìm xấp xỉ $0{,}61$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010462",
+  "loai": "tra_loi_ngan",
+  "de": "Trong đợt kiểm tra cuối học kì I lớp 12 của các trường trung học phổ thông, thống kê cho thấy có $80\\%$ học sinh tỉnh $X$ đạt yêu cầu; $70\\%$ học sinh tỉnh $Y$ đạt yêu cầu. Chọn ngẫu nhiên một học sinh của tỉnh $X$ và một học sinh của tỉnh $Y$. Giả thiết rằng chất lượng học tập của hai tỉnh là độc lập. Tính xác suất để có ít nhất một trong hai học sinh được chọn đạt yêu cầu.",
+  "dap_an": "0.94",
+  "loi_giai": "Xác suất học sinh tỉnh $X$ không đạt là $1-0{,}8=0{,}2$; tỉnh $Y$ không đạt là $1-0{,}7=0{,}3$.\nDo hai biến cố độc lập, xác suất cả hai không đạt là $0{,}2\\cdot0{,}3=0{,}06$.\nXác suất có ít nhất một học sinh đạt yêu cầu là $1-0{,}06=0{,}94$.\nVậy xác suất cần tìm bằng $0{,}94$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010534",
+  "loai": "tra_loi_ngan",
+  "de": "Có một kho chứa bia kém chất lượng chứa các thùng giống nhau (24 lon/thùng) gồm 2 loại: loại $I$ đề lẫn mỗi thùng 5 lon quá hạn sử dụng, loại II để lẫn mỗi thùng 3 lon quá hạn. Biết số lượng thùng loại I gấp 2 lần số lượng thùng loại II. Chọn ngẫu nhiên 1 thùng từ trong kho, từ thùng đó chọn ngẫu nhiên 10 lon thì thấy trong 10 lon đó có hai lon quá hạn sử dụng. Tính xác suất 10 lon được lấy là bia loại I (làm tròn kết quả đến hàng phần trăm).",
+  "dap_an": "0.71",
+  "loi_giai": "Gọi $I$: \"thùng loại I\", $II$: \"thùng loại II\". Số thùng loại I gấp $2$ lần loại II nên $P(I)=\\dfrac23$, $P(II)=\\dfrac13$.\nGọi $A$: \"10 lon lấy ra có đúng $2$ lon quá hạn\".\n$P(A|I)=\\dfrac{C_5^2C_{19}^8}{C_{24}^{10}}$, $P(A|II)=\\dfrac{C_3^2C_{21}^8}{C_{24}^{10}}$ (tử số: $10\\cdot75582=755820$ và $3\\cdot203490=610470$).\n$P(I|A)=\\dfrac{\\frac23\\cdot755820}{\\frac23\\cdot755820+\\frac13\\cdot610470}=\\dfrac{1511640}{2122110}\\approx0{,}7123$\nVậy xác suất cần tìm là $0{,}71$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010451",
+  "loai": "tra_loi_ngan",
+  "de": "Có hai lô hàng. Lô 1 có 7 chính phẩm và 3 phế phẩm. Lô 2 có 8 chính phẩm và 2 phế phẩm.Từ lô thứ nhất lấy ra 2 sản phẩm, từ lô thứ hai lấy ra 3 sản phẩm rồi trong số sản phẩm lấy được lấy ra lại lấy tiếp ngẫu nhiên 2 sản phẩm. Tính xác suất để trong 2 sản phẩm đó có ít nhất một chính phẩm. (Viết kết quả dưới dạng số thập phân và làm tròn đến hàng phần trăm).",
+  "dap_an": "0.95",
+  "loi_giai": "Gọi $i$ là số phế phẩm trong 2 sản phẩm lấy từ lô 1, $j$ là số phế phẩm trong 3 sản phẩm lấy từ lô 2. Trong 5 sản phẩm có $i+j$ phế phẩm; lấy tiếp 2 sản phẩm thì xác suất cả hai đều là phế phẩm là $\\dfrac{C_{i+j}^{2}}{C_{5}^{2}}$.\nLô 1: $P(i=0)=\\dfrac{21}{45},\\ P(i=1)=\\dfrac{21}{45},\\ P(i=2)=\\dfrac{3}{45}$. Lô 2: $P(j=0)=\\dfrac{56}{120},\\ P(j=1)=\\dfrac{56}{120},\\ P(j=2)=\\dfrac{8}{120}$.\nChỉ khi $i+j\\ge 2$ mới có thể lấy được 2 phế phẩm: các cặp $(0;2),(1;1),(2;0)$ ứng với $\\dfrac{1}{10}$; $(1;2),(2;1)$ ứng với $\\dfrac{3}{10}$; $(2;2)$ ứng với $\\dfrac{6}{10}$.\n$P(\\text{cả 2 phế phẩm})=\\dfrac{21\\cdot8\\cdot0{,}1+21\\cdot56\\cdot0{,}1+21\\cdot8\\cdot0{,}3+3\\cdot56\\cdot0{,}1+3\\cdot56\\cdot0{,}3+3\\cdot …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010509",
+  "loai": "tra_loi_ngan",
+  "de": "Trong một đợt kiểm tra sức khỏe tại trường, có 300 học sinh được xét nghiệm một loại virus. Trong đó, biết rằng có 105 bạn thật sự bị nhiễm virus. Nếu một bạn bị nhiễm, thì xét nghiệm có kết quả dương tính (tức là phát hiện đúng bệnh) với xác suất 90%. Nếu một bạn không bị nhiễm, thì xét nghiệm vẫn có thể báo nhầm là dương tính (gọi là dương tính giả), với xác suất 5%. Giả sử một bạn có kết quả xét nghiệm dương tính. Hỏi xác suất để bạn đó thật sự bị nhiễm virus là bao nhiêu (làm tròn kết quả đến hàng phần trăm)?",
+  "dap_an": "0.91",
+  "loi_giai": "Gọi $B$: \"bị nhiễm\", $D$: \"dương tính\". $P(B)=\\dfrac{105}{300}=0{,}35$, $P(\\overline B)=0{,}65$.\n$P(D|B)=0{,}9$, $P(D|\\overline B)=0{,}05$.\n$P(D)=0{,}35\\cdot0{,}9+0{,}65\\cdot0{,}05=0{,}3475$\n$P(B|D)=\\dfrac{0{,}35\\cdot0{,}9}{0{,}3475}=\\dfrac{0{,}315}{0{,}3475}\\approx0{,}9065\\approx0{,}91$\nVậy xác suất bạn đó thật sự bị nhiễm là $0{,}91$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010525",
+  "loai": "tra_loi_ngan",
+  "de": "Có hai chiếc hộp, hộp I có 6 quả bóng màu đỏ và một số quả bóng màu xanh, hộp II có 7 quả bóng màu đỏ và 3 quả bóng màu xanh, các quả bóng có cùng kích thước và khối lượng. Lấy ngẫu nhiên một quả bóng từ hộp I bỏ vào hộp II. Sau đó, lấy ra ngẫu nhiên hai quả bóng từ hộp II. Xác suất lấy được ít nhất một quả bóng đỏ từ hộp II bằng $\\frac{32}{35}$. Tính xác suất để quả bóng được lấy ra từ hộp I là quả bóng đỏ, biết rằng hai quả bóng lấy ra từ hộp II có ít nhất một quả bóng đỏ (làm tròn kết quả đến hàng phần trăm).",
+  "dap_an": "0.44",
+  "loi_giai": "Gọi $n$ là số bóng xanh hộp I, $p=\\dfrac{6}{6+n}$ là xác suất lấy quả đỏ từ hộp I.\nNếu chuyển bóng đỏ: hộp II có $8$ đỏ, $3$ xanh, xác suất hai quả đều xanh là $\\dfrac{C_3^2}{C_{11}^2}=\\dfrac3{55}$.\nNếu chuyển bóng xanh: hộp II có $7$ đỏ, $4$ xanh, xác suất hai quả đều xanh là $\\dfrac{C_4^2}{C_{11}^2}=\\dfrac6{55}$.\n$P(\\text{hai quả đều xanh})=p\\cdot\\dfrac3{55}+(1-p)\\cdot\\dfrac6{55}=1-\\dfrac{32}{35}=\\dfrac3{35}\\Rightarrow p=\\dfrac37\\Rightarrow n=8$.\n$P(\\text{ít nhất 1 đỏ})=\\dfrac{32}{35}$, và $P(\\text{ít nhất 1 đỏ}\\ |\\ \\text{chuyển đỏ})=1-\\dfrac3{55}=\\dfrac{52}{55}$.\nTheo công thức Bayes: $P=\\dfrac{\\frac37\\cdot\\frac{52}{55}}{\\frac{32}{35}}=\\dfrac{156/385}{32/35}=\\dfrac{5460}{12320}\\approx0{,} …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010361",
+  "loai": "tra_loi_ngan",
+  "de": "Một cặp trẻ sinh đôi có thể do cùng một trứng (sinh đôi thật) hay do hai trứng khác nhau sinh ra (sinh đôi giả). Các cặp sinh đôi thật luôn luôn có cùng giới tính. Các cặp sinh đôi giả thì giới tính của mỗi đứa độc lập với nhau và có xác suất là $0.5$. Thống kê cho thấy $30\\%$ cặp sinh đôi là trai, $34\\%$ cặp sinh đôi là gái và $36\\%$ cặp sinh đôi có giới tính khác nhau. Tỷ lệ cặp sinh đôi thật trong số các cặp sinh đôi có cùng giới tính là $\\frac{a}{b}$ ($\\frac{a}{b}$ là phân số tối giản; $a;b\\in\\mathbb{N}^{*}$). Giá trị biểu thức $a+b$ là bao nhiêu?\n------ HẾT ------",
+  "dap_an": "23",
+  "loi_giai": "Gọi $t$ là tỉ lệ cặp sinh đôi thật, khi đó tỉ lệ cặp sinh đôi giả là $1-t$.\nSinh đôi thật luôn cùng giới tính. Sinh đôi giả có giới tính khác nhau với xác suất $2\\cdot0{,}5\\cdot0{,}5=0{,}5$.\nTỉ lệ cặp có giới tính khác nhau là $0{,}36$: $0{,}5(1-t)=0{,}36\\Rightarrow1-t=0{,}72\\Rightarrow t=0{,}28$.\nTỉ lệ cặp cùng giới tính: $0{,}30+0{,}34=0{,}64$ (các cặp sinh đôi thật đều nằm trong nhóm này).\nTỉ lệ cặp sinh đôi thật trong số các cặp cùng giới tính: $\\dfrac{0{,}28}{0{,}64}=\\dfrac{7}{16}$, tối giản nên $a=7,\\ b=16$.\n$a+b=7+16=23$.\nVậy $a+b=23$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010540",
+  "loai": "tra_loi_ngan",
+  "de": "Câu 6. Lớp 10G trong một trường THPT có 21 nam và 24 nữ. Qua thống kê hằng năm tỉ lệ học sinh nữ và tỉ lệ học sinh nam của khối 10 tham gia câu lạc bộ Toán học trong nhà trường lần lượt là 11% và 14%. Chọn ngẫu nhiên một học sinh của lớp 10G. Tính xác suất học sinh đó là nam, biết rằng học sinh đó có tham gia câu lạc bộ Toán học của trường (làm tròn kết quả đến hàng phần trăm).\n------ HẾT ------",
+  "dap_an": "0.53",
+  "loi_giai": "Gọi $A$: \"học sinh được chọn là nam\"; $B$: \"học sinh được chọn tham gia câu lạc bộ Toán\".\nSố nam tham gia CLB: $21\\cdot 0{,}14=2{,}94$; số nữ tham gia CLB: $24\\cdot 0{,}11=2{,}64$ (tính theo tỉ lệ).\n$P(A\\cap B)=\\dfrac{2{,}94}{45}$, $P(B)=\\dfrac{2{,}94+2{,}64}{45}=\\dfrac{5{,}58}{45}$.\n$P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{2{,}94}{5{,}58}\\approx 0{,}5269$.\nVậy xác suất cần tìm xấp xỉ $0{,}53$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010528",
+  "loai": "tra_loi_ngan",
+  "de": "Một bộ lọc được sử dụng để chặn thư rác trong các tài khoản thư điện tử. Tuy nhiên, vì bộ lọc không tuyệt đối hoàn hảo nên một thư rác bị chặn với xác suất 0,95 và một thư đúng (không phải là thư rác) bị chặn với xác suất 0,01. Thống kê cho thấy tỉ lệ thư rác là $3\\%$. Chọn ngẫu nhiên một thư bị chặn, xác suất để đó là thư rác bằng bao nhiêu? (làm tròn kết quả đến hàng phần trăm).\n----HẾT---",
+  "dap_an": "0.75",
+  "loi_giai": "Gọi $A$: \"thư rác\", $B$: \"thư bị chặn\". $P(A)=0{,}03$, $P(\\overline A)=0{,}97$, $P(B|A)=0{,}95$, $P(B|\\overline A)=0{,}01$.\n$P(B)=0{,}03\\cdot0{,}95+0{,}97\\cdot0{,}01=0{,}0285+0{,}0097=0{,}0382$\n$P(A|B)=\\dfrac{0{,}0285}{0{,}0382}\\approx0{,}746\\approx0{,}75$\nVậy xác suất để thư bị chặn là thư rác là $0{,}75$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010501",
+  "loai": "tra_loi_ngan",
+  "de": "Bạn Bình làm hai bài tập liên tiếp. Xác suất Bình làm đúng bài thứ nhất là 0,8. Nếu Bình làm đúng bài thứ nhất thì khả năng làm đúng bài thứ hai là 90%; nhưng nếu Bình làm sai bài thứ nhất thì khả năng làm đúng bài thứ hai là 30%. Xác suất để Bình làm đúng bài thứ nhất biết rằng Bình đã làm đúng bài thứ hai bằng $\\frac{m}{n}$, với $m,n\\in\\mathbb{N}$ và $(m,n)=1.$ Tính $m^{3}+n^{3}.$",
+  "dap_an": "3925",
+  "loi_giai": "$P(A_1)=0{,}8$, $P(\\overline{A_1})=0{,}2$, $P(A_2|A_1)=0{,}9$, $P(A_2|\\overline{A_1})=0{,}3$.\n$P(A_2)=0{,}8\\cdot0{,}9+0{,}2\\cdot0{,}3=0{,}78$\n$P(A_1|A_2)=\\dfrac{0{,}8\\cdot0{,}9}{0{,}78}=\\dfrac{0{,}72}{0{,}78}=\\dfrac{12}{13}$\nDo đó $m=12$, $n=13$ và $m^3+n^3=1728+2197=3925$.\nVậy $m^3+n^3=3925$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010506",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty xây dựng đấu thầu 3 dự án $A$$,B$ và $C$. Xác suất để ba dự án $A$$,B$ và $C$ trúng thầu tương ứng là $x,\\text{ }y$ và $0,6\\text{ }\\left( x>y \\right)$. Biết rằng xác suất để ít nhất một trong ba dự án trúng thầu là $0,976$ và xác suất để cả ba dự án đều trúng thầu là $0,336$. Giả sử việc trúng thầu của ba dự án $A$$,B$ và $C$ là độc lập với nhau. Tính $x+2y$?",
+  "dap_an": "2.2",
+  "loi_giai": "Ba biến cố độc lập: $P(A)=x$, $P(B)=y$, $P(C)=0{,}6$.\nCả ba trúng thầu: $0{,}6xy=0{,}336\\Rightarrow xy=0{,}56$.\nKhông dự án nào trúng: $1-0{,}976=0{,}024=(1-x)(1-y)\\cdot0{,}4\\Rightarrow(1-x)(1-y)=0{,}06$.\nKhai triển: $1-(x+y)+xy=0{,}06\\Rightarrow x+y=1+0{,}56-0{,}06=1{,}5$.\n$x,y$ là nghiệm của $t^2-1{,}5t+0{,}56=0\\Rightarrow t=0{,}8$ hoặc $t=0{,}7$.\nVì $x>y$ nên $x=0{,}8$, $y=0{,}7$.\nVậy $x+2y=0{,}8+1{,}4=2{,}2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010511",
+  "loai": "tra_loi_ngan",
+  "de": "Chọn ngẫu nhiên một số tự nhiên thuộc đoạn $\\left[ 10;199 \\right]$. Tính xác suất để chọn được số lẻ hoặc số chia hết cho $5$(kết quả viết dưới dạng số thập phân).",
+  "dap_an": "0.6",
+  "loi_giai": "Đoạn $[10;199]$ có $199-10+1=190$ số tự nhiên, nên $n(\\Omega)=190$.\nGọi $A$: \"số lẻ\", $B$: \"số chia hết cho 5\". Số lẻ từ $11$ đến $199$: $\\dfrac{199-11}{2}+1=95$ số, nên $n(A)=95$.\nSố chia hết cho $5$ từ $10$ đến $195$: $\\dfrac{195-10}{5}+1=38$ số, nên $n(B)=38$.\nSố vừa lẻ vừa chia hết cho $5$ (tận cùng là $5$): $15,25,\\dots,195$ có $19$ số, nên $n(A\\cap B)=19$.\n$n(A\\cup B)=95+38-19=114$\n$P=\\dfrac{114}{190}=0{,}6$\nVậy xác suất cần tìm là $0{,}6$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010531",
+  "loai": "tra_loi_ngan",
+  "de": "Có hai chuồng thỏ. Chuồng I có 5 con thỏ đen và 10 con thỏ trắng. Chuồng II có 7 con\nthỏ đen và 3 con thỏ trắng. Trước tiên, từ chuồng II lấy ra ngẫu nhiên 1 con thỏ rồi cho vào chuồng I. Sau đó, từ chuồng I lấy ra ngẫu nhiên 1 con thỏ. Tính xác suất để con thỏ được lấy ra là con thỏ trắng (Kết quả làm tròn đến hàng phần trăm),\n------ HẾT ------",
+  "dap_an": "0.64",
+  "loi_giai": "Chuồng II có $10$ con: $7$ đen, $3$ trắng. Con thỏ chuyển sang chuồng I là đen với xác suất $0{,}7$, là trắng với xác suất $0{,}3$.\nNếu chuyển thỏ đen: chuồng I có $16$ con ($6$ đen, $10$ trắng), xác suất lấy trắng là $\\dfrac{10}{16}$.\nNếu chuyển thỏ trắng: chuồng I có $16$ con ($5$ đen, $11$ trắng), xác suất lấy trắng là $\\dfrac{11}{16}$.\n$P=0{,}7\\cdot\\dfrac{10}{16}+0{,}3\\cdot\\dfrac{11}{16}=\\dfrac{10{,}3}{16}\\approx0{,}64375\\approx0{,}64$\nVậy xác suất cần tìm là $0{,}64$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010568",
+  "loai": "tra_loi_ngan",
+  "de": "Quan sát hai hàng hoá thịt lợn và gạo người ta nhận thấy trong mỗi ngày giao dịch, nếu gạo không giảm giá thì thịt lợn giảm giá với xác suất $\\frac{2}{5}$. Ngược lại, nếu thịt lợn không giảm giá thì gạo giảm giá với xác suất $\\frac{4}{7}$. Hơn nữa, xác suất để cả thịt lợn và gạo giảm giá trong cùng một ngày là 0,1. Biết xác suất để có ít nhất một trong hai hàng hoá thịt lợn và gạo giảm giá trong một ngày giao dịch là $\\frac{m}{n}$($m,n\\in\\mathbb{N},\\frac{m}{n}$ là tối giản ), tính giá trị biểu thức $T=9m+5n$",
+  "dap_an": "113",
+  "loi_giai": "Gọi $T$: \"thịt lợn giảm giá\", $G$: \"gạo giảm giá\"; $P(T\\cap G)=0{,}1$.\n$P(T|\\overline G)=\\dfrac25\\Rightarrow P(T)-0{,}1=\\dfrac25\\left(1-P(G)\\right)\\Rightarrow P(T)=0{,}5-0{,}4P(G)$ $(1)$.\n$P(G|\\overline T)=\\dfrac47\\Rightarrow P(G)-0{,}1=\\dfrac47\\left(1-P(T)\\right)$ $(2)$.\nThay $(1)$ vào $(2)$: $P(G)-0{,}1=\\dfrac47\\left(0{,}5+0{,}4P(G)\\right)\\Rightarrow P(G)\\cdot\\dfrac{5{,}4}{7}=\\dfrac{2{,}7}{7}\\Rightarrow P(G)=0{,}5$, suy ra $P(T)=0{,}3$.\n$P(T\\cup G)=0{,}3+0{,}5-0{,}1=0{,}7=\\dfrac7{10}$ nên $m=7$, $n=10$.\n$T=9m+5n=63+50=113$.\nVậy $T=113$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010365",
+  "loai": "tra_loi_ngan",
+  "de": "Khoa học đã chứng minh bệnh béo phì sẽ làm tăng nguy cơ bị bệnh tim mạch. Khảo sát trên hồ sơ các bệnh nhân bị béo phì ở một bệnh viện, bệnh béo phì do yếu tố lối sống sinh hoạt là $90\\%$, trong số người đó có $60\\%$ người bị mắc bệnh tim mạch. Béo phì do yếu tố di truyền là $10\\%$, trong số người đó có $25\\%$ người bị mắc bệnh về tim mạch. Tính xác suất để rút ra một hồ sơ là của một người bị béo phì do di truyền biết người đó bị bệnh tim mạch ta thu được kết quả $\\frac{5}{a}$. Tìm $a$?",
+  "dap_an": "113",
+  "loi_giai": "Gọi $T$ là biến cố \"người bị bệnh tim mạch\", $D$ là biến cố \"béo phì do di truyền\", $L$ là biến cố \"béo phì do lối sống\".\n$P(L)=0{,}9,\\ P(T|L)=0{,}6;\\ P(D)=0{,}1,\\ P(T|D)=0{,}25$.\n$P(T)=0{,}9\\cdot0{,}6+0{,}1\\cdot0{,}25=0{,}54+0{,}025=0{,}565$.\n$P(D|T)=\\dfrac{P(D)\\cdot P(T|D)}{P(T)}=\\dfrac{0{,}025}{0{,}565}=\\dfrac{25}{565}=\\dfrac{5}{113}$.\nĐối chiếu $\\dfrac5a$ nên $a=113$.\nVậy $a=113$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010455",
+  "loai": "tra_loi_ngan",
+  "de": "Ba bạn An, Bình, Nam chơi phi tiêu, ai phi trúng mục tiêu trước thì người đó thắng cuộc chơi và được hai bạn còn lại mua tặng vé xem trận bán kết AFF Susuki Cup $2018$ của tuyển Việt Nam. Thứ tự chơi lần lượt là: An, Bình, Nam; An, Bình, Nam; … Xác suất phi trúng mục tiêu trong một lần phi tiêu của An, Bình, Nam tương ứng là $0,2;\\text{ }0,4$ và $0,6$. Gọi $P_{1},\\text{ }P_{2},\\text{ }P_{3}$ lần lượt là xác suất giành chiến thắng của ba bạn An, Bình, Nam. Khi đó xác suất giành chiến thắng của Bình là bao nhiêu (kết quả làm tròn tới hàng phần trăm)?",
+  "dap_an": "0.40",
+  "loi_giai": "Xác suất trượt của An, Bình, Nam lần lượt là $0{,}8;\\ 0{,}6;\\ 0{,}4$. Xác suất cả ba cùng trượt trong một vòng là $0{,}8\\cdot0{,}6\\cdot0{,}4=0{,}192$.\nBình thắng ở vòng thứ $k+1$ khi $k$ vòng đầu cả ba trượt, rồi An trượt và Bình trúng: xác suất $0{,}192^{k}\\cdot0{,}8\\cdot0{,}4$.\n$P_2=\\dfrac{0{,}8\\cdot0{,}4}{1-0{,}192}=\\dfrac{0{,}32}{0{,}808}\\approx0{,}396$.\nVậy xác suất Bình giành chiến thắng xấp xỉ $0{,}40$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010510",
+  "loai": "tra_loi_ngan",
+  "de": "Trong một đợt kiểm tra sức khỏe tại trường, có 300 học sinh được xét nghiệm một loại virus. Trong đó, biết rằng có 105 bạn thật sự bị nhiễm virus. Nếu một bạn bị nhiễm, thì xét nghiệm có kết quả dương tính (tức là phát hiện đúng bệnh) với xác suất 90%. Nếu một bạn không bị nhiễm, thì xét nghiệm vẫn có thể báo nhầm là dương tính (gọi là dương tính giả), với xác suất 5%. Giả sử một bạn có kết quả xét nghiệm dương tính. Hỏi xác suất để bạn đó thật sự bị nhiễm virus là bao nhiêu (làm tròn kết quả đến hàng phần trăm)?\n--------------------HẾT--------------------\nThí sinh không được sử dụng tài liệu. Cán bộ coi thi không giải thích gì thêm!",
+  "dap_an": "0.91",
+  "loi_giai": "Gọi $B$: \"bị nhiễm\", $D$: \"dương tính\". $P(B)=\\dfrac{105}{300}=0{,}35$, $P(\\overline B)=0{,}65$.\n$P(D|B)=0{,}9$, $P(D|\\overline B)=0{,}05$.\n$P(D)=0{,}35\\cdot0{,}9+0{,}65\\cdot0{,}05=0{,}3475$\n$P(B|D)=\\dfrac{0{,}35\\cdot0{,}9}{0{,}3475}=\\dfrac{0{,}315}{0{,}3475}\\approx0{,}9065\\approx0{,}91$\nVậy xác suất bạn đó thật sự bị nhiễm là $0{,}91$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010516",
+  "loai": "tra_loi_ngan",
+  "de": "Hai xạ thủ An và Bình thi bắn bia. Mỗi người được bắn hai viên đạn. Xác suất bắn trúng mục tiêu của An và Bình trong một lần bắn tương ứng là $0,4$ và $0,7$. Hai người bắn độc lập với nhau. Gọi $X$ là số phát trúng của An; $Y$ là số phát trúng của Bình. Tính xác suất để tổng số phát bắn trúng của An và Bình không quá 1.\n-------- HẾT--------",
+  "dap_an": "0.2268",
+  "loi_giai": "$X\\sim B(2;0{,}4)$: $P(X=0)=0{,}36$, $P(X=1)=0{,}48$.\n$Y\\sim B(2;0{,}7)$: $P(Y=0)=0{,}09$, $P(Y=1)=0{,}42$.\nTổng số phát trúng không quá $1$: $(X,Y)=(0,0)$ hoặc $(0,1)$ hoặc $(1,0)$.\n$P=0{,}36\\cdot0{,}09+0{,}36\\cdot0{,}42+0{,}48\\cdot0{,}09=0{,}0324+0{,}1512+0{,}0432=0{,}2268$\nVậy xác suất cần tìm là $0{,}2268$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010461",
+  "loai": "tra_loi_ngan",
+  "de": "Trong đợt kiểm tra cuối học kì I lớp 12 của các trường trung học phổ thông, thống kê cho thấy có $80\\%$ học sinh tỉnh $X$ đạt yêu cầu; $90\\%$ học sinh tỉnh $Y$ đạt yêu cầu. Chọn ngẫu nhiên một học sinh của tỉnh $X$ và một học sinh của tỉnh $Y$. Giả thiết rằng chất lượng học tập của hai tỉnh là độc lập. Tính xác suất để có ít nhất một trong hai học sinh được chọn đạt yêu cầu.\n----HẾT---\nThí sinh thực hiện nghiêm túc quy chế thi. CBCT không giải thích gì thêm.",
+  "dap_an": "0.98",
+  "loi_giai": "Xác suất học sinh tỉnh $X$ không đạt là $1-0{,}8=0{,}2$; tỉnh $Y$ không đạt là $1-0{,}9=0{,}1$.\nDo hai biến cố độc lập, xác suất cả hai không đạt là $0{,}2\\cdot0{,}1=0{,}02$.\nXác suất có ít nhất một học sinh đạt yêu cầu là $1-0{,}02=0{,}98$.\nVậy xác suất cần tìm bằng $0{,}98$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010497",
+  "loai": "tra_loi_ngan",
+  "de": "Hai hộp bi mỗi hộp chứa $8$ bi trắng, $2$ bi đỏ. Cho hai người mỗi người một hộp. Từ hộp của mình, mỗi người lấy ngẫu nhiên $3$ viên bi. Tính xác suất để hai người lấy được số bi đỏ như nhau.",
+  "dap_an": "0.44",
+  "loi_giai": "Hộp có $10$ bi (8 trắng, 2 đỏ), mỗi người lấy $3$ bi. Gọi $k$ là số bi đỏ lấy được.\n$P(k=0)=\\dfrac{C_8^3}{C_{10}^3}=\\dfrac{56}{120}$\n$P(k=1)=\\dfrac{C_2^1\\cdot C_8^2}{C_{10}^3}=\\dfrac{56}{120}$\n$P(k=2)=\\dfrac{C_2^2\\cdot C_8^1}{C_{10}^3}=\\dfrac{8}{120}$\nHai người lấy số bi đỏ như nhau: $P=\\left(\\dfrac{56}{120}\\right)^2+\\left(\\dfrac{56}{120}\\right)^2+\\left(\\dfrac{8}{120}\\right)^2=\\dfrac{6336}{14400}=0{,}44$\nVậy xác suất cần tìm là $0{,}44$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010414",
+  "loai": "tra_loi_ngan",
+  "de": "Một lớp ngôn ngữ có $60$ sinh viên trong đó $40$ sinh viên học tiếng Anh, $30$ sinh viên học tiếng Pháp. Biết rằng mỗi sinh viên trong lớp đều phải học ít nhất một ngôn ngữ. Chọn ngẫu nhiên một sinh viên. Tính xác suất của biến cố “Sinh viên học cả tiếng Anh và tiếng Pháp”. Kết quả làm tròn đến hàng phần trăm.",
+  "dap_an": "0.17",
+  "loi_giai": "Gọi $A$ là tập sinh viên học tiếng Anh, $B$ là tập sinh viên học tiếng Pháp: $n(A)=40$, $n(B)=30$.\nMỗi sinh viên học ít nhất một ngôn ngữ nên $n(A\\cup B)=60$.\n$n(A\\cap B)=n(A)+n(B)-n(A\\cup B)=40+30-60=10$.\nXác suất: $P=\\dfrac{10}{60}=\\dfrac{1}{6}\\approx 0{,}17$.\nVậy xác suất cần tìm xấp xỉ $0{,}17$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010482",
+  "loai": "tra_loi_ngan",
+  "de": "Một bệnh truyền nhiễm có xác suất lây bệnh là $0,75$ nếu tiếp xúc với người bệnh mà không đeo khẩu trang và là $0,05$ nếu tiếp xúc với người bệnh mà có đeo khẩu trang. Ông $X$ tiếp xúc với người bệnh hai lần, trong đó có một lần không đeo khẩu trang và một lần có đeo khẩu trang. Xác suất ông $X$ bị bệnh do lây từ người bệnh đã tiếp xúc là bao nhiêu? (Kết quả làm tròn đến hàng phần trăm).",
+  "dap_an": "0.76",
+  "loi_giai": "Ông $X$ không bị lây ở lần không đeo khẩu trang với xác suất $1-0{,}75=0{,}25$, và không bị lây ở lần đeo khẩu trang với xác suất $1-0{,}05=0{,}95$.\nHai lần tiếp xúc độc lập nên xác suất không bị bệnh là $0{,}25\\cdot0{,}95=0{,}2375$.\nXác suất bị bệnh là $1-0{,}2375=0{,}7625\\approx0{,}76$.\nVậy xác suất ông $X$ bị bệnh xấp xỉ $0{,}76$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010496",
+  "loai": "tra_loi_ngan",
+  "de": "Hai hộp bi mỗi hộp chứa $8$ bi trắng, $2$ bi đỏ. Cho hai người mỗi người một hộp. Từ hộp của mình, mỗi người lấy ngẫu nhiên $3$ viên bi. Tính xác suất để hai người lấy được số bi đỏ như nhau.\n------------- HẾT -------------",
+  "dap_an": "0.44",
+  "loi_giai": "Hộp có $10$ bi (8 trắng, 2 đỏ), mỗi người lấy $3$ bi. Gọi $k$ là số bi đỏ lấy được.\n$P(k=0)=\\dfrac{C_8^3}{C_{10}^3}=\\dfrac{56}{120}$\n$P(k=1)=\\dfrac{C_2^1\\cdot C_8^2}{C_{10}^3}=\\dfrac{56}{120}$\n$P(k=2)=\\dfrac{C_2^2\\cdot C_8^1}{C_{10}^3}=\\dfrac{8}{120}$\nHai người lấy số bi đỏ như nhau: $P=\\left(\\dfrac{56}{120}\\right)^2+\\left(\\dfrac{56}{120}\\right)^2+\\left(\\dfrac{8}{120}\\right)^2=\\dfrac{6336}{14400}=0{,}44$\nVậy xác suất cần tìm là $0{,}44$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010570",
+  "loai": "tra_loi_ngan",
+  "de": "Quan sát hai hàng hoá thịt lợn và gạo người ta nhận thấy trong mỗi ngày giao dịch, nếu gạo không giảm giá thì thịt lợn giảm giá với xác suất $\\frac{2}{5}$. Ngược lại, nếu thịt lợn không giảm giá thì gạo giảm giá với xác suất $\\frac{4}{7}$. Hơn nữa, xác suất để cả thịt lợn và gạo giảm giá trong cùng một ngày là 0,1. Biết xác suất để có ít nhất một trong hai hàng hoá thịt lợn và gạo giảm giá trong một ngày giao dịch là $\\frac{m}{n}$($m,n\\in\\mathbb{N},\\frac{m}{n}$ là tối giản ), tính giá trị biểu thức $T=5m+9n$",
+  "dap_an": "125",
+  "loi_giai": "Gọi $T$: \"thịt lợn giảm giá\", $G$: \"gạo giảm giá\"; $P(T\\cap G)=0{,}1$.\n$P(T|\\overline G)=\\dfrac25\\Rightarrow P(T)-0{,}1=\\dfrac25\\left(1-P(G)\\right)\\Rightarrow P(T)=0{,}5-0{,}4P(G)$ $(1)$.\n$P(G|\\overline T)=\\dfrac47\\Rightarrow P(G)-0{,}1=\\dfrac47\\left(1-P(T)\\right)$ $(2)$.\nThay $(1)$ vào $(2)$: $P(G)-0{,}1=\\dfrac47\\left(0{,}5+0{,}4P(G)\\right)\\Rightarrow P(G)\\cdot\\dfrac{5{,}4}{7}=\\dfrac{2{,}7}{7}\\Rightarrow P(G)=0{,}5$, suy ra $P(T)=0{,}3$.\n$P(T\\cup G)=0{,}3+0{,}5-0{,}1=0{,}7=\\dfrac7{10}$ nên $m=7$, $n=10$.\n$T=5m+9n=35+90=125$.\nVậy $T=125$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010363",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hai biến cố $A,B$ thỏa mãn $P\\left( A \\right)=0,4$, $P\\left( B \\right)=0,3$, $P\\left( A|B \\right)=0,25$. Giá trị $P\\left( B|A \\right)$ là bao nhiêu? (làm tròn đến hàng phần trăm)?\n------ HẾT ------",
+  "dap_an": "0.19",
+  "loi_giai": "$P(A|B)=\\dfrac{P(AB)}{P(B)}\\Rightarrow P(AB)=P(A|B)\\cdot P(B)=0{,}25\\cdot0{,}3=0{,}075$.\n$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0{,}075}{0{,}4}=0{,}1875\\approx0{,}19$.\nVậy $P(B|A)\\approx0{,}19$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010362",
+  "loai": "tra_loi_ngan",
+  "de": "Một cặp trẻ sinh đôi có thể do cùng một trứng (sinh đôi thật) hay do hai trứng khác nhau sinh ra (sinh đôi giả). Các cặp sinh đôi thật luôn luôn có cùng giới tính. Các cặp sinh đôi giả thì giới tính của mỗi đứa độc lập với nhau và có xác suất là $0.5$. Thống kê cho thấy $30\\%$ cặp sinh đôi là trai, $34\\%$ cặp sinh đôi là gái và $36\\%$ cặp sinh đôi có giới tính khác nhau. Tỷ lệ cặp sinh đôi thật trong số các cặp sinh đôi có cùng giới tính là $\\frac{a}{b}$ ($\\frac{a}{b}$ là phân số tối giản; $a;b\\in\\mathbb{N}^{*}$). Giá trị biểu thức $a+b$ là bao nhiêu?",
+  "dap_an": "23",
+  "loi_giai": "Gọi $t$ là tỉ lệ cặp sinh đôi thật, khi đó tỉ lệ cặp sinh đôi giả là $1-t$.\nSinh đôi thật luôn cùng giới tính. Sinh đôi giả có giới tính khác nhau với xác suất $2\\cdot0{,}5\\cdot0{,}5=0{,}5$.\nTỉ lệ cặp có giới tính khác nhau là $0{,}36$: $0{,}5(1-t)=0{,}36\\Rightarrow1-t=0{,}72\\Rightarrow t=0{,}28$.\nTỉ lệ cặp cùng giới tính: $0{,}30+0{,}34=0{,}64$ (các cặp sinh đôi thật đều nằm trong nhóm này).\nTỉ lệ cặp sinh đôi thật trong số các cặp cùng giới tính: $\\dfrac{0{,}28}{0{,}64}=\\dfrac{7}{16}$, tối giản nên $a=7,\\ b=16$.\n$a+b=7+16=23$.\nVậy $a+b=23$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010358",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hai biến cố $A,B$ thỏa mãn $P\\left( A \\right)=0,4$, $P\\left( B \\right)=0,3$, $P\\left( A|B \\right)=0,25$. Giá trị $P\\left( B|A \\right)$ là bao nhiêu? (làm tròn đến hàng phần trăm)?",
+  "dap_an": "0.19",
+  "loi_giai": "$P(A|B)=\\dfrac{P(AB)}{P(B)}\\Rightarrow P(AB)=P(A|B)\\cdot P(B)=0{,}25\\cdot0{,}3=0{,}075$.\n$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0{,}075}{0{,}4}=0{,}1875\\approx0{,}19$.\nVậy $P(B|A)\\approx0{,}19$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010499",
+  "loai": "tra_loi_ngan",
+  "de": "Bạn An làm hai bài tập liên tiếp. Xác suất An làm đúng bài thứ nhất là 0,9. Nếu An làm đúng bài thứ nhất thì khả năng làm đúng bài thứ hai là 80%; nhưng nếu An làm sai bài thứ nhất thì khả năng làm đúng bài thứ hai là 30%. Xác suất để An làm đúng bài thứ nhất biết rằng An đã làm đúng bài thứ hai bằng $\\frac{m}{n}$, với $m,n\\in\\mathbb{N}$ và $(m,n)=1.$ Tính $m^{2}+n^{2}.$",
+  "dap_an": "1201",
+  "loi_giai": "Gọi $A_1$: \"đúng bài 1\", $A_2$: \"đúng bài 2\". $P(A_1)=0{,}9$, $P(\\overline{A_1})=0{,}1$, $P(A_2|A_1)=0{,}8$, $P(A_2|\\overline{A_1})=0{,}3$.\n$P(A_2)=0{,}9\\cdot0{,}8+0{,}1\\cdot0{,}3=0{,}75$\n$P(A_1|A_2)=\\dfrac{0{,}9\\cdot0{,}8}{0{,}75}=\\dfrac{0{,}72}{0{,}75}=\\dfrac{24}{25}$\nDo đó $m=24$, $n=25$ (nguyên tố cùng nhau) và $m^2+n^2=576+625=1201$.\nVậy $m^2+n^2=1201$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

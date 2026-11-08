@@ -1,0 +1,40 @@
+[
+ {
+  "ma": "BT.07.133.01",
+  "so": "B1",
+  "gia_thiet_goc": "Cho tam giác $ABC$, gọi $D$ là trung điểm của đoạn thẳng $AC$, $E$ là trung điểm của đoạn thẳng $AB$. Trên tia đối của tia $DB$ lấy điểm $M$ sao cho $DM = DB$. Trên tia đối của tia $EC$ lấy điểm $N$ sao cho $EN = EC$.",
+  "gia_thiet_them": [],
+  "cau_hoi": "Chứng minh $AM=BC$.",
+  "tien_de": []
+ },
+ {
+  "ma": "BT.07.133.02",
+  "so": "B2",
+  "gia_thiet_goc": "Cho tam giác $ABC$, gọi $D$ là trung điểm của đoạn thẳng $AC$, $E$ là trung điểm của đoạn thẳng $AB$. Trên tia đối của tia $DB$ lấy điểm $M$ sao cho $DM = DB$. Trên tia đối của tia $EC$ lấy điểm $N$ sao cho $EN = EC$.",
+  "gia_thiet_them": [],
+  "cau_hoi": "Chứng minh $AM\\parallel BC$.",
+  "tien_de": [
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $AM=BC$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.133.03",
+  "so": "B3",
+  "gia_thiet_goc": "Cho tam giác $ABC$, gọi $D$ là trung điểm của đoạn thẳng $AC$, $E$ là trung điểm của đoạn thẳng $AB$. Trên tia đối của tia $DB$ lấy điểm $M$ sao cho $DM = DB$. Trên tia đối của tia $EC$ lấy điểm $N$ sao cho $EN = EC$.",
+  "gia_thiet_them": [],
+  "cau_hoi": "Chứng minh $A$ là trung điểm của đoạn thẳng $MN$.",
+  "tien_de": [
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $AM=BC$."
+   },
+   {
+    "so": "B2",
+    "phat_bieu": "Chứng minh $AM\\parallel BC$."
+   }
+  ]
+ }
+]

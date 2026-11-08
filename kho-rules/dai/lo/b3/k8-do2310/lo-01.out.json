@@ -1,0 +1,13 @@
+[
+ {"ma_cau": "T108030103034", "dang_bai_id": "NDB00475", "chac": "cao", "ly_do": "Tam thức bậc hai hệ số x^2 bằng 1, tách hạng tử được; cũng dùng được hằng đẳng thức nên theo luật dạng sau thắng."},
+ {"ma_cau": "T108030103037", "dang_bai_id": "NDB00475", "chac": "cao", "ly_do": "Tam thức bậc hai hệ số x^2 bằng 1, tách hạng tử được; cũng dùng được hằng đẳng thức nên theo luật dạng sau thắng."},
+ {"ma_cau": "T108030301013", "dang_bai_id": "NDB00977", "chac": "cao", "ly_do": "Nhóm rồi dùng hằng đẳng thức bình phương của tổng; bài cần hằng đẳng thức xếp vào dạng hằng đẳng thức (sau dạng nhóm)."},
+ {"ma_cau": "T108030301015", "dang_bai_id": "NDB00977", "chac": "cao", "ly_do": "Nhóm rồi dùng hằng đẳng thức bình phương của tổng; bài cần hằng đẳng thức xếp vào dạng hằng đẳng thức (sau dạng nhóm)."},
+ {"ma_cau": "T108030601004", "dang_bai_id": "NDB00982", "chac": "vua", "ly_do": "Đúng kiểu tìm x bằng nhẩm nghiệm, nhưng lời giải sai (x^2+x-8 không bằng (x-2)(x+4)) và đáp án lệch; cần người xem lại."},
+ {"ma_cau": "T108030601005", "dang_bai_id": "NDB00982", "chac": "cao", "ly_do": "Phương trình bậc ba nhẩm nghiệm x=1; cũng nhóm hạng tử được nên theo luật dạng sau thắng chọn nhẩm nghiệm."},
+ {"ma_cau": "T108030601008", "dang_bai_id": "NDB00982", "chac": "vua", "ly_do": "Đúng kiểu tìm x bằng nhẩm nghiệm, nhưng đáp án chỉ ghi -1 trong khi lời giải ra x=-1 và x=-2."},
+ {"ma_cau": "T108040501004", "dang_bai_id": "NDB00683", "chac": "vua", "ly_do": "Tính giá trị biểu thức nhiều biến nhưng cho điều kiện x+y=5 thay vì giá trị từng biến; kiểu nâng cao chưa có dạng riêng."},
+ {"ma_cau": "T108040501005", "dang_bai_id": "NDB00682", "chac": "cao", "ly_do": "Tính giá trị biểu thức một biến tại x=9 (thay 10=x+1 để triệt tiêu); yêu cầu chính là tính giá trị tại x cho trước."},
+ {"ma_cau": "T108050203001", "dang_bai_id": "NDB00699", "chac": "vua", "ly_do": "Tách thành tổng các bình phương bằng 0 để tìm x,y,z; nhưng có 3 biến, các dạng hiện có chỉ nói hai biến."},
+ {"ma_cau": "T108050203002", "dang_bai_id": "NDB00699", "chac": "vua", "ly_do": "Tách tổng ba bình phương bằng 0 để tìm a,b,c rồi tính biểu thức; nhưng có 3 biến, các dạng hiện có chỉ nói hai biến."}
+]

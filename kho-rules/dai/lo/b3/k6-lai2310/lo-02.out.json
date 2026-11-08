@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T106020402001",
+  "dang_bai_id": "NDB00356",
+  "chac": "cao",
+  "ly_do": "Đưa 2^4, 4^2, 16^2 về cùng 16 để rút thừa số chung."
+ },
+ {
+  "ma_cau": "T106000000801",
+  "dang_bai_id": "NDB00359",
+  "chac": "cao",
+  "ly_do": "Tìm x ở số mũ, đưa hai vế về cùng cơ số 5."
+ },
+ {
+  "ma_cau": "T106040104040",
+  "dang_bai_id": "NDB00405",
+  "chac": "cao",
+  "ly_do": "Tìm n là ước chung của 84 và 126 kèm điều kiện chặn."
+ },
+ {
+  "ma_cau": "T106040102020",
+  "dang_bai_id": "NDB00401",
+  "chac": "cao",
+  "ly_do": "Đề yêu cầu tìm ƯCLN bằng định nghĩa (liệt kê ước)."
+ },
+ {
+  "ma_cau": "T106040303004",
+  "dang_bai_id": "NDB00417",
+  "chac": "cao",
+  "ly_do": "Biết BCNN và hiệu; ƯC(30,4) có 2 giá trị k."
+ },
+ {
+  "ma_cau": "T106000000962",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng toán tư duy: số mảnh sau mỗi lần cắt, xét số dư khi chia 5."
+ },
+ {
+  "ma_cau": "T106040103013",
+  "dang_bai_id": "NDB00404",
+  "chac": "cao",
+  "ly_do": "Tìm các cạnh có thể rồi cạnh lớn nhất; dạng sau là ƯCLN thực tế."
+ },
+ {
+  "ma_cau": "T106020501042",
+  "dang_bai_id": "NDB00360",
+  "chac": "cao",
+  "ly_do": "Biểu thức có ngoặc tròn và ngoặc vuông."
+ },
+ {
+  "ma_cau": "T106040104028",
+  "dang_bai_id": "NDB00405",
+  "chac": "cao",
+  "ly_do": "Tìm n là ước chung của 84, 126 kèm điều kiện n<30."
+ },
+ {
+  "ma_cau": "T106040201010",
+  "dang_bai_id": "NDB00407",
+  "chac": "cao",
+  "ly_do": "Đề yêu cầu tìm bội chung BC(7;14)."
+ },
+ {
+  "ma_cau": "T106040101008",
+  "dang_bai_id": "NDB00400",
+  "chac": "cao",
+  "ly_do": "Đề yêu cầu tìm ƯC(36;54)."
+ },
+ {
+  "ma_cau": "T106020501030",
+  "dang_bai_id": "NDB00360",
+  "chac": "cao",
+  "ly_do": "Biểu thức có ngoặc tròn và ngoặc vuông, trùng ví dụ dạng."
+ },
+ {
+  "ma_cau": "T106020501048",
+  "dang_bai_id": "NDB00361",
+  "chac": "cao",
+  "ly_do": "Biểu thức có đủ ngoặc tròn, vuông và nhọn."
+ },
+ {
+  "ma_cau": "T106040301004",
+  "dang_bai_id": "NDB00415",
+  "chac": "cao",
+  "ly_do": "Biết ƯCLN và BCNN, tìm hai số a, b."
+ },
+ {
+  "ma_cau": "T106040103019",
+  "dang_bai_id": "NDB00404",
+  "chac": "cao",
+  "ly_do": "Chia nhiều nhóm nhất: bài thực tế ƯCLN."
+ },
+ {
+  "ma_cau": "T106040303006",
+  "dang_bai_id": "NDB00417",
+  "chac": "cao",
+  "ly_do": "Biết BCNN và hiệu; ƯC(40,2) có 2 giá trị k."
+ },
+ {
+  "ma_cau": "T106040204009",
+  "dang_bai_id": "NDB00414",
+  "chac": "cao",
+  "ly_do": "Tìm n nhỏ nhất khác 0 chia hết cho hai số: BCNN."
+ },
+ {
+  "ma_cau": "T106040301044",
+  "dang_bai_id": "NDB00415",
+  "chac": "cao",
+  "ly_do": "Biết ƯCLN và BCNN, tìm hai số a, b."
+ },
+ {
+  "ma_cau": "T106000000079",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc nhánh Tính chia hết trong tập hợp các số tự nhiên [hgt] (dấu hiệu chia hết cho 2 và 5)."
+ },
+ {
+  "ma_cau": "T106040303024",
+  "dang_bai_id": "NDB00417",
+  "chac": "cao",
+  "ly_do": "Biết BCNN và hiệu; ƯC(75,10) có 2 giá trị k."
+ },
+ {
+  "ma_cau": "T106040202024",
+  "dang_bai_id": "NDB00409",
+  "chac": "cao",
+  "ly_do": "Tìm BCNN bằng phân tích ra thừa số nguyên tố."
+ },
+ {
+  "ma_cau": "T106040301037",
+  "dang_bai_id": "NDB00415",
+  "chac": "cao",
+  "ly_do": "Biết ƯCLN và BCNN, tìm hai số a, b."
+ },
+ {
+  "ma_cau": "T106040301039",
+  "dang_bai_id": "NDB00415",
+  "chac": "cao",
+  "ly_do": "Biết ƯCLN và BCNN, tìm hai số a, b."
+ },
+ {
+  "ma_cau": "T106040204024",
+  "dang_bai_id": "NDB00413",
+  "chac": "cao",
+  "ly_do": "n là bội chung của ba số kèm điều kiện chặn 200<n<400."
+ },
+ {
+  "ma_cau": "T106000000326",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc nhánh Tính chia hết trong tập hợp các số tự nhiên [hgt]: chứng tỏ tổng lũy thừa chia hết cho 57."
+ },
+ {
+  "ma_cau": "T106020303013",
+  "dang_bai_id": "NDB00350",
+  "chac": "cao",
+  "ly_do": "2x là số bị trừ trong phép trừ; tìm x."
+ },
+ {
+  "ma_cau": "T106020601040",
+  "dang_bai_id": "NDB00365",
+  "chac": "cao",
+  "ly_do": "Tính tổng dãy lũy thừa cùng cơ số, số mũ cách đều, cùng dấu."
+ },
+ {
+  "ma_cau": "T106000000695",
+  "dang_bai_id": "NDB00356",
+  "chac": "vua",
+  "ly_do": "Rút gọn phân số lũy thừa, ẩn thừa số chung ở tử; bản đồ chưa có dạng rút gọn phân số."
+ },
+ {
+  "ma_cau": "T106020503087",
+  "dang_bai_id": "NDB00364",
+  "chac": "cao",
+  "ly_do": "Tìm x có ngoặc, x không ở cơ số hay số mũ."
+ },
+ {
+  "ma_cau": "T106000000690",
+  "dang_bai_id": "NDB01413",
+  "chac": "vua",
+  "ly_do": "Tách k(k+1)^2 thành tích số liên tiếp rồi triệt tiêu; có thể gần dạng 01415."
+ },
+ {
+  "ma_cau": "T106000000614",
+  "dang_bai_id": "NDB00365",
+  "chac": "vua",
+  "ly_do": "Tính tổng dãy lũy thừa cơ số 2 rồi chứng minh liên tiếp; không khớp hẳn dạng nào."
+ },
+ {
+  "ma_cau": "T106040202038",
+  "dang_bai_id": "NDB00409",
+  "chac": "cao",
+  "ly_do": "Tìm BCNN bằng phân tích ra thừa số nguyên tố."
+ },
+ {
+  "ma_cau": "T106040204008",
+  "dang_bai_id": "NDB00414",
+  "chac": "cao",
+  "ly_do": "Tìm n nhỏ nhất khác 0 chia hết cho hai số: BCNN."
+ },
+ {
+  "ma_cau": "T106040201007",
+  "dang_bai_id": "NDB00407",
+  "chac": "cao",
+  "ly_do": "Đề yêu cầu tìm bội chung BC(6;15)."
+ },
+ {
+  "ma_cau": "T106000000176",
+  "dang_bai_id": "NDB00359",
+  "chac": "cao",
+  "ly_do": "Tìm x ở số mũ, đưa hai vế về cùng cơ số 2."
+ },
+ {
+  "ma_cau": "T106040204016",
+  "dang_bai_id": "NDB00414",
+  "chac": "cao",
+  "ly_do": "Tìm n nhỏ nhất khác 0 chia hết cho hai số: BCNN."
+ },
+ {
+  "ma_cau": "T106040203065",
+  "dang_bai_id": "NDB00412",
+  "chac": "cao",
+  "ly_do": "Bài thực tế ba bạn trực nhật chung: BCNN."
+ },
+ {
+  "ma_cau": "T106020501024",
+  "dang_bai_id": "NDB00360",
+  "chac": "cao",
+  "ly_do": "Biểu thức có ngoặc tròn và ngoặc vuông."
+ },
+ {
+  "ma_cau": "T106040104025",
+  "dang_bai_id": "NDB00405",
+  "chac": "cao",
+  "ly_do": "Tìm n là ước chung của 88, 132 kèm điều kiện n<12."
+ },
+ {
+  "ma_cau": "T106040101004",
+  "dang_bai_id": "NDB00400",
+  "chac": "cao",
+  "ly_do": "Đề yêu cầu tìm ƯC(21;28)."
+ },
+ {
+  "ma_cau": "T106040103004",
+  "dang_bai_id": "NDB00403",
+  "chac": "cao",
+  "ly_do": "Chia đều vở và bút, số học sinh là ước chung kèm điều kiện."
+ },
+ {
+  "ma_cau": "T106040202035",
+  "dang_bai_id": "NDB00409",
+  "chac": "cao",
+  "ly_do": "Tìm BCNN bằng phân tích ra thừa số nguyên tố."
+ },
+ {
+  "ma_cau": "T106000000324",
+  "dang_bai_id": "NDB00359",
+  "chac": "cao",
+  "ly_do": "Tìm x ở số mũ, 5^(x+1) là số bị trừ rồi cùng cơ số."
+ },
+ {
+  "ma_cau": "T106040103006",
+  "dang_bai_id": "NDB00403",
+  "chac": "cao",
+  "ly_do": "Chia đều bút và vở vào phần thưởng: bài thực tế ước chung."
+ },
+ {
+  "ma_cau": "T106000000557",
+  "dang_bai_id": "NDB00359",
+  "chac": "cao",
+  "ly_do": "Rút 5^x làm thừa số chung rồi tìm x ở số mũ."
+ },
+ {
+  "ma_cau": "T106040102010",
+  "dang_bai_id": "NDB00401",
+  "chac": "cao",
+  "ly_do": "Đề yêu cầu tìm ƯCLN bằng định nghĩa (liệt kê ước)."
+ },
+ {
+  "ma_cau": "T106020303001",
+  "dang_bai_id": "NDB00351",
+  "chac": "cao",
+  "ly_do": "5x là số trừ trong phép trừ; tìm x."
+ },
+ {
+  "ma_cau": "T106000000468",
+  "dang_bai_id": "NDB01320",
+  "chac": "vua",
+  "ly_do": "Đề ghi số nguyên x, x ở số mũ; cũng giống dạng 00359 nếu là số tự nhiên."
+ },
+ {
+  "ma_cau": "T106040301002",
+  "dang_bai_id": "NDB00415",
+  "chac": "cao",
+  "ly_do": "Biết ƯCLN và BCNN, tìm hai số a, b."
+ },
+ {
+  "ma_cau": "T106040303023",
+  "dang_bai_id": "NDB00417",
+  "chac": "cao",
+  "ly_do": "Biết BCNN và hiệu; ƯC(60,5) có 2 giá trị k."
+ },
+ {
+  "ma_cau": "T106000000999",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng toán đố tư duy/chia hết (năm giỏ táo lê, đúng sai 4 ý)."
+ },
+ {
+  "ma_cau": "T106000000165",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc nhánh Tính chia hết trong tập hợp các số tự nhiên [hgt]: chứng minh tổng lũy thừa chia hết cho 13."
+ },
+ {
+  "ma_cau": "T106000000651",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng thống kê (bảng dữ liệu, kiểm đếm); đề có hình."
+ },
+ {
+  "ma_cau": "T106000000274",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng phân tích ra thừa số nguyên tố; gần nhánh Tính chia hết [hgt]."
+ },
+ {
+  "ma_cau": "T106000000103",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc nhánh Tính chia hết trong tập hợp các số tự nhiên [hgt]: chứng tỏ tổng lũy thừa chia hết cho 6."
+ },
+ {
+  "ma_cau": "T106000000217",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc nhánh Tính chia hết trong tập hợp các số tự nhiên [hgt]: nhận định số nguyên tố, dấu hiệu chia hết."
+ },
+ {
+  "ma_cau": "T106000000412",
+  "dang_bai_id": "NDB01325",
+  "chac": "vua",
+  "ly_do": "Đề ghi số nguyên x ước của 60 và 90 kèm x≥10; giống dạng 00405 nếu là số tự nhiên."
+ },
+ {
+  "ma_cau": "T106000000490",
+  "dang_bai_id": "NDB01325",
+  "chac": "vua",
+  "ly_do": "Đề ghi x∈Z ước chung lớn nhất; giống dạng 00406 nếu là số tự nhiên."
+ },
+ {
+  "ma_cau": "T106000000227",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng toán tư duy (nguyên lý Dirichlet, phản chứng)."
+ },
+ {
+  "ma_cau": "T106000000788",
+  "dang_bai_id": "NDB00350",
+  "chac": "vua",
+  "ly_do": "Tìm x số bị chia đơn giản x:8=24; nhóm Tìm x nhân chia chưa có dạng riêng."
+ },
+ {
+  "ma_cau": "T106000000456",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng toán tư duy: bất biến tổng sau mỗi lần xoá và viết số mới."
+ },
+ {
+  "ma_cau": "T106020503012",
+  "dang_bai_id": "NDB00359",
+  "chac": "cao",
+  "ly_do": "Tìm x ở số mũ 3^(x+1), đưa về cùng cơ số 3."
+ },
+ {
+  "ma_cau": "T1060000001008",
+  "dang_bai_id": "NDB00336",
+  "chac": "cao",
+  "ly_do": "Liệt kê, đếm phần tử, tính tổng; có ý ∈,∉ nhưng dạng sau là 00336."
+ },
+ {
+  "ma_cau": "T106000000254",
+  "dang_bai_id": "NDB00352",
+  "chac": "vua",
+  "ly_do": "Bài toán có lời văn về số tự nhiên (bèo nhân đôi), thiên về tư duy."
+ },
+ {
+  "ma_cau": "T106000000752",
+  "dang_bai_id": "NDB00352",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn mua đồ, cộng nhân số tự nhiên."
+ },
+ {
+  "ma_cau": "T106000000642",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng thống kê (biểu đồ tranh, đúng sai 4 ý); đề có hình."
+ },
+ {
+  "ma_cau": "T1060000001034",
+  "dang_bai_id": "NDB00405",
+  "chac": "cao",
+  "ly_do": "Tìm số tự nhiên x là ước chung của 54, 81 kèm x>10."
+ },
+ {
+  "ma_cau": "T106000000981",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Câu lý thuyết thứ tự thực hiện phép tính; bản đồ thiếu dạng nhận biết quy tắc thứ tự."
+ },
+ {
+  "ma_cau": "T106030402009",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc nhánh Tính chia hết trong tập hợp các số tự nhiên [hgt]: chứng minh chia hết cặp biểu thức."
+ },
+ {
+  "ma_cau": "T106000000952",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc nhánh Tính chia hết trong tập hợp các số tự nhiên [hgt]: số nguyên tố, hợp số."
+ }
+]

@@ -1,0 +1,228 @@
+[
+ {
+  "id": "NDB00868",
+  "ten": "Xét vị trí tương đối của 2 đường thẳng",
+  "mo_ta": "",
+  "nhom_id": "NNB01514",
+  "nhom": "Ví trí tương đối giữa đường thẳng và đường thẳng",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Ví trí tương đối của Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trên phần mềm mô phỏng 3D một máy khoan trong không gian $Oxyz$ cho biết phương trình trục $a$ của mũi khoan và một đường rãnh $b$ trên vật cần khoan lần lượt là $a: \\begin{cases} x=1 \\\\ y=2 \\\\ z=3t \\end{cases}$ và $b: \\begin{cases} x=1+4k \\\\ y=2+2k \\\\ z=6 \\end{cases}$. Tọa độ giao điểm của $a$ và $b$ là $M(a;b;c)$. Tính $S=a+b+c$.",
+    "dap_an": "9"
+   },
+   {
+    "de": "Một phần mềm mô phỏng vận động viên tập bắn bia mục tiêu có kích thước nhỏ $\\left( 42\\times 42cm \\right)$ bằng súng tiểu liên AK trong không gian $Oxyz$. Cho biết vận động viên đó sử dụng thước ngắm 3 và đứng cách xa bia mục tiêu là $100m$, trục $d$ của nòng súng và cọc đỡ bia $d'$ lần lượt có phương trình\n$d:\\left\\{ \\begin{array}{l} x=t \\\\ y=2 \\\\ z=4 \\end{array} \\right.$ và $d':\\left\\{ \\begin{array}{l} x=1 \\\\ y=2 \\\\ z=1+3t' \\end{array} \\right.$. Để bắn trúng hồng tâm ( điểm 10 ) thì vận động vi",
+    "dap_an": "-3"
+   },
+   {
+    "de": "Một phần mềm mô phỏng vận động viên tập bắn bia mục tiêu có kích thước nhỏ $(42\\times42\\,\\mathrm{cm})$ bằng súng tiểu liên AK trong không gian $Oxyz$. Cho biết vận động viên đó sử dụng thước ngắm $3$ và đứng cách xa bia mục tiêu là $100$ m, trục $d$ của nòng súng và cọc đỡ bia $d'$ lần lượt có phương trình $d:\\begin{cases}x=t\\\\y=2\\\\z=4\\end{cases}$ và $d':\\begin{cases}x=1\\\\y=2\\\\z=1+3t'\\end{cases}$. Để bắn trúng hồng tâm (điểm $10$) thì vận động viên phải ngắm bắn vào điểm $N(a;b;c)\\in d'$ và cách",
+    "dap_an": "-3"
+   }
+  ]
+ },
+ {
+  "id": "NDB00869",
+  "ten": "Khoảng cách giữa 2 đường thẳng chéo nhau",
+  "mo_ta": "",
+  "nhom_id": "NNB01514",
+  "nhom": "Ví trí tương đối giữa đường thẳng và đường thẳng",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Ví trí tương đối của Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong hệ thống quản lý bay tại sân bay Cam Ranh (Nha Trang), người ta thiết lập hệ thống tọa độ $Oxyz$ với $O$ là trạm kiểm soát không lưu, mặt phẳng $(Oxy)$ trùng với mặt đất (coi như mặt phẳng). Đơn vị đo trên các trục là km.\nMột chiếc máy bay thương mại $M_{1}$ đang bay theo lộ trình là đường thẳng $d_{1}$ đi qua điểm $A(2;4;10)$ và có vectơ chỉ phương $\\overrightarrow{u_{1}}=(1;\\,\\,\\,1;\\,\\,-0,5)$. Cùng lúc đó, một máy bay không người lái (drone) giám sát $M_{2}$ đang bay trên đường thẳng $d_",
+    "dap_an": "4,12"
+   },
+   {
+    "de": "Một kiến trúc sư muốn xây dựng $1$tòa nhà biểu tượng độc lạ cho thành phố. Trên bản thiết kế tòa nhà có hình dạng là một khối lăng trụ tam giác đều, có cạnh bên bằng cạnh đáy và dài $306$ mét (tham khảo hình vẽ). Kiến trúc sư muốn xây dựng một cây cầu $MN$ bắc xuyên tòa nhà (điểm đầu thuộc cạnh $A'C$, điểm cuối thuộc cạnh $BC'$) và cây cầu này sẽ được dát vàng với đơn giá $5$ tỷ đồng trên $1$ mét dài. Vì vậy để đáp ứng bài toán kinh tế, kiến trúc sư phải chọn vị trí cây cầu sao cho $MN$ ngắn nhấ",
+    "dap_an": "684"
+   },
+   {
+    "de": "Cho hình lập phương $ABCD.A_1B_1C_1D_1$ cạnh bằng $a$. Khoảng cách giữa $A_1B$ và $B_1C$ bằng",
+    "dap_an": "A"
+   }
+  ]
+ },
+ {
+  "id": "NDB00870",
+  "ten": "Bài toán về đường vuông góc chung của 2 đường thẳng chéo nhau",
+  "mo_ta": "",
+  "nhom_id": "NNB01514",
+  "nhom": "Ví trí tương đối giữa đường thẳng và đường thẳng",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Ví trí tương đối của Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian với hệ toạ độ $Oxyz$, gọi $(\\Delta)$ là đường vuông góc chung của hai đường thẳng: $(d_1): \\dfrac{x-1}{-1}=\\dfrac{y-2}{2}=\\dfrac{z}{3}$ và $(d_2): \\begin{cases} x=1+t' \\\\ y=3-2t' \\\\ z=1 \\end{cases}$. Phương trình của $(\\Delta)$ là",
+    "dap_an": "A"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, cho hai đường thẳng chéo nhau $d: \\begin{cases} x=1+t \\\\ y=0 \\\\ z=-5+t \\end{cases}$ và $d': \\begin{cases} x=0 \\\\ y=4-2t' \\\\ z=5+3t' \\end{cases}$. Đường vuông góc chung của hai đường thẳng $d$ và $d'$ đi qua điểm $K(6;m;n)$. Tính $m+n$.",
+    "dap_an": "-7"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, cho hai đường thẳng chéo nhau $d_1: \\dfrac{x-2}{1}=\\dfrac{y-1}{-1}=\\dfrac{z-2}{-1}$ và $d_2: \\begin{cases} x=t \\\\ y=3 \\\\ z=-2+t \\end{cases}$. Phương trình đường vuông góc chung của hai đường thẳng $d_1$, $d_2$ là",
+    "dap_an": "A"
+   }
+  ]
+ },
+ {
+  "id": "NDB00871",
+  "ten": "Xét vị trí tương đối của đường thẳng và mặt phẳng",
+  "mo_ta": "",
+  "nhom_id": "NNB01515",
+  "nhom": "Ví trí tương đối giữa đường thẳng và mặt phẳng",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Ví trí tương đối của Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Xét vị trí tương đối của đường thẳng $d:\\dfrac{x-1}{2}=\\dfrac{y}{1}=\\dfrac{z+1}{-1}$ với mặt phẳng $\\left(P\\right):x+2z-7=0$.",
+    "dap_an": "A"
+   },
+   {
+    "de": "Trong không gian với hệ tọa độ $Oxyz$. Khi $m\\in\\mathbb{R}\\setminus\\{a\\}$ thì đường thẳng $d$ đi qua hai điểm $A(1;2;0)$; $B(m;-1;3)$ cắt mặt phẳng $(P): x+y+z-6=0$. Giá trị của $a$ bằng bao nhiêu?",
+    "dap_an": "1"
+   },
+   {
+    "de": "Trong không gian với hệ tọa độ $Oxyz$, cho mặt phẳng $\\left(P\\right):2x+y-z-1=0$. Đường thẳng nào dưới đây song song với mặt phẳng $\\left(P\\right)$?",
+    "dap_an": "C"
+   }
+  ]
+ },
+ {
+  "id": "NDB00872",
+  "ten": "Giao điểm của đường thẳng và mặt phẳng",
+  "mo_ta": "",
+  "nhom_id": "NNB01515",
+  "nhom": "Ví trí tương đối giữa đường thẳng và mặt phẳng",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Ví trí tương đối của Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian $Oxyz,$ cho mặt phẳng $(P):x-y+z-6=0$ và đường thẳng $d:\\left\\{ \\begin{array}{l} x=1+2t \\\\ y=-t \\\\ z=1-t \\end{array} \\right.$. Gọi $M\\left( a;b;c \\right)$ là giao điểm của đường thẳng $d$ và mặt phẳng $\\left( P \\right)$. Giá trị của $a+b+c$ bằng?",
+    "dap_an": "2"
+   },
+   {
+    "de": "Mô phỏng trong không gian với hệ toạ độ Oxyz ( đơn vị trên mỗi trục là 1 km). Một máy bay đang ở vị trí $A(6;-8;1)$ và sẽ hạ cánh ở vị trí điểm $O(0;0;0)$ trên đường băng.Có một lớp mây mỏng được mô phỏng bởi một mặt phẳng đi qua 3 điểm $P(12;0;0)$; $Q(0;-12;0)$;$R(0;0;1,2)$.Tính khoảng cách giữa máy bay và đường băng ngay khi máy bay vừa xuyên qua lớp mây? ( kết quả làm tròn đến hàng phần trăm, đơn vị là km)\n------ HẾT ------",
+    "dap_an": "5,02"
+   },
+   {
+    "de": "Mô phỏng trong không gian với hệ tọa độ $Oxyz$ (đơn vị trên mỗi trục số là kilômét), một máy bay đang ở vị trí $A(6;-8;-1)$ và sẽ hạ cánh ở điểm có tọa độ $O(0;0;0)$ trên đường băng. Có một lớp mây mỏng được mô phỏng bởi một mặt phẳng đi qua ba điểm $P(12;0;0), Q(0;-12;0)$ và $R(0;0;1{,}2)$. Tính khoảng cách giữa máy bay và đường băng ngay khi máy bay bay xuyên qua lớp mây (kết quả làm tròn đến hàng phần trăm của kilômét).",
+    "dap_an": "5,02"
+   }
+  ]
+ },
+ {
+  "id": "NDB00873",
+  "ten": "Chân đường vuông góc - điểm đối xứng qua mặt phẳng",
+  "mo_ta": "",
+  "nhom_id": "NNB01515",
+  "nhom": "Ví trí tương đối giữa đường thẳng và mặt phẳng",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Ví trí tương đối của Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Cho đường thẳng $d:\\dfrac{x-1}{2}=\\dfrac{y+1}{-1}=\\dfrac{z}{2}$ và điểm $M\\left(2;-1;8\\right)$. $H\\left(a;b;c\\right)$ là hình chiếu vuông góc của $M$ trên $d$. Tính giá trị $a+b+c$.",
+    "dap_an": "6"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, cho điểm $A\\left(1;2;-1\\right)$. Điểm đối xứng với $A$ qua mặt phẳng $\\left(Oyz\\right)$ có tọa độ là",
+    "dap_an": "A"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, cho hai điểm $A(-1;2;4)$ và $B(5;2;-2)$. Biết $\\vec{u}=(a;b;1)$ là vectơ chỉ phương của đường thẳng $\\Delta$ là đường đối xứng với $AB$ qua mặt phẳng $(Oyz)$. Tính $a+b$.",
+    "dap_an": "1"
+   }
+  ]
+ },
+ {
+  "id": "NDB00874",
+  "ten": "Xét vị trị tương đối của mặt phẳng và mặt cầu",
+  "mo_ta": "",
+  "nhom_id": "NNB01516",
+  "nhom": "Vị trí tương đối của mặt phẳng và mặt cầu",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Ví trí tương đối của Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Công nghệ hỗ trợ trọng tài VAR (Video Assistant Referee) thiết lập một hệ tọa độ $Oxyz$ để theo dõi vị trí của quả bóng $M$. Cho biết $M$ đang nằm trên mặt sân có phương trình $z=0$, đồng thời thuộc mặt cầu $(S):(x-33)^{2}+(y-50)^{2}+(z-9)^{2}=97$ (đơn vị độ dài tính theo mét). Gọi $K$ là hình chiếu vuông góc của tâm $I$ của mặt cầu $(S)$ lên mặt sân. Tính khoảng cách từ vị trí $M$ của quả bóng đến điểm $K$.",
+    "dap_an": "4"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, người ta muốn thiết kế một lều cắm trại có dạng một phần của mặt cầu bằng phần mềm 3D. Cho phương trình bề mặt của lều là $(S):(x-2)^{2}+(y-3)^{2}+(z-1)^{2}=9$ và sàn của lều nằm trong mặt phẳng $(Oxy)$. Tính bán kính đường tròn sàn của lều (làm tròn đến hàng phần trăm).",
+    "dap_an": "2,83"
+   },
+   {
+    "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho mặt cầu $(S):x^2+y^2+z^2+8x+6y-8z+5=0$ và mặt phẳng $(P):3x+y+z-8=0$. Biết $(P)$ cắt $(S)$ theo giao tuyến là đường tròn có bán kính $r$. Khi đó $r$ bằng bao nhiêu? (kết quả làm tròn đến hàng phần trăm).",
+    "dap_an": "1,78"
+   }
+  ]
+ },
+ {
+  "id": "NDB00875",
+  "ten": "Viết phương trình mặt phẳng khi biết thiết diện cắt mặt cầu",
+  "mo_ta": "",
+  "nhom_id": "NNB01516",
+  "nhom": "Vị trí tương đối của mặt phẳng và mặt cầu",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Ví trí tương đối của Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian $Oxyz$, cho mặt cầu $(S): (x-1)^2+(y-2)^2+(z-3)^2=25$ và hai điểm $A(3;-2;6)$, $B(0;1;0)$. Mặt phẳng $(P): ax+by+cz-2=0$ chứa đường thẳng $AB$ và cắt $(S)$ theo giao tuyến là đường tròn có bán kính nhỏ nhất. Giá trị của biểu thức $M=2a+b-c$ bằng bao nhiêu?",
+    "dap_an": "1"
+   },
+   {
+    "de": "Tại lễ Tri ân và trưởng thành của học sinh khối $12$ của một trường THPT. Kết thúc buổi lễ, một học sinh khối $12$ đại diện cho các bạn thả một khinh khí cầu với khát vọng bay cao và vươn xa. Trong không gian $Oxyz$, mỗi đơn vị ứng với $1$m, giả sử khinh khí cầu đang ở vị trí có phương trình là $(S): (x-1)^2+(y-2)^2+(z-10)^2=2$. Cùng thời điểm đó có ba chiếc flycam $A,B,C$ cách nhau $3$m, $4$m, $5$m và tạo thành một tam giác $ABC$ có ba cạnh tiếp xúc với mặt cầu $(S)$, biết rằng mặt phẳng $(ABC)",
+    "dap_an": "-22"
+   }
+  ]
+ },
+ {
+  "id": "NDB00876",
+  "ten": "Viết phương trình mặt cầu khi biết thiết diện cắt mặt phẳng",
+  "mo_ta": "",
+  "nhom_id": "NNB01516",
+  "nhom": "Vị trí tương đối của mặt phẳng và mặt cầu",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Ví trí tương đối của Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian $Oxyz$, cho mặt phẳng $(P): x-2y+2z-2=0$ và điểm $I(-1;2;-1)$. Xét $(S)$ là mặt cầu tâm $I$ và cắt $(P)$ theo giao tuyến là đường tròn có bán kính bằng $5$. Phương trình của $(S)$ là",
+    "dap_an": "A"
+   },
+   {
+    "de": "Trong không gian $Oxyz$, cho mặt cầu $(S)$ có tâm $I(1;2;3)$ và mặt phẳng $(P):x+2y-2z+4=0$. Biết rằng $(P)$ cắt $(S)$ theo giao tuyến là đường tròn có bán kính $r=4$, hỏi thể tích của khối cầu $(S)$ bằng bao nhiêu? (Kết quả làm tròn đến hàng đơn vị).",
+    "dap_an": "294"
+   },
+   {
+    "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho đường thẳng $d: x=\\dfrac{y-1}{2}=\\dfrac{z-2}{-1}$ và mặt phẳng $(P): 3x+y-z-5=0$. Mặt cầu $(S)$ có tâm $I$ thuộc đường thẳng $d$ và cắt mặt phẳng $(P)$ theo giao tuyến là đường tròn lớn nhất có bán kính $r=5$. Xét tính đúng sai của các khẳng định sau:",
+    "dap_an": null
+   }
+  ]
+ },
+ {
+  "id": "NDB00877",
+  "ten": "Bài toán liên quan đến mặt cầu tiếp xúc với mặt phẳng",
+  "mo_ta": "",
+  "nhom_id": "NNB01516",
+  "nhom": "Vị trí tương đối của mặt phẳng và mặt cầu",
+  "nhom_mo_ta": "",
+  "chuyen_de": "Ví trí tương đối của Mặt phẳng - Đường thẳng - Mặt cầu",
+  "cau_mau": [
+   {
+    "de": "Trong không gian $Oxyz$, mặt cầu $\\left(S\\right)$ có tâm $I\\left(1;2;-1\\right)$ và tiếp xúc với mặt phẳng $\\left(P\\right) :2x-2y-z-8=0$ có phương trình là",
+    "dap_an": "B"
+   },
+   {
+    "de": "Một quả bóng rổ được đặt ở một góc của căn phòng hình hộp chữ nhật, sao cho quả bóng chạm và tiếp xúc với hai bức tường và nền nhà của căn phòng đó thì có một điểm trên quả bóng có khoảng cách lần lượt đến hai bức tường và nền nhà là $17cm,$$18cm,$$21cm$ (tham khảo hình minh họa). Quả bóng rổ tiêu chuẩn có đường kính từ $23cm$ đến $24,5cm.$ Hỏi độ dài đường kính của quả bóng bằng bao nhiêu $cm?$(Kết quả là tròn đến một chữ số thập phân).",
+    "dap_an": "23,9"
+   },
+   {
+    "de": "Trong không gian $Oxyz$ cho điểm $A(1;-1;2)$. Gọi $M,N,K$ là hình chiếu vuông góc của $A$ lên ba trục tọa độ. Mặt cầu tâm $O$ tiếp xúc với mặt phẳng $(MNK)$ có phương trình là:",
+    "dap_an": "D"
+   }
+  ]
+ }
+]

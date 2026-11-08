@@ -13,9 +13,13 @@ import {
   buildKhoIngestPrompt, parseKhoIngestJson, INGEST_KHO_SCHEMA, callGeminiRich,
   classifyDang, verifyDangByLyThuyet, aiGiaiCau,
   saveCauToDang, createCauDungSai, uploadKhoImage, logKhoTag, khoTagPrecision,
+  khoiChayBanDoMoi, listBdmChuDeOptions, listBdmDangByChuDe, getBdmDangLyThuyet, nhapCauBdm,
   type KhoMon, type ChuDeOption, type DangCandidate, type LoaiCau, type MenhDe,
 } from '../../lib/kho/api'
 // Nhập kho = nhập CHUYÊN ĐỀ — 1 file cùng chủ đề (AI gợi ý dạng, verify low-conf).
+// ⭐ 26/10 (Thùy "chuyển hẳn sang bản đồ và kho mới"): Đại/HGT ở khối chạy BẢN ĐỒ MỚI ⇒ chủ đề + ứng viên = DẠNG BÀI (bdm_ban_do),
+// lưu qua fn_bdm_nhap_cau: câu vào dạng chờ của khối (DB cấp mã), dạng bài người chốt ⇒ gán nguon 'nguoi' (để trống = chưa gán);
+// câu Đ/S ⇒ kho Đ/S của chủ đề, không gán dạng bài, mệnh đề không chọn dạng (bản đồ mới chưa có chỗ gắn dạng từng ý). KHTN, cấp 1 giữ cũ.
 // Đề thi KHÔNG còn ở đây: Thùy 09/10 tách thành lá riêng "Kho đề thi" (Học thuật, dưới Kho tài liệu → KhoDeThi.tsx).
 // Đề vào bằng Claude (/nhap-de-thi), không bóc PDF trong trình duyệt (CEO 01/10).
 export default function NhapKhoScreen() {
@@ -63,6 +67,7 @@ function NhapChuyenDe() {
   useEffect(() => { if (allowed.length && !allowed.includes(mon)) setMon(allowed[0]) }, [allowed.join(',')]) // eslint-disable-line
 
   const [khoi, setKhoi] = useState(DEFAULT_KHOI)
+  const [moi, setMoi] = useState(false)   // (kho, khối) chạy bản đồ mới — DB quyết (fn_bdm_dang_chon)
   const [chuDes, setChuDes] = useState<ChuDeOption[]>([])
   const [maChuDe, setMaChuDe] = useState('')
   const [cands, setCands] = useState<DangCandidate[]>([])
@@ -102,14 +107,24 @@ function NhapChuyenDe() {
 
   useEffect(() => { if (mon) khoTagPrecision(mon).then(setPrec).catch(() => setPrec(null)) }, [mon, items.length])
   useEffect(() => {
-    setChuDes([]); setMaChuDe(''); setCands([])
+    setChuDes([]); setMaChuDe(''); setCands([]); setMoi(false)
     if (!mon || !khoi) return
-    listChuDeOptions(mon, khoi).then((cs) => { setChuDes(cs); if (cs.length) setMaChuDe(cs[0].ma_chu_de) }).catch((e) => setErr(String(e.message ?? e)))
+    let song = true
+    void (async () => {
+      try {
+        const m = (mon === 'toan' || mon === 'hgt') && await khoiChayBanDoMoi(khoi, 'Toán')
+        const cs = m ? await listBdmChuDeOptions(mon, khoi) : await listChuDeOptions(mon, khoi)
+        if (!song) return
+        setMoi(m); setChuDes(cs); if (cs.length) setMaChuDe(cs[0].ma_chu_de)
+      } catch (e: any) { if (song) setErr(String(e.message ?? e)) }
+    })()
+    return () => { song = false }
   }, [mon, khoi])
   useEffect(() => {
     if (!maChuDe) { setCands([]); return }
-    listDangByChuDe(mon, khoi, maChuDe).then(setCands).catch((e) => setErr(String(e.message ?? e)))
-  }, [mon, khoi, maChuDe])
+    ;(moi ? listBdmDangByChuDe(mon, khoi, maChuDe) : listDangByChuDe(mon, khoi, maChuDe)).then(setCands).catch((e) => setErr(String(e.message ?? e)))
+  }, [mon, khoi, maChuDe, moi])
+  const docLyThuyet = (ma: string) => (moi ? getBdmDangLyThuyet(ma) : getDangLyThuyet(mon, ma))
 
   // ── BÓC: render trang → Gemini (1 pass/trang) → parse → cắt hình → phân loại + verify low-conf ──
   async function boc() {
@@ -150,7 +165,7 @@ function NhapChuyenDe() {
         flatIdx.forEach((i, k) => { const r = cls[k]; raw[i].aiMaDang = r.ma_dang; raw[i].conf = r.confidence; raw[i].maDang2 = r.ma_dang_2; raw[i].maDang = r.ma_dang })
       }
       for (const r of raw) {
-        if (r.loai_cau !== 'dung_sai' || !r.menhDe) continue
+        if (r.loai_cau !== 'dung_sai' || !r.menhDe || moi) continue   // bản đồ mới: Đ/S không gán dạng từng ý
         const cls = await classifyDang(r.menhDe.map((m) => m.noi_dung), cands)
         r.menhDe.forEach((m, k) => { m.aiMaDang = cls[k].ma_dang; m.conf = cls[k].confidence; m.maDang = cls[k].ma_dang })
         r.chuyenDeRep = r.menhDe.find((m) => m.maDang)?.maDang ?? null // neo chuyên đề = dạng mệnh đề đầu có gán
@@ -161,7 +176,7 @@ function NhapChuyenDe() {
       for (const r of raw) {
         if (r.loai_cau === 'dung_sai' || !r.aiMaDang || r.conf >= CONF_NGUONG) continue
         setMsg('Đang kiểm tra dạng (độ tin thấp)…')
-        let ly = lyCache.get(r.aiMaDang); if (ly === undefined) { ly = await getDangLyThuyet(mon, r.aiMaDang); lyCache.set(r.aiMaDang, ly) }
+        let ly = lyCache.get(r.aiMaDang); if (ly === undefined) { ly = await docLyThuyet(r.aiMaDang); lyCache.set(r.aiMaDang, ly) }
         const cur = candMap.get(r.aiMaDang); if (!cur) continue
         try {
           const v = await verifyDangByLyThuyet(r.noi_dung, cur, ly, cands)
@@ -178,10 +193,11 @@ function NhapChuyenDe() {
   async function aiGiai() {
     const r = items[idx]; if (!r) return
     const ma = r.loai_cau === 'dung_sai' ? r.chuyenDeRep : r.maDang
-    if (!ma) { setErr('Chọn dạng trước khi AI giải (để đọc đúng lý thuyết).'); return }
+    const dsMoi = moi && r.loai_cau === 'dung_sai'   // Đ/S bản đồ mới: không có dạng ⇒ giải không kèm lý thuyết dạng
+    if (!ma && !dsMoi) { setErr('Chọn dạng trước khi AI giải (để đọc đúng lý thuyết).'); return }
     setBusy(true); setErr(null); setMsg('AI đang đọc lý thuyết + giải…')
     try {
-      const ly = await getDangLyThuyet(mon, ma)
+      const ly = ma ? await docLyThuyet(ma) : ''
       const giai = await aiGiaiCau({ noi_dung: r.noi_dung, loai_cau: r.loai_cau, dap_an: r.dap_an, lua_chon: r.lua_chon }, ly)
       patch({ loi_giai: giai, nguonGiai: 'ai' })
     } catch (e: any) { setErr(String(e.message ?? e)) } finally { setBusy(false); setMsg('') }
@@ -193,7 +209,16 @@ function NhapChuyenDe() {
     setBusy(true); setErr(null)
     try {
       let maCau: string
-      if (r.loai_cau === 'dung_sai') {
+      if (moi) {
+        // Bản đồ mới: 1 RPC cấp mã + ghi câu + gán dạng bài / kho Đ/S chủ đề (1 transaction)
+        const ds = r.loai_cau === 'dung_sai'
+        maCau = await nhapCauBdm(mon, khoi, {
+          loai_cau: r.loai_cau, noi_dung: r.noi_dung, dap_an: ds ? null : r.dap_an, loi_giai: r.loi_giai, lua_chon: ds ? null : r.lua_chon,
+          menh_de: ds ? (r.menhDe ?? []).map((m) => ({ noi_dung: m.noi_dung, dap_an: m.dap_an, loi_giai: m.loi_giai })) : null,
+          anh_de: r.anhDe, anh_dap_an: ds ? null : r.anhDapAn, nguon_giai: ds ? 'nguoi' : r.nguonGiai,
+        }, ds ? null : r.maDang, ds ? maChuDe : null)
+        if (!ds) { await logKhoTag([{ mon, ma_cau: maCau, ai_value: r.aiMaDang, final_value: r.maDang, ai_confidence: r.conf, da_verify: !!r.verify }]); pushRecent(r.maDang) }
+      } else if (r.loai_cau === 'dung_sai') {
         if (!r.chuyenDeRep || !r.menhDe?.every((m) => m.maDang)) throw new Error('Gán đủ dạng cho 4 mệnh đề trước khi lưu.')
         const menhDe: MenhDe[] = r.menhDe.map((m) => ({ noi_dung: m.noi_dung, dap_an: m.dap_an, ma_dang: m.maDang!, loi_giai: m.loi_giai }))
         const c = await createCauDungSai({ dang_chinh: r.chuyenDeRep, noi_dung: r.noi_dung, loi_giai: r.loi_giai, menh_de: menhDe, anh_de: r.anhDe }, cauTbl)
@@ -233,9 +258,9 @@ function NhapChuyenDe() {
             <Field label="Chủ đề">
               <select value={maChuDe} onChange={(e) => setMaChuDe(e.target.value)} className={inp}>
                 {!chuDes.length && <option value="">— chưa có chủ đề ở khối này —</option>}
-                {chuDes.map((c) => <option key={c.ma_chu_de} value={c.ma_chu_de}>{c.ten_chu_de} ({c.soDang} dạng)</option>)}
+                {chuDes.map((c) => <option key={c.ma_chu_de} value={c.ma_chu_de}>{c.ten_chu_de} ({c.soDang} {moi ? 'dạng bài' : 'dạng'})</option>)}
               </select>
-              {!!cands.length && <p className="mt-1 text-[12px] text-slate-400">{cands.length} dạng trong chủ đề — AI gán dạng trong phạm vi này.</p>}
+              {!!cands.length && <p className="mt-1 text-[12px] text-slate-400">{cands.length} {moi ? 'dạng bài (bản đồ mới)' : 'dạng'} trong chủ đề — AI gán dạng trong phạm vi này.{moi ? ' Câu Đúng/Sai vào kho Đúng/Sai của chủ đề.' : ''}</p>}
             </Field>
             <Field label="Tài liệu (PDF / ảnh)">
               <div className="flex flex-wrap items-center gap-2">
@@ -322,7 +347,8 @@ function NhapChuyenDe() {
             </div>
           )}
           {isDS
-            ? <div className="min-h-0 flex-1 overflow-auto"><DungSaiEditor r={r} cands={cands} candMap={candMap} recent={recent} edit={edit && !r.saved} onPatch={patch} onPick={pushRecent} /></div>
+            ? <div className="min-h-0 flex-1 overflow-auto"><DungSaiEditor r={r} cands={cands} candMap={candMap} recent={recent} edit={edit && !r.saved} onPatch={patch} onPick={pushRecent}
+                khoChuDe={moi ? (chuDes.find((c) => c.ma_chu_de === maChuDe)?.ten_chu_de ?? maChuDe) : null} /></div>
             : <div className="min-h-0 flex-1"><CauEditor item={flatRI} fill onChange={onFlat} /></div>}
 
           <div className="flex flex-none items-center justify-between border-t border-slate-100 pt-3">
@@ -331,7 +357,8 @@ function NhapChuyenDe() {
             <div className="flex items-center gap-2">
               {busy && msg && <span className="text-[12px] text-slate-400">{msg}</span>}
               <button disabled={idx >= items.length - 1} onClick={() => setIdx(idx + 1)} className="rounded-lg border border-slate-300 px-3 py-1.5 text-[13px] text-slate-500 disabled:opacity-40">Bỏ qua</button>
-              {!r.saved && <button disabled={busy} onClick={duyet} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-medium text-white disabled:opacity-40">✓ Duyệt · lưu → câu tiếp</button>}
+              {!r.saved && <button disabled={busy} onClick={duyet} title={moi && !isDS && !r.maDang ? 'Chưa chọn dạng bài — câu vào kho ở trạng thái chưa phân dạng (Duyệt kho › Chưa phân dạng)' : undefined}
+                className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-medium text-white disabled:opacity-40">{moi && !isDS && !r.maDang ? '✓ Lưu (chưa có dạng bài) → câu tiếp' : '✓ Duyệt · lưu → câu tiếp'}</button>}
             </div>
           </div>
         </div>
@@ -394,18 +421,20 @@ function DangPicker({ value, aiMaDang, conf, maDang2, cands, candMap, recent, on
   )
 }
 
-function DungSaiEditor({ r, cands, candMap, recent, edit, onPatch, onPick }: { r: RItem; cands: DangCandidate[]; candMap: Map<string, DangCandidate>; recent: string[]; edit: boolean; onPatch: (p: Partial<RItem>) => void; onPick: (ma: string | null) => void }) {
+// khoChuDe ≠ null = bản đồ mới: câu vào kho Đ/S của chủ đề này, mệnh đề KHÔNG chọn dạng.
+function DungSaiEditor({ r, cands, candMap, recent, edit, onPatch, onPick, khoChuDe }: { r: RItem; cands: DangCandidate[]; candMap: Map<string, DangCandidate>; recent: string[]; edit: boolean; onPatch: (p: Partial<RItem>) => void; onPick: (ma: string | null) => void; khoChuDe: string | null }) {
   const setMD = (k: number, p: Partial<MD>) => onPatch({ menhDe: (r.menhDe ?? []).map((m, i) => (i === k ? { ...m, ...p } : m)) })
   const chuyenDe = r.chuyenDeRep ? candMap.get(r.chuyenDeRep)?.ten_chuyen_de : null
   return (
     <div>
-      {chuyenDe && <div className="mb-2 inline-flex rounded-full bg-indigo-50 px-2.5 py-1 text-[11px] text-indigo-700">📁 Cả câu neo chuyên đề: {chuyenDe}</div>}
+      {khoChuDe ? <div className="mb-2 inline-flex rounded-full bg-indigo-50 px-2.5 py-1 text-[11px] text-indigo-700">📁 Kho Đúng/Sai của chủ đề: {khoChuDe} (không gán dạng bài)</div>
+        : chuyenDe && <div className="mb-2 inline-flex rounded-full bg-indigo-50 px-2.5 py-1 text-[11px] text-indigo-700">📁 Cả câu neo chuyên đề: {chuyenDe}</div>}
       <div className="mb-1 text-[12px] text-slate-400">Đề chung</div>
       {edit
         ? <MathTextarea value={r.noi_dung} onChange={(v) => onPatch({ noi_dung: v })} className={`${code} min-h-[64px]`} />
         : <div className={preBox}><MathText>{r.noi_dung}</MathText></div>}
       {r.anhDe && <img src={r.anhDe} alt="hình đề" className="mt-2 max-h-56 rounded-lg border border-slate-200" />}
-      <div className="mt-3 text-[12px] text-slate-400">4 mệnh đề — mỗi mệnh đề 1 dạng riêng</div>
+      <div className="mt-3 text-[12px] text-slate-400">{khoChuDe ? '4 mệnh đề' : '4 mệnh đề — mỗi mệnh đề 1 dạng riêng'}</div>
       <div className="mt-1.5 space-y-2">
         {(r.menhDe ?? []).map((m, k) => (
           <div key={k} className="rounded-lg border border-slate-200 p-2.5">
@@ -420,10 +449,10 @@ function DungSaiEditor({ r, cands, candMap, recent, edit, onPatch, onPick }: { r
                 ))}
               </div>
             </div>
-            <div className="mt-2 pl-7">
+            {!khoChuDe && <div className="mt-2 pl-7">
               <DangPicker value={m.maDang} aiMaDang={m.aiMaDang} conf={m.conf} cands={cands} candMap={candMap} recent={recent}
                 onPick={(ma) => { setMD(k, { maDang: ma }); onPick(ma); if (k === 0 || !r.chuyenDeRep) onPatch({ chuyenDeRep: r.chuyenDeRep ?? ma }) }} disabled={r.saved} />
-            </div>
+            </div>}
           </div>
         ))}
       </div>

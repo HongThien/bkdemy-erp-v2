@@ -1,0 +1,192 @@
+[
+ {
+  "ma": "BT.07.131.01",
+  "so": "B1",
+  "gia_thiet_goc": "Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$.",
+  "gia_thiet_them": [],
+  "cau_hoi": "Chứng minh $\\triangle AMB=\\triangle DMC$ và $AB=DC$.",
+  "tien_de": []
+ },
+ {
+  "ma": "BT.07.131.02",
+  "so": "B2",
+  "gia_thiet_goc": "Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$.",
+  "gia_thiet_them": [],
+  "cau_hoi": "Chứng minh $BD\\parallel AC$.",
+  "tien_de": [
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $\\triangle AMB=\\triangle DMC$ và $AB=DC$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.131.03",
+  "so": "B3",
+  "gia_thiet_goc": "Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$.",
+  "gia_thiet_them": [],
+  "cau_hoi": "Chứng minh $\\triangle ABC=\\triangle DCB$.",
+  "tien_de": [
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $\\triangle AMB=\\triangle DMC$ và $AB=DC$."
+   },
+   {
+    "so": "B2",
+    "phat_bieu": "Chứng minh $BD\\parallel AC$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.131.04",
+  "so": "B4",
+  "gia_thiet_goc": "Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$.",
+  "gia_thiet_them": [
+   "Qua $M$ vẽ đường thẳng vuông góc với $AC$ tại $I$ và đường thẳng vuông góc với $BD$ tại $K$."
+  ],
+  "cau_hoi": "Chứng minh ba điểm $I, M, K$ thẳng hàng.",
+  "tien_de": [
+   {
+    "so": "B2",
+    "phat_bieu": "Chứng minh $BD\\parallel AC$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.131.05",
+  "so": "B5",
+  "gia_thiet_goc": "Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$.",
+  "gia_thiet_them": [
+   "Kẻ $AH\\perp BC$, $DK\\perp BC$ ($H, K$ thuộc $BC$)."
+  ],
+  "cau_hoi": "Chứng minh $AH=DK$.",
+  "tien_de": [
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $\\triangle AMB=\\triangle DMC$ và $AB=DC$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.131.06",
+  "so": "B6",
+  "gia_thiet_goc": "Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$.",
+  "gia_thiet_them": [
+   "Gọi $I$ là trung điểm của $AC$. Vẽ điểm $E$ sao cho $I$ là trung điểm của $BE$."
+  ],
+  "cau_hoi": "Chứng minh ba điểm $E, C, D$ thẳng hàng.",
+  "tien_de": [
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $\\triangle AMB=\\triangle DMC$ và $AB=DC$."
+   },
+   {
+    "so": "B2",
+    "phat_bieu": "Chứng minh $BD\\parallel AC$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.131.07",
+  "so": "B7",
+  "gia_thiet_goc": "Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$.",
+  "gia_thiet_them": [
+   "Trên tia đối của tia $CD$ lấy điểm $E$ sao cho $CE=CD$."
+  ],
+  "cau_hoi": "Chứng minh $AE=BC$.",
+  "tien_de": [
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $\\triangle AMB=\\triangle DMC$ và $AB=DC$."
+   },
+   {
+    "so": "B2",
+    "phat_bieu": "Chứng minh $BD\\parallel AC$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.131.08",
+  "so": "B8",
+  "gia_thiet_goc": "Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$.",
+  "gia_thiet_them": [
+   "Trên tia đối của tia $CD$ lấy điểm $E$ sao cho $CE=CD$.",
+   "Gọi $F$ là trung điểm của $AC$."
+  ],
+  "cau_hoi": "Chứng minh ba điểm $B, F, E$ thẳng hàng.",
+  "tien_de": [
+   {
+    "so": "B7",
+    "phat_bieu": "Chứng minh $AE=BC$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.131.09",
+  "so": "B9",
+  "gia_thiet_goc": "Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$.",
+  "gia_thiet_them": [
+   "Cho thêm $\\triangle ABC$ vuông tại $A$."
+  ],
+  "cau_hoi": "Chứng minh $AC\\perp CD$.",
+  "tien_de": [
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $\\triangle AMB=\\triangle DMC$ và $AB=DC$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.131.10",
+  "so": "B10",
+  "gia_thiet_goc": "Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$.",
+  "gia_thiet_them": [
+   "Cho thêm $\\triangle ABC$ vuông tại $A$."
+  ],
+  "cau_hoi": "Chứng minh $BC=2AM$.",
+  "tien_de": [
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $\\triangle AMB=\\triangle DMC$ và $AB=DC$."
+   },
+   {
+    "so": "B9",
+    "phat_bieu": "Chứng minh $AC\\perp CD$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.131.11",
+  "so": "B11",
+  "gia_thiet_goc": "Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$.",
+  "gia_thiet_them": [
+   "Gọi $N$ là trung điểm của $AB$. Trên tia đối của tia $NC$ lấy điểm $K$ sao cho $NC=NK$."
+  ],
+  "cau_hoi": "Chứng minh ba điểm $D, B, K$ thẳng hàng.",
+  "tien_de": [
+   {
+    "so": "B2",
+    "phat_bieu": "Chứng minh $BD\\parallel AC$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.131.12",
+  "so": "B12",
+  "gia_thiet_goc": "Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$.",
+  "gia_thiet_them": [
+   "Vẽ $CE\\perp BD$ ($E\\in BD$) và $BF\\perp AC$ ($F\\in AC$)."
+  ],
+  "cau_hoi": "Chứng minh $DE=AF$.",
+  "tien_de": [
+   {
+    "so": "B2",
+    "phat_bieu": "Chứng minh $BD\\parallel AC$."
+   },
+   {
+    "so": "B3",
+    "phat_bieu": "Chứng minh $\\triangle ABC=\\triangle DCB$."
+   }
+  ]
+ }
+]

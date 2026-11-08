@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T110030203068",
+  "dang_bai_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Giải tam giác thực tế bằng định lí sin nhưng đề thiếu số liệu (IK=380 chỉ có trên hình)."
+ },
+ {
+  "ma_cau": "T110000000172",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Góc tù, xét dấu các giá trị lượng giác."
+ },
+ {
+  "ma_cau": "T110030201045",
+  "dang_bai_id": "NDB00764",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức diện tích tam giác."
+ },
+ {
+  "ma_cau": "T110030203086",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế giải tam giác dùng định lí sin, đủ số liệu."
+ },
+ {
+  "ma_cau": "T110000000438",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Xét giao, hợp, hiệu; theo luật nhiều dạng lấy dạng cuối là hiệu."
+ },
+ {
+  "ma_cau": "T110020102115",
+  "dang_bai_id": "NDB00884",
+  "chac": "vua",
+  "ly_do": "Chọn BPT từ miền nghiệm trên hình, phải lập đường thẳng nhưng đề không có số liệu."
+ },
+ {
+  "ma_cau": "T110010103089",
+  "dang_bai_id": "NDB00826",
+  "chac": "vua",
+  "ly_do": "Phủ định mệnh đề thường (không ký hiệu ∀∃); dạng gần nhất, bản đồ thiếu dạng phủ định mệnh đề thường."
+ },
+ {
+  "ma_cau": "T110000000308",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tập xác định của hàm số (chủ đề Hàm số)."
+ },
+ {
+  "ma_cau": "T110030101047",
+  "dang_bai_id": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính giá trị lượng giác của góc biết số đo."
+ },
+ {
+  "ma_cau": "T110030203053",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo chiều cao, có thể giải bằng định lí sin, đủ số liệu."
+ },
+ {
+  "ma_cau": "T110030107075",
+  "dang_bai_id": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính biểu thức phân thức sin cos cùng bậc."
+ },
+ {
+  "ma_cau": "T110030104011",
+  "dang_bai_id": "NDB00561",
+  "chac": "vua",
+  "ly_do": "Biểu thức tích tan các cặp góc phụ, nhưng ngắn và đủ viết hết trong đề."
+ },
+ {
+  "ma_cau": "T110010203168",
+  "dang_bai_id": "NDB00828",
+  "chac": "vua",
+  "ly_do": "Viết tập khoảng sang ký hiệu tập hợp; bản đồ thiếu dạng chuyển khoảng/đoạn."
+ },
+ {
+  "ma_cau": "T110030201056",
+  "dang_bai_id": "NDB00764",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức cos và diện tích, lấy dạng diện tích."
+ },
+ {
+  "ma_cau": "T110020104017",
+  "dang_bai_id": "NDB00541",
+  "chac": "vua",
+  "ly_do": "Bài toán thực tế lập BPT hai ẩn, không đúng dạng mua đồ vật tìm tối đa."
+ },
+ {
+  "ma_cau": "T110000000375",
+  "dang_bai_id": "NDB00764",
+  "chac": "cao",
+  "ly_do": "Nhận diện cos, sin và diện tích, lấy dạng diện tích."
+ },
+ {
+  "ma_cau": "T110000000378",
+  "dang_bai_id": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Cho số đo góc, tìm tọa độ điểm M trên nửa đường tròn."
+ },
+ {
+  "ma_cau": "T110000000280",
+  "dang_bai_id": "NDB00887",
+  "chac": "vua",
+  "ly_do": "Hai ý khác dạng: a) mua vở bút (NDB00541), b) tối ưu 2 ẩn (NDB00887)."
+ },
+ {
+  "ma_cau": "T110000000103",
+  "dang_bai_id": "NDB00521",
+  "chac": "vua",
+  "ly_do": "Biểu đồ Ven phụ thuộc hình; bản đồ không có dạng đọc biểu đồ Ven."
+ },
+ {
+  "ma_cau": "T110020102078",
+  "dang_bai_id": "NDB00539",
+  "chac": "vua",
+  "ly_do": "Hỏi số nghiệm của BPT bậc nhất hai ẩn, gần dạng xác định nghiệm."
+ },
+ {
+  "ma_cau": "T110030104034",
+  "dang_bai_id": "NDB00561",
+  "chac": "vua",
+  "ly_do": "Biểu thức cặp góc bù, ngắn và đủ viết hết, không đúng hẳn dạng biểu thức dài."
+ },
+ {
+  "ma_cau": "T110030101043",
+  "dang_bai_id": "NDB00561",
+  "chac": "vua",
+  "ly_do": "Rút gọn biểu thức cặp góc bù không chứa biến, biểu thức ngắn."
+ },
+ {
+  "ma_cau": "T110030201061",
+  "dang_bai_id": "NDB00764",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức diện tích tam giác."
+ },
+ {
+  "ma_cau": "T110000000225",
+  "dang_bai_id": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện quan hệ lượng giác hai góc bù nhau."
+ },
+ {
+  "ma_cau": "T110030201036",
+  "dang_bai_id": "NDB00762",
+  "chac": "cao",
+  "ly_do": "Nhận diện định lí cos."
+ },
+ {
+  "ma_cau": "T110020202094",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: hệ BPT có tham số, tính diện tích miền nghiệm."
+ },
+ {
+  "ma_cau": "T110000000316",
+  "dang_bai_id": "NDB00763",
+  "chac": "cao",
+  "ly_do": "Nhận diện định lí sin."
+ },
+ {
+  "ma_cau": "T110010103084",
+  "dang_bai_id": "NDB00826",
+  "chac": "vua",
+  "ly_do": "Phủ định mệnh đề thường (không ký hiệu ∀∃); dạng gần nhất."
+ },
+ {
+  "ma_cau": "T110030203077",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo khoảng cách bằng định lí sin, đủ số liệu."
+ },
+ {
+  "ma_cau": "T110010203118",
+  "dang_bai_id": "NDB00522",
+  "chac": "cao",
+  "ly_do": "Gồm hợp, giao, phần bù; theo luật lấy dạng cuối là phần bù."
+ },
+ {
+  "ma_cau": "T110020204093",
+  "dang_bai_id": "NDB00887",
+  "chac": "vua",
+  "ly_do": "Hai ý khác dạng: vẽ miền nghiệm BPT (NDB00538) và bài toán tối ưu 2 ẩn."
+ },
+ {
+  "ma_cau": "T110000000400",
+  "dang_bai_id": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính biểu thức phân thức sin cos cùng bậc."
+ },
+ {
+  "ma_cau": "T110000000145",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tập xác định của hàm số chứa căn và phân thức."
+ },
+ {
+  "ma_cau": "T110030203064",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo độ cao bằng định lí sin, đủ số liệu."
+ },
+ {
+  "ma_cau": "T110000000425",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo độ cao bằng định lí sin, đủ số liệu."
+ },
+ {
+  "ma_cau": "T110010102033",
+  "dang_bai_id": "NDB00821",
+  "chac": "cao",
+  "ly_do": "Mệnh đề kéo theo và tương đương; theo luật lấy dạng cuối là tương đương."
+ },
+ {
+  "ma_cau": "T110030203048",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo khoảng cách bằng định lí sin, đủ số liệu."
+ },
+ {
+  "ma_cau": "T110000000091",
+  "dang_bai_id": "NDB00553",
+  "chac": "cao",
+  "ly_do": "Nhận diện quan hệ lượng giác hai góc phụ nhau."
+ },
+ {
+  "ma_cau": "T110030204042",
+  "dang_bai_id": "NDB00773",
+  "chac": "cao",
+  "ly_do": "Thực tế tính diện tích tứ giác bằng cách tách tam giác, dùng Heron."
+ },
+ {
+  "ma_cau": "T110010101088",
+  "dang_bai_id": "NDB00818",
+  "chac": "vua",
+  "ly_do": "Mệnh đề chứa biến với tham số m; bản đồ thiếu dạng tìm m để mệnh đề ∃ đúng."
+ },
+ {
+  "ma_cau": "T110000000010",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế giải tam giác dùng định lí sin, đủ số liệu."
+ },
+ {
+  "ma_cau": "T110030201017",
+  "dang_bai_id": "NDB00763",
+  "chac": "cao",
+  "ly_do": "Nhận diện định lí sin."
+ },
+ {
+  "ma_cau": "T110030104009",
+  "dang_bai_id": "NDB00561",
+  "chac": "cao",
+  "ly_do": "Tích cot các góc phụ nhau có dấu ... không viết hết."
+ },
+ {
+  "ma_cau": "T110010203100",
+  "dang_bai_id": "NDB00828",
+  "chac": "vua",
+  "ly_do": "Viết khoảng sang ký hiệu tập hợp; bản đồ thiếu dạng chuyển khoảng/đoạn."
+ },
+ {
+  "ma_cau": "T110020202100",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Chọn hệ BPT từ miền nghiệm trên hình, phải lập đường thẳng; đề thiếu số liệu."
+ },
+ {
+  "ma_cau": "T110000000162",
+  "dang_bai_id": "NDB00767",
+  "chac": "cao",
+  "ly_do": "Thực tế dùng định lí cos, biết hai cạnh và góc xen giữa."
+ },
+ {
+  "ma_cau": "T110000000129",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc nhọn."
+ },
+ {
+  "ma_cau": "T110010203078",
+  "dang_bai_id": "NDB00828",
+  "chac": "vua",
+  "ly_do": "Viết tập hợp sang ký hiệu khoảng; bản đồ thiếu dạng chuyển khoảng/đoạn."
+ },
+ {
+  "ma_cau": "T110030201035",
+  "dang_bai_id": "NDB00762",
+  "chac": "cao",
+  "ly_do": "Nhận diện định lí cos."
+ },
+ {
+  "ma_cau": "T110030204045",
+  "dang_bai_id": "NDB00773",
+  "chac": "cao",
+  "ly_do": "Thực tế tính diện tích tam giác sau khi giải tam giác bằng định lí sin."
+ },
+ {
+  "ma_cau": "T110010202115",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Phép hợp và hiệu; theo luật lấy dạng cuối là hiệu."
+ },
+ {
+  "ma_cau": "T110000000305",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tìm min max biểu thức trên miền nghiệm hệ BPT cho sẵn, không thực tế."
+ },
+ {
+  "ma_cau": "T110000000093",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tập xác định của hàm số chứa căn."
+ },
+ {
+  "ma_cau": "T110030107010",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Khớp ví dụ (cot a + tan a)^2 của dạng nhận diện hệ thức cơ bản."
+ },
+ {
+  "ma_cau": "T110030101050",
+  "dang_bai_id": "NDB00561",
+  "chac": "cao",
+  "ly_do": "Tổng cos nhiều góc có dấu ..., ghép cặp góc bù."
+ },
+ {
+  "ma_cau": "T110000000105",
+  "dang_bai_id": "NDB00767",
+  "chac": "cao",
+  "ly_do": "Thực tế dùng định lí cos, biết hai cạnh và góc xen giữa."
+ },
+ {
+  "ma_cau": "T110000000125",
+  "dang_bai_id": "NDB00519",
+  "chac": "vua",
+  "ly_do": "Biểu đồ Ven phụ thuộc hình; bản đồ không có dạng đọc biểu đồ Ven."
+ },
+ {
+  "ma_cau": "T110020104020",
+  "dang_bai_id": "NDB00541",
+  "chac": "vua",
+  "ly_do": "Thực tế lập BPT hai ẩn, không đúng dạng mua đồ vật tìm tối đa."
+ },
+ {
+  "ma_cau": "T110020102102",
+  "dang_bai_id": "NDB00884",
+  "chac": "vua",
+  "ly_do": "Chọn BPT từ miền nghiệm trên hình, phải lập đường thẳng; đề thiếu số liệu."
+ },
+ {
+  "ma_cau": "T110030203084",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo chiều cao tháp bằng định lí sin, đủ số liệu."
+ },
+ {
+  "ma_cau": "T110010202116",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Tập con cùng phép giao, hợp, hiệu; lấy dạng cuối là hiệu."
+ },
+ {
+  "ma_cau": "T110010204082",
+  "dang_bai_id": "NDB00528",
+  "chac": "vua",
+  "ly_do": "Hai ý: chỉ thích Văn (NDB00528) và thích Văn (NDB00527)."
+ },
+ {
+  "ma_cau": "T110030203088",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế dùng định lí sin tính cạnh rồi vận tốc, đủ số liệu."
+ },
+ {
+  "ma_cau": "T110000000446",
+  "dang_bai_id": "NDB00762",
+  "chac": "cao",
+  "ly_do": "Nhận diện định lí cos."
+ },
+ {
+  "ma_cau": "T110030203089",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo độ cao bằng định lí sin, đủ số liệu."
+ },
+ {
+  "ma_cau": "T110030104036",
+  "dang_bai_id": "NDB00561",
+  "chac": "vua",
+  "ly_do": "Biểu thức cặp góc bù chứa sin, cos, ngắn; không đúng hẳn dạng biểu thức dài."
+ },
+ {
+  "ma_cau": "T110000000447",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo cửa biển bằng định lí sin, đủ số liệu."
+ },
+ {
+  "ma_cau": "T110030201032",
+  "dang_bai_id": "NDB00762",
+  "chac": "cao",
+  "ly_do": "Nhận diện định lí cos với góc B=120."
+ },
+ {
+  "ma_cau": "T110000000322",
+  "dang_bai_id": "NDB00521",
+  "chac": "vua",
+  "ly_do": "Biểu đồ Ven phụ thuộc hình; bản đồ không có dạng đọc biểu đồ Ven."
+ },
+ {
+  "ma_cau": "T110010101079",
+  "dang_bai_id": "NDB00818",
+  "chac": "vua",
+  "ly_do": "Mệnh đề chứa biến với ∀, đếm giá trị; không rõ dạng khớp."
+ }
+]

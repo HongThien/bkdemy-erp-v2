@@ -1,0 +1,227 @@
+=== H5.2.2
+@ly_thuyet:
+##TC Nhận dạng hàm $y=\dfrac{ax+b}{cx+d}$
+- Tiệm cận đứng $x=-\dfrac{d}{c}$ và tiệm cận ngang $y=\dfrac{a}{c}$; đồ thị cắt $Oy$ tại $\left(0;\dfrac{b}{d}\right)$, cắt $Ox$ tại $\left(-\dfrac{b}{a};0\right)$.
+- Đồ thị đi lên trên từng nhánh (đồng biến) thì $ad-bc>0$; đi xuống (nghịch biến) thì $ad-bc<0$.
+- Bảng biến thiên: cột kẻ đôi tại $x=-\dfrac{d}{c}$, hai đầu hàng $y$ là $\dfrac{a}{c}$, hai mũi tên cùng đi lên khi $ad-bc>0$ và cùng đi xuống khi $ad-bc<0$.
+
+##PP Chọn công thức theo đồ thị hoặc bảng biến thiên
+Đọc tiệm cận đứng $x=x_0$ và tiệm cận ngang $y=y_0$ (đường mà đồ thị tiến sát, hoặc cột kẻ đôi và giá trị ở hai đầu hàng $y$ của bảng biến thiên).
+So tiệm cận của từng phương án với $x_0$ và $y_0$ để loại.
+Dùng điểm cắt $Oy$, cắt $Ox$ hoặc chiều biến thiên để chọn phương án đúng.
+
+##CY
+- Tiệm cận đứng đọc từ mẫu số, tiệm cận ngang là tỉ số hai hệ số của $x$; đừng nhầm hai cái này.
+- Hai phương án có cùng tiệm cận vẫn có thể khác nhau ở điểm cắt trục hoặc chiều biến thiên.
+
+@vi_du:
+##VD
+Đồ thị trong hình bên là đồ thị của hàm số nào dưới đây?
+[[HINH {"loai":"dothi","x":[-5,3],"y":[-5,7],"f":[{"e":"(2*x-1)/(x+1)","ten":"y=f(x)","xt":1.6}],"duong":[{"dung":-1,"ten":"x=-1"},{"ngang":2,"ten":"y=2"}],"diem":[{"x":0,"y":-1,"nhan":"(0;-1)","chi":false}]}]]
+a) $y=\dfrac{2x-1}{x+1}$
+b) $y=\dfrac{2x+1}{x-1}$
+c) $y=\dfrac{x-2}{x+1}$
+d) $y=\dfrac{2x-1}{x-1}$
+
+Bài giải:
+Đồ thị có tiệm cận đứng $x=-1$ và tiệm cận ngang $y=2$, cắt $Oy$ tại $(0;-1)$.
+Tiệm cận đứng $x=-1$ nên mẫu là $x+1$: loại b) và d) (mẫu $x-1$).
+Tiệm cận ngang $y=2$ nên loại c) (tiệm cận ngang $y=1$).
+Với a), $y(0)=\dfrac{-1}{1}=-1$, khớp với hình.
+Vậy chọn a) $y=\dfrac{2x-1}{x+1}$.
+
+##VD
+Đồ thị trong hình bên là đồ thị của hàm số nào dưới đây?
+[[HINH {"loai":"dothi","x":[-3,7],"y":[-5,4],"f":[{"e":"(-x+1)/(x-2)","ten":"y=f(x)","xt":4}],"duong":[{"dung":2,"ten":"x=2"},{"ngang":-1,"ten":"y=-1"}],"diem":[{"x":1,"y":0,"nhan":"(1;0)"}]}]]
+a) $y=\dfrac{x-1}{x-2}$
+b) $y=\dfrac{-x+3}{x-2}$
+c) $y=\dfrac{-x-1}{x-2}$
+d) $y=\dfrac{-x+1}{x-2}$
+
+Bài giải:
+Đồ thị có tiệm cận đứng $x=2$, tiệm cận ngang $y=-1$, cắt $Ox$ tại $(1;0)$ và đi lên trên từng nhánh.
+Cả bốn phương án đều có mẫu $x-2$ nên đều có tiệm cận đứng $x=2$; phải dùng các đặc điểm khác.
+Phương án a) có tiệm cận ngang $y=1$: loại.
+Phương án b) có $y'=\dfrac{(-1)(-2)-3\cdot1}{(x-2)^2}=\dfrac{-1}{(x-2)^2}<0$, hàm số nghịch biến trên từng khoảng: loại.
+Phương án c) cắt $Ox$ tại $(-1;0)$, không đi qua $(1;0)$: loại.
+Với d), tiệm cận ngang $y=-1$, $y(1)=0$ và $y'=\dfrac{(-1)(-2)-1\cdot1}{(x-2)^2}=\dfrac{1}{(x-2)^2}>0$, khớp với hình.
+Vậy chọn d) $y=\dfrac{-x+1}{x-2}$.
+
+##VD
+Bảng biến thiên dưới đây là của hàm số nào?
+[[HINH {"loai":"bbt","x":["-∞","2","+∞"],"dau":["+","+"],"kd":{"1":"||"},"y":["1",["+∞","-∞"],"1"],"ten_ham":"y","ten_dao":"y'"}]]
+a) $y=\dfrac{x+1}{x-2}$
+b) $y=\dfrac{x-3}{x-2}$
+c) $y=\dfrac{2x-3}{x-2}$
+d) $y=\dfrac{x-3}{x+2}$
+
+Bài giải:
+Bảng có cột kẻ đôi tại $x=2$ nên tiệm cận đứng là $x=2$: loại d) (tiệm cận đứng $x=-2$).
+Hai đầu hàng $y$ là $1$ nên tiệm cận ngang là $y=1$: loại c) (tiệm cận ngang $y=2$).
+Hàm số đồng biến trên từng khoảng nên $ad-bc>0$; phương án a) có $ad-bc=1\cdot(-2)-1\cdot1=-3<0$: loại.
+Với b), $ad-bc=1\cdot(-2)-(-3)\cdot1=1>0$, tiệm cận đứng $x=2$, tiệm cận ngang $y=1$, khớp với bảng.
+Vậy chọn b) $y=\dfrac{x-3}{x-2}$.
+
+=== H5.3.2
+@ly_thuyet:
+##TC Hệ số của hàm $y=\dfrac{ax+b}{cx+d}$ theo đồ thị
+- Tiệm cận đứng $x=-\dfrac{d}{c}$ cho dấu của $\dfrac{d}{c}$ (đường ở bên trái trục $Oy$ thì $\dfrac{d}{c}>0$).
+- Tiệm cận ngang $y=\dfrac{a}{c}$ cho tỉ số $\dfrac{a}{c}$.
+- Giao $Oy$ tại $\left(0;\dfrac{b}{d}\right)$, giao $Ox$ tại $\left(-\dfrac{b}{a};0\right)$.
+- Điều kiện của hàm: $c\ne0$ và $ad-bc\ne0$.
+
+##PP Xác định hệ số của hàm nhất biến
+Cố định hệ số theo đề (thường $c=1$ hoặc cho dấu của $c$).
+Hoành độ tiệm cận đứng cho $d$ (qua $-\dfrac{d}{c}$); tung độ tiệm cận ngang cho $a$ (qua $\dfrac{a}{c}$).
+Dùng giao điểm với $Oy$ (hoặc $Ox$) để tìm $b$ (qua $\dfrac{b}{d}$ hoặc $-\dfrac{b}{a}$).
+Đề hỏi dấu: suy dấu từ các tỉ số trên, bắt đầu từ hệ số đã biết dấu.
+
+##CY
+- Tiệm cận đứng là $x=-\dfrac{d}{c}$ (có dấu trừ): đường ở bên phải trục $Oy$ thì $\dfrac{d}{c}<0$.
+- Giao $Oy$ là $\dfrac{b}{d}$, không phải $b$; chỉ trùng khi $d=1$.
+
+@vi_du:
+##VD
+Cho hàm số $y=\dfrac{ax+b}{x+d}$ có đồ thị như hình vẽ. Tính $a+b+d$.
+[[HINH {"loai":"dothi","x":[-3,5],"y":[-4,8],"f":[{"e":"(2*x-4)/(x-1)","ten":"y=f(x)","xt":2.6}],"duong":[{"dung":1},{"ngang":2}],"diem":[{"x":0,"y":4,"nhan":"4","chi":false},{"x":2,"y":0,"nhan":"2","chi":false}]}]]
+
+Bài giải:
+Đồ thị có tiệm cận đứng $x=1$ mà tiệm cận đứng của hàm là $x=-d$ nên $d=-1$.
+Tiệm cận ngang là $y=2$ mà tiệm cận ngang của hàm là $y=a$ nên $a=2$.
+Đồ thị cắt $Oy$ tại $(0;4)$: $\dfrac{b}{d}=4$ nên $b=4d=-4$ (đồ thị cắt $Ox$ tại $x=2=-\dfrac{b}{a}$, khớp).
+Hàm số là $y=\dfrac{2x-4}{x-1}$ và $a+b+d=2-4-1=-3$.
+Vậy $a+b+d=-3$.
+
+##VD
+Cho hàm số $y=\dfrac{ax+b}{cx+d}$ với $c>0$ có đồ thị như hình vẽ. Xác định dấu của $a$, $b$, $d$.
+[[HINH {"loai":"dothi","x":[-5,3],"y":[-6,6],"f":[{"e":"(-2*x+2)/(x+1)","ten":"y=f(x)","xt":-4.6}],"duong":[{"dung":-1},{"ngang":-2}],"diem":[{"x":0,"y":2,"chi":false},{"x":1,"y":0,"chi":false}]}]]
+
+Bài giải:
+Tiệm cận ngang là $y=-2$ nên $\dfrac{a}{c}=-2<0$; vì $c>0$ nên $a<0$.
+Tiệm cận đứng là $x=-1$ nên $-\dfrac{d}{c}=-1$, tức $\dfrac{d}{c}=1>0$; vì $c>0$ nên $d>0$.
+Đồ thị cắt $Oy$ tại $(0;2)$ nên $\dfrac{b}{d}=2>0$; vì $d>0$ nên $b>0$.
+Vậy $a<0$, $b>0$, $d>0$.
+
+=== H4.5.1
+@ly_thuyet:
+##TC Tâm đối xứng của đồ thị hàm nhất biến
+- Đồ thị $y=\dfrac{ax+b}{cx+d}$ ($c\ne0$, $ad-bc\ne0$) có tiệm cận đứng $x=-\dfrac{d}{c}$ và tiệm cận ngang $y=\dfrac{a}{c}$.
+- Giao điểm của hai tiệm cận là tâm đối xứng $I\left(-\dfrac{d}{c};\dfrac{a}{c}\right)$ của đồ thị.
+- Hai điểm $A$, $B$ đối xứng qua $I$ khi $I$ là trung điểm $AB$: $x_A+x_B=2x_I$ và $y_A+y_B=2y_I$. Nếu $A$ thuộc đồ thị thì điểm đối xứng của $A$ qua $I$ cũng thuộc đồ thị.
+- Với hàm $y=\dfrac{ax+b}{x+d}$ có $a,b,d$ nguyên, chia tử cho mẫu được $y=a+\dfrac{b-ad}{x+d}$: điểm có toạ độ nguyên khi $x+d$ là ước của $b-ad$.
+
+##PP Tìm tâm đối xứng và các điểm liên quan
+Kiểm tra $c\ne0$ và $ad-bc\ne0$, viết hai tiệm cận từ các hệ số.
+Giao điểm của hai tiệm cận là tâm đối xứng $I$.
+Điểm đối xứng với $A$ qua $I$: tính $x_B=2x_I-x_A$ và $y_B=2y_I-y_A$, rồi thay vào hàm để kiểm tra $B$ có thuộc đồ thị.
+Tìm điểm có toạ độ nguyên (hàm $y=\dfrac{ax+b}{x+d}$): viết $y=a+\dfrac{b-ad}{x+d}$, cho $x+d$ chạy qua các ước của $b-ad$, tính $x$ và $y$ tương ứng.
+
+##CY
+- Tâm đối xứng là điểm $\left(-\dfrac{d}{c};\dfrac{a}{c}\right)$, không phải $\left(\dfrac{d}{c};\dfrac{a}{c}\right)$ (nhớ dấu trừ ở hoành độ).
+- Tâm đối xứng không nằm trên đồ thị: chỉ là giao của hai tiệm cận.
+- Khi tìm điểm nguyên phải lấy cả ước âm lẫn ước dương, và phải kiểm tra $x$ nguyên rồi mới tính $y$.
+
+@vi_du:
+##VD
+Tìm toạ độ tâm đối xứng của đồ thị mỗi hàm số sau:
+a) $y=\dfrac{2x-1}{x+3}$
+b) $y=\dfrac{3-x}{2x+4}$
+
+Bài giải:
+a) Có $ad-bc=2\cdot3-(-1)\cdot1=7\ne0$. Tiệm cận đứng $x=-3$, tiệm cận ngang $y=2$. Tâm đối xứng là $I(-3;2)$.
+b) Viết $y=\dfrac{-x+3}{2x+4}$ nên $a=-1$, $b=3$, $c=2$, $d=4$; $ad-bc=-4-6=-10\ne0$.
+Tiệm cận đứng $x=-\dfrac{4}{2}=-2$, tiệm cận ngang $y=\dfrac{-1}{2}$.
+Vậy tâm đối xứng của hai đồ thị lần lượt là $I(-3;2)$ và $I\left(-2;-\dfrac{1}{2}\right)$.
+
+##VD
+Cho đồ thị $(C)$ của hàm số $y=\dfrac{x+2}{x-1}$ và điểm $A(2;4)$ thuộc $(C)$. Tìm điểm $B$ đối xứng với $A$ qua tâm đối xứng của $(C)$ và chứng tỏ $B$ cũng thuộc $(C)$.
+
+Bài giải:
+Tiệm cận đứng $x=1$, tiệm cận ngang $y=1$ nên tâm đối xứng là $I(1;1)$.
+$B$ đối xứng với $A$ qua $I$ nên $I$ là trung điểm $AB$: $x_B=2\cdot1-2=0$ và $y_B=2\cdot1-4=-2$, tức $B(0;-2)$.
+Thay vào hàm số: $y(0)=\dfrac{0+2}{0-1}=-2=y_B$ nên $B\in(C)$.
+Vậy $B(0;-2)$ và $B$ thuộc $(C)$.
+
+##VD
+Tìm các điểm trên đồ thị hàm số $y=\dfrac{2x+1}{x-1}$ có toạ độ là các số nguyên.
+
+Bài giải:
+Chia tử cho mẫu: $y=\dfrac{2(x-1)+3}{x-1}=2+\dfrac{3}{x-1}$ với $x\ne1$.
+Với $x$ nguyên, $y$ nguyên khi và chỉ khi $\dfrac{3}{x-1}$ nguyên, tức $x-1$ là ước của $3$: $x-1\in\{-3;-1;1;3\}$.
+Ta được $x\in\{-2;0;2;4\}$ và $y$ tương ứng là $1;-1;5;3$.
+Vậy có $4$ điểm có toạ độ nguyên là $(-2;1)$, $(0;-1)$, $(2;5)$, $(4;3)$.
+
+=== M2.2.1
+@ly_thuyet:
+##TC Các điều kiện thường gặp của hàm $y=\dfrac{ax+b}{cx+d}$ chứa tham số
+- Hàm số có tập xác định $\mathbb{R}\setminus\left\{-\dfrac{d}{c}\right\}$ ($c\ne0$, $ad-bc\ne0$) và $y'=\dfrac{ad-bc}{(cx+d)^2}$; hàm số không có cực trị.
+- Đơn điệu trên từng khoảng xác định: đồng biến $\Leftrightarrow ad-bc>0$, nghịch biến $\Leftrightarrow ad-bc<0$.
+- Đơn điệu trên một khoảng $K$ cho trước: $ad-bc$ có dấu phù hợp và $-\dfrac{d}{c}\notin K$.
+- Tiệm cận đứng $x=-\dfrac{d}{c}$, tiệm cận ngang $y=\dfrac{a}{c}$: đề cho tiệm cận thì lập phương trình theo hệ số.
+- Tâm đối xứng $I\left(-\dfrac{d}{c};\dfrac{a}{c}\right)$ thuộc đường cho trước, hai tiệm cận cùng hai trục toạ độ tạo hình chữ nhật có diện tích cho trước: dùng toạ độ $I$ và hai đoạn $\left|\dfrac{d}{c}\right|$, $\left|\dfrac{a}{c}\right|$.
+
+##PP Hàm nhất biến chứa tham số: đơn điệu
+Xác định $a,b,c,d$ theo $m$ và tính $ad-bc$.
+Đồng biến thì giải $ad-bc>0$, nghịch biến thì giải $ad-bc<0$.
+Nếu đề cho khoảng $K$: thêm điều kiện $-\dfrac{d}{c}\notin K$ rồi lấy giao hai điều kiện.
+Nếu hệ số $c$ chứa $m$: xét riêng $c=0$ (hàm thành bậc nhất) rồi kết luận; hỏi "số giá trị nguyên" thì liệt kê.
+
+##PP Hàm nhất biến chứa tham số: tiệm cận, tâm đối xứng, hình chữ nhật
+Viết tiệm cận đứng $x=-\dfrac{d}{c}$, tiệm cận ngang $y=\dfrac{a}{c}$ và tâm đối xứng theo $m$.
+Biến điều kiện đề cho (tiệm cận trùng đường cho trước, tâm thuộc đường thẳng, diện tích hình chữ nhật) thành phương trình hoặc hệ theo $m$ (hoặc theo các hệ số).
+Giải rồi thử lại điều kiện $c\ne0$ và $ad-bc\ne0$ để loại giá trị làm hàm suy biến.
+
+##CY
+- Bất đẳng thức $ad-bc>0$ hoặc $ad-bc<0$ là bất đẳng thức ngặt, không lấy dấu bằng (vì $ad-bc=0$ thì hàm rút gọn thành hằng số).
+- Đơn điệu trên khoảng $K$ mà quên điều kiện $-\dfrac{d}{c}\notin K$ là lỗi hay gặp; $-\dfrac{d}{c}$ trùng với đầu mút của $K$ vẫn được nhận.
+- Khoảng cách từ tiệm cận tới trục là $\left|\dfrac{d}{c}\right|$ và $\left|\dfrac{a}{c}\right|$ (phải lấy giá trị tuyệt đối), và kết quả phải thử lại điều kiện $ad-bc\ne0$.
+
+@vi_du:
+##VD
+Có bao nhiêu giá trị nguyên của $m$ để hàm số $y=\dfrac{(m+1)x+2}{x+m}$ nghịch biến trên từng khoảng xác định của nó?
+
+Bài giải:
+Hàm số có $a=m+1$, $b=2$, $c=1$, $d=m$ nên $ad-bc=(m+1)m-2=m^2+m-2=(m+2)(m-1)$.
+Hàm nghịch biến trên từng khoảng xác định $\Leftrightarrow(m+2)(m-1)<0\Leftrightarrow-2<m<1$.
+Các giá trị nguyên của $m$ là $-1$ và $0$.
+Vậy có $2$ giá trị nguyên của $m$.
+
+##VD
+Tìm tất cả giá trị của $m$ để hàm số $y=\dfrac{x+3}{x+m}$ đồng biến trên khoảng $(-\infty;-4)$.
+
+Bài giải:
+Hàm số có tập xác định $\mathbb{R}\setminus\{-m\}$ và $y'=\dfrac{m-3}{(x+m)^2}$.
+Hàm đồng biến trên $(-\infty;-4)$ $\Leftrightarrow\begin{cases} m-3>0 \\ -m\notin(-\infty;-4) \end{cases}$.
+Ta có $m-3>0\Leftrightarrow m>3$ và $-m\notin(-\infty;-4)\Leftrightarrow-m\ge-4\Leftrightarrow m\le4$.
+Vậy $m\in(3;4]$.
+
+##VD
+Tìm $a$, $b$ để đồ thị hàm số $y=\dfrac{ax-1}{bx+2}$ nhận đường thẳng $x=1$ làm tiệm cận đứng và đường thẳng $y=-2$ làm tiệm cận ngang.
+
+Bài giải:
+Với $b\ne0$, đồ thị có tiệm cận đứng $x=-\dfrac{2}{b}$ và tiệm cận ngang $y=\dfrac{a}{b}$.
+Tiệm cận đứng là $x=1$ nên $-\dfrac{2}{b}=1$, suy ra $b=-2$.
+Tiệm cận ngang là $y=-2$ nên $\dfrac{a}{b}=-2$, suy ra $a=-2b=4$.
+Kiểm tra: hàm số là $y=\dfrac{4x-1}{-2x+2}$, có $4\cdot2-(-1)\cdot(-2)=6\ne0$ nên hàm số không suy biến thành hằng số.
+Vậy $a=4$, $b=-2$.
+
+##VD
+Cho hàm số $y=\dfrac{(m+1)x-2}{x-m}$ có đồ thị $(C_m)$. Tìm $m$ để hai tiệm cận của $(C_m)$ cùng với hai trục toạ độ tạo thành một hình chữ nhật có diện tích bằng $6$.
+
+Bài giải:
+Ta có $a=m+1$, $b=-2$, $c=1$, $d=-m$ nên $ad-bc=-m(m+1)+2=-(m+2)(m-1)$; đồ thị là hypebol khi $m\ne-2$ và $m\ne1$.
+Tiệm cận đứng $x=m$, tiệm cận ngang $y=m+1$.
+Hình chữ nhật có hai kích thước $|m|$ và $|m+1|$ nên diện tích là $|m|\cdot|m+1|=|m^2+m|$.
+Cho $|m^2+m|=6$: $m^2+m=6$ cho $m=2$ hoặc $m=-3$; $m^2+m=-6$ vô nghiệm (vì $m^2+m+6>0$).
+Hai giá trị $m=2$ và $m=-3$ đều khác $-2$ và $1$.
+Vậy $m\in\{-3;2\}$.
+
+##VD
+Tìm tất cả giá trị của $m$ để hàm số $y=\dfrac{x+2}{mx-1}$ nghịch biến trên từng khoảng xác định của nó.
+
+Bài giải:
+Với $m\ne0$: $a=1$, $b=2$, $c=m$, $d=-1$ nên $ad-bc=-1-2m$ và $y'=\dfrac{-1-2m}{(mx-1)^2}$.
+Hàm nghịch biến trên từng khoảng xác định $\Leftrightarrow-1-2m<0\Leftrightarrow m>-\dfrac{1}{2}$, kết hợp $m\ne0$.
+Với $m=0$: $y=-x-2$ là hàm bậc nhất có hệ số góc $-1<0$ nên nghịch biến trên $\mathbb{R}$ (nhận).
+Hợp hai trường hợp: $m>-\dfrac{1}{2}$.
+Vậy $m\in\left(-\dfrac{1}{2};+\infty\right)$.

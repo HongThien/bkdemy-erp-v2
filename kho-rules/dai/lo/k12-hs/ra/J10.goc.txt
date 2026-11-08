@@ -1,0 +1,589 @@
+=== N H7.4
+@ly_thuyet:
+##TC Mô hình kinh tế
+- Doanh thu $R=$ giá bán $\cdot$ số lượng bán; chi phí $C$; lợi nhuận $L=R-C$.
+- Chi phí trung bình (chi phí cho một đơn vị): $\overline{C}(x)=\dfrac{C(x)}{x}$.
+- Sau khi lập, hàm cần tối ưu là hàm một biến $x$ trên miền thực tế (số lượng không âm, không vượt năng lực sản xuất, giá không âm...).
+- Hàm bậc hai $ax^2+bx+c$ ($a<0$) đạt giá trị lớn nhất tại đỉnh $x=-\dfrac{b}{2a}$.
+
+##PP Giải bài toán tối ưu kinh tế
+Đặt ẩn $x$ (kèm đơn vị) và nêu điều kiện thực tế của $x$.
+Biểu diễn giá, số lượng, doanh thu, chi phí qua $x$ rồi lập hàm cần tối ưu (lợi nhuận, doanh thu hay chi phí).
+Tìm giá trị lớn nhất (nhỏ nhất) trên miền của $x$: đạo hàm rồi bảng biến thiên, hoặc đỉnh parabol, hoặc bất đẳng thức Cô-si.
+Đối chiếu miền thực tế (nghiệm nằm trong miền không, $x$ có phải số nguyên không) rồi tính đại lượng đề hỏi.
+Trả lời bằng ngữ cảnh của bài, có đơn vị.
+
+##CY
+- Điều cần tìm thường là giá bán hay số lượng thật, không phải số lần thay đổi $x$: đừng dừng ở giá trị của $x$.
+- Thống nhất đơn vị tiền (nghìn đồng, triệu đồng) và đơn vị thời gian ngay từ đầu.
+- Nghiệm $f'(x)=0$ nằm ngoài miền của $x$ thì phải xét giá trị ở đầu mút của miền.
+
+=== H7.4.1
+@ly_thuyet:
+##TC Quan hệ giá và lượng bán tuyến tính
+- Giá gốc $p_0$, lượng bán gốc $q_0$; cứ thay đổi giá $a$ đơn vị thì lượng bán thay đổi $b$ (ngược chiều). Gọi $x$ là số lần thay đổi giá thì giá mới $p_0\mp ax$, lượng bán mới $q_0\pm bx$.
+- Doanh thu $R(x)=(p_0\mp ax)(q_0\pm bx)$ là hàm bậc hai của $x$.
+- Lợi nhuận $L(x)=(\text{giá}-\text{chi phí đơn vị})\cdot(\text{lượng bán})$ hoặc $L=R-C$.
+
+##PP Giá giảm bán thêm, giá tăng bán bớt
+Đặt $x$ là số lần thay đổi giá, tìm điều kiện của $x$ (giá còn dương, lượng bán không âm; $x$ nguyên nếu đề nói không chia nhỏ được).
+Viết giá bán và lượng bán theo $x$, lập $R(x)$ hoặc $L(x)$.
+Tìm $x$ làm hàm đạt lớn nhất (đỉnh parabol hoặc $f'(x)=0$).
+Đối chiếu điều kiện của $x$ rồi tính giá bán, lượng bán, giá trị lớn nhất.
+
+##CY
+- Đề thuê căn hộ: lợi nhuận chỉ tính trên số căn có người thuê, chi phí mỗi căn nhân với số căn được thuê.
+- $x$ nguyên mà đỉnh không nguyên thì so sánh hai giá trị nguyên sát đỉnh.
+
+@vi_du:
+##VD
+Một cửa hàng bán $100$ chiếc áo mỗi ngày với giá $200$ nghìn đồng một chiếc. Qua khảo sát, cứ giảm giá $10$ nghìn đồng thì bán thêm được $10$ chiếc mỗi ngày. Hỏi cửa hàng nên bán với giá bao nhiêu để doanh thu mỗi ngày lớn nhất?
+
+Bài giải:
+Gọi $x$ là số lần giảm giá $10$ nghìn đồng, điều kiện $0\le x\le20$ (để giá không âm).
+Giá bán một chiếc là $200-10x$ (nghìn đồng), số áo bán được mỗi ngày là $100+10x$.
+Doanh thu mỗi ngày là $R(x)=(200-10x)(100+10x)=-100x^2+1000x+20000$ (nghìn đồng).
+$R'(x)=-200x+1000=0\Leftrightarrow x=5$, thuộc $[0;20]$.
+Hệ số của $x^2$ âm nên $R$ đạt giá trị lớn nhất tại $x=5$, khi đó $R(5)=150\cdot150=22500$.
+Vậy cửa hàng nên bán với giá $150$ nghìn đồng một chiếc, doanh thu lớn nhất là $22500$ nghìn đồng mỗi ngày.
+
+##VD
+Một toà nhà có $50$ căn hộ cho thuê. Nếu giá thuê là $2\,000$ nghìn đồng mỗi tháng thì cho thuê hết các căn; cứ tăng giá thêm $100$ nghìn đồng mỗi tháng thì có $2$ căn bị bỏ trống. Mỗi căn có người thuê tốn $100$ nghìn đồng mỗi tháng chi phí bảo trì. Hỏi nên cho thuê mỗi căn với giá bao nhiêu để lợi nhuận mỗi tháng lớn nhất?
+
+Bài giải:
+Gọi $x$ là số lần tăng giá $100$ nghìn đồng, $x\in\mathbb{N}$ và $50-2x\ge0$, tức $0\le x\le25$.
+Giá thuê một căn là $2000+100x$ (nghìn đồng), số căn có người thuê là $50-2x$.
+Lợi nhuận một căn là $2000+100x-100=1900+100x$ (nghìn đồng).
+Lợi nhuận mỗi tháng là $L(x)=(50-2x)(1900+100x)=-200x^2+1200x+95000$.
+$L'(x)=-400x+1200=0\Leftrightarrow x=3$, thuộc miền và là số nguyên.
+Hệ số của $x^2$ âm nên $L$ lớn nhất tại $x=3$, $L(3)=44\cdot2200=96800$.
+Vậy nên cho thuê với giá $2\,300$ nghìn đồng mỗi căn, lợi nhuận lớn nhất là $96\,800$ nghìn đồng mỗi tháng.
+
+=== H7.4.2
+@ly_thuyet:
+##TC Hàm lợi nhuận từ doanh thu và chi phí
+- $L(x)=R(x)-C(x)$, với $x$ là số sản phẩm sản xuất và bán ra.
+- Nếu có thuế $t$ trên mỗi sản phẩm thì lợi nhuận sau thuế là $L(x)=R(x)-C(x)-tx$.
+- Miền của $x$ thường là $[0;N]$ với $N$ là năng lực sản xuất tối đa.
+
+##PP Tìm sản lượng cho lợi nhuận lớn nhất
+Viết $L(x)=R(x)-C(x)$ (trừ thêm thuế nếu có) và xác định miền $[0;N]$.
+Tính $L'(x)$, giải $L'(x)=0$ và loại nghiệm ngoài miền.
+Lập bảng biến thiên trên miền, hoặc so sánh $L$ tại nghiệm và hai đầu mút.
+Kết luận sản lượng và lợi nhuận lớn nhất, kèm đơn vị.
+
+##CY
+- Nghiệm của $L'(x)=0$ ngoài miền $[0;N]$ thì giá trị lớn nhất nằm ở đầu mút, thường là $x=N$.
+- Phải trừ cả chi phí cố định và thuế khi tính lợi nhuận.
+
+@vi_du:
+##VD
+Một xưởng sản xuất $x$ sản phẩm mỗi tháng ($0\le x\le2000$). Doanh thu là $R(x)=-0{,}02x^2+50x$ (nghìn đồng), chi phí sản xuất là $C(x)=10x+4000$ (nghìn đồng). Tìm sản lượng để lợi nhuận mỗi tháng lớn nhất.
+
+Bài giải:
+Lợi nhuận là $L(x)=R(x)-C(x)=-0{,}02x^2+40x-4000$.
+$L'(x)=-0{,}04x+40=0\Leftrightarrow x=1000$, thuộc $[0;2000]$.
+Hệ số của $x^2$ âm nên $L$ lớn nhất tại $x=1000$, $L(1000)=-20000+40000-4000=16000$.
+Vậy xưởng nên sản xuất $1000$ sản phẩm mỗi tháng, lợi nhuận lớn nhất là $16\,000$ nghìn đồng.
+
+##VD
+Với hàm doanh thu và hàm chi phí như trên, nhưng nhà nước thu thuế $5$ nghìn đồng trên mỗi sản phẩm và năng lực sản xuất tối đa là $800$ sản phẩm mỗi tháng ($0\le x\le800$). Tìm sản lượng để lợi nhuận sau thuế lớn nhất và giá trị lớn nhất đó.
+
+Bài giải:
+Lợi nhuận sau thuế là $L(x)=-0{,}02x^2+50x-(10x+4000)-5x=-0{,}02x^2+35x-4000$.
+$L'(x)=-0{,}04x+35=0\Leftrightarrow x=875$, nằm ngoài đoạn $[0;800]$.
+Trên $[0;800]$ ta có $L'(x)>0$ nên $L$ đồng biến, giá trị lớn nhất đạt tại đầu mút $x=800$.
+$L(800)=-12800+28000-4000=11200$.
+Vậy cần sản xuất $800$ sản phẩm mỗi tháng, lợi nhuận sau thuế lớn nhất là $11\,200$ nghìn đồng.
+
+=== H7.4.3
+@ly_thuyet:
+##TC Chi phí trung bình
+- Chi phí trung bình của một sản phẩm: $\overline{C}(x)=\dfrac{C(x)}{x}$ với $x>0$.
+- Với $a>0$, $b>0$ và $x>0$ thì $ax+\dfrac{b}{x}\ge2\sqrt{ab}$, dấu bằng khi $x=\sqrt{\dfrac{b}{a}}$ (bất đẳng thức Cô-si).
+- Chi phí trung bình nhỏ nhất đạt tại $x$ mà $\overline{C}'(x)=0$.
+
+##PP Tìm sản lượng làm chi phí trung bình nhỏ nhất
+Chia tổng chi phí cho $x$ để được $\overline{C}(x)$, nêu điều kiện $x>0$.
+Nếu $\overline{C}(x)$ có dạng $ax+\dfrac{b}{x}+c$ thì dùng Cô-si; ngược lại tính $\overline{C}'(x)$.
+Giải $\overline{C}'(x)=0$, lập bảng biến thiên trên $(0;+\infty)$.
+Kết luận sản lượng làm chi phí trung bình nhỏ nhất và giá trị nhỏ nhất đó.
+
+##CY
+- Tối thiểu hoá chi phí trung bình $\overline{C}(x)$ khác tối thiểu hoá tổng chi phí $C(x)$: nhớ chia cho $x$ trước khi đạo hàm.
+- Dùng Cô-si phải kiểm tra điều kiện dấu bằng xảy ra được trong miền của $x$.
+
+@vi_du:
+##VD
+Chi phí sản xuất $x$ sản phẩm là $C(x)=x^2+10x+2500$ (nghìn đồng), $x>0$. Tìm số sản phẩm cần sản xuất để chi phí trung bình của mỗi sản phẩm nhỏ nhất.
+
+Bài giải:
+Chi phí trung bình là $\overline{C}(x)=\dfrac{C(x)}{x}=x+10+\dfrac{2500}{x}$ với $x>0$.
+Theo bất đẳng thức Cô-si, $x+\dfrac{2500}{x}\ge2\sqrt{x\cdot\dfrac{2500}{x}}=100$.
+Do đó $\overline{C}(x)\ge110$, dấu bằng xảy ra khi $x=\dfrac{2500}{x}$, tức $x=50$.
+Vậy cần sản xuất $50$ sản phẩm, khi đó chi phí trung bình nhỏ nhất là $110$ nghìn đồng mỗi sản phẩm.
+
+##VD
+Chi phí sản xuất $x$ trăm sản phẩm là $C(x)=x^3-12x^2+60x+486$ (triệu đồng), $x>0$. Tìm $x$ để chi phí trung bình tính trên mỗi trăm sản phẩm nhỏ nhất và tính giá trị nhỏ nhất đó.
+
+Bài giải:
+Chi phí trung bình là $\overline{C}(x)=x^2-12x+60+\dfrac{486}{x}$ với $x>0$.
+$\overline{C}'(x)=2x-12-\dfrac{486}{x^2}=\dfrac{2x^3-12x^2-486}{x^2}=\dfrac{2(x-9)(x^2+3x+27)}{x^2}$.
+Vì $x^2+3x+27>0$ với mọi $x$ nên $\overline{C}'(x)=0\Leftrightarrow x=9$.
+$\overline{C}'(x)<0$ khi $0<x<9$ và $\overline{C}'(x)>0$ khi $x>9$, nên $\overline{C}$ nhỏ nhất tại $x=9$.
+$\overline{C}(9)=81-108+60+54=87$.
+Vậy chi phí trung bình nhỏ nhất khi sản xuất $9$ trăm (tức $900$) sản phẩm, bằng $87$ triệu đồng cho mỗi trăm sản phẩm.
+
+=== H7.4.4
+@ly_thuyet:
+##TC Tổng chi phí theo số máy hoặc số lô
+- Chi phí tăng theo $n$ (thiết lập máy, mỗi lần đặt hàng): dạng $an$.
+- Chi phí giảm theo $n$ (giám sát, lưu kho khi chia nhỏ lô): dạng $\dfrac{b}{n}$.
+- Tổng chi phí $C(n)=an+\dfrac{b}{n}$ ($a,b>0$) nhỏ nhất tại $n=\sqrt{\dfrac{b}{a}}$ khi $n$ thực; giá trị nhỏ nhất $2\sqrt{ab}$.
+
+##PP Tối ưu số máy, số lô hàng
+Đặt $n$ là số máy (số lô), điều kiện $n$ nguyên dương.
+Tính thời gian làm việc, số sản phẩm mỗi lô hoặc lượng tồn kho theo $n$.
+Lập $C(n)=an+\dfrac{b}{n}$, tìm $n$ làm $C(n)$ nhỏ nhất bằng Cô-si hoặc đạo hàm.
+Nếu $n$ tìm được không nguyên thì so sánh $C$ tại hai số nguyên sát hai bên.
+Kết luận số máy (số lô) và chi phí nhỏ nhất.
+
+##CY
+- Hai số nguyên sát nghiệm chưa chắc cho kết quả gần nhất theo khoảng cách; phải tính cả hai giá trị $C$ rồi so sánh.
+- Thời gian làm việc tính theo số máy: $n$ máy làm gấp $n$ lần nên thời gian chia cho $n$.
+
+@vi_du:
+##VD
+Cần sản xuất $8000$ sản phẩm. Mỗi máy làm được $30$ sản phẩm mỗi giờ; chi phí thiết lập mỗi máy là $200$ nghìn đồng; chi phí giám sát toàn bộ là $192$ nghìn đồng mỗi giờ. Hỏi dùng bao nhiêu máy để tổng chi phí nhỏ nhất?
+
+Bài giải:
+Gọi $n$ là số máy, $n\in\mathbb{N}^*$. Thời gian hoàn thành là $\dfrac{8000}{30n}=\dfrac{800}{3n}$ giờ.
+Chi phí giám sát là $192\cdot\dfrac{800}{3n}=\dfrac{51200}{n}$ (nghìn đồng).
+Tổng chi phí là $C(n)=200n+\dfrac{51200}{n}$.
+Theo Cô-si, $C(n)\ge2\sqrt{200\cdot51200}=2\cdot3200=6400$, dấu bằng khi $200n=\dfrac{51200}{n}$, tức $n^2=256$, $n=16$ (là số nguyên).
+Vậy dùng $16$ máy, tổng chi phí nhỏ nhất là $6400$ nghìn đồng.
+
+##VD
+Một cửa hàng bán $3000$ sản phẩm mỗi năm, nhu cầu đều đặn. Cửa hàng chia việc nhập hàng thành $n$ lần mỗi năm, mỗi lô có số lượng bằng nhau. Mỗi lần đặt hàng mất $200$ nghìn đồng cố định; chi phí lưu kho là $7{,}5$ nghìn đồng cho mỗi sản phẩm mỗi năm, tính theo lượng tồn kho trung bình bằng một nửa lô. Tìm $n$ nguyên dương để tổng chi phí mỗi năm nhỏ nhất.
+
+Bài giải:
+Mỗi lô có $\dfrac{3000}{n}$ sản phẩm nên lượng tồn kho trung bình là $\dfrac{1500}{n}$.
+Tổng chi phí mỗi năm là $C(n)=200n+7{,}5\cdot\dfrac{1500}{n}=200n+\dfrac{11250}{n}$ (nghìn đồng).
+$C'(n)=200-\dfrac{11250}{n^2}=0\Leftrightarrow n^2=56{,}25\Leftrightarrow n=7{,}5$.
+$C$ giảm trên $(0;7{,}5)$ và tăng trên $(7{,}5;+\infty)$ nên với $n$ nguyên, giá trị nhỏ nhất là một trong $C(7)$ và $C(8)$.
+$C(7)=1400+\dfrac{11250}{7}\approx3007{,}14$ và $C(8)=1600+1406{,}25=3006{,}25$.
+$C(8)<C(7)$ nên chọn $n=8$.
+Vậy nhập hàng $8$ lần mỗi năm (mỗi lô $375$ sản phẩm), tổng chi phí nhỏ nhất là $3006{,}25$ nghìn đồng mỗi năm.
+
+=== N H7.5
+@ly_thuyet:
+##TC Quãng đường, vận tốc, gia tốc
+- Vật chuyển động thẳng có phương trình $s=s(t)$ (toạ độ hoặc quãng đường theo thời gian $t$).
+- Vận tốc tức thời $v(t)=s'(t)$; gia tốc tức thời $a(t)=v'(t)=s''(t)$.
+- $v>0$: vật đi theo chiều dương; $v<0$: vật đi theo chiều âm; $v=0$: vật đổi chiều (nếu $v$ đổi dấu) hoặc dừng.
+- Tốc độ là $|v|$. Vật tăng tốc khi $v\cdot a>0$, giảm tốc khi $v\cdot a<0$.
+
+##PP Giải bài toán chuyển động
+Xác định đơn vị của $s$ và $t$ (m, s thì $v$ tính bằng m/s, $a$ tính bằng m/s$^2$) và miền của $t$.
+Tính $v(t)=s'(t)$, $a(t)=v'(t)$.
+Cần giá trị tại một thời điểm thì thay $t$; cần lúc $v=0$ hay $a=0$ thì giải phương trình.
+Xét dấu $v$, $a$ (lập bảng) để kết luận chiều chuyển động, tăng tốc hay giảm tốc.
+
+##CY
+- Quãng đường đi được khác độ dời $s(t_2)-s(t_1)$ khi vật đổi chiều: phải cộng $|\text{độ dời}|$ trên từng đoạn giữa các lần đổi chiều.
+- Vật có gia tốc $a<0$ chưa chắc giảm tốc: còn phụ thuộc dấu của $v$.
+
+=== H7.5.1
+@ly_thuyet:
+##TC Tính vận tốc, gia tốc và xét chiều
+- $v(t)=s'(t)$, $a(t)=v'(t)$.
+- Chiều chuyển động do dấu của $v$; kiểu chuyển động (nhanh dần, chậm dần) do dấu của tích $v\cdot a$.
+
+##PP Xét chiều chuyển động và tăng, giảm tốc
+Tính $v(t)$ và $a(t)$ rồi giải $v(t)=0$, $a(t)=0$ trong miền của $t$.
+Lập bảng xét dấu $v$ và $a$ trên các khoảng chia bởi các nghiệm.
+Kết luận: $v>0$ theo chiều dương, $v<0$ theo chiều âm; $v\cdot a>0$ tăng tốc, $v\cdot a<0$ giảm tốc.
+Cần quãng đường thì tính $s$ tại các thời điểm đổi chiều và cộng độ dài từng đoạn.
+
+##CY
+- Tại thời điểm $a=0$ vận tốc chưa chắc bằng $0$, và tại thời điểm $v=0$ gia tốc chưa chắc bằng $0$.
+- Đề hỏi quãng đường đi được thì không lấy hiệu $s(t_2)-s(t_1)$ nếu giữa chừng vật đổi chiều.
+
+@vi_du:
+##VD
+Một chất điểm chuyển động theo phương trình $s(t)=t^3-6t^2+9t+2$, trong đó $t\ge0$ tính bằng giây và $s$ tính bằng mét. a) Tính vận tốc và gia tốc của chất điểm tại thời điểm $t=4$ giây. b) Tìm các khoảng thời gian chất điểm đi theo chiều dương, theo chiều âm.
+
+Bài giải:
+Vận tốc $v(t)=s'(t)=3t^2-12t+9=3(t-1)(t-3)$ và gia tốc $a(t)=v'(t)=6t-12$.
+a) $v(4)=3\cdot3\cdot1=9$ (m/s) và $a(4)=6\cdot4-12=12$ (m/s$^2$).
+b) $v(t)=0\Leftrightarrow t=1$ hoặc $t=3$.
+$v(t)>0$ khi $0\le t<1$ hoặc $t>3$; $v(t)<0$ khi $1<t<3$.
+Vậy tại $t=4$ giây vận tốc là $9$ m/s, gia tốc là $12$ m/s$^2$; chất điểm đi theo chiều dương trong các khoảng $[0;1)$ và $(3;+\infty)$, đi theo chiều âm trong khoảng $(1;3)$.
+
+##VD
+Một vật chuyển động thẳng theo phương trình $s(t)=2t^3-15t^2+36t$ ($t$ tính bằng giây, $s$ tính bằng mét), $0\le t\le4$. a) Xét xem trong các khoảng thời gian nào vật tăng tốc, giảm tốc. b) Tính quãng đường vật đi được trong $4$ giây đầu.
+
+Bài giải:
+$v(t)=6t^2-30t+36=6(t-2)(t-3)$ và $a(t)=12t-30$, với $a(t)=0\Leftrightarrow t=2{,}5$.
+a) Dấu của $v$: dương trên $[0;2)$, âm trên $(2;3)$, dương trên $(3;4]$. Dấu của $a$: âm khi $t<2{,}5$, dương khi $t>2{,}5$.
+Trên $(0;2)$: $v>0$, $a<0$ nên $v\cdot a<0$, vật giảm tốc.
+Trên $(2;2{,}5)$: $v<0$, $a<0$ nên $v\cdot a>0$, vật tăng tốc.
+Trên $(2{,}5;3)$: $v<0$, $a>0$ nên vật giảm tốc.
+Trên $(3;4)$: $v>0$, $a>0$ nên vật tăng tốc.
+b) Vật đổi chiều tại $t=2$ và $t=3$. Ta có $s(0)=0$, $s(2)=28$, $s(3)=27$, $s(4)=32$.
+Quãng đường là $|28-0|+|27-28|+|32-27|=28+1+5=34$ (m).
+Vậy vật tăng tốc trong $(2;2{,}5)$ và $(3;4)$, giảm tốc trong $(0;2)$ và $(2{,}5;3)$; quãng đường đi được trong $4$ giây đầu là $34$ m.
+
+=== H7.5.2
+@ly_thuyet:
+##TC Vận tốc, gia tốc lớn nhất
+- Vận tốc lớn nhất trên $[a;b]$ là GTLN của $v(t)=s'(t)$; điểm cần xét là nghiệm của $v'(t)=a(t)=0$ và hai đầu mút.
+- Gia tốc lớn nhất trên $[a;b]$ là GTLN của $a(t)$; điểm cần xét là nghiệm của $a'(t)=0$ và hai đầu mút.
+
+##PP Tìm vận tốc, gia tốc lớn nhất
+Tính $v(t)=s'(t)$ và $a(t)=v'(t)$, xác định khoảng thời gian $[a;b]$ của đề.
+Với hàm cần tối ưu ($v$ hay $a$), tính đạo hàm của nó và giải phương trình đạo hàm bằng $0$ trong khoảng.
+Tính giá trị tại các nghiệm và hai đầu mút, so sánh để chọn giá trị lớn nhất.
+Kết luận thời điểm và giá trị, kèm đơn vị.
+
+##CY
+- Vận tốc lớn nhất (theo giá trị đại số) khác tốc độ lớn nhất $|v|$; đề hỏi tốc độ lớn nhất thì xét $|v|$.
+- Phải đối chiếu hai đầu mút của khoảng thời gian, GTLN có thể nằm ở đó.
+
+@vi_du:
+##VD
+Một vật chuyển động thẳng theo phương trình $s(t)=-t^3+9t^2+5t$ ($t$ tính bằng giây, $s$ tính bằng mét). Tìm vận tốc lớn nhất của vật trong $8$ giây đầu.
+
+Bài giải:
+Vận tốc $v(t)=s'(t)=-3t^2+18t+5$ với $t\in[0;8]$.
+$v'(t)=-6t+18=0\Leftrightarrow t=3$, thuộc $[0;8]$.
+$v(0)=5$, $v(3)=-27+54+5=32$, $v(8)=-192+144+5=-43$.
+Vậy vận tốc lớn nhất trong $8$ giây đầu là $32$ m/s, đạt tại $t=3$ giây.
+
+##VD
+Một vật chuyển động thẳng theo phương trình $s(t)=-\dfrac{t^4}{4}+2t^3+t$ ($t$ tính bằng giây, $s$ tính bằng mét), $0\le t\le6$. a) Tìm thời điểm gia tốc lớn nhất và giá trị đó. b) Tìm vận tốc lớn nhất của vật trong khoảng thời gian này.
+
+Bài giải:
+$v(t)=s'(t)=-t^3+6t^2+1$ và $a(t)=v'(t)=-3t^2+12t$.
+a) $a'(t)=-6t+12=0\Leftrightarrow t=2$. Ta có $a(0)=0$, $a(2)=12$, $a(6)=-108+72=-36$. Gia tốc lớn nhất là $12$ m/s$^2$ tại $t=2$ giây.
+b) $v'(t)=a(t)=-3t(t-4)=0\Leftrightarrow t=0$ hoặc $t=4$.
+$v(0)=1$, $v(4)=-64+96+1=33$, $v(6)=-216+216+1=1$.
+Vậy gia tốc lớn nhất là $12$ m/s$^2$ (lúc $t=2$ giây) và vận tốc lớn nhất là $33$ m/s (lúc $t=4$ giây).
+
+=== N H7.6
+@ly_thuyet:
+##TC Đạo hàm là tốc độ thay đổi
+- Nếu đại lượng $f$ phụ thuộc thời gian $t$ thì $f'(t_0)$ là tốc độ thay đổi tức thời của $f$ tại thời điểm $t_0$; đơn vị là (đơn vị của $f$) trên (đơn vị của $t$).
+- $f'(t_0)>0$: đại lượng đang tăng; $f'(t_0)<0$: đang giảm.
+- Tốc độ thay đổi trung bình trên $[a;b]$ là $\dfrac{f(b)-f(a)}{b-a}$.
+- Tốc độ thay đổi lớn nhất (nhỏ nhất) là GTLN (GTNN) của hàm $f'(t)$.
+
+##PP Bài toán tốc độ thay đổi
+Gọi tên đại lượng và đơn vị: $f(t)$ là gì, $t$ tính từ mốc nào.
+Tính $f'(t)$; nếu hỏi tốc độ tại $t_0$ thì thay $t_0$ vào $f'$.
+Nếu hỏi lúc tốc độ đạt một giá trị cho trước thì giải $f'(t)=k$.
+Nếu hỏi lúc tốc độ lớn nhất thì tìm GTLN của $g(t)=f'(t)$ (qua $g'(t)=f''(t)=0$ hoặc bảng biến thiên).
+Trả lời bằng ngữ cảnh, kèm đơn vị.
+
+##CY
+- Tốc độ thay đổi của $f$ là $f'(t)$, không phải $f(t)$; "tốc độ lớn nhất" là GTLN của $f'$, không phải của $f$.
+- Hỏi theo năm thì phải đổi mốc thời gian đúng với cách đặt $t$ của đề.
+
+=== H7.6.1
+@ly_thuyet:
+##TC Ý nghĩa đạo hàm và chi phí biên
+- Dân số $P(t)$ tại thời điểm $t$ thì $P'(t_0)$ là tốc độ tăng dân số tại $t_0$.
+- Chi phí biên là $C'(x)$, xấp xỉ chi phí để sản xuất thêm một đơn vị sau $x$ đơn vị đã sản xuất: $C'(x)\approx C(x+1)-C(x)$.
+- Doanh thu biên $R'(x)$, lợi nhuận biên $L'(x)$ được hiểu tương tự.
+
+##PP Tính và giải thích tốc độ, chi phí biên
+Tính đạo hàm $f'(t)$ hoặc $C'(x)$ của hàm cho sẵn.
+Thay giá trị cần tính, hoặc giải phương trình khi biết tốc độ.
+Nêu ý nghĩa bằng lời: "tại thời điểm ... đại lượng đang tăng (giảm) với tốc độ ... (đơn vị)".
+So sánh với giá trị thực $C(x+1)-C(x)$ nếu đề yêu cầu.
+
+##CY
+- Chi phí biên $C'(x)$ chỉ xấp xỉ chi phí của sản phẩm thứ $x+1$, không bằng đúng.
+- Chi phí biên khác chi phí trung bình $\dfrac{C(x)}{x}$.
+
+@vi_du:
+##VD
+Dân số của một thị trấn sau $t$ năm kể từ năm 2020 được mô hình hoá bởi $f(t)=\dfrac{30t+20}{t+4}$ (nghìn người). a) Tính tốc độ tăng dân số sau $6$ năm. b) Sau bao nhiêu năm thì tốc độ tăng dân số là $0{,}25$ nghìn người mỗi năm?
+
+Bài giải:
+$f'(t)=\dfrac{30(t+4)-(30t+20)}{(t+4)^2}=\dfrac{100}{(t+4)^2}$.
+a) $f'(6)=\dfrac{100}{100}=1$, nghĩa là sau $6$ năm dân số tăng với tốc độ $1$ nghìn người mỗi năm.
+b) $f'(t)=0{,}25\Leftrightarrow(t+4)^2=400\Leftrightarrow t+4=20$ (vì $t\ge0$) $\Leftrightarrow t=16$.
+Vậy tốc độ tăng dân số sau $6$ năm là $1$ nghìn người/năm; sau $16$ năm tốc độ còn $0{,}25$ nghìn người/năm.
+
+##VD
+Chi phí sản xuất $x$ sản phẩm là $C(x)=0{,}01x^2+20x+1500$ (triệu đồng). a) Tìm chi phí biên tại $x=100$ và giải thích ý nghĩa; so sánh với chi phí thực để sản xuất sản phẩm thứ $101$. b) Với mức sản xuất nào thì chi phí biên không vượt quá $30$ triệu đồng?
+
+Bài giải:
+Chi phí biên là $C'(x)=0{,}02x+20$.
+a) $C'(100)=0{,}02\cdot100+20=22$ triệu đồng: sau khi đã sản xuất $100$ sản phẩm, sản xuất thêm $1$ sản phẩm tốn xấp xỉ $22$ triệu đồng.
+Chi phí thực của sản phẩm thứ $101$ là $C(101)-C(100)=0{,}01(101^2-100^2)+20=0{,}01\cdot201+20=22{,}01$ triệu đồng, xấp xỉ $22$.
+b) $C'(x)\le30\Leftrightarrow0{,}02x+20\le30\Leftrightarrow x\le500$.
+Vậy chi phí biên tại $x=100$ là $22$ triệu đồng (thực tế $22{,}01$ triệu đồng) và chi phí biên không vượt quá $30$ triệu đồng khi sản xuất không quá $500$ sản phẩm.
+
+=== H7.6.2
+@ly_thuyet:
+##TC Mô hình tăng trưởng và tốc độ lớn nhất
+- Hàm logistic: $f(t)=\dfrac{a}{1+be^{-kt}}$ ($a,b,k>0$); đồ thị hình chữ S, tiệm cận ngang $y=a$.
+- Tốc độ tăng trưởng $g(t)=f'(t)$ lớn nhất khi $f''(t)=0$, tức tại điểm uốn của đồ thị $f$.
+- Với hàm logistic: tốc độ lớn nhất đạt khi $t=\dfrac{\ln b}{k}$, lúc đó $f=\dfrac{a}{2}$ và $f'=\dfrac{ak}{4}$.
+
+##PP Tìm thời điểm tốc độ lớn nhất
+Tính tốc độ $g(t)=f'(t)$.
+Tính $g'(t)=f''(t)$ và giải $f''(t)=0$ trong miền của $t$.
+Lập bảng biến thiên của $g$ (hoặc so sánh $g$ tại nghiệm và đầu mút), hoặc đặt ẩn phụ rồi dùng Cô-si với hàm logistic.
+Kết luận thời điểm, tốc độ lớn nhất và giá trị $f$ lúc đó nếu đề hỏi.
+
+##CY
+- Tốc độ lớn nhất của $f$ ứng với $f''=0$, không phải $f'=0$ (khi $f'=0$ là cực trị của chính $f$).
+- Hàm bậc ba thì $f'$ là tam thức bậc hai, đỉnh parabol cho thời điểm tốc độ lớn nhất.
+
+@vi_du:
+##VD
+Số sản phẩm một hãng bán được sau $t$ tuần kể từ khi ra mắt tuân theo quy luật logistic $f(t)=\dfrac{1200}{1+e^{4-t}}$ ($t\ge0$). Sau bao nhiêu tuần thì tốc độ bán hàng lớn nhất? Tính tốc độ lớn nhất đó và số sản phẩm đã bán lúc đó.
+
+Bài giải:
+Đặt $u=e^{4-t}>0$ thì $u'=-u$. Tốc độ bán hàng là $f'(t)=\dfrac{1200u}{(1+u)^2}$.
+Vì $(1+u)^2\ge4u$ nên $f'(t)\le\dfrac{1200u}{4u}=300$, dấu bằng xảy ra khi $u=1$, tức $e^{4-t}=1$, $t=4$.
+(Kiểm tra bằng $f''(t)=0$: nghiệm cũng là $t=4$.)
+Khi đó $f(4)=\dfrac{1200}{2}=600$.
+Vậy sau $4$ tuần tốc độ bán lớn nhất, bằng $300$ sản phẩm mỗi tuần, lúc đó đã bán được $600$ sản phẩm.
+
+##VD
+Số người nhiễm bệnh sau $t$ ngày kể từ ca đầu tiên được mô hình hoá bởi $f(t)=45t^2-t^3$ với $0\le t\le25$. Tìm ngày mà tốc độ lây lan lớn nhất và tốc độ đó; lúc đó có bao nhiêu người nhiễm?
+
+Bài giải:
+Tốc độ lây lan là $g(t)=f'(t)=90t-3t^2$.
+$g'(t)=f''(t)=90-6t=0\Leftrightarrow t=15$, thuộc $[0;25]$.
+$g(0)=0$, $g(15)=1350-675=675$, $g(25)=2250-1875=375$.
+Vậy tốc độ lây lan lớn nhất vào ngày thứ $15$, bằng $675$ người mỗi ngày; lúc đó $f(15)=45\cdot225-3375=6750$ người đã nhiễm.
+
+=== N H7.7
+@ly_thuyet:
+##TC Tốc độ liên quan
+- Nhiều đại lượng cùng thay đổi theo thời gian $t$ và liên hệ nhau bằng một công thức hình học hoặc vật lí, chẳng hạn $x^2+y^2=\ell^2$, $V=\dfrac{\pi h^3}{12}$.
+- Lấy đạo hàm hai vế theo $t$ (đạo hàm hàm hợp): $(x^2)'=2x\cdot x'$, $(V(h))'=V'(h)\cdot h'$. Ta được quan hệ giữa các tốc độ $x'$, $y'$, $h'$.
+- Một đại lượng giảm theo thời gian thì tốc độ thay đổi của nó mang dấu âm.
+
+##PP Giải bài toán tốc độ liên quan
+Vẽ hình (nếu có), đặt tên các đại lượng thay đổi theo $t$ và ghi các tốc độ cho biết, tốc độ cần tìm.
+Viết công thức liên hệ các đại lượng, chưa thay số của thời điểm xét.
+Lấy đạo hàm hai vế theo $t$.
+Thay các giá trị tại thời điểm xét (tính thêm đại lượng còn thiếu từ công thức liên hệ) rồi giải ra tốc độ cần tìm.
+Kết luận có dấu và đơn vị: tăng hay giảm.
+
+##CY
+- Không thay giá trị cụ thể của thời điểm xét vào công thức trước khi đạo hàm, vì các đại lượng đều thay đổi theo $t$.
+- Tốc độ giảm ghi bằng số âm; kết luận bằng lời phải nói rõ "giảm".
+- Đại lượng hằng số (chiều dài thang, độ cao máy bay) có đạo hàm bằng $0$.
+
+=== H7.7.1
+@ly_thuyet:
+##TC Quan hệ Pi-ta-go theo thời gian
+- Thang dài $\ell$ dựa tường: $x^2+y^2=\ell^2$ với $x$ là khoảng cách từ chân thang đến tường, $y$ là độ cao đầu thang; đạo hàm theo $t$: $x\cdot x'+y\cdot y'=0$.
+- Khoảng cách $d$ từ một điểm cố định đến vật chuyển động theo đường thẳng ở khoảng cách $h$ không đổi: $d^2=x^2+h^2$, suy ra $d\cdot d'=x\cdot x'$.
+
+##PP Thang trượt và khoảng cách
+Đặt $x(t)$, $y(t)$ (hoặc $x(t)$, $d(t)$), viết hệ thức Pi-ta-go với độ dài không đổi.
+Đạo hàm hai vế theo $t$ ta có hệ thức giữa các tốc độ.
+Từ hệ thức Pi-ta-go tính đại lượng còn thiếu tại thời điểm xét.
+Thay số, giải tốc độ cần tìm và nêu dấu (tăng, giảm).
+
+##CY
+- Thang trượt: khi chân thang ra xa tường thì $x'>0$ còn đầu thang tụt xuống nên $y'<0$.
+- Tốc độ chỉ có nghĩa tại thời điểm xét; khoảng cách đã cho là khoảng cách tại thời điểm đó, không phải mọi lúc.
+
+@vi_du:
+##VD
+Một chiếc thang dài $10$ m dựa vào bức tường thẳng đứng. Chân thang bị kéo ra xa tường với tốc độ $0{,}5$ m/s. Khi chân thang cách tường $6$ m thì đầu trên của thang trượt xuống với tốc độ bao nhiêu?
+
+Bài giải:
+Gọi $x(t)$ là khoảng cách từ chân thang đến tường, $y(t)$ là độ cao của đầu thang. Ta có $x^2+y^2=100$.
+Đạo hàm hai vế theo $t$: $2xx'+2yy'=0$, suy ra $y'=-\dfrac{x\,x'}{y}$.
+Khi $x=6$ thì $y=\sqrt{100-36}=8$; với $x'=0{,}5$ ta có $y'=-\dfrac{6\cdot0{,}5}{8}=-0{,}375$.
+Vậy đầu trên của thang trượt xuống với tốc độ $0{,}375$ m/s.
+
+##VD
+Một máy bay bay ngang ở độ cao không đổi $6$ km so với mặt đất, đang bay ra xa vị trí ngay phía trên một trạm ra-đa. Khi máy bay cách ra-đa $10$ km thì khoảng cách này đang tăng với tốc độ $480$ km/h. Tính vận tốc của máy bay.
+
+Bài giải:
+Gọi $x(t)$ là khoảng cách theo phương ngang từ máy bay đến điểm ngay phía trên ra-đa, $d(t)$ là khoảng cách từ máy bay đến ra-đa. Ta có $d^2=x^2+6^2$.
+Đạo hàm hai vế theo $t$: $2dd'=2xx'$, suy ra $x'=\dfrac{d\,d'}{x}$.
+Khi $d=10$ thì $x=\sqrt{100-36}=8$; với $d'=480$ ta có $x'=\dfrac{10\cdot480}{8}=600$.
+Vậy vận tốc của máy bay là $600$ km/h.
+
+=== H7.7.2
+@ly_thuyet:
+##TC Thể tích theo chiều cao và lưu lượng
+- Thể tích nước trong bể $V$ là hàm của chiều cao mực nước $h$, và $h$ lại là hàm của $t$: $V(t)=V(h(t))$.
+- Đạo hàm hàm hợp: $\dfrac{dV}{dt}=V'(h)\cdot h'(t)$, suy ra $h'(t)=\dfrac{V'(t)}{V'(h)}$.
+- Lưu lượng bơm vào (rò ra) chính là $V'(t)$: bơm vào lấy dấu $+$, rò ra lấy dấu $-$.
+- Bể hình nón đỉnh phía dưới, bán kính đáy $R$, cao $H$: mực nước $h$ có bán kính mặt nước $r=\dfrac{R}{H}h$ (đồng dạng), $V=\dfrac{1}{3}\pi r^2h$.
+
+##PP Tốc độ dâng của mực nước
+Đặt $h$ là chiều cao mực nước; biểu diễn bán kính mặt nước qua $h$ (đồng dạng) rồi viết $V$ chỉ theo $h$.
+Tính $V'(h)$.
+Lưu lượng đã cho là $V'(t)$, thay vào $V'(t)=V'(h)\cdot h'(t)$.
+Thay $h$ tại thời điểm xét, giải $h'(t)$ và kết luận kèm đơn vị.
+
+##CY
+- Phải đưa $V$ về MỘT biến $h$ trước khi đạo hàm; còn $r$ trong công thức thể tích phải thay bằng biểu thức của $h$.
+- Mực nước càng cao thì mặt nước càng rộng nên nước dâng càng chậm dù lưu lượng bơm không đổi.
+- Đổi đơn vị cho thống nhất (lít, dm$^3$, m$^3$).
+
+@vi_du:
+##VD
+Một bể chứa hình nón úp ngược (đỉnh ở dưới) có bán kính đáy $3$ m và chiều cao $6$ m. Người ta bơm nước vào bể với lưu lượng $2$ m$^3$/phút. Khi mực nước cao $4$ m thì mực nước dâng với tốc độ bao nhiêu?
+
+Bài giải:
+Gọi $h$ là chiều cao mực nước, $r$ là bán kính mặt nước. Do đồng dạng, $\dfrac{r}{h}=\dfrac{3}{6}$ nên $r=\dfrac{h}{2}$.
+Thể tích nước là $V=\dfrac{1}{3}\pi r^2h=\dfrac{\pi h^3}{12}$, suy ra $V'(h)=\dfrac{\pi h^2}{4}$.
+Từ $V'(t)=V'(h)\cdot h'(t)$ ta có $2=\dfrac{\pi h^2}{4}\cdot h'(t)$.
+Khi $h=4$: $2=4\pi\cdot h'(t)$, suy ra $h'(t)=\dfrac{1}{2\pi}\approx0{,}16$.
+Vậy khi mực nước cao $4$ m thì nước dâng với tốc độ $\dfrac{1}{2\pi}\approx0{,}16$ m/phút.
+
+##VD
+Một chậu hình bán cầu bán kính $R=6$ dm được bơm nước với lưu lượng $18$ lít mỗi phút (mỗi lít bằng $1$ dm$^3$). Biết thể tích phần nước có chiều cao $h$ (đo từ đáy chậu) là $V=\dfrac{\pi h^2(3R-h)}{3}$. Khi mực nước cao $3$ dm thì mực nước dâng với tốc độ bao nhiêu?
+
+Bài giải:
+Với $R=6$: $V(h)=\dfrac{\pi h^2(18-h)}{3}=\pi\left(6h^2-\dfrac{h^3}{3}\right)$, suy ra $V'(h)=\pi(12h-h^2)$.
+Từ $V'(t)=V'(h)\cdot h'(t)$ ta có $18=\pi h(12-h)\cdot h'(t)$.
+Khi $h=3$: $\pi\cdot3\cdot9=27\pi$ nên $h'(t)=\dfrac{18}{27\pi}=\dfrac{2}{3\pi}\approx0{,}21$.
+Vậy khi mực nước cao $3$ dm thì nước dâng với tốc độ $\dfrac{2}{3\pi}\approx0{,}21$ dm/phút.
+
+=== N H7.8
+@ly_thuyet:
+##TC Tiệm cận và giá trị dài hạn
+- Nếu $\lim_{t\to+\infty}f(t)=L$ thì đồ thị có tiệm cận ngang $y=L$: khi thời gian đủ lớn đại lượng tiến tới $L$.
+- Nếu $\lim_{p\to p_0^-}f(p)=+\infty$ thì $p=p_0$ là tiệm cận đứng: đại lượng tăng vô hạn khi $p$ tiến tới $p_0$.
+- Hàm $f(x)=ax+b+\dfrac{c}{x}$ ($x\to+\infty$) có tiệm cận xiên $y=ax+b$ vì $f(x)-(ax+b)=\dfrac{c}{x}\to0$.
+- Đại lượng tiến tới $L$ chưa chắc đạt $L$: nếu $f$ tăng và $f(t)<L$ với mọi $t$ thì $f$ không vượt qua $L$.
+
+##PP Tìm giá trị tiến tới trong mô hình
+Nếu đề chưa cho hàm thì lập hàm từ dữ kiện (lượng chất/thể tích, tổng chi phí/số lượng).
+Tính $\lim_{t\to+\infty}f(t)$ (chia tử và mẫu cho luỹ thừa cao nhất) để có tiệm cận ngang; tính giới hạn một bên tại giá trị làm mẫu bằng $0$ để có tiệm cận đứng.
+Viết $f(t)=L-\dfrac{k}{\ldots}$ hoặc xét dấu $f'$ để biết $f$ tiến tới $L$ từ phía nào.
+Giải thích ý nghĩa bằng lời của bài.
+
+##CY
+- Tiệm cận ngang $y=L$ là giá trị mà đại lượng tiến gần, không phải giá trị đạt được ở một thời điểm cụ thể.
+- Tiệm cận đứng chỉ có ý nghĩa nếu nằm gần miền thực tế của biến.
+
+=== H7.8.1
+@ly_thuyet:
+##TC Mô hình bão hoà
+- Hàm bão hoà thường có dạng $f(t)=\dfrac{at}{t+b}$ hoặc $f(t)=\dfrac{at^2+c}{dt^2+e}$ ($a,b,d>0$), tiệm cận ngang là tỉ số hệ số của số hạng bậc cao nhất.
+- Tiệm cận ngang $y=L$ chính là ngưỡng $L$ mà đại lượng không vượt qua nếu $f$ đồng biến và $f(t)<L$.
+
+##PP Giá trị ngưỡng của mô hình
+Tính $L=\lim_{t\to+\infty}f(t)$ để có ngưỡng bão hoà.
+Viết $f(t)=L-\dfrac{k}{g(t)}$ với $k>0$, $g(t)>0$ (hoặc xét $f'>0$) để chứng tỏ $f(t)<L$ với mọi $t$, tức đại lượng không vượt qua ngưỡng.
+Giải $f(t)=m$ để biết thời điểm đạt mức $m$ cho trước ($m<L$).
+Kết luận bằng ngữ cảnh.
+
+##CY
+- Không có $t$ để $f(t)=L$, nên đề hỏi "khi nào đạt đúng ngưỡng" thì câu trả lời là không bao giờ.
+- Hàm bậc hai trên bậc hai: tiệm cận ngang là tỉ số hệ số của $t^2$, đừng lấy tỉ số hệ số tự do.
+
+@vi_du:
+##VD
+Số người dùng một ứng dụng (tính theo người) sau $t$ tháng kể từ khi ra mắt là $N(t)=\dfrac{8000t}{t+10}$. a) Số người dùng tiến tới giá trị nào khi $t$ rất lớn? b) Sau bao lâu số người dùng đạt $6400$ người?
+
+Bài giải:
+a) $\lim_{t\to+\infty}N(t)=\lim_{t\to+\infty}\dfrac{8000}{1+\frac{10}{t}}=8000$.
+Mặt khác $N'(t)=\dfrac{80000}{(t+10)^2}>0$ nên $N$ đồng biến và $N(t)=8000-\dfrac{80000}{t+10}<8000$ với mọi $t$.
+b) $N(t)=6400\Leftrightarrow8000t=6400t+64000\Leftrightarrow t=40$.
+Vậy số người dùng tiến tới $8000$ người và không bao giờ vượt quá con số đó; sau $40$ tháng thì có $6400$ người dùng.
+
+##VD
+Số lượng vi khuẩn (nghìn con) trong một môi trường nuôi cấy sau $t$ giờ là $P(t)=\dfrac{40t^2+30}{2t^2+5}$. a) Số lượng vi khuẩn tiến tới giá trị nào? Có vượt qua giá trị đó không? b) Sau bao lâu số lượng đạt $18$ nghìn con?
+
+Bài giải:
+a) $\lim_{t\to+\infty}P(t)=\dfrac{40}{2}=20$ nên đồ thị có tiệm cận ngang $y=20$.
+Ta có $P(t)=20-\dfrac{70}{2t^2+5}<20$ với mọi $t\ge0$, và $P(t)$ tăng theo $t$ (vì $\dfrac{70}{2t^2+5}$ giảm).
+b) $P(t)=18\Leftrightarrow\dfrac{70}{2t^2+5}=2\Leftrightarrow2t^2+5=35\Leftrightarrow t^2=15\Leftrightarrow t=\sqrt{15}\approx3{,}87$.
+Vậy số lượng vi khuẩn tiến tới $20$ nghìn con nhưng không bao giờ vượt qua; sau khoảng $3{,}87$ giờ thì đạt $18$ nghìn con.
+
+=== H7.8.2
+@ly_thuyet:
+##TC Hàm tỉ số
+- Nồng độ $C(t)=\dfrac{\text{lượng chất tại thời điểm }t}{\text{thể tích tại thời điểm }t}$.
+- Chi phí trung bình $\overline{C}(x)=\dfrac{C(x)}{x}$.
+- Khi tử và mẫu cùng bậc, tiệm cận ngang là tỉ số hệ số bậc cao nhất; khi tử hơn mẫu một bậc, chia đa thức được $\overline{C}(x)=ax+b+\dfrac{c}{x}$ và tiệm cận xiên là $y=ax+b$.
+
+##PP Lập hàm rồi tìm tiệm cận
+Biểu diễn lượng chất (tổng chi phí) và thể tích (số lượng) theo thời gian $t$ hoặc $x$.
+Lập hàm tỉ số, rút gọn về dạng $\dfrac{\text{đa thức}}{\text{đa thức}}$.
+Tìm giới hạn khi $t\to+\infty$; nếu tử hơn mẫu một bậc thì chia đa thức để tìm tiệm cận xiên.
+Giải thích ý nghĩa: nồng độ tiến tới đâu, chi phí trung bình xấp xỉ biểu thức nào khi sản lượng lớn.
+
+##CY
+- Lượng chất cộng dồn theo thời gian: cả lượng ban đầu và lượng bơm thêm đều phải tính.
+- Tiệm cận xiên chỉ hỏi khi $\overline{C}(x)\to\infty$; đừng nhầm với tiệm cận ngang.
+
+@vi_du:
+##VD
+Một bể chứa $500$ lít nước muối nồng độ $20$ g/lít. Người ta bơm vào bể nước muối nồng độ $30$ g/lít với tốc độ $25$ lít/phút (bể đủ lớn, không rút nước ra). a) Lập hàm nồng độ muối $C(t)$ g/lít sau $t$ phút. b) Nồng độ muối tiến tới giá trị nào? Có thể bằng đúng $30$ g/lít không?
+
+Bài giải:
+a) Sau $t$ phút, lượng muối là $500\cdot20+25t\cdot30=10000+750t$ (g), thể tích là $500+25t$ (lít).
+$C(t)=\dfrac{10000+750t}{500+25t}=\dfrac{400+30t}{20+t}$ với $t\ge0$.
+b) $\lim_{t\to+\infty}C(t)=30$, tiệm cận ngang $y=30$.
+Mặt khác $C(t)=30-\dfrac{200}{t+20}<30$ với mọi $t\ge0$.
+Vậy nồng độ muối tiến tới $30$ g/lít (bằng nồng độ nước muối bơm vào) nhưng không bao giờ bằng đúng $30$ g/lít.
+
+##VD
+Chi phí sản xuất $x$ sản phẩm là $C(x)=2x^2+10x+300$ (nghìn đồng), $x>0$. Lập hàm chi phí trung bình $\overline{C}(x)$ rồi tìm tiệm cận của đồ thị và giải thích ý nghĩa.
+
+Bài giải:
+Chi phí trung bình là $\overline{C}(x)=\dfrac{2x^2+10x+300}{x}=2x+10+\dfrac{300}{x}$.
+Khi $x\to0^+$ thì $\overline{C}(x)\to+\infty$ nên $x=0$ là tiệm cận đứng.
+Khi $x\to+\infty$ thì $\overline{C}(x)\to+\infty$, nhưng $\overline{C}(x)-(2x+10)=\dfrac{300}{x}\to0$ nên $y=2x+10$ là tiệm cận xiên.
+Vậy khi sản lượng $x$ rất lớn, chi phí trung bình mỗi sản phẩm xấp xỉ $2x+10$ (nghìn đồng); phần chi phí cố định chia cho mỗi sản phẩm $\dfrac{300}{x}$ gần như không còn đáng kể.
+
+=== H7.8.3
+@ly_thuyet:
+##TC Chi phí làm sạch
+- Chi phí loại bỏ $p\%$ chất ô nhiễm: $C(p)=\dfrac{kp}{100-p}$ với $k>0$, $0\le p<100$.
+- $\lim_{p\to100^-}C(p)=+\infty$ nên đường thẳng $p=100$ là tiệm cận đứng.
+- $C'(p)=\dfrac{100k}{(100-p)^2}>0$: chi phí tăng theo $p$ và tăng càng lúc càng nhanh khi $p$ gần $100$.
+
+##PP Phân tích chi phí làm sạch
+Tính $C(p)$ tại các mức $p$ đề cho; giải $C(p)=m$ để tìm mức làm sạch với ngân sách $m$.
+Tính giới hạn một bên $p\to100^-$ để chứng tỏ tiệm cận đứng.
+Dùng $C'(p)$ để nói tốc độ tăng chi phí tại một mức $p$.
+Giải thích: không thể làm sạch $100\%$ vì chi phí vô hạn.
+
+##CY
+- Miền của $p$ là $[0;100)$; không tính $C(100)$ vì mẫu bằng $0$.
+- Phải dùng giới hạn một bên $p\to100^-$ vì $p$ không vượt quá $100$.
+
+@vi_du:
+##VD
+Chi phí (triệu đồng) để loại bỏ $p\%$ chất ô nhiễm khỏi một hồ nước là $C(p)=\dfrac{1{,}5p}{100-p}$, $0\le p<100$. a) Tính chi phí khi $p=50$, $p=90$, $p=99$. b) Nếu ngân sách là $6$ triệu đồng thì loại bỏ được tối đa bao nhiêu phần trăm? c) Giải thích vì sao không thể làm sạch hoàn toàn hồ.
+
+Bài giải:
+a) $C(50)=\dfrac{75}{50}=1{,}5$; $C(90)=\dfrac{135}{10}=13{,}5$; $C(99)=\dfrac{148{,}5}{1}=148{,}5$ (triệu đồng).
+b) $C$ đồng biến trên $[0;100)$ vì $C'(p)=\dfrac{150}{(100-p)^2}>0$. Giải $C(p)=6$: $1{,}5p=6(100-p)\Leftrightarrow7{,}5p=600\Leftrightarrow p=80$.
+c) $\lim_{p\to100^-}C(p)=+\infty$ nên $p=100$ là tiệm cận đứng: chi phí tăng vô hạn khi tiến tới làm sạch hoàn toàn.
+Vậy ngân sách $6$ triệu đồng loại bỏ được tối đa $80\%$ chất ô nhiễm, và không có ngân sách hữu hạn nào đủ để làm sạch $100\%$.
+
+##VD
+Chi phí (triệu đồng) để loại bỏ $p\%$ khí thải của một nhà máy là $C(p)=\dfrac{8p}{100-p}$, $0\le p<100$. a) Tìm tiệm cận đứng và nêu ý nghĩa. b) Tính chi phí tăng thêm khi nâng mức xử lí từ $90\%$ lên $95\%$. c) So sánh tốc độ tăng chi phí $C'(p)$ tại $p=90$ và $p=95$.
+
+Bài giải:
+a) $\lim_{p\to100^-}C(p)=+\infty$ nên tiệm cận đứng là $p=100$: chi phí vô hạn nếu muốn xử lí hoàn toàn khí thải, nên không thể đạt $100\%$.
+b) $C(90)=\dfrac{720}{10}=72$ và $C(95)=\dfrac{760}{5}=152$, nên chi phí tăng thêm là $152-72=80$ triệu đồng.
+c) $C'(p)=\dfrac{800}{(100-p)^2}$ nên $C'(90)=\dfrac{800}{100}=8$ và $C'(95)=\dfrac{800}{25}=32$.
+Vậy tiệm cận đứng là $p=100$; nâng từ $90\%$ lên $95\%$ tốn thêm $80$ triệu đồng; tại $p=95$ chi phí tăng nhanh gấp $4$ lần tại $p=90$ ($32$ so với $8$ triệu đồng cho mỗi phần trăm tăng thêm).
+
+## GHI CHÚ CHO CEO
+- H7.7.1 ví dụ 2 (ra-đa): đề tự bổ sung giả thiết máy bay bay ngang, ra xa điểm ngay phía trên ra-đa (nguồn PNL B5-D5 C1 chỉ nêu đại ý); số liệu tự chọn cho đẹp.
+- H7.7.2 ví dụ 2 (chậu bán cầu): công thức thể tích chỏm cầu được cho sẵn trong đề vì chương trình lớp 12 không có công thức này.
+- H7.4.4 ví dụ 2 (lô hàng): mô hình tồn kho trung bình bằng nửa lô được nêu rõ trong đề; hai số nguyên n=7 và n=8 được so sánh trực tiếp (n=8 tốt hơn dù 7,5 cách đều cả hai).
+- Chưa dùng hình cho nhóm này (cột hình đều là "khong"). Không có điểm nguồn sai; ít chắc nhất: ngưỡng độ khó của H7.7.2 so với mức "nâng cao" CEO muốn.

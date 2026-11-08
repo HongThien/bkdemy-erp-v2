@@ -1,0 +1,2690 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00363",
+   "khoi": "8",
+   "chu_de": "Phản ứng Hóa học",
+   "chuyen_de": "Dung dịch - Nồng độ",
+   "nhom": "Khái niệm dung dịch, chất tan, dung môi, dung dịch bão hòa",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nDung dịch là hỗn hợp đồng nhất của dung môi và chất tan.\n* Chất tan là chất bị hoà tan trong dung môi; chất tan có thể ở thể rắn, lỏng hoặc khí.\n* Dung môi là chất có khả năng hoà tan chất khác để tạo thành dung dịch. Nước là dung môi phổ biến nhất; xăng, cồn cũng là dung môi của một số chất.\n* Khi hai chất lỏng tan vào nhau, chất có lượng nhiều hơn thường được coi là dung môi.\nỞ một nhiệt độ xác định:\n* Dung dịch chưa bão hoà là dung dịch có thể hoà tan thêm chất tan.\n* Dung dịch bão hoà là dung dịch không thể hoà tan thêm chất tan.\nCác yếu tố làm chất rắn tan nhanh hơn trong nước: khuấy dung dịch, đun nóng dung dịch, nghiền nhỏ chất rắn.\n\n##PP 2. Các bước làm bài\nBước 1. Xác định chất bị hoà tan (chất tan) và chất hoà tan chất khác (dung môi).\nBước 2. Với câu hỏi về dung dịch bão hoà: xét xem chất tan còn tan thêm được ở nhiệt độ đó hay không.\nBước 3. Với câu hỏi về tốc độ hoà tan: xác định yếu tố được thay đổi (khuấy, nhiệt độ, kích thước hạt) và chiều ảnh hưởng của yếu tố đó.\n\n##CY 3. Lưu ý\n* Hỗn hợp có chất rắn lơ lửng hoặc chất lỏng không tan (nước phù sa, dầu ăn lắc với nước) không phải là dung dịch.\n* Khuấy, đun nóng, nghiền nhỏ làm chất rắn tan nhanh hơn; khuấy và nghiền nhỏ không làm thay đổi độ tan.\n* Độ tan của phần lớn chất rắn tăng khi nhiệt độ tăng: đun nóng dung dịch bão hoà có thể làm dung dịch trở thành chưa bão hoà, làm lạnh dung dịch bão hoà có thể làm chất tan tách ra.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00364",
+   "khoi": "8",
+   "chu_de": "Phản ứng Hóa học",
+   "chuyen_de": "Dung dịch - Nồng độ",
+   "nhom": "Tính C%",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nDung dịch gồm chất tan và dung môi. Khối lượng dung dịch bằng tổng khối lượng chất tan và khối lượng dung môi.\nNồng độ phần trăm (kí hiệu $\\mathrm{C\\%}$) của một dung dịch cho biết số gam chất tan có trong $100$ gam dung dịch.\nVí dụ: dung dịch $\\mathrm{NaCl}$ $5\\%$ là dung dịch trong đó cứ $100$ g dung dịch có $5$ g $\\mathrm{NaCl}$ và $95$ g nước.\n\n##TC2. Công thức\nNồng độ phần trăm:\n$$\\mathrm{C\\%} = \\dfrac{\\mathrm{m_{ct}}}{\\mathrm{m_{dd}}} \\cdot 100\\%$$ Trong đó $\\mathrm{m_{ct}}$ là khối lượng chất tan (g), $\\mathrm{m_{dd}}$ là khối lượng dung dịch (g).\nKhối lượng dung dịch:\n$$\\mathrm{m_{dd}} = \\mathrm{m_{ct}} + \\mathrm{m_{dm}}$$ Trong đó $\\mathrm{m_{dm}}$ là khối lượng dung môi (g); dung môi thường là nước.\nCác công thức suy ra:\n$$\\mathrm{m_{ct}} = \\dfrac{\\mathrm{C\\%} \\cdot \\mathrm{m_{dd}}}{100\\%}$$\n$$\\mathrm{m_{dd}} = \\dfrac{\\mathrm{m_{ct}} \\cdot 100\\%}{\\mathrm{C\\%}}$$\nKhi đề cho số mol chất tan, tính khối lượng chất tan:\n$$\\mathrm{m_{ct}} = \\mathrm{n \\cdot M}$$\nNồng độ phần trăm của dung dịch bão hoà khi biết độ tan S (số gam chất tan trong $100$ g nước):\n$$\\mathrm{C\\%} = \\dfrac{\\mathrm{S}}{\\mathrm{100 + S}} \\cdot 100\\%$$\n\n##PP 3. Các bước làm bài\nBước 1. Xác định chất tan, dung môi và các đại lượng đề đã cho; đổi khối lượng về cùng đơn vị gam.\nBước 2. Nếu đề cho số mol chất tan, tính khối lượng chất tan theo $\\mathrm{m_{ct} = n \\cdot M}$.\nBước 3. Nếu đề cho khối lượng dung môi, tính khối lượng dung dịch theo $\\mathrm{m_{dd} = m_{ct} + m_{dm}}$.\nBước 4. Áp dụng công thức nồng độ phần trăm hoặc công thức suy ra để tìm đại lượng đề hỏi.\n\n\n\n##CY4. Lưu ý\n* Khối lượng dung dịch khác khối lượng dung môi: $\\mathrm{m_{dd}}$ đã gồm cả khối lượng chất tan.\n* Khối lượng chất tan và khối lượng dung dịch phải cùng đơn vị trước khi lập tỉ số.\n* Nồng độ phần trăm luôn nhỏ hơn $100\\%$ và không vượt quá nồng độ của dung dịch bão hoà ở cùng nhiệt độ.\n* Khối lượng chất rắn không tan hết không được tính vào khối lượng dung dịch.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00365",
+   "khoi": "8",
+   "chu_de": "Phản ứng Hóa học",
+   "chuyen_de": "Dung dịch - Nồng độ",
+   "nhom": "Tính nồng độ CM",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC1. Kiến thức cần nhớ\nNồng độ mol (kí hiệu $\\mathrm{C_M}$) của dung dịch cho biết số mol chất tan có trong 1 lít dung dịch. Đơn vị của nồng độ mol là mol/L, kí hiệu là M.\n\n##VD Ví dụ:\ndung dịch $\\mathrm{NaCl}$ 0.5 M là dung dịch trong đó cứ 1 lít dung dịch có 0,5 mol $\\mathrm{NaCl}$.\n\n##TC 2. Công thức\nNồng độ mol:\n$$\\mathrm{C_M} = \\dfrac{\\mathrm{n}}{\\mathrm{V}}$$\nTrong đó n là số mol chất tan (mol), V là thể tích dung dịch (L).\nCác công thức suy ra:\n$$\\mathrm{n} = \\mathrm{C_M} \\cdot \\mathrm{V}$$\n$$\\mathrm{V} = \\dfrac{\\mathrm{n}}{\\mathrm{C_M}}$$\nTính số mol chất tan từ khối lượng hoặc từ thể tích chất khí ở điều kiện chuẩn:\n$$\\mathrm{n} = \\dfrac{\\mathrm{m}}{\\mathrm{M}}$$\n$$\\mathrm{n} = \\dfrac{\\mathrm{V_{khí}}}{24.79}$$\n\n##PP 3. Các bước làm bài\nBước 1. Đổi thể tích dung dịch ra lít: $1\\ \\mathrm{mL} = 0,001\\ \\mathrm{L}$.\nBước 2. Tính số mol chất tan: từ khối lượng ($\\mathrm{n} = \\dfrac{\\mathrm{m}}{\\mathrm{M}}$), từ thể tích khí ở điều kiện chuẩn ($\\mathrm{n} = \\dfrac{\\mathrm{V}}{24.79}$), hoặc từ khối lượng tinh thể ngậm nước.\nBước 3. Áp dụng công thức nồng độ mol hoặc công thức suy ra để tìm đại lượng đề hỏi.\n\n\n##CY 4. Lưu ý\n* Thể tích trong công thức là thể tích dung dịch, không phải thể tích nước hay thể tích khí đem hoà tan.\n* Đơn vị thể tích phải là lít; quên đổi $\\mathrm{mL}$ ra $\\mathrm{L}$ làm kết quả sai 1 000 lần.\n* Với chất khí, thể tích khí chỉ dùng để tính số mol chất tan.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00366",
+   "khoi": "8",
+   "chu_de": "Phản ứng Hóa học",
+   "chuyen_de": "Dung dịch - Nồng độ",
+   "nhom": "Pha chế dung dịch và chuyển đổi C% với CM",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nPha chế một dung dịch theo nồng độ cho trước gồm hai việc: tính lượng chất tan (hoặc lượng hoá chất) cần lấy và lượng dung môi cần dùng, sau đó tiến hành cân, đong, hoà tan.\nKhi pha loãng một dung dịch bằng nước, lượng chất tan (khối lượng hoặc số mol) không thay đổi; chỉ khối lượng hoặc thể tích dung dịch tăng lên.\nKhối lượng riêng $\\mathrm{D}$ (g/mL) cho biết khối lượng của $1 \\mathrm{mL}$ dung dịch; đây là đại lượng dùng để chuyển giữa khối lượng dung dịch và thể tích dung dịch.\n\n##TC 2. Công thức\nLiên hệ giữa khối lượng và thể tích dung dịch:\n$$\\mathrm{m_{dd} = V \\cdot D}$$\nPha từ tinh thể ngậm nước: số mol tinh thể bằng số mol chất tan.\n$$\\mathrm{m_{tt} = n_{ct} \\cdot M_{tt}}$$\nPha từ hoá chất có độ tinh khiết a%:\n$$\\mathrm{m_{hoá \\: chất} = \\dfrac{m_{ct} \\cdot 100}{a}}$$\nPha loãng bằng nước:\n$$\\mathrm{m_{ct} = \\dfrac{C\\%_1 \\cdot m_{dd1}}{100} = \\dfrac{C\\%_2 \\cdot m_{dd2}}{100}}$$\n$$\\mathrm{n = C_{M1} \\cdot V_1 = C_{M2} \\cdot V_2}$$\n\n##PP 3. Các bước làm bài\nBước 1. Tính lượng chất tan có trong dung dịch cần pha (hoặc trong dung dịch ban đầu).\nBước 2. Từ lượng chất tan, tính lượng hoá chất cần lấy: chia cho độ tinh khiết nếu hoá chất có tạp chất; đổi sang khối lượng tinh thể nếu dùng tinh thể ngậm nước.\nBước 3. Tính lượng nước cần dùng bằng hiệu giữa khối lượng (hoặc thể tích) dung dịch và lượng đã có.\n\n\n\n##CY 4. Lưu ý\n* Nước kết tinh trong tinh thể trở thành một phần dung môi; khối lượng nước cần thêm bằng khối lượng dung dịch trừ khối lượng tinh thể.\n* Khi pha loãng acid đặc, phải rót từ từ acid vào nước, không rót nước vào acid.\n* Thể tích dùng trong $\\mathrm{C_M}$ phải đổi ra lít; khối lượng riêng tính theo $\\mathrm{g/mL}$.\n* Khi pha loãng theo $\\mathrm{C_M}$, để thường coi thể tích dung dịch sau khi pha bằng tổng thể tích các phần đem trộn.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00367",
+   "khoi": "8",
+   "chu_de": "Phản ứng Hóa học",
+   "chuyen_de": "Dung dịch - Nồng độ",
+   "nhom": "Trộn hai dung dịch, thêm bớt chất tan/dung môi",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nKhi trộn các dung dịch của cùng một chất tan, hoặc thêm chất tan, hoặc làm bay hơi bớt nước, khối lượng chất tan và khối lượng dung dịch được tính riêng rồi mới tính nồng độ mới.\nTrộn hai dung dịch: khối lượng (số mol) chất tan bằng tổng của hai dung dịch; khối lượng dung dịch bằng tổng khối lượng hai dung dịch.\nThêm chất tan: khối lượng chất tan và khối lượng dung dịch cùng tăng một lượng bằng khối lượng chất tan thêm vào.\nBay hơi nước: khối lượng chất tan không đổi, khối lượng dung dịch giảm một lượng bằng khối lượng nước bay hơi.\n\n##TC 2. Công thức\nTrộn hai dung dịch theo nồng độ phần trăm:\n$$C\\% = \\dfrac{m_{\\mathrm{ct1}} + m_{\\mathrm{ct2}}}{m_{\\mathrm{dd1}} + m_{\\mathrm{dd2}}} \\cdot 100\\%$$\nTrộn hai dung dịch theo nồng độ mol (coi thể tích bằng tổng thể tích):\n$$C_M = \\dfrac{n_1 + n_2}{V_1 + V_2}$$\nThêm a gam chất tan vào dung dịch:\n$$C\\%_2 = \\dfrac{m_{\\mathrm{ct1}} + a}{m_{\\mathrm{dd1}} + a} \\cdot 100\\%$$\nLàm bay hơi x gam nước:\n$$C\\%_2 = \\dfrac{m_{\\mathrm{ct}}}{m_{\\mathrm{dd1}} - x} \\cdot 100\\%$$\n\n##PP3. Các bước làm bài\nBước 1. Tính khối lượng (hoặc số mol) chất tan trong từng dung dịch ban đầu.\nBước 2. Xác định khối lượng chất tan và khối lượng dung dịch sau khi trộn, thêm hoặc bay hơi.\nBước 3. Tính nồng độ mới. Nếu đề cho nồng độ đích và hỏi lượng cần lấy, gọi ẩn cho lượng cần tìm rồi lập phương trình bảo toàn chất tan.\n\n##CY 4. Lưu ý\nKhông cộng hay lấy trung bình trực tiếp hai nồng độ phần trăm.\nThêm chất tan làm tăng cả khối lượng dung dịch, không chỉ tăng khối lượng chất tan.\nNồng độ của dung dịch sau khi trộn luôn nằm giữa nồng độ của hai dung dịch đem trộn.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00368",
+   "khoi": "8",
+   "chu_de": "Phản ứng Hóa học",
+   "chuyen_de": "Phản ứng Hóa học",
+   "nhom": "Phân biệt biến đổi vật lý và biến đổi hóa học",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC1. Kiến thức cần nhớ\nBiến đổi vật lí: chất chỉ thay đổi trạng thái, hình dạng, kích thước, không có chất mới tạo thành. Ví dụ: nước đá tan, muối ăn tan trong nước, nghiền nhỏ tinh thể, thổi thuỷ tinh nóng chảy thành bình.\nBiến đổi hoá học: có chất mới tạo thành. Ví dụ: than cháy, sữa bị chua, sắt bị gỉ, nung đá vôi thành vôi sống.\nChất mới có tính chất khác chất ban đầu: màu, mùi, vị, tính tan, khả năng cháy, bị nam châm hút hay không.\n\n##PP2. Các bước làm bài\nBước 1. Xác định chất trước và sau quá trình.\nBước 2. So sánh tính chất của chất sau với chất ban đầu.\nBước 3. Kết luận: có chất mới là biến đổi hoá học; không có chất mới là biến đổi vật lí.\n\n##CY 3. Lưu ý\nNóng chảy, đông đặc, bay hơi, ngưng tụ, hoà tan, nghiền, cắt, uốn thường là biến đổi vật lí.\nĐổi màu, nóng lên, sủi bọt không phải lúc nào cũng có chất mới: thuốc tím tan làm nước có màu tím, dây tóc bóng đèn nóng sáng, khí hoà tan sẵn thoát ra khi mở chai nước ngọt đều là biến đổi vật lí.\nMột hiện tượng có thể gồm cả hai loại biến đổi: khi thắp nến, sáp chảy lỏng là biến đổi vật lí, sáp cháy là biến đổi hoá học.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00370",
+   "khoi": "8",
+   "chu_de": "Phản ứng Hóa học",
+   "chuyen_de": "Phản ứng Hóa học",
+   "nhom": "Phản ứng tỏa nhiệt - Phản ứng thu nhiệt",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC1. Kiến thức cần nhớ\nPhản ứng tỏa nhiệt: giải phóng năng lượng dưới dạng nhiệt ra môi trường, làm môi trường nóng lên. Ví dụ: đốt than, xăng, gas, cồn; vôi sống tác dụng với nước; kim loại tác dụng với acid; acid tác dụng với base.\nPhản ứng thu nhiệt: nhận năng lượng dưới dạng nhiệt từ môi trường. Ví dụ: nung đá vôi, phân huỷ copper(II) hydroxide khi đun nóng (phải đun liên tục); baking soda tác dụng với giấm hoặc nước chanh làm hỗn hợp lạnh đi.\nPhản ứng đốt cháy nhiên liệu là phản ứng tỏa nhiệt, cung cấp năng lượng cho đun nấu, sưởi ấm, sản xuất và chạy động cơ.\n\n##PP 2. Các bước làm bài\nBước 1. Xác định chiều truyền nhiệt giữa hệ phản ứng và môi trường: dựa vào nhiệt độ đo được, cảm giác nóng hay lạnh, phản ứng có phải đun liên tục không.\nBước 2. Môi trường nóng lên là phản ứng toả nhiệt; môi trường lạnh đi hoặc phải cung cấp nhiệt liên tục là phản ứng thu nhiệt.\nBước 3. Liên hệ ứng dụng: phản ứng tỏa nhiệt dùng làm nguồn nhiệt, nhiên liệu.\n\n##CY 3. Lưu ý\nMột số phản ứng tỏa nhiệt vẫn cần mồi lửa hoặc đun nóng lúc đầu (đốt than, đốt gas); khi đã xảy ra thì phản ứng tự duy trì.\nỐng nghiệm lạnh đi là do phản ứng lấy nhiệt từ môi trường, không có 'hơi lạnh' toả ra.\nCùng lượng dung dịch, nhiệt độ tăng càng nhiều thì phản ứng toả ra càng nhiều nhiệt.",
+   "can_dien_ly_thuyet_nhom": false
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB00775",
+   "nhom_id": "KNB00363",
+   "thu_tu": 1,
+   "dang": "XÁC ĐỊNH CHẤT TAN VÀ DUNG MÔI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 17,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010101049",
+     "loai": "trac_nghiem",
+     "de": "Xăng hoà tan được dầu ăn. Khi dùng xăng để lau sạch vết dầu ăn trên kính, dung môi là",
+     "lua_chon": [
+      "dầu ăn.",
+      "xăng.",
+      "nước.",
+      "kính."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Xăng hoà tan dầu ăn nên xăng là dung môi; dung môi không nhất thiết là nước."
+    },
+    {
+     "ma_cau": "K08010101051",
+     "loai": "trac_nghiem",
+     "de": "Hỗn hợp nào sau đây là dung dịch?",
+     "lua_chon": [
+      "Nước phù sa.",
+      "Dầu ăn lắc với nước.",
+      "Bột đá vôi khuấy trong nước.",
+      "Nước muối."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nước muối là hỗn hợp đồng nhất của muối ăn và nước nên là dung dịch; các hỗn hợp còn lại có chất không tan."
+    },
+    {
+     "ma_cau": "K08010101044",
+     "loai": "trac_nghiem",
+     "de": "Trong nước đường, dung môi là",
+     "lua_chon": [
+      "đường.",
+      "nước đường.",
+      "nước.",
+      "hỗn hợp đường và nước."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nước là chất hoà tan đường nên nước là dung môi."
+    },
+    {
+     "ma_cau": "K08010101043",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan muối ăn vào nước, thu được nước muối. Trong nước muối, chất tan là",
+     "lua_chon": [
+      "nước.",
+      "muối ăn.",
+      "nước muối.",
+      "hỗn hợp muối ăn và nước."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chất bị hoà tan là muối ăn nên muối ăn là chất tan; nước là dung môi."
+    },
+    {
+     "ma_cau": "K08010101047",
+     "loai": "trac_nghiem",
+     "de": "Giấm ăn là dung dịch acetic acid trong nước. Dung môi của giấm ăn là",
+     "lua_chon": [
+      "acetic acid.",
+      "giấm ăn.",
+      "khí oxygen.",
+      "nước."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Acetic acid được hoà tan trong nước, nên nước là dung môi."
+    },
+    {
+     "ma_cau": "K08010101045",
+     "loai": "trac_nghiem",
+     "de": "Cồn iodine dùng sát trùng được pha bằng cách hoà tan iodine vào cồn (ethanol). Trong cồn iodine, dung môi là",
+     "lua_chon": [
+      "iodine.",
+      "nước.",
+      "cồn.",
+      "cồn iodine."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cồn là chất hoà tan iodine nên cồn là dung môi; iodine là chất tan."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00776",
+   "nhom_id": "KNB00363",
+   "thu_tu": 2,
+   "dang": "DUNG DỊCH BÃO HOÀ VÀ CHƯA BÃO HOÀ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010101053",
+     "loai": "trac_nghiem",
+     "de": "Dung dịch bão hoà là dung dịch",
+     "lua_chon": [
+      "có thể hoà tan thêm chất tan đó ở nhiệt độ xác định.",
+      "chứa nhiều chất tan nhất ở mọi nhiệt độ.",
+      "không thể hoà tan thêm chất tan đó ở nhiệt độ xác định.",
+      "có khối lượng chất tan bằng khối lượng nước."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Dung dịch bão hoà ở một nhiệt độ là dung dịch không thể hoà tan thêm chất tan đó ở nhiệt độ ấy."
+    },
+    {
+     "ma_cau": "K08010101056",
+     "loai": "trac_nghiem",
+     "de": "Cho thêm một ít đường vào một cốc nước đường, khuấy kĩ, giữ nguyên nhiệt độ thì thấy đường không tan thêm mà lắng xuống đáy. Cốc nước đường trước khi cho thêm là",
+     "lua_chon": [
+      "dung dịch chưa bão hoà.",
+      "dung dịch bão hoà.",
+      "hỗn hợp không đồng nhất.",
+      "nước nguyên chất."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đường không tan thêm được ở nhiệt độ đó nên dung dịch ban đầu đã bão hoà."
+    },
+    {
+     "ma_cau": "K08010101058",
+     "loai": "trac_nghiem",
+     "de": "Khi pha nước chanh, một bạn cho quá nhiều đường nên có một phần đường không tan, lắng ở đáy cốc dù đã khuấy kĩ. Phần nước đường ở phía trên là",
+     "lua_chon": [
+      "dung dịch chưa bão hoà.",
+      "nước nguyên chất.",
+      "hỗn hợp không đồng nhất.",
+      "dung dịch bão hoà."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đường không tan thêm được nữa nên phần nước đường phía trên là dung dịch bão hoà."
+    },
+    {
+     "ma_cau": "K08010101061",
+     "loai": "trac_nghiem",
+     "de": "Một dung dịch potassium nitrate bão hoà ở $20^\\circ\\mathrm{C}$. Biết độ tan của potassium nitrate tăng khi nhiệt độ tăng. Đun nóng dung dịch lên $60^\\circ\\mathrm{C}$ (bỏ qua sự bay hơi của nước) thì dung dịch",
+     "lua_chon": [
+      "vẫn là dung dịch bão hoà.",
+      "trở thành dung dịch chưa bão hoà.",
+      "tách ra tinh thể potassium nitrate.",
+      "trở thành nước nguyên chất."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ở nhiệt độ cao hơn, độ tan tăng nên lượng chất tan có sẵn chưa đạt mức tối đa; dung dịch trở thành chưa bão hoà."
+    },
+    {
+     "ma_cau": "K08010101057",
+     "loai": "trac_nghiem",
+     "de": "Cách nào sau đây dùng để kiểm tra một dung dịch muối ăn đã bão hoà hay chưa?",
+     "lua_chon": [
+      "Thêm một ít muối ăn, khuấy kĩ, quan sát xem muối có tan thêm không.",
+      "Đun sôi dung dịch rồi quan sát màu sắc của dung dịch.",
+      "Thêm một ít nước vào, khuấy kĩ rồi quan sát dung dịch.",
+      "Để yên dung dịch một lúc rồi ngửi mùi của dung dịch."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Dung dịch bão hoà không hoà tan thêm được chất tan, nên cho thêm muối ăn và quan sát."
+    },
+    {
+     "ma_cau": "K08010101059",
+     "loai": "trac_nghiem",
+     "de": "Ở $25^\\circ\\mathrm{C}$, độ tan của $\\mathrm{NaCl}$ trong nước là $36 \\mathrm{~g}$. Hoà tan $30 \\mathrm{~g}$ $\\mathrm{NaCl}$ vào $100 \\mathrm{~g}$ nước ở nhiệt độ này. Dung dịch thu được là",
+     "lua_chon": [
+      "dung dịch chưa bão hoà.",
+      "dung dịch bão hoà.",
+      "dung dịch bão hoà và còn muối không tan.",
+      "hỗn hợp không đồng nhất."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Lượng muối hoà tan nhỏ hơn lượng tối đa tan được trong $100 \\mathrm{~g}$ nước, nên dung dịch chưa bão hoà."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00777",
+   "nhom_id": "KNB00363",
+   "thu_tu": 3,
+   "dang": "YẾU TỐ ẢNH HƯỞNG TỐC ĐỘ HOÀ TAN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010101067",
+     "loai": "trac_nghiem",
+     "de": "Ba biện pháp làm tăng tốc độ hoà tan một chất rắn trong nước là",
+     "lua_chon": [
+      "khuấy, đun nóng, nghiền nhỏ chất rắn.",
+      "khuấy, làm lạnh, nghiền nhỏ chất rắn.",
+      "để yên, đun nóng, nghiền nhỏ chất rắn.",
+      "khuấy, đun nóng, dùng chất rắn dạng cục."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khuấy, tăng nhiệt độ và giảm kích thước hạt đều làm chất rắn tan nhanh hơn."
+    },
+    {
+     "ma_cau": "K08010101065",
+     "loai": "trac_nghiem",
+     "de": "Việc nào sau đây không làm tăng tốc độ hoà tan của muối ăn trong nước?",
+     "lua_chon": [
+      "Khuấy dung dịch.",
+      "Nghiền nhỏ muối.",
+      "Làm lạnh nước.",
+      "Đun nóng nước."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Làm lạnh nước làm các hạt chuyển động chậm hơn nên muối tan chậm hơn."
+    },
+    {
+     "ma_cau": "K08010101066",
+     "loai": "trac_nghiem",
+     "de": "Pha trà đường bằng nước nóng thì đường tan nhanh hơn so với nước nguội vì ở nhiệt độ cao",
+     "lua_chon": [
+      "các hạt chuyển động nhanh hơn.",
+      "lượng nước trong cốc nhiều hơn.",
+      "hạt đường trở nên to hơn.",
+      "đường biến thành chất lỏng."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nhiệt độ cao làm các hạt chuyển động nhanh hơn, quá trình hoà tan diễn ra nhanh hơn."
+    },
+    {
+     "ma_cau": "K08010101068",
+     "loai": "trac_nghiem",
+     "de": "Cho cùng khối lượng muối hạt to và muối tinh vào hai cốc nước giống nhau, cùng nhiệt độ, không khuấy. Hiện tượng quan sát được là",
+     "lua_chon": [
+      "muối hạt to tan nhanh hơn muối tinh.",
+      "hai loại muối tan nhanh như nhau.",
+      "muối tinh tan nhanh hơn muối hạt to.",
+      "muối tinh không tan trong nước."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Muối tinh có hạt nhỏ, diện tích tiếp xúc với nước lớn hơn nên tan nhanh hơn."
+    },
+    {
+     "ma_cau": "K08010101072",
+     "loai": "trac_nghiem",
+     "de": "Khi pha một gói oresol, người ta đổ bột vào lượng nước đúng hướng dẫn rồi khuấy đều. Việc khuấy đều có tác dụng",
+     "lua_chon": [
+      "làm tăng lượng muối có trong gói.",
+      "làm nước trong cốc bay hơi.",
+      "làm bột oresol tan nhanh hơn.",
+      "làm giảm thể tích dung dịch."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khuấy giúp chất rắn tiếp xúc liên tục với nước nên bột oresol tan nhanh hơn."
+    },
+    {
+     "ma_cau": "K08010101063",
+     "loai": "trac_nghiem",
+     "de": "Khuấy đều làm đường tan nhanh hơn trong nước vì khuấy",
+     "lua_chon": [
+      "giúp chất rắn tiếp xúc liên tục với phần nước mới.",
+      "làm tăng độ tan của đường trong nước.",
+      "làm giảm nhiệt độ của nước trong cốc.",
+      "làm đường biến đổi thành chất khác."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khuấy đưa phần nước chưa chứa nhiều đường tiếp xúc với chất rắn, nên đường tan nhanh hơn."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00778",
+   "nhom_id": "KNB00364",
+   "thu_tu": 1,
+   "dang": "Tính C% khi biết mct và mdd",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 14,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010102080",
+     "loai": "trac_nghiem",
+     "de": "Một chai nước muối sinh lí có khối lượng dung dịch là 200 g, trong đó chứa 1,8 g $\\mathrm{NaCl}$. Nồng độ phần trăm của $\\mathrm{NaCl}$ trong nước muối sinh lí là",
+     "lua_chon": [
+      "0,009%",
+      "0,892%",
+      "0,9%",
+      "99,1%"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nồng độ phần trăm của dung dịch:\n$\\mathrm{C\\% = \\dfrac{m_{ct}}{m_{dd}} \\cdot 100\\% = \\dfrac{1,8}{200} \\cdot 100\\% = 0,9\\%}$"
+    },
+    {
+     "ma_cau": "K08010102081",
+     "loai": "trac_nghiem",
+     "de": "Cô cạn hoàn toàn 80 g dung dịch NaCl, thu được 12 g muối khan. Nồng độ phần trăm của dung dịch NaCl ban đầu là",
+     "lua_chon": [
+      "0,15%",
+      "6,67%",
+      "13,04%",
+      "15%"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khi cô cạn, nước bay hơi hết, khối lượng muối khan thu được là khối lượng chất tan:\n$m_{ct}$ = 12 g\nNồng độ phần trăm của dung dịch:\n$C\\% = \\dfrac{m_{ct}}{m_{dd}} \\cdot 100\\% = \\dfrac{12}{80} \\cdot 100\\% = 15\\%$"
+    },
+    {
+     "ma_cau": "K08010102077",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan 6 g $\\mathrm{CuSO_4}$ vào nước, thu được 150 g dung dịch $\\mathrm{CuSO_4}$. Nồng độ phần trăm của dung dịch thu được là",
+     "lua_chon": [
+      "0,04%",
+      "3,85%",
+      "4%",
+      "4,17%"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nồng độ phần trăm của dung dịch:\n$$C\\% = \\dfrac{m_{ct}}{m_{dd}} \\cdot 100\\% = \\dfrac{6}{150} \\cdot 100\\% = 4\\%$$"
+    },
+    {
+     "ma_cau": "K08010102082",
+     "loai": "trac_nghiem",
+     "de": "Làm bay hơi hoàn toàn 2 kg nước biển, thu được 70 g muối. Coi toàn bộ lượng muối thu được là chất tan trong nước biển. Nồng độ phần trăm của muối trong nước biển là",
+     "lua_chon": [
+      "0,035%",
+      "3,38%",
+      "3,5%",
+      "35%"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi đơn vị:\n$m_{dd}$ = 2 kg = 2 000 g\nNồng độ phần trăm của dung dịch:\n$C\\% = \\dfrac{m_{ct}}{m_{dd}} \\cdot 100\\% = \\dfrac{70}{2000} \\cdot 100\\% = 3,5\\%$"
+    },
+    {
+     "ma_cau": "K08010102076",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan 20 g đường vào nước, thu được 250 g nước đường. Nồng độ phần trăm của dung dịch thu được là",
+     "lua_chon": [
+      "7,41%",
+      "8%",
+      "8,7%",
+      "92%"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nồng độ phần trăm của dung dịch:\n$$C\\% = \\dfrac{m_{ct}}{m_{dd}} \\cdot 100\\% = \\dfrac{20}{250} \\cdot 100\\% = 8\\%$$"
+    },
+    {
+     "ma_cau": "K08010102079",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan 9 g potassium nitrate $\\mathrm{KNO_3}$ vào nước, thu được 120 g dung dịch dùng để tưới cây. Nồng độ phần trăm của dung dịch thu được là",
+     "lua_chon": [
+      "0,075%",
+      "6,98%",
+      "7,5%",
+      "8,11%"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nồng độ phần trăm của dung dịch:\n$\\mathrm{C\\% = \\dfrac{m_{ct}}{m_{dd}} \\cdot 100\\% = \\dfrac{9}{120} \\cdot 100\\% = 7,5\\%}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00779",
+   "nhom_id": "KNB00364",
+   "thu_tu": 2,
+   "dang": "Tính C% khi biết mct và m dung môi",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010102091",
+     "loai": "trac_nghiem",
+     "de": "Để tưới rau, một người hoà tan $50$ g phân urea vào $4,95$ kg nước. Nồng độ phần trăm của urea trong dung dịch là",
+     "lua_chon": [
+      "1%",
+      "1,01%",
+      "90,99%",
+      "99%"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi đơn vị:\n$m_{dm} = 4,95$ kg $= 4950$ g\nKhối lượng dung dịch bằng khối lượng chất tan cộng khối lượng dung môi:\n$m_{dd} = m_{ct} + m_{dm} = 50 + 4950 = 5000$ (g)\nNồng độ phần trăm của dung dịch:\n$C\\% = \\dfrac{m_{ct}}{m_{dd}} \\cdot 100\\% = \\dfrac{50}{5000} \\cdot 100\\% = 1\\%$"
+    },
+    {
+     "ma_cau": "K08010102084",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan $10\\ \\mathrm{g}\\ \\mathrm{NaCl}$ vào $190\\ \\mathrm{g}$ nước. Nồng độ phần trăm của dung dịch thu được là",
+     "lua_chon": [
+      "$0,05\\%$",
+      "$5\\%$",
+      "$5,26\\%$",
+      "$95\\%$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng dung dịch bằng khối lượng chất tan cộng khối lượng dung môi:\n$m_{dd} = m_{ct} + m_{dm} = 10 + 190 = 200\\ (\\mathrm{g})$\nNồng độ phần trăm của dung dịch:\n$\\mathrm{C\\% = \\dfrac{m_{ct}}{m_{dd}} \\cdot 100\\% = \\dfrac{10}{200} \\cdot 100\\% = 5\\%}$"
+    },
+    {
+     "ma_cau": "K08010102085",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan $12\\ \\mathrm{g}$ potassium chloride $\\mathrm{KCl}$ vào $138\\ \\mathrm{g}$ nước. Nồng độ phần trăm của dung dịch thu được là",
+     "lua_chon": [
+      "$0,08\\%$",
+      "$8\\%$",
+      "$8,7\\%$",
+      "$92\\%$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng dung dịch bằng khối lượng chất tan cộng khối lượng dung môi:\n$m_{dd} = m_{ct} + m_{dm} = 12 + 138 = 150\\ (\\mathrm{g})$\nNồng độ phần trăm của dung dịch:\n$\\mathrm{C\\% = \\dfrac{m_{ct}}{m_{dd}} \\cdot 100\\% = \\dfrac{12}{150} \\cdot 100\\% = 8\\%}$"
+    },
+    {
+     "ma_cau": "K08010102087",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan $6 \\mathrm{~g}$ $\\mathrm{NaOH}$ vào $44 \\mathrm{~g}$ nước. Nồng độ phần trăm của dung dịch thu được là",
+     "lua_chon": [
+      "0,12%",
+      "12%",
+      "13,64%",
+      "88%"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng dung dịch bằng khối lượng chất tan cộng khối lượng dung môi:\n$m_{\\mathrm{dd}} = m_{\\mathrm{ct}} + m_{\\mathrm{dm}} = 6 + 44 = 50 \\mathrm{~(g)}$\nNồng độ phần trăm của dung dịch:\n$\\mathrm{C\\%} = \\dfrac{m_{\\mathrm{ct}}}{m_{\\mathrm{dd}}} \\cdot 100\\% = \\dfrac{6}{50} \\cdot 100\\% = 12\\%$"
+    },
+    {
+     "ma_cau": "K08010102089",
+     "loai": "trac_nghiem",
+     "de": "Để ngâm rửa rau, một người hoà tan $18\\text{ g}$ muối ăn vào $282\\text{ g}$ nước. Nồng độ phần trăm của dung dịch thu được là",
+     "lua_chon": [
+      "$6\\%$",
+      "$6,38\\%$",
+      "$6,82\\%$",
+      "$94\\%$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng dung dịch bằng khối lượng chất tan cộng khối lượng dung môi:\n$m_{\\text{dd}} = m_{\\text{ct}} + m_{\\text{dm}} = 18 + 282 = 300\\text{ (g)}$\nNồng độ phần trăm của dung dịch:\n$\\mathrm{C\\%} = \\dfrac{m_{\\text{ct}}}{m_{\\text{dd}}} \\cdot 100\\% = \\dfrac{18}{300} \\cdot 100\\% = 6\\%$"
+    },
+    {
+     "ma_cau": "K08010102086",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan $30 \\mathrm{~g}$ $\\mathrm{CuSO_4}$ vào $170 \\mathrm{~g}$ nước. Nồng độ phần trăm của dung dịch thu được là",
+     "lua_chon": [
+      "15%",
+      "17,65%",
+      "21,43%",
+      "85%"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng dung dịch bằng khối lượng chất tan cộng khối lượng dung môi:\n$m_{\\mathrm{dd}} = m_{\\mathrm{ct}} + m_{\\mathrm{dm}} = 30 + 170 = 200 \\mathrm{~(g)}$\nNồng độ phần trăm của dung dịch:\n$\\mathrm{C\\%} = \\dfrac{m_{\\mathrm{ct}}}{m_{\\mathrm{dd}}} \\cdot 100\\% = \\dfrac{30}{200} \\cdot 100\\% = 15\\%$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00780",
+   "nhom_id": "KNB00364",
+   "thu_tu": 3,
+   "dang": "Tính mct khi biết C% và mdd",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010102094",
+     "loai": "trac_nghiem",
+     "de": "Khối lượng $\\mathrm{NaCl}$ có trong 500 g nước muối sinh lí 0,9% là",
+     "lua_chon": [
+      "4,5 g",
+      "4,54 g",
+      "450 g",
+      "495,5 g"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng $\\mathrm{NaCl}$ có trong dung dịch:\n$m_{ct} = \\dfrac{\\mathrm{C}\\% \\cdot \\mathrm{m}_{dd}}{100\\%} = \\dfrac{0,9 \\cdot 500}{100} = 4,5$ (g)"
+    },
+    {
+     "ma_cau": "K08010102092",
+     "loai": "trac_nghiem",
+     "de": "Khối lượng đường có trong 200 g nước đường 9% là",
+     "lua_chon": [
+      "18 g",
+      "19,78 g",
+      "182 g",
+      "1 800 g"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng đường có trong dung dịch:\n$m_{ct} = \\dfrac{\\mathrm{C}\\% \\cdot \\mathrm{m}_{dd}}{100\\%} = \\dfrac{9 \\cdot 200}{100} = 18$ (g)"
+    },
+    {
+     "ma_cau": "K08010102093",
+     "loai": "trac_nghiem",
+     "de": "Khối lượng $\\mathrm{CuSO_4}$ có trong 150 g dung dịch $\\mathrm{CuSO_4}$ 6% là",
+     "lua_chon": [
+      "0,9 g",
+      "9 g",
+      "9,57 g",
+      "141 g"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng $\\mathrm{CuSO_4}$ có trong dung dịch:\n$m_{ct} = \\dfrac{\\mathrm{C}\\% \\cdot \\mathrm{m}_{dd}}{100\\%} = \\dfrac{6 \\cdot 150}{100} = 9$ (g)"
+    },
+    {
+     "ma_cau": "K08010102096",
+     "loai": "trac_nghiem",
+     "de": "Giấm ăn là dung dịch acetic acid có nồng độ khoảng $5\\%$. Khối lượng acetic acid có trong $1,2 \\mathrm{\\;kg}$ giấm ăn là",
+     "lua_chon": [
+      "$0,06 \\mathrm{\\;g}$",
+      "$6 \\mathrm{\\;g}$",
+      "$60 \\mathrm{\\;g}$",
+      "$1\\;140 \\mathrm{\\;g}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi đơn vị:\n$\\mathrm{m_{dd}}=1,2 \\mathrm{\\;kg}=1\\;200 \\mathrm{\\;g}$\nKhối lượng acetic acid có trong dung dịch:\n$\\mathrm{m_{ct}}=\\dfrac{\\mathrm{C\\% \\cdot m_{dd}}}{100\\%}=\\dfrac{5 \\cdot 1\\;200}{100}=60 \\mathrm{\\;(g)}$"
+    },
+    {
+     "ma_cau": "K08010102098",
+     "loai": "trac_nghiem",
+     "de": "Nước oxy già dùng sát trùng là dung dịch hydrogen peroxide $\\mathrm{H_2O_2}$ $3\\%$. Khối lượng $\\mathrm{H_2O_2}$ có trong $120$ g nước oxy già là",
+     "lua_chon": [
+      "3,6 g",
+      "3,71 g",
+      "116,4 g",
+      "360 g"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng $\\mathrm{H_2O_2}$ có trong dung dịch:\n$\\mathrm{m_{ct} = \\dfrac{C\\% \\cdot m_{dd}}{100\\%} = \\dfrac{3 \\cdot 120}{100} = 3,6} \\ (\\mathrm{g})$"
+    },
+    {
+     "ma_cau": "K08010102097",
+     "loai": "trac_nghiem",
+     "de": "Để tưới cây, một người pha $300$ g dung dịch potassium nitrate $\\mathrm{KNO_3}$ $8\\%$. Khối lượng $\\mathrm{KNO_3}$ cần dùng là",
+     "lua_chon": [
+      "24 g",
+      "26,09 g",
+      "276 g",
+      "2 400 g"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng $\\mathrm{KNO_3}$ có trong dung dịch:\n$\\mathrm{m_{ct} = \\dfrac{C\\% \\cdot m_{dd}}{100\\%} = \\dfrac{8 \\cdot 300}{100} = 24} \\ (\\mathrm{g})$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00781",
+   "nhom_id": "KNB00364",
+   "thu_tu": 4,
+   "dang": "Tính mdd hoặc m dung môi",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010102105",
+     "loai": "trac_nghiem",
+     "de": "Cần hoà tan 50 g $\\mathrm{CuSO_4}$ vào bao nhiêu gam nước để thu được dung dịch $\\mathrm{CuSO_4}$ 16%?",
+     "lua_chon": [
+      "8 g",
+      "26,25 g",
+      "42 g",
+      "262,5 g"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khối lượng dung dịch cần pha:\n$\\mathrm{m_{dd}} = \\dfrac{\\mathrm{m_{ct}} \\cdot 100}{\\mathrm{C\\%}} = \\dfrac{50 \\cdot 100}{16} = 312,5 (\\mathrm{g})$\nKhối lượng nước cần dùng:\n$\\mathrm{m_{nước}} = \\mathrm{m_{dd}} - \\mathrm{m_{ct}} = 312,5 - 50 = 262,5 (\\mathrm{g})$"
+    },
+    {
+     "ma_cau": "K08010102100",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan 9 g $\\mathrm{CuSO_4}$ vào nước để được dung dịch $\\mathrm{CuSO_4}$ 5%. Khối lượng dung dịch thu được là",
+     "lua_chon": [
+      "0,45 g",
+      "171 g",
+      "180 g",
+      "189 g"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khối lượng dung dịch thu được:\n$$\\mathrm{m_{dd} = \\dfrac{m_{ct} \\cdot 100\\%}{C\\%} = \\dfrac{9 \\cdot 100}{5} = 180 (g)}$$"
+    },
+    {
+     "ma_cau": "K08010102104",
+     "loai": "trac_nghiem",
+     "de": "Để tưới cây, một người hoà tan 8 g $\\mathrm{KNO_3}$ vào nước để được dung dịch $\\mathrm{KNO_3}$ 2%. Khối lượng nước cần dùng là",
+     "lua_chon": [
+      "0,16 g",
+      "39,2 g",
+      "392 g",
+      "400 g"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khối lượng dung dịch cần pha:\n$\\mathrm{m_{dd}} = \\dfrac{\\mathrm{m_{ct}} \\cdot 100\\%}{\\mathrm{C\\%}} = \\dfrac{8 \\cdot 100}{2} = 400 (\\mathrm{g})$\nKhối lượng nước cần dùng:\n$\\mathrm{m_{nước}} = \\mathrm{m_{dd}} - \\mathrm{m_{ct}} = 400 - 8 = 392 (\\mathrm{g})$"
+    },
+    {
+     "ma_cau": "K08010102099",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan 12 g $\\mathrm{NaCl}$ vào nước để được dung dịch $\\mathrm{NaCl}$ 4%. Khối lượng dung dịch thu được là",
+     "lua_chon": [
+      "0,48 g",
+      "30 g",
+      "288 g",
+      "300 g"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khối lượng dung dịch thu được:\n$$\\mathrm{m_{dd} = \\dfrac{m_{ct} \\cdot 100\\%}{C\\%} = \\dfrac{12 \\cdot 100}{4} = 300 (g)}$$"
+    },
+    {
+     "ma_cau": "K08010102103",
+     "loai": "trac_nghiem",
+     "de": "Cần hoà tan $15 \\mathrm{\\ g\\ NaOH}$ vào bao nhiêu gam nước để thu được dung dịch $\\mathrm{NaOH\\ 10\\%}$?",
+     "lua_chon": [
+      "$1,5 \\mathrm{\\ g}$",
+      "$135 \\mathrm{\\ g}$",
+      "$150 \\mathrm{\\ g}$",
+      "$165 \\mathrm{\\ g}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng dung dịch cần pha:\n$$ \\mathrm{m_{dd}} = \\dfrac{\\mathrm{m_{ct}} \\cdot 100\\%}{\\mathrm{C\\%}} = \\dfrac{15 \\cdot 100}{10} = 150 \\ (\\mathrm{g}) $$Khối lượng nước cần dùng:\n$$ \\mathrm{m_{nước}} = \\mathrm{m_{dd}} - \\mathrm{m_{ct}} = 150 - 15 = 135 \\ (\\mathrm{g}) $$"
+    },
+    {
+     "ma_cau": "K08010102102",
+     "loai": "trac_nghiem",
+     "de": "Dùng $3,6 \\mathrm{\\ g\\ NaCl}$ để pha nước muối sinh lí $0,9\\%$. Khối lượng nước muối sinh lí pha được là",
+     "lua_chon": [
+      "$0,0324 \\mathrm{\\ g}$",
+      "$40 \\mathrm{\\ g}$",
+      "$396,4 \\mathrm{\\ g}$",
+      "$400 \\mathrm{\\ g}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khối lượng dung dịch thu được:\n$$ \\mathrm{m_{dd}} = \\dfrac{\\mathrm{m_{ct}} \\cdot 100\\%}{\\mathrm{C\\%}} = \\dfrac{3,6 \\cdot 100}{0,9} = 400 \\ (\\mathrm{g}) $$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00782",
+   "nhom_id": "KNB00364",
+   "thu_tu": 5,
+   "dang": "Tính C% khi biết số mol chất tan",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010102115",
+     "loai": "tra_loi_ngan",
+     "de": "Hoà tan $0.25 \\mathrm{\\ mol \\ CaCl_2}$ vào $222.25 \\mathrm{\\ g}$ nước. Cho khối lượng nguyên tử: $\\mathrm{Ca = 40; Cl = 35.5}$. Tính nồng độ phần trăm của dung dịch thu được (đơn vị $\\mathrm{\\%}$, làm tròn kết quả đến hàng phần mười).",
+     "dap_an": "11.1",
+     "loi_giai": "Khối lượng chất tan $\\mathrm{CaCl_2}$:\n$ \\mathrm{m_{ct} = n \\cdot M = 0.25 \\cdot 111 = 27.75 \\ (g)}$\nKhối lượng dung dịch:\n$ \\mathrm{m_{dd} = m_{ct} + m_{nước} = 27.75 + 222.25 = 250 \\ (g)}$\nNồng độ phần trăm của dung dịch:\n$ \\mathrm{C\\% = \\dfrac{m_{ct}}{m_{dd}} \\cdot 100\\% = \\dfrac{27.75}{250} \\cdot 100\\% = 11.1\\%}$"
+    },
+    {
+     "ma_cau": "K08010102113",
+     "loai": "tra_loi_ngan",
+     "de": "Hoà tan $0,2$ mol $\\mathrm{MgSO_4}$ vào $176$ g nước. Cho khối lượng nguyên tử: $\\mathrm{Mg} = 24$; $\\mathrm{S} = 32$; $\\mathrm{O} = 16$. Tính nồng độ phần trăm của dung dịch thu được (đơn vị %, làm tròn kết quả đến hàng phần mười).",
+     "dap_an": "12",
+     "loi_giai": "Khối lượng chất tan $\\mathrm{MgSO_4}$:\n$\\mathrm{m_{ct} = n \\cdot M = 0,2 \\cdot 120 = 24 (g)}$\nKhối lượng dung dịch:\n$\\mathrm{m_{dd} = m_{ct} + m_{nước} = 24 + 176 = 200 (g)}$\nNồng độ phần trăm của dung dịch:\n$\\mathrm{C\\% = \\dfrac{m_{ct}}{m_{dd}} \\cdot 100\\% = \\dfrac{24}{200} \\cdot 100\\% = 12\\%}$"
+    },
+    {
+     "ma_cau": "K08010102112",
+     "loai": "tra_loi_ngan",
+     "de": "Hoà tan $0,1$ mol $\\mathrm{Na_2SO_4}$ vào $127,8$ g nước. Cho khối lượng nguyên tử: $\\mathrm{Na} = 23$; $\\mathrm{S} = 32$; $\\mathrm{O} = 16$. Tính nồng độ phần trăm của dung dịch thu được (đơn vị %, làm tròn kết quả đến hàng phần mười).",
+     "dap_an": "10",
+     "loi_giai": "Khối lượng chất tan $\\mathrm{Na_2SO_4}$:\n$\\mathrm{m_{ct} = n \\cdot M = 0,1 \\cdot 142 = 14,2 (g)}$\nKhối lượng dung dịch:\n$\\mathrm{m_{dd} = m_{ct} + m_{nước} = 14,2 + 127,8 = 142 (g)}$\nNồng độ phần trăm của dung dịch:\n$\\mathrm{C\\% = \\dfrac{m_{ct}}{m_{dd}} \\cdot 100\\% = \\dfrac{14,2}{142} \\cdot 100\\% = 10\\%}$"
+    },
+    {
+     "ma_cau": "K08010102107",
+     "loai": "tra_loi_ngan",
+     "de": "Hòa tan $0,05$ mol $\\mathrm{CuSO_4}$ vào nước, thu được $160\\ \\mathrm{g}$ dung dịch. Cho khối lượng nguyên tử: $\\mathrm{Cu} = 64$; $\\mathrm{S} = 32$; $\\mathrm{O} = 16$. Tính nồng độ phần trăm của dung dịch thu được (đơn vị %, làm tròn kết quả đến hàng phần mười).",
+     "dap_an": "5",
+     "loi_giai": "Khối lượng chất tan $\\mathrm{CuSO_4}$:\n$\\mathrm{m_{ct} = n \\cdot M = 0,05 \\cdot 160 = 8\\ (g)}$\nNồng độ phần trăm của dung dịch:\n$\\mathrm{C\\% = \\dfrac{m_{ct}}{m_{dd}} \\cdot 100\\% = \\dfrac{8}{160} \\cdot 100\\% = 5\\%}$"
+    },
+    {
+     "ma_cau": "K08010102108",
+     "loai": "tra_loi_ngan",
+     "de": "Hòa tan $0,3$ mol $\\mathrm{KCl}$ vào nước, thu được $150\\ \\mathrm{g}$ dung dịch. Cho khối lượng nguyên tử: $\\mathrm{K} = 39$; $\\mathrm{Cl} = 35,5$. Tính nồng độ phần trăm của dung dịch thu được (đơn vị %, làm tròn kết quả đến hàng phần mười).",
+     "dap_an": "14.9",
+     "loi_giai": "Khối lượng chất tan $\\mathrm{KCl}$:\n$\\mathrm{m_{ct} = n \\cdot M = 0,3 \\cdot 74,5 = 22,35\\ (g)}$\nNồng độ phần trăm của dung dịch:\n$\\mathrm{C\\% = \\dfrac{m_{ct}}{m_{dd}} \\cdot 100\\% = \\dfrac{22,35}{150} \\cdot 100\\% = 14,9\\%}$"
+    },
+    {
+     "ma_cau": "K08010102106",
+     "loai": "tra_loi_ngan",
+     "de": "Hòa tan $0,1$ mol $\\mathrm{NaOH}$ vào nước, thu được $200\\ \\mathrm{g}$ dung dịch. Cho khối lượng nguyên tử: $\\mathrm{Na} = 23$; $\\mathrm{O} = 16$; $\\mathrm{H} = 1$. Tính nồng độ phần trăm của dung dịch thu được (đơn vị %, làm tròn kết quả đến hàng phần mười).",
+     "dap_an": "2",
+     "loi_giai": "Khối lượng chất tan $\\mathrm{NaOH}$:\n$\\mathrm{m_{ct} = n \\cdot M = 0,1 \\cdot 40 = 4\\ (g)}$\nNồng độ phần trăm của dung dịch:\n$\\mathrm{C\\% = \\dfrac{m_{ct}}{m_{dd}} \\cdot 100\\% = \\dfrac{4}{200} \\cdot 100\\% = 2\\%}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00783",
+   "nhom_id": "KNB00364",
+   "thu_tu": 6,
+   "dang": "TÍNH C% CỦA DUNG DỊCH BÃO HOÀ TỪ ĐỘ TAN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010102117",
+     "loai": "tra_loi_ngan",
+     "de": "Ở $20^\\circ\\mathrm{C}$, độ tan của potassium chloride $\\mathrm{KCl}$ trong nước là $34\\ \\mathrm{g}$. Tính nồng độ phần trăm của dung dịch $\\mathrm{KCl}$ bão hoà ở nhiệt độ này (đơn vị $%,$ làm tròn kết quả đến hàng phần mười).",
+     "dap_an": "25.4",
+     "loi_giai": "Ở $20^\\circ\\mathrm{C}$, cứ $100\\ \\mathrm{g}$ nước hoà tan tối đa $34\\ \\mathrm{g}\\ \\mathrm{KCl}$ tạo thành dung dịch bão hoà.\nKhối lượng dung dịch bão hoà:\n$\\mathrm{m_{dd} = 100 + 34 = 134\\ (g)}$\nNồng độ phần trăm của dung dịch bão hoà:\n$\\mathrm{C\\% = \\dfrac{34}{134} \\cdot 100\\% \\approx 25,4\\%}$"
+    },
+    {
+     "ma_cau": "K08010102118",
+     "loai": "tra_loi_ngan",
+     "de": "Ở $20^\\circ\\mathrm{C}$, độ tan của sodium nitrate $\\mathrm{NaNO_3}$ trong nước là $88\\ \\mathrm{g}$. Tính nồng độ phần trăm của dung dịch $\\mathrm{NaNO_3}$ bão hoà ở nhiệt độ này (đơn vị $%,$ làm tròn kết quả đến hàng phần mười).",
+     "dap_an": "46.8",
+     "loi_giai": "Ở $20^\\circ\\mathrm{C}$, cứ $100\\ \\mathrm{g}$ nước hoà tan tối đa $88\\ \\mathrm{g}\\ \\mathrm{NaNO_3}$ tạo thành dung dịch bão hoà.\nKhối lượng dung dịch bão hoà:\n$\\mathrm{m_{dd} = 100 + 88 = 188\\ (g)}$\nNồng độ phần trăm của dung dịch bão hoà:\n$\\mathrm{C\\% = \\dfrac{88}{188} \\cdot 100\\% \\approx 46,8\\%}$"
+    },
+    {
+     "ma_cau": "K08010102119",
+     "loai": "tra_loi_ngan",
+     "de": "Ở $60^{\\circ}\\mathrm{C}$, độ tan của potassium nitrate $\\mathrm{KNO_3}$ trong nước là $110$ g. Tính nồng độ phần trăm của dung dịch $\\mathrm{KNO_3}$ bão hoà ở nhiệt độ này (đơn vị %, làm tròn kết quả đến hàng phần mười).",
+     "dap_an": "52.4",
+     "loi_giai": "Ở $60^{\\circ}\\mathrm{C}$, cứ $100$ g nước hoà tan tối đa $110$ g $\\mathrm{KNO_3}$ tạo thành dung dịch bão hoà.\nKhối lượng dung dịch bão hoà:\n$\\mathrm{m_{dd} = 100 + 110 = 210 (g)}$\nNồng độ phần trăm của dung dịch bão hoà:\n$\\mathrm{C\\% = \\dfrac{110}{210} \\cdot 100\\% \\approx 52,4\\%}$"
+    },
+    {
+     "ma_cau": "K08010102121",
+     "loai": "tra_loi_ngan",
+     "de": "Ở $25^{\\circ}\\mathrm{C}$, độ tan của sodium chloride $\\mathrm{NaCl}$ trong nước là $36$ g. Ở nhiệt độ này, cho $8$ g $\\mathrm{NaCl}$ vào $40$ g nước, khuấy kĩ để chất rắn tan tối đa. Tính nồng độ phần trăm của dung dịch thu được (đơn vị %, làm tròn kết quả đến hàng phần mười).",
+     "dap_an": "16.7",
+     "loi_giai": "Khối lượng $\\mathrm{NaCl}$ tối đa tan được trong $40$ g nước ở $25^{\\circ}\\mathrm{C}$:\n$\\mathrm{m_{max}} = \\dfrac{\\mathrm{S} \\cdot \\mathrm{m_{nước}}}{100} = \\dfrac{36 \\cdot 40}{100} = 14.4$ (g)\nVì $8 < 14.4$ nên $8$ g $\\mathrm{NaCl}$ tan hết, dung dịch thu được chưa bão hoà.\nKhối lượng dung dịch:$\\mathrm{m_{dd}} = 8 + 40 = 48$ (g)\nNồng độ phần trăm của dung dịch:$\\mathrm{C\\%} = \\dfrac{\\mathrm{m_{ct}}}{\\mathrm{m_{dd}}} \\cdot 100\\% = \\dfrac{8}{48} \\cdot 100\\% \\approx 16.7\\%$"
+    },
+    {
+     "ma_cau": "K08010102124",
+     "loai": "tra_loi_ngan",
+     "de": "Ở $80^\\circ\\mathrm{C}$, độ tan của potassium chloride $\\mathrm{KCl}$ trong nước là $51,1$ g. Ở nhiệt độ này, cho $30$ g $\\mathrm{KCl}$ vào $50$ g nước, khuấy kĩ để chất rắn tan tối đa. Tính nồng độ phần trăm của dung dịch thu được (đơn vị %, làm tròn kết quả đến hàng phần mười).",
+     "dap_an": "33.8",
+     "loi_giai": "Khối lượng $\\mathrm{KCl}$ tối đa tan được trong $50$ g nước ở $80^\\circ\\mathrm{C}$:\n$$\\mathrm{m_{max}} = \\dfrac{\\mathrm{S} \\cdot \\mathrm{m_{nước}}}{100} = \\dfrac{51,1 \\cdot 50}{100} = 25,55 \\text{ (g)}$$\nVì $30 > 25,55$ nên chỉ có $25,55$ g $\\mathrm{KCl}$ tan, phần còn lại không tan. Dung dịch thu được là dung dịch bão hoà.\nKhối lượng dung dịch:\n$$\\mathrm{m_{dd}} = 25,55 + 50 = 75,55 \\text{ (g)}$$\nNồng độ phần trăm của dung dịch:\n$$\\mathrm{C\\%} = \\dfrac{\\mathrm{m_{ct}}}{\\mathrm{m_{dd}}} \\cdot 100\\% = \\dfrac{25,55}{75,55} \\cdot 100\\% \\approx 33,8\\%$$"
+    },
+    {
+     "ma_cau": "K08010102122",
+     "loai": "tra_loi_ngan",
+     "de": "Ở $25^{\\circ}\\mathrm{C}$, độ tan của copper(II) sulfate $\\mathrm{CuSO_4}$ trong nước là $22$ g. Ở nhiệt độ này, cho $15$ g $\\mathrm{CuSO_4}$ vào $50$ g nước, khuấy kĩ để chất rắn tan tối đa. Tính nồng độ phần trăm của dung dịch thu được (đơn vị %, làm tròn kết quả đến hàng phần mười).",
+     "dap_an": "18",
+     "loi_giai": "Khối lượng $\\mathrm{CuSO_4}$ tối đa tan được trong $50$ g nước ở $25^{\\circ}\\mathrm{C}$:\n$\\mathrm{m_{max}} = \\dfrac{\\mathrm{S} \\cdot \\mathrm{m_{nước}}}{100} = \\dfrac{22 \\cdot 50}{100} = 11$ (g)\nVì $15 > 11$ nên chỉ có $11$ g $\\mathrm{CuSO_4}$ tan, phần còn lại không tan. Dung dịch thu được là dung dịch bão hoà.\nKhối lượng dung dịch:$\\mathrm{m_{dd}} = 11 + 50 = 61$ (g)\nNồng độ phần trăm của dung dịch:$\\mathrm{C\\%} = \\dfrac{\\mathrm{m_{ct}}}{\\mathrm{m_{dd}}} \\cdot 100\\% = \\dfrac{11}{61} \\cdot 100\\% \\approx 18\\%$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00784",
+   "nhom_id": "KNB00365",
+   "thu_tu": 1,
+   "dang": "Tính CM khi biết n và V",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 12,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010103072",
+     "loai": "trac_nghiem",
+     "de": "Hòa tan $0.45$ mol $\\mathrm{NaCl}$ vào nước, thu được $1\\ 500\\ \\mathrm{mL}$ dung dịch. Nồng độ mol của dung dịch thu được là",
+     "lua_chon": [
+      "$0.0003\\ \\mathrm{M}$",
+      "$0.3\\ \\mathrm{M}$",
+      "$0.675\\ \\mathrm{M}$",
+      "$3.33\\ \\mathrm{M}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi đơn vị:\n$\\mathrm{V} = 1\\ 500\\ \\mathrm{mL} = 1.5\\ \\mathrm{L}$\nNồng độ mol của dung dịch:\n$\\mathrm{C_M} = \\dfrac{\\mathrm{n}}{\\mathrm{V}} = \\dfrac{0.45}{1.5} = 0.3\\ (\\mathrm{M})$"
+    },
+    {
+     "ma_cau": "K08010103070",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan $0.15\\ \\mathrm{mol}\\ \\mathrm{NaOH}$ vào nước, thu được $250\\ \\mathrm{mL}$ dung dịch. Nồng độ mol của dung dịch thu được là",
+     "lua_chon": [
+      "$0.0006\\ \\mathrm{M}$",
+      "$0.0375\\ \\mathrm{M}$",
+      "$0.6\\ \\mathrm{M}$",
+      "$1.67\\ \\mathrm{M}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi đơn vị:\n$V = 250\\ \\mathrm{mL} = 0.25\\ \\mathrm{L}$\nNồng độ mol của dung dịch:\n$\\mathrm{C_M} = \\dfrac{\\mathrm{n}}{\\mathrm{V}} = \\dfrac{0.15}{0.25} = 0.6\\ (\\mathrm{M})$"
+    },
+    {
+     "ma_cau": "K08010103066",
+     "loai": "trac_nghiem",
+     "de": "Một dung dịch $\\mathrm{HCl}$ có thể tích $1,5 \\mathrm{\\ L}$, chứa $0,3 \\mathrm{\\ mol\\ HCl}$. Nồng độ mol của dung dịch này là",
+     "lua_chon": [
+      "$0,0002 \\mathrm{\\ M}$",
+      "$0,2 \\mathrm{\\ M}$",
+      "$0,45 \\mathrm{\\ M}$",
+      "$5 \\mathrm{\\ M}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nồng độ mol của dung dịch:$\\mathrm{C_M} = \\dfrac{\\mathrm{n}}{\\mathrm{V}} = \\dfrac{0,3}{1,5} = 0,2 \\mathrm{\\ (M)}$"
+    },
+    {
+     "ma_cau": "K08010103069",
+     "loai": "trac_nghiem",
+     "de": "Một dung dịch $\\mathrm{H_2SO_4}$ có thể tích $3 \\mathrm{~L}$, chứa $1,2 \\mathrm{~mol}$ $\\mathrm{H_2SO_4}$. Nồng độ mol của dung dịch này là",
+     "lua_chon": [
+      "$0,4 \\mathrm{~M}$",
+      "$2,5 \\mathrm{~M}$",
+      "$3,6 \\mathrm{~M}$",
+      "$4 \\mathrm{~M}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nồng độ mol của dung dịch:$$ \\mathrm{C_M} = \\dfrac{\\mathrm{n}}{\\mathrm{V}} = \\dfrac{1,2}{3} = 0,4 \\text{ (M)} $$"
+    },
+    {
+     "ma_cau": "K08010103071",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan $0.03\\ \\mathrm{mol}\\ \\mathrm{KNO_3}$ vào nước, thu được $200\\ \\mathrm{mL}$ dung dịch. Nồng độ mol của dung dịch thu được là",
+     "lua_chon": [
+      "$0.00015\\ \\mathrm{M}$",
+      "$0.006\\ \\mathrm{M}$",
+      "$0.15\\ \\mathrm{M}$",
+      "$6.67\\ \\mathrm{M}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi đơn vị:\n$V = 200\\ \\mathrm{mL} = 0.2\\ \\mathrm{L}$\nNồng độ mol của dung dịch:\n$\\mathrm{C_M} = \\dfrac{\\mathrm{n}}{\\mathrm{V}} = \\dfrac{0.03}{0.2} = 0.15\\ (\\mathrm{M})$"
+    },
+    {
+     "ma_cau": "K08010103068",
+     "loai": "trac_nghiem",
+     "de": "Hòa tan $0,05 \\mathrm{~mol}$ $\\mathrm{CuSO_4}$ vào nước, thu được $0,5 \\mathrm{~L}$ dung dịch. Nồng độ mol của dung dịch thu được là",
+     "lua_chon": [
+      "$0,0001 \\mathrm{~M}$",
+      "$0,025 \\mathrm{~M}$",
+      "$0,1 \\mathrm{~M}$",
+      "$10 \\mathrm{~M}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nồng độ mol của dung dịch:$$ \\mathrm{C_M} = \\dfrac{\\mathrm{n}}{\\mathrm{V}} = \\dfrac{0,05}{0,5} = 0,1 \\text{ (M)} $$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00785",
+   "nhom_id": "KNB00365",
+   "thu_tu": 2,
+   "dang": "Tính CM khi biết M và V",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010103076",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan 9,8 g $\\mathrm{H_2SO_4}$ vào nước, thu được 500 mL dung dịch. Cho khối lượng nguyên tử: $\\mathrm{H} = 1$; $\\mathrm{S} = 32$; $\\mathrm{O} = 16$. Nồng độ mol của dung dịch thu được là",
+     "lua_chon": [
+      "0.0002 M",
+      "0.1 M",
+      "0.2 M",
+      "19.6 M"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Số mol $\\mathrm{H_2SO_4}$:$$n = \\dfrac{m}{M} = \\dfrac{9.8}{98} = 0.1 \\text{ (mol)}$$Đổi đơn vị:$$V = 500 \\text{ mL} = 0.5 \\text{ L}$$Nồng độ mol của dung dịch:$$C_M = \\dfrac{n}{V} = \\dfrac{0.1}{0.5} = 0.2 \\text{ (M)}$$"
+    },
+    {
+     "ma_cau": "K08010103079",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan $2.22\\ \\mathrm{g}\\ \\mathrm{CaCl_2}$ vào nước, thu được $50\\ \\mathrm{mL}$ dung dịch. Cho khối lượng nguyên tử: $\\mathrm{Ca}=40$; $\\mathrm{Cl}=35.5$. Nồng độ mol của dung dịch thu được là",
+     "lua_chon": [
+      "$0.0004\\ \\mathrm{M}$",
+      "$0.02\\ \\mathrm{M}$",
+      "$0.4\\ \\mathrm{M}$",
+      "$44.4\\ \\mathrm{M}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Số mol $\\mathrm{CaCl_2}$:\n$\\mathrm{n}=\\dfrac{\\mathrm{m}}{\\mathrm{M}}=\\dfrac{2.22}{111}=0.02\\ (\\mathrm{mol})$\nĐổi đơn vị:\n$\\mathrm{V}=50\\ \\mathrm{mL}=0.05\\ \\mathrm{L}$\nNồng độ mol của dung dịch:\n$\\mathrm{C_M}=\\dfrac{\\mathrm{n}}{\\mathrm{V}}=\\dfrac{0.02}{0.05}=0.4\\ (\\mathrm{M})$"
+    },
+    {
+     "ma_cau": "K08010103074",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan $16 \\mathrm{\\ g}$ $\\mathrm{CuSO_4}$ vào nước, thu được $400 \\mathrm{\\ mL}$ dung dịch. Cho khối lượng nguyên tử: $\\mathrm{Cu} = 64; \\mathrm{S} = 32; \\mathrm{O} = 16$. Nồng độ mol của dung dịch thu được là",
+     "lua_chon": [
+      "$0,00025 \\ \\mathrm{M}$",
+      "$\\mathrm{0,1 \\ M}$",
+      "$\\mathrm{0,25 \\ M}$",
+      "$\\mathrm{40 \\ M}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Số mol $\\mathrm{CuSO_4}$:\n$$\\mathrm{n = \\dfrac{m}{M} = \\dfrac{16}{160} = 0,1 \\ (mol)}$$\nĐổi đơn vị:\n$$\\mathrm{V = 400 \\ mL = 0,4 \\ L}$$\nNồng độ mol của dung dịch:\n$$\\mathrm{C_M = \\dfrac{n}{V} = \\dfrac{0,1}{0,4} = 0,25 \\ (M)}$$"
+    },
+    {
+     "ma_cau": "K08010103075",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan 7,45 g $\\mathrm{KCl}$ vào nước, thu được 100 mL dung dịch. Cho khối lượng nguyên tử: $\\mathrm{K} = 39$; $\\mathrm{Cl} = 35.5$. Nồng độ mol của dung dịch thu được là",
+     "lua_chon": [
+      "0.001 M",
+      "0.01 M",
+      "0.1 M",
+      "1 M"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Số mol $\\mathrm{KCl}$:$$n = \\dfrac{m}{M} = \\dfrac{7.45}{74.5} = 0.1 \\text{ (mol)}$$Đổi đơn vị:$$V = 100 \\text{ mL} = 0.1 \\text{ L}$$Nồng độ mol của dung dịch:$$C_M = \\dfrac{n}{V} = \\dfrac{0.1}{0.1} = 1 \\text{ (M)}$$"
+    },
+    {
+     "ma_cau": "K08010103078",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan $20,2 \\mathrm{~g}$ $\\mathrm{KNO_3}$ vào nước, thu được $1 \\mathrm{~L}$ dung dịch. Cho khối lượng nguyên tử: $\\mathrm{K} = 39; \\mathrm{N} = 14; \\mathrm{O} = 16$. Nồng độ mol của dung dịch thu được là",
+     "lua_chon": [
+      "$0,0002 \\mathrm{~M}$",
+      "$0,2 \\mathrm{~M}$",
+      "$2 \\mathrm{~M}$",
+      "$20,2 \\mathrm{~M}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Số mol $\\mathrm{KNO_3}$:\n$n = \\dfrac{m}{M} = \\dfrac{20,2}{101} = 0,2 \\; (\\mathrm{mol})$\nNồng độ mol của dung dịch:\n$\\mathrm{C_M} = \\dfrac{n}{V} = \\dfrac{0,2}{1} = 0,2 \\; (\\mathrm{M})$"
+    },
+    {
+     "ma_cau": "K08010103073",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan $8 \\mathrm{\\ g}$ $\\mathrm{NaOH}$ vào nước, thu được $500 \\mathrm{\\ mL}$ dung dịch. Cho khối lượng nguyên tử: $\\mathrm{Na} = 23; \\mathrm{O} = 16; \\mathrm{H} = 1$. Nồng độ mol của dung dịch thu được là",
+     "lua_chon": [
+      "$0,0004 \\ \\mathrm{M}$",
+      "$\\mathrm{0,2 \\ M}$",
+      "$\\mathrm{0,4 \\ M}$",
+      "$\\mathrm{16 \\ M}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Số mol $\\mathrm{NaOH}$:\n$$\\mathrm{n = \\dfrac{m}{M} = \\dfrac{8}{40} = 0,2 \\ (mol)}$$\nĐổi đơn vị:\n$$\\mathrm{V = 500 \\ mL = 0,5 \\ L}$$\nNồng độ mol của dung dịch:\n$$\\mathrm{C_M = \\dfrac{n}{V} = \\dfrac{0,2}{0,5} = 0,4 \\ (M)}$$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00786",
+   "nhom_id": "KNB00365",
+   "thu_tu": 3,
+   "dang": "Tính n hoặc M chất tan từ CM và V",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010103082",
+     "loai": "trac_nghiem",
+     "de": "Số mol $\\mathrm{H_2SO_4}$ có trong $1.5\\ \\mathrm{L}$ dung dịch $\\mathrm{H_2SO_4}$ $0.2\\ \\mathrm{M}$ là",
+     "lua_chon": [
+      "0.3 mol",
+      "3 mol",
+      "7.5 mol",
+      "300 mol"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Số mol $\\mathrm{H_2SO_4}$:\n$n = \\mathrm{C_M} \\cdot V = 0.2 \\cdot 1.5 = 0.3\\ (\\mathrm{mol})$"
+    },
+    {
+     "ma_cau": "K08010103085",
+     "loai": "trac_nghiem",
+     "de": "Một dung dịch $\\mathrm{NaCl}$ 0,5 M có thể tích 300 mL. Cho khối lượng nguyên tử: $\\mathrm{Na}$ = 23; $\\mathrm{Cl}$ = 35,5. Khối lượng $\\mathrm{NaCl}$ có trong dung dịch là",
+     "lua_chon": [
+      "8,775 g",
+      "29,25 g",
+      "97,5 g",
+      "8 775 g"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi đơn vị:\n$\\mathrm{V = 300\\,mL = 0,3\\,L}$\nSố mol $\\mathrm{NaCl}$:\n$\\mathrm{n = C_M \\cdot V = 0,5 \\cdot 0,3 = 0,15\\,(mol)}$\nKhối lượng $\\mathrm{NaCl}$:\n$\\mathrm{m = n \\cdot M = 0,15 \\cdot 58,5 = 8,775\\,(g)}$"
+    },
+    {
+     "ma_cau": "K08010103083",
+     "loai": "trac_nghiem",
+     "de": "Số mol $\\mathrm{NaCl}$ có trong $50\\ \\mathrm{mL}$ dung dịch $\\mathrm{NaCl}$ $0.8\\ \\mathrm{M}$ là",
+     "lua_chon": [
+      "0.004 mol",
+      "0.04 mol",
+      "16 mol",
+      "40 mol"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi đơn vị:\n$V = 50\\ \\mathrm{mL} = 0.05\\ \\mathrm{L}$\nSố mol $\\mathrm{NaCl}$:\n$n = \\mathrm{C_M} \\cdot V = 0.8 \\cdot 0.05 = 0.04\\ (\\mathrm{mol})$"
+    },
+    {
+     "ma_cau": "K08010103086",
+     "loai": "trac_nghiem",
+     "de": "Một dung dịch $\\mathrm{Na_2CO_3}$ 0,2 M có thể tích 150 mL. Cho khối lượng nguyên tử: $\\mathrm{Na = 23}$; $\\mathrm{C = 12}$; $\\mathrm{O = 16}$. Khối lượng $\\mathrm{Na_2CO_3}$ có trong dung dịch là",
+     "lua_chon": [
+      "3,18 g",
+      "21,2 g",
+      "141,33 g",
+      "3 180 g"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi đơn vị:\n$\\mathrm{V = 150 \\ mL = 0,15 \\ L}$\nSố mol $\\mathrm{Na_2CO_3}$:\n$\\mathrm{n = C_M \\cdot V = 0,2 \\cdot 0,15 = 0,03}$ (mol)\nKhối lượng $\\mathrm{Na_2CO_3}$:\n$\\mathrm{m = n \\cdot M = 0,03 \\cdot 106 = 3,18}$ (g)"
+    },
+    {
+     "ma_cau": "K08010103081",
+     "loai": "trac_nghiem",
+     "de": "Số mol $\\mathrm{HCl}$ có trong $200\\ \\mathrm{mL}$ dung dịch $\\mathrm{HCl}$ $0.5\\ \\mathrm{M}$ là",
+     "lua_chon": [
+      "0.1 mol",
+      "0.4 mol",
+      "2.5 mol",
+      "100 mol"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi đơn vị:\n$V = 200\\ \\mathrm{mL} = 0.2\\ \\mathrm{L}$\nSố mol $\\mathrm{HCl}$:\n$n = \\mathrm{C_M} \\cdot V = 0.5 \\cdot 0.2 = 0.1\\ (\\mathrm{mol})$"
+    },
+    {
+     "ma_cau": "K08010103084",
+     "loai": "trac_nghiem",
+     "de": "Một dung dịch $\\mathrm{CuSO_4}$ 0,1 M có thể tích 500 mL. Cho khối lượng nguyên tử: $\\mathrm{Cu}$ = 64; $\\mathrm{S}$ = 32; $\\mathrm{O}$ = 16. Khối lượng $\\mathrm{CuSO_4}$ có trong dung dịch là",
+     "lua_chon": [
+      "8 g",
+      "16 g",
+      "32 g",
+      "8 000 g"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi đơn vị:\n$\\mathrm{V = 500\\,mL = 0,5\\,L}$\nSố mol $\\mathrm{CuSO_4}$:\n$\\mathrm{n = C_M \\cdot V = 0,1 \\cdot 0,5 = 0,05\\,(mol)}$\nKhối lượng $\\mathrm{CuSO_4}$:\n$\\mathrm{m = n \\cdot M = 0,05 \\cdot 160 = 8\\,(g)}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00787",
+   "nhom_id": "KNB00365",
+   "thu_tu": 4,
+   "dang": "Tính V dung dịch từ CM và n",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010103090",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan $1.5\\ \\mathrm{mol}$ $\\mathrm{NaOH}$ vào nước để được dung dịch $\\mathrm{NaOH}$ $2\\ \\mathrm{M}$. Thể tích dung dịch thu được là",
+     "lua_chon": [
+      "$0.75\\ \\mathrm{L}$",
+      "$1.33\\ \\mathrm{L}$",
+      "$3\\ \\mathrm{L}$",
+      "$750\\ \\mathrm{L}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thể tích dung dịch:\n$V = \\dfrac{n}{\\mathrm{C_M}} = \\dfrac{1.5}{2} = 0.75\\ \\mathrm{(L)}$"
+    },
+    {
+     "ma_cau": "K08010103091",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan $0.05\\ \\mathrm{mol}$ $\\mathrm{KCl}$ vào nước để được dung dịch $\\mathrm{KCl}$ $0.2\\ \\mathrm{M}$. Thể tích dung dịch thu được (tính theo $\\mathrm{mL}$) là",
+     "lua_chon": [
+      "$0.01\\ \\mathrm{mL}$",
+      "$0.25\\ \\mathrm{mL}$",
+      "$10\\ \\mathrm{mL}$",
+      "$250\\ \\mathrm{mL}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thể tích dung dịch:\n$V = \\dfrac{n}{\\mathrm{C_M}} = \\dfrac{0.05}{0.2} = 0.25\\ \\mathrm{(L)}$\nĐổi đơn vị:\n$V = 0.25\\ \\mathrm{L} = 250\\ \\mathrm{mL}$"
+    },
+    {
+     "ma_cau": "K08010103092",
+     "loai": "trac_nghiem",
+     "de": "Hoà tan $0,02$ mol $\\mathrm{NaOH}$ vào nước để được dung dịch $\\mathrm{NaOH}$ $0,1$ M. Thể tích dung dịch thu được (tính theo mL) là",
+     "lua_chon": [
+      "$0,002\\ \\mathrm{mL}$",
+      "$0,2\\ \\mathrm{mL}$",
+      "$2\\ \\mathrm{mL}$",
+      "$200\\ \\mathrm{mL}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thể tích dung dịch:\n$V = \\dfrac{\\mathrm{n}}{\\mathrm{C_M}} = \\dfrac{0,02}{0,1} = 0,2$ (L)\nĐổi đơn vị:\n$V = 0,2\\ \\mathrm{L} = 200\\ \\mathrm{mL}$"
+    },
+    {
+     "ma_cau": "K08010103088",
+     "loai": "trac_nghiem",
+     "de": "Hòa tan $0.25 \\mathrm{\\ mol\\ KCl}$ vào nước để được dung dịch $\\mathrm{KCl}$ $0.5 \\mathrm{\\ M}$. Thể tích dung dịch thu được là",
+     "lua_chon": [
+      "$0.125 \\mathrm{\\ L}$",
+      "$0.5 \\mathrm{\\ L}$",
+      "$2 \\mathrm{\\ L}$",
+      "$500 \\mathrm{\\ L}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thể tích dung dịch:\n$$\\mathrm{V}=\\dfrac{\\mathrm{n}}{\\mathrm{C_M}}=\\dfrac{0.25}{0.5}=0.5 \\mathrm{\\ (L)}$$"
+    },
+    {
+     "ma_cau": "K08010103087",
+     "loai": "trac_nghiem",
+     "de": "Hòa tan $0.6 \\mathrm{\\ mol\\ NaCl}$ vào nước để được dung dịch $\\mathrm{NaCl}$ $0.3 \\mathrm{\\ M}$. Thể tích dung dịch thu được là",
+     "lua_chon": [
+      "$0.18 \\mathrm{\\ L}$",
+      "$0.2 \\mathrm{\\ L}$",
+      "$0.5 \\mathrm{\\ L}$",
+      "$2 \\mathrm{\\ L}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thể tích dung dịch:\n$$\\mathrm{V}=\\dfrac{\\mathrm{n}}{\\mathrm{C_M}}=\\dfrac{0.6}{0.3}=2 \\mathrm{\\ (L)}$$"
+    },
+    {
+     "ma_cau": "K08010103089",
+     "loai": "trac_nghiem",
+     "de": "Hòa tan $0.08 \\mathrm{\\ mol\\ CuSO_4}$ vào nước để được dung dịch $\\mathrm{CuSO_4}$ $0.2 \\mathrm{\\ M}$. Thể tích dung dịch thu được là",
+     "lua_chon": [
+      "$0.016 \\mathrm{\\ L}$",
+      "$0.4 \\mathrm{\\ L}$",
+      "$2.5 \\mathrm{\\ L}$",
+      "$400 \\mathrm{\\ L}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thể tích dung dịch:\n$$\\mathrm{V}=\\dfrac{\\mathrm{n}}{\\mathrm{C_M}}=\\dfrac{0.08}{0.2}=0.4 \\mathrm{\\ (L)}$$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00788",
+   "nhom_id": "KNB00365",
+   "thu_tu": 5,
+   "dang": "Tính CM khi hòa tan chất khí vào nước",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010103097",
+     "loai": "tra_loi_ngan",
+     "de": "Hấp thụ hoàn toàn $24.79$ L khí ammonia $\\mathrm{NH_3}$ (đo ở điều kiện chuẩn) vào nước, thu được $2.5$ L dung dịch. Biết ở điều kiện chuẩn ($25^\\circ\\mathrm{C}$, $1$ bar), thể tích mol khí là $24.79\\ \\mathrm{L/mol}$. Tính nồng độ mol của dung dịch thu được (đơn vị $\\mathrm{M}$, làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "0.4",
+     "loi_giai": "Số mol khí $\\mathrm{NH_3}$:\n$\\mathrm{n = \\dfrac{V}{24,79} = \\dfrac{24,79}{24,79} = 1\\ (mol)}$\nNồng độ mol của dung dịch:\n$\\mathrm{C_M = \\dfrac{n}{V} = \\dfrac{1}{2,5} = 0,4\\ (M)}$"
+    },
+    {
+     "ma_cau": "K08010103102",
+     "loai": "tra_loi_ngan",
+     "de": "Hấp thụ hoàn toàn $9.916$ L khí ammonia $\\mathrm{NH_3}$ (đo ở điều kiện chuẩn) vào nước, thu được $800$ mL dung dịch. Biết ở điều kiện chuẩn ($25^\\circ\\mathrm{C}$, $1$ bar), thể tích mol khí là $24.79$ L/mol. Tính nồng độ mol của dung dịch thu được (đơn vị M, làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "0.5",
+     "loi_giai": "Số mol khí $\\mathrm{NH_3}$:\n$$n = \\dfrac{V}{24.79} = \\dfrac{9.916}{24.79} = 0.4 \\text{ (mol)}$$\nĐổi đơn vị:\n$$V = 800 \\text{ mL} = 0.8 \\text{ L}$$\nNồng độ mol của dung dịch:\n$$C_M = \\dfrac{n}{V} = \\dfrac{0.4}{0.8} = 0.5 \\text{ (M)}$$"
+    },
+    {
+     "ma_cau": "K08010103094",
+     "loai": "tra_loi_ngan",
+     "de": "Hấp thụ hoàn toàn 4,958 L khí hydrogen chloride $\\mathrm{HCl}$ (đo ở điều kiện chuẩn) vào nước, thu được 2 L dung dịch. Biết ở điều kiện chuẩn ($25^\\circ\\mathrm{C}$, 1 bar), thể tích mol khí là $24,79\\ \\mathrm{L/mol}$. Tính nồng độ mol của dung dịch thu được (đơn vị $\\mathrm{M}$, làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "0.1",
+     "loi_giai": "Số mol khí $\\mathrm{HCl}$:\n$\\mathrm{n = \\dfrac{V}{24,79} = \\dfrac{4,958}{24,79} = 0,2\\ (mol)}$\nNồng độ mol của dung dịch:\n$\\mathrm{C_M = \\dfrac{n}{V} = \\dfrac{0,2}{2} = 0,1\\ (M)}$"
+    },
+    {
+     "ma_cau": "K08010103099",
+     "loai": "tra_loi_ngan",
+     "de": "Hấp thụ hoàn toàn $3.7185\\ \\mathrm{L}$ khí ammonia $\\mathrm{NH_3}$ (đo ở điều kiện chuẩn) vào nước, thu được $300\\ \\mathrm{mL}$ dung dịch. Biết ở điều kiện chuẩn ($25^\\circ\\mathrm{C}$, $1\\ \\mathrm{bar}$), thể tích mol khí là $24.79\\ \\mathrm{L/mol}$. Tính nồng độ mol của dung dịch thu được (đơn vị $\\mathrm{M}$, làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "0.5",
+     "loi_giai": "Số mol khí $\\mathrm{NH_3}:$\\mathrm{n = \\dfrac{V}{24.79} = \\dfrac{3.7185}{24.79} = 0.15\\ (mol)}\\Đổi đơn vị:\\mathrm{V = 300\\ mL = 0.3\\ L}\\Nồng độ mol của dung dịch:\\mathrm{C_M = \\dfrac{n}{V} = \\dfrac{0.15}{0.3} = 0.5\\ (M)}"
+    },
+    {
+     "ma_cau": "K08010103101",
+     "loai": "tra_loi_ngan",
+     "de": "Hấp thụ hoàn toàn $0.4958$ L khí hydrogen chloride $\\mathrm{HCl}$ (đo ở điều kiện chuẩn) vào nước, thu được $50$ mL dung dịch. Biết ở điều kiện chuẩn ($25^\\circ\\mathrm{C}$, $1$ bar), thể tích mol khí là $24.79$ L/mol. Tính nồng độ mol của dung dịch thu được (đơn vị M, làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "0.4",
+     "loi_giai": "Số mol khí $\\mathrm{HCl}$:\n$$n = \\dfrac{V}{24.79} = \\dfrac{0.4958}{24.79} = 0.02 \\text{ (mol)}$$\nĐổi đơn vị:\n$$V = 50 \\text{ mL} = 0.05 \\text{ L}$$\nNồng độ mol của dung dịch:\n$$C_M = \\dfrac{n}{V} = \\dfrac{0.02}{0.05} = 0.4 \\text{ (M)}$$"
+    },
+    {
+     "ma_cau": "K08010103103",
+     "loai": "tra_loi_ngan",
+     "de": "Hấp thụ hoàn toàn $4,958 \\mathrm{\\ L}$ khí ammonia $\\mathrm{NH_3}$ (đo ở điều kiện chuẩn) vào nước, thu được $125 \\mathrm{\\ mL}$ dung dịch. Biết ở điều kiện chuẩn ($25^\\circ\\mathrm{C}$, $1 \\mathrm{\\ bar}$), thể tích mol khí là $24,79 \\mathrm{\\ L/mol}$. Tính nồng độ mol của dung dịch thu được (đơn vị $\\mathrm{M}$, làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "1.6",
+     "loi_giai": "Số mol khí $\\mathrm{NH_3}:$$\\mathrm{n=\\dfrac{V}{24,79}=\\dfrac{4,958}{24,79}=0,2\\ (mol)}$\nĐổi đơn vị:\n$\\mathrm{V=125\\ mL=0,125\\ L}$\nNồng độ mol của dung dịch:\n$\\mathrm{C_M=\\dfrac{n}{V}=\\dfrac{0,2}{0,125}=1,6\\ (M)}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00789",
+   "nhom_id": "KNB00365",
+   "thu_tu": 6,
+   "dang": "Tính CM khi hòa tan tinh thể ngậm nước",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010103112",
+     "loai": "tra_loi_ngan",
+     "de": "Hoà tan hoàn toàn 37,5 g tinh thể $\\mathrm{CuSO_4 \\cdot 5H_2O}$ vào nước, thu được 600 mL dung dịch $\\mathrm{CuSO_4}$. Cho khối lượng nguyên tử: $\\mathrm{Cu = 64}$; $\\mathrm{S = 32}$; $\\mathrm{O = 16}$; $\\mathrm{H = 1}$. Tính nồng độ mol của dung dịch $\\mathrm{CuSO_4}$ thu được (đơn vị $\\mathrm{M}$, làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "0.25",
+     "loi_giai": "Khối lượng mol của tinh thể $\\mathrm{CuSO_4 \\cdot 5H_2O}$:\n$\\mathrm{M = 64 + 32 + 4 \\cdot 16 + 5 \\cdot 18 = 250}$ (g/mol)\nSố mol tinh thể:\n$\\mathrm{n_{tt} = \\dfrac{m}{M} = \\dfrac{37,5}{250} = 0,15}$ (mol)\nMỗi phân tử tinh thể khi tan cho một phân tử $\\mathrm{CuSO_4}$, nên số mol chất tan bằng số mol tinh thể:\n$\\mathrm{n_{CuSO_4} = 0,15}$ (mol)\nĐổi đơn vị:\n$\\mathrm{V = 600 \\:mL = 0,6 \\:L}$\nNồng độ mol của dung dịch:\n$\\mathrm{C_M = \\dfrac{n}{V} = \\dfrac{0,15}{0,6} = 0,25}$ (M)"
+    },
+    {
+     "ma_cau": "K08010103111",
+     "loai": "tra_loi_ngan",
+     "de": "Hoà tan hoàn toàn $7,38\\ \\mathrm{g}$ tinh thể $\\mathrm{MgSO_4\\cdot 7H_2O}$ vào nước, thu được $150\\ \\mathrm{mL}$ dung dịch $\\mathrm{MgSO_4}$. Cho khối lượng nguyên tử: $\\mathrm{Mg} = 24$; $\\mathrm{S} = 32$; $\\mathrm{O} = 16$; $\\mathrm{H} = 1$. Tính nồng độ mol của dung dịch $\\mathrm{MgSO_4}$ thu được (đơn vị $\\mathrm{M}$, làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "0.2",
+     "loi_giai": "Khối lượng mol của tinh thể $\\mathrm{MgSO_4\\cdot 7H_2O}$:\n$\\mathrm{M} = 24 + 32 + 4\\cdot 16 + 7\\cdot 18 = 246\\ (\\mathrm{g/mol})$\nSố mol tinh thể:\n$\\mathrm{n_{tt}} = \\dfrac{\\mathrm{m}}{\\mathrm{M}} = \\dfrac{7,38}{246} = 0,03\\ (\\mathrm{mol})$\nMỗi phân tử tinh thể khi tan cho một phân tử $\\mathrm{MgSO_4}$, nên số mol chất tan bằng số mol tinh thể:\n$\\mathrm{n_{MgSO_4}} = 0,03\\ (\\mathrm{mol})$\nĐổi đơn vị:\n$\\mathrm{V} = 150\\ \\mathrm{mL} = 0,15\\ \\mathrm{L}$\nNồng độ mol của dung dịch:\n$\\mathrm{C_M} = \\dfrac{\\mathrm{n}}{\\mathrm{V}} = \\dfrac{0,03}{0,15} = 0,2\\ (\\mathrm{M})$"
+    },
+    {
+     "ma_cau": "K08010103106",
+     "loai": "tra_loi_ngan",
+     "de": "Hoà tan hoàn toàn 27,8 g tinh thể $\\mathrm{FeSO_4 \\cdot 7H_2O}$ vào nước, thu được 0,2 L dung dịch $\\mathrm{FeSO_4}$. Cho khối lượng nguyên tử: $\\mathrm{Fe = 56; S = 32; O = 16; H = 1}$. Tính nồng độ mol của dung dịch $\\mathrm{FeSO_4}$ thu được (đơn vị M, làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "0.5",
+     "loi_giai": "Khối lượng mol của tinh thể $\\mathrm{FeSO_4 \\cdot 7H_2O}$:\n$\\mathrm{M = 56 + 32 + 4 \\cdot 16 + 7 \\cdot 18 = 278}$ (g/mol)\nSố mol tinh thể:\n$\\mathrm{n_{tt} = \\dfrac{m}{M} = \\dfrac{27,8}{278} = 0,1}$ (mol)\nMỗi phân tử tinh thể khi tan cho một phân tử $\\mathrm{FeSO_4}$, nên số mol chất tan bằng số mol tinh thể:\n$\\mathrm{n_{FeSO_4} = 0,1}$ (mol)\nNồng độ mol của dung dịch:\n$\\mathrm{C_M = \\dfrac{n}{V} = \\dfrac{0,1}{0,2} = 0,5}$ (M)"
+    },
+    {
+     "ma_cau": "K08010103113",
+     "loai": "tra_loi_ngan",
+     "de": "Hòa tan hoàn toàn 2,87 g tinh thể $\\mathrm{ZnSO_4} \\cdot \\mathrm{7H_2O}$ vào nước, thu được 25 mL dung dịch $\\mathrm{ZnSO_4}$. Cho khối lượng nguyên tử: $\\mathrm{Zn} = 65$; $\\mathrm{S} = 32$; $\\mathrm{O} = 16$; $\\mathrm{H} = 1$. Tính nồng độ mol của dung dịch $\\mathrm{ZnSO_4}$ thu được (đơn vị M, làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "0.4",
+     "loi_giai": "Khối lượng mol của tinh thể $\\mathrm{ZnSO_4} \\cdot \\mathrm{7H_2O}$:\n$\\mathrm{M} = 65 + 32 + 4 \\cdot 16 + 7 \\cdot 18 = 287$ (g/mol)\nSố mol tinh thể:\n$\\mathrm{n_{tt}} = \\dfrac{\\mathrm{m}}{\\mathrm{M}} = \\dfrac{2,87}{287} = 0,01$ (mol)\nMỗi phân tử tinh thể khi tan cho một phân tử $\\mathrm{ZnSO_4}$, nên số mol chất tan bằng số mol tinh thể:\n$\\mathrm{n_{ZnSO_4}} = 0,01$ (mol)\nĐổi đơn vị:\n$\\mathrm{V} = 25\\ \\mathrm{mL} = 0,025\\ \\mathrm{L}$\nNồng độ mol của dung dịch:\n$\\mathrm{C_M} = \\dfrac{\\mathrm{n}}{\\mathrm{V}} = \\dfrac{0,01}{0,025} = 0,4\\ (\\mathrm{M})$"
+    },
+    {
+     "ma_cau": "K08010103110",
+     "loai": "tra_loi_ngan",
+     "de": "Hòa tan hoàn toàn 5,56 g tinh thể $\\mathrm{FeSO_4 \\cdot 7H_2O}$ vào nước, thu được 50 mL dung dịch $\\mathrm{FeSO_4}$. Cho khối lượng nguyên tử: $\\mathrm{Fe} = 56$; $\\mathrm{S} = 32$; $\\mathrm{O} = 16$; $\\mathrm{H} = 1$. Tính nồng độ mol của dung dịch $\\mathrm{FeSO_4}$ thu được (đơn vị $\\mathrm{M}$, làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "0.4",
+     "loi_giai": "Khối lượng mol của tinh thể $\\mathrm{FeSO_4 \\cdot 7H_2O}$:\n$\\mathrm{M} = 56 + 32 + 4 \\cdot 16 + 7 \\cdot 18 = 278$ (g/mol)\nSố mol tinh thể:\n$\\mathrm{n_{tt}} = \\dfrac{\\mathrm{m}}{\\mathrm{M}} = \\dfrac{5,56}{278} = 0,02$ (mol)\nMỗi phân tử tinh thể khi tan cho một phân tử $\\mathrm{FeSO_4}$, nên số mol chất tan bằng số mol tinh thể:\n$\\mathrm{n_{FeSO_4}} = 0,02$ (mol)\nĐổi đơn vị:\n$\\mathrm{V} = 50\\ \\mathrm{mL} = 0,05\\ \\mathrm{L}$\nNồng độ mol của dung dịch:\n$\\mathrm{C_M} = \\dfrac{\\mathrm{n}}{\\mathrm{V}} = \\dfrac{0,02}{0,05} = 0,4$ (M)"
+    },
+    {
+     "ma_cau": "K08010103109",
+     "loai": "tra_loi_ngan",
+     "de": "Hoà tan hoàn toàn $14,3 \\mathrm{\\ g}$ tinh thể $\\mathrm{Na_2CO_3} \\cdot \\mathrm{10H_2O}$ vào nước, thu được $200 \\mathrm{\\ mL}$ dung dịch $\\mathrm{Na_2CO_3}$. Cho khối lượng nguyên tử: $\\mathrm{Na} = 23$; $\\mathrm{C} = 12$; $\\mathrm{O} = 16$; $\\mathrm{H} = 1$. Tính nồng độ mol của dung dịch $\\mathrm{Na_2CO_3}$ thu được (đơn vị $\\mathrm{M}$, làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "0.25",
+     "loi_giai": "Khối lượng mol của tinh thể $\\mathrm{Na_2CO_3} \\cdot \\mathrm{10H_2O}$:\n$\\mathrm{M} = 2 \\cdot 23 + 12 + 3 \\cdot 16 + 10 \\cdot 18 = 286 \\mathrm{\\ (g/mol)}$\nSố mol tinh thể:\n$\\mathrm{n_{tt}} = \\dfrac{\\mathrm{m}}{\\mathrm{M}} = \\dfrac{14,3}{286} = 0,05 \\mathrm{\\ (mol)}$\nMỗi phân tử tinh thể khi tan cho một phân tử $\\mathrm{Na_2CO_3}$, nên số mol chất tan bằng số mol tinh thể:\n$\\mathrm{n_{Na_2CO_3}} = 0,05 \\mathrm{\\ (mol)}$\nĐổi đơn vị:\n$\\mathrm{V} = 200 \\mathrm{\\ mL} = 0,2 \\mathrm{\\ L}$\nNồng độ mol của dung dịch:\n$\\mathrm{C_M} = \\dfrac{\\mathrm{n}}{\\mathrm{V}} = \\dfrac{0,05}{0,2} = 0,25 \\mathrm{\\ (M)}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00790",
+   "nhom_id": "KNB00366",
+   "thu_tu": 1,
+   "dang": "PHA DUNG DỊCH C% TỪ TINH THỂ NGẬM NƯỚC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 14,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010104072",
+     "loai": "trac_nghiem",
+     "de": "Cần pha 200 g dung dịch $\\mathrm{CuSO_4}$ 8% từ tinh thể $\\mathrm{CuSO_4 \\cdot 5H_2O}$ và nước. Cho khối lượng nguyên tử: $\\mathrm{Cu} = 64$; $\\mathrm{S} = 32$; $\\mathrm{O} = 16$; $\\mathrm{H} = 1$. Khối lượng tinh thể $\\mathrm{CuSO_4 \\cdot 5H_2O}$ cần dùng là",
+     "lua_chon": [
+      "16 g",
+      "25 g",
+      "175 g",
+      "184 g"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng $\\mathrm{CuSO_4}$ có trong dung dịch cần pha:\n$\\mathrm{m_{CuSO_4}} = \\dfrac{\\mathrm{C\\% \\cdot m_{dd}}}{100\\%} = \\dfrac{8 \\cdot 200}{100} = 16$ (g)\nSố mol $\\mathrm{CuSO_4}$:\n$\\mathrm{n_{CuSO_4}} = \\dfrac{16}{160} = 0,1$ (mol)\nSố mol tinh thể bằng số mol $\\mathrm{CuSO_4}$. Khối lượng mol của tinh thể:\n$\\mathrm{M_{tt}} = 64 + 32 + 4 \\cdot 16 + 5 \\cdot 18 = 250$ (g/mol)\nKhối lượng tinh thể cần dùng:\n$\\mathrm{m_{tt}} = \\mathrm{n \\cdot M_{tt}} = 0,1 \\cdot 250 = 25$ (g)"
+    },
+    {
+     "ma_cau": "K08010104079",
+     "loai": "trac_nghiem",
+     "de": "Cần pha 152 g dung dịch $\\mathrm{FeSO_4}$ 10% từ tinh thể $\\mathrm{FeSO_4 \\cdot 7H_2O}$ và nước. Cho khối lượng nguyên tử: $\\mathrm{Fe = 56}$; $\\mathrm{S = 32}$; $\\mathrm{O = 16}$; $\\mathrm{H = 1}$. Khối lượng nước cần dùng là",
+     "lua_chon": [
+      "27,8 g",
+      "124,2 g",
+      "136,8 g",
+      "152 g"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng $\\mathrm{FeSO_4}$ có trong dung dịch cần pha:\n$\\mathrm{m_{FeSO_4} = \\dfrac{C\\% \\cdot m_{dd}}{100\\%} = \\dfrac{10 \\cdot 152}{100} = 15,2 (g)}$\nSố mol $\\mathrm{FeSO_4}$:\n$\\mathrm{n_{FeSO_4} = \\dfrac{15,2}{152} = 0,1 (mol)}$\nSố mol tinh thể bằng số mol $\\mathrm{FeSO_4}$. Khối lượng mol của tinh thể:\n$\\mathrm{M_{tt} = 56 + 32 + 4 \\cdot 16 + 7 \\cdot 18 = 278 (g/mol)}$\nKhối lượng tinh thể cần dùng:\n$\\mathrm{m_{tt} = n \\cdot M_{tt} = 0,1 \\cdot 278 = 27,8 (g)}$\nKhối lượng nước cần dùng:\n$\\mathrm{m_{nước} = m_{dd} - m_{tt} = 152 - 27,8 = 124,2 (g)}$"
+    },
+    {
+     "ma_cau": "K08010104074",
+     "loai": "trac_nghiem",
+     "de": "Cần pha $304\\ \\mathrm{g}$ dung dịch $\\mathrm{FeSO_4}$ $5\\%$ từ tinh thể $\\mathrm{FeSO_4 \\cdot 7H_2O}$ và nước. Cho khối lượng nguyên tử: $\\mathrm{Fe} = 56;\\ \\mathrm{S} = 32;\\ \\mathrm{O} = 16;\\ \\mathrm{H} = 1$. Khối lượng tinh thể $\\mathrm{FeSO_4 \\cdot 7H_2O}$ cần dùng là",
+     "lua_chon": [
+      "27,8 g",
+      "276,2 g",
+      "278 g",
+      "288,8 g"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng $\\mathrm{FeSO_4}$ có trong dung dịch cần pha:\n$\\mathrm{m_{FeSO_4}} = \\dfrac{\\mathrm{C}\\% \\cdot \\mathrm{m_{dd}}}{100\\%} = \\dfrac{5 \\cdot 304}{100} = 15,2\\ \\mathrm{(g)}$\nSố mol $\\mathrm{FeSO_4}$:\n$\\mathrm{n_{FeSO_4}} = \\dfrac{15,2}{152} = 0,1\\ \\mathrm{(mol)}$\nSố mol tinh thể bằng số mol $\\mathrm{FeSO_4}$. Khối lượng mol của tinh thể:\n$\\mathrm{M_{tt}} = 56 + 32 + 4 \\cdot 16 + 7 \\cdot 18 = 278\\ \\mathrm{(g/mol)}$\nKhối lượng tinh thể cần dùng:\n$\\mathrm{m_{tt}} = \\mathrm{n \\cdot M_{tt}} = 0,1 \\cdot 278 = 27,8\\ \\mathrm{(g)}$"
+    },
+    {
+     "ma_cau": "K08010104080",
+     "loai": "trac_nghiem",
+     "de": "Cần pha $322\\ \\mathrm{g}$ dung dịch $\\mathrm{ZnSO_4}$ $5\\%$ từ tinh thể $\\mathrm{ZnSO_4} \\cdot \\mathrm{7H_2O}$ và nước. Cho khối lượng nguyên tử: $\\mathrm{Zn} = 65$; $\\mathrm{S} = 32$; $\\mathrm{O} = 16$; $\\mathrm{H} = 1$. Khối lượng nước cần dùng là",
+     "lua_chon": [
+      "$293,3\\ \\mathrm{g}$",
+      "$305,9\\ \\mathrm{g}$",
+      "$322\\ \\mathrm{g}$",
+      "$350,7\\ \\mathrm{g}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng $\\mathrm{ZnSO_4}$ có trong dung dịch cần pha:\n$\\mathrm{m_{ZnSO_4}} = \\dfrac{\\mathrm{C\\%}\\cdot \\mathrm{m_{dd}}}{100\\%} = \\dfrac{5\\cdot 322}{100} = 16,1\\ \\mathrm{(g)}$\nSố mol $\\mathrm{ZnSO_4}$:\n$\\mathrm{n_{ZnSO_4}} = \\dfrac{16,1}{161} = 0,1\\ \\mathrm{(mol)}$\nSố mol tinh thể bằng số mol $\\mathrm{ZnSO_4}$. Khối lượng mol của tinh thể:\n$\\mathrm{M_{tt}} = 65 + 32 + 4 \\cdot 16 + 7 \\cdot 18 = 287\\ \\mathrm{(g/mol)}$\nKhối lượng tinh thể cần dùng:\n$\\mathrm{m_{tt}} = \\mathrm{n}\\cdot \\mathrm{M_{tt}} = 0,1\\cdot 287 = 28,7\\ \\mathrm{(g)}$\nKhối lượng nước cần dùng:\n$\\mathrm{m_{nước}} = \\mathrm{m_{dd}} - \\mathrm{m_{tt}} = 322 - 28,7 = 293,3\\ \\mathrm{(g)}$"
+    },
+    {
+     "ma_cau": "K08010104081",
+     "loai": "trac_nghiem",
+     "de": "Cần pha 240 g dung dịch $\\mathrm{MgSO_4}$ 10% từ tinh thể $\\mathrm{MgSO_4 \\cdot 7H_2O}$ và nước. Cho khối lượng nguyên tử: $\\mathrm{Mg = 24; S = 32; O = 16; H = 1}$. Khối lượng nước cần dùng là",
+     "lua_chon": [
+      "190,8 g",
+      "216 g",
+      "240 g",
+      "289,2 g"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng $\\mathrm{MgSO_4}$ có trong dung dịch cần pha:\n$$\\mathrm{m_{MgSO_4} = \\dfrac{C\\% \\cdot m_{dd}}{100\\%} = \\dfrac{10 \\cdot 240}{100} = 24 (g)}$$\nSố mol $\\mathrm{MgSO_4}$:\n$$\\mathrm{n_{MgSO_4} = \\dfrac{24}{120} = 0,2 (mol)}$$\nSố mol tinh thể bằng số mol $\\mathrm{MgSO_4}$. Khối lượng mol của tinh thể:\n$$\\mathrm{M_{tt} = 24 + 32 + 4 \\cdot 16 + 7 \\cdot 18 = 246 (g/mol)}$$\nKhối lượng tinh thể cần dùng:\n$$\\mathrm{m_{tt} = n \\cdot M_{tt} = 0,2 \\cdot 246 = 49,2 (g)}$$\nKhối lượng nước cần dùng:\n$$\\mathrm{m_{nước} = m_{dd} - m_{tt} = 240 - 49,2 = 190,8 (g)}$$"
+    },
+    {
+     "ma_cau": "K08010104075",
+     "loai": "trac_nghiem",
+     "de": "Cần pha 300 g dung dịch $\\mathrm{MgSO_4}$ 8% từ tinh thể $\\mathrm{MgSO_4 \\cdot 7H_2O}$ và nước. Cho khối lượng nguyên tử: $\\mathrm{Mg} = 24$; $\\mathrm{S} = 32$; $\\mathrm{O} = 16$; $\\mathrm{H} = 1$. Khối lượng tinh thể $\\mathrm{MgSO_4 \\cdot 7H_2O}$ cần dùng là",
+     "lua_chon": [
+      "24 g",
+      "49.2 g",
+      "250.8 g",
+      "276 g"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng $\\mathrm{MgSO_4}$ có trong dung dịch cần pha:\n$\\mathrm{m_{MgSO_4}} = \\dfrac{\\mathrm{C\\% \\cdot m_{dd}}}{100\\%} = \\dfrac{8 \\cdot 300}{100} = 24\\ (g)$\nSố mol $\\mathrm{MgSO_4}$:\n$\\mathrm{n_{MgSO_4}} = \\dfrac{24}{120} = 0.2\\ (mol)$\nSố mol tinh thể bằng số mol $\\mathrm{MgSO_4}$. Khối lượng mol của tinh thể:\n$\\mathrm{M_{tt}} = 24 + 32 + 4 \\cdot 16 + 7 \\cdot 18 = 246\\ (g/mol)$\nKhối lượng tinh thể cần dùng:\n$\\mathrm{m_{tt}} = \\mathrm{n \\cdot M_{tt}} = 0.2 \\cdot 246 = 49.2\\ (g)$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00791",
+   "nhom_id": "KNB00366",
+   "thu_tu": 2,
+   "dang": "PHA DUNG DỊCH CM TỪ HOÁ CHẤT CÓ LẪN TẠP CHẤT",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010104091",
+     "loai": "trac_nghiem",
+     "de": "Trong phòng thí nghiệm có một lọ hoá chất rắn chứa 96% $\\mathrm{CuSO_4}$ về khối lượng, phần còn lại là tạp chất không chứa $\\mathrm{CuSO_4}$. Dùng hoá chất này để pha 600 $\\mathrm{mL}$ dung dịch $\\mathrm{CuSO_4}$ 0,25 $\\mathrm{M}$. Cho khối lượng nguyên tử: $\\mathrm{Cu = 64; S = 32; O = 16}$. Khối lượng hoá chất cần cân là",
+     "lua_chon": [
+      "23,04 g",
+      "24 g",
+      "25 g",
+      "25 000 g"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi đơn vị:\n$\\mathrm{V = 600 \\ mL = 0,6 \\ L}$\nSố mol $\\mathrm{CuSO_4}$ cần có trong dung dịch:\n$\\mathrm{n = C_M \\cdot V = 0,25 \\cdot 0,6 = 0,15 \\ (mol)}$\nKhối lượng $\\mathrm{CuSO_4}$ nguyên chất cần dùng:\n$\\mathrm{m_{CuSO_4} = n \\cdot M = 0,15 \\cdot 160 = 24 \\ (g)}$\nHoá chất chỉ chứa 96% $\\mathrm{CuSO_4}$, nên khối lượng hoá chất cần cân là:\n$\\mathrm{m = \\dfrac{24 \\cdot 100}{96} = 25 \\ (g)}$"
+    },
+    {
+     "ma_cau": "K08010104085",
+     "loai": "trac_nghiem",
+     "de": "Trong phòng thí nghiệm có một lọ hoá chất rắn chứa 80% $\\mathrm{CuSO_4}$ về khối lượng, phần còn lại là tạp chất không chứa $\\mathrm{CuSO_4}$. Dùng hoá chất này để pha 0,25 L dung dịch $\\mathrm{CuSO_4}$ 0,2 M. Cho khối lượng nguyên tử: $\\mathrm{Cu = 64; S = 32; O = 16}$. Khối lượng hoá chất cần cân là",
+     "lua_chon": [
+      "0,0625 g",
+      "6,4 g",
+      "8 g",
+      "10 g"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Số mol $\\mathrm{CuSO_4}$ cần có trong dung dịch:\nn = $\\mathrm{C_M \\cdot V = 0,2 \\cdot 0,25 = 0,05}$ (mol)\nKhối lượng $\\mathrm{CuSO_4}$ nguyên chất cần dùng:\n$\\mathrm{m_{CuSO_4} = n \\cdot M = 0,05 \\cdot 160 = 8}$ (g)\nHoá chất chỉ chứa 80% $\\mathrm{CuSO_4}$, nên khối lượng hoá chất cần cân là:\n$\\mathrm{m = \\dfrac{8 \\cdot 100}{80} = 10}$ (g)"
+    },
+    {
+     "ma_cau": "K08010104082",
+     "loai": "trac_nghiem",
+     "de": "Trong phòng thí nghiệm có một lọ hoá chất rắn chứa 96% $\\mathrm{NaOH}$ về khối lượng, phần còn lại là tạp chất không chứa $\\mathrm{NaOH}$. Dùng hoá chất này để pha 0,6 $\\mathrm{L}$ dung dịch $\\mathrm{NaOH}$ 0,2 $\\mathrm{M}$. Cho khối lượng nguyên tử: $\\mathrm{Na} = 23$; $\\mathrm{O} = 16$; $\\mathrm{H} = 1$. Khối lượng hoá chất cần cân là",
+     "lua_chon": [
+      "0,125 g",
+      "4,61 g",
+      "4,8 g",
+      "5 g"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Số mol $\\mathrm{NaOH}$ cần có trong dung dịch:\n$\\mathrm{n = C_M \\cdot V = 0,2 \\cdot 0,6 = 0,12 \\ (mol)}$\nKhối lượng $\\mathrm{NaOH}$ nguyên chất cần dùng:\n$\\mathrm{m_{NaOH} = n \\cdot M = 0,12 \\cdot 40 = 4,8 \\ (g)}$\nHoá chất chỉ chứa 96% $\\mathrm{NaOH}$, nên khối lượng hoá chất cần cân là:\n$\\mathrm{m = \\dfrac{4,8 \\cdot 100}{96} = 5 \\ (g)}$"
+    },
+    {
+     "ma_cau": "K08010104087",
+     "loai": "trac_nghiem",
+     "de": "Trong phòng thí nghiệm có một lọ hoá chất rắn chứa $96\\%$ $\\mathrm{NaOH}$ về khối lượng, phần còn lại là tạp chất không chứa $\\mathrm{NaOH}$. Dùng hoá chất này để pha $300\\ \\mathrm{mL}$ dung dịch $\\mathrm{NaOH}$ $1\\ \\mathrm{M}$. Cho khối lượng nguyên tử: $\\mathrm{Na} = 23$; $\\mathrm{O} = 16$; $\\mathrm{H} = 1$. Khối lượng hoá chất cần cân là",
+     "lua_chon": [
+      "11,52 g",
+      "12 g",
+      "12,5 g",
+      "12 500 g"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi đơn vị:\n$V = 300\\ \\mathrm{mL} = 0.3\\ \\mathrm{L}$\nSố mol $\\mathrm{NaOH}$ cần có trong dung dịch:\n$\\mathrm{n} = \\mathrm{C_M} \\cdot \\mathrm{V} = 1 \\cdot 0.3 = 0.3\\ (\\mathrm{mol})$\nKhối lượng $\\mathrm{NaOH}$ nguyên chất cần dùng:\n$\\mathrm{m_{NaOH}} = \\mathrm{n} \\cdot \\mathrm{M} = 0.3 \\cdot 40 = 12\\ (\\mathrm{g})$\nHoá chất chỉ chứa $96\\%$ $\\mathrm{NaOH}$, nên khối lượng hoá chất cần cân là:\n$\\mathrm{m} = \\dfrac{12 \\cdot 100}{96} = 12.5\\ (\\mathrm{g})$"
+    },
+    {
+     "ma_cau": "K08010104083",
+     "loai": "trac_nghiem",
+     "de": "Trong phòng thí nghiệm có một lọ hoá chất rắn chứa 97,5% $\\mathrm{NaCl}$ về khối lượng, phần còn lại là tạp chất không chứa $\\mathrm{NaCl}$. Dùng hoá chất này để pha 1 $\\mathrm{L}$ dung dịch $\\mathrm{NaCl}$ 0,2 $\\mathrm{M}$. Cho khối lượng nguyên tử: $\\mathrm{Na} = 23$; $\\mathrm{Cl} = 35,5$. Khối lượng hoá chất cần cân là",
+     "lua_chon": [
+      "0,2051 g",
+      "11,41 g",
+      "11,7 g",
+      "12 g"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Số mol $\\mathrm{NaCl}$ cần có trong dung dịch:\n$\\mathrm{n = C_M \\cdot V = 0,2 \\cdot 1 = 0,2 \\ (mol)}$\nKhối lượng $\\mathrm{NaCl}$ nguyên chất cần dùng:\n$\\mathrm{m_{NaCl} = n \\cdot M = 0,2 \\cdot 58,5 = 11,7 \\ (g)}$\nHoá chất chỉ chứa 97,5% $\\mathrm{NaCl}$, nên khối lượng hoá chất cần cân là:\n$\\mathrm{m = \\dfrac{11,7 \\cdot 100}{97,5} = 12 \\ (g)}$"
+    },
+    {
+     "ma_cau": "K08010104084",
+     "loai": "trac_nghiem",
+     "de": "Trong phòng thí nghiệm có một lọ hoá chất rắn chứa 80% $\\mathrm{Na_2CO_3}$ về khối lượng, phần còn lại là tạp chất không chứa $\\mathrm{Na_2CO_3}$. Dùng hoá chất này để pha 0,5 L dung dịch $\\mathrm{Na_2CO_3}$ 0,2 M. Cho khối lượng nguyên tử: $\\mathrm{Na = 23; C = 12; O = 16}$. Khối lượng hoá chất cần cân là",
+     "lua_chon": [
+      "8,48 g",
+      "10,6 g",
+      "13,25 g",
+      "132,5 g"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Số mol $\\mathrm{Na_2CO_3}$ cần có trong dung dịch:\nn = $\\mathrm{C_M \\cdot V = 0,2 \\cdot 0,5 = 0,1}$ (mol)\nKhối lượng $\\mathrm{Na_2CO_3}$ nguyên chất cần dùng:\n$\\mathrm{m_{Na_2CO_3} = n \\cdot M = 0,1 \\cdot 106 = 10,6}$ (g)\nHoá chất chỉ chứa 80% $\\mathrm{Na_2CO_3}$, nên khối lượng hoá chất cần cân là:\n$\\mathrm{m = \\dfrac{10,6 \\cdot 100}{80} = 13,25}$ (g)"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00792",
+   "nhom_id": "KNB00366",
+   "thu_tu": 3,
+   "dang": "PHA LOÃNG DUNG DỊCH BẰNG CÁCH THÊM NƯỚC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010104092",
+     "loai": "tra_loi_ngan",
+     "de": "Cần thêm bao nhiêu gam nước vào $200$ g dung dịch $\\mathrm{NaOH}$ $20\\%$ để thu được dung dịch $\\mathrm{NaOH}$ $8\\%$?",
+     "dap_an": "300",
+     "loi_giai": "Khi thêm nước, khối lượng chất tan không đổi. Khối lượng $\\mathrm{NaOH}$ trong dung dịch ban đầu:\n$\\mathrm{m_{ct} = \\dfrac{20 \\cdot 200}{100} = 40 \\ (g)}$\nKhối lượng dung dịch sau khi pha loãng:\n$\\mathrm{m_{dd2} = \\dfrac{m_{ct} \\cdot 100}{C\\%_2} = \\dfrac{40 \\cdot 100}{8} = 500 \\ (g)}$\nKhối lượng nước cần thêm:\n$\\mathrm{m_{nước} = m_{dd2} - m_{dd1} = 500 - 200 = 300 \\ (g)}$"
+    },
+    {
+     "ma_cau": "K08010104100",
+     "loai": "tra_loi_ngan",
+     "de": "Cần thêm bao nhiêu mililít nước vào $250 \\mathrm{mL}$ dung dịch $\\mathrm{CuSO_4}$ $0,8 \\mathrm{M}$ để thu được dung dịch $\\mathrm{CuSO_4}$ $0,25 \\mathrm{M}$? Coi thể tích dung dịch sau khi pha bằng tổng thể tích dung dịch ban đầu và nước thêm vào.",
+     "dap_an": "550",
+     "loi_giai": "Đổi đơn vị:\n$\\mathrm{V_1 = 250 \\ mL = 0,25 \\ L}$\nKhi thêm nước, số mol chất tan không đổi:\n$\\mathrm{n = C_{M1} \\cdot V_1 = 0,8 \\cdot 0,25 = 0,2 \\ (mol)}$\nThể tích dung dịch sau khi pha loãng:\n$\\mathrm{V_2 = \\dfrac{n}{C_{M2}} = \\dfrac{0,2}{0,25} = 0,8 \\ (L)}$\nĐổi đơn vị:\n$\\mathrm{V_2 = 0,8 \\ L = 800 \\ mL}$\nThể tích nước cần thêm:\n$\\mathrm{V_{nước} = V_2 - V_1 = 800 - 250 = 550 \\ (mL)}$"
+    },
+    {
+     "ma_cau": "K08010104099",
+     "loai": "tra_loi_ngan",
+     "de": "Cần thêm bao nhiêu mililit nước vào $20 \\mathrm{mL}$ dung dịch $\\mathrm{H_2SO_4}$ $5 \\mathrm{M}$ để thu được dung dịch $\\mathrm{H_2SO_4}$ $0,4 \\mathrm{M}$? Coi thể tích dung dịch sau khi pha bằng tổng thể tích dung dịch ban đầu và nước thêm vào.",
+     "dap_an": "230",
+     "loi_giai": "Đổi đơn vị:\n$\\mathrm{V_1} = 20 \\mathrm{mL} = 0,02 \\mathrm{L}$\nKhi thêm nước, số mol chất tan không đổi:\n$\\mathrm{n = C_{M1} \\cdot V_1 = 5 \\cdot 0,02 = 0,1 \\ (mol)}$\nThể tích dung dịch sau khi pha loãng:\n$\\mathrm{V_2 = \\dfrac{n}{C_{M2}} = \\dfrac{0,1}{0,4} = 0,25 \\ (L)}$\nĐổi đơn vị:\n$\\mathrm{V_2 = 0,25 \\ L = 250 \\ mL}$\nThể tích nước cần thêm:\n$\\mathrm{V_{nước} = V_2 - V_1 = 250 - 20 = 230 \\ (mL)}$"
+    },
+    {
+     "ma_cau": "K08010104097",
+     "loai": "tra_loi_ngan",
+     "de": "Cần thêm bao nhiêu mililít nước vào $50\\ \\mathrm{mL}$ dung dịch $\\mathrm{HCl}$ $2\\ \\mathrm{M}$ để thu được dung dịch $\\mathrm{HCl}$ $0,5\\ \\mathrm{M}$? Coi thể tích dung dịch sau khi pha bằng tổng thể tích dung dịch ban đầu và nước thêm vào.",
+     "dap_an": "150",
+     "loi_giai": "Đổi đơn vị:\n$\\mathrm{V_1} = 50\\ \\mathrm{mL} = 0,05\\ \\mathrm{L}$\nKhi thêm nước, số mol chất tan không đổi:\n$\\mathrm{n = C_{M1} \\cdot V_1 = 2 \\cdot 0,05 = 0,1\\ (mol)}$\nThể tích dung dịch sau khi pha loãng:\n$\\mathrm{V_2 = \\dfrac{n}{C_{M2}} = \\dfrac{0,1}{0,5} = 0,2\\ (L)}$\nĐổi đơn vị:\n$\\mathrm{V_2 = 0,2\\ L = 200\\ mL}$\nThể tích nước cần thêm:\n$\\mathrm{V_{nước} = V_2 - V_1 = 200 - 50 = 150\\ (mL)}$"
+    },
+    {
+     "ma_cau": "K08010104096",
+     "loai": "tra_loi_ngan",
+     "de": "Cần thêm bao nhiêu gam nước vào $120\\ \\mathrm{g}$ dung dịch $\\mathrm{KNO_3}$ $15\\%$ để thu được dung dịch $\\mathrm{KNO_3}$ $3\\%$?",
+     "dap_an": "480",
+     "loi_giai": "Khi thêm nước, khối lượng chất tan không đổi. Khối lượng $\\mathrm{KNO_3}$ trong dung dịch ban đầu:\n$\\mathrm{m_{ct}} = \\dfrac{15 \\cdot 120}{100} = 18\\ (\\mathrm{g})$\nKhối lượng dung dịch sau khi pha loãng:\n$\\mathrm{m_{dd2}} = \\dfrac{\\mathrm{m_{ct}} \\cdot 100}{\\mathrm{C\\%_2}} = \\dfrac{18 \\cdot 100}{3} = 600\\ (\\mathrm{g})$\nKhối lượng nước cần thêm:\n$\\mathrm{m_{nước}} = \\mathrm{m_{dd2}} - \\mathrm{m_{dd1}} = 600 - 120 = 480\\ (\\mathrm{g})$"
+    },
+    {
+     "ma_cau": "K08010104098",
+     "loai": "tra_loi_ngan",
+     "de": "Cần thêm bao nhiêu mililít nước vào $100\\ \\mathrm{mL}$ dung dịch $\\mathrm{NaOH}$ $1\\ \\mathrm{M}$ để thu được dung dịch $\\mathrm{NaOH}$ $0,2\\ \\mathrm{M}$? Coi thể tích dung dịch sau khi pha bằng tổng thể tích dung dịch ban đầu và nước thêm vào.",
+     "dap_an": "400",
+     "loi_giai": "Đổi đơn vị:\n$\\mathrm{V_1 = 100\\ mL = 0,1\\ L}$\nKhi thêm nước, số mol chất tan không đổi:\n$\\mathrm{n = C_{M1} \\cdot V_1 = 1 \\cdot 0,1 = 0,1\\ (mol)}$\nThể tích dung dịch sau khi pha loãng:\n$\\mathrm{V_2 = \\dfrac{n}{C_{M2}} = \\dfrac{0,1}{0,2} = 0,5\\ (L)}$\nĐổi đơn vị:\n$\\mathrm{V_2 = 0,5\\ L = 500\\ mL}$\nThể tích nước cần thêm:\n$\\mathrm{V_{nước} = V_2 - V_1 = 500 - 100 = 400\\ (mL)}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00793",
+   "nhom_id": "KNB00366",
+   "thu_tu": 4,
+   "dang": "Từ C% sang CM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010104111",
+     "loai": "tu_luan",
+     "de": "Một dung dịch $\\mathrm{H_2SO_4}$ 49% có khối lượng riêng 1,4 $\\mathrm{g/mL}$. Cho khối lượng nguyên tử: $\\mathrm{H} = 1$; $\\mathrm{S} = 32$; $\\mathrm{O} = 16$. Tính nồng độ mol của dung dịch này (làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "7",
+     "loi_giai": "Xét $1 \\mathrm{L}$ dung dịch, tức là:$\\mathrm{V} = 1000 \\mathrm{mL}$\nKhối lượng dung dịch:$\\mathrm{m_{dd}} = \\mathrm{V \\cdot D} = 1000 \\cdot 1,4 = 1400 \\mathrm{(g)}$\nKhối lượng $\\mathrm{H_2SO_4}$:$\\mathrm{m_{ct}} = \\dfrac{49 \\cdot 1400}{100} = 686 \\mathrm{(g)}$\nSố mol $\\mathrm{H_2SO_4}$:$\\mathrm{n} = \\dfrac{686}{98} = 7 \\mathrm{(mol)}$\nNồng độ mol của dung dịch:$\\mathrm{C_M} = \\dfrac{\\mathrm{n}}{\\mathrm{V}} = 7 \\mathrm{(M)}$"
+    },
+    {
+     "ma_cau": "K08010104104",
+     "loai": "tu_luan",
+     "de": "Một dung dịch $\\mathrm{H_2SO_4}$ 20% có khối lượng riêng 1,14 g/mL. Cho khối lượng nguyên tử: $\\mathrm{H} = 1$; $\\mathrm{S} = 32$; $\\mathrm{O} = 16$. Tính nồng độ mol của dung dịch này (làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "2.33",
+     "loi_giai": "Xét 1 L dung dịch, tức là:\n$V = 1000\\ \\mathrm{mL}$\nKhối lượng dung dịch:\n$\\mathrm{m_{dd}} = \\mathrm{V} \\cdot \\mathrm{D} = 1000 \\cdot 1,14 = 1140\\ (\\mathrm{g})$\nKhối lượng $\\mathrm{H_2SO_4}$:\n$\\mathrm{m_{ct}} = \\dfrac{20 \\cdot 1140}{100} = 228\\ (\\mathrm{g})$\nSố mol $\\mathrm{H_2SO_4}$:\n$\\mathrm{n} = \\dfrac{228}{98} \\approx 2,3265\\ (\\mathrm{mol})$\nNồng độ mol của dung dịch:\n$\\mathrm{C_M} = \\dfrac{\\mathrm{n}}{\\mathrm{V}} \\approx 2,33\\ (\\mathrm{M})$"
+    },
+    {
+     "ma_cau": "K08010104102",
+     "loai": "tu_luan",
+     "de": "Một dung dịch $\\mathrm{HCl}$ 36,5% có khối lượng riêng 1,18 $\\mathrm{g/mL}$. Cho khối lượng nguyên tử: $\\mathrm{H} = 1$; $\\mathrm{Cl} = 35,5$. Tính nồng độ mol của dung dịch này (làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "11.8",
+     "loi_giai": "Xét 1 $\\mathrm{L}$ dung dịch, tức là:\nV = 1 000 $\\mathrm{mL}$\nKhối lượng dung dịch:\n$\\mathrm{m_{dd} = V \\cdot D = 1 000 \\cdot 1,18 = 1 180}$ ($\\mathrm{g}$)\nKhối lượng $\\mathrm{HCl}$:\n$\\mathrm{m_{ct} = \\dfrac{36,5 \\cdot 1 180}{100} = 430,7}$ ($\\mathrm{g}$)\nSố mol $\\mathrm{HCl}$:\n$\\mathrm{n = \\dfrac{430,7}{36,5} = 11,8}$ ($\\mathrm{mol}$)\nNồng độ mol của dung dịch:\n$\\mathrm{C_M = \\dfrac{n}{V} = 11,8}$ ($\\mathrm{M}$)"
+    },
+    {
+     "ma_cau": "K08010104103",
+     "loai": "tu_luan",
+     "de": "Một dung dịch $\\mathrm{NaOH}$ 10% có khối lượng riêng 1,11 $\\mathrm{g/mL}$. Cho khối lượng nguyên tử: $\\mathrm{Na = 23; O = 16; H = 1}$. Tính nồng độ mol của dung dịch này (làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "2.78",
+     "loi_giai": "Xét 1 $\\mathrm{L}$ dung dịch, tức là:\nV = 1 000 $\\mathrm{mL}$\nKhối lượng dung dịch:\n$\\mathrm{m_{dd} = V \\cdot D = 1 000 \\cdot 1,11 = 1 110}$ ($\\mathrm{g}$)\nKhối lượng $\\mathrm{NaOH}$:\n$\\mathrm{m_{ct} = \\dfrac{10 \\cdot 1 110}{100} = 111}$ ($\\mathrm{g}$)\nSố mol $\\mathrm{NaOH}$:\n$\\mathrm{n = \\dfrac{111}{40} = 2,775}$ ($\\mathrm{mol}$)\nNồng độ mol của dung dịch:\n$\\mathrm{C_M = \\dfrac{n}{V} \\approx 2,78}$ ($\\mathrm{M}$)"
+    },
+    {
+     "ma_cau": "K08010104110",
+     "loai": "tu_luan",
+     "de": "Một dung dịch $\\mathrm{KOH}$ 28% có khối lượng riêng 1,27 $\\mathrm{g/mL}$. Cho khối lượng nguyên tử: $\\mathrm{K} = 39$; $\\mathrm{O} = 16$; $\\mathrm{H} = 1$. Tính nồng độ mol của dung dịch này (làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "6.35",
+     "loi_giai": "Xét $1 \\mathrm{L}$ dung dịch, tức là:$\\mathrm{V} = 1000 \\mathrm{mL}$\nKhối lượng dung dịch: $\\mathrm{m_{dd}} = \\mathrm{V \\cdot D} = 1000 \\cdot 1,27 = 1270 \\mathrm{(g)}$\nKhối lượng $\\mathrm{KOH}$:$\\mathrm{m_{ct}} = \\dfrac{28 \\cdot 1270}{100} = 355,6 \\mathrm{(g)}$\nSố mol $\\mathrm{KOH}$:$\\mathrm{n} = \\dfrac{355,6}{56} = 6,35 \\mathrm{(mol)}$\nNồng độ mol của dung dịch:$\\mathrm{C_M} = \\dfrac{\\mathrm{n}}{\\mathrm{V}} = 6,35 \\mathrm{(M)}$"
+    },
+    {
+     "ma_cau": "K08010104106",
+     "loai": "tu_luan",
+     "de": "Một dung dịch $\\mathrm{NaCl}$ 10% có khối lượng riêng 1,07 g/mL. Cho khối lượng nguyên tử: $\\mathrm{Na}$ = 23; $\\mathrm{Cl}$ = 35,5. Tính nồng độ mol của dung dịch này (làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "1.83",
+     "loi_giai": "Xét 1 L dung dịch, tức là:\n$V = 1000\\ \\mathrm{mL}$\nKhối lượng dung dịch:\n$\\mathrm{m_{dd}} = \\mathrm{V \\cdot D} = 1000 \\cdot 1,07 = 1070\\ (\\mathrm{g})$\nKhối lượng $\\mathrm{NaCl}$:\n$\\mathrm{m_{ct}} = \\dfrac{10 \\cdot 1070}{100} = 107\\ (\\mathrm{g})$\nSố mol $\\mathrm{NaCl}$:\n$\\mathrm{n} = \\dfrac{107}{58,5} \\approx 1,8291\\ (\\mathrm{mol})$\nNồng độ mol của dung dịch:\n$\\mathrm{C_M} = \\dfrac{\\mathrm{n}}{\\mathrm{V}} \\approx 1,83\\ (\\mathrm{M})$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00794",
+   "nhom_id": "KNB00366",
+   "thu_tu": 5,
+   "dang": "Từ CM sang C%",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010104119",
+     "loai": "tu_luan",
+     "de": "Một dung dịch $\\mathrm{Na_2CO_3}$ $0,5\\ \\mathrm{M}$ có khối lượng riêng $1,05\\ \\mathrm{g/mL}$. Cho khối lượng nguyên tử: $\\mathrm{Na} = 23$; $\\mathrm{C} = 12$; $\\mathrm{O} = 16$. Tính nồng độ phần trăm của dung dịch này (làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "5,05",
+     "loi_giai": "Xét $1\\ \\mathrm{L}$ dung dịch, tức là:\n$V = 1\\ 000\\ \\mathrm{mL}$\nSố mol $\\mathrm{Na_2CO_3}$ trong $1\\ \\mathrm{L}$ dung dịch:\n$\\mathrm{n} = \\mathrm{C_M} \\cdot \\mathrm{V} = 0,5 \\cdot 1 = 0,5\\ \\mathrm{(mol)}$\nKhối lượng $\\mathrm{Na_2CO_3}$:\n$\\mathrm{m_{ct}} = \\mathrm{n} \\cdot \\mathrm{M} = 0,5 \\cdot 106 = 53\\ \\mathrm{(g)}$\nKhối lượng dung dịch:\n$\\mathrm{m_{dd}} = \\mathrm{V} \\cdot \\mathrm{D} = 1\\ 000 \\cdot 1,05 = 1\\ 050\\ \\mathrm{(g)}$\nNồng độ phần trăm của dung dịch:\n$\\mathrm{C\\%} = \\dfrac{53}{1\\ 050} \\cdot 100\\% \\approx 5,05\\%$"
+    },
+    {
+     "ma_cau": "K08010104118",
+     "loai": "tu_luan",
+     "de": "Một dung dịch $\\mathrm{KOH}$ $1\\ \\mathrm{M}$ có khối lượng riêng $1,05\\ \\mathrm{g/mL}$. Cho khối lượng nguyên tử: $\\mathrm{K} = 39$; $\\mathrm{O} = 16$; $\\mathrm{H} = 1$. Tính nồng độ phần trăm của dung dịch này (làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "5,33",
+     "loi_giai": "Xét $1\\ \\mathrm{L}$ dung dịch, tức là:\n$V = 1\\ 000\\ \\mathrm{mL}$\nSố mol $\\mathrm{KOH}$ trong $1\\ \\mathrm{L}$ dung dịch:\n$\\mathrm{n} = \\mathrm{C_M} \\cdot \\mathrm{V} = 1 \\cdot 1 = 1\\ \\mathrm{(mol)}$\nKhối lượng $\\mathrm{KOH}$:\n$\\mathrm{m_{ct}} = \\mathrm{n} \\cdot \\mathrm{M} = 1 \\cdot 56 = 56\\ \\mathrm{(g)}$\nKhối lượng dung dịch:\n$\\mathrm{m_{dd}} = \\mathrm{V} \\cdot \\mathrm{D} = 1\\ 000 \\cdot 1,05 = 1\\ 050\\ \\mathrm{(g)}$\nNồng độ phần trăm của dung dịch:\n$\\mathrm{C\\%} = \\dfrac{56}{1\\ 050} \\cdot 100\\% \\approx 5,33\\%$"
+    },
+    {
+     "ma_cau": "K08010104113",
+     "loai": "tu_luan",
+     "de": "Một dung dịch $\\mathrm{NaCl}$ $2\\ \\mathrm{M}$ có khối lượng riêng $1,08\\ \\mathrm{g/mL}$. Cho khối lượng nguyên tử: $\\mathrm{Na} = 23$; $\\mathrm{Cl} = 35,5$. Tính nồng độ phần trăm của dung dịch này (làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "10,83",
+     "loi_giai": "Xét $1\\ \\mathrm{L}$ dung dịch, tức là:\n$V = 1000\\ \\mathrm{mL}$\nSố mol $\\mathrm{NaCl}$ trong $1\\ \\mathrm{L}$ dung dịch:\n$\\mathrm{n} = \\mathrm{C_M} \\cdot \\mathrm{V} = 2 \\cdot 1 = 2\\ (\\mathrm{mol})$\nKhối lượng $\\mathrm{NaCl}$:\n$\\mathrm{m_{ct}} = \\mathrm{n} \\cdot \\mathrm{M} = 2 \\cdot 58,5 = 117\\ (\\mathrm{g})$\nKhối lượng dung dịch:\n$\\mathrm{m_{dd}} = \\mathrm{V} \\cdot \\mathrm{D} = 1000 \\cdot 1,08 = 1080\\ (\\mathrm{g})$\nNồng độ phần trăm của dung dịch:\n$\\mathrm{C\\% = \\dfrac{117}{1080} \\cdot 100\\% \\approx 10,83\\%}$"
+    },
+    {
+     "ma_cau": "K08010104115",
+     "loai": "tu_luan",
+     "de": "Một dung dịch $\\mathrm{H_2SO_4}$ 2 M có khối lượng riêng 1,12 g/mL. Cho khối lượng nguyên tử: $\\mathrm{H = 1; S = 32; O = 16}$. Tính nồng độ phần trăm của dung dịch này (làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "17.5",
+     "loi_giai": "X\nét 1 L dung dịch, tức là:\n$\\mathrm{V = 1\\ 000\\ mL}$\nSố mol $\\mathrm{H_2SO_4}$ trong 1 L dung dịch:\n$\\mathrm{n = C_M \\cdot V = 2 \\cdot 1 = 2\\ (mol)}$\nKhối lượng $\\mathrm{H_2SO_4}$:\n$\\mathrm{m_{ct} = n \\cdot M = 2 \\cdot 98 = 196\\ (g)}$\nKhối lượng dung dịch:\n$\\mathrm{m_{dd} = V \\cdot D = 1\\ 000 \\cdot 1,12 = 1\\ 120\\ (g)}$\nNồng độ phần trăm của dung dịch:\n$\\mathrm{C\\% = \\dfrac{196}{1\\ 120} \\cdot 100\\% = 17,5\\%}$"
+    },
+    {
+     "ma_cau": "K08010104116",
+     "loai": "tu_luan",
+     "de": "Một dung dịch $\\mathrm{NaOH}$ $1 \\mathrm{M}$ có khối lượng riêng $1,04 \\mathrm{~g} / \\mathrm{mL}$. Cho khối lượng nguyên tử: $\\mathrm{Na}=23$; $\\mathrm{O}=16$; $\\mathrm{H}=1$. Tính nồng độ phần trăm của dung dịch này (làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "3.85",
+     "loi_giai": "Xét $1 \\mathrm{~L}$ dung dịch, tức là:\n$V=1000 \\mathrm{~mL}$\nSố mol $\\mathrm{NaOH}$ trong $1 \\mathrm{~L}$ dung dịch:\n$\\mathrm{n}=\\mathrm{C_M} \\cdot \\mathrm{V}=1 \\cdot 1=1 \\quad (\\mathrm{mol})$\nKhối lượng $\\mathrm{NaOH}$:\n$\\mathrm{m_{ct}=n \\cdot M}=1 \\cdot 40=40 \\quad (\\mathrm{g})$\nKhối lượng dung dịch:\n$\\mathrm{m_{dd}=V \\cdot D}=1000 \\cdot 1,04=1040 \\quad (\\mathrm{g})$\nNồng độ phần trăm của dung dịch:\n$\\mathrm{C} \\%=\\dfrac{40}{1040} \\cdot 100 \\% \\approx 3,85 \\%$"
+    },
+    {
+     "ma_cau": "K08010104120",
+     "loai": "tu_luan",
+     "de": "Một dung dịch $\\mathrm{HCl}$ $6 \\mathrm{\\ M}$ có khối lượng riêng $1,1 \\mathrm{\\ g/mL}$. Cho khối lượng nguyên tử: $\\mathrm{H} = 1$; $\\mathrm{Cl} = 35,5$. Tính nồng độ phần trăm của dung dịch này (làm tròn kết quả đến hàng phần trăm).",
+     "dap_an": "19,91",
+     "loi_giai": "Xét $1 \\mathrm{\\ L}$ dung dịch, tức là:\n$V = 1 \\ 000 \\ \\mathrm{mL}$\nSố mol $\\mathrm{HCl}$ trong $1 \\mathrm{\\ L}$ dung dịch:\n$\\mathrm{n} = \\mathrm{C_M} \\cdot \\mathrm{V} = 6 \\cdot 1 = 6 \\ (\\mathrm{mol})$\nKhối lượng $\\mathrm{HCl}$:\n$\\mathrm{m_{ct}} = \\mathrm{n} \\cdot \\mathrm{M} = 6 \\cdot 36,5 = 219 \\ (\\mathrm{g})$\nKhối lượng dung dịch:\n$\\mathrm{m_{dd}} = \\mathrm{V} \\cdot \\mathrm{D} = 1 \\ 000 \\cdot 1,1 = 1 \\ 100 \\ (\\mathrm{g})$\nNồng độ phần trăm của dung dịch:\n$\\mathrm{C\\%} = \\dfrac{219}{1 \\ 100} \\cdot 100\\% \\approx 19,91\\%$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00795",
+   "nhom_id": "KNB00367",
+   "thu_tu": 1,
+   "dang": "TRỘN HAI DUNG DỊCH CÙNG CHẤT TAN KHÁC NỒNG ĐỘ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010105003",
+     "loai": "tra_loi_ngan",
+     "de": "Trộn $60 \\mathrm{~g}$ dung dịch $\\mathrm{NaOH}$ $10 \\%$ với $140 \\mathrm{~g}$ dung dịch $\\mathrm{NaOH}$ $20 \\%$. Tính nồng độ phần trăm của dung dịch thu được.",
+     "dap_an": "17",
+     "loi_giai": "Khối lượng chất tan trong dung dịch thứ nhất:\n$\\mathrm{m_{ct1}} = \\dfrac{10 \\cdot 60}{100} = 6 \\mathrm{~(g)}$\nKhối lượng chất tan trong dung dịch thứ hai:\n$\\mathrm{m_{ct2}} = \\dfrac{20 \\cdot 140}{100} = 28 \\mathrm{~(g)}$\nSau khi trộn, khối lượng chất tan và khối lượng dung dịch đều bằng tổng của hai dung dịch:\n$\\mathrm{m_{ct}} = 6 + 28 = 34 \\mathrm{~(g)}$\n$\\mathrm{m_{dd}} = 60 + 140 = 200 \\mathrm{~(g)}$\nNồng độ phần trăm của dung dịch thu được:\n$\\mathrm{C\\%} = \\dfrac{34}{200} \\cdot 100 \\% = 17 \\%$"
+    },
+    {
+     "ma_cau": "K08010105002",
+     "loai": "tra_loi_ngan",
+     "de": "Trộn $400 \\mathrm{\\ g}$ nước đường $5\\%$ với $100 \\mathrm{\\ g}$ nước đường $30\\%$. Tính nồng độ phần trăm của dung dịch thu được.",
+     "dap_an": "10",
+     "loi_giai": "Khối lượng chất tan trong dung dịch thứ nhất:\n$\\mathrm{m_{ct1}} = \\dfrac{5 \\cdot 400}{100} = 20 \\mathrm{\\ (g)}$\nKhối lượng chất tan trong dung dịch thứ hai:\n$\\mathrm{m_{ct2}} = \\dfrac{30 \\cdot 100}{100} = 30 \\mathrm{\\ (g)}$\nSau khi trộn, khối lượng chất tan và khối lượng dung dịch đều bằng tổng của hai dung dịch:\n$\\mathrm{m_{ct}} = 20 + 30 = 50 \\mathrm{\\ (g)}$\n$\\mathrm{m_{dd}} = 400 + 100 = 500 \\mathrm{\\ (g)}$\nNồng độ phần trăm của dung dịch thu được:\n$\\mathrm{C\\%} = \\dfrac{50}{500} \\cdot 100\\% = 10\\%$"
+    },
+    {
+     "ma_cau": "K08010105008",
+     "loai": "tra_loi_ngan",
+     "de": "Trộn $50\\text{ g}$ dung dịch $\\mathrm{NaCl}\\,20\\%$ với $150\\text{ g}$ dung dịch $\\mathrm{NaCl}\\,4\\%$. Tính nồng độ phần trăm của dung dịch thu được.",
+     "dap_an": "8",
+     "loi_giai": "Khối lượng chất tan trong dung dịch thứ nhất:\n$\\mathrm{m_{ct1}} = \\dfrac{20\\cdot 50}{100} = 10\\text{ (g)}$\nKhối lượng chất tan trong dung dịch thứ hai:\n$\\mathrm{m_{ct2}} = \\dfrac{4\\cdot 150}{100} = 6\\text{ (g)}$\nSau khi trộn, khối lượng chất tan và khối lượng dung dịch đều bằng tổng của hai dung dịch:\n$\\mathrm{m_{ct}} = 10 + 6 = 16\\text{ (g)}$\n$\\mathrm{m_{dd}} = 50 + 150 = 200\\text{ (g)}$\nNồng độ phần trăm của dung dịch thu được:\n$\\mathrm{C\\%} = \\dfrac{16}{200}\\cdot 100\\% = 8\\%$"
+    },
+    {
+     "ma_cau": "K08010105005",
+     "loai": "tra_loi_ngan",
+     "de": "Trộn $300$ g dung dịch $\\mathrm{KNO_3}$ $8\\%$ với $200$ g dung dịch $\\mathrm{KNO_3}$ $18\\%$. Tính nồng độ phần trăm của dung dịch thu được.",
+     "dap_an": "12",
+     "loi_giai": "Khối lượng chất tan trong dung dịch thứ nhất:\n$\\mathrm{m_{ct1}} = \\dfrac{8 \\cdot 300}{100} = 24$ (g)\nKhối lượng chất tan trong dung dịch thứ hai:\n$\\mathrm{m_{ct2}} = \\dfrac{18 \\cdot 200}{100} = 36$ (g)\nSau khi trộn, khối lượng chất tan và khối lượng dung dịch đều bằng tổng của hai dung dịch:\n$\\mathrm{m_{ct}} = 24 + 36 = 60$ (g)\n$\\mathrm{m_{dd}} = 300 + 200 = 500$ (g)\nNồng độ phần trăm của dung dịch thu được:\n$\\mathrm{C\\%} = \\dfrac{60}{500} \\cdot 100\\% = 12\\%$"
+    },
+    {
+     "ma_cau": "K08010105007",
+     "loai": "tra_loi_ngan",
+     "de": "Trộn $90\\text{ g}$ dung dịch $\\mathrm{Na_2CO_3}\\,4\\%$ với $210\\text{ g}$ dung dịch $\\mathrm{Na_2CO_3}\\,9\\%$. Tính nồng độ phần trăm của dung dịch thu được.",
+     "dap_an": "7.5",
+     "loi_giai": "Khối lượng chất tan trong dung dịch thứ nhất:\n$\\mathrm{m_{ct1}} = \\dfrac{4\\cdot 90}{100} = 3.6\\text{ (g)}$\nKhối lượng chất tan trong dung dịch thứ hai:\n$\\mathrm{m_{ct2}} = \\dfrac{9\\cdot 210}{100} = 18.9\\text{ (g)}$\nSau khi trộn, khối lượng chất tan và khối lượng dung dịch đều bằng tổng của hai dung dịch:\n$\\mathrm{m_{ct}} = 3.6 + 18.9 = 22.5\\text{ (g)}$\n$\\mathrm{m_{dd}} = 90 + 210 = 300\\text{ (g)}$\nNồng độ phần trăm của dung dịch thu được:\n$\\mathrm{C\\%} = \\dfrac{22.5}{300}\\cdot 100\\% = 7.5\\%$"
+    },
+    {
+     "ma_cau": "K08010105006",
+     "loai": "tra_loi_ngan",
+     "de": "Trộn $180$ g dung dịch $\\mathrm{HCl}$ $5\\%$ với $20$ g dung dịch $\\mathrm{HCl}$ $35\\%$. Tính nồng độ phần trăm của dung dịch thu được.",
+     "dap_an": "8",
+     "loi_giai": "Khối lượng chất tan trong dung dịch thứ nhất:\n$\\mathrm{m_{ct1}} = \\dfrac{5 \\cdot 180}{100} = 9$ (g)\nKhối lượng chất tan trong dung dịch thứ hai:\n$\\mathrm{m_{ct2}} = \\dfrac{35 \\cdot 20}{100} = 7$ (g)\nSau khi trộn, khối lượng chất tan và khối lượng dung dịch đều bằng tổng của hai dung dịch:\n$\\mathrm{m_{ct}} = 9 + 7 = 16$ (g)\n$\\mathrm{m_{dd}} = 180 + 20 = 200$ (g)\nNồng độ phần trăm của dung dịch thu được:\n$\\mathrm{C\\%} = \\dfrac{16}{200} \\cdot 100\\% = 8\\%$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00796",
+   "nhom_id": "KNB00367",
+   "thu_tu": 2,
+   "dang": "THÊM CHẤT TAN VÀO DUNG DỊCH CÓ SẴN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010105017",
+     "loai": "tra_loi_ngan",
+     "de": "Cần hoà tan thêm bao nhiêu gam $\\mathrm{Na_2CO_3}$ vào $225$ g dung dịch $\\mathrm{Na_2CO_3}$ $2\\%$ để thu được dung dịch $\\mathrm{Na_2CO_3}$ $10\\%$?",
+     "lua_chon": [
+      "20 g",
+      "22,5 g",
+      "25 g",
+      "180 g"
+     ],
+     "dap_an": "20",
+     "loi_giai": "Gọi khối lượng $\\mathrm{Na_2CO_3}$ cần thêm là $\\mathrm{a}$ ($\\mathrm{g}$). Khối lượng $\\mathrm{Na_2CO_3}$ ban đầu:\n$\\mathrm{m_{ct1} = \\dfrac{2 \\cdot 225}{100} = 4,5}$ ($\\mathrm{g}$)\nSau khi thêm, khối lượng chất tan là $(4,5 + \\mathrm{a})$ và khối lượng dung dịch là $(225 + \\mathrm{a})$. Ta có:\n$\\mathrm{\\dfrac{4,5 + a}{225 + a} \\cdot 100\\% = 10\\%}$\nGiải ra:\n$\\mathrm{a = \\dfrac{225 \\cdot (10 - 2)}{100 - 10} = 20}$ ($\\mathrm{g}$)"
+    },
+    {
+     "ma_cau": "K08010105009",
+     "loai": "tra_loi_ngan",
+     "de": "Cần hoà tan thêm bao nhiêu gam $\\mathrm{KCl}$ vào $160$ g dung dịch $\\mathrm{KCl}$ $5\\%$ để thu được dung dịch $\\mathrm{KCl}$ $20\\%$?",
+     "lua_chon": [
+      "24 g",
+      "30 g",
+      "32 g",
+      "40 g"
+     ],
+     "dap_an": "30",
+     "loi_giai": "Gọi khối lượng $\\mathrm{KCl}$ cần thêm là $a$ (g).\nKhối lượng $\\mathrm{KCl}$ ban đầu:\n$\\mathrm{m_{ct1}} = \\dfrac{5 \\cdot 160}{100} = 8$ (g)\nSau khi thêm, khối lượng chất tan là $(8 + a)$ và khối lượng dung dịch là $(160 + a)$. Ta có:\n$\\dfrac{8 + a}{160 + a} \\cdot 100\\% = 20\\%$\nGiải ra:\n$a = \\dfrac{160 \\cdot (20 - 5)}{100 - 20} = 30$ (g)"
+    },
+    {
+     "ma_cau": "K08010105018",
+     "loai": "tra_loi_ngan",
+     "de": "Cần hoà tan thêm bao nhiêu gam đường vào $360$ g nước đường $25\\%$ để thu được nước đường $40\\%$?",
+     "lua_chon": [
+      "90 g",
+      "135 g",
+      "144 g",
+      "240 g"
+     ],
+     "dap_an": "90",
+     "loi_giai": "Gọi khối lượng đường cần thêm là $\\mathrm{a}$ ($\\mathrm{g}$). Khối lượng đường ban đầu:\n$\\mathrm{m_{ct1} = \\dfrac{25 \\cdot 360}{100} = 90}$ ($\\mathrm{g}$)\nSau khi thêm, khối lượng chất tan là $(90 + \\mathrm{a})$ và khối lượng dung dịch là $(360 + \\mathrm{a})$. Ta có:\n$\\mathrm{\\dfrac{90 + a}{360 + a} \\cdot 100\\% = 40\\%}$\nGiải ra:\n$\\mathrm{a = \\dfrac{360 \\cdot (40 - 25)}{100 - 40} = 90}$ ($\\mathrm{g}$)"
+    },
+    {
+     "ma_cau": "K08010105015",
+     "loai": "tra_loi_ngan",
+     "de": "Cần hoà tan thêm bao nhiêu gam $\\mathrm{KNO_3}$ vào $400 \\mathrm{\\ g}$ dung dịch $\\mathrm{KNO_3}$ $4\\%$ để thu được dung dịch $\\mathrm{KNO_3}$ $20\\%$?",
+     "lua_chon": [
+      "80 g",
+      "96 g",
+      "100 g",
+      "320 g"
+     ],
+     "dap_an": "80",
+     "loi_giai": "Gọi khối lượng $\\mathrm{KNO_3}$ cần thêm là $\\mathrm{a \\ (g)}$. Khối lượng $\\mathrm{KNO_3}$ ban đầu:\n$\\mathrm{m_{ct1} = \\dfrac{4 \\cdot 400}{100} = 16 \\ (g)}$\nSau khi thêm, khối lượng chất tan là $\\mathrm{(16 + a)}$ và khối lượng dung dịch là $\\mathrm{(400 + a)}$. Ta có:\n$\\mathrm{\\dfrac{16 + a}{400 + a} \\cdot 100\\% = 20\\%}$\nGiải ra:\n$\\mathrm{a = \\dfrac{400 \\cdot (20 - 4)}{100 - 20} = 80 \\ (g)}$"
+    },
+    {
+     "ma_cau": "K08010105014",
+     "loai": "tra_loi_ngan",
+     "de": "Cần hoà tan thêm bao nhiêu gam $\\mathrm{NaOH}$ vào 50 g dung dịch $\\mathrm{NaOH}$ 20% để thu được dung dịch $\\mathrm{NaOH}$ 50%?",
+     "lua_chon": [
+      "15 g",
+      "18,75 g",
+      "25 g",
+      "30 g"
+     ],
+     "dap_an": "30",
+     "loi_giai": "Gọi khối lượng $\\mathrm{NaOH}$ cần thêm là a (g). Khối lượng $\\mathrm{NaOH}$ ban đầu:\n$$\\mathrm{m_{ct1} = \\dfrac{20 \\cdot 50}{100} = 10 (g)}$$\nSau khi thêm, khối lượng chất tan là $(10 + a)$ và khối lượng dung dịch là $(50 + a)$. Ta có:\n$$\\mathrm{\\dfrac{10 + a}{50 + a} \\cdot 100\\% = 50\\%}$$\nGiải ra:\n$$\\mathrm{a = \\dfrac{50 \\cdot (50 - 20)}{100 - 50} = 30 (g)}$$"
+    },
+    {
+     "ma_cau": "K08010105013",
+     "loai": "tra_loi_ngan",
+     "de": "Cần hoà tan thêm bao nhiêu gam đường vào 240 g nước đường 10% để thu được nước đường 40%?",
+     "lua_chon": [
+      "72 g",
+      "80 g",
+      "96 g",
+      "120 g"
+     ],
+     "dap_an": "120",
+     "loi_giai": "Gọi khối lượng đường cần thêm là a (g). Khối lượng đường ban đầu:\n$$\\mathrm{m_{ct1} = \\dfrac{10 \\cdot 240}{100} = 24 (g)}$$\nSau khi thêm, khối lượng chất tan là $(24 + a)$ và khối lượng dung dịch là $(240 + a)$. Ta có:\n$$\\mathrm{\\dfrac{24 + a}{240 + a} \\cdot 100\\% = 40\\%}$$\nGiải ra:\n$$\\mathrm{a = \\dfrac{240 \\cdot (40 - 10)}{100 - 40} = 120 (g)}$$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00797",
+   "nhom_id": "KNB00367",
+   "thu_tu": 3,
+   "dang": "CÔ CẠN, BAY HƠI BỚT NƯỚC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010105026",
+     "loai": "trac_nghiem",
+     "de": "Đun nóng 2 kg dung dịch $\\mathrm{NaCl}$ $0,9\\%$ để làm bay hơi $1,4$ kg nước (chất tan không bay hơi). Nồng độ phần trăm của dung dịch thu được là",
+     "lua_chon": [
+      "$0,03\\%$",
+      "$0,5294\\%$",
+      "$1,29\\%$",
+      "$3\\%$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi đơn vị:\n$\\mathrm{m_{dd1}} = 2\\ \\mathrm{kg} = 2\\ 000\\ \\mathrm{g}$\n$\\mathrm{m_{nước}} = 1,4\\ \\mathrm{kg} = 1\\ 400\\ \\mathrm{g}$\nKhi nước bay hơi, khối lượng chất tan không đổi:\n$\\mathrm{m_{ct}} = \\dfrac{0,9\\ \\cdot\\ 2\\ 000}{100} = 18\\ \\mathrm{(g)}$\nKhối lượng dung dịch sau khi bay hơi:\n$\\mathrm{m_{dd2}} = 2\\ 000 - 1\\ 400 = 600\\ \\mathrm{(g)}$\nNồng độ phần trăm của dung dịch thu được:\n$\\mathrm{C\\%} = \\dfrac{18}{600}\\ \\cdot\\ 100\\% = 3\\%$"
+    },
+    {
+     "ma_cau": "K08010105019",
+     "loai": "trac_nghiem",
+     "de": "Đun nóng 200 g dung dịch $\\mathrm{KNO_3}$ 6% để làm bay hơi 50 g nước (chất tan không bay hơi). Nồng độ phần trăm của dung dịch thu được là",
+     "lua_chon": [
+      "4,8%",
+      "8%",
+      "8,7%",
+      "24%"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khi nước bay hơi, khối lượng chất tan không đổi:\n$\\mathrm{m_{ct}} = \\dfrac{6 \\cdot 200}{100} = 12 \\ (\\mathrm{g})$\nKhối lượng dung dịch sau khi bay hơi:\n$\\mathrm{m_{dd2}} = 200 - 50 = 150 \\ (\\mathrm{g})$\nNồng độ phần trăm của dung dịch thu được:\n$\\mathrm{C\\%} = \\dfrac{12}{150} \\cdot 100\\% = 8\\%$"
+    },
+    {
+     "ma_cau": "K08010105024",
+     "loai": "trac_nghiem",
+     "de": "Trên ruộng muối, người ta để nắng làm bay hơi $0,3 \\text{ kg}$ nước từ $1 \\text{ kg}$ nước biển chứa $3,5\\%$ muối (coi muối là chất tan duy nhất). Nồng độ phần trăm của muối trong nước biển còn lại là",
+     "lua_chon": [
+      "$0,05\\%$",
+      "$2,69\\%$",
+      "$5\\%$",
+      "$5,26\\%$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi đơn vị:\n$m_{\\text{dd}1} = 1 \\text{ kg} = 1 \\ 000 \\text{ g}$\n$m_{\\text{nước}} = 0,3 \\text{ kg} = 300 \\text{ g}$\nKhi nước bay hơi, khối lượng chất tan không đổi:\n$m_{\\text{ct}} = \\dfrac{3,5 \\cdot 1 \\ 000}{100} = 35 \\text{ (g)}$\nKhối lượng dung dịch sau khi bay hơi:\n$m_{\\text{dd}2} = 1 \\ 000 - 300 = 700 \\text{ (g)}$\nNồng độ phần trăm của dung dịch thu được:\n$C\\% = \\dfrac{35}{700} \\cdot 100\\% = 5\\%$"
+    },
+    {
+     "ma_cau": "K08010105021",
+     "loai": "trac_nghiem",
+     "de": "Đun nóng 150 g dung dịch $\\mathrm{CuSO_4}$ 4% để làm bay hơi 50 g nước (chất tan không bay hơi). Nồng độ phần trăm của dung dịch thu được là",
+     "lua_chon": [
+      "0,06%",
+      "3%",
+      "6%",
+      "6,38%"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khi nước bay hơi, khối lượng chất tan không đổi:\n$\\mathrm{m_{ct} = \\dfrac{4 \\cdot 150}{100} = 6\\ (g)}$\nKhối lượng dung dịch sau khi bay hơi:\n$\\mathrm{m_{dd2} = 150 - 50 = 100\\ (g)}$\nNồng độ phần trăm của dung dịch thu được:\n$\\mathrm{C\\% = \\dfrac{6}{100} \\cdot 100\\% = 6\\%}$"
+    },
+    {
+     "ma_cau": "K08010105023",
+     "loai": "trac_nghiem",
+     "de": "Đun nóng 250 g dung dịch $\\mathrm{NaOH}$ 8% để làm bay hơi 90 g nước (chất tan không bay hơi). Nồng độ phần trăm của dung dịch thu được là",
+     "lua_chon": [
+      "0,125%",
+      "2,88%",
+      "5,88%",
+      "12,5%"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khi nước bay hơi, khối lượng chất tan không đổi:\n$\\mathrm{m_{ct} = \\dfrac{8 \\cdot 250}{100} = 20 (g)}$\nKhối lượng dung dịch sau khi bay hơi:\n$\\mathrm{m_{dd2} = 250 - 90 = 160 (g)}$\nNồng độ phần trăm của dung dịch thu được:\n$\\mathrm{C\\% = \\dfrac{20}{160} \\cdot 100\\% = 12,5\\%}$"
+    },
+    {
+     "ma_cau": "K08010105025",
+     "loai": "trac_nghiem",
+     "de": "Đun nóng $80 \\ \\mathrm{g}$ dung dịch $\\mathrm{NaCl}$ $15\\%$ để làm bay hơi $32 \\ \\mathrm{g}$ nước (chất tan không bay hơi). Nồng độ phần trăm của dung dịch thu được là",
+     "lua_chon": [
+      "$0.25\\%$",
+      "$10.71\\%$",
+      "$25\\%$",
+      "$33.33\\%$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khi nước bay hơi, khối lượng chất tan không đổi:\n$\\mathrm{m_{ct}} = \\dfrac{15 \\cdot 80}{100} = 12 \\ (\\mathrm{g})$\nKhối lượng dung dịch sau khi bay hơi:\n$\\mathrm{m_{dd2}} = 80 - 32 = 48 \\ (\\mathrm{g})$\nNồng độ phần trăm của dung dịch thu được:\n$\\mathrm{C\\%} = \\dfrac{12}{48} \\cdot 100\\% = 25\\%$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00798",
+   "nhom_id": "KNB00367",
+   "thu_tu": 4,
+   "dang": "TRỘN HAI DUNG DỊCH THEO NỒNG ĐỘ MOL",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010105032",
+     "loai": "tra_loi_ngan",
+     "de": "Trộn $120\\ \\mathrm{mL}$ dung dịch $\\mathrm{HCl}$ $1.5\\ \\mathrm{M}$ với $80\\ \\mathrm{mL}$ dung dịch $\\mathrm{HCl}$ $0.5\\ \\mathrm{M}$. Coi thể tích dung dịch sau khi trộn bằng tổng thể tích hai dung dịch đem trộn. Tính nồng độ mol của dung dịch thu được.",
+     "dap_an": "1.1",
+     "loi_giai": "Đổi đơn vị:\n$V_1 = 120\\ \\mathrm{mL} = 0.12\\ \\mathrm{L}$\n$V_2 = 80\\ \\mathrm{mL} = 0.08\\ \\mathrm{L}$\nSố mol chất tan trong mỗi dung dịch:\n$n_1 = 1.5 \\cdot 0.12 = 0.18\\ \\mathrm{(mol)}$\n$n_2 = 0.5 \\cdot 0.08 = 0.04\\ \\mathrm{(mol)}$\nSau khi trộn:\n$n = 0.18 + 0.04 = 0.22\\ \\mathrm{(mol)}$\n$V = 0.12 + 0.08 = 0.2\\ \\mathrm{(L)}$\nNồng độ mol của dung dịch thu được:\n$C_M = \\dfrac{0.22}{0.2} = 1.1\\ \\mathrm{(M)}$"
+    },
+    {
+     "ma_cau": "K08010105028",
+     "loai": "tra_loi_ngan",
+     "de": "Trộn $250\\ \\mathrm{mL}$ dung dịch $\\mathrm{KCl}\\ 0,2\\ \\mathrm{M}$ với $250\\ \\mathrm{mL}$ dung dịch $\\mathrm{KCl}\\ 0,6\\ \\mathrm{M}$. Coi thể tích dung dịch sau khi trộn bằng tổng thể tích hai dung dịch đem trộn. Tính nồng độ mol của dung dịch thu được.",
+     "dap_an": "0.4",
+     "loi_giai": "Đổi đơn vị:\n$V_1 = 250\\ \\mathrm{mL} = 0,25\\ \\mathrm{L}$\n$V_2 = 250\\ \\mathrm{mL} = 0,25\\ \\mathrm{L}$\nSố mol chất tan trong mỗi dung dịch:\n$n_1 = 0,2\\ \\cdot\\ 0,25 = 0,05\\ \\mathrm{(mol)}$\n$n_2 = 0,6\\ \\cdot\\ 0,25 = 0,15\\ \\mathrm{(mol)}$\nSau khi trộn:\n$n = 0,05 + 0,15 = 0,2\\ \\mathrm{(mol)}$\n$V = 0,25 + 0,25 = 0,5\\ \\mathrm{(L)}$\nNồng độ mol của dung dịch thu được:\n$\\mathrm{C_M} = \\dfrac{0,2}{0,5} = 0,4\\ \\mathrm{(M)}$"
+    },
+    {
+     "ma_cau": "K08010105027",
+     "loai": "tra_loi_ngan",
+     "de": "Trộn $100\\ \\mathrm{mL}$ dung dịch $\\mathrm{NaOH}\\ 1\\ \\mathrm{M}$ với $400\\ \\mathrm{mL}$ dung dịch $\\mathrm{NaOH}\\ 0,5\\ \\mathrm{M}$. Coi thể tích dung dịch sau khi trộn bằng tổng thể tích hai dung dịch đem trộn. Tính nồng độ mol của dung dịch thu được.",
+     "dap_an": "0.6",
+     "loi_giai": "Đổi đơn vị:\n$V_1 = 100\\ \\mathrm{mL} = 0,1\\ \\mathrm{L}$\n$V_2 = 400\\ \\mathrm{mL} = 0,4\\ \\mathrm{L}$\nSố mol chất tan trong mỗi dung dịch:\n$n_1 = 1\\ \\cdot\\ 0,1 = 0,1\\ \\mathrm{(mol)}$\n$n_2 = 0,5\\ \\cdot\\ 0,4 = 0,2\\ \\mathrm{(mol)}$\nSau khi trộn:\n$n = 0,1 + 0,2 = 0,3\\ \\mathrm{(mol)}$\n$V = 0,1 + 0,4 = 0,5\\ \\mathrm{(L)}$\nNồng độ mol của dung dịch thu được:\n$\\mathrm{C_M} = \\dfrac{0,3}{0,5} = 0,6\\ \\mathrm{(M)}$"
+    },
+    {
+     "ma_cau": "K08010105029",
+     "loai": "tra_loi_ngan",
+     "de": "Trộn 50 mL dung dịch $\\mathrm{H_2SO_4}$ 3 M với 450 mL dung dịch $\\mathrm{H_2SO_4}$ 0,2 M. Coi thể tích dung dịch sau khi trộn bằng tổng thể tích hai dung dịch đem trộn. Tính nồng độ mol của dung dịch thu được.",
+     "dap_an": "0.48",
+     "loi_giai": "Đổi đơn vị:\n$\\mathrm{V_1 = 50\\ mL = 0,05\\ L}$\n$\\mathrm{V_2 = 450\\ mL = 0,45\\ L}$\nSố mol chất tan trong mỗi dung dịch:\n$\\mathrm{n_1 = 3 \\cdot 0,05 = 0,15\\ (mol)}$\n$\\mathrm{n_2 = 0,2 \\cdot 0,45 = 0,09\\ (mol)}$\nSau khi trộn:\n$\\mathrm{n = 0,15 + 0,09 = 0,24\\ (mol)}$\n$\\mathrm{V = 0,05 + 0,45 = 0,5\\ (L)}$\nNồng độ mol của dung dịch thu được:\n$\\mathrm{C_M = \\dfrac{0,24}{0,5} = 0,48\\ (M)}$"
+    },
+    {
+     "ma_cau": "K08010105036",
+     "loai": "tra_loi_ngan",
+     "de": "Trộn $25$ mL dung dịch $\\mathrm{HCl}$ $4$ M với $225$ mL dung dịch $\\mathrm{HCl}$ $0,2$ M. Coi thể tích dung dịch sau khi trộn bằng tổng thể tích hai dung dịch đem trộn. Tính nồng độ mol của dung dịch thu được.",
+     "dap_an": "0.58",
+     "loi_giai": "Đổi đơn vị:\n$V_1 = 25$ mL $= 0,025$ L\n$V_2 = 225$ mL $= 0,225$ L.\nSố mol chất tan trong mỗi dung dịch:\n$n_1 = 4 \\cdot 0,025 = 0,1$ (mol)\n$n_2 = 0,2 \\cdot 0,225 = 0,045$ (mol)\nSau khi trộn:\n$n = 0,1 + 0,045 = 0,145$ (mol)\n$V = 0,025 + 0,225 = 0,25$ (L)\nNồng độ mol của dung dịch thu được:\n$\\mathrm{C_M} = \\dfrac{0,145}{0,25} = 0,58$ (M)"
+    },
+    {
+     "ma_cau": "K08010105030",
+     "loai": "tra_loi_ngan",
+     "de": "Trộn 300 mL dung dịch $\\mathrm{CuSO_4}$ 0,1 M với 200 mL dung dịch $\\mathrm{CuSO_4}$ 0,6 M. Coi thể tích dung dịch sau khi trộn bằng tổng thể tích hai dung dịch đem trộn. Tính nồng độ mol của dung dịch thu được.",
+     "dap_an": "0.3",
+     "loi_giai": "Đổi đơn vị:\n$\\mathrm{V_1 = 300\\ mL = 0,3\\ L}$\n$\\mathrm{V_2 = 200\\ mL = 0,2\\ L}$\nSố mol chất tan trong mỗi dung dịch:\n$\\mathrm{n_1 = 0,1 \\cdot 0,3 = 0,03\\ (mol)}$\n$\\mathrm{n_2 = 0,6 \\cdot 0,2 = 0,12\\ (mol)}$\nSau khi trộn:\n$\\mathrm{n = 0,03 + 0,12 = 0,15\\ (mol)}$\n$\\mathrm{V = 0,3 + 0,2 = 0,5\\ (L)}$\nNồng độ mol của dung dịch thu được:\n$\\mathrm{C_M = \\dfrac{0,15}{0,5} = 0,3\\ (M)}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00799",
+   "nhom_id": "KNB00367",
+   "thu_tu": 5,
+   "dang": "TÍNH KHỐI LƯỢNG HAI DUNG DỊCH CẦN TRỘN ĐỂ ĐẠT NỒNG ĐỘ ĐÍCH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010105039",
+     "loai": "tu_luan",
+     "de": "Trộn dung dịch $\\mathrm{H_2SO_4}$ 10% với dung dịch $\\mathrm{H_2SO_4}$ 40% để được 600 g dung dịch $\\mathrm{H_2SO_4}$ 20%. Tính khối lượng dung dịch $\\mathrm{H_2SO_4}$ 10% cần lấy.",
+     "dap_an": "400",
+     "loi_giai": "Gọi khối lượng dung dịch $\\mathrm{H_2SO_4}$ 10% cần lấy là $x$ (g), khối lượng dung dịch $\\mathrm{H_2SO_4}$ 40% là $(600 - x)$ (g).\nKhối lượng chất tan được bảo toàn:\n$$\\dfrac{10 \\cdot x}{100} + \\dfrac{40 \\cdot (600 - x)}{100} = \\dfrac{20 \\cdot 600}{100}$$\nBiến đổi được:\n$$30 \\cdot x = 12\\,000$$\nKhối lượng dung dịch $\\mathrm{H_2SO_4}$ 10% cần lấy:\n$$x = \\dfrac{12\\,000}{30} = 400 \\text{ (g)}$$"
+    },
+    {
+     "ma_cau": "K08010105040",
+     "loai": "tu_luan",
+     "de": "Trộn nước đường 4% với nước đường 24% để được 250 g nước đường 12%. Tính khối lượng nước đường 4% cần lấy.",
+     "dap_an": "150",
+     "loi_giai": "Gọi khối lượng nước đường 4% cần lấy là $x$ (g), khối lượng nước đường 24% là $(250 - x)$ (g).\nKhối lượng chất tan được bảo toàn:\n$$\\dfrac{4 \\cdot x}{100} + \\dfrac{24 \\cdot (250 - x)}{100} = \\dfrac{12 \\cdot 250}{100}$$\nBiến đổi được:\n$$20 \\cdot x = 3\\,000$$\nKhối lượng nước đường 4% cần lấy:\n$$x = \\dfrac{3\\,000}{20} = 150 \\text{ (g)}$$"
+    },
+    {
+     "ma_cau": "K08010105037",
+     "loai": "tu_luan",
+     "de": "Trộn dung dịch $\\mathrm{KCl}$ 5% với dung dịch $\\mathrm{KCl}$ 25% để được 400 g dung dịch $\\mathrm{KCl}$ 10%. Tính khối lượng dung dịch $\\mathrm{KCl}$ 5% cần lấy.",
+     "dap_an": "300",
+     "loi_giai": "Gọi khối lượng dung dịch $\\mathrm{KCl}$ 5% cần lấy là $x$ (g), khối lượng dung dịch $\\mathrm{KCl}$ 25% là $(400 - x)$ (g).\nKhối lượng chất tan được bảo toàn:\n$\\dfrac{5 \\cdot x}{100} + \\dfrac{25 \\cdot (400 - x)}{100} = \\dfrac{10 \\cdot 400}{100}$\nBiến đổi được:\n$20 \\cdot x = 6000$\nKhối lượng dung dịch $\\mathrm{KCl}$ 5% cần lấy:\n$x = \\dfrac{6000}{20} = 300$ (g)"
+    },
+    {
+     "ma_cau": "K08010105045",
+     "loai": "tu_luan",
+     "de": "Trộn dung dịch $\\mathrm{Na_2CO_3}$ 3% với dung dịch $\\mathrm{Na_2CO_3}$ 9% để được 240 g dung dịch $\\mathrm{Na_2CO_3}$ 7%. Tính khối lượng dung dịch $\\mathrm{Na_2CO_3}$ 3% cần lấy.",
+     "dap_an": "80",
+     "loi_giai": "Gọi khối lượng dung dịch $\\mathrm{Na_2CO_3}$ 3% cần lấy là $\\mathrm{x}$ (g), khối lượng dung dịch $\\mathrm{Na_2CO_3}$ 9% là $(240 - \\mathrm{x})$ (g).\nKhối lượng chất tan được bảo toàn:\n$\\dfrac{3 \\cdot \\mathrm{x}}{100} + \\dfrac{9 \\cdot (240 - \\mathrm{x})}{100} = \\dfrac{7 \\cdot 240}{100}$\nBiến đổi được:\n$6 \\cdot \\mathrm{x} = 480$\nKhối lượng dung dịch $\\mathrm{Na_2CO_3}$ 3% cần lấy:\n$\\mathrm{x} = \\dfrac{480}{6} = 80$ (g)"
+    },
+    {
+     "ma_cau": "K08010105041",
+     "loai": "tu_luan",
+     "de": "Trộn dung dịch $\\mathrm{NaCl}$ 5% với dung dịch $\\mathrm{NaCl}$ 15% để được 150 g dung dịch $\\mathrm{NaCl}$ 9%. Tính khối lượng dung dịch $\\mathrm{NaCl}$ 5% cần lấy.",
+     "dap_an": "90",
+     "loi_giai": "Gọi khối lượng dung dịch $\\mathrm{NaCl}$ 5% cần lấy là $x$ (g), khối lượng dung dịch $\\mathrm{NaCl}$ 15% là $(150 - x)$ (g).\nKhối lượng chất tan được bảo toàn:\n$\\dfrac{5 \\cdot x}{100} + \\dfrac{15 \\cdot (150 - x)}{100} = \\dfrac{9 \\cdot 150}{100}$\nBiến đổi được:\n$10 \\cdot x = 900$\nKhối lượng dung dịch $\\mathrm{NaCl}$ 5% cần lấy:\n$x = \\dfrac{900}{10} = 90$ (g)"
+    },
+    {
+     "ma_cau": "K08010105038",
+     "loai": "tu_luan",
+     "de": "Trộn dung dịch $\\mathrm{CuSO_4}$ 2% với dung dịch $\\mathrm{CuSO_4}$ 10% để được 200 g dung dịch $\\mathrm{CuSO_4}$ 6%. Tính khối lượng dung dịch $\\mathrm{CuSO_4}$ 2% cần lấy.",
+     "dap_an": "100",
+     "loi_giai": "Gọi khối lượng dung dịch $\\mathrm{CuSO_4}$ 2% cần lấy là $x$ (g), khối lượng dung dịch $\\mathrm{CuSO_4}$ 10% là $(200 - x)$ (g).\nKhối lượng chất tan được bảo toàn:\n$\\dfrac{2 \\cdot x}{100} + \\dfrac{10 \\cdot (200 - x)}{100} = \\dfrac{6 \\cdot 200}{100}$\nBiến đổi được:\n$8 \\cdot x = 800$\nKhối lượng dung dịch $\\mathrm{CuSO_4}$ 2% cần lấy:\n$x = \\dfrac{800}{8} = 100$ (g)"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00800",
+   "nhom_id": "KNB00368",
+   "thu_tu": 1,
+   "dang": "HIỆN TƯỢNG TRONG ĐỜI SỐNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 33,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010201042",
+     "loai": "trac_nghiem",
+     "de": "Quả chuối xanh để vài ngày thì chín, vỏ chuyển sang màu vàng, ruột mềm và có vị ngọt. Quá trình trên thuộc loại biến đổi nào?",
+     "lua_chon": [
+      "Biến đổi vật lí, vì không có chất mới tạo thành.",
+      "Biến đổi hoá học, vì có chất mới tạo thành.",
+      "Biến đổi vật lí, vì quả chuối chỉ thay đổi màu sắc.",
+      "Biến đổi hoá học, vì quả chuối mềm đi."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ruột chuối có vị ngọt mà chuối xanh không có, chứng tỏ có chất mới (đường) tạo thành.\nĐây là biến đổi hoá học."
+    },
+    {
+     "ma_cau": "K08010201043",
+     "loai": "trac_nghiem",
+     "de": "Ở xưởng thuỷ tinh, người thợ nung chảy thuỷ tinh rồi thổi thành bình hoa. Quá trình trên thuộc loại biến đổi nào?",
+     "lua_chon": [
+      "Biến đổi vật lí, vì không có chất mới tạo thành.",
+      "Biến đổi hoá học, vì có chất mới tạo thành.",
+      "Biến đổi hoá học, vì thuỷ tinh bị nung nóng chảy.",
+      "Biến đổi vật lí, vì thuỷ tinh đã thành chất mới."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thuỷ tinh chỉ thay đổi trạng thái và hình dạng, bình hoa vẫn là thuỷ tinh.\nĐây là biến đổi vật lí."
+    },
+    {
+     "ma_cau": "K08010201044",
+     "loai": "trac_nghiem",
+     "de": "Khi thắp nến, phần sáp ở gần bấc nến chảy thành sáp lỏng. Quá trình sáp chảy lỏng thuộc loại biến đổi nào?",
+     "lua_chon": [
+      "Biến đổi hoá học, vì có chất mới tạo thành.",
+      "Biến đổi hoá học, vì nến đang cháy.",
+      "Biến đổi vật lí, vì sáp đã thành chất mới.",
+      "Biến đổi vật lí, vì không có chất mới tạo thành."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Sáp chỉ chuyển từ thể rắn sang thể lỏng, sáp lỏng vẫn là sáp, không có chất mới tạo thành. Đây là biến đổi vật lí."
+    },
+    {
+     "ma_cau": "K08010201039",
+     "loai": "trac_nghiem",
+     "de": "Than tổ ong cháy trong bếp, tạo ra khí carbon dioxide và để lại xỉ than. Quá trình trên thuộc loại biến đổi nào?",
+     "lua_chon": [
+      "Biến đổi vật lí, vì không có chất mới tạo thành.",
+      "Biến đổi vật lí, vì than chỉ chuyển sang thể khí.",
+      "Biến đổi hoá học, vì có chất mới tạo thành.",
+      "Biến đổi hoá học, vì than bị nóng đỏ."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Than cháy tạo ra khí carbon dioxide là chất khác với than ban đầu. Đây là biến đổi hoá học."
+    },
+    {
+     "ma_cau": "K08010201041",
+     "loai": "trac_nghiem",
+     "de": "Cho một thìa muối ăn vào cốc nước rồi khuấy đều, muối tan hết tạo thành nước muối. Quá trình trên thuộc loại biến đổi nào?",
+     "lua_chon": [
+      "Biến đổi hoá học, vì có chất mới tạo thành.",
+      "Biến đổi hoá học, vì muối ăn không còn nhìn thấy.",
+      "Biến đổi vật lí, vì muối ăn đã thành chất khác.",
+      "Biến đổi vật lí, vì không có chất mới tạo thành."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Muối ăn chỉ phân bố đều vào nước, nước muối vẫn có vị mặn của muối, không có chất mới tạo thành.\nĐây là biến đổi vật lí."
+    },
+    {
+     "ma_cau": "K08010201045",
+     "loai": "trac_nghiem",
+     "de": "Mở nắp chai nước ngọt có ga, có nhiều bọt khí carbon dioxide thoát ra. Biết khí này đã được nén và hoà tan sẵn trong nước ngọt. Quá trình trên thuộc loại biến đổi nào?",
+     "lua_chon": [
+      "Biến đổi hoá học, vì có chất mới tạo thành.",
+      "Biến đổi hoá học, vì có chất khí thoát ra.",
+      "Biến đổi vật lí, vì không có chất mới tạo thành.",
+      "Biến đổi hoá học, vì có bọt khí sủi lên."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khí carbon dioxide có sẵn trong nước ngọt, khi mở nắp chỉ thoát ra ngoài, không có chất mới tạo thành. Đây là biến đổi vật lí."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00801",
+   "nhom_id": "KNB00368",
+   "thu_tu": 2,
+   "dang": "HIỆN TƯỢNG TRONG THÍ NGHIỆM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010201048",
+     "loai": "trac_nghiem",
+     "de": "Thả một chiếc đinh sắt vào dung dịch \\mathrm{copper(II)} \\mathrm{sulfate} màu xanh. Sau một thời gian, có lớp kim loại màu đỏ bám ngoài đinh sắt. Quá trình trên thuộc loại biến đổi nào?",
+     "lua_chon": [
+      "Biến đổi hoá học, vì có chất mới tạo thành.",
+      "Biến đổi vật lí, vì không có chất mới tạo thành.",
+      "Biến đổi vật lí, vì đinh sắt chỉ đổi màu.",
+      "Biến đổi hoá học, vì đinh sắt bị ngâm trong dung dịch."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Lớp kim loại màu đỏ (copper) là chất mới tạo thành trên bề mặt đinh sắt.\nĐây là biến đổi hoá học."
+    },
+    {
+     "ma_cau": "K08010201047",
+     "loai": "trac_nghiem",
+     "de": "Đốt một dải magnesium trong không khí, dải magnesium cháy sáng chói và tạo thành chất bột màu trắng. Quá trình trên thuộc loại biến đổi nào?",
+     "lua_chon": [
+      "Biến đổi vật lí, vì không có chất mới tạo thành.",
+      "Biến đổi vật lí, vì magnesium chỉ chuyển sang thể bột.",
+      "Biến đổi hoá học, vì dải magnesium bị đốt nóng.",
+      "Biến đổi hoá học, vì có chất mới tạo thành."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Chất bột màu trắng là chất mới (magnesium oxide), khác với kim loại magnesium ban đầu.\nĐây là biến đổi hoá học."
+    },
+    {
+     "ma_cau": "K08010201051",
+     "loai": "trac_nghiem",
+     "de": "Đun sôi một bát nước muối, nước bay hơi dần và còn lại các hạt muối trắng dưới đáy bát. Quá trình trên thuộc loại biến đổi nào?",
+     "lua_chon": [
+      "Biến đổi hoá học, vì có chất mới tạo thành.",
+      "Biến đổi hoá học, vì muối đã tách ra khỏi nước.",
+      "Biến đổi vật lí, vì không có chất mới tạo thành.",
+      "Biến đổi vật lí, vì hạt muối là chất mới."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nước chỉ chuyển sang thể hơi, muối vẫn là muối ăn ban đầu, không có chất mới tạo thành.\nĐây là biến đổi vật lí."
+    },
+    {
+     "ma_cau": "K08010201049",
+     "loai": "trac_nghiem",
+     "de": "Dùng chày và cối sứ nghiền các tinh thể copper(II) sulfate thành bột mịn. Quá trình trên thuộc loại biến đổi nào?",
+     "lua_chon": [
+      "Biến đổi hoá học, vì có chất mới tạo thành.",
+      "Biến đổi hoá học, vì tinh thể đã thành dạng bột.",
+      "Biến đổi vật lí, vì không có chất mới tạo thành.",
+      "Biến đổi vật lí, vì bột thu được là chất mới."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tinh thể chỉ bị chia nhỏ, bột thu được vẫn là $\\mathrm{copper(II)}$ $\\mathrm{sulfate}$. Đây là biến đổi vật lí."
+    },
+    {
+     "ma_cau": "K08010201046",
+     "loai": "trac_nghiem",
+     "de": "Đun nóng nhẹ một ống nghiệm chứa nước đá, nước đá tan dần thành nước lỏng. Quá trình trên thuộc loại biến đổi nào?",
+     "lua_chon": [
+      "Biến đổi hoá học, vì có chất mới tạo thành.",
+      "Biến đổi vật lí, vì không có chất mới tạo thành.",
+      "Biến đổi hoá học, vì ống nghiệm bị đun nóng.",
+      "Biến đổi vật lí, vì nước đá đã thành chất mới."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nước đá chỉ chuyển từ thể rắn sang thể lỏng, không có chất mới tạo thành.\nĐây là biến đổi vật lí."
+    },
+    {
+     "ma_cau": "K08010201050",
+     "loai": "trac_nghiem",
+     "de": "Trộn bột sắt với bột sulfur rồi đun nóng hỗn hợp trong ống nghiệm. Sau phản ứng, thu được một chất rắn màu đen. Quá trình trên thuộc loại biến đổi nào?",
+     "lua_chon": [
+      "Biến đổi vật lí, vì không có chất mới tạo thành.",
+      "Biến đổi hoá học, vì có chất mới tạo thành.",
+      "Biến đổi vật lí, vì hai chất bột chỉ trộn lẫn với nhau.",
+      "Biến đổi hoá học, vì hỗn hợp được đun nóng."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chất rắn màu đen là chất mới ($\\mathrm{iron(II)}$ $\\mathrm{sulfide}$), không còn là sắt và sulfur ban đầu.\nĐây là biến đổi hoá học."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00802",
+   "nhom_id": "KNB00368",
+   "thu_tu": 3,
+   "dang": "DẤU HIỆU CHẤT MỚI TẠO THÀNH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010201055",
+     "loai": "trac_nghiem",
+     "de": "Trong biến đổi vật lí, chất",
+     "lua_chon": [
+      "vẫn giữ nguyên là chất ban đầu.",
+      "biến đổi thành chất khác.",
+      "luôn chuyển sang thể khí.",
+      "luôn bị đun nóng."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trong biến đổi vật lí, chất có thể thay đổi trạng thái hoặc hình dạng nhưng vẫn giữ nguyên là chất ban đầu."
+    },
+    {
+     "ma_cau": "K08010201060",
+     "loai": "trac_nghiem",
+     "de": "Khi nến cháy, có hai quá trình xảy ra: sáp chảy lỏng và sáp cháy. Dấu hiệu nào sau đây chứng tỏ sáp cháy là biến đổi hoá học?",
+     "lua_chon": [
+      "Sáp chuyển từ thể rắn sang thể lỏng.",
+      "Sáp lỏng đông lại khi nhỏ xuống đế nến.",
+      "Khí sinh ra làm đục nước vôi trong.",
+      "Ngọn nến làm không khí xung quanh nóng lên."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khí làm đục nước vôi trong là carbon dioxide, một chất mới được tạo thành khi sáp cháy.\nVậy sáp cháy là biến đổi hóa học."
+    },
+    {
+     "ma_cau": "K08010201056",
+     "loai": "trac_nghiem",
+     "de": "Đun đường trong chảo quá lửa, đường chuyển thành một chất màu đen. Điều nào sau đây chứng tỏ chất màu đen là chất mới?",
+     "lua_chon": [
+      "Chất màu đen nóng hơn nhiều so với đường lúc đầu.",
+      "Chất màu đen không tan trong nước và không có vị ngọt.",
+      "Chất màu đen nằm thành lớp mỏng ở đáy chảo.",
+      "Đường đã chảy lỏng hoàn toàn trước khi chuyển màu."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chất màu đen có tính chất khác hẳn đường (không tan, không ngọt), chứng tỏ đó là chất mới."
+    },
+    {
+     "ma_cau": "K08010201057",
+     "loai": "trac_nghiem",
+     "de": "Thanh sắt để lâu ngoài trời bị phủ một lớp gỉ màu nâu đỏ. Điều nào sau đây chứng tỏ gỉ sắt là chất khác với sắt?",
+     "lua_chon": [
+      "Gỉ sắt chỉ nằm trên bề mặt thanh sắt.",
+      "Gỉ sắt có thể cạo ra khỏi thanh sắt.",
+      "Gỉ sắt xuất hiện sau nhiều ngày.",
+      "Gỉ sắt giòn, xốp và không có ánh kim như sắt."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Gỉ sắt có tính chất khác hẳn sắt (giòn, xốp, không có ánh kim), chứng tỏ gỉ sắt là chất mới."
+    },
+    {
+     "ma_cau": "K08010201054",
+     "loai": "trac_nghiem",
+     "de": "Dấu hiệu chính để phân biệt biến đổi hoá học với biến đổi vật lí là",
+     "lua_chon": [
+      "có sự thay đổi trạng thái.",
+      "có sự thay đổi hình dạng.",
+      "có chất mới tạo thành.",
+      "có sự đun nóng chất."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Biến đổi hoá học có chất mới tạo thành, còn biến đổi vật lí thì không."
+    },
+    {
+     "ma_cau": "K08010201059",
+     "loai": "trac_nghiem",
+     "de": "Đun sôi nước rồi cho hơi nước ngưng tụ lại, thu được nước lỏng. Nước thu được vẫn là nước ban đầu, vì",
+     "lua_chon": [
+      "Nước đã được đun nóng đến nhiệt độ sôi rồi để nguội.",
+      "Nước được đun nóng liên tục ở nhiệt độ cao.",
+      "Nước thu được được chứa trong một bình sạch khác.",
+      "Nước thu được vẫn có các tính chất như nước ban đầu."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nước ngưng tụ vẫn không màu, không mùi, sôi ở $100^{\\circ}\\mathrm{C}$ như nước ban đầu, nên không có chất mới tạo thành."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00803",
+   "nhom_id": "KNB00368",
+   "thu_tu": 4,
+   "dang": "PHÂN LOẠI MỘT NHÓM HIỆN TƯỢNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010201063",
+     "loai": "trac_nghiem",
+     "de": "Cho các hiện tượng: (1) hoà tan đường vào nước; (2) ủ gạo nếp với men thành rượu; (3) phơi nước biển thu được muối; (4) nung đá vôi thu được vôi sống; (5) bánh mì nướng quá lửa bị cháy đen. Số hiện tượng là biến đổi hoá học là",
+     "lua_chon": [
+      "1.",
+      "2.",
+      "3.",
+      "4."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Biến đổi hoá học là (2), (4), (5) vì có chất mới tạo thành (rượu, vôi sống, chất cháy đen).Vậy có 3 hiện tượng."
+    },
+    {
+     "ma_cau": "K08010201061",
+     "loai": "trac_nghiem",
+     "de": "Cho các hiện tượng: (1) cồn để trong lọ hở nắp bị bay hơi; (2) đốt cháy cồn trong đèn cồn; (3) nước đá tan thành nước lỏng; (4) thanh củi cháy thành than. Số hiện tượng là biến đổi hoá học là",
+     "lua_chon": [
+      "2.",
+      "3.",
+      "4.",
+      "5."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Biến đổi hoá học là (2) và (4) vì có chất mới tạo thành.Vậy có 2 hiện tượng."
+    },
+    {
+     "ma_cau": "K08010201065",
+     "loai": "trac_nghiem",
+     "de": "Cho các hiện tượng: (1) đốt khí gas để đun nấu; (2) bơm hơi vào quả bóng bay; (3) cho vôi sống vào nước tạo thành vôi tôi; (4) đồ trang sức bằng bạc đeo lâu bị xỉn đen. Dãy nào sau đây gồm các hiện tượng đều là biến đổi hoá học?",
+     "lua_chon": [
+      "(1), (3), (4).",
+      "(1), (2), (3).",
+      "(1), (2), (4).",
+      "(2), (3), (4)."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ở (1), (3), (4) đều có chất mới tạo thành.\nỞ (2), không khí chỉ bị nén vào bóng, không có chất mới.\nVậy dãy gồm (1), (3), (4)."
+    },
+    {
+     "ma_cau": "K08010201064",
+     "loai": "trac_nghiem",
+     "de": "Cho các hiện tượng: (1) sương đọng trên lá cây vào sáng sớm; (2) lá cây rụng bị mục nát; (3) băng ở hai cực tan dần; (4) gió thổi cát bay thành đụn cát; (5) cây xanh quang hợp tạo ra tinh bột. Số hiện tượng là biến đổi vật lí là",
+     "lua_chon": [
+      "2.",
+      "3.",
+      "4.",
+      "5."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Biến đổi vật lí là (1), (3), (4) vì không có chất mới tạo thành.\nVậy có 3 hiện tượng."
+    },
+    {
+     "ma_cau": "K08010201062",
+     "loai": "trac_nghiem",
+     "de": "Cho các hiện tượng: (1) cắt dây đồng thành nhiều đoạn; (2) dây đồng đốt nóng trong không khí chuyển thành chất màu đen; (3) kéo đồng thành sợi dây mảnh; (4) nấu chảy đồng để đúc tượng. Dãy nào sau đây gồm các hiện tượng đều là biến đổi vật lí?",
+     "lua_chon": [
+      "(1), (2), (3).",
+      "(1), (2), (4).",
+      "(2), (3), (4).",
+      "(1), (3), (4)."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ở (1), (3), (4), đồng chỉ thay đổi hình dạng hoặc trạng thái, không có chất mới.Ở (2), chất màu đen là chất mới nên là biến đổi hoá học.Vậy dãy gồm (1), (3), (4)."
+    },
+    {
+     "ma_cau": "K08010201066",
+     "loai": "trac_nghiem",
+     "de": "Cho các hiện tượng trong nhà bếp: (1) xay hạt tiêu thành bột; (2) muối dưa cải, sau vài ngày dưa có vị chua; (3) đun nóng mỡ lợn đông thành mỡ lỏng; (4) đốt cháy khí gas; (5) thịt để lâu ngoài không khí bị ôi, có mùi hôi; (6) hoà tan bột ngọt vào nồi canh. Số hiện tượng là biến đổi hoá học là",
+     "lua_chon": [
+      "3.",
+      "4.",
+      "5.",
+      "6."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Biến đổi hoá học là (2), (4), (5) vì có chất mới tạo thành.\nVậy có 3 hiện tượng."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00809",
+   "nhom_id": "KNB00370",
+   "thu_tu": 1,
+   "dang": "ĐỊNH NGHĨA VÀ VÍ DỤ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010203047",
+     "loai": "trac_nghiem",
+     "de": "Phản ứng tỏa nhiệt là phản ứng",
+     "lua_chon": [
+      "nhận năng lượng dưới dạng nhiệt từ môi trường.",
+      "giải phóng năng lượng dưới dạng nhiệt ra môi trường.",
+      "không trao đổi nhiệt với môi trường.",
+      "chỉ xảy ra khi được đun nóng liên tục."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Phản ứng tỏa nhiệt là phản ứng giải phóng năng lượng dưới dạng nhiệt ra môi trường."
+    },
+    {
+     "ma_cau": "K08010203055",
+     "loai": "trac_nghiem",
+     "de": "Trong lò nung vôi, phải đốt than liên tục để cung cấp nhiệt thì đá vôi mới bị phân huỷ thành vôi sống. Điều này chứng tỏ phản ứng phân huỷ đá vôi",
+     "lua_chon": [
+      "là phản ứng thu nhiệt.",
+      "là phản ứng toả nhiệt.",
+      "không cần nhiệt để xảy ra.",
+      "là một biến đổi vật lí."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Phản ứng chỉ xảy ra khi được cung cấp nhiệt liên tục, tức là phản ứng nhận nhiệt từ môi trường.Vậy đây là phản ứng thu nhiệt."
+    },
+    {
+     "ma_cau": "K08010203056",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây đúng?",
+     "lua_chon": [
+      "Mọi phản ứng phải đun nóng lúc đầu đều là phản ứng thu nhiệt.",
+      "Phản ứng toả nhiệt không bao giờ cần đun nóng lúc đầu.",
+      "Đốt than là phản ứng thu nhiệt vì phải mồi lửa.",
+      "Phản ứng thu nhiệt thường dừng lại khi ngừng cung cấp nhiệt."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Phản ứng thu nhiệt cần nhận nhiệt liên tục; khi ngừng cung cấp nhiệt, phản ứng thường dừng lại.Một số phản ứng toả nhiệt như đốt than vẫn cần mồi lửa lúc đầu, sau đó tự duy trì."
+    },
+    {
+     "ma_cau": "K08010203050",
+     "loai": "trac_nghiem",
+     "de": "Phản ứng nào sau đây là phản ứng thu nhiệt?",
+     "lua_chon": [
+      "Đốt cháy cồn trong đèn cồn.",
+      "Cho vôi sống tác dụng với nước.",
+      "Nung đá vôi thành vôi sống.",
+      "Đốt cháy khí gas trong bếp."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nung đá vôi phải cung cấp nhiệt liên tục, phản ứng nhận nhiệt từ môi trường nên là phản ứng thu nhiệt."
+    },
+    {
+     "ma_cau": "K08010203054",
+     "loai": "trac_nghiem",
+     "de": "Đốt khí gas để nấu cơm được gọi là phản ứng tỏa nhiệt, vì",
+     "lua_chon": [
+      "phản ứng cần cung cấp nhiệt liên tục mới xảy ra.",
+      "phản ứng lấy nhiệt từ nồi cơm.",
+      "phản ứng giải phóng nhiệt làm nóng nồi cơm.",
+      "phản ứng không tạo ra chất mới."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khí gas cháy giải phóng nhiệt ra môi trường, nhiệt này làm nóng nồi cơm.Vậy đây là phản ứng tỏa nhiệt."
+    },
+    {
+     "ma_cau": "K08010203048",
+     "loai": "trac_nghiem",
+     "de": "Phản ứng thu nhiệt là phản ứng",
+     "lua_chon": [
+      "giải phóng năng lượng dưới dạng nhiệt ra môi trường.",
+      "không trao đổi nhiệt với môi trường.",
+      "luôn phát sáng khi xảy ra.",
+      "nhận năng lượng dưới dạng nhiệt từ môi trường."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Phản ứng thu nhiệt là phản ứng nhận năng lượng dưới dạng nhiệt từ môi trường."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00810",
+   "nhom_id": "KNB00370",
+   "thu_tu": 2,
+   "dang": "SUY TỪ MÔ TẢ THÍ NGHIỆM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010203060",
+     "loai": "trac_nghiem",
+     "de": "Cho baking soda vào dung dịch citric acid (có trong nước chanh) ở $27^\\circ\\mathrm{C}$, thấy sủi bọt khí và nhiệt độ hỗn hợp giảm còn $21^\\circ\\mathrm{C}$. Phản ứng này là",
+     "lua_chon": [
+      "phản ứng thu nhiệt.",
+      "phản ứng tỏa nhiệt.",
+      "phản ứng không trao đổi nhiệt.",
+      "biến đổi vật lí."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nhiệt độ giảm từ $27^\\circ\\mathrm{C}$ xuống $21^\\circ\\mathrm{C}$, phản ứng đã lấy nhiệt từ dung dịch.\nVậy đây là phản ứng thu nhiệt."
+    },
+    {
+     "ma_cau": "K08010203061",
+     "loai": "trac_nghiem",
+     "de": "Cho bột kẽm vào dung dịch copper(II) sulfate ở $25^\\circ\\mathrm{C}$. Sau vài phút, nhiệt độ dung dịch là $32^\\circ\\mathrm{C}$. Phản ứng giữa kẽm và copper(II) sulfate là",
+     "lua_chon": [
+      "phản ứng thu nhiệt.",
+      "phản ứng tỏa nhiệt.",
+      "phản ứng không trao đổi nhiệt.",
+      "biến đổi vật lí."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nhiệt độ tăng từ $25^\\circ\\mathrm{C}$ lên $32^\\circ\\mathrm{C}$ nên phản ứng giải phóng nhiệt.\nVậy đây là phản ứng tỏa nhiệt."
+    },
+    {
+     "ma_cau": "K08010203059",
+     "loai": "trac_nghiem",
+     "de": "Thả một dải magnesium vào ống nghiệm chứa dung dịch hydrochloric acid ở $24^\\circ\\mathrm{C}$. Khi phản ứng kết thúc, nhiệt độ dung dịch là $38^\\circ\\mathrm{C}$. Phản ứng giữa magnesium và hydrochloric acid là",
+     "lua_chon": [
+      "phản ứng thu nhiệt.",
+      "phản ứng không trao đổi nhiệt.",
+      "biến đổi vật lí.",
+      "phản ứng tỏa nhiệt."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nhiệt độ tăng từ $24^\\circ\\mathrm{C}$ lên $38^\\circ\\mathrm{C}$ nên phản ứng giải phóng nhiệt.Vậy đây là phản ứng tỏa nhiệt."
+    },
+    {
+     "ma_cau": "K08010203058",
+     "loai": "trac_nghiem",
+     "de": "Trộn dung dịch hydrochloric acid ở $25^\\circ\\mathrm{C}$ với dung dịch sodium hydroxide ở $25^\\circ\\mathrm{C}$. Ngay sau khi phản ứng xảy ra, nhiệt độ hỗn hợp là $31^\\circ\\mathrm{C}$. Phản ứng này là",
+     "lua_chon": [
+      "phản ứng thu nhiệt.",
+      "phản ứng tỏa nhiệt.",
+      "phản ứng không trao đổi nhiệt.",
+      "biến đổi vật lí."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nhiệt độ tăng từ $25^\\circ\\mathrm{C}$ lên $31^\\circ\\mathrm{C}$, phản ứng đã giải phóng nhiệt.Vậy đây là phản ứng tỏa nhiệt."
+    },
+    {
+     "ma_cau": "K08010203062",
+     "loai": "trac_nghiem",
+     "de": "Cho bột sodium hydrogencarbonate vào dung dịch hydrochloric acid ở $25^\\circ\\mathrm{C}$, thấy sủi bọt khí; nhiệt độ hỗn hợp sau phản ứng là $21^\\circ\\mathrm{C}$. Phản ứng này là",
+     "lua_chon": [
+      "phản ứng tỏa nhiệt.",
+      "phản ứng không trao đổi nhiệt.",
+      "phản ứng thu nhiệt.",
+      "biến đổi vật lí."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nhiệt độ giảm từ $25^\\circ\\mathrm{C}$ xuống $21^\\circ\\mathrm{C}$, phản ứng lấy nhiệt từ dung dịch.\nVậy đây là phản ứng thu nhiệt."
+    },
+    {
+     "ma_cau": "K08010203064",
+     "loai": "trac_nghiem",
+     "de": "Một nhóm học sinh đo nhiệt độ dung dịch trước và sau bốn phản ứng: (1) từ $25^\\circ\\mathrm{C}$ lên $33^\\circ\\mathrm{C}$; (2) từ $25^\\circ\\mathrm{C}$ xuống $18^\\circ\\mathrm{C}$; (3) từ $24^\\circ\\mathrm{C}$ lên $29^\\circ\\mathrm{C}$; (4) từ $26^\\circ\\mathrm{C}$ lên $31^\\circ\\mathrm{C}$. Số phản ứng toả nhiệt là",
+     "lua_chon": [
+      "1.",
+      "2.",
+      "3.",
+      "4."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Phản ứng toả nhiệt làm nhiệt độ dung dịch tăng: (1), (3), (4).\nPhản ứng (2) làm nhiệt độ giảm nên là phản ứng thu nhiệt.\nVậy có 3 phản ứng toả nhiệt."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00811",
+   "nhom_id": "KNB00370",
+   "thu_tu": 3,
+   "dang": "ỨNG DỤNG PHẢN ỨNG TOẢ NHIỆT LÀM NHIÊN LIỆU",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08010203070",
+     "loai": "trac_nghiem",
+     "de": "Ở nhiều vùng nông thôn, hầm biogas tạo ra khí biogas từ chất thải chăn nuôi để đun nấu. Khí biogas dùng được làm nhiên liệu vì",
+     "lua_chon": [
+      "biogas cháy lấy nhiệt từ nồi để nấu chín thức ăn.",
+      "biogas cháy được mà không cần oxygen.",
+      "phản ứng đốt cháy biogas toả nhiều nhiệt.",
+      "biogas cháy không tạo ra chất mới."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Biogas cháy trong không khí là phản ứng toả nhiệt; nhiệt toả ra dùng để đun nấu."
+    },
+    {
+     "ma_cau": "K08010203075",
+     "loai": "trac_nghiem",
+     "de": "Miếng sưởi ấm tay dùng một lần chứa bột sắt; khi bóc vỏ bọc, bột sắt phản ứng chậm với oxygen trong không khí và miếng sưởi nóng lên trong nhiều giờ. Miếng sưởi nóng lên vì",
+     "lua_chon": [
+      "phản ứng giữa sắt và oxygen là phản ứng thu nhiệt.",
+      "bột sắt nóng chảy khi gặp không khí.",
+      "không khí trong miếng sưởi bị nén lại.",
+      "phản ứng giữa sắt và oxygen là phản ứng toả nhiệt."
+     ],
+     "loi_giai": "Phản ứng giữa bột sắt và oxygen giải phóng nhiệt ra môi trường.\nNhiệt này làm miếng sưởi nóng lên."
+    },
+    {
+     "ma_cau": "K08010203067",
+     "loai": "trac_nghiem",
+     "de": "Người ta đốt cháy than, xăng, khí gas trong đời sống và sản xuất chủ yếu để",
+     "lua_chon": [
+      "lấy nhiệt từ các phản ứng tỏa nhiệt.",
+      "lấy các chất sản phẩm để làm thực phẩm.",
+      "làm giảm nhiệt độ của môi trường.",
+      "tạo ra khí oxygen cho môi trường."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Phản ứng đốt cháy nhiên liệu là phản ứng tỏa nhiệt; nhiệt giải phóng được dùng để đun nấu, sưởi ấm, chạy máy móc."
+    },
+    {
+     "ma_cau": "K08010203071",
+     "loai": "trac_nghiem",
+     "de": "Trong phòng thí nghiệm, đèn cồn được dùng để đun nóng hoá chất vì",
+     "lua_chon": [
+      "cồn cháy là phản ứng toả nhiệt, ngọn lửa ít khói.",
+      "cồn cháy là phản ứng thu nhiệt, làm ống nghiệm không bị quá nóng.",
+      "cồn bay hơi là phản ứng toả nhiệt làm nóng ống nghiệm.",
+      "cồn cháy được mà không cần oxygen trong không khí."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cồn cháy trong không khí là phản ứng toả nhiệt, ngọn lửa ít khói nên thuận tiện để đun nóng hoá chất."
+    },
+    {
+     "ma_cau": "K08010203068",
+     "loai": "trac_nghiem",
+     "de": "Khi nhiên liệu như than, gas cháy trong không khí, chất tham gia phản ứng cùng với nhiên liệu là",
+     "lua_chon": [
+      "nitrogen.",
+      "carbon dioxide.",
+      "hơi nước.",
+      "oxygen."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nhiên liệu cháy là phản ứng của nhiên liệu với oxygen trong không khí, tỏa nhiệt và thường phát sáng."
+    },
+    {
+     "ma_cau": "K08010203074",
+     "loai": "trac_nghiem",
+     "de": "Trong lò nung vôi thủ công, người ta xếp xen kẽ các lớp than và đá vôi rồi đốt. Cách làm này nhằm",
+     "lua_chon": [
+      "dùng nhiệt của phản ứng nung đá vôi để làm cho than cháy đỏ.",
+      "dùng nhiệt của phản ứng đốt than để cung cấp cho phản ứng nung đá vôi.",
+      "dùng than để làm giảm bớt nhiệt độ quá cao trong lò nung.",
+      "dùng than để phản ứng trực tiếp với đá vôi tạo ra vôi sống."
+     ],
+     "loi_giai": "Đốt than là phản ứng toả nhiệt; nung đá vôi là phản ứng thu nhiệt.\nXếp xen kẽ giúp nhiệt toả ra từ than truyền trực tiếp cho đá vôi, duy trì phản ứng nung vôi."
+    }
+   ]
+  }
+ ]
+}

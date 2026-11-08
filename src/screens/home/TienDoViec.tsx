@@ -31,7 +31,7 @@ export default function TienDoViec() {
   const cuaToiDs = dangMoDs.filter((t) => t.nguoi_lam_id === meId)
   const hien = [...cuaToiDs].sort((a, b) => diemBaoDong(b) - diemBaoDong(a) || a.han.localeCompare(b.han)).slice(0, SO_DONG)
   const baoDong = cuaToiDs.filter((t) => diemBaoDong(t) >= 2).length
-  const canDanhGia = dangMoDs.filter((t) => t.nguoi_giao_id === meId && (t.den_han || t.trang_thai === 'cho_duyet')).length
+  const canDanhGia = dangMoDs.filter((t) => t.nguoi_giao_id === meId && (t.den_han || t.trang_thai === 'cho_duyet' || !!t.xin_gia_han)).length
 
   return (
     <>

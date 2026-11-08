@@ -1,0 +1,471 @@
+=== N P3.1
+@ly_thuyet:
+##TC Toạ độ của tổng, hiệu và tích của vectơ với một số
+- Trong không gian $Oxyz$, $\vec{a}=(a_1;a_2;a_3)$ nghĩa là $\vec{a}=a_1\vec{i}+a_2\vec{j}+a_3\vec{k}$, với $\vec{i}=(1;0;0)$, $\vec{j}=(0;1;0)$, $\vec{k}=(0;0;1)$.
+- $\vec{a}\pm\vec{b}=(a_1\pm b_1;a_2\pm b_2;a_3\pm b_3)$.
+- $k\vec{a}=(ka_1;ka_2;ka_3)$ với $k\in\mathbb{R}$.
+- $\vec{a}=\vec{b}$ khi và chỉ khi $a_1=b_1$, $a_2=b_2$, $a_3=b_3$.
+- Vectơ-không $\vec{0}=(0;0;0)$; vectơ đối $-\vec{a}=(-a_1;-a_2;-a_3)$.
+
+##TC Hai vectơ cùng phương
+- Với $\vec{b}\ne\vec{0}$: $\vec{a}$ cùng phương $\vec{b}$ khi và chỉ khi tồn tại số $k$ sao cho $\vec{a}=k\vec{b}$, tức là cả ba toạ độ của $\vec{a}$ bằng ba toạ độ của $\vec{b}$ nhân với cùng một số $k$.
+- $k>0$ thì $\vec{a}$ cùng hướng $\vec{b}$; $k<0$ thì ngược hướng.
+
+##PP Làm bài về phép toán toạ độ và cùng phương
+Viết rõ toạ độ từng vectơ trong đề, đổi các vectơ cho dạng $x\vec{i}+y\vec{j}+z\vec{k}$ về bộ ba $(x;y;z)$.
+Thực hiện phép nhân với số trước, rồi cộng trừ theo từng thành phần: hoành độ, tung độ, cao độ.
+Đẳng thức vectơ có ẩn hoặc tham số thì chuyển thành ba đẳng thức số (hoặc viết $\vec{a}=k\vec{b}$) rồi giải hệ.
+Kiểm tra lại bằng cách thay kết quả vào đề, rồi kết luận đúng điều đề hỏi.
+
+##CY
+- Khi trừ phải đổi dấu cả bộ ba toạ độ của vectơ bị trừ; nhân với $k$ thì nhân cả ba toạ độ.
+- Viết $\vec{a}=k\vec{b}$ an toàn hơn lập tỉ số $\dfrac{a_1}{b_1}=\dfrac{a_2}{b_2}=\dfrac{a_3}{b_3}$, vì tỉ số mất nghĩa khi một toạ độ của $\vec{b}$ bằng $0$.
+
+=== P3.1.1
+@ly_thuyet:
+##TC Tổ hợp của các vectơ cho bằng toạ độ
+- Với $\vec{a}=(a_1;a_2;a_3)$, $\vec{b}=(b_1;b_2;b_3)$: $m\vec{a}+n\vec{b}=(ma_1+nb_1;\ ma_2+nb_2;\ ma_3+nb_3)$.
+- Biểu thức nhiều vectơ: $m\vec{a}+n\vec{b}+p\vec{c}$ tính tương tự, mỗi toạ độ là tổng của ba tích tương ứng.
+
+##PP Tính toạ độ của một tổ hợp vectơ
+Đổi mọi vectơ trong biểu thức về dạng bộ ba toạ độ.
+Nhân từng vectơ với hệ số của nó để có các vectơ thành phần.
+Cộng trừ lần lượt hoành độ, tung độ, cao độ của các vectơ thành phần.
+Viết kết quả dạng $(x;y;z)$ và rà lại dấu từng toạ độ.
+
+##CY
+- $\vec{a}=2\vec{i}-\vec{k}$ có toạ độ $(2;0;-1)$: đừng bỏ qua toạ độ $0$ của $\vec{j}$.
+- Biểu thức $2\vec{a}-3\vec{b}$ là $2\vec{a}$ trừ $3\vec{b}$: viết ra từng vectơ thành phần $2\vec{a}$ và $3\vec{b}$ trước khi trừ để khỏi lẫn dấu.
+
+@vi_du:
+##VD
+Cho $\vec{a}=(2;-1;3)$ và $\vec{b}=(1;4;-2)$. Tính toạ độ của các vectơ $\vec{a}+\vec{b}$, $\vec{a}-\vec{b}$, $3\vec{a}$ và $2\vec{a}-3\vec{b}$.
+
+Bài giải:
+$\vec{a}+\vec{b}=(2+1;-1+4;3-2)=(3;3;1)$.
+$\vec{a}-\vec{b}=(2-1;-1-4;3+2)=(1;-5;5)$.
+$3\vec{a}=(3\cdot2;3\cdot(-1);3\cdot3)=(6;-3;9)$.
+$2\vec{a}=(4;-2;6)$ và $3\vec{b}=(3;12;-6)$ nên $2\vec{a}-3\vec{b}=(4-3;-2-12;6+6)=(1;-14;12)$.
+Vậy $\vec{a}+\vec{b}=(3;3;1)$, $\vec{a}-\vec{b}=(1;-5;5)$, $3\vec{a}=(6;-3;9)$, $2\vec{a}-3\vec{b}=(1;-14;12)$.
+
+##VD
+Cho $\vec{a}=\vec{i}-2\vec{j}+3\vec{k}$, $\vec{b}=(2;0;-1)$ và $\vec{c}=(-4;6;2)$. Tính toạ độ của $\vec{u}=2\vec{a}-3\vec{b}+\dfrac{1}{2}\vec{c}$ và $\vec{v}=\vec{a}+2\vec{b}-\vec{c}$.
+
+Bài giải:
+Từ $\vec{a}=\vec{i}-2\vec{j}+3\vec{k}$ suy ra $\vec{a}=(1;-2;3)$.
+Ta có $2\vec{a}=(2;-4;6)$, $3\vec{b}=(6;0;-3)$, $\dfrac{1}{2}\vec{c}=(-2;3;1)$.
+Do đó $\vec{u}=(2-6+(-2);\ -4-0+3;\ 6-(-3)+1)=(-6;-1;10)$.
+Ta có $2\vec{b}=(4;0;-2)$ nên $\vec{v}=(1+4-(-4);\ -2+0-6;\ 3+(-2)-2)=(9;-8;-1)$.
+Vậy $\vec{u}=(-6;-1;10)$ và $\vec{v}=(9;-8;-1)$.
+
+=== P3.1.2
+@ly_thuyet:
+##TC Cùng phương và thẳng hàng theo toạ độ
+- Nếu cả ba toạ độ của $\vec{b}$ khác $0$ thì $\vec{a}=k\vec{b}$ tương đương $\dfrac{a_1}{b_1}=\dfrac{a_2}{b_2}=\dfrac{a_3}{b_3}$.
+- Nếu $\vec{b}$ có một toạ độ bằng $0$ thì $\vec{a}$ cùng phương $\vec{b}$ buộc toạ độ tương ứng của $\vec{a}$ cũng bằng $0$.
+- $A,B,C$ thẳng hàng khi và chỉ khi $\overrightarrow{AC}=k\overrightarrow{AB}$ với một số $k$ (không cùng phương thì $A,B,C$ tạo thành tam giác); số $k$ dương hay âm cho biết hai vectơ cùng hướng hay ngược hướng (với $A,B,C$ thẳng hàng: $0<k<1$ thì $C$ nằm giữa $A$ và $B$; $k>1$ thì $B$ nằm giữa $A$ và $C$).
+
+##PP Chứng minh cùng phương, thẳng hàng và tìm tham số
+Tính toạ độ các vectơ cần xét (với ba điểm: $\overrightarrow{AB}$ và $\overrightarrow{AC}$).
+Viết $\vec{a}=k\vec{b}$ rồi so sánh từng toạ độ để tìm $k$ (từ toạ độ của $\vec{b}$ khác $0$).
+Thay $k$ vào các toạ độ còn lại: nếu khớp cả ba thì cùng phương; có tham số thì giải ra tham số.
+Kết luận (cùng hay ngược hướng theo dấu của $k$; ba điểm thẳng hàng hay tạo thành tam giác).
+
+##CY
+- Phải khớp cả ba toạ độ: hai toạ độ cùng tỉ lệ chưa đủ để kết luận cùng phương.
+- Để chứng minh ba điểm thẳng hàng cần hai vectơ chung một điểm gốc, vd. $\overrightarrow{AB}$ và $\overrightarrow{AC}$, không lấy $\overrightarrow{AB}$ và $\overrightarrow{CB}$ rồi so sai gốc.
+
+@vi_du:
+##VD
+Cho $\vec{a}=(-2;m;n)$ và $\vec{b}=(1;-2;3)$. Tìm $m,n$ để $\vec{a}$ cùng phương với $\vec{b}$. Khi đó hai vectơ cùng hướng hay ngược hướng?
+
+Bài giải:
+Vì $\vec{b}\ne\vec{0}$ nên $\vec{a}$ cùng phương $\vec{b}$ khi và chỉ khi tồn tại $k$ sao cho $\vec{a}=k\vec{b}$, tức là $(-2;m;n)=(k;-2k;3k)$.
+Từ hoành độ: $k=-2$.
+Suy ra $m=-2k=4$ và $n=3k=-6$.
+Vì $k=-2<0$ nên $\vec{a}$ và $\vec{b}$ ngược hướng.
+Vậy $m=4$, $n=-6$ và hai vectơ ngược hướng.
+
+##VD
+Cho ba điểm $A(1;2;-1)$, $B(3;1;2)$, $C(7;-1;8)$.
+a) Chứng minh $A$, $B$, $C$ thẳng hàng.
+b) Tìm $x,y$ để điểm $M(x;y;5)$ thẳng hàng với $A$ và $B$.
+
+Bài giải:
+a) Ta có $\overrightarrow{AB}=(2;-1;3)$ và $\overrightarrow{AC}=(6;-3;9)$.
+Vì $(6;-3;9)=3\cdot(2;-1;3)$ nên $\overrightarrow{AC}=3\overrightarrow{AB}$, do đó $\overrightarrow{AB}$ và $\overrightarrow{AC}$ cùng phương.
+Vậy $A,B,C$ thẳng hàng.
+b) Ta có $\overrightarrow{AM}=(x-1;y-2;6)$. $M$ thẳng hàng với $A$, $B$ khi và chỉ khi $\overrightarrow{AM}=k\overrightarrow{AB}=(2k;-k;3k)$.
+Từ cao độ: $3k=6$ nên $k=2$.
+Khi đó $x-1=2k=4$ nên $x=5$ và $y-2=-k=-2$ nên $y=0$.
+Vậy $x=5$, $y=0$, tức $M(5;0;5)$.
+
+=== P3.1.3
+@ly_thuyet:
+##TC Giải đẳng thức vectơ bằng toạ độ
+- Đẳng thức giữa các vectơ biến đổi như đẳng thức số: $\vec{x}+\vec{p}=\vec{q}$ thì $\vec{x}=\vec{q}-\vec{p}$; $k\vec{x}=\vec{q}$ thì $\vec{x}=\dfrac{1}{k}\vec{q}$ (với $k\ne0$).
+- Phân tích $\vec{c}=m\vec{a}+n\vec{b}+p\vec{d}$: so sánh từng toạ độ thì được hệ ba phương trình bậc nhất ba ẩn $m,n,p$.
+- Nếu ba vectơ $\vec{a},\vec{b},\vec{d}$ không đồng phẳng thì cách phân tích là duy nhất.
+
+##PP Tìm vectơ thoả đẳng thức, phân tích theo ba vectơ
+Đưa đẳng thức về dạng $\vec{x}=\ldots$ bằng cách chuyển vế, rồi tính theo toạ độ.
+Với bài phân tích: tính $m\vec{a}+n\vec{b}+p\vec{d}$ theo $m,n,p$ rồi cho bằng $\vec{c}$.
+Viết ba phương trình từ ba toạ độ và giải hệ bằng phương pháp thế hoặc cộng.
+Thay $m,n,p$ vào kiểm tra, rồi viết đẳng thức $\vec{c}=m\vec{a}+n\vec{b}+p\vec{d}$.
+
+##CY
+- Chuyển vế phải đổi dấu cả vectơ: từ $\vec{x}+2\vec{a}=3\vec{b}-\vec{c}$ ra $\vec{x}=3\vec{b}-\vec{c}-2\vec{a}$, không phải $3\vec{b}-\vec{c}+2\vec{a}$.
+- Hệ ba ẩn dễ sai dấu khi thế: thử lại nghiệm vào cả ba phương trình.
+
+@vi_du:
+##VD
+Cho $\vec{a}=(1;-2;3)$, $\vec{b}=(2;0;-1)$ và $\vec{c}=(-3;4;5)$. Tìm toạ độ vectơ $\vec{x}$ biết $\vec{x}+2\vec{a}=3\vec{b}-\vec{c}$.
+
+Bài giải:
+Từ $\vec{x}+2\vec{a}=3\vec{b}-\vec{c}$ suy ra $\vec{x}=3\vec{b}-\vec{c}-2\vec{a}$.
+Ta có $3\vec{b}=(6;0;-3)$, $2\vec{a}=(2;-4;6)$.
+Do đó $\vec{x}=(6-(-3)-2;\ 0-4-(-4);\ -3-5-6)=(7;0;-14)$.
+Vậy $\vec{x}=(7;0;-14)$.
+
+##VD
+Cho $\vec{a}=(1;2;0)$, $\vec{b}=(0;1;-1)$, $\vec{d}=(2;0;1)$ và $\vec{c}=(8;3;4)$. Tìm $m,n,p$ để $\vec{c}=m\vec{a}+n\vec{b}+p\vec{d}$.
+
+Bài giải:
+Ta có $m\vec{a}+n\vec{b}+p\vec{d}=(m+2p;\ 2m+n;\ -n+p)$.
+Cho bằng $\vec{c}=(8;3;4)$ ta được hệ: $m+2p=8$ (1), $2m+n=3$ (2), $-n+p=4$ (3).
+Từ (3): $p=n+4$. Thế vào (1): $m+2n+8=8$ nên $m=-2n$.
+Thế $m=-2n$ vào (2): $-4n+n=3$ nên $n=-1$, suy ra $m=2$ và $p=3$.
+Thử lại: $m+2p=2+6=8$, $2m+n=4-1=3$, $-n+p=1+3=4$ đều đúng.
+Vậy $m=2$, $n=-1$, $p=3$, tức $\vec{c}=2\vec{a}-\vec{b}+3\vec{d}$.
+
+=== N P3.2
+@ly_thuyet:
+##TC Toạ độ của điểm và của vectơ $\overrightarrow{AB}$
+- $M(x;y;z)$ khi và chỉ khi $\overrightarrow{OM}=(x;y;z)$.
+- Với $A(x_A;y_A;z_A)$, $B(x_B;y_B;z_B)$: $\overrightarrow{AB}=(x_B-x_A;\ y_B-y_A;\ z_B-z_A)$ (toạ độ ngọn trừ toạ độ gốc).
+- Hai điểm trùng nhau, hai vectơ bằng nhau khi và chỉ khi ba cặp toạ độ tương ứng bằng nhau.
+
+##TC Mọi điều kiện hình học đều quy về toạ độ
+- Trung điểm, trọng tâm tam giác, trọng tâm tứ diện có toạ độ là trung bình cộng toạ độ của $2$, $3$, $4$ điểm.
+- Hình bình hành, hình hộp, điểm chia đoạn, ba điểm thẳng hàng đều viết được thành một đẳng thức vectơ.
+- So từng toạ độ của đẳng thức vectơ cho ba phương trình số, giải ra toạ độ điểm cần tìm.
+
+##PP Tìm toạ độ điểm từ điều kiện vectơ
+Gọi toạ độ điểm cần tìm là $(x;y;z)$ (hoặc theo dạng của trục, mặt phẳng toạ độ nếu đề cho).
+Viết điều kiện của đề thành đẳng thức vectơ hoặc công thức trung điểm, trọng tâm.
+Tính toạ độ hai vế rồi cho từng toạ độ bằng nhau để có phương trình.
+Giải phương trình, kiểm tra lại điều kiện đề rồi kết luận toạ độ điểm.
+
+##CY
+- $\overrightarrow{AB}=B-A$, nhầm thứ tự sẽ ra vectơ đối $\overrightarrow{BA}$.
+- Đẳng thức vectơ phải viết đúng thứ tự chữ cái của đề: đảo gốc và ngọn ở một vế là ra điểm khác hẳn.
+
+=== P3.2.1
+@ly_thuyet:
+##TC Toạ độ của $\overrightarrow{AB}$ và quan hệ giữa hai điểm
+- $\overrightarrow{BA}=-\overrightarrow{AB}=(x_A-x_B;\ y_A-y_B;\ z_A-z_B)$.
+- Biết $A$ và $\overrightarrow{AB}=(p;q;r)$ thì $B(x_A+p;\ y_A+q;\ z_A+r)$.
+- Biết $B$ và $\overrightarrow{AB}=(p;q;r)$ thì $A(x_B-p;\ y_B-q;\ z_B-r)$.
+
+##PP Tính $\overrightarrow{AB}$ và tìm điểm biết vectơ
+Xác định đúng điểm đầu (gốc) và điểm cuối (ngọn) của vectơ trong đề.
+Lấy toạ độ điểm cuối trừ toạ độ điểm đầu để có toạ độ vectơ.
+Muốn tìm một đầu mút: đặt toạ độ ẩn, cho toạ độ vectơ bằng hiệu hai điểm rồi giải từng phương trình.
+Với đề cho dạng $\overrightarrow{AN}=k\overrightarrow{AB}$: tính $k\overrightarrow{AB}$ trước, rồi cộng vào toạ độ của $A$.
+
+##CY
+- Biết điểm đầu cộng vectơ ra điểm cuối; biết điểm cuối thì trừ vectơ: dễ cộng nhầm ở chiều ngược.
+- $\overrightarrow{DA}=\overrightarrow{AB}$ nghĩa là $A-D=\overrightarrow{AB}$ nên $D=A-\overrightarrow{AB}$.
+
+@vi_du:
+##VD
+Cho hai điểm $A(2;-1;3)$ và $B(5;2;-1)$. Tính toạ độ các vectơ $\overrightarrow{AB}$, $\overrightarrow{BA}$ và biểu diễn $\overrightarrow{AB}$ theo $\vec{i}$, $\vec{j}$, $\vec{k}$.
+
+Bài giải:
+$\overrightarrow{AB}=(5-2;\ 2-(-1);\ -1-3)=(3;3;-4)$.
+$\overrightarrow{BA}=-\overrightarrow{AB}=(-3;-3;4)$.
+Vì $\overrightarrow{AB}=(3;3;-4)$ nên $\overrightarrow{AB}=3\vec{i}+3\vec{j}-4\vec{k}$.
+Vậy $\overrightarrow{AB}=(3;3;-4)$, $\overrightarrow{BA}=(-3;-3;4)$ và $\overrightarrow{AB}=3\vec{i}+3\vec{j}-4\vec{k}$.
+
+##VD
+Cho $A(1;2;-3)$ và $B(0;4;1)$.
+a) Tìm điểm $C$ biết $\overrightarrow{BC}=(3;-2;5)$.
+b) Tìm điểm $D$ biết $\overrightarrow{DA}=\overrightarrow{AB}$.
+c) Tìm điểm $N$ biết $\overrightarrow{AN}=2\overrightarrow{AB}$.
+
+Bài giải:
+Ta có $\overrightarrow{AB}=(0-1;\ 4-2;\ 1-(-3))=(-1;2;4)$.
+a) $C(x;y;z)$ có $\overrightarrow{BC}=(x-0;\ y-4;\ z-1)=(3;-2;5)$ nên $x=3$, $y=2$, $z=6$.
+b) $D(x;y;z)$ có $\overrightarrow{DA}=(1-x;\ 2-y;\ -3-z)=(-1;2;4)$ nên $x=2$, $y=0$, $z=-7$.
+c) $2\overrightarrow{AB}=(-2;4;8)$ và $\overrightarrow{AN}=(x-1;\ y-2;\ z+3)$ nên $x=-1$, $y=6$, $z=5$.
+Vậy $C(3;2;6)$, $D(2;0;-7)$ và $N(-1;6;5)$.
+
+=== P3.2.2
+@ly_thuyet:
+##TC Trung điểm đoạn thẳng, trọng tâm tam giác và tứ diện
+- $I$ là trung điểm của $AB$ khi và chỉ khi $x_I=\dfrac{x_A+x_B}{2}$, $y_I=\dfrac{y_A+y_B}{2}$, $z_I=\dfrac{z_A+z_B}{2}$.
+- $G$ là trọng tâm tam giác $ABC$: $x_G=\dfrac{x_A+x_B+x_C}{3}$ (tương tự $y_G$, $z_G$).
+- $G$ là trọng tâm tứ diện $ABCD$: $x_G=\dfrac{x_A+x_B+x_C+x_D}{4}$ (tương tự $y_G$, $z_G$).
+- Đảo lại, biết trung điểm hay trọng tâm thì tìm đỉnh còn lại: $B=2I-A$, $C=3G-A-B$, $D=4G-A-B-C$.
+
+##PP Tìm trung điểm, trọng tâm và đỉnh còn lại
+Xác định đề cho trung điểm hay trọng tâm (tam giác hay tứ diện), từ đó chọn mẫu số $2$, $3$ hoặc $4$.
+Viết công thức cho từng toạ độ $x$, $y$, $z$ riêng rẽ.
+Điểm chưa biết: đặt ẩn rồi giải phương trình bậc nhất, hoặc dùng sẵn $B=2I-A$, $D=4G-A-B-C$.
+Thay lại để kiểm tra trung bình cộng đúng bằng toạ độ đã cho.
+
+##CY
+- Điền đúng mẫu số: tam giác $3$, tứ diện $4$; bốn điểm là tứ diện mới chia $4$.
+- Khi tìm đỉnh còn lại phải trừ tất cả các đỉnh đã biết: $D=4G-(A+B+C)$.
+
+@vi_du:
+##VD
+Cho ba điểm $A(1;2;-3)$, $B(3;-4;1)$, $C(5;2;5)$.
+a) Tìm toạ độ trung điểm $I$ của đoạn $AB$.
+b) Tìm toạ độ trọng tâm $G$ của tam giác $ABC$.
+
+Bài giải:
+a) $x_I=\dfrac{1+3}{2}=2$, $y_I=\dfrac{2+(-4)}{2}=-1$, $z_I=\dfrac{-3+1}{2}=-1$ nên $I(2;-1;-1)$.
+b) $x_G=\dfrac{1+3+5}{3}=3$, $y_G=\dfrac{2+(-4)+2}{3}=0$, $z_G=\dfrac{-3+1+5}{3}=1$.
+Vậy $I(2;-1;-1)$ và $G(3;0;1)$.
+
+##VD
+a) Cho $A(-1;0;5)$ và $M(1;-2;3)$ là trung điểm của đoạn $AB$. Tìm toạ độ điểm $B$.
+b) Cho tứ diện $ABCD$ có $A(2;0;1)$, $B(-1;3;4)$, $C(3;-2;0)$ và trọng tâm $G(1;-1;3)$. Tìm toạ độ đỉnh $D$.
+
+Bài giải:
+a) $M$ là trung điểm của $AB$ nên $B=2M-A$.
+Do đó $B(2\cdot1-(-1);\ 2\cdot(-2)-0;\ 2\cdot3-5)=(3;-4;1)$.
+b) Gọi $D(x;y;z)$. Vì $G$ là trọng tâm tứ diện nên $\dfrac{2-1+3+x}{4}=1$, $\dfrac{0+3-2+y}{4}=-1$, $\dfrac{1+4+0+z}{4}=3$.
+Giải ra $4+x=4$ nên $x=0$; $1+y=-4$ nên $y=-5$; $5+z=12$ nên $z=7$.
+Vậy $B(3;-4;1)$ và $D(0;-5;7)$.
+
+=== P3.2.3
+@ly_thuyet:
+##TC Hình bình hành và hình hộp theo toạ độ
+- $ABCD$ là hình bình hành khi và chỉ khi $\overrightarrow{AD}=\overrightarrow{BC}$, suy ra $D=A+C-B$ (hai đường chéo $AC$, $BD$ có chung trung điểm).
+- Hình hộp $ABCD.A'B'C'D'$: $\overrightarrow{AA'}=\overrightarrow{BB'}=\overrightarrow{CC'}=\overrightarrow{DD'}$, và đáy $ABCD$ là hình bình hành.
+- Biết $A,B,D,A'$ thì $C=B+D-A$, $B'=B+\overrightarrow{AA'}$, $C'=A+\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}$.
+
+##PP Tìm đỉnh còn lại của hình bình hành, hình hộp
+Gọi toạ độ đỉnh cần tìm là $(x;y;z)$; xác định hai đỉnh đối diện nhau của hình bình hành.
+Viết hai vectơ bằng nhau đúng theo thứ tự đỉnh, tính toạ độ hai vế.
+Với hình hộp: tìm đỉnh của đáy trước, rồi cộng vectơ cạnh bên $\overrightarrow{AA'}$ (hoặc $\overrightarrow{DD'}$) vào các đỉnh đáy còn lại.
+Kiểm tra ba đỉnh đã cho không thẳng hàng rồi kết luận toạ độ.
+
+##CY
+- Hình bình hành $ABCD$: $B$ và $D$ đối diện nhau nên $D=A+C-B$, không phải $A+B-C$.
+- Đỉnh nào ở vị trí nào do tên hình quyết định (đáy $ABCD$, đáy trên $A'B'C'D'$); đọc kỹ thứ tự chữ cái trước khi viết vectơ bằng nhau.
+
+@vi_du:
+##VD
+Cho hình bình hành $ABCD$ biết $A(1;0;2)$, $B(2;3;-1)$ và $C(-1;4;5)$. Tìm toạ độ đỉnh $D$.
+
+Bài giải:
+Ta có $\overrightarrow{AB}=(1;3;-3)$ và $\overrightarrow{AC}=(-2;4;3)$ không cùng phương nên $A,B,C$ không thẳng hàng.
+Gọi $D(x;y;z)$. Vì $ABCD$ là hình bình hành nên $\overrightarrow{AD}=\overrightarrow{BC}$.
+Ta có $\overrightarrow{AD}=(x-1;\ y;\ z-2)$ và $\overrightarrow{BC}=(-3;1;6)$.
+Suy ra $x-1=-3$, $y=1$, $z-2=6$ nên $x=-2$, $y=1$, $z=8$.
+Vậy $D(-2;1;8)$.
+
+##VD
+Cho hình hộp $ABCD.A'B'C'D'$ biết $A(1;2;0)$, $B(3;1;2)$, $C(4;4;3)$ và $D'(3;6;4)$. Tìm toạ độ các đỉnh $D$, $A'$, $B'$, $C'$.
+
+Bài giải:
+Ta có $\overrightarrow{AB}=(2;-1;2)$ và $\overrightarrow{AC}=(3;2;3)$ không cùng phương nên $A,B,C$ không thẳng hàng.
+Đáy $ABCD$ là hình bình hành nên $D=A+C-B=(1+4-3;\ 2+4-1;\ 0+3-2)=(2;5;1)$.
+Ta có $\overrightarrow{DD'}=D'-D=(3-2;\ 6-5;\ 4-1)=(1;1;3)$.
+Trong hình hộp $\overrightarrow{AA'}=\overrightarrow{BB'}=\overrightarrow{CC'}=\overrightarrow{DD'}=(1;1;3)$.
+Suy ra $A'=A+(1;1;3)=(2;3;3)$, $B'=B+(1;1;3)=(4;2;5)$, $C'=C+(1;1;3)=(5;5;6)$.
+Vậy $D(2;5;1)$, $A'(2;3;3)$, $B'(4;2;5)$, $C'(5;5;6)$.
+
+=== P3.2.4
+@ly_thuyet:
+##TC Điểm chia đoạn theo tỉ số và điểm trên trục, mặt phẳng toạ độ
+- $M$ thuộc đường thẳng $AB$ khi và chỉ khi $\overrightarrow{AM}=t\overrightarrow{AB}$ với một số $t$; khi đó $M(x_A+t\,(x_B-x_A);\ y_A+t\,(y_B-y_A);\ z_A+t\,(z_B-z_A))$.
+- $0<t<1$ thì $M$ nằm giữa $A$ và $B$; $t<0$ hay $t>1$ thì $M$ nằm ngoài đoạn $AB$.
+- $M$ nằm giữa $A,B$ và $MA=k\cdot MB$ thì $\overrightarrow{AM}=\dfrac{k}{k+1}\overrightarrow{AB}$; còn $\overrightarrow{MA}=k\overrightarrow{MB}$ $(k\ne1)$ thì $x_M=\dfrac{x_A-kx_B}{1-k}$ (tương tự $y_M$, $z_M$).
+- Điểm trên $Ox$: $(x;0;0)$; trên $(Oxy)$: $(x;y;0)$; trên $(Oxz)$: $(x;0;z)$.
+
+##PP Tìm điểm chia đoạn thẳng, điểm thuộc trục hay mặt phẳng toạ độ
+Chuyển điều kiện của đề thành đẳng thức vectơ có dạng $\overrightarrow{AM}=t\overrightarrow{AB}$ hay $\overrightarrow{MA}=k\overrightarrow{MB}$.
+Điểm thuộc trục hay mặt phẳng toạ độ thì viết toạ độ có sẵn các thành phần bằng $0$; điểm tuỳ ý thì đặt $(x;y;z)$.
+Cho từng toạ độ hai vế bằng nhau, giải $t$ (hoặc $x,y,z$) rồi suy ra toạ độ điểm.
+Kiểm tra vị trí của điểm so với đoạn (dựa vào dấu và độ lớn của $t$) rồi tính tỉ số nếu đề hỏi.
+
+##CY
+- Đề cho độ dài ($MA=2MB$) thì phải xét $M$ nằm trong hay ngoài đoạn $AB$: có hai điểm, một trong đoạn và một ngoài đoạn.
+- $\overrightarrow{MA}=k\overrightarrow{MB}$ cho vectơ có hướng, còn $MA=kMB$ chỉ cho độ dài.
+
+@vi_du:
+##VD
+Cho $A(1;2;3)$ và $B(4;-1;6)$.
+a) Tìm điểm $M$ nằm giữa $A$ và $B$ sao cho $MA=2MB$.
+b) Tìm điểm $N$ thoả $\overrightarrow{NA}=2\overrightarrow{NB}$.
+
+Bài giải:
+Ta có $\overrightarrow{AB}=(3;-3;3)$.
+a) Vì $M$ nằm giữa $A,B$ và $MA=2MB$ nên $AM=\dfrac{2}{3}AB$, do đó $\overrightarrow{AM}=\dfrac{2}{3}\overrightarrow{AB}=(2;-2;2)$.
+Suy ra $M(1+2;\ 2-2;\ 3+2)=(3;0;5)$.
+b) Gọi $N(x;y;z)$. Từ $\overrightarrow{NA}=2\overrightarrow{NB}$ ta có $(1-x;\ 2-y;\ 3-z)=2(4-x;\ -1-y;\ 6-z)$.
+Do đó $1-x=8-2x$ nên $x=7$; $2-y=-2-2y$ nên $y=-4$; $3-z=12-2z$ nên $z=9$.
+Vậy $M(3;0;5)$ và $N(7;-4;9)$.
+
+##VD
+Cho $A(2;1;-1)$ và $B(5;-2;3)$.
+a) Tìm giao điểm $M$ của đường thẳng $AB$ với mặt phẳng $(Oxz)$ và tính tỉ số $\dfrac{MA}{MB}$.
+b) Tìm điểm $P$ thuộc mặt phẳng $(Oxy)$ sao cho $A$, $B$, $P$ thẳng hàng.
+
+Bài giải:
+Ta có $\overrightarrow{AB}=(3;-3;4)$. Điểm $M$ thuộc đường thẳng $AB$ khi và chỉ khi $\overrightarrow{AM}=t\overrightarrow{AB}$, tức $M(2+3t;\ 1-3t;\ -1+4t)$.
+a) $M\in(Oxz)$ nên tung độ bằng $0$: $1-3t=0$ suy ra $t=\dfrac{1}{3}$ và $M\left(3;0;\dfrac{1}{3}\right)$.
+Vì $0<t<1$ nên $M$ nằm giữa $A$ và $B$; $MA=t\cdot AB$ và $MB=(1-t)\cdot AB$ nên $\dfrac{MA}{MB}=\dfrac{1/3}{2/3}=\dfrac{1}{2}$.
+b) $P\in(Oxy)$ nên cao độ bằng $0$: $-1+4t=0$ suy ra $t=\dfrac{1}{4}$.
+Khi đó $P\left(2+\dfrac{3}{4};\ 1-\dfrac{3}{4};\ 0\right)=\left(\dfrac{11}{4};\dfrac{1}{4};0\right)$.
+Vậy $M\left(3;0;\dfrac{1}{3}\right)$ với $\dfrac{MA}{MB}=\dfrac{1}{2}$ và $P\left(\dfrac{11}{4};\dfrac{1}{4};0\right)$.
+
+=== N P3.3
+@ly_thuyet:
+##TC Độ dài vectơ và khoảng cách giữa hai điểm
+- $\vec{a}=(a_1;a_2;a_3)$ thì $|\vec{a}|=\sqrt{a_1^2+a_2^2+a_3^2}$; $|k\vec{a}|=|k|\cdot|\vec{a}|$.
+- $AB=|\overrightarrow{AB}|=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2+(z_B-z_A)^2}$; $OM=\sqrt{x^2+y^2+z^2}$.
+- $|\vec{a}|=0$ khi và chỉ khi $\vec{a}=\vec{0}$.
+
+##TC So sánh độ dài bằng bình phương
+- Độ dài không âm nên $AB=CD$ khi và chỉ khi $AB^2=CD^2$, và $AB<CD$ khi và chỉ khi $AB^2<CD^2$: so sánh hay lập phương trình bằng bình phương để khỏi mang căn.
+- Ba điểm có một khoảng cách bằng tổng hai khoảng cách còn lại thì thẳng hàng, không tạo thành tam giác.
+
+##PP Tính độ dài và tìm điểm theo khoảng cách
+Tính toạ độ vectơ cần xét ($\overrightarrow{AB}$, $\overrightarrow{AM}$...) bằng hiệu hai điểm.
+Tính bình phương độ dài (tổng bình phương ba toạ độ) trước, chỉ khai căn ở bước cuối.
+Bài nhận biết tam giác: tính ba cạnh, so sánh bình phương để xét cân, đều, vuông.
+Bài tìm điểm: đặt toạ độ ẩn, viết điều kiện bằng bình phương khoảng cách để bỏ căn, giải phương trình.
+
+##CY
+- Đừng quên căn: $|\vec{a}|^2=a_1^2+a_2^2+a_3^2$ còn $|\vec{a}|$ mới có căn.
+- Hiệu toạ độ phải bình phương trước khi cộng, không bình phương sau khi cộng: $(x_B-x_A)^2$ không bằng $x_B^2-x_A^2$.
+
+=== P3.3.1
+@ly_thuyet:
+##TC Tính độ dài vectơ, đoạn thẳng, trung tuyến, đường chéo
+- $AB=BA$: tính bằng $\overrightarrow{AB}$ hay $\overrightarrow{BA}$ đều được vì hai vectơ đối nhau có cùng độ dài.
+- Trung tuyến $AM$ của tam giác $ABC$: trước hết tìm trung điểm $M$ của $BC$, rồi tính $AM$.
+- Đường chéo $AC'$ của hình hộp là đoạn nối hai đỉnh đối diện: $AC'=|\overrightarrow{AC'}|$.
+
+##PP Tính một độ dài từ toạ độ
+Tính toạ độ vectơ liên quan: lấy toạ độ ngọn trừ toạ độ gốc.
+Bình phương từng toạ độ rồi cộng lại.
+Khai căn bậc hai và rút gọn (các bộ $(2;3;6)$, $(3;4;12)$ cho độ dài nguyên $7$, $13$).
+Với trung tuyến hay đường chéo, xác định đúng hai đầu mút trước khi tính.
+
+##CY
+- Nhầm trung tuyến với một cạnh: $AM$ phải dùng trung điểm $M$ của $BC$.
+- Độ dài không âm; kết quả cuối phải có căn đúng chỗ, vd. $\sqrt{10}$ chứ không phải $10$.
+
+@vi_du:
+##VD
+Cho $\vec{a}=(2;-3;6)$, $A(1;2;-1)$ và $B(4;6;11)$. Tính $|\vec{a}|$ và độ dài đoạn $AB$.
+
+Bài giải:
+$|\vec{a}|=\sqrt{2^2+(-3)^2+6^2}=\sqrt{4+9+36}=\sqrt{49}=7$.
+$\overrightarrow{AB}=(4-1;\ 6-2;\ 11-(-1))=(3;4;12)$.
+$AB=\sqrt{3^2+4^2+12^2}=\sqrt{9+16+144}=\sqrt{169}=13$.
+Vậy $|\vec{a}|=7$ và $AB=13$.
+
+##VD
+a) Cho tam giác $ABC$ có $A(2;-1;3)$, $B(0;3;-1)$, $C(4;1;5)$. Tính độ dài trung tuyến $AM$.
+b) Hình hộp chữ nhật $ABCD.A'B'C'D'$ có $A(1;-1;2)$ và $C'(3;3;6)$. Tính độ dài đường chéo $AC'$ và khoảng cách từ $A$ đến tâm hộp.
+
+Bài giải:
+a) $M$ là trung điểm của $BC$ nên $M\left(\dfrac{0+4}{2};\dfrac{3+1}{2};\dfrac{-1+5}{2}\right)=(2;2;2)$.
+$\overrightarrow{AM}=(0;3;-1)$ nên $AM=\sqrt{0+9+1}=\sqrt{10}$.
+b) $\overrightarrow{AC'}=(2;4;4)$ nên $AC'=\sqrt{4+16+16}=\sqrt{36}=6$.
+Tâm $O$ của hộp là trung điểm của $AC'$ nên $AO=\dfrac{1}{2}AC'=3$.
+Vậy $AM=\sqrt{10}$, $AC'=6$ và khoảng cách từ $A$ đến tâm hộp bằng $3$.
+
+=== P3.3.2
+@ly_thuyet:
+##TC Chu vi và loại tam giác bằng độ dài ba cạnh
+- Tính $AB,BC,CA$ rồi cộng lại được chu vi $2p=AB+BC+CA$.
+- Tam giác cân tại $A$: $AB=AC$; đều: ba cạnh bằng nhau.
+- Tam giác vuông tại $A$: $AB^2+AC^2=BC^2$; vuông cân tại $A$: vuông tại $A$ và $AB=AC$.
+- Ba điểm tạo thành tam giác khi không thẳng hàng; để chắc, kiểm tra tổng hai cạnh lớn hơn cạnh còn lại.
+
+##PP Xét loại tam giác và tính chu vi bằng độ dài
+Tính ba vectơ cạnh rồi bình phương độ dài của từng cạnh.
+So sánh các bình phương: hai bằng nhau thì cân, ba bằng nhau thì đều.
+Thử Pythagore với cạnh lớn nhất làm cạnh huyền để xét tam giác vuông.
+Chu vi: lấy căn từng bình phương rồi cộng; bài có tham số thì lập phương trình từ điều kiện vuông hay cân.
+
+##CY
+- Khi thử Pythagore, cạnh huyền phải là cạnh có bình phương lớn nhất: đừng thử bừa trên cạnh khác.
+- Chu vi cộng độ dài (đã có căn), không cộng các bình phương.
+
+@vi_du:
+##VD
+Cho ba điểm $A(1;0;2)$, $B(3;3;8)$, $C(4;-6;4)$. Chứng minh tam giác $ABC$ vuông cân tại $A$ và tính chu vi của nó.
+
+Bài giải:
+Ta có $\overrightarrow{AB}=(2;3;6)$, $\overrightarrow{AC}=(3;-6;2)$, $\overrightarrow{BC}=(1;-9;-4)$.
+$AB=\sqrt{4+9+36}=7$, $AC=\sqrt{9+36+4}=7$ nên $AB=AC$.
+$BC^2=1+81+16=98$ và $AB^2+AC^2=49+49=98$ nên $AB^2+AC^2=BC^2$.
+Do đó tam giác $ABC$ vuông tại $A$, mà $AB=AC$ nên vuông cân tại $A$; $BC=\sqrt{98}=7\sqrt{2}$.
+Chu vi bằng $7+7+7\sqrt{2}=14+7\sqrt{2}$.
+Vậy tam giác $ABC$ vuông cân tại $A$ và chu vi bằng $14+7\sqrt{2}$.
+
+##VD
+Cho $A(1;2;-1)$, $B(0;1;1)$ và $C(m;0;0)$. Tìm $m$ để tam giác $ABC$ vuông tại $B$, rồi tính chu vi tam giác với giá trị $m$ tìm được.
+
+Bài giải:
+Ta có $AB^2=(0-1)^2+(1-2)^2+(1+1)^2=6$; $BC^2=m^2+1+1=m^2+2$; $AC^2=(m-1)^2+4+1=m^2-2m+6$.
+Tam giác vuông tại $B$ khi và chỉ khi $AB^2+BC^2=AC^2$.
+Ta được $6+m^2+2=m^2-2m+6$, suy ra $2m=-2$ nên $m=-1$.
+Khi đó $AB=\sqrt{6}$, $BC^2=(-1)^2+2=3$ nên $BC=\sqrt{3}$, và $AC^2=(-1-1)^2+4+1=9$ nên $AC=3$.
+Ba cạnh thoả $\sqrt{6}+\sqrt{3}>3$ nên $A,B,C$ không thẳng hàng, tam giác tồn tại.
+Chu vi bằng $3+\sqrt{6}+\sqrt{3}$.
+Vậy $m=-1$ và chu vi tam giác bằng $3+\sqrt{6}+\sqrt{3}$.
+
+=== P3.3.3
+@ly_thuyet:
+##TC Điểm cách đều và điểm cách một điểm cho trước một khoảng
+- $M(x;0;0)\in Ox$ thì $MA^2=(x-x_A)^2+y_A^2+z_A^2$ (tương tự cho $Oy$, $Oz$).
+- $M(x;y;0)\in(Oxy)$ thì $MA^2=(x-x_A)^2+(y-y_A)^2+z_A^2$ (tương tự cho $(Oyz)$, $(Oxz)$).
+- $MA=MB$ khi và chỉ khi $MA^2=MB^2$: các bình phương của ẩn triệt tiêu nhau, còn lại phương trình bậc nhất.
+- $MA=d$ khi và chỉ khi $MA^2=d^2$: phương trình bậc hai, có thể cho hai điểm.
+
+##PP Tìm điểm cách đều hoặc cách một điểm một khoảng cho trước
+Viết toạ độ điểm cần tìm theo dạng của trục hay mặt phẳng toạ độ mà đề cho.
+Lập phương trình bằng bình phương khoảng cách ($MA^2=MB^2$ hoặc $MA^2=d^2$), không khai căn.
+Khai triển, rút gọn: cách đều hai điểm thì còn phương trình bậc nhất; cách đều ba điểm thì giải hệ hai phương trình.
+Kiểm tra lại bằng cách tính các khoảng cách của điểm tìm được và nêu mọi nghiệm.
+
+##CY
+- $MA=d$ thường cho hai nghiệm; chỉ loại nghiệm khi đề có điều kiện thêm (vd. hoành độ dương).
+- Khai triển $(y-2)^2$ phải đủ ba số hạng $y^2-4y+4$; sai ở đây thì phương trình lệch hoàn toàn.
+
+@vi_du:
+##VD
+a) Cho $A(1;2;2)$. Tìm điểm $M$ thuộc trục $Ox$ sao cho $MA=3$.
+b) Cho $B(1;2;3)$ và $C(-1;0;5)$. Tìm điểm $N$ thuộc trục $Oy$ cách đều $B$ và $C$.
+
+Bài giải:
+a) $M\in Ox$ nên $M(x;0;0)$ và $MA^2=(x-1)^2+4+4=(x-1)^2+8$.
+$MA=3$ nên $(x-1)^2+8=9$, tức $(x-1)^2=1$, suy ra $x=0$ hoặc $x=2$.
+b) $N\in Oy$ nên $N(0;y;0)$. Ta có $NB^2=1+(y-2)^2+9$ và $NC^2=1+y^2+25$.
+$NB=NC$ nên $y^2-4y+14=y^2+26$, suy ra $-4y=12$ nên $y=-3$.
+Kiểm tra: $NB^2=1+25+9=35$ và $NC^2=1+9+25=35$ bằng nhau.
+Vậy $M(0;0;0)$ hoặc $M(2;0;0)$, và $N(0;-3;0)$.
+
+##VD
+Cho ba điểm $A(2;1;3)$, $B(2;4;0)$ và $C(5;1;0)$. Tìm điểm $N$ thuộc mặt phẳng $(Oxy)$ cách đều ba điểm $A$, $B$, $C$.
+
+Bài giải:
+$N\in(Oxy)$ nên $N(x;y;0)$.
+$NA^2=(x-2)^2+(y-1)^2+9$, $NB^2=(x-2)^2+(y-4)^2$, $NC^2=(x-5)^2+(y-1)^2$.
+$NA=NB$ nên $(y-1)^2+9=(y-4)^2$, tức $y^2-2y+10=y^2-8y+16$, suy ra $y=1$.
+$NA=NC$ với $y=1$ nên $(x-2)^2+9=(x-5)^2$, tức $x^2-4x+13=x^2-10x+25$, suy ra $x=2$.
+Kiểm tra: $N(2;1;0)$ có $NA=3$, $NB=3$, $NC=3$.
+Vậy $N(2;1;0)$.
+
+## GHI CHÚ CHO CEO
+Không có dạng nào mô tả mơ hồ. Dạng P3.2.3 và P3.3.1 ghi 3d trong cau-truc nhưng ví dụ chỉ dựa vào toạ độ, hình hộp nói bằng lời. Nguồn có lỗi (không chép): VD2.2 Từ Tâm ghi "hình bình hành khi AB=2DC" (sai), đáp án VD5.3 Từ Tâm khả nghi (không dùng). Ít chắc: không có.

@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "HHC007529",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Hai đáy hình lăng trụ song song, xét vị trí hai mặt phẳng",
+  "can_cu": "Hình lăng trụ có đáy là đa giác $n$ cạnh có $2n$ đỉnh, $3n$ cạnh, $n+2$ mặt."
+ },
+ {
+  "ma_cau": "HHC007531",
+  "dang_bai_id": "HH00150",
+  "chac": "cao",
+  "ly_do": "Xét tính sai của mệnh đề về phép chiếu song song",
+  "can_cu": "Biến hai đường thẳng song song thành hai đường thẳng song song hoặc trùng nhau."
+ },
+ {
+  "ma_cau": "HHC007532",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Hai điểm chung S, I cho giao tuyến, chỉ dùng điểm chung",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC007533",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Ba mặt phẳng song song chắn hai cát tuyến tỉ lệ, tính độ dài",
+  "can_cu": "định lí Thales giữa các mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007534",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Có ý chứng minh (MNP) song song (ABCD), kèm giao tuyến",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007543",
+  "dang_bai_id": "HH00150",
+  "chac": "cao",
+  "ly_do": "Tìm phương chiếu từ ảnh của A qua phép chiếu song song",
+  "can_cu": "Tìm hình chiếu song song của một điểm"
+ },
+ {
+  "ma_cau": "HHC007545",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Đếm số cạnh của hình lăng trụ tam giác",
+  "can_cu": "Hình lăng trụ có đáy là đa giác $n$ cạnh có $2n$ đỉnh, $3n$ cạnh, $n+2$ mặt."
+ },
+ {
+  "ma_cau": "HHC007547",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng song song đáy chắn các cạnh bên theo tỉ lệ",
+  "can_cu": "định lí Thales giữa các mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007548",
+  "dang_bai_id": "HH00150",
+  "chac": "cao",
+  "ly_do": "Tìm ảnh N của M qua phép chiếu, tính tỉ số EN/ED",
+  "can_cu": "Hệ quả: trung điểm biến thành trung điểm, trọng tâm tam giác biến thành trọng tâm tam giác ảnh."
+ },
+ {
+  "ma_cau": "HHC007555",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao tuyến hai mặt phẳng qua trọng tâm, dùng điểm chung",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC007563",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao tuyến (MBD),(ABN) bằng hai điểm chung B và G",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC007574",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng cắt hai mặt phẳng song song cho hai giao tuyến",
+  "can_cu": "Nếu mặt phẳng $(R)$ cắt hai mặt phẳng song song $(P)$ và $(Q)$ thì hai giao tuyến song song với nhau."
+ },
+ {
+  "ma_cau": "HHC007576",
+  "dang_bai_id": "HH00150",
+  "chac": "cao",
+  "ly_do": "Tìm ảnh của điểm I qua phép chiếu theo phương AI'",
+  "can_cu": "Tìm hình chiếu song song của một điểm"
+ },
+ {
+  "ma_cau": "HHC007580",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Chứng minh (OMN) song song (SBC) sau ý OM song song mặt phẳng",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007595",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Tìm mặt phẳng song song với mặt bên của hình hộp",
+  "can_cu": "Sáu mặt đều là hình bình hành, các mặt đối diện song song và bằng nhau."
+ },
+ {
+  "ma_cau": "HHC007600",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Chứng minh NP song song (ABCD) rồi giao tuyến dùng song song",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC007607",
+  "dang_bai_id": "HH00150",
+  "chac": "cao",
+  "ly_do": "Tìm hình chiếu của C' trên (ABCD) theo phương A'A",
+  "can_cu": "Tìm hình chiếu song song của một điểm"
+ },
+ {
+  "ma_cau": "HHC007611",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mâm song song nên dùng Thales giữa các mặt phẳng song song",
+  "can_cu": "định lí Thales giữa các mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007612",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Chứng minh MG song song (SAD), có giao tuyến SE",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC007616",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao tuyến hai mặt phẳng có hai điểm chung A, B",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC007618",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Ba mặt phẳng song song chắn hai cát tuyến, tính GK",
+  "can_cu": "định lí Thales giữa các mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007627",
+  "dang_bai_id": "HH00150",
+  "chac": "cao",
+  "ly_do": "Đếm khẳng định đúng về tính chất phép chiếu song song",
+  "can_cu": "Biến hai đường thẳng song song thành hai đường thẳng song song hoặc trùng nhau."
+ },
+ {
+  "ma_cau": "HHC007629",
+  "dang_bai_id": "HH00150",
+  "chac": "cao",
+  "ly_do": "Hình chiếu của A' trên (ABC) theo phương CC'",
+  "can_cu": "Tìm hình chiếu song song của một điểm"
+ },
+ {
+  "ma_cau": "HHC007630",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Tìm khẳng định sai về mặt bên, đáy hình hộp",
+  "can_cu": "Sáu mặt đều là hình bình hành, các mặt đối diện song song và bằng nhau."
+ },
+ {
+  "ma_cau": "HHC007631",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt bên của hình hộp song song với mặt đối diện",
+  "can_cu": "Sáu mặt đều là hình bình hành, các mặt đối diện song song và bằng nhau."
+ },
+ {
+  "ma_cau": "HHC007632",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Đường thẳng b song song a nằm trong P suy ra b song song P",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC007634",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Xét (BMN) song song (A'C'E) trong lăng trụ",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007645",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Tìm khẳng định sai về mặt phẳng song song trong chóp",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007647",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt nước song song đáy bồn, Thales giữa mặt phẳng song song",
+  "can_cu": "định lí Thales giữa các mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007656",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng song song với mặt bên (ABB'A') của hình hộp",
+  "can_cu": "Sáu mặt đều là hình bình hành, các mặt đối diện song song và bằng nhau."
+ },
+ {
+  "ma_cau": "HHC007658",
+  "dang_bai_id": "HH00150",
+  "chac": "cao",
+  "ly_do": "Ảnh của tam giác ABC' qua phép chiếu theo AA'",
+  "can_cu": "Tìm hình chiếu song song của một điểm"
+ },
+ {
+  "ma_cau": "HHC007673",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng song song với mặt bên hình hộp (đáp án gốc null)",
+  "can_cu": "Sáu mặt đều là hình bình hành, các mặt đối diện song song và bằng nhau."
+ },
+ {
+  "ma_cau": "HHC007676",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Ý b chứng minh (OMK) song song (SCD), kèm giao tuyến, tỉ số",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007684",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Tìm mệnh đề sai về hai mặt phẳng song song",
+  "can_cu": "Hai mặt phẳng $(P)$ và $(Q)$ gọi là song song nếu chúng không có điểm chung"
+ },
+ {
+  "ma_cau": "HHC007685",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Hai mặt phẳng trong hình hộp song song qua hai cặp đường cắt nhau",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007686",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt đối diện của hình hộp song song",
+  "can_cu": "Sáu mặt đều là hình bình hành, các mặt đối diện song song và bằng nhau."
+ },
+ {
+  "ma_cau": "HHC007687",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Xét đường thẳng song song mặt phẳng trong lăng trụ",
+  "can_cu": "xét tính đúng sai của các mệnh đề về đường thẳng và mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007689",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "Giao điểm AB với (A'IJ) rồi tính tỉ số KB/AB",
+  "can_cu": "TÍNH tỉ số độ dài các đoạn thẳng thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC007690",
+  "dang_bai_id": "HH00149",
+  "chac": "vua",
+  "ly_do": "Mặt phẳng qua E song song (ABC) dùng để tính EF, có Thales",
+  "can_cu": "chứa hai đường thẳng $a$, $b$ cắt nhau và hai đường thẳng này cùng song song với mặt phẳng $(Q)$"
+ },
+ {
+  "ma_cau": "HHC007698",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mệnh đề sai về hai mặt phẳng song song",
+  "can_cu": "thì mọi đường thẳng nằm trong $(P)$ đều song song với $(Q)$."
+ },
+ {
+  "ma_cau": "HHC007699",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng (OMN) song song (SBC) qua hai đường cắt nhau",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007700",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mâm giữa song song, tỉ lệ Thales trên hai cát tuyến",
+  "can_cu": "định lí Thales giữa các mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007704",
+  "dang_bai_id": "HH00147",
+  "chac": "vua",
+  "ly_do": "Giao điểm K, giao tuyến, rồi tính tỉ số diện tích hai tam giác",
+  "can_cu": "TÍNH tỉ số độ dài các đoạn thẳng thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC007710",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Tính chất hình lăng trụ: mặt bên là hình bình hành",
+  "can_cu": "nhận biết và vận dụng tính chất của hình lăng trụ, hình hộp"
+ },
+ {
+  "ma_cau": "HHC007712",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Ý b chứng minh MN song song (SCD)",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC007721",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mệnh đề đúng về hai mặt phẳng phân biệt song song",
+  "can_cu": "Hai mặt phẳng phân biệt cùng song song với mặt phẳng thứ ba thì song song với nhau."
+ },
+ {
+  "ma_cau": "HHC007723",
+  "dang_bai_id": "HH00150",
+  "chac": "cao",
+  "ly_do": "Hình chiếu của A theo phương CD lên (SBC)",
+  "can_cu": "Tìm hình chiếu song song của một điểm"
+ },
+ {
+  "ma_cau": "HHC007739",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Tìm mệnh đề sai về cặp mặt đối diện hình hộp",
+  "can_cu": "Sáu mặt đều là hình bình hành, các mặt đối diện song song và bằng nhau."
+ },
+ {
+  "ma_cau": "HHC007751",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Tìm cặp mặt phẳng song song trong hình chóp",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007754",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao tuyến hai mặt phẳng bằng điểm chung S và O",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC007763",
+  "dang_bai_id": "HH00150",
+  "chac": "cao",
+  "ly_do": "Hình chiếu của tam giác A'B'C' theo phương B'B",
+  "can_cu": "Tìm hình chiếu của đoạn thẳng, tam giác, đa giác"
+ },
+ {
+  "ma_cau": "HHC007764",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao tuyến (SAB),(SCD) là SI với I chung",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC007768",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Chứng minh (A'BD) song song (B'D'C) trong hình hộp",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007774",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Chứng minh (MNP) song song (ABCD)",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007787",
+  "dang_bai_id": "HH00150",
+  "chac": "cao",
+  "ly_do": "Hình chiếu của C' lên (ABB'A') theo phương CB",
+  "can_cu": "Tìm hình chiếu song song của một điểm"
+ },
+ {
+  "ma_cau": "HHC007790",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng song song với mặt bên (CDD'C') hình hộp",
+  "can_cu": "Sáu mặt đều là hình bình hành, các mặt đối diện song song và bằng nhau."
+ },
+ {
+  "ma_cau": "HHC007794",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Định nghĩa hai mặt phẳng song song",
+  "can_cu": "Hai mặt phẳng $(P)$ và $(Q)$ gọi là song song nếu chúng không có điểm chung"
+ },
+ {
+  "ma_cau": "HHC007806",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Xét mệnh đề sai về mặt phẳng song song trong hình hộp chữ nhật",
+  "can_cu": "Sáu mặt đều là hình bình hành, các mặt đối diện song song và bằng nhau."
+ },
+ {
+  "ma_cau": "HHC007808",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mệnh đề đúng về mặt phẳng chứa hai đường và mặt phẳng song song",
+  "can_cu": "chứa hai đường thẳng $a$, $b$ cắt nhau và hai đường thẳng này cùng song song với mặt phẳng $(Q)$"
+ },
+ {
+  "ma_cau": "HHC007810",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng (OMN) song song (SBC) qua OM, ON",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007814",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng qua G song song (SCD) tính tỉ số SD/EF",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007829",
+  "dang_bai_id": "HH00137",
+  "chac": "vua",
+  "ly_do": "Giao tuyến hai mặt chứa đường song song CC', dùng hình bình hành",
+  "can_cu": "giao tuyến là đường thẳng $Sx$ đi qua $S$ và song song với $AB$, $CD$"
+ },
+ {
+  "ma_cau": "HHC007831",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Giao tuyến hai mặt phẳng chứa AB, CD song song qua S",
+  "can_cu": "giao tuyến là đường thẳng $Sx$ đi qua $S$ và song song với $AB$, $CD$"
+ },
+ {
+  "ma_cau": "HHC007832",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Qua điểm ngoài mặt phẳng có duy nhất mặt phẳng song song",
+  "can_cu": "Qua một điểm nằm ngoài mặt phẳng $(Q)$ có một và chỉ một mặt phẳng song song với $(Q)$."
+ },
+ {
+  "ma_cau": "HHC007834",
+  "dang_bai_id": "HH00150",
+  "chac": "cao",
+  "ly_do": "Tìm mệnh đề sai về phép chiếu song song",
+  "can_cu": "Biến hai đường thẳng song song thành hai đường thẳng song song hoặc trùng nhau."
+ },
+ {
+  "ma_cau": "HHC007835",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng (OMN) song song (SAD) qua OM, ON",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007839",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng song song đáy cắt mặt bên, tính CC1 bằng Thales",
+  "can_cu": "định lí Thales giữa các mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC007840",
+  "dang_bai_id": "HH00150",
+  "chac": "cao",
+  "ly_do": "Có hình chiếu song song F của E theo phương AM, tính DF/FM",
+  "can_cu": "Tìm hình chiếu song song của một điểm"
+ },
+ {
+  "ma_cau": "HHC007843",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao tuyến (SAC),(SBD) qua S và giao điểm AC, BD",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC007861",
+  "dang_bai_id": "HH00150",
+  "chac": "cao",
+  "ly_do": "Hình chiếu của A lên (A'B'C'D') theo phương DD'",
+  "can_cu": "Tìm hình chiếu song song của một điểm"
+ }
+]

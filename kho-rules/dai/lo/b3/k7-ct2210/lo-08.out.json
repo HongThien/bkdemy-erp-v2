@@ -1,0 +1,8 @@
+[
+ {"ma_cau": "T107000000303", "dang_bai_id": "NDB00799", "chac": "cao", "ly_do": "Biểu thức có 2 phép tính (cộng, nhân) trên số hữu tỉ, không luỹ thừa/căn/GTTĐ nên theo luật đếm phép là đơn giản."},
+ {"ma_cau": "T107000000085", "dang_bai_id": "NDB00422", "chac": "vua", "ly_do": "Phá ngoặc đổi dấu rồi ghép cặp số đối là đúng 00422; nhưng chỉ 3 phép nên 00799 cũng hợp lệ."},
+ {"ma_cau": "T107000000153", "dang_bai_id": "NDB01234", "chac": "cao", "ly_do": "Trắc nghiệm chọn khẳng định đúng về tính chất luỹ thừa (nhân, chia cùng cơ số, luỹ thừa của luỹ thừa, mũ 0)."},
+ {"ma_cau": "07702202202061", "dang_bai_id": "NDB00933", "chac": "cao", "ly_do": "Tính biểu thức nhiều căn bậc hai, không có giá trị tuyệt đối."},
+ {"ma_cau": "T107000000025", "dang_bai_id": "NDB00423", "chac": "cao", "ly_do": "Đã có sẵn nhân tử chung 0,125 ở hai tích, chỉ rút ra ngoài rồi cộng."},
+ {"ma_cau": "T107000000136", "dang_bai_id": "NDB00419", "chac": "cao", "ly_do": "Một phép cộng hai số hữu tỉ (số thập phân và phân số), không luỹ thừa."}
+]

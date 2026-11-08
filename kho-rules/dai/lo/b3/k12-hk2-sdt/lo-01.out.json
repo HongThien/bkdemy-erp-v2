@@ -1,0 +1,11 @@
+[
+ {"ma_cau": "T11200000010539", "dang_bai_id": null, "chac": null, "ly_do": "Số liệu thô không ghép nhóm (tìm 2 số còn lại từ TB và phương sai, lớp 10): bản đồ thiếu dạng này."},
+ {"ma_cau": "T11200000010561", "dang_bai_id": "NDB02591", "chac": "vua", "ly_do": "Tìm mốt của bảng ghép nhóm: gần dạng đọc bảng/nhóm tần số lớn nhất, nhưng bản đồ chưa có dạng Mốt riêng."},
+ {"ma_cau": "T11200000010541", "dang_bai_id": null, "chac": null, "ly_do": "Số liệu thô không ghép nhóm (tìm 2 số còn lại từ TB và phương sai, lớp 10): bản đồ thiếu dạng này."},
+ {"ma_cau": "T11200000010345", "dang_bai_id": "NDB02585", "chac": "cao", "ly_do": "Cho bảng ghép nhóm, hỏi khoảng tứ phân vị: tính Q1, Q3 nội suy rồi lấy hiệu."},
+ {"ma_cau": "T11200000010564", "dang_bai_id": "NDB02591", "chac": "vua", "ly_do": "Tìm mốt của bảng ghép nhóm: gần dạng đọc bảng/nhóm tần số lớn nhất, nhưng bản đồ chưa có dạng Mốt riêng."},
+ {"ma_cau": "T11200000010452", "dang_bai_id": "NDB02585", "chac": "cao", "ly_do": "Cho bảng ghép nhóm (có tần số tích luỹ), hỏi khoảng tứ phân vị: Q3 − Q1 bằng nội suy."},
+ {"ma_cau": "T11200000010546", "dang_bai_id": "NDB02584", "chac": "cao", "ly_do": "Tìm trung vị (Q2) của mẫu ghép nhóm bằng công thức nội suy, mô tả dạng nêu rõ trung vị."},
+ {"ma_cau": "T11200000010359", "dang_bai_id": "NDB02584", "chac": "cao", "ly_do": "Tìm trung vị (Q2) của mẫu ghép nhóm bằng công thức nội suy, mô tả dạng nêu rõ trung vị."},
+ {"ma_cau": "T11200000010545", "dang_bai_id": "NDB02584", "chac": "cao", "ly_do": "Tìm trung vị (Q2) của mẫu ghép nhóm bằng công thức nội suy, mô tả dạng nêu rõ trung vị."}
+]

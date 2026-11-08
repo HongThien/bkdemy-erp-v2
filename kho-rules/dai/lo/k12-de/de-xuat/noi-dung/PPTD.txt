@@ -1,0 +1,354 @@
+=== M1   (dạng "Nhận biết dạng phương trình mặt phẳng, đường thẳng")
+@ly_thuyet:
+##TC Dạng phương trình mặt phẳng
+• Phương trình tổng quát của mặt phẳng: $Ax+By+Cz+D=0$ với $A^2+B^2+C^2>0$ (ba hệ số $A,B,C$ không đồng thời bằng $0$), vectơ pháp tuyến $\overrightarrow{n}=(A;B;C)$.
+• Các biến $x,y,z$ chỉ xuất hiện ở bậc nhất, không có bình phương, không có tích hai biến, không nằm ở mẫu số.
+• Phương trình thiếu một hay hai biến vẫn là phương trình mặt phẳng, ví dụ $2x-3z+1=0$, $x-1=0$.
+• Mặt phẳng toạ độ: $(Oxy):z=0$, $(Oyz):x=0$, $(Oxz):y=0$.
+
+##TC Dạng chính tắc của đường thẳng
+• Đường thẳng đi qua $M_0(x_0;y_0;z_0)$ có vectơ chỉ phương $\overrightarrow{u}=(a;b;c)$ với $abc\ne0$ có phương trình chính tắc $\dfrac{x-x_0}{a}=\dfrac{y-y_0}{b}=\dfrac{z-z_0}{c}$.
+• Tử số là $x-x_0$, $y-y_0$, $z-z_0$ với $x_0,y_0,z_0$ là hằng số; ba mẫu số $a,b,c$ là hằng số và đều khác $0$.
+
+##PP Nhận biết phương trình đã cho thuộc dạng nào
+Phương trình một vế bằng $0$ hoặc bằng hằng số, chỉ có $x,y,z$ bậc nhất: đối chiếu với $Ax+By+Cz+D=0$ và kiểm tra $A,B,C$ không đồng thời bằng $0$.
+Phương trình có hai dấu bằng, ba phân thức: đối chiếu với dạng chính tắc, kiểm tra tử là $x-x_0$, $y-y_0$, $z-z_0$ và mẫu là ba số khác $0$.
+Gặp $x^2$, $xz$, $\dfrac{1}{x}$ hoặc biến nằm ở mẫu: loại ngay, không phải mặt phẳng và không phải chính tắc.
+Với mặt phẳng toạ độ: mặt phẳng chứa hai trục nào thì biến còn lại bằng $0$.
+
+##CY
+• Dạng đoạn chắn $\dfrac{x}{a}+\dfrac{y}{b}+\dfrac{z}{c}=1$ là cách viết khác của mặt phẳng, nhưng đề hỏi "phương trình tổng quát" thì chọn dạng $Ax+By+Cz+D=0$.
+• Phương trình có hai dấu bằng liên kết ba phân thức là đường thẳng, không phải mặt phẳng.
+• Mẫu số bằng $0$ hoặc chứa biến thì không phải phương trình chính tắc.
+• $(Oxy)$ có phương trình $z=0$ (không phải $x=0$ hay $y=0$): nhớ biến vắng mặt trong tên mặt phẳng.
+
+@vi_du:
+##VD
+a) Trong các phương trình sau, phương trình nào là phương trình tổng quát của một mặt phẳng?
+(1) $2x-y+3=0$ (2) $x^2+y+z-1=0$ (3) $\dfrac{1}{x}+\dfrac{2}{y}+\dfrac{3}{z}=1$ (4) $3x+4z=0$ (5) $\dfrac{x-1}{2}=\dfrac{y}{3}=\dfrac{z+1}{1}$
+b) Viết phương trình mặt phẳng $(Oyz)$.
+
+Bài giải:
+a) (1) có dạng $Ax+By+Cz+D=0$ với $A=2$, $B=-1$, $C=0$, $D=3$ và $A,B,C$ không đồng thời bằng $0$ nên là mặt phẳng.
+(2) có $x^2$ nên không phải mặt phẳng; (3) có biến ở mẫu số nên không phải mặt phẳng.
+(4) có $A=3$, $B=0$, $C=4$, $D=0$ nên là mặt phẳng.
+(5) có hai dấu bằng và ba phân thức nên là phương trình chính tắc của đường thẳng, không phải mặt phẳng.
+b) Mặt phẳng $(Oyz)$ chứa trục $Oy$ và $Oz$ nên mọi điểm của nó có hoành độ $x=0$.
+Vậy các phương trình (1) và (4) là phương trình mặt phẳng; $(Oyz)$ có phương trình $x=0$.
+
+##VD
+a) Phương trình nào sau đây là phương trình chính tắc của một đường thẳng?
+(1) $\dfrac{x-1}{2}=\dfrac{y+3}{-4}=\dfrac{z}{5}$ (2) $\dfrac{x-1}{2}=\dfrac{y+3}{y}=\dfrac{z}{5}$ (3) $\dfrac{x-1}{2}=\dfrac{y+3}{0}=\dfrac{z}{5}$ (4) $\dfrac{x}{2}=\dfrac{y-1}{3}=\dfrac{z+2}{1}$
+b) Trong các phương trình sau, phương trình nào **không** phải là phương trình tổng quát của một mặt phẳng?
+(1) $x+2y+yz-3=0$ (2) $z-1=0$ (3) $\dfrac{x}{2}+\dfrac{y}{3}+\dfrac{z}{-1}=1$ (4) $4x-z=0$ (5) $x-y+z^2=0$
+
+Bài giải:
+a) (1) có tử $x-1$, $y+3$, $z-0$ và ba mẫu $2,-4,5$ đều khác $0$ nên là phương trình chính tắc.
+(2) có mẫu $y$ chứa biến nên không phải chính tắc.
+(3) có một mẫu bằng $0$ nên không thuộc dạng chính tắc với $abc\ne0$.
+(4) có tử $x-0$, $y-1$, $z+2$ và mẫu $2,3,1$ khác $0$ nên là phương trình chính tắc.
+b) (1) có tích $yz$ của hai biến nên không phải phương trình mặt phẳng; (5) có $z^2$ nên cũng không phải.
+(2) có $A=B=0$, $C=1$ nên là phương trình tổng quát; (4) có $A=4$, $B=0$, $C=-1$, $D=0$ nên là phương trình tổng quát.
+(3) là phương trình đoạn chắn của một mặt phẳng nhưng chưa viết ở dạng $Ax+By+Cz+D=0$; quy đồng mới được $3x+2y-6z-6=0$.
+Vậy (1) và (4) là phương trình chính tắc; ở câu b) các phương trình (1), (3), (5) không phải là phương trình tổng quát của mặt phẳng.
+
+=== M2   (dạng "Mặt phẳng, đường thẳng tạo góc lớn nhất hoặc nhỏ nhất" — dạng hiếm)
+@ly_thuyet:
+##TC Công thức góc và vectơ thành phần vuông góc
+• Góc $\varphi$ giữa đường thẳng (vectơ chỉ phương $\overrightarrow{u}$) và mặt phẳng (vectơ pháp tuyến $\overrightarrow{n}$): $\sin\varphi=\dfrac{|\overrightarrow{u}\cdot\overrightarrow{n}|}{|\overrightarrow{u}||\overrightarrow{n}|}$.
+• Góc giữa hai đường thẳng: $\cos\varphi=\dfrac{|\overrightarrow{u_1}\cdot\overrightarrow{u_2}|}{|\overrightarrow{u_1}||\overrightarrow{u_2}|}$; góc giữa hai mặt phẳng: $\cos\varphi=\dfrac{|\overrightarrow{n_1}\cdot\overrightarrow{n_2}|}{|\overrightarrow{n_1}||\overrightarrow{n_2}|}$.
+• Thành phần của $\overrightarrow{a}$ vuông góc với $\overrightarrow{e}\ne\overrightarrow{0}$: $\overrightarrow{a_\perp}=\overrightarrow{a}-\dfrac{\overrightarrow{a}\cdot\overrightarrow{e}}{|\overrightarrow{e}|^2}\overrightarrow{e}$ (là hình chiếu của $\overrightarrow{a}$ lên mặt phẳng vuông góc với $\overrightarrow{e}$).
+• Nguyên tắc: vectơ cần tìm bị buộc nằm trong một mặt phẳng vectơ cố định thì góc giữa nó và vectơ $\overrightarrow{a}$ cho trước nhỏ nhất (và $|\cos|$ lớn nhất) khi nó cùng phương với hình chiếu của $\overrightarrow{a}$ lên mặt phẳng ấy.
+##TC Ba tình huống thường gặp
+• Mặt phẳng $(P)$ chứa $d$ tạo với đường thẳng $\Delta$ góc lớn nhất: $\overrightarrow{n_P}\perp\overrightarrow{u_d}$ và $\sin\varphi=|\cos(\overrightarrow{n_P},\overrightarrow{u_\Delta})|$ lớn nhất nên $\overrightarrow{n_P}\parallel\overrightarrow{u_\Delta}-\dfrac{\overrightarrow{u_\Delta}\cdot\overrightarrow{u_d}}{|\overrightarrow{u_d}|^2}\overrightarrow{u_d}$.
+• Đường thẳng $\Delta$ nằm trong mặt phẳng $(\alpha)$ tạo với $d$ góc nhỏ nhất: $\overrightarrow{u_\Delta}\perp\overrightarrow{n_\alpha}$ nên $\overrightarrow{u_\Delta}\parallel\overrightarrow{u_d}-\dfrac{\overrightarrow{u_d}\cdot\overrightarrow{n_\alpha}}{|\overrightarrow{n_\alpha}|^2}\overrightarrow{n_\alpha}$ (hình chiếu của $d$ lên $(\alpha)$).
+• Mặt phẳng $(P)$ chứa $d$ tạo với mặt phẳng $(Q)$ góc nhỏ nhất: $\overrightarrow{n_P}\parallel\overrightarrow{n_Q}-\dfrac{\overrightarrow{n_Q}\cdot\overrightarrow{u_d}}{|\overrightarrow{u_d}|^2}\overrightarrow{u_d}$.
+
+##PP Hình chiếu vectơ thay cho tham số hoá
+Xác định vectơ cố định (vectơ chỉ phương $\overrightarrow{u_d}$ hoặc pháp tuyến $\overrightarrow{n_\alpha}$) buộc vectơ cần tìm vuông góc với nó.
+Tính vectơ thành phần vuông góc của vectơ kia theo công thức, rút gọn về vectơ có toạ độ nguyên.
+Viết phương trình mặt phẳng (qua một điểm của $d$) hoặc đường thẳng (qua điểm đã cho) với vectơ vừa tìm.
+Tính góc hoặc đại lượng đề hỏi (khoảng cách, tổng các hệ số) và đối chiếu điều kiện chứa $d$, nằm trong $(\alpha)$.
+Cách khác khi cần: đặt $\overrightarrow{n}=(a;b;c)$, dùng $\overrightarrow{n}\cdot\overrightarrow{u_d}=0$ để còn hai ẩn, đưa $\sin\varphi$ hoặc $\cos\varphi$ về hàm một biến rồi khảo sát.
+
+##CY
+• Nếu vectơ kia cùng phương với $\overrightarrow{e}$ thì thành phần vuông góc bằng $\overrightarrow{0}$: khi đó mọi vị trí cho cùng một góc, không có cực trị riêng.
+• Góc đường thẳng và mặt phẳng dùng $\sin$ (với $\overrightarrow{n}$), không dùng $\cos$ như góc hai đường thẳng.
+• Chọn đúng đại lượng: "góc lớn nhất" của mặt phẳng với đường thẳng ứng với $|\cos(\overrightarrow{n},\overrightarrow{u})|$ lớn nhất, không phải nhỏ nhất.
+• Phương trình mặt phẳng phải đi qua điểm của $d$ (nhớ chứa $d$), đề thường cho dạng có hệ số sẵn nên cần quy đồng đúng hệ số tự do.
+
+@vi_du:
+##VD
+Trong không gian $Oxyz$ cho đường thẳng $d:\dfrac{x-1}{2}=\dfrac{y+1}{2}=\dfrac{z}{1}$.
+a) Cho đường thẳng $\Delta:\begin{cases} x=t \\ y=3 \\ z=2+t \end{cases}$. Viết phương trình mặt phẳng $(P)$ chứa $d$ tạo với $\Delta$ góc lớn nhất và tính góc lớn nhất đó.
+b) Cho mặt phẳng $(\alpha):2x-y+2z-3=0$, điểm $M(1;1;1)\in(\alpha)$ và đường thẳng $d_1$ có vectơ chỉ phương $\overrightarrow{u_1}=(1;1;1)$. Viết phương trình chính tắc của đường thẳng $\Delta_1$ đi qua $M$, nằm trong $(\alpha)$ và tạo với $d_1$ góc nhỏ nhất.
+
+Bài giải:
+a) $d$ có $\overrightarrow{u_d}=(2;2;1)$, $|\overrightarrow{u_d}|^2=9$; $\Delta$ có $\overrightarrow{u_\Delta}=(1;0;1)$, $\overrightarrow{u_\Delta}\cdot\overrightarrow{u_d}=3$.
+Vì $(P)\supset d$ nên $\overrightarrow{n_P}\perp\overrightarrow{u_d}$; góc lớn nhất khi $\overrightarrow{n_P}\parallel\overrightarrow{u_\Delta}-\dfrac{3}{9}\overrightarrow{u_d}=\left(\dfrac13;-\dfrac23;\dfrac23\right)$, chọn $\overrightarrow{n_P}=(1;-2;2)$.
+$(P)$ đi qua điểm $(1;-1;0)\in d$: $(x-1)-2(y+1)+2z=0$ hay $x-2y+2z-3=0$.
+Khi đó $\sin\varphi=\dfrac{|1\cdot1+(-2)\cdot0+2\cdot1|}{\sqrt{1+4+4}\cdot\sqrt{2}}=\dfrac{3}{3\sqrt{2}}=\dfrac{\sqrt2}{2}$ nên $\varphi=45^\circ$.
+b) $\overrightarrow{n_\alpha}=(2;-1;2)$, $|\overrightarrow{n_\alpha}|^2=9$, $\overrightarrow{u_1}\cdot\overrightarrow{n_\alpha}=3$.
+$\Delta_1\subset(\alpha)$ nên $\overrightarrow{u_{\Delta_1}}\perp\overrightarrow{n_\alpha}$; góc nhỏ nhất khi $\overrightarrow{u_{\Delta_1}}\parallel\overrightarrow{u_1}-\dfrac{3}{9}\overrightarrow{n_\alpha}=\left(\dfrac13;\dfrac43;\dfrac13\right)$, chọn $\overrightarrow{u_{\Delta_1}}=(1;4;1)$ (thoả $2-4+2=0$).
+Vậy (P): $x-2y+2z-3=0$, góc lớn nhất là $45^\circ$; $\Delta_1:\dfrac{x-1}{1}=\dfrac{y-1}{4}=\dfrac{z-1}{1}$.
+
+##VD
+Trong không gian $Oxyz$ cho đường thẳng $d:\dfrac{x-1}{1}=\dfrac{y-2}{-1}=\dfrac{z}{2}$ và mặt phẳng $(Q):x+y+z-1=0$. Gọi $(P)$ là mặt phẳng chứa $d$ và tạo với $(Q)$ góc nhỏ nhất. Viết phương trình $(P)$, tính $\cos$ của góc nhỏ nhất đó và khoảng cách từ $M(3;0;1)$ đến $(P)$.
+
+Bài giải:
+$\overrightarrow{u_d}=(1;-1;2)$, $|\overrightarrow{u_d}|^2=6$; $\overrightarrow{n_Q}=(1;1;1)$, $\overrightarrow{n_Q}\cdot\overrightarrow{u_d}=2$.
+Vì $(P)\supset d$ nên $\overrightarrow{n_P}\perp\overrightarrow{u_d}$; góc giữa hai mặt phẳng nhỏ nhất khi $\overrightarrow{n_P}\parallel\overrightarrow{n_Q}-\dfrac{2}{6}\overrightarrow{u_d}=\left(\dfrac23;\dfrac43;\dfrac13\right)$, chọn $\overrightarrow{n_P}=(2;4;1)$ (kiểm tra $2-4+2=0$).
+$(P)$ đi qua $(1;2;0)\in d$: $2(x-1)+4(y-2)+z=0$ hay $2x+4y+z-10=0$.
+$\cos\varphi=\dfrac{|2+4+1|}{\sqrt{21}\cdot\sqrt{3}}=\dfrac{7}{\sqrt{63}}=\dfrac{\sqrt7}{3}$.
+$d(M,(P))=\dfrac{|2\cdot3+4\cdot0+1-10|}{\sqrt{21}}=\dfrac{3}{\sqrt{21}}=\dfrac{\sqrt{21}}{7}$.
+Vậy $(P):2x+4y+z-10=0$, $\cos$ của góc nhỏ nhất bằng $\dfrac{\sqrt7}{3}$ và khoảng cách bằng $\dfrac{\sqrt{21}}{7}$.
+
+=== N MN1   (nhóm mới "Cực trị trong không gian Oxyz")
+@ly_thuyet:
+##TC Công thức nền dùng chung
+• Khoảng cách từ $M(x_0;y_0;z_0)$ đến $(P):Ax+By+Cz+D=0$: $d(M,(P))=\dfrac{|Ax_0+By_0+Cz_0+D|}{\sqrt{A^2+B^2+C^2}}$. Đặt $f(X)=Ax+By+Cz+D$: hai điểm cùng phía $(P)$ khi $f(X_1)f(X_2)>0$, khác phía khi $<0$.
+• Hình chiếu $H$ của $X$ lên $(P)$: $H=X-\dfrac{f(X)}{|\overrightarrow{n}|^2}\overrightarrow{n}$; điểm đối xứng của $X$ qua $(P)$: $X'=X-\dfrac{2f(X)}{|\overrightarrow{n}|^2}\overrightarrow{n}$.
+• Mặt cầu tâm $I$ bán kính $R$ cắt $(P)$ khi $d(I,(P))<R$, giao là đường tròn tâm $J$ (hình chiếu của $I$ lên $(P)$) bán kính $r=\sqrt{R^2-d(I,(P))^2}$.
+• Hàm bậc hai $at^2+bt+c$ với $a>0$ đạt giá trị nhỏ nhất $c-\dfrac{b^2}{4a}$ tại $t=-\dfrac{b}{2a}$.
+##TC Ba hướng giải cực trị
+• Hình học: đối xứng qua mặt phẳng, hình chiếu vuông góc, đường thẳng qua tâm mặt cầu, bất đẳng thức tam giác.
+• Tham số hoá: điểm chạy trên đường thẳng viết theo một tham số $t$, đưa đại lượng cần tìm về hàm một biến.
+• Bất đẳng thức: AM-GM, Bunhia, rồi kiểm tra điều kiện xảy ra dấu bằng.
+
+##PP Giải bài cực trị trong không gian Oxyz
+Xác định điểm hoặc mặt đang thay đổi (điểm $M$, mặt phẳng $(P)$) và ràng buộc của nó: thuộc mặt phẳng, đường thẳng, mặt cầu hay thoả một hệ thức.
+Nếu ràng buộc là hệ thức độ dài hay góc thì đưa về quỹ tích quen thuộc (mặt cầu, đường tròn) trước.
+Chọn hướng giải theo ràng buộc: tổng khoảng cách tới hai điểm cố định thì đối xứng, điểm chạy trên mặt cầu hay đường tròn thì dùng tâm, mặt phẳng qua điểm cố định thì dùng bất đẳng thức, điểm chạy trên đường thẳng thì tham số hoá.
+Tìm vị trí đạt cực trị, kiểm tra vị trí đó thoả ràng buộc (dấu bằng có xảy ra không), rồi tính đại lượng đề hỏi.
+Làm tròn chỉ ở bước cuối cùng.
+
+##CY
+• Bài thực tế phải đặt hệ trục đúng, kiểm tra đơn vị (m, km, dm) và điều kiện ($t>0$, điểm thuộc tia chứ không thuộc đường thẳng) trước khi kết luận.
+• Cực trị đạt được phải có điểm thực sự tồn tại (đường thẳng nối có cắt đúng mặt phẳng hay không, ba điểm có thẳng hàng hợp lệ không).
+
+=== M3   (dạng "Tổng khoảng cách nhỏ nhất: lấy đối xứng qua mặt phẳng")
+@ly_thuyet:
+##TC Bài toán MA + MB nhỏ nhất với M thuộc mặt phẳng
+• Với $M\in(P)$ và $A'$ đối xứng với $A$ qua $(P)$ thì $MA=MA'$.
+• $A,B$ cùng phía $(P)$: $MA+MB=MA'+MB\ge A'B$, nhỏ nhất bằng $A'B$ khi $M$ là giao điểm của $A'B$ với $(P)$.
+• $A,B$ khác phía $(P)$: $MA+MB\ge AB$, nhỏ nhất bằng $AB$ khi $M=AB\cap(P)$.
+• Đường gấp khúc qua nhiều mặt phẳng (ví dụ $A\to M\in(P_1)\to N\in(P_2)\to A$): lấy đối xứng của $A$ qua từng mặt phẳng được $A_1,A_2$; độ dài đường đi $\ge A_1A_2$.
+• Chu vi tam giác $ABC$ có $B$, $C$ chạy trên hai đường thẳng (cùng nằm trong một mặt phẳng với $A$): lấy $A_1,A_2$ đối xứng với $A$ qua hai đường thẳng đó, chu vi $\ge A_1A_2$. Nếu $C$ chạy trên mặt phẳng còn $B$ chạy trên đường thẳng: đối xứng $A$ qua mặt phẳng được $A'$, chu vi $\ge AB+BA'$, rồi tìm $B$ trên đường thẳng làm $AB+BA'$ nhỏ nhất.
+• Hai điểm $M,N$ cùng nằm trong mặt phẳng $(P)$ với độ dài $MN=l$ cố định (hướng tự do): gọi $H,K$ là hình chiếu của $A,B$ lên $(P)$, $h_A=AH$, $h_B=BK$; khi đó $AM+NB$ nhỏ nhất bằng $\sqrt{(HK-l)^2+(h_A+h_B)^2}$ (lấy $|HK-l|$, đúng cho cả cùng phía lẫn khác phía), đạt khi $M,N$ nằm trên đường thẳng $HK$ với $HM:NK=h_A:h_B$. Tổng quãng đường nhớ cộng thêm $l$.
+
+##PP Tổng khoảng cách nhỏ nhất bằng đối xứng
+Tính $f(A)$, $f(B)$ để biết $A,B$ cùng phía hay khác phía mặt phẳng $(P)$.
+Cùng phía thì lấy $A'$ đối xứng với $A$ qua $(P)$.
+Giá trị nhỏ nhất là $A'B$ (hoặc $AB$ khi khác phía); điểm $M$ là giao của đoạn thẳng nối với $(P)$.
+Với đường đi qua nhiều mặt phẳng hoặc chu vi tam giác: lấy đối xứng liên tiếp, kiểm tra các giao điểm nằm trên đoạn nối đúng thứ tự.
+
+##CY
+• Không lấy đối xứng khi hai điểm đã khác phía.
+• Mặt phẳng có hệ số $A,B,C$ khác $1$: phải chia cho $|\overrightarrow{n}|^2=A^2+B^2+C^2$, không chia cho $\sqrt{A^2+B^2+C^2}$ khi tính toạ độ đối xứng.
+• Đoạn $MN=l$ có hướng tự do thì không tịnh tiến theo một vectơ cho trước được: dùng hình chiếu $H,K$ như trên, và kiểm tra $HK$ so với $l$.
+
+@vi_du:
+##VD
+Trong không gian $Oxyz$ cho mặt phẳng $(P):x+y+z-3=0$ và hai điểm $A(2;2;2)$, $B(3;1;2)$. Điểm $M$ thay đổi trên $(P)$. Tìm giá trị nhỏ nhất của $MA+MB$ và toạ độ điểm $M$ khi đó.
+
+Bài giải:
+Đặt $f(X)=x+y+z-3$. Ta có $f(A)=3>0$, $f(B)=3>0$ nên $A,B$ cùng phía với $(P)$.
+Điểm đối xứng của $A$ qua $(P)$: $A'=A-\dfrac{2\cdot3}{3}(1;1;1)=(0;0;0)$.
+Với $M\in(P)$: $MA+MB=MA'+MB\ge A'B=\sqrt{3^2+1^2+2^2}=\sqrt{14}$.
+Dấu bằng xảy ra khi $M$ thuộc đoạn $A'B$: $M(3t;t;2t)$ và $M\in(P)$ nên $3t+t+2t-3=0$, $t=\dfrac12$.
+Vậy giá trị nhỏ nhất của $MA+MB$ bằng $\sqrt{14}$, đạt tại $M\left(\dfrac32;\dfrac12;1\right)$.
+
+##VD
+Trong không gian $Oxyz$ (đơn vị trên mỗi trục là $dm$), một con ong xuất phát tại $A(2;4;1)$, bay xuống mặt phẳng $(Oxy)$ tại điểm $M$ để nghỉ, rồi bay lên mặt phẳng $(Q):y-z=0$ tại điểm $N$ và bay trở về $A$. Tính độ dài ngắn nhất của quãng đường $A\to M\to N\to A$ (làm tròn đến hàng phần trăm).
+
+Bài giải:
+Gọi $A_1$ là điểm đối xứng của $A$ qua $(Oxy)$: $A_1(2;4;-1)$.
+Gọi $A_2$ là điểm đối xứng của $A$ qua $(Q)$: $f(A)=y-z=3$, $|\overrightarrow{n}|^2=2$ nên $A_2=A-\dfrac{2\cdot3}{2}(0;1;-1)=(2;1;4)$.
+Vì $M\in(Oxy)$, $N\in(Q)$ nên $AM=A_1M$ và $AN=A_2N$. Quãng đường $AM+MN+NA=A_1M+MN+NA_2\ge A_1A_2$.
+$\overrightarrow{A_1A_2}=(0;-3;5)$ nên $A_1A_2=\sqrt{9+25}=\sqrt{34}$.
+Đoạn $A_1A_2$: $(2;\,4-3s;\,-1+5s)$. Cắt $(Oxy)$ ($z=0$) tại $s=\dfrac15$ và cắt $(Q)$ ($y=z$) tại $s=\dfrac58$; vì $\dfrac15<\dfrac58$ nên các điểm $M,N$ nằm trên đoạn nối đúng thứ tự $A_1,M,N,A_2$ và dấu bằng xảy ra.
+Vậy độ dài ngắn nhất của quãng đường là $\sqrt{34}\approx5{,}83$ ($dm$).
+
+=== M4   (dạng "Điểm thoả hệ thức chạy trên đường tròn: tìm khoảng cách lớn nhất, nhỏ nhất")
+@ly_thuyet:
+##TC Quỹ tích và khoảng cách đến một đường tròn
+• Điểm $M$ thoả $MA=k\cdot MB$ ($k>0,k\ne1$): bình phương hai vế rồi gom lại, được mặt cầu. Nếu $M$ còn thuộc một mặt phẳng thì quỹ tích là đường tròn.
+• $\widehat{AMB}=90^\circ$ (hay $\overrightarrow{MA}\cdot\overrightarrow{MB}=0$): $M$ thuộc mặt cầu đường kính $AB$.
+• $\overrightarrow{OM}\cdot\overrightarrow{AM}=k$ (khai triển toạ độ) cho một mặt cầu; nếu $M$ còn thuộc mặt cầu $(S)$ cho trước thì trừ vế theo vế hai phương trình mặt cầu (các số hạng $x^2+y^2+z^2$ triệt tiêu) được mặt phẳng cố định chứa $M$.
+• Tia từ $A$ cách bức tường (mặt phẳng toạ độ) một khoảng $h$, luôn tạo với trục vuông góc bức tường góc $\alpha$ cố định: vệt $M$ trên tường chạy trên đường tròn tâm $H$ (hình chiếu của $A$ lên tường), bán kính $h\tan\alpha$.
+• $H$ là hình chiếu của $A$ lên mặt phẳng $(P)$ thay đổi luôn chứa đường thẳng $d$: gọi $K$ là hình chiếu của $A$ lên $d$, thì $\widehat{AHK}=90^\circ$ và $H$ nằm trong mặt phẳng qua $A$ vuông góc $d$, nên $H$ chạy trên đường tròn đường kính $AK$ của mặt phẳng đó.
+• $M\in(P)$ cách đường thẳng $d\perp(P)$ một khoảng $a$: $M$ chạy trên đường tròn tâm $d\cap(P)$ bán kính $a$. Hai điểm chạy trên hai đường tròn $(J_1;r_1)$, $(J_2;r_2)$ cùng mặt phẳng, nằm ngoài nhau: khoảng cách nhỏ nhất bằng $J_1J_2-r_1-r_2$.
+• Đường tròn $(J;r)$ nằm trong mặt phẳng $(P)$, điểm $E$ có hình chiếu $H$ lên $(P)$, $h=EH$, $\ell=HJ$: $EM_{\max}=\sqrt{h^2+(\ell+r)^2}$, $EM_{\min}=\sqrt{h^2+(\ell-r)^2}$ (lấy $|\ell-r|$). Khi $E\in(P)$ thì $h=0$.
+
+##PP Từ hệ thức đến khoảng cách lớn nhất, nhỏ nhất
+Biến hệ thức đề cho thành quỹ tích: mặt cầu tâm $I$ bán kính $R$ cùng với mặt phẳng ràng buộc.
+Xác định đường tròn giao tuyến của mặt cầu và mặt phẳng: tâm $J$, bán kính $r$.
+Với điểm cần tính khoảng cách tới $M$: tìm hình chiếu $H$ lên $(P)$, tính $h=EH$ và $\ell=HJ$.
+Áp dụng công thức $\sqrt{h^2+(\ell\pm r)^2}$ để có giá trị lớn nhất, nhỏ nhất.
+Trường hợp khoảng cách đến gốc hay đến tâm: gộp thành $|OJ|\pm r$ khi $O$ nằm cùng mặt phẳng với đường tròn.
+
+##CY
+• Điều kiện $d(I,(P))<R$ phải kiểm tra trước, nếu không thì quỹ tích rỗng.
+• Giá trị nhỏ nhất là $|\ell-r|$, không phải $\ell-r$: điểm $H$ có thể nằm trong đường tròn.
+• Điểm $E$ không nằm trong mặt phẳng chứa đường tròn thì phải có thành phần $h^2$; đừng quên hình chiếu.
+• Phải loại điểm làm hệ thức vô nghĩa (ví dụ $M\equiv A$ hay $M\equiv B$ trong $\widehat{AMB}=90^\circ$) nếu nằm trên đường tròn.
+
+@vi_du:
+##VD
+Trong không gian $Oxyz$, một thiết bị laser đặt tại điểm $A(6;4;3)$ chiếu tia sáng về phía bức tường phẳng trùng với mặt phẳng $(Oyz)$ (đơn vị là mét). Tia sáng luôn thay đổi nhưng luôn tạo với trục $Ox$ một góc $45^\circ$. Gọi $M$ là vệt sáng trên tường. Tìm khoảng cách lớn nhất và nhỏ nhất từ $M$ đến gốc toạ độ $O$.
+
+Bài giải:
+Hình chiếu của $A$ lên tường là $H(0;4;3)$, khoảng cách $AH=6$.
+Tia tạo với $Ox$ (vuông góc tường) góc $45^\circ$ nên $HM=AH\cdot\tan45^\circ=6$. Vậy $M$ chạy trên đường tròn tâm $H$ bán kính $6$ nằm trong $(Oyz)$.
+$O\in(Oyz)$ và $OH=\sqrt{4^2+3^2}=5<6$ nên $O$ nằm trong đường tròn.
+$OM_{\max}=OH+6=11$ và $OM_{\min}=6-OH=1$.
+Vậy khoảng cách lớn nhất bằng $11$ m và nhỏ nhất bằng $1$ m.
+
+##VD
+Trong không gian $Oxyz$ cho $A(0;0;1)$, $B(3;2;3)$, $C(2;3;5)$ và mặt phẳng $(P):x+2y+2z-6=0$. Xét các điểm $M\in(P)$ sao cho $\widehat{AMB}=90^\circ$. Tìm giá trị lớn nhất và nhỏ nhất của độ dài $CM$.
+
+Bài giải:
+$\widehat{AMB}=90^\circ$ nên $M$ thuộc mặt cầu đường kính $AB$: tâm $I\left(\dfrac32;1;2\right)$, $AB^2=9+4+4=17$ nên $R^2=\dfrac{17}{4}$.
+Đặt $f(X)=x+2y+2z-6$, $|\overrightarrow{n}|=3$. $f(I)=\dfrac32$ nên $d(I,(P))=\dfrac12$ và $r^2=\dfrac{17}{4}-\dfrac14=4$, $r=2$.
+Tâm đường tròn là hình chiếu $J=I-\dfrac{3/2}{9}(1;2;2)=\left(\dfrac43;\dfrac23;\dfrac53\right)$.
+$f(C)=2+6+10-6=12$ nên $h=CH=\dfrac{12}{3}=4$ và $H=C-\dfrac{12}{9}(1;2;2)=\left(\dfrac23;\dfrac13;\dfrac73\right)$.
+$\overrightarrow{HJ}=\left(\dfrac23;\dfrac13;-\dfrac23\right)$ nên $\ell=HJ=1$.
+$CM_{\max}=\sqrt{h^2+(\ell+r)^2}=\sqrt{16+9}=5$; $CM_{\min}=\sqrt{16+(2-1)^2}=\sqrt{17}$.
+Điểm $A,B\notin(P)$ nên không phải loại điểm nào trên đường tròn.
+Vậy giá trị lớn nhất của $CM$ bằng $5$ và giá trị nhỏ nhất bằng $\sqrt{17}$.
+
+=== M5   (dạng "Cực trị với điểm chạy trên mặt cầu")
+@ly_thuyet:
+##TC Điểm trên mặt cầu và đường thẳng qua tâm
+• $M\in(S)$ tâm $I$ bán kính $R$, mặt phẳng $(P)$ không cắt $(S)$ ($d(I,(P))>R$): $d(M,(P))$ nhỏ nhất bằng $d(I,(P))-R$ và lớn nhất bằng $d(I,(P))+R$; hai điểm đạt cực trị là giao của $(S)$ với đường thẳng qua $I$ vuông góc $(P)$, tức $M=I\pm R\dfrac{\overrightarrow{n}}{|\overrightarrow{n}|}$.
+• Biểu thức tuyến tính $ax+by+cz$ với $M\in(S)$: đạt cực trị tại $M=I\pm R\dfrac{(a;b;c)}{\sqrt{a^2+b^2+c^2}}$, giá trị $aI_x+bI_y+cI_z\pm R\sqrt{a^2+b^2+c^2}$.
+• Tổng bình phương có hệ số $\alpha MA^2+\beta MB^2=(\alpha+\beta)MJ^2+\alpha JA^2+\beta JB^2$ với $J$ cố định thoả $\alpha\overrightarrow{JA}+\beta\overrightarrow{JB}=\overrightarrow{0}$; nhỏ nhất (lớn nhất) khi $MJ$ nhỏ nhất (lớn nhất).
+• Với $J$ cố định và mặt cầu $(S)$: $MJ$ nhỏ nhất ở $M=I+R\dfrac{\overrightarrow{IJ}}{IJ}$, lớn nhất ở $M=I-R\dfrac{\overrightarrow{IJ}}{IJ}$. Vectơ tổng $\alpha\overrightarrow{MA}+\beta\overrightarrow{MB}+\gamma\overrightarrow{MC}$ ($\alpha+\beta+\gamma\ne0$) bằng $(\alpha+\beta+\gamma)\overrightarrow{MK}$ với $K$ là điểm cố định tương ứng, nên cũng quy về $MK$.
+• Tổng $MA+MB$ lớn nhất: $(MA+MB)^2\le2(MA^2+MB^2)=4MK^2+AB^2$ với $K$ là trung điểm $AB$; lớn nhất khi $MK$ lớn nhất và đồng thời $MA=MB$.
+• $M\in(S)$, $N\in(P)$ với $\overrightarrow{MN}$ luôn cùng phương $\overrightarrow{u}$ tạo với $(P)$ góc $\varphi$: $MN=\dfrac{d(M,(P))}{\sin\varphi}$, nhỏ nhất bằng $\dfrac{d(I,(P))-R}{\sin\varphi}$.
+
+##PP Cực trị khi điểm chạy trên mặt cầu
+Xác định tâm $I$, bán kính $R$ và đại lượng cần tối ưu (khoảng cách đến mặt phẳng, biểu thức tuyến tính, tổng bình phương hay vectơ tổng).
+Đưa đại lượng về dạng khoảng cách từ $M$ đến một điểm hay một mặt phẳng cố định (ví dụ gom $\alpha MA^2+\beta MB^2$ về $MJ^2$, hay vectơ tổng về $\overrightarrow{MK}$).
+Xét đường thẳng qua $I$ (vuông góc mặt phẳng hoặc qua $J$): giao với $(S)$ cho hai điểm, một điểm cực đại và một cực tiểu.
+Chọn điểm đúng với yêu cầu (nhỏ nhất hay lớn nhất), tính toạ độ $M$ và đại lượng đề hỏi.
+
+##CY
+• Muốn dùng $d(I,(P))\mp R$ phải chắc $(P)$ không cắt $(S)$; nếu cắt thì giá trị nhỏ nhất bằng $0$.
+• Tổng $MA+MB$ (không bình phương) không đưa thẳng về $MK$: phải kiểm tra điểm tìm được có $MA=MB$ thì dấu bằng mới xảy ra.
+• Chọn dấu $\pm$ đúng: điểm gần mặt phẳng hơn nằm về phía mặt phẳng so với $I$.
+• Tìm $J$ theo trọng số $(\alpha A+\beta B)/(\alpha+\beta)$, đừng viết nhầm thứ tự trọng số.
+
+@vi_du:
+##VD
+Trong không gian $Oxyz$ cho mặt cầu $(S):(x-2)^2+(y+1)^2+(z-1)^2=9$ và mặt phẳng $(P):x-2y+2z+9=0$. Tìm điểm $M(a;b;c)\in(S)$ để khoảng cách từ $M$ đến $(P)$ nhỏ nhất, tính khoảng cách nhỏ nhất đó và $a+b+c$.
+
+Bài giải:
+$(S)$ có tâm $I(2;-1;1)$, $R=3$; $\overrightarrow{n}=(1;-2;2)$, $|\overrightarrow{n}|=3$.
+$d(I,(P))=\dfrac{|2+2+2+9|}{3}=5>3=R$ nên $(P)$ không cắt $(S)$.
+Khoảng cách nhỏ nhất bằng $5-3=2$ khi $M$ là giao của $(S)$ với đường thẳng qua $I$ vuông góc $(P)$, phía gần $(P)$.
+$f(I)=15>0$ nên điểm gần $(P)$ là $M=I-R\dfrac{\overrightarrow{n}}{|\overrightarrow{n}|}=(2;-1;1)-(1;-2;2)=(1;1;-1)$.
+Kiểm tra: $d(M,(P))=\dfrac{|1-2-2+9|}{3}=2$.
+Vậy khoảng cách nhỏ nhất bằng $2$, $M(1;1;-1)$ và $a+b+c=1$.
+
+##VD
+Trong không gian $Oxyz$ cho mặt cầu $(S):(x-1)^2+y^2+(z-2)^2=9$ và hai điểm $A(3;2;2)$, $B(9;8;8)$. Điểm $M$ thuộc $(S)$ sao cho $2MA^2+MB^2$ nhỏ nhất. Tìm toạ độ $M$ và giá trị nhỏ nhất của $2MA^2+MB^2$.
+
+Bài giải:
+$(S)$ có tâm $I(1;0;2)$, $R=3$. Gọi $J$ thoả $2\overrightarrow{JA}+\overrightarrow{JB}=\overrightarrow{0}$ thì $J=\dfrac{2A+B}{3}=(5;4;4)$.
+Khi đó $2MA^2+MB^2=3MJ^2+2JA^2+JB^2$ với $JA^2=12$, $JB^2=48$, nên $2MA^2+MB^2=3MJ^2+72$.
+$\overrightarrow{IJ}=(4;4;2)$, $IJ=6>R$ nên $J$ nằm ngoài $(S)$ và $MJ_{\min}=IJ-R=3$ khi $M=I+R\dfrac{\overrightarrow{IJ}}{IJ}=(1;0;2)+(2;2;1)=(3;2;3)$.
+Giá trị nhỏ nhất bằng $3\cdot3^2+72=99$.
+Vậy $M(3;2;3)$ và giá trị nhỏ nhất của $2MA^2+MB^2$ bằng $99$.
+
+=== M6   (dạng "Mặt phẳng qua điểm cố định: cách gốc xa nhất, chắn ba trục tối ưu")
+@ly_thuyet:
+##TC Mặt phẳng qua điểm cố định
+• Mặt phẳng $(P)$ qua $M$ cách $O$ xa nhất: $d(O,(P))\le OM$, dấu bằng khi $OM\perp(P)$, tức $\overrightarrow{n_P}=\overrightarrow{OM}$ và $d_{\max}=OM$.
+• Mặt phẳng cắt $Ox,Oy,Oz$ tại $A(a;0;0)$, $B(0;b;0)$, $C(0;0;c)$ ($abc\ne0$): $\dfrac{x}{a}+\dfrac{y}{b}+\dfrac{z}{c}=1$; thể tích tứ diện $V_{OABC}=\dfrac{|abc|}{6}$ và $\dfrac{1}{d^2(O,(P))}=\dfrac{1}{a^2}+\dfrac{1}{b^2}+\dfrac{1}{c^2}$.
+• $M(m;n;p)\in(P)$ nên $\dfrac{m}{a}+\dfrac{n}{b}+\dfrac{p}{c}=1$.
+• Với $m,n,p>0$ và $a,b,c>0$ (cắt các tia dương): AM-GM cho $1\ge3\sqrt[3]{\dfrac{mnp}{abc}}$ nên $abc\ge27mnp$, $V_{\min}=\dfrac{9mnp}{2}$ khi $a=3m$, $b=3n$, $c=3p$.
+• Bunhia: $\left(\dfrac{\alpha}{a^2}+\dfrac{\beta}{b^2}+\dfrac{\gamma}{c^2}\right)\left(\dfrac{m^2}{\alpha}+\dfrac{n^2}{\beta}+\dfrac{p^2}{\gamma}\right)\ge\left(\dfrac{m}{a}+\dfrac{n}{b}+\dfrac{p}{c}\right)^2=1$ cho biểu thức có hệ số.
+• $(P)$ qua $A$ cố định, $B,C$ cùng phía $(P)$: $\alpha\,d(B,(P))+\beta\,d(C,(P))=(\alpha+\beta)\,d(K,(P))\le(\alpha+\beta)AK$ với $K=\dfrac{\alpha B+\beta C}{\alpha+\beta}$ ($\alpha,\beta>0$); lớn nhất khi $(P)$ nhận $\overrightarrow{AK}$ làm vectơ pháp tuyến.
+
+##PP Mặt phẳng qua điểm cố định
+Đề hỏi cách gốc xa nhất: lấy pháp tuyến $\overrightarrow{OM}$, viết phương trình qua $M$, rồi tính các giao điểm với trục nếu cần.
+Đề hỏi thể tích, diện tích hay biểu thức theo $a,b,c$: viết phương trình đoạn chắn và thay $M$ để được điều kiện $\dfrac{m}{a}+\dfrac{n}{b}+\dfrac{p}{c}=1$.
+Áp dụng AM-GM (cho $abc$) hoặc Bunhia (cho tổng nghịch đảo bình phương) rồi tìm điều kiện dấu bằng.
+Tìm $a,b,c$ và tính đại lượng đề hỏi (thể tích, tổng $9a+9b+c$...).
+
+##CY
+• Công thức $V=\dfrac{abc}{6}$ chỉ đúng khi $a,b,c$ dương; lấy $|abc|$.
+• Dấu bằng của AM-GM cần $\dfrac{m}{a}=\dfrac{n}{b}=\dfrac{p}{c}=\dfrac13$: phải kiểm tra tồn tại.
+• Bài thực tế (góc tường, kho mini): đặt $O$ tại góc nhà, ba cạnh trên ba mép vuông góc; khoảng cách từ điểm đến nền và hai vách là toạ độ của $M$.
+• Mặt phẳng "cắt ba tia" khác "cắt ba trục": hệ số có thể âm nếu chỉ cắt các trục.
+
+@vi_du:
+##VD
+Trong không gian $Oxyz$ cho điểm $M(2;1;2)$. Gọi $(P)$ là mặt phẳng đi qua $M$ và cách gốc toạ độ $O$ một khoảng lớn nhất. Viết phương trình $(P)$, tính khoảng cách đó và thể tích tứ diện $OABC$ với $A,B,C$ là giao điểm của $(P)$ với các trục $Ox,Oy,Oz$.
+
+Bài giải:
+Với mọi mặt phẳng $(P)$ qua $M$: $d(O,(P))\le OM=\sqrt{4+1+4}=3$, dấu bằng khi $(P)\perp OM$.
+Vậy $(P)$ nhận $\overrightarrow{OM}=(2;1;2)$ làm vectơ pháp tuyến: $2(x-2)+(y-1)+2(z-2)=0$ hay $2x+y+2z-9=0$.
+Cắt các trục: $A\left(\dfrac92;0;0\right)$, $B(0;9;0)$, $C\left(0;0;\dfrac92\right)$.
+$V_{OABC}=\dfrac16\cdot\dfrac92\cdot9\cdot\dfrac92=\dfrac{243}{8}$.
+Vậy $(P):2x+y+2z-9=0$, khoảng cách lớn nhất bằng $3$ và $V=\dfrac{243}{8}$.
+
+##VD
+Một kho chứa dạng tứ diện $OABC$ dựng ở góc nhà ($O$ là góc nhà, $OA,OB,OC$ nằm trên ba mép đôi một vuông góc). Mặt trước $(ABC)$ phải đi qua van thông gió $M$ cách vách thứ nhất $2$ m, cách vách thứ hai $1{,}5$ m và cách nền $1$ m. Chọn hệ trục có $O$ là gốc và ba mép là $Ox,Oy,Oz$, trong đó nền là $(Oxy)$, vách thứ nhất là $(Oyz)$, vách thứ hai là $(Oxz)$. Tìm thể tích nhỏ nhất của kho và phương trình mặt phẳng $(ABC)$ khi đó.
+
+Bài giải:
+Với hệ trục đã chọn, $M(2;1{,}5;1)$. Gọi $A(a;0;0)$, $B(0;b;0)$, $C(0;0;c)$ với $a,b,c>0$. Mặt $(ABC):\dfrac{x}{a}+\dfrac{y}{b}+\dfrac{z}{c}=1$ qua $M$ nên $\dfrac{2}{a}+\dfrac{1{,}5}{b}+\dfrac{1}{c}=1$.
+Áp dụng AM-GM: $1\ge3\sqrt[3]{\dfrac{2\cdot1{,}5\cdot1}{abc}}$ nên $abc\ge27\cdot3=81$.
+Thể tích $V=\dfrac{abc}{6}\ge\dfrac{81}{6}=13{,}5$ (m$^3$).
+Dấu bằng khi $\dfrac{2}{a}=\dfrac{1{,}5}{b}=\dfrac{1}{c}=\dfrac13$, tức $a=6$, $b=4{,}5$, $c=3$.
+Mặt phẳng $\dfrac{x}{6}+\dfrac{y}{4{,}5}+\dfrac{z}{3}=1$, nhân $18$ được $3x+4y+6z-18=0$.
+Vậy thể tích nhỏ nhất của kho bằng $13{,}5$ m$^3$ và $(ABC):3x+4y+6z-18=0$.
+
+=== M7   (dạng "Điểm chạy trên đường thẳng: tham số hoá tìm độ dài, diện tích nhỏ nhất" — dạng hiếm)
+@ly_thuyet:
+##TC Tham số hoá điểm chạy trên đường thẳng
+• Điểm $C$ chạy trên $d$ đi qua $M_0(x_0;y_0;z_0)$ có vectơ chỉ phương $(a;b;c)$: $C(x_0+at;\,y_0+bt;\,z_0+ct)$, $t\in\mathbb{R}$.
+• Diện tích tam giác $ABC$: $S=\dfrac12\left|\left[\overrightarrow{AB},\overrightarrow{AC}\right]\right|$; $S^2$ là tam thức bậc hai theo $t$ (hệ số cao nhất dương).
+• Đoạn $MN$ nối hai điểm trên hai đường thẳng, song song với $(P)$ thì $\overrightarrow{MN}\cdot\overrightarrow{n_P}=0$: điều kiện này cho một hệ thức giữa hai tham số, từ đó còn một ẩn.
+• Chu vi tam giác $MAB$ với $M$ chạy trên $d$: $AB$ cố định, cần $MA+MB$; thường có dạng $\sqrt{u^2+p^2}+\sqrt{v^2+q^2}$ nên dùng $\sqrt{u^2+p^2}+\sqrt{v^2+q^2}\ge\sqrt{(u+v)^2+(p+q)^2}$ (với $p,q\ge0$), dấu bằng khi $uq=vp$.
+
+##PP Tham số hoá để tìm độ dài hoặc diện tích nhỏ nhất
+Viết toạ độ các điểm chạy theo tham số (một tham số cho mỗi điểm).
+Dùng điều kiện ràng buộc (song song mặt phẳng, cắt trục...) để rút các tham số về một ẩn.
+Lập biểu thức độ dài, diện tích (dùng bình phương để khỏi căn) thành tam thức bậc hai.
+Tìm giá trị nhỏ nhất theo $t=-\dfrac{b}{2a}$, rồi lấy căn nếu cần và kiểm tra điểm tìm được thoả đề.
+
+##CY
+• Tìm cực trị của $S^2$ hay $MN^2$ thay cho $S$, $MN$, rồi nhớ lấy căn cuối cùng.
+• Tích có hướng $\left[\overrightarrow{AB},\overrightarrow{AC}\right]$ tính sai dấu là lỗi hay gặp; kiểm tra bằng cách thử $t$ cụ thể.
+• Hai đường thẳng dùng hai tham số khác nhau ($t$ và $s$); đừng dùng chung một chữ cái.
+• Đoạn nối cắt trục $Oz$ tại $M(0;0;m)$: chỉ có toạ độ $z$ là ẩn, hai toạ độ kia bằng $0$.
+
+@vi_du:
+##VD
+Trong không gian $Oxyz$ cho $A(1;2;0)$, $B(3;2;0)$ và đường thẳng $d:\begin{cases} x=t \\ y=2+t \\ z=2t+5 \end{cases}$. Điểm $C$ thay đổi trên $d$. Tìm giá trị nhỏ nhất của diện tích tam giác $ABC$.
+
+Bài giải:
+$C(t;\,2+t;\,2t+5)\in d$. $\overrightarrow{AB}=(2;0;0)$, $\overrightarrow{AC}=(t-1;\,t;\,2t+5)$.
+$\left[\overrightarrow{AB},\overrightarrow{AC}\right]=(0;\,-2(2t+5);\,2t)$.
+$S=\dfrac12\sqrt{4(2t+5)^2+4t^2}=\sqrt{(2t+5)^2+t^2}=\sqrt{5t^2+20t+25}$.
+$5t^2+20t+25=5(t+2)^2+5\ge5$, dấu bằng khi $t=-2$.
+Vậy giá trị nhỏ nhất của diện tích bằng $\sqrt5$, đạt khi $C(-2;0;1)$.
+
+##VD
+Trong không gian $Oxyz$ cho đường thẳng $d:\begin{cases} x=s \\ y=1+s \\ z=1-s \end{cases}$ và mặt phẳng $(P):2x-y+2z-5=0$. Một đường thẳng $d'$ cắt trục $Oz$ tại $M$, cắt $d$ tại $N$ và song song với $(P)$. Tìm độ dài nhỏ nhất của đoạn $MN$.
+
+Bài giải:
+$M\in Oz$ nên $M(0;0;m)$; $N\in d$ nên $N(s;\,1+s;\,1-s)$. $\overrightarrow{MN}=(s;\,1+s;\,1-s-m)$.
+$d'\parallel(P)$ nên $\overrightarrow{MN}\cdot\overrightarrow{n_P}=0$ với $\overrightarrow{n_P}=(2;-1;2)$: $2s-(1+s)+2(1-s-m)=0$, suy ra $m=\dfrac{1-s}{2}$.
+Khi đó $\overrightarrow{MN}=\left(s;\,1+s;\,\dfrac{1-s}{2}\right)$ và $MN^2=s^2+(1+s)^2+\dfrac{(1-s)^2}{4}=\dfrac94s^2+\dfrac32s+\dfrac54$.
+Tam thức có $a=\dfrac94>0$ nên nhỏ nhất tại $s=-\dfrac{3/2}{2\cdot9/4}=-\dfrac13$, giá trị $\dfrac94\cdot\dfrac19-\dfrac12+\dfrac54=1$.
+Vậy độ dài nhỏ nhất của $MN$ bằng $1$.
+
+## GHI CHÚ CHO CEO
+• Nguồn: câu đề thi M1…M7 (`PPTD-cau-cuoi.tsv`); sách (trạm soát đọc): NBV `12-20 Phương trình mặt phẳng` (A. Lý thuyết, F. Nâng cao), `12-CD21 Phương trình đường thẳng` (A, F), `12-CD22 Phương trình mặt cầu` (F); PNL Chương 5 (Bài 1 Dạng 1, Bài 2 Dạng 4, Bài 3 Dạng 3, bản GV); Từ Tâm C5 Bài 1-P1, Bài 2-P2, Bài 3-P2. Công thức trong sách là ảnh WMF nên chỉ đối chiếu được loại bài và kết luận bằng chữ.
+• M2 là dạng hiếm: ba tình huống trong đề gom thành một quy tắc "hình chiếu vectơ" thay cho tham số hoá (đã thử khớp cả 3 đáp án đề).
+• Câu đề `T312000000659`: SAI ĐÁP ÁN (ghi 2,5; đúng là 4,2) — xem biên bản soát. Câu `T312000000176` KHÔNG cụt (đủ phần hỏi, ĐA 2 đúng).
+• M7 VD2 hiểu "song song (P)" theo đề `T312000000171` (chỉ ràng buộc hướng của d').
+• Lý thuyết dài hơn mẫu Thùy viết ở hgt khối 10 (trung bình 576 ký tự/dạng), ngang các chương K12 khác của lượt này. Thùy muốn gọn thì cắt các ý chỉ phục vụ 1 câu đề (M4: hình chiếu lên mặt phẳng quay quanh d, hai đường tròn; M5: phương cố định; M6: tổng khoảng cách có hệ số).

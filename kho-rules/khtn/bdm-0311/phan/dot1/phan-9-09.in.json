@@ -1,0 +1,1893 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00529",
+   "chu_de": "Lipid, Carbohydrate, Protein & Polymer",
+   "chuyen_de": "Lipid",
+   "nhom": "Các dạng bài tập cơ bản về lipid",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nLipid là tên gọi chung của chất béo và một số hợp chất khác, đều không tan trong nước, tan trong dung môi hữu cơ.\nChất béo là ester của glycerol với các acid béo; acid béo có nhóm $\\mathrm{-COOH}$ và mạch carbon dài.\nCông thức tổng quát của chất béo: $\\mathrm{(RCOO)_3C_3H_5}$, trong đó $\\mathrm{R}$ là gốc hydrocarbon của acid béo, $\\mathrm{C_3H_5}$ là gốc của glycerol.\nChất béo không tan trong nước, nhẹ hơn nước, tan tốt trong dung môi hữu cơ như xăng, dầu hoả.\nỞ nhiệt độ thường, dầu thực vật thường ở thể lỏng, mỡ động vật thường ở thể rắn.\n\n##CY 2. Lưu ý\nChất béo thuộc loại ester nên có nhóm chức ester, không phải nhóm carboxyl hay hydroxyl (hai nhóm này thuộc về nguyên liệu là acid béo và glycerol).\nDung dịch trong nước (nước muối, giấm ăn, nước đường) không hoà tan được chất béo.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01563",
+     "thu_tu": 1,
+     "ten": "Nhận biết cấu tạo, thành phần và công thức của chất béo",
+     "mo_ta": "Đề hỏi khái niệm lipid, chất béo; thành phần cấu tạo (glycerol, acid béo); ý nghĩa kí hiệu trong công thức $\\mathrm{(RCOO)_3C_3H_5}$.\nCó thể hỏi loại phản ứng tạo chất béo (ester hoá) và nhóm chức của chất béo.\nChỉ cần nhớ định nghĩa, không tính toán.\nLưu ý: câu hỏi về trạng thái, độ tan, dung môi của chất béo ⇒ thuộc dạng \"Tính chất vật lí và ứng dụng thực tế của chất béo\".",
+     "ly_thuyet": "##TC Cấu tạo chất béo\nChất béo là ester của glycerol với acid béo, tạo thành qua phản ứng ester hoá: glycerol + acid béo $\\rightarrow$ chất béo + nước.\nCông thức tổng quát $\\mathrm{(RCOO)_3C_3H_5}$: $\\mathrm{R}$ là gốc hydrocarbon của acid béo; $\\mathrm{C_3H_5}$ là gốc của glycerol; hệ số 3 vì glycerol có 3 nhóm $\\mathrm{-OH}$ đều ester hoá.\nNhóm chức đặc trưng của chất béo là nhóm ester.\n\n##CY Lỗi hay mắc\nNhầm công thức acid béo $\\mathrm{RCOOH}$ với chất béo.\nViết thiếu hệ số 3 hoặc viết nhóm ester thành $\\mathrm{RCOOH}$.\nNhầm phản ứng ester hoá (tạo chất béo) với phản ứng xà phòng hoá (thuỷ phân chất béo bằng kiềm).",
+     "vi_du": "##VD\nCông thức tổng quát của chất béo được viết là\nA. $\\mathrm{RCOOH}$\nB. $\\mathrm{(RCOO)_3C_3H_5}$\nC. $\\mathrm{RCOOC_3H_5}$\nD. $\\mathrm{(RCOOH)_3C_3H_5}$\n\nBài giải:\nChất béo là ester của glycerol với acid béo.\nGlycerol có 3 nhóm $\\mathrm{-OH}$ nên kết hợp với 3 gốc acid béo $\\mathrm{RCOO-}$.\nCông thức tổng quát là $\\mathrm{(RCOO)_3C_3H_5}$.\nA là công thức acid béo, C thiếu hệ số 3, D viết sai nhóm ester.\nChọn B.\n\n##VD\nPhản ứng tạo ra chất béo từ glycerol và acid béo thuộc loại phản ứng nào?\nA. Phản ứng trung hoà\nB. Phản ứng ester hoá\nC. Phản ứng cháy\nD. Phản ứng xà phòng hoá\n\nBài giải:\nGlycerol (có 3 nhóm $\\mathrm{-OH}$) tác dụng với acid béo (có nhóm $\\mathrm{-COOH}$) tạo ester và giải phóng nước.\nĐó là phản ứng ester hoá.\nPhản ứng xà phòng hoá là thuỷ phân chất béo bằng kiềm, ngược chiều với quá trình tạo chất béo.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01564",
+     "thu_tu": 2,
+     "ten": "Tính chất vật lí và ứng dụng thực tế của chất béo",
+     "mo_ta": "Đề hỏi trạng thái (dầu lỏng, mỡ rắn), độ tan trong nước và trong dung môi hữu cơ, khối lượng riêng so với nước.\nCó thể là tình huống đời sống: dầu nổi trên nước, đun dầu quá nóng, tẩy vết dầu mỡ bằng dung môi.\nLàm bằng cách vận dụng tính chất vật lí đã học, không tính toán.\nLưu ý: câu hỏi về thành phần, công thức, nhóm chức ⇒ thuộc dạng \"Nhận biết cấu tạo, thành phần và công thức của chất béo\".",
+     "ly_thuyet": "##TC Tính chất vật lí của chất béo\nChất béo không tan trong nước, nhẹ hơn nước nên nổi trên mặt nước.\nChất béo tan tốt trong dung môi hữu cơ như xăng, dầu hoả.\nỞ nhiệt độ thường dầu thực vật thường lỏng, mỡ động vật thường rắn.\n\n##CY Lỗi hay mắc\nDung dịch nước muối, giấm ăn, nước đường đều là dung dịch trong nước nên không hoà tan được vết dầu mỡ.\nĐun dầu ăn ở nhiệt độ quá cao làm dầu bị phân huỷ, sinh khói và đổi màu sẫm.",
+     "vi_du": "##VD\nChất béo tan tốt trong dung môi nào sau đây?\nA. Nước muối\nB. Xăng, dầu hoả\nC. Nước\nD. Giấm ăn\n\nBài giải:\nChất béo tan tốt trong dung môi hữu cơ như xăng, dầu hoả.\nNước, nước muối và giấm ăn đều là dung dịch trong nước nên không hoà tan được chất béo.\nChọn B.\n\n##VD\nMuốn hoà tan vết dầu mỡ dính trên quần áo mà không giặt bằng xà phòng, có thể dùng dung môi nào sau đây?\nA. Nước muối\nB. Giấm ăn\nC. Nước đường\nD. Xăng\n\nBài giải:\nVết dầu mỡ là chất béo, tan tốt trong dung môi hữu cơ như xăng.\nNước muối, giấm ăn và nước đường đều là dung dịch trong nước nên không hoà tan được dầu mỡ.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00533",
+   "chu_de": "Lipid, Carbohydrate, Protein & Polymer",
+   "chuyen_de": "Carbohydrate",
+   "nhom": "Các dạng bài tập cơ bản về carbohydrate",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nCarbohydrate gồm đường đơn (monosaccharide) như glucose $\\mathrm{C_6H_{12}O_6}$; đường đôi (disaccharide) như saccharose $\\mathrm{C_{12}H_{22}O_{11}}$; đường đa (polysaccharide) như tinh bột và cellulose, công thức chung $\\mathrm{(C_6H_{10}O_5)_n}$.\nGlucose có nhiều trong quả chín, mật ong, dùng pha dịch truyền; saccharose có nhiều trong mía, củ cải đường; tinh bột có nhiều trong gạo, ngô, khoai, sắn; cellulose là thành phần chính của sợi bông, gỗ, thành tế bào thực vật, dùng làm giấy.\nTinh bột và cellulose có cùng công thức chung nhưng khác nhau về cấu trúc mạch phân tử nên là hai chất khác nhau.\n\n##CY 2. Lưu ý\nKhối lượng mol: glucose 180; saccharose 342; một mắt xích $\\mathrm{C_6H_{10}O_5}$ là 162.\nĐừng nhầm saccharose (đường đôi) với đường đơn hay đường đa.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01573",
+     "thu_tu": 1,
+     "ten": "Phân loại, công thức và phân tử khối của carbohydrate",
+     "mo_ta": "Đề hỏi công thức phân tử của glucose, saccharose, tinh bột, cellulose; phân loại đường đơn, đường đôi, đường đa.\nCó thể hỏi tính phân tử khối từ công thức hoặc giải thích vì sao tinh bột và cellulose khác nhau dù cùng công thức chung.\nLưu ý: câu hỏi nguồn gốc, thành phần chính của thực phẩm hoặc ứng dụng ⇒ thuộc dạng \"Nguồn gốc và ứng dụng của các carbohydrate\".",
+     "ly_thuyet": "##TC Phân loại và công thức\nĐường đơn: glucose $\\mathrm{C_6H_{12}O_6}$ ($M = 180$).\nĐường đôi: saccharose $\\mathrm{C_{12}H_{22}O_{11}}$ ($M = 342$).\nĐường đa: tinh bột, cellulose $\\mathrm{(C_6H_{10}O_5)_n}$; một mắt xích có $M = 162$.\nTinh bột và cellulose khác nhau do số mắt xích và cách liên kết, cấu trúc mạch khác nhau.\n\n##PP Tính phân tử khối\nĐếm số nguyên tử mỗi nguyên tố trong công thức\nNhân số nguyên tử với nguyên tử khối rồi cộng lại\n\n##CY Lỗi hay mắc\nNhầm phân tử khối glucose (180) với saccharose (342) hoặc với một mắt xích (162).\nCho rằng cùng công thức chung thì cùng tính chất.",
+     "vi_du": "##VD\nPhân tử khối của saccharose ($\\mathrm{C_{12}H_{22}O_{11}}$, biết C = 12, H = 1, O = 16) là bao nhiêu?\nA. 180\nB. 342\nC. 162\nD. 324\n\nBài giải:\n$M(\\mathrm{C_{12}H_{22}O_{11}}) = 12 \\times 12 + 22 \\times 1 + 11 \\times 16$\n$= 144 + 22 + 176 = 342$.\n180 là phân tử khối glucose, 162 là khối lượng một mắt xích $\\mathrm{C_6H_{10}O_5}$.\nChọn B.\n\n##VD\nVì sao tinh bột và cellulose đều có công thức chung $\\mathrm{(C_6H_{10}O_5)_n}$ nhưng lại là hai chất khác nhau về tính chất?\nA. Vì cấu trúc mạch phân tử khác nhau\nB. Vì hai chất có phân tử khối bằng nhau\nC. Vì một chất có nguồn gốc động vật\nD. Vì tinh bột có thêm nguyên tố nitrogen\n\nBài giải:\nHai chất cùng công thức chung nhưng khác nhau về cách các mắt xích glucose liên kết và cấu trúc mạch.\nDo đó tính chất khác nhau.\nCả hai đều có nguồn gốc thực vật và chỉ chứa C, H, O; phân tử khối của chúng cũng không bằng nhau.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01574",
+     "thu_tu": 2,
+     "ten": "Nguồn gốc và ứng dụng của các carbohydrate",
+     "mo_ta": "Đề hỏi carbohydrate nào có nhiều trong một loại thực phẩm, nguyên liệu (mía, gạo, bông, mật ong) hoặc được dùng vào mục đích nào (dịch truyền, làm giấy).\nLàm bằng cách ghi nhớ nguồn gốc và vai trò của glucose, saccharose, tinh bột, cellulose.\nLưu ý: câu hỏi công thức, phân loại, phân tử khối ⇒ thuộc dạng \"Phân loại, công thức và phân tử khối của carbohydrate\".",
+     "ly_thuyet": "##TC Nguồn gốc và ứng dụng\nGlucose: quả chín, mật ong; pha dịch truyền cho người bệnh.\nSaccharose: cây mía, củ cải đường; làm đường ăn.\nTinh bột: hạt gạo, ngô, củ khoai, sắn; là nguồn cung cấp năng lượng.\nCellulose: sợi bông, gỗ, thành tế bào thực vật; sản xuất giấy, vải sợi.\n\n##CY Lỗi hay mắc\nNhầm saccharose (mía) với glucose (quả chín).\nNhầm tinh bột (thực phẩm) với cellulose (sợi, giấy).",
+     "vi_du": "##VD\nCarbohydrate nào có nhiều trong cây mía, củ cải đường?\nA. Glucose\nB. Saccharose\nC. Tinh bột\nD. Cellulose\n\nBài giải:\nMía và củ cải đường là nguyên liệu chính để sản xuất saccharose.\nGlucose có nhiều trong quả chín, tinh bột có nhiều trong gạo và khoai, cellulose có nhiều trong bông và gỗ.\nChọn B.\n\n##VD\nCarbohydrate nào được dùng pha chế dịch truyền cho người bệnh trong y tế?\nA. Glucose\nB. Saccharose\nC. Tinh bột\nD. Cellulose\n\nBài giải:\nGlucose tan tốt trong nước và dễ hấp thu nên được dùng pha dịch truyền tĩnh mạch.\nSaccharose là đường ăn, tinh bột và cellulose không tan tốt trong nước nên không dùng pha dịch truyền.\nChọn A."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00537",
+   "chu_de": "Lipid, Carbohydrate, Protein & Polymer",
+   "chuyen_de": "Protein",
+   "nhom": "Các dạng bài tập cơ bản về Protein",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nProtein là hợp chất hữu cơ có phân tử khối rất lớn, chứa các nguyên tố C, H, O, N (có thể có thêm S...).\nProtein được tạo từ rất nhiều amino acid nối tiếp nhau thành một chuỗi dài, liên kết giữa các amino acid là liên kết peptide.\nProtein là thành phần chính cấu tạo nên tế bào, mô, cơ bắp; có nhiều trong thịt, cá, trứng, sữa, đậu.\n\n##CY 2. Lưu ý\nAmino acid là đơn vị cấu tạo của protein, không phải glucose hay glycerol.\nDầu ăn chủ yếu là chất béo, đường và tinh bột là carbohydrate, đều không giàu protein.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01583",
+     "thu_tu": 1,
+     "ten": "Thành phần, cấu tạo và liên kết trong phân tử protein",
+     "mo_ta": "Đề hỏi nguyên tố có trong protein, đơn vị cấu tạo (amino acid), cách các amino acid nối với nhau, loại liên kết, kích thước phân tử.\nLàm bằng cách nhớ định nghĩa và cấu tạo của protein.\nLưu ý: câu hỏi nguồn thực phẩm giàu protein và vai trò dinh dưỡng ⇒ thuộc dạng \"Nguồn thực phẩm và vai trò của protein\".",
+     "ly_thuyet": "##TC Cấu tạo protein\nProtein chứa C, H, O, N; phân tử khối rất lớn.\nĐơn vị cấu tạo là amino acid; rất nhiều amino acid nối tiếp thành chuỗi dài.\nCác amino acid liên kết bằng liên kết peptide (giữa nhóm $\\mathrm{-COOH}$ của amino acid này với nhóm $\\mathrm{-NH_2}$ của amino acid kia).\n\n##CY Lỗi hay mắc\nNhầm đơn vị cấu tạo protein với glucose hoặc glycerol.\nNhầm liên kết peptide với liên kết ion hoặc liên kết kim loại.\nQuên nguyên tố nitrogen, nguyên tố luôn có trong protein.",
+     "vi_du": "##VD\nNguyên tố nào sau đây LUÔN có trong thành phần của protein?\nA. Carbon, hydrogen, oxygen, nitrogen\nB. Carbon, hydrogen, oxygen, chlorine\nC. Carbon, hydrogen, sulfur, sodium\nD. Carbon, oxygen, nitrogen, potassium\n\nBài giải:\nProtein luôn gồm bốn nguyên tố C, H, O, N.\nB chứa chlorine, C chứa sodium và thiếu oxygen, D thiếu hydrogen nên đều sai.\nChọn A.\n\n##VD\nTrong các amino acid nối tiếp nhau tạo thành phân tử protein, các amino acid liên kết với nhau bằng loại liên kết nào?\nA. Liên kết ion\nB. Liên kết peptide\nC. Liên kết hydrogen giữa các phân tử nước\nD. Liên kết kim loại\n\nBài giải:\nCác amino acid nối nhau bằng liên kết peptide, hình thành giữa nhóm $\\mathrm{-COOH}$ của amino acid này với nhóm $\\mathrm{-NH_2}$ của amino acid kia.\nLiên kết ion đặc trưng cho muối, liên kết kim loại đặc trưng cho kim loại, liên kết hydrogen giữa các phân tử nước không nối các amino acid thành chuỗi.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01584",
+     "thu_tu": 2,
+     "ten": "Nguồn thực phẩm và vai trò của protein",
+     "mo_ta": "Đề hỏi loại thực phẩm giàu protein hoặc vai trò của protein đối với cơ thể (xây dựng tế bào, mô).\nCó thể hỏi giải thích hệ quả của việc thiếu protein trong khẩu phần ăn.\nLàm bằng cách vận dụng vai trò sinh học của protein.\nLưu ý: câu hỏi nguyên tố, amino acid, liên kết peptide ⇒ thuộc dạng \"Thành phần, cấu tạo và liên kết trong phân tử protein\".",
+     "ly_thuyet": "##TC Vai trò và nguồn protein\nProtein là nguyên liệu chính xây dựng và sửa chữa tế bào, mô, cơ bắp.\nThực phẩm giàu protein: thịt, cá, trứng, sữa, đậu.\nThiếu protein kéo dài làm cơ thể suy dinh dưỡng, chậm phát triển.\n\n##CY Lỗi hay mắc\nCho rằng protein là nguồn năng lượng duy nhất; chất béo và carbohydrate cũng cung cấp năng lượng.\nNhầm dầu ăn (chất béo), đường và tinh bột (carbohydrate) là thực phẩm giàu protein.",
+     "vi_du": "##VD\nLoại thực phẩm nào sau đây giàu protein nhất?\nA. Thịt, cá, trứng\nB. Dầu ăn\nC. Đường trắng\nD. Tinh bột gạo\n\nBài giải:\nThịt, cá, trứng chứa nhiều protein.\nDầu ăn chủ yếu là chất béo, đường trắng và tinh bột gạo là carbohydrate nên ít hoặc không có protein.\nChọn A.\n\n##VD\nVì sao khi thiếu protein trong khẩu phần ăn kéo dài, cơ thể dễ bị suy dinh dưỡng, chậm phát triển?\nA. Vì protein là nguyên liệu xây dựng tế bào, mô\nB. Vì protein là nguồn năng lượng duy nhất\nC. Vì thiếu protein làm mất hết vitamin\nD. Vì protein giúp tiêu hoá tinh bột nhanh hơn\n\nBài giải:\nProtein là thành phần chính cấu tạo nên tế bào, mô, cơ bắp.\nThiếu protein kéo dài khiến cơ thể không đủ nguyên liệu xây dựng và sửa chữa các mô, dẫn đến suy dinh dưỡng và chậm phát triển.\nChất béo và carbohydrate cũng cung cấp năng lượng, protein và vitamin là hai nhóm chất khác nhau.\nChọn A."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00540",
+   "chu_de": "Lipid, Carbohydrate, Protein & Polymer",
+   "chuyen_de": "Polymer",
+   "nhom": "Các dạng bài tập cơ bản về Polymer",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nPolymer là những hợp chất có phân tử khối rất lớn, do nhiều đơn vị nhỏ gọi là mắt xích liên kết với nhau tạo nên.\nMonomer là phân tử nhỏ ban đầu tạo ra mắt xích; phân tử khối của polymer lớn hơn rất nhiều lần so với monomer.\nPhản ứng trùng hợp: nhiều phân tử monomer (như ethylene) kết hợp với nhau tạo thành polymer (như polyethylene, PE).\nTheo nguồn gốc, polymer chia thành polymer thiên nhiên (tinh bột, cellulose, protein, cao su tự nhiên) và polymer tổng hợp (PE, PVC, nylon).\n\n##CY 2. Lưu ý\nMắt xích không phải nguyên tử, ion hay phân tử nước.\nPolymer không phân loại chính theo màu sắc hay khối lượng phân tử mà theo nguồn gốc.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01585",
+     "thu_tu": 1,
+     "ten": "Khái niệm polymer, mắt xích và đặc điểm phân tử khối",
+     "mo_ta": "Đề hỏi định nghĩa polymer, tên gọi đơn vị lặp lại (mắt xích), so sánh phân tử khối polymer với monomer, nhận ra chất thuộc nhóm polymer.\nLàm bằng cách nhớ khái niệm, không tính toán.\nLưu ý: câu hỏi monomer của một polymer cụ thể, phản ứng trùng hợp, phân loại theo nguồn gốc ⇒ thuộc dạng \"Monomer, phản ứng trùng hợp và phân loại polymer\".",
+     "ly_thuyet": "##TC Khái niệm\nPolymer có phân tử khối rất lớn, gồm rất nhiều mắt xích giống nhau liên kết thành mạch.\nMắt xích là đơn vị nhỏ lặp lại nhiều lần trong mạch polymer.\nPhân tử khối polymer xấp xỉ số mắt xích nhân phân tử khối monomer, nên lớn hơn monomer rất nhiều lần.\nTinh bột, cellulose, protein đều là polymer thiên nhiên.\n\n##CY Lỗi hay mắc\nNhầm mắt xích với nguyên tử, ion hay phân tử nước.\nCho rằng phân tử khối polymer nhỏ hơn hoặc bằng monomer.",
+     "vi_du": "##VD\nĐơn vị nhỏ, lặp lại nhiều lần trong mạch polymer được gọi là gì?\nA. Nguyên tử\nB. Phân tử nước\nC. Ion\nD. Mắt xích\n\nBài giải:\nMạch polymer gồm nhiều đơn vị nhỏ giống nhau nối tiếp, gọi là mắt xích.\nNguyên tử, phân tử nước và ion không phải đơn vị lặp lại đặc trưng của mạch polymer.\nChọn D.\n\n##VD\nPhân tử khối của một polymer so với phân tử khối của monomer tạo thành nó là\nA. nhỏ hơn nhiều lần\nB. lớn hơn rất nhiều lần\nC. luôn bằng nhau\nD. không xác định được\n\nBài giải:\nPolymer gồm rất nhiều mắt xích monomer liên kết lặp lại.\nPhân tử khối polymer xấp xỉ số mắt xích nhân phân tử khối monomer nên lớn hơn rất nhiều lần.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01586",
+     "thu_tu": 2,
+     "ten": "Monomer, phản ứng trùng hợp và phân loại polymer",
+     "mo_ta": "Đề hỏi monomer tạo thành một polymer cụ thể (như PE), loại phản ứng tạo ra polymer (trùng hợp), phân loại polymer theo nguồn gốc.\nLàm bằng cách nhớ monomer của polymer thường gặp và cách phân loại.\nLưu ý: câu hỏi định nghĩa polymer, mắt xích, so sánh phân tử khối ⇒ thuộc dạng \"Khái niệm polymer, mắt xích và đặc điểm phân tử khối\".",
+     "ly_thuyet": "##TC Monomer và trùng hợp\nPolyethylene (PE) được tạo từ ethylene qua phản ứng trùng hợp.\nPhản ứng trùng hợp là sự kết hợp nhiều phân tử monomer giống nhau thành polymer.\nPhân loại theo nguồn gốc: polymer thiên nhiên và polymer tổng hợp.\n\n##CY Lỗi hay mắc\nNhầm monomer của PE với ethylic alcohol, acetic acid hay glucose.\nNhầm trùng hợp với phản ứng cháy, trung hoà hoặc thuỷ phân.\nCho rằng polymer được phân loại chính theo màu sắc hoặc khối lượng phân tử.",
+     "vi_du": "##VD\nChất nào sau đây là monomer tạo thành polyethylene (PE)?\nA. Ethylene\nB. Ethylic alcohol\nC. Acetic acid\nD. Glucose\n\nBài giải:\nPE được tạo thành từ phản ứng trùng hợp nhiều phân tử ethylene.\nEthylic alcohol và acetic acid không có liên kết đôi để trùng hợp tạo PE; glucose là đơn vị cấu tạo của tinh bột.\nChọn A.\n\n##VD\nPolymer được chia thành mấy loại chính theo nguồn gốc?\nA. 1 loại duy nhất\nB. 4 loại theo màu sắc\nC. 3 loại theo khối lượng phân tử\nD. 2 loại: thiên nhiên và tổng hợp\n\nBài giải:\nTheo nguồn gốc, polymer gồm 2 loại.\nPolymer thiên nhiên có sẵn trong tự nhiên như tinh bột, cellulose, protein, cao su tự nhiên.\nPolymer tổng hợp do con người tạo ra như PE, PVC, nylon.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00530",
+   "chu_de": "Lipid, Carbohydrate, Protein & Polymer",
+   "chuyen_de": "Lipid",
+   "nhom": "Viết phản ứng xà phòng hóa và giải thích ứng dụng xà phòng",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nPhản ứng xà phòng hoá là phản ứng thuỷ phân chất béo trong môi trường kiềm (đun nóng): $\\mathrm{(RCOO)_3C_3H_5 + 3NaOH \\xrightarrow{t^\\circ} C_3H_5(OH)_3 + 3RCOONa}$.\nSản phẩm gồm glycerol và muối của acid béo; muối của acid béo là thành phần chính của xà phòng.\nDùng KOH thì thu muối potassium của acid béo (xà phòng thường mềm hơn xà phòng natri).\nPhân tử xà phòng có đầu ưa nước (nhóm $\\mathrm{COONa}$) và đuôi kị nước (gốc hydrocarbon dài); nhờ vậy xà phòng nhũ hoá, kéo vết dầu mỡ phân tán vào nước.\nTrong nước cứng, ion $\\mathrm{Ca^{2+}}$, $\\mathrm{Mg^{2+}}$ tạo kết tủa với xà phòng nên làm giảm khả năng làm sạch.\n\n##CY 2. Lưu ý\nHệ số 3 đặt ở $\\mathrm{NaOH}$ và $\\mathrm{RCOONa}$; glycerol chỉ có hệ số 1.\nXà phòng làm sạch nhờ cấu tạo hai đầu (nhũ hoá), không phải nhờ phản ứng hoá học phá vỡ dầu mỡ.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01565",
+     "thu_tu": 1,
+     "ten": "Nhận biết phản ứng xà phòng hoá: phương trình, tác nhân, sản phẩm, điều kiện",
+     "mo_ta": "Đề cho phản ứng thuỷ phân chất béo bằng kiềm, hỏi phương trình tổng quát, chất tham gia, sản phẩm, điều kiện phản ứng.\nCó thể hỏi so sánh khi dùng KOH thay NaOH, vai trò của kiềm đặc và đun nóng.\nLàm bằng cách nhớ và cân bằng phương trình, không tính số mol.\nLưu ý: câu hỏi về cách tách xà phòng, sản phẩm phụ, nguyên liệu sản xuất ⇒ thuộc dạng \"Quy trình sản xuất xà phòng và sản phẩm phụ\".",
+     "ly_thuyet": "##TC Phản ứng xà phòng hoá\nPhương trình: $\\mathrm{(RCOO)_3C_3H_5 + 3NaOH \\xrightarrow{t^\\circ} C_3H_5(OH)_3 + 3RCOONa}$.\nTác nhân thuỷ phân là dung dịch kiềm ($\\mathrm{NaOH}$, $\\mathrm{KOH}$), đun nóng.\nSản phẩm: glycerol và muối của acid béo (xà phòng).\n\n##PP Viết và cân bằng phương trình\nGhi chất béo $\\mathrm{(RCOO)_3C_3H_5}$ và kiềm ở vế trái\nGhi glycerol $\\mathrm{C_3H_5(OH)_3}$ và muối $\\mathrm{RCOONa}$ ở vế phải\nCân bằng theo 3 nhóm ester: hệ số 3 cho kiềm và cho muối, glycerol hệ số 1\n\n##CY Lỗi hay mắc\nĐặt hệ số 3 sai chỗ hoặc thiếu hệ số 3.\nNhầm sản phẩm là acid béo thay cho muối của acid béo.",
+     "vi_du": "##VD\nPhương trình hoá học của phản ứng xà phòng hoá chất béo (dạng tổng quát) là\nA. $\\mathrm{(RCOO)_3C_3H_5 + NaOH \\rightarrow C_3H_5(OH)_3 + RCOONa}$\nB. $\\mathrm{(RCOO)_3C_3H_5 + 3NaOH \\rightarrow 3C_3H_5(OH)_3 + RCOONa}$\nC. $\\mathrm{(RCOO)_3C_3H_5 + 3NaOH \\rightarrow C_3H_5(OH)_3 + 3RCOONa}$\nD. $\\mathrm{(RCOO)_3C_3H_5 + 3NaOH \\rightarrow C_3H_5(OH)_3 + RCOONa}$\n\nBài giải:\nChất béo có 3 nhóm ester nên cần 3 phân tử $\\mathrm{NaOH}$ và tạo 3 phân tử $\\mathrm{RCOONa}$.\nGốc glycerol chỉ tạo 1 phân tử $\\mathrm{C_3H_5(OH)_3}$.\nA và D thiếu hệ số 3 cho vế phải hoặc vế trái, B đặt hệ số 3 sai ở glycerol.\nChọn C.\n\n##VD\nNếu dùng KOH thay vì NaOH để xà phòng hoá chất béo, sản phẩm xà phòng tạo thành có gì khác?\nA. Là muối potassium của acid béo, thường mềm hơn xà phòng từ NaOH\nB. Không tạo được xà phòng vì KOH không phản ứng với chất béo\nC. Sản phẩm giống hệt khi dùng NaOH, không có gì khác\nD. Không sinh ra glycerol như khi dùng NaOH\n\nBài giải:\nKOH cũng là kiềm mạnh nên thuỷ phân được chất béo tương tự NaOH.\nSản phẩm gồm glycerol và muối potassium của acid béo.\nMuối potassium thường mềm, dễ tan hơn muối sodium nên xà phòng khác về độ mềm.\nB sai vì KOH vẫn phản ứng, C sai vì muối khác kim loại, D sai vì glycerol vẫn tạo thành.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01566",
+     "thu_tu": 2,
+     "ten": "Quy trình sản xuất xà phòng và sản phẩm phụ",
+     "mo_ta": "Đề hỏi vì sao dùng kiềm đặc đun nóng, vì sao thêm dung dịch NaCl đặc sau phản ứng, sản phẩm phụ glycerol và ứng dụng của nó, nguyên liệu chất béo công nghiệp.\nLàm bằng cách hiểu mục đích từng bước trong sản xuất xà phòng.\nLưu ý: câu hỏi về phương trình, tác nhân, sản phẩm của phản ứng ⇒ thuộc dạng \"Nhận biết phản ứng xà phòng hoá: phương trình, tác nhân, sản phẩm, điều kiện\".",
+     "ly_thuyet": "##TC Sản xuất xà phòng\nNguyên liệu: dầu thực vật hoặc mỡ động vật, dung dịch kiềm đặc; đun nóng để phản ứng xảy ra nhanh và hoàn toàn hơn.\nSau phản ứng thêm dung dịch $\\mathrm{NaCl}$ đặc: làm giảm độ tan của xà phòng, xà phòng tách lớp nổi lên để thu hồi.\nGlycerol là sản phẩm phụ, được dùng trong mỹ phẩm, dược phẩm.\n\n##CY Lỗi hay mắc\n$\\mathrm{NaCl}$ không trung hoà kiềm, không phản ứng sinh thêm xà phòng, chỉ làm xà phòng ít tan.\nChất béo không bay hơi trong điều kiện phản ứng.",
+     "vi_du": "##VD\nVì sao sau xà phòng hoá, người ta thêm dung dịch NaCl đặc vào hỗn hợp?\nA. Để trung hoà lượng NaOH còn dư\nB. Để giảm độ tan của xà phòng, giúp tách lớp\nC. Để tạo phản ứng sinh thêm xà phòng\nD. Để làm sạch màu của glycerol\n\nBài giải:\nDung dịch $\\mathrm{NaCl}$ đặc làm giảm độ tan của xà phòng trong hỗn hợp.\nXà phòng tách thành lớp riêng, dễ thu hồi.\n$\\mathrm{NaCl}$ là muối trung tính nên không trung hoà $\\mathrm{NaOH}$, cũng không tạo thêm xà phòng hay làm sạch màu glycerol.\nChọn B.\n\n##VD\nTrong phản ứng xà phòng hoá, vì sao cần dùng kiềm đặc và đun nóng thay vì kiềm loãng ở nhiệt độ thường?\nA. Để chất béo bay hơi hết trước khi phản ứng\nB. Để phản ứng xảy ra nhanh và hoàn toàn hơn\nC. Để glycerol tạo thành bị phân huỷ\nD. Để xà phòng tạo thành có màu đẹp hơn\n\nBài giải:\nKiềm đặc và nhiệt độ cao làm tăng tốc độ thuỷ phân chất béo.\nNhờ đó phản ứng xảy ra nhanh và hoàn toàn hơn.\nChất béo không bay hơi, glycerol cần giữ lại làm sản phẩm phụ, màu sắc không phải mục đích.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01567",
+     "thu_tu": 3,
+     "ten": "Giải thích cơ chế làm sạch và ứng dụng của xà phòng",
+     "mo_ta": "Đề hỏi vì sao xà phòng làm sạch vết dầu mỡ, vì sao xà phòng tan trong nước, vì sao tên gọi \"xà phòng\".\nCó thể hỏi vai trò xà phòng khi giặt, ảnh hưởng của nước cứng, ưu nhược điểm so với chất tẩy rửa tổng hợp.\nLàm bằng cách dựa vào cấu tạo đầu ưa nước – đuôi kị nước của xà phòng.\nLưu ý: câu đưa ra một nhận định/đề xuất của một bạn rồi hỏi nhận xét đúng ⇒ thuộc dạng \"Đánh giá nhận định, đề xuất về xà phòng và việc làm sạch\".",
+     "ly_thuyet": "##TC Cơ chế làm sạch của xà phòng\nPhân tử xà phòng $\\mathrm{RCOONa}$ có hai phần: nhóm $\\mathrm{COONa}$ phân cực (ưa nước) và gốc hydrocarbon dài (kị nước, bám vào dầu mỡ).\nKhi giặt, đuôi kị nước bám vào hạt dầu mỡ, đầu ưa nước hướng ra nước; dầu mỡ bị nhũ hoá, phân tán thành hạt nhỏ rồi bị rửa trôi.\nNước cứng chứa $\\mathrm{Ca^{2+}}$, $\\mathrm{Mg^{2+}}$ tạo kết tủa với xà phòng, làm giảm khả năng làm sạch.\nXà phòng có nguồn gốc tự nhiên, dễ bị vi sinh vật phân huỷ.\n\n##CY Lỗi hay mắc\nXà phòng không đốt cháy, không làm bay hơi hay trung hoà dầu mỡ; nó chỉ nhũ hoá, phân tán.\nXà phòng có tính base yếu chứ không có tính acid.",
+     "vi_du": "##VD\nPhân tử xà phòng làm sạch được vết dầu mỡ vì lí do nào?\nA. Có tính acid mạnh hoà tan dầu mỡ\nB. Có màu sắc hấp thụ vết bẩn\nC. Có phần tan trong dầu mỡ, phần tan trong nước\nD. Phản ứng hoá học phá vỡ dầu mỡ thành khí\n\nBài giải:\nXà phòng có gốc hydrocarbon dài tan trong dầu mỡ và nhóm $\\mathrm{COONa}$ tan trong nước.\nNhờ hai phần này, xà phòng kéo dầu mỡ phân tán vào nước và bị rửa trôi.\nXà phòng có tính base yếu, không có tính acid; cơ chế làm sạch không liên quan màu sắc và không phá vỡ dầu mỡ thành khí.\nChọn C.\n\n##VD\nKhi giặt vết dầu ăn bằng nước xà phòng, vai trò của xà phòng là gì?\nA. Đốt cháy dầu ăn thành khí $\\mathrm{CO_2}$\nB. Trung hoà dầu ăn bằng phản ứng acid–base\nC. Làm bay hơi dầu ăn nhanh hơn\nD. Nhũ hoá, phân tán dầu ăn vào nước\n\nBài giải:\nXà phòng nhũ hoá dầu ăn thành các hạt nhỏ phân tán trong nước.\nCác hạt này bị nước rửa trôi.\nXà phòng không đốt cháy, không trung hoà và không làm bay hơi dầu ăn.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01568",
+     "thu_tu": 4,
+     "ten": "Đánh giá nhận định, đề xuất về xà phòng và việc làm sạch",
+     "mo_ta": "Đề nêu ý kiến hoặc đề xuất của một bạn (về cơ chế xà phòng, cách tách xà phòng, cách rửa chảo, rửa bằng nước...) rồi hỏi nhận xét đúng.\nLàm bằng cách xét ý kiến đó đúng hay sai theo kiến thức rồi chọn lí do phù hợp.\nLưu ý: câu hỏi trực tiếp, không có ý kiến của một bạn ⇒ thuộc dạng \"Giải thích cơ chế làm sạch và ứng dụng của xà phòng\".",
+     "ly_thuyet": "##TC Kiến thức dùng để đánh giá\nDầu mỡ là chất béo, không tan trong nước; nước lã hoặc nước nóng không rửa sạch được dầu mỡ.\nXà phòng làm sạch nhờ đầu ưa nước và đuôi kị nước (nhũ hoá).\nThêm $\\mathrm{NaCl}$ đặc làm xà phòng ít tan, tách ra khỏi hỗn hợp.\nXà phòng $\\mathrm{RCOONa}$ tan được trong nước nhờ nhóm $\\mathrm{COONa}$ phân cực.\n\n##PP Cách làm\nXác định ý kiến nêu trong đề thuộc kiến thức nào\nĐối chiếu với tính chất, cơ chế đã học để kết luận đúng hay sai\nChọn phương án có kết luận đúng kèm lí do đúng\n\n##CY Lỗi hay mắc\nChọn phương án đúng kết luận nhưng lí do sai (hoặc ngược lại).\nCho rằng nước nóng, nước xối mạnh có thể thay xà phòng.",
+     "vi_du": "##VD\nMột bạn đề xuất: xà phòng làm sạch được vết dầu mỡ vì phân tử xà phòng có đầu ưa nước tan trong nước và đuôi kị nước bám vào dầu mỡ, kéo dầu mỡ phân tán vào nước. Nhận xét đúng về đề xuất này là\nA. Sai, vì xà phòng làm dầu mỡ bay hơi hết\nB. Đúng, xà phòng kéo dầu mỡ phân tán vào nước như vậy\nC. Sai, vì xà phòng phản ứng với dầu tạo chất không màu\nD. Đúng, nhưng chỉ đầu ưa nước mới có tác dụng\n\nBài giải:\nPhân tử xà phòng gồm đầu ưa nước ($\\mathrm{COO^-Na^+}$) và đuôi kị nước (gốc hydrocarbon dài).\nĐuôi kị nước bám vào dầu mỡ, đầu ưa nước tan trong nước nên dầu mỡ bị kéo phân tán vào nước.\nVậy đề xuất đúng.\nA sai vì dầu mỡ không bay hơi, C sai vì xà phòng không phản ứng với dầu, D sai vì đuôi kị nước cũng cần cho việc làm sạch.\nChọn B.\n\n##VD\nMột bạn đề xuất: sau phản ứng xà phòng hoá, cho thêm dung dịch NaCl đặc vào hỗn hợp để làm giảm độ tan của xà phòng, giúp tách xà phòng ra khỏi glycerol và nước. Nhận xét đúng về đề xuất này là\nA. Sai, vì NaCl phản ứng với xà phòng tạo kết tủa khác\nB. Sai, vì phải dùng nước cất để tách xà phòng\nC. Đúng, vì NaCl đặc làm xà phòng ít tan, tách ra\nD. Đúng, vì NaCl phản ứng với glycerol tạo xà phòng\n\nBài giải:\nDung dịch $\\mathrm{NaCl}$ đặc làm giảm độ tan của xà phòng trong nước.\nXà phòng tách ra khỏi dung dịch, dễ tách khỏi glycerol và nước còn lại.\nVậy đề xuất đúng.\nA sai vì $\\mathrm{NaCl}$ không phản ứng với xà phòng, B sai vì thêm nước cất làm xà phòng tan thêm, D sai vì $\\mathrm{NaCl}$ không phản ứng với glycerol.\nChọn C."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00534",
+   "chu_de": "Lipid, Carbohydrate, Protein & Polymer",
+   "chuyen_de": "Carbohydrate",
+   "nhom": "Viết phương trình hóa học mô tả tính chất của carbohydrate",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nGlucose lên men rượu: $\\mathrm{C_6H_{12}O_6 \\xrightarrow{enzyme} 2C_2H_5OH + 2CO_2}$.\nGlucose có nhóm $\\mathrm{-CHO}$ nên tham gia phản ứng tráng bạc (dạng đơn giản): $\\mathrm{C_6H_{12}O_6 + Ag_2O \\xrightarrow{NH_3} C_6H_{12}O_7 + 2Ag}$.\nThuỷ phân (xúc tác acid, đun nóng): saccharose $\\rightarrow$ glucose và fructose; tinh bột và cellulose $\\rightarrow$ glucose: $\\mathrm{(C_6H_{10}O_5)_n + nH_2O \\xrightarrow{H^+, t^\\circ} nC_6H_{12}O_6}$.\nHồ tinh bột tác dụng với dung dịch iodine tạo màu xanh tím; đun nóng thì màu mất, để nguội màu xuất hiện lại.\n\n##CY 2. Lưu ý\nPhải cân bằng phương trình; phản ứng lên men rượu không cần oxygen.\nPhản ứng màu với iodine chỉ dùng nhận biết tinh bột, không dùng cho glucose, saccharose, cellulose.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01575",
+     "thu_tu": 1,
+     "ten": "Phản ứng của glucose: lên men rượu và tráng bạc",
+     "mo_ta": "Đề hỏi sản phẩm, phương trình hoặc hiện tượng của phản ứng lên men rượu glucose và phản ứng tráng bạc.\nCó thể hỏi nhóm chức gây ra phản ứng tráng bạc hoặc ứng dụng (tráng gương, ruột phích).\nLàm bằng cách nhớ phản ứng và cân bằng phương trình, không tính toán lượng chất.\nLưu ý: câu hỏi thuỷ phân saccharose, tinh bột, cellulose ⇒ thuộc dạng \"Phản ứng thuỷ phân saccharose, tinh bột, cellulose\".",
+     "ly_thuyet": "##TC Hai phản ứng của glucose\nLên men rượu: $\\mathrm{C_6H_{12}O_6 \\xrightarrow{enzyme} 2C_2H_5OH + 2CO_2}$.\nTráng bạc: glucose có nhóm $\\mathrm{-CHO}$ bị oxi hoá thành nhóm $\\mathrm{-COOH}$, giải phóng bạc kim loại bám thành lớp sáng trên thành ống nghiệm.\nỨng dụng tráng bạc: tráng gương, tráng ruột phích.\n\n##PP Cân bằng phương trình lên men\nĐếm nguyên tử C, H, O hai vế\nĐặt hệ số 2 cho $\\mathrm{C_2H_5OH}$ và 2 cho $\\mathrm{CO_2}$\n\n##CY Lỗi hay mắc\nThiếu hệ số khiến phương trình không cân bằng.\nThêm $\\mathrm{O_2}$ vào vế trái của phản ứng lên men; thực tế không cần.\nGiữ nguyên công thức $\\mathrm{C_6H_{12}O_6}$ ở sản phẩm tráng bạc; sản phẩm hữu cơ phải là $\\mathrm{C_6H_{12}O_7}$.",
+     "vi_du": "##VD\nPhương trình hoá học nào biểu diễn đúng phản ứng lên men rượu của glucose?\nA. $\\mathrm{C_6H_{12}O_6 \\rightarrow C_2H_5OH + CO_2}$\nB. $\\mathrm{C_6H_{12}O_6 \\rightarrow 2C_2H_5OH + CO_2}$\nC. $\\mathrm{C_6H_{12}O_6 \\rightarrow 2C_2H_5OH + 2CO_2}$\nD. $\\mathrm{C_6H_{12}O_6 + O_2 \\rightarrow 2C_2H_5OH + 2CO_2}$\n\nBài giải:\nVế trái có 6C, 12H, 6O.\nVế phải với hệ số 2 và 2: C là $2 \\times 2 + 2 = 6$, H là $2 \\times 6 = 12$, O là $2 \\times 1 + 2 \\times 2 = 6$.\nPhương trình cân bằng và không cần $\\mathrm{O_2}$.\nChọn C.\n\n##VD\nPhương trình hoá học nào sau đây viết đúng khi glucose tráng bạc (dạng đơn giản hoá)?\nA. $\\mathrm{C_6H_{12}O_6 + 2AgNO_3 \\rightarrow C_6H_{12}O_7 + 2Ag}$\nB. $\\mathrm{C_6H_{12}O_6 + Ag_2O \\xrightarrow{NH_3} C_6H_{12}O_7 + 2Ag}$\nC. $\\mathrm{C_6H_{12}O_6 + Ag_2O \\rightarrow C_6H_{12}O_6 + 2Ag}$\nD. $\\mathrm{2C_6H_{12}O_6 + Ag_2O \\rightarrow 2C_6H_{12}O_7 + Ag}$\n\nBài giải:\nNhóm $\\mathrm{-CHO}$ của glucose bị $\\mathrm{Ag_2O}$ (môi trường $\\mathrm{NH_3}$) oxi hoá thành nhóm $\\mathrm{-COOH}$.\nSản phẩm hữu cơ là $\\mathrm{C_6H_{12}O_7}$ và giải phóng $\\mathrm{2Ag}$.\nA dùng $\\mathrm{AgNO_3}$ thiếu điều kiện đúng của dạng đơn giản hoá, C giữ nguyên $\\mathrm{C_6H_{12}O_6}$, D sai hệ số Ag.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01576",
+     "thu_tu": 2,
+     "ten": "Phản ứng thuỷ phân saccharose, tinh bột, cellulose",
+     "mo_ta": "Đề hỏi sản phẩm, phương trình, điều kiện của phản ứng thuỷ phân saccharose, tinh bột, cellulose.\nCó thể hỏi giải thích hiện tượng đời sống (nhai cơm kĩ thấy ngọt) nhờ thuỷ phân tinh bột.\nLàm bằng cách nhớ sản phẩm thuỷ phân và cân bằng phương trình.\nLưu ý: câu hỏi phản ứng với iodine ⇒ thuộc dạng \"Phản ứng màu của tinh bột với dung dịch iodine\".",
+     "ly_thuyet": "##TC Thuỷ phân carbohydrate\nĐiều kiện: có xúc tác acid và đun nóng (trong cơ thể là enzyme).\nSaccharose $\\rightarrow$ glucose và fructose.\nTinh bột, cellulose $\\rightarrow$ glucose: $\\mathrm{(C_6H_{10}O_5)_n + nH_2O \\xrightarrow{H^+, t^\\circ} nC_6H_{12}O_6}$.\nEnzyme amylase trong nước bọt thuỷ phân một phần tinh bột thành đường, nên nhai kĩ cơm thấy vị ngọt.\n\n##PP Viết phương trình thuỷ phân tinh bột\nGhi tinh bột và nước ở vế trái, ghi glucose ở vế phải\nCân bằng theo số mắt xích: hệ số $n$ cho nước và glucose\n\n##CY Lỗi hay mắc\nQuên nước ở vế trái của phản ứng thuỷ phân.\nNhầm sản phẩm thuỷ phân tinh bột là saccharose; sản phẩm đúng là glucose.",
+     "vi_du": "##VD\nPhương trình nào biểu diễn đúng phản ứng thuỷ phân tinh bột?\nA. $\\mathrm{(C_6H_{10}O_5)_n + H_2O \\rightarrow C_6H_{12}O_6}$\nB. $\\mathrm{(C_6H_{10}O_5)_n \\rightarrow nC_6H_{12}O_6}$\nC. $\\mathrm{(C_6H_{10}O_5)_n + nH_2O \\rightarrow nC_{12}H_{22}O_{11}}$\nD. $\\mathrm{(C_6H_{10}O_5)_n + nH_2O \\rightarrow nC_6H_{12}O_6}$\n\nBài giải:\nMỗi mắt xích: $\\mathrm{C_6H_{10}O_5 + H_2O \\rightarrow C_6H_{12}O_6}$.\nNhân hệ số $n$ cho cả dãy được $\\mathrm{(C_6H_{10}O_5)_n + nH_2O \\rightarrow nC_6H_{12}O_6}$.\nA thiếu hệ số $n$ trước nước, B thiếu nước, C sai sản phẩm (thuỷ phân tinh bột cho glucose chứ không phải saccharose).\nChọn D.\n\n##VD\nVì sao khi nhai kĩ cơm (chứa tinh bột) trong miệng một lúc lâu, ta cảm nhận được vị ngọt?\nA. Vì tinh bột tự chuyển thành muối ngọt\nB. Vì nước bọt có sẵn vị ngọt\nC. Vì enzyme nước bọt thuỷ phân tinh bột thành đường\nD. Vì nhai kĩ làm tinh bột cháy nhẹ tạo vị ngọt\n\nBài giải:\nNước bọt chứa enzyme amylase thuỷ phân một phần tinh bột thành các đường mạch ngắn hơn như glucose.\nChính đường tạo thành gây cảm giác vị ngọt.\nTinh bột không chuyển thành muối, nước bọt không có vị ngọt và trong miệng không có sự cháy.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01577",
+     "thu_tu": 3,
+     "ten": "Phản ứng màu của tinh bột với dung dịch iodine",
+     "mo_ta": "Đề hỏi hiện tượng khi nhỏ iodine vào hồ tinh bột, hạt cơm, khoai tây; chất nào được nhận biết bằng iodine; hiện tượng khi đun nóng rồi để nguội.\nLàm bằng cách nhớ phản ứng màu đặc trưng và áp dụng vào tình huống thực tế.\nLưu ý: câu hỏi thuỷ phân tinh bột ⇒ thuộc dạng \"Phản ứng thuỷ phân saccharose, tinh bột, cellulose\".",
+     "ly_thuyet": "##TC Phản ứng màu với iodine\nTinh bột tác dụng với dung dịch iodine tạo phức màu xanh tím đặc trưng.\nĐun nóng thì màu xanh tím biến mất; để nguội màu xuất hiện lại.\nIodine chỉ nhận biết tinh bột; không dùng để nhận biết glucose, saccharose, cellulose.\nPhản ứng không sinh khí và không tạo màu đỏ.\n\n##CY Lỗi hay mắc\nNhầm màu xanh tím với màu đỏ hoặc màu vàng.\nCho rằng glucose cũng cho màu xanh tím với iodine.\nNhầm màu xanh tím do iodine với hiện tượng khoai tây thâm do bị oxi hoá (màu nâu).",
+     "vi_du": "##VD\nNhỏ dung dịch iodine vào hồ tinh bột, hiện tượng quan sát được là gì?\nA. Không đổi màu\nB. Xuất hiện màu xanh tím\nC. Xuất hiện màu đỏ\nD. Có khí thoát ra\n\nBài giải:\nTinh bột kết hợp với iodine tạo phức màu xanh tím đặc trưng.\nPhản ứng này có đổi màu và không sinh khí.\nChọn B.\n\n##VD\nVì sao khi bôi cồn iodine (thuốc sát trùng) lên bề mặt khoai tây sống bị cắt đôi, ta thấy xuất hiện màu xanh tím?\nA. Vì khoai tây chứa glucose, phản ứng với iodine tạo màu xanh tím\nB. Vì khoai tây chứa nhiều tinh bột, phản ứng với iodine tạo phức màu xanh tím\nC. Vì cồn iodine phản ứng với nước trong khoai tây\nD. Vì khoai tây bị oxi hoá bởi không khí tạo màu xanh tím\n\nBài giải:\nKhoai tây chứa nhiều tinh bột.\nTinh bột phản ứng với iodine trong cồn iodine tạo phức màu xanh tím.\nGlucose không có phản ứng màu với iodine; khoai tây bị oxi hoá không khí cho màu nâu chứ không phải xanh tím.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00531",
+   "chu_de": "Lipid, Carbohydrate, Protein & Polymer",
+   "chuyen_de": "Lipid",
+   "nhom": "Bài toán Xà phòng hóa cơ bản",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nPhương trình xà phòng hoá: $\\mathrm{(RCOO)_3C_3H_5 + 3NaOH \\xrightarrow{t^\\circ} C_3H_5(OH)_3 + 3RCOONa}$.\nTỉ lệ mol: chất béo : $\\mathrm{NaOH}$ : glycerol : xà phòng = $1 : 3 : 1 : 3$.\nKhối lượng mol: $\\mathrm{NaOH}$ = 40 g/mol; glycerol $\\mathrm{C_3H_5(OH)_3}$ = 92 g/mol.\nCông thức: $n = \\dfrac{m}{M}$.\nĐịnh luật bảo toàn khối lượng: tổng khối lượng chất tham gia bằng tổng khối lượng sản phẩm.\n\n##PP 2. Các bước làm bài\nTính số mol chất đã biết\nDựa vào tỉ lệ mol trong phương trình để suy ra số mol chất cần tìm\nĐổi số mol ra khối lượng bằng $m = n \\cdot M$, hoặc dùng bảo toàn khối lượng\n\n##CY 3. Lưu ý\nNhớ hệ số 3 của $\\mathrm{NaOH}$; glycerol chỉ có hệ số 1.\nDùng đúng $M(\\mathrm{NaOH}) = 40$ và $M(\\text{glycerol}) = 92$.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01569",
+     "thu_tu": 1,
+     "ten": "Tính khối lượng NaOH hoặc glycerol từ khối lượng chất béo theo tỉ lệ mol",
+     "mo_ta": "Đề cho khối lượng chất béo (kèm $M$) phản ứng vừa đủ với NaOH, hỏi khối lượng NaOH đã phản ứng hoặc khối lượng glycerol tạo thành.\nLàm bằng cách tính số mol chất béo, nhân tỉ lệ mol rồi đổi ra khối lượng.\nKhông có hiệu suất.\nLưu ý: đề cho cả khối lượng NaOH và glycerol rồi hỏi khối lượng xà phòng ⇒ thuộc dạng \"Tính khối lượng xà phòng bằng bảo toàn khối lượng\".",
+     "ly_thuyet": "##TC Tỉ lệ mol\nChất béo : $\\mathrm{NaOH}$ : glycerol = $1 : 3 : 1$.\n$n(\\mathrm{NaOH}) = 3\\,n(\\text{chất béo})$; $n(\\text{glycerol}) = n(\\text{chất béo})$.\n$M(\\mathrm{NaOH}) = 40$ g/mol; $M(\\text{glycerol}) = 92$ g/mol.\n\n##PP Cách làm\nTính $n(\\text{chất béo}) = \\dfrac{m}{M}$\nNhân với hệ số trong tỉ lệ để có số mol $\\mathrm{NaOH}$ hoặc glycerol\nTính khối lượng: $m = n \\cdot M$\n\n##CY Lỗi hay mắc\nQuên hệ số 3 của $\\mathrm{NaOH}$ hoặc lấy hệ số 3 cho glycerol.\nDùng sai khối lượng mol ($M(\\mathrm{NaOH})$ = 40, không phải 60; $M$ glycerol = 92, không phải 90).",
+     "vi_du": "##VD\nCho 890 gam chất béo (M = 890 g/mol) phản ứng vừa đủ với NaOH theo tỉ lệ mol chất béo : NaOH = 1 : 3. Tính khối lượng NaOH đã phản ứng.\nA. 40 gam\nB. 120 gam\nC. 180 gam\nD. 80 gam\n\nBài giải:\n$n(\\text{chất béo}) = \\dfrac{890}{890} = 1$ mol.\n$n(\\mathrm{NaOH}) = 3 \\times 1 = 3$ mol.\n$m(\\mathrm{NaOH}) = 3 \\times 40 = 120$ gam.\nChọn B.\n\n##VD\nCho 1780 gam chất béo (M = 890 g/mol) phản ứng vừa đủ với NaOH theo tỉ lệ mol chất béo : glycerol = 1 : 1. Tính khối lượng glycerol tạo thành.\nA. 552 gam\nB. 180 gam\nC. 92 gam\nD. 184 gam\n\nBài giải:\n$n(\\text{chất béo}) = \\dfrac{1780}{890} = 2$ mol.\n$n(\\text{glycerol}) = 2$ mol.\n$m(\\text{glycerol}) = 2 \\times 92 = 184$ gam.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01570",
+     "thu_tu": 2,
+     "ten": "Tính khối lượng xà phòng bằng bảo toàn khối lượng",
+     "mo_ta": "Đề cho khối lượng chất béo, khối lượng NaOH phản ứng và khối lượng glycerol thu được, hỏi khối lượng xà phòng tạo thành (hiệu suất 100%).\nLàm bằng cách áp dụng định luật bảo toàn khối lượng.\nLưu ý: đề chỉ cho khối lượng chất béo rồi hỏi khối lượng NaOH hoặc glycerol ⇒ thuộc dạng \"Tính khối lượng NaOH hoặc glycerol từ khối lượng chất béo theo tỉ lệ mol\".",
+     "ly_thuyet": "##TC Bảo toàn khối lượng\n$m(\\text{chất béo}) + m(\\mathrm{NaOH}) = m(\\text{glycerol}) + m(\\text{xà phòng})$.\nSuy ra $m(\\text{xà phòng}) = m(\\text{chất béo}) + m(\\mathrm{NaOH}) - m(\\text{glycerol})$.\n\n##PP Cách làm\nXác định khối lượng chất béo, $\\mathrm{NaOH}$ và glycerol từ đề\nViết biểu thức bảo toàn khối lượng\nThay số và tính khối lượng xà phòng\n\n##CY Lỗi hay mắc\nQuên trừ khối lượng glycerol.\nCộng cả khối lượng glycerol thay vì trừ.\nDùng nhầm khối lượng $\\mathrm{NaOH}$ không đúng với đề.",
+     "vi_du": "##VD\nCho 890 gam chất béo phản ứng vừa đủ với NaOH, thu 120 gam NaOH đã dùng và 92 gam glycerol. Tính khối lượng xà phòng tạo thành, coi phản ứng hoàn toàn.\nA. 1010 gam\nB. 838 gam\nC. 918 gam\nD. 1102 gam\n\nBài giải:\nTheo bảo toàn khối lượng:\n$m(\\text{xà phòng}) = 890 + 120 - 92 = 918$ gam.\nChọn C.\n\n##VD\nXà phòng hoá hoàn toàn 6675 g chất béo cần vừa đủ 900 g NaOH, thu được 690 g glycerol. Khối lượng xà phòng tạo thành là\nA. 7575 gam\nB. 6285 gam\nC. 8265 gam\nD. 6885 gam\n\nBài giải:\nTheo bảo toàn khối lượng:\n$m(\\text{xà phòng}) = 6675 + 900 - 690 = 6885$ gam.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00535",
+   "chu_de": "Lipid, Carbohydrate, Protein & Polymer",
+   "chuyen_de": "Carbohydrate",
+   "nhom": "Bài toán Lên men rượu từ Glucose",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nPhương trình lên men rượu: $\\mathrm{C_6H_{12}O_6 \\xrightarrow{enzyme} 2C_2H_5OH + 2CO_2}$.\nTỉ lệ mol: glucose : ethylic alcohol : $\\mathrm{CO_2}$ = $1 : 2 : 2$.\nKhối lượng mol: glucose 180; $\\mathrm{C_2H_5OH}$ 46; $\\mathrm{CO_2}$ 44 (g/mol).\nHiệu suất: lượng thực tế = lượng lí thuyết $\\times H$.\nThể tích khí ở điều kiện chuẩn (đkc): $V = n \\times 24{,}79$ (L).\n\n##PP 2. Các bước làm bài\nTính số mol glucose: $n = \\dfrac{m}{180}$\nTính số mol sản phẩm theo lí thuyết bằng tỉ lệ mol\nNhân hiệu suất, rồi đổi ra khối lượng hoặc thể tích\n\n##CY 3. Lưu ý\nNhớ hệ số 2 của $\\mathrm{C_2H_5OH}$ và $\\mathrm{CO_2}$.\nỞ đkc dùng 24,79 L/mol, không dùng 22,4 L/mol.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01578",
+     "thu_tu": 1,
+     "ten": "Tính khối lượng ethylic alcohol thu được khi lên men glucose có hiệu suất",
+     "mo_ta": "Đề cho khối lượng glucose lên men rượu với hiệu suất cho trước, hỏi khối lượng ethylic alcohol thu được.\nLàm bằng cách tính số mol glucose, nhân tỉ lệ 1 : 2, nhân hiệu suất rồi đổi ra gam.\nLưu ý: đề hỏi thể tích khí $\\mathrm{CO_2}$ ⇒ thuộc dạng \"Tính thể tích khí CO₂ sinh ra khi lên men glucose\".",
+     "ly_thuyet": "##TC Công thức\n$n(\\mathrm{C_2H_5OH})_{\\text{lí thuyết}} = 2\\,n(\\text{glucose})$.\n$m(\\mathrm{C_2H_5OH}) = n_{\\text{thực tế}} \\times 46$, với $n_{\\text{thực tế}} = n_{\\text{lí thuyết}} \\times H$.\n\n##PP Cách làm\nTính $n(\\text{glucose}) = \\dfrac{m}{180}$\nTính $n(\\mathrm{C_2H_5OH})$ lí thuyết rồi nhân hiệu suất\nTính khối lượng ethylic alcohol bằng $n \\times 46$\n\n##CY Lỗi hay mắc\nQuên nhân hiệu suất.\nQuên hệ số 2 trước $\\mathrm{C_2H_5OH}$.\nDùng nhầm $M = 44$ (của $\\mathrm{CO_2}$) thay cho 46.",
+     "vi_du": "##VD\nCho 360 g glucose lên men rượu với hiệu suất 75%. Tính khối lượng ethylic alcohol thu được.\nA. 184 g\nB. 69 g\nC. 138 g\nD. 132 g\n\nBài giải:\n$n(\\text{glucose}) = \\dfrac{360}{180} = 2$ mol.\nTheo phương trình $\\mathrm{C_6H_{12}O_6 \\rightarrow 2C_2H_5OH + 2CO_2}$: $n(\\mathrm{C_2H_5OH})$ lí thuyết $= 2 \\times 2 = 4$ mol.\nThực tế: $4 \\times 75\\% = 3$ mol.\n$m(\\mathrm{C_2H_5OH}) = 3 \\times 46 = 138$ g.\nChọn C.\n\n##VD\nCho 270 g glucose lên men rượu với hiệu suất 90%. Tính khối lượng ethylic alcohol thu được.\nA. 138 g\nB. 69 g\nC. 132 g\nD. 124,2 g\n\nBài giải:\n$n(\\text{glucose}) = \\dfrac{270}{180} = 1{,}5$ mol.\n$n(\\mathrm{C_2H_5OH})$ lí thuyết $= 2 \\times 1{,}5 = 3$ mol.\nThực tế: $3 \\times 90\\% = 2{,}7$ mol.\n$m(\\mathrm{C_2H_5OH}) = 2{,}7 \\times 46 = 124{,}2$ g.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01579",
+     "thu_tu": 2,
+     "ten": "Tính thể tích khí CO₂ sinh ra khi lên men glucose",
+     "mo_ta": "Đề cho khối lượng glucose lên men rượu với hiệu suất, hỏi thể tích khí $\\mathrm{CO_2}$ sinh ra ở đkc.\nLàm bằng cách tính số mol glucose, nhân tỉ lệ 1 : 2, nhân hiệu suất rồi nhân 24,79.\nLưu ý: đề hỏi khối lượng ethylic alcohol ⇒ thuộc dạng \"Tính khối lượng ethylic alcohol thu được khi lên men glucose có hiệu suất\".",
+     "ly_thuyet": "##TC Thể tích khí ở đkc\n$n(\\mathrm{CO_2})_{\\text{lí thuyết}} = 2\\,n(\\text{glucose})$.\n$V(\\mathrm{CO_2}) = n_{\\text{thực tế}} \\times 24{,}79$ (L), với $n_{\\text{thực tế}} = n_{\\text{lí thuyết}} \\times H$.\n\n##PP Cách làm\nTính $n(\\text{glucose})$\nTính $n(\\mathrm{CO_2})$ lí thuyết, nhân hiệu suất\nNhân với 24,79 L/mol\n\n##CY Lỗi hay mắc\nQuên nhân hiệu suất.\nDùng 22,4 L/mol thay cho 24,79 L/mol ở đkc.\nQuên hệ số 2 trước $\\mathrm{CO_2}$.",
+     "vi_du": "##VD\nCho 180 g glucose lên men rượu với hiệu suất 50%. Tính thể tích khí $\\mathrm{CO_2}$ sinh ra (đkc).\nA. 24,79 L\nB. 49,58 L\nC. 22,4 L\nD. 12,4 L\n\nBài giải:\n$n(\\text{glucose}) = \\dfrac{180}{180} = 1$ mol.\n$n(\\mathrm{CO_2})$ lí thuyết $= 2 \\times 1 = 2$ mol.\nThực tế: $2 \\times 50\\% = 1$ mol.\n$V = 1 \\times 24{,}79 = 24{,}79$ L.\nChọn A.\n\n##VD\nCho 360 g glucose lên men rượu với hiệu suất 75%. Tính thể tích khí $\\mathrm{CO_2}$ sinh ra (đkc).\nA. 99,16 L\nB. 74,37 L\nC. 67,2 L\nD. 37,19 L\n\nBài giải:\n$n(\\text{glucose}) = \\dfrac{360}{180} = 2$ mol.\n$n(\\mathrm{CO_2})$ lí thuyết $= 2 \\times 2 = 4$ mol.\nThực tế: $4 \\times 75\\% = 3$ mol.\n$V = 3 \\times 24{,}79 = 74{,}37$ L.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00532",
+   "chu_de": "Lipid, Carbohydrate, Protein & Polymer",
+   "chuyen_de": "Lipid",
+   "nhom": "Bài toán hiệu suất sản xuất Xà phòng từ nguyên liệu thực",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nKhối lượng xà phòng lí thuyết (hiệu suất 100%) tính bằng bảo toàn khối lượng: $m(\\text{chất béo}) + m(\\mathrm{NaOH}) - m(\\text{glycerol})$.\nHiệu suất phản ứng: $H = \\dfrac{m_{\\text{thực tế}}}{m_{\\text{lí thuyết}}} \\times 100\\%$.\nKhối lượng thực tế $= m_{\\text{lí thuyết}} \\times H$; khối lượng lí thuyết $= m_{\\text{thực tế}} : H$.\n\n##PP 2. Các bước làm bài\nTính khối lượng xà phòng lí thuyết (hoặc dùng tỉ lệ khối lượng cho sẵn)\nNhân hiệu suất nếu hỏi lượng thực tế; chia cho hiệu suất nếu đã biết lượng thực tế và hỏi lượng nguyên liệu\nKết luận\n\n##CY 3. Lưu ý\nHiệu suất thấp thì cần nhiều nguyên liệu hơn: đi ngược từ thực tế về lí thuyết phải chia cho $H$, không nhân.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01571",
+     "thu_tu": 1,
+     "ten": "Tính khối lượng xà phòng thực tế thu được khi biết hiệu suất",
+     "mo_ta": "Đề cho khối lượng chất béo, NaOH, glycerol theo lí thuyết và hiệu suất phản ứng, hỏi khối lượng xà phòng thực tế.\nLàm bằng cách tính khối lượng lí thuyết bằng bảo toàn khối lượng rồi nhân hiệu suất.\nLưu ý: đề cho khối lượng xà phòng muốn thu và hỏi khối lượng chất béo cần dùng ⇒ thuộc dạng \"Tính khối lượng chất béo cần dùng để thu lượng xà phòng cho trước\".",
+     "ly_thuyet": "##TC Công thức\n$m(\\text{xà phòng})_{\\text{lí thuyết}} = m(\\text{chất béo}) + m(\\mathrm{NaOH}) - m(\\text{glycerol})$.\n$m(\\text{xà phòng})_{\\text{thực tế}} = m_{\\text{lí thuyết}} \\times H$.\n\n##PP Cách làm\nTính khối lượng xà phòng lí thuyết bằng bảo toàn khối lượng\nNhân với hiệu suất $H$ (đổi % sang số thập phân)\n\n##CY Lỗi hay mắc\nQuên nhân hiệu suất, lấy luôn khối lượng lí thuyết.\nQuên trừ khối lượng glycerol trước khi nhân hiệu suất.",
+     "vi_du": "##VD\nCho 4450 gam chất béo phản ứng với NaOH, thu 600 gam NaOH đã dùng và 460 gam glycerol, hiệu suất phản ứng đạt 80%. Tính khối lượng xà phòng thực tế thu được.\nA. 4590 gam\nB. 3672 gam\nC. 4040 gam\nD. 5050 gam\n\nBài giải:\nKhối lượng xà phòng lí thuyết: $4450 + 600 - 460 = 4590$ gam.\nKhối lượng xà phòng thực tế: $4590 \\times 80\\% = 3672$ gam.\nChọn B.\n\n##VD\nXà phòng hoá 1780 g chất béo, theo lí thuyết cần vừa đủ 240 g NaOH và tạo ra 184 g glycerol. Thực tế hiệu suất phản ứng đạt 70%. Khối lượng xà phòng thực tế thu được là\nA. 1836 gam\nB. 1414 gam\nC. 1285,2 gam\nD. 2020 gam\n\nBài giải:\nKhối lượng xà phòng lí thuyết: $1780 + 240 - 184 = 1836$ gam.\nKhối lượng xà phòng thực tế: $1836 \\times 70\\% = 1285{,}2$ gam.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01572",
+     "thu_tu": 2,
+     "ten": "Tính khối lượng chất béo cần dùng để thu lượng xà phòng cho trước",
+     "mo_ta": "Đề cho khối lượng xà phòng muốn thu được, hiệu suất và tỉ lệ khối lượng lí thuyết (chất béo : xà phòng), hỏi khối lượng chất béo cần dùng.\nLàm bằng cách chia cho hiệu suất để có xà phòng lí thuyết rồi dùng tỉ lệ khối lượng suy ra chất béo.\nLưu ý: đề cho khối lượng chất béo và hỏi xà phòng thực tế ⇒ thuộc dạng \"Tính khối lượng xà phòng thực tế thu được khi biết hiệu suất\".",
+     "ly_thuyet": "##TC Tính ngược từ sản phẩm\n$m(\\text{xà phòng})_{\\text{lí thuyết}} = m_{\\text{thực tế}} : H$.\nTheo tỉ lệ cho sẵn: cứ $m_1$ chất béo tạo $m_2$ xà phòng (lí thuyết) thì $m(\\text{chất béo}) = m(\\text{xà phòng})_{\\text{lí thuyết}} \\times \\dfrac{m_1}{m_2}$.\n\n##PP Cách làm\nChia khối lượng xà phòng thực tế cho hiệu suất để có xà phòng lí thuyết\nNhân với tỉ lệ khối lượng chất béo : xà phòng để có khối lượng chất béo\n\n##CY Lỗi hay mắc\nNhân với hiệu suất thay vì chia: hiệu suất thấp thì cần nhiều chất béo hơn.\nBỏ qua tỉ lệ khối lượng chất béo : xà phòng, lấy luôn khối lượng xà phòng lí thuyết làm khối lượng chất béo.",
+     "vi_du": "##VD\nMột cơ sở muốn thu được 734,4 kg xà phòng (biết cứ 890 kg chất béo phản ứng vừa đủ với NaOH thì lí thuyết thu được 918 kg xà phòng), với hiệu suất phản ứng đạt 80%. Cần dùng bao nhiêu kg chất béo?\nA. 712 kg\nB. 569,6 kg\nC. 890 kg\nD. 918 kg\n\nBài giải:\nKhối lượng xà phòng lí thuyết: $734{,}4 : 80\\% = 918$ kg.\nCứ 890 kg chất béo tạo 918 kg xà phòng nên khối lượng chất béo: $918 \\times \\dfrac{890}{918} = 890$ kg.\nChọn C.\n\n##VD\nMột cơ sở muốn thu được 1377 kg xà phòng (biết cứ 890 kg chất béo phản ứng vừa đủ với NaOH thì lí thuyết thu được 918 kg xà phòng), với hiệu suất phản ứng đạt 75%. Cần dùng bao nhiêu kg chất béo?\nA. 1780 kg\nB. 1335 kg\nC. 1001,25 kg\nD. 1836 kg\n\nBài giải:\nKhối lượng xà phòng lí thuyết: $1377 : 75\\% = 1836$ kg.\nKhối lượng chất béo cần dùng: $1836 \\times \\dfrac{890}{918} = 1780$ kg.\nChọn A."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09090101001",
+   "nhom_id": "KNB00529",
+   "loai": "trac_nghiem",
+   "de": "Chất béo được tạo thành từ phản ứng ester hoá giữa glycerol với chất nào?",
+   "lua_chon": [
+    "Acid béo",
+    "Glucose",
+    "Ethylic alcohol",
+    "Amino acid"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Chất béo là ester của glycerol với acid béo, tạo thành qua phản ứng ester hoá.\n\nVì sao các phương án khác sai:\n- B: Glucose không tạo ester với glycerol trong chất béo.\n- C: Ethylic alcohol không phải chất tạo nên chất béo.\n- D: Amino acid là đơn vị cấu tạo protein, không liên quan chất béo."
+  },
+  {
+   "ma_cau": "K09090101002",
+   "nhom_id": "KNB00529",
+   "loai": "trac_nghiem",
+   "de": "Công thức tổng quát của chất béo được viết là",
+   "lua_chon": [
+    "RCOOH",
+    "(RCOO)₃C₃H₅",
+    "RCOOC₃H₅",
+    "(RCOOH)₃C₃H₅"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Chất béo là ester ba lần của glycerol với acid béo, công thức tổng quát (RCOO)₃C₃H₅.\n\nVì sao các phương án khác sai:\n- A: RCOOH là công thức acid béo, chưa phải ester với glycerol.\n- C: Thiếu hệ số 3 cho nhóm RCOO.\n- D: Nhóm ester phải là RCOO, không phải RCOOH."
+  },
+  {
+   "ma_cau": "K09090101003",
+   "nhom_id": "KNB00529",
+   "loai": "trac_nghiem",
+   "de": "Trong công thức (RCOO)₃C₃H₅, thành phần C₃H₅ là gốc của chất nào?",
+   "lua_chon": [
+    "Acid béo",
+    "Nước",
+    "Glycerol",
+    "Xà phòng"
+   ],
+   "dap_an": "C",
+   "loi_giai": "C₃H₅ là gốc còn lại của glycerol sau khi ba nhóm OH ester hoá với acid béo.\n\nVì sao các phương án khác sai:\n- A: Gốc của acid béo được kí hiệu là R, không phải C₃H₅.\n- B: Nước là sản phẩm phụ của phản ứng ester hoá, không phải thành phần chất béo.\n- D: Xà phòng chỉ tạo ra khi thuỷ phân chất béo bằng kiềm."
+  },
+  {
+   "ma_cau": "K09090101004",
+   "nhom_id": "KNB00529",
+   "loai": "trac_nghiem",
+   "de": "Chất béo thuộc loại hợp chất hữu cơ có nhóm chức nào?",
+   "lua_chon": [
+    "Nhóm carboxyl (–COOH)",
+    "Nhóm hydroxyl (–OH)",
+    "Nhóm ester",
+    "Nhóm amino (–NH₂)"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Chất béo là ester của glycerol với acid béo nên thuộc loại hợp chất có nhóm chức ester.\n\nVì sao các phương án khác sai:\n- A: Nhóm carboxyl đặc trưng cho acid béo (nguyên liệu), không phải chất béo.\n- B: Nhóm hydroxyl đặc trưng cho glycerol (nguyên liệu), mất đi sau ester hoá.\n- D: Nhóm amino đặc trưng cho amino acid, protein, không liên quan chất béo."
+  },
+  {
+   "ma_cau": "K09090101005",
+   "nhom_id": "KNB00529",
+   "loai": "trac_nghiem",
+   "de": "Trong công thức chất béo (RCOO)₃C₃H₅, gốc C₃H₅ có nguồn gốc từ đâu?",
+   "lua_chon": [
+    "Acid béo",
+    "Glucose",
+    "Glycerol",
+    "Amino acid"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Trong công thức chất béo (RCOO)₃C₃H₅, phần C₃H₅ là gốc của glycerol, còn RCOO là gốc của acid béo.\n\nVì sao các phương án khác sai:\n- A: Gốc RCOO mới là phần đến từ acid béo, không phải C₃H₅.\n- B: Glucose là carbohydrate, không liên quan đến cấu tạo chất béo.\n- D: Amino acid là thành phần cấu tạo của protein, không liên quan đến chất béo."
+  },
+  {
+   "ma_cau": "K09090101006",
+   "nhom_id": "KNB00529",
+   "loai": "trac_nghiem",
+   "de": "Lipid là tên gọi chung cho nhóm chất nào sau đây?",
+   "lua_chon": [
+    "Carbohydrate và protein có trong cơ thể người",
+    "Chất béo và một số hợp chất không tan trong nước",
+    "Các hợp chất chỉ chứa nguyên tố nitrogen",
+    "Chỉ riêng chất béo có nguồn gốc động vật"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Lipid là tên chung cho chất béo và một số hợp chất không tan trong nước.\n\nVì sao các phương án khác sai:\n- A: Carbohydrate và protein không thuộc nhóm lipid.\n- C: Lipid không được định nghĩa theo có nitrogen hay không.\n- D: Lipid gồm cả chất béo thực vật, không chỉ động vật."
+  },
+  {
+   "ma_cau": "K09090101007",
+   "nhom_id": "KNB00529",
+   "loai": "trac_nghiem",
+   "de": "Trong công thức chất béo (RCOO)₃C₃H₅, kí hiệu R đại diện cho thành phần nào?",
+   "lua_chon": [
+    "Gốc hydrocarbon của acid béo",
+    "Gốc của phân tử glycerol",
+    "Nhóm hydroxyl (–OH)",
+    "Nhóm amino (–NH₂)"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Trong công thức tổng quát (RCOO)₃C₃H₅, R là gốc hydrocarbon của acid béo, còn C₃H₅ là gốc của glycerol.\n\nVì sao các phương án khác sai:\n- B: Gốc glycerol được kí hiệu là C₃H₅, không phải R.\n- C: Nhóm hydroxyl (–OH) là nhóm chức của alcohol, không phải kí hiệu R trong công thức chất béo.\n- D: Nhóm amino đặc trưng cho amino acid, không liên quan công thức chất béo."
+  },
+  {
+   "ma_cau": "K09090101008",
+   "nhom_id": "KNB00529",
+   "loai": "trac_nghiem",
+   "de": "Phản ứng tạo ra chất béo từ glycerol và acid béo thuộc loại phản ứng nào?",
+   "lua_chon": [
+    "Phản ứng trung hoà",
+    "Phản ứng ester hoá",
+    "Phản ứng cháy",
+    "Phản ứng xà phòng hoá"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Chất béo được tạo thành từ phản ứng ester hoá giữa glycerol (có 3 nhóm –OH) và acid béo (có nhóm –COOH), giải phóng nước.\n\nVì sao các phương án khác sai:\n- A: Phản ứng trung hoà xảy ra giữa acid và base, không phải giữa glycerol và acid béo.\n- C: Phản ứng cháy cần oxygen, tạo CO₂ và nước, không phải cách tạo chất béo.\n- D: Phản ứng xà phòng hoá là phản ứng thuỷ phân chất béo bằng kiềm, ngược lại với quá trình tạo ra chất béo."
+  },
+  {
+   "ma_cau": "K09090101009",
+   "nhom_id": "KNB00529",
+   "loai": "trac_nghiem",
+   "de": "Ở nhiệt độ thường, dầu thực vật thường ở trạng thái nào?",
+   "lua_chon": [
+    "Rắn",
+    "Khí",
+    "Lỏng",
+    "Dạng bột"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Dầu thực vật (dầu đậu nành, dầu lạc) thường ở trạng thái lỏng ở nhiệt độ thường.\n\nVì sao các phương án khác sai:\n- A: Trạng thái rắn thường gặp ở mỡ động vật.\n- B: Chất béo không ở trạng thái khí ở nhiệt độ thường.\n- D: Chất béo không tồn tại tự nhiên ở dạng bột."
+  },
+  {
+   "ma_cau": "K09090101010",
+   "nhom_id": "KNB00529",
+   "loai": "trac_nghiem",
+   "de": "Ở nhiệt độ thường, mỡ động vật (mỡ lợn) thường ở trạng thái nào?",
+   "lua_chon": [
+    "Rắn",
+    "Lỏng",
+    "Khí",
+    "Dạng dung dịch trong nước"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mỡ động vật thường ở trạng thái rắn ở nhiệt độ thường, khác dầu thực vật.\n\nVì sao các phương án khác sai:\n- B: Trạng thái lỏng thường gặp ở dầu thực vật.\n- C: Chất béo không ở trạng thái khí.\n- D: Chất béo không tan trong nước nên không tạo dung dịch."
+  },
+  {
+   "ma_cau": "K09090101011",
+   "nhom_id": "KNB00529",
+   "loai": "trac_nghiem",
+   "de": "Chất béo có tan trong nước không?",
+   "lua_chon": [
+    "Tan tốt trong nước",
+    "Chỉ tan trong nước nóng",
+    "Tan một phần, tạo dung dịch keo",
+    "Không tan trong nước"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chất béo không tan trong nước, đây là tính chất vật lí đặc trưng.\n\nVì sao các phương án khác sai:\n- A: Chất béo không tan tốt trong nước.\n- B: Chất béo không tan cả khi nước nóng.\n- C: Chất béo không tan một phần trong nước."
+  },
+  {
+   "ma_cau": "K09090101012",
+   "nhom_id": "KNB00529",
+   "loai": "trac_nghiem",
+   "de": "Chất béo tan tốt trong dung môi nào sau đây?",
+   "lua_chon": [
+    "Nước muối",
+    "Xăng, dầu hoả",
+    "Nước",
+    "Giấm ăn"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Chất béo tan tốt trong dung môi hữu cơ như xăng, dầu hoả, không tan trong nước.\n\nVì sao các phương án khác sai:\n- A: Nước muối vẫn là dung dịch trong nước, không hoà tan chất béo.\n- C: Nước không hoà tan được chất béo.\n- D: Giấm ăn là dung dịch trong nước, không hoà tan chất béo."
+  },
+  {
+   "ma_cau": "K09090101013",
+   "nhom_id": "KNB00529",
+   "loai": "trac_nghiem",
+   "de": "Vì sao dầu ăn thường nổi trên mặt nước khi để lẫn với nước?",
+   "lua_chon": [
+    "Vì khối lượng riêng dầu nhỏ hơn nước",
+    "Vì dầu ăn nặng hơn nước",
+    "Vì dầu ăn tan hết trong nước",
+    "Vì nước bốc hơi để lại dầu"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Dầu ăn có khối lượng riêng nhỏ hơn nước và không tan nên nổi trên mặt nước.\n\nVì sao các phương án khác sai:\n- B: Dầu ăn nhẹ hơn nước, không nặng hơn.\n- C: Dầu ăn không tan trong nước.\n- D: Hiện tượng nổi không do nước bốc hơi."
+  },
+  {
+   "ma_cau": "K09090101014",
+   "nhom_id": "KNB00529",
+   "loai": "trac_nghiem",
+   "de": "Vì sao khi đun nóng dầu ăn ở nhiệt độ rất cao (quá mức cần thiết), dầu chuyển sang màu đen và bốc khói nhiều?",
+   "lua_chon": [
+    "Vì dầu bay hơi hết, chỉ còn cặn",
+    "Vì dầu phản ứng với oxygen tạo glycerol màu đen",
+    "Vì dầu bị phân huỷ/cháy một phần do nhiệt độ quá cao",
+    "Vì dầu đông đặc lại ở nhiệt độ cao"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khi đun ở nhiệt độ quá cao, các phân tử chất béo trong dầu bị phân huỷ và cháy một phần, sinh ra khói và các chất có màu đen, không tốt cho sức khoẻ.\n\nVì sao các phương án khác sai:\n- A: Dầu ăn không bay hơi hết ở nhiệt độ đun nấu thông thường; hiện tượng đen khói là do phân huỷ nhiệt.\n- B: Phản ứng với oxygen ở nhiệt độ cao là quá trình oxi hoá/cháy một phần, không tạo glycerol màu đen.\n- D: Chất béo đông đặc ở nhiệt độ thấp, không phải nhiệt độ cao; nhiệt độ cao làm dầu phân huỷ, không đông đặc."
+  },
+  {
+   "ma_cau": "K09090101015",
+   "nhom_id": "KNB00529",
+   "loai": "trac_nghiem",
+   "de": "Muốn hoà tan vết dầu mỡ dính trên quần áo mà không giặt bằng xà phòng, có thể dùng dung môi nào sau đây?",
+   "lua_chon": [
+    "Nước muối",
+    "Giấm ăn",
+    "Nước đường",
+    "Xăng"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chất béo tan tốt trong các dung môi hữu cơ như xăng, dầu hoả nên có thể dùng xăng thơm để hoà tan vết dầu mỡ, không tan trong các dung dịch nước.\n\nVì sao các phương án khác sai:\n- A: Nước muối vẫn là dung dịch trong nước, không hoà tan được chất béo.\n- B: Giấm ăn là dung dịch acetic acid trong nước, không hoà tan được chất béo.\n- C: Nước đường vẫn là dung dịch trong nước, không hoà tan được chất béo."
+  },
+  {
+   "ma_cau": "K09090201001",
+   "nhom_id": "KNB00533",
+   "loai": "trac_nghiem",
+   "de": "Carbohydrate nào có công thức phân tử C₁₂H₂₂O₁₁?",
+   "lua_chon": [
+    "Glucose",
+    "Saccharose",
+    "Tinh bột",
+    "Cellulose"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Saccharose là một disaccharide, có công thức phân tử C₁₂H₂₂O₁₁.\n\nVì sao các phương án khác sai:\n- A: Glucose có công thức C₆H₁₂O₆, không phải C₁₂H₂₂O₁₁.\n- C: Tinh bột có công thức (C₆H₁₀O₅)n, không phải C₁₂H₂₂O₁₁.\n- D: Cellulose có công thức (C₆H₁₀O₅)n, không phải C₁₂H₂₂O₁₁."
+  },
+  {
+   "ma_cau": "K09090201002",
+   "nhom_id": "KNB00533",
+   "loai": "trac_nghiem",
+   "de": "Tinh bột và cellulose có công thức phân tử chung dạng nào?",
+   "lua_chon": [
+    "C₆H₁₂O₆",
+    "C₁₂H₂₂O₁₁",
+    "(C₆H₁₀O₅)n",
+    "C₆H₁₀O₆"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Tinh bột, cellulose đều là polysaccharide, có công thức chung (C₆H₁₀O₅)n.\n\nVì sao các phương án khác sai:\n- A: C₆H₁₂O₆ là công thức của glucose, không phải polysaccharide.\n- B: C₁₂H₂₂O₁₁ là công thức của saccharose, không phải polysaccharide.\n- D: C₆H₁₀O₆ không đúng tỉ lệ nguyên tử của tinh bột, cellulose."
+  },
+  {
+   "ma_cau": "K09090201003",
+   "nhom_id": "KNB00533",
+   "loai": "trac_nghiem",
+   "de": "Carbohydrate nào thuộc loại đường đơn (monosaccharide)?",
+   "lua_chon": [
+    "Saccharose",
+    "Tinh bột",
+    "Cellulose",
+    "Glucose"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Glucose không bị thuỷ phân thành đường đơn giản hơn nên là monosaccharide.\n\nVì sao các phương án khác sai:\n- A: Saccharose do hai gốc đường đơn ghép lại, là đường đôi.\n- B: Tinh bột do nhiều gốc glucose ghép lại, là polysaccharide.\n- C: Cellulose do nhiều gốc glucose ghép lại, là polysaccharide."
+  },
+  {
+   "ma_cau": "K09090201004",
+   "nhom_id": "KNB00533",
+   "loai": "trac_nghiem",
+   "de": "Saccharose được phân loại thuộc nhóm carbohydrate nào?",
+   "lua_chon": [
+    "Monosaccharide (đường đơn)",
+    "Polysaccharide (đường đa)",
+    "Không thuộc nhóm carbohydrate nào",
+    "Disaccharide (đường đôi)"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Saccharose (C₁₂H₂₂O₁₁) do gốc glucose và gốc fructose liên kết tạo thành nên là một disaccharide (đường đôi).\n\nVì sao các phương án khác sai:\n- A: Monosaccharide chỉ gồm một gốc đường đơn (như glucose), trong khi saccharose gồm hai gốc.\n- B: Polysaccharide gồm rất nhiều gốc đường đơn liên kết (như tinh bột), nhiều hơn hẳn hai gốc của saccharose.\n- C: Saccharose (C₁₂H₂₂O₁₁) vẫn là một loại carbohydrate, chỉ thuộc nhóm đường đôi."
+  },
+  {
+   "ma_cau": "K09090201005",
+   "nhom_id": "KNB00533",
+   "loai": "trac_nghiem",
+   "de": "Tinh bột và cellulose có công thức phân tử dạng nào?",
+   "lua_chon": [
+    "(C₆H₁₀O₅)n",
+    "C₆H₁₂O₆",
+    "C₁₂H₂₂O₁₁",
+    "C₆H₁₀O₅ (không có hệ số n)"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tinh bột và cellulose là polysaccharide có công thức chung (C₆H₁₀O₅)n; C₆H₁₂O₆ là công thức của glucose.\n\nVì sao các phương án khác sai:\n- B: C₆H₁₂O₆ là công thức của glucose (đường đơn), không phải của tinh bột hay cellulose.\n- C: C₁₂H₂₂O₁₁ là công thức của saccharose (đường đôi), không phải polysaccharide.\n- D: Tinh bột, cellulose là các polymer gồm rất nhiều mắt xích, phải có hệ số n thể hiện số mắt xích lặp lại."
+  },
+  {
+   "ma_cau": "K09090201006",
+   "nhom_id": "KNB00533",
+   "loai": "trac_nghiem",
+   "de": "Vì sao tinh bột và cellulose đều có công thức chung (C₆H₁₀O₅)n nhưng lại là hai chất khác nhau về tính chất?",
+   "lua_chon": [
+    "Vì cấu trúc mạch phân tử khác nhau",
+    "Vì hai chất có phân tử khối bằng nhau",
+    "Vì một chất có nguồn gốc động vật",
+    "Vì tinh bột có thêm nguyên tố nitrogen"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Dù có cùng công thức chung (C₆H₁₀O₅)n, tinh bột và cellulose khác nhau về cách các mắt xích glucose liên kết với nhau và cấu trúc mạch, dẫn đến tính chất khác nhau.\n\nVì sao các phương án khác sai:\n- B: Khối lượng phân tử của tinh bột và cellulose thường khác nhau và không quyết định sự khác biệt về tính chất.\n- C: Cả tinh bột và cellulose đều có nguồn gốc thực vật, không phải một động vật một thực vật.\n- D: Cả tinh bột và cellulose đều chỉ chứa C, H, O, không có nitrogen."
+  },
+  {
+   "ma_cau": "K09090201007",
+   "nhom_id": "KNB00533",
+   "loai": "trac_nghiem",
+   "de": "Phân tử khối của saccharose (C₁₂H₂₂O₁₁, biết C = 12, H = 1, O = 16) là bao nhiêu?",
+   "lua_chon": [
+    "180",
+    "342",
+    "162",
+    "324"
+   ],
+   "dap_an": "B",
+   "loi_giai": "M(C₁₂H₂₂O₁₁) = 12×12 + 22×1 + 11×16 = 144+22+176 = 342.\n\nVì sao các phương án khác sai:\n- A: 180 là phân tử khối của glucose (C₆H₁₂O₆), không phải saccharose.\n- C: 162 là khối lượng của một mắt xích (C₆H₁₀O₅), không phải phân tử khối saccharose.\n- D: Tính thiếu 2 nguyên tử H hoặc nhầm số nguyên tử trong công thức, dẫn tới kết quả sai."
+  },
+  {
+   "ma_cau": "K09090201008",
+   "nhom_id": "KNB00533",
+   "loai": "trac_nghiem",
+   "de": "Carbohydrate nào có nhiều trong cây mía, củ cải đường?",
+   "lua_chon": [
+    "Glucose",
+    "Saccharose",
+    "Tinh bột",
+    "Cellulose"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mía, củ cải đường là nguồn nguyên liệu chính để sản xuất saccharose.\n\nVì sao các phương án khác sai:\n- A: Glucose có nhiều trong quả chín, không phải mía, củ cải đường.\n- C: Tinh bột có nhiều trong hạt gạo, khoai, không phải mía.\n- D: Cellulose có nhiều trong sợi bông, gỗ, không phải mía."
+  },
+  {
+   "ma_cau": "K09090201009",
+   "nhom_id": "KNB00533",
+   "loai": "trac_nghiem",
+   "de": "Carbohydrate nào là thành phần chính của hạt gạo, hạt ngô, củ khoai?",
+   "lua_chon": [
+    "Glucose",
+    "Saccharose",
+    "Tinh bột",
+    "Cellulose"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Tinh bột là carbohydrate dự trữ chính trong hạt gạo, hạt ngô, củ khoai.\n\nVì sao các phương án khác sai:\n- A: Glucose không phải carbohydrate dự trữ chính trong hạt, củ.\n- B: Saccharose có nhiều trong mía, không phải thành phần chính của gạo, ngô, khoai.\n- D: Cellulose là thành phần chính của sợi bông, gỗ, không phải hạt, củ."
+  },
+  {
+   "ma_cau": "K09090201010",
+   "nhom_id": "KNB00533",
+   "loai": "trac_nghiem",
+   "de": "Carbohydrate nào là thành phần chính cấu tạo nên sợi bông, thành tế bào thực vật?",
+   "lua_chon": [
+    "Glucose",
+    "Saccharose",
+    "Tinh bột",
+    "Cellulose"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Cellulose là polysaccharide cấu tạo thành tế bào thực vật, sợi bông, gỗ.\n\nVì sao các phương án khác sai:\n- A: Glucose là đường đơn, không tạo thành sợi, thành tế bào.\n- B: Saccharose tan trong nước, không phải thành phần cấu tạo sợi bông.\n- C: Tinh bột dự trữ trong hạt, củ, không tạo nên sợi bông."
+  },
+  {
+   "ma_cau": "K09090201011",
+   "nhom_id": "KNB00533",
+   "loai": "trac_nghiem",
+   "de": "Carbohydrate nào được dùng pha chế dịch truyền cho người bệnh trong y tế?",
+   "lua_chon": [
+    "Glucose",
+    "Saccharose",
+    "Tinh bột",
+    "Cellulose"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Glucose tan tốt trong nước, dễ hấp thu nên được dùng pha dịch truyền tĩnh mạch.\n\nVì sao các phương án khác sai:\n- B: Saccharose là đường ăn, không dùng pha dịch truyền y tế.\n- C: Tinh bột không tan tốt trong nước, không dùng pha dịch truyền.\n- D: Cellulose không tan trong nước, không dùng pha dịch truyền."
+  },
+  {
+   "ma_cau": "K09090201012",
+   "nhom_id": "KNB00533",
+   "loai": "trac_nghiem",
+   "de": "Carbohydrate nào có nhiều trong mật ong và quả chín?",
+   "lua_chon": [
+    "Cellulose",
+    "Tinh bột",
+    "Glucose",
+    "Saccharose"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Glucose có nhiều trong mật ong và các loại quả chín, tạo vị ngọt tự nhiên đặc trưng.\n\nVì sao các phương án khác sai:\n- A: Cellulose có nhiều trong sợi bông, gỗ, không phải mật ong, quả chín.\n- B: Tinh bột có nhiều trong hạt gạo, ngô, khoai, không phải mật ong, quả chín.\n- D: Saccharose có nhiều trong mía, củ cải đường, không phải đặc trưng cho mật ong, quả chín."
+  },
+  {
+   "ma_cau": "K09090201013",
+   "nhom_id": "KNB00533",
+   "loai": "trac_nghiem",
+   "de": "Giấy viết, giấy in được sản xuất chủ yếu từ carbohydrate nào?",
+   "lua_chon": [
+    "Glucose",
+    "Saccharose",
+    "Tinh bột",
+    "Cellulose"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Cellulose từ gỗ, tre, nứa là nguyên liệu chính để sản xuất giấy viết, giấy in nhờ tạo được các sợi bền chắc.\n\nVì sao các phương án khác sai:\n- A: Glucose là đường đơn hoà tan, không dùng làm nguyên liệu sản xuất giấy.\n- B: Saccharose là đường ăn, không dùng làm nguyên liệu sản xuất giấy.\n- C: Tinh bột dùng làm thực phẩm, chất kết dính, không phải nguyên liệu chính sản xuất giấy."
+  },
+  {
+   "ma_cau": "K09090301001",
+   "nhom_id": "KNB00537",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tố nào sau đây LUÔN có trong thành phần của protein?",
+   "lua_chon": [
+    "Carbon, hydrogen, oxygen, nitrogen",
+    "Carbon, hydrogen, oxygen, chlorine",
+    "Carbon, hydrogen, sulfur, sodium",
+    "Carbon, oxygen, nitrogen, potassium"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Protein được cấu tạo từ các nguyên tố C, H, O, N; bốn nguyên tố này luôn có mặt trong mọi protein.\n\nVì sao các phương án khác sai:\n- B: Chlorine không phải nguyên tố cấu tạo protein.\n- C: Sodium không phải nguyên tố cấu tạo protein; thiếu oxygen là nguyên tố luôn có.\n- D: Thiếu hydrogen là nguyên tố luôn có trong protein."
+  },
+  {
+   "ma_cau": "K09090301002",
+   "nhom_id": "KNB00537",
+   "loai": "trac_nghiem",
+   "de": "Trong phân tử protein, các nguyên tử liên kết với nhau tạo thành đơn vị nhỏ được gọi là gì?",
+   "lua_chon": [
+    "Glucose",
+    "Amino acid",
+    "Ethylene",
+    "Glycerol"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Amino acid là đơn vị (mắt xích) liên kết với nhau tạo thành phân tử protein.\n\nVì sao các phương án khác sai:\n- A: Glucose là đơn vị cấu tạo tinh bột, cellulose, không phải protein.\n- C: Ethylene là monomer tạo polyethylene, không liên quan protein.\n- D: Glycerol là thành phần của chất béo, không phải đơn vị cấu tạo protein."
+  },
+  {
+   "ma_cau": "K09090301003",
+   "nhom_id": "KNB00537",
+   "loai": "trac_nghiem",
+   "de": "Các amino acid trong phân tử protein liên kết với nhau tạo thành",
+   "lua_chon": [
+    "một mạch vòng khép kín duy nhất",
+    "các phân tử riêng lẻ không liên kết",
+    "một chuỗi dài nối tiếp nhau",
+    "một hỗn hợp không có liên kết hoá học"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Các amino acid nối tiếp nhau bằng liên kết hoá học, tạo thành chuỗi dài gọi là phân tử protein.\n\nVì sao các phương án khác sai:\n- A: Protein có dạng mạch dài, không phải vòng khép kín.\n- B: Các amino acid liên kết hoá học với nhau, không tồn tại riêng lẻ.\n- D: Các amino acid liên kết chặt với nhau, không phải hỗn hợp rời rạc."
+  },
+  {
+   "ma_cau": "K09090301004",
+   "nhom_id": "KNB00537",
+   "loai": "trac_nghiem",
+   "de": "Protein thuộc loại hợp chất nào sau đây?",
+   "lua_chon": [
+    "Hợp chất vô cơ đơn giản",
+    "Hợp chất có phân tử khối nhỏ hơn nước",
+    "Hợp chất chỉ gồm một loại nguyên tử",
+    "Hợp chất cao phân tử, phân tử khối rất lớn"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Protein gồm rất nhiều amino acid liên kết lại nên có phân tử khối rất lớn, thuộc loại hợp chất cao phân tử.\n\nVì sao các phương án khác sai:\n- A: Protein là hợp chất hữu cơ, không phải vô cơ.\n- B: Protein có phân tử khối rất lớn, lớn hơn nhiều so với nước.\n- C: Protein gồm nhiều nguyên tố (C, H, O, N…), không chỉ một loại."
+  },
+  {
+   "ma_cau": "K09090301005",
+   "nhom_id": "KNB00537",
+   "loai": "trac_nghiem",
+   "de": "Loại thực phẩm nào sau đây giàu protein nhất?",
+   "lua_chon": [
+    "Thịt, cá, trứng",
+    "Dầu ăn",
+    "Đường trắng",
+    "Tinh bột gạo"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Thịt, cá, trứng chứa lượng protein cao, là nguồn cung cấp protein chính trong thực phẩm.\n\nVì sao các phương án khác sai:\n- B: Dầu ăn chủ yếu là chất béo, không giàu protein.\n- C: Đường trắng là carbohydrate, hầu như không chứa protein.\n- D: Tinh bột gạo chủ yếu là carbohydrate, ít protein."
+  },
+  {
+   "ma_cau": "K09090301006",
+   "nhom_id": "KNB00537",
+   "loai": "trac_nghiem",
+   "de": "Một phân tử protein thường được tạo từ bao nhiêu amino acid?",
+   "lua_chon": [
+    "Chỉ đúng 1 amino acid",
+    "Một số lượng rất lớn amino acid",
+    "Chỉ đúng 2 amino acid",
+    "Không có amino acid nào"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Protein là hợp chất cao phân tử do rất nhiều amino acid liên kết nối tiếp tạo thành.\n\nVì sao các phương án khác sai:\n- A: Chỉ 1 amino acid chưa tạo thành mạch protein.\n- C: Chỉ 2 amino acid mới tạo thành đoạn rất nhỏ, chưa phải protein.\n- D: Protein bắt buộc phải cấu tạo từ amino acid."
+  },
+  {
+   "ma_cau": "K09090301007",
+   "nhom_id": "KNB00537",
+   "loai": "trac_nghiem",
+   "de": "Vì sao khi thiếu protein trong khẩu phần ăn kéo dài, cơ thể dễ bị suy dinh dưỡng, chậm phát triển?",
+   "lua_chon": [
+    "Vì protein là nguyên liệu xây dựng tế bào, mô",
+    "Vì protein là nguồn năng lượng duy nhất",
+    "Vì thiếu protein làm mất hết vitamin",
+    "Vì protein giúp tiêu hoá tinh bột nhanh hơn"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Protein là thành phần chính cấu tạo nên tế bào, mô, cơ bắp; thiếu protein kéo dài khiến cơ thể không đủ nguyên liệu xây dựng và sửa chữa các mô, dẫn đến suy dinh dưỡng, chậm phát triển.\n\nVì sao các phương án khác sai:\n- B: Chất béo, carbohydrate cũng cung cấp năng lượng.\n- C: Protein và vitamin là hai nhóm chất khác nhau.\n- D: Vai trò chính của protein là xây dựng tế bào, mô."
+  },
+  {
+   "ma_cau": "K09090301008",
+   "nhom_id": "KNB00537",
+   "loai": "trac_nghiem",
+   "de": "Trong các amino acid nối tiếp nhau tạo thành phân tử protein, các amino acid liên kết với nhau bằng loại liên kết nào?",
+   "lua_chon": [
+    "Liên kết ion",
+    "Liên kết peptide",
+    "Liên kết hydrogen giữa các phân tử nước",
+    "Liên kết kim loại"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Các amino acid nối tiếp nhau bằng liên kết peptide (giữa nhóm –COOH của amino acid này với nhóm –NH₂ của amino acid kia) để tạo thành chuỗi dài của phân tử protein.\n\nVì sao các phương án khác sai:\n- A: Liên kết ion đặc trưng cho hợp chất ion như muối, không phải liên kết giữa các amino acid trong protein.\n- C: Liên kết hydrogen giữa các phân tử nước không liên quan đến việc nối các amino acid thành chuỗi protein.\n- D: Liên kết kim loại đặc trưng cho các nguyên tử kim loại trong tinh thể kim loại, không liên quan đến protein."
+  },
+  {
+   "ma_cau": "K09090401001",
+   "nhom_id": "KNB00540",
+   "loai": "trac_nghiem",
+   "de": "Polymer là hợp chất có đặc điểm nào sau đây?",
+   "lua_chon": [
+    "Phân tử khối nhỏ, không lặp lại đơn vị nào",
+    "Chỉ do một loại nguyên tử tạo thành",
+    "Phân tử khối rất lớn, do nhiều mắt xích lặp lại",
+    "Luôn ở trạng thái khí trong điều kiện thường"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Polymer là hợp chất có phân tử khối rất lớn, do nhiều mắt xích liên kết lặp lại nhiều lần tạo thành.\n\nVì sao các phương án khác sai:\n- A: Polymer có phân tử khối rất lớn, luôn có đơn vị lặp lại, không nhỏ.\n- B: Đặc điểm chính của polymer là phân tử khối lớn, không phải chỉ một loại nguyên tử.\n- D: Nhiều polymer như PE, cao su ở trạng thái rắn, không phải khí."
+  },
+  {
+   "ma_cau": "K09090401002",
+   "nhom_id": "KNB00540",
+   "loai": "trac_nghiem",
+   "de": "Đơn vị nhỏ, lặp lại nhiều lần trong mạch polymer được gọi là gì?",
+   "lua_chon": [
+    "Nguyên tử",
+    "Phân tử nước",
+    "Ion",
+    "Mắt xích"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mắt xích là đơn vị cấu tạo lặp lại nhiều lần trong mạch polymer.\n\nVì sao các phương án khác sai:\n- A: Một nguyên tử đơn lẻ không phải đơn vị lặp lại đặc trưng của polymer.\n- B: Phân tử nước không phải đơn vị cấu tạo của polymer.\n- C: Ion không phải đơn vị lặp lại tạo mạch polymer."
+  },
+  {
+   "ma_cau": "K09090401003",
+   "nhom_id": "KNB00540",
+   "loai": "trac_nghiem",
+   "de": "Chất nào sau đây là monomer tạo thành polyethylene (PE)?",
+   "lua_chon": [
+    "Ethylene",
+    "Ethylic alcohol",
+    "Acetic acid",
+    "Glucose"
+   ],
+   "dap_an": "A",
+   "loi_giai": "PE được tạo thành từ phản ứng trùng hợp nhiều phân tử ethylene liên kết lại với nhau.\n\nVì sao các phương án khác sai:\n- B: Ethylic alcohol không có liên kết đôi để trùng hợp tạo PE.\n- C: Acetic acid không phải monomer tạo PE.\n- D: Glucose là đơn vị cấu tạo tinh bột, không tạo PE."
+  },
+  {
+   "ma_cau": "K09090401004",
+   "nhom_id": "KNB00540",
+   "loai": "trac_nghiem",
+   "de": "Phân tử khối của một polymer so với phân tử khối của monomer tạo thành nó là",
+   "lua_chon": [
+    "nhỏ hơn nhiều lần",
+    "lớn hơn rất nhiều lần",
+    "luôn bằng nhau",
+    "không xác định được"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Polymer do rất nhiều mắt xích monomer liên kết lặp lại nên phân tử khối lớn hơn monomer rất nhiều lần.\n\nVì sao các phương án khác sai:\n- A: Ngược lại, polymer luôn có phân tử khối lớn hơn monomer.\n- C: Polymer gồm nhiều mắt xích nên không bằng phân tử khối một monomer.\n- D: Phân tử khối polymer tính được, xấp xỉ số mắt xích nhân phân tử khối monomer."
+  },
+  {
+   "ma_cau": "K09090401005",
+   "nhom_id": "KNB00540",
+   "loai": "trac_nghiem",
+   "de": "PE (polyethylene) được tạo ra từ loại phản ứng nào?",
+   "lua_chon": [
+    "Phản ứng cháy",
+    "Phản ứng trung hoà",
+    "Phản ứng trùng hợp",
+    "Phản ứng thuỷ phân"
+   ],
+   "dap_an": "C",
+   "loi_giai": "PE được tạo ra từ phản ứng trùng hợp nhiều phân tử ethylene nối tiếp nhau.\n\nVì sao các phương án khác sai:\n- A: Phản ứng cháy phân huỷ chất, không tạo ra polymer.\n- B: Phản ứng trung hoà xảy ra giữa acid và base, không liên quan tạo PE.\n- D: Phản ứng thuỷ phân phá vỡ mạch polymer, không tạo ra PE."
+  },
+  {
+   "ma_cau": "K09090401006",
+   "nhom_id": "KNB00540",
+   "loai": "trac_nghiem",
+   "de": "Tinh bột, cellulose và protein đều có thể được xếp vào nhóm chất nào xét theo cấu trúc phân tử?",
+   "lua_chon": [
+    "Monomer",
+    "Chất vô cơ",
+    "Polymer",
+    "Nguyên tố hoá học"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Tinh bột, cellulose (từ mắt xích glucose) và protein (từ mắt xích amino acid) đều có phân tử khối rất lớn, gồm nhiều đơn vị nhỏ lặp lại nên đều thuộc nhóm polymer (polymer thiên nhiên).\n\nVì sao các phương án khác sai:\n- A: Monomer là đơn vị nhỏ tạo nên polymer, còn tinh bột, cellulose, protein là các phân tử lớn gồm nhiều đơn vị lặp lại.\n- B: Tinh bột, cellulose, protein đều là hợp chất hữu cơ, không phải chất vô cơ.\n- D: Đây đều là hợp chất phức tạp gồm nhiều nguyên tố, không phải nguyên tố hoá học đơn lẻ."
+  },
+  {
+   "ma_cau": "K09090401007",
+   "nhom_id": "KNB00540",
+   "loai": "trac_nghiem",
+   "de": "Polymer được chia thành mấy loại chính theo nguồn gốc?",
+   "lua_chon": [
+    "1 loại duy nhất",
+    "4 loại theo màu sắc",
+    "3 loại theo khối lượng phân tử",
+    "2 loại: thiên nhiên và tổng hợp"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Polymer được chia thành 2 loại chính: polymer thiên nhiên (có sẵn trong tự nhiên như tinh bột, cellulose, protein, cao su tự nhiên) và polymer tổng hợp (do con người tổng hợp như PE, PVC, nylon).\n\nVì sao các phương án khác sai:\n- A: Polymer có nhiều nguồn gốc khác nhau, không chỉ 1 loại duy nhất.\n- B: Polymer không được phân loại theo màu sắc.\n- C: Polymer không được phân loại chính theo khối lượng phân tử mà theo nguồn gốc hình thành."
+  },
+  {
+   "ma_cau": "K09090102001",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Phương trình hoá học của phản ứng xà phòng hoá chất béo (dạng tổng quát) là",
+   "lua_chon": [
+    "(RCOO)₃C₃H₅ + NaOH → C₃H₅(OH)₃ + RCOONa",
+    "(RCOO)₃C₃H₅ + 3NaOH → 3C₃H₅(OH)₃ + RCOONa",
+    "(RCOO)₃C₃H₅ + 3NaOH → C₃H₅(OH)₃ + 3RCOONa",
+    "(RCOO)₃C₃H₅ + 3NaOH → C₃H₅(OH)₃ + RCOONa"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ba nhóm ester bị thuỷ phân nên cần hệ số 3 cho NaOH và cho RCOONa.\n\nVì sao các phương án khác sai:\n- A: Thiếu hệ số 3, chưa cân bằng ba nhóm ester.\n- B: Hệ số 3 đặt sai vị trí, glycerol chỉ tạo ra 1 phân tử.\n- D: Thiếu hệ số 3 trước RCOONa nên chưa cân bằng."
+  },
+  {
+   "ma_cau": "K09090102002",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Trong phản ứng xà phòng hoá chất béo, sản phẩm thu được gồm",
+   "lua_chon": [
+    "Glycerol và acid béo",
+    "Nước và muối của acid béo",
+    "Glycerol và xà phòng tổng hợp",
+    "Glycerol và muối của acid béo"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chất béo tác dụng NaOH tạo glycerol và muối của acid béo (xà phòng).\n\nVì sao các phương án khác sai:\n- A: Sản phẩm là muối của acid béo, không phải acid béo tự do.\n- B: Phản ứng này không sinh ra nước.\n- C: Xà phòng tổng hợp là loại khác, ở đây là muối acid béo tự nhiên."
+  },
+  {
+   "ma_cau": "K09090102003",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Chất nào đóng vai trò tác nhân thuỷ phân chất béo trong phản ứng xà phòng hoá?",
+   "lua_chon": [
+    "Dung dịch NaOH",
+    "Nước cất",
+    "Dung dịch HCl",
+    "Ethylic alcohol"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Phản ứng xà phòng hoá cần môi trường kiềm (NaOH) để thuỷ phân chất béo.\n\nVì sao các phương án khác sai:\n- B: Nước cất không đủ mạnh để thuỷ phân chất béo.\n- C: HCl là acid, không gây phản ứng xà phòng hoá.\n- D: Ethylic alcohol không phải tác nhân thuỷ phân chất béo."
+  },
+  {
+   "ma_cau": "K09090102004",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Vì sao muối của acid béo tạo thành sau xà phòng hoá được gọi là xà phòng?",
+   "lua_chon": [
+    "Vì có màu trắng như xà phòng thật",
+    "Vì có khả năng làm sạch dầu mỡ",
+    "Vì được tạo ra bằng phản ứng cháy",
+    "Vì tan trong dầu mỡ, không tan trong nước"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Muối acid béo có phần kị nước và phần ưa nước, giúp làm sạch dầu mỡ.\n\nVì sao các phương án khác sai:\n- A: Màu sắc không quyết định tên gọi, tính tẩy rửa mới quyết định.\n- C: Xà phòng tạo bằng phản ứng xà phòng hoá, không phải phản ứng cháy.\n- D: Xà phòng tan cả trong nước nhờ nhóm COONa ưa nước."
+  },
+  {
+   "ma_cau": "K09090102005",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Trong phương trình xà phòng hoá, chất C₃H₅(OH)₃ tạo thành là",
+   "lua_chon": [
+    "Acid béo",
+    "Xà phòng",
+    "Glycerol",
+    "Chất béo dư"
+   ],
+   "dap_an": "C",
+   "loi_giai": "C₃H₅(OH)₃ chính là glycerol, sản phẩm phụ của phản ứng xà phòng hoá.\n\nVì sao các phương án khác sai:\n- A: Acid béo kí hiệu là RCOOH, không phải C₃H₅(OH)₃.\n- B: Xà phòng là muối RCOONa, không phải glycerol.\n- D: Nếu phản ứng vừa đủ thì không còn chất béo dư."
+  },
+  {
+   "ma_cau": "K09090102006",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Để sản xuất xà phòng, người ta cho chất béo tác dụng chất nào khi đun nóng?",
+   "lua_chon": [
+    "Nước cất",
+    "Dung dịch NaCl",
+    "Khí oxygen",
+    "Dung dịch NaOH đặc"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chất béo đun với NaOH đặc để xảy ra phản ứng xà phòng hoá.\n\nVì sao các phương án khác sai:\n- A: Nước không đủ mạnh để thuỷ phân chất béo.\n- B: NaCl là muối trung tính, không gây xà phòng hoá.\n- C: Oxygen dùng cho phản ứng cháy, không phải xà phòng hoá."
+  },
+  {
+   "ma_cau": "K09090102007",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Phản ứng xà phòng hoá chất béo cần điều kiện gì để xảy ra?",
+   "lua_chon": [
+    "Chiếu sáng ở nhiệt độ phòng",
+    "Xúc tác H₂SO₄ đặc, đun nóng",
+    "Áp suất rất cao, không cần nhiệt",
+    "Đun nóng với dung dịch kiềm (NaOH hoặc KOH)"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Phản ứng xà phòng hoá xảy ra khi đun nóng chất béo với dung dịch kiềm đặc (NaOH hoặc KOH), thuỷ phân chất béo tạo glycerol và xà phòng.\n\nVì sao các phương án khác sai:\n- A: Phản ứng xà phòng hoá không xảy ra chỉ nhờ ánh sáng; cần đun nóng với kiềm.\n- B: H₂SO₄ đặc là xúc tác của phản ứng ester hoá, không phải xà phòng hoá.\n- C: Phản ứng xà phòng hoá cần đun nóng, không cần áp suất cao."
+  },
+  {
+   "ma_cau": "K09090102008",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Nếu dùng KOH thay vì NaOH để xà phòng hoá chất béo, sản phẩm xà phòng tạo thành có gì khác?",
+   "lua_chon": [
+    "Là muối potassium của acid béo, thường mềm hơn xà phòng từ NaOH",
+    "Không tạo được xà phòng vì KOH không phản ứng với chất béo",
+    "Sản phẩm giống hệt khi dùng NaOH, không có gì khác",
+    "Không sinh ra glycerol như khi dùng NaOH"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khi xà phòng hoá bằng KOH, sản phẩm là muối potassium của acid béo (thường mềm, dễ tan hơn xà phòng natri), cùng với glycerol.\n\nVì sao các phương án khác sai:\n- B: KOH vẫn là kiềm mạnh, phản ứng được với chất béo tương tự NaOH.\n- C: Xà phòng từ KOH là muối potassium, khác với muối sodium khi dùng NaOH, tính chất (như độ mềm) cũng khác.\n- D: Glycerol vẫn được sinh ra dù dùng NaOH hay KOH, vì đây là phần gốc glycerol của chất béo."
+  },
+  {
+   "ma_cau": "K09090102009",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Trong phản ứng xà phòng hoá, vì sao cần dùng kiềm đặc và đun nóng thay vì kiềm loãng ở nhiệt độ thường?",
+   "lua_chon": [
+    "Để chất béo bay hơi hết trước khi phản ứng",
+    "Để phản ứng xảy ra nhanh và hoàn toàn hơn",
+    "Để glycerol tạo thành bị phân huỷ",
+    "Để xà phòng tạo thành có màu đẹp hơn"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Kiềm đặc và nhiệt độ cao giúp tăng tốc độ phản ứng thuỷ phân chất béo, làm phản ứng xà phòng hoá xảy ra nhanh và hoàn toàn hơn.\n\nVì sao các phương án khác sai:\n- A: Chất béo không bay hơi trong điều kiện phản ứng xà phòng hoá.\n- C: Glycerol tạo thành cần được giữ lại làm sản phẩm phụ, không phải bị phân huỷ.\n- D: Màu sắc không phải lí do dùng kiềm đặc, đun nóng; mục đích là tăng tốc độ và hiệu suất phản ứng."
+  },
+  {
+   "ma_cau": "K09090102010",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Vì sao sau xà phòng hoá, người ta thêm dung dịch NaCl đặc vào hỗn hợp?",
+   "lua_chon": [
+    "Để trung hoà lượng NaOH còn dư",
+    "Để giảm độ tan của xà phòng, giúp tách lớp",
+    "Để tạo phản ứng sinh thêm xà phòng",
+    "Để làm sạch màu của glycerol"
+   ],
+   "dap_an": "B",
+   "loi_giai": "NaCl đặc làm giảm độ tan của xà phòng, giúp xà phòng tách lớp để thu hồi.\n\nVì sao các phương án khác sai:\n- A: NaCl là muối trung tính, không trung hoà NaOH.\n- C: NaCl không tham gia phản ứng tạo thêm xà phòng.\n- D: NaCl không có tác dụng làm sạch màu glycerol."
+  },
+  {
+   "ma_cau": "K09090102011",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Phân tử xà phòng làm sạch được vết dầu mỡ vì lí do nào?",
+   "lua_chon": [
+    "Có tính acid mạnh hoà tan dầu mỡ",
+    "Có màu sắc hấp thụ vết bẩn",
+    "Có phần tan trong dầu mỡ, phần tan trong nước",
+    "Phản ứng hoá học phá vỡ dầu mỡ thành khí"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Xà phòng có gốc hydrocarbon tan trong dầu mỡ và nhóm COONa tan trong nước.\n\nVì sao các phương án khác sai:\n- A: Xà phòng có tính base yếu, không có tính acid.\n- B: Cơ chế làm sạch không liên quan màu sắc.\n- D: Xà phòng không phản ứng phá vỡ dầu mỡ mà chỉ phân tán."
+  },
+  {
+   "ma_cau": "K09090102012",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Vì sao xà phòng tan được trong nước dù có gốc hydrocarbon dài?",
+   "lua_chon": [
+    "Vì nhóm COONa phân cực, tương tác với nước",
+    "Vì toàn bộ phân tử xà phòng đều phân cực",
+    "Vì gốc hydrocarbon tự phân li trong nước",
+    "Vì xà phòng phản ứng với nước tạo chất mới"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nhóm COONa phân cực giúp phân tử xà phòng phân tán được trong nước.\n\nVì sao các phương án khác sai:\n- B: Chỉ nhóm COONa phân cực, gốc hydrocarbon không phân cực.\n- C: Gốc hydrocarbon không phân li trong nước.\n- D: Xà phòng hoà tan vật lí, không phản ứng với nước."
+  },
+  {
+   "ma_cau": "K09090102013",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Khi giặt vết dầu ăn bằng nước xà phòng, vai trò của xà phòng là gì?",
+   "lua_chon": [
+    "Đốt cháy dầu ăn thành khí CO₂",
+    "Trung hoà dầu ăn bằng phản ứng acid–base",
+    "Làm bay hơi dầu ăn nhanh hơn",
+    "Nhũ hoá, phân tán dầu ăn vào nước"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Xà phòng nhũ hoá dầu ăn thành hạt nhỏ phân tán trong nước để rửa trôi.\n\nVì sao các phương án khác sai:\n- A: Xà phòng không đốt cháy dầu ăn.\n- B: Xà phòng có tính base yếu, không trung hoà bằng acid–base.\n- C: Xà phòng không làm bay hơi dầu ăn."
+  },
+  {
+   "ma_cau": "K09090102014",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Ngoài xà phòng, phản ứng xà phòng hoá còn tạo sản phẩm phụ dùng trong mỹ phẩm là",
+   "lua_chon": [
+    "Ethylic alcohol",
+    "Glycerol",
+    "Acetic acid",
+    "Formaldehyde"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Glycerol là sản phẩm phụ của xà phòng hoá, dùng làm chất giữ ẩm trong mỹ phẩm.\n\nVì sao các phương án khác sai:\n- A: Ethylic alcohol không phải sản phẩm của xà phòng hoá.\n- C: Acetic acid điều chế bằng lên men giấm, không liên quan xà phòng hoá.\n- D: Formaldehyde không phải sản phẩm của xà phòng hoá chất béo."
+  },
+  {
+   "ma_cau": "K09090102015",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Xà phòng thường được sản xuất từ loại chất béo nào trong công nghiệp?",
+   "lua_chon": [
+    "Cả dầu thực vật và mỡ động vật",
+    "Mỡ động vật, không dùng dầu thực vật",
+    "Dầu thực vật, không dùng mỡ động vật",
+    "Dầu khoáng lấy từ dầu mỏ"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Cả dầu thực vật (dầu dừa, dầu cọ...) và mỡ động vật đều là chất béo, có thể dùng làm nguyên liệu sản xuất xà phòng qua phản ứng xà phòng hoá.\n\nVì sao các phương án khác sai:\n- B: Xà phòng có thể sản xuất từ cả mỡ động vật và dầu thực vật, không chỉ riêng mỡ động vật.\n- C: Xà phòng có thể sản xuất từ cả dầu thực vật và mỡ động vật, không chỉ riêng dầu thực vật.\n- D: Dầu khoáng (từ dầu mỏ) không phải chất béo (ester của glycerol), không dùng để xà phòng hoá."
+  },
+  {
+   "ma_cau": "K09090102016",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Xà phòng hoạt động kém hiệu quả hơn trong nước cứng (chứa nhiều ion Ca₂+, Mg₂+) vì lí do nào?",
+   "lua_chon": [
+    "Ion Ca₂+, Mg₂+ làm xà phòng bay hơi nhanh hơn",
+    "Ca₂+, Mg₂+ tạo kết tủa với xà phòng, giảm làm sạch",
+    "Nước cứng làm xà phòng chuyển thành dầu mỡ",
+    "Ion Ca₂+, Mg₂+ trung hoà tính base của xà phòng"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ion Ca₂+, Mg₂+ trong nước cứng phản ứng với muối acid béo (xà phòng) tạo kết tủa không tan, làm giảm lượng xà phòng có tác dụng làm sạch, gây lãng phí.\n\nVì sao các phương án khác sai:\n- A: Ion kim loại trong nước cứng không làm xà phòng bay hơi.\n- C: Nước cứng không làm xà phòng chuyển hoá thành dầu mỡ; đây không phải cơ chế đúng.\n- D: Vấn đề chính là tạo kết tủa với ion kim loại, không phải phản ứng trung hoà tính base."
+  },
+  {
+   "ma_cau": "K09090102017",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Ưu điểm của xà phòng làm từ chất béo so với chất tẩy rửa tổng hợp (như bột giặt hoá học) là gì?",
+   "lua_chon": [
+    "Xà phòng luôn làm sạch mạnh hơn trong mọi loại nước",
+    "Xà phòng không bao giờ tạo cặn với nước cứng",
+    "Xà phòng có nguồn gốc tự nhiên, dễ phân huỷ sinh học hơn",
+    "Xà phòng có giá thành luôn cao hơn nên chất lượng tốt hơn"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Xà phòng có nguồn gốc từ chất béo tự nhiên nên dễ bị vi sinh vật phân huỷ trong môi trường hơn so với nhiều chất tẩy rửa tổng hợp, thân thiện với môi trường hơn.\n\nVì sao các phương án khác sai:\n- A: Xà phòng lại hoạt động kém hơn trong nước cứng so với một số chất tẩy rửa tổng hợp.\n- B: Xà phòng vẫn tạo cặn (kết tủa) với ion Ca₂+, Mg₂+ trong nước cứng.\n- D: Giá thành không quyết định chất lượng làm sạch; đây không phải ưu điểm đúng về mặt hoá học/môi trường."
+  },
+  {
+   "ma_cau": "K09090102018",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Một bạn đề xuất: để tẩy sạch vết dầu ăn dính trên đĩa, chỉ cần rửa bằng nước lã không cần xà phòng, vì dầu ăn tan tốt trong nước. Nhận xét đúng về đề xuất này là",
+   "lua_chon": [
+    "Đúng, vì dầu ăn tan trong nước như đường, muối",
+    "Sai, vì phải dùng nước thật nóng thì dầu mới tan",
+    "Đúng với dầu thực vật, nhưng sai với mỡ động vật",
+    "Sai, vì dầu ăn không tan trong nước, cần xà phòng"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chất béo (dầu ăn) không tan trong nước dù ở nhiệt độ nào, chỉ tan trong dung môi hữu cơ; xà phòng có khả năng nhũ hoá giúp phân tán và làm sạch vết dầu mỡ.\n\nVì sao các phương án khác sai:\n- A: Chất béo không tan trong nước.\n- B: Chất béo không tan trong nước dù nước nóng.\n- C: Cả dầu thực vật và mỡ động vật đều là chất béo, không tan trong nước."
+  },
+  {
+   "ma_cau": "K09090102019",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Một bạn đề xuất: xà phòng làm sạch được vết dầu mỡ vì phân tử xà phòng có đầu ưa nước tan trong nước và đuôi kị nước bám vào dầu mỡ, kéo dầu mỡ phân tán vào nước. Nhận xét đúng về đề xuất này là",
+   "lua_chon": [
+    "Sai, vì xà phòng làm dầu mỡ bay hơi hết",
+    "Đúng, xà phòng kéo dầu mỡ phân tán vào nước như vậy",
+    "Sai, vì xà phòng phản ứng với dầu tạo chất không màu",
+    "Đúng, nhưng chỉ đầu ưa nước mới có tác dụng"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Phân tử xà phòng gồm đầu ưa nước (nhóm COO⁻Na⁺) tan trong nước và đuôi kị nước (gốc hydrocarbon dài) bám vào dầu mỡ; nhờ đó xà phòng kéo các hạt dầu mỡ phân tán vào nước, tạo thành nhũ tương rồi bị rửa trôi.\n\nVì sao các phương án khác sai:\n- A: Dầu mỡ không bay hơi; xà phòng kéo dầu mỡ phân tán vào nước.\n- C: Xà phòng làm sạch nhờ bám và kéo dầu mỡ vào nước, không phải nhờ phản ứng hoá học.\n- D: Đuôi kị nước bám vào dầu mỡ, cũng cần cho việc làm sạch."
+  },
+  {
+   "ma_cau": "K09090102020",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Một bạn đề xuất: xà phòng có gốc hydrocarbon dài (kị nước) nên xà phòng cũng không tan trong nước, giống như dầu mỡ. Nhận xét đúng về đề xuất này là",
+   "lua_chon": [
+    "Sai, vì đầu ưa nước giúp xà phòng vẫn tan trong nước",
+    "Đúng, vì gốc hydrocarbon dài quyết định độ tan",
+    "Sai, vì phân tử xà phòng không có phần kị nước",
+    "Đúng, vì xà phòng không tan nên mới bám được dầu"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Dù có gốc hydrocarbon dài kị nước, phân tử xà phòng còn có đầu ưa nước (nhóm COONa) nên vẫn tan tốt trong nước.\n\nVì sao các phương án khác sai:\n- B: Phân tử xà phòng còn có đầu ưa nước nên vẫn tan trong nước.\n- C: Phân tử xà phòng có đuôi hydrocarbon dài kị nước.\n- D: Xà phòng tan trong nước; phần đuôi kị nước mới là phần bám dầu."
+  },
+  {
+   "ma_cau": "K09090102021",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Một bạn đề xuất: sau phản ứng xà phòng hoá, cho thêm dung dịch NaCl đặc vào hỗn hợp để làm giảm độ tan của xà phòng, giúp tách xà phòng ra khỏi glycerol và nước. Nhận xét đúng về đề xuất này là",
+   "lua_chon": [
+    "Sai, vì NaCl phản ứng với xà phòng tạo kết tủa khác",
+    "Sai, vì phải dùng nước cất để tách xà phòng",
+    "Đúng, vì NaCl đặc làm xà phòng ít tan, tách ra",
+    "Đúng, vì NaCl phản ứng với glycerol tạo xà phòng"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Thêm dung dịch NaCl đặc làm giảm độ tan của xà phòng trong nước, khiến xà phòng tách ra khỏi dung dịch, dễ tách riêng khỏi glycerol và nước còn lại.\n\nVì sao các phương án khác sai:\n- A: NaCl không phản ứng với xà phòng, chỉ làm giảm độ tan của xà phòng.\n- B: Thêm nước cất làm xà phòng tan thêm, khó tách hơn.\n- D: NaCl không phản ứng với glycerol; xà phòng tạo thành từ chất béo và NaOH."
+  },
+  {
+   "ma_cau": "K09090102022",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Một bạn cho rằng: muối sodium của acid béo tạo thành sau phản ứng xà phòng hoá được gọi là xà phòng chỉ vì nó có màu trắng giống bột giặt. Nhận xét đúng về ý kiến này là",
+   "lua_chon": [
+    "Sai, vì muối của acid béo là thành phần chính của xà phòng",
+    "Đúng, vì màu trắng là dấu hiệu nhận biết xà phòng",
+    "Sai, vì muối của acid béo không phải là xà phòng",
+    "Sai, vì xà phòng là muối của glycerol"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Muối sodium (hoặc potassium) của acid béo chính là thành phần chính của xà phòng; tên gọi xuất phát từ bản chất hoá học, không phải từ màu sắc.\n\nVì sao các phương án khác sai:\n- B: Màu sắc không quyết định một chất có phải xà phòng hay không.\n- C: Muối sodium, potassium của acid béo chính là xà phòng.\n- D: Glycerol là sản phẩm phụ; xà phòng là muối của acid béo."
+  },
+  {
+   "ma_cau": "K09090102023",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Một bạn đề xuất: để rửa sạch chảo dính đầy mỡ, chỉ cần ngâm chảo trong nước nóng thật lâu, không cần dùng xà phòng hay nước rửa chén. Nhận xét đúng về đề xuất này là",
+   "lua_chon": [
+    "Đúng, vì nước nóng làm mỡ tan hết",
+    "Đúng, vì nước nóng phân huỷ hết mỡ",
+    "Sai, vì phải dùng nước đá mới sạch mỡ",
+    "Sai, vì mỡ không tan trong nước dù nước nóng"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chất béo (mỡ) không tan trong nước dù ở nhiệt độ nào; cần dùng xà phòng hoặc nước rửa chén có khả năng nhũ hoá để phân tán mỡ vào nước và rửa trôi.\n\nVì sao các phương án khác sai:\n- A: Mỡ không tan trong nước dù nước nóng.\n- B: Nước nóng không phân huỷ được mỡ.\n- C: Nước lạnh làm mỡ đông lại, càng khó rửa."
+  },
+  {
+   "ma_cau": "K09090102024",
+   "nhom_id": "KNB00530",
+   "loai": "trac_nghiem",
+   "de": "Một bạn đề xuất: có thể thay thế hoàn toàn xà phòng bằng cách chỉ dùng nhiều nước để xối rửa mạnh, vì lực nước cũng đủ đẩy trôi dầu mỡ như xà phòng. Nhận xét đúng về đề xuất này là",
+   "lua_chon": [
+    "Sai, vì nước không kéo dầu mỡ phân tán như xà phòng",
+    "Đúng, vì lực nước mạnh có tác dụng như xà phòng",
+    "Đúng, nhưng chỉ với dầu thực vật",
+    "Sai, vì phải xối bằng nước muối mới sạch"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nước đơn thuần không có khả năng nhũ hoá (kéo các hạt dầu mỡ phân tán vào nước) như xà phòng, nên chỉ xối nước mạnh không thể làm sạch dầu mỡ hiệu quả như khi dùng xà phòng.\n\nVì sao các phương án khác sai:\n- B: Lực nước không làm dầu mỡ phân tán vào nước.\n- C: Dầu thực vật cũng không tan trong nước.\n- D: Nước muối cũng không hoà tan được dầu mỡ."
+  },
+  {
+   "ma_cau": "K09090202001",
+   "nhom_id": "KNB00534",
+   "loai": "trac_nghiem",
+   "de": "Sản phẩm của phản ứng lên men rượu từ glucose là gì?",
+   "lua_chon": [
+    "Acetic acid và nước",
+    "Ethylic alcohol và carbon dioxide",
+    "Ethylic alcohol và oxygen",
+    "Saccharose và nước"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Glucose lên men rượu tạo ethylic alcohol và khí CO₂: C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂.\n\nVì sao các phương án khác sai:\n- A: Lên men rượu không tạo acetic acid, chỉ tạo ethylic alcohol và CO₂.\n- C: Lên men rượu không sinh ra oxygen, mà sinh khí CO₂.\n- D: Lên men rượu không tạo lại saccharose, glucose bị chuyển hoá hoàn toàn."
+  },
+  {
+   "ma_cau": "K09090202002",
+   "nhom_id": "KNB00534",
+   "loai": "trac_nghiem",
+   "de": "Phương trình hoá học nào biểu diễn đúng phản ứng lên men rượu của glucose?",
+   "lua_chon": [
+    "C₆H₁₂O₆ → C₂H₅OH + CO₂",
+    "C₆H₁₂O₆ → 2C₂H₅OH + CO₂",
+    "C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂",
+    "C₆H₁₂O₆ + O₂ → 2C₂H₅OH + 2CO₂"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Cân bằng nguyên tử hai vế: 6C = 4C + 2C, 12H = 12H, 6O = 2O + 4O.\n\nVì sao các phương án khác sai:\n- A: Chưa cân bằng nguyên tử C, H, O nếu thiếu hệ số 2 trước C₂H₅OH và CO₂.\n- B: Thiếu hệ số 2 trước CO₂ nên chưa cân bằng nguyên tử O.\n- D: Lên men rượu không cần thêm oxygen, glucose tự chuyển hoá."
+  },
+  {
+   "ma_cau": "K09090202003",
+   "nhom_id": "KNB00534",
+   "loai": "trac_nghiem",
+   "de": "Nhỏ dung dịch glucose vào dung dịch AgNO₃ trong NH₃ rồi đun nhẹ. Hiện tượng quan sát được là",
+   "lua_chon": [
+    "Không có hiện tượng gì",
+    "Có lớp bạc sáng bám thành ống nghiệm",
+    "Có khí không màu thoát ra",
+    "Dung dịch chuyển màu xanh tím"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Glucose có phản ứng tráng bạc: tác dụng với dung dịch AgNO₃ trong NH₃ khi đun nhẹ tạo ra bạc kim loại bám vào thành ống nghiệm.\n\nVì sao các phương án khác sai:\n- A: Glucose có phản ứng với dung dịch AgNO₃ trong NH₃ khi đun nhẹ.\n- C: Phản ứng tráng bạc tạo bạc kim loại, không sinh khí.\n- D: Màu xanh tím là hiện tượng của iodine với tinh bột."
+  },
+  {
+   "ma_cau": "K09090202004",
+   "nhom_id": "KNB00534",
+   "loai": "trac_nghiem",
+   "de": "Phản ứng tráng bạc của glucose được ứng dụng để làm gì?",
+   "lua_chon": [
+    "Phủ lớp bạc sáng lên ruột phích và gương",
+    "Sản xuất xà phòng giặt rửa",
+    "Sản xuất nhựa PE dùng làm túi",
+    "Pha chế dịch truyền dùng trong y tế"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Glucose khử được bạc từ dung dịch AgNO₃ trong NH₃, tạo lớp bạc sáng; ứng dụng để tráng ruột phích, tráng gương.\n\nVì sao các phương án khác sai:\n- B: Xà phòng được sản xuất từ phản ứng xà phòng hoá chất béo.\n- C: Nhựa PE được sản xuất bằng phản ứng trùng hợp ethylene.\n- D: Dịch truyền dùng chính glucose, không dựa vào phản ứng tráng bạc."
+  },
+  {
+   "ma_cau": "K09090202005",
+   "nhom_id": "KNB00534",
+   "loai": "trac_nghiem",
+   "de": "Phản ứng tráng bạc của glucose xảy ra được là nhờ glucose có nhóm chức nào trong phân tử?",
+   "lua_chon": [
+    "Nhóm –CHO (aldehyde)",
+    "Nhóm –OH",
+    "Nhóm –COOH",
+    "Nhóm ester"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Glucose có nhóm chức –CHO (aldehyde) trong mạch hở, nhóm này bị oxi hoá bởi AgNO₃/NH₃, khử Ag+ thành Ag kim loại (phản ứng tráng bạc).\n\nVì sao các phương án khác sai:\n- B: Nhóm –OH có nhiều trong glucose nhưng không phải nhóm gây ra phản ứng tráng bạc.\n- C: Glucose không có nhóm –COOH (carboxyl).\n- D: Glucose không có nhóm ester trong phân tử."
+  },
+  {
+   "ma_cau": "K09090202006",
+   "nhom_id": "KNB00534",
+   "loai": "trac_nghiem",
+   "de": "Phương trình hoá học nào sau đây viết đúng khi glucose tráng bạc (dạng đơn giản hoá)?",
+   "lua_chon": [
+    "C₆H₁₂O₆ + 2AgNO₃ → C₆H₁₂O₇ + 2Ag",
+    "C₆H₁₂O₆ + Ag₂O →(NH₃) C₆H₁₂O₇ + 2Ag",
+    "C₆H₁₂O₆ + Ag₂O → C₆H₁₂O₆ + 2Ag",
+    "2C₆H₁₂O₆ + Ag₂O → 2C₆H₁₂O₇ + Ag"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Nhóm –CHO của glucose bị oxi hoá bởi Ag₂O (trong môi trường NH₃) thành nhóm –COOH, đồng thời giải phóng Ag kim loại: C₆H₁₂O₆ + Ag₂O →(NH₃) C₆H₁₂O₇ + 2Ag.\n\nVì sao các phương án khác sai:\n- A: Thiếu NH₃ và các sản phẩm phụ cần thiết; dạng đơn giản hoá cần ghi Ag₂O, không phải AgNO₃ trực tiếp.\n- C: Công thức sản phẩm hữu cơ phải thay đổi từ C₆H₁₂O₆ (có –CHO) thành C₆H₁₂O₇ (có –COOH) do bị oxi hoá, không được giữ nguyên C₆H₁₂O₆.\n- D: Hệ số Ag phải là 2 ứng với 1 glucose, không cân bằng nếu để hệ số 1 Ag với 2 glucose."
+  },
+  {
+   "ma_cau": "K09090202007",
+   "nhom_id": "KNB00534",
+   "loai": "trac_nghiem",
+   "de": "Thuỷ phân saccharose (xúc tác acid, đun nóng) tạo ra sản phẩm nào?",
+   "lua_chon": [
+    "Chỉ glucose",
+    "Glucose và fructose",
+    "Glucose và tinh bột",
+    "Ethylic alcohol và CO₂"
+   ],
+   "dap_an": "B",
+   "loi_giai": "C₁₂H₂₂O₁₁ + H₂O → C₆H₁₂O₆ (glucose) + C₆H₁₂O₆ (fructose).\n\nVì sao các phương án khác sai:\n- A: Thuỷ phân saccharose tạo hai loại đường đơn, không chỉ có glucose.\n- C: Thuỷ phân saccharose không tạo tinh bột, phân tử lớn hơn saccharose.\n- D: Đó là sản phẩm lên men rượu, không phải thuỷ phân saccharose."
+  },
+  {
+   "ma_cau": "K09090202008",
+   "nhom_id": "KNB00534",
+   "loai": "trac_nghiem",
+   "de": "Thuỷ phân tinh bột (xúc tác acid, đun nóng) đến cùng tạo ra sản phẩm nào?",
+   "lua_chon": [
+    "Saccharose",
+    "Cellulose",
+    "Glucose",
+    "Ethylic alcohol"
+   ],
+   "dap_an": "C",
+   "loi_giai": "(C₆H₁₀O₅)n + nH₂O → nC₆H₁₂O₆ (glucose).\n\nVì sao các phương án khác sai:\n- A: Saccharose có phân tử nhỏ hơn tinh bột nhưng không phải sản phẩm thuỷ phân tinh bột.\n- B: Cellulose là polysaccharide khác, không sinh ra khi thuỷ phân tinh bột.\n- D: Ethylic alcohol là sản phẩm của phản ứng lên men, không phải thuỷ phân."
+  },
+  {
+   "ma_cau": "K09090202009",
+   "nhom_id": "KNB00534",
+   "loai": "trac_nghiem",
+   "de": "Phương trình nào biểu diễn đúng phản ứng thuỷ phân tinh bột?",
+   "lua_chon": [
+    "(C₆H₁₀O₅)n + H₂O → C₆H₁₂O₆",
+    "(C₆H₁₀O₅)n → nC₆H₁₂O₆",
+    "(C₆H₁₀O₅)n + nH₂O → nC₁₂H₂₂O₁₁",
+    "(C₆H₁₀O₅)n + nH₂O → nC₆H₁₂O₆"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Cân bằng theo từng mắt xích: C₆H₁₀O₅ + H₂O → C₆H₁₂O₆, nhân hệ số n cho cả dãy.\n\nVì sao các phương án khác sai:\n- A: Thiếu hệ số n trước H₂O nên chưa cân bằng số mắt xích.\n- B: Thiếu H₂O ở vế trái, phản ứng thuỷ phân phải có nước tham gia.\n- C: Sản phẩm thuỷ phân tinh bột là glucose, không phải saccharose."
+  },
+  {
+   "ma_cau": "K09090202010",
+   "nhom_id": "KNB00534",
+   "loai": "trac_nghiem",
+   "de": "Cellulose bị thuỷ phân (xúc tác acid, đun nóng) tạo ra sản phẩm nào?",
+   "lua_chon": [
+    "Glucose",
+    "Saccharose",
+    "Tinh bột",
+    "Ethylic alcohol"
+   ],
+   "dap_an": "A",
+   "loi_giai": "(C₆H₁₀O₅)n + nH₂O → nC₆H₁₂O₆; cellulose thuỷ phân đến cùng cũng tạo glucose.\n\nVì sao các phương án khác sai:\n- B: Saccharose không phải sản phẩm thuỷ phân của cellulose.\n- C: Tinh bột là polysaccharide khác, không sinh ra từ thuỷ phân cellulose.\n- D: Ethylic alcohol chỉ hình thành qua lên men glucose, không phải thuỷ phân."
+  },
+  {
+   "ma_cau": "K09090202011",
+   "nhom_id": "KNB00534",
+   "loai": "trac_nghiem",
+   "de": "Vì sao khi nhai kĩ cơm (chứa tinh bột) trong miệng một lúc lâu, ta cảm nhận được vị ngọt?",
+   "lua_chon": [
+    "Vì tinh bột tự chuyển thành muối ngọt",
+    "Vì nước bọt có sẵn vị ngọt",
+    "Vì enzyme nước bọt thuỷ phân tinh bột thành đường",
+    "Vì nhai kĩ làm tinh bột cháy nhẹ tạo vị ngọt"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Nước bọt chứa enzyme (amylase) có khả năng thuỷ phân một phần tinh bột thành các phân tử đường mạch ngắn hơn (như glucose), tạo cảm giác vị ngọt khi nhai kĩ.\n\nVì sao các phương án khác sai:\n- A: Tinh bột không chuyển thành muối.\n- B: Nước bọt không có vị ngọt; vị ngọt do đường tạo thành.\n- D: Trong miệng không có sự cháy."
+  },
+  {
+   "ma_cau": "K09090202012",
+   "nhom_id": "KNB00534",
+   "loai": "trac_nghiem",
+   "de": "Điều kiện cần thiết để phản ứng thuỷ phân tinh bột hoặc saccharose (trong phòng thí nghiệm) xảy ra là gì?",
+   "lua_chon": [
+    "Chỉ cần trộn với nước ở nhiệt độ phòng",
+    "Chỉ cần chiếu ánh sáng mạnh",
+    "Cần base mạnh, không cần nước",
+    "Có nước, xúc tác acid hoặc enzyme, đun nóng"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Phản ứng thuỷ phân tinh bột hoặc saccharose cần có nước tham gia, xúc tác là acid hoặc enzyme, thường cần đun nóng để phản ứng xảy ra nhanh và hoàn toàn hơn.\n\nVì sao các phương án khác sai:\n- A: Nếu không có xúc tác (acid hoặc enzyme), phản ứng thuỷ phân xảy ra rất chậm hoặc không đáng kể ở nhiệt độ phòng.\n- B: Ánh sáng không phải điều kiện chính cho phản ứng thuỷ phân; cần có nước và xúc tác.\n- C: Phản ứng thuỷ phân cần môi trường acid (hoặc enzyme), không phải base mạnh; và bắt buộc phải có nước tham gia."
+  },
+  {
+   "ma_cau": "K09090202013",
+   "nhom_id": "KNB00534",
+   "loai": "trac_nghiem",
+   "de": "Nhỏ dung dịch iodine vào hồ tinh bột, hiện tượng quan sát được là gì?",
+   "lua_chon": [
+    "Không đổi màu",
+    "Xuất hiện màu xanh tím",
+    "Xuất hiện màu đỏ",
+    "Có khí thoát ra"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Tinh bột kết hợp với iodine tạo phức có màu xanh tím đặc trưng.\n\nVì sao các phương án khác sai:\n- A: Tinh bột có phản ứng đặc trưng làm đổi màu khi gặp iodine.\n- C: Màu tạo thành với iodine là xanh tím, không phải màu đỏ.\n- D: Phản ứng màu với iodine không sinh khí."
+  },
+  {
+   "ma_cau": "K09090202014",
+   "nhom_id": "KNB00534",
+   "loai": "trac_nghiem",
+   "de": "Phản ứng màu với dung dịch iodine dùng để nhận biết chất nào?",
+   "lua_chon": [
+    "Glucose",
+    "Saccharose",
+    "Tinh bột",
+    "Cellulose"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Chỉ tinh bột phản ứng với iodine cho màu xanh tím, dùng để nhận biết tinh bột.\n\nVì sao các phương án khác sai:\n- A: Glucose không có phản ứng màu đặc trưng với iodine.\n- B: Saccharose không có phản ứng màu đặc trưng với iodine.\n- D: Cellulose không tạo màu xanh tím đặc trưng với iodine như tinh bột."
+  },
+  {
+   "ma_cau": "K09090202015",
+   "nhom_id": "KNB00534",
+   "loai": "trac_nghiem",
+   "de": "Đun nóng hồ tinh bột đã có màu xanh tím với iodine thì hiện tượng gì xảy ra?",
+   "lua_chon": [
+    "Màu xanh tím không đổi khi đun nóng",
+    "Màu chuyển thành màu đỏ khi đun nóng",
+    "Có kết tủa trắng xuất hiện",
+    "Màu xanh tím biến mất, xuất hiện lại khi để nguội"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đun nóng làm phức tinh bột–iodine bị phá vỡ nên mất màu; để nguội phức hình thành lại nên màu xuất hiện lại.\n\nVì sao các phương án khác sai:\n- A: Trên thực tế màu bị mất khi đun nóng do phức bị phá vỡ.\n- B: Màu không chuyển thành đỏ mà mất màu khi đun nóng.\n- C: Hiện tượng là mất màu, không phải tạo kết tủa trắng."
+  },
+  {
+   "ma_cau": "K09090202016",
+   "nhom_id": "KNB00534",
+   "loai": "trac_nghiem",
+   "de": "Nhỏ vài giọt dung dịch iodine vào hạt cơm, hiện tượng gì xác nhận cơm có tinh bột?",
+   "lua_chon": [
+    "Hạt cơm chuyển màu xanh tím",
+    "Hạt cơm chuyển màu vàng nhạt hơn",
+    "Hạt cơm sủi bọt khí",
+    "Hạt cơm tan hết trong dung dịch"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tinh bột trong cơm phản ứng với iodine tạo màu xanh tím, xác nhận có tinh bột.\n\nVì sao các phương án khác sai:\n- B: Dấu hiệu có tinh bột là chuyển xanh tím, không phải nhạt màu hơn.\n- C: Phản ứng màu không sinh khí.\n- D: Tinh bột không tan hết trong dung dịch iodine, chỉ đổi màu."
+  },
+  {
+   "ma_cau": "K09090202017",
+   "nhom_id": "KNB00534",
+   "loai": "trac_nghiem",
+   "de": "Dung dịch iodine có thể dùng để phân biệt tinh bột với chất nào sau đây?",
+   "lua_chon": [
+    "Cellulose",
+    "Hồ tinh bột nấu từ gạo",
+    "Bột mì",
+    "Khoai tây nghiền"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Cellulose không có phản ứng màu đặc trưng với iodine như tinh bột nên dung dịch iodine giúp phân biệt tinh bột với cellulose.\n\nVì sao các phương án khác sai:\n- B: Hồ tinh bột cũng cho màu xanh tím với iodine như tinh bột.\n- C: Bột mì chứa nhiều tinh bột nên cũng cho màu xanh tím.\n- D: Khoai tây chứa nhiều tinh bột nên cũng cho màu xanh tím."
+  },
+  {
+   "ma_cau": "K09090202018",
+   "nhom_id": "KNB00534",
+   "loai": "trac_nghiem",
+   "de": "Vì sao khi bôi cồn iodine (thuốc sát trùng) lên bề mặt khoai tây sống bị cắt đôi, ta thấy xuất hiện màu xanh tím?",
+   "lua_chon": [
+    "Vì khoai tây chứa glucose, phản ứng với iodine tạo màu xanh tím",
+    "Vì khoai tây chứa nhiều tinh bột, phản ứng với iodine tạo phức màu xanh tím",
+    "Vì cồn iodine phản ứng với nước trong khoai tây",
+    "Vì khoai tây bị oxi hoá bởi không khí tạo màu xanh tím"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khoai tây chứa nhiều tinh bột; tinh bột phản ứng với iodine trong cồn iodine tạo phức có màu xanh tím đặc trưng, đây là cách nhận biết tinh bột phổ biến.\n\nVì sao các phương án khác sai:\n- A: Glucose không có phản ứng màu đặc trưng với iodine; hiện tượng này là do tinh bột.\n- C: Cồn iodine không phản ứng với nước để tạo màu xanh tím; đó là phản ứng đặc trưng với tinh bột.\n- D: Hiện tượng oxi hoá bởi không khí (khoai tây thâm) cho màu nâu, khác với màu xanh tím do phản ứng với iodine."
+  },
+  {
+   "ma_cau": "K09090103001",
+   "nhom_id": "KNB00531",
+   "loai": "trac_nghiem",
+   "de": "Cho 890 gam chất béo (M = 890 g/mol) phản ứng vừa đủ với NaOH theo tỉ lệ mol chất béo : NaOH = 1 : 3. Tính khối lượng NaOH đã phản ứng.",
+   "lua_chon": [
+    "40 gam",
+    "120 gam",
+    "180 gam",
+    "80 gam"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n(chất béo) = 890 : 890 = 1 mol; n(NaOH) = 3 × 1 = 3 mol; m(NaOH) = 3 × 40 = 120 gam.\n\nVì sao các phương án khác sai:\n- A: Quên hệ số 3, tính theo tỉ lệ 1 : 1 nên ra 40 gam.\n- C: Dùng nhầm M(NaOH) = 60 g/mol thay vì 40 g/mol nên ra 180 gam.\n- D: Dùng nhầm hệ số NaOH là 2 thay vì 3 nên ra 80 gam."
+  },
+  {
+   "ma_cau": "K09090103002",
+   "nhom_id": "KNB00531",
+   "loai": "trac_nghiem",
+   "de": "Cho 1780 gam chất béo (M = 890 g/mol) phản ứng vừa đủ với NaOH theo tỉ lệ mol chất béo : glycerol = 1 : 1. Tính khối lượng glycerol tạo thành.",
+   "lua_chon": [
+    "552 gam",
+    "180 gam",
+    "92 gam",
+    "184 gam"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(chất béo) = 1780 : 890 = 2 mol; n(glycerol) = 2 mol; m(glycerol) = 2 × 92 = 184 gam.\n\nVì sao các phương án khác sai:\n- A: Nhầm lấy hệ số 3 (của NaOH) cho glycerol nên ra 552 gam.\n- B: Dùng nhầm M(glycerol) = 90 g/mol nên ra 180 gam.\n- C: Quên tính đúng số mol, dùng n = 1 nên ra 92 gam."
+  },
+  {
+   "ma_cau": "K09090103003",
+   "nhom_id": "KNB00531",
+   "loai": "trac_nghiem",
+   "de": "Cho 3560 gam chất béo (M = 890 g/mol) phản ứng vừa đủ với NaOH theo tỉ lệ mol chất béo : NaOH = 1 : 3. Tính khối lượng NaOH đã phản ứng.",
+   "lua_chon": [
+    "480 gam",
+    "160 gam",
+    "540 gam",
+    "320 gam"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n(chất béo) = 3560 : 890 = 4 mol; n(NaOH) = 3 × 4 = 12 mol; m(NaOH) = 12 × 40 = 480 gam.\n\nVì sao các phương án khác sai:\n- B: Quên hệ số 3, tính theo tỉ lệ 1 : 1 nên ra 160 gam.\n- C: Dùng nhầm M(NaOH) = 45 g/mol nên ra 540 gam.\n- D: Dùng nhầm hệ số NaOH là 2 thay vì 3 nên ra 320 gam."
+  },
+  {
+   "ma_cau": "K09090103004",
+   "nhom_id": "KNB00531",
+   "loai": "trac_nghiem",
+   "de": "Cho 4450 gam chất béo (M = 890 g/mol) phản ứng vừa đủ với NaOH theo tỉ lệ mol chất béo : glycerol = 1 : 1. Tính khối lượng glycerol tạo thành.",
+   "lua_chon": [
+    "1380 gam",
+    "450 gam",
+    "460 gam",
+    "920 gam"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(chất béo) = 4450 : 890 = 5 mol; n(glycerol) = 5 mol; m(glycerol) = 5 × 92 = 460 gam.\n\nVì sao các phương án khác sai:\n- A: Nhầm lấy hệ số 3 (của NaOH) cho glycerol nên ra 1380 gam.\n- B: Dùng nhầm M(glycerol) = 90 g/mol nên ra 450 gam.\n- D: Dùng nhầm M(chất béo) = 445 g/mol nên tính sai số mol, ra 920 gam."
+  },
+  {
+   "ma_cau": "K09090103005",
+   "nhom_id": "KNB00531",
+   "loai": "trac_nghiem",
+   "de": "Cho 7120 gam chất béo (M = 890 g/mol) phản ứng vừa đủ với NaOH theo tỉ lệ mol chất béo : NaOH = 1 : 3. Tính khối lượng NaOH đã phản ứng.",
+   "lua_chon": [
+    "320 gam",
+    "960 gam",
+    "1080 gam",
+    "640 gam"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n(chất béo) = 7120 : 890 = 8 mol; n(NaOH) = 3 × 8 = 24 mol; m(NaOH) = 24 × 40 = 960 gam.\n\nVì sao các phương án khác sai:\n- A: Quên hệ số 3, tính theo tỉ lệ 1 : 1 nên ra 320 gam.\n- C: Dùng nhầm M(NaOH) = 45 g/mol nên ra 1080 gam.\n- D: Dùng nhầm hệ số NaOH là 2 thay vì 3 nên ra 640 gam."
+  },
+  {
+   "ma_cau": "K09090103006",
+   "nhom_id": "KNB00531",
+   "loai": "trac_nghiem",
+   "de": "Cho 8900 gam chất béo (M = 890 g/mol) phản ứng vừa đủ với NaOH theo tỉ lệ mol chất béo : glycerol = 1 : 1. Tính khối lượng glycerol tạo thành.",
+   "lua_chon": [
+    "2760 gam",
+    "900 gam",
+    "1840 gam",
+    "920 gam"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(chất béo) = 8900 : 890 = 10 mol; n(glycerol) = 10 mol; m(glycerol) = 10 × 92 = 920 gam.\n\nVì sao các phương án khác sai:\n- A: Nhầm lấy hệ số 3 (của NaOH) cho glycerol nên ra 2760 gam.\n- B: Dùng nhầm M(glycerol) = 90 g/mol nên ra 900 gam.\n- C: Dùng nhầm M(chất béo) = 445 g/mol nên tính sai số mol, ra 1840 gam."
+  },
+  {
+   "ma_cau": "K09090103007",
+   "nhom_id": "KNB00531",
+   "loai": "trac_nghiem",
+   "de": "Cho 1335 gam chất béo (M = 890 g/mol) phản ứng vừa đủ với NaOH theo tỉ lệ mol chất béo : NaOH = 1 : 3. Tính khối lượng NaOH đã phản ứng.",
+   "lua_chon": [
+    "60 gam",
+    "180 gam",
+    "270 gam",
+    "120 gam"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n(chất béo)=1335:890=1,5mol; n(NaOH)=3×1,5=4,5mol; m(NaOH)=4,5×40=180gam.\n\nVì sao các phương án khác sai:\n- A: Quên hệ số 3, tính theo tỉ lệ 1:1 nên ra 60 gam.\n- C: Dùng nhầm M(NaOH)=60 g/mol thay vì 40 g/mol nên ra 270 gam.\n- D: Dùng nhầm hệ số NaOH là 2 thay vì 3 nên ra 120 gam."
+  },
+  {
+   "ma_cau": "K09090103008",
+   "nhom_id": "KNB00531",
+   "loai": "trac_nghiem",
+   "de": "Cho 2670 gam chất béo (M = 890 g/mol) phản ứng vừa đủ với NaOH theo tỉ lệ mol chất béo : glycerol = 1 : 1. Tính khối lượng glycerol tạo thành.",
+   "lua_chon": [
+    "828 gam",
+    "270 gam",
+    "276 gam",
+    "552 gam"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(chất béo)=2670:890=3mol; n(glycerol)=3mol; m(glycerol)=3×92=276gam.\n\nVì sao các phương án khác sai:\n- A: Nhầm lấy hệ số 3 (của NaOH) cho glycerol nên ra 828 gam.\n- B: Dùng nhầm M(glycerol)=90 g/mol nên ra 270 gam.\n- D: Nhầm nhân đôi kết quả đúng, coi hệ số chất béo:glycerol là 1:2 nên ra 552 gam."
+  },
+  {
+   "ma_cau": "K09090103009",
+   "nhom_id": "KNB00531",
+   "loai": "trac_nghiem",
+   "de": "Cho 5340 gam chất béo (M = 890 g/mol) phản ứng vừa đủ với NaOH theo tỉ lệ mol chất béo : NaOH = 1 : 3. Tính khối lượng NaOH đã phản ứng.",
+   "lua_chon": [
+    "240 gam",
+    "810 gam",
+    "480 gam",
+    "720 gam"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(chất béo)=5340:890=6mol; n(NaOH)=3×6=18mol; m(NaOH)=18×40=720gam.\n\nVì sao các phương án khác sai:\n- A: Quên hệ số 3, tính theo tỉ lệ 1:1 nên ra 240 gam.\n- B: Dùng nhầm M(NaOH)=45 g/mol nên ra 810 gam.\n- C: Dùng nhầm hệ số NaOH là 2 thay vì 3 nên ra 480 gam."
+  },
+  {
+   "ma_cau": "K09090103010",
+   "nhom_id": "KNB00531",
+   "loai": "trac_nghiem",
+   "de": "Cho 890 gam chất béo phản ứng vừa đủ với NaOH, thu 120 gam NaOH đã dùng và 92 gam glycerol. Tính khối lượng xà phòng tạo thành, coi phản ứng hoàn toàn.",
+   "lua_chon": [
+    "1010 gam",
+    "838 gam",
+    "918 gam",
+    "1102 gam"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Theo bảo toàn khối lượng: m(xà phòng) = 890 + 120 − 92 = 918 gam.\n\nVì sao các phương án khác sai:\n- A: Quên trừ khối lượng glycerol, chỉ cộng chất béo và NaOH nên ra 1010 gam.\n- B: Nhầm khối lượng NaOH đã dùng là 40 gam nên ra 838 gam.\n- D: Cộng cả ba khối lượng thay vì trừ glycerol nên ra 1102 gam."
+  },
+  {
+   "ma_cau": "K09090103011",
+   "nhom_id": "KNB00531",
+   "loai": "trac_nghiem",
+   "de": "Cho 1780 gam chất béo phản ứng vừa đủ với NaOH, thu 240 gam NaOH đã dùng và 184 gam glycerol. Tính khối lượng xà phòng tạo thành, coi phản ứng hoàn toàn.",
+   "lua_chon": [
+    "1836 gam",
+    "2020 gam",
+    "1676 gam",
+    "2204 gam"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Theo bảo toàn khối lượng: m(xà phòng) = 1780 + 240 − 184 = 1836 gam.\n\nVì sao các phương án khác sai:\n- B: Quên trừ khối lượng glycerol nên ra 2020 gam.\n- C: Nhầm khối lượng NaOH đã dùng là 80 gam nên ra 1676 gam.\n- D: Cộng cả ba khối lượng thay vì trừ glycerol nên ra 2204 gam."
+  },
+  {
+   "ma_cau": "K09090103012",
+   "nhom_id": "KNB00531",
+   "loai": "trac_nghiem",
+   "de": "Cho 2670 gam chất béo phản ứng vừa đủ với NaOH, thu 360 gam NaOH đã dùng và 276 gam glycerol. Tính khối lượng xà phòng tạo thành, coi phản ứng hoàn toàn.",
+   "lua_chon": [
+    "3030 gam",
+    "2514 gam",
+    "3306 gam",
+    "2754 gam"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Theo bảo toàn khối lượng: m(xà phòng) = 2670 + 360 − 276 = 2754 gam.\n\nVì sao các phương án khác sai:\n- A: Quên trừ khối lượng glycerol nên ra 3030 gam.\n- B: Nhầm khối lượng NaOH đã dùng là 120 gam nên ra 2514 gam.\n- C: Cộng cả ba khối lượng thay vì trừ glycerol nên ra 3306 gam."
+  },
+  {
+   "ma_cau": "K09090103013",
+   "nhom_id": "KNB00531",
+   "loai": "trac_nghiem",
+   "de": "Cho 5340 gam chất béo phản ứng vừa đủ với NaOH, thu 720 gam NaOH đã dùng và 552 gam glycerol. Tính khối lượng xà phòng tạo thành, coi phản ứng hoàn toàn.",
+   "lua_chon": [
+    "6060 gam",
+    "5028 gam",
+    "5508 gam",
+    "6612 gam"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Theo bảo toàn khối lượng: m(xà phòng) = 5340 + 720 − 552 = 5508 gam.\n\nVì sao các phương án khác sai:\n- A: Quên trừ khối lượng glycerol nên ra 6060 gam.\n- B: Nhầm khối lượng NaOH đã dùng là 240 gam nên ra 5028 gam.\n- D: Cộng cả ba khối lượng thay vì trừ glycerol nên ra 6612 gam."
+  },
+  {
+   "ma_cau": "K09090103014",
+   "nhom_id": "KNB00531",
+   "loai": "trac_nghiem",
+   "de": "Xà phòng hoá hoàn toàn 6675 g chất béo cần vừa đủ 900 g NaOH, thu được 690 g glycerol. Khối lượng xà phòng tạo thành là",
+   "lua_chon": [
+    "7575 gam",
+    "6285 gam",
+    "8265 gam",
+    "6885 gam"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Theo bảo toàn khối lượng: m(xà phòng)=6675+900-690=6885 gam.\n\nVì sao các phương án khác sai:\n- A: Quên trừ khối lượng glycerol nên ra 7575 gam.\n- B: Nhầm khối lượng NaOH đã dùng là 300 gam nên ra 6285 gam.\n- C: Cộng cả ba khối lượng thay vì trừ glycerol nên ra 8265 gam."
+  },
+  {
+   "ma_cau": "K09090203001",
+   "nhom_id": "KNB00535",
+   "loai": "trac_nghiem",
+   "de": "Cho 360 g glucose lên men rượu với hiệu suất 75%. Tính khối lượng ethylic alcohol thu được.",
+   "lua_chon": [
+    "184 g",
+    "69 g",
+    "138 g",
+    "132 g"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(glucose) = 360 : 180 = 2 mol. Theo PTHH C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂, m(ethanol) lí thuyết = 2×2×46 = 184 g. Thực tế = 184×75% = 138 g.\n\nVì sao các phương án khác sai:\n- A: Kết quả của việc quên nhân hiệu suất, chỉ tính khối lượng ethanol theo lí thuyết.\n- B: Kết quả của việc quên hệ số 2 trước C₂H₅OH trong phương trình lên men.\n- D: Kết quả của việc nhầm khối lượng mol ethanol là 44 g/mol (nhầm với CO₂)."
+  },
+  {
+   "ma_cau": "K09090203002",
+   "nhom_id": "KNB00535",
+   "loai": "trac_nghiem",
+   "de": "Cho 450 g glucose lên men rượu với hiệu suất 80%. Tính khối lượng ethylic alcohol thu được.",
+   "lua_chon": [
+    "230 g",
+    "92 g",
+    "176 g",
+    "184 g"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(glucose) = 450 : 180 = 2,5 mol. m(ethanol) lí thuyết = 2×2,5×46 = 230 g. Thực tế = 230×80% = 184 g.\n\nVì sao các phương án khác sai:\n- A: Kết quả của việc quên nhân hiệu suất, chỉ tính khối lượng ethanol theo lí thuyết.\n- B: Kết quả của việc quên hệ số 2 trước C₂H₅OH trong phương trình lên men.\n- C: Kết quả của việc nhầm khối lượng mol ethanol là 44 g/mol (nhầm với CO₂)."
+  },
+  {
+   "ma_cau": "K09090203003",
+   "nhom_id": "KNB00535",
+   "loai": "trac_nghiem",
+   "de": "Cho 900 g glucose lên men rượu với hiệu suất 60%. Tính khối lượng ethylic alcohol thu được.",
+   "lua_chon": [
+    "460 g",
+    "230 g",
+    "276 g",
+    "264 g"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(glucose)=900:180=5mol. Theo PTHH C₆H₁₂O₆→2C₂H₅OH+2CO₂, m(ethanol) lí thuyết=2×5×46=460g. Thực tế=460×60%=276g.\n\nVì sao các phương án khác sai:\n- A: Kết quả của việc quên nhân hiệu suất, chỉ tính khối lượng ethanol theo lí thuyết.\n- B: Kết quả của việc quên hệ số 2 trước C₂H₅OH trong phương trình lên men.\n- D: Kết quả của việc nhầm khối lượng mol ethanol là 44 g/mol (nhầm với CO₂)."
+  },
+  {
+   "ma_cau": "K09090203004",
+   "nhom_id": "KNB00535",
+   "loai": "trac_nghiem",
+   "de": "Cho 270 g glucose lên men rượu với hiệu suất 90%. Tính khối lượng ethylic alcohol thu được.",
+   "lua_chon": [
+    "138 g",
+    "69 g",
+    "132 g",
+    "124,2 g"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(glucose)=270:180=1,5mol. m(ethanol) lí thuyết=2×1,5×46=138g. Thực tế=138×90%=124,2g.\n\nVì sao các phương án khác sai:\n- A: Kết quả của việc quên nhân hiệu suất, chỉ tính khối lượng ethanol theo lí thuyết.\n- B: Kết quả của việc quên hệ số 2 trước C₂H₅OH trong phương trình lên men.\n- C: Kết quả của việc nhầm khối lượng mol ethanol là 44 g/mol (nhầm với CO₂) rồi nhân hiệu suất."
+  },
+  {
+   "ma_cau": "K09090203005",
+   "nhom_id": "KNB00535",
+   "loai": "trac_nghiem",
+   "de": "Cho 180 g glucose lên men rượu với hiệu suất 50%. Tính thể tích khí CO₂ sinh ra (đkc).",
+   "lua_chon": [
+    "24,79 L",
+    "49,58 L",
+    "22,4 L",
+    "12,4 L"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n(glucose) = 180 : 180 = 1 mol. n(CO₂) lí thuyết = 2×1 = 2 mol. Thực tế = 2×50% = 1 mol. V = 1×24,79 = 24,79 L.\n\nVì sao các phương án khác sai:\n- B: Kết quả của việc quên nhân hiệu suất, chỉ tính thể tích theo lí thuyết.\n- C: Kết quả của việc dùng nhầm 22,4 L/mol thay cho 24,79 L/mol ở đkc.\n- D: Kết quả của việc quên hệ số 2 trước CO₂ trong phương trình lên men."
+  },
+  {
+   "ma_cau": "K09090203006",
+   "nhom_id": "KNB00535",
+   "loai": "trac_nghiem",
+   "de": "Cho 360 g glucose lên men rượu với hiệu suất 75%. Tính thể tích khí CO₂ sinh ra (đkc).",
+   "lua_chon": [
+    "99,16 L",
+    "74,37 L",
+    "67,2 L",
+    "37,19 L"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n(glucose) = 360 : 180 = 2 mol. n(CO₂) lí thuyết = 2×2 = 4 mol. Thực tế = 4×75% = 3 mol. V = 3×24,79 = 74,37 L.\n\nVì sao các phương án khác sai:\n- A: Kết quả của việc quên nhân hiệu suất, chỉ tính thể tích theo lí thuyết.\n- C: Kết quả của việc dùng nhầm 22,4 L/mol thay cho 24,79 L/mol ở đkc.\n- D: Kết quả của việc quên hệ số 2 trước CO₂ trong phương trình lên men."
+  },
+  {
+   "ma_cau": "K09090104001",
+   "nhom_id": "KNB00532",
+   "loai": "trac_nghiem",
+   "de": "Cho 4450 gam chất béo phản ứng với NaOH, thu 600 gam NaOH đã dùng và 460 gam glycerol, hiệu suất phản ứng đạt 80%. Tính khối lượng xà phòng thực tế thu được.",
+   "lua_chon": [
+    "4590 gam",
+    "3672 gam",
+    "4040 gam",
+    "5050 gam"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Lí thuyết m(xà phòng) = 4450 + 600 − 460 = 4590 gam; thực tế = 4590 × 80% = 3672 gam.\n\nVì sao các phương án khác sai:\n- A: Quên nhân hiệu suất, lấy luôn khối lượng lí thuyết nên ra 4590 gam.\n- C: Quên trừ glycerol trước khi nhân hiệu suất: (4450 + 600) × 80% = 4040 gam.\n- D: Quên cả trừ glycerol và nhân hiệu suất nên ra 5050 gam."
+  },
+  {
+   "ma_cau": "K09090104002",
+   "nhom_id": "KNB00532",
+   "loai": "trac_nghiem",
+   "de": "Cho 8900 gam chất béo phản ứng với NaOH, thu 1200 gam NaOH đã dùng và 920 gam glycerol, hiệu suất phản ứng đạt 90%. Tính khối lượng xà phòng thực tế thu được.",
+   "lua_chon": [
+    "9180 gam",
+    "10100 gam",
+    "9090 gam",
+    "8262 gam"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Lí thuyết m(xà phòng) = 8900 + 1200 − 920 = 9180 gam; thực tế = 9180 × 90% = 8262 gam.\n\nVì sao các phương án khác sai:\n- A: Quên nhân hiệu suất, lấy luôn khối lượng lí thuyết nên ra 9180 gam.\n- B: Quên cả trừ glycerol và nhân hiệu suất nên ra 10100 gam.\n- C: Quên trừ glycerol trước khi nhân hiệu suất: (8900 + 1200) × 90% = 9090 gam."
+  },
+  {
+   "ma_cau": "K09090104003",
+   "nhom_id": "KNB00532",
+   "loai": "trac_nghiem",
+   "de": "Xà phòng hoá 1780 g chất béo, theo lí thuyết cần vừa đủ 240 g NaOH và tạo ra 184 g glycerol. Thực tế hiệu suất phản ứng đạt 70%. Khối lượng xà phòng thực tế thu được là",
+   "lua_chon": [
+    "1836 gam",
+    "1414 gam",
+    "1285,2 gam",
+    "2020 gam"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Lí thuyết m(xà phòng)=1780+240-184=1836g; thực tế=1836×70%=1285,2g.\n\nVì sao các phương án khác sai:\n- A: Đây là khối lượng xà phòng lí thuyết, quên nhân với hiệu suất 70%.\n- B: Quên trừ khối lượng glycerol trước khi nhân hiệu suất: (1780+240)×70%=1414 gam.\n- D: Quên trừ khối lượng glycerol, lấy luôn tổng chất béo+NaOH nên ra 2020 gam."
+  },
+  {
+   "ma_cau": "K09090104004",
+   "nhom_id": "KNB00532",
+   "loai": "trac_nghiem",
+   "de": "Xà phòng hoá 10680 g chất béo, theo lí thuyết cần vừa đủ 1440 g NaOH và tạo ra 1104 g glycerol. Thực tế hiệu suất phản ứng đạt 85%. Khối lượng xà phòng thực tế thu được là",
+   "lua_chon": [
+    "9363,6 gam",
+    "11016 gam",
+    "10302 gam",
+    "12120 gam"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Lí thuyết m(xà phòng)=10680+1440-1104=11016g; thực tế=11016×85%=9363,6g.\n\nVì sao các phương án khác sai:\n- B: Đây là khối lượng lí thuyết, quên nhân với hiệu suất 85%.\n- C: Quên trừ glycerol trước khi nhân hiệu suất: (10680+1440)×85%=10302 gam.\n- D: Quên cả trừ glycerol và nhân hiệu suất, chỉ cộng chất béo với NaOH: 10680+1440=12120 gam."
+  },
+  {
+   "ma_cau": "K09090104005",
+   "nhom_id": "KNB00532",
+   "loai": "trac_nghiem",
+   "de": "Một cơ sở muốn thu được 734,4 kg xà phòng (biết cứ 890 kg chất béo phản ứng vừa đủ với NaOH thì lí thuyết thu được 918 kg xà phòng), với hiệu suất phản ứng đạt 80%. Cần dùng bao nhiêu kg chất béo?",
+   "lua_chon": [
+    "712 kg",
+    "569,6 kg",
+    "890 kg",
+    "918 kg"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khối lượng xà phòng lí thuyết (hiệu suất 100%) = 734,4 : 80% = 918 kg. Vì cứ 890 kg chất béo tạo 918 kg xà phòng (lí thuyết), nên khối lượng chất béo cần dùng = 918×890 : 918 = 890 kg.\n\nVì sao các phương án khác sai:\n- A: Đã coi 734,4 kg là khối lượng xà phòng lí thuyết (hiệu suất 100%), quên rằng đây là khối lượng THỰC TẾ ứng với hiệu suất 80%, cần chia cho 80% trước.\n- B: Đã NHÂN với hiệu suất 80% thay vì CHIA; hiệu suất càng thấp thì càng cần nhiều chất béo hơn, không phải ít hơn.\n- D: Đã bỏ qua tỉ lệ khối lượng chất béo : xà phòng (890 : 918), coi khối lượng chất béo cần dùng bằng luôn khối lượng xà phòng lí thuyết."
+  },
+  {
+   "ma_cau": "K09090104006",
+   "nhom_id": "KNB00532",
+   "loai": "trac_nghiem",
+   "de": "Một cơ sở muốn thu được 1377 kg xà phòng (biết cứ 890 kg chất béo phản ứng vừa đủ với NaOH thì lí thuyết thu được 918 kg xà phòng), với hiệu suất phản ứng đạt 75%. Cần dùng bao nhiêu kg chất béo?",
+   "lua_chon": [
+    "1780 kg",
+    "1335 kg",
+    "1001,25 kg",
+    "1836 kg"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khối lượng xà phòng lí thuyết = 1377 : 75% = 1836 kg. Khối lượng chất béo cần dùng = 1836×890 : 918 = 1780 kg.\n\nVì sao các phương án khác sai:\n- B: Đã coi 1377 kg là khối lượng xà phòng lí thuyết, quên chia cho hiệu suất 75% trước.\n- C: Đã NHÂN với hiệu suất 75% thay vì CHIA; hiệu suất càng thấp thì càng cần nhiều chất béo hơn, không phải ít hơn.\n- D: Đã bỏ qua tỉ lệ khối lượng chất béo : xà phòng (890 : 918), coi khối lượng chất béo cần dùng bằng luôn khối lượng xà phòng lí thuyết."
+  },
+  {
+   "ma_cau": "K09090104007",
+   "nhom_id": "KNB00532",
+   "loai": "trac_nghiem",
+   "de": "Một cơ sở muốn thu được 413,1 kg xà phòng (biết cứ 890 kg chất béo phản ứng vừa đủ với NaOH thì lí thuyết thu được 918 kg xà phòng), với hiệu suất phản ứng đạt 90%. Cần dùng bao nhiêu kg chất béo?",
+   "lua_chon": [
+    "400,5 kg",
+    "360,45 kg",
+    "459 kg",
+    "445 kg"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khối lượng xà phòng lí thuyết = 413,1 : 90% = 459 kg. Khối lượng chất béo cần dùng = 459×890 : 918 = 445 kg.\n\nVì sao các phương án khác sai:\n- A: Đã coi 413,1 kg là khối lượng xà phòng lí thuyết, quên chia cho hiệu suất 90% trước.\n- B: Đã NHÂN với hiệu suất 90% thay vì CHIA; hiệu suất càng thấp thì càng cần nhiều chất béo hơn, không phải ít hơn.\n- C: Đã bỏ qua tỉ lệ khối lượng chất béo : xà phòng (890 : 918), coi khối lượng chất béo cần dùng bằng luôn khối lượng xà phòng lí thuyết."
+  },
+  {
+   "ma_cau": "K09090104008",
+   "nhom_id": "KNB00532",
+   "loai": "trac_nghiem",
+   "de": "Một cơ sở muốn thu được 1652,4 kg xà phòng (biết cứ 890 kg chất béo phản ứng vừa đủ với NaOH thì lí thuyết thu được 918 kg xà phòng), với hiệu suất phản ứng đạt 60%. Cần dùng bao nhiêu kg chất béo?",
+   "lua_chon": [
+    "961,2 kg",
+    "2670 kg",
+    "1602 kg",
+    "2754 kg"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khối lượng xà phòng lí thuyết = 1652,4 : 60% = 2754 kg. Khối lượng chất béo cần dùng = 2754×890 : 918 = 2670 kg.\n\nVì sao các phương án khác sai:\n- A: Đã NHÂN với hiệu suất 60% thay vì CHIA; hiệu suất càng thấp thì càng cần nhiều chất béo hơn, không phải ít hơn.\n- C: Đã coi 1652,4 kg là khối lượng xà phòng lí thuyết, quên chia cho hiệu suất 60% trước.\n- D: Đã bỏ qua tỉ lệ khối lượng chất béo : xà phòng (890 : 918), coi khối lượng chất béo cần dùng bằng luôn khối lượng xà phòng lí thuyết."
+  },
+  {
+   "ma_cau": "K09090104009",
+   "nhom_id": "KNB00532",
+   "loai": "trac_nghiem",
+   "de": "Một cơ sở muốn thu được 688,5 kg xà phòng (biết cứ 890 kg chất béo phản ứng vừa đủ với NaOH thì lí thuyết thu được 918 kg xà phòng), với hiệu suất phản ứng đạt 50%. Cần dùng bao nhiêu kg chất béo?",
+   "lua_chon": [
+    "667,5 kg",
+    "333,75 kg",
+    "1335 kg",
+    "1377 kg"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khối lượng xà phòng lí thuyết = 688,5 : 50% = 1377 kg. Khối lượng chất béo cần dùng = 1377×890 : 918 = 1335 kg.\n\nVì sao các phương án khác sai:\n- A: Đã coi 688,5 kg là khối lượng xà phòng lí thuyết, quên chia cho hiệu suất 50% trước.\n- B: Đã NHÂN với hiệu suất 50% thay vì CHIA; hiệu suất càng thấp thì càng cần nhiều chất béo hơn, không phải ít hơn.\n- D: Đã bỏ qua tỉ lệ khối lượng chất béo : xà phòng (890 : 918), coi khối lượng chất béo cần dùng bằng luôn khối lượng xà phòng lí thuyết."
+  },
+  {
+   "ma_cau": "K09090104010",
+   "nhom_id": "KNB00532",
+   "loai": "trac_nghiem",
+   "de": "Một cơ sở muốn thu được 550,8 kg xà phòng (biết cứ 890 kg chất béo phản ứng vừa đủ với NaOH thì lí thuyết thu được 918 kg xà phòng), với hiệu suất phản ứng đạt 60%. Cần dùng bao nhiêu kg chất béo?",
+   "lua_chon": [
+    "890 kg",
+    "550,8 kg",
+    "330,48 kg",
+    "918 kg"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khối lượng xà phòng lí thuyết=550,8:60%=918kg. Khối lượng chất béo cần dùng=918×890:918=890kg.\n\nVì sao các phương án khác sai:\n- B: Đã coi 550,8 kg là khối lượng xà phòng lí thuyết (hiệu suất 100%), quên chia cho hiệu suất 60% trước.\n- C: Đã NHÂN với hiệu suất 60% thay vì CHIA; hiệu suất càng thấp thì càng cần nhiều chất béo hơn, không phải ít hơn.\n- D: Đã bỏ qua tỉ lệ khối lượng chất béo:xà phòng (890:918), coi khối lượng chất béo cần dùng bằng luôn khối lượng xà phòng lí thuyết."
+  },
+  {
+   "ma_cau": "K09090104011",
+   "nhom_id": "KNB00532",
+   "loai": "trac_nghiem",
+   "de": "Một cơ sở muốn thu được 1101,6 kg xà phòng (biết cứ 890 kg chất béo phản ứng vừa đủ với NaOH thì lí thuyết thu được 918 kg xà phòng), với hiệu suất phản ứng đạt 80%. Cần dùng bao nhiêu kg chất béo?",
+   "lua_chon": [
+    "1101,6 kg",
+    "1335 kg",
+    "1377 kg",
+    "881,28 kg"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khối lượng xà phòng lí thuyết=1101,6:80%=1377kg. Khối lượng chất béo cần dùng=1377×890:918=1335kg.\n\nVì sao các phương án khác sai:\n- A: Đã coi 1101,6 kg là khối lượng xà phòng lí thuyết, quên chia cho hiệu suất 80% trước.\n- C: Đây là khối lượng xà phòng lí thuyết (đã chia hiệu suất) nhưng chưa đổi sang khối lượng chất béo theo tỉ lệ 890:918.\n- D: Đã NHÂN với hiệu suất 80% thay vì CHIA; hiệu suất càng thấp thì càng cần nhiều chất béo hơn, không phải ít hơn."
+  },
+  {
+   "ma_cau": "K09090104012",
+   "nhom_id": "KNB00532",
+   "loai": "trac_nghiem",
+   "de": "Một cơ sở muốn thu được 826,2 kg xà phòng (biết cứ 890 kg chất béo phản ứng vừa đủ với NaOH thì lí thuyết thu được 918 kg xà phòng), với hiệu suất phản ứng đạt 90%. Cần dùng bao nhiêu kg chất béo?",
+   "lua_chon": [
+    "743,58 kg",
+    "918 kg",
+    "890 kg",
+    "826,2 kg"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khối lượng xà phòng lí thuyết=826,2:90%=918kg. Khối lượng chất béo cần dùng=918×890:918=890kg.\n\nVì sao các phương án khác sai:\n- A: Đã NHÂN với hiệu suất 90% thay vì CHIA; hiệu suất càng thấp thì càng cần nhiều chất béo hơn, không phải ít hơn.\n- B: Đây là khối lượng xà phòng lí thuyết, chưa đổi sang khối lượng chất béo theo tỉ lệ 890:918.\n- D: Đã coi 826,2 kg là khối lượng xà phòng lí thuyết, quên chia cho hiệu suất 90% trước."
+  }
+ ]
+}

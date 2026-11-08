@@ -8,6 +8,7 @@ import { listFormDienChoDuyet, duyetFormDien, tuChoiFormDien, listHinhLyDo, type
 import { MathText } from '../kho/ui'
 import { myNhanSuId } from '../../lib/nhansu'
 import { useNhanXet, NutCanSua, NhanXetCu, DongChoSua } from './CanSua'
+import { useDeSau, NutDeSau, NhanDeSau } from './DeSau'
 
 const CHU = ['A', 'B', 'C', 'D']
 const BATCH_SIZE = 20
@@ -29,6 +30,7 @@ export default function DienOAiTab({ khoi }: { mon: string; khoi: string }) {
   const [thongBao, setThongBao] = useState<string | null>(null)
   const reqId = useRef(0)
   const nhanXet = useNhanXet('form_dien', 'toan')   // "✎ Cần sửa": form chờ Claude sửa tạm ẩn
+  const deSau = useDeSau('form_dien', 'toan')       // "⏭ Để sau": form chưa muốn quyết xuống cuối hàng (Thùy 20/10)
 
   async function reload() {
     const my = ++reqId.current
@@ -55,9 +57,11 @@ export default function DienOAiTab({ khoi }: { mon: string; khoi: string }) {
   }
 
   // Batch 20 (CEO 11/09).
-  const rowsCon = rows.filter((r) => !nhanXet.dangChoSua('toan', r.id))
-  const batch = rowsCon.slice(0, BATCH_SIZE)
+  const rowsCon = deSau.xep(rows.filter((r) => !nhanXet.dangChoSua('toan', r.id)), (r) => ['toan', r.id])
+  const batchHien = rowsCon.slice(0, BATCH_SIZE)
+  const batchDuyet = batchHien.filter((r) => !deSau.luc('toan', r.id))   // "Để sau" không bị duyệt hàng loạt cuốn theo
   async function onDuyetTatCa() {
+    const batch = batchDuyet
     if (!batch.length || !confirm(`Duyệt cả ${batch.length} form điền ô trong batch này? Câu không đạt hãy Từ chối trước.`)) return
     setBusyAll(true)
     try {
@@ -81,15 +85,15 @@ export default function DienOAiTab({ khoi }: { mon: string; khoi: string }) {
         : (
           <>
             <div className="mb-3 flex flex-wrap items-center gap-3">
-              <span className="text-[12px] text-slate-500">Batch <b className="text-slate-800">{batch.length}</b>/<b>{rowsCon.length}</b> form</span>
-              <button onClick={onDuyetTatCa} disabled={!batch.length || busyAll}
+              <span className="text-[12px] text-slate-500">Batch <b className="text-slate-800">{batchHien.length}</b>/<b>{rowsCon.length}</b> form</span>
+              <button onClick={onDuyetTatCa} disabled={!batchDuyet.length || busyAll}
                 className="ml-auto rounded-md bg-emerald-600 px-3.5 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
-                {busyAll ? '⏳ Đang duyệt…' : `✓ Duyệt tất cả batch (${batch.length})`}
+                {busyAll ? '⏳ Đang duyệt…' : `✓ Duyệt tất cả batch (${batchDuyet.length})`}
               </button>
             </div>
           <ul className="space-y-3">
             {rows.length > rowsCon.length && <li className="list-none"><DongChoSua n={rows.length - rowsCon.length} /></li>}
-            {batch.map((r) => {
+            {batchHien.map((r) => {
               const oByBuoc = new Map(r.o.map((o) => [o.buoc, o]))
               const mo = r.id in tuChoi
               return (
@@ -98,7 +102,9 @@ export default function DienOAiTab({ khoi }: { mon: string; khoi: string }) {
                     <span className="rounded bg-violet-50 px-2 py-0.5 font-medium text-violet-700">Hình · {r.loai === 'cach' ? 'cách giải' : 'biến thể'}</span>
                     <span className="font-mono text-slate-500">{r.ma}</span>
                     <span>· khối {r.khoi} · {r.o.length} ô</span>
+                    <NhanDeSau at={deSau.luc('toan', r.id)} />
                     <div className="ml-auto flex items-center gap-1.5">
+                      <NutDeSau nho disabled={busy === r.id} onDeSau={() => deSau.ghi('toan', r.id, `Duyệt kho › Điền ô AI · ${r.ma}`).then(() => bao(`⏭ ${r.ma} xuống cuối hàng — duyệt sau`))} />
                       <NutCanSua nho doiTuong="form_dien" mon="toan" ma={r.id} man={`Duyệt kho › Điền ô AI · ${r.ma}`}
                         onXong={(t) => { nhanXet.vaNX(t); bao(`✎ Đã gửi nhận xét ${r.ma} — chờ Claude sửa`) }} />
                       <button onClick={() => setTuChoi((t) => (mo ? (({ [r.id]: _, ...rest }) => rest)(t) : { ...t, [r.id]: '' }))} disabled={busy === r.id}
@@ -151,8 +157,8 @@ export default function DienOAiTab({ khoi }: { mon: string; khoi: string }) {
               )
             })}
           </ul>
-          {rows.length > batch.length && (
-            <p className="mt-4 text-center text-[12px] text-slate-400">Còn <b>{rows.length - batch.length}</b> form — sẽ hiện sau khi duyệt/từ chối xong batch này.</p>
+          {rows.length > batchHien.length && (
+            <p className="mt-4 text-center text-[12px] text-slate-400">Còn <b>{rows.length - batchHien.length}</b> form — sẽ hiện sau khi duyệt/từ chối xong batch này.</p>
           )}
           </>
         )}

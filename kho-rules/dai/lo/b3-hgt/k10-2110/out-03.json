@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T310010103005",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ tổng CA+AB trong tam giác vuông."
+ },
+ {
+  "ma_cau": "T310010103006",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ tổng AB+BC trong tam giác vuông."
+ },
+ {
+  "ma_cau": "T310010103007",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ hiệu OA-OB trong hình vuông."
+ },
+ {
+  "ma_cau": "T310010103008",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ AC bằng đường chéo hình vuông."
+ },
+ {
+  "ma_cau": "T310010103009",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ BM bằng đường trung tuyến tam giác đều."
+ },
+ {
+  "ma_cau": "T310010103010",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ AC bằng đường chéo hình thoi."
+ },
+ {
+  "ma_cau": "T310010103011",
+  "dang_bai_id": "NDB00901",
+  "chac": "vua",
+  "ly_do": "Khẳng định đúng về độ dài và bằng nhau trong hình thoi."
+ },
+ {
+  "ma_cau": "T310010103012",
+  "dang_bai_id": "NDB00901",
+  "chac": "vua",
+  "ly_do": "Khẳng định độ dài và bằng nhau trong hình thang vuông; điểm M không có trong đề."
+ },
+ {
+  "ma_cau": "T310010103013",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ OA trong hình thoi."
+ },
+ {
+  "ma_cau": "T310010103014",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ hiệu OA-CB trong hình vuông."
+ },
+ {
+  "ma_cau": "T310010103015",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ hiệu OA-OB trong hình vuông."
+ },
+ {
+  "ma_cau": "T310010103016",
+  "dang_bai_id": "NDB00906",
+  "chac": "vua",
+  "ly_do": "Độ dài AB+AC tam giác đều; giống ví dụ NDB00912."
+ },
+ {
+  "ma_cau": "T310010103017",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ tổng hiệu rút gọn qua trung điểm."
+ },
+ {
+  "ma_cau": "T310010103018",
+  "dang_bai_id": "NDB00906",
+  "chac": "vua",
+  "ly_do": "Độ dài OA+OB trong hình vuông qua trung điểm; có thể coi là NDB00912."
+ },
+ {
+  "ma_cau": "T310010103019",
+  "dang_bai_id": "NDB00906",
+  "chac": "vua",
+  "ly_do": "Độ dài AB+AC tam giác vuông cân; giống ví dụ NDB00912."
+ },
+ {
+  "ma_cau": "T310010103020",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ tổng AB+BC trong tam giác vuông."
+ },
+ {
+  "ma_cau": "T310010103021",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ tổng CA+AB trong tam giác vuông."
+ },
+ {
+  "ma_cau": "T310010103022",
+  "dang_bai_id": "NDB00906",
+  "chac": "vua",
+  "ly_do": "Độ dài AB+CB qua trung điểm; có thể coi là NDB00912."
+ },
+ {
+  "ma_cau": "T310010104001",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của hai lực cùng hướng."
+ },
+ {
+  "ma_cau": "T310010104002",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Ba lực cân bằng, hai lực vuông góc."
+ },
+ {
+  "ma_cau": "T310010104003",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Ba lực cân bằng với hai lực hợp góc 60 độ."
+ },
+ {
+  "ma_cau": "T310010104004",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của hai lực vuông góc."
+ },
+ {
+  "ma_cau": "T310010104005",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực hai người kéo thuyền, hai lực vuông góc."
+ },
+ {
+  "ma_cau": "T310010104006",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Ba lực cân bằng, tìm cường độ lực thứ ba."
+ },
+ {
+  "ma_cau": "T310010104007",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "Cộng vận tốc tàu và dòng nước."
+ },
+ {
+  "ma_cau": "T310010104008",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của hai lực hợp góc 45 độ."
+ },
+ {
+  "ma_cau": "T310010104009",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "Trọng lực tác dụng lên vật theo khối lượng."
+ },
+ {
+  "ma_cau": "T310010104010",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực hai người kéo thuyền, góc 60 độ."
+ },
+ {
+  "ma_cau": "T310010104011",
+  "dang_bai_id": "NDB00915",
+  "chac": "vua",
+  "ly_do": "Hợp lực ba lực trong tứ diện đều (không gian); gần dạng hợp lực."
+ },
+ {
+  "ma_cau": "T310010104012",
+  "dang_bai_id": "NDB00916",
+  "chac": "vua",
+  "ly_do": "Trọng lực phân bổ lên giá ba chân (không gian); gần dạng lực cân bằng."
+ },
+ {
+  "ma_cau": "T310010104013",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Ba lực cân bằng với hai lực hợp góc 60 độ."
+ },
+ {
+  "ma_cau": "T310010104014",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của hai lực hợp góc 30 độ."
+ },
+ {
+  "ma_cau": "T310010104015",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Vật treo cân bằng dưới lực căng dây."
+ },
+ {
+  "ma_cau": "T310010104016",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của hai lực hợp góc 45 độ."
+ },
+ {
+  "ma_cau": "T310010104017",
+  "dang_bai_id": "NDB00916",
+  "chac": "vua",
+  "ly_do": "Hợp lực bằng không để vật dừng; đề dài, ý bốn lực cần xem hình."
+ },
+ {
+  "ma_cau": "T310010104018",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Ba lực cân bằng, hai lực hợp góc 120 độ."
+ },
+ {
+  "ma_cau": "T310010104019",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Ba lực cân bằng với hai lực hợp góc 60 độ."
+ },
+ {
+  "ma_cau": "T310010104021",
+  "dang_bai_id": "NDB00916",
+  "chac": "vua",
+  "ly_do": "Hợp lực bằng không để vật dừng; đề dài, ý bốn lực cần xem hình."
+ },
+ {
+  "ma_cau": "T310010104022",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Vật treo cân bằng dưới lực căng dây."
+ },
+ {
+  "ma_cau": "T310010104023",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của hai lực hợp góc 30 độ."
+ },
+ {
+  "ma_cau": "T310010104024",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của hai lực vuông góc."
+ },
+ {
+  "ma_cau": "T310010104025",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực hai người kéo thuyền, góc 60 độ."
+ },
+ {
+  "ma_cau": "T310010104026",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Ba lực cân bằng, hai lực hợp góc 120 độ."
+ },
+ {
+  "ma_cau": "T310010104027",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của hai lực hợp góc 45 độ."
+ },
+ {
+  "ma_cau": "T310010104028",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Ba lực cân bằng với hai lực hợp góc 60 độ."
+ },
+ {
+  "ma_cau": "T310000000001",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm: MA+MB=2MI."
+ },
+ {
+  "ma_cau": "T310000000003",
+  "dang_bai_id": "NDB00927",
+  "chac": "vua",
+  "ly_do": "Cực trị độ dài tổng véc tơ nhưng không có toạ độ; gần dạng cực trị."
+ },
+ {
+  "ma_cau": "T310000000004",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn AM theo AB, AC khi BM=3MC."
+ },
+ {
+  "ma_cau": "T310000000005",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong hình vuông."
+ },
+ {
+  "ma_cau": "T310000000006",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng AB.AC trong tam giác đều."
+ },
+ {
+  "ma_cau": "T310000000008",
+  "dang_bai_id": "NDB00914",
+  "chac": "vua",
+  "ly_do": "Tính công của lực; cũng là tích vô hướng theo định nghĩa (NDB00929)."
+ },
+ {
+  "ma_cau": "T310000000009",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong hình chữ nhật."
+ },
+ {
+  "ma_cau": "T310000000010",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Đẳng thức véc tơ mô tả hình vẽ chia đoạn AB; cần hình."
+ },
+ {
+  "ma_cau": "T310000000014",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: bài toán thực tế tính khoảng cách bằng tổng véc tơ và tích vô hướng."
+ },
+ {
+  "ma_cau": "T310000000018",
+  "dang_bai_id": "NDB00916",
+  "chac": "vua",
+  "ly_do": "Vật trên dốc cân bằng, phân tích trọng lực; gần dạng lực cân bằng."
+ },
+ {
+  "ma_cau": "T310000000019",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Chứng minh tổng bốn véc tơ bằng không trong hình bình hành; chỉ thấy ý a."
+ },
+ {
+  "ma_cau": "T310000000024",
+  "dang_bai_id": "NDB00902",
+  "chac": "vua",
+  "ly_do": "Véc tơ cùng phương với cả hai véc tơ không cùng phương là véc tơ-không."
+ },
+ {
+  "ma_cau": "T310000000025",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Ba véc tơ cùng phương, chứng minh hai véc tơ cùng hướng."
+ },
+ {
+  "ma_cau": "T310000000026",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Liệt kê véc tơ có điểm đầu hoặc cuối cho trước."
+ },
+ {
+  "ma_cau": "T310000000027",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cặp véc tơ cùng hướng, ngược hướng với B nằm giữa A, C."
+ },
+ {
+  "ma_cau": "T310000000028",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Liệt kê véc tơ có độ dài a trong hình vuông."
+ },
+ {
+  "ma_cau": "T310000000029",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Điểm đầu, cuối, giá, độ dài và véc tơ đơn vị trong hình vuông."
+ },
+ {
+  "ma_cau": "T310000000030",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng, đối nhau, cùng độ dài trong hình chữ nhật."
+ },
+ {
+  "ma_cau": "T310000000031",
+  "dang_bai_id": "NDB00902",
+  "chac": "vua",
+  "ly_do": "Cùng phương, cùng hướng, đối nhau theo Hình 8; cần hình."
+ },
+ {
+  "ma_cau": "T310000000032",
+  "dang_bai_id": "NDB00902",
+  "chac": "vua",
+  "ly_do": "Cùng phương, cùng hướng, ngược hướng theo Hình 9; cần hình."
+ },
+ {
+  "ma_cau": "T310000000033",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Véc tơ cùng hướng, ngược hướng trong hình thang."
+ },
+ {
+  "ma_cau": "T310000000034",
+  "dang_bai_id": "NDB00902",
+  "chac": "vua",
+  "ly_do": "Cặp véc tơ cùng hướng, ngược hướng, bằng nhau trong hình chữ nhật."
+ },
+ {
+  "ma_cau": "T310000000035",
+  "dang_bai_id": "NDB00902",
+  "chac": "vua",
+  "ly_do": "Véc tơ cùng hướng và bằng nhau trong bát giác đều."
+ },
+ {
+  "ma_cau": "T310000000036",
+  "dang_bai_id": "NDB00902",
+  "chac": "vua",
+  "ly_do": "Quan hệ phương, hướng, độ dài các cặp véc tơ trong hình thoi."
+ },
+ {
+  "ma_cau": "T310000000037",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ BC trong tam giác vuông."
+ }
+]

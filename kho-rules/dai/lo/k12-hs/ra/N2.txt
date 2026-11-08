@@ -1,0 +1,74 @@
+=== N P2.1
+@ly_thuyet:
+##TC Đặc trưng của hàm bậc ba $y=ax^3+bx^2+cx+d$ ($a\ne0$)
+- Tập xác định $\mathbb{R}$; không có tiệm cận, không có GTLN, GTNN trên $\mathbb{R}$; đồ thị luôn cắt $Ox$ và cắt $Oy$ tại $(0;d)$.
+- $y'=3ax^2+2bx+c$, $\Delta'=b^2-3ac$. Nếu $\Delta'>0$: hàm có **hai cực trị**. Nếu $\Delta'\le0$: hàm đơn điệu trên $\mathbb{R}$ (đồng biến khi $a>0$, nghịch biến khi $a<0$).
+- Dấu của $a$ cho hướng nhánh bên phải: $a>0$ đi lên, $a<0$ đi xuống. Mỗi dấu của $a$ có hai dáng: có đỉnh và đáy ($\Delta'>0$) hoặc chỉ một đường đi lên, đi xuống ($\Delta'\le0$).
+- **Điểm uốn** $I\left(-\dfrac{b}{3a};\,y\left(-\dfrac{b}{3a}\right)\right)$ ($y''=0$) là **tâm đối xứng** của đồ thị; khi có hai cực trị, $I$ là trung điểm của đoạn nối hai điểm cực trị.
+
+##TC Dấu các hệ số và đường thẳng qua hai điểm cực trị
+- $d=y(0)$, $c=y'(0)$ là hệ số góc tiếp tuyến tại giao điểm với $Oy$.
+- Hai hoành độ cực trị thoả $x_1+x_2=-\dfrac{2b}{3a}$, $x_1x_2=\dfrac{c}{3a}$. Điểm uốn nằm bên phải $Oy$ $\Leftrightarrow$ $ab<0$; hai cực trị cùng phía $Oy$ $\Leftrightarrow$ $ac>0$.
+- Chia $y$ cho $y'$: $y=\left(\dfrac{x}{3}+\dfrac{b}{9a}\right)y'+\left(\dfrac{2c}{3}-\dfrac{2b^2}{9a}\right)x+d-\dfrac{bc}{9a}$. Tại điểm cực trị $y'=0$, nên hai điểm cực trị cùng nằm trên đường thẳng $y=\left(\dfrac{2c}{3}-\dfrac{2b^2}{9a}\right)x+d-\dfrac{bc}{9a}$.
+- Số nghiệm $f(x)=m$ là số giao điểm với đường ngang $y=m$: khi có hai cực trị, $m>y_{\text{CĐ}}$ hoặc $m<y_{\text{CT}}$ cho 1 nghiệm, $m=y_{\text{CĐ}}$ hoặc $m=y_{\text{CT}}$ cho 2 nghiệm, $y_{\text{CT}}<m<y_{\text{CĐ}}$ cho 3 nghiệm; hàm đơn điệu luôn cho 1 nghiệm.
+
+##PP Giải bài về hàm bậc ba
+Tính $y'$ và $\Delta'$ để biết hàm có hai cực trị hay đơn điệu; dấu của $a$ cho hướng đồ thị.
+Đọc đồ thị: hướng nhánh phải cho dấu $a$, số cực trị cho dấu $\Delta'$, giao $Oy$ cho $d$, vị trí cực trị hoặc điểm uốn so với $Oy$ cho dấu $b$, $c$ qua hệ thức Viète.
+Bài đường thẳng qua hai điểm cực trị: chia $y$ cho $y'$ lấy phần dư, không cần tính tọa độ từng điểm.
+Bài số nghiệm $f(x)=m$: đối chiếu $m$ với hai giá trị cực trị trên đường ngang $y=m$.
+Bài tham số: đặt điều kiện $\Delta'$, dùng Viète rồi thử lại.
+
+##CY
+- "Đơn điệu trên $\mathbb{R}$" cho phép $\Delta'=0$; "có cực trị" thì phải $\Delta'>0$. Nếu $a$ chứa tham số, xét riêng $a=0$.
+- $m=y_{\text{CĐ}}$ hoặc $m=y_{\text{CT}}$ cho đúng 2 nghiệm (một nghiệm kép), không phải 3.
+- Đường thẳng qua hai điểm cực trị chỉ có khi $\Delta'>0$; đồ thị không có cực trị vẫn là hàm bậc ba.
+
+=== N P2.2
+@ly_thuyet:
+##TC Đặc trưng của hàm $y=\dfrac{ax+b}{cx+d}$ ($c\ne0$, $ad-bc\ne0$)
+- Tập xác định $\mathbb{R}\setminus\left\{-\dfrac{d}{c}\right\}$; $y'=\dfrac{ad-bc}{(cx+d)^2}$ không đổi dấu nên hàm đơn điệu trên **từng khoảng xác định** và **không có cực trị**.
+- Tiệm cận đứng $x=-\dfrac{d}{c}$, tiệm cận ngang $y=\dfrac{a}{c}$; giao của hai tiệm cận là **tâm đối xứng** $I\left(-\dfrac{d}{c};\dfrac{a}{c}\right)$, không thuộc đồ thị.
+- Viết $y=\dfrac{a}{c}+\dfrac{bc-ad}{c^2\left(x+\dfrac{d}{c}\right)}$: nếu $ad-bc>0$ hàm đồng biến, hai nhánh nằm góc trên-trái và dưới-phải của $I$; nếu $ad-bc<0$ hàm nghịch biến, hai nhánh nằm góc trên-phải và dưới-trái.
+- Giao trục: $Oy$ tại $\left(0;\dfrac{b}{d}\right)$ ($d\ne0$), $Ox$ tại $\left(-\dfrac{b}{a};0\right)$ ($a\ne0$). Hai điểm đối xứng qua $I$ có toạ độ cộng lại bằng $2x_I$, $2y_I$.
+
+##TC Đọc các hệ số từ đồ thị
+- Hệ số chỉ xác định tới một tỉ lệ chung; chuẩn hoá $c>0$ rồi suy ra: tiệm cận đứng cho dấu $d$ (vì $x=-\dfrac{d}{c}$), tiệm cận ngang cho dấu $a$, giao $Oy$ cho dấu $b$ (vì $y(0)=\dfrac{b}{d}$).
+- Chiều biến thiên của đồ thị phải khớp với dấu $ad-bc$; dùng để kiểm tra lại.
+- Trên đoạn $[\alpha;\beta]$ không chứa $-\dfrac{d}{c}$, hàm đơn điệu nên GTLN, GTNN đạt ở hai đầu mút.
+
+##PP Giải bài về hàm $\dfrac{ax+b}{cx+d}$
+Tính $y'$, xét dấu $ad-bc$ để biết đồng biến hay nghịch biến trên từng khoảng.
+Tìm hai tiệm cận bằng giới hạn hoặc công thức $x=-\dfrac{d}{c}$, $y=\dfrac{a}{c}$, suy ra tâm đối xứng.
+Nhận dạng từ đồ thị: chuẩn hoá $c>0$, đọc dấu $d$ từ tiệm cận đứng, $a$ từ tiệm cận ngang, $b$ từ giao $Oy$, kiểm tra bằng chiều biến thiên.
+Bài tham số: dùng điều kiện $ad-bc$ cùng dấu yêu cầu, loại giá trị làm $c=0$ hoặc $ad-bc=0$.
+
+##CY
+- Khi $ad-bc=0$ hàm suy biến thành hằng số (trừ một điểm); khi $c=0$ không còn là hàm phân thức.
+- Hàm chỉ đơn điệu trên từng khoảng, không đơn điệu trên cả tập xác định: không so sánh giá trị ở hai khoảng khác nhau.
+- Tâm đối xứng không thuộc đồ thị; hệ số $a,b,c,d$ chỉ xác định tới tỉ lệ nên cần thêm điều kiện để chọn.
+
+=== N P2.3
+@ly_thuyet:
+##TC Đặc trưng của hàm $y=\dfrac{ax^2+bx+c}{dx+e}$ ($a,d\ne0$, tử không chia hết cho mẫu)
+- Chia đa thức: $y=\alpha x+\beta+\dfrac{\gamma}{x-x_0}$ với $x_0=-\dfrac{e}{d}$, $\alpha=\dfrac{a}{d}\ne0$, $\gamma\ne0$ (tức $x_0$ không là nghiệm của tử).
+- Tập xác định $\mathbb{R}\setminus\{x_0\}$; tiệm cận đứng $x=x_0$, tiệm cận xiên $y=\alpha x+\beta$, **không có tiệm cận ngang**. Giao hai tiệm cận là tâm đối xứng $I(x_0;\alpha x_0+\beta)$, không thuộc đồ thị.
+- $y'=\alpha-\dfrac{\gamma}{(x-x_0)^2}$. Nếu $\alpha\gamma>0$: $y'=0$ có hai nghiệm $x=x_0\pm\sqrt{\dfrac{\gamma}{\alpha}}$, hàm có **hai cực trị nằm hai bên tiệm cận đứng**, đối xứng nhau qua $I$. Nếu $\alpha\gamma<0$: hàm đơn điệu trên từng khoảng xác định, không có cực trị.
+- Khi $\alpha,\gamma>0$: cực đại ở bên trái, cực tiểu ở bên phải $x_0$; khi $\alpha,\gamma<0$: ngược lại. Giá trị cực trị tính nhanh bằng $y=\dfrac{(ax^2+bx+c)'}{(dx+e)'}=\dfrac{2ax+b}{d}$, và $y_{\text{CĐ}}+y_{\text{CT}}=2y_I$.
+- Dấu $\gamma$ cho hướng nhánh gần tiệm cận đứng: $\gamma>0$ thì $y\to+\infty$ khi $x\to x_0^+$.
+
+##PP Giải bài về hàm $\dfrac{ax^2+bx+c}{dx+e}$
+Chia đa thức để có $\alpha x+\beta+\dfrac{\gamma}{x-x_0}$; kiểm tra $\gamma\ne0$.
+Tìm tiệm cận đứng $x=x_0$, tiệm cận xiên $y=\alpha x+\beta$ và tâm đối xứng.
+Giải $y'=0$ hay xét tử của $y'$: dấu $\alpha\gamma$ cho biết có hai cực trị hay không, nghiệm cho hoành độ cực trị.
+Nhận dạng từ đồ thị: tiệm cận đứng cho $x_0$, tiệm cận xiên cho $\alpha,\beta$, số cực trị cho dấu $\alpha\gamma$, giao trục cho phương trình bổ sung.
+Hệ số chỉ xác định tới một tỉ lệ chung, chọn một hệ số làm chuẩn (ví dụ $d=1$).
+
+##CY
+- Nếu tử chia hết cho mẫu ($\gamma=0$), hàm rút gọn thành bậc nhất, mất tiệm cận đứng và tiệm cận xiên.
+- Giá trị cực đại có thể nhỏ hơn giá trị cực tiểu (vì hai nhánh ở hai bên tiệm cận đứng); đừng mặc nhiên cho $y_{\text{CĐ}}>y_{\text{CT}}$.
+- Hàm này không có tiệm cận ngang; tiệm cận xiên phải tìm bằng chia đa thức, không đọc từ $\dfrac{a}{d}$ như hàm bậc nhất trên bậc nhất.
+
+## GHI CHÚ CHO CEO
+- P2.1 vẫn nhắc "điểm uốn" như tâm đối xứng theo brief v3 (tâm đối xứng cũng ghi bằng $x=-\dfrac{b}{3a}$); nếu muốn đúng tuyệt đối chương trình Toán 12 không dùng $y''$, Thùy cho biết để bỏ cụm "điểm uốn".
+- P2.2 có kết quả nhanh $b^3=-8a$ (vuông), $b^3=-24a$ (đều): thuộc phần nâng cao, giữ nếu dạng tam giác cực trị cần.

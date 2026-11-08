@@ -1,0 +1,542 @@
+[
+ {
+  "id": "X0661",
+  "dap_an": "A",
+  "loi_giai": "Khoảng cách từ $A(-2;2;0)$ đến $(P): x-2y+2z-3=0$ là:\n$d(A,(P))=\\dfrac{|-2-2\\cdot 2+2\\cdot 0-3|}{\\sqrt{1^2+(-2)^2+2^2}}=\\dfrac{|-9|}{3}=3$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0662",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "PPTD",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Đề lỗi: thiếu phương trình hai đường thẳng (chỉ còn điều kiện của m)."
+ },
+ {
+  "id": "X0663",
+  "dap_an": "C",
+  "loi_giai": "$d_1$ có vectơ chỉ phương $\\vec u_1=(2;1;-1)$, $d_2$ có vectơ chỉ phương $\\vec u_2=(3;3;9)$.\n$\\vec u_1\\cdot\\vec u_2=2\\cdot3+1\\cdot3+(-1)\\cdot9=0$ nên $d_1\\perp d_2$.\nGóc giữa hai đường thẳng bằng $90^\\circ$ nên $\\sin 90^\\circ=1$.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0664",
+  "dap_an": "C",
+  "loi_giai": "$(\\alpha)$ có vectơ pháp tuyến $\\vec n_1=(1;2;3)$, $(\\beta)$ có vectơ pháp tuyến $\\vec n_2=(1;5;-1)$.\nVì $\\dfrac11\\neq\\dfrac25$ nên $\\vec n_1,\\vec n_2$ không cùng phương, suy ra hai mặt phẳng không song song, không trùng nhau.\nVậy hai mặt phẳng cắt nhau.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0665",
+  "dap_an": "277",
+  "loi_giai": "Quãng đường cabin đi được sau $30$ giây: $s=5\\cdot30=150$ (m).\nCó $|\\vec u|=\\sqrt{1^2+2^2+2^2}=3$ nên vectơ đơn vị cùng hướng chuyển động là $\\dfrac{\\vec u}{3}=\\left(\\dfrac13;\\dfrac23;\\dfrac23\\right)$.\nDo đó $\\overrightarrow{AM}=150\\cdot\\dfrac{\\vec u}{3}=(50;100;100)$.\nSuy ra $M(3+50;\\,4+100;\\,20+100)=M(53;104;120)$.\nVậy $a+b+c=53+104+120=277$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0666",
+  "dap_an": "D",
+  "loi_giai": "Mặt phẳng trung trực của $AB$ đi qua trung điểm $I$ của $AB$ và nhận $\\overrightarrow{AB}$ làm vectơ pháp tuyến.\n$I(0;2;-1)$, $\\overrightarrow{AB}=(-2;-2;6)$, chọn vectơ pháp tuyến $\\vec n=(1;1;-3)$.\nPhương trình: $1\\cdot(x-0)+1\\cdot(y-2)-3(z+1)=0\\Leftrightarrow x+y-3z-5=0$.\nChọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0667",
+  "dap_an": "D",
+  "loi_giai": "Đường thẳng $d$ có phương trình tham số $x=1-2t$, $y=3+t$, $z=-2$ nên hệ số của $t$ là $(-2;1;0)$.\nVậy một vectơ chỉ phương là $\\vec v=(-2;1;0)$.\nChọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0668",
+  "dap_an": "B",
+  "loi_giai": "Mặt cầu $x^2+y^2+z^2-4x+2y+2z+d=0$ có tâm $I(2;-1;-1)$.\nBán kính $R^2=2^2+(-1)^2+(-1)^2-d=6-d$.\n$R=2\\Leftrightarrow 6-d=4\\Leftrightarrow d=2$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0669",
+  "dap_an": "C",
+  "loi_giai": "$\\Delta$ có vectơ chỉ phương $\\vec u=(1;2;-1)$, $(P)$ có vectơ pháp tuyến $\\vec n=(1;-1;2)$.\n$\\sin\\alpha=\\dfrac{|\\vec u\\cdot\\vec n|}{|\\vec u|\\cdot|\\vec n|}=\\dfrac{|1-2-2|}{\\sqrt6\\cdot\\sqrt6}=\\dfrac36=\\dfrac12$.\nSuy ra $\\alpha=30^\\circ$.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0670",
+  "dap_an": "D",
+  "loi_giai": "Vận tốc là nguyên hàm của gia tốc: $v(t)=\\int(t+2)\\,dt=\\dfrac{t^2}{2}+2t+C$.\nTại $t=0$: $v(0)=15$ nên $C=15$, do đó $v(t)=\\dfrac{t^2}{2}+2t+15$.\nTại giây thứ $9$: $v(9)=\\dfrac{81}{2}+18+15=73{,}5$ (m/s).\nChọn D.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0671",
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng vuông góc với $(P)$ nhận vectơ pháp tuyến $\\vec n=(1;0;1)$ của $(P)$ làm vectơ chỉ phương.\nĐường thẳng đi qua $M(3;2;-1)$ nên có phương trình: $x=3+t$, $y=2$, $z=-1+t$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0672",
+  "dap_an": "A",
+  "loi_giai": "$d_1$ đi qua $M(1;-2;3)$ có vectơ chỉ phương $\\vec u_1=(2;3;4)$; $d_2$ có vectơ chỉ phương $\\vec u_2=(4;6;8)=2\\vec u_1$ nên $d_1\\parallel d_2$ hoặc trùng nhau.\nThay $M(1;-2;3)$ vào $d_2$: $3+4t=1\\Rightarrow t=-\\dfrac12$, khi đó $y=5+6\\cdot\\left(-\\dfrac12\\right)=2\\neq-2$ nên $M\\notin d_2$.\nVậy $d_1\\parallel d_2$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0673",
+  "dap_an": "D",
+  "loi_giai": "Mặt cầu tâm $I(5;-6;7)$, bán kính $R=4$ có phương trình $(x-5)^2+(y+6)^2+(z-7)^2=4^2=16$.\nChọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0674",
+  "dap_an": "D",
+  "loi_giai": "Vì $B$ và $\\overline B$ là hệ đầy đủ nên theo công thức xác suất toàn phần: $P(A)=P(B)\\cdot P(A|B)+P(\\overline B)\\cdot P(A|\\overline B)$.\nChọn D.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0675",
+  "dap_an": "0.9863",
+  "loi_giai": "Gọi $A$: \"bóng đạt tiêu chuẩn\", $B$: \"bóng được kiểm tra công nhận là đạt\".\nCó $P(A)=0,8$; $P(\\overline A)=0,2$; $P(B|A)=0,9$; $P(B|\\overline A)=1-0,95=0,05$.\nTheo công thức xác suất toàn phần: $P(B)=0,8\\cdot0,9+0,2\\cdot0,05=0,72+0,01=0,73$.\nTỉ lệ bóng đạt tiêu chuẩn trong số bóng đã qua kiểm tra (được công nhận): $P(A|B)=\\dfrac{P(A)P(B|A)}{P(B)}=\\dfrac{0,72}{0,73}=\\dfrac{72}{73}\\approx0,9863$.\nVậy tỉ lệ cần tìm xấp xỉ $0,9863$.",
+  "chuong": "XS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Diễn giải: P(đạt | được công nhận); đề không nêu quy tắc làm tròn."
+ },
+ {
+  "id": "X0676",
+  "dap_an": "A",
+  "loi_giai": "Độ lệch chuẩn bằng căn bậc hai của phương sai: $s=\\sqrt{s^2}$.\nChọn A.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0677",
+  "dap_an": "A",
+  "loi_giai": "Với $t=0$ ta có $x=3$, $y=1$, $z=-1$ nên điểm $M_1(3;1;-1)$ thuộc $d$.\nKiểm tra các điểm còn lại: $M_2(2;-3;1)$ cần $3+2t=2$, $t=-\\dfrac12$ nhưng $y=1+\\dfrac32\\neq-3$; tương tự $M_3$, $M_4$ đều không thuộc $d$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0678",
+  "dap_an": "C",
+  "loi_giai": "Khoảng tứ phân vị của mẫu số liệu ghép nhóm là $\\Delta_Q=Q_3-Q_1$.\nChọn C.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0679",
+  "dap_an": "B",
+  "loi_giai": "Mặt phẳng $ax+by+cz+d=0$ có một vectơ pháp tuyến $(a;b;c)$.\nVới $(P):2x-y-5z+1=0$ ta có $\\vec n=(2;-1;-5)$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0680",
+  "dap_an": "B",
+  "loi_giai": "Mặt cầu $(x-a)^2+(y-b)^2+(z-c)^2=R^2$ có tâm $(a;b;c)$, bán kính $R$.\nVới $(x+1)^2+(y-3)^2+(z+2)^2=4$: tâm $I(-1;3;-2)$, $R=\\sqrt4=2$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0681",
+  "dap_an": "86.5",
+  "loi_giai": "Ta có $OA^2=2^2+3^2=13$, $OB^2=2^2+3^2=13$, $OC^2=2^2+3^2=13$, $OD^2=2^2+3^2=13$ nên $A,B,C,D$ cùng thuộc mặt cầu tâm $O$, bán kính $\\sqrt{13}$: $(S):x^2+y^2+z^2=13$. Vùng theo dõi của $M\\equiv O$ chính là hình cầu này.\nVì $N$ cách đều $A,C$ và cách đều $B,D$ nên $N$ thuộc các mặt phẳng trung trực của $AC$ và $BD$.\n$\\overrightarrow{AC}=(-4;-3;3)$, trung điểm $AC$ là $\\left(0;\\dfrac32;\\dfrac32\\right)$, nên mặt phẳng trung trực $(P):4x+3y-3z=0$.\n$\\overrightarrow{BD}=(-2;1;3)$, trung điểm $BD$ là $\\left(-1;\\dfrac52;-\\dfrac32\\right)$, nên mặt phẳng trung trực $(Q):2x-y-3z=0$.\nCả $(P)$ và $(Q)$ đều đi qua $O$ nên giao tuyến $\\Delta$ đi qua tâm $O$ của mặt cầu. Vậy $N$ bay dọc một đường kính của mặt cầu.\nQuãng đường $N$ ở trong vùng theo dõi: $2\\sqrt{13}$ đơn vị $=200\\sqrt{13}\\approx721{,}1$ (m).\nVận tốc $30$ km/h $=\\dfrac{30000}{3600}=\\dfrac{25}{3}$ (m/s).\nThời gian theo dõi: $t=\\dfrac{200\\sqrt{13}}{25/3}=24\\sqrt{13}\\approx86{,}5$ (s).\nVậy thiết bị theo dõi $N$ trong khoảng $86,5$ giây.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đã kiểm bằng máy: 24√13 ≈ 86,53 s."
+ },
+ {
+  "id": "X0682",
+  "dap_an": "A",
+  "loi_giai": "Mặt phẳng $3x+2y-2z+4=0$ có một vectơ pháp tuyến là $(3;2;-2)$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0683",
+  "dap_an": "0.18",
+  "loi_giai": "Gọi $A$: \"thí nghiệm thứ nhất thành công\", $B$: \"thí nghiệm thứ hai thành công\".\nCó $P(A)=0,9$; $P(B|A)=0,8$ nên $P(\\overline B|A)=1-0,8=0,2$.\nXác suất cần tìm: $P(A\\cap\\overline B)=P(A)\\cdot P(\\overline B|A)=0,9\\cdot0,2=0,18$.\nVậy xác suất là $0,18$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0684",
+  "dap_an": "A",
+  "loi_giai": "$(P)$ có vectơ pháp tuyến $\\vec n=(6;8;10)$, cùng phương với $(3;4;5)$.\nMặt phẳng $(Q)$ vuông góc với $(P)$ khi và chỉ khi $\\vec n_Q\\cdot\\vec n=0$.\nPhương án A: $\\vec n_Q=(4;-3;0)$, $3\\cdot4+4\\cdot(-3)+5\\cdot0=0$ (thỏa mãn).\nPhương án B: $3\\cdot4+4\\cdot3+5\\cdot5=49\\neq0$; phương án C: $4\\cdot3=12\\neq0$; phương án D: $3+4+5=12\\neq0$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0685",
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng $d$ có $x=2t$, $y=1-t$, $z=3+3t$ nên hệ số của $t$ là $(2;-1;3)$.\nVậy một vectơ chỉ phương là $(2;-1;3)$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0686",
+  "dap_an": "A",
+  "loi_giai": "$P(A|B)=\\dfrac{P(AB)}{P(B)}=\\dfrac{0,1}{0,2}=0,5$.\nChọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0687",
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng $MN$ có vectơ chỉ phương $\\overrightarrow{MN}=(1;1;1)$ và đi qua $M(1;1;1)$.\nPhương trình chính tắc: $\\dfrac{x-1}{1}=\\dfrac{y-1}{1}=\\dfrac{z-1}{1}$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0688",
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng $d:\\dfrac{x-1}{2}=\\dfrac{y+1}{-1}=\\dfrac{z}{2}$ đi qua điểm $(1;-1;0)$ (ứng với các tử số bằng $0$).\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0689",
+  "dap_an": "A",
+  "loi_giai": "Mặt cầu $x^2+y^2+z^2-2ax-2by-2cz+d=0$ có tâm $(a;b;c)$.\nVới $x^2+y^2+z^2-2x+6y+8z-1=0$: $-2a=-2$, $-2b=6$, $-2c=8$ nên $a=1$, $b=-3$, $c=-4$.\nVậy tâm là $(1;-3;-4)$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0690",
+  "dap_an": "C",
+  "loi_giai": "Mặt cầu $x^2+(y-2)^2+(z+1)^2=9$ có bán kính $R=\\sqrt9=3$.\nĐường kính bằng $2R=6$.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0691",
+  "dap_an": "23",
+  "loi_giai": "Gọi $H$: \"chuột thoát ra ngoài an toàn\". Mỗi đường hầm được chọn với xác suất $\\dfrac13$.\n$P(H|A)=1$; $P(H|B)=0$; $P(H|C)=0,6$.\nTheo công thức xác suất toàn phần: $P(H)=\\dfrac13\\cdot1+\\dfrac13\\cdot0+\\dfrac13\\cdot0,6=\\dfrac{1,6}{3}=\\dfrac{8}{15}$.\nPhân số $\\dfrac{8}{15}$ tối giản nên $a=8$, $b=15$.\nVậy $a+b=23$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0692",
+  "dap_an": "D",
+  "loi_giai": "Góc giữa hai mặt phẳng bằng góc (không tù) giữa hai vectơ pháp tuyến nên $\\cos\\big((P),(Q)\\big)=\\dfrac{|\\vec n\\cdot\\vec u|}{|\\vec n|\\cdot|\\vec u|}=\\dfrac{|Aa+Bb+Cc|}{\\sqrt{A^2+B^2+C^2}\\cdot\\sqrt{a^2+b^2+c^2}}$.\nCông thức đúng là cosin có dấu giá trị tuyệt đối ở tử số.\nChọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": true,
+  "ghi": "Phương án A bị lỗi in; vẫn xác định được đáp án D."
+ },
+ {
+  "id": "X0693",
+  "dap_an": "C",
+  "loi_giai": "$P(B|A)=\\dfrac{P(A\\cap B)}{P(A)}=\\dfrac{0,28}{0,7}=0,4$.\nChọn C.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0694",
+  "dap_an": "4.12",
+  "loi_giai": "$d_1$ đi qua $A(2;4;10)$, vectơ chỉ phương $\\vec u_1=(1;1;-0,5)$; $d_2$ đi qua $B(5;-1;12)$, vectơ chỉ phương $\\vec u_2=(0;1;0,2)$.\n$\\overrightarrow{AB}=(3;-5;2)$.\n$[\\vec u_1,\\vec u_2]=\\big(1\\cdot0,2-(-0,5)\\cdot1;\\ (-0,5)\\cdot0-1\\cdot0,2;\\ 1\\cdot1-1\\cdot0\\big)=(0,7;-0,2;1)$.\n$[\\vec u_1,\\vec u_2]\\cdot\\overrightarrow{AB}=0,7\\cdot3+(-0,2)\\cdot(-5)+1\\cdot2=5,1\\neq0$ nên hai đường thẳng chéo nhau.\nKhoảng cách ngắn nhất: $d=\\dfrac{|[\\vec u_1,\\vec u_2]\\cdot\\overrightarrow{AB}|}{|[\\vec u_1,\\vec u_2]|}=\\dfrac{5,1}{\\sqrt{0,49+0,04+1}}=\\dfrac{5,1}{\\sqrt{1,53}}\\approx4,12$ (km).\nVậy khoảng cách ngắn nhất giữa hai máy bay xấp xỉ $4,12$ km.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đã kiểm bằng máy: 5,1/√1,53 ≈ 4,1231."
+ },
+ {
+  "id": "X0695",
+  "dap_an": "A",
+  "loi_giai": "Với $t=0$ ta có $x=0$, $y=3$, $z=2$ nên điểm $C(0;3;2)$ thuộc $d$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0696",
+  "dap_an": "C",
+  "loi_giai": "Phương trình chính tắc của đường thẳng đi qua $A(1;-3;6)$ với vectơ chỉ phương $\\vec u=(2;1;-5)$ là $\\dfrac{x-1}{2}=\\dfrac{y+3}{1}=\\dfrac{z-6}{-5}$.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0697",
+  "dap_an": "C",
+  "loi_giai": "Với hệ đầy đủ $B,\\overline B$, công thức xác suất toàn phần là $P(A)=P(B)\\cdot P(A|B)+P(\\overline B)\\cdot P(A|\\overline B)$.\nChọn C.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0698",
+  "dap_an": "C",
+  "loi_giai": "$\\Delta$ có vectơ chỉ phương $\\vec u=(1;1;0)$, $\\Delta'$ có vectơ chỉ phương $\\vec u'=(2;2;1)$.\n$\\cos(\\Delta,\\Delta')=\\dfrac{|\\vec u\\cdot\\vec u'|}{|\\vec u|\\cdot|\\vec u'|}=\\dfrac{|2+2+0|}{\\sqrt2\\cdot3}=\\dfrac{4}{3\\sqrt2}\\approx0,9428$.\nSuy ra $(\\Delta,\\Delta')\\approx19,47^\\circ\\approx19,5^\\circ$.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đã kiểm bằng máy: 19,471° làm tròn 19,5°."
+ },
+ {
+  "id": "X0699",
+  "dap_an": "B",
+  "loi_giai": "Xác suất của $A$ với điều kiện $B$ (với $P(B)>0$) là $P(A|B)=\\dfrac{P(AB)}{P(B)}$.\nChọn B.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0700",
+  "dap_an": "A",
+  "loi_giai": "Mặt phẳng $x+2y-5z+6=0$ có một vectơ pháp tuyến là $(1;2;-5)$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0701",
+  "dap_an": "C",
+  "loi_giai": "Gọi $A(a;0;0)$, $B(0;b;0)$, $C(0;0;c)$. Phương trình mặt phẳng $(ABC)$: $\\dfrac xa+\\dfrac yb+\\dfrac zc=1$.\n$G(1;-1;-2)$ là trọng tâm tam giác $ABC$ nên $\\dfrac a3=1$, $\\dfrac b3=-1$, $\\dfrac c3=-2$, suy ra $a=3$, $b=-3$, $c=-6$.\nPhương trình mặt phẳng: $\\dfrac x3-\\dfrac y3-\\dfrac z6=1$.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0702",
+  "dap_an": "2.92",
+  "loi_giai": "Vận tốc $720$ km/h $=0,2$ km/s. Trong $20$ giây máy bay đi được $0,2\\cdot20=4$ km, đó là độ dài dây cung của đường bay nằm trong mặt cầu.\nĐường bay đi qua $A(-5;-3;1)$, vectơ chỉ phương $\\vec u=(1;1;0)$, $|\\vec u|=\\sqrt2$; $\\overrightarrow{AI}=(6;5;2)$.\n$[\\overrightarrow{AI},\\vec u]=(5\\cdot0-2\\cdot1;\\ 2\\cdot1-6\\cdot0;\\ 6\\cdot1-5\\cdot1)=(-2;2;1)$ nên $|[\\overrightarrow{AI},\\vec u]|=3$.\nKhoảng cách từ $I$ đến đường bay: $h=\\dfrac{3}{\\sqrt2}$, suy ra $h^2=\\dfrac92$.\nBán kính: $R^2=h^2+\\left(\\dfrac42\\right)^2=\\dfrac92+4=\\dfrac{17}{2}$, suy ra $R=\\sqrt{\\dfrac{17}{2}}\\approx2,92$ (km).\nVậy $R\\approx2,92$ km.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đã kiểm bằng máy: √(17/2) ≈ 2,9155."
+ },
+ {
+  "id": "X0703",
+  "dap_an": "D",
+  "loi_giai": "$d_1$ đi qua $M_1(2;2;-1)$, vectơ chỉ phương $\\vec u_1=(-2;1;-1)$; $d_2$ đi qua $M_2(2;1;-1)$, vectơ chỉ phương $\\vec u_2=(2;1;1)$.\n$\\vec u_1,\\vec u_2$ không cùng phương nên $d_1,d_2$ không song song, không trùng nhau.\nXét giao điểm: $2-2t=2+2s$, $2+t=1+s$, $-1-t=-1+s$. Từ phương trình thứ nhất và thứ ba: $s=-t$. Thay vào phương trình thứ hai: $2+t=1-t\\Rightarrow t=-\\dfrac12$, $s=\\dfrac12$.\nKiểm tra phương trình thứ ba: $-1-t=-\\dfrac12$ và $-1+s=-\\dfrac12$ (thỏa mãn).\nHệ có nghiệm nên hai đường thẳng cắt nhau.\nChọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0704",
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng $(d)$ có vectơ chỉ phương $\\vec u=(-2;2;0)$; mặt phẳng $(Oyz)$ có vectơ pháp tuyến $\\vec n=(1;0;0)$.\n$\\sin\\varphi=\\dfrac{|\\vec u\\cdot\\vec n|}{|\\vec u|\\cdot|\\vec n|}=\\dfrac{2}{2\\sqrt2}=\\dfrac{\\sqrt2}{2}$.\nSuy ra $\\varphi=45^\\circ$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0705",
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng $(d):\\dfrac{x+1}{2}=\\dfrac{y+2}{1}=\\dfrac{z-1}{-1}$ có vectơ chỉ phương $(2;1;-1)$.\nVectơ $\\vec u(-2;-1;1)=-(2;1;-1)$ cùng phương với vectơ trên nên cũng là một vectơ chỉ phương.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0706",
+  "dap_an": "C",
+  "loi_giai": "Gọi $A$: \"người mua là phụ nữ\", $B$: \"người mua trên 48 tuổi\". $P(A)=0,64$; $P(A\\cap B)=0,40$.\n$P(B|A)=\\dfrac{P(A\\cap B)}{P(A)}=\\dfrac{0,40}{0,64}=0,625$.\nChọn C.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0707",
+  "dap_an": "C",
+  "loi_giai": "Bán kính $R=MN=\\sqrt{(2-1)^2+(2-2)^2+(1+1)^2}=\\sqrt{1+0+4}=\\sqrt5$.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0708",
+  "dap_an": "B",
+  "loi_giai": "Hình chiếu của $H(1;-1;-2)$ lên các trục $Ox,Oy,Oz$ lần lượt là $A(1;0;0)$, $B(0;-1;0)$, $C(0;0;-2)$.\nPhương trình mặt phẳng $(ABC)$: $\\dfrac x1+\\dfrac y{-1}+\\dfrac z{-2}=1\\Leftrightarrow\\dfrac x1-\\dfrac y1-\\dfrac z2=1$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0709",
+  "dap_an": "3.14",
+  "loi_giai": "Vận tốc $900$ km/h $=0,25$ km/s. Trong $24$ giây máy bay đi được $0,25\\cdot24=6$ km, đó là độ dài dây cung của đường bay trong mặt cầu.\nĐường bay đi qua $A(-4;-5;3)$, vectơ chỉ phương $\\vec u=(2;2;1)$, $|\\vec u|=3$; $\\overrightarrow{AI}=(6;6;2)$.\n$[\\overrightarrow{AI},\\vec u]=(6\\cdot1-2\\cdot2;\\ 2\\cdot2-6\\cdot1;\\ 6\\cdot2-6\\cdot2)=(2;-2;0)$ nên $|[\\overrightarrow{AI},\\vec u]|=2\\sqrt2$.\nKhoảng cách từ $I$ đến đường bay: $h=\\dfrac{2\\sqrt2}{3}$, suy ra $h^2=\\dfrac89$.\nBán kính: $R^2=h^2+\\left(\\dfrac62\\right)^2=\\dfrac89+9=\\dfrac{89}{9}$, suy ra $R=\\dfrac{\\sqrt{89}}{3}\\approx3,14$ (km).\nVậy $R\\approx3,14$ km.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đã kiểm bằng máy: √89/3 ≈ 3,1447."
+ },
+ {
+  "id": "X0710",
+  "dap_an": "B",
+  "loi_giai": "$d_1$ đi qua $M_1(2;2;-1)$, vectơ chỉ phương $\\vec u_1=(-2;1;-1)$; $d_2$ đi qua $M_2(2;1;1)$, vectơ chỉ phương $\\vec u_2=(2;1;1)$.\n$\\vec u_1,\\vec u_2$ không cùng phương nên $d_1,d_2$ không song song, không trùng nhau.\nXét giao điểm: $2-2t=2+2s$, $2+t=1+s$, $-1-t=1+s$. Từ phương trình thứ nhất: $s=-t$. Phương trình thứ hai: $2+t=1-t\\Rightarrow t=-\\dfrac12$, $s=\\dfrac12$.\nPhương trình thứ ba: $-1-t=-\\dfrac12$ nhưng $1+s=\\dfrac32$, mâu thuẫn. Hệ vô nghiệm.\nVậy hai đường thẳng chéo nhau.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0711",
+  "dap_an": "0.97",
+  "loi_giai": "Gọi $A$: \"người mắc bệnh\", $B$: \"xét nghiệm dương tính\". $P(A)=0,0002$; $P(\\overline A)=0,9998$; $P(B|A)=0,98$; $P(B|\\overline A)=0,02$.\n$P(B)=0,0002\\cdot0,98+0,9998\\cdot0,02=0,000196+0,019996=0,020192$.\n$P(A|B)=\\dfrac{P(A)P(B|A)}{P(B)}=\\dfrac{0,000196}{0,020192}\\approx0,009707\\approx0,97\\%$.\nVậy $a\\approx0,97$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đã kiểm bằng máy: 0,9707%."
+ },
+ {
+  "id": "X0712",
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng $(d)$ có vectơ chỉ phương $\\vec u=(0;-1;\\sqrt3)$, $|\\vec u|=2$; mặt phẳng $(Oxz)$ có vectơ pháp tuyến $\\vec n=(0;1;0)$.\n$\\sin\\varphi=\\dfrac{|\\vec u\\cdot\\vec n|}{|\\vec u|\\cdot|\\vec n|}=\\dfrac12$.\nSuy ra $\\varphi=30^\\circ$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0713",
+  "dap_an": "D",
+  "loi_giai": "Đường thẳng $(d):\\dfrac{x+1}{2}=\\dfrac{y+2}{1}=\\dfrac{z-1}{1}$ có vectơ chỉ phương $(2;1;1)$.\nVectơ $(-2;-1;-1)=-(2;1;1)$ cùng phương với vectơ trên nên cũng là một vectơ chỉ phương; các phương án A, B, C đều không cùng phương với $(2;1;1)$.\nChọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0714",
+  "dap_an": "C",
+  "loi_giai": "Mặt cầu tâm $I(1;-2;-1)$ tiếp xúc với $(Oxy):z=0$ nên bán kính $R=d(I,(Oxy))=|-1|=1$.\nPhương trình mặt cầu: $(x-1)^2+(y+2)^2+(z+1)^2=1$.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0715",
+  "dap_an": "C",
+  "loi_giai": "$P(\\overline A)=0,2$ nên $P(A)=0,8$.\nTheo công thức xác suất toàn phần: $P(B)=P(A)P(B|A)+P(\\overline A)P(B|\\overline A)=0,8\\cdot0,4+0,2\\cdot0,5=0,32+0,1=0,42$.\nChọn C.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0716",
+  "dap_an": "A",
+  "loi_giai": "Gọi $A$: \"người mua là nam giới\", $B$: \"người mua trên 50 tuổi\". $P(A)=0,48$; $P(A\\cap B)=0,21$.\n$P(B|A)=\\dfrac{0,21}{0,48}=0,4375$.\nChọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0717",
+  "dap_an": "A",
+  "loi_giai": "Xe dừng lại khi $v(t)=0\\Leftrightarrow18-3t=0\\Leftrightarrow t=6$ (s).\nQuãng đường từ $t=0$ đến $t=6$: $s=\\int_0^6(18-3t)\\,dt=\\left(18t-\\dfrac{3t^2}{2}\\right)\\Big|_0^6=108-54=54$ (m).\nChọn A.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0718",
+  "dap_an": "D",
+  "loi_giai": "Theo công thức Bayes (với $B,\\overline B$ là hệ đầy đủ): $P(B|A)=\\dfrac{P(B)\\cdot P(A|B)}{P(A)}=\\dfrac{P(B)\\cdot P(A|B)}{P(B)P(A|B)+P(\\overline B)P(A|\\overline B)}$.\nChọn D.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0719",
+  "dap_an": "A",
+  "loi_giai": "$P(\\overline B)=1-0,4=0,6$.\n$P(A)=P(B)P(A|B)+P(\\overline B)P(A|\\overline B)=0,4\\cdot0,8+0,6\\cdot0,3=0,32+0,18=0,5$.\nChọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0720",
+  "dap_an": "C",
+  "loi_giai": "$d_1$ đi qua $M_1(1;0;-1)$, vectơ chỉ phương $\\vec u_1=(2;1;-1)$; $d_2$ đi qua $M_2(3;1;-2)$, vectơ chỉ phương $\\vec u_2=(4;2;2)$.\n$\\vec u_1,\\vec u_2$ không cùng phương ($\\dfrac42=\\dfrac21\\neq\\dfrac{2}{-1}$) nên $d_1,d_2$ không song song, không trùng nhau.\nĐiểm $M_2(3;1;-2)$ thuộc $d_1$: với $t=1$ ta có $(1+2;\\,1;\\,-1-1)=(3;1;-2)$ (thỏa mãn).\nVậy $d_1$ và $d_2$ có điểm chung $M_2$ nên cắt nhau.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ }
+]

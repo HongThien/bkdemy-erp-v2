@@ -1,0 +1,674 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00526",
+   "chu_de": "Ethylic alcohol & Acetic acid",
+   "chuyen_de": "Acetic acid",
+   "nhom": "Các dạng bài tập cơ bản về acetic acid",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nAcetic acid có công thức phân tử $\\mathrm{C_2H_4O_2}$, công thức cấu tạo thu gọn $\\mathrm{CH_3-COOH}$, khối lượng phân tử 60 amu; nhóm -COOH (carboxyl) quyết định tính acid.\nTính chất vật lí: chất lỏng, không màu, vị chua, tan vô hạn trong nước; nguyên chất đông đặc ở khoảng $16{,}6\\ ^\\circ\\mathrm{C}$ thành tinh thể giống băng.\nGiấm ăn là dung dịch acetic acid loãng (nồng độ khoảng 2% - 5%).\nỨng dụng: làm giấm ăn, gia vị, bảo quản thực phẩm, nguyên liệu sản xuất ester, chất dẻo, thuốc, ...\n\n##CY 2. Lưu ý\nAcetic acid khác ethylic alcohol ở nhóm chức: -COOH (có tính acid, làm quỳ tím hoá hồng) so với -OH.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01539",
+     "thu_tu": 1,
+     "ten": "Nhận biết công thức, cấu tạo và khối lượng phân tử acetic acid",
+     "mo_ta": "Đề hỏi công thức phân tử, công thức cấu tạo thu gọn, số nguyên tử từng loại hoặc khối lượng phân tử của acetic acid.\nCó thể hỏi nhóm -COOH được tạo từ nhóm nào.\nLàm bằng cách nhớ $\\mathrm{CH_3COOH}$ (hay $\\mathrm{C_2H_4O_2}$) và tính khối lượng phân tử từ nguyên tử khối.\nLưu ý: hỏi trạng thái, vị, độ tan, ứng dụng ⇒ thuộc dạng \"Nhận biết tính chất vật lí, đặc điểm và ứng dụng của acetic acid\".",
+     "ly_thuyet": "##TC Công thức và cấu tạo\nCông thức phân tử $\\mathrm{C_2H_4O_2}$ (2 C, 4 H, 2 O); công thức cấu tạo thu gọn $\\mathrm{CH_3-COOH}$.\nNhóm -COOH gồm nhóm =O và nhóm -OH liên kết vào cùng một nguyên tử carbon, quyết định tính acid.\nKhối lượng phân tử: $2\\times 12 + 4\\times 1 + 2\\times 16 = 60$ amu.\n\n##CY Chú ý\n$\\mathrm{C_2H_6O}$ là ethylic alcohol, $\\mathrm{HCOOCH_3}$ là ester đồng phân, không phải acetic acid.",
+     "vi_du": "##VD\nKhối lượng phân tử của acetic acid (theo amu, dùng C = 12, H = 1, O = 16) là\nA. 60\nB. 44\nC. 58\nD. 46\n\nBài giải:\nAcetic acid có công thức C₂H₄O₂.\nKhối lượng phân tử = 2×12 + 4×1 + 2×16 = 24 + 4 + 32 = 60 amu.\nChọn A.\n\n##VD\nNhóm –COOH trong acetic acid được cấu tạo từ nhóm nào kết hợp lại?\nA. Nhóm –OH và nhóm =O\nB. Hai nhóm –OH\nC. Nhóm –CHO và –OH\nD. Hai nhóm =O\n\nBài giải:\nNhóm carboxyl –COOH gồm một nguyên tử carbon liên kết đôi với một O (nhóm =O) và liên kết đơn với nhóm –OH.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01540",
+     "thu_tu": 2,
+     "ten": "Nhận biết tính chất vật lí, đặc điểm và ứng dụng của acetic acid",
+     "mo_ta": "Đề hỏi trạng thái, màu, vị, độ tan, hiện tượng khi nguyên chất ở nhiệt độ thấp, hoặc giấm ăn là gì.\nCó thể hỏi ứng dụng hoặc so sánh nhanh với ethylic alcohol về tính acid.\nLàm bằng cách nhớ tính chất vật lí và ứng dụng quen thuộc của acetic acid.",
+     "ly_thuyet": "##TC Tính chất và ứng dụng\nAcetic acid nguyên chất là chất lỏng, không màu, vị chua, tan vô hạn trong nước; ở dưới khoảng 16 °C đông đặc thành tinh thể giống băng.\nGiấm ăn là dung dịch acetic acid loãng, dùng làm gia vị và bảo quản thực phẩm.\nCó tính acid (làm quỳ tím hoá hồng), khác ethylic alcohol.\n\n##CY Chú ý\nAcetic acid không phải chất khí, chất rắn ở điều kiện thường và không phải nhiên liệu.",
+     "vi_du": "##VD\nGiấm ăn là dung dịch loãng của chất nào sau đây?\nA. ethylic alcohol\nB. glucose\nC. sodium chloride\nD. acetic acid\n\nBài giải:\nGiấm ăn là dung dịch acetic acid có nồng độ khoảng 2% - 5%.\nVị chua của giấm là do acetic acid.\nChọn D.\n\n##VD\nSo với ethylic alcohol, acetic acid có tính chất khác biệt nổi bật là\nA. không tan được trong nước\nB. không có vị chua hay ngọt\nC. có tính acid, làm quỳ tím chuyển hồng\nD. ở thể khí lúc thường\n\nBài giải:\nAcetic acid chứa nhóm -COOH nên có tính acid, làm quỳ tím chuyển hồng; ethylic alcohol không làm đổi màu quỳ tím.\nCả hai chất đều tan vô hạn trong nước và đều là chất lỏng ở điều kiện thường.\nChọn C."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00524",
+   "chu_de": "Ethylic alcohol & Acetic acid",
+   "chuyen_de": "Ethylic alcohol",
+   "nhom": "Bài toán tính Thể tích và Khối lượng cồn",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nĐộ cồn $(^\\circ)$ là số mL ethylic alcohol nguyên chất trong 100 mL dung dịch rượu.\nĐộ cồn $= \\dfrac{V_{\\mathrm{C_2H_5OH}}}{V_{\\mathrm{dd}}}\\times 100$ nên $V_{\\mathrm{C_2H_5OH}} = \\dfrac{V_{\\mathrm{dd}}\\times a}{100}$ (a là độ cồn).\nKhi pha loãng bằng nước, thể tích ethylic alcohol nguyên chất không đổi, chỉ thể tích dung dịch tăng.\n\n##PP 2. Các bước làm bài\nXác định đề cho đại lượng nào (độ cồn, $V_{\\mathrm{dd}}$ hay $V_{\\mathrm{C_2H_5OH}}$)\nTính $V_{\\mathrm{C_2H_5OH}}$ nguyên chất theo công thức độ cồn\nVới bài pha loãng: tính $V_{\\mathrm{dd}}$ mới từ độ cồn mới, rồi lấy hiệu với thể tích ban đầu\n\n##CY 3. Lưu ý\nThể tích nước cần thêm là $V_{\\mathrm{dd\\ moi}} - V_{\\mathrm{dd\\ cu}}$, không phải thể tích dung dịch mới.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01535",
+     "thu_tu": 1,
+     "ten": "Tính độ cồn khi biết thể tích ethylic alcohol và dung dịch",
+     "mo_ta": "Đề cho thể tích ethylic alcohol nguyên chất và thể tích dung dịch rượu thu được, hỏi độ cồn.\nLàm bằng cách lấy $V_{\\mathrm{C_2H_5OH}}$ chia $V_{\\mathrm{dd}}$ rồi nhân 100.\nLưu ý: biết độ cồn, hỏi thể tích ethylic alcohol ⇒ thuộc dạng \"Tính thể tích ethylic alcohol nguyên chất trong dung dịch rượu\".",
+     "ly_thuyet": "##TC Công thức độ cồn\nĐộ cồn $(^\\circ) = \\dfrac{V_{\\mathrm{C_2H_5OH}}}{V_{\\mathrm{dd}}}\\times 100$, trong đó $V_{\\mathrm{dd}}$ là thể tích cả dung dịch (ethylic alcohol cộng nước).\n\n##PP Cách tính\nXác định thể tích ethylic alcohol nguyên chất và thể tích dung dịch rượu\nThay vào công thức độ cồn\n\n##CY Chú ý\n$V_{\\mathrm{dd}}$ là tổng thể tích sau khi pha, không phải thể tích nước.",
+     "vi_du": "##VD\nTrộn 30 mL ethylic alcohol nguyên chất với nước để được 150 mL dung dịch rượu. Độ cồn của dung dịch là bao nhiêu?\nA. 80°\nB. 25°\nC. 20°\nD. 30°\n\nBài giải:\nĐộ cồn = 30 : 150 × 100 = 20.\nDung dịch có độ cồn 20°.\nChọn C.\n\n##VD\nTrộn 60 mL ethylic alcohol nguyên chất với nước để được 240 mL dung dịch rượu. Độ cồn của dung dịch là bao nhiêu?\nA. 60°\nB. 33,3°\nC. 25°\nD. 75°\n\nBài giải:\nĐộ cồn = 60 : 240 × 100 = 25.\nDung dịch có độ cồn 25°.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01536",
+     "thu_tu": 2,
+     "ten": "Tính thể tích ethylic alcohol nguyên chất trong dung dịch rượu",
+     "mo_ta": "Đề cho thể tích dung dịch rượu và độ cồn, hỏi thể tích ethylic alcohol nguyên chất.\nLàm bằng cách nhân thể tích dung dịch với độ cồn rồi chia 100.\nLưu ý: hỏi thể tích nước cần thêm để đổi độ cồn ⇒ thuộc dạng \"Tính thể tích nước cần thêm để pha loãng rượu\".",
+     "ly_thuyet": "##TC Thể tích ethylic alcohol nguyên chất\n$V_{\\mathrm{C_2H_5OH}} = \\dfrac{V_{\\mathrm{dd}}\\times a}{100}$ (a là độ cồn).\n\n##PP Cách tính\nXác định thể tích dung dịch và độ cồn\nNhân với độ cồn rồi chia 100\n\n##CY Chú ý\nQuên chia 100 hay lấy $V_{\\mathrm{dd}}$ trừ đi lượng khác đều dẫn tới đáp án sai.",
+     "vi_du": "##VD\nCó 500 mL rượu 40°. Thể tích ethylic alcohol nguyên chất có trong dung dịch này là bao nhiêu?\nA. 1 250 mL\nB. 20 000 mL\nC. 40 mL\nD. 200 mL\n\nBài giải:\nRượu 40° nghĩa là 100 mL rượu có 40 mL ethylic alcohol.\nV ethylic alcohol = 500 × 40 : 100 = 200 mL.\nChọn D.\n\n##VD\nCó 400 mL rượu 15°. Thể tích ethylic alcohol nguyên chất có trong dung dịch này là bao nhiêu?\nA. 6 000 mL\nB. 60 mL\nC. 15 mL\nD. 340 mL\n\nBài giải:\nV ethylic alcohol = 400 × 15 : 100 = 60 mL.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01537",
+     "thu_tu": 3,
+     "ten": "Tính thể tích nước cần thêm để pha loãng rượu",
+     "mo_ta": "Đề cho một lượng rượu độ cồn cao và độ cồn mong muốn thấp hơn, hỏi thể tích nước cần thêm.\nLàm bằng cách tính thể tích ethylic alcohol nguyên chất (không đổi), suy ra thể tích dung dịch mới rồi trừ thể tích cũ.",
+     "ly_thuyet": "##TC Pha loãng bằng nước\nThêm nước thì thể tích ethylic alcohol nguyên chất không đổi, thể tích dung dịch tăng.\n$V_{\\mathrm{dd\\ moi}} = \\dfrac{V_{\\mathrm{C_2H_5OH}}\\times 100}{a}$ (a là độ cồn mới); $V_{\\mathrm{nuoc}} = V_{\\mathrm{dd\\ moi}} - V_{\\mathrm{dd\\ cu}}$.\n\n##PP Cách tính\nTính $V_{\\mathrm{C_2H_5OH}}$ trong dung dịch ban đầu\nTính thể tích dung dịch mới theo độ cồn mới\nLấy thể tích mới trừ thể tích cũ để ra thể tích nước thêm\n\n##CY Chú ý\nĐáp án là thể tích nước thêm vào chứ không phải thể tích dung dịch mới.",
+     "vi_du": "##VD\nCó 200 mL rượu 45°. Cần thêm bao nhiêu mL nước để được rượu 30°?\nA. 300 mL\nB. 30 mL\nC. 90 mL\nD. 100 mL\n\nBài giải:\nV ethylic alcohol = 200 × 45 : 100 = 90 mL.\nRượu 30° nên V dung dịch mới = 90 × 100 : 30 = 300 mL.\nV nước thêm = 300 − 200 = 100 mL.\nChọn D.\n\n##VD\nCó 300 mL rượu 25°. Cần thêm bao nhiêu mL nước để được rượu 15°?\nA. 500 mL\nB. 200 mL\nC. 30 mL\nD. 75 mL\n\nBài giải:\nV ethylic alcohol = 300 × 25 : 100 = 75 mL.\nV dung dịch mới = 75 × 100 : 15 = 500 mL.\nV nước thêm = 500 − 300 = 200 mL.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00528",
+   "chu_de": "Ethylic alcohol & Acetic acid",
+   "chuyen_de": "Acetic acid",
+   "nhom": "Toán tính Hiệu suất phản ứng Este hóa",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nPhản ứng ester hoá: $\\mathrm{CH_3COOH + C_2H_5OH \\rightleftharpoons CH_3COOC_2H_5 + H_2O}$; tỉ lệ mol acid : ester là 1 : 1.\nKhối lượng mol: $\\mathrm{CH_3COOH}$ là $60\\ \\mathrm{g/mol}$, $\\mathrm{CH_3COOC_2H_5}$ là $88\\ \\mathrm{g/mol}$.\nHiệu suất $H = \\dfrac{x_{\\mathrm{tt}}}{x_{\\mathrm{lt}}}\\times 100\\%$ ($x_{\\mathrm{tt}}$ là lượng thực tế, $x_{\\mathrm{lt}}$ là lượng lí thuyết).\n\n##PP 2. Các bước làm bài\nTính số mol chất đề cho\nTính lượng ester lí thuyết (hoặc lượng acid ban đầu) theo tỉ lệ 1 : 1\nNhân hiệu suất để ra lượng thực tế, hoặc chia hiệu suất để tìm lượng ban đầu\n\n##CY 3. Lưu ý\nBiết lượng thu được thì chia cho hiệu suất; biết lượng ban đầu thì nhân với hiệu suất.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01544",
+     "thu_tu": 1,
+     "ten": "Tính khối lượng ethyl acetate thu được khi biết khối lượng acetic acid và hiệu suất",
+     "mo_ta": "Đề cho khối lượng acetic acid phản ứng và hiệu suất, hỏi khối lượng ethyl acetate thu được.\nLàm bằng cách tính số mol acid, suy ra ester lí thuyết (tỉ lệ 1 : 1) rồi nhân hiệu suất.\nLưu ý: cho lượng ester thu được, hỏi lượng acid ban đầu ⇒ thuộc dạng \"Tính khối lượng acetic acid ban đầu khi biết lượng ethyl acetate và hiệu suất\".",
+     "ly_thuyet": "##TC Tính ester thu được\nn(ester) lí thuyết = n(acid); m(ester) thực tế = n × 88 × H.\n\n##PP Cách làm\nTính n(acetic acid) = m : 60\nSuy ra n và m ester lí thuyết theo tỉ lệ 1 : 1\nNhân hiệu suất để ra khối lượng thực tế\n\n##CY Chú ý\nQuên nhân hiệu suất cho ra khối lượng lí thuyết; nhầm khối lượng mol ester (88) với 100.",
+     "vi_du": "##VD\nCho 6 g acetic acid tác dụng vừa đủ với ethylic alcohol (xúc tác H₂SO₄ đặc, t°), hiệu suất phản ứng đạt 80%. Khối lượng ethyl acetate thu được là bao nhiêu? (dùng C = 12, H = 1, O = 16)\nA. 8,8 g\nB. 7,04 g\nC. 6,16 g\nD. 10 g\n\nBài giải:\nn(CH₃COOH) = 6 : 60 = 0,1 mol.\nTheo phương trình, n(ester) lí thuyết = 0,1 mol nên m lí thuyết = 0,1 × 88 = 8,8 g.\nKhối lượng thực tế = 8,8 × 80% = 7,04 g.\nChọn B.\n\n##VD\nCho 12 g acetic acid tác dụng vừa đủ với ethylic alcohol (xúc tác H₂SO₄ đặc, t°), hiệu suất phản ứng đạt 75%. Khối lượng ethyl acetate thu được là bao nhiêu?\nA. 17,6 g\nB. 8,8 g\nC. 13,2 g\nD. 20 g\n\nBài giải:\nn(CH₃COOH) = 12 : 60 = 0,2 mol.\nm(ester) lí thuyết = 0,2 × 88 = 17,6 g.\nKhối lượng thực tế = 17,6 × 75% = 13,2 g.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01545",
+     "thu_tu": 2,
+     "ten": "Tính khối lượng acetic acid ban đầu khi biết lượng ethyl acetate và hiệu suất",
+     "mo_ta": "Đề cho khối lượng ethyl acetate thu được và hiệu suất, hỏi khối lượng acetic acid đã dùng.\nLàm bằng cách tính số mol ester thực tế, chia hiệu suất để ra số mol lí thuyết, suy ra acid theo tỉ lệ 1 : 1.\nLưu ý: cho lượng acid, hỏi lượng ester thu được ⇒ thuộc dạng \"Tính khối lượng ethyl acetate thu được khi biết khối lượng acetic acid và hiệu suất\".",
+     "ly_thuyet": "##TC Tính acid ban đầu\nn(ester) thực tế = m : 88; n(ester) lí thuyết = n thực tế : H; n(acid) = n(ester) lí thuyết; m(acid) = n × 60.\n\n##PP Cách làm\nTính n(ester) thực tế\nChia hiệu suất để ra n lí thuyết, bằng n(acid) ban đầu\nNhân 60 để ra khối lượng acetic acid\n\n##CY Chú ý\nĐi ngược từ thực tế về ban đầu thì phải chia hiệu suất, không nhân.\nKhối lượng ester đề cho không phải khối lượng acid.",
+     "vi_du": "##VD\nThực hiện phản ứng ester hoá giữa acetic acid và ethylic alcohol, thu được 4,4 g ethyl acetate với hiệu suất 50%. Khối lượng acetic acid đã dùng là bao nhiêu? (dùng C = 12, H = 1, O = 16)\nA. 3 g\nB. 12 g\nC. 6 g\nD. 2,2 g\n\nBài giải:\nn(ester) thực tế = 4,4 : 88 = 0,05 mol.\nHiệu suất 50% nên n(ester) lí thuyết = 0,05 : 0,5 = 0,1 mol.\nn(CH₃COOH) = 0,1 mol (tỉ lệ 1 : 1) nên m = 0,1 × 60 = 6 g.\nChọn C.\n\n##VD\nThực hiện phản ứng ester hoá giữa acetic acid và ethylic alcohol, thu được 8,8 g ethyl acetate với hiệu suất 40%. Khối lượng acetic acid đã dùng là bao nhiêu?\nA. 6 g\nB. 24 g\nC. 4,4 g\nD. 15 g\n\nBài giải:\nn(ester) thực tế = 8,8 : 88 = 0,1 mol.\nn(ester) lí thuyết = 0,1 : 0,4 = 0,25 mol.\nn(CH₃COOH) = 0,25 mol nên m = 0,25 × 60 = 15 g.\nChọn D."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09000000198",
+   "nhom_id": "KNB00526",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Trung hoà hoàn toàn 100 mL dung dịch acetic acid 0,5 mol/L bằng dung dịch NaOH 1 mol/L. Thể tích dung dịch NaOH cần dùng là bao nhiêu?",
+   "lua_chon": [
+    "100 mL",
+    "25 mL",
+    "200 mL",
+    "50 mL"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(CH₃COOH) = 0,1×0,5 = 0,05 mol; theo PTHH tỉ lệ 1:1 nên n(NaOH) = 0,05 mol; V = 0,05:1 = 0,05 L = 50 mL.\n\nVì sao các phương án khác sai:\n- A: Nhầm coi n(NaOH) gấp đôi n(acid) do nhân sai tỉ lệ mol.\n- B: Nhầm chia đôi số mol acid trước khi tính thể tích NaOH.\n- C: Nhầm nhân thêm 4 lần thể tích ban đầu của acid."
+  },
+  {
+   "ma_cau": "K09000000199",
+   "nhom_id": "KNB00526",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Trung hoà 200 mL dung dịch acetic acid chưa biết nồng độ cần vừa đủ 100 mL dung dịch NaOH 0,5 mol/L. Nồng độ mol của dung dịch acetic acid là bao nhiêu?",
+   "lua_chon": [
+    "0,25 mol/L",
+    "0,5 mol/L",
+    "0,125 mol/L",
+    "1 mol/L"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n(NaOH) = 0,1×0,5 = 0,05 mol; n(CH₃COOH) = 0,05 mol (tỉ lệ 1:1); C = 0,05:0,2 = 0,25 mol/L.\n\nVì sao các phương án khác sai:\n- B: Nhầm coi nồng độ acid bằng nồng độ NaOH ban đầu, quên đổi thể tích khác nhau.\n- C: Nhầm chia đôi kết quả đúng do tính sai tỉ lệ thể tích.\n- D: Nhầm lấy số mol NaOH chia cho thể tích NaOH thay vì thể tích acid."
+  },
+  {
+   "ma_cau": "K09000000200",
+   "nhom_id": "KNB00526",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Để trung hoà lượng acetic acid có trong 20 mL giấm ăn cần dùng vừa đủ 25 mL dung dịch NaOH 0,4 mol/L. Số mol acetic acid có trong 20 mL giấm ăn là bao nhiêu?",
+   "lua_chon": [
+    "0,02 mol",
+    "0,01 mol",
+    "0,005 mol",
+    "0,04 mol"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n(NaOH) = 0,025×0,4 = 0,01 mol; theo PTHH tỉ lệ 1:1 nên n(CH₃COOH) = 0,01 mol.\n\nVì sao các phương án khác sai:\n- A: Nhầm nhân đôi số mol NaOH tính được.\n- C: Nhầm chia đôi số mol NaOH tính được.\n- D: Nhầm lấy tích ngược 0,4×0,1 thay vì 0,025×0,4."
+  },
+  {
+   "ma_cau": "K09000000201",
+   "nhom_id": "KNB00526",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Cho 6,5 g zinc (Zn) tác dụng hoàn toàn với dung dịch acetic acid dư. Thể tích khí H₂ sinh ra ở đkc là bao nhiêu? (dùng Zn = 65, thể tích mol khí ở đkc 24,79 L/mol)",
+   "lua_chon": [
+    "4,958 L",
+    "1,2395 L",
+    "2,479 L",
+    "24,79 L"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(Zn) = 6,5:65 = 0,1 mol; theo PTHH 2CH₃COOH + Zn → (CH₃COO)₂Zn + H₂ nên n(H₂) = n(Zn) = 0,1 mol; V = 0,1×24,79 = 2,479 L.\n\nVì sao các phương án khác sai:\n- A: Nhầm tỉ lệ Zn : H₂ là 1:2 nên nhân đôi kết quả đúng.\n- B: Nhầm tỉ lệ Zn : H₂ là 2:1 nên chia đôi kết quả đúng.\n- D: Nhầm coi số mol H₂ bằng 1 mol, quên tính theo số mol Zn thực tế."
+  },
+  {
+   "ma_cau": "K09000000202",
+   "nhom_id": "KNB00526",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Cho 10 g calcium carbonate (CaCO₃) tác dụng hoàn toàn với dung dịch acetic acid dư. Thể tích khí CO₂ sinh ra ở đkc là bao nhiêu? (dùng Ca = 40, C = 12, O = 16, thể tích mol khí ở đkc 24,79 L/mol)",
+   "lua_chon": [
+    "4,958 L",
+    "1,2395 L",
+    "24,79 L",
+    "2,479 L"
+   ],
+   "dap_an": "D",
+   "loi_giai": "M(CaCO₃) = 40+12+16×3 = 100 g/mol; n = 10:100 = 0,1 mol; theo PTHH n(CO₂) = n(CaCO₃) = 0,1 mol; V = 0,1×24,79 = 2,479 L.\n\nVì sao các phương án khác sai:\n- A: Nhầm tỉ lệ CaCO₃ : CO₂ là 1:2 nên nhân đôi kết quả đúng.\n- B: Nhầm tỉ lệ CaCO₃ : CO₂ là 2:1 nên chia đôi kết quả đúng.\n- C: Nhầm coi số mol CO₂ bằng 1 mol, quên tính theo số mol CaCO₃ thực tế."
+  },
+  {
+   "ma_cau": "K09000000203",
+   "nhom_id": "KNB00526",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Cho 21,2 g sodium carbonate (Na₂CO₃) tác dụng hoàn toàn với dung dịch acetic acid dư. Thể tích khí CO₂ sinh ra ở đkc là bao nhiêu? (dùng Na = 23, C = 12, O = 16, thể tích mol khí ở đkc 24,79 L/mol)",
+   "lua_chon": [
+    "4,958 L",
+    "2,479 L",
+    "9,916 L",
+    "1,2395 L"
+   ],
+   "dap_an": "A",
+   "loi_giai": "M(Na₂CO₃) = 23×2+12+16×3 = 106 g/mol; n = 21,2:106 = 0,2 mol; theo PTHH n(CO₂) = n(Na₂CO₃) = 0,2 mol; V = 0,2×24,79 = 4,958 L.\n\nVì sao các phương án khác sai:\n- B: Nhầm chia đôi số mol Na₂CO₃ trước khi tính thể tích khí.\n- C: Nhầm nhân đôi số mol CO₂ tính được.\n- D: Nhầm chia 4 lần kết quả đúng do tính sai khối lượng mol Na₂CO₃."
+  },
+  {
+   "ma_cau": "K09000000204",
+   "nhom_id": "KNB00526",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Có ba dung dịch mất nhãn: acetic acid, ethylic alcohol, glucose. Dùng quỳ tím và dung dịch Na₂CO₃, có thể nhận biết ngay được dung dịch nào?",
+   "lua_chon": [
+    "glucose, vì tạo kết tủa với Na₂CO₃",
+    "acetic acid, vì làm quỳ hoá hồng và sinh khí CO₂",
+    "ethylic alcohol, vì làm quỳ tím hoá xanh",
+    "cả ba dung dịch, vì đều đổi màu quỳ tím"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Acetic acid có tính acid làm quỳ tím hoá hồng, và phản ứng với Na₂CO₃ sinh khí CO₂ sủi bọt: 2CH₃COOH + Na₂CO₃ → 2CH₃COONa + H₂O + CO₂; đây là dấu hiệu nhận biết ngay acetic acid.\n\nVì sao các phương án khác sai:\n- A: Glucose là chất trung tính, không phản ứng với Na₂CO₃ để tạo kết tủa.\n- C: Ethylic alcohol không có tính acid hay base, không làm đổi màu quỳ tím.\n- D: Chỉ acetic acid có tính acid làm quỳ tím đổi màu, hai chất còn lại không đổi màu."
+  },
+  {
+   "ma_cau": "K09000000205",
+   "nhom_id": "KNB00526",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Có hai dung dịch mất nhãn: acetic acid và ethylic alcohol. Cho một mẩu sodium (Na) nhỏ vào mỗi dung dịch, hiện tượng ở CẢ HAI dung dịch đều",
+   "lua_chon": [
+    "không có hiện tượng gì",
+    "chỉ ethylic alcohol tạo khí, acetic acid không phản ứng",
+    "đều tạo khí H₂ vì Na phản ứng cả hai chất",
+    "đều tạo kết tủa trắng"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Na phản ứng được với cả nhóm –OH của ethylic alcohol và nhóm –COOH của acetic acid, đều sinh khí H₂, nên không dùng Na để phân biệt hai chất này.\n\nVì sao các phương án khác sai:\n- A: Cả hai chất đều có nhóm phản ứng được với Na, phải có hiện tượng sủi bọt khí.\n- B: Na phản ứng được với cả acetic acid (nhóm –COOH), không chỉ ethylic alcohol.\n- D: Phản ứng của Na với hai chất này sinh khí H₂, không tạo kết tủa."
+  },
+  {
+   "ma_cau": "K09000000206",
+   "nhom_id": "KNB00526",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Có hai dung dịch mất nhãn: acetic acid và glucose. Thuốc thử nào sau đây giúp phân biệt hai dung dịch này?",
+   "lua_chon": [
+    "Nước cất",
+    "Dung dịch NaCl",
+    "Quỳ tím",
+    "Sodium (Na)"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Acetic acid có tính acid làm quỳ tím hoá hồng; glucose là chất trung tính, không làm đổi màu quỳ tím, nên dùng quỳ tím để phân biệt.\n\nVì sao các phương án khác sai:\n- A: Cả acetic acid và glucose đều tan trong nước, nước cất không tạo dấu hiệu phân biệt.\n- B: Dung dịch NaCl không phản ứng với acetic acid hay glucose để tạo dấu hiệu phân biệt.\n- D: Sodium phản ứng với acetic acid (nhóm –COOH) nhưng glucose cũng có nhóm –OH phản ứng với Na, khó phân biệt rõ ràng và không an toàn để thử trực tiếp."
+  },
+  {
+   "ma_cau": "K09000000207",
+   "nhom_id": "KNB00526",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Có hai dung dịch mất nhãn: acetic acid và ethyl acetate. Cách đơn giản để phân biệt hai chất này là gì?",
+   "lua_chon": [
+    "Đun nóng đến khi bay hơi hết",
+    "Hoà tan cả hai vào dầu ăn",
+    "Quan sát màu sắc bằng mắt thường",
+    "Thử bằng quỳ tím"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Acetic acid có tính acid, làm quỳ tím hoá hồng; ethyl acetate là ester, không có tính acid, không làm đổi màu quỳ tím.\n\nVì sao các phương án khác sai:\n- A: Cả hai đều bay hơi, không phân biệt được.\n- B: Cách này không cho dấu hiệu khác nhau rõ.\n- C: Cả hai đều là chất lỏng không màu."
+  },
+  {
+   "ma_cau": "K09000000208",
+   "nhom_id": "KNB00526",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp X gồm ethylic alcohol và acetic acid, chia thành 2 phần bằng nhau. Cho phần 1 tác dụng dung dịch Na₂CO₃ dư, thu được 1,2395 L khí CO₂ (đkc). Số mol acetic acid có trong MỖI PHẦN của hỗn hợp X là bao nhiêu?",
+   "lua_chon": [
+    "0,2 mol",
+    "0,025 mol",
+    "0,15 mol",
+    "0,1 mol"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(CO₂) = 1,2395:24,79 = 0,05 mol; theo PTHH 2CH₃COOH + Na₂CO₃ → 2CH₃COONa + H₂O + CO₂ nên n(CH₃COOH) = 2×n(CO₂) = 2×0,05 = 0,1 mol.\n\nVì sao các phương án khác sai:\n- A: Nhầm hệ số tỉ lệ, nhân 4 lần số mol CO₂ thay vì 2 lần.\n- B: Nhầm chia đôi số mol CO₂ trước khi nhân hệ số tỉ lệ.\n- C: Nhầm cộng thêm 0,05 vào kết quả đúng do tính sai hệ số."
+  },
+  {
+   "ma_cau": "K09000000209",
+   "nhom_id": "KNB00526",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp X gồm ethylic alcohol và acetic acid, chia thành 2 phần bằng nhau, mỗi phần chứa 0,1 mol acetic acid. Cho phần còn lại tác dụng Na dư, thu được 2,479 L khí H₂ (đkc). Số mol ethylic alcohol có trong MỖI PHẦN của hỗn hợp X là bao nhiêu?",
+   "lua_chon": [
+    "0,1 mol",
+    "0,2 mol",
+    "0,05 mol",
+    "0,3 mol"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n(H₂) = 2,479:24,79 = 0,1 mol; vì cả nhóm –OH và –COOH đều phản ứng với Na theo tỉ lệ 2 chất : 1 H₂, nên n(H₂) = (nₐncol + nₐcid):2; suy ra nₐncol = 2×0,1 − 0,1 = 0,1 mol.\n\nVì sao các phương án khác sai:\n- B: Nhầm quên trừ n(acid) đã phản ứng, lấy toàn bộ 2×n(H₂) làm n(ancol).\n- C: Nhầm coi n(H₂) chỉ do ethylic alcohol sinh ra rồi chia đôi sai vị trí.\n- D: Nhầm cộng thêm n(acid) vào kết quả đúng thay vì trừ đi."
+  },
+  {
+   "ma_cau": "K09000000210",
+   "nhom_id": "KNB00526",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp X gồm ethylic alcohol và acetic acid, chia thành 2 phần bằng nhau, mỗi phần chứa 0,1 mol ethylic alcohol và 0,1 mol acetic acid. Tổng khối lượng hỗn hợp X (cả 2 phần) là bao nhiêu? (dùng C = 12, H = 1, O = 16)",
+   "lua_chon": [
+    "10,6 g",
+    "21,2 g",
+    "15,9 g",
+    "42,4 g"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mỗi phần có khối lượng 0,1×46 + 0,1×60 = 4,6 + 6 = 10,6 g; hỗn hợp X gồm 2 phần bằng nhau nên khối lượng X = 2×10,6 = 21,2 g.\n\nVì sao các phương án khác sai:\n- A: Đây là khối lượng của MỖI PHẦN, quên nhân 2 để ra khối lượng cả hỗn hợp X.\n- C: Nhầm cộng thêm nửa phần khối lượng ethylic alcohol thay vì nhân đôi toàn phần.\n- D: Nhầm nhân 4 lần khối lượng mỗi phần thay vì 2 lần."
+  },
+  {
+   "ma_cau": "K09000000211",
+   "nhom_id": "KNB00526",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp X gồm ethylic alcohol và acetic acid có tổng khối lượng 21,2 g, trong đó có 0,2 mol ethylic alcohol và 0,2 mol acetic acid. Phần trăm khối lượng của acetic acid trong hỗn hợp X là bao nhiêu? (dùng C = 12, H = 1, O = 16, làm tròn 1 chữ số thập phân)",
+   "lua_chon": [
+    "43,4%",
+    "50%",
+    "56,6%",
+    "60%"
+   ],
+   "dap_an": "C",
+   "loi_giai": "m(CH₃COOH) trong X = 0,2×60 = 12 g; %m(CH₃COOH) = 12:21,2×100 ≈ 56,6%.\n\nVì sao các phương án khác sai:\n- A: Đây là % khối lượng của ethylic alcohol (100% − 56,6% ≈ 43,4%), không phải của acetic acid.\n- B: Nhầm coi số mol hai chất bằng nhau nên phần trăm khối lượng cũng bằng nhau.\n- D: Nhầm làm tròn quá thô hoặc tính sai tỉ lệ khối lượng mol."
+  },
+  {
+   "ma_cau": "K09000000212",
+   "nhom_id": "KNB00526",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một phần của hỗn hợp X gồm ethylic alcohol và acetic acid có chứa 0,1 mol acetic acid. Để trung hoà hết lượng acetic acid trong phần này cần dùng vừa đủ bao nhiêu mL dung dịch NaOH 0,5 mol/L?",
+   "lua_chon": [
+    "50 mL",
+    "400 mL",
+    "100 mL",
+    "200 mL"
+   ],
+   "dap_an": "D",
+   "loi_giai": "CH₃COOH + NaOH → CH₃COONa + H₂O tỉ lệ 1:1 nên n(NaOH) = n(CH₃COOH) = 0,1 mol; V = 0,1:0,5 = 0,2 L = 200 mL.\n\nVì sao các phương án khác sai:\n- A: Nhầm chia đôi số mol acid trước khi tính thể tích NaOH.\n- B: Nhầm nhân đôi số mol acid rồi chia sai cho nồng độ.\n- C: Nhầm dùng nồng độ NaOH là 1 mol/L thay vì 0,5 mol/L đề cho."
+  },
+  {
+   "ma_cau": "K09000000213",
+   "nhom_id": "KNB00526",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp X gồm ethylic alcohol và acetic acid, chia thành 2 phần bằng nhau. Cho phần 1 tác dụng dung dịch Na₂CO₃ dư, thu được 2,479 L khí CO₂ (đkc). Số mol acetic acid có trong MỖI PHẦN của hỗn hợp X là bao nhiêu?",
+   "lua_chon": [
+    "0,2 mol",
+    "0,4 mol",
+    "0,05 mol",
+    "0,1 mol"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n(CO₂)=2,479:24,79=0,1mol; theo PTHH 2CH₃COOH+Na₂CO₃→2CH₃COONa+H₂O+CO₂ nên n(CH₃COOH)=2×n(CO₂)=2×0,1=0,2mol.\n\nVì sao các phương án khác sai:\n- B: Nhầm hệ số tỉ lệ, nhân 4 lần số mol CO₂ thay vì 2 lần.\n- C: Nhầm chia đôi số mol CO₂ trước khi nhân hệ số tỉ lệ.\n- D: Đây là số mol CO₂ sinh ra, chưa nhân hệ số tỉ lệ 2 để ra số mol acid."
+  },
+  {
+   "ma_cau": "K09000000214",
+   "nhom_id": "KNB00526",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp X gồm ethylic alcohol và acetic acid, chia thành 2 phần bằng nhau, mỗi phần chứa 0,2 mol acetic acid. Cho phần còn lại tác dụng Na dư, thu được 4,958 L khí H₂ (đkc). Số mol ethylic alcohol có trong MỖI PHẦN của hỗn hợp X là bao nhiêu?",
+   "lua_chon": [
+    "0,4 mol",
+    "0,2 mol",
+    "0,1 mol",
+    "0,6 mol"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n(H₂) = 4,958 : 24,79 = 0,2 mol. Cả ethylic alcohol và acetic acid đều phản ứng với Na theo tỉ lệ 2 mol chất : 1 mol H₂, nên tổng số mol hai chất = 2 × 0,2 = 0,4 mol. n(ethylic alcohol) = 0,4 − 0,2 = 0,2 mol.\n\nVì sao các phương án khác sai:\n- A: Nhầm quên trừ n(acid) đã phản ứng, lấy toàn bộ 2×n(H₂) làm n(ancol).\n- C: Nhầm coi n(H₂) chỉ do ethylic alcohol sinh ra rồi chia đôi sai vị trí.\n- D: Nhầm cộng thêm n(acid) vào kết quả đúng thay vì trừ đi."
+  },
+  {
+   "ma_cau": "K09000000215",
+   "nhom_id": "KNB00526",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp X gồm ethylic alcohol và acetic acid, chia thành 2 phần bằng nhau, mỗi phần chứa 0,2 mol ethylic alcohol và 0,15 mol acetic acid. Tổng khối lượng hỗn hợp X (cả 2 phần) là bao nhiêu?",
+   "lua_chon": [
+    "18,2 g",
+    "27,3 g",
+    "36,4 g",
+    "72,8 g"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mỗi phần có khối lượng 0,2×46+0,15×60=9,2+9=18,2g; hỗn hợp X gồm 2 phần bằng nhau nên khối lượng X=2×18,2=36,4g.\n\nVì sao các phương án khác sai:\n- A: Đây là khối lượng của MỖI PHẦN, quên nhân 2 để ra khối lượng cả hỗn hợp X.\n- B: Nhầm cộng thêm nửa phần khối lượng thay vì nhân đôi toàn phần.\n- D: Nhầm nhân 4 lần khối lượng mỗi phần thay vì 2 lần."
+  },
+  {
+   "ma_cau": "K09000000180",
+   "nhom_id": "KNB00524",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 4,6 gam ethylic alcohol trong khí oxygen (dư). Thể tích khí O₂ (ở đkc) đã phản ứng là bao nhiêu?",
+   "lua_chon": [
+    "7,437 L",
+    "6,72 L",
+    "2,479 L",
+    "4,958 L"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n(C₂H₅OH) = 4,6 : 46 = 0,1 mol. C₂H₅OH + 3O₂ → 2CO₂ + 3H₂O nên n(O₂) = 0,3 mol. V(O₂) = 0,3 × 24,79 = 7,437 L.\n\nVì sao các phương án khác sai:\n- B: Đã dùng thể tích mol 22,4 L/mol thay vì 24,79 L/mol ở điều kiện chuẩn.\n- C: Đã quên hệ số 3 trước O₂ trong phương trình, lấy n(O₂) = n(ethanol).\n- D: Đã nhầm hệ số của O₂ (3) thành hệ số của CO₂ (2) trong phương trình."
+  },
+  {
+   "ma_cau": "K09000000181",
+   "nhom_id": "KNB00524",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 9,2 gam ethylic alcohol trong khí oxygen (dư). Thể tích khí CO₂ (ở đkc) sinh ra là bao nhiêu?",
+   "lua_chon": [
+    "8,96 L",
+    "4,958 L",
+    "9,916 L",
+    "14,874 L"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(C₂H₅OH) = 9,2 : 46 = 0,2 mol. C₂H₅OH + 3O₂ → 2CO₂ + 3H₂O nên n(CO₂) = 0,4 mol. V(CO₂) = 0,4 × 24,79 = 9,916 L.\n\nVì sao các phương án khác sai:\n- A: Đã dùng thể tích mol 22,4 L/mol thay vì 24,79 L/mol ở điều kiện chuẩn.\n- B: Đã quên hệ số 2 trước CO₂ trong phương trình, lấy n(CO₂) = n(ethanol).\n- D: Đã nhầm hệ số của CO₂ (2) thành hệ số của O₂ (3) trong phương trình."
+  },
+  {
+   "ma_cau": "K09000000182",
+   "nhom_id": "KNB00524",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 34,5 mL ethylic alcohol (khối lượng riêng D = 0,8 g/mL) trong khí oxygen (dư). Thể tích khí CO₂ (ở đkc) sinh ra là bao nhiêu?",
+   "lua_chon": [
+    "26,88 L",
+    "29,748 L",
+    "14,874 L",
+    "37,185 L"
+   ],
+   "dap_an": "B",
+   "loi_giai": "m(C₂H₅OH) = 34,5 × 0,8 = 27,6 g; n = 27,6 : 46 = 0,6 mol. n(CO₂) = 2 × 0,6 = 1,2 mol. V(CO₂) = 1,2 × 24,79 = 29,748 L.\n\nVì sao các phương án khác sai:\n- A: Đã dùng thể tích mol 22,4 L/mol thay vì 24,79 L/mol ở điều kiện chuẩn.\n- C: Đã quên hệ số 2 trước CO₂ trong phương trình, lấy n(CO₂) = n(ethanol).\n- D: Đã quên đổi thể tích sang khối lượng qua khối lượng riêng, lấy luôn 34,5 làm số gam ethanol."
+  },
+  {
+   "ma_cau": "K09000000183",
+   "nhom_id": "KNB00524",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Cho 9,2 gam ethylic alcohol tác dụng hết với sodium (dư). Thể tích khí H₂ thu được (ở đkc) là bao nhiêu?",
+   "lua_chon": [
+    "2,24 L",
+    "4,958 L",
+    "9,916 L",
+    "2,479 L"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(C₂H₅OH) = 9,2 : 46 = 0,2 mol. 2C₂H₅OH + 2Na → 2C₂H₅ONa + H₂ nên n(H₂) = 0,1 mol. V(H₂) = 0,1 × 24,79 = 2,479 L.\n\nVì sao các phương án khác sai:\n- A: Đã dùng thể tích mol 22,4 L/mol thay vì 24,79 L/mol ở điều kiện chuẩn.\n- B: Đã quên chia 2, lấy n(H₂) = n(ethanol) trong khi tỉ lệ đúng là 2 : 1.\n- C: Đã nhầm tỉ lệ, lấy n(H₂) = 2 × n(ethanol) thay vì n(ethanol) : 2."
+  },
+  {
+   "ma_cau": "K09000000184",
+   "nhom_id": "KNB00524",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Cho 18,4 gam ethylic alcohol tác dụng hết với sodium (dư). Thể tích khí H₂ thu được (ở đkc) là bao nhiêu?",
+   "lua_chon": [
+    "4,958 L",
+    "4,48 L",
+    "9,916 L",
+    "19,832 L"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n(C₂H₅OH) = 18,4 : 46 = 0,4 mol. 2C₂H₅OH + 2Na → 2C₂H₅ONa + H₂ nên n(H₂) = 0,2 mol. V(H₂) = 0,2 × 24,79 = 4,958 L.\n\nVì sao các phương án khác sai:\n- B: Đã dùng thể tích mol 22,4 L/mol thay vì 24,79 L/mol ở điều kiện chuẩn.\n- C: Đã quên chia 2, lấy n(H₂) = n(ethanol) trong khi tỉ lệ đúng là 2 : 1.\n- D: Đã nhầm tỉ lệ, lấy n(H₂) = 2 × n(ethanol) thay vì n(ethanol) : 2."
+  },
+  {
+   "ma_cau": "K09000000185",
+   "nhom_id": "KNB00524",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Cho 34,5 mL ethylic alcohol (khối lượng riêng D = 0,8 g/mL) tác dụng hết với sodium (dư). Thể tích khí H₂ thu được (ở đkc) là bao nhiêu?",
+   "lua_chon": [
+    "6,72 L",
+    "14,874 L",
+    "7,437 L",
+    "9,296 L"
+   ],
+   "dap_an": "C",
+   "loi_giai": "m(C₂H₅OH) = 34,5 × 0,8 = 27,6 g; n = 27,6 : 46 = 0,6 mol. n(H₂) = 0,3 mol. V(H₂) = 0,3 × 24,79 = 7,437 L.\n\nVì sao các phương án khác sai:\n- A: Đã dùng thể tích mol 22,4 L/mol thay vì 24,79 L/mol ở điều kiện chuẩn.\n- B: Đã quên chia 2, lấy n(H₂) = n(ethanol) trong khi tỉ lệ đúng là 2 : 1.\n- D: Đã quên đổi thể tích sang khối lượng qua khối lượng riêng, lấy luôn 34,5 làm số gam ethanol."
+  },
+  {
+   "ma_cau": "K09000000190",
+   "nhom_id": "KNB00524",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn ethylic alcohol nguyên chất có trong 115 mL rượu 5° (khối lượng riêng ethanol D = 0,8 g/mL). Thể tích khí CO₂ sinh ra (đkc) là",
+   "lua_chon": [
+    "2,479 L",
+    "4,958 L",
+    "99,16 L",
+    "≈6,20 L"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Thể tích ethanol nguyên chất: V = 115×5% = 5,75 mL. Khối lượng: m = 5,75×0,8 = 4,6 g. Số mol: n = 4,6:46 = 0,1 mol. PTHH: C₂H₆O + 3O₂ →(t°) 2CO₂ + 3H₂O, n(CO₂) = 2×0,1 = 0,2 mol. V(CO₂) = 0,2×24,79 = 4,958 L.\n\nVì sao các phương án khác sai:\n- A: Đã quên PTHH tạo ra 2 mol CO₂ từ 1 mol ethanol, coi n(CO₂) = n(ethanol).\n- C: Đã coi cả 115 mL rượu là ethanol nguyên chất, quên nhân với độ cồn 5% để lấy đúng thể tích ethanol.\n- D: Đã coi thể tích ethanol (mL) bằng luôn khối lượng (g), quên nhân với khối lượng riêng D = 0,8 g/mL."
+  },
+  {
+   "ma_cau": "K09000000191",
+   "nhom_id": "KNB00524",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn ethylic alcohol nguyên chất có trong 230 mL rượu 5° (khối lượng riêng ethanol D = 0,8 g/mL). Thể tích khí CO₂ sinh ra (đkc) là",
+   "lua_chon": [
+    "4,958 L",
+    "198,32 L",
+    "12,395 L",
+    "9,916 L"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Thể tích ethanol nguyên chất: V = 230×5% = 11,5 mL. Khối lượng: m = 11,5×0,8 = 9,2 g. Số mol: n = 9,2:46 = 0,2 mol. PTHH: C₂H₆O + 3O₂ →(t°) 2CO₂ + 3H₂O, n(CO₂) = 2×0,2 = 0,4 mol. V(CO₂) = 0,4×24,79 = 9,916 L.\n\nVì sao các phương án khác sai:\n- A: Đã quên PTHH tạo ra 2 mol CO₂ từ 1 mol ethanol, coi n(CO₂) = n(ethanol).\n- B: Đã coi cả 230 mL rượu là ethanol nguyên chất, quên nhân với độ cồn 5% để lấy đúng thể tích ethanol.\n- C: Đã coi thể tích ethanol (mL) bằng luôn khối lượng (g), quên nhân với khối lượng riêng D = 0,8 g/mL."
+  },
+  {
+   "ma_cau": "K09000000192",
+   "nhom_id": "KNB00524",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn ethylic alcohol nguyên chất có trong 100 mL rượu 23° (khối lượng riêng ethanol D = 0,8 g/mL). Thể tích khí CO₂ sinh ra (đkc) là",
+   "lua_chon": [
+    "19,832 L",
+    "≈86,2 L",
+    "9,916 L",
+    "24,79 L"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Thể tích ethanol nguyên chất: V = 100×23% = 23 mL. Khối lượng: m = 23×0,8 = 18,4 g. Số mol: n = 18,4:46 = 0,4 mol. PTHH: C₂H₆O + 3O₂ →(t°) 2CO₂ + 3H₂O, n(CO₂) = 2×0,4 = 0,8 mol. V(CO₂) = 0,8×24,79 = 19,832 L.\n\nVì sao các phương án khác sai:\n- B: Đã coi cả 100 mL rượu là ethanol nguyên chất, quên nhân với độ cồn 23% để lấy đúng thể tích ethanol.\n- C: Đã quên PTHH tạo ra 2 mol CO₂ từ 1 mol ethanol, coi n(CO₂) = n(ethanol).\n- D: Đã coi thể tích ethanol (mL) bằng luôn khối lượng (g), quên nhân với khối lượng riêng D = 0,8 g/mL."
+  },
+  {
+   "ma_cau": "K09000000193",
+   "nhom_id": "KNB00524",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn ethylic alcohol nguyên chất có trong 150 mL rượu 23° (khối lượng riêng ethanol D = 0,8 g/mL). Thể tích khí CO₂ sinh ra (đkc) là",
+   "lua_chon": [
+    "14,874 L",
+    "37,185 L",
+    "29,748 L",
+    "≈129,3 L"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Thể tích ethanol nguyên chất: V = 150×23% = 34,5 mL. Khối lượng: m = 34,5×0,8 = 27,6 g. Số mol: n = 27,6:46 = 0,6 mol. PTHH: C₂H₆O + 3O₂ →(t°) 2CO₂ + 3H₂O, n(CO₂) = 2×0,6 = 1,2 mol. V(CO₂) = 1,2×24,79 = 29,748 L.\n\nVì sao các phương án khác sai:\n- A: Đã quên PTHH tạo ra 2 mol CO₂ từ 1 mol ethanol, coi n(CO₂) = n(ethanol).\n- B: Đã coi thể tích ethanol (mL) bằng luôn khối lượng (g), quên nhân với khối lượng riêng D = 0,8 g/mL.\n- D: Đã coi cả 150 mL rượu là ethanol nguyên chất, quên nhân với độ cồn 23% để lấy đúng thể tích ethanol."
+  },
+  {
+   "ma_cau": "K09000000194",
+   "nhom_id": "KNB00524",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn ethylic alcohol nguyên chất có trong 200 mL rượu 23° (khối lượng riêng ethanol D = 0,8 g/mL). Thể tích khí CO₂ sinh ra (đkc) là",
+   "lua_chon": [
+    "19,832 L",
+    "39,664 L",
+    "≈172,4 L",
+    "49,58 L"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Thể tích ethanol nguyên chất: V = 200×23% = 46 mL. Khối lượng: m = 46×0,8 = 36,8 g. Số mol: n = 36,8:46 = 0,8 mol. PTHH: C₂H₆O + 3O₂ →(t°) 2CO₂ + 3H₂O, n(CO₂) = 2×0,8 = 1,6 mol. V(CO₂) = 1,6×24,79 = 39,664 L.\n\nVì sao các phương án khác sai:\n- A: Đã quên PTHH tạo ra 2 mol CO₂ từ 1 mol ethanol, coi n(CO₂) = n(ethanol).\n- C: Đã coi cả 200 mL rượu là ethanol nguyên chất, quên nhân với độ cồn 23% để lấy đúng thể tích ethanol.\n- D: Đã coi thể tích ethanol (mL) bằng luôn khối lượng (g), quên nhân với khối lượng riêng D = 0,8 g/mL."
+  },
+  {
+   "ma_cau": "K09000000195",
+   "nhom_id": "KNB00524",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn ethylic alcohol nguyên chất có trong 115 mL rượu 15° (khối lượng riêng ethanol D = 0,8 g/mL). Thể tích khí CO₂ sinh ra (đkc) là",
+   "lua_chon": [
+    "14,874 L",
+    "7,437 L",
+    "≈76,7 L",
+    "13,8 L"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Thể tích ethanol nguyên chất: V=115×15%=17,25mL. Khối lượng: m=17,25×0,8=13,8g. Số mol: n=13,8:46=0,3mol. PTHH: C₂H₆O+3O₂→2CO₂+3H₂O, n(CO₂)=2×0,3=0,6mol. V(CO₂)=0,6×24,79=14,874L.\n\nVì sao các phương án khác sai:\n- B: Đã quên PTHH tạo ra 2 mol CO₂ từ 1 mol ethanol, coi n(CO₂)=n(ethanol).\n- C: Đã coi cả 115 mL rượu là ethanol nguyên chất, quên nhân với độ cồn 15% để lấy đúng thể tích ethanol.\n- D: Đã coi thể tích ethanol (mL) bằng luôn khối lượng (g), quên nhân với khối lượng riêng D=0,8g/mL."
+  },
+  {
+   "ma_cau": "K09000000196",
+   "nhom_id": "KNB00524",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn ethylic alcohol nguyên chất có trong 115 mL rượu 25° (khối lượng riêng ethanol D = 0,8 g/mL). Thể tích khí CO₂ sinh ra (đkc) là",
+   "lua_chon": [
+    "12,395 L",
+    "24,79 L",
+    "≈99,2 L",
+    "23 L"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Thể tích ethanol nguyên chất: V=115×25%=28,75mL. Khối lượng: m=28,75×0,8=23g. Số mol: n=23:46=0,5mol. PTHH: C₂H₆O+3O₂→2CO₂+3H₂O, n(CO₂)=2×0,5=1mol. V(CO₂)=1×24,79=24,79L.\n\nVì sao các phương án khác sai:\n- A: Đã quên PTHH tạo ra 2 mol CO₂ từ 1 mol ethanol, coi n(CO₂)=n(ethanol).\n- C: Đã coi cả 115 mL rượu là ethanol nguyên chất, quên nhân với độ cồn 25% để lấy đúng thể tích ethanol.\n- D: Đã coi thể tích ethanol (mL) bằng luôn khối lượng (g), quên nhân với khối lượng riêng D=0,8g/mL."
+  },
+  {
+   "ma_cau": "K09000000197",
+   "nhom_id": "KNB00524",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn ethylic alcohol nguyên chất có trong 115 mL rượu 35° (khối lượng riêng ethanol D = 0,8 g/mL). Thể tích khí CO₂ sinh ra (đkc) là",
+   "lua_chon": [
+    "17,353 L",
+    "≈138,5 L",
+    "34,706 L",
+    "32,2 L"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Thể tích ethanol nguyên chất: V=115×35%=40,25mL. Khối lượng: m=40,25×0,8=32,2g. Số mol: n=32,2:46=0,7mol. PTHH: C₂H₆O+3O₂→2CO₂+3H₂O, n(CO₂)=2×0,7=1,4mol. V(CO₂)=1,4×24,79=34,706L.\n\nVì sao các phương án khác sai:\n- A: Đã quên PTHH tạo ra 2 mol CO₂ từ 1 mol ethanol, coi n(CO₂)=n(ethanol).\n- B: Đã coi cả 115 mL rượu là ethanol nguyên chất, quên nhân với độ cồn 35% để lấy đúng thể tích ethanol.\n- D: Đã coi thể tích ethanol (mL) bằng luôn khối lượng (g), quên nhân với khối lượng riêng D=0,8g/mL."
+  },
+  {
+   "ma_cau": "K09000000216",
+   "nhom_id": "KNB00528",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Từ 5,6 g ethylene (C₂H₄), thực hiện chuyển hoá qua 2 giai đoạn: C₂H₄ → C₂H₅OH (hiệu suất 80%) rồi C₂H₅OH → CH₃COOH (hiệu suất 75%). Khối lượng acetic acid thu được là bao nhiêu? (dùng C = 12, H = 1, O = 16)",
+   "lua_chon": [
+    "7,2 g",
+    "9,6 g",
+    "12 g",
+    "14,4 g"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n(C₂H₄) = 5,6:28 = 0,2 mol; qua chuỗi tỉ lệ mol 1:1:1 nên n(CH₃COOH) lí thuyết = 0,2 mol; hiệu suất chung = 80%×75% = 60%; n thực tế = 0,2×0,6 = 0,12 mol; m = 0,12×60 = 7,2 g.\n\nVì sao các phương án khác sai:\n- B: Chỉ nhân hiệu suất giai đoạn 1 (80%), quên nhân tiếp hiệu suất giai đoạn 2 (75%).\n- C: Đây là khối lượng lí thuyết (chưa nhân hiệu suất chung): 0,2×60 = 12 g.\n- D: Nhầm hệ số tỉ lệ mol giữa C₂H₄ và CH₃COOH là 1:2 nên nhân đôi kết quả đúng."
+  },
+  {
+   "ma_cau": "K09000000217",
+   "nhom_id": "KNB00528",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Thực hiện chuyển hoá ethylene thành acetic acid qua 2 giai đoạn liên tiếp: C₂H₄ → C₂H₅OH hiệu suất 90%, C₂H₅OH → CH₃COOH hiệu suất 80%. Hiệu suất chung của cả quá trình chuyển hoá từ C₂H₄ thành CH₃COOH là bao nhiêu?",
+   "lua_chon": [
+    "170%",
+    "72%",
+    "85%",
+    "9%"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Hiệu suất chung của chuỗi nhiều giai đoạn bằng tích các hiệu suất từng giai đoạn: H = 90%×80% = 72%.\n\nVì sao các phương án khác sai:\n- A: Nhầm cộng hai hiệu suất (90% + 80% = 170%) thay vì nhân.\n- C: Nhầm lấy trung bình hai hiệu suất ((90%+80%):2 = 85%) thay vì nhân.\n- D: Nhầm nhân sai đơn vị phần trăm, tính 0,9×0,08 thay vì 0,9×0,8."
+  },
+  {
+   "ma_cau": "K09000000218",
+   "nhom_id": "KNB00528",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Thực hiện chuyển hoá ethylic alcohol thành ethyl acetate qua 2 giai đoạn liên tiếp: lên men giấm C₂H₅OH → CH₃COOH (hiệu suất 75%), rồi ester hoá CH₃COOH → CH₃COOC₂H₅ (hiệu suất 80%, dùng thêm ethylic alcohol dư). Từ 9,2 g ethylic alcohol ban đầu, khối lượng ethyl acetate thu được là bao nhiêu? (dùng C = 12, H = 1, O = 16)",
+   "lua_chon": [
+    "8,8 g",
+    "13,2 g",
+    "10,56 g",
+    "17,6 g"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(C₂H₅OH) = 9,2:46 = 0,2 mol; qua 2 giai đoạn tỉ lệ mol 1:1:1 nên n(ester) lí thuyết = 0,2 mol; hiệu suất chung = 75%×80% = 60%; n thực tế = 0,2×0,6 = 0,12 mol; m = 0,12×88 = 10,56 g.\n\nVì sao các phương án khác sai:\n- A: Nhầm hiệu suất chung thành 50% thay vì tính đúng 75%×80% = 60%.\n- B: Chỉ nhân hiệu suất giai đoạn 1 (75%), quên nhân tiếp hiệu suất giai đoạn 2 (80%).\n- D: Đây là khối lượng ester lí thuyết (chưa nhân hiệu suất chung 60%)."
+  },
+  {
+   "ma_cau": "K09000000219",
+   "nhom_id": "KNB00528",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Thực hiện chuyển hoá ethylene thành ethyl acetate qua 3 giai đoạn liên tiếp: C₂H₄ → C₂H₅OH (hiệu suất 90%), C₂H₅OH → CH₃COOH (hiệu suất 80%), CH₃COOH → CH₃COOC₂H₅ (hiệu suất 75%, dùng thêm ethylic alcohol dư). Hiệu suất chung của cả 3 giai đoạn là bao nhiêu?",
+   "lua_chon": [
+    "245%",
+    "81,7%",
+    "60%",
+    "54%"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Hiệu suất chung của chuỗi nhiều giai đoạn liên tiếp bằng tích các hiệu suất: H = 90%×80%×75% = 54%.\n\nVì sao các phương án khác sai:\n- A: Nhầm cộng ba hiệu suất (90%+80%+75% = 245%) thay vì nhân.\n- B: Nhầm lấy trung bình ba hiệu suất ((90%+80%+75%):3 ≈ 81,7%) thay vì nhân.\n- C: Nhầm quên nhân hiệu suất giai đoạn 1 (90%), chỉ nhân hai giai đoạn sau: 80%×75% = 60%."
+  },
+  {
+   "ma_cau": "K09000000220",
+   "nhom_id": "KNB00528",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Thực hiện chuyển hoá ethylene thành ethyl acetate qua 3 giai đoạn liên tiếp với hiệu suất chung 54% (giai đoạn 1: 90%, giai đoạn 2: 80%, giai đoạn 3: 75%). Từ 2,8 g ethylene ban đầu, khối lượng ethyl acetate thu được là bao nhiêu? (dùng C = 12, H = 1, O = 16)",
+   "lua_chon": [
+    "4,752 g",
+    "8,8 g",
+    "5,4 g",
+    "2,592 g"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n(C₂H₄) = 2,8:28 = 0,1 mol; tỉ lệ mol xuyên suốt 3 giai đoạn là 1:1:1:1 nên n(ester) lí thuyết = 0,1 mol; hiệu suất chung 54%; n thực tế = 0,1×0,54 = 0,054 mol; m = 0,054×88 = 4,752 g.\n\nVì sao các phương án khác sai:\n- B: Đây là khối lượng ester lí thuyết (0,1×88 = 8,8 g), quên nhân hiệu suất chung 54%.\n- C: Nhầm nhân hiệu suất trực tiếp với số mol rồi nhân với 100 thay vì với M ester đúng.\n- D: Nhầm nhớ sai khối lượng mol ester là 48 g/mol: 0,1×0,54×48 = 2,592."
+  },
+  {
+   "ma_cau": "K09000000221",
+   "nhom_id": "KNB00528",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Từ 11,2 g ethylene (C₂H₄), thực hiện chuyển hoá qua 2 giai đoạn: C₂H₄ → C₂H₅OH (hiệu suất 90%) rồi C₂H₅OH → CH₃COOH (hiệu suất 80%). Khối lượng acetic acid thu được là bao nhiêu?",
+   "lua_chon": [
+    "24 g",
+    "19,2 g",
+    "21,6 g",
+    "17,28 g"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(C₂H₄)=11,2:28=0,4mol; hiệu suất chung=90%×80%=72%; n thực tế=0,4×0,72=0,288mol; m=0,288×60=17,28g.\n\nVì sao các phương án khác sai:\n- A: Đây là khối lượng lí thuyết (chưa nhân hiệu suất chung): 0,4×60=24g.\n- B: Chỉ nhân hiệu suất giai đoạn 2 (80%), quên nhân hiệu suất giai đoạn 1 (90%): 0,4×0,8×60=19,2g.\n- C: Chỉ nhân hiệu suất giai đoạn 1 (90%), quên nhân hiệu suất giai đoạn 2 (80%): 0,4×0,9×60=21,6g."
+  },
+  {
+   "ma_cau": "K09000000222",
+   "nhom_id": "KNB00528",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Thực hiện chuyển hoá ethylic alcohol thành ethyl acetate qua 2 giai đoạn liên tiếp: lên men giấm C₂H₅OH → CH₃COOH (hiệu suất 60%), rồi ester hoá CH₃COOH → CH₃COOC₂H₅ (hiệu suất 75%, dùng thêm ethylic alcohol dư). Từ 23 g ethylic alcohol ban đầu, khối lượng ethyl acetate thu được là bao nhiêu?",
+   "lua_chon": [
+    "19,8 g",
+    "33 g",
+    "44 g",
+    "26,4 g"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n(C₂H₅OH)=23:46=0,5mol; hiệu suất chung=60%×75%=45%; n thực tế=0,5×0,45=0,225mol; m=0,225×88=19,8g.\n\nVì sao các phương án khác sai:\n- B: Chỉ nhân hiệu suất giai đoạn 2 (75%), quên nhân hiệu suất giai đoạn 1 (60%): 0,5×0,75×88=33g.\n- C: Đây là khối lượng ester lí thuyết (chưa nhân hiệu suất chung): 0,5×88=44g.\n- D: Chỉ nhân hiệu suất giai đoạn 1 (60%), quên nhân hiệu suất giai đoạn 2 (75%): 0,5×0,6×88=26,4g."
+  }
+ ]
+}

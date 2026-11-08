@@ -3,9 +3,11 @@
 // Danh sách ở dsGame.ts. `GameNhungHS`-kiểu nhúng cho Nông trại: <iframe> cùng origin (public/games/nong-trai/), có nút ‹ để về danh sách.
 // Chỉ VẼ: không số liệu nghiệp vụ. Khung/màu theo skin (KhungHS), chữ trung tính (không giọng game — đây là danh mục).
 // ============================================================================
-import { DauTrangHS, HEAD, MAU, ManHS, NhanHS, TheHS } from '../skin/KhungHS'
+import { DauTrangHS, HEAD, MAU, ManHS, NhanHS, NutHS, THE_TRON, TheHS } from '../skin/KhungHS'
 import { DS_GAME, type GameHS } from './dsGame'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
+import TangTocToanHS, { type KqTangToc } from './TangTocToanHS'
 import { ntDhtDongBo, ntLuuDoc, ntLuuGhi, ntNhip, ntRpc, ntXuDongBo, type NtNhip } from '../../../lib/nt_luu'
 
 function Anh({ g }: { g: GameHS }) {
@@ -52,6 +54,7 @@ export function GameNongTraiHS({ onBack }: { onBack: () => void }) {
   const xung = useRef(false)
   const dang = useRef(false)
   const sanSang = useRef(false)   // đã bắt tay xong ⇒ mới gửi nhịp giờ chơi
+  const [tangToc, setTangToc] = useState<number | null>(null)   // id rpc game đang chờ kết quả "tăng tốc bằng toán" (app vẽ bảng câu hỏi đè lên game)
   const noi = (m: Record<string, unknown>) => khung.current?.contentWindow?.postMessage({ bk: 'nt', ...m }, location.origin)
   const xa = useRef<() => Promise<void>>(async () => {})
   xa.current = async () => {
@@ -85,6 +88,9 @@ export function GameNongTraiHS({ onBack }: { onBack: () => void }) {
           try { await xa.current(); const r = await ntDhtDongBo(tong); noi({ loai: 'dht', ok: r.ok, loi: r.loi, soDu: r.so_du, daTieu: r.da_tieu }) }
           catch { noi({ loai: 'dht', ok: false, loi: 'mang' }) }
         })()
+      } else if (d.loai === 'rpc' && d.ten === 'tang_toc' && typeof d.id === 'number') {
+        // tăng tốc bằng toán (03/11): KHÔNG gọi thẳng server — app mở bảng 3 câu, server phát đề + chấm, xong mới trả kết quả cho game
+        setTangToc(d.id)
       } else if (d.loai === 'rpc' && typeof d.id === 'number' && typeof d.ten === 'string') {
         // bạn lớp thật: game xin gọi hàm server (danh sách trắng ở ntRpc)
         const id = d.id
@@ -112,9 +118,27 @@ export function GameNongTraiHS({ onBack }: { onBack: () => void }) {
   return (
     <div className="fixed inset-0 z-40" style={{ background: 'var(--sk-bg)' }}>
       <iframe ref={khung} title="Nông trại BK" src="/games/nong-trai/index.html?nhung=1" className="h-full w-full border-0" allow="autoplay" />
+      {tangToc !== null && <TangTocToanHS onXong={(kq: KqTangToc) => { noi({ loai: 'rpc', id: tangToc, kq }); setTangToc(null) }} />}
       <button onClick={onBack} aria-label="Về danh sách trò chơi"
         className="absolute bottom-[calc(10px+env(safe-area-inset-bottom))] right-2.5 z-50 flex h-10 w-10 items-center justify-center rounded-full text-[24px] leading-none active:scale-95"
         style={{ background: 'var(--sk-surface)', color: 'var(--sk-ink)', border: '1.5px solid var(--sk-line)', opacity: 0.92 }}>‹</button>
     </div>
+  )
+}
+
+/** Nông trại đang BẢO TRÌ (công tắc tinh_nang 'nt_bao_tri', Thùy 03/11): em bấm vào chỉ thấy hộp này, không mở game. Server cũng tự chặn chơi/ghi. */
+export function BaoTriNongTraiHS({ onDong }: { onDong: () => void }) {
+  return createPortal(
+    <div className="fixed inset-0 z-[90] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Nông trại đang bảo trì">
+      <div className="absolute inset-0" style={{ background: 'color-mix(in srgb, var(--sk-bg) 72%, transparent)' }} onClick={onDong} />
+      <div className="relative flex w-full max-w-[420px] flex-col items-center gap-3 p-5 text-center"
+        style={{ ...THE_TRON, background: MAU.bg, color: MAU.ink, fontFamily: 'var(--sk-font)', borderRadius: 'var(--sk-radius)' }}>
+        <div className="text-[44px] leading-none" aria-hidden>🛠️</div>
+        <p className="text-[20px] font-bold" style={HEAD}>Nông trại đang bảo trì</p>
+        <p className="text-[15.5px] leading-snug" style={{ color: MAU.muted }}>Thầy cô đang sửa một chút để nông trại chạy tốt hơn. Vườn của em vẫn được giữ nguyên — em quay lại sau nhé!</p>
+        <NutHS onClick={onDong}>Đã hiểu</NutHS>
+      </div>
+    </div>,
+    document.body,
   )
 }

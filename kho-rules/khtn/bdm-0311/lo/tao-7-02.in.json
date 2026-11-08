@@ -1,0 +1,118 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00310",
+   "khoi": "7",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "So sánh và sắp xếp khối lượng phân tử của nhiều chất",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Không so sánh dựa vào số nguyên tử hoặc nhìn công thức dài - ngắn. Phải tính khối lượng phân tử của từng chất theo cùng một đơn vị rồi mới so sánh.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/54b4fd09-8e4b-47dd-8309-40ac6bfcd454.png)\nCÁC BƯỚC GIẢI / 3 bước\nBƯỚC 1: Xác định công thức và khối lượng nguyên tử cần dùng.\nBƯỚC 2: Tính riêng khối lượng phân tử của từng chất.\nBƯỚC 3: So sánh các giá trị và sắp xếp theo yêu cầu tăng dần hoặc giảm dần.\nVÍ DỤ MINH HỌA\nĐề bài | So sánh khối lượng phân tử của $O_2$ và $N_2$, biết O = 16 amu, N = 14 amu.\nLời giải | Khối lượng phân tử $O_2 = 2 \\times 16 = 32$ amu; khối lượng phân tử $N_2 = 2 \\times 14 = 28$ amu.\nVì $32 > 28$ nên $O_2$ có khối lượng phân tử lớn hơn $N_2$.",
+   "can_dien_ly_thuyet_nhom": false,
+   "cau": [
+    {
+     "ma_cau": "K07020104001",
+     "loai": "trac_nghiem",
+     "de": "Cho 3 chất: $CH_4$ (16 amu), $NH_3$ (17 amu), $H_2O$ (18 amu). Thứ tự sắp xếp khối lượng phân tử tăng dần là",
+     "lua_chon": [
+      "$CH_4 < NH_3 < H_2O$",
+      " $H_2O < NH_3 < CH_4$",
+      " $NH_3 < CH_4 < H_2O$",
+      " $CH_4 < H_2O < NH_3$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng phân tử lần lượt là 16, 17, 18 amu, đúng theo thứ tự A."
+    },
+    {
+     "ma_cau": "K07020104002",
+     "loai": "trac_nghiem",
+     "de": "Trong các chất $O_2$, $O_3$, $CO_2$ ($O = 16$, $C = 12$), chất nào có khối lượng phân tử lớn nhất?",
+     "lua_chon": [
+      "$O_2$ (32 amu)",
+      " $O_3$ (48 amu)",
+      " $CO_2$ (44 amu)",
+      "Cả ba bằng nhau"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng phân tử $O_3 = 48$ amu, lớn nhất trong ba chất."
+    },
+    {
+     "ma_cau": "K07020104003",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất X có khối lượng phân tử lớn hơn khối lượng phân tử của khí oxygen ($O_2 = 32$ amu) nhưng nhỏ hơn khối lượng phân tử của khí ozone ($O_3 = 48$ amu). X có thể là chất nào sau đây?",
+     "lua_chon": [
+      "$CH_4$ (16 amu)",
+      " $CO_2$ (44 amu)",
+      " $NH_3$ (17 amu)",
+      " $N_2$ (28 amu)"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cần chất có khối lượng phân tử trong khoảng 32–48 amu; chỉ $CO_2$ (44 amu) thoả mãn."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00311",
+   "khoi": "7",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "Giải thích tính chất và hiện tượng thực tế",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Khả năng dẫn điện phụ thuộc vào việc trong chất có hạt mang điện chuyển động tự do hay không. Trong đồng kim loại, các electron tự do có thể dịch chuyển; còn oxygen gồm các phân tử $O_2$ trung hòa, không có hạt mang điện tự do nên không dẫn điện trong điều kiện thường. Vì vậy, không nên chỉ dựa máy móc vào nhãn kim loại hay phi kim.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/2a8aecfa-9ebd-41e3-bc5b-863622c79205.png)\nCÁC BƯỚC GIẢI / 3 bước\nBƯỚC 1: Xác định trạng thái và kiểu hạt cấu tạo của chất.\nBƯỚC 2: Xét trong chất có electron hoặc ion chuyển động tự do hay không.\nBƯỚC 3: Kết luận chất dẫn điện hay không dẫn điện và giải thích bằng hạt tải điện.\nVÍ DỤ MINH HỌA\nĐề bài | Vì sao Cu được dùng làm dây dẫn điện còn $O_2$ thì không, dù cả hai đều là đơn chất?\nLời giải | Trong Cu có các electron tự do có thể dịch chuyển khi đặt vào điện trường nên Cu dẫn điện. $O_2$ gồm các phân tử trung hòa, không có electron hay ion tự do chuyển động trong điều kiện thường nên không dẫn điện. Khác biệt nằm ở hạt tải điện, không chỉ ở cách phân loại kim loại – phi kim.",
+   "can_dien_ly_thuyet_nhom": false,
+   "cau": [
+    {
+     "ma_cau": "K07020105001",
+     "loai": "trac_nghiem",
+     "de": "Kim cương và than chì đều là đơn chất carbon nhưng có độ cứng khác nhau hoàn toàn. Nguyên nhân là do",
+     "lua_chon": [
+      "hai chất có khối lượng phân tử khác nhau",
+      "hai chất được tạo nên từ hai nguyên tố khác nhau",
+      "cách sắp xếp và liên kết giữa các nguyên tử carbon trong hai chất khác nhau",
+      "than chì là hợp chất còn kim cương là đơn chất"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cả hai đều chỉ chứa nguyên tố carbon (đều là đơn chất); sự khác biệt về tính chất đến từ cách sắp xếp, liên kết giữa các nguyên tử carbon trong không gian."
+    },
+    {
+     "ma_cau": "K07020105002",
+     "loai": "trac_nghiem",
+     "de": "Hai chất A và B đều là hợp chất, có cùng số loại nguyên tố tạo nên nhưng khác nhau về số lượng nguyên tử mỗi loại. Nhận định nào sau đây chắc chắn đúng?",
+     "lua_chon": [
+      "A và B có cùng khối lượng phân tử",
+      "A và B là hai chất khác nhau, có thể có tính chất khác nhau",
+      "A và B luôn là đơn chất",
+      "A và B không thể cùng chứa một nguyên tố hoá học"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Số lượng nguyên tử mỗi loại khác nhau sẽ tạo nên phân tử khác nhau (ví dụ CO và $CO_2$ cùng chứa C, O nhưng là hai chất khác nhau), nên A và B là hai chất khác nhau và có thể có tính chất khác nhau."
+    },
+    {
+     "ma_cau": "K07020105003",
+     "loai": "tu_luan",
+     "de": "Vì sao nước đá, nước lỏng và hơi nước đều được xem là cùng một chất?",
+     "loi_giai": "Vì ở cả ba trạng thái, chất vẫn được tạo nên từ cùng loại phân tử $H_2O$.\nTính chất hoá học của một chất được quyết định bởi loại phân tử tạo nên nó; nước đá, nước lỏng, hơi nước chỉ khác nhau về trạng thái do nhiệt độ thay đổi, còn thành phần phân tử $H_2O$ không đổi."
+    },
+    {
+     "ma_cau": "K07020105004",
+     "loai": "tu_luan",
+     "de": "Vì sao than chì dẫn điện được còn kim cương thì không, dù cả hai đều là đơn chất carbon?",
+     "loi_giai": "Vì cấu trúc liên kết giữa các nguyên tử carbon trong hai chất khác nhau.\nTrong than chì, cách sắp xếp các nguyên tử carbon cho phép electron di chuyển tương đối tự do nên dẫn điện được; trong kim cương, các electron đều tham gia liên kết chặt chẽ nên không dẫn điện."
+    },
+    {
+     "ma_cau": "K07020105005",
+     "loai": "tu_luan",
+     "de": "Một bạn học sinh cho rằng: \"Chất nào có phân tử chứa nhiều nguyên tử hơn thì luôn có khối lượng phân tử lớn hơn.\" Em hãy nhận xét ý kiến trên và lấy ví dụ để chứng minh.",
+     "loi_giai": "Ý kiến sai — khối lượng phân tử còn phụ thuộc loại nguyên tử, không chỉ số lượng.\nÝ kiến trên chưa đúng, vì khối lượng phân tử phụ thuộc vào cả số lượng và loại nguyên tử tạo nên phân tử. Ví dụ: phân tử nước $H_2O$ có 3 nguyên tử, khối lượng phân tử là 18 amu; trong khi phân tử khí chlorine $Cl_2$ chỉ có 2 nguyên tử nhưng khối lượng phân tử là $35,5 \\times 2 = 71$ amu, lớn hơn nhiều so với $H_2O$ dù có ít nguyên tử hơn."
+    },
+    {
+     "ma_cau": "K07020105006",
+     "loai": "tu_luan",
+     "de": "Hợp chất Z được tạo nên từ 1 nguyên tử kim loại M và 2 nguyên tử Cl, khối lượng phân tử là 111 amu ($Cl = 35.5$). Trong tự nhiên, đơn chất của kim loại M có ánh kim, dẫn điện tốt và thường được dùng làm vỏ hộp bảo quản thực phẩm.\na. Tính khối lượng nguyên tử M.\nb. Dựa vào khối lượng nguyên tử tìm được, M có thể là nguyên tố nào?",
+     "dap_an": "a. 40\nb. Calcium",
+     "loi_giai": "a. $M = 111 - 2 \\times 35,5 = 111 - 71 = 40$ (amu).\nb. M có khối lượng gần với calcium (Ca, 40 amu); hợp chất Z có thể là $CaCl_2$."
+    }
+   ]
+  }
+ ]
+}

@@ -5,46 +5,36 @@
 // (cùng cột với Report PH — 1 ảnh cho (HS, môn, tháng)). NÓ KHÔNG động vào `cong_bo_at`, nên trao giải chụp
 // KHÔNG bằng công bố report cho PH.
 import { forwardRef } from 'react'
+import { MUC_HEX } from '../../lib/ketLuan'
 import { createRoot } from 'react-dom/client'
 import html2canvas from 'html2canvas'
 import type { TongQuanHS } from '../../lib/mastery'
 import { getTongQuanHS } from '../../lib/mastery'
-import { getReportBuoiHS, getBaoCaoPH, getGVChinhLop, getKhoiRankDiemMT, getLopRankDiemMT, getHeRankDiemMT, type BaoCaoPH, type KhoiRankMT, type LopRankMT, type HeRankMT } from '../../lib/report'
+import { getReportBuoiHS, getBaoCaoPH, getGVChinhLop, getKhoiRankDiemMT, getLopRankDiemMT, getHeRankDiemMT, getKSDiemThang, type BaoCaoPH, type KhoiRankMT, type LopRankMT, type HeRankMT, type KSThang } from '../../lib/report'
 import { uploadReportImage } from '../../lib/ph-login'
 
 // đồng bộ với ReportPHScreen top-of-file (thang 5 GV chọn)
 const SKILL_MUC = ['Cần cố gắng', 'Trung bình', 'Khá', 'Tốt', 'Xuất sắc'] as const
 
 // Bucket = { pct, n } — copy đồng bộ với ReportPHScreen (số HS đúng/số HS chấm) để render card.
+// Cột "Tổng" lấy thẳng *Tong từ fn_tong_quan_hs (03/11) — không ghép CB+NC ở client (dạng chưa có độ khó sẽ rơi mất).
 type Bucket = { pct: number | null; n: number }
-function tongPct(a: Bucket, b: Bucket): number | null {
-  const nT = a.n + b.n; if (!nT) return null
-  const s = (a.pct != null ? a.pct * a.n : 0) + (b.pct != null ? b.pct * b.n : 0)
-  return Math.round(s / nT)
-}
 
 
 // ── ẢNH GỬI PHỤ HUYNH — thẻ inline-hex (né oklch Tailwind v4), layout kiểu tab Kết quả app PH ──
-export const MUC_HEX: Record<string, { bg: string; fg: string; emoji: string; label: string }> = {
-  rat_tot: { bg: '#ecfdf5', fg: '#047857', emoji: '🌟', label: 'Con học rất tốt' },
-  dat_yeu_cau: { bg: '#f0fdf4', fg: '#15803d', emoji: '✅', label: 'Con đạt yêu cầu' },
-  tien_bo: { bg: '#f0f9ff', fg: '#0369a1', emoji: '📈', label: 'Con đang tiến bộ' },
-  cai_thien_thai_do: { bg: '#fffbeb', fg: '#b45309', emoji: '⚠️', label: 'Con cần cải thiện thái độ học tập' },
-  cai_thien_kien_thuc: { bg: '#fffbeb', fg: '#b45309', emoji: '⚠️', label: 'Con cần cải thiện kiến thức và kĩ năng' },
-  van_de_thai_do: { bg: '#fff1f2', fg: '#be123c', emoji: '🆘', label: 'Con gặp vấn đề về thái độ học tập' },
-  van_de_kien_thuc: { bg: '#fff1f2', fg: '#be123c', emoji: '🆘', label: 'Con gặp vấn đề về kiến thức và kĩ năng' },
-}
-const s10 = (pct: number | null) => pct == null ? '—' : (pct / 10).toFixed(1)
-const hexPct = (pct: number | null) => pct == null ? '#cbd5e1' : pct >= 80 ? '#059669' : pct >= 50 ? '#d97706' : '#e11d48'
+export { MUC_HEX }   // định nghĩa ở lib/ketLuan.ts (06/11 — app GV dùng chung mà không kéo html2canvas)
+export const s10 = (pct: number | null) => pct == null ? '—' : (pct / 10).toFixed(1)
+export const hexPct = (pct: number | null) => pct == null ? '#cbd5e1' : pct >= 80 ? '#059669' : pct >= 50 ? '#d97706' : '#e11d48'
 
 // ── CARD BÁO CÁO (dùng chung: modal "Ảnh gửi PH" + chụp tự động lúc chốt) ──
 export type ReportCardProps = {
   hsName: string; hsImg: string | null; lopTen: string; mon: string; ym: string; gvName: string | null;
   tq: TongQuanHS; missCount: number; bc: BaoCaoPH;
   khoiRank: KhoiRankMT | null; lopRank: LopRankMT | null; heRank: HeRankMT | null;
+  ks?: KSThang | null // 23/10: khảo sát giữa tháng — chỉ hiện dòng khi tháng đó em có khảo sát
 }
 export const ReportCardView = forwardRef<HTMLDivElement, ReportCardProps>(function ReportCardView(
-  { hsName, hsImg, lopTen, mon, ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank }, ref,
+  { hsName, hsImg, lopTen, mon, ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank, ks }, ref,
 ) {
   const muc = bc.ket_luan_muc ? MUC_HEX[bc.ket_luan_muc] : null
   const a = tq.hoatDong, hh = tq.hoanThanh.toanBo.etMt
@@ -83,10 +73,10 @@ export const ReportCardView = forwardRef<HTMLDivElement, ReportCardProps>(functi
     </div>
   )
   const cell = (lb: string, pct: number | null, sz: number) => <div><span style={{ fontSize: 7.5, color: '#94a3b8', display: 'block' }}>{lb}</span><span style={{ fontSize: sz, fontWeight: 900, color: hexPct(pct) }}>{s10(pct)}</span></div>
-  const assessRow = (ten: string, hx: string, cb: Bucket, nc: Bucket, first?: boolean) => (
+  const assessRow = (ten: string, hx: string, tong: Bucket, cb: Bucket, nc: Bucket, first?: boolean) => (
     <div style={{ display: 'grid', gridTemplateColumns: '1.25fr .6fr .6fr .6fr', gap: 6, alignItems: 'center', minHeight: 46, borderTop: first ? 'none' : '1px dashed #e9edf4' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 10.5, fontWeight: 800, color: '#15233b' }}><span style={{ width: 9, height: 9, borderRadius: 5, background: hx, boxShadow: `0 0 0 4px ${hx}22` }} />{ten}</div>
-      {cell('Tổng', tongPct(cb, nc), 16)}{cell('Cơ bản', cb.pct, 15)}{cell('Nâng cao', nc.pct, 15)}
+      {cell('Tổng', tong.pct, 16)}{cell('Cơ bản', cb.pct, 15)}{cell('Nâng cao', nc.pct, 15)}
     </div>
   )
   const hexDiem = (v: number | null) => v == null ? '#cbd5e1' : v >= 8 ? '#059669' : v >= 5 ? '#d97706' : '#e11d48'
@@ -174,12 +164,14 @@ export const ReportCardView = forwardRef<HTMLDivElement, ReportCardProps>(functi
             <span style={{ width: 31, height: 31, borderRadius: 11, display: 'grid', placeItems: 'center', background: '#eef0ff', fontSize: 14 }}>📊</span>
             <div><div style={{ fontSize: 13, fontWeight: 800, color: '#15233b' }}>Kết quả đánh giá trong tháng</div><div style={{ fontSize: 9, color: '#70809b' }}>Thang điểm 10</div></div>
           </div>
-          {assessRow('Test cuối giờ', '#315fdd', a.etCoBan, a.etNangCao, true)}
-          {assessRow('Bài tập về nhà', '#12a875', a.btvnCoBan, a.btvnNangCao)}
+          {assessRow('Test cuối giờ', '#315fdd', a.etTong, a.etCoBan, a.etNangCao, true)}
+          {assessRow('Bài tập về nhà', '#12a875', a.btvnTong, a.btvnCoBan, a.btvnNangCao)}
           {assessRowDiem('Test tháng', '#e29a23', tq.diem.mt.tb, tq.diem.mt.pctCoBan, tq.diem.mt.pctNangCao,
             (tq.diem.mt.thiLai.n || tq.diem.mt.thiLai.nCoBan || tq.diem.mt.thiLai.nNangCao)
               ? { tong: tq.diem.mt.thiLai.tb, pctCB: tq.diem.mt.thiLai.pctCoBan, pctNC: tq.diem.mt.thiLai.pctNangCao }
               : null)}
+          {ks ? assessRowDiem('Khảo sát giữa tháng', '#0f9d8f', ks.tb, ks.pctCoBan, ks.pctNangCao,
+            ks.tlN ? { tong: ks.tlTb, pctCB: null, pctNC: null } : null) : null}
           {missCount > 0 ? <div style={{ fontSize: 9.5, color: '#da7d00', marginTop: 6 }}>⚠ Chưa hoàn thành BTVN {missCount} lần trong tháng</div> : null}
         </div>
         {bc.muc_tieu ? <div style={{ display: 'grid', gridTemplateColumns: '36px 1fr', gap: 10, alignItems: 'center', background: 'linear-gradient(135deg,#fff9e9,#fff)', border: '1px solid #f3e7bf', borderRadius: 20, padding: '12px 13px', marginBottom: 10 }}>
@@ -213,7 +205,7 @@ export async function captureReportSnapshot(p: {
   hsName: string; hsImg: string | null; lopTen: string;
   gvName?: string | null; // nếu caller đã có (đỡ 1 query); không có thì tự lấy theo lopId
 }): Promise<string> {
-  const [tq, rows, bc, khoiRank, lopRank, heRank, gvName] = await Promise.all([
+  const [tq, rows, bc, khoiRank, lopRank, heRank, gvName, ks] = await Promise.all([
     getTongQuanHS(p.hsId, p.mon, { ym: p.ym }),
     getReportBuoiHS(p.hsId, p.mon, p.ym),
     getBaoCaoPH(p.hsId, p.mon, p.ym),
@@ -221,7 +213,8 @@ export async function captureReportSnapshot(p: {
     p.lopId ? getLopRankDiemMT(p.hsId, p.lopId, p.mon, p.ym) : Promise.resolve(null),
     getHeRankDiemMT(p.hsId, p.mon, p.ym),
     p.gvName !== undefined ? Promise.resolve(p.gvName) : (p.lopId ? getGVChinhLop(p.lopId) : Promise.resolve(null)),
+    getKSDiemThang(p.hsId, p.mon, p.ym).catch(() => null),
   ])
   const missCount = rows.filter((r) => r.btvnTrangThai === 'khong_lam' || r.btvnTrangThai === 'xin_phep').length
-  return renderCardToUrl({ hsName: p.hsName, hsImg: p.hsImg, lopTen: p.lopTen, mon: p.mon, ym: p.ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank }, `${p.hsId}_${p.ym}`)
+  return renderCardToUrl({ hsName: p.hsName, hsImg: p.hsImg, lopTen: p.lopTen, mon: p.mon, ym: p.ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank, ks }, `${p.hsId}_${p.ym}`)
 }

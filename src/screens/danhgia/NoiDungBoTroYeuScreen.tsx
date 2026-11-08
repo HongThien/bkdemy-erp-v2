@@ -150,7 +150,7 @@ function CaseDetail({ c, onDong, onDoi }: { c: CaseBoTroYeuItem; onDong: () => v
       </div>
 
       {picker === 'yeu' && (
-        <DangYeuPicker hocSinhId={c.hoc_sinh_id} mon={c.mon} daCo={dangs.map((d) => d.ma_dang)}
+        <DangYeuPicker hocSinhId={c.hoc_sinh_id} mon={c.mon} banDo={c.ban_do ?? 'cu'} daCo={dangs.map((d) => d.ma_dang)}
           onClose={() => setPicker(null)} onConfirm={themXong} onTimBanDo={() => setPicker('ban_do')} />
       )}
       {picker === 'ban_do' && <DangPicker khoi={khoiPick} mon={c.mon} selected={[]} onClose={() => setPicker(null)} onConfirm={themXong} />}
@@ -165,8 +165,8 @@ const MUC_NHAN: Record<DangGoiY['muc'], { ten: string; cls: string }> = {
   yeu: { ten: 'yếu', cls: 'bg-rose-50 text-rose-700' },
   can_luyen: { ten: 'cần luyện', cls: 'bg-amber-50 text-amber-700' },
 }
-function DangYeuPicker({ hocSinhId, mon, daCo, onClose, onConfirm, onTimBanDo }: {
-  hocSinhId: string; mon: string; daCo: string[]
+function DangYeuPicker({ hocSinhId, mon, banDo, daCo, onClose, onConfirm, onTimBanDo }: {
+  hocSinhId: string; mon: string; banDo: 'cu' | 'moi'; daCo: string[]
   onClose: () => void; onConfirm: (maDangs: string[]) => void; onTimBanDo: () => void
 }) {
   const [items, setItems] = useState<DangGoiY[]>([])
@@ -177,10 +177,10 @@ function DangYeuPicker({ hocSinhId, mon, daCo, onClose, onConfirm, onTimBanDo }:
 
   useEffect(() => {
     setLoading(true); setLoi(null)
-    getDangYeuGoiY(hocSinhId, mon).then(setItems)
+    getDangYeuGoiY(hocSinhId, mon, banDo).then(setItems)
       .catch((e: any) => setLoi(e?.message ?? String(e)))
       .finally(() => setLoading(false))
-  }, [hocSinhId, mon])
+  }, [hocSinhId, mon, banDo])
 
   const toggle = (ma: string) => setSel((s) => { const n = new Set(s); n.has(ma) ? n.delete(ma) : n.add(ma); return n })
   const chuaCo = items.filter((d) => !daCoSet.has(d.ma_dang))

@@ -1,0 +1,92 @@
+[
+ {
+  "ma_cau": "K09060109030",
+  "dang_bai_id": "KDB01227",
+  "chac": "vua",
+  "ly_do": "Cho lượng muối, hỏi KL Cu bám vào; gần dạng 1 nhưng đề không cho KL kim loại"
+ },
+ {
+  "ma_cau": "K09060109031",
+  "dang_bai_id": "KDB01227",
+  "chac": "vua",
+  "ly_do": "Cho lượng AgNO3, hỏi KL Ag bám vào; gần dạng 1, đề không cho KL kim loại"
+ },
+ {
+  "ma_cau": "K09060109032",
+  "dang_bai_id": "KDB01227",
+  "chac": "vua",
+  "ly_do": "Cho lượng Pb(NO3)2, hỏi KL Pb sinh ra; gần dạng 1, muối khác"
+ },
+ {
+  "ma_cau": "K09060109033",
+  "dang_bai_id": "KDB01227",
+  "chac": "vua",
+  "ly_do": "Al + CuSO4, hỏi KL Cu sinh ra; gần dạng 1, đề không cho KL kim loại"
+ },
+ {
+  "ma_cau": "K09060109034",
+  "dang_bai_id": "KDB01227",
+  "chac": "vua",
+  "ly_do": "Cho lượng AgNO3, hỏi KL Ag bám vào; gần dạng 1, đề không cho KL kim loại"
+ },
+ {
+  "ma_cau": "K09060109035",
+  "dang_bai_id": "KDB01229",
+  "chac": "cao",
+  "ly_do": "Thanh Fe tăng 1,6 g trong CuSO4, hỏi mol Fe phản ứng: tăng giảm khối lượng"
+ },
+ {
+  "ma_cau": "K09060109036",
+  "dang_bai_id": "KDB01229",
+  "chac": "vua",
+  "ly_do": "Thanh Cu tăng trong AgNO3, hỏi mol Cu phản ứng; đúng kiểu nhưng muối AgNO3"
+ },
+ {
+  "ma_cau": "K09060109037",
+  "dang_bai_id": "KDB01229",
+  "chac": "vua",
+  "ly_do": "Thanh Al tăng trong AgNO3, hỏi mol Al; đúng kiểu nhưng muối AgNO3, Al hóa trị III"
+ },
+ {
+  "ma_cau": "K09060109038",
+  "dang_bai_id": "KDB01229",
+  "chac": "cao",
+  "ly_do": "Thanh Zn giảm 0,2 g trong CuSO4, hỏi mol Zn phản ứng: tăng giảm khối lượng"
+ },
+ {
+  "ma_cau": "K09060109039",
+  "dang_bai_id": "KDB01229",
+  "chac": "cao",
+  "ly_do": "Thanh Mg tăng 4 g trong CuSO4, hỏi mol Mg phản ứng: tăng giảm khối lượng"
+ },
+ {
+  "ma_cau": "K09060109040",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: nồng độ mol dung dịch muối tạo thành sau phản ứng kim loại + muối"
+ },
+ {
+  "ma_cau": "K09060109041",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: nồng độ mol dung dịch muối tạo thành sau phản ứng kim loại + muối"
+ },
+ {
+  "ma_cau": "K09060109042",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: nồng độ mol dung dịch muối tạo thành sau phản ứng kim loại + muối"
+ },
+ {
+  "ma_cau": "K09060109043",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: nồng độ mol dung dịch muối tạo thành sau phản ứng kim loại + muối"
+ },
+ {
+  "ma_cau": "K09060109044",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: nồng độ mol dung dịch muối tạo thành sau phản ứng kim loại + muối"
+ }
+]

@@ -1,0 +1,8 @@
+{
+ "ma_cau": "HH00103055",
+ "truoc": {
+  "noi_dung": "Cho tam giác ABC vuông ở A. BD là phân giác góc B. Kẻ DE vuông góc với BC. AE cắt BD tại I.\nChứng minh : $\\triangle ABD = \\triangle EBD$\nChứng minh: I là trung điểm AE",
+  "loi_giai": "Xét $\\triangle ABD$ và $\\triangle EBD$ có:\n$\\angle BAD = \\angle BED = 90^0$ (giả thiết)\nBD là cạnh chung\n$\\angle ABD = \\angle EBD$ (BD là tia phân giác của $\\angle B$)\nVậy $\\triangle ABD = \\triangle EBD$ (cạnh huyền – góc nhọn)\nTừ $\\triangle ABD = \\triangle EBD$ (chứng minh trên)\nSuy ra $AB = EB$ (hai cạnh tương ứng)\nXét $\\triangle ABI$ và $\\triangle EBI$ có:\n$AB = EB$ (chứng minh trên)\n$\\angle ABI = \\angle EBI$ (BD là tia phân giác của $\\angle B$)\nBI là cạnh chung\nVậy $\\triangle ABI = \\triangle EBI$ (c.g.c)\nSuy ra $AI = EI$ (hai cạnh tương ứng)\nDo đó I là trung điểm của AE",
+  "loai_cau": "tra_loi_ngan"
+ }
+}

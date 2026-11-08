@@ -1,0 +1,833 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00393",
+   "khoi": "8",
+   "chu_de": "Khối lượng riêng và Áp suất",
+   "chuyen_de": "Lực đẩy Archimedes",
+   "nhom": "Tính lực đẩy Archimedes",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nMột vật đặt trong chất lỏng chịu tác dụng của lực đẩy Archimedes có phương thẳng đứng, chiều từ dưới lên trên.\nĐộ lớn lực đẩy Archimedes bằng trọng lượng của phần chất lỏng bị vật chiếm chỗ.\nThể tích phần chất lỏng bị vật chiếm chỗ chính là thể tích phần vật chìm trong chất lỏng:\n- Vật chìm hoàn toàn: thể tích phần chìm bằng thể tích của vật.\n- Vật nổi trên mặt chất lỏng: thể tích phần chìm nhỏ hơn thể tích của vật.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/a6802fd1-21b4-4a19-aeea-98c80d154c6d.png)\n\n\n##TC 2. Công thức\n$F_A = d \\cdot V$\nTrong đó:\n- $F_A$ là lực đẩy Archimedes (N);\n- d là trọng lượng riêng của chất lỏng ($N/m^3$);\n- V là thể tích phần chất lỏng bị vật chiếm chỗ, tức thể tích phần vật chìm ($m^3$).\nCác công thức suy ra:\n$V = \\dfrac{F_A}{d}$ và $d = \\dfrac{F_A}{V}$\nLiên hệ giữa trọng lượng riêng và khối lượng riêng của chất lỏng: $d = 10D$ (D tính bằng $kg/m^3$).\nThể tích phần vật nổi: $V_{nổi} = V_{vật} - V_{chìm}$\nĐổi đơn vị thể tích:\n$1\\ \\mathrm{dm}^3 = 1\\ \\mathrm{L} = 0,001\\ \\mathrm{m}^3$\n$1\\ \\mathrm{cm}^3 = 1\\ \\mathrm{mL} = 0,000001\\ \\mathrm{m}^3$\n\n##PP3. Các bước làm bài\nBước 1. Xác định đại lượng cần tìm và các đại lượng đã cho.\nBước 2. Đổi đơn vị về hệ chuẩn: thể tích ra $\\mathrm{m^3}$, trọng lượng riêng ra $\\mathrm{N/m^3}$ (nếu đề cho khối lượng riêng D thì tính $\\mathrm{d = 10D}$).\nBước 3. Xác định thể tích phần vật chìm: vật chìm hoàn toàn thì lấy thể tích vật; nếu đề cho khối lượng và khối lượng riêng của vật thì tính $\\mathrm{V = \\dfrac{m}{D}}$; vật nổi thì chỉ lấy phần chìm, phần nổi tính bằng $\\mathrm{V_{nổi} = V_{vật} - V_{chìm}}$; cùng một vật chìm hoàn toàn trong hai chất lỏng thì thể tích phần chìm không đổi, tính $\\mathrm{V}$ từ chất lỏng đã biết lực đẩy.\nBước 4. Áp dụng công thức $\\mathrm{F_A = d \\cdot V}$ hoặc công thức suy ra để tính.\nBước 5. Đổi kết quả sang đơn vị đề yêu cầu.\n\n##CY 4. Lưu ý\nTrọng lượng riêng $\\mathrm{d}$ trong công thức là của chất lỏng, không phải của vật.\n$\\mathrm{V}$ là thể tích phần vật chìm, không phải luôn bằng thể tích của vật. Với vật nổi, chỉ lấy phần chìm.\nLực đẩy Archimedes không phụ thuộc vào chất làm vật hay khối lượng của vật, chỉ phụ thuộc vào $\\mathrm{d}$ của chất lỏng và thể tích phần chìm.\nKhông nhầm lực đẩy Archimedes với trọng lượng của vật.\nTrọng lượng riêng của một số chất lỏng thường gặp (tham khảo): nước $\\mathrm{10\\ 000\\ N/m^3}$; nước biển $\\mathrm{10\\ 300\\ N/m^3}$; dầu hoả $\\mathrm{8\\ 000\\ N/m^3}$; xăng $\\mathrm{7\\ 000\\ N/m^3}$.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00395",
+   "khoi": "8",
+   "chu_de": "Khối lượng riêng và Áp suất",
+   "chuyen_de": "Lực đẩy Archimedes",
+   "nhom": "BÀI TOÁN VẬT NỔI VÀ ỨNG DỤNG THỰC TẾ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nVật nổi đứng yên trên mặt chất lỏng: lực đẩy Archimedes cân bằng với trọng lượng của vật, $F_A = P$.\nTreo vật vào lực kế: ngoài không khí lực kế chỉ trọng lượng $P_1$ của vật; khi nhúng vật trong chất lỏng, lực kế chỉ $P_2$ nhỏ hơn vì vật chịu thêm lực đẩy hướng lên.\nThuyền, bè, phao chở được nhiều hàng nhất khi phần chìm đạt giới hạn cho phép (chìm sát mép hoặc theo giới hạn an toàn đề cho).\n\n##TC 2. Công thức\n$F_A = d \\cdot V_{\\text{chìm}}$; $P = 10m$; $D = \\dfrac{m}{V}$; $d = 10D$\nVật nổi: $d \\cdot V_{\\text{chìm}} = P$\nCân bằng lực kế: $F_A = P_1 - P_2$\nTải trọng: $P_{\\text{hàng}} = F_{\\text{max}} - P_{\\text{vỏ}}$ với $F_{\\text{max}} = d \\cdot V_{\\text{chìm tối đa}}$\n\n##PP 3. Các bước làm bài\nBước 1. Xác định tình huống: vật nổi đứng yên, vật treo vào lực kế, hay phương tiện chở hàng.\nBước 2. Viết điều kiện lực tương ứng: $F_A = P$; hoặc $F_A = P_1 - P_2$; hoặc $P_{\\text{hàng}} = F_{\\text{max}} - P_{\\text{vỏ}}$.\nBước 3. Đổi đơn vị về kg, N, m$^3$, N/m$^3$; tính các đại lượng trung gian ($P, F_A, V, m$) theo thứ tự.\nBước 4. Tính đại lượng đề hỏi và đổi sang đơn vị đề yêu cầu.\n\n##CY 4. Lưu ý\nKhi vật nổi, thể tích dùng trong công thức lực đẩy là thể tích phần chìm, không phải thể tích cả vật.\nKhi cân bằng lực kế, vật phải chìm hoàn toàn thì thể tích tính được mới là thể tích của vật.\nKhối lượng vỏ thuyền, sà lan thường cho theo tấn, cần đổi ra kg trước khi tính trọng lượng.\nSố người, số bao hàng tối đa phải là số nguyên, lấy phần nguyên của kết quả (không làm tròn lên).",
+   "can_dien_ly_thuyet_nhom": false
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB00912",
+   "nhom_id": "KNB00393",
+   "thu_tu": 1,
+   "dang": "TÍNH Fa KHI VẬT CHÌM HOÀN TOÀN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020402004",
+     "loai": "trac_nghiem",
+     "de": "Một viên bi sắt có thể tích $20\\ \\mathrm{cm^3}$ được thả chìm hoàn toàn trong một cốc dầu hoả. Biết trọng lượng riêng của dầu hoả là $8\\ 000\\ \\mathrm{N/m^3}$. Lực đẩy Archimedes tác dụng lên viên bi có độ lớn là",
+     "lua_chon": [
+      "0,00016 N",
+      "0,016 N",
+      "0,16 N",
+      "160 N"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi thể tích: $V = 20\\ \\mathrm{cm^3} = 0,00002\\ \\mathrm{m^3}$\nLực đẩy Archimedes tác dụng lên viên bi:\n$\\mathrm{F_A} = \\mathrm{d \\cdot V} = 8\\ 000 \\cdot 0,00002 = 0,16\\ \\mathrm{(N)}$"
+    },
+    {
+     "ma_cau": "K08020402005",
+     "loai": "trac_nghiem",
+     "de": "Một khối đồng có thể tích $0,5 \\text{ dm}^3$ được nhúng chìm hoàn toàn trong nước biển. Biết trọng lượng riêng của nước biển là $10 \\thinspace 300 \\text{ N/m}^3$. Lực đẩy Archimedes tác dụng lên khối đồng có độ lớn là",
+     "lua_chon": [
+      "5,15 N",
+      "51,5 N",
+      "515 N",
+      "5 150 N"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi thể tích: $V = 0,5 \\text{ dm}^3 = 0,0005 \\text{ m}^3$\nLực đẩy Archimedes tác dụng lên khối đồng:\n$F_A = d \\cdot V = 10 \\thinspace 300 \\cdot 0,0005 = 5,15 \\text{ (N)}$"
+    },
+    {
+     "ma_cau": "K08020402006",
+     "loai": "trac_nghiem",
+     "de": "Một chai nhựa đậy kín có thể tích $1,5 \\text{ L}$ bị dìm chìm hoàn toàn trong bể nước. Biết trọng lượng riêng của nước là $10 \\thinspace 000 \\text{ N/m}^3$. Lực đẩy Archimedes tác dụng lên chai nhựa có độ lớn là",
+     "lua_chon": [
+      "1,5 N",
+      "15 N",
+      "150 N",
+      "15 000 N"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi thể tích: $V = 1,5 \\text{ L} = 1,5 \\text{ dm}^3 = 0,0015 \\text{ m}^3$\nLực đẩy Archimedes tác dụng lên chai nhựa:\n$F_A = d \\cdot V = 10 \\thinspace 000 \\cdot 0,0015 = 15 \\text{ (N)}$"
+    },
+    {
+     "ma_cau": "K08020402001",
+     "loai": "trac_nghiem",
+     "de": "Một hòn đá có thể tích $0,004\\ \\mathrm{m^3}$ nằm chìm hoàn toàn dưới đáy hồ nước. Biết trọng lượng riêng của nước là $10\\ 000\\ \\mathrm{N/m^3}$. Lực đẩy Archimedes tác dụng lên hòn đá có độ lớn là",
+     "lua_chon": [
+      "4 N",
+      "40 N",
+      "400 N",
+      "40 000 N"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hòn đá chìm hoàn toàn nên thể tích phần chìm bằng thể tích hòn đá. Lực đẩy Archimedes:\n$\\mathrm{F_A = d \\cdot V = 10\\ 000 \\cdot 0,004 = 40\\ (N)}$"
+    },
+    {
+     "ma_cau": "K08020402007",
+     "loai": "trac_nghiem",
+     "de": "Một quả trứng gà có thể tích $55 \\ \\mathrm{cm^3}$ nằm chìm ở đáy một cốc nước. Biết trọng lượng riêng của nước là $10 \\ 000 \\ \\mathrm{N/m^3}$. Lực đẩy Archimedes tác dụng lên quả trứng có độ lớn là",
+     "lua_chon": [
+      "0,00055 N",
+      "0,0055 N",
+      "0,055 N",
+      "0,55 N"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi thể tích: $V = 55 \\ \\mathrm{cm^3} = 0,000055 \\ \\mathrm{m^3}$\nLực đẩy Archimedes tác dụng lên quả trứng:\n$F_A = d \\cdot V = 10 \\ 000 \\cdot 0,000055 = 0,55 \\ (N)$"
+    },
+    {
+     "ma_cau": "K08020402010",
+     "loai": "trac_nghiem",
+     "de": "Một khối thép có thể tích $0,006 \\ \\mathrm{m^3}$ được nhúng chìm hoàn toàn trong một thùng dầu ăn. Biết khối lượng riêng của dầu ăn là $920 \\ \\mathrm{kg/m^3}$ và trọng lượng riêng tính theo công thức $d = 10D$. Lực đẩy Archimedes tác dụng lên khối thép có độ lớn là",
+     "lua_chon": [
+      "$55,2 \\ \\mathrm{N}$",
+      "$552 \\ \\mathrm{N}$",
+      "$5 \\ 520 \\ \\mathrm{N}$",
+      "$55 \\ 200 \\ \\mathrm{N}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trọng lượng riêng của dầu ăn: $d = 10D = 10 \\cdot 920 = 9 \\ 200 \\ \\mathrm{(N/m^3)}$\nLực đẩy Archimedes tác dụng lên khối thép:\n$\\mathrm{F_A = d \\cdot V = 9 \\ 200 \\cdot 0,006 = 55,2 \\ \\mathrm{(N)}}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00913",
+   "nhom_id": "KNB00393",
+   "thu_tu": 2,
+   "dang": "TÍNH THỂ TÍCH PHẦN CHÌM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020402017",
+     "loai": "trac_nghiem",
+     "de": "Một quả bóng nổi trên mặt nước biển chịu lực đẩy Archimedes có độ lớn 5,15 N. Biết trọng lượng riêng của nước biển là 10 300 N/m$^3$. Thể tích phần quả bóng chìm trong nước biển là",
+     "lua_chon": [
+      "0,5 dm$^3$",
+      "5 dm$^3$",
+      "50 dm$^3$",
+      "500 dm$^3$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thể tích phần quả bóng chìm trong nước biển:\n$V = \\dfrac{F_A}{d} = \\dfrac{5,15}{10\\ 300} = 0,0005$ (m$^3$)\nĐổi đơn vị:\n$V = 0,0005\\ \\mathrm{m}^3 = 0,5\\ \\mathrm{dm}^3$"
+    },
+    {
+     "ma_cau": "K08020402012",
+     "loai": "trac_nghiem",
+     "de": "Một vật được nhúng chìm hoàn toàn trong nước thì chịu lực đẩy Archimedes có độ lớn $8\\ \\mathrm{N}$. Biết trọng lượng riêng của nước là $10\\ 000\\ \\mathrm{N/m^3}$. Thể tích của vật là",
+     "lua_chon": [
+      "$0,0008\\ \\mathrm{m^3}$",
+      "$0,008\\ \\mathrm{m^3}$",
+      "$0,08\\ \\mathrm{m^3}$",
+      "$0,8\\ \\mathrm{m^3}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vật chìm hoàn toàn nên thể tích vật bằng thể tích phần chìm:\n$V = \\dfrac{F_A}{d} = \\dfrac{8}{10\\ 000} = 0,0008\\ \\mathrm{(m^3)}$"
+    },
+    {
+     "ma_cau": "K08020402020",
+     "loai": "trac_nghiem",
+     "de": "Một vật được nhúng chìm hoàn toàn trong nước biển thì chịu lực đẩy Archimedes có độ lớn $20,6\\ \\mathrm{N}$. Biết khối lượng riêng của nước biển là $1\\ 030\\ \\mathrm{kg/m^3}$ và trọng lượng riêng tính theo công thức $\\mathrm{d = 10D}$. Thể tích của vật là",
+     "lua_chon": [
+      "$0,000002\\ \\mathrm{m^3}$",
+      "$0,00002\\ \\mathrm{m^3}$",
+      "$0,0002\\ \\mathrm{m^3}$",
+      "$0,002\\ \\mathrm{m^3}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trọng lượng riêng của nước biển:\n$$\\mathrm{d = 10D = 10 \\cdot 1\\ 030 = 10\\ 300\\ (N/m^3)}$$\nThể tích của vật:\n$$\\mathrm{V = \\dfrac{F_A}{d} = \\dfrac{20,6}{10\\ 300} = 0,002\\ (m^3)}$$"
+    },
+    {
+     "ma_cau": "K08020402015",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc phao bơi bị ấn chìm hoàn toàn trong nước bể bơi thì chịu lực đẩy Archimedes có độ lớn $60 \\mathrm{N}$. Biết trọng lượng riêng của nước là $10\\,000 \\mathrm{N/m^3}$. Thể tích của phao là",
+     "lua_chon": [
+      "$0.006 \\mathrm{L}$",
+      "$0.06 \\mathrm{L}$",
+      "$0.6 \\mathrm{L}$",
+      "$6 \\mathrm{L}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thể tích phao:\n$\\mathrm{V} = \\dfrac{\\mathrm{F_A}}{d} = \\dfrac{60}{10\\,000} = 0.006 \\mathrm{(m^3)}$\nĐổi đơn vị:\n$\\mathrm{V} = 0.006 \\mathrm{m^3} = 6 \\mathrm{dm^3} = 6 \\mathrm{L}$"
+    },
+    {
+     "ma_cau": "K08020402019",
+     "loai": "trac_nghiem",
+     "de": "Một khối kim loại được nhúng chìm hoàn toàn trong xăng thì chịu lực đẩy Archimedes có độ lớn $1,4\\ \\mathrm{N}$. Biết trọng lượng riêng của xăng là $7\\ 000\\ \\mathrm{N/m^3}$. Thể tích của khối kim loại là",
+     "lua_chon": [
+      "$0,2\\ \\mathrm{cm^3}$",
+      "$20\\ \\mathrm{cm^3}$",
+      "$200\\ \\mathrm{cm^3}$",
+      "$2\\ 000\\ \\mathrm{cm^3}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thể tích khối kim loại:\n$$V = \\dfrac{\\mathrm{F_A}}{d} = \\dfrac{1,4}{7\\ 000} = 0,0002\\ (\\mathrm{m^3})$$\nĐổi đơn vị:\n$$\\mathrm{V = 0,0002\\ m^3 = 200\\ cm^3}$$"
+    },
+    {
+     "ma_cau": "K08020402016",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc thuyền đồ chơi nổi trên mặt nước chịu lực đẩy Archimedes có độ lớn $0.8 \\mathrm{N}$. Biết trọng lượng riêng của nước là $10\\,000 \\mathrm{N/m^3}$. Thể tích phần thuyền chìm trong nước là",
+     "lua_chon": [
+      "$0.08 \\mathrm{cm^3}$",
+      "$8 \\mathrm{cm^3}$",
+      "$80 \\mathrm{cm^3}$",
+      "$800 \\mathrm{cm^3}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thể tích phần thuyền chìm trong nước:\n$\\mathrm{V} = \\dfrac{\\mathrm{F_A}}{d} = \\dfrac{0.8}{10\\,000} = 0.00008 \\mathrm{(m^3)}$\nĐổi đơn vị:\n$\\mathrm{V} = 0.00008 \\mathrm{m^3} = 80 \\mathrm{cm^3}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00914",
+   "nhom_id": "KNB00393",
+   "thu_tu": 3,
+   "dang": "TÍNH TRỌNG LƯỢNG RIÊNG CHẤT LỎNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020402022",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể tích $500\\ \\text{cm}^3$ được nhúng chìm hoàn toàn trong một chất lỏng thì chịu lực đẩy Archimedes có độ lớn $5,15\\ \\text{N}$. Trọng lượng riêng của chất lỏng đó là",
+     "lua_chon": [
+      "$10,3\\ \\text{N/m}^3$",
+      "$10\\ 300\\ \\text{N/m}^3$",
+      "$103\\ 000\\ \\text{N/m}^3$",
+      "$10\\ 300\\ 000\\ \\text{N/m}^3"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi thể tích: $V = 500\\ \\text{cm}^3 = 0,0005\\ \\text{m}^3$\nTrọng lượng riêng của chất lỏng:\n$d = \\dfrac{\\mathrm{F_A}}{\\mathrm{V}} = \\dfrac{5,15}{0,0005} = 10\\ 300\\ (\\text{N/m}^3)$"
+    },
+    {
+     "ma_cau": "K08020402027",
+     "loai": "trac_nghiem",
+     "de": "Một khối kim loại có thể tích $1,5 \\mathrm{~dm^3}$ được nhúng chìm hoàn toàn trong một chất lỏng thì chịu lực đẩy Archimedes có độ lớn $12 \\mathrm{~N}$. Trọng lượng riêng của chất lỏng đó là",
+     "lua_chon": [
+      "$8000 \\mathrm{~N/m^3}$",
+      "$80000 \\mathrm{~N/m^3}$",
+      "$800000 \\mathrm{~N/m^3}$",
+      "$8000000 \\mathrm{~N/m^3}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi thể tích: $V = 1,5 \\mathrm{~dm^3} = 0,0015 \\mathrm{~m^3}$\nTrọng lượng riêng của chất lỏng:\n$d = \\dfrac{F_A}{V} = \\dfrac{12}{0,0015} = 8000 \\mathrm{~(N/m^3)}$"
+    },
+    {
+     "ma_cau": "K08020402025",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể tích $0,0004\\ \\mathrm{m^3}$ được nhúng chìm hoàn toàn trong một dung dịch nước muối thì chịu lực đẩy Archimedes có độ lớn $4,4\\ \\mathrm{N}$. Trọng lượng riêng của dung dịch nước muối đó là",
+     "lua_chon": [
+      "$1\\ 100\\ \\mathrm{N/m^3}$",
+      "$11\\ 000\\ \\mathrm{N/m^3}$",
+      "$110\\ 000\\ \\mathrm{N/m^3}$",
+      "$11\\ 000\\ 000\\ \\mathrm{N/m^3}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Trọng lượng riêng của dung dịch nước muối:\n$d = \\dfrac{F_A}{V} = \\dfrac{4,4}{0,0004} = 11\\ 000\\ (\\mathrm{N/m^3})$"
+    },
+    {
+     "ma_cau": "K08020402030",
+     "loai": "trac_nghiem",
+     "de": "Một bình nhựa đậy kín có thể tích $2,5 \\ \\mathrm{L}$ bị dìm chìm hoàn toàn trong một chất lỏng thì chịu lực đẩy Archimedes có độ lớn $25,75 \\ \\mathrm{N}$. Trọng lượng riêng của chất lỏng đó là",
+     "lua_chon": [
+      "$10,3 \\ \\mathrm{N/m^3}$",
+      "$10 \\ 300 \\ \\mathrm{N/m^3}$",
+      "$103 \\ 000 \\ \\mathrm{N/m^3}$",
+      "$10 \\ 300 \\ 000 \\ \\mathrm{N/m^3}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi thể tích: $V = 2,5 \\ \\mathrm{L} = 2,5 \\ \\mathrm{dm^3} = 0,0025 \\ \\mathrm{m^3}$\nTrọng lượng riêng của chất lỏng:\n$d = \\dfrac{F_A}{V} = \\dfrac{25,75}{0,0025} = 10 \\ 300 \\ (\\mathrm{N/m^3})$"
+    },
+    {
+     "ma_cau": "K08020402028",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể tích $0,8 \\mathrm{~dm^3}$ được nhúng chìm hoàn toàn trong một chất lỏng thì chịu lực đẩy Archimedes có độ lớn $6,4 \\mathrm{~N}$. Trọng lượng riêng của chất lỏng đó là",
+     "lua_chon": [
+      "$8 \\mathrm{~N/m^3}$",
+      "$800 \\mathrm{~N/m^3}$",
+      "$8000 \\mathrm{~N/m^3}$",
+      "$80000 \\mathrm{~N/m^3}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi thể tích: $V = 0,8 \\mathrm{~dm^3} = 0,0008 \\mathrm{~m^3}$\nTrọng lượng riêng của chất lỏng:\n$d = \\dfrac{F_A}{V} = \\dfrac{6,4}{0,0008} = 8000 \\mathrm{~(N/m^3)}$"
+    },
+    {
+     "ma_cau": "K08020402023",
+     "loai": "trac_nghiem",
+     "de": "Một quả cầu có thể tích $2\\ \\mathrm{dm^3}$ được nhúng chìm hoàn toàn trong một chất lỏng thì chịu lực đẩy Archimedes có độ lớn $18,4\\ \\mathrm{N}$. Trọng lượng riêng của chất lỏng đó là",
+     "lua_chon": [
+      "$9,2\\ \\mathrm{N/m^3}$",
+      "$920\\ \\mathrm{N/m^3}$",
+      "$9\\ 200\\ \\mathrm{N/m^3}$",
+      "$92\\ 000\\ \\mathrm{N/m^3}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi thể tích: $V = 2\\ \\mathrm{dm^3} = 0,002\\ \\mathrm{m^3}$\nTrọng lượng riêng của chất lỏng:\n$d = \\dfrac{F_A}{V} = \\dfrac{18,4}{0,002} = 9\\ 200\\ (\\mathrm{N/m^3})$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00915",
+   "nhom_id": "KNB00393",
+   "thu_tu": 4,
+   "dang": "TÍNH Fa KHI BIẾT KHỐI LƯỢNG VÀ KHỐI LƯỢNG RIÊNG CỦA VẬT",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020402035",
+     "loai": "tu_luan",
+     "de": "Một chiếc nhẫn bạc có khối lượng $21 \\text{ g}$ rơi xuống và chìm trong chậu nước. Biết khối lượng riêng của bạc là $10\\ 500 \\text{ kg/m}^3$, trọng lượng riêng của nước là $10\\ 000 \\text{ N/m}^3$. Tính độ lớn lực đẩy Archimedes tác dụng lên chiếc nhẫn theo đơn vị newton (N).",
+     "dap_an": "0.02",
+     "loi_giai": "Đổi khối lượng:\n$$\\text{m} = 21 \\text{ g} = 0,021 \\text{ kg}$$\nThể tích chiếc nhẫn:\n$$V = \\dfrac{m}{D} = \\dfrac{0,021}{10\\ 500} = 0,000002 \\text{ (m}^3)$$\nVật chìm hoàn toàn nên thể tích phần chìm bằng thể tích vật. Lực đẩy Archimedes:\n$$\\mathrm{F_A} = \\mathrm{d} \\cdot \\mathrm{V} = 10\\ 000 \\cdot 0,000002 = 0,02 \\text{ (N)}$$"
+    },
+    {
+     "ma_cau": "K08020402031",
+     "loai": "tu_luan",
+     "de": "Một khối đồng có khối lượng 8,9 kg được thả chìm xuống đáy bể nước. Biết khối lượng riêng của đồng là $8\\,900\\, \\mathrm{kg/m^3}$, trọng lượng riêng của nước là $10\\,000\\, \\mathrm{N/m^3}$. Tính độ lớn lực đẩy Archimedes tác dụng lên khối đồng theo đơn vị newton (N).",
+     "dap_an": "10",
+     "loi_giai": "Thể tích khối đồng:\n$V = \\dfrac{m}{D} = \\dfrac{8,9}{8\\,900} = 0,001\\, (\\mathrm{m^3})$\nVật chìm hoàn toàn nên thể tích phần chìm bằng thể tích vật. Lực đẩy Archimedes:\n$\\mathrm{F_A} = \\mathrm{d \\cdot V} = 10\\,000 \\cdot 0,001 = 10\\, (\\mathrm{N})$"
+    },
+    {
+     "ma_cau": "K08020402034",
+     "loai": "tu_luan",
+     "de": "Một viên bi chì có khối lượng $0,226 \\text{ kg}$ nằm chìm ở đáy một chậu nước. Biết khối lượng riêng của chì là $11\\ 300 \\text{ kg/m}^3$, trọng lượng riêng của nước là $10\\ 000 \\text{ N/m}^3$. Tính độ lớn lực đẩy Archimedes tác dụng lên viên bi theo đơn vị newton (N).",
+     "dap_an": "0.2",
+     "loi_giai": "Thể tích viên bi:\n$$V = \\dfrac{m}{D} = \\dfrac{0,226}{11\\ 300} = 0,00002 \\text{ (m}^3)$$\nVật chìm hoàn toàn nên thể tích phần chìm bằng thể tích vật. Lực đẩy Archimedes:\n$$\\mathrm{F_A} = \\mathrm{d} \\cdot \\mathrm{V} = 10\\ 000 \\cdot 0,00002 = 0,2 \\text{ (N)}$$"
+    },
+    {
+     "ma_cau": "K08020402036",
+     "loai": "tu_luan",
+     "de": "Một khối kẽm có khối lượng $1,42 \\text{ kg}$ được nhúng chìm hoàn toàn trong nước biển. Biết khối lượng riêng của kẽm là $7 \\thinspace 100 \\text{ kg/m}^3$, khối lượng riêng của nước biển là $1 \\thinspace 030 \\text{ kg/m}^3$ và trọng lượng riêng tính theo công thức $d = 10D$. Tính độ lớn lực đẩy Archimedes tác dụng lên khối kẽm theo đơn vị newton (N).",
+     "dap_an": "2.06",
+     "loi_giai": "Thể tích khối kẽm:\n$V = \\dfrac{m}{D} = \\dfrac{1,42}{7 \\thinspace 100} = 0,0002 \\text{ (m}^3)$ \nTrọng lượng riêng của nước biển:\n$d = 10D = 10 \\cdot 1 \\thinspace 030 = 10 \\thinspace 300 \\text{ (N/m}^3)$\nVật chìm hoàn toàn nên thể tích phần chìm bằng thể tích vật. Lực đẩy Archimedes:\n$F_A = d \\cdot V = 10 \\thinspace 300 \\cdot 0,0002 = 2,06 \\text{ (N)}$"
+    },
+    {
+     "ma_cau": "K08020402032",
+     "loai": "tu_luan",
+     "de": "Một quả tạ bằng sắt có khối lượng 3,9 kg được thả chìm xuống đáy bể nước. Biết khối lượng riêng của sắt là $7\\,800\\, \\mathrm{kg/m^3}$, trọng lượng riêng của nước là $10\\,000\\, \\mathrm{N/m^3}$. Tính độ lớn lực đẩy Archimedes tác dụng lên quả tạ theo đơn vị newton (N).",
+     "dap_an": "5",
+     "loi_giai": "Thể tích quả tạ:\n$V = \\dfrac{m}{D} = \\dfrac{3,9}{7\\,800} = 0,0005\\, (\\mathrm{m^3})$\nVật chìm hoàn toàn nên thể tích phần chìm bằng thể tích vật. Lực đẩy Archimedes:\n$\\mathrm{F_A} = \\mathrm{d \\cdot V} = 10\\,000 \\cdot 0,0005 = 5\\, (\\mathrm{N})$"
+    },
+    {
+     "ma_cau": "K08020402033",
+     "loai": "tu_luan",
+     "de": "Một thỏi nhôm có khối lượng 0,81 kg được nhúng chìm hoàn toàn trong dầu hoả. Biết khối lượng riêng của nhôm là $2\\,700\\, \\mathrm{kg/m^3}$, trọng lượng riêng của dầu hoả là $8\\,000\\, \\mathrm{N/m^3}$. Tính độ lớn lực đẩy Archimedes tác dụng lên thỏi nhôm theo đơn vị newton (N).",
+     "dap_an": "2,4",
+     "loi_giai": "Thể tích thỏi nhôm:\n$V = \\dfrac{m}{D} = \\dfrac{0,81}{2\\,700} = 0,0003\\, (\\mathrm{m^3})$\nVật chìm hoàn toàn nên thể tích phần chìm bằng thể tích vật. Lực đẩy Archimedes:\n$\\mathrm{F_A} = \\mathrm{d \\cdot V} = 8\\,000 \\cdot 0,0003 = 2,4\\, (\\mathrm{N})$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00916",
+   "nhom_id": "KNB00393",
+   "thu_tu": 5,
+   "dang": "TÍNH THỂ TÍCH PHẦN NỔI CỦA VẬT NỔI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020402042",
+     "loai": "tu_luan",
+     "de": "Một quả bóng có thể tích $3\\ \\mathrm{dm^3}$ nổi trên mặt nước, chịu lực đẩy Archimedes có độ lớn $4,5\\ \\mathrm{N}$. Biết trọng lượng riêng của nước là $10\\ 000\\ \\mathrm{N/m^3}$. Tính thể tích phần quả bóng nổi trên mặt nước theo đơn vị $\\mathrm{dm^3}$.",
+     "dap_an": "2.55",
+     "loi_giai": "Thể tích phần quả bóng chìm trong nước:\n$\\mathrm{V_{chim}} = \\dfrac{\\mathrm{F_A}}{\\mathrm{d}} = \\dfrac{4,5}{10\\ 000} = 0,00045\\ \\mathrm{(m^3)} = 0,45\\ \\mathrm{(dm^3)}$\nThể tích phần quả bóng nổi trên mặt nước:\n$\\mathrm{V_{noi}} = \\mathrm{V} - \\mathrm{V_{chim}} = 3 - 0,45 = 2,55\\ \\mathrm{(dm^3)}$"
+    },
+    {
+     "ma_cau": "K08020402041",
+     "loai": "tu_luan",
+     "de": "Một quả dừa khô có thể tích $1,5\\ \\mathrm{dm^3}$ nổi trên mặt nước, chịu lực đẩy Archimedes có độ lớn $6\\ \\mathrm{N}$. Biết trọng lượng riêng của nước là $10\\ 000\\ \\mathrm{N/m^3}$. Tính thể tích phần quả dừa nổi trên mặt nước theo đơn vị $\\mathrm{dm^3}$.",
+     "dap_an": "0.9",
+     "loi_giai": "Thể tích phần quả dừa chìm trong nước:\n$\\mathrm{V_{chim}} = \\dfrac{\\mathrm{F_A}}{\\mathrm{d}} = \\dfrac{6}{10\\ 000} = 0,0006\\ \\mathrm{(m^3)} = 0,6\\ \\mathrm{(dm^3)}$\nThể tích phần quả dừa nổi trên mặt nước:\n$\\mathrm{V_{noi}} = \\mathrm{V} - \\mathrm{V_{chim}} = 1,5 - 0,6 = 0,9\\ \\mathrm{(dm^3)}$"
+    },
+    {
+     "ma_cau": "K08020402038",
+     "loai": "tu_luan",
+     "de": "Một khúc gỗ có thể tích $0,005 \\mathrm{~m}^3$ nổi trên mặt nước, chịu lực đẩy Archimedes có độ lớn $30 \\mathrm{~N}$. Biết trọng lượng riêng của nước là $10 \\,000 \\mathrm{~N} / \\mathrm{m}^3$. Tính thể tích phần khúc gỗ nổi trên mặt nước theo đơn vị $\\mathrm{m}^3$.",
+     "dap_an": "0,002",
+     "loi_giai": "Thể tích phần khúc gỗ chìm trong nước:\n$\\mathrm{V}_{\text{chìm}} = \\dfrac{\\mathrm{F}_{\\mathrm{A}}}{\\mathrm{d}} = \\dfrac{30}{10\\,000} = 0,003 \\mathrm{~(m^3)}$\nThể tích phần khúc gỗ nổi trên mặt nước:\n$\\mathrm{V}_{\\text{nổi}} = \\mathrm{V} - \\mathrm{V}_{\\text{chìm}} = 0,005 - 0,003 = 0,002 \\mathrm{~(m^3)}$"
+    },
+    {
+     "ma_cau": "K08020402044",
+     "loai": "tu_luan",
+     "de": "Một chiếc hộp nhựa đậy kín có thể tích $1\\ 200\\ \\mathrm{cm^3}$ nổi trên mặt nước biển, chịu lực đẩy Archimedes có độ lớn $4.12\\ \\mathrm{N}$. Biết khối lượng riêng của nước biển là $1\\ 030\\ \\mathrm{kg/m^3}$ và trọng lượng riêng tính theo công thức $d = 10D$. Tính thể tích phần hộp nổi trên mặt nước biển theo đơn vị $\\mathrm{cm^3}$.",
+     "dap_an": "800",
+     "loi_giai": "Trọng lượng riêng của nước biển:\n$d = 10D = 10 \\cdot 1\\ 030 = 10\\ 300\\ (\\mathrm{N/m^3})$\nThể tích phần hộp chìm trong nước biển:\n$\\mathrm{V_{chim}} = \\dfrac{\\mathrm{F_A}}{d} = \\dfrac{4.12}{10\\ 300} = 0.0004\\ (\\mathrm{m^3}) = 400\\ (\\mathrm{cm^3})$\nThể tích phần hộp nổi trên mặt nước biển:\n$\\mathrm{V_{nổi}} = \\mathrm{V} - \\mathrm{V_{chim}} = 1\\ 200 - 400 = 800\\ (\\mathrm{cm^3})$"
+    },
+    {
+     "ma_cau": "K08020402039",
+     "loai": "tu_luan",
+     "de": "Một tấm xốp có thể tích $0,02 \\mathrm{~m}^3$ nổi trên mặt hồ nước, chịu lực đẩy Archimedes có độ lớn $50 \\mathrm{~N}$. Biết trọng lượng riêng của nước là $10 \\,000 \\mathrm{~N} / \\mathrm{m}^3$. Tính thể tích phần tấm xốp nổi trên mặt nước theo đơn vị $\\mathrm{m}^3$.",
+     "dap_an": "0,015",
+     "loi_giai": "Thể tích phần tấm xốp chìm trong nước:\n$\\mathrm{V}_{\\text{chìm}} = \\dfrac{\\mathrm{F}_{\\mathrm{A}}}{\\mathrm{d}} = \\dfrac{50}{10\\,000} = 0,005 \\mathrm{~(m^3)}$\nThể tích phần tấm xốp nổi trên mặt nước:\n$\\mathrm{V}_{\\text{nổi}} = \\mathrm{V} - \\mathrm{V}_{\\text{chìm}} = 0,02 - 0,005 = 0,015 \\mathrm{~(m^3)}$"
+    },
+    {
+     "ma_cau": "K08020402043",
+     "loai": "tu_luan",
+     "de": "Một chiếc thuyền đồ chơi có thể tích $500\\ \\mathrm{cm^3}$ nổi trên mặt nước biển, chịu lực đẩy Archimedes có độ lớn $2,06\\ \\mathrm{N}$. Biết trọng lượng riêng của nước biển là $10\\ 300\\ \\mathrm{N/m^3}$. Tính thể tích phần thuyền nổi trên mặt nước biển theo đơn vị $\\mathrm{cm^3}$.",
+     "dap_an": "300",
+     "loi_giai": "Thể tích phần thuyền chìm trong nước biển:\n$\\mathrm{V_{chim}} = \\dfrac{\\mathrm{F_A}}{\\mathrm{d}} = \\dfrac{2,06}{10\\ 300} = 0,0002\\ \\mathrm{(m^3)} = 200\\ \\mathrm{(cm^3)}$\nThể tích phần thuyền nổi trên mặt nước biển:\n$\\mathrm{V_{noi}} = \\mathrm{V} - \\mathrm{V_{chim}} = 500 - 200 = 300\\ \\mathrm{(cm^3)}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00917",
+   "nhom_id": "KNB00393",
+   "thu_tu": 6,
+   "dang": "TÍNH Fa CỦA CÙNG MỘT VẬT TRONG HAI CHẤT LỎNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020402045",
+     "loai": "tu_luan",
+     "de": "Một quả cầu bằng thép được treo vào sợi dây và nhúng chìm hoàn toàn trong nước thì chịu lực đẩy Archimedes có độ lớn $20 \\mathrm{\\ N}$. Sau đó nhúng chìm hoàn toàn vật này trong dầu hoả. Biết trọng lượng riêng của nước là $10\\ 000\\ \\mathrm{N/m^3}$, của dầu hoả là $8\\ 000\\ \\mathrm{N/m^3}$. Tính độ lớn lực đẩy Archimedes tác dụng lên quả cầu khi nhúng trong dầu hoả theo đơn vị newton (N).",
+     "dap_an": "16",
+     "loi_giai": "Thể tích của vật (tính từ lần nhúng trong nước):\n$V = \\dfrac{F_{A1}}{d_1} = \\dfrac{20}{10\\ 000} = 0,002\\ (\\mathrm{m^3})$\nVật chìm hoàn toàn trong cả hai chất lỏng nên thể tích phần chìm không đổi. Lực đẩy Archimedes khi nhúng trong dầu hoả:\n$F_{A2} = d_2 \\cdot V = 8\\ 000 \\cdot 0,002 = 16\\ (\\mathrm{N})$"
+    },
+    {
+     "ma_cau": "K08020402048",
+     "loai": "tu_luan",
+     "de": "Một viên bi sắt được treo vào sợi dây và nhúng chìm hoàn toàn trong nước thì chịu lực đẩy Archimedes có độ lớn $0,5\\ \\mathrm{N}$. Sau đó nhúng chìm hoàn toàn viên bi này trong dầu ăn. Biết trọng lượng riêng của nước là $10\\ 000\\ \\mathrm{N/m^3}$, khối lượng riêng của dầu ăn là $920\\ \\mathrm{kg/m^3}$ và trọng lượng riêng tính theo công thức $d = 10D$. Tính độ lớn lực đẩy Archimedes tác dụng lên viên bi khi nhúng trong dầu ăn theo đơn vị newton (N).",
+     "dap_an": "0,46",
+     "loi_giai": "Thể tích của vật (tính từ lần nhúng trong nước):\n$$V = \\dfrac{F_{A1}}{d_1} = \\dfrac{0,5}{10\\ 000} = 0,00005\\ \\mathrm{(m^3)}$$\nTrọng lượng riêng của dầu ăn:\n$$d_2 = 10D = 10 \\cdot 920 = 9200\\ \\mathrm{(N/m^3)}$$\nVật chìm hoàn toàn trong cả hai chất lỏng nên thể tích phần chìm không đổi. Lực đẩy Archimedes khi nhúng trong dầu ăn:\n$$F_{A2} = d_2 \\cdot V = 9200 \\cdot 0,00005 = 0,46\\ \\mathrm{(N)}$$"
+    },
+    {
+     "ma_cau": "K08020402049",
+     "loai": "tu_luan",
+     "de": "Một quả nặng bằng chì được treo vào sợi dây và nhúng chìm hoàn toàn trong nước thì chịu lực đẩy Archimedes có độ lớn 3 N. Khi nhúng chìm hoàn toàn quả nặng này trong một chất lỏng khác thì lực đẩy Archimedes có độ lớn 2,4 N. Biết trọng lượng riêng của nước là $10 \\,000 \\text{ N/m}^3$. Tính trọng lượng riêng của chất lỏng đó theo đơn vị $\\text{N/m}^3$.",
+     "dap_an": "8000",
+     "loi_giai": "Thể tích của vật (tính từ lần nhúng trong nước):\n$V = \\dfrac{F_{A1}}{d_1} = \\dfrac{3}{10\\,000} = 0,0003 \\text{ (m}^3$)\nVật chìm hoàn toàn trong cả hai chất lỏng nên thể tích phần chìm không đổi. Trọng lượng riêng của chất lỏng thứ hai:\n$d_2 = \\dfrac{F_{A2}}{V} = \\dfrac{2,4}{0,0003} = 8\\,000 \\text{ (N/m}^3$)"
+    },
+    {
+     "ma_cau": "K08020402050",
+     "loai": "tu_luan",
+     "de": "Một khối đá được treo vào sợi dây và nhúng chìm hoàn toàn trong nước biển thì chịu lực đẩy Archimedes có độ lớn 5 N. Sau đó nhúng chìm hoàn toàn vật này trong dầu hoả. Biết trọng lượng riêng của nước biển là $10\\,300 \\text{ N/m}^3$, của dầu hoả là $8\\,000 \\text{ N/m}^3$. Tính độ lớn lực đẩy Archimedes tác dụng lên khối đá khi nhúng trong dầu hoả theo đơn vị newton (N), làm tròn kết quả đến hàng phần trăm.",
+     "dap_an": "3.88",
+     "loi_giai": "Thể tích của vật (tính từ lần nhúng trong nước biển):\n$V = \\dfrac{F_{A1}}{d_1} = \\dfrac{5}{10\\,300} \\text{ (m}^3$)\nVật chìm hoàn toàn trong cả hai chất lỏng nên thể tích phần chìm không đổi. Lực đẩy Archimedes khi nhúng trong dầu hoả:\n$F_{A2} = d_2 \\cdot V = 8\\,000 \\cdot \\dfrac{5}{10\\,300} \\approx 3,88 \\text{ (N)}$"
+    },
+    {
+     "ma_cau": "K08020402046",
+     "loai": "tu_luan",
+     "de": "Một thỏi đồng được treo vào sợi dây và nhúng chìm hoàn toàn trong dầu hoả thì chịu lực đẩy Archimedes có độ lớn $2,4\\ \\mathrm{N}$. Sau đó nhúng chìm hoàn toàn vật này trong nước biển. Biết trọng lượng riêng của dầu hoả là $8\\ 000\\ \\mathrm{N/m^3}$, của nước biển là $10\\ 300\\ \\mathrm{N/m^3}$. Tính độ lớn lực đẩy Archimedes tác dụng lên thỏi đồng khi nhúng trong nước biển theo đơn vị newton (N).",
+     "dap_an": "3,09",
+     "loi_giai": "Thể tích của vật (tính từ lần nhúng trong dầu hoả):\n$V = \\dfrac{F_{A1}}{d_1} = \\dfrac{2,4}{8\\ 000} = 0,0003\\ (\\mathrm{m^3})$\nVật chìm hoàn toàn trong cả hai chất lỏng nên thể tích phần chìm không đổi. Lực đẩy Archimedes khi nhúng trong nước biển:\n$F_{A2} = d_2 \\cdot V = 10\\ 300 \\cdot 0,0003 = 3,09\\ (\\mathrm{N})$"
+    },
+    {
+     "ma_cau": "K08020402047",
+     "loai": "tu_luan",
+     "de": "Một khối nhôm được treo vào sợi dây và nhúng chìm hoàn toàn trong xăng thì chịu lực đẩy Archimedes có độ lớn $1,4\\ \\mathrm{N}$. Sau đó nhúng chìm hoàn toàn vật này trong nước. Biết trọng lượng riêng của xăng là $7000\\ \\mathrm{N/m^3}$, của nước là $10\\ 000\\ \\mathrm{N/m^3}$. Tính độ lớn lực đẩy Archimedes tác dụng lên khối nhôm khi nhúng trong nước theo đơn vị newton (N).",
+     "dap_an": "2",
+     "loi_giai": "Thể tích của vật (tính từ lần nhúng trong xăng):\n$$V = \\dfrac{F_{A1}}{d_1} = \\dfrac{1,4}{7000} = 0,0002\\ \\mathrm{(m^3)}$$\nVật chìm hoàn toàn trong cả hai chất lỏng nên thể tích phần chìm không đổi. Lực đẩy Archimedes khi nhúng trong nước:\n$$F_{A2} = d_2 \\cdot V = 10\\ 000 \\cdot 0,0002 = 2\\ \\mathrm{(N)}$$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00921",
+   "nhom_id": "KNB00395",
+   "thu_tu": 1,
+   "dang": "TÍNH PHẦN THỂ TÍCH CHÌM CỦA VẬT NỔI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020404002",
+     "loai": "trac_nghiem",
+     "de": "Một quả bóng có khối lượng $0,4 \\text{ kg}$ nổi đứng yên trên mặt nước. Biết trọng lượng riêng của nước là $10\\ 000 \\text{ N/m}^3$. Thể tích phần quả bóng chìm trong nước là",
+     "lua_chon": [
+      "$0,4 \\text{ cm}^3$",
+      "$4 \\text{ cm}^3$",
+      "$40 \\text{ cm}^3$",
+      "$400 \\text{ cm}^3$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trọng lượng của vật:\n$P = 10m = 10 \\cdot 0,4 = 4 \\text{ (N)}$\nVật nổi đứng yên nên lực đẩy Archimedes bằng trọng lượng:\n$\\mathrm{F_A} = \\mathrm{P} = 4 \\text{ N}$\nThể tích phần vật chìm:\n$\\mathrm{V_{chìm}} = \\dfrac{\\mathrm{F_A}}{\\mathrm{d}} = \\dfrac{4}{10\\ 000} = 0,0004 \\text{ (m}^3$)\nĐổi đơn vị:\n$\\mathrm{V_{chìm}} = 0,0004 \\text{ m}^3 = 400 \\text{ cm}^3$"
+    },
+    {
+     "ma_cau": "K08020404003",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc phao có khối lượng 2,06 kg nổi đứng yên trên mặt nước biển. Biết trọng lượng riêng của nước biển là $10\\,300\\,\\mathrm{N/m^3}$. Thể tích phần phao chìm trong nước biển là",
+     "lua_chon": [
+      "0,02 dm$^3$",
+      "0,2 dm$^3$",
+      "2 dm$^3$",
+      "20 dm$^3$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Trọng lượng của vật:\n$$P = 10m = 10 \\cdot 2,06 = 20,6\\,\\mathrm{(N)}$$\nVật nổi đứng yên nên lực đẩy Archimedes bằng trọng lượng:\n$$\\mathrm{F_A} = \\mathrm{P} = 20,6\\,\\mathrm{N}$$\nThể tích phần vật chìm:\n$$\\mathrm{V_{chim}} = \\dfrac{\\mathrm{F_A}}{\\mathrm{d}} = \\dfrac{20,6}{10\\,300} = 0,002\\,\\mathrm{(m^3)}$$\nĐổi đơn vị:\n$$\\mathrm{V_{chim}} = 0,002\\,\\mathrm{m^3} = 2\\,\\mathrm{dm^3}$$"
+    },
+    {
+     "ma_cau": "K08020404001",
+     "loai": "trac_nghiem",
+     "de": "Một khúc gỗ có khối lượng $3 \\text{ kg}$ nổi đứng yên trên mặt nước. Biết trọng lượng riêng của nước là $10\\ 000 \\text{ N/m}^3$. Thể tích phần khúc gỗ chìm trong nước là",
+     "lua_chon": [
+      "$0,0003 \\text{ m}^3$",
+      "$0,003 \\text{ m}^3$",
+      "$0,03 \\text{ m}^3$",
+      "$0,3 \\text{ m}^3$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Trọng lượng của vật:\n$P = 10m = 10 \\cdot 3 = 30 \\text{ (N)}$\nVật nổi đứng yên nên lực đẩy Archimedes bằng trọng lượng:\n$\\mathrm{F_A} = \\mathrm{P} = 30 \\text{ N}$\nThể tích phần vật chìm:\n$\\mathrm{V_{chìm}} = \\dfrac{\\mathrm{F_A}}{\\mathrm{d}} = \\dfrac{30}{10\\ 000} = 0,003 \\text{ (m}^3$)"
+    },
+    {
+     "ma_cau": "K08020404004",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc bát nhựa có khối lượng $0,12 \\text{ kg}$ nổi đứng yên trên mặt nước trong chậu. Biết trọng lượng riêng của nước là $10\\ 000 \\text{ N/m}^3$. Thể tích phần bát chìm trong nước là",
+     "lua_chon": [
+      "$12 \\text{ cm}^3$",
+      "$120 \\text{ cm}^3$",
+      "$1\\ 200 \\text{ cm}^3$",
+      "$12\\ 000 \\text{ cm}^3"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Trọng lượng của vật:\n$P = 10m = 10 \\cdot 0,12 = 1,2 \\text{ (N)}$\nVật nổi đứng yên nên lực đẩy Archimedes bằng trọng lượng:\n$\\mathrm{F_A} = \\mathrm{P} = 1,2 \\text{ N}$\nThể tích phần vật chìm:\n${\\mathrm{V}}_{\\mathrm{ch\\text{ìm}}} = \\dfrac{\\mathrm{F_A}}{\\mathrm{d}} = \\dfrac{1,2}{10\\ 000} = 0,00012\\ (\\text{m}^3)$\nĐổi đơn vị:\n${\\mathrm{V}}_{\\mathrm{ch\\text{ìm}}} = 0,00012\\ \\text{m}^3 = 120\\ \\text{cm}^3$"
+    },
+    {
+     "ma_cau": "K08020404006",
+     "loai": "trac_nghiem",
+     "de": "Một khối gỗ có thể tích $0.02 \\ \\mathrm{m^3}$ nổi trên mặt nước. Biết khối lượng riêng của gỗ là $600 \\ \\mathrm{kg/m^3}$, trọng lượng riêng của nước là $10 \\ 000 \\ \\mathrm{N/m^3}$. Thể tích phần khối gỗ chìm trong nước là",
+     "lua_chon": [
+      "$0.012 \\ \\mathrm{m^3}$",
+      "$0.02 \\ \\mathrm{m^3}$",
+      "$0.12 \\ \\mathrm{m^3}$",
+      "$1.2 \\ \\mathrm{m^3}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng khối gỗ:\n$m = D \\cdot V = 600 \\cdot 0.02 = 12 \\ (\\mathrm{kg})$\nTrọng lượng của vật:\n$P = 10m = 10 \\cdot 12 = 120 \\ (\\mathrm{N})$\nVật nổi đứng yên nên lực đẩy Archimedes bằng trọng lượng:\n$F_A = P = 120 \\ \\mathrm{N}$\nThể tích phần vật chìm:\n$V_{chim} = \\dfrac{F_A}{d} = \\dfrac{120}{10 \\ 000} = 0.012 \\ (\\mathrm{m^3})$"
+    },
+    {
+     "ma_cau": "K08020404007",
+     "loai": "trac_nghiem",
+     "de": "Một khối nước đá có thể tích $2\\ \\mathrm{dm}^3$ nổi trên mặt nước. Biết khối lượng riêng của nước đá là $900\\ \\mathrm{kg/m}^3$, trọng lượng riêng của nước là $10\\ 000\\ \\mathrm{N/m}^3$. Thể tích phần nước đá chìm trong nước là",
+     "lua_chon": [
+      "$0,18\\ \\mathrm{dm}^3$",
+      "$0,2\\ \\mathrm{dm}^3$",
+      "$1,8\\ \\mathrm{dm}^3$",
+      "$2\\ \\mathrm{dm}^3"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi thể tích:\n$V = 2\\ \\mathrm{dm}^3 = 0,002\\ \\mathrm{m}^3$\nKhối lượng khối nước đá:\n$\\mathrm{m = D \\cdot V = 900 \\cdot 0,002 = 1,8\\ (kg)}$\nTrọng lượng của vật:\n$\\mathrm{P = 10m = 10 \\cdot 1,8 = 18\\ (N)}$\nVật nổi đứng yên nên lực đẩy Archimedes bằng trọng lượng:\n$\\mathrm{F_A = P = 18\\ N}$\nThể tích phần vật chìm:\n$\\mathrm{V_{chim} = \\dfrac{F_A}{d} = \\dfrac{18}{10\\ 000} = 0,0018\\ (m^3)}$\nĐổi đơn vị:\n$\\mathrm{V_{chim} = 0,0018\\ m^3 = 1,8\\ dm^3}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00922",
+   "nhom_id": "KNB00395",
+   "thu_tu": 2,
+   "dang": "CÂN VẬT TRONG NƯỚC VÀ NGOÀI KHÔNG KHÍ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020404019",
+     "loai": "trac_nghiem",
+     "de": "Treo một vật vào lực kế, ngoài không khí lực kế chỉ 10 N. Nhúng chìm một nửa thể tích của vật trong nước thì lực kế chỉ 8 N. Biết trọng lượng riêng của nước là 10 000 $\\mathrm{N/m^3}$. Thể tích của vật là",
+     "lua_chon": [
+      "0,00004 $\\mathrm{m^3}$",
+      "0,0001 $\\mathrm{m^3}$",
+      "0,0002 $\\mathrm{m^3}$",
+      "0,0004 $\\mathrm{m^3}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lực đẩy Archimedes tác dụng lên vật:\n$\\mathrm{F_A = P_1 - P_2 = 10 - 8 = 2 \\ (N)}$\nThể tích phần vật chìm trong nước:\n$\\mathrm{V_{chìm} = \\dfrac{F_A}{d} = \\dfrac{2}{10 \\ 000} = 0,0002 \\ (m^3)}$\nVật chìm một nửa thể tích nên thể tích của vật:\n$\\mathrm{V = 2 \\cdot V_{chìm} = 2 \\cdot 0,0002 = 0,0004 \\ (m^3)}$"
+    },
+    {
+     "ma_cau": "K08020404016",
+     "loai": "trac_nghiem",
+     "de": "Một vật có trọng lượng $15 \\mathrm{~N}$ và thể tích $500 \\mathrm{~cm^3}$ được treo vào lực kế rồi nhúng chìm hoàn toàn trong nước. Biết trọng lượng riêng của nước là $10000 \\mathrm{~N} / \\mathrm{m}^3$. Số chỉ của lực kế khi đó là",
+     "lua_chon": [
+      "$5 \\mathrm{~N}$",
+      "$10 \\mathrm{~N}$",
+      "$15 \\mathrm{~N}$",
+      "$20 \\mathrm{~N}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi thể tích: $V = 500 \\mathrm{~cm^3} = 0,0005 \\mathrm{~m^3}$\nLực đẩy Archimedes tác dụng lên vật:\n$F_A = d \\cdot V = 10000 \\cdot 0,0005 = 5 \\mathrm{~(N)}$\nSố chỉ của lực kế khi vật chìm trong nước:\n$P_2 = P_1 - F_A = 15 - 5 = 10 \\mathrm{~(N)}$"
+    },
+    {
+     "ma_cau": "K08020404015",
+     "loai": "trac_nghiem",
+     "de": "Treo một quả cầu kim loại vào lực kế, ngoài không khí lực kế chỉ $6 \\mathrm{~N}$. Nhúng chìm hoàn toàn vật trong dầu hoả thì lực kế chỉ $3.6 \\mathrm{~N}$. Biết trọng lượng riêng của dầu hoả là $8000 \\mathrm{~N} / \\mathrm{m}^3$. Thể tích của vật là",
+     "lua_chon": [
+      "$3 \\mathrm{~cm^3}$",
+      "$30 \\mathrm{~cm^3}$",
+      "$240 \\mathrm{~cm^3}$",
+      "$300 \\mathrm{~cm^3}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lực đẩy Archimedes tác dụng lên vật:\n$F_A = P_1 - P_2 = 6 - 3,6 = 2,4 \\mathrm{~(N)}$\nVật chìm hoàn toàn nên thể tích vật bằng thể tích phần chìm:\n$V = \\dfrac{F_A}{d} = \\dfrac{2,4}{8000} = 0,0003 \\mathrm{~(m^3)}$\nĐổi đơn vị:\n$V = 0,0003 \\mathrm{~m^3} = 300 \\mathrm{~cm^3}$"
+    },
+    {
+     "ma_cau": "K08020404018",
+     "loai": "trac_nghiem",
+     "de": "Treo một vật vào lực kế, ngoài không khí lực kế chỉ 4,5 N. Nhúng chìm hoàn toàn vật trong nước biển thì lực kế chỉ 3,47 N. Biết khối lượng riêng của nước biển là 1 030 $\\mathrm{kg/m^3}$ và d = 10D. Thể tích của vật là",
+     "lua_chon": [
+      "1 $\\mathrm{cm^3}$",
+      "10 $\\mathrm{cm^3}$",
+      "100 $\\mathrm{cm^3}$",
+      "1 000 $\\mathrm{cm^3}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Lực đẩy Archimedes tác dụng lên vật:\n$\\mathrm{F_A = P_1 - P_2 = 4,5 - 3,47 = 1,03 \\ (N)}$\nTrọng lượng riêng của nước biển:\n$\\mathrm{d = 10D = 10 \\cdot 1030 = 10 \\ 300 \\ (N/m^3)}$\nThể tích của vật:\n$\\mathrm{V = \\dfrac{F_A}{d} = \\dfrac{1,03}{10 \\ 300} = 0,0001 \\ (m^3) = 100 \\ (cm^3)}$"
+    },
+    {
+     "ma_cau": "K08020404014",
+     "loai": "trac_nghiem",
+     "de": "Treo một hòn đá vào lực kế, ngoài không khí lực kế chỉ $17,8 \\mathrm{~N}$. Nhưng chìm hoàn toàn vật trong nước thì lực kế chỉ $15,8 \\mathrm{~N}$. Biết trọng lượng riêng của nước là $10\\,000 \\mathrm{~N/m^3}$. Thể tích của vật là",
+     "lua_chon": [
+      "$0,2 \\mathrm{~dm^3}$",
+      "$1,58 \\mathrm{~dm^3}$",
+      "$1,78 \\mathrm{~dm^3}$",
+      "$2 \\mathrm{~dm^3}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Lực đẩy Archimedes tác dụng lên vật:\n$\\mathrm{F_A} = \\mathrm{P_1} - \\mathrm{P_2} = 17,8 - 15,8 = 2 \\mathrm{~(N)}$\nVật chìm hoàn toàn nên thể tích vật bằng thể tích phần chìm:\n$\\mathrm{V} = \\dfrac{\\mathrm{F_A}}{\\mathrm{d}} = \\dfrac{2}{10\\,000} = 0,0002 \\mathrm{~(m^3)}$\nĐổi đơn vị:\n$\\mathrm{V} = 0,0002 \\mathrm{~m^3} = 0,2 \\mathrm{~dm^3}$"
+    },
+    {
+     "ma_cau": "K08020404020",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể tích $0.0002 \\text{ m}^3$ được treo vào lực kế rồi nhúng chìm hoàn toàn trong dầu hoả, khi đó lực kế chỉ $3.4 \\text{ N}$. Biết trọng lượng riêng của dầu hoả là $8000 \\text{ N/m}^3$. Số chỉ của lực kế khi treo vật ngoài không khí là",
+     "lua_chon": [
+      "$1.6 \\text{ N}$",
+      "$1.8 \\text{ N}$",
+      "$5 \\text{ N}$",
+      "$5.4 \\text{ N}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Lực đẩy Archimedes tác dụng lên vật:\n$\\mathrm{F_A = d \\cdot V = 8000 \\cdot 0,0002 = 1,6 \\ (N)}$\nSố chỉ của lực kế ngoài không khí:\n$\\mathrm{P_1 = P_2 + F_A = 3,4 + 1,6 = 5 \\ (N)}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00923",
+   "nhom_id": "KNB00395",
+   "thu_tu": 3,
+   "dang": "TẢI TRỌNG TỐI ĐA CỦA THUYỀN, BÈ, PHAO",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 9,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020404021",
+     "loai": "tu_luan",
+     "de": "Một chiếc bè làm từ các thân tre có tổng thể tích $0.6\\ \\mathrm{m^3}$ và khối lượng $240\\ \\mathrm{kg}$. Biết trọng lượng riêng của nước là $10\\ 000\\ \\mathrm{N/m^3}$. Tính khối lượng hàng tối đa có thể xếp lên bè mà bè không bị chìm.",
+     "dap_an": "360",
+     "loi_giai": "Lực đẩy Archimedes lớn nhất (khi phần chìm đạt tối đa):\n$F_{\\mathrm{max}} = d \\cdot V_{\\mathrm{chìm}} = 10\\ 000 \\cdot 0.6 = 6\\ 000\\ (\\mathrm{N})$\nTrọng lượng của bè:\n$P = 10m = 10 \\cdot 240 = 2\\ 400\\ (\\mathrm{N})$\nTrọng lượng hàng tối đa:\n$P_{\\mathrm{hàng}} = F_{\\mathrm{max}} - P = 6\\ 000 - 2\\ 400 = 3\\ 600\\ (\\mathrm{N})$\nKhối lượng hàng tối đa:\n$m_{\\mathrm{hàng}} = \\dfrac{P_{\\mathrm{hàng}}}{10} = \\dfrac{3\\ 600}{10} = 360\\ (\\mathrm{kg})$"
+    },
+    {
+     "ma_cau": "K08020404029",
+     "loai": "tu_luan",
+     "de": "Một sà lan hình hộp chữ nhật dài 20 m, rộng 5 m, cao 2 m, khối lượng vỏ 60 tấn, chở hàng trên sông. Biết trọng lượng riêng của nước là $10\\,000\\,\\mathrm{N/m^3}$. Tính khối lượng hàng tối đa (theo tấn) sà lan có thể chở mà không bị chìm.",
+     "dap_an": "140",
+     "loi_giai": "Đổi khối lượng vỏ:\n$\\mathrm{m} = 60\\,\\text{tấn} = 60\\,000\\,\\mathrm{kg}$\nThể tích của sà lan:\n$\\mathrm{V} = 20 \\cdot 5 \\cdot 2 = 200\\,\\mathrm{(m^3)}$\nLực đẩy Archimedes lớn nhất (khi phần chìm đạt tối đa):\n$\\mathrm{F_{max}} = \\mathrm{d \\cdot V_{chim}} = 10\\,000 \\cdot 200 = 2\\,000\\,000\\,\\mathrm{(N)}$\nTrọng lượng của sà lan:\n$\\mathrm{P} = 10\\mathrm{m} = 10 \\cdot 60\\,000 = 600\\,000\\,\\mathrm{(N)}$\nTrọng lượng hàng tối đa:\n$\\mathrm{P_{hàng}} = \\mathrm{F_{max}} - \\mathrm{P} = 2\\,000\\,000 - 600\\,000 = 1\\,400\\,000\\,\\mathrm{(N)}$\nKhối lượng hàng tối đa:\n$\\mathrm{m_{hàng}} = \\dfrac{\\mathrm{P_{hàng}}}{10} = \\dfrac{1\\,400\\,000}{10} = 140\\,000\\,\\mathrm{(kg)}$\nĐổi đơn vị:\n$\\mathrm{m_{hàng}} = 140\\,000\\,\\ma …"
+    },
+    {
+     "ma_cau": "K08020404027",
+     "loai": "tu_luan",
+     "de": "Một khoang thuyền có thể tích phần vỏ kín là $2.5$ m$^3$, khối lượng $300$ kg. Để an toàn, phần chìm của thuyền không được vượt quá $80\\%$ thể tích phần vỏ kín. Biết trọng lượng riêng của nước là $10\\ 000$ N/m$^3$. Tính khối lượng hàng tối đa thuyền được phép chở.",
+     "dap_an": "1700",
+     "loi_giai": "Thể tích phần chìm tối đa cho phép:\n$\\mathrm{V_{chim}} = \\dfrac{4}{5} \\cdot 2.5 = 2$ (m$^3$)\nLực đẩy Archimedes lớn nhất (khi phần chìm đạt tối đa):\n$\\mathrm{F_{max}} = d \\cdot \\mathrm{V_{chim}} = 10\\ 000 \\cdot 2 = 20\\ 000$ (N)\nTrọng lượng của thuyền:\n$P = 10m = 10 \\cdot 300 = 3\\ 000$ (N)\nTrọng lượng hàng tối đa:\n$\\mathrm{P_{hang}} = \\mathrm{F_{max}} - P = 20\\ 000 - 3\\ 000 = 17\\ 000$ (N)\nKhối lượng hàng tối đa:\n$\\mathrm{m_{hang}} = \\dfrac{\\mathrm{P_{hang}}}{10} = \\dfrac{17\\ 000}{10} = 1\\ 700$ (kg)"
+    },
+    {
+     "ma_cau": "K08020404028",
+     "loai": "tu_luan",
+     "de": "Một chiếc ca nô có thể tích phần vỏ kín là $3 \\ \\mathrm{m^3}$, khối lượng $800 \\ \\mathrm{kg}$. Để an toàn, phần chìm của ca nô không được vượt quá hai phần ba thể tích phần vỏ kín. Mỗi hành khách có khối lượng trung bình $60 \\ \\mathrm{kg}$. Biết trọng lượng riêng của nước là $10 \\ 000 \\ \\mathrm{N/m^3}$. Tính số hành khách tối đa ca nô được phép chở.",
+     "dap_an": "20",
+     "loi_giai": "Thể tích phần chìm tối đa cho phép:\n$V_{\\mathrm{chìm}} = \\dfrac{2}{3} \\cdot 3 = 2 \\ (\\mathrm{m^3})$\nLực đẩy Archimedes lớn nhất (khi phần chìm đạt tối đa):\n$F_{\\mathrm{max}} = \\mathrm{d} \\cdot V_{\\mathrm{chìm}} = 10 \\ 000 \\cdot 2 = 20 \\ 000 \\ (\\mathrm{N})$\nTrọng lượng của ca nô:\n$\\mathrm{P} = 10\\mathrm{m} = 10 \\cdot 800 = 8 \\ 000 \\ (\\mathrm{N})$\nTrọng lượng hàng tối đa:\n$P_{\\mathrm{hàng}} = F_{\\mathrm{max}} - P = 20 \\ 000 - 8 \\ 000 = 12 \\ 000 \\ (\\mathrm{N})$\nKhối lượng hàng tối đa:\n$\\mathrm{m_{\\mathrm{hàng}}} = \\dfrac{P_{\\mathrm{hàng}}}{10} = \\dfrac{12 \\ 000}{10} = 1 \\ 200 \\ (\\mathrm{kg})$\nSố người tối đa:\n$\\mathrm{n} = \\dfrac{1 \\ 200}{60} = 20$\nVậy chở được tối đa 20 người."
+    },
+    {
+     "ma_cau": "K08020404026",
+     "loai": "tu_luan",
+     "de": "Một chiếc bè có tổng thể tích $0.8$ m$^3$ và khối lượng $200$ kg nổi trên mặt biển. Biết khối lượng riêng của nước biển là $1030$ kg/m$^3$ và $d = 10D$. Tính khối lượng hàng tối đa bè có thể chở mà không bị chìm.",
+     "dap_an": "624",
+     "loi_giai": "Trọng lượng riêng của nước biển:\n$d = 10D = 10 \\cdot 1030 = 10\\ 300$ (N/m$^3$)\nLực đẩy Archimedes lớn nhất (khi phần chìm đạt tối đa):\n$\\mathrm{F_{max}} = d \\cdot \\mathrm{V_{chim}} = 10\\ 300 \\cdot 0.8 = 8\\ 240$ (N)\nTrọng lượng của bè:\n$P = 10m = 10 \\cdot 200 = 2\\ 000$ (N)\nTrọng lượng hàng tối đa:\n$\\mathrm{P_{hang}} = \\mathrm{F_{max}} - P = 8\\ 240 - 2\\ 000 = 6\\ 240$ (N)\nKhối lượng hàng tối đa:\n$\\mathrm{m_{hang}} = \\dfrac{\\mathrm{P_{hang}}}{10} = \\dfrac{6\\ 240}{10} = 624$ (kg)"
+    },
+    {
+     "ma_cau": "K08020404025",
+     "loai": "tu_luan",
+     "de": "Một chiếc bè được ghép từ 10 thùng phuy nhựa rỗng đậy kín, mỗi thùng có thể tích $0.2 \\ \\mathrm{m^3}$ và khối lượng $10 \\ \\mathrm{kg}$; khung gỗ của bè có khối lượng $50 \\ \\mathrm{kg}$. Bỏ qua thể tích khung gỗ. Biết trọng lượng riêng của nước là $10 \\ 000 \\ \\mathrm{N/m^3}$. Tính khối lượng hàng tối đa bè có thể chở mà không bị chìm.",
+     "dap_an": "1850",
+     "loi_giai": "Tổng thể tích các thùng phuy:\n$V = 10 \\cdot 0.2 = 2 \\ \\mathrm{(m^3)}$\nKhối lượng của bè:\n$m = 10 \\cdot 10 + 50 = 150 \\ \\mathrm{(kg)}$\nLực đẩy Archimedes lớn nhất (khi phần chìm đạt tối đa):\n$\\mathrm{F_{max}} = \\mathrm{d \\cdot V_{chim}} = 10 \\ 000 \\cdot 2 = 20 \\ 000 \\ \\mathrm{(N)}$\nTrọng lượng của bè:\n$\\mathrm{P = 10m = 10 \\cdot 150 = 1 \\ 500 \\ \\mathrm{(N)}}$\nTrọng lượng hàng tối đa:\n$\\mathrm{P_{hàng}} = \\mathrm{F_{max}} - \\mathrm{P} = 20 \\ 000 - 1 \\ 500 = 18 \\ 500 \\ \\mathrm{(N)}$\nKhối lượng hàng tối đa:\n$\\mathrm{m_{hàng}} = \\dfrac{\\mathrm{P_{hàng}}}{10} = \\dfrac{18 \\ 500}{10} = 1 \\ 850 \\ \\mathrm{(kg)}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00924",
+   "nhom_id": "KNB00395",
+   "thu_tu": 4,
+   "dang": "TÍNH KHỐI LƯỢNG RIÊNG CỦA VẬT TỪ HAI SỐ CHỈ LỰC KẾ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020404037",
+     "loai": "tu_luan",
+     "de": "Treo một chiếc nhẫn vào lực kế, ngoài không khí lực kế chỉ 0,21 N. Nhúng chìm hoàn toàn vật trong nước thì lực kế chỉ 0,19 N. Biết trọng lượng riêng của nước là 10 000 N/m$^3$. Tính khối lượng riêng của chiếc nhẫn.",
+     "dap_an": "10500",
+     "loi_giai": "Lực đẩy Archimedes tác dụng lên vật:\n$F_A = P_1 - P_2 = 0,21 - 0,19 = 0,02$ (N)\nVật chìm hoàn toàn nên thể tích vật bằng thể tích phần chìm:\n$V = \\dfrac{F_A}{d} = \\dfrac{0,02}{10 \\,000} = 0,000002$ (m$^3$)\nKhối lượng của vật:\n$m = \\dfrac{P_1}{10} = \\dfrac{0,21}{10} = 0,021$ (kg)\nKhối lượng riêng của vật:\n$D = \\dfrac{m}{V} = \\dfrac{0,021}{0,000002} = 10 \\,500$ (kg/m$^3$)"
+    },
+    {
+     "ma_cau": "K08020404033",
+     "loai": "tu_luan",
+     "de": "Treo một khối thuỷ tinh vào lực kế, ngoài không khí lực kế chỉ 2,5 N. Nhúng chìm hoàn toàn vật trong nước thì lực kế chỉ 1,5 N. Biết trọng lượng riêng của nước là $10\\ 000\\ \\mathrm{N/m^3}$. Tính khối lượng riêng của khối thuỷ tinh.",
+     "dap_an": "2500",
+     "loi_giai": "Lực đẩy Archimedes tác dụng lên vật:\n$F_A = P_1 - P_2 = 2,5 - 1,5 = 1\\ (N)$\nVật chìm hoàn toàn nên thể tích vật bằng thể tích phần chìm:\n$V = \\dfrac{F_A}{d} = \\dfrac{1}{10\\ 000} = 0,0001\\ (m^3)$\nKhối lượng của vật:\n$m = \\dfrac{P_1}{10} = \\dfrac{2,5}{10} = 0,25\\ (kg)$\nKhối lượng riêng của vật:\n$D = \\dfrac{m}{V} = \\dfrac{0,25}{0,0001} = 2\\ 500\\ (kg/m^3)$"
+    },
+    {
+     "ma_cau": "K08020404031",
+     "loai": "tu_luan",
+     "de": "Treo một thỏi kim loại vào lực kế, ngoài không khí lực kế chỉ 5,4 N. Nhúng chìm hoàn toàn vật trong nước thì lực kế chỉ 3,4 N. Biết trọng lượng riêng của nước là 10 000 N/m³. Tính khối lượng riêng của thỏi kim loại.",
+     "dap_an": "2700",
+     "loi_giai": "Lực đẩy Archimedes tác dụng lên vật:\n$\\mathrm{F_A} = \\mathrm{P_1} - \\mathrm{P_2} = 5,4 - 3,4 = 2 \\text{ (N)}$\nVật chìm hoàn toàn nên thể tích vật bằng thể tích phần chìm:\n$\\mathrm{V} = \\dfrac{\\mathrm{F_A}}{\\mathrm{d}} = \\dfrac{2}{10\\ 000} = 0,0002 \\text{ (m³)}$\nKhối lượng của vật:\n$\\mathrm{m} = \\dfrac{\\mathrm{P_1}}{10} = \\dfrac{5,4}{10} = 0,54 \\text{ (kg)}$\nKhối lượng riêng của vật:\n$\\mathrm{D} = \\dfrac{\\mathrm{m}}{\\mathrm{V}} = \\dfrac{0,54}{0,0002} = 2\\ 700 \\text{ (kg/m³)}$"
+    },
+    {
+     "ma_cau": "K08020404034",
+     "loai": "tu_luan",
+     "de": "Treo một viên gạch đặc vào lực kế, ngoài không khí lực kế chỉ $3,6 \\mathrm{N}$. Nhưng chìm hoàn toàn vật trong nước thì lực kế chỉ $2,4 \\mathrm{N}$. Biết trọng lượng riêng của nước là $10 \\,000 \\mathrm{N/m^3}$. Tính khối lượng riêng của viên gạch đặc.",
+     "dap_an": "3000",
+     "loi_giai": "Lực đẩy Archimedes tác dụng lên vật:\n$F_A = P_1 - P_2 = 3,6 - 2,4 = 1,2 \\,(\\mathrm{N})$\nVật chìm hoàn toàn nên thể tích vật bằng thể tích phần chìm:\n$V = \\dfrac{F_A}{d} = \\dfrac{1,2}{10\\,000} = 0,00012 \\,(\\mathrm{m^3})$\nKhối lượng của vật:\n$m = \\dfrac{P_1}{10} = \\dfrac{3,6}{10} = 0,36 \\,(\\mathrm{kg})$\nKhối lượng riêng của vật:\n$D = \\dfrac{m}{V} = \\dfrac{0,36}{0,00012} = 3\\,000 \\,(\\mathrm{kg/m^3})$"
+    },
+    {
+     "ma_cau": "K08020404036",
+     "loai": "tu_luan",
+     "de": "Treo một chiếc vòng vào lực kế, ngoài không khí lực kế chỉ 3,86 N. Nhúng chìm hoàn toàn vật trong nước thì lực kế chỉ 3,66 N. Biết trọng lượng riêng của nước là 10 000 N/m$^3$. Tính khối lượng riêng của chiếc vòng.",
+     "dap_an": "19300",
+     "loi_giai": "Lực đẩy Archimedes tác dụng lên vật:\n$F_A = P_1 - P_2 = 3,86 - 3,66 = 0,2$ (N)\nVật chìm hoàn toàn nên thể tích vật bằng thể tích phần chìm:\n$V = \\dfrac{F_A}{d} = \\dfrac{0,2}{10 \\,000} = 0,00002$ (m$^3$)\nKhối lượng của vật:\n$m = \\dfrac{P_1}{10} = \\dfrac{3,86}{10} = 0,386$ (kg)\nKhối lượng riêng của vật:\n$D = \\dfrac{m}{V} = \\dfrac{0,386}{0,00002} = 19 \\,300$ (kg/m$^3$)"
+    },
+    {
+     "ma_cau": "K08020404032",
+     "loai": "tu_luan",
+     "de": "Treo một hòn đá vào lực kế, ngoài không khí lực kế chỉ 2,6 N. Nhúng chìm hoàn toàn vật trong dầu hoả thì lực kế chỉ 1,8 N. Biết trọng lượng riêng của dầu hoả là $8\\ 000\\ \\mathrm{N/m^3}$. Tính khối lượng riêng của hòn đá.",
+     "dap_an": "2600",
+     "loi_giai": "Lực đẩy Archimedes tác dụng lên vật:\n$F_A = P_1 - P_2 = 2,6 - 1,8 = 0,8\\ (N)$\nVật chìm hoàn toàn nên thể tích vật bằng thể tích phần chìm:\n$V = \\dfrac{F_A}{d} = \\dfrac{0,8}{8\\ 000} = 0,0001\\ (m^3)$\nKhối lượng của vật:\n$m = \\dfrac{P_1}{10} = \\dfrac{2,6}{10} = 0,26\\ (kg)$\nKhối lượng riêng của vật:\n$D = \\dfrac{m}{V} = \\dfrac{0,26}{0,0001} = 2\\ 600\\ (kg/m^3)$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00925",
+   "nhom_id": "KNB00395",
+   "thu_tu": 5,
+   "dang": "TÍNH KHỐI LƯỢNG RIÊNG CỦA VẬT NỔI TỪ PHẦN CHÌM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020404041",
+     "loai": "tu_luan",
+     "de": "Một khối gỗ hình hộp chữ nhật có đáy là hình vuông cạnh $10 \\text{ cm}$, chiều cao $8 \\text{ cm}$, nổi thẳng đứng trên mặt nước, phần chìm cao $5 \\text{ cm}$. Biết trọng lượng riêng của nước là $10\\ 000 \\text{ N/m}^3$. Tính khối lượng riêng của gỗ.",
+     "dap_an": "625",
+     "loi_giai": "Thể tích khối gỗ:\n$V = 10 \\cdot 10 \\cdot 8 = 800 \\text{ (cm}^3) = 0,0008 \\text{ (m}^3)$\nThể tích phần chìm:\n$V_{\\text{chìm}} = 10 \\cdot 10 \\cdot 5 = 500 \\text{ (cm}^3) = 0,0005 \\text{ (m}^3)$\nVật nổi đứng yên nên trọng lượng của vật bằng lực đẩy Archimedes:\n$\\text{P} = \\text{F}_A = \\text{d} \\cdot V_{\\text{chìm}} = 10\\ 000 \\cdot 0,0005 = 5 \\text{ (N)}$\nKhối lượng của vật:\n$\\text{m} = \\dfrac{\\text{P}}{10} = \\dfrac{5}{10} = 0,5 \\text{ (kg)}$\nKhối lượng riêng của vật:\n$\\text{D} = \\dfrac{\\text{m}}{\\text{V}} = \\dfrac{0,5}{0,0008} = 625 \\text{ (kg/m}^3)$"
+    },
+    {
+     "ma_cau": "K08020404039",
+     "loai": "tu_luan",
+     "de": "Một khối gỗ có thể tích $0,004 \\ \\mathrm{m^3}$ nổi trên mặt nước, thể tích phần nổi bằng một phần tư thể tích khối gỗ. Biết trọng lượng riêng của nước là $10 \\ 000 \\ \\mathrm{N/m^3}$. Tính khối lượng riêng của gỗ.",
+     "dap_an": "750",
+     "loi_giai": "Thể tích phần chìm bằng ba phần tư thể tích khối gỗ:\n$\\mathrm{V_{chim}} = \\dfrac{3}{4} \\cdot 0,004 = 0,003 \\ (\\mathrm{m^3})$\nVật nổi đứng yên nên trọng lượng của vật bằng lực đẩy Archimedes:\n$P = \\mathrm{F_A} = \\mathrm{d \\cdot V_{chim}} = 10\\ 000 \\cdot 0,003 = 30 \\ (\\mathrm{N})$\nKhối lượng của vật:\n$m = \\dfrac{P}{10} = \\dfrac{30}{10} = 3 \\ (\\mathrm{kg})$\nKhối lượng riêng của vật:\n$\\mathrm{D} = \\dfrac{\\mathrm{m}}{\\mathrm{V}} = \\dfrac{3}{0,004} = 750 \\ (\\mathrm{kg/m^3})$"
+    },
+    {
+     "ma_cau": "K08020404047",
+     "loai": "tu_luan",
+     "de": "Một chiếc phao xốp có thể tích $40\\ \\mathrm{dm^3}$ nổi trên mặt nước biển, thể tích phần chìm là $2\\ \\mathrm{dm^3}$. Biết trọng lượng riêng của nước biển là $10\\ 300\\ \\mathrm{N/m^3}$. Tính khối lượng riêng trung bình của phao.",
+     "dap_an": "51,5",
+     "loi_giai": "Đổi thể tích:\n$\\mathrm{V} = 40\\ \\mathrm{dm^3} = 0,04\\ \\mathrm{m^3}$; $\\mathrm{V_{chim}} = 2\\ \\mathrm{dm^3} = 0,002\\ \\mathrm{m^3}$\nVật nổi đứng yên nên trọng lượng của vật bằng lực đẩy Archimedes:\n$\\mathrm{P} = \\mathrm{F_A} = \\mathrm{d} \\cdot \\mathrm{V_{chim}} = 10\\ 300 \\cdot 0,002 = 20,6\\ (\\mathrm{N})$\nKhối lượng của vật:\n$\\mathrm{m} = \\dfrac{\\mathrm{P}}{10} = \\dfrac{20,6}{10} = 2,06\\ (\\mathrm{kg})$\nKhối lượng riêng trung bình của vật:\n$\\mathrm{D} = \\dfrac{\\mathrm{m}}{\\mathrm{V}} = \\dfrac{2,06}{0,04} = 51,5\\ (\\mathrm{kg/m^3})$"
+    },
+    {
+     "ma_cau": "K08020404046",
+     "loai": "tu_luan",
+     "de": "Một vật đặc có thể tích $500\\ \\mathrm{cm^3}$ nổi trên mặt nước, thể tích phần nổi là $150\\ \\mathrm{cm^3}$. Biết trọng lượng riêng của nước là $10\\ 000\\ \\mathrm{N/m^3}$. Tính khối lượng riêng của vật.",
+     "dap_an": "700",
+     "loi_giai": "Thể tích phần chìm:\n$\\mathrm{V_{chim}} = 500 - 150 = 350\\ (\\mathrm{cm^3}) = 0,00035\\ (\\mathrm{m^3})$\nĐổi thể tích vật:\n$\\mathrm{V} = 500\\ \\mathrm{cm^3} = 0,0005\\ \\mathrm{m^3}$\nVật nổi đứng yên nên trọng lượng của vật bằng lực đẩy Archimedes:\n$\\mathrm{P} = \\mathrm{F_A} = \\mathrm{d} \\cdot \\mathrm{V_{chim}} = 10\\ 000 \\cdot 0,00035 = 3,5\\ (\\mathrm{N})$\nKhối lượng của vật:\n$\\mathrm{m} = \\dfrac{\\mathrm{P}}{10} = \\dfrac{3,5}{10} = 0,35\\ (\\mathrm{kg})$\nKhối lượng riêng của vật:\n$\\mathrm{D} = \\dfrac{\\mathrm{m}}{\\mathrm{V}} = \\dfrac{0,35}{0,0005} = 700\\ (\\mathrm{kg/m^3})$"
+    },
+    {
+     "ma_cau": "K08020404044",
+     "loai": "tu_luan",
+     "de": "Một vật đặc có thể tích $500 \\ \\mathrm{cm^3}$ nổi trên mặt dầu hoả, thể tích phần chìm là $300 \\ \\mathrm{cm^3}$. Biết trọng lượng riêng của dầu hoả là $8000 \\ \\mathrm{N/m^3}$. Tính khối lượng riêng của vật.",
+     "dap_an": "480",
+     "loi_giai": "Đổi thể tích:\n$V = 500 \\ \\mathrm{cm^3} = 0,0005 \\ \\mathrm{m^3}$; $V_{chìm} = 300 \\ \\mathrm{cm^3} = 0,0003 \\ \\mathrm{m^3}$\nVật nổi đứng yên nên trọng lượng của vật bằng lực đẩy Archimedes:\n$\\mathrm{P} = \\mathrm{F_A} = d \\cdot V_{chìm} = 8000 \\cdot 0,0003 = 2,4 \\ \\mathrm{(N)}$\nKhối lượng của vật:\n$m = \\dfrac{P}{10} = \\dfrac{2,4}{10} = 0,24 \\ \\mathrm{(kg)}$\nKhối lượng riêng của vật:\n$D = \\dfrac{m}{V} = \\dfrac{0,24}{0,0005} = 480 \\ \\mathrm{(kg/m^3)}$"
+    },
+    {
+     "ma_cau": "K08020404038",
+     "loai": "tu_luan",
+     "de": "Một khối gỗ có thể tích $0,01 \\ \\mathrm{m^3}$ nổi trên mặt nước, thể tích phần chìm là $0,006 \\ \\mathrm{m^3}$. Biết trọng lượng riêng của nước là $10 \\ 000 \\ \\mathrm{N/m^3}$. Tính khối lượng riêng của gỗ.",
+     "dap_an": "600",
+     "loi_giai": "Vật nổi đứng yên nên trọng lượng của vật bằng lực đẩy Archimedes:\n$P = \\mathrm{F_A} = \\mathrm{d \\cdot V_{chim}} = 10\\ 000 \\cdot 0,006 = 60 \\ (\\mathrm{N})$\nKhối lượng của vật:\n$m = \\dfrac{P}{10} = \\dfrac{60}{10} = 6 \\ (\\mathrm{kg})$\nKhối lượng riêng của vật:\n$\\mathrm{D} = \\dfrac{\\mathrm{m}}{\\mathrm{V}} = \\dfrac{6}{0,01} = 600 \\ (\\mathrm{kg/m^3})$"
+    }
+   ]
+  }
+ ]
+}

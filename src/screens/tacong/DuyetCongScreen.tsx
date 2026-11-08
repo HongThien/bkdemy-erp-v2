@@ -11,7 +11,7 @@ import { useStore } from '../../store/useStore'
 import SearchSelect from '../../components/SearchSelect'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import {
-  doiChieu, thieuCong, duyetCong, chotGio, nhapHoCa, nhapHoViec, dsLoaiViec, dsLop, dsNhanSuDangLam,
+  doiChieu, thieuCong, duyetCong, chotGio, chotGioTheoViec, nhapHoCa, nhapHoViec, dsLoaiViec, dsLop, dsNhanSuDangLam,
   gioVN, hm, nhanCo, type DongCong, type ThieuCong, type LoaiViec,
 } from '../../lib/tacong'
 
@@ -67,6 +67,7 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
   const [boChon, setBoChon] = useState<Set<string>>(new Set())   // mặc định CHỌN SẴN mọi dòng chờ duyệt
   const [mo, setMo] = useState<string | null>(null)              // 'tc:<id>' từ chối · 'chot:<id>' chốt giờ
   const [ban, setBan] = useState(false)
+  const [nguoi, setNguoi] = useState('')                          // lọc theo 1 TA (Thùy 04/11) — '' = mọi người
   const khoang = loc === 'cho' ? [MOC, homNay] : loc === 'nay' ? [homNay, homNay] : loc === 'qua' ? [congNgay(homNay, -1), congNgay(homNay, -1)] : [tu, den]
 
   // tai(true) = đổi ngữ cảnh (xoá + tải) · tai(false) = quét nền giữ list cũ
@@ -78,7 +79,7 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
 
   // nhóm: mỗi ca kèm việc của nó; việc không gắn ca (nhập hộ) đứng riêng. Lọc "chờ duyệt": ca còn chờ hoặc có việc còn chờ.
   const nhom = useMemo(() => {
-    const ds = rows ?? []
+    const ds = (rows ?? []).filter((r) => !nguoi || r.nhan_su_id === nguoi)
     const cho = (r: DongCong) => r.duyet === 'cho_duyet'
     const viecCua = (caId: string) => ds.filter((v) => v.loai_dong === 'viec' && v.cham_cong_id === caId)
     const cas = ds.filter((r) => r.loai_dong === 'ca').filter((c) => loc !== 'cho' || cho(c) || viecCua(c.id).some(cho))
@@ -86,9 +87,18 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
     const caIds = new Set(ds.filter((r) => r.loai_dong === 'ca').map((c) => c.id))
     const le = ds.filter((v) => v.loai_dong === 'viec' && (!v.cham_cong_id || !caIds.has(v.cham_cong_id)) && (loc !== 'cho' || cho(v)))
     return { cas: cas.map((c) => ({ c, viec: viecCua(c.id) })), le }   // việc trong ca: hiện đủ để đọc ngữ cảnh
+  }, [rows, loc, nguoi])
+  // danh sách TA có dòng trong khoảng đang xem, kèm số dòng chờ duyệt
+  const dsNguoi = useMemo(() => {
+    const m = new Map<string, { id: string; label: string; n: number }>()
+    for (const r of rows ?? []) { const x = m.get(r.nhan_su_id) ?? { id: r.nhan_su_id, label: r.ho_ten, n: 0 }; if (r.duyet === 'cho_duyet') x.n++; m.set(r.nhan_su_id, x) }
+    return [...m.values()].filter((x) => loc !== 'cho' || x.n > 0).sort((a, b) => a.label.localeCompare(b.label, 'vi'))
+      .map((x) => ({ id: x.id, label: x.n ? `${x.label} (${x.n} chờ)` : x.label }))
   }, [rows, loc])
 
-  const choDuyet = (rows ?? []).filter((r) => r.duyet === 'cho_duyet' && (r.loai_dong === 'viec' || nhom.cas.some((x) => x.c.id === r.id)))
+  // duyệt hàng loạt chỉ trong phạm vi đang lọc (người đang chọn)
+  const choDuyet = (rows ?? []).filter((r) => r.duyet === 'cho_duyet' && (!nguoi || r.nhan_su_id === nguoi) && (r.loai_dong === 'viec' || nhom.cas.some((x) => x.c.id === r.id))
+    && !(r.loai_dong === 'viec' && r.co?.includes('ca_bi_tu_choi')))   // việc trong ca đã từ chối: DB chặn duyệt (mig 202611041729) ⇒ không gom vào lô, xử từng dòng
   const dangChon = choDuyet.filter((r) => !boChon.has(r.id))
   const doiChon = (id: string) => setBoChon((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
   const vaTrangThai = (ids: string[], duyet: DongCong['duyet'], lyDo: string | null) =>
@@ -110,8 +120,13 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
     try { await chotGio(r.id, r.ngay, vao, ra); setMo(null); bao('Đã chốt giờ — giờ gốc vẫn giữ'); await tai(false) }
     catch (e) { bao(loiCua(e), false) } finally { setBan(false) }
   }
+  async function chotTheoViec(r: DongCong) {
+    setBan(true)
+    try { const g = await chotGioTheoViec(r.id); setMo(null); bao(`Đã chốt ${g.vao}–${g.ra} theo việc — giờ gốc vẫn giữ`); await tai(false) }
+    catch (e) { bao(loiCua(e), false) } finally { setBan(false) }
+  }
 
-  const props = { coGhi, boChon, doiChon, mo, setMo, ban, tuChoi, chot }
+  const props = { coGhi, boChon, doiChon, mo, setMo, ban, tuChoi, chot, chotTheoViec }
   return (
     <div className="flex flex-col gap-3">
       <div className={`${card} flex flex-wrap items-center gap-2 px-3 py-2`}>
@@ -123,6 +138,7 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
           <span className="text-slate-400">→</span>
           <input type="date" className={inputCls} value={den} min={tu} max={homNay} onChange={(e) => e.target.value && setDen(e.target.value)} />
         </>}
+        <div className="w-56"><SearchSelect value={nguoi} onChange={(v) => setNguoi(v ?? '')} options={dsNguoi} placeholder="Lọc theo TA…" /></div>
         <button onClick={() => tai(false)} className={btnGhost} title="Quét lại">↻</button>
         {coGhi && <button disabled={ban || dangChon.length === 0} onClick={duyetLo} className={`${btnOk} ml-auto`}>Duyệt {dangChon.length} dòng đang chọn</button>}
       </div>
@@ -149,7 +165,7 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
 
 type DongProps = {
   coGhi: boolean; boChon: Set<string>; doiChon: (id: string) => void; mo: string | null; setMo: (m: string | null) => void; ban: boolean
-  tuChoi: (r: DongCong, lyDo: string) => void; chot: (r: DongCong, vao: string, ra: string) => void
+  tuChoi: (r: DongCong, lyDo: string) => void; chot: (r: DongCong, vao: string, ra: string) => void; chotTheoViec: (r: DongCong) => void
 }
 const Pill = ({ c, children }: { c: string; children: React.ReactNode }) => <span className={`mr-1 inline-block whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] font-semibold ${c}`}>{children}</span>
 const Chk = ({ r, p }: { r: DongCong; p: DongProps }) => (r.duyet === 'cho_duyet' && p.coGhi
@@ -171,6 +187,7 @@ function NhomCa({ c, viec, ...p }: { c: DongCong; viec: DongCong[] } & DongProps
         <td className="px-2 py-2 align-top"></td>
         <td className="px-2 py-2 align-top"><TrangThai r={c} /></td>
         <td className="px-2 py-2 align-top">{p.coGhi && <div className="flex flex-col gap-1">
+          {!c.ra_at && !c.ra_chot && viec.some((v) => v.duyet !== 'tu_choi' && v.gio_ket_thuc) && <button className={btnGhost} disabled={p.ban} title="Giờ ra = giờ kết thúc việc cuối trong ca" onClick={() => p.chotTheoViec(c)}>Chốt theo việc</button>}
           <button className={btnGhost} onClick={() => p.setMo(p.mo === 'chot:' + c.id ? null : 'chot:' + c.id)}>Chốt giờ</button>
           {c.duyet === 'cho_duyet' && <button className={btnDanger} onClick={() => p.setMo(p.mo === 'tc:' + c.id ? null : 'tc:' + c.id)}>Từ chối</button>}
         </div>}</td>
@@ -237,14 +254,19 @@ function TabThieu({ coGhi, bao, onNhapHo }: { coGhi: boolean; bao: (t: string, o
   const [den, setDen] = useState(homNay)
   const [rows, setRows] = useState<ThieuCong[] | null>(null)
   useEffect(() => { setRows(null); thieuCong(tu, den).then(setRows).catch((e) => { bao(loiCua(e), false); setRows([]) }) }, [tu, den, bao])
-  const ngays = [...new Set((rows ?? []).map((r) => r.ngay))].sort().reverse()
+  const [nguoi, setNguoi] = useState('')   // lọc theo TA phụ trách (Thùy 04/11); '—' = chưa phân TA
+  const dsNguoi = useMemo(() => [...new Set((rows ?? []).map((r) => r.nguoi_phu_trach ?? '—'))].sort((a, b) => a.localeCompare(b, 'vi'))
+    .map((t) => ({ id: t, label: t === '—' ? 'Chưa phân TA' : t })), [rows])
+  const hien = (rows ?? []).filter((r) => !nguoi || (r.nguoi_phu_trach ?? '—') === nguoi)
+  const ngays = [...new Set(hien.map((r) => r.ngay))].sort().reverse()
   return (
     <div className="flex flex-col gap-3">
       <div className={`${card} flex flex-wrap items-center gap-2 px-3 py-2`}>
         <input type="date" className={inputCls} value={tu} min={MOC} max={den} onChange={(e) => e.target.value && setTu(e.target.value)} />
         <span className="text-slate-400">→</span>
         <input type="date" className={inputCls} value={den} min={tu} max={homNay} onChange={(e) => e.target.value && setDen(e.target.value)} />
-        <span className="ml-auto text-sm text-slate-500">{rows ? `${rows.length} buổi / ca chưa ai ghi công` : '…'}</span>
+        <div className="w-56"><SearchSelect value={nguoi} onChange={(v) => setNguoi(v ?? '')} options={dsNguoi} placeholder="Lọc theo TA phụ trách…" /></div>
+        <span className="ml-auto text-sm text-slate-500">{rows ? `${hien.length} buổi / ca chưa ai ghi công` : '…'}</span>
       </div>
       <div className={`${card} overflow-x-auto`}>
         <table className="w-full min-w-[720px] border-collapse text-sm">
@@ -254,7 +276,8 @@ function TabThieu({ coGhi, bao, onNhapHo }: { coGhi: boolean; bao: (t: string, o
           <tbody>
             {rows === null && <tr><td colSpan={5} className="p-6 text-center text-slate-400">Đang tải…</td></tr>}
             {rows?.length === 0 && <tr><td colSpan={5} className="p-6 text-center text-slate-400">Không thiếu buổi nào.</td></tr>}
-            {ngays.map((d) => (rows ?? []).filter((r) => r.ngay === d).map((r, i) => (
+            {rows !== null && rows.length > 0 && hien.length === 0 && <tr><td colSpan={5} className="p-6 text-center text-slate-400">Người này không thiếu buổi nào.</td></tr>}
+            {ngays.map((d) => hien.filter((r) => r.ngay === d).map((r, i) => (
               <tr key={(r.buoi_hoc_id ?? r.ca_bo_tro_id) + ''} className={`border-t ${i === 0 ? 'border-slate-200' : 'border-slate-100'}`}>
                 <td className="whitespace-nowrap px-3 py-2 text-slate-600">{i === 0 ? `${thuCuaNgay(d)} ${ddmmVN(d)}` : ''}</td>
                 <td className="px-3 py-2 text-slate-800">{r.loai === 'buoi' ? 'Buổi lớp ' : ''}<b>{r.ten}</b></td>

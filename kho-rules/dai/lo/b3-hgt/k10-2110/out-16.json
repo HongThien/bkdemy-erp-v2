@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T310000000616",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính AB.AC trong hình vuông bằng độ dài và góc 45 độ."
+ },
+ {
+  "ma_cau": "T310000000617",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng AB.AC trong tam giác vuông có góc 30 độ."
+ },
+ {
+  "ma_cau": "T310000000618",
+  "dang_bai_id": "NDB00928",
+  "chac": "cao",
+  "ly_do": "Góc giữa CA và CB trong tam giác đều."
+ },
+ {
+  "ma_cau": "T310000000619",
+  "dang_bai_id": "NDB00929",
+  "chac": "cao",
+  "ly_do": "Cho độ dài hai véc tơ và góc, tính tích vô hướng theo định nghĩa."
+ },
+ {
+  "ma_cau": "T310000000620",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng AB.BC trong tam giác vuông cân."
+ },
+ {
+  "ma_cau": "T310000000621",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng AB.DB trong hình vuông."
+ },
+ {
+  "ma_cau": "T310000000622",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (tập hợp điểm M là đường thẳng)."
+ },
+ {
+  "ma_cau": "T310000000623",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Chứng minh vuông góc trong hình vuông bằng tích vô hướng; chưa có dạng riêng."
+ },
+ {
+  "ma_cau": "T310000000640",
+  "dang_bai_id": "NDB00914",
+  "chac": "vua",
+  "ly_do": "Tính công của lực bằng tích vô hướng; cũng có thể xếp NDB00929."
+ },
+ {
+  "ma_cau": "T310000000641",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "Cộng vận tốc máy bay và gió, tìm vận tốc mới."
+ },
+ {
+  "ma_cau": "T310000000642",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Tìm k để hai véc tơ vuông góc trong tam giác bằng tích vô hướng."
+ },
+ {
+  "ma_cau": "T310000000643",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng BK.AC trong hình chữ nhật."
+ },
+ {
+  "ma_cau": "T310000000644",
+  "dang_bai_id": "NDB00930",
+  "chac": "vua",
+  "ly_do": "Tìm cos góc giữa hai véc tơ tổ hợp; cũng gần NDB00929."
+ },
+ {
+  "ma_cau": "T310000000645",
+  "dang_bai_id": "NDB00914",
+  "chac": "vua",
+  "ly_do": "Công của hợp lực hai lực; đề dựa vào hình, cũng gần NDB00915."
+ },
+ {
+  "ma_cau": "T310000000646",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "Cộng vận tốc khinh khí cầu và gió (số liệu lời giải lệch đề)."
+ },
+ {
+  "ma_cau": "T310000000647",
+  "dang_bai_id": "NDB00930",
+  "chac": "vua",
+  "ly_do": "Từ điều kiện vuông góc suy ra a.b rồi tìm góc; cũng gần NDB00929."
+ },
+ {
+  "ma_cau": "T310000000648",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính tích vô hướng AB.(AC-2BC) trong tam giác vuông."
+ },
+ {
+  "ma_cau": "T310000000649",
+  "dang_bai_id": "NDB00928",
+  "chac": "cao",
+  "ly_do": "Cos góc giữa hai véc tơ trong hình vuông."
+ },
+ {
+  "ma_cau": "T310000000650",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (tập hợp là đường tròn, tìm bán kính)."
+ },
+ {
+  "ma_cau": "T310000000651",
+  "dang_bai_id": "NDB00914",
+  "chac": "vua",
+  "ly_do": "Tính công sinh bởi lực khi biết góc; cũng gần NDB00929."
+ },
+ {
+  "ma_cau": "T310000000652",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "Cộng vận tốc xe máy và gió, tìm vận tốc mới."
+ },
+ {
+  "ma_cau": "T310000000653",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (AB.AC theo trung tuyến, tìm hằng số k)."
+ },
+ {
+  "ma_cau": "T310000000654",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Tìm tỉ số để hai đường vuông góc bằng tích vô hướng trong tam giác cân."
+ },
+ {
+  "ma_cau": "T310000000655",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Tính cos góc giữa hai véc tơ trong hình vuông qua tích vô hướng."
+ },
+ {
+  "ma_cau": "T310000000656",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (tập hợp là đường tròn)."
+ },
+ {
+  "ma_cau": "T310000000657",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng AO.BI trong hình thoi."
+ },
+ {
+  "ma_cau": "T310000000658",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (HM.AM theo BC^2 với H trực tâm)."
+ },
+ {
+  "ma_cau": "T310000000659",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (nửa đường tròn, hệ thức AE.AC+BE.BD)."
+ },
+ {
+  "ma_cau": "T310000000660",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (bán kính đường tròn)."
+ },
+ {
+  "ma_cau": "T310000000661",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Tìm k để BM vuông góc CD trong hình thang bằng tích vô hướng."
+ },
+ {
+  "ma_cau": "T310000000662",
+  "dang_bai_id": "NDB00928",
+  "chac": "cao",
+  "ly_do": "Cos góc giữa AC và CB trong tam giác vuông."
+ },
+ {
+  "ma_cau": "T310000000663",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng GA.GB trong tam giác đều."
+ },
+ {
+  "ma_cau": "T310000000664",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Tính cos góc AM,AN trong hình vuông qua tích vô hướng."
+ },
+ {
+  "ma_cau": "T310000000665",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "Cộng vận tốc máy bay và gió, tìm tốc độ mới."
+ },
+ {
+  "ma_cau": "T310000000666",
+  "dang_bai_id": "NDB00914",
+  "chac": "vua",
+  "ly_do": "Hợp hai lực rồi tính công; đề dựa hình, cũng gần NDB00915."
+ },
+ {
+  "ma_cau": "T310000000667",
+  "dang_bai_id": "NDB00915",
+  "chac": "vua",
+  "ly_do": "Tính độ lớn lực tổng hợp của ba lực không cân bằng; cũng gần NDB00916."
+ },
+ {
+  "ma_cau": "T310000000668",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (tập hợp là đường tròn, tính T)."
+ },
+ {
+  "ma_cau": "T310000000669",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của hai lực tạo góc 120 độ."
+ },
+ {
+  "ma_cau": "T310000000670",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Tính cos góc MNP trong hình vuông qua tích vô hướng."
+ },
+ {
+  "ma_cau": "T310000000671",
+  "dang_bai_id": "NDB00914",
+  "chac": "vua",
+  "ly_do": "Tính công sinh bởi lực kéo; cũng gần NDB00929."
+ },
+ {
+  "ma_cau": "T310000000672",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "Cộng vận tốc máy bay và gió, tìm tốc độ mới."
+ },
+ {
+  "ma_cau": "T310000000673",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Tìm vị trí P để hai đường vuông góc trong tam giác đều."
+ },
+ {
+  "ma_cau": "T310000000674",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Tổng hợp hai lực cho trước góc với trục hoành."
+ },
+ {
+  "ma_cau": "T310000000675",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng MA.MB trong tam giác đều."
+ },
+ {
+  "ma_cau": "T310000000676",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Tìm x để hai đường vuông góc trong tam giác đều."
+ },
+ {
+  "ma_cau": "T310000000677",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính nhiều tích vô hướng trong tam giác đều."
+ },
+ {
+  "ma_cau": "T310000000678",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính nhiều tích vô hướng trong hình vuông."
+ },
+ {
+  "ma_cau": "T310000000679",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính tích vô hướng và góc giữa hai đường trong hình thang."
+ },
+ {
+  "ma_cau": "T310000000680",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính tích vô hướng trong tam giác đều có đường cao."
+ },
+ {
+  "ma_cau": "T310000000681",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính tích vô hướng trong hình thoi."
+ },
+ {
+  "ma_cau": "T310000000682",
+  "dang_bai_id": "NDB00930",
+  "chac": "vua",
+  "ly_do": "Tìm cos góc giữa hai véc tơ từ điều kiện độ dài tổng hiệu (lời giải lệch đề)."
+ },
+ {
+  "ma_cau": "T310000000683",
+  "dang_bai_id": "NDB00930",
+  "chac": "vua",
+  "ly_do": "Tìm cos góc giữa u và v từ độ dài và góc của a, b."
+ },
+ {
+  "ma_cau": "T310000000684",
+  "dang_bai_id": "NDB00929",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng có biểu thức tổ hợp, cho độ dài và góc."
+ },
+ {
+  "ma_cau": "T310000000685",
+  "dang_bai_id": "NDB00929",
+  "chac": "vua",
+  "ly_do": "Tính độ dài véc tơ qua bình phương vô hướng; chưa có dạng riêng."
+ },
+ {
+  "ma_cau": "T310000000686",
+  "dang_bai_id": "NDB00929",
+  "chac": "vua",
+  "ly_do": "Tìm a.b và độ dài tổng từ điều kiện véc tơ đơn vị."
+ },
+ {
+  "ma_cau": "T310000000687",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Tính độ dài AM trong tam giác qua biểu diễn véc tơ; cũng gần NDB00909."
+ },
+ {
+  "ma_cau": "T310000000688",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Ý a tích vô hướng, ý b biểu diễn BM theo BA, BC rồi tính độ dài."
+ },
+ {
+  "ma_cau": "T310000000689",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Ý a tích vô hướng và trung tuyến, ý b biểu diễn phân giác AD."
+ },
+ {
+  "ma_cau": "T310000000690",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "Ý a biểu diễn AD theo AB, AC; ý b tích vô hướng và độ dài."
+ },
+ {
+  "ma_cau": "T310000000691",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Tích vô hướng trong hình vuông, ý b chứng minh hệ thức."
+ },
+ {
+  "ma_cau": "T310000000692",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Tích vô hướng trong hình vuông, ý b chứng minh hệ thức."
+ },
+ {
+  "ma_cau": "T310000000693",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (MA.MB = HM^2 - HA^2)."
+ },
+ {
+  "ma_cau": "T310000000694",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (hệ thức Ơ-le bốn điểm)."
+ },
+ {
+  "ma_cau": "T310000000695",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (định lý cos, AB.AC theo ba cạnh)."
+ },
+ {
+  "ma_cau": "T310000000696",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (công thức trung tuyến, hiệu bình phương)."
+ },
+ {
+  "ma_cau": "T310000000697",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (tích vô hướng và trung tuyến)."
+ },
+ {
+  "ma_cau": "T310000000698",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (hệ thức Lep-nit trọng tâm)."
+ },
+ {
+  "ma_cau": "T310000000699",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (tổng bình phương khoảng cách tới trọng tâm)."
+ },
+ {
+  "ma_cau": "T310000000700",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (MG^2 theo các cạnh)."
+ },
+ {
+  "ma_cau": "T310000000701",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (đường tròn đường kính AB, hình chiếu)."
+ }
+]

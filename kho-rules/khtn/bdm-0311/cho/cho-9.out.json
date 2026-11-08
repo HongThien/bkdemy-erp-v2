@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "K09000000001",
+  "nhom_id": "KNB00422",
+  "chac": "vua",
+  "ly_do": "Tính động năng/thế năng từ cơ năng W=Wđ+Wt"
+ },
+ {
+  "ma_cau": "K09000000002",
+  "nhom_id": "KNB00422",
+  "chac": "vua",
+  "ly_do": "Tính động năng/thế năng từ cơ năng W=Wđ+Wt"
+ },
+ {
+  "ma_cau": "K09000000003",
+  "nhom_id": "KNB00422",
+  "chac": "cao",
+  "ly_do": "Tính động năng/thế năng từ cơ năng W=Wđ+Wt"
+ },
+ {
+  "ma_cau": "K09000000004",
+  "nhom_id": "KNB00422",
+  "chac": "cao",
+  "ly_do": "Tính động năng/thế năng từ cơ năng W=Wđ+Wt"
+ },
+ {
+  "ma_cau": "K09000000005",
+  "nhom_id": "KNB00422",
+  "chac": "vua",
+  "ly_do": "Tính động năng/thế năng từ cơ năng W=Wđ+Wt"
+ },
+ {
+  "ma_cau": "K09000000006",
+  "nhom_id": "KNB00422",
+  "chac": "vua",
+  "ly_do": "Tính động năng/thế năng từ cơ năng W=Wđ+Wt"
+ },
+ {
+  "ma_cau": "K09000000007",
+  "nhom_id": "KNB00422",
+  "chac": "vua",
+  "ly_do": "Tính động năng/thế năng từ cơ năng W=Wđ+Wt"
+ },
+ {
+  "ma_cau": "K09000000008",
+  "nhom_id": "KNB00422",
+  "chac": "cao",
+  "ly_do": "Tính động năng/thế năng từ cơ năng W=Wđ+Wt"
+ },
+ {
+  "ma_cau": "K09000000009",
+  "nhom_id": "KNB00422",
+  "chac": "cao",
+  "ly_do": "Tính động năng/thế năng từ cơ năng W=Wđ+Wt"
+ },
+ {
+  "ma_cau": "K09000000010",
+  "nhom_id": "KNB00424",
+  "chac": "cao",
+  "ly_do": "Bảo toàn cơ năng tìm độ cao khi Wđ=k·Wt"
+ },
+ {
+  "ma_cau": "K09000000011",
+  "nhom_id": "KNB00424",
+  "chac": "cao",
+  "ly_do": "Bảo toàn cơ năng tìm độ cao khi Wđ=k·Wt"
+ },
+ {
+  "ma_cau": "K09000000012",
+  "nhom_id": "KNB00424",
+  "chac": "cao",
+  "ly_do": "Bảo toàn cơ năng tìm độ cao khi Wđ=k·Wt"
+ },
+ {
+  "ma_cau": "K09000000013",
+  "nhom_id": "KNB00424",
+  "chac": "cao",
+  "ly_do": "Bảo toàn cơ năng tìm độ cao khi Wđ=k·Wt"
+ },
+ {
+  "ma_cau": "K09000000014",
+  "nhom_id": "KNB00424",
+  "chac": "cao",
+  "ly_do": "Bảo toàn cơ năng tìm độ cao khi Wđ=k·Wt"
+ },
+ {
+  "ma_cau": "K09000000015",
+  "nhom_id": "KNB00424",
+  "chac": "cao",
+  "ly_do": "Bảo toàn cơ năng tìm độ cao khi Wđ=k·Wt"
+ },
+ {
+  "ma_cau": "K09000000016",
+  "nhom_id": "KNB00424",
+  "chac": "cao",
+  "ly_do": "Bảo toàn cơ năng tìm độ cao khi Wđ=k·Wt"
+ },
+ {
+  "ma_cau": "K09000000017",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000018",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000019",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000020",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000021",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000022",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000023",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000024",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000025",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000026",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000027",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000028",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000029",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000030",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000031",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000032",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000033",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000034",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000035",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000036",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000037",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000038",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000039",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000040",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000041",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000042",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000043",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Màu sắc vật, tấm lọc màu: bản đồ chưa có nhóm màu sắc ánh sáng"
+ },
+ {
+  "ma_cau": "K09000000044",
+  "nhom_id": "KNB00455",
+  "chac": "vua",
+  "ly_do": "Giải thích tán sắc và màu sắc; gần nhóm tán sắc nhưng hỗn hợp"
+ },
+ {
+  "ma_cau": "K09000000045",
+  "nhom_id": "KNB00455",
+  "chac": "vua",
+  "ly_do": "Giải thích tán sắc và màu sắc; gần nhóm tán sắc nhưng hỗn hợp"
+ },
+ {
+  "ma_cau": "K09000000046",
+  "nhom_id": "KNB00455",
+  "chac": "vua",
+  "ly_do": "Giải thích tán sắc và màu sắc; gần nhóm tán sắc nhưng hỗn hợp"
+ },
+ {
+  "ma_cau": "K09000000047",
+  "nhom_id": "KNB00455",
+  "chac": "vua",
+  "ly_do": "Giải thích tán sắc và màu sắc; gần nhóm tán sắc nhưng hỗn hợp"
+ },
+ {
+  "ma_cau": "K09000000048",
+  "nhom_id": "KNB00455",
+  "chac": "vua",
+  "ly_do": "Giải thích tán sắc và màu sắc; gần nhóm tán sắc nhưng hỗn hợp"
+ },
+ {
+  "ma_cau": "K09000000049",
+  "nhom_id": "KNB00455",
+  "chac": "vua",
+  "ly_do": "Giải thích tán sắc và màu sắc; gần nhóm tán sắc nhưng hỗn hợp"
+ },
+ {
+  "ma_cau": "K09000000050",
+  "nhom_id": "KNB00455",
+  "chac": "vua",
+  "ly_do": "Giải thích tán sắc và màu sắc; gần nhóm tán sắc nhưng hỗn hợp"
+ },
+ {
+  "ma_cau": "K09000000051",
+  "nhom_id": "KNB00460",
+  "chac": "vua",
+  "ly_do": "Thấu kính hội tụ d=2f tính d' hoặc f; nhóm cơ bản gần nhất"
+ },
+ {
+  "ma_cau": "K09000000052",
+  "nhom_id": "KNB00460",
+  "chac": "vua",
+  "ly_do": "Thấu kính hội tụ d=2f tính d' hoặc f; nhóm cơ bản gần nhất"
+ },
+ {
+  "ma_cau": "K09000000053",
+  "nhom_id": "KNB00460",
+  "chac": "vua",
+  "ly_do": "Thấu kính hội tụ d=2f tính d' hoặc f; nhóm cơ bản gần nhất"
+ },
+ {
+  "ma_cau": "K09000000054",
+  "nhom_id": "KNB00460",
+  "chac": "vua",
+  "ly_do": "Thấu kính hội tụ d=2f tính d' hoặc f; nhóm cơ bản gần nhất"
+ },
+ {
+  "ma_cau": "K09000000055",
+  "nhom_id": "KNB00460",
+  "chac": "vua",
+  "ly_do": "Thấu kính hội tụ d=2f tính d' hoặc f; nhóm cơ bản gần nhất"
+ },
+ {
+  "ma_cau": "K09000000056",
+  "nhom_id": "KNB00460",
+  "chac": "vua",
+  "ly_do": "Thấu kính hội tụ d=2f tính d' hoặc f; nhóm cơ bản gần nhất"
+ },
+ {
+  "ma_cau": "K09000000057",
+  "nhom_id": "KNB00460",
+  "chac": "vua",
+  "ly_do": "Thấu kính hội tụ d=2f tính d' hoặc f; nhóm cơ bản gần nhất"
+ },
+ {
+  "ma_cau": "K09000000058",
+  "nhom_id": "KNB00460",
+  "chac": "vua",
+  "ly_do": "Thấu kính hội tụ d=2f tính d' hoặc f; nhóm cơ bản gần nhất"
+ },
+ {
+  "ma_cau": "K09000000059",
+  "nhom_id": "KNB00460",
+  "chac": "vua",
+  "ly_do": "Thấu kính hội tụ d=2f tính d' hoặc f; nhóm cơ bản gần nhất"
+ },
+ {
+  "ma_cau": "K09000000060",
+  "nhom_id": "KNB00460",
+  "chac": "vua",
+  "ly_do": "Thấu kính hội tụ d=2f tính d' hoặc f; nhóm cơ bản gần nhất"
+ },
+ {
+  "ma_cau": "K09000000061",
+  "nhom_id": "KNB00460",
+  "chac": "vua",
+  "ly_do": "Thấu kính hội tụ d=2f tính d' hoặc f; nhóm cơ bản gần nhất"
+ },
+ {
+  "ma_cau": "K09000000062",
+  "nhom_id": "KNB00460",
+  "chac": "vua",
+  "ly_do": "Thấu kính hội tụ d=2f tính d' hoặc f; nhóm cơ bản gần nhất"
+ },
+ {
+  "ma_cau": "K09000000063",
+  "nhom_id": "KNB00460",
+  "chac": "vua",
+  "ly_do": "Thấu kính hội tụ d=2f tính d' hoặc f; nhóm cơ bản gần nhất"
+ },
+ {
+  "ma_cau": "K09000000064",
+  "nhom_id": "KNB00468",
+  "chac": "cao",
+  "ly_do": "R=ρl/S, thay đổi chiều dài/tiết diện"
+ },
+ {
+  "ma_cau": "K09000000065",
+  "nhom_id": "KNB00468",
+  "chac": "cao",
+  "ly_do": "R=ρl/S, thay đổi chiều dài/tiết diện"
+ },
+ {
+  "ma_cau": "K09000000066",
+  "nhom_id": "KNB00468",
+  "chac": "cao",
+  "ly_do": "R=ρl/S, thay đổi chiều dài/tiết diện"
+ },
+ {
+  "ma_cau": "K09000000067",
+  "nhom_id": "KNB00468",
+  "chac": "cao",
+  "ly_do": "R=ρl/S, thay đổi chiều dài/tiết diện"
+ },
+ {
+  "ma_cau": "K09000000068",
+  "nhom_id": "KNB00468",
+  "chac": "cao",
+  "ly_do": "R=ρl/S, thay đổi chiều dài/tiết diện"
+ },
+ {
+  "ma_cau": "K09000000069",
+  "nhom_id": "KNB00468",
+  "chac": "cao",
+  "ly_do": "R=ρl/S, thay đổi chiều dài/tiết diện"
+ },
+ {
+  "ma_cau": "K09000000070",
+  "nhom_id": "KNB00478",
+  "chac": "cao",
+  "ly_do": "Tính công suất điện P=UI, I²R, U²/R"
+ },
+ {
+  "ma_cau": "K09000000071",
+  "nhom_id": "KNB00478",
+  "chac": "cao",
+  "ly_do": "Tính công suất điện P=UI, I²R, U²/R"
+ },
+ {
+  "ma_cau": "K09000000072",
+  "nhom_id": "KNB00478",
+  "chac": "cao",
+  "ly_do": "Tính công suất điện P=UI, I²R, U²/R"
+ },
+ {
+  "ma_cau": "K09000000073",
+  "nhom_id": "KNB00478",
+  "chac": "cao",
+  "ly_do": "Tính công suất điện P=UI, I²R, U²/R"
+ },
+ {
+  "ma_cau": "K09000000074",
+  "nhom_id": "KNB00478",
+  "chac": "cao",
+  "ly_do": "Tính công suất điện P=UI, I²R, U²/R"
+ },
+ {
+  "ma_cau": "K09000000075",
+  "nhom_id": "KNB00478",
+  "chac": "cao",
+  "ly_do": "Tính công suất điện P=UI, I²R, U²/R"
+ },
+ {
+  "ma_cau": "K09000000076",
+  "nhom_id": "KNB00478",
+  "chac": "cao",
+  "ly_do": "Tính công suất điện P=UI, I²R, U²/R"
+ },
+ {
+  "ma_cau": "K09000000077",
+  "nhom_id": "KNB00478",
+  "chac": "cao",
+  "ly_do": "Tính công suất điện P=UI, I²R, U²/R"
+ },
+ {
+  "ma_cau": "K09000000078",
+  "nhom_id": "KNB00478",
+  "chac": "cao",
+  "ly_do": "Tính công suất điện P=UI, I²R, U²/R"
+ },
+ {
+  "ma_cau": "K09000000079",
+  "nhom_id": "KNB00478",
+  "chac": "cao",
+  "ly_do": "Tính công suất điện P=UI, I²R, U²/R"
+ },
+ {
+  "ma_cau": "K09000000080",
+  "nhom_id": "KNB00478",
+  "chac": "cao",
+  "ly_do": "Tính công suất điện P=UI, I²R, U²/R"
+ },
+ {
+  "ma_cau": "K09000000081",
+  "nhom_id": "KNB00485",
+  "chac": "cao",
+  "ly_do": "Điều kiện xuất hiện dòng điện cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000082",
+  "nhom_id": "KNB00485",
+  "chac": "cao",
+  "ly_do": "Điều kiện xuất hiện dòng điện cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000083",
+  "nhom_id": "KNB00485",
+  "chac": "cao",
+  "ly_do": "Điều kiện xuất hiện dòng điện cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000084",
+  "nhom_id": "KNB00485",
+  "chac": "cao",
+  "ly_do": "Điều kiện xuất hiện dòng điện cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000085",
+  "nhom_id": "KNB00485",
+  "chac": "cao",
+  "ly_do": "Điều kiện xuất hiện dòng điện cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000086",
+  "nhom_id": "KNB00485",
+  "chac": "cao",
+  "ly_do": "Điều kiện xuất hiện dòng điện cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000087",
+  "nhom_id": "KNB00485",
+  "chac": "cao",
+  "ly_do": "Điều kiện xuất hiện dòng điện cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000088",
+  "nhom_id": "KNB00485",
+  "chac": "cao",
+  "ly_do": "Điều kiện xuất hiện dòng điện cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000089",
+  "nhom_id": "KNB00485",
+  "chac": "cao",
+  "ly_do": "Điều kiện xuất hiện dòng điện cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000090",
+  "nhom_id": "KNB00485",
+  "chac": "cao",
+  "ly_do": "Điều kiện xuất hiện dòng điện cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000091",
+  "nhom_id": "KNB00485",
+  "chac": "cao",
+  "ly_do": "Điều kiện xuất hiện dòng điện cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000092",
+  "nhom_id": "KNB00485",
+  "chac": "cao",
+  "ly_do": "Điều kiện xuất hiện dòng điện cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000093",
+  "nhom_id": "KNB00485",
+  "chac": "cao",
+  "ly_do": "Điều kiện xuất hiện dòng điện cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000094",
+  "nhom_id": "KNB00485",
+  "chac": "cao",
+  "ly_do": "Điều kiện xuất hiện dòng điện cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000095",
+  "nhom_id": "KNB00485",
+  "chac": "vua",
+  "ly_do": "Dòng điện cảm ứng khi nam châm/cuộn dây dao động hoặc đứng yên"
+ },
+ {
+  "ma_cau": "K09000000096",
+  "nhom_id": "KNB00485",
+  "chac": "vua",
+  "ly_do": "Dòng điện cảm ứng khi nam châm/cuộn dây dao động hoặc đứng yên"
+ },
+ {
+  "ma_cau": "K09000000097",
+  "nhom_id": "KNB00485",
+  "chac": "vua",
+  "ly_do": "Dòng điện cảm ứng khi nam châm/cuộn dây dao động hoặc đứng yên"
+ },
+ {
+  "ma_cau": "K09000000098",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện ứng dụng; không có nhóm an toàn điện riêng"
+ },
+ {
+  "ma_cau": "K09000000099",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện ứng dụng; không có nhóm an toàn điện riêng"
+ },
+ {
+  "ma_cau": "K09000000100",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện ứng dụng; không có nhóm an toàn điện riêng"
+ }
+]

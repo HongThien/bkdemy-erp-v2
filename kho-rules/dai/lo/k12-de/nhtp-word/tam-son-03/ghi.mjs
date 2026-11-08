@@ -1,0 +1,73 @@
+import fs from 'fs';
+const src=JSON.parse(fs.readFileSync('../lo-03.json','utf8'));
+const D='Đ',S='S';
+// [dap_an, do_chac, de_sai, ghi]
+const A=[
+['C','cao',0,'Giao điểm x=1,3; ∫(4x-3-x²)=4/3; kiểm số'],
+['95.5','vua',0,'Giả định parabola trục ngang r=2+(y-2)²; V=30,4π; không thấy hình'],
+['D','cao',1,'F(4)-F(2)=-3; đề lỗi: F xác định trên [1;2] mà dùng F(4)'],
+['C','cao',0,'x³/3 - x² + x'],
+[[D,D,S,D],'cao',0,'Dừng sau 2s; s(2)=20; 20+20=40>30 nên va chạm'],
+[[D,S,S,D],'cao',0,'V2=π∫x/4 dx nên tỉ số 1/4; V=6π≈18,8'],
+['2.5','cao',0,'∫|x³-3x| trên [-1;1]=5/2; kiểm số'],
+['D','cao',0,'x⁴/4'],
+['B','cao',0,'2^x/ln2 + x'],
+['C','cao',0,'(sin+cos)²=1+sin x; nguyên hàm x-cos x'],
+['C','cao',0,'x³/3 - 2/x'],
+['D','cao',0,'-2+1=-1'],
+['B','cao',0,'x³/3 - x² + x'],
+['A','cao',0,'x - cos x'],
+['D','cao',0,'x⁴/4'],
+['2.5','cao',0,'Như W0127; bỏ dòng HẾT; kiểm số'],
+['D','cao',0,'x³/3 - 2/x'],
+['A','cao',0,'2^x/ln2 + x'],
+['D','cao',0,'x⁴/4'],
+['B','cao',0,'x³/3 - 2/x'],
+[[S,D,S,D],'cao',0,'V2=π∫x/4 dx nên a sai; V1 đúng; tỉ số 1/4; V=6π≈18,8'],
+['D','cao',0,'2^x/ln2 + x'],
+['C','cao',0,'x³/3 - x² + x'],
+['A','cao',0,'x - cos x'],
+['A','cao',0,'x - cos x'],
+['D','cao',0,'x³/3 - x² + x'],
+['C','cao',0,'2^x/ln2 + x'],
+['C','cao',0,'-2cos x + sin x'],
+['4.5','cao',0,'Giao x=-1,2; ∫(x+2-x²)=9/2; kiểm số'],
+['C','cao',0,'(log₃x)\'=1/(x ln3)'],
+['C','cao',0,'∫√x = (2/3)x√x'],
+['2026','cao',0,'(2^2024-2)/ln2: a=2024, b=-2'],
+['1','cao',0,'∫(1/x+2/x²)=3-2/e; a=3,b=-2; kiểm số'],
+['D','cao',0,'∫4x³=x⁴+C'],
+['-1','cao',0,'F=e^x - cos x: a=1,b=-1'],
+['A','cao',0,'Khớp đáp án file; x⁵/5+x³/3'],
+['D','cao',0,'F=ln|x|+1/x+C; F(1)=0 nên C=-1'],
+['A','cao',0,'Tổng nguyên hàm'],
+['A','cao',0,'x⁴+3x²/2+2x+C (B thiếu C)'],
+['D','cao',0,'(e^{-2x})\'=-2e^{-2x}'],
+['B','cao',0,'e^{ln3}-1=2; C và D trùng nhau (lỗi in nhẹ)'],
+['D','cao',0,'f=3x²; ∫(1+3x²)=2+26=28; kiểm số'],
+['A','cao',0,'Giao x=-2,0,1; 8/3+5/12=37/12; kiểm số'],
+['A','cao',0,'5+2=7'],
+['C','cao',0,'2·3=6'],
+['D','cao',0,'3·3-∫g=10 nên ∫g=-1'],
+['D','cao',0,'Công thức diện tích dùng trị tuyệt đối, cận a→b'],
+['A','cao',0,'π∫(x²+1)=4π/3; kiểm số'],
+[[S,null,D,null],'vua',1,'Đề thiếu dx; ý b, d cần f trên [2;4], không đủ dữ kiện (cận 4 vs 2 lệch)'],
+[[S,S,D,S],'vua',0,'Ý a thiếu +C coi là sai; b là f\'; d: f>0 nên không cực trị; c: C=0 nên -72'],
+['C','vua',1,'Đề thiếu dấu f\'(x): f(1)=f(4)-5=-2'],
+['D','cao',0,'-7x²/2 - 6x'],
+[[D,S,D,D],'cao',0,'∫₀²2x=4; S=2/3; V=28π/3; kiểm số'],
+['D','cao',0,'C=2 từ F(2)=16/3; kiểm số'],
+[[S,S,D,D],'cao',0,'a:14/3; b:7; c:12; d:474+14=488'],
+['3','cao',0,'3(-11)+6·6=3'],
+['B','cao',0,'4·3=12'],
+[[S,S,S,D],'vua',0,'Ý a thiếu +C coi sai; b là f\'; C=22/3 nên F(-2)=38/3; f có 2 nghiệm nên 2 cực trị'],
+['B','cao',0,'4+25/4=41/4; kiểm số'],
+['14.9','cao',0,'F=-cos x+x²+4; F(π)=5+π²≈14,87'],
+];
+if(A.length!==src.length)throw new Error(A.length+' vs '+src.length);
+const out=src.map((q,i)=>{const [d,c,s,g]=A[i];
+ if(q.loai==='dung_sai'&&!(Array.isArray(d)&&d.length===4))throw new Error('ds '+q.id);
+ if(q.loai==='trac_nghiem'&&!'ABCD'.includes(d))throw new Error('tn '+q.id);
+ return {id:q.id,dap_an:d,do_chac:c,de_sai:!!s,ghi:g}});
+fs.writeFileSync('../lo-03.son.out.json',JSON.stringify(out,null,1),'utf8');
+console.log(out.length, out.filter(o=>o.do_chac==='cao').length, out.filter(o=>o.do_chac==='vua').length, out.filter(o=>o.dap_an===null).length);

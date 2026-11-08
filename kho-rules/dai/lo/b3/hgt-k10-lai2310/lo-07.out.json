@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "T3100000001362",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng HK·IJ trong tứ giác"
+ },
+ {
+  "ma_cau": "T3100000001363",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Góc BMN qua tích vô hướng MN·BM trong hình chữ nhật; dạng sau"
+ },
+ {
+  "ma_cau": "T3100000001364",
+  "dang_bai_id": "NDB01401",
+  "chac": "cao",
+  "ly_do": "Tìm min của biểu thức MA,MB bình phương, không tọa độ"
+ },
+ {
+  "ma_cau": "T3100000001365",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "Công của lực, bài thực tế"
+ },
+ {
+  "ma_cau": "T3100000001366",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "cos góc qua tích vô hướng trong hình vuông; dạng sau"
+ },
+ {
+  "ma_cau": "T3100000001367",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tổng tích vô hướng trong tam giác"
+ },
+ {
+  "ma_cau": "T3100000001368",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Giá trị MA²+MB²+MC² không đổi; chen G, gần tích vô hướng/cực trị"
+ },
+ {
+  "ma_cau": "T3100000001369",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng BK·AC hình chữ nhật"
+ },
+ {
+  "ma_cau": "T310000000137",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "Ca nô ngược dòng, cộng vận tốc"
+ },
+ {
+  "ma_cau": "T3100000001370",
+  "dang_bai_id": "NDB00929",
+  "chac": "cao",
+  "ly_do": "|a+b| từ độ dài và góc, bình phương tích vô hướng"
+ },
+ {
+  "ma_cau": "T3100000001371",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Quỹ tích điểm bằng đẳng thức véc tơ: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T3100000001372",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc lượng giác: định lý sin giải tam giác đo chiều cao tháp"
+ },
+ {
+  "ma_cau": "T3100000001373",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng AO·BI trong hình thoi"
+ },
+ {
+  "ma_cau": "T3100000001374",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Quỹ tích điểm bằng đẳng thức véc tơ: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T3100000001375",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Quỹ tích điểm bằng đẳng thức véc tơ: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T3100000001376",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Quỹ tích điểm bằng đẳng thức véc tơ: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T3100000001377",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "MH·MA trong tam giác, tính hệ số k"
+ },
+ {
+  "ma_cau": "T3100000001378",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "DB·AC trong tứ giác"
+ },
+ {
+  "ma_cau": "T310000000138",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Đếm véc tơ cùng phương với OC"
+ },
+ {
+  "ma_cau": "T310000000139",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Đếm cặp véc tơ cùng phương"
+ },
+ {
+  "ma_cau": "T310000000140",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "Lực đẩy Archimedes và trọng lực, thực tế"
+ },
+ {
+  "ma_cau": "T310000000141",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ BM trong tam giác đều"
+ },
+ {
+  "ma_cau": "T310000000142",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ BD hình thoi"
+ },
+ {
+  "ma_cau": "T310000000143",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ CD hình thang"
+ },
+ {
+  "ma_cau": "T310000000144",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ AC hình thoi"
+ },
+ {
+  "ma_cau": "T310000000145",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ BI"
+ },
+ {
+  "ma_cau": "T310000000146",
+  "dang_bai_id": "NDB00901",
+  "chac": "vua",
+  "ly_do": "Độ dài NO, N xác định từ đẳng thức trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000147",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm véc tơ có độ dài a√3"
+ },
+ {
+  "ma_cau": "T310000000148",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Đếm cặp véc tơ đối nhau"
+ },
+ {
+  "ma_cau": "T310000000149",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm véc tơ từ đỉnh hình vuông"
+ },
+ {
+  "ma_cau": "T310000000150",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ OC hình thoi"
+ },
+ {
+  "ma_cau": "T310000000151",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài AB, hệ thức lượng"
+ },
+ {
+  "ma_cau": "T310000000152",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài AM bằng cosin"
+ },
+ {
+  "ma_cau": "T310000000153",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "Độ dịch chuyển tàu, cộng hai chuyển động"
+ },
+ {
+  "ma_cau": "T310000000154",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Đếm cặp véc tơ cùng phương"
+ },
+ {
+  "ma_cau": "T310000000155",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài MN hình vuông"
+ },
+ {
+  "ma_cau": "T310000000156",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài BI tam giác đều"
+ },
+ {
+  "ma_cau": "T310000000157",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài AC hình thoi"
+ },
+ {
+  "ma_cau": "T310000000158",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài EF hình chữ nhật"
+ },
+ {
+  "ma_cau": "T310000000159",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài CH trực tâm"
+ },
+ {
+  "ma_cau": "T310000000160",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "Trọng lực/lực đẩy piano trên mặt nghiêng"
+ },
+ {
+  "ma_cau": "T310000000161",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Chứng minh đẳng thức tổng quy tắc 3 điểm"
+ },
+ {
+  "ma_cau": "T310000000162",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng chuỗi quy tắc 3 điểm"
+ },
+ {
+  "ma_cau": "T310000000163",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Trọng tâm: GM+GN+GP; dạng sau"
+ },
+ {
+  "ma_cau": "T310000000164",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Chứng minh đẳng thức có hiệu; dạng sau"
+ },
+ {
+  "ma_cau": "T310000000165",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Chứng minh bằng tính chất trung điểm; dạng sau"
+ },
+ {
+  "ma_cau": "T310000000166",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Hai tam giác cùng trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000167",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "H,O,D: O trung điểm HD; tổng HA+HB+HC"
+ },
+ {
+  "ma_cau": "T310000000168",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tổng véc tơ, ý b trọng tâm; dạng sau"
+ },
+ {
+  "ma_cau": "T310000000169",
+  "dang_bai_id": "NDB00905",
+  "chac": "vua",
+  "ly_do": "Tổng và hiệu m−n; ý c hiệu, dạng sau"
+ },
+ {
+  "ma_cau": "T310000000170",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Thực hiện phép trừ véc tơ"
+ },
+ {
+  "ma_cau": "T310000000171",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Chứng minh MA+MC=MN dùng trung điểm"
+ },
+ {
+  "ma_cau": "T310000000172",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Chứng minh có hiệu AB−AD=CB−CD"
+ },
+ {
+  "ma_cau": "T310000000173",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Chứng minh đẳng thức hiệu hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000174",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Rút gọn hiệu AF−BD+CE; dạng sau 903"
+ },
+ {
+  "ma_cau": "T310000000175",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "|AB±AC| tam giác đều, độ dài tổng hiệu; dạng sau"
+ },
+ {
+  "ma_cau": "T310000000176",
+  "dang_bai_id": "NDB00929",
+  "chac": "cao",
+  "ly_do": "|AB±AC| với AB,AC,góc A; bình phương"
+ },
+ {
+  "ma_cau": "T310000000177",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Chứng minh độ dài tổng bằng hiệu"
+ },
+ {
+  "ma_cau": "T310000000178",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Quỹ tích điểm bằng đẳng thức véc tơ: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000179",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bất đẳng thức tam giác cho véc tơ: bản đồ thiếu dạng bất đẳng thức độ dài"
+ },
+ {
+  "ma_cau": "T310000000180",
+  "dang_bai_id": "NDB00941",
+  "chac": "vua",
+  "ly_do": "|AB+AC|=|AB−AC| ⇒ AB·AC=0, chứng minh vuông góc"
+ },
+ {
+  "ma_cau": "T310000000181",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "điều kiện cùng hướng của |a|+|b|=|a+b|: bản đồ thiếu dạng này"
+ },
+ {
+  "ma_cau": "T310000000182",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài AB+AC hình vuông"
+ },
+ {
+  "ma_cau": "T310000000183",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Quỹ tích điểm bằng đẳng thức véc tơ: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000184",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài tổng hiệu hình vuông"
+ },
+ {
+  "ma_cau": "T310000000185",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài tổng hiệu tam giác đều"
+ },
+ {
+  "ma_cau": "T310000000186",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài AB+BC, AB−BC"
+ },
+ {
+  "ma_cau": "T310000000187",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài MA, NO; M trung điểm, N trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000188",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "3 lực cân bằng"
+ },
+ {
+  "ma_cau": "T310000000189",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "Cộng vận tốc ca nô và dòng sông"
+ },
+ {
+  "ma_cau": "T310000000190",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "Tổng vận tốc máy bay và gió"
+ },
+ {
+  "ma_cau": "T310000000191",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "3 lực cân bằng"
+ },
+ {
+  "ma_cau": "T310000000192",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "F là tổng hai lực F1,F2"
+ },
+ {
+  "ma_cau": "T310000000193",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "3 lực cân bằng"
+ },
+ {
+  "ma_cau": "T310000000194",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng CB+AC"
+ },
+ {
+  "ma_cau": "T310000000195",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Rút gọn tổng nhiều véc tơ"
+ },
+ {
+  "ma_cau": "T310000000196",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Đáp án sai C dùng tổng BC+DC theo quy tắc"
+ },
+ {
+  "ma_cau": "T310000000197",
+  "dang_bai_id": "NDB00912",
+  "chac": "vua",
+  "ly_do": "Gồm cùng phương, độ dài tổng; ý rải nhiều dạng"
+ },
+ {
+  "ma_cau": "T310000000198",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Rút gọn tổng hiệu 4 điểm"
+ },
+ {
+  "ma_cau": "T310000000199",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Đẳng thức với trung điểm; đáp án sai A"
+ },
+ {
+  "ma_cau": "T310000000200",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Điểm O đối xứng A qua P (trung điểm), từ hiệu"
+ },
+ {
+  "ma_cau": "T310000000201",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài AB+AC tam giác đều"
+ },
+ {
+  "ma_cau": "T310000000202",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài AE+CF hình vuông"
+ },
+ {
+  "ma_cau": "T310000000203",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Quy tắc hình bình hành CB+CD"
+ },
+ {
+  "ma_cau": "T310000000204",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài AB+AD hình vuông"
+ },
+ {
+  "ma_cau": "T310000000205",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Đáp án đúng OA=CA−CO là hiệu"
+ },
+ {
+  "ma_cau": "T310000000206",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài AB+AD hình thoi"
+ },
+ {
+  "ma_cau": "T310000000207",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài OA−CB"
+ },
+ {
+  "ma_cau": "T310000000208",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Đáp án IA+DC=IB, tổng quy tắc"
+ },
+ {
+  "ma_cau": "T310000000209",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài BA−BC"
+ },
+ {
+  "ma_cau": "T310000000210",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài CA−BC"
+ },
+ {
+  "ma_cau": "T310000000211",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "MP+NP=BP dùng trung điểm, đường trung bình"
+ },
+ {
+  "ma_cau": "T310000000212",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài BA+BC"
+ },
+ {
+  "ma_cau": "T310000000213",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Đáp án đúng AB−AC=CB là hiệu"
+ },
+ {
+  "ma_cau": "T310000000214",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Đáp án sai BO+OD=0 theo quy tắc cộng"
+ },
+ {
+  "ma_cau": "T310000000215",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu OA−OD"
+ },
+ {
+  "ma_cau": "T310000000216",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đáp án MA+MB=0, M trung điểm"
+ },
+ {
+  "ma_cau": "T310000000217",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Đáp án sai BC+DA=AC, quy tắc cộng hbh"
+ },
+ {
+  "ma_cau": "T310000000218",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Rút gọn tổng hiệu 4 điểm"
+ },
+ {
+  "ma_cau": "T310000000219",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Đáp án IA−IB=BA là hiệu"
+ }
+]

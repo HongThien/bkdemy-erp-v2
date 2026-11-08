@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "HHC008384",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: mặt phẳng nào vuông góc với (SAC)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008385",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: khoảng cách từ BC đến (SAD)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008386",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khối đa diện: định nghĩa hình lăng trụ đứng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008387",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: thể tích chóp biết góc SB và đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008388",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008389",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: khoảng cách từ B đến (SCD)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008390",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: thể tích khối đa diện lồi trong lăng trụ",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008401",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: hai đường thẳng vuông góc cắt hoặc chéo nhau",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008402",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: điều kiện đường thẳng vuông góc mặt phẳng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008403",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: định nghĩa góc nhị diện",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008404",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: điều kiện hai mặt phẳng vuông góc",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008405",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: khoảng cách từ S đến mặt đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008406",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khối đa diện: tính chất hình chóp đều",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008407",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: thể tích chóp biết góc SB và đáy 45 độ",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008408",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008409",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: khoảng cách từ D đến (SAC)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008410",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: thể tích chóp cụt tứ giác đều",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008428",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: mệnh đề đường thẳng vuông góc mặt phẳng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008429",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: góc giữa hai mặt phẳng (SBC) và (ABC)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008430",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: SC vuông góc với mặt phẳng nào",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008431",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: thể tích khối lập phương từ đường chéo",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008432",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008433",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: thể tích lăng trụ lục giác đều",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008434",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh vuông góc và góc hai mặt phẳng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008442",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: góc giữa SB và mặt phẳng đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008443",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: mặt phẳng (SCD) vuông góc mặt phẳng nào",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008444",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: SA vuông góc đáy suy ra vuông góc đường nào",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008445",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: số đường thẳng qua điểm vuông góc mặt phẳng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008446",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008447",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: thể tích chóp biết SB tạo đáy 60 độ",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008448",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: khoảng cách hai đường thẳng chéo nhau DG và EF",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008456",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: khẳng định đường thẳng vuông góc mặt phẳng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008457",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: thể tích chóp đáy tam giác vuông cân",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008458",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: đường thẳng vuông góc A'C' trong hình lập phương",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008459",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: khoảng cách từ S đến mặt phẳng đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008460",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008461",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: thể tích lăng trụ tam giác đều",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008462",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: thể tích chóp và khoảng cách từ O đến (SCD)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008472",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: số đường thẳng qua điểm vuông góc mặt phẳng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008473",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: SA vuông góc đáy, khẳng định sai về vuông góc",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008474",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: góc giữa SD và mặt phẳng đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008475",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: BC vuông góc mặt phẳng nào",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008476",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008477",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: góc giữa hai đường thẳng SA và BC",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008478",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: góc giữa tia sáng và mặt đất",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008479",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh BC vuông (SAB) và hai mặt phẳng vuông góc",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008480",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: BD vuông (SAC) và góc nhị diện",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008487",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: góc giữa CA' và mặt đáy hình hộp",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008488",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: hai đường thẳng cùng vuông góc mặt phẳng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008489",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: khẳng định sai về hai mặt phẳng vuông góc",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008490",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008491",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: cosin góc giữa (SCD) và (ABCD)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008492",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: khoảng cách từ A đến (SBD)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008502",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: khoảng cách hai đường thẳng BC và AA'",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008503",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: thể tích chóp đáy hình chữ nhật",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008504",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: CD vuông góc mặt phẳng nào",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008505",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: miền giá trị góc giữa hai đường thẳng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008506",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: góc giữa BA' và CD trong hình lập phương",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008507",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: góc giữa A'C và mặt đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008508",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: mệnh đề về đường vuông góc chung, mặt phẳng vuông góc",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008509",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008510",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: thể tích chóp và khoảng cách từ B đến (SAC)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008518",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: thể tích lăng trụ đứng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008519",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: mệnh đề về mặt phẳng và đường thẳng vuông góc",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008520",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: AB vuông góc (SAD)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008521",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008522",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: khoảng cách giữa SD và BC",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008523",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: góc nhị diện và chiều cao lều",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008524",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: hai mặt phẳng vuông góc, khoảng cách từ A đến (SBC)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC008532",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: đường thẳng vuông góc (SAC)",
+  "can_cu": null
+ }
+]

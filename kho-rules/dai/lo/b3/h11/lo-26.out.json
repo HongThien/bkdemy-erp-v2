@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "HHC009232",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: khoảng cách từ D đến (SAC) khi hai mặt bên vuông góc đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009239",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tang góc giữa SB và (ABC)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009240",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: khoảng cách từ S đến đáy chóp tứ giác đều",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009241",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: thể tích chóp cụt từ chiều cao và hai diện tích đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009242",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009243",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: cosin góc giữa SD và (SAC), đáy hình thoi",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009244",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: khoảng cách từ M đến mặt phẳng, mặt bên tạo đáy 30 độ",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009249",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: khoảng cách giữa AB và CM, AB song song (SCD) chỉ là bước trung gian",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009250",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: tìm SA từ thể tích khối chóp",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009251",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: góc nhị diện [A,BC,D] của tứ diện",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009252",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: (SBC) vuông góc (SAC), tang góc SD–(SAC), vectơ",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009258",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: góc giữa BA' và CD trong hình lập phương",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009259",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: mệnh đề đúng về vuông góc khi SA vuông góc đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009260",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: thể tích chóp biết góc giữa SB và đáy 60 độ",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009261",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: lều chóp đều: khoảng cách từ bóng đèn đến mặt đất",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009262",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: lều chóp lục giác đều: độ dài dây đèn theo góc cột–sàn",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009267",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tìm mệnh đề sai về vuông góc, đáy hình vuông",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009268",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: thể tích chóp đáy hình vuông, SA vuông góc đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009269",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: khoảng cách từ A đến (SBC), đáy tam giác đều",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009270",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: góc giữa cạnh bên và mặt đáy của kim tự tháp",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009277",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: khẳng định sai về vuông góc, đáy hình vuông",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009278",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: khoảng cách từ A đến (SBC), SA vuông góc đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009279",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: góc giữa hai đường AB và CD của tứ diện đều",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009280",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009281",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: góc giữa hai mặt phẳng (SAB) và (SAD)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009282",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: khoảng cách AD và (SBC), AD song song BC chỉ để quy về một điểm",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009288",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: BC vuông góc đường nào khi SA, SB, SC đôi một vuông góc",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009289",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: góc giữa (ABCD) và (ACC'A') trong hình lập phương",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009290",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: góc giữa SC và (ABCD) khi SA vuông góc đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009291",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009292",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: phòng áp mái dạng lăng trụ: thể tích để chọn công suất máy lạnh",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009300",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "hai mặt phẳng có điểm chung thì có đường thẳng chung; mệnh đề về xác định mặt phẳng",
+  "can_cu": "Nếu hai mặt phẳng phân biệt có một điểm chung thì chúng còn có một điểm chung khác nữa"
+ },
+ {
+  "ma_cau": "HHC009301",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "chọn giả thiết kết luận a song song (α): đường–mặt không có điểm chung",
+  "can_cu": "$d$ và $(P)$ không có điểm chung"
+ },
+ {
+  "ma_cau": "HHC009302",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "mệnh đề sai về điểm chung và đường thẳng chung của hai mặt phẳng",
+  "can_cu": "Nếu hai mặt phẳng phân biệt có một điểm chung thì chúng còn có một điểm chung khác nữa"
+ },
+ {
+  "ma_cau": "HHC009303",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "đáy hình thang AB∥CD, giao tuyến (MCD)∩(SAB) song song CD nên MN∥CD",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng chứa hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC009304",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009305",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "PR∥AC, tìm giao điểm S của AD với (PQR) rồi tính DS/DA bằng Thales",
+  "can_cu": "Áp dụng định lí Menelaus (hoặc Thales nếu có đường thẳng song song)"
+ },
+ {
+  "ma_cau": "HHC009306",
+  "dang_bai_id": "HH00148",
+  "chac": "vua",
+  "ly_do": "mặt phẳng qua M song song với đường thẳng, cắt SB, SD, tính NQ; đề phát biểu mơ hồ, không nêu thiết diện",
+  "can_cu": "qua một điểm và song song với đường thẳng hoặc mặt phẳng cho trước"
+ },
+ {
+  "ma_cau": "HHC009313",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: mệnh đề về đường thẳng a với hai mặt phẳng song song (α),(β)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009314",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "giao tuyến (SAB)∩(SCD) với AB∥CD là đường qua S song song AB, CD",
+  "can_cu": "Hai mặt phẳng này lần lượt chứa hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC009315",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "tìm mặt phẳng song song MN: MN∥BC nên MN∥(BCD)",
+  "can_cu": "Nếu đường thẳng $d$ không nằm trong mặt phẳng $(P)$ và song song với một đường thẳng $a$ nằm trong $(P)$"
+ },
+ {
+  "ma_cau": "HHC009316",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009317",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "tìm giao điểm I của DP với (ABN) rồi tính DI nhờ I là trọng tâm",
+  "can_cu": "hoặc chứng minh một điểm là trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "HHC009318",
+  "dang_bai_id": "HH00148",
+  "chac": "cao",
+  "ly_do": "mặt phẳng (P) qua O song song (SCD), tính diện tích hình cắt hình chóp",
+  "can_cu": "tính chu vi, diện tích thiết diện"
+ },
+ {
+  "ma_cau": "HHC009323",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "I, J trọng tâm hai tam giác, Thales đảo chứng minh IJ∥CD",
+  "can_cu": "theo định lí Thales đảo"
+ },
+ {
+  "ma_cau": "HHC009324",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "xét mệnh đề về vị trí tương đối: chéo nhau, song song, cắt nhau",
+  "can_cu": "xét vị trí tương đối của hai đường thẳng trong không gian"
+ },
+ {
+  "ma_cau": "HHC009325",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "yếu tố xác định một mặt phẳng duy nhất",
+  "can_cu": "Một mặt phẳng hoàn toàn xác định khi biết"
+ },
+ {
+  "ma_cau": "HHC009326",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009335",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "qua ba điểm không thẳng hàng có một mặt phẳng duy nhất",
+  "can_cu": "Có một và chỉ một mặt phẳng đi qua ba điểm không thẳng hàng cho trước"
+ },
+ {
+  "ma_cau": "HHC009336",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "hai đường thẳng phân biệt cùng song song đường thứ ba thì song song",
+  "can_cu": "Hai đường thẳng phân biệt cùng song song với một đường thẳng thứ ba thì song song với nhau"
+ },
+ {
+  "ma_cau": "HHC009337",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "giao tuyến (SAD)∩(SBC) với AD∥BC là đường qua S song song AD, BC",
+  "can_cu": "Hai mặt phẳng này lần lượt chứa hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC009338",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: (BC'D) song song (AB'D') trong hình hộp",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009339",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "giao tuyến của (ABC) và (CDB) nhờ hai điểm chung B, C",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC009340",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009341",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: định lí Thales giữa ba mặt phẳng song song của kệ đồ",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009342",
+  "dang_bai_id": "HH00148",
+  "chac": "cao",
+  "ly_do": "giao tuyến của (IJG) với các mặt chóp tạo thành hình bình hành, tìm k",
+  "can_cu": "nhận biết hình dạng, số cạnh của thiết diện"
+ },
+ {
+  "ma_cau": "HHC009348",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "giao tuyến (SAD)∩(SBC) tìm bằng hai điểm chung S và giao điểm AD, BC",
+  "can_cu": "chỉ cần dùng tiên đề liên thuộc (điểm chung, mặt phẳng phụ)"
+ },
+ {
+  "ma_cau": "HHC009349",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "đếm số mặt phẳng xác định bởi ba trong bốn điểm không đồng phẳng",
+  "can_cu": "Một mặt phẳng hoàn toàn xác định khi biết"
+ },
+ {
+  "ma_cau": "HHC009350",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009351",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "MQ∥SC nên giao tuyến qua N song song SC; tính tỉ số PC/PB",
+  "can_cu": "Áp dụng định lí Menelaus (hoặc Thales nếu có đường thẳng song song)"
+ },
+ {
+  "ma_cau": "HHC009352",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "a) giao tuyến chứa AB∥CD; b) tìm Q rồi tính SQ/SC",
+  "can_cu": "TÍNH tỉ số độ dài các đoạn thẳng thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC009357",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "tìm giao điểm của DM với (SAC) bằng mặt phẳng phụ (SBD)",
+  "can_cu": "Tìm giao điểm của đường thẳng $AM$ và mặt phẳng $(SBD)$"
+ },
+ {
+  "ma_cau": "HHC009358",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "IJ∥AB∥CD nên IJCD hình thang; kèm vài giao tuyến bằng điểm chung",
+  "can_cu": "chứng minh tứ giác là hình bình hành, hình thang"
+ },
+ {
+  "ma_cau": "HHC009359",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009360",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "tìm giao điểm N của (ABM) với SC rồi tính SC/SN bằng vectơ",
+  "can_cu": "Cách khác: dùng vectơ"
+ },
+ {
+  "ma_cau": "HHC009363",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "giao tuyến (SAB)∩(SCD) nhờ điểm chung S và N=AB∩CD",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC009364",
+  "dang_bai_id": "HH00141",
+  "chac": "vua",
+  "ly_do": "tìm x để GE∥(SBC) bằng giao tuyến SQ; cũng cần tỉ số nên có thể thuộc bài tỉ lệ",
+  "can_cu": "Chứng minh đường thẳng $d$ song song với mặt phẳng $(P)$"
+ },
+ {
+  "ma_cau": "HHC009374",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: số đường thẳng qua M vuông góc với (α)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009375",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: định nghĩa góc giữa hai đường thẳng bất kì",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009376",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: định nghĩa đường thẳng vuông góc với mặt phẳng",
+  "can_cu": null
+ }
+]

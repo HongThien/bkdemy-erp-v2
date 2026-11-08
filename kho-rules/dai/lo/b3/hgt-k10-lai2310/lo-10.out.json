@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "T310000000473",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/phân tích véc tơ theo véc tơ khác trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000474",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/phân tích véc tơ theo véc tơ khác trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000475",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/phân tích véc tơ theo véc tơ khác trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000476",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Có ý chứng minh IJ qua trọng tâm G (thẳng hàng); dạng sau thắng"
+ },
+ {
+  "ma_cau": "T310000000477",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/phân tích véc tơ theo véc tơ khác trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000478",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/phân tích véc tơ theo véc tơ khác trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000479",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/phân tích véc tơ theo véc tơ khác trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000480",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/phân tích véc tơ theo véc tơ khác trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000481",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/phân tích véc tơ theo véc tơ khác trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000482",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/phân tích véc tơ theo véc tơ khác trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000483",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/phân tích véc tơ theo véc tơ khác trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000484",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/phân tích véc tơ theo véc tơ khác trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000485",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Dùng trực tiếp tính chất trung điểm/trọng tâm để chứng minh đẳng thức"
+ },
+ {
+  "ma_cau": "T310000000486",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn MI theo MA, MB (ý a tìm k); dạng sau thắng"
+ },
+ {
+  "ma_cau": "T310000000487",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Đẳng thức H,G,O (trọng tâm, trực tâm, ngoại tiếp); bản đồ thiếu dạng đường thẳng Ơ-le"
+ },
+ {
+  "ma_cau": "T310000000488",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/phân tích véc tơ theo véc tơ khác trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000489",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Dùng trực tiếp tính chất trung điểm/trọng tâm để chứng minh đẳng thức"
+ },
+ {
+  "ma_cau": "T310000000490",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Dùng trực tiếp tính chất trung điểm/trọng tâm để chứng minh đẳng thức"
+ },
+ {
+  "ma_cau": "T310000000491",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu: xác định điểm D,E,F từ đẳng thức véc tơ và chứng minh không phụ thuộc M"
+ },
+ {
+  "ma_cau": "T310000000492",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/phân tích véc tơ theo véc tơ khác trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000493",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Đẳng thức tổng véc tơ hình chiếu trong tam giác đều; dạng gần nhất"
+ },
+ {
+  "ma_cau": "T310000000494",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn IJ/MN theo AC, BD trong tứ giác (trung điểm)"
+ },
+ {
+  "ma_cau": "T310000000495",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Dùng trực tiếp tính chất trung điểm/trọng tâm để chứng minh đẳng thức"
+ },
+ {
+  "ma_cau": "T310000000496",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Dùng trực tiếp tính chất trung điểm/trọng tâm để chứng minh đẳng thức"
+ },
+ {
+  "ma_cau": "T310000000497",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn IJ/MN theo AC, BD trong tứ giác (trung điểm)"
+ },
+ {
+  "ma_cau": "T310000000498",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tìm I từ IA+3IB=0 tức AI=3/4 AB, như tìm k của tích véc tơ với số"
+ },
+ {
+  "ma_cau": "T310000000499",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu: xác định điểm/chứng minh véc tơ không phụ thuộc M từ đẳng thức véc tơ (hình học tổng hợp)"
+ },
+ {
+  "ma_cau": "T310000000500",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Xác định K trọng tâm, M trung điểm; chỉ là tính chất trọng tâm/trung điểm"
+ },
+ {
+  "ma_cau": "T310000000501",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu: xác định điểm/chứng minh véc tơ không phụ thuộc M từ đẳng thức véc tơ (hình học tổng hợp)"
+ },
+ {
+  "ma_cau": "T310000000502",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu: xác định điểm/chứng minh véc tơ không phụ thuộc M từ đẳng thức véc tơ (hình học tổng hợp)"
+ },
+ {
+  "ma_cau": "T310000000503",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu: xác định điểm/chứng minh véc tơ không phụ thuộc M từ đẳng thức véc tơ (hình học tổng hợp)"
+ },
+ {
+  "ma_cau": "T310000000504",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu: xác định điểm/chứng minh véc tơ không phụ thuộc M từ đẳng thức véc tơ (hình học tổng hợp)"
+ },
+ {
+  "ma_cau": "T310000000505",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu: xác định điểm/chứng minh véc tơ không phụ thuộc M từ đẳng thức véc tơ (hình học tổng hợp)"
+ },
+ {
+  "ma_cau": "T310000000506",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Chứng minh hai véc tơ bằng nhau AB=CD"
+ },
+ {
+  "ma_cau": "T310000000507",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Chứng minh hai tam giác cùng trọng tâm bằng tính chất trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000508",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Chứng minh hai tam giác cùng trọng tâm bằng tính chất trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000509",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Chứng minh hai tam giác cùng trọng tâm bằng tính chất trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000510",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Chứng minh hai tam giác cùng trọng tâm bằng tính chất trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000511",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Chứng minh hai tam giác cùng trọng tâm bằng tính chất trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000512",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Chứng minh hai tam giác cùng trọng tâm bằng tính chất trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000513",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Chứng minh G thuộc các đoạn AA', BB',... (thẳng hàng), tỉ số"
+ },
+ {
+  "ma_cau": "T310000000514",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Chứng minh thẳng hàng/song song bằng véc tơ cùng phương"
+ },
+ {
+  "ma_cau": "T310000000515",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Chứng minh thẳng hàng/song song bằng véc tơ cùng phương"
+ },
+ {
+  "ma_cau": "T310000000516",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Chứng minh thẳng hàng/song song bằng véc tơ cùng phương"
+ },
+ {
+  "ma_cau": "T310000000517",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Chứng minh thẳng hàng/song song bằng véc tơ cùng phương"
+ },
+ {
+  "ma_cau": "T310000000518",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu: chứng minh ba đường thẳng đồng quy bằng véc tơ"
+ },
+ {
+  "ma_cau": "T310000000519",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu: chứng minh ba đường thẳng đồng quy bằng véc tơ"
+ },
+ {
+  "ma_cau": "T310000000520",
+  "dang_bai_id": "NDB00913",
+  "chac": "vua",
+  "ly_do": "Định lý Menelaus/Ceva bằng véc tơ; thẳng hàng nhưng còn đồng quy"
+ },
+ {
+  "ma_cau": "T310000000521",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Chứng minh thẳng hàng/song song bằng véc tơ cùng phương"
+ },
+ {
+  "ma_cau": "T310000000522",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Chứng minh thẳng hàng/song song bằng véc tơ cùng phương"
+ },
+ {
+  "ma_cau": "T310000000523",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: trực tâm nằm trên một đường tròn"
+ },
+ {
+  "ma_cau": "T310000000524",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu: tìm tập hợp điểm (quỹ tích) thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000525",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu: tìm tập hợp điểm (quỹ tích) thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000526",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu: tìm tập hợp điểm (quỹ tích) thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000527",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu: tìm tập hợp điểm (quỹ tích) thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000528",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu: tìm tập hợp điểm (quỹ tích) thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000529",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu: tìm tập hợp điểm (quỹ tích) thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000530",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu: tìm tập hợp điểm (quỹ tích) thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000531",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu: tìm tập hợp điểm (quỹ tích) thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000532",
+  "dang_bai_id": "NDB00929",
+  "chac": "cao",
+  "ly_do": "Tính tích vô hướng theo định nghĩa từ độ dài, góc"
+ },
+ {
+  "ma_cau": "T310000000533",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000534",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000535",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000536",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000537",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000538",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000539",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000540",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000541",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Tính độ dài MN dùng tích vô hướng AD⊥BC; không có dạng riêng"
+ },
+ {
+  "ma_cau": "T310000000542",
+  "dang_bai_id": "NDB00930",
+  "chac": "cao",
+  "ly_do": "Tính góc giữa hai véc tơ khi biết tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000543",
+  "dang_bai_id": "NDB00928",
+  "chac": "cao",
+  "ly_do": "Xác định/tính góc giữa hai véc tơ trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000544",
+  "dang_bai_id": "NDB00930",
+  "chac": "cao",
+  "ly_do": "Tính góc giữa hai véc tơ khi biết tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000545",
+  "dang_bai_id": "NDB00930",
+  "chac": "cao",
+  "ly_do": "Tính góc giữa hai véc tơ khi biết tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000546",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000547",
+  "dang_bai_id": "NDB00930",
+  "chac": "cao",
+  "ly_do": "Có ý tính góc giữa a và a+b từ tích vô hướng; dạng sau thắng"
+ },
+ {
+  "ma_cau": "T310000000548",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000549",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Chứng minh đẳng thức tích vô hướng tổng quát; dạng gần nhất"
+ },
+ {
+  "ma_cau": "T310000000550",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Chứng minh đẳng thức tích vô hướng tổng quát; dạng gần nhất"
+ },
+ {
+  "ma_cau": "T310000000551",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000552",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000553",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000554",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Chứng minh đẳng thức tích vô hướng tổng quát; dạng gần nhất"
+ },
+ {
+  "ma_cau": "T310000000555",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000556",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Chứng minh đẳng thức tích vô hướng tổng quát; dạng gần nhất"
+ },
+ {
+  "ma_cau": "T310000000557",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "Bài toán cộng vận tốc máy bay và gió"
+ },
+ {
+  "ma_cau": "T310000000558",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế: công của lực"
+ },
+ {
+  "ma_cau": "T310000000559",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế: công của lực"
+ },
+ {
+  "ma_cau": "T310000000560",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế: công của lực"
+ },
+ {
+  "ma_cau": "T310000000561",
+  "dang_bai_id": "NDB00928",
+  "chac": "cao",
+  "ly_do": "Xác định/tính góc giữa hai véc tơ trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000562",
+  "dang_bai_id": "NDB00928",
+  "chac": "cao",
+  "ly_do": "Xác định/tính góc giữa hai véc tơ trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000563",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000564",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000565",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000566",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính cos góc MNP bằng tích vô hướng NM·NP; dạng sau thắng"
+ },
+ {
+  "ma_cau": "T310000000567",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Đẳng thức H,G,O (trọng tâm, trực tâm, ngoại tiếp); bản đồ thiếu dạng đường thẳng Ơ-le"
+ },
+ {
+  "ma_cau": "T310000000568",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000569",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu: tập hợp điểm thỏa đẳng thức tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000570",
+  "dang_bai_id": "NDB00928",
+  "chac": "cao",
+  "ly_do": "Xác định/tính góc giữa hai véc tơ trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000571",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000572",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính/chứng minh tích vô hướng của véc tơ trong tam giác, tứ giác"
+ }
+]

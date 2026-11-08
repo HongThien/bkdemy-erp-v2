@@ -1,0 +1,326 @@
+[
+ {
+  "ma_cau": "K09120302001",
+  "dang_bai_id": "KDB01619",
+  "chac": "cao",
+  "ly_do": "Loại giao tử, vai trò bố mẹ quyết định giới tính"
+ },
+ {
+  "ma_cau": "K09120302002",
+  "dang_bai_id": "KDB01619",
+  "chac": "cao",
+  "ly_do": "Loại giao tử, vai trò bố mẹ quyết định giới tính"
+ },
+ {
+  "ma_cau": "K09120302003",
+  "dang_bai_id": "KDB01620",
+  "chac": "cao",
+  "ly_do": "Sơ đồ lai/giải thích tỉ lệ 1:1/xác suất sinh con"
+ },
+ {
+  "ma_cau": "K09120302004",
+  "dang_bai_id": "KDB01620",
+  "chac": "cao",
+  "ly_do": "Sơ đồ lai/giải thích tỉ lệ 1:1/xác suất sinh con"
+ },
+ {
+  "ma_cau": "K09120302005",
+  "dang_bai_id": "KDB01619",
+  "chac": "cao",
+  "ly_do": "Nguồn gốc NST X, Y của con; đề tự đủ, hình chỉ minh hoạ"
+ },
+ {
+  "ma_cau": "K09120302006",
+  "dang_bai_id": "KDB01619",
+  "chac": "cao",
+  "ly_do": "Loại giao tử, vai trò bố mẹ quyết định giới tính"
+ },
+ {
+  "ma_cau": "K09120302007",
+  "dang_bai_id": "KDB01620",
+  "chac": "cao",
+  "ly_do": "Sơ đồ lai/giải thích tỉ lệ 1:1/xác suất sinh con"
+ },
+ {
+  "ma_cau": "K09120302008",
+  "dang_bai_id": "KDB01620",
+  "chac": "cao",
+  "ly_do": "Sơ đồ lai/giải thích tỉ lệ 1:1/xác suất sinh con"
+ },
+ {
+  "ma_cau": "K09120402001",
+  "dang_bai_id": "KDB01623",
+  "chac": "cao",
+  "ly_do": "Hỏi số loại giao tử liên kết hay phân li độc lập"
+ },
+ {
+  "ma_cau": "K09120402002",
+  "dang_bai_id": "KDB01623",
+  "chac": "cao",
+  "ly_do": "Hỏi số loại giao tử liên kết hay phân li độc lập"
+ },
+ {
+  "ma_cau": "K09120402003",
+  "dang_bai_id": "KDB01624",
+  "chac": "cao",
+  "ly_do": "Viết các loại giao tử của kiểu gene liên kết hoàn toàn"
+ },
+ {
+  "ma_cau": "K09120402004",
+  "dang_bai_id": "KDB01624",
+  "chac": "cao",
+  "ly_do": "Viết các loại giao tử của kiểu gene liên kết hoàn toàn"
+ },
+ {
+  "ma_cau": "K09120402005",
+  "dang_bai_id": "KDB01624",
+  "chac": "cao",
+  "ly_do": "Viết các loại giao tử của kiểu gene liên kết hoàn toàn"
+ },
+ {
+  "ma_cau": "K09120402006",
+  "dang_bai_id": "KDB01623",
+  "chac": "cao",
+  "ly_do": "Hỏi số loại giao tử liên kết hay phân li độc lập"
+ },
+ {
+  "ma_cau": "K09120402007",
+  "dang_bai_id": "KDB01625",
+  "chac": "cao",
+  "ly_do": "Tỉ lệ/số lượng giao tử loại cụ thể"
+ },
+ {
+  "ma_cau": "K09120402008",
+  "dang_bai_id": "KDB01625",
+  "chac": "cao",
+  "ly_do": "Tỉ lệ/số lượng giao tử loại cụ thể"
+ },
+ {
+  "ma_cau": "K09120402009",
+  "dang_bai_id": "KDB01624",
+  "chac": "cao",
+  "ly_do": "Viết các loại giao tử của kiểu gene liên kết hoàn toàn"
+ },
+ {
+  "ma_cau": "K09120402010",
+  "dang_bai_id": "KDB01624",
+  "chac": "cao",
+  "ly_do": "Viết các loại giao tử của kiểu gene liên kết hoàn toàn"
+ },
+ {
+  "ma_cau": "K09120402011",
+  "dang_bai_id": "KDB01625",
+  "chac": "cao",
+  "ly_do": "Tỉ lệ/số lượng giao tử loại cụ thể"
+ },
+ {
+  "ma_cau": "K09120402012",
+  "dang_bai_id": "KDB01624",
+  "chac": "cao",
+  "ly_do": "Viết các loại giao tử của kiểu gene liên kết hoàn toàn"
+ },
+ {
+  "ma_cau": "K09120502001",
+  "dang_bai_id": "KDB01634",
+  "chac": "cao",
+  "ly_do": "Tổng số NST thể lệch bội"
+ },
+ {
+  "ma_cau": "K09120502002",
+  "dang_bai_id": "KDB01634",
+  "chac": "cao",
+  "ly_do": "Tổng số NST thể lệch bội"
+ },
+ {
+  "ma_cau": "K09120502003",
+  "dang_bai_id": "KDB01634",
+  "chac": "cao",
+  "ly_do": "Tổng số NST thể lệch bội"
+ },
+ {
+  "ma_cau": "K09120502004",
+  "dang_bai_id": "KDB01634",
+  "chac": "cao",
+  "ly_do": "Tổng số NST thể lệch bội"
+ },
+ {
+  "ma_cau": "K09120502005",
+  "dang_bai_id": "KDB01634",
+  "chac": "cao",
+  "ly_do": "Tổng số NST thể lệch bội"
+ },
+ {
+  "ma_cau": "K09120502006",
+  "dang_bai_id": "KDB01635",
+  "chac": "cao",
+  "ly_do": "Tổng số NST thể đa bội"
+ },
+ {
+  "ma_cau": "K09120502007",
+  "dang_bai_id": "KDB01635",
+  "chac": "cao",
+  "ly_do": "Tổng số NST thể đa bội"
+ },
+ {
+  "ma_cau": "K09120502008",
+  "dang_bai_id": "KDB01635",
+  "chac": "cao",
+  "ly_do": "Tổng số NST thể đa bội"
+ },
+ {
+  "ma_cau": "K09120502009",
+  "dang_bai_id": "KDB01635",
+  "chac": "cao",
+  "ly_do": "Tổng số NST thể đa bội"
+ },
+ {
+  "ma_cau": "K09120502010",
+  "dang_bai_id": "KDB01635",
+  "chac": "cao",
+  "ly_do": "Tổng số NST thể đa bội"
+ },
+ {
+  "ma_cau": "K09120502011",
+  "dang_bai_id": "KDB01634",
+  "chac": "cao",
+  "ly_do": "Tổng số NST thể lệch bội"
+ },
+ {
+  "ma_cau": "K09120502012",
+  "dang_bai_id": "KDB01635",
+  "chac": "cao",
+  "ly_do": "Tổng số NST thể đa bội"
+ },
+ {
+  "ma_cau": "K09120502013",
+  "dang_bai_id": "KDB01636",
+  "chac": "cao",
+  "ly_do": "So sánh số NST hai thể đột biến"
+ },
+ {
+  "ma_cau": "K09120502014",
+  "dang_bai_id": "KDB01636",
+  "chac": "cao",
+  "ly_do": "So sánh số NST hai thể đột biến"
+ },
+ {
+  "ma_cau": "K09120203001",
+  "dang_bai_id": "KDB01613",
+  "chac": "cao",
+  "ly_do": "Số giao tử từ tế bào sinh dục sơ khai, không hiệu suất"
+ },
+ {
+  "ma_cau": "K09120203002",
+  "dang_bai_id": "KDB01613",
+  "chac": "cao",
+  "ly_do": "Số giao tử từ tế bào sinh dục sơ khai, không hiệu suất"
+ },
+ {
+  "ma_cau": "K09120203003",
+  "dang_bai_id": "KDB01613",
+  "chac": "cao",
+  "ly_do": "Số giao tử từ tế bào sinh dục sơ khai, không hiệu suất"
+ },
+ {
+  "ma_cau": "K09120203004",
+  "dang_bai_id": "KDB01613",
+  "chac": "cao",
+  "ly_do": "Số giao tử từ tế bào sinh dục sơ khai, không hiệu suất"
+ },
+ {
+  "ma_cau": "K09120203005",
+  "dang_bai_id": "KDB01613",
+  "chac": "cao",
+  "ly_do": "Số giao tử từ tế bào sinh dục sơ khai, không hiệu suất"
+ },
+ {
+  "ma_cau": "K09120203006",
+  "dang_bai_id": "KDB01613",
+  "chac": "cao",
+  "ly_do": "Số giao tử từ tế bào sinh dục sơ khai, không hiệu suất"
+ },
+ {
+  "ma_cau": "K09120203007",
+  "dang_bai_id": "KDB01614",
+  "chac": "cao",
+  "ly_do": "Hiệu suất thụ tinh: số hợp tử/số giao tử"
+ },
+ {
+  "ma_cau": "K09120203008",
+  "dang_bai_id": "KDB01614",
+  "chac": "cao",
+  "ly_do": "Hiệu suất thụ tinh: số hợp tử/số giao tử"
+ },
+ {
+  "ma_cau": "K09120203009",
+  "dang_bai_id": "KDB01614",
+  "chac": "cao",
+  "ly_do": "Hiệu suất thụ tinh: số hợp tử/số giao tử"
+ },
+ {
+  "ma_cau": "K09120203010",
+  "dang_bai_id": "KDB01614",
+  "chac": "cao",
+  "ly_do": "Hiệu suất thụ tinh: số hợp tử/số giao tử"
+ },
+ {
+  "ma_cau": "K09120203011",
+  "dang_bai_id": "KDB01614",
+  "chac": "cao",
+  "ly_do": "Hiệu suất thụ tinh: số hợp tử/số giao tử"
+ },
+ {
+  "ma_cau": "K09120403001",
+  "dang_bai_id": "KDB01626",
+  "chac": "cao",
+  "ly_do": "Lai hai cơ thể dị hợp liên kết hoàn toàn"
+ },
+ {
+  "ma_cau": "K09120403002",
+  "dang_bai_id": "KDB01626",
+  "chac": "cao",
+  "ly_do": "Lai hai cơ thể dị hợp liên kết hoàn toàn"
+ },
+ {
+  "ma_cau": "K09120403003",
+  "dang_bai_id": "KDB01627",
+  "chac": "cao",
+  "ly_do": "Lai phân tích (một bên đồng hợp lặn)"
+ },
+ {
+  "ma_cau": "K09120403004",
+  "dang_bai_id": "KDB01627",
+  "chac": "cao",
+  "ly_do": "Lai phân tích (một bên đồng hợp lặn)"
+ },
+ {
+  "ma_cau": "K09120403005",
+  "dang_bai_id": "KDB01626",
+  "chac": "cao",
+  "ly_do": "Lai hai cơ thể dị hợp liên kết hoàn toàn"
+ },
+ {
+  "ma_cau": "K09120403006",
+  "dang_bai_id": "KDB01626",
+  "chac": "cao",
+  "ly_do": "Lai hai cơ thể dị hợp liên kết hoàn toàn"
+ },
+ {
+  "ma_cau": "K09120403007",
+  "dang_bai_id": "KDB01627",
+  "chac": "cao",
+  "ly_do": "Lai phân tích (một bên đồng hợp lặn)"
+ },
+ {
+  "ma_cau": "K09120403008",
+  "dang_bai_id": "KDB01627",
+  "chac": "cao",
+  "ly_do": "Lai phân tích (một bên đồng hợp lặn)"
+ },
+ {
+  "ma_cau": "K09120403009",
+  "dang_bai_id": "KDB01626",
+  "chac": "cao",
+  "ly_do": "Lai hai cơ thể dị hợp liên kết hoàn toàn"
+ }
+]

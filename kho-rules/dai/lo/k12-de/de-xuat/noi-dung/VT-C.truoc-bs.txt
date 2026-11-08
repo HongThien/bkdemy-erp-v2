@@ -1,0 +1,399 @@
+=== N C3.2   (nhóm "Tìm toạ độ điểm")
+@ly_thuyet:
+##TC Toạ độ vectơ và điều kiện hai vectơ bằng nhau
+- Với $A(x_A;y_A;z_A)$ và $B(x_B;y_B;z_B)$ thì $\overrightarrow{AB}=(x_B-x_A;\,y_B-y_A;\,z_B-z_A)$ (toạ độ điểm cuối trừ toạ độ điểm đầu).
+- Cho $\vec{a}=(x_1;y_1;z_1)$, $\vec{b}=(x_2;y_2;z_2)$ và số $k$: $\vec{a}\pm\vec{b}=(x_1\pm x_2;\,y_1\pm y_2;\,z_1\pm z_2)$, $k\vec{a}=(kx_1;ky_1;kz_1)$.
+- $\vec{a}=\vec{b}$ khi và chỉ khi $x_1=x_2$, $y_1=y_2$, $z_1=z_2$: một đẳng thức vectơ cho ba phương trình bậc nhất.
+- Điểm thuộc trục hoặc mặt phẳng toạ độ có thành phần bằng $0$: điểm trên $Ox$ có dạng $(x;0;0)$, điểm trên mặt phẳng $(Oxy)$ có dạng $(x;y;0)$.
+
+##PP Tìm toạ độ một điểm chưa biết
+Gọi toạ độ điểm cần tìm là $M(x;y;z)$ (nếu điểm thuộc trục hay mặt phẳng toạ độ thì cho các thành phần bằng $0$ ngay từ đầu).
+Viết toạ độ các vectơ liên quan bằng cách lấy toạ độ điểm cuối trừ toạ độ điểm đầu.
+Chuyển điều kiện của đề thành một đẳng thức vectơ có $M$.
+Cho ba thành phần tương ứng bằng nhau, giải các phương trình bậc nhất rồi kết luận toạ độ.
+
+##CY
+- Nhầm chiều: $\overrightarrow{AB}=B-A$, không phải $A-B$.
+- Đề hỏi một biểu thức như $a+b+c$ hay $a+2b+3c$ thì tìm đủ toạ độ $(a;b;c)$ rồi mới thay vào.
+
+=== C3.2.1   (dạng "Tìm toạ độ trung điểm, trọng tâm" — mô tả: Đề cho các đỉnh, hỏi trung điểm đoạn, trọng tâm tam giác/tứ diện (hoặc ngược lại tìm đỉnh khi biết trọng tâm). Trung bình cộng toạ độ.)
+@ly_thuyet:
+##TC Trung điểm, trọng tâm, điểm đối xứng qua một điểm
+- Trung điểm $I$ của đoạn $AB$: $I\left(\dfrac{x_A+x_B}{2};\dfrac{y_A+y_B}{2};\dfrac{z_A+z_B}{2}\right)$, tương đương $\overrightarrow{IA}+\overrightarrow{IB}=\vec{0}$.
+- Trọng tâm $G$ của tam giác $ABC$: $G\left(\dfrac{x_A+x_B+x_C}{3};\dfrac{y_A+y_B+y_C}{3};\dfrac{z_A+z_B+z_C}{3}\right)$.
+- Biết đỉnh $A$ và trung điểm $M$ của cạnh $BC$ thì $\overrightarrow{AG}=\dfrac{2}{3}\overrightarrow{AM}$, tức $x_G=\dfrac{x_A+2x_M}{3}$ (vì $x_B+x_C=2x_M$), tương tự cho $y$, $z$.
+- Trọng tâm $G$ của tứ diện $ABCD$: toạ độ bằng trung bình cộng của bốn đỉnh (chia cho $4$).
+- Điểm $A'$ đối xứng với $A$ qua điểm $I$ khi và chỉ khi $I$ là trung điểm của $AA'$, nên $x_{A'}=2x_I-x_A$ (tương tự cho $y$, $z$).
+
+##PP Dùng trung bình cộng toạ độ
+Xác định điểm cần tìm là trung điểm, trọng tâm tam giác hay trọng tâm tứ diện để chọn đúng số chia ($2$, $3$ hay $4$).
+Cộng toạ độ tương ứng của các đỉnh rồi chia, làm riêng từng thành phần.
+Nếu biết trung điểm hoặc trọng tâm mà tìm đỉnh: nhân ngược, ví dụ $x_A=3x_G-x_B-x_C$ hoặc $x_{A'}=2x_I-x_A$.
+
+##CY
+- Trọng tâm tam giác chia cho $3$, trọng tâm tứ diện chia cho $4$; trung điểm chia cho $2$.
+- Khi tìm đỉnh từ trọng tâm, không được lấy $G$ trừ đi các đỉnh còn lại mà quên nhân $3$ (hay nhân $4$ với tứ diện).
+
+@vi_du:
+##VD
+Trong không gian $Oxyz$, cho tam giác $ABC$ có $A(1;2;-3)$, $B(3;-4;5)$, $C(5;2;1)$.
+a) Tìm toạ độ trung điểm $M$ của cạnh $BC$.
+b) Tìm toạ độ trọng tâm $G$ của tam giác $ABC$.
+
+Bài giải:
+a) Trung điểm của $BC$ có $x_M=\dfrac{3+5}{2}=4$, $y_M=\dfrac{-4+2}{2}=-1$, $z_M=\dfrac{5+1}{2}=3$.
+b) Trọng tâm có $x_G=\dfrac{1+3+5}{3}=3$, $y_G=\dfrac{2-4+2}{3}=0$, $z_G=\dfrac{-3+5+1}{3}=1$.
+Vậy $M(4;-1;3)$ và $G(3;0;1)$.
+
+##VD
+a) Trong không gian $Oxyz$, cho tứ diện $ABCD$ có $A(1;0;2)$, $B(3;2;-1)$, $C(-1;4;3)$ và trọng tâm $G(1;2;1)$. Tìm toạ độ đỉnh $D$.
+b) Cho $M(6;1;-3)$ và $N(0;-3;-5)$. Tìm toạ độ điểm $I$ đối xứng với $M$ qua $N$.
+
+Bài giải:
+a) Vì $G$ là trọng tâm tứ diện nên $x_A+x_B+x_C+x_D=4x_G$, và tương tự cho $y$, $z$.
+Do đó $x_D=4\cdot1-(1+3-1)=1$, $y_D=4\cdot2-(0+2+4)=2$, $z_D=4\cdot1-(2-1+3)=0$.
+b) $I$ đối xứng với $M$ qua $N$ nên $N$ là trung điểm của $MI$, suy ra $x_I=2x_N-x_M=2\cdot0-6=-6$, $y_I=2\cdot(-3)-1=-7$, $z_I=2\cdot(-5)-(-3)=-7$.
+Vậy $D(1;2;0)$ và $I(-6;-7;-7)$.
+
+=== C3.2.2   (dạng "Tìm đỉnh còn lại của hình bình hành, hình hộp, hình thang" — mô tả: Đề cho ba đỉnh hình bình hành (hoặc bốn đỉnh hình hộp, hình thang có điều kiện), tìm đỉnh còn lại. Lập đẳng thức vectơ AB = DC (hoặc AB = k·DC).)
+@ly_thuyet:
+##TC Đẳng thức vectơ của các hình
+- Tứ giác $ABCD$ là hình bình hành khi và chỉ khi $\overrightarrow{AB}=\overrightarrow{DC}$ (hai vectơ cùng chiều theo thứ tự đỉnh $A,B,C,D$); suy ra $D=A+C-B$.
+- Hình hộp $ABCD.A'B'C'D'$: $\overrightarrow{AA'}=\overrightarrow{BB'}=\overrightarrow{CC'}=\overrightarrow{DD'}$ và $ABCD$, $A'B'C'D'$ là các hình bình hành; tâm hình hộp là trung điểm chung của bốn đường chéo, chẳng hạn trung điểm của $AC'$.
+- Hình thang $ABCD$ có hai đáy $AB\parallel CD$: $\overrightarrow{AB}=k\overrightarrow{DC}$ với $k>0$ (cùng chiều); đề cho tỉ số hai đáy thì biết $k$.
+
+##PP Tìm đỉnh còn lại
+Gọi toạ độ đỉnh cần tìm là $(x;y;z)$.
+Chọn đẳng thức vectơ đúng theo thứ tự đỉnh của hình: hình bình hành $\overrightarrow{AB}=\overrightarrow{DC}$, hình hộp lấy cạnh bên bằng nhau, hình thang $\overrightarrow{AB}=k\overrightarrow{DC}$.
+Tính toạ độ hai vế rồi cho các thành phần tương ứng bằng nhau.
+Với hình hộp: tìm tuần tự (đáy trước, rồi tịnh tiến theo cạnh bên) và nhớ mỗi đỉnh mới đều dựa trên các đỉnh đã biết.
+
+##CY
+- Thứ tự đỉnh quyết định đường chéo: $ABCD$ là hình bình hành thì $AC$ và $BD$ là hai đường chéo, nên $D=A+C-B$; đổi thứ tự đỉnh sẽ cho điểm khác.
+- Với hình thang, hai vectơ $\overrightarrow{AB}$ và $\overrightarrow{DC}$ phải cùng chiều ($k>0$); đề không nói "hình bình hành" thì không được đặt $k=1$.
+
+@vi_du:
+##VD
+Trong không gian $Oxyz$:
+a) Cho ba điểm $A(3;1;-2)$, $B(1;4;0)$, $C(-2;2;5)$. Tìm toạ độ điểm $D$ để tứ giác $ABCD$ là hình bình hành.
+b) Cho $A(2;1;-1)$, $B(6;5;3)$, $C(1;4;0)$. Tìm toạ độ điểm $D$ để $ABCD$ là hình thang có đáy $AB$ và $AB=2CD$.
+
+Bài giải:
+a) Gọi $D(x;y;z)$. Tứ giác $ABCD$ là hình bình hành nên $\overrightarrow{AB}=\overrightarrow{DC}$.
+Ta có $\overrightarrow{AB}=(-2;3;2)$ và $\overrightarrow{DC}=(-2-x;\,2-y;\,5-z)$.
+Suy ra $-2-x=-2$, $2-y=3$, $5-z=2$ nên $x=0$, $y=-1$, $z=3$.
+b) Gọi $D(x;y;z)$. Vì $AB\parallel CD$ cùng chiều và $AB=2CD$ nên $\overrightarrow{AB}=2\overrightarrow{DC}$.
+Ta có $\overrightarrow{AB}=(4;4;4)$ và $\overrightarrow{DC}=(1-x;\,4-y;\,0-z)$.
+Suy ra $1-x=2$, $4-y=2$, $-z=2$ nên $x=-1$, $y=2$, $z=-2$.
+Vậy ở câu a) $D(0;-1;3)$, ở câu b) $D(-1;2;-2)$.
+
+##VD
+Trong không gian $Oxyz$, cho hình hộp $ABCD.A'B'C'D'$ có $A(1;2;-1)$, $B(3;1;0)$, $D(0;4;2)$ và $C'(3;0;9)$. Tìm toạ độ các đỉnh $C$, $A'$ và $D'$.
+
+Bài giải:
+Đáy $ABCD$ là hình bình hành nên $\overrightarrow{AB}=\overrightarrow{DC}$. Gọi $C(x;y;z)$, ta có $\overrightarrow{AB}=(2;-1;1)$ và $\overrightarrow{DC}=(x;\,y-4;\,z-2)$ nên $C(2;3;3)$.
+Các cạnh bên bằng nhau: $\overrightarrow{AA'}=\overrightarrow{CC'}=(3-2;\,0-3;\,9-3)=(1;-3;6)$.
+Từ $\overrightarrow{AA'}=(1;-3;6)$ suy ra $A'(1+1;\,2-3;\,-1+6)=(2;-1;5)$.
+Từ $\overrightarrow{DD'}=\overrightarrow{AA'}$ suy ra $D'(0+1;\,4-3;\,2+6)=(1;1;8)$.
+Vậy $C(2;3;3)$, $A'(2;-1;5)$, $D'(1;1;8)$.
+
+=== C3.2.3   (dạng "Tìm điểm chia đoạn theo tỉ số, điểm thoả đẳng thức vectơ" — mô tả: Đề cho MA = k·MB, chân phân giác, điểm trên trục/mặt phẳng toạ độ chia đoạn, hoặc điểm thoả đẳng thức vectơ. Gọi M(x;y;z), lập phương trình theo từng thành phần.)
+@ly_thuyet:
+##TC Điểm chia đoạn thẳng, chân phân giác, điểm thuộc đường thẳng
+- Điểm $M$ chia đoạn $AB$ theo tỉ số $k$ ($k\ne1$) nghĩa là $\overrightarrow{MA}=k\overrightarrow{MB}$; khi đó $x_M=\dfrac{x_A-kx_B}{1-k}$ (tương tự cho $y$, $z$).
+- $M$ nằm trong đoạn $AB$ thì $\overrightarrow{MA}$ và $\overrightarrow{MB}$ ngược chiều ($k<0$); $M$ nằm ngoài đoạn thì cùng chiều ($k>0$).
+- Chân đường phân giác trong $D$ của góc $A$ trong tam giác $ABC$ nằm trên $BC$ và $\dfrac{DB}{DC}=\dfrac{AB}{AC}$, tức $\overrightarrow{DB}=-\dfrac{AB}{AC}\overrightarrow{DC}$.
+- Ba điểm $A$, $B$, $M$ thẳng hàng khi và chỉ khi $\overrightarrow{AM}=t\overrightarrow{AB}$ với một số thực $t$; $M$ có toạ độ $A+t\overrightarrow{AB}$.
+
+##PP Tìm điểm từ đẳng thức vectơ hoặc tỉ số
+Gọi $M(x;y;z)$; viết toạ độ các vectơ xuất hiện trong đẳng thức, ví dụ $\overrightarrow{MA}=(x_A-x;\,y_A-y;\,z_A-z)$.
+Nếu đề cho tỉ số độ dài ($MA=2MB$), dùng giả thiết vị trí (nằm trong hay ngoài đoạn) để chuyển thành đẳng thức vectơ có hệ số có dấu.
+Nếu đề cho điểm thuộc đường thẳng $AB$ và trục (hay mặt phẳng) toạ độ: viết $M=A+t\overrightarrow{AB}$, cho thành phần bằng $0$ để tìm $t$.
+Giải từng phương trình bậc nhất rồi kết luận.
+
+##CY
+- $MA=2MB$ là đẳng thức độ dài; chuyển sang vectơ phải xét dấu: trong đoạn $AB$ thì $\overrightarrow{MA}=-2\overrightarrow{MB}$.
+- Chân phân giác chia cạnh đối theo tỉ số hai cạnh kề, không phải chia đôi cạnh đối (chỉ chia đôi khi tam giác cân tại đỉnh đó).
+
+@vi_du:
+##VD
+Trong không gian $Oxyz$, cho hai điểm $A(3;-2;5)$ và $B(-3;4;-1)$.
+a) Tìm toạ độ điểm $M$ thoả mãn $2\overrightarrow{MA}+\overrightarrow{MB}=\vec{0}$.
+b) Đường thẳng $AB$ cắt mặt phẳng $(Oxy)$ tại $N$. Tìm toạ độ điểm $N$.
+
+Bài giải:
+a) Gọi $M(x;y;z)$. Ta có $2\overrightarrow{MA}+\overrightarrow{MB}=(2(3-x)+(-3-x);\,2(-2-y)+(4-y);\,2(5-z)+(-1-z))=(3-3x;\,-3y;\,9-3z)$.
+Cho vectơ này bằng $\vec{0}$ ta được $x=1$, $y=0$, $z=3$.
+b) $\overrightarrow{AB}=(-6;6;-6)$. Điểm $N$ thuộc đường thẳng $AB$ nên $N=A+t\overrightarrow{AB}=(3-6t;\,-2+6t;\,5-6t)$.
+$N$ thuộc $(Oxy)$ nên cao độ bằng $0$: $5-6t=0$ suy ra $t=\dfrac{5}{6}$.
+Khi đó $N(3-5;\,-2+5;\,0)=(-2;3;0)$.
+Vậy $M(1;0;3)$ và $N(-2;3;0)$.
+
+##VD
+Trong không gian $Oxyz$, cho tam giác $ABC$ có $A(1;2;-1)$, $B(-1;1;1)$, $C(7;5;5)$. Gọi $D$ là chân đường phân giác trong của góc $A$. Tìm toạ độ điểm $D$.
+
+Bài giải:
+Ta có $\overrightarrow{AB}=(-2;-1;2)$ nên $AB=\sqrt{4+1+4}=3$, và $\overrightarrow{AC}=(6;3;6)$ nên $AC=\sqrt{36+9+36}=9$.
+Vì $D$ là chân phân giác trong nên $D$ nằm giữa $B$, $C$ và $\dfrac{DB}{DC}=\dfrac{AB}{AC}=\dfrac{1}{3}$, tức $\overrightarrow{DB}=-\dfrac{1}{3}\overrightarrow{DC}$, hay $3\overrightarrow{DB}=-\overrightarrow{DC}$.
+Gọi $D(x;y;z)$: $3(-1-x)=-(7-x)$ nên $-3-3x=-7+x$, suy ra $x=1$.
+$3(1-y)=-(5-y)$ nên $3-3y=-5+y$, suy ra $y=2$.
+$3(1-z)=-(5-z)$ nên $3-3z=-5+z$, suy ra $z=2$.
+Vậy $D(1;2;2)$.
+
+=== N C3.3   (nhóm "Độ dài vectơ và khoảng cách giữa hai điểm")
+@ly_thuyet:
+##TC Độ dài vectơ và khoảng cách
+- Với $\vec{u}=(x;y;z)$: $|\vec{u}|=\sqrt{x^2+y^2+z^2}$.
+- Khoảng cách giữa hai điểm: $AB=|\overrightarrow{AB}|=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2+(z_B-z_A)^2}$.
+- $|k\vec{u}|=|k|\cdot|\vec{u}|$.
+- $|\vec{u}+\vec{v}|$ tính bằng cách cộng toạ độ trước rồi mới lấy độ dài; nói chung $|\vec{u}+\vec{v}|\ne|\vec{u}|+|\vec{v}|$.
+
+##PP Tính độ dài và lập phương trình khoảng cách
+Tìm toạ độ vectơ cần tính (kể cả vectơ tổng, hiệu, hay $\overrightarrow{AB}$).
+Bình phương từng thành phần, cộng lại rồi khai căn.
+Khi so sánh hai khoảng cách, bình phương hai vế để bỏ căn.
+
+##CY
+- Không khai căn riêng từng thành phần; chỉ khai căn một lần cho tổng các bình phương.
+- Hiệu toạ độ có số âm phải giữ dấu ngoặc: $(-1-3)^2=16$, không phải $(-1+3)^2$; sai một dấu là sai cả độ dài.
+
+=== C3.3.1   (dạng "Tính độ dài vectơ, khoảng cách giữa hai điểm" — mô tả: Đề hỏi |u|, AB, chu vi hoặc loại tam giác. Dùng căn tổng bình phương các thành phần.)
+@ly_thuyet:
+##TC Độ dài, chu vi và nhận dạng tam giác
+- Chu vi tam giác $ABC$ bằng $AB+BC+CA$, mỗi cạnh tính bằng công thức khoảng cách.
+- Tam giác $ABC$ vuông tại $A$ khi $AB^2+AC^2=BC^2$ (định lí Pythagore đảo); cân tại $A$ khi $AB=AC$; đều khi ba cạnh bằng nhau.
+- Hai điểm đối xứng nhau qua một trục hoặc mặt phẳng toạ độ thì lấy toạ độ đối ở thành phần tương ứng (đối xứng qua $Oy$: đổi dấu $x$ và $z$), rồi tính khoảng cách.
+
+##PP Tính độ dài và nhận dạng tam giác
+Tính toạ độ vectơ (hoặc $\overrightarrow{AB}$, $\overrightarrow{BC}$, $\overrightarrow{CA}$ với bài tam giác).
+Lấy căn của tổng bình phương ba thành phần.
+Với bài nhận dạng: so sánh các bình phương cạnh, kiểm tra Pythagore rồi kết luận loại tam giác.
+
+##CY
+- Đề cho $\vec{u}+\vec{v}$ hay $3\vec{u}+\vec{v}$ thì tính toạ độ vectơ đó trước, không cộng hai độ dài.
+- Kiểm tra Pythagore: cạnh lớn nhất phải là cạnh đối diện với góc vuông.
+
+@vi_du:
+##VD
+Trong không gian $Oxyz$, cho hai vectơ $\vec{u}=(2;-3;6)$ và $\vec{v}=(-2;1;-1)$.
+a) Tính $|\vec{u}|$.
+b) Tính độ dài của vectơ $\vec{u}-\vec{v}$.
+
+Bài giải:
+a) $|\vec{u}|=\sqrt{2^2+(-3)^2+6^2}=\sqrt{49}=7$.
+b) $\vec{u}-\vec{v}=(2+2;\,-3-1;\,6+1)=(4;-4;7)$ nên $|\vec{u}-\vec{v}|=\sqrt{16+16+49}=\sqrt{81}=9$.
+Vậy $|\vec{u}|=7$ và $|\vec{u}-\vec{v}|=9$.
+
+##VD
+Trong không gian $Oxyz$, cho tam giác $ABC$ có $A(2;1;0)$, $B(3;3;2)$, $C(4;2;-2)$. Chứng minh tam giác $ABC$ vuông cân tại $A$ và tính chu vi của tam giác.
+
+Bài giải:
+Ta có $\overrightarrow{AB}=(1;2;2)$ nên $AB=\sqrt{1+4+4}=3$.
+$\overrightarrow{AC}=(2;1;-2)$ nên $AC=\sqrt{4+1+4}=3$.
+$\overrightarrow{BC}=(1;-1;-4)$ nên $BC=\sqrt{1+1+16}=3\sqrt{2}$.
+Vì $AB=AC$ nên tam giác cân tại $A$; vì $AB^2+AC^2=9+9=18=BC^2$ nên tam giác vuông tại $A$.
+Chu vi bằng $AB+AC+BC=3+3+3\sqrt{2}=6+3\sqrt{2}$.
+Vậy tam giác $ABC$ vuông cân tại $A$ và có chu vi $6+3\sqrt{2}$.
+
+=== C3.3.2   (dạng "Tìm điểm cách đều hoặc có khoảng cách cho trước" — mô tả: Đề hỏi điểm trên trục/mặt phẳng toạ độ cách đều hai điểm, hoặc cách một điểm một khoảng cho trước. Gọi toạ độ ẩn, bình phương hai vế, giải hệ. Dạng hiếm nhưng cách giải riêng.)
+@ly_thuyet:
+##TC Điểm cách đều và điểm cách một điểm cho trước
+- $M$ cách đều $A$ và $B$ khi $MA=MB$, tương đương $MA^2=MB^2$; sau khi khai triển, các số hạng bậc hai của $x,y,z$ bị triệt tiêu và còn một phương trình bậc nhất.
+- $M$ cách điểm $I$ một khoảng $R$ khi $MI^2=R^2$ (phương trình bậc hai); $M$ cách $I$ không quá $R$ khi $MI^2\le R^2$ (bất phương trình bậc hai).
+- $M$ cách đều ba điểm $A$, $B$, $C$: lập hai phương trình $MA^2=MB^2$ và $MA^2=MC^2$.
+
+##PP Giải bài điểm cách đều
+Đặt toạ độ ẩn đúng với vị trí của $M$, ví dụ $M(x;0;0)$ trên trục $Ox$, $M(x;y;0)$ trên mặt phẳng $(Oxy)$.
+Viết bình phương các khoảng cách bằng tổng ba bình phương thành phần.
+Cho các bình phương bằng nhau (hoặc bằng, hoặc không vượt quá $R^2$), khai triển rồi rút gọn.
+Giải phương trình, hệ hoặc bất phương trình, kết luận toạ độ hoặc giá trị tham số.
+
+##CY
+- "Không quá", "không vượt quá" là dấu $\le$; điểm có tham số $m$ thì nghiệm là một khoảng, đề hỏi số nguyên thì đếm các số nguyên trong khoảng đó.
+- Đề hỏi một thành phần của điểm (hoành độ, cao độ) thì trả lời đúng thành phần đó, không phải cả điểm.
+
+@vi_du:
+##VD
+Trong không gian $Oxyz$, cho các điểm $A(3;1;-2)$, $B(1;1;2)$ và $I(3;4;1)$.
+a) Tìm toạ độ điểm $M$ thuộc trục $Ox$ và cách đều $A$, $B$.
+b) Tìm toạ độ điểm $N$ thuộc trục $Oz$ sao cho $NI=\sqrt{26}$.
+
+Bài giải:
+a) Gọi $M(x;0;0)$. Ta có $MA^2=(x-3)^2+1+4=x^2-6x+14$ và $MB^2=(x-1)^2+1+4=x^2-2x+6$.
+$MA=MB$ nên $x^2-6x+14=x^2-2x+6$, suy ra $-4x=-8$, tức $x=2$. Vậy $M(2;0;0)$.
+b) Gọi $N(0;0;z)$. Ta có $NI^2=9+16+(z-1)^2=26$ nên $(z-1)^2=1$, suy ra $z=0$ hoặc $z=2$.
+Vậy $N(0;0;0)$ hoặc $N(0;0;2)$.
+
+##VD
+Trong không gian $Oxyz$:
+a) Cho $A(0;1;2)$, $B(2;3;2)$, $C(4;1;2)$. Tìm toạ độ điểm $M$ thuộc mặt phẳng $(Oxy)$ và cách đều ba điểm $A$, $B$, $C$.
+b) Cho $I(1;1;0)$ và điểm $P(m;\,m+1;\,3)$. Có bao nhiêu số nguyên $m$ để $P$ cách $I$ không quá $5$?
+
+Bài giải:
+a) Gọi $M(x;y;0)$. Ta có $MA^2=x^2+(y-1)^2+4$, $MB^2=(x-2)^2+(y-3)^2+4$, $MC^2=(x-4)^2+(y-1)^2+4$.
+Từ $MA^2=MC^2$: $x^2=(x-4)^2$ nên $-8x+16=0$, suy ra $x=2$.
+Từ $MA^2=MB^2$: $x^2+(y-1)^2=(x-2)^2+(y-3)^2$, rút gọn được $4x+4y=12$, tức $x+y=3$. Thay $x=2$ được $y=1$.
+Kiểm tra: $MA^2=4+0+4=8$, $MB^2=0+4+4=8$, $MC^2=4+0+4=8$.
+b) $PI^2=(m-1)^2+m^2+3^2=2m^2-2m+10$.
+$PI\le5$ khi $2m^2-2m+10\le25$, tức $2m^2-2m-15\le0$, suy ra $\dfrac{1-\sqrt{31}}{2}\le m\le\dfrac{1+\sqrt{31}}{2}$ (khoảng $-2{,}28\le m\le3{,}28$).
+Các số nguyên thoả mãn là $-2;-1;0;1;2;3$.
+Vậy $M(2;1;0)$ và có $6$ số nguyên $m$.
+
+=== N C3.4   (nhóm "Tích vô hướng, góc, vuông góc và tích có hướng theo toạ độ")
+@ly_thuyet:
+##TC Tích vô hướng và tích có hướng theo toạ độ
+- Với $\vec{a}=(x_1;y_1;z_1)$, $\vec{b}=(x_2;y_2;z_2)$: $\vec{a}\cdot\vec{b}=x_1x_2+y_1y_2+z_1z_2$ và $\vec{a}\cdot\vec{a}=|\vec{a}|^2$.
+- $\cos(\vec{a},\vec{b})=\dfrac{\vec{a}\cdot\vec{b}}{|\vec{a}|\cdot|\vec{b}|}$ (với $\vec{a},\vec{b}\ne\vec{0}$); góc giữa hai vectơ thuộc $[0^\circ;180^\circ]$.
+- $\vec{a}\perp\vec{b}$ khi và chỉ khi $\vec{a}\cdot\vec{b}=0$.
+- Tích có hướng: $[\vec{a},\vec{b}]=\left(\begin{vmatrix}y_1&z_1\\y_2&z_2\end{vmatrix};\begin{vmatrix}z_1&x_1\\z_2&x_2\end{vmatrix};\begin{vmatrix}x_1&y_1\\x_2&y_2\end{vmatrix}\right)=(y_1z_2-y_2z_1;\,z_1x_2-z_2x_1;\,x_1y_2-x_2y_1)$; vectơ này vuông góc với cả $\vec{a}$ và $\vec{b}$.
+
+##PP Làm bài tích vô hướng, góc, tích có hướng
+Tính toạ độ các vectơ cần dùng (hai vectơ cùng gốc nếu bài hỏi góc).
+Áp dụng đúng công thức: tích vô hướng cho góc và vuông góc, tích có hướng cho diện tích, thể tích và vectơ vuông góc.
+Với bài hỏi tham số hay điểm: đặt ẩn, lập phương trình theo điều kiện, giải rồi thử lại.
+
+##CY
+- Góc $\widehat{ABC}$ là góc giữa hai vectơ cùng gốc $B$, tức $\overrightarrow{BA}$ và $\overrightarrow{BC}$; dùng $\overrightarrow{AB}$ và $\overrightarrow{BC}$ sẽ ra góc bù.
+- Tích có hướng không giao hoán: $[\vec{b},\vec{a}]=-[\vec{a},\vec{b}]$, nên phải giữ đúng thứ tự.
+
+=== C3.4.1   (dạng "Tính tích vô hướng và góc giữa hai vectơ theo toạ độ" — mô tả: Đề cho toạ độ hai vectơ (hoặc ba điểm, bốn đỉnh), hỏi a·b, cos góc, góc trong tam giác/tứ diện. Dùng x1x2+y1y2+z1z2 và công thức cos.)
+@ly_thuyet:
+##TC Góc từ giá trị cosin
+- Dấu của tích vô hướng cho biết loại góc: $\vec{a}\cdot\vec{b}>0$ thì góc nhọn, bằng $0$ thì góc vuông, âm thì góc tù.
+- Giá trị cosin thường gặp: $\cos\alpha=\dfrac{1}{2}$ ứng với $60^\circ$, $-\dfrac{1}{2}$ với $120^\circ$, $\dfrac{\sqrt{2}}{2}$ với $45^\circ$, $-\dfrac{\sqrt{2}}{2}$ với $135^\circ$, $\dfrac{\sqrt{3}}{2}$ với $30^\circ$, $-\dfrac{\sqrt{3}}{2}$ với $150^\circ$.
+- Trong tam giác $ABC$: $\cos\widehat{BAC}=\dfrac{\overrightarrow{AB}\cdot\overrightarrow{AC}}{AB\cdot AC}$; ba góc có tổng $180^\circ$ và góc lớn nhất đối diện cạnh dài nhất (cũng là góc có cosin nhỏ nhất).
+- Đề cho cosin không đặc biệt thì tính góc bằng máy tính ($\alpha=\arccos$ của giá trị đó).
+- Đề cho góc và hỏi tham số: cho $\cos(\vec{a},\vec{b})$ (biểu thức theo tham số) bằng cosin của góc đó; trước khi bình phương phải ghi điều kiện $\vec{a}\cdot\vec{b}$ cùng dấu với cosin đó.
+
+##PP Tính tích vô hướng và góc
+Lập toạ độ hai vectơ cùng gốc cần dùng (hai vectơ cho sẵn, hoặc hai cạnh xuất phát từ đỉnh cần tính góc).
+Tính tích vô hướng bằng tổng tích các thành phần tương ứng.
+Tính độ dài hai vectơ rồi lập $\cos$.
+Đối chiếu với bảng giá trị cosin đặc biệt (hoặc dùng máy tính) để ra số đo góc; với bài tam giác, kiểm tra tổng ba góc bằng $180^\circ$.
+Bài cho góc, tìm tham số: lập phương trình $\cos=$ giá trị đã cho, ghi điều kiện dấu, bình phương, giải rồi loại nghiệm sai điều kiện.
+
+##CY
+- Biểu thức như $(2\vec{a}-\vec{b})\cdot(\vec{a}+\vec{b})$: tính toạ độ từng vectơ trong ngoặc rồi mới nhân vô hướng.
+- $\cos$ âm thì góc là góc tù: $\cos\alpha=-\dfrac{1}{2}$ cho $120^\circ$, đừng ghi $60^\circ$.
+- Bình phương phương trình $\cos$ làm lẫn nghiệm của góc bù (góc $60^\circ$ lẫn với $120^\circ$); không đối chiếu điều kiện dấu là thừa nghiệm.
+
+@vi_du:
+##VD
+Trong không gian $Oxyz$, cho hai vectơ $\vec{a}=(1;1;0)$ và $\vec{b}=(-1;0;1)$.
+a) Tính $\vec{a}\cdot\vec{b}$.
+b) Tính góc giữa hai vectơ $\vec{a}$ và $\vec{b}$.
+c) Tính $(2\vec{a}-\vec{b})\cdot(\vec{a}+\vec{b})$.
+
+Bài giải:
+a) $\vec{a}\cdot\vec{b}=1\cdot(-1)+1\cdot0+0\cdot1=-1$.
+b) $|\vec{a}|=\sqrt{2}$, $|\vec{b}|=\sqrt{2}$ nên $\cos(\vec{a},\vec{b})=\dfrac{-1}{\sqrt{2}\cdot\sqrt{2}}=-\dfrac{1}{2}$, suy ra góc bằng $120^\circ$.
+c) $2\vec{a}-\vec{b}=(3;2;-1)$ và $\vec{a}+\vec{b}=(0;1;1)$ nên tích vô hướng bằng $3\cdot0+2\cdot1+(-1)\cdot1=1$.
+Vậy $\vec{a}\cdot\vec{b}=-1$, góc giữa hai vectơ là $120^\circ$ và $(2\vec{a}-\vec{b})\cdot(\vec{a}+\vec{b})=1$.
+
+##VD
+Trong không gian $Oxyz$:
+a) Cho tam giác $ABC$ có $A(3;3;2)$, $B(1;2;0)$, $C(-2;-1;0)$. Tìm số đo góc lớn nhất của tam giác.
+b) Cho $\vec{u}=(1;0;1)$ và $\vec{v}=(1;1;m)$. Tìm $m$ để góc giữa hai vectơ $\vec{u}$, $\vec{v}$ bằng $120^\circ$.
+
+Bài giải:
+a) $\overrightarrow{AB}=(-2;-1;-2)$ nên $AB=3$; $\overrightarrow{BC}=(-3;-3;0)$ nên $BC=\sqrt{18}=3\sqrt{2}$; $\overrightarrow{AC}=(-5;-4;-2)$ nên $AC=\sqrt{45}=3\sqrt{5}$.
+$AC$ là cạnh dài nhất nên góc lớn nhất là góc đối diện $\widehat{ABC}$.
+$\overrightarrow{BA}=(2;1;2)$ và $\overrightarrow{BC}=(-3;-3;0)$ nên $\cos\widehat{ABC}=\dfrac{-6-3+0}{3\cdot3\sqrt{2}}=-\dfrac{1}{\sqrt{2}}=-\dfrac{\sqrt{2}}{2}$, suy ra $\widehat{ABC}=135^\circ$.
+b) $\vec{u}\cdot\vec{v}=1+m$, $|\vec{u}|=\sqrt{2}$, $|\vec{v}|=\sqrt{m^2+2}$.
+Góc bằng $120^\circ$ khi $\dfrac{1+m}{\sqrt{2}\cdot\sqrt{m^2+2}}=-\dfrac{1}{2}$, tức $2(1+m)=-\sqrt{2(m^2+2)}$.
+Vế phải âm nên cần $1+m<0$, tức $m<-1$.
+Bình phương: $4(1+m)^2=2(m^2+2)$, rút gọn được $2m^2+8m=0$, suy ra $m=0$ hoặc $m=-4$.
+Đối chiếu điều kiện $m<-1$ chỉ nhận $m=-4$ ($m=0$ cho góc $60^\circ$).
+Vậy góc lớn nhất là $\widehat{ABC}=135^\circ$ và $m=-4$.
+
+=== C3.4.2   (dạng "Dùng điều kiện vuông góc tìm tham số, tìm điểm" — mô tả: Đề hỏi m để a ⊥ b, toạ độ chân đường cao, trực tâm, hoặc điểm thoả các hệ thức tích vô hướng. Cho tích vô hướng bằng 0 (hoặc giá trị cho trước), giải phương trình/hệ.)
+@ly_thuyet:
+##TC Điều kiện vuông góc trong bài toán điểm và tham số
+- Tam giác $ABC$ vuông tại $A$ khi và chỉ khi $\overrightarrow{AB}\cdot\overrightarrow{AC}=0$; $\widehat{AMB}=90^\circ$ khi và chỉ khi $\overrightarrow{MA}\cdot\overrightarrow{MB}=0$.
+- Chân đường cao $H$ hạ từ $A$ xuống $BC$: $H$ thuộc đường thẳng $BC$ nên $\overrightarrow{BH}=t\overrightarrow{BC}$, và $\overrightarrow{AH}\cdot\overrightarrow{BC}=0$.
+- Trực tâm $H$ của tam giác $ABC$: $\overrightarrow{AH}\cdot\overrightarrow{BC}=0$, $\overrightarrow{BH}\cdot\overrightarrow{AC}=0$ cùng điều kiện $H$ nằm trong mặt phẳng tam giác ($\overrightarrow{AH}$, $\overrightarrow{AB}$, $\overrightarrow{AC}$ đồng phẳng); khi tam giác nằm trong một mặt phẳng toạ độ (ví dụ $z=0$) thì $H$ cũng có $z=0$ và chỉ còn hai ẩn.
+- Có tham số $m$ trong toạ độ thì tích vô hướng là biểu thức của $m$; cho nó bằng $0$ (hoặc bằng giá trị đề cho) để tìm $m$.
+
+##PP Dùng vuông góc để tìm tham số hoặc điểm
+Chọn các vectơ có liên quan tới điều kiện vuông góc (hai cạnh kề của góc vuông, hay $\overrightarrow{AH}$ và $\overrightarrow{BC}$).
+Viết toạ độ các vectơ theo ẩn (điểm $H=B+t\overrightarrow{BC}$ nếu $H$ thuộc đường thẳng, hoặc ẩn $m$).
+Cho tích vô hướng bằng $0$, giải phương trình (hoặc hệ nếu có nhiều điều kiện).
+Thay ngược để tính toạ độ điểm và kiểm tra điều kiện phụ (điểm nằm trên đoạn, nằm trên trục...).
+
+##CY
+- Vuông tại đỉnh nào thì dùng hai cạnh xuất phát từ đỉnh đó: vuông tại $N$ thì lấy $\overrightarrow{NM}\cdot\overrightarrow{NP}=0$.
+- Chân đường cao phải thuộc đường thẳng $BC$: quên điều kiện $\overrightarrow{BH}=t\overrightarrow{BC}$ thì thiếu phương trình.
+
+@vi_du:
+##VD
+a) Trong không gian $Oxyz$, cho hai vectơ $\vec{a}=(2;m;-3)$ và $\vec{b}=(m+1;-1;2)$. Tìm $m$ để $\vec{a}\perp\vec{b}$.
+b) Cho $A(2;1;-2)$ và $B(3;-1;1)$. Tìm toạ độ điểm $C$ thuộc trục $Oy$ sao cho tam giác $ABC$ vuông tại $A$.
+
+Bài giải:
+a) $\vec{a}\cdot\vec{b}=2(m+1)+m\cdot(-1)+(-3)\cdot2=m-4$. Để $\vec{a}\perp\vec{b}$ thì $m-4=0$ nên $m=4$.
+b) Gọi $C(0;t;0)$. Ta có $\overrightarrow{AB}=(1;-2;3)$ và $\overrightarrow{AC}=(-2;\,t-1;\,2)$.
+Tam giác vuông tại $A$ nên $\overrightarrow{AB}\cdot\overrightarrow{AC}=-2-2(t-1)+6=-2t+6=0$, suy ra $t=3$.
+Vậy $m=4$ và $C(0;3;0)$.
+
+##VD
+Trong không gian $Oxyz$, cho tam giác $ABC$ có $A(2;3;2)$, $B(1;2;-1)$, $C(4;8;2)$. Gọi $H$ là chân đường cao hạ từ $A$ xuống $BC$. Tìm toạ độ điểm $H$ và độ dài $AH$.
+
+Bài giải:
+Ta có $\overrightarrow{BC}=(3;6;3)$. Vì $H$ thuộc đường thẳng $BC$ nên $H=B+t\overrightarrow{BC}=(1+3t;\,2+6t;\,-1+3t)$.
+Khi đó $\overrightarrow{AH}=(3t-1;\,6t-1;\,3t-3)$.
+$AH\perp BC$ nên $\overrightarrow{AH}\cdot\overrightarrow{BC}=3(3t-1)+6(6t-1)+3(3t-3)=54t-18=0$, suy ra $t=\dfrac{1}{3}$.
+Do đó $H(2;4;0)$ và $\overrightarrow{AH}=(0;1;-2)$ nên $AH=\sqrt{0+1+4}=\sqrt{5}$.
+Vậy $H(2;4;0)$ và $AH=\sqrt{5}$.
+
+=== C3.4.3   (dạng "Tính tích có hướng, diện tích, thể tích bằng toạ độ" — mô tả: Đề hỏi [a,b], vectơ vuông góc với hai vectơ, diện tích tam giác/hình bình hành, thể tích tứ diện/hình hộp, xét đồng phẳng. Dùng định thức cấp hai và công thức ½|[AB,AC]|, |[AB,AC]·AD|.)
+@ly_thuyet:
+##TC Diện tích, thể tích và đồng phẳng bằng tích có hướng
+- Diện tích tam giác: $S_{ABC}=\dfrac{1}{2}\left|[\overrightarrow{AB},\overrightarrow{AC}]\right|$; diện tích hình bình hành $ABCD$: $S=\left|[\overrightarrow{AB},\overrightarrow{AD}]\right|$.
+- Thể tích tứ diện: $V_{ABCD}=\dfrac{1}{6}\left|[\overrightarrow{AB},\overrightarrow{AC}]\cdot\overrightarrow{AD}\right|$; thể tích hình hộp: $V=\left|[\overrightarrow{AB},\overrightarrow{AD}]\cdot\overrightarrow{AA'}\right|$.
+- $[\vec{a},\vec{b}]=\vec{0}$ khi và chỉ khi $\vec{a}$, $\vec{b}$ cùng phương; ba điểm $A,B,C$ thẳng hàng khi và chỉ khi $[\overrightarrow{AB},\overrightarrow{AC}]=\vec{0}$.
+- Bốn điểm $A,B,C,D$ đồng phẳng khi và chỉ khi $[\overrightarrow{AB},\overrightarrow{AC}]\cdot\overrightarrow{AD}=0$.
+- Nếu $\vec{a}$, $\vec{b}$ không cùng phương thì mọi vectơ vuông góc với cả hai đều có dạng $k[\vec{a},\vec{b}]$. Đặc biệt $[\overrightarrow{AB},\overrightarrow{AC}]$ (và mọi bội khác $\vec{0}$ của nó) vuông góc với mặt phẳng $(ABC)$, nên chọn làm vectơ pháp tuyến của $(ABC)$.
+- Đường cao kẻ từ $A$ của tam giác $ABC$: $AH=\dfrac{2S_{ABC}}{BC}$.
+
+##PP Dùng tích có hướng
+Lập hai vectơ cạnh cùng gốc (ví dụ $\overrightarrow{AB}$, $\overrightarrow{AC}$) và tính tích có hướng bằng ba định thức cấp hai.
+Lấy độ dài tích có hướng (diện tích) hoặc nhân vô hướng với vectơ cạnh thứ ba (thể tích, đồng phẳng).
+Nhân hệ số $\dfrac{1}{2}$ (tam giác) hay $\dfrac{1}{6}$ (tứ diện), nhớ lấy giá trị tuyệt đối.
+Với bài tìm vectơ vuông góc với hai vectơ: lấy tích có hướng, hoặc đặt $k[\vec{a},\vec{b}]$ rồi dùng giả thiết bổ sung (độ dài, một thành phần cho trước).
+
+##CY
+- Thể tích tứ diện có hệ số $\dfrac{1}{6}$, thể tích hình hộp không có hệ số này; diện tích tam giác có $\dfrac{1}{2}$, hình bình hành thì không.
+- Kết quả tích hỗn tạp phải lấy giá trị tuyệt đối khi tính thể tích, nhưng khi xét đồng phẳng thì chỉ cần bằng $0$.
+
+@vi_du:
+##VD
+a) Trong không gian $Oxyz$, cho $\vec{u}=(1;-2;3)$ và $\vec{v}=(2;1;-1)$. Tìm toạ độ $[\vec{u},\vec{v}]$ và tìm vectơ $\vec{w}$ có cao độ bằng $10$, vuông góc với cả $\vec{u}$ và $\vec{v}$.
+b) Cho $A(1;0;2)$, $B(2;1;2)$, $C(1;1;4)$. Tính diện tích tam giác $ABC$ và độ dài đường cao kẻ từ $A$.
+
+Bài giải:
+a) $[\vec{u},\vec{v}]=\left(\begin{vmatrix}-2&3\\1&-1\end{vmatrix};\begin{vmatrix}3&1\\-1&2\end{vmatrix};\begin{vmatrix}1&-2\\2&1\end{vmatrix}\right)=(2-3;\,6+1;\,1+4)=(-1;7;5)$.
+$\vec{u}$, $\vec{v}$ không cùng phương nên $\vec{w}=k(-1;7;5)=(-k;7k;5k)$; cao độ $5k=10$ nên $k=2$ và $\vec{w}=(-2;14;10)$.
+b) $\overrightarrow{AB}=(1;1;0)$ và $\overrightarrow{AC}=(0;1;2)$ nên $[\overrightarrow{AB},\overrightarrow{AC}]=(1\cdot2-0\cdot1;\,0\cdot0-1\cdot2;\,1\cdot1-1\cdot0)=(2;-2;1)$.
+Suy ra $\left|[\overrightarrow{AB},\overrightarrow{AC}]\right|=\sqrt{4+4+1}=3$ và $S_{ABC}=\dfrac{1}{2}\cdot3=\dfrac{3}{2}$.
+$\overrightarrow{BC}=(-1;0;2)$ nên $BC=\sqrt{5}$, do đó $AH=\dfrac{2S_{ABC}}{BC}=\dfrac{3}{\sqrt{5}}=\dfrac{3\sqrt{5}}{5}$.
+Vậy $[\vec{u},\vec{v}]=(-1;7;5)$, $\vec{w}=(-2;14;10)$, $S_{ABC}=\dfrac{3}{2}$ và $AH=\dfrac{3\sqrt{5}}{5}$.
+
+##VD
+Trong không gian $Oxyz$, cho bốn điểm $A(1;0;0)$, $B(0;2;0)$, $C(0;0;3)$, $D(1;1;1)$.
+a) Tính thể tích tứ diện $ABCD$.
+b) Tìm $m$ để bốn điểm $A$, $B$, $C$, $E(m;2;-3)$ đồng phẳng.
+
+Bài giải:
+a) $\overrightarrow{AB}=(-1;2;0)$, $\overrightarrow{AC}=(-1;0;3)$, $\overrightarrow{AD}=(0;1;1)$.
+$[\overrightarrow{AB},\overrightarrow{AC}]=(2\cdot3-0\cdot0;\,0\cdot(-1)-(-1)\cdot3;\,(-1)\cdot0-2\cdot(-1))=(6;3;2)$.
+$[\overrightarrow{AB},\overrightarrow{AC}]\cdot\overrightarrow{AD}=6\cdot0+3\cdot1+2\cdot1=5$, suy ra $V=\dfrac{1}{6}\cdot|5|=\dfrac{5}{6}$.
+b) $\overrightarrow{AE}=(m-1;2;-3)$. Bốn điểm đồng phẳng khi $[\overrightarrow{AB},\overrightarrow{AC}]\cdot\overrightarrow{AE}=6(m-1)+3\cdot2+2\cdot(-3)=6m-6=0$, suy ra $m=1$.
+Vậy $V=\dfrac{5}{6}$ và $m=1$.
+
+## GHI CHÚ CHO CEO
+- Sách đã đối chiếu (trạm soạn + trạm soát): PNL chương 2 (bài 2 dạng 1, dạng 2; bài 3 dạng 1, dạng 2, bản GV), Từ Tâm chương 2 (bài 1 P1, P2; bài 3 P1, P2), NBV 12-9 "Toạ độ của vectơ" (A. Lý thuyết, B. Tự luận, C. Trắc nghiệm, E. Trả lời ngắn — bản trích ở thư mục tạm `sach\vt-nbv`).Công thức trong cả ba bộ là ảnh WMF nên chỉ đối chiếu được khung bài, cách phân dạng và ý ví dụ; công thức viết theo kiến thức chuẩn.
+- C3.4.3: NBV 12-9 (bám SGK Cánh Diều) có mục "Cách tìm toạ độ của một vectơ vuông góc với hai vectơ cho trước" và gọi vectơ đó là tích có hướng; PNL bài 3 cũng có "Biểu thức toạ độ tích có hướng". Vậy tích có hướng CÓ trong SGK (ít nhất một bộ), chỉ các công thức diện tích, thể tích, đồng phẳng bằng tích có hướng là ngoài SGK — đề thi và cả ba sách đều dùng nên giữ. Câu T112020302060 ("Đồ thị ở hình sau là đồ thị của hàm số nào") là câu Hàm số gắn nhầm vào dạng này.
+- C3.4.3: lý thuyết có "vectơ pháp tuyến của (ABC)" vì đề thi xếp vào dạng này 2 câu hỏi đúng tên gọi đó; không dùng phương trình mặt phẳng.
+- C3.3.2: đề thi thật có 7 câu, 3 câu là bài thực tế (camera sân bóng, drone); ví dụ dùng bài thuần toạ độ, phần b) ví dụ 2 mô phỏng kiểu "cách không quá R, đếm tham số nguyên" của câu drone.
+- C3.4.2: đề thi có 2 câu khó (điểm M với ba góc vuông; trực tâm khi C chạy trên trục); lý thuyết nêu cách đặt điều kiện, không có ví dụ riêng.
+- C3.2.3: "điểm thuộc đường thẳng AB cắt trục/mặt phẳng toạ độ" chỉ dùng dạng $A+t\overrightarrow{AB}$ của vectơ, không dùng phương trình đường thẳng.

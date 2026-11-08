@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T108030201007",
+  "dang_bai_id": "NDB00977",
+  "chac": "vua",
+  "ly_do": "Tổng hai lập phương x³+8 thành tích; cũng khớp NDB00691 (tổng hiệu hai lập phương), chọn dạng sau theo luật."
+ },
+ {
+  "ma_cau": "T108000000743",
+  "dang_bai_id": "NDB00678",
+  "chac": "vua",
+  "ly_do": "Tìm a để chia hết: thực hiện chia đa thức một biến cho dư bằng 0; không có dạng riêng."
+ },
+ {
+  "ma_cau": "T108000000746",
+  "dang_bai_id": "NDB01370",
+  "chac": "vua",
+  "ly_do": "Viết biểu thức diện tích theo hình vẽ (kích thước ghi trên hình), phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T108050203002",
+  "dang_bai_id": "NDB00468",
+  "chac": "vua",
+  "ly_do": "Tách tổng các bình phương bằng 0 suy ra giá trị biến; gần cụm a=b=c, chưa chắc khớp."
+ },
+ {
+  "ma_cau": "T108000000777",
+  "dang_bai_id": "NDB00683",
+  "chac": "cao",
+  "ly_do": "Cộng trừ hai đa thức rồi tính giá trị tại x, y cho trước; dạng cuối là tính giá trị nhiều biến."
+ },
+ {
+  "ma_cau": "T108020102001",
+  "dang_bai_id": "NDB00689",
+  "chac": "cao",
+  "ly_do": "Điền biểu thức trong bình phương (...)² cho x²+2x+1, khuyết phần trong ngoặc."
+ },
+ {
+  "ma_cau": "T108000000376",
+  "dang_bai_id": "NDB01370",
+  "chac": "vua",
+  "ly_do": "Lập biểu thức diện tích ruộng chữ nhật, kết quả nhân đa thức/hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000093",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chứng minh đẳng thức có điều kiện a+b+c=2p bằng nhân đa thức."
+ },
+ {
+  "ma_cau": "T108000000128",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức nhiều biến chỉ cần gộp đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000687",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chứng minh số học (tổng hai số chính phương) dùng hằng đẳng thức."
+ },
+ {
+  "ma_cau": "T108000000711",
+  "dang_bai_id": "NDB00673",
+  "chac": "vua",
+  "ly_do": "Thu gọn đơn thức có luỹ thừa rồi tìm bậc, hệ số: nhân đơn thức, bậc, hệ số."
+ },
+ {
+  "ma_cau": "T108000000633",
+  "dang_bai_id": "NDB00971",
+  "chac": "vua",
+  "ly_do": "Tính giá trị biểu thức biết x+y=4 bằng gom bình phương tổng; chưa đúng form cho giá trị biến."
+ },
+ {
+  "ma_cau": "T108000000389",
+  "dang_bai_id": "NDB00683",
+  "chac": "vua",
+  "ly_do": "Đúng/Sai rải: bậc, thu gọn, cộng đa thức, tính giá trị; dạng cuối là tính giá trị nhiều biến."
+ },
+ {
+  "ma_cau": "T108000000636",
+  "dang_bai_id": "NDB00469",
+  "chac": "vua",
+  "ly_do": "Điều kiện a+b+c=3 đổi biến về x+y+z=0, ý b dùng a³+b³+c³; ý a chứng minh đẳng thức khác."
+ },
+ {
+  "ma_cau": "T108000000542",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Tìm tổng, hiệu hai đa thức rồi tìm bậc; dạng cuối là cộng trừ đa thức."
+ },
+ {
+  "ma_cau": "T108000000792",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Viết đa thức biểu thị số tiền mua vở, bút và tính giá trị; dạng cuối là lập biểu thức."
+ },
+ {
+  "ma_cau": "T108000000595",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chứng minh biểu thức chia hết cho một số với mọi n nguyên."
+ },
+ {
+  "ma_cau": "T108000000623",
+  "dang_bai_id": "NDB00975",
+  "chac": "vua",
+  "ly_do": "Tìm x sau khai triển bằng hằng đẳng thức ra bậc hai, giải bằng hoàn thành bình phương."
+ },
+ {
+  "ma_cau": "T108000000205",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tìm nghiệm nguyên của phương trình bằng cách đưa về tích."
+ },
+ {
+  "ma_cau": "T108000000521",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chứng minh biểu thức không là số chính phương."
+ },
+ {
+  "ma_cau": "T108000000515",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tìm số nguyên dương để biểu thức là số chính phương (xét số dư)."
+ },
+ {
+  "ma_cau": "T108000000778",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Tìm đa thức M chưa biết bằng phép trừ đa thức rồi tìm bậc."
+ },
+ {
+  "ma_cau": "T108050204001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: hệ điều kiện cộng/nhân vế suy ra a+b+c=0 rồi tính biểu thức."
+ },
+ {
+  "ma_cau": "T108000000796",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chứng minh tích giá trị đa thức không âm khi có điều kiện hệ số."
+ },
+ {
+  "ma_cau": "T108000000533",
+  "dang_bai_id": "NDB00687",
+  "chac": "vua",
+  "ly_do": "Thay y=2 rồi tìm x từ 32x²=128, hai nghiệm; gần dạng ax²=b nhưng chỉ là một đơn thức."
+ },
+ {
+  "ma_cau": "T108000000071",
+  "dang_bai_id": "NDB00696",
+  "chac": "vua",
+  "ly_do": "Chứng minh biểu thức hai biến luôn dương bằng đưa về (2x-y)²+1; cũng có thể là NDB00695/00697."
+ },
+ {
+  "ma_cau": "T108000000674",
+  "dang_bai_id": "NDB00983",
+  "chac": "cao",
+  "ly_do": "Tìm x bằng đặt ẩn phụ t=x²+4x rồi phân tích."
+ },
+ {
+  "ma_cau": "T108050301002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tìm n để biểu thức là số nguyên tố (phân tích nhân tử)."
+ },
+ {
+  "ma_cau": "T108020102043",
+  "dang_bai_id": "NDB00689",
+  "chac": "cao",
+  "ly_do": "Điền biểu thức trong bình phương (...)² cho 16x²-40x+25."
+ },
+ {
+  "ma_cau": "T108000000755",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: tam giác có trung tuyến bằng nửa cạnh huyền, tìm đỉnh vuông."
+ },
+ {
+  "ma_cau": "T108000000420",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Viết đa thức diện tích đất trồng rau = diện tích vườn trừ ao; đề đủ dữ kiện."
+ },
+ {
+  "ma_cau": "T108000000756",
+  "dang_bai_id": "NDB00695",
+  "chac": "vua",
+  "ly_do": "Câu rải: rút gọn, tính giá trị, cộng đa thức, chứng minh luôn âm; dạng cuối là biểu thức bậc hai luôn âm."
+ },
+ {
+  "ma_cau": "T108000000475",
+  "dang_bai_id": "NDB00683",
+  "chac": "vua",
+  "ly_do": "Rút gọn, tính giá trị, rồi tìm nghiệm nguyên (bản đồ chưa có dạng ý c)."
+ },
+ {
+  "ma_cau": "T108040201015",
+  "dang_bai_id": "NDB00687",
+  "chac": "cao",
+  "ly_do": "Thu gọn ra phương trình bậc hai (3x²+x-8=0), không phải bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000131",
+  "dang_bai_id": "NDB00971",
+  "chac": "vua",
+  "ly_do": "Biết a²+b² và ab, tính a+b qua bình phương tổng; chưa đúng form của dạng."
+ },
+ {
+  "ma_cau": "T108000000771",
+  "dang_bai_id": "NDB00673",
+  "chac": "vua",
+  "ly_do": "Đơn thức: thu gọn, bậc hệ số, cộng và nhân hai đơn thức; dạng cuối là nhân đơn thức."
+ },
+ {
+  "ma_cau": "T108000000642",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: điều kiện phân thức suy ra (a+b)(b+c)(c+a)=0 rồi tính luỹ thừa."
+ },
+ {
+  "ma_cau": "T108000000062",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Không có dạng khớp: nhận biết đẳng thức nào là hằng đẳng thức (lý thuyết)."
+ },
+ {
+  "ma_cau": "T108000000635",
+  "dang_bai_id": "NDB00682",
+  "chac": "vua",
+  "ly_do": "Tính giá trị biểu thức một biến tại x=19 bằng mẹo thay 18=x-1; không dùng hằng đẳng thức."
+ },
+ {
+  "ma_cau": "T108000000372",
+  "dang_bai_id": "NDB00678",
+  "chac": "vua",
+  "ly_do": "Tìm đa thức qua phép chia có dư đa thức một biến; dạng gần nhất là chia đa thức."
+ },
+ {
+  "ma_cau": "T108000000394",
+  "dang_bai_id": "NDB01370",
+  "chac": "vua",
+  "ly_do": "Lập đa thức chu vi và tìm diện tích; số 25, 15 chỉ có trên hình."
+ },
+ {
+  "ma_cau": "T108000000316",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Thực hiện phép tính nhân đơn thức với đa thức rồi gom đồng dạng; dạng cuối là rút gọn nhiều biến."
+ },
+ {
+  "ma_cau": "T108000000587",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Biểu thị lượng nước trong bể theo x, y, a, b; lập biểu thức thực tế."
+ },
+ {
+  "ma_cau": "T108000000228",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Phân tích bằng cách nhóm 3-1: bình phương tổng rồi đặt nhân tử chung (2x+y)."
+ },
+ {
+  "ma_cau": "T108000000473",
+  "dang_bai_id": "NDB00683",
+  "chac": "vua",
+  "ly_do": "Rút gọn, tính giá trị, rồi tìm nghiệm nguyên (bản đồ chưa có dạng ý c)."
+ },
+ {
+  "ma_cau": "T108000000570",
+  "dang_bai_id": "NDB00683",
+  "chac": "vua",
+  "ly_do": "Tính giá trị đa thức hai biến khi biết điều kiện x+y-2=0, ghép nhóm thay giá trị."
+ },
+ {
+  "ma_cau": "T108000000331",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Không có dạng khớp: câu hỏi lý thuyết gọi tên hằng đẳng thức."
+ },
+ {
+  "ma_cau": "T108000000300",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Viết biểu thức diện tích bốn hình vuông nhỏ theo a rồi tìm a; đề đủ dữ kiện."
+ },
+ {
+  "ma_cau": "T108040401005",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: chứng minh ba điểm thẳng hàng bằng đường trung bình."
+ },
+ {
+  "ma_cau": "T108000000593",
+  "dang_bai_id": "NDB00681",
+  "chac": "vua",
+  "ly_do": "Thu gọn ra hằng số dương; có chia đơn thức, nhân đơn thức với đa thức; đề hỏi luôn dương."
+ },
+ {
+  "ma_cau": "T108000000650",
+  "dang_bai_id": "NDB00683",
+  "chac": "vua",
+  "ly_do": "Thu gọn đa thức, tìm bậc, tính giá trị hai biến; dạng cuối là tính giá trị."
+ },
+ {
+  "ma_cau": "T108000000537",
+  "dang_bai_id": "NDB00682",
+  "chac": "vua",
+  "ly_do": "Thu gọn đa thức một biến, tìm bậc, tính giá trị; dạng cuối là tính giá trị một biến."
+ },
+ {
+  "ma_cau": "T108000000360",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chứng minh đẳng thức lũy thừa 5 với điều kiện a+b+c=0."
+ },
+ {
+  "ma_cau": "T108000000510",
+  "dang_bai_id": "NDB01370",
+  "chac": "vua",
+  "ly_do": "Ý a lập đa thức tiền theo x, y, z; ý b là bài tối ưu rời rạc chưa có dạng."
+ },
+ {
+  "ma_cau": "T108000000643",
+  "dang_bai_id": "NDB00468",
+  "chac": "vua",
+  "ly_do": "Tách tổng bình phương bằng 0 suy ra x, y; cùng kỹ thuật cụm a=b=c nhưng không khớp hẳn."
+ },
+ {
+  "ma_cau": "T108000000509",
+  "dang_bai_id": "NDB01370",
+  "chac": "vua",
+  "ly_do": "Ý a lập đa thức tiền vé; ý b là bài mua nhiều vé nhất với khuyến mãi, chưa có dạng."
+ },
+ {
+  "ma_cau": "T108000000626",
+  "dang_bai_id": "NDB00975",
+  "chac": "vua",
+  "ly_do": "Chia đa thức cho đơn thức, khai triển rồi đưa về bậc hai; cách giải hoàn thành bình phương."
+ },
+ {
+  "ma_cau": "T108000000512",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tìm số mũ để tổng luỹ thừa là số chính phương."
+ },
+ {
+  "ma_cau": "T108000000066",
+  "dang_bai_id": "NDB00688",
+  "chac": "cao",
+  "ly_do": "Đúng/Sai: khai triển bình phương của hiệu rồi cộng đa thức."
+ },
+ {
+  "ma_cau": "T108000000774",
+  "dang_bai_id": "NDB00671",
+  "chac": "cao",
+  "ly_do": "Xét đơn thức đồng dạng rồi tính hiệu hai đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000119",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chứng minh hai số là số chính phương (số học)."
+ },
+ {
+  "ma_cau": "T108040401004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: chứng minh ba điểm thẳng hàng bằng trọng tâm tam giác."
+ },
+ {
+  "ma_cau": "T108000000585",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Viết đơn thức thể tích hình lập phương cạnh a rồi thay số tính."
+ },
+ {
+  "ma_cau": "T108030103023",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Dùng tổng hai lập phương rồi đặt nhân tử chung (x²-xy+y²); dạng cuối là phân tích bằng hằng đẳng thức."
+ },
+ {
+  "ma_cau": "T108000000794",
+  "dang_bai_id": "NDB00683",
+  "chac": "cao",
+  "ly_do": "Cộng trừ hai đa thức rồi tính giá trị M tại x, y; dạng cuối là tính giá trị."
+ },
+ {
+  "ma_cau": "T108000000596",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chứng minh biểu thức chia hết cho 12 với mọi n nguyên."
+ },
+ {
+  "ma_cau": "T108000000239",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Thu gọn đa thức rồi tìm Q chưa biết bằng cộng trừ đa thức."
+ },
+ {
+  "ma_cau": "T108000000403",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Chứng minh giá trị biểu thức không phụ thuộc biến, có hằng đẳng thức hiệu hai lập phương."
+ },
+ {
+  "ma_cau": "T108000000679",
+  "dang_bai_id": "NDB00971",
+  "chac": "vua",
+  "ly_do": "Biết x+2/x tính x²+4/x² qua bình phương tổng; cũng gần dạng phân thức NDB00466."
+ },
+ {
+  "ma_cau": "T108000000392",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức, chia đa thức cho đơn thức rồi trừ; rút gọn nhiều biến."
+ }
+]

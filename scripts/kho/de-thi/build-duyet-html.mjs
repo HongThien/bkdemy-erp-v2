@@ -10,8 +10,9 @@ import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 const [RA, TIEU, DS, LOAI = ''] = process.argv.slice(2)
 if (!RA || !TIEU || !DS) { console.error('Dùng: node scripts/kho/de-thi/build-duyet-html.mjs <ra.html> "<tiêu đề>" <MA1,MA2,...> ["đề đã loại"]'); process.exit(2) }
-const D = 'C:/Users/WBPC/Desktop/BKERP/bkdemy-erp-v2/kho-rules/dai/lo/k7'
-const LVR = 'C:/Users/WBPC/bk-kho-lam-viec/de-thi/K7'
+// DUYET_LO / DUYET_LV: dùng cho khối khác (K5 28/10: lo/k5 + K5-sach-de); mặc định khối 7
+const D = process.env.DUYET_LO || 'C:/Users/WBPC/Desktop/BKERP/bkdemy-erp-v2/kho-rules/dai/lo/k7'
+const LVR = process.env.DUYET_LV || 'C:/Users/WBPC/bk-kho-lam-viec/de-thi/K7'
 const MAS = DS.split(',')
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 const fmt = (s) => s.split(/(\$[^$]+\$)/g).map((p) => (p.startsWith('$') && p.endsWith('$') && p.length > 1 ? p.replace(/&/g, '&amp;').replace(/</g, '&lt;') : esc(p).replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>'))).join('')
@@ -94,6 +95,7 @@ for (const ma of MAS) {
   body.push(`<article id="${ma}"><h2>${ma} · ${esc(tieu)}</h2><div class="sub">${nCau} câu${ket ? ' · ' + esc(ket) : ''}</div>${sec.join('\n')}${ghi.trim() ? `<h3>Ghi chú cho người duyệt</h3><div class="note">${para(ghi.replace(/^- /gm, '• '))}</div>` : ''}</article>`)
 }
 for (const t of them.filter((x) => !MAS.includes(x.ma))) quyet.push({ ma: t.ma, tieu: t.tieu || t.ma, cau: t.cau, anh: t.anh || [], trang: t.trang || '', vd: t.vd })
+if (process.env.QUYET_JSON) writeFileSync(process.env.QUYET_JSON, JSON.stringify(quyet))
 const anhHtml = (n) => { const p = join(D, 'can-xem', n); return existsSync(p) ? `<img class="goc" src="${b64(p)}" alt="${n}">` : `<p class="loi">thiếu ảnh ${n}</p>` }
 const quyetHtml = quyet.map((q, k) => `<section class="qt"><div class="tit">${k + 1}. <span class="ma">${q.ma}</span> · ${esc(q.cau)} · ${MAS.includes(q.ma) ? `<a href="#${idOf(q.ma, q.cau)}">xem đề + lời giải ↓</a>` : ""}</div>
 <div class="meta">${esc(q.tieu)}${q.trang ? ` · trang ${esc(q.trang)} của file PDF gốc` : ''}</div><div class="vd">${fmt(q.vd)}</div>${q.anh.length ? q.anh.map(anhHtml).join('') : '<p class="meta">(chưa có ảnh nguyên câu — xem đề + lời giải bên dưới)</p>'}</section>`).join('\n')
@@ -124,7 +126,7 @@ details{margin-top:8px}summary{cursor:pointer;color:var(--ac);font-weight:600}
 .loi{color:#c00}a{color:var(--ac)}
 </style></head><body><main>
 <h1>${esc(TIEU)}</h1>
-<div class="sub">${MAS.length} đề · ${tongCau} câu · ${quyet.length} chỗ cần Thùy quyết (ảnh nguyên câu gốc ở ngay dưới mỗi chỗ). Bấm “Lời giải chi tiết” để mở từng câu. Sửa trong <code>kho-rules/dai/lo/k7/&lt;MÃ&gt;.soan.md</code> rồi báo Claude ghi lại.${LOAI ? `<br>Không đưa vào lần ghi: ${esc(LOAI)}.` : ''}</div>
+<div class="sub">${MAS.length} đề · ${tongCau} câu · ${quyet.length} chỗ cần Thùy quyết (ảnh nguyên câu gốc ở ngay dưới mỗi chỗ). Bấm “Lời giải chi tiết” để mở từng câu. Sửa trong <code>${esc(D.replace(/^.*kho-rules/, 'kho-rules'))}/&lt;MÃ&gt;.soan.md</code> rồi báo Claude ghi lại.${LOAI ? `<br>Không đưa vào lần ghi: ${esc(LOAI)}.` : ''}</div>
 <h2>A. ${quyet.length} chỗ cần Thùy quyết</h2>
 ${quyetHtml || '<p>Không có.</p>'}
 <h2>B. Mục lục các đề</h2><ol>${toc.join('')}</ol>

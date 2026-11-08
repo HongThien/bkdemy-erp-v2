@@ -1,0 +1,404 @@
+[
+ {
+  "ma_cau": "T1120000001517",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: xác định điểm thuộc mặt phẳng toạ độ Oxyz, không có tích phân."
+ },
+ {
+  "ma_cau": "T112010305001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: tìm tiệm cận xiên của đồ thị."
+ },
+ {
+  "ma_cau": "T112010401004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: GTLN đọc từ đồ thị hàm số."
+ },
+ {
+  "ma_cau": "T112010402001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: GTNN của hàm đa thức trên đoạn; đề lỗi đáp án."
+ },
+ {
+  "ma_cau": "T112020104002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: nhận dạng đồ thị hàm bậc ba."
+ },
+ {
+  "ma_cau": "T112020201010",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: dấu hệ số hàm bậc nhất/bậc nhất từ đồ thị."
+ },
+ {
+  "ma_cau": "T112020202017",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: nhận dạng đồ thị hàm phân thức."
+ },
+ {
+  "ma_cau": "T112020302020",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: nhận dạng đồ thị hàm bậc hai/bậc nhất."
+ },
+ {
+  "ma_cau": "T112020303001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: đường thẳng qua hai điểm cực trị."
+ },
+ {
+  "ma_cau": "T112020305010",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: tiếp tuyến song song với đường thẳng cho trước."
+ },
+ {
+  "ma_cau": "T112020401146",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: tối ưu lợi nhuận bằng đạo hàm, không dùng tích phân."
+ },
+ {
+  "ma_cau": "T112020402025",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: đạo hàm cấp 1, 2 của quãng đường (vận tốc, gia tốc), không tích phân."
+ },
+ {
+  "ma_cau": "T112030101001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: tốc độ tăng trưởng lớn nhất qua đạo hàm cấp hai."
+ },
+ {
+  "ma_cau": "T112030101004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: tốc độ truyền bệnh lớn nhất bằng đạo hàm."
+ },
+ {
+  "ma_cau": "T112030101025",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: nồng độ tăng nhưng bị chặn, dùng khảo sát hàm/giới hạn."
+ },
+ {
+  "ma_cau": "T112030101027",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: đạo hàm vận tốc rồi tìm GTLN; không phải tích phân."
+ },
+ {
+  "ma_cau": "T112030101030",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: khảo sát hàm nồng độ tăng, giới hạn tại vô cực."
+ },
+ {
+  "ma_cau": "T112030102001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: tìm tham số từ P(0), P'(0) và giới hạn mô hình."
+ },
+ {
+  "ma_cau": "T112030102012",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: GTLN hàm lượng giác theo thời gian bằng đạo hàm."
+ },
+ {
+  "ma_cau": "T112030102052",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: tối ưu doanh thu bằng hàm bậc hai/đạo hàm."
+ },
+ {
+  "ma_cau": "T112030102056",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: tối ưu doanh thu cho thuê bằng đạo hàm."
+ },
+ {
+  "ma_cau": "T112030102060",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: GTLN hàm bậc hai bằng đạo hàm."
+ },
+ {
+  "ma_cau": "T112030103004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: tối ưu lợi nhuận/thuế bằng đạo hàm."
+ },
+ {
+  "ma_cau": "T112030103005",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: tối ưu hoá lợi nhuận hai biến bằng đạo hàm."
+ },
+ {
+  "ma_cau": "T112030103007",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: tối ưu hàm lợi ích hai biến bằng đạo hàm."
+ },
+ {
+  "ma_cau": "T112030103010",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: hàm chi phí phân thức bậc hai/bậc nhất, tìm cực trị."
+ },
+ {
+  "ma_cau": "T112030103021",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: tối ưu chi phí bằng bất đẳng thức/đạo hàm."
+ },
+ {
+  "ma_cau": "T112030104001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: tốc độ thay đổi liên hệ (đạo hàm hàm hợp) khoảng cách máy bay-ra đa."
+ },
+ {
+  "ma_cau": "T112030104005",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: tốc độ liên hệ giữa các đại lượng bằng đạo hàm theo t."
+ },
+ {
+  "ma_cau": "T112030104010",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: tốc độ thay đổi diện tích theo đạo hàm theo thời gian."
+ },
+ {
+  "ma_cau": "T112030104013",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: tốc độ dâng mực nước, đạo hàm theo thời gian."
+ },
+ {
+  "ma_cau": "T112030104015",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số: tốc độ dâng mực nước theo dV/dt; tích phân chỉ tính diện tích mặt nước."
+ },
+ {
+  "ma_cau": "T112070102038",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070102049",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070105010",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070105011",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070105017",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070108002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070109004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070202053",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070202055",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070202056",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070202057",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070202058",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070202059",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070202060",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070202061",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070202063",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070203003",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070203017",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070301185",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070302009",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070302011",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070302012",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070302024",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070302056",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070303001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070304002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070304014",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070305001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070306001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070307005",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070308001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070308005",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070310001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070311007",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ },
+ {
+  "ma_cau": "T112070312001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Vectơ và hệ trục toạ độ trong không gian: bài vectơ/toạ độ Oxyz, không có nguyên hàm tích phân."
+ }
+]

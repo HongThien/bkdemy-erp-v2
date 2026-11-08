@@ -1,0 +1,305 @@
+[
+ {
+  "ma_cau": "T111010502079",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn biểu thức $M = -(\\sin^4 x + \\cos^4 x - 1)(\\tan^2 x + \\cot^2 x + 2).$",
+  "dap_an": "2",
+  "loi_giai": "Ta có $M = -(1 - 2\\sin^2 x.\\cos^2 x - 1) \\left(\\dfrac{\\sin^2 x}{\\cos^2 x} + \\dfrac{\\cos^2 x}{\\sin^2 x} + 2\\right)$\n$= -(-2\\sin^2 x.\\cos^2 x) \\left(\\dfrac{\\sin^4 x + \\cos^4 x + 2 \\sin^2 x.\\cos^2 x}{\\sin^2 x \\cos^2 x}\\right)$\n$= -(-2).(\\sin^2 x + \\cos^2 x)^2 = -(-2) = 2.$",
+  "nhan_cu": "Rút gọn biểu thức lượng giác › Rút gọn hoặc tính giá trị của biểu thức lượng giác sử dụng công thức lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111030201074",
+  "loai": "trac_nghiem",
+  "de": "Giá trị lớn nhất và nhỏ nhất của hàm số $y = -2 \\sin x + 7$ lần lượt là",
+  "lua_chon": [
+   "9; 5.",
+   "5; 9.",
+   "7; -2.",
+   "-2; 7."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có: $-1 \\le \\sin x \\le 1$\nNhân $-2$ vào các vế và đảo chiều bất đẳng thức ta được: $-2 \\times 1 \\le -2 \\sin x \\le -2 \\times (-1)$\nHay $-2 \\le -2 \\sin x \\le 2$\nCộng 7 vào các vế ta được: $-2 + 7 \\le -2 \\sin x + 7 \\le 2 + 7$\nHay $5 \\le y \\le 9$\nVậy giá trị lớn nhất của hàm số là $9$ và giá trị nhỏ nhất của hàm số là $5$.\nChọn A.",
+  "nhan_cu": "Tập giá trị và min max của hàm số lượng giác › Tìm tập giá trị hoặc min max của hàm số lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111030203038",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị lớn nhất của hàm số $y = \\cos 2x + 3 \\sin x + 1$ với $x \\in \\left[0; \\dfrac{\\pi}{6}\\right]$.",
+  "dap_an": "3",
+  "loi_giai": "$y = (1 - 2 \\sin^2 x) + 3 \\sin x + 1$\\n$y = -2 \\sin^2 x + 3 \\sin x + 2$\\nĐặt $t = \\sin x$.\\nTìm điều kiện của $t$: Đề bài cho $x \\in \\left[0; \\dfrac{\\pi}{6}\\right]$.\\nDựa vào đường tròn lượng giác hoặc sự biến thiên của hàm số $y = \\sin x$ trên khoảng này:\\nKhi $x$ tăng từ $0$ đến $\\dfrac{\\pi}{6}$, $\\sin x$ tăng từ $0$ lên $\\dfrac{1}{2}$.\\nGiá trị nhỏ nhất mà $\\sin x$ đạt được trong đoạn này là $0$ (tại $x = 0$), và giá trị lớn nhất là $\\dfrac{1}{2}$ (tại $x = \\dfrac{\\pi}{6}$).\\nVậy, điều kiện của ẩn phụ là $t \\in \\left[0; \\dfrac{1}{2}\\right]$.\\nHàm số trở thành $y = f(t) = -2t^2 + 3t + 2$ xét trên đoạn $\\left[0; \\dfrac{1}{2}\\right]$.\\nHoành độ đỉnh parabol: $t_0 = -\\dfrac{b}{2a} = -\\dfrac{3 …",
+  "nhan_cu": "Tập giá trị và min max của hàm số lượng giác › Tìm min max của hàm số lượng giác bậc 2"
+ },
+ {
+  "ma_cau": "T111030502020",
+  "loai": "trac_nghiem",
+  "de": "Tập giá trị của hàm số có đồ thị như hình trên là:",
+  "lua_chon": [
+   "$[-1;1]$",
+   "$[-0.5; 0.5]$",
+   "$[-2;2]$",
+   "$[0;2]$"
+  ],
+  "dap_an": "A",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định các yếu tố  cơ bản của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111030502029",
+  "loai": "trac_nghiem",
+  "de": "Giá trị lớn nhất của hàm số trên đồ thị là:",
+  "lua_chon": [
+   "1",
+   "0",
+   "2",
+   "0.5"
+  ],
+  "dap_an": "A",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định các yếu tố  cơ bản của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111030502044",
+  "loai": "trac_nghiem",
+  "de": "Tập giá trị của hàm số có đồ thị như hình trên là:",
+  "lua_chon": [
+   "$[0; 2]$",
+   "$[-0.5; 0.5]$",
+   "$[-2; 2]$",
+   "$[-1; 1]$"
+  ],
+  "dap_an": "C",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định các yếu tố  cơ bản của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111030502045",
+  "loai": "trac_nghiem",
+  "de": "Giá trị lớn nhất của hàm số trên đồ thị là:",
+  "lua_chon": [
+   "$-1$",
+   "$2$",
+   "$1$",
+   "$0.5$"
+  ],
+  "dap_an": "B",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định các yếu tố  cơ bản của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111030502049",
+  "loai": "trac_nghiem",
+  "de": "Giá trị lớn nhất của hàm số trên đồ thị là:",
+  "lua_chon": [
+   "$0.5$",
+   "$-1$",
+   "$0$",
+   "$1$"
+  ],
+  "dap_an": "A",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định các yếu tố  cơ bản của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111030502052",
+  "loai": "trac_nghiem",
+  "de": "Tập giá trị của hàm số có đồ thị như hình trên là:",
+  "lua_chon": [
+   "$[0; 2]$",
+   "$[-1; 1]$",
+   "$[-0.5; 0.5]$",
+   "$[-2; 2]$"
+  ],
+  "dap_an": "B",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định các yếu tố  cơ bản của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111030502057",
+  "loai": "trac_nghiem",
+  "de": "Giá trị lớn nhất của hàm số trên đồ thị là:",
+  "lua_chon": [
+   "1",
+   "-1",
+   "0",
+   "2"
+  ],
+  "dap_an": "A",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định các yếu tố  cơ bản của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111030502060",
+  "loai": "trac_nghiem",
+  "de": "Tập giá trị của hàm số có đồ thị như hình trên là:",
+  "lua_chon": [
+   "$[-2;0]$",
+   "$[0;2]$",
+   "$[-0.5;0.5]$",
+   "$[-1;1]$"
+  ],
+  "dap_an": "D",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định các yếu tố  cơ bản của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111030502064",
+  "loai": "trac_nghiem",
+  "de": "Tập giá trị của hàm số có đồ thị như hình trên là:",
+  "lua_chon": [
+   "$[-2; 0]$",
+   "$[-2; 2]$",
+   "$[-1; 1]$",
+   "$[-0.5; 0.5]$"
+  ],
+  "dap_an": "C",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định các yếu tố  cơ bản của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111030502068",
+  "loai": "trac_nghiem",
+  "de": "Tập giá trị của hàm số có đồ thị như hình trên là:",
+  "lua_chon": [
+   "$[-0.5; 0.5]$",
+   "$[-2; 0]$",
+   "$[0; 2]$",
+   "$[-1; 1]$"
+  ],
+  "dap_an": "C",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định các yếu tố  cơ bản của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111030502069",
+  "loai": "trac_nghiem",
+  "de": "Giá trị lớn nhất của hàm số trên đồ thị là:",
+  "lua_chon": [
+   "2",
+   "1",
+   "0.5",
+   "0"
+  ],
+  "dap_an": "A",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định các yếu tố  cơ bản của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111040101123",
+  "loai": "trac_nghiem",
+  "de": "Đáp án nào sau đây là nghiệm của phương trình lượng giác: $2\\cos \\left( x/2-\\dfrac{\\pi}{3} \\right)+\\sqrt{3}=0$.",
+  "lua_chon": [
+   "$x = \\dfrac{7\\pi}{3} + k4\\pi$ hoặc $x = -\\pi + k4\\pi$",
+   "$x = \\dfrac{7\\pi}{3} + k2\\pi$ hoặc $x = -\\pi + k2\\pi$",
+   "$x = \\dfrac{7\\pi}{3} + k\\pi$",
+   "$x = -\\pi + k\\pi$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "$\\iff 2\\cos \\left( x/2-\\dfrac{\\pi}{3} \\right) = -\\sqrt{3}$\\n$\\iff \\cos \\left( x/2-\\dfrac{\\pi}{3} \\right) = -\\dfrac{\\sqrt{3}}{2}$\\n$\\iff \\left[\\begin{matrix} x/2-\\dfrac{\\pi}{3} = \\dfrac{5\\pi}{6} + k2\\pi \\\\ x/2-\\dfrac{\\pi}{3} = -\\dfrac{5\\pi}{6} + k2\\pi \\end{matrix}\\right.$ (k $\\in \\mathbb{Z}$)\\n$\\iff \\left[\\begin{matrix} x/2 = \\dfrac{5\\pi}{6} + \\dfrac{\\pi}{3} + k2\\pi \\\\ x/2 = -\\dfrac{5\\pi}{6} + \\dfrac{\\pi}{3} + k2\\pi \\end{matrix}\\right.$ (k $\\in \\mathbb{Z}$)\\n$\\iff \\left[\\begin{matrix} x/2 = \\dfrac{7\\pi}{6} + k2\\pi \\\\ x/2 = -\\dfrac{3\\pi}{6} + k2\\pi \\end{matrix}\\right.$ (k $\\in \\mathbb{Z}$)\\n$\\iff \\left[\\begin{matrix} x = \\dfrac{7\\pi}{3} + k4\\pi \\\\ x = -\\pi + k4\\pi \\end{matrix}\\right.$ (k $\\in  …",
+  "nhan_cu": "Phương trình lượng giác cơ bản › Giải phương trình lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111040101143",
+  "loai": "trac_nghiem",
+  "de": "Phương trình nào sau đây vô nghiệm?",
+  "lua_chon": [
+   "$\\sin x = 0.5$",
+   "$\\tan x = 3$",
+   "$\\cos x = -2$",
+   "$\\cot x = -\\dfrac{1}{\\sqrt{3}}$"
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Phương trình lượng giác cơ bản › Giải phương trình lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111060202006",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng $(u_n)$ có số hạng đầu $u_1$ và công sai $d$. Số hạng thứ 20 của cấp số cộng này là",
+  "lua_chon": [
+   "$U_{20} = u_1 + 190d$.",
+   "$U_{20} = 20u_1 + 19d$.",
+   "$U_{20} = 20u_1 + 190d$.",
+   "$U_{20} = u_1 + 19d$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Công thức số hạng thứ 20: $U_{20} = u_1 + (20 - 1)d = u_1 + 19d$.",
+  "nhan_cu": "Cấp số cộng › Xác định các yếu tố của cấp số cộng khi biết 2 yếu tố bất kỳ"
+ },
+ {
+  "ma_cau": "T111060202020",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng $(u_n)$ có số hạng đầu $u_1$ và công sai $d$. Số hạng thứ 15 của cấp số cộng này là",
+  "lua_chon": [
+   "$U_{15} = u_1 + 15d$.",
+   "$U_{15} = 15u_1 + 14d$.",
+   "$U_{15} = u_1 + 14d$.",
+   "$U_{15} = u_1 - 14d$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Công thức số hạng thứ 15: $U_{15} = u_1 + (15 - 1)d = u_1 + 14d$.",
+  "nhan_cu": "Cấp số cộng › Xác định các yếu tố của cấp số cộng khi biết 2 yếu tố bất kỳ"
+ },
+ {
+  "ma_cau": "T111060202021",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng $(u_n)$ có số hạng đầu $u_1$ và công sai $d$. Số hạng thứ 30 của cấp số cộng này là",
+  "lua_chon": [
+   "$U_{30} = u_1 + 29d$.",
+   "$U_{30} = 30u_1 + 29d$.",
+   "$U_{30} = u_1 + 30d$.",
+   "$U_{30} = 29u_1 + 30d$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Công thức số hạng thứ 30: $U_{30} = u_1 + (30 - 1)d = u_1 + 29d$.",
+  "nhan_cu": "Cấp số cộng › Xác định các yếu tố của cấp số cộng khi biết 2 yếu tố bất kỳ"
+ },
+ {
+  "ma_cau": "T111060304011",
+  "loai": "trac_nghiem",
+  "de": "Khi một kim loại được làm nóng đến $600^o\\mathrm{C}$ bền kéo của nó giảm đi 50%. Sau khi kim loại vượt qua ngưỡng $600^o\\mathrm{C}$ nếu nhiệt độ kim loại tăng thêm $5^o\\mathrm{C}$ thì độ bền kéo của nó giảm đi 35% hiện có. Biết kim loại này có độ bền kéo là $280\\ \\mathrm{MPa}$ dưới $600^o\\mathrm{C}$ và được sử dụng trong việc xây dựng các lò công nghiệp. Nếu mức an toàn tối thiểu độ bền kéo của vật liệu này là $38\\ \\mathrm{MPa}$ thì nhiệt độ an toàn tối đa của lò công nghiệp bằng bao nhiêu, tính theo độ Celsius?",
+  "lua_chon": [
+   "620",
+   "615",
+   "605",
+   "610"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Độ bền kéo là $280\\ \\mathrm{MPa}$ dưới $600^o\\mathrm{C}$. Đến $600^o\\mathrm{C}$ bền kéo của nó giảm đi 50% còn $140\\ \\mathrm{MPa}$.\nNhiệt độ kim loại tăng $5^o\\mathrm{C}$ thì độ bền kéo của nó giảm đi 35% nên ta có\n$140.(1-\\dfrac{35}{100})^n\\geq 38\\Leftrightarrow n\\leq 3,027$\nSuy ra $n=3$. Mỗi chu kỳ tăng $5^o\\mathrm{C}$ $\\Rightarrow$ 3 chu kỳ tăng $15^o\\mathrm{C}$\nNhiệt độ an toàn tối đa là $615^o\\mathrm{C}$. Chọn B.",
+  "nhan_cu": "Cấp số nhân › Bài toán thực tế về cấp số nhân"
+ },
+ {
+  "ma_cau": "T111060304091",
+  "loai": "tra_loi_ngan",
+  "de": "Một đại lý bán hàng có $m$ sản phẩm trong kho cần bán ra thị trường và không nhập về thêm. Nếu mỗi ngày đại lý đều bán được $\\dfrac{2}{3}$ số sản phẩm đang có trong kho và tặng thêm cho khách hàng 6 sản phẩm thì sau đúng 12 ngày sẽ vừa hết số sản phẩm trong kho. Tính $\\dfrac{m}{1000}$ (Kết quả làm tròn đến hàng đơn vị).",
+  "dap_an": "4783",
+  "loi_giai": "Gọi $u_n$ là số sản phẩm còn lại trong kho sau ngày thứ $n$ ($n = 0, 1, ..., 12$), với $u_0 = m$.\nTrong ngày thứ $n$ ($n \\ge 1$), đại lý bán và tặng tổng cộng $\\dfrac{2}{3}u_{n-1} + 6$ sản phẩm, do đó\n$u_n = u_{n-1} - \\left(\\dfrac{2}{3}u_{n-1} + 6\\right) = \\dfrac{1}{3}u_{n-1} - 6$.\nCộng 9 vào hai vế ta được\n$u_n + 9 = \\dfrac{1}{3}(u_{n-1} + 9)$.\nĐặt $v_n = u_n + 9$, ta có dãy $(v_n)$ là một cấp số nhân có công bội $q = \\dfrac{1}{3}$ và số hạng đầu $v_0 = m + 9$.\nSố hạng tổng quát của dãy $(v_n)$ là\n$v_n = v_0 \\cdot q^n = \\dfrac{m + 9}{3^n} \\Rightarrow u_n = \\dfrac{m + 9}{3^n} - 9$.\nVì sau đúng 12 ngày thì kho vừa hết sản phẩm nên $u_{12} = 0$, ta có\n$\\dfrac{m + 9}{3^{12}} - 9 = 0 \\Leftrighta …",
+  "nhan_cu": "Cấp số nhân › Bài toán thực tế về cấp số nhân"
+ },
+ {
+  "ma_cau": "T111060305001",
+  "loai": "trac_nghiem",
+  "de": "Trong các phát biểu sau, phát biểu nào là sai?",
+  "lua_chon": [
+   "A. Dãy số có tất cả các số hạng bằng nhau là một cấp số nhân.",
+   "B. Dãy số có tất cả các số hạng bằng nhau là một cấp số cộng.",
+   "C. Một cấp số cộng có công sai dương là một dãy số tăng.",
+   "D. Một cấp số cộng có công sai dương là một dãy số dương."
+  ],
+  "dap_an": "D",
+  "loi_giai": "A. Đúng vì dãy số đã cho là cấp số nhân với công bội $q=1$.\nB. Đúng vì dãy số đã cho là cấp số cộng với công sai $d=0$.\nC. Đúng vì dãy số đã cho là cấp số cộng có công sai dương nên: $u_{n+1}-u_n=d>0\\Rightarrow u_{n+1}>u_n$.\nD. Sai. Ví dụ dãy $-5;-2;1;3;\\ldots$ là dãy số có $d=3>0$ nhưng không phải là dãy số dương.",
+  "nhan_cu": "Cấp số nhân › Nhận diện cấp số nhân"
+ },
+ {
+  "ma_cau": "T111060305004",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số nhân $(u_n)$ có công bội $q$. Chọn hệ thức đúng trong các hệ thức sau:",
+  "lua_chon": [
+   "$A. u_k=\\sqrt{u_{k+1}.u_{k+2}}$",
+   "$B. u_k=\\dfrac{u_{k-1}+u_{k+1}}{2}.$",
+   "$C. u_k=u_1.q^{k-1}.$",
+   "$D. u_k=u_1+(k-1)q.$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Theo tính chất các số hạng của cấp số nhân.",
+  "nhan_cu": "Cấp số nhân › Nhận diện cấp số nhân"
+ }
+]

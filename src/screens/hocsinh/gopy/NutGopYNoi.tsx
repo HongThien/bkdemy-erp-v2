@@ -4,6 +4,9 @@
 // · Bấm ⇒ tấm nhập nhanh NGAY TẠI CHỖ (không rời màn đang làm — em đang làm bài không bị mất): Báo lỗi / Góp ý tưởng · 10–1.500 chữ · ảnh tuỳ chọn.
 // · Báo kèm màn đang mở + môn + cỡ màn (ngữ cảnh) để thầy cô tái hiện lỗi. Luật (độ dài, 5 lần/ngày) ở DB — fn_hs_gui_gop_y (lib/gopy_hs.ts).
 // · Muốn xem thầy cô trả lời ⇒ "Xem góp ý của em" mở màn Góp ý đầy đủ (HocSinhApp nghe sự kiện). Màn Góp ý + Hướng dẫn tương tác thì ẩn nút.
+// · MÀN CHÍNH (Thùy 03/11: HS không nhận ra chỗ góp ý): thay chấm nhỏ bằng LINH VẬT to ở góc dưới trái + bong bóng "Góp ý ở đây nhé!"
+//   — bấm mở đúng tấm nhập ở trên. Hình dùng chung mọi style (public/bk-ui/hs/gop-y/), bong bóng lấy màu skin.
+//   Em tự kéo đi / thu nhỏ / ẩn được (Thùy 06/11: robot vướng các ô) — xem LinhVatGopY.
 // Màu/khung CHỈ từ skin (KhungHS). Gốc FORMAL: chữ trung tính.
 // ============================================================================
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -27,9 +30,9 @@ function docVt(): ViTri {
   return { ben: 'r', y: null }
 }
 
-function Tam({ man, onDong }: { man: string; onDong: () => void }) {
+function Tam({ man, onDong, loaiDau = 'bug' }: { man: string; onDong: () => void; loaiDau?: LoaiGopY }) {
   const mon = useMonHS()
-  const [loai, setLoai] = useState<LoaiGopY>('bug')
+  const [loai, setLoai] = useState<LoaiGopY>(loaiDau)
   const [moTa, setMoTa] = useState('')
   const [anh, setAnh] = useState<Blob | null>(null)
   const [xemAnh, setXemAnh] = useState<string | null>(null)
@@ -142,6 +145,12 @@ export function NutGopYNoi() {
   }, [])
 
   if (AN_O.has(man)) return null
+  if (man === 'man_chinh') return (
+    <>
+      <LinhVatGopY onMo={() => setMo(true)} />
+      {mo && <Tam man={man} loaiDau="yeu_cau" onDong={() => setMo(false)} />}
+    </>
+  )
   const pos: React.CSSProperties = keo
     ? { left: keo.x - 22, top: keo.y - 22 }
     : { [vt.ben === 'l' ? 'left' : 'right']: 10, ...(vt.y === null ? { bottom: 'calc(14px + env(safe-area-inset-bottom))' } : { top: `calc(${vt.y * 100}% - 22px)` }) }
@@ -157,5 +166,127 @@ export function NutGopYNoi() {
       </button>
       {mo && <Tam man={man} onDong={() => setMo(false)} />}
     </>
+  )
+}
+
+// Linh vật góp ý ở màn chính: nổi nhẹ lên xuống (chỉ transform, tắt khi máy bật giảm chuyển động — STYLE-HS §2.7).
+// Thùy 06/11 ("đang vướng vào các ô của học sinh"): em tự chỉnh — KÉO đi chỗ khác · nút ‒/+ thu nhỏ (bỏ bong bóng) / phóng to ·
+// nút ✕ ẩn ⇒ chỉ còn mép nhỏ ở cạnh màn, chạm mép là hiện lại. Cỡ + vị trí nhớ trong máy (tiện ích riêng từng máy, không cần DB).
+const ANH_LINH_VAT = '/bk-ui/hs/gop-y/linh_vat_gop_y.png'
+const KHOA_LV = 'hs_gopy_linh_vat'
+type CoLV = 'to' | 'nho' | 'an'
+type TrangLV = { co: CoLV; coTruoc: 'to' | 'nho'; x: number | null; y: number | null }   // x,y = góc trái-trên theo tỉ lệ màn (null = góc dưới trái mặc định)
+const kep = (v: number, a: number, b: number) => Math.min(b, Math.max(a, v))
+const CHUA_NUT = 30   // 2 nút ‒/✕ nằm ngoài khung, bên phải robot ⇒ chừa chỗ để không trôi khỏi màn
+
+function docLV(): TrangLV {
+  try {
+    const v = JSON.parse(localStorage.getItem(KHOA_LV) ?? 'null') as Partial<TrangLV> | null
+    if (v && (v.co === 'to' || v.co === 'nho' || v.co === 'an')) {
+      return { co: v.co, coTruoc: v.coTruoc === 'to' ? 'to' : 'nho', x: typeof v.x === 'number' ? kep(v.x, 0, 1) : null, y: typeof v.y === 'number' ? kep(v.y, 0, 1) : null }
+    }
+  } catch { /* máy chặn lưu */ }
+  return { co: 'to', coTruoc: 'to', x: null, y: null }
+}
+
+function LinhVatGopY({ onMo }: { onMo: () => void }) {
+  const [tt, setTt] = useState<TrangLV>(docLV)
+  const [keo, setKeo] = useState<{ x: number; y: number } | null>(null)   // góc trái-trên (px) khi đang kéo
+  const [, setCoMan] = useState(0)
+  const khung = useRef<HTMLDivElement>(null)
+  const goc = useRef<{ px: number; py: number; dx: number; dy: number; da: boolean } | null>(null)
+
+  useEffect(() => {
+    const f = () => setCoMan((n) => n + 1)   // đổi cỡ/xoay màn ⇒ kẹp lại vị trí vào trong màn
+    window.addEventListener('resize', f)
+    f()   // lần đầu: đo khung xong mới kẹp vị trí đã lưu
+    return () => window.removeEventListener('resize', f)
+  }, [])
+
+  const luu = (moi: TrangLV) => {
+    setTt(moi)
+    try { localStorage.setItem(KHOA_LV, JSON.stringify(moi)) } catch { /* không lưu được cũng không sao */ }
+  }
+  const doiCo = (co: CoLV) => luu({ ...tt, co, coTruoc: co === 'an' ? (tt.co === 'an' ? tt.coTruoc : tt.co) : co })
+
+  const bam = (e: React.PointerEvent) => {
+    const r = khung.current?.getBoundingClientRect(); if (!r) return
+    goc.current = { px: e.clientX, py: e.clientY, dx: e.clientX - r.left, dy: e.clientY - r.top, da: false }
+    ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
+  }
+  const di = (e: React.PointerEvent) => {
+    const g = goc.current; if (!g) return
+    if (!g.da && Math.hypot(e.clientX - g.px, e.clientY - g.py) < 8) return
+    g.da = true
+    setKeo({ x: e.clientX - g.dx, y: e.clientY - g.dy })
+  }
+  const tha = (e: React.PointerEvent) => {
+    const g = goc.current; goc.current = null
+    if (!g) return
+    if (!g.da) { onMo(); return }
+    const r = khung.current?.getBoundingClientRect()
+    const W = window.innerWidth, H = window.innerHeight
+    const x = kep(e.clientX - g.dx, 0, W - (r?.width ?? 0) - CHUA_NUT), y = kep(e.clientY - g.dy, 0, H - (r?.height ?? 0))
+    setKeo(null)
+    luu({ ...tt, x: x / W, y: y / H })
+  }
+  const huy = () => { goc.current = null; setKeo(null) }
+
+  // Đang ẩn: mép nhỏ ở cạnh gần nhất, cùng độ cao — chạm là hiện lại đúng cỡ trước đó.
+  if (tt.co === 'an') {
+    const ben = tt.x !== null && tt.x > 0.5 ? 'right' : 'left'
+    const viTriDoc: React.CSSProperties = tt.y === null ? { bottom: 'calc(10px + env(safe-area-inset-bottom))' } : { top: `${kep(tt.y * 100, 2, 90)}%` }
+    return (
+      <button onClick={() => doiCo(tt.coTruoc)} aria-label="Hiện lại bạn robot góp ý" title="Hiện lại bạn robot góp ý"
+        className="fixed z-50 flex h-11 w-7 items-center justify-center active:scale-95"
+        style={{ [ben]: 0, ...viTriDoc, background: MAU.surface, border: `1.5px solid ${MAU.acc}`, [ben === 'left' ? 'borderLeft' : 'borderRight']: 'none',
+          borderRadius: ben === 'left' ? '0 12px 12px 0' : '12px 0 0 12px', boxShadow: '0 3px 10px rgba(0,0,0,.3)', opacity: 0.85 }}>
+        <img src={ANH_LINH_VAT} alt="" draggable={false} className="h-6 w-auto" />
+      </button>
+    )
+  }
+
+  const to = tt.co === 'to'
+  const r = khung.current?.getBoundingClientRect()
+  const W = window.innerWidth, H = window.innerHeight
+  const pos: React.CSSProperties = keo
+    ? { left: keo.x, top: keo.y }
+    : tt.x === null || tt.y === null
+      ? { left: 'calc(6px + env(safe-area-inset-left))', bottom: 'calc(6px + env(safe-area-inset-bottom))' }
+      : { left: kep(tt.x * W, 0, W - (r?.width ?? 0) - CHUA_NUT), top: kep(tt.y * H, 0, H - (r?.height ?? 0)) }
+  const nutNho = 'flex h-7 w-7 items-center justify-center rounded-full text-[15px] font-black leading-none active:scale-90'
+  const nutNhoSt: React.CSSProperties = { background: MAU.surface, color: MAU.ink, border: `1.5px solid ${MAU.line}`, boxShadow: '0 2px 6px rgba(0,0,0,.3)' }
+  const chan = (e: React.PointerEvent) => e.stopPropagation()
+
+  return (
+    <div ref={khung} className="fixed z-50 flex select-none flex-col items-center" style={pos}>
+      <style>{`@keyframes gopy-noi{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+        .gopy-noi{animation:gopy-noi 2.6s ease-in-out infinite;will-change:transform}
+        @media (prefers-reduced-motion: reduce){.gopy-noi{animation:none}}`}</style>
+      <div role="button" tabIndex={0} aria-label="Góp ý ở đây nhé — gửi góp ý hoặc báo lỗi cho thầy cô (kéo để dời chỗ)"
+        title="Chạm để góp ý · kéo để dời chỗ"
+        onPointerDown={bam} onPointerMove={di} onPointerUp={tha} onPointerCancel={huy}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onMo() } }}
+        className="flex touch-none cursor-grab flex-col items-center active:scale-95" style={{ opacity: keo ? 0.9 : 1 }}>
+        {to && (
+          <span className="relative mb-1 whitespace-nowrap px-3 py-1.5 text-[14px] font-extrabold leading-tight sm:text-[15.5px]"
+            style={{ background: MAU.surface, color: MAU.ink, border: `2px solid ${MAU.acc}`, borderRadius: 'var(--sk-radius-pill)', fontFamily: 'var(--sk-font-head)', boxShadow: '0 4px 12px rgba(0,0,0,.3)' }}>
+            Góp ý ở đây nhé!
+            <span aria-hidden className="absolute left-1/2 top-full h-0 w-0 -translate-x-1/2"
+              style={{ borderLeft: '7px solid transparent', borderRight: '7px solid transparent', borderTop: `8px solid ${MAU.acc}` }} />
+          </span>
+        )}
+        <span className="relative">
+          <img src={ANH_LINH_VAT} alt="" draggable={false} className={`gopy-noi block w-auto ${to ? 'h-[92px] sm:h-[120px]' : 'h-[54px] sm:h-[62px]'}`}
+            style={{ filter: 'drop-shadow(0 6px 10px rgba(0,0,0,.35))' }} />
+          <span className="absolute -right-7 top-0 z-10 flex flex-col gap-1">
+            <button onPointerDown={chan} onKeyDown={(e) => e.stopPropagation()} onClick={() => doiCo(to ? 'nho' : 'to')} aria-label={to ? 'Thu nhỏ bạn robot' : 'Phóng to bạn robot'}
+              title={to ? 'Thu nhỏ' : 'Phóng to'} className={nutNho} style={nutNhoSt}>{to ? '−' : '+'}</button>
+            <button onPointerDown={chan} onKeyDown={(e) => e.stopPropagation()} onClick={() => doiCo('an')} aria-label="Ẩn bạn robot (chạm mép màn để hiện lại)"
+              title="Ẩn (chạm mép màn để hiện lại)" className={nutNho} style={{ ...nutNhoSt, color: MAU.muted, fontSize: 12 }}>✕</button>
+          </span>
+        </span>
+      </div>
+    </div>
   )
 }

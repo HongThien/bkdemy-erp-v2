@@ -1,0 +1,169 @@
+=== H5.2.3
+@ly_thuyet:
+##TC Nhận dạng hàm $y=\dfrac{ax^2+bx+c}{dx+e}$
+- Tiệm cận đứng $x=-\dfrac{e}{d}$; chia đa thức được $y=\alpha x+\beta+\dfrac{\gamma}{x-x_0}$ thì tiệm cận xiên là $y=\alpha x+\beta$ (cần $\gamma\ne0$).
+- Đồ thị cắt $Oy$ tại $\left(0;\dfrac{c}{e}\right)$.
+- Ta có $y'=\alpha-\dfrac{\gamma}{(x-x_0)^2}$. Khi $\alpha\gamma>0$ đồ thị có cực đại và cực tiểu nằm hai bên tiệm cận đứng: $\alpha,\gamma>0$ thì cực đại ở bên trái, cực tiểu ở bên phải; $\alpha,\gamma<0$ thì ngược lại.
+- Khi $\alpha\gamma<0$ hàm số không có cực trị, đồng biến ($\alpha>0$) hoặc nghịch biến ($\alpha<0$) trên từng khoảng xác định.
+
+##PP Chọn công thức theo đồ thị
+Đọc tiệm cận đứng và tiệm cận xiên (đường chéo mà đồ thị bám theo).
+Chia đa thức từng phương án để tìm tiệm cận đứng và tiệm cận xiên, loại phương án không khớp.
+Xét có cực trị hay không và vị trí cực trị, rồi thử giao với $Oy$ để chọn phương án còn lại.
+
+##CY
+- Hai phương án có thể trùng tiệm cận đứng và giao với $Oy$ nhưng khác tiệm cận xiên: phải chia đa thức để kiểm tra.
+- Không chỉ nhìn vào bậc của tử và mẫu: phải so tiệm cận và cực trị với hình.
+
+@vi_du:
+##VD
+Đồ thị trong hình bên là đồ thị của hàm số nào dưới đây?
+[[HINH {"loai":"dothi","x":[-3,5],"y":[-5,7],"f":[{"e":"(x^2-x+1)/(x-1)","ten":"y=f(x)"}],"duong":[{"dung":1,"ten":"x=1"},{"xien":[1,0],"ten":"y=x"}],"diem":[{"x":0,"y":-1,"nhan":"(0;-1)"},{"x":2,"y":3,"nhan":"(2;3)"}]}]]
+a) $y=\dfrac{x^2-x+1}{x-1}$
+b) $y=\dfrac{x^2-x+1}{x+1}$
+c) $y=\dfrac{x^2+x+1}{x-1}$
+d) $y=\dfrac{-x^2+x-1}{x-1}$
+
+Bài giải:
+Đồ thị có tiệm cận đứng $x=1$, tiệm cận xiên $y=x$, và hai cực trị tại $(0;-1)$ và $(2;3)$.
+Tiệm cận đứng $x=1$ nên loại b) (mẫu $x+1$).
+Chia đa thức: c) $y=x+2+\dfrac{3}{x-1}$ có tiệm cận xiên $y=x+2$: loại. d) $y=-x+\dfrac{-1}{x-1}$ có tiệm cận xiên $y=-x$: loại.
+Với a), $y=x+\dfrac{1}{x-1}$ có tiệm cận xiên $y=x$, $y(0)=-1$ và $y(2)=3$, khớp với hình.
+Vậy chọn a) $y=\dfrac{x^2-x+1}{x-1}$.
+
+##VD
+Đồ thị trong hình bên là đồ thị của hàm số nào dưới đây?
+[[HINH {"loai":"dothi","x":[-3,5],"y":[-5,6],"f":[{"e":"(x^2-x-1)/(x-1)","ten":"y=f(x)"}],"duong":[{"dung":1,"ten":"x=1"},{"xien":[1,0],"ten":"y=x"}],"diem":[{"x":0,"y":1,"nhan":"(0;1)"}]}]]
+a) $y=\dfrac{x^2-x-1}{x-1}$
+b) $y=\dfrac{x^2-x+1}{x-1}$
+c) $y=\dfrac{x^2+x-1}{x-1}$
+d) $y=\dfrac{x^2-x-1}{x+1}$
+
+Bài giải:
+Đồ thị có tiệm cận đứng $x=1$, tiệm cận xiên $y=x$, không có cực trị (đồng biến trên từng nhánh) và cắt $Oy$ tại $(0;1)$.
+Tiệm cận đứng $x=1$ nên loại d) (mẫu $x+1$).
+Chia đa thức: c) $y=x+2+\dfrac{1}{x-1}$ có tiệm cận xiên $y=x+2$: loại.
+Còn a) và b), đều có tiệm cận xiên $y=x$. Với b), $y=x+\dfrac{1}{x-1}$ có $y'=\dfrac{x(x-2)}{(x-1)^2}$ đổi dấu nên có hai cực trị, và $y(0)=-1$: loại.
+Với a), $y=x-\dfrac{1}{x-1}$ có $y'=1+\dfrac{1}{(x-1)^2}>0$ nên đồng biến trên từng khoảng, $y(0)=1$, khớp với hình.
+Vậy chọn a) $y=\dfrac{x^2-x-1}{x-1}$.
+
+=== H5.3.3
+@ly_thuyet:
+##TC Hệ số của hàm $y=\dfrac{ax^2+bx+c}{mx+n}$ theo đồ thị
+- Chia đa thức để đưa về $y=px+q+\dfrac{r}{mx+n}$: tiệm cận xiên là $y=px+q$, tiệm cận đứng là $x=-\dfrac{n}{m}$.
+- Với dạng $y=\dfrac{x^2+bx+c}{x+d}$: $y=x+(b-d)+\dfrac{c-d(b-d)}{x+d}$.
+- Với dạng $y=\dfrac{ax^2+bx+c}{x+d}$: $y=ax+(b-ad)+\dfrac{c-d(b-ad)}{x+d}$.
+- Giao $Oy$ tại $\left(0;\dfrac{c}{d}\right)$; điểm mà đồ thị đi qua cho thêm một phương trình theo $a,b,c,d$.
+
+##PP Xác định hệ số của hàm bậc hai trên bậc nhất
+Hoành độ tiệm cận đứng cho mẫu: $x=1$ thì mẫu là $x-1$, tức $d=-1$.
+Hệ số góc của tiệm cận xiên cho $a$; tung độ tại gốc của tiệm cận xiên cho $b-ad$ nên tìm được $b$.
+Dùng giao điểm với $Oy$ hoặc một điểm mà đồ thị đi qua để tìm $c$.
+Thay ngược lại và kiểm tra tiệm cận xiên của hàm vừa tìm.
+
+##CY
+- Tung độ gốc của tiệm cận xiên là $b-ad$, không phải $b$; chỉ bằng $b$ khi $d=0$.
+- Giao $Oy$ là $\dfrac{c}{d}$, không phải $c$.
+
+@vi_du:
+##VD
+Cho hàm số $y=\dfrac{x^2+bx+c}{x+d}$ có đồ thị như hình vẽ (nét đứt là các tiệm cận). Tìm $b$, $c$, $d$.
+[[HINH {"loai":"dothi","x":[-4,6],"y":[-8,8],"f":[{"e":"(x^2+3)/(x-1)","ten":"y=f(x)","xt":5.2}],"duong":[{"dung":1},{"xien":[1,1]}],"diem":[{"x":0,"y":-3}]}]]
+
+Bài giải:
+Tiệm cận đứng là $x=1$ nên $x+d=x-1$, tức $d=-1$.
+Tiệm cận xiên đi qua $(0;1)$ và $(-1;0)$ nên có phương trình $y=x+1$. Mà $y=x+(b-d)+\dfrac{c-d(b-d)}{x+d}$ nên $b-d=1$, suy ra $b=0$.
+Đồ thị cắt $Oy$ tại $(0;-3)$ nên $\dfrac{c}{d}=-3$, suy ra $c=-3d=3$.
+Hàm số là $y=\dfrac{x^2+3}{x-1}=x+1+\dfrac{4}{x-1}$, đúng với tiệm cận xiên $y=x+1$.
+Vậy $b=0$, $c=3$, $d=-1$.
+
+##VD
+Cho hàm số $y=\dfrac{ax^2+bx+c}{x+d}$ có đồ thị như hình vẽ. Biết tiệm cận xiên của đồ thị có hệ số góc $2$ và đi qua điểm $(0;1)$. Tính $a+b+c+d$.
+[[HINH {"loai":"dothi","x":[-2,6],"y":[-8,14],"f":[{"e":"(2*x^2-3*x)/(x-2)","ten":"y=f(x)","xt":5.2}],"duong":[{"dung":2},{"xien":[2,1]}],"diem":[{"x":0,"y":0}]}]]
+
+Bài giải:
+Tiệm cận đứng là $x=2$ nên $x+d=x-2$, tức $d=-2$.
+Tiệm cận xiên có hệ số góc $2$ nên $a=2$.
+Chia đa thức: $y=ax+(b-ad)+\dfrac{c-d(b-ad)}{x+d}=2x+(b+4)+\dots$; tiệm cận xiên là $y=2x+1$ nên $b+4=1$, suy ra $b=-3$.
+Đồ thị đi qua gốc toạ độ $O(0;0)$ nên $\dfrac{c}{d}=0$, suy ra $c=0$.
+Kiểm tra: $y=\dfrac{2x^2-3x}{x-2}=2x+1+\dfrac{2}{x-2}$, đúng tiệm cận xiên $y=2x+1$.
+Vậy $a+b+c+d=2-3+0-2=-3$.
+
+=== M2.3.1
+@ly_thuyet:
+##TC Các điều kiện có tham số thường gặp của hàm $y=\dfrac{ax^2+bx+c}{dx+e}$
+- Tập xác định $\mathbb{R}\setminus\left\{-\dfrac{e}{d}\right\}$. Ta có $y'=\dfrac{N(x)}{(dx+e)^2}$ với $N(x)=adx^2+2aex+be-cd$ là tam thức bậc hai, nên dấu của $y'$ là dấu của $N(x)$.
+- Đơn điệu trên từng khoảng xác định: $N(x)\ge0$ (đồng biến) hoặc $N(x)\le0$ (nghịch biến) với mọi $x\ne-\dfrac{e}{d}$.
+- Đơn điệu trên khoảng $K$ cho trước (không chứa $-\dfrac{e}{d}$): $N(x)\ge0$ (hoặc $\le0$) với mọi $x\in K$; thường cô lập $m$ rồi lập bảng biến thiên của hàm vế kia trên $K$.
+- Có cực đại và cực tiểu: $N(x)=0$ có hai nghiệm phân biệt đều khác $-\dfrac{e}{d}$. Hàm này hoặc có đủ cả hai cực trị hoặc không có cực trị nào.
+- Đạt cực trị tại $x_0$: $N(x_0)=0$, rồi thử lại $y'$ đổi dấu (từ $+$ sang $-$ là cực đại, từ $-$ sang $+$ là cực tiểu).
+- Hệ thức giữa hai điểm cực trị: gọi $x_1,x_2$ là nghiệm của $N(x)=0$, dùng Viète và $y(x_i)=\dfrac{u'(x_i)}{v'(x_i)}$ với $y=\dfrac{u}{v}$.
+- Tiệm cận xiên: chia đa thức $y=\alpha x+\beta+\dfrac{r}{dx+e}$, tiệm cận xiên là $y=\alpha x+\beta$ (cần $r\ne0$); điều kiện cho trước về hệ số góc, điểm đi qua hay tam giác với hai trục là điều kiện về $\alpha,\beta$.
+
+##PP Giải bài toán tìm tham số $m$
+Nhận ra điều kiện đề cho thuộc loại nào (đơn điệu, cực trị, hệ thức hai cực trị hay tiệm cận xiên), tìm tập xác định.
+Tính $y'$ và tử số $N(x)$ (hoặc chia đa thức nếu đề hỏi tiệm cận xiên).
+Đổi điều kiện của đề thành điều kiện về $N(x)$ hoặc về $\alpha,\beta$: dùng $\Delta'$, dấu hệ số của $x^2$, nghiệm khác $-\dfrac{e}{d}$, Viète hay cô lập $m$.
+Giải theo $m$, loại các giá trị làm tử và mẫu có nhân tử chung (số dư $r=0$), thử lại giá trị biên rồi kết luận.
+
+##CY
+- Chỉ xét $N(x)$ trên tập xác định: nghiệm của mẫu bị loại khỏi tập cần xét, nên đơn điệu trên từng khoảng xác định vẫn chấp nhận $N(x)$ có nghiệm kép đúng bằng $-\dfrac{e}{d}$.
+- Có hai cực trị: trình bày đủ $\Delta'>0$ và $N\left(-\dfrac{e}{d}\right)\ne0$; nếu hệ số $a$ hoặc $d$ chứa $m$ thì xét riêng giá trị làm hệ số đó bằng $0$, khi ấy $N(x)$ không còn là tam thức bậc hai, phải xét trực tiếp.
+- Tiệm cận xiên chỉ tồn tại khi số dư $r\ne0$; khi tìm $m$ theo tiệm cận xiên phải thử lại điều kiện này.
+
+@vi_du:
+##VD
+Tìm tất cả giá trị của $m$ để hàm số $y=\dfrac{x^2-2x+m}{x-1}$ đồng biến trên từng khoảng xác định của nó.
+
+Bài giải:
+Tập xác định $D=\mathbb{R}\setminus\{1\}$.
+Ta có $y'=\dfrac{(2x-2)(x-1)-(x^2-2x+m)}{(x-1)^2}=\dfrac{x^2-2x+2-m}{(x-1)^2}$.
+Hàm đồng biến trên từng khoảng xác định $\Leftrightarrow x^2-2x+2-m\ge0$ với mọi $x\ne1$.
+Tam thức có hệ số $x^2$ dương; nếu $\Delta'>0$ thì tam thức âm trên cả khoảng giữa hai nghiệm, bỏ đi một điểm $x=1$ vẫn còn chỗ $y'<0$.
+Do đó điều kiện là $\Delta'=1-(2-m)=m-1\le0\Leftrightarrow m\le1$.
+Với $m=1$ thì $y=\dfrac{(x-1)^2}{x-1}$ với mọi $x\ne1$: tập xác định vẫn là $\mathbb{R}\setminus\{1\}$ và $y'=1>0$ nên hàm đồng biến trên $(-\infty;1)$ và $(1;+\infty)$, thỏa mãn.
+Vậy $m\in(-\infty;1]$.
+
+##VD
+Tìm tất cả giá trị của $m$ để hàm số $y=\dfrac{x^2-3x+m}{x-2}$ đồng biến trên khoảng $(-\infty;1)$.
+
+Bài giải:
+Khoảng $(-\infty;1)$ không chứa $x=2$ nên nằm trong tập xác định.
+Ta có $y'=\dfrac{(2x-3)(x-2)-(x^2-3x+m)}{(x-2)^2}=\dfrac{x^2-4x+6-m}{(x-2)^2}$.
+Hàm đồng biến trên $(-\infty;1)$ $\Leftrightarrow x^2-4x+6-m\ge0$ với mọi $x<1\Leftrightarrow m\le x^2-4x+6$ với mọi $x<1$.
+Đặt $h(x)=x^2-4x+6$; $h'(x)=2x-4<0$ trên $(-\infty;1)$ nên $h$ nghịch biến và $h(x)>h(1)=3$ với mọi $x<1$.
+Do đó điều kiện là $m\le3$.
+Kiểm tra $m=3$: $y'=\dfrac{(x-1)(x-3)}{(x-2)^2}>0$ khi $x<1$ nên thỏa mãn.
+Vậy $m\in(-\infty;3]$.
+
+##VD
+Tìm giá trị của $m$ để hàm số $y=\dfrac{x^2+mx+1}{x-1}$ đạt cực tiểu tại $x=2$.
+
+Bài giải:
+Tập xác định $D=\mathbb{R}\setminus\{1\}$.
+Ta có $y'=\dfrac{(2x+m)(x-1)-(x^2+mx+1)}{(x-1)^2}=\dfrac{x^2-2x-m-1}{(x-1)^2}$.
+Hàm đạt cực trị tại $x=2$ nên $y'(2)=0$, tức $4-4-m-1=0$, suy ra $m=-1$.
+Kiểm tra $m=-1$: $y'=\dfrac{x^2-2x}{(x-1)^2}=\dfrac{x(x-2)}{(x-1)^2}$, mẫu luôn dương nên dấu của $y'$ là dấu của $x(x-2)$: $y'<0$ khi $1<x<2$ và $y'>0$ khi $x>2$.
+Vậy $y'$ đổi dấu từ $-$ sang $+$ khi qua $x=2$ nên đó là điểm cực tiểu, giá trị cần tìm là $m=-1$.
+
+##VD
+Cho hàm số $y=\dfrac{x^2+2x+m}{x-1}$. Tìm $m$ để hàm số có cực đại, cực tiểu và khoảng cách giữa hai điểm cực trị của đồ thị bằng $10$.
+
+Bài giải:
+Tập xác định $\mathbb{R}\setminus\{1\}$, $y'=\dfrac{(2x+2)(x-1)-(x^2+2x+m)}{(x-1)^2}=\dfrac{x^2-2x-2-m}{(x-1)^2}$.
+Hai cực trị $\Leftrightarrow g(x)=x^2-2x-2-m=0$ có hai nghiệm phân biệt khác $1$: $\Delta'=3+m>0$ và $g(1)=-3-m\ne0$, tức $m>-3$.
+Gọi $x_1,x_2$ là nghiệm, $x_1+x_2=2$, $x_1x_2=-2-m$; tại điểm cực trị $y=\dfrac{(x^2+2x+m)'}{(x-1)'}=2x+2$.
+Hai điểm cực trị $A(x_1;2x_1+2)$, $B(x_2;2x_2+2)$ nên $AB^2=(x_2-x_1)^2+4(x_2-x_1)^2=5(x_2-x_1)^2=5\left[(x_1+x_2)^2-4x_1x_2\right]=5(12+4m)$.
+$AB=10\Leftrightarrow 20(3+m)=100\Leftrightarrow m=2$ (thoả $m>-3$).
+Vậy $m=2$.
+
+##VD
+Cho hàm số $y=\dfrac{x^2+mx+2}{x-1}$. Tìm tất cả giá trị của $m$ để tiệm cận xiên của đồ thị cùng hai trục toạ độ tạo thành một tam giác có diện tích bằng $8$.
+
+Bài giải:
+Chia đa thức: $x^2+mx+2=(x-1)(x+m+1)+(m+3)$ nên $y=x+m+1+\dfrac{m+3}{x-1}$.
+Đồ thị có tiệm cận xiên khi số dư $m+3\ne0$, tức $m\ne-3$; khi đó tiệm cận xiên là $d:y=x+m+1$.
+Đường thẳng $d$ cắt $Oy$ tại $A(0;m+1)$ và cắt $Ox$ tại $B(-m-1;0)$; để có tam giác thì $m+1\ne0$.
+Tam giác $OAB$ vuông tại $O$ nên $S=\dfrac{1}{2}\cdot|m+1|\cdot|m+1|=\dfrac{(m+1)^2}{2}$.
+$S=8\Leftrightarrow(m+1)^2=16\Leftrightarrow m=3$ hoặc $m=-5$, cả hai đều thoả $m\ne-3$ và $m\ne-1$.
+Vậy $m\in\{-5;3\}$.

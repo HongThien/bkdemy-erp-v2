@@ -1,0 +1,477 @@
+{
+  "dang_moi": [
+    {
+      "chuong": "Vectơ",
+      "ten": "Vật bay thẳng đều ra – vào vùng quan sát của trạm (khoảng cách ≤ R): thời gian trong vùng",
+      "nhom_dat": "Ứng dụng thực tế của vectơ và toạ độ › Vật chuyển động và radar trong Oxyz",
+      "dat_sau": "NDB02566",
+      "muc_do": "Mức 3",
+      "mo_ta": "Đề cho khinh khí cầu, máy bay hay drone xuất phát từ A, bay với vectơ vận tốc không đổi v (km/h) trong một thời gian dự kiến; trạm đặt tại gốc O (hoặc điểm cho trước) theo dõi được các vật cách trạm tối đa R. Hỏi thời gian (phút) vật ở trong vùng theo dõi, hoặc thời điểm vào/ra vùng. Việc làm: lập M(t)=A+t·v, viết TM² theo t thành tam thức bậc hai rồi giải TM² ≤ R², lấy hiệu hai nghiệm (cắt theo thời gian bay). Ranh giới: NDB02565 chỉ tìm vị trí/thời gian/vận tốc, NDB02566 chỉ tìm khoảng cách nhỏ nhất hay thời điểm gặp; dạng này có NGƯỠNG R và hỏi độ dài khoảng thời gian, nhưng vẫn không cần viết phương trình mặt cầu hay đường thẳng.",
+      "ly_thuyet": "##TC Vật chuyển động thẳng đều và vùng quan sát\n• Vật xuất phát từ $A(x_0;y_0;z_0)$ với vận tốc không đổi $\\overrightarrow{v}=(a;b;c)$ thì sau $t$ giờ ở vị trí $M(t)$ thoả $\\overrightarrow{AM}=t\\overrightarrow{v}$, tức $M(x_0+at;\\,y_0+bt;\\,z_0+ct)$.\n• Khoảng cách từ trạm $T$ đến vật thoả $TM^2=\\alpha t^2+\\beta t+\\gamma$ với $\\alpha=|\\overrightarrow{v}|^2>0$, $\\beta=2\\,\\overrightarrow{TA}\\cdot\\overrightarrow{v}$, $\\gamma=TA^2$ (tam thức bậc hai theo $t$).\n• Trạm theo dõi được vật khi $TM\\le R$, tức $\\alpha t^2+\\beta t+\\gamma-R^2\\le0$; nếu $\\Delta>0$ thì tập nghiệm là đoạn $[t_1;t_2]$ và thời gian vật ở trong vùng theo dõi là $t_2-t_1$.\n• Khoảng cách $TM$ nhỏ nhất đạt tại $t=-\\dfrac{\\beta}{2\\alpha}$; nếu giá trị nhỏ nhất đó lớn hơn $R$ thì vật không bao giờ vào vùng theo dõi.\n\n##PP Tìm thời gian vật ở trong vùng theo dõi\nViết toạ độ $M(t)=A+t\\overrightarrow{v}$, tính $TM^2$ theo $t$ và rút gọn thành tam thức bậc hai.\nGiải bất phương trình $TM^2\\le R^2$ để được $t_1\\le t\\le t_2$ (so sánh bình phương, không cần lấy căn).\nGiao đoạn $[t_1;t_2]$ với khoảng thời gian bay $[0;t_{\\text{bay}}]$ nếu đề cho vật chỉ bay có hạn.\nThời gian trong vùng theo dõi bằng độ dài đoạn nhận được, đổi giờ sang phút (nhân $60$) khi đề yêu cầu.\n\n##CY\n• Hỏi \"từ khi phát hiện đến khi ra khỏi vùng\" là $t_2-t_1$, không phải $t_2$.\n• Nghiệm vượt quá thời gian bay thì chỉ tính đến lúc ngừng bay; $\\Delta\\le0$ hoặc $[t_1;t_2]$ nằm ngoài $[0;t_{\\text{bay}}]$ thì vật không được theo dõi.\n• Chú ý đơn vị: vận tốc km/h thì thời gian tính bằng giờ; đề hỏi phút thì nhân $60$.\n• Bài chỉ so sánh $TM$ với $R$. Nếu đề bắt viết phương trình mặt cầu vùng phủ hay tìm giao điểm của đường bay với mặt cầu thì thuộc chương Phương pháp toạ độ.",
+      "vi_du": "##VD\nMột máy bay không người lái ở vị trí $A(-20;0;3)$ bắt đầu bay với vectơ vận tốc không đổi $\\overrightarrow{v}=(8;-4;0)$ (đơn vị: km/h) và dự kiến bay trong $4$ giờ. Trạm điều khiển đặt tại gốc toạ độ $O$ theo dõi được các vật thể cách trạm tối đa $13$ km. Hỏi máy bay ở trong vùng theo dõi bao nhiêu phút?\n\nBài giải:\nSau $t$ giờ máy bay ở $M(-20+8t;\\,-4t;\\,3)$.\n$OM^2=(-20+8t)^2+(-4t)^2+9=80t^2-320t+409$.\nMáy bay được theo dõi khi $OM^2\\le13^2=169$, tức $80t^2-320t+240\\le0\\Leftrightarrow t^2-4t+3\\le0\\Leftrightarrow1\\le t\\le3$.\nĐoạn $[1;3]$ nằm trong thời gian bay $[0;4]$ nên máy bay ở trong vùng theo dõi $3-1=2$ giờ.\nĐổi ra phút: $2\\cdot60=120$ phút.\n\n##VD\nMột khinh khí cầu ở $A(-10;5;4)$ bay với vận tốc không đổi $\\overrightarrow{v}=(4;-2;0)$ (km/h) và chỉ bay trong $3$ giờ. Trạm không lưu đặt tại $O$ theo dõi được các vật cách trạm tối đa $6$ km. a) Tìm khoảng cách nhỏ nhất từ khinh khí cầu đến trạm. b) Tính số phút khinh khí cầu được trạm theo dõi trong thời gian bay.\n\nBài giải:\nSau $t$ giờ khinh khí cầu ở $M(-10+4t;\\,5-2t;\\,4)$.\n$OM^2=(-10+4t)^2+(5-2t)^2+16=20t^2-100t+141$.\na) Tam thức nhỏ nhất tại $t=\\dfrac{100}{40}=2{,}5$: $OM^2=20\\cdot6{,}25-250+141=16$ nên khoảng cách nhỏ nhất bằng $4$ km.\nb) $OM\\le6\\Leftrightarrow20t^2-100t+141\\le36\\Leftrightarrow20t^2-100t+105\\le0\\Leftrightarrow1{,}5\\le t\\le3{,}5$.\nKhinh khí cầu chỉ bay đến $t=3$ nên khoảng thời gian được theo dõi là $[1{,}5;3]$, dài $1{,}5$ giờ.\nĐổi ra phút: $1{,}5\\cdot60=90$ phút.",
+      "dang_gan_nhat": "NDB02566 (hai vật chuyển động thẳng đều, khoảng cách nhỏ nhất/thời điểm gặp) và NDB02565 (vị trí–thời gian–vận tốc của vật bay thẳng đều): cả hai không có ngưỡng khoảng cách R và không hỏi độ dài khoảng thời gian trong vùng. Mô tả NDB02566 xếp \"vùng phủ radar hình cầu\" sang PP toạ độ, nhưng bài này giải hoàn toàn bằng M(t) và tam thức bậc hai (không viết phương trình mặt cầu) nên đề xuất đặt ở Vectơ; nếu CEO muốn giữ nguyên ranh giới cũ thì chuyển 4 câu sang nhánh HGT.",
+      "ma_cau": [
+        "T1120000008544",
+        "T1120000008701",
+        "T1120000008546",
+        "T1120000008545"
+      ],
+      "cau_tieu_bieu": [
+        "T1120000008544",
+        "T1120000008545",
+        "T1120000008701"
+      ]
+    },
+    {
+      "chuong": "Xác suất",
+      "ten": "Tính xác suất cổ điển bằng đếm: quy tắc nhân, tổ hợp, công thức cộng",
+      "nhom_dat": "NHÓM MỚI: Xác suất cổ điển (ôn kiến thức lớp 11 trong đề 12) › Tính xác suất bằng đếm",
+      "dat_sau": "NDB02581",
+      "muc_do": "Mức 2–4",
+      "mo_ta": "Đề cho một phép thử ngẫu nhiên (chọn số trong đoạn, chọn nhóm đồ vật/người, chia quà, chọn đỉnh đa giác đều, tung xúc xắc nhiều lần) và hỏi xác suất của một biến cố, hoặc chỉ hỏi số cách chọn. Việc làm: tính n(Ω), đếm n(A) bằng quy tắc nhân/cộng, tổ hợp hoặc biến cố đối, rồi P=n(A)/n(Ω); biến cố \"A hoặc B\" dùng công thức cộng. Ranh giới: khác NDB02571 (có từ khoá \"biết rằng…\", đếm trên không gian mẫu thu hẹp) và NDB02573 (chủ yếu dùng độc lập); ở đây không có điều kiện và không dùng P(A|B).",
+      "ly_thuyet": "##TC Xác suất cổ điển và đếm bằng tổ hợp\n• Phép thử có $n(\\Omega)$ kết quả đồng khả năng, biến cố $A$ có $n(A)$ kết quả thuận lợi thì $P(A)=\\dfrac{n(A)}{n(\\Omega)}$.\n• Quy tắc nhân: công việc gồm $k$ bước độc lập, bước $i$ có $m_i$ cách thì có $m_1m_2\\cdots m_k$ cách; quy tắc cộng: các trường hợp rời nhau thì cộng số cách.\n• Chọn $k$ phần tử từ $n$ phần tử không quan tâm thứ tự: $C_n^k=\\dfrac{n!}{k!(n-k)!}$; có xếp thứ tự: $A_n^k=\\dfrac{n!}{(n-k)!}$.\n• Biến cố đối: $P(\\overline{A})=1-P(A)$. Công thức cộng: $P(A\\cup B)=P(A)+P(B)-P(AB)$ (hai biến cố xung khắc thì $P(AB)=0$).\n\n##PP Tính xác suất cổ điển bằng đếm\nXác định phép thử và cách chọn (có hay không thứ tự, hoàn lại hay không hoàn lại) rồi tính $n(\\Omega)$.\nĐếm $n(A)$: chia trường hợp rời nhau bằng quy tắc cộng, mỗi trường hợp dùng quy tắc nhân và tổ hợp.\nVới biến cố \"ít nhất một…\" hoặc \"không phải…\": đếm biến cố đối rồi lấy $1-P(\\overline{A})$.\nVới biến cố \"$A$ hoặc $B$\": đếm $n(A)$, $n(B)$, $n(AB)$ rồi dùng công thức cộng.\nTính $P(A)=\\dfrac{n(A)}{n(\\Omega)}$, rút gọn hoặc làm tròn theo yêu cầu của đề.\n\n##CY\n• Cách chọn ở tử số và mẫu số phải cùng một kiểu (cùng có thứ tự hoặc cùng không thứ tự).\n• Đồ vật giống hệt nhau (sách cùng môn) không đếm thứ tự giữa chúng; gọi số lượng từng loại làm ẩn rồi lập hệ.\n• Đa giác đều $n$ đỉnh: tam giác cân tại một đỉnh chọn theo cặp đỉnh đối xứng qua đường kính; tam giác đều bị đếm $3$ lần khi cộng theo từng đỉnh cân nên phải trừ bớt $2$ lần.\n• Đề chỉ hỏi \"có bao nhiêu cách\" (không có xác suất) thì chỉ cần đếm $n(A)$ bằng quy tắc nhân/cộng.\n• Đây là kiến thức lớp 11 xuất hiện trong đề 12; nếu đề có \"biết rằng…\" thì chuyển sang xác suất có điều kiện (NDB02571).",
+      "vi_du": "##VD\nChọn ngẫu nhiên một số tự nhiên thuộc đoạn $[20;219]$. Tính xác suất để chọn được số chẵn hoặc số chia hết cho $3$.\n\nBài giải:\nTừ $20$ đến $219$ có $219-20+1=200$ số nên $n(\\Omega)=200$.\nGọi $A$: \"số chẵn\", $B$: \"số chia hết cho $3$\". Số chẵn từ $20$ đến $218$ có $\\dfrac{218-20}{2}+1=100$ số nên $n(A)=100$.\nSố chia hết cho $3$ từ $21$ đến $219$ có $\\dfrac{219-21}{3}+1=67$ số nên $n(B)=67$.\nSố vừa chẵn vừa chia hết cho $3$ là số chia hết cho $6$, từ $24$ đến $216$ có $\\dfrac{216-24}{6}+1=33$ số nên $n(AB)=33$.\n$n(A\\cup B)=100+67-33=134$ nên $P=\\dfrac{134}{200}=0{,}67$.\n\n##VD\nMột giỏ có $4$ bông hoa vàng, $2$ bông hoa xanh và $5$ bông hoa trắng. Lấy ngẫu nhiên $3$ bông hoa trong giỏ. a) Có bao nhiêu cách chọn được $3$ bông hoa khác màu? b) Tính xác suất để $3$ bông hoa chọn được khác màu. c) Tính xác suất để có ít nhất một bông hoa xanh.\n\nBài giải:\na) Mỗi màu chọn đúng một bông: $4\\cdot2\\cdot5=40$ cách.\nb) Không gian mẫu: $n(\\Omega)=C_{11}^3=165$. Biến cố \"khác màu\" có $n(A)=40$ nên $P(A)=\\dfrac{40}{165}=\\dfrac{8}{33}$.\nc) Biến cố đối \"không có bông xanh\": chọn $3$ bông trong $9$ bông vàng và trắng, có $C_9^3=84$ cách.\nXác suất cần tìm là $1-\\dfrac{84}{165}=\\dfrac{81}{165}=\\dfrac{27}{55}$.",
+      "dang_gan_nhat": "NDB02571 (đếm trên không gian mẫu thu hẹp): chỉ dùng khi đề có điều kiện \"biết rằng…/biết có ít nhất…\"; các câu này không có điều kiện nên không có P(A|B). NDB02572/02573 (nhân xác suất, độc lập) chỉ phủ trường hợp nhiều bước/độc lập, không phủ định nghĩa P=n(A)/n(Ω) với đếm tổ hợp. Bản đồ Xác suất khối 12 hiện chỉ có xác suất có điều kiện, chưa có xác suất cổ điển nền.",
+      "ma_cau": [
+        "T1120000001456",
+        "T1120000001275",
+        "T112000000727",
+        "T112000000888",
+        "T1120000007012",
+        "T1120000005279",
+        "T11200000010511"
+      ],
+      "cau_tieu_bieu": [
+        "T11200000010511",
+        "T112000000727",
+        "T1120000005279"
+      ]
+    },
+    {
+      "chuong": "Số đặc trưng",
+      "ten": "Đọc biểu đồ thống kê theo năm: giá trị lớn nhất, nhỏ nhất, chênh lệch trong một giai đoạn",
+      "nhom_dat": "Vận dụng các số đặc trưng › Đọc bảng ghép nhóm và số trung bình",
+      "dat_sau": "NDB02591",
+      "muc_do": "Mức 1",
+      "mo_ta": "Đề cho biểu đồ cột hoặc biểu đồ đường biểu diễn một đại lượng theo từng năm (mực nước biển, doanh thu, dân số…), hỏi năm có giá trị lớn nhất/nhỏ nhất trong một giai đoạn, giá trị một năm, chênh lệch hay năm tăng nhiều nhất. Việc làm: đọc chiều cao cột (toạ độ điểm) của các năm trong đúng giai đoạn rồi so sánh. Ranh giới: NDB02591 đọc bảng/biểu đồ GHÉP NHÓM (tần số theo nhóm, giá trị đại diện); ở đây mỗi cột là một năm cụ thể, không có tần số hay ghép nhóm.",
+      "ly_thuyet": "##TC Đọc biểu đồ thống kê\n• Biểu đồ cột: mỗi cột ứng với một năm (hạng mục), chiều cao cột là giá trị của đại lượng; biểu đồ đường: mỗi điểm là giá trị của một năm, nối các điểm để thấy xu hướng tăng, giảm.\n• Giá trị lớn nhất (nhỏ nhất) trong một giai đoạn là giá trị cao nhất (thấp nhất) trong các năm của giai đoạn đó.\n• Chênh lệch giữa hai năm là hiệu hai giá trị; năm sau tăng so với năm trước khi giá trị sau lớn hơn giá trị trước.\n\n##PP Đọc biểu đồ và so sánh\nXác định giai đoạn (khoảng năm) mà đề hỏi và loại các năm nằm ngoài giai đoạn đó.\nĐọc giá trị từng năm trong giai đoạn từ chiều cao cột (hoặc toạ độ điểm), chép thành bảng.\nSo sánh để tìm giá trị lớn nhất, nhỏ nhất hoặc tính chênh lệch theo yêu cầu.\nĐối chiếu kết quả với các năm cho trong phương án để chọn đáp án.\n\n##CY\n• Chỉ so sánh trong giai đoạn đề nêu: năm cao nhất của cả biểu đồ có thể nằm ngoài giai đoạn đó (ví dụ phương án $2013$ hay $2015$ bị loại vì ngoài khoảng $2016$–$2019$).\n• Đọc giá trị theo trục tung (chú ý đơn vị và gốc trục), nên ghi nhãn số trên cột nếu có khi hai cột gần bằng nhau.\n• Khác với bảng ghép nhóm: ở đây mỗi cột là một năm cụ thể, không dùng tần số hay giá trị đại diện.",
+      "vi_du": "##VD\nBiểu đồ cột cho doanh thu (đơn vị: tỉ đồng) của một cửa hàng qua các năm, đọc chiều cao các cột: năm $2019$: $12$; $2020$: $15$; $2021$: $14$; $2022$: $18$; $2023$: $17$; $2024$: $20$. a) Trong giai đoạn từ năm $2020$ đến năm $2023$, năm nào doanh thu cao nhất? b) Chênh lệch giữa doanh thu cao nhất và thấp nhất trong giai đoạn $2019$–$2024$ là bao nhiêu? c) Năm nào doanh thu tăng nhiều nhất so với năm liền trước?\n\nBài giải:\na) Giai đoạn $2020$–$2023$ chỉ xét các giá trị $15;14;18;17$, lớn nhất là $18$ ở năm $2022$.\nb) Trong giai đoạn $2019$–$2024$, doanh thu cao nhất là $20$ (năm $2024$), thấp nhất là $12$ (năm $2019$) nên chênh lệch là $20-12=8$ tỉ đồng.\nc) Mức thay đổi so với năm trước: $2020$: $+3$; $2021$: $-1$; $2022$: $+4$; $2023$: $-1$; $2024$: $+3$. Tăng nhiều nhất là năm $2022$ (tăng $4$ tỉ đồng).",
+      "dang_gan_nhat": "NDB02591 (đọc bảng ghép nhóm, tính số trung bình, kể cả \"từ biểu đồ\"): thuộc mẫu số liệu ghép nhóm có tần số, còn biểu đồ mực nước biển theo năm là chuỗi giá trị rời rạc, không có nhóm nên không nhét được mà không làm loãng mô tả dạng đó. Chỉ 2 câu (một câu lặp đề), đề xuất vì là câu nhận biết thường gặp ở đề khảo sát.",
+      "ma_cau": [
+        "T112020402213",
+        "T1120000006043"
+      ],
+      "cau_tieu_bieu": [
+        "T1120000006043",
+        "T112020402213"
+      ]
+    },
+    {
+      "chuong": "Số đặc trưng",
+      "ten": "Số liệu gốc: tìm số liệu còn thiếu hoặc phương sai mới từ trung bình và phương sai",
+      "nhom_dat": "Vận dụng các số đặc trưng › Từ số liệu thô đến mẫu ghép nhóm",
+      "dat_sau": "NDB02590",
+      "muc_do": "Mức 3",
+      "mo_ta": "Đề cho trung bình cộng và phương sai của một mẫu n số liệu gốc (không ghép nhóm), biết một số số liệu, tìm tích, tổng hay giá trị các số còn lại; hoặc thêm/bớt một số rồi tính phương sai mới. Việc làm: từ trung bình suy ra tổng, từ phương sai suy ra tổng bình phương, lập hệ đối xứng x+y và x²+y² rồi tính xy. Ranh giới: NDB02590 ghép nhóm số liệu thô để tính R, ΔQ, s; NDB02588 chỉ nhận biết công thức; dạng này làm việc trực tiếp trên số liệu gốc như một bài tìm ẩn.",
+      "ly_thuyet": "##TC Trung bình và phương sai của mẫu số liệu gốc\n• Mẫu $x_1,\\dots,x_n$: số trung bình $\\bar{x}=\\dfrac{x_1+\\dots+x_n}{n}$, suy ra $\\sum x_i=n\\bar{x}$.\n• Phương sai $s^2=\\dfrac{1}{n}\\sum (x_i-\\bar{x})^2=\\dfrac{x_1^2+\\dots+x_n^2}{n}-\\bar{x}^2$, suy ra $\\sum x_i^2=n\\left(s^2+\\bar{x}^2\\right)$.\n• Biết $x+y$ và $x^2+y^2$ thì $xy=\\dfrac{(x+y)^2-(x^2+y^2)}{2}$; $x,y$ là nghiệm của $t^2-(x+y)t+xy=0$.\n• Độ lệch chuẩn $s=\\sqrt{s^2}$.\n\n##PP Tìm số liệu còn thiếu từ trung bình và phương sai\nTính tổng $n\\bar{x}$ và tổng bình phương $n\\left(s^2+\\bar{x}^2\\right)$ của cả mẫu.\nTrừ tổng và tổng bình phương của các số đã biết để được $x+y$ và $x^2+y^2$ của các số còn thiếu.\nDùng $xy=\\dfrac{(x+y)^2-(x^2+y^2)}{2}$ để tính tích; giải $t^2-(x+y)t+xy=0$ nếu cần tìm từng số.\nVới bài thêm/bớt số liệu: cập nhật $n$, $\\sum x_i$, $\\sum x_i^2$ rồi áp dụng lại công thức phương sai.\n\n##CY\n• Dùng phương sai của cả mẫu $n$ số, không phải của các số đã biết; công thức chia cho $n$ (không chia $n-1$).\n• Thêm vào mẫu một số bằng đúng số trung bình cũ thì trung bình không đổi, còn phương sai giảm vì $n$ tăng.\n• Nên thay hai số tìm được vào để kiểm tra lại trung bình và phương sai.",
+      "vi_du": "##VD\nTrung bình cộng và phương sai của sáu số liệu lần lượt là $5$ và $\\dfrac{23}{3}$. Biết bốn trong sáu số liệu là $1;3;5;9$. a) Tính tích hai số còn lại. b) Tìm hai số đó.\n\nBài giải:\nGọi hai số còn lại là $x,y$. Tổng sáu số bằng $6\\cdot5=30$ nên $x+y=30-(1+3+5+9)=12$.\nTổng bình phương sáu số bằng $6\\left(\\dfrac{23}{3}+5^2\\right)=46+150=196$.\nTổng bình phương bốn số đã biết là $1+9+25+81=116$ nên $x^2+y^2=196-116=80$.\na) $xy=\\dfrac{12^2-80}{2}=32$.\nb) $x,y$ là nghiệm của $t^2-12t+32=0$, tức $t=4$ hoặc $t=8$. Hai số còn lại là $4$ và $8$.\n\n##VD\nMẫu năm số liệu có trung bình cộng bằng $10$ và phương sai bằng $4$. Thêm vào mẫu một số $a$ sao cho trung bình cộng của sáu số liệu vẫn bằng $10$. Tính phương sai của mẫu mới.\n\nBài giải:\nTổng năm số cũ là $5\\cdot10=50$; tổng bình phương năm số cũ là $5\\left(4+10^2\\right)=520$.\nTrung bình mới bằng $10$ nên $\\dfrac{50+a}{6}=10$, suy ra $a=10$.\nTổng bình phương mới là $520+10^2=620$.\nPhương sai mới là $\\dfrac{620}{6}-10^2=\\dfrac{10}{3}$.",
+      "dang_gan_nhat": "NDB02590 (ghép nhóm số liệu thô rồi tính R, ΔQ, s): mục tiêu là lập bảng ghép nhóm, còn ở đây không ghép nhóm mà giải ngược tìm số liệu thiếu. NDB02588 (quan hệ phương sai – độ lệch chuẩn, công thức): chỉ nhận biết công thức, không có bài tìm ẩn. Kiến thức lớp 10 xuất hiện ở đề 12; chỉ 2 câu (một câu lặp đề) nhưng là mẹo hệ đối xứng khá quen thuộc.",
+      "ma_cau": [
+        "T11200000010539",
+        "T11200000010541"
+      ],
+      "cau_tieu_bieu": [
+        "T11200000010539"
+      ]
+    }
+  ],
+  "khop_dang_co": [
+    {
+      "ma_cau": "T1120000007175",
+      "dang_bai_id": "NDB02508",
+      "ly_do": "Cho bảng biến thiên, 3f(x)+1=0 ⇔ f(x)=−1/3: đếm nghiệm bằng số giao điểm của y=f(x) với đường ngang y=−1/3 (đúng mô tả đếm nghiệm f(x)=m từ bảng biến thiên)."
+    },
+    {
+      "ma_cau": "T1120000007462",
+      "dang_bai_id": "NDB02500",
+      "ly_do": "f(x)=(4x²+3x)/(x+1): tìm hai cực trị, viết đường thẳng qua hai cực trị (y=u′/v′) và giao với tiệm cận xiên; đúng mô tả hàm bậc hai trên bậc nhất."
+    },
+    {
+      "ma_cau": "T1120000007063",
+      "dang_bai_id": "NDB02469",
+      "ly_do": "f′(x)=x(1−x²) cho dạng tích: xét dấu để đếm điểm cực đại (đổi dấu + sang −)."
+    },
+    {
+      "ma_cau": "T1120000007117",
+      "dang_bai_id": "NDB02463",
+      "ly_do": "f′(x)=4−x²=(2−x)(2+x) cho dạng tích: lập bảng xét dấu f′ để kết luận khoảng đồng biến."
+    },
+    {
+      "ma_cau": "T1120000007130",
+      "dang_bai_id": "NDB02525",
+      "ly_do": "Cho sẵn doanh thu F(x) và chi phí trung bình C̄(x): lập chi phí C=x·C̄, lợi nhuận F−C rồi tìm sản lượng tối ưu."
+    },
+    {
+      "ma_cau": "T1120000005846",
+      "dang_bai_id": "NDB02482",
+      "ly_do": "Câu lý thuyết thuần, không có hàm cụ thể: chọn khẳng định đúng về giá trị lớn nhất của hàm số trên ℝ."
+    },
+    {
+      "ma_cau": "T1120000008234",
+      "dang_bai_id": "NDB02582",
+      "ly_do": "Hỏi khoảng biến thiên của mẫu ghép nhóm: 70−20=50 (nhóm đầu và nhóm cuối đều có tần số khác 0)."
+    },
+    {
+      "ma_cau": "T1120000008597",
+      "dang_bai_id": "NDB02584",
+      "ly_do": "Hỏi tứ phân vị thứ ba Q3 của mẫu ghép nhóm: tìm nhóm chứa Q3 rồi thay công thức nội suy."
+    },
+    {
+      "ma_cau": "T1120000008235",
+      "dang_bai_id": "NDB02582",
+      "ly_do": "Hỏi khoảng biến thiên của mẫu ghép nhóm (bản trùng đề với câu T1120000008234, đổi thứ tự phương án)."
+    },
+    {
+      "ma_cau": "T1120000008727",
+      "dang_bai_id": "NDB02591",
+      "ly_do": "Hỏi tổng số học sinh = cỡ mẫu của bảng ghép nhóm (cộng các tần số), thuộc phần đọc bảng ghép nhóm."
+    },
+    {
+      "ma_cau": "T1120000006642",
+      "dang_bai_id": "NDB02539",
+      "ly_do": "Trọng tâm tứ diện đều: từ GA+GB+GC+GD=0 suy IG=AG/4 nên khoảng cách từ trọng tâm tới mặt bằng 1/4 chiều cao (hệ thức trọng tâm tứ diện bằng vectơ), không phải bài thể tích/khoảng cách hình học cổ điển. Mức tin cậy trung bình."
+    },
+    {
+      "ma_cau": "T1120000001095",
+      "dang_bai_id": "NDB02573",
+      "ly_do": "Hai người thử số điện thoại độc lập: xác suất mỗi người gọi đúng trong ≤2 lần là 0,2 rồi dùng biến cố độc lập/biến cố đối cho \"ít nhất một\". CẢNH BÁO: đáp án lưu 0.2 mâu thuẫn lời giải (1−0,8²=0,36) — cần kiểm lại đáp án trước khi gắn."
+    },
+    {
+      "ma_cau": "T112070308017",
+      "dang_bai_id": "NDB02563",
+      "ly_do": "Lập hệ trục Oxyz cho tòa nhà lăng trụ tam giác đều, tìm vị trí M∈A′C′, N∈BC′ để cầu MN ngắn nhất (MN vuông góc hai cạnh, giải bằng tích vô hướng toạ độ): đúng mô tả đọc kích thước thành toạ độ và tính dây/cầu ngắn nhất."
+    }
+  ],
+  "khong_xep_duoc": [
+    {
+      "ma_cau": "T1120000007828",
+      "ly_do": "Thuộc chương Nguyên hàm–Tích phân (bảng NH-TP), không thuộc 4 chương đang xét: tích phân hàm ẩn cho bởi hệ thức f, f′ (đoán/đánh giá f rồi tính ∫); bảng NH-TP thiếu dạng \"tích phân hàm ẩn, bất đẳng thức tích phân\" — cần đề xuất ở lượt NH-TP."
+    },
+    {
+      "ma_cau": "T1120000002814",
+      "ly_do": "Thuộc chương Nguyên hàm–Tích phân (bảng NH-TP), không thuộc 4 chương đang xét: tích phân hàm ẩn cho bởi hệ thức f, f′ (đoán/đánh giá f rồi tính ∫); bảng NH-TP thiếu dạng \"tích phân hàm ẩn, bất đẳng thức tích phân\" — cần đề xuất ở lượt NH-TP."
+    },
+    {
+      "ma_cau": "T1120000007543",
+      "ly_do": "Thuộc chương Nguyên hàm–Tích phân: hàm ẩn f·f′=(2x+1)√(1+f²), đổi biến u=√(1+f²) (nguyên hàm hàm ẩn); bảng NH-TP thiếu dạng này (hai câu trùng đề) — cần đề xuất ở lượt NH-TP."
+    },
+    {
+      "ma_cau": "T11200000010369",
+      "ly_do": "Thuộc chương Nguyên hàm–Tích phân: hàm ẩn f·f′=(2x+1)√(1+f²), đổi biến u=√(1+f²) (nguyên hàm hàm ẩn); bảng NH-TP thiếu dạng này (hai câu trùng đề) — cần đề xuất ở lượt NH-TP."
+    },
+    {
+      "ma_cau": "T1120000006824",
+      "ly_do": "Thuộc chương Nguyên hàm–Tích phân: tích phân căn bậc hai của tam thức bậc hai (đổi biến lượng giác hoặc diện tích hình tròn); bảng NH-TP thiếu dạng này — cần đề xuất ở lượt NH-TP."
+    },
+    {
+      "ma_cau": "T1120000006807",
+      "ly_do": "Thuộc chương Nguyên hàm–Tích phân: tích phân căn bậc hai của tam thức bậc hai (đổi biến lượng giác hoặc diện tích hình tròn); bảng NH-TP thiếu dạng này — cần đề xuất ở lượt NH-TP."
+    },
+    {
+      "ma_cau": "T1120000007821",
+      "ly_do": "Thuộc chương Nguyên hàm–Tích phân: tích phân đổi biến cho hàm ẩn f(kx), f(3lnx−4)… (từ ∫f hoặc đồ thị cho sẵn); bảng NH-TP thiếu dạng đổi biến — cần đề xuất ở lượt NH-TP."
+    },
+    {
+      "ma_cau": "T1120000007859",
+      "ly_do": "Thuộc chương Nguyên hàm–Tích phân: tích phân đổi biến cho hàm ẩn f(kx), f(3lnx−4)… (từ ∫f hoặc đồ thị cho sẵn); bảng NH-TP thiếu dạng đổi biến — cần đề xuất ở lượt NH-TP."
+    },
+    {
+      "ma_cau": "T1120000002740",
+      "ly_do": "Thuộc chương Nguyên hàm–Tích phân: tích phân đổi biến cho hàm ẩn f(kx), f(3lnx−4)… (từ ∫f hoặc đồ thị cho sẵn); bảng NH-TP thiếu dạng đổi biến — cần đề xuất ở lượt NH-TP."
+    },
+    {
+      "ma_cau": "T1120000002815",
+      "ly_do": "Thuộc chương Nguyên hàm–Tích phân: tích phân đổi biến cho hàm ẩn f(kx), f(3lnx−4)… (từ ∫f hoặc đồ thị cho sẵn); bảng NH-TP thiếu dạng đổi biến — cần đề xuất ở lượt NH-TP."
+    },
+    {
+      "ma_cau": "T1120000007581",
+      "ly_do": "Thuộc chương Nguyên hàm–Tích phân: nguyên hàm (ln x)/x bằng đổi biến t=ln x; bảng NH-TP thiếu dạng nguyên hàm đổi biến."
+    },
+    {
+      "ma_cau": "T1120000002816",
+      "ly_do": "Thuộc chương Nguyên hàm–Tích phân: tích phân có hàm ẩn đối xứng tâm, cần đổi biến/từng phần; bảng NH-TP thiếu dạng hàm ẩn."
+    },
+    {
+      "ma_cau": "T1120000002672",
+      "ly_do": "Thuộc Nguyên hàm–Tích phân / Hình học: thể tích vật thể tròn xoay thực tế (ly nón cụt có nắp nửa cầu; hồ lô hai chỏm cầu và trụ) giải bằng hệ trục Oxy và tích phân; không thuộc 4 chương đang xét, cần xem lại ở lượt NH-TP (thể tích khối tròn xoay)."
+    },
+    {
+      "ma_cau": "T1120000002679",
+      "ly_do": "Thuộc Nguyên hàm–Tích phân / Hình học: thể tích vật thể tròn xoay thực tế (ly nón cụt có nắp nửa cầu; hồ lô hai chỏm cầu và trụ) giải bằng hệ trục Oxy và tích phân; không thuộc 4 chương đang xét, cần xem lại ở lượt NH-TP (thể tích khối tròn xoay)."
+    },
+    {
+      "ma_cau": "T1120000008754",
+      "ly_do": "Câu Đúng/Sai ứng dụng tích phân (vận tốc–quãng đường, tốc độ tăng trưởng): Đúng/Sai ⇒ kho riêng cấp chủ đề (không vào kho dạng); và thuộc chương Nguyên hàm–Tích phân."
+    },
+    {
+      "ma_cau": "T1120000008793",
+      "ly_do": "Câu Đúng/Sai ứng dụng tích phân (vận tốc–quãng đường, tốc độ tăng trưởng): Đúng/Sai ⇒ kho riêng cấp chủ đề (không vào kho dạng); và thuộc chương Nguyên hàm–Tích phân."
+    },
+    {
+      "ma_cau": "T1120000008798",
+      "ly_do": "Câu Đúng/Sai ứng dụng tích phân (vận tốc–quãng đường, tốc độ tăng trưởng): Đúng/Sai ⇒ kho riêng cấp chủ đề (không vào kho dạng); và thuộc chương Nguyên hàm–Tích phân."
+    },
+    {
+      "ma_cau": "T1120000008795",
+      "ly_do": "Câu Đúng/Sai ứng dụng tích phân (vận tốc–quãng đường, tốc độ tăng trưởng): Đúng/Sai ⇒ kho riêng cấp chủ đề (không vào kho dạng); và thuộc chương Nguyên hàm–Tích phân."
+    },
+    {
+      "ma_cau": "T1120000008792",
+      "ly_do": "Câu Đúng/Sai ứng dụng tích phân (vận tốc–quãng đường, tốc độ tăng trưởng): Đúng/Sai ⇒ kho riêng cấp chủ đề (không vào kho dạng); và thuộc chương Nguyên hàm–Tích phân."
+    },
+    {
+      "ma_cau": "T112020305001",
+      "ly_do": "Câu Đúng/Sai về hàm số y=(x²−x+1)/(x−1) (tiếp tuyến, tâm đối xứng): Đúng/Sai ⇒ kho riêng cấp chủ đề, không gắn dạng."
+    },
+    {
+      "ma_cau": "T1120000005852",
+      "ly_do": "Đề thiếu: chỉ có \"đồ thị như hình vẽ\" và bốn phương án, mất câu hỏi và hình (lời giải gợi ý GTLN trên [0;3], tức NDB02474), không đủ nhân chứng để gắn dạng."
+    },
+    {
+      "ma_cau": "T1120000008557",
+      "ly_do": "Thuộc nhánh HGT (Oxyz): bài GPS tìm M làm MA+MB+MC+MD nhỏ nhất (điểm Fermat trong không gian, M(1;2;3)), không nằm trong bảng Vectơ (hai câu trùng đề, đáp án hỏi MO≈3,7 và a²−b²+c²=6)."
+    },
+    {
+      "ma_cau": "T1120000008558",
+      "ly_do": "Thuộc nhánh HGT (Oxyz): bài GPS tìm M làm MA+MB+MC+MD nhỏ nhất (điểm Fermat trong không gian, M(1;2;3)), không nằm trong bảng Vectơ (hai câu trùng đề, đáp án hỏi MO≈3,7 và a²−b²+c²=6)."
+    },
+    {
+      "ma_cau": "T1120000008657",
+      "ly_do": "Thuộc nhánh HGT (Oxyz): bài GPS, M trên đoạn AB làm tổng khoảng cách từ A,B,C đến đường thẳng MD lớn nhất (khoảng cách điểm–đường thẳng, cực trị)."
+    },
+    {
+      "ma_cau": "T11200000010307",
+      "ly_do": "Thuộc nhánh HGT (Oxyz): MB²+MC²=18 ⇒ M thuộc mặt cầu tâm trung điểm BC, tìm khoảng cách ngắn nhất AM tới mặt cầu."
+    },
+    {
+      "ma_cau": "T11200000010549",
+      "ly_do": "Thuộc nhánh HGT (Oxyz): bài GPS giải hệ bốn khoảng cách MA,MB,MC,MD (trừ các phương trình mặt cầu, giao các mặt cầu) rồi tính OM; NDB02555 đã ghi bài GPS thuộc PP toạ độ."
+    },
+    {
+      "ma_cau": "T11200000010552",
+      "ly_do": "Thuộc nhánh HGT (Oxyz): bài GPS giải hệ bốn khoảng cách MA,MB,MC,MD (trừ các phương trình mặt cầu, giao các mặt cầu) rồi tính OM; NDB02555 đã ghi bài GPS thuộc PP toạ độ."
+    },
+    {
+      "ma_cau": "T1120000007611",
+      "ly_do": "Thuộc nhánh HGT (Oxyz): viết phương trình đường thẳng qua A song song với đường thẳng d′."
+    },
+    {
+      "ma_cau": "T1120000007210",
+      "ly_do": "Thuộc nhánh HGT (Oxyz): khoảng cách từ điểm đến mặt phẳng (AEF), phải lập phương trình mặt phẳng."
+    },
+    {
+      "ma_cau": "T1120000007692",
+      "ly_do": "Thuộc nhánh HGT (Oxyz): mặt nước nghiêng trong bể lập phương, góc giữa hai mặt phẳng (dùng phương trình mặt phẳng)."
+    },
+    {
+      "ma_cau": "T1120000007612",
+      "ly_do": "Thuộc nhánh HGT (Oxyz): viết phương trình mặt phẳng qua điểm có vectơ pháp tuyến cho trước."
+    },
+    {
+      "ma_cau": "T1120000007613",
+      "ly_do": "Thuộc nhánh HGT (Oxyz): viết phương trình mặt cầu tâm I đi qua A."
+    },
+    {
+      "ma_cau": "T1120000007623",
+      "ly_do": "Thuộc nhánh HGT (Oxyz): khoảng cách từ G đến mặt phẳng (OBED) của sân vận động hình chóp cụt, phải lập phương trình mặt phẳng."
+    },
+    {
+      "ma_cau": "T1120000007001",
+      "ly_do": "Thuộc nhánh HGT (Oxyz): mặt phẳng (P) vườn hoa, hai cột đèn vuông góc, góc giữa tia sáng và mặt phẳng."
+    },
+    {
+      "ma_cau": "T1120000007618",
+      "ly_do": "Thuộc nhánh HGT (Oxyz): hình chiếu của điểm lên các mặt phẳng toạ độ rồi viết phương trình mặt phẳng (MNP)."
+    },
+    {
+      "ma_cau": "T1120000006967",
+      "ly_do": "Thuộc nhánh HGT (Oxyz): lập phương trình mặt phẳng chứa quỹ đạo quả bóng vuông góc với mặt đất."
+    },
+    {
+      "ma_cau": "T112070109015",
+      "ly_do": "Vật lí thuần (lực ma sát F=μN, vật chuyển động thẳng đều ⇒ F=Fms), không dùng phép toán vectơ; chỉ 1 câu nên chưa lập dạng \"lực cân bằng/ma sát đơn giản\"; không khớp NDB02561/02562 (hợp lực, lực căng)."
+    },
+    {
+      "ma_cau": "T1120000005410",
+      "ly_do": "Cấp số cộng (lớp 11), không thuộc bảng đích khối 12."
+    },
+    {
+      "ma_cau": "T112020402122",
+      "ly_do": "Cấp số cộng (lớp 11), không thuộc bảng đích khối 12."
+    },
+    {
+      "ma_cau": "T1120000007587",
+      "ly_do": "Cấp số cộng (lớp 11), không thuộc bảng đích khối 12."
+    },
+    {
+      "ma_cau": "T1120000005388",
+      "ly_do": "Cấp số cộng (lớp 11), không thuộc bảng đích khối 12."
+    },
+    {
+      "ma_cau": "T1120000007602",
+      "ly_do": "Cấp số cộng (lớp 11), không thuộc bảng đích khối 12."
+    },
+    {
+      "ma_cau": "T1120000007453",
+      "ly_do": "Cấp số nhân (lớp 11), không thuộc bảng đích khối 12."
+    },
+    {
+      "ma_cau": "T112020402179",
+      "ly_do": "Cấp số nhân (lớp 11), không thuộc bảng đích khối 12."
+    },
+    {
+      "ma_cau": "T1120000007014",
+      "ly_do": "Cấp số nhân (lớp 11), không thuộc bảng đích khối 12."
+    },
+    {
+      "ma_cau": "T1120000005418",
+      "ly_do": "Cấp số cộng kết hợp phương trình mũ (lớp 11), không thuộc bảng đích khối 12."
+    },
+    {
+      "ma_cau": "T1120000007015",
+      "ly_do": "Phương trình lượng giác cơ bản (lớp 11), không thuộc bảng đích khối 12."
+    },
+    {
+      "ma_cau": "T112000000724",
+      "ly_do": "Phương trình lượng giác cơ bản (lớp 11), không thuộc bảng đích khối 12."
+    },
+    {
+      "ma_cau": "T1120000007603",
+      "ly_do": "Phương trình lượng giác cơ bản (lớp 11), không thuộc bảng đích khối 12."
+    },
+    {
+      "ma_cau": "T1120000006600",
+      "ly_do": "Đạo hàm hàm lượng giác (lớp 11), không có dạng trong bảng Hàm số khối 12."
+    },
+    {
+      "ma_cau": "T1120000005403",
+      "ly_do": "Chương Mũ và Logarit (phương trình/bất phương trình mũ, logarit, biến đổi logarit), không thuộc 4 chương đang xét; bảng Mũ–Logarit khối 12 chưa có dạng tương ứng."
+    },
+    {
+      "ma_cau": "T1120000007454",
+      "ly_do": "Chương Mũ và Logarit (phương trình/bất phương trình mũ, logarit, biến đổi logarit), không thuộc 4 chương đang xét; bảng Mũ–Logarit khối 12 chưa có dạng tương ứng."
+    },
+    {
+      "ma_cau": "T1120000007604",
+      "ly_do": "Chương Mũ và Logarit (phương trình/bất phương trình mũ, logarit, biến đổi logarit), không thuộc 4 chương đang xét; bảng Mũ–Logarit khối 12 chưa có dạng tương ứng."
+    },
+    {
+      "ma_cau": "T1120000005406",
+      "ly_do": "Chương Mũ và Logarit (phương trình/bất phương trình mũ, logarit, biến đổi logarit), không thuộc 4 chương đang xét; bảng Mũ–Logarit khối 12 chưa có dạng tương ứng."
+    },
+    {
+      "ma_cau": "T1120000007605",
+      "ly_do": "Chương Mũ và Logarit (phương trình/bất phương trình mũ, logarit, biến đổi logarit), không thuộc 4 chương đang xét; bảng Mũ–Logarit khối 12 chưa có dạng tương ứng."
+    },
+    {
+      "ma_cau": "T1120000005386",
+      "ly_do": "Chương Mũ và Logarit (phương trình/bất phương trình mũ, logarit, biến đổi logarit), không thuộc 4 chương đang xét; bảng Mũ–Logarit khối 12 chưa có dạng tương ứng."
+    },
+    {
+      "ma_cau": "T112000000723",
+      "ly_do": "Chương Mũ và Logarit (phương trình/bất phương trình mũ, logarit, biến đổi logarit), không thuộc 4 chương đang xét; bảng Mũ–Logarit khối 12 chưa có dạng tương ứng."
+    },
+    {
+      "ma_cau": "T1120000003406",
+      "ly_do": "Chương Mũ và Logarit (phương trình/bất phương trình mũ, logarit, biến đổi logarit), không thuộc 4 chương đang xét; bảng Mũ–Logarit khối 12 chưa có dạng tương ứng."
+    },
+    {
+      "ma_cau": "T1120000007449",
+      "ly_do": "Chương Mũ và Logarit (phương trình/bất phương trình mũ, logarit, biến đổi logarit), không thuộc 4 chương đang xét; bảng Mũ–Logarit khối 12 chưa có dạng tương ứng."
+    },
+    {
+      "ma_cau": "T1120000007592",
+      "ly_do": "Chương Mũ và Logarit (phương trình/bất phương trình mũ, logarit, biến đổi logarit), không thuộc 4 chương đang xét; bảng Mũ–Logarit khối 12 chưa có dạng tương ứng."
+    },
+    {
+      "ma_cau": "T1120000007010",
+      "ly_do": "Chương Mũ và Logarit (phương trình/bất phương trình mũ, logarit, biến đổi logarit), không thuộc 4 chương đang xét; bảng Mũ–Logarit khối 12 chưa có dạng tương ứng."
+    },
+    {
+      "ma_cau": "T112020402284",
+      "ly_do": "Ứng dụng hàm mũ–logarit (tăng trưởng liên tục A=Pe^{rt}, lãi kép, vay trả góp): thuộc Mũ–Logarit / dãy số lớp 11, không thuộc 4 chương đang xét; cần bảng riêng cho \"lãi kép, tăng trưởng mũ\"."
+    },
+    {
+      "ma_cau": "T112020402229",
+      "ly_do": "Ứng dụng hàm mũ–logarit (tăng trưởng liên tục A=Pe^{rt}, lãi kép, vay trả góp): thuộc Mũ–Logarit / dãy số lớp 11, không thuộc 4 chương đang xét; cần bảng riêng cho \"lãi kép, tăng trưởng mũ\"."
+    },
+    {
+      "ma_cau": "T1120000007463",
+      "ly_do": "Ứng dụng hàm mũ–logarit (tăng trưởng liên tục A=Pe^{rt}, lãi kép, vay trả góp): thuộc Mũ–Logarit / dãy số lớp 11, không thuộc 4 chương đang xét; cần bảng riêng cho \"lãi kép, tăng trưởng mũ\"."
+    },
+    {
+      "ma_cau": "T112020402056",
+      "ly_do": "Ứng dụng hàm mũ–logarit (tăng trưởng liên tục A=Pe^{rt}, lãi kép, vay trả góp): thuộc Mũ–Logarit / dãy số lớp 11, không thuộc 4 chương đang xét; cần bảng riêng cho \"lãi kép, tăng trưởng mũ\"."
+    },
+    {
+      "ma_cau": "T1120000007027",
+      "ly_do": "Ứng dụng hàm mũ–logarit (tăng trưởng liên tục A=Pe^{rt}, lãi kép, vay trả góp): thuộc Mũ–Logarit / dãy số lớp 11, không thuộc 4 chương đang xét; cần bảng riêng cho \"lãi kép, tăng trưởng mũ\"."
+    },
+    {
+      "ma_cau": "T1120000007588",
+      "ly_do": "Quan hệ vuông góc trong hình chóp S.ABCD, SA ⊥ đáy (lớp 11), không dùng vectơ; thuộc Hình học không gian."
+    },
+    {
+      "ma_cau": "T1120000007452",
+      "ly_do": "Quan hệ vuông góc trong hình chóp S.ABCD, SA ⊥ đáy (lớp 11), không dùng vectơ; thuộc Hình học không gian."
+    },
+    {
+      "ma_cau": "T1120000005387",
+      "ly_do": "Quan hệ vuông góc trong hình chóp S.ABCD, SA ⊥ đáy (lớp 11), không dùng vectơ; thuộc Hình học không gian."
+    },
+    {
+      "ma_cau": "T112000000721",
+      "ly_do": "Quan hệ song song trong hình chóp (đường trung bình MN ∥ AC, lớp 11), không dùng vectơ; thuộc Hình học không gian."
+    },
+    {
+      "ma_cau": "T1120000005409",
+      "ly_do": "Thể tích khối chóp, lăng trụ, khối trụ bằng công thức (Hình học không gian khối đa diện/khối tròn xoay), không thuộc 4 chương đang xét."
+    },
+    {
+      "ma_cau": "T1120000007600",
+      "ly_do": "Thể tích khối chóp, lăng trụ, khối trụ bằng công thức (Hình học không gian khối đa diện/khối tròn xoay), không thuộc 4 chương đang xét."
+    },
+    {
+      "ma_cau": "T1120000003399",
+      "ly_do": "Thể tích khối chóp, lăng trụ, khối trụ bằng công thức (Hình học không gian khối đa diện/khối tròn xoay), không thuộc 4 chương đang xét."
+    },
+    {
+      "ma_cau": "T112000000728",
+      "ly_do": "Thể tích khối chóp, lăng trụ, khối trụ bằng công thức (Hình học không gian khối đa diện/khối tròn xoay), không thuộc 4 chương đang xét."
+    },
+    {
+      "ma_cau": "T112000000121",
+      "ly_do": "Thể tích khối chóp, lăng trụ, khối trụ bằng công thức (Hình học không gian khối đa diện/khối tròn xoay), không thuộc 4 chương đang xét."
+    },
+    {
+      "ma_cau": "T1120000005394",
+      "ly_do": "Hình học không gian: góc nhị diện của hình chóp và thể tích, không thuộc 4 chương đang xét."
+    },
+    {
+      "ma_cau": "T1120000005417",
+      "ly_do": "Hình học không gian (lớp 11–12): khoảng cách giữa hai đường thẳng chéo nhau trong hình chóp bằng hình học cổ điển, không cho hệ trục toạ độ nên không thuộc Vectơ."
+    },
+    {
+      "ma_cau": "T1120000007028",
+      "ly_do": "Hình học không gian (lớp 11–12): khoảng cách giữa hai đường thẳng chéo nhau trong hình chóp bằng hình học cổ điển, không cho hệ trục toạ độ nên không thuộc Vectơ."
+    },
+    {
+      "ma_cau": "T112000000923",
+      "ly_do": "Hình học không gian: khối lập phương đặt trong ly hình trụ, thể tích nước tràn, không dùng vectơ."
+    },
+    {
+      "ma_cau": "T1120000003417",
+      "ly_do": "Toán rời rạc (chu trình ngắn nhất trên sơ đồ có trọng số), không có trong bảng đích khối 12."
+    }
+  ]
+}

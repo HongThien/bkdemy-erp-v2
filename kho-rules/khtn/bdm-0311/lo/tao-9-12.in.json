@@ -1,0 +1,2345 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00567",
+   "khoi": "9",
+   "chu_de": "Di truyền Nhiễm sắc thể",
+   "chuyen_de": "Nhiễm sắc thể và bộ nhiễm sắc thể",
+   "nhom": "Lý thuyết cơ bản về NST và bộ NST",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09120101001",
+     "loai": "trac_nghiem",
+     "de": "Quan sát hình bộ nhiễm sắc thể đang ở dạng kép. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120101-01-001-de.png) Mỗi NST kép trong hình gồm bao nhiêu chromatid dính nhau ở tâm động?",
+     "lua_chon": [
+      "1",
+      "2",
+      "4",
+      "3"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mỗi NST kép gồm 2 chromatid giống hệt nhau, dính nhau ở tâm động.\n\nVì sao các phương án khác sai:\n- A: Mỗi NST kép gồm 2 chromatid, không phải 1.\n- C: Chỉ có 2 chromatid trong một NST kép, không phải 4.\n- D: Số chromatid trong một NST kép là số chẵn, không phải 3."
+    },
+    {
+     "ma_cau": "K09120101002",
+     "loai": "trac_nghiem",
+     "de": "Tâm động của nhiễm sắc thể kép có vai trò gì?",
+     "lua_chon": [
+      "Tổng hợp protein cho nhiễm sắc thể",
+      "Hai NST trong cặp tương đồng bắt cặp với nhau tại đó",
+      "Nơi hai chromatid dính nhau, liên kết với thoi phân bào",
+      "Nhân đôi DNA của nhiễm sắc thể diễn ra tại đó"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tâm động là điểm hai chromatid của NST kép đính nhau, đồng thời là nơi thoi phân bào bám vào để kéo NST di chuyển.\n\nVì sao các phương án khác sai:\n- A: Tổng hợp protein diễn ra ở ribosome, không phải ở tâm động.\n- B: Sự bắt cặp giữa hai NST tương đồng (tiếp hợp) không diễn ra ở tâm động.\n- D: DNA nhân đôi dọc theo toàn bộ chiều dài NST, không riêng ở tâm động."
+    },
+    {
+     "ma_cau": "K09120101003",
+     "loai": "trac_nghiem",
+     "de": "Mỗi chromatid của nhiễm sắc thể được cấu tạo chủ yếu từ thành phần nào?",
+     "lua_chon": [
+      "Hai phân tử DNA xoắn kép với nhau",
+      "Một phân tử RNA liên kết với protein",
+      "Nhiều phân tử protein, không chứa DNA",
+      "Một phân tử DNA liên kết với protein"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Mỗi chromatid gồm một phân tử DNA liên kết với protein, xoắn lại thành sợi nhiễm sắc.\n\nVì sao các phương án khác sai:\n- A: Mỗi chromatid chỉ chứa một phân tử DNA, không phải hai.\n- B: Thành phần di truyền của chromatid là DNA, không phải RNA.\n- C: Chromatid luôn chứa DNA liên kết với protein, không phải chỉ protein."
+    },
+    {
+     "ma_cau": "K09120101004",
+     "loai": "trac_nghiem",
+     "de": "Nhiễm sắc thể ở dạng đơn có đặc điểm gì?",
+     "lua_chon": [
+      "Chỉ gồm một chromatid, có một tâm động",
+      "Gồm hai chromatid dính nhau ở tâm động",
+      "Không có tâm động",
+      "Gồm hai phân tử DNA tách rời nhau"
+     ],
+     "dap_an": "A",
+     "loi_giai": "NST dạng đơn chỉ có một chromatid (một phân tử DNA), vẫn có một tâm động.\n\nVì sao các phương án khác sai:\n- B: Đó là đặc điểm của NST dạng kép, không phải dạng đơn.\n- C: NST dạng đơn vẫn có tâm động, chỉ không có chromatid thứ hai.\n- D: NST đơn chỉ có một phân tử DNA, không phải hai phân tử tách rời."
+    },
+    {
+     "ma_cau": "K09120101005",
+     "loai": "trac_nghiem",
+     "de": "Nhiễm sắc thể chuyển từ dạng đơn sang dạng kép vào thời điểm nào?",
+     "lua_chon": [
+      "Ngay sau khi tế bào vừa phân chia xong",
+      "Sau khi DNA nhân đôi ở kì trung gian",
+      "Khi hai NST tương đồng trao đổi đoạn cho nhau",
+      "Khi tế bào bước vào kì sau của phân bào"
+     ],
+     "dap_an": "B",
+     "loi_giai": "DNA nhân đôi ở kì trung gian tạo ra chromatid thứ hai, làm NST chuyển từ dạng đơn sang dạng kép.\n\nVì sao các phương án khác sai:\n- A: Ngay sau khi phân chia xong, NST ở dạng đơn, chưa nhân đôi.\n- C: Trao đổi đoạn là hiện tượng khác, không phải thời điểm hình thành NST kép.\n- D: Ở kì sau, NST kép tách thành NST đơn, không phải hình thành NST kép."
+    },
+    {
+     "ma_cau": "K09120101006",
+     "loai": "trac_nghiem",
+     "de": "Vì sao hai chromatid của một nhiễm sắc thể kép giống hệt nhau về trình tự DNA?",
+     "lua_chon": [
+      "Vì một chromatid nhận từ bố, một chromatid nhận từ mẹ",
+      "Vì chúng mang các gene khác nhau",
+      "Vì chúng được tạo ra từ nhân đôi NST đơn ban đầu",
+      "Vì chúng được tạo ra ở hai lần phân bào khác nhau"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hai chromatid của một NST kép là bản sao của nhau, sinh ra từ quá trình nhân đôi DNA theo nguyên tắc bổ sung.\n\nVì sao các phương án khác sai:\n- A: Việc một NST nhận từ bố, một từ mẹ là đặc điểm của cặp NST tương đồng, không phải hai chromatid.\n- B: Hai chromatid của cùng một NST kép mang cùng bộ gene, không khác nhau.\n- D: Hai chromatid tạo ra cùng lúc khi NST nhân đôi ở kì trung gian, không phải ở hai lần phân bào."
+    },
+    {
+     "ma_cau": "K09120101007",
+     "loai": "trac_nghiem",
+     "de": "Hình dạng đặc trưng của nhiễm sắc thể (đóng xoắn cực đại, dễ quan sát dưới kính hiển vi) thể hiện rõ nhất ở kì nào của quá trình phân bào?",
+     "lua_chon": [
+      "Kì giữa",
+      "Kì đầu",
+      "Kì sau",
+      "Kì cuối"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ở kì giữa, nhiễm sắc thể đóng xoắn cực đại nên có hình dạng đặc trưng rõ nhất, dễ quan sát và đếm số lượng dưới kính hiển vi.\n\nVì sao các phương án khác sai:\n- B: Ở kì đầu, NST mới bắt đầu đóng xoắn, chưa co ngắn cực đại như ở kì giữa.\n- C: Ở kì sau, NST đã tách và đang di chuyển, không phải thời điểm co xoắn cực đại rõ nhất.\n- D: Ở kì cuối, NST bắt đầu duỗi xoắn trở lại, không còn co ngắn cực đại."
+    },
+    {
+     "ma_cau": "K09120101008",
+     "loai": "trac_nghiem",
+     "de": "Vì sao nhiễm sắc thể cần đóng xoắn cực đại ở kì giữa trước khi phân li ở kì sau?",
+     "lua_chon": [
+      "Để tăng số lượng NST trước khi phân chia",
+      "Để NST dễ di chuyển và phân li chính xác về hai cực",
+      "Để nhân đôi thêm một lần nữa trước khi phân li",
+      "Để chuyển từ dạng kép sang dạng đơn ngay tại kì giữa"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đóng xoắn cực đại giúp NST gọn lại, dễ di chuyển và phân li chính xác về hai cực tế bào ở kì sau mà không bị rối hay đứt gãy.\n\nVì sao các phương án khác sai:\n- A: Đóng xoắn không làm tăng số lượng NST, chỉ thay đổi mức độ co ngắn của NST.\n- C: NST đã nhân đôi từ kì trung gian trước đó, không nhân đôi thêm ở kì giữa.\n- D: NST chuyển từ kép sang đơn ở kì sau (khi tách chromatid), không phải ở kì giữa."
+    },
+    {
+     "ma_cau": "K09120101009",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới thể hiện bộ nhiễm sắc thể của một loài. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120101-02-001-de.png) Đếm số NST trong hình, bộ nhiễm sắc thể lưỡng bội (2n) của loài này bằng bao nhiêu?",
+     "lua_chon": [
+      "4",
+      "16",
+      "6",
+      "8"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đếm tổng số NST trong hình (mỗi cặp gồm 2 chiếc): hình có 4 cặp, tổng 2n = 8.\n\nVì sao các phương án khác sai:\n- A: 4 là số cặp NST tương đồng, không phải tổng số NST (2n).\n- B: 16 nhiều hơn số NST thực có trong hình.\n- C: Đếm chưa đủ số NST trong hình."
+    },
+    {
+     "ma_cau": "K09120101010",
+     "loai": "trac_nghiem",
+     "de": "Nhiễm sắc thể tương đồng là gì?",
+     "lua_chon": [
+      "Hai chromatid giống hệt nhau của cùng một NST kép",
+      "Cặp NST giống nhau, một chiếc từ bố, một chiếc từ mẹ",
+      "Cặp NST giới tính XX ở nam giới",
+      "Hai NST bất kì có kích thước bằng nhau"
+     ],
+     "dap_an": "B",
+     "loi_giai": "NST tương đồng là cặp NST giống nhau về hình dạng, kích thước, một chiếc từ bố và một chiếc từ mẹ.\n\nVì sao các phương án khác sai:\n- A: Đó là hai chromatid của một NST kép, không phải cặp NST tương đồng.\n- C: Ở nam giới, cặp NST giới tính là XY, không phải XX.\n- D: NST tương đồng phải cùng nguồn gốc bố - mẹ, không chỉ cần kích thước bằng nhau."
+    },
+    {
+     "ma_cau": "K09120101011",
+     "loai": "trac_nghiem",
+     "de": "Vì sao bộ nhiễm sắc thể 2n được gọi là bộ lưỡng bội?",
+     "lua_chon": [
+      "Vì mỗi NST trong tế bào đều ở dạng kép",
+      "Vì tế bào có 2 nhân",
+      "Vì các NST tồn tại thành từng cặp tương đồng",
+      "Vì tế bào chỉ có 2 loại NST, thường và giới tính"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Bộ NST 2n gọi là lưỡng bội vì các NST tồn tại thành từng cặp tương đồng, mỗi cặp gồm 2 chiếc.\n\nVì sao các phương án khác sai:\n- A: NST có thể ở dạng đơn hoặc kép tuỳ thời điểm, không liên quan tới tên gọi lưỡng bội.\n- B: Tế bào sinh dưỡng chỉ có 1 nhân, không phải 2 nhân.\n- D: Việc có 2 loại NST (thường và giới tính) không phải lí do gọi là lưỡng bội."
+    },
+    {
+     "ma_cau": "K09120101012",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới thể hiện bộ nhiễm sắc thể lưỡng bội của một loài khác. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120101-02-005-de.png) Bộ NST này gồm bao nhiêu cặp nhiễm sắc thể tương đồng?",
+     "lua_chon": [
+      "4",
+      "1",
+      "8",
+      "2"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hình có 2n = 4 NST, chia thành 2 cặp NST tương đồng.\n\nVì sao các phương án khác sai:\n- A: 4 là tổng số NST (2n), không phải số cặp.\n- B: Đếm thiếu, hình có nhiều hơn 1 cặp.\n- C: 8 nhiều hơn số NST thực có trong hình."
+    },
+    {
+     "ma_cau": "K09120101013",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới thể hiện bộ nhiễm sắc thể của một loài. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120101-02-006-de.png) Đếm số NST trong hình, bộ nhiễm sắc thể lưỡng bội (2n) của loài này bằng bao nhiêu?",
+     "lua_chon": [
+      "3",
+      "12",
+      "6",
+      "8"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đếm số NST có trong hình: bộ nhiễm sắc thể lưỡng bội (2n) = 6.\n\nVì sao các phương án khác sai:\n- A: 3 là bộ đơn bội (n), không phải bộ lưỡng bội (2n) — cần đếm đúng số NST có trong hình.\n- B: 12 nhiều hơn số NST thực tế có trong hình.\n- D: 8 không khớp với số NST được vẽ trong hình này."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00568",
+   "khoi": "9",
+   "chu_de": "Di truyền Nhiễm sắc thể",
+   "chuyen_de": "Nhiễm sắc thể và bộ nhiễm sắc thể",
+   "nhom": "Bài toán quy đổi Tế bào sinh dưỡng và Giao tử",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09120102001",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới thể hiện bộ NST của một giao tử, sinh ra từ loài có 2n = 8. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120101-02-002-de.png) Bộ NST đơn bội (n) của loài này bằng bao nhiêu?",
+     "lua_chon": [
+      "4",
+      "8",
+      "2",
+      "16"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Giao tử mang bộ NST đơn bội, chỉ 1 chiếc trong mỗi cặp tương đồng: đếm được 4 NST, vậy n = 4.\n\nVì sao các phương án khác sai:\n- B: 8 là số NST của tế bào sinh dưỡng (2n), không phải của giao tử.\n- C: Đếm thiếu số NST có trong hình.\n- D: 16 nhiều hơn số NST thực có trong hình giao tử."
+    },
+    {
+     "ma_cau": "K09120102002",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới thể hiện bộ NST của một giao tử, sinh ra từ loài có 2n = 6. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120101-02-007-de.png) Bộ NST đơn bội (n) của loài này bằng bao nhiêu?",
+     "lua_chon": [
+      "6",
+      "9",
+      "12",
+      "3"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Giao tử mang bộ NST đơn bội, bằng một nửa bộ lưỡng bội: n = 2n:2 = 6:2 = 3.\n\nVì sao các phương án khác sai:\n- A: 6 là bộ lưỡng bội (2n) của loài, không phải bộ đơn bội (n) của giao tử.\n- B: 9 không khớp với số NST của giao tử trong hình.\n- C: 12 lớn hơn nhiều so với số NST của giao tử trong hình."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00570",
+   "khoi": "9",
+   "chu_de": "Di truyền Nhiễm sắc thể",
+   "chuyen_de": "Nguyên phân và giảm phân",
+   "nhom": "Lý thuyết cơ bản về nguyên phân & giảm phân",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09120201001",
+     "loai": "trac_nghiem",
+     "de": "Ở kì giữa của nguyên phân, các NST kép có đặc điểm gì?",
+     "lua_chon": [
+      "Xếp thành một hàng ở mặt phẳng xích đạo",
+      "Xếp thành hai hàng ở mặt phẳng xích đạo",
+      "Đã tách thành NST đơn, di chuyển về hai cực tế bào",
+      "Đang tháo xoắn, màng nhân dần xuất hiện trở lại"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ở kì giữa nguyên phân, các NST kép xếp thành một hàng trên mặt phẳng xích đạo của thoi phân bào.\n\nVì sao các phương án khác sai:\n- B: Xếp thành hai hàng là đặc điểm của kì giữa giảm phân I, không phải nguyên phân.\n- C: NST tách thành NST đơn và di chuyển về hai cực là đặc điểm của kì sau.\n- D: Tháo xoắn, xuất hiện màng nhân là đặc điểm của kì cuối."
+    },
+    {
+     "ma_cau": "K09120201002",
+     "loai": "trac_nghiem",
+     "de": "Ở kì sau của nguyên phân, mỗi NST kép biến đổi như thế nào?",
+     "lua_chon": [
+      "Xếp thành một hàng ở mặt phẳng xích đạo",
+      "Tách thành 2 NST đơn, di chuyển về một cực tế bào",
+      "Tách nhau trong cặp tương đồng nhưng vẫn ở dạng kép",
+      "Bắt đầu đóng xoắn, co ngắn lại"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ở kì sau nguyên phân, mỗi NST kép tách thành hai NST đơn giống hệt nhau, mỗi NST đơn di chuyển về một cực tế bào.\n\nVì sao các phương án khác sai:\n- A: Xếp hàng ở mặt phẳng xích đạo là đặc điểm kì giữa, không phải kì sau.\n- C: Tách theo cặp tương đồng mà vẫn giữ dạng kép là đặc điểm kì sau giảm phân I.\n- D: Đóng xoắn, co ngắn là đặc điểm kì đầu, không phải kì sau."
+    },
+    {
+     "ma_cau": "K09120201003",
+     "loai": "trac_nghiem",
+     "de": "Ở kì đầu của nguyên phân, hiện tượng nào xảy ra?",
+     "lua_chon": [
+      "NST kép xếp thành một hàng ở mặt phẳng xích đạo",
+      "NST kép tách thành NST đơn",
+      "NST kép đóng xoắn, co ngắn; thoi phân bào dần hình thành",
+      "Màng nhân xuất hiện trở lại, NST tháo xoắn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ở kì đầu, các NST kép bắt đầu đóng xoắn, co ngắn lại và thoi phân bào dần được hình thành.\n\nVì sao các phương án khác sai:\n- A: Xếp hàng ở mặt phẳng xích đạo là đặc điểm kì giữa.\n- B: Tách thành NST đơn là đặc điểm kì sau.\n- D: Xuất hiện màng nhân, tháo xoắn là đặc điểm kì cuối."
+    },
+    {
+     "ma_cau": "K09120201004",
+     "loai": "trac_nghiem",
+     "de": "Ở kì giữa I của giảm phân, các cặp NST kép tương đồng xếp như thế nào?",
+     "lua_chon": [
+      "Xếp thành một hàng như ở nguyên phân",
+      "Đã tách rời nhau, di chuyển về hai cực tế bào",
+      "Đang tháo xoắn, chưa nhìn rõ hình dạng",
+      "Xếp thành hai hàng trên mặt phẳng xích đạo"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ở kì giữa I, mỗi cặp NST kép tương đồng xếp thành hai hàng trên mặt phẳng xích đạo, khác với một hàng ở nguyên phân.\n\nVì sao các phương án khác sai:\n- A: Xếp một hàng là đặc điểm kì giữa của nguyên phân, không phải giảm phân I.\n- B: Tách rời, di chuyển về hai cực là đặc điểm kì sau I.\n- C: Tháo xoắn là đặc điểm khác, NST kì giữa đã co xoắn rõ."
+    },
+    {
+     "ma_cau": "K09120201005",
+     "loai": "trac_nghiem",
+     "de": "Ở kì sau I của giảm phân, mỗi NST kép trong cặp tương đồng di chuyển như thế nào?",
+     "lua_chon": [
+      "Mỗi NST kép phân li về một cực, không tách chromatid",
+      "Mỗi NST kép tách thành 2 NST đơn rồi mới phân li",
+      "Cả cặp NST tương đồng cùng di chuyển về một cực",
+      "NST kép nhân đôi thêm một lần nữa"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ở kì sau I, mỗi NST kép (nguyên vẹn, chưa tách chromatid) trong cặp tương đồng phân li về một cực tế bào.\n\nVì sao các phương án khác sai:\n- B: Việc NST kép tách thành NST đơn diễn ra ở kì sau II hoặc ở nguyên phân, không phải kì sau I.\n- C: Hai NST trong cặp tương đồng phân li về hai cực khác nhau, không cùng một cực.\n- D: DNA chỉ nhân đôi một lần ở kì trung gian trước giảm phân I, không nhân đôi thêm."
+    },
+    {
+     "ma_cau": "K09120201006",
+     "loai": "trac_nghiem",
+     "de": "Ở kì sau II của giảm phân, mỗi NST kép biến đổi ra sao?",
+     "lua_chon": [
+      "Cặp NST tương đồng tách nhau, NST vẫn ở dạng kép",
+      "Tách thành 2 NST đơn, phân li về hai cực tế bào",
+      "NST tiếp tục nhân đôi thêm một lần",
+      "NST kép xếp thành hai hàng ở mặt phẳng xích đạo"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ở kì sau II, mỗi NST kép tách thành hai NST đơn, mỗi NST đơn di chuyển về một cực tế bào, giống nguyên phân.\n\nVì sao các phương án khác sai:\n- A: Cặp NST tương đồng tách nhau mà vẫn ở dạng kép là đặc điểm kì sau I, không phải kì sau II.\n- C: DNA không nhân đôi thêm trong giảm phân II.\n- D: Xếp hai hàng là đặc điểm kì giữa I, không phải kì sau II."
+    },
+    {
+     "ma_cau": "K09120201007",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới mô tả một giai đoạn trong quá trình nguyên phân của tế bào có 2n = 4. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120102-03-001-de.png) Đây là kì nào?",
+     "lua_chon": [
+      "Kì đầu",
+      "Kì giữa",
+      "Kì sau",
+      "Kì cuối"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hình cho thấy tế bào đã tách thành hai tế bào con riêng biệt, mỗi tế bào có bộ NST đơn — đây là kì cuối.\n\nVì sao các phương án khác sai:\n- A: Ở kì đầu, tế bào chưa tách thành hai tế bào con, NST đang đóng xoắn.\n- B: Ở kì giữa, các NST kép xếp thành một hàng, tế bào chưa tách đôi.\n- C: Ở kì sau, NST đơn đang di chuyển về hai cực nhưng tế bào chưa tách rời hẳn."
+    },
+    {
+     "ma_cau": "K09120201008",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới mô tả một giai đoạn trong giảm phân I của tế bào có 2n = 6. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120102-03-002-de.png) Đây là kì nào?",
+     "lua_chon": [
+      "Kì đầu I",
+      "Kì giữa I",
+      "Kì sau I",
+      "Kì cuối I"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hình cho thấy mỗi NST kép trong cặp tương đồng đang phân li về một cực, các NST vẫn ở dạng kép — đây là kì sau I.\n\nVì sao các phương án khác sai:\n- A: Ở kì đầu I, NST kép mới bắt đầu đóng xoắn, chưa di chuyển về hai cực.\n- B: Ở kì giữa I, các cặp NST kép xếp thành hai hàng, chưa phân li.\n- D: Ở kì cuối I, tế bào đã tách thành hai tế bào riêng biệt."
+    },
+    {
+     "ma_cau": "K09120201009",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới mô tả một giai đoạn trong quá trình nguyên phân của tế bào có 2n = 4. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120102-03-003-de.png) Đây là kì nào?",
+     "lua_chon": [
+      "Kì đầu",
+      "Kì giữa",
+      "Kì sau",
+      "Kì cuối"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hình mô tả NST bắt đầu đóng xoắn, màng nhân bắt đầu tiêu biến — đây là đặc điểm của kì đầu.\n\nVì sao các phương án khác sai:\n- B: Ở kì giữa, các NST kép xếp thành một hàng ở mặt phẳng xích đạo, khác với hình mô tả.\n- C: Ở kì sau, các NST đã tách và di chuyển về hai cực, khác với hình mô tả.\n- D: Ở kì cuối, NST đã di chuyển đến hai cực và bắt đầu duỗi xoắn, khác với hình mô tả."
+    },
+    {
+     "ma_cau": "K09120201010",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới mô tả một giai đoạn trong giảm phân II của tế bào có 2n = 6. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120102-03-004-de.png) Đây là kì nào?",
+     "lua_chon": [
+      "Kì đầu II",
+      "Kì giữa II",
+      "Kì sau II",
+      "Kì cuối II"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hình mô tả các NST kép xếp thành một hàng ở mặt phẳng xích đạo — đây là đặc điểm của kì giữa II.\n\nVì sao các phương án khác sai:\n- A: Ở kì đầu II, NST chưa xếp thành hàng ở mặt phẳng xích đạo như hình mô tả.\n- C: Ở kì sau II, các chromatid đã tách nhau, khác với hình mô tả.\n- D: Ở kì cuối II, NST đã di chuyển đến hai cực và tế bào bắt đầu phân chia, khác với hình mô tả."
+    },
+    {
+     "ma_cau": "K09120201011",
+     "loai": "trac_nghiem",
+     "de": "Tế bào con tạo ra từ nguyên phân có bộ NST như thế nào so với tế bào mẹ?",
+     "lua_chon": [
+      "Giống hệt tế bào mẹ, đều mang bộ NST 2n",
+      "Giảm đi một nửa, chỉ còn bộ NST n",
+      "Tăng gấp đôi, mang bộ NST 4n",
+      "Không cố định, tuỳ loại tế bào mà giữ 2n hoặc n"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nguyên phân tạo ra 2 tế bào con có bộ NST 2n giống hệt tế bào mẹ ban đầu.\n\nVì sao các phương án khác sai:\n- B: Giảm còn n là kết quả của giảm phân, không phải nguyên phân.\n- C: NST không tăng gấp đôi qua nguyên phân, tế bào con vẫn giữ nguyên 2n.\n- D: Mọi tế bào con sinh ra từ nguyên phân đều mang bộ NST 2n, không có trường hợp giảm còn n."
+    },
+    {
+     "ma_cau": "K09120201012",
+     "loai": "trac_nghiem",
+     "de": "Trong giảm phân, nhiễm sắc thể tái bản (nhân đôi) mấy lần cho cả hai lần phân bào (giảm phân I và giảm phân II)?",
+     "lua_chon": [
+      "2 lần",
+      "4 lần",
+      "1 lần",
+      "0 lần, giảm phân không cần tái bản NST"
+     ],
+     "dap_an": "C",
+     "loi_giai": "NST chỉ tái bản 1 lần (ở kì trung gian trước giảm phân I), sau đó trải qua 2 lần phân bào liên tiếp (giảm phân I và II) mà không tái bản thêm.\n\nVì sao các phương án khác sai:\n- A: NST chỉ tái bản 1 lần trước giảm phân I, không tái bản thêm lần nào trước giảm phân II.\n- B: 4 lần là con số không đúng; NST chỉ tái bản đúng 1 lần cho toàn bộ quá trình giảm phân.\n- D: Giảm phân vẫn cần tái bản NST 1 lần trước khi bước vào giảm phân I."
+    },
+    {
+     "ma_cau": "K09120201013",
+     "loai": "trac_nghiem",
+     "de": "Tế bào con tạo ra từ giảm phân có bộ NST như thế nào so với tế bào mẹ?",
+     "lua_chon": [
+      "Bộ NST giữ nguyên (2n), giống hệt tế bào mẹ",
+      "Bộ NST tăng gấp đôi (4n) so với tế bào mẹ",
+      "Bộ NST không xác định, tuỳ loại tế bào",
+      "Bộ NST giảm đi một nửa (n) so với tế bào mẹ (2n)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Giảm phân gồm 1 lần tái bản NST nhưng 2 lần phân bào, tạo ra tế bào con có bộ NST giảm đi một nửa (n) so với tế bào mẹ (2n).\n\nVì sao các phương án khác sai:\n- A: Giảm phân làm giảm một nửa bộ NST, khác với nguyên phân (giữ nguyên 2n).\n- B: Không có quá trình phân bào bình thường nào làm tăng gấp đôi bộ NST của tế bào con.\n- C: Bộ NST của tế bào con sau giảm phân luôn là n, không phụ thuộc loại tế bào."
+    },
+    {
+     "ma_cau": "K09120201014",
+     "loai": "trac_nghiem",
+     "de": "Nhờ quá trình nào mà cơ thể đa bào lớn lên và các mô, cơ quan bị tổn thương có thể được thay thế?",
+     "lua_chon": [
+      "Giảm phân",
+      "Nguyên phân",
+      "Thụ tinh",
+      "Sự nhân đôi DNA đơn lẻ, không kèm phân chia tế bào"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nguyên phân tạo ra các tế bào mới giống hệt tế bào mẹ, giúp cơ thể sinh trưởng và thay thế tế bào bị tổn thương.\n\nVì sao các phương án khác sai:\n- A: Giảm phân tạo giao tử phục vụ sinh sản hữu tính, không trực tiếp giúp cơ thể lớn lên.\n- C: Thụ tinh là sự kết hợp giao tử tạo hợp tử, không phải quá trình tạo thêm tế bào cơ thể.\n- D: Chỉ nhân đôi DNA mà không phân chia tế bào thì số lượng tế bào không tăng."
+    },
+    {
+     "ma_cau": "K09120201015",
+     "loai": "trac_nghiem",
+     "de": "Giảm phân kết hợp với thụ tinh có ý nghĩa gì đối với loài sinh sản hữu tính?",
+     "lua_chon": [
+      "Duy trì ổn định bộ NST đặc trưng của loài qua các thế hệ",
+      "Làm tăng gấp đôi bộ NST của loài sau mỗi thế hệ",
+      "Làm bộ NST của loài giảm dần qua các thế hệ",
+      "Không ảnh hưởng gì đến bộ NST của loài qua các thế hệ"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Giảm phân tạo giao tử mang bộ NST đơn bội (n); thụ tinh kết hợp hai giao tử khôi phục bộ NST lưỡng bội (2n), nhờ đó duy trì ổn định bộ NST đặc trưng của loài qua các thế hệ.\n\nVì sao các phương án khác sai:\n- B: Giảm phân giảm một nửa bộ NST, thụ tinh khôi phục lại 2n, không làm tăng gấp đôi qua các thế hệ.\n- C: Nhờ giảm phân và thụ tinh, bộ NST của loài được duy trì ổn định, không giảm dần.\n- D: Giảm phân và thụ tinh có vai trò quan trọng trong việc duy trì bộ NST đặc trưng của loài."
+    },
+    {
+     "ma_cau": "K09120201016",
+     "loai": "trac_nghiem",
+     "de": "Sự phân li độc lập và tổ hợp tự do của các nhiễm sắc thể trong giảm phân, kết hợp với thụ tinh, tạo ra điều gì ở đời con?",
+     "lua_chon": [
+      "Đời con luôn giống hệt bố mẹ về mọi tính trạng",
+      "Nguồn biến dị tổ hợp phong phú, làm đa dạng các cá thể trong loài",
+      "Đời con luôn mang bộ NST gấp đôi bố mẹ",
+      "Đời con không mang bất kì đặc điểm nào của bố mẹ"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Sự phân li độc lập, tổ hợp tự do của NST trong giảm phân cùng với thụ tinh ngẫu nhiên tạo ra nguồn biến dị tổ hợp phong phú ở đời con.\n\nVì sao các phương án khác sai:\n- A: Chính sự phân li và tổ hợp NST khác nhau khiến đời con có tổ hợp gene khác bố mẹ, không giống hệt.\n- C: Thụ tinh khôi phục bộ NST 2n như bố mẹ, không tạo ra bộ NST gấp đôi.\n- D: Đời con vẫn mang các gene từ bố và mẹ, chỉ khác nhau ở tổ hợp gene."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00571",
+   "khoi": "9",
+   "chu_de": "Di truyền Nhiễm sắc thể",
+   "chuyen_de": "Nguyên phân và giảm phân",
+   "nhom": "Các dạng bài tập tính toán cơ bản về Nguyên phân và giảm phân",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09120202001",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào sinh dưỡng thực hiện nguyên phân liên tiếp 3 lần. Số tế bào con được tạo thành là bao nhiêu?",
+     "lua_chon": [
+      "6",
+      "4",
+      "8",
+      "9"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Sau k lần nguyên phân liên tiếp, số tế bào con là 2^k; với k = 3: 2³ = 8 tế bào.\n\nVì sao các phương án khác sai:\n- A: 6 = 2 × 3 (nhân đôi số lần chia), không đúng vì số tế bào tăng theo luỹ thừa.\n- B: 4 = 2^(3−1), thiếu một lần nhân đôi.\n- D: 9 = 3², nhầm công thức luỹ thừa của 2 thành bình phương của k."
+    },
+    {
+     "ma_cau": "K09120202002",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào sinh dưỡng thực hiện nguyên phân liên tiếp 5 lần. Số tế bào con được tạo thành là bao nhiêu?",
+     "lua_chon": [
+      "10",
+      "25",
+      "16",
+      "32"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Số tế bào con = 2^k; với k = 5: 2⁵ = 32 tế bào.\n\nVì sao các phương án khác sai:\n- A: 10 = 2 × 5, nhầm phép nhân với phép luỹ thừa.\n- B: 25 = 5², nhầm công thức.\n- C: 16 = 2^(5−1), thiếu một lần nhân đôi."
+    },
+    {
+     "ma_cau": "K09120202003",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào sinh dưỡng thực hiện nguyên phân liên tiếp 6 lần. Số tế bào con được tạo thành là bao nhiêu?",
+     "lua_chon": [
+      "64",
+      "12",
+      "36",
+      "32"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Số tế bào con = 2^k; với k = 6: 2⁶ = 64 tế bào.\n\nVì sao các phương án khác sai:\n- B: 12 = 2 × 6, nhầm phép nhân với phép luỹ thừa.\n- C: 36 = 6², nhầm công thức.\n- D: 32 = 2^(6−1), thiếu một lần nhân đôi."
+    },
+    {
+     "ma_cau": "K09120202004",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào sinh dưỡng thực hiện nguyên phân liên tiếp 7 lần. Số tế bào con được tạo thành là bao nhiêu?",
+     "lua_chon": [
+      "14",
+      "128",
+      "49",
+      "64"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Số tế bào con = 2^k; với k = 7: 2⁷ = 128 tế bào.\n\nVì sao các phương án khác sai:\n- A: 14 = 2 × 7, nhầm phép nhân với phép luỹ thừa.\n- C: 49 = 7², nhầm công thức.\n- D: 64 = 2^(7−1), thiếu một lần nhân đôi."
+    },
+    {
+     "ma_cau": "K09120202005",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào sinh dưỡng thực hiện nguyên phân liên tiếp 4 lần. Số tế bào con được tạo thành là bao nhiêu?",
+     "lua_chon": [
+      "8",
+      "32",
+      "16",
+      "4"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Số tế bào con sau k lần nguyên phân = 2^k = 2⁴ = 16.\n\nVì sao các phương án khác sai:\n- A: 8 = 2³, thiếu một lần nguyên phân so với đề bài (4 lần).\n- B: 32 = 2⁵, thừa một lần nguyên phân so với đề bài.\n- D: 4 chính là số lần nguyên phân k, chưa tính theo công thức 2^k."
+    },
+    {
+     "ma_cau": "K09120202006",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào sinh dưỡng thực hiện nguyên phân liên tiếp 8 lần. Số tế bào con được tạo thành là bao nhiêu?",
+     "lua_chon": [
+      "128",
+      "512",
+      "16",
+      "256"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Số tế bào con sau k lần nguyên phân = 2^k = 2⁸ = 256.\n\nVì sao các phương án khác sai:\n- A: 128 = 2⁷, thiếu một lần nguyên phân so với đề bài (8 lần).\n- B: 512 = 2⁹, thừa một lần nguyên phân so với đề bài.\n- C: 16 = 2⁴, chưa đủ 8 lần nguyên phân như đề bài."
+    },
+    {
+     "ma_cau": "K09120202007",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào có bộ NST 2n = 8 thực hiện nguyên phân liên tiếp 2 lần. Môi trường nội bào đã cung cấp nguyên liệu để tạo ra bao nhiêu NST mới?",
+     "lua_chon": [
+      "32",
+      "12",
+      "24",
+      "8"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Số NST môi trường cung cấp = 2n × (2^k − 1); với 2n = 8, k = 2: 8 × (4 − 1) = 24.\n\nVì sao các phương án khác sai:\n- A: 32 = 2n × 2^k, quên trừ đi bộ NST ban đầu của tế bào mẹ.\n- B: 12 tính theo n × (2^k − 1), nhầm bộ đơn bội thay vì lưỡng bội.\n- D: 8 = 2n × (k − 1), nhầm công thức luỹ thừa thành phép trừ đơn giản."
+    },
+    {
+     "ma_cau": "K09120202008",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào có bộ NST 2n = 6 thực hiện nguyên phân liên tiếp 3 lần. Môi trường nội bào đã cung cấp nguyên liệu để tạo ra bao nhiêu NST mới?",
+     "lua_chon": [
+      "48",
+      "21",
+      "12",
+      "42"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Số NST môi trường cung cấp = 2n × (2^k − 1); với 2n = 6, k = 3: 6 × (8 − 1) = 42.\n\nVì sao các phương án khác sai:\n- A: 48 = 2n × 2^k, quên trừ bộ NST ban đầu.\n- B: 21 tính theo n × (2^k − 1), nhầm bộ đơn bội.\n- C: 12 = 2n × (k − 1), nhầm công thức luỹ thừa."
+    },
+    {
+     "ma_cau": "K09120202009",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào có bộ NST 2n = 4 thực hiện nguyên phân liên tiếp 4 lần. Môi trường nội bào đã cung cấp nguyên liệu để tạo ra bao nhiêu NST mới?",
+     "lua_chon": [
+      "60",
+      "64",
+      "30",
+      "12"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Số NST môi trường cung cấp = 2n × (2^k − 1); với 2n = 4, k = 4: 4 × (16 − 1) = 60.\n\nVì sao các phương án khác sai:\n- B: 64 = 2n × 2^k, quên trừ bộ NST ban đầu.\n- C: 30 tính theo n × (2^k − 1), nhầm bộ đơn bội.\n- D: 12 = 2n × (k − 1), nhầm công thức luỹ thừa."
+    },
+    {
+     "ma_cau": "K09120202010",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào có bộ NST 2n = 8 thực hiện nguyên phân liên tiếp 3 lần. Môi trường nội bào đã cung cấp nguyên liệu để tạo ra bao nhiêu NST mới?",
+     "lua_chon": [
+      "64",
+      "56",
+      "28",
+      "16"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Số NST môi trường cung cấp = 2n × (2^k − 1); với 2n = 8, k = 3: 8 × (8 − 1) = 56.\n\nVì sao các phương án khác sai:\n- A: 64 = 2n × 2^k, quên trừ bộ NST ban đầu.\n- C: 28 tính theo n × (2^k − 1), nhầm bộ đơn bội.\n- D: 16 = 2n × (k − 1), nhầm công thức luỹ thừa."
+    },
+    {
+     "ma_cau": "K09120202011",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào có bộ NST 2n = 10 thực hiện nguyên phân liên tiếp 2 lần. Môi trường nội bào đã cung cấp nguyên liệu để tạo ra bao nhiêu NST mới?",
+     "lua_chon": [
+      "30",
+      "40",
+      "20",
+      "10"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Số NST môi trường cung cấp = 2n × (2^k − 1) = 10 × (2² − 1) = 10 × 3 = 30.\n\nVì sao các phương án khác sai:\n- B: 40 = 2n × 2^k, quên trừ đi 1 tế bào mẹ ban đầu (không cần cung cấp mới).\n- C: 20 = 2n × k (nhân với số lần), không đúng công thức 2n × (2^k − 1).\n- D: 10 chỉ là bộ NST ban đầu, chưa nhân với (2^k − 1)."
+    },
+    {
+     "ma_cau": "K09120202012",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào có bộ NST 2n = 4 thực hiện nguyên phân liên tiếp 5 lần. Môi trường nội bào đã cung cấp nguyên liệu để tạo ra bao nhiêu NST mới?",
+     "lua_chon": [
+      "128",
+      "124",
+      "20",
+      "4"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Số NST môi trường cung cấp = 2n × (2^k − 1) = 4 × (2⁵ − 1) = 4 × 31 = 124.\n\nVì sao các phương án khác sai:\n- A: 128 = 2n × 2^k, quên trừ đi 1 tế bào mẹ ban đầu.\n- C: 20 = 2n × k (nhân với số lần), không đúng công thức 2n × (2^k − 1).\n- D: 4 chỉ là bộ NST ban đầu, chưa nhân với (2^k − 1)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00572",
+   "khoi": "9",
+   "chu_de": "Di truyền Nhiễm sắc thể",
+   "chuyen_de": "Nguyên phân và giảm phân",
+   "nhom": "Các dạng bài tập tính toán nâng cao về Nguyên phân và giảm phân",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09120203001",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào sinh dục sơ khai của một cơ thể đực nguyên phân liên tiếp 4 lần tạo các tế bào sinh tinh, mỗi tế bào sinh tinh giảm phân bình thường. Tính tổng số tinh trùng tạo thành.",
+     "lua_chon": [
+      "16",
+      "48",
+      "64",
+      "32"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Số tế bào sinh tinh = 2⁴ = 16; mỗi tế bào tạo 4 tinh trùng nên tổng số tinh trùng = 16 × 4 = 64.\n\nVì sao các phương án khác sai:\n- A: 16 là số tế bào sinh tinh, chưa nhân với 4 tinh trùng mỗi tế bào.\n- B: 48 = 16 × 3, nhân sai số tinh trùng mỗi tế bào tạo ra.\n- D: 32 = 16 × 2, chưa tính đủ số tinh trùng mỗi tế bào sinh tinh tạo ra."
+    },
+    {
+     "ma_cau": "K09120203002",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào sinh dục sơ khai của một cơ thể cái nguyên phân liên tiếp 5 lần tạo các tế bào sinh trứng, mỗi tế bào giảm phân bình thường. Tính tổng số trứng tạo thành.",
+     "lua_chon": [
+      "128",
+      "96",
+      "64",
+      "32"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Số tế bào sinh trứng = 2⁵ = 32; mỗi tế bào chỉ tạo 1 trứng nên tổng số trứng = 32 × 1 = 32.\n\nVì sao các phương án khác sai:\n- A: 128 = 32 × 4, nhầm công thức tính số tinh trùng, không áp dụng cho trứng.\n- B: 96 = 32 × 3, nhầm đếm cả thể cực vào số trứng.\n- C: 64 = 32 × 2, nhân sai số trứng mỗi tế bào sinh trứng tạo ra."
+    },
+    {
+     "ma_cau": "K09120203003",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào sinh dục sơ khai của một cơ thể cái nguyên phân liên tiếp 3 lần tạo các tế bào sinh trứng, mỗi tế bào giảm phân bình thường tạo 1 trứng và 3 thể cực. Tính tổng số thể cực tạo thành.",
+     "lua_chon": [
+      "24",
+      "8",
+      "32",
+      "16"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Số tế bào sinh trứng = 2³ = 8; mỗi tế bào tạo 3 thể cực nên tổng số thể cực = 8 × 3 = 24.\n\nVì sao các phương án khác sai:\n- B: 8 là số tế bào sinh trứng, chưa nhân với 3 thể cực mỗi tế bào.\n- C: 32 = 8 × 4, nhầm công thức tính số tinh trùng, không áp dụng cho thể cực.\n- D: 16 = 8 × 2, nhân sai số thể cực mỗi tế bào tạo ra."
+    },
+    {
+     "ma_cau": "K09120203004",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào sinh dục sơ khai của một cơ thể đực nguyên phân liên tiếp 5 lần tạo các tế bào sinh tinh, mỗi tế bào sinh tinh giảm phân bình thường. Tính tổng số tinh trùng tạo thành.",
+     "lua_chon": [
+      "128",
+      "32",
+      "64",
+      "256"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Số tế bào sinh tinh = 2⁵ = 32. Mỗi tế bào sinh tinh giảm phân tạo 4 tinh trùng → tổng số tinh trùng = 32 × 4 = 128.\n\nVì sao các phương án khác sai:\n- B: 32 mới là số tế bào sinh tinh, chưa nhân với 4 tinh trùng mỗi tế bào tạo ra.\n- C: 64 tính nhầm khi nhân với 2 thay vì 4 tinh trùng mỗi tế bào sinh tinh.\n- D: 256 tính nhầm khi nhân đôi kết quả đúng một cách không cần thiết."
+    },
+    {
+     "ma_cau": "K09120203005",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào sinh dục sơ khai của một cơ thể cái nguyên phân liên tiếp 4 lần tạo các tế bào sinh trứng, mỗi tế bào giảm phân bình thường tạo 1 trứng và 3 thể cực. Tính tổng số thể cực tạo thành.",
+     "lua_chon": [
+      "16",
+      "48",
+      "64",
+      "12"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Số tế bào sinh trứng = 2⁴ = 16. Mỗi tế bào giảm phân tạo 1 trứng và 3 thể cực → tổng số thể cực = 16 × 3 = 48.\n\nVì sao các phương án khác sai:\n- A: 16 mới là số tế bào sinh trứng, chưa nhân với 3 thể cực mỗi tế bào tạo ra.\n- C: 64 tính nhầm khi nhân với 4 thay vì 3 thể cực mỗi tế bào sinh trứng.\n- D: 12 tính nhầm khi chia thay vì nhân số tế bào sinh trứng với 3."
+    },
+    {
+     "ma_cau": "K09120203006",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào sinh dục sơ khai của một cơ thể đực nguyên phân liên tiếp 3 lần tạo các tế bào sinh tinh; đồng thời một tế bào sinh dục sơ khai của cơ thể cái nguyên phân liên tiếp 2 lần tạo các tế bào sinh trứng (đều giảm phân bình thường). Số tinh trùng nhiều hơn số trứng bao nhiêu?",
+     "lua_chon": [
+      "32",
+      "4",
+      "28",
+      "36"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Số tinh trùng = 2³ × 4 = 32. Số trứng = 2² × 1 = 4. Chênh lệch = 32 − 4 = 28.\n\nVì sao các phương án khác sai:\n- A: 32 là tổng số tinh trùng, chưa trừ đi số trứng để ra phần chênh lệch.\n- B: 4 là số trứng, không phải phần chênh lệch giữa số tinh trùng và số trứng.\n- D: 36 tính nhầm khi cộng hai số lại thay vì lấy hiệu (tinh trùng trừ trứng)."
+    },
+    {
+     "ma_cau": "K09120203007",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào sinh dục sơ khai của cơ thể đực nguyên phân liên tiếp 2 lần tạo tế bào sinh tinh, giảm phân bình thường tạo tinh trùng. Biết hiệu suất thụ tinh của tinh trùng là 25%. Tính số hợp tử tạo thành.",
+     "lua_chon": [
+      "16",
+      "4",
+      "1",
+      "8"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Số tế bào sinh tinh = 2² = 4, số tinh trùng = 4 × 4 = 16; số hợp tử = 16 × 25% = 4.\n\nVì sao các phương án khác sai:\n- A: 16 là tổng số tinh trùng tạo ra, chưa nhân với hiệu suất thụ tinh.\n- C: 1 tính sai vì chia nhầm thay vì nhân với 25%.\n- D: 8 tương ứng với hiệu suất 50%, không phải 25% như đề cho."
+    },
+    {
+     "ma_cau": "K09120203008",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào sinh dục sơ khai của cơ thể cái nguyên phân liên tiếp 3 lần tạo tế bào sinh trứng, mỗi tế bào giảm phân tạo 1 trứng. Biết hiệu suất thụ tinh của trứng là 50%. Tính số hợp tử tạo thành.",
+     "lua_chon": [
+      "8",
+      "2",
+      "4",
+      "16"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Số tế bào sinh trứng = 2³ = 8, số trứng = 8 × 1 = 8; số hợp tử = 8 × 50% = 4.\n\nVì sao các phương án khác sai:\n- A: 8 là tổng số trứng tạo ra, chưa nhân với hiệu suất thụ tinh.\n- B: 2 tương ứng với hiệu suất 25%, không phải 50% như đề cho.\n- D: 16 nhầm công thức tính số tinh trùng, áp dụng sai cho trứng."
+    },
+    {
+     "ma_cau": "K09120203009",
+     "loai": "trac_nghiem",
+     "de": "Biết hiệu suất thụ tinh của trứng ở một loài là 25% và có 3 hợp tử được tạo thành. Tính số trứng đã tham gia quá trình trên.",
+     "lua_chon": [
+      "3",
+      "12",
+      "9",
+      "6"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Số hợp tử = số trứng × hiệu suất thụ tinh, suy ra số trứng = số hợp tử : hiệu suất = 3 : 25% = 12.\n\nVì sao các phương án khác sai:\n- A: 3 chính là số hợp tử, chưa chia cho hiệu suất thụ tinh để tìm số trứng.\n- C: 9 tính sai do lấy hiệu số thay vì phép chia theo hiệu suất.\n- D: 6 tương ứng với hiệu suất 50%, không phải 25% như đề cho."
+    },
+    {
+     "ma_cau": "K09120203010",
+     "loai": "trac_nghiem",
+     "de": "Một tế bào sinh dục sơ khai của cơ thể đực nguyên phân liên tiếp 4 lần tạo tế bào sinh tinh, giảm phân bình thường tạo tinh trùng. Biết hiệu suất thụ tinh của tinh trùng là 6,25%. Tính số hợp tử tạo thành.",
+     "lua_chon": [
+      "64",
+      "16",
+      "8",
+      "4"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Số tế bào sinh tinh = 2⁴ = 16 → tinh trùng = 16×4 = 64. Số hợp tử = 64 × 6,25% = 4.\n\nVì sao các phương án khác sai:\n- A: 64 là tổng số tinh trùng, chưa nhân với hiệu suất thụ tinh 6,25%.\n- B: 16 là số tế bào sinh tinh, không phải số hợp tử tạo thành.\n- C: 8 tính nhầm khi chia đôi kết quả đúng một cách không cần thiết."
+    },
+    {
+     "ma_cau": "K09120203011",
+     "loai": "trac_nghiem",
+     "de": "Biết hiệu suất thụ tinh của tinh trùng ở một loài là 10% và có 8 hợp tử được tạo thành. Tính số tinh trùng đã tham gia quá trình trên.",
+     "lua_chon": [
+      "80",
+      "8",
+      "800",
+      "0,8"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Số tinh trùng tham gia = số hợp tử : hiệu suất = 8 : 10% = 80.\n\nVì sao các phương án khác sai:\n- B: 8 là số hợp tử, không phải số tinh trùng tham gia.\n- C: 800 tính nhầm khi nhân với 100 thay vì chia cho tỉ lệ phần trăm (10%).\n- D: 0,8 tính nhầm khi nhân hợp tử với tỉ lệ % thay vì chia."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00573",
+   "khoi": "9",
+   "chu_de": "Di truyền Nhiễm sắc thể",
+   "chuyen_de": "Nhiễm sắc thể giới tính & cơ chế xác định giới tính",
+   "nhom": "Lý thuyết cơ bản về nhiễm sắc thể giới tính",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09120301001",
+     "loai": "trac_nghiem",
+     "de": "Quan sát bộ nhiễm sắc thể của ruồi giấm đực (2n = 8), có bao nhiêu cặp NST thường?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120201-01-001-hinh.png)",
+     "lua_chon": [
+      "3 cặp",
+      "4 cặp",
+      "2 cặp",
+      "1 cặp"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ruồi giấm đực có 2n = 8, tức 4 cặp NST; trong đó 1 cặp là NST giới tính (XY), còn lại 3 cặp là NST thường.\n\nVì sao các phương án khác sai:\n- B: Đây là tổng số cặp NST (kể cả 1 cặp NST giới tính), không riêng NST thường.\n- C: Đếm thiếu: bộ NST có 4 cặp, trừ 1 cặp giới tính còn 3 cặp thường, không phải 2.\n- D: Chỉ đúng nếu bộ NST có 2n = 4, không phải 2n = 8 như ruồi giấm."
+    },
+    {
+     "ma_cau": "K09120301002",
+     "loai": "trac_nghiem",
+     "de": "Một loài côn trùng có bộ NST 2n = 6, cặp cuối kí hiệu XX. Loài này có bao nhiêu cặp NST thường?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120201-01-002-hinh.png)",
+     "lua_chon": [
+      "2 cặp",
+      "3 cặp",
+      "1 cặp",
+      "4 cặp"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Bộ NST 2n = 6 gồm 3 cặp; trừ 1 cặp NST giới tính (XX) còn lại 2 cặp NST thường.\n\nVì sao các phương án khác sai:\n- B: Đây là tổng số cặp NST, chưa trừ cặp giới tính.\n- C: Đếm thiếu 1 cặp; bộ NST có 3 cặp, trừ cặp giới tính còn 2 cặp thường.\n- D: Loài này chỉ có 3 cặp NST (2n = 6), không thể có 4 cặp."
+    },
+    {
+     "ma_cau": "K09120301003",
+     "loai": "trac_nghiem",
+     "de": "Một loài động vật có bộ NST 2n = 4, cặp cuối kí hiệu XY. Loài này có bao nhiêu cặp NST thường?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120201-01-003-hinh.png)",
+     "lua_chon": [
+      "2 cặp",
+      "0 cặp",
+      "1 cặp",
+      "3 cặp"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Bộ NST 2n = 4 gồm 2 cặp; trừ 1 cặp NST giới tính (XY) còn lại đúng 1 cặp NST thường.\n\nVì sao các phương án khác sai:\n- A: Đây là tổng số cặp NST (2 cặp), chưa trừ cặp giới tính.\n- B: Loài này vẫn có 1 cặp NST thường, không phải không có cặp nào.\n- D: Bộ NST của loài này chỉ có 2 cặp, không thể có 3 cặp NST thường."
+    },
+    {
+     "ma_cau": "K09120301004",
+     "loai": "trac_nghiem",
+     "de": "Quan sát bộ NST của ruồi giấm cái (2n = 8), cặp NST giới tính của ruồi giấm cái có đặc điểm gì?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120201-01-004-hinh.png)",
+     "lua_chon": [
+      "Cặp này chỉ có ở tế bào sinh dục, không có ở tế bào khác của cơ thể",
+      "Cặp này không tồn tại ở ruồi giấm cái",
+      "Hai chiếc trong cặp luôn khác nhau về hình dạng",
+      "Hai chiếc trong cặp giống nhau, đều kí hiệu X"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ruồi giấm cái mang cặp NST giới tính XX, hai chiếc giống nhau (tương đồng); cặp XY (hai chiếc khác nhau) chỉ có ở ruồi giấm đực.\n\nVì sao các phương án khác sai:\n- A: NST giới tính có mặt ở mọi tế bào sinh dưỡng của cơ thể, không riêng tế bào sinh dục.\n- B: Ruồi giấm cái vẫn có cặp NST giới tính (XX), không phải không tồn tại.\n- C: Đặc điểm hai chiếc khác nhau chỉ đúng với cặp XY ở con đực, không đúng với cặp XX ở con cái."
+    },
+    {
+     "ma_cau": "K09120301005",
+     "loai": "trac_nghiem",
+     "de": "Quan sát bộ NST của một loài động vật đực (2n = 6), cặp NST giới tính XY có đặc điểm gì khác các cặp còn lại?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120201-01-005-hinh.png)",
+     "lua_chon": [
+      "Hai chiếc trong cặp không giống nhau",
+      "Tâm động chỉ xuất hiện ở cặp này, không có ở cặp khác",
+      "Cặp này có số lượng NST nhiều hơn các cặp khác",
+      "Cặp này không di truyền cho đời con"
+     ],
+     "dap_an": "A",
+     "loi_giai": "NST giới tính XY gồm hai chiếc không giống nhau (khác NST thường luôn có hai chiếc giống nhau trong cặp tương đồng).\n\nVì sao các phương án khác sai:\n- B: Mọi NST, kể cả NST thường, đều có tâm động, không riêng cặp giới tính.\n- C: Mỗi cặp NST, kể cả cặp giới tính, đều chỉ gồm 2 chiếc, không nhiều hơn.\n- D: NST giới tính vẫn được truyền cho đời con qua giao tử, giống mọi NST khác."
+    },
+    {
+     "ma_cau": "K09120301006",
+     "loai": "trac_nghiem",
+     "de": "Trong tế bào lưỡng bội của ruồi giấm (2n = 8), số cặp NST giới tính là bao nhiêu?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120201-01-006-hinh.png)",
+     "lua_chon": [
+      "Luôn chỉ có đúng 1 cặp",
+      "Bằng số cặp NST thường",
+      "Có thể nhiều hơn 1 cặp",
+      "Không có cặp NST giới tính nào"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trong tế bào lưỡng bội, dù bộ NST 2n lớn hay nhỏ, luôn chỉ có đúng một cặp NST giới tính, còn lại là NST thường.\n\nVì sao các phương án khác sai:\n- B: Số cặp NST thường (ở đây là 3) thường nhiều hơn 1, khác với số cặp NST giới tính.\n- C: Mỗi tế bào lưỡng bội chỉ có một cặp NST giới tính, không có nhiều hơn.\n- D: Ở loài phân tính như ruồi giấm luôn có 1 cặp NST giới tính, không phải không có."
+    },
+    {
+     "ma_cau": "K09120301007",
+     "loai": "trac_nghiem",
+     "de": "NST thường khác NST giới tính ở điểm nào?",
+     "lua_chon": [
+      "NST thường chỉ có ở con cái, NST giới tính chỉ có ở con đực",
+      "NST thường giống nhau ở hai giới; NST giới tính có thể khác nhau",
+      "NST thường quy định giới tính, NST giới tính quy định các tính trạng thường",
+      "Mỗi tế bào chỉ có một NST thường nhưng có nhiều cặp NST giới tính"
+     ],
+     "dap_an": "B",
+     "loi_giai": "NST thường giống nhau về hình dạng, kích thước ở cả hai giới; NST giới tính (cặp cuối) có thể khác nhau giữa hai giới (ví dụ XX ở cái, XY ở đực).\n\nVì sao các phương án khác sai:\n- A: Cả con đực và con cái đều có NST thường; NST giới tính có ở cả hai giới, chỉ khác nhau về thành phần.\n- C: NST giới tính mới là loại mang gene quy định giới tính; NST thường chủ yếu mang gene quy định các tính trạng thường.\n- D: Mỗi tế bào có nhiều cặp NST thường nhưng thường chỉ có một cặp NST giới tính."
+    },
+    {
+     "ma_cau": "K09120301008",
+     "loai": "trac_nghiem",
+     "de": "Số cặp NST thường trong tế bào lưỡng bội của một loài phụ thuộc vào yếu tố nào?",
+     "lua_chon": [
+      "Giới tính của cá thể đang xét (đực hay cái)",
+      "Số lượng gene có trên bộ NST của loài",
+      "Tổng số cặp NST (2n) trừ 1 cặp giới tính",
+      "Số lần nguyên phân mà tế bào đã trải qua"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Số cặp NST thường = tổng số cặp NST của loài (2n) trừ đi 1 cặp NST giới tính, và giống nhau ở cả cá thể đực và cái.\n\nVì sao các phương án khác sai:\n- A: Số cặp NST thường là như nhau ở cả cá thể đực và cái trong cùng một loài, không phụ thuộc giới tính.\n- B: Số cặp NST thường không phụ thuộc vào số lượng gene, mà phụ thuộc vào tổng số cặp NST của loài.\n- D: Số cặp NST thường là đặc trưng cố định của loài, không đổi theo số lần nguyên phân."
+    },
+    {
+     "ma_cau": "K09120301009",
+     "loai": "trac_nghiem",
+     "de": "Ở người, cặp NST giới tính của nữ giới có kí hiệu là gì?",
+     "lua_chon": [
+      "XY",
+      "XO",
+      "XX",
+      "XXY"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nữ giới mang cặp NST giới tính XX (hai NST X); nam giới mang cặp XY.\n\nVì sao các phương án khác sai:\n- A: XY là kí hiệu cặp NST giới tính của nam giới, không phải nữ.\n- B: XO là trường hợp bất thường (thiếu một NST X), không phải bộ NST bình thường của nữ.\n- D: XXY là trường hợp bất thường (thừa một NST X), không phải bộ NST bình thường của nữ."
+    },
+    {
+     "ma_cau": "K09120301010",
+     "loai": "trac_nghiem",
+     "de": "Ở người, cặp NST giới tính của nam giới có kí hiệu là gì?",
+     "lua_chon": [
+      "XX",
+      "YY",
+      "XXY",
+      "XY"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nam giới mang cặp NST giới tính XY; nữ giới mang cặp XX.\n\nVì sao các phương án khác sai:\n- A: XX là cặp NST giới tính của nữ giới, không phải nam.\n- B: Bình thường không tồn tại cặp hai NST Y (YY) ở người.\n- C: XXY là trường hợp bất thường, không phải bộ NST bình thường của nam."
+    },
+    {
+     "ma_cau": "K09120301011",
+     "loai": "trac_nghiem",
+     "de": "Giới tính của một người được xác định chủ yếu dựa vào yếu tố nào?",
+     "lua_chon": [
+      "Số lượng nhiễm sắc thể thường trong tế bào",
+      "Cặp nhiễm sắc thể giới tính XX hoặc XY",
+      "Chế độ dinh dưỡng của người mẹ khi mang thai",
+      "Thứ tự sinh con trong gia đình"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Giới tính ở người do cặp NST giới tính quy định: XX là nữ, XY là nam.\n\nVì sao các phương án khác sai:\n- A: Số NST thường giống nhau ở cả nam và nữ, không quyết định giới tính.\n- C: Dinh dưỡng của mẹ không quyết định giới tính của con.\n- D: Thứ tự sinh không liên quan đến việc xác định giới tính."
+    },
+    {
+     "ma_cau": "K09120301012",
+     "loai": "trac_nghiem",
+     "de": "Trong tế bào sinh dưỡng của nam giới, NST Y có đặc điểm gì so với NST X?",
+     "lua_chon": [
+      "Giống hệt NST X về kích thước và hình dạng",
+      "Có kích thước, hình dạng khác NST X",
+      "NST Y chỉ có ở giao tử, không có ở tế bào sinh dưỡng",
+      "Có số lượng gene nhiều hơn hẳn NST X"
+     ],
+     "dap_an": "B",
+     "loi_giai": "NST Y khác NST X về kích thước và hình dạng (Y thường nhỏ hơn X); đây là đặc điểm của cặp NST giới tính không tương đồng hoàn toàn.\n\nVì sao các phương án khác sai:\n- A: NST X và Y khác nhau, không giống hệt nhau.\n- C: NST Y có mặt ở mọi tế bào sinh dưỡng của nam giới, không riêng giao tử.\n- D: NST Y thực tế mang ít gene hơn NST X, không phải nhiều hơn."
+    },
+    {
+     "ma_cau": "K09120301013",
+     "loai": "trac_nghiem",
+     "de": "Bộ NST 2n = 46 ở người gồm bao nhiêu cặp NST thường và bao nhiêu cặp NST giới tính?",
+     "lua_chon": [
+      "23 cặp NST thường, 1 cặp NST giới tính",
+      "22 cặp NST thường, 2 cặp NST giới tính",
+      "22 cặp NST thường, 1 cặp NST giới tính",
+      "21 cặp NST thường, 2 cặp NST giới tính"
+     ],
+     "dap_an": "C",
+     "loi_giai": "2n = 46 gồm 23 cặp NST, trong đó 22 cặp là NST thường và 1 cặp là NST giới tính (XX hoặc XY).\n\nVì sao các phương án khác sai:\n- A: Tổng có 23 cặp nhưng chỉ 22 cặp là NST thường, 1 cặp còn lại là NST giới tính.\n- B: Con người chỉ có 1 cặp NST giới tính, không có 2 cặp.\n- D: Tổng 23 cặp gồm 22 cặp NST thường (không phải 21) cộng 1 cặp NST giới tính."
+    },
+    {
+     "ma_cau": "K09120301014",
+     "loai": "trac_nghiem",
+     "de": "Ở người, trứng luôn mang NST giới tính nào?",
+     "lua_chon": [
+      "X",
+      "Y",
+      "X hoặc Y tuỳ trường hợp",
+      "Không mang NST giới tính nào"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mẹ mang cặp NST giới tính XX, giảm phân chỉ tạo một loại trứng, luôn mang NST giới tính X.\n\nVì sao các phương án khác sai:\n- B: Mẹ có cặp NST giới tính XX nên trứng chỉ có thể mang NST X, không thể mang Y.\n- C: Mẹ chỉ có cặp XX nên giảm phân luôn chỉ tạo một loại trứng mang X, không có trường hợp mang Y.\n- D: Trứng vẫn mang bộ NST đơn bội, trong đó có 1 NST giới tính là X."
+    },
+    {
+     "ma_cau": "K09120301015",
+     "loai": "trac_nghiem",
+     "de": "Con sinh ra là trai hay gái phụ thuộc trực tiếp vào loại tinh trùng nào thụ tinh với trứng?",
+     "lua_chon": [
+      "Loại NST giới tính (X hoặc Y) trong tinh trùng",
+      "Chỉ phụ thuộc vào loại trứng do mẹ tạo ra",
+      "Phụ thuộc vào số lượng tinh trùng tham gia thụ tinh",
+      "Phụ thuộc vào tuổi của bố mẹ khi sinh con"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trứng (mang X) kết hợp với tinh trùng mang X tạo hợp tử XX (con gái); kết hợp với tinh trùng mang Y tạo hợp tử XY (con trai).\n\nVì sao các phương án khác sai:\n- B: Trứng của mẹ chỉ có một loại (mang X), không quyết định giới tính con; chính loại tinh trùng của bố mới quyết định.\n- C: Chỉ có một tinh trùng thụ tinh với một trứng; số lượng tinh trùng tham gia không quyết định giới tính con.\n- D: Tuổi của bố mẹ không quyết định giới tính của con, yếu tố quyết định là loại NST giới tính trong tinh trùng thụ tinh."
+    },
+    {
+     "ma_cau": "K09120301016",
+     "loai": "trac_nghiem",
+     "de": "Trong chăn nuôi bò sữa, người ta lọc tinh trùng mang NST X để tăng tỉ lệ bê cái. Cơ sở khoa học của biện pháp này là gì?",
+     "lua_chon": [
+      "Trứng gặp tinh trùng mang X sẽ phát triển thành cá thể đực",
+      "Tinh trùng mang X luôn phát triển nhanh hơn tinh trùng mang Y",
+      "Trứng gặp tinh trùng mang X sẽ phát triển thành cá thể cái",
+      "Lọc tinh trùng làm thay đổi bộ NST thường của con"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Trứng (luôn mang X) kết hợp với tinh trùng mang X tạo hợp tử XX, phát triển thành cá thể cái; tăng tỉ lệ tinh trùng X sẽ tăng tỉ lệ con cái.\n\nVì sao các phương án khác sai:\n- A: Hợp tử XX phát triển thành cá thể cái, không phải cá thể đực.\n- B: Lọc tinh trùng dựa vào sự khác biệt kích thước, khối lượng giữa tinh trùng X và Y, không phải tốc độ phát triển.\n- D: Biện pháp chỉ tác động đến tỉ lệ tinh trùng mang NST giới tính, không làm thay đổi NST thường."
+    },
+    {
+     "ma_cau": "K09120301017",
+     "loai": "trac_nghiem",
+     "de": "Vì sao có thể tách riêng tinh trùng mang NST X và tinh trùng mang NST Y để chủ động chọn giới tính vật nuôi?",
+     "lua_chon": [
+      "Hai loại tinh trùng khác nhau về màu sắc quan sát được bằng mắt thường",
+      "Tinh trùng mang Y mới có khả năng thụ tinh, tinh trùng mang X thì không",
+      "Hai loại tinh trùng có thời gian sống khác nhau tới hàng tháng",
+      "Hai loại tinh trùng khác nhau về khối lượng, kích thước"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tinh trùng mang X thường có kích thước, khối lượng lớn hơn tinh trùng mang Y do NST X lớn hơn NST Y; dựa vào khác biệt này có thể tách riêng hai loại.\n\nVì sao các phương án khác sai:\n- A: Sự khác biệt là về kích thước, khối lượng (qua thiết bị phân tích), không quan sát được bằng mắt thường qua màu sắc.\n- B: Cả hai loại tinh trùng đều có khả năng thụ tinh bình thường.\n- C: Hai loại tinh trùng đều có đời sống ngắn, không khác nhau tới mức hàng tháng."
+    },
+    {
+     "ma_cau": "K09120301018",
+     "loai": "trac_nghiem",
+     "de": "Trại bò sữa muốn có nhiều bê cái. Ở bò, con cái mang cặp NST giới tính XX, con đực mang XY. Muốn chủ động tăng tỉ lệ bê cái, có thể dựa trên nguyên lí nào?",
+     "lua_chon": [
+      "Cho bò cái đẻ nhiều lứa hơn để có thêm bê cái",
+      "Nuôi bò mẹ ở nơi nhiệt độ cao khi mang thai",
+      "Chọn bò bố mẹ to khoẻ để sinh nhiều bê cái",
+      "Tách lọc tinh trùng mang X để thụ tinh nhân tạo"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trứng luôn mang X; hợp tử XX (cái) hình thành khi tinh trùng mang X thụ tinh. Tách lọc tinh trùng mang X để thụ tinh nhân tạo sẽ làm tăng tỉ lệ bê cái.\n\nVì sao các phương án khác sai:\n- A: Số lứa tăng không làm thay đổi tỉ lệ đực : cái (vẫn xấp xỉ 1 : 1).\n- B: Ở bò, giới tính do cặp NST XX/XY quyết định từ lúc thụ tinh.\n- C: Kích thước bố mẹ không quyết định loại tinh trùng thụ tinh."
+    },
+    {
+     "ma_cau": "K09120301019",
+     "loai": "trac_nghiem",
+     "de": "Trong chăn nuôi bò sữa, người ta có thể áp dụng kỹ thuật phân tách tinh trùng mang NST X và tinh trùng mang NST Y trước khi thụ tinh nhân tạo, nhằm mục đích chủ động tạo ra nhiều bê cái hơn (để lấy sữa). Cơ sở khoa học của kỹ thuật này là",
+     "lua_chon": [
+      "Làm đổi NST giới tính của trứng từ Y thành X",
+      "Chỉ dựa vào chế độ dinh dưỡng của bò mẹ",
+      "Chọn trứng mang X để thụ tinh tạo bê cái",
+      "Chọn tinh trùng mang X để thụ tinh tạo bê cái"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Bò cái XX chỉ tạo trứng mang X; bò đực XY tạo hai loại tinh trùng mang X hoặc Y. Nếu chỉ dùng tinh trùng mang X để thụ tinh thì hợp tử là XX, sinh ra bê cái.\n\nVì sao các phương án khác sai:\n- A: Trứng của bò cái luôn mang X.\n- B: Giới tính bê do loại tinh trùng thụ tinh quyết định.\n- C: Mọi trứng đều mang X; phải chọn loại tinh trùng."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00574",
+   "khoi": "9",
+   "chu_de": "Di truyền Nhiễm sắc thể",
+   "chuyen_de": "Nhiễm sắc thể giới tính & cơ chế xác định giới tính",
+   "nhom": "Viết sơ đồ cơ chế xác định giới tính",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09120302001",
+     "loai": "trac_nghiem",
+     "de": "Ở người, mẹ (mang cặp NST XX) khi giảm phân chỉ tạo ra một loại trứng mang NST giới tính nào?",
+     "lua_chon": [
+      "X",
+      "X hoặc Y tuỳ theo lần rụng trứng",
+      "Không mang NST giới tính",
+      "Y"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mẹ có cặp NST giới tính XX (hai NST X giống nhau) nên giảm phân chỉ tạo một loại giao tử mang NST X.\n\nVì sao các phương án khác sai:\n- B: Vì cặp NST giới tính của mẹ chỉ gồm hai NST X giống nhau nên trứng luôn mang X, không thay đổi.\n- C: Trứng vẫn là giao tử bình thường, mang bộ NST đơn bội gồm cả NST giới tính.\n- D: Giao tử mang Y chỉ được tạo ra từ người mang cặp XY (nam giới), không phải từ mẹ."
+    },
+    {
+     "ma_cau": "K09120302002",
+     "loai": "trac_nghiem",
+     "de": "Ở người, bố (mang cặp NST XY) tạo ra mấy loại tinh trùng xét theo NST giới tính, tỉ lệ mỗi loại là bao nhiêu?",
+     "lua_chon": [
+      "Hai loại, mang X hoặc mang Y, tỉ lệ 1:1",
+      "Hai loại, tỉ lệ 3 mang X : 1 mang Y",
+      "Ba loại: mang X, mang Y và không mang NST giới tính",
+      "Một loại duy nhất mang cả X và Y"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Bố có cặp NST giới tính XY; giảm phân tạo hai loại tinh trùng với số lượng bằng nhau: một loại mang X, một loại mang Y (tỉ lệ 1:1).\n\nVì sao các phương án khác sai:\n- B: Hai loại tinh trùng X và Y được tạo ra với số lượng bằng nhau (1:1), không phải 3:1.\n- C: Mọi tinh trùng đều mang đủ bộ NST đơn bội, không có loại thiếu NST giới tính.\n- D: Một tinh trùng chỉ mang một NST giới tính (X hoặc Y), không mang cả hai."
+    },
+    {
+     "ma_cau": "K09120302003",
+     "loai": "trac_nghiem",
+     "de": "Giải thích nào đúng cho việc tỉ lệ con trai và con gái ở người xấp xỉ 1 : 1?",
+     "lua_chon": [
+      "Do người mẹ quyết định giới tính của con",
+      "Do hai loại tinh trùng mang X và mang Y được tạo ra với số lượng ngang nhau",
+      "Do hai loại trứng mang X và mang Y được tạo ra với số lượng ngang nhau",
+      "Do mỗi gia đình thường sinh đủ con trai và con gái"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Bố tạo hai loại tinh trùng (mang X, mang Y) với số lượng ngang nhau; xác suất trứng gặp mỗi loại tinh trùng như nhau nên tỉ lệ con trai : con gái xấp xỉ 1:1.\n\nVì sao các phương án khác sai:\n- A: Giới tính con do loại tinh trùng của bố (mang X hay Y), không phải do mẹ quyết định.\n- C: Trứng của mẹ chỉ có một loại, luôn mang X, không có loại mang Y.\n- D: Tỉ lệ 1 : 1 là tỉ lệ chung khi số lượng lớn, không đảm bảo trong từng gia đình."
+    },
+    {
+     "ma_cau": "K09120302004",
+     "loai": "trac_nghiem",
+     "de": "Sơ đồ lai xác định giới tính ở người: P: Mẹ (XX) × Bố (XY). Tỉ lệ kiểu gene ở đời con (F₁) về cặp NST giới tính là bao nhiêu?",
+     "lua_chon": [
+      "1 XX : 1 XY",
+      "1 XX : 3 XY",
+      "3 XX : 1 XY",
+      "100% XX"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mẹ (XX) chỉ cho 1 loại trứng mang X; bố (XY) cho 2 loại tinh trùng X và Y tỉ lệ 1:1 → đời con có tỉ lệ 1 XX (gái) : 1 XY (trai).\n\nVì sao các phương án khác sai:\n- B: Tỉ lệ đúng phải là 1:1, không phải 1:3, vì mẹ chỉ cho 1 loại trứng còn bố cho 2 loại tinh trùng tỉ lệ bằng nhau.\n- C: Tỉ lệ đúng phải là 1:1, không phải 3:1.\n- D: Bố tạo hai loại tinh trùng X và Y với tỉ lệ ngang nhau, nên đời con không thể toàn bộ là XX."
+    },
+    {
+     "ma_cau": "K09120302005",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới mô tả bộ nhiễm sắc thể lưỡng bội của một con ruồi giấm đực (2n = 8). ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120205-01-001-de.png) Cặp nhiễm sắc thể giới tính XY của con ruồi này có nguồn gốc từ đâu?",
+     "lua_chon": [
+      "NST X nhận từ mẹ, NST Y nhận từ bố",
+      "NST X nhận từ bố, NST Y nhận từ mẹ",
+      "Cả NST X và Y đều nhận từ mẹ",
+      "Cả NST X và Y đều nhận từ bố"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ruồi giấm cái có cặp NST giới tính XX nên chỉ tạo giao tử mang X; ruồi đực XY tạo giao tử mang X hoặc mang Y. Con đực (XY) nhận X từ mẹ và Y từ bố.\n\nVì sao các phương án khác sai:\n- B: Mẹ (XX) chỉ có thể cho giao tử mang X, không có NST Y để truyền cho con; NST Y chỉ có thể nhận từ bố (XY).\n- C: Mẹ chỉ có NST X (không có Y) nên không thể truyền cả X và Y cho con.\n- D: Con nhận một NST giới tính từ mẹ và một từ bố (mỗi bên truyền một NST của cặp tương đồng), không thể nhận cả hai từ cùng một người."
+    },
+    {
+     "ma_cau": "K09120302006",
+     "loai": "trac_nghiem",
+     "de": "Ở người, giới tính của con được quyết định bởi loại tinh trùng nào thụ tinh với trứng. Nhận định hợp lí nhất về vai trò của bố và mẹ trong việc quyết định giới tính con là",
+     "lua_chon": [
+      "Mẹ, vì trứng luôn mang NST X",
+      "Bố, vì bố tạo hai loại tinh trùng X và Y",
+      "Cả bố và mẹ, mỗi người quyết định một nửa",
+      "Mẹ, vì chế độ ăn khi mang thai quyết định"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mẹ chỉ tạo một loại trứng (luôn mang NST X); bố tạo hai loại tinh trùng (mang X hoặc mang Y) với tỉ lệ ngang nhau. Loại tinh trùng nào thụ tinh với trứng sẽ quyết định giới tính con: tinh trùng X tạo hợp tử XX (con gái), tinh trùng Y tạo hợp tử XY (con trai). Vì vậy, bố là người quyết định giới tính con.\n\nVì sao các phương án khác sai:\n- A: Mọi trứng đều mang X nên trứng không quyết định giới tính.\n- C: Trứng luôn mang X; chỉ tinh trùng (X hoặc Y) quyết định giới tính.\n- D: Giới tính được quyết định lúc thụ tinh bởi loại tinh trùng."
+    },
+    {
+     "ma_cau": "K09120302007",
+     "loai": "trac_nghiem",
+     "de": "Thống kê tại một bệnh viện trong một năm cho thấy trong 2000 trẻ sơ sinh có 1030 bé trai và 970 bé gái. Nhận xét hợp lí nhất, đối chiếu với cơ chế xác định giới tính đã học, là",
+     "lua_chon": [
+      "Trai nhiều hơn hẳn, cơ chế đã học là sai",
+      "Chứng tỏ mẹ quyết định giới tính con",
+      "Xấp xỉ 1 : 1, phù hợp hai loại tinh trùng ngang nhau",
+      "Xấp xỉ 1 : 1 vì trứng có hai loại X và Y"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vì bố tạo ra hai loại tinh trùng (mang X hoặc mang Y) với số lượng gần như ngang nhau, xác suất mỗi loại tinh trùng thụ tinh là xấp xỉ 50%, nên tỉ lệ con trai : con gái trong một quần thể lớn thường xấp xỉ 1:1, đúng như số liệu 1030:970 gần bằng nhau.\n\nVì sao các phương án khác sai:\n- A: 1030 : 970 xấp xỉ 1 : 1, phù hợp cơ chế đã học.\n- B: Bố tạo hai loại tinh trùng mới quyết định giới tính con.\n- D: Trứng chỉ mang X; tinh trùng mới có hai loại."
+    },
+    {
+     "ma_cau": "K09120302008",
+     "loai": "trac_nghiem",
+     "de": "Một cặp vợ chồng đã sinh 4 con gái liên tiếp. Theo cơ chế xác định giới tính bằng NST, xác suất để lần sinh thứ 5 là con trai là bao nhiêu?",
+     "lua_chon": [
+      "Vẫn xấp xỉ 1/2, vì mỗi lần sinh độc lập với các lần trước",
+      "Cao hơn 1/2, vì đã sinh 4 con gái nên lần này \"phải\" là con trai",
+      "Thấp hơn 1/2, vì cơ thể mẹ đã quen sinh con gái",
+      "Bằng 0, vì bố mẹ chỉ có khả năng sinh con gái"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mỗi lần thụ tinh là một sự kiện độc lập: tinh trùng mang X hay mang Y có xác suất thụ tinh xấp xỉ bằng nhau ở MỌI lần sinh, không phụ thuộc kết quả các lần sinh trước. Vì vậy xác suất sinh con trai ở lần thứ 5 vẫn xấp xỉ 1/2.\n\nVì sao các phương án khác sai:\n- B: Xác suất mỗi lần thụ tinh là độc lập; kết quả các lần sinh trước không ảnh hưởng đến lần sau.\n- C: Không có cơ chế sinh học nào khiến cơ thể mẹ \"quen\" sinh một giới tính nhất định.\n- D: Bố vẫn tạo hai loại tinh trùng mang X và mang Y, nên vẫn có khả năng sinh con trai."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00577",
+   "khoi": "9",
+   "chu_de": "Di truyền Nhiễm sắc thể",
+   "chuyen_de": "Di truyền liên kết",
+   "nhom": "Lý thuyết cơ bản về di truyền liên kết",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09120401001",
+     "loai": "trac_nghiem",
+     "de": "Di truyền liên kết là hiện tượng gì?",
+     "lua_chon": [
+      "Các gene cùng nằm trên một NST thường di truyền cùng nhau",
+      "Các gene trên các NST khác nhau luôn di truyền cùng nhau",
+      "Một gene quy định đồng thời tất cả các tính trạng của cơ thể",
+      "Các tính trạng luôn di truyền độc lập với nhau"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Di truyền liên kết là hiện tượng các gene cùng nằm trên một NST có xu hướng di truyền cùng nhau qua các thế hệ.\n\nVì sao các phương án khác sai:\n- B: Các gene trên các NST khác nhau phân li độc lập, không di truyền liên kết cùng nhau.\n- C: Mỗi gene thường quy định một tính trạng riêng, không phải một gene quy định mọi tính trạng.\n- D: Đó là hiện tượng phân li độc lập, khác với di truyền liên kết."
+    },
+    {
+     "ma_cau": "K09120401002",
+     "loai": "trac_nghiem",
+     "de": "Cơ sở tế bào học của hiện tượng di truyền liên kết là gì?",
+     "lua_chon": [
+      "Các gene liên kết luôn nằm ở các NST khác nhau",
+      "Các gene liên kết cùng nằm trên một NST nên phân li cùng nhau",
+      "Các NST giới tính là nơi duy nhất chứa gene liên kết",
+      "Số lượng NST trong tế bào quyết định số gene liên kết"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vì các gene liên kết cùng nằm trên một NST nên khi NST đó phân li về giao tử, các gene này đi cùng nhau.\n\nVì sao các phương án khác sai:\n- A: Nếu ở các NST khác nhau, các gene sẽ phân li độc lập, không phải liên kết.\n- C: Gene liên kết có thể nằm trên bất kì NST nào, không riêng NST giới tính.\n- D: Số gene liên kết trên một NST không phụ thuộc vào tổng số NST trong tế bào."
+    },
+    {
+     "ma_cau": "K09120401003",
+     "loai": "trac_nghiem",
+     "de": "Nhóm gene liên kết là gì?",
+     "lua_chon": [
+      "Những gene có cùng chức năng trong cơ thể",
+      "Tập hợp gene quy định các tính trạng giống nhau về màu sắc",
+      "Các gene cùng nằm trên một NST, cùng phân li trong giảm phân",
+      "Nhóm gene nằm trên các NST khác nhau nhưng cùng biểu hiện ra kiểu hình"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nhóm gene liên kết là các gene cùng nằm trên một NST, cùng nhau phân li về giao tử trong quá trình giảm phân.\n\nVì sao các phương án khác sai:\n- A: Nhóm gene liên kết được xác định theo vị trí trên NST, không theo chức năng.\n- B: Không dựa vào việc tính trạng có màu sắc giống nhau để xác định nhóm liên kết.\n- D: Gene ở các NST khác nhau phân li độc lập, không thuộc cùng nhóm liên kết."
+    },
+    {
+     "ma_cau": "K09120401004",
+     "loai": "trac_nghiem",
+     "de": "Vì sao các gene trên cùng một nhiễm sắc thể thường di truyền cùng nhau qua các thế hệ?",
+     "lua_chon": [
+      "Vì chúng luôn có cùng chức năng sinh học",
+      "Vì chúng cùng phân li với NST mang chúng trong giảm phân",
+      "Vì chúng được tổng hợp cùng lúc trong quá trình phiên mã",
+      "Vì chúng có cùng số lượng nucleotide"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Các gene trên cùng một NST cùng phân li và tổ hợp với NST đó trong giảm phân, nên thường di truyền cùng nhau (di truyền liên kết).\n\nVì sao các phương án khác sai:\n- A: Các gene trên cùng NST không nhất thiết có cùng chức năng, mà di truyền cùng nhau vì cùng nằm trên một NST.\n- C: Mỗi gene được phiên mã độc lập; việc di truyền liên kết liên quan đến cơ chế phân li NST, không phải phiên mã.\n- D: Số lượng nucleotide của các gene không quyết định việc chúng di truyền liên kết hay không."
+    },
+    {
+     "ma_cau": "K09120401005",
+     "loai": "trac_nghiem",
+     "de": "Số nhóm gene liên kết của một loài thường bằng với đại lượng nào?",
+     "lua_chon": [
+      "Tổng số gene có trong bộ NST của loài",
+      "Số cặp NST giới tính của loài",
+      "Số lượng NST trong bộ đơn bội (n) của loài",
+      "Số lần nguyên phân của tế bào sinh dưỡng"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Mỗi NST trong bộ đơn bội (n) tạo thành một nhóm gene liên kết, nên số nhóm gene liên kết của loài thường bằng n.\n\nVì sao các phương án khác sai:\n- A: Mỗi NST mang rất nhiều gene, nên số nhóm gene liên kết ít hơn nhiều so với tổng số gene.\n- B: Số cặp NST giới tính chỉ là 1 cặp, không phản ánh đúng số nhóm gene liên kết của cả bộ NST.\n- D: Số nhóm gene liên kết là đặc trưng cố định của loài, không phụ thuộc số lần nguyên phân."
+    },
+    {
+     "ma_cau": "K09120401006",
+     "loai": "trac_nghiem",
+     "de": "Điểm khác biệt cơ bản giữa di truyền liên kết và phân li độc lập là gì?",
+     "lua_chon": [
+      "Di truyền liên kết tạo nhiều biến dị tổ hợp hơn phân li độc lập",
+      "Phân li độc lập chỉ xảy ra ở thực vật, di truyền liên kết chỉ xảy ra ở động vật",
+      "Di truyền liên kết: các gene trên cùng NST cùng di truyền; phân li độc lập: các gene trên các NST khác nhau di truyền độc lập",
+      "Di truyền liên kết không tuân theo quy luật di truyền nào, phân li độc lập tuân theo quy luật Mendel"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Di truyền liên kết: các gene trên cùng một NST di truyền cùng nhau; phân li độc lập: các gene trên các NST khác nhau phân li độc lập với nhau trong giảm phân.\n\nVì sao các phương án khác sai:\n- A: Ngược lại: phân li độc lập tạo nhiều biến dị tổ hợp hơn do các gene phân li tự do.\n- B: Cả di truyền liên kết và phân li độc lập đều có thể xảy ra ở cả động vật và thực vật.\n- D: Di truyền liên kết vẫn tuân theo một quy luật di truyền riêng (quy luật liên kết gene), không phải không có quy luật."
+    },
+    {
+     "ma_cau": "K09120401007",
+     "loai": "trac_nghiem",
+     "de": "So với các gene phân li độc lập (nằm trên các NST khác nhau), các gene liên kết (cùng nằm trên một NST) có đặc điểm di truyền khác biệt quan trọng nào?",
+     "lua_chon": [
+      "Gene liên kết tạo nhiều tổ hợp mới hơn",
+      "Hai kiểu cho kết quả di truyền giống hệt nhau",
+      "Gene liên kết không tuân theo quy luật nào",
+      "Gene liên kết thường di truyền cùng nhau, ít tổ hợp mới"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Các gene liên kết cùng nằm trên một NST nên thường di truyền cùng nhau thành một nhóm qua các thế hệ, hạn chế tạo ra các tổ hợp gene mới (biến dị tổ hợp); trong khi các gene phân li độc lập (trên các NST khác nhau) có thể tổ hợp tự do trong giảm phân, tạo ra nhiều loại tổ hợp gene mới hơn ở đời con.\n\nVì sao các phương án khác sai:\n- A: Gene liên kết di truyền cùng nhau nên ít tổ hợp mới hơn.\n- B: Lai phân tích cho tỉ lệ khác nhau: 1 : 1 và 1 : 1 : 1 : 1.\n- C: Di truyền liên kết cũng là một quy luật di truyền."
+    },
+    {
+     "ma_cau": "K09120401008",
+     "loai": "trac_nghiem",
+     "de": "Trong chọn giống, nếu muốn duy trì ổn định một tổ hợp các gene quý (ví dụ, gene kháng bệnh cùng với gene năng suất cao) qua nhiều thế hệ mà không bị tách rời do tổ hợp lại ngẫu nhiên, nhà chọn giống nên ưu tiên khai thác đặc điểm di truyền nào?",
+     "lua_chon": [
+      "Gene phân li độc lập, vì chúng tổ hợp tự do",
+      "Không có cách nào duy trì tổ hợp gene quý",
+      "Gene liên kết, vì chúng thường di truyền cùng nhau",
+      "Phải tạo đột biến mới ở mỗi thế hệ"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Các gene liên kết (cùng nằm trên một NST) có xu hướng di truyền cùng nhau thành nhóm qua các thế hệ, hạn chế bị tách rời do tổ hợp lại; vì vậy, để duy trì ổn định một tổ hợp gene quý, nhà chọn giống có thể khai thác đặc điểm di truyền liên kết này, trong khi các gene phân li độc lập dễ bị tách rời hơn do tổ hợp tự do.\n\nVì sao các phương án khác sai:\n- A: Tổ hợp tự do làm các gene quý dễ bị tách rời.\n- B: Gene liên kết giúp giữ các gene quý đi cùng nhau.\n- D: Đột biến không giúp giữ ổn định tổ hợp gene quý."
+    },
+    {
+     "ma_cau": "K09120401009",
+     "loai": "trac_nghiem",
+     "de": "Nếu tỉ lệ kiểu hình ở đời con của một phép lai phân tích cơ thể dị hợp hai cặp gene KHÔNG phải là 1:1:1:1 mà chỉ có hai loại kiểu hình với tỉ lệ 1:1, điều này gợi ý điều gì về hai cặp gene đó?",
+     "lua_chon": [
+      "Hai cặp gene này chắc chắn phân li độc lập với nhau",
+      "Hai cặp gene này liên kết hoàn toàn với nhau trên cùng một nhiễm sắc thể",
+      "Phép lai đã thực hiện sai, không có kết quả này trong thực tế",
+      "Một trong hai cặp gene bị đột biến trong quá trình giảm phân"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Lai phân tích cơ thể dị hợp hai cặp gene mà chỉ cho 2 loại kiểu hình theo tỉ lệ 1:1 (thay vì 4 loại tỉ lệ 1:1:1:1) cho thấy hai cặp gene liên kết hoàn toàn với nhau.\n\nVì sao các phương án khác sai:\n- A: Nếu phân li độc lập, lai phân tích phải cho đủ 4 loại kiểu hình tỉ lệ 1:1:1:1, không phải chỉ 2 loại 1:1.\n- C: Đây là kết quả thực tế thường gặp khi hai gene liên kết hoàn toàn, không phải lỗi thí nghiệm.\n- D: Kết quả 1:1 với 2 loại kiểu hình là dấu hiệu của liên kết gene, không nhất thiết do đột biến."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00578",
+   "khoi": "9",
+   "chu_de": "Di truyền Nhiễm sắc thể",
+   "chuyen_de": "Di truyền liên kết",
+   "nhom": "Viết giao tử và Ý nghĩa của viết giao tử",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09120402001",
+     "loai": "trac_nghiem",
+     "de": "Cơ thể dị hợp hai cặp gene (AaBb), nếu hai cặp gene này liên kết hoàn toàn trên một NST, giảm phân cho mấy loại giao tử?",
+     "lua_chon": [
+      "4 loại",
+      "3 loại",
+      "1 loại",
+      "2 loại"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khi hai cặp gene liên kết hoàn toàn trên một NST, giảm phân chỉ tạo 2 loại giao tử theo đúng tổ hợp gene ban đầu, ít hơn so với phân li độc lập (4 loại).\n\nVì sao các phương án khác sai:\n- A: 4 loại giao tử là kết quả của phân li độc lập, không phải liên kết gene.\n- B: Số loại giao tử của liên kết hoàn toàn chỉ có 2, không phải 3.\n- C: Cơ thể dị hợp hai cặp gene liên kết vẫn tạo ra 2 loại giao tử, không chỉ 1 loại."
+    },
+    {
+     "ma_cau": "K09120402002",
+     "loai": "trac_nghiem",
+     "de": "Cơ thể dị hợp hai cặp gene AaBb, nếu hai cặp gene này phân li độc lập (nằm trên hai NST khác nhau), giảm phân cho mấy loại giao tử?",
+     "lua_chon": [
+      "2 loại",
+      "4 loại",
+      "8 loại",
+      "1 loại"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hai cặp gene phân li độc lập (nằm trên 2 NST khác nhau) tạo 2² = 4 loại giao tử: AB, Ab, aB, ab.\n\nVì sao các phương án khác sai:\n- A: 2 loại giao tử là kết quả của di truyền liên kết hoàn toàn, không phải phân li độc lập.\n- C: 8 loại xuất hiện khi có từ 3 cặp gene phân li độc lập trở lên, không đúng với 2 cặp gene ở đây.\n- D: Cơ thể dị hợp hai cặp gene luôn tạo nhiều hơn 1 loại giao tử khi giảm phân bình thường."
+    },
+    {
+     "ma_cau": "K09120402003",
+     "loai": "trac_nghiem",
+     "de": "Hai gene liên kết hoàn toàn trên một nhiễm sắc thể. Cơ thể có kiểu gene AB/ab giảm phân cho các loại giao tử nào?",
+     "lua_chon": [
+      "AB và ab",
+      "Ab và aB",
+      "AB, Ab, aB và ab",
+      "Aa và Bb"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Liên kết hoàn toàn: các gene trên cùng một nhiễm sắc thể đi cùng nhau, AB/ab cho 2 loại giao tử AB và ab.\n\nVì sao các phương án khác sai:\n- B: Đây là giao tử của cơ thể Ab/aB; AB/ab cho giao tử AB và ab.\n- C: Bốn loại giao tử chỉ có khi hai gene phân li độc lập.\n- D: Mỗi giao tử chỉ mang một allele của mỗi gene."
+    },
+    {
+     "ma_cau": "K09120402004",
+     "loai": "trac_nghiem",
+     "de": "Hai gene liên kết hoàn toàn trên một nhiễm sắc thể. Cơ thể có kiểu gene Ab/aB giảm phân cho các loại giao tử nào?",
+     "lua_chon": [
+      "AB và ab",
+      "AB, Ab, aB và ab",
+      "Ab và aB",
+      "A, a, B và b"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ab/aB: một nhiễm sắc thể mang Ab, chiếc kia mang aB nên cho 2 loại giao tử Ab và aB.\n\nVì sao các phương án khác sai:\n- A: Đây là giao tử của cơ thể AB/ab.\n- B: Bốn loại giao tử chỉ có khi hai gene phân li độc lập.\n- D: Mỗi giao tử mang một allele của cả hai gene."
+    },
+    {
+     "ma_cau": "K09120402005",
+     "loai": "trac_nghiem",
+     "de": "Ở ruồi giấm đực, gene quy định màu thân và độ dài cánh liên kết hoàn toàn. Ruồi đực có kiểu gene BV/bv cho các loại giao tử nào?",
+     "lua_chon": [
+      "BV, Bv, bV và bv",
+      "BV và bv",
+      "Bv và bV",
+      "Bb và Vv"
+     ],
+     "dap_an": "B",
+     "loi_giai": "BV/bv liên kết hoàn toàn cho 2 loại giao tử BV và bv với tỉ lệ bằng nhau.\n\nVì sao các phương án khác sai:\n- A: Bốn loại giao tử chỉ có khi hai gene phân li độc lập.\n- C: Đây là giao tử của cơ thể Bv/bV.\n- D: Mỗi giao tử chỉ mang một allele của mỗi gene."
+    },
+    {
+     "ma_cau": "K09120402006",
+     "loai": "trac_nghiem",
+     "de": "Hai gene liên kết hoàn toàn trên một nhiễm sắc thể. Cơ thể AB/ab giảm phân cho bao nhiêu loại giao tử?",
+     "lua_chon": [
+      "4 loại",
+      "1 loại",
+      "3 loại",
+      "2 loại"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Liên kết hoàn toàn: cơ thể dị hợp hai cặp gene cho 2 loại giao tử (AB và ab).\n\nVì sao các phương án khác sai:\n- A: Bốn loại chỉ có khi hai gene phân li độc lập.\n- B: Cơ thể dị hợp nên có 2 nhiễm sắc thể khác nhau, cho 2 loại giao tử.\n- C: Không có trường hợp 3 loại với hai gene liên kết hoàn toàn."
+    },
+    {
+     "ma_cau": "K09120402007",
+     "loai": "trac_nghiem",
+     "de": "Hai gene liên kết hoàn toàn trên một nhiễm sắc thể. Cơ thể AB/ab tạo giao tử ab với tỉ lệ bao nhiêu?",
+     "lua_chon": [
+      "25%",
+      "50%",
+      "100%",
+      "0%"
+     ],
+     "dap_an": "B",
+     "loi_giai": "AB/ab cho 2 loại giao tử AB và ab với tỉ lệ bằng nhau: mỗi loại 50%.\n\nVì sao các phương án khác sai:\n- A: Đây là tỉ lệ khi hai gene phân li độc lập (4 loại giao tử).\n- C: Cơ thể còn tạo giao tử AB, nên ab chỉ chiếm một nửa.\n- D: Giao tử ab có tạo ra, chiếm 50%."
+    },
+    {
+     "ma_cau": "K09120402008",
+     "loai": "trac_nghiem",
+     "de": "Hai gene liên kết hoàn toàn trên một nhiễm sắc thể. Cơ thể Ab/aB tạo giao tử AB với tỉ lệ bao nhiêu?",
+     "lua_chon": [
+      "25%",
+      "50%",
+      "0%",
+      "100%"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ab/aB liên kết hoàn toàn chỉ cho giao tử Ab và aB, không tạo giao tử AB (0%).\n\nVì sao các phương án khác sai:\n- A: Đây là tỉ lệ khi hai gene phân li độc lập.\n- B: Giao tử chiếm 50% là Ab và aB, không phải AB.\n- D: Cơ thể Ab/aB không mang nhiễm sắc thể AB."
+    },
+    {
+     "ma_cau": "K09120402009",
+     "loai": "trac_nghiem",
+     "de": "Ở một loài thực vật, hai gene quy định màu hoa và dạng lá liên kết hoàn toàn trên một nhiễm sắc thể. Cây có kiểu gene DE/de giảm phân cho các loại giao tử nào?",
+     "lua_chon": [
+      "De và dE",
+      "DE, De, dE và de",
+      "DE và de",
+      "Chỉ một loại giao tử DEde"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hai gene liên kết hoàn toàn trên một NST, cơ thể DE/de tạo 2 loại giao tử tương ứng với 2 NST ban đầu: DE và de.\n\nVì sao các phương án khác sai:\n- A: De và dE là giao tử của kiểu gene chéo (De/dE), không phải của kiểu gene DE/de trong đề.\n- B: Liên kết hoàn toàn chỉ tạo 2 loại giao tử tương ứng với 2 loại NST ban đầu, không tạo đủ 4 loại như phân li độc lập.\n- D: Giảm phân luôn tạo giao tử đơn bội, không thể có kiểu gene DEde (lưỡng bội) trong giao tử."
+    },
+    {
+     "ma_cau": "K09120402010",
+     "loai": "trac_nghiem",
+     "de": "Ở một loài động vật, hai gene quy định màu lông và độ dài đuôi liên kết hoàn toàn. Cơ thể có kiểu gene Mn/mN giảm phân cho các loại giao tử nào?",
+     "lua_chon": [
+      "MN và mn",
+      "Mn, mN, MN và mn",
+      "M, n, m và N riêng lẻ",
+      "Mn và mN"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hai gene liên kết hoàn toàn, cơ thể Mn/mN tạo 2 loại giao tử tương ứng với 2 NST ban đầu: Mn và mN.\n\nVì sao các phương án khác sai:\n- A: MN và mn là giao tử của kiểu gene MN/mn, không phải của kiểu gene chéo Mn/mN trong đề.\n- B: Liên kết hoàn toàn chỉ tạo 2 loại giao tử tương ứng với 2 loại NST ban đầu, không tạo đủ 4 loại.\n- C: Mỗi giao tử phải mang đủ tổ hợp gene trên NST đó (2 gene liên kết), không tách riêng từng allele."
+    },
+    {
+     "ma_cau": "K09120402011",
+     "loai": "trac_nghiem",
+     "de": "Một cơ thể có kiểu gene AB/ab (hai gene liên kết hoàn toàn) giảm phân tạo ra 4000 giao tử. Số giao tử mang tổ hợp gene AB là bao nhiêu?",
+     "lua_chon": [
+      "2000",
+      "4000",
+      "1000",
+      "0"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cơ thể AB/ab liên kết hoàn toàn tạo 2 loại giao tử AB và ab với tỉ lệ 1:1 → số giao tử AB = 4000 × 1/2 = 2000.\n\nVì sao các phương án khác sai:\n- B: 4000 là tổng số giao tử, chưa chia cho 2 loại giao tử tạo thành (AB và ab tỉ lệ 1:1).\n- C: 1000 tính nhầm khi chia cho 4 thay vì chia cho 2.\n- D: Liên kết hoàn toàn vẫn tạo giao tử AB (một trong hai loại giao tử), không phải bằng 0."
+    },
+    {
+     "ma_cau": "K09120402012",
+     "loai": "trac_nghiem",
+     "de": "Ở một loài, hai gene quy định hai tính trạng cùng nằm trên một nhiễm sắc thể (di truyền liên kết hoàn toàn). Một cơ thể có kiểu gene AB/ab (dị hợp hai cặp gene, liên kết). Các loại giao tử mà cơ thể này có thể tạo ra là",
+     "lua_chon": [
+      "Bốn loại AB, Ab, aB, ab, tỉ lệ ngang nhau",
+      "Hai loại AB và ab, tỉ lệ ngang nhau",
+      "Một loại duy nhất là AB",
+      "Hai loại Ab và aB, tỉ lệ ngang nhau"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vì hai gene A, B cùng nằm trên một NST (liên kết với nhau thành nhóm AB), còn a, b cùng nằm trên NST tương đồng còn lại (nhóm ab); khi giảm phân, mỗi NST đi về một giao tử nguyên vẹn, nên cơ thể AB/ab chỉ tạo ra hai loại giao tử AB và ab với tỉ lệ ngang nhau, không tạo ra các tổ hợp mới như Ab hay aB.\n\nVì sao các phương án khác sai:\n- A: Liên kết hoàn toàn nên A đi cùng B, a đi cùng b; không tạo Ab, aB.\n- C: Hai NST tương đồng phân li nên tạo cả giao tử ab.\n- D: Trên mỗi NST có AB hoặc ab, không có Ab, aB."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00579",
+   "khoi": "9",
+   "chu_de": "Di truyền Nhiễm sắc thể",
+   "chuyen_de": "Di truyền liên kết",
+   "nhom": "Vẽ sơ đồ lai di truyền liên kết",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09120403001",
+     "loai": "trac_nghiem",
+     "de": "Biết A trội hoàn toàn so với a, B trội hoàn toàn so với b; hai gene liên kết hoàn toàn. Phép lai AB/ab × AB/ab cho đời con có tỉ lệ kiểu hình là",
+     "lua_chon": [
+      "3 : 1",
+      "9 : 3 : 3 : 1",
+      "1 : 2 : 1",
+      "1 : 1"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Giao tử: AB, ab (mỗi bên). Đời con 1 AB/AB : 2 AB/ab : 1 ab/ab → 3 trội cả hai : 1 lặn cả hai.\n\nVì sao các phương án khác sai:\n- B: Tỉ lệ của hai gene phân li độc lập.\n- C: Tỉ lệ kiểu hình của phép lai Ab/aB × Ab/aB.\n- D: Tỉ lệ của lai phân tích AB/ab × ab/ab."
+    },
+    {
+     "ma_cau": "K09120403002",
+     "loai": "trac_nghiem",
+     "de": "Biết A trội hoàn toàn so với a, B trội hoàn toàn so với b; hai gene liên kết hoàn toàn. Phép lai Ab/aB × Ab/aB cho đời con có tỉ lệ kiểu hình là",
+     "lua_chon": [
+      "3 : 1",
+      "9 : 3 : 3 : 1",
+      "1 : 1",
+      "1 : 2 : 1"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Giao tử Ab, aB. Đời con 1 Ab/Ab (trội A, lặn b) : 2 Ab/aB (trội cả hai) : 1 aB/aB (lặn a, trội B) = 1 : 2 : 1.\n\nVì sao các phương án khác sai:\n- A: Tỉ lệ của phép lai AB/ab × AB/ab.\n- B: Tỉ lệ của hai gene phân li độc lập.\n- C: Tỉ lệ của lai phân tích."
+    },
+    {
+     "ma_cau": "K09120403003",
+     "loai": "trac_nghiem",
+     "de": "Ở ruồi giấm, B (thân xám) trội hoàn toàn so với b (thân đen), V (cánh dài) trội hoàn toàn so với v (cánh cụt); hai gene liên kết hoàn toàn. Lai ruồi đực BV/bv với ruồi cái bv/bv, đời con có kiểu hình",
+     "lua_chon": [
+      "1 xám, cụt : 1 đen, dài",
+      "1 xám, dài : 1 đen, cụt",
+      "Bốn kiểu hình, mỗi loại 25%",
+      "3 xám, dài : 1 đen, cụt"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ruồi đực BV/bv cho giao tử BV, bv; ruồi cái chỉ cho bv. Đời con 1 BV/bv (xám, dài) : 1 bv/bv (đen, cụt).\n\nVì sao các phương án khác sai:\n- A: Đây là kết quả khi ruồi đực có kiểu gene Bv/bV.\n- C: Bốn kiểu hình chỉ có khi hai gene phân li độc lập.\n- D: Tỉ lệ 3 : 1 của phép lai BV/bv × BV/bv."
+    },
+    {
+     "ma_cau": "K09120403004",
+     "loai": "trac_nghiem",
+     "de": "Biết A trội hoàn toàn so với a, B trội hoàn toàn so với b; hai gene liên kết hoàn toàn. Phép lai Ab/aB × ab/ab cho đời con có tỉ lệ kiểu hình là",
+     "lua_chon": [
+      "1 (trội A, lặn b) : 1 (lặn a, trội B)",
+      "1 (trội cả hai) : 1 (lặn cả hai)",
+      "3 (trội cả hai) : 1 (lặn cả hai)",
+      "100% trội cả hai tính trạng"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ab/aB cho giao tử Ab, aB; ab/ab cho ab. Đời con 1 Ab/ab : 1 aB/ab → 1 (trội A, lặn b) : 1 (lặn a, trội B).\n\nVì sao các phương án khác sai:\n- B: Đây là kết quả của AB/ab × ab/ab.\n- C: Tỉ lệ của phép lai AB/ab × AB/ab.\n- D: Đời con có hai loại kiểu gene Ab/ab và aB/ab."
+    },
+    {
+     "ma_cau": "K09120403005",
+     "loai": "trac_nghiem",
+     "de": "Biết A trội hoàn toàn so với a, B trội hoàn toàn so với b; hai gene liên kết hoàn toàn. Phép lai AB/ab × AB/ab cho đời con, tỉ lệ kiểu hình trội cả hai tính trạng là bao nhiêu?",
+     "lua_chon": [
+      "1/2",
+      "1/4",
+      "9/16",
+      "3/4"
+     ],
+     "dap_an": "D",
+     "loi_giai": "AB/ab × AB/ab (liên kết hoàn toàn) cho đời con 1 AB/AB : 2 AB/ab : 1 ab/ab → tỉ lệ kiểu hình 3 trội cả hai : 1 lặn cả hai → trội cả hai = 3/4.\n\nVì sao các phương án khác sai:\n- A: 1/2 không đúng với tỉ lệ 3:1 của liên kết gene hoàn toàn ở phép lai này.\n- B: 1/4 là tỉ lệ kiểu hình lặn cả hai tính trạng, không phải trội cả hai.\n- C: 9/16 là công thức của hai cặp gene phân li độc lập, không áp dụng cho gene liên kết hoàn toàn."
+    },
+    {
+     "ma_cau": "K09120403006",
+     "loai": "trac_nghiem",
+     "de": "Biết A trội hoàn toàn so với a, B trội hoàn toàn so với b; hai gene liên kết hoàn toàn. Phép lai Ab/aB × Ab/aB cho đời con, tỉ lệ kiểu hình mang cả hai tính trạng lặn (aabb) là bao nhiêu?",
+     "lua_chon": [
+      "0",
+      "1/4",
+      "1/16",
+      "1/2"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cơ thể Ab/aB chỉ tạo hai loại giao tử Ab và aB (liên kết hoàn toàn), không bao giờ tạo giao tử ab hay AB, nên không thể có kiểu gene aabb ở đời con → tỉ lệ = 0.\n\nVì sao các phương án khác sai:\n- B: 1/4 sẽ đúng nếu các gene phân li độc lập; nhưng liên kết hoàn toàn Ab/aB không bao giờ tạo giao tử ab để có kiểu gene aabb.\n- C: 1/16 là công thức cho hai cặp gene phân li độc lập với xác suất riêng lẻ nhân nhau, không áp dụng ở đây.\n- D: 1/2 không phù hợp; các giao tử tạo ra chỉ là Ab và aB, không tổ hợp được thành aabb."
+    },
+    {
+     "ma_cau": "K09120403007",
+     "loai": "trac_nghiem",
+     "de": "Ở ruồi giấm, B (thân xám) trội hoàn toàn so với b (thân đen), V (cánh dài) trội hoàn toàn so với v (cánh cụt); hai gene liên kết hoàn toàn. Lai ruồi đực Bv/bV với ruồi cái bv/bv, tỉ lệ kiểu hình đời con là bao nhiêu?",
+     "lua_chon": [
+      "1 xám, dài : 1 đen, cụt",
+      "1 xám, cụt : 1 đen, dài",
+      "3 xám, dài : 1 đen, cụt",
+      "9:3:3:1"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ruồi đực Bv/bV (liên kết hoàn toàn) tạo giao tử Bv và bV tỉ lệ 1:1; lai với bv/bv (chỉ cho giao tử bv) cho đời con 1 Bv/bv (xám, cụt) : 1 bV/bv (đen, dài).\n\nVì sao các phương án khác sai:\n- A: Đây là tỉ lệ nếu B và V liên kết cùng trên một giao tử gốc (BV/bv), không phù hợp với kiểu gene Bv/bV trong đề.\n- C: Tỉ lệ 3:1 không xuất hiện trong phép lai phân tích với gene liên kết hoàn toàn.\n- D: 9:3:3:1 chỉ áp dụng cho hai cặp gene phân li độc lập, không áp dụng cho gene liên kết."
+    },
+    {
+     "ma_cau": "K09120403008",
+     "loai": "trac_nghiem",
+     "de": "Lai cơ thể dị hợp hai cặp gene liên kết hoàn toàn AB/ab với cơ thể đồng hợp lặn ab/ab (lai phân tích). Tỉ lệ kiểu gene ở đời con là",
+     "lua_chon": [
+      "1 AB/ab : 1 ab/ab",
+      "1 AB/ab : 1 Ab/ab : 1 aB/ab : 1 ab/ab",
+      "100% AB/ab",
+      "3 AB/ab : 1 ab/ab"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cơ thể AB/ab tạo hai loại giao tử AB và ab (tỉ lệ 1:1) do liên kết hoàn toàn; cơ thể ab/ab chỉ tạo một loại giao tử ab. Tổ hợp giao tử cho đời con: AB × ab → AB/ab; ab × ab → ab/ab, với tỉ lệ 1 AB/ab : 1 ab/ab.\n\nVì sao các phương án khác sai:\n- B: Đây là kết quả khi phân li độc lập; liên kết hoàn toàn chỉ có 2 loại giao tử.\n- C: Cơ thể AB/ab còn tạo giao tử ab nên có con ab/ab.\n- D: Hai loại giao tử AB, ab có tỉ lệ ngang nhau nên đời con 1 : 1."
+    },
+    {
+     "ma_cau": "K09120403009",
+     "loai": "trac_nghiem",
+     "de": "Ở một loài thực vật, hai tính trạng màu hoa và dạng quả do hai gene liên kết hoàn toàn quy định. Lai cây dị hợp AB/ab với cây dị hợp AB/ab, thu được 800 cây con. Số cây mang kiểu hình lặn cả hai tính trạng theo lí thuyết là bao nhiêu?",
+     "lua_chon": [
+      "200",
+      "400",
+      "50",
+      "600"
+     ],
+     "dap_an": "A",
+     "loi_giai": "AB/ab × AB/ab (liên kết hoàn toàn) cho tỉ lệ kiểu hình 3 trội cả hai : 1 lặn cả hai → số cây lặn cả hai = 800 × 1/4 = 200.\n\nVì sao các phương án khác sai:\n- B: 1/2 không đúng; tỉ lệ lặn cả hai tính trạng ở liên kết hoàn toàn AB/ab×AB/ab là 1/4.\n- C: 1/16 là công thức cho hai cặp gene phân li độc lập, không áp dụng cho gene liên kết hoàn toàn.\n- D: 600 ứng với tỉ lệ 3/4 (kiểu hình trội cả hai), không phải lặn cả hai."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00581",
+   "khoi": "9",
+   "chu_de": "Di truyền Nhiễm sắc thể",
+   "chuyen_de": "Đột biến NST",
+   "nhom": "Lý thuyết cơ bản về đột biến NST",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09120501001",
+     "loai": "trac_nghiem",
+     "de": "Đột biến làm một đoạn nhiễm sắc thể bị đứt ra và mất hẳn khỏi nhiễm sắc thể được gọi là dạng nào?",
+     "lua_chon": [
+      "Mất đoạn",
+      "Lặp đoạn",
+      "Đảo đoạn",
+      "Chuyển đoạn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mất đoạn là dạng đột biến cấu trúc NST làm một đoạn NST bị đứt ra và mất hẳn, khiến NST ngắn đi so với ban đầu.\n\nVì sao các phương án khác sai:\n- B: Lặp đoạn là một đoạn NST được nhân thêm bản sao, NST không bị mất đoạn nào.\n- C: Đảo đoạn là một đoạn NST đứt ra rồi gắn lại theo chiều ngược, đoạn đó vẫn còn trên NST.\n- D: Chuyển đoạn là một đoạn NST chuyển sang vị trí khác, đoạn đó không bị mất đi."
+    },
+    {
+     "ma_cau": "K09120501002",
+     "loai": "trac_nghiem",
+     "de": "Đột biến làm một đoạn nhiễm sắc thể được nhân thêm, xuất hiện lặp lại trên cùng nhiễm sắc thể đó được gọi là dạng nào?",
+     "lua_chon": [
+      "Mất đoạn",
+      "Lặp đoạn",
+      "Đảo đoạn",
+      "Chuyển đoạn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Lặp đoạn là dạng đột biến cấu trúc NST làm một đoạn NST được nhân thêm bản sao, xuất hiện lặp lại trên nhiễm sắc thể.\n\nVì sao các phương án khác sai:\n- A: Mất đoạn làm NST mất hẳn một đoạn, không phải được nhân thêm bản sao.\n- C: Đảo đoạn chỉ đổi chiều một đoạn NST, không tạo thêm bản sao nào.\n- D: Chuyển đoạn đổi vị trí một đoạn NST, không tạo thêm bản sao nào."
+    },
+    {
+     "ma_cau": "K09120501003",
+     "loai": "trac_nghiem",
+     "de": "Đột biến làm một đoạn nhiễm sắc thể bị đứt ra rồi gắn lại theo chiều ngược với ban đầu được gọi là dạng nào?",
+     "lua_chon": [
+      "Mất đoạn",
+      "Lặp đoạn",
+      "Đảo đoạn",
+      "Chuyển đoạn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đảo đoạn là dạng đột biến cấu trúc NST làm một đoạn NST đứt ra rồi gắn trở lại theo chiều ngược so với ban đầu.\n\nVì sao các phương án khác sai:\n- A: Mất đoạn làm NST mất hẳn một đoạn, đoạn đó không còn gắn lại nữa.\n- B: Lặp đoạn thêm bản sao của một đoạn, không đổi chiều đoạn đó.\n- D: Chuyển đoạn làm đoạn NST chuyển sang vị trí khác, không đảo chiều tại chỗ."
+    },
+    {
+     "ma_cau": "K09120501004",
+     "loai": "trac_nghiem",
+     "de": "Đột biến làm một đoạn nhiễm sắc thể bị đứt ra rồi gắn vào vị trí khác trên nhiễm sắc thể hoặc sang nhiễm sắc thể không tương đồng được gọi là dạng nào?",
+     "lua_chon": [
+      "Mất đoạn",
+      "Lặp đoạn",
+      "Đảo đoạn",
+      "Chuyển đoạn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Chuyển đoạn là dạng đột biến cấu trúc NST làm một đoạn NST chuyển sang vị trí khác trên NST đó hoặc sang NST không tương đồng.\n\nVì sao các phương án khác sai:\n- A: Mất đoạn làm đoạn NST biến mất hẳn, không chuyển đến vị trí khác.\n- B: Lặp đoạn thêm bản sao tại chỗ, không chuyển đoạn sang vị trí khác.\n- C: Đảo đoạn chỉ đổi chiều đoạn NST tại chỗ, không chuyển sang vị trí khác."
+    },
+    {
+     "ma_cau": "K09120501005",
+     "loai": "trac_nghiem",
+     "de": "Đột biến cấu trúc nhiễm sắc thể làm thay đổi trực tiếp điều gì trên nhiễm sắc thể?",
+     "lua_chon": [
+      "Số lượng hoặc trật tự sắp xếp các gene trên nhiễm sắc thể",
+      "Trình tự nucleotide bên trong một gene",
+      "Số lượng nhiễm sắc thể trong bộ nhiễm sắc thể",
+      "Sự tổ hợp lại gene giữa các nhiễm sắc thể trong giảm phân"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đột biến cấu trúc NST làm thay đổi số lượng hoặc trật tự sắp xếp các gene trên một NST, khác với đột biến gene và đột biến số lượng NST.\n\nVì sao các phương án khác sai:\n- B: Thay đổi trình tự nucleotide trong một gene là đột biến gene, không phải đột biến cấu trúc NST.\n- C: Thay đổi số lượng NST trong bộ NST là đột biến số lượng NST, khác đột biến cấu trúc.\n- D: Tổ hợp lại gene giữa các NST trong giảm phân tạo biến dị tổ hợp, không phải đột biến."
+    },
+    {
+     "ma_cau": "K09120501006",
+     "loai": "trac_nghiem",
+     "de": "Bốn dạng đột biến cấu trúc nhiễm sắc thể gồm mất đoạn, lặp đoạn, đảo đoạn và dạng nào nữa?",
+     "lua_chon": [
+      "Thể ba",
+      "Chuyển đoạn",
+      "Thể đa bội",
+      "Đột biến gene"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Bốn dạng đột biến cấu trúc NST gồm mất đoạn, lặp đoạn, đảo đoạn và chuyển đoạn; thể ba, thể đa bội, đột biến gene không thuộc nhóm này.\n\nVì sao các phương án khác sai:\n- A: Thể ba là dạng đột biến số lượng NST (2n + 1), không phải đột biến cấu trúc.\n- C: Thể đa bội cũng là đột biến số lượng NST, bộ NST tăng theo bội số n.\n- D: Đột biến gene là biến đổi trong một gene, không phải trong cấu trúc NST."
+    },
+    {
+     "ma_cau": "K09120501007",
+     "loai": "trac_nghiem",
+     "de": "Đột biến chuyển đoạn nhiễm sắc thể có thể xảy ra giữa hai nhiễm sắc thể như thế nào?",
+     "lua_chon": [
+      "Chỉ giữa hai NST tương đồng trong cùng một cặp",
+      "Chỉ giữa NST thường và NST giới tính",
+      "Giữa hai NST không tương đồng (khác cặp)",
+      "Thường chỉ xảy ra trong cùng một nhiễm sắc thể, không có NST thứ hai tham gia"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đột biến chuyển đoạn có thể xảy ra khi một đoạn NST đứt ra và gắn vào vị trí khác trên NST không tương đồng (khác cặp).\n\nVì sao các phương án khác sai:\n- A: Chuyển đoạn có thể xảy ra giữa các NST không tương đồng, không chỉ giới hạn trong cùng một cặp tương đồng.\n- B: Chuyển đoạn có thể xảy ra giữa các NST thường với nhau, không nhất thiết liên quan NST giới tính.\n- D: Chuyển đoạn thường liên quan đến việc đoạn NST gắn sang một NST khác (không tương đồng), không chỉ giữa hai vị trí trên cùng một NST."
+    },
+    {
+     "ma_cau": "K09120501008",
+     "loai": "trac_nghiem",
+     "de": "Trong 4 dạng đột biến cấu trúc NST (mất đoạn, lặp đoạn, đảo đoạn, chuyển đoạn), dạng nào không làm thay đổi số lượng gene, chỉ làm thay đổi trật tự sắp xếp gene?",
+     "lua_chon": [
+      "Mất đoạn",
+      "Lặp đoạn",
+      "Chuyển đoạn (giữa hai NST không tương đồng)",
+      "Đảo đoạn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đảo đoạn làm một đoạn NST đứt ra rồi gắn lại theo chiều ngược, không làm thay đổi số lượng gene mà chỉ thay đổi trật tự sắp xếp của các gene trên NST.\n\nVì sao các phương án khác sai:\n- A: Mất đoạn làm giảm số lượng gene trên NST, không chỉ đổi trật tự.\n- B: Lặp đoạn làm tăng số lượng gene (một đoạn được lặp lại), không chỉ đổi trật tự.\n- C: Chuyển đoạn giữa hai NST không tương đồng làm thay đổi số lượng gene trên mỗi NST liên quan, không chỉ đổi trật tự trên một NST."
+    },
+    {
+     "ma_cau": "K09120501009",
+     "loai": "trac_nghiem",
+     "de": "Đột biến làm thay đổi số lượng nhiễm sắc thể ở một hoặc một số cặp nhiễm sắc thể tương đồng được gọi là dạng nào?",
+     "lua_chon": [
+      "Đa bội",
+      "Mất đoạn",
+      "Lệch bội",
+      "Đảo đoạn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Lệch bội là dạng đột biến số lượng NST làm thay đổi số lượng NST ở một hoặc một số cặp NST tương đồng, ví dụ thể ba, thể một.\n\nVì sao các phương án khác sai:\n- A: Đa bội làm thay đổi số lượng NST ở tất cả các cặp theo bội số của n, không phải chỉ một vài cặp.\n- B: Mất đoạn là đột biến cấu trúc NST, không làm thay đổi số lượng NST.\n- D: Đảo đoạn là đột biến cấu trúc NST, không làm thay đổi số lượng NST."
+    },
+    {
+     "ma_cau": "K09120501010",
+     "loai": "trac_nghiem",
+     "de": "Tế bào có bộ nhiễm sắc thể dạng 2n + 1 (thừa một chiếc ở một cặp) được gọi là gì?",
+     "lua_chon": [
+      "Thể một",
+      "Thể tam bội",
+      "Thể tứ bội",
+      "Thể ba"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thể ba có bộ NST dạng 2n + 1, thừa một chiếc NST ở một cặp so với bộ NST bình thường.\n\nVì sao các phương án khác sai:\n- A: Thể một có bộ NST dạng 2n − 1, thiếu một chiếc NST ở một cặp, không phải thừa.\n- B: Thể tam bội có bộ NST dạng 3n, tăng ở tất cả các cặp, không phải chỉ một cặp.\n- C: Thể tứ bội có bộ NST dạng 4n, tăng ở tất cả các cặp, không phải chỉ một cặp."
+    },
+    {
+     "ma_cau": "K09120501011",
+     "loai": "trac_nghiem",
+     "de": "Tế bào có bộ nhiễm sắc thể dạng 2n − 1 (thiếu một chiếc ở một cặp) được gọi là gì?",
+     "lua_chon": [
+      "Thể một",
+      "Thể ba",
+      "Thể tam bội",
+      "Thể tứ bội"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thể một có bộ NST dạng 2n − 1, thiếu một chiếc NST ở một cặp so với bộ NST bình thường.\n\nVì sao các phương án khác sai:\n- B: Thể ba có bộ NST dạng 2n + 1, thừa một chiếc NST, không phải thiếu.\n- C: Thể tam bội có bộ NST dạng 3n, tăng ở tất cả các cặp, không phải thiếu một cặp.\n- D: Thể tứ bội có bộ NST dạng 4n, tăng ở tất cả các cặp, không phải thiếu một cặp."
+    },
+    {
+     "ma_cau": "K09120501012",
+     "loai": "trac_nghiem",
+     "de": "Đột biến làm bộ nhiễm sắc thể tăng theo bội số của n ở tất cả các cặp (như 3n, 4n) được gọi là dạng nào?",
+     "lua_chon": [
+      "Lệch bội",
+      "Đa bội",
+      "Mất đoạn",
+      "Chuyển đoạn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đa bội là dạng đột biến số lượng NST làm bộ NST tăng theo bội số của n ở tất cả các cặp, ví dụ tam bội (3n), tứ bội (4n).\n\nVì sao các phương án khác sai:\n- A: Lệch bội chỉ làm thay đổi số lượng NST ở một hoặc một số cặp, không phải tất cả các cặp.\n- C: Mất đoạn là đột biến cấu trúc NST, không làm thay đổi số lượng bộ NST.\n- D: Chuyển đoạn là đột biến cấu trúc NST, không làm thay đổi số lượng bộ NST."
+    },
+    {
+     "ma_cau": "K09120501013",
+     "loai": "trac_nghiem",
+     "de": "Thể tam bội (3n) và thể tứ bội (4n) đều thuộc dạng đột biến số lượng nhiễm sắc thể nào?",
+     "lua_chon": [
+      "Lệch bội",
+      "Đảo đoạn",
+      "Đa bội",
+      "Chuyển đoạn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thể tam bội (3n) và thể tứ bội (4n) đều có bộ NST tăng theo bội số của n ở tất cả các cặp, thuộc dạng đột biến đa bội.\n\nVì sao các phương án khác sai:\n- A: Lệch bội chỉ thay đổi số lượng NST ở một hoặc một số cặp (như thể ba, thể một), khác 3n, 4n.\n- B: Đảo đoạn là đột biến cấu trúc NST, không làm thay đổi số bộ NST như 3n, 4n.\n- D: Chuyển đoạn là đột biến cấu trúc NST, không làm thay đổi số bộ NST như 3n, 4n."
+    },
+    {
+     "ma_cau": "K09120501014",
+     "loai": "trac_nghiem",
+     "de": "Đột biến số lượng NST được chia thành mấy dạng chính? Đó là những dạng nào?",
+     "lua_chon": [
+      "2 dạng: lệch bội và đa bội",
+      "3 dạng: thể ba, thể một và thể không",
+      "2 dạng: mất đoạn và lặp đoạn",
+      "4 dạng: lệch bội, đa bội, mất đoạn và đảo đoạn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đột biến số lượng NST gồm 2 dạng chính: lệch bội (thay đổi số lượng ở một hoặc vài cặp NST) và đa bội (thay đổi số lượng ở tất cả các cặp NST theo bội số của n).\n\nVì sao các phương án khác sai:\n- B: Thể ba, thể một, thể không chỉ là các dạng cụ thể của lệch bội, không phải hai dạng chính của đột biến số lượng NST.\n- C: Mất đoạn và lặp đoạn là các dạng đột biến cấu trúc NST, không phải đột biến số lượng.\n- D: Mất đoạn và đảo đoạn là đột biến cấu trúc NST, không thuộc đột biến số lượng NST."
+    },
+    {
+     "ma_cau": "K09120501015",
+     "loai": "trac_nghiem",
+     "de": "Thể không (2n − 2, thiếu hẳn một cặp NST tương đồng) thuộc dạng đột biến số lượng NST nào?",
+     "lua_chon": [
+      "Đa bội",
+      "Lệch bội",
+      "Đột biến cấu trúc NST",
+      "Đột biến gene"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thể không (2n − 2) là dạng đột biến số lượng NST xảy ra ở một cặp NST tương đồng (thiếu hẳn cả hai chiếc), thuộc dạng lệch bội.\n\nVì sao các phương án khác sai:\n- A: Đa bội làm thay đổi số lượng NST ở TẤT CẢ các cặp, còn thể không chỉ thiếu NST ở MỘT cặp.\n- C: Đột biến cấu trúc làm thay đổi cấu trúc bên trong NST, không phải thay đổi số lượng NST.\n- D: Đột biến gene chỉ liên quan đến trình tự nucleotide trong một gene, không liên quan số lượng NST."
+    },
+    {
+     "ma_cau": "K09120501016",
+     "loai": "trac_nghiem",
+     "de": "Đoạn nhiễm sắc thể mang các gene A–G có trình tự trước và sau đột biến như sơ đồ. Đột biến này thuộc dạng nào?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120302-01-001-hinh.png)",
+     "lua_chon": [
+      "Lặp đoạn",
+      "Đảo đoạn",
+      "Chuyển đoạn",
+      "Mất đoạn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Sau đột biến, gene C không còn xuất hiện trong trình tự, các gene còn lại vẫn giữ nguyên thứ tự; đây là dạng mất đoạn.\n\nVì sao các phương án khác sai:\n- A: Lặp đoạn phải có một gene xuất hiện thêm lần nữa; ở đây không có gene nào lặp lại, chỉ có gene C biến mất.\n- B: Đảo đoạn giữ nguyên số lượng gene nhưng đổi chiều một đoạn; ở đây gene C bị mất hẳn, không phải đổi chiều.\n- C: Chuyển đoạn giữ nguyên số lượng gene nhưng đổi vị trí một đoạn; ở đây gene C bị mất hẳn, không phải đổi vị trí."
+    },
+    {
+     "ma_cau": "K09120501017",
+     "loai": "trac_nghiem",
+     "de": "Đoạn nhiễm sắc thể mang các gene A–G có trình tự trước và sau đột biến như sơ đồ. Đột biến này thuộc dạng nào?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120302-01-002-hinh.png)",
+     "lua_chon": [
+      "Đảo đoạn",
+      "Mất đoạn",
+      "Lặp đoạn",
+      "Chuyển đoạn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đoạn gene C, D, E vẫn còn đủ nhưng đổi thành thứ tự E, D, C (đảo ngược) tại đúng vị trí cũ; đây là dạng đảo đoạn.\n\nVì sao các phương án khác sai:\n- B: Mất đoạn làm một gene biến mất hẳn; ở đây cả ba gene C, D, E vẫn còn đủ, chỉ đổi thứ tự.\n- C: Lặp đoạn phải có gene xuất hiện thêm lần nữa; ở đây số lượng gene không đổi, chỉ đổi thứ tự.\n- D: Chuyển đoạn thường đưa đoạn gene tới vị trí khác; ở đây đoạn C, D, E vẫn ở đúng vị trí cũ, chỉ đổi chiều."
+    },
+    {
+     "ma_cau": "K09120501018",
+     "loai": "trac_nghiem",
+     "de": "Đoạn nhiễm sắc thể mang các gene A–G có trình tự trước và sau đột biến như sơ đồ. Đột biến này thuộc dạng nào?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120302-01-003-hinh.png)",
+     "lua_chon": [
+      "Mất đoạn",
+      "Chuyển đoạn",
+      "Lặp đoạn",
+      "Đảo đoạn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đoạn gene C, D vẫn giữ nguyên thứ tự nội bộ (C trước D) nhưng chuyển từ đầu đoạn ra cuối đoạn; đây là dạng chuyển đoạn.\n\nVì sao các phương án khác sai:\n- A: Mất đoạn làm gene biến mất hẳn; ở đây cả C và D vẫn còn đủ, chỉ đổi vị trí.\n- C: Lặp đoạn phải có gene xuất hiện thêm lần nữa; ở đây số lượng gene không đổi, chỉ đổi vị trí.\n- D: Đảo đoạn giữ nguyên vị trí đoạn nhưng đổi chiều bên trong; ở đây đoạn C, D giữ nguyên thứ tự nội bộ nhưng chuyển sang vị trí khác."
+    },
+    {
+     "ma_cau": "K09120501019",
+     "loai": "trac_nghiem",
+     "de": "Đoạn nhiễm sắc thể mang các gene A–G có trình tự trước và sau đột biến như sơ đồ. Đột biến này thuộc dạng nào? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120302-01-004-de.png)",
+     "lua_chon": [
+      "Mất đoạn",
+      "Lặp đoạn",
+      "Đảo đoạn",
+      "Chuyển đoạn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "So với ban đầu (ABCDEFG), trình tự sau đột biến có thêm một gene C lặp lại (ABCCDEFG) — đây là đột biến lặp đoạn.\n\nVì sao các phương án khác sai:\n- A: Mất đoạn làm giảm số gene, nhưng ở đây tổng số gene tăng thêm (thừa một C), không phải mất đoạn.\n- C: Đảo đoạn chỉ đổi thứ tự các gene, không làm tăng số lượng; ở đây số gene tăng lên.\n- D: Chuyển đoạn liên quan đến việc gene chuyển sang NST khác; ở đây chỉ có một NST và gene C được lặp lại."
+    },
+    {
+     "ma_cau": "K09120501020",
+     "loai": "trac_nghiem",
+     "de": "Một loài có 2n = 8. Một tế bào của loài này có số NST ở 4 cặp lần lượt là 2, 3, 2, 2. Đây là dạng đột biến nào?",
+     "lua_chon": [
+      "Thể một (2n − 1)",
+      "Thể tam bội (3n)",
+      "Thể ba (2n + 1)",
+      "Bộ NST bình thường (2n)"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cặp thứ hai có 3 NST thay vì 2, các cặp còn lại vẫn có 2 NST; tổng số NST là 9 = 2n + 1, đây là thể ba.\n\nVì sao các phương án khác sai:\n- A: Thể một có một cặp chỉ còn 1 NST (thiếu); ở đây có cặp thừa 3 NST, không phải thiếu.\n- B: Thể tam bội có tất cả các cặp đều tăng lên 3 NST; ở đây chỉ một cặp có 3, các cặp khác vẫn có 2.\n- D: Bộ NST bình thường thì mọi cặp đều có 2 NST; ở đây có một cặp tới 3 NST, không còn bình thường."
+    },
+    {
+     "ma_cau": "K09120501021",
+     "loai": "trac_nghiem",
+     "de": "Một loài có 2n = 8. Một tế bào của loài này có số NST ở 4 cặp lần lượt là 2, 1, 2, 2. Đây là dạng đột biến nào?",
+     "lua_chon": [
+      "Thể ba (2n + 1)",
+      "Thể tứ bội (4n)",
+      "Bộ NST bình thường (2n)",
+      "Thể một (2n − 1)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cặp thứ hai chỉ còn 1 NST thay vì 2, các cặp còn lại vẫn có 2 NST; tổng số NST là 7 = 2n − 1, đây là thể một.\n\nVì sao các phương án khác sai:\n- A: Thể ba có một cặp thừa thêm 1 NST (3 chiếc); ở đây cặp đó chỉ còn 1 chiếc, tức là thiếu.\n- B: Thể tứ bội có tất cả các cặp đều tăng lên 4 NST; ở đây chỉ một cặp thay đổi, còn thiếu chứ không tăng.\n- C: Bộ NST bình thường thì mọi cặp đều có 2 NST; ở đây có một cặp chỉ còn 1 NST."
+    },
+    {
+     "ma_cau": "K09120501022",
+     "loai": "trac_nghiem",
+     "de": "Một loài có 2n = 8. Một tế bào có số NST 4 cặp là 2, 2, 0, 2 (một cặp mất hẳn cả hai chiếc). Đây là dạng đột biến nào?",
+     "lua_chon": [
+      "Thể không",
+      "Thể một",
+      "Thể ba",
+      "Thể tam bội"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cặp NST có số lượng là 0 (mất hẳn cả hai chiếc của một cặp tương đồng) là dấu hiệu của thể không (2n − 2).\n\nVì sao các phương án khác sai:\n- B: Thể một chỉ thiếu 1 chiếc ở một cặp (còn lại 1 NST), khác với việc mất hẳn cả hai chiếc như đề bài.\n- C: Thể ba là thừa 1 chiếc ở một cặp, không phải mất hẳn một cặp.\n- D: Thể tam bội làm thay đổi số lượng NST ở TẤT CẢ các cặp theo bội số 3, không phải chỉ mất một cặp."
+    },
+    {
+     "ma_cau": "K09120501023",
+     "loai": "trac_nghiem",
+     "de": "Hội chứng Down ở người là hậu quả của dạng đột biến nhiễm sắc thể nào?",
+     "lua_chon": [
+      "Thể một ở nhiễm sắc thể số 21",
+      "Thể ba ở cặp nhiễm sắc thể giới tính",
+      "Thể ba ở nhiễm sắc thể số 21",
+      "Đột biến mất đoạn ở nhiễm sắc thể số 21"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hội chứng Down do thừa một nhiễm sắc thể số 21 (thể ba, 2n + 1 ở cặp NST số 21), làm tổng số NST của người bệnh là 47.\n\nVì sao các phương án khác sai:\n- A: Thể một là thiếu một NST; hội chứng Down do thừa một NST số 21, không phải thiếu.\n- B: Hội chứng Down liên quan cặp NST số 21 (NST thường), không phải cặp NST giới tính.\n- D: Mất đoạn là đột biến cấu trúc; hội chứng Down là đột biến số lượng NST (thừa nguyên 1 chiếc)."
+    },
+    {
+     "ma_cau": "K09120501024",
+     "loai": "trac_nghiem",
+     "de": "Hội chứng Turner ở người liên quan đến bộ nhiễm sắc thể giới tính dạng nào?",
+     "lua_chon": [
+      "Có ba nhiễm sắc thể giới tính (XXX)",
+      "Có một nhiễm sắc thể X và một nhiễm sắc thể Y (XY)",
+      "Thừa một nhiễm sắc thể số 21",
+      "Chỉ có một nhiễm sắc thể X (kí hiệu XO)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hội chứng Turner là thể một ở cặp NST giới tính: người bệnh chỉ có một NST X (kí hiệu XO), thiếu một NST giới tính so với bình thường.\n\nVì sao các phương án khác sai:\n- A: XXX là ba NST giới tính (thể ba ở cặp giới tính), không phải Turner (chỉ có một X).\n- B: XY là bộ NST giới tính bình thường của nam giới, không phải Turner.\n- C: Thừa NST số 21 là nguyên nhân của hội chứng Down, không phải Turner."
+    },
+    {
+     "ma_cau": "K09120501025",
+     "loai": "trac_nghiem",
+     "de": "Xét về tổng số nhiễm sắc thể, người mắc hội chứng Down và người mắc hội chứng Turner khác nhau như thế nào?",
+     "lua_chon": [
+      "Down có 47 NST (thừa 1), Turner có 45 NST (thiếu 1)",
+      "Down có 45 NST, Turner có 47 NST",
+      "Cả hai đều có 46 NST như người bình thường",
+      "Down có 47 NST, Turner cũng có 47 NST"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Down là thể ba (2n + 1 = 47 NST), Turner là thể một (2n − 1 = 45 NST); hai hội chứng có tổng số NST khác nhau.\n\nVì sao các phương án khác sai:\n- B: Đây là nhầm lẫn ngược: Down thừa NST (47 chiếc), Turner thiếu NST (45 chiếc), không phải ngược lại.\n- C: Cả hai hội chứng đều làm thay đổi số lượng NST so với 46 NST bình thường, không giữ nguyên 46.\n- D: Turner là thể một (thiếu 1 NST, 45 chiếc), không phải thừa NST như Down."
+    },
+    {
+     "ma_cau": "K09120501026",
+     "loai": "trac_nghiem",
+     "de": "Các hội chứng do đột biến số lượng nhiễm sắc thể như Down, Turner thường có đặc điểm chung nào?",
+     "lua_chon": [
+      "Có thể được chữa khỏi bằng một loại thuốc đặc trị",
+      "Có thể ảnh hưởng đến hình thái và mức độ phát triển trí tuệ",
+      "Ảnh hưởng đến nữ giới, KHÔNG xảy ra ở nam giới",
+      "Là bệnh truyền nhiễm, có thể lây từ người này sang người khác"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Các hội chứng do đột biến số lượng NST như Down, Turner có thể ảnh hưởng đến hình thái và mức độ phát triển trí tuệ ở nhiều mức độ khác nhau; đây là biến đổi di truyền, không phải bệnh truyền nhiễm và không thể chữa khỏi bằng thuốc.\n\nVì sao các phương án khác sai:\n- A: Đột biến số lượng NST là biến đổi vật chất di truyền, không thể chữa khỏi bằng thuốc đặc trị.\n- C: Down có thể xảy ra ở cả nam và nữ; chỉ riêng Turner mới liên quan đến nữ giới (do XO).\n- D: Đây là biến đổi di truyền có sẵn trong tế bào, không phải bệnh truyền nhiễm lây từ người khác."
+    },
+    {
+     "ma_cau": "K09120501027",
+     "loai": "trac_nghiem",
+     "de": "Nguyên nhân trực tiếp thường gặp gây ra thể ba hoặc thể một ở người là do sự kiện nào trong giảm phân?",
+     "lua_chon": [
+      "Nhiễm sắc thể bị đứt ra và mất một đoạn",
+      "Nhiễm sắc thể nhân đôi thêm một lần trong nguyên phân",
+      "Một cặp nhiễm sắc thể không phân li khi tạo giao tử",
+      "Hai giao tử của cùng một người kết hợp với nhau"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khi giảm phân, một cặp NST không phân li thì tạo ra giao tử thừa hoặc thiếu 1 NST; giao tử này kết hợp với giao tử bình thường tạo hợp tử thể ba hoặc thể một.\n\nVì sao các phương án khác sai:\n- A: Đứt và mất một đoạn NST là nguyên nhân của đột biến cấu trúc (mất đoạn), không phải lệch bội.\n- B: Nhân đôi thêm NST trong nguyên phân không phải cơ chế thường gặp tạo thể ba, thể một.\n- D: Giao tử luôn đến từ bố và mẹ khác nhau khi thụ tinh, không phải hai giao tử của cùng một người."
+    },
+    {
+     "ma_cau": "K09120501028",
+     "loai": "trac_nghiem",
+     "de": "Hội chứng Klinefelter ở nam giới (kiểu NST giới tính XXY, thừa 1 NST X) thuộc dạng đột biến số lượng NST nào?",
+     "lua_chon": [
+      "Thể một (2n−1) ở cặp NST giới tính",
+      "Thể không (2n−2) ở cặp NST giới tính",
+      "Thể tam bội (3n) toàn bộ bộ NST",
+      "Thể ba (2n+1) ở cặp NST giới tính"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hội chứng Klinefelter (XXY) có 3 NST ở cặp giới tính thay vì 2 như bình thường, thuộc dạng thể ba (2n+1) ở cặp NST giới tính.\n\nVì sao các phương án khác sai:\n- A: Thể một chỉ có 1 NST ở cặp giới tính (thiếu), trong khi Klinefelter có 3 NST (XXY, thừa).\n- B: Thể không thiếu hẳn cả cặp NST giới tính, không đúng với trường hợp thừa 1 NST X (XXY).\n- C: Tam bội làm thay đổi số lượng ở TẤT CẢ các cặp NST, trong khi Klinefelter chỉ thừa NST ở riêng cặp giới tính."
+    },
+    {
+     "ma_cau": "K09120501029",
+     "loai": "trac_nghiem",
+     "de": "Người mắc hội chứng Down (thể ba NST số 21) và người mắc hội chứng Klinefelter (thể ba ở cặp NST giới tính, XXY) đều có tổng số NST trong tế bào sinh dưỡng là bao nhiêu?",
+     "lua_chon": [
+      "47",
+      "45",
+      "46",
+      "94"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cả hội chứng Down và Klinefelter đều là dạng thể ba (2n+1): tổng số NST = 46 + 1 = 47.\n\nVì sao các phương án khác sai:\n- B: 45 là tổng số NST của thể một (2n−1, như hội chứng Turner), không phải thể ba.\n- C: 46 là bộ NST bình thường, cả hai hội chứng này đều thừa 1 NST nên phải là 47.\n- D: 94 tương ứng với tứ bội (4n) của người, không đúng với thể ba (2n+1)."
+    },
+    {
+     "ma_cau": "K09120501030",
+     "loai": "trac_nghiem",
+     "de": "Vì sao các bệnh, hội chứng do đột biến số lượng nhiễm sắc thể (như Down, Turner, Klinefelter) thường không thể chữa khỏi hoàn toàn bằng thuốc?",
+     "lua_chon": [
+      "Vì đây là bệnh truyền nhiễm do vi khuẩn gây ra, cần kháng sinh đặc trị",
+      "Đột biến NST có ở mọi tế bào từ hợp tử, thuốc không sửa được",
+      "Vì đột biến này chỉ ảnh hưởng tạm thời rồi tự khỏi, không cần dùng thuốc",
+      "Vì con người chưa từng nghiên cứu bất kì loại thuốc nào liên quan đến các hội chứng này"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đột biến số lượng NST xảy ra từ giai đoạn hợp tử nên có mặt ở toàn bộ tế bào cơ thể; thuốc thông thường không thể sửa lại đúng số lượng NST trong mọi tế bào, nên các hội chứng này chỉ có thể hỗ trợ giảm nhẹ triệu chứng, không chữa khỏi hoàn toàn.\n\nVì sao các phương án khác sai:\n- A: Đây là hội chứng do đột biến NST, không phải bệnh truyền nhiễm do vi khuẩn.\n- C: Đột biến NST tồn tại vĩnh viễn trong bộ NST của mọi tế bào, không tự khỏi theo thời gian.\n- D: Việc chưa có thuốc chữa khỏi hoàn toàn không phải vì chưa nghiên cứu, mà do bản chất đột biến NST khó có thể sửa lại bằng thuốc."
+    },
+    {
+     "ma_cau": "K09120501031",
+     "loai": "trac_nghiem",
+     "de": "Vì sao thể đa bội thường được ứng dụng để tạo giống cây trồng có cơ quan sinh dưỡng to hơn?",
+     "lua_chon": [
+      "Vì thể đa bội thường sinh sản hữu tính mạnh hơn cây bình thường",
+      "Vì thể đa bội có số lượng tế bào nhiều hơn cây bình thường",
+      "Vì thể đa bội có bộ nhiễm sắc thể giống hệt cây bình thường",
+      "Vì tế bào của thể đa bội thường lớn hơn tế bào bình thường"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thể đa bội có bộ NST tăng theo bội số n nên tế bào thường to hơn bình thường, kéo theo cơ quan sinh dưỡng như thân, lá, củ, quả cũng to hơn.\n\nVì sao các phương án khác sai:\n- A: Thể đa bội lẻ (như tam bội) thường bất thụ, sinh sản hữu tính kém hơn, không phải mạnh hơn.\n- B: Cơ quan to hơn chủ yếu do từng tế bào to hơn, không phải do số lượng tế bào tăng lên.\n- C: Thể đa bội có bộ NST tăng theo bội số n, khác hẳn bộ NST bình thường của loài."
+    },
+    {
+     "ma_cau": "K09120501032",
+     "loai": "trac_nghiem",
+     "de": "Dưa hấu tam bội (3n) không có hạt vì lí do nào sau đây?",
+     "lua_chon": [
+      "Thể tam bội thường không tạo được giao tử bình thường trong giảm phân",
+      "Người trồng đã cắt bỏ hạt trước khi thu hoạch",
+      "Thể tam bội hấp thụ hết dinh dưỡng nên hạt không phát triển",
+      "Cây tam bội không có hoa nên không thể tạo hạt"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Bộ NST lẻ (3n) của thể tam bội gây khó khăn khi các NST tương đồng phân li trong giảm phân, làm giao tử không bình thường, hạt không hình thành, quả không hạt.\n\nVì sao các phương án khác sai:\n- B: Việc dưa không hạt là do đặc điểm sinh học (giảm phân bất thường), không phải do người trồng cắt bỏ hạt.\n- C: Nguyên nhân là bộ NST lẻ (3n) khó phân li trong giảm phân, không phải do thiếu dinh dưỡng nuôi hạt.\n- D: Cây dưa hấu tam bội vẫn ra hoa bình thường, chỉ quá trình hình thành giao tử và hạt bị ảnh hưởng."
+    },
+    {
+     "ma_cau": "K09120501033",
+     "loai": "trac_nghiem",
+     "de": "Trong chọn giống, thể tứ bội (4n) thường được lai với cây lưỡng bội (2n) để tạo ra dạng nào?",
+     "lua_chon": [
+      "Thể lưỡng bội (2n) bình thường như cây ban đầu",
+      "Thể tam bội (3n) dùng làm giống cây trồng không hạt",
+      "Thể một (2n − 1) mang một cặp thiếu nhiễm sắc thể",
+      "Thể bát bội (8n) có bộ nhiễm sắc thể tăng gấp bốn lần thể tứ bội"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Giao tử của thể tứ bội (2n) kết hợp với giao tử của thể lưỡng bội (n) tạo hợp tử 3n, đây là cách tạo thể tam bội dùng làm giống cây trồng không hạt.\n\nVì sao các phương án khác sai:\n- A: Lai 4n với 2n tạo hợp tử 3n (tam bội), không cho lại bộ NST 2n bình thường.\n- C: Thể một hình thành do một cặp NST không phân li trong giảm phân, không phải từ phép lai 4n × 2n.\n- D: 8n phải từ 4n × 4n; ở đây lai 4n với 2n cho ra 3n, không phải 8n."
+    },
+    {
+     "ma_cau": "K09120501034",
+     "loai": "trac_nghiem",
+     "de": "Đặc điểm nào của thể đa bội KHÔNG được ứng dụng phổ biến trong chọn giống cây trồng?",
+     "lua_chon": [
+      "Tăng kích thước cơ quan sinh dưỡng như thân, lá, củ, quả",
+      "Tăng khả năng chống chịu với điều kiện bất lợi của môi trường",
+      "Tăng khả năng sinh sản hữu tính của cây trồng",
+      "Tạo giống cây trồng không hạt như dưa hấu tam bội"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thể đa bội lẻ (như tam bội) thường làm giảm khả năng sinh sản hữu tính (bất thụ), nên đặc điểm này không phải là điều được ứng dụng; ngược lại, thân lá to hơn, chống chịu tốt hơn và tạo giống không hạt là các ứng dụng phổ biến.\n\nVì sao các phương án khác sai:\n- A: Đây chính là một ứng dụng phổ biến của thể đa bội trong chọn giống, không phải đáp án cần tìm.\n- B: Đây cũng là một ứng dụng phổ biến của thể đa bội, không phải đặc điểm bị hạn chế.\n- D: Tạo giống không hạt là ứng dụng thực tế của thể tam bội, không phải đặc điểm bị hạn chế."
+    },
+    {
+     "ma_cau": "K09120501035",
+     "loai": "trac_nghiem",
+     "de": "Vì sao tế bào của thể đa bội thường có kích thước lớn hơn tế bào của thể lưỡng bội bình thường?",
+     "lua_chon": [
+      "Vì số lượng bộ NST tăng lên làm tăng lượng vật chất di truyền và các chất trong tế bào",
+      "Vì thể đa bội có tốc độ phân chia tế bào nhanh hơn nhiều lần",
+      "Vì thể đa bội không cần tổng hợp protein như tế bào bình thường",
+      "Vì thể đa bội chỉ có một loại NST duy nhất trong toàn bộ tế bào"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thể đa bội có số lượng bộ NST tăng lên (3n, 4n…), làm tăng lượng vật chất di truyền và các chất trong tế bào, khiến tế bào (và cơ quan sinh dưỡng) thường có kích thước lớn hơn.\n\nVì sao các phương án khác sai:\n- B: Kích thước tế bào lớn hơn không phải do phân chia nhanh hơn mà do lượng vật chất di truyền và tế bào chất tăng lên.\n- C: Thể đa bội vẫn cần tổng hợp protein bình thường như các tế bào khác.\n- D: Thể đa bội vẫn có nhiều loại NST khác nhau (mang nhiều gene khác nhau), không phải chỉ một loại."
+    },
+    {
+     "ma_cau": "K09120501036",
+     "loai": "trac_nghiem",
+     "de": "Vì sao các giống cây đa bội (như dâu tằm tam bội, dưa hấu tam bội) thường có năng suất hoặc chất lượng nông sản vượt trội hơn cây lưỡng bội cùng loài?",
+     "lua_chon": [
+      "Vì cây đa bội tự sinh ra chất kháng sâu bệnh bên trong cơ thể",
+      "Vì cơ quan sinh dưỡng (lá, quả, củ...) thường lớn hơn, dinh dưỡng có thể nhiều hơn",
+      "Vì cây đa bội luôn ra hoa và kết quả sớm hơn nhiều so với cây lưỡng bội",
+      "Vì cây đa bội không cần chăm sóc, tự phát triển mà không cần dinh dưỡng từ đất"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đa bội thường làm tăng kích thước cơ quan sinh dưỡng (lá, quả, củ...), qua đó có thể tăng năng suất và đôi khi cả chất lượng nông sản so với cây lưỡng bội cùng loài.\n\nVì sao các phương án khác sai:\n- A: Đa bội không đồng nghĩa với miễn nhiễm hoàn toàn sâu bệnh, dù có thể có một số ưu thế nhất định.\n- C: Thời gian ra hoa kết quả không phải là đặc điểm chung, ổn định của mọi cây đa bội so với cây lưỡng bội.\n- D: Cây đa bội vẫn cần dinh dưỡng, nước và chăm sóc như cây bình thường để phát triển."
+    },
+    {
+     "ma_cau": "K09120501037",
+     "loai": "trac_nghiem",
+     "de": "Một đoạn nhiễm sắc thể bình thường có trình tự các gene là ABCDEFGH. Sau đột biến, trình tự trở thành ABCFEDGH. Đây là dạng đột biến cấu trúc NST nào?",
+     "lua_chon": [
+      "Mất đoạn",
+      "Lặp đoạn",
+      "Đảo đoạn",
+      "Chuyển đoạn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "So sánh hai trình tự: ABCDEFGH → ABCFEDGH, đoạn gene CDEF đã đảo ngược thứ tự thành FEDC nhưng vẫn nằm ở đúng vị trí cũ trên NST (giữa B và G); đây là đặc điểm của đột biến đảo đoạn.\n\nVì sao các phương án khác sai:\n- A: Số gene không đổi (vẫn 8 gene) nên không phải mất đoạn.\n- B: Không có đoạn nào xuất hiện thêm.\n- D: Đoạn CDEF vẫn ở vị trí cũ, chỉ đảo ngược thứ tự."
+    },
+    {
+     "ma_cau": "K09120501038",
+     "loai": "trac_nghiem",
+     "de": "Một đoạn nhiễm sắc thể bình thường có trình tự các gene là MNPQRS. Sau đột biến, trình tự trở thành MNPQPQRS. Đây là dạng đột biến cấu trúc NST nào?",
+     "lua_chon": [
+      "Mất đoạn",
+      "Đảo đoạn",
+      "Chuyển đoạn",
+      "Lặp đoạn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "So sánh hai trình tự: MNPQRS → MNPQPQRS, đoạn gene PQ đã xuất hiện thêm một lần liền kề vị trí cũ, làm tăng tổng số gene trên đoạn NST; đây là đặc điểm của đột biến lặp đoạn.\n\nVì sao các phương án khác sai:\n- A: Mất đoạn làm số lượng gene giảm đi; ở đây số lượng gene tăng lên (từ 6 lên 8 gene), không phải mất đoạn.\n- B: Đảo đoạn chỉ làm thay đổi thứ tự (đảo ngược) một đoạn gene tại đúng vị trí cũ, không làm tăng thêm số lượng gene; ở đây đoạn PQ xuất hiện thêm, tăng số gene.\n- C: Chuyển đoạn làm một đoạn gene chuyển sang vị trí khác, không làm tăng thêm số lượng gene trên NST; ở đây đoạn PQ được lặp lại thêm, tăng số gene."
+    },
+    {
+     "ma_cau": "K09120501039",
+     "loai": "trac_nghiem",
+     "de": "Một đoạn NST bình thường có trình tự gene là KLMNOP. Sau đột biến, trình tự trở thành KLNOP. Đây là dạng đột biến cấu trúc NST nào?",
+     "lua_chon": [
+      "Lặp đoạn",
+      "Đảo đoạn",
+      "Mất đoạn",
+      "Chuyển đoạn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "So với ban đầu (KLMNOP), trình tự sau đột biến thiếu gene M (KLNOP) — đây là đột biến mất đoạn.\n\nVì sao các phương án khác sai:\n- A: Lặp đoạn làm tăng số gene, nhưng ở đây số gene giảm đi (mất M), không phải lặp đoạn.\n- B: Đảo đoạn chỉ đổi thứ tự, không làm giảm số lượng gene; ở đây gene M đã biến mất.\n- D: Chuyển đoạn liên quan đến việc gene chuyển sang NST khác; ở đây chỉ có một NST và gene M bị mất hẳn."
+    },
+    {
+     "ma_cau": "K09120501040",
+     "loai": "trac_nghiem",
+     "de": "Hội chứng Down ở người là do thừa 1 nhiễm sắc thể số 21 trong bộ NST (tế bào có 3 NST số 21 thay vì 2 như bình thường). Đây là dạng đột biến NST nào và có đặc điểm gì?",
+     "lua_chon": [
+      "Đột biến cấu trúc dạng mất đoạn NST số 21",
+      "Đột biến số lượng dạng thể ba (2n + 1) ở cặp số 21",
+      "Đột biến đa bội, cả bộ NST tăng gấp đôi",
+      "Đột biến số lượng dạng thể một (2n − 1) ở cặp số 21"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hội chứng Down là ví dụ điển hình của đột biến số lượng NST dạng thể ba (2n + 1), cụ thể là thừa 1 NST số 21; sự dư thừa vật chất di truyền này làm mất cân bằng gene trong tế bào, dẫn đến các biểu hiện đặc trưng của hội chứng Down.\n\nVì sao các phương án khác sai:\n- A: Hội chứng Down do thừa một NST số 21, không phải mất đoạn.\n- C: Chỉ cặp số 21 thừa một chiếc, không phải cả bộ NST.\n- D: Cặp 21 có 3 chiếc (thừa), không phải thiếu."
+    },
+    {
+     "ma_cau": "K09120501041",
+     "loai": "trac_nghiem",
+     "de": "Trong trồng trọt, một số giống dưa hấu tam bội (3n) không hạt được tạo ra và ưa chuộng vì tiện lợi khi ăn. Đặc điểm sinh học nào của thể tam bội giải thích cho việc dưa hấu tam bội thường không có hạt (hoặc hạt lép)?",
+     "lua_chon": [
+      "Bộ NST lẻ (3n) nên khó tạo giao tử bình thường",
+      "Tế bào nhỏ nên không đủ chỗ chứa hạt",
+      "Thể tam bội không ra hoa được",
+      "Bộ NST giống thể lưỡng bội nên có hạt"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thể tam bội (3n) có bộ NST là số lẻ, khi giảm phân các NST tương đồng khó phân chia đều thành các bộ đơn bội hoàn chỉnh (do không thể chia 3 cặp thành 2 nhóm bằng nhau một cách chính xác), dẫn đến giao tử bất thường hoặc không có khả năng thụ tinh bình thường, khiến cây tam bội thường không tạo được hạt hoàn chỉnh (không hạt hoặc hạt lép).\n\nVì sao các phương án khác sai:\n- B: Thể đa bội thường có tế bào to hơn, không nhỏ hơn.\n- C: Dưa hấu tam bội vẫn ra hoa, đậu quả.\n- D: Thể tam bội có 3n NST, khác thể lưỡng bội."
+    },
+    {
+     "ma_cau": "K09120501042",
+     "loai": "trac_nghiem",
+     "de": "Một bạn cho rằng: \"Mọi đột biến nhiễm sắc thể đều chỉ gây hại, không có bất kì lợi ích nào cho sinh vật hay con người.\" Nhận định này chưa hợp lí vì",
+     "lua_chon": [
+      "Vì mọi đột biến NST đều có lợi",
+      "Vì đột biến NST không có trong tự nhiên",
+      "Vì một số dạng như đa bội được ứng dụng tạo giống",
+      "Vì đột biến NST chỉ xảy ra ở động vật"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Mặc dù phần lớn đột biến NST gây hại, một số dạng như đột biến đa bội có thể được con người chủ động tạo ra và ứng dụng có lợi, ví dụ tạo ra các giống cây trồng có quả to hơn, không hạt (như dưa hấu tam bội), năng suất cao hơn, phục vụ sản xuất nông nghiệp.\n\nVì sao các phương án khác sai:\n- A: Phần lớn đột biến NST có hại; chỉ một số được ứng dụng có lợi.\n- B: Đột biến NST xảy ra cả trong tự nhiên.\n- D: Đột biến NST xảy ra cả ở thực vật (ví dụ dưa hấu tam bội)."
+    },
+    {
+     "ma_cau": "K09120501043",
+     "loai": "trac_nghiem",
+     "de": "Xét nghiệm NST (lập bộ nhiễm sắc thể đồ) của một thai nhi cho kết quả có 3 NST số 18 thay vì 2 như bình thường (trong khi các cặp NST khác đều bình thường). Kết luận sinh học hợp lí nhất từ kết quả này là",
+     "lua_chon": [
+      "Thai bình thường vì chỉ một cặp bị ảnh hưởng",
+      "Chắc chắn do sai sót xét nghiệm",
+      "Thể một (2n − 1) ở cặp NST số 18",
+      "Thể ba ở cặp NST số 18, cần bác sĩ tư vấn thêm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Kết quả xét nghiệm cho thấy thai nhi mang thể ba (2n + 1) ở cặp NST số 18, một dạng đột biến số lượng NST đã học; sự dư thừa vật chất di truyền này có thể liên quan đến các hội chứng do bất thường NST, cần được bác sĩ chuyên khoa tư vấn, theo dõi thêm để có hướng xử lí phù hợp.\n\nVì sao các phương án khác sai:\n- A: Thừa một NST là đột biến số lượng, có thể gây hội chứng.\n- B: Thể ba là dạng đột biến có thật ở người.\n- C: Cặp 18 có 3 chiếc là thừa (thể ba), không phải thiếu."
+    },
+    {
+     "ma_cau": "K09120501044",
+     "loai": "trac_nghiem",
+     "de": "Một cặp vợ chồng xét nghiệm di truyền trước sinh và được biết thai nhi có nhiễm sắc thể đồ bình thường (2n = 46, không thêm hay thiếu NST nào). Kết luận nào sau đây là hợp lí nhất từ kết quả này?",
+     "lua_chon": [
+      "Thai nhi khoẻ mạnh, không có bất kì vấn đề di truyền nào",
+      "Kết quả này không có ý nghĩa gì vì thai nhi nào cũng có 2n = 46",
+      "Không mắc hội chứng do đột biến số lượng NST, nhưng vẫn có thể mang vấn đề di truyền khác",
+      "Thai nhi sẽ không bao giờ mắc bệnh di truyền nào"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Kết quả nhiễm sắc thể đồ bình thường (2n = 46) cho biết thai nhi không mắc các hội chứng do đột biến số lượng NST, nhưng không loại trừ hoàn toàn các vấn đề di truyền khác như đột biến gene.\n\nVì sao các phương án khác sai:\n- A: Bộ NST bình thường chỉ loại trừ các bệnh do đột biến SỐ LƯỢNG NST, không loại trừ được các vấn đề di truyền khác như đột biến gene.\n- B: Kết quả 2n = 46 bình thường vẫn có ý nghĩa quan trọng, giúp loại trừ các hội chứng do lệch bội hay đa bội.\n- D: Bộ NST bình thường không đảm bảo hoàn toàn không mắc bệnh di truyền nào trong đời (như bệnh do đột biến gene có thể biểu hiện sau này)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00582",
+   "khoi": "9",
+   "chu_de": "Di truyền Nhiễm sắc thể",
+   "chuyen_de": "Đột biến NST",
+   "nhom": "Các dạng bài tập tính toán cơ bản về đột biến NST",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09120502001",
+     "loai": "trac_nghiem",
+     "de": "Hình vẽ mô tả bộ NST lưỡng bội bình thường của một loài (2n = 6). Nếu xảy ra đột biến thể ba, tổng số NST của tế bào là bao nhiêu?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120303-01-001-hinh.png)",
+     "lua_chon": [
+      "7",
+      "5",
+      "9",
+      "12"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thể ba có công thức 2n + 1; với 2n = 6, tổng số NST là 6 + 1 = 7.\n\nVì sao các phương án khác sai:\n- B: 5 = 2n − 1 là công thức của thể một, không phải thể ba.\n- C: 9 = 3n là công thức của thể tam bội, không phải thể ba (chỉ thừa 1 NST ở một cặp).\n- D: 12 = 2 × 2n, tương ứng thể tứ bội (4n), không phải thể ba."
+    },
+    {
+     "ma_cau": "K09120502002",
+     "loai": "trac_nghiem",
+     "de": "Ở người, bộ nhiễm sắc thể lưỡng bội bình thường là 2n = 46. Người mắc hội chứng Down do thừa một NST số 21 có tổng số NST là bao nhiêu?",
+     "lua_chon": [
+      "45",
+      "47",
+      "48",
+      "92"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hội chứng Down là thể ba (2n + 1); với 2n = 46, tổng số NST là 46 + 1 = 47.\n\nVì sao các phương án khác sai:\n- A: 45 = 2n − 1, tương ứng thể một (như hội chứng Turner), không phải Down.\n- C: 48 = 2n + 2, tính thừa 2 NST là sai; thể ba chỉ thừa đúng 1 NST.\n- D: 92 = 2 × 2n = 4n, tương ứng thể tứ bội, không phải thể ba."
+    },
+    {
+     "ma_cau": "K09120502003",
+     "loai": "trac_nghiem",
+     "de": "Đậu Hà Lan có bộ nhiễm sắc thể lưỡng bội bình thường là 2n = 14. Một cây bị đột biến thể một có tổng số NST là bao nhiêu?",
+     "lua_chon": [
+      "15",
+      "21",
+      "13",
+      "28"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thể một có công thức 2n − 1; với 2n = 14, tổng số NST là 14 − 1 = 13.\n\nVì sao các phương án khác sai:\n- A: 15 = 2n + 1 là công thức của thể ba, không phải thể một.\n- B: 21 = 1,5n, không phải công thức đột biến số lượng NST đã học.\n- D: 28 = 2 × 2n = 4n, tương ứng thể tứ bội, không phải thể một."
+    },
+    {
+     "ma_cau": "K09120502004",
+     "loai": "trac_nghiem",
+     "de": "Ở một loài, 2n = 20. Một cá thể bị đột biến thể không (thiếu hẳn một cặp NST tương đồng). Tổng số NST của cá thể này là bao nhiêu?",
+     "lua_chon": [
+      "19",
+      "21",
+      "18",
+      "10"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thể không thiếu hẳn một cặp NST tương đồng (2 chiếc): tổng số NST = 2n − 2 = 20 − 2 = 18.\n\nVì sao các phương án khác sai:\n- A: 19 là tổng số NST của thể một (2n−1), không phải thể không (2n−2).\n- B: 21 là tổng số NST của thể ba (2n+1), không phải thể không.\n- D: 10 là bộ đơn bội (n), không liên quan đến thể không."
+    },
+    {
+     "ma_cau": "K09120502005",
+     "loai": "trac_nghiem",
+     "de": "Ở người, 2n = 46. Người mắc hội chứng Turner (thể một ở cặp NST giới tính, chỉ có 1 NST X). Tổng số NST là bao nhiêu?",
+     "lua_chon": [
+      "47",
+      "44",
+      "46",
+      "45"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hội chứng Turner là thể một (2n−1) ở cặp NST giới tính: tổng số NST = 46 − 1 = 45.\n\nVì sao các phương án khác sai:\n- A: 47 là tổng số NST của thể ba (2n+1), không phải thể một.\n- B: 44 là tổng số NST của thể không (2n−2), không phải thể một (chỉ thiếu 1 NST).\n- C: 46 là bộ NST bình thường; người mắc hội chứng Turner thiếu 1 NST nên chỉ còn 45."
+    },
+    {
+     "ma_cau": "K09120502006",
+     "loai": "trac_nghiem",
+     "de": "Hình vẽ mô tả bộ nhiễm sắc thể lưỡng bội bình thường của một loài (2n = 4). Thể tam bội (3n) của loài này có tổng số NST là bao nhiêu?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120303-02-001-hinh.png)",
+     "lua_chon": [
+      "8",
+      "5",
+      "3",
+      "6"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Với 2n = 4 thì n = 2; thể tam bội có 3n = 3 × 2 = 6 NST.\n\nVì sao các phương án khác sai:\n- A: 8 = 4n (thể tứ bội), không phải 3n.\n- B: 5 = 2n + 1 (thể ba), không phải 3n.\n- C: 3 chỉ bằng n, chưa nhân ba lần để ra bộ NST tam bội."
+    },
+    {
+     "ma_cau": "K09120502007",
+     "loai": "trac_nghiem",
+     "de": "Một loài thực vật có bộ nhiễm sắc thể lưỡng bội bình thường 2n = 24. Thể tứ bội (4n) của loài này có tổng số NST là bao nhiêu?",
+     "lua_chon": [
+      "48",
+      "36",
+      "25",
+      "23"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Với 2n = 24 thì n = 12; thể tứ bội có 4n = 4 × 12 = 48 NST.\n\nVì sao các phương án khác sai:\n- B: 36 = 3n = 3 × 12, tương ứng thể tam bội, không phải tứ bội.\n- C: 25 = 2n + 1 (thể ba), không phải 4n.\n- D: 23 = 2n − 1 (thể một), không phải 4n."
+    },
+    {
+     "ma_cau": "K09120502008",
+     "loai": "trac_nghiem",
+     "de": "Một loài cây có bộ nhiễm sắc thể đơn bội n = 11. Thể tam bội (3n) của loài này có tổng số NST là bao nhiêu?",
+     "lua_chon": [
+      "22",
+      "33",
+      "44",
+      "11"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thể tam bội có công thức 3n; với n = 11, tổng số NST là 3 × 11 = 33.\n\nVì sao các phương án khác sai:\n- A: 22 = 2n, tương ứng bộ NST lưỡng bội bình thường, không phải thể tam bội.\n- C: 44 = 4n = 4 × 11, tương ứng thể tứ bội, không phải thể tam bội.\n- D: 11 chỉ bằng n (bộ NST đơn bội), chưa nhân ba để ra bộ NST tam bội."
+    },
+    {
+     "ma_cau": "K09120502009",
+     "loai": "trac_nghiem",
+     "de": "Một loài có bộ nhiễm sắc thể đơn bội n = 9. Thể tứ bội (4n) của loài này có tổng số NST là bao nhiêu?",
+     "lua_chon": [
+      "27",
+      "18",
+      "36",
+      "13"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thể tứ bội có bộ NST = 4n = 4 × 9 = 36.\n\nVì sao các phương án khác sai:\n- A: 27 = 3n, là thể tam bội, không phải thể tứ bội (4n) như đề yêu cầu.\n- B: 18 = 2n, là bộ lưỡng bội bình thường, không phải thể tứ bội.\n- D: 13 tính nhầm khi cộng 4 với n thay vì nhân 4 với n."
+    },
+    {
+     "ma_cau": "K09120502010",
+     "loai": "trac_nghiem",
+     "de": "Một loài thực vật có bộ nhiễm sắc thể lưỡng bội bình thường 2n = 18. Thể tam bội (3n) của loài này có tổng số NST là bao nhiêu?",
+     "lua_chon": [
+      "36",
+      "9",
+      "21",
+      "27"
+     ],
+     "dap_an": "D",
+     "loi_giai": "n = 2n : 2 = 9. Thể tam bội có bộ NST = 3n = 3 × 9 = 27.\n\nVì sao các phương án khác sai:\n- A: 36 = 4n, là thể tứ bội, không phải thể tam bội (3n).\n- B: 9 = n, là bộ đơn bội, không phải thể tam bội.\n- C: 21 tính nhầm khi cộng 2n với 3 thay vì nhân n với 3."
+    },
+    {
+     "ma_cau": "K09120502011",
+     "loai": "trac_nghiem",
+     "de": "Một loài có bộ NST lưỡng bội 2n = 24. Một cá thể của loài này bị đột biến lệch bội dạng thể ba (thừa 1 NST ở một cặp). Tổng số NST trong tế bào sinh dưỡng của cá thể này là",
+     "lua_chon": [
+      "25",
+      "23",
+      "48",
+      "12"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thể ba (kí hiệu 2n + 1) là dạng lệch bội có thừa 1 NST ở một cặp so với bộ lưỡng bội bình thường. Với 2n = 24, tổng số NST của thể ba = 24 + 1 = 25.\n\nVì sao các phương án khác sai:\n- B: 23 là số NST của thể một (2n − 1), không phải thể ba (2n + 1).\n- C: 48 = 2 × 24 là số NST nếu bộ NST tăng gấp đôi hoàn toàn (thể tứ bội), không phải chỉ thừa 1 NST ở một cặp (thể ba).\n- D: 12 = 2n/2 là bộ NST đơn bội (n), không liên quan đến thể lệch bội thừa 1 NST."
+    },
+    {
+     "ma_cau": "K09120502012",
+     "loai": "trac_nghiem",
+     "de": "Một loài cây có bộ NST lưỡng bội 2n = 18. Một cá thể của loài này là thể tứ bội (4n). Tổng số NST trong tế bào sinh dưỡng của cá thể này là",
+     "lua_chon": [
+      "22",
+      "36",
+      "72",
+      "9"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thể tứ bội (4n) có bộ NST gấp 4 lần bộ đơn bội (n). Với 2n = 18, suy ra n = 9; thể tứ bội có tổng số NST = 4n = 4 × 9 = 36.\n\nVì sao các phương án khác sai:\n- A: 22 = 18 + 4, đây là phép cộng không đúng với công thức thể đa bội; thể tứ bội phải nhân bộ NST đơn bội với 4, không phải cộng thêm 4 vào 2n.\n- C: 72 = 4 × 18 = 4 × 2n, đây là kết quả nếu nhầm nhân 4 với 2n (bộ lưỡng bội) thay vì nhân 4 với n (bộ đơn bội).\n- D: 9 = 2n/2 = n là bộ NST đơn bội, không phải thể tứ bội."
+    },
+    {
+     "ma_cau": "K09120502013",
+     "loai": "trac_nghiem",
+     "de": "Một loài có bộ NST lưỡng bội 2n = 36. So sánh tổng số NST giữa một cá thể là thể ba (2n+1) và một cá thể là thể tam bội (3n) của loài này, cá thể nào có tổng số NST lớn hơn và lớn hơn bao nhiêu?",
+     "lua_chon": [
+      "Thể ba lớn hơn, hơn 17 NST",
+      "Thể tam bội lớn hơn, hơn 1 NST",
+      "Hai thể có tổng số NST bằng nhau",
+      "Thể tam bội lớn hơn, hơn 17 NST"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thể ba = 2n+1 = 37. Thể tam bội = 3n = 3×18 = 54. Thể tam bội lớn hơn thể ba: 54 − 37 = 17 NST.\n\nVì sao các phương án khác sai:\n- A: Thể tam bội (54 NST) lớn hơn thể ba (37 NST), không phải ngược lại.\n- B: Chênh lệch đúng là 54 − 37 = 17 NST, không phải chỉ 1 NST.\n- C: Hai thể có tổng số NST khác nhau rõ rệt (37 và 54), không bằng nhau."
+    },
+    {
+     "ma_cau": "K09120502014",
+     "loai": "trac_nghiem",
+     "de": "Một loài cây có bộ NST đơn bội n = 12. Số NST trong tế bào sinh dưỡng của thể tứ bội (4n) nhiều hơn của thể một (2n − 1) bao nhiêu?",
+     "lua_chon": [
+      "25 NST",
+      "24 NST",
+      "23 NST",
+      "36 NST"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thể tứ bội: 4n = 48. Thể một: 2n − 1 = 24 − 1 = 23. Hiệu: 48 − 23 = 25 NST.\n\nVì sao các phương án khác sai:\n- B: Lấy nhầm 2n = 24 cho thể một (quên trừ 1).\n- C: Đây là số NST của thể một, chưa lấy hiệu.\n- D: Lấy nhầm 4n − n."
+    }
+   ]
+  }
+ ]
+}

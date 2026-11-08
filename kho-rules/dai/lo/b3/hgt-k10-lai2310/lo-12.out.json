@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "T310000000689",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính a.b trong tam giác, trung tuyến, phân tích AD; dạng sau: 00931"
+ },
+ {
+  "ma_cau": "T310000000690",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Phân tích AD rồi tính a.b, độ dài AD; dạng sau 00931"
+ },
+ {
+  "ma_cau": "T310000000691",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính AD.AC hình vuông, chứng minh đẳng thức; 00931"
+ },
+ {
+  "ma_cau": "T310000000692",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tính IB.IC hình vuông; 00931"
+ },
+ {
+  "ma_cau": "T310000000693",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chứng minh đẳng thức tích vô hướng/độ dài: bản đồ thiếu dạng chứng minh đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000694",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chứng minh đẳng thức tích vô hướng/độ dài: bản đồ thiếu dạng chứng minh đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000695",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chứng minh đẳng thức tích vô hướng/độ dài: bản đồ thiếu dạng chứng minh đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000696",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chứng minh đẳng thức tích vô hướng/độ dài: bản đồ thiếu dạng chứng minh đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000697",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chứng minh đẳng thức tích vô hướng/độ dài: bản đồ thiếu dạng chứng minh đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000698",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chứng minh đẳng thức tích vô hướng/độ dài: bản đồ thiếu dạng chứng minh đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000699",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chứng minh đẳng thức tích vô hướng/độ dài: bản đồ thiếu dạng chứng minh đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000700",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chứng minh đẳng thức tích vô hướng/độ dài: bản đồ thiếu dạng chứng minh đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000701",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chứng minh đẳng thức tích vô hướng/độ dài: bản đồ thiếu dạng chứng minh đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000702",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chứng minh đẳng thức tích vô hướng/độ dài: bản đồ thiếu dạng chứng minh đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000703",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chứng minh đẳng thức tích vô hướng/độ dài: bản đồ thiếu dạng chứng minh đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000704",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chứng minh đẳng thức tích vô hướng/độ dài: bản đồ thiếu dạng chứng minh đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000705",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chứng minh đẳng thức tích vô hướng/độ dài: bản đồ thiếu dạng chứng minh đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000706",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chứng minh đẳng thức tích vô hướng/độ dài: bản đồ thiếu dạng chứng minh đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000707",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chứng minh đẳng thức tích vô hướng/độ dài: bản đồ thiếu dạng chứng minh đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000708",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "Tính a.b rồi chứng minh AM vuông BN; dạng sau 00941"
+ },
+ {
+  "ma_cau": "T310000000709",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "Chứng minh/tìm điều kiện vuông góc bằng tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000710",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "Chứng minh/tìm điều kiện vuông góc bằng tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000711",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "Chứng minh/tìm điều kiện vuông góc bằng tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000712",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "Chứng minh/tìm điều kiện vuông góc bằng tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000713",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "Chứng minh/tìm điều kiện vuông góc bằng tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000714",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "Chứng minh/tìm điều kiện vuông góc bằng tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000715",
+  "dang_bai_id": "NDB00941",
+  "chac": "vua",
+  "ly_do": "Chứng minh tam giác vuông cân, lời giải dùng định lý cosin, chưa chắc dùng tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000716",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "Chứng minh/tìm điều kiện vuông góc bằng tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000717",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "Chứng minh/tìm điều kiện vuông góc bằng tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000718",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "Chứng minh/tìm điều kiện vuông góc bằng tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000719",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000720",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000721",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000722",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000723",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000724",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000725",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000726",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000727",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000728",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000729",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000730",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000731",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000732",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000733",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000734",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000735",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000736",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000737",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập hợp/quỹ tích điểm: bản đồ thiếu dạng tập hợp điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000738",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "Tọa độ véc tơ theo i, j"
+ },
+ {
+  "ma_cau": "T310000000739",
+  "dang_bai_id": "NDB00918",
+  "chac": "vua",
+  "ly_do": "Đọc tọa độ véc tơ từ Hình 2, đề không đủ dữ kiện"
+ },
+ {
+  "ma_cau": "T310000000740",
+  "dang_bai_id": "NDB00919",
+  "chac": "vua",
+  "ly_do": "Dữ kiện nằm trong hình; gồm tọa độ điểm, biểu thị qua i,j, tọa độ véc tơ khi biết 2 điểm"
+ },
+ {
+  "ma_cau": "T310000000741",
+  "dang_bai_id": "NDB00918",
+  "chac": "vua",
+  "ly_do": "Biểu thị qua i,j và tọa độ, dữ kiện nằm trong hình"
+ },
+ {
+  "ma_cau": "T310000000742",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "Cộng, trừ, nhân số tọa độ véc tơ"
+ },
+ {
+  "ma_cau": "T310000000743",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "Cộng, trừ, nhân số tọa độ véc tơ"
+ },
+ {
+  "ma_cau": "T310000000744",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tọa độ tổng và kiểm tra cùng phương; dạng sau 00924"
+ },
+ {
+  "ma_cau": "T310000000745",
+  "dang_bai_id": "NDB00940",
+  "chac": "cao",
+  "ly_do": "Tọa độ 2a+3b và tích vô hướng tọa độ; dạng sau 00940"
+ },
+ {
+  "ma_cau": "T310000000746",
+  "dang_bai_id": "NDB00940",
+  "chac": "cao",
+  "ly_do": "Phép toán tọa độ và tích vô hướng tọa độ; 00940"
+ },
+ {
+  "ma_cau": "T310000000747",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "Cộng, trừ, nhân số tọa độ véc tơ"
+ },
+ {
+  "ma_cau": "T310000000748",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "Cộng, trừ, nhân số tọa độ véc tơ"
+ },
+ {
+  "ma_cau": "T310000000749",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "Cộng, trừ, nhân số tọa độ véc tơ"
+ },
+ {
+  "ma_cau": "T310000000750",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Chứng minh 3 điểm thẳng hàng bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000751",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Kiểm tra cùng phương/cùng hướng/ngược hướng bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000752",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tham số để hai véc tơ bằng nhau theo tọa độ: bản đồ thiếu dạng này"
+ },
+ {
+  "ma_cau": "T310000000753",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm m để 3 điểm thẳng hàng"
+ },
+ {
+  "ma_cau": "T310000000754",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tham số để hai véc tơ bằng nhau theo tọa độ: bản đồ thiếu dạng này"
+ },
+ {
+  "ma_cau": "T310000000755",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Xác định điểm thuộc trục tọa độ/phân giác góc phần tư: bản đồ thiếu dạng"
+ },
+ {
+  "ma_cau": "T310000000756",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tọa độ trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000757",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tọa độ trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000758",
+  "dang_bai_id": "NDB00942",
+  "chac": "vua",
+  "ly_do": "Độ dài cạnh, góc B (00942) nhưng ý b tâm ngoại tiếp bản đồ thiếu"
+ },
+ {
+  "ma_cau": "T310000000759",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Xác định điểm thuộc trục tọa độ/phân giác góc phần tư: bản đồ thiếu dạng"
+ },
+ {
+  "ma_cau": "T310000000760",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Hình chiếu, đối xứng qua trục/gốc tọa độ: bản đồ thiếu dạng"
+ },
+ {
+  "ma_cau": "T310000000761",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "Tìm D để ABCD là hình bình hành, giao điểm đường chéo"
+ },
+ {
+  "ma_cau": "T310000000762",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tọa độ trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000763",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "AM=BC (00920) và trung điểm N chứng minh BN=NM; dạng sau 00923"
+ },
+ {
+  "ma_cau": "T310000000764",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tìm đỉnh tam giác biết trung điểm các cạnh"
+ },
+ {
+  "ma_cau": "T310000000765",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Chứng minh không thẳng hàng, trung điểm, trọng tâm; dạng sau 00924"
+ },
+ {
+  "ma_cau": "T310000000766",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Chứng minh không thẳng hàng, trung điểm, trọng tâm; dạng sau 00924"
+ },
+ {
+  "ma_cau": "T310000000767",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tọa độ trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000768",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "Trung điểm và tìm N thỏa NA=2NB; dạng sau 00926"
+ },
+ {
+  "ma_cau": "T310000000769",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Chứng minh 3 điểm không thẳng hàng, trọng tâm; dạng sau 00924"
+ },
+ {
+  "ma_cau": "T310000000770",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "Tìm C để ABCO là hình bình hành; các ý khác thuộc dạng đứng trước"
+ },
+ {
+  "ma_cau": "T310000000771",
+  "dang_bai_id": "NDB00927",
+  "chac": "cao",
+  "ly_do": "Điểm trên trục để |CA+CB| nhỏ nhất"
+ },
+ {
+  "ma_cau": "T310000000772",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tìm đỉnh tam giác biết trung điểm các cạnh"
+ },
+ {
+  "ma_cau": "T310000000773",
+  "dang_bai_id": "NDB00925",
+  "chac": "vua",
+  "ly_do": "Độ dài cạnh, tam giác vuông cân; tìm D để hình vuông gần 00925 nhưng không khớp hẳn"
+ },
+ {
+  "ma_cau": "T310000000774",
+  "dang_bai_id": "NDB00924",
+  "chac": "vua",
+  "ly_do": "P trục tung thẳng hàng (00924), nhưng ý đối xứng qua trục bản đồ thiếu"
+ },
+ {
+  "ma_cau": "T310000000775",
+  "dang_bai_id": "NDB00927",
+  "chac": "vua",
+  "ly_do": "Ý a, b cực trị (00927), ý c tập hợp điểm bản đồ thiếu"
+ },
+ {
+  "ma_cau": "T310000000776",
+  "dang_bai_id": "NDB00924",
+  "chac": "vua",
+  "ly_do": "Ý a khớp 00924/00923; ý b tâm ngoại tiếp, trực tâm bản đồ thiếu"
+ },
+ {
+  "ma_cau": "T310000000777",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "Tam giác vuông tại A bằng tích vô hướng, vuông cân"
+ },
+ {
+  "ma_cau": "T310000000778",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm đỉnh hình vuông khi biết 2 đỉnh đối: bản đồ thiếu dạng tìm đỉnh hình đặc biệt"
+ },
+ {
+  "ma_cau": "T310000000779",
+  "dang_bai_id": "NDB00941",
+  "chac": "vua",
+  "ly_do": "Chân đường cao (vuông góc, thẳng hàng) và độ dài, góc C; dạng sau 00941"
+ },
+ {
+  "ma_cau": "T310000000780",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tìm đỉnh tam giác biết trung điểm, so sánh trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000781",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "Tìm D để ABCD là hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000782",
+  "dang_bai_id": "NDB00925",
+  "chac": "vua",
+  "ly_do": "Tìm Q để MNPQ hình thang PQ=2MN, gần dạng hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000783",
+  "dang_bai_id": "NDB00925",
+  "chac": "vua",
+  "ly_do": "Ý c hình thang CD=3/2AB gần dạng hình bình hành; ý a,b dạng trước"
+ },
+ {
+  "ma_cau": "T310000000784",
+  "dang_bai_id": "NDB00927",
+  "chac": "cao",
+  "ly_do": "Điểm M trên Ox để |MA+MB| nhỏ nhất"
+ },
+ {
+  "ma_cau": "T310000000785",
+  "dang_bai_id": "NDB00942",
+  "chac": "cao",
+  "ly_do": "Góc giữa 2 véc tơ theo tọa độ"
+ },
+ {
+  "ma_cau": "T310000000786",
+  "dang_bai_id": "NDB00940",
+  "chac": "cao",
+  "ly_do": "Phép toán tọa độ và tích vô hướng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000787",
+  "dang_bai_id": "NDB00940",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000788",
+  "dang_bai_id": "NDB00942",
+  "chac": "cao",
+  "ly_do": "Góc giữa 2 véc tơ theo tọa độ"
+ }
+]

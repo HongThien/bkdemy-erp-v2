@@ -1,0 +1,23 @@
+const S=(f,a,b,n=20000)=>{const h=(b-a)/n;let s=f(a)+f(b);for(let i=1;i<n;i++)s+=f(a+i*h)*(i%2?4:2);return s*h/3;};
+const out={};
+out.W0601=S(x=>Math.sqrt(3)/4*4*(1-x*x),-1,1);
+out.W0604b=16+2/3*8-5/3; // F(4)
+out.W0604b_chk=S(x=>2*x+Math.sqrt(x),1,4);
+out.W0606=S(x=>3*x*(3*x*x-2),1,3);
+out.W0622b=S(x=>(2*x**3-1)**2,0,1)+' (x pi) vs 5/7='+5/7+' 4/7='+4/7;
+out.W0622d=15-S(x=>2*x**3-1,-2,2);
+out.W0628c=S(x=>Math.abs(x*x-x),-1,2,60000)+' vs '+11/6;
+out.W0628b=S(x=>x*x-x,-1,2);
+out.W0642=S(x=>1,1,2)*3;
+out.W0643b=S(x=>2*x+5*Math.cos(x)+5,0,Math.PI);
+out.W0648=S(x=>(x-1)**2,0,1)+' (=1/3-1+1)';
+const F57=x=>x**3-2*x+4; out.W0657=[F57(1),12-2,F57(3),F57(Math.sqrt(3))-F57(3)+21-Math.sqrt(3)];
+out.W0660b=S(x=>3/x,1,Math.exp(-3));
+out.W0660c=S(x=>3/x,1/Math.E,Math.exp(3),200000);
+out.W0660d=Math.PI*S(x=>9/x/x,1,5)+' vs '+36*Math.PI/5;
+out.W0631=2+S(x=>Math.sin(x)+Math.cos(x),0,Math.PI/2);
+out.W0602=(5-S(x=>Math.exp(x),0,Math.log(2)))/2;
+out.W0629=1+S(x=>4*x**3+1,0,1);
+out.W0658=1-S(x=>x**3,0,2);
+out.W0623=S(Math.sin,0,Math.PI/2);
+console.log(out);

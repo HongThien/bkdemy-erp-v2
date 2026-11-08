@@ -1,0 +1,3912 @@
+[
+ {
+  "ma_cau": "T110000000009",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000009",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "2 cạnh + cosA: BC, S, AH, sinA; ứng viên NDB01035",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000009",
+   "dang_id": "NDB01035",
+   "chac": "vua",
+   "ly_do": "Dùng diện tích tìm yếu tố khác (r, đường cao, cạnh); ứng viên 00765/00772.",
+   "tram": "2B"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000042",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000042",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập xác định hàm số",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000042",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...).",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000044",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000044",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Bảng biến thiên hàm bậc hai",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000044",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...).",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000046",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000046",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Đỉnh parabol",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000046",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Đỉnh parabol",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000047",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000047",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập xác định",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000047",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập xác định",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000048",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000048",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Parabol cổng",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000048",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Parabol cổng",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000049",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000049",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Đồ thị hàm bậc hai",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000049",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Đồ thị hàm bậc nhất/bậc hai",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000051",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000051",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Hàm bậc hai",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000051",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Hàm bậc hai",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000059",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000059",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Quy hoạch tuyến tính",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000059",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Quy hoạch tuyến tính trên miền nghiệm",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000067",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000067",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Véc tơ bằng nhau",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000067",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Định nghĩa vectơ bằng nhau",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000093",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000093",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập xác định",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000093",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập xác định hàm số",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000095",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000095",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Bảng biến thiên",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000095",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...).",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000096",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000096",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Hàm số cho bởi nhiều công thức",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000096",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Đồ thị hàm số phân đoạn",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000098",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000098",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Hàm số từ biểu đồ",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000098",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...).",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000099",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000099",
+   "dang_id": "NDB00765",
+   "chac": "cao",
+   "ly_do": "2 cạnh và góc xen: c, cosA, góc A bằng cosin",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000099",
+   "dang_id": "NDB00765",
+   "chac": "cao",
+   "ly_do": "Biết hai cạnh a,b và góc C xen giữa; tính c, cos A, góc A.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000101",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000101",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Thực tế cột cờ chỉ dùng tan tam giác vuông",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000101",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Thực tế chiều cao cột cờ chỉ dùng tan",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000133",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000133",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "2 cạnh góc xen: a, cosC, cosB, R; ứng viên NDB01034",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000133",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "Biết hai cạnh và góc xen giữa; tính cạnh còn lại, góc, ý phụ khác.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000134",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000134",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Đu quay, độ cao theo giá trị lượng giác góc quay, không dùng cos/sin tam giác",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000134",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...).",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000139",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000139",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Đồ thị hàm số",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000139",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Đồ thị hàm số, tính đơn điệu",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000140",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000140",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Giá trị hàm số",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000140",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Hàm số phân đoạn",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000142",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000142",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Quy hoạch tuyến tính",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000142",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Quy hoạch tuyến tính",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000143",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000143",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Hàm số từ đồ thị",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000143",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...).",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000144",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000144",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "2 cạnh góc xen: cosA, BC, S, AH; ứng viên NDB01035",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000144",
+   "dang_id": "NDB01035",
+   "chac": "vua",
+   "ly_do": "Dùng diện tích tìm yếu tố khác (r, đường cao, cạnh); ứng viên 00765/00772.",
+   "tram": "2B"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000145",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000145",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập xác định",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000145",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập xác định",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000147",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000147",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Giá cước taxi, hàm số",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000147",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...).",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000168",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000168",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "Mệnh đề hỗn hợp, 2 cạnh góc xen A, tính BC và góc",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000168",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "Cho 2 cạnh và cos A: BC, góc tù, sin; hỗn hợp",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000169",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00767",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000169",
+   "dang_id": "NDB00767",
+   "chac": "vua",
+   "ly_do": "Thực tế đường tránh núi; dùng cả cosin và sin; ứng viên NDB00771",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000169",
+   "dang_id": "NDB00767",
+   "chac": "vua",
+   "ly_do": "Thực tế, cos tính cạnh rồi sin tính góc; ứng viên 00771.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000170",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000170",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Thực tế, tìm R tam giác ABC bằng toạ độ, không sin/cos",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000170",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Tìm R bằng toạ độ trong bối cảnh thực tế; 01034 loại thực tế.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000178",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00773",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000178",
+   "dang_id": "NDB00773",
+   "chac": "cao",
+   "ly_do": "Thực tế mảnh đất hình thang, tính diện tích",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000178",
+   "dang_id": "NDB00773",
+   "chac": "cao",
+   "ly_do": "Bối cảnh thực tế, chia/giải tam giác rồi tính diện tích đa giác.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000187",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000187",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế cây trên sườn đồi, sin trong tam giác ABC",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000187",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000188",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000188",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Cho S, tìm sinC rồi cosin tính AB",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000188",
+   "dang_id": "NDB01035",
+   "chac": "vua",
+   "ly_do": "Dùng diện tích tìm yếu tố khác (r, đường cao, cạnh); ứng viên 00765/00772.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000190",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00764",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000190",
+   "dang_id": "NDB00764",
+   "chac": "vua",
+   "ly_do": "Nhận diện công thức S, R, r, cos; ứng viên 00762",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000190",
+   "dang_id": "NDB00762",
+   "chac": "vua",
+   "ly_do": "Chọn mệnh đề đúng, đáp án là định lí cos; lẫn sin, S (ứng viên 764)",
+   "tram": "2A"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000206",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00769",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000206",
+   "dang_id": "NDB01034",
+   "chac": "vua",
+   "ly_do": "Tính R tam giác vuông bằng BC/2, không sin",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000206",
+   "dang_id": "NDB01034",
+   "chac": "vua",
+   "ly_do": "Hỏi R tam giác vuông (R=BC/2), không dùng sin; dạng R gần nhất.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000209",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00766",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000209",
+   "dang_id": "NDB01035",
+   "chac": "vua",
+   "ly_do": "Tính p, S, R, r của tam giác 6-8-10; ứng viên 00772",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000209",
+   "dang_id": "NDB01035",
+   "chac": "vua",
+   "ly_do": "Mệnh đề về p, S, R, r của tam giác 6-8-10; hỗn hợp, gần 1035/772",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000211",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000211",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế độ cao diều từ góc nâng, giải tam giác; có thể chỉ lượng giác vuông",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000211",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Thực tế chiều cao diều chỉ dùng tan hai tam giác vuông, không sin/cos/diện tích",
+   "tram": "2A"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000212",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000212",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Giá trị hàm nhiều công thức",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000212",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Hàm số phân đoạn",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000213",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000213",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Hàm bậc hai",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000213",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...).",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000215",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000215",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập xác định hàm số",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000215",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập xác định hàm số",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000222",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000222",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Thực tế chiều cao cây dùng tan/hình chữ nhật, không dùng sin/cos",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000222",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Thực tế chiều cao cây, dùng tan và công thức cộng tan",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000228",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000228",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Quy hoạch tuyến tính",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000228",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...).",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000235",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000235",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế tháp nhà cao tầng, sin tam giác APQ",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000235",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000236",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000236",
+   "dang_id": "NDB01035",
+   "chac": "vua",
+   "ly_do": "Tính BC bằng cos rồi đường cao; ứng viên 00765",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000236",
+   "dang_id": "NDB01035",
+   "chac": "vua",
+   "ly_do": "Tự luận: BC bằng cos rồi đường cao; ứng viên 765",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000242",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000242",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Diện tích phần tô giữa các đường tròn, không cos/sin; thực tế không rõ",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000242",
+   "dang_id": "NGOAI",
+   "chac": "vua",
+   "ly_do": "Hình tròn tiếp xúc, diện tích phần tô; không phải định lí cos/sin.",
+   "tram": "2B"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000250",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000250",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "2 cạnh góc xen: S, AC, CH; ứng viên NDB00772",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000250",
+   "dang_id": "NDB00772",
+   "chac": "vua",
+   "ly_do": "Tính diện tích tam giác từ dữ kiện; có ý phụ cos/sin hoặc ứng viên 00765.",
+   "tram": "2B"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000253",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00767",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000253",
+   "dang_id": "NDB00767",
+   "chac": "cao",
+   "ly_do": "Thực tế đường hầm, cosin tam giác ABC",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000253",
+   "dang_id": "NDB00767",
+   "chac": "cao",
+   "ly_do": "Thực tế, định lí cos tính khoảng cách/độ dài.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000255",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00773",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000255",
+   "dang_id": "NDB00773",
+   "chac": "cao",
+   "ly_do": "Thực tế mảnh đất tứ giác; chia 2 tam giác, Pythagore + Hê-rông tính diện tích",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000255",
+   "dang_id": "NDB00773",
+   "chac": "cao",
+   "ly_do": "Bối cảnh thực tế, chia/giải tam giác rồi tính diện tích đa giác.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000261",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000261",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập xác định hàm số",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000261",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...).",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000262",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000262",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập xác định hàm số",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000262",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...).",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000264",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00766",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000264",
+   "dang_id": "NDB00766",
+   "chac": "vua",
+   "ly_do": "Biết 3 cạnh: p, S, R, r; ứng viên NDB01035",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000264",
+   "dang_id": "NDB01035",
+   "chac": "vua",
+   "ly_do": "Dùng diện tích tìm yếu tố khác (r, đường cao, cạnh); ứng viên 00765/00772.",
+   "tram": "2B"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000266",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000266",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế khoảng cách tới gốc cây, 2 góc 1 cạnh, sin",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000266",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế khoảng cách bờ sông cây, 2 góc 1 cạnh, sin",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000281",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000281",
+   "dang_id": "KHONG_KHOP",
+   "chac": "cao",
+   "ly_do": "Cực trị hình chữ nhật và chứng minh Heron dạng khác",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000281",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Tự luận hai ý: tối ưu hình chữ nhật trong nửa tròn và chứng minh Heron",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000287",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00769",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000287",
+   "dang_id": "NDB00769",
+   "chac": "vua",
+   "ly_do": "2 góc + BC: AB, AH, r, R; ứng viên NDB01035",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000287",
+   "dang_id": "NDB00769",
+   "chac": "vua",
+   "ly_do": "Biết hai góc và một cạnh/R, dùng sin; 83 có ý S, r.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000290",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000290",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế tháp nghiêng, định lí sin trong tam giác bóng",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000290",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000294",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000294",
+   "dang_id": "NDB00763",
+   "chac": "vua",
+   "ly_do": "Mệnh đề sin, góc, R; trộn; ứng viên NDB01034/00765",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000294",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "Biết hai cạnh và góc xen giữa; tính cạnh còn lại, góc, ý phụ khác.",
+   "tram": "2B"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000297",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00767",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000297",
+   "dang_id": "NDB00767",
+   "chac": "cao",
+   "ly_do": "Thực tế dây cáp, 2 cạnh góc xen 125 độ, cos",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000297",
+   "dang_id": "NDB00767",
+   "chac": "vua",
+   "ly_do": "Thực tế tháp sườn dốc, cos tìm AC",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000300",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000300",
+   "dang_id": "NDB01035",
+   "chac": "vua",
+   "ly_do": "Dùng S tìm sin C rồi cos tìm AB; ứng viên 00765",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000300",
+   "dang_id": "NDB01035",
+   "chac": "vua",
+   "ly_do": "Dùng S tìm sinC rồi cos tìm AB; ứng viên 765; chưa mở ảnh",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000306",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000306",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập xác định hàm số",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000306",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...).",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000308",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000308",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập xác định",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000308",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập xác định",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000311",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000311",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Parabol cổng chào",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000311",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Parabol cổng chào",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000313",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000313",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Vẽ parabol",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000313",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...).",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000314",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00767",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000314",
+   "dang_id": "NDB01034",
+   "chac": "vua",
+   "ly_do": "Ý a tính R, ý b cosin hồ nước thực tế; ứng viên NDB00767",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000314",
+   "dang_id": "NDB01034",
+   "chac": "vua",
+   "ly_do": "Hai ý: a) R (01034), b) thực tế cos (00767); chọn ý a.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000318",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000318",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "2 cạnh góc xen: BC, S; ứng viên NDB00772",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000318",
+   "dang_id": "NDB00772",
+   "chac": "vua",
+   "ly_do": "Tính diện tích tam giác từ dữ kiện; có ý phụ cos/sin hoặc ứng viên 00765.",
+   "tram": "2B"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000320",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000320",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế tháp chàm, sin trong tam giác DA1B1; ảnh chưa mở",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000320",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000323",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00772",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000323",
+   "dang_id": "NDB00772",
+   "chac": "cao",
+   "ly_do": "Diện tích từ ba cạnh bằng Heron",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000323",
+   "dang_id": "NDB00772",
+   "chac": "cao",
+   "ly_do": "Tính S biết 3 cạnh, Heron",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000329",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000329",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "Mệnh đề hỗn hợp, 2 cạnh góc xen C",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000329",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "Mệnh đề cho 2 cạnh góc xen: AB, góc, r, trọng tâm; hỗn hợp",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000330",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00772",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000330",
+   "dang_id": "NDB00772",
+   "chac": "vua",
+   "ly_do": "Tính diện tích tam giác có hai trung tuyến vuông góc; dùng công thức diện tích",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000330",
+   "dang_id": "NDB00772",
+   "chac": "vua",
+   "ly_do": "Tính S khi biết BC, góc A và trung tuyến vuông góc; dùng trung tuyến+cos rồi S; gần 772, không có dạng riêng",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000333",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00772",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000333",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Dùng diện tích tìm sin A",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000333",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Biết S, 2 cạnh tìm sinA",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000339",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00772",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000339",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "2 cạnh góc xen: S, AC, r; ứng viên NDB00772",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000339",
+   "dang_id": "NDB00772",
+   "chac": "vua",
+   "ly_do": "Tính diện tích tam giác từ dữ kiện; có ý phụ cos/sin hoặc ứng viên 00765.",
+   "tram": "2B"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000340",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000340",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế toà nhà, sin tam giác OAB; ảnh chưa mở",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000340",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000346",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000346",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "Mệnh đề hỗn hợp sin, cos, cạnh, R với 2 cạnh góc xen",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000346",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "Mệnh đề cho 2 cạnh góc xen: sin B, AC bằng cos, R; hỗn hợp",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000347",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00767",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000347",
+   "dang_id": "NDB00767",
+   "chac": "cao",
+   "ly_do": "Thực tế đường hầm, cosin tam giác ABC",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000347",
+   "dang_id": "NDB00767",
+   "chac": "cao",
+   "ly_do": "Thực tế, định lí cos tính khoảng cách/độ dài.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000355",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000355",
+   "dang_id": "NGOAI",
+   "chac": "vua",
+   "ly_do": "Cột cờ, chỉ dùng tan tam giác vuông",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000355",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Đo đạc thực tế chỉ dùng tan trong tam giác vuông, không cos/sin/diện tích.",
+   "tram": "2B"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000361",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000361",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "2 cạnh góc xen: c, R, trung tuyến, h_a; ứng viên NDB01034/01035",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000361",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "Biết hai cạnh và góc xen giữa; tính cạnh còn lại, góc, ý phụ khác.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000363",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000363",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Thực tế tối ưu đường ống, đối xứng, không phải định lí cos/sin",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000363",
+   "dang_id": "NGOAI",
+   "chac": "vua",
+   "ly_do": "Thực tế tối ưu đường ống, đối xứng, không phải định lí sin/cos",
+   "tram": "2A"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000364",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00772",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000364",
+   "dang_id": "NDB00772",
+   "chac": "cao",
+   "ly_do": "Tính diện tích từ ba cạnh bằng Heron",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000364",
+   "dang_id": "NDB00772",
+   "chac": "cao",
+   "ly_do": "Tính S biết 3 cạnh bằng Heron",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000373",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000373",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Thực tế chiều cao cây chỉ dùng tan",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000373",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Thực tế chiều cao cây, dùng tan và công thức cộng",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000375",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00764",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000375",
+   "dang_id": "NDB00762",
+   "chac": "vua",
+   "ly_do": "Nhận diện công thức tổng hợp; ứng viên 00764",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000375",
+   "dang_id": "NDB00762",
+   "chac": "vua",
+   "ly_do": "Tìm khẳng định sai, đáp án là định lí cos; lẫn sin, S",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000376",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000376",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "Câu nhiều ý: BC bằng cosin, cosB, AM (vectơ); gần nhất giải tam giác 2 cạnh góc xen",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000376",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "Biết hai cạnh và góc xen giữa; tính cạnh còn lại, góc, ý phụ khác.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000377",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00773",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000377",
+   "dang_id": "NDB00773",
+   "chac": "cao",
+   "ly_do": "Thực tế diện tích mảnh đất tứ giác chia thành tam giác",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000377",
+   "dang_id": "NDB00773",
+   "chac": "cao",
+   "ly_do": "Thực tế mảnh đất tứ giác, chia tam giác tính diện tích; đã mở ảnh",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000385",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000385",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế đo khoảng cách, biết 2 góc 1 cạnh, định lí sin",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000385",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế đo khoảng cách, biết 2 góc 1 cạnh, dùng định lí sin",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000390",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00772",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000390",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Tìm bán kính nội tiếp r từ S và chu vi",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000390",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Tìm r từ S và chu vi, dùng S=pr",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000393",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000393",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "Tính AC cosin và S; ý 2 chứng minh cân; ứng viên NDB00772",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000393",
+   "dang_id": "NDB00772",
+   "chac": "vua",
+   "ly_do": "Tính diện tích tam giác từ dữ kiện; có ý phụ cos/sin hoặc ứng viên 00765.",
+   "tram": "2B"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000396",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000396",
+   "dang_id": "NGOAI",
+   "chac": "vua",
+   "ly_do": "Thực tế nhưng chỉ dùng tan tam giác vuông, không sin/cos",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000396",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Đo đạc thực tế chỉ dùng tan trong tam giác vuông, không cos/sin/diện tích.",
+   "tram": "2B"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000398",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00772",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000398",
+   "dang_id": "NDB00765",
+   "chac": "vua",
+   "ly_do": "b,c,cosA: a, sinA, S, r; ứng viên NDB01035",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000398",
+   "dang_id": "NDB01035",
+   "chac": "vua",
+   "ly_do": "Dùng diện tích tìm yếu tố khác (r, đường cao, cạnh); ứng viên 00765/00772.",
+   "tram": "2B"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000406",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00764",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000406",
+   "dang_id": "NDB00764",
+   "chac": "vua",
+   "ly_do": "Nhận diện công thức S, sin, cos (S=pr, abc/4r); trộn; có thể NDB00762/00763",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000406",
+   "dang_id": "NDB00764",
+   "chac": "vua",
+   "ly_do": "Nhận diện công thức (cos, sin, diện tích); chủ yếu công thức diện tích, ứng viên 00762/00763.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000410",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000410",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Tính đường cao từ cos A: cos rồi S rồi h",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000410",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Đường cao từ A: cos tìm BC, sinA, S rồi h=2S/a",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000411",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000411",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế núi, định lí sin trong tam giác ABC",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000411",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Đo đạc thực tế chỉ dùng tan trong tam giác vuông, không cos/sin/diện tích.",
+   "tram": "2B"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000429",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000429",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Giá trị hàm số",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000429",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Giá trị hàm số",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000430",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000430",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Đồ thị hàm số đồng biến nghịch biến",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000430",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Đồ thị hàm số đồng biến",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000432",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00772",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000432",
+   "dang_id": "NDB00772",
+   "chac": "vua",
+   "ly_do": "Mệnh đề hỗn hợp S, R, sin C; ứng viên 01035",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000432",
+   "dang_id": "NDB01035",
+   "chac": "vua",
+   "ly_do": "Mệnh đề sinC, S, R, BM từ sin(A+B); hỗn hợp",
+   "tram": "2A"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000433",
+  "hang": "thieu_dang",
+  "dang_cu": "T110000000",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110000000433",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập xác định hàm số",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110000000433",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...).",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110000000447",
+  "hang": "de_xuat",
+  "dang_cu": "T110000000",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110000000447",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế bề rộng cửa biển, định lí sin",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110000000447",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế cửa biển: sin hai tam giác rồi cos tìm CD; ứng viên 767",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110010101101",
+  "hang": "de_xuat",
+  "dang_cu": "T110010101",
+  "dx": "NDB00769",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110010101101",
+   "dang_id": "NDB00769",
+   "chac": "vua",
+   "ly_do": "Mệnh đề hỗn hợp, ưu tiên sin; ứng viên 00765",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110010101101",
+   "dang_id": "NDB00763",
+   "chac": "vua",
+   "ly_do": "Mệnh đề hỗn hợp R, cạnh bằng sin, cosA, S",
+   "tram": "2A"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110010206028",
+  "hang": "thieu_dang",
+  "dang_cu": "T110010206",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110010206028",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập hợp",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110010206028",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập hợp",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110010206039",
+  "hang": "thieu_dang",
+  "dang_cu": "T110010206",
+  "dx": null,
+  "dx_chac": null,
+  "a": {
+   "ma_cau": "T110010206039",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập hợp",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110010206039",
+   "dang_id": "NGOAI",
+   "chac": "cao",
+   "ly_do": "Tập hợp",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030201027",
+  "hang": "de_xuat",
+  "dang_cu": "T110030201",
+  "dx": "NDB00762",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030201027",
+   "dang_id": "NDB00762",
+   "chac": "vua",
+   "ly_do": "Nhận diện hệ quả cos và sin; ứng viên 00763",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030201027",
+   "dang_id": "NDB00762",
+   "chac": "cao",
+   "ly_do": "Tìm mệnh đề sai, đáp án là hệ quả định lí cos",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030201029",
+  "hang": "de_xuat",
+  "dang_cu": "T110030201",
+  "dx": "NDB00762",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030201029",
+   "dang_id": "NDB00762",
+   "chac": "vua",
+   "ly_do": "Nhận diện cos/sin; ứng viên 00763",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030201029",
+   "dang_id": "NDB00762",
+   "chac": "vua",
+   "ly_do": "Tìm khẳng định sai, đáp án là định lí cos; lẫn sin",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030201040",
+  "hang": "de_xuat",
+  "dang_cu": "T110030201",
+  "dx": "NDB00764",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030201040",
+   "dang_id": "NDB00764",
+   "chac": "vua",
+   "ly_do": "Nhận diện công thức tam giác; ứng viên 00762",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030201040",
+   "dang_id": "NDB00764",
+   "chac": "vua",
+   "ly_do": "Chọn khẳng định đúng, đáp án là S=1/2 ac sinB; lẫn cos/sin",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030201042",
+  "hang": "de_xuat",
+  "dang_cu": "T110030201",
+  "dx": "NDB00764",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030201042",
+   "dang_id": "NDB00763",
+   "chac": "vua",
+   "ly_do": "Nhận diện công thức sin/R/S; có thể 00764",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030201042",
+   "dang_id": "NDB00763",
+   "chac": "vua",
+   "ly_do": "Chọn công thức đúng, đáp án là định lí sin; có lẫn công thức diện tích (ứng viên 764)",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030201044",
+  "hang": "de_xuat",
+  "dang_cu": "T110030201",
+  "dx": "NDB00763",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030201044",
+   "dang_id": "NDB00764",
+   "chac": "vua",
+   "ly_do": "Nhận diện công thức; đáp án là sin; ứng viên NDB00763",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030201044",
+   "dang_id": "NDB00764",
+   "chac": "vua",
+   "ly_do": "Nhận diện công thức (cos, sin, diện tích); chủ yếu công thức diện tích, ứng viên 00762/00763.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030201047",
+  "hang": "de_xuat",
+  "dang_cu": "T110030201",
+  "dx": "NDB00764",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030201047",
+   "dang_id": "NDB00764",
+   "chac": "vua",
+   "ly_do": "Nhận diện công thức R, S, cos",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030201047",
+   "dang_id": "NDB00763",
+   "chac": "vua",
+   "ly_do": "Tìm phát biểu sai, đáp án R=a/sinA (định lí sin); lẫn S, cos",
+   "tram": "2A"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030201048",
+  "hang": "de_xuat",
+  "dang_cu": "T110030201",
+  "dx": "NDB00764",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030201048",
+   "dang_id": "NDB00764",
+   "chac": "vua",
+   "ly_do": "Nhận diện công thức tổng hợp S, R, cos, trung tuyến; có thể 00762/00763",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030201048",
+   "dang_id": "NDB00762",
+   "chac": "vua",
+   "ly_do": "Tìm mệnh đề sai; sai ở công thức trung tuyến, lẫn sin/cos/S; không dạng khớp rõ",
+   "tram": "2A"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030201050",
+  "hang": "de_xuat",
+  "dang_cu": "T110030201",
+  "dx": "NDB00764",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030201050",
+   "dang_id": "NDB00764",
+   "chac": "vua",
+   "ly_do": "Nhận diện công thức R, S, p; ứng viên 00763",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030201050",
+   "dang_id": "NDB00763",
+   "chac": "vua",
+   "ly_do": "Tìm phát biểu sai, đáp án R=a/sinA; lẫn S, cos",
+   "tram": "2A"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030201057",
+  "hang": "de_xuat",
+  "dang_cu": "T110030201",
+  "dx": "NDB00764",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030201057",
+   "dang_id": "NDB00764",
+   "chac": "vua",
+   "ly_do": "Chọn khẳng định đúng gồm cosin, sin, S, Hê-rông; trộn, ứng viên 00762",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030201057",
+   "dang_id": "NDB00764",
+   "chac": "vua",
+   "ly_do": "Nhận diện công thức (cos, sin, diện tích); chủ yếu công thức diện tích, ứng viên 00762/00763.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030201058",
+  "hang": "de_xuat",
+  "dang_cu": "T110030201",
+  "dx": "NDB00764",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030201058",
+   "dang_id": "NDB00764",
+   "chac": "vua",
+   "ly_do": "Nhận diện công thức S, cosin, sin; ứng viên NDB00762",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030201058",
+   "dang_id": "NDB00764",
+   "chac": "vua",
+   "ly_do": "Nhận diện công thức (cos, sin, diện tích); chủ yếu công thức diện tích, ứng viên 00762/00763.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030201059",
+  "hang": "de_xuat",
+  "dang_cu": "T110030201",
+  "dx": "NDB00764",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030201059",
+   "dang_id": "NDB00764",
+   "chac": "vua",
+   "ly_do": "Nhận diện công thức, trộn sin, S, Hê-rông, cosin; ứng viên NDB00762",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030201059",
+   "dang_id": "NDB00764",
+   "chac": "vua",
+   "ly_do": "Nhận diện công thức (cos, sin, diện tích); chủ yếu công thức diện tích, ứng viên 00762/00763.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030201060",
+  "hang": "de_xuat",
+  "dang_cu": "T110030201",
+  "dx": "NDB00764",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030201060",
+   "dang_id": "NDB00762",
+   "chac": "vua",
+   "ly_do": "Nhận diện công thức, đáp án là cosin; ứng viên NDB00764",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030201060",
+   "dang_id": "NDB00764",
+   "chac": "vua",
+   "ly_do": "Nhận diện công thức (cos, sin, diện tích); chủ yếu công thức diện tích, ứng viên 00762/00763.",
+   "tram": "2B"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030202040",
+  "hang": "de_xuat",
+  "dang_cu": "T110030202",
+  "dx": "NDB00767",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030202040",
+   "dang_id": "NDB00767",
+   "chac": "vua",
+   "ly_do": "Thực tế đường hầm, 2 cạnh góc xen 140 độ, cos",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030202040",
+   "dang_id": "NDB00767",
+   "chac": "vua",
+   "ly_do": "Thực tế đường hầm, cos tìm AC rồi MN",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030202041",
+  "hang": "de_xuat",
+  "dang_cu": "T110030202",
+  "dx": "NDB00767",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030202041",
+   "dang_id": "NDB00767",
+   "chac": "vua",
+   "ly_do": "Thực tế tháp sườn dốc, cosin; ảnh SVG không mở được",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030202041",
+   "dang_id": "NDB00767",
+   "chac": "cao",
+   "ly_do": "Thực tế, định lí cos tính khoảng cách/độ dài.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203001",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00763",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203001",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Tính R biết AB và góc C",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203001",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Tính R từ AB và góc C",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203002",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00769",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203002",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Tính R biết BC và góc A (đã xem ảnh)",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203002",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Tính R từ BC và góc A, định lí sin; đã mở ảnh",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203005",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00763",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203005",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Tính R từ BC=a và góc A",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203005",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Đề hỏi bán kính đường tròn ngoại tiếp, dùng định lí sin, không thực tế.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203007",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00769",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203007",
+   "dang_id": "NDB00769",
+   "chac": "cao",
+   "ly_do": "Biết cosB và góc C và cạnh AB, tính AC bằng sin",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203007",
+   "dang_id": "NDB00769",
+   "chac": "cao",
+   "ly_do": "Biết hai góc (B qua cos, C) và một cạnh, dùng định lí sin tính cạnh.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203008",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00769",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203008",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Tính R từ BC và góc A bằng định lí sin, không thực tế",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203008",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Đề hỏi bán kính đường tròn ngoại tiếp, dùng định lí sin, không thực tế.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203009",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00769",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203009",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Tính R từ BC và góc A",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203009",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Đề hỏi bán kính đường tròn ngoại tiếp, dùng định lí sin, không thực tế.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203010",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00769",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203010",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Tính chu vi đường tròn ngoại tiếp qua R (đã xem ảnh)",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203010",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Tính R (chu vi đường tròn) từ BC và A=45, sin; đã mở ảnh",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203013",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00769",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203013",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Tính R từ AB và góc C",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203013",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Đề hỏi bán kính đường tròn ngoại tiếp, dùng định lí sin, không thực tế.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203015",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00769",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203015",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Tính R biết BC và góc A",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203015",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Tính R từ BC và góc A",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203019",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00763",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203019",
+   "dang_id": "NDB01034",
+   "chac": "vua",
+   "ly_do": "Tính R tam giác vuông bằng BC/2, không sin",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203019",
+   "dang_id": "NDB01034",
+   "chac": "vua",
+   "ly_do": "Hỏi R tam giác vuông (R=BC/2), không dùng sin; dạng R gần nhất.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203025",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00769",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203025",
+   "dang_id": "NDB00769",
+   "chac": "vua",
+   "ly_do": "2 góc và R, tính cạnh AB bằng sin; ứng viên NDB01034",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203025",
+   "dang_id": "NDB00769",
+   "chac": "vua",
+   "ly_do": "Biết hai góc và một cạnh/R, dùng sin; 83 có ý S, r.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203027",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00763",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203027",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Tính R từ BC và góc A",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203027",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Đề hỏi bán kính đường tròn ngoại tiếp, dùng định lí sin, không thực tế.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203028",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00769",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203028",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Tính R biết a và góc A",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203028",
+   "dang_id": "NDB01034",
+   "chac": "cao",
+   "ly_do": "Tính R từ a và A, định lí sin",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203045",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203045",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Thực tế chiều cao tháp chỉ dùng tan tam giác vuông",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203045",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Thực tế chiều cao tháp chỉ dùng tan hai tam giác vuông",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203047",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00767",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203047",
+   "dang_id": "NDB00767",
+   "chac": "vua",
+   "ly_do": "Thực tế đĩa vỡ: cos tìm AC rồi sin tìm R; ứng viên 01034",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203047",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế đĩa vỡ tìm R: cos rồi sin; ứng viên 771/1034",
+   "tram": "2A"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203049",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203049",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế sông, sin tính AB; ảnh chưa mở",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203049",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203053",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203053",
+   "dang_id": "NGOAI",
+   "chac": "vua",
+   "ly_do": "Cây, chỉ dùng tan tam giác vuông",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203053",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Đo đạc thực tế chỉ dùng tan trong tam giác vuông, không cos/sin/diện tích.",
+   "tram": "2B"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203054",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00767",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203054",
+   "dang_id": "NDB00767",
+   "chac": "vua",
+   "ly_do": "Thực tế giếng: cos tìm BC rồi R; ứng viên 00773/01034",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203054",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế giếng trời: cos tìm BC rồi sin tìm R, tính diện tích tròn; ứng viên 771/1034",
+   "tram": "2A"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203056",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203056",
+   "dang_id": "NGOAI",
+   "chac": "vua",
+   "ly_do": "Núi từ 2 đèn, chỉ dùng tan tam giác vuông",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203056",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Đo đạc thực tế chỉ dùng tan trong tam giác vuông, không cos/sin/diện tích.",
+   "tram": "2B"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203057",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203057",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế toà nhà, sin; ứng viên khác tan",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203057",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế toà nhà cháy, sin rồi tam giác vuông",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203058",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203058",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế chiều cao cây trên sườn đồi, định lí sin",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203058",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế chiều cao cây trên đồi, định lí sin",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203059",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203059",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế tháp canh, sin tam giác ADC; ảnh chưa mở",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203059",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203062",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203062",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Thực tế chiều cao tháp chỉ dùng tan",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203062",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Thực tế chiều cao hải đăng chỉ dùng tan",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203066",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203066",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế hải đăng, sin tam giác ABD",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203066",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203067",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203067",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế tàu, định lí sin tam giác ABC",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203067",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203068",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203068",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế đua thuyền, định lí sin hai tam giác",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203068",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế hai ghe thuyền, sin hai tam giác",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203069",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203069",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế chiều cao cây sườn đồi, định lí sin",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203069",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế cây trên đồi, sin",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203070",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203070",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế cột tiện ích trên dốc, định lí sin tìm góc nghiêng",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203070",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế, định lí sin (59 có thêm cos); ứng viên 00767.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203071",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203071",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế khoảng cách tàu, 2 góc 1 cạnh, định lí sin",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203071",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế khoảng cách tàu, 2 góc 1 cạnh, sin",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203072",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00768",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203072",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế miếng bìa: sin tìm R rồi diện tích tròn; ứng viên 01034",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203072",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế bìa tròn: sin tìm R rồi diện tích tròn; ứng viên 771/1034",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203073",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203073",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế độ cao núi từ góc nâng; có thể chỉ tan",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203073",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Thực tế chiều cao núi chỉ dùng tan, không định lí sin/cos",
+   "tram": "2A"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203074",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203074",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế đo chiều cao núi bằng định lí sin",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203074",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203076",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203076",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế thời gian tàu, giải tam giác bằng sin",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203076",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế hai tàu, 2 góc 1 cạnh, sin tìm quãng đường",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203078",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203078",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế chiều cao toà nhà, định lí sin trong tam giác DA1B1",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203078",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế đo chiều cao toà nhà, sin trong tam giác rồi tam giác vuông",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203079",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203079",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế cây trên sườn đồi, sin; ảnh SVG không mở được",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203079",
+   "dang_id": "NDB00771",
+   "chac": "cao",
+   "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203080",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203080",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế hải đăng, sin trong tam giác PBQ; ảnh SVG không mở được",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203080",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế, định lí sin (59 có thêm cos); ứng viên 00767.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203081",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203081",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế khoảng cách hai đỉnh núi, định lí sin",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203081",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế đỉnh núi: sin hai tam giác rồi cos tìm PQ; ứng viên 767",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203082",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203082",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế cửa biển, sin; ảnh chưa mở",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030203082",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế, định lí sin (59 có thêm cos); ứng viên 00767.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203083",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203083",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế chiều cao toà nhà, định lí sin",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203083",
+   "dang_id": "NDB00771",
+   "chac": "vua",
+   "ly_do": "Thực tế chiều cao toà nhà, sin rồi tam giác vuông",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030203085",
+  "hang": "de_xuat",
+  "dang_cu": "T110030203",
+  "dx": "NDB00771",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030203085",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Thực tế tính AI^2 (R ngoại tiếp) bằng toạ độ; 01034 loại thực tế",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030203085",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Thực tế tìm tâm ngoại tiếp bằng toạ độ, không dùng định lí sin/cos; R thực tế bị 1034 loại",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204003",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204003",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Tìm đường cao AH dùng diện tích",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030204003",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Đường cao AH, dùng cos tìm BC rồi S=1/2 BC.AH",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204006",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00772",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204006",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Tính r nội tiếp dùng cos, diện tích",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030204006",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Tìm r: cos tìm BC, S rồi r=S/p",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204014",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00772",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204014",
+   "dang_id": "NDB00772",
+   "chac": "vua",
+   "ly_do": "Diện tích từ 2 cạnh và sin A; ứng viên NDB00764",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030204014",
+   "dang_id": "NDB00772",
+   "chac": "vua",
+   "ly_do": "Tính diện tích tam giác từ dữ kiện; có ý phụ cos/sin hoặc ứng viên 00765.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204015",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00772",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204015",
+   "dang_id": "NDB00772",
+   "chac": "cao",
+   "ly_do": "Diện tích từ ba cạnh bằng Heron",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030204015",
+   "dang_id": "NDB00772",
+   "chac": "cao",
+   "ly_do": "Tính S biết 3 cạnh, Heron",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204016",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00772",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204016",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Dùng diện tích tìm sin A",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030204016",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Biết S, 2 cạnh tìm sinA",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204019",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00772",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204019",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Tìm r từ S và chu vi",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030204019",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Tìm r từ S và chu vi, S=pr",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204022",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204022",
+   "dang_id": "NDB01035",
+   "chac": "vua",
+   "ly_do": "Dùng S tìm sin C rồi cos tìm AB; ứng viên 00765",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030204022",
+   "dang_id": "NDB01035",
+   "chac": "vua",
+   "ly_do": "Dùng S tìm sinC rồi cos tìm AB; ứng viên 765; chưa mở ảnh",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204026",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00772",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204026",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Cho S và chu vi, tính r bằng S=pr",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030204026",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Dùng diện tích để tìm r / đường cao h_a.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204030",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00772",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204030",
+   "dang_id": "NDB00772",
+   "chac": "vua",
+   "ly_do": "Cho 2 góc + 1 cạnh, đề hỏi diện tích; ứng viên NDB00769",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030204030",
+   "dang_id": "NDB00772",
+   "chac": "vua",
+   "ly_do": "Tính diện tích tam giác từ dữ kiện; có ý phụ cos/sin hoặc ứng viên 00765.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204031",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00765",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204031",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Tính đường cao h_a bằng cosin rồi S, h=2S/a",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030204031",
+   "dang_id": "NDB01035",
+   "chac": "cao",
+   "ly_do": "Dùng diện tích để tìm r / đường cao h_a.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204033",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00772",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204033",
+   "dang_id": "NDB00772",
+   "chac": "cao",
+   "ly_do": "Biết 3 cạnh, tính S bằng Hê-rông",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030204033",
+   "dang_id": "NDB00772",
+   "chac": "cao",
+   "ly_do": "Biết ba cạnh, tính diện tích bằng Hê-rông.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204034",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00768",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204034",
+   "dang_id": "NDB01035",
+   "chac": "vua",
+   "ly_do": "Tính đường cao h_a, dùng sin C; ứng viên NDB00765",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030204034",
+   "dang_id": "NDB01035",
+   "chac": "vua",
+   "ly_do": "Dùng diện tích tìm yếu tố khác (r, đường cao, cạnh); ứng viên 00765/00772.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204040",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00773",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204040",
+   "dang_id": "NDB00773",
+   "chac": "vua",
+   "ly_do": "Thực tế cánh diều, diện tích tứ giác lớn nhất; hỏi chéo; ứng viên KHONG_KHOP",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030204040",
+   "dang_id": "KHONG_KHOP",
+   "chac": "vua",
+   "ly_do": "Diều: tối đa diện tích rồi tính tổng hai đường chéo, không dạng nào khớp.",
+   "tram": "2B"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204041",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00772",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204041",
+   "dang_id": "NDB00772",
+   "chac": "vua",
+   "ly_do": "Tỉ lệ sin cho cạnh rồi tính diện tích vườn; ứng viên 00773",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030204041",
+   "dang_id": "NDB00773",
+   "chac": "cao",
+   "ly_do": "Thực tế khu vườn, từ tỉ lệ sin suy ba cạnh rồi Heron",
+   "tram": "2A"
+  },
+  "dong_y": false,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204044",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00773",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204044",
+   "dang_id": "NDB00773",
+   "chac": "vua",
+   "ly_do": "Thực tế logo ngôi sao: cos tìm R rồi diện tích phần nền",
+   "tram": "1A"
+  },
+  "b": {
+   "ma_cau": "T110030204044",
+   "dang_id": "NDB00773",
+   "chac": "vua",
+   "ly_do": "Thực tế logo ngôi sao: cos tìm R rồi diện tích phần nền; chưa mở ảnh",
+   "tram": "2A"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204046",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00773",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204046",
+   "dang_id": "NDB00773",
+   "chac": "cao",
+   "ly_do": "Thực tế mảnh đất hình thang, giải tam giác rồi tính diện tích",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030204046",
+   "dang_id": "NDB00773",
+   "chac": "cao",
+   "ly_do": "Bối cảnh thực tế, chia/giải tam giác rồi tính diện tích đa giác.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204047",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00773",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204047",
+   "dang_id": "NDB00773",
+   "chac": "vua",
+   "ly_do": "Thực tế mảnh vườn, tính S tam giác CDE; ảnh chưa kiểm",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030204047",
+   "dang_id": "NDB00773",
+   "chac": "cao",
+   "ly_do": "Bối cảnh thực tế, chia/giải tam giác rồi tính diện tích đa giác.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204048",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00773",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204048",
+   "dang_id": "NDB00773",
+   "chac": "cao",
+   "ly_do": "Thực tế mảnh đất tứ giác, cosin + Hê-rông, tiền đền bù",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030204048",
+   "dang_id": "NDB00773",
+   "chac": "cao",
+   "ly_do": "Bối cảnh thực tế, chia/giải tam giác rồi tính diện tích đa giác.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204049",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00772",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204049",
+   "dang_id": "NDB01035",
+   "chac": "vua",
+   "ly_do": "Thực tế tấm bìa, tính r nội tiếp từ S; ứng viên NDB00773",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030204049",
+   "dang_id": "NDB01035",
+   "chac": "vua",
+   "ly_do": "Dùng diện tích tìm yếu tố khác (r, đường cao, cạnh); ứng viên 00765/00772.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204050",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00773",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204050",
+   "dang_id": "NDB00773",
+   "chac": "vua",
+   "ly_do": "Thực tế mảnh đất tứ giác, chia tam giác tính diện tích rồi tiền; ảnh chưa mở",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030204050",
+   "dang_id": "NDB00773",
+   "chac": "cao",
+   "ly_do": "Bối cảnh thực tế, chia/giải tam giác rồi tính diện tích đa giác.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ },
+ {
+  "ma_cau": "T110030204051",
+  "hang": "de_xuat",
+  "dang_cu": "T110030204",
+  "dx": "NDB00773",
+  "dx_chac": "vua",
+  "a": {
+   "ma_cau": "T110030204051",
+   "dang_id": "NDB00773",
+   "chac": "vua",
+   "ly_do": "Thực tế họa tiết sơn, tìm r từ S; ứng viên NDB01035",
+   "tram": "1B"
+  },
+  "b": {
+   "ma_cau": "T110030204051",
+   "dang_id": "NDB00773",
+   "chac": "vua",
+   "ly_do": "Thực tế, diện tích tam giác Hê-rông trừ hình tròn nội tiếp; ứng viên 01035.",
+   "tram": "2B"
+  },
+  "dong_y": true,
+  "anh": false
+ }
+]

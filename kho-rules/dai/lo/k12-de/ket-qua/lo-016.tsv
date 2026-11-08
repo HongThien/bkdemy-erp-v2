@@ -1,0 +1,100 @@
+T112000000383	HS	P3.3.5		2	1	
+T112020401089	HS	P4.2.1		4	1	
+T1120000006399	HS	P1.4.1		1	1	
+T312000000446	PPTD	NDB00857		2	1	
+T112070101186	VT	P1.4.2		3	0	giữa P1.4.2 và P1.2.5
+T1120000006935	NHTP	NDB00774		2	0	DS nhiều ý; diện tích + tính chất tích phân
+T112000000478	NHTP	NDB00747		1	1	
+T1120000004627	HS	P2.2.1		1	1	
+T312000000822	PPTD	NDB00859		2	1	
+T112070301130	VT	P3.3.1		1	1	
+T1120000004471	NHTP	NDB00630		2	1	
+T1120000003217	HS	P4.4.2		3	1	
+T1120000005457	NHTP	NDB00774		2	1	
+T1120000006587	VT	P1.4.3		2	1	
+T1120000006183	HS	P1.5.2		2	1	
+T112010202112	HS	P1.4.1		1	1	
+T112000000918	NHTP	NDB00752		1	1	
+T1120000006445	HS	NEW	khảo sát tổng hợp hàm số: Đúng-Sai nhiều ý (đơn điệu, cực trị, tiệm cận, GTLN)	2	0	DS nhiều ý
+T1120000005758	HS	P2.5.1		3	1	
+T1120000005656	HS	P1.2.2		1	1	
+T1120000006936	O		hình học phẳng: diện tích hình tròn kèm chi phí	2	0	có thể là tích phân diện tích
+T1120000004396	HS	P4.4.1		2	0	doanh thu giá bán giảm theo số lượng
+T1120000005604	NHTP	NDB00752		1	1	
+T112000000652	NHTP	NDB00788		4	0	diện tích hình đối xứng hàm bậc ba, tỉ số diện tích
+T1120000004695	VT	P3.1.2		2	0	cùng phương kèm tích vô hướng
+T112010301051	HS	P1.7.1		1	1	
+T112020402202	HS	P4.5.2		3	1	
+T112070301036	VT	P2.1.2		1	1	
+T312010101215	PPTD	NDB00835		1	1	
+T112010401129	HS	P1.6.2		2	1	
+T112070312015	VT	P2.3.1		3	0	giữa P2.3.1 và P3.2.x
+T1120000004434	VT	P3.5.1		2	1	
+T1120000006892	NHTP	NDB00745		1	1	
+T1120000006105	VT	P1.4.1		2	0	giữa P1.4.1 và P1.4.5
+T1120000004406	SDT	NHOM:NNB01258		1	1	
+T112010305055	HS	P1.8.1		2	1	
+T1120000003205	VT	P1.1.2		2	1	
+T1120000004958	NHTP	NEW	tích phân của f′ đọc giá trị f từ đồ thị	2	0	gần NDB00755
+T1120000006648	HS	P1.5.1		2	1	
+T112010303078	HS	P1.7.1		1	1	
+T1120000005262	NHTP	NDB00756		2	0	quãng đường xa nhất từ vận tốc
+T112010102116	HS	P1.1.1		2	1	
+T112020401142	HS	P4.4.2		3	1	DS nhiều ý
+T1120000003474	SDT	NHOM:NNB01260		2	1	
+T112010102186	HS	P1.1.2		2	1	
+T112000000396	NHTP	NDB00760		3	0	DS nhiều ý
+T1120000004680	HS	NEW	khảo sát tổng hợp hàm số: Đúng-Sai nhiều ý (đơn điệu, cực trị, tiệm cận, GTLN)	2	0	DS nhiều ý
+T112000000885	HS	P1.4.1		2	0	DS nhiều ý đọc BBT
+T1120000006359	VT	P1.2.5		2	0	DS nhiều ý
+T1120000003960	HS	NEW	khảo sát tổng hợp hàm số: Đúng-Sai nhiều ý (đơn điệu, cực trị, tiệm cận, GTLN)	2	0	DS nhiều ý
+T1120000005999	HS	P1.2.2		1	1	
+T1120000003489	VT	P2.1.3		1	1	
+T112000000566	NHTP	NDB00777		4	0	hàm nhất biến + diện tích hình phẳng thực tế
+T112020401005	HS	P4.4.1		2	0	lãi từ cầu tuyến tính
+T312000000520	PPTD	NDB00851		3	0	DS nhiều ý
+T112010401077	HS	P1.6.2		2	1	
+T1120000004363	HS	NEW	khảo sát tổng hợp hàm số: Đúng-Sai nhiều ý (đơn điệu, cực trị, tiệm cận, GTLN)	3	0	DS nhiều ý
+T312010802062	VT	P3.7.1		3	0	
+T112000000745	HS	NEW	khảo sát tổng hợp hàm số: Đúng-Sai nhiều ý (đơn điệu, cực trị, tiệm cận, GTLN)	4	0	DS nhiều ý
+T112070301148	VT	P2.1.3		1	1	
+T1120000004053	SDT	NHOM:NNB01259		1	1	
+T112070308026	VT	NEW	cực trị độ dài đoạn nối hai cạnh chéo trong lăng trụ (gắn hệ trục)	4	0	có thể chương HS hoặc hình lớp 11
+T112020302067	HS	P2.1.1		2	0	nhận diện hàm từ đồ thị, mix bậc ba / bậc hai trên bậc nhất
+T112000000599	HS	NEW	khảo sát tổng hợp hàm số: Đúng-Sai nhiều ý (đơn điệu, cực trị, tiệm cận, GTLN)	3	0	DS nhiều ý
+T3120000001130	PPTD	NDB00849		3	0	DS nhiều ý; có tích có hướng, trọng tâm
+T1120000006901	NHTP	NDB00744		2	0	DS nhiều ý
+T112010308032	HS	P1.9.3		1	1	
+T312000000560	VT	P3.6.1		4	1	
+T312000000686	VT	P3.7.1		3	0	
+T1120000001128	HS	NEW	khảo sát tổng hợp hàm số: Đúng-Sai nhiều ý (đơn điệu, cực trị, tiệm cận, GTLN)	3	0	DS nhiều ý
+T1120000004509	VT	P3.2.3		3	0	DS nhiều ý
+T112010305042	HS	P1.8.1		2	1	
+T112000000076	NHTP	NDB00747		1	1	
+T1120000004264	SDT	NHOM:NNB01260		2	0	DS nhiều ý: trung bình, R, Q3, độ lệch chuẩn
+T1120000004208	HS	P4.6.2		3	0	
+T112000000120	NHTP	NDB00636		2	1	
+T1120000003781	SDT	NHOM:NNB01260		2	0	DS nhiều ý: R, TB, Q1, phương sai
+T3120000001121	PPTD	NDB00849		3	0	DS nhiều ý
+T312000000469	PPTD	NDB00851		3	0	DS nhiều ý
+T112000000412	NHTP	NDB00743		1	1	
+T1120000006076	HS	NEW	khảo sát tổng hợp hàm số: Đúng-Sai nhiều ý (đơn điệu, cực trị, tiệm cận, GTLN)	3	0	DS nhiều ý
+T112010202131	HS	P1.4.1		1	1	
+T312000000354	PPTD	NDB00852		2	1	
+T1120000001280	NHTP	NDB00746		3	0	nguyên hàm lượng giác có điều kiện
+T1120000006286	HS	P1.9.1		1	1	
+T112020401028	NHTP	NDB00788		4	0	parabol đối xứng, diện tích + tối ưu chi phí
+T1120000004614	NHTP	NDB00746		2	0	DS nhiều ý
+T112000000579	HS	P1.7.2		2	1	
+T1120000004468	XS	NHOM:NNB01254		2	0	DS nhiều ý: độc lập, xác suất có điều kiện
+T312000000278	VT	P3.2.1		1	1	
+T1120000006783	NHTP	NDB00747		2	1	
+T1120000005053	NHTP	NDB00752		1	1	
+T1120000003430	NHTP	NDB00745		1	1	
+T112020402133	HS	P4.6.1		3	0	đạo hàm mô hình quần thể
+T112010201033	HS	P1.3.1		1	1	
+T112010401078	HS	P1.6.1		1	1	
+T112070101205	VT	P1.4.2		3	0	DS nhiều ý
+T112000000795	HS	P2.2.3		2	0	tâm đối xứng từ đồ thị
+T312000000074	VT	P3.6.3		4	0	tổng AB+BC+AC nhỏ nhất, đối xứng
+T112070301097	VT	P3.2.2		2	0	DS nhiều ý

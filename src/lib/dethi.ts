@@ -9,8 +9,16 @@ import { supabase } from './supabase'
 import { listPhan, addPhan, getTaiLieuFull, khoCuaMon, renumberBuoiLop, type TaiLieuPhan } from './tailieu'
 import type { CauHoi, MenhDe } from './kho/api'
 
+// Kỳ của đề (Thùy 20/10). Vắng `ky` trong meta ⇒ DB SUY từ tên đề (_de_thi_ky_doan); đặt tay thì thắng.
+export type KyDe = 'gk1' | 'ck1' | 'gk2' | 'ck2' | 'khao_sat' | 'khac'
+export const KY_DE: { key: KyDe; ten: string }[] = [
+  { key: 'gk1', ten: 'Giữa kì I' }, { key: 'ck1', ten: 'Cuối kì I' }, { key: 'gk2', ten: 'Giữa kì II' }, { key: 'ck2', ten: 'Cuối kì II' },
+  { key: 'khao_sat', ten: 'Khảo sát' }, { key: 'khac', ten: 'Khác' },
+]
 export type DeThiMeta = {
   kieu?: 'de_cuong'      // đề cương ôn tập (tab "Đề cương" của Kho đề thi); vắng = đề thi
+  ky?: KyDe              // kỳ đặt tay; vắng = suy từ tên đề
+  namHoc?: number        // năm học đặt tay (số năm ĐẦU, 2025 = 2025–2026); vắng = DB suy (_de_thi_nam_hoc)
   nguon: string          // trường/sở
   cap: string            // vd 'vao_10', 'thpt_qg' — free text, vocab tái dùng nếu có
   nam: number | null
@@ -88,6 +96,27 @@ export async function setSoDongDeThi(id: string, patch: Record<string, number>):
   const { error } = await supabase.from('tai_lieu').update({ cau_hinh: cauHinh, updated_at: new Date().toISOString() }).eq('id', id)
   if (error) throw error
 }
+// Cấu hình IN theo câu như builder giáo trình (Thùy 19/10): `colByCau` (2 cột) · `hinhCheDoByCau` (hiện/ô trống/ẩn hình) ·
+// `anhMmByCau` + `anhPctByCau` (cỡ ảnh) · `mau`. Đọc lại bản DB rồi trộn ĐÚNG khoá được sửa (không đè meta/số dòng của đề):
+// giá trị là object ⇒ trộn vào map cũ (giá trị null ⇒ bỏ khoá đó); còn lại ⇒ đặt thẳng.
+export function tronCauHinh<T extends Record<string, unknown>>(goc: T, patch: Record<string, unknown>): T {
+  const ch: Record<string, unknown> = { ...goc }
+  for (const [k, v] of Object.entries(patch)) {
+    if (v && typeof v === 'object' && !Array.isArray(v)) {
+      const m = { ...((ch[k] as Record<string, unknown>) ?? {}) }
+      for (const [mk, mv] of Object.entries(v as Record<string, unknown>)) { if (mv == null) delete m[mk]; else m[mk] = mv }
+      ch[k] = m
+    } else ch[k] = v
+  }
+  return ch as T
+}
+export async function patchCauHinhDeThi(id: string, patch: Record<string, unknown>): Promise<void> {
+  const { data: cur, error: e0 } = await supabase.from('tai_lieu').select('cau_hinh').eq('id', id).single()
+  if (e0) throw e0
+  const ch = tronCauHinh(((cur as { cau_hinh?: Record<string, unknown> }).cau_hinh ?? {}) as Record<string, unknown>, patch)
+  const { error } = await supabase.from('tai_lieu').update({ cau_hinh: ch, updated_at: new Date().toISOString() }).eq('id', id)
+  if (error) throw error
+}
 
 // ── PHẦN (Phần I/II…) = tai_lieu_phan loai_phan='custom', mỗi phần giữ CÂU THEO THỨ TỰ GỐC ──
 export async function listPhanDeThi(taiLieuId: string): Promise<TaiLieuPhan[]> {
@@ -138,7 +167,7 @@ export async function deThiCau(deId: string): Promise<DeThiCau[]> {
   if (error) throw error
   return ((data ?? []) as DeThiCau[]).map((c) => ({ ...c, diem: Number(c.diem) }))
 }
-export type LoiDeThi = 'cau_da_xoa' | 'dang_cho' | 'thieu_dap_an' | 'thieu_phuong_an' | 'tln_chua_mcq' | 'thieu_menh_de' | 'md_thieu_dap_an' | 'md_dang_cho' | 'tu_luan_chi_in'
+export type LoiDeThi = 'cau_da_xoa' | 'dang_cho' | 'thieu_dap_an' | 'thieu_phuong_an' | 'tln_chua_mcq' | 'thieu_menh_de' | 'md_thieu_dap_an' | 'md_dang_cho' | 'chua_chu_de' | 'tu_luan_chi_in'
 export type DeThiThieu = { tong: number; so_chan: number; so_canh: number; so_chua_dang: number; cau: { stt: number; ma_cau: string; kho: Kho; loai_cau: string | null; phan: string; loi: LoiDeThi[]; chan: boolean }[] }
 export async function deThiThieu(deId: string): Promise<DeThiThieu> {
   const { data, error } = await supabase.rpc('fn_de_thi_thieu', { p_de: deId })
@@ -196,16 +225,45 @@ export type DeThiDong = {
   id: string; ten: string; khoi: string; mon: string; created_at: string; updated_at: string; duyet_at: string | null
   nguon: string | null; nam: number | null; co_de_goc: boolean
   so_cau: number; so_chan: number; so_chua_dang: number; so_canh_bao_nhap: number; so_luot: number; luot_gan_nhat: string | null
+  ky: KyDe; nam_hoc: number | null
 }
-export async function demKhoDeThi(mon: string, khoi: string | null): Promise<Record<TabKhoDe, number>> {
-  const { data, error } = await supabase.rpc('fn_de_thi_dem', { p_mon: mon, p_khoi: khoi })
+// Lọc năm học: '2025' (= 2025–2026) | 'chua_ro' | null = mọi năm (Thùy 20/10, mig 202610201833)
+export type LocNamHoc = string | null
+export const tenNamHoc = (n: number) => `${n}–${n + 1}`
+export async function namHocKhoDeThi(mon: string): Promise<{ nam: number[]; co_chua_ro: boolean }> {
+  const { data, error } = await supabase.rpc('fn_de_thi_nam_hoc', { p_mon: mon })
+  if (error) throw error
+  return data as { nam: number[]; co_chua_ro: boolean }
+}
+export async function demKhoDeThi(mon: string, khoi: string | null, ky: KyDe | null, namHoc: LocNamHoc): Promise<Record<TabKhoDe, number>> {
+  const { data, error } = await supabase.rpc('fn_de_thi_dem', { p_mon: mon, p_khoi: khoi, p_ky: ky, p_nam_hoc: namHoc })
   if (error) throw error
   return data as Record<TabKhoDe, number>
 }
-export async function listKhoDeThi(mon: string, khoi: string | null, tab: TabKhoDe, tim: string, truoc?: string | null): Promise<DeThiDong[]> {
-  const { data, error } = await supabase.rpc('fn_de_thi_ds', { p_mon: mon, p_khoi: khoi, p_tab: tab, p_tim: tim || null, p_gioi_han: 25, p_truoc: truoc ?? null })
+export async function listKhoDeThi(mon: string, khoi: string | null, tab: TabKhoDe, tim: string, ky: KyDe | null, namHoc: LocNamHoc, truoc?: string | null): Promise<DeThiDong[]> {
+  const { data, error } = await supabase.rpc('fn_de_thi_ds', { p_mon: mon, p_khoi: khoi, p_tab: tab, p_tim: tim || null, p_gioi_han: 25, p_truoc: truoc ?? null, p_ky: ky, p_nam_hoc: namHoc })
   if (error) throw error
   return (data ?? []) as DeThiDong[]
+}
+
+// ═══════════ DẠNG THEO BẢN ĐỒ MỚI (Thùy 20/10, mig 202610201623) ═══════════
+// Kho đã có bản đồ mới (Đại, HGT): câu thường ⇒ DẠNG BÀI; câu Đúng/Sai ⇒ CHỦ ĐỀ (kho Đ/S). he='cu' ⇒ kho chưa có bản đồ mới, giữ dạng cũ.
+export type DangMoi = { ma_cau: string; kho: Kho; he: 'moi' | 'cu'; loai: 'dang_bai' | 'chu_de' | null; id: string | null; ten: string | null; chu_de_id: string | null; chu_de: string | null }
+export type DichMoi = { chu_de: { id: string; ten: string }[]; dang_bai: { id: string; ten: string; nhom: string; chuyen_de: string; chu_de_id: string; chu_de: string }[] }
+export async function dangMoiCuaDe(deId: string): Promise<DangMoi[]> {
+  const { data, error } = await supabase.rpc('fn_de_thi_dang_moi', { p_de: deId })
+  if (error) throw error
+  return (data ?? []) as DangMoi[]
+}
+export async function dichMoi(khoi: string, kho: Kho): Promise<DichMoi> {
+  const { data, error } = await supabase.rpc('fn_de_thi_dich_moi', { p_khoi: khoi, p_kho: kho })
+  if (error) throw error
+  return data as DichMoi
+}
+export async function ganDangMoi(deId: string, maCau: string, id: string): Promise<Omit<DangMoi, 'ma_cau' | 'kho'>> {
+  const { data, error } = await supabase.rpc('fn_de_thi_gan_dang_moi', { p_de: deId, p_ma_cau: maCau, p_id: id })
+  if (error) throw error
+  return data as Omit<DangMoi, 'ma_cau' | 'kho'>
 }
 // Thêm 1 câu ĐÃ CÓ trong kho vào cuối một phần của đề. Câu thuộc kho khác nhánh mặc định của đề ⇒ ghi nhánh của câu vào
 // cau_hinh.nhanhByCau (khoá tự nhiên ma_cau) để mọi chỗ resolve (`_de_thi_kho`) tìm đúng bảng.
@@ -244,6 +302,32 @@ export function nhomBaiCuaDe(d: Pick<DeThi, 'cau_hinh'>): NhomBai[] {
 export function boLoiDan(noiDung: string | null | undefined, dan: string): string {
   const s = noiDung ?? ''
   return dan && s.startsWith(dan) ? s.slice(dan.length).trim() : s
+}
+/** In theo KHUÔN ĐỀ: các câu kho của MỘT bài nhiều ý in lại thành 1 bài — ĐẦU BÀI (số bài + lời dẫn + hình) rồi TỪNG Ý a) b)…
+ *  (chỉ để HIỂN THỊ; kho vẫn là câu riêng). Mỗi ý giữ DÒNG KẺ + CỘT riêng của nó — Thùy 25/10: "gán dòng phải theo từng ý trong
+ *  bài chứ không theo cả bài"; trước đây gộp thành 1 khối ⇒ dòng cộng dồn xuống cuối bài, cột lấy theo ý a rồi bị ghép cạnh bài khác.
+ *  Hình chung của bài in 1 lần ở đầu bài (ý trùng hình thì không in lại). Thiếu ý trong danh sách ⇒ để nguyên từng câu.
+ *  Dùng chung: bản in đề thi (DeThiPrintView) + BTVN gán từ đề (PrintView, Thùy 22/10). */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type MucDe = { loai: 'cau'; c: any } | { loai: 'bai'; key: string; dan: string; dau: any; y: { c: any; nhan: string }[] }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function baiTheoDe(d: Pick<DeThi, 'cau_hinh'>, caus: any[]): MucDe[] {
+  const nhomOf = new Map<string, { g: NhomBai; k: number }>()
+  for (const g of nhomBaiCuaDe(d)) g.cau.forEach((x, k) => nhomOf.set(x.ma_cau, { g, k }))
+  const ra: MucDe[] = []
+  for (const c of caus) {
+    const r = nhomOf.get(c.ma_cau)
+    if (!r) { ra.push({ loai: 'cau', c }); continue }
+    if (r.k > 0) continue // các ý sau đã vào bài của ý đầu
+    const mem = r.g.cau.map((x) => caus.find((cc) => cc.ma_cau === x.ma_cau))
+    if (mem.some((m) => !m)) { ra.push({ loai: 'cau', c }); continue }
+    const anhChung = mem[0].anh_de ?? null
+    ra.push({
+      loai: 'bai', key: mem[0].ma_cau, dan: r.g.dan, dau: mem[0],
+      y: mem.map((m, i) => ({ nhan: r.g.cau[i].y, c: { ...m, noi_dung: boLoiDan(m.noi_dung, r.g.dan), anh_de: m.anh_de && m.anh_de !== anhChung ? m.anh_de : null } })),
+    })
+  }
+  return ra
 }
 export type FormTLN = { id: string; ma_cau: string; lua_chon: { text: string; dung: boolean; rule?: string | null }[]; dap_an: string; da_duyet: boolean }
 export async function listFormTLN(mon: string, kho: Kho, maCaus: string[]): Promise<FormTLN[]> {

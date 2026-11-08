@@ -1,0 +1,374 @@
+[
+ {
+  "ma_cau": "K07040101031",
+  "dang_bai_id": "KDB00737",
+  "chac": "cao",
+  "ly_do": "Nhận nguồn âm / bộ phận dao động phát âm."
+ },
+ {
+  "ma_cau": "K07040101032",
+  "dang_bai_id": "KDB00737",
+  "chac": "cao",
+  "ly_do": "Nhận nguồn âm / bộ phận dao động phát âm."
+ },
+ {
+  "ma_cau": "K07040101033",
+  "dang_bai_id": "KDB00737",
+  "chac": "cao",
+  "ly_do": "Nhận nguồn âm / bộ phận dao động phát âm."
+ },
+ {
+  "ma_cau": "K07040101034",
+  "dang_bai_id": "KDB00737",
+  "chac": "cao",
+  "ly_do": "Nhận nguồn âm / bộ phận dao động phát âm."
+ },
+ {
+  "ma_cau": "K07040101035",
+  "dang_bai_id": "KDB00737",
+  "chac": "cao",
+  "ly_do": "Nhận nguồn âm / bộ phận dao động phát âm."
+ },
+ {
+  "ma_cau": "K07040101036",
+  "dang_bai_id": "KDB00737",
+  "chac": "cao",
+  "ly_do": "Nhận nguồn âm / bộ phận dao động phát âm."
+ },
+ {
+  "ma_cau": "K07040101037",
+  "dang_bai_id": "KDB00737",
+  "chac": "cao",
+  "ly_do": "Nhận nguồn âm / bộ phận dao động phát âm."
+ },
+ {
+  "ma_cau": "K07040101038",
+  "dang_bai_id": "KDB00737",
+  "chac": "cao",
+  "ly_do": "Nhận nguồn âm / bộ phận dao động phát âm."
+ },
+ {
+  "ma_cau": "K07040101039",
+  "dang_bai_id": "KDB00737",
+  "chac": "cao",
+  "ly_do": "Nhận nguồn âm / bộ phận dao động phát âm."
+ },
+ {
+  "ma_cau": "K07040101040",
+  "dang_bai_id": "KDB00737",
+  "chac": "cao",
+  "ly_do": "Nhận nguồn âm / bộ phận dao động phát âm."
+ },
+ {
+  "ma_cau": "K07040101041",
+  "dang_bai_id": "KDB00737",
+  "chac": "cao",
+  "ly_do": "Nhận nguồn âm / bộ phận dao động phát âm."
+ },
+ {
+  "ma_cau": "K07040101042",
+  "dang_bai_id": "KDB00738",
+  "chac": "cao",
+  "ly_do": "Âm truyền/không truyền qua môi trường nào, giải thích hiện tượng."
+ },
+ {
+  "ma_cau": "K07040101043",
+  "dang_bai_id": "KDB00738",
+  "chac": "cao",
+  "ly_do": "Âm truyền/không truyền qua môi trường nào, giải thích hiện tượng."
+ },
+ {
+  "ma_cau": "K07040101044",
+  "dang_bai_id": "KDB00738",
+  "chac": "cao",
+  "ly_do": "Âm truyền/không truyền qua môi trường nào, giải thích hiện tượng."
+ },
+ {
+  "ma_cau": "K07040101045",
+  "dang_bai_id": "KDB00738",
+  "chac": "cao",
+  "ly_do": "Âm truyền/không truyền qua môi trường nào, giải thích hiện tượng."
+ },
+ {
+  "ma_cau": "K07040101046",
+  "dang_bai_id": "KDB00738",
+  "chac": "cao",
+  "ly_do": "Âm truyền/không truyền qua môi trường nào, giải thích hiện tượng."
+ },
+ {
+  "ma_cau": "K07040101047",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "lạc nhóm: thuộc nhóm Tốc độ truyền âm (so sánh rắn lỏng khí)"
+ },
+ {
+  "ma_cau": "K07040101048",
+  "dang_bai_id": "KDB00738",
+  "chac": "cao",
+  "ly_do": "Âm truyền/không truyền qua môi trường nào, giải thích hiện tượng."
+ },
+ {
+  "ma_cau": "K07040101049",
+  "dang_bai_id": "KDB00738",
+  "chac": "cao",
+  "ly_do": "Âm truyền/không truyền qua môi trường nào, giải thích hiện tượng."
+ },
+ {
+  "ma_cau": "K07040101050",
+  "dang_bai_id": "KDB00738",
+  "chac": "cao",
+  "ly_do": "Âm truyền/không truyền qua môi trường nào, giải thích hiện tượng."
+ },
+ {
+  "ma_cau": "K07040102051",
+  "dang_bai_id": "KDB00739",
+  "chac": "cao",
+  "ly_do": "So sánh/sắp xếp tốc độ âm theo môi trường."
+ },
+ {
+  "ma_cau": "K07040102052",
+  "dang_bai_id": "KDB00739",
+  "chac": "cao",
+  "ly_do": "So sánh/sắp xếp tốc độ âm theo môi trường."
+ },
+ {
+  "ma_cau": "K07040102053",
+  "dang_bai_id": "KDB00739",
+  "chac": "cao",
+  "ly_do": "So sánh/sắp xếp tốc độ âm theo môi trường."
+ },
+ {
+  "ma_cau": "K07040102054",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm tính độ chênh thời gian giữa hai môi trường bằng s=v.t."
+ },
+ {
+  "ma_cau": "K07040102055",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm tính độ chênh thời gian giữa hai môi trường bằng s=v.t."
+ },
+ {
+  "ma_cau": "K07040102056",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm tính độ chênh thời gian giữa hai môi trường bằng s=v.t."
+ },
+ {
+  "ma_cau": "K07040102057",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm tính độ chênh thời gian giữa hai môi trường bằng s=v.t."
+ },
+ {
+  "ma_cau": "K07040102058",
+  "dang_bai_id": "KDB00739",
+  "chac": "cao",
+  "ly_do": "So sánh môi trường âm tới trước, cùng quãng đường, đã cho tốc độ."
+ },
+ {
+  "ma_cau": "K07040102059",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm tính độ chênh thời gian giữa hai môi trường bằng s=v.t."
+ },
+ {
+  "ma_cau": "K07040102060",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm một bước s=v.t, đổi đơn vị."
+ },
+ {
+  "ma_cau": "K07040102061",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm một bước s=v.t, đổi đơn vị."
+ },
+ {
+  "ma_cau": "K07040102062",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm một bước s=v.t, đổi đơn vị."
+ },
+ {
+  "ma_cau": "K07040102063",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm một bước s=v.t, đổi đơn vị."
+ },
+ {
+  "ma_cau": "K07040102064",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm một bước s=v.t, đổi đơn vị."
+ },
+ {
+  "ma_cau": "K07040102065",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm một bước s=v.t, đổi đơn vị."
+ },
+ {
+  "ma_cau": "K07040102066",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm một bước s=v.t, đổi đơn vị."
+ },
+ {
+  "ma_cau": "K07040102067",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm một bước s=v.t, đổi đơn vị."
+ },
+ {
+  "ma_cau": "K07040102068",
+  "dang_bai_id": "KDB00741",
+  "chac": "cao",
+  "ly_do": "Chớp và sét, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102069",
+  "dang_bai_id": "KDB00741",
+  "chac": "cao",
+  "ly_do": "Chớp và sét, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102070",
+  "dang_bai_id": "KDB00741",
+  "chac": "cao",
+  "ly_do": "Chớp và sét, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102071",
+  "dang_bai_id": "KDB00741",
+  "chac": "cao",
+  "ly_do": "Chớp và sét, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102072",
+  "dang_bai_id": "KDB00741",
+  "chac": "cao",
+  "ly_do": "Chớp và sét, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102073",
+  "dang_bai_id": "KDB00741",
+  "chac": "cao",
+  "ly_do": "Chớp và sét, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102074",
+  "dang_bai_id": "KDB00741",
+  "chac": "cao",
+  "ly_do": "Chớp và sét, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102075",
+  "dang_bai_id": "KDB00741",
+  "chac": "cao",
+  "ly_do": "Chớp và sét, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102076",
+  "dang_bai_id": "KDB00741",
+  "chac": "cao",
+  "ly_do": "Chớp và sét, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102077",
+  "dang_bai_id": "KDB00741",
+  "chac": "cao",
+  "ly_do": "Chớp và sét, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102078",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Tính thời gian âm tới từ nhiều khoảng cách, lấy độ chênh, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102079",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Tính thời gian âm tới từ nhiều khoảng cách, lấy độ chênh, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102080",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Tính thời gian âm tới từ nhiều khoảng cách, lấy độ chênh, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102081",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Tính thời gian âm tới từ nhiều khoảng cách, lấy độ chênh, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102082",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Tính thời gian âm tới từ nhiều khoảng cách, lấy độ chênh, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102083",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Tính thời gian âm tới từ nhiều khoảng cách, lấy độ chênh, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102084",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Tính thời gian âm tới từ nhiều khoảng cách, lấy độ chênh, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102085",
+  "dang_bai_id": "KDB00740",
+  "chac": "cao",
+  "ly_do": "Tính thời gian âm tới từ nhiều khoảng cách, lấy độ chênh, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102086",
+  "dang_bai_id": "KDB00741",
+  "chac": "cao",
+  "ly_do": "Hai tia sét lệch thời điểm, so thời gian nghe, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102087",
+  "dang_bai_id": "KDB00741",
+  "chac": "cao",
+  "ly_do": "Hai tia sét lệch thời điểm, so thời gian nghe, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102088",
+  "dang_bai_id": "KDB00741",
+  "chac": "cao",
+  "ly_do": "Hai tia sét lệch thời điểm, so thời gian nghe, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102089",
+  "dang_bai_id": "KDB00741",
+  "chac": "cao",
+  "ly_do": "Hai tia sét lệch thời điểm, so thời gian nghe, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102090",
+  "dang_bai_id": "KDB00741",
+  "chac": "cao",
+  "ly_do": "Hai tia sét lệch thời điểm, so thời gian nghe, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102091",
+  "dang_bai_id": "KDB00741",
+  "chac": "cao",
+  "ly_do": "Hai tia sét lệch thời điểm, so thời gian nghe, trắc nghiệm."
+ },
+ {
+  "ma_cau": "K07040102092",
+  "dang_bai_id": "KDB00741",
+  "chac": "cao",
+  "ly_do": "Hai tia sét lệch thời điểm, so thời gian nghe, trắc nghiệm."
+ }
+]

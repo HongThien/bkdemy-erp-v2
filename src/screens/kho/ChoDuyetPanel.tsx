@@ -8,6 +8,7 @@ import { listCloneChoDuyet, duyetCloneChoDuyet, tuChoiCloneChoDuyet, tenDangTheo
 import { MathText } from './ui'
 import { myNhanSuId } from '../../lib/nhansu'
 import { useNhanXet, NutCanSua, NhanXetCu, DongChoSua } from '../duyetloigiai/CanSua'
+import { useDeSau, NutDeSau, NhanDeSau } from '../duyetloigiai/DeSau'
 
 const XEM_TRUOC = 3 // mỗi dạng mở sẵn mấy câu (bấm "xem cả" để mở hết)
 
@@ -38,12 +39,13 @@ export default function ChoDuyetPanel({ onClose }: { onClose: () => void }) {
   // nhóm theo dạng, giữ thứ tự xuất hiện (created_at tăng dần)
   // "✎ Cần sửa" (Thùy 17/10): clone chờ Claude sửa tạm ẩn khỏi hàng
   const nhanXet = useNhanXet('clone', 'toan')
+  const deSau = useDeSau('clone', 'toan')   // "⏭ Để sau" (Thùy 20/10): câu chưa muốn quyết xuống cuối dạng của nó
   const soChoSua = rows.filter((r) => nhanXet.dangChoSua('toan', r.id)).length
   const nhom = useMemo(() => {
     const m = new Map<string, CloneChoDuyet[]>()
-    for (const r of rows) { if (nhanXet.dangChoSua('toan', r.id)) continue; if (!m.has(r.dang_chinh)) m.set(r.dang_chinh, []); m.get(r.dang_chinh)!.push(r) }
+    for (const r of deSau.xep(rows, (x) => ['toan', x.id])) { if (nhanXet.dangChoSua('toan', r.id)) continue; if (!m.has(r.dang_chinh)) m.set(r.dang_chinh, []); m.get(r.dang_chinh)!.push(r) }
     return [...m.entries()]
-  }, [rows, nhanXet])
+  }, [rows, nhanXet, deSau.xep])
   const boKhoiDs = (id: string) => setRows((prev) => prev.filter((x) => x.id !== id))
 
   async function onDuyet(r: CloneChoDuyet) {
@@ -60,7 +62,9 @@ export default function ChoDuyetPanel({ onClose }: { onClose: () => void }) {
   }
   // Duyệt cả dạng: lần lượt TỪNG câu (mỗi câu cần một mã câu mới — cấp tuần tự để không trùng mã), câu nào xong thì rời danh sách.
   // Lỗi giữa chừng ⇒ dừng, các câu chưa duyệt vẫn nằm nguyên trong danh sách.
-  async function onDuyetCaDang(dang: string, ds: CloneChoDuyet[]) {
+  async function onDuyetCaDang(dang: string, tatCa: CloneChoDuyet[]) {
+    const ds = tatCa.filter((r) => !deSau.luc('toan', r.id))   // câu "Để sau" không bị duyệt cả dạng cuốn theo
+    if (!ds.length) return
     if (!confirm(`Duyệt cả ${ds.length} câu của dạng ${dang}${tenDang[dang] ? ` — ${tenDang[dang]}` : ''}?\nCác câu sẽ vào kho ngay (đã duyệt).`)) return
     setLoi(null); setLo({ dang, xong: 0, tong: ds.length })
     try {
@@ -95,7 +99,7 @@ export default function ChoDuyetPanel({ onClose }: { onClose: () => void }) {
                       <span className="text-[12px] text-slate-400">{ds.length} câu chờ</span>
                       <button onClick={() => onDuyetCaDang(dang, ds)} disabled={!!lo || !!busyId}
                         className="ml-auto rounded-md bg-emerald-600 px-3.5 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
-                        {dangChay ? `⏳ Đang duyệt ${lo!.xong}/${lo!.tong}…` : `✓ Duyệt cả ${ds.length} câu của dạng`}
+                        {dangChay ? `⏳ Đang duyệt ${lo!.xong}/${lo!.tong}…` : `✓ Duyệt cả ${ds.filter((r) => !deSau.luc('toan', r.id)).length} câu của dạng`}
                       </button>
                     </div>
                     <ul className="space-y-3">
@@ -122,7 +126,9 @@ export default function ChoDuyetPanel({ onClose }: { onClose: () => void }) {
                               {r.loi_giai ? <MathText>{r.loi_giai}</MathText> : <span className="text-[13px] text-slate-300">(không có)</span>}
                             </div>
                           </div>
-                          <div className="mt-3 flex justify-end gap-2 border-t border-slate-100 pt-3">
+                          <div className="mt-3 flex items-center justify-end gap-2 border-t border-slate-100 pt-3">
+                            <span className="mr-auto"><NhanDeSau at={deSau.luc('toan', r.id)} /></span>
+                            <NutDeSau disabled={busyId === r.id || !!lo} onDeSau={() => deSau.ghi('toan', r.id, `Kho › Câu clone chờ duyệt · từ ${r.parent_ma_cau ?? '?'}`).then(() => setBao('Đã để sau — câu xuống cuối dạng'))} />
                             <NutCanSua doiTuong="clone" mon="toan" ma={r.id} man={`Kho › Câu clone chờ duyệt · từ ${r.parent_ma_cau ?? '?'}`} onXong={(t) => { nhanXet.vaNX(t); setBao('Đã gửi nhận xét — chờ Claude sửa') }} />
                             <button onClick={() => onTuChoi(r)} disabled={busyId === r.id || !!lo}
                               className="rounded-md px-3 py-1.5 text-[13px] font-medium text-rose-600 hover:bg-rose-50 disabled:opacity-40">✕ Từ chối</button>

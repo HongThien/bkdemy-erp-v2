@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T111060104049",
+  "dang_bai_id": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Xét tăng giảm dãy cho bằng công thức số hạng tổng quát có tham số."
+ },
+ {
+  "ma_cau": "T111060201020",
+  "dang_bai_id": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng cho bằng liệt kê số hạng."
+ },
+ {
+  "ma_cau": "T111060202107",
+  "dang_bai_id": "NDB00610",
+  "chac": "cao",
+  "ly_do": "Cho công thức số hạng tổng quát của CSC, tìm công sai."
+ },
+ {
+  "ma_cau": "T111060202085",
+  "dang_bai_id": "NDB00608",
+  "chac": "cao",
+  "ly_do": "Cho tổng S8 và công sai, tìm số hạng đầu."
+ },
+ {
+  "ma_cau": "T111030501039",
+  "dang_bai_id": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị có cả hàm mở rộng sin2x, tan2x; chọn dạng sau cùng."
+ },
+ {
+  "ma_cau": "T111060102002",
+  "dang_bai_id": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Cho số hạng tổng quát và giá trị một số hạng, tìm thứ tự."
+ },
+ {
+  "ma_cau": "T111000000140",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm: giá trị đại diện, tổng số người."
+ },
+ {
+  "ma_cau": "T111060301009",
+  "dang_bai_id": "NDB01027",
+  "chac": "cao",
+  "ly_do": "Nhận diện CSN gồm cả công thức tổng quát và truy hồi; chọn dạng sau cùng."
+ },
+ {
+  "ma_cau": "T111040204059",
+  "dang_bai_id": "NDB01018",
+  "chac": "cao",
+  "ly_do": "Phương trình bậc 2 theo cosx trên khoảng, đếm nghiệm."
+ },
+ {
+  "ma_cau": "T111010605033",
+  "dang_bai_id": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sinα, tính cos2α bằng công thức nhân đôi."
+ },
+ {
+  "ma_cau": "T111030301047",
+  "dang_bai_id": "NDB00991",
+  "chac": "cao",
+  "ly_do": "Xét hàm lẻ, các hàm có nhân thêm đa thức x."
+ },
+ {
+  "ma_cau": "T111060302057",
+  "dang_bai_id": "NDB01033",
+  "chac": "vua",
+  "ly_do": "Hệ u4+u6, u3+u5 giải bằng tỉ số; có thể thuộc dạng cho 2 số hạng."
+ },
+ {
+  "ma_cau": "T111060201058",
+  "dang_bai_id": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện CSC gồm công thức tổng quát và truy hồi; chọn dạng sau."
+ },
+ {
+  "ma_cau": "T111010201012",
+  "dang_bai_id": "NDB00569",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm M biểu diễn góc 500 độ thuộc góc phần tư nào."
+ },
+ {
+  "ma_cau": "T111000000510",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Lý thuyết tính chất hàm số lượng giác (chu kì, chẵn lẻ, đồ thị); bản đồ thiếu dạng lý thuyết hàm số LG."
+ },
+ {
+  "ma_cau": "T111010110003",
+  "dang_bai_id": "NDB00949",
+  "chac": "vua",
+  "ly_do": "Cho cosα tính sinα rồi tính biểu thức; cũng có thể coi là biến đổi khác."
+ },
+ {
+  "ma_cau": "T111060304073",
+  "dang_bai_id": "NDB00618",
+  "chac": "vua",
+  "ly_do": "Tổng diện tích khai thác tăng 5% mỗi năm (CSN), tìm số năm."
+ },
+ {
+  "ma_cau": "T111060204022",
+  "dang_bai_id": "NDB00612",
+  "chac": "cao",
+  "ly_do": "Hệ phương trình quan hệ giữa các số hạng CSC."
+ },
+ {
+  "ma_cau": "T111030503076",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Đồ thị cho sẵn, hỏi khoảng nghịch biến."
+ },
+ {
+  "ma_cau": "T111060104046",
+  "dang_bai_id": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Dãy giảm trong các dãy cho bằng công thức."
+ },
+ {
+  "ma_cau": "T111060304070",
+  "dang_bai_id": "NDB00617",
+  "chac": "vua",
+  "ly_do": "Lãi/gia tăng dân số kép, tìm số năm để gấp đôi."
+ },
+ {
+  "ma_cau": "T111030501022",
+  "dang_bai_id": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị hàm mở rộng (-cosx, cosx-1, 2cosx)."
+ },
+ {
+  "ma_cau": "T111060302048",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Công thức số hạng tổng quát của CSN (lý thuyết); bản đồ thiếu dạng lý thuyết CSC/CSN."
+ },
+ {
+  "ma_cau": "T111060304082",
+  "dang_bai_id": "NDB00618",
+  "chac": "cao",
+  "ly_do": "Giá điện bậc thang tăng 2,5% mỗi bậc, tính tổng tiền theo tổng CSN."
+ },
+ {
+  "ma_cau": "T111000000236",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mốt của mẫu số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T111010201023",
+  "dang_bai_id": "NDB00565",
+  "chac": "vua",
+  "ly_do": "Cung AN từ hình/đối xứng, hỏi số đo cung; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T111000000290",
+  "dang_bai_id": "NDB00943",
+  "chac": "vua",
+  "ly_do": "Chu vi cánh hoa là tổng cung tròn, phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T111060201022",
+  "dang_bai_id": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện CSC cho bằng công thức số hạng tổng quát."
+ },
+ {
+  "ma_cau": "T111000000198",
+  "dang_bai_id": "NDB00966",
+  "chac": "vua",
+  "ly_do": "Biến đổi cosx-cos5x thành tích (tổng thành tích)."
+ },
+ {
+  "ma_cau": "T111060202056",
+  "dang_bai_id": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho hai số hạng u2, u5 tìm u1."
+ },
+ {
+  "ma_cau": "T111060305005",
+  "dang_bai_id": "NDB01025",
+  "chac": "vua",
+  "ly_do": "Ba số vừa CSC vừa CSN tìm công bội; gần dạng 3 số lập CSN."
+ },
+ {
+  "ma_cau": "T111000000187",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mốt mẫu số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T111040102065",
+  "dang_bai_id": "NDB01008",
+  "chac": "vua",
+  "ly_do": "Tìm m để phương trình có đúng 5 nghiệm trên đoạn; bậc 2 theo cosx có tham số."
+ },
+ {
+  "ma_cau": "T111000000072",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Đọc bảng tần số ghép nhóm."
+ },
+ {
+  "ma_cau": "T111010103031",
+  "dang_bai_id": "NDB00944",
+  "chac": "vua",
+  "ly_do": "Cho tốc độ góc quạt, tính góc quay sau 5 giây."
+ },
+ {
+  "ma_cau": "T111060202103",
+  "dang_bai_id": "NDB00610",
+  "chac": "cao",
+  "ly_do": "Cho công thức tổng quát CSC, tìm công sai."
+ },
+ {
+  "ma_cau": "T111000000515",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Giá trị đại diện của nhóm trong mẫu ghép nhóm."
+ },
+ {
+  "ma_cau": "T111060204032",
+  "dang_bai_id": "NDB00613",
+  "chac": "vua",
+  "ly_do": "Hai điều kiện đều là tổng S4, S6, tìm u1 và d."
+ },
+ {
+  "ma_cau": "T111030503038",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Đồ thị cho sẵn, hỏi khoảng nghịch biến."
+ },
+ {
+  "ma_cau": "T111040102069",
+  "dang_bai_id": "NDB01009",
+  "chac": "vua",
+  "ly_do": "Phương trình có điều kiện mẫu, cos3x=0 hai họ nghiệm trên đoạn, tính tổng."
+ },
+ {
+  "ma_cau": "T111040204050",
+  "dang_bai_id": "NDB01018",
+  "chac": "cao",
+  "ly_do": "Phương trình bậc 2 theo sin3x trên đoạn, đếm nghiệm."
+ },
+ {
+  "ma_cau": "T111060101060",
+  "dang_bai_id": "NDB00593",
+  "chac": "cao",
+  "ly_do": "Tính số hạng u3 theo công thức."
+ },
+ {
+  "ma_cau": "T111010605036",
+  "dang_bai_id": "NDB00959",
+  "chac": "vua",
+  "ly_do": "Hai ý: hệ thức cơ bản và cos(π/3-2α) dùng cộng + nhân đôi."
+ },
+ {
+  "ma_cau": "T111000000430",
+  "dang_bai_id": "NDB00944",
+  "chac": "vua",
+  "ly_do": "Quỹ đạo tròn, biết tốc độ, tìm thời gian đi quãng đường cho trước."
+ },
+ {
+  "ma_cau": "T111060201080",
+  "dang_bai_id": "NDB00604",
+  "chac": "vua",
+  "ly_do": "Nhận diện CSC trong các dãy cho bằng truy hồi."
+ },
+ {
+  "ma_cau": "T111060202030",
+  "dang_bai_id": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho un và un+1 tìm công sai."
+ },
+ {
+  "ma_cau": "T111030203040",
+  "dang_bai_id": "NDB00997",
+  "chac": "cao",
+  "ly_do": "Hạ bậc đưa về dạng Asin2x+Bcos2x rồi tìm min."
+ },
+ {
+  "ma_cau": "T111060302135",
+  "dang_bai_id": "NDB01353",
+  "chac": "cao",
+  "ly_do": "Bốn góc tứ giác lập thành CSN."
+ },
+ {
+  "ma_cau": "T111060304027",
+  "dang_bai_id": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Dân số tăng đều theo tỉ lệ phần trăm (lãi kép)."
+ },
+ {
+  "ma_cau": "T111060201013",
+  "dang_bai_id": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện CSC cho bằng liệt kê số hạng."
+ },
+ {
+  "ma_cau": "T111060202067",
+  "dang_bai_id": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Cho u4, u7 tìm công sai, u1."
+ },
+ {
+  "ma_cau": "T111060303052",
+  "dang_bai_id": "NDB01029",
+  "chac": "cao",
+  "ly_do": "Cho u1, q xác định số hạng -54 là số hạng thứ mấy."
+ },
+ {
+  "ma_cau": "T111040401028",
+  "dang_bai_id": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Xác định phương trình từ điểm biểu diễn nghiệm trên đường tròn."
+ },
+ {
+  "ma_cau": "T111060304041",
+  "dang_bai_id": "NDB00618",
+  "chac": "cao",
+  "ly_do": "Số vi khuẩn gấp đôi mỗi phút, tính tổng 20 số hạng CSN."
+ },
+ {
+  "ma_cau": "T111000000124",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Số trung bình của mẫu số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T111050301001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: phép cộng trừ véc-tơ (lớp 10), không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T111010605013",
+  "dang_bai_id": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho cosα tính sin2α bằng công thức nhân đôi."
+ },
+ {
+  "ma_cau": "T111030502090",
+  "dang_bai_id": "NDB01005",
+  "chac": "cao",
+  "ly_do": "Điểm có thuộc đồ thị hay không, đề cho đồ thị."
+ },
+ {
+  "ma_cau": "T111030502128",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Đọc tập giá trị từ đồ thị; bản đồ thiếu dạng đọc yếu tố cơ bản của hàm số LG từ đồ thị."
+ },
+ {
+  "ma_cau": "T111060204021",
+  "dang_bai_id": "NDB00613",
+  "chac": "cao",
+  "ly_do": "Hệ quan hệ số hạng u2+u6 và tổng S5."
+ },
+ {
+  "ma_cau": "T111020201049",
+  "dang_bai_id": "NDB00958",
+  "chac": "cao",
+  "ly_do": "Công thức hạ bậc của sin^2 a."
+ },
+ {
+  "ma_cau": "T111020201004",
+  "dang_bai_id": "NDB00958",
+  "chac": "cao",
+  "ly_do": "Nhận dạng công thức nhân đôi cos2a."
+ },
+ {
+  "ma_cau": "T111030503025",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Đồ thị cho sẵn, hỏi khoảng đồng biến."
+ },
+ {
+  "ma_cau": "T111020203006",
+  "dang_bai_id": "NDB00960",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức bằng công thức hạ bậc/nhân đôi."
+ },
+ {
+  "ma_cau": "T111060202106",
+  "dang_bai_id": "NDB00610",
+  "chac": "cao",
+  "ly_do": "Cho công thức tổng quát CSC, tìm công sai."
+ },
+ {
+  "ma_cau": "T111060202100",
+  "dang_bai_id": "NDB00610",
+  "chac": "cao",
+  "ly_do": "Cho công thức tổng quát CSC, tìm công sai."
+ },
+ {
+  "ma_cau": "T111060101028",
+  "dang_bai_id": "NDB00592",
+  "chac": "cao",
+  "ly_do": "Tính số hạng dãy cho bởi hệ thức truy hồi."
+ },
+ {
+  "ma_cau": "T111060301039",
+  "dang_bai_id": "NDB01027",
+  "chac": "vua",
+  "ly_do": "Nhận diện CSN trong các dãy cho bằng truy hồi."
+ },
+ {
+  "ma_cau": "T111000000308",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: quan hệ giữa hai đường thẳng trong không gian, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T111000000215",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Thời gian trung bình từ mẫu số liệu ghép nhóm."
+ }
+]

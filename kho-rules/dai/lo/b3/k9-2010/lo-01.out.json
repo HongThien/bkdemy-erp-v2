@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T109030301028",
+  "dang_bai_id": "NDB00499",
+  "chac": "cao",
+  "ly_do": "Cho P rút gọn, tìm x để P bằng một hằng số."
+ },
+ {
+  "ma_cau": "T109030101060",
+  "dang_bai_id": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Rút gọn tổng các căn số bằng cách đưa thừa số ra ngoài căn."
+ },
+ {
+  "ma_cau": "T109030101120",
+  "dang_bai_id": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Có trục căn ở mẫu và căn của bình phương, trộn hai dạng."
+ },
+ {
+  "ma_cau": "T109030101049",
+  "dang_bai_id": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng."
+ },
+ {
+  "ma_cau": "T109030101018",
+  "dang_bai_id": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Có trục căn ở mẫu và căn của bình phương, trộn hai dạng."
+ },
+ {
+  "ma_cau": "T109000000574",
+  "dang_bai_id": "NDB00719",
+  "chac": "cao",
+  "ly_do": "Bài toán số có hai chữ số lập hệ, không thuộc nhóm nào khác nên là bài toán khác."
+ },
+ {
+  "ma_cau": "T109000000621",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Bỏ ngoặc, x^2 triệt tiêu, đưa về bất phương trình bậc nhất."
+ },
+ {
+  "ma_cau": "T109020202024",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Có ngoặc cần khai triển rồi thu gọn thành bất phương trình bậc nhất."
+ },
+ {
+  "ma_cau": "T109030102082",
+  "dang_bai_id": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn là bình phương của tổng/hiệu có căn."
+ },
+ {
+  "ma_cau": "T109030301011",
+  "dang_bai_id": "NDB00498",
+  "chac": "cao",
+  "ly_do": "Tìm x để P^2 bằng hằng số, xét hai trường hợp P."
+ },
+ {
+  "ma_cau": "T109030102010",
+  "dang_bai_id": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn là bình phương của tổng/hiệu có căn."
+ },
+ {
+  "ma_cau": "T109020304028",
+  "dang_bai_id": "NDB00729",
+  "chac": "cao",
+  "ly_do": "Hai ô tô cùng quãng đường AB, vận tốc khác nhau, chênh lệch thời gian."
+ },
+ {
+  "ma_cau": "T109030101005",
+  "dang_bai_id": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Tính căn số rồi thực hiện phép tính đơn giản."
+ },
+ {
+  "ma_cau": "T109030102078",
+  "dang_bai_id": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn là bình phương của tổng/hiệu có căn."
+ },
+ {
+  "ma_cau": "T109030101107",
+  "dang_bai_id": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng."
+ },
+ {
+  "ma_cau": "T109000000598",
+  "dang_bai_id": "NDB00498",
+  "chac": "vua",
+  "ly_do": "Câu nhiều ý: tính A, chứng minh B, tìm x để P^2=4; các ý rải nhiều dạng."
+ },
+ {
+  "ma_cau": "T109030102015",
+  "dang_bai_id": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn là bình phương của tổng/hiệu có căn."
+ },
+ {
+  "ma_cau": "T109030304021",
+  "dang_bai_id": "NDB00510",
+  "chac": "vua",
+  "ly_do": "P có tử là biểu thức, tìm x để P nguyên; có thể xếp dạng đánh giá khác."
+ },
+ {
+  "ma_cau": "T109030102132",
+  "dang_bai_id": "NDB00484",
+  "chac": "vua",
+  "ly_do": "Cần nhân/chia hệ số mới thành bình phương, nhưng cũng giải được bằng bình phương cả biểu thức."
+ },
+ {
+  "ma_cau": "T109030101042",
+  "dang_bai_id": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Có trục căn ở mẫu và căn của bình phương, trộn hai dạng."
+ },
+ {
+  "ma_cau": "T109000000587",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Khử mẫu, khai triển rồi giải bất phương trình bậc nhất."
+ },
+ {
+  "ma_cau": "T109000000627",
+  "dang_bai_id": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng."
+ },
+ {
+  "ma_cau": "T109030304028",
+  "dang_bai_id": "NDB00507",
+  "chac": "vua",
+  "ly_do": "P = 3 + 6/(căn x +1), tìm x để P nguyên; giữa dạng cơ bản và cần biến đổi."
+ },
+ {
+  "ma_cau": "T109030304078",
+  "dang_bai_id": "NDB00508",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhận giá trị nguyên lớn nhất bằng đánh giá khoảng của P."
+ },
+ {
+  "ma_cau": "T109030102063",
+  "dang_bai_id": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn là bình phương của tổng/hiệu có căn."
+ },
+ {
+  "ma_cau": "T109030101030",
+  "dang_bai_id": "NDB00482",
+  "chac": "cao",
+  "ly_do": "Biểu thức có phân thức căn ở mẫu, cần trục căn rồi rút gọn."
+ },
+ {
+  "ma_cau": "T109020202026",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Khai triển hai vế, x^2 triệt tiêu, đưa về bất phương trình bậc nhất."
+ },
+ {
+  "ma_cau": "T109030102100",
+  "dang_bai_id": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn là bình phương của tổng/hiệu có căn."
+ },
+ {
+  "ma_cau": "T109010309007",
+  "dang_bai_id": "NDB00711",
+  "chac": "cao",
+  "ly_do": "Hai xe đi ngược chiều gặp nhau, lập hệ từ quãng đường AB."
+ },
+ {
+  "ma_cau": "T109030304062",
+  "dang_bai_id": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Tìm x để P là số nguyên tố, đánh giá khoảng của P."
+ },
+ {
+  "ma_cau": "T109030101014",
+  "dang_bai_id": "NDB00481",
+  "chac": "cao",
+  "ly_do": "Có căn của bình phương, xét dấu giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T109030301024",
+  "dang_bai_id": "NDB00498",
+  "chac": "cao",
+  "ly_do": "Tìm x để P^2 bằng hằng số, xét hai trường hợp P."
+ },
+ {
+  "ma_cau": "T109030202060",
+  "dang_bai_id": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức căn tại x cho trước."
+ },
+ {
+  "ma_cau": "T109030202020",
+  "dang_bai_id": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức căn tại x cho trước."
+ },
+ {
+  "ma_cau": "T109030101024",
+  "dang_bai_id": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng."
+ },
+ {
+  "ma_cau": "T109010304019",
+  "dang_bai_id": "NDB00710",
+  "chac": "cao",
+  "ly_do": "Chuyển động thường, ẩn vận tốc và thời gian dự định, lập hệ."
+ },
+ {
+  "ma_cau": "T109000000619",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: bài tối ưu diện tích trang giấy có lề, biết diện tích phần chữ."
+ },
+ {
+  "ma_cau": "T109030102048",
+  "dang_bai_id": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn là bình phương của tổng/hiệu có căn."
+ },
+ {
+  "ma_cau": "T109000000618",
+  "dang_bai_id": "NDB00720",
+  "chac": "cao",
+  "ly_do": "Bài toán hệ phương trình về hình chữ nhật: chu vi, diện tích thay đổi."
+ },
+ {
+  "ma_cau": "T109030202036",
+  "dang_bai_id": "NDB00487",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức khi cho |x-1| = hằng số."
+ },
+ {
+  "ma_cau": "T109030202003",
+  "dang_bai_id": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức căn tại x cho trước."
+ },
+ {
+  "ma_cau": "T109030101080",
+  "dang_bai_id": "NDB00481",
+  "chac": "vua",
+  "ly_do": "Trộn căn của bình phương, đưa thừa số ra ngoài và căn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000642",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Khử mẫu bất phương trình rồi đưa về bậc nhất một ẩn."
+ },
+ {
+  "ma_cau": "T109000000561",
+  "dang_bai_id": "NDB01203",
+  "chac": "cao",
+  "ly_do": "Giảm giá để tăng người mua, tìm giá cho doanh thu lớn nhất."
+ },
+ {
+  "ma_cau": "T109030202015",
+  "dang_bai_id": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức căn tại x cho trước."
+ },
+ {
+  "ma_cau": "T109030102099",
+  "dang_bai_id": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn là bình phương của tổng/hiệu có căn."
+ },
+ {
+  "ma_cau": "T109020202022",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Có ngoặc cần khai triển rồi thu gọn thành bất phương trình bậc nhất."
+ },
+ {
+  "ma_cau": "T109090401020",
+  "dang_bai_id": "NDB00513",
+  "chac": "vua",
+  "ly_do": "Quy hoạch tuyến tính hai biến với miền điều kiện; chưa rõ xếp Dùng hệ hay Xét x nguyên."
+ },
+ {
+  "ma_cau": "T109030304019",
+  "dang_bai_id": "NDB00507",
+  "chac": "cao",
+  "ly_do": "P có tử hằng số, tìm x để P nguyên bằng đánh giá khoảng."
+ },
+ {
+  "ma_cau": "T109030101074",
+  "dang_bai_id": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Phân thức có căn ở mẫu rút gọn bằng nhân tử chung; cũng có thể xếp rút gọn căn số."
+ },
+ {
+  "ma_cau": "T109030101016",
+  "dang_bai_id": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Có trục căn ở mẫu và căn của bình phương, trộn hai dạng."
+ },
+ {
+  "ma_cau": "T109030102137",
+  "dang_bai_id": "NDB00484",
+  "chac": "vua",
+  "ly_do": "Cần nhân/chia hệ số mới thành bình phương, nhưng cũng giải được bằng bình phương cả biểu thức."
+ },
+ {
+  "ma_cau": "T109000000593",
+  "dang_bai_id": "NDB00822",
+  "chac": "cao",
+  "ly_do": "Giải phương trình căn bằng cách đưa các căn về cùng dạng đơn giản."
+ },
+ {
+  "ma_cau": "T109030304057",
+  "dang_bai_id": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Tìm x để P là số nguyên tố, đánh giá khoảng của P."
+ },
+ {
+  "ma_cau": "T109020403007",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Phương trình ẩn ở mẫu có mẫu 4-x^2 cần phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T109030101058",
+  "dang_bai_id": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi cộng trừ căn đồng dạng."
+ },
+ {
+  "ma_cau": "T109030202057",
+  "dang_bai_id": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức căn tại x cho trước."
+ },
+ {
+  "ma_cau": "T109030101040",
+  "dang_bai_id": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi nhân phân phối, rút gọn."
+ },
+ {
+  "ma_cau": "T109010308007",
+  "dang_bai_id": "NDB00719",
+  "chac": "cao",
+  "ly_do": "Bài toán chuyển sách giữa hai thùng, lập hệ; thuộc bài toán khác."
+ },
+ {
+  "ma_cau": "T109030301036",
+  "dang_bai_id": "NDB00500",
+  "chac": "cao",
+  "ly_do": "Tìm x để 2P bằng biểu thức căn, tức P bằng một biểu thức chứa căn."
+ },
+ {
+  "ma_cau": "T109030202006",
+  "dang_bai_id": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức căn tại x cho trước."
+ },
+ {
+  "ma_cau": "T109000000586",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ hai phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T109030304029",
+  "dang_bai_id": "NDB00507",
+  "chac": "vua",
+  "ly_do": "P = 4 + 4/(căn x +1), tìm x để P nguyên; giữa dạng cơ bản và cần biến đổi."
+ },
+ {
+  "ma_cau": "T109000000581",
+  "dang_bai_id": "NDB00511",
+  "chac": "vua",
+  "ly_do": "Câu nhiều ý: tính A, chứng minh B, tìm x để Q nguyên tố; các ý rải nhiều dạng."
+ },
+ {
+  "ma_cau": "T109030202021",
+  "dang_bai_id": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức căn tại x cho trước."
+ },
+ {
+  "ma_cau": "T109030301035",
+  "dang_bai_id": "NDB00500",
+  "chac": "cao",
+  "ly_do": "Tìm x để 2P bằng biểu thức căn, tức P bằng một biểu thức chứa căn."
+ },
+ {
+  "ma_cau": "T109030101090",
+  "dang_bai_id": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Có trục căn ở mẫu và căn của bình phương, trộn hai dạng."
+ },
+ {
+  "ma_cau": "T109030202052",
+  "dang_bai_id": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức căn tại x cho trước."
+ },
+ {
+  "ma_cau": "T109030304065",
+  "dang_bai_id": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Tìm x để P là số nguyên tố, đánh giá khoảng của P."
+ },
+ {
+  "ma_cau": "T109030102088",
+  "dang_bai_id": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức trong căn là bình phương của tổng/hiệu có căn."
+ }
+]

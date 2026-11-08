@@ -1,0 +1,12 @@
+const d=(f,x,h=1e-7)=>(f(x+h)-f(x-h))/(2*h)
+function tapm(ok,a,b,st=0.001){const r=[];let s=null;for(let m=a;m<=b+1e-12;m+=st){const o=ok(+m.toFixed(6));if(o&&s===null)s=m;if(!o&&s!==null){r.push([+s.toFixed(3),+(m-st).toFixed(3)]);s=null}}if(s!==null)r.push([+s.toFixed(3),b]);return r}
+const cst=(arr)=>arr.every(v=>v>0)||arr.every(v=>v<0)
+const L=(t,v)=>console.log(t,JSON.stringify(v))
+const X1=Array.from({length:4000},(_,i)=>-300+i*(295.99/3999))
+L('1.5.3a',tapm(m=>cst(X1.map(x=>x+m))&&X1.every(x=>(m-3)/(x+m)**2>=0)&&m!==3,-8,8,0.005))
+const X4=Array.from({length:4000},(_,i)=>-100+i*(100.999/3999))
+L('1.5.4b',tapm(m=>X4.every(x=>x*x-4*x+6-m>=-1e-9),-6,8,0.005))
+const Xc=Array.from({length:800},(_,i)=>(i+0.5)/800*Math.PI/3)
+L('1.5.5a',tapm(m=>cst(Xc.map(x=>Math.cos(x)-m))&&Xc.every(x=>d(x=>(Math.cos(x)-2)/(Math.cos(x)-m),x)<=1e-6)&&Xc.some(x=>d(x=>(Math.cos(x)-2)/(Math.cos(x)-m),x)<-1e-4),-3,4,0.005))
+const Xl=Array.from({length:800},(_,i)=>1+(Math.E**2-1)*(i+0.5)/800)
+L('1.5.5b',tapm(m=>cst(Xl.map(x=>Math.log(x)-2*m))&&Xl.every(x=>d(x=>(Math.log(x)-4)/(Math.log(x)-2*m),x)>=-1e-6)&&Xl.some(x=>d(x=>(Math.log(x)-4)/(Math.log(x)-2*m),x)>1e-4),-3,4,0.005))

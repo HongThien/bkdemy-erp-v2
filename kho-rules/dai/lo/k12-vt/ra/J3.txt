@@ -1,0 +1,521 @@
+=== N P1.5
+@ly_thuyet:
+##TC Lực là vectơ, hợp lực và cân bằng
+- Lực $\vec{F}$ được biểu diễn bằng một vectơ có điểm gốc là điểm đặt của lực; độ lớn của lực (đơn vị niutơn, kí hiệu N) là độ dài $|\vec{F}|$ của vectơ đó.
+- Nhiều lực $\vec{F}_1,\vec{F}_2,\dots,\vec{F}_n$ cùng tác dụng lên một vật tại một điểm có thể thay bằng một lực duy nhất, gọi là **hợp lực**: $\vec{F}=\vec{F}_1+\vec{F}_2+\dots+\vec{F}_n$.
+- Vật **cân bằng** (đứng yên) khi hợp lực của mọi lực tác dụng lên nó bằng vectơ-không: $\vec{F}_1+\vec{F}_2+\dots+\vec{F}_n=\vec{0}$.
+- Trọng lực $\vec{P}$ hướng thẳng đứng xuống dưới, có độ lớn $P=mg$ ($m$ là khối lượng tính bằng kg, $g\approx9{,}8$ hoặc $10$ m/s$^2$).
+
+##TC Công của lực
+- Lực không đổi $\vec{F}$ làm vật dịch chuyển theo vectơ $\vec{d}$ thì công của lực là $A=\vec{F}\cdot\vec{d}=|\vec{F}|\cdot|\vec{d}|\cdot\cos\varphi$, với $\varphi$ là góc giữa $\vec{F}$ và $\vec{d}$; đơn vị jun (J), $|\vec{d}|$ tính bằng mét.
+- Lực cùng hướng với dịch chuyển thì công dương, vuông góc thì công bằng $0$, ngược hướng thì công âm.
+
+##PP Chuyển bài toán lực sang bài toán vectơ
+Vẽ mỗi lực thành một vectơ xuất phát từ điểm đặt, đúng phương và chiều.
+Xác định đề hỏi gì: hợp lực (cộng các vectơ lực), lực chưa biết khi vật cân bằng (tổng các lực bằng $\vec{0}$) hay công (tích vô hướng).
+Cộng lực bằng quy tắc hình bình hành (hai lực), quy tắc hình hộp (ba lực không cùng nằm trong một mặt phẳng) hoặc dùng tính đối xứng của hình để gom các vectơ.
+Tính độ lớn bằng định lí Pitago, định lí côsin hoặc công thức tích vô hướng; đổi đơn vị nếu cần.
+Kết luận có đơn vị (N hoặc J) và làm tròn đúng yêu cầu.
+
+##CY
+- Hợp lực là tổng vectơ, không phải tổng các độ lớn: hai lực $3$ N và $4$ N vuông góc nhau có hợp lực $5$ N, không phải $7$ N.
+- Trọng lượng tính bằng niutơn chứ không phải kilôgam: vật $4$ kg có trọng lượng $P=mg=40$ N (lấy $g=10$ m/s$^2$); quãng đường phải đổi về mét trước khi tính công.
+
+=== P1.5.1
+@ly_thuyet:
+##TC Hợp lực của ba lực, lực căng dây
+- Ba lực $\vec{F}_1,\vec{F}_2,\vec{F}_3$ cùng đặt tại điểm $A$ và đôi một vuông góc: nếu $\overrightarrow{AB}=\vec{F}_1$, $\overrightarrow{AD}=\vec{F}_2$, $\overrightarrow{AA'}=\vec{F}_3$ thì hợp lực là vectơ đường chéo của hình hộp chữ nhật: $\vec{F}=\overrightarrow{AC'}$ và $|\vec{F}|=\sqrt{F_1^2+F_2^2+F_3^2}$.
+- Vật treo ở điểm $S$ bằng các sợi dây buộc vào các điểm $A_1,\dots,A_n$ trên giá: lực căng $\vec{T}_i$ của dây thứ $i$ hướng từ $S$ về $A_i$, tức cùng hướng với $\overrightarrow{SA_i}$; nếu dây dài $\ell$ và lực căng có độ lớn $T$ thì $\vec{T}_i=\dfrac{T}{\ell}\overrightarrow{SA_i}$.
+- Vật cân bằng: $\vec{T}_1+\dots+\vec{T}_n+\vec{P}=\vec{0}$, tức hợp các lực căng là vectơ đối của trọng lực và có độ lớn $P$.
+- Nếu $O$ là tâm của đa giác đều $A_1A_2\dots A_n$ thì $\overrightarrow{SA_1}+\dots+\overrightarrow{SA_n}=n\overrightarrow{SO}$; với hình vuông hoặc hình bình hành $ABCD$ tâm $O$: $\overrightarrow{SA}+\overrightarrow{SC}=\overrightarrow{SB}+\overrightarrow{SD}=2\overrightarrow{SO}$.
+
+##PP Tìm hợp lực, lực căng khi vật cân bằng
+Vẽ các lực tại điểm đặt (hoặc điểm treo) và gọi tên từng lực; ghi rõ lực nào đã biết độ lớn.
+Viết điều kiện: tìm hợp lực thì $\vec{F}=\sum\vec{F}_i$; vật cân bằng thì $\sum\vec{T}_i+\vec{P}=\vec{0}$.
+Gom các vectơ lực về một vectơ bằng quy tắc hình hộp hoặc hệ thức tâm $\overrightarrow{SA}+\overrightarrow{SC}=2\overrightarrow{SO}$.
+Tính độ dài vectơ vừa gom (Pitago, tam giác vuông cân, hình hộp...) rồi suy ra độ lớn lực cần tìm.
+Kết luận bằng niutơn và nêu hướng của lực nếu đề hỏi.
+
+##CY
+- Lực căng hướng lên (về phía điểm buộc trên giá), trọng lực hướng xuống; hợp các lực căng ngược hướng với trọng lực chứ không cùng hướng.
+- Công thức $F=\sqrt{F_1^2+F_2^2+F_3^2}$ chỉ đúng khi ba lực đôi một vuông góc; nếu có hai lực không vuông góc phải dùng hình bình hành và định lí côsin.
+
+@vi_du:
+##VD
+Ba lực $\vec{F}_1,\vec{F}_2,\vec{F}_3$ cùng tác dụng lên một vật tại điểm $A$, có độ lớn lần lượt là $3$ N, $4$ N, $12$ N và đôi một vuông góc.
+a) Tính độ lớn hợp lực của ba lực.
+b) Cần đặt thêm lực $\vec{F}_4$ như thế nào để vật cân bằng?
+
+Bài giải:
+a) Dựng hình hộp chữ nhật $ABCD.A'B'C'D'$ sao cho $\overrightarrow{AB}=\vec{F}_1$, $\overrightarrow{AD}=\vec{F}_2$, $\overrightarrow{AA'}=\vec{F}_3$, khi đó $AB=3$, $AD=4$, $AA'=12$.
+Theo quy tắc hình hộp, hợp lực là $\vec{F}=\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}=\overrightarrow{AC'}$.
+Tam giác $ABC$ vuông tại $B$ nên $AC^2=AB^2+BC^2=9+16=25$.
+Tam giác $ACC'$ vuông tại $C$ nên $AC'^2=AC^2+CC'^2=25+144=169$, suy ra $AC'=13$.
+b) Vật cân bằng khi $\vec{F}+\vec{F}_4=\vec{0}$, tức $\vec{F}_4=-\overrightarrow{AC'}$.
+Vậy hợp lực có độ lớn $13$ N; lực $\vec{F}_4$ phải có độ lớn $13$ N, cùng phương và ngược hướng với $\overrightarrow{AC'}$.
+
+##VD
+Một chiếc đèn chùm khối lượng $4$ kg được treo bằng bốn sợi xích dài bằng nhau cùng buộc vào đỉnh $S$ của đèn; đầu kia của bốn xích buộc vào bốn điểm $A,B,C,D$ trên trần nhà, bốn điểm này là các đỉnh của hình vuông $ABCD$ và $\widehat{ASC}=90^\circ$. Đèn đứng yên, bốn xích có lực căng bằng nhau; bỏ qua khối lượng của xích. Lấy $g=10$ m/s$^2$, tính độ lớn lực căng của mỗi xích (làm tròn đến hàng phần mười).
+
+Bài giải:
+Trọng lượng của đèn là $P=mg=4\cdot10=40$ N, hướng thẳng đứng xuống.
+Gọi $O$ là tâm hình vuông $ABCD$. Vì $SA=SB=SC=SD$ nên $SO$ vuông góc với trần, tức $SO$ thẳng đứng. Đặt $SA=\ell$ và lực căng mỗi xích có độ lớn $T$.
+Lực căng của các xích là $\vec{T}_1=\dfrac{T}{\ell}\overrightarrow{SA}$, $\vec{T}_2=\dfrac{T}{\ell}\overrightarrow{SB}$, $\vec{T}_3=\dfrac{T}{\ell}\overrightarrow{SC}$, $\vec{T}_4=\dfrac{T}{\ell}\overrightarrow{SD}$.
+Do $O$ là trung điểm của $AC$ và $BD$ nên $\overrightarrow{SA}+\overrightarrow{SC}=2\overrightarrow{SO}$ và $\overrightarrow{SB}+\overrightarrow{SD}=2\overrightarrow{SO}$. Suy ra $\vec{T}_1+\vec{T}_2+\vec{T}_3+\vec{T}_4=\dfrac{T}{\ell}\cdot4\overrightarrow{SO}$.
+Tam giác $SAC$ vuông cân tại $S$ có $SA=SC=\ell$ nên $AC=\ell\sqrt{2}$ và trung tuyến $SO=\dfrac{AC}{2}=\dfrac{\ell\sqrt{2}}{2}$.
+Do đó $|\vec{T}_1+\vec{T}_2+\vec{T}_3+\vec{T}_4|=\dfrac{T}{\ell}\cdot4\cdot\dfrac{\ell\sqrt{2}}{2}=2\sqrt{2}\,T$.
+Đèn cân bằng nên $\vec{T}_1+\vec{T}_2+\vec{T}_3+\vec{T}_4+\vec{P}=\vec{0}$, suy ra $2\sqrt{2}\,T=P=40$, tức $T=\dfrac{40}{2\sqrt{2}}=10\sqrt{2}\approx14{,}1$ N.
+Vậy lực căng của mỗi xích xấp xỉ $14{,}1$ N.
+
+=== P1.5.2
+@ly_thuyet:
+##TC Công của một lực không đổi
+- Công của lực $\vec{F}$ khi vật dịch chuyển theo vectơ $\vec{d}$ là $A=\vec{F}\cdot\vec{d}=|\vec{F}|\cdot|\vec{d}|\cdot\cos\varphi$, với $\varphi=(\vec{F},\vec{d})$; đơn vị jun (J), $|\vec{F}|$ tính bằng N, $|\vec{d}|$ tính bằng m.
+- Lực làm vật chuyển động nhanh lên ($0^\circ\le\varphi<90^\circ$) cho công dương; lực vuông góc với dịch chuyển ($\varphi=90^\circ$) không sinh công; lực cản ($90^\circ<\varphi\le180^\circ$) cho công âm.
+- Nhiều lực cùng tác dụng: công của hợp lực bằng tổng công của từng lực, vì $(\vec{F}_1+\vec{F}_2)\cdot\vec{d}=\vec{F}_1\cdot\vec{d}+\vec{F}_2\cdot\vec{d}$.
+- Trọng lực $\vec{P}$ ($P=mg$): vật đi xuống một độ cao $h$ thì công của trọng lực là $A=mgh$, không phụ thuộc đường đi.
+
+##PP Tính công của lực bằng tích vô hướng
+Xác định từng lực cần tính công và vectơ dịch chuyển $\vec{d}$; đổi mọi đơn vị về N, m, kg (km sang m, tấn sang kg).
+Tìm góc $\varphi$ giữa $\vec{F}$ và $\vec{d}$: dời hai vectơ về cùng gốc rồi dùng hình vẽ (góc phụ, góc bù khi cần).
+Thay vào $A=|\vec{F}|\cdot|\vec{d}|\cdot\cos\varphi$, chú ý dấu của $\cos\varphi$.
+Có nhiều lực: tính công từng lực rồi cộng lại để được công của hợp lực.
+Kết luận bằng jun, nêu rõ công dương hay âm.
+
+##CY
+- Góc $\varphi$ là góc giữa lực và dịch chuyển, không phải góc nghiêng của mặt dốc: trượt xuống dốc nghiêng $30^\circ$ thì góc giữa trọng lực và dịch chuyển là $90^\circ-30^\circ=60^\circ$.
+- Phản lực pháp tuyến vuông góc với dịch chuyển nên không sinh công; lực ma sát ngược hướng dịch chuyển nên công âm ($\cos180^\circ=-1$).
+
+@vi_du:
+##VD
+Một người kéo một thùng hàng trượt trên sàn bằng sợi dây hợp với phương ngang một góc $60^\circ$. Lực kéo có độ lớn $120$ N, thùng đi được quãng đường $25$ m theo phương ngang.
+a) Tính công của lực kéo.
+b) Nếu dây nằm ngang và các điều kiện khác không đổi thì công của lực kéo tăng thêm bao nhiêu?
+
+Bài giải:
+a) Vectơ dịch chuyển $\vec{d}$ nằm ngang, $|\vec{d}|=25$ m; góc giữa lực kéo $\vec{F}$ và $\vec{d}$ là $\varphi=60^\circ$ nên $A=|\vec{F}|\cdot|\vec{d}|\cdot\cos60^\circ=120\cdot25\cdot\dfrac{1}{2}=1500$ J.
+b) Khi dây nằm ngang, $\varphi=0^\circ$ nên $A'=120\cdot25\cdot\cos0^\circ=3000$ J.
+Công tăng thêm là $3000-1500=1500$ J.
+Vậy công của lực kéo ban đầu là $1500$ J và tăng thêm $1500$ J khi kéo ngang.
+
+##VD
+Một vật có khối lượng $20$ kg trượt xuống một đoạn dốc thẳng dài $6$ m, mặt dốc nghiêng $30^\circ$ so với phương ngang. Lực ma sát có độ lớn $40$ N, ngược hướng với chuyển động. Lấy $g=9{,}8$ m/s$^2$.
+a) Tính công của trọng lực.
+b) Tính công của lực ma sát và công của phản lực pháp tuyến của mặt dốc.
+c) Tính công của hợp lực tác dụng lên vật.
+
+Bài giải:
+Gọi $\vec{d}$ là vectơ dịch chuyển dọc theo dốc xuống dưới, $|\vec{d}|=6$ m.
+a) Trọng lực $\vec{P}$ hướng thẳng đứng xuống, $P=mg=20\cdot9{,}8=196$ N. Dốc nghiêng $30^\circ$ so với phương ngang nên $\vec{d}$ hợp với phương thẳng đứng hướng xuống một góc $90^\circ-30^\circ=60^\circ$.
+Công của trọng lực là $A_P=196\cdot6\cdot\cos60^\circ=588$ J (kiểm tra: độ cao hạ xuống $h=6\sin30^\circ=3$ m và $mgh=196\cdot3=588$ J).
+b) Lực ma sát ngược hướng với $\vec{d}$ nên $\varphi=180^\circ$: $A_{ms}=40\cdot6\cdot\cos180^\circ=-240$ J.
+Phản lực pháp tuyến $\vec{N}$ vuông góc với mặt dốc, tức vuông góc với $\vec{d}$ nên $A_N=\vec{N}\cdot\vec{d}=0$.
+c) Công của hợp lực bằng tổng công các lực: $A=588+(-240)+0=348$ J.
+Vậy công của trọng lực là $588$ J, công của lực ma sát là $-240$ J, phản lực pháp tuyến không sinh công và công của hợp lực là $348$ J.
+
+=== N P2.1
+@ly_thuyet:
+##TC Hệ trục $Oxyz$, toạ độ của điểm và của vectơ
+- Hệ trục $Oxyz$ gồm ba trục $Ox$, $Oy$, $Oz$ đôi một vuông góc tại gốc $O$; $\vec{i},\vec{j},\vec{k}$ là các vectơ đơn vị (độ dài $1$) trên ba trục. Các mặt phẳng $(Oxy)$, $(Oyz)$, $(Oxz)$ gọi là các mặt phẳng toạ độ.
+- Điểm $M(x;y;z)$ khi $\overrightarrow{OM}=x\vec{i}+y\vec{j}+z\vec{k}$, trong đó $x$ là hoành độ, $y$ là tung độ, $z$ là cao độ. Để tìm toạ độ, chiếu $M$ lên ba trục: các hình chiếu có toạ độ $x$, $y$, $z$ trên các trục tương ứng.
+- Vectơ $\vec{a}=x\vec{i}+y\vec{j}+z\vec{k}$ có toạ độ $\vec{a}=(x;y;z)$. Toạ độ của điểm $M$ cũng là toạ độ của $\overrightarrow{OM}$. Hai vectơ bằng nhau khi ba toạ độ tương ứng bằng nhau.
+- Điểm thuộc trục $Ox$ có dạng $(x;0;0)$, thuộc $Oy$ có dạng $(0;y;0)$, thuộc $Oz$ có dạng $(0;0;z)$; thuộc $(Oxy)$ có dạng $(x;y;0)$, thuộc $(Oyz)$ có dạng $(0;y;z)$, thuộc $(Oxz)$ có dạng $(x;0;z)$.
+
+##PP Làm việc với toạ độ trong hệ trục $Oxyz$
+Xác định đề cho gì: toạ độ trực tiếp, biểu thức theo $\vec{i},\vec{j},\vec{k}$ hay hình chiếu của điểm.
+Với điểm hoặc vectơ viết theo $\vec{i},\vec{j},\vec{k}$: đọc hệ số của $\vec{i}$, $\vec{j}$, $\vec{k}$ theo đúng thứ tự làm hoành độ, tung độ, cao độ.
+Với điểm đặc biệt: toạ độ nào "khuyết" thì bằng $0$ (điểm trên trục có hai toạ độ bằng $0$, điểm trên mặt phẳng toạ độ có một toạ độ bằng $0$).
+Với hình chiếu và đối xứng: giữ hoặc đổi dấu từng toạ độ theo quy tắc của trục, mặt phẳng tương ứng.
+Với vectơ không có gốc $O$: đưa về các vectơ gốc $O$ bằng $\overrightarrow{AB}=\overrightarrow{OB}-\overrightarrow{OA}$.
+
+##CY
+- $\overrightarrow{MO}$ là vectơ đối của $\overrightarrow{OM}$: nếu $\overrightarrow{MO}=2\vec{i}-3\vec{k}$ thì $\overrightarrow{OM}=-2\vec{i}+3\vec{k}$ nên $M(-2;0;3)$.
+- Thứ tự toạ độ luôn là (hoành độ; tung độ; cao độ) ứng với $Ox$, $Oy$, $Oz$; viết đảo thứ tự là được một điểm khác: $(1;2;3)\ne(2;1;3)$.
+
+=== P2.1.1
+@ly_thuyet:
+##TC Điểm đặc biệt trong hệ trục
+- Gốc $O(0;0;0)$. Điểm thuộc $Ox$: $(x;0;0)$; thuộc $Oy$: $(0;y;0)$; thuộc $Oz$: $(0;0;z)$.
+- Điểm thuộc $(Oxy)$: $(x;y;0)$; thuộc $(Oyz)$: $(0;y;z)$; thuộc $(Oxz)$: $(x;0;z)$.
+- Điểm có hai toạ độ bằng $0$ thuộc một trục và thuộc cả hai mặt phẳng toạ độ chứa trục đó: ví dụ $(3;0;0)$ thuộc $Ox$, $(Oxy)$ và $(Oxz)$.
+- Điểm không có toạ độ nào bằng $0$ không thuộc trục nào và không thuộc mặt phẳng toạ độ nào.
+
+##PP Xác định vị trí của điểm so với trục và mặt phẳng toạ độ
+Đếm xem điểm có mấy toạ độ bằng $0$ và đó là toạ độ nào.
+Hai toạ độ bằng $0$: điểm nằm trên trục của toạ độ còn lại. Đúng một toạ độ bằng $0$: điểm nằm trên mặt phẳng toạ độ chứa hai trục ứng với hai toạ độ còn lại. Cả ba bằng $0$: điểm là gốc $O$.
+Với điểm cho bằng tham số: đặt các toạ độ cần bằng $0$ về $0$, giải hệ và thử lại các toạ độ còn lại.
+Kết luận điểm thuộc những trục, mặt phẳng nào.
+
+##CY
+- Điểm có cao độ bằng $0$ chỉ chắc chắn thuộc $(Oxy)$; muốn thuộc trục $Ox$ hay $Oy$ thì phải có thêm một toạ độ nữa bằng $0$.
+- Giải hệ theo tham số phải kiểm tra mọi điều kiện cùng lúc: nghiệm của một phương trình chưa chắc nghiệm các phương trình còn lại, khi đó không có giá trị tham số thoả mãn.
+
+@vi_du:
+##VD
+Cho các điểm $A(3;0;0)$, $B(0;-2;0)$, $C(0;0;5)$, $D(1;0;4)$, $E(0;-3;2)$, $F(2;4;-1)$.
+a) Điểm nào thuộc trục $Ox$, trục $Oy$, trục $Oz$?
+b) Điểm nào thuộc mặt phẳng $(Oxy)$, $(Oyz)$, $(Oxz)$?
+c) Điểm nào không thuộc trục nào và không thuộc mặt phẳng toạ độ nào?
+
+Bài giải:
+a) Điểm thuộc trục có hai toạ độ bằng $0$: $A(3;0;0)$ thuộc $Ox$, $B(0;-2;0)$ thuộc $Oy$, $C(0;0;5)$ thuộc $Oz$.
+b) Điểm thuộc $(Oxy)$ có $z=0$: $A$ và $B$. Điểm thuộc $(Oyz)$ có $x=0$: $B$, $C$ và $E$. Điểm thuộc $(Oxz)$ có $y=0$: $A$, $C$ và $D$.
+c) Điểm $F(2;4;-1)$ không có toạ độ nào bằng $0$.
+Vậy $A\in Ox$, $B\in Oy$, $C\in Oz$; $A,B\in(Oxy)$; $B,C,E\in(Oyz)$; $A,C,D\in(Oxz)$; điểm $F$ không thuộc trục hay mặt phẳng toạ độ nào.
+
+##VD
+Cho điểm $A(m-2;\,m^2-4;\,2m+1)$ với $m$ là tham số. Tìm $m$ để:
+a) $A$ thuộc trục $Oz$;
+b) $A$ thuộc mặt phẳng $(Oxy)$;
+c) $A$ thuộc trục $Ox$.
+
+Bài giải:
+a) $A\in Oz$ khi hoành độ và tung độ cùng bằng $0$: $m-2=0$ và $m^2-4=0$. Từ $m-2=0$ ta có $m=2$, giá trị này cũng thoả $m^2-4=0$. Khi đó $A(0;0;5)$.
+b) $A\in(Oxy)$ khi cao độ bằng $0$: $2m+1=0$, suy ra $m=-\dfrac{1}{2}$. Khi đó $A\left(-\dfrac{5}{2};-\dfrac{15}{4};0\right)$.
+c) $A\in Ox$ khi tung độ và cao độ cùng bằng $0$: $m^2-4=0$ cho $m=2$ hoặc $m=-2$, còn $2m+1=0$ cho $m=-\dfrac{1}{2}$. Hai điều kiện không có nghiệm chung.
+Vậy a) $m=2$; b) $m=-\dfrac{1}{2}$; c) không có giá trị nào của $m$.
+
+=== P2.1.2
+@ly_thuyet:
+##TC Hình chiếu và điểm đối xứng của điểm $M(x;y;z)$
+- Hình chiếu lên các trục: lên $Ox$ là $(x;0;0)$, lên $Oy$ là $(0;y;0)$, lên $Oz$ là $(0;0;z)$.
+- Hình chiếu lên các mặt phẳng toạ độ: lên $(Oxy)$ là $(x;y;0)$, lên $(Oyz)$ là $(0;y;z)$, lên $(Oxz)$ là $(x;0;z)$.
+- Đối xứng qua mặt phẳng toạ độ (đổi dấu toạ độ còn lại): qua $(Oxy)$ là $(x;y;-z)$, qua $(Oyz)$ là $(-x;y;z)$, qua $(Oxz)$ là $(x;-y;z)$.
+- Đối xứng qua trục (giữ toạ độ của trục, đổi dấu hai toạ độ kia): qua $Ox$ là $(x;-y;-z)$, qua $Oy$ là $(-x;y;-z)$, qua $Oz$ là $(-x;-y;z)$; đối xứng qua gốc $O$ là $(-x;-y;-z)$.
+- Hình chiếu $H$ của $M$ là trung điểm của $MM'$ với $M'$ là điểm đối xứng của $M$ qua trục hoặc mặt phẳng chứa $H$.
+
+##PP Tìm hình chiếu và điểm đối xứng
+Viết toạ độ điểm $M(x;y;z)$ cần chiếu hoặc lấy đối xứng.
+Hình chiếu: giữ lại các toạ độ thuộc trục hay mặt phẳng được chiếu, các toạ độ còn lại bằng $0$.
+Đối xứng qua mặt phẳng toạ độ: đổi dấu toạ độ vuông góc với mặt phẳng đó. Đối xứng qua trục: đổi dấu hai toạ độ còn lại. Đối xứng qua $O$: đổi dấu cả ba toạ độ.
+Bài ngược (cho điểm đối xứng, hình chiếu, tìm điểm ban đầu): áp dụng quy tắc theo chiều ngược lại rồi đối chiếu tất cả dữ kiện với nhau.
+
+##CY
+- Đối xứng qua trục $Oy$ đổi dấu $x$ và $z$, còn đối xứng qua $(Oxz)$ chỉ đổi dấu $y$; hai phép này rất hay bị lẫn.
+- Hình chiếu thì gán $0$ cho toạ độ khuyết, không đổi dấu; đối xứng thì đổi dấu, không gán $0$.
+
+@vi_du:
+##VD
+Cho điểm $A(3;-2;5)$.
+a) Tìm toạ độ hình chiếu của $A$ lên các trục $Ox$, $Oy$, $Oz$.
+b) Tìm toạ độ hình chiếu của $A$ lên các mặt phẳng $(Oxy)$, $(Oyz)$, $(Oxz)$.
+c) Tìm toạ độ điểm đối xứng của $A$ qua trục $Oy$, qua mặt phẳng $(Oxz)$ và qua gốc $O$.
+
+Bài giải:
+a) Giữ lại toạ độ của trục được chiếu: hình chiếu lên $Ox$ là $(3;0;0)$, lên $Oy$ là $(0;-2;0)$, lên $Oz$ là $(0;0;5)$.
+b) Hình chiếu lên $(Oxy)$ là $(3;-2;0)$, lên $(Oyz)$ là $(0;-2;5)$, lên $(Oxz)$ là $(3;0;5)$.
+c) Đối xứng qua $Oy$ đổi dấu $x$ và $z$: $(-3;-2;-5)$. Đối xứng qua $(Oxz)$ đổi dấu $y$: $(3;2;5)$. Đối xứng qua $O$ đổi dấu cả ba toạ độ: $(-3;2;-5)$.
+Vậy các điểm cần tìm là các toạ độ đã nêu ở từng ý a), b), c).
+
+##VD
+Điểm $M(a;b;c)$ có hình chiếu lên mặt phẳng $(Oxz)$ là $M_1(2;0;-5)$ và có điểm đối xứng qua trục $Ox$ là $M_2(2;-4;5)$.
+a) Tìm toạ độ điểm $M$.
+b) Tìm toạ độ điểm $N$ đối xứng với $M$ qua mặt phẳng $(Oyz)$.
+
+Bài giải:
+a) Hình chiếu của $M(a;b;c)$ lên $(Oxz)$ là $(a;0;c)$, nên $a=2$ và $c=-5$.
+Điểm đối xứng của $M$ qua $Ox$ là $(a;-b;-c)$, nên $(a;-b;-c)=(2;-4;5)$, suy ra $a=2$, $b=4$, $c=-5$.
+Hai điều kiện cho cùng giá trị $a=2$ và $c=-5$ nên dữ kiện không mâu thuẫn, và $M(2;4;-5)$.
+b) Đối xứng qua $(Oyz)$ đổi dấu hoành độ: $N(-2;4;-5)$.
+Vậy $M(2;4;-5)$ và $N(-2;4;-5)$.
+
+=== P2.1.3
+@ly_thuyet:
+##TC Toạ độ của vectơ theo $\vec{i},\vec{j},\vec{k}$
+- $\vec{a}=x\vec{i}+y\vec{j}+z\vec{k}$ khi và chỉ khi $\vec{a}=(x;y;z)$: ba hệ số của $\vec{i},\vec{j},\vec{k}$ chính là ba toạ độ; vectơ đơn vị không xuất hiện thì hệ số bằng $0$.
+- $\overrightarrow{OM}=(x;y;z)$ khi và chỉ khi $M(x;y;z)$; $\overrightarrow{MO}=-\overrightarrow{OM}$.
+- $\vec{i}=(1;0;0)$, $\vec{j}=(0;1;0)$, $\vec{k}=(0;0;1)$, $\vec{0}=(0;0;0)$.
+- Hai vectơ bằng nhau khi ba toạ độ tương ứng bằng nhau.
+- Vectơ không có gốc $O$: $\overrightarrow{AB}=\overrightarrow{OB}-\overrightarrow{OA}$.
+
+##PP Đọc và viết toạ độ vectơ
+Đưa vectơ về dạng $x\vec{i}+y\vec{j}+z\vec{k}$: gộp các hạng tử cùng loại và điền $0$ cho vectơ đơn vị chưa xuất hiện.
+Đọc hệ số của $\vec{i}$, $\vec{j}$, $\vec{k}$ theo đúng thứ tự để có toạ độ; ngược lại, từ toạ độ viết ra tổng $x\vec{i}+y\vec{j}+z\vec{k}$.
+Nếu đề cho $\overrightarrow{MO}$ hoặc $\overrightarrow{AB}$: đổi về các vectơ gốc $O$ bằng $\overrightarrow{MO}=-\overrightarrow{OM}$, $\overrightarrow{AB}=\overrightarrow{OB}-\overrightarrow{OA}$.
+Kết luận toạ độ vectơ (hoặc toạ độ điểm nếu đề hỏi).
+
+##CY
+- Đọc theo thứ tự $\vec{i},\vec{j},\vec{k}$, không theo thứ tự các hạng tử trong biểu thức: $\vec{a}=3\vec{k}-2\vec{i}+4\vec{j}$ có toạ độ $(-2;4;3)$.
+- Hạng tử thiếu có toạ độ bằng $0$ chứ không bị bỏ: $\vec{c}=\vec{i}-4\vec{k}$ có toạ độ $(1;0;-4)$.
+
+@vi_du:
+##VD
+a) Tìm toạ độ của các vectơ $\vec{a}=2\vec{i}-3\vec{j}+5\vec{k}$, $\vec{b}=3\vec{k}-2\vec{i}+4\vec{j}$, $\vec{c}=\vec{i}-4\vec{k}$ và $\vec{d}=-\vec{j}$.
+b) Viết các vectơ $\vec{u}=(0;-1;6)$ và $\vec{v}=(-2;0;0)$ theo $\vec{i},\vec{j},\vec{k}$.
+
+Bài giải:
+a) Đọc hệ số của $\vec{i},\vec{j},\vec{k}$ theo thứ tự.
+$\vec{a}=2\vec{i}-3\vec{j}+5\vec{k}$ nên $\vec{a}=(2;-3;5)$.
+$\vec{b}=-2\vec{i}+4\vec{j}+3\vec{k}$ nên $\vec{b}=(-2;4;3)$.
+$\vec{c}=\vec{i}+0\vec{j}-4\vec{k}$ nên $\vec{c}=(1;0;-4)$.
+$\vec{d}=0\vec{i}-\vec{j}+0\vec{k}$ nên $\vec{d}=(0;-1;0)$.
+b) $\vec{u}=0\vec{i}-\vec{j}+6\vec{k}=-\vec{j}+6\vec{k}$ và $\vec{v}=-2\vec{i}+0\vec{j}+0\vec{k}=-2\vec{i}$.
+Vậy $\vec{a}=(2;-3;5)$, $\vec{b}=(-2;4;3)$, $\vec{c}=(1;0;-4)$, $\vec{d}=(0;-1;0)$, $\vec{u}=-\vec{j}+6\vec{k}$, $\vec{v}=-2\vec{i}$.
+
+##VD
+Trong không gian $Oxyz$, cho hai điểm $A$, $B$ thoả $\overrightarrow{OA}=2\vec{i}-3\vec{j}+\vec{k}$ và $\overrightarrow{BO}=\vec{i}+2\vec{j}-4\vec{k}$.
+a) Tìm toạ độ của $A$ và $B$.
+b) Viết $\overrightarrow{AB}$ theo $\vec{i},\vec{j},\vec{k}$ và tìm toạ độ của $\overrightarrow{AB}$.
+
+Bài giải:
+a) Toạ độ điểm $A$ là toạ độ của $\overrightarrow{OA}$ nên $A(2;-3;1)$.
+Vì $\overrightarrow{OB}=-\overrightarrow{BO}=-\vec{i}-2\vec{j}+4\vec{k}$ nên $B(-1;-2;4)$.
+b) $\overrightarrow{AB}=\overrightarrow{OB}-\overrightarrow{OA}=(-\vec{i}-2\vec{j}+4\vec{k})-(2\vec{i}-3\vec{j}+\vec{k})$.
+Gộp các hạng tử cùng loại: $\overrightarrow{AB}=(-1-2)\vec{i}+(-2+3)\vec{j}+(4-1)\vec{k}=-3\vec{i}+\vec{j}+3\vec{k}$.
+Vậy $A(2;-3;1)$, $B(-1;-2;4)$ và $\overrightarrow{AB}=-3\vec{i}+\vec{j}+3\vec{k}=(-3;1;3)$.
+
+=== N P2.2
+@ly_thuyet:
+##TC Gắn hệ trục toạ độ vào hình khối
+- Hệ trục $Oxyz$ cần ba trục đôi một vuông góc tại $O$. Muốn gắn vào một hình khối, chọn một điểm (đỉnh, tâm đáy, trung điểm cạnh...) có ba đường đôi một vuông góc đi qua làm gốc $O$, lấy ba đường đó làm ba trục.
+- Chọn chiều dương của mỗi trục hướng về phía các đỉnh còn lại của hình để nhiều toạ độ không âm; mặt đáy thường đặt trong $(Oxy)$ nên cao độ các đỉnh đáy bằng $0$.
+- Điểm $M$ nằm trên tia $Ox$ với $OM=a$ thì $M(a;0;0)$; điểm nằm trên đường song song với một trục thì chỉ có một toạ độ thay đổi.
+- Điểm ở ngay phía trên đỉnh $P(x;y;0)$ và cách $P$ một đoạn $h$ (theo phương vuông góc đáy) có toạ độ $(x;y;h)$.
+- Toạ độ phụ thuộc cách chọn hệ trục, nhưng độ dài, góc và quan hệ giữa các điểm thì không đổi.
+
+##PP Gắn hệ trục và tìm toạ độ các đỉnh
+Tìm điểm có ba đường đôi một vuông góc (hai cạnh đáy vuông góc và đường cao), chọn làm gốc $O$ và đặt tên ba trục.
+Ghi toạ độ các điểm nằm ngay trên trục theo độ dài cạnh đề cho.
+Các điểm còn lại: dùng hình chiếu lên các trục, hoặc dùng tính chất hình bình hành và quy tắc hình hộp như $\overrightarrow{AC}=\overrightarrow{AB}+\overrightarrow{AD}$.
+Điểm đặc biệt (trung điểm, tâm mặt, điểm cách đỉnh một đoạn cho trước): tính từ toạ độ các đỉnh đã có.
+Kiểm tra lại độ dài các cạnh và các góc vuông với dữ kiện của đề.
+
+##CY
+- Ba trục phải đôi một vuông góc: đừng đặt trục theo cạnh nghiêng hoặc đường chéo không vuông góc với hai trục còn lại.
+- Phải nói rõ hệ trục đã chọn trước khi ghi toạ độ; đổi gốc hoặc đổi chiều trục thì toạ độ đổi theo.
+
+=== P2.2.1
+@ly_thuyet:
+##TC Toạ độ các đỉnh của hộp chữ nhật, lập phương
+- Hộp chữ nhật $ABCD.A'B'C'D'$ có $AB=a$, $AD=b$, $AA'=c$. Chọn gốc $A$, tia $Ox$ chứa $B$, tia $Oy$ chứa $D$, tia $Oz$ chứa $A'$ thì $A(0;0;0)$, $B(a;0;0)$, $D(0;b;0)$, $A'(0;0;c)$, $C(a;b;0)$, $B'(a;0;c)$, $D'(0;b;c)$, $C'(a;b;c)$.
+- Lập phương cạnh $a$ là trường hợp $a=b=c$. Hình hộp đứng có đáy là hình chữ nhật (hoặc hình vuông) chính là hộp chữ nhật nên gắn hệ trục như trên.
+- Toạ độ trung điểm của đoạn thẳng là trung bình cộng toạ độ hai đầu mút; tâm của một mặt hình chữ nhật là trung điểm đường chéo của mặt đó.
+- Điểm nằm trên một cạnh song song với một trục thì chỉ có toạ độ theo trục đó thay đổi.
+
+##PP Gắn hệ trục vào hộp chữ nhật hoặc lập phương
+Chọn đỉnh làm gốc và ba cạnh xuất phát từ đỉnh đó làm ba trục, chiều dương hướng về ba đỉnh kề.
+Viết toạ độ ba đỉnh kề của gốc theo độ dài ba cạnh: chỉ có một toạ độ khác $0$.
+Các đỉnh còn lại: cộng các thành phần, ví dụ $\overrightarrow{AC}=\overrightarrow{AB}+\overrightarrow{AD}$ và $\overrightarrow{AC'}=\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}$.
+Tìm trung điểm, tâm mặt, điểm trên cạnh bằng trung bình cộng toạ độ hoặc bằng cách cộng thêm độ dài theo phương của trục.
+Kiểm tra: đỉnh đối diện với gốc có đủ ba toạ độ bằng ba kích thước của hộp.
+
+##CY
+- Đỉnh $C$ (đáy) có $z=0$, còn đỉnh $C'$ phía trên mới có cao độ $c$; đừng viết $C'(a;b;0)$.
+- Nếu gốc không đặt ở $A$ (ví dụ đặt ở $C$) thì phải lấy lại ba cạnh xuất phát từ gốc mới làm trục; khi đó $A$ không còn là $(0;0;0)$.
+
+@vi_du:
+##VD
+Cho hình hộp chữ nhật $ABCD.A'B'C'D'$ có $AB=4$, $AD=3$, $AA'=5$. Chọn hệ trục $Oxyz$ có gốc $A$, tia $Ox$ chứa $B$, tia $Oy$ chứa $D$, tia $Oz$ chứa $A'$. Tìm toạ độ các đỉnh của hình hộp, toạ độ trung điểm $M$ của $CC'$ và toạ độ tâm $I$ của mặt $A'B'C'D'$.
+
+Bài giải:
+Gốc $A(0;0;0)$. Các đỉnh nằm trên trục: $B(4;0;0)$, $D(0;3;0)$, $A'(0;0;5)$.
+Vì $\overrightarrow{AC}=\overrightarrow{AB}+\overrightarrow{AD}=(4;0;0)+(0;3;0)$ nên $C(4;3;0)$.
+Các đỉnh phía trên cùng hoành độ, tung độ với đỉnh phía dưới và có cao độ $5$: $B'(4;0;5)$, $D'(0;3;5)$, $C'(4;3;5)$.
+$M$ là trung điểm của $CC'$ với $C(4;3;0)$ và $C'(4;3;5)$ nên $M\left(4;3;\dfrac{5}{2}\right)$.
+$I$ là tâm của hình chữ nhật $A'B'C'D'$, tức trung điểm của $A'C'$ với $A'(0;0;5)$ và $C'(4;3;5)$ nên $I\left(2;\dfrac{3}{2};5\right)$.
+Vậy $A(0;0;0)$, $B(4;0;0)$, $C(4;3;0)$, $D(0;3;0)$, $A'(0;0;5)$, $B'(4;0;5)$, $C'(4;3;5)$, $D'(0;3;5)$, $M\left(4;3;\dfrac{5}{2}\right)$, $I\left(2;\dfrac{3}{2};5\right)$.
+
+##VD
+Cho hình lập phương $ABCD.A'B'C'D'$ có cạnh bằng $6$. Chọn hệ trục $Oxyz$ có gốc $C$, tia $Ox$ chứa $D$, tia $Oy$ chứa $B$, tia $Oz$ chứa $C'$. Tìm toạ độ các đỉnh của hình lập phương, toạ độ tâm $K$ của mặt $ABB'A'$ và toạ độ điểm $N$ thuộc cạnh $AA'$ sao cho $AN=2$.
+
+Bài giải:
+Gốc $C(0;0;0)$. Ba đỉnh kề của $C$ nằm trên các trục: $D(6;0;0)$, $B(0;6;0)$, $C'(0;0;6)$.
+Vì $ABCD$ là hình vuông nên $\overrightarrow{CA}=\overrightarrow{CB}+\overrightarrow{CD}=(0;6;0)+(6;0;0)=(6;6;0)$, suy ra $A(6;6;0)$.
+Các đỉnh phía trên có cao độ $6$: $A'(6;6;6)$, $B'(0;6;6)$, $D'(6;0;6)$.
+Tâm $K$ của hình vuông $ABB'A'$ là trung điểm của $AB'$ với $A(6;6;0)$ và $B'(0;6;6)$ nên $K(3;6;3)$.
+Điểm $N$ thuộc cạnh $AA'$ (song song với $Oz$) nên có cùng hoành độ, tung độ với $A$ và cao độ bằng $AN=2$: $N(6;6;2)$.
+Vậy $C(0;0;0)$, $D(6;0;0)$, $B(0;6;0)$, $A(6;6;0)$, $C'(0;0;6)$, $D'(6;0;6)$, $B'(0;6;6)$, $A'(6;6;6)$, $K(3;6;3)$, $N(6;6;2)$.
+
+=== P2.2.2
+@ly_thuyet:
+##TC Hệ trục theo các cạnh vuông góc của hình chóp, tứ diện
+- Chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật và $SA\perp(ABCD)$: ba đường $AB$, $AD$, $AS$ đôi một vuông góc tại $A$. Chọn gốc $A$ và các tia $Ox,Oy,Oz$ chứa $B,D,S$; với $AB=a$, $AD=b$, $SA=h$ thì $B(a;0;0)$, $D(0;b;0)$, $C(a;b;0)$, $S(0;0;h)$.
+- Tứ diện $OABC$ có $OA,OB,OC$ đôi một vuông góc (tứ diện vuông tại $O$): gốc $O$, $A(a;0;0)$, $B(0;b;0)$, $C(0;0;c)$.
+- Chóp $S.ABC$ có $SA\perp(ABC)$ và tam giác $ABC$ vuông tại $B$: chọn gốc $B$, tia $Bx$ chứa $A$, tia $By$ chứa $C$, tia $Bz$ song song với $SA$ (cùng hướng $\overrightarrow{AS}$). Khi đó $A(a;0;0)$, $C(0;c;0)$, $S(a;0;h)$: đỉnh $S$ không nằm trên trục nào.
+- Đường thẳng vuông góc với mặt đáy (đáy nằm trong $(Oxy)$) song song với $Oz$, nên mọi điểm của nó có cùng hoành độ và tung độ.
+
+##PP Gắn hệ trục vào chóp, tứ diện có cạnh vuông góc
+Tìm đường cao (cạnh vuông góc với đáy) và hai cạnh đáy vuông góc nhau tại một đỉnh để có ba đường đôi một vuông góc.
+Chọn đỉnh chung làm gốc $O$, đặt ba trục theo ba đường đó, đáy nằm trong $(Oxy)$.
+Toạ độ các đỉnh đáy theo độ dài cạnh đáy; đỉnh còn lại của đáy dùng tính chất hình chữ nhật hoặc hình bình hành.
+Đỉnh chóp có cùng hoành độ, tung độ với chân đường cao và cao độ bằng chiều cao.
+Điểm trên cạnh bên hoặc trung điểm: tính từ toạ độ các đỉnh đã tìm.
+
+##CY
+- Phải có quan hệ vuông góc rõ ràng (ví dụ $SA\perp(ABCD)$) thì mới đặt được ba trục; không tự gán vuông góc cho các cạnh đề không cho.
+- Gốc đặt ở đỉnh vuông $B$ của đáy mà $SA\perp$ đáy ($A\ne B$) thì $S(a;0;h)$, không phải $S(0;0;h)$.
+
+@vi_du:
+##VD
+Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật, $AB=3$, $AD=4$, cạnh bên $SA$ vuông góc với mặt phẳng đáy và $SA=5$. Chọn hệ trục $Oxyz$ có gốc $A$, tia $Ox$ chứa $B$, tia $Oy$ chứa $D$, tia $Oz$ chứa $S$. Tìm toạ độ các đỉnh của hình chóp, toạ độ điểm $M$ thuộc cạnh $SA$ sao cho $AM=2$, toạ độ trung điểm $N$ của $AD$ và trung điểm $P$ của $BC$.
+
+Bài giải:
+Vì $SA\perp(ABCD)$ nên $SA\perp AB$ và $SA\perp AD$; lại có $AB\perp AD$. Ba đường $AB,AD,AS$ đôi một vuông góc tại $A$ nên chọn hệ trục như đề là hợp lệ.
+Gốc $A(0;0;0)$, $B(3;0;0)$, $D(0;4;0)$, $S(0;0;5)$.
+$ABCD$ là hình chữ nhật nên $\overrightarrow{AC}=\overrightarrow{AB}+\overrightarrow{AD}=(3;4;0)$, suy ra $C(3;4;0)$.
+Điểm $M$ thuộc tia $Oz$ với $AM=2$ nên $M(0;0;2)$.
+$N$ là trung điểm của $AD$ nên $N(0;2;0)$; $P$ là trung điểm của $BC$ với $B(3;0;0)$, $C(3;4;0)$ nên $P(3;2;0)$.
+Vậy $A(0;0;0)$, $B(3;0;0)$, $C(3;4;0)$, $D(0;4;0)$, $S(0;0;5)$, $M(0;0;2)$, $N(0;2;0)$, $P(3;2;0)$.
+
+##VD
+Cho hình chóp $S.ABC$ có $SA$ vuông góc với mặt phẳng $(ABC)$, tam giác $ABC$ vuông tại $B$, $AB=3$, $BC=4$, $SA=6$. Chọn hệ trục $Oxyz$ có gốc $B$, tia $Ox$ chứa $A$, tia $Oy$ chứa $C$, tia $Oz$ cùng hướng với $\overrightarrow{AS}$.
+a) Tìm toạ độ các đỉnh $A,B,C,S$.
+b) Tìm toạ độ đỉnh $D$ sao cho $ABCD$ là hình chữ nhật và toạ độ điểm $M$ thuộc cạnh $SA$ với $AM=2$.
+
+Bài giải:
+Ta có $BA\perp BC$ (tam giác $ABC$ vuông tại $B$); vì $SA\perp(ABC)$ nên $SA$ vuông góc với cả $BA$ và $BC$, do đó tia $Bz$ song song với $SA$ vuông góc với $(Bxy)$. Hệ trục đã chọn có ba trục đôi một vuông góc.
+a) $B(0;0;0)$, $A(3;0;0)$, $C(0;4;0)$. Đỉnh $S$ nằm phía trên $A$ cách $A$ một đoạn $6$ theo hướng $Oz$ nên $S(3;0;6)$.
+b) $ABCD$ là hình chữ nhật nên $\overrightarrow{AD}=\overrightarrow{BC}=(0;4;0)$, suy ra $D(3;4;0)$.
+$M$ thuộc cạnh $SA$ song song với $Oz$ nên có hoành độ $3$, tung độ $0$ và cao độ bằng $AM=2$: $M(3;0;2)$.
+Vậy $A(3;0;0)$, $B(0;0;0)$, $C(0;4;0)$, $S(3;0;6)$, $D(3;4;0)$ và $M(3;0;2)$.
+
+=== P2.2.3
+@ly_thuyet:
+##TC Dùng độ dài và góc để tìm toạ độ đỉnh
+- Tam giác đều cạnh $a$ có đường cao $\dfrac{a\sqrt{3}}{2}$. Chọn gốc $O$ là trung điểm của $BC$, tia $Ox$ chứa $C$, tia $Oy$ chứa $A$ thì $B\left(-\dfrac{a}{2};0;0\right)$, $C\left(\dfrac{a}{2};0;0\right)$, $A\left(0;\dfrac{a\sqrt{3}}{2};0\right)$.
+- Hình thoi $ABCD$ cạnh $a$ có $\widehat{BAD}=60^\circ$: tam giác $ABD$ đều nên $BD=a$ và $AC=a\sqrt{3}$; hai đường chéo vuông góc tại tâm $O$ và cắt nhau tại trung điểm mỗi đường. Chọn gốc $O$, tia $Ox$ chứa $A$, tia $Oy$ chứa $B$ thì $A\left(\dfrac{a\sqrt{3}}{2};0;0\right)$, $C\left(-\dfrac{a\sqrt{3}}{2};0;0\right)$, $B\left(0;\dfrac{a}{2};0\right)$, $D\left(0;-\dfrac{a}{2};0\right)$.
+- Điểm $P$ nằm trong $(Oxy)$ với $OP=r$ và góc $\varphi$ so với tia $Ox$ thì $P(r\cos\varphi;\,r\sin\varphi;\,0)$.
+- Chóp đều: chân đường cao là tâm đáy $O$, chiều cao $SO=\sqrt{SA^2-OA^2}$. Lăng trụ đứng: cạnh bên vuông góc với đáy, đỉnh trên cộng thêm độ dài cạnh bên vào cao độ.
+
+##PP Gắn hệ trục khi đáy là tam giác đều hay hình thoi
+Chọn gốc và hai trục trong mặt đáy sao cho toạ độ đẹp: tam giác đều thì gốc ở trung điểm một cạnh (trục theo cạnh và đường cao), hình thoi hoặc hình chữ nhật thì gốc ở tâm (trục theo hai đường chéo hoặc hai trục đối xứng).
+Dùng độ dài và góc (đường cao tam giác đều, nửa đường chéo, định lí Pitago) để tính các khoảng cách trên trục, suy ra toạ độ các đỉnh đáy.
+Đỉnh trên của lăng trụ hoặc đỉnh chóp: giữ hoành độ, tung độ của chân đường cao và đặt cao độ bằng độ dài chiều cao.
+Kiểm tra lại độ dài cạnh đáy và góc đề cho bằng toạ độ vừa tìm.
+
+##CY
+- Đường cao tam giác đều cạnh $a$ là $\dfrac{a\sqrt{3}}{2}$, không phải $\dfrac{a}{2}$; hình thoi có góc $60^\circ$ có hai đường chéo khác nhau ($a$ và $a\sqrt{3}$), nửa đường chéo lần lượt là $\dfrac{a}{2}$ và $\dfrac{a\sqrt{3}}{2}$.
+- Khi gốc đặt ở tâm hoặc trung điểm, nhiều toạ độ âm; không bỏ dấu khi viết toạ độ các đỉnh đối xứng.
+
+@vi_du:
+##VD
+Cho hình lăng trụ đứng $ABC.A'B'C'$ có đáy $ABC$ là tam giác đều cạnh $4$ và $AA'=6$. Chọn hệ trục $Oxyz$ có gốc $O$ là trung điểm của $BC$, tia $Ox$ chứa $C$, tia $Oy$ chứa $A$, tia $Oz$ cùng hướng với $\overrightarrow{AA'}$. Tìm toạ độ các đỉnh của lăng trụ.
+
+Bài giải:
+Tam giác $ABC$ đều nên trung tuyến $AO$ vuông góc với $BC$ và $AO=\dfrac{4\sqrt{3}}{2}=2\sqrt{3}$. Lăng trụ đứng nên $Oz$ song song với cạnh bên, vuông góc với mặt đáy; ba trục đôi một vuông góc.
+Vì $O$ là trung điểm của $BC$ và $BC=4$ nên $B(-2;0;0)$, $C(2;0;0)$.
+Đỉnh $A$ nằm trên tia $Oy$ với $OA=2\sqrt{3}$ nên $A(0;2\sqrt{3};0)$.
+Các đỉnh phía trên cùng hoành độ, tung độ với đỉnh dưới và có cao độ $AA'=6$: $A'(0;2\sqrt{3};6)$, $B'(-2;0;6)$, $C'(2;0;6)$.
+Vậy $A(0;2\sqrt{3};0)$, $B(-2;0;0)$, $C(2;0;0)$, $A'(0;2\sqrt{3};6)$, $B'(-2;0;6)$, $C'(2;0;6)$.
+
+##VD
+Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình thoi cạnh $4$, $\widehat{BAD}=60^\circ$. Gọi $O$ là giao điểm của $AC$ và $BD$; $SO$ vuông góc với mặt phẳng $(ABCD)$ và $SO=3$. Chọn hệ trục $Oxyz$ có gốc $O$, tia $Ox$ chứa $A$, tia $Oy$ chứa $B$, tia $Oz$ chứa $S$. Tìm toạ độ các đỉnh của hình chóp và toạ độ điểm $E$ thuộc đoạn $SO$ sao cho $OE=1$.
+
+Bài giải:
+Tam giác $ABD$ có $AB=AD=4$ và $\widehat{BAD}=60^\circ$ nên đều, suy ra $BD=4$ và $OB=OD=2$.
+Hai đường chéo của hình thoi vuông góc tại $O$ và $OA=\sqrt{AB^2-OB^2}=\sqrt{16-4}=2\sqrt{3}$; mặt khác $SO\perp(ABCD)$ nên ba trục $OA$, $OB$, $OS$ đôi một vuông góc.
+$A(2\sqrt{3};0;0)$ và $C(-2\sqrt{3};0;0)$ (đối xứng với $A$ qua $O$); $B(0;2;0)$ và $D(0;-2;0)$; $S(0;0;3)$.
+Kiểm tra: $AB^2=(2\sqrt{3})^2+2^2=16$ nên $AB=4$, đúng đề.
+$E$ thuộc đoạn $SO$ nên nằm trên $Oz$ với cao độ $OE=1$: $E(0;0;1)$.
+Vậy $A(2\sqrt{3};0;0)$, $B(0;2;0)$, $C(-2\sqrt{3};0;0)$, $D(0;-2;0)$, $S(0;0;3)$ và $E(0;0;1)$.
+
+=== N P2.3
+@ly_thuyet:
+##TC Dùng hệ trục để mô hình hoá tình huống thực tế
+- Chọn mặt đất (hoặc sàn nhà) làm mặt phẳng $(Oxy)$ và trục $Oz$ thẳng đứng hướng lên; cao độ $z$ là độ cao so với mặt đất.
+- Gốc $O$ đặt tại một điểm đặc trưng của công trình (góc sàn, chân tháp, vị trí quan sát); hai trục nằm ngang chọn theo hai hướng vuông góc có sẵn (hai cạnh tường, hướng Đông và hướng Bắc).
+- Mọi độ dài lấy cùng một đơn vị (mét hoặc kilômét); toạ độ của các điểm được đọc từ kích thước cho trước, giống như gắn hệ trục vào hình khối.
+- Vectơ độ dịch chuyển từ điểm $A$ đến điểm $B$ là $\overrightarrow{AB}=(x_B-x_A;\,y_B-y_A;\,z_B-z_A)$.
+- Toạ độ phụ thuộc cách chọn hệ trục, nhưng khoảng cách và vectơ độ dịch chuyển giữa hai vật thì không đổi.
+
+##PP Lập hệ trục cho bài toán thực tế
+Đọc đề, vẽ phác công trình hoặc thiết bị; xác định các điểm cần tìm toạ độ.
+Chọn gốc và ba trục sao cho nhiều điểm quan trọng nằm trên trục hoặc mặt phẳng toạ độ; đổi mọi kích thước về cùng một đơn vị.
+Ghi toạ độ các điểm đã biết, rồi tìm toạ độ điểm cần tìm (điểm giữa, điểm cách một mép cho trước, hình chiếu lên sàn...) và các vectơ liên quan.
+Trả lời bằng ngữ cảnh: nêu toạ độ kèm đơn vị và ghi rõ hệ trục đã dùng.
+
+##CY
+- Cao độ tính từ mặt đất hoặc sàn, không tính từ trần: trần cao $3$ m thì các điểm trên trần có $z=3$.
+- Không trộn đơn vị (cm với m): kích thước $250$ cm phải đổi thành $2{,}5$ m trước khi ghi toạ độ.
+
+=== P2.3.1
+@ly_thuyet:
+##TC Phòng, nhà, sân trong hệ trục
+- Phòng hoặc kho hình hộp chữ nhật: đặt gốc $O$ tại một góc sàn, hai cạnh sàn xuất phát từ $O$ làm $Ox$, $Oy$, cạnh tường thẳng đứng làm $Oz$ (giống hộp chữ nhật có gốc là một đỉnh).
+- Điểm treo ở giữa trần: hoành độ, tung độ bằng một nửa chiều dài, chiều rộng; cao độ bằng chiều cao tường trừ đoạn treo.
+- Điểm gắn trên tường thuộc mặt phẳng toạ độ chứa tường đó có một toạ độ bằng $0$; điểm ở tường đối diện có toạ độ đó bằng chiều dài (hoặc rộng) của phòng.
+- Mái nhà dạng lăng trụ tam giác cân: sống mái nằm ngay trên đường giữa của nhà, cao độ bằng chiều cao tường cộng độ cao của mái.
+
+##PP Lập hệ trục và đọc toạ độ trong công trình
+Chọn góc sàn (hoặc điểm cho sẵn trên hình) làm gốc; hai cạnh sàn là $Ox$, $Oy$; $Oz$ thẳng đứng.
+Đổi đơn vị rồi ghi toạ độ các đỉnh của sàn, trần và tường theo kích thước.
+Vị trí các vật: đọc khoảng cách từ vật đến hai tường làm hoành độ, tung độ và độ cao so với sàn làm cao độ.
+Điểm trên cạnh hoặc trên sống mái: dùng khoảng cách tới đầu mút để tìm toạ độ.
+Kết luận toạ độ từng điểm theo đúng hệ trục đã chọn.
+
+##CY
+- Điểm treo thấp hơn trần $0{,}5$ m có cao độ bằng chiều cao tường trừ $0{,}5$, không phải bằng $0{,}5$.
+- Phải dùng đúng quy ước: tường nào thuộc mặt phẳng toạ độ nào, trục nào chạy dọc tường nào; đổi gốc hay đổi trục thì phải tính lại toạ độ.
+
+@vi_du:
+##VD
+Một căn phòng hình hộp chữ nhật dài $8$ m, rộng $6$ m, cao $3$ m. Chọn hệ trục $Oxyz$ có gốc $O$ tại một góc sàn, tia $Ox$ dọc theo tường dài, tia $Oy$ dọc theo tường rộng, tia $Oz$ thẳng đứng hướng lên (đơn vị: mét). Bóng đèn treo ở chính giữa trần, thấp hơn trần $0{,}5$ m. Ổ cắm điện nằm trên tường dài thuộc mặt phẳng $(Oxz)$, cách tường $(Oyz)$ là $2$ m và cách sàn $0{,}4$ m. Camera được lắp ở góc trần đối diện với $O$ (đối xứng với $O$ qua tâm căn phòng). Tìm toạ độ của bóng đèn, ổ cắm và camera.
+
+Bài giải:
+Sàn nằm trong $(Oxy)$ nên cao độ của trần là $3$. Chiều dài $8$ m dọc theo $Ox$, chiều rộng $6$ m dọc theo $Oy$.
+Chính giữa trần có hoành độ $\dfrac{8}{2}=4$ và tung độ $\dfrac{6}{2}=3$. Bóng đèn thấp hơn trần $0{,}5$ m nên cao độ là $3-0{,}5=2{,}5$, tức đèn ở $(4;3;2{,}5)$.
+Ổ cắm thuộc $(Oxz)$ nên có tung độ $0$; hoành độ bằng khoảng cách đến tường $(Oyz)$ là $2$; cao độ là $0{,}4$. Ổ cắm ở $(2;0;0{,}4)$.
+Góc sàn đối diện với $O$ là $(8;6;0)$, góc trần đối diện là $(8;6;3)$, nên camera ở $(8;6;3)$.
+Vậy bóng đèn $(4;3;2{,}5)$, ổ cắm $(2;0;0{,}4)$ và camera $(8;6;3)$.
+
+##VD
+Một nhà kho có nền hình chữ nhật $OABC$ dài $10$ m, rộng $6$ m, tường cao $3$ m. Mái nhà là một lăng trụ tam giác cân, sống mái $EF$ song song với cạnh dài, cao hơn đỉnh tường $2$ m và nằm ngay trên đường giữa của nhà. Chọn hệ trục $Oxyz$ có gốc $O$, tia $Ox$ chứa $A$ (dọc cạnh dài), tia $Oy$ chứa $C$ (dọc cạnh rộng), tia $Oz$ thẳng đứng hướng lên, đơn vị mét, với $E$ là đầu sống mái nằm phía tường $(Oyz)$.
+a) Tìm toạ độ các đỉnh nền $A,B,C$ và bốn đỉnh $O',A',B',C'$ ở đỉnh tường (đỉnh tường nằm ngay trên các đỉnh nền).
+b) Tìm toạ độ hai đầu $E,F$ của sống mái.
+c) Điểm $M$ thuộc sống mái $EF$ và cách $F$ là $4$ m. Tìm toạ độ $M$.
+
+Bài giải:
+a) Nền nằm trong $(Oxy)$: $O(0;0;0)$, $A(10;0;0)$, $C(0;6;0)$ và $B(10;6;0)$.
+Đỉnh tường nằm ngay trên đỉnh nền ở độ cao $3$: $O'(0;0;3)$, $A'(10;0;3)$, $B'(10;6;3)$, $C'(0;6;3)$.
+b) Sống mái nằm trên đường giữa của nhà nên có tung độ $\dfrac{6}{2}=3$, và cao hơn đỉnh tường $2$ m nên có cao độ $3+2=5$. Hai đầu sống mái nằm trên hai đầu hồi $x=0$ và $x=10$: $E(0;3;5)$, $F(10;3;5)$.
+c) $EF$ song song với $Ox$, dài $10$ m. $M$ cách $F$ là $4$ m nên $M$ có hoành độ $10-4=6$, cùng tung độ và cao độ với $E,F$: $M(6;3;5)$.
+Vậy $B(10;6;0)$, $O'(0;0;3)$, $E(0;3;5)$, $F(10;3;5)$ và $M(6;3;5)$ (cùng các toạ độ nền và đỉnh tường ở ý a).
+
+=== P2.3.2
+@ly_thuyet:
+##TC Cần trục, giá đỡ, thiết bị trong hệ trục
+- Cần trục tháp: tháp thẳng đứng nằm trên trục $Oz$ (gốc $O$ ở chân tháp); cần ngang song song mặt đất nên mọi điểm trên cần có cùng cao độ với đỉnh tháp. Xe con và móc câu cùng hoành độ, tung độ; thả dây dài $\ell$ thì cao độ của móc câu thấp hơn xe con $\ell$.
+- Thiết bị có tính đối xứng (giá ba chân, đèn treo ba dây): gốc đặt ở hình chiếu của điểm treo lên mặt đất, điểm treo nằm trên $Oz$; các chân là các đỉnh của đa giác đều tâm $O$, bán kính $r$, đỉnh thứ nhất trên tia $Ox$ và các đỉnh sau lệch nhau góc đều nhau.
+- Vectơ giữa hai điểm: $\overrightarrow{AB}=(x_B-x_A;\,y_B-y_A;\,z_B-z_A)$ (độ dịch chuyển, vectơ chỉ dây, chân giá).
+- Tổng các vectơ từ điểm treo $S$ đến các chân của đa giác đều tâm $O$ bằng $n\overrightarrow{SO}$, tức hướng thẳng đứng xuống dưới.
+
+##PP Toạ độ và vectơ cho cần trục, giá đỡ
+Chọn gốc ở chân tháp hoặc hình chiếu của điểm treo lên mặt đất, $Oz$ thẳng đứng hướng lên, hai trục nằm ngang theo hướng cho sẵn.
+Đổi đơn vị rồi ghi toạ độ các điểm đặc biệt: đỉnh tháp, đầu cần, xe con, móc câu, điểm treo; với chân đối xứng thì dùng bán kính và góc (trên tia $Ox$, rồi quay $120^\circ$, $240^\circ$ với ba chân).
+Tính toạ độ các vectơ cần dùng bằng hiệu toạ độ điểm cuối trừ điểm đầu.
+Kết luận bằng ngữ cảnh: độ dịch chuyển cần thực hiện, vectơ chỉ chân giá...
+
+##CY
+- Móc câu thả xuống thì cao độ giảm: $z_{\text{móc}}=z_{\text{xe con}}-\ell$; đừng cộng.
+- Toạ độ vectơ là điểm cuối trừ điểm đầu: $\overrightarrow{HK}=K-H$, không phải $H-K$.
+
+@vi_du:
+##VD
+Một cần trục tháp có tháp thẳng đứng cao $40$ m đặt tại điểm $O$ trên mặt đất. Cần cẩu nằm ngang, dài $30$ m tính từ đỉnh tháp, hướng về phía Đông. Chọn hệ trục $Oxyz$ có $Ox$ hướng Đông, $Oy$ hướng Bắc, $Oz$ thẳng đứng hướng lên (đơn vị mét). Xe con nằm trên cần, cách tháp $20$ m và thả dây dài $15$ m xuống móc câu $H$. Kiện hàng nằm trên mặt đất tại điểm $K$ cách tháp $12$ m về phía Đông và $9$ m về phía Bắc.
+a) Tìm toạ độ đỉnh tháp $T$, đầu cần $B$, xe con $C$, móc câu $H$ và kiện hàng $K$.
+b) Tìm toạ độ vectơ độ dịch chuyển $\overrightarrow{HK}$ của móc câu để chạm kiện hàng.
+
+Bài giải:
+a) Tháp nằm trên $Oz$ nên đỉnh tháp $T(0;0;40)$. Cần ngang hướng Đông, dài $30$ m nên đầu cần $B(30;0;40)$.
+Xe con cách tháp $20$ m trên cần nên $C(20;0;40)$. Móc câu cùng hoành độ, tung độ với xe con và thấp hơn $15$ m nên $H(20;0;25)$.
+Kiện hàng trên mặt đất, cách tháp $12$ m về phía Đông và $9$ m về phía Bắc nên $K(12;9;0)$.
+b) $\overrightarrow{HK}=(12-20;\,9-0;\,0-25)=(-8;9;-25)$.
+Vậy $T(0;0;40)$, $B(30;0;40)$, $C(20;0;40)$, $H(20;0;25)$, $K(12;9;0)$ và $\overrightarrow{HK}=(-8;9;-25)$: móc câu phải đi về phía Tây $8$ m, về phía Bắc $9$ m và xuống thấp $25$ m.
+
+##VD
+Một giá ba chân dùng để đặt máy ảnh có ba chân chạm mặt đất tại $A$, $B$, $C$ là ba đỉnh của một tam giác đều có tâm $O$ và bán kính đường tròn ngoại tiếp bằng $0{,}6$ m. Đỉnh $S$ của giá nằm ngay phía trên $O$ và cao $1{,}5$ m so với mặt đất. Chọn hệ trục $Oxyz$ có $Oz$ hướng lên trên (đơn vị mét), $A$ nằm trên tia $Ox$ và $B$ có tung độ dương.
+a) Tìm toạ độ $S,A,B,C$.
+b) Tìm toạ độ các vectơ $\overrightarrow{SA}$, $\overrightarrow{SB}$, $\overrightarrow{SC}$ và vectơ tổng $\overrightarrow{SA}+\overrightarrow{SB}+\overrightarrow{SC}$.
+
+Bài giải:
+a) Điểm $S$ nằm trên $Oz$ nên $S(0;0;1{,}5)$. Ba chân nằm trong $(Oxy)$ và cách $O$ là $0{,}6$. Chân $A$ thuộc tia $Ox$ nên $A(0{,}6;0;0)$.
+$B$ và $C$ lệch $A$ lần lượt góc $120^\circ$ và $240^\circ$ quanh $O$: $B(0{,}6\cos120^\circ;\,0{,}6\sin120^\circ;\,0)=(-0{,}3;\,0{,}3\sqrt{3};\,0)$ và $C(0{,}6\cos240^\circ;\,0{,}6\sin240^\circ;\,0)=(-0{,}3;\,-0{,}3\sqrt{3};\,0)$.
+b) $\overrightarrow{SA}=(0{,}6;0;-1{,}5)$, $\overrightarrow{SB}=(-0{,}3;\,0{,}3\sqrt{3};\,-1{,}5)$, $\overrightarrow{SC}=(-0{,}3;\,-0{,}3\sqrt{3};\,-1{,}5)$.
+Tổng: $\overrightarrow{SA}+\overrightarrow{SB}+\overrightarrow{SC}=(0{,}6-0{,}3-0{,}3;\ 0+0{,}3\sqrt{3}-0{,}3\sqrt{3};\ -1{,}5-1{,}5-1{,}5)=(0;0;-4{,}5)$.
+Vậy $S(0;0;1{,}5)$, $A(0{,}6;0;0)$, $B(-0{,}3;0{,}3\sqrt{3};0)$, $C(-0{,}3;-0{,}3\sqrt{3};0)$ và tổng ba vectơ là $(0;0;-4{,}5)=3\overrightarrow{SO}$, hướng thẳng đứng xuống dưới.
+
+## GHI CHÚ CHO CEO
+- Không có dạng nào mô tả mơ hồ phải đổi đích. Hai chỗ tôi tự hiểu: (1) P2.2.1 "hình hộp đứng" tôi hiểu là hộp đứng đáy hình chữ nhật/hình vuông (coi như hộp chữ nhật), còn hộp đứng đáy hình thoi/tam giác đều nằm ở P2.2.3; (2) P2.3.2 ví dụ 2 (giá ba chân) dùng toạ độ cực của tam giác đều nên hơi gần P2.2.3, nhưng đúng loại "thiết bị: toạ độ và vectơ".
+- P1.5.1 và P1.5.2 giữ trong phạm vi chương 1 (chưa dùng toạ độ), đúng ranh giới với P3.7.3 "lực và công viết bằng toạ độ".
+- Lỗi nguồn đã tránh (không chép): NBV8-E (đáp số đầu lời giải lệch kết quả cuối, ví dụ công cầu trượt 306 J và lực căng đèn chùm 17 N), PNL B1D2 (công trọng lực nhân cos60° hai lần, đáp án đúng cho cầu trượt 3,5 m, 25 kg là 428,75 J chứ không phải 214,375 J). Ví dụ công của tôi (dốc 6 m, 30°) tính theo hai cách (tích vô hướng và mgh) cho cùng 588 J.
+- Ít chắc chắn nhất: P1.5.1 ví dụ 2 (đèn chùm 4 xích, giả thiết bốn lực căng bằng nhau và ASC bằng 90 độ do tôi đặt; nguồn NBV có biến thể tương tự nhưng đáp số của nguồn sai nên tôi tự tính lại 10√2 ≈ 14,1 N, khớp bằng số).

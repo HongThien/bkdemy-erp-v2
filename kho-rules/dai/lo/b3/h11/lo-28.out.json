@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "HHC009515",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: tìm đường thẳng vuông góc mặt phẳng (SAD) từ SA⊥đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009516",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009517",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: diện tích hình chiếu vuông góc của tam giác lên mặt phẳng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009518",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: chứng minh BC⊥SB và BD⊥(SAC) từ SA⊥đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009524",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: xét khẳng định vuông góc khi SA⊥(ABCD)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009525",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: tính chất đường thẳng vuông góc mặt phẳng, a⊥(P)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009526",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009527",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: tính góc giữa đường thẳng a và AF của lục giác đều",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009528",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: chứng minh BC⊥(SAB) và diện tích hình chiếu",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009533",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009534",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: góc giữa hai đường thẳng SB và CD",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009535",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "giao điểm Q của SC với (MNP) rồi tính tỉ số SQ/SC bằng vectơ",
+  "can_cu": "Điểm $K$ thuộc mặt phẳng $(EBF)$ nên"
+ },
+ {
+  "ma_cau": "HHC009536",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: chứng minh NP⊥(SME), góc giữa AB và SN",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009544",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: góc giữa SD và BC qua đường song song",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009545",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: tính chất a⊥(P), chọn mệnh đề sai",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009546",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: mệnh đề sai về BC⊥SB khi SA⊥(ABC)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009547",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009548",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: đếm đường thẳng vuông góc với BC",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009549",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: chứng minh AD⊥(SAB)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009550",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc khoảng cách: đường ngắn nhất từ mặt bên đến tâm đáy kim tự tháp",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009556",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: góc giữa AB và A'C' trong hình lập phương",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009557",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: số đường thẳng qua A vuông góc với d",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009558",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: hình chiếu vuông góc của SC lên (SAB)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009559",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: góc giữa BC và AD trong tứ diện cân",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009560",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: chứng minh CD⊥(SAD), CM⊥(SAB)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009565",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: định nghĩa hai đường thẳng vuông góc",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009566",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: mệnh đề sai khi SB⊥(ABC)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009567",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009568",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: chứng minh BC⊥(SHE), góc giữa hai mặt phẳng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009577",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: mệnh đề sai về vuông góc trong tứ diện đều",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009578",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: góc giữa BA' và CD trong hình lập phương",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009579",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: điều kiện đường thẳng vuông góc mặt phẳng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009580",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: góc giữa cạnh bên SC và mặt đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009581",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: hình chiếu của SC lên (SAB), đáy hình chữ nhật",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009582",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009583",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc khối đa diện: tính đường cao chóp lục giác đều từ diện tích đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009584",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: sin góc giữa SA và mặt phẳng (SHK)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009591",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: BC⊥(SDC) khi SD⊥đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009592",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: cạnh bên hình hộp chữ nhật vuông góc mặt đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009593",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: SA⊥(ABC) suy ra vuông góc CB",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009594",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: hai mặt phẳng (SAB),(SAD) vuông góc",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009595",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009596",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: chứng minh AC⊥(SBD) đáy hình thoi",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009599",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009600",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: AC⊥(SBD) với SB⊥đáy, đáy hình thoi (bản 1,0 điểm)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009608",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: AB⊥(SAD) với đáy hình chữ nhật",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009609",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: hình chiếu của S lên đáy khi SA=SC, SB=SD",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009610",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: BD⊥SC khi đáy hình thoi, SA⊥đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009611",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: định nghĩa đường thẳng vuông góc mặt phẳng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009612",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009613",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: góc giữa BC và MN trong tứ diện",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009614",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: góc SC–(SAD), tính độ dài SH",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009622",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: mệnh đề sai về a⊥(P)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009623",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: điều kiện a⊥(P) cần hai đường cắt nhau",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009624",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: hình chiếu của SB trên (ABC)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009625",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: phát biểu sai về vuông góc, chóp đáy vuông",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009626",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: góc giữa BA' và CD trong hình hộp",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009627",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009628",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: BC⊥(SAB), tam giác CHK vuông",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009638",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: góc giữa cạnh bên SB và đáy chóp đều",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009639",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: đường thẳng vuông góc AC trong hình lập phương",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009640",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: góc BA' và CD, hình lập phương",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009641",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: khẳng định đúng khi SA=SC, SB=SD, đáy hình thoi",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009642",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: hình chiếu của SB lên đáy khi SD⊥đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009643",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009644",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: góc giữa SC và AB, kim tự tháp",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009645",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: góc giữa cột và mặt đất, bóng cột",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009646",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: chứng minh AC⊥(VBD), góc giữa hai đường thẳng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009652",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: góc SB và đáy khi SA⊥đáy",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC009653",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quan hệ vuông góc: khẳng định đúng về b⊥(P), a∥(P)",
+  "can_cu": null
+ }
+]

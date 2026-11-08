@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T306000000211",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng 'Vẽ hình theo số đo cho trước' (dựng hình phẳng); không phải nhận biết/tính chất/tính toán."
+ },
+ {
+  "ma_cau": "T306000000212",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng 'Vẽ hình theo số đo cho trước' (dựng hình phẳng); không phải nhận biết/tính chất/tính toán."
+ },
+ {
+  "ma_cau": "T306000000213",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng 'Vẽ hình theo số đo cho trước' (dựng hình phẳng); không phải nhận biết/tính chất/tính toán."
+ },
+ {
+  "ma_cau": "T306000000214",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng 'Vẽ hình theo số đo cho trước' (dựng hình phẳng); không phải nhận biết/tính chất/tính toán."
+ },
+ {
+  "ma_cau": "T306000000215",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng 'Vẽ hình theo số đo cho trước' (dựng hình phẳng); không phải nhận biết/tính chất/tính toán."
+ },
+ {
+  "ma_cau": "T306000000216",
+  "dang_bai_id": "NDB01220",
+  "chac": "vua",
+  "ly_do": "Chỉ ra tam giác đều, hình thang cân, lục giác đều trên hình vẽ; phụ thuộc hình nên tối đa vua."
+ },
+ {
+  "ma_cau": "T306000000217",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306000000218",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306000000219",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101001",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101003",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101004",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101005",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101006",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101007",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101008",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101009",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101010",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101011",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101012",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101013",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101014",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101015",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101016",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101017",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101018",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101019",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101020",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101021",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101022",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101023",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101024",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101025",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101026",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101027",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101028",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101029",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101030",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101031",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101032",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101033",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101034",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101035",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101036",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101037",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101038",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101039",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101040",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101041",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101042",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101043",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101044",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101045",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101046",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101047",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101048",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101049",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101050",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101051",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101052",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101053",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101054",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101055",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101056",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101057",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ },
+ {
+  "ma_cau": "T306010101058",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101059",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101060",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101061",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn thực tế dùng chu vi/diện tích, nội dung phụ thuộc hình vẽ (phần hình thoi/bình hành/lối đi...)."
+ },
+ {
+  "ma_cau": "T306010101062",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Bài toán lời văn thực tế (lát gạch, rào, giá tiền...) dùng chu vi/diện tích; số liệu đủ trong đề."
+ }
+]

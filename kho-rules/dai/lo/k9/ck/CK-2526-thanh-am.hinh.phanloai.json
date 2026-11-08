@@ -1,0 +1,10 @@
+{
+  "P1 Bài 1": { "tt": "khong_tt", "ghi": "Flycam: tam giác vuông, tỉ số lượng giác của góc nhọn" },
+  "P1 Bài 2": { "tt": "khong_tt", "ghi": "Góc nâng tòa nhà: hai tam giác vuông chung chiều cao" },
+  "P1 Bài 3": { "tt": "khong_tt", "ghi": "Thiết bị chiếu sáng gắn tường: hai tam giác vuông, tỉ số lượng giác" },
+  "P1 Bài 5": { "tt": "khong_tt", "ghi": "Hình chữ nhật nội tiếp tam giác đều cạnh 6 m: tan 60°, diện tích lớn nhất (trạm soát bổ sung)" },
+  "P1 Bài 6": { "tt": "khong_tt", "ghi": "Hình chữ nhật nội tiếp tam giác đều cạnh 16 dm: tan 60°, diện tích lớn nhất (trạm soát bổ sung)" },
+  "P2 Bài 1": { "tt": "khong_tt", "ghi": "Nửa đường tròn đường kính AB: góc vuông, tam giác đồng dạng, không có tiếp tuyến" },
+  "P2 Bài 2": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến MA, MB cắt nhau tại M (OM trung trực AB, OA² = OH·OM)" },
+  "P2 Bài 3": { "tt": "tt_khac", "ghi": "Một tiếp tuyến AB và cát tuyến ACD (không phải hai tiếp tuyến cắt nhau)" }
+}

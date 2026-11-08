@@ -1,0 +1,14 @@
+{
+  "P1 Bài 1": { "tt": "khong_tt", "ghi": "Toán thực tế: tam giác vuông ABH, độ dốc 7° (sin), không có đường tròn." },
+  "P1 Bài 2": { "tt": "khong_tt", "ghi": "Toán thực tế: ngọn đèn – góc nhìn 30° (tan), không có đường tròn." },
+  "P1 Bài 3": { "tt": "khong_tt", "ghi": "Toán thực tế: hai thuyền, hiệu IB − IA bằng tan, không có đường tròn." },
+  "P1 Bài 4": { "tt": "khong_tt", "ghi": "Toán thực tế: cầu Cần Thơ, tỉ lệ xích + tan, không có đường tròn." },
+  "P1 Bài 5": { "tt": "hai_tt", "ghi": "Bánh đà: hai tiếp tuyến MA, MB cắt nhau tại M (MA = MB, MO phân giác ∠AMB và ∠AOB)." },
+  "P1 Bài 6": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến IC, ID cắt nhau tại I; chứng minh ID là tiếp tuyến bằng △OCI = △ODI." },
+  "P1 Bài 7": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến MA, MC cắt nhau tại M; chứng minh MC là tiếp tuyến bằng △OAM = △OCM." },
+  "P1 Bài 8": { "tt": "tt_khac", "ghi": "Chỉ có tiếp tuyến Ax (dùng Ax ⊥ AB) + cát tuyến phân giác AE; ý d quỹ tích điểm D." },
+  "P1 Bài 9": { "tt": "ba_tt", "ghi": "Ba tiếp tuyến: Ax tại A, BD tại B (chứng minh) và k tại E; CD = CA + BD, AC·BD = R²." },
+  "P1 Bài 10": { "tt": "ba_tt", "ghi": "Ba tiếp tuyến tại A, B và M; CD = AC + BD, ∠COD = 90°, MEOF hình chữ nhật, min AC + BD." },
+  "P1 Bài 11": { "tt": "tt_khac", "ghi": "Chứng minh KM là tiếp tuyến của (O) (∠KMO = 90°); ba đường cao đồng quy, hình thoi MNKC khi MA = R." },
+  "P1 Bài 12": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến MA, MB cắt nhau tại M (OM trung trực AB); OE·OM = R², AB qua điểm cố định F." }
+}

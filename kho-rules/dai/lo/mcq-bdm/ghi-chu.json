@@ -1,0 +1,31 @@
+{
+  "hoi": [
+    { "khoi": "6", "ma_dang": "NDB00384 · NDB00385", "ten_dang": "Chia hết nhóm 2 / ghép 3 số hạng liên tiếp", "n": "6 + 5", "ly_do": "Đề là CHỨNG MINH chia hết (\"Chứng minh A ⋮ 3\"), đáp số kho chỉ là \"Có\". Khuôn 4 đáp án tính toán không hợp — spec-mcq-quy-trinh-sinh §2: Có/Không kiểu chứng minh = MƠ HỒ.", "de_xuat": "(a) 4 phương án = 4 cách NHÓM số hạng (nhóm 2 / nhóm 3 / nhóm 4 / không nhóm được) — hỏi \"nhóm thế nào để thấy A ⋮ 3?\" (đổi câu hỏi phụ, câu gốc giữ); (b) Điền Ô (trắc nghiệm từng phần) trên lời giải; (c) để TLN/giấy." },
+    { "khoi": "6", "ma_dang": "NDB00388 · NDB00389 · NDB00390", "ten_dang": "Chứng tỏ n+a và bn+c nguyên tố cùng nhau (không nhân / nhân 1 / nhân 2 hệ số)", "n": "18 + 6 + 18", "ly_do": "Câu CHỨNG MINH, đáp số kho = nhắc lại kết luận. Không có giá trị để làm 4 đáp án.", "de_xuat": "(a) MCQ trên BƯỚC then chốt: \"Gọi d = ƯCLN(2n+5, 3n+7). Khi đó d là ước của số nào?\" — 4 phương án 1 / 2 / 29 / 3 (sai do nhân hệ số sai); (b) Điền Ô. Cả hai đều đổi câu hỏi so với đề gốc ⇒ cần Thùy chốt." },
+    { "khoi": "6", "ma_dang": "NDB00397 · NDB00398 · NDB00399", "ten_dang": "Cho (a,b)=1, chứng minh 2 biểu thức nguyên tố cùng nhau", "n": "6 + 6 + 10", "ly_do": "Như trên — câu chứng minh, không có đáp số.", "de_xuat": "Như trên (MCQ bước then chốt hoặc Điền Ô)." },
+    { "khoi": "7", "ma_dang": "NDB00441", "ten_dang": "Dãy luỹ thừa: tử thay đổi (cách n đơn vị) — chứng minh A < 1/8", "n": "6", "ly_do": "Câu CHỨNG MINH bất đẳng thức (đã ghi trong mcq-auto.mjs: T107010505 loại vì không có đáp số rời rạc).", "de_xuat": "MCQ bước then chốt (tính 4A + A = …) hoặc Điền Ô." },
+    { "khoi": "7", "ma_dang": "NDB01347", "ten_dang": "So sánh phân thức có bậc tử và mẫu khác nhau", "n": "1", "ly_do": "Đáp số chỉ có 3 khả năng A > B / A < B / A = B — không đủ 4 phương án phân biệt (spec §2: ≤3 kết luận = MƠ HỒ).", "de_xuat": "Cho phép MCQ 3 phương án, hoặc để TLN." },
+    { "khoi": "9", "ma_dang": "NDB00504", "ten_dang": "Chứng minh BĐT P > k với mọi x > 0", "n": "5", "ly_do": "Câu CHỨNG MINH, đáp số kho = nhắc lại kết luận.", "de_xuat": "MCQ \"GTNN của P là?\" (đổi câu hỏi) hoặc Điền Ô." }
+  ],
+  "loi_kho": [
+    { "ma_cau": "T106020803002 … T106020803011 (10 câu)", "ma_dang": "NDB01412", "van_de": "Đề VÔ NGHIỆM với đáp số 3: vd 3^x(3^x+1)(3^x+2) + 9^y = 2107 — lời giải ghi 2106 = 27·28·29 nhưng 27·28·29 = 21924; quét x ≤ 7, y ≤ 11 không cặp nào thoả. Chỉ câu 001 (721 = 8·9·10 + 1) đúng. Clone đổi số hỏng — cần sửa đề hoặc rút." },
+    { "ma_cau": "T106020601030 · 031 · 032 · 033", "ma_dang": "NDB00367", "van_de": "Đề tự mâu thuẫn: theo quy luật đan dấu số hạng cuối phải mang dấu \"−\" (vd 1 − 2^4 + 2^8 − …: 2^100 là số hạng thứ 26) nhưng đề viết \"+2^{100}\"; đáp số kho (2^104+1)/17 chỉ đúng nếu đổi số mũ cuối thành 2^96 hoặc 2^104." },
+    { "ma_cau": "T112050302008", "ma_dang": "NDB00758", "van_de": "Đáp số kho 10.02 SAI — cùng bài với T1120000001442 (10^7 / (219,84·24·365) ≈ 5,19)." },
+    { "ma_cau": "T112050302009 · T112050302011", "ma_dang": "NDB00758", "van_de": "Câu hỏng: \"đề\" chỉ là mẩu lời giải (\"10^7/(219,84·24·365)…\" và \"(khán giả)\") — bóc tách nhầm, nên rút khỏi kho." },
+    { "ma_cau": "T112050302010", "ma_dang": "NDB00758", "van_de": "Đề vỡ LaTeX (\"\\mathrm{St}\\ \\ \\mathrm{in}\\ \\ \\mathrm{left}[0;…\") — HS không đọc được hàm số. Đáp số 880 đúng theo lời giải." },
+    { "ma_cau": "T112050301010", "ma_dang": "NDB00631", "van_de": "Lời giải cộng các mảnh ra 24 (2,5 + 10 + 4 + 6 + 1,5) chứ không phải 21 như đáp số — cần đối chiếu hình (có thể đoạn 30 km/h chỉ kéo dài 0,1 h)." },
+    { "ma_cau": "T112050302004", "ma_dang": "NDB00759", "van_de": "Câu 2 ý (1)(2) mà đáp số chỉ có ý (1) = 74,89 — không sinh MCQ cho câu nhiều ý." },
+    { "ma_cau": "T112000000160 · T112050301022 · T112050301026 · T1120000001442", "ma_dang": "NDB00631 · NDB00758", "van_de": "Đáp số ĐÚNG nhưng viết dấu CHẤM thập phân (21.3 · 10.7 · 21.6 · 5.19); cổng kiểm đọc theo quy ước VN nên không khớp phương án \"21,3\". Sửa đáp số kho sang dấu phẩy là sinh được ngay." },
+    { "ma_cau": "T112050301007 · 025 · 027 · T112050302006 · 007", "ma_dang": "NDB00631 · NDB00758", "van_de": "Câu gốc CHƯA DUYỆT (da_duyet = false, đang \"tạm dùng\") — spec-kho-chuan §4: form TN chỉ sinh cho câu đã qua Cửa 1. Đã sinh rồi đưa vào kho rác (xoa_at, có lý do); duyệt câu xong chạy lại lo1b-k12-may.kq.json là có." },
+    { "ma_cau": "T109090305001", "ma_dang": "NDB01212", "van_de": "lua_chon = 4 chuỗi RỖNG [\"\",\"\",\"\",\"\"] mà loai_cau = tra_loi_ngan ⇒ không phải trắc nghiệm gốc, cũng không sinh form được (pipeline chỉ nhận câu lua_chon null). Nên xoá lua_chon rỗng." }
+  ],
+  "con_lai": [
+    { "khoi": "6", "n_dang": "43", "n_cau": "192", "ly_do": "Không câu nào vào kho chuẩn (câu mới chưa duyệt Cửa 1); 75 câu trong đó đã là trắc nghiệm gốc có đáp án ⇒ duyệt câu là có MCQ ngay. Thêm 10 dạng (40 câu) kho chuẩn nhưng KHÔNG có đáp án." },
+    { "khoi": "7", "n_dang": "4", "n_cau": "48", "ly_do": "Chưa vào kho chuẩn (14 câu là trắc nghiệm gốc). Thêm 2 dạng (3 câu) kho chuẩn không đáp án." },
+    { "khoi": "8", "n_dang": "2", "n_cau": "15", "ly_do": "Chưa vào kho chuẩn (3 trắc nghiệm gốc). Thêm 3 dạng (11 câu) kho chuẩn không đáp án. NDB00687 (1 câu, nghiệm chứa căn (−1 ± √97)/6): cổng kiểm máy chưa đọc được đáp số có căn — việc kỹ thuật, chưa làm." },
+    { "khoi": "9", "n_dang": "5", "n_cau": "8", "ly_do": "Chưa vào kho chuẩn. Thêm 3 dạng (33 câu) kho chuẩn không đáp án." },
+    { "khoi": "10", "n_dang": "24", "n_cau": "469", "ly_do": "Không câu nào vào kho chuẩn; 230 câu đã là trắc nghiệm gốc có đáp án ⇒ duyệt câu (Cửa 1) là có MCQ, không cần sinh." },
+    { "khoi": "11", "n_dang": "23", "n_cau": "149", "ly_do": "Không câu nào vào kho chuẩn; 111 câu đã là trắc nghiệm gốc có đáp án." },
+    { "khoi": "12", "n_dang": "1", "n_cau": "1", "ly_do": "Kho chuẩn không đáp án. NDB00758 còn 0 form sau khi rút 5 form câu chưa duyệt (xem bảng câu kho)." }
+  ]
+}

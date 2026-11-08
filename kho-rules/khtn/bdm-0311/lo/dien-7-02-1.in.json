@@ -1,0 +1,1067 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00317",
+   "khoi": "7",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Hóa trị và công thức Hóa học",
+   "nhom": "TÌM HOÁ TRỊ VÀ LẬP CÔNG THỨC HOÁ HỌC THEO QUY TẮC HOÁ TRỊ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC1. Kiến thức cần nhớ\nQuy tắc hoá trị\nTrong công thức hoá học của hợp chất hai thành phần $\\mathrm{A_xBy}$ (A, B là nguyên tố hoặc nhóm nguyên tử có hoá trị lần lượt là a, b), tích chỉ số và hoá trị của thành phần này bằng tích chỉ số và hoá trị của thành phần kia.\n\n##TC2. Công thức\n$\\mathrm{a \\times x = b \\times y}$\n\n##TC3. Các bước làm bài\nHóa trị\nBước 1. Gọi hoá trị cần tìm là a.\nBước 2. Áp dụng quy tắc hoá trị, thay chỉ số và hoá trị đã biết.\nBước 3. Tính a và ghi bằng chữ số La Mã.\nLập công thức hoá học\nBước 1. Gọi công thức là $\\mathrm{A_xBy}$.\nBước 2. Áp dụng quy tắc hoá trị: $\\dfrac{\\mathrm{x}}{\\mathrm{y}} = \\dfrac{\\mathrm{b}}{\\mathrm{a}}$, rút gọn thành tỉ lệ số nguyên tối giản.\nBước 3. Viết công thức với x, y vừa tìm; nhóm nguyên tử có chỉ số lớn hơn 1 thì đặt trong ngoặc.\n\n##CY4. Lưu ý\nKhi $\\mathrm{a = b}$ thì $\\mathrm{x = y = 1}$.\nNhóm nguyên tử được coi như một thành phần; không tách các nguyên tử trong nhóm khi áp dụng quy tắc hoá trị.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00318",
+   "khoi": "7",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Hóa trị và công thức Hóa học",
+   "nhom": "TÍNH PHẦN TRĂM KHỐI LƯỢNG NGUYÊN TỐ TRONG HỢP CHẤT",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nPhần trăm khối lượng của một nguyên tố trong hợp chất cho biết nguyên tố đó chiếm bao nhiêu phần trăm khối lượng phân tử.\nTổng phần trăm khối lượng các nguyên tố trong hợp chất bằng $100\\%$.\n\n##TC 2. Công thức\nPhần trăm khối lượng của nguyên tố X trong hợp chất:\n$$\\%\\mathrm{X} = \\dfrac{\\mathrm{a} \\times \\mathrm{KLNT}}{\\mathrm{KLPT}} \\times 100\\%$$\nTrong đó a là số nguyên tử X trong một phân tử, KLNT là khối lượng nguyên tử của X, KLPT là khối lượng phân tử của hợp chất (đều tính theo amu).\n\n##PP 3. Các bước làm bài\nBước 1. Tính khối lượng phân tử của hợp chất.\nBước 2. Tính tổng khối lượng các nguyên tử của nguyên tố cần tìm trong một phân tử (nhân với chỉ số).\nBước 3. Áp dụng công thức, làm tròn theo yêu cầu.\nBước 4. Khi so sánh hai chất: tính phần trăm của nguyên tố trong từng chất rồi so sánh.\n\n##CY 4. Lưu ý\nVới nhóm nguyên tử trong ngoặc, nhân chỉ số trong ngoặc với chỉ số ngoài ngoặc để được số nguyên tử.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00319",
+   "khoi": "7",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Hóa trị và công thức Hóa học",
+   "nhom": "XÁC ĐỊNH CÔNG THỨC HOÁ HỌC KHI BIẾT PHẦN TRĂM VÀ KHỐI LƯỢNG PHÂN TỬ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nTừ phần trăm khối lượng của mỗi nguyên tố và khối lượng phân tử, tính được khối lượng của nguyên tố đó trong một phân tử, rồi chia cho khối lượng nguyên tử để được số nguyên tử.\n\n##TC 2. Công thức\nSố nguyên tử của nguyên tố A trong một phân tử:\n$$n_A = \\dfrac{\\%A \\times M}{100 \\times M_A}$$\nTrong đó $M$ là khối lượng phân tử của hợp chất, $M_A$ là khối lượng nguyên tử A.\n\n##PP 3. Các bước làm bài\nBước 1. Nếu đề chưa cho đủ phần trăm, tính phần trăm của nguyên tố còn lại bằng cách lấy $100\\%$ trừ các phần trăm đã biết.\nBước 2. Tính số nguyên tử của từng nguyên tố theo công thức trên; làm tròn đến số nguyên gần nhất.\nBước 3. Viết công thức hoá học.\n\n##CY 4. Lưu ý\nPhần trăm trong đề thường đã làm tròn nên kết quả tính số nguyên tử có thể xấp xỉ số nguyên.\nHai chất có cùng phần trăm các nguyên tố nhưng khác khối lượng phân tử thì có công thức khác nhau (ví dụ $\\mathrm{C_2H_2}$ và $\\mathrm{C_6H_6}$).",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00320",
+   "khoi": "7",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Hóa trị và công thức Hóa học",
+   "nhom": "Ý nghĩa công thức hóa học và hóa trị",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC1. Kiến thức cần nhớ\nCông thức hoá học dùng để biểu diễn chất, gồm kí hiệu hoá học của các nguyên tố và chỉ số ở chân mỗi kí hiệu. Chỉ số cho biết số nguyên tử của nguyên tố trong một phân tử; chỉ số 1 không ghi.\nĐơn chất: công thức chỉ có một kí hiệu hoá học, ví dụ $\\mathrm{O_2}$, $\\mathrm{Cl_2}$, $\\mathrm{Fe}$. Hợp chất: công thức có từ hai kí hiệu hoá học trở lên, ví dụ $\\mathrm{H_2O}$, $\\mathrm{NaCl}$.\nSố đứng trước công thức là hệ số, chỉ số phân tử: $\\mathrm{2H_2O}$ là hai phân tử nước; số đứng trước kí hiệu nguyên tố chỉ số nguyên tử riêng rẽ: $\\mathrm{3O}$ là ba nguyên tử oxygen.\nVới nhóm nguyên tử đặt trong ngoặc, chỉ số ngoài ngoặc áp dụng cho cả nhóm: $\\mathrm{Ca(OH)_2}$ có 2 nhóm $\\mathrm{OH}$\nCông thức hoá học cho biết: các nguyên tố tạo nên chất; số nguyên tử mỗi nguyên tố trong một phân tử; khối lượng phân tử của chất.\nHoá trị là con số biểu thị khả năng liên kết của nguyên tử nguyên tố này với nguyên tử khác. Hoá trị được ghi bằng chữ số La Mã.\nHoá trị của hydrogen quy ước là I; oxygen thường có hoá trị II.\nTrong hợp chất cộng hoá trị, hoá trị của nguyên tố bằng số cặp electron dùng chung của nguyên tử đó.\n\n##TC2. Hoá trị thường gặp\n$\\begin{array}{|l|l|}\\hline\\text{Nguyên tố, nhóm nguyên tử} & \\text{Hoá trị} \\\\ \\hline\\mathrm{H, Na, K, Ag, Cl} \\text{ (với kim loại, hydrogen); nhóm } \\mathrm{OH, NO_3} & \\text{I} \\\\ \\hline\\mathrm{O, Mg, Ca, Ba, Zn} \\text{; nhóm } \\mathrm{SO_4, CO_3} & \\text{II} \\\\ \\hline\\mathrm{Al} \\text{; nhóm } \\mathrm{PO_4} & \\text{III} \\\\ \\hline\\mathrm{Cu} & \\text{I, II} \\\\ \\hline\\mathrm{Fe} & \\text{II, III} \\\\ \\hline\\mathrm{C} & \\text{II, IV} \\\\ \\hline\\mathrm{S} & \\text{II, IV, VI} \\\\ \\hline\\mathrm{N} & \\text{I, II, III, IV, V} \\\\ \\hline\\mathrm{P} & \\text{III, V} \\\\ \\hline\\end{array}$\n\n##PP3. Các bước làm bài\nBước 1. Đọc các kí hiệu hoá học để biết các nguyên tố tạo nên chất.\nBước 2. Đọc chỉ số (kể cả chỉ số ngoài ngoặc) để biết số nguyên tử mỗi nguyên tố.\nBước 3. Phân biệt hệ số (đứng trước công thức) với chỉ số (ở chân kí hiệu).\n\n##CY4. Lưu ý\nViết đúng kí hiệu hoá học: chữ cái đầu in hoa, chữ cái thứ hai (nếu có) viết thường; chỉ số viết nhỏ ở chân kí hiệu.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00321",
+   "khoi": "7",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Hóa trị và công thức Hóa học",
+   "nhom": "TÌM NGUYÊN TỐ, CÔNG THỨC TỪ DỮ KIỆN GIÁN TIẾP",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nLập công thức từ tỉ lệ khối lượng\nTỉ lệ số nguyên tử các nguyên tố bằng tỉ lệ giữa khối lượng mỗi nguyên tố và khối lượng nguyên tử của nó.\nTìm nguyên tố R\nĐặt khối lượng nguyên tử của R là $\\mathrm{M_R}$, lập phương trình theo phần trăm khối lượng hoặc khối lượng phân tử, giải ra $\\mathrm{M_R}$ rồi đối chiếu bằng khối lượng nguyên tử.\n\n##TC2. Công thức\n$$x:y = \\dfrac{m_A}{M_A} : \\dfrac{m_B}{M_B}$$\nVới hợp chất $\\mathrm{R_x B_y}$ có khối lượng phân tử $\\mathrm{M}$, phần trăm khối lượng của $\\mathrm{R}$ là $ \\%\\mathrm{R} = \\dfrac{x \\times \\mathrm{M_R}}{M} \\times 100 \\%$.\nKhi biết $\\mathrm{M}$:\n$$\\mathrm{M_R} = \\dfrac{M - y \\times M_B}{x}$$\n\n##PP 3. Các bước làm bài\nBước 1. Xác định dữ kiện: tỉ lệ khối lượng, phần trăm hoặc khối lượng phân tử.\nBước 2. Lập tỉ lệ hoặc phương trình với ẩn cần tìm.\nBước 3. Giải, đưa về tỉ lệ số nguyên tối giản hoặc tìm $\\mathrm{M_R}$.\nBước 4. Kết luận công thức hoặc tên nguyên tố.\n\n##CY 4. Lưu ý\nKhi dữ kiện là khối lượng các nguyên tố trong một mẫu chất, tỉ lệ khối lượng không phụ thuộc vào khối lượng mẫu.\nKiểm tra lại kết quả bằng cách tính ngược phần trăm hoặc khối lượng phân tử.",
+   "can_dien_ly_thuyet_nhom": false
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB00712",
+   "nhom_id": "KNB00317",
+   "thu_tu": 1,
+   "dang": "TÌM HOÁ TRỊ TRONG HỢP CHẤT HAI NGUYÊN TỐ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07020301032",
+     "loai": "trac_nghiem",
+     "de": "Khi đốt phosphorus trong không khí tạo thành $\\mathrm{P_2O_5}$. Biết $\\mathrm{O}$ có hoá trị $\\mathrm{II}$. Hoá trị của $\\mathrm{P}$ trong hợp chất này là",
+     "lua_chon": [
+      "II",
+      "III",
+      "IV",
+      "V"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Gọi hoá trị của $\\mathrm{P}$ là $\\mathrm{a}$. Theo quy tắc hoá trị:\n$\\mathrm{2 \\times a = 5 \\times 2}$\n$\\mathrm{a = \\dfrac{5 \\times 2}{2} = 5}$\nVậy $\\mathrm{P}$ có hoá trị $\\mathrm{V}$."
+    },
+    {
+     "ma_cau": "K07020301029",
+     "loai": "trac_nghiem",
+     "de": "Cho hợp chất $\\mathrm{MnO_2}$. Biết $\\mathrm{O}$ có hoá trị $\\mathrm{II}$. Hoá trị của $\\mathrm{Mn}$ trong hợp chất này là",
+     "lua_chon": [
+      "II",
+      "IV",
+      "V",
+      "VI"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Gọi hoá trị của $\\mathrm{Mn}$ là $\\mathrm{a}$. Theo quy tắc hoá trị:\n$1 \\times \\mathrm{a} = 2 \\times 2$\n$\\mathrm{a} = 2 \\times 2 = 4$\nVậy $\\mathrm{Mn}$ có hoá trị $\\mathrm{IV}$."
+    },
+    {
+     "ma_cau": "K07020301033",
+     "loai": "trac_nghiem",
+     "de": "Cho hợp chất $\\mathrm{Al_2O_3}$. Biết $\\mathrm{O}$ có hoá trị $\\mathrm{II}$. Hoá trị của $\\mathrm{Al}$ trong hợp chất này là",
+     "lua_chon": [
+      "I",
+      "II",
+      "III",
+      "VI"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Gọi hoá trị của $\\mathrm{Al}$ là $\\mathrm{a}$. Theo quy tắc hoá trị:\n$2 \\times \\mathrm{a} = 3 \\times 2$\n$\\mathrm{a} = \\dfrac{3 \\times 2}{2} = 3$\nVậy $\\mathrm{Al}$ có hoá trị $\\mathrm{III}$."
+    },
+    {
+     "ma_cau": "K07020301021",
+     "loai": "trac_nghiem",
+     "de": "Khi đốt dải magnesium tạo thành chất bột trắng $\\mathrm{MgO}$. Biết $\\mathrm{O}$ có hoá trị $\\mathrm{II}$. Hoá trị của $\\mathrm{Mg}$ trong hợp chất này là",
+     "lua_chon": [
+      "I",
+      "II",
+      "III",
+      "IV"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Gọi hoá trị của $\\mathrm{Mg}$ là $\\mathrm{a}$. Theo quy tắc hoá trị:\n$1 \\times \\mathrm{a} = 1 \\times 2$\n$\\mathrm{a} = 1 \\times 2 = 2$\nVậy $\\mathrm{Mg}$ có hoá trị $\\mathrm{II}$."
+    },
+    {
+     "ma_cau": "K07020301023",
+     "loai": "trac_nghiem",
+     "de": "Cho hợp chất $\\mathrm{Cu_2O}$. Biết $\\mathrm{O}$ có hoá trị II. Hoá trị của $\\mathrm{Cu}$ trong hợp chất này là",
+     "lua_chon": [
+      "I",
+      "II",
+      "III",
+      "IV"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Gọi hoá trị của $\\mathrm{Cu}$ là a. Theo quy tắc hoá trị:\n$2 \\times \\mathrm{a} = 1 \\times 2$\n$\\mathrm{a} = \\dfrac{1 \\times 2}{2} = 1$\nVậy $\\mathrm{Cu}$ có hoá trị I."
+    },
+    {
+     "ma_cau": "K07020301028",
+     "loai": "trac_nghiem",
+     "de": "Cho hợp chất $\\mathrm{FeS}$. Biết $\\mathrm{S}$ có hoá trị $\\mathrm{II}$. Hoá trị của $\\mathrm{Fe}$ trong hợp chất này là",
+     "lua_chon": [
+      "I",
+      "II",
+      "III",
+      "IV"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Gọi hoá trị của $\\mathrm{Fe}$ là a. Theo quy tắc hoá trị:\n$1 \\times \\mathrm{a} = 1 \\times 2$\n$\\mathrm{a} = 1 \\times 2 = 2$\nVậy $\\mathrm{Fe}$ có hoá trị $\\mathrm{II}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00713",
+   "nhom_id": "KNB00317",
+   "thu_tu": 2,
+   "dang": "TÌM HOÁ TRỊ TRONG HỢP CHẤT CÓ NHÓM NGUYÊN TỬ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07020301042",
+     "loai": "trac_nghiem",
+     "de": "Cho hợp chất $\\mathrm{Fe_2(SO_4)_3}$. Biết nhóm $\\mathrm{SO_4}$ có hoá trị II. Hoá trị của $\\mathrm{Fe}$ trong hợp chất này là",
+     "dap_an": "III",
+     "loi_giai": "Gọi hoá trị của $\\mathrm{Fe}$ là $\\mathrm{a}$. Theo quy tắc hoá trị:\n$2 \\times \\mathrm{a} = 3 \\times 2$\n$\\mathrm{a} = \\dfrac{3 \\times 2}{2} = 3$\nVậy $\\mathrm{Fe}$ có hoá trị III."
+    },
+    {
+     "ma_cau": "K07020301039",
+     "loai": "trac_nghiem",
+     "de": "Cho hợp chất $\\mathrm{Mg_3(PO_4)_2}$. Biết nhóm $\\mathrm{PO_4}$ có hoá trị $\\mathrm{III}$. Hoá trị của $\\mathrm{Mg}$ trong hợp chất này là",
+     "lua_chon": [
+      "I",
+      "II",
+      "III",
+      "IV"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Gọi hoá trị của $\\mathrm{Mg}$ là $\\mathrm{a}$. Theo quy tắc hoá trị:\n$3 \\times \\mathrm{a} = 2 \\times 3$\n$\\mathrm{a} = \\dfrac{2 \\times 3}{3} = 2$\nVậy $\\mathrm{Mg}$ có hoá trị $\\mathrm{II}$."
+    },
+    {
+     "ma_cau": "K07020301045",
+     "loai": "trac_nghiem",
+     "de": "Cho hợp chất $\\mathrm{Fe(OH)_3}$. Biết $\\mathrm{Fe}$ có hoá trị III. Hoá trị của nhóm $\\mathrm{OH}$ trong hợp chất này là",
+     "lua_chon": [
+      "I",
+      "II",
+      "III",
+      "IV"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Gọi hoá trị của nhóm $\\mathrm{OH}$ là a.\nTheo quy tắc hoá trị:\n$3 \\times a = 1 \\times 3$\n$a = \\dfrac{1 \\times 3}{3} = 1$\nVậy nhóm $\\mathrm{OH}$ có hoá trị I."
+    },
+    {
+     "ma_cau": "K07020301041",
+     "loai": "trac_nghiem",
+     "de": "Cho hợp chất $\\mathrm{Ag_2SO_4}$. Biết nhóm $\\mathrm{SO_4}$ có hoá trị II. Hoá trị của $\\mathrm{Ag}$ trong hợp chất này là",
+     "dap_an": "I",
+     "loi_giai": "Gọi hoá trị của $\\mathrm{Ag}$ là $\\mathrm{a}$. Theo quy tắc hoá trị:\n$2 \\times \\mathrm{a} = 1 \\times 2$\n$\\mathrm{a} = \\dfrac{1 \\times 2}{2} = 1$\nVậy $\\mathrm{Ag}$ có hoá trị I."
+    },
+    {
+     "ma_cau": "K07020301040",
+     "loai": "trac_nghiem",
+     "de": "Cho hợp chất $\\mathrm{K_3PO_4}$. Biết nhóm $\\mathrm{PO_4}$ có hoá trị III. Hoá trị của $\\mathrm{K}$ trong hợp chất này là",
+     "dap_an": "I",
+     "loi_giai": "Gọi hoá trị của $\\mathrm{K}$ là $\\mathrm{a}$. Theo quy tắc hoá trị:\n$3 \\times \\mathrm{a} = 1 \\times 3$\n$\\mathrm{a} = \\dfrac{1 \\times 3}{3} = 1$\nVậy $\\mathrm{K}$ có hoá trị I."
+    },
+    {
+     "ma_cau": "K07020301044",
+     "loai": "trac_nghiem",
+     "de": "Cho hợp chất $\\mathrm{Na_2CO_3}$. Biết $\\mathrm{Na}$ có hoá trị I. Hoá trị của nhóm $\\mathrm{CO_3}$ trong hợp chất này là",
+     "lua_chon": [
+      "I",
+      "II",
+      "III",
+      "IV"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Gọi hoá trị của nhóm $\\mathrm{CO_3}$ là a.\nTheo quy tắc hoá trị:\n$1 \\times a = 2 \\times 1$\n$a = 2 \\times 1 = 2$\nVậy nhóm $\\mathrm{CO_3}$ có hoá trị II."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00714",
+   "nhom_id": "KNB00317",
+   "thu_tu": 3,
+   "dang": "LẬP CÔNG THỨC HOÁ HỌC HỢP CHẤT HAI NGUYÊN TỐ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07020301054",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất tạo bởi $\\mathrm{Ba}$ (hoá trị II) và $\\mathrm{O}$ (hoá trị II) có công thức hoá học là",
+     "lua_chon": [
+      "$\\mathrm{BaO_2}$",
+      "$\\mathrm{Ba_2O}$",
+      "$\\mathrm{BaO_3}$",
+      "$\\mathrm{BaO}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Gọi công thức là $\\mathrm{Ba_xO_y}$. Theo quy tắc hoá trị:\n$\\mathrm{x \\times 2 = y \\times 2}$\n$\\mathrm{\\dfrac{x}{y} = \\dfrac{2}{2} = \\dfrac{1}{1}}$\nChọn $\\mathrm{x = 1}$, $\\mathrm{y = 1}$. Công thức hoá học là $\\mathrm{BaO}$."
+    },
+    {
+     "ma_cau": "K07020301046",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất tạo bởi $\\mathrm{Ag}$ (hoá trị $\\mathrm{I}$) và $\\mathrm{Cl}$ (hoá trị $\\mathrm{I}$) có công thức hoá học là",
+     "lua_chon": [
+      "$\\mathrm{AgCl_2}$",
+      "$\\mathrm{AgCl_3}$",
+      "$\\mathrm{AgCl}$",
+      "$\\mathrm{Ag_2Cl}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Gọi công thức là $\\mathrm{Ag_xCl_y}$. Theo quy tắc hoá trị:\n$x \\times 1 = y \\times 1$\n$\\dfrac{x}{y} = \\dfrac{1}{1}$\nChọn $x = 1$, $y = 1$. Công thức hoá học là $\\mathrm{AgCl}$."
+    },
+    {
+     "ma_cau": "K07020301059",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất tạo bởi $\\mathrm{N}$ (hoá trị V) và $\\mathrm{O}$ (hoá trị II) có công thức hoá học là",
+     "lua_chon": [
+      "$\\mathrm{N_2O_5}$",
+      "$\\mathrm{N_2O_6}$",
+      "$\\mathrm{N_5O_2}$",
+      "$\\mathrm{NO}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Gọi công thức là $\\mathrm{N_xO_y}$. Theo quy tắc hoá trị:\n$x \\times 5 = y \\times 2$\n$\\dfrac{x}{y} = \\dfrac{2}{5}$\nChọn $x = 2$, $y = 5$. Công thức hoá học là $\\mathrm{N_2O_5}$."
+    },
+    {
+     "ma_cau": "K07020301050",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất tạo bởi $\\mathrm{Zn}$ (hoá trị II) và $\\mathrm{S}$ (hoá trị II) có công thức hoá học là",
+     "lua_chon": [
+      "$\\mathrm{ZnS_2}$",
+      "$\\mathrm{Zn_2S}$",
+      "$\\mathrm{ZnS_3}$",
+      "$\\mathrm{ZnS}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Gọi công thức là $\\mathrm{Zn_xS_y}$. Theo quy tắc hoá trị:\n$x \\times 2 = y \\times 2$\n$\\dfrac{x}{y} = \\dfrac{2}{2} = \\dfrac{1}{1}$\nChọn $x = 1$, $y = 1$. Công thức hoá học là $\\mathrm{ZnS}$."
+    },
+    {
+     "ma_cau": "K07020301051",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất tạo bởi $\\mathrm{K}$ (hoá trị I) và $\\mathrm{S}$ (hoá trị II) có công thức hoá học là",
+     "lua_chon": [
+      "$\\mathrm{KS_2}$",
+      "$\\mathrm{K_2S}$",
+      "$\\mathrm{K_2S_2}$",
+      "$\\mathrm{KS}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Gọi công thức là $\\mathrm{K_xS_y}$. Theo quy tắc hoá trị:\n$x \\times 1 = y \\times 2$\n$\\dfrac{x}{y} = \\dfrac{2}{1}$\nChọn $x = 2$, $y = 1$. Công thức hoá học là $\\mathrm{K_2S}$."
+    },
+    {
+     "ma_cau": "K07020301058",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất tạo bởi $\\mathrm{Si}$ (hoá trị IV) và $\\mathrm{O}$ (hoá trị II) có công thức hoá học là",
+     "lua_chon": [
+      "$\\mathrm{SiO_2}$",
+      "$\\mathrm{Si_4O_2}$",
+      "$\\mathrm{Si_2O}$",
+      "$\\mathrm{SiO}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Gọi công thức là $\\mathrm{Si_xO_y}$. Theo quy tắc hoá trị:\n$x \\times 4 = y \\times 2$\n$\\dfrac{x}{y} = \\dfrac{2}{4} = \\dfrac{1}{2}$\nChọn $x = 1$, $y = 2$. Công thức hoá học là $\\mathrm{SiO_2}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00715",
+   "nhom_id": "KNB00317",
+   "thu_tu": 4,
+   "dang": "LẬP CÔNG THỨC HOÁ HỌC CÓ NHÓM NGUYÊN TỬ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07020301070",
+     "loai": "tra_loi_ngan",
+     "de": "Lập công thức hoá học của hợp chất tạo bởi $\\mathrm{Al}$ (hoá trị III) và nhóm $\\mathrm{NO_3}$ (hoá trị I).",
+     "dap_an": "$\\mathrm{Al(NO_3)_3}$",
+     "loi_giai": "Gọi công thức là $\\mathrm{Al_x(NO_3)_y}$. Theo quy tắc hoá trị:\n$x \\times 3 = y \\times 1$\n$\\dfrac{x}{y} = \\dfrac{1}{3}$\nChọn $x = 1, y = 3$. Công thức hoá học là $\\mathrm{Al(NO_3)_3}$."
+    },
+    {
+     "ma_cau": "K07020301065",
+     "loai": "tra_loi_ngan",
+     "de": "Lập công thức hoá học của hợp chất tạo bởi $\\mathrm{Zn}$ (hoá trị $\\mathrm{II}$) và nhóm $\\mathrm{SO_4}$ (hoá trị $\\mathrm{II}$).",
+     "dap_an": "ZnSO_4",
+     "loi_giai": "Gọi công thức là $\\mathrm{Zn_x(SO_4)_y}$. Theo quy tắc hoá trị:\n$x \\times 2 = y \\times 2$\n$\\dfrac{x}{y} = \\dfrac{2}{2} = \\dfrac{1}{1}$\nChọn $x = 1$, $y = 1$. Công thức hoá học là $\\mathrm{ZnSO_4}$."
+    },
+    {
+     "ma_cau": "K07020301068",
+     "loai": "tra_loi_ngan",
+     "de": "Lập công thức hoá học của hợp chất tạo bởi $\\mathrm{Ca}$ (hoá trị II) và nhóm $\\mathrm{PO_4}$ (hoá trị III):",
+     "dap_an": "$\\mathrm{Ca_3(PO_4)_2}$",
+     "loi_giai": "Gọi công thức là $\\mathrm{Ca_x(PO_4)_y}$. Theo quy tắc hoá trị:\n$x \\times 2 = y \\times 3$\n$\\dfrac{x}{y} = \\dfrac{3}{2}$\nChọn $x = 3, y = 2$. Công thức hoá học là $\\mathrm{Ca_3(PO_4)_2}$."
+    },
+    {
+     "ma_cau": "K07020301061",
+     "loai": "tra_loi_ngan",
+     "de": "Lập công thức hoá học của hợp chất tạo bởi $\\mathrm{Na}$ (hoá trị $\\mathrm{I}$) và nhóm $\\mathrm{OH}$ (hoá trị $\\mathrm{I}$).",
+     "dap_an": "NaOH",
+     "loi_giai": "Gọi công thức là $\\mathrm{Na_x(OH)_y}$. Theo quy tắc hoá trị:\n$\\mathrm{x \\times 1 = y \\times 1}$\n$\\dfrac{x}{y} = \\dfrac{1}{1}$\nChọn $\\mathrm{x = 1}$, $\\mathrm{y = 1}$. Công thức hoá học là $\\mathrm{NaOH}$."
+    },
+    {
+     "ma_cau": "K07020301067",
+     "loai": "tra_loi_ngan",
+     "de": "Lập công thức hoá học của hợp chất tạo bởi $\\mathrm{Al}$ (hoá trị $\\mathrm{III}$) và nhóm $\\mathrm{SO_4}$ (hoá trị $\\mathrm{II}$).",
+     "dap_an": "Al_2(SO_4)_3",
+     "loi_giai": "Gọi công thức là $\\mathrm{Al_x(SO_4)_y}$. Theo quy tắc hoá trị:\n$x \\times 3 = y \\times 2$\n$\\dfrac{x}{y} = \\dfrac{2}{3}$\nChọn $x = 2$, $y = 3$. Công thức hoá học là $\\mathrm{Al_2(SO_4)_3}$."
+    },
+    {
+     "ma_cau": "K07020301066",
+     "loai": "tra_loi_ngan",
+     "de": "Lập công thức hoá học của hợp chất tạo bởi $\\mathrm{Na}$ (hoá trị $\\mathrm{I}$) và nhóm $\\mathrm{PO_4}$ (hoá trị $\\mathrm{III}$).",
+     "dap_an": "Na_3PO_4",
+     "loi_giai": "Gọi công thức là $\\mathrm{Na_x(PO_4)_y}$. Theo quy tắc hoá trị:\n$x \\times 1 = y \\times 3$\n$\\dfrac{x}{y} = \\dfrac{3}{1}$\nChọn $x = 3$, $y = 1$. Công thức hoá học là $\\mathrm{Na_3PO_4}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00716",
+   "nhom_id": "KNB00318",
+   "thu_tu": 1,
+   "dang": "TÍNH PHẦN TRĂM KHỐI LƯỢNG MỘT NGUYÊN TỐ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 20,
+   "cau_mau": [
+    {
+     "ma_cau": "K07020302028",
+     "loai": "tu_luan",
+     "de": "Quặng phosphorite có thành phần chính là calcium phosphate, công thức $\\mathrm{Ca_3(PO_4)_2}$. Cho khối lượng nguyên tử: $\\mathrm{Ca} = 40$ amu, $\\mathrm{P} = 31$ amu, $\\mathrm{O} = 16$ amu. Tính phần trăm khối lượng của nguyên tố $\\mathrm{P}$ trong hợp chất (làm tròn kết quả đến hàng phần mười).",
+     "dap_an": "20,0",
+     "loi_giai": "Khối lượng phân tử của hợp chất là:\n$3 \\times 40 + 2 \\times 31 + 8 \\times 16 = 310$ (amu)\nTrong một phân tử $\\mathrm{Ca_3(PO_4)_2}$ có 2 nguyên tử $\\mathrm{P}$.\nPhần trăm khối lượng của $\\mathrm{P}$:\n$\\% \\mathrm{P} = \\dfrac{2 \\times 31}{310} \\times 100\\% = 20\\%$"
+    },
+    {
+     "ma_cau": "K07020302011",
+     "loai": "tu_luan",
+     "de": "Cho hợp chất $\\mathrm{H_2S}$. Khối lượng phân tử của hợp chất là $34$ amu; trong mỗi phân tử, tổng khối lượng các nguyên tử $\\mathrm{H}$ là $2$ amu. Tính phần trăm khối lượng của nguyên tố $\\mathrm{H}$ trong hợp chất (làm tròn kết quả đến hàng phần mười).",
+     "dap_an": "5,9",
+     "loi_giai": "Phần trăm khối lượng của nguyên tố là: $\\mathrm{\\%H = \\dfrac{2}{34} \\times 100\\% \\approx 5,9\\%}$"
+    },
+    {
+     "ma_cau": "K07020302030",
+     "loai": "tu_luan",
+     "de": "Thuốc muối (dùng giảm ợ chua, đầy hơi) chứa sodium hydrogencarbonate, công thức $\\mathrm{NaHCO_3}$. Cho khối lượng nguyên tử: $\\mathrm{Na} = 23 \\ \\mathrm{amu}$, $\\mathrm{H} = 1 \\ \\mathrm{amu}$, $\\mathrm{C} = 12 \\ \\mathrm{amu}$, $\\mathrm{O} = 16 \\ \\mathrm{amu}$. Tính phần trăm khối lượng của nguyên tố $\\mathrm{Na}$ trong hợp chất (làm tròn kết quả đến hàng phần mười).",
+     "dap_an": "27.4",
+     "loi_giai": "Khối lượng phân tử của hợp chất là:\n$$23 + 1 + 12 + 3 \\times 16 = 84 \\ \\mathrm{(amu)}$$\nTrong một phân tử $\\mathrm{NaHCO_3}$ có $1$ nguyên tử $\\mathrm{Na}$.\nPhần trăm khối lượng của $\\mathrm{Na}$:\n$$\\%\\mathrm{Na} = \\dfrac{23}{84} \\times 100\\% \\approx 27,4\\%$$"
+    },
+    {
+     "ma_cau": "K07020302020",
+     "loai": "tu_luan",
+     "de": "Sulfuric acid có công thức $\\mathrm{H_2SO_4}$. Cho khối lượng nguyên tử: $\\mathrm{H} = 1$ amu, $\\mathrm{S} = 32$ amu, $\\mathrm{O} = 16$ amu. Tính phần trăm khối lượng của nguyên tố $\\mathrm{S}$ trong hợp chất (làm tròn kết quả đến hàng phần mười).",
+     "dap_an": "32.7",
+     "loi_giai": "Khối lượng phân tử của hợp chất là:\n$2 \\times 1 + 32 + 4 \\times 16 = 98$ (amu)\nTrong một phân tử $\\mathrm{H_2SO_4}$ có 1 nguyên tử $\\mathrm{S}$.\nPhần trăm khối lượng của $\\mathrm{S}$:\n$\\%\\mathrm{S} = \\dfrac{32}{98} \\times 100\\% \\approx 32,7\\%$"
+    },
+    {
+     "ma_cau": "K07020302017",
+     "loai": "tu_luan",
+     "de": "Cho hợp chất $\\mathrm{KOH}$. Cho khối lượng nguyên tử: $\\mathrm{K}$ = 39 amu, $\\mathrm{O}$ = 16 amu, $\\mathrm{H}$ = 1 amu. Tính phần trăm khối lượng của nguyên tố $\\mathrm{K}$ trong hợp chất (làm tròn kết quả đến hàng phần mười).",
+     "dap_an": "69.6",
+     "loi_giai": "Khối lượng phân tử của hợp chất là:\n$$39 + 16 + 1 = 56 \\text{ (amu)}$$\nTrong một phân tử $\\mathrm{KOH}$ có 1 nguyên tử $\\mathrm{K}$.\nPhần trăm khối lượng của $\\mathrm{K}$:\n$$\\%\\mathrm{K} = \\dfrac{39}{56} \\times 100\\% \\approx 69.6\\%$$"
+    },
+    {
+     "ma_cau": "K07020302015",
+     "loai": "tu_luan",
+     "de": "Cho hợp chất $\\mathrm{BaO}$. Cho khối lượng nguyên tử: $\\mathrm{Ba} = 137$ amu, $\\mathrm{O} = 16$ amu. Tính phần trăm khối lượng của nguyên tố $\\mathrm{Ba}$ trong hợp chất (làm tròn kết quả đến hàng phần mười).",
+     "dap_an": "89.5",
+     "loi_giai": "Khối lượng phân tử của hợp chất là: $137 + 16 = 153$ (amu)\nPhần trăm khối lượng của $\\mathrm{Ba}$: $\\mathrm{\\%Ba} = \\dfrac{137}{153} \\times 100\\% \\approx 89,5\\%$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00717",
+   "nhom_id": "KNB00318",
+   "thu_tu": 2,
+   "dang": "SO SÁNH HÀM LƯỢNG NGUYÊN TỐ GIỮA CÁC HỢP CHẤT",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 28,
+   "cau_mau": [
+    {
+     "ma_cau": "K07020302047",
+     "loai": "trac_nghiem",
+     "de": "Cho khối lượng nguyên tử: $\\mathrm{N} = 14 \\text{ amu}$, $\\mathrm{H} = 1 \\text{ amu}$, $\\mathrm{O} = 16 \\text{ amu}$. Phần trăm khối lượng của $\\mathrm{H}$ trong $\\mathrm{NH_3}$ lớn hơn trong $\\mathrm{H_2O}$ bao nhiêu (tính theo đơn vị %, làm tròn kết quả cuối cùng đến hàng phần mười, không làm tròn các kết quả trung gian)?",
+     "lua_chon": [
+      "0,3%",
+      "5,9%",
+      "6,5%",
+      "12,1%"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Phần trăm khối lượng $\\mathrm{H}$ trong $\\mathrm{NH_3}$:\n$\\mathrm{\\%H = \\dfrac{3 \\times 1}{17} \\times 100\\% \\approx 17,647\\%}$\nPhần trăm khối lượng $\\mathrm{H}$ trong $\\mathrm{H_2O}$:\n$\\mathrm{\\%H = \\dfrac{2 \\times 1}{18} \\times 100\\% \\approx 11,111\\%}$\nHiệu hai phần trăm là:\n$17,647 - 11,111 \\approx 6,5 \\text{ (\\%)}$"
+    },
+    {
+     "ma_cau": "K07020302031",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất $\\mathrm{HCl}$ có khối lượng phân tử $36,5 \\text{ amu}$; hợp chất $\\mathrm{HNO_3}$ có khối lượng phân tử $63 \\text{ amu}$. Mỗi phân tử của hai chất đều chứa $1$ nguyên tử $\\mathrm{H}$. Nhận định nào sau đây đúng?",
+     "lua_chon": [
+      "Không so sánh được phần trăm khối lượng $\\mathrm{H}$ khi chưa biết khối lượng mẫu chất",
+      "Phần trăm khối lượng $\\mathrm{H}$ trong $\\mathrm{HNO_3}$ lớn hơn, vì $\\mathrm{HNO_3}$ có khối lượng phân tử lớn hơn",
+      "Phần trăm khối lượng $\\mathrm{H}$ trong $\\mathrm{HCl}$ lớn hơn, vì $\\mathrm{HCl}$ có khối lượng phân tử nhỏ hơn",
+      "Phần trăm khối lượng $\\mathrm{H}$ trong hai chất bằng nhau, vì hai phân tử có cùng số nguyên tử $\\mathrm{H}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hai phân tử chứa cùng khối lượng nguyên tố $\\mathrm{H}$; phân tử nào có khối lượng phân tử nhỏ hơn thì phần trăm khối lượng $\\mathrm{H}$ lớn hơn. $\\mathrm{HCl}$ có khối lượng phân tử nhỏ hơn nên phần trăm khối lượng $\\mathrm{H}$ trong $\\mathrm{HCl}$ lớn hơn."
+    },
+    {
+     "ma_cau": "K07020302037",
+     "loai": "trac_nghiem",
+     "de": "Cho khối lượng nguyên tử: C = 12 amu, H = 1 amu. Phần trăm khối lượng của C trong $\\mathrm{C_2H_6}$ lớn hơn trong $\\mathrm{CH_4}$ bao nhiêu (tính theo đơn vị %, làm tròn kết quả cuối cùng đến hàng phần mười, không làm tròn các kết quả trung gian)?",
+     "lua_chon": [
+      "4,0%",
+      "5,0%",
+      "75,0%",
+      "80,0%"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Phần trăm khối lượng C trong $\\mathrm{C_2H_6}$:\n$\\mathrm{\\%C} = \\dfrac{2 \\times 12}{30} \\times 100\\% = 80\\%$\nPhần trăm khối lượng C trong $\\mathrm{CH_4}$:\n$\\mathrm{\\%C} = \\dfrac{12}{16} \\times 100\\% = 75\\%$\nHiệu hai phần trăm là:\n$80 - 75 = 5,0\\%$(%)"
+    },
+    {
+     "ma_cau": "K07020302050",
+     "loai": "trac_nghiem",
+     "de": "Cho khối lượng nguyên tử: $\\mathrm{Cu} = 64$ amu, $\\mathrm{O} = 16$ amu, $\\mathrm{Zn} = 65$ amu. Phần trăm khối lượng của $\\mathrm{O}$ trong $\\mathrm{CuO}$ lớn hơn trong $\\mathrm{ZnO}$ bao nhiêu (tính theo đơn vị %, làm tròn kết quả cuối cùng đến hàng phần mười, không làm tròn các kết quả trung gian)?",
+     "lua_chon": [
+      "0,2%",
+      "19,8%",
+      "20,0%",
+      "39,8%"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Phần trăm khối lượng $\\mathrm{O}$ trong $\\mathrm{CuO}$:\n%$\\mathrm{O} = \\dfrac{16}{80} \\times 100\\% = 20\\%$\nPhần trăm khối lượng $\\mathrm{O}$ trong $\\mathrm{ZnO}$:\n%$\\mathrm{O} = \\dfrac{16}{81} \\times 100\\% \\approx 19.753\\%$\nHiệu hai phần trăm là:\n$20 - 19.753 \\approx 0.2$ (%)"
+    },
+    {
+     "ma_cau": "K07020302036",
+     "loai": "trac_nghiem",
+     "de": "Cho khối lượng nguyên tử: Cu = 64 amu, O = 16 amu. Phần trăm khối lượng của Cu trong $\\mathrm{Cu_2O}$ lớn hơn trong $\\mathrm{CuO}$ bao nhiêu (tính theo đơn vị %, làm tròn kết quả cuối cùng đến hàng phần mười, không làm tròn các kết quả trung gian)?",
+     "lua_chon": [
+      "8,9%",
+      "35,6%",
+      "80,0%",
+      "88,9%"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Phần trăm khối lượng Cu trong $\\mathrm{Cu_2O}$:\n$\\mathrm{\\%Cu} = \\dfrac{2 \\times 64}{144} \\times 100\\% \\approx 88,889\\%$\nPhần trăm khối lượng Cu trong $\\mathrm{CuO}$:\n$\\mathrm{\\%Cu} = \\dfrac{64}{80} \\times 100\\% = 80\\%$\nHiệu hai phần trăm là:\n$88,889 - 80 \\approx 8,9\\%$(%)"
+    },
+    {
+     "ma_cau": "K07020302051",
+     "loai": "trac_nghiem",
+     "de": "Cho khối lượng nguyên tử: $\\mathrm{Fe} = 56$ amu, $\\mathrm{Cl} = 35,5$ amu. Phần trăm khối lượng của $\\mathrm{Fe}$ trong $\\mathrm{FeCl_2}$ lớn hơn trong $\\mathrm{FeCl_3}$ bao nhiêu (tính theo đơn vị %, làm tròn kết quả cuối cùng đến hàng phần mười, không làm tròn các kết quả trung gian)?",
+     "lua_chon": [
+      "8,6%",
+      "9,6%",
+      "34,5%",
+      "44,1%"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Phần trăm khối lượng $\\mathrm{Fe}$ trong $\\mathrm{FeCl_2}$:\n%$\\mathrm{Fe} = \\dfrac{56}{127} \\times 100\\% \\approx 44,094\\%$\nPhần trăm khối lượng $\\mathrm{Fe}$ trong $\\mathrm{FeCl_3}$:\n%$\\mathrm{Fe} = \\dfrac{56}{162,5} \\times 100\\% \\approx 34,462\\%$\nHiệu hai phần trăm là:\n$44,094 - 34,462 \\approx 9,6$ (%)"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00718",
+   "nhom_id": "KNB00319",
+   "thu_tu": 1,
+   "dang": "HỢP CHẤT HAI NGUYÊN TỐ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 20,
+   "cau_mau": [
+    {
+     "ma_cau": "K07020303008",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất X tạo bởi hai nguyên tố sulfur và oxygen; phần trăm khối lượng của $\\mathrm{S}$ trong $\\mathrm{X}$ là $50,00\\%$; khối lượng phân tử của $\\mathrm{X}$ là $64$ amu. Cho khối lượng nguyên tử: $\\mathrm{S} = 32$ amu, $\\mathrm{O} = 16$ amu. Số nguyên tử $\\mathrm{O}$ trong một phân tử $\\mathrm{X}$ là",
+     "lua_chon": [
+      "2",
+      "3",
+      "4",
+      "5"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Phần trăm khối lượng của $\\mathrm{O}$ là:\n$100\\% - 50\\% = 50\\%$\nSố nguyên tử $\\mathrm{O}$ trong một phân tử $\\mathrm{X}$:\n$\\mathrm{n_O} = \\dfrac{50 \\times 64}{100 \\times 16} = 2$\nVậy một phân tử $\\mathrm{X}$ có $2$ nguyên tử $\\mathrm{O}$ (công thức hoá học của $\\mathrm{X}$ là $\\mathrm{SO_2}$)."
+    },
+    {
+     "ma_cau": "K07020303022",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất X tạo bởi hai nguyên tố sodium và oxygen; phần trăm khối lượng của $\\mathrm{Na}$ trong $\\mathrm{X}$ là $74,19\\%$; khối lượng phân tử của $\\mathrm{X}$ là $62$ amu. Cho khối lượng nguyên tử: $\\mathrm{Na} = 23$ amu, $\\mathrm{O} = 16$ amu. Số nguyên tử $\\mathrm{Na}$ trong một phân tử $\\mathrm{X}$ là",
+     "lua_chon": [
+      "2",
+      "3",
+      "4",
+      "5"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Số nguyên tử $\\mathrm{Na}$ trong một phân tử $\\mathrm{X}$:\n$\\mathrm{n_{Na}} = \\dfrac{74,19 \\times 62}{100 \\times 23} \\approx 2$\nVật một phân tử $\\mathrm{X}$ có $2$ nguyên tử $\\mathrm{Na}$ (công thức hoá học của $\\mathrm{X}$ là $\\mathrm{Na_2O}$)."
+    },
+    {
+     "ma_cau": "K07020303009",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất $\\mathrm{X}$ tạo bởi hai nguyên tố aluminium và chlorine; phần trăm khối lượng của $\\mathrm{Al}$ trong $\\mathrm{X}$ là $20,22\\%$; khối lượng phân tử của $\\mathrm{X}$ là $133,5$ amu. Cho khối lượng nguyên tử: $\\mathrm{Al} = 27$ amu, $\\mathrm{Cl} = 35,5$ amu. Số nguyên tử $\\mathrm{Cl}$ trong một phân tử $\\mathrm{X}$ là",
+     "lua_chon": [
+      "1",
+      "2",
+      "3",
+      "6"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Phần trăm khối lượng của $\\mathrm{Cl}$ là:\n$100\\% - 20,22\\% = 79,78\\%$\nSố nguyên tử $\\mathrm{Cl}$ trong một phân tử $\\mathrm{X}$:\n$\\mathrm{n_{Cl}} = \\dfrac{79,78 \\times 133,5}{100 \\times 35,5} \\approx 3$\nVậy một phân tử $\\mathrm{X}$ có $3$ nguyên tử $\\mathrm{Cl}$ (công thức hoá học của $\\mathrm{X}$ là $\\mathrm{AlCl_3}$)."
+    },
+    {
+     "ma_cau": "K07020303021",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất $\\mathrm{X}$ tạo bởi hai nguyên tố nitrogen và oxygen; phần trăm khối lượng của $\\mathrm{N}$ trong $\\mathrm{X}$ là $36,84\\%$; khối lượng phân tử của $\\mathrm{X}$ là $76$ amu. Cho khối lượng nguyên tử: $\\mathrm{N}=14$ amu, $\\mathrm{O}=16$ amu. Số nguyên tử $\\mathrm{O}$ trong một phân tử $\\mathrm{X}$ là",
+     "lua_chon": [
+      "1",
+      "2",
+      "3",
+      "6"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Phần trăm khối lượng của $\\mathrm{O}$ là:\n$100\\% - 36,84\\% = 63,16\\%$\nSố nguyên tử $\\mathrm{O}$ trong một phân tử $\\mathrm{X}$:\n$\\mathrm{n_O} = \\dfrac{63,16 \\times 76}{100 \\times 16} \\approx 3$\nVậy một phân tử $\\mathrm{X}$ có $3$ nguyên tử $\\mathrm{O}$ (công thức hoá học của $\\mathrm{X}$ là $\\mathrm{N_2O_3}$)."
+    },
+    {
+     "ma_cau": "K07020303027",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất $\\mathrm{X}$ tạo bởi hai nguyên tố calcium và chlorine; phần trăm khối lượng của $\\mathrm{Ca}$ trong $\\mathrm{X}$ là $36,04\\%$; khối lượng phân tử của $\\mathrm{X}$ là $111$ amu. Cho khối lượng nguyên tử: $\\mathrm{Ca} = 40$ amu, $\\mathrm{Cl} = 35,5$ amu. Số nguyên tử $\\mathrm{Cl}$ trong một phân tử $\\mathrm{X}$ là",
+     "lua_chon": [
+      "2",
+      "3",
+      "4",
+      "5"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Phần trăm khối lượng của $\\mathrm{Cl}$ là:\n$100\\% - 36,04\\% = 63,96\\%$\nSố nguyên tử $\\mathrm{Cl}$ trong một phân tử $\\mathrm{X}$:\n$\\mathrm{n_{Cl} = \\dfrac{63,96 \\times 111}{100 \\times 35,5} \\approx 2}$\nVậy một phân tử $\\mathrm{X}$ có $2$ nguyên tử $\\mathrm{Cl}$ (công thức hoá học của $\\mathrm{X}$ là $\\mathrm{CaCl_2}$)."
+    },
+    {
+     "ma_cau": "K07020303023",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất $\\mathrm{X}$ tạo bởi hai nguyên tố iron và sulfur; phần trăm khối lượng của $\\mathrm{Fe}$ trong $\\mathrm{X}$ là $46,67\\%$; khối lượng phân tử của $\\mathrm{X}$ là $120$ amu. Cho khối lượng nguyên tử: $\\mathrm{Fe} = 56$ amu, $\\mathrm{S} = 32$ amu. Số nguyên tử $\\mathrm{S}$ trong một phân tử $\\mathrm{X}$ là",
+     "lua_chon": [
+      "2",
+      "3",
+      "4",
+      "5"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Phần trăm khối lượng của $\\mathrm{S}$ là:\n$100\\% - 46,67\\% = 53,33\\%$\nSố nguyên tử $\\mathrm{S}$ trong một phân tử $\\mathrm{X}$:\n$\\mathrm{n_S} = \\dfrac{53,33 \\times 120}{100 \\times 32} \\approx 2$\nVật một phân tử $\\mathrm{X}$ có $2$ nguyên tử $\\mathrm{S}$ (công thức hoá học của $\\mathrm{X}$ là $\\mathrm{FeS_2}$)."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00719",
+   "nhom_id": "KNB00319",
+   "thu_tu": 2,
+   "dang": "HỢP CHẤT BA NGUYÊN TỐ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 30,
+   "cau_mau": [
+    {
+     "ma_cau": "K07020303051",
+     "loai": "tu_luan",
+     "de": "Chất X tạo bởi ba nguyên tố sodium, sulfur và oxygen. Phần trăm khối lượng các nguyên tố trong X: Na: 36,51%; S: 25,40%; còn lại là oxygen. Khối lượng phân tử của X là 126 amu. Cho khối lượng nguyên tử: $\\mathrm{Na} = 23$ amu, $\\mathrm{S} = 32$ amu, $\\mathrm{O} = 16$ amu. Xác định công thức hoá học của X.",
+     "dap_an": "$\\mathrm{Na_2SO_3}$",
+     "loi_giai": "Phần trăm khối lượng của $\\mathrm{O}$ là:\n$100\\% - 36,51\\% - 25,4\\% = 38,09\\%$\nSố nguyên tử của mỗi nguyên tố trong một phân tử X:\n$\\mathrm{n_{Na}} = \\dfrac{36,51 \\times 126}{100 \\times 23} \\approx 2$\n$\\mathrm{n_S} = \\dfrac{25,4 \\times 126}{100 \\times 32} \\approx 1$\n$\\mathrm{n_O} = \\dfrac{38,09 \\times 126}{100 \\times 16} \\approx 3$\nCông thức hoá học của X là $\\mathrm{Na_2SO_3}$."
+    },
+    {
+     "ma_cau": "K07020303029",
+     "loai": "tu_luan",
+     "de": "Chất X tạo bởi ba nguyên tố sodium, nitrogen và oxygen. Phần trăm khối lượng các nguyên tố trong X: Na: 27,06%; N: 16,47%; O: 56,47%. Khối lượng phân tử của X là 85 amu. Cho khối lượng nguyên tử: Na = 23 amu, N = 14 amu, O = 16 amu. Xác định công thức hoá học của X.",
+     "dap_an": "$\\mathrm{NaNO_3}$.",
+     "loi_giai": "Số nguyên tử của mỗi nguyên tố trong một phân tử X:\n$n_{\\mathrm{Na}} = \\dfrac{27,06 \\times 85}{100 \\times 23} \\approx 1$\n$n_{\\mathrm{N}} = \\dfrac{16,47 \\times 85}{100 \\times 14} \\approx 1$\n$n_{\\mathrm{O}} = \\dfrac{56,47 \\times 85}{100 \\times 16} \\approx 3$\nCông thức hoá học của X là $\\mathrm{NaNO_3}$."
+    },
+    {
+     "ma_cau": "K07020303044",
+     "loai": "tu_luan",
+     "de": "Chất X tạo bởi ba nguyên tố potassium, phosphorus và oxygen. Phần trăm khối lượng các nguyên tố trong X: $\\mathrm{K}$: $55,19\\%$; $\\mathrm{P}$: $14,62\\%$; còn lại là oxygen. Khối lượng phân tử của X là $212$ amu. Cho khối lượng nguyên tử: $\\mathrm{K} = 39$ amu, $\\mathrm{P} = 31$ amu, $\\mathrm{O} = 16$ amu. Xác định công thức hoá học của X.",
+     "dap_an": "$\\mathrm{K_3PO_4}$",
+     "loi_giai": "Phần trăm khối lượng của $\\mathrm{O}$ là:\n$100\\% - 55,19\\% - 14,62\\% = 30,19\\%$\nSố nguyên tử của mỗi nguyên tố trong một phân tử X:\n$\\mathrm{n_K} = \\dfrac{55,19 \\times 212}{100 \\times 39} \\approx 3$\n$\\mathrm{n_P} = \\dfrac{14,62 \\times 212}{100 \\times 31} \\approx 1$\n$\\mathrm{n_O} = \\dfrac{30,19 \\times 212}{100 \\times 16} \\approx 4$\nCông thức hoá học của X là $\\mathrm{K_3PO_4}$."
+    },
+    {
+     "ma_cau": "K07020303046",
+     "loai": "tu_luan",
+     "de": "Chất X tạo bởi ba nguyên tố sodium, chlorine và oxygen. Phần trăm khối lượng các nguyên tố trong X: $\\mathrm{Na}$: $30,87\\%$; $\\mathrm{Cl}$: $47,65\\%$; còn lại là oxygen. Khối lượng phân tử của X là $74,5$ $\\mathrm{amu}$. Cho khối lượng nguyên tử: $\\mathrm{Na} = 23$ $\\mathrm{amu}$, $\\mathrm{Cl} = 35,5$ $\\mathrm{amu}$, $\\mathrm{O} = 16$ $\\mathrm{amu}$. Xác định công thức hoá học của X.",
+     "dap_an": "NaClO",
+     "loi_giai": "Phần trăm khối lượng của $\\mathrm{O}$ là:\n$100\\% - 30,87\\% - 47,65\\% = 21,48\\%$\nSố nguyên tử của mỗi nguyên tố trong một phân tử X:\n$\\mathrm{n_{Na}} = \\dfrac{30,87 \\times 74,5}{100 \\times 23} \\approx 1$\n$\\mathrm{n_{Cl}} = \\dfrac{47,65 \\times 74,5}{100 \\times 35,5} \\approx 1$\n$\\mathrm{n_O} = \\dfrac{21,48 \\times 74,5}{100 \\times 16} \\approx 1$\nCông thức hoá học của X là $\\mathrm{NaClO}$."
+    },
+    {
+     "ma_cau": "K07020303052",
+     "loai": "tu_luan",
+     "de": "Chất X tạo bởi ba nguyên tố hydrogen, sulfur và oxygen. Phần trăm khối lượng các nguyên tố trong X: H: 2,44%; S: 39,02%; còn lại là oxygen. Khối lượng phân tử của X là 82 amu. Cho khối lượng nguyên tử: $\\mathrm{H} = 1\\ \\mathrm{amu}$, $\\mathrm{S} = 32\\ \\mathrm{amu}$, $\\mathrm{O} = 16\\ \\mathrm{amu}$. Xác định công thức hoá học của X.",
+     "dap_an": "$\\mathrm{H_2SO_3}$",
+     "loi_giai": "Phần trăm khối lượng của $\\mathrm{O}$ là:\n$100\\% - 2,44\\% - 39,02\\% = 58,54\\%$\nSố nguyên tử của mỗi nguyên tố trong một phân tử X:\n$\\mathrm{n_H} = \\dfrac{2,44 \\times 82}{100 \\times 1} \\approx 2$\n$\\mathrm{n_S} = \\dfrac{39,02 \\times 82}{100 \\times 32} \\approx 1$\n$\\mathrm{n_O} = \\dfrac{58,54 \\times 82}{100 \\times 16} \\approx 3$\nCông thức hoá học của X là $\\mathrm{H_2SO_3}$."
+    },
+    {
+     "ma_cau": "K07020303057",
+     "loai": "tu_luan",
+     "de": "Chất X tạo bởi ba nguyên tố hydrogen, carbon và oxygen. Phần trăm khối lượng các nguyên tố trong X: $\\mathrm{H}$: $3,23\\%$; $\\mathrm{C}$: $19,35\\%$; còn lại là oxygen. Khối lượng phân tử của X là $62$ amu. Cho khối lượng nguyên tử: $\\mathrm{H} = 1$ amu, $\\mathrm{C} = 12$ amu, $\\mathrm{O} = 16$ amu. Xác định công thức hoá học của X.",
+     "dap_an": "$\\mathrm{H_2CO_3}$",
+     "loi_giai": "Phần trăm khối lượng của $\\mathrm{O}$ là: $100\\% - 3,23\\% - 19,35\\% = 77,42\\%$\nSố nguyên tử của mỗi nguyên tố trong một phân tử X:\n$\\mathrm{n_H} = \\dfrac{3,23 \\times 62}{100 \\times 1} \\approx 2$\n$\\mathrm{n_C} = \\dfrac{19,35 \\times 62}{100 \\times 12} \\approx 1$\n$\\mathrm{n_O} = \\dfrac{77,42 \\times 62}{100 \\times 16} \\approx 3$\nCông thức hoá học của X là $\\mathrm{H_2CO_3}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00720",
+   "nhom_id": "KNB00320",
+   "thu_tu": 1,
+   "dang": "THÔNG TIN TỪ CÔNG THỨC HOÁ HỌC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07020304012",
+     "loai": "trac_nghiem",
+     "de": "Phân tử khí chlorine gồm hai nguyên tử chlorine liên kết với nhau. Công thức hoá học của khí chlorine là",
+     "lua_chon": [
+      "$\\mathrm{Cl}_2$",
+      "$\\mathrm{Cl}$",
+      "$\\mathrm{2Cl}$",
+      "$\\mathrm{Cl}_2"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Phân tử có 2 nguyên tử $\\mathrm{Cl}$ nên công thức là $\\mathrm{Cl_2}$."
+    },
+    {
+     "ma_cau": "K07020304002",
+     "loai": "trac_nghiem",
+     "de": "Cách viết $\\mathrm{2H_2O}$ biểu diễn",
+     "lua_chon": [
+      "hai phân tử hydrogen và một nguyên tử oxygen",
+      "hai nguyên tử hydrogen và một nguyên tử oxygen",
+      "hai nguyên tử hydrogen và hai nguyên tử oxygen",
+      "hai phân tử nước"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Số 2 đứng trước công thức là hệ số, chỉ số phân tử.\n$\\mathrm{2H_2O}$ biểu diễn hai phân tử nước."
+    },
+    {
+     "ma_cau": "K07020304004",
+     "loai": "trac_nghiem",
+     "de": "Công thức hóa học của một chất cho biết",
+     "lua_chon": [
+      "các nguyên tố tạo nên chất và thể của chất ở điều kiện thường",
+      "các nguyên tố tạo nên chất và số nguyên tử mỗi nguyên tố trong một phân tử",
+      "khối lượng của chất và màu sắc của chất",
+      "số phân tử có trong chất và nhiệt độ sôi của chất"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Công thức hoá học cho biết chất do những nguyên tố nào tạo nên và số nguyên tử của mỗi nguyên tố trong một phân tử."
+    },
+    {
+     "ma_cau": "K07020304008",
+     "loai": "trac_nghiem",
+     "de": "Trong công thức hoá học, nếu phân tử chỉ có một nguyên tử của một nguyên tố thì chỉ số của nguyên tố đó",
+     "lua_chon": [
+      "ghi số 1 phía trên bên phải kí hiệu",
+      "không ghi",
+      "ghi số 1 ở chân kí hiệu",
+      "ghi số 1 phía trước kí hiệu"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chỉ số 1 không ghi trong công thức hoá học."
+    },
+    {
+     "ma_cau": "K07020304015",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử iron(III) sulfate có công thức $\\mathrm{Fe_2(SO_4)_3}$. Tổng số nguyên tử trong một phân tử này là",
+     "lua_chon": [
+      "7",
+      "9",
+      "12",
+      "17"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Mỗi nhóm $\\mathrm{SO_4}$ có 1 nguyên tử $\\mathrm{S}$ và 4 nguyên tử $\\mathrm{O}$; phân tử có 2 nguyên tử $\\mathrm{Fe}$ và 3 nhóm $\\mathrm{SO_4}$.\nTổng số nguyên tử là: $2 + 3 \\times (1 + 4) = 17$"
+    },
+    {
+     "ma_cau": "K07020304014",
+     "loai": "trac_nghiem",
+     "de": "Trong $\\mathrm{3H_2SO_4}$ có tổng cộng bao nhiêu nguyên tử oxygen?",
+     "lua_chon": [
+      "4",
+      "7",
+      "12",
+      "21"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Mỗi phân tử có 4 nguyên tử oxygen.\nSố nguyên tử oxygen trong 3 phân tử là: $3 \\times 4 = 12$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00721",
+   "nhom_id": "KNB00320",
+   "thu_tu": 2,
+   "dang": "HOÁ TRỊ CỦA NGUYÊN TỐ VÀ NHÓM NGUYÊN TỬ THƯỜNG GẶP",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07020304027",
+     "loai": "trac_nghiem",
+     "de": "Hoá trị của một nguyên tố là",
+     "lua_chon": [
+      "con số biểu thị số electron trong nguyên tử của nguyên tố đó",
+      "con số biểu thị khả năng liên kết của nguyên tử nguyên tố đó với nguyên tử khác",
+      "con số biểu thị số proton trong hạt nhân nguyên tử nguyên tố đó",
+      "con số biểu thị số lớp electron trong nguyên tử nguyên tố đó"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hoá trị là con số biểu thị khả năng liên kết của nguyên tử nguyên tố này với nguyên tử của nguyên tố khác."
+    },
+    {
+     "ma_cau": "K07020304030",
+     "loai": "trac_nghiem",
+     "de": "Trong phân tử methane ($\\mathrm{CH_4}$), nguyên tử carbon có 4 cặp electron dùng chung với 4 nguyên tử hydrogen. Hoá trị của carbon trong methane là",
+     "lua_chon": [
+      "I",
+      "II",
+      "IV",
+      "VIII"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nguyên tử $\\mathrm{C}$ có 4 cặp electron dùng chung nên carbon có hoá trị $\\mathrm{IV}$."
+    },
+    {
+     "ma_cau": "K07020304026",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tố nào sau đây có nhiều hoá trị trong các hợp chất thường gặp?",
+     "lua_chon": [
+      "Iron",
+      "Aluminium",
+      "Sodium",
+      "Magnesium"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Iron có hoá trị II hoặc III tuỳ hợp chất; sodium (I), magnesium (II), aluminium (III) chỉ có một hoá trị."
+    },
+    {
+     "ma_cau": "K07020304023",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tố nào sau đây luôn có hoá trị I trong các hợp chất?",
+     "lua_chon": [
+      "Carbon",
+      "Sodium",
+      "Iron",
+      "Sulfur"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Sodium luôn có hoá trị I; iron, sulfur, carbon có nhiều hoá trị."
+    },
+    {
+     "ma_cau": "K07020304018",
+     "loai": "trac_nghiem",
+     "de": "Nhóm nguyên tử sulfate ($\\mathrm{SO_4}$) có hoá trị",
+     "lua_chon": [
+      "I",
+      "II",
+      "III",
+      "IV"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nhóm $\\mathrm{SO_4}$ có hoá trị II."
+    },
+    {
+     "ma_cau": "K07020304021",
+     "loai": "trac_nghiem",
+     "de": "Nhóm nguyên tử phosphate ($\\,\\mathrm{PO_4}$) có hoá trị",
+     "lua_chon": [
+      "I",
+      "II",
+      "III",
+      "IV"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nhóm $\\mathrm{PO_4}$ có hoá trị III."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00722",
+   "nhom_id": "KNB00321",
+   "thu_tu": 1,
+   "dang": "LẬP CÔNG THỨC HOÁ HỌC TỪ TỈ LỆ KHỐI LƯỢNG CÁC NGUYÊN TỐ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07020305005",
+     "loai": "tu_luan",
+     "de": "Hợp chất X tạo bởi các nguyên tố nitrogen, oxygen được phân tích thấy: trong $9,2\\ \\mathrm{g}$ chất có $2,8\\ \\mathrm{g}$ nitrogen, còn lại là oxygen. Cho khối lượng nguyên tử: $\\mathrm{N} = 14\\ \\mathrm{amu}$, $\\mathrm{O} = 16\\ \\mathrm{amu}$. Xác định công thức hoá học của X, biết tỉ lệ số nguyên tử trong phân tử X là tỉ lệ tối giản.",
+     "dap_an": "NO2",
+     "loi_giai": "Khối lượng oxygen trong mẫu: $9,2 - 2,8 = 6,4\\ (\\mathrm{g})$\nTỉ lệ số nguyên tử bằng tỉ lệ khối lượng chia cho khối lượng nguyên tử:\n$\\mathrm{n_N} : \\mathrm{n_O} = \\dfrac{2,8}{14} : \\dfrac{6,4}{16}$\n$\\mathrm{n_N} : \\mathrm{n_O} = 0,2 : 0,4 = 1 : 2$\nCông thức hoá học của X là $\\mathrm{NO_2}$."
+    },
+    {
+     "ma_cau": "K07020305001",
+     "loai": "tu_luan",
+     "de": "Hợp chất X tạo bởi các nguyên tố copper, sulfur có tỉ lệ khối lượng các nguyên tố $\\mathrm{m_{Cu}} : \\mathrm{m_S} = 2 : 1$. Cho khối lượng nguyên tử: $\\mathrm{Cu} = 64$ amu, $\\mathrm{S} = 32$ amu. Xác định công thức hoá học của X, biết tỉ lệ số nguyên tử trong phân tử X là tỉ lệ tối giản.",
+     "dap_an": "CuS",
+     "loi_giai": "Tỉ lệ số nguyên tử bằng tỉ lệ khối lượng chia cho khối lượng nguyên tử:\n$\\mathrm{n_{Cu}} : \\mathrm{n_S} = \\dfrac{2}{64} : \\dfrac{1}{32}$\n$\\mathrm{n_{Cu}} : \\mathrm{n_S} = 0,03125 : 0,03125 = 1 : 1$\nCông thức hoá học của X là $\\mathrm{CuS}$."
+    },
+    {
+     "ma_cau": "K07020305010",
+     "loai": "tu_luan",
+     "de": "Hợp chất X tạo bởi các nguyên tố aluminium, oxygen được phân tích thấy: trong $10,2 \\mathrm{~g}$ chất có $5,4 \\mathrm{~g}$ aluminium, còn lại là oxygen. Cho khối lượng nguyên tử: $\\mathrm{Al}=27 \\mathrm{~amu}$, $\\mathrm{O}=16 \\mathrm{~amu}$. Xác định công thức hoá học của X, biết tỉ lệ số nguyên tử trong phân tử X là tỉ lệ tối giản.",
+     "dap_an": "Al2O3",
+     "loi_giai": "Khối lượng oxygen trong mẫu: $10,2-5,4=4,8 \\mathrm{~(g)}$\nTỉ lệ số nguyên tử bằng tỉ lệ khối lượng chia cho khối lượng nguyên tử:\n$\\mathrm{n}_{\\mathrm{Al}}: \\mathrm{n}_{\\mathrm{O}}=\\dfrac{5,4}{27}:\\dfrac{4,8}{16}$\n$\\mathrm{n}_{\\mathrm{Al}}: \\mathrm{n}_{\\mathrm{O}}=0,2: 0,3=2: 3$\nCông thức hoá học của X là $\\mathrm{Al_2O_3}$."
+    },
+    {
+     "ma_cau": "K07020305011",
+     "loai": "tu_luan",
+     "de": "Hợp chất X tạo bởi các nguyên tố silicon, oxygen được phân tích thấy: trong $9 \\mathrm{~g}$ chất có $4,2 \\mathrm{~g}$ silicon, còn lại là oxygen. Cho khối lượng nguyên tử: $\\mathrm{Si}=28 \\mathrm{~amu}$, $\\mathrm{O}=16 \\mathrm{~amu}$. Xác định công thức hoá học của X, biết tỉ lệ số nguyên tử trong phân tử X là tỉ lệ tối giản.",
+     "dap_an": "SiO2",
+     "loi_giai": "Khối lượng oxygen trong mẫu: $9-4,2=4,8 \\mathrm{~(g)}$\nTỉ lệ số nguyên tử bằng tỉ lệ khối lượng chia cho khối lượng nguyên tử:\n$\\mathrm{n}_{\\mathrm{Si}}: \\mathrm{n}_{\\mathrm{O}}=\\dfrac{4,2}{28}:\\dfrac{4,8}{16}$\n$\\mathrm{n}_{\\mathrm{Si}}: \\mathrm{n}_{\\mathrm{O}}=0,15: 0,3=1: 2$\nCông thức hoá học của X là $\\mathrm{SiO_2}$."
+    },
+    {
+     "ma_cau": "K07020305012",
+     "loai": "tu_luan",
+     "de": "Hợp chất $\\mathrm{X}$ tạo bởi các nguyên tố iron, chlorine được phân tích thấy: trong $16,25\\ \\mathrm{g}$ chất có $5,6\\ \\mathrm{g}$ iron, còn lại là chlorine. Cho khối lượng nguyên tử: $\\mathrm{Fe} = 56\\ \\mathrm{amu}$, $\\mathrm{Cl} = 35,5\\ \\mathrm{amu}$. Xác định công thức hoá học của $\\mathrm{X}$, biết tỉ lệ số nguyên tử trong phân tử $\\mathrm{X}$ là tỉ lệ tối giản.",
+     "dap_an": "FeCl3",
+     "loi_giai": "Khối lượng chlorine trong mẫu: $16,25 - 5,6 = 10,65\\ (\\mathrm{g})$\nTỉ lệ số nguyên tử bằng tỉ lệ khối lượng chia cho khối lượng nguyên tử:\n$\\mathrm{n_{Fe} : n_{Cl}} = \\dfrac{5,6}{56} : \\dfrac{10,65}{35,5}$\n$\\mathrm{n_{Fe} : n_{Cl}} = 0,1 : 0,3 = 1 : 3$\nCông thức hoá học của $\\mathrm{X}$ là $\\mathrm{FeCl_3}$."
+    },
+    {
+     "ma_cau": "K07020305008",
+     "loai": "tu_luan",
+     "de": "Hợp chất $\\mathrm{X}$ tạo bởi các nguyên tố iron, sulfur được phân tích thấy: trong $8,8 \\mathrm{\\ g}$ chất có $5,6 \\mathrm{\\ g}$ iron, còn lại là sulfur. Cho khối lượng nguyên tử: $\\mathrm{Fe} = 56 \\mathrm{\\ amu}$, $\\mathrm{S} = 32 \\mathrm{\\ amu}$. Xác định công thức hoá học của $\\mathrm{X}$, biết tỉ lệ số nguyên tử trong phân tử $\\mathrm{X}$ là tỉ lệ tối giản.",
+     "dap_an": "FeS",
+     "loi_giai": "Khối lượng sulfur trong mẫu: $8,8 - 5,6 = 3,2 \\mathrm{\\ (g)}$\nTỉ lệ số nguyên tử bằng tỉ lệ khối lượng chia cho khối lượng nguyên tử:\n$\\mathrm{n_{Fe} : n_S} = \\dfrac{5,6}{56} : \\dfrac{3,2}{32}$\n$\\mathrm{n_{Fe} : n_S} = 0,1 : 0,1 = 1 : 1$\nCông thức hoá học của $\\mathrm{X}$ là $\\mathrm{FeS}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00723",
+   "nhom_id": "KNB00321",
+   "thu_tu": 2,
+   "dang": "TÌM NGUYÊN TỐ R KHI BIẾT DẠNG CÔNG THỨC VÀ PHẦN TRĂM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 13,
+   "cau_mau": [
+    {
+     "ma_cau": "K07020305027",
+     "loai": "tu_luan",
+     "de": "Hợp chất của nguyên tố $\\mathrm{R}$ có công thức dạng $\\mathrm{R_2S}$; phần trăm khối lượng của $\\mathrm{R}$ trong hợp chất là $58,97\\%$. Cho khối lượng nguyên tử: $\\mathrm{H} = 1$, $\\mathrm{C} = 12$, $\\mathrm{N} = 14$, $\\mathrm{O} = 16$, $\\mathrm{Na} = 23$, $\\mathrm{Mg} = 24$, $\\mathrm{Al} = 27$, $\\mathrm{Si} = 28$, $\\mathrm{P} = 31$, $\\mathrm{S} = 32$, $\\mathrm{Cl} = 35,5$, $\\mathrm{K} = 39$, $\\mathrm{Ca} = 40$, $\\mathrm{Fe} = 56$, $\\mathrm{Cu} = 64$, $\\mathrm{Zn} = 65$, $\\mathrm{Ba} = 137$ (amu). Xác định nguyên tố $\\mathrm{R}$.",
+     "dap_an": "Na",
+     "loi_giai": "Gọi khối lượng nguyên tử của $\\mathrm{R}$ là $\\mathrm{M_R}$; khối lượng phân tử của hợp chất là $2\\mathrm{M_R} + 32$.\nPhần trăm khối lượng của phần còn lại (ngoài $\\mathrm{R}$) trong hợp chất là:\n$100\\% - 58,97\\% = 41,03\\%$\nPhần còn lại có khối lượng $32$ amu nên:\n$\\dfrac{32}{2\\mathrm{M_R} + 32} \\times 100\\% = 41,03\\%$\n$2\\mathrm{M_R} + 32 = \\dfrac{32 \\times 100}{41,03} \\approx 78$\n$\\mathrm{M_R} = (78 - 32) : 2 = 23$\nĐối chiếu bảng khối lượng nguyên tử, $\\mathrm{R}$ là sodium ($\\mathrm{Na}$)."
+    },
+    {
+     "ma_cau": "K07020305016",
+     "loai": "tu_luan",
+     "de": "Hợp chất của nguyên tố R có công thức dạng $\\mathrm{RO}$; phần trăm khối lượng của R trong hợp chất là $71,43\\%$. Cho khối lượng nguyên tử: $\\mathrm{H} = 1$, $\\mathrm{C} = 12$, $\\mathrm{N} = 14$, $\\mathrm{O} = 16$, $\\mathrm{Na} = 23$, $\\mathrm{Mg} = 24$, $\\mathrm{Al} = 27$, $\\mathrm{Si} = 28$, $\\mathrm{P} = 31$, $\\mathrm{S} = 32$, $\\mathrm{Cl} = 35,5$, $\\mathrm{K} = 39$, $\\mathrm{Ca} = 40$, $\\mathrm{Fe} = 56$, $\\mathrm{Cu} = 64$, $\\mathrm{Zn} = 65$, $\\mathrm{Ba} = 137$ (amu). Xác định nguyên tố R.",
+     "dap_an": "Ca",
+     "loi_giai": "Gọi khối lượng nguyên tử của R là $\\mathrm{M_R}$; khối lượng phân tử của hợp chất là $\\mathrm{M_R} + 16$.\nPhần trăm khối lượng của phần còn lại (ngoài R) trong hợp chất là:\n$100\\% - 71,43\\% = 28,57\\%$\nPhần còn lại có khối lượng $16$ amu nên:\n$\\dfrac{16}{\\mathrm{M_R} + 16} \\times 100\\% = 28,57\\%$\n$\\mathrm{M_R} + 16 = \\dfrac{16 \\times 100}{28,57} \\approx 56$\n$\\mathrm{M_R} = 56 - 16 = 40$\nĐối chiếu bảng khối lượng nguyên tử, R là calcium ($\\mathrm{Ca}$)."
+    },
+    {
+     "ma_cau": "K07020305017",
+     "loai": "tu_luan",
+     "de": "Hợp chất của nguyên tố R có công thức dạng $\\mathrm{RCl}$; phần trăm khối lượng của R trong hợp chất là $52,35\\%$. Cho khối lượng nguyên tử: $\\mathrm{H} = 1$, $\\mathrm{C} = 12$, $\\mathrm{N} = 14$, $\\mathrm{O} = 16$, $\\mathrm{Na} = 23$, $\\mathrm{Mg} = 24$, $\\mathrm{Al} = 27$, $\\mathrm{Si} = 28$, $\\mathrm{P} = 31$, $\\mathrm{S} = 32$, $\\mathrm{Cl} = 35,5$, $\\mathrm{K} = 39$, $\\mathrm{Ca} = 40$, $\\mathrm{Fe} = 56$, $\\mathrm{Cu} = 64$, $\\mathrm{Zn} = 65$, $\\mathrm{Ba} = 137$ (amu). Xác định nguyên tố R.",
+     "dap_an": "K",
+     "loi_giai": "Gọi khối lượng nguyên tử của R là $\\mathrm{M_R}$; khối lượng phân tử của hợp chất là $\\mathrm{M_R} + 35,5$.\nPhần trăm khối lượng của phần còn lại (ngoài R) trong hợp chất là:\n$100\\% - 52,35\\% = 47,65\\%$\nPhần còn lại có khối lượng $35,5$ amu nên:\n$\\dfrac{35,5}{\\mathrm{M_R} + 35,5} \\times 100\\% = 47,65\\%$\n$\\mathrm{M_R} + 35,5 = \\dfrac{35,5 \\times 100}{47,65} \\approx 74,5$\n$\\mathrm{M_R} = 74,5 - 35,5 = 39$\nĐối chiếu bảng khối lượng nguyên tử, R là potassium ($\\mathrm{K}$)."
+    },
+    {
+     "ma_cau": "K07020305018",
+     "loai": "tu_luan",
+     "de": "Hợp chất của nguyên tố $\\mathrm{R}$ có công thức dạng $\\mathrm{RCl_2}$; phần trăm khối lượng của $\\mathrm{Cl}$ trong hợp chất là $74,74\\%$. Cho khối lượng nguyên tử: $\\mathrm{H = 1}$, $\\mathrm{C = 12}$, $\\mathrm{N = 14}$, $\\mathrm{O = 16}$, $\\mathrm{Na = 23}$, $\\mathrm{Mg = 24}$, $\\mathrm{Al = 27}$, $\\mathrm{Si = 28}$, $\\mathrm{P = 31}$, $\\mathrm{S = 32}$, $\\mathrm{Cl = 35,5}$, $\\mathrm{K = 39}$, $\\mathrm{Ca = 40}$, $\\mathrm{Fe = 56}$, $\\mathrm{Cu = 64}$, $\\mathrm{Zn = 65}$, $\\mathrm{Ba = 137}$ (amu). Xác định nguyên tố $\\mathrm{R}$.",
+     "dap_an": "Mg",
+     "loi_giai": "Gọi khối lượng nguyên tử của $\\mathrm{R}$ là $\\mathrm{M_R}$; khối lượng phân tử của hợp chất là $\\mathrm{M_R} + 71$.\nTrong một phân tử, tổng khối lượng các nguyên tử $\\mathrm{Cl}$ là $71$ amu nên:\n$\\dfrac{71}{\\mathrm{M_R} + 71} \\times 100\\% = 74,74\\%$\n$\\mathrm{M_R} + 71 = \\dfrac{71 \\times 100}{74,74} \\approx 95$\n$\\mathrm{M_R} = 95 - 71 = 24$\nĐối chiếu bảng khối lượng nguyên tử, $\\mathrm{R}$ là magnesium ($\\mathrm{Mg}$)."
+    },
+    {
+     "ma_cau": "K07020305021",
+     "loai": "tu_luan",
+     "de": "Hợp chất của nguyên tố R có công thức dạng $\\mathrm{RCl_2}$; phần trăm khối lượng của $\\mathrm{Cl}$ trong hợp chất là 34,13%. Cho khối lượng nguyên tử: $\\mathrm{H} = 1$, $\\mathrm{C} = 12$, $\\mathrm{N} = 14$, $\\mathrm{O} = 16$, $\\mathrm{Na} = 23$, $\\mathrm{Mg} = 24$, $\\mathrm{Al} = 27$, $\\mathrm{Si} = 28$, $\\mathrm{P} = 31$, $\\mathrm{S} = 32$, $\\mathrm{Cl} = 35,5$, $\\mathrm{K} = 39$, $\\mathrm{Ca} = 40$, $\\mathrm{Fe} = 56$, $\\mathrm{Cu} = 64$, $\\mathrm{Zn} = 65$, $\\mathrm{Ba} = 137$ (amu). Xác định nguyên tố R.",
+     "dap_an": "Ba",
+     "loi_giai": "Gọi khối lượng nguyên tử của R là $\\mathrm{M_R}$; khối lượng phân tử của hợp chất là $\\mathrm{M_R} + 71$.\nTrong một phân tử, tổng khối lượng các nguyên tử $\\mathrm{Cl}$ là 71 amu nên:\n$\\dfrac{71}{\\mathrm{M_R} + 71} \\times 100\\% = 34,13\\%$\n$\\mathrm{M_R} + 71 = \\dfrac{71 \\times 100}{34,13} \\approx 208$\n$\\mathrm{M_R} = 208 - 71 = 137$\nĐối chiếu bảng khối lượng nguyên tử, R là barium ($\\mathrm{Ba}$)."
+    },
+    {
+     "ma_cau": "K07020305025",
+     "loai": "tu_luan",
+     "de": "Hợp chất của nguyên tố R có công thức dạng $\\mathrm{RCl_3}$; phần trăm khối lượng của $\\mathrm{Cl}$ trong hợp chất là $65,54\\%$. Cho khối lượng nguyên tử: $\\mathrm{H = 1}$, $\\mathrm{C = 12}$, $\\mathrm{N = 14}$, $\\mathrm{O = 16}$, $\\mathrm{Na = 23}$, $\\mathrm{Mg = 24}$, $\\mathrm{Al = 27}$, $\\mathrm{Si = 28}$, $\\mathrm{P = 31}$, $\\mathrm{S = 32}$, $\\mathrm{Cl = 35,5}$, $\\mathrm{K = 39}$, $\\mathrm{Ca = 40}$, $\\mathrm{Fe = 56}$, $\\mathrm{Cu = 64}$, $\\mathrm{Zn = 65}$, $\\mathrm{Ba = 137}$ (amu). Xác định nguyên tố R.",
+     "dap_an": "Fe",
+     "loi_giai": "Gọi khối lượng nguyên tử của $\\mathrm{R}$ là $\\mathrm{M_R}$; khối lượng phân tử của hợp chất là $\\mathrm{M_R + 106,5}$.\nTrong một phân tử, tổng khối lượng các nguyên tử $\\mathrm{Cl}$ là $106,5$ amu nên:\n$\\dfrac{106,5}{\\mathrm{M_R} + 106,5} \\times 100\\% = 65,54\\%$\n$\\mathrm{M_R} + 106,5 = \\dfrac{106,5 \\times 100}{65,54} \\approx 162,5$\n$\\mathrm{M_R} = 162,5 - 106,5 = 56$\nĐối chiếu bảng khối lượng nguyên tử, $\\mathrm{R}$ là iron ($\\mathrm{Fe}$)."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00724",
+   "nhom_id": "KNB00321",
+   "thu_tu": 3,
+   "dang": "TÌM NGUYÊN TỐ R KHI BIẾT DẠNG CÔNG THỨC VÀ KHỐI LƯỢNG PHÂN TỬ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 20,
+   "cau_mau": [
+    {
+     "ma_cau": "K07020305035",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất của nguyên tố R có công thức dạng $\\mathrm{RCl_2}$ và khối lượng phân tử là $127 \\text{ amu}$. Cho khối lượng nguyên tử: $\\mathrm{H = 1, C = 12, N = 14, O = 16, Na = 23, Mg = 24, Al = 27, Si = 28, P = 31, S = 32, Cl = 35.5, K = 39, Ca = 40, Fe = 56, Cu = 64, Zn = 65, Ba = 137 (amu)}$. Nguyên tố R là",
+     "lua_chon": [
+      "Calcium",
+      "Iron",
+      "Copper",
+      "Zinc"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tổng khối lượng các nguyên tử khác R trong một phân tử là: $2 \\times 35.5 = 71 \\text{ (amu)}$\nKhối lượng nguyên tử của R là: $\\mathrm{M_R = 127 - 71 = 56}$\nR là iron ($\\mathrm{Fe}$)."
+    },
+    {
+     "ma_cau": "K07020305038",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất của nguyên tố $\\mathrm{R}$ có công thức dạng $\\mathrm{R(OH)_3}$ và khối lượng phân tử là $78\\ \\mathrm{amu}$. Cho khối lượng nguyên tử: $\\mathrm{H} = 1$, $\\mathrm{C} = 12$, $\\mathrm{N} = 14$, $\\mathrm{O} = 16$, $\\mathrm{Na} = 23$, $\\mathrm{Mg} = 24$, $\\mathrm{Al} = 27$, $\\mathrm{Si} = 28$, $\\mathrm{P} = 31$, $\\mathrm{S} = 32$, $\\mathrm{Cl} = 35,5$, $\\mathrm{K} = 39$, $\\mathrm{Ca} = 40$, $\\mathrm{Fe} = 56$, $\\mathrm{Cu} = 64$, $\\mathrm{Zn} = 65$, $\\mathrm{Ba} = 137\\ \\mathrm{(amu)}$. Nguyên tố $\\mathrm{R}$ là",
+     "lua_chon": [
+      "Magnesium",
+      "Sodium",
+      "Aluminium",
+      "Iron"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tổng khối lượng các nguyên tử khác $\\mathrm{R}$ trong một phân tử là: $3 \\times 16 + 3 \\times 1 = 51\\ \\mathrm{(amu)}$\nKhối lượng nguyên tử của $\\mathrm{R}$ là: $\\mathrm{M_R} = 78 - 51 = 27$\n$\\mathrm{R}$ là aluminium ($\\mathrm{Al}$)."
+    },
+    {
+     "ma_cau": "K07020305043",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất của nguyên tố R có công thức dạng $\\mathrm{R_2CO_3}$ và khối lượng phân tử là 138 amu. Cho khối lượng nguyên tử: $\\mathrm{H = 1}$, $\\mathrm{C = 12}$, $\\mathrm{N = 14}$, $\\mathrm{O = 16}$, $\\mathrm{Na = 23}$, $\\mathrm{Mg = 24}$, $\\mathrm{Al = 27}$, $\\mathrm{Si = 28}$, $\\mathrm{P = 31}$, $\\mathrm{S = 32}$, $\\mathrm{Cl = 35,5}$, $\\mathrm{K = 39}$, $\\mathrm{Ca = 40}$, $\\mathrm{Fe = 56}$, $\\mathrm{Cu = 64}$, $\\mathrm{Zn = 65}$, $\\mathrm{Ba = 137}$ (amu). Nguyên tố R là",
+     "lua_chon": [
+      "Copper",
+      "Potassium",
+      "Calcium",
+      "Sodium"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tổng khối lượng các nguyên tử khác R trong một phân tử là: $12 + 3 \\times 16 = 60$ (amu)\nKhối lượng nguyên tử của R là: $\\mathrm{M_R} = \\dfrac{138 - 60}{2} = 39$\nR là potassium (K)."
+    },
+    {
+     "ma_cau": "K07020305045",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất của nguyên tố R có công thức dạng $\\mathrm{R_2O_3}$ và khối lượng phân tử là 160 amu. Cho khối lượng nguyên tử: $\\mathrm{H = 1}$, $\\mathrm{C = 12}$, $\\mathrm{N = 14}$, $\\mathrm{O = 16}$, $\\mathrm{Na = 23}$, $\\mathrm{Mg = 24}$, $\\mathrm{Al = 27}$, $\\mathrm{Si = 28}$, $\\mathrm{P = 31}$, $\\mathrm{S = 32}$, $\\mathrm{Cl = 35,5}$, $\\mathrm{K = 39}$, $\\mathrm{Ca = 40}$, $\\mathrm{Fe = 56}$, $\\mathrm{Cu = 64}$, $\\mathrm{Zn = 65}$, $\\mathrm{Ba = 137}$ (amu). Nguyên tố R là",
+     "lua_chon": [
+      "Copper",
+      "Zinc",
+      "Aluminium",
+      "Iron"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tổng khối lượng các nguyên tử khác R trong một phân tử là: $3 \\times 16 = 48$ (amu)\nKhối lượng nguyên tử của R là: $\\mathrm{M_R} = \\dfrac{160 - 48}{2} = 56$\nR là iron ($\\mathrm{Fe}$)."
+    },
+    {
+     "ma_cau": "K07020305039",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất của nguyên tố R có công thức dạng $\\mathrm{RCO_3}$ và khối lượng phân tử là 116 amu. Cho khối lượng nguyên tử: $\\mathrm{H} = 1$, $\\mathrm{C} = 12$, $\\mathrm{N} = 14$, $\\mathrm{O} = 16$, $\\mathrm{Na} = 23$, $\\mathrm{Mg} = 24$, $\\mathrm{Al} = 27$, $\\mathrm{Si} = 28$, $\\mathrm{P} = 31$, $\\mathrm{S} = 32$, $\\mathrm{Cl} = 35,5$, $\\mathrm{K} = 39$, $\\mathrm{Ca} = 40$, $\\mathrm{Fe} = 56$, $\\mathrm{Cu} = 64$, $\\mathrm{Zn} = 65$, $\\mathrm{Ba} = 137$ (amu). Nguyên tố R là",
+     "lua_chon": [
+      "Calcium",
+      "Copper",
+      "Zinc",
+      "Iron"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tổng khối lượng các nguyên tử khác R trong một phân tử là: $12 + 3 \\times 16 = 60$ (amu)\nKhối lượng nguyên tử của R là: $\\mathrm{M_R} = 116 - 60 = 56$\nR là iron ($\\mathrm{Fe}$)."
+    },
+    {
+     "ma_cau": "K07020305034",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất của nguyên tố R có công thức dạng $\\mathrm{RH_4}$ và khối lượng phân tử là 16 amu. Cho khối lượng nguyên tử: $\\mathrm{H = 1, C = 12, N = 14, O = 16, Na = 23, Mg = 24, Al = 27, Si = 28, P = 31, S = 32, Cl = 35,5, K = 39, Ca = 40, Fe = 56, Cu = 64, Zn = 65, Ba = 137}$ (amu). Nguyên tố R là",
+     "lua_chon": [
+      "Sulfur",
+      "Silicon",
+      "Nitrogen",
+      "Carbon"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tổng khối lượng các nguyên tử khác R trong một phân tử là: $4 \\times 1 = 4$ (amu)\nKhối lượng nguyên tử của R là: $\\mathrm{M_R} = 16 - 4 = 12$\nR là carbon ($\\mathrm{C}$)."
+    }
+   ]
+  }
+ ]
+}

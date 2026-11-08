@@ -1,0 +1,132 @@
+[
+ {
+  "ma_cau": "T11200000010623",
+  "loai": "tra_loi_ngan",
+  "de": "Một nhà máy điện đặt tại vị trí $A$ trên bờ biển (coi bờ biển là một đường thẳng). Cần kéo đường dây điện từ $A$ ra một hòn đảo tại vị trí $C$. Khoảng cách ngắn nhất từ $C$ đến bờ biển là $CB=1$ km, khoảng cách $AB=4$ km (hình vẽ). Người ta kéo dây trên bờ từ $A$ đến điểm $M$ thuộc đoạn $AB$, rồi kéo dây dưới nước từ $M$ thẳng đến $C$. Chi phí lắp đặt mỗi km dây trên bờ là $40$ triệu đồng, mỗi km dây dưới nước là $50$ triệu đồng. Chi phí lắp đặt nhỏ nhất bằng bao nhiêu triệu đồng?",
+  "dap_an": "190",
+  "loi_giai": "Đặt $BM=x$ (km), $0\\le x\\le4$. Khi đó $AM=4-x$ và $MC=\\sqrt{BM^2+BC^2}=\\sqrt{x^2+1}$.\nChi phí: $f(x)=40(4-x)+50\\sqrt{x^2+1}$ (triệu đồng), $x\\in[0;4]$.\n$f'(x)=-40+\\dfrac{50x}{\\sqrt{x^2+1}}$; $f'(x)=0\\Leftrightarrow5x=4\\sqrt{x^2+1}\\Leftrightarrow x=\\dfrac43$.\n$f(0)=210$; $f\\left(\\dfrac43\\right)=40\\cdot\\dfrac83+50\\cdot\\dfrac53=190$; $f(4)=50\\sqrt{17}\\approx206{,}2$.\nVậy chi phí lắp đặt nhỏ nhất là $190$ triệu đồng.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010607",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f(x)$ có bảng biến thiên như sau (xem hình). Hàm số đã cho nghịch biến trên khoảng nào dưới đây?",
+  "lua_chon": [
+   "$(-1;3)$",
+   "$(-\\infty;3)$",
+   "$(-2;4)$",
+   "$(3;+\\infty)$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Từ bảng biến thiên, $y'<0$ trên khoảng $(-1;3)$ nên hàm số nghịch biến trên $(-1;3)$.\nChọn A.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010625",
+  "loai": "tra_loi_ngan",
+  "de": "Từ một tấm bìa hình vuông cạnh $12$ cm, người ta cắt bỏ ở bốn góc bốn hình vuông bằng nhau cạnh $x$ (cm) rồi gấp lên thành một chiếc hộp không nắp (hình vẽ). Thể tích lớn nhất của chiếc hộp bằng bao nhiêu $\\text{cm}^3$?",
+  "dap_an": "128",
+  "loi_giai": "Hộp có đáy là hình vuông cạnh $12-2x$, chiều cao $x$, với $0<x<6$.\n$V(x)=x(12-2x)^2$.\n$V'(x)=(12-2x)^2-4x(12-2x)=(12-2x)(12-6x)$; trên $(0;6)$: $V'(x)=0\\Leftrightarrow x=2$.\n$V'>0$ trên $(0;2)$, $V'<0$ trên $(2;6)$ nên $V$ lớn nhất tại $x=2$.\n$V(2)=2\\cdot8^2=128$ ($\\text{cm}^3$).",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010609",
+  "loai": "trac_nghiem",
+  "de": "Đường tiệm cận ngang của đồ thị hàm số $y=\\dfrac{2x-1}{x+3}$ có phương trình là",
+  "lua_chon": [
+   "$x=-3$",
+   "$y=-\\dfrac13$",
+   "$y=2$",
+   "$x=2$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "$\\lim_{x\\to\\pm\\infty}\\dfrac{2x-1}{x+3}=\\lim_{x\\to\\pm\\infty}\\dfrac{2-\\frac1x}{1+\\frac3x}=2$ nên tiệm cận ngang là $y=2$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010604",
+  "loai": "tra_loi_ngan",
+  "de": "Nếu một doanh nghiệp sản xuất $x$ sản phẩm trong một tháng $(x\\in\\mathbb{N}^*;\\ 1\\le x\\le4500)$ thì doanh thu nhận được khi bán hết số sản phẩm đó là $F(x)=-0{,}01x^2+300x$ (nghìn đồng), trong khi chi phí sản xuất bình quân cho mỗi sản phẩm là $G(x)=\\dfrac{30000}{x}+200$ (nghìn đồng). Giả sử số sản phẩm sản xuất ra luôn được bán hết. Trong một tháng, doanh nghiệp đó cần sản xuất ít nhất bao nhiêu sản phẩm để lợi nhuận thu được lớn hơn $100$ triệu đồng?",
+  "dap_an": "1536",
+  "loi_giai": "Chi phí sản xuất $x$ sản phẩm: $x\\cdot G(x)=30000+200x$ (nghìn đồng).\nLợi nhuận: $L(x)=F(x)-xG(x)=-0{,}01x^2+100x-30000$ (nghìn đồng).\n$L(x)>100000\\Leftrightarrow -0{,}01x^2+100x-130000>0\\Leftrightarrow x^2-10000x+13000000<0$.\n$\\Leftrightarrow 5000-\\sqrt{12000000}<x<5000+\\sqrt{12000000}\\Leftrightarrow 1535{,}9<x<8464{,}1$.\nKết hợp $x\\in\\mathbb{N}^*$, $x\\le4500$: $x\\ge1536$. Kiểm tra: $L(1535)-100000=-62{,}25<0$ và $L(1536)-100000=7{,}04>0$.\nVậy cần sản xuất ít nhất $1536$ sản phẩm.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010597",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=\\dfrac{ax+b}{cx+d}$ $(ac\\ne0,\\ ad-bc\\ne0)$ có đồ thị như hình dưới. Đường tiệm cận đứng của đồ thị hàm số đã cho có phương trình là",
+  "lua_chon": [
+   "$y=2$",
+   "$x=-1$",
+   "$y=-1$",
+   "$x=2$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Quan sát đồ thị: đường thẳng đứng mà đồ thị tiến sát (khi $x$ tiến tới giá trị đó) đi qua điểm $-1$ trên trục hoành, nên tiệm cận đứng là $x=-1$.\nĐường thẳng nằm ngang $y=2$ là tiệm cận ngang.\nChọn B.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010605",
+  "loai": "tra_loi_ngan",
+  "de": "Anh Công dự định làm một chiếc bể cá hình hộp chữ nhật không có nắp bằng vật liệu kính. Biết rằng đáy bể có thiết kế chiều dài gấp ba lần chiều rộng. Kinh phí tối đa anh Công có thể chi trả để mua kính làm các mặt bể là $3600000$ đồng và giá kính ghép bể hiện tại là $400000$ đồng$/\\text{m}^2$. Hỏi thể tích nước lớn nhất mà chiếc bể cá có thể chứa được là bao nhiêu mét khối? (Xem độ dày của kính là không đáng kể và không tính phần vật liệu hao hụt khi dán keo).",
+  "dap_an": "2.25",
+  "loi_giai": "Diện tích kính tối đa: $3600000:400000=9$ ($\\text{m}^2$).\nGọi chiều rộng đáy là $a$ ($a>0$), chiều dài $3a$, chiều cao $h$. Diện tích kính: $3a^2+2(a\\cdot h+3a\\cdot h)=3a^2+8ah=9\\Rightarrow h=\\dfrac{9-3a^2}{8a}$ (với $0<a<\\sqrt3$).\n$V=3a^2h=\\dfrac{3a(9-3a^2)}{8}=\\dfrac{27a-9a^3}{8}$.\n$V'=\\dfrac{27-27a^2}{8}=0\\Leftrightarrow a=1$; $V'>0$ khi $a<1$, $V'<0$ khi $a>1$.\nVậy $V_{\\max}=V(1)=\\dfrac{18}{8}=2{,}25$ $\\text{m}^3$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010624",
+  "loai": "tra_loi_ngan",
+  "de": "Một cửa hàng nhập một loại áo với giá $70$ nghìn đồng/chiếc và bán ra với giá $120$ nghìn đồng/chiếc thì mỗi ngày bán được $30$ chiếc. Khảo sát cho thấy cứ giảm giá bán $5$ nghìn đồng/chiếc thì mỗi ngày bán thêm được $5$ chiếc. Hỏi cửa hàng nên bán mỗi chiếc áo với giá bao nhiêu nghìn đồng để lợi nhuận mỗi ngày là lớn nhất?",
+  "dap_an": "110",
+  "loi_giai": "Gọi $x$ là số lần giảm giá $5$ nghìn đồng $(0\\le x<10)$. Giá bán là $120-5x$ (nghìn đồng/chiếc), số áo bán được mỗi ngày là $30+5x$.\nLợi nhuận mỗi ngày: $L(x)=(120-5x-70)(30+5x)=-25x^2+100x+1500$ (nghìn đồng).\n$L'(x)=-50x+100=0\\Leftrightarrow x=2$; $L'>0$ trên $[0;2)$, $L'<0$ trên $(2;10)$ nên $L$ lớn nhất tại $x=2$ ($L(2)=1600$).\nKhi đó giá bán là $120-5\\cdot2=110$ nghìn đồng/chiếc.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010602",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị nhỏ nhất của hàm số $y=x^2-4\\ln(1-x)$ trên đoạn $[-2;0]$ (kết quả làm tròn đến hàng phần chục).",
+  "dap_an": "-1.8",
+  "loi_giai": "Hàm số xác định trên $[-2;0]$ (vì $1-x>0$).\n$y'=2x+\\dfrac{4}{1-x}=\\dfrac{-2x^2+2x+4}{1-x}=\\dfrac{-2(x-2)(x+1)}{1-x}$.\nTrên $[-2;0]$: $y'=0\\Leftrightarrow x=-1$.\n$y(-2)=4-4\\ln3\\approx-0{,}39$; $y(-1)=1-4\\ln2\\approx-1{,}77$; $y(0)=0$.\nVậy giá trị nhỏ nhất là $1-4\\ln2\\approx-1{,}8$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010608",
+  "loai": "trac_nghiem",
+  "de": "Điểm cực đại của hàm số $y=x^3-3x^2-9x+2$ là",
+  "lua_chon": [
+   "$x=3$",
+   "$x=-1$",
+   "$x=7$",
+   "$x=-25$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$. $y'=3x^2-6x-9$; $y'=0\\Leftrightarrow x=-1$ hoặc $x=3$.\n$y'>0$ khi $x<-1$ và $y'<0$ khi $-1<x<3$ nên $y'$ đổi dấu từ dương sang âm khi qua $x=-1$.\nVậy điểm cực đại của hàm số là $x=-1$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010626",
+  "loai": "tra_loi_ngan",
+  "de": "Một chất điểm chuyển động theo phương trình $s(t)=-t^3+6t^2+5$, trong đó $t$ (giây) là thời gian tính từ lúc bắt đầu chuyển động và $s$ (mét) là quãng đường đi được. Trong $5$ giây đầu tiên, vận tốc lớn nhất của chất điểm bằng bao nhiêu mét/giây?",
+  "dap_an": "12",
+  "loi_giai": "Vận tốc $v(t)=s'(t)=-3t^2+12t$, $t\\in[0;5]$.\n$v'(t)=-6t+12=0\\Leftrightarrow t=2$.\n$v(0)=0$; $v(2)=-12+24=12$; $v(5)=-75+60=-15$.\nVậy vận tốc lớn nhất trong $5$ giây đầu là $12$ m/s (tại $t=2$ giây).",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T11200000010610",
+  "loai": "trac_nghiem",
+  "de": "Giá trị lớn nhất của hàm số $y=x^4-2x^2+3$ trên đoạn $[0;2]$ bằng",
+  "lua_chon": [
+   "$3$",
+   "$2$",
+   "$6$",
+   "$11$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "$y'=4x^3-4x=4x(x^2-1)$; trên $[0;2]$: $y'=0\\Leftrightarrow x=0$ hoặc $x=1$.\n$y(0)=3$, $y(1)=2$, $y(2)=16-8+3=11$.\nVậy $\\max_{[0;2]}y=11$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

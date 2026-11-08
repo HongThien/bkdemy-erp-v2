@@ -200,6 +200,7 @@ textarea.o-nhap { resize: vertical; }
 .the-nguoi .phu { font-size: 12px; color: var(--muc-nhat); }
 .cong-bay { position: absolute; top: -8px; right: 12px; font-family: 'Baloo 2'; font-weight: 800; font-size: 26px; color: var(--vang-dam); text-shadow: 0 2px 0 #fff; animation: bay 1.4s forwards; }
 .the-nguoi.phai .cong-bay { right: auto; left: 12px; }
+.cong-bay.tru { color: #e5484d; }
 @keyframes bay { from { transform: translateY(10px); opacity: 0; } 20% { opacity: 1; } to { transform: translateY(-36px); opacity: 0; } }
 .dau-than { flex: 1; display: flex; flex-direction: column; gap: 10px; align-items: center; width: 100%; max-width: 1100px; margin: 0 auto; }
 .dau-san { position: relative; width: 100%; height: clamp(170px, 34vh, 340px); }

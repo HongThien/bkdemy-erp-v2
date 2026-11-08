@@ -1,0 +1,736 @@
+[
+ {
+  "ma_cau": "T110000000210",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị lớn nhất của biểu thức $f\\left(x,y\\right)=x+3y$ với điều kiện $\\begin{cases} 0\\le y\\le 4 \\\\ 0\\le x \\\\ x-y-1\\le 0 \\\\ x+2y-10\\le 0 \\end{cases}$.",
+  "dap_an": "14",
+  "loi_giai": "Miền nghiệm của hệ bất phương trình là phần không bị gạch trong hình vẽ, đó là miền ngũ giác $OABCD$ (kể cả biên).\nToạ độ các đỉnh của miền nghiệm được xác định như sau: - $O\\left(0;0\\right)$ là giao điểm của hai trục toạ độ $x=0$ và $y=0$.\n- $A\\left(1;0\\right)$ là giao điểm của đường thẳng $x-y=1$ và trục hoành $y=0$.\n- $B\\left(4;3\\right)$ là nghiệm của hệ phương trình $\\begin{cases} x-y=1 \\\\ x+2y=10. \\end{cases}$\n- $C\\left(2;4\\right)$ là nghiệm của hệ phương trình $\\begin{cases} x+2y=10 \\\\ y=4. \\end{cases}$\n- $D\\left(0;4\\right)$ là giao điểm của đường thẳng $y=4$ và trục tung $x=0$.\nBiểu thức bậc nhất hai ẩn $f\\left(x,y\\right)=x+3y$ đạt giá trị lớn nhất tại một trong các đỉnh của đa giác m …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000271",
+  "loai": "tu_luan",
+  "de": "Một nhà khảo cổ học muốn phục chế lại một cái đĩa cổ bị bể, anh ấy cần tìm bán kính $R$ của cái đĩa hình tròn khi nó còn nguyên vẹn. Bằng việc dựng được tam giác $ABC$ và đo được $\\widehat{BAC}=20^\\circ$, $BC=8 cm$, tính bán kính $R$ theo đơn vị cm (làm tròn kết quả đến hàng phần chục).",
+  "loi_giai": "Ba điểm $A$, $B$, $C$ đều nằm trên đường viền của chiếc đĩa, nên đường tròn ngoại tiếp tam giác $ABC$ chính là đường tròn viền của chiếc đĩa khi còn nguyên vẹn.\nDo đó bán kính $R$ cần tìm là bán kính đường tròn ngoại tiếp tam giác $ABC$.\nCạnh $BC=8$ cm đối diện với góc $\\widehat{BAC}=20^\\circ$, nên theo định lí sin\n$\\dfrac{BC}{\\sin \\widehat{BAC}}=2R\\Rightarrow R=\\dfrac{BC}{2\\sin \\widehat{BAC}}=\\dfrac{8}{2\\sin 20^\\circ}\\approx 11,695.$\nVậy bán kính của chiếc đĩa xấp xỉ $R\\approx 11,7$ cm.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000257",
+  "loai": "tra_loi_ngan",
+  "de": "Để đo khoảng cách giữa hai vị trí $M$, $N$ ở hai phía ốc đảo, người ta chọn vị trí $O$ bên ngoài ốc đảo sao cho: $O$ không thuộc đường thẳng $MN$; các khoảng cách $OM$, $ON$ và góc $\\widehat{MON}$ đo được như hình vẽ bên dưới. Sau khi đo, ta có $OM=200 m$, $ON=500 m$ và $\\widehat{MON}=135^\\circ$. Khoảng cách giữa hai vị trí $M$, $N$ là bao nhiêu mét? (làm tròn kết quả đến hàng đơn vị)",
+  "dap_an": "657",
+  "loi_giai": "Áp dụng định lí côsin trong tam giác $OMN$, ta có:\n$MN^{2}=OM^{2}+ON^{2}\\text{-2OM\\cdot ON\\cdot }\\cos \\widehat{MON}.$\nThay số $OM=200 m$, $ON=500 m$ và $\\widehat{MON}=135^\\circ$, ta được:\n$MN^{2}={200}^{2}+{500}^{2}-2\\cdot 200\\cdot 500\\cdot \\cos 135^\\circ=290 000-200 000\\cdot \\left(-\\dfrac{\\sqrt{2}}{2}\\right)=290 000+100 000\\sqrt{2}.$\nSuy ra:\n$MN=\\sqrt{290 000+100 000\\sqrt{2}}\\approx 656,83 \\left(m\\right).$\nLàm tròn kết quả đến hàng đơn vị, ta được $\\text{MN\\approx 657} m$.\nVậy khoảng cách giữa hai vị trí $M$ và $N$ là $657 m$.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000034",
+  "loai": "trac_nghiem",
+  "de": "Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$\\sin \\left(180^\\circ-x\\right)=-\\sin x$.",
+   "$\\tan \\left(180^\\circ-x\\right)=-\\cot x$.",
+   "$\\cot \\left(180^\\circ-x\\right)=-\\tan x$.",
+   "$\\cos \\left(180^\\circ-x\\right)=-\\cos x$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Hai góc bù nhau có sin bằng nhau, các giá trị lượng giác còn lại đối nhau.\nDo đó $\\cos \\left(180^\\circ-x\\right)=-\\cos x$ là khẳng định đúng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030203082",
+  "loai": "tra_loi_ngan",
+  "de": "Để tính được chiều rộng của một cửa biển $\\mathrm{CD}$, người ta chọn hai vị trí $\\mathrm{A}, \\mathrm{B}$ cách nhau $1000$ m trên bờ biển (như hình minh hoạ). Từ vị trí $\\mathrm{A}$, người ta đo được $\\widehat{CAD} = 17^\\circ$, $\\widehat{BAD} = 121^\\circ$. Tại vị trí $\\mathrm{B}$, người ta đo được $\\widehat{ABC} = 24^\\circ$; $\\widehat{DBC} = 15^\\circ$. Hỏi cửa biển $\\mathrm{CD}$ rộng bao nhiêu mét? (kết quả làm tròn đến hàng đơn vị)[hình]",
+  "dap_an": "1355",
+  "loi_giai": "Tam giác $\\mathrm{ABC}$: $\\widehat{BAC} = 104^\\circ$, $\\widehat{ACB} = 52^\\circ$; định lí sin: $\\mathrm{AC} = \\dfrac{1000\\sin24^\\circ}{\\sin52^\\circ} \\approx 516,16$ m.\nTam giác $\\mathrm{ABD}$: $\\widehat{ABD} = 24^\\circ + 15^\\circ = 39^\\circ$, $\\widehat{ADB} = 180^\\circ - 121^\\circ - 39^\\circ = 20^\\circ$; định lí sin: $\\mathrm{AD} = \\dfrac{1000\\sin39^\\circ}{\\sin20^\\circ} \\approx 1840,01$ m.\nĐịnh lí côsin trong tam giác $\\mathrm{ACD}$ ($\\widehat{CAD} = 17^\\circ$): $\\mathrm{CD}^2 = \\mathrm{AC}^2 + \\mathrm{AD}^2 - 2 \\cdot \\mathrm{AC} \\cdot \\mathrm{AD}\\cos17^\\circ \\approx 1835586$, nên\n$\\mathrm{CD} \\approx 1355$ m.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ thức lượng trong tam giác › Giải tam giác và bài toán thực tế áp dụng định lý sin"
+ },
+ {
+  "ma_cau": "T110030107074",
+  "loai": "tu_luan",
+  "de": "Cho góc $\\alpha$ thỏa mãn $\\tan \\alpha =2$. Tính giá trị của biểu thức $P=\\dfrac{3\\sin ^{2}\\alpha -2\\cos \\alpha \\cdot \\sin \\alpha +1}{3\\cos ^{2}\\alpha -4\\sin ^{2}\\alpha }$.",
+  "loi_giai": "Vì $\\tan \\alpha =2$ nên $\\cos \\alpha \\ne 0$.\nTa sử dụng đồng nhất thức $1=\\sin ^{2}\\alpha +\\cos ^{2}\\alpha$, khi đó tử số của biểu thức $P$ trở thành:\n$3\\sin ^{2}\\alpha -2\\cos \\alpha \\cdot \\sin \\alpha +\\left(\\sin ^{2}\\alpha +\\cos ^{2}\\alpha \\right)=4\\sin ^{2}\\alpha -2\\sin \\alpha \\cos \\alpha +\\cos ^{2}\\alpha.$\nChia cả tử và mẫu của biểu thức $P$ cho $\\cos ^{2}\\alpha \\ne 0$, ta được:\n$P=\\dfrac{\\dfrac{4\\sin ^{2}\\alpha -2\\sin \\alpha \\cos \\alpha +\\cos ^{2}\\alpha }{\\cos ^{2}\\alpha }}{\\dfrac{3\\cos ^{2}\\alpha -4\\sin ^{2}\\alpha }{\\cos ^{2}\\alpha }}=\\dfrac{4\\tan ^{2}\\alpha -2\\tan \\alpha +1}{3-4\\tan ^{2}\\alpha }.$\nThay $\\tan \\alpha =2$ vào biểu thức, ta được:\n$P=\\dfrac{4\\cdot 2^{2}-2\\cdot 2+1}{3-4\\cdot …",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Rút gọn hoặc tính giá trị của biểu thức lượng giác sử dụng các hệ thức lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T110030201043",
+  "loai": "trac_nghiem",
+  "de": "Trong tam giác $ABC$, gọi $p,S,R,r$ lần lượt là nửa chu vi, diện tích, bán kính đường tròn ngoại tiếp và bán kính đường tròn nội tiếp của tam giác $ABC$, phát biểu nào sau đây đúng?",
+  "lua_chon": [
+   "$S = \\dfrac{1}{2}ac \\sin B$.",
+   "$S = \\sqrt{(p-a)(p-b)(p-c)}$.",
+   "$S = pR$.",
+   "$S = \\dfrac{abc}{4r}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Các công thức tính diện tích tam giác $ABC$ bao gồm:\n$\\bullet S = \\dfrac{1}{2}ab\\sin C = \\dfrac{1}{2}bc\\sin A = \\dfrac{1}{2}ca \\sin B$.\n$\\bullet S = \\dfrac{abc}{4R}$\n$\\bullet S = pr$.\n$\\bullet S = \\sqrt{p(p-a)(p-b)(p-c)}$.\nDo đó, phát biểu đúng là $S = \\dfrac{1}{2}ac \\sin B$.",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Nhận dạng định lí cos, định lí sin và các công thức tính diện tích tam giác"
+ },
+ {
+  "ma_cau": "T110030104003",
+  "loai": "trac_nghiem",
+  "de": "Biết $\\cos\\beta = 0,4$. Tính $Q = \\cos(180^\\circ - \\beta) - \\cos\\beta$.",
+  "lua_chon": [
+   "0,8",
+   "-0,4",
+   "-0,8",
+   "1,2"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Vì $\\beta$ và $180^\\circ - \\beta$ là hai góc bù nhau nên $\\cos(180^\\circ - \\beta) = -\\cos\\beta$.\n$Q = -\\cos\\beta - \\cos\\beta = -2\\cos\\beta = -2 \\cdot 0,4 = -0,8$.\nChọn C.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Rút gọn biểu thức lượng giác sử dụng mối quan hệ lượng giác của hai góc bù hoặc phụ nhau"
+ },
+ {
+  "ma_cau": "T110000000284",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A$ và $B$. Mệnh đề \"\"$\\forall x,x\\in A\\Rightarrow x\\in B$\"\" tương đương với mệnh đề nào sau đây?",
+  "lua_chon": [
+   "$A=B$.",
+   "$A\\ne B$.",
+   "$A\\subset B$.",
+   "$B\\subset A$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Theo định nghĩa tập hợp con: Nếu mọi phần tử của tập hợp $A$ đều thuộc tập hợp $B$, tức là $\\forall x,x\\in A\\Rightarrow x\\in B$, thì ta nói tập hợp $A$ là tập con của tập hợp $B$, ký hiệu $A\\subset B$.\nVậy mệnh đề đã cho tương đương với $A\\subset B$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030201057",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$, ta ký hiệu $a,b,c$ tương ứng là độ dài các cạnh đối diện với đỉnh $A,B,C$; $p$ là nửa chu vi; $S$ là diện tích tam giác; $R,r$ tương ứng là bán kính đường tròn ngoại tiếp, đường tròn nội tiếp tam giác. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$a^2 = b^2 + c^2 – 2bc \\cos A$.",
+   "$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2r$.",
+   "$S = \\dfrac{abc}{4r}$",
+   "$S = \\sqrt{p\\cdot(p+a)\\cdot(p+b)\\cdot(p+c)}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Xét tam giác $ABC$ với các ký hiệu chuẩn:\n- Theo định lí côsin trong tam giác $ABC$, ta có $a^2 = b^2 + c^2 – 2bc \\cos A$. Do đó khẳng định ở phương án A đúng.\n- Theo định lí sin, ta có $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$ (với $R$ là bán kính đường tròn ngoại tiếp), nên khẳng định $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2r$ là sai.\n- Công thức tính diện tích tam giác theo bán kính đường tròn ngoại tiếp là $S = \\dfrac{abc}{4R}$, nên khẳng định $S = \\dfrac{abc}{4r}$ là sai.\n- Công thức Heron tính diện tích tam giác là $S = \\sqrt{p(p-a)(p-b)(p-c)}$, nên khẳng định $S=\\sqrt{p\\cdot(p+a)\\cdot(p+b)\\cdot(p+c)}$ là sai.\nVậy khẳng định đúng là $a^2 = b …",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Nhận dạng định lí cos, định lí sin và các công thức tính diện tích tam giác"
+ },
+ {
+  "ma_cau": "T110000000005",
+  "loai": "trac_nghiem",
+  "de": "Cho góc $\\alpha$ có điểm biểu diễn trên nửa đường tròn đơn vị là $M\\left(-\\dfrac{1}{2};\\dfrac{\\sqrt{3}}{2}\\right)$. Hãy chỉ ra các giá trị lượng giác của góc $\\alpha$?",
+  "lua_chon": [
+   "$\\sin \\alpha =\\dfrac{\\sqrt{3}}{2},\\cot \\alpha =-\\sqrt{3}$.",
+   "$\\sin \\alpha =\\dfrac{\\sqrt{3}}{2},\\tan \\alpha =-\\sqrt{3}$.",
+   "$\\sin \\alpha =-\\dfrac{1}{2},\\cos \\alpha =\\dfrac{\\sqrt{3}}{2}$.",
+   "$\\cos \\alpha =-\\dfrac{1}{2},\\tan \\alpha =-\\dfrac{\\sqrt{3}}{3}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Nếu điểm biểu diễn của góc $\\alpha$ trên nửa đường tròn đơn vị là $M\\left(x_{0};y_{0}\\right)$ thì $\\cos \\alpha =x_{0}$ và $\\sin \\alpha =y_{0}$.\nVới $M\\left(-\\dfrac{1}{2};\\dfrac{\\sqrt{3}}{2}\\right)$ ta được\n$\\cos \\alpha =-\\dfrac{1}{2},\\sin \\alpha =\\dfrac{\\sqrt{3}}{2}.$\nSuy ra\n$\\tan \\alpha =\\dfrac{\\sin \\alpha }{\\cos \\alpha }=\\dfrac{\\dfrac{\\sqrt{3}}{2}}{-\\dfrac{1}{2}}=-\\sqrt{3},\\cot \\alpha =\\dfrac{1}{\\tan \\alpha }=-\\dfrac{1}{\\sqrt{3}}=-\\dfrac{\\sqrt{3}}{3}.$\nĐối chiếu các phương án, chỉ có cặp $\\sin \\alpha =\\dfrac{\\sqrt{3}}{2}$ và $\\tan \\alpha =-\\sqrt{3}$ là đúng cả hai.\nVậy chọn đáp án B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030107071",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $\\alpha$ là góc tù và $\\tan \\alpha +\\cot \\alpha =-2$. Tính giá trị của biểu thức $M=\\dfrac{\\sqrt{2}}{4}\\left(\\sin \\alpha -\\cos \\alpha \\right)$.",
+  "dap_an": "0.5",
+  "loi_giai": "Điều kiện xác định: $\\sin \\alpha \\ne 0$ và $\\cos \\alpha \\ne 0$.\nBiến đổi phương trình đã cho:\n$\\tan \\alpha +\\cot \\alpha =-2\\Leftrightarrow \\tan \\alpha +\\dfrac{1}{\\tan \\alpha }=-2\\Leftrightarrow \\tan ^{2}\\alpha +2\\tan \\alpha +1=0\\Leftrightarrow \\left(\\tan \\alpha +1\\right)^{2}=0\\Leftrightarrow \\tan \\alpha =-1.$\nVì $\\alpha$ là góc tù ($90^\\circ<\\alpha <180^\\circ$) nên $\\alpha =135^\\circ$.\nKhi đó:\n$\\sin \\alpha =\\sin 135^\\circ=\\dfrac{\\sqrt{2}}{2},\\cos \\alpha =\\cos 135^\\circ=-\\dfrac{\\sqrt{2}}{2}.$\nSuy ra\n$\\sin \\alpha -\\cos \\alpha =\\dfrac{\\sqrt{2}}{2}-\\left(-\\dfrac{\\sqrt{2}}{2}\\right)=\\sqrt{2}.$\nThay vào biểu thức $M$, ta được\n$M=\\dfrac{\\sqrt{2}}{4}\\left(\\sin \\alpha -\\cos \\alpha \\right)=\\dfrac{\\sqr …",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Rút gọn hoặc tính giá trị của biểu thức lượng giác sử dụng các hệ thức lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T110010203084",
+  "loai": "tu_luan",
+  "de": "Cho hai tập hợp $A=\\left[-3;1\\right]$, $B=\\left(0;+\\infty \\right)$. Tìm các tập hợp $A\\cap B$, $A\\setminus B$.",
+  "loi_giai": "Ta có $A=\\left[-3;1\\right]$ và $B=\\left(0;+\\infty \\right)$.\nKhi đó, $A\\cap B=\\left[-3;1\\right]\\cap \\left(0;+\\infty \\right)=(0;1]$.\nVà $A\\setminus B=\\left[-3;1\\right]\\setminus \\left(0;+\\infty \\right)=\\left[-3;0\\right]$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110000000362",
+  "loai": "tra_loi_ngan",
+  "de": "Biết $\\alpha \\in \\left(0^\\circ;180^\\circ\\right)$ và $\\tan \\alpha =-3$. Tính giá trị biểu thức $P=\\dfrac{3\\cos ^{2}\\alpha +3\\sin \\alpha \\cdot \\cos \\alpha }{\\cos ^{2}\\alpha +1}$. (Kết quả làm tròn đến hàng phần chục).",
+  "dap_an": "-0.5",
+  "loi_giai": "Vì $\\tan \\alpha =-3$ nên $\\cos \\alpha \\ne 0$. Chia cả tử và mẫu của $P$ cho $\\cos ^{2}\\alpha$.\nTử số: $\\dfrac{3\\cos ^{2}\\alpha +3\\sin \\alpha \\cos \\alpha }{\\cos ^{2}\\alpha }=3+3\\tan \\alpha$.\nMẫu số: $\\dfrac{\\cos ^{2}\\alpha +1}{\\cos ^{2}\\alpha }=1+\\dfrac{1}{\\cos ^{2}\\alpha }=1+\\left(1+\\tan ^{2}\\alpha \\right)=2+\\tan ^{2}\\alpha$.\nThay $\\tan \\alpha =-3$ vào ta được\n$P=\\dfrac{3+3\\cdot \\left(-3\\right)}{2+\\left(-3\\right)^{2}}=\\dfrac{3-9}{2+9}=\\dfrac{-6}{11}\\approx -0,545.$\nLàm tròn đến hàng phần chục ta được $P\\approx -0,5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000384",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$ với $a=BC;b=AC;c=AB$. Gọi $R,r,p,S$ lần lượt là bán kính đường tròn ngoại tiếp, bán kính đường tròn nội tiếp, nửa chu vi và diện tích của tam giác $ABC$. Trong các công thức sau công thức nào sai?",
+  "lua_chon": [
+   "$S=\\sqrt{p\\left(p-a\\right)\\left(p-b\\right)\\left(p-c\\right)}$.",
+   "$S=\\dfrac{abc}{2R}$.",
+   "$S=pr$.",
+   "$S=\\dfrac{1}{2}ab\\sin C$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Các công thức tính diện tích tam giác $ABC$ gồm có:\n• Công thức Heron: $S=\\sqrt{p\\left(p-a\\right)\\left(p-b\\right)\\left(p-c\\right)}$ với $p=\\dfrac{a+b+c}{2}$.\n• $S=pr$ với $r$ là bán kính đường tròn nội tiếp.\n• $S=\\dfrac{1}{2}ab\\sin C=\\dfrac{1}{2}bc\\sin A=\\dfrac{1}{2}ca\\sin B$.\n• $S=\\dfrac{abc}{4R}$ với $R$ là bán kính đường tròn ngoại tiếp.\nDo đó, công thức $S=\\dfrac{abc}{2R}$ là sai (mẫu số đúng phải là $4R$).",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000332",
+  "loai": "trac_nghiem",
+  "de": "Xét tam giác $ABC$ tùy ý, có độ dài cạnh $BC=a$ và $R$ là độ dài bán kính đường tròn ngoại tiếp. Mệnh đề nào dưới đây đúng?",
+  "lua_chon": [
+   "$\\dfrac{a}{\\sin A}=2R$.",
+   "$\\dfrac{a}{\\sin A}=R$.",
+   "$\\dfrac{a}{\\sin A}=4R$.",
+   "$\\dfrac{a}{\\sin A}=\\dfrac{R}{2}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Theo định lí sin trong tam giác $ABC$, ta có\n$\\dfrac{a}{\\sin A}=2R.$\nDo đó mệnh đề đúng là $\\dfrac{a}{\\sin A}=2R$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000134",
+  "loai": "tra_loi_ngan",
+  "de": "Một chiếc đu quay có bán kính $75 m$, tâm của vòng quay ở độ cao $90 m$, thời gian thực hiện mỗi vòng quay của đu quay là $15$phút. Nếu một người vào cabin tại vị trí thấp nhất của vòng quay, thì sau $5$ phút quay, người đó ở độ cao bao nhiêu mét so với mặt đất? (làm tròn đến hàng đơn vị)",
+  "dap_an": "128",
+  "loi_giai": "Đu quay quay một vòng hết $15$ phút, tương ứng với một góc quay $360^\\circ$.\nTốc độ quay của đu quay là:\n$\\dfrac{360^\\circ}{15}=24^\\circ/$\nphút\n$.$\nSau $5$ phút quay, góc quay của đu quay là:\n$5\\cdot 24^\\circ=120^\\circ.$\nChọn hệ trục toạ độ $Oxy$ có gốc $O$ trùng với tâm $C$ của vòng quay, trục $Oy$ hướng thẳng đứng lên trên.\nVị trí ban đầu của người đó là vị trí thấp nhất của vòng quay, có toạ độ $\\left(0;-75\\right)$.\nSau khi quay một góc $120^\\circ$, vị trí của người đó có độ cao so với tâm $C$ là:\n$y=-75\\cos 120^\\circ=-75\\cdot \\left(-\\dfrac{1}{2}\\right)=37,5 m.$\nVì tâm của vòng quay ở độ cao $90 m$ so với mặt đất nên sau $5$ phút, độ cao của người đó so với mặt đất là:\n$h=90+37,5=127,5 m. …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020102076",
+  "loai": "trac_nghiem",
+  "de": "Cho bất phương trình $2x+y>6$. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "Bất phương trình đã cho có nghiệm duy nhất.",
+   "Bất phương trình đã cho vô nghiệm.",
+   "Bất phương trình đã cho có vô số nghiệm.",
+   "Bất phương trình đã cho có tập nghiệm là $[3;+\\infty)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Bất phương trình bậc nhất hai ẩn $2x+y>6$ có miền nghiệm là nửa mặt phẳng bờ là đường thẳng $d :2x+y=6$ không chứa gốc tọa độ $O\\left(0;0\\right)$ (không kể bờ $d$).\nMiền nghiệm này chứa vô số điểm $\\left(x;y\\right)$, chẳng hạn các cặp số $\\left(4;0\\right),\\left(0;7\\right),\\left(3;1\\right),\\dots$ đều là nghiệm của bất phương trình.\nDo đó, bất phương trình đã cho có vô số nghiệm.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110000000047",
+  "loai": "trac_nghiem",
+  "de": "Tập xác định của hàm số: $f\\left(x\\right)=\\dfrac{-x^{2}+2x}{x+1}$ là tập hợp nào sau đây?",
+  "lua_chon": [
+   "$\\mathbb{R}\\setminus \\{1\\}$.",
+   "$\\mathbb{R}\\setminus \\{-1;1\\}$.",
+   "$\\mathbb{R}$.",
+   "$\\mathbb{R}\\setminus \\{-1\\}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Hàm số phân thức xác định khi và chỉ khi mẫu thức khác $0$.\nĐiều kiện xác định của hàm số là $x+1\\ne 0\\Leftrightarrow x\\ne -1$.\nVậy tập xác định của hàm số là $D=\\mathbb{R}\\setminus \\{-1\\}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000231",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\triangle ABC$ có $AB=c$, $BC=a$, $AC=b$ và $S$ là diện tích. Khẳng định đúng là",
+  "lua_chon": [
+   "$S=\\dfrac{1}{2}bc\\sin A$.",
+   "$S=\\dfrac{1}{2}ca\\sin A$.",
+   "$S=\\dfrac{1}{2}ab\\sin B$.",
+   "$S=\\dfrac{1}{2}bc\\sin C$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Theo công thức tính diện tích tam giác theo hai cạnh và sin của góc xen giữa, ta có\n$S=\\dfrac{1}{2}bc\\sin A=\\dfrac{1}{2}ca\\sin B=\\dfrac{1}{2}ab\\sin C.$\nDo đó khẳng định đúng là $S=\\dfrac{1}{2}bc\\sin A$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030204040",
+  "loai": "tra_loi_ngan",
+  "de": "Khi chế tạo cánh diều hình tứ giác, người ta sẽ tạo khung trước. Một khung cánh diều sẽ được tạo từ hai thanh chéo làm bằng gỗ và bốn sợi dây cước viền. Lấy bốn sợi dây tạo thành viền ngoài đã được cắt đúng độ dài với kích thước là $40$, $40$, $96$, $96$ (theo đơn vị cm) như hình vẽ và lắp hai thanh gỗ làm đường chéo. Tính tổng độ dài hai thanh chéo gỗ khi diện tích cánh diều lớn nhất (đơn vị cm, kết quả làm tròn đến hàng đơn vị).",
+  "dap_an": "178",
+  "loi_giai": "Giả sử khung cánh diều là tứ giác $ABCD$ với $AB = AD = 40$ và $CB = CD = 96$. Diện tích diều là $S = 2S_{ABC} = AB \\cdot BC \\cdot \\sin \\hat{B}$. Vì $\\sin \\hat{B} \\leq 1$ nên $S$ lớn nhất khi $\\hat{B} = 90^\\circ$, tức $\\triangle ABC$ vuông tại $B$. Khi đó, đường chéo $AC = \\sqrt{AB^2 + BC^2} = \\sqrt{40^2 + 96^2} = 104$. Gọi $H$ là giao của $AC$ và $BD$. Do tính đối xứng, $AC \\perp BD$ tại $H$ và $BD = 2BH$. Hệ thức lượng trong tam giác vuông $ABC$ cho: $BH = \\dfrac{AB \\cdot BC}{AC} = \\dfrac{40 \\cdot 96}{104} = \\dfrac{480}{13}$. Suy ra đường chéo $BD = 2BH = \\dfrac{960}{13}$. Tổng độ dài hai thanh chéo: $AC + BD = 104 + \\dfrac{960}{13} \\approx 177,85$. Làm tròn đến hàng đơn vị, ta được $178$.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ thức lượng trong tam giác › Tính diện tích tam giác"
+ },
+ {
+  "ma_cau": "T110000000015",
+  "loai": "trac_nghiem",
+  "de": "Cho góc $90^\\circ<\\alpha <180^\\circ$. Biết rằng $\\sin \\alpha =\\dfrac{3}{5}$. Tính giá trị của $\\cos \\alpha$.",
+  "lua_chon": [
+   "$\\cos \\alpha =\\pm \\dfrac{4}{5}$.",
+   "$\\cos \\alpha =-\\dfrac{4}{5}$.",
+   "$\\cos \\alpha =\\dfrac{4}{5}$.",
+   "$\\cos \\alpha =\\dfrac{2}{5}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Áp dụng hệ thức lượng giác cơ bản $\\sin ^{2}\\alpha +\\cos ^{2}\\alpha =1$, ta có:\n$\\cos ^{2}\\alpha =1-\\sin ^{2}\\alpha =1-\\left(\\dfrac{3}{5}\\right)^{2}=\\dfrac{16}{25}.$\nSuy ra $\\cos \\alpha =\\dfrac{4}{5}$ hoặc $\\cos \\alpha =-\\dfrac{4}{5}$.\nVì $90^\\circ<\\alpha <180^\\circ$ nên $\\alpha$ là góc tù, do đó $\\cos \\alpha <0$.\nVậy $\\cos \\alpha =-\\dfrac{4}{5}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000196",
+  "loai": "tu_luan",
+  "de": "Để đo khoảng cách từ vị trí $A$đến vị trí $B$ ở hai bên bờ ao, bạn Hải tiến hành đo khoảng cách $AC$ và các góc $\\widehat{BAC},\\widehat{BCA}$. Kết quả nhận được là: $AC=25 m,\\widehat{BAC}=59,95^\\circ$ và $\\widehat{BCA}=82,15^\\circ$ (Hình vẽ). Khoảng cách từ vị trí $A$ đến vị trí $B$ là bao nhiêu mét (làm tròn kết quả đến hàng đơn vị của mét)?",
+  "loi_giai": "Xét tam giác $ABC$, tổng ba góc trong một tam giác bằng $180^\\circ$, ta có:\n$\\widehat{ABC}=180^\\circ-\\left(\\widehat{BAC}+\\widehat{BCA}\\right)=180^\\circ-\\left(59,95^\\circ+82,15^\\circ\\right)=37,9^\\circ.$\nÁp dụng định lí sin trong tam giác $ABC$, ta có:\n$\\dfrac{AB}{\\sin \\widehat{BCA}}=\\dfrac{AC}{\\sin \\widehat{ABC}}\\Rightarrow AB=\\dfrac{AC\\cdot \\sin \\widehat{BCA}}{\\sin \\widehat{ABC}}.$\nThay số ta được:\n$AB=\\dfrac{25\\cdot \\sin 82,15^\\circ}{\\sin 37,9^\\circ}\\approx 40,32 \\left(m\\right).$\nLàm tròn kết quả đến hàng đơn vị của mét, ta được khoảng cách $\\text{AB\\approx 40} m$.\nVậy khoảng cách từ vị trí $A$ đến vị trí $B$ là khoảng $40 m$.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010103080",
+  "loai": "trac_nghiem",
+  "de": "Phủ định của mệnh đề \" $18$ chia hết cho $5$\"\\ là",
+  "lua_chon": [
+   "\" $18$ chia hết cho $2$ và $3$\".",
+   "\" $18$ chia hết cho $2$\".",
+   "\" $18$ không chia hết cho $5$\".",
+   "\" $5$ chia hết cho $18$\"."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Phủ định của mệnh đề \"$P$\"\\ là mệnh đề \" Không phải $P$\".\nDo đó, phủ định của mệnh đề \" $18$ chia hết cho $5$\"\\ là mệnh đề \" $18$ không chia hết cho $5$\".",
+  "nhan_cu": "Mệnh đề › Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề"
+ },
+ {
+  "ma_cau": "T110010203085",
+  "loai": "trac_nghiem",
+  "de": "Dùng kí hiệu khoảng, đoạn, nửa khoảng viết lại tập $A=\\{x\\in \\mathbb{R}|-7<x<1\\}$.",
+  "lua_chon": [
+   "$\\left(-7;1\\right)$.",
+   "$[-7;1)$.",
+   "$\\left\\{-7;1\\right\\}$.",
+   "$\\left[-7;1\\right]$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Tập hợp $A=\\{x\\in \\mathbb{R}|-7<x<1\\}$ gồm các số thực lớn hơn $-7$ và nhỏ hơn $1$.\nDùng kí hiệu khoảng, ta viết lại tập $A$ là $\\left(-7;1\\right)$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110020204090",
+  "loai": "tra_loi_ngan",
+  "de": "Một xưởng sản xuất hai loại sản phẩm, mỗi kg sản phẩm loại một cần $6 kg$ nguyên liệu và $10$ giờ. Mỗi sản phẩm loại hai cần $4 kg$ nguyên liệu và $5$ giờ. Xưởng có $200 kg$ nguyên liệu và $2000$ giờ làm việc. Gọi $x,y$ lần lượt là là số kg sản phẩm loại một và loại hai cần sản xuất, các bất phương trình $\\text{ax+by\\le 100}$ và $\\text{cx+dy\\le 400}$ lần lượt là bất phương trình biểu diễn ràng buộc về số nguyên liệu và số giờ cần dùng để sản xuất hai loại sản phẩm. Tính $S=a+b+c+d$.",
+  "dap_an": "8",
+  "loi_giai": "Gọi $x,y$ lần lượt là số kilôgam sản phẩm loại một và loại hai cần sản xuất ($x\\ge 0,y\\ge 0$).\nĐể sản xuất $x kg$ sản phẩm loại một và $y kg$ sản phẩm loại hai:\n- Số kilôgam nguyên liệu cần dùng là $6x+4y kg$. Vì xưởng có tối đa $200 kg$ nguyên liệu nên ta có bất phương trình:\n$6x+4y\\le 200\\Leftrightarrow 3x+2y\\le 100.$\nĐối chiếu với bất phương trình $\\text{ax+by\\le 100}$, ta xác định được $a=3$ và $b=2$.\n- Số giờ làm việc cần dùng là $10x+5y$ giờ. Vì xưởng có tối đa $2 000$ giờ làm việc nên ta có bất phương trình:\n$10x+5y\\le 2 000\\Leftrightarrow 2x+y\\le 400.$\nĐối chiếu với bất phương trình $\\text{cx+dy\\le 400}$, ta xác định được $c=2$ và $d=1$.\nDo đó\n$S=a+b+c+d=3+2+2+1=8.$\nVậy $S=8$.",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110030202037",
+  "loai": "tra_loi_ngan",
+  "de": "Hai vận động viên A và B xuất phát từ cùng một vị trí O . Vận động viên A chạy với vận tốc 14km/h theo một góc so với hướng Bắc là $15^\\circ$, vận động viên B chạy với vận tốc 13km/h theo một góc so với hướng Bắc là $135^\\circ$ (hình vẽ). Sau bao lâu thì vận động viên A cách vận động viên B một khoảng 10km (làm tròn kết quả đến hàng phần phút)?\n[hình]",
+  "dap_an": "26",
+  "loi_giai": "Gọi t (giờ, $t > 0$) là thời gian chạy từ lúc xuất phát cho đến khi hai vận động viên cách nhau 10km.\nKhi đó, quãng đường vận động viên A và B chạy được lần lượt là:\n$OA = 14t$ (km), $OB = 13t$ (km).\nGóc giữa hướng chạy của hai vận động viên là:\n$\\widehat{AOB}=135^\\circ-15^\\circ=120^\\circ$.\nÁp dụng định lí côsin trong tam giác OAB, ta có:\n$AB^2 = OA^2 + OB^2 - 2\\cdot OA\\cdot OB \\cdot \\cos \\widehat{AOB}$.\nThay số vào đẳng thức trên, ta được:\n$10^2 = (14t)^2 + (13t)^2 -2\\cdot (14t)\\cdot (13t)\\cdot \\cos 120^\\circ$\n$\\Leftrightarrow 100=196t^2 +169t^2-364t^2\\cdot (-\\dfrac{1}{2})$\n$\\Leftrightarrow 100 = 547t^2 \\Rightarrow t^2 = \\dfrac{100}{547}$\nVì $t > 0$ nên $t = \\dfrac{10}{\\sqrt{547}}$ (giờ).\nĐ …",
+  "co_hinh": true,
+  "nhan_cu": "Hệ thức lượng trong tam giác › Giải tam giác và bài toán thực tế áp dụng định lý cos"
+ },
+ {
+  "ma_cau": "T110030203051",
+  "loai": "tra_loi_ngan",
+  "de": "Một người đi dọc bờ biển từ vị trí $A$ đến vị trí $B$ và quan sát một ngọn hải đăng tại vị trí $C$. Góc nghiêng của phương quan sát từ các vị trí $A, B$ tới ngọn hải đăng với đường đi của người quan sát là $48^\\circ$ và $79^\\circ$. Biết khoảng cách giữa hai vị trí $A, B$ là $125 \\mathrm{m}$ (Hình vẽ).\nNgọn hải đăng cách bờ biển bao nhiêu mét? (Kết quả phép tính cuối cùng làm tròn đến hàng đơn vị).\n[hình]",
+  "dap_an": "177",
+  "loi_giai": "Gọi $H$ là hình chiếu vuông góc của vị trí ngọn hải đăng $C$ lên đường bờ biển $AB$. Khoảng cách từ ngọn hải đăng đến bờ biển là độ dài đoạn thẳng $CH$.\nTrong tam giác $ABC$, ta có góc ngoài tại đỉnh $B$ là $\\widehat{CBE}=79^\\circ$, nên\n$\\widehat{ABC}=180^\\circ-79^\\circ=101^\\circ$.\nSuy ra\n$\\widehat{ACB}=180^\\circ-(\\widehat{CAB}+\\widehat{ABC})=180^\\circ-(48^\\circ+101^\\circ)=31^\\circ$.\nÁp dụng định lí sin trong tam giác $ABC$, ta có\n$\\dfrac{BC}{\\sin CAB}=\\dfrac{AB}{\\sin ACB}\\Rightarrow BC=\\dfrac{AB \\cdot \\sin 48^\\circ}{\\sin 31^\\circ}=\\dfrac{125 \\cdot \\sin 48^\\circ}{\\sin 31^\\circ}\\approx 180,36\\mathrm{m}$.\nXét tam giác $CBH$ vuông tại $H$, ta có\n$CH=BC \\cdot \\sin \\widehat{CBH}=BC \\cdot \\sin 79^ …",
+  "co_hinh": true,
+  "nhan_cu": "Hệ thức lượng trong tam giác › Giải tam giác và bài toán thực tế áp dụng định lý sin"
+ },
+ {
+  "ma_cau": "T110030204030",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$ có $AC = 4 \\mathrm{\\ cm}$, góc $\\widehat{A} = 60^\\circ$, $\\widehat{B} = 45^\\circ$. Diện tích tam giác $ABC$ bằng",
+  "lua_chon": [
+   "$3 + \\sqrt{3}$ cm$^2$.",
+   "$6 + 2\\sqrt{3}$ cm$^2$.",
+   "$12 + 4\\sqrt{3}$ cm$^2$.",
+   "$6\\sqrt{2}$ cm$^2$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "$\\widehat{C} = 180^\\circ - 60^\\circ - 45^\\circ = 75^\\circ$; theo định lí sin $BC = 2\\sqrt{6}$ cm.\n$S = \\dfrac{1}{2} \\cdot AC \\cdot BC \\cdot \\mathrm{sinC} = \\dfrac{1}{2} \\cdot 4 \\cdot 2\\sqrt{6} \\cdot \\dfrac{\\sqrt{6} + \\sqrt{2}}{4} = 6 + 2\\sqrt{3}$ cm$^2$.\nChọn B.",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Tính diện tích tam giác"
+ },
+ {
+  "ma_cau": "T110010203167",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=[-3;10)$ và $B=\\left(5;+\\infty \\right)$. Mệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "$A\\cup B=\\left(-\\infty;+\\infty \\right)$.",
+   "$B\\setminus A=\\left(10;+\\infty \\right)$.",
+   "$A\\setminus B=\\left[-3;5\\right]$.",
+   "$A\\cap B=[-3;5)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Biểu diễn hai tập hợp $A=[-3;10)$ và $B=\\left(5;+\\infty \\right)$ trên trục số, ta xác định:\n• Giao của hai tập hợp: $A\\cap B=\\left(5;10\\right)$.\n• Hợp của hai tập hợp: $A\\cup B=[-3;+\\infty)$.\n• Hiệu của hai tập hợp: $A\\setminus B=\\left[-3;5\\right]$.\n• $B\\setminus A=[10;+\\infty)$.\nVậy mệnh đề đúng là $A\\setminus B=\\left[-3;5\\right]$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110000000281",
+  "loai": "tu_luan",
+  "de": "a) Từ một miếng tôn có hình dạng là nửa đường tròn bán kính $2 m$, người ta cắt ra một hình chữ nhật. Hỏi có thể cắt được miếng tôn có diện tích lớn nhất là bao nhiêu $m^{2}$?\nb) Chứng minh rằng trong tam giác $ABC$ bất kì ta luôn có $8S^{2}=\\left(a+b+c\\right)\\left(a+b-c\\right)\\left(a-b+c\\right)\\left(b+c-a\\right)$, trong đó $S$ là diện tích tam giác, $a,b,c$ là ba cạnh của tam giác.",
+  "loi_giai": "a) Gọi $O$ là tâm của nửa đường tròn bán kính $R=2 m$.\nDo tính đối xứng, hình chữ nhật $ABCD$ có cạnh $AB$ nằm trên đường kính sao cho $O$ là trung điểm của đoạn thẳng $AB$, và hai đỉnh $C,D$ thuộc nửa đường tròn.\nĐặt $OB=x$ (với $0<x<2$). Khi đó chiều dài $AB=2x$.\nTrong tam giác vuông $OBC$ vuông tại $B$, ta có\n$BC=\\sqrt{OC^{2}-OB^{2}}=\\sqrt{2^{2}-x^{2}}=\\sqrt{4-x^{2}}.$\nDiện tích của hình chữ nhật $ABCD$ là\n$\\text{S=AB\\cdot BC=2x}\\sqrt{4-x^{2}}.$\nÁp dụng bất đẳng thức Cauchy cho hai số dương $x^{2}$ và $4-x^{2}$, ta có\n$S=2\\sqrt{x^{2}\\left(4-x^{2}\\right)}\\le 2\\cdot \\dfrac{x^{2}+\\left(4-x^{2}\\right)}{2}=2\\cdot \\dfrac{4}{2}=4.$\nDấu đẳng thức xảy ra khi và chỉ khi\n$x^{2}=4-x^{2}\\Leftrightarro …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010201061",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $A\\ne \\varnothing$. Mệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "$A\\setminus \\varnothing =\\varnothing$.",
+   "$\\varnothing \\setminus A=A$.",
+   "$\\varnothing \\setminus \\varnothing =A$.",
+   "$A\\setminus A=\\varnothing$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Theo định nghĩa hiệu của hai tập hợp, ta có $A\\setminus A$ là tập hợp gồm các phần tử thuộc $A$ nhưng không thuộc $A$.\nRõ ràng không có phần tử nào thỏa mãn điều kiện này.\nDo đó $A\\setminus A=\\varnothing$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Tập hợp và các phần tử của tập hợp. Tập con"
+ },
+ {
+  "ma_cau": "T110010103055",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề phủ định của mệnh đề \" $2024$ là số nguyên tố''\\ là",
+  "lua_chon": [
+   "$2024$ không là số nguyên tố.",
+   "$2024$ không chia hết cho $9$.",
+   "$2024$ không chia hết cho $18$.",
+   "$2024$ không phải là hợp số."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Mệnh đề phủ định của mệnh đề $P$ là mệnh đề $\\hat{P}$, được phát biểu bằng cách thêm (hoặc bớt) từ \" không\"{} vào trước vị ngữ của $P$.\nVới $P :$ \" $2024$ là số nguyên tố\"{} thì $\\hat{P} :$ \" $2024$ không là số nguyên tố\".\nCác phương án còn lại nói về tính chia hết hoặc về hợp số nên không phải là phủ định của $P$.\nVậy chọn đáp án A.",
+  "nhan_cu": "Mệnh đề › Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề"
+ },
+ {
+  "ma_cau": "T110000000429",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=x^{3}-3x+2$. Giá trị của hàm số tại điểm có hoành độ $x=2$ là?",
+  "lua_chon": [
+   "$y\\left(2\\right)=0$.",
+   "$y\\left(2\\right)=2$.",
+   "$y\\left(2\\right)=4$.",
+   "$y\\left(2\\right)=-2$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Thay $x=2$ vào công thức hàm số $y=x^{3}-3x+2$, ta được\n$y\\left(2\\right)=2^{3}-3\\cdot 2+2=8-6+2=4.$\nVậy giá trị của hàm số tại điểm có hoành độ $x=2$ là $y\\left(2\\right)=4$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020204067",
+  "loai": "trac_nghiem",
+  "de": "Lớp 10E6 dự định mua $x$ chậu cây trầu bà và $y$ chậu thường xuân để trang trí cửa sổ lớp học. Biết mỗi cây trầu bà có giá $70 000$ đồng, mỗi cây thường xuân có giá $150 000$ đồng và lớp chỉ có tối đa $2 000 000$ đồng để mua cây. Hệ bất phương trình mô tả các điều kiện ràng buộc đối với $x$ và $y$ là? (biết rằng $x,y\\in \\mathbb{N}$).",
+  "lua_chon": [
+   "$\\begin{cases} x\\ge 0 \\\\ y\\ge 0 \\\\ 7x+15y>200 \\end{cases}$.",
+   "$\\begin{cases} x\\ge 0 \\\\ y\\ge 0 \\\\ 7x+15y\\le 200 \\end{cases}$.",
+   "$\\begin{cases} x\\ge 0 \\\\ y\\ge 0 \\\\ 15x+7y>200 \\end{cases}$.",
+   "$\\begin{cases} x\\ge 0 \\\\ y\\ge 0 \\\\ 15x+7y<200 \\end{cases}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Vì $x$, $y$ là số chậu cây nên $x\\ge 0$ và $y\\ge 0$.\nSố tiền mua $x$ chậu trầu bà và $y$ chậu thường xuân là $70 000x+150 000y$ (đồng).\nSố tiền này không vượt quá $2 000 000$ đồng nên\n$70 000x+150 000y\\le 2 000 000.$\nChia hai vế cho $10 000$ ta được $7x+15y\\le 200$.\nVậy hệ bất phương trình mô tả các ràng buộc là $\\begin{cases} x\\ge 0 \\\\ y\\ge 0 \\\\ 7x+15y\\le 200 \\end{cases}$.",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110030104004",
+  "loai": "trac_nghiem",
+  "de": "Giá trị của biểu thức $R = 3\\sin(180^\\circ - \\gamma)\\sin\\gamma - 3\\cos(180^\\circ - \\gamma)\\cos\\gamma - 3$ là",
+  "lua_chon": [
+   "0",
+   "3",
+   "6",
+   "-3"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vì $\\gamma$ và $180^\\circ - \\gamma$ là hai góc bù nhau nên\n$\\sin(180^\\circ - \\gamma) = \\sin\\gamma$, $\\cos(180^\\circ - \\gamma) = -\\cos\\gamma$.\n$R = 3\\sin^2 \\gamma + 3\\cos^2 \\gamma - 3 = 3 - 3 = 0$.\nChọn A.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Rút gọn biểu thức lượng giác sử dụng mối quan hệ lượng giác của hai góc bù hoặc phụ nhau"
+ },
+ {
+  "ma_cau": "T110010203082",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $C=\\{x\\in \\mathbb{R}|2<x\\le 7\\}$. Khi đó:",
+  "lua_chon": [
+   "$C=\\left[2;7\\right]$.",
+   "$C=[2;7)$.",
+   "$C=\\left(2;7\\right)$.",
+   "$C=(2;7]$."
+  ],
+  "loi_giai": "Tập hợp $C=\\{x\\in \\mathbb{R}|2<x\\le 7\\}$ được viết dưới dạng kí hiệu khoảng, đoạn, nửa khoảng là $(2;7]$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110020102118",
+  "loai": "trac_nghiem",
+  "de": "Phần mặt phẳng không bị gạch ở hình vẽ bên (kể cả biên) biểu diễn miền nghiệm của bất phương trình nào sau đây?",
+  "lua_chon": [
+   "$3x+2y-6\\le 0$.",
+   "$3x+2y-6\\ge 0$.",
+   "$2x+3y-6\\le 0$.",
+   "$2x+3y-6\\ge 0$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng biên $d$ đi qua hai điểm $\\left(2;0\\right)$ và $\\left(0;3\\right)$ có phương trình đoạn chắn là\n$\\dfrac{x}{2}+\\dfrac{y}{3}=1\\Leftrightarrow 3x+2y-6=0.$\nĐường thẳng $d$ là nét liền nên miền nghiệm có lấy cả bờ $d$.\nXét gốc tọa độ $O\\left(0;0\\right)$ thuộc phần mặt phẳng không bị gạch. Thay tọa độ điểm $O\\left(0;0\\right)$ vào biểu thức $3x+2y-6$, ta được\n$3\\cdot 0+2\\cdot 0-6=-6\\le 0$\n(thỏa mãn)\n$.$\nDo đó phần mặt phẳng không bị gạch (kể cả biên) biểu diễn miền nghiệm của bất phương trình $3x+2y-6\\le 0$.\nVậy bất phương trình cần tìm là $3x+2y-6\\le 0$.",
+  "co_hinh": true,
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110000000268",
+  "loai": "trac_nghiem",
+  "de": "Hai chiếc ca nô cùng xuất phát từ cảng $A$, đi thẳng theo hai hướng tạo với nhau góc $60^\\circ$. Ca nô $B$ chạy với vận tốc $20$ hải lí một giờ. Ca nô $C$ chạy với tốc độ $25$ hải lí một giờ. Hỏi sau $2$ giờ, hai ca nô cách nhau một khoảng xấp xỉ bao nhiêu hải lí (kết quả làm tròn đến hàng đơn vị)? ($1$ hải lí $\\approx 1,852 km$).",
+  "lua_chon": [
+   "$46$.",
+   "$45$.",
+   "$44$.",
+   "$43$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Sau $2$ giờ, ca nô $B$ đi được quãng đường $\\text{AB=20\\cdot 2=40}$ (hải lí), ca nô $C$ đi được quãng đường $\\text{AC=25\\cdot 2=50}$ (hải lí).\nHai hướng đi tạo với nhau góc $\\widehat{BAC}=60^\\circ$ như hình vẽ. Áp dụng định lí côsin cho tam giác $ABC$\n$BC^{2}=AB^{2}+AC^{2}\\text{-2\\cdot AB\\cdot AC\\cdot }\\cos 60^\\circ={40}^{2}+{50}^{2}-2\\cdot 40\\cdot 50\\cdot \\dfrac{1}{2}=2100.$\nSuy ra $BC=\\sqrt{2100}\\approx 45,83$.\nVậy sau $2$ giờ hai ca nô cách nhau xấp xỉ $46$ hải lí.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030204043",
+  "loai": "tra_loi_ngan",
+  "de": "Một mảnh đất hình tam giác có các cạnh có độ dài lần lượt là $23\\text{m}$, $27\\text{m}$, $32\\text{m}$ người ta muốn trồng cỏ trang trí lên đó. Biết giá một mét vuông cỏ là $65000\\text{đ}$. Hỏi để mua cỏ phủ kín lên mảnh đất thì phải mất bao nhiêu triệu đồng? (làm tròn đến hàng đơn vị)",
+  "dap_an": "20",
+  "loi_giai": "Nửa chu vi của mảnh đất hình tam giác là:\n$p = \\dfrac{23 + 27 + 32}{2} = 41\\text{ (m)}$.\nDiện tích của mảnh đất tính theo công thức Heron là:\n$S = \\sqrt{p(p-a)(p-b)(p-c)} = \\sqrt{41(41-23)(41-27)(41-32)} = \\sqrt{41\\cdot 18\\cdot 14\\cdot 9} = 18\\sqrt{287} \\approx 304,94\\text{ (m}^2)$.\nSố tiền để mua cỏ phủ kín mảnh đất là:\n$T = S\\cdot 65000 = 18\\sqrt{287}\\cdot 65000 \\approx 19821057\\text{ (đồng)} \\approx 19,82\\text{ (triệu đồng)}$.\nLàm tròn đến hàng đơn vị, số tiền cần trả là $20$ triệu đồng.\nVậy phải mất khoảng $20$ triệu đồng để mua cỏ phủ kín mảnh đất.",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Tính diện tích tam giác"
+ },
+ {
+  "ma_cau": "T110030107054",
+  "loai": "trac_nghiem",
+  "de": "Với $\\alpha \\ne 0^{\\circ}; 90^{\\circ}; 180^{\\circ}$, biểu thức $(\\tan \\alpha - \\cot \\alpha)^2$ bằng",
+  "lua_chon": [
+   "$\\tan^2 \\alpha - \\cot^2 \\alpha$",
+   "$\\dfrac{1}{\\sin^2 \\alpha} + \\dfrac{1}{\\cos^2 \\alpha} - 4$",
+   "$\\dfrac{1}{\\sin^2 \\alpha} + \\dfrac{1}{\\cos^2 \\alpha}$",
+   "$\\dfrac{1}{\\sin^2 \\alpha} - \\dfrac{1}{\\cos^2 \\alpha}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $(\\tan \\alpha - \\cot \\alpha)^2 = \\tan^2 \\alpha + \\cot^2 \\alpha - 2 \\tan \\alpha \\cot \\alpha = \\left(\\dfrac{1}{\\cos^2 \\alpha} - 1\\right) + \\left(\\dfrac{1}{\\sin^2 \\alpha} - 1\\right) - 2$\n$= \\dfrac{1}{\\sin^2 \\alpha} + \\dfrac{1}{\\cos^2 \\alpha} - 4$.\nChọn B.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Rút gọn hoặc tính giá trị của biểu thức lượng giác sử dụng các hệ thức lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T110000000401",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hệ bất phương trình $\\begin{cases} x+y\\ge 5 \\\\ x-2y\\le 2 \\\\ y\\le 3 \\end{cases}\\left(II\\right)$. Có bao nhiêu giá trị nguyên dương của tham số $m\\in \\left[10;20\\right]$ để bất phương trình $2x-5y+m\\ge 0$ nghiệm đúng với mọi cặp số $\\left(x;y\\right)$ thoả mãn hệ bất phương trình (II).",
+  "dap_an": "10",
+  "loi_giai": "Trước hết ta xác định miền nghiệm của hệ $\\left(II\\right)$.\nGiao của $x+y=5$ và $y=3$ là điểm $\\left(2;3\\right)$.\nGiao của $x+y=5$ và $x-2y=2$ là điểm $\\left(4;1\\right)$.\nGiao của $x-2y=2$ và $y=3$ là điểm $\\left(8;3\\right)$.\nKiểm tra thấy ba điểm này đều thỏa mãn hệ $\\left(II\\right)$, nên miền nghiệm là miền tam giác có các đỉnh $\\left(2;3\\right)$, $\\left(4;1\\right)$, $\\left(8;3\\right)$.\nBất phương trình $2x-5y+m\\ge 0$ tương đương $m\\ge 5y-2x$.\nDo đó yêu cầu bài toán trở thành: $m$ lớn hơn hoặc bằng giá trị lớn nhất của $G=5y-2x$ trên miền tam giác nói trên.\nVì $G$ là biểu thức bậc nhất nên nó đạt giá trị lớn nhất tại một đỉnh:\n$G\\left(2;3\\right)=15-4=11,G\\left(4;1\\right)=5-8=-3,G\\left(8;3\\ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030203052",
+  "loai": "tra_loi_ngan",
+  "de": "Để đo khoảng cách từ một điểm $A$ trên bờ sông đến gốc cây $C$ trên cù lao giữa sông, người ta chọn một điểm $B$ cùng ở trên bờ với $A$ sao cho từ $A$ và $B$ có thể nhìn thấy điểm $C$. Ta đo được khoảng cách $AB = 60$ m, $\\hat{A}=45^\\circ$ và $\\hat{B}=75^\\circ$. Vậy sau khi đo đạc và tính toán được khoảng cách $BC$ gần nhất với giá trị nào sau đây? (kết quả làm tròn đến hàng phần chục).\n[hình]",
+  "dap_an": "49",
+  "loi_giai": "Xét tam giác $ABC$, ta có\n$\\hat{C}=180^\\circ-(\\hat{A}+\\hat{B})=180^\\circ-(45^\\circ+75^\\circ)=60^\\circ$.\nÁp dụng định lí sin trong tam giác $ABC$, ta có\n$\\dfrac{BC}{\\sin A}=\\dfrac{AB}{\\sin C}\\Rightarrow BC=\\dfrac{AB\\cdot\\sin A}{\\sin C}$.\nThay các số đo $AB = 60$ m, $\\hat{A}=45^\\circ$, $\\hat{C}=60^\\circ$ vào công thức:\n$BC = \\dfrac{60\\cdot\\sin 45^\\circ}{\\sin 60^\\circ} = \\dfrac{60\\cdot\\dfrac{\\sqrt{2}}{2}}{\\dfrac{\\sqrt{3}}{2}} = \\dfrac{60\\sqrt{2}}{\\sqrt{3}} = 20\\sqrt{6}\\approx 48,99$ (m).\nLàm tròn đến hàng phần chục, ta được khoảng cách $BC\\approx 49$ (m).",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Giải tam giác và bài toán thực tế áp dụng định lý sin"
+ },
+ {
+  "ma_cau": "T110000000279",
+  "loai": "tu_luan",
+  "de": "a) Cho hai tập hợp $A=\\{1;2;3;7\\}$, $B=\\{2;4;6;7;8\\}$. Xác định các tập hợp $A\\cup B$, $A\\setminus B$?\nb) Cho hai tập hợp $A=(-\\infty;3]$, $B=(1;5]$. Xác định tập hợp $A\\cap B$ và biểu diễn chúng trên trục số?",
+  "loi_giai": "a) Ta có:\n$A\\cup B=\\{1;2;3;4;6;7;8\\}$.\n$A\\setminus B=\\{1;3\\}$.\nb) Ta có $A\\cap B=(-\\infty;3]\\cap (1;5]=(1;3]$.\nBiểu diễn tập hợp $A\\cap B$ trên trục số:\nPhần không bị gạch trên trục số biểu diễn tập hợp $A\\cap B=(1;3]$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000380",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $A=\\{1;2;3;4\\}$, $B=\\{0;2;4;6\\}$. Mệnh đề nào sau đây là đúng?",
+  "lua_chon": [
+   "$A\\setminus B=\\{0;6\\}$.",
+   "$A\\cup B=\\{0;1;2;3;4;5;6\\}$.",
+   "$A\\cap B=\\{2;4\\}$.",
+   "$A\\subset B$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Cho hai tập hợp $A=\\{1;2;3;4\\}$ và $B=\\{0;2;4;6\\}$.\nXét các phép toán trên tập hợp:\n• Giao của hai tập hợp: $A\\cap B=\\{2;4\\}$.\n• Hợp của hai tập hợp: $A\\cup B=\\{0;1;2;3;4;6\\}$.\n• Hiệu của hai tập hợp: $A\\setminus B=\\{1;3\\}$ và $B\\setminus A=\\{0;6\\}$.\n• Tập con: $A⊈B$ vì $1\\in A$ nhưng $1\\notin B$.\nVậy mệnh đề đúng là $A\\cap B=\\{2;4\\}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000154",
+  "loai": "tra_loi_ngan",
+  "de": "Hai vận động viên A và B xuất phát từ cùng một vị trí $O$. Vận động viên A chạy với vận tốc $14 km/h$theo một góc so với hướng Bắc là $15^\\circ$, vận động viên B chạy với vận tốc $13 km/h$ theo một góc so với hướng Bắc là $135^\\circ$ (hình vẽ). Sau bao lâu thì vận động viên A cách vận động viên B một khoảng $10 km$ (làm tròn kết quả đến phút)?",
+  "dap_an": "26",
+  "loi_giai": "Gọi $t$ (giờ, $t>0$) là thời gian chạy từ lúc xuất phát cho đến khi hai vận động viên cách nhau $10 km$.\nKhi đó, quãng đường vận động viên A và B chạy được lần lượt là:\n$OA=14t \\left(km\\right),OB=13t \\left(km\\right).$\nGóc giữa hướng chạy của hai vận động viên là:\n$\\widehat{AOB}=135^\\circ-15^\\circ=120^\\circ.$\nÁp dụng định lí côsin trong tam giác $OAB$, ta có:\n$AB^{2}=OA^{2}+OB^{2}\\text{-2\\cdot OA\\cdot OB\\cdot }\\cos \\widehat{AOB}.$\nThay số vào đẳng thức trên, ta được:\n${10}^{2}=\\left(14t\\right)^{2}+\\left(13t\\right)^{2}-2\\cdot \\left(14t\\right)\\cdot \\left(13t\\right)\\cdot \\cos 120^\\circ$\n$\\Leftrightarrow 100=196t^{2}+169t^{2}-364t^{2}\\cdot \\left(-\\dfrac{1}{2}\\right)$\n$\\Leftrightarrow 100=547t^{2} …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000014",
+  "loai": "trac_nghiem",
+  "de": "Trong tam giác $ABC$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$\\sin B=-\\cos C$.",
+   "$\\sin A=\\sin \\left(B+C\\right)$.",
+   "$\\sin A=-\\sin \\left(B+C\\right)$.",
+   "$\\cos A=\\cos \\left(B+C\\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Trong tam giác $ABC$, ta luôn có tổng ba góc bằng $180^\\circ$, tức là $A+B+C=180^\\circ$.\nSuy ra $A=180^\\circ-\\left(B+C\\right)$.\nÁp dụng tính chất của góc bù nhau, ta có:\n$\\sin A=\\sin (180^\\circ-\\left(B+C\\right))=\\sin \\left(B+C\\right).$\nVậy khẳng định $\\sin A=\\sin \\left(B+C\\right)$ là đúng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010204093",
+  "loai": "trac_nghiem",
+  "de": "Khi thống kê điểm cuối năm của học sinh, lớp 10A có $25$ em giỏi môn Toán, $21$ em giỏi môn Văn, $7$ em giỏi cả môn Toán và môn Văn và có $4$ em không giỏi môn nào trong hai môn Toán, Văn. Hỏi lớp 10A có bao nhiêu học sinh?",
+  "lua_chon": [
+   "$39$.",
+   "$35$.",
+   "$43$.",
+   "$46$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Gọi $T$ là tập hợp các học sinh giỏi môn Toán và $V$ là tập hợp các học sinh giỏi môn Văn của lớp 10A.\nTheo giả thiết của bài toán, ta có:\n$|T|=25,|V|=21,|T\\cap V|=7.$\nSố học sinh giỏi ít nhất một trong hai môn Toán hoặc Văn là:\n$|T\\cup V|=|T|+|V|-|T\\cap V|=25+21-7=39.$\nVì lớp 10A còn có $4$ học sinh không giỏi môn nào trong hai môn Toán và Văn nên tổng số học sinh của lớp 10A là:\n$39+4=43 \\left(\\text{hoc sinh}\\right).$\nVậy lớp 10A có tất cả $43$ học sinh.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán thực tế tập hợp (2 Yếu tố)"
+ },
+ {
+  "ma_cau": "T110030201011",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$ với $AB=c, AC=b, BC=a$. Phát biểu nào dưới đây sai?",
+  "lua_chon": [
+   "$a\\sin B=b\\sin A$",
+   "$\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}$",
+   "$b\\sin C=c\\sin B$",
+   "$a\\sin A=b\\sin B=c\\sin C$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Theo định lí sin trong tam giác $ABC$, ta có $\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}=2R$.\nSuy ra:\n$\\bullet~\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}\\Rightarrow a\\sin B=b\\sin A$.\n$\\bullet~\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}\\Rightarrow b\\sin C=c\\sin B$.\nDo đó, các phát biểu $a\\sin B=b\\sin A$, $\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}$ và $b\\sin C=c\\sin B$ là đúng.\nPhát biểu $a\\sin A=b\\sin B=c\\sin C$ là sai.",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Nhận dạng định lí cos, định lí sin và các công thức tính diện tích tam giác"
+ },
+ {
+  "ma_cau": "T110030202032",
+  "loai": "tra_loi_ngan",
+  "de": "Hai tàu đánh cá cùng xuất phát từ bến A và đi thẳng theo hai hướng tạo với nhau một góc $45^\\circ$.\nTàu thứ nhất chạy với tốc độ 15 hải lí một giờ và tàu thứ hai chạy với tốc độ 12 hải lí một giờ. Sau đúng 2 giờ thì khoảng cách giữa hai tàu là bao nhiêu hải lí (làm tròn kết quả đến hàng đơn vị của hải lí)?",
+  "dap_an": "21",
+  "loi_giai": "Gọi A là bến xuất phát, B và C lần lượt là vị trí của tàu thứ nhất và tàu thứ hai sau 2 giờ.\nTheo đề bài, góc giữa hai hướng đi là $\\widehat{BAC} = 45^\\circ$.\nSau 2 giờ, quãng đường mỗi tàu đi được là:\n- Quãng đường tàu thứ nhất đi được: $AB = 15\\cdot 2 = 30$ (hải lí).\n- Quãng đường tàu thứ hai đi được: $AC = 12\\cdot 2 = 24$ (hải lí).\nKhoảng cách giữa hai tàu sau 2 giờ là độ dài đoạn thẳng BC.\nÁp dụng định lí côsin trong tam giác ABC, ta có\n$BC^2 = AB^2 + AC^2 - 2\\cdot AB \\cdot AC \\cdot \\cos \\widehat{BAC}$.\nThay số vào ta được\n$BC^2 = 30^2 +24^2-2\\cdot 30\\cdot 24\\cdot \\cos 45^\\circ = 900+576-1440\\cdot \\dfrac{\\sqrt{2}}{2} =1476-720\\sqrt{2}$.\nSuy ra\n$BC = \\sqrt{1476-720\\sqrt{2}} \\approx 21.395 …",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Giải tam giác và bài toán thực tế áp dụng định lý cos"
+ },
+ {
+  "ma_cau": "T110000000348",
+  "loai": "tu_luan",
+  "de": "Một người đi dọc bờ biển từ vị trí $A$ đến vị trí $B$ và quan sát một ngọn hải đăng. Góc nghiêng của phương quan sát từ các vị trí $A,B$ tới ngọn hải đăng với đường đi của người quan sát là $45^\\circ$ và $75^\\circ$. Biết khoảng cách giữa hai vị trí $A,B$ là $30 m$. Ngọn hải đăng cách bờ biển bao nhiêu mét (làm tròn kết quả đến hàng đơn vị)?",
+  "loi_giai": "Gọi vị trí ngọn hải đăng là điểm $C$, bờ biển là đường thẳng chứa đoạn thẳng $AB$.\nKẻ $\\text{CH\\perp AB}$ tại $H$ ($H$ thuộc đường thẳng $AB$), khi đó khoảng cách từ ngọn hải đăng đến bờ biển chính là độ dài đoạn thẳng $CH$.\nXét tam giác $ABC$, ta có $\\widehat{CAB}=45^\\circ$, góc ngoài tại đỉnh $B$ là $\\widehat{CBx}=75^\\circ$.\nDo đó:\n$\\widehat{ABC}=180^\\circ-75^\\circ=105^\\circ.$\nSuy ra:\n$\\widehat{ACB}=180^\\circ-\\left(\\widehat{CAB}+\\widehat{ABC}\\right)=180^\\circ-\\left(45^\\circ+105^\\circ\\right)=30^\\circ.$\nÁp dụng định lí sin trong tam giác $ABC$, ta có:\n$\\dfrac{BC}{\\sin \\widehat{BAC}}=\\dfrac{AB}{\\sin \\widehat{ACB}}\\Rightarrow BC=\\dfrac{AB\\cdot \\sin 45^\\circ}{\\sin 30^\\circ}=\\dfrac{30\\cdot \\dfra …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030204051",
+  "loai": "tra_loi_ngan",
+  "de": "Người ta cần trang trí một họa tiết như hình vẽ bằng cách sơn kín phần được tô đậm. Biết chi phí để sơn $1$ mét vuông là $250$ nghìn đồng, tam giác trong hình vẽ có các cạnh lần lượt là $3$ mét, $5$ mét, $5$ mét. Hỏi số tiền cần bỏ ra là bao nhiêu nghìn đồng để hoàn thành việc sơn trang trí họa tiết đó (làm tròn đến đơn vị).",
+  "dap_an": "837",
+  "loi_giai": "Họa tiết gồm tam giác cạnh $3; 5; 5$ (m) và hình tròn nội tiếp tam giác (không sơn).\nNửa chu vi $p = \\dfrac{13}{2}$; $S_{\\Delta} = \\sqrt{\\dfrac{13}{2} \\cdot \\dfrac{7}{2} \\cdot \\dfrac{3}{2} \\cdot \\dfrac{3}{2}} = \\dfrac{3\\sqrt{91}}{4}$.\nBán kính nội tiếp $r = \\dfrac{S_{\\Delta}}{p} = \\dfrac{3\\sqrt{91}}{26}$, diện tích hình tròn $\\pi r^2 = \\dfrac{63\\pi}{52}$.\nDiện tích phần sơn: $\\dfrac{3\\sqrt{91}}{4} - \\dfrac{63\\pi}{52} \\approx 3,348$ $\\text{m}^2$; số tiền $\\approx 3,348 \\cdot 250 \\approx 837$ nghìn đồng.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ thức lượng trong tam giác › Tính diện tích tam giác"
+ },
+ {
+  "ma_cau": "T110000000436",
+  "loai": "trac_nghiem",
+  "de": "Cho góc $\\alpha$ thoả mãn $\\cos \\alpha <0$. Số đo góc $\\alpha$ thuộc khoảng nào sau đây?",
+  "lua_chon": [
+   "$\\left(120^\\circ;180^\\circ\\right)$.",
+   "$\\left(30^\\circ;80^\\circ\\right)$.",
+   "$\\left(0^\\circ;45^\\circ\\right)$.",
+   "$\\left(45^\\circ;90^\\circ\\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Với góc $\\alpha$ thoả mãn $0^\\circ\\le \\alpha \\le 180^\\circ$, dấu của côsin được xác định như sau:\n- Nếu $0^\\circ\\le \\alpha <90^\\circ$ thì $\\cos \\alpha >0$.\n- Nếu $\\alpha =90^\\circ$ thì $\\cos \\alpha =0$.\n- Nếu $90^\\circ<\\alpha \\le 180^\\circ$ thì $\\cos \\alpha <0$.\nDo đó, điều kiện $\\cos \\alpha <0$ tương đương với $\\alpha$ là góc tù, tức là $90^\\circ<\\alpha \\le 180^\\circ$.\nTrong bốn phương án đã cho, chỉ có khoảng $\\left(120^\\circ;180^\\circ\\right)\\subset (90^\\circ;180^\\circ]$ thoả mãn $\\cos \\alpha <0$ với mọi $\\alpha$ thuộc khoảng này.\nVậy số đo góc $\\alpha$ thuộc khoảng $\\left(120^\\circ;180^\\circ\\right)$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030104024",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\sin \\alpha = 0,6$. Tính giá trị của biểu thức $A = \\cos(90^\\circ - \\alpha) + 2\\sin(90^\\circ - \\alpha) - 2\\cos \\alpha$.",
+  "lua_chon": [
+   "0,6",
+   "-0,6",
+   "1,2",
+   "0"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vì $\\alpha$ và $90^\\circ - \\alpha$ là hai góc phụ nhau nên\n$\\cos(90^\\circ - \\alpha) = \\sin \\alpha \\text{ , } \\sin(90^\\circ - \\alpha) = \\cos \\alpha$.\n$A = \\sin \\alpha + 2\\cos \\alpha - 2\\cos \\alpha = \\sin \\alpha = 0,6$.\nChọn A.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Rút gọn biểu thức lượng giác sử dụng mối quan hệ lượng giác của hai góc bù hoặc phụ nhau"
+ },
+ {
+  "ma_cau": "T110010203139",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=(-\\infty;-1]$; $B=(-4;11]$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$A\\cap B=(-4;11]$.",
+   "$B\\setminus A=(-1;11]$.",
+   "$A\\setminus B=\\left(-\\infty;-4\\right)$.",
+   "$A\\cup B=\\left(-\\infty;11\\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "$B\\setminus A$ gồm các phần tử thuộc $B$ nhưng không thuộc $A$, tức là $x\\in (-4;11]$ và $x>-1$.\nDo đó $B\\setminus A=(-1;11]$.\nKiểm tra các phương án còn lại:\n• $A\\cap B=(-4;-1]$.\n• $A\\setminus B=(-\\infty;-4]$.\n• $A\\cup B=(-\\infty;11]$.\nVậy khẳng định đúng là $B\\setminus A=(-1;11]$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110000000066",
+  "loai": "tra_loi_ngan",
+  "de": "Muốn đo chiều cao của một toà nhà người ta lấy hai điểm $A$ và $B$ trên mặt đất có khoảng cách $AB=12 m$ cùng thẳng hàng với chân $C$ của toà nhà để đặt hai giác kế. Chân của giác kế có chiều cao $h=1,3 m$. Gọi $D$ là đỉnh toà nhà và hai điểm $A_{1},B_{1}$ cùng thẳng hàng với $C_{1}$ thuộc chiều cao $CD$ của toà nhà. Người ta đo được góc $\\widehat{DA_{1}C_{1}}=49^\\circ$ và $\\widehat{DB_{1}C_{1}}=35^\\circ$. Tính chiều cao $CD$ của toà nhà(làm tròn đến hàng phần mười).",
+  "dap_an": "22.8",
+  "loi_giai": "Ta có $A_{1}B_{1}=AB=12 m$ và $C_{1}C=1,3 m$.\nXét tam giác $DA_{1}B_{1}$, ta có\n$\\widehat{ADB_{1}}=\\widehat{DA_{1}C_{1}}-\\widehat{DB_{1}C_{1}}=49^\\circ-35^\\circ=14^\\circ.$\nÁp dụng định lí sin trong tam giác $DA_{1}B_{1}$, ta có\n$\\dfrac{DA_{1}}{\\sin \\widehat{DB_{1}A_{1}}}=\\dfrac{A_{1}B_{1}}{\\sin \\widehat{ADB_{1}}}\\Rightarrow DA_{1}=\\dfrac{12\\cdot \\sin 35^\\circ}{\\sin 14^\\circ}.$\nTrong tam giác $DC_{1}A_{1}$ vuông tại $C_{1}$, ta có\n$DC_{1}=DA_{1}\\cdot \\sin \\widehat{DA_{1}C_{1}}=\\dfrac{12\\cdot \\sin 35^\\circ\\cdot \\sin 49^\\circ}{\\sin 14^\\circ}\\approx 21,47 \\left(m\\right).$\nChiều cao của toà nhà là\n$CD=DC_{1}+C_{1}C\\approx 21,47+1,3=22,77\\approx 22,8 \\left(m\\right).$\nVậy toà nhà cao khoảng $22,8 m …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030203054",
+  "loai": "tra_loi_ngan",
+  "de": "Để tính diện tích của miệng giếng trời hình tròn, người ta tiến hành đo đạc tại ba vị trí $A,B,C$ trên miệng giếng. Kết quả đo được là: $AB = 3m$; $AC = 2m$ , $\\widehat{BAC} = 120^\\circ$ (như hình vẽ bên dưới). Tính diện tích hình tròn của miệng giếng (lấy $\\pi \\approx 3,14$, đơn vị mét vuông, kết quả làm tròn đến hàng phần chục).\n[hình]",
+  "dap_an": "19.9",
+  "loi_giai": "Xét tam giác $ABC$ có $AB=3m$ , $AC=2m$ và $\\widehat{BAC}=120^\\circ$.\nÁp dụng định lí côsin trong tam giác $ABC$ , ta tính được độ dài cạnh $BC$:\n$BC^2 = AB^2 + AC^2 - 2AB \\cdot AC \\cdot \\cos \\widehat{BAC} = 3^2 + 2^2 - 2 \\cdot 3 \\cdot 2 \\cdot \\cos 120^\\circ = 9 + 4 - 12 \\cdot \\left(-\\dfrac{1}{2}\\right) = 19$.\nSuy ra $BC = \\sqrt{19}m$.\nGọi $R$ là bán kính đường tròn ngoại tiếp tam giác $ABC$ (chính là bán kính của miệng giếng trời hình tròn).\nTheo định lí sin, ta có\n$2R = \\dfrac{BC}{\\sin \\widehat{BAC}} = \\dfrac{\\sqrt{19}}{\\sin 120^\\circ} = \\dfrac{\\sqrt{19}}{\\dfrac{\\sqrt{3}}{2}} = \\dfrac{2\\sqrt{19}}{\\sqrt{3}} \\Rightarrow R = \\dfrac{\\sqrt{19}}{\\sqrt{3}}m$.\nDiện tích của hình tròn miệng giếng l …",
+  "co_hinh": true,
+  "nhan_cu": "Hệ thức lượng trong tam giác › Giải tam giác và bài toán thực tế áp dụng định lý sin"
+ },
+ {
+  "ma_cau": "T110030203062",
+  "loai": "tra_loi_ngan",
+  "de": "Hai chiếc tàu thủy đậu trên biển tại hai vị trí lần lượt là $M, N$ cách nhau $500 \\mathrm{m}$ và thẳng hàng với điểm $A$ là chân của một ngọn hải đăng $AB$. Từ $M$ và $N$ người ta nhìn đỉnh $B$ của tháp lần lượt dưới hai góc: $\\widehat{AMB} = 30^{\\circ}, \\widehat{ANB} = 45^{\\circ}$. Chiều cao $AB$ của tháp là bao nhiêu mét? (kết quả làm tròn đến hàng đơn vị).",
+  "dap_an": "683",
+  "loi_giai": "Tam giác $ABM$ vuông tại $A$ nên\n$AM = \\dfrac{AB}{\\tan AMB} = \\dfrac{AB}{\\tan 30^{\\circ}} = AB\\sqrt{3}$.\nTam giác $ABN$ vuông tại $A$ nên\n$AN = \\dfrac{AB}{\\tan ANB} = \\dfrac{AB}{\\tan 45^{\\circ}} = AB$.\nVì $M, N, A$ thẳng hàng theo thứ tự đó nên\n$MN = AM - AN \\Leftrightarrow 500 = AB\\sqrt{3} - AB = AB(\\sqrt{3}-1)$.\nSuy ra chiều cao của ngọn hải đăng là\n$AB = \\dfrac{500}{\\sqrt{3}-1} = 250(\\sqrt{3}+1) \\approx 683 (\\mathrm{m})$.\nVậy chiều cao của ngọn hải đăng xấp xỉ $683 \\mathrm{m}$.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ thức lượng trong tam giác › Giải tam giác và bài toán thực tế áp dụng định lý sin"
+ },
+ {
+  "ma_cau": "T110000000170",
+  "loai": "tra_loi_ngan",
+  "de": "Tại một ngã ba đường ($B$, $H$, $C$ thẳng hàng) có ba tòa nhà nằm ở ba vị trí $A$, $B$, $C$ như hình vẽ.\nNgười ta đặt một trạm phát tín hiệu tại điểm $I$ cách đều cả ba tòa nhà. Biết rằng $BH=2,5 km$, $AH=6,5 km$ và $CH=6,5 km$, hãy tính giá trị $100AI^{2}$ (làm tròn đến hàng đơn vị).",
+  "dap_an": "2425",
+  "loi_giai": "Vì $I$ cách đều ba điểm $A$, $B$, $C$ nên $I$ là tâm đường tròn ngoại tiếp tam giác $ABC$, do đó $AI=R$ là bán kính đường tròn ngoại tiếp tam giác $ABC$.\nTa chọn hệ trục toạ độ với gốc tại $H$, tia $Hx$ trùng tia $HC$ và tia $Hy$ trùng tia $HA$ (hợp lí vì $\\text{AH\\perp BC}$ tại $H$).\nKhi đó $H\\left(0;0\\right)$, $A\\left(0;6,5\\right)$, $B\\left(-2,5;0\\right)$ và $C\\left(6,5;0\\right)$.\nVì $I$ cách đều $B$ và $C$ nên $I$ nằm trên đường trung trực của $BC$, tức là $I$ có hoành độ\n$x_{I}=\\dfrac{-2,5+6,5}{2}=2.$\nGọi $I\\left(2;y\\right)$. Từ điều kiện $IA=IB$ ta có\n$\\left(2-0\\right)^{2}+\\left(y-6,5\\right)^{2}=\\left(2+2,5\\right)^{2}+\\left(y-0\\right)^{2}.$\nKhai triển ta được\n$4+y^{2}-13y+42,25=20,25+y^ …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000065",
+  "loai": "tra_loi_ngan",
+  "de": "Hai tàu đánh cá cùng xuất phát từ bến $A$ và đi thẳng đều về hai vùng biển khác nhau, theo hai hướng tạo với nhau góc $120^\\circ$ (tham khảo hình vẽ). Tàu thứ nhất đi với tốc độ $8$ hải lí một giờ và tàu thứ hai đi với tốc độ $10$ hải lí một giờ. Hỏi sau bao lâu thì khoảng cách giữa hai tàu là $65$ hải lí (làm tròn kết quả đến hàng phần trăm theo đơn vị giờ)?",
+  "dap_an": "4.16",
+  "loi_giai": "Gọi $t$ (giờ, $t>0$) là thời gian tính từ lúc hai tàu xuất phát đến khi khoảng cách giữa hai tàu là $65$ hải lí.\nSau $t$ giờ, quãng đường tàu thứ nhất đi được là $AB=8t$ (hải lí) và quãng đường tàu thứ hai đi được là $AC=10t$ (hải lí).\nKhoảng cách giữa hai tàu là $BC=65$ hải lí và góc giữa hai hướng đi là $\\widehat{BAC}=120^\\circ$.\nÁp dụng định lí côsin trong tam giác $ABC$, ta có\n$BC^{2}=AB^{2}+AC^{2}\\text{-2\\cdot AB\\cdot AC\\cdot }\\cos \\widehat{BAC}.$\nThay số vào ta được\n${65}^{2}=\\left(8t\\right)^{2}+\\left(10t\\right)^{2}-2\\cdot 8t\\cdot 10t\\cdot \\cos 120^\\circ.$\nSuy ra\n$4225=64t^{2}+100t^{2}-160t^{2}\\cdot \\left(-\\dfrac{1}{2}\\right)=244t^{2}.$\nDo đó\n$t^{2}=\\dfrac{4225}{244}\\Rightarrow t=\\sqrt …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000123",
+  "loai": "tra_loi_ngan",
+  "de": "Trên sườn đồi có một cái cây thẳng đứng đổ bóng dài $AB=39,5$ mét xuống đồi. Biết góc nghiêng của sườn đồi là $\\alpha =26^\\circ$ so với phương ngang và góc của tia nắng mặt trời đi qua ngọn cây là $\\beta =50^\\circ$ (tham khảo hình vẽ).\nTính chiều cao $BC$ của cây (Kết quả làm tròn đến hàng đơn vị, đơn vị đo là mét).",
+  "dap_an": "25",
+  "loi_giai": "Xét tam giác $ABC$, ta có:\n• $\\widehat{BAC}=\\beta -\\alpha =50^\\circ-26^\\circ=24^\\circ$.\n• Vì cây $BC$ mọc thẳng đứng nên $\\text{BC\\perp AH}$ tại $H$.\nTrong tam giác vuông $AHC$, ta có $\\widehat{ACB}=\\widehat{ACH}=90^\\circ-\\beta =90^\\circ-50^\\circ=40^\\circ$.\nÁp dụng định lí sin trong tam giác $ABC$, ta có\n$\\dfrac{BC}{\\sin \\widehat{BAC}}=\\dfrac{AB}{\\sin \\widehat{ACB}}\\Rightarrow BC=\\dfrac{AB\\cdot \\sin \\widehat{BAC}}{\\sin \\widehat{ACB}}.$\nThay số $AB=39,5 m$, ta được\n$BC=\\dfrac{39,5\\cdot \\sin 24^\\circ}{\\sin 40^\\circ}\\approx 24,99 (m).$\nLàm tròn đến hàng đơn vị, ta được $\\text{BC\\approx 25} m$.\nVậy chiều cao của cây là $25 m$.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010206031",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=\\{x\\in \\mathbb{R}|x\\left(x-2\\right)\\left(x-m\\right)=0\\}$ và $B=\\{x\\in \\mathbb{R}|\\left(x-2\\right)\\left(x-m^{2}\\right)=0\\}$. Có bao nhiêu giá trị của tham số $m$ để $B\\subset A$?",
+  "lua_chon": [
+   "$2$.",
+   "$3$.",
+   "$4$.",
+   "$5$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có:\n$x\\left(x-2\\right)\\left(x-m\\right)=0\\Leftrightarrow \\left[\\begin{array}{l} x=0 \\\\ x=2 \\\\ x=m \\end{array}\\right.\\Rightarrow A=\\{0;2;m\\}$.\n$\\left(x-2\\right)\\left(x-m^{2}\\right)=0\\Leftrightarrow \\left[\\begin{array}{l} x=2 \\\\ x=m^{2} \\end{array}\\right.\\Rightarrow B=\\{2;m^{2}\\}$.\nĐể $B\\subset A$ thì $m^{2}\\in A$, tức là $m^{2}\\in \\{0;2;m\\}$. Ta xét các trường hợp:\nTH 1: $m^{2}=0\\Leftrightarrow m=0$. Khi đó $A=\\{0;2\\}$, $B=\\{0;2\\}\\Rightarrow B\\subset A$ (thỏa mãn).\nTH 2: $m^{2}=2\\Leftrightarrow m=\\pm \\sqrt{2}$.\n+ Với $m = \\sqrt{2}$, ta có $A=\\{0;2;\\sqrt{2}\\}$ và $B=\\{2\\}\\subset A$ (thỏa mãn).\n+ Với $m=-\\sqrt{2}$, ta có $A=\\{0;2;-\\sqrt{2}\\}$ và $B=\\{2\\}\\subset A$ (thỏa mãn).\nTH 3: $m^{2}=m\\L …",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán tập hợp chứa tham số m"
+ },
+ {
+  "ma_cau": "T110030201034",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $MNP$. Phát biểu nào sau đây đúng?",
+  "lua_chon": [
+   "$MN^2 = PM^2 + PN^2 - 2PM \\cdot PN \\cos P$",
+   "$MN^2 = PM^2 + PN^2 + 2PM \\cdot PN \\sin P$",
+   "$MN^2 = PM^2 + PN^2 - 2PM \\cdot PN \\sin P$",
+   "$MN^2 = PM^2 + PN^2 +2PM \\cdot PN \\cos P$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Theo định lí côsin trong tam giác $MNP$, bình phương một cạnh bằng tổng bình phương hai cạnh\ncòn lại trừ đi hai lần tích của hai cạnh đó với côsin của góc xen giữa.\nÁp dụng cho cạnh $MN$ và góc xen giữa là góc $P$, ta có:\n$MN^2 = PM^2 + PN^2 - 2PM \\cdot PN \\cos P$.\nVậy phát biểu đúng là $MN^2 = PM^2 + PN^2 - 2PM \\cdot PN \\cos P$ .",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Nhận dạng định lí cos, định lí sin và các công thức tính diện tích tam giác"
+ },
+ {
+  "ma_cau": "T110000000116",
+  "loai": "trac_nghiem",
+  "de": "Trong các hệ thức sau, hệ thức nào đúng?",
+  "lua_chon": [
+   "$\\sin ^{2}5^\\circ+\\cos ^{2}20^\\circ=1$.",
+   "$\\sin ^{2}50^\\circ+\\cos ^{2}20^\\circ=1$.",
+   "$\\sin ^{2}50^\\circ+\\cos ^{2}50^\\circ=1$.",
+   "$\\sin ^{2}10^\\circ+\\cos ^{2}10^\\circ=1$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Với mọi góc $\\alpha$ thỏa mãn $0^\\circ\\le \\alpha \\le 180^\\circ$, ta luôn có hệ thức cơ bản\n$\\sin ^{2}\\alpha +\\cos ^{2}\\alpha =1.$\nDo đó hệ thức $\\sin ^{2}50^\\circ+\\cos ^{2}50^\\circ=1$ là hệ thức đúng.\nVậy ta chọn phương án C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

@@ -1,0 +1,77 @@
+{
+ "cd": 2,
+ "nhom": [
+  {
+   "ten": "Thứ tự thực hiện phép tính trong ℤ",
+   "ly_thuyet": "##TC\nBiểu thức không có dấu ngoặc, chỉ có cộng trừ (hoặc chỉ có nhân chia): làm lần lượt từ trái sang phải.\nBiểu thức không có dấu ngoặc, có nhiều loại phép tính: luỹ thừa trước, rồi nhân chia, cuối cùng cộng trừ.\nBiểu thức có dấu ngoặc: tính trong ngoặc tròn $( )$ trước, rồi đến ngoặc vuông $[ ]$, rồi đến ngoặc nhọn $\\{ \\}$.\nLuỹ thừa của số nguyên âm: $(-a)^n$ ($a>0$) dương nếu $n$ chẵn, âm nếu $n$ lẻ. Riêng $(-1)^n=1$ khi $n$ chẵn và $(-1)^n=-1$ khi $n$ lẻ.\n\n##PP\nXác định phép tính nào làm trước, tính từng bước rồi viết lại biểu thức đã rút gọn sau mỗi bước.\nVới ngoặc lồng nhau, tính từ ngoặc trong cùng ra ngoài.\nPhép nhân, chia số nguyên: xác định dấu của kết quả trước (khác dấu thì âm, cùng dấu thì dương), rồi tính như số tự nhiên.\nPhép trừ một số nguyên: $a-b=a+(-b)$, đặc biệt $a-(-b)=a+b$.\n\n##CY\n$(-3)^2=9$ nhưng $-3^2=-9$: dấu trừ không nằm trong ngoặc thì không thuộc cơ số.\nNhân và chia cùng cấp: làm từ trái sang phải. Ví dụ $24:(-4).3=(-6).3=-18$, không phải $24:[(-4).3]$.\nKhi đang tính trong ngoặc mà gặp luỹ thừa thì tính luỹ thừa trong ngoặc trước.",
+   "dang": [
+    {
+     "ten": "Biểu thức cơ bản (không luỹ thừa)",
+     "ly_thuyet": "##PP\nBước 1: nếu có ngoặc, tính các phép tính trong ngoặc trước.\nBước 2: thực hiện nhân, chia từ trái sang phải (tính dấu rồi tính giá trị của tích, thương).\nBước 3: thực hiện cộng, trừ từ trái sang phải; gặp trừ đi một số âm thì đổi thành cộng với số đối.\nKết luận giá trị của biểu thức.\n\n##CY\nSố âm đứng sau một phép tính phải đặt trong ngoặc, ví dụ $72:(-8)$, không viết $72:-8$.\nTích hoặc thương của hai số cùng dấu là số dương, khác dấu là số âm; đừng quên dấu khi chuyển sang bước cộng, trừ.",
+     "vi_du": "##VD\nTính $(-15).4+72:(-8)$.\n**Hướng dẫn giải:**\nThực hiện nhân, chia trước: $(-15).4=-60$ và $72:(-8)=-9$.\n\nCộng hai số vừa tính: $-60+(-9)=-69$.\n\nVậy $(-15).4+72:(-8)=-69$.\n\n##VD\nTính $(-96):(24-8)+7.(-3)$.\n**Hướng dẫn giải:**\nTính trong ngoặc trước: $24-8=16$.\n\nThực hiện chia và nhân: $(-96):16=-6$ và $7.(-3)=-21$.\n\nCộng: $-6+(-21)=-27$.\n\nVậy $(-96):(24-8)+7.(-3)=-27$.",
+     "kiem": [
+      "(-15)*4+72/(-8)===-69",
+      "(-96)/(24-8)+7*(-3)===-27"
+     ]
+    },
+    {
+     "ten": "Biểu thức có luỹ thừa và nhiều cấp ngoặc",
+     "ly_thuyet": "##PP\nBước 1: tính từ ngoặc trong cùng ra ngoài: ngoặc tròn $( )$, rồi ngoặc vuông $[ ]$, rồi ngoặc nhọn $\\{ \\}$; trong mỗi ngoặc cũng theo thứ tự luỹ thừa, nhân chia, cộng trừ.\nBước 2: tính các luỹ thừa còn lại: $a^n$ là tích của $n$ thừa số $a$; xét dấu theo số mũ chẵn hay lẻ.\nBước 3: nhân, chia rồi cộng, trừ từ trái sang phải.\n\n##CY\n$(-1)^{2024}=1$ vì số mũ $2024$ chẵn; $(-1)^{2025}=-1$ vì số mũ $2025$ lẻ.\n$(-2)^3=-8$ và $(-2)^2=4$, còn $-2^2=-4$.\nLuỹ thừa làm trước nhân chia: $3.2^2=3.4=12$, không phải $(3.2)^2$.",
+     "vi_du": "##VD\nTính $100-3.[20+(-17)]^2+(-1)^{2025}$.\n**Hướng dẫn giải:**\nTính trong ngoặc vuông: $20+(-17)=3$, biểu thức trở thành $100-3.3^2+(-1)^{2025}$.\n\nTính luỹ thừa: $3^2=9$ và $(-1)^{2025}=-1$ (số mũ $2025$ lẻ).\n\nNhân: $3.9=27$.\n\nTrừ và cộng: $100-27+(-1)=73+(-1)=72$.\n\nVậy $100-3.[20+(-17)]^2+(-1)^{2025}=72$.\n\n##VD\nTính $-5+\\{[(7-9)^3+14]:2\\}.(-3)^2$.\n**Hướng dẫn giải:**\nNgoặc tròn trong cùng: $7-9=-2$, rồi $(-2)^3=-8$ (số mũ lẻ nên âm).\n\nNgoặc vuông: $-8+14=6$. Ngoặc nhọn: $6:2=3$.\n\nLuỹ thừa: $(-3)^2=9$ (số mũ chẵn nên dương).\n\nNhân: $3.9=27$. Cộng: $-5+27=22$.\n\nVậy $-5+\\{[(7-9)^3+14]:2\\}.(-3)^2=22$.",
+     "kiem": [
+      "100-3*Math.pow(20+(-17),2)+Math.pow(-1,2025)===72",
+      "-5+((Math.pow(7-9,3)+14)/2)*Math.pow(-3,2)===22"
+     ]
+    }
+   ]
+  },
+  {
+   "ten": "Biểu thức chứa chữ",
+   "ly_thuyet": "##TC\nBiểu thức chứa chữ là biểu thức có các chữ ($x$, $y$, $a$, $b$, ...) đại diện cho các số.\nGiá trị của biểu thức thay đổi theo giá trị của chữ.\nQuy tắc dấu ngoặc: $a+(b-c)=a+b-c$ · $a-(b-c)=a-b+c$ · $-(a+b)=-a-b$.\n$x+x=2x$ · $x-x=0$ · $-x+x=0$.\n\n##PP\nTính giá trị: thay mỗi chữ bằng giá trị đã cho (số âm đặt trong ngoặc), rồi tính theo thứ tự thực hiện phép tính.\nRút gọn: bỏ ngoặc theo quy tắc dấu ngoặc, nhóm các số hạng chứa cùng một chữ và nhóm các số, rồi tính.\nNếu biểu thức có ngoặc thì có thể rút gọn trước rồi mới thay số cho đỡ tính nhiều.\n\n##CY\nChữ xuất hiện mấy lần thì thay mấy lần; số âm phải để trong ngoặc, ví dụ $x=-4$ thì $2x$ thành $2.(-4)$.\nDấu $-$ đằng trước ngoặc: đổi dấu TẤT CẢ các số hạng trong ngoặc, đừng bỏ sót số hạng nào.",
+   "dang": [
+    {
+     "ten": "Tính giá trị biểu thức khi biết giá trị biến",
+     "ly_thuyet": "##PP\nBước 1: thay giá trị của từng chữ vào biểu thức, số âm đặt trong ngoặc.\nBước 2: tính theo thứ tự thực hiện phép tính (ngoặc, nhân chia, cộng trừ).\nBước 3: kết luận giá trị của biểu thức với các giá trị của chữ đã cho.\n\n##CY\nGặp $a-b$ với $b=-7$ thì viết $a-(-7)$ rồi đổi thành $a+7$.\nGiữ nguyên dấu nhân ngầm: $2x$ khi $x=-4$ là $2.(-4)=-8$, không phải $2-4$.",
+     "vi_du": "##VD\nTính giá trị của biểu thức $A=a-b+c$ khi $a=-5$, $b=7$, $c=-3$.\n**Hướng dẫn giải:**\nThay $a=-5$, $b=7$, $c=-3$ vào $A$: $A=(-5)-7+(-3)$.\n\nTính từ trái sang phải: $(-5)-7=-12$, rồi $-12+(-3)=-15$.\n\nVậy $A=-15$.\n\n##VD\nTính giá trị của biểu thức $M=x.y-2.(x-y)$ khi $x=-4$, $y=3$.\n**Hướng dẫn giải:**\nThay $x=-4$, $y=3$ vào $M$: $M=(-4).3-2.[(-4)-3]$.\n\nTính trong ngoặc: $(-4)-3=-7$.\n\nNhân: $(-4).3=-12$ và $2.(-7)=-14$.\n\nTrừ: $M=-12-(-14)=-12+14=2$.\n\nVậy $M=2$.",
+     "kiem": [
+      "(-5)-7+(-3)===-15",
+      "(-4)*3-2*((-4)-3)===2"
+     ]
+    },
+    {
+     "ten": "Rút gọn biểu thức chứa chữ",
+     "ly_thuyet": "##PP\nBước 1: bỏ dấu ngoặc theo quy tắc (dấu $+$ đằng trước giữ nguyên dấu, dấu $-$ đằng trước đổi dấu mọi số hạng trong ngoặc).\nBước 2: nhóm các số hạng chứa cùng một chữ lại với nhau, các số nhóm với nhau.\nBước 3: tính hệ số, ghi kết quả gọn (không còn dấu ngoặc).\n\n##CY\nKiểm tra bằng cách thay một giá trị bất kì của chữ vào biểu thức ban đầu và biểu thức rút gọn: hai giá trị phải bằng nhau.\n$a-a=0$ nên số hạng chứa chữ có thể mất hẳn sau khi rút gọn; $a+a=2a$.",
+     "vi_du": "##VD\nRút gọn biểu thức $A=-(24-x)+4$.\n**Hướng dẫn giải:**\nDấu $-$ đằng trước ngoặc nên đổi dấu từng số hạng trong ngoặc: $A=-24+x+4$.\n\nNhóm các số: $A=x+(-24+4)=x+(-20)$.\n\nVậy $A=x-20$.\n\n##VD\nRút gọn biểu thức $B=-(a-c)-(a-b+c)$.\n**Hướng dẫn giải:**\nBỏ hai dấu ngoặc có dấu $-$ đằng trước, đổi dấu các số hạng trong ngoặc: $B=-a+c-a+b-c$.\n\nNhóm các số hạng cùng chữ: $B=(-a-a)+b+(c-c)$, trong đó $-a-a=-2a$ và $c-c=0$.\n\nVậy $B=-2a+b$.",
+     "kiem": [
+      "[...Array(21).keys()].map(i=>i-10).every(x=>-(24-x)+4===x-20)",
+      "[-3,-2,-1,0,1,2,3].every(a=>[-3,-2,-1,0,1,2,3].every(b=>[-3,-2,-1,0,1,2,3].every(c=>-(a-c)-(a-b+c)===-2*a+b)))"
+     ]
+    }
+   ]
+  },
+  {
+   "ten": "Toán thực tế với số nguyên",
+   "ly_thuyet": "##TC\nĐại lượng tăng, thêm, lên, lãi, thưởng ứng với số dương; giảm, bớt, xuống, lỗ, phạt, nợ ứng với số âm.\nNhiệt độ dưới $0^\\circ C$ và độ cao dưới mực nước biển là số âm.\nSau khi tăng: giá trị mới = giá trị cũ + lượng tăng. Sau khi giảm: giá trị mới = giá trị cũ − lượng giảm (hay cộng với số âm).\nChênh lệch giữa hai đại lượng = số lớn hơn − số nhỏ hơn.\n\n##PP\nĐọc đề, xác định đại lượng ban đầu và từng lượng thay đổi, đặt dấu cho từng lượng.\nLập biểu thức (phép cộng, trừ, nhân số nguyên), tính theo thứ tự thực hiện phép tính.\nTrả lời có đơn vị và nêu ý nghĩa của kết quả (âm thì ở dưới mực nước biển, dưới $0^\\circ C$, lỗ...).\n\n##CY\n\"Giảm $9^\\circ C$\" là trừ $9$ (hay cộng với $-9$), không phải cộng $9$.\nĐơn vị của các số hạng phải giống nhau trước khi cộng, trừ.\nKết quả âm không phải là sai: kèm đơn vị và nêu đúng ý nghĩa.",
+   "dang": [
+    {
+     "ten": "Nhiệt độ, độ cao tăng giảm",
+     "ly_thuyet": "##PP\nLấy nhiệt độ (độ cao) ban đầu làm số đầu tiên; tăng, lên, nổi lên thì cộng; giảm, xuống, lặn xuống thì trừ.\nMuốn tìm chênh lệch (cao hơn, nóng hơn bao nhiêu): lấy số lớn hơn trừ số nhỏ hơn.\nViết phép tính và tính từng bước, rồi trả lời kèm đơn vị.\n\n##CY\nTrừ cho một số âm đổi thành cộng: $35-(-155)=35+155$.\n\"Lặn sâu thêm $30\\ m$\" nghĩa là độ cao giảm $30\\ m$ (trừ $30$), không phải cộng $30$.",
+     "vi_du": "##VD\nNhiệt độ buổi sáng ở một địa điểm là $-9^\\circ C$. Đến trưa nhiệt độ tăng $15^\\circ C$, đến tối lại giảm $11^\\circ C$. Hỏi nhiệt độ buổi tối ở địa điểm đó là bao nhiêu?\n**Hướng dẫn giải:**\nNhiệt độ buổi trưa là $-9+15=6\\ (^\\circ C)$.\n\nNhiệt độ buổi tối là $6-11=-5\\ (^\\circ C)$.\n\nVậy nhiệt độ buổi tối là $-5^\\circ C$.\n\n##VD\nMột tàu ngầm đang ở độ cao $-200\\ m$ so với mực nước biển. Tàu nổi lên $45\\ m$. Một trực thăng đang bay ở độ cao $35\\ m$.\na) Tính độ cao mới của tàu ngầm.\nb) Trực thăng cao hơn tàu ngầm bao nhiêu mét?\n**Hướng dẫn giải:**\na) Độ cao mới của tàu ngầm là $-200+45=-155\\ (m)$.\n\nb) Trực thăng cao hơn tàu ngầm: $35-(-155)=35+155=190\\ (m)$.\n\nVậy tàu ngầm ở độ cao $-155\\ m$ và trực thăng cao hơn tàu ngầm $190\\ m$.",
+     "kiem": [
+      "-9+15-11===-5",
+      "(-200+45)===-155 && 35-(-155)===190"
+     ]
+    },
+    {
+     "ten": "Thưởng – phạt, lãi – lỗ, nhân với số âm",
+     "ly_thuyet": "##PP\nMỗi lần thưởng, lãi là số dương; mỗi lần phạt, lỗ là số âm.\nNếu một khoản lặp lại $n$ lần, mỗi lần là $x$ thì tổng là $n.x$ ($x$ âm thì tổng âm).\nTính phần được và phần bị phạt riêng, rồi cộng lại: tổng = (được) + (phạt, là số âm).\nTrả lời kèm đơn vị và nêu ý nghĩa (dương là lãi, thưởng; âm là lỗ, bị trừ).\n\n##CY\nTiền phạt viết là số âm khi lập biểu thức: phạt $5$ nghìn đồng một lần thì ghi $-5$.\nTích của số dương với số âm là số âm: $26.(-3)=-78$.",
+     "vi_du": "##VD\nMột công nhân được thưởng $8$ nghìn đồng cho mỗi sản phẩm đạt và bị phạt $5$ nghìn đồng cho mỗi sản phẩm không đạt. Trong một ngày, công nhân đó làm được $30$ sản phẩm đạt và $4$ sản phẩm không đạt. Hỏi cuối ngày công nhân đó nhận được bao nhiêu nghìn đồng?\n**Hướng dẫn giải:**\nTiền thưởng của $30$ sản phẩm đạt là $30.8=240$ (nghìn đồng).\n\nTiền phạt của $4$ sản phẩm không đạt là $4.(-5)=-20$ (nghìn đồng).\n\nSố tiền nhận được là $240+(-20)=220$ (nghìn đồng).\n\nVậy cuối ngày công nhân đó nhận được $220$ nghìn đồng.\n\n##VD\nMột cửa hàng bán hàng $26$ ngày trong tháng. Mỗi ngày, lợi nhuận của cửa hàng thay đổi $x$ triệu đồng so với tháng trước. Hỏi lợi nhuận cả tháng thay đổi bao nhiêu triệu đồng nếu:\na) $x=4$;\nb) $x=-3$.\n**Hướng dẫn giải:**\nLợi nhuận cả tháng thay đổi $26.x$ (triệu đồng).\n\na) Với $x=4$: $26.4=104$ (triệu đồng), tức tăng $104$ triệu đồng.\n\nb) Với $x=-3$: $26.(-3)=-78$ (triệu đồng), tức giảm $78$ triệu đồng.",
+     "kiem": [
+      "30*8+4*(-5)===220",
+      "26*4===104 && 26*(-3)===-78"
+     ]
+    }
+   ]
+  }
+ ]
+}

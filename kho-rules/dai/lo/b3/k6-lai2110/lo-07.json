@@ -1,0 +1,221 @@
+[
+ {
+  "ma_cau": "T106000000287",
+  "loai": "trac_nghiem",
+  "de": "Tàu ngầm ở độ sâu 1200 m, nghĩa là tàu ngầm đang ở độ cao:",
+  "lua_chon": [
+   "$-1200\\ m$",
+   "$1,2\\ km$",
+   "$-12\\ km$",
+   "$1200\\ m$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** độ cao tính so với mực nước biển, nên **độ sâu dưới mực nước biển** được ghi bằng **số âm**.\n**Bước 1.** Xác định mốc: mực nước biển là mốc 0, phía trên mốc ghi số dương, phía dưới mốc ghi số âm.\n**Bước 2.** Đọc đề: tàu ngầm ở độ sâu 1200 m, tức nằm dưới mực nước biển, nên độ cao của nó là một số âm.\n**Bước 3.** Đối chiếu bốn phương án: chọn phương án là số âm và đúng đơn vị mét, loại các phương án mang dấu dương hoặc đổi sai đơn vị.\n**Chú ý:** phương án B đổi đúng $1200\\ m=1,2\\ km$ nhưng là số dương nên chưa đúng chiều.\n**Phần 2. Trình bày**\nTàu ngầm ở độ sâu 1200 m, tức là dưới mực nước biển 1200 m.\nDo đó tàu ngầm đang ở độ cao $-1200\\ m$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000357",
+  "loai": "trac_nghiem",
+  "de": "Trong các số sau số nào là số tự nhiên?",
+  "lua_chon": [
+   "$\\dfrac{3}{5}$",
+   "$2\\dfrac{1}{3}$",
+   "2024",
+   "2,5"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số tự nhiên là các số $0;1;2;3;\\dots$ — không có phần phân số, không có phần thập phân.\n**Bước 1.** Nhớ lại: tập hợp số tự nhiên là $\\mathbb{N}=\\{0;1;2;3;\\dots\\}$, gồm số 0 và các số đếm $1;2;3;\\dots$\n**Bước 2.** Nhận dạng từng phương án: phương án nào viết dưới dạng phân số, hỗn số hoặc số thập phân thì không phải số tự nhiên.\n**Bước 3.** Chọn phương án còn lại, là số viết bằng các chữ số thông thường, không có dấu phẩy.\n**Phần 2. Trình bày**\nCác số $\\dfrac{3}{5}$, $2\\dfrac{1}{3}$, $2,5$ lần lượt là phân số, hỗn số và số thập phân nên không phải số tự nhiên.\nSố $2024$ là số tự nhiên.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000969",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính (tính hợp lí nếu có thể) $2625:15-(7^5:7^3+2026^0).3$.",
+  "dap_an": "25",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** làm **trong ngoặc trước**, trong ngoặc làm luỹ thừa trước rồi mới cộng; ngoài ngoặc nhân chia trước, trừ sau.\n**Bước 1.** Làm trong ngoặc: chia hai luỹ thừa cùng cơ số 7 bằng cách giữ cơ số và trừ số mũ, còn $2026^0$ bằng 1.\n**Bước 2.** Tính luỹ thừa vừa thu được rồi cộng với 1 để ra giá trị của cả ngoặc tròn.\n**Bước 3.** Ngoài ngoặc, thực hiện phép chia $2625:15$ và phép nhân của ngoặc với 3 (nhân chia làm trước).\n**Bước 4.** Thực hiện phép trừ cuối cùng giữa hai kết quả.\n**Chú ý:** $2026^0=1$, không phải 0 cũng không phải 2026.\n**Phần 2. Trình bày**\n$2625:15-(7^5:7^3+2026^0).3$\n$=2625:15-(7^2+1).3$\n$=2625:15-(49+1).3$\n$=2625:15-50.3$\n$=175-150$\n$=25$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000429",
+  "loai": "tra_loi_ngan",
+  "de": "Các số được chọn ra từ 48 số tự nhiên từ 1 đến 48. Hỏi cần chọn ngẫu nhiên ít nhất bao nhiêu số để chắc chắn rằng có hai số mà có tổng bằng 30?",
+  "dap_an": "35",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tìm số lượng số **nhiều nhất** có thể chọn mà **chưa** có hai số nào có tổng bằng 30, rồi cộng thêm 1.\n**Bước 1.** Ghép các số thành cặp có tổng bằng 30: $1$ với $29$, $2$ với $28$, và cứ thế đến $14$ với $16$.\n**Bước 2.** Tìm các số không có số ghép: số 15 (vì $15+15$ cần hai số 15), số 30 và các số từ 31 đến 48 (số ghép sẽ không còn là số tự nhiên từ 1 đến 48).\n**Bước 3.** Tình huống xấu nhất: chọn hết các số không có số ghép và chỉ lấy một số trong mỗi cặp.\n**Bước 4.** Chọn nhiều hơn mức đó một số thì số các số nằm trong các cặp nhiều hơn số cặp, nên phải có hai số ở chung một cặp, tức có hai số tổng bằng 30.\n**Chú ý:** hai số phải khác nhau, nên số 15  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106020803001",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết $2^x . (2^x + 1)(2^x + 2) + 4^y = 721$",
+  "dap_an": "3",
+  "loi_giai": "Ta có $2^x$; $2^x + 1$; $2^x + 2$ là 3 số tự nhiên liên tiếp nên tích của chúng là số chẵn\nMà $721$ là số lẻ\nSuy ra $4^y$ là số lẻ. Suy ra $y = 0$\nKhi đó $2^x . (2^x + 1)(2^x + 2) + 1 = 721$\nSuy ra $2^x . (2^x + 1)(2^x + 2) = 720 = 8.9.10$\nNếu $x = 3 \\Rightarrow 2^x = 2^3 = 8 \\Rightarrow 2^x . (2^x + 1)(2^x + 2) = 8.9.10$\nNếu $x > 3 \\Rightarrow 2^x > 2^3 = 8 \\Rightarrow 2^x . (2^x + 1)(2^x + 2) > 8.9.10$ (loại)\nNếu $x < 3 \\Rightarrow 2^x < 2^3 = 8 \\Rightarrow 2^x . (2^x + 1)(2^x + 2) < 8.9.10$ (loại)\nVậy $x = 3$",
+  "nhan_cu": "Các bài toán nâng cao về lũy thừa › Tìm x ứng dụng lũy thừa"
+ },
+ {
+  "ma_cau": "T106000000531",
+  "loai": "trac_nghiem",
+  "de": "Cho biết nhiệt độ nóng chảy của 4 chất như sau\nOxygen: $-219^\\circ C$; Rượu: $-114^\\circ C$; Thủy Ngân: $-39^\\circ C$; Chlorine: $-102^\\circ C$.\nChất có nhiệt độ nóng chảy **thấp nhất** là",
+  "lua_chon": [
+   "Oxygen",
+   "Rượu",
+   "Thủy Ngân",
+   "Chlorine"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** so sánh các số nguyên âm: số có phần số tự nhiên (bỏ dấu $-$) **càng lớn** thì số âm đó **càng nhỏ**.\n**Bước 1.** Nhận ra nhiệt độ nóng chảy của cả bốn chất đều là số nguyên âm nên phải so sánh số nguyên âm.\n**Bước 2.** So sánh từng cặp số âm: bỏ dấu $-$, số nào lớn hơn thì số âm tương ứng nhỏ hơn.\n**Bước 3.** Chọn số nhỏ nhất trong bốn số, ứng với chất có nhiệt độ nóng chảy thấp nhất.\n**Chú ý:** $-219$ nhỏ hơn $-39$ dù $219$ trông \"to\" hơn; đừng chọn số có phần số tự nhiên nhỏ nhất.\n**Phần 2. Trình bày**\nTa có $219>114>102>39$.\nSuy ra $-219<-114<-102<-39$.\nNhiệt độ thấp nhất là $-219^\\circ C$ nên chất có nhiệt độ nóng chảy thấp nhất là Oxygen.\nChọn A.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000339",
+  "loai": "tu_luan",
+  "de": "Cho $S=1.2+2.3+3.4+\\dots+2025.2026$. Chứng minh $S+2$ chia hết cho 4.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** gom các tích thành **từng cặp** để mỗi cặp có thừa số chung là số chẵn, rồi xử lí riêng số hạng còn dư cùng với số 2 cộng thêm.\n**Bước 1.** Đếm số hạng: thừa số đầu của mỗi tích chạy từ 1 đến 2025 nên $S$ có 2025 số hạng, là số lẻ, vì vậy nhóm hai số hạng một nhóm thì dư lại số hạng cuối.\n**Bước 2.** Nhóm hai số hạng liên tiếp kể từ số hạng đầu và đặt thừa số chung của mỗi nhóm ra ngoài ngoặc.\n**Bước 3.** Chỉ ra mỗi nhóm là tích của một số chẵn với tổng hai số lẻ (cũng là số chẵn) nên chia hết cho 4.\n**Bước 4.** Ghép số hạng còn dư $2025.2026$ với số 2 cộng thêm, tách $2025=2024+1$ để lộ ra các số hạng chia hết cho 4.\n**Bước 5.** Kết luận $S+2$ là tổng của …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000498",
+  "loai": "trac_nghiem",
+  "de": "Tập hợp nào sau đây chỉ tập hợp số tự nhiên:",
+  "lua_chon": [
+   "$\\{1;2;3;4;\\dots\\}$",
+   "$\\{0;1;2;3;4;\\dots\\}$",
+   "$\\{0;-1;2;3;-4;\\dots\\}$",
+   "$\\{0;1;2;3;4;5;6;7\\}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tập hợp số tự nhiên $\\mathbb{N}$ phải có số 0, có đủ mọi số tự nhiên và không chứa số âm.\n**Bước 1.** Nhớ lại: $\\mathbb{N}$ gồm số 0 và các số nguyên dương $1;2;3;\\dots$ kéo dài mãi không dừng.\n**Bước 2.** Loại phương án bắt đầu từ 1 (thiếu số 0) và phương án có chứa số âm.\n**Bước 3.** Loại tiếp phương án chỉ liệt kê đến 7 vì tập hợp đó không có đủ mọi số tự nhiên, rồi chọn phương án còn lại.\n**Chú ý:** $\\mathbb{N}^*$ là tập hợp số tự nhiên khác 0 nên phương án A là bẫy.\n**Phần 2. Trình bày**\nTập hợp số tự nhiên là $\\mathbb{N}=\\{0;1;2;3;4;\\dots\\}$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000449",
+  "loai": "tra_loi_ngan",
+  "de": "Tính hợp lí nếu có thể: $96.34+19.4+15.2^2$",
+  "dap_an": "3400",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** sau khi tính $2^2$, hai số hạng cuối có chung thừa số 4 và tổng hai thừa số còn lại là 34, đúng bằng thừa số của số hạng đầu.\n**Bước 1.** Tính luỹ thừa $2^2$ để số hạng cuối có dạng $15.4$, giống số hạng đứng ngay trước nó.\n**Bước 2.** Đặt thừa số chung 4 cho hai số hạng cuối, trong ngoặc còn tổng $19+15$.\n**Bước 3.** Tính tổng trong ngoặc rồi nhận ra số 34 đã xuất hiện ở số hạng đầu tiên.\n**Bước 4.** Đặt thừa số chung 34 ra ngoài ngoặc, tính tổng trong ngoặc (được số tròn trăm) rồi nhân.\n**Chú ý:** $a.b+a=a.b+a.1$, nên khi đặt thừa số chung không được bỏ sót số hạng nào.\n**Phần 2. Trình bày**\n$96.34+19.4+15.2^2$\n$=96.34+19.4+15.4$\n$=96.34+4.(19+15)$\n$=96. …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000922",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$, biết $3(x-1)-2025^0=3^3+2^3$.",
+  "dap_an": "13",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính hết các luỹ thừa đã biết ở hai vế trước, rồi mới tìm thành phần chưa biết từ ngoài vào trong.\n**Bước 1.** Tính các luỹ thừa đã biết: dùng $2025^0=1$, rồi viết $3^3$ và $2^3$ thành số cụ thể và cộng lại ở vế phải.\n**Bước 2.** Xác định vai trò: tích $3.(x-1)$ là số bị trừ của phép trừ cho 1, nên lấy hiệu cộng với số trừ.\n**Bước 3.** Trong tích vừa tìm, cụm $(x-1)$ là thừa số chưa biết, nên lấy tích chia cho thừa số đã biết là 3.\n**Bước 4.** Cuối cùng $x$ là số bị trừ của phép trừ cho 1, nên lấy hiệu cộng với số trừ.\n**Chú ý:** $2025^0=1$ chứ không phải 0 hay 2025; thử lại bằng cách thay $x$ vừa tìm vào rồi so hai bên dấu bằng.\n**Phần 2. Trình bày**\n$3.( …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000582",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính: $12.87+13.12+(-1500)$",
+  "dap_an": "-300",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai tích $12.87$ và $13.12$ có chung thừa số 12 nên đặt thừa số chung 12 ra ngoài.\n**Bước 1.** Quan sát hai tích: $12.87$ và $13.12$ cùng có thừa số 12 (viết lại $13.12$ thành $12.13$).\n**Bước 2.** Đặt thừa số chung 12 ra ngoài ngoặc, trong ngoặc là tổng $87+13$.\n**Bước 3.** Tính tổng trong ngoặc được số tròn trăm rồi nhân với 12.\n**Bước 4.** Cộng kết quả với số $(-1500)$: cộng hai số nguyên khác dấu thì lấy phần số tự nhiên lớn hơn trừ phần số tự nhiên nhỏ hơn, rồi đặt trước kết quả dấu của số có phần số tự nhiên lớn hơn.\n**Phần 2. Trình bày**\n$12.87+13.12+(-1500)$\n$=12.87+12.13+(-1500)$\n$=12.(87+13)+(-1500)$\n$=12.100+(-1500)$\n$=1200+(-1500)$\n$=-300$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000299",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$, biết: $(x-1)^3=27$",
+  "dap_an": "4",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** viết $27$ thành luỹ thừa bậc 3 của một số, rồi so sánh **cơ số** của hai vế.\n**Bước 1.** Viết vế phải thành luỹ thừa có cùng số mũ 3 với vế trái bằng cách tìm số nhân với chính nó ba lần ra 27.\n**Bước 2.** Hai luỹ thừa bằng nhau và cùng số mũ thì cơ số bằng nhau, nên cụm $(x-1)$ bằng cơ số vừa tìm.\n**Bước 3.** Xác định $x$ là số bị trừ: lấy hiệu cộng với số trừ.\nThử lại: $(4-1)^3=3^3=27$ (đúng).\n**Phần 2. Trình bày**\n$(x-1)^3=27$\n$(x-1)^3=3^3$\n$x-1=3$\n$x=3+1$\n$x=4$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000572",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết: $x-56:14=7+(-20)$",
+  "dap_an": "-9",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** rút gọn hai vế trước, sau đó $x$ là **số bị trừ**.\n**Bước 1.** Rút gọn vế trái theo thứ tự thực hiện phép tính (chia trước, trừ sau) và tính vế phải là tổng hai số nguyên khác dấu.\n**Bước 2.** Sau khi rút gọn, $x$ đứng ở vị trí số bị trừ của một phép trừ với kết quả là một số âm.\n**Bước 3.** Tìm số bị trừ bằng cách lấy hiệu cộng với số trừ, nhớ quy tắc cộng hai số nguyên khác dấu.\nThử lại: $(-9)-56:14=(-9)-4=-13$ và $7+(-20)=-13$ (đúng).\n**Phần 2. Trình bày**\n$x-56:14=7+(-20)$\n$x-4=-13$\n$x=(-13)+4$\n$x=-9$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000573",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết: $5^x-31=-6$",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $5^x$ là **số bị trừ**; tìm giá trị của $5^x$ rồi đưa về hai luỹ thừa cùng cơ số 5.\n**Bước 1.** Xác định vai trò: $5^x$ là số bị trừ nên lấy hiệu cộng với số trừ là 31.\n**Bước 2.** Tính tổng một số nguyên âm với số 31, rồi nhận ra kết quả là một luỹ thừa của 5.\n**Bước 3.** Hai luỹ thừa bằng nhau và cùng cơ số thì có số mũ bằng nhau, từ đó suy ra $x$.\n**Phần 2. Trình bày**\n$5^x-31=-6$\n$5^x=(-6)+31$\n$5^x=25$\n$5^x=5^2$\n$x=2$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000934",
+  "loai": "tu_luan",
+  "de": "Tìm số tự nhiên $x$, biết 47 chia cho $x$ dư 2 và $x\\ge 15$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phép chia 47 cho $x$ dư 2 nghĩa là bớt 2 đi thì được một số chia hết cho $x$, nên $x$ là ước của số đó.\n**Bước 1.** Viết phép chia có dư: số bị chia bằng số chia nhân thương cộng số dư, rồi bớt số dư để được số chia hết cho $x$.\n**Bước 2.** Suy ra $x$ là ước của số vừa tìm được, rồi liệt kê các ước đó.\n**Bước 3.** Lọc các ước theo điều kiện $x\\ge 15$ đề cho, đồng thời nhớ số chia phải lớn hơn số dư.\n**Chú ý:** trong phép chia có dư thì số dư luôn nhỏ hơn số chia, nên $x$ phải lớn hơn 2.\n**Phần 2. Trình bày**\nVì 47 chia cho $x$ dư 2 nên $47=x.q+2$ với $q\\in\\mathbb{N}$, suy ra $47-2=x.q$ hay $45=x.q$.\nDo đó $x\\in\\text{Ư}(45)=\\{1;3;5;9;15;45\\}$.\nVì $x\\ge 15$  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000612",
+  "loai": "tra_loi_ngan",
+  "de": "Trong một ngày nhiệt độ Bắc Kinh lúc 7 giờ là $-10^\\circ C$, đến 12 giờ tăng thêm $6^\\circ C$, và lúc 20 giờ lại giảm $5^\\circ C$ so với thời điểm 12 giờ. Hỏi nhiệt độ ở Bắc Kinh lúc 20 giờ là bao nhiêu?",
+  "dap_an": "-9",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** \"tăng thêm\" là phép cộng, \"giảm\" là phép trừ, và phải tính lần lượt theo từng mốc thời gian.\n**Bước 1.** Tìm nhiệt độ lúc 12 giờ: lấy nhiệt độ lúc 7 giờ cộng thêm số độ tăng.\n**Bước 2.** Tìm nhiệt độ lúc 20 giờ: lấy nhiệt độ lúc 12 giờ vừa tìm được trừ đi số độ giảm.\n**Bước 3.** Viết kết quả kèm đơn vị độ $C$ và kiểm tra bằng cách đi ngược từ lúc 20 giờ về lúc 7 giờ.\n**Chú ý:** giảm $5^\\circ C$ so với lúc 12 giờ chứ không phải so với lúc 7 giờ.\n**Phần 2. Trình bày**\nNhiệt độ ở Bắc Kinh lúc 12 giờ là:\n$(-10)+6=-4$ ($^\\circ C$)\nNhiệt độ ở Bắc Kinh lúc 20 giờ là:\n$(-4)-5=-9$ ($^\\circ C$)",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000443",
+  "loai": "trac_nghiem",
+  "de": "Cho hình vẽ sau.\nSố phần tử thuộc cả tập hợp $A$ và tập hợp $B$ là",
+  "lua_chon": [
+   "3",
+   "4",
+   "2",
+   "0"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phần tử thuộc cả hai tập hợp là phần tử nằm trong **phần chung** của hai hình.\n**Bước 1.** Nhìn hình để biết mỗi tập hợp là vùng nào: nét dẫn từ chữ $A$ chạm vào hình nhỏ bên trong, nét dẫn từ chữ $B$ chạm vào hình lớn bên ngoài.\n**Bước 2.** Liệt kê các phần tử nằm trong từng hình, nhớ rằng hình lớn chứa luôn cả phần của hình nhỏ.\n**Bước 3.** Tìm các phần tử có mặt ở cả hai tập hợp rồi đếm xem có bao nhiêu phần tử như vậy.\n**Chú ý:** các phần tử chỉ nằm ở hình lớn mà không nằm trong hình nhỏ thì không thuộc cả hai tập hợp.\n**Phần 2. Trình bày**\nTập hợp $A=\\{a;b;c\\}$ và tập hợp $B=\\{m;n;a;b;c\\}$.\nCác phần tử thuộc cả tập hợp $A$ và tập hợp $B$ là $a;b;c$.\nV …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000562",
+  "loai": "trac_nghiem",
+  "de": "Các số $2;9;0;-15;-4$ được sắp xếp theo thứ tự **giảm dần** là",
+  "lua_chon": [
+   "$0;2;9;-4;-15$",
+   "$9;2;0;-4;-15$",
+   "$-15;-4;0;2;9$",
+   "$2;9;0;-4;-15$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** giảm dần là xếp từ lớn nhất đến nhỏ nhất; số dương lớn hơn 0, số 0 lớn hơn mọi số âm.\n**Bước 1.** Chia năm số thành ba nhóm: các số dương, số 0 và các số âm.\n**Bước 2.** Xếp nhóm số dương theo thứ tự từ lớn đến nhỏ, rồi đến số 0, vì số dương luôn lớn hơn 0.\n**Bước 3.** Xếp nhóm số âm: so sánh phần số của hai số âm, số âm nào có phần số lớn hơn thì nhỏ hơn.\n**Bước 4.** Ghép các nhóm theo đúng thứ tự giảm dần rồi đối chiếu với bốn phương án.\n**Chú ý:** phương án C là cách xếp theo thứ tự **tăng dần**.\n**Phần 2. Trình bày**\nTa có $9>2>0>-4>-15$.\nCác số xếp theo thứ tự giảm dần là $9;2;0;-4;-15$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000649",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết: $2x-11=-22+5$",
+  "dap_an": "-3",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính vế phải thành một số trước, rồi tìm lần lượt từng thành phần chưa biết từ ngoài vào trong.\n**Bước 1.** Tính vế phải: cộng hai số nguyên khác dấu $-22$ và $5$.\n**Bước 2.** Xác định vai trò: $2x$ là số bị trừ, nên tìm bằng cách lấy hiệu cộng với số trừ.\n**Bước 3.** Lúc này $x$ là thừa số chưa biết: lấy tích chia cho thừa số đã biết.\nThử lại: $2.(-3)-11=-17$ và $-22+5=-17$ (đúng).\n**Phần 2. Trình bày**\n$2x-11=-22+5$\n$2x-11=-17$\n$2x=(-17)+11$\n$2x=-6$\n$x=(-6):2$\n$x=-3$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000409",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số nguyên $x$, biết: $x-16=-36$",
+  "dap_an": "-20",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $x$ là **số bị trừ** chưa biết.\n**Bước 1.** Xác định vai trò: trong phép trừ $x-16=-36$, $x$ là số bị trừ, 16 là số trừ, $-36$ là hiệu.\n**Bước 2.** Tìm số bị trừ bằng cách lấy hiệu cộng với số trừ.\n**Bước 3.** Tính tổng của hai số nguyên khác dấu để ra giá trị $x$.\nThử lại: $-20-16=-36$ (đúng).\n**Phần 2. Trình bày**\n$x-16=-36$\n$x=-36+16$\n$x=-20$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000779",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính. $5^2.4-3.(18-7)$.",
+  "dap_an": "67",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** làm ngoặc và luỹ thừa trước, sau đó hai phép nhân, cuối cùng mới trừ.\n**Bước 1.** Nhận ra biểu thức có một cặp ngoặc tròn và một luỹ thừa $5^2$ cần làm trước.\n**Bước 2.** Tính hiệu trong ngoặc tròn, giữ nguyên các phần còn lại của biểu thức.\n**Bước 3.** Tính luỹ thừa $5^2$ rồi thực hiện hai phép nhân, mỗi tích một kết quả.\n**Bước 4.** Trừ hai tích vừa tìm được để ra giá trị của biểu thức.\n**Phần 2. Trình bày**\n$5^2.4-3.(18-7)$\n$=5^2.4-3.11$\n$=25.4-3.11$\n$=100-33$\n$=67$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000581",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính: $(-141)+(-62)+(-38)+141$",
+  "dap_an": "-100",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai số $(-141)$ và $141$ là hai số đối nhau nên cộng với nhau được 0; hai số âm còn lại cộng với nhau trước.\n**Bước 1.** Nhận ra trong tổng có hai số đối nhau là $(-141)$ và $141$, hai số này cộng lại bằng 0.\n**Bước 2.** Dùng tính chất giao hoán và kết hợp để ghép hai số đối nhau vào một nhóm, hai số âm vào nhóm còn lại.\n**Bước 3.** Tính từng nhóm rồi cộng kết quả; cộng hai số nguyên âm thì cộng hai phần số tự nhiên và giữ dấu \"$-$\".\n**Phần 2. Trình bày**\n$(-141)+(-62)+(-38)+141$\n$=\\left[(-141)+141\\right]+\\left[(-62)+(-38)\\right]$\n$=0+(-100)$\n$=-100$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000960",
+  "loai": "tu_luan",
+  "de": "Tìm tất cả các số tự nhiên $x$ và $y$ thỏa mãn $2xy+6x-y-15=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhóm $2xy+6x$ thành $2x.(y+3)$ để thấy cụm $(y+3)$, rồi đưa đẳng thức về dạng **tích hai thừa số bằng một số cho trước**.\n**Bước 1.** Hiệu bằng 0 nên số bị trừ bằng số trừ; dùng cách tìm số bị trừ, số hạng để viết phương trình thành $2xy+6x=y+15$ chứ không chuyển vế.\n**Bước 2.** Đặt thừa số chung ở vế trái được $2x.(y+3)$, còn vế phải $y+15$ tách thành $(y+3)$ cộng với một số cụ thể.\n**Bước 3.** Từ đó $2x.(y+3)$ lớn hơn $(y+3)$ đúng một số cụ thể; viết hiệu hai số đó thành $(2x-1).(y+3)$ theo tính chất phân phối của phép nhân với phép trừ.\n**Bước 4.** Kiểm tra $x$ không thể bằng 0, nhận ra $2x-1$ là số lẻ, rồi chọn các ước lẻ của vế phải cho $2x-1$.\n**Bước …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

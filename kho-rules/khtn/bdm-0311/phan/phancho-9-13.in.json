@@ -1,0 +1,92 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00584",
+   "chu_de": "Di truyền học với con người và đời sống",
+   "chuyen_de": "Di truyền học với con người và đời sống",
+   "nhom": "Bài toán phả hệ và nhóm máu",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nPhả hệ: ô vuông là nam, vòng tròn là nữ, tô đậm là người mắc bệnh; thế hệ kí hiệu bằng số La Mã (I, II…), người trong thế hệ đánh số.\nBố mẹ đều bình thường nhưng sinh con bệnh ⇒ bệnh do gene lặn, bố mẹ đều dị hợp (Aa).\nNgười bệnh do allele lặn có kiểu gene aa; người bình thường có thể là AA hoặc Aa.\nAa × Aa → 1 AA : 2 Aa : 1 aa, xác suất con mắc bệnh là 1/4, xác suất con bình thường là 3/4; trong nhóm con bình thường, Aa chiếm 2/3.\n\n##PP 2. Các bước làm bài\nĐọc phả hệ để xác định ai bệnh, ai bình thường, quan hệ giữa các thế hệ.\nTừ cặp bố mẹ bình thường sinh con bệnh kết luận gene lặn.\nQuy ước allele, xác định kiểu gene từ người bệnh (aa) ngược lên bố mẹ.\nViết sơ đồ lai để tính xác suất.\n\n##CY 3. Lưu ý\nMỗi lần sinh con là một sự kiện độc lập: đã có con bệnh không làm đổi xác suất của lần sinh sau.\nKhi tính xác suất kiểu gene của người bình thường, chỉ xét trong nhóm không bệnh (1AA : 2Aa).",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01438",
+     "thu_tu": 1,
+     "ten": "Đọc phả hệ: nhận kí hiệu, đếm người bệnh, xác định quan hệ các thế hệ",
+     "mo_ta": "Đề cho sơ đồ phả hệ, hỏi trong một thế hệ có bao nhiêu người mắc bệnh, người nào là nam/nữ, ai là con của cặp vợ chồng nào.\nChỉ cần đọc kí hiệu và đường nối trên sơ đồ, không cần suy ra kiểu gene.\nLưu ý: câu yêu cầu kết luận gene trội hay lặn ⇒ thuộc dạng \"Xác định tính trạng bệnh do gene trội hay gene lặn từ phả hệ\".",
+     "ly_thuyet": "##TC Kí hiệu trong phả hệ\nÔ vuông là nam, vòng tròn là nữ; kí hiệu tô đậm là người mắc bệnh.\nHai người nối với nhau bằng đường ngang là vợ chồng; các con nối với cặp vợ chồng bằng đường dọc. Người không có đường nối xuống từ cặp vợ chồng không phải con của họ (có thể là người kết hôn vào gia đình).\nThế hệ ghi bằng số La Mã (I, II…), các thành viên trong thế hệ đánh số 1, 2, 3…\n\n##PP Cách làm\nXác định thế hệ và cặp vợ chồng đề hỏi.\nLần theo đường nối để tìm các con.\nĐếm kí hiệu tô đậm trong số các con và ghi đúng giới tính theo hình dạng.",
+     "vi_du": "##VD\nMột phả hệ gồm cặp bố mẹ I₁ (ô vuông) và I₂ (vòng tròn) đều không tô đậm, có hai người con: II₁ là vòng tròn tô đậm, II₂ là ô vuông không tô đậm. Có bao nhiêu người con biểu hiện bệnh, và người đó là nam hay nữ?\nA. 1 người, là nữ\nB. 1 người, là nam\nC. 2 người\nD. Không có ai bị bệnh\n\nBài giải:\nTô đậm là người mắc bệnh; ô vuông là nam, vòng tròn là nữ.\nTrong hai người con, chỉ II₁ được tô đậm, mà II₁ là vòng tròn nên là nữ.\nII₂ là ô vuông không tô đậm: nam, không bệnh.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01439",
+     "thu_tu": 2,
+     "ten": "Xác định tính trạng bệnh do gene trội hay gene lặn từ phả hệ",
+     "mo_ta": "Đề cho bố mẹ đều bình thường mà sinh con mắc bệnh, hỏi bệnh do gene trội hay gene lặn.\nKết luận dựa trên quy luật: bố mẹ bình thường sinh con bệnh thì bệnh do gene lặn.\nLưu ý: câu hỏi kiểu gene cụ thể của bố mẹ (AA, Aa, aa) ⇒ thuộc dạng \"Xác định kiểu gene của người trong phả hệ khi bệnh do gene lặn\".",
+     "ly_thuyet": "##TC Gene trội và gene lặn\nGene trội biểu hiện ngay khi có mặt; người mang gene trội gây bệnh luôn mắc bệnh, nên con bệnh thì ít nhất một trong hai bố mẹ phải bệnh.\nGene lặn chỉ biểu hiện khi ở trạng thái đồng hợp; người dị hợp mang allele lặn nhưng không biểu hiện bệnh.\nBố mẹ đều bình thường mà sinh con bệnh ⇒ bệnh do gene lặn.\n\n##PP Cách làm\nXét kiểu hình của bố mẹ và con trong phả hệ.\nNếu bố mẹ bình thường sinh con bệnh thì kết luận gene lặn.\nLoại các phương án cho rằng gene trội hoặc đột biến NST, thường biến vì không phù hợp.",
+     "vi_du": "##VD\nBố (I₁), mẹ (I₂) đều không mắc bệnh, con trai II₁ mắc bệnh. Bệnh này do gene trội hay gene lặn quy định?\nA. Gene trội\nB. Gene lặn\nC. Không đủ dữ kiện để kết luận\nD. Cả gene trội và gene lặn đều có thể đúng như nhau\n\nBài giải:\nBố mẹ đều không mắc bệnh nhưng con trai mắc bệnh.\nNếu là gene trội thì bố hoặc mẹ phải mang gene gây bệnh và biểu hiện bệnh; điều này trái đề.\nVậy bệnh do gene lặn, bố mẹ mang allele lặn ở trạng thái dị hợp nên không biểu hiện.\nChọn B.\n\n##VD\nPhả hệ dưới đây mô tả một gia đình, trong đó ô vuông là nam, vòng tròn là nữ, tô đậm là người mắc bệnh. Cả I₁ và I₂ đều không mắc bệnh nhưng con trai II₁ của họ mắc bệnh. Từ đó có thể kết luận gì về tính trạng bệnh này?\nA. Gene trội, vì bố mẹ không bệnh vẫn sinh con bệnh\nB. Gene lặn, vì bố mẹ không bệnh vẫn sinh con bệnh\nC. Không xác định được từ phả hệ này\nD. Do đột biến NST, không do gene\n\nBài giải:\nBố mẹ đều không mắc bệnh nhưng con trai mắc bệnh, nên bố mẹ mang gene gây bệnh ở trạng thái ẩn.\nĐó là đặc điểm của gene lặn.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01440",
+     "thu_tu": 3,
+     "ten": "Xác định kiểu gene của người trong phả hệ khi bệnh do gene lặn",
+     "mo_ta": "Đề cho bệnh do allele lặn a, bố mẹ bình thường sinh con bệnh (aa), hỏi kiểu gene của bố mẹ hoặc nhận định về kiểu gene các anh chị em bình thường.\nLập luận từ kiểu gene aa của con ngược lên bố mẹ (mỗi người truyền một allele a).\nLưu ý: câu hỏi tính xác suất bằng số ⇒ thuộc dạng \"Tính xác suất sinh con mắc bệnh hoặc mang kiểu gene nhất định\".",
+     "ly_thuyet": "##TC Kiểu gene và kiểu hình\nQuy ước A: bình thường, a: bệnh. Người bệnh có kiểu gene aa; người bình thường là AA hoặc Aa.\nCon aa nhận 1 allele a từ bố và 1 allele a từ mẹ. Nếu bố mẹ đều bình thường thì cả hai đều có allele a nên đều là Aa.\nBố hoặc mẹ AA không thể có con aa; bố hoặc mẹ aa đã mắc bệnh.\n\n##PP Cách làm\nQuy ước allele và kiểu gene của người bệnh (aa).\nXét allele con nhận từ bố và mẹ.\nKết hợp kiểu hình bình thường của bố mẹ để suy ra kiểu gene.\n\n##CY Chú ý\nNgười bình thường trong gia đình có con bệnh vẫn có thể mang allele a (Aa); kiểu hình bình thường không cho biết chắc kiểu gene.",
+     "vi_du": "##VD\nMột bệnh do gene lặn trên NST thường quy định. Bố mẹ đều không biểu hiện bệnh nhưng sinh con mắc bệnh. Điều này cho biết gì về kiểu gene của bố mẹ?\nA. Bố hoặc mẹ chắc chắn phải biểu hiện bệnh mới có thể truyền cho con\nB. Đây là hiện tượng đột biến mới phát sinh ở con, không phải do bố mẹ truyền lại\nC. Bố mẹ chắc chắn đều có kiểu gene đồng hợp lặn (aa)\nD. Cả bố và mẹ đều mang kiểu gene dị hợp (mang allele gây bệnh nhưng không biểu hiện)\n\nBài giải:\nBệnh do gene lặn trên NST thường; con mắc bệnh có kiểu gene aa, nhận một allele a từ bố và một allele a từ mẹ.\nBố mẹ không biểu hiện bệnh nên không phải aa, nhưng đều có allele a.\nVậy cả hai đều có kiểu gene dị hợp Aa.\nChọn D.\n\n##VD\nBiết bệnh do allele lặn a trên NST thường quy định (A: không bệnh). Bố, mẹ không bệnh nhưng con trai II₂ bị bệnh (aa). Kiểu gene của bố và mẹ là gì?\nA. Cả hai đều có kiểu gene đồng hợp AA\nB. Cả hai đều có kiểu gene dị hợp Aa\nC. Bố AA, mẹ Aa\nD. Bố Aa, mẹ đồng hợp aa\n\nBài giải:\nCon trai II₂ bị bệnh có kiểu gene aa nên nhận a từ cả bố và mẹ.\nBố mẹ không bệnh nên không phải aa; đều mang allele a nên đều là Aa.\nNếu bố hoặc mẹ là AA thì không thể truyền a cho con.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01441",
+     "thu_tu": 4,
+     "ten": "Tính xác suất sinh con mắc bệnh hoặc mang kiểu gene nhất định",
+     "mo_ta": "Đề cho cặp bố mẹ bình thường đã sinh con bệnh do gene lặn trên NST thường, hỏi xác suất con tiếp theo mắc bệnh hoặc xác suất các con bình thường mang kiểu gene dị hợp.\nCần viết sơ đồ lai Aa × Aa rồi tính xác suất, có thể nhân xác suất các sự kiện độc lập.\nLưu ý: câu chỉ hỏi kiểu gene của bố mẹ, không tính xác suất ⇒ thuộc dạng \"Xác định kiểu gene của người trong phả hệ khi bệnh do gene lặn\".",
+     "ly_thuyet": "##TC Xác suất trong di truyền\nAa × Aa → 1 AA : 2 Aa : 1 aa. Xác suất con mắc bệnh (aa) là $\\dfrac{1}{4}$, con bình thường là $\\dfrac{3}{4}$.\nTrong nhóm con bình thường, xác suất là Aa bằng $\\dfrac{2}{3}$, là AA bằng $\\dfrac{1}{3}$.\nCác lần sinh con độc lập nên xác suất của nhiều sự kiện độc lập bằng tích các xác suất.\n\n##PP Cách làm\nXác định kiểu gene bố mẹ từ dữ kiện (có con bệnh ⇒ bố mẹ bình thường đều Aa).\nViết sơ đồ lai, tìm tỉ lệ kiểu gene con.\nXác định đối tượng cần tính (con bệnh, hay con bình thường mang Aa), chú ý số lần sinh.\nNhân xác suất khi có nhiều con độc lập.\n\n##CY Chú ý\nĐã có con bệnh không làm giảm hay tăng xác suất con sau mắc bệnh, vẫn là 25%.\n50% là tỉ lệ Aa ở đời con, không phải tỉ lệ mắc bệnh; 75% là tỉ lệ con không bệnh.",
+     "vi_du": "##VD\nMột cặp vợ chồng đều không mắc một bệnh do allele lặn a quy định nhưng đã sinh một người con mắc bệnh. Xác suất đứa con tiếp theo của họ mắc bệnh này là\nA. 50%\nB. 0%\nC. 25%\nD. 75%\n\nBài giải:\nCon mắc bệnh (aa) nên bố mẹ đều có allele a; vì không bệnh nên cả hai là Aa.\nAa × Aa → 1 AA : 2 Aa : 1 aa.\nXác suất con mắc bệnh (aa) là 1/4 = 25%.\nChọn C.\n\n##VD\nBố mẹ đều không mắc bệnh do gene lặn trên NST thường (kiểu gene Aa). Họ đã sinh 2 người con đều không mắc bệnh. Xác suất để cả hai người con này đều có kiểu gene dị hợp (Aa) là bao nhiêu?\nA. 1/4\nB. 4/9\nC. 2/3\nD. 1/9\n\nBài giải:\nAa × Aa → 1 AA : 2 Aa : 1 aa. Trong nhóm con không mắc bệnh (1 AA : 2 Aa), xác suất một người là Aa bằng 2/3.\nHai người con độc lập nên xác suất cả hai đều Aa là (2/3)² = 4/9.\nChọn B."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09000000269",
+   "nhom_id": "KNB00584",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một cặp vợ chồng cùng có kiểu gene dị hợp (Aa) về một bệnh do gene lặn nằm trên NST thường quy định. Theo tư vấn di truyền, xác suất một người con của họ không mắc bệnh là bao nhiêu?",
+   "lua_chon": [
+    "75% con không mắc bệnh",
+    "50% con không mắc bệnh",
+    "25% con không mắc bệnh",
+    "100% con không mắc bệnh"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Aa × Aa cho tỉ lệ kiểu gene 1AA : 2Aa : 1aa; số con không mắc bệnh (AA và Aa) chiếm 3/4 = 75%.\n\nVì sao các phương án khác sai:\n- B: 50% là tỉ lệ kiểu gene dị hợp Aa trong số con, không phải tỉ lệ con không mắc bệnh.\n- C: 25% là tỉ lệ con mắc bệnh (aa), không phải tỉ lệ con không mắc bệnh.\n- D: Con vẫn có 25% khả năng mang kiểu gene aa và mắc bệnh, không thể chắc chắn 100% con không mắc bệnh."
+  },
+  {
+   "ma_cau": "K09000000270",
+   "nhom_id": "KNB00584",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một cặp vợ chồng đều có kiểu gene dị hợp (Aa) về một bệnh do gene lặn trên NST thường. Xác suất để một cặp song sinh (hai con) của họ đều không mắc bệnh là bao nhiêu?",
+   "lua_chon": [
+    "3/4",
+    "1/2",
+    "3/16",
+    "9/16"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mỗi người con có xác suất không mắc bệnh là 3/4 (từ Aa × Aa). Hai lần sinh độc lập nên xác suất cả hai con đều không bệnh = 3/4 × 3/4 = 9/16.\n\nVì sao các phương án khác sai:\n- A: 3/4 là xác suất một người con không mắc bệnh, chưa nhân cho cả hai người con.\n- B: 1/2 không đúng với xác suất tính theo quy tắc nhân của hai sự kiện độc lập ở đây.\n- C: 3/16 tính nhầm khi nhân 3/4 với 1/4 (một người không bệnh, một người có bệnh) thay vì cả hai đều không bệnh."
+  },
+  {
+   "ma_cau": "K09000000271",
+   "nhom_id": "KNB00584",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một cặp vợ chồng đều có kiểu gene dị hợp (Aa) về một bệnh do gene lặn trên NST thường. Họ dự định sinh 3 người con. Xác suất để cả 3 người con đều không mắc bệnh là bao nhiêu?",
+   "lua_chon": [
+    "27/64",
+    "9/16",
+    "3/4",
+    "1/4"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Xác suất một người con không mắc bệnh là 3/4. Với 3 người con (độc lập), xác suất cả 3 đều không mắc bệnh = (3/4)³ = 27/64.\n\nVì sao các phương án khác sai:\n- B: 9/16 = (3/4)², ứng với 2 người con, chưa tính đủ cho 3 người con.\n- C: 3/4 là xác suất của một người con không mắc bệnh, chưa nhân đủ ba lần cho 3 người con.\n- D: 1/4 là xác suất MẮC bệnh của một người con, không phải xác suất cả 3 người đều không mắc bệnh."
+  }
+ ]
+}

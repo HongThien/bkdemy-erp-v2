@@ -1,0 +1,80 @@
+[
+ {
+  "ma": "BT.08.072.15",
+  "so": "B15",
+  "loi_giai": "Vì $ADME$ là hình chữ nhật (theo B1) nên $AD \\parallel EM$ và $AD = EM$.\nVì $K$ đối xứng với $M$ qua $E$ nên $E$ là trung điểm của $MK$, suy ra $M, E, K$ thẳng hàng và $EK = EM$.\nDo đó $AD \\parallel EK$ và $AD = EM = EK$.\nTứ giác $ADEK$ có hai cạnh đối $AD$ và $EK$ song song và bằng nhau nên $ADEK$ là hình bình hành.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.16",
+  "so": "B16",
+  "loi_giai": "Theo B14, $ABMK$ là hình bình hành. Gọi $O$ là giao điểm của hai đường chéo $AM$ và $BK$ thì $O$ là trung điểm của mỗi đường, đặc biệt $O$ là trung điểm của $AM$.\nTheo B1, $ADME$ là hình chữ nhật nên hai đường chéo $AM$ và $DE$ cắt nhau tại trung điểm của mỗi đường.\nTrung điểm của $AM$ chính là $O$ nên $O$ cũng là trung điểm của $DE$, tức là $O \\in DE$.\nVậy ba đường thẳng $AM, DE, BK$ cùng đi qua $O$, tức là chúng đồng quy.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.17",
+  "so": "B17",
+  "loi_giai": "Theo B14, $ABMK$ là hình bình hành nên hai đường chéo $AM$ và $BK$ cắt nhau tại trung điểm của mỗi đường.\nGọi $O'$ là giao điểm của $AM$ và $BK$ thì $O'$ là trung điểm của $AM$, mà $O$ cũng là trung điểm của $AM$ nên $O' \\equiv O$.\nDo đó $O$ là trung điểm của $BK$.\nVậy $B, O, K$ thẳng hàng.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.18",
+  "so": "B18",
+  "loi_giai": "Theo B3, $E$ là trung điểm của $AC$.\nVì $J$ đối xứng với $B$ qua $E$ nên $E$ là trung điểm của $BJ$.\nTứ giác $ABCJ$ có hai đường chéo $AC$ và $BJ$ cắt nhau tại trung điểm $E$ của mỗi đường nên là hình bình hành, suy ra $AJ \\parallel BC$.\nVì $K$ đối xứng với $M$ qua $E$ nên $E$ là trung điểm của $MK$.\nTứ giác $AMCK$ có hai đường chéo $AC$ và $MK$ cắt nhau tại trung điểm $E$ của mỗi đường nên là hình bình hành, suy ra $AK \\parallel MC$, tức là $AK \\parallel BC$ (vì $M \\in BC$).\nQua $A$ có hai đường thẳng $AJ$ và $AK$ cùng song song với $BC$ nên theo tiên đề Ơ-clít hai đường thẳng này trùng nhau.\nVậy $A, K, J$ thẳng hàng.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.19",
+  "so": "B19",
+  "loi_giai": "Theo B3, $D$ là trung điểm của $AB$.\nVì $I$ đối xứng với $M$ qua $D$ nên $D$ là trung điểm của $MI$.\nTứ giác $AMBI$ có hai đường chéo $AB$ và $MI$ cắt nhau tại trung điểm $D$ của mỗi đường nên $AMBI$ là hình bình hành.\nMặt khác $M, D, I$ thẳng hàng và $MD \\perp AB$ (gt) nên $MI \\perp AB$, tức là hai đường chéo của hình bình hành vuông góc với nhau.\nHình bình hành có hai đường chéo vuông góc là hình thoi.\nVậy $AMBI$ là hình thoi.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.20",
+  "so": "B20",
+  "loi_giai": "Vì $ADME$ là hình chữ nhật (theo B1) nên $AE \\parallel DM$ và $AE = DM$.\nVì $I$ đối xứng với $M$ qua $D$ nên $D$ là trung điểm của $MI$, suy ra $M, D, I$ thẳng hàng và $DI = DM$.\nDo đó $AE \\parallel DI$ và $AE = DM = DI$.\nTứ giác $AEDI$ có hai cạnh đối $AE$ và $DI$ song song và bằng nhau nên $AEDI$ là hình bình hành.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.21",
+  "so": "B21",
+  "loi_giai": "Theo B12, $AMCK$ là hình thoi nên $AK \\parallel MC$, tức là $AK \\parallel BC$ (vì $M, C \\in BC$).\nTheo B19, $AMBI$ là hình thoi nên $AI \\parallel MB$, tức là $AI \\parallel BC$ (vì $M, B \\in BC$).\nQua $A$ có hai đường thẳng $AK$ và $AI$ cùng song song với $BC$ nên theo tiên đề Ơ-clít hai đường thẳng này trùng nhau.\nVậy $A, I, K$ thẳng hàng.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.22",
+  "so": "B22",
+  "loi_giai": "Theo B12, $AMCK$ là hình thoi nên $AK = MC$.\nTheo B19, $AMBI$ là hình thoi nên $AI = MB$.\nMà $MB = MC$ (vì $M$ là trung điểm của $BC$) nên $AI = AK$.\nTheo B21, ba điểm $A, I, K$ thẳng hàng, mà $AI = AK$ nên $A$ là trung điểm của $IK$ hoặc $I \\equiv K$.\nNếu $I \\equiv K$ thì $D$ và $E$ cùng là trung điểm của đoạn $MI$, suy ra $D \\equiv E$. Khi đó điểm này thuộc cả $AB$ và $AC$ nên trùng với $A$, mâu thuẫn vì $D \\ne A$ ($ADME$ là hình chữ nhật).\nVậy $I \\ne K$ và $A$ là trung điểm của $IK$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.23",
+  "so": "B23",
+  "loi_giai": "Vì $I$ đối xứng với $M$ qua $D$ nên $D$ là trung điểm của $MI$.\nVì $K$ đối xứng với $M$ qua $E$ nên $E$ là trung điểm của $MK$.\nTheo B22, $A$ là trung điểm của $IK$.\nXét tam giác $MIK$ (không suy biến vì $M \\notin IK$, do đường thẳng $IK$ đi qua $A$ và song song với $BC$): $KD$ là đường trung tuyến ứng với cạnh $MI$, $IE$ là đường trung tuyến ứng với cạnh $MK$, $MA$ là đường trung tuyến ứng với cạnh $IK$.\nBa đường trung tuyến của một tam giác đồng quy (tại trọng tâm).\nVậy $AM, DK, EI$ đồng quy.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.24",
+  "so": "B24",
+  "loi_giai": "Nếu $F \\equiv A$ thì $DF = DA$, $EF = EA$ và $DA \\perp EA$ (vì $AB \\perp AC$) nên kết luận hiển nhiên đúng. Ta xét $F \\ne A$.\nTheo B1, $ADME$ là hình chữ nhật. Gọi $O$ là giao điểm của hai đường chéo $AM$ và $DE$ thì $O$ là trung điểm của mỗi đường và $OA = OM = OD = OE = \\dfrac{AM}{2} = \\dfrac{DE}{2}$.\nXét $\\Delta AFM$ vuông tại $F$ (vì $MF \\perp AK$) có $FO$ là đường trung tuyến ứng với cạnh huyền $AM$ nên $OF = \\dfrac{AM}{2}$.\nSuy ra $OF = OD = OE$.\nTam giác $ODF$ cân tại $O$ nên $\\widehat{ODF} = \\widehat{OFD}$.\nTam giác $OEF$ cân tại $O$ nên $\\widehat{OEF} = \\widehat{OFE}$.\nXét $\\Delta DFE$ có $\\widehat{FDE} + \\widehat{FED} + \\widehat{DFE} = 180^\\circ$, mà $\\widehat{FDE} = \\widehat{ODF} = \\widehat{OFD}$, $\\widehat{FED} = \\widehat{OEF} = \\widehat{OFE}$ và $\\widehat{OFD} + \\widehat{OFE} = \\widehat{DFE}$ (vì $O$ nằm giữa $D$ và $E$).\nSuy ra $2\\widehat{DFE} = 180^\\circ$, nên $\\widehat{DFE} = 90^\\circ$.\nVậy $DF \\perp EF$.",
+  "ghi_chu": "Khi AB = AC thì F trùng A (đã xét riêng trong lời giải)."
+ },
+ {
+  "ma": "BT.08.072.25",
+  "so": "B25",
+  "loi_giai": "Vì $DAFE$ là tứ giác nên $F \\ne A$.\nTheo B1, $ADME$ là hình chữ nhật nên $AD \\parallel EM$, $AD = EM$ và $AE = DM$.\nVì $E$ là trung điểm của $MK$ nên $M, E, K$ thẳng hàng và $EK = EM$. Do đó $AD \\parallel EK$ và $AD = EK$, suy ra $ADEK$ là hình bình hành, nên $AK \\parallel DE$.\nMà $F \\in AK$ nên $AF \\parallel DE$. Vậy $DAFE$ là hình thang (hai đáy $AF$ và $DE$).\nVì $MF \\perp AK$ và $F \\in AK$ nên $\\Delta MFK$ vuông tại $F$ ($F \\ne K$, vì nếu $F \\equiv K$ thì $MK \\perp AK$, mà $MK \\perp AC$ nên $AK \\parallel AC$, suy ra $K \\in AC$, tức $K \\equiv E$, vô lí).\n$FE$ là đường trung tuyến ứng với cạnh huyền $MK$ của $\\Delta MFK$ nên $EF = \\dfrac{MK}{2} = EM$.\nXét $\\Delta DFE$ (vuông tại $F$ theo B24) và $\\Delta DME$ (vuông tại $M$ vì $ADME$ là hình chữ nhật) có: $DE$ chung, $EF = EM$.\nSuy ra $\\Delta DFE = \\Delta DME$ (cạnh huyền - cạnh góc vuông), do đó $DF = DM$.\nMà $DM = AE$ nên $DF = AE$.\nHình thang $DAFE$ có hai đường chéo $DF$ và $AE$ bằng nhau nên $DAFE$ là hình thang cân.",
+  "ghi_chu": "Chỉ đúng khi F khác A (AB khác AC) và AC > AB: khi đó DAFE là tứ giác lồi (hai đáy AF, DE). Nếu AB = AC thì F trùng A (DAFE suy biến thành tam giác). Nếu AB > AC thì F nằm phía bên kia A, tứ giác DAFE tự cắt; bốn điểm vẫn lập thành hình thang cân nhưng đỉnh phải gọi là AFDE (đáy AF, DE; DF = AE là hai cạnh bên). Đề nên thêm điều kiện AC > AB."
+ },
+ {
+  "ma": "BT.08.072.26",
+  "so": "B26",
+  "loi_giai": "Theo B1, $ADME$ là hình chữ nhật nên $\\widehat{DME} = 90^\\circ$, tức $\\Delta DME$ vuông tại $M$.\nTheo B24, $DF \\perp EF$ nên $\\Delta DFE$ vuông tại $F$.\nVì $MF \\perp AK$ và $F \\in AK$ nên $\\Delta MFK$ vuông tại $F$ ($F \\ne K$, vì nếu $F \\equiv K$ thì $MK \\perp AK$, mà $MK \\perp AC$ nên $AK \\parallel AC$, suy ra $K \\in AC$, tức $K \\equiv E$, vô lí).\nVì $K$ đối xứng với $M$ qua $E$ nên $E$ là trung điểm của $MK$, do đó $FE$ là đường trung tuyến ứng với cạnh huyền $MK$ của $\\Delta MFK$.\nSuy ra $EF = \\dfrac{MK}{2} = EM$.\nXét hai tam giác vuông $DFE$ và $DME$ có: $DE$ chung (cạnh huyền), $EF = EM$ (cạnh góc vuông).\nVậy $\\Delta DFE = \\Delta DME$ (cạnh huyền - cạnh góc vuông).",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.27",
+  "so": "B27",
+  "loi_giai": null,
+  "ghi_chu": "ĐỀ SAI: $\\widehat{FDA} = \\widehat{FAE}$ không đúng với mọi hình. Phản ví dụ bằng toạ độ: A(0,0), B(2,0), C(0,4) thì M(1,2), D(1,0), E(0,2), K(-1,2), F(-0.6,1.2): góc FDA ≈ 36,87° còn góc FAE ≈ 26,57°. Bộ khác A(0,0), B(4,0), C(0,2): góc FDA ≈ 36,87° còn góc FAE ≈ 116,57°. Các đẳng thức đúng (đã kiểm bằng toạ độ cả hai bộ) là $\\widehat{FDA} = \\widehat{FEA}$ (cùng ≈ 36,87°) và $\\widehat{FAE} = \\widehat{FDE}$ (bộ 1: cùng ≈ 26,57°). Nhiều khả năng đề muốn: $\\widehat{FDE} = \\widehat{FAE}$ hoặc $\\widehat{FDA} = \\widehat{FEA}$."
+ }
+]

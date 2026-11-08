@@ -10,6 +10,7 @@ import { useMemo, type CSSProperties } from 'react'
 import { SKINS, bienCss, cheDoThat, layHinhNen, type Skin } from '../screens/hocsinh/skin/registry'
 import { useStore, type GiaoDienErp } from '../store/useStore'
 import { useIsMobile } from '../hooks/useIsMobile'
+import { HALLOWEEN_ERP } from './erpHalloween'
 
 // Style của vỏ ERP = style app HS, chỉ khác `id` không bị bó trong danh sách id của HS (ERP có thêm style riêng "mac_dinh").
 export type SkinErp = Omit<Skin, 'id'> & { id: string }
@@ -32,10 +33,21 @@ const NHU_CU: SkinErp = {
 }
 // Style HS KHÔNG đưa vào bảng chọn của ERP: Tối giản — cũng là nền trơn, trùng vai với Mặc định (Thùy đếm 5 = 1 mặc định + 4 tranh).
 const KHONG_DUA_VAO_ERP = new Set<string>(['toi_gian'])
-export const SKINS_ERP: SkinErp[] = [NHU_CU, ...SKINS.filter((s) => !KHONG_DUA_VAO_ERP.has(s.id))]
+// BẢN RIÊNG CHO ERP của 1 style app HS (cùng id ⇒ lựa chọn đã lưu giữ nguyên): Halloween ERP = tranh nhà ma + ma trồi từ mộ (Thùy 30/10, lib/erpHalloween.ts) —
+// app HS vẫn bản đáng yêu.
+const BAN_ERP: Record<string, SkinErp> = { halloween: HALLOWEEN_ERP }
+export const SKINS_ERP: SkinErp[] = [NHU_CU, ...SKINS.filter((s) => !KHONG_DUA_VAO_ERP.has(s.id)).map((s) => BAN_ERP[s.id] ?? s)]
 
-// id lạ / đã bỏ / chưa chọn ⇒ Mặc định (phần tử đầu).
-export const skinErp = (id: string | null | undefined): SkinErp => SKINS_ERP.find((s) => s.id === id) ?? SKINS_ERP[0]
+// STYLE MỚI CHO XEM TRƯỚC: id style → danh sách mã nhân sự (ma_ns) được thấy trong bảng Giao diện của ERP. Không có trong bảng = ai cũng thấy.
+// Thùy 30/10: Halloween chỉ NS008 xem trước → cùng ngày duyệt "đẹp rồi, cho mọi nhân sự dùng" ⇒ bỏ giới hạn. Style mới muốn xem trước: thêm `id: ['NSxxx']`. (App HS không bị giới hạn này.)
+export const STYLE_RIENG_CHO: Record<string, string[]> = {}
+const duocThay = (id: string, maNs: string | null | undefined) => !STYLE_RIENG_CHO[id] || (!!maNs && STYLE_RIENG_CHO[id].includes(maNs))
+// Style người này được chọn (đúng thứ tự SKINS_ERP).
+export const skinsErpCho = (maNs: string | null | undefined): SkinErp[] => SKINS_ERP.filter((s) => duocThay(s.id, maNs))
+
+// id lạ / đã bỏ / chưa chọn / style chưa mở cho người này ⇒ Mặc định (phần tử đầu).
+export const skinErp = (id: string | null | undefined, maNs?: string | null): SkinErp =>
+  SKINS_ERP.find((s) => s.id === id && duocThay(s.id, maNs)) ?? SKINS_ERP[0]
 export const cheDoErp = (skin: SkinErp, gd: GiaoDienErp): 'sang' | 'toi' => cheDoThat(skin as Skin, gd.che_do ?? skin.cheDo[0], false)
 
 // Icon cho box nhóm — mượn icon Ô CHỨC NĂNG của style theo NGHĨA (mọi style đều có đủ các ô này: check:style-hs kiểm):
@@ -160,7 +172,7 @@ export function useSkinErp() {
   const maNs = useStore((s) => s.me?.nhanSu.ma_ns)
   const doc = useIsMobile()
   return useMemo(() => {
-    const skin = skinErp(gd.skin)
+    const skin = skinErp(gd.skin, maNs)
     // Ảnh nền ĐÈ hình nền của style: ảnh người dùng tự đưa lên, hoặc 1 trong NEN_ERP.
     const nenCo = gd.nen === NEN_TU_CHON ? undefined : NEN_ERP.find((n) => n.id === gd.nen)
     const nenUrl = gd.nen === NEN_TU_CHON ? (gd.nen_url ?? null) : (nenCo?.url ?? null)
@@ -177,6 +189,11 @@ export function useSkinErp() {
       // Nền ảnh cá nhân ⇒ BỎ các asset trang trí của style (nhân vật, hoạ tiết góc, gạch) — ảnh của người dùng là chính.
       nhanVat: tuChon ? undefined : nv?.nam,
       nhanVatLoc: skin.nhanVatLoc,
+      // Hoạt cảnh trên tranh (Halloween 30/10: bí ngô sáng/tắt, dơi, ma — screens/hocsinh/skin/HoatCanhNen.tsx). Ảnh cá nhân ⇒ bỏ (điểm sáng đo trên tranh của style).
+      hoatCanh: tuChon ? undefined : skin.hoatCanh,
+      doc,
+      // Nhân vật bồng bềnh (thân trôi, đế đứng yên) — chỉ khi style khai linh vật nhiều lớp + bật nvBong.
+      linhVat: tuChon || !skin.hoatCanh?.nvBong ? undefined : skin.homeSong?.linhVat?.nam,
       gach: tuChon ? undefined : skin.trangTri?.gach,
     }
   }, [gd, doc, maNs])

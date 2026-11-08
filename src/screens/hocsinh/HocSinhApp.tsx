@@ -12,7 +12,7 @@ import { MON_LUYEN_CHUNG_MINH } from '../../lib/mon'
 import { LamDienO } from './DienOCau'
 import { KeoThaCau } from './KeoThaCau'
 import {
-  listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, chamLamLai, baoSai, nopBai, chuCaiChon, chiSoCuaChu,
+  listBaiTestCuaHS, getBaiTestFull, moBaiLam, traLoiCau, boQuaCau, chamLamLai, baoSai, nopBai, chuCaiChon, chiSoCuaChu,
   getETDe, luuDapAnET, nopET, getETDapAnDaLuu, xemGoiY, daHetHan, laNopMuon,
   type BaiTestCuaHS, type BaiTestFull, type BaiLamCau, type ETCauDe, type ETReveal,
 } from '../../lib/testonline'
@@ -28,7 +28,7 @@ import { ChonDangChuDe, ChonLoaiTuLuyen } from './TuLuyenChuDe'
 import { GameNhungHS, GiaiVoDichHS, HocTapHS } from './hoctap/HocTapHS'
 import { ChinhPhucHS } from './hoctap/ChinhPhucHS'
 import { ChonNhanVatHS } from './hoctap/ChonNhanVatHS'
-import { laNvChon, type NvId } from './skin/nhanVat'
+import { datGioiDau, laNvChon, type NvId } from './skin/nhanVat'
 import { chonNhanVat, nhanVatCuaToi } from '../../lib/giaodien_hs'
 import { NhungHet, type NhungDau } from './phieuluu/nhungDau'
 import { BaoLuotHS } from './BaoLuot'
@@ -80,14 +80,15 @@ import OnThiHS from './OnThiHS'
 import AnhTuLuanHS from './AnhTuLuanHS'
 import { onThiDiem, listAnhTuLuan, kyAnhTuLuan, type AnhTuLuan, type DiemThiThu } from '../../lib/onthi'
 import HuongDanHS from './huongdan/HuongDanHS'
-import TroChoiHS, { GameNongTraiHS } from './trochoi/TroChoiHS'
+import TroChoiHS, { BaoTriNongTraiHS, GameNongTraiHS } from './trochoi/TroChoiHS'
 import { rankBat } from './phieuluu/coBat'
 import GioiThieuYeu from './luyen/GioiThieuYeu'
 import TutorialHS from './tutorial/TutorialHS'
 import { LocMoi } from './tutorial/LocMoi'
+import { LocMoGame } from './tutorial/LocMoGame'
 import { NutBaoLoiCau } from './gopy/BaoLoiCau'
 import { datMan, EVT_MO_GOP_Y } from './gopy/manHienTai'
-import { chuongMo, CHUONG_LOI, NGUOI_DAN_LOC, type DichThu } from './tutorial/noiDungTutorial'
+import { chuongMo, CHUONG_LOI, CHUONG_TIN_MOI, NGUOI_DAN_LOC, type DichThu } from './tutorial/noiDungTutorial'
 import { tutorialDaXem, tutorialGhi } from '../../lib/tutorial_hs'
 import AlbumHS from './AlbumHS'
 import HoSoHS from './HoSoHS'
@@ -97,7 +98,7 @@ import { nhiemVuCuaToi, type NhiemVuCuaToi } from '../../lib/nhiemvu'
 import { anhBac } from './gami/hinh'
 
 type Chon = number | string | (string | null)[] | null // TN=index · TLN=chuỗi · ĐS=mảng 'D'/'S'
-type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean; boQua?: boolean }
+type CauState = { chon: Chon; kq: { verdict: string; key: unknown; baiLamCauId: string } | null; baoRoi?: boolean; boQua?: boolean; daBo?: boolean /* bấm "Bỏ qua" ⇒ ghi SAI */ }
 type MenhDeSnap = { noi_dung: string; loi_giai?: string | null }
 
 const LOAI_TEN: Record<string, string> = { btvn: 'BTVN', et: 'ET', giao_trinh: 'Bài tập', de_thi: 'Đề thi', bo_tro: 'Bổ trợ', bo_tro_test: 'Kiểm tra cuối buổi', retest: 'Kiểm tra lại', thi_thu: 'Thi thử' }
@@ -406,6 +407,7 @@ export function HomeCap1({ hoTen, maHS, onOpen, extra, chuaDoc, onHopThu, mayman
 
 export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: string; hoTen: string; maHS: string }) {
   const [tests, setTests] = useState<BaiTestCuaHS[] | null>(null)
+  const [loiTaiBai, setLoiTaiBai] = useState(false) // tải danh sách bài LỖI ≠ "không có bài" — phải nói rõ + cho thử lại
   const [active, setActive] = useState<BaiTestCuaHS | null>(null)
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
@@ -468,10 +470,19 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [monRieng, setMonRieng] = useState<MonRiengHS[]>([])
   useEffect(() => { monRiengCuaHS().then(setMonRieng).catch(() => {}) }, [])
 
-  useEffect(() => { listBaiTestCuaHS().then(setTests).catch(() => setTests([])) }, [])
+  // Lỗi mạng/timeout thoáng qua thì thử lại vài lần; hết lượt vẫn lỗi ⇒ báo "không tải được" (trước đây gán [] ⇒ hiện "không có bài").
+  const taiBai = async () => {
+    setLoiTaiBai(false)
+    for (let lan = 0; lan < 3; lan++) {
+      try { setTests(await listBaiTestCuaHS()); return } catch { await new Promise((r) => setTimeout(r, 700 * (lan + 1))) }
+    }
+    setTests((cu) => cu ?? []); setLoiTaiBai(true)
+  }
+  useEffect(() => { void taiBai() }, []) // eslint-disable-line
   useEffect(() => { laCap1HS().then(setCap1).catch(() => setCap1(false)) }, [])
   useEffect(() => { laCap2HS().then(setCap2).catch(() => setCap2(false)) }, [])
   useEffect(() => { hoSoCuaToi().then((h) => { setGioiTinh(h?.gioi_tinh ?? null); setAnhUrl(h?.anh_url ?? null) }).catch(() => setGioiTinh(null)) }, [])
+  useEffect(() => { datGioiDau(gioiTinh) }, [gioiTinh]) // giới của linh vật ra trận ở style có bộ đánh riêng (Halloween — skin/nhanVat.ts)
   useEffect(() => { taiChuaDoc() }, [])
   // Khối 6–12 dùng HomeHS912 + skin tự chọn (spec-giao-dien-hs.md; Thùy 28/09: mọi skin mở cho mọi em, cấp 1 còn HomeCap1).
   // giaoDien: undefined = đang tải · null = chưa có dòng hs_giao_dien ⇒ HomeHS912 mở hướng dẫn lần đầu.
@@ -491,6 +502,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tn, setTn] = useState<TinhNangMo | undefined>(undefined)
   useEffect(() => { if (direct === null) tinhNangMoCuaToi().then(setTn).catch(() => setTn((c) => c ?? 'tat_ca')) }, [direct])
   const moTN = (ma: string) => tn === 'tat_ca' || (!!tn && tn.has(ma))
+  // Nông trại BẢO TRÌ (Thùy 03/11): công tắc 'nt_bao_tri' BẬT ⇒ bấm vào chỉ hiện thông báo. Lỗi đọc công tắc ('tat_ca') thì không coi là bảo trì (server vẫn tự chặn).
+  const ntBaoTri = tn !== 'tat_ca' && !!tn && tn.has('nt_bao_tri')
+  const [baoTriNT, setBaoTriNT] = useState(false)
   const oMo = (id: string) => !MA_TINH_NANG_O[id] || moTN(MA_TINH_NANG_O[id])
   const rankMo = () => rankBat() && moTN('rank')
   // NÚT GÓP Ý NỔI (ở mọi màn): báo cho nút biết em đang ở màn nào + nghe yêu cầu "Xem góp ý của em" từ tấm nhập nhanh.
@@ -511,6 +525,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   useEffect(() => {
     if (direct !== null || daTuMoTut.current || !tutXong || tn === undefined) return
     if (tutXong.size === 0 && chuongMo(moTN, CHUONG_LOI).length > 0) { daTuMoTut.current = true; tutLanDau.current = true; setTutDs([...CHUONG_LOI]); setDirect('tutorial') }
+    // TIN MỚI (Thùy 03/11): em đã qua hành trình đầu mà chưa xem chặng báo thay đổi ⇒ Lộc tự mở đúng chặng đó MỘT lần (xem hoặc bỏ qua đều ghi hs_tutorial)
+    else if (tutXong.size > 0) { const moi = CHUONG_TIN_MOI.filter((id) => !tutXong.has(id)); if (moi.length) { daTuMoTut.current = true; tutLanDau.current = false; setTutDs([...moi]); setDirect('tutorial') } }
   }) // eslint-disable-line react-hooks/exhaustive-deps
   const thuNgay = (d: DichThu) => {
     setTuHome(d !== 'hoc_tap' && d !== 'luyen_yeu') // màn lẻ mở từ tutorial ⇒ "Quay lại" về màn chính
@@ -599,8 +615,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   }, [cap1, cap2, direct, khu])
   useEffect(() => {
     // Hold retest (Thùy 29/09): không gọi — ô "Bài kiểm tra lại" không hiện (DB cũng trả rỗng).
-    const tai = () => Promise.all([caCuaToi().catch(() => null), RETEST_BAT ? retestCuaToi().catch(() => []) : Promise.resolve([] as RetestCuaToi[]), lichBoTroCuaToi().catch(() => [] as LichBoTro[])])
-      .then(([ca, rt, lich]) => setBoTro({ coCa: !!ca || lich.some((l) => l.vao_ca && (l.loai === 'bo_tro_duoi' || l.loai === 'bu')), soRetest: rt.filter((r) => !r.da_nop).length, lich }))
+    const tai = () => Promise.all([caCuaToi().catch(() => 'loi' as const), RETEST_BAT ? retestCuaToi().catch(() => []) : Promise.resolve([] as RetestCuaToi[]), lichBoTroCuaToi().catch(() => [] as LichBoTro[])])
+      // 29/10: caCuaToi LỖI (DB dựng ca nổ) KHÔNG còn nuốt thành "không có ca" — lịch đã nói em vào ca được thì vẫn hiện nút, CaBoTroHS hiện lỗi thật (trước đây nút biến mất im lặng, em/TA không biết vì sao).
+      .then(([ca, rt, lich]) => setBoTro({ coCa: (!!ca && ca !== 'loi') || lich.some((l) => l.vao_ca && (l.loai === 'bo_tro_duoi' || l.loai === 'bu' || (ca === 'loi' && l.loai === 'bo_tro_yeu'))), soRetest: rt.filter((r) => !r.da_nop).length, lich }))
     tai()
     const id = setInterval(() => { if (document.visibilityState === 'visible' && !direct && !khu) tai() }, 15000)
     return () => clearInterval(id)
@@ -669,8 +686,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   }
   // TRÒ CHƠI (06/10): danh sách game; Nông trại BK nhúng iframe (public/games/nong-trai — scripts/dong-bo-nong-trai.mjs)
   // Nông trại BK: công tắc riêng `nong_trai` (khoá tạm 12/10 — bản thử chưa lưu theo tài khoản). Đóng ⇒ trong ô Trò chơi hiện "Sắp ra mắt", không vào được.
-  if (direct === 'nong_trai' && moTN('nong_trai')) return <GameNongTraiHS onBack={() => setDirect('tro_choi')} />
-  if (direct === 'tro_choi' || direct === 'nong_trai') return <TroChoiHS onBack={() => setDirect(null)} sapRa={{ nong_trai: !moTN('nong_trai') }} onChoi={(id) => { if (id === 'nong_trai' && moTN('nong_trai')) setDirect('nong_trai') }} />
+  if (direct === 'nong_trai' && moTN('nong_trai') && !ntBaoTri) return <GameNongTraiHS onBack={() => setDirect('tro_choi')} />
+  if (direct === 'tro_choi' || direct === 'nong_trai') return <>
+    <TroChoiHS onBack={() => setDirect(null)} sapRa={{ nong_trai: !moTN('nong_trai') }}
+      onChoi={(id) => { if (id === 'nong_trai' && moTN('nong_trai')) { if (ntBaoTri) setBaoTriNT(true); else setDirect('nong_trai') } }} />
+    {(baoTriNT || (direct === 'nong_trai' && ntBaoTri)) && <BaoTriNongTraiHS onDong={() => { setBaoTriNT(false); setDirect('tro_choi') }} />}
+  </>
   // HƯỚNG DẪN CHƠI (Thùy 03/10): gallery giải thích mọi chức năng — vào từ Thư viện BK.
   if (direct === 'tutorial') {
     const dsT = tutDs ? chuongMo(moTN, tutDs) : undefined
@@ -751,7 +772,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'the_gioi') return <TheGioiHS onBack={() => setDirect(null)} />
 
   if (active) {
-    const back = () => { setActive(null); listBaiTestCuaHS().then(setTests) }
+    const back = () => { setActive(null); void taiBai() }
     return THI_LOAI.has(active.loai)
       ? <LamET test={active} hocSinhId={hocSinhId} onXong={back} />
       : <LamBai baiTestId={active.id} hocSinhId={hocSinhId} onXong={back} choLamLaiSai={active.loai === 'giao_trinh' && !cap1 && !cap2} />
@@ -812,7 +833,11 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Thông tin học tập · Đề thi thử (sắp có) · Bài tập được giao · Thành tựu · May mắn.
   // Lời mời quay tự hiện (06/10): có lượt (cũ: cap1/cap2 qua mayManHSCuaToi; mới: nvHome.vong_quay) và chưa quay hôm nay — ô May mắn đã ẩn khỏi màn chính
   const coQuay = moTN('nhiem_vu') && (maymanCoLuot || (!!nvHome && nvHome.mo && nvHome.vong_quay.du && !nvHome.vong_quay.da_quay))
+  // Lộc báo "Nông trại BK đã mở" (Thùy 23/10): tính năng mở + em đã qua hành trình đầu (tutXong ≠ rỗng) + chưa có dòng 'nong_trai'. Ghi dòng ⇒ không hiện lại.
+  const locMoGame = moTN('nong_trai') && !ntBaoTri && !!tutXong && tutXong.size > 0 && !tutXong.has('nong_trai')
   const moiQuay = <><TinMoiKhung lamMoi={direct} /><MoiQuayMayMan coLuot={coQuay} onQuay={() => setDirect('may_man')} />
+    <LocMoGame hien={locMoGame} onVao={() => { void tutorialGhi(['nong_trai'], 'bo_qua').catch(() => {}); setTutXong((s) => new Set([...(s ?? []), 'nong_trai'])); setDirect('nong_trai') }}
+      onNghe={() => { tutLanDau.current = false; setTutDs(['nong_trai']); setDirect('tutorial') }} />
     {tutXong && tutXong.size > 0 && <LocMoi n={chuongMoi.length} ten={NGUOI_DAN_LOC} onMo={() => { tutLanDau.current = false; setTutDs(chuongMoi.map((c) => c.id)); setDirect('tutorial') }} />}</>
   // Cấp 1 DÙNG CHUNG màn chính với cấp 2 (Thùy 11/10): HomeCap1 chỉ còn là đường lùi khi không xác định được khối để chọn style.
   if (!khu && cap1 && !nhom912) return <>{moiQuay}<HomeCap1 hoTen={hoTen} maHS={maHS} maymanCoLuot={maymanCoLuot} thanhTuuCho={ttCho} chiHien={oMo}
@@ -947,13 +972,20 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   return (
     <DanhSachHS tieuDe={tenKhu} ill={KIT_O[khu].ill} gioiTinh={gt} tab={tab} nChua={nChua} nXong={nXong}
       rows={rows} dangTai={tests === null} onBack={() => setKhu(null)} onTab={setTab}
-      empty={
+      empty={loiTaiBai ? (
+        <TheHS className="p-8 text-center">
+          <p className="text-[33px]">⚠️</p>
+          <p className="mt-2 text-[16.5px] font-bold" style={{ ...HEAD, color: MAU.ink }}>Chưa tải được danh sách bài</p>
+          <p className="mt-1 text-[14.5px]" style={{ color: MAU.muted }}>Có thể do mạng chậm. Bài của em vẫn còn đó — bấm thử lại nhé.</p>
+          <button onClick={() => void taiBai()} className="mt-4 px-6 py-3 text-[18px] font-bold" style={NUT_CHINH}>↻ Tải lại</button>
+        </TheHS>
+      ) : (
         <TheHS className="p-8 text-center">
           <p className="text-[33px]">{tab === 'xong' ? '📭' : '🎉'}</p>
           <p className="mt-2 text-[16.5px] font-bold" style={{ ...HEAD, color: MAU.ink }}>{tab === 'xong' ? 'Chưa hoàn thành bài nào' : 'Không có bài nào cần làm'}</p>
           <p className="mt-1 text-[14.5px]" style={{ color: MAU.muted }}>{tab === 'xong' ? 'Làm xong bài sẽ chuyển sang đây.' : `Khi thầy cô giao ${tenKhu.toLowerCase()}, bài sẽ hiện ở đây.`}</p>
         </TheHS>
-      } />
+      )} />
   )
 }
 
@@ -1004,7 +1036,7 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
       const init: Record<string, CauState> = {}
       for (const [cauId, r] of Object.entries(f.daLam)) {
         const c = f.caus.find((x) => x.id === cauId)
-        init[cauId] = { chon: (r as BaiLamCau).dap_an_hs as number | string, kq: { verdict: (r as BaiLamCau).verdict ?? 'wrong', key: c?.dap_an_key, baiLamCauId: (r as BaiLamCau).id } }
+        init[cauId] = { chon: (r as BaiLamCau).dap_an_hs as number | string, kq: { verdict: (r as BaiLamCau).verdict ?? 'wrong', key: c?.dap_an_key, baiLamCauId: (r as BaiLamCau).id }, daBo: (r as BaiLamCau).dap_an_hs == null }
       }
       setSt(init)
       nhung?.onTai?.(f.caus.length, Object.keys(f.daLam).length)
@@ -1075,6 +1107,22 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
     const next = [...cur]; next[i] = v
     setSt((s) => ({ ...s, [cau.id]: { chon: next, kq: null } }))
   }
+
+  // "Bỏ qua" (Thùy 06/11): em không biết làm ⇒ GHI SAI (mastery coi như làm sai), hiện đáp án + lời giải như câu sai. Vòng làm lại thì chỉ ghi trên máy.
+  async function boQuaSai() {
+    if (!cau || !baiLamId || busy || daLo) return
+    setBusy(true)
+    try {
+      const kq = vongLai ? { verdict: 'wrong', key: cau.dap_an_key, baiLamCauId: '' } : await boQuaCau(baiLamId, cau)
+      setSt((s) => ({ ...s, [cau.id]: { chon: s[cau.id]?.chon ?? null, kq: { verdict: kq.verdict, key: kq.key, baiLamCauId: kq.baiLamCauId }, daBo: true } }))
+    } catch (e) { console.error(e) } finally { setBusy(false) }
+  }
+
+  // "Làm sau" (Thùy 06/11): dễ làm trước, khó làm sau — nhảy sang câu CHƯA làm kế tiếp (vòng lại đầu bài nếu hết), KHÔNG ghi gì; câu này vẫn chưa làm, quay lại làm được.
+  const cauChuaLamKe = (() => {
+    for (let k = 1; k < total; k++) { const j = (idx + k) % total; if (!st[caus[j].id]?.kq && !st[caus[j].id]?.boQua) return j }
+    return -1
+  })()
 
   async function xacNhan() {
     if (!cau || !baiLamId || !cs || !daDu) return
@@ -1255,7 +1303,7 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
               <p className="text-[21px] font-semibold" style={{ color: txtMau }}>
                 {nhung
                   ? (vd === 'correct' ? '✦ Trúng đòn! Em làm đúng rồi' : vd === 'partial' ? '✦ Trúng một phần' : '💥 Trượt đòn — xem lời giải nhé')
-                  : vd === 'correct' ? '🎉 Đúng hết!' : vd === 'partial' ? '👍 Đúng một phần' : '😔 Chưa đúng'}
+                  : vd === 'correct' ? '🎉 Đúng hết!' : vd === 'partial' ? '👍 Đúng một phần' : cs?.daBo ? '⏭ Em đã bỏ qua — tính là chưa đúng' : '😔 Chưa đúng'}
                 {laDS && <span className="ml-1 text-[17.5px] font-normal">· {dsDung}/{menhDe.length} ý đúng</span>}
               </p>
               {cau.loai_cau === 'tra_loi_ngan' && vd !== 'correct' && <p className="mt-1 text-[17.5px]" style={{ color: MAU.muted }}>Đáp án đúng: <b style={{ color: MAU.dung }}>{String(cau.dap_an_key)}</b></p>}
@@ -1288,6 +1336,8 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
         )}
         {!daLo ? (
           <>
+          {!nhung && cauChuaLamKe >= 0 && <button onClick={() => setIdx(cauChuaLamKe)} disabled={busy} className={desktop ? 'px-6 py-3.5 text-[19px] font-medium disabled:opacity-40' : 'px-3 py-3 text-[16.5px] disabled:opacity-40'} style={NUT_PHU}>Làm sau</button>}
+          {!choBoQua && !nhung && <button onClick={() => { if (confirm('Bỏ qua câu này? Câu sẽ tính là chưa đúng.')) void boQuaSai() }} disabled={busy} className={desktop ? 'px-6 py-3.5 text-[19px] font-medium disabled:opacity-40' : 'px-3 py-3 text-[16.5px] disabled:opacity-40'} style={NUT_PHU}>Bỏ qua</button>}
           {choBoQua && <button onClick={() => cau && setSt((s) => ({ ...s, [cau.id]: { chon: s[cau.id]?.chon ?? null, kq: null, boQua: true } }))} className={desktop ? 'px-6 py-3.5 text-[19px] font-medium' : 'px-3 py-3 text-[16.5px]'} style={NUT_PHU}>Bỏ qua, xem đáp án</button>}
           <button onClick={xacNhan} disabled={busy || !daDu}
             className={`flex-1 font-semibold disabled:opacity-40 ${nhung ? 'tran-phien ' : ''}${desktop ? 'py-3.5 text-[21px]' : 'py-3 text-[20px]'}`} style={nhung ? NUT_TRAN : NUT_CHINH}>
@@ -1295,9 +1345,14 @@ export function LamBai({ baiTestId, hocSinhId, onXong, doneCaption, doneExtra, d
           </button>
           </>
         ) : (
-          <button onClick={() => setIdx((i) => i + 1)} disabled={!!nhung?.ban}
+          // Câu CUỐI mà còn câu chưa làm (em lướt qua bằng "Câu tiếp" hay ô số câu): trước đây nút ghi "Câu tiếp" nhưng
+          // idx+1 = total ⇒ nhảy thẳng màn kết quả khi chưa làm xong (HS báo 13/10). Giờ quay về câu chưa làm đầu tiên.
+          <button onClick={() => {
+              const chuaLam = caus.findIndex((c) => !st[c.id]?.kq && !st[c.id]?.boQua)
+              setIdx((i) => (i + 1 < total || chuaLam < 0 ? i + 1 : chuaLam))
+            }} disabled={!!nhung?.ban}
             className={`flex-1 font-semibold ${nhung ? 'tran-phien ' : ''}${desktop ? 'py-3.5 text-[21px]' : 'py-3 text-[20px]'}`} style={nhung ? NUT_TRAN : NUT_CHINH}>
-            {idx + 1 < total ? (nhung ? 'Đòn kế tiếp ➜' : 'Câu tiếp →') : (daXongHet ? 'Xem kết quả →' : 'Câu tiếp →')}
+            {idx + 1 < total ? (nhung ? 'Đòn kế tiếp ➜' : 'Câu tiếp →') : (daXongHet ? 'Xem kết quả →' : `Còn ${caus.filter((c) => !st[c.id]?.kq && !st[c.id]?.boQua).length} câu chưa làm →`)}
           </button>
         )}
       </div>
@@ -1791,11 +1846,17 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
         setAnhTL(ds); setUrlTL(await kyAnhTuLuan(ds.map((a) => a.path)).catch(() => ({})))
       }
       if (bl.bat_dau_at) setBatDau(new Date(bl.bat_dau_at).getTime())
-      setAns(await getETDapAnDaLuu(bl.id) as Record<string, Chon>)
+      // GỘP, không thay: đề bấm được từ setDe ở trên, đáp án đã lưu về SAU (thi thử còn chờ ký URL ảnh) — thay cả
+      // map thì câu em vừa bấm trong khoảng đó bị nhảy về lựa chọn cũ (HS báo 12/10 "ấn câu này chọn câu khác").
+      const daLuu = await getETDapAnDaLuu(bl.id) as Record<string, Chon>
+      setAns((loc) => ({ ...daLuu, ...loc }))
       if (bl.trang_thai === 'da_nop') { nopRef.current = true; nhanReveal(await nopET(bl.id)) }
     })().catch(console.error)
   }, [test.id, hocSinhId]) // eslint-disable-line
   useEffect(() => { setGoiY(false) }, [idx])
+  // Lưu đáp án NỐI ĐUÔI theo từng câu: bấm A rồi B thật nhanh mà 2 lệnh lưu chạy song song thì có thể A tới DB sau B
+  // ⇒ màn hiện B, DB giữ A, nộp bài/F5 hiện A.
+  const hangLuu = useRef<Record<string, Promise<unknown>>>({})
   // KHÔNG XÁO (Thùy 29/09, xem ghi chú `caus` trong LamBai): thứ tự câu = đúng phiếu giấy của mã đề em
   // được gán — et_de đã `order by bc.thu_tu` theo bien_the của bai_lam nên dùng thẳng `de`.
   const caus = de ?? []
@@ -1823,7 +1884,9 @@ function LamET({ test, hocSinhId, onXong }: { test: BaiTestCuaHS; hocSinhId: str
   async function luu(cauId: string, v: Chon) {
     if (daNop || !baiLamId) return
     setAns((s) => ({ ...s, [cauId]: v }))
-    try { await luuDapAnET(baiLamId, cauId, v); setLoi(null) } catch (e: any) { console.error(e); setLoi(e?.message ?? 'Không lưu được đáp án') }
+    const p = (hangLuu.current[cauId] ?? Promise.resolve()).catch(() => {}).then(() => luuDapAnET(baiLamId, cauId, v))
+    hangLuu.current[cauId] = p
+    try { await p; setLoi(null) } catch (e: any) { console.error(e); setLoi(e?.message ?? 'Không lưu được đáp án') }
   }
   async function doNop() {
     if (!baiLamId || nopRef.current) return

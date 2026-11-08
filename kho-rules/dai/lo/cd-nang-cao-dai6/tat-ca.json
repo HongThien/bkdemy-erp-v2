@@ -1,0 +1,595 @@
+{
+ "vao": [
+  {
+   "ma_cau": "T106000000013",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2024-2025 — mã đề 101 (bộ đề GKI 6, đề 1)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00375",
+   "nguon": "gan",
+   "nd": "Tìm các chữ số $x$, $y$ sao cho số $\\overline{4x12y}$ chia hết cho cả 2, 5 và 9."
+  },
+  {
+   "ma_cau": "T106000000027",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2024-2025 — THCS Ngô Gia Tự, quận Long Biên (đề số 04)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00385",
+   "nguon": "gan",
+   "nd": "Cho tổng $M=4+4^2+4^3+4^4+\\dots+4^{97}+4^{98}+4^{99}$. Hãy giải thích vì sao tổng $M$ chia hết cho 21."
+  },
+  {
+   "ma_cau": "T106000000057",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2025-2026 — THCS Bát Tràng, xã Bát Tràng, Hà Nội (đề số 1, bộ đề GKI 6, đề 11)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00385",
+   "nguon": "gan",
+   "nd": "Cho $A=5+5^2+5^3+5^4+\\dots+5^{2025}$. Chứng tỏ: $A\\vdots31$."
+  },
+  {
+   "ma_cau": "T106000000075",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2025-2026 — THCS Chúc Sơn (bộ đề GKI 6, đề 13)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00385",
+   "nguon": "gan",
+   "nd": "Cho $A=1+3+3^2+3^3+\\dots+3^{1990}+3^{1991}$. Chứng tỏ rằng $A\\vdots 13$."
+  },
+  {
+   "ma_cau": "T106000000103",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2024-2025 — THCS Thanh Quan (đề 1, kiểm tra ngày 31/10/2024)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00384",
+   "nguon": "gan",
+   "nd": "Cho $M=2+2^2+2^3+\\dots+2^{40}$. Chứng tỏ rằng $M\\vdots 6$."
+  },
+  {
+   "ma_cau": "T106000000134",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2025-2026 — THCS Ái Mộ, phường Bồ Đề (mã đề 601)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00380",
+   "nguon": "gan",
+   "nd": "Tìm số tự nhiên $x$ để $(x+13)\\vdots(x-3)$."
+  },
+  {
+   "ma_cau": "T106000000149",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2025-2026 — THCS Lê Ngọc Hân (bộ đề GKI 6, đề 14)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00365",
+   "nguon": "gan",
+   "nd": "Trên một bàn cờ vua, ô thứ nhất bỏ 1 hạt gạo, ô thứ hai bỏ 2 hạt gạo, ô thứ ba bỏ 4 hạt gạo,... Cứ như vậy người ta để số hạt gạo ở ô sau gấ"
+  },
+  {
+   "ma_cau": "T106000000165",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2024-2025 — THCS Phúc Lợi, quận Long Biên (đề số 1)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00385",
+   "nguon": "gan",
+   "nd": "Cho $A=3^1+3^2+3^3+\\dots+3^{29}+3^{30}$. Chứng minh rằng $A\\vdots 13$."
+  },
+  {
+   "ma_cau": "T106000000179",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2025-2026 — THCS Nghĩa Tân, phường Nghĩa Đô (đề chính thức)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00385",
+   "nguon": "gan",
+   "nd": "Chứng tỏ rằng $A=1+2+2^2+2^3+\\dots+2^{120}+2^{121}+2^{122}$ chia hết cho 7."
+  },
+  {
+   "ma_cau": "T106000000193",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2025-2026 — THCS Ngô Gia Tự, phường Việt Hưng (mã đề 01)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00384",
+   "nguon": "gan",
+   "nd": "Cho $A=5+5^2+5^3+\\dots+5^{100}$. Em hãy giải thích tại sao $A$ chia hết cho 6?"
+  },
+  {
+   "ma_cau": "T106000000242",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2024-2025 — Phòng GD&ĐT huyện Đan Phượng, Hà Nội (bộ Cánh Diều)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00366",
+   "nguon": "gan",
+   "nd": "Cho $A=1+2+2^2+2^3+\\dots+2^{99}$. Chứng tỏ rằng $A+1$ là bình phương của một số tự nhiên."
+  },
+  {
+   "ma_cau": "T106000000270",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2024-2025 — THCS Thanh Am, quận Long Biên (mã đề T6-GKI-101)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00385",
+   "nguon": "gan",
+   "nd": "Cho $A=9^1+9^2+9^3+9^4+\\dots+9^{2019}+9^{2020}$. Chứng minh $A$ chia hết cho 41."
+  },
+  {
+   "ma_cau": "T106000000286",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2024-2025 — THCS Vạn Phúc, quận Hà Đông (bộ đề GKI 6, đề 25)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00386",
+   "nguon": "gan",
+   "nd": "Cho $A=3+3^2+3^3+\\dots+3^{2024}$. Tìm số dư khi chia $A$ cho 13."
+  },
+  {
+   "ma_cau": "T106000000326",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2025-2026 — THCS Tam Hiệp (bộ đề GKI 6, đề 20)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00385",
+   "nguon": "gan",
+   "nd": "Cho $A=7+7^2+7^3+7^4+7^5+7^6+\\dots+7^{21}$. Chứng tỏ rằng $A$ chia hết cho 57."
+  },
+  {
+   "ma_cau": "T106000000372",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2025-2026 — THCS Phú Châu (bộ đề GKI 6, đề 19)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00410",
+   "nguon": "gan",
+   "nd": "Lớp 6A có hơn 30 học sinh nhưng ít hơn 40 học sinh mà xếp hàng đôi vào lớp thì hai hàng bằng nhau và chia làm 3 tổ thì số học sinh bằng nhau"
+  },
+  {
+   "ma_cau": "T106000000398",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2025-2026 — THCS Nghĩa Tân, phường Nghĩa Đô (mã đề: đề minh hoạ số 2)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00385",
+   "nguon": "gan",
+   "nd": "Chứng tỏ rằng $A=1+4+4^2+4^3+\\dots+4^{2023}+4^{2024}$ chia hết cho 21."
+  },
+  {
+   "ma_cau": "T106000000762",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Ngô Quyền, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00381",
+   "nguon": "de_xuat",
+   "nd": "Tìm số tự nhiên $n$ biết $3n+11$ chia cho $n+2$ dư 1."
+  },
+  {
+   "ma_cau": "T106000000763",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Ngô Quyền, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00385",
+   "nguon": "gan",
+   "nd": "Cho tổng $M=4+4^2+4^3+4^4+\\ldots+4^{97}+4^{98}+4^{99}$. Hãy giải thích vì sao tổng $M$ chia hết cho 21."
+  },
+  {
+   "ma_cau": "T106000000849",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Cao Bá Quát, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00384",
+   "nguon": "de_xuat",
+   "nd": "Cho $C=3+3^2+3^3\\ldots+3^{120}$. Chứng minh rằng: a) $C$ chia hết cho 4 b) $C$ chia hết cho 13"
+  },
+  {
+   "ma_cau": "T106000000850",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Cao Bá Quát, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00815",
+   "nguon": "gan",
+   "nd": "Cho $D=3^2+3^4+3^6+\\ldots+3^{120}$. Chứng minh rằng: a) $D$ chia hết cho 9 b) $D$ chia hết cho 91"
+  },
+  {
+   "ma_cau": "T106000000851",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Cao Bá Quát, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00384",
+   "nguon": "de_xuat",
+   "nd": "Cho $E=1+4+4^2+4^3+4^4+\\ldots+4^{99}$. Chứng minh rằng: a) $E$ chia hết cho 5 b) $E$ chia hết cho 17"
+  },
+  {
+   "ma_cau": "T106000000852",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Cao Bá Quát, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00380",
+   "nguon": "gan",
+   "nd": "Tìm số tự nhiên $x$ để $(x+3)\\ \\vdots\\ x$"
+  },
+  {
+   "ma_cau": "T106000000853",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Cao Bá Quát, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00381",
+   "nguon": "de_xuat",
+   "nd": "Tìm số tự nhiên $x$ để $(8-x)\\ \\vdots\\ x$"
+  },
+  {
+   "ma_cau": "T106000000854",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Cao Bá Quát, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00380",
+   "nguon": "gan",
+   "nd": "Tìm số tự nhiên $x$ để $(x+3)\\ \\vdots\\ (x+1)$"
+  },
+  {
+   "ma_cau": "T106000000855",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Cao Bá Quát, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00411",
+   "nguon": "de_xuat",
+   "nd": "Tìm số tự nhiên nhỏ nhất có bốn chữ số, biết rằng khi chia số đó cho 12, 15 và 18 đều có cùng một số dư khác 0."
+  },
+  {
+   "ma_cau": "T106000000856",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Cao Bá Quát, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00415",
+   "nguon": "gan",
+   "nd": "Cho 2 số tự nhiên $a$ và $b$ biết: $\\text{ƯCLN}(a,\\ b)=12$; $\\text{BCNN}(a,\\ b)=180$; $a<b$. a) Tìm tất cả các cặp số $(a,\\ b)$ b) Tính tổng"
+  },
+  {
+   "ma_cau": "T106000000893",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Ngọc Thụy, Hà Nội",
+   "ly_do": "câu Đại cuối đề cương (không có phần nâng cao)",
+   "de2": [],
+   "dang_bai_id": "NDB00352",
+   "nguon": "gan",
+   "nd": "Một đoàn tàu mất 65 giây để đi qua cây cầu dài 1200 m. Cũng với đoàn tàu và vận tốc đó, sẽ mất 85 giây để đi qua một đường hầm dài 1600 m. H"
+  },
+  {
+   "ma_cau": "T106000000945",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01225",
+   "nguon": "gan",
+   "nd": "So sánh $16^{45}$ và $32^{37}$."
+  },
+  {
+   "ma_cau": "T106000000946",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01226",
+   "nguon": "gan",
+   "nd": "So sánh $3^{400}$ và $4^{300}$."
+  },
+  {
+   "ma_cau": "T106000000947",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01227",
+   "nguon": "gan",
+   "nd": "So sánh $5^{601}$ và $11^{399}$."
+  },
+  {
+   "ma_cau": "T106000000948",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01227",
+   "nguon": "gan",
+   "nd": "So sánh $2^{41}$ và $5^{19}$."
+  },
+  {
+   "ma_cau": "T106000000949",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00384",
+   "nguon": "de_xuat",
+   "nd": "Cho $A=4+4^2+4^3+\\dots+4^{60}$. a) Hãy giải thích vì sao $A$ chia hết cho 5 và 21 nhưng $A$ không chia hết cho 16. b) $3A+4$ có là số chính "
+  },
+  {
+   "ma_cau": "T106000000950",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00394",
+   "nguon": "gan",
+   "nd": "Tìm số nguyên tố $p$ sao cho $p+20$ và $p+28$ cũng là các số nguyên tố."
+  },
+  {
+   "ma_cau": "T106000000951",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00396",
+   "nguon": "gan",
+   "nd": "Tìm tất cả các số tự nhiên $n$ sao cho $n+1;\\ n+3;\\ n+7;\\ n+9;\\ n+13;\\ n+15$ đều là các số nguyên tố."
+  },
+  {
+   "ma_cau": "T106000000952",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00394",
+   "nguon": "de_xuat",
+   "nd": "Cho số nguyên tố $p>3$ thỏa mãn $2p+1$ là số nguyên tố. Khi đó $4p+1$ là số nguyên tố hay hợp số? Vì sao?"
+  },
+  {
+   "ma_cau": "T106000000953",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00380",
+   "nguon": "gan",
+   "nd": "Tìm số tự nhiên $n$ sao cho $n+7$ chia hết cho $n+1$."
+  },
+  {
+   "ma_cau": "T106000000954",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00381",
+   "nguon": "gan",
+   "nd": "Tìm số tự nhiên $n$ sao cho $3n$ chia hết cho $n-1$ (với $n>1$)."
+  },
+  {
+   "ma_cau": "T106000000955",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00378",
+   "nguon": "gan",
+   "nd": "Tìm số tự nhiên $n$ sao cho $2n+14$ là bội của $3n+1$."
+  },
+  {
+   "ma_cau": "T106000000956",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01329",
+   "nguon": "de_xuat",
+   "nd": "Tìm số tự nhiên $n$ sao cho $n+2$ là ước của $n^2+1$."
+  },
+  {
+   "ma_cau": "T106000000957",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01229",
+   "nguon": "gan",
+   "nd": "Tìm tất cả các số tự nhiên $x$ và $y$ thỏa mãn $(x+3)(2y-1)=6$."
+  },
+  {
+   "ma_cau": "T106000000958",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01230",
+   "nguon": "gan",
+   "nd": "Tìm tất cả các số tự nhiên $x$ và $y$ thỏa mãn $x(2y+1)+(4y+2)=12$."
+  },
+  {
+   "ma_cau": "T106000000959",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01230",
+   "nguon": "gan",
+   "nd": "Tìm tất cả các số tự nhiên $x$ và $y$ thỏa mãn $x(y+2)+3y=18$."
+  },
+  {
+   "ma_cau": "T106000000960",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01230",
+   "nguon": "gan",
+   "nd": "Tìm tất cả các số tự nhiên $x$ và $y$ thỏa mãn $2xy+6x-y-15=0$."
+  },
+  {
+   "ma_cau": "T1060000001043",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Thành Công, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00384",
+   "nguon": "gan",
+   "nd": "Cho $B=2+2^2+2^3+2^4+\\ldots+2^{19}+2^{20}$. Chứng tỏ $A$ chia hết cho 3."
+  },
+  {
+   "ma_cau": "T1060000001044",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Thành Công, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00384",
+   "nguon": "gan",
+   "nd": "Cho $C=1+3+3^2+3^3+3^4+\\ldots+3^{98}+3^{99}$. Chứng tỏ rằng $B$ chia hết cho 4."
+  },
+  {
+   "ma_cau": "T1060000001045",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Thành Công, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00385",
+   "nguon": "de_xuat",
+   "nd": "Cho $D=1+4+4^2+4^3+4^4+\\ldots+4^{58}+4^{59}$. Chứng tỏ $C$ chia hết cho 5; cho 21."
+  },
+  {
+   "ma_cau": "T1060000001046",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Thành Công, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00385",
+   "nguon": "de_xuat",
+   "nd": "Cho $A=2+2^1+2^2+2^3+\\ldots+2^{60}$. Chứng minh rằng $A\\vdots 7,\\ A\\vdots 42$."
+  },
+  {
+   "ma_cau": "T1060000001047",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Thành Công, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00389",
+   "nguon": "gan",
+   "nd": "Chứng minh $2n+5$ và $4n+9$ là hai số nguyên tố cùng nhau với mọi số tự nhiên $n$"
+  },
+  {
+   "ma_cau": "T1060000001048",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Thành Công, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00394",
+   "nguon": "gan",
+   "nd": "Tìm số nguyên tố $p$ sao cho $p+4$ và $p+8$ đều là số nguyên tố."
+  },
+  {
+   "ma_cau": "T1060000001049",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Thành Công, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00378",
+   "nguon": "gan",
+   "nd": "Tìm số tự nhiên $n$ biết $(3n+5)\\vdots(2n+1)$."
+  },
+  {
+   "ma_cau": "T1060000001050",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Thành Công, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01229",
+   "nguon": "gan",
+   "nd": "Tìm $x;\\ y\\in\\mathbb{N}$, biết: $x.y=106$."
+  },
+  {
+   "ma_cau": "T1060000001051",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Thành Công, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01229",
+   "nguon": "gan",
+   "nd": "Tìm $x;\\ y\\in\\mathbb{N}$, biết: $(x+1)(y-2)=48$."
+  },
+  {
+   "ma_cau": "T1060000001052",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Thành Công, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01230",
+   "nguon": "gan",
+   "nd": "Tìm $x;\\ y\\in\\mathbb{N}$, biết: $xy+3x-2y=51$."
+  }
+ ],
+ "khop": [
+  {
+   "ma_cau": "T106000000090",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2024-2025 — THCS Nguyễn Công Trứ, quận Ba Đình (bộ đề GKI 6, đề 3)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Cho $p$ là số nguyên tố lớn hơn 3. Hỏi số $p^2+2024$ là số nguyên tố hay hợp số? Vì sao?"
+  },
+  {
+   "ma_cau": "T106000000118",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2024-2025 — THCS Vạn Phúc, huyện Thanh Trì, Hà Nội (bộ đề GKI 6, đề 6)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Cho $p$ là số nguyên tố lớn hơn 3. Chứng minh: $(p-1).(p+1)$ chia hết cho 24."
+  },
+  {
+   "ma_cau": "T106000000214",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2025-2026 — Trường TH, THCS & THPT Đa Trí Tuệ, Hà Nội (mã đề 02)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Cho $p$ và $p+2$ là các số nguyên tố ($p>3$). Chứng minh rằng $(p+1)\\vdots6$."
+  },
+  {
+   "ma_cau": "T106000000227",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2025-2026 — Trường THCS & THPT Lương Thế Vinh, Hà Nội",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Trong giải bóng đá của trường Lương Thế Vinh, khối 6 có 10 đội tham gia, các đội thi đấu theo thể thức vòng tròn một lượt (mỗi đội đấu đúng "
+  },
+  {
+   "ma_cau": "T106000000254",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2024-2025 — THCS Thạch Bàn, Long Biên (mã đề 601)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Thả một cụm bèo xuống ao sau 50 ngày thì bèo phủ kín diện tích mặt ao. Hỏi nếu thả 8 cụm bèo vào cái ao đó thì sau bao nhiêu ngày bèo phủ kí"
+  },
+  {
+   "ma_cau": "T106000000339",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2025-2026 — THCS Trưng Vương (đề chính thức)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Cho $S=1.2+2.3+3.4+\\dots+2025.2026$. Chứng minh $S+2$ chia hết cho 4."
+  },
+  {
+   "ma_cau": "T106000000356",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2025-2026 — THCS Nguyễn Bỉnh Khiêm, phường Phúc Lợi (mã đề 601)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Để đánh số trang của một cuốn sách, người ta dùng dãy số tự nhiên bắt đầu từ số 1 và phải dùng tất cả 1998 chữ số. Hỏi cuốn sách có bao nhiê"
+  },
+  {
+   "ma_cau": "T106000000385",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2025-2026 — THCS Nghĩa Tân, phường Nghĩa Đô (đề minh hoạ số 1)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Năm sinh của một cầu thủ bóng đá là $\\overline{19ab}$. Tính đến năm 2021, tuổi của cầu thủ này đúng bằng tổng các chữ số của năm sinh. Hỏi n"
+  },
+  {
+   "ma_cau": "T106000000429",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2025-2026 — THCS Nghĩa Tân, phường Nghĩa Đô (đề minh hoạ, đề số 3)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Các số được chọn ra từ 48 số tự nhiên từ 1 đến 48. Hỏi cần chọn ngẫu nhiên ít nhất bao nhiêu số để chắc chắn rằng có hai số mà có tổng bằng "
+  },
+  {
+   "ma_cau": "T106000000456",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2025-2026 — THCS Nghĩa Tân, phường Nghĩa Đô (đề minh hoạ số 4)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Bạn An viết các số tự nhiên liên tiếp từ 1 đến 30 lên bảng sau đó thực hiện trò chơi như sau: Mỗi lần xoá hai số $a$, $b$ bất kì trên bảng v"
+  },
+  {
+   "ma_cau": "T106000000741",
+   "de": "Đề cương ôn tập giữa học kì I Toán 6 năm 2026–2027 — Trường TH, THCS & THPT Ngôi Sao Hoàng Mai",
+   "ly_do": "câu Đại cuối đề cương (không có phần nâng cao)",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Tìm ba số nguyên tố $a,\\ b,\\ c$ khác nhau sao cho $abc<ab+bc+ca$."
+  },
+  {
+   "ma_cau": "T106000000961",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Có 6 hộp bút máy với số lượng bút bên trong lần lượt là: 31 chiếc, 20 chiếc, 19 chiếc, 18 chiếc, 16 chiếc, 15 chiếc. Ba bạn Lan, Tùng và Mai"
+  },
+  {
+   "ma_cau": "T106000000962",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Từ một tờ giấy ban đầu, bạn An đem cắt thành 6 mảnh hoặc 11 mảnh. Sau đó, An lại lấy một mảnh giấy bất kỳ thu được để tiếp tục cắt thành 6 m"
+  },
+  {
+   "ma_cau": "T1060000001053",
+   "de": "Đề cương ôn tập giữa kì I Toán 6 năm 2026–2027 — Trường THCS Thành Công, Hà Nội",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Tìm số tự nhiên $a$ nhỏ nhất sao cho $a+1$ chia hết cho 2; $a$ chia hết cho tích của hai số nguyên tố liên tiếp và tích $2023a$ là số chính "
+  }
+ ]
+}

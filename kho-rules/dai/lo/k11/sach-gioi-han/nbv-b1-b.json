@@ -1,0 +1,1026 @@
+[
+ {
+  "id": "nbv-b1-b-1",
+  "vai": "luyen",
+  "dang_bai": "NDB01148",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Chứng minh giới hạn 0 bằng định nghĩa, tìm n theo h",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng $\\lim\\limits_{n\\to+\\infty}\\dfrac{(-1)^n}{\\sqrt{n}}=0$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lấy số dương $h$ bé tuỳ ý, chỉ ra mọi $n$ đủ lớn đều làm $|u_n|<h$ rồi kết luận theo định nghĩa.\n\n**Bước 1.** Đặt $u_n$ là số hạng tổng quát rồi tính $|u_n|$ để bỏ dấu $(-1)^n$.\n\n**Bước 2.** Giải bất phương trình $|u_n|<h$ để tìm điều kiện của $n$ theo $h$.\n\n**Bước 3.** Nêu rõ với các $n$ lớn hơn một số phụ thuộc $h$ thì bất đẳng thức luôn đúng, rồi đối chiếu định nghĩa.\n\n**Phần 2. Trình bày**\n\nXét $u_n=\\dfrac{(-1)^n}{\\sqrt{n}}$. Giả sử $h$ là số dương bé tuỳ ý.\n\nTa có $|u_n|=\\dfrac{1}{\\sqrt{n}}$.\n\nDo đó $|u_n|<h\\Leftrightarrow\\dfrac{1}{\\sqrt{n}}<h\\Leftrightarrow\\dfrac{1}{n}<h^2\\Leftrightarrow n>\\dfrac{1}{h^2}$.\n\nVậy mọi số tự nhiên $n>\\dfrac{1}{h^2}$ đều có $|u_n|<h$.\n\nVậy theo định nghĩa, $\\lim\\limits_{n\\to+\\infty}\\dfrac{(-1)^n}{\\sqrt{n}}=0$.",
+  "kiem": [
+   "(h=>{const N=Math.floor(1/(h*h))+1;return [N,N+1,N+57].every(n=>Math.abs(Math.pow(-1,n)/Math.sqrt(n))<h)})(0.01)"
+  ],
+  "sach_dap_so": "0 (chứng minh)",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-2a",
+  "vai": "luyen",
+  "dang_bai": "NDB01150",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Dùng quy tắc hiệu với giới hạn cơ bản của 1/n^3",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn sau: $\\lim\\limits_{n\\to+\\infty}(5-\\dfrac{2}{n^3})$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tách thành hiệu của hai dãy rồi dùng giới hạn của dãy hằng và của $\\dfrac{1}{n^k}$.\n\n**Bước 1.** Nhận ra biểu thức là hiệu của một dãy hằng và một dãy dạng $\\dfrac{c}{n^3}$.\n\n**Bước 2.** Dùng quy tắc giới hạn của hiệu để tách thành hai giới hạn riêng.\n\n**Bước 3.** Thay giới hạn cơ bản của $\\dfrac{1}{n^k}$ vào từng phần rồi tính.\n\n**Phần 2. Trình bày**\n\n$\\lim\\limits_{n\\to+\\infty}(5-\\dfrac{2}{n^3})=\\lim\\limits_{n\\to+\\infty}5-2\\cdot\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{n^3}$.\n\nVì $\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{n^3}=0$ nên giới hạn bằng $5-2\\cdot0=5$.\n\nVậy $\\lim\\limits_{n\\to+\\infty}(5-\\dfrac{2}{n^3})=5$.",
+  "kiem": [
+   "Math.abs((n=>5-2/Math.pow(n,3))(1e7)-(5))<1e-4"
+  ],
+  "sach_dap_so": "5",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-2b",
+  "vai": "luyen",
+  "dang_bai": "NDB01150",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Dùng quy tắc tích với giới hạn cơ bản của 1/n và 1/3^n",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn sau: $\\lim\\limits_{n\\to+\\infty}(4-\\dfrac{2}{n})(5+\\dfrac{1}{3^n})$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích hai dãy đều có giới hạn hữu hạn nên giới hạn của tích bằng tích hai giới hạn.\n\n**Bước 1.** Tách biểu thức thành tích của hai dãy và tìm giới hạn riêng của từng dãy.\n\n**Bước 2.** Dùng giới hạn cơ bản của $\\dfrac{1}{n}$ và của $(\\dfrac13)^n$ cho từng thừa số.\n\n**Bước 3.** Áp dụng quy tắc giới hạn của tích để nhân hai kết quả.\n\n**Phần 2. Trình bày**\n\nTa có $\\lim\\limits_{n\\to+\\infty}(4-\\dfrac{2}{n})=4-2\\cdot0=4$.\n\nTa có $\\lim\\limits_{n\\to+\\infty}(5+\\dfrac{1}{3^n})=5+0=5$ vì $\\lim\\limits_{n\\to+\\infty}(\\dfrac13)^n=0$.\n\nVậy $\\lim\\limits_{n\\to+\\infty}(4-\\dfrac{2}{n})(5+\\dfrac{1}{3^n})=4\\cdot5=20$.",
+  "kiem": [
+   "Math.abs((n=>(4-2/n)*(5+1/Math.pow(3,n)))(1e7)-(20))<1e-4"
+  ],
+  "sach_dap_so": "20",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-3a",
+  "vai": "luyen",
+  "dang_bai": "NDB01162",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Quy tắc thương: tử hữu hạn, mẫu dần vô cực",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{2+\\dfrac1n}{2^n}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử có giới hạn hữu hạn còn mẫu dần tới vô cực, nên dùng quy tắc thương với mẫu có giới hạn vô cực.\n\n**Bước 1.** Tìm giới hạn của tử bằng quy tắc tổng và giới hạn của $\\dfrac1n$.\n\n**Bước 2.** Tìm giới hạn của mẫu bằng giới hạn của $q^n$ với $q>1$.\n\n**Bước 3.** Áp dụng quy tắc thương khi tử hữu hạn và mẫu có giới hạn vô cực.\n\n**Phần 2. Trình bày**\n\nTa có $\\lim\\limits_{n\\to+\\infty}(2+\\dfrac1n)=2+0=2$.\n\nTa có $\\lim\\limits_{n\\to+\\infty}2^n=+\\infty$.\n\nVậy $\\lim\\limits_{n\\to+\\infty}\\dfrac{2+\\dfrac1n}{2^n}=0$.",
+  "kiem": [
+   "Math.abs((n=>(2+1/n)/Math.pow(2,n))(200)-(0))<1e-4"
+  ],
+  "sach_dap_so": "0",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-3b",
+  "vai": "luyen",
+  "dang_bai": "NDB01161",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Rút n ở tử rồi chia cho hằng số dương",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{-3n+2}{4}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rút $n$ ra ngoài ở tử để dùng quy tắc tích, rồi chia cho mẫu là hằng số dương.\n\n**Bước 1.** Rút $n$ ra ngoài ở tử để thấy rõ thừa số dần tới vô cực.\n\n**Bước 2.** Tìm giới hạn của thừa số còn lại và xét dấu của nó.\n\n**Bước 3.** Áp dụng quy tắc tích với giới hạn vô cực, rồi chia cho số dương ở mẫu.\n\n**Phần 2. Trình bày**\n\nTa có $-3n+2=n(-3+\\dfrac2n)$ với $\\lim\\limits_{n\\to+\\infty}n=+\\infty$ và $\\lim\\limits_{n\\to+\\infty}(-3+\\dfrac2n)=-3<0$.\n\nSuy ra $\\lim\\limits_{n\\to+\\infty}(-3n+2)=-\\infty$.\n\nMẫu là hằng số $4>0$.\n\nVậy $\\lim\\limits_{n\\to+\\infty}\\dfrac{-3n+2}{4}=-\\infty$.",
+  "kiem": [
+   "(n=>(-3*n+2)/4)(1e7)<-1e5"
+  ],
+  "sach_dap_so": "-\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-3c",
+  "vai": "luyen",
+  "dang_bai": "NDB01162",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Quy tắc thương: tử âm hữu hạn, mẫu dần 0 qua giá trị dương",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{-3+\\dfrac1n}{\\dfrac{1}{n^2}}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử có giới hạn âm, mẫu dần tới $0$ qua giá trị dương nên dùng quy tắc thương với dấu của mẫu.\n\n**Bước 1.** Tìm giới hạn của tử và xác định dấu của nó.\n\n**Bước 2.** Tìm giới hạn của mẫu và kiểm tra mẫu luôn dương.\n\n**Bước 3.** Áp dụng quy tắc thương theo dấu của tử và của mẫu.\n\n**Phần 2. Trình bày**\n\nTa có $\\lim\\limits_{n\\to+\\infty}(-3+\\dfrac1n)=-3<0$.\n\nTa có $\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{n^2}=0$ và $\\dfrac{1}{n^2}>0$ với mọi $n\\in\\mathbb{N}^*$.\n\nVậy $\\lim\\limits_{n\\to+\\infty}\\dfrac{-3+\\dfrac1n}{\\dfrac{1}{n^2}}=-\\infty$.",
+  "kiem": [
+   "(n=>(-3+1/n)/(1/(n*n)))(1e5)<-1e5"
+  ],
+  "sach_dap_so": "-\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-3d",
+  "vai": "luyen",
+  "dang_bai": "NDB01151",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tử và mẫu cùng bậc nhất theo n",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{2n+1}{-3n+4}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng bậc nhất theo $n$, nên chia cả tử và mẫu cho $n$.\n\n**Bước 1.** Chia cả tử và mẫu cho luỹ thừa cao nhất của $n$.\n\n**Bước 2.** Tính giới hạn của tử và của mẫu sau khi chia.\n\n**Bước 3.** Áp dụng quy tắc giới hạn của thương với mẫu có giới hạn khác $0$.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $n$: $\\dfrac{2n+1}{-3n+4}=\\dfrac{2+\\dfrac1n}{-3+\\dfrac4n}$.\n\nTử có giới hạn $2$, mẫu có giới hạn $-3\\ne0$.\n\nVậy $\\lim\\limits_{n\\to+\\infty}\\dfrac{2n+1}{-3n+4}=-\\dfrac23$.",
+  "kiem": [
+   "Math.abs((n=>(2*n+1)/(-3*n+4))(1e7)-(-2/3))<1e-4"
+  ],
+  "sach_dap_so": "-2/3",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-4",
+  "vai": "luyen",
+  "dang_bai": "NDB01148",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Chứng minh giới hạn 0 bằng định nghĩa, tìm n theo h",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng $\\lim\\limits_{n\\to+\\infty}\\dfrac{(-1)^n}{n^2}=0$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lấy số dương $h$ bé tuỳ ý, chỉ ra mọi $n$ đủ lớn đều làm $|u_n|<h$ rồi kết luận theo định nghĩa.\n\n**Bước 1.** Đặt $u_n$ là số hạng tổng quát rồi tính $|u_n|$ để bỏ dấu $(-1)^n$.\n\n**Bước 2.** Giải bất phương trình $|u_n|<h$ để tìm điều kiện của $n$ theo $h$.\n\n**Bước 3.** Nêu rõ với các $n$ lớn hơn một số phụ thuộc $h$ thì bất đẳng thức luôn đúng, rồi đối chiếu định nghĩa.\n\n**Phần 2. Trình bày**\n\nXét $u_n=\\dfrac{(-1)^n}{n^2}$. Giả sử $h$ là số dương bé tuỳ ý.\n\nTa có $|u_n|=\\dfrac{1}{n^2}$.\n\nDo đó $|u_n|<h\\Leftrightarrow\\dfrac{1}{n^2}<h\\Leftrightarrow\\dfrac1n<\\sqrt{h}\\Leftrightarrow n>\\dfrac{1}{\\sqrt{h}}$.\n\nVậy mọi số tự nhiên $n>\\dfrac{1}{\\sqrt{h}}$ đều có $|u_n|<h$.\n\nVậy theo định nghĩa, $\\lim\\limits_{n\\to+\\infty}\\dfrac{(-1)^n}{n^2}=0$.",
+  "kiem": [
+   "(h=>{const N=Math.floor(1/Math.sqrt(h))+1;return [N,N+1,N+57].every(n=>Math.abs(Math.pow(-1,n)/(n*n))<h)})(0.0004)"
+  ],
+  "sach_dap_so": "0 (chứng minh)",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-5",
+  "vai": "luyen",
+  "dang_bai": "NDB01150",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tính giới hạn tổng, hiệu, tích, thương khi biết dãy thành phần",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hai dãy số $(u_n),(v_n)$ với $u_n=3-\\dfrac{4}{n+1}$, $v_n=8-\\dfrac{5}{3n^2+2}$. Tính:\na) $\\lim u_n$, $\\lim v_n$;\nb) $\\lim(u_n+v_n)$, $\\lim(u_n-v_n)$, $\\lim(u_n\\cdot v_n)$, $\\lim\\dfrac{u_n}{v_n}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm giới hạn của từng dãy ở ý a), rồi dùng các quy tắc tổng, hiệu, tích, thương cho ý b).\n\n**Bước 1.** Tính giới hạn của $u_n$ và $v_n$ bằng quy tắc hiệu và giới hạn của phân thức có mẫu dần vô cực.\n\n**Bước 2.** Dùng hai giới hạn vừa tìm để áp dụng quy tắc tổng, hiệu và tích.\n\n**Bước 3.** Với thương, kiểm tra giới hạn của mẫu khác $0$ rồi mới chia hai giới hạn.\n\n**Phần 2. Trình bày**\n\na) Ta có $\\lim\\dfrac{4}{n+1}=0$ và $\\lim\\dfrac{5}{3n^2+2}=0$.\n\nSuy ra $\\lim u_n=3-0=3$ và $\\lim v_n=8-0=8$.\n\nb) $\\lim(u_n+v_n)=3+8=11$.\n\n$\\lim(u_n-v_n)=3-8=-5$.\n\n$\\lim(u_n\\cdot v_n)=3\\cdot8=24$.\n\nVì $\\lim v_n=8\\ne0$ nên $\\lim\\dfrac{u_n}{v_n}=\\dfrac38$.\n\nVậy a) $\\lim u_n=3$, $\\lim v_n=8$; b) các giới hạn lần lượt bằng $11$, $-5$, $24$, $\\dfrac38$.",
+  "kiem": [
+   "(n=>{const u=3-4/(n+1),v=8-5/(3*n*n+2);return Math.abs(u-3)<1e-4&&Math.abs(v-8)<1e-4&&Math.abs(u+v-11)<1e-4&&Math.abs(u-v+5)<1e-4&&Math.abs(u*v-24)<1e-3&&Math.abs(u/v-3/8)<1e-4})(1e7)"
+  ],
+  "sach_dap_so": "a) 3; 8  b) 11; -5; 24; 3/8",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-6a",
+  "vai": "luyen",
+  "dang_bai": "NDB01152",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức tử bậc 3, mẫu bậc 2",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{n^3-5n+1}{3n^2-4n+2}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử có bậc cao hơn mẫu, nên rút luỹ thừa cao nhất ở tử và mẫu rồi xét dấu giới hạn thừa số còn lại.\n\n**Bước 1.** So sánh bậc của tử và mẫu để chọn cách rút luỹ thừa.\n\n**Bước 2.** Rút $n^3$ ở tử và $n^2$ ở mẫu, đưa biểu thức về tích của $n$ với một phân thức.\n\n**Bước 3.** Tìm giới hạn của phân thức còn lại, xét dấu rồi dùng quy tắc tích.\n\n**Phần 2. Trình bày**\n\nTa có $\\dfrac{n^3-5n+1}{3n^2-4n+2}=n\\cdot\\dfrac{1-\\dfrac{5}{n^2}+\\dfrac{1}{n^3}}{3-\\dfrac4n+\\dfrac{2}{n^2}}$.\n\nCó $\\lim\\limits_{n\\to+\\infty}n=+\\infty$ và $\\lim\\limits_{n\\to+\\infty}\\dfrac{1-\\dfrac{5}{n^2}+\\dfrac{1}{n^3}}{3-\\dfrac4n+\\dfrac{2}{n^2}}=\\dfrac13>0$.\n\nVậy $\\lim\\limits_{n\\to+\\infty}\\dfrac{n^3-5n+1}{3n^2-4n+2}=+\\infty$.",
+  "kiem": [
+   "(n=>(n**3-5*n+1)/(3*n*n-4*n+2))(1e7)>1e5"
+  ],
+  "sach_dap_so": "+\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-6b",
+  "vai": "luyen",
+  "dang_bai": "NDB01157",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Căn thức ở tử, chia tử và mẫu cho n",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{\\sqrt{4n^2+n+1}}{8n+3}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đưa $n$ ra ngoài căn ở tử (với $n>0$ thì $\\sqrt{n^2}=n$) rồi chia tử và mẫu cho $n$.\n\n**Bước 1.** Đưa $n^2$ ra ngoài dấu căn ở tử, chú ý $n>0$.\n\n**Bước 2.** Chia cả tử và mẫu cho $n$ để mọi số hạng còn lại dần tới $0$.\n\n**Bước 3.** Tính giới hạn của tử và mẫu rồi áp dụng quy tắc thương.\n\n**Phần 2. Trình bày**\n\nVới $n>0$: $\\dfrac{\\sqrt{4n^2+n+1}}{8n+3}=\\dfrac{\\sqrt{4+\\dfrac1n+\\dfrac{1}{n^2}}}{8+\\dfrac3n}$.\n\nTử có giới hạn $\\sqrt4=2$, mẫu có giới hạn $8$.\n\nVậy $\\lim\\limits_{n\\to+\\infty}\\dfrac{\\sqrt{4n^2+n+1}}{8n+3}=\\dfrac28=\\dfrac14$.",
+  "kiem": [
+   "Math.abs((n=>Math.sqrt(4*n*n+n+1)/(8*n+3))(1e7)-(1/4))<1e-4"
+  ],
+  "sach_dap_so": "1/4",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-6c",
+  "vai": "luyen",
+  "dang_bai": "NDB01154",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Thương các luỹ thừa 4^n, 5^n: chia cho cơ số lớn nhất",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{4^n+5^n}{3\\cdot4^n-4\\cdot5^n}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cả tử và mẫu cho luỹ thừa có cơ số lớn nhất, ở đây là $5^n$.\n\n**Bước 1.** Xác định cơ số lớn nhất trong tử và mẫu.\n\n**Bước 2.** Chia cả tử và mẫu cho $5^n$ để xuất hiện $(\\dfrac45)^n$.\n\n**Bước 3.** Dùng $\\lim q^n=0$ với $|q|<1$ rồi tính giới hạn của tử và mẫu.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $5^n$: $\\dfrac{4^n+5^n}{3\\cdot4^n-4\\cdot5^n}=\\dfrac{(\\dfrac45)^n+1}{3(\\dfrac45)^n-4}$.\n\nVì $\\lim\\limits_{n\\to+\\infty}(\\dfrac45)^n=0$ nên tử có giới hạn $1$, mẫu có giới hạn $-4$.\n\nVậy giới hạn bằng $-\\dfrac14$.",
+  "kiem": [
+   "Math.abs((n=>(Math.pow(4,n)+Math.pow(5,n))/(3*Math.pow(4,n)-4*Math.pow(5,n)))(300)-(-1/4))<1e-4"
+  ],
+  "sach_dap_so": "-1/4",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-7a",
+  "vai": "luyen",
+  "dang_bai": "NDB01151",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tử và mẫu cùng bậc 2",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{n^2-2n+1}{2-3n^2}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng bậc $2$ nên chia cả tử và mẫu cho $n^2$.\n\n**Bước 1.** Chia cả tử và mẫu cho $n^2$.\n\n**Bước 2.** Tính giới hạn của tử và của mẫu bằng giới hạn cơ bản của $\\dfrac{1}{n^k}$.\n\n**Bước 3.** Áp dụng quy tắc thương với mẫu có giới hạn khác $0$.\n\n**Phần 2. Trình bày**\n\nTa có $\\dfrac{n^2-2n+1}{2-3n^2}=\\dfrac{1-\\dfrac2n+\\dfrac{1}{n^2}}{\\dfrac{2}{n^2}-3}$.\n\nTử có giới hạn $1$, mẫu có giới hạn $-3$.\n\nVậy giới hạn bằng $-\\dfrac13$.",
+  "kiem": [
+   "Math.abs((n=>(n*n-2*n+1)/(2-3*n*n))(1e7)-(-1/3))<1e-4"
+  ],
+  "sach_dap_so": "-1/3",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-7b",
+  "vai": "luyen",
+  "dang_bai": "NDB01151",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức tử bậc thấp hơn mẫu",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{2n^2+n-3}{n^3+5}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử bậc $2$ thấp hơn mẫu bậc $3$ nên chia cả tử và mẫu cho $n^3$.\n\n**Bước 1.** So sánh bậc của tử với bậc của mẫu.\n\n**Bước 2.** Chia cả tử và mẫu cho $n^3$.\n\n**Bước 3.** Tính giới hạn của tử và mẫu rồi áp dụng quy tắc thương.\n\n**Phần 2. Trình bày**\n\nTa có $\\dfrac{2n^2+n-3}{n^3+5}=\\dfrac{\\dfrac2n+\\dfrac{1}{n^2}-\\dfrac{3}{n^3}}{1+\\dfrac{5}{n^3}}$.\n\nTử có giới hạn $0$, mẫu có giới hạn $1$.\n\nVậy giới hạn bằng $0$.",
+  "kiem": [
+   "Math.abs((n=>(2*n*n+n-3)/(n**3+5))(1e7)-(0))<1e-4"
+  ],
+  "sach_dap_so": "0",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-7c",
+  "vai": "luyen",
+  "dang_bai": "NDB01158",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Căn trừ n, nhân liên hợp",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}(\\sqrt{n^2+2n}-n)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\infty-\\infty$ có căn, nhân và chia với biểu thức liên hợp rồi chia tử và mẫu cho $n$.\n\n**Bước 1.** Nhận ra dạng hiệu có căn và chọn biểu thức liên hợp tương ứng.\n\n**Bước 2.** Nhân và chia với biểu thức liên hợp để mất căn ở tử.\n\n**Bước 3.** Chia tử và mẫu cho $n$ rồi tính giới hạn.\n\n**Phần 2. Trình bày**\n\n$\\sqrt{n^2+2n}-n=\\dfrac{(n^2+2n)-n^2}{\\sqrt{n^2+2n}+n}=\\dfrac{2n}{\\sqrt{n^2+2n}+n}$.\n\nChia tử và mẫu cho $n$: $\\dfrac{2}{\\sqrt{1+\\dfrac2n}+1}$.\n\nGiới hạn của mẫu là $\\sqrt1+1=2$.\n\nVậy giới hạn bằng $1$.",
+  "kiem": [
+   "Math.abs((n=>Math.sqrt(n*n+2*n)-n)(1e7)-(1))<1e-4"
+  ],
+  "sach_dap_so": "1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-8a",
+  "vai": "luyen",
+  "dang_bai": "NDB01154",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Thương các luỹ thừa 3^(n+1), 2^(2n)",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{3^{n+1}}{2^{2n}}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đưa tử và mẫu về luỹ thừa có số mũ $n$, gộp thành dạng $q^n$ rồi dùng $\\lim q^n=0$ với $|q|<1$.\n\n**Bước 1.** Viết lại tử và mẫu về dạng luỹ thừa: $3^{n+1}=3\\cdot3^n$ và $2^{2n}=4^n$.\n\n**Bước 2.** Gộp thành một luỹ thừa $(\\dfrac34)^n$ nhân với hằng số.\n\n**Bước 3.** Dùng giới hạn của $q^n$ với $|q|<1$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{3^{n+1}}{2^{2n}}=\\dfrac{3\\cdot3^n}{4^n}=3\\cdot(\\dfrac34)^n$.\n\nVì $0<\\dfrac34<1$ nên $\\lim\\limits_{n\\to+\\infty}(\\dfrac34)^n=0$.\n\nVậy giới hạn bằng $3\\cdot0=0$.",
+  "kiem": [
+   "Math.abs((n=>Math.pow(3,n+1)/Math.pow(2,2*n))(200)-(0))<1e-4"
+  ],
+  "sach_dap_so": "0",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-8b",
+  "vai": "luyen",
+  "dang_bai": "NDB01154",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Thương các luỹ thừa: chia cho 3^n",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{3^{n+1}+2^n}{3^n}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia từng số hạng của tử cho $3^n$ rồi dùng $\\lim q^n=0$ với $|q|<1$.\n\n**Bước 1.** Viết lại tử dưới dạng $3^{n+1}=3\\cdot3^n$ để tách hằng số.\n\n**Bước 2.** Chia từng số hạng của tử cho mẫu $3^n$.\n\n**Bước 3.** Dùng giới hạn của $q^n$ với $|q|<1$ cho phần còn lại.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{3^{n+1}+2^n}{3^n}=3+(\\dfrac23)^n$.\n\nVì $\\lim\\limits_{n\\to+\\infty}(\\dfrac23)^n=0$ nên giới hạn bằng $3+0=3$.\n\nVậy giới hạn bằng $3$.",
+  "kiem": [
+   "Math.abs((n=>(Math.pow(3,n+1)+Math.pow(2,n))/Math.pow(3,n))(200)-(3))<1e-4"
+  ],
+  "sach_dap_so": "3",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-9a",
+  "vai": "luyen",
+  "dang_bai": "NDB01161",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Rút n^2 ra ngoài để dùng quy tắc tích",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}(n^2+3n-5)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rút luỹ thừa cao nhất $n^2$ ra ngoài rồi dùng quy tắc tích với giới hạn vô cực.\n\n**Bước 1.** Rút $n^2$ ra ngoài để viết tổng thành tích.\n\n**Bước 2.** Tìm giới hạn của thừa số trong ngoặc và xét dấu của nó.\n\n**Bước 3.** Áp dụng quy tắc tích có một thừa số dần vô cực.\n\n**Phần 2. Trình bày**\n\n$n^2+3n-5=n^2(1+\\dfrac3n-\\dfrac{5}{n^2})$.\n\nTa có $\\lim\\limits_{n\\to+\\infty}n^2=+\\infty$ và $\\lim\\limits_{n\\to+\\infty}(1+\\dfrac3n-\\dfrac{5}{n^2})=1>0$.\n\nVậy $\\lim\\limits_{n\\to+\\infty}(n^2+3n-5)=+\\infty$.",
+  "kiem": [
+   "(n=>n*n+3*n-5)(1e7)>1e5"
+  ],
+  "sach_dap_so": "+\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-9b",
+  "vai": "luyen",
+  "dang_bai": "NDB01152",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức tử bậc 2, mẫu bậc 1 với hệ số mẫu âm",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{n^2+7}{1-2n}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử bậc cao hơn mẫu, rút $n^2$ ở tử và $n$ ở mẫu rồi xét dấu giới hạn của phần còn lại.\n\n**Bước 1.** Rút $n^2$ ở tử và $n$ ở mẫu để tách thừa số $n$.\n\n**Bước 2.** Tìm giới hạn của phân thức còn lại và xét dấu.\n\n**Bước 3.** Áp dụng quy tắc tích với một thừa số dần vô cực.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{n^2+7}{1-2n}=n\\cdot\\dfrac{1+\\dfrac{7}{n^2}}{\\dfrac1n-2}$.\n\nCó $\\lim\\limits_{n\\to+\\infty}n=+\\infty$ và $\\lim\\limits_{n\\to+\\infty}\\dfrac{1+\\dfrac{7}{n^2}}{\\dfrac1n-2}=-\\dfrac12<0$.\n\nVậy $\\lim\\limits_{n\\to+\\infty}\\dfrac{n^2+7}{1-2n}=-\\infty$.",
+  "kiem": [
+   "(n=>(n*n+7)/(1-2*n))(1e7)<-1e5"
+  ],
+  "sach_dap_so": "-\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-9c",
+  "vai": "luyen",
+  "dang_bai": "NDB01161",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Hiệu hai luỹ thừa 3^n và 2^n: rút 3^n ra ngoài",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}(3^n-2^n)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rút luỹ thừa có cơ số lớn nhất $3^n$ ra ngoài rồi dùng quy tắc tích.\n\n**Bước 1.** Rút $3^n$ ra ngoài để xuất hiện $(\\dfrac23)^n$.\n\n**Bước 2.** Tìm giới hạn của thừa số còn lại.\n\n**Bước 3.** Áp dụng quy tắc tích với một thừa số dần vô cực.\n\n**Phần 2. Trình bày**\n\n$3^n-2^n=3^n[1-(\\dfrac23)^n]$.\n\nCó $\\lim\\limits_{n\\to+\\infty}3^n=+\\infty$ và $\\lim\\limits_{n\\to+\\infty}[1-(\\dfrac23)^n]=1-0=1>0$.\n\nVậy $\\lim\\limits_{n\\to+\\infty}(3^n-2^n)=+\\infty$.",
+  "kiem": [
+   "(n=>Math.pow(3,n)-Math.pow(2,n))(100)>1e5"
+  ],
+  "sach_dap_so": "+\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-10a",
+  "vai": "luyen",
+  "dang_bai": "NDB01151",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tử là tích hai nhị thức, mẫu bậc 2",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{(2n-1)(2n+3)}{2n^2+4}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng bậc $2$, chia cả tử và mẫu cho $n^2$.\n\n**Bước 1.** Xác định bậc của tử (tích hai nhị thức) và bậc của mẫu.\n\n**Bước 2.** Chia mỗi nhị thức ở tử cho $n$ và mẫu cho $n^2$.\n\n**Bước 3.** Tính giới hạn từng phần rồi áp dụng quy tắc tích và thương.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{(2n-1)(2n+3)}{2n^2+4}=\\dfrac{(2-\\dfrac1n)(2+\\dfrac3n)}{2+\\dfrac{4}{n^2}}$.\n\nTử có giới hạn $2\\cdot2=4$, mẫu có giới hạn $2$.\n\nVậy giới hạn bằng $2$.",
+  "kiem": [
+   "Math.abs((n=>(2*n-1)*(2*n+3)/(2*n*n+4))(1e7)-(2))<1e-4"
+  ],
+  "sach_dap_so": "2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-10b",
+  "vai": "luyen",
+  "dang_bai": "NDB01157",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Căn ở mẫu, chia tử và mẫu cho n",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{4n+1}{\\sqrt{n^2+3n}+n}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đưa $n$ ra ngoài căn ở mẫu (với $n>0$) rồi chia tử và mẫu cho $n$.\n\n**Bước 1.** Đưa $n^2$ ra ngoài dấu căn ở mẫu, chú ý $n>0$.\n\n**Bước 2.** Chia cả tử và mẫu cho $n$.\n\n**Bước 3.** Tính giới hạn của tử và mẫu rồi áp dụng quy tắc thương.\n\n**Phần 2. Trình bày**\n\nVới $n>0$: $\\dfrac{4n+1}{\\sqrt{n^2+3n}+n}=\\dfrac{4+\\dfrac1n}{\\sqrt{1+\\dfrac3n}+1}$.\n\nTử có giới hạn $4$, mẫu có giới hạn $\\sqrt1+1=2$.\n\nVậy giới hạn bằng $2$.",
+  "kiem": [
+   "Math.abs((n=>(4*n+1)/(Math.sqrt(n*n+3*n)+n))(1e7)-(2))<1e-4"
+  ],
+  "sach_dap_so": "2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-10c",
+  "vai": "luyen",
+  "dang_bai": "NDB01158",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tích n.căn hiệu hai căn: nhân liên hợp",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\sqrt{n}(\\sqrt{n+1}-\\sqrt{n})$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\infty\\cdot0$ có hiệu hai căn, nhân và chia với biểu thức liên hợp rồi chia tử và mẫu cho $\\sqrt n$.\n\n**Bước 1.** Nhận ra thừa số là hiệu hai căn và chọn biểu thức liên hợp.\n\n**Bước 2.** Nhân và chia với biểu thức liên hợp để mất căn ở tử.\n\n**Bước 3.** Rút gọn $\\sqrt n$ rồi tính giới hạn của phân thức còn lại.\n\n**Phần 2. Trình bày**\n\n$\\sqrt{n}(\\sqrt{n+1}-\\sqrt{n})=\\dfrac{\\sqrt{n}[(n+1)-n]}{\\sqrt{n+1}+\\sqrt{n}}=\\dfrac{\\sqrt{n}}{\\sqrt{n+1}+\\sqrt{n}}$.\n\nChia tử và mẫu cho $\\sqrt{n}$: $\\dfrac{1}{\\sqrt{1+\\dfrac1n}+1}$.\n\nVậy giới hạn bằng $\\dfrac{1}{1+1}=\\dfrac12$.",
+  "kiem": [
+   "Math.abs((n=>Math.sqrt(n)*(Math.sqrt(n+1)-Math.sqrt(n)))(1e7)-(1/2))<1e-4"
+  ],
+  "sach_dap_so": "1/2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-10d",
+  "vai": "luyen",
+  "dang_bai": "NDB01158",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Nghịch đảo của hiệu căn trừ n: nhân liên hợp",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{\\sqrt{n^2+n}-n}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân tử và mẫu với biểu thức liên hợp của mẫu để mất căn ở mẫu.\n\n**Bước 1.** Chọn biểu thức liên hợp của mẫu $\\sqrt{n^2+n}-n$.\n\n**Bước 2.** Nhân cả tử và mẫu với biểu thức liên hợp rồi rút gọn mẫu.\n\n**Bước 3.** Chia tử cho $n$ rồi tính giới hạn.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{1}{\\sqrt{n^2+n}-n}=\\dfrac{\\sqrt{n^2+n}+n}{(n^2+n)-n^2}=\\dfrac{\\sqrt{n^2+n}+n}{n}=\\sqrt{1+\\dfrac1n}+1$.\n\nVậy giới hạn bằng $\\sqrt{1}+1=2$.",
+  "kiem": [
+   "Math.abs((n=>1/(Math.sqrt(n*n+n)-n))(1e6)-(2))<1e-4"
+  ],
+  "sach_dap_so": "2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-11a",
+  "vai": "luyen",
+  "dang_bai": "NDB01154",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Thương các luỹ thừa 3^n, 4^n-1",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{3^n}{4^n-1}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cả tử và mẫu cho $4^n$ rồi dùng $\\lim q^n=0$ với $|q|<1$.\n\n**Bước 1.** Chọn luỹ thừa có cơ số lớn nhất ở mẫu để chia.\n\n**Bước 2.** Chia cả tử và mẫu cho $4^n$.\n\n**Bước 3.** Dùng giới hạn của $q^n$ để tính tử và mẫu.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{3^n}{4^n-1}=\\dfrac{(\\dfrac34)^n}{1-(\\dfrac14)^n}$.\n\nTử có giới hạn $0$, mẫu có giới hạn $1$.\n\nVậy giới hạn bằng $0$.",
+  "kiem": [
+   "Math.abs((n=>Math.pow(3,n)/(Math.pow(4,n)-1))(300)-(0))<1e-4"
+  ],
+  "sach_dap_so": "0",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-11b",
+  "vai": "luyen",
+  "dang_bai": "NDB01154",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Thương các luỹ thừa 3^n, 2^n",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{3^n-2^n}{3^n+2^n}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cả tử và mẫu cho $3^n$ rồi dùng $\\lim q^n=0$ với $|q|<1$.\n\n**Bước 1.** Chọn cơ số lớn nhất là $3$.\n\n**Bước 2.** Chia cả tử và mẫu cho $3^n$.\n\n**Bước 3.** Dùng giới hạn của $(\\dfrac23)^n$ để tính tử và mẫu.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{3^n-2^n}{3^n+2^n}=\\dfrac{1-(\\dfrac23)^n}{1+(\\dfrac23)^n}$.\n\nTử và mẫu có giới hạn lần lượt là $1$ và $1$.\n\nVậy giới hạn bằng $1$.",
+  "kiem": [
+   "Math.abs((n=>(Math.pow(3,n)-Math.pow(2,n))/(Math.pow(3,n)+Math.pow(2,n)))(300)-(1))<1e-4"
+  ],
+  "sach_dap_so": "1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-11c",
+  "vai": "luyen",
+  "dang_bai": "NDB01154",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Thương các luỹ thừa 4^(n+1), 3^n, 4^n",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{4^{n+1}}{3^n+4^n}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết $4^{n+1}=4\\cdot4^n$ rồi chia cả tử và mẫu cho $4^n$.\n\n**Bước 1.** Viết lại tử dưới dạng $4\\cdot4^n$.\n\n**Bước 2.** Chia cả tử và mẫu cho $4^n$.\n\n**Bước 3.** Dùng giới hạn của $(\\dfrac34)^n$ để tính mẫu.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{4^{n+1}}{3^n+4^n}=\\dfrac{4}{(\\dfrac34)^n+1}$.\n\nMẫu có giới hạn $0+1=1$.\n\nVậy giới hạn bằng $4$.",
+  "kiem": [
+   "Math.abs((n=>Math.pow(4,n+1)/(Math.pow(3,n)+Math.pow(4,n)))(300)-(4))<1e-4"
+  ],
+  "sach_dap_so": "4",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-12",
+  "vai": "luyen",
+  "dang_bai": "NDB01150",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Biết giới hạn của dãy thành phần, suy ra giới hạn biểu thức",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho dãy số $(u_n)$ thoả mãn $\\lim\\limits_{n\\to+\\infty}n u_n=3$. Tìm giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{2n+3}{n^2u_n}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tách biểu thức thành tích của hai phân thức, một phân thức chứa $nu_n$ để dùng giới hạn đã cho.\n\n**Bước 1.** Viết mẫu $n^2u_n$ thành tích của $n$ và $nu_n$ để dùng giả thiết.\n\n**Bước 2.** Tách biểu thức thành tích của $\\dfrac{2n+3}{n}$ và $\\dfrac{1}{nu_n}$.\n\n**Bước 3.** Dùng giới hạn đã cho và quy tắc tích, thương để tính từng thừa số.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{2n+3}{n^2u_n}=\\dfrac{2n+3}{n}\\cdot\\dfrac{1}{nu_n}=(2+\\dfrac3n)\\cdot\\dfrac{1}{nu_n}$.\n\nCó $\\lim\\limits_{n\\to+\\infty}(2+\\dfrac3n)=2$ và $\\lim\\limits_{n\\to+\\infty}nu_n=3\\ne0$ nên $\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{nu_n}=\\dfrac13$.\n\nVậy giới hạn bằng $2\\cdot\\dfrac13=\\dfrac23$.",
+  "kiem": [
+   "(n=>{const u=3/n;return Math.abs((2*n+3)/(n*n*u)-2/3)<1e-4})(1e7)"
+  ],
+  "sach_dap_so": "2/3",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-13a",
+  "vai": "luyen",
+  "dang_bai": "NDB01161",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Rút n^2 ra ngoài, hệ số cao nhất âm",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}(1+3n-n^2)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rút $n^2$ ra ngoài rồi xét dấu giới hạn của thừa số còn lại.\n\n**Bước 1.** Rút $n^2$ ra ngoài để viết tổng thành tích.\n\n**Bước 2.** Tìm giới hạn của thừa số trong ngoặc và xét dấu.\n\n**Bước 3.** Áp dụng quy tắc tích với một thừa số dần vô cực.\n\n**Phần 2. Trình bày**\n\n$1+3n-n^2=n^2(\\dfrac{1}{n^2}+\\dfrac3n-1)$.\n\nCó $\\lim\\limits_{n\\to+\\infty}n^2=+\\infty$ và $\\lim\\limits_{n\\to+\\infty}(\\dfrac{1}{n^2}+\\dfrac3n-1)=-1<0$.\n\nVậy $\\lim\\limits_{n\\to+\\infty}(1+3n-n^2)=-\\infty$.",
+  "kiem": [
+   "(n=>1+3*n-n*n)(1e7)<-1e5"
+  ],
+  "sach_dap_so": "-\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-13b",
+  "vai": "luyen",
+  "dang_bai": "NDB01152",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức tử bậc 3, mẫu bậc 1",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{n^3+3n}{2n-1}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử bậc cao hơn mẫu, rút $n^3$ ở tử và $n$ ở mẫu rồi xét dấu phần còn lại.\n\n**Bước 1.** So sánh bậc của tử và mẫu.\n\n**Bước 2.** Rút $n^3$ ở tử và $n$ ở mẫu để tách thừa số $n^2$.\n\n**Bước 3.** Xét giới hạn và dấu của phân thức còn lại, dùng quy tắc tích.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{n^3+3n}{2n-1}=n^2\\cdot\\dfrac{1+\\dfrac{3}{n^2}}{2-\\dfrac1n}$.\n\nCó $\\lim\\limits_{n\\to+\\infty}n^2=+\\infty$ và $\\lim\\limits_{n\\to+\\infty}\\dfrac{1+\\dfrac{3}{n^2}}{2-\\dfrac1n}=\\dfrac12>0$.\n\nVậy giới hạn bằng $+\\infty$.",
+  "kiem": [
+   "(n=>(n**3+3*n)/(2*n-1))(1e7)>1e5"
+  ],
+  "sach_dap_so": "+\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-13c",
+  "vai": "luyen",
+  "dang_bai": "NDB01161",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Tổng căn và n: rút n ra ngoài",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}(\\sqrt{n^2-n}+n)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hai số hạng cùng dần tới $+\\infty$, rút $n$ ra ngoài rồi dùng quy tắc tích.\n\n**Bước 1.** Đưa $n$ ra ngoài dấu căn (với $n>0$) rồi rút $n$ chung.\n\n**Bước 2.** Tìm giới hạn của thừa số trong ngoặc và xét dấu.\n\n**Bước 3.** Áp dụng quy tắc tích có một thừa số dần vô cực.\n\n**Phần 2. Trình bày**\n\nVới $n>0$: $\\sqrt{n^2-n}+n=n(\\sqrt{1-\\dfrac1n}+1)$.\n\nCó $\\lim\\limits_{n\\to+\\infty}n=+\\infty$ và $\\lim\\limits_{n\\to+\\infty}(\\sqrt{1-\\dfrac1n}+1)=2>0$.\n\nVậy giới hạn bằng $+\\infty$.",
+  "kiem": [
+   "(n=>Math.sqrt(n*n-n)+n)(1e7)>1e5"
+  ],
+  "sach_dap_so": "+\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-13d",
+  "vai": "luyen",
+  "dang_bai": "NDB01161",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Hiệu 3^(n+1) và 5^n: rút 5^n ra ngoài",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}(3^{n+1}-5^n)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rút luỹ thừa có cơ số lớn nhất $5^n$ ra ngoài rồi xét dấu thừa số còn lại.\n\n**Bước 1.** Viết $3^{n+1}=3\\cdot3^n$ rồi rút $5^n$ ra ngoài.\n\n**Bước 2.** Tìm giới hạn của thừa số còn lại và xét dấu.\n\n**Bước 3.** Áp dụng quy tắc tích có một thừa số dần vô cực.\n\n**Phần 2. Trình bày**\n\n$3^{n+1}-5^n=5^n[3(\\dfrac35)^n-1]$.\n\nCó $\\lim\\limits_{n\\to+\\infty}5^n=+\\infty$ và $\\lim\\limits_{n\\to+\\infty}[3(\\dfrac35)^n-1]=-1<0$.\n\nVậy giới hạn bằng $-\\infty$.",
+  "kiem": [
+   "(n=>Math.pow(3,n+1)-Math.pow(5,n))(100)<-1e5"
+  ],
+  "sach_dap_so": "-\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-14",
+  "vai": "luyen",
+  "dang_bai": "NDB01154",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Thương luỹ thừa a^n, biện luận theo cơ số a",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tuỳ theo giá trị của $a>0$, tìm giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{a^n}{a^n+1}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia ba trường hợp theo vị trí của $a$ so với $1$ để dùng đúng giới hạn của $q^n$.\n\n**Bước 1.** Xét riêng trường hợp $0<a<1$ vì khi đó $a^n$ có giới hạn hữu hạn.\n\n**Bước 2.** Xét trường hợp $a=1$ khi dãy trở thành dãy hằng.\n\n**Bước 3.** Xét $a>1$ bằng cách chia cả tử và mẫu cho $a^n$, rồi tổng kết ba trường hợp.\n\n**Phần 2. Trình bày**\n\nNếu $0<a<1$ thì $\\lim\\limits_{n\\to+\\infty}a^n=0$, nên giới hạn bằng $\\dfrac{0}{0+1}=0$.\n\nNếu $a=1$ thì $\\dfrac{a^n}{a^n+1}=\\dfrac12$ với mọi $n$, nên giới hạn bằng $\\dfrac12$.\n\nNếu $a>1$ thì $\\dfrac{a^n}{a^n+1}=\\dfrac{1}{1+(\\dfrac1a)^n}$ và $0<\\dfrac1a<1$ nên $\\lim\\limits_{n\\to+\\infty}(\\dfrac1a)^n=0$.\n\nDo đó giới hạn bằng $\\dfrac{1}{1+0}=1$.\n\nVậy giới hạn bằng $0$ nếu $0<a<1$; bằng $\\dfrac12$ nếu $a=1$; bằng $1$ nếu $a>1$.",
+  "kiem": [
+   "(n=>{const f=a=>Math.pow(a,n)/(Math.pow(a,n)+1);return f(0.5)<1e-6&&Math.abs(f(1)-0.5)<1e-9&&Math.abs(f(2)-1)<1e-6})(100)"
+  ],
+  "sach_dap_so": "0 nếu 0<a<1; 1/2 nếu a=1; 1 nếu a>1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-15",
+  "vai": "luyen",
+  "dang_bai": "NDB01148",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Dãy bị chặn bởi 1/3^n dần 0, suy ra giới hạn hữu hạn",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho dãy số $(u_n)$ có tính chất $|u_n-2|\\le\\dfrac{1}{3^n}$. Tính $\\lim\\limits_{n\\to+\\infty}u_n$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nếu $|u_n-2|$ bị chặn bởi một dãy có giới hạn $0$ thì $u_n-2$ có giới hạn $0$.\n\n**Bước 1.** Nhận ra dãy chặn $\\dfrac{1}{3^n}$ có giới hạn $0$.\n\n**Bước 2.** Suy ra $|u_n-2|$ rồi $u_n-2$ có giới hạn $0$.\n\n**Bước 3.** Chuyển $u_n=(u_n-2)+2$ để tìm giới hạn của $u_n$.\n\n**Phần 2. Trình bày**\n\nVì $0\\le|u_n-2|\\le\\dfrac{1}{3^n}$ và $\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{3^n}=0$ nên $\\lim\\limits_{n\\to+\\infty}|u_n-2|=0$.\n\nSuy ra $\\lim\\limits_{n\\to+\\infty}(u_n-2)=0$.\n\nVậy $\\lim\\limits_{n\\to+\\infty}u_n=2$.",
+  "kiem": [
+   "(n=>{const d=[];for(const s of [1,-1,0.3,0]){const u=2+s/Math.pow(3,n);if(Math.abs(u-2)>1/Math.pow(3,n)+1e-300)return false;}return Math.pow(3,-n)<1e-9})(40)"
+  ],
+  "sach_dap_so": "2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-16",
+  "vai": "luyen",
+  "dang_bai": "NDB01151",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tử và mẫu cùng bậc 2",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính $\\lim\\limits_{n\\to+\\infty}\\dfrac{2n^2+1}{3n^2+n}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng bậc $2$, chia cả tử và mẫu cho $n^2$.\n\n**Bước 1.** Chia cả tử và mẫu cho $n^2$.\n\n**Bước 2.** Tính giới hạn của tử và của mẫu.\n\n**Bước 3.** Áp dụng quy tắc thương với mẫu có giới hạn khác $0$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{2n^2+1}{3n^2+n}=\\dfrac{2+\\dfrac{1}{n^2}}{3+\\dfrac1n}$.\n\nTử có giới hạn $2$, mẫu có giới hạn $3$.\n\nVậy giới hạn bằng $\\dfrac23$.",
+  "kiem": [
+   "Math.abs((n=>(2*n*n+1)/(3*n*n+n))(1e7)-(2/3))<1e-4"
+  ],
+  "sach_dap_so": "2/3",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-17",
+  "vai": "luyen",
+  "dang_bai": "NDB01158",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hiệu hai căn bậc hai: nhân liên hợp",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính $\\lim\\limits_{n\\to+\\infty}(\\sqrt{n^2-n}-\\sqrt{n^2+1})$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\infty-\\infty$ với hiệu hai căn, nhân và chia với tổng hai căn rồi chia tử và mẫu cho $n$.\n\n**Bước 1.** Chọn biểu thức liên hợp là tổng hai căn.\n\n**Bước 2.** Nhân và chia để tử trở thành hiệu hai biểu thức dưới căn.\n\n**Bước 3.** Chia tử và mẫu cho $n$ rồi tính giới hạn.\n\n**Phần 2. Trình bày**\n\n$\\sqrt{n^2-n}-\\sqrt{n^2+1}=\\dfrac{(n^2-n)-(n^2+1)}{\\sqrt{n^2-n}+\\sqrt{n^2+1}}=\\dfrac{-n-1}{\\sqrt{n^2-n}+\\sqrt{n^2+1}}$.\n\nChia tử và mẫu cho $n$: $\\dfrac{-1-\\dfrac1n}{\\sqrt{1-\\dfrac1n}+\\sqrt{1+\\dfrac{1}{n^2}}}$.\n\nTử có giới hạn $-1$, mẫu có giới hạn $2$.\n\nVậy giới hạn bằng $-\\dfrac12$.",
+  "kiem": [
+   "Math.abs((n=>Math.sqrt(n*n-n)-Math.sqrt(n*n+1))(1e7)-(-1/2))<1e-4"
+  ],
+  "sach_dap_so": "-1/2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-18",
+  "vai": "luyen",
+  "dang_bai": "NDB01161",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Rút n^2 ra ngoài để dùng quy tắc tích",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính $\\lim\\limits_{n\\to+\\infty}(n^2-n+3)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rút luỹ thừa cao nhất $n^2$ ra ngoài rồi dùng quy tắc tích với giới hạn vô cực.\n\n**Bước 1.** Rút $n^2$ ra ngoài để viết tổng thành tích.\n\n**Bước 2.** Tìm giới hạn của thừa số trong ngoặc và xét dấu.\n\n**Bước 3.** Áp dụng quy tắc tích có một thừa số dần vô cực.\n\n**Phần 2. Trình bày**\n\n$n^2-n+3=n^2(1-\\dfrac1n+\\dfrac{3}{n^2})$.\n\nCó $\\lim\\limits_{n\\to+\\infty}n^2=+\\infty$ và $\\lim\\limits_{n\\to+\\infty}(1-\\dfrac1n+\\dfrac{3}{n^2})=1>0$.\n\nVậy giới hạn bằng $+\\infty$.",
+  "kiem": [
+   "(n=>n*n-n+3)(1e7)>1e5"
+  ],
+  "sach_dap_so": "+\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-19a",
+  "vai": "luyen",
+  "dang_bai": "NDB01151",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tử và mẫu cùng bậc 2",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{n^2+1}{2n^2+n+2}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng bậc $2$, chia cả tử và mẫu cho $n^2$.\n\n**Bước 1.** Chia cả tử và mẫu cho $n^2$.\n\n**Bước 2.** Tính giới hạn của tử và của mẫu.\n\n**Bước 3.** Áp dụng quy tắc thương với mẫu có giới hạn khác $0$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{n^2+1}{2n^2+n+2}=\\dfrac{1+\\dfrac{1}{n^2}}{2+\\dfrac1n+\\dfrac{2}{n^2}}$.\n\nTử có giới hạn $1$, mẫu có giới hạn $2$.\n\nVậy giới hạn bằng $\\dfrac12$.",
+  "kiem": [
+   "Math.abs((n=>(n*n+1)/(2*n*n+n+2))(1e7)-(1/2))<1e-4"
+  ],
+  "sach_dap_so": "1/2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-19b",
+  "vai": "luyen",
+  "dang_bai": "NDB01154",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Thương các luỹ thừa 2^n, 3^n",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{2^n+3}{1+3^n}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cả tử và mẫu cho $3^n$ rồi dùng $\\lim q^n=0$ với $|q|<1$.\n\n**Bước 1.** Chọn luỹ thừa có cơ số lớn nhất là $3^n$.\n\n**Bước 2.** Chia cả tử và mẫu cho $3^n$.\n\n**Bước 3.** Dùng giới hạn của $q^n$ để tính tử và mẫu.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{2^n+3}{1+3^n}=\\dfrac{(\\dfrac23)^n+\\dfrac{3}{3^n}}{\\dfrac{1}{3^n}+1}$.\n\nTử có giới hạn $0$, mẫu có giới hạn $1$.\n\nVậy giới hạn bằng $0$.",
+  "kiem": [
+   "Math.abs((n=>(Math.pow(2,n)+3)/(1+Math.pow(3,n)))(300)-(0))<1e-4"
+  ],
+  "sach_dap_so": "0",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-20a",
+  "vai": "luyen",
+  "dang_bai": "NDB01158",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Căn trừ đa thức bậc nhất: nhân liên hợp",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn sau: $\\lim\\limits_{n\\to+\\infty}(\\sqrt{n^2+2n}-n-2)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Coi $n+2$ là một số hạng, nhân và chia với $\\sqrt{n^2+2n}+n+2$ rồi chia tử và mẫu cho $n$.\n\n**Bước 1.** Gộp $n+2$ thành một nhóm và chọn biểu thức liên hợp tương ứng.\n\n**Bước 2.** Nhân và chia để tử là hiệu của $n^2+2n$ và $(n+2)^2$.\n\n**Bước 3.** Chia tử và mẫu cho $n$ rồi tính giới hạn.\n\n**Phần 2. Trình bày**\n\n$\\sqrt{n^2+2n}-(n+2)=\\dfrac{(n^2+2n)-(n+2)^2}{\\sqrt{n^2+2n}+n+2}=\\dfrac{-2n-4}{\\sqrt{n^2+2n}+n+2}$.\n\nChia tử và mẫu cho $n$: $\\dfrac{-2-\\dfrac4n}{\\sqrt{1+\\dfrac2n}+1+\\dfrac2n}$.\n\nTử có giới hạn $-2$, mẫu có giới hạn $2$.\n\nVậy giới hạn bằng $-1$.",
+  "kiem": [
+   "Math.abs((n=>Math.sqrt(n*n+2*n)-n-2)(1e7)-(-1))<1e-4"
+  ],
+  "sach_dap_so": "-1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-20b",
+  "vai": "luyen",
+  "dang_bai": "NDB01158",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Đa thức trừ căn: nhân liên hợp",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn sau: $\\lim\\limits_{n\\to+\\infty}(2+n^2-\\sqrt{n^4+1})$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Coi $2+n^2$ là một số hạng, nhân và chia với $2+n^2+\\sqrt{n^4+1}$ rồi chia tử và mẫu cho $n^2$.\n\n**Bước 1.** Chọn biểu thức liên hợp là $2+n^2+\\sqrt{n^4+1}$.\n\n**Bước 2.** Nhân và chia để tử là hiệu của $(2+n^2)^2$ và $n^4+1$.\n\n**Bước 3.** Chia tử và mẫu cho $n^2$ rồi tính giới hạn.\n\n**Phần 2. Trình bày**\n\n$2+n^2-\\sqrt{n^4+1}=\\dfrac{(n^2+2)^2-(n^4+1)}{n^2+2+\\sqrt{n^4+1}}=\\dfrac{4n^2+3}{n^2+2+\\sqrt{n^4+1}}$.\n\nChia tử và mẫu cho $n^2$: $\\dfrac{4+\\dfrac{3}{n^2}}{1+\\dfrac{2}{n^2}+\\sqrt{1+\\dfrac{1}{n^4}}}$.\n\nTử có giới hạn $4$, mẫu có giới hạn $2$.\n\nVậy giới hạn bằng $2$.",
+  "kiem": [
+   "Math.abs((n=>2+n*n-Math.sqrt(n**4+1))(1e5)-(2))<1e-4"
+  ],
+  "sach_dap_so": "2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-20c",
+  "vai": "luyen",
+  "dang_bai": "NDB01161",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Tổng căn và n: rút n ra ngoài",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn sau: $\\lim\\limits_{n\\to+\\infty}(\\sqrt{n^2-n+2}+n)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hai số hạng đều dần tới $+\\infty$, rút $n$ ra ngoài rồi dùng quy tắc tích.\n\n**Bước 1.** Đưa $n$ ra ngoài dấu căn (với $n>0$) rồi rút $n$ chung.\n\n**Bước 2.** Tìm giới hạn của thừa số trong ngoặc và xét dấu.\n\n**Bước 3.** Áp dụng quy tắc tích có một thừa số dần vô cực.\n\n**Phần 2. Trình bày**\n\nVới $n>0$: $\\sqrt{n^2-n+2}+n=n(\\sqrt{1-\\dfrac1n+\\dfrac{2}{n^2}}+1)$.\n\nCó $\\lim\\limits_{n\\to+\\infty}n=+\\infty$ và $\\lim\\limits_{n\\to+\\infty}(\\sqrt{1-\\dfrac1n+\\dfrac{2}{n^2}}+1)=2>0$.\n\nVậy giới hạn bằng $+\\infty$.",
+  "kiem": [
+   "(n=>Math.sqrt(n*n-n+2)+n)(1e7)>1e5"
+  ],
+  "sach_dap_so": "+\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-20d",
+  "vai": "luyen",
+  "dang_bai": "NDB01161",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Hiệu 3n và căn: rút n ra ngoài, hệ số lớn hơn",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn sau: $\\lim\\limits_{n\\to+\\infty}(3n-\\sqrt{4n^2+1})$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rút $n$ ra ngoài; thừa số còn lại có giới hạn khác $0$ nên dùng quy tắc tích có xét dấu.\n\n**Bước 1.** Đưa $n$ ra ngoài dấu căn (với $n>0$) rồi rút $n$ chung.\n\n**Bước 2.** Tìm giới hạn của thừa số trong ngoặc và xét dấu.\n\n**Bước 3.** Áp dụng quy tắc tích có một thừa số dần vô cực.\n\n**Phần 2. Trình bày**\n\nVới $n>0$: $3n-\\sqrt{4n^2+1}=n(3-\\sqrt{4+\\dfrac{1}{n^2}})$.\n\nCó $\\lim\\limits_{n\\to+\\infty}n=+\\infty$ và $\\lim\\limits_{n\\to+\\infty}(3-\\sqrt{4+\\dfrac{1}{n^2}})=3-2=1>0$.\n\nVậy giới hạn bằng $+\\infty$.",
+  "kiem": [
+   "(n=>3*n-Math.sqrt(4*n*n+1))(1e7)>1e5"
+  ],
+  "sach_dap_so": "+\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-21",
+  "vai": "luyen",
+  "dang_bai": "NDB01156",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Tỉ số hai tổng cấp số nhân với công bội có giá trị tuyệt đối nhỏ hơn 1",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $u_n=\\dfrac{1+a+a^2+\\cdots+a^n}{1+b+b^2+\\cdots+b^n}$ với $a,b$ là các số thực thoả mãn $|a|<1$, $|b|<1$. Tính $\\lim\\limits_{n\\to+\\infty}u_n$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dùng công thức tổng $n+1$ số hạng đầu của cấp số nhân ở tử và mẫu, rồi dùng $\\lim q^n=0$ với $|q|<1$.\n\n**Bước 1.** Nhận ra tử và mẫu đều là tổng các số hạng của một cấp số nhân.\n\n**Bước 2.** Dùng công thức tổng cấp số nhân để rút gọn $u_n$.\n\n**Bước 3.** Dùng giới hạn của $a^{n+1}$ và $b^{n+1}$ khi $|a|<1$, $|b|<1$.\n\n**Phần 2. Trình bày**\n\nTử là tổng $n+1$ số hạng đầu của cấp số nhân có số hạng đầu $1$, công bội $a\\ne1$ nên bằng $\\dfrac{1-a^{n+1}}{1-a}$; mẫu tương tự bằng $\\dfrac{1-b^{n+1}}{1-b}$.\n\nSuy ra $u_n=\\dfrac{1-b}{1-a}\\cdot\\dfrac{1-a^{n+1}}{1-b^{n+1}}$.\n\nVì $|a|<1$, $|b|<1$ nên $\\lim\\limits_{n\\to+\\infty}a^{n+1}=0$ và $\\lim\\limits_{n\\to+\\infty}b^{n+1}=0$.\n\nVậy $\\lim\\limits_{n\\to+\\infty}u_n=\\dfrac{1-b}{1-a}$.",
+  "kiem": [
+   "(n=>{const a=0.5,b=-0.2;let s=0,t=0;for(let k=0;k<=n;k++){s+=Math.pow(a,k);t+=Math.pow(b,k)};return Math.abs(s/t-(1-b)/(1-a))<1e-9})(200)"
+  ],
+  "sach_dap_so": "(1-b)/(1-a)",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-22",
+  "vai": "luyen",
+  "dang_bai": "NDB01156",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tử là tổng n số lẻ đầu (cấp số cộng), mẫu đa thức",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính $\\lim\\limits_{n\\to+\\infty}\\dfrac{1+3+5+\\cdots+(2n-1)}{n^2+2n}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử là tổng $n$ số hạng đầu của một cấp số cộng, tính tổng theo công thức rồi lấy giới hạn.\n\n**Bước 1.** Nhận ra các số lẻ liên tiếp lập thành cấp số cộng.\n\n**Bước 2.** Tính tổng $n$ số hạng đầu bằng công thức cấp số cộng.\n\n**Bước 3.** Thay vào biểu thức rồi chia tử và mẫu cho $n^2$.\n\n**Phần 2. Trình bày**\n\nCác số $1,3,5,\\dots,2n-1$ là cấp số cộng có $n$ số hạng, $u_1=1$, $u_n=2n-1$.\n\nTổng của chúng là $\\dfrac{n(1+2n-1)}{2}=n^2$.\n\nDo đó $\\dfrac{1+3+\\cdots+(2n-1)}{n^2+2n}=\\dfrac{n^2}{n^2+2n}=\\dfrac{1}{1+\\dfrac2n}$.\n\nVậy giới hạn bằng $1$.",
+  "kiem": [
+   "Math.abs((n=>n*n/(n*n+2*n))(1e7)-(1))<1e-4"
+  ],
+  "sach_dap_so": "1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-23",
+  "vai": "luyen",
+  "dang_bai": "NDB01148",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Kẹp |cos n|/n^2 giữa 0 và 1/n^2",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho dãy số $(u_n)$ với $u_n=\\dfrac{\\cos n}{n^2}$. Tính $\\lim\\limits_{n\\to+\\infty}u_n$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đánh giá $|u_n|$ bằng $\\dfrac{1}{n^2}$ rồi dùng nguyên lí kẹp để kết luận.\n\n**Bước 1.** Đánh giá $|\\cos n|\\le1$ để chặn giá trị tuyệt đối của $u_n$.\n\n**Bước 2.** Dùng giới hạn của $\\dfrac{1}{n^2}$ để suy ra giới hạn của $|u_n|$.\n\n**Bước 3.** Từ giới hạn của $|u_n|$ suy ra giới hạn của $u_n$.\n\n**Phần 2. Trình bày**\n\nTa có $|u_n|=\\dfrac{|\\cos n|}{n^2}\\le\\dfrac{1}{n^2}$.\n\nVì $\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{n^2}=0$ nên $\\lim\\limits_{n\\to+\\infty}|u_n|=0$.\n\nVậy $\\lim\\limits_{n\\to+\\infty}u_n=0$.",
+  "kiem": [
+   "(n=>Math.abs(Math.cos(n))/(n*n)<=1/(n*n)&&1/(n*n)<1e-12)(1e7)"
+  ],
+  "sach_dap_so": "0",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-24",
+  "vai": "luyen",
+  "dang_bai": "NDB01148",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Dãy bị chặn quanh n/(n+1), suy ra giới hạn hữu hạn",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho dãy số $(u_n)$ có tính chất $|u_n-\\dfrac{n}{n+1}|\\le\\dfrac{1}{n^2}$. Tính $\\lim\\limits_{n\\to+\\infty}u_n$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Từ bất đẳng thức suy ra $u_n-\\dfrac{n}{n+1}$ có giới hạn $0$, rồi cộng với giới hạn của $\\dfrac{n}{n+1}$.\n\n**Bước 1.** Dùng giới hạn của $\\dfrac{1}{n^2}$ để suy ra giới hạn của hiệu $u_n-\\dfrac{n}{n+1}$.\n\n**Bước 2.** Tìm giới hạn của dãy $\\dfrac{n}{n+1}$ bằng cách chia tử và mẫu cho $n$.\n\n**Bước 3.** Viết $u_n$ là tổng hai dãy rồi dùng quy tắc tổng.\n\n**Phần 2. Trình bày**\n\nVì $0\\le|u_n-\\dfrac{n}{n+1}|\\le\\dfrac{1}{n^2}$ và $\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{n^2}=0$ nên $\\lim\\limits_{n\\to+\\infty}(u_n-\\dfrac{n}{n+1})=0$.\n\nTa có $\\lim\\limits_{n\\to+\\infty}\\dfrac{n}{n+1}=\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{1+\\dfrac1n}=1$.\n\nVậy $\\lim\\limits_{n\\to+\\infty}u_n=\\lim\\limits_{n\\to+\\infty}[(u_n-\\dfrac{n}{n+1})+\\dfrac{n}{n+1}]=0+1=1$.",
+  "kiem": [
+   "Math.abs((n=>n/(n+1))(1e7)-(1))<1e-4"
+  ],
+  "sach_dap_so": "1",
+  "ghi_chu": "Sách viết lim(u_n - n/(n+1)) = lim(u_n - 1) = 0 (bước tắt); lời giải ở đây tách rõ hai giới hạn."
+ },
+ {
+  "id": "nbv-b1-b-25a",
+  "vai": "luyen",
+  "dang_bai": "NDB01163",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tổng cấp số nhân lùi vô hạn, q dương",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính tổng sau: $M=2+\\dfrac25+\\dfrac{2}{5^2}+\\cdots+\\dfrac{2}{5^n}+\\cdots$",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số hạng lập thành cấp số nhân có $|q|<1$ nên tổng là $S=\\dfrac{u_1}{1-q}$.\n\n**Bước 1.** Xác định số hạng đầu và công bội của cấp số nhân.\n\n**Bước 2.** Kiểm tra điều kiện $|q|<1$ để dùng công thức tổng.\n\n**Bước 3.** Thay số vào công thức $S=\\dfrac{u_1}{1-q}$ rồi rút gọn kết quả.\n\n**Phần 2. Trình bày**\n\nCác số hạng lập thành cấp số nhân có $u_1=2$, $q=\\dfrac15$ và $|q|<1$.\n\n$M=\\dfrac{u_1}{1-q}=\\dfrac{2}{1-\\dfrac15}=\\dfrac{2}{\\dfrac45}=\\dfrac52$.\n\nVậy $M=\\dfrac52$.",
+  "kiem": [
+   "(()=>{let s=0;for(let k=0;k<200;k++)s+=2/Math.pow(5,k);return Math.abs(s-5/2)<1e-9})()"
+  ],
+  "sach_dap_so": "5/2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-25b",
+  "vai": "luyen",
+  "dang_bai": "NDB01163",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tổng cấp số nhân lùi vô hạn, q âm",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính tổng sau: $N=3-\\dfrac34+\\dfrac{3}{4^2}-\\cdots+3(-\\dfrac14)^n+\\cdots$",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số hạng lập thành cấp số nhân có $|q|<1$ nên tổng là $S=\\dfrac{u_1}{1-q}$.\n\n**Bước 1.** Xác định số hạng đầu và công bội (chú ý dấu của công bội).\n\n**Bước 2.** Kiểm tra điều kiện $|q|<1$ để dùng công thức tổng.\n\n**Bước 3.** Thay số vào công thức $S=\\dfrac{u_1}{1-q}$ rồi rút gọn kết quả.\n\n**Phần 2. Trình bày**\n\nCác số hạng lập thành cấp số nhân có $u_1=3$, $q=-\\dfrac14$ và $|q|<1$.\n\n$N=\\dfrac{u_1}{1-q}=\\dfrac{3}{1+\\dfrac14}=\\dfrac{3}{\\dfrac54}=\\dfrac{12}{5}$.\n\nVậy $N=\\dfrac{12}{5}$.",
+  "kiem": [
+   "(()=>{let s=0;for(let k=0;k<200;k++)s+=3*Math.pow(-0.25,k);return Math.abs(s-12/5)<1e-9})()"
+  ],
+  "sach_dap_so": "12/5",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-26",
+  "vai": "luyen",
+  "dang_bai": "NDB01163",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tổng cấp số nhân lùi vô hạn, u1 âm, q âm",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính tổng $S=-\\dfrac13+\\dfrac19-\\dfrac1{27}+\\cdots+(-1)^n\\dfrac{1}{3^n}+\\cdots$",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhận ra cấp số nhân có công bội âm với $|q|<1$ rồi dùng $S=\\dfrac{u_1}{1-q}$.\n\n**Bước 1.** Xác định số hạng đầu $u_1$ và công bội $q$ từ ba số hạng đầu.\n\n**Bước 2.** Kiểm tra điều kiện $|q|<1$ để được dùng công thức tổng.\n\n**Bước 3.** Thay vào công thức tổng và rút gọn phân số.\n\n**Phần 2. Trình bày**\n\n$S$ là tổng cấp số nhân lùi vô hạn với $u_1=-\\dfrac13$, $q=-\\dfrac13$.\n\n$S=\\dfrac{u_1}{1-q}=\\dfrac{-\\dfrac13}{1+\\dfrac13}=-\\dfrac13\\cdot\\dfrac34=-\\dfrac14$.\n\nVậy $S=-\\dfrac14$.",
+  "kiem": [
+   "(()=>{let s=0;for(let k=1;k<200;k++)s+=Math.pow(-1,k)/Math.pow(3,k);return Math.abs(s+1/4)<1e-9})()"
+  ],
+  "sach_dap_so": "-1/4",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-27",
+  "vai": "luyen",
+  "dang_bai": "NDB01163",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tổng cấp số nhân lùi vô hạn, u1 = -1",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính tổng $S=-1+\\dfrac15-\\dfrac1{5^2}+\\cdots+(-1)^n\\dfrac{1}{5^{n-1}}+\\cdots$",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhận ra cấp số nhân có công bội âm với $|q|<1$ rồi dùng $S=\\dfrac{u_1}{1-q}$.\n\n**Bước 1.** Xác định số hạng đầu $u_1$ và công bội $q$.\n\n**Bước 2.** Kiểm tra điều kiện $|q|<1$ để được dùng công thức tổng.\n\n**Bước 3.** Thay vào công thức tổng và rút gọn phân số.\n\n**Phần 2. Trình bày**\n\n$S$ là tổng cấp số nhân lùi vô hạn với $u_1=-1$, $q=-\\dfrac15$.\n\n$S=\\dfrac{-1}{1+\\dfrac15}=-\\dfrac56$.\n\nVậy $S=-\\dfrac56$.",
+  "kiem": [
+   "(()=>{let s=0;for(let k=1;k<200;k++)s+=Math.pow(-1,k)/Math.pow(5,k-1);return Math.abs(s+5/6)<1e-9})()"
+  ],
+  "sach_dap_so": "-5/6",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-28a",
+  "vai": "luyen",
+  "dang_bai": "NDB01164",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Số thập phân tuần hoàn 1,(03) thành phân số",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Viết số thập phân vô hạn tuần hoàn $1{,}(03)$ dưới dạng phân số.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tách phần tuần hoàn thành tổng của cấp số nhân lùi vô hạn rồi dùng $S=\\dfrac{u_1}{1-q}$.\n\n**Bước 1.** Viết số thập phân thành phần nguyên cộng một tổng vô hạn các nhóm tuần hoàn.\n\n**Bước 2.** Nhận ra các nhóm tuần hoàn lập thành cấp số nhân lùi vô hạn và tìm $u_1$, $q$.\n\n**Bước 3.** Dùng công thức tổng rồi cộng với phần nguyên.\n\n**Phần 2. Trình bày**\n\n$1{,}(03)=1+\\dfrac{3}{100}+\\dfrac{3}{100^2}+\\cdots+\\dfrac{3}{100^n}+\\cdots$\n\nPhần sau số $1$ là tổng cấp số nhân lùi vô hạn có $u_1=\\dfrac{3}{100}$, $q=\\dfrac{1}{100}$.\n\nTổng này bằng $\\dfrac{\\dfrac{3}{100}}{1-\\dfrac{1}{100}}=\\dfrac{3}{99}$.\n\nVậy $1{,}(03)=1+\\dfrac{3}{99}=\\dfrac{102}{99}=\\dfrac{34}{33}$.",
+  "kiem": [
+   "Math.abs(34/33-(1+3/99))<1e-12&&Math.abs(34/33-1.030303030303)<1e-9"
+  ],
+  "sach_dap_so": "102/99 (= 34/33)",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-28b",
+  "vai": "luyen",
+  "dang_bai": "NDB01164",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Số thập phân tuần hoàn 3,(23) thành phân số",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Viết số thập phân vô hạn tuần hoàn $3{,}(23)$ dưới dạng phân số.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tách phần tuần hoàn thành tổng của cấp số nhân lùi vô hạn rồi dùng $S=\\dfrac{u_1}{1-q}$.\n\n**Bước 1.** Viết số thập phân thành phần nguyên cộng một tổng vô hạn các nhóm tuần hoàn.\n\n**Bước 2.** Nhận ra các nhóm tuần hoàn lập thành cấp số nhân lùi vô hạn và tìm $u_1$, $q$.\n\n**Bước 3.** Dùng công thức tổng rồi cộng với phần nguyên.\n\n**Phần 2. Trình bày**\n\n$3{,}(23)=3+\\dfrac{23}{100}+\\dfrac{23}{100^2}+\\cdots+\\dfrac{23}{100^n}+\\cdots$\n\nPhần sau số $3$ là tổng cấp số nhân lùi vô hạn có $u_1=\\dfrac{23}{100}$, $q=\\dfrac{1}{100}$.\n\nTổng này bằng $\\dfrac{\\dfrac{23}{100}}{1-\\dfrac{1}{100}}=\\dfrac{23}{99}$.\n\nVậy $3{,}(23)=3+\\dfrac{23}{99}=\\dfrac{320}{99}$.",
+  "kiem": [
+   "Math.abs(320/99-3.232323232323)<1e-9"
+  ],
+  "sach_dap_so": "320/99",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-29",
+  "vai": "luyen",
+  "dang_bai": "NDB01156",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "S_n là tổng n số hạng CSN, tính theo công thức rồi lấy giới hạn; dạng sau thắng 01154",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Kí hiệu $S_n=u_1+u_2+\\cdots+u_n$ là tổng $n$ số hạng đầu của cấp số nhân $(u_n)$ có công bội $q\\ne1$. Biết rằng $\\lim\\limits_{n\\to+\\infty}\\dfrac{u_n}{S_n}=\\dfrac34$. Tìm giá trị của $q$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lập tỉ số $\\dfrac{u_n}{S_n}$ theo $q$ rồi xét giới hạn tuỳ theo $|q|<1$ hay $|q|>1$.\n\n**Bước 1.** Viết $u_n$ và $S_n$ theo $u_1$ và $q$, rồi rút gọn tỉ số $\\dfrac{u_n}{S_n}$.\n\n**Bước 2.** Xét trường hợp $|q|<1$ và kiểm tra giới hạn có bằng giá trị đã cho không.\n\n**Bước 3.** Xét trường hợp $|q|>1$, chia cho $q^n$ để tính giới hạn theo $q$.\n\n**Bước 4.** Giải phương trình theo $q$ rồi đối chiếu điều kiện của trường hợp.\n\n**Phần 2. Trình bày**\n\nTa có $u_n=u_1q^{n-1}$, $S_n=u_1\\dfrac{1-q^n}{1-q}$ (với $q\\ne0$ để tỉ số xác định), nên $\\dfrac{u_n}{S_n}=\\dfrac{q^{n-1}(1-q)}{1-q^n}=\\dfrac{1-q}{q}\\cdot\\dfrac{q^n}{1-q^n}$.\n\nNếu $q=-1$ thì $S_n=0$ với mọi $n$ chẵn nên tỉ số không xác định (loại).\n\nNếu $|q|<1$ thì $\\lim\\limits_{n\\to+\\infty}q^n=0$ nên $\\lim\\limits_{n\\to+\\infty}\\dfrac{u_n}{S_n}=\\dfrac{1-q}{q}\\cdot\\dfrac{0}{1-0}=0\\ne\\dfrac34$ (loại).\n\nNếu $|q|>1$ thì $\\dfrac{q^n}{1-q^n}=\\dfrac{1}{(\\dfrac1q)^n-1}$ và $\\lim\\limits_{n\\to+\\infty}(\\dfrac1q)^n=0$, nên $\\lim\\limits_{n\\to+\\infty}\\dfrac{u_n}{S_n}=\\dfrac{1-q}{q}\\cdot\\dfrac{1}{0-1}=\\dfrac{q-1}{q}$.\n\nCho $\\dfrac{q-1}{q}=\\dfrac34\\Rightarrow4q-4=3q\\Rightarrow q=4$, thoả $|q|>1$.\n\nVậy $q=4$.",
+  "kiem": [
+   "(n=>{const f=q=>{const u=Math.pow(q,n-1),S=(1-Math.pow(q,n))/(1-q);return u/S};return Math.abs(f(4)-0.75)<1e-6&&Math.abs(f(0.5))<1e-6&&Math.abs(f(-0.5))<1e-6})(40)"
+  ],
+  "sach_dap_so": "4",
+  "ghi_chu": "Sách chỉ xét 0<q<1 rồi q>1; lời giải ở đây xét |q|<1 và |q|>1 (đủ hơn), cùng đáp số q=4."
+ },
+ {
+  "id": "nbv-b1-b-30",
+  "vai": "luyen",
+  "dang_bai": "NDB01164",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Số thập phân tuần hoàn 2,(12) thành phân số",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Viết số thập phân vô hạn tuần hoàn $2{,}(12)=2{,}121212\\ldots$ thành phân số.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tách phần tuần hoàn thành tổng của cấp số nhân lùi vô hạn có công bội $\\dfrac{1}{100}$.\n\n**Bước 1.** Tách phần nguyên và phần tuần hoàn $0{,}(12)$.\n\n**Bước 2.** Viết $0{,}(12)$ thành tổng của cấp số nhân lùi vô hạn, tìm $u_1$ và $q$.\n\n**Bước 3.** Dùng công thức tổng rồi cộng lại với phần nguyên.\n\n**Phần 2. Trình bày**\n\nTa có $2{,}(12)=2+0{,}(12)$.\n\n$0{,}(12)=0{,}12+0{,}12\\cdot\\dfrac{1}{100}+0{,}12\\cdot\\dfrac{1}{100^2}+\\cdots$ là tổng cấp số nhân lùi vô hạn có $u_1=0{,}12$, $q=\\dfrac{1}{100}$.\n\nTổng này bằng $\\dfrac{0{,}12}{1-\\dfrac{1}{100}}=\\dfrac{12}{99}=\\dfrac{4}{33}$.\n\nVậy $2{,}(12)=2+\\dfrac{4}{33}=\\dfrac{70}{33}$.",
+  "kiem": [
+   "Math.abs(70/33-2.121212121212)<1e-9"
+  ],
+  "sach_dap_so": "70/33",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-31",
+  "vai": "luyen",
+  "dang_bai": "NDB01163",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Dãy truy hồi cộng 2/3^n: tổng cấp số nhân rồi lấy giới hạn",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho dãy số $(u_n)$ với $u_1=2$, $u_{n+1}=u_n+\\dfrac{2}{3^n}$, $n\\ge1$. Đặt $v_n=u_{n+1}-u_n$.\na) Tính $v_1+v_2+\\cdots+v_n$ theo $n$.\nb) Tính $u_n$ theo $n$.\nc) Tính $\\lim\\limits_{n\\to+\\infty}u_n$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tổng $v_1+\\cdots+v_n$ vừa là tổng cấp số nhân vừa rút gọn thành $u_{n+1}-u_1$, đối chiếu hai cách để tìm $u_n$.\n\n**Bước 1.** Viết $v_n$ từ công thức truy hồi và nhận ra $(v_n)$ là cấp số nhân.\n\n**Bước 2.** Tính tổng $v_1+\\cdots+v_n$ theo công thức tổng cấp số nhân.\n\n**Bước 3.** Rút gọn cùng tổng đó theo kiểu hiệu liên tiếp để suy ra $u_n$.\n\n**Bước 4.** Lấy giới hạn của $u_n$ bằng giới hạn của $q^n$ với $|q|<1$.\n\n**Phần 2. Trình bày**\n\na) Ta có $v_n=\\dfrac{2}{3^n}$, là cấp số nhân có $v_1=\\dfrac23$, công bội $\\dfrac13$.\n\n$v_1+\\cdots+v_n=\\dfrac23\\cdot\\dfrac{1-\\dfrac{1}{3^n}}{1-\\dfrac13}=1-\\dfrac{1}{3^n}$.\n\nb) Mặt khác $v_1+\\cdots+v_n=(u_2-u_1)+(u_3-u_2)+\\cdots+(u_{n+1}-u_n)=u_{n+1}-u_1=u_{n+1}-2$.\n\nSuy ra $u_{n+1}=3-\\dfrac{1}{3^n}$, tức $u_n=3-\\dfrac{1}{3^{n-1}}$ (đúng cả với $n=1$ vì $u_1=2$).\n\nc) Vì $\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{3^{n-1}}=0$ nên $\\lim\\limits_{n\\to+\\infty}u_n=3$.\n\nVậy $v_1+\\cdots+v_n=1-\\dfrac{1}{3^n}$, $u_n=3-\\dfrac{1}{3^{n-1}}$ và $\\lim\\limits_{n\\to+\\infty}u_n=3$.",
+  "kiem": [
+   "(()=>{let u=2,ok=true;for(let n=1;n<60;n++){const s=1-Math.pow(3,-n);let w=2;for(let k=1;k<=n;k++)w+=2/Math.pow(3,k);if(Math.abs(w-(3-Math.pow(3,-n)))>1e-12)ok=false;if(Math.abs(u-(3-Math.pow(3,1-n)))>1e-12)ok=false;u+=2/Math.pow(3,n)};return ok&&Math.abs(u-3)<1e-9})()"
+  ],
+  "sach_dap_so": "sách: 3(1-1/3^n)+2 ; 5",
+  "ghi_chu": "LỆCH SÁCH — sách tính v1+...+vn = 3(1-1/3^(n+1)) (dùng v1=2 thay vì 2/3) nên ra lim=5. Đúng: tổng = 1-1/3^n, u_n = 3-1/3^(n-1), lim = 3 (kiểm: u2=8/3)."
+ },
+ {
+  "id": "nbv-b1-b-32",
+  "vai": "luyen",
+  "dang_bai": "NDB01167",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Đường gấp khúc lặp vô hạn, độ dài lập cấp số nhân lùi vô hạn",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho tam giác $OA_1A_2$ vuông tại $A_2$, $A_1A_2=a$ và $\\widehat{A_1OA_2}=30^\\circ$. Hạ các đường vuông góc $A_2A_3\\perp OA_1$; $A_3A_4\\perp OA_2$; $A_4A_5\\perp OA_1$; $\\ldots$ Tiếp tục quá trình này, ta nhận được đường gấp khúc $A_1A_2A_3A_4\\ldots$ Tính độ dài đường gấp khúc này theo $a$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Độ dài các đoạn liên tiếp lập thành cấp số nhân lùi vô hạn, tính tổng bằng $S=\\dfrac{u_1}{1-q}$.\n\n**Bước 1.** Tìm góc ở đỉnh mỗi tam giác vuông liên tiếp để biết tỉ số hai đoạn kề nhau.\n\n**Bước 2.** Tính $A_2A_3$ và $A_3A_4$ theo $a$ để tìm công bội.\n\n**Bước 3.** Xác định số hạng đầu là $A_1A_2$ (đoạn đầu tiên của đường gấp khúc) và công bội.\n\n**Bước 4.** Dùng công thức tổng cấp số nhân lùi vô hạn rồi trục căn thức ở mẫu.\n\n**Phần 2. Trình bày**\n\nCác góc $\\widehat{A_1A_2A_3},\\widehat{A_2A_3A_4},\\ldots$ đều bằng $30^\\circ$ nên mỗi đoạn bằng đoạn liền trước nhân $\\cos30^\\circ=\\dfrac{\\sqrt3}{2}$.\n\n$A_2A_3=a\\cdot\\dfrac{\\sqrt3}{2}$; $A_3A_4=a(\\dfrac{\\sqrt3}{2})^2$; $\\ldots$\n\nCác đoạn $A_1A_2,A_2A_3,A_3A_4,\\ldots$ lập thành cấp số nhân lùi vô hạn có $u_1=a$ và $q=\\dfrac{\\sqrt3}{2}<1$.\n\nĐộ dài đường gấp khúc là $l=\\dfrac{a}{1-\\dfrac{\\sqrt3}{2}}=\\dfrac{2a}{2-\\sqrt3}=\\dfrac{2a(2+\\sqrt3)}{4-3}=a(4+2\\sqrt3)$.\n\nVậy độ dài đường gấp khúc là $a(4+2\\sqrt3)$.",
+  "kiem": [
+   "(()=>{let s=0,t=1;for(let k=0;k<400;k++){s+=t;t*=Math.sqrt(3)/2};return Math.abs(s-(4+2*Math.sqrt(3)))<1e-9})()"
+  ],
+  "sach_dap_so": "sách: a(3+2√3)",
+  "ghi_chu": "LỆCH SÁCH — sách lấy số hạng đầu là a√3/2 (bỏ đoạn A1A2=a) nên ra a(3+2√3); đường gấp khúc A1A2A3... gồm cả A1A2=a nên đúng là a(4+2√3). Hình trong sách (image231) chỉ minh hoạ, đề đủ chữ để giải."
+ },
+ {
+  "id": "nbv-b1-b-33",
+  "vai": "luyen",
+  "dang_bai": "NDB01166",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Nước tái sử dụng lặp lại, tổng cấp số nhân lùi vô hạn",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tại một nhà máy, người ta đo được rằng $80\\%$ lượng nước sau khi sử dụng được xử lí và tái sử dụng. Với $100\\ \\text{m}^3$ ban đầu được sử dụng lần đầu tại nhà máy, khi quá trình xử lí và tái sử dụng lặp lại mãi mãi, nhà máy sử dụng được tổng lượng nước là bao nhiêu?",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lượng nước dùng ở mỗi lần lập thành cấp số nhân lùi vô hạn, tổng lượng nước là tổng của cấp số đó.\n\n**Bước 1.** Tính lượng nước dùng ở lần thứ nhất và lần thứ hai.\n\n**Bước 2.** Nhận ra lượng nước các lần lập thành cấp số nhân và tìm công bội.\n\n**Bước 3.** Kiểm tra $|q|<1$ rồi dùng công thức tổng.\n\n**Phần 2. Trình bày**\n\nLần đầu dùng $100$ $\\text{m}^3$; lần hai dùng $100\\cdot0{,}8$; lần ba dùng $100\\cdot0{,}8^2$; $\\ldots$\n\nCác lượng nước đó lập thành cấp số nhân lùi vô hạn có $u_1=100$, $q=0{,}8<1$.\n\nTổng lượng nước là $\\dfrac{100}{1-0{,}8}=500$ ($\\text{m}^3$).\n\nVậy nhà máy sử dụng được tổng cộng $500\\ \\text{m}^3$ nước.",
+  "kiem": [
+   "(()=>{let s=0,t=100;for(let k=0;k<500;k++){s+=t;t*=0.8};return Math.abs(s-500)<1e-6})()"
+  ],
+  "sach_dap_so": "500 m^3",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-34",
+  "vai": "luyen",
+  "dang_bai": "NDB01167",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Đường gấp khúc lặp vô hạn từ các tam giác vuông cân",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho tam giác $OA_1A_2$ vuông cân tại $A_2$ có cạnh huyền $OA_1$ bằng $a$. Bên ngoài tam giác $OA_1A_2$, vẽ tam giác $OA_2A_3$ vuông cân tại $A_3$. Tiếp theo, bên ngoài tam giác $OA_2A_3$, vẽ tam giác $OA_3A_4$ vuông cân tại $A_4$. Cứ tiếp tục quá trình như trên, ta vẽ được một dãy các tam giác vuông cân. Tính độ dài đường gấp khúc $A_1A_2A_3A_4\\cdots$",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi tam giác vuông cân có cạnh góc vuông bằng cạnh huyền nhân $\\dfrac{\\sqrt2}{2}$, nên độ dài các đoạn lập thành cấp số nhân lùi vô hạn.\n\n**Bước 1.** Tính $A_1A_2$ từ cạnh huyền $OA_1=a$ của tam giác vuông cân.\n\n**Bước 2.** Tính tiếp $A_2A_3$ và $A_3A_4$ để nhận ra công bội.\n\n**Bước 3.** Dùng công thức tổng cấp số nhân lùi vô hạn rồi trục căn thức ở mẫu.\n\n**Phần 2. Trình bày**\n\nCác góc $\\widehat{A_1OA_2},\\widehat{A_2OA_3},\\ldots$ đều bằng $45^\\circ$ nên mỗi cạnh huyền nhân $\\cos45^\\circ=\\dfrac{\\sqrt2}{2}$ được cạnh góc vuông.\n\n$A_1A_2=OA_2=\\dfrac{a\\sqrt2}{2}$; $A_2A_3=OA_3=a(\\dfrac{\\sqrt2}{2})^2$; $A_3A_4=OA_4=a(\\dfrac{\\sqrt2}{2})^3$; $\\ldots$\n\nCác đoạn $A_1A_2,A_2A_3,\\ldots$ lập thành cấp số nhân lùi vô hạn có $u_1=\\dfrac{a\\sqrt2}{2}$ và $q=\\dfrac{\\sqrt2}{2}<1$.\n\nĐộ dài đường gấp khúc là $l=\\dfrac{\\dfrac{a\\sqrt2}{2}}{1-\\dfrac{\\sqrt2}{2}}=\\dfrac{a\\sqrt2}{2-\\sqrt2}=\\dfrac{a\\sqrt2(2+\\sqrt2)}{2}=a(1+\\sqrt2)$.\n\nVậy độ dài đường gấp khúc là $a(1+\\sqrt2)$.",
+  "kiem": [
+   "(()=>{let s=0,t=Math.SQRT2/2;for(let k=0;k<400;k++){s+=t;t*=Math.SQRT2/2};return Math.abs(s-(1+Math.SQRT2))<1e-9})()"
+  ],
+  "sach_dap_so": "a(1+√2)",
+  "ghi_chu": "Hình trong sách (image254) chỉ minh hoạ, đề đủ chữ để giải."
+ },
+ {
+  "id": "nbv-b1-b-35",
+  "vai": "luyen",
+  "dang_bai": "NDB01167",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dãy hình vuông lồng nhau, tổng diện tích cấp số nhân lùi vô hạn",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho tam giác $OMN$ vuông cân tại $O$, $OM=ON=1$. Trong tam giác $OMN$, vẽ hình vuông $OA_1B_1C_1$ sao cho các đỉnh $A_1,B_1,C_1$ lần lượt nằm trên các cạnh $OM,MN,ON$. Trong tam giác $A_1MB_1$, vẽ hình vuông $A_1A_2B_2C_2$ sao cho các đỉnh $A_2,B_2,C_2$ lần lượt nằm trên các cạnh $A_1M,MB_1,A_1B_1$. Tiếp tục quá trình đó, ta được một dãy các hình vuông. Tính tổng diện tích các hình vuông này.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cạnh các hình vuông giảm dần theo một tỉ số không đổi nên diện tích lập thành cấp số nhân lùi vô hạn.\n\n**Bước 1.** Tính cạnh hình vuông thứ nhất từ vị trí điểm $B_1$ trên cạnh huyền.\n\n**Bước 2.** Tính cạnh hình vuông thứ hai trong tam giác vuông cân nhỏ hơn rồi tìm tỉ số hai cạnh liên tiếp.\n\n**Bước 3.** Suy ra diện tích các hình vuông lập thành cấp số nhân lùi vô hạn và dùng công thức tổng.\n\n**Phần 2. Trình bày**\n\nTam giác $OMN$ vuông cân tại $O$ nên $\\widehat{OMN}=45^\\circ$.\n\nTam giác $A_1MB_1$ vuông tại $A_1$ có $\\widehat{M}=45^\\circ$ nên vuông cân tại $A_1$, suy ra $A_1M=A_1B_1=OA_1$.\n\nDo đó $OA_1=\\dfrac12OM=\\dfrac12$, tức cạnh hình vuông thứ nhất là $a_1=\\dfrac12$.\n\nTam giác $A_1MB_1$ vuông cân tại $A_1$ có cạnh góc vuông $a_1$; lập luận tương tự, cạnh hình vuông thứ hai là $a_2=\\dfrac12a_1=(\\dfrac12)^2$.\n\nCứ như vậy, cạnh các hình vuông là $a_n=(\\dfrac12)^n$.\n\nDiện tích các hình vuông là $S_1=\\dfrac14$, $S_2=(\\dfrac14)^2$, $S_3=(\\dfrac14)^3$, $\\ldots$\n\nChúng lập thành cấp số nhân lùi vô hạn có $S_1=\\dfrac14$ và công bội $\\dfrac14$.\n\nTổng diện tích là $S=\\dfrac{\\dfrac14}{1-\\dfrac14}=\\dfrac13$.\n\nVậy tổng diện tích các hình vuông bằng $\\dfrac13$.",
+  "kiem": [
+   "(()=>{let s=0,t=0.25;for(let k=0;k<200;k++){s+=t;t*=0.25};return Math.abs(s-1/3)<1e-9})()"
+  ],
+  "sach_dap_so": "1/3",
+  "ghi_chu": "Hình trong sách (image276) chỉ minh hoạ, đề đủ chữ để giải; kiểm toạ độ: B1(1/2;1/2), cạnh 1/2, hình sau cạnh 1/4."
+ },
+ {
+  "id": "nbv-b1-b-36",
+  "vai": "luyen",
+  "dang_bai": "NDB01167",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tam giác trung bình lặp vô hạn, tổng diện tích cấp số nhân lùi vô hạn",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho tam giác $A_1B_1C_1$ có diện tích là $3$ (đơn vị diện tích). Dựng tam giác $A_2B_2C_2$ bằng cách nối các trung điểm của các cạnh $B_1C_1,C_1A_1,A_1B_1$. Tiếp tục quá trình này, ta có các tam giác $A_3B_3C_3,\\ldots,A_nB_nC_n,\\ldots$ Kí hiệu $s_n$ là diện tích của tam giác $A_nB_nC_n$.\na) Tính $s_n$.\nb) Tính tổng $s_1+s_2+\\cdots+s_n+\\cdots$",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tam giác nối trung điểm có diện tích bằng $\\dfrac14$ tam giác trước, nên $(s_n)$ là cấp số nhân lùi vô hạn.\n\n**Bước 1.** Tìm tỉ số diện tích hai tam giác liên tiếp.\n\n**Bước 2.** Suy ra $(s_n)$ là cấp số nhân và viết số hạng tổng quát.\n\n**Bước 3.** Dùng công thức tổng cấp số nhân lùi vô hạn cho ý b).\n\n**Phần 2. Trình bày**\n\na) Tam giác $A_{n+1}B_{n+1}C_{n+1}$ có các cạnh bằng một nửa cạnh tam giác $A_nB_nC_n$ nên $s_{n+1}=\\dfrac14s_n$.\n\nVậy $(s_n)$ là cấp số nhân có $s_1=3$, công bội $\\dfrac14$, nên $s_n=3(\\dfrac14)^{n-1}$.\n\nb) Vì $\\dfrac14<1$ nên $s_1+s_2+\\cdots+s_n+\\cdots=\\dfrac{3}{1-\\dfrac14}=4$.\n\nVậy $s_n=3(\\dfrac14)^{n-1}$ và $s_1+s_2+\\cdots+s_n+\\cdots=4$.",
+  "kiem": [
+   "(()=>{let s=0;for(let n=1;n<200;n++)s+=3*Math.pow(0.25,n-1);return Math.abs(s-4)<1e-9})()"
+  ],
+  "sach_dap_so": "a) 3(1/4)^(n-1)  b) 4",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-37",
+  "vai": "luyen",
+  "dang_bai": "NDB01166",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Chất phóng xạ giảm một nửa mỗi chu kì, dãy khối lượng",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Một mẫu chất phóng xạ $^{210}_{84}\\text{Po}$ có khối lượng ban đầu $m_0=42$ (mg), nhưng cứ sau một khoảng thời gian $T=138$ ngày thì khối lượng chất đó giảm đi một nửa ($T$ được gọi là chu kì bán rã). Gọi $u_n$ là khối lượng còn lại của mẫu chất phóng xạ sau $n$ chu kì bán rã.\na) Tìm số hạng tổng quát của dãy số $(u_n)$.\nb) Tính giới hạn của dãy số $(u_n)$ và cho biết ý nghĩa của giới hạn đó.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi chu kì khối lượng giảm một nửa nên $(u_n)$ là cấp số nhân; số hạng tổng quát cho ta lấy giới hạn.\n\n**Bước 1.** Tìm khối lượng sau một chu kì để xác định số hạng đầu và công bội.\n\n**Bước 2.** Viết số hạng tổng quát của cấp số nhân.\n\n**Bước 3.** Lấy giới hạn bằng $\\lim q^n=0$ với $|q|<1$ rồi giải thích ý nghĩa thực tế.\n\n**Phần 2. Trình bày**\n\na) Sau mỗi chu kì khối lượng giảm một nửa nên $u_n=\\dfrac12u_{n-1}$ và $u_1=\\dfrac{42}{2}=21$.\n\nSuy ra $(u_n)$ là cấp số nhân công bội $\\dfrac12$, và $u_n=21(\\dfrac12)^{n-1}=\\dfrac{42}{2^n}$.\n\nb) $\\lim\\limits_{n\\to+\\infty}u_n=42\\cdot\\lim\\limits_{n\\to+\\infty}(\\dfrac12)^n=42\\cdot0=0$.\n\nÝ nghĩa: sau một khoảng thời gian đủ dài thì khối lượng chất phóng xạ còn lại rất nhỏ, dần tới $0$.",
+  "kiem": [
+   "Math.abs((n=>42/Math.pow(2,n))(200)-(0))<1e-4&&(()=>{let u=42;for(let k=1;k<=5;k++)u/=2;return Math.abs(u-42/32)<1e-12})()"
+  ],
+  "sach_dap_so": "u_n=42/2^n ; 0",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b1-b-38",
+  "vai": "luyen",
+  "dang_bai": "NDB01166",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Quả bóng nảy lên bằng 1/4 độ cao trước, quãng đường tổng",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Từ độ cao $100$ m, người ta thả một quả bóng cao su xuống đất. Giả sử cứ sau mỗi lần chạm đất, quả bóng nảy lên một độ cao bằng $\\dfrac14$ độ cao mà quả bóng đạt được trước đó. Gọi $h_n$ là độ cao quả bóng đạt được ở lần nảy thứ $n$.\na) Tìm số hạng tổng quát của dãy số $(h_n)$.\nb) Tính giới hạn của dãy số $(h_n)$ và nêu ý nghĩa giới hạn đó.\nc) Gọi $S_n$ là tổng độ dài quãng đường đi được của quả bóng từ lúc bắt đầu thả đến khi quả bóng chạm đất lần thứ $n$. Tính $S_n$; nếu quá trình này cứ tiếp tục diễn ra mãi thì tổng quãng đường quả bóng di chuyển được là bao nhiêu?",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Độ cao các lần nảy lập thành cấp số nhân; quãng đường gồm lần rơi đầu và các cặp lên–xuống, lấy giới hạn của tổng.\n\n**Bước 1.** Tìm độ cao lần nảy thứ nhất để xác định số hạng đầu và công bội của $(h_n)$.\n\n**Bước 2.** Viết số hạng tổng quát rồi lấy giới hạn để nêu ý nghĩa.\n\n**Bước 3.** Đếm quãng đường đến lần chạm đất thứ $n$: lần rơi đầu cộng các cặp lên–xuống đã hoàn thành.\n\n**Bước 4.** Dùng tổng cấp số nhân để viết $S_n$ rồi lấy giới hạn khi $n$ dần vô cực.\n\n**Phần 2. Trình bày**\n\na) $h_1=\\dfrac{100}{4}=25$ và $h_n=\\dfrac14h_{n-1}$ nên $(h_n)$ là cấp số nhân công bội $\\dfrac14$, $h_n=\\dfrac{100}{4^n}$.\n\nb) $\\lim\\limits_{n\\to+\\infty}h_n=100\\cdot\\lim\\limits_{n\\to+\\infty}(\\dfrac14)^n=0$: độ cao các lần nảy giảm dần và dần tới $0$.\n\nc) Đến khi chạm đất lần thứ $n$, bóng rơi $100$ rồi có $n-1$ cặp lên–xuống, nên $S_n=100+2(h_1+h_2+\\cdots+h_{n-1})$.\n\n$h_1+\\cdots+h_{n-1}=25\\cdot\\dfrac{1-(\\dfrac14)^{n-1}}{1-\\dfrac14}=\\dfrac{100}{3}[1-(\\dfrac14)^{n-1}]$ nên $S_n=100+\\dfrac{200}{3}[1-(\\dfrac14)^{n-1}]$.\n\nKhi quá trình diễn ra mãi, $\\lim\\limits_{n\\to+\\infty}S_n=100+\\dfrac{200}{3}=\\dfrac{500}{3}$.\n\nVậy tổng quãng đường bóng di chuyển là $\\dfrac{500}{3}$ m.",
+  "kiem": [
+   "(()=>{const h=n=>100/Math.pow(4,n);const S=n=>{let s=100;for(let k=1;k<=n-1;k++)s+=2*h(k);return s};let ok=true;for(let n=1;n<30;n++){if(Math.abs(S(n)-(100+200/3*(1-Math.pow(0.25,n-1))))>1e-9)ok=false};return ok&&Math.abs(S(100)-500/3)<1e-9&&h(1)===25})()"
+  ],
+  "sach_dap_so": "a) 100/4^n  b) 0  c) S_n sách: 100+2(100/4+...+100/4^n) ; 500/3",
+  "ghi_chu": "LỆCH SÁCH (nhẹ) — sách viết S_n = 100 + 2(100/4 + ... + 100/4^n) (thừa một cặp lên–xuống); đến lúc chạm đất lần n chỉ có n-1 cặp, S_n = 100 + 2(h_1+...+h_{n-1}). Đáp số giới hạn 500/3 trùng sách."
+ },
+ {
+  "id": "nbv-b1-b-39",
+  "vai": "luyen",
+  "dang_bai": "NDB01151",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Diện tích tam giác theo n trong toạ độ, rồi giới hạn phân thức",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Trong mặt phẳng toạ độ $Oxy$, đường thẳng $d:x+y=2$ cắt trục hoành tại điểm $A$ và cắt đường thẳng $d_n:y=\\dfrac{2n+1}{n}x$ tại điểm $P_n$ $(n\\in\\mathbb{N}^*)$. Kí hiệu $S_n$ là diện tích của tam giác $OAP_n$. Tìm $\\lim S_n$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm toạ độ $A$ và $P_n$, tính $S_n$ theo $n$ bằng đáy $OA$ và chiều cao là tung độ của $P_n$, rồi lấy giới hạn phân thức.\n\n**Bước 1.** Tìm toạ độ giao điểm $A$ của $d$ với trục hoành.\n\n**Bước 2.** Giải hệ phương trình của $d$ và $d_n$ để tìm toạ độ $P_n$ theo $n$.\n\n**Bước 3.** Tính diện tích tam giác bằng nửa đáy $OA$ nhân tung độ của $P_n$.\n\n**Bước 4.** Chia tử và mẫu cho $n$ để tính giới hạn của $S_n$.\n\n**Phần 2. Trình bày**\n\nCho $y=0$ trong $x+y=2$ được $A(2;0)$, nên $OA=2$.\n\nThay $y=\\dfrac{2n+1}{n}x$ vào $x+y=2$: $x(1+\\dfrac{2n+1}{n})=2\\Rightarrow x=\\dfrac{2n}{3n+1}$, $y=\\dfrac{4n+2}{3n+1}$. Vậy $P_n(\\dfrac{2n}{3n+1};\\dfrac{4n+2}{3n+1})$.\n\nDiện tích $S_n=\\dfrac12\\cdot OA\\cdot y_{P_n}=\\dfrac{4n+2}{3n+1}$.\n\nVậy $\\lim S_n=\\lim\\dfrac{4+\\dfrac2n}{3+\\dfrac1n}=\\dfrac43$.",
+  "kiem": [
+   "(n=>{const x=2*n/(3*n+1),y=(2*n+1)/n*x;const S=0.5*Math.abs(2*y);return Math.abs(x+y-2)<1e-9&&Math.abs(S-(4*n+2)/(3*n+1))<1e-9&&Math.abs(S-4/3)<1e-4})(1e7)"
+  ],
+  "sach_dap_so": "4/3",
+  "ghi_chu": "Hình trong sách (image344) chỉ minh hoạ, đề đủ chữ để giải. Sách tính qua sin 45° cho cùng kết quả."
+ }
+]

@@ -1,0 +1,203 @@
+{
+ "KDB01527": {
+  "nhom_id": "KNB00522",
+  "ten": "Nhận biết công thức và cấu tạo của ethylic alcohol",
+  "cau": [
+   "K09080101001",
+   "K09080101002",
+   "K09080101003",
+   "K09080101004",
+   "K09080101005"
+  ]
+ },
+ "KDB01528": {
+  "nhom_id": "KNB00522",
+  "ten": "Nhận biết tính chất vật lí của ethylic alcohol",
+  "cau": [
+   "K09080101006",
+   "K09080101007",
+   "K09080101008",
+   "K09080101009",
+   "K09080101010"
+  ]
+ },
+ "KDB01529": {
+  "nhom_id": "KNB00522",
+  "ten": "Hiểu ý nghĩa và so sánh độ cồn ghi trên nhãn",
+  "cau": [
+   "K09080101011",
+   "K09080101012",
+   "K09080101013",
+   "K09080101014",
+   "K09080101015"
+  ]
+ },
+ "KDB01530": {
+  "nhom_id": "KNB00522",
+  "ten": "Ứng dụng của ethylic alcohol trong đời sống và sản xuất",
+  "cau": [
+   "K09080101016",
+   "K09080101017",
+   "K09080101018",
+   "K09080101019"
+  ]
+ },
+ "KDB01531": {
+  "nhom_id": "KNB00522",
+  "ten": "Tác hại của rượu, bia và sử dụng có trách nhiệm",
+  "cau": [
+   "K09080101020",
+   "K09080101021",
+   "K09080101022",
+   "K09080101023"
+  ]
+ },
+ "KDB01532": {
+  "nhom_id": "KNB00523",
+  "ten": "Phản ứng cháy của ethylic alcohol",
+  "cau": [
+   "K09080102001",
+   "K09080102002",
+   "K09080102003"
+  ]
+ },
+ "KDB01533": {
+  "nhom_id": "KNB00523",
+  "ten": "Phản ứng của ethylic alcohol với kim loại kiềm",
+  "cau": [
+   "K09080102004",
+   "K09080102005",
+   "K09080102006"
+  ]
+ },
+ "KDB01534": {
+  "nhom_id": "KNB00523",
+  "ten": "Điều chế ethylic alcohol và chuỗi chuyển hoá",
+  "cau": [
+   "K09080102007",
+   "K09080102008",
+   "K09080102009",
+   "K09080102010",
+   "K09080102011"
+  ]
+ },
+ "KDB01535": {
+  "nhom_id": "KNB00524",
+  "ten": "Tính độ cồn khi biết thể tích ethylic alcohol và dung dịch",
+  "cau": [
+   "K09080103001",
+   "K09080103002",
+   "K09080103003"
+  ]
+ },
+ "KDB01536": {
+  "nhom_id": "KNB00524",
+  "ten": "Tính thể tích ethylic alcohol nguyên chất trong dung dịch rượu",
+  "cau": [
+   "K09080103004",
+   "K09080103005",
+   "K09080103006"
+  ]
+ },
+ "KDB01537": {
+  "nhom_id": "KNB00524",
+  "ten": "Tính thể tích nước cần thêm để pha loãng rượu",
+  "cau": [
+   "K09080103007",
+   "K09080103008",
+   "K09080103009"
+  ]
+ },
+ "KDB01538": {
+  "nhom_id": "KNB00525",
+  "ten": "Tính thể tích rượu thu được từ lên men glucose có hiệu suất",
+  "cau": [
+   "K09080104001",
+   "K09080104002",
+   "K09080104003",
+   "K09080104004",
+   "K09080104005",
+   "K09080104006",
+   "K09080104007"
+  ]
+ },
+ "KDB01539": {
+  "nhom_id": "KNB00526",
+  "ten": "Nhận biết công thức, cấu tạo và khối lượng phân tử acetic acid",
+  "cau": [
+   "K09080201001",
+   "K09080201002",
+   "K09080201003",
+   "K09080201004",
+   "K09080201005",
+   "K09080201006",
+   "K09080201007",
+   "K09080201008"
+  ]
+ },
+ "KDB01540": {
+  "nhom_id": "KNB00526",
+  "ten": "Nhận biết tính chất vật lí, đặc điểm và ứng dụng của acetic acid",
+  "cau": [
+   "K09080201009",
+   "K09080201010",
+   "K09080201011",
+   "K09080201012",
+   "K09080201013",
+   "K09080201014",
+   "K09080201015"
+  ]
+ },
+ "KDB01541": {
+  "nhom_id": "KNB00527",
+  "ten": "Viết phương trình thể hiện tính acid của acetic acid",
+  "cau": [
+   "K09080202001",
+   "K09080202002",
+   "K09080202003",
+   "K09080202004",
+   "K09080202005",
+   "K09080202006"
+  ]
+ },
+ "KDB01542": {
+  "nhom_id": "KNB00527",
+  "ten": "Phản ứng ester hoá giữa acetic acid và alcohol",
+  "cau": [
+   "K09080202007",
+   "K09080202008",
+   "K09080202009",
+   "K09080202010",
+   "K09080202011",
+   "K09080202017"
+  ]
+ },
+ "KDB01543": {
+  "nhom_id": "KNB00527",
+  "ten": "Lên men giấm và điều chế acetic acid",
+  "cau": [
+   "K09080202012",
+   "K09080202013",
+   "K09080202014",
+   "K09080202015",
+   "K09080202016",
+   "K09080202018"
+  ]
+ },
+ "KDB01544": {
+  "nhom_id": "KNB00528",
+  "ten": "Tính khối lượng ethyl acetate thu được khi biết khối lượng acetic acid và hiệu suất",
+  "cau": [
+   "K09080203001",
+   "K09080203003"
+  ]
+ },
+ "KDB01545": {
+  "nhom_id": "KNB00528",
+  "ten": "Tính khối lượng acetic acid ban đầu khi biết lượng ethyl acetate và hiệu suất",
+  "cau": [
+   "K09080203002",
+   "K09080203004"
+  ]
+ }
+}

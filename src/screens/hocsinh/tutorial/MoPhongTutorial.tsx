@@ -595,8 +595,73 @@ function MpTroChoi() {
   )
 }
 
+// ── Nông trại BK (chặng "đã mở") ─────────────────────────────────────────────
+function MpNongTrai() {
+  const o = (e: string, k: number) => <span key={k} className="flex h-11 w-11 items-center justify-center rounded-[12px] text-[24px]" style={{ background: MAU.surface2 }}>{e}</span>
+  return (
+    <div className="grid gap-3">
+      <Soi id="o_vao" style={THE}>
+        <div className="flex gap-3 p-3">
+          <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[16px] text-[33px]" style={{ background: MAU.surface2 }}>🌾</span>
+          <div className="min-w-0 flex-1"><b className="text-[16.5px]" style={{ ...HEAD, ...chu() }}>Nông trại BK</b><p className="text-[13px]" style={mo}>Vườn riêng của em</p><p className="mt-1 text-[14px] font-bold" style={{ color: MAU.acc }}>Chơi ›</p></div>
+        </div>
+      </Soi>
+      <Soi id="vuon" style={THE}>
+        <div className="p-3"><b className="text-[15px]" style={chu()}>Vườn của em</b>
+          <div className="mt-2 flex gap-2">{['🌱', '🥕', '🌽', '🟫'].map(o)}</div></div>
+      </Soi>
+      <Soi id="gio" style={THE}>
+        <div className="flex items-center justify-between p-3 text-[14px]"><span style={chu()}>⏱ Hôm nay đã chơi</span><b style={{ color: MAU.acc }}>12 / 30 phút</b></div>
+      </Soi>
+      <Soi id="xu" style={THE}>
+        <div className="p-3">
+          <div className="flex justify-between text-[14px]"><span style={chu()}>Xu từ Nông trại tháng này</span><b style={{ color: MAU.acc }}>8/20 xu</b></div>
+          <div className="mt-1 h-2.5 overflow-hidden rounded-full" style={{ background: MAU.surface2 }}><div className="h-full w-[40%] rounded-full" style={{ background: MAU.acc }} /></div>
+          <p className="mt-1 text-[12.5px]" style={mo}>Mỗi ngày chơi ≥ 5 phút · tối đa 4 xu/ngày</p>
+        </div>
+      </Soi>
+      <Soi id="ban_be" style={THE}>
+        <div className="flex items-center gap-3 p-3"><span className="text-[26px]">🧑‍🌾</span><div className="flex-1"><b className="text-[14.5px]" style={chu()}>Vườn bạn cùng lớp</b><p className="text-[12.5px]" style={mo}>Giúp tưới · bắt sâu · hái trộm</p></div><span className="text-[14px] font-bold" style={{ color: MAU.acc }}>Thăm ›</span></div>
+      </Soi>
+      <Soi id="thu_cung" style={THE}>
+        <div className="flex items-center gap-3 p-3"><span className="text-[26px]">🐶</span><div className="flex-1"><b className="text-[14.5px]" style={chu()}>Thú cưng</b><p className="text-[12.5px]" style={mo}>Chó có sẵn · mua thêm mèo, chim, bạn thú</p></div><span className="text-[14px] font-bold" style={{ color: MAU.acc }}>🐾</span></div>
+      </Soi>
+    </div>
+  )
+}
+
+// ── Có gì mới 03/11: Đấu trường đổi luật · mùa xếp hạng mới · bạn robot góp ý ─────────────────────────
+function MpMoi0311() {
+  const dong = (t: string, d: string, mau: string) => <div className="flex items-center justify-between gap-2 text-[14.5px]"><span style={chu()}>{t}</span><b style={{ color: mau }}>{d}</b></div>
+  return (
+    <div className="grid gap-3">
+      <Soi id="dau_truong" giu={['tru_diem', 'xao']} style={THE} className="grid gap-2 p-3">
+        <b className="text-[16.5px]" style={{ ...HEAD, ...chu() }}>⚔️ Đấu trường BK</b>
+        <Soi id="tru_diem" giu={['dau_truong']} className="grid gap-1 p-2" style={{ background: MAU.surface2 }}>
+          {dong('Đúng, trả lời nhanh', '+100', MAU.dung)}
+          {dong('Sai, chọn nhanh', '−100', MAU.sai)}
+          {dong('Sai, chọn chậm hơn', '−70 / −50', MAU.sai)}
+        </Soi>
+        <Soi id="xao" giu={['dau_truong']} className="grid grid-cols-4 gap-1.5 p-2" style={{ background: MAU.surface2 }}>
+          {['C', 'A', 'D', 'B'].map((x) => <span key={x} className="flex h-9 items-center justify-center rounded-[10px] text-[15px] font-bold" style={{ border: `1.5px solid ${MAU.line}`, color: MAU.ink }}>{x}</span>)}
+          <span className="col-span-4 text-center text-[12.5px]" style={mo}>Đáp án đổi chỗ mỗi lần ra đề</span>
+        </Soi>
+      </Soi>
+      <Soi id="bxh" style={THE} className="flex items-center gap-3 p-3">
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] text-[26px]" style={{ background: MAU.surface2 }}>🏆</span>
+        <div className="min-w-0 flex-1"><b className="text-[16px]" style={{ ...HEAD, ...chu() }}>Mùa mới</b><p className="text-[13px]" style={mo}>Bảng xếp hạng tính lại từ 0 · cấp, XP của em giữ nguyên</p></div>
+      </Soi>
+      <Soi id="gop_y" style={THE} className="flex items-center gap-3 p-3">
+        <img src="/bk-ui/hs/gop-y/linh_vat_gop_y.png" alt="" className="h-14 w-auto shrink-0" />
+        <div className="min-w-0 flex-1"><b className="text-[16px]" style={{ ...HEAD, ...chu() }}>Góp ý ở đây nhé!</b><p className="text-[13px]" style={mo}>Góc dưới bên trái màn chính</p></div>
+      </Soi>
+    </div>
+  )
+}
+
 const MAN: Record<ChuongTutorial['id'], () => JSX.Element> = {
-  chuoi: MpChuoi, tro_choi: MpTroChoi,
+  moi_0311: MpMoi0311,
+  chuoi: MpChuoi, tro_choi: MpTroChoi, nong_trai: MpNongTrai,
   giao_dien: MpGiaoDien, hoc_tap: MpHocTap, chu_de: MpChuDe, tu_luyen: MpTuLuyen, luot_that: MpLuotThat, thu_thach: MpThuThach, dau_chinh_phuc: MpDauChinhPhuc,
   nhiem_vu_ngay: MpNhiemVu, bxh: MpBxh, rank: MpRank, huy_hieu: MpHuyHieu, xu_may_man: MpXuMayMan, the_gioi: MpTheGioi,
 }

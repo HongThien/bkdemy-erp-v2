@@ -1,55 +1,136 @@
 // ============================================================================
 // TRỢ LÝ CÁ NHÂN — báo cáo Sư phạm của CÁC KHỐI MÌNH QUẢN LÝ (CEO 14/10).
-// Khối lấy từ sơ đồ tổ chức ở DB (`vi_tri.khoi_quan_ly`); mọi số lọc từ báo cáo trung tâm đã lưu
+// Khối lấy từ bảng phân công Trưởng/Phó khối ở DB (`phan_cong_quan_ly_khoi`, 29/10); mọi số lọc từ báo cáo trung tâm đã lưu
 // (`fn_troly_ca_nhan_lay`) — luật đếm chỉ có MỘT nguồn. Màn này KHÔNG tính gì.
 // Trưởng khối: nhắc TA của khối, báo cáo lên Quản lý trợ giảng.
 // Phó khối (chi_xem): xem + nhắc TA, báo cáo lại trưởng khối — không giao việc / không gậy.
+// Thùy 29/10 (spec-truong-khoi.md §5, P4): trưởng khối = "Trang thu nhỏ" ⇒ 3 mục: Báo cáo Sư phạm · Dạng yếu · Học tập tuần.
+// Phạm vi = (môn × khối) của fn_pham_vi_cua_toi ở DB (quản lý môn = mọi khối của môn).
 // ============================================================================
 import { useEffect, useState } from 'react'
-import { getBaoCaoCaNhan, type BaoCaoTroLy } from '../../lib/troly-baocao'
+import { getBaoCaoCaNhan, getBaoCaoO, getBaoCaoPhong, getHocTapTuanCaNhan, type BaoCaoTroLy, type LopHocTapTuan } from '../../lib/troly-baocao'
 import { BanBaoCao } from './BaoCao'
+import WidgetDangYeu from '../qlcl/WidgetDangYeu'
+import { moBoTroTab } from '../botro/BoTroHubScreen'
+import { useStore } from '../../store/useStore'
+import { ddmmVN } from '../../lib/tuan'
+
+type Muc = 'baocao' | 'dangyeu' | 'tuan'
+const MUC: [Muc, string][] = [['baocao', 'Báo cáo Sư phạm'], ['dangyeu', 'Dạng yếu'], ['tuan', 'Học tập tuần']]
+// Rời tab rồi quay lại = đúng mục + khoảng đang xem, không gọi lại (CLAUDE.md §2 React).
+const NHO_MUC: { muc: Muc } = { muc: 'baocao' }
 
 const KHOANG = [7, 14, 30]
-// Rời tab rồi quay lại = đúng khoảng đang xem, không gọi lại (CLAUDE.md §2 React).
-const NHO: { soNgay: number; bc: BaoCaoTroLy | null } = { soNgay: 14, bc: null }
+// khoa = ô đang xem ('' = mọi ô trong phạm vi của tôi, 'môn|khối' = một ô) — đổi ô là đổi ngữ cảnh ⇒ tải lại.
+const NHO: { soNgay: number; khoa: string; bc: BaoCaoTroLy | null } = { soNgay: 14, khoa: '', bc: null }
+export type OChon = { mon: string; khoi: string }
 
-export default function BaoCaoCaNhan() {
+// Thùy 03/11: mọi bộ lọc trên MỘT hàng (mục · nhìn lại · khối quản lý) — trước chiếm 3 dòng.
+// Báo cáo Sư phạm tải ở đây (không ở mục con) để khoảng "Nhìn lại" + dòng khối nằm chung hàng với tab mục.
+// chiMuc: chỉ hiện các mục này (Phòng trưởng khối, Thùy 03/11: tranh Quản trị = ['baocao'] · tranh Chất lượng = ['tuan']).
+// Còn 1 mục thì không vẽ thanh chọn mục.
+// o: chỉ một ô (môn × khối) — phòng Trưởng bộ môn chọn khối ⇒ thấy y như trưởng khối khối đó (fn_troly_o_lay).
+// phong: không chọn ô thì lấy "mọi khối CỦA PHÒNG" (đúng môn của phòng — fn_troly_phong_lay) thay vì cả phạm vi của tôi.
+export default function BaoCaoCaNhan({ chiMuc, o, phong }: { chiMuc?: Muc[]; o?: OChon | null; phong?: boolean } = {}) {
+  const khoa = o ? `${o.mon}|${o.khoi}` : phong ? 'phong' : ''
+  const [mucS, setMucS] = useState<Muc>(NHO_MUC.muc)
+  const dsMuc = MUC.filter(([k]) => !chiMuc || chiMuc.includes(k))
+  const muc: Muc = dsMuc.some(([k]) => k === mucS) ? mucS : dsMuc[0][0]
+  const setMuc = (m: Muc) => { NHO_MUC.muc = m; setMucS(m) }
+  const setStaffLeaf = useStore((s) => s.setStaffLeaf)
   const [soNgay, setSoNgay] = useState(NHO.soNgay)
-  const [bc, setBc] = useState<BaoCaoTroLy | null>(NHO.bc)
+  const [bc, setBc] = useState<BaoCaoTroLy | null>(NHO.khoa === khoa ? NHO.bc : null)
   const [dangTai, setDangTai] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
 
   useEffect(() => {
-    if (NHO.bc && NHO.soNgay === soNgay) return
+    if (muc !== 'baocao') return
+    if (NHO.bc && NHO.soNgay === soNgay && NHO.khoa === khoa) { setBc(NHO.bc); return }
+    let con = true
     setBc(null); setLoi(null); setDangTai(true)
-    getBaoCaoCaNhan(soNgay)
-      .then((d) => { NHO.soNgay = soNgay; NHO.bc = d; setBc(d) })
-      .catch((e: any) => setLoi(e?.message ?? String(e)))
-      .finally(() => setDangTai(false))
-  }, [soNgay])
+    ;(o ? getBaoCaoO(soNgay, o.mon, o.khoi) : phong ? getBaoCaoPhong(soNgay) : getBaoCaoCaNhan(soNgay))
+      .then((d) => { if (!con) return; NHO.soNgay = soNgay; NHO.khoa = khoa; NHO.bc = d; setBc(d) })
+      .catch((e: any) => { if (con) setLoi(e?.message ?? String(e)) })
+      .finally(() => { if (con) setDangTai(false) })
+    return () => { con = false }
+  }, [soNgay, muc, khoa])   // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div>
-      <div className="mb-3 flex flex-wrap items-center gap-1.5">
-        <span className="text-[12.5px] text-slate-500">Nhìn lại</span>
-        {KHOANG.map((n) => (
-          <button key={n} onClick={() => setSoNgay(n)}
-            className={`rounded-full border px-3 py-1 text-[12.5px] font-medium ${
-              soNgay === n ? 'border-indigo-500 bg-indigo-600 text-white' : 'border-slate-300 bg-white text-slate-600 hover:bg-slate-50'}`}>
-            {n} ngày
-          </button>
-        ))}
+      <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2">
+        {dsMuc.length > 1 ? (
+          <div className="inline-flex rounded-xl border border-slate-200 bg-white p-0.5 text-[13px] font-semibold shadow-sm">
+            {dsMuc.map(([k, t]) => (
+              <button key={k} onClick={() => setMuc(k)} className={`rounded-lg px-4 py-1.5 ${muc === k ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-50'}`}>{t}</button>
+            ))}
+          </div>
+        ) : <span className="text-[14px] font-bold text-slate-800">{dsMuc[0][1]}</span>}
+        {muc === 'baocao' && (
+          <div className="flex items-center gap-1.5">
+            <span className="text-[12.5px] text-slate-500">Nhìn lại</span>
+            {KHOANG.map((n) => (
+              <button key={n} onClick={() => setSoNgay(n)}
+                className={`rounded-full border px-3 py-1 text-[12.5px] font-medium ${
+                  soNgay === n ? 'border-indigo-500 bg-indigo-600 text-white' : 'border-slate-300 bg-white text-slate-600 hover:bg-slate-50'}`}>
+                {n} ngày
+              </button>
+            ))}
+          </div>
+        )}
+        {muc === 'baocao' && bc?.khoi && (
+          <span className="ml-auto text-[12.5px] text-slate-600" title={bc.ghi_chu_bo ?? undefined}>
+            Khối quản lý: <b>{bc.khoi.join(' · ')}</b> · {bc.so_lop} lớp <span className="cursor-help text-slate-400">ⓘ</span>
+          </span>
+        )}
       </div>
+      {muc === 'baocao' ? <>
+          {loi && <div className="mb-3 rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">Lỗi: {loi}</div>}
+          {!bc && dangTai && <div className="rounded-2xl border border-slate-200 bg-white p-4 text-[13px] text-slate-400">Đang tải báo cáo…</div>}
+          {bc && <BanBaoCao bc={bc} mo={dangTai} />}
+        </>
+        : muc === 'dangyeu' ? <WidgetDangYeu onTaoCaNhe={() => { moBoTroTab('nhe'); setStaffLeaf('botro') }} />
+        : <HocTapTuan o={o} />}
+    </div>
+  )
+}
 
-      {bc?.khoi && (
-        <div className="mb-3 rounded-xl border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-700">
-          Khối bạn quản lý: <b>{bc.khoi.join(' · ')}</b> — {bc.so_lop} lớp.
-          <span className="ml-1 text-slate-400">{bc.ghi_chu_bo}</span>
-        </div>
-      )}
-      {loi && <div className="mb-3 rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">Lỗi: {loi}</div>}
-      {!bc && dangTai && <div className="rounded-2xl border border-slate-200 bg-white p-4 text-[13px] text-slate-400">Đang tải báo cáo…</div>}
-      {bc && <BanBaoCao bc={bc} mo={dangTai} />}
+// ET / BTVN trung bình theo lớp — tuần gần nhất so tuần trước (số đã lưu ở Tổng kết tuần, không tính lại).
+type HocTapTuanData = { tuan: string | null; tuan_truoc: string | null; lop: LopHocTapTuan[] }
+const NHO_TUAN: { d: HocTapTuanData | null } = { d: null }
+
+function HocTapTuan({ o }: { o?: OChon | null }) {
+  const [d, setD] = useState<HocTapTuanData | null>(NHO_TUAN.d)
+  const [loi, setLoi] = useState<string | null>(null)
+  useEffect(() => {
+    if (NHO_TUAN.d) return
+    getHocTapTuanCaNhan().then((x) => { NHO_TUAN.d = x; setD(x) }).catch((e: any) => setLoi(e?.message ?? String(e)))
+  }, [])
+  if (loi) return <div className="rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">Lỗi: {loi}</div>
+  if (!d) return <div className="rounded-2xl border border-slate-200 bg-white p-4 text-[13px] text-slate-400">Đang tải…</div>
+  const so = (v: number | null) => (v == null ? '—' : String(Math.round(v)))
+  const lech = (a: number | null, b: number | null) => {
+    if (a == null || b == null) return null
+    const x = Math.round(a - b)
+    return <span className={`ml-1 text-[11px] font-semibold ${x > 0 ? 'text-emerald-600' : x < 0 ? 'text-rose-600' : 'text-slate-400'}`}>{x > 0 ? `▲${x}` : x < 0 ? `▼${-x}` : '='}</span>
+  }
+  const ngay = (s: string | null) => (s ? ddmmVN(s.slice(0, 10)) : '—')
+  return (
+    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+      <p className="border-b border-slate-100 px-4 py-2 text-[12.5px] text-slate-500">Tuần {ngay(d.tuan)} so với tuần {ngay(d.tuan_truoc)} · số từ Tổng kết tuần (tính sáng thứ 2)</p>
+      <table className="w-full text-[13px]">
+        <thead><tr className="text-left text-[11px] uppercase tracking-wider text-slate-400">
+          <th className="px-4 py-1.5">Lớp</th><th>ET trung bình</th><th>Lượt ET</th><th>BTVN trung bình</th><th>Lượt BTVN</th>
+        </tr></thead>
+        {/* lọc theo ô đang chọn = lọc thuần UI trên danh sách đã có (số do DB tính sẵn) */}
+        <tbody>{d.lop.filter((l) => !o || (l.mon === o.mon && l.khoi === o.khoi)).map((l) => (
+          <tr key={l.lop_id} className="border-t border-slate-100">
+            <td className="px-4 py-1.5 font-semibold text-slate-800">{l.ten_lop} <span className="font-normal text-slate-400">· {l.mon}</span></td>
+            <td>{so(l.et_tb)}{lech(l.et_tb, l.et_tb_truoc)}</td><td className="text-slate-500">{l.et_so_luot}</td>
+            <td>{so(l.btvn_tb)}{lech(l.btvn_tb, l.btvn_tb_truoc)}</td><td className="text-slate-500">{l.btvn_so_luot}</td>
+          </tr>
+        ))}</tbody>
+      </table>
+      {d.lop.length === 0 && <p className="px-4 py-3 text-[13px] text-slate-400">Chưa có số tuần cho lớp nào trong phạm vi.</p>}
     </div>
   )
 }

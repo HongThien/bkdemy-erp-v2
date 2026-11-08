@@ -1,0 +1,230 @@
+[
+ {
+  "ma_cau": "T111010502079",
+  "dang_bai_id": "NDB00956",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức lượng giác biến đổi đại số tự do, không thuộc dạng cố định nào ở trên."
+ },
+ {
+  "ma_cau": "T111030201074",
+  "dang_bai_id": "NDB00998",
+  "chac": "cao",
+  "ly_do": "Tìm GTLN, GTNN của y=-2sinx+7 dùng -1<=sinx<=1."
+ },
+ {
+  "ma_cau": "T111030203038",
+  "dang_bai_id": "NDB01000",
+  "chac": "cao",
+  "ly_do": "Hạ bậc đưa về bậc hai theo sinx rồi đặt t với điều kiện x thuộc [0;pi/6]; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T111030502020",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc tập giá trị từ đồ thị (có hình); gần dạng tập giá trị nhưng bản đồ chưa có dạng đọc từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030502029",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc giá trị lớn nhất từ đồ thị (có hình); gần dạng min max nhưng bản đồ chưa có dạng đọc từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030502044",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc tập giá trị từ đồ thị (có hình); gần dạng tập giá trị nhưng bản đồ chưa có dạng đọc từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030502045",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc giá trị lớn nhất từ đồ thị (có hình); gần dạng min max nhưng bản đồ chưa có dạng đọc từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030502049",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc giá trị lớn nhất từ đồ thị (có hình); gần dạng min max nhưng bản đồ chưa có dạng đọc từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030502052",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc tập giá trị từ đồ thị (có hình); gần dạng tập giá trị nhưng bản đồ chưa có dạng đọc từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030502057",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc giá trị lớn nhất từ đồ thị (có hình); gần dạng min max nhưng bản đồ chưa có dạng đọc từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030502060",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc tập giá trị từ đồ thị (có hình); gần dạng tập giá trị nhưng bản đồ chưa có dạng đọc từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030502064",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc tập giá trị từ đồ thị (có hình); gần dạng tập giá trị nhưng bản đồ chưa có dạng đọc từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030502068",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc tập giá trị từ đồ thị (có hình); gần dạng tập giá trị nhưng bản đồ chưa có dạng đọc từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030502069",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc giá trị lớn nhất từ đồ thị (có hình); gần dạng min max nhưng bản đồ chưa có dạng đọc từ đồ thị."
+ },
+ {
+  "ma_cau": "T111040101123",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải phương trình cos(x/2-pi/3)=cos(alpha), dạng hàm lượng giác của (ax+b) bằng giá trị cơ bản."
+ },
+ {
+  "ma_cau": "T111040101143",
+  "dang_bai_id": "NDB01023",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm 4 phương trình lượng giác, hỏi phương trình nào vô nghiệm."
+ },
+ {
+  "ma_cau": "T111060202006",
+  "dang_bai_id": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cho cấp số cộng biết u1 và công sai d, yêu cầu số hạng thứ 20."
+ },
+ {
+  "ma_cau": "T111060202020",
+  "dang_bai_id": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cho cấp số cộng biết u1 và công sai d, yêu cầu số hạng thứ 15."
+ },
+ {
+  "ma_cau": "T111060202021",
+  "dang_bai_id": "NDB00607",
+  "chac": "cao",
+  "ly_do": "Cho cấp số cộng biết u1 và công sai d, yêu cầu số hạng thứ 30."
+ },
+ {
+  "ma_cau": "T111060304011",
+  "dang_bai_id": "NDB00617",
+  "chac": "vua",
+  "ly_do": "Giảm theo tỉ lệ mỗi 5 độ (cấp số nhân thực tế) nhưng cần tìm số kỳ n; bản đồ chưa có dạng tìm n cho cấp số nhân."
+ },
+ {
+  "ma_cau": "T111060304091",
+  "dang_bai_id": "NDB00619",
+  "chac": "cao",
+  "ly_do": "Truy hồi u_n=u_{n-1}/3-6 đặt v_n=u_n+9 thành cấp số nhân, cấu trúc như trả góp; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T111060305001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Lý thuyết chọn phát biểu sai về cấp số cộng và cấp số nhân; bản đồ thiếu dạng lý thuyết nhận diện cấp số."
+ },
+ {
+  "ma_cau": "T111060305004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chọn hệ thức đúng của cấp số nhân (lý thuyết công thức); bản đồ thiếu dạng lý thuyết công thức cấp số nhân."
+ },
+ {
+  "ma_cau": "T111010502082",
+  "dang_bai_id": "NDB00956",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức lượng giác biến đổi đại số tự do, không thuộc dạng cố định nào ở trên. (cùng gốc đã xoá với T111010502079)"
+ },
+ {
+  "ma_cau": "T111010502081",
+  "dang_bai_id": "NDB00956",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức lượng giác biến đổi đại số tự do, không thuộc dạng cố định nào ở trên. (cùng gốc đã xoá với T111010502079)"
+ },
+ {
+  "ma_cau": "T111010502080",
+  "dang_bai_id": "NDB00956",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức lượng giác biến đổi đại số tự do, không thuộc dạng cố định nào ở trên. (cùng gốc đã xoá với T111010502079)"
+ },
+ {
+  "ma_cau": "T111010502078",
+  "dang_bai_id": "NDB00956",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức lượng giác biến đổi đại số tự do, không thuộc dạng cố định nào ở trên. (cùng gốc đã xoá với T111010502079)"
+ },
+ {
+  "ma_cau": "T111030201072",
+  "dang_bai_id": "NDB00998",
+  "chac": "cao",
+  "ly_do": "Tìm GTLN, GTNN của y=-2sinx+7 dùng -1<=sinx<=1. (cùng gốc đã xoá với T111030201074)"
+ },
+ {
+  "ma_cau": "T111030201071",
+  "dang_bai_id": "NDB00998",
+  "chac": "cao",
+  "ly_do": "Tìm GTLN, GTNN của y=-2sinx+7 dùng -1<=sinx<=1. (cùng gốc đã xoá với T111030201074)"
+ },
+ {
+  "ma_cau": "T111030201075",
+  "dang_bai_id": "NDB00998",
+  "chac": "cao",
+  "ly_do": "Tìm GTLN, GTNN của y=-2sinx+7 dùng -1<=sinx<=1. (cùng gốc đã xoá với T111030201074)"
+ },
+ {
+  "ma_cau": "T111030201073",
+  "dang_bai_id": "NDB00998",
+  "chac": "cao",
+  "ly_do": "Tìm GTLN, GTNN của y=-2sinx+7 dùng -1<=sinx<=1. (cùng gốc đã xoá với T111030201074)"
+ },
+ {
+  "ma_cau": "T111030203036",
+  "dang_bai_id": "NDB01000",
+  "chac": "cao",
+  "ly_do": "Hạ bậc đưa về bậc hai theo sinx rồi đặt t với điều kiện x thuộc [0;pi/6]; dạng sau thắng. (cùng gốc đã xoá với T111030203038)"
+ },
+ {
+  "ma_cau": "T111030203037",
+  "dang_bai_id": "NDB01000",
+  "chac": "cao",
+  "ly_do": "Hạ bậc đưa về bậc hai theo sinx rồi đặt t với điều kiện x thuộc [0;pi/6]; dạng sau thắng. (cùng gốc đã xoá với T111030203038)"
+ },
+ {
+  "ma_cau": "T111030203034",
+  "dang_bai_id": "NDB01000",
+  "chac": "cao",
+  "ly_do": "Hạ bậc đưa về bậc hai theo sinx rồi đặt t với điều kiện x thuộc [0;pi/6]; dạng sau thắng. (cùng gốc đã xoá với T111030203038)"
+ },
+ {
+  "ma_cau": "T111040101119",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải phương trình cos(x/2-pi/3)=cos(alpha), dạng hàm lượng giác của (ax+b) bằng giá trị cơ bản. (cùng gốc đã xoá với T111040101123)"
+ },
+ {
+  "ma_cau": "T111040101122",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải phương trình cos(x/2-pi/3)=cos(alpha), dạng hàm lượng giác của (ax+b) bằng giá trị cơ bản. (cùng gốc đã xoá với T111040101123)"
+ },
+ {
+  "ma_cau": "T111040101121",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải phương trình cos(x/2-pi/3)=cos(alpha), dạng hàm lượng giác của (ax+b) bằng giá trị cơ bản. (cùng gốc đã xoá với T111040101123)"
+ },
+ {
+  "ma_cau": "T111040101120",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải phương trình cos(x/2-pi/3)=cos(alpha), dạng hàm lượng giác của (ax+b) bằng giá trị cơ bản. (cùng gốc đã xoá với T111040101123)"
+ }
+]

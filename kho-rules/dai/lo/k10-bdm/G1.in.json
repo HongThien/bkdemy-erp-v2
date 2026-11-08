@@ -1,0 +1,482 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "NNB01089",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Mệnh đề",
+   "nhom": "Nhận diện mệnh đề, mệnh đề kéo theo, mệnh đề đảo, mệnh đề tương đương",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Mệnh đề là một câu khẳng định đúng hoặc một câu khẳng định sai.\n-\tMột câu khẳng định đúng được gọi là một mệnh đề đúng, một câu khẳng định sai được gọi là mệnh đề sai. \n-\tCâu hỏi, câu cảm tháng, câu mệnh lệnh hoặc câu chưa xác định được tính đúng sai thì không phải là mệnh đề. \n- Mệnh đề chứa biến không phải là mệnh đề, nhưng khi thay biến bởi giá trị nào đó thì nó trở thành mệnh đề.",
+   "can_dien_ly_thuyet_nhom": false,
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T110010101",
+     "ten_cu": "Nhận diện, xét tính đúng sai của mệnh đề. Mệnh đề chứa biến",
+     "noi_dung_cu": "Mệnh đề là một câu khẳng định đúng hoặc một câu khẳng định sai.\n-\tMột câu khẳng định đúng được gọi là một mệnh đề đúng, một câu khẳng định sai được gọi là mệnh đề sai. \n-\tCâu hỏi, câu cảm tháng, câu mệnh lệnh hoặc câu chưa xác định được tính đúng sai thì không phải là mệnh đề. \n- Mệnh đề chứa biến không phải là mệnh đề, nhưng khi thay biến bởi giá trị nào đó thì nó trở thành mệnh đề."
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB01091",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Mệnh đề",
+   "nhom": "Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "1. Mệnh đề phủ định\nPhủ định của mệnh đề $P$ là mệnh đề “Không phải $P$”, kí hiệu $\\overline{P}$. Mệnh đề $\\overline{P}$ đúng khi ${P}$ sai và ${\\bar{P}}$ sai khi ${P}$ đúng.\n2. Mệnh đề chứa kí hiệu ${\\forall, \\exists}$\n- Mệnh đề \"${\\forall x \\in M, P(x)}$\" đúng nếu với mọi ${x_{0} \\in M, P\\left(x_{0}\\right)}$ là mệnh đề đúng.\n- Mệnh đề \"${\\exists x \\in M, P(x)}$\" đúng nếu có ${x_{0} \\in M}$ sao cho ${P\\left(x_{0}\\right)}$ là mệnh đề đúng.",
+   "can_dien_ly_thuyet_nhom": false,
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T110010103",
+     "ten_cu": "Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề",
+     "noi_dung_cu": "1. Mệnh đề phủ định\nPhủ định của mệnh đề $P$ là mệnh đề “Không phải $P$”, kí hiệu $\\overline{P}$. Mệnh đề $\\overline{P}$ đúng khi ${P}$ sai và ${\\bar{P}}$ sai khi ${P}$ đúng.\n2. Mệnh đề chứa kí hiệu ${\\forall, \\exists}$\n- Mệnh đề \"${\\forall x \\in M, P(x)}$\" đúng nếu với mọi ${x_{0} \\in M, P\\left(x_{0}\\right)}$ là mệnh đề đúng.\n- Mệnh đề \"${\\exists x \\in M, P(x)}$\" đúng nếu có ${x_{0} \\in M}$ sao cho ${P\\left(x_{0}\\right)}$ là mệnh đề đúng."
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB01092",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Tập hợp và các phần tử của tập hợp, tập con, 2 tập hợp bằng nhau",
+   "nhom_mo_ta": "Các bài toán liên quan đến tập con của một tập hợp",
+   "nhom_ly_thuyet_hien_co": "1. Tập hợp và phần tử\n- Mỗi tập hợp có các phần tử hoàn toàn xác định.\n- Tập hợp không có phần tử nào gọi là tập rỗng, kí hiệu ${\\varnothing}$.\n- Để chỉ ${a}$ là phần tử của tập hợp ${A}$, ta viết ${a \\in A}$; ngược lại, ta viết ${a \\notin A}$.\n- Người ta thường biểu thị tập hợp dưới dạng liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng của các phần tử.\nChú ý: Khi liệt kê các phần tử của tập hợp, ta có một số chú ý sau đây:\na) Các phần tử có thể được viết theo thứ tự tuỳ ý.\nb) Mỗi phần tử chỉ được liệt kê một lần.\nc) Nếu quy tắc xác định các phần tử đủ rõ thì người ta dùng “...\" mà không nhất thiết viết ra tất cả các phần tử của tập hợp.\n2. Tập con và hai tập hợp bằng nhau\n- ${A}$ là tập con của ${B}$ nếu mọi phần tử của ${A}$ đều là phần tử của ${B}$, kí hiệu ${A \\subset B}$.\n\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/e63b180a-1b7f-4aa2-81a6-1771b0f863d0.png)\n\n- Giữa các tập hợp số quen thuộc (tập số tự nhiên, tập số nguyên, tập số hữu tỉ, tập số thực) ta có quan hệ bao hàm: $\\mathbb{N}\\subset \\mathbb{Z}\\subset \\mathbb{Q}\\subset \\mathbb{R}$\n\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/83ba1f9e-ffd7-4f25-ad93-10569858a9b6.png)\n\nChú ý:\n${+A \\subset A}$ và ${\\varnothing \\subset A}$ với mọi tập hợp ${A}$.\n+ Nếu ${A}$ không phải là tập con của ${B}$ thì ta kí hiệu ${A \\not \\subset B}$ (đọc là ${A}$ không chứa trong ${B}$ hoặc ${B}$ không chứa ${A}$).\n+ Nếu ${A \\subset B}$ hoặc ${B \\subset A}$ thì ta nói ${A}$ và ${B}$ có quan hệ bao hàm.\n- Hai tập hợp ${A}$ và ${B}$ gọi là bằng nhau, kí hiệu ${A=B}$, nếu ${A \\subset B}$ và ${B \\subset A}$.",
+   "can_dien_ly_thuyet_nhom": false,
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T110010201",
+     "ten_cu": "Tập hợp và các phần tử của tập hợp. Tập con",
+     "noi_dung_cu": "1. Tập hợp và phần tử\n- Mỗi tập hợp có các phần tử hoàn toàn xác định.\n- Tập hợp không có phần tử nào gọi là tập rỗng, kí hiệu ${\\varnothing}$.\n- Để chỉ ${a}$ là phần tử của tập hợp ${A}$, ta viết ${a \\in A}$; ngược lại, ta viết ${a \\notin A}$.\n- Người ta thường biểu thị tập hợp dưới dạng liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng của các phần tử.\nChú ý: Khi liệt kê các phần tử của tập hợp, ta có một số chú ý sau đây:\na) Các phần tử có thể được viết theo thứ tự tuỳ ý.\nb) Mỗi phần tử chỉ được liệt kê một lần.\nc) Nếu quy tắc xác định các phần tử đủ rõ thì người ta dùng “...\" mà không nhất thiết viết ra tất cả các phần tử của tập hợp.\n2. Tập con và hai tập hợp bằng nhau\n- ${A}$ là tập con của ${B}$ nếu mọi phần tử của ${A}$ đều là phần tử của ${B}$, kí hiệu ${A \\subset B}$.\n\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/e63b180a-1b7f-4aa2-81a6-1771b0f863d0.png)\n\n- Giữa các tập hợp số quen thuộc (tập số tự nhiên, tập số nguyên, tập số hữu tỉ, tập số thực) ta có quan hệ bao hàm: $\\mathbb{N}\\subset \\mathbb{Z}\\subset \\mathbb{Q}\\subset \\mathbb{R}$\n\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/83ba1f9e-ffd7-4f25-ad93-10569858a9b6.png)\n\nChú ý:\n${+A \\subset A}$ và ${\\varnothing \\subset A}$ với mọi tập hợp ${A}$.\n+ Nếu ${A}$ không phải là tập con của ${B}$ thì ta kí hiệu ${A \\not \\subset B}$ (đọc là ${A}$ không chứa trong ${B}$ hoặc ${B}$ không chứa ${A}$).\n+ Nếu ${A \\subset B}$ hoặc ${B \\subset A}$ thì ta nói ${A}$ và ${B}$ có quan hệ bao hàm.\n- Hai tập hợp ${A}$ và ${B}$ gọi là bằng nhau, kí hiệu ${A=B}$, nếu ${A \\subset B}$ và ${B \\subset A}$."
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB01094",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Tập hợp số và các phép toán trên tập hợp",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Một số tập con của tập số thực và cách biểu diễn trên trục số.\n\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/ce5950c9-6ac0-45ef-b3e6-ec270e4738fa.png)",
+   "can_dien_ly_thuyet_nhom": false,
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T110010203",
+     "ten_cu": "Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số",
+     "noi_dung_cu": "Một số tập con của tập số thực và cách biểu diễn trên trục số.\n\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/ce5950c9-6ac0-45ef-b3e6-ec270e4738fa.png)"
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB01095",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Bài toán thực tế tập hợp (2 Yếu tố)",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "**I. Phương pháp làm bài:**\n* Bước 1 (Ký hiệu): Gọi $A, B$ lần lượt là các tập hợp biểu diễn cho hai đối tượng trong đề bài.\n* Bước 2 (Tóm tắt): Chuyển dữ kiện văn bản sang ký hiệu số phần tử:\n $n(A), n(B)$: Số phần tử của tập hợp $A$ và $B$.\n $n(A \\cap B)$: Số phần tử thuộc cả $A$ và $B$.\n $n(A \\cup B)$: Số phần tử thuộc ít nhất một trong hai tập hợp ($n(A \\cup B) = $ Tổng số đối tượng $-$ Số đối tượng không thuộc tập nào).\n* Bước 3 (Tính toán): Áp dụng công thức phù hợp với câu hỏi (hoặc sử dụng biểu đồ ven):\n Công thức gốc: $n(A \\cup B) = n(A) + n(B) - n(A \\cap B)$ \n Chỉ thuộc $A$: $n(A \\setminus B) = n(A) - n(A \\cap B)$\n Chỉ thuộc $B$: $n(B \\setminus A) = n(B) - n(A \\cap B)$\n Chỉ thuộc đúng 1 tập hợp: $n(A \\setminus B) + n(B \\setminus A) = n(A \\cup B) - n(A \\cap B)$\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/c97fdc6f-2fd8-400f-9cf4-03afa7dc50e1.png)\n* Bước 4 (Kết luận): Thay số và kết luận đáp số.\n**II. Ví dụ minh họa**\nVD1. Một cửa hàng sách phục vụ 60 khách hàng trong một giờ. Có 38 khách mua tiểu thuyết, 25 khách mua truyện tranh và 12 khách mua cả hai loại. Hỏi có bao nhiêu khách hàng chỉ mua tiểu thuyết?\nLời giải chi tiết:\nGọi $A, B$ lần lượt là tập hợp các khách hàng mua tiểu thuyết và truyện tranh.\nTheo đề bài: $n(A) = 38$, $n(B) = 25$, $n(A \\cap B) = 12$.\nSố khách hàng chỉ mua tiểu thuyết là:\n$n(A \\setminus B) = n(A) - n(A \\cap B) = 38 - 12 = 26$\n\nVD2. Đợt kiểm tra chất lượng 150 thiết bị điện tử ghi nhận có 20 thiết bị không đạt cả hai tiêu chuẩn A và B. Biết có 90 thiết bị đạt tiêu chuẩn A và 70 thiết bị đạt tiêu chuẩn B. Hỏi có bao nhiêu thiết bị đạt cả hai tiêu chuẩn A và B?\nLời giải chi tiết:\nGọi $A, B$ lần lượt là tập hợp các thiết bị đạt tiêu chuẩn A và tiêu chuẩn B.\nSố thiết bị đạt ít nhất một trong hai tiêu chuẩn là:\n$n(A \\cup B) = 150 - 20 = 130$\nSố thiết bị đạt cả hai tiêu chuẩn A và B là:\n$n(A \\cap B) = n(A) + n(B) - n(A \\cup B) = 90 + 70 - 130 = 30$",
+   "can_dien_ly_thuyet_nhom": false,
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T110010204",
+     "ten_cu": "Bài toán thực tế tập hợp (2 Yếu tố)",
+     "noi_dung_cu": "**I. Phương pháp làm bài:**\n* Bước 1 (Ký hiệu): Gọi $A, B$ lần lượt là các tập hợp biểu diễn cho hai đối tượng trong đề bài.\n* Bước 2 (Tóm tắt): Chuyển dữ kiện văn bản sang ký hiệu số phần tử:\n $n(A), n(B)$: Số phần tử của tập hợp $A$ và $B$.\n $n(A \\cap B)$: Số phần tử thuộc cả $A$ và $B$.\n $n(A \\cup B)$: Số phần tử thuộc ít nhất một trong hai tập hợp ($n(A \\cup B) = $ Tổng số đối tượng $-$ Số đối tượng không thuộc tập nào).\n* Bước 3 (Tính toán): Áp dụng công thức phù hợp với câu hỏi (hoặc sử dụng biểu đồ ven):\n Công thức gốc: $n(A \\cup B) = n(A) + n(B) - n(A \\cap B)$ \n Chỉ thuộc $A$: $n(A \\setminus B) = n(A) - n(A \\cap B)$\n Chỉ thuộc $B$: $n(B \\setminus A) = n(B) - n(A \\cap B)$\n Chỉ thuộc đúng 1 tập hợp: $n(A \\setminus B) + n(B \\setminus A) = n(A \\cup B) - n(A \\cap B)$\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/c97fdc6f-2fd8-400f-9cf4-03afa7dc50e1.png)\n* Bước 4 (Kết luận): Thay số và kết luận đáp số.\n**II. Ví dụ minh họa**\nVD1. Một cửa hàng sách phục vụ 60 khách hàng trong một giờ. Có 38 khách mua tiểu thuyết, 25 khách mua truyện tranh và 12 khách mua cả hai loại. Hỏi có bao nhiêu khách hàng chỉ mua tiểu thuyết?\nLời giải chi tiết:\nGọi $A, B$ lần lượt là tập hợp các khách hàng mua tiểu thuyết và truyện tranh.\nTheo đề bài: $n(A) = 38$, $n(B) = 25$, $n(A \\cap B) = 12$.\nSố khách hàng chỉ mua tiểu thuyết là:\n$n(A \\setminus B) = n(A) - n(A \\cap B) = 38 - 12 = 26$\n\nVD2. Đợt kiểm tra chất lượng 150 thiết bị điện tử ghi nhận có 20 thiết bị không đạt cả hai tiêu chuẩn A và B. Biết có 90 thiết bị đạt tiêu chuẩn A và 70 thiết bị đạt tiêu chuẩn B. Hỏi có bao nhiêu thiết bị đạt cả hai tiêu chuẩn A và B?\nLời giải chi tiết:\nGọi $A, B$ lần lượt là tập hợp các thiết bị đạt tiêu chuẩn A và tiêu chuẩn B.\nSố thiết bị đạt ít nhất một trong hai tiêu chuẩn là:\n$n(A \\cup B) = 150 - 20 = 130$\nSố thiết bị đạt cả hai tiêu chuẩn A và B là:\n$n(A \\cap B) = n(A) + n(B) - n(A \\cup B) = 90 + 70 - 130 = 30$"
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB01096",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Bài toán thực tế tập hợp (3 yếu tố)",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "**I.Phương pháp làm bài**\nBước 1 (Ký hiệu & Tóm tắt): Gọi $A, B, C$ lần lượt là 3 tập hợp và tóm tắt các giá trị đề bài đã cho dưới dạng ký hiệu toán học:\nSố phần tử từng tập: $n(A), n(B), n(C)$\nSố phần tử giao của từng cặp tập hợp: $n(A \\cap B), n(B \\cap C), n(C \\cap A)$\nSố phần tử giao của cả 3 tập hợp: $n(A \\cap B \\cap C)$\nBước 2 Vẽ sơ đồ cây và áp dụng công thức: \n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/9601c373-aa71-4e0f-90d2-fc0b124cdc51.png)\n$n(A \\cup B \\cup C) = n(A) + n(B) + n(C) - [n(A \\cap B) + n(B \\cap C) + n(C \\cap A)] + n(A \\cap B \\cap C)$\nBước 3 (Tính toán): Thay các số liệu đã biết vào công thức để tính tổng số phần tử $n(A \\cup B \\cup C)$ hoặc chuyển vể tìm ẩn còn thiếu.\n**II.Ví dụ minh họa**\nVí dụ 1: Một lớp học có 15 bạn giỏi Toán, 10 bạn giỏi Lý, 8 bạn giỏi Hóa. Có 5 bạn giỏi cả Toán và Lý, 4 bạn giỏi Lý và Hóa, 3 bạn giỏi Toán và Hóa, và 2 bạn giỏi cả 3 môn. Hỏi lớp đó có bao nhiêu học sinh giỏi ít nhất một môn?\nLời giải chi tiết:\nGọi $T, L, H$ lần lượt là tập hợp các học sinh giỏi môn Toán, Lý, Hóa.\nTheo đề bài:\n$$n(T) = 15, n(L) = 10, n(H) = 8$$\n$$n(T \\cap L) = 5, n(L \\cap H) = 4, n(T \\cap H) = 3$$\n$$n(T \\cap L \\cap H) = 2$$\nSố học sinh giỏi ít nhất một môn là:\n$$n(T \\cup L \\cup H) = n(T) + n(L) + n(H) - [n(T \\cap L) + n(L \\cap H) + n(T \\cap H)] + n(T \\cap L \\cap H)$$\n$$\\Rightarrow n(T \\cup L \\cup H) = 15 + 10 + 8 - (5 + 4 + 3) + 2 = 23$$\nVậy có 23 học sinh giỏi ít nhất một môn.\n\nVí dụ 2: Một khối lớp có 45 học sinh tham gia ít nhất một trong ba câu lạc bộ: Rô-bốt, Tin học, Cờ vua. Trong đó có 25 học sinh tham gia CLB Rô-bốt, 20 học sinh tham gia CLB Tin học, 18 học sinh tham gia CLB Cờ vua. Biết có 8 học sinh tham gia cả Rô-bốt và Tin học, 6 học sinh tham gia cả Tin học và Cờ vua, 7 học sinh tham gia cả Rô-bốt và Cờ vua. Hỏi có bao nhiêu học sinh tham gia cả ba câu lạc bộ?\nLời giải chi tiết:\nGọi $A, B, C$ lần lượt là tập hợp học sinh tham gia CLB Rô-bốt, Tin học, Cờ vua.\nTheo đề bài:\n$n(A \\cup B \\cup C) = 45$\n$n(A) = 25, n(B) = 20, n(C) = 18$\n$n(A \\cap B) = 8, n(B \\cap C) = 6, n(A \\cap C) = 7$\nGọi $x = n(A \\cap B \\cap C)$ là số học sinh tham gia cả ba câu lạc bộ ($x \\in N^*$).\nTa có:\n$n(A \\cup B \\cup C) = n(A) + n(B) + n(C) - [n(A \\cap B) + n(B \\cap C) + n(A \\cap C)] + x$\n$\\Leftrightarrow 45 = 25 + 20 + 18 - (8 + 6 + 7) + x$\n$\\Leftrightarrow 45 = 63 - 21 + x$\n$\\Leftrightarrow 45 = 42 + x \\Leftrightarrow x = 3$\nVậy có 3 học sinh tham gia cả ba câu lạc bộ.",
+   "can_dien_ly_thuyet_nhom": false,
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T110010205",
+     "ten_cu": "Bài toán thực tế tập hợp (3 yếu tố)",
+     "noi_dung_cu": "**I.Phương pháp làm bài**\nBước 1 (Ký hiệu & Tóm tắt): Gọi $A, B, C$ lần lượt là 3 tập hợp và tóm tắt các giá trị đề bài đã cho dưới dạng ký hiệu toán học:\nSố phần tử từng tập: $n(A), n(B), n(C)$\nSố phần tử giao của từng cặp tập hợp: $n(A \\cap B), n(B \\cap C), n(C \\cap A)$\nSố phần tử giao của cả 3 tập hợp: $n(A \\cap B \\cap C)$\nBước 2 Vẽ sơ đồ cây và áp dụng công thức: \n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/9601c373-aa71-4e0f-90d2-fc0b124cdc51.png)\n$n(A \\cup B \\cup C) = n(A) + n(B) + n(C) - [n(A \\cap B) + n(B \\cap C) + n(C \\cap A)] + n(A \\cap B \\cap C)$\nBước 3 (Tính toán): Thay các số liệu đã biết vào công thức để tính tổng số phần tử $n(A \\cup B \\cup C)$ hoặc chuyển vể tìm ẩn còn thiếu.\n**II.Ví dụ minh họa**\nVí dụ 1: Một lớp học có 15 bạn giỏi Toán, 10 bạn giỏi Lý, 8 bạn giỏi Hóa. Có 5 bạn giỏi cả Toán và Lý, 4 bạn giỏi Lý và Hóa, 3 bạn giỏi Toán và Hóa, và 2 bạn giỏi cả 3 môn. Hỏi lớp đó có bao nhiêu học sinh giỏi ít nhất một môn?\nLời giải chi tiết:\nGọi $T, L, H$ lần lượt là tập hợp các học sinh giỏi môn Toán, Lý, Hóa.\nTheo đề bài:\n$$n(T) = 15, n(L) = 10, n(H) = 8$$\n$$n(T \\cap L) = 5, n(L \\cap H) = 4, n(T \\cap H) = 3$$\n$$n(T \\cap L \\cap H) = 2$$\nSố học sinh giỏi ít nhất một môn là:\n$$n(T \\cup L \\cup H) = n(T) + n(L) + n(H) - [n(T \\cap L) + n(L \\cap H) + n(T \\cap H)] + n(T \\cap L \\cap H)$$\n$$\\Rightarrow n(T \\cup L \\cup H) = 15 + 10 + 8 - (5 + 4 + 3) + 2 = 23$$\nVậy có 23 học sinh giỏi ít nhất một môn.\n\nVí dụ 2: Một khối lớp có 45 học sinh tham gia ít nhất một trong ba câu lạc bộ: Rô-bốt, Tin học, Cờ vua. Trong đó có 25 học sinh tham gia CLB Rô-bốt, 20 học sinh tham gia CLB Tin học, 18 học sinh tham gia CLB Cờ vua. Biết có 8 học sinh tham gia cả Rô-bốt và Tin học, 6 học sinh tham gia cả Tin học và Cờ vua, 7 học sinh tham gia cả Rô-bốt và Cờ vua. Hỏi có bao nhiêu học sinh tham gia cả ba câu lạc bộ?\nLời giải chi tiết:\nGọi $A, B, C$ lần lượt là tập hợp học sinh tham gia CLB Rô-bốt, Tin học, Cờ vua.\nTheo đề bài:\n$n(A \\cup B \\cup C) = 45$\n$n(A) = 25, n(B) = 20, n(C) = 18$\n$n(A \\cap B) = 8, n(B \\cap C) = 6, n(A \\cap C) = 7$\nGọi $x = n(A \\cap B \\cap C)$ là số học sinh tham gia cả ba câu lạc bộ ($x \\in N^*$).\nTa có:\n$n(A \\cup B \\cup C) = n(A) + n(B) + n(C) - [n(A \\cap B) + n(B \\cap C) + n(A \\cap C)] + x$\n$\\Leftrightarrow 45 = 25 + 20 + 18 - (8 + 6 + 7) + x$\n$\\Leftrightarrow 45 = 63 - 21 + x$\n$\\Leftrightarrow 45 = 42 + x \\Leftrightarrow x = 3$\nVậy có 3 học sinh tham gia cả ba câu lạc bộ."
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB01097",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Bài toán tập hợp chứa tham số m",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "**I. Phương pháp làm bài:**\n **Bước 1: Tìm điều kiện để các tập hợp khác rỗng**\n* Tập $A = (a; b)$ hoặc $[a; b)$ hoặc $(a; b]$ thì điều kiện là $a < b$.\n* Tập $A = [a; b]$ thì điều kiện là $a \\le b$.\n **Bước 2: Vẽ trục số và thiết lập bất phương trình.**\n* Dựa vào yêu cầu bài toán ($A \\subset B, A \\cap B = \\varnothing, \\dots$), biểu diễn vị trí các điểm mút trên trục số để lập hệ bất phương trình tương ứng.\n* Một số trường hợp hay gặp: \n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/b7af1989-0628-4dc0-8b44-3384b021585a.png)\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/870083f2-a3e4-4ad3-9542-c461482f83fb.png)\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/bd4cf678-1b3e-4275-be54-f28085a1c95b.png)\n\n **Bước 3:** \nGiải hệ bất phương trình thu được ở bước 2 và đối chiếu với điều kiện ở Bước 1.\n\n**II. Ví dụ minh họa**\n\nVí dụ 1. Cho hai tập hợp $A = [m-1; 2m+3]$ và $B = (-2; 7]$. Có bao nhiêu giá trị nguyên của $m$ để $A \\subset B$?\n**Lời giải chi tiết:**\nĐiều kiện để tập $A$ khác rỗng:\n$$m - 1 \\le 2m + 3 \\Leftrightarrow m \\ge -4$$\nĐể $A \\subset B$:\n$$\\begin{cases} m - 1 > -2 \\\\ 2m + 3 \\le 7 \\end{cases} \\Leftrightarrow \\begin{cases} m > -1 \\\\ 2m \\le 4 \\end{cases} \\Leftrightarrow \\begin{cases} m > -1 \\\\ m \\le 2 \\end{cases} \\Leftrightarrow -1 < m \\le 2$$\nKết hợp với điều kiện $m \\ge -4$, ta được: $-1 < m \\le 2$.\nVì $m \\in \\mathbb{Z} \\Rightarrow m \\in \\{0; 1; 2\\}$.\nVậy có **3** giá trị nguyên của $m$ thỏa mãn yêu cầu bài toán.\n---\nVí dụ 2. Cho hai tập hợp $A = (m; m+2)$ và $B = [1; 4)$. Tìm tất cả các giá trị của tham số $m$ để $A \\cap B = \\varnothing$.\n**Lời giải chi tiết:**\nTập $A = (m; m+2)$ luôn khác rỗng vì $m < m+2, \\forall m \\in \\mathbb{R}$.\nĐể $A \\cap B = \\varnothing \\Leftrightarrow \\left[\\begin{array}{l} m + 2 \\le 1 \\\\ m \\ge 4 \\end{array}\\right.$\n$$\\Leftrightarrow \\left[\\begin{array}{l} m \\le -1 \\\\ m \\ge 4 \\end{array}\\right.$$\nVậy $m \\in (-\\infty; -1] \\cup [4; +\\infty)$.",
+   "can_dien_ly_thuyet_nhom": false,
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T110010206",
+     "ten_cu": "Bài toán tập hợp chứa tham số m",
+     "noi_dung_cu": "**I. Phương pháp làm bài:**\n **Bước 1: Tìm điều kiện để các tập hợp khác rỗng**\n* Tập $A = (a; b)$ hoặc $[a; b)$ hoặc $(a; b]$ thì điều kiện là $a < b$.\n* Tập $A = [a; b]$ thì điều kiện là $a \\le b$.\n **Bước 2: Vẽ trục số và thiết lập bất phương trình.**\n* Dựa vào yêu cầu bài toán ($A \\subset B, A \\cap B = \\varnothing, \\dots$), biểu diễn vị trí các điểm mút trên trục số để lập hệ bất phương trình tương ứng.\n* Một số trường hợp hay gặp: \n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/b7af1989-0628-4dc0-8b44-3384b021585a.png)\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/870083f2-a3e4-4ad3-9542-c461482f83fb.png)\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/bd4cf678-1b3e-4275-be54-f28085a1c95b.png)\n\n **Bước 3:** \nGiải hệ bất phương trình thu được ở bước 2 và đối chiếu với điều kiện ở Bước 1.\n\n**II. Ví dụ minh họa**\n\nVí dụ 1. Cho hai tập hợp $A = [m-1; 2m+3]$ và $B = (-2; 7]$. Có bao nhiêu giá trị nguyên của $m$ để $A \\subset B$?\n**Lời giải chi tiết:**\nĐiều kiện để tập $A$ khác rỗng:\n$$m - 1 \\le 2m + 3 \\Leftrightarrow m \\ge -4$$\nĐể $A \\subset B$:\n$$\\begin{cases} m - 1 > -2 \\\\ 2m + 3 \\le 7 \\end{cases} \\Leftrightarrow \\begin{cases} m > -1 \\\\ 2m \\le 4 \\end{cases} \\Leftrightarrow \\begin{cases} m > -1 \\\\ m \\le 2 \\end{cases} \\Leftrightarrow -1 < m \\le 2$$\nKết hợp với điều kiện $m \\ge -4$, ta được: $-1 < m \\le 2$.\nVì $m \\in \\mathbb{Z} \\Rightarrow m \\in \\{0; 1; 2\\}$.\nVậy có **3** giá trị nguyên của $m$ thỏa mãn yêu cầu bài toán.\n---\nVí dụ 2. Cho hai tập hợp $A = (m; m+2)$ và $B = [1; 4)$. Tìm tất cả các giá trị của tham số $m$ để $A \\cap B = \\varnothing$.\n**Lời giải chi tiết:**\nTập $A = (m; m+2)$ luôn khác rỗng vì $m < m+2, \\forall m \\in \\mathbb{R}$.\nĐể $A \\cap B = \\varnothing \\Leftrightarrow \\left[\\begin{array}{l} m + 2 \\le 1 \\\\ m \\ge 4 \\end{array}\\right.$\n$$\\Leftrightarrow \\left[\\begin{array}{l} m \\le -1 \\\\ m \\ge 4 \\end{array}\\right.$$\nVậy $m \\in (-\\infty; -1] \\cup [4; +\\infty)$."
+    }
+   ]
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "NDB00818",
+   "nhom_id": "NNB01089",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Mệnh đề",
+   "nhom": "Nhận diện mệnh đề, mệnh đề kéo theo, mệnh đề đảo, mệnh đề tương đương",
+   "dang": "Nhận diện và xét tính đúng sai của mệnh đề, mệnh đề chứa biến",
+   "mo_ta": "Các câu hỏi tương tự như sau:\n1. Phát biểu nào sau đây là mệnh đề/không là mệnh đề/là mệnh đề chứa biến ...?\n2. Mệnh đề nào sau đây là đúng/sai?\nHoặc các câu hỏi tương tự về nhận diện và xét tính đúng sai của mệnh đề",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00819",
+   "nhom_id": "NNB01089",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Mệnh đề",
+   "nhom": "Nhận diện mệnh đề, mệnh đề kéo theo, mệnh đề đảo, mệnh đề tương đương",
+   "dang": "Mệnh đề kéo theo",
+   "mo_ta": "Các câu hỏi có liên quan đến mệnh đề kéo theo",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00820",
+   "nhom_id": "NNB01089",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Mệnh đề",
+   "nhom": "Nhận diện mệnh đề, mệnh đề kéo theo, mệnh đề đảo, mệnh đề tương đương",
+   "dang": "Mệnh đề đảo",
+   "mo_ta": "Các câu hỏi có liên quan đến mệnh đề đảo và các dạng trước đó của nhóm",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00821",
+   "nhom_id": "NNB01089",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Mệnh đề",
+   "nhom": "Nhận diện mệnh đề, mệnh đề kéo theo, mệnh đề đảo, mệnh đề tương đương",
+   "dang": "Mệnh đề tương đương",
+   "mo_ta": "Các câu hỏi có liên quan đến mệnh đề tương đương và các dạng trước đó của nhóm",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00825",
+   "nhom_id": "NNB01091",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Mệnh đề",
+   "nhom": "Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề",
+   "dang": "Viết lại mệnh đề với mọi, tồn tại",
+   "mo_ta": "Bài tập cho 1 mệnh đề viết dưới dạng ký hiệu có chứa ký hiệu với mọi hoặc tồn tại và yêu cầu viết lại mệnh đề đó dưới dạng mô tả bằng lời, hoặc cho mô tả bằng lời và yêu cầu viết lại dưới dạng ký hiệu",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00826",
+   "nhom_id": "NNB01091",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Mệnh đề",
+   "nhom": "Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề",
+   "dang": "Phủ định của mệnh đề với mọi, tồn tại",
+   "mo_ta": "Bài tập cho một mệnh đề có chứa với mọi hoặc tồn tại và yêu cầu viết mệnh đề phủ định của mệnh đề đó (dưới dạng ký hiệu hoặc dưới dạng mô tả)",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00828",
+   "nhom_id": "NNB01092",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Tập hợp và các phần tử của tập hợp, tập con, 2 tập hợp bằng nhau",
+   "dang": "Xác định tập hợp và các phần tử của tập hợp",
+   "mo_ta": "Các bài toán liên quan đến phần tử của một tập hợp, viết lại tập hợp hoặc xác định 2 tập hợp bằng nhau",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00829",
+   "nhom_id": "NNB01092",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Tập hợp và các phần tử của tập hợp, tập con, 2 tập hợp bằng nhau",
+   "dang": "Tập con",
+   "mo_ta": "Các bài toán liên quan đến tập con của một tập hợp",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00519",
+   "nhom_id": "NNB01094",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Tập hợp số và các phép toán trên tập hợp",
+   "dang": "giao của 2 tập hợp",
+   "mo_ta": "Các bài toán liên quan đến phép giao của 2 tập hợp",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00520",
+   "nhom_id": "NNB01094",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Tập hợp số và các phép toán trên tập hợp",
+   "dang": "Hợp của 2 tập hợp",
+   "mo_ta": "Các bài toán liên quan đến phép hợp của 2 tập hợp",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00521",
+   "nhom_id": "NNB01094",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Tập hợp số và các phép toán trên tập hợp",
+   "dang": "Hiệu của 2 tập hợp",
+   "mo_ta": "Các bài toán liên quan đến phép hiệu của 2 tập hợp",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00522",
+   "nhom_id": "NNB01094",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Tập hợp số và các phép toán trên tập hợp",
+   "dang": "Phần bù của 2 tập hợp",
+   "mo_ta": "Các bài toán liên quan đến phép phần bù của 2 tập hợp",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00524",
+   "nhom_id": "NNB01094",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Tập hợp số và các phép toán trên tập hợp",
+   "dang": "Bài toán xác định tập hợp dựa trên hình ảnh trục số",
+   "mo_ta": "Các bài toán cho trục số có phần bị gạch và hỏi phần không bị gạch là tập hợp nào",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00525",
+   "nhom_id": "NNB01095",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Bài toán thực tế tập hợp (2 Yếu tố)",
+   "dang": "Tính số phần tử thuộc một trong 2 tập hợp n(A∪B)",
+   "mo_ta": "bài toán thực tế tập hợp có 2 tập hợp (Thường là số người hoặc số học sinh tham gia 1 câu lạc bộ hoặc yêu thích 1 thứ gì đó hoặc tương tự), đề bài đã cho đầy đủ các dữ kiện và yêu cầu tính số phần tử của tham gia A hoặc B (Tổng số người của nhóm đó)",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00526",
+   "nhom_id": "NNB01095",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Bài toán thực tế tập hợp (2 Yếu tố)",
+   "dang": "Tìm số phần tử thuộc cả 2 tập hợp n(A∩B)",
+   "mo_ta": "bài toán thực tế tập hợp có 2 tập hợp (Thường là số người hoặc số học sinh tham gia 1 câu lạc bộ hoặc yêu thích 1 thứ gì đó hoặc tương tự), đề bài đã cho đầy đủ các dữ kiện và yêu cầu tính số phần tử thuộc cả 2 tập hợp (số người tham gia cả 2)",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00527",
+   "nhom_id": "NNB01095",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Bài toán thực tế tập hợp (2 Yếu tố)",
+   "dang": "Tìm số phần tử thuộc một tập hợp (nA hoặc nB)",
+   "mo_ta": "bài toán thực tế tập hợp có 2 tập hợp (Thường là số người hoặc số học sinh tham gia 1 câu lạc bộ hoặc yêu thích 1 thứ gì đó hoặc tương tự), đề bài đã cho đầy đủ các dữ kiện và yêu cầu tính số phần tử thuộc 1 tập hợp (nA hoặc nB)",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00528",
+   "nhom_id": "NNB01095",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Bài toán thực tế tập hợp (2 Yếu tố)",
+   "dang": "Tính số phần tử chỉ thuộc đúng một tập hợp (A\\B hoặc B\\A )",
+   "mo_ta": "bài toán thực tế tập hợp có 2 tập hợp (Thường là số người hoặc số học sinh tham gia 1 câu lạc bộ hoặc yêu thích 1 thứ gì đó hoặc tương tự), đề bài đã cho đầy đủ các dữ kiện và yêu cầu tính số người chỉ tham gia A (hoặc chỉ tham gia B) (A\\B hoặc B\\A)",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00529",
+   "nhom_id": "NNB01095",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Bài toán thực tế tập hợp (2 Yếu tố)",
+   "dang": "Không tham gia cả A và B",
+   "mo_ta": "bài toán thực tế tập hợp có 2 tập hợp, thường là một nhóm người/sự vật, trong đó có những người tham gia 1 câu lạc bộ hoặc yêu thích 1 thứ gì đó hoặc tương tự nhưng có một số người/ sự vật không tham gia gì cả. Yêu cầu tính số lượng người không tham gia đó",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00530",
+   "nhom_id": "NNB01096",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Bài toán thực tế tập hợp (3 yếu tố)",
+   "dang": "Tìm số phần tử chỉ thuộc 1 tập hợp",
+   "mo_ta": "Bài toán thực tế gồm 3 tập tập, yêu cầu tìm số phần tử chỉ thuộc 1 tập hợp",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00531",
+   "nhom_id": "NNB01096",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Bài toán thực tế tập hợp (3 yếu tố)",
+   "dang": "Tìm tổng số phần tử thuộc một trong 3 tập hợp",
+   "mo_ta": "Bài toán thực tế gồm 3 tập tập, yêu cầu tìm tổng số phần tử thuộc một trong 3 tập hợp",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00532",
+   "nhom_id": "NNB01096",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Bài toán thực tế tập hợp (3 yếu tố)",
+   "dang": "Tìm số phần tử thuộc đúng 2 tập hợp",
+   "mo_ta": "Bài toán thực tế có 3 tập hợp, yêu cầu tìm số phần tử thuộc đúng 2 tập hợp",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00533",
+   "nhom_id": "NNB01096",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Bài toán thực tế tập hợp (3 yếu tố)",
+   "dang": "Tìm số phần tử thuộc cả 3 tập hợp",
+   "mo_ta": "Bài toán thực tế tập hợp có 3 tập hợp, tìm số phần tử thuộc cả 3 tập hợp đó",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00534",
+   "nhom_id": "NNB01096",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Bài toán thực tế tập hợp (3 yếu tố)",
+   "dang": "Tìm số phần tử không thuộc tập hợp nào",
+   "mo_ta": "Bài toán thực tế gồm 3 tập hợp, tìm số phần tử không thuộc tập hợp nào trong 3 tập hợp đó",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00535",
+   "nhom_id": "NNB01097",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Bài toán tập hợp chứa tham số m",
+   "dang": "Tìm m để A là tập con của B",
+   "mo_ta": "Tìm m để A là tập con của B",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00536",
+   "nhom_id": "NNB01097",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Bài toán tập hợp chứa tham số m",
+   "dang": "Tìm m để A giao B bằng rỗng",
+   "mo_ta": "Tìm m để A giao B bằng rỗng",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00537",
+   "nhom_id": "NNB01097",
+   "chu_de": "Mệnh đề - Tập hợp",
+   "chuyen_de": "Tập hợp và phép toán trên tập hợp",
+   "nhom": "Bài toán tập hợp chứa tham số m",
+   "dang": "Tìm m để A giao B khác rỗng",
+   "mo_ta": "Tìm m để A giao B khác rỗng",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  }
+ ]
+}

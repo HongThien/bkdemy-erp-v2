@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T106000000433",
+  "dang_bai_id": "NDB01292",
+  "chac": "cao",
+  "ly_do": "Tìm nhiệt độ thấp nhất trong các nhiệt độ có số âm: so sánh, sắp xếp số nguyên."
+ },
+ {
+  "ma_cau": "T106000000566",
+  "dang_bai_id": "NDB01298",
+  "chac": "cao",
+  "ly_do": "Cộng hai số nguyên âm cùng dấu."
+ },
+ {
+  "ma_cau": "T106000000628",
+  "dang_bai_id": "NDB00374",
+  "chac": "vua",
+  "ly_do": "Tính từng biểu thức rồi xét chia hết cho 3; chưa có dạng riêng cho kiểu này."
+ },
+ {
+  "ma_cau": "T106000000436",
+  "dang_bai_id": "NDB01302",
+  "chac": "cao",
+  "ly_do": "Bỏ ngoặc vuông và ngoặc tròn có dấu trừ rồi tính tổng hiệu số nguyên."
+ },
+ {
+  "ma_cau": "T106000000577",
+  "dang_bai_id": "NDB01292",
+  "chac": "cao",
+  "ly_do": "Sắp xếp dãy số nguyên theo thứ tự giảm dần."
+ },
+ {
+  "ma_cau": "T106000000509",
+  "dang_bai_id": "NDB01315",
+  "chac": "cao",
+  "ly_do": "Tìm x là số hạng trong x+30=24, kết quả số nguyên âm."
+ },
+ {
+  "ma_cau": "T106000000481",
+  "dang_bai_id": "NDB01317",
+  "chac": "cao",
+  "ly_do": "Tìm x số nguyên, x:2-5=-8, một cấp nhân chia."
+ },
+ {
+  "ma_cau": "T106000000923",
+  "dang_bai_id": "NDB00364",
+  "chac": "vua",
+  "ly_do": "Tìm x số tự nhiên có ngoặc lồng nhau, không có luỹ thừa; dạng gần nhất."
+ },
+ {
+  "ma_cau": "T106000000400",
+  "dang_bai_id": "NDB01292",
+  "chac": "cao",
+  "ly_do": "Sắp xếp dãy số nguyên theo thứ tự tăng dần."
+ },
+ {
+  "ma_cau": "T106000000936",
+  "dang_bai_id": "NDB00375",
+  "chac": "vua",
+  "ly_do": "Tìm hai chữ số x, y để chia hết cho 2, 5 và 9; trộn dấu hiệu 2,5 với 9."
+ },
+ {
+  "ma_cau": "T106000000195",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: giá trị của chữ số theo hàng trong hệ thập phân (cấu tạo số)."
+ },
+ {
+  "ma_cau": "T106000000914",
+  "dang_bai_id": "NDB00347",
+  "chac": "cao",
+  "ly_do": "Hai cặp tích có thừa số chung 35 và 29, đặt riêng từng đôi."
+ },
+ {
+  "ma_cau": "T106000000527",
+  "dang_bai_id": "NDB00406",
+  "chac": "vua",
+  "ly_do": "Tìm x lớn nhất mà 48 và 36 cùng chia hết cho x; đề nói số nguyên nên có thể xét như dạng Z."
+ },
+ {
+  "ma_cau": "T106000000808",
+  "dang_bai_id": "NDB00369",
+  "chac": "vua",
+  "ly_do": "Tìm x thuộc cả Ư(18) và B(4): ước thoả điều kiện, nhưng giao ước với bội."
+ },
+ {
+  "ma_cau": "T1060000001053",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tìm số tự nhiên nhỏ nhất thoả chia hết và tích là số chính phương."
+ },
+ {
+  "ma_cau": "T106000000477",
+  "dang_bai_id": "NDB01300",
+  "chac": "cao",
+  "ly_do": "Cộng trừ nhiều số nguyên từ trái sang phải."
+ },
+ {
+  "ma_cau": "T106000000606",
+  "dang_bai_id": "NDB01306",
+  "chac": "cao",
+  "ly_do": "Tính hợp lí tổng có cặp số đối -125 và 125."
+ },
+ {
+  "ma_cau": "T106000000525",
+  "dang_bai_id": "NDB01318",
+  "chac": "cao",
+  "ly_do": "Tìm x trong ngoặc: 15-(2-x)=-7, đúng ví dụ mẫu."
+ },
+ {
+  "ma_cau": "T106020701004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: toán đố hiệu tỉ (hiệu số bạn nam nữ, phân số), kiến thức tiểu học nâng cao."
+ },
+ {
+  "ma_cau": "T106000000738",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: số ước của một số và tích các ước; chứng minh số chính phương theo số ước."
+ },
+ {
+  "ma_cau": "T106000000797",
+  "dang_bai_id": "NDB00364",
+  "chac": "vua",
+  "ly_do": "Tìm x số tự nhiên có ngoặc, không luỹ thừa; dạng gần nhất."
+ },
+ {
+  "ma_cau": "T106000000709",
+  "dang_bai_id": "NDB01321",
+  "chac": "vua",
+  "ly_do": "Tích hai thừa số bậc nhất bằng 0 nhưng x là số tự nhiên, cần loại nghiệm."
+ },
+ {
+  "ma_cau": "T1060000001046",
+  "dang_bai_id": "NDB00385",
+  "chac": "vua",
+  "ly_do": "Chứng minh tổng luỹ thừa của 2 chia hết cho 7 bằng ghép 3 số hạng; thêm ý chia hết 42."
+ },
+ {
+  "ma_cau": "T106000000888",
+  "dang_bai_id": "NDB00364",
+  "chac": "vua",
+  "ly_do": "Tìm x số tự nhiên có ngoặc, không luỹ thừa; dạng gần nhất."
+ },
+ {
+  "ma_cau": "T106000000516",
+  "dang_bai_id": "NDB01291",
+  "chac": "cao",
+  "ly_do": "So sánh ba số nguyên 0; 3; -5."
+ },
+ {
+  "ma_cau": "T106000000467",
+  "dang_bai_id": "NDB01318",
+  "chac": "cao",
+  "ly_do": "Tìm x trong ngoặc: (x+18).(-40)=80, đúng ví dụ mẫu."
+ },
+ {
+  "ma_cau": "T106000000590",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tìm số nguyên tố p, q thoả đẳng thức có luỹ thừa."
+ },
+ {
+  "ma_cau": "T106000000543",
+  "dang_bai_id": "NDB01287",
+  "chac": "vua",
+  "ly_do": "Ý a dùng số âm biểu thị độ sâu; ý b tính chênh lệch độ cao thuộc toán thực tế."
+ },
+ {
+  "ma_cau": "T106020701002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tổng dãy phân số có quy luật 1/(n(n+2)), tìm x."
+ },
+ {
+  "ma_cau": "T106000000635",
+  "dang_bai_id": "NDB01287",
+  "chac": "vua",
+  "ly_do": "Ý a dùng số âm biểu thị độ sâu; ý b tính chênh lệch độ cao thuộc toán thực tế."
+ },
+ {
+  "ma_cau": "T106000000520",
+  "dang_bai_id": "NDB01306",
+  "chac": "cao",
+  "ly_do": "Tính hợp lí tổng có cặp số đối -152 và 152."
+ },
+ {
+  "ma_cau": "T106000000986",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: dạng tổng quát của số tự nhiên theo số dư (3k, 3k+1, 3k+2)."
+ },
+ {
+  "ma_cau": "T106000000644",
+  "dang_bai_id": "NDB01298",
+  "chac": "cao",
+  "ly_do": "Cộng hai số nguyên khác dấu."
+ },
+ {
+  "ma_cau": "T106000000743",
+  "dang_bai_id": "NDB00375",
+  "chac": "vua",
+  "ly_do": "Tìm chữ số * để chia hết cho cả 2 và 9; dạng 3,9 gần nhất."
+ },
+ {
+  "ma_cau": "T106000000585",
+  "dang_bai_id": "NDB01318",
+  "chac": "cao",
+  "ly_do": "Tìm x số nguyên có x trong ngoặc: 3+9.(x-4)=12."
+ },
+ {
+  "ma_cau": "T106000000560",
+  "dang_bai_id": "NDB00416",
+  "chac": "vua",
+  "ly_do": "Tìm ba số tự nhiên biết ƯCLN và tổng kèm điều kiện; chưa khớp hẳn."
+ },
+ {
+  "ma_cau": "T106000000536",
+  "dang_bai_id": "NDB01306",
+  "chac": "cao",
+  "ly_do": "Tính hợp lí tổng có cặp số đối 365 và -365."
+ },
+ {
+  "ma_cau": "T106000000823",
+  "dang_bai_id": "NDB00375",
+  "chac": "vua",
+  "ly_do": "Tìm chữ số x để chia hết cho 5 và 3; trộn dấu hiệu 2,5 với 3,9."
+ },
+ {
+  "ma_cau": "T106000000482",
+  "dang_bai_id": "NDB01318",
+  "chac": "cao",
+  "ly_do": "Tìm x số nguyên có ngoặc chứa x: 5-2.(x+19)=-15."
+ },
+ {
+  "ma_cau": "T106000000462",
+  "dang_bai_id": "NDB01296",
+  "chac": "cao",
+  "ly_do": "Tổng các số nguyên thoả -6<x<5, ghép cặp số đối."
+ },
+ {
+  "ma_cau": "T106000000529",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tìm n để phân số rút gọn được (ước chung của tử và mẫu lớn hơn 1)."
+ },
+ {
+  "ma_cau": "T106000000724",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: phương trình mũ có hai cơ số khác nhau, đặt thừa số chung rồi so sánh."
+ },
+ {
+  "ma_cau": "T106000000937",
+  "dang_bai_id": "NDB00375",
+  "chac": "vua",
+  "ly_do": "Tìm hai chữ số x, y để chia hết cho 5 và 9; trộn dấu hiệu 5 với 9."
+ },
+ {
+  "ma_cau": "T106000000607",
+  "dang_bai_id": "NDB01307",
+  "chac": "cao",
+  "ly_do": "Tính hợp lí rút thừa số chung -25 của hai tích."
+ },
+ {
+  "ma_cau": "T106000000608",
+  "dang_bai_id": "NDB01310",
+  "chac": "cao",
+  "ly_do": "Biểu thức có luỹ thừa và ba cấp ngoặc với số nguyên."
+ },
+ {
+  "ma_cau": "T106000000697",
+  "dang_bai_id": "NDB00356",
+  "chac": "vua",
+  "ly_do": "Rút gọn phân số luỹ thừa bằng cách đưa về cùng cơ số và đặt thừa số chung; dạng gần nhất."
+ },
+ {
+  "ma_cau": "T106000000787",
+  "dang_bai_id": "NDB00350",
+  "chac": "vua",
+  "ly_do": "Tìm x số tự nhiên chỉ có phép nhân 5x=145; chưa có dạng riêng."
+ },
+ {
+  "ma_cau": "T106000000307",
+  "dang_bai_id": "NDB01316",
+  "chac": "cao",
+  "ly_do": "Tìm x là số trừ: 75-x=-24."
+ },
+ {
+  "ma_cau": "T106000000637",
+  "dang_bai_id": "NDB00411",
+  "chac": "vua",
+  "ly_do": "Toán thực tế chia dư các số khác nhau, tìm số nhỏ nhất; gần dạng bội chung thừa thiếu."
+ },
+ {
+  "ma_cau": "T106000000739",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chứng minh số chính phương với số gồm nhiều chữ số lặp."
+ },
+ {
+  "ma_cau": "T106000000615",
+  "dang_bai_id": "NDB01306",
+  "chac": "cao",
+  "ly_do": "Tính hợp lí nhóm số hạng ra tròn trăm."
+ },
+ {
+  "ma_cau": "T1060000001026",
+  "dang_bai_id": "NDB01322",
+  "chac": "vua",
+  "ly_do": "Tích có thừa số bậc hai bằng 0 nhưng x là số tự nhiên."
+ },
+ {
+  "ma_cau": "T106000000488",
+  "dang_bai_id": "NDB01321",
+  "chac": "cao",
+  "ly_do": "Tích hai thừa số bậc nhất bằng 0 trên Z."
+ },
+ {
+  "ma_cau": "T1060000001001",
+  "dang_bai_id": "NDB00404",
+  "chac": "vua",
+  "ly_do": "Đúng/Sai về chia tổ: ước chung và ƯCLN; ý trọng tâm là ƯCLN thực tế."
+ },
+ {
+  "ma_cau": "T106000000648",
+  "dang_bai_id": "NDB01315",
+  "chac": "cao",
+  "ly_do": "Tìm x là số hạng: 26+x=12."
+ },
+ {
+  "ma_cau": "T106000000517",
+  "dang_bai_id": "NDB01313",
+  "chac": "cao",
+  "ly_do": "Nhiệt độ giảm đi, phép trừ số nguyên."
+ },
+ {
+  "ma_cau": "T106000000483",
+  "dang_bai_id": "NDB01313",
+  "chac": "cao",
+  "ly_do": "Nhiệt độ giảm rồi tăng theo giờ, toán thực tế số nguyên."
+ },
+ {
+  "ma_cau": "T106000000696",
+  "dang_bai_id": "NDB00356",
+  "chac": "vua",
+  "ly_do": "Rút gọn phân số luỹ thừa bằng cách đưa về cùng cơ số và đặt thừa số chung; dạng gần nhất."
+ },
+ {
+  "ma_cau": "T106000000028",
+  "dang_bai_id": "NDB01286",
+  "chac": "cao",
+  "ly_do": "Nhận biết tập hợp chỉ gồm số nguyên âm."
+ },
+ {
+  "ma_cau": "T106000000289",
+  "dang_bai_id": "NDB01288",
+  "chac": "cao",
+  "ly_do": "Tìm số đối của 24."
+ },
+ {
+  "ma_cau": "T106000000404",
+  "dang_bai_id": "NDB01301",
+  "chac": "cao",
+  "ly_do": "Nhận biết kết quả khi bỏ dấu ngoặc có dấu trừ đằng trước."
+ },
+ {
+  "ma_cau": "T106000000611",
+  "dang_bai_id": "NDB01321",
+  "chac": "cao",
+  "ly_do": "Tích hai thừa số bậc nhất bằng 0 trên Z."
+ },
+ {
+  "ma_cau": "T106000000625",
+  "dang_bai_id": "NDB01295",
+  "chac": "cao",
+  "ly_do": "Đếm số nguyên thoả -4<x≤2."
+ },
+ {
+  "ma_cau": "T106000000730",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: phương trình mũ có nhiều cơ số khác nhau, dùng thừa số nguyên tố."
+ },
+ {
+  "ma_cau": "T106000000684",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tổng dãy tích hai số tự nhiên liên tiếp 1.2+2.3+..."
+ },
+ {
+  "ma_cau": "T106000000567",
+  "dang_bai_id": "NDB01306",
+  "chac": "cao",
+  "ly_do": "Tính hợp lí tổng có cặp số đối 72 và -72."
+ },
+ {
+  "ma_cau": "T106000000304",
+  "dang_bai_id": "NDB01306",
+  "chac": "vua",
+  "ly_do": "Bỏ ngoặc rồi gom số đối; cũng hợp dạng bỏ dấu ngoặc rồi tính."
+ },
+ {
+  "ma_cau": "T106000000155",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: viết số tự nhiên dưới dạng cấu tạo thập phân."
+ },
+ {
+  "ma_cau": "T106000000616",
+  "dang_bai_id": "NDB01306",
+  "chac": "vua",
+  "ly_do": "Bỏ ngoặc rồi triệt tiêu số đối; cũng hợp dạng bỏ dấu ngoặc rồi tính."
+ },
+ {
+  "ma_cau": "T106000000609",
+  "dang_bai_id": "NDB01315",
+  "chac": "cao",
+  "ly_do": "Tìm x là số bị trừ: x-12=-7."
+ }
+]

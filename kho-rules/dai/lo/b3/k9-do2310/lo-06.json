@@ -1,0 +1,58 @@
+[
+ {
+  "ma_cau": "T109090401008",
+  "loai": "tra_loi_ngan",
+  "de": "Một nhà máy sản xuất hai loại đồ chơi, mỗi món đồ chơi loại A cần 2 kg nhựa và 30 phút để hoàn thành, lợi nhuận 50.000 đồng. Mỗi món đồ chơi loại B cần 4 kg nhựa và 15 phút để hoàn thành, lợi nhuận 40.000 đồng. Nhà máy có 220 kg nhựa và 1500 phút làm việc. Hãy tính xem nhà máy nên sản xuất mỗi loại bao nhiêu món đồ chơi để có mức lợi nhuận cao nhất?",
+  "dap_an": "3100000",
+  "loi_giai": "Gọi $x$ là số món đồ chơi loại A, $y$ là số món đồ chơi loại B cần sản xuất, với $x, y \\ge 0$.\nVì chỉ có 220kg nhựa nên $2x + 4y \\le 220 \\Rightarrow x + 2y \\le 110$.\nVì có 1500 phút làm việc tối đa nên $30x + 15y \\le 1500 \\Rightarrow 2x + y \\le 100$.\nLợi nhuận (đồng): $P = 50000x + 40000y$.\nTa có $P = 50000x + 40000y = 20000(2x + y) + 10000(x + 2y) \\le 20000.100 + 10000.110 = 2000000 + 1100000 = 3100000$.\nDấu '$=$' xảy ra khi $\\begin{cases} x + 2y = 110 \\\\ 2x + y = 100 \\end{cases} \\Rightarrow \\begin{cases} x = 30 \\\\ y = 40 \\end{cases}$.\nVậy nhà máy cần sản xuất 30 món đồ chơi loại A và 40 món đồ chơi loại B để lợi nhuận cao nhất.",
+  "nhan_cu": "Bài toán tối ưu doanh thu chi phí 2 biến › Bài toán tối ưu doanh thu chi phí có miền điều kiện"
+ },
+ {
+  "ma_cau": "T109090401009",
+  "loai": "tra_loi_ngan",
+  "de": "Một nông trại chăn nuôi hai loại gia súc, mỗi con bò cần 2 đơn vị thức ăn và 30m² diện tích, lợi nhuận 60.000 đồng. Mỗi con dê cần 4 đơn vị thức ăn và 15m² diện tích, lợi nhuận 50.000 đồng. Nông trại có 260 đơn vị thức ăn và 1650m² diện tích. Hãy tính xem nông trại nên nuôi mỗi loại bao nhiêu con để có mức lợi nhuận cao nhất?",
+  "dap_an": "4300000",
+  "loi_giai": "Gọi $x$ là số con bò, $y$ là số con dê cần nuôi, với $x, y \\ge 0$.\nVì chỉ có 260 đơn vị thức ăn nên $2x + 4y \\le 260 \\Rightarrow x + 2y \\le 130$.\nVì có 1650m² diện tích tối đa nên $30x + 15y \\le 1650 \\Rightarrow 2x + y \\le 110$.\nLợi nhuận (đồng): $P = 60000x + 50000y$.\nTa có $P = 60000x + 50000y = \\dfrac{70000}{3}(2x + y) + \\dfrac{40000}{3}(x + 2y) \\le \\dfrac{70000}{3}.110 + \\dfrac{40000}{3}.130 = \\dfrac{7700000}{3} + \\dfrac{5200000}{3} = \\dfrac{12900000}{3} = 4300000$.\nDấu '$=$' xảy ra khi $\\begin{cases} x + 2y = 130 \\\\ 2x + y = 110 \\end{cases} \\Rightarrow \\begin{cases} x = 30 \\\\ y = 50 \\end{cases}$.\nVậy nông trại cần nuôi 30 con bò và 50 con dê để lợi nhuận cao nhất.",
+  "nhan_cu": "Bài toán tối ưu doanh thu chi phí 2 biến › Bài toán tối ưu doanh thu chi phí có miền điều kiện"
+ },
+ {
+  "ma_cau": "T109090401010",
+  "loai": "tra_loi_ngan",
+  "de": "Một cửa hàng may mặc sản xuất hai loại áo, mỗi áo sơ mi cần 2m vải và 30 phút cắt may, lợi nhuận 35.000 đồng. Mỗi áo khoác cần 4m vải và 15 phút cắt may, lợi nhuận 25.000 đồng. Cửa hàng có 190m vải và 1050 phút làm việc. Hãy tính xem cửa hàng nên sản xuất mỗi loại bao nhiêu áo để có mức lợi nhuận cao nhất?",
+  "dap_an": "1525000",
+  "loi_giai": "Gọi $x$ là số áo sơ mi, $y$ là số áo khoác cần sản xuất, với $x, y \\ge 0$.\nVì chỉ có 190m vải nên $2x + 4y \\le 190 \\Rightarrow x + 2y \\le 95$.\nVì có 1050 phút làm việc tối đa nên $30x + 15y \\le 1050 \\Rightarrow 2x + y \\le 70$.\nLợi nhuận (đồng): $P = 35000x + 25000y$.\nTa có $P = 35000x + 25000y = 15000(2x + y) + 5000(x + 2y) \\le 15000.70 + 5000.95 = 1050000 + 475000 = 1525000$.\nDấu '$=$' xảy ra khi $\\begin{cases} x + 2y = 95 \\\\ 2x + y = 70 \\end{cases} \\Rightarrow \\begin{cases} x = 15 \\\\ y = 40 \\end{cases}$.\nVậy cửa hàng cần sản xuất 15 áo sơ mi và 40 áo khoác để lợi nhuận cao nhất.",
+  "nhan_cu": "Bài toán tối ưu doanh thu chi phí 2 biến › Bài toán tối ưu doanh thu chi phí có miền điều kiện"
+ },
+ {
+  "ma_cau": "T109090401015",
+  "loai": "tra_loi_ngan",
+  "de": "Một khu gửi đồ ban đêm có diện tích sử dụng là 360 m² (không tính lối đi).\nKhu nhận hai loại đồ vật: kiện hàng nhỏ và kiện hàng lớn.\nMỗi kiện hàng nhỏ cần $6 m^2$ và trả $50.000$ đồng tiền gửi.\nMỗi kiện hàng lớn cần $15 m^2$ và trả $95.000$ đồng tiền gửi.\nNgười quản lý khu đồ không thể trông coi quá $30$ kiện hàng trong một đêm.\nHỏi khu gửi đồ nên nhận bao nhiêu kiện hàng nhỏ và bao nhiêu kiện hàng lớn một đêm để doanh thu đạt mức cao nhất?",
+  "dap_an": "10; 20",
+  "loi_giai": "Gọi $x$ là số kiện hàng nhỏ, $y$ là số kiện hàng lớn khu gửi đồ nhận trong một đêm, với $x,y \\ge 0$ và $x,y \\in N$.\nTổng diện tích các sẽ đỗ: $6x+15y (m^2)$\nVì khu gửi đồ có diện tích là $360m^2$ nên ta có $6x+15y \\le 360 \\Rightarrow 2x+5y \\le 120$\nVì quản lý khu đồ không thể trông coi quá $30$ kiện hàng trong một đêm nên $x+y \\le 30$\nDoanh thu của khu gửi đồ là : $D=50000x+95000y$\nTa có $D=50000x+95000y = 15000(2x+5y)+20000(x+y) \\le 15000.120+20000.30 = 1800000+600000 = 2400000$\nDấu ' = ' xảy ra khi $\\{ \\begin{matrix} 2x+5y=120 \\\\ x+y=30 \\end{matrix} \\Rightarrow \\{ \\begin{matrix} x=10 \\\\ y=20 \\end{matrix}$\nVậy cần nhận $10$ kiện hàng nhỏ và $20$ kiện hàng lớn thì doanh thu sẽ lớn nhất.",
+  "nhan_cu": "Bài toán tối ưu doanh thu chi phí 2 biến › Bài toán tối ưu doanh thu chi phí có miền điều kiện"
+ },
+ {
+  "ma_cau": "T109090401016",
+  "loai": "tra_loi_ngan",
+  "de": "Một nhà kho có diện tích chứa hàng là 160 m² (không tính lối đi).\nKho nhận hai loại sản phẩm: thùng nhỏ và thùng lớn.\nMỗi thùng nhỏ cần $4 m^2$ và trả $25.000$ đồng chi phí lưu kho.\nMỗi thùng lớn cần $10 m^2$ và trả $55.000$ đồng chi phí lưu kho.\nNgười quản lý kho không thể xử lý quá $25$ thùng trong một ca.\nHỏi nhà kho nên nhận bao nhiêu thùng nhỏ và bao nhiêu thùng lớn trong một ca để chi phí lưu kho đạt mức cao nhất?",
+  "dap_an": "15; 10",
+  "loi_giai": "Gọi $x$ là số thùng nhỏ, $y$ là số thùng lớn nhà kho nhận trong một ca, với $x,y \\ge 0$ và $x,y \\in N$.\nTổng diện tích các sẽ chứa: $4x+10y (m^2)$\nVì nhà kho có diện tích là $160m^2$ nên ta có $4x+10y \\le 160 \\Rightarrow 2x+5y \\le 80$\nVì quản lý kho không thể xử lý quá $25$ thùng trong một ca nên $x+y \\le 25$\nChi phí lưu kho của nhà kho là : $D=25000x+55000y$\nTa có $D=25000x+55000y = 10000(2x+5y)+5000(x+y) \\le 10000.80+5000.25 = 800000+125000 = 925000$\nDấu ' = ' xảy ra khi $\\{ \\begin{matrix} 2x+5y=80 \\\\ x+y=25 \\end{matrix} \\Rightarrow \\{ \\begin{matrix} x=15 \\\\ y=10 \\end{matrix}$\nVậy cần nhận $15$ thùng nhỏ và $10$ thùng lớn thì chi phí lưu kho sẽ lớn nhất.",
+  "nhan_cu": "Bài toán tối ưu doanh thu chi phí 2 biến › Bài toán tối ưu doanh thu chi phí có miền điều kiện"
+ },
+ {
+  "ma_cau": "T109090401017",
+  "loai": "tra_loi_ngan",
+  "de": "Một trung tâm logistics có diện tích bãi chứa là 250 m² (không tính lối đi).\nTrung tâm nhận hai loại xe: xe bán tải và xe tải trung.\nMỗi xe bán tải cần $4 m^2$ và trả $50.000$ đồng phí đậu.\nMỗi xe tải trung cần $10 m^2$ và trả $110.000$ đồng phí đậu.\nNgười quản lý bãi xe không thể trông coi quá $40$ xe trong một ngày.\nHỏi trung tâm logistics nên nhận bao nhiêu xe bán tải và bao nhiêu xe tải trung trong một ngày để doanh thu đạt mức cao nhất?",
+  "dap_an": "25; 15",
+  "loi_giai": "Gọi $x$ là số xe bán tải, $y$ là số xe tải trung trung tâm nhận trong một ngày, với $x,y \\ge 0$ và $x,y \\in N$.\nTổng diện tích các sẽ đậu: $4x+10y (m^2)$\nVì trung tâm có diện tích là $250m^2$ nên ta có $4x+10y \\le 250 \\Rightarrow 2x+5y \\le 125$\nVì quản lý bãi xe không thể trông coi quá $40$ xe trong một ngày nên $x+y \\le 40$\nDoanh thu của trung tâm là : $D=50000x+110000y$\nTa có $D=50000x+110000y = 20000(2x+5y)+10000(x+y) \\le 20000.125+10000.40 = 2500000+400000 = 2900000$\nDấu ' = ' xảy ra khi $\\{ \\begin{matrix} 2x+5y=125 \\\\ x+y=40 \\end{matrix} \\Rightarrow \\{ \\begin{matrix} x=25 \\\\ y=15 \\end{matrix}$\nVậy cần nhận $25$ xe bán tải và $15$ xe tải trung thì doanh thu sẽ lớn nhất.",
+  "nhan_cu": "Bài toán tối ưu doanh thu chi phí 2 biến › Bài toán tối ưu doanh thu chi phí có miền điều kiện"
+ },
+ {
+  "ma_cau": "T109090401019",
+  "loai": "tra_loi_ngan",
+  "de": "Một khu đất trống có diện tích cho thuê là 600 m² (không tính lối đi).\nChủ khu đất cho thuê để đặt hai loại quầy hàng: quầy nhỏ và quầy lớn.\nMỗi quầy nhỏ cần $10 m^2$ và trả $40.000$ đồng tiền thuê.\nMỗi quầy lớn cần $25 m^2$ và trả $100.000$ đồng tiền thuê.\nNgười quản lý khu đất không thể sắp xếp quá $45$ quầy hàng trong một ngày.\nHỏi khu đất nên cho thuê bao nhiêu quầy nhỏ và bao nhiêu quầy lớn trong một ngày để doanh thu đạt mức cao nhất?",
+  "dap_an": "$(35,10),(30,12),(25,14),(20,16),(15,18),(10,20),(5,22),(0,24)$",
+  "loi_giai": "Gọi $x$ là số quầy nhỏ, $y$ là số quầy lớn khu đất cho thuê trong một ngày, với $x, y \\ge 0$ và $x, y \\in \\mathbb{N}$.\nTổng diện tích các quầy sẽ thuê: $10x + 25y$ ($m^2$)\nVì khu đất có diện tích là $600m^2$ nên ta có $10x + 25y \\le 600 \\Rightarrow 2x + 5y \\le 120$\nVì người quản lý không thể sắp xếp quá $45$ quầy hàng trong một ngày nên $x + y \\le 45$\nDoanh thu của khu đất là: $D = 40000x + 100000y$\nTa có: $D = 20000(2x + 5y)$\nVì $2x + 5y \\le 120$ nên $D \\le 20000 \\cdot 120 = 2400000$.\nDấu ``$=$'' xảy ra khi:\n$2x+5y=120$.\nKết hợp với điều kiện $x+y\\le45$, ta có:\n$x=\\dfrac{120-5y}{2}$.\nVì $x,y\\in\\mathbb{N}$ nên $y$ là số chẵn. Đồng thời:\n$x+y\\le45$\n$\\Rightarrow \\dfrac{120-5y}{2}+y\\le45$\n$\\Rig …",
+  "nhan_cu": "Bài toán tối ưu doanh thu chi phí 2 biến › Bài toán tối ưu doanh thu chi phí có miền điều kiện"
+ }
+]

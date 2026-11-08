@@ -6,7 +6,12 @@ import type { NavGroup, NavLeaf } from '../types'
 
 export const LEAF_HOME = 'home'
 export const LEAF_VIEC = 'viec'
+// Số mục Yêu thích tối đa mỗi người ghim (Thùy 14/10: 8 · đổi 21/10: 12). MỘT chỗ cho mọi nơi dùng (luật ghim, cảnh, trang đánh dấu ô).
+export const YEU_THICH_TOI_DA = 12
 export const LEAF_PLAN = 'myplan'   // Kế hoạch của tôi (MyPlan, Thùy 16/10) — mọi nhân sự đều có
+// Phòng làm việc (Thùy 03/11): KHU RIÊNG ngang hàng Trang chính (Sảnh), không phải con của nhóm nào. Quyền vẫn là leaf 'phong_tk'
+// ở Phân quyền (nhóm ghi ở fixtures chỉ để xếp trong ma trận quyền); trên menu/đường dẫn nó đứng ngay dưới gốc như Việc của tôi.
+export const LEAF_PHONG = 'phong_tk'
 // Trang của một nhóm trên Home = leaf 'home:<tên nhóm>' → Back quay đúng về trang nhóm vừa mở.
 export const leafNhom = (nhom: string) => `${LEAF_HOME}:${nhom}`
 export const laHome = (leaf: string) => leaf === LEAF_HOME || leaf.startsWith(`${LEAF_HOME}:`)
@@ -33,18 +38,18 @@ const LEAF_ICON: Record<string, string> = {
   viec: '✅', myplan: '🗂',
   // Vận hành
   buoihoc: '🗓', ops_report: '📣', prep: '🧹', phancong_ops: '🧑‍🤝‍🧑', hs: '🎒', lop: '🏫', tuyensinh: '🎚', test_dau_vao: '📝',
-  botro: '🩹', phong_hoc: '🚪', tu_qua: '🎁', khaosat: '🕸', su_kien: '🎉',
+  botro: '🩹', qlcl_team: '🧭', phong_tk: '🧑‍💼', phong_hoc: '🚪', tu_qua: '🎁', su_kien: '🎉', hs_moi: '📋',
   // Gamification
-  diemso: '📈', thanhtich: '🥇', quanlylevel: '🪜', chotxu: '🪙', huyhieu: '🎖', huyhieu_trao: '🏅', chuoi_nghi: '🏖', tinh_nang: '🎛', traogiai: '🏆',
+  diemso: '📈', thanhtich: '🥇', quanlylevel: '🪜', chotxu: '🪙', tinh_nang: '🎛', traogiai: '🏆',
   // Học thuật
   bdkt: '🗺', cau_bao_loi: '⚑', bdm: '🧭', sotay: '📓', tl: '🗂', khodethi: '📑', nhapkho: '📥',
-  lamtailieu: '✍️', 'lamtailieu:giao_trinh': '📘', 'lamtailieu:giao_trinh_bdm': '🗺️','lamtailieu:giao_trinh_hinh': '📐', 'lamtailieu:et': '📝', 'lamtailieu:mt': '🏁', 'lamtailieu:bo_tro': '🩹',
+  lamtailieu: '✍️', 'lamtailieu:giao_trinh_bdm': '🗺️', 'lamtailieu:giao_trinh': '📘', 'lamtailieu:et_bdm': '🗺️', 'lamtailieu:et': '📝', 'lamtailieu:chuyen_de': '📚', 'lamtailieu:mt': '🏁', 'lamtailieu:bo_tro': '🩹',
   // Quản lý chất lượng
-  ketqua: '📊', cham_mt: '✏️', duyetcham: '✔️', duyetloigiai: '🔎', db_hoctap: '🧠', db_theodoi_app: '📱', report_ph: '💌',
+  ketqua: '📊', cham_mt: '✏️', duyetcham: '✔️', duyetloigiai: '🔎', db_hoctap: '🧠', db_cuoicap: '🎯',db_theodoi_app: '📱', report_ph: '💌',
   // Core team
-  hocphi: '💰', ns: '🪪', orgchart: '🌳', phancong: '📌', tkb: '⏰', phanquyen: '🔐', baoloi: '🐞', db_tuyendung: '🧲', giaoviec: '🚀', gay: '🏑', thuchi: '🧾', ta_cong_duyet: '🕘', ta_luong: '💵',
+  hocphi: '💰', ns: '🪪', orgchart: '🌳', phancong: '📌', tkb: '⏰', phanquyen: '🔐', baoloi: '🐞', giaoviec: '🚀', gay: '🏑', thuchi: '🧾', ta_cong_duyet: '🕘', ta_luong: '💵',
   // Dashboard
-  db_tongquan: '🌐', db_taichinh: '💹', db_chatluong: '⚙️', db_phdangnhap: '🔑', db_xemapp: '👀', db_thongbao: '📢',
+  db_chatluong: '⚙️', db_phdangnhap: '🔑', db_xemapp: '👀', db_thongbao: '📢',
 }
 
 export type MucMenu = { id: string; ten: string; nhom: string | null; cha: string | null; icon: string }
@@ -63,23 +68,25 @@ export function traiMuc(groups: NavGroup[]): MucMenu[] {
 }
 export const MUC_VIEC: MucMenu = { id: LEAF_VIEC, ten: 'Việc của tôi', nhom: null, cha: null, icon: LEAF_ICON.viec }
 export const MUC_PLAN: MucMenu = { id: LEAF_PLAN, ten: 'Kế hoạch của tôi', nhom: null, cha: null, icon: LEAF_ICON.myplan }
+export const MUC_PHONG: MucMenu = { id: LEAF_PHONG, ten: 'Phòng làm việc', nhom: null, cha: null, icon: LEAF_ICON.phong_tk }
 
 // ── CÂY để đi lại (thanh địa chỉ) ─────────────────────────────────────────────
 // id = leaf sẽ mở khi bấm; id null = THƯ MỤC không có trang riêng (vd "Vận hành lớp học") — bấm thì xổ các mục con.
 export type NutMenu = { id: string | null; ten: string; icon: string; con?: NutMenu[] }
 
 // `coHome` = người này có Trang chính (được cấp ≥1 màn ngoài "Việc của tôi"). Không có thì gốc cây = Việc của tôi.
-export function cayMenu(adminNav: NavGroup[], coHome: boolean): NutMenu {
+export function cayMenu(adminNav: NavGroup[], coHome: boolean, coPhong = false): NutMenu {
   const viec: NutMenu = { id: LEAF_VIEC, ten: MUC_VIEC.ten, icon: MUC_VIEC.icon }
   const plan: NutMenu = { id: LEAF_PLAN, ten: MUC_PLAN.ten, icon: MUC_PLAN.icon }
+  const phong: NutMenu[] = coPhong ? [{ id: LEAF_PHONG, ten: MUC_PHONG.ten, icon: MUC_PHONG.icon }] : []
   // Người không có Trang chính: gốc = Việc của tôi, Kế hoạch của tôi nằm ngay dưới (đường dẫn "Việc của tôi › Kế hoạch của tôi").
-  if (!coHome) return { ...viec, con: [plan] }
+  if (!coHome) return { ...viec, con: [plan, ...phong] }
   const nut = (l: NavLeaf, nhom: string | null): NutMenu => (l.children?.length
     ? { id: null, ten: l.ten, icon: LEAF_ICON[l.id] ?? '📁', con: l.children.map((c) => nut(c, nhom)) }
     : { id: l.id, ten: l.ten, icon: LEAF_ICON[l.id] ?? nhomIcon(nhom) })
   return {
     id: LEAF_HOME, ten: 'Trang chính', icon: '🏠',
-    con: [viec, plan, ...adminNav.map((g): NutMenu => ({ id: leafNhom(g.nhom ?? ''), ten: g.nhom ?? '', icon: nhomIcon(g.nhom), con: g.leaves.map((l) => nut(l, g.nhom)) }))],
+    con: [viec, plan, ...phong, ...adminNav.map((g): NutMenu => ({ id: leafNhom(g.nhom ?? ''), ten: g.nhom ?? '', icon: nhomIcon(g.nhom), con: g.leaves.map((l) => nut(l, g.nhom)) }))],
   }
 }
 

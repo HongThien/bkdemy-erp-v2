@@ -1,0 +1,289 @@
+=== N C4.4
+@ly_thuyet:
+##TC Các đại lượng kinh tế và hàm cần tối ưu
+- Doanh thu $R=$ giá bán $\cdot$ số lượng bán; chi phí $C$; lợi nhuận $L=R-C$ (nếu có thuế $t$ trên mỗi sản phẩm thì trừ thêm $tx$).
+- Chi phí trung bình của một đơn vị: $\overline{C}(x)=\dfrac{C(x)}{x}$ ($x>0$). Đề cho sẵn "chi phí bình quân (trung bình) mỗi sản phẩm" $G(x)$ thì tổng chi phí là $C(x)=x\cdot G(x)$.
+- Chi phí biên $C'(x)$, doanh thu biên $R'(x)$, lợi nhuận biên $L'(x)=R'(x)-C'(x)$; lợi nhuận lớn nhất ở chỗ $R'(x)=C'(x)$ (nếu $L'$ đổi dấu từ $+$ sang $-$).
+- Hàm cần tối ưu là hàm MỘT biến trên miền thực tế của biến (số lượng không âm, không vượt năng lực sản xuất, giá không âm, biến nguyên nếu đếm máy, lô, sản phẩm).
+
+##PP Giải bài toán tối ưu kinh tế
+Chọn biến (số sản phẩm, số lần đổi giá, giá bán, vận tốc...) kèm đơn vị và nêu miền của biến.
+Biểu diễn mọi đại lượng đề nhắc (giá, lượng, doanh thu, chi phí) qua biến, lập hàm cần tối ưu (lợi nhuận, doanh thu, chi phí hay chi phí trung bình).
+Tính đạo hàm, giải đạo hàm bằng $0$, xét dấu đạo hàm trên miền (hoặc so sánh giá trị ở nghiệm với hai đầu mút).
+Đối chiếu miền (nghiệm có thuộc miền không; biến có phải số nguyên không) rồi tính đúng đại lượng đề hỏi.
+Trả lời bằng ngữ cảnh của bài, kèm đơn vị.
+
+##CY
+- Đề hỏi giá bán hay sản lượng thật, không phải số lần đổi giá: đừng dừng ở giá trị của biến phụ.
+- Thống nhất đơn vị (nghìn đồng với triệu đồng, giờ với phút) ngay từ đầu.
+- Nghiệm của đạo hàm nằm ngoài miền thì giá trị lớn nhất (nhỏ nhất) nằm ở đầu mút; biến nguyên mà nghiệm không nguyên thì so sánh hai số nguyên sát nghiệm.
+- Đề cho chi phí "mỗi sản phẩm" hay "mỗi giờ" thì phải nhân với số sản phẩm hay số giờ trước khi cộng thành tổng chi phí.
+
+=== C4.4.1   (dạng "Giá và lượng cầu tuyến tính: doanh thu, lợi nhuận lớn nhất" — mô tả: giảm giá x đồng thì bán thêm y sản phẩm; tự lập hàm doanh thu/lợi nhuận theo giá rồi tối ưu)
+@ly_thuyet:
+##TC Giá và lượng bán thay đổi theo một tỉ lệ cố định
+- Giá gốc $p_0$ ứng với lượng bán gốc $q_0$; cứ đổi giá $a$ đơn vị thì lượng bán đổi $b$ theo chiều ngược lại. Gọi $x$ là số lần đổi giá: giá mới $p_0\mp ax$, lượng bán mới $q_0\pm bx$.
+- Cách khác: gọi $x$ là lượng bán, khi đó giá bán $p(x)$ là hàm số bậc nhất của $x$ đi qua điểm $(q_0;p_0)$ với hệ số góc $-\dfrac{a}{b}$, tức $p(x)=p_0-\dfrac{a}{b}(x-q_0)$.
+- Doanh thu $R$ bằng giá nhân lượng bán, là hàm bậc hai của biến; lợi nhuận $L=R-C$ (chi phí $C$ gồm giá vốn nhân lượng bán và chi phí cố định).
+
+##PP Lập hàm từ quan hệ giá và lượng
+Chọn biến: số lần đổi giá $x$ (hoặc lượng bán $x$), tìm miền sao cho giá và lượng đều không âm.
+Viết giá bán và lượng bán theo biến (hoặc lập $p(x)$ từ hai mốc đề cho).
+Lập $R(x)$ hay $L(x)$, giải đạo hàm bằng $0$ và xét dấu đạo hàm trên miền.
+Đổi nghiệm ra đại lượng đề hỏi (giá bán, lượng bán) và tính giá trị lớn nhất.
+
+##CY
+- Bài cho thuê căn hộ: chi phí và lợi nhuận chỉ tính trên số căn CÓ người thuê, không tính trên số căn ban đầu.
+- Đề có hai đại lượng cùng giảm (số đơn hàng và khối lượng mỗi đơn) thì lượng bán là tích hai thừa số, hàm thu được bậc ba.
+- Đề có chặn giá ("giá không vượt quá...") thì nghiệm tìm được phải thuộc khoảng chặn đó.
+
+@vi_du:
+##VD
+Một toà nhà có $50$ căn hộ cho thuê. Nếu giá thuê mỗi căn là $3$ triệu đồng một tháng thì cho thuê hết; cứ tăng giá thêm $0{,}5$ triệu đồng một tháng thì có thêm $5$ căn bỏ trống. Hỏi nên cho thuê mỗi căn với giá bao nhiêu triệu đồng một tháng để doanh thu lớn nhất?
+
+Bài giải:
+Gọi $x$ là số lần tăng giá $0{,}5$ triệu đồng, điều kiện $x\ge0$ và $50-5x\ge0$, tức $0\le x\le10$.
+Giá thuê mỗi căn là $3+0{,}5x$ (triệu đồng), số căn có người thuê là $50-5x$.
+Doanh thu mỗi tháng là $R(x)=(3+0{,}5x)(50-5x)=-2{,}5x^2+10x+150$.
+$R'(x)=-5x+10=0\Leftrightarrow x=2$, thuộc $[0;10]$.
+$R'(x)>0$ khi $0\le x<2$ và $R'(x)<0$ khi $2<x\le10$ nên $R$ lớn nhất tại $x=2$, $R(2)=4\cdot40=160$.
+Vậy nên cho thuê với giá $4$ triệu đồng một căn mỗi tháng, doanh thu lớn nhất là $160$ triệu đồng mỗi tháng.
+
+##VD
+Mỗi ngày một cửa hàng bán $100$ sản phẩm với giá $80$ nghìn đồng một sản phẩm. Khảo sát thị trường cho thấy cứ giảm giá $2$ nghìn đồng một sản phẩm thì bán thêm $10$ sản phẩm mỗi ngày, và giá bán $p$ là hàm số bậc nhất của số sản phẩm $x$ bán ra mỗi ngày. Giá vốn mỗi sản phẩm là $20$ nghìn đồng, chi phí cố định mỗi ngày là $1\,000$ nghìn đồng. Lập hàm $p(x)$, rồi tìm giá bán để lợi nhuận mỗi ngày lớn nhất và tính lợi nhuận đó.
+
+Bài giải:
+Đồ thị $p(x)$ đi qua $(100;80)$ và khi $x$ tăng $10$ thì $p$ giảm $2$, nên hệ số góc bằng $-0{,}2$: $p(x)=80-0{,}2(x-100)=100-0{,}2x$.
+Giá bán dương nên $x<500$; vì giảm giá để bán thêm nên $x\ge100$. Miền của $x$ là $[100;500)$.
+Lợi nhuận mỗi ngày là $L(x)=x\cdot p(x)-20x-1000=-0{,}2x^2+80x-1000$.
+$L'(x)=-0{,}4x+80=0\Leftrightarrow x=200$, thuộc miền.
+$L'(x)>0$ khi $100\le x<200$ và $L'(x)<0$ khi $200<x<500$ nên $L$ lớn nhất tại $x=200$.
+Khi đó $p(200)=60$ và $L(200)=-8000+16000-1000=7000$.
+Vậy giá bán là $60$ nghìn đồng một sản phẩm (bán $200$ sản phẩm mỗi ngày), lợi nhuận lớn nhất là $7\,000$ nghìn đồng mỗi ngày.
+
+=== C4.4.2   (dạng "Lợi nhuận bằng doanh thu trừ chi phí cho sẵn" — mô tả: cho sẵn hàm doanh thu, chi phí (hoặc chi phí biên); lập lợi nhuận và tìm sản lượng tối ưu)
+@ly_thuyet:
+##TC Lợi nhuận từ hàm doanh thu và hàm chi phí cho sẵn
+- $L(x)=F(x)-C(x)$ với $x$ là số sản phẩm sản xuất và bán hết; miền thường là $[1;N]$ hay $[0;N]$, $N$ là năng lực sản xuất tối đa.
+- Chi phí cho dưới dạng bình quân mỗi sản phẩm $G(x)$ thì $C(x)=x\cdot G(x)$; có nhiều khoản chi phí thì cộng lại hết (sản xuất, vận chuyển, thuế trên mỗi sản phẩm...).
+- Đề cho chi phí biên $C'(x)$ và giá bán $p$ không đổi thì $L'(x)=p-C'(x)$; muốn tìm sản lượng làm lợi nhuận lớn nhất không cần biết $C(x)$.
+- Đề hỏi "lợi nhuận đạt từ $k$ trở lên" là bất phương trình $L(x)\ge k$, giải bằng bảng biến thiên của $L$ rồi lấy giá trị nguyên của $x$ thoả mãn.
+
+##PP Tìm sản lượng cho lợi nhuận lớn nhất
+Gom mọi khoản chi phí thành tổng chi phí $C(x)$ (nhân $x$ vào chi phí bình quân nếu cần).
+Lập $L(x)=F(x)-C(x)$ và nêu miền của $x$.
+Tính $L'(x)$, giải $L'(x)=0$, loại nghiệm ngoài miền, xét dấu $L'$ hoặc so sánh $L$ ở nghiệm với hai đầu mút.
+Kết luận sản lượng (và lợi nhuận lớn nhất nếu đề hỏi) kèm đơn vị.
+
+##CY
+- Chi phí "bình quân (trung bình) mỗi sản phẩm" chưa phải tổng chi phí: quên nhân $x$ là lỗi thường gặp nhất.
+- Nghiệm của $L'(x)=0$ ngoài miền thì kết quả nằm ở đầu mút, thường là $x=N$ (sản xuất hết công suất).
+- Đơn vị của doanh thu và chi phí có thể khác nhau (đồng và nghìn đồng); đổi về cùng một đơn vị trước khi trừ.
+
+@vi_du:
+##VD
+Một xưởng sản xuất $x$ sản phẩm mỗi tháng ($x\in\mathbb{N}$, $1\le x\le100$) và bán hết. Doanh thu là $F(x)=500x-0{,}5x^2$ (nghìn đồng); chi phí sản xuất bình quân cho một sản phẩm là $G(x)=0{,}01x^2-0{,}5x+392+\dfrac{2000}{x}$ (nghìn đồng). Tìm số sản phẩm cần sản xuất mỗi tháng để lợi nhuận lớn nhất và tính lợi nhuận đó.
+
+Bài giải:
+Tổng chi phí là $C(x)=x\cdot G(x)=0{,}01x^3-0{,}5x^2+392x+2000$.
+Lợi nhuận là $L(x)=F(x)-C(x)=500x-0{,}5x^2-0{,}01x^3+0{,}5x^2-392x-2000=-0{,}01x^3+108x-2000$.
+$L'(x)=-0{,}03x^2+108=0\Leftrightarrow x^2=3600\Leftrightarrow x=60$ (loại $x=-60$ vì ngoài miền).
+$L'(x)>0$ khi $1\le x<60$ và $L'(x)<0$ khi $60<x\le100$ nên $L$ lớn nhất tại $x=60$.
+$L(60)=-2160+6480-2000=2320$.
+Vậy xưởng nên sản xuất $60$ sản phẩm mỗi tháng, lợi nhuận lớn nhất là $2\,320$ nghìn đồng.
+
+##VD
+Một tổ hợp sản xuất và bán hết $x$ sản phẩm mỗi ngày với giá bán không đổi là $80$ nghìn đồng một sản phẩm. Chi phí biên của tổ hợp là $C'(x)=0{,}3x^2-3x+20$ (nghìn đồng).
+a) Mỗi ngày sản xuất tối đa $30$ sản phẩm ($0\le x\le30$). Tìm $x$ để lợi nhuận lớn nhất.
+b) Nếu năng lực chỉ còn tối đa $15$ sản phẩm mỗi ngày ($0\le x\le15$) thì kết quả thay đổi thế nào?
+
+Bài giải:
+Doanh thu là $R(x)=80x$ nên $R'(x)=80$, và lợi nhuận biên là $L'(x)=R'(x)-C'(x)=80-(0{,}3x^2-3x+20)=-0{,}3x^2+3x+60=-0{,}3(x-20)(x+10)$.
+a) $L'(x)=0\Leftrightarrow x=20$ hoặc $x=-10$ (loại). $L'(x)>0$ khi $0\le x<20$ và $L'(x)<0$ khi $20<x\le30$ nên $L$ lớn nhất tại $x=20$.
+b) Trên $[0;15]$ ta có $x+10>0$ và $x-20<0$ nên $L'(x)>0$, $L$ đồng biến, lớn nhất tại đầu mút $x=15$.
+Vậy ở câu a) cần sản xuất $20$ sản phẩm mỗi ngày; ở câu b) phải sản xuất hết công suất $15$ sản phẩm mỗi ngày.
+
+=== C4.4.3   (dạng "Chi phí trung bình nhỏ nhất" — mô tả: chi phí trung bình C(x)/x hoặc mô hình EOQ; tìm sản lượng/lượng nhập để chi phí trung bình nhỏ nhất)
+@ly_thuyet:
+##TC Chi phí trung bình
+- $\overline{C}(x)=\dfrac{C(x)}{x}$ với $x>0$. Nếu $C(x)=ax^2+bx+c$ thì $\overline{C}(x)=ax+b+\dfrac{c}{x}$.
+- Với $a>0$, $b>0$, $x>0$: $ax+\dfrac{b}{x}\ge2\sqrt{ab}$, dấu bằng khi $x=\sqrt{\dfrac{b}{a}}$ (bất đẳng thức Cô-si).
+- Nếu $C(x)=ax+c$ ($a,c>0$) thì $\overline{C}(x)=a+\dfrac{c}{x}$ luôn lớn hơn $a$ và tiến về $a$ khi $x$ rất lớn: chi phí trung bình "không thấp hơn $a$", không có giá trị nhỏ nhất đạt được nếu $x$ không bị chặn trên.
+- Mô hình đặt hàng EOQ: nhu cầu $d$ (đơn vị/ngày), mỗi lần đặt hàng $Q$ đơn vị với chi phí cố định $K$, giá nhập $c$, phí lưu kho $h$ (một đơn vị một ngày). Chi phí một chu kì là $f=K+cQ+\dfrac{hQ^2}{2d}$, chu kì kéo dài $\dfrac{Q}{d}$ ngày nên chi phí trung bình mỗi ngày là $T(Q)=\dfrac{dK}{Q}+dc+\dfrac{hQ}{2}$.
+
+##PP Tìm lượng làm chi phí trung bình nhỏ nhất
+Lập tổng chi phí rồi chia cho $x$ để được $\overline{C}(x)$ (hoặc chia cho thời gian của chu kì nếu đề tính trung bình mỗi ngày, mỗi giờ), nêu miền $x>0$ hoặc $0<x\le N$.
+Nếu $\overline{C}(x)$ có dạng $ax+\dfrac{b}{x}+c$ thì dùng Cô-si; ngược lại tính $\overline{C}'(x)$ và giải $\overline{C}'(x)=0$.
+Lập bảng biến thiên trên miền của $x$ để xác nhận nghiệm là điểm nhỏ nhất; nếu $\overline{C}$ đơn điệu trên miền thì giá trị nhỏ nhất nằm ở đầu mút.
+Kết luận lượng cần sản xuất (nhập) và chi phí trung bình nhỏ nhất kèm đơn vị.
+
+##CY
+- Tối thiểu hoá chi phí trung bình $\overline{C}(x)$ khác tối thiểu hoá tổng chi phí $C(x)$: phải chia cho $x$ trước khi đạo hàm.
+- Có thêm khoản chi cho mỗi sản phẩm (phí phát hành mỗi cuốn, thuế mỗi sản phẩm) thì cộng khoản đó vào $C(x)$ trước khi chia, hoặc cộng thẳng vào $\overline{C}(x)$.
+- Dùng Cô-si phải kiểm tra điều kiện dấu bằng xảy ra được trong miền của $x$; miền bị chặn trên có thể làm nghiệm nằm ngoài miền.
+- Đề hỏi giá trị làm tròn thì chỉ làm tròn ở kết quả cuối cùng.
+
+@vi_du:
+##VD
+Một nhà máy sản xuất $x$ tấn sản phẩm mỗi ngày ($0<x\le80$). Chi phí gồm $8$ triệu đồng cố định, $1{,}5$ triệu đồng cho mỗi tấn và $0{,}02x^2$ triệu đồng chi phí bảo dưỡng máy. Tìm $x$ để chi phí trung bình trên mỗi tấn nhỏ nhất và tính chi phí trung bình nhỏ nhất đó.
+
+Bài giải:
+Tổng chi phí là $C(x)=0{,}02x^2+1{,}5x+8$ (triệu đồng).
+Chi phí trung bình trên mỗi tấn là $\overline{C}(x)=\dfrac{C(x)}{x}=0{,}02x+1{,}5+\dfrac{8}{x}$ với $0<x\le80$.
+Theo bất đẳng thức Cô-si, $0{,}02x+\dfrac{8}{x}\ge2\sqrt{0{,}02x\cdot\dfrac{8}{x}}=2\sqrt{0{,}16}=0{,}8$.
+Do đó $\overline{C}(x)\ge2{,}3$, dấu bằng xảy ra khi $0{,}02x=\dfrac{8}{x}$, tức $x^2=400$, $x=20$, thuộc $(0;80]$.
+Vậy nhà máy cần sản xuất $20$ tấn mỗi ngày, chi phí trung bình nhỏ nhất là $2{,}3$ triệu đồng mỗi tấn.
+
+##VD
+Một cửa hàng bán đều đặn $d=50$ hộp hàng mỗi ngày. Mỗi lần nhập $Q$ hộp, cửa hàng trả chi phí cố định $K=400\,000$ đồng, giá nhập $c=20\,000$ đồng một hộp, phí lưu kho $h=250$ đồng cho mỗi hộp mỗi ngày. Chi phí cho một chu kì từ lúc nhập đến lúc bán hết $Q$ hộp là $f=K+cQ+\dfrac{hQ^2}{2d}$.
+a) Mỗi lần nên nhập bao nhiêu hộp để chi phí trung bình mỗi ngày nhỏ nhất? Tính chi phí đó.
+b) Nếu kho chỉ chứa được tối đa $300$ hộp ($0<Q\le300$) thì mỗi lần nên nhập bao nhiêu hộp?
+
+Bài giải:
+Một chu kì kéo dài $\dfrac{Q}{d}=\dfrac{Q}{50}$ ngày nên chi phí trung bình mỗi ngày là $T(Q)=\dfrac{f}{Q/50}=\dfrac{50K}{Q}+50c+\dfrac{hQ}{2}=\dfrac{20\,000\,000}{Q}+1\,000\,000+125Q$.
+a) $T'(Q)=-\dfrac{20\,000\,000}{Q^2}+125=0\Leftrightarrow Q^2=160\,000\Leftrightarrow Q=400$ (vì $Q>0$).
+$T'(Q)<0$ khi $0<Q<400$ và $T'(Q)>0$ khi $Q>400$ nên $T$ nhỏ nhất tại $Q=400$, $T(400)=50\,000+1\,000\,000+50\,000=1\,100\,000$.
+b) Khi $0<Q\le300$ ta có $T'(Q)<0$ nên $T$ nghịch biến trên $(0;300]$ và nhỏ nhất tại đầu mút $Q=300$, $T(300)=\dfrac{200\,000}{3}+1\,000\,000+37\,500\approx1\,104\,167$.
+Vậy ở câu a) nhập $400$ hộp mỗi lần, chi phí trung bình $1\,100\,000$ đồng mỗi ngày; ở câu b) nhập $300$ hộp mỗi lần, chi phí trung bình khoảng $1\,104\,167$ đồng mỗi ngày.
+
+=== C4.4.4   (dạng "Số máy, số lô hàng, phân bổ nguồn lực tối ưu" — mô tả: chọn số máy, số lô, số đợt giao, hoặc chia một tổng cố định x+y giữa hai việc để chi phí hoặc thời gian nhỏ nhất)
+@ly_thuyet:
+##TC Số máy, số lô và phân bổ một tổng cố định
+- Số máy $n$: thời gian hoàn thành đơn hàng bằng số sản phẩm chia cho (năng suất mỗi máy nhân $n$), nên giảm theo $n$. Chi phí thiết lập tăng theo $n$ (dạng $an$), chi phí giám sát hay thuê theo giờ giảm theo $n$ (dạng $\dfrac{b}{n}$). Tổng chi phí $C(n)=an+\dfrac{b}{n}$ nhỏ nhất tại $n_0=\sqrt{\dfrac{b}{a}}$ (Cô-si hoặc bảng biến thiên).
+- Số lô, số đợt giao: tổng $N$ đơn vị chia thành các lô, mỗi lô $x$ đơn vị thì số lô là $\dfrac{N}{x}$; tổng chi phí $=$ (số lô) $\cdot$ (chi phí mỗi lô theo $x$), ví dụ $\dfrac{N}{x}(20+0{,}002x^2)$.
+- Phân bổ một tổng cố định: có $S$ đơn vị nguồn lực (ngày, giờ, tấn, lít) chia cho hai việc, việc thứ nhất nhận $x$ thì việc thứ hai nhận $S-x$; hàm cần tối ưu là $f(x)+g(S-x)$ (hoặc tổng thời gian $\dfrac{A}{x}+\dfrac{B}{S-x}$), miền của $x$ lấy từ $0\le x\le S$ cùng các điều kiện chặn đề cho.
+- Biến đếm (máy, lô, ngày) là số nguyên; nghiệm không nguyên thì so sánh hai số nguyên sát hai bên.
+
+##PP Tối ưu số máy, số lô hoặc phân bổ nguồn lực
+Gọi biến ($n$ máy, $x$ đơn vị mỗi lô, $x$ phần nguồn lực cho việc thứ nhất) và nêu miền; biểu diễn phần còn lại qua biến đó (ví dụ $y=S-x$).
+Tính thời gian, số lô hay số lượng của mỗi phần theo biến rồi lập hàm tổng chi phí (thời gian, kết quả).
+Tính đạo hàm, giải đạo hàm bằng $0$ và xét dấu trên miền; chú ý các điều kiện chặn của đề (ví dụ "không quá $6$ ngày") có thể làm nghiệm nằm ngoài miền.
+Nếu biến phải nguyên thì kiểm tra hai số nguyên sát nghiệm; kết luận và tính giá trị tối ưu đề hỏi.
+
+##CY
+- Giám sát (thuê) trả theo giờ thì nhân với thời gian hoàn thành, không phải với cả ngày làm việc; chi phí thiết lập mỗi máy thì nhân với số máy.
+- Nghiệm của đạo hàm nằm ngoài miền bị chặn thì giá trị tối ưu nằm ở đầu mút của miền, đừng lấy nghiệm của hàm khi chưa có chặn.
+- Số nguyên gần nghiệm hơn chưa chắc cho chi phí nhỏ hơn; phải tính hàm tại cả hai số nguyên rồi so sánh.
+- Đề hỏi giá trị nhỏ nhất của chi phí thì phải tính chi phí tại số máy tối ưu, đừng dừng ở số máy.
+
+@vi_du:
+##VD
+Một xưởng cần sản xuất $7200$ sản phẩm. Mỗi máy làm được $40$ sản phẩm mỗi giờ; chi phí thiết lập mỗi máy là $300$ nghìn đồng; sau khi thiết lập các máy chạy tự động dưới sự giám sát của một người, chi phí giám sát là $240$ nghìn đồng mỗi giờ. Hỏi dùng bao nhiêu máy để tổng chi phí nhỏ nhất và tổng chi phí nhỏ nhất đó là bao nhiêu?
+
+Bài giải:
+Gọi $n$ là số máy, $n\in\mathbb{N}^*$. Thời gian hoàn thành là $\dfrac{7200}{40n}=\dfrac{180}{n}$ giờ.
+Chi phí giám sát là $240\cdot\dfrac{180}{n}=\dfrac{43\,200}{n}$ (nghìn đồng).
+Tổng chi phí là $C(n)=300n+\dfrac{43\,200}{n}$ (nghìn đồng).
+$C'(n)=300-\dfrac{43\,200}{n^2}=0\Leftrightarrow n^2=144\Leftrightarrow n=12$ (vì $n>0$), là số nguyên.
+$C'(n)<0$ khi $0<n<12$ và $C'(n)>0$ khi $n>12$ nên $C$ nhỏ nhất tại $n=12$, $C(12)=3600+3600=7200$.
+Vậy dùng $12$ máy, tổng chi phí nhỏ nhất là $7\,200$ nghìn đồng.
+
+##VD
+Một hộ nông dân có $12$ tấn phân bón chia cho hai thửa ruộng, dùng hết. Bón $x$ tấn cho thửa I thì thu thêm $A(x)=-x^2+12x$ (tạ lúa); bón $y$ tấn cho thửa II thì thu thêm $B(y)=-2y^2+30y$ (tạ lúa). Do điều kiện đất, thửa II nhận không quá $6$ tấn. Hỏi mỗi thửa nên bón bao nhiêu tấn để tổng sản lượng thu thêm lớn nhất, và sản lượng đó là bao nhiêu?
+
+Bài giải:
+Gọi $x$ là số tấn bón cho thửa I thì thửa II nhận $y=12-x$ tấn. Điều kiện $0\le y\le6$, suy ra $6\le x\le12$.
+Tổng sản lượng thu thêm là $S(x)=A(x)+B(12-x)=-x^2+12x-2(12-x)^2+30(12-x)=-3x^2+30x+72$.
+$S'(x)=-6x+30=0\Leftrightarrow x=5$, không thuộc đoạn $[6;12]$.
+Trên $[6;12]$ có $S'(x)<0$ nên $S$ nghịch biến và lớn nhất tại đầu mút $x=6$, $S(6)=-108+180+72=144$.
+Khi đó $y=6$; kiểm tra: $A(6)=36$, $B(6)=108$, tổng $144$ tạ.
+Vậy bón $6$ tấn cho mỗi thửa, tổng sản lượng thu thêm lớn nhất là $144$ tạ (nếu không bị chặn $y\le6$ thì tối ưu ở $x=5$ cho $147$ tạ nhưng không thoả điều kiện).
+
+=== C4.4.5   (dạng "Chọn mức thuế để tiền thuế thu được lớn nhất" — mô tả: hai tầng, với mỗi t doanh nghiệp chọn sản lượng tối ưu Q(t); rồi tối ưu tiền thuế t·Q(t))
+@ly_thuyet:
+##TC Bài toán hai tầng: doanh nghiệp rồi nhà nước
+- Nhà nước đánh thuế phụ thu $t$ trên mỗi sản phẩm bán ra. Với mỗi $t$, doanh nghiệp chọn sản lượng $x$ làm lợi nhuận sau thuế lớn nhất: $L(x)=R(x)-C(x)-tx$.
+- Sản lượng tối ưu của doanh nghiệp phụ thuộc $t$: $x=x(t)$. Tiền thuế nhà nước thu được là $T(t)=t\cdot x(t)$, hàm của $t$.
+- Đề hỏi "$t$ để nhà nước thu thuế lớn nhất và doanh nghiệp cũng lợi nhuận lớn nhất theo mức thuế đó": tìm $x(t)$ trước (tầng một), rồi tối ưu $T(t)$ (tầng hai), chỗ này $t$ là biến.
+- Nếu $L(x)$ là hàm bậc hai $-ax^2+(m-t)x-n$ ($a>0$) thì $x(t)=\dfrac{m-t}{2a}$ và $T(t)=\dfrac{t(m-t)}{2a}$ lớn nhất tại $t=\dfrac{m}{2}$.
+- Biến thể xuất khẩu: lợi nhuận từ xuất khẩu và tiền thuế xuất khẩu theo một tỉ lệ cho trước (ví dụ $4:1$) giúp rút $a$ theo $x$ rồi tối ưu theo $x$.
+
+##PP Tối ưu hai tầng với thuế phụ thu
+Viết lợi nhuận sau thuế $L(x)=R(x)-C(x)-tx$ (nếu đề cho cầu $Q=\dots-\dfrac{P}{k}$ thì rút giá $P$ theo $Q$ để có $R=PQ$ trước).
+Với $t$ cố định, tìm $x(t)$ làm $L$ lớn nhất (đỉnh parabol hoặc $L'(x)=0$), nêu miền của $x$.
+Lập tiền thuế $T(t)=t\cdot x(t)$ và tối ưu theo $t$ trên khoảng đề cho.
+Thay $t$ tối ưu vào $x(t)$ để có sản lượng (và lợi nhuận nếu đề hỏi), kiểm tra miền.
+
+##CY
+- Hai tầng có hai biến khác nhau: tầng một tối ưu theo $x$ khi $t$ cố định, tầng hai tối ưu theo $t$; không đạo hàm theo $x$ và $t$ cùng lúc.
+- Đề cho chi phí "một sản phẩm" $g(x)$ thì tổng chi phí là $x\cdot g(x)$.
+- Thuế $t$ đánh trên sản phẩm bán ra nên nhân với $x$, trừ vào lợi nhuận của doanh nghiệp.
+
+@vi_du:
+##VD
+Một doanh nghiệp độc quyền sản xuất và bán hết $x$ sản phẩm ($0<x\le200$). Tổng doanh thu là $f(x)=1500x-x^2$ và tổng chi phí là $g(x)=x^2+900x+5000$ (đơn vị: nghìn đồng). Nhà nước đánh thuế phụ thu $t$ nghìn đồng ($0<t<600$) trên mỗi sản phẩm bán ra. Với mỗi $t$, doanh nghiệp chọn $x$ để lợi nhuận lớn nhất. Tìm $t$ để tiền thuế nhà nước thu được lớn nhất và tính lợi nhuận của doanh nghiệp khi đó.
+
+Bài giải:
+Lợi nhuận sau thuế là $L(x)=f(x)-g(x)-tx=-2x^2+(600-t)x-5000$.
+Với $t$ cố định, parabol có hệ số $x^2$ âm nên $L$ lớn nhất tại $x(t)=\dfrac{600-t}{4}$, thuộc $(0;200]$ vì $0<t<600$.
+Tiền thuế thu được là $T(t)=t\cdot x(t)=\dfrac{t(600-t)}{4}=-\dfrac{t^2}{4}+150t$.
+$T'(t)=-\dfrac{t}{2}+150=0\Leftrightarrow t=300$, thuộc $(0;600)$; $T'>0$ khi $0<t<300$ và $T'<0$ khi $300<t<600$ nên $T$ lớn nhất tại $t=300$ ($T=22\,500$).
+Khi đó $x=\dfrac{600-300}{4}=75$ và $L(75)=-2\cdot5625+300\cdot75-5000=6250$.
+Vậy $t=300$ nghìn đồng một sản phẩm; doanh nghiệp sản xuất $75$ sản phẩm và lợi nhuận lớn nhất là $6\,250$ nghìn đồng.
+
+##VD
+Một doanh nghiệp độc quyền có nhu cầu thị trường $Q=750-\dfrac{P}{2}$ và chi phí $C(Q)=Q^2+300Q+1000$ (triệu đồng), trong đó $Q$ là số sản phẩm bán ra và $P$ (triệu đồng) là giá bán một sản phẩm. Nhà nước đánh thuế $t$ triệu đồng ($0<t<1200$) trên mỗi sản phẩm. Với mỗi mức thuế $t$, doanh nghiệp chọn $Q$ để lợi nhuận lớn nhất. Tìm mức sản lượng $Q$ doanh nghiệp sẽ sản xuất nếu nhà nước chọn $t$ để số tiền thuế thu được lớn nhất.
+
+Bài giải:
+Từ nhu cầu rút ra giá $P=1500-2Q$, doanh thu là $R(Q)=PQ=1500Q-2Q^2$.
+Lợi nhuận sau thuế là $L(Q)=R(Q)-C(Q)-tQ=-3Q^2+(1200-t)Q-1000$.
+Với $t$ cố định, $L$ lớn nhất tại $Q(t)=\dfrac{1200-t}{6}>0$.
+Tiền thuế là $T(t)=t\cdot Q(t)=\dfrac{t(1200-t)}{6}=-\dfrac{t^2}{6}+200t$.
+$T'(t)=-\dfrac{t}{3}+200=0\Leftrightarrow t=600$, thuộc $(0;1200)$; $T'>0$ khi $t<600$ và $T'<0$ khi $t>600$ nên $T$ lớn nhất tại $t=600$.
+Khi đó $Q=\dfrac{1200-600}{6}=100$.
+Vậy nhà nước chọn $t=600$ triệu đồng thì doanh nghiệp sản xuất $100$ sản phẩm (tiền thuế thu được $60\,000$ triệu đồng, lợi nhuận doanh nghiệp $29\,000$ triệu đồng).
+
+=== C4.4.6   (dạng "Chi phí chuyến đi theo vận tốc" — mô tả: chi phí/nhiên liệu mỗi giờ phụ thuộc vận tốc (thường bậc ba), thời gian = quãng đường/vận tốc (có dòng nước thì trừ vận tốc dòng); lập hàm tổng chi phí theo v rồi tìm min)
+@ly_thuyet:
+##TC Chi phí chuyến đi theo vận tốc
+- Quãng đường $S$, vận tốc $v$ không đổi: thời gian $t=\dfrac{S}{v}$. Đi ngược dòng nước có vận tốc dòng $w$ và vận tốc so với nước yên lặng $v$ ($v>w$): vận tốc thực $v-w$ nên $t=\dfrac{S}{v-w}$.
+- Chi phí mỗi giờ thường gồm phần nhiên liệu tăng theo vận tốc (dạng $av^3$) và phần cố định (lương, khấu hao, thuê tàu) $b$. Tổng chi phí cả chuyến là $C(v)=(av^3+b)\cdot t$.
+- Năng lượng tiêu hao $E=kv^3t$ ($k$ là hằng số dương): khi ngược dòng, $E(v)=\dfrac{kSv^3}{v-w}$ nhỏ nhất tại $v=\dfrac{3w}{2}$.
+- Chuyến đi bị chặn bởi điều kiện của đề (thời gian tối đa, vận tốc tối đa, vận tốc tối thiểu) cho miền của $v$.
+
+##PP Lập hàm chi phí theo vận tốc
+Đặt $v$ là vận tốc cần tìm (vận tốc so với nước nếu có dòng nước) và nêu miền: $v>w$ nếu có dòng ngược, các cận do đề cho.
+Tính thời gian $t$ theo $v$ rồi lập $C(v)=(av^3+b)\cdot t$ hoặc hàm đề yêu cầu.
+Tính $C'(v)$, giải $C'(v)=0$ (thường đưa về phương trình bậc ba theo $v$) và xét dấu $C'$ trên miền.
+Nếu nghiệm nằm ngoài miền bị chặn thì lấy đầu mút gần nghiệm; tính chi phí nhỏ nhất đề hỏi và kết luận kèm đơn vị.
+
+##CY
+- Chi phí "mỗi giờ" phải nhân với số giờ; nhầm thành chi phí cả chuyến là lỗi thường gặp.
+- Ngược dòng thì dùng vận tốc thực $v-w$ để tính thời gian, nhưng nhiên liệu vẫn tính theo $v$ (vận tốc so với nước).
+- Điều kiện thời gian "không quá $T_0$ giờ" cho cận dưới $v\ge\dfrac{S}{T_0}$ (không dòng); nếu nghiệm tối ưu nhỏ hơn cận này thì tối ưu ở chính cận.
+
+@vi_du:
+##VD
+Một xe tải chạy quãng đường $200$ km với vận tốc $v$ (km/h) không đổi, $30\le v\le80$. Chi phí nhiên liệu mỗi giờ là $0{,}0005v^3$ (nghìn đồng); chi phí cố định (tài xế, khấu hao) là $64$ nghìn đồng mỗi giờ.
+a) Tìm $v$ để tổng chi phí cả chuyến nhỏ nhất và tính chi phí đó.
+b) Nếu chuyến đi phải hoàn thành trong không quá $4$ giờ thì $v$ cần chọn là bao nhiêu?
+
+Bài giải:
+Thời gian chạy là $\dfrac{200}{v}$ giờ nên tổng chi phí là $C(v)=\dfrac{200}{v}(0{,}0005v^3+64)=0{,}1v^2+\dfrac{12\,800}{v}$ (nghìn đồng).
+a) $C'(v)=0{,}2v-\dfrac{12\,800}{v^2}=0\Leftrightarrow v^3=64\,000\Leftrightarrow v=40$, thuộc $[30;80]$.
+$C'(v)<0$ khi $30\le v<40$ và $C'(v)>0$ khi $40<v\le80$ nên $C$ nhỏ nhất tại $v=40$, $C(40)=160+320=480$.
+b) Thời gian không quá $4$ giờ: $\dfrac{200}{v}\le4$, tức $v\ge50$. Miền mới là $[50;80]$, trên đó $C'(v)>0$ nên $C$ đồng biến và nhỏ nhất tại đầu mút $v=50$, $C(50)=250+256=506$.
+Vậy câu a) chạy $40$ km/h, chi phí nhỏ nhất $480$ nghìn đồng; câu b) phải chạy $50$ km/h, chi phí $506$ nghìn đồng.
+
+##VD
+Một tàu hàng đi ngược dòng sông quãng đường $60$ km. Vận tốc dòng nước là $2$ km/h; vận tốc của tàu so với nước yên lặng là $v$ (km/h), $2<v\le25$. Chi phí nhiên liệu mỗi giờ là $0{,}5v^3$ (nghìn đồng); chi phí cố định là $700$ nghìn đồng mỗi giờ.
+a) Tìm $v$ để tổng chi phí cả chuyến nhỏ nhất và tính chi phí đó.
+b) Nếu chỉ xét năng lượng tiêu hao $E=kv^3t$ ($k>0$, $t$ là thời gian đi) thì $v$ bằng bao nhiêu để $E$ nhỏ nhất?
+
+Bài giải:
+Vận tốc thực khi ngược dòng là $v-2$ nên thời gian đi là $\dfrac{60}{v-2}$ giờ.
+a) Tổng chi phí là $C(v)=\dfrac{60(0{,}5v^3+700)}{v-2}$ với $2<v\le25$.
+$C'(v)=60\cdot\dfrac{1{,}5v^2(v-2)-(0{,}5v^3+700)}{(v-2)^2}=60\cdot\dfrac{v^3-3v^2-700}{(v-2)^2}=60\cdot\dfrac{(v-10)(v^2+7v+70)}{(v-2)^2}$.
+Vì $v^2+7v+70>0$ với mọi $v$ nên $C'(v)=0\Leftrightarrow v=10$, thuộc $(2;25]$.
+$C'(v)<0$ khi $2<v<10$ và $C'(v)>0$ khi $10<v\le25$ nên $C$ nhỏ nhất tại $v=10$, $C(10)=\dfrac{60\cdot1200}{8}=9000$.
+b) $E(v)=k\cdot\dfrac{60v^3}{v-2}$, $E'(v)=60k\cdot\dfrac{3v^2(v-2)-v^3}{(v-2)^2}=60k\cdot\dfrac{v^2(2v-6)}{(v-2)^2}$.
+$E'(v)=0\Leftrightarrow v=3$; $E'<0$ khi $2<v<3$ và $E'>0$ khi $v>3$ nên $E$ nhỏ nhất tại $v=3$.
+Vậy câu a) tàu chạy $10$ km/h so với nước, chi phí nhỏ nhất $9\,000$ nghìn đồng; câu b) $v=3$ km/h.
+
+## GHI CHÚ CHO CEO
+- Sách: đã đọc hồ sơ nguồn của 3 tác giả `ho-so/hoso-nbv-3-4.md` (K12-K16: kinh tế, chi phí, đường đi), `hoso-nbv-5-6-7.md` (TLN3 số máy in, 5.12 lợi nhuận bậc ba), `hoso-pnl-1-2.md` (dòng 4c, 7g kinh tế/chi phí) và bản v1 đã soát `ra/J10.txt` (H7.4.1-4) làm gốc cho C4.4.1-4. Bản chữ trong `txt/` chỉ có PNL Bài 5 dạng 01 (tốc độ thay đổi, không cùng chủ đề); thư mục NBV 12-3 trống nên không đọc được nguyên văn sách NBV; cả 3 bộ Word chưa trích riêng cho nhóm này.
+- Dạng C4.4.5: câu T112020401351 (thuế đặc biệt $t$, cầu $Q=5000-P/3$) hiện xếp ở C4.4.1 nhưng đúng là C4.4.5 (hai tầng); đã dùng làm mẫu cho ví dụ 2. Câu T112020401364 (xuất khẩu, tỉ lệ lợi nhuận : thuế $=4:1$, đáp 7) khác khuôn "doanh nghiệp chọn Q(t)": chỉ nêu ở lý thuyết, không làm ví dụ.
+- C4.4.2: đề thật có câu cho chi phí biên và HỎI GIÁ TRỊ lợi nhuận (cần nguyên hàm để tìm $C(x)$); phần nguyên hàm ngoài chương nên ví dụ chỉ hỏi sản lượng. Ngoài ra có câu hỏi "lợi nhuận $\ge k$" (bất phương trình) và hàm có $\ln$ chỉ nêu ở lý thuyết/không làm ví dụ.
+- C4.4.3: câu "chi phí không thấp hơn $a$" (hàm $a+c/x$, đáp $a$) là giới hạn, không có min đạt được; đã ghi ở lý thuyết. EOQ ở đề chỉ cần $Q=\sqrt{2dK/h}$ (đáp làm tròn, ví dụ 632); ví dụ 2 chọn số để $Q$ nguyên.
+- C4.4.4: dạng "thời gian dùng hết nhiên liệu của hai người" không tìm được câu đề rõ ràng trong 24 câu xem được; tôi hiểu theo khuôn tổng $x+y$ cố định (ví dụ phân bổ phân bón), chưa có ví dụ nhiên liệu. Câu T112010403013 (hai tổ A, B, tổng 10 sản phẩm mỗi ngày) đề viết mơ hồ (tổng ngày = tổng hai thời gian), nên tránh làm ví dụ.
+- C4.4.6 chỉ có 2 câu đề; kiểu "tàu cao tốc, thời gian không quá 1 giờ 30" (T112020401004) đang nằm ở C4.4.2 nhưng thuộc dạng này (ví dụ 1 đã có ý chặn thời gian).

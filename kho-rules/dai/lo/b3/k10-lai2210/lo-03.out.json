@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T110020203033",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm điểm thuộc miền nghiệm của hệ bpt."
+ },
+ {
+  "ma_cau": "T110000000115",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Đo khoảng cách bằng định lí sin, hai góc và một cạnh, đề đủ số liệu."
+ },
+ {
+  "ma_cau": "T110010203074",
+  "dang_bai_id": "NDB00524",
+  "chac": "vua",
+  "ly_do": "Đọc tập hợp từ trục số có gạch nhưng đề thiếu hình."
+ },
+ {
+  "ma_cau": "T110010203155",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Xét ∩, ∖, ∪ của hai khoảng; theo luật chọn dạng sau cùng là hiệu."
+ },
+ {
+  "ma_cau": "T110000000299",
+  "dang_bai_id": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Cho sin, tính tan(180°-α) bằng công thức bù rồi tính thêm."
+ },
+ {
+  "ma_cau": "T110030201060",
+  "dang_bai_id": "NDB00764",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức cos, sin và diện tích, chọn dạng sau cùng."
+ },
+ {
+  "ma_cau": "T110030101042",
+  "dang_bai_id": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính cos150° khi biết số đo góc."
+ },
+ {
+  "ma_cau": "T110030201026",
+  "dang_bai_id": "NDB00762",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức định lí cosin."
+ },
+ {
+  "ma_cau": "T110020203052",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Kiểm tra điểm O có thuộc miền nghiệm của hệ không."
+ },
+ {
+  "ma_cau": "T110020203077",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm cặp số không là nghiệm của hệ bpt."
+ },
+ {
+  "ma_cau": "T110030105004",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức 1+tan² = 1/cos²."
+ },
+ {
+  "ma_cau": "T110020203060",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm cặp số là nghiệm của hệ bpt."
+ },
+ {
+  "ma_cau": "T110030201038",
+  "dang_bai_id": "NDB00762",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức định lí cosin khi A=120°."
+ },
+ {
+  "ma_cau": "T110020202106",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Cho miền nghiệm xác định hệ, cần lập đường thẳng, nhưng đề thiếu hình."
+ },
+ {
+  "ma_cau": "T110030107069",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin góc tù, tính biểu thức theo sin và cos."
+ },
+ {
+  "ma_cau": "T110030106065",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính cos."
+ },
+ {
+  "ma_cau": "T110030201023",
+  "dang_bai_id": "NDB00763",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức định lí sin với R."
+ },
+ {
+  "ma_cau": "T110030106094",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin, tính cos."
+ },
+ {
+  "ma_cau": "T110030102021",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc nhọn."
+ },
+ {
+  "ma_cau": "T110030107001",
+  "dang_bai_id": "NDB00561",
+  "chac": "cao",
+  "ly_do": "Tổng sin² dãy góc, ghép cặp góc phụ."
+ },
+ {
+  "ma_cau": "T110030107053",
+  "dang_bai_id": "NDB00557",
+  "chac": "vua",
+  "ly_do": "Khai triển (sin-cos)² dùng sin²+cos²=1; có thể là dạng biến đổi khác."
+ },
+ {
+  "ma_cau": "T110020102001",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Biểu diễn miền nghiệm của một bpt bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110030201029",
+  "dang_bai_id": "NDB00763",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức cosin và sin, chọn dạng sau cùng."
+ },
+ {
+  "ma_cau": "T110030106063",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính sin."
+ },
+ {
+  "ma_cau": "T110030101031",
+  "dang_bai_id": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức biết số đo các góc."
+ },
+ {
+  "ma_cau": "T110000000334",
+  "dang_bai_id": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức hai góc bù nhau."
+ },
+ {
+  "ma_cau": "T110010204065",
+  "dang_bai_id": "NDB00528",
+  "chac": "vua",
+  "ly_do": "Tìm số HS chỉ chơi đúng một môn, gộp hai phần chỉ-A và chỉ-B."
+ },
+ {
+  "ma_cau": "T110000000107",
+  "dang_bai_id": "NDB00537",
+  "chac": "vua",
+  "ly_do": "Hai ý khác dạng: giao trên trục số và tham số m cho tập khác rỗng."
+ },
+ {
+  "ma_cau": "T110030106081",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính biểu thức sin²-cos²."
+ },
+ {
+  "ma_cau": "T110030201042",
+  "dang_bai_id": "NDB00764",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức sin, diện tích; chọn dạng diện tích."
+ },
+ {
+  "ma_cau": "T110030102002",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc tù."
+ },
+ {
+  "ma_cau": "T110030203085",
+  "dang_bai_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Bài thực tế ngoại tiếp, giải bằng toạ độ; có hình, nhiều cách giải."
+ },
+ {
+  "ma_cau": "T110030101044",
+  "dang_bai_id": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức biết số đo các góc đặc biệt."
+ },
+ {
+  "ma_cau": "T110030104012",
+  "dang_bai_id": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Biểu thức ngắn với các cặp góc phụ nhau."
+ },
+ {
+  "ma_cau": "T110030106031",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin, tính tan."
+ },
+ {
+  "ma_cau": "T110010203146",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Tính (A∩B)∪C trên khoảng; chọn dạng sau cùng là hợp."
+ },
+ {
+  "ma_cau": "T110000000131",
+  "dang_bai_id": "NDB00762",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức định lí cosin."
+ },
+ {
+  "ma_cau": "T110010103095",
+  "dang_bai_id": "NDB00826",
+  "chac": "vua",
+  "ly_do": "Phủ định mệnh đề đơn, không có ∀ ∃; gần dạng phủ định nhất."
+ },
+ {
+  "ma_cau": "T110020202064",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Chọn hệ từ miền nghiệm, hệ số khác nhau nhưng đề thiếu hình."
+ },
+ {
+  "ma_cau": "T110020203059",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm cặp số không là nghiệm của hệ bpt."
+ },
+ {
+  "ma_cau": "T110030203046",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Đo chiều cao toà nhà bằng định lí sin, đề đủ số liệu."
+ },
+ {
+  "ma_cau": "T110000000041",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Tìm min của F trên miền nghiệm hai ẩn."
+ },
+ {
+  "ma_cau": "T110000000031",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc tù."
+ },
+ {
+  "ma_cau": "T110000000298",
+  "dang_bai_id": "NDB00763",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức định lí sin."
+ },
+ {
+  "ma_cau": "T110020203046",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm điểm không thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110020202056",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Chọn hệ từ miền nghiệm, hệ số khác nhau nhưng đề thiếu hình."
+ },
+ {
+  "ma_cau": "T110030107063",
+  "dang_bai_id": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính phân thức sin cos cùng bậc."
+ },
+ {
+  "ma_cau": "T110000000012",
+  "dang_bai_id": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức hai góc bù nhau."
+ },
+ {
+  "ma_cau": "T110030107007",
+  "dang_bai_id": "NDB00560",
+  "chac": "cao",
+  "ly_do": "Biết sin+cos, tính biểu thức."
+ },
+ {
+  "ma_cau": "T110000000288",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Tìm max của f trên miền nghiệm hai ẩn."
+ },
+ {
+  "ma_cau": "T110030106023",
+  "dang_bai_id": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính phân thức sin cos cùng bậc."
+ },
+ {
+  "ma_cau": "T110010204019",
+  "dang_bai_id": "NDB00525",
+  "chac": "cao",
+  "ly_do": "Tính n(A∪B) khi biết n(A), n(B), n(A∩B)."
+ },
+ {
+  "ma_cau": "T110030202031",
+  "dang_bai_id": "NDB00767",
+  "chac": "cao",
+  "ly_do": "Bài thực tế dùng định lí cosin tính khoảng cách."
+ },
+ {
+  "ma_cau": "T110030201002",
+  "dang_bai_id": "NDB00763",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức định lí sin."
+ },
+ {
+  "ma_cau": "T110000000374",
+  "dang_bai_id": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức hai góc bù nhau."
+ },
+ {
+  "ma_cau": "T110030101001",
+  "dang_bai_id": "NDB00549",
+  "chac": "cao",
+  "ly_do": "Sin α bằng tung độ điểm M trên nửa đường tròn đơn vị."
+ },
+ {
+  "ma_cau": "T110030106057",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos, tính biểu thức sin·cos."
+ },
+ {
+  "ma_cau": "T110030104002",
+  "dang_bai_id": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Dùng sin(180°-α)=sin α rồi tính."
+ },
+ {
+  "ma_cau": "T110000000150",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc tù."
+ },
+ {
+  "ma_cau": "T110000000002",
+  "dang_bai_id": "NDB00763",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức định lí sin."
+ },
+ {
+  "ma_cau": "T110000000043",
+  "dang_bai_id": "NDB00828",
+  "chac": "vua",
+  "ly_do": "Kí hiệu ∈ ℤ cho phần tử tập hợp, gần dạng phần tử tập hợp."
+ },
+ {
+  "ma_cau": "T110000000046",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc hàm số bậc hai: bản đồ thiếu dạng công thức toạ độ đỉnh parabol."
+ },
+ {
+  "ma_cau": "T110000000391",
+  "dang_bai_id": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện quan hệ bù nhau của A+C trong tam giác."
+ },
+ {
+  "ma_cau": "T110030102003",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc nhọn."
+ },
+ {
+  "ma_cau": "T110030104026",
+  "dang_bai_id": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Biểu thức ngắn với các cặp góc phụ nhau."
+ },
+ {
+  "ma_cau": "T110020202084",
+  "dang_bai_id": "NDB00546",
+  "chac": "cao",
+  "ly_do": "Cho hệ bpt, chọn hình miền nghiệm."
+ },
+ {
+  "ma_cau": "T110030106053",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos, tính biểu thức tan và sin."
+ },
+ {
+  "ma_cau": "T110030104006",
+  "dang_bai_id": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức dùng công thức góc bù."
+ },
+ {
+  "ma_cau": "T110030104018",
+  "dang_bai_id": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức dùng công thức góc phụ và bù."
+ },
+ {
+  "ma_cau": "T110030107038",
+  "dang_bai_id": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính phân thức sin cos cùng bậc."
+ }
+]

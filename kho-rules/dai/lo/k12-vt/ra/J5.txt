@@ -1,0 +1,591 @@
+=== N P3.4
+@ly_thuyet:
+##TC Tích vô hướng, độ dài và góc theo toạ độ
+- Với $\vec{a}=(x;y;z)$ và $\vec{b}=(x';y';z')$: $\vec{a}\cdot\vec{b}=xx'+yy'+zz'$.
+- $|\vec{a}|=\sqrt{x^2+y^2+z^2}$ và $\vec{a}\cdot\vec{a}=|\vec{a}|^2$.
+- Với $\vec{a},\vec{b}$ khác $\vec{0}$: $\cos(\vec{a},\vec{b})=\dfrac{\vec{a}\cdot\vec{b}}{|\vec{a}|\cdot|\vec{b}|}=\dfrac{xx'+yy'+zz'}{\sqrt{x^2+y^2+z^2}\cdot\sqrt{x'^2+y'^2+z'^2}}$, góc $(\vec{a},\vec{b})$ nằm trong đoạn $[0^\circ;180^\circ]$.
+- $\vec{a}\perp\vec{b}\Leftrightarrow\vec{a}\cdot\vec{b}=0$.
+
+##TC Dấu của tích vô hướng và các góc quen thuộc
+- $\vec{a}\cdot\vec{b}>0$ thì góc nhọn, $\vec{a}\cdot\vec{b}<0$ thì góc tù, $\vec{a}\cdot\vec{b}=0$ thì góc vuông (với hai vectơ khác $\vec{0}$).
+- $\cos30^\circ=\dfrac{\sqrt{3}}{2}$, $\cos45^\circ=\dfrac{\sqrt{2}}{2}$, $\cos60^\circ=\dfrac{1}{2}$, $\cos120^\circ=-\dfrac{1}{2}$, $\cos135^\circ=-\dfrac{\sqrt{2}}{2}$.
+##PP Giải bài tích vô hướng, góc, vuông góc bằng toạ độ
+Tính toạ độ các vectơ cần dùng (vectơ nối hai điểm lấy toạ độ điểm cuối trừ toạ độ điểm đầu).
+Tính tích vô hướng và độ dài bằng công thức toạ độ.
+Dịch điều kiện đề cho: vuông góc thì tích vô hướng bằng $0$; góc cho trước thì thay vào công thức cosin.
+Giải phương trình theo ẩn (tham số hoặc toạ độ điểm) rồi thử lại điều kiện của bài.
+Kết luận đúng điều đề hỏi.
+
+##CY
+- Hai vectơ phải có cùng gốc mới đo được góc giữa chúng: góc tại $A$ dùng $\overrightarrow{AB}$ và $\overrightarrow{AC}$, không dùng $\overrightarrow{CA}$.
+- Tích vô hướng là một số, không phải vectơ; cosin của góc giữa hai vectơ có thể âm (góc tù).
+- Giải bằng cách bình phương hai vế thì phải thử lại dấu của vế còn lại.
+
+=== P3.4.1
+@ly_thuyet:
+##TC Tính tích vô hướng và cosin góc
+- Với vectơ ghép như $2\vec{a}-\vec{b}$: tính toạ độ vectơ ghép trước rồi mới nhân vô hướng.
+- $|\vec{a}+\vec{b}|^2=|\vec{a}|^2+2\vec{a}\cdot\vec{b}+|\vec{b}|^2$ và $(\vec{a}+\vec{b})\cdot(\vec{a}-\vec{b})=|\vec{a}|^2-|\vec{b}|^2$, dùng để kiểm tra kết quả.
+- $(k\vec{a})\cdot\vec{b}=k(\vec{a}\cdot\vec{b})$ và $\vec{a}\cdot(\vec{b}+\vec{c})=\vec{a}\cdot\vec{b}+\vec{a}\cdot\vec{c}$, nên tích vô hướng của các vectơ ghép được tính từ toạ độ của chúng.
+
+##PP Tính tích vô hướng và góc giữa hai vectơ
+Nếu đề cho vectơ ghép như $2\vec{a}-\vec{b}$ thì tính toạ độ của nó trước.
+Tính tích vô hướng $xx'+yy'+zz'$.
+Tính hai độ dài $|\vec{a}|$, $|\vec{b}|$.
+Thay vào $\cos(\vec{a},\vec{b})$ rồi suy ra số đo góc.
+
+##CY
+- Đừng quên dấu căn khi tính độ dài; không rút gọn nhầm trong mẫu của $\cos$.
+- $\cos$ âm thì góc tù, không đổi dấu của kết quả để cho góc nhọn.
+
+@vi_du:
+##VD
+Cho hai vectơ $\vec{a}=(2;1;-1)$ và $\vec{b}=(1;2;1)$. Tính $\vec{a}\cdot\vec{b}$, $|\vec{a}|$, $|\vec{b}|$, $\cos(\vec{a},\vec{b})$ và số đo góc giữa hai vectơ.
+
+Bài giải:
+$\vec{a}\cdot\vec{b}=2\cdot1+1\cdot2+(-1)\cdot1=3$.
+$|\vec{a}|=\sqrt{2^2+1^2+(-1)^2}=\sqrt{6}$ và $|\vec{b}|=\sqrt{1^2+2^2+1^2}=\sqrt{6}$.
+$\cos(\vec{a},\vec{b})=\dfrac{3}{\sqrt{6}\cdot\sqrt{6}}=\dfrac{1}{2}$ nên góc giữa hai vectơ bằng $60^\circ$.
+Vậy $\vec{a}\cdot\vec{b}=3$, $|\vec{a}|=|\vec{b}|=\sqrt{6}$, $\cos(\vec{a},\vec{b})=\dfrac{1}{2}$ và góc giữa hai vectơ bằng $60^\circ$.
+
+##VD
+Cho $\vec{a}=(1;-2;0)$ và $\vec{b}=(2;1;-2)$. Tính $(\vec{a}+\vec{b})\cdot(2\vec{a}-\vec{b})$ và cosin của góc giữa hai vectơ $\vec{a}+\vec{b}$, $\vec{a}-\vec{b}$.
+
+Bài giải:
+$\vec{a}+\vec{b}=(3;-1;-2)$, $2\vec{a}-\vec{b}=(0;-5;2)$ và $\vec{a}-\vec{b}=(-1;-3;2)$.
+$(\vec{a}+\vec{b})\cdot(2\vec{a}-\vec{b})=3\cdot0+(-1)\cdot(-5)+(-2)\cdot2=1$.
+$(\vec{a}+\vec{b})\cdot(\vec{a}-\vec{b})=3\cdot(-1)+(-1)\cdot(-3)+(-2)\cdot2=-4$.
+$|\vec{a}+\vec{b}|=\sqrt{9+1+4}=\sqrt{14}$ và $|\vec{a}-\vec{b}|=\sqrt{1+9+4}=\sqrt{14}$.
+Do đó $\cos(\vec{a}+\vec{b},\vec{a}-\vec{b})=\dfrac{-4}{\sqrt{14}\cdot\sqrt{14}}=-\dfrac{2}{7}$ (góc tù).
+Vậy $(\vec{a}+\vec{b})\cdot(2\vec{a}-\vec{b})=1$ và cosin của góc giữa $\vec{a}+\vec{b}$ với $\vec{a}-\vec{b}$ bằng $-\dfrac{2}{7}$.
+
+=== P3.4.2
+@ly_thuyet:
+##TC Điều kiện vuông góc
+- Khi toạ độ chứa tham số $m$, điều kiện $xx'+yy'+zz'=0$ là một phương trình theo $m$ (bậc nhất hoặc bậc hai).
+- Tam giác $ABC$ vuông tại $A$ khi và chỉ khi $\overrightarrow{AB}\cdot\overrightarrow{AC}=0$ (và $A,B,C$ không thẳng hàng).
+- Đường thẳng $AB\perp CD$ khi và chỉ khi $\overrightarrow{AB}\cdot\overrightarrow{CD}=0$.
+
+##PP Tìm tham số để hai vectơ vuông góc
+Viết toạ độ các vectơ theo tham số (vectơ nối hai điểm: lấy điểm cuối trừ điểm đầu).
+Với tam giác vuông tại một đỉnh, dùng hai vectơ xuất phát từ đúng đỉnh đó.
+Lập phương trình tích vô hướng bằng $0$ rồi giải (có thể ra hai nghiệm).
+Thử lại: ba điểm không thẳng hàng, các vectơ khác $\vec{0}$.
+
+##CY
+- Vuông tại đỉnh nào thì dùng hai cạnh xuất phát từ đỉnh ấy; dùng nhầm cặp vectơ sẽ ra tham số khác.
+- Tích vô hướng bằng $0$ còn đúng khi một vectơ là $\vec{0}$ nên phải kiểm tra tam giác có tồn tại.
+
+@vi_du:
+##VD
+a) Tìm $m$ để hai vectơ $\vec{a}=(m;2;-3)$ và $\vec{b}=(2;m-1;2)$ vuông góc.
+b) Cho các điểm $A(1;0;2)$, $B(2;2;1)$, $C(m;1;1)$, $D(0;m;2)$. Tìm $m$ để hai đường thẳng $AB$ và $CD$ vuông góc.
+
+Bài giải:
+a) $\vec{a}\cdot\vec{b}=2m+2(m-1)+(-3)\cdot2=4m-8$.
+$\vec{a}\perp\vec{b}\Leftrightarrow4m-8=0\Leftrightarrow m=2$.
+b) $\overrightarrow{AB}=(1;2;-1)$ và $\overrightarrow{CD}=(-m;m-1;1)$.
+$\overrightarrow{AB}\cdot\overrightarrow{CD}=-m+2(m-1)-1=m-3$.
+$AB\perp CD\Leftrightarrow m-3=0\Leftrightarrow m=3$.
+Vậy câu a) $m=2$, câu b) $m=3$.
+
+##VD
+Cho $A(1;-1;2)$, $B(2;1;0)$ và $C(1;m;0)$. Tìm $m$ để tam giác $ABC$ vuông tại $C$.
+
+Bài giải:
+$\overrightarrow{CA}=(0;-1-m;2)$ và $\overrightarrow{CB}=(1;1-m;0)$.
+$\overrightarrow{CA}\cdot\overrightarrow{CB}=0\cdot1+(-1-m)(1-m)+2\cdot0=m^2-1$.
+Tam giác $ABC$ vuông tại $C$ khi $m^2-1=0$, tức là $m=1$ hoặc $m=-1$.
+Thử lại: với $m=1$ có $\overrightarrow{CA}=(0;-2;2)$ và $\overrightarrow{CB}=(1;0;0)$; với $m=-1$ có $\overrightarrow{CA}=(0;0;2)$ và $\overrightarrow{CB}=(1;2;0)$. Cả hai trường hợp hai vectơ khác $\vec{0}$ và không cùng phương nên ba điểm không thẳng hàng.
+Vậy $m=1$ hoặc $m=-1$.
+
+=== P3.4.3
+@ly_thuyet:
+##TC Góc của tam giác và điểm cho trước góc
+- $\cos\widehat{BAC}=\dfrac{\overrightarrow{AB}\cdot\overrightarrow{AC}}{AB\cdot AC}$; tương tự cho góc tại $B$ (dùng $\overrightarrow{BA},\overrightarrow{BC}$) và tại $C$.
+- Ba góc của tam giác có tổng bằng $180^\circ$, dùng để kiểm tra kết quả.
+- Điểm trên các trục và mặt phẳng toạ độ: $M(m;0;0)\in Ox$, $M(0;0;m)\in Oz$, $M(a;b;0)\in(Oxy)$.
+
+##PP Tính góc, tìm điểm khi biết góc hoặc cosin
+Tính toạ độ các vectơ cùng gốc tại đỉnh của góc cần xét.
+Tính tích vô hướng và độ dài rồi tìm $\cos$ của góc.
+Với bài tìm điểm $M$: đặt toạ độ $M$ theo ẩn (theo trục hoặc mặt phẳng đề cho), viết các vectơ theo ẩn rồi thay vào công thức $\cos$.
+Giải phương trình, kiểm tra điều kiện của đề (tia, dấu của cosin) và loại nghiệm thừa.
+
+##CY
+- Đề nói $M$ thuộc tia hay thuộc trục: tia thì toạ độ ẩn có dấu cố định.
+- Khi bình phương để bỏ căn thì phải thử lại, vì $\cos$ trong đề có dấu xác định.
+
+@vi_du:
+##VD
+Tính các góc của tam giác $ABC$ biết $A(2;1;-1)$, $B(3;3;1)$, $C(4;2;-3)$.
+
+Bài giải:
+$\overrightarrow{AB}=(1;2;2)$, $\overrightarrow{AC}=(2;1;-2)$, $\overrightarrow{BA}=(-1;-2;-2)$ và $\overrightarrow{BC}=(1;-1;-4)$.
+$\overrightarrow{AB}\cdot\overrightarrow{AC}=2+2-4=0$ nên $\widehat{A}=90^\circ$.
+$\overrightarrow{BA}\cdot\overrightarrow{BC}=-1+2+8=9$, $BA=3$ và $BC=\sqrt{1+1+16}=3\sqrt{2}$.
+$\cos\widehat{B}=\dfrac{9}{3\cdot3\sqrt{2}}=\dfrac{\sqrt{2}}{2}$ nên $\widehat{B}=45^\circ$.
+Do đó $\widehat{C}=180^\circ-90^\circ-45^\circ=45^\circ$.
+Vậy $\widehat{A}=90^\circ$, $\widehat{B}=\widehat{C}=45^\circ$ (tam giác $ABC$ vuông cân tại $A$).
+
+##VD
+Cho $A(4;0;2)$. Tìm điểm $M$ thuộc tia $Oz$ (khác $O$) sao cho $\cos(\overrightarrow{MA},\overrightarrow{MO})=\dfrac{3}{5}$.
+
+Bài giải:
+Vì $M$ thuộc tia $Oz$ nên $M(0;0;m)$ với $m>0$.
+$\overrightarrow{MA}=(4;0;2-m)$ và $\overrightarrow{MO}=(0;0;-m)$ nên $\overrightarrow{MA}\cdot\overrightarrow{MO}=-m(2-m)=m(m-2)$.
+$|\overrightarrow{MA}|=\sqrt{16+(m-2)^2}$ và $|\overrightarrow{MO}|=m$ (vì $m>0$).
+Do đó $\cos(\overrightarrow{MA},\overrightarrow{MO})=\dfrac{m-2}{\sqrt{16+(m-2)^2}}=\dfrac{3}{5}$, suy ra $m-2>0$.
+Bình phương hai vế: $25(m-2)^2=9\left[16+(m-2)^2\right]$, tức là $16(m-2)^2=144$, nên $(m-2)^2=9$.
+Vì $m-2>0$ nên $m-2=3$, suy ra $m=5$.
+Thử lại: $\overrightarrow{MA}=(4;0;-3)$, $\overrightarrow{MO}=(0;0;-5)$, tích vô hướng bằng $15$, $|\overrightarrow{MA}|=5$ và $|\overrightarrow{MO}|=5$ nên $\cos=\dfrac{15}{25}=\dfrac{3}{5}$.
+Vậy $M(0;0;5)$.
+
+=== N P3.5
+@ly_thuyet:
+##DN Tích có hướng của hai vectơ
+- Cho $\vec{a}=(x;y;z)$ và $\vec{b}=(x';y';z')$. Tích có hướng của $\vec{a}$ và $\vec{b}$ là vectơ $[\vec{a},\vec{b}]=(yz'-zy';\ zx'-xz';\ xy'-yx')$.
+- Cách nhớ: ba toạ độ đi vòng $x\to y\to z\to x$: toạ độ thứ nhất là $yz'-zy'$, thứ hai là $zx'-xz'$, thứ ba là $xy'-yx'$ (mỗi toạ độ là "tích chéo xuôi trừ tích chéo ngược").
+
+##TC Tính chất
+- $[\vec{a},\vec{b}]$ vuông góc với cả $\vec{a}$ và $\vec{b}$: $[\vec{a},\vec{b}]\cdot\vec{a}=0$ và $[\vec{a},\vec{b}]\cdot\vec{b}=0$.
+- $[\vec{b},\vec{a}]=-[\vec{a},\vec{b}]$ và $|[\vec{a},\vec{b}]|=|\vec{a}|\cdot|\vec{b}|\cdot\sin(\vec{a},\vec{b})$.
+- $\vec{a},\vec{b}$ cùng phương khi và chỉ khi $[\vec{a},\vec{b}]=\vec{0}$.
+
+##TC Ý nghĩa hình học (nền của các ứng dụng)
+- $\left|[\vec{a},\vec{b}]\right|$ bằng diện tích hình bình hành dựng trên hai vectơ $\vec{a},\vec{b}$ (chung điểm đầu).
+- $\left|[\vec{a},\vec{b}]\cdot\vec{c}\right|$ bằng thể tích hình hộp dựng trên ba vectơ $\vec{a},\vec{b},\vec{c}$ (chung điểm đầu); số này bằng $0$ đúng khi ba vectơ đồng phẳng.
+- Tam giác là nửa hình bình hành, tứ diện bằng $\dfrac{1}{6}$ hình hộp dựng trên ba cạnh chung đỉnh của nó.
+
+##PP Dùng tích có hướng để giải bài
+Viết toạ độ các vectơ cạnh xuất phát từ cùng một đỉnh.
+Tính tích có hướng của hai vectơ cần thiết; có thể kiểm tra bằng cách nhân vô hướng kết quả với từng vectơ ban đầu, phải ra $0$.
+Chọn công thức ứng dụng: lấy độ dài (diện tích), nhân vô hướng với vectơ thứ ba rồi lấy giá trị tuyệt đối (thể tích), cho bằng $0$ (đồng phẳng).
+Kết luận kèm các hệ số $\dfrac{1}{2}$, $\dfrac{1}{6}$ đúng chỗ.
+
+##CY
+- Đổi thứ tự hai vectơ thì tích có hướng đổi dấu; chỉ có độ dài và giá trị tuyệt đối là không đổi.
+- Diện tích tam giác có hệ số $\dfrac{1}{2}$, thể tích tứ diện có hệ số $\dfrac{1}{6}$, còn hình bình hành và hình hộp không có hệ số.
+- Diện tích lấy độ dài của tích có hướng, không lấy chính vectơ; thể tích lấy giá trị tuyệt đối.
+
+=== P3.5.1
+@ly_thuyet:
+##TC Tích có hướng và vectơ vuông góc với hai vectơ
+- $[\vec{a},\vec{b}]=(yz'-zy';\ zx'-xz';\ xy'-yx')$.
+- Nếu $\vec{a},\vec{b}$ không cùng phương thì mọi vectơ vuông góc với cả hai có dạng $k[\vec{a},\vec{b}]$ với $k\ne0$; chọn $k$ theo yêu cầu đề (độ dài, dấu của một toạ độ).
+- $\vec{a},\vec{b}$ không cùng phương khi và chỉ khi $[\vec{a},\vec{b}]\ne\vec{0}$; ba điểm $A,B,C$ không thẳng hàng khi và chỉ khi $[\overrightarrow{AB},\overrightarrow{AC}]\ne\vec{0}$.
+
+##PP Tìm vectơ vuông góc với hai vectơ cho trước
+Tính toạ độ hai vectơ (nếu đề cho điểm thì lấy $\overrightarrow{AB},\overrightarrow{AC}$).
+Tính $[\vec{a},\vec{b}]$ theo công thức và kiểm tra bằng tích vô hướng với từng vectơ.
+Kết luận hai vectơ không cùng phương nếu $[\vec{a},\vec{b}]\ne\vec{0}$.
+Với yêu cầu thêm (độ dài, chiều), đặt $\vec{n}=k[\vec{a},\vec{b}]$ và tìm $k$.
+
+##CY
+- Có vô số vectơ vuông góc với hai vectơ cho trước (cùng phương với nhau); đề chỉ có một đáp số khi cho thêm độ dài hoặc chiều.
+- Nhầm thứ tự các thành phần sẽ ra vectơ không vuông góc: luôn kiểm tra lại bằng tích vô hướng.
+
+@vi_du:
+##VD
+Cho $\vec{a}=(2;-1;3)$ và $\vec{b}=(1;4;-2)$. Tính $[\vec{a},\vec{b}]$, kiểm tra nó vuông góc với cả $\vec{a}$ và $\vec{b}$, rồi cho biết $\vec{a},\vec{b}$ có cùng phương không.
+
+Bài giải:
+$[\vec{a},\vec{b}]=\big((-1)(-2)-3\cdot4;\ 3\cdot1-2\cdot(-2);\ 2\cdot4-(-1)\cdot1\big)=(-10;7;9)$.
+Kiểm tra: $[\vec{a},\vec{b}]\cdot\vec{a}=-20-7+27=0$ và $[\vec{a},\vec{b}]\cdot\vec{b}=-10+28-18=0$.
+Vì $[\vec{a},\vec{b}]\ne\vec{0}$ nên $\vec{a}$ và $\vec{b}$ không cùng phương.
+Vậy $[\vec{a},\vec{b}]=(-10;7;9)$, vuông góc với cả $\vec{a}$ và $\vec{b}$; hai vectơ $\vec{a},\vec{b}$ không cùng phương.
+
+##VD
+Cho $A(1;2;-1)$, $B(2;2;-2)$, $C(1;4;0)$. Chứng minh $A,B,C$ không thẳng hàng, rồi tìm vectơ $\vec{n}$ vuông góc với cả $\overrightarrow{AB}$ và $\overrightarrow{AC}$, có độ dài bằng $6$ và có cao độ dương.
+
+Bài giải:
+$\overrightarrow{AB}=(1;0;-1)$ và $\overrightarrow{AC}=(0;2;1)$.
+$[\overrightarrow{AB},\overrightarrow{AC}]=\big(0\cdot1-(-1)\cdot2;\ (-1)\cdot0-1\cdot1;\ 1\cdot2-0\cdot0\big)=(2;-1;2)\ne\vec{0}$ nên $\overrightarrow{AB},\overrightarrow{AC}$ không cùng phương, tức là $A,B,C$ không thẳng hàng.
+Vectơ vuông góc với cả hai có dạng $\vec{n}=k(2;-1;2)$.
+$|\vec{n}|=|k|\sqrt{4+1+4}=3|k|=6$ nên $k=2$ hoặc $k=-2$.
+Cao độ của $\vec{n}$ là $2k>0$ nên $k=2$.
+Vậy $\vec{n}=(4;-2;4)$.
+
+=== P3.5.2
+@ly_thuyet:
+##TC Diện tích và đường cao
+- $S_{ABC}=\dfrac{1}{2}\left|[\overrightarrow{AB},\overrightarrow{AC}]\right|$ và $S_{ABCD}=\left|[\overrightarrow{AB},\overrightarrow{AD}]\right|$ (hình bình hành).
+- Đường cao hạ từ $A$ của tam giác $ABC$: $AH=\dfrac{2S_{ABC}}{BC}$.
+- Khoảng cách từ $D$ đến đường thẳng $AB$ trong hình bình hành $ABCD$: $\dfrac{S_{ABCD}}{AB}=\dfrac{\left|[\overrightarrow{AB},\overrightarrow{AD}]\right|}{AB}$.
+- $ABCD$ là hình bình hành khi và chỉ khi $\overrightarrow{AB}=\overrightarrow{DC}$.
+
+##PP Tính diện tích và đường cao bằng tích có hướng
+Tính hai vectơ cạnh xuất phát từ cùng một đỉnh.
+Tính tích có hướng của hai vectơ và độ dài của nó.
+Diện tích tam giác bằng một nửa độ dài đó; diện tích hình bình hành bằng chính độ dài đó.
+Đường cao bằng diện tích nhân $2$ (tam giác) chia độ dài đáy tương ứng; hình bình hành thì chia thẳng cho độ dài đáy.
+
+##CY
+- Tam giác có hệ số $\dfrac{1}{2}$, hình bình hành thì không.
+- Đường cao phải chia cho đúng cạnh đáy mà đường cao ấy vuông góc.
+
+@vi_du:
+##VD
+Cho tam giác $ABC$ với $A(1;3;-2)$, $B(-1;1;1)$, $C(1;5;-3)$. Tính diện tích tam giác $ABC$ và độ dài đường cao $AH$.
+
+Bài giải:
+$\overrightarrow{AB}=(-2;-2;3)$ và $\overrightarrow{AC}=(0;2;-1)$.
+$[\overrightarrow{AB},\overrightarrow{AC}]=\big((-2)(-1)-3\cdot2;\ 3\cdot0-(-2)(-1);\ (-2)\cdot2-(-2)\cdot0\big)=(-4;-2;-4)$.
+$\left|[\overrightarrow{AB},\overrightarrow{AC}]\right|=\sqrt{16+4+16}=6$ nên $S_{ABC}=\dfrac{1}{2}\cdot6=3$.
+$\overrightarrow{BC}=(2;4;-4)$ nên $BC=\sqrt{4+16+16}=6$.
+$AH=\dfrac{2S_{ABC}}{BC}=\dfrac{6}{6}=1$.
+Vậy $S_{ABC}=3$ và $AH=1$.
+
+##VD
+Cho ba điểm $A(1;0;2)$, $B(3;2;3)$, $D(1;2;4)$ là ba đỉnh của hình bình hành $ABCD$. Tìm toạ độ điểm $C$, tính diện tích hình bình hành và khoảng cách từ $D$ đến đường thẳng $AB$.
+
+Bài giải:
+$\overrightarrow{AB}=(2;2;1)$ và $\overrightarrow{AD}=(0;2;2)$.
+$ABCD$ là hình bình hành nên $\overrightarrow{DC}=\overrightarrow{AB}$, suy ra $C=D+\overrightarrow{AB}=(1+2;\ 2+2;\ 4+1)=(3;4;5)$.
+$[\overrightarrow{AB},\overrightarrow{AD}]=\big(2\cdot2-1\cdot2;\ 1\cdot0-2\cdot2;\ 2\cdot2-2\cdot0\big)=(2;-4;4)$.
+$S_{ABCD}=\left|[\overrightarrow{AB},\overrightarrow{AD}]\right|=\sqrt{4+16+16}=6$.
+$AB=\sqrt{4+4+1}=3$ nên khoảng cách từ $D$ đến $AB$ là $\dfrac{S_{ABCD}}{AB}=\dfrac{6}{3}=2$.
+Vậy $C(3;4;5)$, diện tích bằng $6$ và khoảng cách từ $D$ đến $AB$ bằng $2$.
+
+=== P3.5.3
+@ly_thuyet:
+##TC Thể tích và điều kiện đồng phẳng
+- Thể tích hình hộp $ABCD.A'B'C'D'$: $V=\left|[\overrightarrow{AB},\overrightarrow{AD}]\cdot\overrightarrow{AA'}\right|$.
+- Thể tích tứ diện $ABCD$: $V=\dfrac{1}{6}\left|[\overrightarrow{AB},\overrightarrow{AC}]\cdot\overrightarrow{AD}\right|$; chóp $S.ABCD$ có đáy là hình bình hành: $V=\dfrac{1}{3}\left|[\overrightarrow{AB},\overrightarrow{AD}]\cdot\overrightarrow{AS}\right|$.
+- Ba vectơ $\vec{a},\vec{b},\vec{c}$ đồng phẳng khi và chỉ khi $[\vec{a},\vec{b}]\cdot\vec{c}=0$; bốn điểm đồng phẳng thì không tạo thành tứ diện.
+
+##PP Tính thể tích, xét đồng phẳng
+Chọn một đỉnh làm gốc và viết toạ độ ba vectơ cạnh xuất phát từ đỉnh đó.
+Tính tích có hướng của hai vectơ rồi nhân vô hướng với vectơ thứ ba.
+Thể tích hộp lấy giá trị tuyệt đối của kết quả; tứ diện chia $6$; chóp đáy hình bình hành chia $3$.
+Điều kiện đồng phẳng: cho kết quả bằng $0$ (với tham số thì giải phương trình).
+
+##CY
+- Thể tích lấy giá trị tuyệt đối vì biểu thức $[\vec{a},\vec{b}]\cdot\vec{c}$ có thể âm.
+- Hộp có hệ số $1$, chóp đáy hình bình hành có $\dfrac{1}{3}$, tứ diện có $\dfrac{1}{6}$.
+- Ba vectơ phải xuất phát từ cùng một đỉnh.
+
+@vi_du:
+##VD
+Cho hình hộp $ABCD.A'B'C'D'$ có $A(1;0;1)$, $B(2;2;1)$, $D(1;1;4)$ và $A'(3;1;4)$. Tính thể tích hình hộp và thể tích khối chóp $A'.ABCD$.
+
+Bài giải:
+$\overrightarrow{AB}=(1;2;0)$, $\overrightarrow{AD}=(0;1;3)$ và $\overrightarrow{AA'}=(2;1;3)$.
+$[\overrightarrow{AB},\overrightarrow{AD}]=\big(2\cdot3-0\cdot1;\ 0\cdot0-1\cdot3;\ 1\cdot1-2\cdot0\big)=(6;-3;1)$.
+$[\overrightarrow{AB},\overrightarrow{AD}]\cdot\overrightarrow{AA'}=12-3+3=12$.
+Thể tích hình hộp là $V=|12|=12$.
+Chóp $A'.ABCD$ có cùng đáy và cùng chiều cao với hình hộp nên $V_{A'.ABCD}=\dfrac{1}{3}\cdot12=4$.
+Vậy thể tích hình hộp bằng $12$ và thể tích khối chóp $A'.ABCD$ bằng $4$.
+
+##VD
+Cho bốn điểm $A(1;1;0)$, $B(2;3;1)$, $C(0;2;3)$ và $D(m;4;4)$.
+a) Tìm $m$ để bốn điểm $A,B,C,D$ đồng phẳng.
+b) Với $m=7$, tính thể tích tứ diện $ABCD$.
+
+Bài giải:
+$\overrightarrow{AB}=(1;2;1)$, $\overrightarrow{AC}=(-1;1;3)$ và $\overrightarrow{AD}=(m-1;3;4)$.
+$[\overrightarrow{AB},\overrightarrow{AC}]=\big(2\cdot3-1\cdot1;\ 1\cdot(-1)-1\cdot3;\ 1\cdot1-2\cdot(-1)\big)=(5;-4;3)$.
+$[\overrightarrow{AB},\overrightarrow{AC}]\cdot\overrightarrow{AD}=5(m-1)-12+12=5(m-1)$.
+a) Bốn điểm đồng phẳng khi $5(m-1)=0$, tức là $m=1$.
+b) Với $m=7$: $[\overrightarrow{AB},\overrightarrow{AC}]\cdot\overrightarrow{AD}=30$ nên $V_{ABCD}=\dfrac{1}{6}\cdot30=5$.
+Vậy $m=1$ và thể tích tứ diện $ABCD$ khi $m=7$ bằng $5$.
+
+=== N P3.6
+@ly_thuyet:
+##DN Tâm tỉ cự
+- Cho các điểm $A_1,\dots,A_n$ và các số $k_1,\dots,k_n$ có tổng $k=k_1+\dots+k_n\ne0$. Tồn tại duy nhất điểm $I$ thoả $k_1\overrightarrow{IA_1}+\dots+k_n\overrightarrow{IA_n}=\vec{0}$, gọi là tâm tỉ cự.
+- Toạ độ của $I$ tính từng toạ độ: $x_I=\dfrac{k_1x_1+\dots+k_nx_n}{k}$, tương tự cho $y_I,z_I$. Khi $k_i$ đều bằng nhau, $I$ là trọng tâm.
+
+##TC Đưa biểu thức về một khoảng cách $MI$
+- Chèn điểm $I$: $\overrightarrow{MA_i}=\overrightarrow{MI}+\overrightarrow{IA_i}$, cộng lại với hệ số $k_i$ và dùng $\sum k_i\overrightarrow{IA_i}=\vec{0}$ được $k_1\overrightarrow{MA_1}+\dots+k_n\overrightarrow{MA_n}=k\overrightarrow{MI}$ với mọi điểm $M$.
+- Nhờ đó các biểu thức $\left|\sum k_i\overrightarrow{MA_i}\right|$ và $\sum k_iMA_i^2$ đều trở thành hàm của một khoảng cách $MI$; tìm cực trị bằng cách xét vị trí của $M$ so với $I$.
+- Miền của $M$ quyết định vị trí cực trị: $M$ tự do trong không gian thì có thể lấy $M\equiv I$; $M$ bị buộc nằm trên một trục hay một mặt phẳng toạ độ thì $M$ không trùng $I$ được, $MI$ nhỏ nhất khi $M$ là hình chiếu vuông góc của $I$ lên trục hay mặt phẳng đó.
+
+##PP Giải bài cực trị bằng tâm tỉ cự
+Tìm điểm $I$ thoả $\sum k_i\overrightarrow{IA_i}=\vec{0}$ (kiểm tra tổng hệ số $k\ne0$).
+Đưa biểu thức về dạng $k\cdot MI^2+\text{hằng số}$ hoặc $|k|\cdot MI$.
+Xác định miền của $M$ (tự do, trên trục hay trên mặt phẳng toạ độ) và dấu của $k$ để biết biểu thức đạt nhỏ nhất hay lớn nhất tại đâu.
+Tính hằng số và khoảng cách $MI$ tại vị trí đó rồi kết luận giá trị và toạ độ của $M$.
+
+##CY
+- Nếu tổng hệ số $k=0$ thì không có điểm $I$: khi đó $\sum k_i\overrightarrow{MA_i}$ là một vectơ không đổi, không làm theo cách này.
+- Đọc kĩ đề: "$M$ thay đổi" (tự do) và "$M$ thuộc $(Oxy)$, thuộc trục $Ox$…" cho hai vị trí cực trị khác nhau.
+
+=== P3.6.1
+@ly_thuyet:
+##TC Tâm tỉ cự và tổng Σk_i·MA_i²
+- Dạng này: tìm tâm tỉ cự $I$, và tìm cực trị khi $M$ thay đổi **tự do trong không gian** (không bị buộc vào trục hay mặt phẳng toạ độ).
+- Bình phương $\overrightarrow{MA_i}=\overrightarrow{MI}+\overrightarrow{IA_i}$, nhân với $k_i$ rồi cộng; số hạng $2\overrightarrow{MI}\cdot\sum k_i\overrightarrow{IA_i}$ bằng $0$, nên $\sum k_iMA_i^2=k\cdot MI^2+\sum k_iIA_i^2$ với mọi điểm $M$ (tổng sau là hằng số).
+- $k>0$: giá trị nhỏ nhất là $\sum k_iIA_i^2$ khi $M\equiv I$. $k<0$: giá trị lớn nhất là $\sum k_iIA_i^2$ khi $M\equiv I$.
+
+##PP Tìm I và giá trị cực trị của tổng bình phương
+Tính $k$ và toạ độ tâm tỉ cự $I$ từ công thức trung bình có trọng số.
+Tính $IA_i^2$ cho từng điểm.
+Viết biểu thức dưới dạng $k\cdot MI^2+\sum k_iIA_i^2$.
+Dựa vào dấu của $k$ để kết luận GTNN hay GTLN và vị trí $M\equiv I$.
+
+##CY
+- Mỗi $IA_i^2$ phải nhân với hệ số $k_i$ của nó trước khi cộng.
+- Khi đề hỏi nhỏ nhất mà $k<0$ thì biểu thức không có giá trị nhỏ nhất.
+
+@vi_du:
+##VD
+Cho $A(3;1;-1)$, $B(1;-1;3)$, $C(2;2;1)$.
+a) Tìm điểm $I$ thoả $\overrightarrow{IA}+\overrightarrow{IB}+2\overrightarrow{IC}=\vec{0}$.
+b) Với $M$ thay đổi, tìm giá trị nhỏ nhất của $T=MA^2+MB^2+2MC^2$.
+
+Bài giải:
+a) Tổng hệ số là $1+1+2=4\ne0$ nên $I$ tồn tại và $x_I=\dfrac{3+1+2\cdot2}{4}=2$, $y_I=\dfrac{1-1+2\cdot2}{4}=1$, $z_I=\dfrac{-1+3+2\cdot1}{4}=1$.
+Vậy $I(2;1;1)$.
+b) Với mọi $M$, $T=4MI^2+IA^2+IB^2+2IC^2$.
+$\overrightarrow{IA}=(1;0;-2)$ nên $IA^2=5$. $\overrightarrow{IB}=(-1;-2;2)$ nên $IB^2=9$. $\overrightarrow{IC}=(0;1;0)$ nên $IC^2=1$.
+Do đó $T=4MI^2+5+9+2\cdot1=4MI^2+16\ge16$, dấu "=" xảy ra khi $M\equiv I$.
+Vậy $I(2;1;1)$ và $T$ đạt giá trị nhỏ nhất bằng $16$ tại $M(2;1;1)$.
+
+##VD
+Cho $A(2;0;3)$, $B(3;2;5)$, $C(2;1;3)$. Với $M$ thay đổi, tìm giá trị lớn nhất của $T=MA^2+MB^2-3MC^2$ và điểm $M$ làm cho $T$ đạt giá trị đó.
+
+Bài giải:
+Tổng hệ số $1+1-3=-1\ne0$ nên có điểm $I$ thoả $\overrightarrow{IA}+\overrightarrow{IB}-3\overrightarrow{IC}=\vec{0}$.
+Viết $\overrightarrow{IA}=\overrightarrow{OA}-\overrightarrow{OI}$ và tương tự, ta được $\overrightarrow{OA}+\overrightarrow{OB}-3\overrightarrow{OC}+\overrightarrow{OI}=\vec{0}$ nên $\overrightarrow{OI}=3\overrightarrow{OC}-\overrightarrow{OA}-\overrightarrow{OB}=(6-2-3;\ 3-0-2;\ 9-3-5)=(1;1;1)$.
+Với mọi $M$: $T=-MI^2+IA^2+IB^2-3IC^2$.
+$\overrightarrow{IA}=(1;-1;2)$ nên $IA^2=6$. $\overrightarrow{IB}=(2;1;4)$ nên $IB^2=21$. $\overrightarrow{IC}=(1;0;2)$ nên $IC^2=5$.
+Suy ra $T=-MI^2+6+21-15=12-MI^2\le12$, dấu "=" xảy ra khi $M\equiv I$.
+Vậy $T$ đạt giá trị lớn nhất bằng $12$ tại $M(1;1;1)$.
+
+=== P3.6.2
+@ly_thuyet:
+##TC Điểm M thuộc mặt phẳng toạ độ làm biểu thức nhỏ nhất
+- Dạng này: $M$ **bị buộc** nằm trên một mặt phẳng toạ độ hoặc một trục toạ độ, nên không lấy được $M\equiv I$.
+- $\left|\sum k_i\overrightarrow{MA_i}\right|=|k|\cdot MI$; với $k>0$ thì $\sum k_iMA_i^2=k\cdot MI^2+\text{hằng số}$. Cả hai nhỏ nhất khi $M$ là hình chiếu của $I$ lên mặt phẳng (hoặc trục) mà $M$ thuộc vào.
+- Hình chiếu của $I(a;b;c)$ lên $(Oxy)$ là $(a;b;0)$, khoảng cách bằng $|c|$; lên trục $Oz$ là $(0;0;c)$, khoảng cách bằng $\sqrt{a^2+b^2}$ (tương tự cho mặt phẳng, trục khác).
+- Điểm đối xứng của $A(a;b;c)$ qua $(Oxy)$ là $A'(a;b;-c)$. Hai điểm $A,B$ cùng phía với $(Oxy)$ (cao độ cùng dấu) thì với $M\in(Oxy)$: $MA+MB=MA'+MB\ge A'B$, dấu "=" khi $M$ là giao điểm của $A'B$ với $(Oxy)$.
+- Hai điểm khác phía (cao độ trái dấu) thì $MA+MB\ge AB$, dấu "=" khi $M$ là giao điểm của $AB$ với $(Oxy)$.
+
+##PP Tìm M trên mặt phẳng toạ độ làm tổng nhỏ nhất
+Tổng của các vectơ thì tìm tâm tỉ cự $I$, đưa về $|k|\cdot MI$ rồi lấy $M$ là hình chiếu của $I$.
+Tổng hai khoảng cách $MA+MB$ thì xét $A,B$ cùng phía hay khác phía mặt phẳng.
+Cùng phía thì lấy đối xứng của một điểm qua mặt phẳng, khác phía thì nối thẳng.
+Tìm giao điểm của đoạn nối với mặt phẳng bằng cách cho cao độ bằng $0$ và kết luận giá trị nhỏ nhất.
+
+##CY
+- Phải kiểm tra $A,B$ cùng phía hay khác phía trước khi lấy đối xứng.
+- Đối xứng qua $(Oxy)$ chỉ đổi dấu cao độ; $M$ phải có cao độ $0$.
+- $|\vec{u}|$ nhỏ nhất không phải lúc nào cũng bằng $0$: ở đây bằng $|k|$ nhân khoảng cách từ $I$ đến mặt phẳng.
+
+@vi_du:
+##VD
+Cho $A(2;-1;3)$, $B(0;3;1)$, $C(1;1;2)$. Tìm điểm $M$ thuộc mặt phẳng $(Oxy)$ để $\left|\overrightarrow{MA}+\overrightarrow{MB}+2\overrightarrow{MC}\right|$ nhỏ nhất và tính giá trị nhỏ nhất đó.
+
+Bài giải:
+Tổng hệ số là $1+1+2=4$. Điểm $I$ thoả $\overrightarrow{IA}+\overrightarrow{IB}+2\overrightarrow{IC}=\vec{0}$ có $x_I=\dfrac{2+0+2}{4}=1$, $y_I=\dfrac{-1+3+2}{4}=1$, $z_I=\dfrac{3+1+4}{4}=2$, tức là $I(1;1;2)$.
+Với mọi $M$: $\overrightarrow{MA}+\overrightarrow{MB}+2\overrightarrow{MC}=4\overrightarrow{MI}$ nên biểu thức bằng $4MI$.
+Với $M\in(Oxy)$, $MI$ nhỏ nhất khi $M$ là hình chiếu của $I$ lên $(Oxy)$, tức là $M(1;1;0)$, khi đó $MI=2$.
+Giá trị nhỏ nhất là $4\cdot2=8$.
+Vậy $M(1;1;0)$ và giá trị nhỏ nhất của biểu thức bằng $8$.
+
+##VD
+Cho $A(1;2;1)$ và $B(4;-1;2)$. Điểm $M$ thay đổi trên mặt phẳng $(Oxy)$. Tìm $M$ để $MA+MB$ nhỏ nhất và tính giá trị nhỏ nhất đó.
+
+Bài giải:
+$A$ và $B$ có cao độ $1$ và $2$ cùng dương nên cùng phía đối với $(Oxy)$.
+Gọi $A'$ là điểm đối xứng của $A$ qua $(Oxy)$ thì $A'(1;2;-1)$ và $MA=MA'$ với mọi $M\in(Oxy)$.
+Do đó $MA+MB=MA'+MB\ge A'B$, dấu "=" xảy ra khi $M$ nằm trên đoạn $A'B$.
+$\overrightarrow{A'B}=(3;-3;3)$ nên $A'B=3\sqrt{3}$.
+Điểm $M=A'+t\overrightarrow{A'B}$ có cao độ $-1+3t=0$, suy ra $t=\dfrac{1}{3}$ và $M(1+1;\ 2-1;\ -1+1)=(2;1;0)$.
+Vậy $M(2;1;0)$ và giá trị nhỏ nhất của $MA+MB$ bằng $3\sqrt{3}$.
+
+=== P3.6.3
+@ly_thuyet:
+##TC Bất đẳng thức dùng cho cực trị vectơ
+- $|\vec{a}\cdot\vec{b}|\le|\vec{a}|\cdot|\vec{b}|$, dấu "=" khi $\vec{a},\vec{b}$ cùng phương; $\vec{a}\cdot\vec{b}=|\vec{a}||\vec{b}|\cos\varphi$ với $\varphi\in[0^\circ;180^\circ]$.
+- $\big||\vec{a}|-|\vec{b}|\big|\le|\vec{a}+\vec{b}|\le|\vec{a}|+|\vec{b}|$.
+- Với ba điểm $O,I,M$: $|OI-IM|\le OM\le OI+IM$; dấu "=" bên trái khi $M$ nằm trên tia $IO$, bên phải khi $I$ nằm giữa $O$ và $M$.
+- Quỹ tích qua tích vô hướng: với $I$ là trung điểm $AB$ thì $\overrightarrow{MA}\cdot\overrightarrow{MB}=MI^2-IA^2$, nên điều kiện $\overrightarrow{MA}\cdot\overrightarrow{MB}=c$ cho biết $M$ luôn cách $I$ một khoảng không đổi $\sqrt{IA^2+c}$.
+
+##PP Tìm giá trị lớn nhất, nhỏ nhất của độ dài và tích vô hướng
+Xác định đại lượng nào cố định, đại lượng nào thay đổi (độ dài cố định thì hướng thay đổi, và ngược lại).
+Đưa biểu thức về $\cos\varphi$, hoặc dịch điều kiện của $M$ thành "$M$ cách một điểm cố định một khoảng không đổi", rồi áp dụng bất đẳng thức tương ứng.
+Tìm điều kiện dấu "=" (cùng hướng hay ngược hướng) và giải ra vị trí cụ thể.
+Thử lại bằng cách thay vị trí tìm được và kết luận giá trị lớn nhất, nhỏ nhất.
+
+##CY
+- Chỉ kết luận giá trị lớn nhất, nhỏ nhất khi dấu "=" thực sự xảy ra với một vị trí cụ thể; phải tìm và thử lại vị trí đó.
+- $|\vec{a}+\vec{b}|$ đạt lớn nhất khi hai vectơ cùng hướng và nhỏ nhất khi ngược hướng, không phải ngược lại.
+
+@vi_du:
+##VD
+Cho $\vec{a}=(2;-1;2)$ và vectơ $\vec{b}$ thay đổi nhưng luôn có $|\vec{b}|=2$. Tìm giá trị lớn nhất, giá trị nhỏ nhất của $\vec{a}\cdot\vec{b}$ và của $|\vec{a}+\vec{b}|$.
+
+Bài giải:
+$|\vec{a}|=\sqrt{4+1+4}=3$. Gọi $\varphi=(\vec{a},\vec{b})\in[0^\circ;180^\circ]$ thì $\vec{a}\cdot\vec{b}=3\cdot2\cdot\cos\varphi=6\cos\varphi$.
+Vì $-1\le\cos\varphi\le1$ nên $-6\le\vec{a}\cdot\vec{b}\le6$; giá trị $6$ đạt khi $\vec{b}$ cùng hướng $\vec{a}$ (tức $\vec{b}=\dfrac{2}{3}\vec{a}$), giá trị $-6$ đạt khi $\vec{b}$ ngược hướng $\vec{a}$.
+$|\vec{a}+\vec{b}|^2=|\vec{a}|^2+2\vec{a}\cdot\vec{b}+|\vec{b}|^2=13+2\vec{a}\cdot\vec{b}$ nên $13-12\le|\vec{a}+\vec{b}|^2\le13+12$, tức là $1\le|\vec{a}+\vec{b}|^2\le25$.
+Suy ra $1\le|\vec{a}+\vec{b}|\le5$, đạt hai đầu mút khi $\vec{b}$ ngược hướng, cùng hướng với $\vec{a}$.
+Vậy $\vec{a}\cdot\vec{b}$ có giá trị lớn nhất $6$, nhỏ nhất $-6$; $|\vec{a}+\vec{b}|$ có giá trị lớn nhất $5$, nhỏ nhất $1$.
+
+##VD
+Cho $A(4;5;2)$ và $B(0;3;6)$. Điểm $M$ thay đổi trong không gian sao cho $\overrightarrow{MA}\cdot\overrightarrow{MB}=0$. Tìm giá trị lớn nhất, giá trị nhỏ nhất của $OM$ và chỉ ra điểm $M$ tương ứng.
+
+Bài giải:
+Gọi $I$ là trung điểm của $AB$ thì $I(2;4;4)$ và $\overrightarrow{IB}=-\overrightarrow{IA}$.
+$\overrightarrow{MA}\cdot\overrightarrow{MB}=(\overrightarrow{MI}+\overrightarrow{IA})\cdot(\overrightarrow{MI}-\overrightarrow{IA})=MI^2-IA^2$.
+$\overrightarrow{IA}=(2;1;-2)$ nên $IA=3$; điều kiện của đề tương đương $MI^2=9$, tức là $M$ luôn cách $I$ một khoảng bằng $3$.
+$OI=\sqrt{4+16+16}=6$. Với ba điểm $O,I,M$ ta có $OI-IM\le OM\le OI+IM$, tức là $3\le OM\le9$.
+$OM=3$ khi $M$ nằm trên đoạn $OI$ và $IM=3=\dfrac{1}{2}OI$, tức là $M$ là trung điểm của $OI$: $M(1;2;2)$.
+$OM=9$ khi $I$ nằm giữa $O$ và $M$, tức là $\overrightarrow{OM}=\dfrac{3}{2}\overrightarrow{OI}$: $M(3;6;6)$.
+Thử lại: với $M(1;2;2)$ có $\overrightarrow{MA}=(3;3;0)$, $\overrightarrow{MB}=(-1;1;4)$ và $\overrightarrow{MA}\cdot\overrightarrow{MB}=-3+3+0=0$; với $M(3;6;6)$ có $\overrightarrow{MA}=(1;-1;-4)$, $\overrightarrow{MB}=(-3;-3;0)$ và $\overrightarrow{MA}\cdot\overrightarrow{MB}=-3+3+0=0$.
+Vậy $OM$ lớn nhất bằng $9$ tại $M(3;6;6)$ và nhỏ nhất bằng $3$ tại $M(1;2;2)$.
+
+=== N P3.7
+@ly_thuyet:
+##TC Mô hình hoá tình huống thực tế bằng toạ độ
+- Chọn gốc toạ độ và ba trục, thường mặt đất (hoặc mặt nước) là mặt phẳng $(Oxy)$, trục $Oz$ thẳng đứng hướng lên nên cao độ $z$ chính là độ cao; đơn vị độ dài lấy theo đề.
+- Chuyển động thẳng đều được xác định bởi một vị trí ban đầu và một vectơ vận tốc không đổi; vị trí của vật là một điểm có toạ độ phụ thuộc thời gian $t$.
+- Khoảng cách giữa hai vật, hay từ vật đến một điểm cố định (radar, trạm quan sát), là độ dài của một vectơ phụ thuộc $t$.
+- Lực, vận tốc, độ dời đều là vectơ: hợp lực và cân bằng quy về phép cộng vectơ, công quy về tích vô hướng.
+
+##PP Giải bài thực tế bằng vectơ và toạ độ
+Chọn hệ trục và đơn vị, ghi toạ độ các điểm, vận tốc, lực mà đề cho.
+Dịch ngữ cảnh sang ngôn ngữ vectơ: "sau thời gian $t$" thành $P_0+t\vec{v}$, "chạm đất" thành $z=0$, "trong phạm vi $R$" thành $OP\le R$, "hợp lực, cân bằng" thành tổng vectơ, "công" thành tích vô hướng.
+Lập và giải phương trình, bất phương trình theo $t$ hoặc theo các thành phần lực.
+Kết luận bằng ngữ cảnh của đề, kèm đơn vị.
+
+##CY
+- Thời gian trong cả bài phải cùng một đơn vị (giây, phút hoặc giờ); nghiệm $t$ phải nằm trong thời gian chuyển động của vật.
+- Muốn biết vật có đi qua một điểm không thì cả ba toạ độ phải cho cùng một giá trị $t$.
+- Hợp lực là tổng vectơ, không phải tổng độ lớn các lực; công dùng vectơ dịch chuyển $\overrightarrow{AB}$ và có thể âm khi lực ngược hướng chuyển động.
+
+=== P3.7.1
+@ly_thuyet:
+##TC Chuyển động thẳng đều trong không gian
+- Vị trí tại thời điểm $t$: $P(t)=P_0+t\vec{v}$, tức là $(x_0+tv_1;\ y_0+tv_2;\ z_0+tv_3)$.
+- Biết vị trí $P_0$ lúc đầu và $P_1$ sau $\Delta t$ thì $\vec{v}=\dfrac{\overrightarrow{P_0P_1}}{\Delta t}$; tốc độ là $|\vec{v}|$.
+- Vật đi qua mặt phẳng $(Oxy)$ khi $z=0$, qua $(Oyz)$ khi $x=0$, qua $(Oxz)$ khi $y=0$.
+- Vật đi qua điểm $C(a;b;c)$ khi tồn tại một giá trị $t$ thoả cả ba phương trình $x(t)=a$, $y(t)=b$, $z(t)=c$.
+
+##PP Xác định vị trí và thời điểm của vật chuyển động thẳng đều
+Chọn hệ trục, đơn vị; ghi toạ độ vị trí đã biết và khoảng thời gian tương ứng.
+Tính vận tốc $\vec{v}=\dfrac{\overrightarrow{P_0P_1}}{\Delta t}$ và viết $P(t)=P_0+t\vec{v}$.
+Cho toạ độ cần xét bằng giá trị đề cho (cao độ bằng $0$, hoành độ bằng $0$, hoặc toạ độ điểm cụ thể) để tìm $t$.
+Thay $t$ vào $P(t)$ để tìm các toạ độ còn lại và trả lời kèm đơn vị.
+
+##CY
+- Vận tốc là vectơ dịch chuyển chia cho thời gian: chia sai khoảng thời gian thì mọi kết quả sau đều sai.
+- Khi kiểm tra "có đi qua điểm $C$ không", phải so sánh $t$ tìm được từ cả ba toạ độ.
+
+@vi_du:
+##VD
+Một drone bay thẳng đều. Chọn hệ trục $Oxyz$ có đơn vị là mét, trục $Oz$ thẳng đứng hướng lên, mặt đất là mặt phẳng $(Oxy)$. Lúc bắt đầu quan sát ($t=0$ giây) drone ở $A(10;20;48)$, sau $2$ giây nó ở $B(16;28;24)$.
+a) Tìm vận tốc và tốc độ của drone.
+b) Tìm vị trí của drone sau $3$ giây kể từ lúc bắt đầu quan sát.
+c) Sau bao lâu drone chạm đất và chạm đất tại điểm nào?
+
+Bài giải:
+a) $\overrightarrow{AB}=(6;8;-24)$ nên vận tốc $\vec{v}=\dfrac{1}{2}\overrightarrow{AB}=(3;4;-12)$ (mét trên giây).
+Tốc độ là $|\vec{v}|=\sqrt{9+16+144}=13$ (m/s).
+b) Vị trí tại thời điểm $t$ là $P(t)=(10+3t;\ 20+4t;\ 48-12t)$. Với $t=3$: $P(3)=(19;32;12)$.
+c) Drone chạm đất khi cao độ bằng $0$: $48-12t=0$, suy ra $t=4$ và $P(4)=(22;36;0)$.
+Vậy vận tốc $(3;4;-12)$ m/s với tốc độ $13$ m/s; sau $3$ giây drone ở $(19;32;12)$; drone chạm đất sau $4$ giây tại điểm $(22;36;0)$.
+
+##VD
+Một máy bay bay thẳng đều. Chọn hệ trục $Oxyz$ có đơn vị là kilômét, trục $Oz$ thẳng đứng hướng lên, mặt đất là mặt phẳng $(Oxy)$. Lúc $0$ phút máy bay ở $A(-45;20;9)$ và sau $10$ phút ở $B(-15;50;7)$.
+a) Viết toạ độ máy bay sau $t$ phút và cho biết độ cao của máy bay sau $7$ phút.
+b) Đường biên giới nằm trên mặt phẳng $(Oyz)$. Hỏi sau bao lâu máy bay vượt biên giới, tại điểm nào và ở độ cao bao nhiêu?
+c) Máy bay có bay qua điểm $C(15;80;5)$ không?
+
+Bài giải:
+$\overrightarrow{AB}=(30;30;-2)$ nên vận tốc $\vec{v}=\dfrac{1}{10}\overrightarrow{AB}=(3;3;-0{,}2)$ (kilômét trên phút).
+a) $P(t)=(-45+3t;\ 20+3t;\ 9-0{,}2t)$. Với $t=7$: $P(7)=(-24;41;7{,}6)$ nên độ cao sau $7$ phút là $7{,}6$ km.
+b) Máy bay ở trên $(Oyz)$ khi $x=0$: $-45+3t=0$, suy ra $t=15$ và $P(15)=(0;65;6)$.
+c) $P(t)=C$ thì $-45+3t=15$, suy ra $t=20$. Khi đó $y=20+3\cdot20=80$ và $z=9-0{,}2\cdot20=5$, cả ba toạ độ khớp với $C$ cùng một giá trị $t=20$.
+Vậy sau $7$ phút máy bay ở độ cao $7{,}6$ km; sau $15$ phút nó vượt biên giới tại $(0;65;6)$ ở độ cao $6$ km; máy bay có bay qua $C$ (vào phút thứ $20$).
+
+=== P3.7.2
+@ly_thuyet:
+##TC Khoảng cách trong chuyển động và radar
+- Với vật có $P(t)=P_0+t\vec{v}$: $OP(t)^2$ là một tam thức bậc hai của $t$, dạng $|\vec{v}|^2t^2+2(\overrightarrow{OP_0}\cdot\vec{v})t+|\overrightarrow{OP_0}|^2$.
+- Radar đặt tại $O$ có phạm vi $R$ phát hiện vật khi $OP(t)\le R$, tức là $OP(t)^2\le R^2$; giải bất phương trình bậc hai để có khoảng thời gian bị phát hiện.
+- Hai vật $P_1(t)$, $P_2(t)$: $\overrightarrow{P_1P_2}=\vec{D}_0+t\vec{w}$ với $\vec{D}_0=\overrightarrow{P_1(0)P_2(0)}$, $\vec{w}=\vec{v}_2-\vec{v}_1$; $d(t)^2=|\vec{w}|^2t^2+2(\vec{D}_0\cdot\vec{w})t+|\vec{D}_0|^2$ nhỏ nhất tại $t=-\dfrac{\vec{D}_0\cdot\vec{w}}{|\vec{w}|^2}$.
+
+##PP Bài radar và khoảng cách giữa hai vật
+Viết vị trí của từng vật theo $t$ và hiệu hai vị trí (hoặc vectơ từ radar).
+Tính bình phương khoảng cách thành tam thức bậc hai theo $t$ (hoặc dùng công thức đỉnh).
+Radar thì giải $OP(t)^2\le R^2$ để tìm khoảng thời gian; hai vật thì tìm $t$ làm tam thức nhỏ nhất.
+Đổi kết quả sang ngữ cảnh (thời gian bị phát hiện, khoảng cách ngắn nhất, thời điểm).
+
+##CY
+- Luôn dùng bình phương khoảng cách để giữ phương trình bậc hai, chỉ lấy căn ở bước cuối.
+- Nghiệm của bất phương trình chỉ lấy phần $t\ge0$ nằm trong thời gian vật còn chuyển động.
+
+@vi_du:
+##VD
+Đài radar đặt tại gốc toạ độ $O$, đơn vị là kilômét, phát hiện được máy bay khi khoảng cách từ máy bay đến $O$ không quá $75$ km. Lúc $0$ phút một máy bay ở $A(-80;40;10)$ và bay thẳng đều với vận tốc $\vec{v}=(6;3;0)$ (kilômét trên phút). Hỏi máy bay bị radar phát hiện trong bao lâu?
+
+Bài giải:
+Sau $t$ phút máy bay ở $P(t)=(-80+6t;\ 40+3t;\ 10)$.
+$OP^2=(-80+6t)^2+(40+3t)^2+10^2=45t^2-720t+8100$.
+Máy bay bị phát hiện khi $OP^2\le75^2=5625$, tức là $45t^2-720t+2475\le0$.
+Chia hai vế cho $45$: $t^2-16t+55\le0$, tức là $(t-5)(t-11)\le0$, suy ra $5\le t\le11$.
+Thời gian bị phát hiện là $11-5=6$ phút.
+Vậy máy bay bị radar phát hiện từ phút thứ $5$ đến phút thứ $11$, tổng cộng $6$ phút.
+
+##VD
+Hai drone bay thẳng đều trong không gian. Chọn hệ trục $Oxyz$ có đơn vị là mét. Lúc $t=0$ giây, drone thứ nhất ở $(10;5;12)$ với vận tốc $(1;3;0)$ (mét trên giây), drone thứ hai ở $(2;-2;1)$ với vận tốc $(3;4;2)$ (mét trên giây). Tìm thời điểm hai drone gần nhau nhất và khoảng cách nhỏ nhất giữa chúng.
+
+Bài giải:
+Vị trí sau $t$ giây: $P_1(t)=(10+t;\ 5+3t;\ 12)$ và $P_2(t)=(2+3t;\ -2+4t;\ 1+2t)$.
+$\overrightarrow{P_1P_2}=(-8+2t;\ -7+t;\ -11+2t)$.
+$P_1P_2^2=(2t-8)^2+(t-7)^2+(2t-11)^2=9t^2-90t+234=9(t-5)^2+9$.
+Vì $9(t-5)^2\ge0$ nên $P_1P_2^2\ge9$, dấu "=" xảy ra khi $t=5$.
+Vậy hai drone gần nhau nhất sau $5$ giây, khi đó khoảng cách giữa chúng là $\sqrt{9}=3$ mét.
+
+=== P3.7.3
+@ly_thuyet:
+##TC Lực và công viết bằng toạ độ
+- Lực là vectơ, có toạ độ $(F_x;F_y;F_z)$ (đơn vị niutơn); độ lớn là $|\vec{F}|=\sqrt{F_x^2+F_y^2+F_z^2}$.
+- Hợp lực của nhiều lực cùng tác dụng lên một vật là tổng các vectơ lực. Vật cân bằng khi tổng tất cả các lực tác dụng lên nó (kể cả trọng lực $\vec{P}=(0;0;-P)$ và các lực căng dây) bằng $\vec{0}$.
+- Công của lực $\vec{F}$ khi điểm đặt dịch chuyển từ $A$ đến $B$: $A=\vec{F}\cdot\overrightarrow{AB}$ (jun, nếu lực tính bằng N và độ dài bằng m).
+- Góc $\varphi$ giữa lực và hướng chuyển động: $\cos\varphi=\dfrac{\vec{F}\cdot\overrightarrow{AB}}{|\vec{F}|\cdot AB}$. Công của hợp lực bằng tổng công của các lực thành phần.
+
+##PP Tính hợp lực, lực cân bằng và công
+Viết toạ độ các lực (nếu đề cho trọng lượng thì trọng lực là $(0;0;-P)$).
+Hợp lực: cộng toạ độ các lực; lực cân bằng với chúng là vectơ đối của hợp lực.
+Công: tính toạ độ $\overrightarrow{AB}$ rồi lấy tích vô hướng $\vec{F}\cdot\overrightarrow{AB}$.
+Tính độ lớn, góc (nếu cần) và kết luận kèm đơn vị.
+
+##CY
+- Hợp lực là tổng vectơ; độ lớn hợp lực không bằng tổng độ lớn của các lực.
+- Công dùng vectơ dịch chuyển $\overrightarrow{AB}$, không dùng quãng đường; công có thể âm khi $\cos\varphi<0$.
+
+@vi_du:
+##VD
+Một vật có trọng lượng $60$ N được treo cân bằng bởi ba dây. Chọn hệ trục $Oxyz$ có trục $Oz$ thẳng đứng hướng lên, đơn vị lực là niutơn. Trọng lực của vật là $\vec{P}=(0;0;-60)$, lực căng của hai dây đầu tiên là $\vec{T}_1=(-1;-6;20)$ và $\vec{T}_2=(-2;2;28)$. Tìm lực căng $\vec{T}_3$ của dây thứ ba và độ lớn của nó.
+
+Bài giải:
+Vật cân bằng nên $\vec{T}_1+\vec{T}_2+\vec{T}_3+\vec{P}=\vec{0}$.
+$\vec{T}_1+\vec{T}_2+\vec{P}=(-1-2+0;\ -6+2+0;\ 20+28-60)=(-3;-4;-12)$.
+Suy ra $\vec{T}_3=-(-3;-4;-12)=(3;4;12)$.
+Độ lớn $|\vec{T}_3|=\sqrt{9+16+144}=13$ N.
+Vậy $\vec{T}_3=(3;4;12)$ và độ lớn lực căng dây thứ ba bằng $13$ N.
+
+##VD
+Hai lực $\vec{F}_1=(1;1;4)$ và $\vec{F}_2=(1;2;2)$ (đơn vị niutơn) cùng tác dụng lên một vật làm vật dịch chuyển từ $A(1;2;0)$ đến $B(4;2;4)$ (độ dài tính bằng mét).
+a) Tính công của mỗi lực và công của hợp lực.
+b) Tính cosin của góc giữa hợp lực và hướng chuyển động.
+
+Bài giải:
+a) $\overrightarrow{AB}=(3;0;4)$.
+Công của $\vec{F}_1$: $\vec{F}_1\cdot\overrightarrow{AB}=3+0+16=19$ (J). Công của $\vec{F}_2$: $\vec{F}_2\cdot\overrightarrow{AB}=3+0+8=11$ (J).
+Hợp lực $\vec{F}=\vec{F}_1+\vec{F}_2=(2;3;6)$ và $\vec{F}\cdot\overrightarrow{AB}=6+0+24=30$ (J), đúng bằng $19+11$.
+b) $|\vec{F}|=\sqrt{4+9+36}=7$ và $AB=\sqrt{9+16}=5$.
+$\cos\varphi=\dfrac{30}{7\cdot5}=\dfrac{6}{7}$ (góc $\varphi$ khoảng $31^\circ$).
+Vậy công của hai lực là $19$ J và $11$ J, công của hợp lực là $30$ J; cosin của góc giữa hợp lực và hướng chuyển động bằng $\dfrac{6}{7}$.
+
+## GHI CHÚ CHO CEO
+- P3.5 (nhóm tích có hướng và 3 dạng): nguồn gần như không có lý thuyết (Từ Tâm/NBV chỉ nêu công thức [a,b]); toàn bộ lý thuyết ứng dụng (diện tích, thể tích, đồng phẳng) tôi tự viết theo CT 2018, dùng "tích có hướng" như công cụ. P3.6 (tâm tỉ cự) tự viết, có chứng minh hệ thức ngắn.
+- Mô tả P3.4.3 "tìm điểm M biết góc/cos": tôi hiểu là M trên trục hoặc mặt phẳng toạ độ với cos(MA,MO) cho trước. Đã loại hệ cos(MA,MB) hai vectơ cùng biến vì dẫn tới phương trình bậc bốn không đẹp.
+- P3.6.1 VD1 và VD2 để M thay đổi trong cả không gian (không ràng buộc); phần ràng buộc M∈mặt phẳng/trục toạ độ nằm ở P3.6.2 (lý thuyết hai dạng đã ghi rõ ranh giới này). P3.6.3 VD2 (trạm soát thay): điều kiện MA·MB=0 ⇒ M cách trung điểm I một khoảng không đổi, rồi dùng bất đẳng thức tam giác cho OM — không gọi tên mặt cầu, không dùng phương trình mặt cầu. Bản cũ (M trên trục Oz, MA+MB nhỏ nhất) bị bỏ vì M bị buộc trên trục là phần của P3.6.2.
+- P3.7.1 VD2 dùng "biên giới = mặt phẳng (Oyz)" cho tình huống đi qua mặt phẳng; P3.7.2 VD1 (radar) lấy số liệu kiểu NBV9 nhưng nhỏ hơn (75 km, không phải 500 km).
+- Tôi không đưa ví dụ "điểm quan sát trên mặt đất, đối xứng qua (Oxy)" vào P3.7.2 vì đã nằm ở P3.6.2 VD2 (cùng kỹ thuật); nếu CEO muốn bài thực tế riêng thì thêm sau. Các bài lực trong P3.7.3 không dùng hình hộp/chóp (nguồn có nhưng cần hình).
+- Lỗi nguồn cần tránh khi lấy đề thật: Từ Tâm B3-VD5.3 (hệ số m sai, 9m²√2−6m−6√2) và Dạng 2 in a·b=a₁a₂+b₁b₂+c₁c₂ (sai ký hiệu); NBV8 E8 nhiều câu lực lệch đáp số đầu/cuối lời giải. Không chép các chỗ đó.

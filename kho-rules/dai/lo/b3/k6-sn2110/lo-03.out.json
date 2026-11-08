@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T106000000597",
+  "dang_bai_id": "NDB01315",
+  "chac": "cao",
+  "ly_do": "x + a = b với x là số hạng, số nguyên."
+ },
+ {
+  "ma_cau": "T106000000899",
+  "dang_bai_id": "NDB00352",
+  "chac": "vua",
+  "ly_do": "Lời văn chia hai luỹ thừa của 10; gần toán thực tế số tự nhiên, bản đồ thiếu dạng luỹ thừa thực tế."
+ },
+ {
+  "ma_cau": "T106000000217",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng nhận định đúng/sai về số nguyên tố, chia hết (lý thuyết tổng hợp)."
+ },
+ {
+  "ma_cau": "T106000000356",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng đếm chữ số / đánh số trang sách."
+ },
+ {
+  "ma_cau": "T106000000463",
+  "dang_bai_id": "NDB01306",
+  "chac": "vua",
+  "ly_do": "Có cặp số đối -90 và 90 nên tính hợp lí; cũng có thể xếp bỏ ngoặc rồi tính (NDB01302)."
+ },
+ {
+  "ma_cau": "T106000000412",
+  "dang_bai_id": "NDB01325",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên là ước chung của 60 và 90 kèm điều kiện x ≥ 10."
+ },
+ {
+  "ma_cau": "T106000000490",
+  "dang_bai_id": "NDB01325",
+  "chac": "vua",
+  "ly_do": "x ∈ Z là ước chung của ba số, x lớn nhất; cũng gần dạng ƯCLN (NDB00406) nhưng đề trên Z."
+ },
+ {
+  "ma_cau": "T106000000971",
+  "dang_bai_id": "NDB00351",
+  "chac": "cao",
+  "ly_do": "Cụm (73-2x) là số trừ của 65, tìm dần từng bước; x trong số trừ."
+ },
+ {
+  "ma_cau": "T106000000402",
+  "dang_bai_id": "NDB01289",
+  "chac": "cao",
+  "ly_do": "Tập hợp gồm phần tử của B và số đối của chúng."
+ },
+ {
+  "ma_cau": "T106000000227",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng toán suy luận / nguyên lý Dirichlet (số trận đấu của các đội)."
+ },
+ {
+  "ma_cau": "T106000000661",
+  "dang_bai_id": "NDB00375",
+  "chac": "vua",
+  "ly_do": "Tìm chữ số x, y để chia hết cho 2 và 3; trộn dấu hiệu 2 (NDB00373) và 3 (NDB00375)."
+ },
+ {
+  "ma_cau": "T106000000502",
+  "dang_bai_id": "NDB01293",
+  "chac": "cao",
+  "ly_do": "Tìm số nguyên lớn nhất bé hơn -9."
+ },
+ {
+  "ma_cau": "T106000000788",
+  "dang_bai_id": "NDB00350",
+  "chac": "vua",
+  "ly_do": "x:8=24 là tìm số bị chia, không có cộng trừ nên không khớp hẳn mô tả dạng này."
+ },
+ {
+  "ma_cau": "T106000000941",
+  "dang_bai_id": "NDB00411",
+  "chac": "vua",
+  "ly_do": "Thực tế bội của 4, chia 5 dư 1, có khoảng chặn; không cùng số dư nên chỉ gần dạng bội chung thừa thiếu."
+ },
+ {
+  "ma_cau": "T106000000456",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng toán suy luận bất biến (xoá hai số viết số mới)."
+ },
+ {
+  "ma_cau": "T106000000874",
+  "dang_bai_id": "NDB00364",
+  "chac": "vua",
+  "ly_do": "(x-36):18=12 có ngoặc, không luỹ thừa; cũng có thể coi là tìm x nhân chia (NDB00350)."
+ },
+ {
+  "ma_cau": "T106000000254",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng toán thực tế suy luận (bèo nhân đôi mỗi ngày)."
+ },
+ {
+  "ma_cau": "T106000000303",
+  "dang_bai_id": "NDB01298",
+  "chac": "cao",
+  "ly_do": "Cộng hai số nguyên khác dấu."
+ },
+ {
+  "ma_cau": "T106000000610",
+  "dang_bai_id": "NDB01317",
+  "chac": "cao",
+  "ly_do": "16:x-2=6 tìm x nguyên, nhân chia một cấp."
+ },
+ {
+  "ma_cau": "T106000000592",
+  "dang_bai_id": "NDB01292",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các số nguyên tăng dần."
+ },
+ {
+  "ma_cau": "T106000000542",
+  "dang_bai_id": "NDB01321",
+  "chac": "cao",
+  "ly_do": "Tích hai thừa số bậc nhất bằng 0 trên số nguyên."
+ },
+ {
+  "ma_cau": "T106000000598",
+  "dang_bai_id": "NDB01318",
+  "chac": "cao",
+  "ly_do": "Tìm x nguyên có ngoặc, x trong ngoặc."
+ },
+ {
+  "ma_cau": "T106000000642",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc nhánh Thống kê: biểu đồ tranh, đề có hình."
+ },
+ {
+  "ma_cau": "T106000000602",
+  "dang_bai_id": "NDB01323",
+  "chac": "cao",
+  "ly_do": "Tập các ước nguyên của 5 (cả ước âm)."
+ },
+ {
+  "ma_cau": "T106000000461",
+  "dang_bai_id": "NDB01292",
+  "chac": "cao",
+  "ly_do": "Tìm nhiệt độ thấp nhất trong các nhiệt độ âm dương."
+ },
+ {
+  "ma_cau": "T106000000981",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng lý thuyết thứ tự thực hiện phép tính (biểu thức không ngoặc)."
+ },
+ {
+  "ma_cau": "T106000000605",
+  "dang_bai_id": "NDB01296",
+  "chac": "cao",
+  "ly_do": "Tổng các số nguyên thoả -3 ≤ x < 5."
+ },
+ {
+  "ma_cau": "T106000000634",
+  "dang_bai_id": "NDB00351",
+  "chac": "cao",
+  "ly_do": "71-(33+x)=26: cụm chứa x là số trừ, số tự nhiên."
+ },
+ {
+  "ma_cau": "T106000000701",
+  "dang_bai_id": "NDB00349",
+  "chac": "vua",
+  "ly_do": "x là số bị trừ, vế còn lại phải tính trước; cũng gần NDB00350."
+ },
+ {
+  "ma_cau": "T106000000578",
+  "dang_bai_id": "NDB01288",
+  "chac": "cao",
+  "ly_do": "Tìm số đối của -21."
+ },
+ {
+  "ma_cau": "T106000000796",
+  "dang_bai_id": "NDB00350",
+  "chac": "vua",
+  "ly_do": "(x+7)-25=13: nhóm chứa x là số bị trừ; cũng có thể xếp tìm x có ngoặc (NDB00364)."
+ },
+ {
+  "ma_cau": "T106000000952",
+  "dang_bai_id": "NDB00394",
+  "chac": "vua",
+  "ly_do": "Xét p theo số dư khi chia 3 với p, 2p+1 nguyên tố; không đúng mẫu \"tìm SNT\" của dạng."
+ },
+ {
+  "ma_cau": "T106000000539",
+  "dang_bai_id": "NDB01316",
+  "chac": "cao",
+  "ly_do": "23-x=19, x là số trừ trên số nguyên."
+ },
+ {
+  "ma_cau": "T1060000001045",
+  "dang_bai_id": "NDB00385",
+  "chac": "vua",
+  "ly_do": "Ý chia hết cho 5 là ghép 2 số hạng (NDB00384), ý chia hết cho 21 là ghép 3 số hạng (NDB00385)."
+ },
+ {
+  "ma_cau": "T106020701001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng tổng dãy phân số có quy luật 1/(n(n+1))."
+ },
+ {
+  "ma_cau": "T106000000740",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng chứng minh biểu thức luỹ thừa của 10 chia hết cho 24 và không là số chính phương."
+ },
+ {
+  "ma_cau": "T106000000996",
+  "dang_bai_id": "NDB01216",
+  "chac": "vua",
+  "ly_do": "Đếm ước nguyên tố từ phân tích thừa số nguyên tố; gần dạng tìm ước theo phân tích, chưa đúng hẳn."
+ },
+ {
+  "ma_cau": "T106000000407",
+  "dang_bai_id": "NDB00354",
+  "chac": "cao",
+  "ly_do": "Biểu thức có chia luỹ thừa cùng cơ số và luỹ thừa mũ 0."
+ },
+ {
+  "ma_cau": "T106000000182",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng viết tích các thừa số bằng nhau thành luỹ thừa (khái niệm luỹ thừa)."
+ },
+ {
+  "ma_cau": "T106000000419",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng nhận biết công thức luỹ thừa đúng/sai (lý thuyết)."
+ },
+ {
+  "ma_cau": "T106000000472",
+  "dang_bai_id": "NDB01292",
+  "chac": "cao",
+  "ly_do": "Chọn tập hợp số nguyên xếp tăng dần."
+ },
+ {
+  "ma_cau": "T106000000497",
+  "dang_bai_id": "NDB00381",
+  "chac": "cao",
+  "ly_do": "Số vở ⋮ số bút: 5n+20 ⋮ n+3, hệ số tử chia hết hệ số mẫu, n tự nhiên."
+ },
+ {
+  "ma_cau": "T106000000038",
+  "dang_bai_id": "NDB01287",
+  "chac": "vua",
+  "ly_do": "Ý a dùng số âm biểu thị nhiệt độ; ý b cộng nhiệt độ (NDB01313)."
+ },
+ {
+  "ma_cau": "T106000000470",
+  "dang_bai_id": "NDB01334",
+  "chac": "cao",
+  "ly_do": "Đúng ví dụ 2xy-4x+y=14 đưa về dạng tích."
+ },
+ {
+  "ma_cau": "T106000000507",
+  "dang_bai_id": "NDB01306",
+  "chac": "cao",
+  "ly_do": "Nhóm các số để ra số tròn trăm: -156-44 và 64+236."
+ },
+ {
+  "ma_cau": "T106000000466",
+  "dang_bai_id": "NDB01315",
+  "chac": "cao",
+  "ly_do": "x+64=34, x là số hạng, số nguyên."
+ },
+ {
+  "ma_cau": "T106000000687",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng tổng bình phương liên tiếp 1²+2²+...+n²."
+ },
+ {
+  "ma_cau": "T106000000793",
+  "dang_bai_id": "NDB00364",
+  "chac": "vua",
+  "ly_do": "(x-12):5=8 có ngoặc, không luỹ thừa; cũng có thể coi là tìm x nhân chia."
+ },
+ {
+  "ma_cau": "T106000000708",
+  "dang_bai_id": "NDB01321",
+  "chac": "vua",
+  "ly_do": "Tích bằng 0 nhưng x là số tự nhiên (phải loại nghiệm âm); dạng trong bảng chỉ cho số nguyên."
+ },
+ {
+  "ma_cau": "T106000000576",
+  "dang_bai_id": "NDB00376",
+  "chac": "vua",
+  "ly_do": "Chọn tập hợp các số nguyên tố nhỏ hơn 12; gần dạng nhận biết số nguyên tố."
+ },
+ {
+  "ma_cau": "T106000000601",
+  "dang_bai_id": "NDB01288",
+  "chac": "cao",
+  "ly_do": "Tìm số đối của 14."
+ },
+ {
+  "ma_cau": "T106000000510",
+  "dang_bai_id": "NDB00364",
+  "chac": "vua",
+  "ly_do": "56:(x-3)=8 có ngoặc, không luỹ thừa; cũng có thể coi là tìm x nhân chia."
+ },
+ {
+  "ma_cau": "T106020801009",
+  "dang_bai_id": "NDB01228",
+  "chac": "vua",
+  "ly_do": "Tách mỗi luỹ thừa thành số nhỏ nhân luỹ thừa mũ 8 để so sánh; cũng gần NDB01227."
+ },
+ {
+  "ma_cau": "T106000000219",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng nhận biết khẳng định sai về luỹ thừa (lý thuyết)."
+ },
+ {
+  "ma_cau": "T106000000961",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng toán suy luận chia hộp bút theo điều kiện tổng và gấp đôi."
+ },
+ {
+  "ma_cau": "T106000000508",
+  "dang_bai_id": "NDB01310",
+  "chac": "cao",
+  "ly_do": "Biểu thức số nguyên có luỹ thừa, ngoặc và (-1)^2024."
+ },
+ {
+  "ma_cau": "T106000000728",
+  "dang_bai_id": "NDB00359",
+  "chac": "vua",
+  "ly_do": "x ở số mũ, nhưng phải tính tổng 1+...+88 và rút thừa số chung 5^x."
+ },
+ {
+  "ma_cau": "T106000000442",
+  "dang_bai_id": "NDB01313",
+  "chac": "cao",
+  "ly_do": "Nhiệt độ phòng đông lạnh giảm rồi tăng."
+ },
+ {
+  "ma_cau": "T106000000029",
+  "dang_bai_id": "NDB01292",
+  "chac": "cao",
+  "ly_do": "Tìm nhiệt độ thấp nhất trong các nhiệt độ âm (đủ dữ liệu trong đề)."
+ },
+ {
+  "ma_cau": "T106000000833",
+  "dang_bai_id": "NDB00409",
+  "chac": "cao",
+  "ly_do": "Đề chỉ yêu cầu tìm BCNN của hai số, giải bằng phân tích thừa số nguyên tố."
+ },
+ {
+  "ma_cau": "T106000000244",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng số liền trước, liền sau của số tự nhiên."
+ },
+ {
+  "ma_cau": "T106000000935",
+  "dang_bai_id": "NDB00373",
+  "chac": "vua",
+  "ly_do": "Tìm chữ số x, y để chia hết cho 2, 3 và 5; trộn dấu hiệu 2,5 và 3."
+ },
+ {
+  "ma_cau": "T106000000698",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng rút gọn phân số chứa luỹ thừa bằng phân tích thừa số nguyên tố."
+ },
+ {
+  "ma_cau": "T106000000518",
+  "dang_bai_id": "NDB01297",
+  "chac": "cao",
+  "ly_do": "Đánh Đ/S các ý về tập Z và tổng hai số nguyên âm."
+ },
+ {
+  "ma_cau": "T106000000794",
+  "dang_bai_id": "NDB00364",
+  "chac": "vua",
+  "ly_do": "120:(x-5)=10 có ngoặc, không luỹ thừa; cũng có thể coi là tìm x nhân chia."
+ },
+ {
+  "ma_cau": "T106000000837",
+  "dang_bai_id": "NDB00409",
+  "chac": "cao",
+  "ly_do": "Đề chỉ yêu cầu tìm BCNN của ba số, giải bằng phân tích thừa số nguyên tố."
+ },
+ {
+  "ma_cau": "T106000000725",
+  "dang_bai_id": "NDB00359",
+  "chac": "vua",
+  "ly_do": "x ở số mũ nhưng cần rút thừa số chung 6^x và 2^x hai vế rồi so sánh."
+ },
+ {
+  "ma_cau": "T106000000563",
+  "dang_bai_id": "NDB01293",
+  "chac": "cao",
+  "ly_do": "Tìm số nguyên âm nhỏ nhất có hai chữ số."
+ },
+ {
+  "ma_cau": "T106000000403",
+  "dang_bai_id": "NDB01287",
+  "chac": "cao",
+  "ly_do": "Diễn đạt lại độ cao âm bằng lời (độ sâu, dưới mực nước biển)."
+ },
+ {
+  "ma_cau": "T106000000855",
+  "dang_bai_id": "NDB00411",
+  "chac": "vua",
+  "ly_do": "Chia cho 12,15,18 cùng dư khác 0, số nhỏ nhất bốn chữ số; gần bội chung có dữ kiện thừa thiếu."
+ }
+]

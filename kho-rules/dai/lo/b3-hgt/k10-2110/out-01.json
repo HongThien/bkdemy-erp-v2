@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T310010101001",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm véc tơ tạo từ đỉnh tam giác, khái niệm véc tơ."
+ },
+ {
+  "ma_cau": "T310010101002",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm véc tơ tạo từ đỉnh tứ giác, khái niệm véc tơ."
+ },
+ {
+  "ma_cau": "T310010101003",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Định nghĩa véc tơ."
+ },
+ {
+  "ma_cau": "T310010101004",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Kí hiệu véc tơ điểm đầu D điểm cuối E."
+ },
+ {
+  "ma_cau": "T310010101005",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Kí hiệu véc tơ điểm đầu A điểm cuối B."
+ },
+ {
+  "ma_cau": "T310010101006",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm véc tơ khác không từ đỉnh tứ giác."
+ },
+ {
+  "ma_cau": "T310010101007",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm véc tơ khác không từ đỉnh tam giác."
+ },
+ {
+  "ma_cau": "T310010101008",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Kí hiệu véc tơ điểm đầu A điểm cuối B."
+ },
+ {
+  "ma_cau": "T310010101009",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Khẳng định về độ dài véc tơ theo định nghĩa."
+ },
+ {
+  "ma_cau": "T310010101010",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ bằng nhau, tập hợp điểm D là đường tròn."
+ },
+ {
+  "ma_cau": "T310010101011",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Véc tơ cùng hướng với AB trong hình thoi."
+ },
+ {
+  "ma_cau": "T310010101012",
+  "dang_bai_id": "NDB00902",
+  "chac": "vua",
+  "ly_do": "Cặp véc tơ ngược hướng, thứ tự 4 điểm trên đường thẳng lấy từ hình vẽ."
+ },
+ {
+  "ma_cau": "T310010101013",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Đếm véc tơ cùng phương với OC trong lục giác đều."
+ },
+ {
+  "ma_cau": "T310010101014",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Điều kiện để AB, BC cùng hướng."
+ },
+ {
+  "ma_cau": "T310010101015",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Định nghĩa hai véc tơ cùng phương."
+ },
+ {
+  "ma_cau": "T310010101016",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Véc tơ cùng hướng với AD trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310010101017",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cặp véc tơ cùng hướng với N nằm giữa M, P."
+ },
+ {
+  "ma_cau": "T310010101018",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cặp véc tơ ngược hướng với M trung điểm BC."
+ },
+ {
+  "ma_cau": "T310010101019",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cặp véc tơ cùng hướng với N nằm giữa M, P."
+ },
+ {
+  "ma_cau": "T310010101020",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cặp véc tơ cùng hướng trong tam giác đều với trung điểm M, N."
+ },
+ {
+  "ma_cau": "T310010101021",
+  "dang_bai_id": "NDB00902",
+  "chac": "vua",
+  "ly_do": "Cặp véc tơ ngược hướng, vị trí N giữa M, P phải lấy từ hình vẽ."
+ },
+ {
+  "ma_cau": "T310010101022",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Mệnh đề đúng về cùng phương, cùng hướng, ngược hướng."
+ },
+ {
+  "ma_cau": "T310010101023",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cặp véc tơ cùng hướng trong tam giác có M, N trung điểm."
+ },
+ {
+  "ma_cau": "T310010101024",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Véc tơ cùng phương với MN (đường trung bình)."
+ },
+ {
+  "ma_cau": "T310010101025",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Véc tơ cùng phương với AD trong hình thang."
+ },
+ {
+  "ma_cau": "T310010101026",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cặp véc tơ cùng hướng trong tam giác có M, N trung điểm."
+ },
+ {
+  "ma_cau": "T310010101027",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Đếm véc tơ cùng hướng với AB trong hình thang."
+ },
+ {
+  "ma_cau": "T310010101028",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Đếm véc tơ cùng phương với AB trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310010101029",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cặp véc tơ cùng hướng với N nằm giữa M, P."
+ },
+ {
+  "ma_cau": "T310010101030",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cặp véc tơ cùng hướng trong tam giác đều với trung điểm M, N."
+ },
+ {
+  "ma_cau": "T310010101031",
+  "dang_bai_id": "NDB00902",
+  "chac": "vua",
+  "ly_do": "Véc tơ-không cùng phương với mọi véc tơ; có thể thuộc khái niệm véc tơ không (NDB00901)."
+ },
+ {
+  "ma_cau": "T310010101032",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Xác định các véc tơ cùng phương với MN."
+ },
+ {
+  "ma_cau": "T310010101033",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Điều kiện để AB, BC cùng hướng."
+ },
+ {
+  "ma_cau": "T310010101034",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Quan hệ cùng hướng, cùng phương của AH và OM."
+ },
+ {
+  "ma_cau": "T310010101035",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Véc tơ cùng phương với AB trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310010101036",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Các véc tơ cùng hướng trong tứ giác với trung điểm các cạnh."
+ },
+ {
+  "ma_cau": "T310010101037",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Đẳng thức véc tơ bằng nhau trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310010101038",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng AB trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310010101039",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng OC trong hình bình hành tâm O."
+ },
+ {
+  "ma_cau": "T310010101040",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng AD trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310010101041",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Định nghĩa hai véc tơ bằng nhau."
+ },
+ {
+  "ma_cau": "T310010101042",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Các véc tơ bằng AB trong lục giác đều tâm O."
+ },
+ {
+  "ma_cau": "T310010101043",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng AB trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310010101044",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Định nghĩa hai véc tơ đối nhau."
+ },
+ {
+  "ma_cau": "T310010101045",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Định nghĩa hai véc tơ bằng nhau."
+ },
+ {
+  "ma_cau": "T310010101046",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Đẳng thức véc tơ bằng nhau trong lục giác đều."
+ },
+ {
+  "ma_cau": "T310010101047",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Các véc tơ bằng AB trong lục giác đều tâm O."
+ },
+ {
+  "ma_cau": "T310010101048",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Khẳng định sai về véc tơ bằng nhau trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310010101049",
+  "dang_bai_id": "NDB00903",
+  "chac": "vua",
+  "ly_do": "Khẳng định đúng trong hình vuông: trộn bằng nhau, độ dài, cùng hướng."
+ },
+ {
+  "ma_cau": "T310010101050",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Điều kiện cần đủ để hai véc tơ AB, CD bằng nhau."
+ },
+ {
+  "ma_cau": "T310010101051",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Đếm véc tơ bằng OC trong lục giác đều."
+ },
+ {
+  "ma_cau": "T310010101052",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Chứng minh các cặp véc tơ bằng nhau qua hình bình hành."
+ },
+ {
+  "ma_cau": "T310010101053",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Kí hiệu véc tơ điểm đầu A điểm cuối B."
+ },
+ {
+  "ma_cau": "T310010101055",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cặp véc tơ cùng hướng trong tam giác có M, N trung điểm."
+ },
+ {
+  "ma_cau": "T310010101056",
+  "dang_bai_id": "NDB00902",
+  "chac": "vua",
+  "ly_do": "Đếm véc tơ cùng phương với v trên lưới ô vuông, phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T310010101057",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Mệnh đề đúng về cùng phương, cùng hướng, ngược hướng."
+ },
+ {
+  "ma_cau": "T310010101058",
+  "dang_bai_id": "NDB00902",
+  "chac": "vua",
+  "ly_do": "Cặp véc tơ ngược hướng, vị trí N giữa M, P phải lấy từ hình vẽ."
+ },
+ {
+  "ma_cau": "T310010101059",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Kí hiệu véc tơ điểm đầu D điểm cuối E."
+ },
+ {
+  "ma_cau": "T310010101060",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài các véc tơ trong tam giác đều cạnh a."
+ },
+ {
+  "ma_cau": "T310010101061",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cặp véc tơ cùng hướng trong tam giác có M, N trung điểm."
+ },
+ {
+  "ma_cau": "T310010101062",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cặp véc tơ cùng hướng trong tam giác đều với trung điểm M, N."
+ },
+ {
+  "ma_cau": "T310010101063",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Đếm véc tơ cùng hướng với AB trong hình thang."
+ },
+ {
+  "ma_cau": "T310010101064",
+  "dang_bai_id": "NDB00901",
+  "chac": "vua",
+  "ly_do": "Phát biểu sai trộn véc tơ-không, cùng phương, bằng nhau."
+ },
+ {
+  "ma_cau": "T310010101065",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Véc tơ cùng phương với AD trong hình thang."
+ },
+ {
+  "ma_cau": "T310010101066",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Đẳng thức véc tơ bằng nhau trong lục giác đều."
+ },
+ {
+  "ma_cau": "T310010101068",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Véc tơ cùng phương với MN (đường trung bình)."
+ },
+ {
+  "ma_cau": "T310010101069",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Đẳng thức véc tơ bằng nhau trong hình bình hành tâm O."
+ },
+ {
+  "ma_cau": "T310010101070",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Định nghĩa hai véc tơ đối nhau."
+ },
+ {
+  "ma_cau": "T310010101071",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng AB trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310010102001",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Quy tắc hình bình hành cho tổng AB+AD."
+ }
+]

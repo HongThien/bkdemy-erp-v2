@@ -1,0 +1,488 @@
+[
+ {
+  "id": "X1394",
+  "dap_an": "-3",
+  "loi_giai": "Giao điểm của $d$ và $d'$: từ $d'$ có $x=1$ nên $t=1$, khi đó $z=4$ nên $1+3t'=4\\Rightarrow t'=1$. Vậy giao điểm là $I(1;2;4)$.\nĐiểm $N\\in d'$ nên $N(1;2;1+3t')$.\nKhoảng cách $IN=6$ (cm, đơn vị trên trục là cm): $IN=\\left|3t'-3\\right|=6\\Rightarrow t'=3$ hoặc $t'=-1$.\nVới $t'=3$: $c=10$; với $t'=-1$: $c=-2$. Vì $c<0$ nên $N(1;2;-2)$.\nDo đó $a-b+c=1-2+(-2)=-3$.\nVậy $a-b+c=-3$.",
+  "chuong": "PPTD",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Giả định đơn vị trục là cm (c<0 chỉ khi đó)."
+ },
+ {
+  "id": "X1405",
+  "dap_an": "0",
+  "loi_giai": "Mặt phẳng $(P)$ có vectơ pháp tuyến $\\overrightarrow{n_P}=(1;1;1)$, $(Q)$ có $\\overrightarrow{n_Q}=(2;m;2)$, $(R)$ có $\\overrightarrow{n_R}=(-1;2;n)$.\n$(P)\\bot(R)\\Leftrightarrow\\overrightarrow{n_P}\\cdot\\overrightarrow{n_R}=0\\Leftrightarrow-1+2+n=0\\Leftrightarrow n=-1$.\n$(P)//(Q)\\Leftrightarrow\\dfrac{2}{1}=\\dfrac{m}{1}=\\dfrac{2}{1}\\ne\\dfrac{3}{-1}\\Rightarrow m=2$.\nKhi đó $m+2n=2+2\\cdot(-1)=0$.\nVậy $m+2n=0$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1411",
+  "dap_an": "4.9",
+  "loi_giai": "Độ dài vectơ chỉ phương: $|\\overrightarrow{u}|=\\sqrt{(-3)^2+(-4)^2+0^2}=5$, vectơ đơn vị $\\overrightarrow{e}=\\left(-\\dfrac{3}{5};-\\dfrac{4}{5};0\\right)$.\nSau $t$ giây cabin đi được quãng đường $8t$ (m) nên $M=A+8t\\cdot\\overrightarrow{e}=\\left(44-\\dfrac{24}{5}t;\\,16-\\dfrac{32}{5}t;\\,0\\right)$.\nKhoảng cách $OM$ nhỏ nhất khi $M$ là hình chiếu vuông góc của $O$ lên đường cáp, tức $\\overrightarrow{OM}\\cdot\\overrightarrow{u}=0$.\n$\\overrightarrow{OM}\\cdot\\overrightarrow{u}=-3\\left(44-\\dfrac{24}{5}t\\right)-4\\left(16-\\dfrac{32}{5}t\\right)=-196+40t$.\n$-196+40t=0\\Rightarrow t=\\dfrac{196}{40}=4{,}9$.\nVậy sau $4{,}9$ giây thì khoảng cách giữa người quan sát và cabin nhỏ nhất.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1413",
+  "dap_an": "9.8",
+  "loi_giai": "Độ dài vectơ chỉ phương: $|\\overrightarrow{u}|=\\sqrt{(-3)^2+(-4)^2+0^2}=5$, vectơ đơn vị $\\overrightarrow{e}=\\left(-\\dfrac{3}{5};-\\dfrac{4}{5};0\\right)$.\nSau $t$ giây cabin đi được quãng đường $4t$ (m) nên $M=A+4t\\cdot\\overrightarrow{e}=\\left(44-\\dfrac{12}{5}t;\\,16-\\dfrac{16}{5}t;\\,0\\right)$.\nKhoảng cách $OM$ nhỏ nhất khi $M$ là hình chiếu vuông góc của $O$ lên đường cáp, tức $\\overrightarrow{OM}\\cdot\\overrightarrow{u}=0$.\n$\\overrightarrow{OM}\\cdot\\overrightarrow{u}=-3\\left(44-\\dfrac{12}{5}t\\right)-4\\left(16-\\dfrac{16}{5}t\\right)=-196+20t$.\n$-196+20t=0\\Rightarrow t=\\dfrac{196}{20}=9{,}8$.\nVậy sau $9{,}8$ giây thì khoảng cách giữa người quan sát và cabin nhỏ nhất.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1414",
+  "dap_an": "650",
+  "loi_giai": "Quãng đường xe đi được trong 50 phút: $S=\\displaystyle\\int_0^{50}v(t)\\,dt=\\int_0^{10}50t\\,dt+\\int_{10}^{30}(20t+300)\\,dt+\\int_{30}^{50}(-10t+1200)\\,dt$.\n$\\displaystyle\\int_0^{10}50t\\,dt=25t^2\\Big|_0^{10}=2500$.\n$\\displaystyle\\int_{10}^{30}(20t+300)\\,dt=(10t^2+300t)\\Big|_{10}^{30}=(9000+9000)-(1000+3000)=14000$.\n$\\displaystyle\\int_{30}^{50}(-10t+1200)\\,dt=(-5t^2+1200t)\\Big|_{30}^{50}=(-12500+60000)-(-4500+36000)=16000$.\nDo đó $S=2500+14000+16000=32500$ (m).\nVận tốc trung bình: $\\overline{v}=\\dfrac{32500}{50}=650$ (m/phút).\nVậy vận tốc trung bình là $650$.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1417",
+  "dap_an": "11",
+  "loi_giai": "Khoảng cách: $d(A,(\\alpha))=\\dfrac{|1-2\\cdot(-3)+2\\cdot1-5|}{\\sqrt{1^2+(-2)^2+2^2}}=\\dfrac{|1+6+2-5|}{3}=\\dfrac{4}{3}$.\nPhân số $\\dfrac{4}{3}$ tối giản nên $a=4,\\ b=3$.\n$T=2a+b=2\\cdot4+3=11$.\nVậy $T=11$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1421",
+  "dap_an": "425",
+  "loi_giai": "Đường thẳng $d$ đi qua $P(-5;6;1)$, có vectơ chỉ phương $\\overrightarrow{u}=(2;4;3)$.\nGọi $A'(-5+2t;\\,6+4t;\\,1+3t)\\in d$ là hình chiếu của $A$. Khi đó $\\overrightarrow{AA'}=(-9+2t;\\,-9+4t;\\,-11+3t)$.\n$\\overrightarrow{AA'}\\cdot\\overrightarrow{u}=0\\Leftrightarrow2(-9+2t)+4(-9+4t)+3(-11+3t)=0\\Leftrightarrow29t-87=0\\Leftrightarrow t=3$.\nSuy ra $A'(1;18;10)$, tức $a=1,\\ b=18,\\ c=10$.\n$S=1^2+18^2+10^2=1+324+100=425$.\nVậy $S=425$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1424",
+  "dap_an": "150",
+  "loi_giai": "Quãng đường vật đi được trong 5 giây đầu: $s=\\displaystyle\\int_0^5(3t^2+2t)\\,dt=(t^3+t^2)\\Big|_0^5=125+25=150$ (m).\nVậy quãng đường là $150$ mét.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1425",
+  "dap_an": "9.22",
+  "loi_giai": "Trung điểm của $EF$ là $I\\left(\\dfrac{-6+2}{2};\\dfrac{2-2}{2};\\dfrac{5-1}{2}\\right)=(-2;0;2)$.\nVì $d\\bot(P)$ nên $d$ nhận $\\overrightarrow{n_P}=(2;7;-8)$ làm vectơ chỉ phương, phương trình tham số: $d:\\ x=-2+2s,\\ y=7s,\\ z=2-8s$.\n$M(0;m;n)\\in d$ nên $-2+2s=0\\Rightarrow s=1$, suy ra $m=7,\\ n=-6$, tức $M(0;7;-6)$.\n$OM=\\sqrt{0^2+7^2+(-6)^2}=\\sqrt{85}\\approx9{,}22$.\nVậy $OM\\approx9{,}22$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1431",
+  "dap_an": "9.22",
+  "loi_giai": "Trung điểm của $EF$ là $I\\left(\\dfrac{-6+2}{2};\\dfrac{2-2}{2};\\dfrac{5-1}{2}\\right)=(-2;0;2)$.\nVì $d\\bot(P)$ nên $d$ nhận $\\overrightarrow{n_P}=(2;7;-8)$ làm vectơ chỉ phương, phương trình tham số: $d:\\ x=-2+2s,\\ y=7s,\\ z=2-8s$.\n$M(0;m;n)\\in d$ nên $-2+2s=0\\Rightarrow s=1$, suy ra $m=7,\\ n=-6$, tức $M(0;7;-6)$.\n$OM=\\sqrt{0^2+7^2+(-6)^2}=\\sqrt{85}\\approx9{,}22$.\nVậy $OM\\approx9{,}22$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1440",
+  "dap_an": "74",
+  "loi_giai": "Vận tốc là nguyên hàm của gia tốc: $v(t)=\\displaystyle\\int(3t^2+t)\\,dt=t^3+\\dfrac{t^2}{2}+C$.\nVận tốc ban đầu $v(0)=2\\Rightarrow C=2$, nên $v(t)=t^3+\\dfrac{t^2}{2}+2$.\n$v(4)=4^3+\\dfrac{4^2}{2}+2=64+8+2=74$ (m/s).\nVậy vận tốc sau 4 giây là $74$.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1442",
+  "dap_an": "45",
+  "loi_giai": "Vật dừng hẳn khi $v(t)=0\\Leftrightarrow160-10t=0\\Leftrightarrow t=16$ (s).\nQuãng đường vật đi trong 3 giây trước khi dừng (từ $t=13$ đến $t=16$): $s=\\displaystyle\\int_{13}^{16}(160-10t)\\,dt=(160t-5t^2)\\Big|_{13}^{16}$.\n$=(2560-1280)-(2080-845)=1280-1235=45$ (m).\nVậy vật đi được $45$ m.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1443",
+  "dap_an": "C",
+  "loi_giai": "Gọi $A(a;0;0),\\ B(0;b;0),\\ C(0;0;c)$ với $a,b,c>0$. Vì $OA=\\dfrac{1}{3}OB=\\dfrac{1}{9}OC$ nên $b=3a,\\ c=9a$.\nPhương trình mặt phẳng $(\\alpha)$: $\\dfrac{x}{a}+\\dfrac{y}{3a}+\\dfrac{z}{9a}=1$.\n$M(1;2;3)\\in(\\alpha)\\Rightarrow\\dfrac{1}{a}+\\dfrac{2}{3a}+\\dfrac{3}{9a}=1\\Leftrightarrow\\dfrac{2}{a}=1\\Leftrightarrow a=2$.\nKhi đó $(\\alpha):\\dfrac{x}{2}+\\dfrac{y}{6}+\\dfrac{z}{18}=1\\Leftrightarrow9x+3y+z-18=0\\Leftrightarrow-9x-3y-z+18=0$.\nĐối chiếu dạng $ax+by-z+d=0$: $a=-9,\\ b=-3,\\ d=18$.\n$a+b+d=-9-3+18=6$.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đề có sẵn 4 phương án A-D trong nội dung; đáp án là C (6)."
+ },
+ {
+  "id": "X1444",
+  "dap_an": "60",
+  "loi_giai": "Vectơ pháp tuyến: $\\overrightarrow{n_1}=(1;1;2)$ của $(\\alpha)$, $\\overrightarrow{n_2}=(2;-1;1)$ của $(\\beta)$.\n$\\cos\\varphi=\\dfrac{|1\\cdot2+1\\cdot(-1)+2\\cdot1|}{\\sqrt{1^2+1^2+2^2}\\cdot\\sqrt{2^2+(-1)^2+1^2}}=\\dfrac{3}{\\sqrt6\\cdot\\sqrt6}=\\dfrac{1}{2}$.\nSuy ra $\\varphi=60^\\circ$, tức $\\alpha=60$.\nVậy $\\alpha=60$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Lời giải gốc trong đề ghi 30 là sai: cos=1/2 cho 60 độ."
+ },
+ {
+  "id": "X1445",
+  "dap_an": "10",
+  "loi_giai": "Mặt phẳng $(Oxy)$ có vectơ pháp tuyến $\\overrightarrow{k}=(0;0;1)$.\nĐường ống đi qua $A(1;2;-1)$, $B(5;6;-2)$ nên có vectơ chỉ phương $\\overrightarrow{AB}=(4;4;-1)$.\n$\\sin\\varphi=\\dfrac{|\\overrightarrow{AB}\\cdot\\overrightarrow{k}|}{|\\overrightarrow{AB}|\\cdot|\\overrightarrow{k}|}=\\dfrac{|-1|}{\\sqrt{16+16+1}\\cdot1}=\\dfrac{1}{\\sqrt{33}}$.\nSuy ra $\\varphi\\approx10{,}02^\\circ\\approx10^\\circ$.\nVậy góc là $10$ độ.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1452",
+  "dap_an": "2",
+  "loi_giai": "$d(A,(P))=\\dfrac{|1-2\\cdot(-3)+2\\cdot1-3|}{\\sqrt{1^2+(-2)^2+2^2}}=\\dfrac{|1+6+2-3|}{3}=\\dfrac{6}{3}=2$.\nVậy khoảng cách bằng $2$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1455",
+  "dap_an": "-3",
+  "loi_giai": "Mặt trên của tủ song song với sàn $(\\alpha)$ nên $(P):2x-2y+z+d=0$, tức $b=-2,\\ c=1$.\nKhoảng cách từ mặt sàn đến mặt trên của tủ bằng chiều cao tủ: $\\dfrac{|d-(-5)|}{\\sqrt{2^2+(-2)^2+1^2}}=2\\Rightarrow|d+5|=6\\Rightarrow d=1$ hoặc $d=-11$.\nMặt trên của tủ phải nằm trong phòng, giữa sàn ($d=-5$) và trần ($d=4$), nên $-5<d<4$. Suy ra $d=1$.\n(Kiểm tra: khoảng cách sàn - trần là $\\dfrac{|4-(-5)|}{3}=3>2$ nên tủ đặt vừa.)\n$b-2c+d=-2-2\\cdot1+1=-3$.\nVậy $b-2c+d=-3$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1460",
+  "dap_an": "1.47",
+  "loi_giai": "Cỡ mẫu $n=42$. Tần số tích lũy: $4;\\ 15;\\ 31;\\ 39;\\ 42$.\nTứ phân vị thứ nhất $Q_1$: $\\dfrac{n}{4}=10{,}5$ thuộc nhóm $[5;6)$ (tần số tích lũy trước đó là 4, tần số nhóm là 11).\n$Q_1=5+\\dfrac{10{,}5-4}{11}\\cdot1=5+\\dfrac{6{,}5}{11}\\approx5{,}59$.\nTứ phân vị thứ ba $Q_3$: $\\dfrac{3n}{4}=31{,}5$ thuộc nhóm $[7;8)$ (tần số tích lũy trước đó là 31, tần số nhóm là 8).\n$Q_3=7+\\dfrac{31{,}5-31}{8}\\cdot1=7+0{,}0625=7{,}0625$.\nKhoảng tứ phân vị: $\\Delta_Q=Q_3-Q_1=7{,}0625-5{,}5909\\approx1{,}47$.\nVậy khoảng tứ phân vị bằng $1{,}47$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1461",
+  "dap_an": "1334",
+  "loi_giai": "$P(x)=\\displaystyle\\int(16-0{,}02x)\\,dx=16x-0{,}01x^2+C$.\nKhông bán được sản phẩm nào thì lỗ 25 triệu: $P(0)=-25\\Rightarrow C=-25$, nên $P(x)=16x-0{,}01x^2-25$.\n$P(90)=16\\cdot90-0{,}01\\cdot90^2-25=1440-81-25=1334$ (triệu đồng).\nVậy lợi nhuận là $1334$ triệu đồng.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1466",
+  "dap_an": "1334",
+  "loi_giai": "$P(x)=\\displaystyle\\int(16-0{,}02x)\\,dx=16x-0{,}01x^2+C$.\nKhông bán được sản phẩm nào thì lỗ 25 triệu: $P(0)=-25\\Rightarrow C=-25$, nên $P(x)=16x-0{,}01x^2-25$.\n$P(90)=16\\cdot90-0{,}01\\cdot90^2-25=1440-81-25=1334$ (triệu đồng).\nVậy lợi nhuận là $1334$ triệu đồng.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1473",
+  "dap_an": "8",
+  "loi_giai": "Vận tốc: $v(t)=\\displaystyle\\int4\\pi\\cos t\\,dt=4\\pi\\sin t+C$. Vì $v(0)=0$ nên $C=0$, do đó $v(t)=4\\pi\\sin t$.\nVận tốc trung bình trên $[0;\\pi]$: $\\overline{v}=\\dfrac{1}{\\pi-0}\\displaystyle\\int_0^{\\pi}4\\pi\\sin t\\,dt=4\\cdot\\left(-\\cos t\\right)\\Big|_0^{\\pi}=4\\cdot2=8$ (cm/s).\nVậy vận tốc trung bình là $8$.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1475",
+  "dap_an": "2352",
+  "loi_giai": "$P(t)=\\displaystyle\\int k\\sqrt t\\,dt=\\dfrac{2k}{3}t^{\\frac32}+C$. Vì $P(0)=500$ nên $C=500$.\n$P(1)=600\\Rightarrow\\dfrac{2k}{3}+500=600\\Rightarrow\\dfrac{2k}{3}=100$.\nDo đó $P(t)=100t^{\\frac32}+500$.\n$P(7)=100\\cdot7\\sqrt7+500\\approx100\\cdot18{,}5203+500\\approx2352{,}03$.\nVậy sau 7 ngày có khoảng $2352$ vi khuẩn.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1476",
+  "dap_an": "6750",
+  "loi_giai": "Chọn hệ trục có gốc ở giữa chân cửa, parabol có đỉnh $(0;2{,}25)$ và cắt trục hoành tại $x=\\pm1{,}5$.\nPhương trình parabol: $y=ax^2+2{,}25$, qua $(1{,}5;0)$ nên $2{,}25a+2{,}25=0\\Rightarrow a=-1$, tức $y=-x^2+2{,}25$.\nDiện tích cửa: $S=\\displaystyle\\int_{-1{,}5}^{1{,}5}(2{,}25-x^2)\\,dx=\\left(2{,}25x-\\dfrac{x^3}{3}\\right)\\Big|_{-1{,}5}^{1{,}5}=2\\left(3{,}375-1{,}125\\right)=4{,}5$ (m$^2$).\nChi phí: $4{,}5\\cdot1\\,500\\,000=6\\,750\\,000$ đồng $=6750$ nghìn đồng.\nVậy bác Năm phải trả $6750$ nghìn đồng.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1481",
+  "dap_an": "6750",
+  "loi_giai": "Chọn hệ trục có gốc ở giữa chân cửa, parabol có đỉnh $(0;2{,}25)$ và cắt trục hoành tại $x=\\pm1{,}5$.\nPhương trình parabol: $y=ax^2+2{,}25$, qua $(1{,}5;0)$ nên $2{,}25a+2{,}25=0\\Rightarrow a=-1$, tức $y=-x^2+2{,}25$.\nDiện tích cửa: $S=\\displaystyle\\int_{-1{,}5}^{1{,}5}(2{,}25-x^2)\\,dx=\\left(2{,}25x-\\dfrac{x^3}{3}\\right)\\Big|_{-1{,}5}^{1{,}5}=2\\left(3{,}375-1{,}125\\right)=4{,}5$ (m$^2$).\nChi phí: $4{,}5\\cdot1\\,500\\,000=6\\,750\\,000$ đồng $=6750$ nghìn đồng.\nVậy bác Năm phải trả $6750$ nghìn đồng.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1482",
+  "dap_an": "8",
+  "loi_giai": "Vận tốc: $v(t)=\\displaystyle\\int4\\pi\\cos t\\,dt=4\\pi\\sin t+C$. Vì $v(0)=0$ nên $C=0$, do đó $v(t)=4\\pi\\sin t$.\nVận tốc trung bình trên $[0;\\pi]$: $\\overline{v}=\\dfrac{1}{\\pi-0}\\displaystyle\\int_0^{\\pi}4\\pi\\sin t\\,dt=4\\cdot\\left(-\\cos t\\right)\\Big|_0^{\\pi}=4\\cdot2=8$ (cm/s).\nVậy vận tốc trung bình là $8$.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1486",
+  "dap_an": "20",
+  "loi_giai": "$(Q)\\,//\\,(P)$ nên $(Q):-x+6y+7z+c=0$, suy ra $a=6,\\ b=7$.\n$M(3;-3;2)\\in(Q)$: $-3+6\\cdot(-3)+7\\cdot2+c=0\\Leftrightarrow-3-18+14+c=0\\Leftrightarrow c=7$.\n$a+b+c=6+7+7=20$.\nVậy $a+b+c=20$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1487",
+  "dap_an": "8",
+  "loi_giai": "$\\overrightarrow{AB}=(1;-1;1)$, vectơ pháp tuyến của $(\\alpha)$ là $\\overrightarrow{n_\\alpha}=(1;4;-2)$.\n$(\\beta)$ đi qua $A,B$ và vuông góc $(\\alpha)$ nên $\\overrightarrow{n_\\beta}$ cùng phương với $\\left[\\overrightarrow{AB},\\overrightarrow{n_\\alpha}\\right]$.\n$\\left[\\overrightarrow{AB},\\overrightarrow{n_\\alpha}\\right]=\\left((-1)(-2)-1\\cdot4;\\ 1\\cdot1-1\\cdot(-2);\\ 1\\cdot4-(-1)\\cdot1\\right)=(-2;3;5)$.\nVectơ pháp tuyến có dạng $(-2;b;c)$ nên $\\overrightarrow{n}=(-2;3;5)$, tức $b=3,\\ c=5$.\n$T=b+c=8$.\nVậy $T=8$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1489",
+  "dap_an": "20.8",
+  "loi_giai": "Phương trình hoành độ giao điểm: $x^2+2x=x+6\\Leftrightarrow x^2+x-6=0\\Leftrightarrow x=-3$ hoặc $x=2$.\nTrên $[-3;2]$ ta có $x+6\\ge x^2+2x$ nên $S=\\displaystyle\\int_{-3}^{2}\\left(x+6-x^2-2x\\right)dx=\\int_{-3}^{2}(-x^2-x+6)\\,dx$.\n$=\\left(-\\dfrac{x^3}{3}-\\dfrac{x^2}{2}+6x\\right)\\Big|_{-3}^{2}=\\dfrac{22}{3}-\\left(-\\dfrac{27}{2}\\right)=\\dfrac{125}{6}\\approx20{,}83$.\nLàm tròn đến hàng phần chục: $S\\approx20{,}8$.\nVậy $S\\approx20{,}8$.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1494",
+  "dap_an": "-1",
+  "loi_giai": "$\\overrightarrow{AB}=(1;3;2)$, vectơ pháp tuyến của $(\\alpha)$ là $\\overrightarrow{n_\\alpha}=(3;4;2)$.\n$\\overrightarrow{n_\\beta}$ cùng phương với $\\left[\\overrightarrow{AB},\\overrightarrow{n_\\alpha}\\right]=\\left(3\\cdot2-2\\cdot4;\\ 2\\cdot3-1\\cdot2;\\ 1\\cdot4-3\\cdot3\\right)=(-2;4;-5)$.\nVectơ pháp tuyến có dạng $(-2;b;c)$ nên $\\overrightarrow{n}=(-2;4;-5)$, tức $b=4,\\ c=-5$.\n$T=b+c=4-5=-1$.\nVậy $T=-1$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1496",
+  "dap_an": "4.5",
+  "loi_giai": "Phương trình hoành độ giao điểm: $x^2-2x=2-x\\Leftrightarrow x^2-x-2=0\\Leftrightarrow x=-1$ hoặc $x=2$.\nTrên $[-1;2]$ ta có $2-x\\ge x^2-2x$ nên $S=\\displaystyle\\int_{-1}^{2}\\left(2-x-x^2+2x\\right)dx=\\int_{-1}^{2}(-x^2+x+2)\\,dx$.\n$=\\left(-\\dfrac{x^3}{3}+\\dfrac{x^2}{2}+2x\\right)\\Big|_{-1}^{2}=\\dfrac{10}{3}-\\left(-\\dfrac{7}{6}\\right)=\\dfrac{9}{2}=4{,}5$.\nVậy $S=4{,}5$.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1499",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "KHAC",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Chỉ còn bảng đáp án rời, không có đề."
+ },
+ {
+  "id": "X1500",
+  "dap_an": "6",
+  "loi_giai": "Trên $[2;4]$ hàm $f(x)=x\\ge0$ nên $S=\\displaystyle\\int_2^4x\\,dx=\\dfrac{x^2}{2}\\Big|_2^4=\\dfrac{16}{2}-\\dfrac{4}{2}=8-2=6$.\nVậy $S=6$.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1501",
+  "dap_an": "6",
+  "loi_giai": "Trên $[2;4]$ hàm $f(x)=x\\ge0$ nên $S=\\displaystyle\\int_2^4x\\,dx=\\dfrac{x^2}{2}\\Big|_2^4=\\dfrac{16}{2}-\\dfrac{4}{2}=8-2=6$.\nVậy $S=6$.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1502",
+  "dap_an": "18.7",
+  "loi_giai": "Hai mặt phẳng $x-2y+3z-5=0$ và $x-2y+3z+2=0$ song song.\nKhoảng cách trên hệ trục: $d=\\dfrac{|2-(-5)|}{\\sqrt{1^2+(-2)^2+3^2}}=\\dfrac{7}{\\sqrt{14}}\\approx1{,}8708$ (đơn vị).\nMỗi đơn vị dài $10$ m nên khoảng cách thực tế: $1{,}8708\\cdot10\\approx18{,}7$ m.\nVậy khoảng cách khoảng $18{,}7$ mét.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1514",
+  "dap_an": "-1",
+  "loi_giai": "$(P):3x-y+mz-4=0$ có $\\overrightarrow{n_P}=(3;-1;m)$; $(Q):6x+ny+2z-2=0$ có $\\overrightarrow{n_Q}=(6;n;2)$.\n$(P)//(Q)\\Leftrightarrow\\dfrac{3}{6}=\\dfrac{-1}{n}=\\dfrac{m}{2}\\ne\\dfrac{-4}{-2}$.\n$\\dfrac{3}{6}=\\dfrac{-1}{n}\\Rightarrow n=-2$; $\\dfrac{3}{6}=\\dfrac{m}{2}\\Rightarrow m=1$. Khi đó $\\dfrac12\\ne2$ nên thoả điều kiện song song (không trùng).\n$m+n=1+(-2)=-1$.\nVậy $m+n=-1$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1516",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "NHTP",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Cần đồ thị vận tốc, đề không có hình."
+ },
+ {
+  "id": "X1527",
+  "dap_an": "393",
+  "loi_giai": "Chiều cao mực nước: $h(t)=\\displaystyle\\int\\left(\\dfrac{t}{25}-\\dfrac25\\right)dt=\\dfrac{t^2}{50}-\\dfrac{2t}{5}+C$.\nLúc đầu bồn đầy nên $h(0)=2\\Rightarrow C=2$, do đó $h(t)=\\dfrac{t^2}{50}-\\dfrac{2t}{5}+2$.\n$h(5)=\\dfrac{25}{50}-2+2=0{,}5$ (m).\nThể tích nước còn lại: $V=\\pi r^2h=\\pi\\cdot0{,}5^2\\cdot0{,}5=0{,}125\\pi$ (m$^3$) $=125\\pi$ (lít) $\\approx392{,}7$ lít.\nLàm tròn đến hàng đơn vị: $393$ lít.\nVậy còn khoảng $393$ lít nước.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1530",
+  "dap_an": "4x+2y+z-8=0",
+  "loi_giai": "Gọi $A(a;0;0),\\ B(0;b;0),\\ C(0;0;c)$ với $a,b,c>0$. Từ $\\dfrac{OA}{1}=\\dfrac{OB}{2}=\\dfrac{OC}{4}$ suy ra $b=2a,\\ c=4a$.\nPhương trình $(P)$: $\\dfrac{x}{a}+\\dfrac{y}{2a}+\\dfrac{z}{4a}=1$.\n$M(1;1;2)\\in(P)\\Rightarrow\\dfrac{1}{a}+\\dfrac{1}{2a}+\\dfrac{2}{4a}=1\\Leftrightarrow\\dfrac{2}{a}=1\\Leftrightarrow a=2$.\nKhi đó $(P):\\dfrac{x}{2}+\\dfrac{y}{4}+\\dfrac{z}{8}=1\\Leftrightarrow4x+2y+z-8=0$.\nVậy $(P):4x+2y+z-8=0$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đáp án là phương trình mặt phẳng (tự luận), không phải số."
+ },
+ {
+  "id": "X1532",
+  "dap_an": "3",
+  "loi_giai": "Hai mặt phẳng song song nên $d((P),(Q))=\\dfrac{|3-(-6)|}{\\sqrt{1^2+2^2+(-2)^2}}=\\dfrac{9}{3}=3$.\nVậy khoảng cách bằng $3$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1537",
+  "dap_an": "0.19",
+  "loi_giai": "$P(A|B)=\\dfrac{P(AB)}{P(B)}\\Rightarrow P(AB)=P(A|B)\\cdot P(B)=0{,}25\\cdot0{,}3=0{,}075$.\n$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0{,}075}{0{,}4}=0{,}1875\\approx0{,}19$.\nVậy $P(B|A)\\approx0{,}19$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1539",
+  "dap_an": "7.53",
+  "loi_giai": "Cỡ mẫu $n=2+1+20+30+38+41+14=146$. Trung vị ứng với $\\dfrac{n}{2}=73$.\nTần số tích lũy: $2;\\ 3;\\ 23;\\ 53;\\ 91;\\dots$ Nhóm chứa trung vị là $[7;8)$ (tích lũy trước đó là 53, tần số nhóm là 38).\n$M_e=7+\\dfrac{73-53}{38}\\cdot1=7+\\dfrac{20}{38}\\approx7{,}53$.\nVậy trung vị xấp xỉ $7{,}53$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1542",
+  "dap_an": "21.8",
+  "loi_giai": "Ba vị trí tạo thành tam giác đều cạnh $2$ m trên mặt nước (mặt phẳng nằm ngang). Chọn hệ trục với mặt nước là $z=0$: $A(0;0;0),\\ B(2;0;0),\\ C(1;\\sqrt3;0)$.\nCác điểm chạm đáy: $A'(0;0;-4),\\ B'(2;0;-4{,}4),\\ C'(1;\\sqrt3;-4{,}8)$.\n$\\overrightarrow{A'B'}=(2;0;-0{,}4)$, $\\overrightarrow{A'C'}=(1;\\sqrt3;-0{,}8)$.\n$\\left[\\overrightarrow{A'B'},\\overrightarrow{A'C'}\\right]=\\left(0\\cdot(-0{,}8)-(-0{,}4)\\sqrt3;\\ (-0{,}4)\\cdot1-2\\cdot(-0{,}8);\\ 2\\sqrt3-0\\right)=(0{,}4\\sqrt3;\\ 1{,}2;\\ 2\\sqrt3)$.\nGóc giữa đáy bể và mặt nằm ngang bằng góc giữa hai vectơ pháp tuyến: $\\cos\\varphi=\\dfrac{2\\sqrt3}{\\sqrt{0{,}48+1{,}44+12}}=\\dfrac{2\\sqrt3}{\\sqrt{13{,}92}}\\approx0{,}9285$.\nSuy ra $\\varphi\\approx21{,}8^\\circ$ (tương đương $\\tan\\varphi=0{,}4$).\nVậy đáy bể nghiêng khoảng $21{,}8$ độ.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Dây dọi thẳng đứng, đáy phẳng."
+ },
+ {
+  "id": "X1543",
+  "dap_an": "10",
+  "loi_giai": "Phương trình mặt cầu dạng $x^2+y^2+z^2-2ax-2by-2cz+d=0$ với $-2a=-200,\\ -2b=-600,\\ -2c=-4000$ nên $a=100,\\ b=300,\\ c=2000$, $d=4099900$.\nBán kính: $R=\\sqrt{a^2+b^2+c^2-d}=\\sqrt{10000+90000+4000000-4099900}=\\sqrt{100}=10$.\nVậy bán kính bằng $10$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1545",
+  "dap_an": "23",
+  "loi_giai": "Gọi $t$ là tỉ lệ cặp sinh đôi thật, khi đó tỉ lệ cặp sinh đôi giả là $1-t$.\nSinh đôi thật luôn cùng giới tính. Sinh đôi giả có giới tính khác nhau với xác suất $2\\cdot0{,}5\\cdot0{,}5=0{,}5$.\nTỉ lệ cặp có giới tính khác nhau là $0{,}36$: $0{,}5(1-t)=0{,}36\\Rightarrow1-t=0{,}72\\Rightarrow t=0{,}28$.\nTỉ lệ cặp cùng giới tính: $0{,}30+0{,}34=0{,}64$ (các cặp sinh đôi thật đều nằm trong nhóm này).\nTỉ lệ cặp sinh đôi thật trong số các cặp cùng giới tính: $\\dfrac{0{,}28}{0{,}64}=\\dfrac{7}{16}$, tối giản nên $a=7,\\ b=16$.\n$a+b=7+16=23$.\nVậy $a+b=23$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1554",
+  "dap_an": "23",
+  "loi_giai": "Gọi $t$ là tỉ lệ cặp sinh đôi thật, khi đó tỉ lệ cặp sinh đôi giả là $1-t$.\nSinh đôi thật luôn cùng giới tính. Sinh đôi giả có giới tính khác nhau với xác suất $2\\cdot0{,}5\\cdot0{,}5=0{,}5$.\nTỉ lệ cặp có giới tính khác nhau là $0{,}36$: $0{,}5(1-t)=0{,}36\\Rightarrow1-t=0{,}72\\Rightarrow t=0{,}28$.\nTỉ lệ cặp cùng giới tính: $0{,}30+0{,}34=0{,}64$ (các cặp sinh đôi thật đều nằm trong nhóm này).\nTỉ lệ cặp sinh đôi thật trong số các cặp cùng giới tính: $\\dfrac{0{,}28}{0{,}64}=\\dfrac{7}{16}$, tối giản nên $a=7,\\ b=16$.\n$a+b=7+16=23$.\nVậy $a+b=23$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1556",
+  "dap_an": "0.19",
+  "loi_giai": "$P(A|B)=\\dfrac{P(AB)}{P(B)}\\Rightarrow P(AB)=P(A|B)\\cdot P(B)=0{,}25\\cdot0{,}3=0{,}075$.\n$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0{,}075}{0{,}4}=0{,}1875\\approx0{,}19$.\nVậy $P(B|A)\\approx0{,}19$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1563",
+  "dap_an": "3",
+  "loi_giai": "Hai mặt phẳng song song nên $d((P),(Q))=\\dfrac{|11-2|}{\\sqrt{1^2+2^2+2^2}}=\\dfrac{9}{3}=3$.\nVậy khoảng cách bằng $3$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1570",
+  "dap_an": "3803",
+  "loi_giai": "Vận tốc: $v(t)=\\displaystyle\\int(2t+t^2)\\,dt=t^2+\\dfrac{t^3}{3}+C$. Vì $v(0)=10$ nên $C=10$, do đó $v(t)=t^2+\\dfrac{t^3}{3}+10$.\nQuãng đường trong 10 giây: $s=\\displaystyle\\int_0^{10}\\left(t^2+\\dfrac{t^3}{3}+10\\right)dt=\\left(\\dfrac{t^3}{3}+\\dfrac{t^4}{12}+10t\\right)\\Big|_0^{10}$.\n$=\\dfrac{1000}{3}+\\dfrac{10000}{12}+100=\\dfrac{1000}{3}+\\dfrac{2500}{3}+\\dfrac{300}{3}=\\dfrac{3800}{3}$.\nPhân số $\\dfrac{3800}{3}$ tối giản nên $a=3800,\\ b=3$, suy ra $a+b=3803$.\nVậy $a+b=3803$.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1571",
+  "dap_an": "16",
+  "loi_giai": "$\\overrightarrow{n_Q}=(1;1;3)$, $\\overrightarrow{n_R}=(2;-1;1)$.\n$(P)$ vuông góc với $(Q)$ và $(R)$ nên $\\overrightarrow{n_P}$ cùng phương với $\\left[\\overrightarrow{n_Q},\\overrightarrow{n_R}\\right]=\\left(1\\cdot1-3\\cdot(-1);\\ 3\\cdot2-1\\cdot1;\\ 1\\cdot(-1)-1\\cdot2\\right)=(4;5;-3)$.\nHệ số của $y$ là $5$ nên $\\overrightarrow{n_P}=(4;5;-3)$: $(P):4x+5y-3z+D=0$.\n$B(1;-2;3)\\in(P)$: $4-10-9+D=0\\Rightarrow D=15$.\nVậy $A=4,\\ C=-3,\\ D=15$ và $A+C+D=4-3+15=16$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1575",
+  "dap_an": "7",
+  "loi_giai": "Gọi $G$ là điểm thoả $3\\overrightarrow{GA}-\\overrightarrow{GB}-\\overrightarrow{GC}=\\overrightarrow{0}$, tức $G=3A-B-C=(3-2-3;\\ 6-0+1;\\ 3-1-2)=(-2;7;0)$.\nKhi đó $3MA^2-MB^2-MC^2=(3-1-1)MG^2+\\left(3GA^2-GB^2-GC^2\\right)=MG^2+\\text{const}$.\nNên biểu thức nhỏ nhất khi $MG$ nhỏ nhất, $M$ thuộc mặt cầu $(S)$.\n$(S)$ có tâm $I(0;5;2)$, $R=\\sqrt3$. $\\overrightarrow{IG}=(-2;2;-2)$, $IG=2\\sqrt3>R$ nên $G$ nằm ngoài $(S)$.\n$M$ là giao điểm của đoạn $IG$ với $(S)$: $\\overrightarrow{IM}=\\dfrac{R}{IG}\\overrightarrow{IG}=\\dfrac12\\overrightarrow{IG}=(-1;1;-1)$, suy ra $M(-1;6;1)$.\n(Kiểm tra: $(-1)^2+(6-5)^2+(1-2)^2=3$.)\n$P=x+y+2z=-1+6+2=7$.\nVậy $P=7$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1577",
+  "dap_an": "300",
+  "loi_giai": "Đường thẳng $AB$ có $\\overrightarrow{AB}=(300;100;-50)$, chọn vectơ chỉ phương $\\overrightarrow{u}=(6;2;-1)$.\nĐiểm $P$ trên $AB$: $P(-500+6u;\\ -300+2u;\\ 500-u)$.\nMáy bay gần đài $O$ nhất khi $\\overrightarrow{OP}\\cdot\\overrightarrow{u}=0$:\n$6(-500+6u)+2(-300+2u)-(500-u)=0\\Leftrightarrow-4100+41u=0\\Leftrightarrow u=100$.\nSuy ra $P(100;-100;400)$, tức $a=100,\\ b=-100,\\ c=400$.\n$P=a+2b+c=100-200+400=300$.\nVậy $P=300$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1579",
+  "dap_an": "113",
+  "loi_giai": "Gọi $T$ là biến cố \"người bị bệnh tim mạch\", $D$ là biến cố \"béo phì do di truyền\", $L$ là biến cố \"béo phì do lối sống\".\n$P(L)=0{,}9,\\ P(T|L)=0{,}6;\\ P(D)=0{,}1,\\ P(T|D)=0{,}25$.\n$P(T)=0{,}9\\cdot0{,}6+0{,}1\\cdot0{,}25=0{,}54+0{,}025=0{,}565$.\n$P(D|T)=\\dfrac{P(D)\\cdot P(T|D)}{P(T)}=\\dfrac{0{,}025}{0{,}565}=\\dfrac{25}{565}=\\dfrac{5}{113}$.\nĐối chiếu $\\dfrac5a$ nên $a=113$.\nVậy $a=113$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1580",
+  "dap_an": "333",
+  "loi_giai": "Chi phí sản xuất $x$ sản phẩm: $x\\cdot C(x)=x^2+1000x+250000$.\nLợi nhuận: $L(x)=D(x)-xC(x)=x^3-2000x^2+1000000x$, với $1\\le x\\le500$, $x\\in\\mathbb{N}$.\n$L'(x)=3x^2-4000x+1000000=0\\Leftrightarrow x=\\dfrac{1000}{3}$ hoặc $x=1000$ (loại vì $x\\le500$).\nTrên $[1;500]$: $L'(x)>0$ khi $x<\\dfrac{1000}{3}$, $L'(x)<0$ khi $\\dfrac{1000}{3}<x\\le500$, nên $L$ đạt max quanh $x=\\dfrac{1000}{3}\\approx333{,}3$.\nVì $x$ nguyên, so sánh $L(333)=333\\cdot667^2=148\\,148\\,037$ và $L(334)=334\\cdot666^2=148\\,147\\,704$.\n$L(333)>L(334)$ nên lợi nhuận lớn nhất khi $x=333$.\nVậy cần sản xuất $333$ sản phẩm.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X1586",
+  "dap_an": "-4",
+  "loi_giai": "$\\overrightarrow{AC}=(2;3;4)$. Vì $(P)\\bot AC$ nên $\\overrightarrow{AC}$ là vectơ pháp tuyến của $(P)$.\n$(P)$ đi qua $B(-3;2;2)$: $2(x+3)+3(y-2)+4(z-2)=0\\Leftrightarrow2x+3y+4z-8=0$.\nChia hai vế cho $2$ để hệ số của $z$ bằng $2$: $x+\\dfrac32y+2z-4=0$.\nĐối chiếu dạng $ax+by+2z+d=0$ ta có $d=-4$.\nVậy $d=-4$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ }
+]

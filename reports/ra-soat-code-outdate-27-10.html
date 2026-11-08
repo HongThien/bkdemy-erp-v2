@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rà soát code outdate</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1d2330;--mute:#6b7383;--line:#e3e6ec;--ok:#0f7b4b;--okbg:#e6f5ee;--ask:#a35a00;--askbg:#fff3e0;--info:#2f5bb7;--infobg:#e9effc}
+@media (prefers-color-scheme:dark){:root{--bg:#14171c;--card:#1c2027;--ink:#e6e9ef;--mute:#9aa3b2;--line:#2c323c;--ok:#5fd39a;--okbg:#16302a;--ask:#ffb65c;--askbg:#33281a;--info:#8fb0ff;--infobg:#1b2540}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:980px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:24px;margin:0 0 4px}h2{font-size:18px;margin:32px 0 6px}.sub{color:var(--mute);margin:0 0 14px}
+.tag{display:inline-block;font-size:12px;font-weight:600;border-radius:999px;padding:2px 10px;margin-left:8px;vertical-align:2px}
+.ok{background:var(--okbg);color:var(--ok)}.ask{background:var(--askbg);color:var(--ask)}.info{background:var(--infobg);color:var(--info)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+th{font-size:12px;color:var(--mute);font-weight:600;border-top:0;background:color-mix(in srgb,var(--line) 35%,transparent)}
+td.id{font-weight:700;white-space:nowrap}td.n{white-space:nowrap;text-align:right;color:var(--mute)}
+code{font-size:12.5px;background:color-mix(in srgb,var(--line) 55%,transparent);padding:1px 5px;border-radius:5px;word-break:break-word}
+.note{color:var(--mute);font-size:13.5px}.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:14px 0}
+.wrap{overflow-x:auto}
+</style></head><body><main>
+<h1>Rà soát ERP: chức năng &amp; code lâu không dùng</h1>
+<p class="sub">27/10/2026 · Chưa xoá gì. Thùy duyệt theo mã (vd "xoá A, B, C1, C4").</p>
+
+<div class="box note">
+<b>Cách đo.</b> (1) Dựng đồ thị import từ toàn bộ 29 trang (ERP + 11 app phụ + trang xem-thử): file không trang nào kéo tới = <b>code chết</b>.
+(2) Mỗi mục menu ERP → các file màn → các bảng DB màn đó đọc/ghi → <b>ngày cuối cùng bảng có dòng mới/sửa</b>.
+ERP <b>không có nhật ký lượt mở màn</b>, nên "lâu không dùng" ở đây = <i>lâu không có dữ liệu mới</i> — màn chỉ-xem (dashboard) không đo được kiểu này, mình không đưa vào danh sách.
+Bảng <code>sk_*</code>, <code>thong_bao_*</code>, <code>giai_thuong*</code> mình đọc bị RLS chặn (luôn ra 0 dòng) nên không kết luận được.
+</div>
+
+<h2>A. Code chết — không trang nào dùng <span class="tag ok">xoá an toàn, app không đổi gì</span></h2>
+<p class="sub">Đã kiểm lại bằng grep: không còn chỗ nào import. File chỉ chứa kiểu (type) và file JS mà scripts còn gọi thì <b>giữ</b>, không có trong bảng này.</p>
+<div class="card wrap"><table>
+<tr><th>Mã</th><th>File</th><th>Vì sao</th><th>Dòng</th></tr>
+<tr><td class="id">A1</td><td><code>screens/dashboard/ChatLuongVanHanhScreen.tsx</code></td><td>CEO 08/10: outdate, đã thay bằng HieuSuatTAScreen</td><td class="n">517</td></tr>
+<tr><td class="id">A2</td><td><code>screens/tailieu/bdm/ETBdmEditor.tsx</code></td><td>Lá "ET (bản đồ mới)" đã gỡ 26/10 — mục ET đã soạn theo bản đồ mới</td><td class="n">523</td></tr>
+<tr><td class="id">A3</td><td><code>screens/botro/HinhYeuScreen.tsx</code> · <code>screens/ta/HinhYeuTA.tsx</code> · <code>lib/botro_hinh_yeu.ts</code></td><td>"Hình yếu theo mô hình" bản cũ — 17/10 đã thay bằng CaHinhTA; bảng <code>bo_tro_hinh</code> 0 dòng từ trước tới nay</td><td class="n">305</td></tr>
+<tr><td class="id">A4</td><td><code>screens/ops/OpsBoxes.tsx</code></td><td>Hộp OPS cũ, sửa cuối 07/09</td><td class="n">283</td></tr>
+<tr><td class="id">A5</td><td><code>screens/ta/ChamCongTa.tsx</code> · <code>lib/chamcong.ts</code></td><td>Màn chấm công TA bản đầu — đã có Duyệt công / Lương TA</td><td class="n">77</td></tr>
+<tr><td class="id">A6</td><td><code>components/QueueHome.tsx</code> · <code>ChamETSheet.tsx</code> · <code>LinkGenWorker.tsx</code> · <code>ChuyenDePickerOne.tsx</code> · <code>math/RichMathBox.tsx</code> · <code>lib/shuffle.ts</code> · <code>hooks/useDeviceTier.ts</code> · <code>screens/danhgia/LichSuBoTroModal.tsx</code> · <code>screens/hocsinh/luyen/ThongBaoLuot.tsx</code></td><td>Sót lại từ thời mock 06–07 và các bản thay thế sau đó</td><td class="n">643</td></tr>
+<tr><td class="id">A7</td><td>Hàm mock trong <code>store/useStore.ts</code>: <code>staffNavForUser</code> · <code>adminNavForUser</code> · <code>leavesForUser</code> · <code>vaisOf</code> · <code>canAdmin</code></td><td>Cây menu "derive theo role mock" — 0 chỗ gọi, menu thật đã lấy từ DB</td><td class="n">~50</td></tr>
+<tr><td></td><td colspan="2"><b>Cộng nhóm A</b></td><td class="n"><b>~2 400</b></td></tr>
+</table></div>
+
+<h2>B. Mục menu ERP bấm vào ra trang trống <span class="tag ok">gỡ khỏi menu</span></h2>
+<p class="sub">Có trong menu nhưng ERP không có màn nào — bấm vào chỉ hiện "Chọn một mục bên trái".</p>
+<div class="card wrap"><table>
+<tr><th>Mã</th><th>Mục menu</th><th>Đề xuất</th></tr>
+<tr><td class="id">B1</td><td>Dashboard › Tổng quan</td><td>Gỡ khỏi menu (đang là màn mặc định khi mở Admin ⇒ đổi mặc định sang mục khác)</td></tr>
+<tr><td class="id">B2</td><td>Dashboard › Tài chính</td><td>Gỡ khỏi menu</td></tr>
+<tr><td class="id">B3</td><td>Core team › Tuyển dụng</td><td>Gỡ khỏi menu</td></tr>
+<tr><td class="id">B4</td><td>Vận hành › Tủ quà (đổi xu)</td><td>Ẩn khỏi menu ERP nhưng <b>giữ quyền</b> — app OPS đang dùng quyền này để mở tab Quà</td></tr>
+</table></div>
+
+<h2>C. Chức năng ít / không có dữ liệu — <span class="tag ask">Thùy quyết từng mục</span></h2>
+<p class="sub">Phân biệt 2 loại: <b>đã dùng rồi ngừng</b> (outdate thật) và <b>xây xong nhưng chưa từng chạy</b> (có thể là chưa ra mắt — R1: đích hay hiện tại?).</p>
+<div class="card wrap"><table>
+<tr><th>Mã</th><th>Chức năng</th><th>Số liệu DB</th><th>Nếu xoá thì mất</th></tr>
+<tr><td class="id">C1</td><td><b>App Giải bài</b> (giaibai.bkacademy.edu.vn)</td><td>Đã dùng rồi ngừng: yêu cầu giải cuối cùng 27/09 (Đại 245 · Hình 199 · HGT 10 · KHTN 8); luồng tự giải đã ngừng 28/09</td><td>12 file · 1 330 dòng chỉ app này dùng + <code>giaibai.html</code>, vite config, project Vercel. <b>DB giữ nguyên</b></td></tr>
+<tr><td class="id">C2</td><td><b>App Soạn</b> (soan.html — bộ cụm dùng chung)</td><td>Bảng cụm: 3 dòng, sửa cuối 10/09; thư mục / tab chung: 0 dòng</td><td>Chỉ vỏ app riêng (62 dòng + soan.html + vite config). Khung soạn nhúng trong ERP <b>vẫn giữ</b></td></tr>
+<tr><td class="id">C3</td><td>Làm tài liệu › <b>Giáo trình (cũ)</b></td><td>Lá cũ và lá "bản đồ mới" cùng ghi vào <code>tai_lieu</code> loại giáo trình (36 mới trong 30 ngày) — không tách được ai dùng lá nào</td><td>18/10 Thùy ghi "hoàn thiện bản mới rồi mới bỏ lá cũ". <b>Đã đến lúc bỏ chưa?</b></td></tr>
+<tr><td class="id">C4</td><td>Gamification › <b>Ngày nghỉ của chuỗi</b></td><td>Chưa từng chạy: 0 dòng từ trước tới nay</td><td>1 màn · 181 dòng</td></tr>
+<tr><td class="id">C5</td><td>Gamification › <b>Huy hiệu / Trao huy hiệu</b></td><td>Chưa từng chạy: đạt 0 · trao 0 · khoe 0 · chốt tháng 0 (mới có danh mục 9 huy hiệu)</td><td>Màn 256 dòng + phần app HS. Chưa ra mắt hay bỏ?</td></tr>
+<tr><td class="id">C6</td><td>Vận hành › <b>Khảo sát "Bạn của con"</b> + app iPad</td><td>Đã chạy 1 đợt: 181 bài, nộp cuối 02/10</td><td>Màn 903 dòng + app iPad 68 dòng. Còn làm đợt sau không?</td></tr>
+<tr><td class="id">C7</td><td><b>Bảng xếp hạng game</b> (<code>game_bxh_*</code>) · <b>Shop vật phẩm</b> (đơn mua)</td><td>Chưa từng chạy: 0 dòng; shop có 6 vật phẩm tạo 06/09, 0 đơn</td><td>Cần dò thêm phía app HS trước khi xoá</td></tr>
+</table></div>
+<p class="note">Không đề xuất: <b>Sự kiện</b> (có người đang sửa hôm nay), <b>Lương TA</b> (mới 14/10, chưa tới kỳ chốt), <b>Sổ tay công thức</b> (sửa 03/10), các màn dashboard chỉ-xem (không đo được).</p>
+
+<h2>D. Rác ngoài code app <span class="tag ok">xoá an toàn</span></h2>
+<div class="card wrap"><table>
+<tr><th>Mã</th><th>Cái gì</th><th>Ghi chú</th></tr>
+<tr><td class="id">D1</td><td>13 trang xem-thử chưa commit (<code>src/_xem_*.tsx</code> + <code>xem-thu-*.html</code> tương ứng, 28/09–09/10) · 4 trang đã commit (<code>_xem_ops/erp/cong_ta/canh</code>)</td><td>Trang dựng để Thùy xem mẫu màn, đã xong việc. Đề xuất xoá 13 trang chưa commit; 4 trang đã commit tuỳ Thùy</td></tr>
+<tr><td class="id">D2</td><td>218 script dò/sửa một lần <code>scripts/_*.mjs</code> cũ hơn 10/09</td><td>Đã chạy xong, không file nào khác gọi (4 script còn được nhắc tới thì giữ). Vẫn còn trong lịch sử git nếu cần</td></tr>
+<tr><td class="id">D3</td><td>Rác thư mục gốc: 6 ảnh tên nhân đôi (<code>A.pngA.png</code>…), <code>.show33.tmp</code>, <code>x</code>, <code>node</code> (0 byte), <code>_xem_rank.html</code>, <code>out/</code></td><td>Chưa commit, không ai dùng</td></tr>
+<tr><td class="id">D4</td><td>Thư mục build <code>dist*</code> + <code>apk/</code> (~360 MB)</td><td>Tự sinh lại khi build</td></tr>
+</table></div>
+<p class="note">⚠ <code>token.txt</code> (thư mục gốc, 06/09, đã ignore khỏi git): mình không mở xem vì có thể chứa khoá. Nếu là token cũ hết hạn thì Thùy tự xoá.</p>
+
+<h2>E. Thông tin thêm — bảng DB <span class="tag info">không đề xuất lần này</span></h2>
+<p class="note">98 bảng đang 0 dòng (trừ ~17 bảng mình đọc bị chặn), phần lớn là khung Hình/TSA/KHTN cũ (<code>hinh_dang</code>, <code>hinh_bo_de</code>, <code>tsa_*</code>, <code>*_tien_de</code>…) và <code>toan_de_thi*</code>. Xoá bảng = migration DROP, rủi ro cao hơn xoá code ⇒ để một đợt riêng, sau khi chốt A–C.</p>
+</main></body></html>

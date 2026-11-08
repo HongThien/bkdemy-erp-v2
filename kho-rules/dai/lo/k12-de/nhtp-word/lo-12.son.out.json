@@ -1,0 +1,467 @@
+[
+ {
+  "id": "W0661",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F(4)-F(2)=6"
+ },
+ {
+  "id": "W0662",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Tích hai hàm không bằng tích hai nguyên hàm"
+ },
+ {
+  "id": "W0663",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=π∫(2x-1)^2"
+ },
+ {
+  "id": "W0664",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2-2·3=-4"
+ },
+ {
+  "id": "W0665",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "(e^x)'=e^x"
+ },
+ {
+  "id": "W0666",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=-x³-x²/2+x+C, F(8)=-527 ⇒ C=9"
+ },
+ {
+  "id": "W0667",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2·4=8"
+ },
+ {
+  "id": "W0668",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x⁴/2-9x"
+ },
+ {
+  "id": "W0669",
+  "dap_an": "D",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Cả 3 mệnh đề đúng (III: biến câm)"
+ },
+ {
+  "id": "W0670",
+  "dap_an": "3.5",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "1+5/2=3.5; kiểm Simpson"
+ },
+ {
+  "id": "W0671",
+  "dap_an": "0",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫(1+2/x)=1+2ln2 ⇒ a=1,b=2,P=0"
+ },
+ {
+  "id": "W0672",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "S=∫|f|"
+ },
+ {
+  "id": "W0673",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3/3=1"
+ },
+ {
+  "id": "W0674",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x³-cosx+C"
+ },
+ {
+  "id": "W0675",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2^x/ln2"
+ },
+ {
+  "id": "W0676",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=x³/3-cosx+x+C, F(0)=1 ⇒ C=2"
+ },
+ {
+  "id": "W0677",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F' của A = 3x²+2x ≠ f"
+ },
+ {
+  "id": "W0678",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Diện tích không có π (C,D trùng nhau)"
+ },
+ {
+  "id": "W0679",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "7-2=5; khớp file"
+ },
+ {
+  "id": "W0680",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "f(π)=2π; f=2x+5cosx+5; S=4≠8; d)≈-0,0228 kiểm Simpson"
+ },
+ {
+  "id": "W0681",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x³/3"
+ },
+ {
+  "id": "W0682",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3·2=6"
+ },
+ {
+  "id": "W0683",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a)5 Đ; b)1≠-5; c)2+26=28; d)4+5ln3 ⇒ 12≠11"
+ },
+ {
+  "id": "W0684",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F là nguyên hàm của 3^x ⇒ F'=3^x"
+ },
+ {
+  "id": "W0685",
+  "dap_an": [
+   "S",
+   "S",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "f(π)=π+10 (file bỏ f(0) nên ghi Đ); f=x-5sinx+10; S=2 kiểm máy"
+ },
+ {
+  "id": "W0686",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "(3/2)sin2x-x+C"
+ },
+ {
+  "id": "W0687",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "5-(-2)=7"
+ },
+ {
+  "id": "W0688",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x⁴/4-x²/2"
+ },
+ {
+  "id": "W0689",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "-x³+x²-x+C"
+ },
+ {
+  "id": "W0690",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2·3=6 (file ghi cận 3 nhầm, đáp án đúng)"
+ },
+ {
+  "id": "W0691",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x⁴/4+x³/3"
+ },
+ {
+  "id": "W0692",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "S=∫|f|"
+ },
+ {
+  "id": "W0693",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2-10=-8"
+ },
+ {
+  "id": "W0694",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "S"
+  ],
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "v=t²-7t+6; v(7)=6; độ dịch chuyển 1→7 là -18 (≠18); x lớn nhất tại t=1. Ý a coi là Đ (v là nguyên hàm của a)"
+ },
+ {
+  "id": "W0695",
+  "dap_an": null,
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "cần hình"
+ },
+ {
+  "id": "W0696",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3x⁵/5-x³+x"
+ },
+ {
+  "id": "W0697",
+  "dap_an": null,
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "cần hình; đề dạng Đ/S bị gắn loại tra_loi_ngan. Chỉ chắc ý d sai (đỉnh (2;3) mà v(2)=2)"
+ },
+ {
+  "id": "W0698",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=π∫(5^x)²=π∫25^x"
+ },
+ {
+  "id": "W0699",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Hai nghiệm -1,1/3; S=32/27 kiểm máy"
+ },
+ {
+  "id": "W0700",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "10m/s; còn 200m ⇒ a=10/9,b=10; S(t)=∫0^t; v(20)=116km/h>100"
+ },
+ {
+  "id": "W0701",
+  "dap_an": [
+   "Đ",
+   "S",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "s=-5t²+20t; dừng t=2; quãng đường 20m<25"
+ },
+ {
+  "id": "W0702",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2e^x+x⁴+C"
+ },
+ {
+  "id": "W0703",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "50-69=-19"
+ },
+ {
+  "id": "W0704",
+  "dap_an": "3039",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=∫1^2 2026x dx=3039 (phương án B); loai ghi tra_loi_ngan nhưng đề có A–D"
+ },
+ {
+  "id": "W0705",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "5^x<6 trên [0,1] nên S=∫(6-5^x); A sai"
+ },
+ {
+  "id": "W0706",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x²/2-ln|x|+C (phương án B); loai ghi tra_loi_ngan nhưng đề có A–D"
+ },
+ {
+  "id": "W0707",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "S=∫|f|"
+ },
+ {
+  "id": "W0708",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=π∫e^{6x}"
+ },
+ {
+  "id": "W0709",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "(e^{-2x})'=-2e^{-2x}; phương án D dính chữ lời giải"
+ },
+ {
+  "id": "W0710",
+  "dap_an": null,
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Đề mất phần câu hỏi/mệnh đề, chỉ còn lời giải (đáp số 1 hợp lý)"
+ },
+ {
+  "id": "W0711",
+  "dap_an": [
+   "S",
+   "Đ",
+   "S",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a)=9; b)f(a)=2024; c)∫=2; d)8-2=6"
+ },
+ {
+  "id": "W0712",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫sinx=-cosx"
+ },
+ {
+  "id": "W0713",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x³/3"
+ },
+ {
+  "id": "W0714",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "24-8=16"
+ },
+ {
+  "id": "W0715",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "(cos3x)'=-3sin3x"
+ },
+ {
+  "id": "W0716",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=π∫(x²)²"
+ },
+ {
+  "id": "W0717",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "12,5m/s; còn 350m; a=25/14; v(21)=180km/h>110"
+ },
+ {
+  "id": "W0718",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F'=e^x; phương án A"
+ },
+ {
+  "id": "W0719",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "S=∫f"
+ },
+ {
+  "id": "W0720",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Đọc 6600km là độ cao ⇒ bán kính 13; vào tại (4;12;3), ra (12;-4;-3); khoảng cách 18868km; 1/2 thời gian"
+ }
+]

@@ -1,0 +1,44 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00310",
+   "ly_thuyet": "",
+   "dang_bai": [
+    {
+     "ten": "So sánh, sắp xếp khối lượng phân tử khi đã biết giá trị từng chất",
+     "mo_ta": "Đề cho khối lượng phân tử (hoặc công thức kèm khối lượng nguyên tử) của nhiều chất, hỏi chất nào lớn nhất/nhỏ nhất hoặc yêu cầu sắp xếp tăng dần/giảm dần.\nBiến thể: sắp xếp cả dãy; chọn chất lớn nhất; chọn chất có khối lượng phân tử nằm trong một khoảng cho trước.\nLưu ý: chỉ cần so sánh các giá trị khối lượng phân tử, không so sánh theo số nguyên tử hay độ dài công thức.",
+     "ly_thuyet": "##TC Khối lượng phân tử\nKhối lượng phân tử của một chất là tổng khối lượng của các nguyên tử trong một phân tử chất đó, tính bằng amu.\nVí dụ cách tính: phân tử gồm các nguyên tử thì cộng khối lượng nguyên tử của từng nguyên tử có mặt.\nMuốn so sánh các chất phải dùng cùng một đơn vị (amu).\n\n##PP Cách làm bài\nXác định công thức và khối lượng nguyên tử cần dùng (nếu đề chưa cho sẵn khối lượng phân tử)\nTính riêng khối lượng phân tử của từng chất\nSo sánh các giá trị rồi sắp xếp theo yêu cầu tăng dần hoặc giảm dần\nVới câu hỏi \"nằm trong khoảng\", loại các chất có giá trị nhỏ hơn cận dưới hoặc lớn hơn cận trên\n\n##CY Lưu ý\nKhông kết luận theo số nguyên tử trong phân tử hay độ dài công thức; chất có ít nguyên tử vẫn có thể nặng hơn.\nĐọc kĩ yêu cầu tăng dần hay giảm dần.",
+     "vi_du": "##VD\nTrong các chất $O_2$, $O_3$, $CO_2$ ($O = 16$, $C = 12$), chất nào có khối lượng phân tử lớn nhất?\nA. $O_2$ (32 amu)\nB. $O_3$ (48 amu)\nC. $CO_2$ (44 amu)\nD. Cả ba bằng nhau\n\nBài giải:\nKhối lượng phân tử $O_2 = 2 \\times 16 = 32$ (amu).\nKhối lượng phân tử $O_3 = 3 \\times 16 = 48$ (amu).\nKhối lượng phân tử $CO_2 = 12 + 2 \\times 16 = 44$ (amu).\nSo sánh: $48 > 44 > 32$ nên $O_3$ có khối lượng phân tử lớn nhất.\nChọn B.\n\n##VD\nHợp chất X có khối lượng phân tử lớn hơn khối lượng phân tử của khí oxygen ($O_2 = 32$ amu) nhưng nhỏ hơn khối lượng phân tử của khí ozone ($O_3 = 48$ amu). X có thể là chất nào sau đây?\nA. $CH_4$ (16 amu)\nB. $CO_2$ (44 amu)\nC. $NH_3$ (17 amu)\nD. $N_2$ (28 amu)\n\nBài giải:\nX phải có khối lượng phân tử thoả mãn $32 < M_X < 48$ (amu).\n$CH_4$: 16 amu, nhỏ hơn 32 nên loại.\n$NH_3$: 17 amu, nhỏ hơn 32 nên loại.\n$N_2$: 28 amu, nhỏ hơn 32 nên loại.\n$CO_2$: 44 amu, thoả mãn $32 < 44 < 48$.\nChọn B.",
+     "nguon_vi_du": "K07020104002, K07020104003",
+     "cau": ["K07020104001", "K07020104002", "K07020104003"]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": "Nhóm chỉ 3 câu, cùng một kiểu bài nên đề xuất 1 dạng."
+  },
+  {
+   "nhom_id": "KNB00311",
+   "ly_thuyet": "",
+   "dang_bai": [
+    {
+     "ten": "Giải thích tính chất của chất dựa vào thành phần và cách sắp xếp nguyên tử",
+     "mo_ta": "Đề nêu một hiện tượng hoặc so sánh tính chất của các chất (độ cứng, khả năng dẫn điện, vì sao coi là cùng một chất…), hỏi nguyên nhân hoặc nhận định đúng.\nLàm bằng cách xét chất do nguyên tố nào, loại phân tử nào tạo nên và cách sắp xếp, liên kết các nguyên tử, hạt mang điện tự do.\nBiến thể: trắc nghiệm chọn nguyên nhân; tự luận giải thích bằng 2–3 ý.\nLưu ý: đề yêu cầu nhận xét một ý kiến sai về khối lượng phân tử hoặc tính nguyên tử khối ⇒ thuộc dạng \"Nhận xét ý kiến và tính toán khối lượng nguyên tử, phân tử từ dữ kiện đề\".",
+     "ly_thuyet": "##TC Kiến thức cần dùng\nĐơn chất do một nguyên tố hoá học tạo nên; hợp chất do hai nguyên tố trở lên tạo nên.\nMột chất được tạo nên từ cùng một loại phân tử; ba trạng thái rắn, lỏng, khí của cùng một chất vẫn cùng loại phân tử.\nCác đơn chất của cùng một nguyên tố có thể có tính chất khác nhau do cách sắp xếp và liên kết giữa các nguyên tử khác nhau.\nChất dẫn điện khi trong chất có hạt mang điện chuyển động tự do.\n\n##PP Cách làm bài\nXác định chất do nguyên tố nào, loại hạt nào tạo nên\nSo sánh thành phần và cách sắp xếp, liên kết giữa các nguyên tử của các chất đang xét\nGắn sự khác nhau đó với tính chất mà đề hỏi, kết luận ngắn gọn\n\n##CY Lưu ý\nCùng một nguyên tố tạo nên chưa chắc cùng tính chất; cần xét cách sắp xếp, liên kết.\nKhông dựa máy móc vào phân loại kim loại hay phi kim để kết luận dẫn điện.\nPhân tử khác nhau (khác số lượng hoặc loại nguyên tử) là hai chất khác nhau.",
+     "vi_du": "##VD\nKim cương và than chì đều là đơn chất carbon nhưng có độ cứng khác nhau hoàn toàn. Nguyên nhân là do\nA. hai chất có khối lượng phân tử khác nhau\nB. hai chất được tạo nên từ hai nguyên tố khác nhau\nC. cách sắp xếp và liên kết giữa các nguyên tử carbon trong hai chất khác nhau\nD. than chì là hợp chất còn kim cương là đơn chất\n\nBài giải:\nKim cương và than chì đều chỉ do nguyên tố carbon tạo nên nên cả hai đều là đơn chất; loại B và D.\nHai chất cùng thành phần nguyên tố nên không thể khác nhau do nguyên tố; loại A.\nSự khác biệt về tính chất đến từ cách sắp xếp và liên kết giữa các nguyên tử carbon trong không gian.\nChọn C.\n\n##VD\nVì sao nước đá, nước lỏng và hơi nước đều được xem là cùng một chất?\n\nBài giải:\nỞ cả ba trạng thái, chất vẫn được tạo nên từ cùng loại phân tử $H_2O$.\nNước đá, nước lỏng, hơi nước chỉ khác nhau về trạng thái do nhiệt độ thay đổi, còn thành phần phân tử $H_2O$ không đổi.\nVì vậy chúng là cùng một chất.",
+     "nguon_vi_du": "K07020105001, K07020105003",
+     "cau": ["K07020105001", "K07020105002", "K07020105003", "K07020105004"]
+    },
+    {
+     "ten": "Nhận xét ý kiến và tính toán khối lượng nguyên tử, phân tử từ dữ kiện đề",
+     "mo_ta": "Đề cho một nhận định về khối lượng phân tử cần đánh giá đúng/sai có ví dụ minh hoạ, hoặc cho khối lượng phân tử của hợp chất và khối lượng các nguyên tử còn lại rồi tìm khối lượng một nguyên tử chưa biết.\nLàm bằng cách tính khối lượng phân tử từ công thức và khối lượng nguyên tử, hoặc lấy khối lượng phân tử trừ phần đã biết.\nBiến thể: bác bỏ ý kiến bằng ví dụ; tìm khối lượng nguyên tử rồi gọi tên nguyên tố.\nLưu ý: đề chỉ hỏi nguyên nhân của tính chất, hiện tượng ⇒ thuộc dạng \"Giải thích tính chất của chất dựa vào thành phần và cách sắp xếp nguyên tử\".",
+     "ly_thuyet": "##TC Kiến thức cần nhớ\nKhối lượng phân tử bằng tổng khối lượng các nguyên tử trong phân tử, tính bằng amu.\nKhối lượng phân tử phụ thuộc vào cả số lượng và loại nguyên tử, không chỉ số lượng.\nBiết khối lượng phân tử và khối lượng các nguyên tử đã có thì tìm được khối lượng nguyên tử còn lại.\n\n##PP Cách làm bài\nViết công thức phân tử và khối lượng nguyên tử của từng nguyên tố\nTính khối lượng phân tử (hoặc lấy khối lượng phân tử trừ khối lượng các nguyên tử đã biết)\nĐối chiếu với kết quả để kết luận đúng/sai hoặc xác định nguyên tố\n\n##CY Lưu ý\nNhân khối lượng nguyên tử với số nguyên tử của nguyên tố đó trong công thức.\nBác bỏ một nhận định chung chỉ cần một phản ví dụ đúng.",
+     "vi_du": "##VD\nMột bạn học sinh cho rằng: \"Chất nào có phân tử chứa nhiều nguyên tử hơn thì luôn có khối lượng phân tử lớn hơn.\" Em hãy nhận xét ý kiến trên và lấy ví dụ để chứng minh.\n\nBài giải:\nÝ kiến trên chưa đúng, vì khối lượng phân tử phụ thuộc vào cả số lượng và loại nguyên tử tạo nên phân tử.\nPhân tử nước $H_2O$ có 3 nguyên tử, khối lượng phân tử là $2 \\times 1 + 16 = 18$ (amu).\nPhân tử khí chlorine $Cl_2$ chỉ có 2 nguyên tử nhưng khối lượng phân tử là $35,5 \\times 2 = 71$ (amu).\n$71 > 18$ nên $Cl_2$ ít nguyên tử hơn vẫn nặng hơn $H_2O$, ý kiến trên sai.",
+     "nguon_vi_du": "K07020105005",
+     "cau": ["K07020105005", "K07020105006"]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": "K07020105006: đáp án gốc nêu calcium nhưng mô tả kim loại 'làm vỏ hộp thực phẩm' không khớp Ca, nên không dùng làm ví dụ; trưởng khối nên xem lại."
+  }
+ ]
+}

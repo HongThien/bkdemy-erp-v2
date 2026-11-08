@@ -1,0 +1,10 @@
+{
+  "P1 Bài 1": { "tt": "ba_tt", "ghi": "Hai tiếp tuyến Ax, By tại hai đầu đường kính AB và tiếp tuyến thứ ba tại M cắt Ax, By tại C, D; dùng CA=CM, DB=DM nên AC+BD=CD, OC, OD là phân giác; AC·BD=R²." },
+  "P1 Bài 2": { "tt": "hai_tt", "ghi": "Từ điểm M ngoài đường tròn kẻ hai tiếp tuyến MA, MB; dùng MA=MB, OM⊥AB tại H, OM phân giác của góc AOB; kèm đường kính AC và giao điểm E của CM với đường tròn." },
+  "P1 Bài 3": { "tt": "hai_tt", "ghi": "Từ điểm A ngoài đường tròn kẻ hai tiếp tuyến AB, AC; dùng AB=AC, OA⊥BC; kèm đường kính BOD và chứng minh hình thang cân OCEA." },
+  "P1 Bài 4": { "tt": "tt_khac", "ghi": "Chứng minh MI là tiếp tuyến của nửa đường tròn (dấu hiệu nhận biết tiếp tuyến: IM ⊥ OM tại M thuộc đường tròn); không có hai tiếp tuyến cắt nhau trong giả thiết." },
+  "P1 Bài 5": { "tt": "khong_tt", "ghi": "Đường tròn, dây vuông góc đường kính, dây song song đường kính, cung bằng nhau, hình chữ nhật; không có tiếp tuyến." },
+  "P1 Bài 6": { "tt": "khong_tt", "ghi": "Diện tích hình quạt tròn và độ dài cung; không có tiếp tuyến." },
+  "P1 Bài 7": { "tt": "khong_tt", "ghi": "Con lắc: độ dài cung tròn khi biết dây và góc lệch; không có tiếp tuyến." },
+  "P1 Bài 8": { "tt": "khong_tt", "ghi": "Diện tích hai hình vành khuyên đồng tâm; không có tiếp tuyến." }
+}

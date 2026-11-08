@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T108030103023",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Tách x^3+y^3 bằng HĐT tổng hai lập phương rồi đặt nhân tử chung."
+ },
+ {
+  "ma_cau": "T108000000705",
+  "dang_bai_id": "NDB00673",
+  "chac": "cao",
+  "ly_do": "Tính (-4z)^2 rồi nhân đơn thức với đơn thức."
+ },
+ {
+  "ma_cau": "T108000000010",
+  "dang_bai_id": "NDB00670",
+  "chac": "cao",
+  "ly_do": "Tìm bậc của đa thức hai biến."
+ },
+ {
+  "ma_cau": "T108000000149",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Thu gọn biểu thức hai biến bằng nhân đơn thức với đa thức và bỏ ngoặc."
+ },
+ {
+  "ma_cau": "T108000000239",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Thu gọn đa thức và tìm Q bằng cộng trừ đa thức."
+ },
+ {
+  "ma_cau": "T108000000403",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Chứng minh không phụ thuộc biến, (x-2y)(x^2+2xy+4y^2) là HĐT hiệu hai lập phương."
+ },
+ {
+  "ma_cau": "T108000000713",
+  "dang_bai_id": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Chia đơn thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000665",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn có (x+7y)^2 ứng dụng HĐT."
+ },
+ {
+  "ma_cau": "T108000000723",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức ba hạng tử."
+ },
+ {
+  "ma_cau": "T108010503049",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Tìm x có (x+2)(x^2-2x+4)=x^3+8 HĐT, đưa về bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000615",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn có lập phương của hiệu và của tổng."
+ },
+ {
+  "ma_cau": "T108000000328",
+  "dang_bai_id": "NDB00688",
+  "chac": "cao",
+  "ly_do": "Khai triển bình phương của một tổng."
+ },
+ {
+  "ma_cau": "T108000000199",
+  "dang_bai_id": "NDB00688",
+  "chac": "cao",
+  "ly_do": "Khai triển bình phương của một hiệu."
+ },
+ {
+  "ma_cau": "T108010103056",
+  "dang_bai_id": "NDB00669",
+  "chac": "vua",
+  "ly_do": "Tìm hệ số cao nhất của đa thức chưa thu gọn; có bước nhân đơn thức với đa thức (00674)."
+ },
+ {
+  "ma_cau": "T108000000392",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Nhân đa thức với đơn thức và chia đa thức cho đơn thức, nhiều biến."
+ },
+ {
+  "ma_cau": "T108000000350",
+  "dang_bai_id": "NDB00683",
+  "chac": "cao",
+  "ly_do": "Rút gọn rồi tính giá trị biểu thức hai biến."
+ },
+ {
+  "ma_cau": "T108000000320",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân hai đa thức, 3x^2 triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000525",
+  "dang_bai_id": "NDB00667",
+  "chac": "cao",
+  "ly_do": "Tìm đơn thức không đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000334",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Tổng hai đa thức."
+ },
+ {
+  "ma_cau": "T108000000313",
+  "dang_bai_id": "NDB00666",
+  "chac": "cao",
+  "ly_do": "Bậc của đơn thức."
+ },
+ {
+  "ma_cau": "T108000000143",
+  "dang_bai_id": "NDB00682",
+  "chac": "cao",
+  "ly_do": "Tính giá trị đa thức một biến tại x=-1."
+ },
+ {
+  "ma_cau": "T108000000464",
+  "dang_bai_id": "NDB00692",
+  "chac": "cao",
+  "ly_do": "Nhận ra x^2-9/49 là hiệu hai bình phương, viết thành tích."
+ },
+ {
+  "ma_cau": "T108010103034",
+  "dang_bai_id": "NDB00665",
+  "chac": "vua",
+  "ly_do": "Hỏi phần biến của đơn thức chưa thu gọn; gần dạng tìm hệ số đơn thức nhưng không đúng hẳn."
+ },
+ {
+  "ma_cau": "T108000000715",
+  "dang_bai_id": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Chia đơn thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108010501039",
+  "dang_bai_id": "NDB00680",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức một biến bằng nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108010103045",
+  "dang_bai_id": "NDB00669",
+  "chac": "cao",
+  "ly_do": "Xác định hệ số cao nhất của đa thức đã thu gọn."
+ },
+ {
+  "ma_cau": "T108000000468",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000641",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức nhiều biến rồi chứng minh chia hết cho 2."
+ },
+ {
+  "ma_cau": "T108000000292",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Xác định đa thức chia hết cho đơn thức nào."
+ },
+ {
+  "ma_cau": "T108030301051",
+  "dang_bai_id": "NDB00976",
+  "chac": "cao",
+  "ly_do": "Phân tích bằng nhóm hạng tử, không dùng HĐT."
+ },
+ {
+  "ma_cau": "T108030301098",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Nhóm hạng tử rồi dùng hiệu hai bình phương x^2-4; dùng HĐT nên xếp dạng HĐT."
+ },
+ {
+  "ma_cau": "T108000000721",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000401",
+  "dang_bai_id": "NDB00683",
+  "chac": "cao",
+  "ly_do": "Thu gọn rồi tính giá trị đa thức hai biến; yêu cầu chính ở ý b."
+ },
+ {
+  "ma_cau": "T108000000693",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Bỏ ngoặc, gộp x, đưa về bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000758",
+  "dang_bai_id": "NDB00687",
+  "chac": "cao",
+  "ly_do": "Thu gọn vế trái còn 2x^2=0, không phải bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000291",
+  "dang_bai_id": "NDB00668",
+  "chac": "cao",
+  "ly_do": "Đếm biểu thức là đa thức."
+ },
+ {
+  "ma_cau": "T108020601024",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn có (2x-1)^2 ứng dụng HĐT."
+ },
+ {
+  "ma_cau": "T108000000339",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Lập đa thức biểu thị tiền điện theo x."
+ },
+ {
+  "ma_cau": "T108000000704",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Hiệu hai đa thức M-N."
+ },
+ {
+  "ma_cau": "T108000000388",
+  "dang_bai_id": "NDB00688",
+  "chac": "cao",
+  "ly_do": "Khai triển bình phương của một hiệu."
+ },
+ {
+  "ma_cau": "T108000000613",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn có bình phương tổng, hiệu và hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000277",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Lập biểu thức diện tích sân theo a."
+ },
+ {
+  "ma_cau": "T108000000590",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Chứng minh không phụ thuộc biến bằng nhân đơn thức với đa thức, không có HĐT."
+ },
+ {
+  "ma_cau": "T108000000586",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Lập biểu thức tổng diện tích đất theo x, y."
+ },
+ {
+  "ma_cau": "T108000000737",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Khai triển hai vế, 3x^2 triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000397",
+  "dang_bai_id": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Chia đơn thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000221",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Tổng hai đa thức A+B."
+ },
+ {
+  "ma_cau": "T108000000682",
+  "dang_bai_id": "NDB00695",
+  "chac": "cao",
+  "ly_do": "Tìm GTNN của tam thức bậc hai một biến."
+ },
+ {
+  "ma_cau": "T108000000108",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm nhận biết đơn thức."
+ },
+ {
+  "ma_cau": "T108040201003",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000490",
+  "dang_bai_id": "NDB00975",
+  "chac": "cao",
+  "ly_do": "Khai triển (3x+2)^2, triệt tiêu 12x, còn x^2=4."
+ },
+ {
+  "ma_cau": "T108000000097",
+  "dang_bai_id": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Đơn thức chia hết cho đơn thức nào."
+ },
+ {
+  "ma_cau": "T108000000491",
+  "dang_bai_id": "NDB00975",
+  "chac": "cao",
+  "ly_do": "Khai triển (x+3)^2, triệt tiêu 6x, còn x^2=16."
+ },
+ {
+  "ma_cau": "T108000000644",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm nhận biết đơn thức."
+ },
+ {
+  "ma_cau": "T108000000013",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Lập biểu thức diện tích khu vườn sau thay đổi theo a, b."
+ },
+ {
+  "ma_cau": "T108000000002",
+  "dang_bai_id": "NDB00667",
+  "chac": "cao",
+  "ly_do": "Tìm đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000378",
+  "dang_bai_id": "NDB00971",
+  "chac": "cao",
+  "ly_do": "Tính nhanh bằng bình phương của một tổng (76+24)^2."
+ },
+ {
+  "ma_cau": "T108030201043",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Đặt y rồi nhận ra (y-1)^2; có dùng HĐT nên xếp dạng HĐT."
+ },
+ {
+  "ma_cau": "T108000000171",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức ba hạng tử."
+ },
+ {
+  "ma_cau": "T108000000672",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Tìm x có bình phương tổng, hiệu và tích tổng hiệu, đưa về bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000080",
+  "dang_bai_id": "NDB00971",
+  "chac": "cao",
+  "ly_do": "Tính nhanh bằng bình phương của một hiệu (2005-5)^2."
+ },
+ {
+  "ma_cau": "T108020402001",
+  "dang_bai_id": "NDB00971",
+  "chac": "cao",
+  "ly_do": "Tính nhanh 79.81 bằng hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000495",
+  "dang_bai_id": "NDB00981",
+  "chac": "cao",
+  "ly_do": "Thu gọn về x^2-9x+8=0 rồi phân tích thành tích để tìm x."
+ },
+ {
+  "ma_cau": "T108000000130",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Lập biểu thức diện tích mảnh vườn sau khi mở rộng theo x."
+ },
+ {
+  "ma_cau": "T108000000365",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000253",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm nhận biết đơn thức."
+ },
+ {
+  "ma_cau": "T108000000430",
+  "dang_bai_id": "NDB01356",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế tìm sản lượng lớn nhất, hàm bậc hai của n."
+ },
+ {
+  "ma_cau": "T108000000193",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm nhận biết đơn thức."
+ },
+ {
+  "ma_cau": "T108000000784",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000447",
+  "dang_bai_id": "NDB00667",
+  "chac": "cao",
+  "ly_do": "Tìm đơn thức đồng dạng."
+ }
+]

@@ -1,0 +1,86 @@
+[
+ {
+  "ma": "BT.08.072.01",
+  "so": "B1",
+  "loi_giai": "Xét tứ giác $ADME$ có:\n$\\widehat{DAE} = 90^\\circ$ (vì tam giác $ABC$ vuông ở $A$).\n$\\widehat{ADM} = 90^\\circ$ (vì $MD \\perp AB$).\n$\\widehat{AEM} = 90^\\circ$ (vì $ME \\perp AC$).\nVậy tứ giác $ADME$ có ba góc vuông nên là hình chữ nhật.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.02",
+  "so": "B2",
+  "loi_giai": "Theo B1, $ADME$ là hình chữ nhật.\nVì $M$ là trung điểm cạnh huyền $BC$ của tam giác vuông $ABC$ nên $MA = MB = MC = \\dfrac{BC}{2}$.\nTam giác $MAB$ cân tại $M$ có đường cao $MD$ nên $MD$ cũng là đường trung tuyến, suy ra $D$ là trung điểm của $AB$, tức là $AB = 2AD$.\nChứng minh tương tự, tam giác $MAC$ cân tại $M$ có đường cao $ME$ nên $E$ là trung điểm của $AC$, tức là $AC = 2AE$.\nĐiều kiện cần: nếu $ADME$ là hình vuông thì $AD = AE$, suy ra $AB = 2AD = 2AE = AC$. Tam giác $ABC$ vuông ở $A$ có $AB = AC$ nên vuông cân tại $A$.\nĐiều kiện đủ: nếu tam giác $ABC$ vuông cân tại $A$ thì $AB = AC$, suy ra $AD = \\dfrac{AB}{2} = \\dfrac{AC}{2} = AE$.\nHình chữ nhật $ADME$ có hai cạnh kề bằng nhau nên là hình vuông.\nVậy tam giác $ABC$ vuông cân tại $A$ thì $ADME$ là hình vuông.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.03",
+  "so": "B3",
+  "loi_giai": "Vì $M$ là trung điểm cạnh huyền $BC$ của tam giác vuông $ABC$ nên $MA = MB = MC = \\dfrac{BC}{2}$ (trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền).\nTam giác $MAB$ có $MA = MB$ nên cân tại $M$.\nTrong tam giác cân $MAB$, $MD$ là đường cao ($MD \\perp AB$) nên đồng thời là đường trung tuyến, suy ra $D$ là trung điểm của $AB$.\nTương tự, tam giác $MAC$ có $MA = MC$ nên cân tại $M$, đường cao $ME$ ($ME \\perp AC$) đồng thời là đường trung tuyến, suy ra $E$ là trung điểm của $AC$.\nVậy $D, E$ lần lượt là trung điểm của $AB, AC$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.04",
+  "so": "B4",
+  "loi_giai": "Theo B1, $ADME$ là hình chữ nhật, có hai đường chéo là $DE$ và $AM$ nên $DE = AM$.\nVì $M$ là trung điểm cạnh huyền $BC$ của tam giác vuông $ABC$ nên $AM = \\dfrac{BC}{2}$ (trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền).\nVậy $DE = AM = \\dfrac{BC}{2}$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.05",
+  "so": "B5",
+  "loi_giai": "Vì $MD \\perp AB$ và $AC \\perp AB$ nên $MD \\parallel AC$.\nVì $B, M, C$ thẳng hàng và $E$ thuộc $AC$ nên $\\widehat{BMD} = \\widehat{MCE}$ (hai góc đồng vị).\nXét hai tam giác vuông $BDM$ (vuông ở $D$) và $MEC$ (vuông ở $E$) có:\n$BM = MC$ (vì $M$ là trung điểm của $BC$).\n$\\widehat{BMD} = \\widehat{MCE}$ (cmt).\nVậy $\\Delta BDM = \\Delta MEC$ (cạnh huyền - góc nhọn).",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.06",
+  "so": "B6",
+  "loi_giai": "Tứ giác $ADME$ có ba góc vuông nên là hình chữ nhật, suy ra $ME \\parallel AD$, $MD \\parallel AE$, $ME = AD$, $MD = AE$.\nTheo B3, $D, E$ lần lượt là trung điểm của $AB, AC$ nên $AD = BD$ và $AE = EC$.\nXét tứ giác $BDEM$: $ME \\parallel AD$ nên $ME \\parallel BD$ (vì $D$ thuộc $AB$).\nMặt khác $ME = AD = BD$.\nTứ giác $BDEM$ có một cặp cạnh đối song song và bằng nhau nên là hình bình hành.\nXét tứ giác $DMCE$: $DM \\parallel AE$ nên $DM \\parallel EC$ (vì $E$ thuộc $AC$).\nMặt khác $DM = AE = EC$.\nTứ giác $DMCE$ có một cặp cạnh đối song song và bằng nhau nên là hình bình hành.\nVậy $BDEM$ và $DMCE$ là các hình bình hành.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.07",
+  "so": "B7",
+  "loi_giai": "Theo B6, tứ giác $BDEM$ là hình bình hành.\nSuy ra $DE \\parallel BM$ (hai cạnh đối của hình bình hành).\nVì $B, M, C$ thẳng hàng nên $BM$ nằm trên đường thẳng $BC$.\nVậy $DE \\parallel BC$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.08",
+  "so": "B8",
+  "loi_giai": "Theo B1, $ADME$ là hình chữ nhật nên $ME \\parallel AD$ và $ME = AD$.\nVì $M$ là trung điểm cạnh huyền $BC$ của tam giác vuông $ABC$ nên $MA = MB = \\dfrac{BC}{2}$, do đó tam giác $MAB$ cân tại $M$.\nĐường cao $MD$ của tam giác cân $MAB$ cũng là trung tuyến nên $D$ là trung điểm của $AB$, suy ra $BD = AD$.\nDo đó $BD = ME$, mà $BD \\parallel ME$ (vì $ME \\parallel AD$, $D$ thuộc $AB$).\nTứ giác $BDEM$ có một cặp cạnh đối song song và bằng nhau nên là hình bình hành, suy ra $DE \\parallel BM$.\nVì $P, Q$ lần lượt thuộc $MB, MC$ nên $PQ$ nằm trên đường thẳng $BC$, do đó $DE \\parallel PQ$ (và $D$ không nằm trên $BC$).\nTứ giác $DPQE$ có $DE \\parallel PQ$ nên là hình thang (đáy $DE$ và $PQ$).",
+  "ghi_chu": "Thực ra DE = BC/2 = PQ nên DPQE còn là hình bình hành (B9 cần dùng điều này và tự chứng minh lại)."
+ },
+ {
+  "ma": "BT.08.072.09",
+  "so": "B9",
+  "loi_giai": "Theo B8, $DE \\parallel PQ$.\nTheo B1, $ADME$ là hình chữ nhật nên $DE = AM$, mà $AM = \\dfrac{BC}{2}$ (trung tuyến ứng với cạnh huyền) nên $DE = \\dfrac{BC}{2}$.\nVì $P, Q$ là trung điểm của $MB, MC$ nên $M$ nằm giữa $P$ và $Q$ và $PQ = PM + MQ = \\dfrac{MB}{2} + \\dfrac{MC}{2} = \\dfrac{BC}{2}$.\nVậy $DE = PQ$ và $DE \\parallel PQ$, suy ra $DPQE$ là hình bình hành.\nHình bình hành $DPQE$ là hình chữ nhật khi và chỉ khi nó có một góc vuông, tức là khi và chỉ khi $\\widehat{DPQ} = 90^\\circ$. (1)\nXét tam giác $BDM$ vuông ở $D$ (vì $MD \\perp AB$), $P$ là trung điểm của cạnh huyền $BM$ nên $PD = PB = PM$.\nTam giác $PDB$ cân tại $P$ nên $\\widehat{PDB} = \\widehat{PBD} = \\widehat{ABC}$.\nGóc $\\widehat{DPM}$ là góc ngoài tại đỉnh $P$ của tam giác $PDB$ nên $\\widehat{DPM} = \\widehat{PDB} + \\widehat{PBD} = 2\\widehat{ABC}$.\nVì $M$ nằm giữa $P$ và $Q$ nên tia $PQ$ trùng tia $PM$, do đó $\\widehat{DPQ} = \\widehat{DPM} = 2\\widehat{ABC}$. (2)\nTừ (1) và (2): $DPQE$ là hình chữ nhật khi và chỉ khi $2\\widehat{ABC} = 90^\\circ$, tức là $\\widehat{ABC} = 45^\\circ$.\nĐiều kiện cần: nếu $DPQE$ là hình chữ nhật thì $\\widehat{ABC} = 45^\\circ$, suy ra $\\widehat{ACB} = 90^\\circ - 45^\\circ = 45^\\circ$, nên $\\widehat{ABC} = \\widehat{ACB}$ và tam giác $ABC$ vuông cân tại $A$.\nĐiều kiện đủ: nếu tam giác $ABC$ vuông cân tại $A$ thì $\\widehat{ABC} = 45^\\circ$, suy ra $\\widehat{DPQ} = 90^\\circ$ nên hình bình hành $DPQE$ là hình chữ nhật.\nVậy tam giác $ABC$ vuông cân tại $A$ thì $DPQE$ là hình chữ nhật.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.10",
+  "so": "B10",
+  "loi_giai": "Xét hình vẽ với $AB < AC$ (khi đó $H$ nằm giữa $B$ và $M$, $H \\ne M$ nên $DHME$ là một tứ giác).\nTheo B3, $D, E$ lần lượt là trung điểm của $AB, AC$, nên $AD = BD$ và $AE = EC$.\nTheo B1, $ADME$ là hình chữ nhật nên $ME \\parallel AD$, $ME = AD$ và $DM = AE$.\nDo đó $ME \\parallel BD$ và $ME = AD = BD$, nên tứ giác $BDEM$ là hình bình hành, suy ra $DE \\parallel BM$.\nVì $H, M$ thuộc $BC$ nên $DE \\parallel HM$, vậy $DHME$ là hình thang (đáy $DE$ và $HM$).\nTam giác $AHC$ vuông ở $H$ (vì $AH \\perp BC$) có $E$ là trung điểm của cạnh huyền $AC$ nên $HE = \\dfrac{AC}{2} = AE$.\nMà $DM = AE$ (cmt) nên $DM = HE$.\nHình thang $DHME$ có hai đường chéo $DM$ và $HE$ bằng nhau nên là hình thang cân.",
+  "ghi_chu": "Đề mặc định hình vẽ có AB < AC (H nằm giữa B và M). Nếu AB = AC thì H trùng M, tứ giác DHME suy biến; nếu AB > AC thì H nằm giữa M và C và thứ tự đỉnh D-H-M-E làm tứ giác tự cắt (phải viết DMHE). Lời giải đã nêu rõ giả thiết AB < AC."
+ },
+ {
+  "ma": "BT.08.072.11",
+  "so": "B11",
+  "loi_giai": "Theo B3, $D, E$ lần lượt là trung điểm của $AB, AC$.\nTam giác $AHB$ vuông ở $H$ (vì $AH \\perp BC$) có $D$ là trung điểm của cạnh huyền $AB$ nên $HD = \\dfrac{AB}{2} = DA$.\nTam giác $AHC$ vuông ở $H$ có $E$ là trung điểm của cạnh huyền $AC$ nên $HE = \\dfrac{AC}{2} = EA$.\nXét $\\Delta DHE$ và $\\Delta DAE$ có:\n$DH = DA$ (cmt).\n$EH = EA$ (cmt).\n$DE$ là cạnh chung.\nSuy ra $\\Delta DHE = \\Delta DAE$ (c.c.c).\nDo đó $\\widehat{DHE} = \\widehat{DAE} = 90^\\circ$ (hai góc tương ứng, tam giác $ABC$ vuông ở $A$).\nVậy $\\widehat{DHE} = 90^\\circ$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.12",
+  "so": "B12",
+  "loi_giai": "Theo B3, $E$ là trung điểm của $AC$.\nVì $K$ đối xứng với $M$ qua $E$ nên $E$ là trung điểm của $MK$.\nTứ giác $AMCK$ có hai đường chéo $AC$ và $MK$ cắt nhau tại trung điểm $E$ của mỗi đường nên là hình bình hành.\nMặt khác, $K$ nằm trên đường thẳng $ME$ mà $ME \\perp AC$ nên $MK \\perp AC$.\nHình bình hành $AMCK$ có hai đường chéo vuông góc với nhau nên là hình thoi.\nVậy $AMCK$ là hình thoi.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.13",
+  "so": "B13",
+  "loi_giai": "Theo B12, $AMCK$ là hình thoi, có hai đường chéo là $AC$ và $MK$.\nHình thoi là hình vuông khi và chỉ khi hai đường chéo bằng nhau, tức là $AC = MK$. (1)\nTứ giác $ADME$ có ba góc vuông nên là hình chữ nhật, suy ra $ME = AD$.\nVì $M$ là trung điểm cạnh huyền $BC$ nên $MA = MB$, tam giác $MAB$ cân tại $M$ có đường cao $MD$ cũng là trung tuyến, suy ra $D$ là trung điểm của $AB$ và $AD = \\dfrac{AB}{2}$.\nVì $E$ là trung điểm của $MK$ (do $K$ đối xứng với $M$ qua $E$) nên $MK = 2ME = 2AD = AB$. (2)\nTừ (1) và (2): $AMCK$ là hình vuông khi và chỉ khi $AC = AB$.\nĐiều kiện cần: nếu $AMCK$ là hình vuông thì $AC = MK = AB$, nên tam giác $ABC$ vuông ở $A$ có $AB = AC$, tức là vuông cân tại $A$.\nĐiều kiện đủ: nếu tam giác $ABC$ vuông cân tại $A$ thì $AC = AB = MK$, hình thoi $AMCK$ có hai đường chéo bằng nhau nên là hình vuông.\nVậy tam giác $ABC$ vuông cân tại $A$ thì $AMCK$ là hình vuông.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.072.14",
+  "so": "B14",
+  "loi_giai": "Tứ giác $ADME$ có ba góc vuông nên là hình chữ nhật (B1), suy ra $ME \\parallel AD$ và $ME = AD$.\nVì $M$ là trung điểm cạnh huyền $BC$ nên $MA = MB$, tam giác $MAB$ cân tại $M$ có đường cao $MD$ cũng là trung tuyến, suy ra $D$ là trung điểm của $AB$ và $AD = \\dfrac{AB}{2}$.\nVì $K$ đối xứng với $M$ qua $E$ nên $E$ là trung điểm của $MK$ và $K$ nằm trên đường thẳng $ME$.\nDo $ME \\parallel AD$ (mà $AD$ nằm trên $AB$) nên $KM \\parallel AB$.\nMặt khác $KM = 2ME = 2AD = AB$.\nTứ giác $ABMK$ có $KM \\parallel AB$ và $KM = AB$ nên là hình bình hành.\nVậy $ABMK$ là hình bình hành.",
+  "ghi_chu": ""
+ }
+]

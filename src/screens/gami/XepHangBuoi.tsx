@@ -1,4 +1,4 @@
-// 🏆 XẾP HẠNG BUỔI + 🎁 GAME TRONG BUỔI (spec-game-buoi-hoc.md §5b, Thùy 27/09) — nằm đầu tab "Chấm bài trên lớp".
+// 🏆 XẾP HẠNG BUỔI + 🎁 GAME TRONG BUỔI (spec-game-buoi-hoc.md §5b, Thùy 27/09) — là NỘI DUNG tab "Xếp hạng & quay thưởng" (Thùy 28/10: bỏ chấm bài trên lớp mức 1–5; buổi từ 01/10 không còn điểm gợi ý, GV tự chọn).
 // Gợi ý hạng từ điểm bài trên lớp của CHÍNH buổi (bằng điểm = cùng hạng) → GV chọn Nhất + Nhì (lớp có mặt >10: tối đa
 // 2 Nhì), còn lại Giải 3 → CHỐT (khoá). Sau chốt mỗi bạn có mặt 1 lượt game mang mức giải; GV chọn game, bấm từng bạn:
 // DB rút EXP + ghi sổ (fn_buoi_game_choi) → ERP gửi kết quả xuống TV (kênh bk-lop:<buổi>) để diễn. Đã có bạn chơi ⇒ không
@@ -142,7 +142,7 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
         <div className="p-3">
           <p className="mb-2 text-xs text-slate-500">{tt.co_du_lieu
             ? 'Gợi ý theo điểm bài trên lớp của buổi này (bằng điểm = cùng hạng — thầy cô chọn). Có thể đổi tuỳ ý.'
-            : 'Buổi này chưa có điểm bài trên lớp — thầy cô tự chọn Nhất / Nhì.'} Các bạn còn lại là Giải 3.</p>
+            : 'Thầy cô chọn Nhất / Nhì cho buổi này.'} Các bạn còn lại là Giải 3.</p>
           <div className="space-y-1">
             {tt.hs.map((h) => {
               const la1 = nhat === h.hoc_sinh_id, la2 = nhi.includes(h.hoc_sinh_id)

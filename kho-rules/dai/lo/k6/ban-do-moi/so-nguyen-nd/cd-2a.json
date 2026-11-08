@@ -1,0 +1,128 @@
+{
+  "cd": 2,
+  "nhom": [
+    {
+      "ten": "Cộng, trừ số nguyên",
+      "ly_thuyet": "##TC\nCộng hai số nguyên âm: cộng hai phần số tự nhiên rồi đặt dấu \"$-$\" trước kết quả: $(-a)+(-b)=-(a+b)$ (với $a, b$ là số tự nhiên khác $0$).\nCộng hai số nguyên khác dấu (không đối nhau): lấy phần số tự nhiên lớn trừ phần số tự nhiên nhỏ, kết quả mang dấu của số có phần số tự nhiên lớn hơn.\nHai số đối nhau có tổng bằng $0$: $a+(-a)=0$. Cộng với $0$ thì giữ nguyên: $a+0=a$.\nTrừ hai số nguyên: $a-b=a+(-b)$ (trừ cho một số bằng cộng với số đối của số đó).\n\n##PP\nXác định dấu của từng số hạng, rồi chọn quy tắc: cùng dấu, khác dấu hay hai số đối nhau.\nPhép trừ thì đổi thành phép cộng với số đối của số trừ, rồi áp dụng quy tắc cộng.\nDãy nhiều số hạng thì thực hiện lần lượt từ trái sang phải, mỗi bước viết rõ kết quả trung gian kèm dấu.\n\n##CY\n$-5+3$ không bằng $-(5+3)$: số hạng $-5$ mang dấu âm sẵn, nên đây là phép cộng hai số khác dấu.\nTrừ cho một số âm thì thành cộng với số dương: $a-(-b)=a+b$.\nHiệu của hai số nguyên có thể là số âm khi số bị trừ nhỏ hơn số trừ.",
+      "dang": [
+        {
+          "ten": "Cộng hai số nguyên",
+          "ly_thuyet": "##PP\nBước 1: xác định dấu của hai số hạng.\nBước 2: cùng dấu âm thì cộng hai phần số tự nhiên rồi đặt dấu \"$-$\"; khác dấu thì lấy phần số lớn trừ phần số nhỏ rồi đặt dấu của số có phần số lớn hơn; hai số đối nhau thì tổng bằng $0$.\nBước 3: viết kết quả kèm dấu.\n\n##CY\nKết quả của hai số khác dấu mang dấu của số có phần số tự nhiên LỚN HƠN, không phải dấu của số đứng trước.\nHai số đối nhau như $63$ và $-63$ có tổng $0$, không cần tính.",
+          "vi_du": "##VD\nTính:\na) $(-25)+(-17)$\nb) $(-34)+18$\n**Hướng dẫn giải:**\na) Hai số cùng dấu âm: cộng hai phần số tự nhiên $25+17=42$, đặt dấu \"$-$\". Vậy $(-25)+(-17)=-42$.\n\nb) Hai số khác dấu: $34-18=16$. Số $-34$ có phần số tự nhiên lớn hơn nên kết quả mang dấu \"$-$\". Vậy $(-34)+18=-16$.\n\n##VD\nTính:\na) $(-47)+47$\nb) $63+(-85)$\n**Hướng dẫn giải:**\na) $-47$ và $47$ là hai số đối nhau nên $(-47)+47=0$.\n\nb) Hai số khác dấu: $85-63=22$. Số $-85$ có phần số tự nhiên lớn hơn nên kết quả mang dấu \"$-$\".\n\nVậy $63+(-85)=-22$.",
+          "kiem": [
+            "(-25)+(-17)===-42 && (-34)+18===-16",
+            "(-47)+47===0 && 63+(-85)===-22"
+          ]
+        },
+        {
+          "ten": "Trừ hai số nguyên",
+          "ly_thuyet": "##PP\nBước 1: đổi phép trừ thành phép cộng với số đối của số trừ: $a-b=a+(-b)$.\nBước 2: áp dụng quy tắc cộng hai số nguyên (cùng dấu hay khác dấu).\n\n##CY\nKhi số trừ là số âm, số đối của nó là số dương: $a-(-b)=a+b$, kết quả lớn hơn $a$.\nKết quả có thể âm khi số bị trừ nhỏ hơn số trừ, như $9-15=-6$.",
+          "vi_du": "##VD\nTính:\na) $9-15$\nb) $(-8)-12$\n**Hướng dẫn giải:**\na) $9-15=9+(-15)$. Hai số khác dấu, $15-9=6$, số $-15$ có phần số lớn hơn nên kết quả âm.\n\nVậy $9-15=-6$.\n\nb) $(-8)-12=(-8)+(-12)$. Hai số cùng dấu âm, $8+12=20$.\n\nVậy $(-8)-12=-20$.\n\n##VD\nTính:\na) $(-14)-(-20)$\nb) $6-(-17)$\n**Hướng dẫn giải:**\na) $(-14)-(-20)=(-14)+20$ (số đối của $-20$ là $20$). Hai số khác dấu, $20-14=6$, số $20$ có phần số lớn hơn nên kết quả dương.\n\nVậy $(-14)-(-20)=6$.\n\nb) $6-(-17)=6+17=23$.\n\nVậy $6-(-17)=23$.",
+          "kiem": [
+            "9-15===-6 && (-8)-12===-20",
+            "(-14)-(-20)===6 && 6-(-17)===23"
+          ]
+        },
+        {
+          "ten": "Cộng, trừ nhiều số nguyên",
+          "ly_thuyet": "##PP\nBước 1: đổi các phép trừ thành phép cộng với số đối (nếu thấy dễ nhìn hơn), hoặc giữ nguyên phép trừ và áp dụng $a-(-b)=a+b$.\nBước 2: thực hiện lần lượt từ trái sang phải, mỗi bước chỉ cộng hoặc trừ hai số.\nBước 3: viết kết quả cuối cùng.\n\n##CY\nMỗi bước phải giữ dấu của kết quả trung gian (ví dụ $-13$), rồi mới tính tiếp với số kế tiếp.\nDấu \"$-$\" đứng trước một số thuộc về số đó khi đổi chỗ các số hạng.",
+          "vi_du": "##VD\nTính $15-28+(-9)-(-12)$.\n**Hướng dẫn giải:**\nThực hiện từ trái sang phải.\n\n$15-28=-13$.\n\n$-13+(-9)=-22$.\n\n$-22-(-12)=-22+12=-10$.\n\nVậy $15-28+(-9)-(-12)=-10$.\n\n##VD\nTính $-34+51-(-26)-80$.\n**Hướng dẫn giải:**\n$-34+51=17$.\n\n$17-(-26)=17+26=43$.\n\n$43-80=-37$.\n\nVậy $-34+51-(-26)-80=-37$.",
+          "kiem": [
+            "15-28+(-9)-(-12)===-10",
+            "-34+51-(-26)-80===-37"
+          ]
+        }
+      ]
+    },
+    {
+      "ten": "Quy tắc dấu ngoặc",
+      "ly_thuyet": "##TC\nNgoặc có dấu \"$+$\" đằng trước: bỏ ngoặc và giữ nguyên dấu các số hạng trong ngoặc: $a+(b-c)=a+b-c$.\nNgoặc có dấu \"$-$\" đằng trước: bỏ ngoặc và đổi dấu TẤT CẢ các số hạng trong ngoặc: $a-(b-c+d)=a-b+c-d$.\nSố hạng đầu trong ngoặc không ghi dấu được hiểu là có dấu \"$+$\".\n\n##PP\nBỏ ngoặc từ trong ra ngoài (ngoặc tròn, rồi ngoặc vuông, rồi ngoặc nhọn); với mỗi ngoặc, nhìn dấu đứng ngay trước nó để quyết định giữ hay đổi dấu.\nSau khi bỏ hết ngoặc, thực hiện cộng trừ từ trái sang phải (hoặc nhóm lại cho hợp lí).\n\n##CY\nĐổi dấu tất cả các số hạng trong ngoặc, không chỉ số hạng đầu.\nDấu ngoặc có \"$-$\" đứng trước dễ lẫn với số âm: $a-(-b)=a+b$.",
+      "dang": [
+        {
+          "ten": "Nhận biết kết quả khi bỏ dấu ngoặc",
+          "ly_thuyet": "##PP\nBước 1: nhìn dấu đứng ngay trước ngoặc: dấu \"$+$\" thì giữ nguyên các số hạng, dấu \"$-$\" thì đổi dấu từng số hạng.\nBước 2: viết biểu thức sau khi bỏ ngoặc rồi đối chiếu với từng phương án.\n\n##CY\nPhương án sai thường chỉ đổi dấu số hạng đầu hoặc quên đổi dấu một số hạng — kiểm tra từng số hạng một.\nPhần nằm ngoài ngoặc không đổi dấu.",
+          "vi_du": "##VD\nBỏ dấu ngoặc của biểu thức $12-(5-8+3)$, ta được biểu thức nào dưới đây?\nA. $12-5-8+3$\nB. $12-5+8-3$\nC. $12+5-8-3$\nD. $12+5+8-3$\n**Hướng dẫn giải:**\nTrước ngoặc là dấu \"$-$\" nên phải đổi dấu cả ba số hạng trong ngoặc: $+5$ thành $-5$, $-8$ thành $+8$, $+3$ thành $-3$.\n\nTa được $12-5+8-3$.\n\nVậy chọn B.\n\n##VD\nBỏ dấu ngoặc của biểu thức $20+(-4+7)-(3-10)$, ta được biểu thức nào dưới đây?\nA. $20-4+7-3-10$\nB. $20-4+7+3-10$\nC. $20+4-7-3+10$\nD. $20-4+7-3+10$\n**Hướng dẫn giải:**\nNgoặc thứ nhất có dấu \"$+$\" đứng trước nên giữ nguyên: $-4+7$.\n\nNgoặc thứ hai có dấu \"$-$\" đứng trước nên đổi dấu: $3$ thành $-3$, $-10$ thành $+10$.\n\nTa được $20-4+7-3+10$.\n\nVậy chọn D.",
+          "kiem": [
+            "12-(5-8+3)===12-5+8-3 && 12-(5-8+3)!==12-5-8+3 && 12-(5-8+3)!==12+5-8-3 && 12-(5-8+3)!==12+5+8-3",
+            "20+(-4+7)-(3-10)===20-4+7-3+10 && 20+(-4+7)-(3-10)!==20-4+7-3-10 && 20+(-4+7)-(3-10)!==20-4+7+3-10 && 20+(-4+7)-(3-10)!==20+4-7-3+10"
+          ]
+        },
+        {
+          "ten": "Bỏ dấu ngoặc rồi tính",
+          "ly_thuyet": "##PP\nBước 1: bỏ ngoặc từ trong ra ngoài theo quy tắc dấu ngoặc.\nBước 2: viết lại biểu thức không còn ngoặc.\nBước 3: cộng trừ lần lượt từ trái sang phải (hoặc nhóm các số hạng cho hợp lí) để ra kết quả.\n\n##CY\nViết lại biểu thức sau mỗi lần bỏ ngoặc, không bỏ nhiều ngoặc cùng lúc khi chưa vững.\nNgoặc nằm trong ngoặc có dấu \"$-$\" đứng trước thì khi bỏ ngoặc ngoài nhớ đổi dấu cả các số hạng vừa xuất hiện.",
+          "vi_du": "##VD\nTính:\na) $27-(15-40)$\nb) $(-60)+(25-48)-(-30)$\n**Hướng dẫn giải:**\na) Dấu \"$-$\" đứng trước ngoặc nên đổi dấu các số hạng trong ngoặc:\n\n$27-(15-40)=27-15+40=12+40=52$.\n\nb) Ngoặc $(25-48)$ có dấu \"$+$\" đứng trước nên giữ nguyên; $-(-30)=+30$.\n\n$(-60)+(25-48)-(-30)=-60+25-48+30$.\n\n$-60+25=-35$; $-35-48=-83$; $-83+30=-53$.\n\nVậy a) $52$; b) $-53$.\n\n##VD\nTính:\na) $45-[20-(15-38)]$\nb) $-18+(-27)-(-45-30)$\n**Hướng dẫn giải:**\na) Bỏ ngoặc tròn trong cùng trước (dấu \"$-$\" đứng trước nên đổi dấu):\n\n$45-[20-(15-38)]=45-[20-15+38]$.\n\nBỏ ngoặc vuông (dấu \"$-$\" đứng trước nên đổi dấu cả ba số hạng):\n\n$=45-20+15-38=25+15-38=40-38=2$.\n\nb) $-18+(-27)-(-45-30)=-18-27+45+30$.\n\n$-18-27=-45$; $-45+45=0$; $0+30=30$.\n\nVậy a) $2$; b) $30$.",
+          "kiem": [
+            "27-(15-40)===52 && (-60)+(25-48)-(-30)===-53",
+            "45-(20-(15-38))===2 && -18+(-27)-(-45-30)===30"
+          ]
+        }
+      ]
+    },
+    {
+      "ten": "Nhân, chia số nguyên",
+      "ly_thuyet": "##TC\nNhân hai số nguyên khác dấu: nhân hai phần số tự nhiên rồi đặt dấu \"$-$\": $(-a).b=-(a.b)$.\nNhân hai số nguyên cùng dấu: nhân hai phần số tự nhiên (tích dương): $(-a).(-b)=a.b$.\nSố nguyên nhân với $0$ bằng $0$: $a.0=0$.\nTích nhiều thừa số khác $0$: có số chẵn thừa số âm thì tích dương, có số lẻ thừa số âm thì tích âm.\nChia hết hai số nguyên: thương mang dấu như quy tắc nhân (cùng dấu: dương, khác dấu: âm); $0:b=0$ với $b\\ne 0$.\n\n##PP\nXác định dấu của kết quả trước (đếm số thừa số âm), sau đó tính phần số tự nhiên rồi đặt dấu.\nChia hết: kiểm tra lại bằng phép nhân, thương nhân số chia phải bằng số bị chia.\n\n##CY\nTích của hai số âm là số DƯƠNG.\nKhông có phép chia cho $0$.\nCó một thừa số bằng $0$ thì cả tích bằng $0$, không cần xét dấu.",
+      "dang": [
+        {
+          "ten": "Nhân hai số nguyên",
+          "ly_thuyet": "##PP\nBước 1: đếm số thừa số âm để biết dấu của tích (có thừa số $0$ thì tích bằng $0$).\nBước 2: nhân các phần số tự nhiên.\nBước 3: đặt dấu đã xác định ở bước 1 trước kết quả.\n\n##CY\nTích nhiều thừa số có thể nhân lần lượt từ trái sang phải, mỗi bước chỉ nhân hai số và giữ dấu.\nSố lẻ thừa số âm cho tích âm, số chẵn thừa số âm cho tích dương.",
+          "vi_du": "##VD\nTính:\na) $(-16).5$\nb) $(-8).(-12)$\nc) $25.(-4)$\n**Hướng dẫn giải:**\na) Hai thừa số khác dấu nên tích âm: $16.5=80$. Vậy $(-16).5=-80$.\n\nb) Hai thừa số cùng dấu âm nên tích dương: $8.12=96$. Vậy $(-8).(-12)=96$.\n\nc) Hai thừa số khác dấu nên tích âm: $25.4=100$. Vậy $25.(-4)=-100$.\n\n##VD\nTính:\na) $(-2).(-5).(-3).4$\nb) $(-7).0.(-19)$\n**Hướng dẫn giải:**\na) Có $3$ thừa số âm (số lẻ) nên tích mang dấu \"$-$\".\n\n$(-2).(-5)=10$; $10.(-3)=-30$; $-30.4=-120$.\n\nVậy $(-2).(-5).(-3).4=-120$.\n\nb) Trong tích có thừa số $0$ nên tích bằng $0$.\n\nVậy $(-7).0.(-19)=0$.",
+          "kiem": [
+            "(-16)*5===-80 && (-8)*(-12)===96 && 25*(-4)===-100",
+            "(-2)*(-5)*(-3)*4===-120 && (-7)*0*(-19)===0"
+          ]
+        },
+        {
+          "ten": "Chia hai số nguyên",
+          "ly_thuyet": "##PP\nBước 1: xác định dấu của thương: hai số cùng dấu thì thương dương, khác dấu thì thương âm.\nBước 2: chia phần số tự nhiên của số bị chia cho phần số tự nhiên của số chia.\nBước 3: đặt dấu rồi kiểm tra bằng phép nhân (thương nhân số chia bằng số bị chia).\n\n##CY\nSố chia không được bằng $0$; số bị chia bằng $0$ thì thương bằng $0$.\nThương hai số âm là số dương, như $(-144):(-9)=16$.",
+          "vi_du": "##VD\nTính:\na) $132:(-12)$\nb) $(-144):(-9)$\nc) $(-250):25$\n**Hướng dẫn giải:**\na) Hai số khác dấu nên thương âm: $132:12=11$. Vậy $132:(-12)=-11$.\n\nb) Hai số cùng dấu âm nên thương dương: $144:9=16$. Vậy $(-144):(-9)=16$.\n\nc) Hai số khác dấu nên thương âm: $250:25=10$. Vậy $(-250):25=-10$.\n\n##VD\nTính:\na) $(-1200):40$\nb) $(-343):(-7)$\nc) $0:(-15)$\n**Hướng dẫn giải:**\na) Khác dấu nên thương âm: $1200:40=30$. Vậy $(-1200):40=-30$.\n\nb) Cùng dấu âm nên thương dương: $343:7=49$. Vậy $(-343):(-7)=49$.\n\nc) Số bị chia bằng $0$ nên thương bằng $0$. Vậy $0:(-15)=0$.",
+          "kiem": [
+            "132/(-12)===-11 && (-144)/(-9)===16 && (-250)/25===-10",
+            "(-1200)/40===-30 && (-343)/(-7)===49 && 0/(-15)===0"
+          ]
+        },
+        {
+          "ten": "So sánh tích với một số (không tính kết quả)",
+          "ly_thuyet": "##PP\nBước 1: xác định dấu của từng tích (đếm số thừa số âm, có thừa số $0$ thì tích bằng $0$).\nBước 2: tích dương lớn hơn $0$, tích âm nhỏ hơn $0$; tích dương lớn hơn mọi tích âm.\nBước 3: kết luận bằng dấu $<$, $>$ hoặc $=$; chỉ khi hai tích cùng dấu mới cần so sánh kĩ phần số tự nhiên.\n\n##CY\nĐề yêu cầu KHÔNG tính kết quả, nên chỉ nhìn dấu.\nTích có thừa số $0$ bằng $0$, không dương cũng không âm.",
+          "vi_du": "##VD\nKhông tính kết quả, so sánh:\na) $(-17).3$ với $0$\nb) $(-25).(-8)$ với $(-4).6$\n**Hướng dẫn giải:**\na) $(-17).3$ là tích hai số khác dấu nên là số âm, do đó $(-17).3<0$.\n\nb) $(-25).(-8)$ là tích hai số cùng dấu nên là số dương; $(-4).6$ là tích hai số khác dấu nên là số âm.\n\nSố dương lớn hơn số âm nên $(-25).(-8)>(-4).6$.\n\n##VD\nKhông tính kết quả, so sánh:\na) $(-31).2$ với $(-31).(-2)$\nb) $(-9).(-3)$ với $45.(-7)$\nc) $(-3).(-4).(-5)$ với $0$\n**Hướng dẫn giải:**\na) $(-31).2$ là số âm; $(-31).(-2)$ là số dương. Vậy $(-31).2<(-31).(-2)$.\n\nb) $(-9).(-3)$ là số dương; $45.(-7)$ là số âm. Vậy $(-9).(-3)>45.(-7)$.\n\nc) Tích có $3$ thừa số âm (số lẻ) nên là số âm. Vậy $(-3).(-4).(-5)<0$.",
+          "kiem": [
+            "(-17)*3<0 && (-25)*(-8)>(-4)*6",
+            "(-31)*2<(-31)*(-2) && (-9)*(-3)>45*(-7) && (-3)*(-4)*(-5)<0"
+          ]
+        }
+      ]
+    },
+    {
+      "ten": "Tính thuận tiện với số nguyên",
+      "ly_thuyet": "##TC\nGiao hoán: $a+b=b+a$; $a.b=b.a$.\nKết hợp: $(a+b)+c=a+(b+c)$; $(a.b).c=a.(b.c)$.\nPhân phối của phép nhân đối với phép cộng, phép trừ: $a.(b+c)=a.b+a.c$; $a.(b-c)=a.b-a.c$.\nTổng hai số đối nhau bằng $0$: $a+(-a)=0$.\n\n##PP\nQuan sát biểu thức, tìm các cặp số đối nhau hoặc các số cộng lại thành số tròn chục, tròn trăm rồi nhóm chúng lại.\nNếu có các tích chứa cùng một thừa số thì đặt thừa số chung ra ngoài (ngược lại với phân phối).\n\n##CY\nKhi đổi chỗ số hạng, dấu đứng trước số hạng nào đi cùng số hạng đó.\nThừa số chung có thể khác dấu nhau: $(-a).b=a.(-b)$.",
+      "dang": [
+        {
+          "ten": "Tính hợp lí tổng, hiệu (giao hoán, kết hợp, số đối)",
+          "ly_thuyet": "##PP\nBước 1: tìm các cặp số đối nhau và các số hạng cộng lại cho số tròn chục, tròn trăm.\nBước 2: dùng giao hoán, kết hợp để nhóm các số hạng đó lại (kèm theo dấu đứng trước mỗi số), bỏ ngoặc trước nếu có.\nBước 3: tính từng nhóm rồi cộng các kết quả.\n\n##CY\nNhóm xong phải kiểm tra lại không sót hay thừa số hạng nào.\nNhóm hai số $(-486)$ và $(-14)$ thì tổng là $-500$ (cùng dấu âm), không phải $-472$.",
+          "vi_du": "##VD\nTính hợp lí:\na) $(-72)+135+72+(-45)$\nb) $(-91+48)-(-91-52)$\n**Hướng dẫn giải:**\na) Nhóm cặp số đối nhau và hai số còn lại:\n\n$(-72)+135+72+(-45)=[(-72)+72]+[135+(-45)]=0+90=90$.\n\nb) Bỏ ngoặc: $(-91+48)-(-91-52)=-91+48+91+52$.\n\nNhóm lại: $=(-91+91)+(48+52)=0+100=100$.\n\nVậy a) $90$; b) $100$.\n\n##VD\nTính hợp lí: $(-486)+(-14)+(-200)+300$.\n**Hướng dẫn giải:**\nNhóm các số để được số tròn trăm:\n\n$(-486)+(-14)+(-200)+300=[(-486)+(-14)]+[(-200)+300]$.\n\n$=-500+100=-400$.\n\nVậy $(-486)+(-14)+(-200)+300=-400$.",
+          "kiem": [
+            "(-72)+135+72+(-45)===90 && (-91+48)-(-91-52)===100",
+            "(-486)+(-14)+(-200)+300===-400"
+          ]
+        },
+        {
+          "ten": "Tính hợp lí: rút thừa số chung",
+          "ly_thuyet": "##PP\nBước 1: nhận ra thừa số xuất hiện ở cả hai tích.\nBước 2: đặt thừa số chung ra ngoài: $a.b+a.c=a.(b+c)$; $a.b-a.c=a.(b-c)$.\nBước 3: tính biểu thức trong ngoặc (thường ra số tròn chục, tròn trăm) rồi nhân.\n\n##CY\nSố hạng đứng ngoài hai tích giữ nguyên, tính sau cùng.\nKhi trừ cho số âm trong ngoặc phải dùng quy tắc dấu ngoặc: $b-(-c)=b+c$.",
+          "vi_du": "##VD\nTính hợp lí:\na) $(-25).37+(-25).63$\nb) $13.74-13.(-26)$\n**Hướng dẫn giải:**\na) Thừa số chung là $-25$:\n\n$(-25).37+(-25).63=(-25).(37+63)=(-25).100=-2500$.\n\nb) Thừa số chung là $13$:\n\n$13.74-13.(-26)=13.[74-(-26)]=13.(74+26)=13.100=1300$.\n\nVậy a) $-2500$; b) $1300$.\n\n##VD\nTính hợp lí:\na) $12.(-47)+12.(-53)+250$\nb) $(-15).(-8)+(-15).18$\n**Hướng dẫn giải:**\na) Đặt thừa số chung $12$:\n\n$12.(-47)+12.(-53)+250=12.[(-47)+(-53)]+250=12.(-100)+250$.\n\n$=-1200+250=-950$.\n\nb) Đặt thừa số chung $-15$:\n\n$(-15).(-8)+(-15).18=(-15).[(-8)+18]=(-15).10=-150$.\n\nVậy a) $-950$; b) $-150$.",
+          "kiem": [
+            "(-25)*37+(-25)*63===-2500 && 13*74-13*(-26)===1300",
+            "12*(-47)+12*(-53)+250===-950 && (-15)*(-8)+(-15)*18===-150"
+          ]
+        },
+        {
+          "ten": "Tính hợp lí: ẩn thừa số chung",
+          "ly_thuyet": "##PP\nBước 1: nhận thấy hai tích chưa có thừa số giống hệt nhau nhưng có hai số liên quan (đối nhau, hoặc số này gấp số kia vài lần).\nBước 2: biến đổi một thừa số cho giống thừa số kia: dùng $(-a).b=a.(-b)$, hoặc tách số như $50=2.25$.\nBước 3: đặt thừa số chung ra ngoài, tính trong ngoặc rồi nhân.\n\n##CY\nChỉ biến đổi khi chắc chắn đúng; thử lại bằng cách tính lại hai tích ban đầu cho cùng giá trị.\nSau khi đổi dấu một thừa số, phải đổi dấu thừa số còn lại của tích đó để tích không thay đổi.",
+          "vi_du": "##VD\nTính hợp lí: $(-38).45+38.(-55)$.\n**Hướng dẫn giải:**\nHai tích chưa có thừa số giống hệt nhau, nhưng $(-38).45=38.(-45)$ (chuyển dấu \"$-$\" sang thừa số kia).\n\n$(-38).45+38.(-55)=38.(-45)+38.(-55)$.\n\n$=38.[(-45)+(-55)]=38.(-100)=-3800$.\n\nVậy $(-38).45+38.(-55)=-3800$.\n\n##VD\nTính hợp lí: $25.46+50.27$.\n**Hướng dẫn giải:**\nTa có $50=2.25$ nên $50.27=25.(2.27)=25.54$.\n\n$25.46+50.27=25.46+25.54=25.(46+54)=25.100=2500$.\n\nVậy $25.46+50.27=2500$.",
+          "kiem": [
+            "(-38)*45+38*(-55)===-3800",
+            "25*46+50*27===2500"
+          ]
+        }
+      ]
+    }
+  ]
+}

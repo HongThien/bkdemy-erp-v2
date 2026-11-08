@@ -1,0 +1,858 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00545",
+   "khoi": "9",
+   "chu_de": "Khai thác tài nguyên từ vỏ Trái Đất",
+   "chuyen_de": "Khai thác tài nguyên từ vỏ Trái Đất",
+   "nhom": "Các dạng bài tập cơ bản về khai thác tài nguyên từ vỏ Trái Đất",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09100101001",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tố phổ biến nhất (chiếm khối lượng lớn nhất) trong vỏ Trái Đất là",
+     "lua_chon": [
+      "oxygen",
+      "silicon",
+      "aluminium",
+      "iron"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Theo thứ tự phổ biến trong vỏ Trái Đất: oxygen nhiều nhất, sau đó silicon, aluminium, iron.\n\nVì sao các phương án khác sai:\n- B: Silicon phổ biến thứ hai, sau oxygen, không phải nhiều nhất.\n- C: Aluminium phổ biến thứ ba, ít hơn nhiều so với oxygen.\n- D: Iron ít phổ biến hơn oxygen, silicon và aluminium."
+    },
+    {
+     "ma_cau": "K09100101002",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tố phổ biến thứ hai (chỉ sau oxygen) trong vỏ Trái Đất là",
+     "lua_chon": [
+      "oxygen",
+      "silicon",
+      "aluminium",
+      "iron"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thứ tự phổ biến giảm dần trong vỏ Trái Đất là oxygen, silicon, aluminium, iron; silicon xếp thứ hai.\n\nVì sao các phương án khác sai:\n- A: Oxygen là nguyên tố phổ biến nhất, xếp thứ nhất, không phải thứ hai.\n- C: Aluminium xếp thứ ba, sau silicon.\n- D: Iron xếp sau oxygen, silicon và aluminium."
+    },
+    {
+     "ma_cau": "K09100101003",
+     "loai": "trac_nghiem",
+     "de": "Trong các kim loại, kim loại có hàm lượng lớn nhất trong vỏ Trái Đất là",
+     "lua_chon": [
+      "iron",
+      "copper",
+      "aluminium",
+      "gold"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Trong các kim loại, aluminium có hàm lượng lớn nhất trong vỏ Trái Đất, tiếp theo là iron.\n\nVì sao các phương án khác sai:\n- A: Iron là kim loại phổ biến thứ hai, sau aluminium, không phải nhiều nhất.\n- B: Copper chỉ chiếm một lượng rất nhỏ trong vỏ Trái Đất.\n- D: Gold là kim loại rất hiếm, chiếm lượng vô cùng nhỏ."
+    },
+    {
+     "ma_cau": "K09100101004",
+     "loai": "trac_nghiem",
+     "de": "Trong bốn nguyên tố oxygen, silicon, aluminium, iron, nguyên tố có hàm lượng NHỎ nhất trong vỏ Trái Đất là",
+     "lua_chon": [
+      "oxygen",
+      "silicon",
+      "aluminium",
+      "iron"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thứ tự giảm dần là oxygen, silicon, aluminium, iron nên iron có hàm lượng nhỏ nhất trong bốn nguyên tố.\n\nVì sao các phương án khác sai:\n- A: Oxygen là nguyên tố phổ biến nhất trong bốn nguyên tố này.\n- B: Silicon phổ biến thứ hai, nhiều hơn iron.\n- C: Aluminium phổ biến thứ ba, nhiều hơn iron."
+    },
+    {
+     "ma_cau": "K09100101005",
+     "loai": "trac_nghiem",
+     "de": "Hai nguyên tố chiếm phần lớn khối lượng vỏ Trái Đất, tạo nên phần lớn các khoáng vật silicate, là",
+     "lua_chon": [
+      "oxygen và silicon",
+      "oxygen và aluminium",
+      "silicon và iron",
+      "aluminium và iron"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Oxygen và silicon là hai nguyên tố phổ biến nhất, liên kết với nhau tạo nên khung của hầu hết khoáng vật silicate.\n\nVì sao các phương án khác sai:\n- B: Aluminium chỉ xếp thứ ba, không phải nguyên tố tạo khung khoáng vật silicate cùng oxygen.\n- C: Iron không phải nguyên tố chính tạo khoáng vật silicate.\n- D: Hai nguyên tố phổ biến nhất là oxygen và silicon, không phải aluminium và iron."
+    },
+    {
+     "ma_cau": "K09100101006",
+     "loai": "trac_nghiem",
+     "de": "Nhận định nào sau đây về thành phần vỏ Trái Đất là đúng?",
+     "lua_chon": [
+      "Iron là nguyên tố phổ biến nhất trong vỏ Trái Đất",
+      "Oxygen là nguyên tố phổ biến nhất, tiếp theo là silicon",
+      "Silicon phổ biến hơn oxygen",
+      "Aluminium phổ biến hơn oxygen và silicon"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thứ tự phổ biến giảm dần trong vỏ Trái Đất: oxygen, silicon, aluminium, iron.\n\nVì sao các phương án khác sai:\n- A: Iron xếp sau oxygen, silicon, aluminium, không phải phổ biến nhất.\n- C: Oxygen mới là nguyên tố phổ biến nhất, nhiều hơn silicon.\n- D: Aluminium chỉ xếp thứ ba, ít hơn cả oxygen và silicon."
+    },
+    {
+     "ma_cau": "K09100101007",
+     "loai": "trac_nghiem",
+     "de": "Sắp xếp bốn nguyên tố oxygen, silicon, aluminium, iron theo thứ tự hàm lượng GIẢM DẦN trong vỏ Trái Đất là",
+     "lua_chon": [
+      "Oxygen, silicon, aluminium, iron",
+      "Silicon, oxygen, iron, aluminium",
+      "Oxygen, aluminium, silicon, iron",
+      "Iron, aluminium, silicon, oxygen"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thứ tự hàm lượng giảm dần trong vỏ Trái Đất là oxygen, silicon, aluminium, iron.\n\nVì sao các phương án khác sai:\n- B: Oxygen mới là nguyên tố phổ biến nhất, xếp trước silicon, không phải ngược lại.\n- C: Silicon phổ biến hơn aluminium, phải xếp trước aluminium.\n- D: Đây là thứ tự đảo ngược hoàn toàn so với thứ tự đúng."
+    },
+    {
+     "ma_cau": "K09100101008",
+     "loai": "trac_nghiem",
+     "de": "Kim loại nào sau đây có hàm lượng rất nhỏ trong vỏ Trái Đất, được xếp vào nhóm kim loại quý hiếm?",
+     "lua_chon": [
+      "Sodium",
+      "Gold (vàng)",
+      "Calcium",
+      "Magnesium"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Gold (vàng) là kim loại quý hiếm, có hàm lượng cực nhỏ trong vỏ Trái Đất, ít hơn rất nhiều so với các nguyên tố phổ biến như aluminium, iron.\n\nVì sao các phương án khác sai:\n- A: Sodium tuy ít hơn aluminium, iron nhưng vẫn thuộc nhóm nguyên tố phổ biến hơn nhiều so với vàng.\n- C: Calcium là một trong các nguyên tố phổ biến trong vỏ Trái Đất, nhiều hơn hẳn vàng.\n- D: Magnesium cũng là nguyên tố phổ biến, nhiều hơn hẳn vàng."
+    },
+    {
+     "ma_cau": "K09100101009",
+     "loai": "trac_nghiem",
+     "de": "Quặng hematite (chứa Fe₂O₃) là nguyên liệu chính để sản xuất kim loại nào?",
+     "lua_chon": [
+      "aluminium",
+      "copper",
+      "calcium",
+      "iron"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hematite chứa hợp chất Fe₂O₃ của iron, là nguyên liệu chính để sản xuất kim loại iron.\n\nVì sao các phương án khác sai:\n- A: Nguyên liệu chính sản xuất aluminium là bauxite, không phải hematite.\n- B: Hematite không phải nguyên liệu sản xuất copper.\n- C: Hematite không phải nguyên liệu sản xuất calcium."
+    },
+    {
+     "ma_cau": "K09100101010",
+     "loai": "trac_nghiem",
+     "de": "Đá vôi, cát, đất sét là những tài nguyên thuộc nhóm nào của vỏ Trái Đất?",
+     "lua_chon": [
+      "khoáng sản phi kim",
+      "khoáng sản kim loại",
+      "nhiên liệu hoá thạch",
+      "kim loại quý"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đá vôi, cát, đất sét là khoáng sản không chứa kim loại, được xếp vào nhóm khoáng sản phi kim, dùng làm vật liệu xây dựng.\n\nVì sao các phương án khác sai:\n- B: Đá vôi, cát, đất sét không chứa kim loại để tách như quặng kim loại.\n- C: Đá vôi, cát, đất sét không dùng làm nhiên liệu đốt.\n- D: Đá vôi, cát, đất sét không phải kim loại."
+    },
+    {
+     "ma_cau": "K09100101011",
+     "loai": "trac_nghiem",
+     "de": "Than đá, dầu mỏ, khí thiên nhiên là những tài nguyên thuộc nhóm nào?",
+     "lua_chon": [
+      "khoáng sản kim loại",
+      "nhiên liệu hoá thạch",
+      "khoáng sản phi kim dùng làm vật liệu xây dựng",
+      "đá quý"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Than đá, dầu mỏ, khí thiên nhiên hình thành từ xác sinh vật cổ, được gọi chung là nhiên liệu hoá thạch.\n\nVì sao các phương án khác sai:\n- A: Than đá, dầu mỏ, khí thiên nhiên không chứa kim loại để tách.\n- C: Than đá, dầu mỏ, khí thiên nhiên được dùng làm nhiên liệu, không phải vật liệu xây dựng.\n- D: Than đá, dầu mỏ, khí thiên nhiên không phải đá quý."
+    },
+    {
+     "ma_cau": "K09100101012",
+     "loai": "trac_nghiem",
+     "de": "Mục đích chính của việc khai thác quặng kim loại từ vỏ Trái Đất là gì?",
+     "lua_chon": [
+      "chỉ để nghiên cứu cấu tạo Trái Đất, không dùng thực tế",
+      "chủ yếu để lấy đất đá làm vật liệu xây dựng",
+      "tách và thu được kim loại phục vụ sản xuất, chế tạo",
+      "chủ yếu để tạo nhiên liệu đốt"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Quặng kim loại được khai thác để tách lấy kim loại, phục vụ sản xuất và chế tạo các vật dụng, công trình.\n\nVì sao các phương án khác sai:\n- A: Khai thác quặng nhằm phục vụ sản xuất thực tế, không chỉ để nghiên cứu.\n- B: Đây là mục đích của khai thác đá vôi, cát, không phải quặng kim loại.\n- D: Đây là mục đích khai thác than, dầu mỏ, không phải quặng kim loại."
+    },
+    {
+     "ma_cau": "K09100101013",
+     "loai": "trac_nghiem",
+     "de": "Quặng bauxite là nguyên liệu chính để sản xuất kim loại nào?",
+     "lua_chon": [
+      "Iron",
+      "Copper",
+      "Aluminium",
+      "Calcium"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Bauxite chứa hợp chất của aluminium, là nguyên liệu chính để sản xuất kim loại aluminium.\n\nVì sao các phương án khác sai:\n- A: Iron được sản xuất chủ yếu từ quặng hematite, không phải bauxite.\n- B: Copper được sản xuất từ các quặng đồng khác, không phải bauxite.\n- D: Calcium không được sản xuất từ quặng bauxite."
+    },
+    {
+     "ma_cau": "K09100101014",
+     "loai": "trac_nghiem",
+     "de": "Tài nguyên khoáng sản (đá vôi, quặng kim loại, than đá...) có đặc điểm nào sau đây?",
+     "lua_chon": [
+      "Có thể tái tạo nhanh chóng trong vài năm",
+      "Không bao giờ cạn kiệt dù khai thác bao nhiêu",
+      "Chỉ tồn tại ở một số quốc gia nhất định trên thế giới",
+      "Là tài nguyên không tái tạo, hình thành qua thời gian địa chất rất dài"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khoáng sản hình thành qua thời gian địa chất rất dài (hàng triệu năm), tốc độ hình thành chậm hơn nhiều tốc độ con người khai thác nên được coi là tài nguyên không tái tạo.\n\nVì sao các phương án khác sai:\n- A: Khoáng sản hình thành qua hàng triệu năm địa chất, không thể tái tạo nhanh trong vài năm.\n- B: Khoáng sản là tài nguyên hữu hạn, có thể cạn kiệt nếu khai thác quá mức.\n- C: Nhiều loại khoáng sản phân bố ở nhiều quốc gia khác nhau, tuỳ theo trữ lượng từng loại."
+    },
+    {
+     "ma_cau": "K09100101015",
+     "loai": "trac_nghiem",
+     "de": "Vôi sống có công thức hoá học và tên gọi là",
+     "lua_chon": [
+      "Ca(OH)₂ — calcium hydroxide",
+      "CaCO₃ — calcium carbonate",
+      "CaCl₂ — calcium chloride",
+      "CaO — calcium oxide"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vôi sống là chất rắn thu được khi nung đá vôi, có công thức CaO, tên gọi calcium oxide.\n\nVì sao các phương án khác sai:\n- A: Đây là công thức và tên của vôi tôi, không phải vôi sống.\n- B: Đây là công thức và tên của đá vôi, không phải vôi sống.\n- C: CaCl₂ là một muối, không liên quan đến vôi sống."
+    },
+    {
+     "ma_cau": "K09100101016",
+     "loai": "trac_nghiem",
+     "de": "Nguyên liệu chính để sản xuất gốm, sứ là",
+     "lua_chon": [
+      "cát thạch anh (SiO₂)",
+      "đất sét",
+      "đá vôi",
+      "than đá"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Gốm, sứ được tạo hình và nung từ đất sét, nguyên liệu chính chứa các khoáng vật silicate của nhôm.\n\nVì sao các phương án khác sai:\n- A: Cát thạch anh là nguyên liệu chính để sản xuất thuỷ tinh, không phải gốm sứ.\n- C: Đá vôi là nguyên liệu để sản xuất vôi, xi măng, thuỷ tinh, không phải nguyên liệu chính của gốm sứ.\n- D: Than đá là nhiên liệu đốt lò, không phải nguyên liệu tạo gốm sứ."
+    },
+    {
+     "ma_cau": "K09100101017",
+     "loai": "trac_nghiem",
+     "de": "Công đoạn cơ bản để sản xuất gốm, sứ từ đất sét là",
+     "lua_chon": [
+      "nung đất sét ở nhiệt độ thường rồi để khô tự nhiên",
+      "hoà tan đất sét trong nước rồi cô cạn",
+      "tạo hình đất sét dẻo, rồi nung ở nhiệt độ cao",
+      "trộn đất sét với xi măng rồi để đông cứng"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Quy trình cơ bản: nhào đất sét thành khối dẻo, tạo hình sản phẩm, rồi nung ở nhiệt độ cao để hoá cứng.\n\nVì sao các phương án khác sai:\n- A: Đất sét cần nung ở nhiệt độ cao mới trở nên cứng, bền như gốm sứ, không thể chỉ để khô tự nhiên.\n- B: Đất sét không tan trong nước để cô cạn tạo gốm sứ; phải tạo hình rồi nung.\n- D: Gốm sứ không được tạo bằng cách trộn với xi măng và để đông cứng như vật liệu xây dựng."
+    },
+    {
+     "ma_cau": "K09100101018",
+     "loai": "trac_nghiem",
+     "de": "Vì sao sản phẩm gốm, sứ sau khi nung ở nhiệt độ cao trở nên cứng, bền, không tan trong nước?",
+     "lua_chon": [
+      "Vì đất sét sau khi nung biến đổi thành vật liệu rắn chắc, không tan trong nước",
+      "Vì đất sét được trộn thêm xi măng trước khi nung",
+      "Vì nhiệt độ cao làm đất sét bốc hơi hết nước, không còn tính chất gì",
+      "Vì gốm sứ chỉ cứng khi còn nóng, sẽ mềm trở lại khi nguội"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khi nung ở nhiệt độ cao, các khoáng vật trong đất sét biến đổi cấu trúc, kết dính chặt chẽ tạo thành vật liệu gốm cứng, bền, không tan trong nước, khác hẳn đất sét ban đầu.\n\nVì sao các phương án khác sai:\n- B: Gốm sứ không được trộn thêm xi măng; nguyên liệu chính chỉ là đất sét (và một số phụ gia khác).\n- C: Nung không chỉ đơn thuần bốc hơi nước mà còn làm biến đổi cấu trúc khoáng vật đất sét thành vật liệu rắn chắc.\n- D: Gốm sứ sau khi nung giữ nguyên độ cứng, bền cả khi đã nguội, không mềm trở lại."
+    },
+    {
+     "ma_cau": "K09100101019",
+     "loai": "trac_nghiem",
+     "de": "Sản phẩm nào sau đây được sản xuất từ đất sét qua quá trình tạo hình và nung?",
+     "lua_chon": [
+      "Chai thuỷ tinh",
+      "Bát, đĩa sứ",
+      "Xi măng portland",
+      "Tấm kính cửa sổ"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Bát, đĩa sứ là sản phẩm gốm sứ, được tạo hình từ đất sét dẻo rồi nung ở nhiệt độ cao.\n\nVì sao các phương án khác sai:\n- A: Chai thuỷ tinh được sản xuất từ cát, đá vôi, soda nung chảy, không phải từ đất sét.\n- C: Xi măng được sản xuất từ đá vôi và đất sét nhưng qua quy trình nung tạo clinker rồi nghiền, khác với gốm sứ.\n- D: Tấm kính cửa sổ là một dạng thuỷ tinh, sản xuất từ cát, đá vôi, soda, không phải đất sét."
+    },
+    {
+     "ma_cau": "K09100101020",
+     "loai": "trac_nghiem",
+     "de": "Ba nguyên liệu chính để sản xuất thuỷ tinh thường là",
+     "lua_chon": [
+      "đất sét, cát và than đá",
+      "đá vôi, đất sét và thạch cao",
+      "cát, muối ăn (NaCl) và nước",
+      "cát (SiO₂), đá vôi (CaCO₃) và soda (Na₂CO₃)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thuỷ tinh thường được sản xuất từ ba nguyên liệu chính: cát (SiO₂), đá vôi (CaCO₃) và soda (Na₂CO₃).\n\nVì sao các phương án khác sai:\n- A: Đất sét và than đá không phải nguyên liệu chính sản xuất thuỷ tinh.\n- B: Bộ nguyên liệu này gần với xi măng, không phải thuỷ tinh.\n- C: Muối ăn và nước không phải nguyên liệu chính sản xuất thuỷ tinh."
+    },
+    {
+     "ma_cau": "K09100101021",
+     "loai": "trac_nghiem",
+     "de": "Trong sản xuất thuỷ tinh, hỗn hợp nguyên liệu được xử lí như thế nào để tạo thành thuỷ tinh?",
+     "lua_chon": [
+      "nung nóng chảy ở nhiệt độ cao, làm lạnh tạo khối rắn",
+      "nghiền mịn rồi ép thành khối ở nhiệt độ thường",
+      "hoà tan trong acid rồi kết tinh lại",
+      "lên men ở nhiệt độ thường trong thời gian dài"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hỗn hợp cát, đá vôi, soda được nung nóng chảy ở nhiệt độ cao, sau đó làm lạnh để tạo thành khối thuỷ tinh rắn, trong suốt.\n\nVì sao các phương án khác sai:\n- B: Hỗn hợp cần nung nóng chảy ở nhiệt độ cao, không thể tạo thuỷ tinh chỉ bằng ép ở nhiệt độ thường.\n- C: Thuỷ tinh không được tạo bằng cách hoà tan nguyên liệu trong acid.\n- D: Lên men là quá trình sinh học, không dùng để sản xuất thuỷ tinh."
+    },
+    {
+     "ma_cau": "K09100101022",
+     "loai": "trac_nghiem",
+     "de": "Vì sao thuỷ tinh được dùng làm cửa kính, cửa sổ?",
+     "lua_chon": [
+      "Vì thuỷ tinh dẻo, dễ uốn cong",
+      "Vì thuỷ tinh trong suốt, cho ánh sáng đi qua",
+      "Vì thuỷ tinh dẫn điện tốt",
+      "Vì thuỷ tinh không bao giờ bị vỡ"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thuỷ tinh trong suốt, cho ánh sáng đi qua nên được dùng làm cửa kính, cửa sổ.\n\nVì sao các phương án khác sai:\n- A: Thuỷ tinh cứng và giòn, không dẻo.\n- C: Thuỷ tinh không dẫn điện.\n- D: Thuỷ tinh giòn, dễ vỡ."
+    },
+    {
+     "ma_cau": "K09100101023",
+     "loai": "trac_nghiem",
+     "de": "Thuỷ tinh có thể được tái chế bằng cách nào?",
+     "lua_chon": [
+      "Đốt cháy thành khí CO₂",
+      "Ngâm trong nước cho tan hết",
+      "Ủ lên men như rác hữu cơ",
+      "Nghiền nhỏ, nung chảy lại làm sản phẩm mới"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thuỷ tinh vỡ có thể được nghiền nhỏ, nung chảy lại cùng nguyên liệu mới (cát, đá vôi, soda) để tạo ra sản phẩm thuỷ tinh mới, giúp tiết kiệm nguyên liệu và giảm rác thải.\n\nVì sao các phương án khác sai:\n- A: Thuỷ tinh không cháy được, không có thành phần carbon để tạo CO₂.\n- B: Thuỷ tinh không tan trong nước.\n- C: Thuỷ tinh là vật liệu vô cơ, không phải chất hữu cơ để ủ lên men."
+    },
+    {
+     "ma_cau": "K09100101024",
+     "loai": "trac_nghiem",
+     "de": "Xi măng portland được sản xuất chủ yếu từ hai nguyên liệu nào?",
+     "lua_chon": [
+      "cát và đá vôi",
+      "đá vôi và đất sét",
+      "đất sét và thạch cao",
+      "than đá và đá vôi"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Xi măng portland được sản xuất chủ yếu bằng cách nung hỗn hợp đá vôi và đất sét ở nhiệt độ cao tạo clinker, sau đó nghiền cùng thạch cao.\n\nVì sao các phương án khác sai:\n- A: Bộ nguyên liệu cát và đá vôi gần với thuỷ tinh, không phải xi măng.\n- C: Thạch cao chỉ được trộn thêm sau khi nghiền clinker, không phải nguyên liệu nung chính.\n- D: Than đá chỉ là nhiên liệu đốt lò, không phải nguyên liệu tạo thành xi măng."
+    },
+    {
+     "ma_cau": "K09100101025",
+     "loai": "trac_nghiem",
+     "de": "Vai trò của thạch cao khi trộn vào clinker nghiền mịn để sản xuất xi măng là gì?",
+     "lua_chon": [
+      "Điều chỉnh tốc độ đông cứng của xi măng khi trộn với nước",
+      "Làm xi măng có màu trắng đẹp hơn",
+      "Là nguyên liệu chính cung cấp phần lớn khối lượng xi măng",
+      "Giúp xi măng cứng lại ngay cả khi không có nước"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thạch cao được thêm vào clinker nghiền mịn với vai trò chính là điều chỉnh (làm chậm) tốc độ đông cứng của xi măng khi trộn với nước, giúp thi công dễ dàng hơn.\n\nVì sao các phương án khác sai:\n- B: Màu sắc không phải vai trò chính của thạch cao trong xi măng.\n- C: Clinker (từ đá vôi, đất sét nung) mới là thành phần chính về khối lượng, thạch cao chỉ chiếm tỉ lệ nhỏ.\n- D: Xi măng vẫn cần nước để đông cứng (phản ứng với nước tạo các khoáng chất rắn chắc)."
+    },
+    {
+     "ma_cau": "K09100101026",
+     "loai": "trac_nghiem",
+     "de": "Xi măng sau khi trộn với nước và cát, đá (tạo thành bê tông) trở nên rắn chắc là nhờ quá trình nào?",
+     "lua_chon": [
+      "Nước bay hơi hết làm hỗn hợp khô cứng",
+      "Xi măng phản ứng với nước tạo chất rắn kết dính",
+      "Cát và đá tự kết dính, không cần xi măng",
+      "Xi măng bốc cháy cùng với cát"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Xi măng trộn với nước xảy ra phản ứng hoá học tạo ra các khoáng chất rắn kết dính chặt các hạt cát, đá lại với nhau, tạo thành khối bê tông rắn chắc.\n\nVì sao các phương án khác sai:\n- A: Bê tông rắn chắc do phản ứng hoá học của xi măng với nước.\n- C: Cát, đá cần xi măng để kết dính.\n- D: Không có sự cháy trong quá trình đông cứng."
+    },
+    {
+     "ma_cau": "K09100101027",
+     "loai": "trac_nghiem",
+     "de": "Một nhà máy đề xuất: sản xuất thuỷ tinh thường (làm chai lọ, kính cửa) chỉ cần nung chảy cát (SiO₂) một mình, không cần thêm soda hay đá vôi, vì cát là thành phần chính của thuỷ tinh. Nhận xét đúng về đề xuất này là",
+     "lua_chon": [
+      "Đúng, vì cát là nguyên liệu duy nhất của thuỷ tinh",
+      "Sai, vì chỉ cần thêm đất sét vào cát",
+      "Sai, vì phải thêm đá vôi và đất sét như xi măng",
+      "Sai, vì cần thêm soda và đá vôi cùng với cát"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ba nguyên liệu chính để sản xuất thuỷ tinh thường là cát, soda (Na₂CO₃) và đá vôi (CaCO₃); thiếu soda và đá vôi sẽ không tạo được thuỷ tinh có tính chất phù hợp.\n\nVì sao các phương án khác sai:\n- A: Thuỷ tinh thường cần cát, soda và đá vôi.\n- B: Đất sét là nguyên liệu của gốm, xi măng; thuỷ tinh cần soda và đá vôi.\n- C: Đá vôi và đất sét là nguyên liệu xi măng; thuỷ tinh cần cát, soda, đá vôi."
+    },
+    {
+     "ma_cau": "K09100101028",
+     "loai": "trac_nghiem",
+     "de": "Một nhà máy đề xuất: sản xuất xi măng chỉ cần nung đá vôi một mình ở nhiệt độ cao, không cần đất sét. Nhận xét đúng về đề xuất này là",
+     "lua_chon": [
+      "Đúng, vì đá vôi là nguyên liệu duy nhất của xi măng",
+      "Sai, vì xi măng cần cả đá vôi và đất sét",
+      "Sai, vì chỉ cần đất sét, không cần đá vôi",
+      "Đúng, vì nung đá vôi tạo vôi sống chính là xi măng"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Xi măng portland được sản xuất chủ yếu từ hai nguyên liệu chính là đá vôi và đất sét; thiếu một trong hai đều không tạo được xi măng.\n\nVì sao các phương án khác sai:\n- A: Xi măng cần cả đá vôi và đất sét.\n- C: Xi măng cần cả đá vôi và đất sét.\n- D: Vôi sống (CaO) không phải xi măng."
+    },
+    {
+     "ma_cau": "K09100101029",
+     "loai": "trac_nghiem",
+     "de": "Một bạn giải thích: vỏ Trái Đất có nhiều khoáng vật silicate vì oxygen và silicon là hai nguyên tố có hàm lượng lớn nhất trong vỏ Trái Đất. Nhận xét đúng về giải thích này là",
+     "lua_chon": [
+      "Đúng, vì O và Si là hai nguyên tố nhiều nhất vỏ Trái Đất",
+      "Sai, vì silicate hình thành chủ yếu từ iron và aluminium",
+      "Sai, vì silicate chỉ được tạo ra trong nhà máy",
+      "Sai, vì nguyên tố nhiều nhất vỏ Trái Đất là iron"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Oxygen và silicon là hai nguyên tố chiếm phần lớn khối lượng vỏ Trái Đất, dễ kết hợp tạo nên phần lớn các khoáng vật silicate trong tự nhiên.\n\nVì sao các phương án khác sai:\n- B: Silicate là hợp chất của silicon và oxygen.\n- C: Khoáng vật silicate có sẵn rất nhiều trong tự nhiên.\n- D: Oxygen là nguyên tố nhiều nhất trong vỏ Trái Đất, tiếp theo là silicon."
+    },
+    {
+     "ma_cau": "K09100101030",
+     "loai": "trac_nghiem",
+     "de": "Một nhà máy gốm sứ đề xuất: dùng cát (SiO₂) thay thế hoàn toàn đất sét để sản xuất bát đĩa sứ. Nhận xét đúng về đề xuất này là",
+     "lua_chon": [
+      "Đúng, vì cát và đất sét giống hệt nhau",
+      "Đúng, vì cát rẻ hơn nên luôn thay được",
+      "Sai, vì đất sét là hợp chất hữu cơ",
+      "Sai, vì cát không dẻo, không tạo hình được như đất sét"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đất sét có tính dẻo khi ẩm, dễ tạo hình rồi nung cứng thành gốm sứ; cát (SiO₂) là nguyên liệu chính của thuỷ tinh, không có tính dẻo để tạo hình như đất sét, nên không thể thay thế hoàn toàn đất sét trong sản xuất gốm sứ.\n\nVì sao các phương án khác sai:\n- A: Cát và đất sét là hai loại nguyên liệu khác nhau.\n- B: Giá rẻ không thay được tính dẻo cần để tạo hình gốm.\n- C: Đất sét là khoáng vật vô cơ."
+    },
+    {
+     "ma_cau": "K09100101031",
+     "loai": "trac_nghiem",
+     "de": "Aluminium phổ biến hơn iron trong vỏ Trái Đất, nhưng con người biết dùng sắt từ rất sớm, còn nhôm được dùng rộng rãi muộn hơn nhiều. Giải thích nào đúng?",
+     "lua_chon": [
+      "Tách nhôm từ quặng khó, tốn năng lượng hơn tách sắt",
+      "Thực ra sắt phổ biến hơn nhôm trong vỏ Trái Đất",
+      "Nhôm là kim loại quý hiếm như vàng",
+      "Quặng nhôm chỉ có ở đáy đại dương"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Dù aluminium phổ biến hơn iron trong vỏ Trái Đất, việc tách aluminium nguyên chất từ quặng (bằng điện phân) khó và tốn nhiều năng lượng hơn tách sắt (bằng nhiệt luyện), nên con người sử dụng rộng rãi sắt từ rất sớm, còn nhôm chỉ phổ biến khi công nghệ điện phân phát triển.\n\nVì sao các phương án khác sai:\n- B: Nhôm phổ biến hơn sắt trong vỏ Trái Đất.\n- C: Nhôm là kim loại phổ biến.\n- D: Quặng bauxite khai thác được trên đất liền."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00546",
+   "khoi": "9",
+   "chu_de": "Khai thác tài nguyên từ vỏ Trái Đất",
+   "chuyen_de": "Khai thác tài nguyên từ vỏ Trái Đất",
+   "nhom": "VIết PTHH trong lò nung công nghiệp",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09100102001",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây viết đúng khi nung đá vôi (calcium carbonate) ở nhiệt độ cao?",
+     "lua_chon": [
+      "CaCO₃ →(t°) CaO₂ + CO",
+      "2CaCO₃ →(t°) 2CaO + CO₂",
+      "CaCO₃ →(t°) Ca + CO₃",
+      "CaCO₃ →(t°) CaO + CO₂"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nung đá vôi: CaCO₃ →(t°) CaO + CO₂; hai vế đều có 1 Ca, 1 C, 3 O, phương trình đã cân bằng.\n\nVì sao các phương án khác sai:\n- A: Sản phẩm viết sai công thức; phải là CaO (calcium oxide), không có CaO₂ hay CO.\n- B: Vế trái có 2 nguyên tử C nhưng vế phải chỉ có 1 nguyên tử C trong CO₂, chưa cân bằng.\n- C: Nung vôi không phân li thành đơn chất Ca và gốc CO₃ tự do; sản phẩm là hai oxide CaO và CO₂."
+    },
+    {
+     "ma_cau": "K09100102002",
+     "loai": "trac_nghiem",
+     "de": "Phản ứng nung đá vôi (CaCO₃ →(t°) CaO + CO₂) thuộc loại phản ứng nào và cần điều kiện gì?",
+     "lua_chon": [
+      "phản ứng phân huỷ, thu nhiệt, cần nung ở nhiệt độ cao",
+      "phản ứng phân huỷ, toả nhiệt, xảy ra ở nhiệt độ thường",
+      "phản ứng thế, cần chất xúc tác",
+      "phản ứng trao đổi, không cần nhiệt độ cao"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Từ một chất CaCO₃ sinh ra hai chất CaO, CO₂ nên là phản ứng phân huỷ; phản ứng chỉ xảy ra khi được cấp nhiệt liên tục ở nhiệt độ cao nên là phản ứng thu nhiệt.\n\nVì sao các phương án khác sai:\n- B: Phản ứng cần được cung cấp nhiệt liên tục mới xảy ra nên là thu nhiệt, không toả nhiệt, và cần nhiệt độ cao chứ không xảy ra ở nhiệt độ thường.\n- C: Từ một chất tạo ra hai chất là phản ứng phân huỷ, không phải phản ứng thế.\n- D: Chỉ có một chất tham gia phản ứng nên là phản ứng phân huỷ, không phải trao đổi; phản ứng cần nhiệt độ cao mới xảy ra."
+    },
+    {
+     "ma_cau": "K09100102003",
+     "loai": "trac_nghiem",
+     "de": "Sau khi nung hoàn toàn đá vôi, khí thoát ra làm đục nước vôi trong. Khí đó là",
+     "lua_chon": [
+      "oxygen",
+      "carbon dioxide (CO₂)",
+      "hydrogen",
+      "carbon monoxide (CO)"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nung đá vôi sinh ra khí CO₂; CO₂ làm đục nước vôi trong do tạo kết tủa CaCO₃.\n\nVì sao các phương án khác sai:\n- A: Nung đá vôi không sinh ra khí oxygen.\n- C: Nung đá vôi không sinh ra khí hydrogen.\n- D: Sản phẩm khí của phản ứng phân huỷ CaCO₃ là CO₂, không phải CO."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00547",
+   "khoi": "9",
+   "chu_de": "Khai thác tài nguyên từ vỏ Trái Đất",
+   "chuyen_de": "Khai thác tài nguyên từ vỏ Trái Đất",
+   "nhom": "Ứng dụng và tác động công nghiệp khai thác tài nguyên tới môi trường",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09100103001",
+     "loai": "trac_nghiem",
+     "de": "Vôi tôi Ca(OH)₂ được dùng để khử chua đất trồng vì có tính chất nào?",
+     "lua_chon": [
+      "là base, trung hoà acid có trong đất",
+      "là acid, phản ứng với base có trong đất",
+      "là muối tan, cung cấp dưỡng chất cho cây",
+      "là chất khử, khử các oxide kim loại trong đất"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đất chua có tính acid; Ca(OH)₂ là base nên trung hoà acid trong đất, làm giảm độ chua.\n\nVì sao các phương án khác sai:\n- B: Ca(OH)₂ là base, không phải acid.\n- C: Ca(OH)₂ là base, không phải muối.\n- D: Ca(OH)₂ khử chua nhờ tính base trung hoà acid, không phải nhờ tính khử."
+    },
+    {
+     "ma_cau": "K09100103002",
+     "loai": "trac_nghiem",
+     "de": "Khai thác đá vôi và quặng kim loại quá mức, không có kế hoạch phục hồi, dẫn đến hậu quả nào rõ nhất đối với đất và hệ sinh thái?",
+     "lua_chon": [
+      "đất trở nên màu mỡ hơn nhờ khoáng chất lộ ra",
+      "không ảnh hưởng vì khoáng sản nằm sâu dưới lòng đất",
+      "mất thảm thực vật, xói mòn đất, giảm đa dạng sinh học",
+      "chỉ ảnh hưởng tạm thời, hệ sinh thái tự phục hồi ngay"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khai thác không kiểm soát làm mất thảm thực vật che phủ, đất dễ bị xói mòn và môi trường sống của sinh vật bị thu hẹp, làm suy giảm đa dạng sinh học.\n\nVì sao các phương án khác sai:\n- A: Khai thác phá vỡ lớp đất mặt và thảm thực vật nên làm đất kém màu mỡ hơn, không phải tốt hơn.\n- B: Nhiều hình thức khai thác là khai thác lộ thiên, phá vỡ trực tiếp bề mặt đất và thảm thực vật.\n- D: Hệ sinh thái bị phá vỡ cần rất nhiều thời gian và biện pháp chủ động để phục hồi, không tự phục hồi ngay."
+    },
+    {
+     "ma_cau": "K09100103003",
+     "loai": "trac_nghiem",
+     "de": "Việc khai thác than đá lộ thiên trên diện rộng có thể gây ra hậu quả nào rõ rệt đối với cảnh quan và môi trường xung quanh?",
+     "lua_chon": [
+      "Tạo hố sâu, phá thảm thực vật, ô nhiễm nguồn nước",
+      "Làm tăng diện tích rừng quanh khu mỏ",
+      "Không ảnh hưởng vì than nằm sâu dưới đất",
+      "Làm đất quanh mỏ màu mỡ hơn ngay"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khai thác than đá lộ thiên đào bới trên diện rộng tạo ra các hố sâu lớn, phá huỷ thảm thực vật che phủ và có thể làm ô nhiễm nguồn nước xung quanh do nước thải, bụi than.\n\nVì sao các phương án khác sai:\n- B: Khai thác lộ thiên phá huỷ thảm thực vật.\n- C: Khai thác lộ thiên đào bới bề mặt trên diện rộng.\n- D: Khai thác làm đất bị xáo trộn, nghèo đi."
+    },
+    {
+     "ma_cau": "K09100103004",
+     "loai": "trac_nghiem",
+     "de": "Bụi và khí thải sinh ra trong quá trình khai thác, chế biến khoáng sản (như nung vôi, luyện kim) ảnh hưởng trực tiếp đến thành phần môi trường nào?",
+     "lua_chon": [
+      "Chỉ ảnh hưởng đến khoáng sản còn lại trong lòng đất",
+      "Chất lượng không khí xung quanh khu vực khai thác",
+      "Chỉ ảnh hưởng đến các loài sinh vật dưới đáy đại dương",
+      "Không ảnh hưởng gì đến sức khoẻ con người"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Bụi và khí thải (như CO₂, SO₂, bụi đá) sinh ra khi khai thác, chế biến khoáng sản làm giảm chất lượng không khí xung quanh khu vực khai thác, ảnh hưởng đến sức khoẻ người dân và hệ sinh thái lân cận.\n\nVì sao các phương án khác sai:\n- A: Khoáng sản còn lại trong lòng đất không bị ảnh hưởng bởi bụi, khí thải trên bề mặt.\n- C: Bụi, khí thải khai thác chủ yếu ảnh hưởng đến khu vực xung quanh trên đất liền, không đặc trưng cho đáy đại dương.\n- D: Bụi, khí thải khai thác có thể gây các bệnh về hô hấp cho người dân sống gần khu vực khai thác."
+    },
+    {
+     "ma_cau": "K09100103005",
+     "loai": "trac_nghiem",
+     "de": "Biện pháp nào giúp khai thác và sử dụng tài nguyên khoáng sản (đá vôi, quặng kim loại) bền vững hơn?",
+     "lua_chon": [
+      "khai thác tối đa mọi mỏ, đáp ứng nhu cầu trước mắt",
+      "dừng khai thác, chuyển hết sang nhập khẩu",
+      "xả thẳng nước thải, bụi ra môi trường để giảm chi phí",
+      "khai thác theo quy hoạch, tái chế và phục hồi môi trường"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khai thác bền vững cần có quy hoạch hợp lí, tái chế kim loại để giảm khai thác mới, và phục hồi môi trường sau khi khai thác.\n\nVì sao các phương án khác sai:\n- A: Khai thác tối đa không kiểm soát làm cạn kiệt tài nguyên nhanh và gây ô nhiễm nặng hơn, không phải biện pháp bền vững.\n- B: Nhập khẩu không giải quyết bài toán khai thác bền vững trong nước, chỉ chuyển vấn đề sang nơi khác.\n- C: Xả thải trực tiếp gây ô nhiễm môi trường, ngược lại với mục tiêu khai thác bền vững."
+    },
+    {
+     "ma_cau": "K09100103006",
+     "loai": "trac_nghiem",
+     "de": "Vì sao tái chế kim loại (như iron, aluminium, copper) được coi là một biện pháp khai thác tài nguyên bền vững?",
+     "lua_chon": [
+      "vì giảm quặng khai thác mới, giảm ô nhiễm so với quặng",
+      "vì kim loại tái chế luôn bền hơn kim loại mới",
+      "vì tái chế tạo kim loại có nguyên tử khối nhỏ hơn",
+      "vì tái chế không cần bất kì nguồn năng lượng nào"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tái chế kim loại giúp giảm lượng quặng cần khai thác mới và giảm năng lượng, ô nhiễm phát sinh so với sản xuất từ quặng, nên là biện pháp khai thác tài nguyên bền vững.\n\nVì sao các phương án khác sai:\n- B: Tái chế không làm thay đổi bản chất kim loại để trở nên bền hơn; lợi ích chính là giảm khai thác mới và ô nhiễm.\n- C: Nguyên tử khối của một kim loại là không đổi, tái chế không làm thay đổi nguyên tử khối.\n- D: Tái chế vẫn cần năng lượng để nấu, xử lí kim loại, chỉ ít hơn nhiều so với khai thác và luyện từ quặng mới."
+    },
+    {
+     "ma_cau": "K09100103007",
+     "loai": "trac_nghiem",
+     "de": "Sau khi kết thúc khai thác một mỏ đá vôi lộ thiên, biện pháp nào giúp giảm tác động xấu lâu dài đến môi trường khu vực đó?",
+     "lua_chon": [
+      "Bỏ hoang khu mỏ, không cần xử lí gì thêm",
+      "Đổ thêm rác thải sinh hoạt xuống hố mỏ để lấp đầy nhanh",
+      "San lấp, cải tạo đất và trồng lại cây xanh trên khu vực đã khai thác",
+      "Rào chắn khu mỏ lại vĩnh viễn, không có biện pháp cải tạo nào khác"
+     ],
+     "dap_an": "C",
+     "loi_giai": "San lấp, cải tạo đất và trồng lại cây xanh giúp phục hồi thảm thực vật, hạn chế xói mòn và cải thiện cảnh quan, môi trường khu vực đã khai thác.\n\nVì sao các phương án khác sai:\n- A: Bỏ hoang không xử lí có thể để lại hố sâu nguy hiểm và đất bị xói mòn kéo dài.\n- B: Đổ rác thải sinh hoạt xuống hố mỏ có thể gây ô nhiễm đất và nguồn nước, không phải biện pháp cải tạo đúng.\n- D: Chỉ rào chắn mà không cải tạo thì đất và cảnh quan khu vực vẫn không được phục hồi."
+    },
+    {
+     "ma_cau": "K09100103008",
+     "loai": "trac_nghiem",
+     "de": "Vì sao cần lập quy hoạch khai thác khoáng sản (xác định khu vực, trữ lượng, thời gian khai thác hợp lí) thay vì khai thác tự do?",
+     "lua_chon": [
+      "Để tăng giá bán khoáng sản lên cao nhất có thể",
+      "Để chỉ một công ty duy nhất được phép khai thác",
+      "Để khoáng sản tự động sinh sôi nhanh hơn",
+      "Để dùng tài nguyên hiệu quả, tránh lãng phí, ô nhiễm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Quy hoạch khai thác giúp sử dụng tài nguyên khoáng sản hiệu quả, đúng trữ lượng và thời gian hợp lí, tránh khai thác tràn lan gây lãng phí tài nguyên và ô nhiễm môi trường.\n\nVì sao các phương án khác sai:\n- A: Mục đích chính của quy hoạch là quản lí tài nguyên bền vững, không phải để tăng giá bán.\n- B: Quy hoạch không nhất thiết là chỉ định một công ty duy nhất, mà là quản lí khai thác hợp lí.\n- C: Quy hoạch khai thác không làm khoáng sản sinh sôi nhanh hơn; khoáng sản không tái tạo nhanh được."
+    },
+    {
+     "ma_cau": "K09100103009",
+     "loai": "trac_nghiem",
+     "de": "Một công ty khai thác đá vôi và quặng kim loại đề xuất: khai thác tối đa, không cần lập kế hoạch phục hồi đất sau khai thác vì tài nguyên khoáng sản là vô hạn. Nhận xét đúng về đề xuất này là",
+     "lua_chon": [
+      "Đúng, vì trữ lượng khoáng sản của Trái Đất là vô hạn",
+      "Sai, vì chỉ khai thác quặng kim loại mới cần phục hồi",
+      "Sai, vì khoáng sản hữu hạn, khai thác bừa gây hại đất",
+      "Đúng, vì đất sau khai thác tự phục hồi nhanh"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tài nguyên khoáng sản (đá vôi, quặng kim loại) là hữu hạn; khai thác quá mức mà không có kế hoạch phục hồi sẽ gây hậu quả xấu cho đất và hệ sinh thái xung quanh.\n\nVì sao các phương án khác sai:\n- A: Khoáng sản là tài nguyên hữu hạn.\n- B: Khai thác đá vôi cũng làm hỏng đất, cần phục hồi.\n- D: Đất sau khai thác phục hồi rất chậm nếu không được cải tạo."
+    },
+    {
+     "ma_cau": "K09100103010",
+     "loai": "trac_nghiem",
+     "de": "Một địa phương đề xuất: tăng cường tái chế kim loại như iron, aluminium, copper thay vì khai thác quặng mới, để sử dụng tài nguyên bền vững hơn. Nhận xét đúng về đề xuất này là",
+     "lua_chon": [
+      "Đúng, vì tái chế tiết kiệm quặng, giảm khai thác mới",
+      "Sai, vì kim loại tái chế luôn kém chất lượng hơn",
+      "Sai, vì tái chế tốn năng lượng hơn khai thác mới",
+      "Đúng, nhưng chỉ tái chế được sắt, không được nhôm, đồng"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tái chế kim loại giúp tiết kiệm quặng tự nhiên, giảm nhu cầu khai thác mới và giảm tác động xấu đến môi trường, là biện pháp sử dụng tài nguyên khoáng sản bền vững.\n\nVì sao các phương án khác sai:\n- B: Kim loại tái chế vẫn dùng tốt; tái chế giúp tiết kiệm quặng.\n- C: Tái chế kim loại thường tốn ít năng lượng hơn khai thác, luyện quặng mới.\n- D: Nhôm, đồng cũng tái chế được."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00548",
+   "khoi": "9",
+   "chu_de": "Khai thác tài nguyên từ vỏ Trái Đất",
+   "chuyen_de": "Khai thác tài nguyên từ vỏ Trái Đất",
+   "nhom": "Tổng hợp các bài toán liên quan tới khai thác tài nguyên (tạp chất/hiệu suất)",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09100104001",
+     "loai": "trac_nghiem",
+     "de": "Nung hoàn toàn 50 g đá vôi (CaCO₃, coi là nguyên chất), hiệu suất phản ứng 100%. Tính khối lượng vôi sống (CaO) thu được.",
+     "lua_chon": [
+      "22 g",
+      "50 g",
+      "28 g",
+      "20 g"
+     ],
+     "dap_an": "C",
+     "loi_giai": "n(CaCO₃) = 50 : 100 = 0,5 mol; CaCO₃ →(t°) CaO + CO₂ (tỉ lệ 1:1) nên n(CaO) = 0,5 mol; m(CaO) = 0,5 × 56 = 28 g.\n\nVì sao các phương án khác sai:\n- A: Đây là khối lượng khí CO₂ sinh ra (0,5 mol × 44 g/mol = 22 g), nhầm sản phẩm CO₂ thành CaO.\n- B: Quên đổi khối lượng đá vôi ra số mol rồi tính lại theo CaO, lấy nhầm khối lượng đá vôi làm đáp số.\n- D: Tính đúng số mol (0,5 mol) nhưng dùng nhầm M(CaO) = 40 (quên cộng khối lượng oxygen), phải dùng M(CaO) = 56."
+    },
+    {
+     "ma_cau": "K09100104002",
+     "loai": "trac_nghiem",
+     "de": "Nung hoàn toàn 100 g đá vôi (CaCO₃, coi là nguyên chất), hiệu suất phản ứng 100%. Tính khối lượng vôi sống (CaO) thu được.",
+     "lua_chon": [
+      "44 g",
+      "100 g",
+      "40 g",
+      "56 g"
+     ],
+     "dap_an": "D",
+     "loi_giai": "n(CaCO₃) = 100 : 100 = 1 mol; theo tỉ lệ 1:1, n(CaO) = 1 mol; m(CaO) = 1 × 56 = 56 g.\n\nVì sao các phương án khác sai:\n- A: Đây là khối lượng khí CO₂ sinh ra (1 mol × 44 g/mol = 44 g), nhầm sản phẩm CO₂ thành CaO.\n- B: Quên đổi khối lượng đá vôi ra số mol, lấy nhầm khối lượng đá vôi làm đáp số.\n- C: Tính đúng số mol (1 mol) nhưng dùng nhầm M(CaO) = 40 (quên cộng khối lượng oxygen), phải dùng M(CaO) = 56."
+    },
+    {
+     "ma_cau": "K09100104003",
+     "loai": "trac_nghiem",
+     "de": "Nung hoàn toàn 20 g đá vôi (CaCO₃, coi là nguyên chất), hiệu suất phản ứng 100%. Tính khối lượng vôi sống (CaO) thu được.",
+     "lua_chon": [
+      "11,2 g",
+      "8,8 g",
+      "20 g",
+      "8 g"
+     ],
+     "dap_an": "A",
+     "loi_giai": "n(CaCO₃) = 20 : 100 = 0,2 mol; theo tỉ lệ 1:1, n(CaO) = 0,2 mol; m(CaO) = 0,2 × 56 = 11,2 g.\n\nVì sao các phương án khác sai:\n- B: Đây là khối lượng khí CO₂ sinh ra (0,2 mol × 44 g/mol = 8,8 g), nhầm sản phẩm CO₂ thành CaO.\n- C: Quên đổi khối lượng đá vôi ra số mol, lấy nhầm khối lượng đá vôi làm đáp số.\n- D: Tính đúng số mol (0,2 mol) nhưng dùng nhầm M(CaO) = 40 (quên cộng khối lượng oxygen), phải dùng M(CaO) = 56."
+    },
+    {
+     "ma_cau": "K09100104004",
+     "loai": "trac_nghiem",
+     "de": "Nung 250 g đá vôi chứa 80% CaCO₃ (còn lại là tạp chất không bị phân huỷ), hiệu suất phản ứng đạt 75%. Tính khối lượng CaO thực tế thu được.",
+     "lua_chon": [
+      "84 g",
+      "112 g",
+      "105 g",
+      "21 g"
+     ],
+     "dap_an": "A",
+     "loi_giai": "m(CaCO₃) = 250 × 80% = 200 g; n = 200 : 100 = 2 mol; m(CaO) lí thuyết = 2 × 56 = 112 g; m(CaO) thực tế = 112 × 75% = 84 g.\n\nVì sao các phương án khác sai:\n- B: Đây là khối lượng CaO tính theo lí thuyết (chưa nhân hiệu suất 75%); phải nhân thêm hiệu suất mới ra khối lượng thực tế.\n- C: Quên trừ tạp chất, dùng cả 250 g làm khối lượng CaCO₃ để tính, trong khi chỉ 80% là CaCO₃.\n- D: Nhầm lấy 20% (phần tạp chất) làm phần trăm CaCO₃ để tính khối lượng CaCO₃ tinh khiết, phải lấy đúng 80%."
+    },
+    {
+     "ma_cau": "K09100104005",
+     "loai": "trac_nghiem",
+     "de": "Nung 400 g đá vôi chứa 75% CaCO₃ (còn lại là tạp chất không bị phân huỷ), hiệu suất phản ứng đạt 25%. Tính khối lượng CaO thực tế thu được.",
+     "lua_chon": [
+      "168 g",
+      "42 g",
+      "56 g",
+      "14 g"
+     ],
+     "dap_an": "B",
+     "loi_giai": "m(CaCO₃) = 400 × 75% = 300 g; n = 300 : 100 = 3 mol; m(CaO) lí thuyết = 3 × 56 = 168 g; m(CaO) thực tế = 168 × 25% = 42 g.\n\nVì sao các phương án khác sai:\n- A: Đây là khối lượng CaO tính theo lí thuyết (chưa nhân hiệu suất 25%); phải nhân thêm hiệu suất mới ra khối lượng thực tế.\n- C: Quên trừ tạp chất, dùng cả 400 g làm khối lượng CaCO₃ để tính, trong khi chỉ 75% là CaCO₃.\n- D: Nhầm lấy 25% (phần tạp chất) làm phần trăm CaCO₃ để tính khối lượng CaCO₃ tinh khiết, phải lấy đúng 75%."
+    },
+    {
+     "ma_cau": "K09100104006",
+     "loai": "trac_nghiem",
+     "de": "Nung 500 g đá vôi chứa 80% CaCO₃ (còn lại là tạp chất không bị phân huỷ), hiệu suất phản ứng đạt 50%. Tính khối lượng CaO thực tế thu được.",
+     "lua_chon": [
+      "224 g",
+      "140 g",
+      "112 g",
+      "28 g"
+     ],
+     "dap_an": "C",
+     "loi_giai": "m(CaCO₃) = 500 × 80% = 400 g; n = 400 : 100 = 4 mol; m(CaO) lí thuyết = 4 × 56 = 224 g; m(CaO) thực tế = 224 × 50% = 112 g.\n\nVì sao các phương án khác sai:\n- A: Đây là khối lượng CaO tính theo lí thuyết (chưa nhân hiệu suất 50%); phải nhân thêm hiệu suất mới ra khối lượng thực tế.\n- B: Quên trừ tạp chất, dùng cả 500 g làm khối lượng CaCO₃ để tính, trong khi chỉ 80% là CaCO₃.\n- D: Nhầm lấy 20% (phần tạp chất) làm phần trăm CaCO₃ để tính khối lượng CaCO₃ tinh khiết, phải lấy đúng 80%."
+    },
+    {
+     "ma_cau": "K09100104007",
+     "loai": "trac_nghiem",
+     "de": "Nung hoàn toàn 100 g đá vôi (CaCO₃, coi là nguyên chất), hiệu suất 100%. Tính thể tích khí CO₂ thoát ra (đkc, 24,79 L/mol).",
+     "lua_chon": [
+      "22,4 L",
+      "12,4 L",
+      "44,27 L",
+      "24,79 L"
+     ],
+     "dap_an": "D",
+     "loi_giai": "n(CaCO₃) = 100 : 100 = 1 mol; theo tỉ lệ 1:1, n(CO₂) = 1 mol; V(CO₂) = 1 × 24,79 = 24,79 L.\n\nVì sao các phương án khác sai:\n- A: Đây là thể tích tính theo 22,4 L/mol, quy ước cũ không dùng ở lớp 9; phải dùng 24,79 L/mol.\n- B: Tính nhầm chỉ một nửa số mol CO₂ (chia đôi số mol không có lí do), phải lấy đủ n(CO₂) = 1 mol.\n- C: Tính nhầm số mol theo M(CaO) = 56 (100 : 56 ≈ 1,79 mol) thay vì theo M(CaCO₃) = 100."
+    },
+    {
+     "ma_cau": "K09100104008",
+     "loai": "trac_nghiem",
+     "de": "Nung hoàn toàn 200 g đá vôi (CaCO₃, coi là nguyên chất), hiệu suất 100%. Tính thể tích khí CO₂ thoát ra (đkc, 24,79 L/mol).",
+     "lua_chon": [
+      "44,8 L",
+      "49,58 L",
+      "99,16 L",
+      "88,54 L"
+     ],
+     "dap_an": "B",
+     "loi_giai": "n(CaCO₃) = 200 : 100 = 2 mol; theo tỉ lệ 1:1, n(CO₂) = 2 mol; V(CO₂) = 2 × 24,79 = 49,58 L.\n\nVì sao các phương án khác sai:\n- A: Đây là thể tích tính theo 22,4 L/mol (2 mol × 22,4 L/mol), quy ước cũ không dùng ở lớp 9.\n- C: Nhầm hệ số phản ứng, tính như thể 1 mol CaCO₃ sinh ra 2 mol CO₂ (4 × 24,79), trong khi tỉ lệ đúng là 1:1.\n- D: Tính nhầm số mol theo M(CaO) = 56 (200 : 56 = 3,57 mol) thay vì theo M(CaCO₃) = 100."
+    },
+    {
+     "ma_cau": "K09100104009",
+     "loai": "trac_nghiem",
+     "de": "Nung hoàn toàn 500 g đá vôi (CaCO₃, coi là nguyên chất), hiệu suất 100%. Tính thể tích khí CO₂ thoát ra (đkc, 24,79 L/mol).",
+     "lua_chon": [
+      "112 L",
+      "247,9 L",
+      "123,95 L",
+      "61,975 L"
+     ],
+     "dap_an": "C",
+     "loi_giai": "n(CaCO₃)=500:100=5mol; theo tỉ lệ 1:1, n(CO₂)=5mol; V(CO₂)=5×24,79=123,95L.\n\nVì sao các phương án khác sai:\n- A: Đây là thể tích tính theo 22,4 L/mol (5×22,4=112L), quy ước cũ không dùng ở lớp 9.\n- B: Nhân đôi nhầm kết quả đúng do nhầm hệ số phản ứng.\n- D: Chia đôi nhầm kết quả đúng."
+    },
+    {
+     "ma_cau": "K09100104010",
+     "loai": "trac_nghiem",
+     "de": "Nung hoàn toàn 250 g đá vôi (CaCO₃, coi là nguyên chất), hiệu suất 100%. Tính thể tích khí CO₂ thoát ra (đkc, 24,79 L/mol).",
+     "lua_chon": [
+      "56 L",
+      "123,95 L",
+      "30,9875 L",
+      "61,975 L"
+     ],
+     "dap_an": "D",
+     "loi_giai": "n(CaCO₃)=250:100=2,5mol; theo tỉ lệ 1:1, n(CO₂)=2,5mol; V(CO₂)=2,5×24,79=61,975L.\n\nVì sao các phương án khác sai:\n- A: Đây là thể tích tính theo 22,4 L/mol (2,5×22,4=56L), quy ước cũ không dùng ở lớp 9.\n- B: Nhân đôi nhầm kết quả đúng do nhầm hệ số phản ứng.\n- C: Chia đôi nhầm kết quả đúng."
+    },
+    {
+     "ma_cau": "K09100104011",
+     "loai": "trac_nghiem",
+     "de": "Một lò nung cần sản xuất được 40,32 tấn vôi sống (CaO) THỰC TẾ. Biết đá vôi dùng chứa 80% CaCO₃ (còn lại là tạp chất trơ) và hiệu suất phản ứng nung chỉ đạt 90%. Khối lượng đá vôi cần dùng là",
+     "lua_chon": [
+      "100 tấn",
+      "90 tấn",
+      "80 tấn",
+      "56 tấn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng CaO lí thuyết = 40,32 : 90% = 44,8 tấn. Theo PTHH CaCO₃ →(t°) CaO + CO₂, khối lượng CaCO₃ nguyên chất cần = 44,8×(100:56) = 80 tấn. Vì đá vôi chỉ chứa 80% CaCO₃ nên khối lượng đá vôi cần dùng = 80 : 80% = 100 tấn.\n\nVì sao các phương án khác sai:\n- B: Đã coi 40,32 tấn là khối lượng CaO lí thuyết, quên chia cho hiệu suất 90% trước khi tính ngược ra đá vôi.\n- C: Đã coi khối lượng CaCO₃ nguyên chất tính được là khối lượng đá vôi luôn, quên chia cho 80% để ra đúng khối lượng đá vôi có lẫn tạp chất.\n- D: Đã coi khối lượng CaO bằng khối lượng CaCO₃ (tỉ lệ 1:1), quên rằng theo PTHH tỉ lệ khối lượng đúng là 56:100."
+    },
+    {
+     "ma_cau": "K09100104012",
+     "loai": "trac_nghiem",
+     "de": "Một lò nung cần sản xuất được 45,36 tấn vôi sống (CaO) THỰC TẾ. Biết đá vôi dùng chứa 75% CaCO₃ (còn lại là tạp chất trơ) và hiệu suất phản ứng nung chỉ đạt 80%. Khối lượng đá vôi cần dùng là",
+     "lua_chon": [
+      "108 tấn",
+      "101,25 tấn",
+      "135 tấn",
+      "75,6 tấn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khối lượng CaO lí thuyết = 45,36 : 80% = 56,7 tấn. Khối lượng CaCO₃ nguyên chất cần = 56,7×(100:56) = 101,25 tấn. Vì đá vôi chỉ chứa 75% CaCO₃ nên khối lượng đá vôi cần dùng = 101,25 : 75% = 135 tấn.\n\nVì sao các phương án khác sai:\n- A: Đã coi 45,36 tấn là khối lượng CaO lí thuyết, quên chia cho hiệu suất 80% trước khi tính ngược ra đá vôi.\n- B: Đây là khối lượng CaCO₃ nguyên chất (chưa lẫn tạp chất), quên chia tiếp cho 75% để ra đúng khối lượng đá vôi.\n- D: Đã coi khối lượng CaO bằng khối lượng CaCO₃ (tỉ lệ 1:1), quên rằng theo PTHH tỉ lệ khối lượng đúng là 56:100."
+    },
+    {
+     "ma_cau": "K09100104013",
+     "loai": "trac_nghiem",
+     "de": "Một lò nung cần sản xuất được 22,68 tấn vôi sống (CaO) THỰC TẾ. Biết đá vôi dùng chứa 90% CaCO₃ (còn lại là tạp chất trơ) và hiệu suất phản ứng nung chỉ đạt 50%. Khối lượng đá vôi cần dùng là",
+     "lua_chon": [
+      "45 tấn",
+      "81 tấn",
+      "50,4 tấn",
+      "90 tấn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khối lượng CaO lí thuyết = 22,68 : 50% = 45,36 tấn. Khối lượng CaCO₃ nguyên chất cần = 45,36×(100:56) = 81 tấn. Vì đá vôi chỉ chứa 90% CaCO₃ nên khối lượng đá vôi cần dùng = 81 : 90% = 90 tấn.\n\nVì sao các phương án khác sai:\n- A: Đã coi 22,68 tấn là khối lượng CaO lí thuyết, quên chia cho hiệu suất 50% trước khi tính ngược ra đá vôi.\n- B: Đây là khối lượng CaCO₃ nguyên chất (chưa lẫn tạp chất), quên chia tiếp cho 90% để ra đúng khối lượng đá vôi.\n- C: Đã coi khối lượng CaO bằng khối lượng CaCO₃ (tỉ lệ 1:1), quên rằng theo PTHH tỉ lệ khối lượng đúng là 56:100."
+    },
+    {
+     "ma_cau": "K09100104014",
+     "loai": "trac_nghiem",
+     "de": "Một lò nung cần sản xuất được 33,6 tấn vôi sống (CaO) THỰC TẾ. Biết đá vôi dùng chứa 80% CaCO₃ (còn lại là tạp chất trơ) và hiệu suất phản ứng nung chỉ đạt 60%. Khối lượng đá vôi cần dùng là",
+     "lua_chon": [
+      "70 tấn",
+      "125 tấn",
+      "75 tấn",
+      "100 tấn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng CaO lí thuyết = 33,6 : 60% = 56 tấn. Khối lượng CaCO₃ nguyên chất cần = 56×(100:56) = 100 tấn. Vì đá vôi chỉ chứa 80% CaCO₃ nên khối lượng đá vôi cần dùng = 100 : 80% = 125 tấn.\n\nVì sao các phương án khác sai:\n- A: Đã coi khối lượng CaO bằng khối lượng CaCO₃ (tỉ lệ 1:1), quên rằng theo PTHH tỉ lệ khối lượng đúng là 56:100.\n- C: Đã coi 33,6 tấn là khối lượng CaO lí thuyết, quên chia cho hiệu suất 60% trước khi tính ngược ra đá vôi.\n- D: Đây là khối lượng CaCO₃ nguyên chất (chưa lẫn tạp chất), quên chia tiếp cho 80% để ra đúng khối lượng đá vôi."
+    },
+    {
+     "ma_cau": "K09100104015",
+     "loai": "trac_nghiem",
+     "de": "Một lò nung cần sản xuất được 52,92 tấn vôi sống (CaO) THỰC TẾ. Biết đá vôi dùng chứa 70% CaCO₃ (còn lại là tạp chất trơ) và hiệu suất phản ứng nung chỉ đạt 90%. Khối lượng đá vôi cần dùng là",
+     "lua_chon": [
+      "105 tấn",
+      "84 tấn",
+      "150 tấn",
+      "135 tấn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khối lượng CaO lí thuyết = 52,92 : 90% = 58,8 tấn. Khối lượng CaCO₃ nguyên chất cần = 58,8×(100:56) = 105 tấn. Vì đá vôi chỉ chứa 70% CaCO₃ nên khối lượng đá vôi cần dùng = 105 : 70% = 150 tấn.\n\nVì sao các phương án khác sai:\n- A: Đây là khối lượng CaCO₃ nguyên chất (chưa lẫn tạp chất), quên chia tiếp cho 70% để ra đúng khối lượng đá vôi.\n- B: Đã coi khối lượng CaO bằng khối lượng CaCO₃ (tỉ lệ 1:1), quên rằng theo PTHH tỉ lệ khối lượng đúng là 56:100.\n- D: Đã coi 52,92 tấn là khối lượng CaO lí thuyết, quên chia cho hiệu suất 90% trước khi tính ngược ra đá vôi."
+    },
+    {
+     "ma_cau": "K09100104016",
+     "loai": "trac_nghiem",
+     "de": "Một lò nung cần sản xuất được 25,2 tấn vôi sống (CaO) THỰC TẾ. Biết đá vôi dùng chứa 75% CaCO₃ (còn lại là tạp chất trơ) và hiệu suất phản ứng nung chỉ đạt 60%. Khối lượng đá vôi cần dùng là",
+     "lua_chon": [
+      "100 tấn",
+      "75 tấn",
+      "42 tấn",
+      "56 tấn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng CaO lí thuyết=25,2:60%=42 tấn. Khối lượng CaCO₃ nguyên chất cần=42×(100:56)=75 tấn. Vì đá vôi chỉ chứa 75% CaCO₃ nên khối lượng đá vôi cần dùng=75:75%=100 tấn.\n\nVì sao các phương án khác sai:\n- B: Đây là khối lượng CaCO₃ nguyên chất (chưa lẫn tạp chất), quên chia tiếp cho 75% để ra đúng khối lượng đá vôi.\n- C: Đã coi 25,2 tấn là khối lượng CaO lí thuyết, quên chia cho hiệu suất 60% trước khi tính ngược ra đá vôi.\n- D: Đã coi khối lượng CaO bằng khối lượng CaCO₃ (tỉ lệ 1:1), quên rằng theo PTHH tỉ lệ khối lượng đúng là 56:100."
+    },
+    {
+     "ma_cau": "K09100104017",
+     "loai": "trac_nghiem",
+     "de": "Một lò nung cần sản xuất được 17,64 tấn vôi sống (CaO) THỰC TẾ. Biết đá vôi dùng chứa 70% CaCO₃ (còn lại là tạp chất trơ) và hiệu suất phản ứng nung chỉ đạt 75%. Khối lượng đá vôi cần dùng là",
+     "lua_chon": [
+      "42 tấn",
+      "60 tấn",
+      "23,52 tấn",
+      "84 tấn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng CaO lí thuyết=17,64:75%=23,52 tấn. Khối lượng CaCO₃ nguyên chất cần=23,52×(100:56)=42 tấn. Vì đá vôi chỉ chứa 70% CaCO₃ nên khối lượng đá vôi cần dùng=42:70%=60 tấn.\n\nVì sao các phương án khác sai:\n- A: Đây là khối lượng CaCO₃ nguyên chất (chưa lẫn tạp chất), quên chia tiếp cho 70% để ra đúng khối lượng đá vôi.\n- C: Đã coi 17,64 tấn là khối lượng CaO lí thuyết, quên chia cho hiệu suất 75% trước khi tính ngược ra đá vôi.\n- D: Đã coi khối lượng CaO bằng khối lượng CaCO₃ (tỉ lệ 1:1), quên rằng theo PTHH tỉ lệ khối lượng đúng là 56:100."
+    },
+    {
+     "ma_cau": "K09100104018",
+     "loai": "trac_nghiem",
+     "de": "Một lò nung cần sản xuất được 10,08 tấn vôi sống (CaO) THỰC TẾ. Biết đá vôi dùng chứa 80% CaCO₃ (còn lại là tạp chất trơ) và hiệu suất phản ứng nung chỉ đạt 50%. Khối lượng đá vôi cần dùng là",
+     "lua_chon": [
+      "36 tấn",
+      "20,16 tấn",
+      "45 tấn",
+      "25,2 tấn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khối lượng CaO lí thuyết=10,08:50%=20,16 tấn. Khối lượng CaCO₃ nguyên chất cần=20,16×(100:56)=36 tấn. Vì đá vôi chỉ chứa 80% CaCO₃ nên khối lượng đá vôi cần dùng=36:80%=45 tấn.\n\nVì sao các phương án khác sai:\n- A: Đây là khối lượng CaCO₃ nguyên chất (chưa lẫn tạp chất), quên chia tiếp cho 80% để ra đúng khối lượng đá vôi.\n- B: Đã coi khối lượng CaO bằng khối lượng CaCO₃ (tỉ lệ 1:1), quên rằng theo PTHH tỉ lệ khối lượng đúng là 56:100.\n- D: Đã coi 10,08 tấn là khối lượng CaO lí thuyết, quên chia cho hiệu suất 50% trước khi tính ngược ra đá vôi."
+    }
+   ]
+  }
+ ]
+}

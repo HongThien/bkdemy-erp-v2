@@ -1,0 +1,81 @@
+{
+ "khoi": "5T",
+ "nhom_id": "NNB02089",
+ "lan_chay": "pt-2026-11-08",
+ "kiem": {
+  "model": "sonnet (gán mù)",
+  "lan_chay": "pt-2026-11-08-mu"
+ },
+ "cau": [
+  {
+   "ma_cau": "T15T000000337",
+   "ma_nguon": "LT 15.6",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · giá vốn, lãi 30%, tìm giá bán"
+  },
+  {
+   "ma_cau": "T15T000000345",
+   "ma_nguon": "LT 15.9",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · giá nhập, lãi 20%, tìm giá bán"
+  },
+  {
+   "ma_cau": "T15T000000377",
+   "ma_nguon": "LT 17.3",
+   "dang_bai_id": "NDB02774",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Giảm giá hai lần liên tiếp, lần hai tính trên giá đã giảm"
+  },
+  {
+   "ma_cau": "T15T000000378",
+   "ma_nguon": "LT 17.4",
+   "dang_bai_id": "NDB02774",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · giảm giá hai lần liên tiếp, tính ngược giá ban đầu"
+  },
+  {
+   "ma_cau": "T15T000000389",
+   "ma_nguon": "LT 17.18",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Hạ giá 30% so với giá thường, so sánh lãi lúc giảm và lãi ngày thường"
+  },
+  {
+   "ma_cau": "T15T000000390",
+   "ma_nguon": "LT 17.19",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · giảm giá 20% rồi lãi thực tế 30%, hỏi lãi khi chưa giảm"
+  },
+  {
+   "ma_cau": "T15T000000062",
+   "ma_nguon": "LT 17.20",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · giá nhập, lãi 40% một phần, lỗ 10% phần còn lại, tính lãi lỗ chung"
+  },
+  {
+   "ma_cau": "T15T000000391",
+   "ma_nguon": "LT 17.21",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Bán hàng hai phần lãi và lỗ so với vốn, tính lãi lỗ chung"
+  },
+  {
+   "ma_cau": "T15T000000714",
+   "ma_nguon": "ON 80",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · giá nhập, lãi 25%, tìm giá bán"
+  },
+  {
+   "ma_cau": "T15T000000718",
+   "ma_nguon": "ON 84",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Giảm giá 10% giá bán, lãi 17% khi giảm, tìm lãi khi chưa giảm"
+  }
+ ]
+}

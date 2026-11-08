@@ -1,0 +1,5 @@
+[
+  { "ma": "HK1-GK03", "cau": "Bài 4b", "vd": "Đề sai: sách in hỗn số $1\\dfrac{9}{5}$ (phần phân số lớn hơn 1). Đã giải theo đúng chữ in ($1+\\dfrac{9}{5}$). Thùy xem có sửa đề thành $1\\dfrac{4}{5}$ không." },
+  { "ma": "HK1-GK04", "cau": "Câu 3", "vd": "Đề sai: hai phương án cùng \"không chuyển được thành hỗn số\" ($\\dfrac{15}{3}=5$ và $\\dfrac{12}{13}$). Đã chọn D ($\\dfrac{12}{13}$). Thùy xem có sửa phương án C không." },
+  { "ma": "HK2-CK11", "cau": "Bài 4", "vd": "Biểu đồ quạt: hai màu hồng của khán đài A và C in rất gần nhau. Trạm soát đo màu điểm ảnh: quạt 23% là C, 24% là A (trạm soạn ban đầu đảo ngược). Thùy liếc lại hình." }
+]

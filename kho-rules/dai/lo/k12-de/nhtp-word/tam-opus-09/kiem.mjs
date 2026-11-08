@@ -1,0 +1,22 @@
+const S=(f,a,b,n=20000)=>{const h=(b-a)/n;let s=f(a)+f(b);for(let i=1;i<n;i++)s+=(i%2?4:2)*f(a+i*h);return s*h/3};
+const P=Math.PI;
+console.log('485',S(x=>9/Math.sin(x)**2,P/4,P/2)/1);
+console.log('484b',S(x=>-3/x**4,1,2),-9/8);
+console.log('497d',S(x=>x-2,1,2)+S(x=>x*x-2*x,2,3),5/6);
+console.log('500',P*S(x=>4*x,0,1));
+console.log('504b',10*S(x=>x**3+2*x,1,3));
+const f516=x=>3*x+1-2/x;
+console.log('516c',S(f516,1,2),5.5-2*Math.log(2));
+// 516d: G(-10) via integrals: G(5)=1+int2..5; G(-5)=G(-10)+int(-10..-5)
+const G5=1+S(f516,2,5); const Gm5=10-G5; const Gm10=Gm5-S(f516,-10,-5);
+console.log('516d',Gm10,82-4*Math.log(2)+2*Math.log(5));
+console.log('519',S(x=>Math.cbrt(x),1,8),45/4);
+console.log('520',S(x=>8**x,0,1),7/(3*Math.log(2)));
+console.log('528c',S(x=>2*x,-1,0)+S(x=>2*(x-x*x),0,1));
+for(const a of [-7,-6,-5]) console.log('528d a=',a,S(x=>2*x,-1,0)+S(x=>a*(x-x*x),0,2));
+console.log('531d',S(x=>Math.abs(2*x+1),-0.5,0));
+console.log('533c',S(x=>2*(x-x*x),-2,0)+S(x=>2*x,0,2));
+for(const a of [1,1.2,1.5]) console.log('533d a=',a,S(x=>a*(x-x*x),-1,0)+S(x=>2*x,0,2));
+console.log('535',P*S(x=>Math.exp(x)+1,0,2));
+console.log('525',P*S(x=>Math.exp(2*x),0,1),P*(Math.E**2-1)/2);
+console.log('503',S(x=>1/(x+3),0,2),Math.log(5/3));

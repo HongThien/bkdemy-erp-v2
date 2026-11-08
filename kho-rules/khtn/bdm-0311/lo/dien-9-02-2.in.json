@@ -1,0 +1,2257 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00450",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Phản xạ toàn phần",
+   "nhom": "Điều kiện xảy ra hiện tượng phản xạ toàn phần",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "I. LÝ THUYẾT DẠNG BÀI\nKhái niệm\nPhản xạ toàn phần là hiện tượng phản xạ toàn bộ tia tới, xảy ra ở mặt phân cách giữa hai môi trường trong suốt.\nĐiều kiện\nPhản xạ toàn phần chỉ xảy ra khi đồng thời thỏa mãn hai điều kiện:\n1.\tÁnh sáng truyền từ môi trường có chiết suất lớn (n1) tới môi trường có chiết suất nhỏ hơn (n2), với n1 > n2.\n2.\tGóc tới lớn hơn hoặc bằng góc tới hạn phản xạ toàn phần: i ≥ igh, trong đó sin igh = n2/n1.\nNếu ánh sáng truyền theo chiều ngược lại (từ môi trường chiết suất nhỏ sang môi trường chiết suất lớn hơn) thì dù góc tới bằng bao nhiêu cũng không có phản xạ toàn phần — luôn có tia khúc xạ.\nTrình tự làm bài\n1.\tSo sánh chiết suất môi trường chứa tia tới (n1) với môi trường chứa tia khúc xạ (n2).\n2.\tNếu n1 ≤ n2: không thể xảy ra phản xạ toàn phần, không cần xét góc tới.\n3.\tNếu n1 > n2: có thể xảy ra phản xạ toàn phần nếu góc tới đủ lớn (i ≥ igh) — nội dung này thuộc Dạng 2, Dạng 3.\nII. VÍ DỤ MINH HỌA\nVí dụ 1. Ánh sáng truyền từ nước (chiết suất 1,33) sang không khí (chiết suất 1). Trường hợp này có thể xảy ra phản xạ toàn phần không?\nHướng dẫn: 1,33 > 1, ánh sáng truyền từ môi trường chiết suất lớn sang môi trường chiết suất nhỏ hơn → có thể xảy ra phản xạ toàn phần (nếu góc tới đủ lớn).\nVí dụ 2. Ánh sáng truyền từ không khí (chiết suất 1) sang thủy tinh (chiết suất 1,5). Trường hợp này có thể xảy ra phản xạ toàn phần không?\nHướng dẫn: 1 < 1,5, ánh sáng truyền từ môi trường chiết suất nhỏ sang môi trường chiết suất lớn hơn → không thể xảy ra phản xạ toàn phần dù góc tới bằng bao nhiêu.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00451",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Phản xạ toàn phần",
+   "nhom": "Tính góc giới hạn phản xạ toàn phần",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "I. LÝ THUYẾT DẠNG BÀI\nCông thức\nGóc tới hạn phản xạ toàn phần igh ứng với cặp môi trường có chiết suất n1 (môi trường chứa tia tới, n1 lớn hơn) và n2 (môi trường chứa tia khúc xạ, n2 nhỏ hơn) thỏa mãn: sin igh = n2/n1\nNếu chiết suất tỉ đối n21 = n2/n1 đã cho trực tiếp thì sin igh = n21. Nếu môi trường 2 là không khí (n2 = 1) thì sin igh = 1/n1.\nTrình tự làm bài\n1.\tXác định n1 (môi trường chiết suất lớn hơn, chứa tia tới) và n2 (môi trường chiết suất nhỏ hơn, chứa tia khúc xạ).\n2.\tTính tỉ số n2/n1.\n3.\tBấm máy tính arcsin (sin⁻¹) của tỉ số đó để ra igh theo độ.\n4.\tNếu đề cho tốc độ truyền ánh sáng v thay vì chiết suất, dùng n = c/v (c là tốc độ ánh sáng trong chân không) để suy ra tỉ số n2/n1 = v1/v2 (v1 là tốc độ trong môi trường 1) trước khi tính igh.\nII. VÍ DỤ MINH HỌA\nVí dụ 1. Ánh sáng truyền từ thủy tinh (chiết suất 1,5) sang không khí (chiết suất 1). Tính góc tới hạn phản xạ toàn phần.\nHướng dẫn: sin igh = 1/1,5 = 0,667 → igh ≈ 41,8°.\nVí dụ 2. Một cặp môi trường có chiết suất tỉ đối n21 = 0,75. Tính góc tới hạn phản xạ toàn phần.\nHướng dẫn: sin igh = 0,75 → igh ≈ 48,6°.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00452",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Phản xạ toàn phần",
+   "nhom": "Vận dụng góc tới để xác định phản xạ toàn phần",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "I. LÝ THUYẾT DẠNG BÀI\nCông thức\nVới góc tới i cho trước và góc tới hạn igh (tính từ sin igh = n2/n1, hoặc cho sẵn), khi ánh sáng truyền đúng chiều (từ môi trường chiết suất lớn n1 sang môi trường chiết suất nhỏ hơn n2):\n•\tNếu i ≥ igh: xảy ra phản xạ toàn phần.\n•\tNếu i < igh: không xảy ra phản xạ toàn phần, chỉ có khúc xạ (kèm phản xạ một phần).\nTrình tự làm bài\n1.\tKiểm tra chiều truyền: n1 (môi trường chứa tia tới) có lớn hơn n2 (môi trường chứa tia khúc xạ) không. Nếu không, kết luận ngay “không xảy ra phản xạ toàn phần”, không cần xét góc.\n2.\tNếu đúng chiều, tính (hoặc lấy) góc tới hạn igh.\n3.\tSo sánh góc tới i đã cho với igh để kết luận.\nII. VÍ DỤ MINH HỌA\nVí dụ 1. Ánh sáng truyền từ thủy tinh (chiết suất 1,5) sang không khí (chiết suất 1) với góc tới 50°. Có xảy ra phản xạ toàn phần không?\nHướng dẫn: sin igh = 1/1,5 = 0,667 → igh ≈ 41,8°. Vì 50° ≥ 41,8° nên có xảy ra phản xạ toàn phần.\nVí dụ 2. Ánh sáng truyền từ thủy tinh (chiết suất 1,5) sang không khí (chiết suất 1) với góc tới 30°. Có xảy ra phản xạ toàn phần không?\nHướng dẫn: igh ≈ 41,8° (như ví dụ 1). Vì 30° < 41,8° nên không xảy ra phản xạ toàn phần, chỉ có khúc xạ.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00453",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Phản xạ toàn phần",
+   "nhom": "Ứng dụng thực tế của phản xạ toàn phần",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "I. LÝ THUYẾT DẠNG BÀI\nCấu tạo và cơ chế truyền ánh sáng trong sợi quang\nSợi quang là một dây trong suốt gồm phần lõi có chiết suất n1 và lớp vỏ bọc ngoài có chiết suất n2 nhỏ hơn n1. Tia sáng đi vào đầu sợi quang, khúc xạ rồi truyền tới mặt tiếp xúc giữa lõi và vỏ với góc tới lớn hơn góc tới hạn, nên bị phản xạ toàn phần. Hiện tượng phản xạ toàn phần lặp lại liên tiếp tại nhiều điểm dọc theo lõi, giúp ánh sáng truyền đi mà hầu như không thất thoát ra ngoài qua lớp vỏ. Cáp quang (bó nhiều sợi quang) được dùng để truyền dữ liệu trong công nghệ thông tin, viễn thông, và trong y học (nội soi).\nGiải thích hiện tượng ảo ảnh\nVào ngày nắng nóng, lớp không khí sát mặt đường nhựa bị hun nóng nên có chiết suất nhỏ hơn lớp không khí phía trên. Ánh sáng từ bầu trời truyền xiên xuống, khi tới gần mặt đường sẽ đi từ lớp không khí chiết suất lớn (phía trên, mát hơn) sang lớp chiết suất nhỏ (sát mặt đường, nóng hơn) với góc tới lớn, xảy ra phản xạ toàn phần, hắt ngược lên mắt người quan sát. Mắt nhìn theo đường truyền thẳng của tia sáng nên tưởng như có một vũng nước phản chiếu bầu trời ở phía xa trên mặt đường, dù thực tế mặt đường vẫn khô ráo.\nĐiểm chung giữa hai ứng dụng\nCả hai hiện tượng đều dựa trên điều kiện xảy ra phản xạ toàn phần: ánh sáng truyền từ nơi có chiết suất lớn sang nơi có chiết suất nhỏ hơn, với góc tới đủ lớn. Khác biệt: trong sợi quang, chiết suất lõi và vỏ được con người chế tạo cố định; trong hiện tượng ảo ảnh, chiết suất không khí biến đổi liên tục theo nhiệt độ, không có ranh giới rõ rệt như sợi quang.\nII. VÍ DỤ MINH HỌA\nVí dụ 1. Vì sao ánh sáng truyền dọc theo sợi quang mà hầu như không bị thất thoát ra ngoài qua lớp vỏ?\nHướng dẫn: Vì lõi có chiết suất lớn hơn vỏ, ánh sáng tới mặt tiếp xúc lõi - vỏ với góc tới lớn hơn góc tới hạn nên xảy ra phản xạ toàn phần liên tiếp, giữ ánh sáng bên trong lõi.\nVí dụ 2. Vì sao vào ngày nắng nóng, nhìn từ xa trên mặt đường nhựa có thể thấy như có vũng nước, nhưng khi đến gần lại không có?\nHướng dẫn: Lớp không khí sát mặt đường bị hun nóng có chiết suất nhỏ hơn lớp không khí phía trên; ánh sáng từ bầu trời truyền tới lớp không khí nóng này với góc tới đủ lớn nên xảy ra phản xạ toàn phần, hắt lên mắt người quan sát tạo cảm giác như có nước phản chiếu.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00455",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Lăng kính",
+   "nhom": "CẤU TẠO LĂNG KÍNH VÀ SỰ TÁN SẮC ÁNH SÁNG",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC1. Kiến thức cần nhớ\nLăng kính là một khối chất trong suốt (thuỷ tinh, nhựa trong...), được giới hạn bởi hai mặt phẳng không song song. Lăng kính thường có dạng lăng trụ tam giác.\nCấu tạo:\n• Hai mặt bên là hai mặt phẳng không song song mà ánh sáng đi vào và ló ra.\n• Cạnh của lăng kính là giao tuyến của hai mặt bên.\n• Đáy là mặt đối diện với cạnh.\n• Góc chiết quang (kí hiệu A) là góc tạo bởi hai mặt bên.\nTrên hình vẽ, lăng kính được biểu diễn bằng tiết diện thẳng là một tam giác: đỉnh tam giác ứng với cạnh lăng kính, hai cạnh tam giác chứa đỉnh đó ứng với hai mặt bên, cạnh còn lại ứng với đáy.\nÁnh sáng trắng (ánh sáng Mặt Trời, ánh sáng đèn sợi đốt...) là hỗn hợp của nhiều ánh sáng màu khác nhau.\nSự tán sắc ánh sáng: khi chiếu một chùm sáng trắng hẹp qua lăng kính, chùm sáng bị tách thành một dải màu biến thiên liên tục từ đỏ đến tím. Dải màu này gọi là quang phổ của ánh sáng trắng, gồm bảy màu chính theo thứ tự: đỏ, da cam, vàng, lục, lam, chàm, tím.\nTrong dải màu, ánh sáng đỏ bị lệch ít nhất, ánh sáng tím bị lệch nhiều nhất. Nguyên nhân là chiết suất của lăng kính đối với các ánh sáng màu khác nhau thì khác nhau: nhỏ nhất với ánh sáng đỏ, lớn nhất với ánh sáng tím.\nÁnh sáng đơn sắc là ánh sáng có một màu nhất định, không bị tán sắc khi đi qua lăng kính (ví dụ ánh sáng của bút laser màu đỏ, màu lục).\n\n##PP2. Các bước làm bài\n\n##PP Câu hỏi về cấu tạo. \nBước 1: xác định hai mặt mà ánh sáng đi vào và ló ra, đó là hai mặt bên. \nBước 2: suy ra cạnh là giao tuyến của hai mặt bên, đáy là mặt đối diện với cạnh. \nBước 3: góc chiết quang là góc giữa hai mặt bên, tức góc của tam giác tiết diện tại đỉnh ứng với cạnh.\n\n##PP Câu hỏi về tán sắc. \nBước 1: xác định ánh sáng chiếu tới là ánh sáng trắng hay ánh sáng đơn sắc. \nBước 2: ánh sáng trắng bị tách thành dải màu từ đỏ đến tím; ánh sáng đơn sắc giữ nguyên màu. \nBước 3: dùng thứ tự bảy màu và quy luật lệch (đỏ ít nhất, tím nhiều nhất) để trả lời.\n\n##CY3. Lưu ý\nĐáy lăng kính là mặt đối diện với cạnh, không phải mặt nằm phía dưới. Khi lăng kính đặt ngược, đáy nằm phía trên.\nGóc chiết quang là góc giữa hai mặt bên, không phải góc giữa tia tới và tia ló.\nLăng kính không tạo ra màu mới. Các ánh sáng màu đã có sẵn trong ánh sáng trắng, lăng kính chỉ tách chúng ra.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00457",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Lăng kính",
+   "nhom": "VẼ ĐƯỜNG TRUYỀN TIA SÁNG QUA LĂNG KÍNH",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nLăng kính đặt trong không khí. Thủy tinh (hoặc nhựa trong) làm lăng kính có chiết suất lớn hơn chiết suất của không khí.\nTia sáng đơn sắc qua lăng kính bị khúc xạ hai lần, ở hai mặt bên:\n* Tại mặt bên thứ nhất (điểm tới I, ảnh sáng đi từ không khí vào lăng kính: tia khúc xạ lệch lại gần pháp tuyến, góc khúc xạ nhỏ hơn góc tới.\n* Tại mặt bên thứ hai (điểm J), ánh sáng đi từ lăng kính ra không khí: tia ló lệch xa pháp tuyến, góc khúc xạ lớn hơn góc tới.\n* Sau hai lần khúc xạ, tia ló bị lệch về phía đáy lăng kính so với tia tới.\nNếu tia tới vuông góc với mặt bên thì tia sáng truyền thẳng vào lăng kính, chỉ bị khúc xạ ở mặt bên thứ hai.\nChùm sáng trắng hẹp qua lăng kính bị tách thành các chùm sáng màu. Mọi chùm sáng màu đều lệch về phía đáy, trong đó ánh sáng đỏ lệch ít nhất, ánh sáng tím lệch nhiều nhất. Trên màn, các vệt sáng xếp theo thứ tự đỏ, da cam, vàng, lục, lam, chàm, tím theo chiều lệch về phía đáy.\n\n##PP 2. Các bước làm bài\n\n##PPVẽ đường truyền tia sáng đơn sắc.\nBước 1: tại điểm tới I, kẻ pháp tuyến (nét đứt) vuông góc với mặt bên.\nBước 2: vẽ tia khúc xạ IJ trong lăng kính, lệch lại gần pháp tuyến, J nằm trên mặt bên còn lại.\nBước 3: tại J, kẻ pháp tuyến với mặt bên thứ hai; vẽ tia ló JR lệch xa pháp tuyến.\nBước 4: kiểm tra tia ló JR lệch về phía đáy so với tia tới SI; đánh mũi tên chỉ chiều truyền trên các tia.\n\n##PPĐọc hình chùm sáng trắng qua lăng kính.\nBước 1: xác định vị trí đáy lăng kính trên hình (đáy đối diện với cạnh), từ đó biết chiều lệch của các tia ló.\nBước 2: vệt sáng lệch ít nhất về phía đáy có màu đỏ, vệt lệch nhiều nhất có màu tím.\nBước 3: dùng thứ tự đỏ, da cam, vàng, lục, lam, chàm, tím và cách đánh số trên hình để tìm vệt sáng cần hỏi.\n\n##CY 3. Lưu ý\nKhi lăng kính đặt ngược (cạnh hướng xuống), đáy ở phía trên nên tia ló lệch lên trên.\nPháp tuyến luôn vuông góc với mặt bên tại điểm tới, không phải đường thẳng đứng.\nTia sáng trong lăng kính là một đoạn thẳng nối hai điểm khúc xạ trên hai mặt bên.",
+   "can_dien_ly_thuyet_nhom": false
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB01167",
+   "nhom_id": "KNB00450",
+   "thu_tu": 1,
+   "dang": "CÓ THỂ XẢY RA PHẢN XẠ TOÀN PHẦN HAY KHÔNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020201003",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ thạch anh (chiết suất 1,46) sang rượu (chiết suất 1,36). Trường hợp này có thể xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Không thể, vì thạch anh có chiết suất lớn hơn nên là môi trường chiết suất nhỏ",
+      "Có thể, vì thạch anh (1,46) có chiết suất lớn hơn rượu (1,36)",
+      "Không thể, vì ánh sáng phải truyền từ môi trường chiết suất nhỏ sang môi trường chiết suất lớn hơn",
+      "Không thể xác định, vì chưa biết góc tới"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $1,46 > 1,36$, ánh sáng truyền từ môi trường chiết suất lớn sang môi trường chiết suất nhỏ hơn $\\rightarrow$ có thể xảy ra phản xạ toàn phần. A là kết quả của việc nhầm chiết suất lớn hơn là 'chiết suất nhỏ'. C là kết quả của việc đảo ngược điều kiện. D là kết quả của việc không nhận ra chiều truyền đúng đã đủ để trả lời 'có thể'."
+    },
+    {
+     "ma_cau": "K09020201005",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ thủy tinh flint (chiết suất 1,65) sang thạch anh (chiết suất 1,46). Trường hợp này có thể xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Không thể, vì ánh sáng phải truyền từ môi trường chiết suất nhỏ sang môi trường chiết suất lớn hơn",
+      "Không thể xác định, vì chưa biết góc tới",
+      "Có thể, vì thủy tinh flint (1,65) có chiết suất lớn hơn thạch anh (1,46)",
+      "Không thể, vì thủy tinh flint có chiết suất lớn hơn nên là môi trường chiết suất nhỏ"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $1,65 > 1,46$, ánh sáng truyền từ môi trường chiết suất lớn sang môi trường chiết suất nhỏ hơn $\\to$ có thể xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược điều kiện. B là kết quả của việc không nhận ra chiều truyền đúng đã đủ để trả lời 'có thể'. D là kết quả của việc nhầm chiết suất lớn hơn là 'chiết suất nhỏ'."
+    },
+    {
+     "ma_cau": "K09020201001",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ nước (chiết suất 1,33) sang không khí (chiết suất 1). Trường hợp này có thể xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Có thể, vì ánh sáng truyền từ môi trường chiết suất lớn (nước) sang môi trường chiết suất nhỏ hơn (không khí)",
+      "Không thể, vì ánh sáng phải truyền từ môi trường chiết suất nhỏ sang môi trường chiết suất lớn hơn",
+      "Không thể, vì nước có chiết suất nhỏ hơn không khí",
+      "Không thể xác định, vì đề chưa cho hình vẽ đường truyền tia sáng"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $1,33 > 1$, ánh sáng truyền từ môi trường chiết suất lớn sang môi trường chiết suất nhỏ hơn $\\rightarrow$ có thể xảy ra phản xạ toàn phần. B là kết quả của việc đảo ngược điều kiện. C là kết quả của việc nhầm chiết suất 1,33 là nhỏ hơn chiết suất 1 của không khí. D là kết quả của việc cho rằng cần hình vẽ mới kết luận được, trong khi chỉ cần so sánh chiết suất."
+    },
+    {
+     "ma_cau": "K09020201002",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ không khí (chiết suất 1) sang thủy tinh (chiết suất 1,5). Trường hợp này có thể xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Có thể, vì không khí có chiết suất nhỏ hơn nên là môi trường chiết suất lớn",
+      "Không thể, vì ánh sáng truyền từ môi trường chiết suất nhỏ (không khí) sang môi trường chiết suất lớn hơn (thủy tinh)",
+      "Có thể, vì hai môi trường có chiết suất khác nhau",
+      "Không thể xác định, vì chưa biết góc tới"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $1 < 1,5$, ánh sáng truyền từ môi trường chiết suất nhỏ sang môi trường chiết suất lớn hơn $\\rightarrow$ không thể xảy ra phản xạ toàn phần. A là kết quả của việc nhầm chiết suất nhỏ hơn là “chiết suất lớn”. C là kết quả của việc bỏ qua chiều truyền, chỉ xét việc chiết suất khác nhau. D là kết quả của việc không nhận ra chiều truyền sai đã đủ để loại trừ, không cần biết góc tới."
+    },
+    {
+     "ma_cau": "K09020201004",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ dầu ăn (chiết suất 1,47) sang kim cương (chiết suất 2,42). Trường hợp này có thể xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Có thể, vì dầu ăn có chiết suất nhỏ hơn nên là môi trường chiết suất lớn",
+      "Có thể, vì hai môi trường có chiết suất khác nhau khá lớn",
+      "Không thể, vì ánh sáng truyền từ môi trường chiết suất nhỏ (dầu ăn) sang môi trường chiết suất lớn hơn (kim cương)",
+      "Không thể xác định, vì chưa biết góc tới"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $1,47 < 2,42$, ánh sáng truyền từ môi trường chiết suất nhỏ sang môi trường chiết suất lớn hơn $\\rightarrow$ không thể xảy ra phản xạ toàn phần. A là kết quả của việc nhầm chiết suất nhỏ hơn là 'chiết suất lớn'. B là kết quả của việc bỏ qua chiều truyền, chỉ xét độ chênh lệch chiết suất. D là kết quả của việc không nhận ra chiều truyền sai đã đủ để loại trừ."
+    },
+    {
+     "ma_cau": "K09020201006",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ không khí (chiết suất 1) sang sapphire (chiết suất 1,77). Trường hợp này có thể xảy ra ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Có thể, vì hai môi trường có chiết suất chênh lệch lớn",
+      "Không thể xác định, vì chưa biết góc tới",
+      "Có thể, vì không khí có chiết suất nhỏ hơn nên là môi trường chiết suất lớn",
+      "Không thể, vì ánh sáng truyền từ môi trường chiết suất nhỏ (không khí) sang môi trường chiết suất lớn hơn (sapphire)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $1 < 1,77$, ánh sáng truyền từ môi trường chiết suất nhỏ sang môi trường chiết suất lớn hơn $\\to$ không thể xảy ra phản xạ toàn phần. A là kết quả của việc bỏ qua chiều truyền, chỉ xét độ chênh lệch chiết suất. B là kết quả của việc không nhận ra chiều truyền sai đã đủ để loại trừ. C là kết quả của việc nhầm chiết suất nhỏ hơn là 'chiết suất lớn'."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01168",
+   "nhom_id": "KNB00450",
+   "thu_tu": 2,
+   "dang": "NHẬN DIỆN PHÁT BIỂU ĐÚNG/SAI VỀ HAI ĐIỀU KIỆN PHẢN XẠ TOÀN PHẦN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020201009",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây đúng về điều kiện thứ nhất (chiều truyền ánh sáng) để có thể xảy ra phản xạ toàn phần?",
+     "lua_chon": [
+      "Ánh sáng phải truyền từ môi trường có chiết suất nhỏ sang môi trường có chiết suất lớn hơn",
+      "Ánh sáng truyền theo chiều nào cũng được, miễn góc tới đủ lớn",
+      "Điều kiện chiều truyền chỉ áp dụng khi hai môi trường đều là chất rắn",
+      "Ánh sáng phải truyền từ môi trường chiết quang hơn (chiết suất lớn hơn) sang môi trường chiết quang kém hơn (chiết suất nhỏ hơn)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "D nếu đúng điều kiện chiều truyền. A là kết quả của việc đảo ngược điều kiện. B là kết quả của việc bỏ qua hoàn toàn điều kiện chiều truyền. C là kết quả của việc bịa thêm điều kiện về trạng thái vật chất không có trong định nghĩa."
+    },
+    {
+     "ma_cau": "K09020201013",
+     "loai": "trac_nghiem",
+     "de": "Khi góc tới đúng bằng góc tới hạn (ánh sáng truyền đúng chiều từ môi trường chiết quang hơn sang môi trường chiết quang kém hơn), điều gì xảy ra?",
+     "lua_chon": [
+      "Toàn bộ ánh sáng bị hấp thụ tại mặt phân cách",
+      "Không có tia khúc xạ và cũng không có tia phản xạ",
+      "Góc khúc xạ đạt $90^\\circ$, tia khúc xạ đi sát mặt phân cách; đây là ranh giới bắt đầu xảy ra phản xạ toàn phần",
+      "Hiện tượng này không liên quan đến phản xạ toàn phần"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tại góc tới hạn, góc khúc xạ đạt $90^\\circ$, đây là ngưỡng chuyển tiếp sang phản xạ toàn phần. A là kết quả của việc bịa ra hiện tượng hấp thụ không có thật. B là kết quả của việc suy luận vô lý, năng lượng ánh sáng vẫn phải đi theo tia phản xạ. D là kết quả của việc không nhận ra đây chính là ngưỡng của phản xạ toàn phần."
+    },
+    {
+     "ma_cau": "K09020201008",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây SAI khi nói về điều kiện xảy ra phản xạ toàn phần?",
+     "lua_chon": [
+      "Chỉ cần góc tới lớn hơn hoặc bằng góc tới hạn là đủ để xảy ra phản xạ toàn phần, không cần xét chiều truyền ánh sáng",
+      "Hai điều kiện chiêu truyền và góc tới phải xảy ra đồng thời thì mới có phản xạ toàn phần",
+      "Nếu ánh sáng truyền từ môi trường chiết quang kém sang môi trường chiết quang hơn thì không thể có phản xạ toàn phần dù góc tới bằng bao nhiêu",
+      "Góc giới hạn phản xạ toàn phần là góc tới mà tại đó góc khúc xạ đạt $90^{\\circ}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: A là phát biểu sai vì chỉ nêu điều kiện góc mà bỏ qua điều kiện chiêu truyền, trong khi cả hai điều kiện phải thỏa mãn đồng thời. B, C, D đều là phát biểu đúng: B nêu đúng yêu cầu đồng thời, C nêu đúng hệ quả khi sai chiều truyền, D nêu đúng định nghĩa góc tới hạn."
+    },
+    {
+     "ma_cau": "K09020201012",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng truyền từ môi trường chiết quang kém sang môi trường chiết quang hơn. Phát biểu nào sau đây đúng?",
+     "lua_chon": [
+      "Có thể xảy ra phản xạ toàn phần nếu góc tới đủ lớn",
+      "Có thể xảy ra phản xạ toàn phần nếu góc tới đúng bằng góc tới hạn",
+      "Cần biết thêm góc tới mới kết luận được có xảy ra phản xạ toàn phần hay không",
+      "Không thể xảy ra phản xạ toàn phần dù góc tới bằng bao nhiêu"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: Sai chiều truyền thì dù góc tới bằng bao nhiêu cũng không xảy ra phản xạ toàn phần. A và B là kết quả của việc áp điều kiện góc tới cho trường hợp đã sai chiều truyền. C là kết quả của việc không nhận ra chiều truyền sai đã đủ để loại trừ, không cần thêm góc tới."
+    },
+    {
+     "ma_cau": "K09020201010",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây đúng về điều kiện thứ hai (góc tới) để xảy ra phản xạ toàn phần?",
+     "lua_chon": [
+      "Góc tới phải nhỏ hơn góc tới hạn",
+      "Góc tới phải lớn hơn hoặc bằng góc tới hạn",
+      "Góc tới phải đúng bằng $90^{\\circ}$",
+      "Góc tới không ảnh hưởng đến việc có xảy ra phản xạ toàn phần hay không, chỉ cần đúng chiều truyền là đủ"
+     ],
+     "dap_an": "B",
+     "loi_giai": "B nếu đúng điều kiện góc. A là kết quả của việc đảo ngược bất đẳng thức. C là kết quả của việc nhầm góc tới với giá trị góc khúc xạ tại ngưỡng giới hạn (góc khúc xạ mới đạt $90^{\\circ}$, không phải góc tới). D là kết quả của việc bỏ qua hoàn toàn điều kiện góc."
+    },
+    {
+     "ma_cau": "K09020201014",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây đúng khi so sánh vai trò của hai điều kiện xảy ra phản xạ toàn phần?",
+     "lua_chon": [
+      "Chỉ cần một trong hai điều kiện là đủ để xảy ra phản xạ toàn phần",
+      "Cả hai điều kiện phải được thỏa mãn đồng thời thì phản xạ toàn phần mới xảy ra",
+      "Điều kiện góc tới quan trọng hơn điều kiện chiều truyền, nên chỉ cần xét góc tới",
+      "Hai điều kiện chỉ cần thỏa mãn ở các thời điểm khác nhau, không cần đồng thời"
+     ],
+     "dap_an": "B",
+     "loi_giai": "B nêu đúng yêu cầu đồng thời của hai điều kiện. A là kết quả của việc tưởng một điều kiện là đủ. C là kết quả của việc đánh giá sai vai trò, bỏ qua điều kiện chiều truyền. D là kết quả của việc bịa ra khái niệm 'thỏa mãn ở thời điểm khác nhau' không có ý nghĩa vật lý ở đây."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01169",
+   "nhom_id": "KNB00450",
+   "thu_tu": 3,
+   "dang": "PHÂN BIỆT PHẢN XẠ TOÀN PHẦN VỚI KHÚC XẠ ÁNH SÁNG THÔNG THƯỜNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020201019",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng truyền từ không khí vào nước theo phương xiên góc. Nhận xét nào sau đây đúng?",
+     "lua_chon": [
+      "Có thể xảy ra phản xạ toàn phần nếu góc tới đủ lớn",
+      "Luôn xảy ra phản xạ toàn phần vì hai môi trường có chiết suất khác nhau",
+      "Không có hiện tượng gì xảy ra ngoài phản xạ một phần rất nhỏ, có thể bỏ qua",
+      "Luôn có tia khúc xạ ló vào nước, không thể xảy ra phản xạ toàn phần dù góc tới bằng bao nhiêu, vì ánh sáng truyền từ môi trường chiết quang kém sang môi trường chiết quang hơn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Không khí chiết quang kém hơn nước, sai chiều truyền $\\rightarrow$ luôn có khúc xạ, không thể có phản xạ toàn phần. A là kết quả của việc áp nhầm điều kiện góc tới cho trường hợp sai chiều truyền. B là kết quả của việc bỏ qua điều kiện chiết truyền. C là kết quả của việc đánh giá sai bản chất hiện tượng khúc xạ."
+    },
+    {
+     "ma_cau": "K09020201020",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng truyền từ thủy tinh ra không khí. Trường hợp nào sau đây có thể quan sát được hiện tượng phản xạ toàn phần?",
+     "lua_chon": [
+      "Khi góc tới lớn hơn hoặc bằng góc tới hạn của cặp môi trường thủy tinh - không khí",
+      "Khi góc tới nhỏ hơn góc tới hạn của cặp môi trường thủy tinh - không khí",
+      "Ở bất kỳ góc tới nào, vì thủy tinh luôn chiết quang hơn không khí",
+      "Không bao giờ quan sát được, vì tia sáng đang đi từ môi trường rắn ra môi trường khí"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thủy tinh chiết quang hơn không khí nên chiều truyền đã đúng; cần thêm góc tới $\\ge$ góc tới hạn. B là kết quả của việc đảo ngược bất đẳng thức góc. C là kết quả của việc bỏ qua điều kiện góc tới. D là kết quả của việc bịa thêm điều kiện về trạng thái vật chất không liên quan đến chiết suất."
+    },
+    {
+     "ma_cau": "K09020201017",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ môi trường chiết quang hơn sang môi trường chiết quang kém hơn với góc tới lớn hơn góc tới hạn. Hiện tượng nào xảy ra tại mặt phân cách?",
+     "lua_chon": [
+      "Xảy ra phản xạ toàn phần: toàn bộ ánh sáng phản xạ trở lại, không có tia khúc xạ ló ra",
+      "Vẫn có tia khúc xạ ló ra môi trường thứ hai như khúc xạ thông thường",
+      "Ánh sáng bị hấp thụ hoàn toàn tại mặt phân cách",
+      "Chỉ một phần ánh sáng phản xạ, phần còn lại khúc xạ ra ngoài với góc khúc xạ nhỏ hơn góc tới"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khi cả hai điều kiện đã thỏa mãn, toàn bộ ánh sáng phản xạ trở lại, không có tia khúc xạ.\nB là kết quả của việc bỏ qua điều kiện góc tới đã vượt góc tới hạn. C là kết quả của việc bịa ra hiện tượng hấp thụ không có thật. D là kết quả của việc áp nhầm mô tả khúc xạ thông thường vào trường hợp đã xảy ra phản xạ toàn phần."
+    },
+    {
+     "ma_cau": "K09020201018",
+     "loai": "trac_nghiem",
+     "de": "Khúc xạ ánh sáng thông thường (không phải phản xạ toàn phần) có thể xảy ra khi ánh sáng truyền theo chiều nào giữa hai môi trường có chiết suất khác nhau?",
+     "lua_chon": [
+      "Chỉ khi truyền từ môi trường chiết quang kém sang môi trường chiết quang hơn",
+      "Chỉ khi truyền từ môi trường chiết quang hơn sang môi trường chiết quang kém hơn",
+      "Cả hai chiều: truyền từ chiết quang kém sang chiết quang hơn luôn có khúc xạ; truyền ngược lại chỉ có khúc xạ khi góc tới nhỏ hơn góc tới hạn",
+      "Khúc xạ ánh sáng thông thường không phụ thuộc vào chiều truyền ánh sáng"
+     ],
+     "dap_an": "C",
+     "loi_giai": "C nêu đầy đủ cả hai trường hợp có thể xảy ra khúc xạ. A và B mỗi phương án chỉ nêu một chiều, bỏ sót trường hợp còn lại vẫn có thể có khúc xạ. D là kết quả của việc bỏ qua vai trò của chiều truyền trong việc quyết định có xảy ra phản xạ toàn phần hay khúc xạ."
+    },
+    {
+     "ma_cau": "K09020201021",
+     "loai": "trac_nghiem",
+     "de": "So với khúc xạ ánh sáng thông thường, phản xạ toàn phần khác biệt ở việc:",
+     "lua_chon": [
+      "chỉ xảy ra khi hai môi trường có cùng bản chất (đều là chất lỏng hoặc đều là chất rắn)",
+      "không có bất kỳ tia sáng nào ló sang môi trường thứ hai, toàn bộ năng lượng ánh sáng quay trở lại môi trường ban đầu",
+      "luôn xảy ra ở góc tới nhỏ hơn khúc xạ ánh sáng thông thường",
+      "chỉ là tên gọi khác của khúc xạ ánh sáng khi góc tới bằng $0^{\\circ}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: B nếu đúng bản chất: không có tia ló, toàn bộ năng lượng quay lại. A là kết quả của việc bịa thêm điều kiện về trạng thái vật chất. C là kết quả của việc đảo ngược so sánh góc — phản xạ toàn phần xảy ra ở góc tới lớn hơn, không phải nhỏ hơn. D là kết quả của việc hiểu sai hoàn toàn bản chất, tại góc tới $0^{\\circ}$ không có hiện tượng phản xạ toàn phần."
+    },
+    {
+     "ma_cau": "K09020201016",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ môi trường chiết quang hơn sang môi trường chiết quang kém hơn với góc tới nhỏ hơn góc tới hạn. Hiện tượng nào xảy ra tại mặt phân cách?",
+     "lua_chon": [
+      "Chỉ có phản xạ toàn phần, không có tia khúc xạ",
+      "Vừa có tia khúc xạ ló ra môi trường thứ hai, vừa có một phần ánh sáng phản xạ trở lại",
+      "Chỉ có tia khúc xạ, hoàn toàn không có ánh sáng phản xạ trở lại",
+      "Không có hiện tượng gì xảy ra vì góc tới chưa đạt góc tới hạn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khi chưa đạt góc tới hạn, tại mặt phân cách luôn đồng thời có khúc xạ và phản xạ một phần. A là kết quả của việc áp nhầm điều kiện góc tới lớn hơn góc tới hạn. C là kết quả của việc bỏ qua thực tế luôn có phản xạ một phần tại mặt phân cách. D là kết quả của việc hiểu sai, cho rằng chỉ khi đạt góc tới hạn mới có hiện tượng xảy ra."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01170",
+   "nhom_id": "KNB00450",
+   "thu_tu": 4,
+   "dang": "PHÂN BIỆT PHẢN XẠ TOÀN PHẦN VỚI PHẢN XẠ ÁNH SÁNG THÔNG THƯỜNG Ở GƯƠNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020201028",
+     "loai": "trac_nghiem",
+     "de": "Vì sao hiện tượng phản xạ toàn phần được ứng dụng để chế tạo cáp quang thay vì dùng gương phản xạ thông thường ở bên trong sợi cáp?",
+     "lua_chon": [
+      "Vì phản xạ toàn phần xảy ra ngay tại mặt phân cách giữa lõi và vỏ sợi quang (không cần lớp phản xạ riêng), tổn hao ánh sáng khi phản xạ nhiều lần dọc theo sợi rất thấp so với dùng gương",
+      "Vì gương phản xạ ánh sáng kém hơn phản xạ toàn phần ở mọi bước sóng, ngay cả khi mới chế tạo",
+      "Vì gương không thể uốn cong theo hình dạng sợi cáp quang",
+      "Vì phản xạ toàn phần chỉ xảy ra trong sợi quang, không xảy ra ở môi trường khác"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: A nêu đúng lý do vật lý: không cần lớp phản xạ, tổn hao thấp qua nhiều lần phản xạ liên tiếp. B là kết quả của việc so sánh sai, gương thông thường mới chế tạo cũng phản xạ tốt, khác biệt thật sự nằm ở việc không cần lớp phủ. C là kết quả của việc nêu lý do kỹ thuật gia công, không phải bản chất vật lý của hiện tượng. D là kết quả của việc hiểu sai, phản xạ toàn phần là hiện tượng tổng quát, không riêng cho sợi quang."
+    },
+    {
+     "ma_cau": "K09020201026",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng chiếu tới bề mặt gương phẳng và một tia sáng khác chiếu tới mặt phân cách nước - không khí với góc tới lớn hơn góc tới hạn (từ phía nước). Điểm chung giữa hai trường hợp là gì?",
+     "lua_chon": [
+      "Cả hai đều cần lớp tráng bạc để phản xạ ánh sáng",
+      "Cả hai đều chỉ xảy ra khi ánh sáng truyền từ môi trường chiết quang hơn sang môi trường chiết quang kém hơn",
+      "Cả hai đều cho tia phản xạ tuân theo định luật phản xạ ánh sáng (góc phản xạ bằng góc tới), dù cơ chế vật lý gây ra phản xạ khác nhau",
+      "Cả hai đều không có bất kỳ sự mất mát năng lượng ánh sáng nào tại bề mặt phản xạ"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Dù cơ chế khác nhau, cả hai đều tuân theo định luật phản xạ ánh sáng. A là kết quả của việc áp nhầm cơ chế của gương cho phản xạ toàn phần. B là kết quả của việc áp nhầm điều kiện chiêu truyền cho phản xạ ở gương, vốn không có khái niệm này. D là kết quả của việc bỏ qua thực tế gương vẫn hao hụt năng lượng do hấp thụ một phần."
+    },
+    {
+     "ma_cau": "K09020201023",
+     "loai": "trac_nghiem",
+     "de": "Tại một mặt phân cách giữa hai môi trường trong suốt có chiết suất khác nhau, khi KHÔNG thỏa mãn các điều kiện xảy ra phản xạ toàn phần, ánh sáng tới vẫn có một phần bị phản xạ trở lại. Phần phản xạ này có tuân theo định luật phản xạ ánh sáng thông thường (góc phản xạ bằng góc tới) không?",
+     "lua_chon": [
+      "Không, vì chỉ có phản xạ toàn phần mới tuân theo định luật phản xạ ánh sáng",
+      "Không, vì phản xạ tại mặt phân cách hai môi trường trong suốt không có tia phản xạ",
+      "Có, phần ánh sáng phản xạ trở lại tại mặt phân cách vẫn tuân theo định luật phản xạ ánh sáng thông thường, dù chỉ là phản xạ một phần chứ không phải phản xạ toàn phần",
+      "Có, nhưng chỉ khi góc tới lớn hơn góc tới hạn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Phản xạ một phần tại mặt phân cách vẫn tuân theo định luật phản xạ ánh sáng. A là kết quả của việc hiểu sai, cho rằng định luật phản xạ chỉ áp dụng cho phản xạ toàn phần. B là kết quả của việc phủ nhận sai thực tế vẫn có phản xạ một phần. D là kết quả của việc nhầm điều kiện, trong khi câu hỏi đang xét trường hợp KHÔNG thỏa mãn điều kiện phản xạ toàn phần."
+    },
+    {
+     "ma_cau": "K09020201022",
+     "loai": "trac_nghiem",
+     "de": "Điểm khác biệt cơ bản giữa phản xạ toàn phần và phản xạ ánh sáng thông thường ở gương phẳng là gì?",
+     "lua_chon": [
+      "Phản xạ toàn phần xảy ra tại mặt phân cách giữa hai môi trường trong suốt và chỉ khi thỏa mãn hai điều kiện cụ thể; phản xạ ở gương xảy ra tại bề mặt phản xạ (thường được tráng bạc) mà không cần các điều kiện về chiết suất hay góc tới như phản xạ toàn phần",
+      "Cả hai hiện tượng đều chỉ xảy ra tại mặt phân cách hai môi trường trong suốt có chiết suất khác nhau",
+      "Phản xạ toàn phần chỉ là một cách gọi khác của phản xạ ánh sáng ở gương",
+      "Phản xạ ở gương cũng cần góc tới lớn hơn một góc tới hạn nhất định mới xảy ra, giống phản xạ toàn phần"
+     ],
+     "dap_an": "A",
+     "loi_giai": "A nêu đúng khác biệt về cơ chế và điều kiện. B là kết quả của việc áp nhầm khái niệm 'mặt phân cách hai môi trường trong suốt' cho cả gương, vốn không cần điều kiện này. C là kết quả của việc đồng nhất sai hai hiện tượng. D là kết quả của việc áp nhầm khái niệm góc tới hạn cho phản xạ ở gương."
+    },
+    {
+     "ma_cau": "K09020201025",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây đúng khi so sánh phản xạ toàn phần với phản xạ ánh sáng thông thường (ở gương hoặc phản xạ một phần tại mặt phân cách)?",
+     "lua_chon": [
+      "Cả hai hiện tượng đều cần điều kiện về chiết suất và góc tới hạn",
+      "Phản xạ toàn phần chỉ xảy ra tại mặt phân cách giữa hai môi trường trong suốt khi thỏa mãn hai điều kiện cụ thể, còn phản xạ ánh sáng thông thường có thể xảy ra ở nhiều bề mặt khác nhau mà không cần các điều kiện đó",
+      "Phản xạ toàn phần luôn cho ảnh rõ nét hơn phản xạ ở gương phẳng",
+      "Phản xạ ánh sáng ở gương chỉ xảy ra khi góc tới nhỏ hơn góc tới hạn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "B nêu đúng khác biệt về phạm vi và điều kiện áp dụng. A là kết quả của việc áp nhầm điều kiện của phản xạ toàn phần cho phản xạ ở gương. C là kết quả của việc so sánh không có cơ sở, ngoài phạm vi định nghĩa hai hiện tượng. D là kết quả của việc áp nhầm khái niệm góc tới hạn cho phản xạ ở gương."
+    },
+    {
+     "ma_cau": "K09020201027",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây SAI khi nói về phản xạ toàn phần so với phản xạ ánh sáng thông thường?",
+     "lua_chon": [
+      "Phản xạ toàn phần chỉ xảy ra tại mặt phân cách giữa hai môi trường trong suốt",
+      "Phản xạ ánh sáng thông thường ở gương không đòi hỏi điều kiện về chiết suất hai môi trường trong suốt",
+      "Cả hai hiện tượng đều tuân theo định luật phản xạ ánh sáng (góc phản xạ bằng góc tới)",
+      "Phản xạ toàn phần và phản xạ ánh sáng ở gương là một hiện tượng duy nhất, chỉ khác tên gọi tùy ngữ cảnh"
+     ],
+     "dap_an": "D",
+     "loi_giai": "D là phát biểu sai vì đồng nhất sai hai hiện tượng có cơ chế và điều kiện khác nhau, đây chính là đáp án cần chọn. A, B, C đều là phát biểu đúng, phù hợp với nội dung đã học ở dạng này."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01171",
+   "nhom_id": "KNB00451",
+   "thu_tu": 1,
+   "dang": "CHO CHIẾT SUẤT HAI MÔI TRƯỜNG CỤ THỂ, TÍNH GÓC TỚI HẠN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020202003",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ kim cương (chiết suất $2,42$) sang thủy tinh crown (chiết suất $1,50$). Tính góc tới hạn phản xạ toàn phần.",
+     "lua_chon": [
+      "L$i_{gh} \\approx 38,3^{\\circ}$",
+      "L$i_{gh} \\approx 0,6^{\\circ}$",
+      "L$i_{gh} \\approx 55,8^{\\circ}$",
+      "L$i_{gh} \\approx 51,7^{\\circ}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\sin i_{gh} = n_2/n_1 = 1,50/2,42 = 0,620 \\rightarrow i_{gh} \\approx 38,3^{\\circ}$. B là kết quả của việc quên bấm arcsin, lấy luôn tỉ số $n_2/n_1$ làm số đo góc. C là kết quả của việc nhân tỉ số $n_2/n_1$ với $90^{\\circ}$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ ($90^{\\circ} - i_{gh}$)."
+    },
+    {
+     "ma_cau": "K09020202001",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ thủy tinh flint (chiết suất $1,65$) sang rượu (chiết suất $1,37$). Tính góc tới hạn phản xạ toàn phần.",
+     "lua_chon": [
+      "$i_{gh} \\approx 0,8^{\\circ}$",
+      "L$i_{gh} \\approx 56,1^{\\circ}$",
+      "L$i_{gh} \\approx 74,7^{\\circ}$",
+      "L$i_{gh} \\approx 33,9^{\\circ}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\sin i_{gh} = n_2/n_1 = 1,37/1,65 = 0,830 \\rightarrow i_{gh} \\approx 56,1^{\\circ}$. A là kết quả của việc quên bấm arcsin, lấy luôn tỉ số $n_2/n_1$ làm số đo góc. C là kết quả của việc nhân tỉ số $n_2/n_1$ với $90^{\\circ}$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ ($90^{\\circ} - i_{gh}$)."
+    },
+    {
+     "ma_cau": "K09020202004",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ thủy tinh crown (chiết suất 1,52) sang nước (chiết suất 1,33). Tính góc giới hạn phản xạ toàn phần.",
+     "lua_chon": [
+      "$i_{gh} \\approx 0,9^\\circ$",
+      "$i_{gh} \\approx 78,8^\\circ$",
+      "$i_{gh} \\approx 61,0^\\circ$",
+      "$i_{gh} \\approx 29,0^\\circ$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $\\sin i_{gh} = n_2/n_1 = 1,33/1,52 = 0,875 \\to i_{gh} \\approx 61,0^\\circ$. A là kết quả của việc quên bấm arcsin, lấy luôn tỉ số $n_2/n_1$ làm số đo góc. B là kết quả của việc nhân tỉ số $n_2/n_1$ với $90^\\circ$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ ($90^\\circ - i_{gh}$)."
+    },
+    {
+     "ma_cau": "K09020202007",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ zircon (chiết suất $2.00$) sang glycerin (chiết suất $1.47$). Tính góc tới hạn phản xạ toàn phần.",
+     "lua_chon": [
+      "$i_{gh} \\approx 0.7^\\circ$",
+      "$i_{gh} \\approx 66.2^\\circ$",
+      "$i_{gh} \\approx 47.3^\\circ$",
+      "$i_{gh} \\approx 42.7^\\circ$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $\\sin i_{gh} = n_2/n_1 = 1.47/2.00 = 0.735 \\to i_{gh} \\approx 47.3^\\circ$. A là kết quả của việc quên bấm arcsin, lấy luôn tỉ số $n_2/n_1$ làm số đo góc. B là kết quả của việc nhân tỉ số $n_2/n_1$ với $90^\\circ$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ ($90^\\circ - i_{gh}$)."
+    },
+    {
+     "ma_cau": "K09020202005",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ thạch anh (chiết suất 1,63) sang dầu ăn (chiết suất 1,35). Tính góc tới hạn phản xạ toàn phần.",
+     "lua_chon": [
+      "$i_{gh} \\approx 0,8^\\circ$",
+      "$i_{gh} \\approx 74,5^\\circ$",
+      "$i_{gh} \\approx 34,1^\\circ$",
+      "$i_{gh} \\approx 55,9^\\circ$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $\\sin i_{gh} = n_2/n_1 = 1,35/1,63 = 0,828 \\to i_{gh} \\approx 55,9^\\circ$. A là kết quả của việc quên bấm arcsin, lấy luôn tỉ số $n_2/n_1$ làm số đo góc. B là kết quả của việc nhân tỉ số $n_2/n_1$ với $90^\\circ$ thay vì lấy arcsin. C là kết quả của việc nhầm góc tới hạn với góc phụ ($90^\\circ - i_{gh}$)."
+    },
+    {
+     "ma_cau": "K09020202002",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ sapphire (chiết suất $1,77$) sang thạch anh (chiết suất $1,46$). Tính góc tới hạn phản xạ toàn phần.",
+     "lua_chon": [
+      "L$i_{gh} \\approx 0,8^{\\circ}$",
+      "L$i_{gh} \\approx 74,2^{\\circ}$",
+      "L$i_{gh} \\approx 34,4^{\\circ}$",
+      "L$i_{gh} \\approx 55,6^{\\circ}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\sin i_{gh} = n_2/n_1 = 1,46/1,77 = 0,825 \\rightarrow i_{gh} \\approx 55,6^{\\circ}$. A là kết quả của việc quên bấm arcsin, lấy luôn tỉ số $n_2/n_1$ làm số đo góc. B là kết quả của việc nhân tỉ số $n_2/n_1$ với $90^{\\circ}$ thay vì lấy arcsin. C là kết quả của việc nhầm góc tới hạn với góc phụ ($90^{\\circ} - i_{gh}$)."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01172",
+   "nhom_id": "KNB00451",
+   "thu_tu": 2,
+   "dang": "CHO CHIẾT SUẤT MỘT MÔI TRƯỜNG, MÔI TRƯỜNG CÒN LẠI LÀ KHÔNG KHÍ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020202011",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ thủy tinh flint (chiết suất 1,67) ra không khí (chiết suất 1). Tính góc tới hạn phản xạ toàn phần.",
+     "lua_chon": [
+      "$i_{gh} \\approx 0,6^\\circ$",
+      "$i_{gh} \\approx 53,9^\\circ$",
+      "$i_{gh} \\approx 53,2^\\circ$",
+      "$i_{gh} \\approx 36,8^\\circ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $\\sin i_{gh} = 1/n_1 = 1/1,67 = 0,599 \\rightarrow i_{gh} \\approx 36,8^\\circ$. A là kết quả của việc quên bấm arcsin, lấy luôn tỉ số $1/n_1$ làm số đo góc. B là kết quả của việc nhân tỉ số $1/n_1$ với $90^\\circ$ thay vì lấy arcsin. C là kết quả của việc nhầm góc tới hạn với góc phụ ($90^\\circ - i_{gh}$)."
+    },
+    {
+     "ma_cau": "K09020202009",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ nhựa polystyrene (chiết suất 1,55) ra không khí (chiết suất 1). Tính góc tới hạn phản xạ toàn phần.",
+     "lua_chon": [
+      "$i_{gh} \\approx 0,6^\\circ$",
+      "$i_{gh} \\approx 58,1^\\circ$",
+      "$i_{gh} \\approx 40,2^\\circ$",
+      "$i_{gh} \\approx 49,8^\\circ$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $\\sin i_{gh} = 1/n_1 = 1/1,55 = 0,645 \\rightarrow i_{gh} \\approx 40,2^\\circ$. A là kết quả của việc quên bấm arcsin, lấy luôn tỉ số $1/n_1$ làm số đo góc. B là kết quả của việc nhân tỉ số $1/n_1$ với $90^\\circ$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ ($90^\\circ - i_{gh}$)."
+    },
+    {
+     "ma_cau": "K09020202016",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ thạch anh vàng (chiết suất 1,45) ra không khí (chiết suất 1). Tính góc tới hạn phản xạ toàn phần.",
+     "lua_chon": [
+      "$i_{gh} \\approx 0,7^{\\circ}$",
+      "$i_{gh} \\approx 62,1^{\\circ}$",
+      "$i_{gh} \\approx 46,4^{\\circ}$",
+      "$i_{gh} \\approx 43,6^{\\circ}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $\\sin i_{gh} = 1/n_1 = 1/1,45 = 0,690 \\rightarrow i_{gh} \\approx 43,6^{\\circ}$. A là kết quả của việc quên bấm arcsin, lấy luôn tỉ số $1/n_1$ làm số đo góc. B là kết quả của việc nhân tỉ số $1/n_1$ với $90^{\\circ}$ thay vì lấy arcsin. C là kết quả của việc nhầm góc tới hạn với góc phụ ($90^{\\circ} - i_{gh}$)."
+    },
+    {
+     "ma_cau": "K09020202013",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ topaz (chiết suất $1,58$) ra không khí (chiết suất $1$). Tính góc tới hạn phản xạ toàn phần.",
+     "lua_chon": [
+      "$i_{gh} \\approx 39,3^\\circ$",
+      "$i_{gh} \\approx 0,6^\\circ$",
+      "$i_{gh} \\approx 57,0^\\circ$",
+      "$i_{gh} \\approx 50,7^\\circ$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $\\sin i_{gh} = 1/n_1 = 1/1,58 = 0,633 \\to i_{gh} \\approx 39,3^\\circ$. B là kết quả của việc quên bấm arcsin, lấy luôn tỉ số $1/n_1$ làm số đo góc. C là kết quả của việc nhân tỉ số $1/n_1$ với $90^\\circ$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ $(90^\\circ - i_{gh})$."
+    },
+    {
+     "ma_cau": "K09020202010",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ đá muối ($\\mathrm{NaCl}$) (chiết suất 1,42) ra không khí (chiết suất 1). Tính góc tới hạn phản xạ toàn phần.",
+     "lua_chon": [
+      "$i_{gh} \\approx 44,8^\\circ$",
+      "$i_{gh} \\approx 0,7^\\circ$",
+      "$i_{gh} \\approx 63,4^\\circ$",
+      "$i_{gh} \\approx 45,2^\\circ$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $\\sin i_{gh} = 1/n_1 = 1/1,42 = 0,704 \\rightarrow i_{gh} \\approx 44,8^\\circ$. B là kết quả của việc quên bấm arcsin, lấy luôn tỉ số $1/n_1$ làm số đo góc. C là kết quả của việc nhân tỉ số $1/n_1$ với $90^\\circ$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ ($90^\\circ - i_{gh}$)."
+    },
+    {
+     "ma_cau": "K09020202012",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ thạch anh (chiết suất $1,38$) ra không khí (chiết suất $1$). Tính góc tới hạn phản xạ toàn phần.",
+     "lua_chon": [
+      "$i_{gh} \\approx 0,7^\\circ$",
+      "$i_{gh} \\approx 46,4^\\circ$",
+      "$i_{gh} \\approx 65,2^\\circ$",
+      "$i_{gh} \\approx 43,6^\\circ$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $\\sin i_{gh} = 1/n_1 = 1/1,38 = 0,725 \\to i_{gh} \\approx 46,4^\\circ$. A là kết quả của việc quên bấm arcsin, lấy luôn tỉ số $1/n_1$ làm số đo góc. C là kết quả của việc nhân tỉ số $1/n_1$ với $90^\\circ$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ $(90^\\circ - i_{gh})$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01173",
+   "nhom_id": "KNB00451",
+   "thu_tu": 3,
+   "dang": "CHO CHIẾT SUẤT TỈ ĐỐI TRỰC TIẾP, TÍNH GÓC TỚI HẠN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020202018",
+     "loai": "trac_nghiem",
+     "de": "Một cặp môi trường trong suốt có chiết suất tỉ đối $n_{21} = 0,67$. Tính góc tới hạn phản xạ toàn phần.",
+     "lua_chon": [
+      "$i_{gh} \\approx 0,7^\\circ$",
+      "$i_{gh} \\approx 42,1^\\circ$",
+      "$i_{gh} \\approx 60,3^\\circ$",
+      "$i_{gh} \\approx 47,9^\\circ$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $\\sin i_{gh} = n_{21} = 0,67 \\rightarrow i_{gh} \\approx 42,1^\\circ$. A là kết quả của việc quên bấm arcsin, lấy luôn $n_{21}$ làm số đo góc. C là kết quả của việc nhân $n_{21}$ với $90^\\circ$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ $(90^\\circ - i_{gh})$."
+    },
+    {
+     "ma_cau": "K09020202021",
+     "loai": "trac_nghiem",
+     "de": "Một cặp môi trường trong suốt có chiết suất tỉ đối $n_{21} = 0,79$. Tính góc tới hạn phản xạ toàn phần.",
+     "lua_chon": [
+      "$i_{gh} \\approx 0,8^{\\circ}$",
+      "$i_{gh} \\approx 71,1^{\\circ}$",
+      "$i_{gh} \\approx 37,8^{\\circ}$",
+      "$i_{gh} \\approx 52,2^{\\circ}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $\\sin i_{gh} = n_{21} = 0,79 \\rightarrow i_{gh} \\approx 52,2^{\\circ}$. A là kết quả của việc quên bấm arcsin, lấy luôn $n_{21}$ làm số đo góc. B là kết quả của việc nhân $n_{21}$ với $90^{\\circ}$ thay vì lấy arcsin. C là kết quả của việc nhầm góc tới hạn với góc phụ ($90^{\\circ} - i_{gh}$)."
+    },
+    {
+     "ma_cau": "K09020202020",
+     "loai": "trac_nghiem",
+     "de": "Một cặp môi trường trong suốt có chiết suất tỉ đối $n_{21} = 0,52$. Tính góc tới hạn phản xạ toàn phần.",
+     "lua_chon": [
+      "$i_{gh} \\approx 31,3^{\\circ}$",
+      "$i_{gh} \\approx 0,5^{\\circ}$",
+      "$i_{gh} \\approx 46,8^{\\circ}$",
+      "$i_{gh} \\approx 58,7^{\\circ}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $\\sin i_{gh} = n_{21} = 0,52 \\rightarrow i_{gh} \\approx 31,3^{\\circ}$. B là kết quả của việc quên bấm arcsin, lấy luôn $n_{21}$ làm số đo góc. C là kết quả của việc nhân $n_{21}$ với $90^{\\circ}$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ ($90^{\\circ} - i_{gh}$)."
+    },
+    {
+     "ma_cau": "K09020202022",
+     "loai": "trac_nghiem",
+     "de": "Một cặp môi trường trong suốt có chiết suất tỉ đối $n_{21} = 0,64$. Tính góc tới hạn phản xạ toàn phần.",
+     "lua_chon": [
+      "$i_{gh} \\approx 39,8^{\\circ}$",
+      "$i_{gh} \\approx 0,6^{\\circ}$",
+      "$i_{gh} \\approx 57,6^{\\circ}$",
+      "$i_{gh} \\approx 50,2^{\\circ}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $\\sin i_{gh} = n_{21} = 0,64 \\rightarrow i_{gh} \\approx 39,8^{\\circ}$. B là kết quả của việc quên bấm arcsin, lấy luôn $n_{21}$ làm số đo góc. C là kết quả của việc nhân $n_{21}$ với $90^{\\circ}$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ ($90^{\\circ} - i_{gh}$)."
+    },
+    {
+     "ma_cau": "K09020202017",
+     "loai": "trac_nghiem",
+     "de": "Một cặp môi trường trong suốt có chiết suất tỉ đối $n_{21} = 0,59$. Tính góc tới hạn phản xạ toàn phần.",
+     "lua_chon": [
+      "$i_{gh} \\approx 0,6^\\circ$",
+      "$i_{gh} \\approx 53,1^\\circ$",
+      "$i_{gh} \\approx 53,8^\\circ$",
+      "$i_{gh} \\approx 36,2^\\circ$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $\\sin i_{gh} = n_{21} = 0,59 \\rightarrow i_{gh} \\approx 36,2^\\circ$. A là kết quả của việc quên bấm arcsin, lấy luôn $n_{21}$ làm số đo góc. B là kết quả của việc nhân $n_{21}$ với $90^\\circ$ thay vì lấy arcsin. C là kết quả của việc nhầm góc tới hạn với góc phụ $(90^\\circ - i_{gh})$."
+    },
+    {
+     "ma_cau": "K09020202019",
+     "loai": "trac_nghiem",
+     "de": "Một cặp môi trường trong suốt có chiết suất tỉ đối $n_{21} = 0,73$. Tính góc tới hạn phản xạ toàn phần.",
+     "lua_chon": [
+      "$i_{gh} \\approx 0,7^\\circ$",
+      "$i_{gh} \\approx 65,7^\\circ$",
+      "$i_{gh} \\approx 46,9^\\circ$",
+      "$i_{gh} \\approx 43,1^\\circ$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $\\sin i_{gh} = n_{21} = 0,73 \\rightarrow i_{gh} \\approx 46,9^\\circ$. A là kết quả của việc quên bấm arcsin, lấy luôn $n_{21}$ làm số đo góc. B là kết quả của việc nhân $n_{21}$ với $90^\\circ$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ $(90^\\circ - i_{gh})$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01174",
+   "nhom_id": "KNB00451",
+   "thu_tu": 4,
+   "dang": "CHO GÓC TỚI HẠN VÀ CHIẾT SUẤT MÔI TRƯỜNG TỚI, TÍNH CHIẾT SUẤT MÔI TRƯỜNG KHÚC XẠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020202025",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ sapphire (chiết suất 1,55) tới một môi trường khác, có góc tới hạn phản xạ toàn phần $i_{gh} = 42,0^{\\circ}$. Tính chiết suất môi trường khúc xạ.",
+     "lua_chon": [
+      "$n_2 \\approx 2,32$",
+      "$n_2 \\approx 1,15$",
+      "$n_2 \\approx 1,04$",
+      "$n_2 \\approx 0,67$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$n_2 = n_1 \\times \\sin i_{gh} = 1,55 \\times \\sin 42,0^{\\circ} = 1,55 \\times 0,669 \\approx 1,04$. A là kết quả của việc chia $n_1$ cho $\\sin i_{gh}$ thay vì nhân. B là kết quả của việc dùng $\\cos i_{gh}$ thay vì $\\sin i_{gh}$. D là kết quả của việc quên nhân $n_1$, trả về luôn giá trị $\\sin i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020202029",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ topaz (chiết suất 1,80) tới một môi trường khác, có góc tới hạn phản xạ toàn phần $i_{gh} = 39,5^{\\circ}$. Tính chiết suất môi trường khúc xạ.",
+     "lua_chon": [
+      "$n_2 \\approx 2,83$",
+      "$n_2 \\approx 1,39$",
+      "$n_2 \\approx 0,64$",
+      "$n_2 \\approx 1,14"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $n_2 = n_1 \\times \\sin i_{gh} = 1,80 \\times \\sin39,5^{\\circ} = 1,80 \\times 0,636 \\approx 1,14$. A là kết quả của việc chia $n_1$ cho $\\sin i_{gh}$ thay vì nhân. B là kết quả của việc dùng $\\cos i_{gh}$ thay vì $\\sin i_{gh}$. C là kết quả của việc quên nhân $n_1$, trả về luôn giá trị $\\sin i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020202024",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ thủy tinh flint (chiết suất 1,60) tới một môi trường khác, có góc tới hạn phản xạ toàn phần $i_{gh} = 36,5^{\\circ}$. Tính chiết suất môi trường khúc xạ.",
+     "lua_chon": [
+      "$n_2 \\approx 0,95$",
+      "$n_2 \\approx 2,69$",
+      "$n_2 \\approx 1,29$",
+      "$n_2 \\approx 0,59$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$n_2 = n_1 \\times \\sin i_{gh} = 1,60 \\times \\sin 36,5^{\\circ} = 1,60 \\times 0,595 \\approx 0,95$. A là kết quả của việc chia $n_1$ cho $\\sin i_{gh}$ thay vì nhân. B là kết quả của việc dùng $\\cos i_{gh}$ thay vì $\\sin i_{gh}$. D là kết quả của việc quên nhân $n_1$, trả về luôn giá trị $\\sin i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020202027",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ thủy tinh crown (chiết suất 1,65) tới một môi trường khác, có góc tới hạn phản xạ toàn phần $i_{gh} = 33,0^{\\circ}$. Tính chiết suất môi trường khúc xạ.",
+     "lua_chon": [
+      "$n_2 \\approx 3,03$",
+      "$n_2 \\approx 1,38$",
+      "$n_2 \\approx 0,54$",
+      "$n_2 \\approx 0,90$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $n_2 = n_1 \\times \\sin i_{gh} = 1,65 \\times \\sin33,0^{\\circ} = 1,65 \\times 0,545 \\approx 0,90$. A là kết quả của việc chia $n_1$ cho $\\sin i_{gh}$ thay vì nhân. B là kết quả của việc dùng $\\cos i_{gh}$ thay vì $\\sin i_{gh}$. C là kết quả của việc quên nhân $n_1$, trả về luôn giá trị $\\sin i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020202028",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ thạch anh (chiết suất 1,58) tới một môi trường khác, có góc tới hạn phản xạ toàn phần $i_{gh} = 50,0^{\\circ}$. Tính chiết suất môi trường khúc xạ.",
+     "lua_chon": [
+      "$n_2 \\approx 2,06$",
+      "$n_2 \\approx 1,02$",
+      "$n_2 \\approx 1,21$",
+      "$n_2 \\approx 0,77$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $n_2 = n_1 \\times \\sin i_{gh} = 1,58 \\times \\sin50,0^{\\circ} = 1,58 \\times 0,766 \\approx 1,21$. A là kết quả của việc chia $n_1$ cho $\\sin i_{gh}$ thay vì nhân. B là kết quả của việc dùng $\\cos i_{gh}$ thay vì $\\sin i_{gh}$. D là kết quả của việc quên nhân $n_1$, trả về luôn giá trị $\\sin i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020202030",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ zircon (chiết suất 1,62) tới một môi trường khác, có góc tới hạn phản xạ toàn phần $i_{gh} = 45,5^{\\circ}$. Tính chiết suất môi trường khúc xạ.",
+     "lua_chon": [
+      "$n_2 \\approx 1,16$",
+      "$n_2 \\approx 2,27$",
+      "$n_2 \\approx 1,14$",
+      "$n_2 \\approx 0,71"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $n_2 = n_1 \\times \\sin i_{gh} = 1,62 \\times \\sin 45,5^{\\circ} = 1,62 \\times 0,713 \\approx 1,16$. B là kết quả của việc chia $n_1$ cho $\\sin i_{gh}$ thay vì nhân. C là kết quả của việc dùng $\\cos i_{gh}$ thay vì $\\sin i_{gh}$. D là kết quả của việc quên nhân $n_1$, trả về luôn giá trị $\\sin i_{gh}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01175",
+   "nhom_id": "KNB00451",
+   "thu_tu": 5,
+   "dang": "CHO TỐC ĐỘ TRUYỀN ÁNH SÁNG TRONG HAI MÔI TRƯỜNG, TÍNH GÓC TỚI HẠN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020202031",
+     "loai": "tra_loi_ngan",
+     "de": "Tốc độ truyền ánh sáng trong nước là $1,80\\times 10^8\\ \\mathrm{m/s}$, trong kim cương là $2,20\\times 10^8\\ \\mathrm{m/s}$. Ánh sáng truyền từ nước sang kim cương. Tính góc giới hạn phản xạ toàn phần.",
+     "dap_an": "$54,9^\\circ$",
+     "loi_giai": "Vì $n$ tỉ lệ nghịch với $v$ nên $\\dfrac{n_2}{n_1} = \\dfrac{v_1}{v_2} = \\dfrac{1,80}{2,20} = 0,818$ (môi trường nước có $v$ nhỏ hơn nên chiết suất lớn hơn, đúng chiều tới hạn).$\\sin i_{gh} = 0,818 \\Rightarrow i_{gh} \\approx 54,9^\\circ$."
+    },
+    {
+     "ma_cau": "K09020202033",
+     "loai": "tra_loi_ngan",
+     "de": "Tốc độ truyền ánh sáng trong dầu ăn là $2,00\\times 10^8\\ \\mathrm{m/s}$, trong sapphire là $2,50\\times 10^8\\ \\mathrm{m/s}$. Ánh sáng truyền từ dầu ăn sang sapphire. Tính góc giới hạn phản xạ toàn phần.",
+     "dap_an": "$53,1^\\circ$",
+     "loi_giai": "Vì $n$ tỉ lệ nghịch với $v$ nên $\\dfrac{n_2}{n_1} = \\dfrac{v_1}{v_2} = \\dfrac{2,00}{2,50} = 0,800$ (môi trường dầu ăn có $v$ nhỏ hơn nên chiết suất lớn hơn, đúng chiều tới hạn).$\\sin i_{gh} = 0,800 \\Rightarrow i_{gh} \\approx 53,1^\\circ$."
+    },
+    {
+     "ma_cau": "K09020202032",
+     "loai": "tra_loi_ngan",
+     "de": "Tốc độ truyền ánh sáng trong thạch anh là $1,60\\times 10^8\\ \\mathrm{m/s}$, trong topaz là $2,40\\times 10^8\\ \\mathrm{m/s}$. Ánh sáng truyền từ thạch anh sang topaz. Tính góc giới hạn phản xạ toàn phần.",
+     "dap_an": "$41,8^\\circ$",
+     "loi_giai": "Vì $n$ tỉ lệ nghịch với $v$ nên $\\dfrac{n_2}{n_1} = \\dfrac{v_1}{v_2} = \\dfrac{1,60}{2,40} = 0,667$ (môi trường thạch anh có $v$ nhỏ hơn nên chiết suất lớn hơn, đúng chiều tới hạn).$\\sin i_{gh} = 0,667 \\Rightarrow i_{gh} \\approx 41,8^\\circ$."
+    },
+    {
+     "ma_cau": "K09020202034",
+     "loai": "tra_loi_ngan",
+     "de": "Tốc độ truyền ánh sáng trong rượu là $1,50\\times 10^8\\ \\mathrm{m/s}$, trong thủy tinh flint là $2,10\\times 10^8\\ \\mathrm{m/s}$. Ánh sáng truyền từ rượu sang thủy tinh flint. Tính góc giới hạn phản xạ toàn phần.",
+     "dap_an": "$45,6^\\circ$",
+     "loi_giai": "Vì $n$ tỉ lệ nghịch với $v$ nên $\\dfrac{n_2}{n_1} = \\dfrac{v_1}{v_2} = \\dfrac{1,50}{2,10} = 0,714$ (môi trường rượu có $v$ nhỏ hơn nên chiết suất lớn hơn, đúng chiều tới hạn).$\\sin i_{gh} = 0,714 \\Rightarrow i_{gh} \\approx 45,6^\\circ$."
+    },
+    {
+     "ma_cau": "K09020202035",
+     "loai": "tra_loi_ngan",
+     "de": "Tốc độ truyền ánh sáng trong thủy tinh crown là $1,90\\times 10^8\\ \\mathrm{m/s}$, trong zircon là $2,65\\times 10^8\\ \\mathrm{m/s}$. Ánh sáng truyền từ thủy tinh crown sang zircon. Tính góc giới hạn phản xạ toàn phần.",
+     "dap_an": "$45,8^\\circ$",
+     "loi_giai": "Vì $n$ tỉ lệ nghịch với $v$ nên $\\dfrac{n_2}{n_1} = \\dfrac{v_1}{v_2} = \\dfrac{1,90}{2,65} = 0,717$ (môi trường thủy tinh crown có $v$ nhỏ hơn nên chiết suất lớn hơn, đúng chiều tới hạn).$\\sin i_{gh} = 0,717 \\Rightarrow i_{gh} \\approx 45,8^\\circ$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01176",
+   "nhom_id": "KNB00451",
+   "thu_tu": 6,
+   "dang": "CHO GÓC TỚI HẠN VÀ CHIẾT SUẤT MÔI TRƯỜNG TỚI, TÍNH TỐC ĐỘ TRUYỀN ÁNH SÁNG TRONG MÔI TRƯỜNG KHÚC XẠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020202040",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ topaz (chiết suất $1,60$) sang một môi trường khác, có góc tới hạn phản xạ toàn phần $i_{gh} = 44,0^{\\circ}$. Biết tốc độ ánh sáng trong chân không $c = 3\\times 10^8$ m/s. Tính tốc độ truyền ánh sáng trong môi trường khúc xạ.",
+     "dap_an": "$2,70 \\times 10^8$ m/s.",
+     "loi_giai": "$n_2 = n_1 \\times \\sin i_{gh} = 1,60 \\times \\sin 44,0^{\\circ} \\approx 1,111$.\n$v_2 = c/n_2 = 3\\times 10^8 / 1,111 \\approx 2,70 \\times 10^8$ m/s."
+    },
+    {
+     "ma_cau": "K09020202036",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ kim cương (chiết suất $1,72$) sang một môi trường khác, có góc tới hạn phản xạ toàn phần $i_{gh} = 50,0^{\\circ}$. Biết tốc độ ánh sáng trong chân không $c = 3\\times10^8$ m/s. Tính tốc độ truyền ánh sáng trong môi trường khúc xạ.",
+     "dap_an": "2.28*10^8",
+     "loi_giai": "$n_2 = n_1 \\times \\sin i_{gh} = 1,72 \\times \\sin 50,0^{\\circ} \\approx 1,318$.\n$v_2 = c/n_2 = 3\\times 10^8 / 1,318 \\approx 2,28 \\times 10^8$ m/s."
+    },
+    {
+     "ma_cau": "K09020202037",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ thủy tinh flint (chiết suất $1,58$) sang một môi trường khác, có góc tới hạn phản xạ toàn phần $i_{gh} = 41,5^{\\circ}$. Biết tốc độ ánh sáng trong chân không $c = 3\\times 10^8$ m/s. Tính tốc độ truyền ánh sáng trong môi trường khúc xạ.",
+     "dap_an": "2.87*10^8",
+     "loi_giai": "$n_2 = n_1 \\times \\sin i_{gh} = 1,58 \\times \\sin 41,5^{\\circ} \\approx 1,047$.\n$v_2 = c/n_2 = 3\\times 10^8 / 1,047 \\approx 2,87 \\times 10^8$ m/s."
+    },
+    {
+     "ma_cau": "K09020202038",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ sapphire (chiết suất $1,65$) sang một môi trường khác, có góc tới hạn phản xạ toàn phần $i_{gh} = 47,0^{\\circ}$. Biết tốc độ ánh sáng trong chân không $c = 3\\times 10^8$ m/s. Tính tốc độ truyền ánh sáng trong môi trường khúc xạ.",
+     "dap_an": "$2,49 \\times 10^8$ m/s.",
+     "loi_giai": "$n_2 = n_1 \\times \\sin i_{gh} = 1,65 \\times \\sin 47,0^{\\circ} \\approx 1,207$.\n$v_2 = c/n_2 = 3\\times 10^8 / 1,207 \\approx 2,49 \\times 10^8$ m/s."
+    },
+    {
+     "ma_cau": "K09020202039",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ zircon (chiết suất $1,75$) sang một môi trường khác, có góc tới hạn phản xạ toàn phần $i_{gh} = 52,0^{\\circ}$. Biết tốc độ ánh sáng trong chân không $c = 3\\times 10^8$ m/s. Tính tốc độ truyền ánh sáng trong môi trường khúc xạ.",
+     "dap_an": "$2,18 \\times 10^8$ m/s.",
+     "loi_giai": "$n_2 = n_1 \\times \\sin i_{gh} = 1,75 \\times \\sin 52,0^{\\circ} \\approx 1,379$.\n$v_2 = c/n_2 = 3\\times 10^8 / 1,379 \\approx 2,18 \\times 10^8$ m/s."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01177",
+   "nhom_id": "KNB00451",
+   "thu_tu": 7,
+   "dang": "CHO TỈ LỆ VÀ HIỆU SỐ CHIẾT SUẤT, GIẢI HỆ TÌM CHIẾT SUẤT MỖI MÔI TRƯỜNG RỒI TÍNH GÓC TỚI HẠN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020202042",
+     "loai": "tra_loi_ngan",
+     "de": "Hai môi trường trong suốt có chiết suất tỉ lệ $n_1:n_2 = 6:5$, hiệu số chiết suất $n_1 - n_2 = 0,28$.\nÁnh sáng truyền từ môi trường 1 sang môi trường 2. Tính chiết suất mỗi môi trường và góc tới hạn phản xạ toàn phần.",
+     "dap_an": "$n_1 \\approx 1.68; n_2 \\approx 1.40; i_{gh} \\approx 56.4$",
+     "loi_giai": "Đặt $n_1 = 6k, n_2 = 5k$. Hiệu: $(6-5)k = 0,28 \\rightarrow k = 0,2800$. $n_1 = 6 \\times 0,2800 \\approx 1,68$; $n_2 = 5 \\times 0,2800 \\approx 1,40$. $\\sin i_{gh} = n_2/n_1 = 0,833 \\rightarrow i_{gh} \\approx 56,4^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020202044",
+     "loai": "tra_loi_ngan",
+     "de": "Hai môi trường trong suốt có chiết suất tỉ lệ $n_1:n_2 = 8:7$, hiệu số chiết suất $n_1 - n_2 = 0,15$.\nÁnh sáng truyền từ môi trường 1 sang môi trường 2. Tính chiết suất mỗi môi trường và góc tới hạn phản xạ toàn phần.",
+     "dap_an": "$n_1 \\approx 1.20; n_2 \\approx 1.05; i_{gh} \\approx 61.0$",
+     "loi_giai": "Đặt $n_1 = 8k, n_2 = 7k$. Hiệu: $(8-7)k = 0,15 \\rightarrow k = 0,1500$. $n_1 = 8 \\times 0,1500 \\approx 1,20$; $n_2 = 7 \\times 0,1500 \\approx 1,05$. $\\sin i_{gh} = n_2/n_1 = 0,875 \\rightarrow i_{gh} \\approx 61,0^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020202045",
+     "loai": "tra_loi_ngan",
+     "de": "Hai môi trường trong suốt có chiết suất tỉ lệ $n_1:n_2 = 9:7$, hiệu số chiết suất $n_1 - n_2 = 0,34$.\nÁnh sáng truyền từ môi trường 1 sang môi trường 2. Tính chiết suất mỗi môi trường và góc tới hạn phản xạ toàn phần.",
+     "dap_an": "$n_1 \\approx 1.53; n_2 \\approx 1.19; i_{gh} \\approx 51.1$",
+     "loi_giai": "Đặt $n_1 = 9k, n_2 = 7k$. Hiệu: $(9-7)k = 0,34 \\rightarrow k = 0,1700$. $n_1 = 9 \\times 0,1700 \\approx 1,53$; $n_2 = 7 \\times 0,1700 \\approx 1,19$. $\\sin i_{gh} = n_2/n_1 = 0,778 \\rightarrow i_{gh} \\approx 51,1^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020202043",
+     "loai": "tra_loi_ngan",
+     "de": "Hai môi trường trong suốt có chiết suất tỉ lệ $n_1:n_2 = 7:5$, hiệu số chiết suất $n_1 - n_2 = 0,42$.\nÁnh sáng truyền từ môi trường 1 sang môi trường 2. Tính chiết suất mỗi môi trường và góc tới hạn phản xạ toàn phần.",
+     "dap_an": "$n_1 \\approx 1.47; n_2 \\approx 1.05; i_{gh} \\approx 45.6$",
+     "loi_giai": "Đặt $n_1 = 7k, n_2 = 5k$. Hiệu: $(7-5)k = 0,42 \\rightarrow k = 0,2100$. $n_1 = 7 \\times 0,2100 \\approx 1,47$; $n_2 = 5 \\times 0,2100 \\approx 1,05$. $\\sin i_{gh} = n_2/n_1 = 0,714 \\rightarrow i_{gh} \\approx 45,6^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020202041",
+     "loai": "tra_loi_ngan",
+     "de": "Hai môi trường trong suốt có chiết suất tỉ lệ $n_1:n_2 = 5:4$, hiệu số chiết suất $n_1 - n_2 = 0,35$.\nÁnh sáng truyền từ môi trường 1 sang môi trường 2. Tính chiết suất mỗi môi trường và góc tới hạn phản xạ toàn phần.",
+     "dap_an": "$n_1 \\approx 1.75; n_2 \\approx 1.40; i_{gh} \\approx 53.1$",
+     "loi_giai": "Đặt $n_1 = 5k, n_2 = 4k$. Hiệu: $(5-4)k = 0,35 \\rightarrow k = 0,3500$. $n_1 = 5 \\times 0,3500 \\approx 1,75$; $n_2 = 4 \\times 0,3500 \\approx 1,40$. $\\sin i_{gh} = n_2/n_1 = 0,800 \\rightarrow i_{gh} \\approx 53,1^{\\circ}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01178",
+   "nhom_id": "KNB00451",
+   "thu_tu": 8,
+   "dang": "CHO GÓC TỚI HẠN VÀ CHIẾT SUẤT MÔI TRƯỜNG KHÚC XẠ, TÍNH CHIẾT SUẤT VÀ TỐC ĐỘ TRUYỀN ÁNH SÁNG TRONG MÔI TRƯỜNG TỚI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020202047",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ một môi trường sang dầu ăn (chiết suất 1,28), có góc tới hạn phản xạ toàn phần $i_{gh} = 43,5^{\\circ}$. Biết tốc độ ánh sáng trong chân không $c = 3\\times10^8$ m/s. Tính chiết suất và tốc độ truyền ánh sáng trong môi trường tới.",
+     "dap_an": "1.86; $1,61\\times10^8$ m/s",
+     "loi_giai": "$n_1 = n_2/\\sin i_{gh} = 1,28/\\sin 43,5^{\\circ} = 1,28/0,688 \\approx 1,86$.\n$v_1 = c/n_1 = 3\\times10^8/1,86 \\approx 1,61\\times10^8$ m/s."
+    },
+    {
+     "ma_cau": "K09020202048",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ một môi trường sang nước (chiết suất 1,32), có góc tới hạn phản xạ toàn phần $i_{gh} = 29,5^{\\circ}$. Biết tốc độ ánh sáng trong chân không $c = 3\\times10^8$ m/s. Tính chiết suất và tốc độ truyền ánh sáng trong môi trường tới.",
+     "dap_an": "2.68; $1,12\\times10^8$ m/s",
+     "loi_giai": "$n_1 = n_2/\\sin i_{gh} = 1,32/\\sin 29,5^{\\circ} = 1,32/0,492 \\approx 2,68$.\n$v_1 = c/n_1 = 3\\times10^8/2,68 \\approx 1,12\\times10^8$ m/s."
+    },
+    {
+     "ma_cau": "K09020202049",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ một môi trường sang thạch anh (chiết suất 1,40), có góc tới hạn phản xạ toàn phần $i_{gh} = 52,0^{\\circ}$. Biết tốc độ ánh sáng trong chân không $c = 3\\times10^8$ m/s. Tính chiết suất và tốc độ truyền ánh sáng trong môi trường tới.",
+     "dap_an": "1.78; $1,69\\times10^8$ m/s",
+     "loi_giai": "$n_1 = n_2/\\sin i_{gh} = 1,40/\\sin 52,0^{\\circ} = 1,40/0,788 \\approx 1,78$.\n$v_1 = c/n_1 = 3\\times10^8/1,78 \\approx 1,69\\times10^8$ m/s."
+    },
+    {
+     "ma_cau": "K09020202050",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ một môi trường sang nước đường (chiết suất 1,25), có góc tới hạn phản xạ toàn phần $i_{gh} = 46,5^{\\circ}$. Biết tốc độ ánh sáng trong chân không $c = 3\\times10^8$ m/s. Tính chiết suất và tốc độ truyền ánh sáng trong môi trường tới.",
+     "dap_an": "1.72; $1,74\\times10^8$ m/s",
+     "loi_giai": "$n_1 = n_2/\\sin i_{gh} = 1,25/\\sin 46,5^{\\circ} = 1,25/0,725 \\approx 1,72$.\n$v_1 = c/n_1 = 3\\times10^8/1,72 \\approx 1,74\\times10^8$ m/s."
+    },
+    {
+     "ma_cau": "K09020202046",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ một môi trường sang rượu (chiết suất 1,30), có góc tới hạn phản xạ toàn phần $i_{gh} = 37,5^{\\circ}$. Biết tốc độ ánh sáng trong chân không $c = 3\\times10^8$ m/s. Tính chiết suất và tốc độ truyền ánh sáng trong môi trường tới.",
+     "dap_an": "2.14; $1,40\\times10^8$ m/s.",
+     "loi_giai": "$n_1 = n_2/\\sin i_{gh} = 1,30/\\sin 37,5^{\\circ} = 1,30/0,609 \\approx 2,14$.\n$v_1 = c/n_1 = 3\\times10^8/2,14 \\approx 1,40\\times10^8$ m/s."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01179",
+   "nhom_id": "KNB00452",
+   "thu_tu": 1,
+   "dang": "GÓC TỚI VÀ CHIẾT SUẤT HAI MÔI TRƯỜNG CỤ THỂ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020203004",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ thạch anh (chiết suất 1,68) sang dầu ăn (chiết suất 1,46) với góc tới $35^\ring$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Có, phản xạ toàn phần xảy ra vì $i = 35^\ring \\ge i_{gh} \\approx 60,3^\ring$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 35^\ring < i_{gh} \\approx 78,2^\ring$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 35^\ring < i_{gh} \\approx 60,3^\ring$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 35^\ring \\ge i_{gh} \\approx 29,7^\ring$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\sin i_{gh} = 1,46/1,68 = 0,869 \\rightarrow i_{gh} \\approx 60,3^\ring$. So sánh: $i = 35^\ring < i_{gh} \\approx 60,3^\ring \\rightarrow$ không xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. B là kết quả của việc tính $i_{gh}$ theo cách nhân tỉ số với $90^\ring$ thay vì lấy $arcsin$. D là kết quả của việc nhầm góc tới hạn với góc phụ $90^\ring - i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020203003",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ kim cương (chiết suất 1,55) sang rượu (chiết suất 1,30) với góc tới $60^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Có, phản xạ toàn phần xảy ra vì $i = 60^\\circ \\ge i_{gh} \\approx 57,0^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 60^\\circ < i_{gh} \\approx 57,0^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 60^\\circ < i_{gh} \\approx 75,5^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 60^\\circ \\ge i_{gh} \\approx 33,0^\\circ"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\sin i_{gh} = 1,30/1,55 = 0,839 \\to i_{gh} \\approx 57,0^\\circ$. So sánh: $i = 60^\\circ \\ge i_{gh} \\approx 57,0^\\circ \\to$ có xảy ra phản xạ toàn phần. B là kết quả của việc đảo ngược bất đẳng thức khi so sánh. C là kết quả của việc tính $i_{gh}$ theo cách nhân tỉ số với $90^\\circ$ thay vì lấy $arcsin$. D là kết quả của việc nhầm góc tới hạn với góc phụ $90^\\circ - i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020203006",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ topaz (chiết suất 1,62) sang nước đường (chiết suất 1,38) với góc tới $55^\ring$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Có, phản xạ toàn phần xảy ra vì $i = 55^\ring \\ge i_{gh} \\approx 58,4^\ring$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 55^\ring < i_{gh} \\approx 58,4^\ring$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 55^\ring < i_{gh} \\approx 76,7^\ring$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 55^\ring \\ge i_{gh} \\approx 31,6^\ring"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\sin i_{gh} = 1,38/1,62 = 0,852 \\rightarrow i_{gh} \\approx 58,4^\ring$. So sánh: $i = 55^\ring < i_{gh} \\approx 58,4^\ring \\rightarrow$ không xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. C là kết quả của việc tính $i_{gh}$ theo cách nhân tỉ số với $90^\ring$ thay vì lấy $arcsin$. D là kết quả của việc nhầm góc tới hạn với góc phụ $90^\ring - i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020203001",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ thủy tinh crown (chiết suất 1,60) sang thạch anh (chiết suất 1,36) với góc tới $50^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Có, phản xạ toàn phần xảy ra vì $i = 50^\\circ \\ge i_{gh} \\approx 58,2^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 50^\\circ < i_{gh} \\approx 58,2^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 50^\\circ < i_{gh} \\approx 76,5^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 50^\\circ \\ge i_{gh} \\approx 31,8^\\circ$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\sin i_{gh} = 1,36/1,60 = 0,850 \\to i_{gh} \\approx 58,2^\\circ$. So sánh: $i = 50^\\circ < i_{gh} \\approx 58,2^\\circ \\to$ không xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. C là kết quả của việc tính $i_{gh}$ theo cách nhân tỉ số với $90^\\circ$ thay vì lấy $arcsin$. D là kết quả của việc nhầm góc tới hạn với góc phụ $90^\\circ - i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020203007",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ thủy tinh chì (chiết suất 1,80) sang glycerin (chiết suất 1,44) với góc tới $40^o$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Có, phản xạ toàn phần xảy ra vì $i = 40^o \\ge ig_h \\approx 53,1^o$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 40^o < ig_h \\approx 72,0^o$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 40^o < ig_h \\approx 53,1^o$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 40^o \\ge ig_h \\approx 36,9^o$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\sin ig_h = 1,44/1,80 = 0,800 \\rightarrow ig_h \\approx 53,1^o$. So sánh: $i = 40^o < ig_h \\approx 53,1^o \\rightarrow$ không xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. B là kết quả của việc tính $ig_h$ theo cách nhân tỉ số với $90^o$ thay vì lấy $\\arcsin$. D là kết quả của việc nhầm góc tới hạn với góc phụ $90^o - ig_h$."
+    },
+    {
+     "ma_cau": "K09020203005",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ zircon (chiết suất 1,90) sang thủy tinh crown (chiết suất 1,50) với góc tới $45^\ring$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Có, phản xạ toàn phần xảy ra vì $i = 45^\ring \\ge i_{gh} \\approx 52,1^\ring$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 45^\ring < i_{gh} \\approx 71,1^\ring$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 45^\ring \\ge i_{gh} \\approx 37,9^\ring$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 45^\ring < i_{gh} \\approx 52,1^\ring$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\sin i_{gh} = 1,50/1,90 = 0,789 \\rightarrow i_{gh} \\approx 52,1^\ring$. So sánh: $i = 45^\ring < i_{gh} \\approx 52,1^\ring \\rightarrow$ không xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. B là kết quả của việc tính $i_{gh}$ theo cách nhân tỉ số với $90^\ring$ thay vì lấy $arcsin$. C là kết quả của việc nhầm góc tới hạn với góc phụ $90^\ring - i_{gh}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01180",
+   "nhom_id": "KNB00452",
+   "thu_tu": 2,
+   "dang": "GÓC TỚI VÀ CHIẾT SUẤT MỘT MÔI TRƯỜNG, MÔI TRƯỜNG CÒN LẠI LÀ KHÔNG KHÍ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020203011",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ kim cương (chiết suất 1,40) ra không khí (chiết suất 1) với góc tới $50^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Không, chỉ xảy ra khúc xạ vì $i = 50^\\circ < i_{gh} \\approx 45,6^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 50^\\circ < i_{gh} \\approx 64,3^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 50^\\circ \\geq i_{gh} \\approx 44,4^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 50^\\circ \\geq i_{gh} \\approx 45,6^\\circ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\sin i_{gh} = 1/1,40 = 0,714 \\rightarrow i_{gh} \\approx 45,6^\\circ$. So sánh: $i = 50^\\circ \\geq i_{gh} \\approx 45,6^\\circ \\rightarrow$ có xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. B là kết quả của việc tính $i_{gh}$ theo cách nhân tỉ số với $90^\\circ$ thay vì lấy arcsin. C là kết quả của việc nhầm góc tới hạn với góc phụ $90^\\circ - i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020203015",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ rượu (chiết suất 1,35) ra không khí (chiết suất 1) với góc tới $55^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Không, chỉ xảy ra khúc xạ vì $i = 55^\\circ < i_{gh} \\approx 47,8^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 55^\\circ \\geq i_{gh} \\approx 47,8^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 55^\\circ < i_{gh} \\approx 66,7^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 55^\\circ \\geq i_{gh} \\approx 42,2^\\circ$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $\\sin i_{gh} = 1/1,35 = 0,741 \\rightarrow i_{gh} \\approx 47,8^\\circ$. So sánh: $i = 55^\\circ \\geq i_{gh} \\approx 47,8^\\circ \\rightarrow$ có xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. C là kết quả của việc tính $i_{gh}$ theo cách nhân tỉ số với $90^\\circ$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ $90^\\circ - i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020203013",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ topaz (chiết suất 1,47) ra không khí (chiết suất 1) với góc tới $45^o$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Có, phản xạ toàn phần xảy ra vì $i = 45^o \\ge i_{gh} \\approx 42,9^o$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 45^o < i_{gh} \\approx 42,9^o$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 45^o < i_{gh} \\approx 61,2^o$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 45^o < i_{gh} \\approx 47,1^o"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\sin i_{gh} = 1/1,47 = 0,680 \\rightarrow i_{gh} \\approx 42,9^o$. So sánh: $i = 45^o \\ge i_{gh} \\approx 42,9^o \\rightarrow$ có xảy ra phản xạ toàn phần. B là kết quả của việc đảo ngược bất đẳng thức khi so sánh. C là kết quả của việc tính $i_{gh}$ theo cách nhân tỉ số với $90^o$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ $90^o - i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020203010",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ đá muối ($\\mathrm{NaCl}$) (chiết suất 1,70) ra không khí (chiết suất 1) với góc tới $25^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Không, chỉ xảy ra khúc xạ vì $i = 25^\\circ < i_{gh} \\approx 36,0^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 25^\\circ \\geq i_{gh} \\approx 36,0^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 25^\\circ < i_{gh} \\approx 52,9^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 25^\\circ < i_{gh} \\approx 54,0^\\circ$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\sin i_{gh} = 1/1,70 = 0,588 \\rightarrow i_{gh} \\approx 36,0^\\circ$. So sánh: $i = 25^\\circ < i_{gh} \\approx 36,0^\\circ \\rightarrow$ không xảy ra phản xạ toàn phần. B là kết quả của việc đảo ngược bất đẳng thức khi so sánh. C là kết quả của việc tính $i_{gh}$ theo cách nhân tỉ số với $90^\\circ$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ $90^\\circ - i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020203012",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ thủy tinh flint (chiết suất 1,62) ra không khí (chiết suất 1) với góc tới $35^o$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Có, phản xạ toàn phần xảy ra vì $i = 35^o \\ge i_{gh} \\approx 38,1^o$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 35^o < i_{gh} \\approx 38,1^o$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 35^o < i_{gh} \\approx 55,6^o$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 35^o < i_{gh} \\approx 51,9^o"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\sin i_{gh} = 1/1,62 = 0,617 \\rightarrow i_{gh} \\approx 38,1^o$. So sánh: $i = 35^o < i_{gh} \\approx 38,1^o \\rightarrow$ không xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. C là kết quả của việc tính $i_{gh}$ theo cách nhân tỉ số với $90^o$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ $90^o - i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020203009",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng truyền từ nhựa polystyrene (chiết suất 1,55) ra không khí (chiết suất 1) với góc tới $40^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Có, phản xạ toàn phần xảy ra vì $i = 40^\\circ \\geq i_{gh} \\approx 40,2^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 40^\\circ < i_{gh} \\approx 58,1^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 40^\\circ < i_{gh} \\approx 40,2^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 40^\\circ < i_{gh} \\approx 49,8^\\circ$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\sin i_{gh} = 1/1,55 = 0,645 \\rightarrow i_{gh} \\approx 40,2^\\circ$. So sánh: $i = 40^\\circ < i_{gh} \\approx 40,2^\\circ \\rightarrow$ không xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. B là kết quả của việc tính $i_{gh}$ theo cách nhân tỉ số với $90^\\circ$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ $90^\\circ - i_{gh}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01181",
+   "nhom_id": "KNB00452",
+   "thu_tu": 3,
+   "dang": "GÓC TỚI VÀ GÓC TỚI HẠN CHO TRỰC TIẾP",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020203021",
+     "loai": "trac_nghiem",
+     "de": "Một cặp môi trường trong suốt có góc tới hạn phản xạ toàn phần $i_{gh} = 55,0^{\\circ}$. Ánh sáng truyền tới mặt phân cách với góc tới $60^{\\circ}$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Không, chỉ xảy ra khúc xạ vì $i = 60^{\\circ} < i_{gh} \\approx 55,0^{\\circ}$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 60^{\\circ} \\ge i_{gh} \\approx 27,5^{\\circ}$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 60^{\\circ} \\ge i_{gh} \\approx 35,0^{\\circ}$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 60^{\\circ} \\ge i_{gh} \\approx 55,0^{\\circ}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "So sánh: $i = 60^{\\circ} \\ge i_{gh} = 55,0^{\\circ} \\longrightarrow$ có xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. B là kết quả của việc nhầm lấy một nửa góc tới hạn làm ngưỡng so sánh. C là kết quả của việc nhầm góc tới hạn với góc phụ $90^{\\circ} - i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020203018",
+     "loai": "trac_nghiem",
+     "de": "Một cặp môi trường trong suốt có góc tới hạn phản xạ toàn phần $i_{gh} = 33,0^\\circ$. Ánh sáng truyền tới mặt phân cách với góc tới $28^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Có, phản xạ toàn phần xảy ra vì $i = 28^\\circ \\geq i_{gh} \\approx 33,0^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 28^\\circ < i_{gh} \\approx 33,0^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 28^\\circ \\geq i_{gh} \\approx 16,5^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 28^\\circ < i_{gh} \\approx 57,0^\\circ$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "So sánh: $i = 28^\\circ < i_{gh} = 33,0^\\circ \\rightarrow$ không xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. C là kết quả của việc nhầm lấy một nửa góc tới hạn làm ngưỡng so sánh. D là kết quả của việc nhầm góc tới hạn với góc phụ $90^\\circ - i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020203017",
+     "loai": "trac_nghiem",
+     "de": "Một cặp môi trường trong suốt có góc tới hạn phản xạ toàn phần $i_{gh} = 38,5^\\circ$. Ánh sáng truyền tới mặt phân cách với góc tới $42^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Không, chỉ xảy ra khúc xạ vì $i = 42^\\circ < i_{gh} \\approx 38,5^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 42^\\circ \\geq i_{gh} \\approx 19,2^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 42^\\circ < i_{gh} \\approx 51,5^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 42^\\circ \\geq i_{gh} \\approx 38,5^\\circ$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "So sánh: $i = 42^\\circ \\geq i_{gh} = 38,5^\\circ \\rightarrow$ có xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. B là kết quả của việc nhầm lấy một nửa góc tới hạn làm ngưỡng so sánh. C là kết quả của việc nhầm góc tới hạn với góc phụ $90^\\circ - i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020203020",
+     "loai": "trac_nghiem",
+     "de": "Một cặp môi trường trong suốt có góc tới hạn phản xạ toàn phần $i_{gh} = 41,5^{\\circ}$. Ánh sáng truyền tới mặt phân cách với góc tới $36^{\\circ}$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Không, chỉ xảy ra khúc xạ vì $i = 36^{\\circ} < i_{gh} \\approx 41,5^{\\circ}$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 36^{\\circ} \\ge i_{gh} \\approx 41,5^{\\circ}$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 36^{\\circ} \\ge i_{gh} \\approx 20,8^{\\circ}$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 36^{\\circ} < i_{gh} \\approx 48,5^{\\circ}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "So sánh: $i = 36^{\\circ} < i_{gh} = 41,5^{\\circ} \\longrightarrow$ không xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. B là kết quả của việc nhầm lấy một nửa góc tới hạn làm ngưỡng so sánh. C là kết quả của việc nhầm góc tới hạn với góc phụ $90^{\\circ} - i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020203023",
+     "loai": "trac_nghiem",
+     "de": "Một cặp môi trường trong suốt có góc tới hạn phản xạ toàn phần $\\mathrm{i_{gh} = 29,5^{\\circ}}$. Ánh sáng truyền tới mặt phân cách với góc tới $31^{\\circ}$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Không, chỉ xảy ra khúc xạ vì $\\mathrm{i = 31^{\\circ} < i_{gh} \\approx 29,5^{\\circ}}$",
+      "Có, phản xạ toàn phần xảy ra vì $\\mathrm{i = 31^{\\circ} \\ge i_{gh} \\approx 29,5^{\\circ}}$",
+      "Có, phản xạ toàn phần xảy ra vì $\\mathrm{i = 31^{\\circ} \\ge i_{gh} \\approx 14,8^{\\circ}}$",
+      "Không, chỉ xảy ra khúc xạ vì $\\mathrm{i = 31^{\\circ} < i_{gh} \\approx 60,5^{\\circ}}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: So sánh: $\\mathrm{i = 31^{\\circ} \\ge i_{gh} = 29,5^{\\circ}}$ $\\rightarrow$ có xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. C là kết quả của việc nhầm lấy một nửa góc tới hạn làm ngưỡng so sánh. D là kết quả của việc nhầm góc tới hạn với góc phụ $\\mathrm{90^{\\circ} - i_{gh}}$."
+    },
+    {
+     "ma_cau": "K09020203019",
+     "loai": "trac_nghiem",
+     "de": "Một cặp môi trường trong suốt có góc tới hạn phản xạ toàn phần $i_{gh} = 43,0^\\circ$. Ánh sáng truyền tới mặt phân cách với góc tới $50^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Không, chỉ xảy ra khúc xạ vì $i = 50^\\circ < i_{gh} \\approx 43,0^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 50^\\circ \\geq i_{gh} \\approx 21,5^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 50^\\circ \\geq i_{gh} \\approx 43,0^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 50^\\circ \\geq i_{gh} \\approx 47,0^\\circ"
+     ],
+     "dap_an": "C",
+     "loi_giai": "So sánh: $i = 50^\\circ \\geq i_{gh} = 43,0^\\circ \\rightarrow$ có xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. B là kết quả của việc nhầm lấy một nửa góc tới hạn làm ngưỡng so sánh. D là kết quả của việc nhầm góc tới hạn với góc phụ $90^\\circ - i_{gh}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01182",
+   "nhom_id": "KNB00452",
+   "thu_tu": 4,
+   "dang": "GÓC TỚI VÀ TỐC ĐỘ TRUYỀN ÁNH SÁNG TRONG HAI MÔI TRƯỜNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020203025",
+     "loai": "trac_nghiem",
+     "de": "Tốc độ truyền ánh sáng trong sapphire là $1,50 \\times 10^8$ m/s, trong thạch anh là $2,10 \\times 10^8$ m/s. Ánh sáng truyền từ sapphire sang thạch anh với góc tới $55^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Không, chỉ xảy ra khúc xạ vì $i = 55^\\circ < i_{gh} \\approx 45,6^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 55^\\circ < i_{gh} \\approx 64,3^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 55^\\circ \\geq i_{gh} \\approx 45,6^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 55^\\circ \\geq i_{gh} \\approx 44,4^\\circ$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$n_2/n_1 = v_1/v_2 = 1,50/2,10 = 0,714 \\rightarrow i_{gh} \\approx 45,6^\\circ$. So sánh: $i = 55^\\circ \\geq i_{gh} \\approx 45,6^\\circ \\rightarrow$ có xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. B là kết quả của việc tính $i_{gh}$ theo cách nhân tỉ số với $90^\\circ$ thay vì lấy $arcsin$. D là kết quả của việc nhầm góc tới hạn với góc phụ $90^\\circ - i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020203028",
+     "loai": "trac_nghiem",
+     "de": "Tốc độ truyền ánh sáng trong thủy tinh flint là $1,80\\times 10^8$ m/s, trong nước đường là $2,60\\times 10^8$ m/s. Ánh sáng truyền từ thủy tinh flint sang nước đường với góc tới $60^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Không, chỉ xảy ra khúc xạ vì $i = 60^\\circ < i_{gh} \\approx 43,8^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 60^\\circ < i_{gh} \\approx 62,3^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 60^\\circ \\geq i_{gh} \\approx 43,8^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 60^\\circ \\geq i_{gh} \\approx 46,2^\\circ"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$n_2/n_1 = v_1/v_2 = 1,80/2,60 = 0,692 \\to i_{gh} \\approx 43,8^\\circ$. So sánh: $i = 60^\\circ \\geq i_{gh} \\approx 43,8^\\circ \\to$ có xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. B là kết quả của việc tính $i_{gh}$ theo cách nhân tỉ số với $90^\\circ$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ $90^\\circ - i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020203027",
+     "loai": "trac_nghiem",
+     "de": "Tốc độ truyền ánh sáng trong topaz là $1,60\\times 10^8$ m/s, trong dầu ăn là $2,20\\times 10^8$ m/s. Ánh sáng truyền từ topaz sang dầu ăn với góc tới $48^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Không, chỉ xảy ra khúc xạ vì $i = 48^\\circ < i_{gh} \\approx 46,7^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 48^\\circ < i_{gh} \\approx 65,5^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 48^\\circ \\geq i_{gh} \\approx 43,3^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 48^\\circ \\geq i_{gh} \\approx 46,7^\\circ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$n_2/n_1 = v_1/v_2 = 1,60/2,20 = 0,727 \\to i_{gh} \\approx 46,7^\\circ$. So sánh: $i = 48^\\circ \\geq i_{gh} \\approx 46,7^\\circ \\to$ có xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. B là kết quả của việc tính $i_{gh}$ theo cách nhân tỉ số với $90^\\circ$ thay vì lấy arcsin. C là kết quả của việc nhầm góc tới hạn với góc phụ $90^\\circ - i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020203030",
+     "loai": "trac_nghiem",
+     "de": "Tốc độ truyền ánh sáng trong thủy tinh crown là $1,65 \\times 10^8$ m/s, trong rượu là $2,15 \\times 10^8$ m/s. Ánh sáng truyền từ thủy tinh crown sang rượu với góc tới $52^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Có, phản xạ toàn phần xảy ra vì $i = 52^\\circ \\geq i_{gh} \\approx 50,1^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 52^\\circ < i_{gh} \\approx 50,1^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 52^\\circ < i_{gh} \\approx 69,1^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 52^\\circ \\geq i_{gh} \\approx 39,9^\\circ$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$n_2/n_1 = v_1/v_2 = 1,65/2,15 = 0,767 \\rightarrow i_{gh} \\approx 50,1^\\circ$. So sánh: $i = 52^\\circ \\geq i_{gh} \\approx 50,1^\\circ \\rightarrow$ có xảy ra phản xạ toàn phần. B là kết quả của việc đảo ngược bất đẳng thức khi so sánh. C là kết quả của việc tính $i_{gh}$ theo cách nhân tỉ số với $90^\\circ$ thay vì lấy arcsin. D là kết quả của việc nhầm góc tới hạn với góc phụ $90^\\circ - i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020203024",
+     "loai": "trac_nghiem",
+     "de": "Tốc độ truyền ánh sáng trong kim cương là $1,70 \\times 10^8$ m/s, trong rượu là $2,30 \\times 10^8$ m/s. Ánh sáng truyền từ kim cương sang rượu với góc tới $40^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Không, chỉ xảy ra khúc xạ vì $i = 40^\\circ < i_{gh} \\approx 47,7^\\circ$",
+      "Có, phản xạ toàn phần xảy ra vì $i = 40^\\circ \\geq i_{gh} \\approx 47,7^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 40^\\circ < i_{gh} \\approx 66,5^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 40^\\circ < i_{gh} \\approx 42,3^\\circ$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$n_2/n_1 = v_1/v_2 = 1,70/2,30 = 0,739 \\rightarrow i_{gh} \\approx 47,7^\\circ$. So sánh: $i = 40^\\circ < i_{gh} \\approx 47,7^\\circ \\rightarrow$ không xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. C là kết quả của việc tính $i_{gh}$ theo cách nhân tỉ số với $90^\\circ$ thay vì lấy $arcsin$. D là kết quả của việc nhầm góc tới hạn với góc phụ $90^\\circ - i_{gh}$."
+    },
+    {
+     "ma_cau": "K09020203029",
+     "loai": "trac_nghiem",
+     "de": "Tốc độ truyền ánh sáng trong thủy tinh chỉ là $2,00 \\times 10^8$ m/s, trong glycerin là $2,50 \\times 10^8$ m/s. Ánh sáng truyền từ thủy tinh chỉ sang glycerin với góc tới $35^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "lua_chon": [
+      "Có, phản xạ toàn phần xảy ra vì $i = 35^\\circ \\geq i_{gh} \\approx 53,1^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 35^\\circ < i_{gh} \\approx 72,0^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 35^\\circ < i_{gh} \\approx 36,9^\\circ$",
+      "Không, chỉ xảy ra khúc xạ vì $i = 35^\\circ < i_{gh} \\approx 53,1^\\circ$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$n_2/n_1 = v_1/v_2 = 2,00/2,50 = 0,800 \\rightarrow i_{gh} \\approx 53,1^\\circ$. So sánh: $i = 35^\\circ < i_{gh} \\approx 53,1^\\circ \\rightarrow$ không xảy ra phản xạ toàn phần. A là kết quả của việc đảo ngược bất đẳng thức khi so sánh. B là kết quả của việc tính $i_{gh}$ theo cách nhân tỉ số với $90^\\circ$ thay vì lấy arcsin. C là kết quả của việc nhầm góc tới hạn với góc phụ $90^\\circ - i_{gh}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01183",
+   "nhom_id": "KNB00452",
+   "thu_tu": 5,
+   "dang": "GÓC TỚI CHƯA ĐẠT GÓC TỚI HẠN, TÍNH GÓC KHÚC XẠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020203032",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ sapphire (chiết suất 1,70) sang topaz (chiết suất 1,45) với góc tới $20^\\circ$. Xác nhận không xảy ra phản xạ toàn phần và tính góc khúc xạ.",
+     "dap_an": "23.6",
+     "loi_giai": "$\\sin i_{gh} = 1,45/1,70 = 0,853 \\rightarrow i_{gh} \\approx 58,5^\\circ > 20^\\circ \\rightarrow$ không xảy ra phản xạ toàn phần.\nÁp dụng định luật khúc xạ: $n_1 \\sin i = n_2 \\sin r \\rightarrow \\sin r = 1,70 \\times \\sin20^\\circ/1,45 = 0,401 \\rightarrow r \\approx 23,6^\\circ$."
+    },
+    {
+     "ma_cau": "K09020203035",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ thủy tinh chì (chiết suất 1,65) sang rượu (chiết suất 1,38) với góc tới $22^\\circ$. Xác nhận không xảy ra phản xạ toàn phần và tính góc khúc xạ.",
+     "dap_an": "26.6",
+     "loi_giai": "$\\sin i_{gh} = 1,38/1,65 = 0,836 \\rightarrow i_{gh} \\approx 56,8^\\circ > 22^\\circ \\rightarrow$ không xảy ra phản xạ toàn phần.\nÁp dụng định luật khúc xạ: $n_1 \\sin i = n_2 \\sin r \\rightarrow \\sin r = 1,65 \\times \\sin22^\\circ/1,38 = 0,448 \\rightarrow r \\approx 26,6^\\circ$."
+    },
+    {
+     "ma_cau": "K09020203034",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ zircon (chiết suất 1,80) sang nước đường (chiết suất 1,50) với góc tới $18^\\circ$. Xác nhận không xảy ra phản xạ toàn phần và tính góc khúc xạ.",
+     "dap_an": "21.8",
+     "loi_giai": "$\\sin i_{gh} = 1,50/1,80 = 0,833 \\rightarrow i_{gh} \\approx 56,4^\\circ > 18^\\circ \\rightarrow$ không xảy ra phản xạ toàn phần.\nÁp dụng định luật khúc xạ: $n_1 \\sin i = n_2 \\sin r \\rightarrow \\sin r = 1,80 \\times \\sin18^\\circ/1,50 = 0,371 \\rightarrow r \\approx 21,8^\\circ$."
+    },
+    {
+     "ma_cau": "K09020203033",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ thủy tinh flint (chiết suất 1,60) sang dầu ăn (chiết suất 1,42) với góc tới $30^\\circ$. Xác nhận không xảy ra phản xạ toàn phần và tính góc khúc xạ.",
+     "dap_an": "34.3",
+     "loi_giai": "$\\sin i_{gh} = 1,42/1,60 = 0,887 \\rightarrow i_{gh} \\approx 62,6^\\circ > 30^\\circ \\rightarrow$ không xảy ra phản xạ toàn phần.\nÁp dụng định luật khúc xạ: $n_1 \\sin i = n_2 \\sin r \\rightarrow \\sin r = 1,60 \\times \\sin30^\\circ/1,42 = 0,563 \\rightarrow r \\approx 34,3^\\circ$."
+    },
+    {
+     "ma_cau": "K09020203031",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ thủy tinh crown (chiết suất 1,55) sang thạch anh (chiết suất 1,40) với góc tới $25^\\circ$. Xác nhận không xảy ra phản xạ toàn phần và tính góc khúc xạ.",
+     "dap_an": "27.9",
+     "loi_giai": "$\\sin i_{gh} = 1,40/1,55 = 0,903 \\rightarrow i_{gh} \\approx 64,6^\\circ > 25^\\circ \\rightarrow$ không xảy ra phản xạ toàn phần.\nÁp dụng định luật khúc xạ: $n_1 \\sin i = n_2 \\sin r \\rightarrow \\sin r = 1,55 \\times \\sin25^\\circ/1,40 = 0,468 \\rightarrow r \\approx 27,9^\\circ$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01184",
+   "nhom_id": "KNB00452",
+   "thu_tu": 6,
+   "dang": "HAI GÓC TỚI KHÁC NHAU, XÁC ĐỊNH TRƯỜNG HỢP NÀO XẢY RA PHẢN XẠ TOÀN PHẦN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020203040",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ thủy tinh flint (chiết suất 1,66) sang glycerin (chiết suất 1,40). Xét hai trường hợp góc tới $28^o$ và $63^o$. Trường hợp nào xảy ra phản xạ toàn phần? Với trường hợp còn lại, tính góc khúc xạ.",
+     "dap_an": "57,5",
+     "loi_giai": "$\\sin i_{gh} = 1,40/1,66 = 0,843 \\rightarrow i_{gh} \\approx 57,5^o$. So với $63^o \\geq i_{gh} \\rightarrow$ phản xạ toàn phần; $28^o < i_{gh} \\rightarrow$ chỉ khúc xạ.$\\sin r = 1,66 \\times \\sin 28^o / 1,40 = 0,557 \\rightarrow r \\approx 33,8^o$."
+    },
+    {
+     "ma_cau": "K09020203036",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ thạch anh (chiết suất 1,62) sang rượu (chiết suất 1,38). Xét hai trường hợp góc tới $30^o$ và $65^o$. Trường hợp nào xảy ra phản xạ toàn phần? Với trường hợp còn lại, tính góc khúc xạ.",
+     "dap_an": "58,4",
+     "loi_giai": "$\\sin i_{gh} = 1,38/1,62 = 0,852 \\rightarrow i_{gh} \\approx 58,4^o$. So với $65^o \\geq i_{gh} \\rightarrow$ phản xạ toàn phần; $30^o < i_{gh} \\rightarrow$ chỉ khúc xạ.$\\sin r = 1,62 \\times \\sin 30^o / 1,38 = 0,587 \\rightarrow r \\approx 35,9^o$."
+    },
+    {
+     "ma_cau": "K09020203038",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ sapphire (chiết suất 1,58) sang dầu ăn (chiết suất 1,35). Xét hai trường hợp góc tới $35^o$ và $66^o$. Trường hợp nào xảy ra phản xạ toàn phần? Với trường hợp còn lại, tính góc khúc xạ.",
+     "dap_an": "58,7",
+     "loi_giai": "$\\sin i_{gh} = 1,35/1,58 = 0,854 \\rightarrow i_{gh} \\approx 58,7^o$. So với $66^o \\geq i_{gh} \\rightarrow$ phản xạ toàn phần; $35^o < i_{gh} \\rightarrow$ chỉ khúc xạ.$\\sin r = 1,58 \\times \\sin 35^o / 1,35 = 0,671 \\rightarrow r \\approx 42,2^o$."
+    },
+    {
+     "ma_cau": "K09020203037",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ kim cương (chiết suất 1,72) sang nước (chiết suất 1,44). Xét hai trường hợp góc tới $25^o$ và $62^o$. Trường hợp nào xảy ra phản xạ toàn phần? Với trường hợp còn lại, tính góc khúc xạ.",
+     "dap_an": "56,8",
+     "loi_giai": "$\\sin i_{gh} = 1,44/1,72 = 0,837 \\rightarrow i_{gh} \\approx 56,8^o$. So với $62^o \\geq i_{gh} \\rightarrow$ phản xạ toàn phần; $25^o < i_{gh} \\rightarrow$ chỉ khúc xạ.$\\sin r = 1,72 \\times \\sin 25^o / 1,44 = 0,505 \\rightarrow r \\approx 30,3^o$."
+    },
+    {
+     "ma_cau": "K09020203039",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền từ zircon (chiết suất 1,80) sang nước đường (chiết suất 1,50). Xét hai trường hợp góc tới $20^o$ và $60^o$. Trường hợp nào xảy ra phản xạ toàn phần? Với trường hợp còn lại, tính góc khúc xạ.",
+     "dap_an": "56,4",
+     "loi_giai": "$\\sin i_{gh} = 1,50/1,80 = 0,833 \\rightarrow i_{gh} \\approx 56,4^o$. So với $60^o \\geq i_{gh} \\rightarrow$ phản xạ toàn phần; $20^o < i_{gh} \\rightarrow$ chỉ khúc xạ.$\\sin r = 1,80 \\times \\sin 20^o / 1,50 = 0,410 \\rightarrow r \\approx 24,2^o$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01185",
+   "nhom_id": "KNB00452",
+   "thu_tu": 7,
+   "dang": "GÓC TỚI VÀ TỐC ĐỘ TRUYỀN ÁNH SÁNG, KẾT LUẬN CÓ/KHÔNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020203042",
+     "loai": "tra_loi_ngan",
+     "de": "Tốc độ truyền ánh sáng trong sapphire là $1,60\\times 10^8\\ \\mathrm{m/s}$, trong dầu ăn là $2,20\\times 10^8\\ \\mathrm{m/s}$. Ánh sáng truyền từ sapphire sang dầu ăn với góc tới $35^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "dap_an": "Không xảy ra phản xạ toàn phần",
+     "loi_giai": "$n_2/n_1 = v_1/v_2 = 1,60/2,20 = 0,727 \\to i_{gh} \\approx 46,7^\\circ$. So sánh $i = 35^\\circ$ với $i_{gh} \\approx 46,7^\\circ \\to$ không xảy ra phản xạ toàn phần."
+    },
+    {
+     "ma_cau": "K09020203041",
+     "loai": "tra_loi_ngan",
+     "de": "Tốc độ truyền ánh sáng trong kim cương là $1,70\\times 10^8\\ \\mathrm{m/s}$, trong rượu là $2,30\\times 10^8\\ \\mathrm{m/s}$. Ánh sáng truyền từ kim cương sang rượu với góc tới $50^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "dap_an": "Có xảy ra phản xạ toàn phần",
+     "loi_giai": "$n_2/n_1 = v_1/v_2 = 1,70/2,30 = 0,739 \\to i_{gh} \\approx 47,7^\\circ$. So sánh $i = 50^\\circ$ với $i_{gh} \\approx 47,7^\\circ \\to$ có xảy ra phản xạ toàn phần."
+    },
+    {
+     "ma_cau": "K09020203043",
+     "loai": "tra_loi_ngan",
+     "de": "Tốc độ truyền ánh sáng trong thủy tinh flint là $1,90\\times 10^8\\ \\mathrm{m/s}$, trong nước đường là $2,50\\times 10^8\\ \\mathrm{m/s}$. Ánh sáng truyền từ thủy tinh flint sang nước đường với góc tới $58^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "dap_an": "Có xảy ra phản xạ toàn phần",
+     "loi_giai": "$n_2/n_1 = v_1/v_2 = 1,90/2,50 = 0,760 \\to i_{gh} \\approx 49,5^\\circ$. So sánh $i = 58^\\circ$ với $i_{gh} \\approx 49,5^\\circ \\to$ có xảy ra phản xạ toàn phần."
+    },
+    {
+     "ma_cau": "K09020203045",
+     "loai": "tra_loi_ngan",
+     "de": "Tốc độ truyền ánh sáng trong zircon là $1,80\\times 10^8\\ \\mathrm{m/s}$, trong glycerin là $2,40\\times 10^8\\ \\mathrm{m/s}$. Ánh sáng truyền từ zircon sang glycerin với góc tới $46^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "dap_an": "Không xảy ra phản xạ toàn phần",
+     "loi_giai": "$n_2/n_1 = v_1/v_2 = 1,80/2,40 = 0,750 \\to i_{gh} \\approx 48,6^\\circ$. So sánh $i = 46^\\circ$ với $i_{gh} \\approx 48,6^\\circ \\to$ không xảy ra phản xạ toàn phần."
+    },
+    {
+     "ma_cau": "K09020203044",
+     "loai": "tra_loi_ngan",
+     "de": "Tốc độ truyền ánh sáng trong thủy tinh chì là $1,50\\times 10^8\\ \\mathrm{m/s}$, trong nước là $2,00\\times 10^8\\ \\mathrm{m/s}$. Ánh sáng truyền từ thủy tinh chì sang nước với góc tới $28^\\circ$. Có xảy ra phản xạ toàn phần không?",
+     "dap_an": "Không xảy ra phản xạ toàn phần",
+     "loi_giai": "$n_2/n_1 = v_1/v_2 = 1,50/2,00 = 0,750 \\to i_{gh} \\approx 48,6^\\circ$. So sánh $i = 28^\\circ$ với $i_{gh} \\approx 48,6^\\circ \\to$ không xảy ra phản xạ toàn phần."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01186",
+   "nhom_id": "KNB00452",
+   "thu_tu": 8,
+   "dang": "GÓC TỚI, TỈ LỆ VÀ HIỆU SỐ CHIẾT SUẤT, KẾT LUẬN CÓ/KHÔNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020203049",
+     "loai": "tra_loi_ngan",
+     "de": "Hai môi trường trong suốt có chiết suất tỉ lệ $n_1 : n_2 = 8 : 7$, hiệu số chiết suất $n_1 - n_2 = 0,15$. Ánh sáng truyền từ môi trường 1 sang môi trường 2 với góc tới $34^o$. Có xảy ra phản xạ toàn phần không?",
+     "dap_an": "không xảy ra phản xạ toàn phần",
+     "loi_giai": "Đặt $n_1 = 8k$, $n_2 = 7k$. $(8 - 7)k = 0,15 \\rightarrow k = 0,1500$. $n_1 \\approx 1,20$; $n_2 \\approx 1,05$. $\\sin i_{gh} = n_2/n_1 = 0,875 \\rightarrow i_{gh} \\approx 61,0^o$. So sánh $i = 34^o$ với $i_{gh} \\approx 61,0^o \\rightarrow$ không xảy ra phản xạ toàn phần."
+    },
+    {
+     "ma_cau": "K09020203050",
+     "loai": "tra_loi_ngan",
+     "de": "Hai môi trường trong suốt có chiết suất tỉ lệ $n_1 : n_2 = 9 : 7$, hiệu số chiết suất $n_1 - n_2 = 0,34$. Ánh sáng truyền từ môi trường 1 sang môi trường 2 với góc tới $48^o$. Có xảy ra phản xạ toàn phần không?",
+     "dap_an": "không xảy ra phản xạ toàn phần",
+     "loi_giai": "Đặt $n_1 = 9k$, $n_2 = 7k$. $(9 - 7)k = 0,34 \\rightarrow k = 0,1700$. $n_1 \\approx 1,53$; $n_2 \\approx 1,19$. $\\sin i_{gh} = n_2/n_1 = 0,778 \\rightarrow i_{gh} \\approx 51,1^o$. So sánh $i = 48^o$ với $i_{gh} \\approx 51,1^o \\rightarrow$ không xảy ra phản xạ toàn phần."
+    },
+    {
+     "ma_cau": "K09020203048",
+     "loai": "tra_loi_ngan",
+     "de": "Hai môi trường trong suốt có chiết suất tỉ lệ $n_1 : n_2 = 7 : 5$, hiệu số chiết suất $n_1 - n_2 = 0,42$. Ánh sáng truyền từ môi trường 1 sang môi trường 2 với góc tới $56^o$. Có xảy ra phản xạ toàn phần không?",
+     "dap_an": "có xảy ra phản xạ toàn phần",
+     "loi_giai": "Đặt $n_1 = 7k$, $n_2 = 5k$. $(7 - 5)k = 0,42 \\rightarrow k = 0,2100$. $n_1 \\approx 1,47$; $n_2 \\approx 1,05$. $\\sin i_{gh} = n_2/n_1 = 0,714 \\rightarrow i_{gh} \\approx 45,6^o$. So sánh $i = 56^o$ với $i_{gh} \\approx 45,6^o \\rightarrow$ có xảy ra phản xạ toàn phần."
+    },
+    {
+     "ma_cau": "K09020203046",
+     "loai": "tra_loi_ngan",
+     "de": "Hai môi trường trong suốt có chiết suất tỉ lệ $n_1 : n_2 = 5 : 4$, hiệu số chiết suất $n_1 - n_2 = 0,35$. Ánh sáng truyền từ môi trường 1 sang môi trường 2 với góc tới $50^o$. Có xảy ra phản xạ toàn phần không?",
+     "dap_an": "không xảy ra phản xạ toàn phần",
+     "loi_giai": "Đặt $n_1 = 5k$, $n_2 = 4k$. $(5 - 4)k = 0,35 \\rightarrow k = 0,3500$. $n_1 \\approx 1,75$; $n_2 \\approx 1,40$. $\\sin i_{gh} = n_2/n_1 = 0,800 \\rightarrow i_{gh} \\approx 53,1^o$. So sánh $i = 50^o$ với $i_{gh} \\approx 53,1^o \\rightarrow$ không xảy ra phản xạ toàn phần."
+    },
+    {
+     "ma_cau": "K09020203047",
+     "loai": "tra_loi_ngan",
+     "de": "Hai môi trường trong suốt có chiết suất tỉ lệ $n_1 : n_2 = 6 : 5$, hiệu số chiết suất $n_1 - n_2 = 0,28$. Ánh sáng truyền từ môi trường 1 sang môi trường 2 với góc tới $40^o$. Có xảy ra phản xạ toàn phần không?",
+     "dap_an": "không xảy ra phản xạ toàn phần",
+     "loi_giai": "Đặt $n_1 = 6k$, $n_2 = 5k$. $(6 - 5)k = 0,28 \\rightarrow k = 0,2800$. $n_1 \\approx 1,68$; $n_2 \\approx 1,40$. $\\sin i_{gh} = n_2/n_1 = 0,833 \\rightarrow i_{gh} \\approx 56,4^o$. So sánh $i = 40^o$ với $i_{gh} \\approx 56,4^o \\rightarrow$ không xảy ra phản xạ toàn phần."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01187",
+   "nhom_id": "KNB00453",
+   "thu_tu": 1,
+   "dang": "CẤU TẠO VÀ CƠ CHẾ TRUYỀN ÁNH SÁNG TRONG SỢI QUANG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020204005",
+     "loai": "trac_nghiem",
+     "de": "Trong công nghệ thông tin, cáp quang được dùng để làm gì?",
+     "lua_chon": [
+      "Cung cấp điện năng cho các thiết bị viễn thông",
+      "Khuếch đại tín hiệu âm thanh trực tiếp",
+      "Làm giá đỡ cơ học cho các đường dây điện thoại",
+      "Truyền dữ liệu bằng tín hiệu ánh sáng đi dọc theo các sợi quang"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cáp quang truyền dữ liệu dưới dạng tín hiệu ánh sáng nhờ phản xạ toàn phần liên tiếp dọc sợi quang. A, B, C đều mô tả chức năng không đúng với bản chất truyền tín hiệu ánh sáng của cáp quang."
+    },
+    {
+     "ma_cau": "K09020204002",
+     "loai": "trac_nghiem",
+     "de": "Tại mặt tiếp xúc giữa lõi và lớp vỏ sợi quang, tia sáng bị phản xạ toàn phần khi nào?",
+     "lua_chon": [
+      "Khi góc tới tại mặt tiếp xúc lớn hơn góc tới hạn của cặp môi trường lõi - vỏ",
+      "Khi góc tới tại mặt tiếp xúc nhỏ hơn góc tới hạn của cặp môi trường lõi - vỏ",
+      "Khi tia sáng đi vào đúng tâm của lõi sợi quang",
+      "Khi bước sóng ánh sáng đủ ngắn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đúng theo điều kiện góc tới của phản xạ toàn phần. B là kết quả của việc đạo ngược bất đẳng thức góc. C là kết quả của việc bịa thêm điều kiện về vị trí tia sáng không có trong định nghĩa. D là kết quả của việc bịa thêm điều kiện về bước sóng, không phải yếu tố quyết định phản xạ toàn phần."
+    },
+    {
+     "ma_cau": "K09020204003",
+     "loai": "trac_nghiem",
+     "de": "Vì sao ánh sáng truyền dọc theo sợi quang mà hầu như không bị thất thoát ra ngoài?",
+     "lua_chon": [
+      "Vì lớp vỏ sợi quang được tráng một lớp kim loại phản xạ như gương",
+      "Vì hiện tượng phản xạ toàn phần lặp lại liên tiếp tại nhiều điểm trên mặt tiếp xúc lõi - vỏ, giữ ánh sáng bên trong lõi",
+      "Vì ánh sáng truyền theo đường thẳng nên không thể ra khỏi lõi",
+      "Vì lớp vỏ hấp thụ hoàn toàn phản ánh sáng lọt ra ngoài"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Phản xạ toàn phần liên tiếp là cơ chế giữ ánh sáng trong lõi. A là kết quả của việc nhầm cơ chế phản xạ toàn phần với lớp phản xạ nhân tạo của gương. C là kết quả của việc bỏ qua việc tia sáng thực tế phản xạ nhiều lần theo đường gấp khúc, không phải đường thẳng liên tục. D là kết quả của việc bịa ra cơ chế hấp thụ không có thật."
+    },
+    {
+     "ma_cau": "K09020204006",
+     "loai": "trac_nghiem",
+     "de": "So với dây dẫn kim loại truyền tín hiệu điện, việc sợi quang truyền tín hiệu bằng ánh sáng dựa trên hiện tượng nào để giữ tín hiệu không thất thoát ra ngoài dọc đường truyền?",
+     "lua_chon": [
+      "Hiện tượng cảm ứng điện từ",
+      "Hiện tượng nhiễu xạ ánh sáng",
+      "Hiện tượng giao thoa ánh sáng",
+      "Hiện tượng phản xạ toàn phần tại mặt tiếp xúc lõi - vỏ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Phản xạ toàn phần là cơ chế vật lý giữ ánh sáng bên trong lõi sợi quang. A, B, C là các hiện tượng vật lý khác, không phải cơ chế giữ ánh sáng trong sợi quang."
+    },
+    {
+     "ma_cau": "K09020204004",
+     "loai": "trac_nghiem",
+     "de": "Nếu chiết suất của lớp vỏ sợi quang lớn hơn chiết suất của lõi thì điều gì xảy ra?",
+     "lua_chon": [
+      "Ánh sáng vẫn phản xạ toàn phần bình thường vì đây chỉ là tên gọi quy ước",
+      "Ánh sáng truyền nhanh hơn trong lõi",
+      "Không thỏa mãn điều kiện chiếu truyền, ánh sáng tới mặt tiếp xúc sẽ khúc xạ ra lớp vỏ thay vì phản xạ toàn phần",
+      "Sợi quang vẫn hoạt động nhưng cần góc tới lớn hơn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khi lõi có chiết suất nhỏ hơn vỏ, ánh sáng truyền sai chiều nên không thể phản xạ toàn phần dù góc tới bằng bao nhiêu. A là kết quả của việc bỏ qua vai trò thực chất của điều kiện chiếu truyền. B là kết quả của việc suy luận không liên quan đến bản chất hiện tượng. D là kết quả của việc tưởng chỉ cần tăng góc tới là khắc phục được sai chiểu truyền."
+    },
+    {
+     "ma_cau": "K09020204007",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng đi vào đầu sợi quang, khúc xạ rồi truyền tới mặt tiếp xúc lõi - vỏ với góc tới nhỏ hơn góc tới hạn của cặp môi trường lõi - vỏ. Điều gì xảy ra?",
+     "lua_chon": [
+      "Tia sáng phản xạ toàn phần như bình thường",
+      "Một phần ánh sáng khúc xạ ra lớp vỏ, không còn giữ nguyên trong lõi như thiết kế",
+      "Tia sáng dừng lại tại điểm tiếp xúc",
+      "Tia sáng đổi màu"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Góc tới chưa đạt góc tới hạn nên không xảy ra phản xạ toàn phần, một phần ánh sáng khúc xạ ra ngoài lõi, gây thất thoát tín hiệu. A là kết quả của việc bỏ qua điều kiện góc tới. C và D là các hiện tượng không có thật trong tình huống này."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01188",
+   "nhom_id": "KNB00453",
+   "thu_tu": 2,
+   "dang": "ỨNG DỤNG CỦA SỢI QUANG TRONG ĐỜI SỐNG, KĨ THUẬT",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020204014",
+     "loai": "trac_nghiem",
+     "de": "Ứng dụng của sợi quang trong y học và trong công nghệ thông tin có điểm chung nào sau đây?",
+     "lua_chon": [
+      "Đều dùng sợi quang để dẫn ánh sáng hoặc tín hiệu quang nhờ phản xạ toàn phần liên tiếp bên trong lõi",
+      "Đều dùng sợi quang để phát ra tia X",
+      "Đều dùng sợi quang để tạo ra dòng điện",
+      "Đều không liên quan đến hiện tượng phản xạ toàn phần"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cả hai ứng dụng đều khai thác khả năng dẫn ánh sáng của sợi quang nhờ phản xạ toàn phần. B, C mô tả chức năng không có thật của sợi quang. D phủ nhận sai cơ chế vật lý nền tảng của cả hai ứng dụng."
+    },
+    {
+     "ma_cau": "K09020204015",
+     "loai": "trac_nghiem",
+     "de": "Nếu chất liệu làm lõi sợi quang bị thay bằng một chất có chiết suất nhỏ hơn chiết suất lớp vỏ hiện tại, sợi quang đó có còn hoạt động đúng chức năng dẫn sáng bằng phản xạ toàn phần không?",
+     "lua_chon": [
+      "Vẫn hoạt động bình thường vì phản xạ toàn phần không phụ thuộc vào chiết suất",
+      "Không, vì mất điều kiện chiểu truyền cần thiết để xảy ra phản xạ toàn phần tại mặt tiếp xúc lõi - vỏ",
+      "Vẫn hoạt động nhưng cần tăng cường độ ánh sáng",
+      "Không, vì sợi quang khi đó sẽ phát nhiệt quá mức"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mất điều kiện lõi có chiết suất lớn hơn vỏ đồng nghĩa mất điều kiện chiểu truyền, sợi quang không còn dẫn sáng bằng phản xạ toàn phần được nữa. A phủ nhận sai vai trò của chiết suất. C và D đưa ra hệ quả không có cơ sở vật lý."
+    },
+    {
+     "ma_cau": "K09020204009",
+     "loai": "trac_nghiem",
+     "de": "Trong y học, sợi quang được ứng dụng trong thiết bị nào để quan sát bên trong cơ thể?",
+     "lua_chon": [
+      "Máy chụp X-quang",
+      "Máy đo huyết áp",
+      "Máy siêu âm",
+      "Ống nội soi"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ống nội soi dùng sợi quang dẫn ánh sáng vào và truyền hình ảnh ra nhờ phản xạ toàn phần liên tiếp trong sợi quang. $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$ là các thiết bị y học dùng nguyên lý vật lý khác (tia $\\mathrm{X}$, sóng siêu âm, đo áp suất), không dùng sợi quang."
+    },
+    {
+     "ma_cau": "K09020204011",
+     "loai": "trac_nghiem",
+     "de": "Bó nhiều sợi quang lại với nhau tạo thành thiết bị nào dùng để truyền dữ liệu, tín hiệu ánh sáng?",
+     "lua_chon": [
+      "Ăng-ten",
+      "Cáp quang",
+      "Pin quang điện",
+      "Thấu kính hội tụ"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cáp quang là bó nhiều sợi quang, dùng để truyền dữ liệu bằng tín hiệu ánh sáng. $\\mathrm{A}$, $\\mathrm{C}$, $\\mathrm{D}$ là các thiết bị khác không liên quan đến việc bó các sợi quang lại với nhau."
+    },
+    {
+     "ma_cau": "K09020204012",
+     "loai": "trac_nghiem",
+     "de": "Một đoạn cáp quang bị uốn cong với bán kính cong quá nhỏ tại một điểm, khiến góc tới của tia sáng tại mặt tiếp xúc lõi - vỏ ở điểm đó nhỏ hơn góc tới hạn. Điều gì xảy ra với tín hiệu ánh sáng tại điểm đó?",
+     "lua_chon": [
+      "Tín hiệu vẫn truyền đi bình thường vì độ cong không ảnh hưởng đến phản xạ toàn phần",
+      "Tốc độ truyền tín hiệu tăng lên tại điểm uốn cong",
+      "Tín hiệu ánh sáng đổi hướng truyền ngược trở lại nguồn phát",
+      "Một phần ánh sáng bị khúc xạ ra ngoài lõi tại điểm uốn cong, gây thất thoát và suy giảm tín hiệu"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Góc tới không đạt góc tới hạn tại điểm uốn cong làm mất điều kiện phản xạ toàn phần, gây thất thoát ánh sáng. A bỏ qua ảnh hưởng thực tế của độ cong lên góc tới. C và B là các hệ quả không có cơ sở vật lý trong tình huống này."
+    },
+    {
+     "ma_cau": "K09020204016",
+     "loai": "trac_nghiem",
+     "de": "Điều gì sẽ xảy ra nếu bề mặt tiếp xúc giữa lõi và lớp vỏ sợi quang bị trầy xước, không còn nhẵn?",
+     "lua_chon": [
+      "Không ảnh hưởng gì vì phản xạ toàn phần không phụ thuộc vào bề mặt",
+      "Ánh sáng sẽ truyền nhanh hơn qua vị trí trầy xước",
+      "Sợi quang sẽ hoạt động hiệu quả hơn vì có thêm bề mặt phản xạ",
+      "Tại vị trí trầy xước, ánh sáng có thể bị tán xạ hoặc khúc xạ ra ngoài thay vì phản xạ toàn phần hoàn hảo, gây thất thoát tín hiệu"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Bề mặt không nhẵn phá vỡ điều kiện lý tưởng của mặt phân cách, gây tán xạ hoặc khúc xạ ngoài ý muốn, làm thất thoát tín hiệu. A bỏ qua ảnh hưởng thực tế của chất lượng bề mặt. C và B đưa ra hệ quả trái với thực tế vật lý."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01189",
+   "nhom_id": "KNB00453",
+   "thu_tu": 3,
+   "dang": "GIẢI THÍCH HIỆN TƯỢNG ẢO ẢNH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020204017",
+     "loai": "tra_loi_ngan",
+     "de": "Vì sao vào ngày nắng nóng, nhìn từ xa trên mặt đường nhựa có thể thấy như có vũng nước phản chiếu bầu trời?",
+     "lua_chon": [
+      "Vì mặt đường nhựa thực sự đọng nước do hơi ẩm ngưng tụ",
+      "Vì mắt người bị chói nên nhìn nhầm màu sắc của mặt đường",
+      "Vì ánh sáng mặt trời phản xạ trực tiếp trên bề mặt nhựa đường như một tấm gương phẳng",
+      "Vì lớp không khí sát mặt đường bị hun nóng có chiết suất nhỏ hơn lớp không khí phía trên, gây phản xạ toàn phần hắt ánh sáng bầu trời lên mắt người quan sát"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Chênh lệch chiết suất giữa các lớp không khí do chênh lệch nhiệt độ gây ra phản xạ toàn phần, tạo ảo ảnh. A nhầm hiện tượng quang học với hiện tượng vật lý có thật (nước đọng). C nhầm cơ chế phản xạ toàn phần với phản xạ trực tiếp trên bề mặt rắn phẳng. B không giải thích được vì sao ảo ảnh biến mất khi đến gần."
+    },
+    {
+     "ma_cau": "K09020204020",
+     "loai": "tra_loi_ngan",
+     "de": "Điều kiện thời tiết nào sau đây thuận lợi để quan sát hiện tượng ảo ảnh trên mặt đường?",
+     "lua_chon": [
+      "Trời nắng nóng, mặt đường bị hun nóng mạnh tạo chênh lệch nhiệt độ lớn giữa các lớp không khí gần mặt đất",
+      "Trời mưa, mặt đường ướt đều",
+      "Trời râm mát, không có ánh nắng trực tiếp",
+      "Ban đêm, không có ánh sáng mặt trời"
+     ],
+     "loi_giai": "Chênh lệch nhiệt độ lớn giữa các lớp không khí gần mặt đất là điều kiện cần để tạo đủ chênh lệch chiết suất gây phản xạ toàn phần. B, C, D đều là điều kiện không tạo đủ chênh lệch nhiệt độ (hoặc chênh lệch chiết suất) cần thiết."
+    },
+    {
+     "ma_cau": "K09020204023",
+     "loai": "tra_loi_ngan",
+     "de": "Phát biểu nào sau đây đúng khi so sánh bản chất vật lý của hiện tượng ảo ảnh trên đường nhựa với việc nhìn thấy ảnh phản chiếu trên mặt nước tĩnh?",
+     "lua_chon": [
+      "Cả hai đều là phản xạ ánh sáng, nhưng ảnh trên mặt nước là phản xạ thông thường tại một mặt phân cách xác định, còn ảo ảnh trên đường nhựa là phản xạ toàn phần xảy ra trong lớp không khí có chiết suất biến đổi liên tục",
+      "Cả hai đều là phản xạ toàn phần với cùng điều kiện chiết suất",
+      "Ảnh trên mặt nước là ảo ảnh quang học không có thật, còn hiện tượng trên đường nhựa là hình ảnh có thật",
+      "Hai hiện tượng hoàn toàn không liên quan đến phản xạ ánh sáng"
+     ],
+     "dap_an": "A",
+     "loi_giai": "A phân biệt đúng bản chất: phản xạ thông thường tại mặt nước (mặt phân cách rõ rệt nước - không khí) khác với phản xạ toàn phần trong ảo ảnh (chiết suất không khí biến đổi liên tục, không có mặt phân cách cố định). B sai vì ảnh trên mặt nước tĩnh là phản xạ thông thường, không phải phản xạ toàn phần. C đảo ngược bản chất, thực ra ảo ảnh trên đường nhựa mới là hình ảnh “ảo” theo nghĩa không có vật thể thật (vũng nước) ở đó. D phủ nhận sai bản chất quang học chung của cả hai hiện tượng."
+    },
+    {
+     "ma_cau": "K09020204019",
+     "loai": "tra_loi_ngan",
+     "de": "Vì sao khi đến gần vị trí tưởng như có vùng nước trên đường nhựa, người quan sát lại không còn thấy hiện tượng đó nữa?",
+     "lua_chon": [
+      "Vì nước đã bốc hơi hết trong thời gian di chuyển đến gần",
+      "Vì góc tới của tia sáng đến mắt người quan sát tại vị trí mới không còn đủ lớn để xảy ra phản xạ toàn phần ở lớp không khí nóng tại đó",
+      "Vì mắt người quan sát đã quen với độ sáng nên không còn thấy ảo ảnh",
+      "Vì lớp không khí nóng đã biến mất khi có người đến gần"
+     ],
+     "loi_giai": "Vị trí xảy ra phản xạ toàn phần (nơi góc tới đủ lớn) thay đổi theo góc nhìn của người quan sát; khi đến gần, góc tới tại vị trí mới không còn thỏa điều kiện nên ảo ảnh biến mất ở đó. A sai vì không có nước thật để bốc hơi. C không giải thích được cơ chế quang học. D bịa ra sự biến mất không có cơ sở của lớp không khí nóng."
+    },
+    {
+     "ma_cau": "K09020204021",
+     "loai": "tra_loi_ngan",
+     "de": "Hiện tượng ảo ảnh trên mặt đường nhựa và hiện tượng phản xạ toàn phần trong sợi quang giống nhau ở điểm nào?",
+     "lua_chon": [
+      "Cả hai đều xảy ra tại một mặt phân cách rõ rệt, cố định giữa hai môi trường có chiết suất khác nhau",
+      "Cả hai đều cần một lớp vật liệu phản xạ nhân tạo",
+      "Cả hai đều dựa trên nguyên lý ánh sáng truyền từ nơi chiết suất lớn sang nơi chiết suất nhỏ hơn với góc tới đủ lớn",
+      "Cả hai đều không liên quan đến chiết suất môi trường"
+     ],
+     "loi_giai": "Cả hai hiện tượng đều tuân theo cùng điều kiện xảy ra phản xạ toàn phần. A sai vì ảo ảnh không có mặt phân cách rõ rệt, cố định như sợi quang (chiết suất không khí biến đổi liên tục). B sai vì cả hai đều không cần lớp phản xạ nhân tạo. D phủ nhận sai vai trò trung tâm của chiết suất trong cả hai hiện tượng."
+    },
+    {
+     "ma_cau": "K09020204022",
+     "loai": "tra_loi_ngan",
+     "de": "Vì sao ảo ảnh trên đường nhựa thường xuất hiện ở phía xa trước mặt người quan sát, chứ không phải ngay dưới chân?",
+     "lua_chon": [
+      "Vì chỉ tại những vị trí đủ xa, tia sáng từ bầu trời mới tới lớp không khí nóng sát mặt đường với góc tới đủ lớn để thỏa điều kiện góc của phản xạ toàn phần đối với mắt người quan sát",
+      "Vì chỉ có vị trí xa mới có ánh nắng chiếu tới",
+      "Vì mặt đường ở xa luôn nóng hơn mặt đường ngay dưới chân",
+      "Vì ánh sáng không thể phản xạ toàn phần ở khoảng cách gần"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Góc tới của tia sáng đi từ bầu trời tới mắt người quan sát qua lớp không khí nóng chỉ đủ lớn tại những vị trí đủ xa. B không liên quan đến việc ánh nắng chiếu tới mặt đường (nắng chiếu khắp mặt đường). C không đúng, nhiệt độ mặt đường không phụ thuộc khoảng cách tới người quan sát theo cách đó. D diễn đạt sai, phản xạ toàn phần vẫn có thể xảy ra ở khoảng cách gần với góc tới phù hợp, chỉ là góc đó không hướng tới mắt người quan sát ở vị trí gần."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01190",
+   "nhom_id": "KNB00453",
+   "thu_tu": 4,
+   "dang": "SO SÁNH, TỔNG HỢP HAI ỨNG DỤNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020204025",
+     "loai": "trac_nghiem",
+     "de": "Cả sợi quang và hiện tượng ảo ảnh đều minh họa cho nguyên lý vật lý nào?",
+     "lua_chon": [
+      "Ánh sáng chỉ truyền thẳng trong mọi môi trường",
+      "Phản xạ toàn phần xảy ra khi ánh sáng truyền từ môi trường chiết suất lớn sang môi trường chiết suất nhỏ hơn với góc tới đủ lớn",
+      "Ánh sáng luôn bị hấp thụ hoàn toàn khi gặp mặt phân cách hai môi trường",
+      "Chiết suất của mọi môi trường trong suốt đều bằng nhau"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đây là nguyên lý chung của cả hai hiện tượng. A sai vì ánh sáng bị đổi hướng tại mặt phân cách (khúc xạ hoặc phản xạ), không luôn truyền thẳng. C bịa ra hiện tượng hấp thụ hoàn toàn không có thật. D phủ nhận sai sự khác biệt chiết suất là điều kiện cốt lõi của hiện tượng."
+    },
+    {
+     "ma_cau": "K09020204027",
+     "loai": "trac_nghiem",
+     "de": "Nếu không có hiện tượng phản xạ toàn phần, cả việc truyền dữ liệu qua sợi quang và hiện tượng ảo ảnh trên đường nhựa sẽ bị ảnh hưởng như thế nào?",
+     "lua_chon": [
+      "Không ảnh hưởng gì vì hai hiện tượng không phụ thuộc vào phản xạ toàn phần",
+      "Sợi quang vẫn dẫn sáng tốt nhờ lớp vỏ hấp thụ ánh sáng, còn ảo ảnh vẫn xuất hiện bình thường",
+      "Sợi quang sẽ không giữ được ánh sáng bên trong lõi để truyền dữ liệu hiệu quả, và hiện tượng ảo ảnh trên đường nhựa cũng sẽ không xuất hiện",
+      "Chỉ có hiện tượng ảo ảnh bị ảnh hưởng, sợi quang vẫn hoạt động bình thường"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cả hai hiện tượng đều dựa hoàn toàn vào phản xạ toàn phần nên đều sẽ không xảy ra nếu thiếu điều kiện này. A phủ nhận sai sự phụ thuộc của cả hai hiện tượng vào phản xạ toàn phần. B bịa ra cơ chế hấp thụ không có thật cho sợi quang. D chỉ đúng một nửa, bỏ sót ảnh hưởng lên sợi quang."
+    },
+    {
+     "ma_cau": "K09020204030",
+     "loai": "trac_nghiem",
+     "de": "Kết luận nào sau đây khái quát đúng nhất vai trò của điều kiện xảy ra phản xạ toàn phần trong cả hai ứng dụng đã học (sợi quang và ảo ảnh)?",
+     "lua_chon": [
+      "Điều kiện xảy ra phản xạ toàn phần chỉ có ý nghĩa lý thuyết, không giải thích được hiện tượng thực tế nào",
+      "Cùng một điều kiện vật lý (chiều truyền và góc tới so với góc tới hạn) có thể giải thích được cả một ứng dụng kĩ thuật nhân tạo lẫn một hiện tượng quan sát được trong tự nhiên",
+      "Mỗi ứng dụng cần một điều kiện xảy ra phản xạ toàn phần riêng biệt, không liên quan đến nhau",
+      "Điều kiện xảy ra phản xạ toàn phần chỉ áp dụng được cho chất rắn nhân tạo như sợi quang"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: B khái quát đúng: cùng một bộ điều kiện vật lý giải thích được cả hai hiện tượng có bối cảnh rất khác nhau. A phủ nhận sai giá trị giải thích thực tế đã trình bày ở cụm 2, 3. C sai vì cả hai đều dùng chung một điều kiện đã học ở Dạng 1. D thu hẹp sai phạm vi áp dụng, bỏ qua trường hợp ảo ảnh xảy ra trong môi trường khí tự nhiên."
+    },
+    {
+     "ma_cau": "K09020204029",
+     "loai": "trac_nghiem",
+     "de": "Xét về mục đích sử dụng, ứng dụng phản xạ toàn phần trong sợi quang khác gì so với việc quan sát hiện tượng ảo ảnh?",
+     "lua_chon": [
+      "Sợi quang là ứng dụng kĩ thuật có chủ đích để truyền dẫn ánh sáng, tín hiệu; ảo ảnh chỉ là hiện tượng tự nhiên được quan sát và giải thích, không phục vụ mục đích kĩ thuật cụ thể",
+      "Cả hai đều là ứng dụng kĩ thuật có chủ đích như nhau",
+      "Ảo ảnh cũng được con người chủ động tạo ra để truyền dữ liệu như sợi quang",
+      "Sợi quang chỉ mang tính lý thuyết, chưa được ứng dụng thực tế"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: A phân biệt đúng: một bên là ứng dụng kĩ thuật có mục đích, một bên là hiện tượng tự nhiên được giải thích bằng cùng nguyên lý. B đánh đồng sai hai loại hiện tượng có mục đích khác nhau. C bịa ra một ứng dụng không có thật của hiện tượng ảo ảnh. D sai vì sợi quang đã được ứng dụng rộng rãi trong thực tế (viễn thông, y học)."
+    },
+    {
+     "ma_cau": "K09020204024",
+     "loai": "trac_nghiem",
+     "de": "Điểm khác biệt cơ bản giữa ứng dụng phản xạ toàn phần trong sợi quang và trong hiện tượng ảo ảnh là gì?",
+     "lua_chon": [
+      "Sợi quang dùng phản xạ toàn phần tại mặt phân cách nhân tạo, cố định (lõi - vỏ); ảo ảnh xảy ra trong môi trường không khí có chiết suất biến đổi liên tục theo nhiệt độ, không có mặt phân cách cố định",
+      "Sợi quang không liên quan đến chiết suất, còn ảo ảnh thì có",
+      "Cả hai đều xảy ra ở cùng một loại mặt phân cách cố định",
+      "Ảo ảnh chỉ xảy ra vào ban đêm, còn sợi quang hoạt động cả ngày lẫn đêm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "A nếu đúng khác biệt về bản chất mặt phân cách. B phủ nhận sai vai trò của chiết suất trong sợi quang. C sai vì ảo ảnh không có mặt phân cách cố định như sợi quang. D đưa ra điều kiện thời gian không đúng bản chất của cả hai hiện tượng."
+    },
+    {
+     "ma_cau": "K09020204026",
+     "loai": "trac_nghiem",
+     "de": "Trong sợi quang, con người chủ động thiết kế chiết suất lõi và vỏ để luôn xảy ra phản xạ toàn phần. Trong hiện tượng ảo ảnh, điều gì đóng vai trò tương tự việc 'thiết kế' đó?",
+     "lua_chon": [
+      "Con người cũng chủ động điều chỉnh chiết suất không khí",
+      "Không có yếu tố nào đóng vai trò tương tự, ảo ảnh xảy ra ngẫu nhiên không theo quy luật",
+      "Sự chênh lệch nhiệt độ tự nhiên giữa các lớp không khí gần mặt đất tạo ra chênh lệch chiết suất cần thiết, không do con người sắp đặt",
+      "Ánh sáng mặt trời tự động tạo ra một mặt phân cách nhân tạo giống sợi quang"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Chênh lệch nhiệt độ tự nhiên đóng vai trò tạo chênh lệch chiết suất, thay cho việc 'thiết kế' có chủ đích như trong sợi quang. A sai vì con người không điều chỉnh chiết suất không khí trong hiện tượng này. B phủ nhận sai quy luật vật lý rõ ràng đứng sau hiện tượng ảo ảnh. D bịa ra một mặt phân cách nhân tạo không có thật trong tự nhiên."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01191",
+   "nhom_id": "KNB00455",
+   "thu_tu": 1,
+   "dang": "CẤU TẠO LĂNG KÍNH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020301016",
+     "loai": "trac_nghiem",
+     "de": "Hai mặt bên của một lăng kính là",
+     "lua_chon": [
+      "hai mặt phẳng song song nhau",
+      "hai mặt phẳng không song song",
+      "hai mặt cong lồi ra phía ngoài",
+      "hai mặt cong lõm vào phía trong"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Lăng kính được giới hạn bởi hai mặt phẳng không song song, đó là hai mặt bên."
+    },
+    {
+     "ma_cau": "K09020301014",
+     "loai": "trac_nghiem",
+     "de": "Vật nào sau đây là một lăng kính?",
+     "lua_chon": [
+      "Khối gỗ sơn bóng hình lăng trụ tam giác",
+      "Tấm kính trong suốt có hai mặt song song",
+      "Khối nhựa trong suốt hình lăng trụ tam giác",
+      "Viên bi thủy tinh trong suốt hình cầu"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Lăng kính là khối chất trong suốt, giới hạn bởi hai mặt phẳng không song song, thường có dạng lăng trụ tam giác. Khối nhựa trong suốt hình lăng trụ tam giác thoả mãn cả hai điều kiện nên là một lăng kính."
+    },
+    {
+     "ma_cau": "K09020301015",
+     "loai": "trac_nghiem",
+     "de": "Để làm lăng kính trong phòng thí nghiệm, người ta dùng vật liệu nào sau đây?",
+     "lua_chon": [
+      "Thép không gỉ đánh bóng",
+      "Gỗ được sơn bóng",
+      "Gốm sứ tráng men",
+      "Thuỷ tinh trong suốt"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ánh sáng phải truyền qua được lăng kính nên lăng kính làm bằng chất trong suốt.\nTrong các vật liệu đã cho, chỉ thuỷ tinh trong suốt cho ánh sáng truyền qua."
+    },
+    {
+     "ma_cau": "K09020301028",
+     "loai": "trac_nghiem",
+     "de": "Một lăng kính có tiết diện thẳng là tam giác $\\mathrm{ABC}$ vuông cân tại $\\mathrm{A}$. Ánh sáng đi vào lăng kính ở mặt $\\mathrm{AB}$ và ló ra ở mặt $\\mathrm{BC}$. Góc chiết quang của lăng kính trong trường hợp này bằng",
+     "lua_chon": [
+      "$\\mathrm{30^\\circ}$",
+      "$\\mathrm{45^\\circ}$",
+      "$\\mathrm{60^\\circ}$",
+      "$\\mathrm{90^\\circ}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ánh sáng đi qua hai mặt $\\mathrm{AB}$ và $\\mathrm{BC}$ nên đây là hai mặt bên, cạnh của lăng kính ứng với đỉnh $\\mathrm{B}$.\nGóc chiết quang là góc tại đỉnh $\\mathrm{B}$. Tam giác $\\mathrm{ABC}$ vuông cân tại $\\mathrm{A}$ nên:\n$\\mathrm{\\widehat{B}=\\dfrac{180^\\circ-90^\\circ}{2}=45^\\circ}$"
+    },
+    {
+     "ma_cau": "K09020301017",
+     "loai": "trac_nghiem",
+     "de": "Cạnh của lăng kính là",
+     "lua_chon": [
+      "giao tuyến của đáy và một mặt bên",
+      "đường nối trung điểm hai mặt bên",
+      "giao tuyến của hai mặt bên",
+      "đường thẳng vuông góc với đáy"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hai mặt bên của lăng kính cắt nhau theo một đường thẳng. Đường thẳng đó là cạnh của lăng kính."
+    },
+    {
+     "ma_cau": "K09020301018",
+     "loai": "trac_nghiem",
+     "de": "Góc chiết quang của lăng kính là góc tạo bởi",
+     "lua_chon": [
+      "đáy và một mặt bên",
+      "hai mặt bên",
+      "tia tới và mặt bên",
+      "tia tới và tia ló"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Góc chiết quang A của lăng kính là góc tạo bởi hai mặt bên."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01192",
+   "nhom_id": "KNB00455",
+   "thu_tu": 2,
+   "dang": "SỰ TÁN SẮC ÁNH SÁNG TRẮNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020301037",
+     "loai": "trac_nghiem",
+     "de": "Trong quang phổ của ánh sáng trắng, màu nằm giữa màu vàng và màu lam là",
+     "lua_chon": [
+      "màu da cam",
+      "màu lục",
+      "màu chàm",
+      "màu tím"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thứ tự các màu: đỏ, da cam, vàng, lục, lam, chàm, tím.\nMàu nằm giữa màu vàng và màu lam là màu lục."
+    },
+    {
+     "ma_cau": "K09020301030",
+     "loai": "trac_nghiem",
+     "de": "Hiện tượng chùm sáng trắng bị tách thành nhiều chùm sáng màu khác nhau khi đi qua lăng kính gọi là",
+     "lua_chon": [
+      "Sự phản xạ ánh sáng",
+      "Sự phản xạ toàn phần",
+      "Sự tán sắc ánh sáng",
+      "Sự truyền thẳng ánh sáng"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Chùm sáng trắng bị tách thành dải màu khi qua lăng kính là sự tán sắc ánh sáng."
+    },
+    {
+     "ma_cau": "K09020301034",
+     "loai": "trac_nghiem",
+     "de": "Khi chiếu ánh sáng trắng qua lăng kính, chùm sáng màu nào bị lệch ít nhất?",
+     "lua_chon": [
+      "Màu da cam",
+      "Màu lam",
+      "Màu tím",
+      "Màu đỏ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trong dải màu thu được, ánh sáng đỏ bị lệch ít nhất, ánh sáng tím bị lệch nhiều nhất."
+    },
+    {
+     "ma_cau": "K09020301036",
+     "loai": "trac_nghiem",
+     "de": "Dải màu thu được khi chiếu ánh sáng trắng qua lăng kính gồm bao nhiêu màu chính?",
+     "lua_chon": [
+      "5",
+      "6",
+      "7",
+      "8"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Quang phổ của ánh sáng trắng gồm bảy màu chính: đỏ, da cam, vàng, lục, lam, chàm, tím."
+    },
+    {
+     "ma_cau": "K09020301043",
+     "loai": "trac_nghiem",
+     "de": "Dùng lăng kính thứ nhất tách một chùm sáng trắng thành dải màu, rồi chắn lại chỉ cho chùm sáng màu lục đi tới lăng kính thứ hai. Chùm sáng ló ra khỏi lăng kính thứ hai có màu",
+     "lua_chon": [
+      "trắng",
+      "biến thiên từ đỏ đến tím",
+      "biến thiên từ lục đến tím",
+      "lục"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Chùm sáng màu lục tách ra từ lăng kính thứ nhất là ánh sáng đơn sắc.\nÁnh sáng đơn sắc không bị tán sắc khi qua lăng kính thứ hai nên chùm ló vẫn có màu lục."
+    },
+    {
+     "ma_cau": "K09020301039",
+     "loai": "trac_nghiem",
+     "de": "Ánh sáng đơn sắc là ánh sáng",
+     "lua_chon": [
+      "bị tách thành nhiều màu khi qua lăng kính",
+      "không bị lệch khi truyền qua lăng kính",
+      "có một màu và không bị tán sắc",
+      "là hỗn hợp của bảy màu từ đỏ đến tím"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ánh sáng đơn sắc là ánh sáng có một màu nhất định và không bị tán sắc khi đi qua lăng kính."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01193",
+   "nhom_id": "KNB00457",
+   "thu_tu": 1,
+   "dang": "TIA SÁNG ĐƠN SẮC QUA LĂNG KÍNH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020303005",
+     "loai": "tu_luan",
+     "de": "Hình bên là tiết diện thẳng MNP của một lăng kính thuỷ tinh đặt trong không khí, tiết diện là tam giác cân tại M, cạnh M hướng lên trên. Chiếu tia sáng đơn sắc SI tới mặt bên MN. Vẽ tiếp đường truyền của tia sáng qua lăng kính.",
+     "loi_giai": "Tại điểm tới I, tia sáng đi từ không khí vào thuỷ tinh. Vẽ pháp tuyến tại I, tia khúc xạ IJ lệch lại gần pháp tuyến (góc khúc xạ nhỏ hơn góc tới).\nTia IJ truyền thẳng trong lăng kính tới điểm J trên mặt bên MP.\nTại J, tia sáng đi từ thuỷ tinh ra không khí. Vẽ pháp tuyến tại J, tia ló JR lệch xa pháp tuyến (góc khúc xạ lớn hơn góc tới).\nTia ló JR bị lệch về phía đáy NP so với tia tới SI.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09020303007",
+     "loai": "tu_luan",
+     "de": "Hình bên là tiết diện thẳng PQT của một lăng kính thủy tinh đặt trong không khí, tiết diện là tam giác đều, cạnh P hướng lên trên. Chiếu tia sáng đơn sắc SI tới mặt bên PT. Vẽ tiếp đường truyền của tia sáng qua lăng kính.",
+     "loi_giai": "Tại điểm tới I, tia sáng đi từ không khí vào thủy tinh. Vẽ pháp tuyến tại I, tia khúc xạ IJ lệch lại gần pháp tuyến (góc khúc xạ nhỏ hơn góc tới).\nTia IJ truyền thẳng trong lăng kính tới điểm J trên mặt bên PQ.\nTại J, tia sáng đi từ thủy tinh ra không khí. Vẽ pháp tuyến tại J, tia ló JR lệch xa pháp tuyến (góc khúc xạ lớn hơn góc tới).\nTia ló JR bị lệch về phía đáy QT so với tia tới SI.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09020303011",
+     "loai": "tu_luan",
+     "de": "Hình bên là tiết diện thẳng GKL của một lăng kính thuỷ tinh đặt trong không khí, tiết diện là tam giác cân tại G, góc G bằng $70^{\\circ}$, cạnh G hướng lên trên. Chiếu tia sáng đơn sắc SI tới mặt bên GK. Vẽ tiếp đường truyền của tia sáng qua lăng kính.",
+     "loi_giai": "Tại điểm tới I, tia sáng đi từ không khí vào thuỷ tinh. Vẽ pháp tuyến tại I, tia khúc xạ IJ lệch lại gần pháp tuyến (góc khúc xạ nhỏ hơn góc tới).\nTia IJ truyền thẳng trong lăng kính tới điểm J trên mặt bên GL.\nTại J, tia sáng đi từ thuỷ tinh ra không khí. Vẽ pháp tuyến tại J, tia ló JR lệch xa pháp tuyến (góc khúc xạ lớn hơn góc tới).\nTia ló JR bị lệch về phía đáy KL so với tia tới SI.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09020303015",
+     "loai": "tu_luan",
+     "de": "Hình bên là tiết diện thẳng ABC của một lăng kính thủy tinh đặt trong không khí, tiết diện là tam giác cân tại A, góc A bằng $30^\\circ$, cạnh A hướng lên trên. Chiếu tia sáng đơn sắc SI tới mặt bên AB theo phương vuông góc với mặt này. Vẽ tiếp đường truyền của tia sáng qua lăng kính.",
+     "loi_giai": "Tia SI vuông góc với mặt bên AB nên tại I tia sáng truyền thẳng vào lăng kính, không đổi hướng.\nTia sáng truyền thẳng trong lăng kính tới điểm J trên mặt bên AC.\nTại J, tia sáng đi từ thủy tinh ra không khí. Vẽ pháp tuyến tại J, tia ló JR lệch xa pháp tuyến (góc khúc xạ lớn hơn góc tới).\nTia ló JR bị lệch về phía đáy BC so với tia tới SI.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09020303012",
+     "loai": "tu_luan",
+     "de": "Hình bên là tiết diện thẳng MNQ của một lăng kính thuỷ tinh đặt trong không khí, tiết diện là tam giác đều, đặt ngược, cạnh M hướng xuống dưới. Chiếu tia sáng đơn sắc SI tới mặt bên MN. Vẽ tiếp đường truyền của tia sáng qua lăng kính.[hình]",
+     "loi_giai": "Tại điểm tới I, tia sáng đi từ không khí vào thuỷ tinh. Vẽ pháp tuyến tại I, tia khúc xạ IJ lệch lại gần pháp tuyến (góc khúc xạ nhỏ hơn góc tới).\nTia IJ truyền thẳng trong lăng kính tới điểm J trên mặt bên MQ.\nTại J, tia sáng đi từ thuỷ tinh ra không khí. Vẽ pháp tuyến tại J, tia ló JR lệch xa pháp tuyến (góc khúc xạ lớn hơn góc tới).\nTia ló JR bị lệch về phía đáy NQ so với tia tới SI.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09020303018",
+     "loai": "tu_luan",
+     "de": "Hình bên là tiết diện thẳng DHK của một lăng kính thuỷ tinh đặt trong không khí, tiết diện là tam giác đều, cạnh D hướng chếch xuống bên phải. Chiều tia sáng đơn sắc SI tới mặt bên DK. Vẽ tiếp đường truyền của tia sáng qua lăng kính.",
+     "loi_giai": "Tại điểm tới I, tia sáng đi từ không khí vào thuỷ tinh. Vẽ pháp tuyến tại I, tia khúc xạ IJ lệch lại gần pháp tuyến (góc khúc xạ nhỏ hơn góc tới).\nTia IJ truyền thẳng trong lăng kính tới điểm J trên mặt bên DH.\nTại J, tia sáng đi từ thuỷ tinh ra không khí. Vẽ pháp tuyến tại J, tia ló JR lệch xa pháp tuyến (góc khúc xạ lớn hơn góc tới).\nTia ló JR bị lệch về phía đáy HK so với tia tới SI.",
+     "co_hinh": true
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01194",
+   "nhom_id": "KNB00457",
+   "thu_tu": 2,
+   "dang": "CHÙM SÁNG TRẮNG QUA LĂNG KÍNH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020303034",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu chùm sáng trắng hẹp SI tới lăng kính đặt ngược, cạnh A hướng xuống dưới như hình bên. Trên màn chắn ghi lại bảy vệt sáng màu, được đánh số từ trên xuống dưới (hình không thể hiện màu của các tia). Vệt sáng số mấy có màu da cam? (Ghi số thứ tự của vệt sáng.)",
+     "dap_an": "6",
+     "loi_giai": "Lăng kính đặt ngược nên đáy BC ở phía trên, các tia ló đều lệch lên trên (về phía đáy).\nÁnh sáng đỏ lệch ít nhất, ánh sáng tím lệch nhiều nhất. Theo thứ tự từ dưới lên trên, các vệt sáng trên màn có màu: đỏ, da cam, vàng, lục, lam, chàm, tím.\nCách đánh số trên hình theo chiều ngược lại (từ trên xuống dưới), nên vệt sáng màu da cam là vệt số 6.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09020303020",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu chùm sáng trắng hẹp SI tới lăng kính có cạnh A hướng lên trên như hình bên. Trên màn chắn ghi lại bảy vệt sáng màu, được đánh số từ trên xuống dưới (hình không thể hiện màu của các tia). Vệt sáng số mấy có màu tím? (Ghi số thứ tự của vệt sáng.)",
+     "dap_an": "7",
+     "loi_giai": "Cạnh A hướng lên trên nên đáy BC ở phía dưới, các tia ló đều lệch xuống dưới (về phía đáy).\nÁnh sáng đỏ lệch ít nhất, ánh sáng tím lệch nhiều nhất. Theo thứ tự từ trên xuống dưới, các vệt sáng trên màn có màu: đỏ, da cam, vàng, lục, lam, chàm, tím.\nCách đánh số trên hình cũng theo chiều từ trên xuống dưới, nên vệt sáng màu tím ở vị trí thứ bảy là vệt số 7.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09020303028",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu chùm sáng trắng hẹp SI tới lăng kính đặt ngược, cạnh A hướng xuống dưới như hình bên. Trên màn chắn ghi lại bảy vệt sáng màu, được đánh số từ trên xuống dưới (hình không thể hiện màu của các tia). Vệt sáng số 7 có màu gì? (Ghi tên màu).",
+     "dap_an": "Đỏ",
+     "loi_giai": "Lăng kính đặt ngược nên đáy BC ở phía trên, các tia ló đều lệch lên trên (về phía đáy).\nÁnh sáng đỏ lệch ít nhất, ánh sáng tím lệch nhiều nhất. Theo thứ tự từ dưới lên trên, các vệt sáng trên màn có màu: đỏ, da cam, vàng, lục, lam, chàm, tím.\nCách đánh số trên hình theo chiều ngược lại (từ trên xuống dưới), nên vệt sáng màu đỏ là vệt số 7.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09020303024",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu chùm sáng trắng hẹp $SI$ tới lăng kính có cạnh $A$ hướng lên trên như hình bên. Trên màn chắn ghi lại bảy vệt sáng màu, được đánh số từ dưới lên trên (hình không thể hiện màu của các tia). Vệt sáng số mấy có màu tím? (Ghi số thứ tự của vệt sáng.)",
+     "dap_an": "1",
+     "loi_giai": "Cạnh $A$ hướng lên trên nên đáy $BC$ ở phía dưới, các tia ló đều lệch xuống dưới (về phía đáy).\nÁnh sáng đỏ lệch ít nhất, ánh sáng tím lệch nhiều nhất. Theo thứ tự từ trên xuống dưới, các vệt sáng trên màn có màu: đỏ, da cam, vàng, lục, lam, chàm, tím.\nCách đánh số trên hình theo chiều ngược lại (từ dưới lên trên), nên vệt sáng màu tím là vệt số 1.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09020303032",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu chùm sáng trắng hẹp SI tới lăng kính có cạnh A hướng lên trên như hình bên. Trên màn chắn ghi lại bảy vệt sáng màu, được đánh số từ trên xuống dưới (hình không thể hiện màu của các tia). Vệt sáng số 6 có màu gì? (Ghi tên màu.)",
+     "dap_an": "Chàm",
+     "loi_giai": "Cạnh A hướng lên trên nên đáy BC ở phía dưới, các tia ló đều lệch xuống dưới (về phía đáy).\nÁnh sáng đỏ lệch ít nhất, ánh sáng tím lệch nhiều nhất. Theo thứ tự từ trên xuống dưới, các vệt sáng trên màn có màu: đỏ, da cam, vàng, lục, lam, chàm, tím.\nCách đánh số trên hình cũng theo chiều từ trên xuống dưới, nên vệt sáng màu chàm ở vị trí thứ sáu là vệt số 6.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09020303021",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu chùm sáng trắng hẹp SI tới lăng kính có cạnh A hướng lên trên như hình bên. Trên màn chắn ghi lại ba vệt sáng màu đỏ, lục, tím, được đánh số từ dưới lên trên (hình không thể hiện màu của các tia). Vệt sáng số mấy có màu đỏ? (Ghi số thứ tự của vệt sáng.)",
+     "dap_an": "3",
+     "loi_giai": "Cạnh A hướng lên trên nên đáy BC ở phía dưới, các tia ló đều lệch xuống dưới (về phía đáy).\nÁnh sáng đỏ lệch ít nhất, ánh sáng tím lệch nhiều nhất. Theo thứ tự từ trên xuống dưới, các vệt sáng trên màn có màu: đỏ, lục, tím.\nCách đánh số trên hình theo chiều ngược lại (từ dưới lên trên), nên vệt sáng màu đỏ là vệt số 3.",
+     "co_hinh": true
+    }
+   ]
+  }
+ ]
+}

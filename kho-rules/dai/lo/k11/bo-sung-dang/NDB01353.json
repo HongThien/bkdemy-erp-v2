@@ -1,0 +1,20 @@
+{
+ "id": "NDB01353",
+ "ten": "Bài toán góc của tam giác, tứ giác tạo thành cấp số nhân",
+ "mo_ta": "Số đo các góc của tam giác hoặc tứ giác lập thành cấp số nhân; dùng tổng ba góc tam giác bằng $180^\\circ$, tổng bốn góc tứ giác bằng $360^\\circ$ để tìm công bội và số đo các góc. Không thuộc dạng này: cạnh, chu vi, diện tích lập cấp số nhân (NDB01597).",
+ "ly_thuyet": "##TC\n• Tổng ba góc của một tam giác bằng $180^\\circ$; tổng bốn góc của một tứ giác bằng $360^\\circ$.\n• Các góc $u_1,u_2,\\dots$ lập cấp số nhân công bội $q$: $u_k=u_1q^{k-1}$ và mọi góc phải dương, mỗi góc của tam giác nhỏ hơn $180^\\circ$.\n• Tổng các góc: $S_n=u_1\\dfrac{1-q^n}{1-q}$ ($q\\ne1$); với tam giác $S_3=180^\\circ$, với tứ giác $S_4=360^\\circ$.\n• Định lí sin: $\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}$; định lí cosin: $b^2=a^2+c^2-2ac\\cos B$.\n\n##PP Tìm các góc lập thành cấp số nhân\nĐặt góc đầu $u_1$ và công bội $q$ (theo đúng thứ tự đề cho).\nLập phương trình từ tổng các góc ($180^\\circ$ hoặc $360^\\circ$) và dữ kiện còn lại (công bội, tỉ số hai góc).\nGiải ra $u_1$, $q$; loại nghiệm làm góc không dương.\nTính từng góc và thử lại tổng.\n\n##CY\nTổng bốn góc bằng $360^\\circ$ đúng với mọi tứ giác đơn (kể cả tứ giác lõm); góc của tứ giác lõm có thể lớn hơn $180^\\circ$.\nChọn $q>0$ vì mọi góc đều dương.",
+ "vi_du": "##VD\nTam giác $ABC$ có số đo ba góc $\\hat A$, $\\hat B$, $\\hat C$ theo thứ tự lập thành một cấp số nhân có công bội $q=2$. Tính số đo ba góc.\n\nBài giải:\nGọi $\\hat A=x$ thì $\\hat B=2x$, $\\hat C=4x$.\nTổng ba góc: $x+2x+4x=180^\\circ\\Leftrightarrow7x=180^\\circ\\Leftrightarrow x=\\dfrac{180^\\circ}{7}$.\nVậy $\\hat A=\\dfrac{180^\\circ}{7}$, $\\hat B=\\dfrac{360^\\circ}{7}$, $\\hat C=\\dfrac{720^\\circ}{7}$ (đều thuộc khoảng $(0^\\circ;180^\\circ)$).\n\n##VD\nTìm số đo bốn góc của một tứ giác, biết bốn góc đó lập thành một cấp số nhân và góc cuối gấp $9$ lần góc thứ hai.\n\nBài giải:\nGọi bốn góc là $u_1,u_2,u_3,u_4$ với công bội $q$ ($q>0$ vì các góc dương).\nTa có $u_4=9u_2\\Leftrightarrow u_1q^3=9u_1q\\Leftrightarrow q^2=9\\Leftrightarrow q=3$.\nTổng bốn góc: $u_1(1+3+9+27)=360^\\circ\\Leftrightarrow40u_1=360^\\circ\\Leftrightarrow u_1=9^\\circ$.\nCác góc là $9^\\circ;\\ 27^\\circ;\\ 81^\\circ;\\ 243^\\circ$ (có một góc lớn hơn $180^\\circ$ nên là tứ giác lõm).\nThử lại: $9+27+81+243=360$ và $243=9\\cdot27$.\n\n##VD\nTam giác $ABC$ có $\\sin A$, $\\sin B$, $\\sin C$ theo thứ tự lập thành một cấp số nhân và $\\hat B=60^\\circ$. Tính $\\hat A$ và $\\hat C$.\n\nBài giải:\nTheo định lí sin, các cạnh $a,b,c$ tỉ lệ với $\\sin A,\\sin B,\\sin C$ nên cũng lập cấp số nhân, suy ra $b^2=ac$.\nTheo định lí cosin: $b^2=a^2+c^2-2ac\\cos60^\\circ=a^2+c^2-ac$.\nTừ hai hệ thức: $ac=a^2+c^2-ac\\Leftrightarrow(a-c)^2=0\\Leftrightarrow a=c$.\nKhi đó $b^2=ac=a^2$ nên $b=a$, tam giác đều.\nVậy $\\hat A=\\hat C=60^\\circ$.",
+ "nguon": [
+  {
+   "sach": "Toán 11 Từ Tâm",
+   "bai/tep": "C2-B3-CẤP SỐ NHÂN-P1.docx, VD 2.4 và VD 4.1 (tứ giác có bốn góc lập cấp số nhân), VD 4.6 và 4.7 (tam giác có sin ... lập cấp số nhân)",
+   "ghi_chu": "Xác nhận kiểu bài. Công thức trong file .docx nguồn không trích được bằng zipfile+xml (MathType/ảnh) nên đề và lời giải TỰ VIẾT lại bằng LaTeX và TỰ KIỂM TOÁN; sách chỉ dùng xác nhận kiểu bài."
+  },
+  {
+   "sach": "PNL Toán 11 2026",
+   "bai/tep": "Bài 03. Cấp số nhân",
+   "ghi_chu": "Không thấy bài góc riêng; ví dụ 1 do soạn."
+  }
+ ],
+ "ghi_chu": "Câu thật gán dạng này: T111060302047 (tứ giác, $q=2$, góc lớn nhất $192^\\circ$). LƯU Ý: lời giải câu này ghi 'tứ giác lồi' nhưng $192^\\circ>180^\\circ$ nên không thể lồi (tứ giác lõm vẫn có tổng góc $360^\\circ$); nên sửa chữ 'lồi'. Ví dụ 3 dùng định lí sin, cosin của lớp 10. Các ví dụ đã kiểm lại."
+}

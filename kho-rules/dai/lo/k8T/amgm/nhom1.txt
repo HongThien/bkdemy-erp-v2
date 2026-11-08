@@ -1,0 +1,176 @@
+#NHOM NNB01742 | Các bài toán ứng dụng cơ bản của BĐT AM-GM
+@MOTA
+Các bài dùng trực tiếp bất đẳng thức Cô-si (AM–GM) cho hai hoặc ba số không âm; điểm rơi là các biến bằng nhau (hoặc suy ra ngay từ điều kiện dấu "="), chưa cần kĩ thuật tách hệ số.
+@LT
+##ĐL Bất đẳng thức Cô-si (AM–GM)
+Với $n$ số thực không âm $x_1,x_2,\dots,x_n$ ta có $\dfrac{x_1+x_2+\dots+x_n}{n}\ge\sqrt[n]{x_1x_2\cdots x_n}$. Dấu "=" xảy ra khi và chỉ khi $x_1=x_2=\dots=x_n$.
+
+##TC Hai trường hợp dùng nhiều nhất
+- $x+y\ge2\sqrt{xy}$ với $x,y\ge0$, dấu "=" khi $x=y$.
+- $x+y+z\ge3\sqrt[3]{xyz}$ với $x,y,z\ge0$, dấu "=" khi $x=y=z$.
+- Dạng tương đương: $(x+y)^2\ge4xy$ và $xy\le\dfrac{(x+y)^2}4$.
+
+##TC Các hệ quả đúng với mọi số thực
+- $a^2+b^2\ge2ab$; $2(a^2+b^2)\ge(a+b)^2$.
+- $a^2+b^2+c^2\ge ab+bc+ca$; $3(a^2+b^2+c^2)\ge(a+b+c)^2$; $(a+b+c)^2\ge3(ab+bc+ca)$.
+Dấu "=" xảy ra khi các biến bằng nhau.
+
+##TC Bổ đề cộng mẫu (tổng nghịch đảo)
+Với các số dương: $\dfrac1x+\dfrac1y\ge\dfrac4{x+y}$ và $\dfrac1x+\dfrac1y+\dfrac1z\ge\dfrac9{x+y+z}$. Dấu "=" xảy ra khi các số bằng nhau.
+
+##PP Áp dụng Cô-si trực tiếp
+Kiểm tra các số đem vào Cô-si đều không âm (hoặc dương)
+Chọn bộ số sao cho vế còn lại là hằng số hoặc đại lượng đã biết (tích không còn biến)
+Áp dụng Cô-si, cộng hoặc nhân theo vế nếu có nhiều đánh giá cùng chiều
+Giải điều kiện dấu "=" và kiểm tra các dấu "=" xảy ra đồng thời
+
+##CY
+- Phải nêu rõ điều kiện không âm của các số đem vào Cô-si.
+- Với bài tìm giá trị lớn nhất, nhỏ nhất phải có đủ hai điều kiện: bất đẳng thức đúng với mọi giá trị của biến và tồn tại giá trị của biến để dấu "=" xảy ra.
+- Nhân hoặc chia hai bất đẳng thức theo vế chỉ được khi các vế đều dương (hoặc đều không âm); lấy nghịch đảo hai vế dương thì đổi chiều.
+
+#DANG NDB01599 | AM - GM 1 biến dạng tổng | muc=3 | bac=A
+@MOTA
+bài chỉ có một biến, sau khi đặt ẩn phụ thì biểu thức là tổng hai số hạng nghịch đảo nhau (dạng $t+\dfrac kt$); dùng Cô-si cho hai số dương để chặn dưới, giá trị của ẩn phụ làm dấu "=" xảy ra nằm trong miền cho phép nên ghép cặp trực tiếp.
+@LT
+##TC
+- Với $t>0$, $k>0$: $t+\dfrac kt\ge2\sqrt k$, dấu "=" khi $t=\sqrt k$.
+
+##PP Đặt ẩn phụ rồi dùng Cô-si
+Đặt $t$ là biểu thức chung (thường là căn hoặc mẫu số) và tìm miền giá trị của $t$
+Viết biểu thức thành $t+\dfrac kt$ (hoặc dạng tương tự)
+Áp dụng Cô-si cho hai số dương
+Kiểm tra giá trị của $t$ làm dấu "=" xảy ra có thuộc miền của $t$ không, rồi suy ra giá trị của biến ban đầu
+
+##CY
+Nếu giá trị của $t$ làm dấu "=" xảy ra nằm ngoài miền của $t$ thì không được ghép trực tiếp, phải dùng kĩ thuật điểm rơi.
+@VD
+##VD
+Chứng minh rằng với mọi số thực $a$ ta có $\dfrac{a^2+5}{\sqrt{a^2+1}}\ge4$.
+
+Bài giải:
+Đặt $t=\sqrt{a^2+1}$. Vì $a^2\ge0$ nên $t\ge1$, và $a^2+5=t^2+4$.
+$\dfrac{a^2+5}{\sqrt{a^2+1}}=\dfrac{t^2+4}t=t+\dfrac4t$.
+Áp dụng Cô-si cho hai số dương $t$ và $\dfrac4t$: $t+\dfrac4t\ge2\sqrt{t\cdot\dfrac4t}=4$.
+Dấu "=" xảy ra khi $t=\dfrac4t$, tức $t=2$ (thỏa $t\ge1$); khi đó $a^2+1=4$, $a=\pm\sqrt3$.
+Vậy $\dfrac{a^2+5}{\sqrt{a^2+1}}\ge4$ với mọi số thực $a$.
+
+#DANG NDB01600 | AM - GM 1 biến dạng tích | muc=3 | bac=A
+@MOTA
+bài tìm giá trị lớn nhất của tích hai (hoặc ba) thừa số không âm có tổng không đổi, sau khi điều chỉnh hệ số; dùng Cô-si để chặn trên tích.
+@GHICHU
+Sách nguồn không có ví dụ riêng cho dạng này nên đang để trống ví dụ. Tôi đọc "1 biến / nhiều biến" là số biến thực chất của bài và "dạng tổng / dạng tích" là bất đẳng thức hoặc biểu thức cần chặn là tổng hay tích — chị sửa nếu chị hiểu khác. Chị chỉ nguồn, hoặc cho tôi tự soạn ví dụ ngoài sách.
+@LT
+##TC
+- Nếu $x,y\ge0$ có $x+y=s$ không đổi thì $xy\le\dfrac{s^2}4$, dấu "=" khi $x=y=\dfrac s2$.
+- Nếu $x,y,z\ge0$ có $x+y+z=s$ không đổi thì $xyz\le\dfrac{s^3}{27}$, dấu "=" khi $x=y=z=\dfrac s3$.
+
+##PP Tìm giá trị lớn nhất của tích
+Viết biểu thức thành tích của các thừa số không âm
+Nhân (hoặc chia) từng thừa số với hằng số để tổng các thừa số là hằng số
+Áp dụng Cô-si cho các thừa số
+Chỉ ra giá trị của biến để các thừa số bằng nhau (và thỏa miền xác định)
+@VD
+
+#DANG NDB01601 | AM - GM nhiều biến dạng tổng | muc=4 | bac=A
+@MOTA
+bất đẳng thức hoặc biểu thức là tổng nhiều số hạng có nhiều biến; dùng Cô-si cho hai hoặc ba số, thường kèm đổi biến hoặc bổ đề cộng mẫu; dấu "=" thường xảy ra khi các biến bằng nhau hoặc khi giải được từ điều kiện các số bằng nhau.
+@LT
+##PP Chứng minh bất đẳng thức dạng tổng bằng Cô-si
+Dự đoán dấu "=" (biểu thức đối xứng thì các biến bằng nhau)
+Chọn bộ số đem vào Cô-si sao cho tích của chúng không còn biến (có thể tách một biến thành tổng, ví dụ $a=(a-b)+b$)
+Áp dụng Cô-si, cộng theo vế nếu có nhiều đánh giá
+Giải điều kiện "các số bằng nhau" để tìm dấu "=", kiểm tra thỏa giả thiết
+
+##CY
+Nếu một hướng đánh giá dẫn tới mệnh đề sai (ví dụ phải chứng minh một tổng $\le$ hằng số nhưng thực tế có thể lớn hơn) thì bỏ hướng đó và đổi cách nhóm, đừng cố tiếp tục.
+@VD
+##VD
+Cho hai số thực $a>b>0$. Chứng minh rằng $a+\dfrac8{b(a-b)}\ge6$.
+
+Bài giải:
+Vì $a>b>0$ nên $a-b>0$ và $a=(a-b)+b$. Ta viết $a+\dfrac8{b(a-b)}=(a-b)+b+\dfrac8{b(a-b)}$.
+Áp dụng Cô-si cho ba số dương $a-b$, $b$, $\dfrac8{b(a-b)}$ (tích bằng $8$, không còn biến):
+$(a-b)+b+\dfrac8{b(a-b)}\ge3\sqrt[3]{(a-b)\cdot b\cdot\dfrac8{b(a-b)}}=3\sqrt[3]8=6$.
+Dấu "=" xảy ra khi $a-b=b=\dfrac8{b(a-b)}$. Đặt $a-b=b=t>0$ thì $t=\dfrac8{t^2}$, tức $t=2$, nên $b=2$, $a=4$ (thỏa $a>b>0$).
+Vậy $a+\dfrac8{b(a-b)}\ge6$.
+
+##VD
+Cho ba số thực dương $a,b,c$. Chứng minh rằng $\dfrac a{b+c}+\dfrac b{c+a}+\dfrac c{a+b}\ge\dfrac32$.
+
+Bài giải:
+Cộng $1$ vào mỗi phân thức: $\dfrac a{b+c}+1=\dfrac{a+b+c}{b+c}$ và tương tự, nên bất đẳng thức tương đương với
+$(a+b+c)\left(\dfrac1{b+c}+\dfrac1{c+a}+\dfrac1{a+b}\right)\ge\dfrac92$, hay $2(a+b+c)\left(\dfrac1{b+c}+\dfrac1{c+a}+\dfrac1{a+b}\right)\ge9$.
+Vì $2(a+b+c)=(b+c)+(c+a)+(a+b)$ nên theo Cô-si cho ba số dương, $2(a+b+c)\ge3\sqrt[3]{(a+b)(b+c)(c+a)}$.
+Cũng theo Cô-si cho ba số dương, $\dfrac1{b+c}+\dfrac1{c+a}+\dfrac1{a+b}\ge\dfrac3{\sqrt[3]{(a+b)(b+c)(c+a)}}$.
+Nhân hai bất đẳng thức cùng chiều (hai vế đều dương): $2(a+b+c)\left(\dfrac1{b+c}+\dfrac1{c+a}+\dfrac1{a+b}\right)\ge9$.
+Suy ra $\dfrac a{b+c}+\dfrac b{c+a}+\dfrac c{a+b}\ge\dfrac92-3=\dfrac32$.
+Dấu "=" xảy ra khi $a+b=b+c=c+a$, tức $a=b=c$.
+
+#DANG NDB01602 | AM - GM nhiều biến dạng tích | muc=4 | bac=A
+@MOTA
+bất đẳng thức có tích ở vế trái (tích của các nhị thức, hoặc tích $\ge$ hằng số nhân tích các biến); đánh giá riêng từng thừa số bằng Cô-si, nhân các bất đẳng thức cùng chiều (các vế không âm), rồi rút gọn.
+@LT
+##PP Chứng minh bất đẳng thức dạng tích
+Đánh giá riêng từng thừa số của vế trái bằng Cô-si sao cho tích các căn dưới dấu căn ra đúng vế phải
+Nhân các bất đẳng thức cùng chiều (các vế đều không âm)
+Rút gọn vế phải
+Kiểm tra dấu "=" của mọi đánh giá xảy ra đồng thời
+
+##CY
+Chỉ được nhân theo vế khi mọi vế đều không âm.
+@VD
+##VD
+Cho ba số thực $a,b,c$ bất kì. Chứng minh rằng $(a^2+2b^2)(b^2+2c^2)(c^2+2a^2)\ge27a^2b^2c^2$.
+
+Bài giải:
+Các số $a^2,b^2,c^2$ đều không âm. Áp dụng Cô-si cho ba số không âm:
+$a^2+2b^2=a^2+b^2+b^2\ge3\sqrt[3]{a^2b^4}\ge0$.
+Tương tự $b^2+2c^2\ge3\sqrt[3]{b^2c^4}\ge0$ và $c^2+2a^2\ge3\sqrt[3]{c^2a^4}\ge0$.
+Nhân ba bất đẳng thức cùng chiều (các vế không âm): $(a^2+2b^2)(b^2+2c^2)(c^2+2a^2)\ge27\sqrt[3]{a^6b^6c^6}=27a^2b^2c^2$.
+Dấu "=" xảy ra khi $a^2=b^2=c^2$, tức $|a|=|b|=|c|$.
+
+##VD
+Cho hai số thực dương $a,b$. Chứng minh rằng $(\sqrt a+\sqrt b)^4\ge8(a+b)\sqrt{ab}$.
+
+Bài giải:
+Đặt $s=a+b>0$ và $p=\sqrt{ab}>0$. Khi đó $(\sqrt a+\sqrt b)^2=a+b+2\sqrt{ab}=s+2p$, nên $(\sqrt a+\sqrt b)^4=(s+2p)^2$, còn vế phải bằng $8sp$.
+Áp dụng $(x+y)^2\ge4xy$ với $x=s$, $y=2p$: $(s+2p)^2\ge4\cdot s\cdot2p=8sp$.
+Vậy $(\sqrt a+\sqrt b)^4\ge8(a+b)\sqrt{ab}$.
+Dấu "=" xảy ra khi $s=2p$, tức $a+b=2\sqrt{ab}$, hay $(\sqrt a-\sqrt b)^2=0$, tức $a=b$.
+
+#DANG moi | Chặn từng phân thức bằng cách đánh giá mẫu số | muc=4 | bac=A
+@MOTA
+(dạng tôi đề xuất thêm) bất đẳng thức chiều $\le$ với tổng các phân thức ở vế trái; chặn dưới từng mẫu số bằng Cô-si (hoặc bổ đề $a^3+b^3\ge ab(a+b)$) để chặn trên từng phân thức, rồi cộng lại và so với vế phải.
+@LT
+##TC Bổ đề
+Với $a,b>0$: $a^3+b^3\ge ab(a+b)$, dấu "=" khi $a=b$ (cộng $a^3+a^3+b^3\ge3a^2b$ với $a^3+b^3+b^3\ge3ab^2$ rồi chia $3$).
+
+##PP Chặn trên tổng các phân thức
+Nhận ra mẫu số chứa dạng áp dụng được Cô-si hoặc bổ đề (tổng hai lũy thừa có tích là bình phương)
+Chặn dưới mẫu số, suy ra chặn trên phân thức (tử dương giữ nguyên)
+Quy đồng hoặc rút gọn các phân thức vừa thu được
+Cộng các bất đẳng thức cùng chiều rồi so với vế phải
+
+##CY
+Lấy nghịch đảo hai vế dương thì đổi chiều bất đẳng thức.
+@VD
+##VD
+Cho ba số thực dương $a,b,c$ thỏa mãn $abc=8$. Chứng minh rằng $\dfrac1{a^3+b^3+abc}+\dfrac1{b^3+c^3+abc}+\dfrac1{c^3+a^3+abc}\le\dfrac18$.
+
+Bài giải:
+Với $a,b>0$ ta có bổ đề $a^3+b^3\ge ab(a+b)$ (cộng $a^3+a^3+b^3\ge3a^2b$ với $a^3+b^3+b^3\ge3ab^2$ rồi chia $3$).
+Do đó $a^3+b^3+abc\ge ab(a+b)+abc=ab(a+b+c)>0$, suy ra $\dfrac1{a^3+b^3+abc}\le\dfrac1{ab(a+b+c)}=\dfrac c{abc(a+b+c)}$.
+Tương tự $\dfrac1{b^3+c^3+abc}\le\dfrac a{abc(a+b+c)}$ và $\dfrac1{c^3+a^3+abc}\le\dfrac b{abc(a+b+c)}$.
+Cộng ba bất đẳng thức: vế trái $\le\dfrac{a+b+c}{abc(a+b+c)}=\dfrac1{abc}=\dfrac18$.
+Dấu "=" xảy ra khi $a=b=c$; kết hợp $abc=8$ được $a=b=c=2$.
+
+##VD
+Cho ba số thực dương $a,b,c$. Chứng minh rằng $\dfrac{2a}{a^4+b^2}+\dfrac{2b}{b^4+c^2}+\dfrac{2c}{c^4+a^2}\le\dfrac1{a^2}+\dfrac1{b^2}+\dfrac1{c^2}$.
+
+Bài giải:
+Theo Cô-si cho hai số dương $a^4$ và $b^2$: $a^4+b^2\ge2\sqrt{a^4b^2}=2a^2b>0$, nên $\dfrac{2a}{a^4+b^2}\le\dfrac{2a}{2a^2b}=\dfrac1{ab}$.
+Tương tự $\dfrac{2b}{b^4+c^2}\le\dfrac1{bc}$ và $\dfrac{2c}{c^4+a^2}\le\dfrac1{ca}$.
+Cộng ba bất đẳng thức: vế trái $\le\dfrac1{ab}+\dfrac1{bc}+\dfrac1{ca}$.
+Áp dụng $x^2+y^2+z^2\ge xy+yz+zx$ với $x=\dfrac1a$, $y=\dfrac1b$, $z=\dfrac1c$: $\dfrac1{ab}+\dfrac1{bc}+\dfrac1{ca}\le\dfrac1{a^2}+\dfrac1{b^2}+\dfrac1{c^2}$.
+Suy ra điều phải chứng minh. Dấu "=" xảy ra khi $a^4=b^2$, $b^4=c^2$, $c^4=a^2$ và $a=b=c$, tức $a=b=c=1$.

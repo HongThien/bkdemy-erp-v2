@@ -1,0 +1,38 @@
+[
+ {
+  "ma_cau": "K07000000126",
+  "dang_bai_id": "KDB01499",
+  "chac": "vua",
+  "ly_do": "Chẩn đoán chuông điện không kêu; nhóm thiếu dạng chẩn đoán/sửa lỗi thiết bị; gần dạng chuông điện."
+ },
+ {
+  "ma_cau": "K07000000127",
+  "dang_bai_id": "KDB01498",
+  "chac": "vua",
+  "ly_do": "Chẩn đoán cần cẩu điện không thả vật; nhóm thiếu dạng chẩn đoán lỗi; gần dạng cần cẩu."
+ },
+ {
+  "ma_cau": "K07000000128",
+  "dang_bai_id": "KDB01499",
+  "chac": "vua",
+  "ly_do": "Chẩn đoán rơ-le không đóng mạch; nhóm thiếu dạng chẩn đoán lỗi; gần dạng rơ-le."
+ },
+ {
+  "ma_cau": "K07000000129",
+  "dang_bai_id": "KDB01498",
+  "chac": "vua",
+  "ly_do": "Chẩn đoán khóa điện từ giữ cửa yếu; nhóm thiếu dạng chẩn đoán lỗi; gần dạng khóa điện từ."
+ },
+ {
+  "ma_cau": "K07000000131",
+  "dang_bai_id": "KDB01498",
+  "chac": "vua",
+  "ly_do": "Chẩn đoán khóa điện từ, mạch hở; nhóm thiếu dạng chẩn đoán lỗi; gần dạng khóa điện từ."
+ },
+ {
+  "ma_cau": "K07000000132",
+  "dang_bai_id": "KDB01498",
+  "chac": "vua",
+  "ly_do": "Chẩn đoán cần cẩu làm rơi vật; nhóm thiếu dạng chẩn đoán lỗi; gần dạng cần cẩu."
+ }
+]

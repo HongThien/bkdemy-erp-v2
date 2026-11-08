@@ -1,0 +1,1734 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00296",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Cấu tạo nguyên tử",
+   "nhom": "CẤU TẠO NGUYÊN TỬ VÀ MÔ HÌNH RUTHERFORD – BOHR",
+   "nhom_ly_thuyet": "Thành phần nguyên tử: Hạt nhân ở tâm, gồm proton (điện tích $+1$) và neutron (không mang điện).\nVỏ nguyên tử gồm các electron (điện tích $-1$) chuyển động quanh hạt nhân.\nMô hình Rutherford – Bohr: Electron sắp xếp thành từng lớp quanh hạt nhân.\nĐọc mô hình: đếm số vòng tròn (số lớp electron), đếm số chấm trên từng vòng (số electron mỗi lớp); số ghi trong hạt nhân là điện tích hạt nhân.\nNguyên tử trung hòa về điện: Số proton bằng số electron, nên tổng điện tích của nguyên tử bằng $0$.\nVÍ DỤ 1. Hạt nào trong nguyên tử không mang điện và nằm ở đâu?\nHướng dẫn: Neutron không mang điện, nằm trong hạt nhân.\nVÍ DỤ 2. Quan sát mô hình nguyên tử dưới đây, cho biết số lớp electron và số electron ở lớp ngoài cùng.\n\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/e42da3cb-5d13-4ef6-96be-e81f54b966e0.png)\n\nHướng dẫn: Mô hình có 2 vòng tròn nên có 2 lớp electron. Lớp ngoài cùng có 3 chấm nên có 3 electron.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00658",
+     "thu_tu": 1,
+     "ten": "Các loại hạt, điện tích và vị trí",
+     "mo_ta": "Đề cho tên một hạt trong nguyên tử (proton, neutron, electron) hoặc một bộ phận (hạt nhân, vỏ nguyên tử); hỏi điện tích, vị trí hoặc khối lượng của hạt đó.\nGồm các câu chọn phát biểu đúng về thành phần nguyên tử và về cách electron sắp xếp thành lớp theo mô hình Rutherford – Bohr (nói bằng lời, không có hình).\nLưu ý: câu cho hình mô hình, phải đếm vòng và đếm chấm ⇒ thuộc dạng \"Đọc mô hình Rutherford – Bohr\".\nLưu ý: câu hỏi vì sao nguyên tử trung hòa hoặc so sánh số lượng các hạt ⇒ thuộc dạng \"Nguyên tử trung hòa về điện\".",
+     "ly_thuyet": "##TC Thành phần nguyên tử\nHạt nhân nằm ở tâm nguyên tử, gồm proton (điện tích $+1$) và neutron (không mang điện).\nVỏ nguyên tử gồm các electron (điện tích $-1$) chuyển động quanh hạt nhân và sắp xếp thành từng lớp.\nHạt nhân có proton mang điện dương nên hạt nhân mang điện dương; neutron là hạt duy nhất không mang điện.\nKhối lượng electron rất nhỏ so với khối lượng proton và neutron.\n\n##CY Chú ý\nHạt nhân mang điện dương (vì có proton), không phải không mang điện.\nElectron ở vỏ nguyên tử, không nằm trong hạt nhân và mang điện âm.\nCác phương án \"hạt nhân và electron\" hay \"proton và electron\" cho hạt mang điện dương hoặc không mang điện đều sai vì electron mang điện âm.",
+     "vi_du": "##VD\nTrong ba loại hạt proton, neutron, electron, hạt có khối lượng rất nhỏ so với hai hạt còn lại là\nA. electron.\nB. neutron.\nC. proton.\nD. proton và neutron.\n\nBài giải:\nProton và neutron nằm trong hạt nhân, mỗi hạt có khối lượng lớn hơn rất nhiều so với electron.\nElectron chuyển động ở vỏ nguyên tử và có khối lượng rất nhỏ so với proton và neutron.\nChọn A.\n\n##VD\nHạt nhân nguyên tử mang điện tích\nA. lúc dương, lúc âm.\nB. âm.\nC. dương.\nD. không mang điện.\n\nBài giải:\nHạt nhân gồm proton mang điện $+1$ và neutron không mang điện.\nTrong hạt nhân chỉ có proton mang điện nên hạt nhân mang điện dương.\nChọn C."
+    },
+    {
+     "dang_id": "KDB00659",
+     "thu_tu": 2,
+     "ten": "Đọc mô hình Rutherford – Bohr",
+     "mo_ta": "Đề có hình mô hình Rutherford – Bohr (hạt nhân ghi điện tích, các vòng tròn quanh hạt nhân, mỗi chấm là một electron); hỏi đọc số liệu từ hình.\nGồm các biến thể: số lớp electron; số electron ở một lớp (lớp ngoài cùng, lớp thứ hai); tổng số electron; điện tích hạt nhân; tổng số electron các lớp bên trong.\nLưu ý: đề không có hình, chỉ cho số proton hoặc số electron rồi hỏi cách xếp ⇒ thuộc dạng \"Xếp electron vào các lớp\".\nLưu ý: đề yêu cầu tự vẽ mô hình ⇒ thuộc dạng \"Vẽ mô hình Rutherford - Bohr\".",
+     "ly_thuyet": "##TC Cách đọc mô hình\nSố ghi trong hạt nhân là điện tích hạt nhân, bằng số proton.\nSố vòng tròn quanh hạt nhân là số lớp electron; đếm từ trong ra ngoài (lớp 1, lớp 2, ...), vòng xa hạt nhân nhất là lớp ngoài cùng.\nSố chấm trên mỗi vòng là số electron của lớp đó; tổng số chấm là tổng số electron.\nNguyên tử trung hòa về điện nên tổng số electron bằng số proton, bằng số ghi trong hạt nhân.\n\n##PP Cách làm\nĐọc số ghi trong hạt nhân (điện tích hạt nhân).\nĐếm số vòng tròn để biết số lớp electron.\nĐếm số chấm trên từng vòng và xác định lớp mà đề hỏi (lớp thứ hai, lớp ngoài cùng, các lớp bên trong).\nCộng hoặc đối chiếu theo yêu cầu (tổng số electron, kiểm tra bằng số proton).\n\n##CY Chú ý\nLớp ngoài cùng là vòng xa hạt nhân nhất, không phải vòng gần hạt nhân.\n\"Các lớp bên trong\" là mọi lớp trừ lớp ngoài cùng.\nĐiện tích hạt nhân mang dấu dương, không phải dấu âm.",
+     "vi_du": "##VD\nMô hình Rutherford – Bohr của nguyên tử X có hạt nhân ghi $+11$ và 3 vòng tròn; các vòng, tính từ trong ra ngoài, lần lượt có 2, 8 và 1 chấm (electron). Lớp electron ngoài cùng có bao nhiêu electron?\nA. 1.\nB. 2.\nC. 8.\nD. 11.\n\nBài giải:\nCó 3 vòng tròn nên nguyên tử có 3 lớp electron.\nLớp ngoài cùng là vòng thứ ba, có 1 chấm nên có 1 electron.\nChọn A.\n\n##VD\nMô hình Rutherford – Bohr của nguyên tử Y có hạt nhân ghi $+15$ và 3 vòng tròn; các vòng, tính từ trong ra ngoài, lần lượt có 2, 8 và 5 chấm (electron). Tổng số electron của nguyên tử Y là\nA. 5.\nB. 10.\nC. 15.\nD. 30.\n\nBài giải:\nTổng số electron là tổng số chấm trên các vòng: $2 + 8 + 5 = 15$.\nKết quả bằng điện tích hạt nhân $+15$ (số proton) vì nguyên tử trung hòa về điện.\nChọn C."
+    },
+    {
+     "dang_id": "KDB00660",
+     "thu_tu": 3,
+     "ten": "Nguyên tử trung hòa về điện",
+     "mo_ta": "Đề hỏi vì sao nguyên tử trung hòa về điện, tổng điện tích của nguyên tử, hoặc quan hệ về số lượng giữa proton, neutron và electron.\nGồm các biến thể: hai loại hạt luôn có số lượng bằng nhau; tính tổng điện tích vỏ từ điện tích hạt nhân; ảnh hưởng của neutron đến điện tích; chọn phát biểu sai về số hạt.\nLưu ý: câu chỉ hỏi điện tích, vị trí hoặc khối lượng của từng hạt, không so sánh số lượng ⇒ thuộc dạng \"Các loại hạt, điện tích và vị trí\".\nLưu ý: câu cần tính số hạt cụ thể từ số liệu ⇒ thuộc dạng \"Tìm số hạt còn thiếu\".",
+     "ly_thuyet": "##TC Nguyên tử trung hòa về điện\nTrong nguyên tử, số proton bằng số electron: $p = e$.\nProton mang điện $+1$, electron mang điện $-1$ nên điện tích hạt nhân và điện tích vỏ nguyên tử có giá trị bằng nhau, trái dấu; tổng điện tích của nguyên tử bằng $0$.\nNeutron không mang điện nên số neutron không ảnh hưởng đến điện tích của nguyên tử.\n\n##CY Chú ý\nChỉ số proton luôn bằng số electron; số neutron không nhất thiết bằng số proton hay số electron.\nNguyên tử trung hòa về điện không có nghĩa hạt nhân không mang điện: hạt nhân mang điện dương, vỏ mang điện âm.",
+     "vi_du": "##VD\nHạt nhân của một nguyên tử có điện tích $+a$. Tổng điện tích của các electron ở vỏ nguyên tử đó là\nA. $-2a$.\nB. $-a$.\nC. $0$.\nD. $+a$.\n\nBài giải:\nHạt nhân có điện tích $+a$ nên nguyên tử có $a$ proton.\nNguyên tử trung hòa về điện nên số electron bằng số proton, tức là $a$ electron.\nMỗi electron mang điện $-1$ nên tổng điện tích các electron là $-a$.\nChọn B.\n\n##VD\nPhát biểu nào sau đây sai?\nA. Nguyên tử trung hòa về điện.\nB. Trong nguyên tử, số proton bằng số electron.\nC. Neutron không mang điện.\nD. Trong nguyên tử, số neutron luôn bằng số electron.\n\nBài giải:\nPhát biểu A đúng vì proton ($+1$) và electron ($-1$) có số lượng bằng nhau nên điện tích triệt tiêu.\nPhát biểu B đúng, phát biểu C đúng.\nPhát biểu D sai: chỉ số proton luôn bằng số electron, còn số neutron có thể khác số electron.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00301",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Nguyên tố Hóa học",
+   "nhom": "KHÁI NIỆM NGUYÊN TỐ VÀ KÍ HIỆU HÓA HỌC",
+   "nhom_ly_thuyet": "1. Kiến thức cần nhớ\nKhái niệm nguyên tố hoá học\nNguyên tố hoá học là tập hợp những nguyên tử cùng loại, có cùng số proton trong hạt nhân.\nSố proton là số đặc trưng của một nguyên tố hoá học. Mỗi nguyên tố có một số proton riêng, không trùng với nguyên tố khác.\nCác nguyên tử của cùng một nguyên tố có cùng số proton nhưng có thể có số neutron khác nhau, do đó khối lượng có thể khác nhau.\nNguyên tử là một hạt cụ thể; nguyên tố hoá học là tập hợp các nguyên tử cùng loại.\nTên gọi và kí hiệu hoá học\nMỗi nguyên tố hoá học có một tên gọi và một kí hiệu hoá học riêng. Tên gọi dùng theo IUPAC.\nKí hiệu hoá học gồm một hoặc hai chữ cái. Chữ cái đầu viết in hoa, chữ cái thứ hai (nếu có) viết thường.\nTên và kí hiệu của 20 nguyên tố đầu\n$\\begin{array}{|l|l|l|l|l|l|}\n\\hline\n\\text{Số proton} & \\text{Tên} & \\text{Kí hiệu} & \\text{Số proton} & \\text{Tên} & \\text{Kí hiệu} \\\\\n\\hline\n1 & \\text{hydrogen} & \\mathrm{H} & 11 & \\text{sodium} & \\mathrm{Na} \\\\\n2 & \\text{helium} & \\mathrm{He} & 12 & \\text{magnesium} & \\mathrm{Mg} \\\\\n3 & \\text{lithium} & \\mathrm{Li} & 13 & \\text{aluminium} & \\mathrm{Al} \\\\\n4 & \\text{beryllium} & \\mathrm{Be} & 14 & \\text{silicon} & \\mathrm{Si} \\\\\n5 & \\text{boron} & \\mathrm{B} & 15 & \\text{phosphorus} & \\mathrm{P} \\\\\n6 & \\text{carbon} & \\mathrm{C} & 16 & \\text{sulfur} & \\mathrm{S} \\\\\n7 & \\text{nitrogen} & \\mathrm{N} & 17 & \\text{chlorine} & \\mathrm{Cl} \\\\\n8 & \\text{oxygen} & \\mathrm{O} & 18 & \\text{argon} & \\mathrm{Ar} \\\\\n9 & \\text{fluorine} & \\mathrm{F} & 19 & \\text{potassium} & \\mathrm{K} \\\\\n10 & \\text{neon} & \\mathrm{Ne} & 20 & \\text{calcium} & \\mathrm{Ca} \\\\\n\\hline\n\\end{array}$\n2. Các bước làm bài\nCâu hỏi về khái niệm nguyên tố\nBước 1. Xác định dữ kiện về số proton của các nguyên tử trong đề.\nBước 2. So sánh số proton: cùng số proton thì cùng nguyên tố; khác số proton thì khác nguyên tố.\nBước 3. Loại các phương án lấy số neutron hoặc khối lượng làm căn cứ.\n3. Lưu ý\nMột số kí hiệu không bắt đầu bằng chữ cái đầu của tên IUPAC: sodium có kí hiệu Na, potassium có kí hiệu K.\nViết sai chữ hoa, chữ thường làm thay đổi ý nghĩa: mỗi chữ cái in hoa là chữ cái đầu của một kí hiệu.\nPhân biệt các kí hiệu gần giống nhau: C, Ca, Cl; N, Ne, Na; S, Si; H, He; B, Be.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00667",
+     "thu_tu": 1,
+     "ten": "KHÁI NIỆM NGUYÊN TỐ HOÁ HỌC",
+     "mo_ta": "Đề hỏi định nghĩa nguyên tố hoá học, tiêu chí để hai nguyên tử thuộc cùng một nguyên tố, hoặc phân biệt \"nguyên tử\" với \"nguyên tố hoá học\"; thường là chọn phát biểu hoặc nhận xét đúng.\nKhông có số liệu cụ thể để ghép nhóm hay đếm, và không cần đối chiếu bảng tên – kí hiệu.\nLưu ý: đề cho số proton và neutron của vài nguyên tử cụ thể, yêu cầu chọn hoặc nhóm các nguyên tử cùng nguyên tố ⇒ thuộc dạng \"Nhận diện các nguyên tử cùng nguyên tố\".\nLưu ý: đề hỏi tên hoặc kí hiệu của nguyên tố ⇒ thuộc dạng \"Viết và đọc kí hiệu 20 nguyên tố đầu\" hoặc \"Gọi tên nguyên tố khi biết số proton\".",
+     "ly_thuyet": "##TC Khái niệm nguyên tố hoá học\nNguyên tố hoá học là tập hợp những nguyên tử cùng loại, có cùng số proton trong hạt nhân.\nSố proton là số đặc trưng của một nguyên tố; nguyên tử có số proton khác nhau thuộc nguyên tố khác nhau.\nCác nguyên tử của cùng một nguyên tố có cùng số proton (và cùng số electron) nhưng có thể khác số neutron nên có thể khác khối lượng.\nNguyên tử là một hạt cụ thể; nguyên tố hoá học là tập hợp các nguyên tử cùng loại.\n\n##CY Chú ý\nKhối lượng, số neutron hay số lớp electron không dùng để xác định nguyên tố.\nNguyên tử của một nguyên tố vẫn thuộc nguyên tố đó dù nằm trong chất nào.",
+     "vi_du": "##VD\nHai nguyên tử có cùng số proton nhưng khác số neutron. Nhận định nào sau đây đúng?\nA. Hai nguyên tử có số electron khác nhau\nB. Hai nguyên tử thuộc cùng một nguyên tố hoá học\nC. Hai nguyên tử có khối lượng bằng nhau\nD. Hai nguyên tử thuộc hai nguyên tố hoá học khác nhau\n\nBài giải:\nNguyên tố hoá học là tập hợp những nguyên tử có cùng số proton, nên hai nguyên tử này thuộc cùng một nguyên tố.\nHai nguyên tử có cùng số proton thì có cùng số electron (loại A).\nSố neutron khác nhau làm khối lượng khác nhau (loại C) nhưng không làm đổi nguyên tố (loại D).\nChọn B.\n\n##VD\nBạn Hoa cho rằng: \"Nguyên tử oxygen trong khí oxygen và nguyên tử oxygen trong nước thuộc hai nguyên tố khác nhau vì chúng nằm trong hai chất khác nhau.\" Nhận xét nào sau đây đúng?\nA. Ý kiến của Hoa đúng, vì nguyên tử trong hai chất có khối lượng khác nhau\nB. Ý kiến của Hoa sai, vì các nguyên tử này có cùng số proton nên thuộc cùng nguyên tố oxygen\nC. Ý kiến của Hoa đúng, vì mỗi chất được tạo nên từ một nguyên tố riêng\nD. Ý kiến của Hoa sai, vì nguyên tử oxygen trong hai chất có cùng số neutron\n\nBài giải:\nNguyên tố hoá học được xác định bởi số proton, không phụ thuộc nguyên tử nằm trong chất nào.\nNguyên tử oxygen trong khí oxygen và trong nước đều có 8 proton nên cùng thuộc nguyên tố oxygen.\nVậy ý kiến của Hoa sai vì lí do ở phương án B.\nChọn B."
+    },
+    {
+     "dang_id": "KDB00668",
+     "thu_tu": 2,
+     "ten": "VIẾT VÀ ĐỌC KÍ HIỆU 20 NGUYÊN TỐ ĐẦU",
+     "mo_ta": "Đề cho tên nguyên tố (IUPAC) và hỏi kí hiệu hoá học, hoặc cho kí hiệu và hỏi tên; thường gắn với tình huống đời sống (muối ăn, que diêm, pin, bóng bay ...). Chỉ dùng 20 nguyên tố đầu.\nGồm các biến thể: chọn kí hiệu đúng của một nguyên tố; chọn tên đúng từ kí hiệu; chọn cặp kí hiệu cho hai nguyên tố.\nLưu ý: đề cho số proton rồi hỏi tên hoặc kí hiệu ⇒ thuộc dạng \"Gọi tên nguyên tố khi biết số proton\".\nLưu ý: đề đưa cách viết kí hiệu để xét đúng/sai về viết hoa, viết thường ⇒ thuộc dạng \"Nhận ra kí hiệu viết sai\".",
+     "ly_thuyet": "##TC Tên và kí hiệu hoá học\nMỗi nguyên tố hoá học có một tên (theo IUPAC) và một kí hiệu hoá học riêng.\nKí hiệu gồm một hoặc hai chữ cái: chữ cái đầu in hoa, chữ cái thứ hai (nếu có) viết thường.\nMột số kí hiệu không bắt đầu bằng chữ cái đầu của tên IUPAC: sodium là Na, potassium là K.\nĐối chiếu bảng tên và kí hiệu của 20 nguyên tố đầu ở lý thuyết nhóm.\n\n##PP Cách làm\nXác định đề cho tên hay cho kí hiệu.\nĐối chiếu với bảng 20 nguyên tố đầu để tìm phần còn lại (tên hoặc kí hiệu).\nLoại các phương án sai: viết sai quy tắc hoa – thường, hoặc là kí hiệu của nguyên tố khác.\n\n##CY Chú ý\nCác kí hiệu dễ nhầm: C, Ca, Cl; N, Ne, Na; S, Si; H, He; B, Be.\nKhông đoán kí hiệu bằng chữ cái đầu của tên: Na (sodium) và K (potassium).",
+     "vi_du": "##VD\nĐầu que diêm có chứa nguyên tố sulfur. Kí hiệu hoá học của nguyên tố này là\nA. S\nB. Si\nC. Su\nD. Sn\n\nBài giải:\nKí hiệu hoá học của sulfur là $\\mathrm{S}$ (một chữ cái in hoa).\n$\\mathrm{Si}$ là kí hiệu của silicon; $\\mathrm{Su}$ không phải kí hiệu của nguyên tố nào trong 20 nguyên tố đầu; $\\mathrm{Sn}$ là kí hiệu của nguyên tố khác.\nChọn A.\n\n##VD\nMuối ăn được tạo nên từ hai nguyên tố sodium và chlorine. Kí hiệu hoá học của hai nguyên tố này lần lượt là\nA. So, Cl\nB. Na, C\nC. S, Ch\nD. Na, Cl\n\nBài giải:\nKí hiệu hoá học của sodium là $\\mathrm{Na}$ (không phải So), của chlorine là $\\mathrm{Cl}$ (C là kí hiệu của carbon).\nVậy hai kí hiệu lần lượt là Na, Cl.\nChọn D."
+    },
+    {
+     "dang_id": "KDB00669",
+     "thu_tu": 3,
+     "ten": "NHẬN RA KÍ HIỆU VIẾT SAI",
+     "mo_ta": "Đề đưa một cách viết kí hiệu (của một bạn, trên nhãn, hoặc một dãy kí hiệu) và hỏi có đúng quy tắc không, sửa lại thế nào, hoặc cách viết sai bị hiểu thành những nguyên tố nào.\nTrọng tâm là quy tắc viết hoa – thường (chữ đầu in hoa, chữ sau viết thường), không phải nhớ kí hiệu từ tên nguyên tố.\nLưu ý: đề chỉ hỏi kí hiệu hoặc tên của một nguyên tố, không có cách viết sai nào để xét ⇒ thuộc dạng \"Viết và đọc kí hiệu 20 nguyên tố đầu\".",
+     "ly_thuyet": "##TC Quy tắc viết kí hiệu\nKí hiệu hoá học gồm một hoặc hai chữ cái: chữ cái đầu viết in hoa, chữ cái thứ hai (nếu có) viết thường.\nMỗi chữ cái in hoa mở đầu một kí hiệu mới; cách viết hai chữ cái đều in hoa được đọc thành hai kí hiệu một chữ cái, tức hai nguyên tố khác.\n\n##PP Cách làm\nĐếm số chữ cái in hoa trong cách viết; mỗi chữ in hoa bắt đầu một kí hiệu.\nTách cách viết thành các kí hiệu theo quy tắc rồi đối chiếu tên nguyên tố.\nKết luận đúng hoặc sai; nếu sai thì viết lại kí hiệu theo đúng quy tắc.\n\n##CY Chú ý\nKhi sửa lỗi, giữ nguyên hai chữ cái và chỉ sửa chữ hoa – thường; không bỏ chữ cái thứ hai (He không phải H).\nCách viết sai có thể trùng với kí hiệu hợp lệ của nguyên tố khác hoặc của hai nguyên tố.",
+     "vi_du": "##VD\nBạn Lan viết kí hiệu của nguyên tố chlorine là CL. Nhận xét nào sau đây đúng?\nA. Lan viết đúng quy tắc\nB. Lan viết sai; kí hiệu đúng là $\\mathrm{cl}$\nC. Lan viết sai; kí hiệu đúng là $\\mathrm{C}$\nD. Lan viết sai; chữ cái thứ hai phải viết thường, kí hiệu đúng là $\\mathrm{Cl}$\n\nBài giải:\nKí hiệu gồm hai chữ cái thì chữ cái đầu in hoa, chữ cái thứ hai viết thường.\nCách viết CL có chữ cái thứ hai in hoa nên sai quy tắc.\nKí hiệu đúng của chlorine là $\\mathrm{Cl}$ ($\\mathrm{C}$ là kí hiệu của carbon).\nChọn D.\n\n##VD\nNickel là nguyên tố có kí hiệu $\\mathrm{Ni}$. Nếu viết nhầm thành $\\mathrm{NI}$ (cả hai chữ cái đều in hoa) thì người đọc có thể hiểu là\nA. một nguyên tố là neon\nB. một nguyên tố là nickel\nC. hai nguyên tố nitrogen và neon\nD. hai nguyên tố nitrogen và iodine\n\nBài giải:\nMỗi chữ cái in hoa là chữ cái đầu của một kí hiệu hoá học.\nCách viết $\\mathrm{NI}$ gồm hai chữ cái in hoa nên được hiểu là hai kí hiệu $\\mathrm{N}$ và $\\mathrm{I}$, tức hai nguyên tố nitrogen và iodine.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00303",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "nhom": "CẤU TẠO BẢNG TUẦN HOÀN: Ô, CHU KÌ, NHÓM",
+   "nhom_ly_thuyet": "Nguyên tắc sắp xếp\nCác nguyên tố được xếp theo chiều tăng dần số hiệu nguyên tử (bằng số proton trong hạt nhân).\nCác nguyên tố có cùng số lớp electron được xếp vào cùng một hàng; các nguyên tố có tính chất hoá học tương tự được xếp vào cùng một cột.\nÔ nguyên tố\nMỗi ô ứng với một nguyên tố hoá học, ghi: số hiệu nguyên tử, kí hiệu hoá học, tên nguyên tố, khối lượng nguyên tử (amu).\nSố thứ tự của ô bằng số hiệu nguyên tử.\nChu kì\nChu kì là dãy các nguyên tố xếp thành một hàng ngang. Bảng tuần hoàn có 7 chu kì.\nChu kì 1 có 2 nguyên tố (hydrogen, helium); chu kì 2 và chu kì 3 mỗi chu kì có 8 nguyên tố.\nNhóm\nNhóm là tập hợp các nguyên tố xếp thành một cột. Bảng tuần hoàn có 8 nhóm A (từ IA đến VIIIA) và các nhóm B.\nVùng kim loại, phi kim, khí hiếm\nKim loại nằm ở phía bên trái và khu vực giữa bảng; phi kim nằm ở phía bên phải; khí hiếm nằm ở nhóm VIIIA (cột cuối cùng).",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00672",
+     "thu_tu": 1,
+     "ten": "Thông tin trong một ô nguyên tố",
+     "mo_ta": "Đề cho hoặc hỏi các thông tin ghi trong một ô nguyên tố: số hiệu nguyên tử, kí hiệu hoá học, tên nguyên tố, khối lượng nguyên tử (amu).\nGồm các biến thể: đọc khối lượng nguyên tử hoặc số hiệu từ thông tin của ô; xác định số thứ tự của ô; hỏi thông tin nào không ghi trong ô; đơn vị của khối lượng nguyên tử; nhận xét cách đọc ô của một bạn.\nLưu ý: đề hỏi chu kì hoặc nhóm của nguyên tố ⇒ thuộc dạng \"Chu kì và nhóm của nguyên tố\".",
+     "ly_thuyet": "##TC Ô nguyên tố\nMỗi ô ứng với một nguyên tố, ghi: số hiệu nguyên tử, kí hiệu hoá học, tên nguyên tố và khối lượng nguyên tử (amu).\nSố hiệu nguyên tử bằng số proton trong hạt nhân và bằng số thứ tự của ô.\nKhối lượng nguyên tử có đơn vị amu. Ô nguyên tố không ghi số neutron.\n\n##PP Cách làm\nĐọc đủ các thông tin trong ô và xác định mỗi số ứng với đại lượng nào.\nSố hiệu nguyên tử cho biết số proton và số thứ tự ô; khối lượng nguyên tử có đơn vị amu.\nĐối chiếu với yêu cầu của đề rồi chọn đáp án.\n\n##CY Chú ý\nKhông nhầm khối lượng nguyên tử với số proton: số proton là số hiệu nguyên tử.\nSố thứ tự ô bằng số hiệu nguyên tử, không phải khối lượng nguyên tử.",
+     "vi_du": "##VD\nÔ nguyên tố của potassium ghi các thông tin: 19; K; potassium; 39. Khối lượng nguyên tử của potassium là\nA. 19 amu\nB. 20 amu\nC. 39 amu\nD. 58 amu\n\nBài giải:\nÔ nguyên tố ghi số hiệu nguyên tử, kí hiệu hoá học, tên nguyên tố và khối lượng nguyên tử.\nVới potassium, số 19 là số hiệu nguyên tử và số 39 là khối lượng nguyên tử.\nKhối lượng nguyên tử của potassium là 39 amu.\nChọn C.\n\n##VD\nBạn An đọc ô nguyên tố ghi \"6; C; carbon; 12\" và kết luận: \"Nguyên tử carbon có 12 proton.\" Nhận xét nào sau đây đúng?\nA. An kết luận sai; nguyên tử carbon có 18 proton\nB. An kết luận đúng; số lớn hơn trong ô là số proton\nC. An kết luận sai; số 12 là số neutron, nguyên tử carbon có 12 neutron\nD. An kết luận sai; số 12 là khối lượng nguyên tử, carbon có số hiệu nguyên tử là 6 nên có 6 proton\n\nBài giải:\nTrong ô nguyên tố này, số 6 là số hiệu nguyên tử và số 12 là khối lượng nguyên tử.\nSố hiệu nguyên tử bằng số proton nên nguyên tử carbon có 6 proton, không phải 12.\nKết luận của An sai vì đã nhầm khối lượng nguyên tử với số proton.\nChọn D."
+    },
+    {
+     "dang_id": "KDB00673",
+     "thu_tu": 2,
+     "ten": "CHU KÌ VÀ NHÓM CỦA NGUYÊN TỐ",
+     "mo_ta": "Đề hỏi khái niệm chu kì, nhóm; số nguyên tố trong một chu kì; số các nhóm A; nguyên tố thuộc chu kì nào; ô của nguyên tố nằm ở hàng ngang, cột nào; hoặc so sánh vị trí của hai nguyên tố khi biết chu kì và nhóm.\nDữ kiện là chu kì và nhóm (hoặc tên nguyên tố), không cho số lớp electron hay electron ngoài cùng.\nLưu ý: đề cho số lớp electron, số electron lớp ngoài cùng hoặc số proton để tìm chu kì và nhóm ⇒ thuộc dạng \"Từ cấu tạo suy ra vị trí\".\nLưu ý: đề hỏi nguyên tố là kim loại, phi kim hay khí hiếm ⇒ thuộc dạng \"Vùng kim loại, phi kim, khí hiếm\".",
+     "ly_thuyet": "##TC Chu kì và nhóm\nChu kì là dãy các nguyên tố xếp thành một hàng ngang; bảng tuần hoàn có 7 chu kì. Số thứ tự chu kì cho biết hàng ngang.\nChu kì 1 có 2 nguyên tố; chu kì 2 và chu kì 3 mỗi chu kì có 8 nguyên tố.\nNhóm là tập hợp các nguyên tố xếp thành một cột. Bảng tuần hoàn có 8 nhóm A (từ IA đến VIIIA) và các nhóm B.\nCác nguyên tố cùng nhóm nằm cùng một cột; chu kì có số thứ tự lớn hơn nằm ở hàng phía dưới.\n\n##PP Cách làm\nXác định chu kì (hàng ngang) và nhóm (cột) của từng nguyên tố trong đề.\nSo sánh: cùng chu kì thì cùng hàng, cùng nhóm thì cùng cột.\nNếu cần so sánh vị trí, hàng có số chu kì lớn hơn nằm ở dưới.\n\n##CY Chú ý\nChu kì là hàng ngang, nhóm là cột dọc; không đổi hai khái niệm cho nhau.\nChu kì 2 gồm các nguyên tố từ lithium đến neon (8 nguyên tố); chu kì 3 gồm các nguyên tố từ sodium đến argon.",
+     "vi_du": "##VD\nChu kì 2 của bảng tuần hoàn gồm bao nhiêu nguyên tố?\nA. 2\nB. 8\nC. 10\nD. 18\n\nBài giải:\nChu kì là một hàng ngang của bảng tuần hoàn.\nChu kì 2 gồm các nguyên tố từ lithium (ô số 3) đến neon (ô số 10), tức là 8 nguyên tố.\nChọn B.\n\n##VD\nNguyên tố X thuộc chu kì 2, nhóm $\\mathrm{IIA}$; nguyên tố Y thuộc chu kì 3, nhóm $\\mathrm{IIA}$. Nhận xét nào sau đây đúng về vị trí của X và Y?\nA. X và Y nằm cùng một hàng, Y ở ngay bên phải X\nB. X và Y nằm cùng một chu kì nhưng khác nhóm\nC. X và Y nằm cùng một cột, Y ở ngay dưới X\nD. X và Y nằm cùng một cột, Y ở ngay trên X\n\nBài giải:\nX và Y cùng thuộc nhóm $\\mathrm{IIA}$ nên nằm cùng một cột.\nY thuộc chu kì 3, lớn hơn chu kì 2 của X, nên Y ở hàng phía dưới, ngay dưới X.\nChọn C."
+    },
+    {
+     "dang_id": "KDB00674",
+     "thu_tu": 3,
+     "ten": "VÙNG KIM LOẠI, PHI KIM, KHÍ HIẾM",
+     "mo_ta": "Đề hỏi vùng của bảng tuần hoàn mà các nguyên tố kim loại, phi kim, khí hiếm chiếm; xác định một nguyên tố là kim loại, phi kim hay khí hiếm; đếm số khí hiếm trong 20 nguyên tố đầu; hoặc mô tả thứ tự các loại nguyên tố trong một chu kì.\nBiến thể thường gặp: chọn nguyên tố là kim loại (hoặc phi kim); trường hợp đặc biệt của hydrogen.\nLưu ý: đề cho số proton, vị trí hoặc cấu tạo của nguyên tố X, Y rồi hỏi loại ⇒ thuộc dạng \"Xếp loại nguyên tố theo vị trí\".",
+     "ly_thuyet": "##TC Phân bố kim loại, phi kim, khí hiếm\nKim loại nằm ở phía bên trái và khu vực giữa bảng; phi kim nằm ở phía bên phải; khí hiếm nằm ở nhóm VIIIA (cột ngoài cùng bên phải).\nTrong một chu kì, đi từ trái sang phải: kim loại, rồi phi kim, cuối chu kì là khí hiếm.\nTrong 20 nguyên tố đầu, các khí hiếm là helium, neon, argon; các kim loại gồm lithium, beryllium, sodium, magnesium, aluminium, potassium, calcium.\nHydrogen nằm ở nhóm IA nhưng là phi kim.\n\n##PP Cách làm\nXác định nguyên tố đề cho nằm ở vùng nào của bảng (hoặc thuộc nhóm nào).\nĐối chiếu: vùng bên trái và giữa là kim loại, vùng bên phải là phi kim, nhóm VIIIA là khí hiếm.\nLoại các phương án thuộc loại khác rồi chọn đáp án.\n\n##CY Chú ý\nHydrogen đứng đầu nhóm IA nhưng không phải kim loại.\nNhóm VIIIA là khí hiếm, phân biệt với phi kim ở các nhóm bên trái.",
+     "vi_du": "##VD\nNguyên tố nào sau đây là kim loại?\nA. Carbon\nB. Magnesium\nC. Neon\nD. Sulfur\n\nBài giải:\nMagnesium thuộc vùng kim loại của bảng tuần hoàn (chu kì 3, nhóm IIA).\nCarbon và sulfur là phi kim; neon là khí hiếm.\nChọn B.\n\n##VD\nTrong chu kì 3, đi từ trái sang phải, các nguyên tố lần lượt thuộc các loại\nA. kim loại, khí hiếm, phi kim\nB. khí hiếm, kim loại, phi kim\nC. phi kim, kim loại, khí hiếm\nD. kim loại, phi kim, khí hiếm\n\nBài giải:\nChu kì 3 gồm các nguyên tố từ sodium (nhóm IA) đến argon (nhóm VIIIA).\nChu kì mở đầu bằng các kim loại (sodium, magnesium, aluminium), tiếp theo là các phi kim.\nChu kì kết thúc bằng khí hiếm argon.\nVậy thứ tự là kim loại, phi kim, khí hiếm.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00297",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Cấu tạo nguyên tử",
+   "nhom": "Số hạt và khối lượng nguyên tử",
+   "nhom_ly_thuyet": "Hai quan hệ cần dùng:\n●\tNguyên tử trung hòa về điện: số proton = số electron (p = e).\n●\tKhối lượng nguyên tử xấp xỉ khối lượng hạt nhân: m ≈ p + n (amu), bỏ qua khối lượng electron.\nSuy ra:\n●\tBiết p thì biết e, và ngược lại.\n●\tn = m − p; p = m − n.\nVí dụ 1. Nguyên tử X có khối lượng xấp xỉ 30 amu và có 15 proton. Tính số neutron của X.\nHướng dẫn: n = m − p = 30 − 15 = 15.\nVí dụ 2. Hạt nhân nguyên tử Y có 19 proton và 19 neutron. Tính khối lượng nguyên tử Y.\nHướng dẫn: m ≈ p + n = 19 + 19 = 38 amu.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00661",
+     "thu_tu": 1,
+     "ten": "Tìm số hạt còn thiếu",
+     "mo_ta": "Đề cho vài số liệu (số proton, số neutron, số electron, điện tích hạt nhân, khối lượng xấp xỉ tính theo amu) và hỏi một số hạt chưa biết.\nGồm các biến thể: biết khối lượng và số proton, tìm số neutron; biết khối lượng và số neutron, tìm số proton hoặc số electron; biết điện tích hạt nhân (suy ra số proton), tìm số electron. Đề không cho tổng số hạt.\nLưu ý: đề cho tổng số hạt (proton, neutron và electron cộng lại) ⇒ thuộc dạng \"Biết tổng số hạt và số proton\".\nLưu ý: đề hỏi khối lượng nguyên tử ⇒ thuộc dạng \"Tính khối lượng nguyên tử theo amu\".",
+     "ly_thuyet": "##TC Quan hệ cần dùng\nNguyên tử trung hòa về điện: $p = e$.\nKhối lượng nguyên tử xấp xỉ khối lượng hạt nhân: $m \\approx p + n$ (amu), bỏ qua khối lượng electron.\nSuy ra: $n = m - p$; $p = m - n$.\nĐiện tích hạt nhân $+Z$ cho biết số proton $p = Z$.\n\n##PP Cách làm\nXác định số proton (từ đề, từ điện tích hạt nhân hoặc từ số electron).\nChọn công thức theo đại lượng cần tìm: tìm neutron dùng $n = m - p$, tìm proton dùng $p = m - n$.\nThay số và tính.\nNếu đề hỏi số electron thì lấy $e = p$.\n\n##CY Chú ý\nKhối lượng nguyên tử (amu) là tổng $p + n$, không phải số neutron.\nĐề hỏi số electron: tính xong số proton phải đổi sang $e = p$; phương án nhiễu thường là số neutron hoặc tổng $p + n$.",
+     "vi_du": "##VD\nNguyên tử có khối lượng xấp xỉ 30 amu và có 14 proton. Số neutron của nguyên tử này là\nA. 2.\nB. 14.\nC. 15.\nD. 16.\n\nBài giải:\nKhối lượng nguyên tử xấp xỉ bằng tổng số proton và neutron: $m \\approx p + n$.\nSố neutron: $n = m - p = 30 - 14 = 16$.\nChọn D.\n\n##VD\nNguyên tử có khối lượng xấp xỉ 34 amu và có 18 neutron. Số electron của nguyên tử này là\nA. 13.\nB. 14.\nC. 15.\nD. 16.\n\nBài giải:\nKhối lượng nguyên tử xấp xỉ bằng tổng số proton và neutron nên số proton: $p = m - n = 34 - 18 = 16$.\nNguyên tử trung hòa về điện nên số electron bằng số proton: $e = p = 16$.\nChọn D."
+    },
+    {
+     "dang_id": "KDB00662",
+     "thu_tu": 2,
+     "ten": "Tính khối lượng nguyên tử theo amu",
+     "mo_ta": "Đề cho số proton và số neutron (hoặc điện tích hạt nhân, hoặc số electron thay cho số proton) và hỏi khối lượng nguyên tử xấp xỉ bằng bao nhiêu amu.\nGồm các biến thể: cho trực tiếp proton và neutron; cho điện tích hạt nhân và neutron; cho số electron và neutron (phải đổi sang số proton).\nLưu ý: đề cho khối lượng và hỏi số proton, neutron hay electron ⇒ thuộc dạng \"Tìm số hạt còn thiếu\".",
+     "ly_thuyet": "##TC Khối lượng nguyên tử\nKhối lượng electron rất nhỏ nên bỏ qua; khối lượng nguyên tử xấp xỉ khối lượng hạt nhân: $m \\approx p + n$ (amu).\nSố proton xác định từ điện tích hạt nhân $+Z$ ($p = Z$) hoặc từ số electron ($p = e$).\n\n##PP Cách làm\nXác định số proton (nếu đề cho điện tích hạt nhân hoặc số electron thì đổi sang proton).\nXác định số neutron từ đề.\nTính $m \\approx p + n$.\nGhi đơn vị amu và chọn phương án.\n\n##CY Chú ý\nKhông cộng thêm số electron vào khối lượng nguyên tử.\nPhương án nhiễu thường là chỉ số proton, chỉ số neutron, hoặc cộng cả proton, neutron và electron.",
+     "vi_du": "##VD\nNguyên tử $\\mathrm{X}$ có 6 proton và 8 neutron. Khối lượng nguyên tử $\\mathrm{X}$ xấp xỉ bằng\nA. 6 amu.\nB. 8 amu.\nC. 13 amu.\nD. 14 amu.\n\nBài giải:\nKhối lượng nguyên tử xấp xỉ bằng tổng số proton và neutron.\n$m \\approx p + n = 6 + 8 = 14 \\ \\mathrm{amu}$.\nChọn D.\n\n##VD\nNguyên tử Y có 18 electron và 20 neutron. Khối lượng nguyên tử Y xấp xỉ bằng\nA. 38 amu.\nB. 39 amu.\nC. 40 amu.\nD. 56 amu.\n\nBài giải:\nNguyên tử trung hòa về điện nên số proton bằng số electron: $p = e = 18$.\nKhối lượng nguyên tử xấp xỉ bằng tổng số proton và neutron.\n$m \\approx p + n = 18 + 20 = 38 \\ \\mathrm{amu}$.\nChọn A."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00302",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Nguyên tố Hóa học",
+   "nhom": "XÁC ĐỊNH NGUYÊN TỐ TỪ SỐ HẠT",
+   "nhom_ly_thuyet": "1. Kiến thức cần nhớ\nSố proton là căn cứ duy nhất để xác định nguyên tử thuộc nguyên tố hoá học nào.\nCác nguyên tử có cùng số proton thuộc cùng một nguyên tố hoá học, dù số neutron có thể khác nhau.\nCác nguyên tử có số proton khác nhau thuộc các nguyên tố hoá học khác nhau, dù số neutron hoặc khối lượng có thể bằng nhau.\nSố proton, tên và kí hiệu của 20 nguyên tố đầu\n$$\\begin{array}{l|l|l|l|l|l}\n\\text{Số proton} & \\text{Tên} & \\text{Kí hiệu} & \\text{Số proton} & \\text{Tên} & \\text{Kí hiệu} \\\\\n\\hline\n1 & \\text{hydrogen} & \\mathrm{H} & 11 & \\text{sodium} & \\mathrm{Na} \\\\\n2 & \\text{helium} & \\mathrm{He} & 12 & \\text{magnesium} & \\mathrm{Mg} \\\\\n3 & \\text{lithium} & \\mathrm{Li} & 13 & \\text{aluminium} & \\mathrm{Al} \\\\\n4 & \\text{beryllium} & \\mathrm{Be} & 14 & \\text{silicon} & \\mathrm{Si} \\\\\n5 & \\text{boron} & \\mathrm{B} & 15 & \\text{phosphorus} & \\mathrm{P} \\\\\n6 & \\text{carbon} & \\mathrm{C} & 16 & \\text{sulfur} & \\mathrm{S} \\\\\n7 & \\text{nitrogen} & \\mathrm{N} & 17 & \\text{chlorine} & \\mathrm{Cl} \\\\\n8 & \\text{oxygen} & \\mathrm{O} & 18 & \\text{argon} & \\mathrm{Ar} \\\\\n9 & \\text{fluorine} & \\mathrm{F} & 19 & \\text{potassium} & \\mathrm{K} \\\\\n10 & \\text{neon} & \\mathrm{Ne} & 20 & \\text{calcium} & \\mathrm{Ca} \\\\\n\\end{array}$$\n2. Công thức\nTrong nguyên tử trung hoà về điện, số proton bằng số electron: $$p = e$$\nTrong đó: p là số proton, e là số electron.\n3. Các bước làm bài\nGợi tên nguyên tố khi biết số hạt\nBước 1. Xác định số proton: đề cho trực tiếp, hoặc suy ra từ số electron của nguyên tử trung hoà về điện.\nBước 2. Đối chiếu số proton với bảng nguyên tố để viết tên hoặc kí hiệu hoá học.\nNhận ra các nguyên tử cùng nguyên tố\nBước 1. Ghi số proton của từng nguyên tử.\nBước 2. Xếp các nguyên tử có cùng số proton vào một nhóm; mỗi nhóm là một nguyên tố.\nBước 3. Số nguyên tố bằng số giá trị khác nhau của số proton.\n4. Lưu ý\nKhông xếp nhóm theo số neutron hoặc theo khối lượng nguyên tử.\nSố neutron trong đề (nếu có) không dùng để xác định nguyên tố.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00670",
+     "thu_tu": 1,
+     "ten": "GỌI TÊN NGUYÊN TỐ KHI BIẾT SỐ PROTON",
+     "mo_ta": "Đề cho số proton của một nguyên tử (trực tiếp, hoặc qua số electron, điện tích hạt nhân) và hỏi tên hoặc kí hiệu hoá học của nguyên tố; có thể kèm số neutron (dữ kiện thừa) hoặc tình huống đời sống.\nCâu trả lời ngắn: viết tên IUPAC hoặc kí hiệu.\nLưu ý: đề cho hai hay nhiều nguyên tử và hỏi nguyên tử nào cùng nguyên tố, hoặc đếm số nguyên tố ⇒ thuộc dạng \"Nhận diện các nguyên tử cùng nguyên tố\".\nLưu ý: đề cho tên rồi hỏi kí hiệu (không có số proton) ⇒ thuộc dạng \"Viết và đọc kí hiệu 20 nguyên tố đầu\".",
+     "ly_thuyet": "##TC Xác định nguyên tố từ số proton\nSố proton là căn cứ duy nhất để xác định nguyên tử thuộc nguyên tố nào.\nNguyên tử trung hòa về điện: $p = e$, nên biết số electron là biết số proton.\nĐối chiếu số proton với bảng 20 nguyên tố đầu ở lý thuyết nhóm để biết tên và kí hiệu.\n\n##PP Cách làm\nXác định số proton (đề cho trực tiếp, hoặc suy ra từ số electron, điện tích hạt nhân).\nĐối chiếu số proton với bảng để tìm nguyên tố.\nViết tên (IUPAC) hoặc kí hiệu hoá học đúng theo yêu cầu, chú ý chữ hoa – thường.\n\n##CY Chú ý\nSố neutron và khối lượng không dùng để xác định nguyên tố.\nĐọc kĩ đề yêu cầu viết tên hay viết kí hiệu.",
+     "vi_du": "##VD\nKhí chiếm phần lớn thể tích không khí là khí của nguyên tố mà nguyên tử có 7 proton trong hạt nhân. Viết tên của nguyên tố này.\n\nBài giải:\nNguyên tố hoá học được xác định bởi số proton trong hạt nhân.\nNguyên tử có 7 proton thuộc nguyên tố nitrogen (kí hiệu $\\mathrm{N}$).\nĐáp án: nitrogen.\n\n##VD\nNguyên tử T có 3 proton và 4 neutron trong hạt nhân. Viết kí hiệu hoá học của nguyên tố T.\n\nBài giải:\nNguyên tố hoá học được xác định bởi số proton; số neutron không dùng để xác định nguyên tố.\nNguyên tử T có 3 proton nên thuộc nguyên tố lithium.\nĐáp án: $\\mathrm{Li}$."
+    },
+    {
+     "dang_id": "KDB00671",
+     "thu_tu": 2,
+     "ten": "NHẬN DIỆN CÁC NGUYÊN TỬ CÙNG NGUYÊN TỐ",
+     "mo_ta": "Đề cho số proton và số neutron của nhiều nguyên tử (X, Y, Z, T hoặc \"nguyên tử có ... proton và ... neutron\"); yêu cầu chọn nguyên tử cùng nguyên tố với một nguyên tử cho trước, ghép các nguyên tử cùng nguyên tố vào một nhóm, hoặc đếm số nguyên tố.\nSố neutron hoặc khối lượng trong đề chỉ là dữ kiện gây nhiễu.\nLưu ý: đề chỉ hỏi định nghĩa, không có số liệu cụ thể ⇒ thuộc dạng \"Khái niệm nguyên tố hoá học\".\nLưu ý: đề yêu cầu viết tên hoặc kí hiệu của nguyên tố ⇒ thuộc dạng \"Gọi tên nguyên tố khi biết số proton\".",
+     "ly_thuyet": "##TC Các nguyên tử cùng nguyên tố\nCác nguyên tử có cùng số proton thuộc cùng một nguyên tố hoá học, dù số neutron có thể khác nhau.\nCác nguyên tử có số proton khác nhau thuộc các nguyên tố khác nhau, dù số neutron hoặc khối lượng có thể bằng nhau.\nSố nguyên tố bằng số giá trị khác nhau của số proton.\n\n##PP Cách làm\nGhi số proton của từng nguyên tử.\nXếp các nguyên tử có cùng số proton vào một nhóm; mỗi nhóm là một nguyên tố.\nĐối chiếu yêu cầu: chọn nguyên tử cùng nhóm với nguyên tử cho trước, ghép nhóm, hoặc đếm số nhóm.\n\n##CY Chú ý\nKhông xếp nhóm theo số neutron hoặc theo khối lượng nguyên tử.\nHai nguyên tử có số neutron bằng nhau chưa chắc cùng nguyên tố.",
+     "vi_du": "##VD\nNguyên tử nào sau đây thuộc cùng nguyên tố hoá học với nguyên tử có 12 proton và 12 neutron?\nA. Nguyên tử có 11 proton và 12 neutron\nB. Nguyên tử có 12 proton và 13 neutron\nC. Nguyên tử có 10 proton và 12 neutron\nD. Nguyên tử có 13 proton và 14 neutron\n\nBài giải:\nCác nguyên tử thuộc cùng một nguyên tố hoá học có cùng số proton.\nNguyên tử cho trước có 12 proton (nguyên tố magnesium).\nTrong bốn phương án chỉ có nguyên tử ở B có 12 proton (số neutron khác vẫn cùng nguyên tố); các phương án còn lại có số proton là 11, 10, 13.\nChọn B.\n\n##VD\nTrong một mẫu khí, người ta xác định được bốn loại nguyên tử với số hạt trong hạt nhân như sau: nguyên tử X (8 proton, 8 neutron); nguyên tử Y (8 proton, 9 neutron); nguyên tử Z (8 proton, 10 neutron); nguyên tử T (7 proton, 8 neutron). Bốn loại nguyên tử trên thuộc bao nhiêu nguyên tố hoá học?\nA. 1\nB. 2\nC. 3\nD. 4\n\nBài giải:\nCác nguyên tử thuộc cùng một nguyên tố hoá học có cùng số proton.\nSố proton của X, Y, Z, T lần lượt là 8, 8, 8, 7.\nCó 2 giá trị số proton khác nhau là 8 và 7, nên bốn loại nguyên tử thuộc 2 nguyên tố (oxygen và nitrogen).\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00298",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Cấu tạo nguyên tử",
+   "nhom": "BÀI TOÁN TỔNG SỐ HẠT",
+   "nhom_ly_thuyet": "●\tTổng số hạt: S = p + e + n = 2p + n (vì e = p).\n●\tSố hạt mang điện: 2p. Số hạt không mang điện: n.\n●\tHiệu số hạt mang điện và không mang điện: D = 2p − n.\nBiết S và p: n = S − 2p.\nBiết S và D: cộng hai phương trình được 4p = S + D, suy ra p = (S + D) : 4; n = S − 2p.\nVí dụ 1. Nguyên tử X có tổng số hạt là 39 và có 13 proton. Tính số neutron.\nHướng dẫn: n = S − 2p = 39 − 26 = 13.\nVí dụ 2. Nguyên tử Y có tổng số hạt là 33; số hạt mang điện nhiều hơn số hạt không mang điện là 11. Tính số proton.\nHướng dẫn: 2p + n = 33 và 2p − n = 11. Cộng lại: 4p = 44, p = 11.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00663",
+     "thu_tu": 1,
+     "ten": "Biết tổng số hạt và số proton",
+     "mo_ta": "Đề cho tổng số hạt (proton, neutron và electron cộng lại) và biết số proton (hoặc số electron, hoặc điện tích hạt nhân); hỏi số neutron (số hạt không mang điện).\nBài một bước: tính $n = S - 2p$.\nLưu ý: đề cho thêm \"số hạt mang điện nhiều hơn số hạt không mang điện là ...\" mà không cho số proton ⇒ thuộc dạng \"Biết tổng số hạt và hiệu số hạt mang điện với không mang điện\".\nLưu ý: đề không cho tổng số hạt mà cho khối lượng nguyên tử ⇒ thuộc dạng \"Tìm số hạt còn thiếu\".",
+     "ly_thuyet": "##TC Tổng số hạt\nTổng số hạt: $S = p + e + n = 2p + n$ (vì $e = p$).\nSố hạt mang điện: $2p$; số hạt không mang điện: $n$.\nSuy ra: $n = S - 2p$.\n\n##PP Cách làm\nXác định số proton $p$ (đề cho trực tiếp; nếu cho số electron hoặc điện tích hạt nhân $+Z$ thì $p = e = Z$).\nViết $S = 2p + n$.\nTính $n = S - 2p$.\nĐối chiếu với câu hỏi (hạt không mang điện là neutron) rồi chọn đáp án.\n\n##CY Chú ý\nPhải nhân đôi số proton vì electron cũng là hạt, sai lầm hay gặp là lấy $S - p$.\nPhương án nhiễu thường là $S - p$, chính số proton hoặc $S + 2p$.",
+     "vi_du": "##VD\nNguyên tử X có tổng số hạt proton, neutron, electron là 32, trong đó có 10 proton. Số neutron của X là\nA. 10.\nB. 12.\nC. 22.\nD. 52.\n\nBài giải:\nNguyên tử trung hòa về điện nên $e = p = 10$.\nTổng số hạt: $S = 2p + n$.\n$n = S - 2p = 32 - 2 \\cdot 10 = 12$.\nChọn B.\n\n##VD\nHạt nhân nguyên tử có điện tích $+7$; tổng số hạt trong nguyên tử là 21. Số neutron của nguyên tử là\nA. 4.\nB. 5.\nC. 6.\nD. 7.\n\nBài giải:\nĐiện tích hạt nhân là $+7$ nên $p = 7$; nguyên tử trung hòa về điện nên $e = p = 7$.\nTổng số hạt: $S = 2p + n$.\n$n = S - 2p = 21 - 2 \\cdot 7 = 7$.\nChọn D."
+    },
+    {
+     "dang_id": "KDB00664",
+     "thu_tu": 2,
+     "ten": "Biết tổng số hạt và hiệu số hạt mang điện với không mang điện",
+     "mo_ta": "Đề cho tổng số hạt (proton, neutron, electron) và hiệu số giữa số hạt mang điện với số hạt không mang điện; hỏi số proton hoặc số neutron.\nBài lập hệ hai phương trình $2p + n = S$ và $2p - n = D$, rồi cộng hoặc trừ vế theo vế. Câu trả lời ngắn.\nLưu ý: đề cho sẵn số proton (không cho hiệu số hạt) ⇒ thuộc dạng \"Biết tổng số hạt và số proton\".",
+     "ly_thuyet": "##TC Hệ phương trình tổng và hiệu\nTổng số hạt: $S = 2p + n$.\nHiệu số hạt mang điện và số hạt không mang điện: $D = 2p - n$.\nCộng vế theo vế: $4p = S + D$, suy ra $p = (S + D) : 4$.\nTrừ vế theo vế: $2n = S - D$, suy ra $n = (S - D) : 2$.\n\n##PP Cách làm\nViết hai phương trình: $2p + n = S$ và $2p - n = D$ với $S$, $D$ lấy từ đề.\nNếu hỏi số proton thì cộng hai phương trình; nếu hỏi số neutron thì trừ hai phương trình.\nGiải ra $p$ hoặc $n$.\nKiểm tra lại bằng cách thay vào hai phương trình ban đầu.\n\n##CY Chú ý\n\"Số hạt mang điện\" là $2p$ (proton và electron), không phải $p$.\n$D$ là hiệu \"mang điện trừ không mang điện\", phải đúng thứ tự khi lập phương trình.",
+     "vi_du": "##VD\nNguyên tử có tổng số hạt là 26; số hạt mang điện nhiều hơn số hạt không mang điện là 6. Tính số neutron.\n\nBài giải:\nGọi $p$ là số proton, $n$ là số neutron; số electron bằng $p$.\nTổng số hạt: $2p + n = 26$ (1).\nSố hạt mang điện nhiều hơn số hạt không mang điện: $2p - n = 6$ (2).\nTrừ (1) cho (2) vế theo vế: $2n = 20$, suy ra $n = 10$.\nĐáp án: 10.\n\n##VD\nNguyên tử có tổng số hạt là 34; số hạt mang điện nhiều hơn số hạt không mang điện là 10. Tính số proton.\n\nBài giải:\nGọi $p$ là số proton, $n$ là số neutron; số electron bằng $p$.\nTổng số hạt: $2p + n = 34$ (1).\nSố hạt mang điện nhiều hơn số hạt không mang điện: $2p - n = 10$ (2).\nCộng (1) và (2) vế theo vế: $4p = 44$, suy ra $p = 11$.\nKiểm tra: $n = 34 - 2 \\cdot 11 = 12$ và $2p - n = 22 - 12 = 10$ (đúng).\nĐáp án: 11."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K07010101086",
+   "nhom_id": "KNB00296",
+   "loai": "trac_nghiem",
+   "de": "Trong nguyên tử, hạt mang điện tích âm là hạt nào và nằm ở đâu?",
+   "lua_chon": [
+    "Proton, nằm ở hạt nhân",
+    "Neutron, nằm ở hạt nhân",
+    "Electron, nằm ở vỏ nguyên tử",
+    "Electron, nằm ở hạt nhân"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Electron mang điện tích âm (−1) và chuyển động ở vỏ nguyên tử; hạt nhân chỉ chứa proton và neutron.\n\nVì sao các phương án khác sai:\n- A: Proton mang điện tích dương, không phải điện tích âm.\n- B: Neutron không mang điện; em đang nhầm neutron với electron.\n- D: Electron chuyển động ở vỏ nguyên tử, không nằm trong hạt nhân."
+  },
+  {
+   "ma_cau": "K07010101087",
+   "nhom_id": "KNB00296",
+   "loai": "trac_nghiem",
+   "de": "Hạt neutron có đặc điểm nào sau đây?",
+   "lua_chon": [
+    "Không mang điện, nằm ở hạt nhân",
+    "Mang điện tích âm, nằm ở vỏ nguyên tử",
+    "Mang điện tích dương, nằm ở hạt nhân",
+    "Không mang điện, nằm ở vỏ nguyên tử"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Neutron không mang điện và cùng với proton tạo nên hạt nhân nguyên tử.\n\nVì sao các phương án khác sai:\n- B: Đây là đặc điểm của electron; neutron không mang điện.\n- C: Đây là đặc điểm của proton; neutron không mang điện.\n- D: Neutron cùng proton tạo nên hạt nhân, không nằm ở vỏ nguyên tử."
+  },
+  {
+   "ma_cau": "K07010101088",
+   "nhom_id": "KNB00296",
+   "loai": "trac_nghiem",
+   "de": "Thành phần nào sau đây có mặt trong hạt nhân nguyên tử?",
+   "lua_chon": [
+    "Proton và neutron",
+    "Neutron và electron",
+    "Proton và electron",
+    "Proton, neutron và electron"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Hạt nhân nguyên tử chỉ gồm proton và neutron; electron luôn chuyển động ở lớp vỏ bao quanh hạt nhân.\n\nVì sao các phương án khác sai:\n- B: Nhầm cho rằng hạt nhân có electron; electron ở lớp vỏ, không ở hạt nhân.\n- C: Nhầm electron nằm trong hạt nhân cùng proton.\n- D: Nhầm electron cũng nằm trong hạt nhân cùng hai loại hạt kia."
+  },
+  {
+   "ma_cau": "K07010101089",
+   "nhom_id": "KNB00296",
+   "loai": "trac_nghiem",
+   "de": "Vì sao nguyên tử trung hòa về điện?",
+   "lua_chon": [
+    "Vì số proton bằng số neutron",
+    "Vì số proton bằng số electron",
+    "Vì số neutron bằng số electron",
+    "Vì hạt nhân không mang điện"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mỗi proton mang điện tích +1, mỗi electron mang điện tích −1; số proton bằng số electron nên tổng điện tích nguyên tử bằng 0.\n\nVì sao các phương án khác sai:\n- A: Neutron không mang điện nên không bù trừ được điện tích dương của proton.\n- C: Neutron không mang điện, không thể trung hòa điện tích âm của electron.\n- D: Hạt nhân mang điện tích dương vì chứa proton."
+  },
+  {
+   "ma_cau": "K07010101090",
+   "nhom_id": "KNB00296",
+   "loai": "trac_nghiem",
+   "de": "Nếu số proton trong hạt nhân của một nguyên tử thay đổi thì điều gì xảy ra?",
+   "lua_chon": [
+    "Chỉ thay đổi khối lượng nguyên tử, nguyên tố không đổi",
+    "Trở thành nguyên tử của nguyên tố khác",
+    "Chỉ thay đổi điện tích hạt nhân, nguyên tố không đổi",
+    "Trở thành ion của nguyên tố cũ"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số proton (số hiệu nguyên tử Z) quyết định nguyên tố hóa học; đổi số proton nghĩa là đổi nguyên tố.\n\nVì sao các phương án khác sai:\n- A: Khối lượng nguyên tử phụ thuộc cả proton và neutron, nhưng nguyên tố do proton quyết định.\n- C: Điện tích hạt nhân bằng đúng số proton; đổi điện tích nghĩa là đổi số proton, tức đổi nguyên tố.\n- D: Ion hình thành khi nguyên tử nhận/mất electron, giữ nguyên số proton; khác với đổi proton."
+  },
+  {
+   "ma_cau": "K07010101091",
+   "nhom_id": "KNB00296",
+   "loai": "trac_nghiem",
+   "de": "Quan sát mô hình nguyên tử sodium: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07H010101-02-001-de.png) . Nguyên tử này có bao nhiêu lớp electron?",
+   "lua_chon": [
+    "2 lớp",
+    "11 lớp",
+    "1 lớp",
+    "3 lớp"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mỗi vòng tròn quanh hạt nhân là một lớp electron; sodium có 3 vòng (2, 8, 1 electron) nên có 3 lớp.\n\nVì sao các phương án khác sai:\n- A: 2 là số electron ở lớp thứ nhất; hãy đếm số vòng tròn quanh hạt nhân.\n- B: 11 là tổng số electron, không phải số lớp electron.\n- C: 1 là số electron lớp ngoài cùng, không phải số lớp."
+  },
+  {
+   "ma_cau": "K07010101092",
+   "nhom_id": "KNB00296",
+   "loai": "trac_nghiem",
+   "de": "Quan sát mô hình nguyên tử nitrogen: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07H010101-02-002-de.png) . Lớp electron ngoài cùng có bao nhiêu electron?",
+   "lua_chon": [
+    "2 electron",
+    "5 electron",
+    "7 electron",
+    "8 electron"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Lớp ngoài cùng là vòng xa hạt nhân nhất; nitrogen có 2 electron ở lớp 1 và 5 electron ở lớp ngoài cùng.\n\nVì sao các phương án khác sai:\n- A: 2 là số electron ở lớp trong cùng; lớp ngoài cùng là vòng xa hạt nhân nhất.\n- C: 7 là tổng số electron của nitrogen, không phải số electron lớp ngoài cùng.\n- D: Lớp ngoài cùng không phải lúc nào cũng có 8 electron; hãy đếm các chấm trên vòng ngoài."
+  },
+  {
+   "ma_cau": "K07010101093",
+   "nhom_id": "KNB00296",
+   "loai": "trac_nghiem",
+   "de": "Quan sát mô hình nguyên tử: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07H010101-02-003-de.png) . Hạt nhân của nguyên tử này có bao nhiêu proton?",
+   "lua_chon": [
+    "13 proton",
+    "3 proton",
+    "8 proton",
+    "26 proton"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số ghi ở hạt nhân (+13) là điện tích hạt nhân; mỗi proton mang điện tích +1 nên hạt nhân có 13 proton.\n\nVì sao các phương án khác sai:\n- B: 3 là số lớp electron (cũng là số electron lớp ngoài cùng), không phải số proton.\n- C: 8 là số electron ở lớp thứ hai; số proton đọc từ điện tích hạt nhân.\n- D: Em đã cộng cả electron; số proton chỉ bằng điện tích hạt nhân là 13."
+  },
+  {
+   "ma_cau": "K07010101094",
+   "nhom_id": "KNB00296",
+   "loai": "trac_nghiem",
+   "de": "Quan sát mô hình ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07H010101-02-004-de.png) . Nguyên tử carbon có bao nhiêu electron ở lớp ngoài cùng?",
+   "lua_chon": [
+    "2",
+    "4",
+    "6",
+    "8"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Carbon có 6 electron xếp thành 2 lớp: lớp trong có 2 electron, lớp ngoài cùng có 4 electron.\n\nVì sao các phương án khác sai:\n- A: Nhầm lấy số electron ở lớp trong (lớp thứ nhất) làm đáp án.\n- C: Nhầm lấy tổng số electron của cả nguyên tử carbon làm số electron lớp ngoài.\n- D: Nhầm nghĩ carbon đã có đủ 8 electron lớp ngoài như khí hiếm."
+  },
+  {
+   "ma_cau": "K07010101095",
+   "nhom_id": "KNB00296",
+   "loai": "trac_nghiem",
+   "de": "Quan sát mô hình nguyên tử (hạt nhân ghi dấu ?): ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07H010101-02-005-de.png) . Hạt nhân nguyên tử này có bao nhiêu proton?",
+   "lua_chon": [
+    "2 proton",
+    "3 proton",
+    "12 proton",
+    "24 proton"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Nguyên tử trung hòa về điện nên số proton bằng số electron; đếm được 2 + 8 + 2 = 12 electron nên hạt nhân có 12 proton.\n\nVì sao các phương án khác sai:\n- A: 2 là số electron lớp ngoài cùng, không phải số proton.\n- B: 3 là số lớp electron, không phải số proton.\n- D: Em đã nhân đôi số electron; số proton bằng đúng số electron."
+  },
+  {
+   "ma_cau": "K07010101096",
+   "nhom_id": "KNB00296",
+   "loai": "trac_nghiem",
+   "de": "Quan sát mô hình nguyên tử (hạt nhân ghi dấu ?): ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07H010101-02-006-de.png) . Điện tích hạt nhân của nguyên tử này có độ lớn bằng bao nhiêu?",
+   "lua_chon": [
+    "8",
+    "16",
+    "2",
+    "15"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đếm electron ở các vòng: 2 + 8 + 5 = 15; nguyên tử trung hòa nên điện tích hạt nhân có độ lớn bằng 15 (tức +15).\n\nVì sao các phương án khác sai:\n- A: 8 chỉ là số electron ở lớp ngoài cùng, chưa cộng các lớp trong.\n- B: Đếm thừa 1 electron; tổng đúng là 2 + 8 + 5 = 15, không phải 16.\n- C: 2 chỉ là số electron ở lớp trong cùng, chưa cộng các lớp ngoài."
+  },
+  {
+   "ma_cau": "K07010201081",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Kí hiệu hóa học của nguyên tố chlorine được viết đúng quy tắc là",
+   "lua_chon": [
+    "CL",
+    "cl",
+    "Cl",
+    "cL"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Kí hiệu gồm 1–2 chữ cái: chữ đầu viết hoa, chữ thứ hai viết thường, nên chlorine viết là Cl.\n\nVì sao các phương án khác sai:\n- A: Chữ cái thứ hai phải viết thường, KHÔNG viết hoa cả hai chữ.\n- B: Chữ cái đầu của kí hiệu luôn phải viết hoa.\n- D: Viết ngược quy tắc: chữ đầu phải viết hoa, chữ thứ hai viết thường."
+  },
+  {
+   "ma_cau": "K07010201082",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Kí hiệu hóa học của nguyên tố magnesium được viết đúng quy tắc là",
+   "lua_chon": [
+    "Mg",
+    "MG",
+    "mG",
+    "mg"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Chữ cái đầu viết hoa, chữ cái thứ hai viết thường, nên magnesium viết là Mg.\n\nVì sao các phương án khác sai:\n- B: Chữ cái thứ hai phải viết thường, KHÔNG viết hoa cả hai chữ.\n- C: Viết ngược quy tắc: chữ đầu phải viết hoa, chữ thứ hai viết thường.\n- D: Chữ cái đầu của kí hiệu luôn phải viết hoa."
+  },
+  {
+   "ma_cau": "K07010201083",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Kí hiệu hóa học đúng của nguyên tố sodium là gì?",
+   "lua_chon": [
+    "Na",
+    "NA",
+    "N",
+    "Ne"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Theo quy tắc viết kí hiệu nguyên tố, chữ cái đầu viết hoa, chữ tiếp theo (nếu có) viết thường; sodium có kí hiệu Na.\n\nVì sao các phương án khác sai:\n- B: Sai vì chữ cái thứ hai của kí hiệu phải viết thường, không viết hoa cả hai chữ.\n- C: N là kí hiệu của nitrogen, không phải sodium.\n- D: Ne là kí hiệu của neon, không phải sodium."
+  },
+  {
+   "ma_cau": "K07010201084",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Kí hiệu hóa học đúng của nguyên tố helium là gì?",
+   "lua_chon": [
+    "HE",
+    "He",
+    "H",
+    "Hê"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Kí hiệu hóa học viết bằng chữ Latinh, chữ đầu viết hoa, chữ sau viết thường, không thêm dấu; helium có kí hiệu He.\n\nVì sao các phương án khác sai:\n- A: Sai vì chữ cái thứ hai phải viết thường, không viết hoa cả hai chữ.\n- C: H là kí hiệu của hydrogen, khác với helium.\n- D: Kí hiệu hóa học chỉ dùng chữ cái Latinh không dấu, không thêm dấu tiếng Việt."
+  },
+  {
+   "ma_cau": "K07010201085",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Có nguyên tử carbon chứa 6 neutron và nguyên tử carbon chứa 8 neutron. Hai nguyên tử này thuộc cùng nguyên tố carbon vì chúng có cùng",
+   "lua_chon": [
+    "số neutron",
+    "số proton",
+    "tổng số proton và neutron",
+    "khối lượng nguyên tử"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Nguyên tố hóa học là tập hợp những nguyên tử có cùng số proton trong hạt nhân; hai nguyên tử này đều có 6 proton.\n\nVì sao các phương án khác sai:\n- A: Đề cho số neutron khác nhau (6 và 8); số neutron KHÔNG quyết định nguyên tố.\n- C: Tổng số proton và neutron khác nhau (12 và 14) vì số neutron khác nhau.\n- D: Số neutron khác nhau nên khối lượng nguyên tử cũng khác nhau."
+  },
+  {
+   "ma_cau": "K07010201086",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Có nguyên tử chlorine chứa 18 neutron và nguyên tử chlorine chứa 20 neutron. Hai nguyên tử này thuộc cùng nguyên tố chlorine vì chúng có cùng",
+   "lua_chon": [
+    "khối lượng nguyên tử",
+    "tổng số proton và neutron",
+    "số neutron",
+    "số proton"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Nguyên tố hóa học là tập hợp những nguyên tử có cùng số proton trong hạt nhân; hai nguyên tử này đều có 17 proton.\n\nVì sao các phương án khác sai:\n- A: Số neutron khác nhau nên khối lượng nguyên tử cũng khác nhau.\n- B: Tổng số proton và neutron khác nhau (35 và 37) vì số neutron khác nhau.\n- C: Đề cho số neutron khác nhau (18 và 20); số neutron KHÔNG quyết định nguyên tố."
+  },
+  {
+   "ma_cau": "K07010201087",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Có nguyên tử oxygen chứa 8 neutron và nguyên tử oxygen chứa 10 neutron. Hai nguyên tử này thuộc cùng nguyên tố oxygen vì chúng có cùng",
+   "lua_chon": [
+    "số neutron",
+    "tổng số proton và neutron",
+    "số proton",
+    "khối lượng nguyên tử"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Nguyên tố hóa học là tập hợp những nguyên tử có cùng số proton trong hạt nhân; hai nguyên tử này đều có 8 proton.\n\nVì sao các phương án khác sai:\n- A: Đề cho số neutron khác nhau (8 và 10); số neutron KHÔNG quyết định nguyên tố.\n- B: Tổng số proton và neutron khác nhau (16 và 18) vì số neutron khác nhau.\n- D: Số neutron khác nhau nên khối lượng nguyên tử cũng khác nhau."
+  },
+  {
+   "ma_cau": "K07010201088",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Kí hiệu hóa học của nguyên tố potassium là",
+   "lua_chon": [
+    "K",
+    "P",
+    "Ca",
+    "Po"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Potassium có kí hiệu K (lấy từ tên Latin kalium), cần học thuộc.\n\nVì sao các phương án khác sai:\n- B: P là kí hiệu của phosphorus; KHÔNG lấy chữ cái đầu tên potassium.\n- C: Ca là kí hiệu của calcium, hay bị nhầm với potassium.\n- D: Po là kí hiệu của nguyên tố khác; ghép hai chữ đầu tên potassium là sai."
+  },
+  {
+   "ma_cau": "K07010201089",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Kí hiệu hóa học của nguyên tố sodium là",
+   "lua_chon": [
+    "S",
+    "N",
+    "So",
+    "Na"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Sodium có kí hiệu Na (lấy từ tên Latin natrium), cần học thuộc.\n\nVì sao các phương án khác sai:\n- A: S là kí hiệu của sulfur; KHÔNG lấy chữ cái đầu tên sodium.\n- B: N là kí hiệu của nitrogen, hay bị nhầm với Na.\n- C: So KHÔNG phải kí hiệu nguyên tố nào; ghép hai chữ đầu tên là sai."
+  },
+  {
+   "ma_cau": "K07010201090",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tố có kí hiệu hóa học Si là",
+   "lua_chon": [
+    "sulfur",
+    "silicon",
+    "silver",
+    "sodium"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Si là kí hiệu của silicon (Z = 14); sulfur chỉ có một chữ S.\n\nVì sao các phương án khác sai:\n- A: Sulfur có kí hiệu S, hay bị nhầm với Si.\n- C: Silver (bạc) có kí hiệu Ag.\n- D: Sodium có kí hiệu Na."
+  },
+  {
+   "ma_cau": "K07010201091",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Kí hiệu hóa học đúng của nguyên tố nitrogen là gì?",
+   "lua_chon": [
+    "Na",
+    "Ni",
+    "N",
+    "Ne"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Nitrogen có số hiệu nguyên tử Z = 7, kí hiệu là N; cần phân biệt với Na (sodium), Ni (nickel), Ne (neon).\n\nVì sao các phương án khác sai:\n- A: Na là kí hiệu của sodium, không phải nitrogen.\n- B: Ni là kí hiệu của nickel, không phải nitrogen.\n- D: Ne là kí hiệu của neon, không phải nitrogen."
+  },
+  {
+   "ma_cau": "K07010201092",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Kí hiệu hóa học đúng của nguyên tố calcium là gì?",
+   "lua_chon": [
+    "C",
+    "Cl",
+    "Co",
+    "Ca"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Calcium có kí hiệu hóa học là Ca, gồm hai chữ cái, khác với C (carbon), Cl (chlorine) hay Co (cobalt).\n\nVì sao các phương án khác sai:\n- A: C là kí hiệu của carbon, không phải calcium.\n- B: Cl là kí hiệu của chlorine, không phải calcium.\n- C: Co là kí hiệu của cobalt, không phải calcium."
+  },
+  {
+   "ma_cau": "K07010201093",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Vì sao kí hiệu hóa học của chlorine là Cl mà KHÔNG phải C?",
+   "lua_chon": [
+    "Vì chữ C đã dùng làm kí hiệu của carbon",
+    "Vì kí hiệu luôn gồm đúng hai chữ cái",
+    "Vì chlorine là chất khí nên cần hai chữ cái",
+    "Vì nguyên tử chlorine nặng hơn nguyên tử carbon"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nhiều nguyên tố có cùng chữ cái đầu; C đã là kí hiệu của carbon nên chlorine thêm chữ thứ hai viết thường thành Cl.\n\nVì sao các phương án khác sai:\n- B: Nhiều nguyên tố có kí hiệu một chữ cái như H, O, N.\n- C: Oxygen, nitrogen cũng là chất khí nhưng kí hiệu chỉ có một chữ cái.\n- D: Kí hiệu KHÔNG phụ thuộc khối lượng; nguyên tử sulfur nặng hơn carbon nhưng kí hiệu chỉ là S."
+  },
+  {
+   "ma_cau": "K07010201094",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Vì sao kí hiệu hóa học của calcium là Ca mà KHÔNG phải C?",
+   "lua_chon": [
+    "Vì kí hiệu luôn gồm đúng hai chữ cái",
+    "Vì calcium là chất rắn nên cần hai chữ cái",
+    "Vì nguyên tử calcium nặng hơn nguyên tử carbon",
+    "Vì chữ C đã dùng làm kí hiệu của carbon"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Nhiều nguyên tố có cùng chữ cái đầu; C đã là kí hiệu của carbon nên calcium thêm chữ thứ hai viết thường thành Ca.\n\nVì sao các phương án khác sai:\n- A: Nhiều nguyên tố có kí hiệu một chữ cái như H, O, N.\n- B: Carbon, sulfur cũng là chất rắn nhưng kí hiệu chỉ có một chữ cái.\n- C: Kí hiệu KHÔNG phụ thuộc khối lượng; nguyên tử sulfur nặng hơn carbon nhưng kí hiệu chỉ là S."
+  },
+  {
+   "ma_cau": "K07010201095",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Vì sao kí hiệu hóa học của neon là Ne mà KHÔNG phải N?",
+   "lua_chon": [
+    "Vì neon là chất khí nên cần hai chữ cái",
+    "Vì chữ N đã dùng làm kí hiệu của nitrogen",
+    "Vì kí hiệu luôn gồm đúng hai chữ cái",
+    "Vì nguyên tử neon nặng hơn nguyên tử nitrogen"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Nhiều nguyên tố có cùng chữ cái đầu; N đã là kí hiệu của nitrogen nên neon thêm chữ thứ hai viết thường thành Ne.\n\nVì sao các phương án khác sai:\n- A: Oxygen, nitrogen cũng là chất khí nhưng kí hiệu chỉ có một chữ cái.\n- C: Nhiều nguyên tố có kí hiệu một chữ cái như H, O, N.\n- D: Kí hiệu KHÔNG phụ thuộc khối lượng; nguyên tử sulfur nặng hơn neon nhưng kí hiệu chỉ là S."
+  },
+  {
+   "ma_cau": "K07010201096",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Kí hiệu hóa học của nguyên tố copper (đồng) là",
+   "lua_chon": [
+    "Co",
+    "Cu",
+    "CU",
+    "C"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Copper có kí hiệu Cu (lấy từ tên Latin cuprum), chữ thứ hai viết thường.\n\nVì sao các phương án khác sai:\n- A: Co là kí hiệu của cobalt; KHÔNG ghép hai chữ đầu tên copper.\n- C: Chữ cái thứ hai phải viết thường, KHÔNG viết CU.\n- D: C là kí hiệu của carbon."
+  },
+  {
+   "ma_cau": "K07010201097",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Kí hiệu hóa học của nguyên tố silver (bạc) là",
+   "lua_chon": [
+    "Au",
+    "Si",
+    "Ag",
+    "B"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Silver có kí hiệu Ag (lấy từ tên Latin argentum), cần học thuộc.\n\nVì sao các phương án khác sai:\n- A: Au là kí hiệu của gold (vàng), hay bị nhầm với silver.\n- B: Si là kí hiệu của silicon.\n- D: B là kí hiệu của boron; KHÔNG lấy chữ đầu tên tiếng Việt “bạc”."
+  },
+  {
+   "ma_cau": "K07010201098",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Kí hiệu hóa học của nguyên tố mercury (thủy ngân) là",
+   "lua_chon": [
+    "Hg",
+    "H",
+    "Me",
+    "Th"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mercury có kí hiệu Hg (lấy từ tên Latin hydrargyrum), cần học thuộc.\n\nVì sao các phương án khác sai:\n- B: H là kí hiệu của hydrogen, hay bị nhầm với Hg.\n- C: Me KHÔNG phải kí hiệu nguyên tố; KHÔNG ghép hai chữ đầu tên mercury.\n- D: Th là kí hiệu nguyên tố khác; KHÔNG lấy chữ đầu tên tiếng Việt “thủy ngân”."
+  },
+  {
+   "ma_cau": "K07010201099",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Kí hiệu hóa học đúng của nguyên tố lead (chì) là gì?",
+   "lua_chon": [
+    "Pb",
+    "P",
+    "Ld",
+    "Le"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Lead (chì) có kí hiệu hóa học là Pb (từ tên Latin plumbum); P là kí hiệu của phosphorus.\n\nVì sao các phương án khác sai:\n- B: P là kí hiệu của phosphorus, không phải lead.\n- C: Kí hiệu hóa học lấy gốc từ tên Latin (plumbum), không ghép chữ cái đầu tên tiếng Anh.\n- D: Kí hiệu hóa học của mỗi nguyên tố là riêng biệt, không suy ra bằng cách ghép giống nguyên tố khác."
+  },
+  {
+   "ma_cau": "K07010201100",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Kim loại nào dưới đây có kí hiệu hóa học KHÔNG bắt đầu bằng chữ cái đầu của tên IUPAC?",
+   "lua_chon": [
+    "iron",
+    "zinc",
+    "barium",
+    "copper"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Iron có kí hiệu Fe, lấy từ tên Latin ferrum, nên KHÔNG bắt đầu bằng chữ I.\n\nVì sao các phương án khác sai:\n- B: Zinc có kí hiệu Zn, bắt đầu bằng chữ Z của tên.\n- C: Barium có kí hiệu Ba, bắt đầu bằng chữ B của tên.\n- D: Copper có kí hiệu Cu, bắt đầu bằng chữ C của tên."
+  },
+  {
+   "ma_cau": "K07010201101",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Kim loại nào dưới đây có kí hiệu hóa học KHÔNG bắt đầu bằng chữ cái đầu của tên IUPAC?",
+   "lua_chon": [
+    "zinc",
+    "copper",
+    "barium",
+    "lead"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Lead có kí hiệu Pb, lấy từ tên Latin plumbum, nên KHÔNG bắt đầu bằng chữ L.\n\nVì sao các phương án khác sai:\n- A: Zinc có kí hiệu Zn, bắt đầu bằng chữ Z của tên.\n- B: Copper có kí hiệu Cu, bắt đầu bằng chữ C của tên.\n- C: Barium có kí hiệu Ba, bắt đầu bằng chữ B của tên."
+  },
+  {
+   "ma_cau": "K07010201102",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Kim loại nào dưới đây có kí hiệu hóa học KHÔNG bắt đầu bằng chữ cái đầu của tên IUPAC?",
+   "lua_chon": [
+    "barium",
+    "copper",
+    "mercury",
+    "zinc"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mercury có kí hiệu Hg, lấy từ tên Latin hydrargyrum, nên KHÔNG bắt đầu bằng chữ M.\n\nVì sao các phương án khác sai:\n- A: Barium có kí hiệu Ba, bắt đầu bằng chữ B của tên.\n- B: Copper có kí hiệu Cu, bắt đầu bằng chữ C của tên.\n- D: Zinc có kí hiệu Zn, bắt đầu bằng chữ Z của tên."
+  },
+  {
+   "ma_cau": "K07010201103",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Các nguyên tử của cùng một nguyên tố hóa học luôn giống nhau ở điểm nào?",
+   "lua_chon": [
+    "Số neutron trong hạt nhân",
+    "Khối lượng nguyên tử",
+    "Số proton trong hạt nhân",
+    "Tổng số hạt trong nguyên tử"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Nguyên tố hóa học được xác định bởi số proton trong hạt nhân; các đại lượng liên quan đến neutron có thể khác nhau giữa các đồng vị.\n\nVì sao các phương án khác sai:\n- A: Các đồng vị của cùng một nguyên tố có thể có số neutron khác nhau.\n- B: Khối lượng nguyên tử phụ thuộc số neutron nên có thể khác nhau giữa các đồng vị.\n- D: Tổng số hạt cũng thay đổi theo số neutron của từng đồng vị."
+  },
+  {
+   "ma_cau": "K07010201104",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Các nguyên tử của cùng một nguyên tố hóa học có thể khác nhau ở điểm nào?",
+   "lua_chon": [
+    "Số proton trong hạt nhân",
+    "Số electron ở nguyên tử trung hòa",
+    "Vị trí trong bảng tuần hoàn",
+    "Số neutron trong hạt nhân"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Các nguyên tử cùng nguyên tố có cùng số proton nhưng có thể khác số neutron (các đồng vị), ví dụ carbon có nguyên tử với 6 hoặc 8 neutron.\n\nVì sao các phương án khác sai:\n- A: Sai vì số proton luôn giống nhau — đó chính là định nghĩa của nguyên tố.\n- B: Sai vì nguyên tử trung hòa luôn có số electron bằng số proton, nên cũng giống nhau.\n- C: Sai vì vị trí trong bảng tuần hoàn được xác định theo số proton, nên luôn giống nhau."
+  },
+  {
+   "ma_cau": "K07010201105",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Trên nhãn một lọ hoá chất trong phòng thí nghiệm có ghi kí hiệu 'Co'. Đây là kí hiệu hoá học của nguyên tố nào?",
+   "lua_chon": [
+    "Carbon",
+    "Cobalt",
+    "Oxygen",
+    "Calcium"
+   ],
+   "dap_an": "B",
+   "loi_giai": "'Co' (C hoa, o thường) là kí hiệu hoá học của nguyên tố cobalt, khác với kí hiệu của carbon (C) hay oxygen (O).\n\nVì sao các phương án khác sai:\n- A: Carbon có kí hiệu chỉ một chữ cái C, không phải Co.\n- C: Oxygen có kí hiệu chỉ một chữ cái O, không phải Co.\n- D: Calcium có kí hiệu Ca, khác với Co."
+  },
+  {
+   "ma_cau": "K07010201106",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Trên nhãn một bình khí có ghi 'CO' (viết hoa cả hai chữ). Kí hiệu này biểu thị điều gì?",
+   "lua_chon": [
+    "Hợp chất carbon monoxide",
+    "Nguyên tố cobalt",
+    "Đơn chất carbon",
+    "Đơn chất oxygen"
+   ],
+   "dap_an": "A",
+   "loi_giai": "'CO' viết hoa cả hai chữ là công thức của hợp chất carbon monoxide (1 nguyên tử C và 1 nguyên tử O), không phải kí hiệu của một nguyên tố hay đơn chất.\n\nVì sao các phương án khác sai:\n- B: Kí hiệu của cobalt là 'Co' (chữ o thường), không viết hoa cả hai chữ.\n- C: Đơn chất carbon chỉ gồm nguyên tố carbon; 'CO' còn có thêm oxygen nên là hợp chất.\n- D: Đơn chất oxygen chỉ gồm nguyên tố oxygen; 'CO' còn có thêm carbon nên là hợp chất."
+  },
+  {
+   "ma_cau": "K07010201107",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Một bạn học sinh viết kí hiệu hoá học của nguyên tố calcium là 'CA' (viết hoa cả hai chữ). Bạn đó viết sai ở đâu?",
+   "lua_chon": [
+    "Sai vì kí hiệu của calcium chỉ có một chữ cái",
+    "Sai vì calcium không có kí hiệu hoá học riêng",
+    "Không sai, 'CA' vẫn được chấp nhận",
+    "Sai, chữ thứ hai phải viết thường, đúng là 'Ca'"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Kí hiệu hoá học hai chữ cái có chữ đầu viết hoa, chữ sau viết thường; calcium viết đúng là 'Ca', không phải 'CA'.\n\nVì sao các phương án khác sai:\n- A: Calcium có kí hiệu hai chữ cái (Ca), không phải một chữ.\n- B: Mọi nguyên tố đều có kí hiệu hoá học riêng, kể cả calcium (Ca).\n- C: 'CA' viết sai quy tắc viết hoa/viết thường nên không được chấp nhận là kí hiệu hoá học."
+  },
+  {
+   "ma_cau": "K07010201108",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Một bạn ghi kí hiệu của nguyên tố cobalt là 'co' (viết thường cả hai chữ). Cách viết này có đúng quy tắc không?",
+   "lua_chon": [
+    "Đúng, vì chữ cái không quan trọng viết hoa hay thường",
+    "Đúng, vì cobalt được viết thường trong mọi trường hợp",
+    "Sai, chữ đầu phải viết hoa, đúng là 'Co'",
+    "Sai, vì kí hiệu của cobalt chỉ có một chữ cái"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Chữ cái đầu của kí hiệu hoá học luôn viết hoa; cobalt viết đúng là 'Co', không phải 'co'.\n\nVì sao các phương án khác sai:\n- A: Quy tắc bắt buộc chữ đầu viết hoa, không được viết thường tuỳ ý.\n- B: Kí hiệu hoá học của cobalt vẫn phải viết hoa chữ đầu, không viết thường cả hai chữ.\n- D: Cobalt có kí hiệu hai chữ cái (Co), không phải một chữ."
+  },
+  {
+   "ma_cau": "K07010201109",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Một bạn học sinh viết kí hiệu hoá học của nguyên tố copper (đồng) là 'CU' (viết hoa cả hai chữ). Bạn đó viết sai ở đâu?",
+   "lua_chon": [
+    "Sai vì kí hiệu của copper chỉ có một chữ cái",
+    "Sai vì copper không có kí hiệu hoá học riêng",
+    "Không sai, 'CU' vẫn được chấp nhận",
+    "Sai, chữ thứ hai phải viết thường, đúng là 'Cu'"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Kí hiệu hoá học hai chữ cái có chữ đầu viết hoa, chữ sau viết thường; copper viết đúng là 'Cu', không phải 'CU'.\n\nVì sao các phương án khác sai:\n- A: Copper có kí hiệu hai chữ cái (Cu), không phải một chữ.\n- B: Mọi nguyên tố đều có kí hiệu hoá học riêng, kể cả copper (Cu).\n- C: 'CU' viết sai quy tắc viết hoa/viết thường nên không được chấp nhận là kí hiệu hoá học."
+  },
+  {
+   "ma_cau": "K07010201110",
+   "nhom_id": "KNB00301",
+   "loai": "trac_nghiem",
+   "de": "Một bạn ghi kí hiệu của nguyên tố silver (bạc) là 'ag' (viết thường cả hai chữ). Cách viết này có đúng quy tắc không?",
+   "lua_chon": [
+    "Đúng, vì chữ cái không quan trọng viết hoa hay thường",
+    "Đúng, vì silver được viết thường trong mọi trường hợp",
+    "Sai, chữ đầu phải viết hoa, đúng là 'Ag'",
+    "Sai, vì kí hiệu của silver chỉ có một chữ cái"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Chữ cái đầu của kí hiệu hoá học luôn viết hoa; silver viết đúng là 'Ag', không phải 'ag'.\n\nVì sao các phương án khác sai:\n- A: Quy tắc bắt buộc chữ đầu viết hoa, không được viết thường tuỳ ý.\n- B: Kí hiệu hoá học của silver vẫn phải viết hoa chữ đầu, không viết thường cả hai chữ.\n- D: Silver có kí hiệu hai chữ cái (Ag), không phải một chữ."
+  },
+  {
+   "ma_cau": "K07010301081",
+   "nhom_id": "KNB00303",
+   "loai": "trac_nghiem",
+   "de": "Một ô trong bảng tuần hoàn ghi: 12 · Mg · magnesium · 24. Số 24 trong ô cho biết thông tin nào?",
+   "lua_chon": [
+    "Số hiệu nguyên tử",
+    "Khối lượng nguyên tử",
+    "Số electron",
+    "Số neutron"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mỗi ô ghi số hiệu nguyên tử, kí hiệu, tên và khối lượng nguyên tử; số 24 là khối lượng nguyên tử của magnesium (amu).\n\nVì sao các phương án khác sai:\n- A: Số hiệu nguyên tử là số 12 ghi ở đầu ô.\n- C: Magnesium có 12 electron, bằng số hiệu nguyên tử.\n- D: Số neutron ≈ 24 − 12 = 12, không phải 24."
+  },
+  {
+   "ma_cau": "K07010301082",
+   "nhom_id": "KNB00303",
+   "loai": "trac_nghiem",
+   "de": "Một ô trong bảng tuần hoàn ghi: 11 · Na · sodium · 23. Nguyên tử sodium có bao nhiêu proton?",
+   "lua_chon": [
+    "23",
+    "12",
+    "34",
+    "11"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Số hiệu nguyên tử ghi ở đầu ô (11) bằng số proton trong hạt nhân.\n\nVì sao các phương án khác sai:\n- A: 23 là khối lượng nguyên tử, không phải số proton.\n- B: 12 là số neutron (23 − 11), không phải số proton.\n- C: Em đã cộng số hiệu nguyên tử với khối lượng nguyên tử."
+  },
+  {
+   "ma_cau": "K07010301083",
+   "nhom_id": "KNB00303",
+   "loai": "trac_nghiem",
+   "de": "Trong ô nguyên tố ghi 8 · O · oxygen · 16, số 16 cho biết điều gì?",
+   "lua_chon": [
+    "Khối lượng nguyên tử của oxygen",
+    "Số hiệu nguyên tử của oxygen",
+    "Số electron lớp ngoài cùng của oxygen",
+    "Số thứ tự nhóm của oxygen"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Trong ô nguyên tố, số ghi ở góc (8) là số hiệu nguyên tử; số 16 là khối lượng nguyên tử của oxygen.\n\nVì sao các phương án khác sai:\n- B: Số hiệu nguyên tử là số 8, ghi ở góc ô, không phải số 16.\n- C: Số electron lớp ngoài cùng không được thể hiện bằng con số này trong ô.\n- D: Số thứ tự nhóm không được thể hiện bằng con số 16 trong ô."
+  },
+  {
+   "ma_cau": "K07010301084",
+   "nhom_id": "KNB00303",
+   "loai": "trac_nghiem",
+   "de": "Một ô trong bảng tuần hoàn ghi: 13 · Al · aluminium · 27. Phát biểu nào sau đây đúng?",
+   "lua_chon": [
+    "Nguyên tử aluminium có 13 electron",
+    "Nguyên tử aluminium có 27 proton",
+    "Aluminium nằm ở ô số 27",
+    "Nguyên tử aluminium có 13 neutron"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số hiệu nguyên tử 13 = số thứ tự ô = số proton = số electron, nên nguyên tử aluminium có 13 electron.\n\nVì sao các phương án khác sai:\n- B: 27 là khối lượng nguyên tử; số proton bằng số hiệu nguyên tử là 13.\n- C: Số thứ tự ô bằng số hiệu nguyên tử là 13.\n- D: Số neutron ≈ 27 − 13 = 14, không bằng số hiệu nguyên tử."
+  },
+  {
+   "ma_cau": "K07010301085",
+   "nhom_id": "KNB00303",
+   "loai": "trac_nghiem",
+   "de": "Một ô trong bảng tuần hoàn ghi: 17 · Cl · chlorine · 35. Phát biểu nào sau đây đúng?",
+   "lua_chon": [
+    "Nguyên tử chlorine có 35 electron",
+    "Số hiệu nguyên tử của chlorine là 35",
+    "Nguyên tử chlorine có 18 neutron",
+    "Nguyên tử chlorine có 17 neutron"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Số hiệu nguyên tử 17 = số proton = số electron; số neutron = khối lượng nguyên tử − số proton = 35 − 17 = 18.\n\nVì sao các phương án khác sai:\n- A: 35 là khối lượng nguyên tử, không phải số electron (số electron = 17).\n- B: 17 mới là số hiệu nguyên tử; 35 là khối lượng nguyên tử.\n- D: 17 là số proton, không phải số neutron; số neutron = 35 − 17 = 18."
+  },
+  {
+   "ma_cau": "K07010301086",
+   "nhom_id": "KNB00303",
+   "loai": "trac_nghiem",
+   "de": "Các nguyên tố trong bảng tuần hoàn được sắp xếp theo chiều tăng dần của đại lượng nào?",
+   "lua_chon": [
+    "Khối lượng nguyên tử",
+    "Số neutron",
+    "Điện tích hạt nhân nguyên tử",
+    "Số electron lớp ngoài cùng"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Các nguyên tố được xếp theo chiều tăng dần điện tích hạt nhân, tức là tăng dần số hiệu nguyên tử.\n\nVì sao các phương án khác sai:\n- A: Bảng tuần hoàn hiện nay xếp theo điện tích hạt nhân, không theo khối lượng nguyên tử.\n- B: Số neutron không dùng để sắp xếp; các nguyên tố xếp theo số proton.\n- D: Số electron lớp ngoài cùng dùng để xếp nhóm, không quyết định thứ tự ô."
+  },
+  {
+   "ma_cau": "K07010301087",
+   "nhom_id": "KNB00303",
+   "loai": "trac_nghiem",
+   "de": "Chu kì trong bảng tuần hoàn là gì?",
+   "lua_chon": [
+    "Một cột dọc gồm các nguyên tố có cùng số lớp electron",
+    "Một hàng ngang gồm các nguyên tố có cùng số electron lớp ngoài cùng",
+    "Một hàng ngang gồm các nguyên tố có cùng số lớp electron",
+    "Một cột dọc gồm các nguyên tố có cùng khối lượng nguyên tử"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Chu kì là hàng ngang, gồm các nguyên tố mà nguyên tử có cùng số lớp electron.\n\nVì sao các phương án khác sai:\n- A: Chu kì là hàng ngang; cột dọc là nhóm.\n- B: Cùng số electron lớp ngoài cùng là đặc điểm của nhóm, không phải chu kì.\n- D: Chu kì là hàng ngang, và các nguyên tố trong đó có khối lượng nguyên tử khác nhau."
+  },
+  {
+   "ma_cau": "K07010301088",
+   "nhom_id": "KNB00303",
+   "loai": "trac_nghiem",
+   "de": "Nhóm trong bảng tuần hoàn là gì?",
+   "lua_chon": [
+    "Một cột gồm các nguyên tố có tính chất hóa học tương tự nhau",
+    "Một hàng gồm các nguyên tố có tính chất hóa học tương tự nhau",
+    "Một cột gồm các nguyên tố có cùng số lớp electron",
+    "Một hàng gồm các nguyên tố có cùng khối lượng nguyên tử"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nhóm là cột dọc, gồm các nguyên tố có tính chất hóa học tương tự nhau (nhóm A: cùng số electron lớp ngoài cùng).\n\nVì sao các phương án khác sai:\n- B: Nhóm là cột dọc; hàng ngang là chu kì.\n- C: Cùng số lớp electron là đặc điểm của chu kì, không phải nhóm.\n- D: Nhóm là cột dọc, và các nguyên tố trong nhóm có khối lượng nguyên tử khác nhau."
+  },
+  {
+   "ma_cau": "K07010301089",
+   "nhom_id": "KNB00303",
+   "loai": "trac_nghiem",
+   "de": "Các nguyên tố trong cùng một chu kì của bảng tuần hoàn giống nhau ở điểm nào?",
+   "lua_chon": [
+    "Số electron lớp ngoài cùng",
+    "Số lớp electron",
+    "Số proton trong hạt nhân",
+    "Tính chất hóa học"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số thứ tự chu kì bằng số lớp electron; các nguyên tố cùng chu kì có cùng số lớp electron nhưng số electron lớp ngoài cùng tăng dần.\n\nVì sao các phương án khác sai:\n- A: Số electron lớp ngoài cùng giống nhau là đặc điểm của các nguyên tố CÙNG NHÓM, không phải cùng chu kì.\n- C: Mỗi nguyên tố có số proton (số hiệu nguyên tử) riêng, khác nhau.\n- D: Tính chất hóa học tương tự nhau là đặc điểm của các nguyên tố cùng nhóm."
+  },
+  {
+   "ma_cau": "K07010301090",
+   "nhom_id": "KNB00303",
+   "loai": "trac_nghiem",
+   "de": "Argon có khối lượng nguyên tử 40 amu, potassium có khối lượng nguyên tử 39 amu. Vì sao argon vẫn đứng trước potassium trong bảng tuần hoàn?",
+   "lua_chon": [
+    "Vì argon có khối lượng nguyên tử lớn hơn potassium",
+    "Vì argon là khí hiếm nên luôn đứng đầu",
+    "Vì argon có ít neutron hơn potassium",
+    "Vì argon có số hiệu nguyên tử nhỏ hơn potassium"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Các nguyên tố xếp theo chiều tăng điện tích hạt nhân: argon Z = 18 đứng trước potassium Z = 19, dù khối lượng nguyên tử lớn hơn.\n\nVì sao các phương án khác sai:\n- A: Bảng không xếp theo khối lượng nguyên tử; nếu vậy argon phải đứng sau potassium.\n- B: Khí hiếm đứng cuối mỗi chu kì, không đứng đầu.\n- C: Argon có 22 neutron, nhiều hơn potassium (20); thứ tự ô không xếp theo số neutron."
+  },
+  {
+   "ma_cau": "K07010301091",
+   "nhom_id": "KNB00303",
+   "loai": "trac_nghiem",
+   "de": "Hai nguyên tố A và B có cùng số electron lớp ngoài cùng nhưng khác số lớp electron. Hai nguyên tố này có quan hệ gì trong bảng tuần hoàn?",
+   "lua_chon": [
+    "Cùng chu kì, khác nhóm",
+    "Cùng nhóm, khác chu kì",
+    "Cùng cả chu kì và nhóm",
+    "Khác cả chu kì và nhóm"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số lớp electron quyết định chu kì, số electron lớp ngoài cùng quyết định nhóm; khác lớp nhưng cùng electron ngoài cùng nghĩa là khác chu kì, cùng nhóm.\n\nVì sao các phương án khác sai:\n- A: Cùng chu kì nghĩa là cùng số lớp electron, nhưng đề cho khác số lớp electron.\n- C: Khác số lớp electron thì không thể cùng chu kì.\n- D: Cùng số electron lớp ngoài cùng nghĩa là cùng nhóm (nhóm A)."
+  },
+  {
+   "ma_cau": "K07010301092",
+   "nhom_id": "KNB00303",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tố nào sau đây là khí hiếm?",
+   "lua_chon": [
+    "Nitrogen (N)",
+    "Neon (Ne)",
+    "Hydrogen (H)",
+    "Sodium (Na)"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khí hiếm nằm ở nhóm VIIIA, gồm helium, neon, argon…; neon là khí hiếm.\n\nVì sao các phương án khác sai:\n- A: Nitrogen là chất khí nhưng là phi kim, nằm ở nhóm VA.\n- C: Hydrogen là chất khí nhưng là phi kim, nằm ở nhóm IA.\n- D: Sodium là kim loại ở nhóm IA."
+  },
+  {
+   "ma_cau": "K07010301093",
+   "nhom_id": "KNB00303",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tố nào sau đây là kim loại?",
+   "lua_chon": [
+    "Magnesium (Mg)",
+    "Hydrogen (H)",
+    "Sulfur (S)",
+    "Chlorine (Cl)"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Magnesium ở nhóm IIA, là kim loại; hydrogen, sulfur, chlorine đều là phi kim.\n\nVì sao các phương án khác sai:\n- B: Hydrogen nằm ở nhóm IA nhưng là phi kim.\n- C: Sulfur là phi kim ở nhóm VIA.\n- D: Chlorine là phi kim ở nhóm VIIA."
+  },
+  {
+   "ma_cau": "K07010301094",
+   "nhom_id": "KNB00303",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tố nào sau đây là phi kim?",
+   "lua_chon": [
+    "Potassium (K)",
+    "Argon (Ar)",
+    "Aluminium (Al)",
+    "Phosphorus (P)"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Phosphorus ở nhóm VA, là phi kim.\n\nVì sao các phương án khác sai:\n- A: Potassium (K) là kim loại nhóm IA; đừng nhầm với phosphorus (P).\n- B: Argon là khí hiếm, được xếp riêng, không gọi là phi kim.\n- C: Aluminium là kim loại ở nhóm IIIA."
+  },
+  {
+   "ma_cau": "K07010301095",
+   "nhom_id": "KNB00303",
+   "loai": "trac_nghiem",
+   "de": "Hydrogen thuộc nhóm IA nhưng được xếp vào loại nguyên tố nào?",
+   "lua_chon": [
+    "Kim loại kiềm",
+    "Kim loại chuyển tiếp",
+    "Phi kim",
+    "Khí hiếm"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Hydrogen nằm ở nhóm IA nhưng là một ngoại lệ: nó là phi kim, khác với các kim loại kiềm còn lại trong nhóm.\n\nVì sao các phương án khác sai:\n- A: Hydrogen cùng nhóm IA với kim loại kiềm nhưng có tính chất của phi kim, không phải kim loại kiềm.\n- B: Kim loại chuyển tiếp nằm ở nhóm B, không liên quan đến vị trí của hydrogen.\n- D: Khí hiếm nằm ở nhóm VIIIA, khác với vị trí nhóm IA của hydrogen."
+  },
+  {
+   "ma_cau": "K07010301096",
+   "nhom_id": "KNB00303",
+   "loai": "trac_nghiem",
+   "de": "Trong một chu kì (trừ chu kì 1), đi từ trái sang phải, loại nguyên tố thường thay đổi theo thứ tự nào?",
+   "lua_chon": [
+    "Phi kim → kim loại → khí hiếm",
+    "Kim loại → phi kim → khí hiếm",
+    "Khí hiếm → kim loại → phi kim",
+    "Kim loại → khí hiếm → phi kim"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mỗi chu kì mở đầu bằng kim loại kiềm, tiếp đến các phi kim (cuối là halogen) và kết thúc bằng khí hiếm.\n\nVì sao các phương án khác sai:\n- A: Đầu chu kì là kim loại kiềm (nhóm IA), không phải phi kim.\n- C: Khí hiếm nằm ở cuối chu kì (nhóm VIIIA).\n- D: Khí hiếm luôn đứng cuối chu kì, sau các phi kim."
+  },
+  {
+   "ma_cau": "K07010301097",
+   "nhom_id": "KNB00303",
+   "loai": "trac_nghiem",
+   "de": "Trong các cặp nguyên tố sau, cặp nào gồm một kim loại và một khí hiếm?",
+   "lua_chon": [
+    "Sodium và neon",
+    "Oxygen và chlorine",
+    "Iron và copper",
+    "Helium và argon"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Sodium là kim loại (nhóm IA), neon là khí hiếm (nhóm VIIIA); đây là cặp có đủ một kim loại và một khí hiếm.\n\nVì sao các phương án khác sai:\n- B: Oxygen và chlorine đều là phi kim, không có khí hiếm.\n- C: Iron và copper đều là kim loại, không có khí hiếm.\n- D: Helium và argon đều là khí hiếm, không có kim loại."
+  },
+  {
+   "ma_cau": "K07010102075",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "Khối lượng của nguyên tử tập trung chủ yếu ở đâu?",
+   "lua_chon": [
+    "Ở lớp vỏ electron",
+    "Ở lớp electron ngoài cùng",
+    "Phân bố đều khắp nguyên tử",
+    "Ở hạt nhân"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Proton và neutron (mỗi hạt khoảng 1 amu) đều nằm ở hạt nhân, còn electron rất nhẹ, nên khối lượng nguyên tử tập trung ở hạt nhân.\n\nVì sao các phương án khác sai:\n- A: Electron có khối lượng rất nhỏ nên lớp vỏ gần như không góp vào khối lượng nguyên tử.\n- B: Electron lớp ngoài cùng cũng có khối lượng rất nhỏ, không đáng kể.\n- C: Phần lớn nguyên tử là khoảng trống; khối lượng dồn vào hạt nhân rất nhỏ ở tâm."
+  },
+  {
+   "ma_cau": "K07010102076",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "So sánh khối lượng của electron với proton và neutron, phát biểu nào đúng?",
+   "lua_chon": [
+    "Electron nặng hơn proton và neutron",
+    "Ba loại hạt có khối lượng bằng nhau",
+    "Electron nhẹ hơn proton và neutron rất nhiều",
+    "Electron nặng bằng neutron nhưng nhẹ hơn proton"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Electron nặng khoảng 0,00055 amu, còn proton và neutron mỗi hạt xấp xỉ 1 amu — electron nhẹ hơn rất nhiều.\n\nVì sao các phương án khác sai:\n- A: Nhầm cho rằng hạt mang điện âm thì nặng hơn các hạt khác.\n- B: Nhầm nghĩ mọi hạt trong nguyên tử có khối lượng ngang nhau.\n- D: Nhầm chỉ so sánh electron với một trong hai loại hạt kia."
+  },
+  {
+   "ma_cau": "K07010102077",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "Khối lượng của một proton và của một neutron lần lượt xấp xỉ bằng bao nhiêu?",
+   "lua_chon": [
+    "1 amu và 1 amu",
+    "1 amu và 0 amu",
+    "0,00055 amu và 1 amu",
+    "1 amu và 0,00055 amu"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Proton và neutron có khối lượng gần bằng nhau, mỗi hạt khoảng 1 amu.\n\nVì sao các phương án khác sai:\n- B: Neutron không mang điện nhưng vẫn có khối lượng khoảng 1 amu.\n- C: 0,00055 amu là khối lượng electron, không phải proton.\n- D: Em nhầm neutron với electron; neutron nặng khoảng 1 amu."
+  },
+  {
+   "ma_cau": "K07010102078",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "Phần lớn khối lượng của nguyên tử tập trung ở đâu?",
+   "lua_chon": [
+    "Lớp vỏ, nơi electron chuyển động",
+    "Chia đều cho hạt nhân và lớp vỏ",
+    "Chỉ ở các proton trong hạt nhân",
+    "Hạt nhân, gồm proton và neutron"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Electron rất nhẹ (khoảng 0,00055 amu) so với proton, neutron (khoảng 1 amu); khối lượng nguyên tử tập trung ở hạt nhân gồm cả hai loại hạt này.\n\nVì sao các phương án khác sai:\n- A: Nhầm vì nghĩ electron chuyển động nhanh nên đóng góp nhiều khối lượng.\n- B: Nhầm cho rằng khối lượng phân bố đều cho hai phần của nguyên tử.\n- C: Nhầm bỏ sót neutron, chỉ tính proton trong hạt nhân."
+  },
+  {
+   "ma_cau": "K07010102079",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "Vì sao có thể coi khối lượng nguyên tử xấp xỉ bằng khối lượng hạt nhân?",
+   "lua_chon": [
+    "Vì hạt nhân chiếm phần lớn thể tích nguyên tử",
+    "Vì electron không mang điện",
+    "Vì khối lượng electron rất nhỏ so với proton và neutron",
+    "Vì số electron luôn bằng số neutron"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Electron chỉ nặng khoảng 0,00055 amu, rất nhỏ so với proton và neutron (khoảng 1 amu) nên bỏ qua được; vì vậy khối lượng nguyên tử ≈ khối lượng hạt nhân.\n\nVì sao các phương án khác sai:\n- A: Hạt nhân rất nhỏ so với nguyên tử; lý do nằm ở khối lượng các hạt, không ở thể tích.\n- B: Electron mang điện tích âm; điện tích không quyết định khối lượng.\n- D: Số electron bằng số proton (không phải số neutron), và điều đó cũng không làm electron nặng lên."
+  },
+  {
+   "ma_cau": "K07010102080",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "Vì electron có khối lượng không đáng kể, khối lượng nguyên tử được tính gần đúng bằng tổng của hai loại hạt nào?",
+   "lua_chon": [
+    "Neutron và electron",
+    "Proton và electron",
+    "Proton và neutron",
+    "Proton, neutron và electron"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Proton và neutron có khối lượng xấp xỉ 1 amu mỗi hạt; electron rất nhẹ nên bỏ qua khi tính khối lượng nguyên tử.\n\nVì sao các phương án khác sai:\n- A: Thiếu proton, hạt cũng đóng góp khối lượng ngang neutron.\n- B: Electron có khối lượng không đáng kể nên không được tính vào khối lượng nguyên tử.\n- D: Đã cộng thêm electron dù khối lượng electron không đáng kể so với proton, neutron."
+  },
+  {
+   "ma_cau": "K07010102081",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "Trong mọi nguyên tử, số proton luôn bằng đại lượng nào sau đây?",
+   "lua_chon": [
+    "Số neutron",
+    "Số electron",
+    "Khối lượng nguyên tử",
+    "Số lớp electron"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Nguyên tử trung hòa về điện nên số proton luôn bằng số electron.\n\nVì sao các phương án khác sai:\n- A: Số neutron có thể khác số proton, ví dụ sodium có 11 proton nhưng 12 neutron.\n- C: Khối lượng nguyên tử xấp xỉ bằng số proton cộng số neutron, lớn hơn số proton.\n- D: Số lớp electron chỉ từ 1 đến 4 với Z ≤ 20, không bằng số proton."
+  },
+  {
+   "ma_cau": "K07010102082",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử potassium có số hiệu nguyên tử (Z) bằng 19. Số electron trong nguyên tử potassium là bao nhiêu?",
+   "lua_chon": [
+    "39",
+    "19",
+    "20",
+    "1"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Nguyên tử trung hòa về điện nên số electron = số proton = Z = 19.\n\nVì sao các phương án khác sai:\n- A: 39 là khối lượng nguyên tử (proton + neutron), không phải Z.\n- C: 20 là số neutron (39 − 19), không phải số electron.\n- D: 1 là số electron lớp ngoài cùng (nhóm IA), không phải tổng số electron."
+  },
+  {
+   "ma_cau": "K07010102083",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử sodium có 11 proton và khối lượng nguyên tử 23 amu. Nguyên tử sodium có bao nhiêu electron?",
+   "lua_chon": [
+    "23",
+    "12",
+    "34",
+    "11"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Nguyên tử trung hòa về điện nên số electron = số proton = 11.\n\nVì sao các phương án khác sai:\n- A: 23 là khối lượng nguyên tử, không phải số electron.\n- B: 12 là số neutron (23 − 11); số electron bằng số proton.\n- C: Em đã cộng khối lượng nguyên tử với số proton; số electron chỉ bằng số proton."
+  },
+  {
+   "ma_cau": "K07010102084",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử potassium có 19 electron và khối lượng nguyên tử 39 amu. Hạt nhân nguyên tử potassium có bao nhiêu proton?",
+   "lua_chon": [
+    "19",
+    "39",
+    "20",
+    "58"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nguyên tử trung hòa về điện nên số proton = số electron = 19.\n\nVì sao các phương án khác sai:\n- B: 39 là khối lượng nguyên tử, không phải số proton.\n- C: 20 là số neutron (39 − 19); số proton bằng số electron.\n- D: Em đã cộng khối lượng nguyên tử với số electron; số proton chỉ bằng số electron."
+  },
+  {
+   "ma_cau": "K07010102085",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "Hạt nhân nguyên tử aluminium có điện tích +13, khối lượng nguyên tử 27 amu. Vỏ nguyên tử aluminium có bao nhiêu electron?",
+   "lua_chon": [
+    "27",
+    "14",
+    "13",
+    "40"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Điện tích hạt nhân +13 cho biết có 13 proton; nguyên tử trung hòa về điện nên có 13 electron.\n\nVì sao các phương án khác sai:\n- A: 27 là khối lượng nguyên tử, không phải số electron.\n- B: 14 là số neutron (27 − 13); số electron bằng số proton.\n- D: Em đã cộng khối lượng nguyên tử với điện tích hạt nhân; số electron chỉ bằng số proton."
+  },
+  {
+   "ma_cau": "K07010102086",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử X có tổng số hạt mang điện là 24. Số proton của X là bao nhiêu?",
+   "lua_chon": [
+    "24",
+    "8",
+    "12",
+    "48"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Hạt mang điện gồm proton và electron, mà số proton = số electron, nên 2 × số proton = 24 → số proton = 12.\n\nVì sao các phương án khác sai:\n- A: Hạt mang điện gồm cả proton và electron; 24 là tổng của hai loại hạt.\n- B: Neutron không mang điện; chỉ chia 24 cho 2 (proton và electron), không chia cho 3.\n- D: Phải chia đôi tổng số hạt mang điện, không nhân đôi."
+  },
+  {
+   "ma_cau": "K07010102087",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử Y có tổng số hạt mang điện là 30. Số electron của Y là bao nhiêu?",
+   "lua_chon": [
+    "15",
+    "30",
+    "10",
+    "60"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Hạt mang điện gồm proton và electron với số lượng bằng nhau, nên 2 × số electron = 30 → số electron = 15.\n\nVì sao các phương án khác sai:\n- B: Hạt mang điện gồm cả proton và electron; 30 là tổng của hai loại hạt.\n- C: Neutron không mang điện; chỉ chia 30 cho 2 (proton và electron), không chia cho 3.\n- D: Phải chia đôi tổng số hạt mang điện, không nhân đôi."
+  },
+  {
+   "ma_cau": "K07010102088",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "Khối lượng nguyên tử (amu) xấp xỉ bằng tổng nào sau đây?",
+   "lua_chon": [
+    "Số proton + số electron",
+    "Số proton + số neutron + số electron",
+    "Số neutron + số electron",
+    "Số proton + số neutron"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Proton và neutron mỗi hạt khoảng 1 amu, electron không đáng kể, nên khối lượng nguyên tử ≈ số proton + số neutron.\n\nVì sao các phương án khác sai:\n- A: Thiếu neutron (mỗi hạt khoảng 1 amu), còn electron có khối lượng không đáng kể.\n- B: Electron có khối lượng không đáng kể nên không cộng số electron vào.\n- C: Thiếu proton, còn electron gần như không có khối lượng."
+  },
+  {
+   "ma_cau": "K07010102089",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử carbon có 6 proton, 6 neutron và khối lượng nguyên tử 12 amu. Vì sao khối lượng nguyên tử carbon là 12 amu?",
+   "lua_chon": [
+    "Vì có 6 proton và 6 electron, mỗi hạt khoảng 1 amu",
+    "Vì có 6 proton và 6 neutron, mỗi hạt khoảng 1 amu",
+    "Vì khối lượng nguyên tử luôn bằng 2 lần số proton",
+    "Vì có 12 electron, mỗi electron khoảng 1 amu"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khối lượng nguyên tử ≈ số proton + số neutron = 6 + 6 = 12 amu, vì electron có khối lượng không đáng kể.\n\nVì sao các phương án khác sai:\n- A: Electron chỉ khoảng 0,00055 amu, không phải 1 amu.\n- C: Chỉ đúng khi số neutron bằng số proton; sodium có 11 proton nhưng khối lượng nguyên tử 23 amu.\n- D: Carbon chỉ có 6 electron, và mỗi electron chỉ khoảng 0,00055 amu."
+  },
+  {
+   "ma_cau": "K07010102090",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "Hai nguyên tử có cùng số proton nhưng khác số neutron. Hai nguyên tử này khác nhau về đại lượng nào?",
+   "lua_chon": [
+    "Khối lượng nguyên tử",
+    "Số electron",
+    "Điện tích hạt nhân",
+    "Số lớp electron"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mỗi neutron nặng khoảng 1 amu nhưng không mang điện, nên khác số neutron chỉ làm khác khối lượng nguyên tử.\n\nVì sao các phương án khác sai:\n- B: Số electron bằng số proton; cùng số proton thì cùng số electron.\n- C: Neutron không mang điện nên không làm thay đổi điện tích hạt nhân.\n- D: Số lớp electron phụ thuộc số electron, mà số electron của hai nguyên tử bằng nhau."
+  },
+  {
+   "ma_cau": "K07010102091",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử X có 20 proton, nguyên tử Y có 18 proton; cả hai đều có khối lượng nguyên tử 40 amu. Nguyên tử nào có nhiều neutron hơn?",
+   "lua_chon": [
+    "X, vì X có nhiều proton hơn",
+    "Bằng nhau, vì cùng khối lượng nguyên tử",
+    "Y, vì Y có ít proton hơn",
+    "X, vì X có nhiều electron hơn"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Số neutron = khối lượng nguyên tử − số proton; cùng 40 amu nên Y (18 proton) có 22 neutron, nhiều hơn X (20 neutron).\n\nVì sao các phương án khác sai:\n- A: Cùng khối lượng nguyên tử thì nguyên tử nhiều proton hơn lại có ít neutron hơn.\n- B: Khối lượng nguyên tử là tổng proton và neutron; số proton khác nhau nên số neutron cũng khác nhau.\n- D: Electron nằm ở vỏ và không quyết định số neutron trong hạt nhân."
+  },
+  {
+   "ma_cau": "K07010102092",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử phosphorus có 15 proton và khối lượng nguyên tử 31 amu. Số neutron trong hạt nhân là bao nhiêu?",
+   "lua_chon": [
+    "15",
+    "16",
+    "31",
+    "46"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số neutron = khối lượng nguyên tử − số proton = 31 − 15 = 16.\n\nVì sao các phương án khác sai:\n- A: Số neutron không phải lúc nào cũng bằng số proton; phải lấy 31 − 15.\n- C: 31 là khối lượng nguyên tử, gồm cả proton và neutron.\n- D: Phải lấy khối lượng nguyên tử trừ số proton, không cộng."
+  },
+  {
+   "ma_cau": "K07010102093",
+   "nhom_id": "KNB00297",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử fluorine có 9 proton và 10 neutron. Khối lượng nguyên tử fluorine xấp xỉ bao nhiêu?",
+   "lua_chon": [
+    "28 amu",
+    "9 amu",
+    "18 amu",
+    "19 amu"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khối lượng nguyên tử ≈ số proton + số neutron = 9 + 10 = 19 amu.\n\nVì sao các phương án khác sai:\n- A: Em đã cộng cả 9 electron; electron có khối lượng không đáng kể.\n- B: 9 là số proton, chưa cộng khối lượng của neutron.\n- C: Em đã lấy 2 lần số proton; phải cộng đúng số neutron là 10."
+  },
+  {
+   "ma_cau": "K07010202081",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử có 12 proton trong hạt nhân thuộc nguyên tố nào?",
+   "lua_chon": [
+    "magnesium",
+    "sodium",
+    "aluminium",
+    "carbon"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số proton bằng số hiệu nguyên tử Z; nguyên tố có Z = 12 là magnesium (Mg).\n\nVì sao các phương án khác sai:\n- B: Sodium có 11 proton; đếm lệch 1 ô trong bảng tuần hoàn.\n- C: Aluminium có 13 proton; đếm lệch 1 ô trong bảng tuần hoàn.\n- D: Carbon có khối lượng nguyên tử 12 amu nhưng chỉ có 6 proton."
+  },
+  {
+   "ma_cau": "K07010202082",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử có 7 proton trong hạt nhân thuộc nguyên tố nào?",
+   "lua_chon": [
+    "Oxygen",
+    "Nitrogen",
+    "Carbon",
+    "Fluorine"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số proton (số hiệu nguyên tử Z) xác định nguyên tố hóa học; Z = 7 là nitrogen.\n\nVì sao các phương án khác sai:\n- A: Oxygen có 8 proton, đứng sau nitrogen 1 ô trong bảng tuần hoàn.\n- C: Carbon có 6 proton, đứng trước nitrogen 1 ô.\n- D: Fluorine có 9 proton, đứng sau nitrogen 2 ô."
+  },
+  {
+   "ma_cau": "K07010202083",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử X trung hòa về điện và có 11 electron. X là nguyên tố nào?",
+   "lua_chon": [
+    "neon",
+    "boron",
+    "magnesium",
+    "sodium"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Nguyên tử trung hòa có số proton bằng số electron, nên X có 11 proton; Z = 11 là sodium (Na).\n\nVì sao các phương án khác sai:\n- A: Neon có 10 proton; đếm lệch 1 ô trong bảng tuần hoàn.\n- B: Boron có khối lượng nguyên tử 11 amu nhưng chỉ có 5 proton.\n- C: Magnesium có 12 proton; đếm lệch 1 ô trong bảng tuần hoàn."
+  },
+  {
+   "ma_cau": "K07010202084",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử X trung hòa về điện và có 19 electron. X là nguyên tố nào?",
+   "lua_chon": [
+    "argon",
+    "potassium",
+    "fluorine",
+    "calcium"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Nguyên tử trung hòa có số proton bằng số electron, nên X có 19 proton; Z = 19 là potassium (K).\n\nVì sao các phương án khác sai:\n- A: Argon có 18 proton; đếm lệch 1 ô trong bảng tuần hoàn.\n- C: Fluorine có khối lượng nguyên tử 19 amu nhưng chỉ có 9 proton.\n- D: Calcium có 20 proton; đếm lệch 1 ô trong bảng tuần hoàn."
+  },
+  {
+   "ma_cau": "K07010202085",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Cho bốn nguyên tử (p: số proton, n: số neutron): X (6p, 6n), Y (6p, 8n), Z (7p, 7n), T (8p, 8n). Hai nguyên tử nào thuộc cùng một nguyên tố?",
+   "lua_chon": [
+    "Y và T",
+    "Y và Z",
+    "X và Y",
+    "Z và T"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Chỉ cần so số proton: X và Y cùng có 6 proton nên cùng là nguyên tố carbon.\n\nVì sao các phương án khác sai:\n- A: Y và T cùng có 8 neutron nhưng khác số proton (6 và 8).\n- B: Y và Z cùng có tổng số proton và neutron là 14 nhưng khác số proton.\n- D: Z và T đều có số proton bằng số neutron, nhưng số proton khác nhau (7 và 8)."
+  },
+  {
+   "ma_cau": "K07010202086",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Cho bốn nguyên tử (p: số proton, n: số neutron): X (18p, 22n), Y (20p, 20n), Z (20p, 22n), T (16p, 16n). Hai nguyên tử nào thuộc cùng một nguyên tố?",
+   "lua_chon": [
+    "Y và Z",
+    "X và Z",
+    "X và Y",
+    "Y và T"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Chỉ cần so số proton: Y và Z cùng có 20 proton nên cùng là nguyên tố calcium.\n\nVì sao các phương án khác sai:\n- B: X và Z cùng có 22 neutron nhưng khác số proton (18 và 20).\n- C: X và Y cùng có tổng số proton và neutron là 40 nhưng khác số proton.\n- D: Y và T đều có số proton bằng số neutron, nhưng số proton khác nhau (20 và 16)."
+  },
+  {
+   "ma_cau": "K07010202087",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Cho bốn nguyên tử (p: số proton, n: số neutron): X (16p, 16n), Y (16p, 20n), Z (18p, 18n), T (20p, 20n). Hai nguyên tử nào thuộc cùng một nguyên tố?",
+   "lua_chon": [
+    "Y và Z",
+    "Y và T",
+    "Z và T",
+    "X và Y"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chỉ cần so số proton: X và Y cùng có 16 proton nên cùng là nguyên tố sulfur.\n\nVì sao các phương án khác sai:\n- A: Y và Z cùng có tổng số proton và neutron là 36 nhưng khác số proton.\n- B: Y và T cùng có 20 neutron nhưng khác số proton (16 và 20).\n- C: Z và T đều có số proton bằng số neutron, nhưng số proton khác nhau (18 và 20)."
+  },
+  {
+   "ma_cau": "K07010202088",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Bảng ghi khối lượng nguyên tử (KLNT, amu) và số neutron của bốn nguyên tử: (1) KLNT 23, 12 neutron; (2) KLNT 24, 12 neutron; (3) KLNT 25, 13 neutron; (4) KLNT 27, 14 neutron. Hai nguyên tử nào cùng một nguyên tố hoá học?",
+   "lua_chon": [
+    "(1) và (2)",
+    "(2) và (3)",
+    "(3) và (4)",
+    "(1) và (4)"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số proton = KLNT − số neutron: (2) và (3) đều có 12 proton (magnesium) nên cùng một nguyên tố.\n\nVì sao các phương án khác sai:\n- A: (1) có 11 proton, (2) có 12 proton, khác nhau dù khối lượng nguyên tử gần nhau.\n- C: (3) có 12 proton, (4) có 13 proton, khác nhau nên không cùng nguyên tố.\n- D: (1) có 11 proton, (4) có 13 proton, khác nhau nên không cùng nguyên tố."
+  },
+  {
+   "ma_cau": "K07010202089",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Bảng ghi KLNT và số neutron của bốn nguyên tử: (1) KLNT 35, 18 neutron; (2) KLNT 37, 20 neutron; (3) KLNT 39, 20 neutron; (4) KLNT 40, 20 neutron. Hai nguyên tử nào cùng một nguyên tố hoá học?",
+   "lua_chon": [
+    "(1) và (2)",
+    "(2) và (3)",
+    "(3) và (4)",
+    "(1) và (4)"
+   ],
+   "dap_an": "A",
+   "loi_giai": "(1) và (2) đều có 17 proton (chlorine) nên cùng một nguyên tố dù số neutron khác nhau.\n\nVì sao các phương án khác sai:\n- B: (2) có 17 proton, (3) có 19 proton, khác nhau nên không cùng nguyên tố.\n- C: (3) có 19 proton, (4) có 20 proton, khác nhau nên không cùng nguyên tố.\n- D: (1) có 17 proton, (4) có 20 proton, khác nhau nên không cùng nguyên tố."
+  },
+  {
+   "ma_cau": "K07010202090",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Bảng ghi KLNT và số neutron của bốn nguyên tử: (1) KLNT 16, 8 neutron; (2) KLNT 18, 10 neutron; (3) KLNT 19, 10 neutron; (4) KLNT 14, 7 neutron. Hai nguyên tử nào cùng một nguyên tố hoá học?",
+   "lua_chon": [
+    "(3) và (4)",
+    "(1) và (4)",
+    "(2) và (3)",
+    "(1) và (2)"
+   ],
+   "dap_an": "D",
+   "loi_giai": "(1) và (2) đều có 8 proton (oxygen) nên cùng một nguyên tố.\n\nVì sao các phương án khác sai:\n- A: (3) có 9 proton, (4) có 7 proton, khác nhau nên không cùng nguyên tố.\n- B: (1) có 8 proton, (4) có 7 proton, khác nhau nên không cùng nguyên tố.\n- C: (2) có 8 proton, (3) có 9 proton, khác nhau nên không cùng nguyên tố."
+  },
+  {
+   "ma_cau": "K07010202091",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Bảng ghi KLNT và số neutron của bốn nguyên tử: (1) KLNT 28, 14 neutron; (2) KLNT 29, 15 neutron; (3) KLNT 31, 16 neutron; (4) KLNT 32, 16 neutron. Hai nguyên tử nào cùng một nguyên tố hoá học?",
+   "lua_chon": [
+    "(3) và (4)",
+    "(1) và (4)",
+    "(1) và (2)",
+    "(2) và (3)"
+   ],
+   "dap_an": "C",
+   "loi_giai": "(1) và (2) đều có 14 proton (silicon) nên cùng một nguyên tố.\n\nVì sao các phương án khác sai:\n- A: (3) có 15 proton, (4) có 16 proton, khác nhau nên không cùng nguyên tố.\n- B: (1) có 14 proton, (4) có 16 proton, khác nhau nên không cùng nguyên tố.\n- D: (2) có 14 proton, (3) có 15 proton, khác nhau nên không cùng nguyên tố."
+  },
+  {
+   "ma_cau": "K07010202092",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Bảng ghi khối lượng nguyên tử (KLNT, amu) và số neutron của bốn nguyên tử: (1) KLNT 24, 12 neutron; (2) KLNT 26, 14 neutron; (3) KLNT 27, 13 neutron; (4) KLNT 28, 13 neutron. Hai nguyên tử nào cùng một nguyên tố hoá học?",
+   "lua_chon": [
+    "(1) và (2)",
+    "(2) và (3)",
+    "(3) và (4)",
+    "(1) và (4)"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số proton = KLNT − số neutron: (1) và (2) đều có 12 proton (magnesium) nên cùng một nguyên tố.\n\nVì sao các phương án khác sai:\n- B: (2) có 12 proton, (3) có 14 proton, khác nhau nên không cùng nguyên tố.\n- C: (3) có 14 proton, (4) có 15 proton, khác nhau nên không cùng nguyên tố.\n- D: (1) có 12 proton, (4) có 15 proton, khác nhau nên không cùng nguyên tố."
+  },
+  {
+   "ma_cau": "K07010202093",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Bảng ghi KLNT và số neutron của bốn nguyên tử: (1) KLNT 32, 16 neutron; (2) KLNT 31, 16 neutron; (3) KLNT 34, 18 neutron; (4) KLNT 39, 19 neutron. Hai nguyên tử nào cùng một nguyên tố hoá học?",
+   "lua_chon": [
+    "(2) và (3)",
+    "(3) và (4)",
+    "(1) và (2)",
+    "(1) và (3)"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Số proton = KLNT − số neutron: (1) và (3) đều có 16 proton (sulfur) nên cùng một nguyên tố.\n\nVì sao các phương án khác sai:\n- A: (2) có 15 proton, (3) có 16 proton, khác nhau nên không cùng nguyên tố.\n- B: (3) có 16 proton, (4) có 20 proton, khác nhau nên không cùng nguyên tố.\n- C: (1) có 16 proton, (2) có 15 proton, khác nhau nên không cùng nguyên tố."
+  },
+  {
+   "ma_cau": "K07010202094",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử X trung hoà về điện, có 12 electron. Tên nguyên tố và kí hiệu hoá học viết đúng của X là",
+   "lua_chon": [
+    "Sodium – Na",
+    "Magnesium – MG",
+    "Magnesium – Mg",
+    "Aluminium – Al"
+   ],
+   "dap_an": "C",
+   "loi_giai": "X có 12 electron nên có 12 proton (nguyên tử trung hoà) → X là magnesium, kí hiệu đúng là Mg (chữ đầu viết hoa, chữ sau viết thường).\n\nVì sao các phương án khác sai:\n- A: Đây là nguyên tố có 11 electron (proton), không phải 12.\n- B: Kí hiệu chỉ viết hoa chữ cái đầu, chữ sau phải viết thường.\n- D: Đây là nguyên tố có 13 electron (proton), không phải 12."
+  },
+  {
+   "ma_cau": "K07010202095",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử Y trung hoà về điện, có 19 electron. Tên nguyên tố và kí hiệu hoá học viết đúng của Y là",
+   "lua_chon": [
+    "Argon – Ar",
+    "Potassium – k",
+    "Calcium – Ca",
+    "Potassium – K"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Y có 19 electron nên có 19 proton → Y là potassium, kí hiệu đúng là K (một chữ cái viết hoa).\n\nVì sao các phương án khác sai:\n- A: Đây là nguyên tố có 18 electron (proton), không phải 19.\n- B: Chữ cái đầu của kí hiệu phải viết hoa, không viết thường.\n- C: Đây là nguyên tố có 20 electron (proton), không phải 19."
+  },
+  {
+   "ma_cau": "K07010202096",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử Z trung hoà về điện, có 9 electron. Tên nguyên tố và kí hiệu hoá học viết đúng của Z là",
+   "lua_chon": [
+    "Fluorine – F",
+    "Fluorine – Fl",
+    "Oxygen – O",
+    "Neon – Ne"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Z có 9 electron nên có 9 proton → Z là fluorine, kí hiệu đúng chỉ gồm một chữ cái F.\n\nVì sao các phương án khác sai:\n- B: Kí hiệu hoá học của fluorine chỉ có một chữ cái F, không có chữ thứ hai.\n- C: Đây là nguyên tố có 8 electron (proton), không phải 9.\n- D: Đây là nguyên tố có 10 electron (proton), không phải 9."
+  },
+  {
+   "ma_cau": "K07010202097",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử T trung hoà về điện, có 17 electron. Tên nguyên tố và kí hiệu hoá học viết đúng của T là",
+   "lua_chon": [
+    "Sulfur – S",
+    "Chlorine – Cl",
+    "Chlorine – CL",
+    "Argon – Ar"
+   ],
+   "dap_an": "B",
+   "loi_giai": "T có 17 electron nên có 17 proton → T là chlorine, kí hiệu đúng là Cl (chữ đầu viết hoa, chữ sau viết thường).\n\nVì sao các phương án khác sai:\n- A: Đây là nguyên tố có 16 electron (proton), không phải 17.\n- C: Chữ cái thứ hai của kí hiệu phải viết thường, không viết hoa.\n- D: Đây là nguyên tố có 18 electron (proton), không phải 17."
+  },
+  {
+   "ma_cau": "K07010202098",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử M trung hoà về điện, có 20 electron. Tên nguyên tố và kí hiệu hoá học viết đúng của M là",
+   "lua_chon": [
+    "Potassium – K",
+    "Calcium – ca",
+    "Carbon – Ca",
+    "Calcium – Ca"
+   ],
+   "dap_an": "D",
+   "loi_giai": "M có 20 electron nên có 20 proton → M là calcium, kí hiệu đúng là Ca (chữ đầu viết hoa, chữ sau viết thường).\n\nVì sao các phương án khác sai:\n- A: Đây là nguyên tố có 19 electron (proton), không phải 20.\n- B: Chữ cái đầu của kí hiệu phải viết hoa, không viết thường.\n- C: Ca là kí hiệu hoá học của calcium, không phải carbon (kí hiệu carbon là C)."
+  },
+  {
+   "ma_cau": "K07010202099",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử X trung hoà về điện, có 11 electron. Tên nguyên tố và kí hiệu hoá học viết đúng của X là",
+   "lua_chon": [
+    "Sodium – Na",
+    "Neon – Ne",
+    "Sodium – NA",
+    "Magnesium – Mg"
+   ],
+   "dap_an": "A",
+   "loi_giai": "X có 11 electron nên có 11 proton → X là sodium, kí hiệu đúng là Na (chữ đầu viết hoa, chữ sau viết thường).\n\nVì sao các phương án khác sai:\n- B: Đây là nguyên tố có 10 electron (proton), không phải 11.\n- C: Kí hiệu chỉ viết hoa chữ cái đầu, chữ sau viết thường.\n- D: Đây là nguyên tố có 12 electron (proton), không phải 11."
+  },
+  {
+   "ma_cau": "K07010202100",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử Y trung hoà về điện, có 13 electron. Tên nguyên tố và kí hiệu hoá học viết đúng của Y là",
+   "lua_chon": [
+    "Magnesium – Mg",
+    "Aluminium – Al",
+    "Silicon – Si",
+    "Aluminium – AL"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Y có 13 electron nên có 13 proton → Y là aluminium, kí hiệu đúng là Al (chữ đầu viết hoa, chữ sau viết thường).\n\nVì sao các phương án khác sai:\n- A: Đây là nguyên tố có 12 electron (proton), không phải 13.\n- C: Đây là nguyên tố có 14 electron (proton), không phải 13.\n- D: Kí hiệu chỉ viết hoa chữ cái đầu, chữ sau viết thường."
+  },
+  {
+   "ma_cau": "K07010202101",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử Z trung hoà về điện, có 16 electron. Tên nguyên tố và kí hiệu hoá học viết đúng của Z là",
+   "lua_chon": [
+    "Phosphorus – P",
+    "Sulfur – s",
+    "Sulfur – S",
+    "Chlorine – Cl"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Z có 16 electron nên có 16 proton → Z là sulfur, kí hiệu đúng chỉ gồm một chữ cái viết hoa S.\n\nVì sao các phương án khác sai:\n- A: Đây là nguyên tố có 15 electron (proton), không phải 16.\n- B: Chữ cái đầu của kí hiệu phải viết hoa, không viết thường.\n- D: Đây là nguyên tố có 17 electron (proton), không phải 16."
+  },
+  {
+   "ma_cau": "K07010202102",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Một bạn lập luận: 'Nguyên tử A có 15 proton, nguyên tử B có 15 neutron nên A và B thuộc cùng một nguyên tố.' Lập luận này",
+   "lua_chon": [
+    "Sai, vì so nhầm proton của A với neutron của B, không thể kết luận",
+    "Đúng, vì số hạt đã cho bằng nhau đều là 15",
+    "Sai, vì phải cộng thêm số electron của A và B rồi so sánh",
+    "Đúng, vì proton và neutron đều nằm trong hạt nhân"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Muốn biết A, B có cùng nguyên tố không phải so proton của A với proton của B (hoặc electron với electron); đề chỉ cho proton của A và neutron của B nên không thể kết luận gì.\n\nVì sao các phương án khác sai:\n- B: Trùng số hạt không có nghĩa là đúng, vì hai đại lượng được so sánh không cùng loại hạt.\n- C: Không cần cộng thêm electron; chỉ cần so đúng số proton của A với số proton của B.\n- D: Dù cùng nằm trong hạt nhân, chỉ proton mới quyết định nguyên tố, neutron thì không."
+  },
+  {
+   "ma_cau": "K07010202103",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Một bạn lập luận: 'Nguyên tử M có 8 electron, nguyên tử N có 8 neutron nên M và N thuộc cùng một nguyên tố.' Lập luận này",
+   "lua_chon": [
+    "Đúng, vì số hạt đã cho bằng nhau đều là 8",
+    "Sai, vì so nhầm electron của M với neutron của N, không thể kết luận",
+    "Sai, vì phải so sánh số neutron của cả hai nguyên tử",
+    "Đúng, vì electron và neutron đều quyết định nguyên tố"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Muốn biết M, N có cùng nguyên tố không phải so electron (hay proton) của M với electron (proton) của N; đề chỉ cho electron của M và neutron của N nên không thể kết luận gì.\n\nVì sao các phương án khác sai:\n- A: Trùng số hạt không có nghĩa là đúng, vì hai đại lượng được so sánh không cùng loại hạt.\n- C: Neutron có thể khác nhau ở các nguyên tử cùng nguyên tố nên không dùng để so sánh; nguyên tố xác định qua proton (hoặc electron khi trung hoà).\n- D: Chỉ proton (hoặc electron khi nguyên tử trung hoà) mới quyết định nguyên tố, neutron thì không."
+  },
+  {
+   "ma_cau": "K07010202104",
+   "nhom_id": "KNB00302",
+   "loai": "trac_nghiem",
+   "de": "Một bạn lập luận: 'Nguyên tử P có 14 electron, nguyên tử Q có 14 electron nên P và Q thuộc cùng một nguyên tố.' Lập luận này",
+   "lua_chon": [
+    "Đúng, vì cùng 14 electron nên cùng số proton, cùng nguyên tố",
+    "Sai, vì phải so sánh thêm số neutron của P và Q",
+    "Sai, vì electron không quyết định nguyên tố hoá học",
+    "Đúng, nhưng chỉ khi cả hai đều mang điện tích âm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nguyên tử trung hoà nên số electron = số proton; P và Q đều có 14 electron nghĩa là đều có 14 proton nên cùng nguyên tố (silicon).\n\nVì sao các phương án khác sai:\n- B: Neutron có thể khác nhau ở các nguyên tử cùng nguyên tố (đồng vị); không cần so sánh neutron.\n- C: Khi nguyên tử trung hoà, số electron bằng số proton nên vẫn dùng được để xác định nguyên tố.\n- D: Nguyên tử trung hoà không mang điện; không cần thêm điều kiện về điện tích."
+  },
+  {
+   "ma_cau": "K07010103100",
+   "nhom_id": "KNB00298",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử X có tổng số hạt proton, neutron, electron là 34, trong đó số hạt mang điện nhiều hơn số hạt không mang điện là 10. Số proton của X là bao nhiêu?",
+   "lua_chon": [
+    "12",
+    "11",
+    "6",
+    "22"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Hạt mang điện = 2p. Ta có 2p + n = 34 và 2p − n = 10 → 4p = 44 → p = 11.\n\nVì sao các phương án khác sai:\n- A: 12 là số neutron (2p − n = 10 → n = 12), không phải số proton.\n- C: Em đã đảo hiệu thành n − 2p = 10; hạt mang điện nhiều hơn nên hiệu là 2p − n.\n- D: 22 là số hạt mang điện (p + e); phải chia đôi mới ra số proton."
+  },
+  {
+   "ma_cau": "K07010103101",
+   "nhom_id": "KNB00298",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử X có tổng số hạt proton, neutron, electron là 52, trong đó số hạt mang điện nhiều hơn số hạt không mang điện là 16. Số proton của X là bao nhiêu?",
+   "lua_chon": [
+    "18",
+    "9",
+    "34",
+    "17"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Hạt mang điện = 2p. Ta có 2p + n = 52 và 2p − n = 16 → 4p = 68 → p = 17.\n\nVì sao các phương án khác sai:\n- A: 18 là số neutron (2p − n = 16 → n = 18), không phải số proton.\n- B: Em đã đảo hiệu thành n − 2p = 16; hạt mang điện nhiều hơn nên hiệu là 2p − n.\n- C: 34 là số hạt mang điện (p + e); phải chia đôi mới ra số proton."
+  },
+  {
+   "ma_cau": "K07010103102",
+   "nhom_id": "KNB00298",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử X có tổng số hạt proton, neutron, electron là 28, trong đó số hạt mang điện nhiều hơn số hạt không mang điện là 8. X là nguyên tố nào?",
+   "lua_chon": [
+    "Fluorine (Z = 9)",
+    "Neon (Z = 10)",
+    "Boron (Z = 5)",
+    "Argon (Z = 18)"
+   ],
+   "dap_an": "A",
+   "loi_giai": "2p + n = 28 và 2p − n = 8 → 4p = 36 → p = 9, nên X là fluorine.\n\nVì sao các phương án khác sai:\n- B: Z = 10 là số neutron của X, không phải số proton.\n- C: Em đã đảo hiệu thành n − 2p = 8; hạt mang điện nhiều hơn nên hiệu là 2p − n.\n- D: 18 là số hạt mang điện (p + e); phải chia đôi mới ra số proton."
+  },
+  {
+   "ma_cau": "K07010103103",
+   "nhom_id": "KNB00298",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử X có tổng số hạt proton, neutron, electron là 16, trong đó số hạt mang điện nhiều hơn số hạt không mang điện là 4. X là nguyên tố nào?",
+   "lua_chon": [
+    "Carbon (Z = 6)",
+    "Lithium (Z = 3)",
+    "Boron (Z = 5)",
+    "Neon (Z = 10)"
+   ],
+   "dap_an": "C",
+   "loi_giai": "2p + n = 16 và 2p − n = 4 → 4p = 20 → p = 5, nên X là boron.\n\nVì sao các phương án khác sai:\n- A: Z = 6 là số neutron của X, không phải số proton.\n- B: Em đã đảo hiệu thành n − 2p = 4; hạt mang điện nhiều hơn nên hiệu là 2p − n.\n- D: 10 là số hạt mang điện (p + e); phải chia đôi mới ra số proton."
+  },
+  {
+   "ma_cau": "K07010103104",
+   "nhom_id": "KNB00298",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử X có tổng số hạt proton, neutron, electron là 46, trong đó số hạt mang điện nhiều hơn số hạt không mang điện là 14. X là nguyên tố nào?",
+   "lua_chon": [
+    "Oxygen (Z = 8)",
+    "Phosphorus (Z = 15)",
+    "Sulfur (Z = 16)",
+    "Zinc (Z = 30)"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Gọi p, n là số proton, neutron: 2p + n = 46 và 2p − n = 14. Cộng hai phương trình: 4p = 60 → p = 15 → phosphorus.\n\nVì sao các phương án khác sai:\n- A: Tính (T − hiệu)/4 do nhầm dấu của hiệu số hạt.\n- C: Nhầm (T − hiệu)/2 = 16 — đó là số neutron — thành số proton.\n- D: Quên nhân đôi proton khi tính electron, coi tổng chỉ là p + n."
+  },
+  {
+   "ma_cau": "K07010103105",
+   "nhom_id": "KNB00298",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử X có tổng số hạt proton, neutron, electron là 34, trong đó có 12 neutron. Số proton của X là bao nhiêu?",
+   "lua_chon": [
+    "22",
+    "12",
+    "11",
+    "23"
+   ],
+   "dap_an": "C",
+   "loi_giai": "p + e = 34 − 12 = 22, mà p = e nên p = 22 : 2 = 11.\n\nVì sao các phương án khác sai:\n- A: 22 là số hạt mang điện (p + e); phải chia đôi mới ra số proton.\n- B: 12 là số neutron, không phải số proton.\n- D: Em đã cộng số neutron thay vì trừ; phải lấy (34 − 12) : 2."
+  },
+  {
+   "ma_cau": "K07010103106",
+   "nhom_id": "KNB00298",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử X có tổng số hạt proton, neutron, electron là 46, trong đó có 16 neutron. Số proton của X là bao nhiêu?",
+   "lua_chon": [
+    "15",
+    "30",
+    "16",
+    "31"
+   ],
+   "dap_an": "A",
+   "loi_giai": "p + e = 46 − 16 = 30, mà p = e nên p = 30 : 2 = 15.\n\nVì sao các phương án khác sai:\n- B: 30 là số hạt mang điện (p + e); phải chia đôi mới ra số proton.\n- C: 16 là số neutron, không phải số proton.\n- D: Em đã cộng số neutron thay vì trừ; phải lấy (46 − 16) : 2."
+  },
+  {
+   "ma_cau": "K07010103107",
+   "nhom_id": "KNB00298",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử X có tổng số hạt proton, neutron, electron là 10, trong đó có 4 neutron. X là nguyên tố nào?",
+   "lua_chon": [
+    "Carbon (Z = 6)",
+    "Beryllium (Z = 4)",
+    "Nitrogen (Z = 7)",
+    "Lithium (Z = 3)"
+   ],
+   "dap_an": "D",
+   "loi_giai": "p + e = 10 − 4 = 6, mà p = e nên p = 3; X là lithium.\n\nVì sao các phương án khác sai:\n- A: 6 là số hạt mang điện (p + e); phải chia đôi mới ra số proton.\n- B: Z = 4 là số neutron của X, không phải số proton.\n- C: Em đã cộng số neutron thay vì trừ; phải lấy (10 − 4) : 2."
+  },
+  {
+   "ma_cau": "K07010103108",
+   "nhom_id": "KNB00298",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử X có tổng số hạt proton, neutron, electron là 16, trong đó có 6 neutron. X là nguyên tố nào?",
+   "lua_chon": [
+    "Neon (Z = 10)",
+    "Boron (Z = 5)",
+    "Carbon (Z = 6)",
+    "Sodium (Z = 11)"
+   ],
+   "dap_an": "B",
+   "loi_giai": "p + e = 16 − 6 = 10, mà p = e nên p = 5; X là boron.\n\nVì sao các phương án khác sai:\n- A: 10 là số hạt mang điện (p + e); phải chia đôi mới ra số proton.\n- C: Z = 6 là số neutron của X, không phải số proton.\n- D: Em đã cộng số neutron thay vì trừ; phải lấy (16 − 6) : 2."
+  },
+  {
+   "ma_cau": "K07010103109",
+   "nhom_id": "KNB00298",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử của nguyên tố R có 13 proton và 14 neutron. Tổng số hạt proton, neutron, electron trong nguyên tử R là bao nhiêu?",
+   "lua_chon": [
+    "27",
+    "41",
+    "40",
+    "54"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Số electron bằng số proton = 13. Tổng số hạt = 2×13 + 14 = 40.\n\nVì sao các phương án khác sai:\n- A: Quên nhân đôi số proton (bỏ qua electron), chỉ tính p + n.\n- B: Nhầm nhân đôi số neutron thay vì proton (2n + p).\n- D: Nhân đôi cả proton lẫn neutron, tính thừa (2p + 2n)."
+  }
+ ]
+}

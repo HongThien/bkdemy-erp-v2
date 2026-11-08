@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T111000000425",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: quan hệ giữa đường thẳng, mặt phẳng trong không gian."
+ },
+ {
+  "ma_cau": "T111000000154",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Tính mốt mẫu ghép nhóm. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111000000049",
+  "dang_bai_id": "NDB01166",
+  "chac": "cao",
+  "ly_do": "Bóng nảy với độ cao giảm 1/10, tổng hành trình là cấp số nhân lùi vô hạn."
+ },
+ {
+  "ma_cau": "T111000000299",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Giá trị đại diện của nhóm. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111030502133",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Giá trị lớn nhất. Đọc từ đồ thị; gần dạng tập giá trị/min max nhưng dựa hình."
+ },
+ {
+  "ma_cau": "T111040102110",
+  "dang_bai_id": "NDB00577",
+  "chac": "cao",
+  "ly_do": "sin x=0 một họ nghiệm x=kπ, đếm nghiệm trên đoạn."
+ },
+ {
+  "ma_cau": "T111000000031",
+  "dang_bai_id": "NDB01166",
+  "chac": "cao",
+  "ly_do": "Bóng cao su nảy 3/4, tổng quãng đường là cấp số nhân lùi vô hạn."
+ },
+ {
+  "ma_cau": "T111000000265",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Đếm số ngày theo nhóm. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111000000419",
+  "dang_bai_id": "NDB00565",
+  "chac": "vua",
+  "ly_do": "Số đo tổng quát các góc lượng giác cùng tia đầu, tia cuối; không có hình."
+ },
+ {
+  "ma_cau": "T111000000241",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Tính trung vị mẫu ghép nhóm. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111030103008",
+  "dang_bai_id": "NDB00991",
+  "chac": "vua",
+  "ly_do": "Hàm lẻ: đáp án trộn hàm cơ bản và hàm có đa thức x³+1; lấy dạng sau."
+ },
+ {
+  "ma_cau": "T111030502076",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Tập giá trị. Đọc từ đồ thị; gần dạng tập giá trị/min max nhưng dựa hình."
+ },
+ {
+  "ma_cau": "T111000000253",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Số trung bình mẫu ghép nhóm. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111000000213",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Nhóm chứa mốt. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111010202042",
+  "dang_bai_id": "NDB00565",
+  "chac": "vua",
+  "ly_do": "Tìm số đo α trong [0;2π] của góc cùng tia đầu, tia cuối với số đo cho trước."
+ },
+ {
+  "ma_cau": "T111000000061",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Nhóm chứa mốt. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111000000160",
+  "dang_bai_id": "NDB00951",
+  "chac": "vua",
+  "ly_do": "Kiểm tra giá trị lượng giác của góc đặc biệt qua góc bù, hơn kém π; gần dạng đảo pha."
+ },
+ {
+  "ma_cau": "T111030105005",
+  "dang_bai_id": "NDB00996",
+  "chac": "vua",
+  "ly_do": "Tập giá trị của hàm thực tế sau khi đưa cos(π/2−x) về sin."
+ },
+ {
+  "ma_cau": "T111000000457",
+  "dang_bai_id": "NDB00569",
+  "chac": "cao",
+  "ly_do": "Hỏi góc có cùng điểm cuối (điểm biểu diễn) với góc cho trước."
+ },
+ {
+  "ma_cau": "T111060204047",
+  "dang_bai_id": "NDB00612",
+  "chac": "vua",
+  "ly_do": "Ý a lập hệ u1,d cấp số cộng; ý b xét tăng giảm dãy, lấy dạng đứng sau."
+ },
+ {
+  "ma_cau": "T111060205064",
+  "dang_bai_id": "NDB01024",
+  "chac": "cao",
+  "ly_do": "Chia lợi nhuận theo cấp số cộng cho số lớn nhất và tổng, thực tế không thuộc dạng cụ thể."
+ },
+ {
+  "ma_cau": "T111050102002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu chủ đề Bất phương trình và hệ bất phương trình bậc nhất 2 ẩn (quy hoạch tuyến tính thực tế)."
+ },
+ {
+  "ma_cau": "T111060202108",
+  "dang_bai_id": "NDB00607",
+  "chac": "vua",
+  "ly_do": "Cấp số cộng cho u1 và d, chọn hệ thức truy hồi; chưa có dạng truy hồi riêng."
+ },
+ {
+  "ma_cau": "T111000000028",
+  "dang_bai_id": "NDB01032",
+  "chac": "vua",
+  "ly_do": "Dãy truy hồi u_n=2u_{n-1}+1 quy về cấp số nhân rồi tính tổng."
+ },
+ {
+  "ma_cau": "T111030502116",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Tập giá trị. Đọc từ đồ thị; gần dạng tập giá trị/min max nhưng dựa hình."
+ },
+ {
+  "ma_cau": "T111000000354",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: quan hệ giữa đường thẳng, mặt phẳng trong không gian."
+ },
+ {
+  "ma_cau": "T111040102102",
+  "dang_bai_id": "NDB01014",
+  "chac": "cao",
+  "ly_do": "sin3x+cosx=0 đưa về sin cơ bản qua góc phụ, tìm nghiệm trên đoạn."
+ },
+ {
+  "ma_cau": "T111030502129",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Giá trị lớn nhất. Đọc từ đồ thị; gần dạng tập giá trị/min max nhưng dựa hình."
+ },
+ {
+  "ma_cau": "T111060305004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng lý thuyết tính chất các số hạng của cấp số nhân."
+ },
+ {
+  "ma_cau": "T111000000252",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Tính trung vị mẫu ghép nhóm. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111060205066",
+  "dang_bai_id": "NDB00614",
+  "chac": "vua",
+  "ly_do": "Tháp xếp mảnh ghép theo cấp số cộng, có hình; gần dạng cho u1 và d."
+ },
+ {
+  "ma_cau": "T111000000487",
+  "dang_bai_id": "NDB00951",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức đúng, trộn hệ thức cơ bản và đảo pha; lấy dạng đảo pha đứng sau."
+ },
+ {
+  "ma_cau": "T111000000289",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Tính số trung bình mẫu ghép nhóm. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111000000055",
+  "dang_bai_id": "NDB00963",
+  "chac": "cao",
+  "ly_do": "Nhận dạng công thức sai, trộn cộng, nhân đôi và tổng thành tích; lấy dạng sau cùng."
+ },
+ {
+  "ma_cau": "T111030502137",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Giá trị lớn nhất. Đọc từ đồ thị; gần dạng tập giá trị/min max nhưng dựa hình."
+ },
+ {
+  "ma_cau": "T111000000080",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Ước lượng/đếm theo cỡ áo của bảng ghép nhóm. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111000000216",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Giá trị đại diện của nhóm. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111000000106",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Đếm số học sinh theo nhóm. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111040101369",
+  "dang_bai_id": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Xác định phương trình từ hai điểm biểu diễn nghiệm trên đường tròn lượng giác."
+ },
+ {
+  "ma_cau": "T111060303056",
+  "dang_bai_id": "NDB01029",
+  "chac": "cao",
+  "ly_do": "Cấp số nhân cho u1 và q, tìm thứ tự n của số hạng."
+ },
+ {
+  "ma_cau": "T111060301030",
+  "dang_bai_id": "NDB01026",
+  "chac": "vua",
+  "ly_do": "Nhận diện cấp số nhân, đáp án trộn liệt kê và hệ thức truy hồi."
+ },
+ {
+  "ma_cau": "T111000000271",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Chọn nhóm theo dữ liệu thô chia nhóm. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111060304090",
+  "dang_bai_id": "NDB00617",
+  "chac": "vua",
+  "ly_do": "Cổ phiếu tăng giảm lặp theo chu kỳ, trộn cộng và nhân; gần dạng lãi kép."
+ },
+ {
+  "ma_cau": "T111010401071",
+  "dang_bai_id": "NDB00948",
+  "chac": "vua",
+  "ly_do": "Kiểm tra cặp sin, cos thoả sin²+cos²=1; gần dạng hệ thức cơ bản."
+ },
+ {
+  "ma_cau": "T111040204058",
+  "dang_bai_id": "NDB01018",
+  "chac": "cao",
+  "ly_do": "Phương trình bậc 2 theo sin2x sau khi hạ bậc cos4x, tìm nghiệm trên đoạn."
+ },
+ {
+  "ma_cau": "T111020102009",
+  "dang_bai_id": "NDB00968",
+  "chac": "vua",
+  "ly_do": "Tính sin105° bằng công thức cộng, không cho trước giá trị lượng giác."
+ },
+ {
+  "ma_cau": "T111000000255",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Giá trị đại diện của nhóm. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111000000355",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng hình chiếu/bóng của vật quay (toạ độ điểm trên đường tròn theo số vòng quay)."
+ },
+ {
+  "ma_cau": "T111000000026",
+  "dang_bai_id": "NDB00592",
+  "chac": "vua",
+  "ly_do": "Dãy truy hồi phức tạp tìm u_2018, cần đổi biến."
+ },
+ {
+  "ma_cau": "T111000000146",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Trung bình và nhóm tần số lớn nhất. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111000000373",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: quan hệ giữa đường thẳng, mặt phẳng trong không gian."
+ },
+ {
+  "ma_cau": "T111000000345",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Nhóm chứa tứ phân vị thứ nhất. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111000000122",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Tứ phân vị thứ nhất. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111000000513",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: quan hệ giữa đường thẳng, mặt phẳng trong không gian."
+ },
+ {
+  "ma_cau": "T111000000183",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Trung bình và tứ phân vị thứ nhất. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111030502130",
+  "dang_bai_id": "NDB01005",
+  "chac": "cao",
+  "ly_do": "Hỏi đồ thị đi qua điểm nào, đọc từ hình."
+ },
+ {
+  "ma_cau": "T111030502053",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Giá trị lớn nhất. Đọc từ đồ thị; gần dạng tập giá trị/min max nhưng dựa hình."
+ },
+ {
+  "ma_cau": "T111060305014",
+  "dang_bai_id": "NDB01025",
+  "chac": "vua",
+  "ly_do": "Ba số hạng của cấp số cộng lập cấp số nhân, tìm công bội; gần dạng ba số lập cấp số nhân."
+ },
+ {
+  "ma_cau": "T111030301050",
+  "dang_bai_id": "NDB00991",
+  "chac": "vua",
+  "ly_do": "Hàm chẵn: đáp án là tổng/hiệu hàm lượng giác và hằng số; dạng mở rộng."
+ },
+ {
+  "ma_cau": "T111000000263",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Đếm số nhóm. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111040101255",
+  "dang_bai_id": "NDB00582",
+  "chac": "cao",
+  "ly_do": "Nghiệm tanx=hằng được biểu diễn trên đường tròn lượng giác."
+ },
+ {
+  "ma_cau": "T111000000086",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Nhóm chứa mốt. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111000000115",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Độ dài nhóm. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111000000428",
+  "dang_bai_id": "NDB00569",
+  "chac": "vua",
+  "ly_do": "Điểm đối xứng với M qua trục tung, tìm số đo góc lượng giác tương ứng."
+ },
+ {
+  "ma_cau": "T111030503058",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng nghịch biến dựa vào đồ thị."
+ },
+ {
+  "ma_cau": "T111030502088",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Tập giá trị. Đọc từ đồ thị; gần dạng tập giá trị/min max nhưng dựa hình."
+ },
+ {
+  "ma_cau": "T111030502043",
+  "dang_bai_id": "NDB01004",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì hàm lượng giác từ đồ thị."
+ },
+ {
+  "ma_cau": "T111000000116",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Đếm theo nhóm. Bảng ghép nhóm; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111060302027",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng cấp số nhân cho quan hệ tổng các nhóm số hạng liên tiếp."
+ },
+ {
+  "ma_cau": "T111060305002",
+  "dang_bai_id": "NDB01025",
+  "chac": "vua",
+  "ly_do": "Ba biểu thức lượng giác lập cấp số nhân, tìm cos2α; gần dạng ba số lập cấp số nhân."
+ }
+]

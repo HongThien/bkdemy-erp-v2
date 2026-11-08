@@ -83,6 +83,8 @@ design/bk-ui-src/gami/
 design/bk-ui-src/khoi/
 design/bk-ui-src/lofi/
 design/bk-ui-src/nho-xinh/
+design/bk-ui-src/halloween/
+design/bk-ui-src/halloween-erp/
 
 # Đệm của `tsc -b` — tự sinh lại mỗi lần kiểm kiểu
 *.tsbuildinfo
@@ -95,3 +97,5 @@ scripts/luong-ta-t9/_out/
 
 # Máy chấm BTVN hàng đợi: ảnh bài làm học sinh tải về để chấm — KHÔNG commit
 cham_btvn_ai/
+# ảnh tạm của Phiên Claude (cắt từ tài liệu trước khi gắn vào câu)
+scripts/phien/.tam/

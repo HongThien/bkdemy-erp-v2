@@ -200,7 +200,10 @@
     {
       "name": "dev-dautu",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev:dautu"],
+      "runtimeArgs": [
+        "run",
+        "dev:dautu"
+      ],
       "port": 5293
     },
     {
@@ -297,6 +300,16 @@
         "5203"
       ],
       "port": 5203
+    },
+    {
+      "name": "reports",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "scripts/serve-games.mjs",
+        "5291",
+        "reports"
+      ],
+      "port": 5291
     }
   ]
 }

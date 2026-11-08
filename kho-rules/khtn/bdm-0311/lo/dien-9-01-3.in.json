@@ -1,0 +1,2294 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00423",
+   "khoi": "9",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Cơ năng",
+   "nhom": "VẬN DỤNG ĐỊNH LUẬT BẢO TOÀN CƠ NĂNG GIỮA HAI VỊ TRÍ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Điều kiện. Vật chỉ chịu tác dụng của trọng lực (bỏ qua ma sát, lực cản).\nCông thức. Cơ năng không đổi tại mọi vị trí: $W_A = W_B$.\nSuy ra: $W_{đA} + W_{tA} = W_{đB} + W_{tB}$, hay $\\dfrac{1}{2}mv_A^2 + 10mh_A = \\dfrac{1}{2}mv_B^2 + 10mh_B$.\nTrình tự làm bài. Xác định hai vị trí A, B. Viết $W_A = W_B$. Thay số liệu đã biết, suy ra đại lượng cần tìm.\nTrường hợp riêng. Vật rơi tự do ($v$ đầu $= 0$): $v = \\sqrt{(20h)}$. Vật ném thẳng đứng lên ($v = 0$ tại đỉnh): $h_{max} = v_0^2/20$.\nLỗi thường gặp. Tưởng động năng hoặc thế năng không đổi giữa hai vị trí. Quên hệ số 2 khi chuyển từ $\\dfrac{1}{2}mv^2$ sang $mv^2$. Nhầm dấu cộng/trừ giữa hai độ cao.\nVí dụ 1. Một vật tại vị trí A có động năng $12 \\text{ J}$, thế năng $18 \\text{ J}$. Vật có khối lượng $3 \\text{ kg}$. Tính động năng của vật tại vị trí B ở độ cao $0,6 \\text{ m}$ so với vị trí ban đầu.\nGiải: $W = W_{đA} + W_{tA} = 12 + 18 = 30 \\text{ J}$. $W_{tB} = 10 \\times 3 \\times 0,6 = 18 \\text{ J}$. $W_{đB} = W - W_{tB} = 30 - 18 = 12 \\text{ J}$.\nVí dụ 2. Một vật rơi tự do từ độ cao $5 \\text{ m}$. Tính tốc độ của vật khi chạm đất. Lấy $g = 10 \\text{ m/s}^2$.\nGiải: $v = \\sqrt{(20h)} = \\sqrt{(20 \\times 5)} = \\sqrt{100} = 10 \\text{ m/s}$.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00424",
+   "khoi": "9",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Cơ năng",
+   "nhom": "BẢO TOÀN CƠ NĂNG TẠI VỊ TRÍ BẤT KỲ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Mở rộng. Định luật bảo toàn cơ năng áp dụng cho hai vị trí bất kỳ trên quỹ đạo, không chỉ tại điểm đầu, điểm cuối hay mặt đất.\nCông thức chung. $W_A = W_B$ tại mọi vị trí A, B trên quỹ đạo, miễn vật chỉ chịu tác dụng của trọng lực.\nTrình tự làm bài. Chọn hai vị trí cần xét. Viết phương trình bảo toàn cơ năng giữa hai vị trí đó. Thay số, giải tìm đại lượng cần tìm.\nLỗi thường gặp. Nhầm vị trí có vận tốc bằng $0$ hoặc độ cao bằng $0$ khi đề không cho vị trí đó. Quên hệ số $2$ khi biến đổi từ $\\frac{1}{2}mv^2$ sang $mv^2$. Nhầm dấu cộng/trừ khi so sánh hai độ cao.\nVí dụ 1. Một vật rơi tự do từ độ cao $7\\ m$. Tính tốc độ của vật khi ở độ cao $2\\ m$ so với mặt đất. Lấy $g = 10\\ m/s^2$.\nGiải: $v = \\sqrt{2g(h - h')} = \\sqrt{20 \\times (7 - 2)} = \\sqrt{100} = 10\\ m/s$.\nVí dụ 2. Một vật trượt không ma sát trên mặt cong, tại vị trí có độ cao $2\\ m$ vật có tốc độ $6\\ m/s$. Tính độ cao cực đại vật có thể đạt tới.\nGiải: $h_{max} = h + v^2/2g = 2 + 6^2/20 = 2 + 1,8 = 3,8\\ m$.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00426",
+   "khoi": "9",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Cơ năng",
+   "nhom": "BÀI TOÁN TỔNG HỢP NHIỀU BƯỚC: HAO HỤT CƠ NĂNG RỒI BẢO TOÀN",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Tổng hợp. Bài toán gồm hai giai đoạn liên tiếp. Giai đoạn 1 vật mất bớt cơ năng do ma sát hoặc do va chạm. Giai đoạn 2 vật chỉ chịu trọng lực nên cơ năng bảo toàn.\nCông thức. Công của ma sát: $A_{ms} = F_{ms} \\times s$ (hoặc $F_{ms} = \\mu mg$). Cơ năng còn lại sau hao hụt: $W_2 = W_1 - A_{ms}$. Tốc độ ngay sau va chạm: $V_{nay} = k\\% \\times V_{cham}$. Ở giai đoạn không hao hụt: $W = \\dfrac{1}{2}mv^2 + 10mh$ không đổi.\nTrình tự làm bài. Đổi đơn vị về kg, m, m/s, J nếu cần. Tính cơ năng hoặc tốc độ ở đầu giai đoạn hao hụt. Tính phần cơ năng mất đi (công ma sát, hoặc theo tỉ lệ % tốc độ va chạm). Suy ra cơ năng còn lại sau hao hụt. Áp dụng bảo toàn cơ năng cho giai đoạn còn lại để tính đại lượng đề bài hỏi.\nVÍ DỤ 1. Một vật khối lượng $2$ kg trượt không vận tốc đầu từ đỉnh A của một dốc, ở độ cao $6$ m so với chân dốc. Trên đoạn từ A đến chân dốc, vật chịu lực ma sát $5$ N tác dụng trên quãng đường $4$ m. Sau khi tới chân dốc, vật trượt tiếp lên một dốc khác không có ma sát. Lấy $g = 10\\text{ m/s}^2$, tính độ cao lớn nhất $h_2$ mà vật đạt được trên dốc không ma sát.\nGiải: Cơ năng tại A: $W_1 = 10mh_1 = 10 \\times 2 \\times 6 = 120$ J. Công cản: $A_{ms} = F_{ms} \\times s = 5 \\times 4 = 20$ J. Cơ năng còn lại ở chân dốc: $W_2 = W_1 - A_{ms} = 100$ J. Đoạn sau không ma sát nên cơ năng bảo toàn: $W_2 = 10mh_2 \\Rightarrow h_2 = W_2/(10m) = 5$ m.\nVÍ DỤ 2. Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao $5$ m xuống nền cứng. Va chạm làm vật mất bớt cơ năng: ngay sau va chạm, tốc độ của vật chỉ còn $80\\%$ tốc độ lúc chạm đất. Bỏ qua sức cản không khí, lấy $g = 10\\text{ m/s}^2$, tính độ cao lớn nhất $h_2$ mà vật này lên được.\nGiải: Tốc độ lúc chạm đất: $V_{cham} = \\sqrt{(2gh_1)} = \\sqrt{(20 \\times 5)} = 10\\text{ m/s}$. Tốc độ ngay sau va chạm: $V_{nay} = 80\\% \\times V_{cham} = 8\\text{ m/s}$. Sau va chạm vật chỉ chịu trọng lực nên cơ năng bảo toàn, toàn bộ động năng chuyển hết thành thế năng ở độ cao lớn nhất: $h_2 = V_{nay}^2/20 = 3,2$ m.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00427",
+   "khoi": "9",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Công & Công suất",
+   "nhom": "Khái niệm công cơ học, công suất và đơn vị",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nCông cơ học\nKhi lực tác dụng vào vật làm vật dịch chuyển theo phương của lực thì lực đó thực hiện công cơ học, gọi tắt là công.\nCó công cơ học khi có đủ hai điều kiện: có lực tác dụng vào vật và vật dịch chuyển theo phương của lực.\nKhông có công cơ học trong hai trường hợp: vật không dịch chuyển dù có lực tác dụng; lực tác dụng có phương vuông góc với phương dịch chuyển của vật.\nCông phụ thuộc vào độ lớn của lực và quãng đường vật dịch chuyển theo phương của lực.\nCông suất\nCông suất là tốc độ thực hiện công, được xác định bằng công thức hiện được trong một đơn vị thời gian.\nCùng thực hiện một công, máy nào làm trong thời gian ngắn hơn thì có công suất lớn hơn.\nTrong cùng một khoảng thời gian, máy nào thực hiện được công lớn hơn thì có công suất lớn hơn.\n\n##TC2. Công thức\nCông cơ học:\n$$A = F \\cdot s$$\nTrong đó: A là công của lực (J); F là độ lớn của lực (N); s là quãng đường vật dịch chuyển theo phương của lực (m).\nCông suất:\n$$P = \\dfrac{A}{t}$$\nTrong đó: P là công suất (W); A là công thực hiện được (J); t là thời gian thực hiện công (s).\nĐơn vị:\n$\\begin{array}{|l|l|l|}\\hline\\text{Đại lượng} & \\text{Đơn vị} & \\text{Quan hệ giữa các đơn vị} \\\\\\hline\\text{Công} & \\text{jun (J), kilôjun (kJ)} & 1 \\text{ J} = 1 \\text{ N} \\cdot \\text{m}; 1 \\text{ kJ} = 1000 \\text{ J} \\\\\\text{Công suất} & \\text{oát (W), kilôoát (kW),} & 1 \\text{ W} = 1 \\dfrac{\\text{J}}{\\text{s}}; 1 \\text{ kW} = 1000 \\text{ W}; 1 \\text{ MW} = \\\\\\ & \\text{mêgaoát (MW)} & 1000000 \\text{ W} \\\\\\hline\\end{array}$\n\n##PP 3. Các bước làm bài\nBước 1. Xác định lực đang xét và phương dịch chuyển của vật.\nBước 2. Kiểm tra hai điều kiện: vật có dịch chuyển hay không; lực có cùng phương với phương dịch chuyển hay không.\nBước 3. Với câu so sánh công suất: so sánh công thực hiện trong cùng một thời gian, hoặc so sánh thời gian thực hiện cùng một công.\nBước 4. Với câu đổi đơn vị: đổi về đơn vị chuẩn (J, W) trước, rồi đổi sang đơn vị đề hỏi.\n\n##CY 4. Lưu ý\nNgười phải dùng sức, thấy mỏi, chưa chắc đã thực hiện công cơ học. Người giữ quà tạ đứng yên không thực hiện công vì quả tạ không dịch chuyển.\nLực vuông góc với phương dịch chuyển không thực hiện công, ví dụ trọng lực tác dụng lên vật chuyển động trên mặt đường nằm ngang.\nCông suất lớn không có nghĩa là công lớn, vì công còn phụ thuộc vào thời gian làm việc.\nTrong chuyên đề này, kí hiệu P dùng cho công suất; cần phân biệt với trọng lượng của vật.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00428",
+   "khoi": "9",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Công & Công suất",
+   "nhom": "Tính toán công cơ học A",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\n\nCông của một lực\nKhi lực $\\mathrm{F}$ làm vật dịch chuyển quãng đường $\\mathrm{s}$ theo phương của lực, công của lực bằng tích của độ lớn lực và quãng đường dịch chuyển.\nCông thức có ba đại lượng $\\mathrm{A}$, $\\mathrm{F}$, $\\mathrm{s}$. Biết hai đại lượng thì tính được đại lượng còn lại.\nCông năng vật lên cao\nKhi nâng đều một vật theo phương thẳng đứng, lực nâng có độ lớn bằng trọng lượng của vật và quãng đường dịch chuyển bằng độ cao $\\mathrm{h}$.\nTrọng lượng của vật (N) bằng $10$ lần khối lượng của vật (kg).\n\n##TC 2. Công thức\nCông của lực:\n$\\mathrm{A = F \\cdot s}$\nTính lực hoặc quãng đường khi biết công:\n$\\mathrm{F = \\dfrac{A}{s} ; s = \\dfrac{A}{F}}$\nCông năng vật có khối lượng $\\mathrm{m}$ lên độ cao $\\mathrm{h}$:\n$\\mathrm{A = F \\cdot h = 10m \\cdot h}$\nTrong đó: $\\mathrm{A}$ là công (J); $\\mathrm{F}$ là lực (N); $\\mathrm{s}$ là quãng đường (m); $\\mathrm{m}$ là khối lượng (kg); $\\mathrm{h}$ là độ cao (m).\nĐổi đơn vị thường gặp:\n$\\begin{array}{|l|l|}\n\\hline\n\\text{Đại lượng} & \\text{Đổi đơn vị} \\\\\n\\hline\n\\text{Quãng đường, độ cao} & 1 \\text{ km} = 1000 \\text{ m}; 1 \\text{ cm} = 0,01 \\text{ m} \\\\\n\\hline\n\\text{Lực} & 1 \\text{ kN} = 1000 \\text{ N} \\\\\n\\hline\n\\text{Khối lượng} & 1 \\text{ tấn} = 1000 \\text{ kg}; 1 \\text{ g} = 0,001 \\text{ kg} \\\\\n\\hline\n\\text{Công} & 1 \\text{ kJ} = 1000 \\text{ J} \\\\\n\\hline\n\\end{array}$\n\n##PP 3. Các bước làm bài\nBước 1. Tóm tắt đề, đổi các đại lượng về $\\mathrm{N}$, $\\mathrm{m}$, $\\mathrm{kg}$, $\\mathrm{J}$.\nBước 2. Xác định lực đang xét và quãng đường vật dịch chuyển theo phương của lực. Với bài năng vật:\n$\\mathrm{F = 10m}$, $\\mathrm{s = h}$.\nBước 3. Thay số vào công thức $\\mathrm{A = F \\cdot s}$ hoặc công thức biến đổi.\nBước 4. Đổi kết quả sang đơn vị đề yêu cầu.\n\n##CY4. Lưu ý\nKhông nhân khối lượng với quãng đường; phải đổi khối lượng ra trọng lượng ($F = 10m$) khi tính công nâng vật.\nVật đi nhiều vòng thì quãng đường bằng số vòng nhân với chiều dài một vòng.\nĐi từ sàn tầng 1 lên sàn tầng n, vật đi qua $n - 1$ tầng.\nNhiều người cùng kéo một vật theo cùng một phương thì lực kéo tổng bằng tổng các lực kéo.",
+   "can_dien_ly_thuyet_nhom": false
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB01062",
+   "nhom_id": "KNB00423",
+   "thu_tu": 1,
+   "dang": "Biết động năng, thế năng tại một vị trí, tính động năng tại vị trí khác",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010303004",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 4 kg, tại vị trí A có động năng 30 J, thế năng 25 J. Tính động năng của vật tại vị trí B, biết B ở độ cao 0,5 m so với vị trí A.",
+     "lua_chon": [
+      "75 J.",
+      "35 J.",
+      "30 J.",
+      "20 J."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Động năng của vật tại vị trí B là:\n$W = W_{dA} + W_{tA} = 30 + 25 = 55\\ J$.\n$W_{tB} = 10 \\times 4 \\times 0,5 = 20\\ J$.\n$W_{dB} = W - W_{tB} = 55 - 20 = 35\\ J$."
+    },
+    {
+     "ma_cau": "K09010303001",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 2 kg, tại vị trí A có động năng 20 J, thế năng 30 J. Tính động năng của vật tại vị trí B, biết B ở độ cao 2 m so với vị trí A.",
+     "lua_chon": [
+      "90 J.",
+      "20 J.",
+      "10 J.",
+      "40 J."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Động năng của vật tại vị trí B là:\n$W = W_{dA} + W_{tA} = 20 + 30 = 50\\ J$.\n$W_{tB} = 10 \\times 2 \\times 2 = 40\\ J$.\n$W_{dB} = W - W_{tB} = 50 - 40 = 10\\ J$."
+    },
+    {
+     "ma_cau": "K09010303003",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 2 kg, tại vị trí A có động năng 25 J, thế năng 20 J. Tính động năng của vật tại vị trí B, biết B ở độ cao 1,5 m so với vị trí A.",
+     "lua_chon": [
+      "15 J.",
+      "75 J.",
+      "25 J.",
+      "30 J."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Động năng của vật tại vị trí B là:\n$W = W_{dA} + W_{tA} = 25 + 20 = 45\\ J$.\n$W_{tB} = 10 \\times 2 \\times 1,5 = 30\\ J$.\n$W_{dB} = W - W_{tB} = 45 - 30 = 15\\ J$."
+    },
+    {
+     "ma_cau": "K09010303008",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 2 kg, tại vị trí A có động năng 12 J, thế năng 38 J. Tính động năng của vật tại vị trí B, biết B ở độ cao 1,8 m so với vị trí A.",
+     "lua_chon": [
+      "86 J.",
+      "12 J.",
+      "36 J.",
+      "14 J."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cơ năng của vật tại vị trí A là: $W = W_{dA} + W_{tA} = 12 + 38 = 50 \\mathrm{~J}$\nThế năng của vật tại vị trí B là: $W_{tB} = mgh = 2 \\times 10 \\times 1,8 = 36 \\mathrm{~J}$\nVận dụng định luật bảo toàn cơ năng, ta có:\n$W = W_{dB} + W_{tB} \\Leftrightarrow 50 = W_{dB} + 36 \\Leftrightarrow W_{dB} = 50 - 36 = 14 \\mathrm{~J}$"
+    },
+    {
+     "ma_cau": "K09010303005",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 3 kg, tại vị trí A có động năng 18 J, thế năng 32 J. Tính động năng của vật tại vị trí B, biết B ở độ cao 1,3 m so với vị trí A.",
+     "lua_chon": [
+      "89 J.",
+      "11 J.",
+      "18 J.",
+      "39 J."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Động năng ban đầu và thế năng ban đầu của vật tại vị trí A là: $W_{dA} = 18 \\mathrm{~J}$; $W_{tA} = 32 \\mathrm{~J}$\nCơ năng của vật tại vị trí A là: $W = W_{dA} + W_{tA} = 18 + 32 = 50 \\mathrm{~J}$\nThế năng của vật tại vị trí B là: $W_{tB} = mgh = 3 \\times 10 \\times 1,3 = 39 \\mathrm{~J}$\nVận dụng định luật bảo toàn cơ năng, ta có:\n$W = W_{dB} + W_{tB} \\Leftrightarrow 50 = W_{dB} + 39 \\Leftrightarrow W_{dB} = 50 - 39 = 11 \\mathrm{~J}$"
+    },
+    {
+     "ma_cau": "K09010303007",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 4 kg, tại vị trí A có động năng 35 J, thế năng 15 J. Tính động năng của vật tại vị trí B, biết B ở độ cao 0,7 m so với vị trí A.",
+     "lua_chon": [
+      "78 J.",
+      "35 J.",
+      "22 J.",
+      "28 J."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cơ năng của vật tại vị trí A là: $W = W_{dA} + W_{tA} = 35 + 15 = 50 \\mathrm{~J}$\nThế năng của vật tại vị trí B là: $W_{tB} = mgh = 4 \\times 10 \\times 0,7 = 28 \\mathrm{~J}$\nVận dụng định luật bảo toàn cơ năng, ta có:\n$W = W_{dB} + W_{tB} \\Leftrightarrow 50 = W_{dB} + 28 \\Leftrightarrow W_{dB} = 50 - 28 = 22 \\mathrm{~J}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01063",
+   "nhom_id": "KNB00423",
+   "thu_tu": 2,
+   "dang": "Biết tốc độ tại một độ cao, tính tốc độ tại độ cao khác",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010303016",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động với tốc độ $4 \\mathrm{~m} / \\mathrm{s}$ tại độ cao $6 \\mathrm{~m}$ so với mặt đất. Tính tốc độ của vật khi ở độ cao $1,5 \\mathrm{~m}$ so với mặt đất. Lấy $\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^{2}$.",
+     "lua_chon": [
+      "$12,88 \\mathrm{~m} / \\mathrm{s}$.",
+      "$7,81 \\mathrm{~m} / \\mathrm{s}$.",
+      "$13,49 \\mathrm{~m} / \\mathrm{s}$.",
+      "$10,3 \\mathrm{~m} / \\mathrm{s}$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\dfrac{1}{2} \\mathrm{v}_{\\mathrm{A}}{ }^{2}+10 \\mathrm{~h}_{\\mathrm{A}}=\\dfrac{1}{2} \\mathrm{v}_{\\mathrm{B}}{ }^{2}+10 \\mathrm{~h}_{\\mathrm{B}} \\Rightarrow \\mathrm{v}_{\\mathrm{B}}=\\sqrt{\\left(\\mathrm{v}_{\\mathrm{A}}{ }^{2}+20\\left(\\mathrm{~h}_{\\mathrm{A}}-\\mathrm{h}_{\\mathrm{B}}\\right)\\right)}=\\sqrt{\\left(4^{2}+20 \\times(6-1,5)\\right)}=\\sqrt{(106)}=10,3 \\mathrm{~m} / \\mathrm{s}$."
+    },
+    {
+     "ma_cau": "K09010303014",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động với tốc độ $2 \\mathrm{~m} / \\mathrm{s}$ tại độ cao $4 \\mathrm{~m}$ so với mặt đất. Tính tốc độ của vật khi ở độ cao $0,5 \\mathrm{~m}$ so với mặt đất. Lấy $\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^{2}$.",
+     "lua_chon": [
+      "$9,7 \\mathrm{~m} / \\mathrm{s}$.",
+      "$8,6 \\mathrm{~m} / \\mathrm{s}$.",
+      "$6,24 \\mathrm{~m} / \\mathrm{s}$.",
+      "$10,37 \\mathrm{~m} / \\mathrm{s}$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\dfrac{1}{2} \\mathrm{v}_{\\mathrm{A}}{ }^{2}+10 \\mathrm{~h}_{\\mathrm{A}}=\\dfrac{1}{2} \\mathrm{v}_{\\mathrm{B}}{ }^{2}+10 \\mathrm{~h}_{\\mathrm{B}} \\Rightarrow \\mathrm{v}_{\\mathrm{B}}=\\sqrt{\\left(\\mathrm{v}_{\\mathrm{A}}{ }^{2}+20\\left(\\mathrm{~h}_{\\mathrm{A}}-\\mathrm{h}_{\\mathrm{B}}\\right)\\right)}=\\sqrt{\\left(2^{2}+20 \\times(4-0,5)\\right)}=\\sqrt{(74)}=8,6 \\mathrm{~m} / \\mathrm{s}$."
+    },
+    {
+     "ma_cau": "K09010303010",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động với tốc độ 6 m/s tại độ cao 8 m so với mặt đất. Tính tốc độ của vật khi ở độ cao 3,5 m so với mặt đất. Lấy g = 10 m/s\n$^2$.",
+     "lua_chon": [
+      "16,31 m/s.",
+      "9 m/s.",
+      "11,22 m/s.",
+      "15,49 m/s."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\dfrac{1}{2}\\mathrm{v_A^2} + 10\\mathrm{h_A} = \\dfrac{1}{2}\\mathrm{v_B^2} + 10\\mathrm{h_B}\n\\Rightarrow \\mathrm{v_B} = \\sqrt{\\left(\\mathrm{v_A^2} + 20\\left(\\mathrm{h_A} - \\mathrm{h_B}\\right)\\right)} = \\sqrt{\\left(6^2 + 20 \\times\\left(8 - 3.5\\right)\\right)} = \\sqrt{126} = 11.22 \\text{ m/s}."
+    },
+    {
+     "ma_cau": "K09010303009",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động với tốc độ 4 m/s tại độ cao 5 m so với mặt đất. Tính tốc độ của vật khi ở độ cao 2 m so với mặt đất. Lấy g = 10 m/s\n$^2$.",
+     "lua_chon": [
+      "12,49 m/s.",
+      "8,72 m/s.",
+      "6,78 m/s.",
+      "11,75 m/s."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\dfrac{1}{2}\\mathrm{v_A^2} + 10\\mathrm{h_A} = \\dfrac{1}{2}\\mathrm{v_B^2} + 10\\mathrm{h_B}\n\\Rightarrow \\mathrm{v_B} = \\sqrt{\\left(\\mathrm{v_A^2} + 20\\left(\\mathrm{h_A} - \\mathrm{h_B}\\right)\\right)} = \\sqrt{\\left(4^2 + 20 \\times\\left(5 - 2\\right)\\right)} = \\sqrt{76} = 8.72 \\text{ m/s}."
+    },
+    {
+     "ma_cau": "K09010303013",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động với tốc độ $5 \\mathrm{~m} / \\mathrm{s}$ tại độ cao $7 \\mathrm{~m}$ so với mặt đất. Tính tốc độ của vật khi ở độ cao $2 \\mathrm{~m}$ so với mặt đất. Lấy $\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^{2}$.",
+     "lua_chon": [
+      "$11,18 \\mathrm{~m} / \\mathrm{s}$.",
+      "$14,32 \\mathrm{~m} / \\mathrm{s}$.",
+      "$8,66 \\mathrm{~m} / \\mathrm{s}$.",
+      "$15 \\mathrm{~m} / \\mathrm{s}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\dfrac{1}{2} \\mathrm{v}_{\\mathrm{A}}{ }^{2}+10 \\mathrm{~h}_{\\mathrm{A}}=\\dfrac{1}{2} \\mathrm{v}_{\\mathrm{B}}{ }^{2}+10 \\mathrm{~h}_{\\mathrm{B}} \\Rightarrow \\mathrm{v}_{\\mathrm{B}}=\\sqrt{\\left(\\mathrm{v}_{\\mathrm{A}}{ }^{2}+20\\left(\\mathrm{~h}_{\\mathrm{A}}-\\mathrm{h}_{\\mathrm{B}}\\right)\\right)}=\\sqrt{\\left(5^{2}+20 \\times(7-2)\\right)}=\\sqrt{(125)}=11,18 \\mathrm{~m} / \\mathrm{s}$."
+    },
+    {
+     "ma_cau": "K09010303012",
+     "loai": "trac_nghiem",
+     "de": "Một vật đang chuyển động với tốc độ 8 m/s tại độ cao 10 m so với mặt đất. Tính tốc độ của vật khi ở độ cao 4 m so với mặt đất. Lấy g = 10 m/s\n$^2$.",
+     "lua_chon": [
+      "18,55 m/s.",
+      "11,14 m/s.",
+      "18,95 m/s.",
+      "13,56 m/s."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\dfrac{1}{2}\\mathrm{v_A^2} + 10\\mathrm{h_A} = \\dfrac{1}{2}\\mathrm{v_B^2} + 10\\mathrm{h_B}\n\\Rightarrow \\mathrm{v_B} = \\sqrt{\\left(\\mathrm{v_A^2} + 20\\left(\\mathrm{h_A} - \\mathrm{h_B}\\right)\\right)} = \\sqrt{\\left(8^2 + 20 \\times\\left(10 - 4\\right)\\right)} = \\sqrt{184} = 13.56 \\text{ m/s}."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01064",
+   "nhom_id": "KNB00423",
+   "thu_tu": 3,
+   "dang": "Vật rơi tự do, tính tốc độ khi chạm đất",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010303022",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao 18 m. Tính tốc độ của vật khi chạm đất. Lấy $\\mathrm{g} = 10 \\mathrm{~m} / \\mathrm{s}^2$.",
+     "lua_chon": [
+      "13,42 m/s.",
+      "360 m/s.",
+      "18,97 m/s.",
+      "1,05 m/s."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vật rơi tự do: $\\mathrm{v}=\\sqrt{(20 \\mathrm{~h})}=\\sqrt{(20 \\times 18)}=\\sqrt{(360)}=18,97 \\mathrm{~m} / \\mathrm{s}$."
+    },
+    {
+     "ma_cau": "K09010303018",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao 8 m. Tính tốc độ của vật khi chạm đất. Lấy $\\mathrm{g = 10\\ m/s^2}$.",
+     "lua_chon": [
+      "8,94 m/s.",
+      "160 m/s.",
+      "1,58 m/s.",
+      "12,65 m/s."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vật rơi tự do: $v = \\sqrt{(20h)} = \\sqrt{(20 \\times 8)} = \\sqrt{(160)} = 12,65\\ m/s$."
+    },
+    {
+     "ma_cau": "K09010303021",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao 15 m. Tính tốc độ của vật khi chạm đất. Lấy $\\mathrm{g} = 10 \\mathrm{~m} / \\mathrm{s}^2$.",
+     "lua_chon": [
+      "17,32 m/s.",
+      "12,25 m/s.",
+      "300 m/s.",
+      "1,15 m/s."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vật rơi tự do: $\\mathrm{v}=\\sqrt{(20 \\mathrm{~h})}=\\sqrt{(20 \\times 15)}=\\sqrt{(300)}=17,32 \\mathrm{~m} / \\mathrm{s}$."
+    },
+    {
+     "ma_cau": "K09010303017",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao 6 m. Tính tốc độ của vật khi chạm đất. Lấy $\\mathrm{g = 10\\ m/s^2}$.",
+     "lua_chon": [
+      "10,95 m/s.",
+      "7,75 m/s.",
+      "120 m/s.",
+      "1,83 m/s."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vật rơi tự do: $v = \\sqrt{(20h)} = \\sqrt{(20 \\times 6)} = \\sqrt{(120)} = 10,95\\ m/s$."
+    },
+    {
+     "ma_cau": "K09010303023",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao 20 m. Tính tốc độ của vật khi chạm đất. Lấy $\\mathrm{g} = 10 \\mathrm{~m} / \\mathrm{s}^2$.",
+     "lua_chon": [
+      "20 m/s.",
+      "14,14 m/s.",
+      "400 m/s.",
+      "1 m/s."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vật rơi tự do: $\\mathrm{v}=\\sqrt{(20 \\mathrm{~h})}=\\sqrt{(20 \\times 20)}=\\sqrt{(400)}=20 \\mathrm{~m} / \\mathrm{s}$."
+    },
+    {
+     "ma_cau": "K09010303020",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao 12 m. Tính tốc độ của vật khi chạm đất. Lấy $\\mathrm{g = 10\\ m/s^2}$.",
+     "lua_chon": [
+      "10,95 m/s.",
+      "240 m/s.",
+      "1,29 m/s.",
+      "15,49 m/s."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vật rơi tự do: $v = \\sqrt{(20h)} = \\sqrt{(20 \\times 12)} = \\sqrt{(240)} = 15,49\\ m/s$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01065",
+   "nhom_id": "KNB00423",
+   "thu_tu": 4,
+   "dang": "Vật ném thẳng đứng lên, tính độ cao cực đại",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010303030",
+     "loai": "trac_nghiem",
+     "de": "Một vật được ném thẳng đứng lên trên với tốc độ ban đầu 22 m/s. Bỏ qua sức cản không khí, tính độ cao cực đại vật đạt được. Lấy g = 10 m/s$^2$.",
+     "lua_chon": [
+      "24,2 m.",
+      "48,4 m.",
+      "1,1 m.",
+      "0,04 m."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tại độ cao cực đại, $v = 0$: $1/2mv_0^2 = mgh_{max} \\Rightarrow h_{max} = v_0^2/2g = 22^2/(2 \\times 10) = 24,2$ m."
+    },
+    {
+     "ma_cau": "K09010303024",
+     "loai": "trac_nghiem",
+     "de": "Một vật được ném thẳng đứng lên trên với tốc độ ban đầu 7 m/s. Bỏ qua sức cản không khí, tính độ cao cực đại vật đạt được. Lấy $\\mathrm{g = 10\\ m/s^2}$.",
+     "lua_chon": [
+      "2,45 m.",
+      "4,9 m.",
+      "0,35 m.",
+      "0,41 m."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tại độ cao cực đại, $v = 0: \\frac{1}{2}v_0^2 = 10h_{max} \\Rightarrow h_{max} = v_0^2/20 = 7^2/20 = 2,45$ m."
+    },
+    {
+     "ma_cau": "K09010303025",
+     "loai": "trac_nghiem",
+     "de": "Một vật được ném thẳng đứng lên trên với tốc độ ban đầu 9 m/s. Bỏ qua sức cản không khí, tính độ cao cực đại vật đạt được. Lấy $\\mathrm{g = 10\\ m/s^2}$.",
+     "lua_chon": [
+      "8,1 m.",
+      "0,45 m.",
+      "4,05 m.",
+      "0,25 m."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tại độ cao cực đại, $v = 0: \\frac{1}{2}v_0^2 = 10h_{max} \\Rightarrow h_{max} = v_0^2/20 = 9^2/20 = 4,05$ m."
+    },
+    {
+     "ma_cau": "K09010303026",
+     "loai": "trac_nghiem",
+     "de": "Một vật được ném thẳng đứng lên trên với tốc độ ban đầu 11 m/s. Bỏ qua sức cản không khí, tính độ cao cực đại vật đạt được. Lấy $\\mathrm{g = 10\\ m/s^2}$.",
+     "lua_chon": [
+      "12,1 m.",
+      "6,05 m.",
+      "0,55 m.",
+      "0,17 m."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tại độ cao cực đại, $v = 0: \\frac{1}{2}v_0^2 = 10h_{max} \\Rightarrow h_{max} = v_0^2/20 = 11^2/20 = 6,05$ m."
+    },
+    {
+     "ma_cau": "K09010303028",
+     "loai": "trac_nghiem",
+     "de": "Một vật được ném thẳng đứng lên trên với tốc độ ban đầu 16 m/s. Bỏ qua sức cản không khí, tính độ cao cực đại vật đạt được. Lấy g = 10 m/s$^2$.",
+     "lua_chon": [
+      "12,8 m.",
+      "25,6 m.",
+      "0,8 m.",
+      "0,08 m."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tại độ cao cực đại, $v = 0$: $1/2mv_0^2 = mgh_{max} \\Rightarrow h_{max} = v_0^2/2g = 16^2/(2 \\times 10) = 12,8$ m."
+    },
+    {
+     "ma_cau": "K09010303029",
+     "loai": "trac_nghiem",
+     "de": "Một vật được ném thẳng đứng lên trên với tốc độ ban đầu 19 m/s. Bỏ qua sức cản không khí, tính độ cao cực đại vật đạt được. Lấy g = 10 m/s$^2$.",
+     "lua_chon": [
+      "36,1 m.",
+      "18,05 m.",
+      "0,95 m.",
+      "0,06 m."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tại độ cao cực đại, $v = 0$: $1/2mv_0^2 = mgh_{max} \\Rightarrow h_{max} = v_0^2/2g = 19^2/(2 \\times 10) = 18,05$ m."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01066",
+   "nhom_id": "KNB00423",
+   "thu_tu": 5,
+   "dang": "Cho cơ năng toàn phần tại một vị trí, tính động năng tại vị trí khác",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010303032",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng 3 kg có cơ năng 0,08 kJ tại vị trí A. Tính động năng của vật tại vị trí B ở độ cao 1,6 m so với vị trí A.",
+     "dap_an": "32",
+     "loi_giai": "Đổi $W = 0,08\\ \\mathrm{kJ} = 80\\ \\mathrm{J}$.\n$W_{tB} = 10 \\times 3 \\times 1,6 = 48\\ \\mathrm{J}$.\n$W_{đB} = W - W_{tB} = 80 - 48 = 32\\ \\mathrm{J}$"
+    },
+    {
+     "ma_cau": "K09010303033",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng 2 kg có cơ năng 0,05 kJ tại vị trí A. Tính động năng của vật tại vị trí B ở độ cao 1,3 m so với vị trí A.",
+     "dap_an": "24",
+     "loi_giai": "Đổi $W = 0,05\\ \\mathrm{kJ} = 50\\ \\mathrm{J}$.\n$W_{tB} = 10 \\times 2 \\times 1,3 = 26\\ \\mathrm{J}$.\n$W_{đB} = W - W_{tB} = 50 - 26 = 24\\ \\mathrm{J}$"
+    },
+    {
+     "ma_cau": "K09010303035",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng 3 kg có cơ năng 0,07 kJ tại vị trí A. Tính động năng của vật tại vị trí B ở độ cao 1,7 m so với vị trí A.",
+     "dap_an": "19",
+     "loi_giai": "Đổi $W = 0,07\\ \\mathrm{kJ} = 70\\ \\mathrm{J}$.\n$W_{tB} = 10 \\times 3 \\times 1,7 = 51\\ \\mathrm{J}$.\n$W_{đB} = W - W_{tB} = 70 - 51 = 19\\ \\mathrm{J}$"
+    },
+    {
+     "ma_cau": "K09010303031",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng 2 kg có cơ năng 0,06 kJ tại vị trí A. Tính động năng của vật tại vị trí B ở độ cao 2,2 m so với vị trí A.",
+     "dap_an": "16",
+     "loi_giai": "Đổi $W = 0,06\\ \\mathrm{kJ} = 60\\ \\mathrm{J}$.\n$W_{tB} = 10 \\times 2 \\times 2,2 = 44\\ \\mathrm{J}$.\n$W_{đB} = W - W_{tB} = 60 - 44 = 16\\ \\mathrm{J}$"
+    },
+    {
+     "ma_cau": "K09010303034",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng 4 kg có cơ năng 0,09 kJ tại vị trí A. Tính động năng của vật tại vị trí B ở độ cao 1,1 m so với vị trí A.",
+     "dap_an": "46",
+     "loi_giai": "Đổi $W = 0,09\\ \\mathrm{kJ} = 90\\ \\mathrm{J}$.\n$W_{tB} = 10 \\times 4 \\times 1,1 = 44\\ \\mathrm{J}$.\n$W_{đB} = W - W_{tB} = 90 - 44 = 46\\ \\mathrm{J}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01067",
+   "nhom_id": "KNB00423",
+   "thu_tu": 6,
+   "dang": "Biết tốc độ tại một vị trí, độ cao giảm thêm, tính tốc độ tại vị trí sau",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010303040",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động với tốc độ 90 km/h thì đi xuống thêm 0,6 m theo phương thẳng đứng. Tính tốc độ của vật lúc đó.",
+     "dap_an": "25,24",
+     "loi_giai": "Đổi $v_A = 90 \\text{ km/h} = 25 \\text{ m/s}$.\n$v_B = \\sqrt{(v_A^2 + 20 \\times \\Delta h)} = \\sqrt{(25^2 + 20 \\times 0,6)} = 25,24 \\text{ m/s}.$"
+    },
+    {
+     "ma_cau": "K09010303036",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động với tốc độ 18 km/h thì đi xuống thêm 3,2 m theo phương thẳng đứng. Tính tốc độ của vật lúc đó.",
+     "dap_an": "9,43",
+     "loi_giai": "Đổi $v_A = 18 \\text{ km/h} = 5 \\text{ m/s}$.\n$v_B = \\sqrt{(v_A^2 + 20 \\times \\Delta h)} = \\sqrt{(5^2 + 20 \\times 3,2)} = 9,43 \\text{ m/s}.$"
+    },
+    {
+     "ma_cau": "K09010303037",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động với tốc độ 36 km/h thì đi xuống thêm 1,8 m theo phương thẳng đứng. Tính tốc độ của vật lúc đó.",
+     "dap_an": "11,66",
+     "loi_giai": "Đổi $v_A = 36 \\text{ km/h} = 10 \\text{ m/s}$.\n$v_B = \\sqrt{(v_A^2 + 20 \\times \\Delta h)} = \\sqrt{(10^2 + 20 \\times 1,8)} = 11,66 \\text{ m/s}.$"
+    },
+    {
+     "ma_cau": "K09010303039",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động với tốc độ 72 km/h thì đi xuống thêm 2,4 m theo phương thẳng đứng. Tính tốc độ của vật lúc đó.",
+     "dap_an": "21,17",
+     "loi_giai": "Đổi $v_A = 72 \\text{ km/h} = 20 \\text{ m/s}$.\n$v_B = \\sqrt{(v_A^2 + 20 \\times \\Delta h)} = \\sqrt{(20^2 + 20 \\times 2,4)} = 21,17 \\text{ m/s}.$"
+    },
+    {
+     "ma_cau": "K09010303038",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật đang chuyển động với tốc độ 54 km/h thì đi xuống thêm 0,9 m theo phương thẳng đứng. Tính tốc độ của vật lúc đó.",
+     "dap_an": "15,59",
+     "loi_giai": "Đổi $v_A = 54 \\text{ km/h} = 15 \\text{ m/s}$.\n$v_B = \\sqrt{(v_A^2 + 20 \\times \\Delta h)} = \\sqrt{(15^2 + 20 \\times 0,9)} = 15,59 \\text{ m/s}.$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01068",
+   "nhom_id": "KNB00423",
+   "thu_tu": 7,
+   "dang": "Vật rơi tự do từ độ cao đổi đơn vị, tính tốc độ khi chạm đất",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010303044",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do từ độ cao 1280 cm. Tính tốc độ của vật khi chạm đất. Lấy $g = 10 \\ \\mathrm{m/s^2}$.",
+     "dap_an": "16",
+     "loi_giai": "Đổi $h = 1280 \\ \\mathrm{cm} = 12,8 \\ \\mathrm{m}$.\n$v = \\sqrt{(2gh)} = \\sqrt{(2 \\times 10 \\times 12,8)} = 16 \\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010303045",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do từ độ cao 1620 cm. Tính tốc độ của vật khi chạm đất. Lấy $g = 10 \\ \\mathrm{m/s^2}$.",
+     "dap_an": "18",
+     "loi_giai": "Đổi $h = 1620 \\ \\mathrm{cm} = 16,2 \\ \\mathrm{m}$.\n$v = \\sqrt{(2gh)} = \\sqrt{(2 \\times 10 \\times 16,2)} = 18 \\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010303043",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do từ độ cao 980 cm. Tính tốc độ của vật khi chạm đất. Lấy $g = 10 \\ \\mathrm{m/s^2}$.",
+     "dap_an": "14",
+     "loi_giai": "Đổi $h = 980 \\ \\mathrm{cm} = 9,8 \\ \\mathrm{m}$.\n$v = \\sqrt{(2gh)} = \\sqrt{(2 \\times 10 \\times 9,8)} = 14 \\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010303042",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do từ độ cao 720 cm. Tính tốc độ của vật khi chạm đất. Lấy $g = 10 \\ \\mathrm{m/s^2}$.",
+     "dap_an": "12",
+     "loi_giai": "Đổi $h = 720 \\ \\mathrm{cm} = 7,2 \\ \\mathrm{m}$.\n$v = \\sqrt{(2gh)} = \\sqrt{(2 \\times 10 \\times 7,2)} = 12 \\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010303041",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do từ độ cao 450 cm. Tính tốc độ của vật khi chạm đất. Lấy $g = 10 \\ \\mathrm{m/s^2}$.",
+     "dap_an": "9.49",
+     "loi_giai": "Đổi $h = 450 \\ \\mathrm{cm} = 4,5 \\ \\mathrm{m}$.\n$v = \\sqrt{(2gh)} = \\sqrt{(2 \\times 10 \\times 4,5)} = 9,49 \\ \\mathrm{m/s}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01069",
+   "nhom_id": "KNB00423",
+   "thu_tu": 8,
+   "dang": "Vật ném thẳng đứng lên với tốc độ đổi đơn vị, tính độ cao cực đại",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010303049",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do từ độ cao 1280 cm. Tính tốc độ của vật khi chạm đất. Lấy $g = 10 \\ \\mathrm{m/s^2}$.",
+     "dap_an": "16",
+     "loi_giai": "Đổi $h = 1280 \\ \\mathrm{cm} = 12,8 \\ \\mathrm{m}$.\n$v = \\sqrt{(2gh)} = \\sqrt{(2 \\times 10 \\times 12,8)} = \\sqrt{256} = 16 \\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010303050",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do từ độ cao 1620 cm. Tính tốc độ của vật khi chạm đất. Lấy $g = 10 \\ \\mathrm{m/s^2}$.",
+     "dap_an": "18",
+     "loi_giai": "Đổi $h = 1620 \\ \\mathrm{cm} = 16,2 \\ \\mathrm{m}$.\n$v = \\sqrt{(2gh)} = \\sqrt{(2 \\times 10 \\times 16,2)} = \\sqrt{324} = 18 \\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010303046",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do từ độ cao 450 cm. Tính tốc độ của vật khi chạm đất. Lấy $g = 10 \\ \\mathrm{m/s^2}$.",
+     "dap_an": "9.49",
+     "loi_giai": "Đổi $h = 450 \\ \\mathrm{cm} = 4,5 \\ \\mathrm{m}$.\n$v = \\sqrt{ (2gh)} = \\sqrt{(2 \\times 10 \\times 4,5)} = \\sqrt{90} \\approx 9,49 \\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010303048",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do từ độ cao 980 cm. Tính tốc độ của vật khi chạm đất. Lấy $g = 10 \\ \\mathrm{m/s^2}$.",
+     "dap_an": "14",
+     "loi_giai": "Đổi $h = 980 \\ \\mathrm{cm} = 9,8 \\ \\mathrm{m}$.\n$v = \\sqrt{(2gh)} = \\sqrt{(2 \\times 10 \\times 9,8)} = \\sqrt{196} = 14 \\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010303047",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do từ độ cao 720 cm. Tính tốc độ của vật khi chạm đất. Lấy $g = 10 \\ \\mathrm{m/s^2}$.",
+     "dap_an": "12",
+     "loi_giai": "Đổi $h = 720 \\ \\mathrm{cm} = 7,2 \\ \\mathrm{m}$.\n$v = \\sqrt{(2gh)} = \\sqrt{(2 \\times 10 \\times 7,2)} = \\sqrt{144} = 12 \\ \\mathrm{m/s}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01070",
+   "nhom_id": "KNB00424",
+   "thu_tu": 1,
+   "dang": "Vật rơi tự do, tính tốc độ tại độ cao bất kỳ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010304004",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao 9 m. Tính tốc độ của vật khi ở độ cao 3 m so với mặt đất. Lấy $\\mathrm{g} = 10\\ \\mathrm{m/s^2}$.",
+     "lua_chon": [
+      "15,49 m/s.",
+      "7,75 m/s.",
+      "10,95 m/s.",
+      "13,42 m/s."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{v} = \\sqrt{(20(h - h'))} = \\sqrt{(20 \\times (9 - 3))} = \\sqrt{(120)} = 10,95\\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010304002",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao 6 m. Tính tốc độ của vật khi ở độ cao 2 m so với mặt đất. Lấy $\\mathrm{g} = 10\\ \\mathrm{m/s^2}$.",
+     "lua_chon": [
+      "12,65 m/s.",
+      "6,32 m/s.",
+      "10,95 m/s.",
+      "8,94 m/s."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{v} = \\sqrt{(20(h - h'))} = \\sqrt{(20 \\times (6 - 2))} = \\sqrt{(80)} = 8,94\\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010304006",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao 10 m. Tính tốc độ của vật khi ở độ cao 2 m so với mặt đất. Lấy $\\mathrm{g} = 10 \\mathrm{~m/s^2}$.",
+     "lua_chon": [
+      "15,49 m/s.",
+      "12,65 m/s.",
+      "8,94 m/s.",
+      "14,14 m/s."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{v} = \\sqrt{(20(h - h'))} = \\sqrt{(20 \\times (10 - 2))} = \\sqrt{(160)} = 12,65 \\mathrm{~m/s}$."
+    },
+    {
+     "ma_cau": "K09010304007",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao 12 m. Tính tốc độ của vật khi ở độ cao 3 m so với mặt đất. Lấy $\\mathrm{g} = 10 \\mathrm{~m/s^2}$.",
+     "lua_chon": [
+      "17,32 m/s.",
+      "9,49 m/s.",
+      "15,49 m/s.",
+      "13,42 m/s."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{v} = \\sqrt{(20(h - h'))} = \\sqrt{(20 \\times (12 - 3))} = \\sqrt{(180)} = 13,42 \\mathrm{~m/s}$."
+    },
+    {
+     "ma_cau": "K09010304008",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao 13 m. Tính tốc độ của vật khi ở độ cao 3 m so với mặt đất. Lấy $\\mathrm{g} = 10 \\mathrm{~m/s^2}$.",
+     "lua_chon": [
+      "17,89 m/s.",
+      "10 m/s.",
+      "14,14 m/s.",
+      "16,12 m/s."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{v} = \\sqrt{(20(h - h'))} = \\sqrt{(20 \\times (13 - 3))} = \\sqrt{(200)} = 14,14 \\mathrm{~m/s}$."
+    },
+    {
+     "ma_cau": "K09010304003",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao 7 m. Tính tốc độ của vật khi ở độ cao 2 m so với mặt đất. Lấy $\\mathrm{g} = 10\\ \\mathrm{m/s^2}$.",
+     "lua_chon": [
+      "10 m/s.",
+      "13,42 m/s.",
+      "7,07 m/s.",
+      "11,83 m/s."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{v} = \\sqrt{(20(h - h'))} = \\sqrt{(20 \\times (7 - 2))} = \\sqrt{(100)} = 10\\ \\mathrm{m/s}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01071",
+   "nhom_id": "KNB00424",
+   "thu_tu": 2,
+   "dang": "Vật ném thẳng đứng lên, tính tốc độ tại độ cao bất kỳ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010304012",
+     "loai": "trac_nghiem",
+     "de": "Một vật được ném thẳng đứng lên trên từ mặt đất với tốc độ ban đầu $14\\ \\mathrm{m/s}$. Bỏ qua sức cản không khí, tính tốc độ của vật khi ở độ cao $5\\ \\mathrm{m}$. Lấy $\\mathrm{g} = 10\\ \\mathrm{m/s^2}$.",
+     "lua_chon": [
+      "$17,2\\ \\mathrm{m/s}$.",
+      "$12,08\\ \\mathrm{m/s}$.",
+      "$9,8\\ \\mathrm{m/s}$.",
+      "$4\\ \\mathrm{m/s}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\dfrac{1}{2}\\mathrm{v_0^2} = \\dfrac{1}{2}\\mathrm{v^2} + 10\\mathrm{h} \\Rightarrow \\mathrm{v} = \\sqrt{(\\mathrm{v_0^2} - 20\\mathrm{h})} = \\sqrt{(14^2 - 20 \\times 5)} = \\sqrt{(96)} = 9,8\\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010304015",
+     "loai": "trac_nghiem",
+     "de": "Một vật được ném thẳng đứng lên trên từ mặt đất với tốc độ ban đầu $13 \\mathrm{~m/s}$. Bỏ qua sức cản không khí, tính tốc độ của vật khi ở độ cao $4,5 \\mathrm{~m}$. Lấy $\\mathrm{g}=10 \\mathrm{~m/s^2}$.",
+     "lua_chon": [
+      "16,09 m/s.",
+      "11,14 m/s.",
+      "8,89 m/s.",
+      "3,51 m/s."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\dfrac{1}{2}\\mathrm{v_0^2} = \\dfrac{1}{2}\\mathrm{v^2} + 10\\mathrm{h} \\Rightarrow \\mathrm{v} = \\sqrt{(\\mathrm{v_0^2} - 20\\mathrm{h})} = \\sqrt{(13^2 - 20 \\times 4,5)} = \\sqrt{(79)} = 8,89 \\mathrm{~m/s}$."
+    },
+    {
+     "ma_cau": "K09010304009",
+     "loai": "trac_nghiem",
+     "de": "Một vật được ném thẳng đứng lên trên từ mặt đất với tốc độ ban đầu $10\\ \\mathrm{m/s}$. Bỏ qua sức cản không khí, tính tốc độ của vật khi ở độ cao $3\\ \\mathrm{m}$. Lấy $\\mathrm{g} = 10\\ \\mathrm{m/s^2}$.",
+     "lua_chon": [
+      "$12,65\\ \\mathrm{m/s}$.",
+      "$6,32\\ \\mathrm{m/s}$.",
+      "$8,37\\ \\mathrm{m/s}$.",
+      "$2,25\\ \\mathrm{m/s}$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\dfrac{1}{2}\\mathrm{v_0^2} = \\dfrac{1}{2}\\mathrm{v^2} + 10\\mathrm{h} \\Rightarrow \\mathrm{v} = \\sqrt{(\\mathrm{v_0^2} - 20\\mathrm{h})} = \\sqrt{(10^2 - 20 \\times 3)} = \\sqrt{(40)} = 6,32\\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010304013",
+     "loai": "trac_nghiem",
+     "de": "Một vật được ném thẳng đứng lên trên từ mặt đất với tốc độ ban đầu $9 \\mathrm{~m/s}$. Bỏ qua sức cản không khí, tính tốc độ của vật khi ở độ cao $2,5 \\mathrm{~m}$. Lấy $\\mathrm{g}=10 \\mathrm{~m/s^2}$.",
+     "lua_chon": [
+      "11,45 m/s.",
+      "5,57 m/s.",
+      "7,48 m/s.",
+      "1,93 m/s."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\dfrac{1}{2}\\mathrm{v_0^2} = \\dfrac{1}{2}\\mathrm{v^2} + 10\\mathrm{h} \\Rightarrow \\mathrm{v} = \\sqrt{(\\mathrm{v_0^2} - 20\\mathrm{h})} = \\sqrt{(9^2 - 20 \\times 2,5)} = \\sqrt{(31)} = 5,57 \\mathrm{~m/s}$."
+    },
+    {
+     "ma_cau": "K09010304011",
+     "loai": "trac_nghiem",
+     "de": "Một vật được ném thẳng đứng lên trên từ mặt đất với tốc độ ban đầu $8\\ \\mathrm{m/s}$. Bỏ qua sức cản không khí, tính tốc độ của vật khi ở độ cao $2\\ \\mathrm{m}$. Lấy $\\mathrm{g} = 10\\ \\mathrm{m/s^2}$.",
+     "lua_chon": [
+      "$10,2\\ \\mathrm{m/s}$.",
+      "$6,63\\ \\mathrm{m/s}$.",
+      "$1,68\\ \\mathrm{m/s}$.",
+      "$4,9\\ \\mathrm{m/s}$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\dfrac{1}{2}\\mathrm{v_0^2} = \\dfrac{1}{2}\\mathrm{v^2} + 10\\mathrm{h} \\Rightarrow \\mathrm{v} = \\sqrt{(\\mathrm{v_0^2} - 20\\mathrm{h})} = \\sqrt{(8^2 - 20 \\times 2)} = \\sqrt{(24)} = 4,9\\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010304014",
+     "loai": "trac_nghiem",
+     "de": "Một vật được ném thẳng đứng lên trên từ mặt đất với tốc độ ban đầu $11 \\mathrm{~m/s}$. Bỏ qua sức cản không khí, tính tốc độ của vật khi ở độ cao $3,5 \\mathrm{~m}$. Lấy $\\mathrm{g}=10 \\mathrm{~m/s^2}$.",
+     "lua_chon": [
+      "7,14 m/s.",
+      "13,82 m/s.",
+      "9,27 m/s.",
+      "2,63 m/s."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\dfrac{1}{2}\\mathrm{v_0^2} = \\dfrac{1}{2}\\mathrm{v^2} + 10\\mathrm{h} \\Rightarrow \\mathrm{v} = \\sqrt{(\\mathrm{v_0^2} - 20\\mathrm{h})} = \\sqrt{(11^2 - 20 \\times 3,5)} = \\sqrt{(51)} = 7,14 \\mathrm{~m/s}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01072",
+   "nhom_id": "KNB00424",
+   "thu_tu": 3,
+   "dang": "Mặt cong không ma sát, biết tốc độ tại một vị trí, tính độ cao cực đại",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010304022",
+     "loai": "trac_nghiem",
+     "de": "Một vật trượt không ma sát trên mặt cong, tại vị trí có độ cao 1,2 m so với mặt đất, vật có tốc độ 3 m/s. Tính độ cao cực đại vật có thể đạt tới. Lấy $g = 10 \\text{ m/s}^2$.",
+     "lua_chon": [
+      "2,1 m.",
+      "1,65 m.",
+      "0,45 m.",
+      "0,75 m."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$h_{max} = h + v^2/2g = 1,2 + 3^2/(2 \\times 10) = 1,2 + 0,45 = 1,65 \\text{ m}$."
+    },
+    {
+     "ma_cau": "K09010304021",
+     "loai": "trac_nghiem",
+     "de": "Một vật trượt không ma sát trên mặt cong, tại vị trí có độ cao 3,5 m so với mặt đất, vật có tốc độ 8 m/s. Tính độ cao cực đại vật có thể đạt tới. Lấy $g = 10 \\text{ m/s}^2$.",
+     "lua_chon": [
+      "6,7 m.",
+      "9,9 m.",
+      "3,2 m.",
+      "0,3 m."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$h_{max} = h + v^2/2g = 3,5 + 8^2/(2 \\times 10) = 3,5 + 3,2 = 6,7 \\text{ m}$."
+    },
+    {
+     "ma_cau": "K09010304019",
+     "loai": "trac_nghiem",
+     "de": "Một vật trượt không ma sát trên mặt cong, tại vị trí có độ cao $2,5$ m so với mặt đất, vật có tốc độ $6$ m/s. Tính độ cao cực đại vật có thể đạt tới. Lấy $g = 10 \\mathrm{m/s^2}$.",
+     "lua_chon": [
+      "6,1 m.",
+      "1,8 m.",
+      "4,3 m.",
+      "0,7 m."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$h_{max} = h + v^2/20 = 2,5 + 6^2/20 = 2,5 + 1,8 = 4,3$ m."
+    },
+    {
+     "ma_cau": "K09010304020",
+     "loai": "trac_nghiem",
+     "de": "Một vật trượt không ma sát trên mặt cong, tại vị trí có độ cao $4$ m so với mặt đất, vật có tốc độ $7$ m/s. Tính độ cao cực đại vật có thể đạt tới. Lấy $g = 10 \\mathrm{m/s^2}$.",
+     "lua_chon": [
+      "8,9 m.",
+      "2,45 m.",
+      "1,55 m.",
+      "6,45 m."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$h_{max} = h + v^2/20 = 4 + 7^2/20 = 4 + 2,45 = 6,45$ m."
+    },
+    {
+     "ma_cau": "K09010304017",
+     "loai": "trac_nghiem",
+     "de": "Một vật trượt không ma sát trên mặt cong, tại vị trí có độ cao $3$ m so với mặt đất, vật có tốc độ $4$ m/s. Tính độ cao cực đại vật có thể đạt tới. Lấy $g = 10 \\mathrm{m/s^2}$.",
+     "lua_chon": [
+      "4,6 m.",
+      "3,8 m.",
+      "0,8 m.",
+      "2,2 m."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$h_{max} = h + v^2/20 = 3 + 4^2/20 = 3 + 0,8 = 3,8$ m."
+    },
+    {
+     "ma_cau": "K09010304023",
+     "loai": "trac_nghiem",
+     "de": "Một vật trượt không ma sát trên mặt cong, tại vị trí có độ cao 2,2 m so với mặt đất, vật có tốc độ 4,5 m/s. Tính độ cao cực đại vật có thể đạt tới. Lấy $g = 10 \\text{ m/s}^2$.",
+     "lua_chon": [
+      "4,22 m.",
+      "1,01 m.",
+      "3,21 m.",
+      "1,19 m."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$h_{max} = h + v^2/2g = 2,2 + 4,5^2/(2 \\times 10) = 2,2 + 1,01 = 3,21 \\text{ m}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01073",
+   "nhom_id": "KNB00424",
+   "thu_tu": 4,
+   "dang": "Con lắc đơn không ma sát, tính tỉ số tốc độ tại hai vị trí",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010304028",
+     "loai": "trac_nghiem",
+     "de": "Một con lắc đơn dao động không ma sát, độ cao cực đại (tại biên) so với vị trí thấp nhất là 10 m. Tính tỉ số tốc độ của vật tại vị trí có độ cao 4 m so với tốc độ tại vị trí có độ cao 1 m (cùng so với vị trí thấp nhất).",
+     "lua_chon": [
+      "0,67 lần.",
+      "1,22 lần.",
+      "2 lần.",
+      "0,82 lần."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$v_A = \\sqrt{(20(h_{biên} - h_A))} = \\sqrt{(20 \\times (10 - 4))}$.\n$v_B = \\sqrt{(20(h_{biên} - h_B))} = \\sqrt{(20 \\times (10 - 1))}$.\nTỉ số $v_A/v_B = 0,82$ lần."
+    },
+    {
+     "ma_cau": "K09010304030",
+     "loai": "trac_nghiem",
+     "de": "Một con lắc đơn dao động không ma sát, độ cao cực đại (tại biên) so với vị trí thấp nhất là 6 m. Tính tỉ số tốc độ của vật tại vị trí có độ cao 2 m so với tốc độ tại vị trí có độ cao 0,8 m (cùng so với vị trí thấp nhất).",
+     "lua_chon": [
+      "0,77 lần.",
+      "1,14 lần.",
+      "0,88 lần.",
+      "1,58 lần."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$v_A = \\sqrt{(20(h_{biên} - h_A))} = \\sqrt{(20 \\times (6 - 2))}$.\n$v_B = \\sqrt{(20(h_{biên} - h_B))} = \\sqrt{(20 \\times (6 - 0,8))}$.\nTỉ số $v_A/v_B = 0,88$ lần."
+    },
+    {
+     "ma_cau": "K09010304025",
+     "loai": "trac_nghiem",
+     "de": "Một con lắc đơn dao động không ma sát, độ cao cực đại (tại biên) so với vị trí thấp nhất là 8 m. Tính tỉ số tốc độ của vật tại vị trí có độ cao 5 m so với tốc độ tại vị trí có độ cao 2 m (cùng so với vị trí thấp nhất).",
+     "lua_chon": [
+      "0,71 lần.",
+      "0,5 lần.",
+      "1,41 lần.",
+      "1,58 lần."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vận tốc của vật được tính bằng công thức: $v = \\sqrt{2g(h_{biên} - h)}$.\n$v_A = \\sqrt{20(h_{biên} - h_A))} = \\sqrt{20 \\times (8 - 5))}$.\n$v_B = \\sqrt{20(h_{biên} - h_B))} = \\sqrt{20 \\times (8 - 2))}$.\nTỉ số $v_A/v_B = 0,71$ lần."
+    },
+    {
+     "ma_cau": "K09010304029",
+     "loai": "trac_nghiem",
+     "de": "Một con lắc đơn dao động không ma sát, độ cao cực đại (tại biên) so với vị trí thấp nhất là 5 m. Tính tỉ số tốc độ của vật tại vị trí có độ cao 3 m so với tốc độ tại vị trí có độ cao 1,5 m (cùng so với vị trí thấp nhất).",
+     "lua_chon": [
+      "0,76 lần.",
+      "0,57 lần.",
+      "1,32 lần.",
+      "1,41 lần."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$v_A = \\sqrt{(20(h_{biên} - h_A))} = \\sqrt{(20 \\times (5 - 3))}$.\n$v_B = \\sqrt{(20(h_{biên} - h_B))} = \\sqrt{(20 \\times (5 - 1,5))}$.\nTỉ số $v_A/v_B = 0,76$ lần."
+    },
+    {
+     "ma_cau": "K09010304026",
+     "loai": "trac_nghiem",
+     "de": "Một con lắc đơn dao động không ma sát, độ cao cực đại (tại biên) so với vị trí thấp nhất là 7 m. Tính tỉ số tốc độ của vật tại vị trí có độ cao 3 m so với tốc độ tại vị trí có độ cao 1,5 m (cùng so với vị trí thấp nhất).",
+     "lua_chon": [
+      "0,73 lần.",
+      "1,17 lần.",
+      "0,85 lần.",
+      "1,41 lần."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vận tốc của vật được tính bằng công thức: $v = \\sqrt{2g(h_{biên} - h)}$.\n$v_A = \\sqrt{20(h_{biên} - h_A))} = \\sqrt{20 \\times (7 - 3))}$.\n$v_B = \\sqrt{20(h_{biên} - h_B))} = \\sqrt{20 \\times (7 - 1,5))}$.\nTỉ số $v_A/v_B = 0,85$ lần."
+    },
+    {
+     "ma_cau": "K09010304024",
+     "loai": "trac_nghiem",
+     "de": "Một con lắc đơn dao động không ma sát, độ cao cực đại (tại biên) so với vị trí thấp nhất là 6 m. Tính tỉ số tốc độ của vật tại vị trí có độ cao 4 m so với tốc độ tại vị trí có độ cao 1 m (cùng so với vị trí thấp nhất).",
+     "lua_chon": [
+      "0,4 lần.",
+      "1,58 lần.",
+      "2 lần.",
+      "0,63 lần."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vận tốc của vật được tính bằng công thức: $v = \\sqrt{2g(h_{biên} - h)}$.\n$v_A = \\sqrt{20(h_{biên} - h_A))} = \\sqrt{20 \\times (6 - 4))}$.\n$v_B = \\sqrt{20(h_{biên} - h_B))} = \\sqrt{20 \\times (6 - 1))}$.\nTỉ số $v_A/v_B = 0,63$ lần."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01074",
+   "nhom_id": "KNB00424",
+   "thu_tu": 5,
+   "dang": "Vật rơi tự do từ độ cao đổi đơn vị, tính tốc độ tại độ cao bất kỳ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010304034",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do từ độ cao $1100 \\mathrm{~cm}$. Tính tốc độ của vật khi ở độ cao $400 \\mathrm{~cm}$ so với mặt đất. Lấy $\\mathrm{g} = 10 \\mathrm{~m/s^2}$.",
+     "dap_an": "11.83",
+     "loi_giai": "Đổi $h = 1100 \\mathrm{~cm} = 11 \\mathrm{~m}$, $h' = 400 \\mathrm{~cm} = 4 \\mathrm{~m}$.\n$v = \\sqrt{20(h - h')} = \\sqrt{20 \\times (11 - 4)} = 11,83 \\mathrm{~m/s}$."
+    },
+    {
+     "ma_cau": "K09010304032",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do từ độ cao $800 \\mathrm{~cm}$. Tính tốc độ của vật khi ở độ cao $300 \\mathrm{~cm}$ so với mặt đất. Lấy $\\mathrm{g} = 10 \\mathrm{~m/s^2}$.",
+     "dap_an": "10",
+     "loi_giai": "Đổi $h = 800 \\mathrm{~cm} = 8 \\mathrm{~m}$, $h' = 300 \\mathrm{~cm} = 3 \\mathrm{~m}$.\n$v = \\sqrt{20(h - h')} = \\sqrt{20 \\times (8 - 3)} = 10 \\mathrm{~m/s}$."
+    },
+    {
+     "ma_cau": "K09010304033",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do từ độ cao $500 \\mathrm{~cm}$. Tính tốc độ của vật khi ở độ cao $150 \\mathrm{~cm}$ so với mặt đất. Lấy $\\mathrm{g} = 10 \\mathrm{~m/s^2}$.",
+     "dap_an": "8.37",
+     "loi_giai": "Đổi $h = 500 \\mathrm{~cm} = 5 \\mathrm{~m}$, $h' = 150 \\mathrm{~cm} = 1,5 \\mathrm{~m}$.\n$v = \\sqrt{20(h - h')} = \\sqrt{20 \\times (5 - 1,5)} = 8,37 \\mathrm{~m/s}$."
+    },
+    {
+     "ma_cau": "K09010304031",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do từ độ cao $650 \\mathrm{~cm}$. Tính tốc độ của vật khi ở độ cao $200 \\mathrm{~cm}$ so với mặt đất. Lấy $\\mathrm{g} = 10 \\mathrm{~m/s^2}$.",
+     "dap_an": "9.49",
+     "loi_giai": "Đổi $h = 650 \\mathrm{~cm} = 6,5 \\mathrm{~m}$, $h' = 200 \\mathrm{~cm} = 2 \\mathrm{~m}$.\n$v = \\sqrt{20(h - h')} = \\sqrt{20 \\times (6,5 - 2)} = 9,49 \\mathrm{~m/s}$."
+    },
+    {
+     "ma_cau": "K09010304035",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do từ độ cao $720 \\mathrm{~cm}$. Tính tốc độ của vật khi ở độ cao $250 \\mathrm{~cm}$ so với mặt đất. Lấy $\\mathrm{g} = 10 \\mathrm{~m/s^2}$.",
+     "dap_an": "9.7",
+     "loi_giai": "Đổi $h = 720 \\mathrm{~cm} = 7,2 \\mathrm{~m}$, $h' = 250 \\mathrm{~cm} = 2,5 \\mathrm{~m}$.\n$v = \\sqrt{20(h - h')} = \\sqrt{20 \\times (7,2 - 2,5)} = 9,7 \\mathrm{~m/s}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01075",
+   "nhom_id": "KNB00424",
+   "thu_tu": 6,
+   "dang": "Vật ném lên với tốc độ đổi đơn vị, tính tốc độ tại độ cao bất kỳ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010304037",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được ném thẳng đứng lên trên từ mặt đất với tốc độ ban đầu $45 \\mathrm{~km/h}$. Bỏ qua sức cản không khí, tính tốc độ của vật khi ở độ cao $2,5 \\mathrm{~m}$. Lấy $g = 10 \\mathrm{~m/s^2}$.",
+     "dap_an": "10.31",
+     "loi_giai": "Đổi $v_0 = 45 \\mathrm{~km/h} = 12,5 \\mathrm{~m/s}$.\n$v = \\sqrt{(v_0^2 - 20h)} = \\sqrt{(12,5^2 - 20 \\times 2,5)} = 10,31 \\mathrm{~m/s}$."
+    },
+    {
+     "ma_cau": "K09010304039",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được ném thẳng đứng lên trên từ mặt đất với tốc độ ban đầu $63 \\mathrm{~km/h}$. Bỏ qua sức cản không khí, tính tốc độ của vật khi ở độ cao $3,5 \\mathrm{~m}$. Lấy $g = 10 \\mathrm{~m/s^2}$.",
+     "dap_an": "15.37",
+     "loi_giai": "Đổi $v_0 = 63 \\mathrm{~km/h} = 17,5 \\mathrm{~m/s}$.\n$v = \\sqrt{(v_0^2 - 20h)} = \\sqrt{(17,5^2 - 20 \\times 3,5)} = 15,37 \\mathrm{~m/s}$."
+    },
+    {
+     "ma_cau": "K09010304036",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được ném thẳng đứng lên trên từ mặt đất với tốc độ ban đầu $36 \\mathrm{~km/h}$. Bỏ qua sức cản không khí, tính tốc độ của vật khi ở độ cao $3 \\mathrm{~m}$. Lấy $g = 10 \\mathrm{~m/s^2}$.",
+     "dap_an": "6.32",
+     "loi_giai": "Đổi $v_0 = 36 \\mathrm{~km/h} = 10 \\mathrm{~m/s}$.\n$v = \\sqrt{(v_0^2 - 20h)} = \\sqrt{(10^2 - 20 \\times 3)} = 6.32 \\mathrm{~m/s}$."
+    },
+    {
+     "ma_cau": "K09010304040",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được ném thẳng đứng lên trên từ mặt đất với tốc độ ban đầu $72 \\mathrm{~km/h}$. Bỏ qua sức cản không khí, tính tốc độ của vật khi ở độ cao $5 \\mathrm{~m}$. Lấy $g = 10 \\mathrm{~m/s^2}$.",
+     "dap_an": "17.32",
+     "loi_giai": "Đổi $v_0 = 72 \\mathrm{~km/h} = 20 \\mathrm{~m/s}$.\n$v = \\sqrt{(v_0^2 - 20h)} = \\sqrt{(20^2 - 20 \\times 5)} = 17,32 \\mathrm{~m/s}$."
+    },
+    {
+     "ma_cau": "K09010304038",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được ném thẳng đứng lên trên từ mặt đất với tốc độ ban đầu $54 \\mathrm{~km/h}$. Bỏ qua sức cản không khí, tính tốc độ của vật khi ở độ cao $4 \\mathrm{~m}$. Lấy $g = 10 \\mathrm{~m/s^2}$.",
+     "dap_an": "12.04",
+     "loi_giai": "Đổi $v_0 = 54 \\mathrm{~km/h} = 15 \\mathrm{~m/s}$.\n$v = \\sqrt{(v_0^2 - 20h)} = \\sqrt{(15^2 - 20 \\times 4)} = 12,04 \\mathrm{~m/s}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01076",
+   "nhom_id": "KNB00424",
+   "thu_tu": 7,
+   "dang": "Mặt cong không ma sát, tốc độ cho theo đơn vị đổi, tính độ cao cực đại",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010304044",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật trượt không ma sát trên mặt cong, tại vị trí có độ cao 1,8 m, vật có tốc độ 28,8 km/h. Tính độ cao cực đại vật có thể đạt tới. Lấy $g = 10 \\text{ m/s}^2$.",
+     "dap_an": "5",
+     "loi_giai": "Đổi $v = 28,8 \\text{ km/h} = 8 \\text{ m/s}$.\n$h_{max} = h + \\dfrac{v^2}{2g} = 1,8 + \\dfrac{8^2}{2 \\times 10} = 5 \\text{ m}$."
+    },
+    {
+     "ma_cau": "K09010304043",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật trượt không ma sát trên mặt cong, tại vị trí có độ cao 2,8 m, vật có tốc độ 21,6 km/h. Tính độ cao cực đại vật có thể đạt tới. Lấy $g = 10 \\text{ m/s}^2$.",
+     "dap_an": "4.6",
+     "loi_giai": "Đổi $v = 21,6 \\text{ km/h} = 6 \\text{ m/s}$.\n$h_{max} = h + \\dfrac{v^2}{2g} = 2,8 + \\dfrac{6^2}{2 \\times 10} = 4,6 \\text{ m}$."
+    },
+    {
+     "ma_cau": "K09010304042",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật trượt không ma sát trên mặt cong, tại vị trí có độ cao 2 m, vật có tốc độ 25,2 km/h. Tính độ cao cực đại vật có thể đạt tới. Lấy $g = 10 \\text{ m/s}^2$.",
+     "dap_an": "4.45",
+     "loi_giai": "Đổi $v = 25,2 \\text{ km/h} = 7 \\text{ m/s}$.\n$h_{max} = h + \\dfrac{v^2}{2g} = 2 + \\dfrac{7^2}{2 \\times 10} = 4,45 \\text{ m}$."
+    },
+    {
+     "ma_cau": "K09010304045",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật trượt không ma sát trên mặt cong, tại vị trí có độ cao 1,2 m, vật có tốc độ 32,4 km/h. Tính độ cao cực đại vật có thể đạt tới. Lấy $g = 10 \\text{ m/s}^2$.",
+     "dap_an": "5.25",
+     "loi_giai": "Đổi $v = 32,4 \\text{ km/h} = 9 \\text{ m/s}$.\n$h_{max} = h + \\dfrac{v^2}{2g} = 1,2 + \\dfrac{9^2}{2 \\times 10} = 5,25 \\text{ m}$."
+    },
+    {
+     "ma_cau": "K09010304041",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật trượt không ma sát trên mặt cong, tại vị trí có độ cao 3,5 m, vật có tốc độ 18 km/h. Tính độ cao cực đại vật có thể đạt tới. Lấy $g = 10 \\text{ m/s}^2$.",
+     "dap_an": "4.75",
+     "loi_giai": "Đổi $v = 18 \\text{ km/h} = 5 \\text{ m/s}$.\n$h_{max} = h + \\dfrac{v^2}{2g} = 3,5 + \\dfrac{5^2}{2 \\times 10} = 4,75 \\text{ m}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01077",
+   "nhom_id": "KNB00424",
+   "thu_tu": 8,
+   "dang": "Con lắc đơn, độ cao cho theo đơn vị đổi, tính tỉ số tốc độ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010304046",
+     "loai": "tra_loi_ngan",
+     "de": "Một con lắc đơn dao động không ma sát, độ cao cực đại so với vị trí thấp nhất là $650 \\text{ cm}$. Tính tỉ số tốc độ tại vị trí có độ cao $400 \\text{ cm}$ so với tốc độ tại vị trí có độ cao $100 \\text{ cm}$ (cùng so với vị trí thấp nhất).",
+     "dap_an": "0.67",
+     "loi_giai": "Đổi $h_{\\text{biên}} = 6,5 \\text{ m}$, $h_{\\text{A}} = 4 \\text{ m}$, $h_{\\text{B}} = 1 \\text{ m}$. $v_{\\text{A}}/v_{\\text{B}} = \\sqrt{((h_{\\text{biên}} - h_{\\text{A}})/(h_{\\text{biên}} - h_{\\text{B}}))} = 0,67 \\text{ lần}."
+    },
+    {
+     "ma_cau": "K09010304050",
+     "loai": "tra_loi_ngan",
+     "de": "Một con lắc đơn dao động không ma sát, độ cao cực đại so với vị trí thấp nhất là $1000 \\text{ cm}$. Tính tỉ số tốc độ tại vị trí có độ cao $400 \\text{ cm}$ so với tốc độ tại vị trí có độ cao $100 \\text{ cm}$ (cùng so với vị trí thấp nhất).",
+     "dap_an": "0.82",
+     "loi_giai": "Đổi $h_{\\text{biên}} = 10 \\text{ m}$, $h_{\\text{A}} = 4 \\text{ m}$, $h_{\\text{B}} = 1 \\text{ m}$. $v_{\\text{A}}/v_{\\text{B}} = \\sqrt{((h_{\\text{biên}} - h_{\\text{A}})/(h_{\\text{biên}} - h_{\\text{B}}))} = 0,82 \\text{ lần}."
+    },
+    {
+     "ma_cau": "K09010304048",
+     "loai": "tra_loi_ngan",
+     "de": "Một con lắc đơn dao động không ma sát, độ cao cực đại so với vị trí thấp nhất là $850 \\text{ cm}$. Tính tỉ số tốc độ tại vị trí có độ cao $300 \\text{ cm}$ so với tốc độ tại vị trí có độ cao $150 \\text{ cm}$ (cùng so với vị trí thấp nhất).",
+     "dap_an": "0.89",
+     "loi_giai": "Đổi $h_{\\text{biên}} = 8,5 \\text{ m}$, $h_{\\text{A}} = 3 \\text{ m}$, $h_{\\text{B}} = 1,5 \\text{ m}$. $v_{\\text{A}}/v_{\\text{B}} = \\sqrt{((h_{\\text{biên}} - h_{\\text{A}})/(h_{\\text{biên}} - h_{\\text{B}}))} = 0,89 \\text{ lần}."
+    },
+    {
+     "ma_cau": "K09010304049",
+     "loai": "tra_loi_ngan",
+     "de": "Một con lắc đơn dao động không ma sát, độ cao cực đại so với vị trí thấp nhất là $900 \\text{ cm}$. Tính tỉ số tốc độ tại vị trí có độ cao $600 \\text{ cm}$ so với tốc độ tại vị trí có độ cao $250 \\text{ cm}$ (cùng so với vị trí thấp nhất).",
+     "dap_an": "0.68",
+     "loi_giai": "Đổi $h_{\\text{biên}} = 9 \\text{ m}$, $h_{\\text{A}} = 6 \\text{ m}$, $h_{\\text{B}} = 2,5 \\text{ m}$. $v_{\\text{A}}/v_{\\text{B}} = \\sqrt{((h_{\\text{biên}} - h_{\\text{A}})/(h_{\\text{biên}} - h_{\\text{B}}))} = 0,68 \\text{ lần}."
+    },
+    {
+     "ma_cau": "K09010304047",
+     "loai": "tra_loi_ngan",
+     "de": "Một con lắc đơn dao động không ma sát, độ cao cực đại so với vị trí thấp nhất là $720 \\text{ cm}$. Tính tỉ số tốc độ tại vị trí có độ cao $500 \\text{ cm}$ so với tốc độ tại vị trí có độ cao $200 \\text{ cm}$ (cùng so với vị trí thấp nhất).",
+     "dap_an": "0.65",
+     "loi_giai": "Đổi $h_{\\text{biên}} = 7,2 \\text{ m}$, $h_{\\text{A}} = 5 \\text{ m}$, $h_{\\text{B}} = 2 \\text{ m}$. $v_{\\text{A}}/v_{\\text{B}} = \\sqrt{((h_{\\text{biên}} - h_{\\text{A}})/(h_{\\text{biên}} - h_{\\text{B}}))} = 0,65 \\text{ lần}."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01082",
+   "nhom_id": "KNB00426",
+   "thu_tu": 1,
+   "dang": "Trượt qua đoạn ma sát rồi trượt tiếp lên dốc không ma sát, tính độ cao đạt được",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010306001",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 2 kg trượt không vận tốc đầu từ đỉnh A của một dốc, ở độ cao 5 m so với chân dốc. Trên đoạn từ A đến chân dốc, vật chịu lực ma sát 4 N tác dụng trên quãng đường 5 m. Sau khi tới chân dốc, vật trượt tiếp lên một dốc khác không có ma sát. Lấy $\\mathrm{g} = 10 \\text{ m/s}^2$, tính độ cao lớn nhất $\\mathrm{h}_2$ mà vật đạt được trên dốc không ma sát.",
+     "lua_chon": [
+      "5 m.",
+      "6 m.",
+      "4 m.",
+      "8 m."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cơ năng tại A: $\\mathrm{W}_1 = 10\\mathrm{mh}_1 = 10 \\times 2 \\times 5 = 100 \\text{ J}$.\nCông cản: $\\mathrm{A}_{\\mathrm{ms}} = \\mathrm{F}_{\\mathrm{ms}} \\times \\mathrm{s} = 4 \\times 5 = 20 \\text{ J}$.\nCơ năng còn lại ở chân dốc: $\\mathrm{W}_2 = \\mathrm{W}_1 - \\mathrm{A}_{\\mathrm{ms}} = 80 \\text{ J}$.\nĐoạn sau không ma sát nên cơ năng bảo toàn: $\\mathrm{h}_2 = \\mathrm{W}_2/(10\\mathrm{m}) = 4 \\text{ m}$."
+    },
+    {
+     "ma_cau": "K09010306003",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 4 kg trượt không vận tốc đầu từ đỉnh A của một dốc, ở độ cao 6 m so với chân dốc. Trên đoạn từ A đến chân dốc, vật chịu lực ma sát 8 N tác dụng trên quãng đường 3 m. Sau khi tới chân dốc, vật trượt tiếp lên một dốc khác không có ma sát. Lấy $\\mathrm{g} = 10 \\text{ m/s}^2$, tính độ cao lớn nhất $\\mathrm{h}_2$ mà vật đạt được trên dốc không ma sát.",
+     "lua_chon": [
+      "6 m.",
+      "5,4 m.",
+      "6,6 m.",
+      "21,6 m."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cơ năng tại A: $\\mathrm{W}_1 = 10\\mathrm{mh}_1 = 10 \\times 4 \\times 6 = 240 \\text{ J}$.\nCông cản: $\\mathrm{A}_{\\mathrm{ms}} = \\mathrm{F}_{\\mathrm{ms}} \\times \\mathrm{s} = 8 \\times 3 = 24 \\text{ J}$.\nCơ năng còn lại ở chân dốc: $\\mathrm{W}_2 = \\mathrm{W}_1 - \\mathrm{A}_{\\mathrm{ms}} = 216 \\text{ J}$.\nĐoạn sau không ma sát nên cơ năng bảo toàn: $\\mathrm{h}_2 = \\mathrm{W}_2/(10\\mathrm{m}) = 5,4 \\text{ m}$."
+    },
+    {
+     "ma_cau": "K09010306002",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 3 kg trượt không vận tốc đầu từ đỉnh A của một dốc, ở độ cao 4 m so với chân dốc. Trên đoạn từ A đến chân dốc, vật chịu lực ma sát 6 N tác dụng trên quãng đường 4 m. Sau khi tới chân dốc, vật trượt tiếp lên một dốc khác không có ma sát. Lấy $\\mathrm{g} = 10 \\text{ m/s}^2$, tính độ cao lớn nhất $\\mathrm{h}_2$ mà vật đạt được trên dốc không ma sát.",
+     "lua_chon": [
+      "4 m.",
+      "3,2 m.",
+      "4,8 m.",
+      "9,6 m."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cơ năng tại A: $\\mathrm{W}_1 = 10\\mathrm{mh}_1 = 10 \\times 3 \\times 4 = 120 \\text{ J}$.\nCông cản: $\\mathrm{A}_{\\mathrm{ms}} = \\mathrm{F}_{\\mathrm{ms}} \\times \\mathrm{s} = 6 \\times 4 = 24 \\text{ J}$.\nCơ năng còn lại ở chân dốc: $\\mathrm{W}_2 = \\mathrm{W}_1 - \\mathrm{A}_{\\mathrm{ms}} = 96 \\text{ J}$.\nĐoạn sau không ma sát nên cơ năng bảo toàn: $\\mathrm{h}_2 = \\mathrm{W}_2/(10\\mathrm{m}) = 3,2 \\text{ m}$."
+    },
+    {
+     "ma_cau": "K09010306007",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 4 kg trượt không vận tốc đầu từ đỉnh A của một dốc, ở độ cao 5 m so với chân dốc. Trên đoạn từ A đến chân dốc, vật chịu lực ma sát 9 N tác dụng trên quãng đường 2 m. Sau khi tới chân dốc, vật trượt tiếp lên một dốc khác không có ma sát. Lấy $\\mathrm{g} = 10\\ \\mathrm{m/s^2}$, tính độ cao lớn nhất $\\mathrm{h_2}$ mà vật đạt được trên dốc không ma sát.",
+     "lua_chon": [
+      "4,55 m.",
+      "5 m.",
+      "5,45 m.",
+      "18,2 m."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cơ năng tại A: $\\mathrm{W_1} = 10\\mathrm{mh_1} = 10 \\times 4 \\times 5 = 200\\ \\mathrm{J}$.\nCông cản: $\\mathrm{A_{ms}} = \\mathrm{F_{ms}} \\times \\mathrm{s} = 9 \\times 2 = 18\\ \\mathrm{J}$.\nCơ năng còn lại ở chân dốc: $\\mathrm{W_2} = \\mathrm{W_1} - \\mathrm{A_{ms}} = 182\\ \\mathrm{J}$.\nĐoạn sau không ma sát nên cơ năng bảo toàn: $\\mathrm{h_2} = \\mathrm{W_2/(10m)} = 4,55\\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K09010306008",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 2 kg trượt không vận tốc đầu từ đỉnh A của một dốc, ở độ cao 8 m so với chân dốc. Trên đoạn từ A đến chân dốc, vật chịu lực ma sát 6 N tác dụng trên quãng đường 5 m. Sau khi tới chân dốc, vật trượt tiếp lên một dốc khác không có ma sát. Lấy $\\mathrm{g} = 10\\ \\mathrm{m/s^2}$, tính độ cao lớn nhất $\\mathrm{h_2}$ mà vật đạt được trên dốc không ma sát.",
+     "lua_chon": [
+      "8 m.",
+      "6,5 m.",
+      "9,5 m.",
+      "13 m."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cơ năng tại A: $\\mathrm{W_1} = 10\\mathrm{mh_1} = 10 \\times 2 \\times 8 = 160\\ \\mathrm{J}$.\nCông cản: $\\mathrm{A_{ms}} = \\mathrm{F_{ms}} \\times \\mathrm{s} = 6 \\times 5 = 30\\ \\mathrm{J}$.\nCơ năng còn lại ở chân dốc: $\\mathrm{W_2} = \\mathrm{W_1} - \\mathrm{A_{ms}} = 130\\ \\mathrm{J}$.\nĐoạn sau không ma sát nên cơ năng bảo toàn: $\\mathrm{h_2} = \\mathrm{W_2/(10m)} = 6,5\\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K09010306004",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 2 kg trượt không vận tốc đầu từ đỉnh A của một dốc, ở độ cao 7 m so với chân dốc. Trên đoạn từ A đến chân dốc, vật chịu lực ma sát 5 N tác dụng trên quãng đường 4 m. Sau khi tới chân dốc, vật trượt tiếp lên một dốc khác không có ma sát. Lấy $\\mathrm{g = 10\\ m/s^2}$, tính độ cao lớn nhất $\\mathrm{h_2}$ mà vật đạt được trên dốc không ma sát.",
+     "lua_chon": [
+      "7 m.",
+      "8 m.",
+      "12 m.",
+      "6 m."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cơ năng tại A: $\\mathrm{W_1 = 10mh_1 = 10 \\times 2 \\times 7 = 140\\ J}$.\nCông cản: $\\mathrm{A_{ms} = F_{ms} \\times s = 5 \\times 4 = 20\\ J}$.\nCơ năng còn lại ở chân dốc: $\\mathrm{W_2 = W_1 - A_{ms} = 120\\ J}$.\nĐoạn sau không ma sát nên cơ năng bảo toàn: $\\mathrm{h_2 = W_2/(10m) = 6\\ m}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01083",
+   "nhom_id": "KNB00426",
+   "thu_tu": 2,
+   "dang": "Rơi tự do rồi va chạm mất bớt cơ năng, tính độ cao nảy lên",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010306015",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao $9 \\ \\mathrm{m}$ xuống nền cứng. Va chạm làm vật mất bớt cơ năng: ngay sau va chạm, tốc độ của vật chỉ còn $65\\%$ tốc độ lúc chạm đất. Bỏ qua sức cản không khí, lấy $g = 10 \\ \\mathrm{m/s^2}$, tính độ cao lớn nhất $h_2$ mà vật này lên được sau va chạm.",
+     "lua_chon": [
+      "$9 \\ \\mathrm{m}$.",
+      "$5,85 \\ \\mathrm{m}$.",
+      "$3,8 \\ \\mathrm{m}$.",
+      "$0,44 \\ \\mathrm{m}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tốc độ lúc chạm đất: $v_{cham} = \\sqrt{20h_1} = \\sqrt{20 \\times 9} = 13,42 \\ \\mathrm{m/s}$.\nTốc độ ngay sau va chạm: $v_{nay} = 65\\% \\times v_{cham} = 8,72 \\ \\mathrm{m/s}$.\nSau va chạm cơ năng bảo toàn, toàn bộ động năng chuyển thành thế năng ở độ cao lớn nhất: $h_2 = v_{nay}^2/20 = 3,8 \\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K09010306016",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao $7 \\ \\mathrm{m}$ xuống nền cứng. Va chạm làm vật mất bớt cơ năng: ngay sau va chạm, tốc độ của vật chỉ còn $95\\%$ tốc độ lúc chạm đất. Bỏ qua sức cản không khí, lấy $g = 10 \\ \\mathrm{m/s^2}$, tính độ cao lớn nhất $h_2$ mà vật này lên được sau va chạm.",
+     "lua_chon": [
+      "$7 \\ \\mathrm{m}$.",
+      "$6,65 \\ \\mathrm{m}$.",
+      "$0,56 \\ \\mathrm{m}$.",
+      "$6,32 \\ \\mathrm{m}$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tốc độ lúc chạm đất: $v_{cham} = \\sqrt{20h_1} = \\sqrt{20 \\times 7} = 11,83 \\ \\mathrm{m/s}$.\nTốc độ ngay sau va chạm: $v_{nay} = 95\\% \\times v_{cham} = 11,24 \\ \\mathrm{m/s}$.\nSau va chạm cơ năng bảo toàn, toàn bộ động năng chuyển thành thế năng ở độ cao lớn nhất: $h_2 = v_{nay}^2/20 = 6,32 \\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K09010306011",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao 4 m xuống nền cứng. Va chạm làm vật mất bớt cơ năng: ngay sau va chạm, tốc độ của vật chỉ còn 90% tốc độ lúc chạm đất. Bỏ qua sức cản không khí, lấy $g = 10 \\mathrm{~m/s^2}$, tính độ cao lớn nhất $h_2$ mà vật nảy lên được sau va chạm.",
+     "lua_chon": [
+      "4 m.",
+      "3,24 m.",
+      "3,6 m.",
+      "0,4 m."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tốc độ lúc chạm đất: $v_{chạm} = \\sqrt{(2gh_1)} = \\sqrt{(20 \\times 4)} = 8,94 \\mathrm{~m/s}$. \nTốc độ ngay sau va chạm: $v_{nảy} = 90\\% \\times v_{chạm} = 8,05 \\mathrm{~m/s}$. \nSau va chạm cơ năng bảo toàn, toàn bộ động năng chuyển thành thế năng ở độ cao lớn nhất: $h_2 = v_{nảy}^2/2g = 3,24 \\mathrm{~m}$."
+    },
+    {
+     "ma_cau": "K09010306014",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao 3 m xuống nền cứng. Va chạm làm vật mất bớt cơ năng: ngay sau va chạm, tốc độ của vật chỉ còn 75% tốc độ lúc chạm đất. Bỏ qua sức cản không khí, lấy $\\mathrm{g = 10 \\ m/s^2}$, tính độ cao lớn nhất $\\mathrm{h_2}$ mà vật này lên được sau va chạm.",
+     "lua_chon": [
+      "3 m.",
+      "2,25 m.",
+      "1,69 m.",
+      "0,29 m."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tốc độ lúc chạm đất: $\\mathrm{v_{cham} = \\sqrt{(20h_1)} = \\sqrt{(20 \\times 3)} = 7,75 \\ m/s}$.\nTốc độ ngay sau va chạm: $\\mathrm{v_{nay} = 75\\% \\times v_{cham} = 5,81 \\ m/s}$.\nSau va chạm cơ năng bảo toàn, toàn bộ động năng chuyển thành thế năng ở độ cao lớn nhất: $\\mathrm{h_2 = v_{nay}^2/20 = 1,69 \\ m}$."
+    },
+    {
+     "ma_cau": "K09010306012",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao 10 m xuống nền cứng. Va chạm làm vật mất bớt cơ năng: ngay sau va chạm, tốc độ của vật chỉ còn 60% tốc độ lúc chạm đất. Bỏ qua sức cản không khí, lấy $\\mathrm{g = 10 \\ m/s^2}$, tính độ cao lớn nhất $\\mathrm{h_2}$ mà vật này lên được sau va chạm.",
+     "lua_chon": [
+      "10 m.",
+      "6 m.",
+      "0,42 m.",
+      "3,6 m."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tốc độ lúc chạm đất: $\\mathrm{v_{cham} = \\sqrt{(20h_1)} = \\sqrt{(20 \\times 10)} = 14,14 \\ m/s}$.\nTốc độ ngay sau va chạm: $\\mathrm{v_{nay} = 60\\% \\times v_{cham} = 8,49 \\ m/s}$.\nSau va chạm cơ năng bảo toàn, toàn bộ động năng chuyển thành thế năng ở độ cao lớn nhất: $\\mathrm{h_2 = v_{nay}^2/20 = 3,6 \\ m}$."
+    },
+    {
+     "ma_cau": "K09010306009",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao 5 m xuống nền cứng. Va chạm làm vật mất bớt cơ năng: ngay sau va chạm, tốc độ của vật chỉ còn 80% tốc độ lúc chạm đất. Bỏ qua sức cản không khí, lấy $g = 10 \\mathrm{~m/s^2}$, tính độ cao lớn nhất $h_2$ mà vật nảy lên được sau va chạm.",
+     "lua_chon": [
+      "5 m.",
+      "3,2 m.",
+      "4 m.",
+      "0,4 m."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tốc độ lúc chạm đất: $v_{chạm} = \\sqrt{(2gh_1)} = \\sqrt{(20 \\times 5)} = 10 \\mathrm{~m/s}$. \nTốc độ ngay sau va chạm: $v_{nảy} = 80\\% \\times v_{chạm} = 8 \\mathrm{~m/s}$. \nSau va chạm cơ năng bảo toàn, toàn bộ động năng chuyển thành thế năng ở độ cao lớn nhất: $h_2 = v_{nảy}^2/2g = 3,2 \\mathrm{~m}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01084",
+   "nhom_id": "KNB00426",
+   "thu_tu": 3,
+   "dang": "Trượt qua đoạn có hệ số ma sát μ, tính tốc độ tại chân dốc",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010306021",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng $5 \\ \\mathrm{kg}$ trượt không vận tốc đầu từ đỉnh dốc, ở độ cao $4 \\ \\mathrm{m}$ so với chân dốc. Trong quá trình trượt, vật chịu lực ma sát $F_{ms} = \\mu mg$ với hệ số ma sát $\\mu = 0,22$, tác dụng trên quãng đường $2,5 \\ \\mathrm{m}$ dọc theo dốc. Lấy $g = 10 \\ \\mathrm{m/s^2}$, tính tốc độ của vật khi tới chân dốc.",
+     "lua_chon": [
+      "8,93 m/s.",
+      "5,87 m/s.",
+      "8,31 m/s.",
+      "9,54 m/s."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cơ năng tại đỉnh: $W_1 = 10mh_1 = 10 \\times 5 \\times 4 = 200 \\ \\mathrm{J}$.\nLực ma sát: $F_{ms} = \\mu mg = 0,22 \\times 5 \\times 10 = 11 \\ \\mathrm{N}$.\nCông cản: $A_{ms} = F_{ms} \\times s = 27,5 \\ \\mathrm{J}$.\nCơ năng ở chân dốc: $W_2 = W_1 - A_{ms} = 172,5 \\ \\mathrm{J}$.\nTốc độ: $v = \\sqrt{(2W_2/m)} = 8,31 \\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010306019",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 4 kg trượt không vận tốc đầu từ đỉnh dốc, ở độ cao 6 m so với chân dốc. Trong quá trình trượt, vật chịu lực ma sát $\\mathrm{F_{ms} = \\mu\\mathrm{mg}}$ với hệ số ma sát $\\mu = 0,15$, tác dụng trên quãng đường 4 m dọc theo dốc. Lấy $\\mathrm{g = 10\\ m/s^2}$, tính tốc độ của vật khi tới chân dốc.",
+     "lua_chon": [
+      "10,94 m/s.",
+      "7,35 m/s.",
+      "10,39 m/s.",
+      "11,49 m/s."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cơ năng tại đỉnh: $\\mathrm{W_1 = 10mh_1 = 10 \\times 4 \\times 6 = 240\\ J}$.\nLực ma sát: $\\mathrm{F_{ms} = \\mu\\mathrm{mg} = 0,15 \\times 4 \\times 10 = 6\\ N}$.\nCông cản: $\\mathrm{A_{ms} = F_{ms} \\times s = 24\\ J}$.\nCơ năng ở chân dốc: $\\mathrm{W_2 = W_1 - A_{ms} = 216\\ J}$.\nTốc độ: $\\mathrm{v = \\sqrt{(2W_2/m)} = 10,39\\ m/s}$."
+    },
+    {
+     "ma_cau": "K09010306020",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng $2 \\ \\mathrm{kg}$ trượt không vận tốc đầu từ đỉnh dốc, ở độ cao $7 \\ \\mathrm{m}$ so với chân dốc. Trong quá trình trượt, vật chịu lực ma sát $F_{ms} = \\mu mg$ với hệ số ma sát $\\mu = 0,3$, tác dụng trên quãng đường $2 \\ \\mathrm{m}$ dọc theo dốc. Lấy $g = 10 \\ \\mathrm{m/s^2}$, tính tốc độ của vật khi tới chân dốc.",
+     "lua_chon": [
+      "11,31 m/s.",
+      "11,81 m/s.",
+      "8 m/s.",
+      "12,33 m/s."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cơ năng tại đỉnh: $W_1 = 10mh_1 = 10 \\times 2 \\times 7 = 140 \\ \\mathrm{J}$.\nLực ma sát: $F_{ms} = \\mu mg = 0,3 \\times 2 \\times 10 = 6 \\ \\mathrm{N}$.\nCông cản: $A_{ms} = F_{ms} \\times s = 12 \\ \\mathrm{J}$.\nCơ năng ở chân dốc: $W_2 = W_1 - A_{ms} = 128 \\ \\mathrm{J}$.\nTốc độ: $v = \\sqrt{(2W_2/m)} = 11,31 \\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010306023",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 5 kg trượt không vận tốc đầu từ đỉnh dốc, ở độ cao 5 m so với chân dốc. Trong quá trình trượt, vật chịu lực ma sát $\\mathrm{F_{ms}} = \\mathrm{\\mu mg}$ với hệ số ma sát $\\mathrm{\\mu} = 0,18$, tác dụng trên quãng đường 3 m dọc theo dốc. Lấy $\\mathrm{g} = 10 \\mathrm{~m/s^2}$, tính tốc độ của vật khi tới chân dốc.",
+     "lua_chon": [
+      "9,44 m/s.",
+      "9,99 m/s.",
+      "6,68 m/s.",
+      "10,53 m/s."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cơ năng tại đỉnh: $\\mathrm{W_1} = 10\\mathrm{mh_1} = 10 \\times 5 \\times 5 = 250 \\mathrm{~J}$. \nLực ma sát: $\\mathrm{F_{ms}} = \\mathrm{\\mu mg} = 0,18 \\times 5 \\times 10 = 9 \\mathrm{~N}$. \nCông cản: $\\mathrm{A_{ms}} = \\mathrm{F_{ms}} \\times \\mathrm{s} = 27 \\mathrm{~J}$. \nCơ năng ở chân dốc: $\\mathrm{W_2} = \\mathrm{W_1} - \\mathrm{A_{ms}} = 223 \\mathrm{~J}$. \nTốc độ: $\\mathrm{v} = \\sqrt{(2\\mathrm{W_2}/\\mathrm{m})} = 9,44 \\mathrm{~m/s}$."
+    },
+    {
+     "ma_cau": "K09010306017",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 2 kg trượt không vận tốc đầu từ đỉnh dốc, ở độ cao 5 m so với chân dốc. Trong quá trình trượt, vật chịu lực ma sát $\\mathrm{F_{ms}} = \\mu\\mathrm{mg}$ với hệ số ma sát $\\mu = 0,2$, tác dụng trên quãng đường 3 m dọc theo dốc. Lấy $\\mathrm{g = 10\\ m/s^2}$, tính tốc độ của vật khi tới chân dốc.",
+     "lua_chon": [
+      "9,38 m/s.",
+      "9,97 m/s.",
+      "6,63 m/s.",
+      "10,58 m/s."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cơ năng tại đỉnh: $\\mathrm{W_1 = 10mh_1 = 10 \\times 2 \\times 5 = 100\\ J}$.\nLực ma sát: $\\mathrm{F_{ms} = \\mu\\mathrm{mg} = 0,2 \\times 2 \\times 10 = 4\\ N}$.\nCông cản: $\\mathrm{A_{ms} = F_{ms} \\times s = 12\\ J}$.\nCơ năng ở chân dốc: $\\mathrm{W_2 = W_1 - A_{ms} = 88\\ J}$.\nTốc độ: $\\mathrm{v = \\sqrt{(2W_2/m)} = 9,38\\ m/s}$."
+    },
+    {
+     "ma_cau": "K09010306022",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng $3 \\ \\mathrm{kg}$ trượt không vận tốc đầu từ đỉnh dốc, ở độ cao $6 \\ \\mathrm{m}$ so với chân dốc. Trong quá trình trượt, vật chịu lực ma sát $F_{ms} = \\mu mg$ với hệ số ma sát $\\mu = 0,1$, tác dụng trên quãng đường $5 \\ \\mathrm{m}$ dọc theo dốc. Lấy $g = 10 \\ \\mathrm{m/s^2}$, tính tốc độ của vật khi tới chân dốc.",
+     "lua_chon": [
+      "10,94 m/s.",
+      "7,42 m/s.",
+      "11,4 m/s.",
+      "10,49 m/s."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cơ năng tại đỉnh: $W_1 = 10mh_1 = 10 \\times 3 \\times 6 = 180 \\ \\mathrm{J}$.\nLực ma sát: $F_{ms} = \\mu mg = 0,1 \\times 3 \\times 10 = 3 \\ \\mathrm{N}$.\nCông cản: $A_{ms} = F_{ms} \\times s = 15 \\ \\mathrm{J}$.\nCơ năng ở chân dốc: $W_2 = W_1 - A_{ms} = 165 \\ \\mathrm{J}$.\nTốc độ: $v = \\sqrt{(2W_2/m)} = 10,49 \\ \\mathrm{m/s}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01085",
+   "nhom_id": "KNB00426",
+   "thu_tu": 4,
+   "dang": "So sánh tốc độ của vật trượt không ma sát và vật trượt có ma sát",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010306026",
+     "loai": "trac_nghiem",
+     "de": "Hai vật giống nhau, cùng khối lượng $4$ kg, cùng trượt không vận tốc đầu từ độ cao $6$ m so với chân dốc. Vật A trượt trên dốc không có ma sát. Vật B trượt trên dốc có lực ma sát $5$ N tác dụng trên quãng đường $3$ m. Lấy $g = 10$ m/s$^2$, tính hiệu tốc độ của vật A so với vật B khi cả hai tới chân dốc.",
+     "lua_chon": [
+      "0,17 m/s.",
+      "0,35 m/s.",
+      "21,56 m/s.",
+      "1,03 m/s."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vật A không ma sát nên cơ năng bảo toàn: $v_A = \\sqrt{2gh_1} = \\sqrt{2(10)(6)} = 10,95$ m/s.\nVật B: cơ năng tại đỉnh $W_1 = mgh_1 = 4(10)(6) = 240$ J, công cản $A_{ms} = F_{ms} \\times s = 5 \\times 3 = 15$ J, cơ năng ở chân dốc $W_2 = W_1 - A_{ms} = 240 - 15 = 225$ J.\nTốc độ $v_B = \\sqrt{\\dfrac{2W_2}{m}} = \\sqrt{\\dfrac{2(225)}{4}} = 10,61$ m/s.\nHiệu tốc độ: $v_A - v_B = 10,95 - 10,61 = 0,34$ m/s."
+    },
+    {
+     "ma_cau": "K09010306024",
+     "loai": "trac_nghiem",
+     "de": "Hai vật giống nhau, cùng khối lượng $2$ kg, cùng trượt không vận tốc đầu từ độ cao $5$ m so với chân dốc. Vật A trượt trên dốc không có ma sát. Vật B trượt trên dốc có lực ma sát $3$ N tác dụng trên quãng đường $4$ m. Lấy $g = 10$ m/s$^2$, tính hiệu tốc độ của vật A so với vật B khi cả hai tới chân dốc.",
+     "lua_chon": [
+      "0,3 m/s.",
+      "19,38 m/s.",
+      "1,07 m/s.",
+      "0,62 m/s."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vật A không ma sát nên cơ năng bảo toàn: $v_A = \\sqrt{2gh_1} = \\sqrt{2(10)(5)} = 10$ m/s.\nVật B: cơ năng tại đỉnh $W_1 = mgh_1 = 2(10)(5) = 100$ J, công cản $A_{ms} = F_{ms} \\times s = 3 \\times 4 = 12$ J, cơ năng ở chân dốc $W_2 = W_1 - A_{ms} = 100 - 12 = 88$ J.\nTốc độ $v_B = \\sqrt{\\dfrac{2W_2}{m}} = \\sqrt{\\dfrac{2(88)}{2}} = 9,38$ m/s.\nHiệu tốc độ: $v_A - v_B = 10 - 9,38 = 0,62$ m/s."
+    },
+    {
+     "ma_cau": "K09010306027",
+     "loai": "trac_nghiem",
+     "de": "Hai vật giống nhau, cùng khối lượng $2 \\ \\mathrm{kg}$, cùng trượt không vận tốc đầu từ độ cao $7 \\ \\mathrm{m}$ so với chân dốc. Vật A trượt trên dốc không có ma sát. Vật B trượt trên dốc có lực ma sát $4 \\ \\mathrm{N}$ tác dụng trên quãng đường $3 \\ \\mathrm{m}$. Lấy $g = 10 \\ \\mathrm{m/s^2}$, tính hiệu tốc độ của vật A so với vật B khi cả hai tới chân dốc.",
+     "lua_chon": [
+      "0,26 m/s.",
+      "23,15 m/s.",
+      "1,05 m/s.",
+      "0,52 m/s."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: Vật A không ma sát nên cơ năng bảo toàn: $v_A = \\sqrt{(20h_1)} = 11,83 \\ \\mathrm{m/s}$.\nVật B: cơ năng tại đỉnh $W_1 = 10mh_1 = 140 \\ \\mathrm{J}$, công cản $A_{ms} = F_{ms} \\times s = 12 \\ \\mathrm{J}$, cơ năng ở chân dốc $W_2 = W_1 - A_{ms} = 128 \\ \\mathrm{J}$.\nTốc độ $v_B = \\sqrt{(2W_2/m)} = 11,31 \\ \\mathrm{m/s}$.\nHiệu tốc độ: $v_A - v_B = 0,52 \\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010306029",
+     "loai": "trac_nghiem",
+     "de": "Hai vật giống nhau, cùng khối lượng $3 \\ \\mathrm{kg}$, cùng trượt không vận tốc đầu từ độ cao $6 \\ \\mathrm{m}$ so với chân dốc. Vật A trượt trên dốc không có ma sát. Vật B trượt trên dốc có lực ma sát $3 \\ \\mathrm{N}$ tác dụng trên quãng đường $4 \\ \\mathrm{m}$. Lấy $g = 10 \\ \\mathrm{m/s^2}$, tính hiệu tốc độ của vật A so với vật B khi cả hai tới chân dốc.",
+     "lua_chon": [
+      "0,37 m/s.",
+      "0,18 m/s.",
+      "21,54 m/s.",
+      "1,04 m/s."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: Vật A không ma sát nên cơ năng bảo toàn: $v_A = \\sqrt{(20h_1)} = 10,95 \\ \\mathrm{m/s}$.\nVật B: cơ năng tại đỉnh $W_1 = 10mh_1 = 180 \\ \\mathrm{J}$, công cản $A_{ms} = F_{ms} \\times s = 12 \\ \\mathrm{J}$, cơ năng ở chân dốc $W_2 = W_1 - A_{ms} = 168 \\ \\mathrm{J}$.\nTốc độ $v_B = \\sqrt{(2W_2/m)} = 10,58 \\ \\mathrm{m/s}$.\nHiệu tốc độ: $v_A - v_B = 0,37 \\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010306030",
+     "loai": "trac_nghiem",
+     "de": "Hai vật giống nhau, cùng khối lượng $4\\ \\mathrm{kg}$, cùng trượt không vận tốc đầu từ độ cao $5\\ \\mathrm{m}$ so với chân dốc. Vật A trượt trên dốc không có ma sát. Vật B trượt trên dốc có lực ma sát $5\\ \\mathrm{N}$ tác dụng trên quãng đường $2\\ \\mathrm{m}$. Lấy $g = 10\\ \\mathrm{m/s^2}$, tính hiệu tốc độ của vật A so với vật B khi cả hai tới chân dốc.",
+     "lua_chon": [
+      "$0,13\\ \\mathrm{m/s}$",
+      "$19,75\\ \\mathrm{m/s}$",
+      "$0,25\\ \\mathrm{m/s}$",
+      "$1,03\\ \\mathrm{m/s}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vật A không ma sát nên cơ năng bảo toàn: $v_A = \\sqrt{(20h_1)} = 10\\ \\mathrm{m/s}$.\nVật B: cơ năng tại đỉnh $W_1 = 10mh_1 = 200\\ \\mathrm{J}$, công cản $A_{ms} = F_{ms} \\times s = 10\\ \\mathrm{J}$, cơ năng ở chân dốc $W_2 = W_1 - A_{ms} = 190\\ \\mathrm{J}$.\nTốc độ $v_B = \\sqrt{(2W_2/m)} = 9,75\\ \\mathrm{m/s}$.\nHiệu tốc độ: $v_A - v_B = 0,25\\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010306025",
+     "loai": "trac_nghiem",
+     "de": "Hai vật giống nhau, cùng khối lượng $3$ kg, cùng trượt không vận tốc đầu từ độ cao $4$ m so với chân dốc. Vật A trượt trên dốc không có ma sát. Vật B trượt trên dốc có lực ma sát $4$ N tác dụng trên quãng đường $3$ m. Lấy $g = 10$ m/s$^2$, tính hiệu tốc độ của vật A so với vật B khi cả hai tới chân dốc.",
+     "lua_chon": [
+      "0,23 m/s.",
+      "0,46 m/s.",
+      "17,43 m/s.",
+      "1,05 m/s."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vật A không ma sát nên cơ năng bảo toàn: $v_A = \\sqrt{2gh_1} = \\sqrt{2(10)(4)} = 8,94$ m/s.\nVật B: cơ năng tại đỉnh $W_1 = mgh_1 = 3(10)(4) = 120$ J, công cản $A_{ms} = F_{ms} \\times s = 4 \\times 3 = 12$ J, cơ năng ở chân dốc $W_2 = W_1 - A_{ms} = 120 - 12 = 108$ J.\nTốc độ $v_B = \\sqrt{\\dfrac{2W_2}{m}} = \\sqrt{\\dfrac{2(108)}{3}} = 8,49$ m/s.\nHiệu tốc độ: $v_A - v_B = 8,94 - 8,49 = 0,45$ m/s."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01086",
+   "nhom_id": "KNB00426",
+   "thu_tu": 5,
+   "dang": "Đổi đơn vị quãng đường ma sát rồi tính độ cao đạt được ở dốc không ma sát",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010306031",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng $2$ kg trượt không vận tốc đầu từ đỉnh A của một dốc, ở độ cao $4$ m so với chân dốc. Trên đoạn từ A đến chân dốc, vật chịu lực ma sát $5$ N tác dụng trên quãng đường $300$ cm. Sau khi tới chân dốc, vật trượt tiếp lên một dốc khác không có ma sát. Lấy $g = 10 \\ \\mathrm{m/s^2}$, tính độ cao lớn nhất $h_2$ mà vật đạt được trên dốc không ma sát.",
+     "dap_an": "3,25",
+     "loi_giai": "Đổi $s = 300 \\ \\mathrm{cm} = 3 \\ \\mathrm{m}$. \nCơ năng tại A: $W_1 = 10mh_1 = 80 \\ \\mathrm{J}$. \nCông cản: $A_{ms} = F_{ms} \\times s = 5 \\times 3 = 15 \\ \\mathrm{J}$. \nCơ năng còn lại ở chân dốc: $W_2 = W_1 - A_{ms} = 65 \\ \\mathrm{J}$. \nĐoạn sau không ma sát nên cơ năng bảo toàn: $h_2 = W_2/(10m) = 3,25 \\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K09010306035",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng $5$ kg trượt không vận tốc đầu từ đỉnh A của một dốc, ở độ cao $3$ m so với chân dốc. Trên đoạn từ A đến chân dốc, vật chịu lực ma sát $8$ N tác dụng trên quãng đường $200$ cm. Sau khi tới chân dốc, vật trượt tiếp lên một dốc khác không có ma sát. Lấy $g = 10 \\ \\mathrm{m/s^2}$, tính độ cao lớn nhất $h_2$ mà vật đạt được trên dốc không ma sát.",
+     "dap_an": "2,68",
+     "loi_giai": "Đổi $s = 200 \\ \\mathrm{cm} = 2 \\ \\mathrm{m}$. \nCơ năng tại A: $W_1 = 10mh_1 = 150 \\ \\mathrm{J}$. \nCông cản: $A_{ms} = F_{ms} \\times s = 8 \\times 2 = 16 \\ \\mathrm{J}$. \nCơ năng còn lại ở chân dốc: $W_2 = W_1 - A_{ms} = 134 \\ \\mathrm{J}$. \nĐoạn sau không ma sát nên cơ năng bảo toàn: $h_2 = W_2/(10m) = 2,68 \\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K09010306032",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng $3$ kg trượt không vận tốc đầu từ đỉnh A của một dốc, ở độ cao $5$ m so với chân dốc. Trên đoạn từ A đến chân dốc, vật chịu lực ma sát $6$ N tác dụng trên quãng đường $250$ cm. Sau khi tới chân dốc, vật trượt tiếp lên một dốc khác không có ma sát. Lấy $g = 10 \\ \\mathrm{m/s^2}$, tính độ cao lớn nhất $h_2$ mà vật đạt được trên dốc không ma sát.",
+     "dap_an": "4,5",
+     "loi_giai": "Đổi $s = 250 \\ \\mathrm{cm} = 2,5 \\ \\mathrm{m}$. \nCơ năng tại A: $W_1 = 10mh_1 = 150 \\ \\mathrm{J}$. \nCông cản: $A_{ms} = F_{ms} \\times s = 6 \\times 2,5 = 15 \\ \\mathrm{J}$. \nCơ năng còn lại ở chân dốc: $W_2 = W_1 - A_{ms} = 135 \\ \\mathrm{J}$. \nĐoạn sau không ma sát nên cơ năng bảo toàn: $h_2 = W_2/(10m) = 4,5 \\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K09010306033",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng $4$ kg trượt không vận tốc đầu từ đỉnh A của một dốc, ở độ cao $4$ m so với chân dốc. Trên đoạn từ A đến chân dốc, vật chịu lực ma sát $7$ N tác dụng trên quãng đường $350$ cm. Sau khi tới chân dốc, vật trượt tiếp lên một dốc khác không có ma sát. Lấy $g = 10 \\ \\mathrm{m/s^2}$, tính độ cao lớn nhất $h_2$ mà vật đạt được trên dốc không ma sát.",
+     "dap_an": "3,39",
+     "loi_giai": "Đổi $s = 350 \\ \\mathrm{cm} = 3,5 \\ \\mathrm{m}$. \nCơ năng tại A: $W_1 = 10mh_1 = 160 \\ \\mathrm{J}$. \nCông cản: $A_{ms} = F_{ms} \\times s = 7 \\times 3,5 = 24,5 \\ \\mathrm{J}$. \nCơ năng còn lại ở chân dốc: $W_2 = W_1 - A_{ms} = 135,5 \\ \\mathrm{J}$. \nĐoạn sau không ma sát nên cơ năng bảo toàn: $h_2 = W_2/(10m) = 3,39 \\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K09010306034",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng $2$ kg trượt không vận tốc đầu từ đỉnh A của một dốc, ở độ cao $6$ m so với chân dốc. Trên đoạn từ A đến chân dốc, vật chịu lực ma sát $4$ N tác dụng trên quãng đường $400$ cm. Sau khi tới chân dốc, vật trượt tiếp lên một dốc khác không có ma sát. Lấy $g = 10 \\ \\mathrm{m/s^2}$, tính độ cao lớn nhất $h_2$ mà vật đạt được trên dốc không ma sát.",
+     "dap_an": "5,2",
+     "loi_giai": "Đổi $s = 400 \\ \\mathrm{cm} = 4 \\ \\mathrm{m}$. \nCơ năng tại A: $W_1 = 10mh_1 = 120 \\ \\mathrm{J}$. \nCông cản: $A_{ms} = F_{ms} \\times s = 4 \\times 4 = 16 \\ \\mathrm{J}$. \nCơ năng còn lại ở chân dốc: $W_2 = W_1 - A_{ms} = 104 \\ \\mathrm{J}$. \nĐoạn sau không ma sát nên cơ năng bảo toàn: $h_2 = W_2/(10m) = 5,2 \\ \\mathrm{m}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01087",
+   "nhom_id": "KNB00426",
+   "thu_tu": 6,
+   "dang": "Đổi đơn vị độ cao rơi rồi tính độ cao nảy lên sau va chạm",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010306036",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao $600\\ \\mathrm{cm}$ xuống nền cứng. Va chạm làm vật mất bớt cơ năng: ngay sau va chạm, tốc độ của vật chỉ còn $75\\%$ tốc độ lúc chạm đất. Bỏ qua sức cản không khí, lấy $g = 10\\ \\mathrm{m/s^2}$, tính độ cao lớn nhất $h_2$ (theo mét) mà vật nảy lên được sau va chạm.",
+     "dap_an": "3.38",
+     "loi_giai": "Đổi $h_1 = 600\\ \\mathrm{cm} = 6\\ \\mathrm{m}$. \nTốc độ lúc chạm đất: $v_{chạm} = \\sqrt{2(20h_1)} = 10,95\\ \\mathrm{m/s}$. \nTốc độ ngay sau va chạm: $v_{nảy} = 75\\% \\times v_{chạm} = 8,22\\ \\mathrm{m/s}$. \nSau va chạm cơ năng bảo toàn: $h_2 = v_{nảy}^2/20 = 3,38\\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K09010306040",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao $550\\ \\mathrm{cm}$ xuống nền cứng. Va chạm làm vật mất bớt cơ năng: ngay sau va chạm, tốc độ của vật chỉ còn $70\\%$ tốc độ lúc chạm đất. Bỏ qua sức cản không khí, lấy $g = 10\\ \\mathrm{m/s^2}$, tính độ cao lớn nhất $h_2$ (theo mét) mà vật nảy lên được sau va chạm.",
+     "dap_an": "2.69",
+     "loi_giai": "Đổi $h_1 = 550\\ \\mathrm{cm} = 5,5\\ \\mathrm{m}$. \nTốc độ lúc chạm đất: $v_{chạm} = \\sqrt{2(20h_1)} = 10,49\\ \\mathrm{m/s}$. \nTốc độ ngay sau va chạm: $v_{nảy} = 70\\% \\times v_{chạm} = 7,34\\ \\mathrm{m/s}$. \nSau va chạm cơ năng bảo toàn: $h_2 = v_{nảy}^2/20 = 2,69\\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K09010306039",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao $350\\ \\mathrm{cm}$ xuống nền cứng. Va chạm làm vật mất bớt cơ năng: ngay sau va chạm, tốc độ của vật chỉ còn $90\\%$ tốc độ lúc chạm đất. Bỏ qua sức cản không khí, lấy $g = 10\\ \\mathrm{m/s^2}$, tính độ cao lớn nhất $h_2$ (theo mét) mà vật nảy lên được sau va chạm.",
+     "dap_an": "2.83",
+     "loi_giai": "Đổi $h_1 = 350\\ \\mathrm{cm} = 3,5\\ \\mathrm{m}$. \nTốc độ lúc chạm đất: $v_{chạm} = \\sqrt{2(20h_1)} = 8,37\\ \\mathrm{m/s}$. \nTốc độ ngay sau va chạm: $v_{nảy} = 90\\% \\times v_{chạm} = 7,53\\ \\mathrm{m/s}$. \nSau va chạm cơ năng bảo toàn: $h_2 = v_{nảy}^2/20 = 2,83\\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K09010306038",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao $700\\ \\mathrm{cm}$ xuống nền cứng. Va chạm làm vật mất bớt cơ năng: ngay sau va chạm, tốc độ của vật chỉ còn $65\\%$ tốc độ lúc chạm đất. Bỏ qua sức cản không khí, lấy $g = 10\\ \\mathrm{m/s^2}$, tính độ cao lớn nhất $h_2$ (theo mét) mà vật nảy lên được sau va chạm.",
+     "dap_an": "2.96",
+     "loi_giai": "Đổi $h_1 = 700\\ \\mathrm{cm} = 7\\ \\mathrm{m}$. \nTốc độ lúc chạm đất: $v_{chạm} = \\sqrt{2(20h_1)} = 11,83\\ \\mathrm{m/s}$. \nTốc độ ngay sau va chạm: $v_{nảy} = 65\\% \\times v_{chạm} = 7,69\\ \\mathrm{m/s}$. \nSau va chạm cơ năng bảo toàn: $h_2 = v_{nảy}^2/20 = 2,96\\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K09010306037",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật được thả rơi tự do (không vận tốc đầu) từ độ cao $450\\ \\mathrm{cm}$ xuống nền cứng. Va chạm làm vật mất bớt cơ năng: ngay sau va chạm, tốc độ của vật chỉ còn $80\\%$ tốc độ lúc chạm đất. Bỏ qua sức cản không khí, lấy $g = 10\\ \\mathrm{m/s^2}$, tính độ cao lớn nhất $h_2$ (theo mét) mà vật nảy lên được sau va chạm.",
+     "dap_an": "2.88",
+     "loi_giai": "Đổi $h_1 = 450\\ \\mathrm{cm} = 4,5\\ \\mathrm{m}$. \nTốc độ lúc chạm đất: $v_{chạm} = \\sqrt{2(20h_1)} = 9,49\\ \\mathrm{m/s}$. \nTốc độ ngay sau va chạm: $v_{nảy} = 80\\% \\times v_{chạm} = 7,59\\ \\mathrm{m/s}$. \nSau va chạm cơ năng bảo toàn: $h_2 = v_{nảy}^2/20 = 2,88\\ \\mathrm{m}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01088",
+   "nhom_id": "KNB00426",
+   "thu_tu": 7,
+   "dang": "Đổi đơn vị khối lượng rồi tính tốc độ tại chân dốc có ma sát",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010306044",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng $2500$ g trượt không vận tốc đầu từ đỉnh dốc, ở độ cao $5,5$ m so với chân dốc. Trong quá trình trượt, vật chịu lực ma sát $\\mathrm{F_{ms}} = \\mathrm{\\mu mg}$ với hệ số ma sát $\\mathrm{\\mu = 0,15}$, tác dụng trên quãng đường $4$ m dọc theo dốc. Lấy $\\mathrm{g = 10}$ $\\mathrm{m/s^2}$, tính tốc độ của vật khi tới chân dốc.",
+     "dap_an": "9.9",
+     "loi_giai": "Đổi $\\mathrm{m = 2500}$ $\\mathrm{g = 2,5}$ $\\mathrm{kg}$.\nCơ năng tại đỉnh: $\\mathrm{W_1 = 10mh_1 = 137,5}$ $\\mathrm{J}$.\nLực ma sát: $\\mathrm{F_{ms} = \\mu mg = 0,15 \\times 2,5 \\times 10 = 3,75}$ $\\mathrm{N}$.\nCông cản: $\\mathrm{A_{ms} = F_{ms} \\times s = 15}$ $\\mathrm{J}$.\nCơ năng ở chân dốc: $\\mathrm{W_2 = W_1 - A_{ms} = 122,5}$ $\\mathrm{J}$.\nTốc độ: $\\mathrm{v = \\sqrt{(2W_2/m)} = 9,9}$ $\\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010306045",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng $4000$ g trượt không vận tốc đầu từ đỉnh dốc, ở độ cao $3$ m so với chân dốc. Trong quá trình trượt, vật chịu lực ma sát $\\mathrm{F_{ms}} = \\mathrm{\\mu mg}$ với hệ số ma sát $\\mathrm{\\mu = 0,2}$, tác dụng trên quãng đường $2$ m dọc theo dốc. Lấy $\\mathrm{g = 10}$ $\\mathrm{m/s^2}$, tính tốc độ của vật khi tới chân dốc.",
+     "dap_an": "7.21",
+     "loi_giai": "Đổi $\\mathrm{m = 4000}$ $\\mathrm{g = 4}$ $\\mathrm{kg}$.\nCơ năng tại đỉnh: $\\mathrm{W_1 = 10mh_1 = 120}$ $\\mathrm{J}$.\nLực ma sát: $\\mathrm{F_{ms} = \\mu mg = 0,2 \\times 4 \\times 10 = 8}$ $\\mathrm{N}$.\nCông cản: $\\mathrm{A_{ms} = F_{ms} \\times s = 16}$ $\\mathrm{J}$.\nCơ năng ở chân dốc: $\\mathrm{W_2 = W_1 - A_{ms} = 104}$ $\\mathrm{J}$.\nTốc độ: $\\mathrm{v = \\sqrt{(2W_2/m)} = 7,21}$ $\\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010306043",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng $1500$ g trượt không vận tốc đầu từ đỉnh dốc, ở độ cao $6$ m so với chân dốc. Trong quá trình trượt, vật chịu lực ma sát $\\mathrm{F_{ms}} = \\mathrm{\\mu mg}$ với hệ số ma sát $\\mathrm{\\mu = 0,18}$, tác dụng trên quãng đường $3,5$ m dọc theo dốc. Lấy $\\mathrm{g = 10}$ $\\mathrm{m/s^2}$, tính tốc độ của vật khi tới chân dốc.",
+     "dap_an": "10.36",
+     "loi_giai": "Đổi $\\mathrm{m = 1500}$ $\\mathrm{g = 1,5}$ $\\mathrm{kg}$.\nCơ năng tại đỉnh: $\\mathrm{W_1 = 10mh_1 = 90}$ $\\mathrm{J}$.\nLực ma sát: $\\mathrm{F_{ms} = \\mu mg = 0,18 \\times 1,5 \\times 10 = 2,7}$ $\\mathrm{N}$.\nCông cản: $\\mathrm{A_{ms} = F_{ms} \\times s = 9,45}$ $\\mathrm{J}$.\nCơ năng ở chân dốc: $\\mathrm{W_2 = W_1 - A_{ms} = 80,55}$ $\\mathrm{J}$.\nTốc độ: $\\mathrm{v = \\sqrt{(2W_2/m)} = 10,36}$ $\\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010306042",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng $3000$ g trượt không vận tốc đầu từ đỉnh dốc, ở độ cao $4$ m so với chân dốc. Trong quá trình trượt, vật chịu lực ma sát $\\mathrm{F_{ms}} = \\mathrm{\\mu mg}$ với hệ số ma sát $\\mathrm{\\mu = 0,25}$, tác dụng trên quãng đường $2,3$ m dọc theo dốc. Lấy $\\mathrm{g = 10}$ $\\mathrm{m/s^2}$, tính tốc độ của vật khi tới chân dốc.",
+     "dap_an": "8.28",
+     "loi_giai": "Đổi $\\mathrm{m = 3000}$ $\\mathrm{g = 3}$ $\\mathrm{kg}$.\nCơ năng tại đỉnh: $\\mathrm{W_1 = 10mh_1 = 120}$ $\\mathrm{J}$.\nLực ma sát: $\\mathrm{F_{ms} = \\mu mg = 0,25 \\times 3 \\times 10 = 7,5}$ $\\mathrm{N}$.\nCông cản: $\\mathrm{A_{ms} = F_{ms} \\times s = 17,25}$ $\\mathrm{J}$.\nCơ năng ở chân dốc: $\\mathrm{W_2 = W_1 - A_{ms} = 102,75}$ $\\mathrm{J}$.\nTốc độ: $\\mathrm{v = \\sqrt{(2W_2/m)} = 8,28}$ $\\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09010306041",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng $2000$ g trượt không vận tốc đầu từ đỉnh dốc, ở độ cao $5$ m so với chân dốc. Trong quá trình trượt, vật chịu lực ma sát $\\mathrm{F_{ms}} = \\mathrm{\\mu mg}$ với hệ số ma sát $\\mathrm{\\mu = 0,2}$, tác dụng trên quãng đường $3,2$ m dọc theo dốc. Lấy $\\mathrm{g = 10}$ $\\mathrm{m/s^2}$, tính tốc độ của vật khi tới chân dốc.",
+     "dap_an": "9.34",
+     "loi_giai": "Đổi $\\mathrm{m = 2000}$ $\\mathrm{g = 2}$ $\\mathrm{kg}$.\nCơ năng tại đỉnh: $\\mathrm{W_1 = 10mh_1 = 100}$ $\\mathrm{J}$.\nLực ma sát: $\\mathrm{F_{ms} = \\mu mg = 0,2 \\times 2 \\times 10 = 4}$ $\\mathrm{N}$.\nCông cản: $\\mathrm{A_{ms} = F_{ms} \\times s = 12,8}$ $\\mathrm{J}$.\nCơ năng ở chân dốc: $\\mathrm{W_2 = W_1 - A_{ms} = 87,2}$ $\\mathrm{J}$.\nTốc độ: $\\mathrm{v = \\sqrt{(2W_2/m)} = 9,34}$ $\\mathrm{m/s}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01089",
+   "nhom_id": "KNB00426",
+   "thu_tu": 8,
+   "dang": "Đổi đơn vị khối lượng và quãng đường ma sát rồi so sánh tốc độ hai vật",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010306047",
+     "loai": "tra_loi_ngan",
+     "de": "Hai vật giống nhau, cùng khối lượng $3000\\,g$, cùng trượt không vận tốc đầu từ độ cao $4\\,m$ so với chân dốc. Vật A trượt trên dốc không có ma sát. Vật B trượt trên dốc có lực ma sát $5\\,N$ tác dụng trên quãng đường $300\\,cm$. Lấy $g = 10\\,m/s^2$, tính hiệu tốc độ của vật A so với vật B khi cả hai tới chân dốc.",
+     "dap_an": "0.58",
+     "loi_giai": "Đổi $m = 3000\\,g = 3\\,kg$, $s = 300\\,cm = 3\\,m$.\nVật A không ma sát nên cơ năng bảo toàn: $v_A = \\sqrt{(20h_1)} = 8,94\\,m/s$.\nVật B: cơ năng tại đỉnh $W_1 = 10mh_1 = 120\\,J$, công cản $A_{ms} = F_{ms} \\times s = 15\\,J$, cơ năng ở chân dốc $W_2 = W_1 - A_{ms} = 105\\,J$. \nTốc độ $v_B = \\sqrt{(2W_2/m)} = 8,37\\,m/s$. \nHiệu tốc độ: $v_A - v_B = 0,58\\,m/s$."
+    },
+    {
+     "ma_cau": "K09010306050",
+     "loai": "tra_loi_ngan",
+     "de": "Hai vật giống nhau, cùng khối lượng $4000 \\mathrm{\\ g}$, cùng trượt không vận tốc đầu từ độ cao $3 \\mathrm{\\ m}$ so với chân dốc. Vật A trượt trên dốc không có ma sát. Vật B trượt trên dốc có lực ma sát $4 \\mathrm{\\ N}$ tác dụng trên quãng đường $250 \\mathrm{\\ cm}$. Lấy $g = 10 \\mathrm{\\ m/s^2}$, tính hiệu tốc độ của vật A so với vật B khi cả hai tới chân dốc.",
+     "dap_an": "0.33",
+     "loi_giai": "Đổi $m = 4000 \\mathrm{\\ g} = 4 \\mathrm{\\ kg}$, $s = 250 \\mathrm{\\ cm} = 2.5 \\mathrm{\\ m}$.\nVật A không ma sát nên cơ năng bảo toàn: $v_A = \\sqrt{(2gh)} = \\sqrt{(2 \\cdot 10 \\cdot 3)} = 7.75 \\mathrm{\\ m/s}$.\nVật B: cơ năng tại đỉnh $W_1 = mgh = 4 \\cdot 10 \\cdot 3 = 120 \\mathrm{\\ J}$.\nCông cản $A_{ms} = F_{ms} \\times s = 4 \\times 2.5 = 10 \\mathrm{\\ J}$.\nCơ năng ở chân dốc $W_2 = W_1 - A_{ms} = 120 - 10 = 110 \\mathrm{\\ J}$.\nTốc độ $v_B = \\sqrt{\\dfrac{2W_2}{m}} = \\sqrt{\\dfrac{2 \\cdot 110}{4}} = 7.42 \\mathrm{\\ m/s}$.\nHiệu tốc độ: $v_A - v_B = 7.75 - 7.42 = 0.33 \\mathrm{\\ m/s}$."
+    },
+    {
+     "ma_cau": "K09010306048",
+     "loai": "tra_loi_ngan",
+     "de": "Hai vật giống nhau, cùng khối lượng $1500\\,g$, cùng trượt không vận tốc đầu từ độ cao $6\\,m$ so với chân dốc. Vật A trượt trên dốc không có ma sát. Vật B trượt trên dốc có lực ma sát $5\\,N$ tác dụng trên quãng đường $300\\,cm$. Lấy $g = 10\\,m/s^2$, tính hiệu tốc độ của vật A so với vật B khi cả hai tới chân dốc.",
+     "dap_an": "0.95",
+     "loi_giai": "Đổi $m = 1500\\,g = 1,5\\,kg$, $s = 300\\,cm = 3\\,m$.\nVật A không ma sát nên cơ năng bảo toàn: $v_A = \\sqrt{(20h_1)} = 10,95\\,m/s$.\nVật B: cơ năng tại đỉnh $W_1 = 10mh_1 = 90\\,J$, công cản $A_{ms} = F_{ms} \\times s = 15\\,J$, cơ năng ở chân dốc $W_2 = W_1 - A_{ms} = 75\\,J$. \nTốc độ $v_B = \\sqrt{(2W_2/m)} = 10\\,m/s$. \nHiệu tốc độ: $v_A - v_B = 0,95\\,m/s$."
+    },
+    {
+     "ma_cau": "K09010306046",
+     "loai": "tra_loi_ngan",
+     "de": "Hai vật giống nhau, cùng khối lượng $2000\\,g$, cùng trượt không vận tốc đầu từ độ cao $5\\,m$ so với chân dốc. Vật A trượt trên dốc không có ma sát. Vật B trượt trên dốc có lực ma sát $3\\,N$ tác dụng trên quãng đường $350\\,cm$. Lấy $g = 10\\,m/s^2$, tính hiệu tốc độ của vật A so với vật B khi cả hai tới chân dốc.",
+     "dap_an": "0.54",
+     "loi_giai": "Đổi $m = 2000\\,g = 2\\,kg$, $s = 350\\,cm = 3,5\\,m$.\nVật A không ma sát nên cơ năng bảo toàn: $v_A = \\sqrt{(20h_1)} = 10\\,m/s$.\nVật B: cơ năng tại đỉnh $W_1 = 10mh_1 = 100\\,J$, công cản $A_{ms} = F_{ms} \\times s = 10,5\\,J$, cơ năng ở chân dốc $W_2 = W_1 - A_{ms} = 89,5\\,J$. \nTốc độ $v_B = \\sqrt{(2W_2/m)} = 9,46\\,m/s$. \nHiệu tốc độ: $v_A - v_B = 0,54\\,m/s$."
+    },
+    {
+     "ma_cau": "K09010306049",
+     "loai": "tra_loi_ngan",
+     "de": "Hai vật giống nhau, cùng khối lượng $2500\\,g$, cùng trượt không vận tốc đầu từ độ cao $5\\,m$ so với chân dốc. Vật A trượt trên dốc không có ma sát. Vật B trượt trên dốc có lực ma sát $6\\,N$ tác dụng trên quãng đường $200\\,cm$. Lấy $g = 10\\,m/s^2$, tính hiệu tốc độ của vật A so với vật B khi cả hai tới chân dốc.",
+     "dap_an": "0.49",
+     "loi_giai": "Đổi $m = 2500\\,g = 2,5\\,kg$, $s = 200\\,cm = 2\\,m$.\nVật A không ma sát nên cơ năng bảo toàn: $v_A = \\sqrt{(20h_1)} = 10\\,m/s$.\nVật B: cơ năng tại đỉnh $W_1 = 10mh_1 = 125\\,J$, công cản $A_{ms} = F_{ms} \\times s = 12\\,J$, cơ năng ở chân dốc $W_2 = W_1 - A_{ms} = 113\\,J$. \nTốc độ $v_B = \\sqrt{(2W_2/m)} = 9,51\\,m/s$. \nHiệu tốc độ: $v_A - v_B = 0,49\\,m/s$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01090",
+   "nhom_id": "KNB00427",
+   "thu_tu": 1,
+   "dang": "ĐIỀU KIỆN CÓ CÔNG CƠ HỌC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010401102",
+     "loai": "trac_nghiem",
+     "de": "Một ô tô đang chạy trên mặt đường nằm ngang. Lực nào sau đây tác dụng lên ô tô có thực hiện công?",
+     "lua_chon": [
+      "Trọng lực tác dụng lên xe",
+      "Lực nâng của mặt đường lên xe",
+      "Lực ép của hành khách lên sàn xe",
+      "Lực kéo của động cơ xe"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ô tô dịch chuyển theo phương nằm ngang.Lực kéo của động cơ có phương nằm ngang, cùng phương dịch chuyển nên thực hiện công.Các lực còn lại có phương thẳng đứng, vuông góc với phương dịch chuyển nên không thực hiện công."
+    },
+    {
+     "ma_cau": "K09010401098",
+     "loai": "trac_nghiem",
+     "de": "Công cơ học của một lực phụ thuộc vào những yếu tố nào?",
+     "lua_chon": [
+      "Độ lớn của lực và quãng đường vật dịch chuyển",
+      "Khối lượng của vật và thời gian chuyển động",
+      "Độ lớn của lực và thời gian lực tác dụng lên vật",
+      "Tốc độ của vật và thời gian chuyển động của vật"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Công cơ học phụ thuộc vào độ lớn của lực tác dụng vào vật và quãng đường vật dịch chuyển theo phương của lực."
+    },
+    {
+     "ma_cau": "K09010401097",
+     "loai": "trac_nghiem",
+     "de": "Một người xách cặp sách đứng yên chờ xe buýt. Nhận xét nào sau đây đúng?",
+     "lua_chon": [
+      "Lực của tay nâng cặp thực hiện công vì cặp nặng",
+      "Trọng lực thực hiện công vì cặp bị Trái Đất hút",
+      "Lực của tay nâng cặp không thực hiện công",
+      "Lực của tay thực hiện công vì người phải dùng sức"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cặp sách đứng yên, không dịch chuyển.\nVì vậy lực nâng của tay không thực hiện công, dù người đó vẫn phải dùng sức."
+    },
+    {
+     "ma_cau": "K09010401094",
+     "loai": "trac_nghiem",
+     "de": "Trường hợp nào sau đây có công cơ học?",
+     "lua_chon": [
+      "Học sinh ngồi đọc sách trong thư viện",
+      "Con bò kéo chiếc xe đi trên đường",
+      "Ô tô tắt máy đỗ yên bên lề đường",
+      "Bình hoa nằm yên trên mặt bàn học"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Lực kéo của con bò làm chiếc xe dịch chuyển theo phương của lực kéo nên lực kéo thực hiện công cơ học.Trong các trường hợp còn lại, vật đứng yên nên không có công cơ học."
+    },
+    {
+     "ma_cau": "K09010401096",
+     "loai": "trac_nghiem",
+     "de": "Trong trường hợp nào sau đây trọng lực tác dụng lên vật thực hiện công?",
+     "lua_chon": [
+      "Giọt mưa rơi xuống mặt đất",
+      "Quyển sách nằm yên trên bàn",
+      "Hòn bi lăn trên mặt bàn nằm ngang",
+      "Xe đạp dựng yên bên lề đường"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trọng lực có phương thẳng đứng, chiều từ trên xuống.Giọt mưa rơi xuống, tức là dịch chuyển theo phương của trọng lực, nên trọng lực thực hiện công."
+    },
+    {
+     "ma_cau": "K09010401101",
+     "loai": "trac_nghiem",
+     "de": "Trong một buổi thi cử tạ, hoạt động nào sau đây có công cơ học?",
+     "lua_chon": [
+      "Vận động viên giữ quả tạ đứng yên trên đầu",
+      "Vận động viên đứng nghỉ chờ đến lượt thi",
+      "Vận động viên nâng quả tạ từ sàn lên cao",
+      "Trọng tài ngồi yên quan sát phần thi"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khi nâng quả tạ từ sàn lên cao, lực nâng làm quả tạ dịch chuyển theo phương của lực nên có công cơ học.Khi giữ quả tạ đứng yên, quả tạ không dịch chuyển nên không có công cơ học."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01091",
+   "nhom_id": "KNB00427",
+   "thu_tu": 2,
+   "dang": "CÔNG SUẤT VÀ Ý NGHĨA",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010401105",
+     "loai": "trac_nghiem",
+     "de": "Gọi A là công thực hiện được trong thời gian t. Công suất P được tính bằng công thức nào sau đây?",
+     "lua_chon": [
+      "P = \\dfrac{A}{t}",
+      "P = A \\cdot t",
+      "P = \\dfrac{t}{A}",
+      "P = A + t"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Công suất bằng công thực hiện được chia cho thời gian thực hiện công đó:\n$$P = \\dfrac{A}{t}$$"
+    },
+    {
+     "ma_cau": "K09010401108",
+     "loai": "trac_nghiem",
+     "de": "Muốn so sánh hai máy làm việc nhanh hay chậm, cách nào sau đây đúng?",
+     "lua_chon": [
+      "So sánh tổng thời gian hoạt động của mỗi máy",
+      "So sánh công mỗi máy làm được trong 1 giây",
+      "So sánh lực kéo lớn nhất mà mỗi máy tạo ra",
+      "So sánh khối lượng và kích thước của mỗi máy"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Máy làm việc nhanh hơn là máy có công suất lớn hơn.\nCông suất là công thực hiện được trong một đơn vị thời gian, nên cần so sánh công mỗi máy làm được trong 1 giây."
+    },
+    {
+     "ma_cau": "K09010401113",
+     "loai": "trac_nghiem",
+     "de": "Một học sinh phát biểu: 'Máy có công suất lớn hơn thì luôn thực hiện được công lớn hơn'. Nhận xét nào sau đây đúng?",
+     "lua_chon": [
+      "Đúng, vì công suất lớn thì công luôn lớn hơn",
+      "Đúng, vì công và công suất có cùng đơn vị đo",
+      "Sai, vì công còn phụ thuộc thời gian làm việc",
+      "Sai, vì công chỉ phụ thuộc khối lượng của máy"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Công suất cho biết công thực hiện được trong một đơn vị thời gian.\nCông máy thực hiện được còn phụ thuộc vào thời gian làm việc. Máy có công suất lớn nhưng làm việc trong thời gian ngắn vẫn có thể thực hiện công nhỏ hơn máy khác."
+    },
+    {
+     "ma_cau": "K09010401106",
+     "loai": "trac_nghiem",
+     "de": "Trên một máy bơm nước có ghi 750 W. Con số đó cho biết",
+     "lua_chon": [
+      "mỗi giờ máy thực hiện được công 750 J",
+      "máy nâng được vật có trọng lượng 750 N",
+      "mỗi giây máy bơm được 750 lít nước",
+      "mỗi giây máy thực hiện được công 750 J"
+     ],
+     "dap_an": "D",
+     "loi_giai": "750 W là công suất của máy bơm.\nCông suất 750 W nghĩa là trong mỗi giây máy thực hiện được công 750 J."
+    },
+    {
+     "ma_cau": "K09010401107",
+     "loai": "trac_nghiem",
+     "de": "Đại lượng nào sau đây cho biết một máy thực hiện công nhanh hay chậm?",
+     "lua_chon": [
+      "Công cơ học",
+      "Công suất",
+      "Lực kéo của máy",
+      "Tốc độ của máy"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Công suất là tốc độ thực hiện công, cho biết máy thực hiện công nhanh hay chậm."
+    },
+    {
+     "ma_cau": "K09010401111",
+     "loai": "trac_nghiem",
+     "de": "Ở công trường, người ta thường dùng các máy có công suất lớn như cần cẩu, máy xúc để",
+     "lua_chon": [
+      "làm cho công cần thực hiện giảm đi nhiều lần",
+      "giảm trọng lượng của các vật cần nâng lên cao",
+      "hoàn thành công việc trong thời gian ngắn hơn",
+      "kéo dài thời gian hoàn thành công việc"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Máy có công suất lớn thực hiện công nhanh.Với cùng một công việc, máy có công suất lớn hoàn thành trong thời gian ngắn hơn."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01092",
+   "nhom_id": "KNB00427",
+   "thu_tu": 3,
+   "dang": "ĐƠN VỊ CÔNG VÀ CÔNG SUẤT",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010401123",
+     "loai": "trac_nghiem",
+     "de": "Ba thiết bị có công suất: $0,5 \\mathrm{\\ kW}; 450 \\mathrm{\\ W}; 0,0006 \\mathrm{\\ MW}$. Dãy nào sau đây sắp xếp các công suất đó theo thứ tự tăng dần?",
+     "lua_chon": [
+      "$0,0006 \\mathrm{\\ MW}; 0,5 \\mathrm{\\ kW}; 450 \\mathrm{\\ W}$",
+      "$450 \\mathrm{\\ W}; 0,5 \\mathrm{\\ kW}; 0,0006 \\mathrm{\\ MW}$",
+      "$0,5 \\mathrm{\\ kW}; 450 \\mathrm{\\ W}; 0,0006 \\mathrm{\\ MW}$",
+      "$0,0006 \\mathrm{\\ MW}; 450 \\mathrm{\\ W}; 0,5 \\mathrm{\\ kW}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi về cùng đơn vị oát:\n$0,5 \\mathrm{\\ kW} = 0,5 \\cdot 1000 = 500 \\mathrm{\\ (W)}$\n$0,0006 \\mathrm{\\ MW} = 0,0006 \\cdot 1000 \\ 000 = 600 \\mathrm{\\ (W)}$\nVì $450 \\mathrm{\\ W} < 500 \\mathrm{\\ W} < 600 \\mathrm{\\ W}$ nên thứ tự tăng dần là $450 \\mathrm{\\ W}; 0,5 \\mathrm{\\ kW}; 0,0006 \\mathrm{\\ MW}$."
+    },
+    {
+     "ma_cau": "K09010401115",
+     "loai": "trac_nghiem",
+     "de": "Trong hệ đơn vị đo lường chính thức của nước ta, đơn vị của công suất là",
+     "lua_chon": [
+      "jun (J)",
+      "oát (W)",
+      "niutơn (N)",
+      "mét trên giây (m/s)"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đơn vị của công suất là oát, kí hiệu W."
+    },
+    {
+     "ma_cau": "K09010401116",
+     "loai": "trac_nghiem",
+     "de": "Đơn vị jun (J) có thể biểu diễn qua đơn vị của lực và đơn vị của độ dài. 1 J bằng",
+     "lua_chon": [
+      "$1 \\mathrm{~N} \\cdot \\mathrm{s}$",
+      "$1 \\dfrac{\\mathrm{N}}{\\mathrm{m}}$",
+      "$1 \\mathrm{~N} \\cdot \\mathrm{m}$",
+      "$1 \\mathrm{~kg} \\cdot \\mathrm{m}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Từ công thức $A = F \\cdot s$:\n$1 \\mathrm{~J} = 1 \\mathrm{~N} \\cdot 1 \\mathrm{~m} = 1 \\mathrm{~N} \\cdot \\mathrm{m}$"
+    },
+    {
+     "ma_cau": "K09010401122",
+     "loai": "trac_nghiem",
+     "de": "Máy bơm thứ nhất có công suất 1,2 kW, máy bơm thứ hai có công suất 900 W. Nhận xét nào sau đây đúng?",
+     "lua_chon": [
+      "Máy 900 W có công suất lớn hơn",
+      "Hai máy có công suất bằng nhau",
+      "Máy 1,2 kW có công suất lớn hơn",
+      "Không so sánh được vì khác đơn vị"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi về cùng đơn vị:\n$1,2\\ \\mathrm{kW} = 1,2 \\cdot 1000 = 1200\\ (\\mathrm{W})$\nVì $1200\\ \\mathrm{W} > 900\\ \\mathrm{W}$ nên máy bơm thứ nhất có công suất lớn hơn."
+    },
+    {
+     "ma_cau": "K09010401118",
+     "loai": "trac_nghiem",
+     "de": "Một người kéo xe hàng thực hiện công 2,5 kJ. Công này bằng bao nhiêu jun?",
+     "lua_chon": [
+      "0,0025 J",
+      "25 J",
+      "250 J",
+      "2500 J"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$1\\ \\mathrm{kJ} = 1000\\ \\mathrm{J}$\n$2,5\\ \\mathrm{kJ} = 2,5 \\cdot 1000 = 2500\\ (\\mathrm{J})$"
+    },
+    {
+     "ma_cau": "K09010401120",
+     "loai": "trac_nghiem",
+     "de": "Một nhà máy thủy điện nhỏ có công suất 3 MW. Công suất này bằng bao nhiêu oát?",
+     "lua_chon": [
+      "3000 W",
+      "300 000 W",
+      "3 000 000 W",
+      "3 000 000 000 W"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$1\\ \\mathrm{MW} = 1\\ 000\\ 000\\ \\mathrm{W}$\n$3\\ \\mathrm{MW} = 3 \\cdot 1\\ 000\\ 000 = 3\\ 000\\ 000\\ (\\mathrm{W})$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01093",
+   "nhom_id": "KNB00428",
+   "thu_tu": 1,
+   "dang": "Tính A khi biết F và s",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010402068",
+     "loai": "trac_nghiem",
+     "de": "Một lực $120 \\mathrm{~N}$ làm vật dịch chuyển được $0.5 \\mathrm{~m}$ theo phương của lực. Công của lực này bằng bao nhiêu?",
+     "lua_chon": [
+      "$60 \\mathrm{~J}$",
+      "$120 \\mathrm{~J}$",
+      "$240 \\mathrm{~J}$",
+      "$600 \\mathrm{~J}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Công của lực là:\n$A = F \\cdot s = 120 \\cdot 0.5 = 60 \\; (\\mathrm{J})$"
+    },
+    {
+     "ma_cau": "K09010402067",
+     "loai": "trac_nghiem",
+     "de": "Một lực có độ lớn $40 \\mathrm{~N}$ tác dụng vào vật làm vật dịch chuyển $5 \\mathrm{~m}$ theo phương của lực. Công của lực đó là bao nhiêu?",
+     "lua_chon": [
+      "$8 \\mathrm{~J}$",
+      "$40 \\mathrm{~J}$",
+      "$200 \\mathrm{~J}$",
+      "$2000 \\mathrm{~J}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Công của lực là:\n$A = F \\cdot s = 40 \\cdot 5 = 200 \\; (\\mathrm{J})$"
+    },
+    {
+     "ma_cau": "K09010402076",
+     "loai": "trac_nghiem",
+     "de": "Một đầu máy kéo đoàn tàu đi được 120 m trên đường ray thẳng. Lực kéo của đầu máy có độ lớn 5000 N, cùng phương chuyển động. Công của lực kéo là bao nhiêu?",
+     "lua_chon": [
+      "5000 J",
+      "60000 J",
+      "600000 J",
+      "6000000 J"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Công của lực kéo là:\n$A = F \\cdot s = 5000 \\cdot 120 = 600000$ (J)"
+    },
+    {
+     "ma_cau": "K09010402078",
+     "loai": "trac_nghiem",
+     "de": "Một ô tô chạy trên đường thẳng được 2 km. Lực kéo của động cơ có độ lớn 1500 N, cùng phương chuyển động. Công của lực kéo bằng bao nhiêu kilôjun?",
+     "lua_chon": [
+      "3 kJ",
+      "3000 kJ",
+      "30000 kJ",
+      "3000000 kJ"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi đơn vị:\n$s = 2 \\text{ km} = 2000 \\text{ m}$\nCông của lực kéo là:\n$A = F \\cdot s = 1500 \\cdot 2000 = 3000000 \\text{ (J)} = 3000 \\text{ (kJ)}$"
+    },
+    {
+     "ma_cau": "K09010402077",
+     "loai": "trac_nghiem",
+     "de": "Một xe tải chạy trên đoạn đường thẳng dài 250 m. Lực kéo của động cơ có độ lớn 3200 N, cùng phương chuyển động. Công của lực kéo là bao nhiêu?",
+     "lua_chon": [
+      "12,8 J",
+      "3200 J",
+      "80000 J",
+      "800000 J"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Công của lực kéo là:\n$A = F \\cdot s = 3200 \\cdot 250 = 800000$ (J)"
+    },
+    {
+     "ma_cau": "K09010402081",
+     "loai": "trac_nghiem",
+     "de": "Một người kéo xe chở cây cảnh đi 4 vòng quanh khuôn viên có chu vi 150 m. Lực kéo luôn có độ lớn 90 N và cùng phương chuyển động của xe. Công của lực kéo là bao nhiêu?",
+     "lua_chon": [
+      "5400 J",
+      "13 500 J",
+      "54 000 J",
+      "540 000 J"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Quãng đường xe đi được:\n$s = 4 \\cdot 150 = 600$ (m)\nCông của lực kéo là:\n$A = F \\cdot s = 90 \\cdot 600 = 54 \\,000$ (J)"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01094",
+   "nhom_id": "KNB00428",
+   "thu_tu": 2,
+   "dang": "Tính F hoặc s khi biết A",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 20,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010402087",
+     "loai": "tra_loi_ngan",
+     "de": "Một máy kéo kéo chiếc bừa trên ruộng với lực kéo $3000$ N cùng phương chuyển động. Công của lực kéo là $450\\ 000$ J. Tính quãng đường chiếc bừa đi được (đơn vị: m).",
+     "dap_an": "150",
+     "loi_giai": "Từ công thức $A = F \\cdot s$, quãng đường dịch chuyển là:\n$s = \\dfrac{A}{F} = \\dfrac{450\\ 000}{3000} = 150$ (m)"
+    },
+    {
+     "ma_cau": "K09010402096",
+     "loai": "tra_loi_ngan",
+     "de": "Một xe tải chạy hết đoạn đường thẳng dài $1.5\\ \\mathrm{km}$. Lực kéo của động cơ cùng phương chuyển động và thực hiện công $4500\\ \\mathrm{kJ}$. Tính độ lớn của lực kéo (đơn vị: $\\mathrm{N}$).",
+     "dap_an": "3000",
+     "loi_giai": "Đổi đơn vị:\n$s = 1.5\\ \\mathrm{km} = 1500\\ \\mathrm{m}$; $A = 4500\\ \\mathrm{kJ} = 4\\ 500\\ 000\\ \\mathrm{J}$\nĐộ lớn của lực kéo:\n$F = \\dfrac{A}{s} = \\dfrac{4\\ 500\\ 000}{1500} = 3000\\ (\\mathrm{N})$"
+    },
+    {
+     "ma_cau": "K09010402091",
+     "loai": "tra_loi_ngan",
+     "de": "Một khách hàng đẩy xe hàng siêu thị đi được 60 m trên sàn nằm ngang, lực đẩy cùng phương chuyển động. Công của lực đẩy là 900 J. Tính độ lớn của lực đẩy (đơn vị: N).",
+     "dap_an": "15",
+     "loi_giai": "Từ công thức $A = F \\cdot s$, độ lớn của lực là:\n$F = \\dfrac{A}{s} = \\dfrac{900}{60} = 15 \\thinspace (N)$"
+    },
+    {
+     "ma_cau": "K09010402082",
+     "loai": "tra_loi_ngan",
+     "de": "Một lực thực hiện công $300 J$ khi làm vật dịch chuyển $6 m$ theo phương của lực. Tính độ lớn của lực (đơn vị: N).",
+     "dap_an": "50",
+     "loi_giai": "Từ công thức $A = F \\cdot s$, độ lớn của lực là:\n$F = \\dfrac{A}{s} = \\dfrac{300}{6} = 50$ (N)"
+    },
+    {
+     "ma_cau": "K09010402098",
+     "loai": "tra_loi_ngan",
+     "de": "Một đầu máy kéo đoàn tàu chạy hết quãng đường thẳng $2\\ \\mathrm{km}$. Lực kéo cùng phương chuyển động và thực hiện công $12\\ 000\\ \\mathrm{kJ}$. Tính độ lớn của lực kéo (đơn vị: $\\mathrm{kN}$).",
+     "dap_an": "6",
+     "loi_giai": "Đổi đơn vị:\n$s = 2\\ \\mathrm{km} = 2000\\ \\mathrm{m}$; $A = 12\\ 000\\ \\mathrm{kJ} = 12\\ 000\\ 000\\ \\mathrm{J}$\nĐộ lớn của lực kéo:\n$F = \\dfrac{A}{s} = \\dfrac{12\\ 000\\ 000}{2000} = 6000\\ (\\mathrm{N}) = 6\\ (\\mathrm{kN})$"
+    },
+    {
+     "ma_cau": "K09010402093",
+     "loai": "tra_loi_ngan",
+     "de": "Hai bạn cùng kéo một khúc gỗ trên mặt đất bằng một sợi dây, khúc gỗ dịch chuyển 12 m theo phương của dây. Công của lực kéo dây là 5400 J. Tính độ lớn của lực kéo dây (đơn vị: N).",
+     "dap_an": "450",
+     "loi_giai": "Từ công thức $A = F \\cdot s$, độ lớn của lực là:\n$F = \\dfrac{A}{s} = \\dfrac{5400}{12} = 450 \\thinspace (N)$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01095",
+   "nhom_id": "KNB00428",
+   "thu_tu": 3,
+   "dang": "CÔNG NÂNG VẬT LÊN CAO",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010402110",
+     "loai": "trac_nghiem",
+     "de": "Thang máy của một chung cư đưa một người có khối lượng 60 kg lên độ cao 24 m. Bỏ qua khối lượng của buồng thang. Công của lực nâng tác dụng lên người là bao nhiêu? (Coi lực đưa vật lên có độ lớn bằng trọng lượng của vật; trọng lượng bằng 10 lần khối lượng.)",
+     "lua_chon": [
+      "144 J",
+      "600 J",
+      "1440 J",
+      "14400 J"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lực đưa vật lên có độ lớn bằng trọng lượng của vật:\n$F = 10m = 10 \\cdot 60 = 600$ (N)\nCông của lực này là:\n$A = F \\cdot h = 600 \\cdot 24 = 14400$ (J)"
+    },
+    {
+     "ma_cau": "K09010402108",
+     "loai": "trac_nghiem",
+     "de": "Một cần cẩu nâng đều kiện hàng có khối lượng $600$ kg lên độ cao $15$ m. Công của lực nâng là bao nhiêu? (Coi lực đưa vật lên có độ lớn bằng trọng lượng của vật; trọng lượng bằng $10$ lần khối lượng.)",
+     "lua_chon": [
+      "900 J",
+      "9000 J",
+      "90 000 J",
+      "900 000 J"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Lực đưa vật lên có độ lớn bằng trọng lượng của vật:\n$F = 10m = 10 \\cdot 600 = 6000$ (N)\nCông của lực này là:\n$A = F \\cdot h = 6000 \\cdot 15 = 90\\,000$ (J)"
+    },
+    {
+     "ma_cau": "K09010402112",
+     "loai": "trac_nghiem",
+     "de": "Một máy bơm đưa $200\\ \\mathrm{kg}$ nước lên bể chứa đặt trên mái nhà cao $10\\ \\mathrm{m}$. Công của lực nâng nước là bao nhiêu? (Coi lực đưa vật lên có độ lớn bằng trọng lượng của vật; trọng lượng bằng $10$ lần khối lượng.)",
+     "lua_chon": [
+      "200 J",
+      "2000 J",
+      "20 000 J",
+      "200 000 J"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Lực đưa vật lên có độ lớn bằng trọng lượng của vật:\n$F = 10\\mathrm{m} = 10 \\cdot 200 = 2000\\ (\\mathrm{N})$\nCông của lực này là:\n$A = \\mathrm{F} \\cdot \\mathrm{h} = 2000 \\cdot 10 = 20\\ 000\\ (\\mathrm{J})$"
+    },
+    {
+     "ma_cau": "K09010402116",
+     "loai": "trac_nghiem",
+     "de": "Trong giờ thực hành, một học sinh nâng đều quả nặng 500 g lên cao 80 cm. Công của lực nâng là bao nhiêu? (Coi lực đưa vật lên có độ lớn bằng trọng lượng của vật; trọng lượng bằng 10 lần khối lượng.)",
+     "lua_chon": [
+      "4 J",
+      "400 J",
+      "4000 J",
+      "400 000 J"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi đơn vị:\n$m = 500\\ \\mathrm{g} = 0.5\\ \\mathrm{kg};\\ h = 80\\ \\mathrm{cm} = 0.8\\ \\mathrm{m}$\nLực đưa vật lên có độ lớn bằng trọng lượng của vật:\n$F = 10m = 10\\ \\cdot\\ 0.5 = 5\\ (\\mathrm{N})$\nCông của lực này là:\n$A = F\\ \\cdot\\ h = 5\\ \\cdot\\ 0.8 = 4\\ (\\mathrm{J})$"
+    },
+    {
+     "ma_cau": "K09010402113",
+     "loai": "trac_nghiem",
+     "de": "Một cần cẩu nâng đều thùng hàng $2,5\\ \\mathrm{tấn}$ lên độ cao $12\\ \\mathrm{m}$. Công của lực nâng bằng bao nhiêu kilôjun? (Coi lực đưa vật lên có độ lớn bằng trọng lượng của vật; trọng lượng bằng $10$ lần khối lượng.)",
+     "lua_chon": [
+      "0,3 kJ",
+      "300 kJ",
+      "3000 kJ",
+      "300 000 kJ"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi đơn vị:\n$\\mathrm{m} = 2,5\\ \\mathrm{tấn} = 2500\\ \\mathrm{kg}$\nLực đưa vật lên có độ lớn bằng trọng lượng của vật:\n$F = 10\\mathrm{m} = 10 \\cdot 2500 = 25\\ 000\\ (\\mathrm{N})$\nCông của lực này là:\n$A = \\mathrm{F} \\cdot \\mathrm{h} = 25\\ 000 \\cdot 12 = 300\\ 000\\ (\\mathrm{J}) = 300\\ (\\mathrm{kJ})$"
+    },
+    {
+     "ma_cau": "K09010402115",
+     "loai": "trac_nghiem",
+     "de": "Thang máy đưa một thùng hàng 75 kg từ sàn tầng 1 lên sàn tầng 7. Mỗi tầng cao 3 m. Công của lực nâng tác dụng lên thùng hàng là bao nhiêu? (Coi lực đưa vật lên có độ lớn bằng trọng lượng của vật; trọng lượng bằng 10 lần khối lượng.)",
+     "lua_chon": [
+      "2250 J",
+      "13 500 J",
+      "15 750 J",
+      "135 000 J"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Từ sàn tầng 1 lên sàn tầng 7, thùng hàng đi qua 6 tầng:\n$h = 6 \\cdot 3 = 18$ (m)\nLực đưa vật lên có độ lớn bằng trọng lượng của vật:\n$F = 10m = 10 \\cdot 75 = 750$ (N)\nCông của lực này là:\n$A = F \\cdot h = 750 \\cdot 18 = 13500$ (J)"
+    }
+   ]
+  }
+ ]
+}

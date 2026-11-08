@@ -40,7 +40,7 @@ export async function getLevelXu(hocSinhId: string, mon: string): Promise<LevelX
   const mua = seasonOf(vnTodayStr())
   const ym = vnTodayStr().slice(0, 7) // tháng VN hiện tại 'YYYY-MM' = tháng EXP thuộc về
   const [dt, lxR, viR] = await Promise.all([
-    supabase.from('diem_thi').select('verdict, ky_thi:ky_thi_id(he_so, mon, mua)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
+    supabase.from('diem_thi').select('verdict, ky_thi:ky_thi_id(he_so, mon, mua, loai)').eq('hoc_sinh_id', hocSinhId).limit(LIMIT),
     // EXP THÁNG (note-keyed theo `note`=ym + attend_floor theo cửa sổ tháng VN) và XU LŨY TIẾN theo khúc luong_bac:
     // tính ở DB (fn_gami_exp_xu_thang, §2.0). moc_ke/xu_moc_ke = đầu khúc kế + xu khi chạm khúc đó (thanh tiến độ).
     supabase.rpc('fn_gami_exp_xu_thang', { p_ym: ym, p_hoc_sinh_id: hocSinhId, p_mon: mon }),
@@ -48,7 +48,8 @@ export async function getLevelXu(hocSinhId: string, mon: string): Promise<LevelX
     supabase.from('qlht_v_so_du_xu').select('so_du').eq('hoc_sinh_id', hocSinhId).maybeSingle(),
   ])
   let level = 0
-  for (const r of (dt.data ?? []) as any[]) { const k = r.ky_thi; if (k && k.mon === mon && k.mua === mua) level += verdictPoint(r.verdict, k.he_so) }
+  // 23/10 (Thùy): khảo sát giữa tháng ('khao_sat_thang') KHÔNG tính Level — chỉ MT + thi trường.
+  for (const r of (dt.data ?? []) as any[]) { const k = r.ky_thi; if (k && k.mon === mon && k.mua === mua && k.loai !== 'khao_sat_thang') level += verdictPoint(r.verdict, k.he_so) }
   if (lxR.error) throw lxR.error
   const lx = ((lxR.data ?? []) as any[])[0]
   const expThang = Number(lx?.exp ?? 0), xu = Number(lx?.xu ?? 0)
@@ -64,7 +65,7 @@ export async function listThanhTichLoai(): Promise<ThanhTichLoai[]> {
 }
 
 // Nhãn dùng chung (Quản lý Level view-only + tab Điểm thi trong Kết quả học tập).
-export const LOAI_KY_THI: Record<string, string> = { truong: 'Thi trường', mt_sat_hach: 'BK sát hạch (MT)', khao_sat_thang: 'Khảo sát tháng' }
+export const LOAI_KY_THI: Record<string, string> = { truong: 'Thi trường', mt_sat_hach: 'BK sát hạch (MT)', khao_sat_thang: 'Khảo sát giữa tháng' }
 export const HE_SO_KY_THI: Record<string, number> = { truong: 2, mt_sat_hach: 2, khao_sat_thang: 1 }
 export const DOT_LABEL: Record<string, string> = { giua_ky_1: 'Giữa kì I', cuoi_ky_1: 'Cuối kì I', giua_ky_2: 'Giữa kì II', cuoi_ky_2: 'Cuối kì II' }
 export const DOT_ORDER = ['giua_ky_1', 'cuoi_ky_1', 'giua_ky_2', 'cuoi_ky_2'] as const
@@ -238,8 +239,15 @@ export type BXHDiemMTRow = {
   lop_id: string | null; ten_lop: string | null
   tb: number | null; rank_now: number; rank_total: number
 }
+// 23/10: BXH KHẢO SÁT GIỮA THÁNG — cùng luật, kỳ 'khao_sat_thang', cửa sổ = THÁNG DƯƠNG LỊCH của buổi (fn_bxh_diem_ks_khoi).
+export async function getBXHDiemKSKhoi(mon: string, khoi: string, ym: string): Promise<BXHDiemMTRow[]> {
+  return bxhKhoi('fn_bxh_diem_ks_khoi', mon, khoi, ym)
+}
 export async function getBXHDiemMTKhoi(mon: string, khoi: string, ym: string): Promise<BXHDiemMTRow[]> {
-  const { data, error } = await supabase.rpc('fn_bxh_diem_mt_khoi', { p_mon: mon, p_khoi: khoi, p_ym: ym })
+  return bxhKhoi('fn_bxh_diem_mt_khoi', mon, khoi, ym)
+}
+async function bxhKhoi(fn: 'fn_bxh_diem_mt_khoi' | 'fn_bxh_diem_ks_khoi', mon: string, khoi: string, ym: string): Promise<BXHDiemMTRow[]> {
+  const { data, error } = await supabase.rpc(fn, { p_mon: mon, p_khoi: khoi, p_ym: ym })
   if (error) throw error
   return ((data ?? []) as any[]).map((r) => ({
     hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.ho_ten, ma_hs: r.ma_hs,

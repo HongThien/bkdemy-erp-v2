@@ -12,7 +12,9 @@
 // Hình thức: đáp án đúng phải có ≥1 distractor CÙNG kiểu (nguyên/phân số/tập); kiểu khác được phép (xem verify).
 import { readFileSync, writeFileSync } from 'node:fs'
 import { parseHuuTi } from './lib/huuti.mjs'
+import { kiemKeyVoiDapAn } from './lib/so-vn.mjs'
 import { tinhTuanHoan, layTron, soSanhTimXY, phanTichNguyenTo, chuanHoaFactorText, evalFactorText, nhanBietNguyenToHopSo, chuanHoaTapText, evalTapText, uclnBcnnDinhNghia, tapUcBc, uocBoiCoBan, ucBcCoBan, tongTapHopNhoHon, sapXepSoHuuTi, chuanHoaThuTu, evalThuTu, bacDonThuc, heSoDonThuc, demDonThucTrongDanhSach, demDongDang, phanBienDonThuc, chuanHoaPhanBien, evalPhanBien, congTruDonThucDongDang, chuanHoaDonThucKetQua, evalDonThucKetQua, congTruDaThuc, chuanHoaDaThuc, evalDaThucKetQua, nhanDonThuc, nhanDonDaThuc, nhanDaThuc, chiaDonThuc, chiaDaChoDon, chiaDaThucMotBien, chuanHoaChiaDaThuc, evalChiaDaThucKetQua, dieuKienChiaHetDonThuc, chuanHoaDkChiaHet, evalDkChiaHetKetQua, rutGonBieuThuc, timXQuaRutGon, tinhGiaTriRutGon, khaiTrienBinhPhuong, vietThanhBinhPhuong, hoanThienBinhPhuong, chuanHoaHoanThienBP, evalHoanThienBPKetQua, tachBinhPhuong, chuanHoaTachBinhPhuong, evalTachBinhPhuongKetQua, gtlnGtnnBacHai, gtlnGtnnHaiBien, khaiTrienLapPhuong, tinhGiaTriLapPhuong, vietThanhTichHieuBinhPhuong, tinhGiaTriHieuBinhPhuong, tongHieuLapPhuong, chuanHoaTongHieuLapPhuong, evalTongHieuLapPhuongKetQua, tinhGiaTriApDungLapPhuong, tongBinhLapPhuongHaiBien, tongLapPhuongCongThemHangSo, rutNhanTuChung, chuanHoaRutNhanTuChung, evalRutNhanTuChungKetQua, nhomHangTu, phanTichTamThucBac2, tachHangTuKetHop, phanTichNhamNghiem, timXPhuongTrinhTich2Hang, chuanHoaDanhSachNghiem, evalDanhSachNghiemKetQua, giaiPtBacBaQuaNhom, giaiBptBacNhat, chuanHoaBatDangThuc, evalBatDangThucKetQua, timXTichHaiNhiThuc, giaiPtQuyVeTich, gtlnGtnnBacHaiCoDieuKien, chuanHoaCapNghiem, evalCapNghiemKetQua, giaiHePtBacNhatHaiAn, tinhGiaTriCanThuc, tinhGiaTriCanThucTheoX, chuanHoaCanThucKetQua, evalCanThucKetQuaVal, timDkxdCanThuc, chuanHoaDkxdCanThuc, evalDkxdCanThucKetQua, timXPtCanThucTuyenTinh, timXPhanThucCanBac2, chuanHoaDapSoThucTe, sinhNhieuDapSoThucTe, giaiPtPhanThucBacNhat, chuanHoaPtPhanThucKetQua, evalPtPhanThucKetQua, rutGonPhanThucCan, chuanHoaRutGonCanKetQua, evalRutGonCanKetQuaVal, giaiHePtTongTich, chuanHoaHePtTongTich, evalHePtTongTichKetQua, gtnnAmGm2So, gtnnAmGm2SoNguyen, gtnnAmGm3So, gtlnAmGm3SoTich } from './lib/mini-dang.mjs'
+import { tongLuyThuaXenDau, chuanHoaLuyThuaText, nhanBietChiaHet25, chuanHoaChiaHet25 } from './lib/mini-dang.mjs' // DẠNG 57–58 (24/10)
 
 // ── Rat (BigInt) ──────────────────────────────────────────────────────────────────────────────────────────────
 const gcd = (a, b) => { a = a < 0n ? -a : a; b = b < 0n ? -b : b; while (b) { [a, b] = [b, a % b] } return a }
@@ -555,7 +557,7 @@ const texOf = (v) => `$${Array.isArray(v) ? sorted(v).map(texR).join('; ') : tex
 // Mọi hàm dạng TEXT_DANG/SPECIAL_DANG-tự-trả-text (hienThiDaThuc, ghepText, …) trả text TRẦN không có "$" —
 // khác texOf() (luôn tự bọc). UI (MathText, xem src/screens/kho/ui.tsx) CHỈ nhận diện "$...$"/"$$...$$"
 // làm vùng KaTeX; text trần có "^"/"_" hiện ra caret/underscore thô ngoài đời — PHẢI bọc trước khi ghi DB.
-const wrapMath = (t) => (t == null ? t : /^\$.*\$$/s.test(t) ? t : `$${t}$`)
+const wrapMath = (t) => (t == null ? t : /\$/.test(t) ? t : `$${t}$`) // 24/10: text đã có $ (bọc trọn, hoặc chữ xen công thức như DẠNG 58) thì để nguyên
 const kindOf = (v) => Array.isArray(v) && v.length > 1 ? 'tap' : isInt(Array.isArray(v) ? v[0] : v) ? 'nguyen' : 'phan_so'
 
 // ── Rule → đường sai mặc định + thứ tự ưu tiên theo dạng ──────────────────────────────────────────────────────
@@ -856,8 +858,15 @@ const ANSWER_DANG_LIST = ['T109010301', 'T109010302', 'T109010304', 'T109010305'
   // Khối 9 Đại — dạng mới (01/10)
   'T109030305',
   // HGT khối 9 (01/10) — 6 dạng
-  'T309010103', 'T309010105', 'T309010402', 'T309010301', 'T309010401', 'T309010102']
+  'T309010103', 'T309010105', 'T309010402', 'T309010301', 'T309010401', 'T309010102',
+  // 8 dạng có form sinh 14–16/10 từ một worktree agent bằng CHÍNH hàm này mà chưa ghi danh ở đây — ghi danh 18/10 để sinh lại được
+  'T105040110', 'T105040209', 'T105100402', 'T105100405', 'T105100407', 'T105100408', 'T106020207', 'T110030203']
+// Rule chỉ nhánh ANSWER_DANG dùng (18/10): số thập phân R363–R367, sắp xếp R368–R370, R103 cho số có cách hàng nghìn.
+// KHÔNG thêm vào ALL (ALL còn dùng cho nhánh AST). ANSWER_DU_PHONG = rule có du_phong=true trong dai_mcq_rule.
+const ANSWER_RULE_THEM = ['R363', 'R364', 'R365', 'R366', 'R367', 'R368', 'R369', 'R370', 'R103']
+const ANSWER_DU_PHONG = new Set(['R345', 'R366', 'R103'])
 const ANSWER_DANG = Object.fromEntries(ANSWER_DANG_LIST.map((d) => [d, sinhNhieuDapSoThucTe]))
+ANSWER_DANG.dap_so = sinhNhieuDapSoThucTe // khuôn MÁY GÁN 'dap_so' (26/10, lib/khuon-dap-so.mjs) — không UU_TIEN, y như --theo-dap-so
 const TEXT_DANG = { T106030302: phanTichNguyenTo, T106030301: nhanBietNguyenToHopSo, T106040104: tapUcBc, T106040204: tapUcBc, T106030101: uocBoiCoBan, T106040101: ucBcCoBan, T106040201: ucBcCoBan, T107010103: sapXepSoHuuTi, T108010103: phanBienDonThuc, T108010201: congTruDonThucDongDang, T108010202: congTruDaThuc, T108010301: nhanDonThuc, T108010302: nhanDonDaThuc, T108010303: nhanDaThuc, T108010401: chiaDonThuc, T108010402: chiaDaChoDon, T108010403: chiaDaThucMotBien, T108010404: dieuKienChiaHetDonThuc, T108010501: rutGonBieuThuc, T108020101: khaiTrienBinhPhuong, T108020102: vietThanhBinhPhuong, T108020103: hoanThienBinhPhuong, T108020104: tachBinhPhuong, T108020301: khaiTrienLapPhuong, T108020401: vietThanhTichHieuBinhPhuong, T108040301: vietThanhTichHieuBinhPhuong, T108020501: tongHieuLapPhuong, T108020601: rutGonBieuThuc, T108030101: rutNhanTuChung, T108030102: nhomHangTu, T108030103: phanTichTamThucBac2, T108030104: tachHangTuKetHop, T108030105: phanTichNhamNghiem, T108030602: timXPhuongTrinhTich2Hang, T108030603: giaiPtBacBaQuaNhom, T109020201: giaiBptBacNhat, T109020202: giaiBptBacNhat, T109020203: giaiBptBacNhat, T109020103: giaiPtPhanThucBacNhat, T109020403: giaiPtPhanThucBacNhat, T109030203: rutGonPhanThucCan, T109010401: giaiHePtTongTich, T109020401: timXTichHaiNhiThuc, T109020402: giaiPtQuyVeTich, T109080102: gtlnGtnnBacHaiCoDieuKien, T109010201: giaiHePtBacNhatHaiAn, T109010202: giaiHePtBacNhatHaiAn, T109030101: tinhGiaTriCanThuc, T109030102: tinhGiaTriCanThuc, T109030201: timDkxdCanThuc, T109030202: tinhGiaTriCanThucTheoX, T109030301: timXPhanThucCanBac2 }
 const TEXT_FN = {
   T106030302: { canon: chuanHoaFactorText, val: evalFactorText },
@@ -914,6 +923,15 @@ const TEXT_FN = {
   T109030301: { canon: chuanHoaDanhSachNghiem, val: evalDanhSachNghiemKetQua },
 }
 // Dạng khối 6 số tự nhiên: dấu CHẤM giữa 2 số là phép NHÂN (không phải thập phân) — khớp whitelist kho-quet-dapso.mjs.
+// T106020601 (24/10, dạng bài NDB00367 'Dãy lũy thừa xen dấu'): CHỈ sub-shape tổng đan dấu 1 − q^k + … + q^n (đáp số (q^{n+k}+1)/(q^k+1));
+// sub-shape khác của dạng (tổng cùng dấu, tìm m) tongLuyThuaXenDau trả null ⇒ rơi xuống nhánh dưới như cũ (spec-mcq-quy-trinh-sinh §4).
+TEXT_DANG.T106020601 = tongLuyThuaXenDau
+TEXT_FN.T106020601 = { canon: chuanHoaLuyThuaText, val: chuanHoaLuyThuaText }
+UU_TIEN.T106020601 = ['D26', 'D27', 'D28', 'D29']
+// T106030201 (24/10, NDB00372 'Nhận biết số chia hết cho 2, cho 5'): đáp số 2 danh sách số — DẠNG 58, rule R371–R374 (mig 202610241205)
+TEXT_DANG.T106030201 = nhanBietChiaHet25
+TEXT_FN.T106030201 = { canon: chuanHoaChiaHet25, val: chuanHoaChiaHet25 }
+UU_TIEN.T106030201 = ['R371', 'R372', 'R373', 'R374']
 const CHAM_LA_NHAN = new Set(['T106020201', 'T106020202', 'T106020203', 'T106020301', 'T106020302', 'T106020303', 'T106020401', 'T106020402', 'T106020403', 'T106020501', 'T106020503'])
 const DU_PHONG = new Set(['R24', 'R05']) // chỉ dùng khi thiếu, tối đa 1 R24 (DB đánh du_phong) + 1 R05
 
@@ -972,33 +990,45 @@ const args = process.argv.slice(2)
 const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 && args[i + 1] && !args[i + 1].startsWith('--') ? args[i + 1] : d }
 const pool = JSON.parse(readFileSync(args[0], 'utf8'))
 const onlyDang = opt('--dang'), debug = opt('--debug')
+// --theo-dap-so (24/10, MCQ cho dạng bài bản đồ mới NDB): ép MỌI câu trong pool đi nhánh ANSWER_DANG (sinh nhiễu từ đáp số)
+// mà không ghi danh mã dạng cũ — câu của dạng NDB nằm rải ở mã cũ "chờ" (T1xx000000) dùng chung cho đủ loại câu.
+// Chỉ đưa vào pool câu đáp số là SỐ THUẦN đã kiểm tay; câu khác vẫn tự bị bỏ ở bước nhận dạng đáp số.
+const THEO_DAP_SO = args.includes('--theo-dap-so')
 const counts = { ...pool.phan_bo_dap_an_hien_co }
 const ruleUsed = {} // đếm số lần mỗi rule ĐÃ được chọn trong CẢ LÔ này — nền cho xoay vòng (Thùy 09/09).
 const out = [], bo = [], lech = []
 for (const q of pool.cau) {
-  if (onlyDang && q.dang_chinh !== onlyDang) continue
+  // KHOÁ MÁY (26/10): bộ đọc đáp số / sinh nhiễu chọn theo KHUÔN của câu (mcq-sinh --list ghi `khoa_may`, xem lib/khuon-dap-so.mjs),
+  // không theo bản đồ. Pool cũ (chưa có khoa_may) ⇒ dang_chinh như trước. --dang lọc theo khuôn HOẶC dạng bài NDB.
+  const K = q.khoa_may ?? q.dang_chinh
+  if (onlyDang && K !== onlyDang && q.ma_dang_bai !== onlyDang) continue
   if (debug && q.ma_cau !== debug) continue
   // ── Dạng "BÀI TOÁN THỰC TẾ" — sinh NHIỄU TỪ ĐÁP SỐ, KHÔNG đọc-hiểu đề (CEO 14/09) — hàm nhận `q.dap_an`
   // chứ KHÔNG PHẢI `q.noi_dung` (khác MỌI nhánh khác bên dưới). Vẫn tự đối chiếu lại `chuanHoaDapSoThucTe`
   // như 1 lưới an toàn (bắt lỗi format/parse), dù về bản chất luôn khớp vì res.text bắt nguồn từ chính dap_an.
-  const answerFn = ANSWER_DANG[q.dang_chinh]
+  const answerFn = ANSWER_DANG[K] ?? (THEO_DAP_SO ? sinhNhieuDapSoThucTe : null)
   if (answerFn) {
-    let res; try { res = answerFn(q.dap_an, null) } catch { res = null }
+    // ctx (18/10): khối của dạng quyết "24,51" là 2 số (khối ≤4) hay số thập phân; noi_dung để nhận ra câu SẮP XẾP.
+    const ctx = { dang: K, noiDung: q.noi_dung }
+    let res; try { res = answerFn(q.dap_an, null, ctx) } catch { res = null }
     if (!res || !res.text) { bo.push([q.ma_cau, 'đáp số kho không nhận dạng được (khác 1 số / 2 số / "N hoặc M")']); continue }
-    const correctText = chuanHoaDapSoThucTe(q.dap_an), cText = chuanHoaDapSoThucTe(res.text)
+    const correctText = chuanHoaDapSoThucTe(q.dap_an, K), cText = chuanHoaDapSoThucTe(res.text, K)
     if (cText !== correctText) { lech.push([q.ma_cau, cText, correctText, q.noi_dung.slice(0, 70)]); bo.push([q.ma_cau, `máy ra ${cText} ≠ đáp số kho ${correctText}`]); continue }
-    const uu = UU_TIEN[q.dang_chinh] ?? []
-    const order = [...uu, ...ALL.filter((r) => !uu.includes(r))]
+    // Nhân chứng ĐỘC LẬP (so-vn.mjs): lưới cũ ở trên so parser với CHÍNH nó nên mù với lỗi đọc số (sự cố 18/10).
+    const loiKey = kiemKeyVoiDapAn({ dapAn: q.dap_an, key: cText, textDung: res.text, dang: K })
+    if (loiKey.length) { bo.push([q.ma_cau, 'đọc sai đáp số kho: ' + loiKey.join(' · ')]); continue }
+    const uu = UU_TIEN[K] ?? []
+    const order = [...uu, ...ALL.filter((r) => !uu.includes(r)), ...ANSWER_RULE_THEM.filter((r) => !uu.includes(r))]
     const cands = []; const seen = new Set([cText])
     for (const r of order) {
-      let rres; try { rres = answerFn(q.dap_an, r) } catch { rres = null }
+      let rres; try { rres = answerFn(q.dap_an, r, ctx) } catch { rres = null }
       if (!rres || !rres.text) continue
-      const c = chuanHoaDapSoThucTe(rres.text); if (seen.has(c)) continue
+      const c = chuanHoaDapSoThucTe(rres.text, K); if (seen.has(c)) continue
       seen.add(c); cands.push({ r, c, ds: rres.ds || DS[r], text: rres.text })
     }
     if (debug) { console.log(q.noi_dung); console.log('đúng', cText); for (const c of cands) console.log('  ', c.r, c.c, '|', c.ds) }
     const byXoayVong = (a, b) => (ruleUsed[a.r] ?? 0) - (ruleUsed[b.r] ?? 0) || order.indexOf(a.r) - order.indexOf(b.r)
-    const pick = [...cands].sort(byXoayVong).slice(0, 3)
+    const pick = []; for (const cd of [...cands].sort(byXoayVong)) { if (pick.length === 3) break; if (ANSWER_DU_PHONG.has(cd.r) && pick.some((p) => ANSWER_DU_PHONG.has(p.r))) continue; pick.push(cd) } // ≤1 rule dự phòng/câu
     if (pick.length < 3) { bo.push([q.ma_cau, `chỉ tìm được ${pick.length} distractor hợp lệ (${cands.map((c) => c.r + '=' + c.c).join(', ')})`]); continue }
     for (const p of pick) ruleUsed[p.r] = (ruleUsed[p.r] ?? 0) + 1
     pick.sort((a, b) => order.indexOf(a.r) - order.indexOf(b.r))
@@ -1017,9 +1047,9 @@ for (const q of pool.cau) {
   // Dạng có NHIỀU SUB-SHAPE trộn lẫn (vd T107010103: vừa "so sánh tìm x,y" qua SPECIAL_DANG, vừa "sắp xếp" qua
   // TEXT_DANG) — nếu textFn(null) không nhận diện được câu này (trả null) thì KHÔNG bỏ ngay, rơi xuống thử nhánh
   // parseHuuTi/SPECIAL_DANG/AST bình thường bên dưới, như thể dạng đó không nằm trong TEXT_DANG.
-  const textFn = TEXT_DANG[q.dang_chinh]
+  const textFn = TEXT_DANG[K]
   if (textFn) {
-    const fn = TEXT_FN[q.dang_chinh]
+    const fn = TEXT_FN[K]
     let res; try { res = textFn(q.noi_dung, null) } catch { res = null }
     if (res && res.text) {
       const correctText = fn.canon(q.dap_an), nCorrect = fn.val(q.dap_an)
@@ -1027,7 +1057,7 @@ for (const q of pool.cau) {
       if (nOurs == null || nCorrect == null || nOurs !== nCorrect || cText !== correctText) {
         lech.push([q.ma_cau, cText, correctText, q.noi_dung.slice(0, 70)]); bo.push([q.ma_cau, `máy ra ${cText} ≠ đáp số kho ${correctText}`]); continue
       }
-      const uu = UU_TIEN[q.dang_chinh] ?? []
+      const uu = UU_TIEN[K] ?? []
       const order = [...uu, ...ALL.filter((r) => !uu.includes(r))]
       const cands = []; const seen = new Set([cText])
       for (const r of order) {
@@ -1054,14 +1084,14 @@ for (const q of pool.cau) {
     }
   }
   const key = parseHuuTi(q.dap_an); if (!key.ok) { bo.push([q.ma_cau, 'đáp số kho không parse']); continue }
-  const special = SPECIAL_DANG[q.dang_chinh]
+  const special = SPECIAL_DANG[K]
   let correct, correctText = null, tree = null, treeFlat = null, m = null
   if (special) {
     let sres; try { sres = special(q.noi_dung, null) } catch { sres = null }
     if (!sres || !sres.value) { bo.push([q.ma_cau, 'không tính được']); continue }
     correct = sres.value; correctText = sres.text ?? null
   } else {
-    try { const opts = CHAM_LA_NHAN.has(q.dang_chinh) ? { chamLaNhan: true } : {}; m = mathOf(q.noi_dung, opts); tree = parse(m); try { treeFlat = parse(m, true) } catch { treeFlat = null } }
+    try { const opts = CHAM_LA_NHAN.has(K) ? { chamLaNhan: true } : {}; m = mathOf(q.noi_dung, opts); tree = parse(m); try { treeFlat = parse(m, true) } catch { treeFlat = null } }
     catch (e) { bo.push([q.ma_cau, `parse: ${e.message}`]); continue }
     if (tree.t === 'eq' && countX(tree) < 1) { bo.push([q.ma_cau, 'phương trình không có x']); continue }
     if (tree.t !== 'eq' && hasX(tree)) { bo.push([q.ma_cau, 'có x nhưng không có =']); continue }
@@ -1071,7 +1101,7 @@ for (const q of pool.cau) {
   const cc = canonOf(correct)
   if (cc !== key.canon) { lech.push([q.ma_cau, cc, key.canon, (m ?? q.noi_dung).slice(0, 70)]); bo.push([q.ma_cau, `máy ra ${cc} ≠ đáp số kho ${key.canon}`]); continue }
   const kind = kindOf(correct)
-  const uu = UU_TIEN[q.dang_chinh] ?? []
+  const uu = UU_TIEN[K] ?? []
   const order = [...uu, ...ALL.filter((r) => !uu.includes(r))]
   const cands = []; const seen = new Set([cc])
   for (const r of order) {

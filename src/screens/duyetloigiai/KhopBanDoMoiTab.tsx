@@ -7,19 +7,51 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { MathText } from '../kho/ui'
 import {
-  KHOP_HANG_LABEL, KHOP_HANG_MOTA, khopDem, khopDich, khopGiao, khopGo, khopHang, khopPhamVi, khopQuyet, khopUngVien,
-  type KhopCau, type KhopDem, type KhopDich, type KhopHang, type KhopPhamVi,
+  KHOP_CAP_LABEL, KHOP_HANG_LABEL, KHOP_HANG_MOTA, khopCoPhamVi, khopDem, khopDich, khopGiao, khopGo, khopHang, khopLocDs, khopNguonDs, khopPhamVi, khopQuyet, khopUngVien,
+  type KhopCap, type KhopCau, type KhopDem, type KhopDich, type KhopHang, type KhopLocMuc, type KhopPhamVi,
 } from '../../lib/kho/bdmKhop'
 import { useNhanXet, NutCanSua, NhanXetCu, DongChoSua } from './CanSua'
+import { useDeSau, NutDeSau, NhanDeSau } from './DeSau'
+import PhanTrang from '../../components/PhanTrang'
+import { ChonNguon, nhanNguon, xepNguon, type NguonOpt } from './LocNguon'
 import type { TrangThaiNX } from '../../lib/kho/nhanXet'
 
 const HANG: KhopHang[] = ['de_xuat', 'trong', 'thieu', 'mau']
 const TRANG = 20
 // Nhớ hàng đang mở khi chuyển tab/khối rồi quay lại (module-level, sống tới F5).
-const NHO: { hang: KhopHang } = { hang: 'de_xuat' }
+const monCau = (c: KhopCau) => (c.nhanh === 'hgt' ? 'hgt' : c.nhanh === 'khtn' ? 'khtn' : 'toan') as 'hgt' | 'toan' | 'khtn'   // nhận xét "Cần sửa" ghi vào đúng kho của câu
+// Nhớ cả TRANG đang mở (Thùy 23/10); trang chỉ dùng lại khi cùng khối + chủ đề.
+// + PHẠM VI hiển thị theo cấp (Thùy 05/11): cấp chủ đề/chuyên đề/nhóm/dạng bài + mục đang chọn — cũng nhớ theo khối + chủ đề.
+const NHO: { hang: KhopHang; trang: number; khoa: string; nguon: string; cap: KhopCap | 'all'; loc: string | null } =
+  { hang: 'de_xuat', trang: 0, khoa: '', nguon: 'all', cap: 'all', loc: null }
 
 export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { khoi: string; chuDeId?: string | null; onXem?: (dangBaiId: string) => void; onChanged?: () => void }) {
   const [hang, setHangRaw] = useState<KhopHang>(NHO.hang)
+  // Chọn trang kiểu web (Thùy 23/10): mỗi trang TRANG câu, trang lấy thẳng từ DB (offset) — DB xếp câu "Để sau" ở cuối.
+  const khoa = `${khoi}|${chuDeId ?? ''}`
+  const [trang, setTrangRaw] = useState(NHO.khoa === khoa ? NHO.trang : 0)
+  // Lọc NGUỒN tài liệu (Thùy 27/10): Đề thi · Đề cương · Sách <tác giả> · Kho cũ — lọc + đếm ở DB (mig 202610271607)
+  const [nguon, setNguonRaw] = useState<string>(NHO.khoa === khoa ? NHO.nguon : 'all')
+  const [nguonDs, setNguonDs] = useState<NguonOpt[]>([])
+  const ng = nguon === 'all' ? null : nguon
+  // Phạm vi hiển thị theo CẤP (Thùy 05/11, chỉ Toán): mặc định = chủ đề đang mở trên bản đồ (như ô "Chỉ chủ đề đang xem" cũ)
+  const capMacDinh = (): KhopCap | 'all' => (chuDeId ? 'chu_de' : 'all')
+  const [cap, setCapRaw] = useState<KhopCap | 'all'>(NHO.khoa === khoa ? NHO.cap : capMacDinh())
+  const [loc, setLocRaw] = useState<string | null>(NHO.khoa === khoa ? NHO.loc : chuDeId ?? null)
+  const [locDs, setLocDs] = useState<KhopLocMuc[]>([])
+  const coCap = khopCoPhamVi()
+  const lc = coCap ? loc : null
+  const cuon = useRef<HTMLDivElement>(null)
+  const setTrang = (t: number) => { NHO.trang = t; NHO.khoa = khoa; setTrangRaw(t); cuon.current?.scrollTo({ top: 0 }) }
+  const setCap = (v: KhopCap | 'all') => { NHO.cap = v; NHO.loc = null; NHO.khoa = khoa; setCapRaw(v); setLocRaw(null); setTrang(0) }
+  const setLoc = (v: string | null) => { NHO.loc = v; NHO.khoa = khoa; setLocRaw(v); setTrang(0) }
+  const khoaTruoc = useRef(khoa)
+  useEffect(() => {
+    if (khoaTruoc.current !== khoa) {
+      khoaTruoc.current = khoa; NHO.nguon = 'all'; setNguonRaw('all')
+      NHO.cap = capMacDinh(); NHO.loc = chuDeId ?? null; setCapRaw(NHO.cap); setLocRaw(NHO.loc); setTrang(0)
+    }
+  }, [khoa]) // eslint-disable-line react-hooks/exhaustive-deps
   const [dem, setDem] = useState<KhopDem | null>(null)
   const [rows, setRows] = useState<KhopCau[]>([])
   const [tong, setTong] = useState(0)
@@ -29,51 +61,77 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
   const [laAdmin, setLaAdmin] = useState(false)
   const [phamVi, setPhamVi] = useState<KhopPhamVi[]>([])
   const [hienPhamVi, setHienPhamVi] = useState(false)
-  const [locCD, setLocCD] = useState(true)   // chỉ câu thuộc CHỦ ĐỀ đang xem trên bản đồ (khi nhúng trong Bản đồ mới)
-  const cd = chuDeId && locCD ? chuDeId : null
+  const [locCD, setLocCD] = useState(true)   // KHTN: chỉ câu thuộc CHỦ ĐỀ đang xem (Toán dùng phạm vi theo cấp ở trên)
+  const cd = !coCap && chuDeId && locCD ? chuDeId : null
   const req = useRef(0)
-  const nhanXet = useNhanXet('cau', 'toan')   // "✎ Cần sửa" nội dung câu (đề/đáp án/lời giải): chờ Claude sửa thì tạm ẩn
+  const nhanXet = useNhanXet('cau')   // "✎ Cần sửa" nội dung câu (đề/đáp án/lời giải): chờ Claude sửa thì tạm ẩn
+  const monDS = khopCoPhamVi() ? 'toan' : 'khtn'   // "Để sau" theo môn của bản đồ đang mở
+  const deSau = useDeSau('bdm_khop', monDS)  // "⏭ Để sau" (Thùy 20/10): câu chưa muốn quyết dạng bài xuống cuối hàng
 
-  const setHang = (h: KhopHang) => { NHO.hang = h; setHangRaw(h) }
+  const setHang = (h: KhopHang) => { NHO.hang = h; setHangRaw(h); setTrang(0) }
+  const setNguon = (v: string) => { NHO.nguon = v; NHO.khoa = khoa; setNguonRaw(v); setTrang(0) }
 
   const napDem = useCallback(async () => {
-    try { setDem(await khopDem(khoi, cd)) } catch (e: any) { setErr(e.message ?? String(e)) }
-  }, [khoi, cd])
+    try { setDem(await khopDem(khoi, cd, ng, lc)) } catch (e: any) { setErr(e.message ?? String(e)) }
+  }, [khoi, cd, ng, lc])
+  const napNguon = useCallback(async () => {
+    try { setNguonDs(xepNguon((await khopNguonDs(khoi, hang, cd, lc)).map((x) => ({ nguon: x.nguon, n: Number(x.so_cau) })))) } catch { setNguonDs([]) }
+  }, [khoi, hang, cd, lc])
+  useEffect(() => { void napNguon() }, [napNguon])
+  const napLoc = useCallback(async () => {
+    if (!coCap || cap === 'all') { setLocDs([]); return }
+    try { setLocDs(await khopLocDs(khoi, hang, cap, ng)) } catch { setLocDs([]) }
+  }, [coCap, khoi, hang, cap, ng])
+  useEffect(() => { void napLoc() }, [napLoc])
 
   // Đổi NGỮ CẢNH (khối/hàng) ⇒ reset + nạp lại. Mutation trong cùng ngữ cảnh ⇒ vá tại chỗ (xem quyet()).
   useEffect(() => {
     const my = ++req.current
     setRows([]); setTong(0); setLoading(true); setErr(null)
-    khopHang(khoi, hang, TRANG, 0, cd)
+    khopHang(khoi, hang, TRANG, trang * TRANG, cd, ng, lc)
       .then((r) => { if (my === req.current) { setRows(r.rows); setTong(r.tong) } })
       .catch((e) => { if (my === req.current) setErr(e.message ?? String(e)) })
       .finally(() => { if (my === req.current) setLoading(false) })
-  }, [khoi, hang, cd])
+  }, [khoi, hang, cd, trang, ng, lc])
   useEffect(() => { void napDem() }, [napDem])
   useEffect(() => { khopDich(khoi).then(setDich).catch(() => setDich([])) }, [khoi])
   const napPhamVi = useCallback(async () => {
+    if (!khopCoPhamVi()) return
     try { const r = await khopPhamVi(); setLaAdmin(r.la_admin); setPhamVi(r.rows) } catch { /* không có quyền xem ⇒ bỏ qua */ }
   }, [])
   useEffect(() => { void napPhamVi() }, [napPhamVi])
 
-  // Bù thêm câu NỀN khi danh sách vơi (không xoá list đang hiện).
+  // Bù thêm câu NỀN khi trang vơi (không xoá list đang hiện): đọc lại đúng trang này, câu trang sau đã dồn lên.
   const buThem = useCallback(async () => {
     const my = req.current
     try {
-      const r = await khopHang(khoi, hang, TRANG, 0, cd)
+      const r = await khopHang(khoi, hang, TRANG, trang * TRANG, cd, ng, lc)
       if (my !== req.current) return
       setRows((prev) => { const co = new Set(prev.map((x) => x.ma_cau)); return [...prev, ...r.rows.filter((x) => !co.has(x.ma_cau))] })
       setTong(r.tong)
     } catch { /* nền — bỏ qua */ }
-  }, [khoi, hang, cd])
+  }, [khoi, hang, cd, trang, ng, lc])
 
   async function quyet(c: KhopCau, hd: Parameters<typeof khopQuyet>[1], dangBai?: string | null, lyDo?: string | null) {
     await khopQuyet(c.ma_cau, hd, dangBai, lyDo)
     // vá tại chỗ: câu xong thì rời hàng đợi (riêng 'thieu' ở hàng 'trong' cũng rời vì chuyển sang hàng "Thiếu dạng")
     setRows((prev) => { const n = prev.filter((x) => x.ma_cau !== c.ma_cau); if (n.length < 6 && tong - 1 > n.length) void buThem(); return n })
     setTong((t) => Math.max(0, t - 1))
-    void napDem(); onChanged?.()
+    void napDem(); void napNguon(); void napLoc(); onChanged?.()
   }
+
+  // "⏭ Để sau" = xuống CUỐI CẢ HÀNG (Thùy 22/10): DB đã xếp câu để sau ra sau (mig 202610221621). Hàng còn câu chưa nạp
+  // ⇒ câu rời trang ngay, nạp bù câu kế tiếp; hàng đã nạp hết ⇒ giữ lại, deSau.xep đặt nó ở cuối.
+  async function deSauCau(c: KhopCau) {
+    await deSau.ghi(monDS, c.ma_cau, 'Bản đồ mới › Duyệt kho')
+    if (tong > (trang + 1) * TRANG) {   // còn trang sau ⇒ câu rời trang này (nó đã ở cuối hàng, trang cuối)
+      setRows((prev) => { const n = prev.filter((x) => x.ma_cau !== c.ma_cau); if (n.length < 6) void buThem(); return n })
+    }
+  }
+
+  const soTrang = Math.max(1, Math.ceil(tong / TRANG))
+  // Hàng vơi tới mức trang đang mở không còn câu ⇒ lùi về trang cuối còn câu.
+  useEffect(() => { if (!loading && !rows.length && trang > 0 && trang >= soTrang) setTrang(soTrang - 1) }, [loading, rows.length, trang, soTrang]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const ten = (d: KhopDem | null, h: KhopHang) => (d ? d[h] : 0)
   const chinhXac = dem && dem.kiem_n > 0 ? Math.round((dem.kiem_giu / dem.kiem_n) * 1000) / 10 : null
@@ -89,25 +147,28 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
             </button>
           ))}
         </div>
-        {chuDeId && (
+        {coCap ? <ChonPhamVi cap={cap} loc={loc} ds={locDs} onCap={setCap} onLoc={setLoc} />
+          : chuDeId && (
           <label className="flex cursor-pointer items-center gap-1.5 text-[12px] text-slate-600" title="Chỉ hiện câu thuộc chủ đề đang mở trên bản đồ. Câu chưa có chủ đề luôn hiện.">
-            <input type="checkbox" checked={locCD} onChange={(e) => setLocCD(e.target.checked)} /> Chỉ chủ đề đang xem
+            <input type="checkbox" checked={locCD} onChange={(e) => { setLocCD(e.target.checked); setTrang(0) }} /> Chỉ chủ đề đang xem
           </label>
         )}
+        <ChonNguon opts={nguonDs} value={nguon} onChange={setNguon} />
         {chinhXac !== null && (
           <span className={`rounded-full px-2.5 py-0.5 text-[12px] font-medium ${chinhXac >= 98 ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-800'}`}
             title="Trong các câu AI gán mức chắc đã kiểm mẫu: tỉ lệ giữ nguyên. Dưới ngưỡng thì cả khối cần xem lại.">
             Độ chính xác đo được: {chinhXac}% ({dem!.kiem_giu}/{dem!.kiem_n})
           </span>
         )}
-        <button onClick={() => setHienPhamVi((v) => !v)} className="ml-auto rounded-md border border-slate-300 px-3 py-1 text-[12.5px] text-slate-600 hover:bg-slate-50">
+        {khopCoPhamVi() && <button onClick={() => setHienPhamVi((v) => !v)} className="ml-auto rounded-md border border-slate-300 px-3 py-1 text-[12.5px] text-slate-600 hover:bg-slate-50">
           {laAdmin ? 'Phạm vi' : 'Phạm vi của tôi'}
-        </button>
+        </button>}
       </div>
       {hienPhamVi && <PhamViPanel khoi={khoi} dich={dich} laAdmin={laAdmin} rows={phamVi} onDoi={napPhamVi} />}
       <p className="border-b border-slate-100 bg-slate-50 px-6 py-1.5 text-[12px] text-slate-500">{KHOP_HANG_MOTA[hang]}</p>
+      {soTrang > 1 && <div className="border-b border-slate-100 bg-white px-6 py-1.5"><PhanTrang trang={trang} soTrang={soTrang} onChon={setTrang} tong={tong} coTrang={TRANG} /></div>}
 
-      <div className="flex-1 overflow-auto px-6 py-4">
+      <div ref={cuon} className="flex-1 overflow-auto px-6 py-4">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
           : rows.length === 0 ? (
@@ -118,10 +179,11 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
             </p>
           ) : (
             <ul className="space-y-3">
-              {rows.some((c) => nhanXet.dangChoSua('toan', c.ma_cau)) && <li className="list-none"><DongChoSua n={rows.filter((c) => nhanXet.dangChoSua('toan', c.ma_cau)).length} /></li>}
-              {rows.filter((c) => !nhanXet.dangChoSua('toan', c.ma_cau)).map((c) => <CauCard key={c.ma_cau} c={c} hang={hang} dich={dich} onQuyet={quyet} onXem={onXem}
-                nx={nhanXet.cua('toan', c.ma_cau)} onCanSua={nhanXet.vaNX} />)}
-              {tong > rows.length && <li className="py-2 text-center text-[12px] text-slate-400">… còn {tong - rows.length} câu, xong câu trên sẽ tự nạp thêm</li>}
+              {rows.some((c) => nhanXet.dangChoSua(monCau(c), c.ma_cau)) && <li className="list-none"><DongChoSua n={rows.filter((c) => nhanXet.dangChoSua(monCau(c), c.ma_cau)).length} /></li>}
+              {deSau.xep(rows.filter((c) => !nhanXet.dangChoSua(monCau(c), c.ma_cau)), (c) => [monDS, c.ma_cau]).map((c) => <CauCard key={c.ma_cau} c={c} hang={hang} dich={dich} onQuyet={quyet} onXem={onXem}
+                nx={nhanXet.cua(monCau(c), c.ma_cau)} onCanSua={nhanXet.vaNX}
+                deSauAt={deSau.luc(monDS, c.ma_cau)} onDeSau={() => deSauCau(c)} />)}
+              {soTrang > 1 && <li className="flex list-none justify-center pt-3"><PhanTrang trang={trang} soTrang={soTrang} onChon={setTrang} /></li>}
             </ul>
           )}
       </div>
@@ -129,13 +191,46 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
   )
 }
 
-function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua }: {
+// Phạm vi hiển thị (Thùy 05/11): ô 1 chọn CẤP, ô 2 hiện các mục của cấp đó đang có câu trong hàng (số câu tính ở DB),
+// gom theo đường dẫn cha. Mục đã chọn mà hết câu vẫn giữ trong ô (0) để người dùng thấy mình đang lọc gì.
+function ChonPhamVi({ cap, loc, ds, onCap, onLoc }: {
+  cap: KhopCap | 'all'; loc: string | null; ds: KhopLocMuc[]; onCap: (v: KhopCap | 'all') => void; onLoc: (v: string | null) => void
+}) {
+  const nhom = new Map<string, KhopLocMuc[]>()
+  for (const m of ds) { const k = m.duong ?? ''; if (!nhom.has(k)) nhom.set(k, []); nhom.get(k)!.push(m) }
+  const coLoc = loc && ds.some((m) => m.id === loc)
+  const cls = 'rounded-md border border-slate-200 bg-white px-2 py-1 text-[12px] text-slate-700 focus:border-violet-400 focus:outline-none'
+  return (
+    <label className="flex items-center gap-1.5 text-[12px] text-slate-500" title="Chọn cấp, rồi chọn mục ở cấp đó — chỉ hiện câu mà dạng bài (AI đề xuất / đã gán) nằm dưới mục. Câu chưa có dạng bài chỉ lọc được theo chủ đề.">
+      Phạm vi
+      <select value={cap} onChange={(e) => onCap(e.target.value as KhopCap | 'all')} className={cls}>
+        <option value="all">Tất cả</option>
+        {(Object.keys(KHOP_CAP_LABEL) as KhopCap[]).map((k) => <option key={k} value={k}>{KHOP_CAP_LABEL[k]}</option>)}
+      </select>
+      {cap !== 'all' && (
+        <select value={loc ?? ''} onChange={(e) => onLoc(e.target.value || null)} className={`${cls} max-w-[420px]`}>
+          <option value="">— mọi {KHOP_CAP_LABEL[cap].toLowerCase()} ({ds.reduce((s, m) => s + Number(m.so_cau), 0)}) —</option>
+          {[...nhom].map(([duong, ms]) => duong
+            ? <optgroup key={duong} label={duong}>{ms.map((m) => <option key={m.id} value={m.id}>{m.ten} ({m.so_cau})</option>)}</optgroup>
+            : ms.map((m) => <option key={m.id} value={m.id}>{m.ten} ({m.so_cau})</option>))}
+          {loc && !coLoc && <option value={loc}>(mục đang chọn — 0 câu)</option>}
+        </select>
+      )}
+    </label>
+  )
+}
+
+function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua, deSauAt, onDeSau }: {
   c: KhopCau; hang: KhopHang; dich: KhopDich[]; onXem?: (dangBaiId: string) => void; nx?: TrangThaiNX; onCanSua: (t: TrangThaiNX) => void
-  onQuyet: (c: KhopCau, hd: 'gan' | 'thieu' | 'bo_de_xuat' | 'mau_giu' | 'mau_doi', dangBai?: string | null, lyDo?: string | null) => Promise<void>
+  deSauAt: string | null; onDeSau: () => Promise<void>
+  onQuyet: (c: KhopCau, hd: 'gan' | 'thieu' | 'bo_de_xuat' | 'mau_giu' | 'mau_doi' | 'tu_choi' | 'kho_rac', dangBai?: string | null, lyDo?: string | null) => Promise<void>
 }) {
   const [chon, setChon] = useState<string | null>(null)
   const [moThieu, setMoThieu] = useState(false)
   const [lyDo, setLyDo] = useState('')
+  const [moTuChoi, setMoTuChoi] = useState(false)   // Thùy 18/10: từ chối kèm lý do (bắt buộc), tuỳ chọn câu hỏng → kho rác
+  const [lyDoTc, setLyDoTc] = useState('')
+  const [rac, setRac] = useState(false)
   const [ban, setBan] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
   const opts: Opt[] = useMemo(() => dich.map((d) => ({ id: d.id, label: d.dang_bai, sub: `${d.chu_de} › ${d.chuyen_de} › ${d.nhom}` })), [dich])
@@ -149,8 +244,14 @@ function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua }: {
     <li className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
       <div className="mb-2 flex flex-wrap items-center gap-2 text-[12px] text-slate-500">
         <span className="font-mono text-slate-400">{c.ma_cau}</span>
+        {c.nhanh === 'hgt' && <span className="rounded bg-sky-50 px-2 py-0.5 text-sky-700" title="Câu của kho Hình giải tích">Giải tích</span>}
+        {c.nguon_tl?.length ? <span className="rounded bg-sky-50 px-2 py-0.5 text-sky-800" title="Nguồn tài liệu của câu">{c.nguon_tl.map(nhanNguon).join(' · ')}</span> : null}
         {c.dang_cu && <span className="rounded bg-slate-100 px-2 py-0.5" title="Nhãn ở bản đồ cũ">Cũ: {c.dang_cu}{c.chuyen_de_cu ? ` · ${c.chuyen_de_cu}` : ''}</span>}
-        <span className="ml-auto"><NutCanSua nho doiTuong="cau" mon="toan" ma={c.ma_cau} man="Bản đồ mới › Duyệt kho" khau="de" onXong={onCanSua} /></span>
+        <NhanDeSau at={deSauAt} />
+        <span className="ml-auto flex items-center gap-1.5">
+          <NutDeSau nho disabled={ban} onDeSau={onDeSau} />
+          <NutCanSua nho doiTuong="cau" mon={monCau(c)} ma={c.ma_cau} man="Bản đồ mới › Duyệt kho" khau="de" onXong={onCanSua} />
+        </span>
       </div>
       {nx && <div className="mb-2"><NhanXetCu t={nx} /></div>}
       <div className="grid gap-3">
@@ -186,8 +287,26 @@ function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua }: {
               {hang === 'mau' ? 'Sai → đổi sang dạng này' : 'Chuyển câu vào dạng này'}
             </button>
           </div>
-          {hang === 'de_xuat' && (
-            <button disabled={ban} onClick={() => chay(() => onQuyet(c, 'bo_de_xuat'))} className="w-full text-left text-[12px] text-slate-500 underline-offset-2 hover:underline">✗ Đề xuất sai — bỏ, câu về “Chưa có dạng”</button>
+          {moTuChoi ? (
+            <div className="space-y-1.5 rounded-md border border-rose-200 bg-rose-50 p-2">
+              <div className="text-[11px] font-semibold uppercase tracking-wide text-rose-700">✕ Từ chối — vì sao không hợp lý</div>
+              <textarea autoFocus value={lyDoTc} onChange={(e) => setLyDoTc(e.target.value)} rows={2}
+                onKeyDown={(e) => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey) && lyDoTc.trim()) void chay(() => onQuyet(c, rac ? 'kho_rac' : 'tu_choi', null, lyDoTc)) }}
+                placeholder={rac ? 'Câu hỏng ở đâu (đề lỗi, thiếu dữ kiện, trùng…)' : 'vd: đây là PT tích chứ không phải dạng này · câu hình học, không thuộc Đại…'}
+                className="w-full rounded-md border border-rose-200 bg-white px-2 py-1 text-[12.5px]" />
+              <label className="flex cursor-pointer items-center gap-1.5 text-[12px] text-rose-800">
+                <input type="checkbox" checked={rac} onChange={(e) => setRac(e.target.checked)} /> Câu hỏng / không dùng được → đưa vào kho rác
+              </label>
+              <div className="flex gap-2">
+                <button disabled={ban || !lyDoTc.trim()} onClick={() => chay(() => onQuyet(c, rac ? 'kho_rac' : 'tu_choi', null, lyDoTc))}
+                  className="rounded-md bg-rose-600 px-3 py-1 text-[12.5px] font-medium text-white disabled:opacity-30">{rac ? 'Từ chối + kho rác' : 'Từ chối'}</button>
+                <button onClick={() => { setMoTuChoi(false); setLyDoTc(''); setRac(false) }} className="text-[12px] text-slate-500 hover:underline">Huỷ</button>
+              </div>
+              <p className="text-[11px] text-rose-700/80">{rac ? 'Câu vào kho rác (khôi phục được ở Duyệt kho).' : 'AI xếp sai: gỡ chỗ AI đặt, câu về “Chưa có dạng”.'} Lý do được lưu để Claude rút luật, không xếp kiểu này nữa.</p>
+            </div>
+          ) : (
+            <button disabled={ban} onClick={() => { setMoTuChoi(true); if (hang === 'trong') setRac(true) }}
+              className="w-full rounded-md border border-rose-200 px-3 py-1 text-left text-[12.5px] font-medium text-rose-600 hover:bg-rose-50">✕ Từ chối — ghi lý do</button>
           )}
           {(hang === 'trong' || hang === 'de_xuat') && (
             moThieu ? (

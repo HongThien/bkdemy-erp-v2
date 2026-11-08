@@ -1,0 +1,200 @@
+[
+ {
+  "ma_cau": "T108000000072",
+  "dang_bai_id": "NDB00469",
+  "chac": "vua",
+  "ly_do": "Điều kiện phân thức quy về x³+y³+z³=3xyz, dạng a³+b³+c³; cũng có thể là cụm a=b=c."
+ },
+ {
+  "ma_cau": "T108010103034",
+  "dang_bai_id": "NDB00665",
+  "chac": "vua",
+  "ly_do": "Hỏi phần biến của đơn thức chưa thu gọn; dạng gần nhất là tìm hệ số, phần biến."
+ },
+ {
+  "ma_cau": "T108000000641",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chứng minh biểu thức chia hết cho 2 với x, y nguyên."
+ },
+ {
+  "ma_cau": "T108000000513",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tìm n để biểu thức là số chính phương."
+ },
+ {
+  "ma_cau": "T108050401001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: định lý dư (chia cho x-a dư) để tìm hệ số đa thức."
+ },
+ {
+  "ma_cau": "T108000000339",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Viết đa thức thu gọn biểu thị tiền điện bậc thang theo x."
+ },
+ {
+  "ma_cau": "T108000000414",
+  "dang_bai_id": "NDB00683",
+  "chac": "cao",
+  "ly_do": "Thu gọn đa thức hai biến rồi tính giá trị tại x, y; dạng cuối là tính giá trị."
+ },
+ {
+  "ma_cau": "T108000000244",
+  "dang_bai_id": "NDB01370",
+  "chac": "vua",
+  "ly_do": "Viết biểu thức diện tích mảnh trồng rau; các kích thước 10 m, 15 m chỉ có trên hình."
+ },
+ {
+  "ma_cau": "T108000000277",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Viết biểu thức diện tích sân trước và sau mở rộng theo a; đề đủ dữ kiện."
+ },
+ {
+  "ma_cau": "T108000000586",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Viết biểu thức tổng diện tích hai hình vuông và tam giác vuông; đề đủ dữ kiện."
+ },
+ {
+  "ma_cau": "T108000000182",
+  "dang_bai_id": "NDB01370",
+  "chac": "vua",
+  "ly_do": "Cạnh còn thiếu của tam giác biết chu vi, dữ kiện trên hình; cũng giống cộng trừ đa thức NDB00672."
+ },
+ {
+  "ma_cau": "T108000000170",
+  "dang_bai_id": "NDB00687",
+  "chac": "vua",
+  "ly_do": "Tìm x từ x²-9=0 có hai nghiệm; gần dạng ax²=b, cách giải bằng hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108050205001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: điều kiện ab+bc+ca=0 để rút gọn tổng phân thức."
+ },
+ {
+  "ma_cau": "T108000000013",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Biểu thức diện tích vườn sau khi giảm dài, tăng rộng; lập biểu thức thực tế."
+ },
+ {
+  "ma_cau": "T108000000549",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Không phải dạng Đại số lớp 8: tính giá trị biểu thức với luỹ thừa của số."
+ },
+ {
+  "ma_cau": "T108030201043",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Đặt y làm nhân tử chung rồi nhận bình phương của hiệu; dạng cuối là phân tích bằng hằng đẳng thức."
+ },
+ {
+  "ma_cau": "T108040401003",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: chứng minh hai đường thẳng song song trong hình bình hành."
+ },
+ {
+  "ma_cau": "T108000000495",
+  "dang_bai_id": "NDB00981",
+  "chac": "cao",
+  "ly_do": "Khai triển ra x²-9x+8=3 rồi tách hạng tử thành tích để tìm x."
+ },
+ {
+  "ma_cau": "T108000000130",
+  "dang_bai_id": "NDB01370",
+  "chac": "vua",
+  "ly_do": "Viết diện tích mảnh vườn vuông sau mở rộng, đề phụ thuộc hình \"như hình bên\"."
+ },
+ {
+  "ma_cau": "T108000000678",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Viết biểu thức diện tích đáy thùng theo x và thể tích khi x=1; đề đủ dữ kiện."
+ },
+ {
+  "ma_cau": "T108000000707",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chia hai luỹ thừa cùng cơ số là đa thức (x-y)³:(y-x)²."
+ },
+ {
+  "ma_cau": "T108020702007",
+  "dang_bai_id": "NDB00469",
+  "chac": "cao",
+  "ly_do": "Đặt x=1/a... tổng bằng 0 suy ra x³+y³+z³=3xyz (dạng a³+b³+c³)."
+ },
+ {
+  "ma_cau": "T108000000502",
+  "dang_bai_id": "NDB00981",
+  "chac": "cao",
+  "ly_do": "Thu gọn ra 8x²+13x-6=0 rồi tách hạng tử (hệ số x² khác 1)."
+ },
+ {
+  "ma_cau": "T108020702008",
+  "dang_bai_id": "NDB00469",
+  "chac": "cao",
+  "ly_do": "Từ ab+bc+ca=0 suy ra 1/a+1/b+1/c=0 rồi dùng a³+b³+c³=3abc."
+ },
+ {
+  "ma_cau": "T108000000639",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chứng minh biểu thức chia hết cho 6 với mọi n nguyên."
+ },
+ {
+  "ma_cau": "T108000000538",
+  "dang_bai_id": "NDB00683",
+  "chac": "vua",
+  "ly_do": "Thu gọn đa thức hai biến, tìm bậc, tính giá trị; dạng cuối là tính giá trị."
+ },
+ {
+  "ma_cau": "T108000000185",
+  "dang_bai_id": "NDB00971",
+  "chac": "vua",
+  "ly_do": "Biết x-y và xy tính x²+y² qua bình phương hiệu; chưa đúng form của dạng."
+ },
+ {
+  "ma_cau": "T108000000598",
+  "dang_bai_id": "NDB00683",
+  "chac": "vua",
+  "ly_do": "Đơn thức: bậc, hệ số, giá trị, nhân hai đơn thức; dạng cuối là tính giá trị nhiều biến."
+ },
+ {
+  "ma_cau": "T108020702001",
+  "dang_bai_id": "NDB00690",
+  "chac": "vua",
+  "ly_do": "Từ a+b=2 lập phương hai vế rồi khai triển (a+b)³; chưa chắc khớp dạng khai triển."
+ },
+ {
+  "ma_cau": "T108000000514",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tìm k để biểu thức bậc bốn là số chính phương."
+ },
+ {
+  "ma_cau": "T108000000294",
+  "dang_bai_id": "NDB00971",
+  "chac": "cao",
+  "ly_do": "Tính x²-y² bằng (x+y)(x-y) với tổng, hiệu cho trước; hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000562",
+  "dang_bai_id": "NDB00682",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức một biến tại x=501 bằng chia luỹ thừa cùng cơ số."
+ },
+ {
+  "ma_cau": "T108020701001",
+  "dang_bai_id": "NDB00971",
+  "chac": "vua",
+  "ly_do": "Biết a+b và ab tính a²+b² qua bình phương tổng; chưa đúng form của dạng."
+ }
+]

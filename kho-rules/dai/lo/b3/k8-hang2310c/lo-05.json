@@ -1,0 +1,25 @@
+[
+ {
+  "ma_cau": "T108020702001",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $a+b-2=0$. Chứng minh rằng : $a^3+b^3+6ab=8$",
+  "dap_an": "$a^3+b^3+6ab=8$",
+  "loi_giai": "Ta có $a+b=2$\\n$\\Rightarrow (a+b)^3=2^3 \\Rightarrow a^3+b^3+3ab(a+b)=8$\\n$a^3+b^3+6ab=8$",
+  "nhan_cu": "Các bài toán biến đổi đặc biệt về hằng đẳng thức › Các bài toán liên quan đến lập phương của tổng"
+ },
+ {
+  "ma_cau": "T108000000514",
+  "loai": "tu_luan",
+  "de": "Tìm tất cả các số nguyên $k$ sao cho $B=k^4-8k^3+23k^2-26k+10$ là số chính phương.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai hạng tử đầu $k^4-8k^3$ gợi bình phương của $k^2-4k+\\dots$, nên viết $B$ thành \"bình phương cộng một phần nhỏ\" rồi kẹp giữa hai bình phương liên tiếp.\n**Bước 1.** Chọn đa thức $u=k^2-4k+3$ vì hệ số $-8k^3$ ứng với $2 \\cdot k^2 \\cdot(-4k)$ và số hạng tự do $3$ làm hệ số của $k^2$ gần với $23$; khai triển $u^2$ rồi lấy $B-u^2$.\n**Bước 2.** Hiệu $B-u^2$ vừa tính là một bình phương nên $B\\ge u^2$, dấu bằng chỉ xảy ra ở một giá trị của $k$; từ đó viết $B$ dưới dạng $u^2+(\\dots)^2$.\n**Bước 3.** So $B$ với $(u+1)^2=u^2+2u+1$: lập hiệu $(u+1)^2-B$ và biến đổi thành một biểu thức theo $k$ để biết khi nào nó dương.\n**Bước 4.** Với các $k$ làm hiệu đó dương và $u\\ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108020701001",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $a + b = 2$; $ab = 1$. Tính $a^2 + b^2$",
+  "dap_an": "2",
+  "loi_giai": "Ta có $(a+b)^2 = a^2 + b^2 - 2ab \\Rightarrow a^2 + b^2 = (a+b)^2 - 2ab$\\n$= 2^2 - 2.1 = 2$",
+  "nhan_cu": "Các bài toán biến đổi đặc biệt về hằng đẳng thức › Bình phương của các biểu thức đặc biệt"
+ }
+]

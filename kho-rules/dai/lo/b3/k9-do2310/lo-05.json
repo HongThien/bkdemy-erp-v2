@@ -1,0 +1,171 @@
+[
+ {
+  "ma_cau": "T109030305046",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+5}{\\sqrt{x}-5}$ $(x\\in\\mathbb{N};x\ne25)$. Tìm $x\\in\\mathbb {N}$ để $P$ có giá trị lớn nhất.",
+  "dap_an": "26",
+  "loi_giai": "$P=\\dfrac{\\sqrt{x}+5}{\\sqrt{x}-5}=\\dfrac{\\sqrt{x}-5+10}{\\sqrt{x}-5}=1+\\dfrac{10}{\\sqrt{x}-5}$.\nTH1: Với $0\\le x<25\\Rightarrow\\sqrt{x}-5<0\\Rightarrow P<1$.\nTH2: Với $x>25$ mà $x\\in\\mathbb{N}\\Rightarrow x\\ge26\\Rightarrow\\sqrt{x}-5\\ge\\sqrt{26}-5>0$.\nDo đó $\\dfrac{10}{\\sqrt{x}-5}\\le\\dfrac{10}{\\sqrt{26}-5}$.\n$\\Rightarrow P\\le1+\\dfrac{10}{\\sqrt{26}-5}$.\nDấu bằng xảy ra khi $x=26$ (thỏa mãn).\nVậy $x=26$ thì $P$ có giá trị lớn nhất.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109000000199",
+  "loai": "tra_loi_ngan",
+  "de": "Một người nông dân muốn rào một khu đất hình chữ nhật có chu vi 60 m để xây dựng một vườn hoa. Với chiều rộng của khu đất là $x$ (m), tìm $x$ để diện tích vườn hoa xây được lớn nhất.",
+  "dap_an": "15",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biểu thị diện tích theo một ẩn $x$ rồi đưa về dạng \"một số trừ đi một bình phương\" để thấy giá trị lớn nhất.\n**Bước 1.** Từ chu vi 60 m suy ra nửa chu vi, rồi biểu thị chiều dài theo $x$ và nêu điều kiện của $x$.\n**Bước 2.** Viết diện tích khu đất theo $x$ và khai triển thành một đa thức bậc hai.\n**Bước 3.** Biến đổi đa thức đó thành hằng số trừ đi bình phương của một biểu thức chứa $x$ (hoàn thành bình phương).\n**Bước 4.** Vì bình phương luôn không âm nên diện tích lớn nhất khi bình phương bằng 0; từ đó tìm $x$.\n**Chú ý:** phải chỉ rõ dấu bằng xảy ra khi nào mới kết luận được giá trị lớn nhất.\n**Phần 2. Trình bày**\nNửa chu vi khu đất là $60:2=30$ (m) nên  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000248",
+  "loai": "tra_loi_ngan",
+  "de": "Một rạp chiếu phim có 120 ghế, giá vé hiện tại là 100 nghìn đồng mỗi vé. Với giá vé này, tất cả các ghế đều được bán hết cho mỗi suất chiếu. Ban quản lý rạp phim đang xem xét việc tăng giá vé để tối ưu hóa doanh thu. Sau khi thử nghiệm, rạp phim nhận thấy cứ mỗi lần tăng giá thêm 5 nghìn đồng, số ghế bị bỏ trống sẽ tăng thêm 4 ghế. Hỏi mức giá vé mới là bao nhiêu để rạp phim đạt doanh thu lớn nhất?",
+  "dap_an": "125",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** doanh thu bằng giá vé nhân số ghế bán được, là một đa thức bậc hai theo số lần tăng giá; tìm giá trị lớn nhất bằng cách hoàn thành bình phương rồi so với số không âm.\n**Bước 1.** Chọn ẩn là số lần tăng giá thêm $5$ nghìn đồng, rồi biểu diễn giá vé mới và số ghế bán được theo ẩn đó, biết mỗi lần tăng thì có thêm $4$ ghế bỏ trống.\n**Bước 2.** Lập biểu thức doanh thu bằng tích giá vé với số ghế bán được, rồi khai triển và thu gọn thành đa thức bậc hai.\n**Bước 3.** Đặt hệ số $-20$ ra ngoài và thêm bớt hằng số để hoàn thành bình phương, đưa doanh thu về dạng (hằng số) trừ $20$ nhân một bình phương.\n**Bước 4.** Vì bình phương luôn không âm nên đánh giá được giá  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000416",
+  "loai": "tu_luan",
+  "de": "Một sân bay có dịch vụ gửi hành lí với 150 tủ chứa đồ cho thuê với giá mỗi tủ là 200 nghìn đồng một ngày. Với giá hiện tại, tất cả các ngày đều được thuê kín chỗ. Do chi phí vận hành tăng nên giá cho thuê đang được xem xét điều chỉnh. Theo quy định, mức tăng giá là bội số của 10 nghìn đồng và sẽ được thí điểm lần lượt các mức trong một thời gian nhất định. Sau một thời gian thí điểm, nhà quản lý nhận thấy với mỗi 10 nghìn đồng tăng thêm, có 5 tủ bị bỏ trống không có người thuê trong ngày tương ứng. Hỏi mức giá chính thức mới cần được tăng lên bao nhiêu để doanh thu một ngày là lớn nhất?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** doanh thu một ngày bằng giá thuê một tủ nhân số tủ được thuê; cả hai đều viết theo số lần tăng giá $10$ nghìn đồng, nên doanh thu là một đa thức bậc hai của số lần tăng.\n**Bước 1.** Gọi $x$ là số lần tăng giá thêm $10$ nghìn đồng, rồi biểu diễn giá thuê mỗi tủ và số tủ được thuê theo $x$, kèm điều kiện của $x$.\n**Bước 2.** Viết doanh thu một ngày bằng tích của giá thuê một tủ và số tủ được thuê, rồi khai triển và thu gọn.\n**Bước 3.** Đưa biểu thức doanh thu về dạng một hằng số trừ một bình phương nhân hệ số dương bằng cách hoàn thành bình phương, để thấy doanh thu lớn nhất khi bình phương bằng $0$.\n**Bước 4.** Tìm giá trị $x$ làm bình phương bằng $0$, kiểm …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109080105018",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức $A = 4x + \\dfrac{9}{x}$ ($x>0$)",
+  "dap_an": "12",
+  "loi_giai": "Nhận xét : Dấu '=' của bài toán này xảy ra khi $4x = \\dfrac{9}{x} \\Rightarrow x^2 = \\dfrac{9}{4} \\Rightarrow x = \\dfrac{3}{2}$\nKhi $x = \\dfrac{3}{2} \\Rightarrow A = 12$\nVậy ta trình bày bài như sau :\nXét $A-12 = 4x + \\dfrac{9}{x} - 12 = \\dfrac{4x^2 + 9 - 12x}{x} = \\dfrac{(2x-3)^2}{x}$\nVì $x>0$; $(2x-3)^2 \\ge 0 \\Rightarrow \\dfrac{(2x-3)^2}{x} \\ge 0 \\Rightarrow A-12 \\ge 0 \\Rightarrow A \\ge 12$\nDấu '=' xảy ra khi $x = \\dfrac{3}{2}$\nVậy GTNN của $A$ là $12$ khi $x = \\dfrac{3}{2}$",
+  "nhan_cu": "Bất đẳng thức một biến › GTLN - GTNN của biểu thức dạng phân thức ứng dụng Cauchy 2 số"
+ },
+ {
+  "ma_cau": "T109000000163",
+  "loai": "tu_luan",
+  "de": "Tìm giá trị nhỏ nhất của biểu thức $D=\\dfrac{2x+1}{x^2+2}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** để chứng minh $D$ không nhỏ hơn một số $m$ nào đó, xét hiệu $D-m$ và biến đổi tử số thành một bình phương, vì bình phương luôn không âm.\n**Bước 1.** Thử vài giá trị của $x$ (nhất là giá trị âm vì tử $2x+1$ có thể âm) để dự đoán số $m$ là giá trị nhỏ nhất của $D$ và $x$ làm $D$ đạt giá trị đó.\n**Bước 2.** Xét hiệu $D-m$, quy đồng mẫu rồi thu gọn tử số.\n**Bước 3.** Nhận ra tử số là hằng đẳng thức bình phương một tổng, còn mẫu số luôn dương với mọi $x$, từ đó suy ra $D-m\\ge0$.\n**Bước 4.** Chỉ ra dấu bằng xảy ra khi nào để khẳng định $m$ thật sự là giá trị nhỏ nhất.\n**Chú ý:** phải có giá trị của $x$ để dấu bằng xảy ra, nếu không chỉ mới chứng minh được $D\\ge  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000480",
+  "loai": "tra_loi_ngan",
+  "de": "Người ta cần xây hàng rào là ba cạnh của một hình chữ nhật bao quanh một khu vực hồ nước (như hình minh họa). Hỏi nếu có $80$ m hàng rào thì diện tích tối đa của khu vực được rào là bao nhiêu?",
+  "dap_an": "800",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai cạnh rào vuông góc với toà nhà bằng nhau và cạnh còn lại song song với toà nhà, nên tổng $80$ m cho biết cạnh dài theo cạnh rộng; diện tích thành một tam thức bậc hai theo một ẩn và tìm giá trị lớn nhất bằng cách hoàn thành bình phương.\n**Bước 1.** Gọi độ dài cạnh rào vuông góc với toà nhà là $x$ (m) rồi dùng tổng $80$ m để biểu diễn cạnh rào song song với toà nhà, nêu điều kiện của $x$.\n**Bước 2.** Viết diện tích hình chữ nhật theo $x$ bằng công thức chiều dài nhân chiều rộng.\n**Bước 3.** Đưa biểu thức diện tích về dạng một số trừ đi một biểu thức bình phương (hoàn thành bình phương) rồi lập luận để tìm giá trị lớn nhất.\n**Bước 4.** Kiểm tra giá trị c …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000590",
+  "loai": "tu_luan",
+  "de": "Từ một miếng bìa có dạng nửa hình tròn tâm $O$, bán kính $10$ cm, bạn An muốn cắt một phần bìa có dạng hình chữ nhật $ABCD$ (như hình vẽ). Tính độ dài đoạn $AB$ để diện tích của hình chữ nhật cắt được là lớn nhất.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đặt $AB=x$, dùng Pythagore để viết $BC$ theo $x$ rồi lập diện tích là biểu thức của $x$; đánh giá giá trị lớn nhất bằng cách biến đổi hiệu thành một bình phương.\n**Bước 1.** Đặt $AB=x$ và nêu điều kiện của $x$, rồi chứng tỏ $O$ là trung điểm của $BC$ nhờ hai tam giác vuông có cạnh huyền cùng bằng bán kính.\n**Bước 2.** Dùng định lí Pythagore trong tam giác vuông $OBA$ để tính $OB$ theo $x$, từ đó viết được $BC$ và diện tích $S$ theo $x$.\n**Bước 3.** Vì $S>0$ nên $S$ lớn nhất khi $S^2$ lớn nhất; bình phương diện tích để mất dấu căn.\n**Bước 4.** So sánh biểu thức của $S^2$ với một hằng số bằng cách xét hiệu và viết hiệu đó thành một bình phương, không dùng bấ …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030305047",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+8}{\\sqrt{x}-6}$ $(x\\in\\mathbb{N};x\ne36)$. Tìm $x\\in\\mathbb {N}$ để $P$ có giá trị lớn nhất.",
+  "dap_an": "37",
+  "loi_giai": "$P=\\dfrac{\\sqrt{x}+8}{\\sqrt{x}-6}=\\dfrac{\\sqrt{x}-6+14}{\\sqrt{x}-6}=1+\\dfrac{14}{\\sqrt{x}-6}$.\nTH1: Với $0\\le x<36\\Rightarrow\\sqrt{x}-6<0\\Rightarrow P<1$.\nTH2: Với $x>36$ mà $x\\in\\mathbb{N}\\Rightarrow x\\ge37\\Rightarrow\\sqrt{x}-6\\ge\\sqrt{37}-6>0$.\nDo đó $\\dfrac{14}{\\sqrt{x}-6}\\le\\dfrac{14}{\\sqrt{37}-6}$.\n$\\Rightarrow P\\le1+\\dfrac{14}{\\sqrt{37}-6}$.\nDấu bằng xảy ra khi $x=37$ (thỏa mãn).\nVậy $x=37$ thì $P$ có giá trị lớn nhất.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109000000511",
+  "loai": "tu_luan",
+  "de": "Cho hai biểu thức $A=\\dfrac{\\sqrt{x}+1}{\\sqrt{x}-3}$ và $B=\\dfrac{x+9}{x-9}+\\dfrac{3}{\\sqrt{x}+3}$ với $x\\ge0$, $x\\ne9$.\n1) Tính giá trị của biểu thức $A$ khi $x=16$.\n2) Chứng minh: $B=\\dfrac{\\sqrt{x}}{\\sqrt{x}-3}$.\n3) Xét biểu thức $P=B-A$. Tìm tất cả các giá trị của $x$ để $P>0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ý 2 và ý 3 gắn với nhau: rút gọn $B$ ở ý 2 xong thì $P=B-A$ có **cùng mẫu** $\\sqrt{x}-3$, trừ hai phân thức rất gọn, rồi xét dấu của một phân thức có tử là một hằng số âm.\n**Bước 1.** Ý 1: kiểm tra $x=16$ thoả mãn điều kiện, tính $\\sqrt{x}$ rồi thay vào $A$.\n**Bước 2.** Ý 2: phân tích $x-9=(\\sqrt{x}-3)(\\sqrt{x}+3)$ để tìm mẫu chung, quy đồng hạng tử thứ hai của $B$, cộng hai phân thức rồi rút gọn tử thức bằng cách đặt nhân tử chung.\n**Bước 3.** Ý 3: thay biểu thức $B$ đã rút gọn vào $P=B-A$; hai phân thức cùng mẫu nên trừ tử với tử, tử của kết quả là một hằng số.\n**Bước 4.** Ý 3: phân thức có tử âm chỉ dương khi mẫu âm, nên giải bất phương trình \"mẫu nhỏ h …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000016",
+  "loai": "tu_luan",
+  "de": "Xác định $a,\\ b$ để đồ thị của hàm số $y=ax+b$ đi qua hai điểm $A$ và $B$, biết: $A(5;-2)$ và $B(-2;-11)$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** thay toạ độ từng điểm vào $y=ax+b$ để có hệ hai phương trình ẩn $a,\\ b$; cẩn thận với dấu âm của toạ độ.\n**Bước 1.** Thay toạ độ điểm $A$ vào công thức hàm số để lập phương trình thứ nhất theo $a$ và $b$.\n**Bước 2.** Thay toạ độ điểm $B$ (có hoành độ âm) vào công thức để lập phương trình thứ hai, chú ý dấu khi nhân.\n**Bước 3.** Hệ số của $b$ ở hai phương trình bằng nhau nên trừ từng vế để khử $b$ và tìm $a$.\n**Bước 4.** Thế $a$ vào một phương trình để tìm $b$, rồi kết luận.\n**Chú ý:** kết quả có thể là phân số, không cần ép về số nguyên.\n**Phần 2. Trình bày**\nVì đồ thị hàm số $y=ax+b$ đi qua điểm $A(5;-2)$ nên thay $x=5$, $y=-2$ vào công thức, ta được $-2= …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030305049",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $M=\\dfrac{\\sqrt{x}-2}{\\sqrt{x}-3}$ $(x\\ge0;x\ne9)$. Tìm giá trị nguyên của $x$ để $M$ đạt giá trị lớn nhất.",
+  "dap_an": "10",
+  "loi_giai": "$M=\\dfrac{\\sqrt{x}-2}{\\sqrt{x}-3}=\\dfrac{\\sqrt{x}-3+1}{\\sqrt{x}-3}=1+\\dfrac{1}{\\sqrt{x}-3}$.\nTH1: Với $0\\le x<9\\Rightarrow\\sqrt{x}-3<0\\Rightarrow M<1$.\nTH2: Với $x>9$ mà $x$ nguyên $\\Rightarrow x\\ge10\\Rightarrow\\sqrt{x}-3\\ge\\sqrt{10}-3>0$.\nDo đó $\\dfrac{1}{\\sqrt{x}-3}\\le\\dfrac{1}{\\sqrt{10}-3}$.\n$\\Rightarrow M\\le1+\\dfrac{1}{\\sqrt{10}-3}$.\nDấu bằng xảy ra khi $x=10$ (thỏa mãn).\nVậy $x=10$ thì $M$ đạt giá trị lớn nhất.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109000000118",
+  "loai": "trac_nghiem",
+  "de": "Phương trình nào sau đây không là phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$4x+\\dfrac{1}{3}y=0$",
+   "$\\sqrt{2}x-3y=6$",
+   "$0x+0y=2$",
+   "$0x-\\sqrt{3}y=5$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phương trình bậc nhất hai ẩn có dạng $ax+by=c$ với $a$, $b$ **không đồng thời bằng 0**.\n**Bước 1.** Nhắc lại định nghĩa: phương trình bậc nhất hai ẩn $x$, $y$ có dạng $ax+by=c$, trong đó $a$, $b$ là các số (kể cả số vô tỉ) và không đồng thời bằng 0.\n**Bước 2.** Với mỗi phương án, đọc ra các hệ số $a$, $b$ của $x$ và $y$ rồi kiểm tra điều kiện $a$, $b$ không đồng thời bằng 0.\n**Bước 3.** Đề hỏi phương trình **không** là bậc nhất hai ẩn, nên chọn phương án vi phạm điều kiện đó.\n**Chú ý:** hệ số $\\sqrt{2}$, $\\sqrt{3}$ vẫn là hệ số hợp lệ; một hệ số bằng 0 thì được, miễn hệ số còn lại khác 0.\n**Phần 2. Trình bày**\nPhương trình bậc nhất hai ẩn có dạng $ax+by=c$ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000105",
+  "loai": "tra_loi_ngan",
+  "de": "Cửa hàng nhà bác Dũng chuyên kinh doanh máy tính tại Hà Nội. Một loại máy tính có giá nhập vào một chiếc là $18$ triệu đồng và bán ra với giá $22$ triệu đồng. Với giá bán như trên thì một năm số lượng máy tính bán được dự kiến là $500$ chiếc. Để tăng thêm lượng tiêu thụ dòng máy tính này, bác Dũng dự định giảm giá bán và ước lượng cứ giảm $200$ nghìn đồng một chiếc thì số lượng máy tính bán ra trong một năm sẽ tăng $50$ chiếc. Vậy bác Dũng phải bán với giá bao nhiêu để sau khi giảm giá lợi nhuận thu sẽ được cao nhất?",
+  "dap_an": "21",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** gọi $x$ là số lần giảm $200$ nghìn đồng thì giá bán, số lượng bán và lợi nhuận đều biểu diễn được theo $x$, và lợi nhuận là một tam thức bậc hai của $x$ cần đưa về dạng một số trừ đi một bình phương.\n**Bước 1.** Gọi ẩn là số lần giảm giá, đổi $200$ nghìn đồng ra triệu đồng cho cùng đơn vị với giá nhập, rồi biểu diễn giá bán mới và số máy bán được theo ẩn.\n**Bước 2.** Lợi nhuận một chiếc bằng giá bán mới trừ giá nhập, nhân với số máy bán ra để được tổng lợi nhuận theo $x$ rồi khai triển.\n**Bước 3.** Đưa biểu thức bậc hai về dạng $k-10(x-m)^2$ bằng cách đặt hệ số $-10$ làm thừa số chung rồi hoàn thành bình phương.\n**Bước 4.** Từ dạng đó chỉ ra lợi nhuận khôn …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030305058",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=-\\dfrac{5}{\\sqrt{x}-2}$ $(x\\ge0;x\ne4)$. Tìm các giá trị nguyên dương của $x$ để $P$ đạt giá trị nhỏ nhất.",
+  "dap_an": "5",
+  "loi_giai": "TH1: Với $1\\le x<4\\Rightarrow\\sqrt{x}-2<0\\Rightarrow P>0$.\nTH2: Với $x>4$ mà $x$ là số nguyên dương $\\Rightarrow x\\ge5\\Rightarrow\\sqrt{x}-2\\ge\\sqrt{5}-2>0$.\nDo đó $\\dfrac{5}{\\sqrt{x}-2}\\le\\dfrac{5}{\\sqrt{5}-2}$.\n$\\Rightarrow-\\dfrac{5}{\\sqrt{x}-2}\\ge-\\dfrac{5}{\\sqrt{5}-2}$.\n$\\Rightarrow P\\ge-\\dfrac{5}{\\sqrt{5}-2}$.\nDấu bằng xảy ra khi $x=5$ (thỏa mãn).\nVì ở TH1 thì $P>0$ còn tại $x=5$ thì $P<0$.\nVậy $x=5$ thì $P$ đạt giá trị nhỏ nhất.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109000000640",
+  "loai": "tu_luan",
+  "de": "Cho hai biểu thức $A=\\dfrac{\\sqrt{x}+2}{\\sqrt{x}-1}$ và $B=\\dfrac{\\sqrt{x}+2}{\\sqrt{x}+1}-\\dfrac{2}{1-x}$ với $x\\ge0$, $x\\ne1$.\n1) Tính giá trị của biểu thức $A$ với $x=4$.\n2) Chứng minh $B=\\dfrac{\\sqrt{x}}{\\sqrt{x}-1}$.\n3) Cho $P=\\dfrac{B}{A}$. Tìm giá trị nguyên của $x$ để $P<\\dfrac{1}{2}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ý 3 dùng kết quả ý 2: thay $B$ đã rút gọn vào $P=\\dfrac{B}{A}$ thì hai mẫu $\\sqrt{x}-1$ triệt tiêu, còn lại một phân thức đơn giản để so sánh với $\\dfrac{1}{2}$.\n**Bước 1.** Ý 1: kiểm tra $x=4$ thoả mãn điều kiện, tính $\\sqrt{x}$ rồi thay vào $A$.\n**Bước 2.** Ý 2: viết $1-x=-(x-1)$ và phân tích $x-1=(\\sqrt{x}-1)(\\sqrt{x}+1)$ để tìm mẫu chung, đổi dấu hạng tử thứ hai của $B$ thành phép cộng.\n**Bước 3.** Ý 2: quy đồng, cộng hai phân thức, khai triển tích ở tử rồi đặt nhân tử chung $\\sqrt{x}$ để rút gọn với mẫu.\n**Bước 4.** Ý 3: lập $P=\\dfrac{B}{A}$ (nhớ $A\\ne0$), thu gọn thành một phân thức rồi xét hiệu $\\dfrac{1}{2}-P$: mẫu dương nên dấu của hiệu là dấu của …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030305054",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $M=\\dfrac{\\sqrt{x}-4}{\\sqrt{x}-6}$ $(x\\ge0;x\ne36)$. Tìm giá trị nguyên của $x$ để $M$ đạt giá trị lớn nhất.",
+  "dap_an": "37",
+  "loi_giai": "$M=\\dfrac{\\sqrt{x}-4}{\\sqrt{x}-6}=\\dfrac{\\sqrt{x}-6+2}{\\sqrt{x}-6}=1+\\dfrac{2}{\\sqrt{x}-6}$.\nTH1: Với $0\\le x<36\\Rightarrow\\sqrt{x}-6<0\\Rightarrow M<1$.\nTH2: Với $x>36$ mà $x$ nguyên $\\Rightarrow x\\ge37\\Rightarrow\\sqrt{x}-6\\ge\\sqrt{37}-6>0$.\nDo đó $\\dfrac{2}{\\sqrt{x}-6}\\le\\dfrac{2}{\\sqrt{37}-6}$.\n$\\Rightarrow M\\le1+\\dfrac{2}{\\sqrt{37}-6}$.\nDấu bằng xảy ra khi $x=37$ (thỏa mãn).\nVậy $x=37$ thì $M$ đạt giá trị lớn nhất.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109000000575",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty đang thực hiện một chiến dịch quảng cáo trên mạng xã hội. Mục tiêu của công ty là thu hút được ít nhất $50\\,000$ lượt tương tác (like, share, comment) trong tổng thời gian chiến dịch. Biết rằng, trong tuần đầu tiên công ty đã đạt được $12\\,500$ lượt tương tác. Kể từ tuần thứ hai trở đi, trung bình mỗi tuần công ty dự kiến sẽ thu hút được $4500$ lượt tương tác. Hỏi công ty cần phải duy trì ít nhất bao nhiêu tuần nữa (kể từ tuần thứ hai) để đạt mục tiêu đề ra?",
+  "dap_an": "9",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tổng số lượt tương tác bằng lượt của tuần đầu cộng lượt của các tuần sau, và phải không nhỏ hơn mục tiêu, nên ta lập một bất phương trình bậc nhất một ẩn.\n**Bước 1.** Gọi $x$ là số tuần công ty cần duy trì thêm kể từ tuần thứ hai và nêu điều kiện của $x$.\n**Bước 2.** Biểu diễn tổng số lượt tương tác bằng lượt tuần đầu cộng với $4500$ lượt mỗi tuần trong $x$ tuần.\n**Bước 3.** Cụm \"ít nhất $50\\,000$\" nghĩa là tổng này lớn hơn hoặc bằng $50\\,000$, từ đó lập bất phương trình.\n**Bước 4.** Giải bất phương trình bằng cách chuyển vế rồi chia hai vế cho số dương $4500$.\n**Bước 5.** Vì số tuần phải là số nguyên nên chọn số nguyên nhỏ nhất thoả mãn nghiệm vừa tìm đượ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109110401001",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN – GTNN của biểu thức: $x^2-4x+9$.",
+  "dap_an": "GTNN = 5 khi x = 2; không có GTLN",
+  "loi_giai": "Ta có: $x^2-4x+9=(x-2)^2+5$.\nVì $(x-2)^2\\ge 0$ với mọi $x$ nên $(x-2)^2+5\\ge 5$, dấu \"=\" xảy ra khi $x=2$.\nVậy biểu thức có GTNN bằng $5$ khi $x=2$.\nKhi $x\\to\\pm\\infty$ thì $(x-2)^2+5\\to+\\infty$ nên biểu thức không bị chặn trên, không có GTLN.",
+  "nhan_cu": "Nâng cao › Nâng cao"
+ },
+ {
+  "ma_cau": "T109030201056",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm ĐKXĐ của biểu thức $\\dfrac{\\sqrt{x}}{\\sqrt{x-12}}$.",
+  "dap_an": "$x>12$",
+  "loi_giai": "ĐKXĐ: $\\begin{cases}x\\ge0\\\\x-12>0\\end{cases}\\Rightarrow\\begin{cases}x\\ge0\\\\x>12\\end{cases}\\Rightarrow x>12$",
+  "nhan_cu": "Rút gọn Căn thức › Tìm ĐKXĐ của Căn thức"
+ },
+ {
+  "ma_cau": "T109000000052",
+  "loai": "tu_luan",
+  "de": "Cho phương trình $5x-4=3m+2$ $(1)$, trong đó $x$ là ẩn số, $m$ là một số cho trước. Tìm giá trị của $m$ để phương trình $(1)$ có nghiệm dương.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** coi $m$ như một số cho trước, giải phương trình bậc nhất theo $x$ rồi đòi nghiệm vừa tìm lớn hơn $0$ để có bất phương trình theo $m$.\n**Bước 1.** Giải phương trình $(1)$ theo ẩn $x$: chuyển số hạng tự do sang vế phải rồi chia hai vế cho hệ số của $x$, được nghiệm viết theo $m$.\n**Bước 2.** Nghiệm dương nghĩa là biểu thức nghiệm vừa tìm phải lớn hơn $0$, từ đó lập bất phương trình ẩn $m$.\n**Bước 3.** Giải bất phương trình theo $m$ (mẫu số dương nên nhân hai vế không đổi chiều) rồi kết luận.\n**Phần 2. Trình bày**\n$5x-4=3m+2$\nChuyển vế, ta được $5x=3m+2+4$.\n$5x=3m+6$\nChia hai vế cho $5$, ta được $x=\\dfrac{3m+6}{5}$.\nPhương trình $(1)$ có nghiệm dương khi $\\df …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

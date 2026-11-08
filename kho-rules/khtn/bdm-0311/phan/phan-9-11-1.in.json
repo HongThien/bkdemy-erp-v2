@@ -1,0 +1,925 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00556",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Nucleic acid và gene",
+   "nhom": "Các dạng bài tập tính toán cơ bản về nucleic acid và gene",
+   "nhom_ly_thuyet": "I. Lý thuyết dạng bài\n–  Tổng số nucleotide của gene (tính trên cả hai mạch):\n$N = A + T + G + C = 2A + 2G = 2T + 2C$\n–  Theo tỉ lệ phần trăm (vì %A = %T, %G = %C và tổng bốn loại là 100%):\n$%A + %G = 50%$\n–  Số liên kết hydrogen của gene (A liên kết với T bằng 2 liên kết hydrogen, G liên kết với C bằng 3 liên kết hydrogen):\n$H = 2A + 3G$\n–  Số liên kết cộng hoá trị giữa các nucleotide trên một mạch đơn bằng N/2 − 1; trên cả hai mạch bằng N − 2:\nSố liên kết cộng hoá trị (2 mạch) = N − 2\nCÁC BƯỚC GIẢI\nBước 1: Xác định dữ kiện đã cho: tổng số nucleotide N, hoặc tỉ lệ phần trăm từng loại, hoặc số liên kết hydrogen...\nBước 2: Áp dụng hệ thức A = T, G = C và N = 2A + 2G để tìm số lượng từng loại nucleotide.\nBước 3: Áp dụng công thức phù hợp (H = 2A + 3G; số liên kết cộng hoá trị = N − 2...) để tính đại lượng được hỏi.\nBước 4: Kiểm tra lại kết quả bằng cách cộng tổng bốn loại nucleotide, phải đúng bằng N.\nII. Ví dụ minh hoạ\nMột gene có tổng số 2400 nucleotide, trong đó nucleotide loại G chiếm 30% tổng số nucleotide của gene. Tính số nucleotide mỗi loại của gene.\nHướng dẫn giải:\nVì %G = %C nên %C = 30%. Vì %A + %G = 50% nên %A = 50% − 30% = 20%; suy ra %T = %A = 20%.\n$A = T = 2400 × 20% = 480$\n$G = C = 2400 × 30% = 720$\nKiểm tra: 480 + 480 + 720 + 720 = 2400 (đúng bằng tổng số nucleotide của gene).",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01282",
+     "thu_tu": 1,
+     "ten": "Cụm 1 - Tính toán cơ bản về nucleic acid và gene",
+     "mo_ta": "Đề cho tổng số nucleotide N của gene hoặc số nucleotide (hoặc phần trăm) của một số loại, hỏi số lượng hoặc phần trăm từng loại nucleotide và tổng số nucleotide.\nLàm bằng cách dùng A = T, G = C, N = 2A + 2G và %A + %G = 50%.\nBiến thể: cho N và phần trăm một loại, tính số nucleotide mỗi loại; cho A và G, tính N; cho N và A, tính G.\nLưu ý: đề hỏi số liên kết hydrogen của gene ⇒ thuộc dạng \"Cụm 2 - Tính toán cơ bản về nucleic acid và gene\".",
+     "ly_thuyet": "##TC Số lượng nucleotide của gene\nNguyên tắc bổ sung trong gene: A = T, G = C nên %A = %T, %G = %C.\nTổng số nucleotide $N = A + T + G + C = 2A + 2G$, suy ra $A + G = \\dfrac{N}{2}$ và $\\%A + \\%G = 50\\%$.\nSố nucleotide mỗi loại = N × phần trăm của loại đó.\n\n##PP\nXác định đại lượng đề cho (N, số lượng hoặc phần trăm một loại) và đại lượng cần tìm.\nDùng A = T, G = C để suy ra loại còn lại cùng cặp bổ sung.\nDùng $\\%A + \\%G = 50\\%$ hoặc $N = 2A + 2G$ để tìm các loại còn lại, rồi đổi phần trăm thành số lượng bằng cách nhân với N.\nKiểm tra lại: tổng bốn loại phải bằng N.\n\n##CY\nPhần trăm A cộng phần trăm G bằng 50%, không phải 100%.\nKhi tìm N từ A và G phải nhân đôi: $N = 2(A + G)$, không phải $A + G$.",
+     "vi_du": "##VD\nMột gene có 3000 nucleotide, trong đó loại A chiếm 20% tổng số nucleotide. Số nucleotide loại G của gene là\nA. 600\nB. 900\nC. 1200\nD. 1500\n\nBài giải:\nVì %A + %G = 50% nên %G = 50% − 20% = 30%.\nSố nucleotide loại G: $G = 3000 \\times 30\\% = 900$ (nucleotide)\nKiểm tra: A = T = 600 và G = C = 900, tổng $600 \\times 2 + 900 \\times 2 = 3000$.\nChọn B.\n\n##VD\nMột gene có số nucleotide loại A là 300 và số nucleotide loại G là 450. Tổng số nucleotide của gene là bao nhiêu?\n\nBài giải:\nTheo nguyên tắc bổ sung: T = A = 300 và C = G = 450.\nTổng số nucleotide: $N = 2(A + G) = 2 \\times (300 + 450) = 1500$ (nucleotide)\nĐáp án: 1500."
+    },
+    {
+     "dang_id": "KDB01283",
+     "thu_tu": 2,
+     "ten": "Cụm 2 - Tính toán cơ bản về nucleic acid và gene",
+     "mo_ta": "Đề cho dữ kiện của gene (N, số lượng hoặc phần trăm các loại nucleotide) và hỏi số liên kết hydrogen, hoặc cho số liên kết hydrogen rồi tìm số nucleotide từng loại.\nLàm bằng cách dùng H = 2A + 3G (A–T có 2 liên kết, G–C có 3 liên kết) kết hợp N = 2A + 2G.\nBiến thể: cho A, G tính H; cho N và phần trăm một loại tính H; cho N và H tìm A, G.\nLưu ý: đề chỉ hỏi số lượng hoặc phần trăm nucleotide mà không đề cập liên kết hydrogen ⇒ thuộc dạng \"Cụm 1 - Tính toán cơ bản về nucleic acid và gene\".",
+     "ly_thuyet": "##TC Liên kết hydrogen của gene\nCặp A–T nối bằng 2 liên kết hydrogen, cặp G–C nối bằng 3 liên kết hydrogen.\nSố liên kết hydrogen của gene: $H = 2A + 3G$.\nKết hợp $N = 2A + 2G$ suy ra $H = N + G$, tức $G = H - N$ và $A = \\dfrac{N}{2} - G$.\n\n##PP\nXác định số nucleotide từng loại (A, G) từ dữ kiện đề cho bằng A = T, G = C và N = 2A + 2G.\nThay vào $H = 2A + 3G$ để tính số liên kết hydrogen.\nNếu đề cho H và N, dùng $G = H - N$ rồi tính A, sau đó tìm T và C.\n\n##CY\nKhông nhầm H = 2A + 3G với N = 2A + 2G; mỗi cặp G–C có nhiều hơn cặp A–T một liên kết hydrogen.\nChỉ tính A và G rồi nhân hệ số 2 và 3; không nhân thêm 2 cho cả hai mạch vì A, G đã là số nucleotide của cả gene.",
+     "vi_du": "##VD\nMột gene có số nucleotide loại A là 300 và số nucleotide loại G là 450. Số liên kết hydrogen của gene là\nA. 1500\nB. 1800\nC. 1950\nD. 2250\n\nBài giải:\nCặp A–T có 2 liên kết hydrogen, cặp G–C có 3 liên kết hydrogen.\nSố liên kết hydrogen: $H = 2A + 3G = 2 \\times 300 + 3 \\times 450 = 600 + 1350 = 1950$ (liên kết)\nChọn C.\n\n##VD\nMột gene có tổng số 1500 nucleotide và có 1950 liên kết hydrogen. Tính số nucleotide mỗi loại của gene.\n\nBài giải:\nTa có N = 2A + 2G = 1500, suy ra A + G = 750.\nSố liên kết hydrogen: $H = 2A + 3G = (2A + 2G) + G = 1500 + G = 1950$, nên G = 450.\nSuy ra A = 750 − 450 = 300.\nTheo nguyên tắc bổ sung: T = A = 300 và C = G = 450.\nKiểm tra: $300 + 300 + 450 + 450 = 1500$ và $2 \\times 300 + 3 \\times 450 = 1950$.\nĐáp án: A = T = 300 nucleotide; G = C = 450 nucleotide."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09110208013",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có $\\mathrm{N = 2\\ 400}$ và $\\mathrm{H = 3\\ 000}$. Số nucleotide loại $\\mathrm{G}$ của gene là",
+   "lua_chon": [
+    "600",
+    "900",
+    "1200",
+    "300"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Áp dụng mẹo $\\mathrm{G = H - N = 3\\ 000 - 2\\ 400 = 600}$. Mẹo suy ra từ $\\mathrm{H - N = (2A + 3G) - (2A + 2G) = G}$."
+  },
+  {
+   "ma_cau": "K09110208014",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có $\\mathrm{A = 700}$ và $\\mathrm{G = 800}$. Tổng số nucleotide của gene là",
+   "lua_chon": [
+    "1500",
+    "3000",
+    "2400",
+    "1800"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Áp dụng $\\mathrm{N = 2A + 2G = 2 \\times 700 + 2 \\times 800 = 1\\ 400 + 1\\ 600 = 3\\ 000}$."
+  },
+  {
+   "ma_cau": "K09110208015",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số nucleotide loại $\\mathrm{A}$ và $\\mathrm{G}$ bằng $\\mathrm{1\\ 200}$. Tổng số nucleotide của gene là",
+   "lua_chon": [
+    "1200",
+    "2400",
+    "600",
+    "3600"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Vì $\\mathrm{N = 2A + 2G = 2(A + G) = 2 \\times 1\\ 200 = 2\\ 400}$. Cần nhớ $\\mathrm{A + G}$ luôn bằng đúng một nửa tổng số nucleotide."
+  },
+  {
+   "ma_cau": "K09110208016",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có $\\mathrm{N} = 2 \\ 000$, trong đó số nucleotide loại $\\mathrm{G}$ nhiều gấp ba lần loại $\\mathrm{A}$. Số nucleotide loại $\\mathrm{A}$ của gene là",
+   "lua_chon": [
+    "250",
+    "500",
+    "750",
+    "1000"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Từ $\\mathrm{N} = 2\\mathrm{A} + 2\\mathrm{G} = 2\\ 000$ suy ra $\\mathrm{A} + \\mathrm{G} = 1\\ 000$.\nThay $\\mathrm{G} = 3\\mathrm{A}$ vào: $4\\mathrm{A} = 1\\ 000 \\Rightarrow \\mathrm{A} = 250$ (và $\\mathrm{G} = 750$)."
+  },
+  {
+   "ma_cau": "K09110208017",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có $2\\ 400$ nucleotide và số nucleotide loại $\\mathrm{A}$ gấp đôi loại $\\mathrm{G}$. Số liên kết hydrogen của gene là",
+   "lua_chon": [
+    "2800",
+    "3000",
+    "2400",
+    "3200"
+   ],
+   "dap_an": "A",
+   "loi_giai": "$\\mathrm{A} + \\mathrm{G} = 1\\ 200$, mà $\\mathrm{A} = 2\\mathrm{G}$ nên $3\\mathrm{G} = 1\\ 200 \\Rightarrow \\mathrm{G} = 400$, $\\mathrm{A} = 800$.\nVậy $\\mathrm{H} = 2 \\times 800 + 3 \\times 400 = 1\\ 600 + 1\\ 200 = 2\\ 800$."
+  },
+  {
+   "ma_cau": "K09110208018",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có $\\mathrm{N} = 1\\ 800$. Nếu số nucleotide loại $\\mathrm{A}$ bằng số loại $\\mathrm{G}$ thì số liên kết hydrogen của gene là",
+   "lua_chon": [
+    "2250",
+    "1800",
+    "2700",
+    "3600"
+   ],
+   "dap_an": "A",
+   "loi_giai": "$\\mathrm{A} + \\mathrm{G} = 900$, mà $\\mathrm{A} = \\mathrm{G}$ nên $\\mathrm{A} = \\mathrm{G} = 450$.\nVậy $\\mathrm{H} = 2 \\times 450 + 3 \\times 450 = 900 + 1\\ 350 = 2\\ 250$."
+  },
+  {
+   "ma_cau": "K09110208019",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có A chiếm $35\\%$ tổng số nucleotide và có $2\\ 000$ nucleotide. Số liên kết hydrogen của gene là",
+   "lua_chon": [
+    "2300",
+    "2500",
+    "2100",
+    "2700"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đáp án chi tiết:\n$\\mathrm{\\%A = 35\\%}$ nên $\\mathrm{A = T = 700; \\%G = 50\\% - 35\\% = 15\\%}$ nên $\\mathrm{G = C = 300}$. Vậy $\\mathrm{H = 2 \\times 700 + 3 \\times 300}$\n$\\mathrm{= 1\\ 400 + 900 = 2\\ 300}$."
+  },
+  {
+   "ma_cau": "K09110208020",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có $\\mathrm{H = 2\\ 600}$ và $\\mathrm{N = 2\\ 000}$. Tỉ lệ phần trăm nucleotide loại $\\mathrm{G}$ của gene là",
+   "lua_chon": [
+    "20%",
+    "30%",
+    "25%",
+    "35%"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đáp án chi tiết:\n$\\mathrm{G = H - N = 2\\ 600 - 2\\ 000 = 600}$. Vậy $\\mathrm{\\%G = (600 : 2\\ 000) \\times 100\\% = 30\\%}$."
+  },
+  {
+   "ma_cau": "K09110208021",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Trong một gene, nếu $\\mathrm{\\%A = \\%G}$ thì tỉ lệ phần trăm mỗi loại nucleotide là",
+   "lua_chon": [
+    "mỗi loại 25%",
+    "A = T = 30%, G = C = 20%",
+    "A = T = 20%, G = C = 30%",
+    "không xác định được"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đáp án chi tiết:\nVì $\\mathrm{\\%A + \\%G = 50\\%}$ mà $\\mathrm{\\%A = \\%G}$ nên mỗi loại bằng $\\mathrm{25\\%}$. Do $\\mathrm{\\%T = \\%A}$ và $\\mathrm{\\%C = \\%G}$ nên cả bốn\nloại đều chiếm $\\mathrm{25\\%}$."
+  },
+  {
+   "ma_cau": "K09110208022",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có $\\mathrm{N} = 2\\ 400$ nucleotide. Nhận định nào sau đây luôn ĐÚNG?",
+   "lua_chon": [
+    "$\\mathrm{A} + \\mathrm{G} = 1\\ 200$",
+    "$\\mathrm{A} + \\mathrm{T} = 1\\ 200$",
+    "$\\mathrm{A} = 600$",
+    "$\\mathrm{G} = 600$"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Vì $\\mathrm{N} = 2(\\mathrm{A} + \\mathrm{G})$ nên $\\mathrm{A} + \\mathrm{G} = \\mathrm{N}/2 = 1\\ 200$ — luôn đúng với mọi gene. Các phương án khác chỉ đúng trong trường hợp cụ thể."
+  },
+  {
+   "ma_cau": "K09110208023",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có $\\mathrm{A} = 450$, $\\mathrm{G} = 1\\ 050$. Số liên kết hydrogen của gene là",
+   "lua_chon": [
+    "3900",
+    "4050",
+    "3150",
+    "2700"
+   ],
+   "dap_an": "B",
+   "loi_giai": "$\\mathrm{H} = 2\\mathrm{A} + 3\\mathrm{G} = 2 \\times 450 + 3 \\times 1\\ 050 = 900 + 3\\ 150 = 4\\ 050$."
+  },
+  {
+   "ma_cau": "K09110208024",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Hai gene có cùng số nucleotide. Gene $\\mathrm{X}$ có $2\\ 800$ liên kết hydrogen, gene $\\mathrm{Y}$ có $3\\ 100$ liên kết hydrogen. Kết luận nào sau đây ĐÚNG?",
+   "lua_chon": [
+    "Gene $\\mathrm{X}$ bền vững hơn gene $\\mathrm{Y}$.",
+    "Gene $\\mathrm{Y}$ bền vững hơn vì có nhiều cặp $\\mathrm{G} - \\mathrm{C}$ hơn.",
+    "Hai gene bền vững như nhau.",
+    "Không thể so sánh được."
+   ],
+   "dap_an": "B",
+   "loi_giai": "Với cùng số nucleotide, gene nào có nhiều liên kết hydrogen hơn thì có nhiều cặp $\\mathrm{G} - \\mathrm{C}$ hơn ($\\mathrm{G} - \\mathrm{C}$ có 3 liên kết, $\\mathrm{A} - \\mathrm{T}$ chỉ có 2), nên hai mạch gắn bó chặt hơn và phân tử bền vững hơn."
+  },
+  {
+   "ma_cau": "K09110208025",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Từ hệ thức $\\mathrm{H} = 2\\mathrm{A} + 3\\mathrm{G}$ và $\\mathrm{N} = 2\\mathrm{A} + 2\\mathrm{G}$, biểu thức nào sau đây ĐÚNG?",
+   "lua_chon": [
+    "$\\mathrm{G} = \\mathrm{H} - \\mathrm{N}$",
+    "$\\mathrm{G} = \\mathrm{N} - \\mathrm{H}$",
+    "$\\mathrm{G} = \\mathrm{H} + \\mathrm{N}$",
+    "$\\mathrm{G} = (\\mathrm{H} + \\mathrm{N})/2$"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Lấy $\\mathrm{H}$ trừ $\\mathrm{N}$: $(2\\mathrm{A} + 3\\mathrm{G}) - (2\\mathrm{A} + 2\\mathrm{G}) = \\mathrm{G}$. Vậy $\\mathrm{G} = \\mathrm{H} - \\mathrm{N}$ — mẹo tính nhanh khi đề cho đồng thời $\\mathrm{N}$ và $\\mathrm{H}$."
+  },
+  {
+   "ma_cau": "K09110208026",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Phát biểu nào sau đây là SAI?",
+   "lua_chon": [
+    "Trong một gene luôn có $\\mathrm{A} = \\mathrm{T}$ và $\\mathrm{G} = \\mathrm{C}$.",
+    "Tổng $%\\mathrm{A} + %\\mathrm{G}$ luôn bằng $50\\%$.",
+    "Số liên kết hydrogen luôn bằng tổng số nucleotide.",
+    "Số liên kết cộng hoá trị trên cả hai mạch bằng $\\mathrm{N} - 2$."
+   ],
+   "dap_an": "C",
+   "loi_giai": "Số liên kết hydrogen $\\mathrm{H} = 2\\mathrm{A} + 3\\mathrm{G}$ luôn LỚN HƠN tổng số nucleotide $\\mathrm{N} = 2\\mathrm{A} + 2\\mathrm{G}$, cụ thể $\\mathrm{H} - \\mathrm{N} = \\mathrm{G}$. Hai đại lượng chỉ bằng nhau khi $\\mathrm{G} = 0$, điều không xảy ra trong thực tế."
+  },
+  {
+   "ma_cau": "K09110208027",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số liên kết cộng hoá trị giữa các nucleotide trên cả hai mạch là $1998$. Tổng số nucleotide của gene là",
+   "lua_chon": [
+    "2000",
+    "1000",
+    "1996",
+    "2002"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số liên kết cộng hoá trị trên cả hai mạch bằng $\\mathrm{N} - 2$, nên $\\mathrm{N} = 1998 + 2 = 2000$."
+  },
+  {
+   "ma_cau": "K09110208028",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có $2 \\,400$ nucleotide. Số liên kết cộng hoá trị giữa các nucleotide trên một mạch đơn của gene là",
+   "lua_chon": [
+    "1199",
+    "2398",
+    "1200",
+    "2400"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Trên một mạch có $\\mathrm{N}/2 = 1 \\,200$ nucleotide, số liên kết nối chúng bằng $1 \\,200 - 1 = 1 \\,199$."
+  },
+  {
+   "ma_cau": "K09110208029",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Mạch 1 của một gene có $\\mathrm{A_1 = 100}$, $\\mathrm{T_1 = 150}$. Số nucleotide loại $\\mathrm{A}$ của cả gene là",
+   "lua_chon": [
+    "100",
+    "150",
+    "250",
+    "50"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Áp dụng công thức $\\mathrm{A = T = A_1 + T_1 = 100 + 150 = 250}$. Lưu ý đây là số $\\mathrm{A}$ của CẢ GENE (tính trên hai mạch), không phải của riêng một mạch."
+  },
+  {
+   "ma_cau": "K09110208030",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Mạch 1 của một gene có $\\mathrm{G_1 = 200}$, $\\mathrm{C_1 = 300}$. Số nucleotide loại $\\mathrm{C}$ của cả gene là",
+   "lua_chon": [
+    "200",
+    "300",
+    "500",
+    "100"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Áp dụng công thức $\\mathrm{G = C = G_1 + C_1 = 200 + 300 = 500}$. Vì trong cả gene luôn có $\\mathrm{G = C}$ nên số $\\mathrm{C}$ cũng bằng $500$."
+  },
+  {
+   "ma_cau": "K09110208031",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một mạch đơn của gene có 600 nucleotide. Tổng số nucleotide của cả gene là",
+   "lua_chon": [
+    "300",
+    "600",
+    "1200",
+    "2400"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Gene có cấu trúc hai mạch với số nucleotide bằng nhau, nên $N = 2 \\times 600 = 1\\ 200$."
+  },
+  {
+   "ma_cau": "K09110208032",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có mạch 1 gồm 400 nucleotide, trong đó $\\mathrm{A_1 = 100}$$, \\mathrm{T_1 = 100}$$, \\mathrm{G_1 = 120}$. Số nucleotide loại $\\mathrm{C_1}$ trên mạch 1 là",
+   "lua_chon": [
+    "80",
+    "100",
+    "120",
+    "180"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tổng số nucleotide trên mạch 1 là 400 nên $\\mathrm{C_1 = 400 - 100 - 100 - 120 = 80}$. Lưu ý trên một MẠCH ĐƠN thì không có quan hệ $\\mathrm{A=T}$ hay $\\mathrm{G=C}$."
+  },
+  {
+   "ma_cau": "K09110208033",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Trong một gene, nếu mạch 1 có tỉ lệ $\\mathrm{A_1 : T_1 : G_1 : C_1 = 1 : 2 : 3 : 4}$ thì tỉ lệ $\\mathrm{A : T : G : C}$ của cả gene là",
+   "lua_chon": [
+    "1 : 2 : 3 : 4",
+    "3 : 3 : 7 : 7",
+    "4 : 3 : 2 : 1",
+    "2 : 1 : 4 : 3"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Cả gene có $\\mathrm{A = T = A_1 + T_1 = 1 + 2 = 3}$ phần; $\\mathrm{G = C = G_1 + C_1 = 3 + 4 = 7}$ phần. Vậy tỉ lệ $\\mathrm{A : T : G : C = 3 : 3 : 7 : 7}$."
+  },
+  {
+   "ma_cau": "K09110208034",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Cho gene có mạch 1 với $A_1 = 200$ và mạch 2 có $A_2 = 300$. Số nucleotide loại T của cả gene là",
+   "lua_chon": [
+    "200",
+    "300",
+    "500",
+    "100"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Trong cả gene, $A = T$. Mà A của cả gene $= A_1 + A_2 = 200 + 300 = 500$. Vậy T của cả gene cũng bằng 500."
+  },
+  {
+   "ma_cau": "K09110208035",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một mạch của gene có $20\\% A$, $30\\% T$, $25\\% G$. Tỉ lệ phần trăm nucleotide loại C trên mạch này là",
+   "lua_chon": [
+    "20%",
+    "25%",
+    "30%",
+    "15%"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Tổng bốn loại trên một mạch bằng $100\\%$ nên $ \\%C_1 = 100\\% - 20\\% - 30\\% - 25\\% = 25\\%$. Lưu ý đây là phần trăm trên MỘT MẠCH, không phải của cả gene."
+  },
+  {
+   "ma_cau": "K09110208036",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Trong đề kiểm tra, một học sinh tính được gene có $A = 450$, $G = 750$ và $N = 2\\ 000$. Nhận xét đúng là",
+   "lua_chon": [
+    "kết quả hợp lí.",
+    "kết quả sai vì N phải bằng $2(A + G) = 2\\ 400$.",
+    "kết quả sai vì A phải lớn hơn G.",
+    "không đủ dữ kiện để kết luận."
+   ],
+   "dap_an": "B",
+   "loi_giai": "Kiểm tra bằng công thức $N = 2A + 2G = 2 \\times 450 + 2 \\times 750 = 2\\ 400$, khác với $2\\ 000$ mà học sinh ghi. Đây là lí do luôn phải kiểm tra lại tổng bốn loại nucleotide sau khi tính xong."
+  },
+  {
+   "ma_cau": "K09110208037",
+   "nhom_id": "KNB00556",
+   "loai": "tra_loi_ngan",
+   "de": "Một gene có $N = 3\\ 000$ và $H = 3\\ 750$. Tính số nucleotide loại G.",
+   "dap_an": "750",
+   "loi_giai": "Áp dụng mẹo $G = H - N = 3\\ 750 - 3\\ 000 = 750$."
+  },
+  {
+   "ma_cau": "K09110208038",
+   "nhom_id": "KNB00556",
+   "loai": "tra_loi_ngan",
+   "de": "Một gene có số liên kết cộng hoá trị giữa các nucleotide trên cả hai mạch là $2\\ 998$. Tính tổng số nucleotide của gene.",
+   "dap_an": "3000",
+   "loi_giai": "Số liên kết cộng hoá trị trên hai mạch bằng $N - 2$, nên $N = 2\\ 998 + 2 = 3\\ 000$."
+  },
+  {
+   "ma_cau": "K09110208039",
+   "nhom_id": "KNB00556",
+   "loai": "tra_loi_ngan",
+   "de": "Một gene có $%G = 40%$. Tính tỉ lệ phần trăm nucleotide loại A.",
+   "dap_an": "10",
+   "loi_giai": "Vì $%A + %G = 50%$ nên $%A = 50% - 40% = 10%$."
+  },
+  {
+   "ma_cau": "K09110208040",
+   "nhom_id": "KNB00556",
+   "loai": "tra_loi_ngan",
+   "de": "Một gene có $A = 600$ và $G = 400$. Tính tổng số nucleotide N của gene.",
+   "dap_an": "2000",
+   "loi_giai": "Áp dụng $N = 2A + 2G = 2 \\times 600 + 2 \\times 400 = 1\\ 200 + 800 = 2\\ 000$."
+  },
+  {
+   "ma_cau": "K09110208041",
+   "nhom_id": "KNB00556",
+   "loai": "tra_loi_ngan",
+   "de": "Một gene có $A = 500$ và $G = 1\\ 000$. Tính số liên kết hydrogen của gene.",
+   "dap_an": "4000",
+   "loi_giai": "$H = 2A + 3G = 2 \\times 500 + 3 \\times 1\\ 000 = 1\\ 000 + 3\\ 000 = 4\\ 000$."
+  },
+  {
+   "ma_cau": "K09110208042",
+   "nhom_id": "KNB00556",
+   "loai": "tra_loi_ngan",
+   "de": "Một gene có $N = 2\\ 000$ nucleotide, trong đó số nucleotide loại G gấp bốn lần loại A. Tính số nucleotide loại A.",
+   "dap_an": "200",
+   "loi_giai": "$A + G = 1\\ 000$; thay $G = 4A$ được $5A = 1\\ 000 \\implies A = 200$ (và $G = 800$)."
+  },
+  {
+   "ma_cau": "K09110208043",
+   "nhom_id": "KNB00556",
+   "loai": "tra_loi_ngan",
+   "de": "Mạch 1 của một gene có $A_1 = 250$ và $T_1 = 350$. Tính số nucleotide loại A của cả gene.",
+   "dap_an": "600",
+   "loi_giai": "Áp dụng công thức $A = T = A_1 + T_1 = 250 + 350 = 600$."
+  },
+  {
+   "ma_cau": "K09110208044",
+   "nhom_id": "KNB00556",
+   "loai": "tra_loi_ngan",
+   "de": "Mạch 1 của một gene có 400 nucleotide, trong đó $A_1 = 80$, $T_1 = 120$, $G_1 = 130$. Tính $C_1$.",
+   "dap_an": "70",
+   "loi_giai": "Trên một mạch đơn, tổng bốn loại bằng số nucleotide của mạch: $C_1 = 400 - 80 - 120 - 130 = 70$."
+  },
+  {
+   "ma_cau": "K09110208045",
+   "nhom_id": "KNB00556",
+   "loai": "tu_luan",
+   "de": "Một gene có tổng số $3000$ nucleotide và $3600$ liên kết hydrogen. \na) Tính số nucleotide mỗi loại của gene. \nb) Tính tỉ lệ phần trăm mỗi loại nucleotide. \nc) Tính số liên kết cộng hoá trị giữa các nucleotide trên cả hai mạch.",
+   "dap_an": "a) A = T = 900; G = C = 600\nb) %A = %T = 30%; %G = %C = 20%\nc) 2998",
+   "loi_giai": "Đáp án chi tiết:\na) Áp dụng mẹo tính nhanh $\\mathrm{G=H-N}$: \n$\\mathrm{G = C = 3600 - 3000 = 600}$\n$\\mathrm{A = T = N/2 - G = 1500 - 600 = 900}$\nKiểm tra: $\\mathrm{H = 2 \\times 900 + 3 \\times 600 = 1\\ 800 + 1\\ 800 = 3\\ 600}$ (đúng); tổng bốn loại = $3\\ 000$ (đúng).\nb) Tỉ lệ phần trăm mỗi loại: \n$\\mathrm{\\%A = \\%T = (900 : 3000) \\times 100\\% = 30\\%}$\n$\\mathrm{\\%G = \\%C = (600 : 3000) \\times 100\\% = 20\\%}$\nKiểm tra: $\\mathrm{\\%A + \\%G = 30\\% + 20\\% = 50\\%}$ (đúng với hệ thức đã học).\nc) Số liên kết cộng hoá trị giữa các nucleotide trên cả hai mạch: \n$\\mathrm{N - 2 = 3000 - 2 = 2998}$"
+  },
+  {
+   "ma_cau": "K09110208046",
+   "nhom_id": "KNB00556",
+   "loai": "tu_luan",
+   "de": "Một gene có số liên kết cộng hoá trị giữa các nucleotide trên cả hai mạch là $2398$ và có $3120$ liên kết hydrogen. \na) Tính tổng số nucleotide $\\mathrm{N}$. \nb) Tính số nucleotide mỗi loại. \nc) Tính tỉ lệ phần trăm mỗi loại nucleotide.",
+   "dap_an": "a) 2400\nb) A = T = 480; G = C = 720\nc) %A = %T = 20%; %G = %C = 30%",
+   "loi_giai": "Đáp án chi tiết:\na) Đây là bài toán ngược, đi từ số liên kết cộng hoá trị tìm ra $\\mathrm{N}$: \n$\\mathrm{N - 2 = 2398 \\implies N = 2400}$\nb) Áp dụng mẹo $\\mathrm{G = H - N}$: \n$\\mathrm{G = C = 3120 - 2400 = 720}$\n$\\mathrm{A = T = 1200 - 720 = 480}$\nKiểm tra: $\\mathrm{H = 2 \\times 480 + 3 \\times 720 = 960 + 2\\ 160 = 3\\ 120}$ (đúng).\nc) Tỉ lệ phần trăm mỗi loại: \n$\\mathrm{\\%A = \\%T = (480 : 2400) \\times 100\\% = 20\\%}$\n$\\mathrm{\\%G = \\%C = (720 : 2400) \\times 100\\% = 30\\%}"
+  },
+  {
+   "ma_cau": "K09110208047",
+   "nhom_id": "KNB00556",
+   "loai": "tu_luan",
+   "de": "Chứng minh hệ thức $G = H - N$ ($H$ là số liên kết hydrogen, $N$ là tổng số nucleotide của gene).\nVận dụng để giải nhanh bài toán: gene có $N = 3\\ 200$ và $H = 4\\ 000$, tính số nucleotide mỗi loại.",
+   "dap_an": "G = C = 800; A = T = 800",
+   "loi_giai": "Chứng minh hệ thức. Xuất phát từ hai công thức đã học:\n$H = 2A + 3G$ (1)\n$N = A + T + G + C = 2A + 2G$ (2)\nLấy (1) trừ (2) theo từng vế:\n$H - N = (2A + 3G) - (2A + 2G) = G$\nVậy $G = H - N$. Hệ thức được chứng minh.\nVận dụng vào bài toán cụ thể với $N = 3\\ 200$ và $H = 4\\ 000$:\n$G = C = 4000 - 3200 = 800$\n$A = T = N/2 - G = 1600 - 800 = 800$\nKiểm tra: $H = 2 \\times 800 + 3 \\times 800 = 1\\ 600 + 2\\ 400 = 4\\ 000$ (đúng).\nNhận xét: giải theo cách thông thường phải lập và giải hệ hai phương trình, còn dùng hệ thức này chỉ cần một phép trừ — rất có lợi khi làm bài trắc nghiệm cần tốc độ."
+  },
+  {
+   "ma_cau": "K09110208048",
+   "nhom_id": "KNB00556",
+   "loai": "tu_luan",
+   "de": "Hai gene I và II cùng có $2\\ 400$ nucleotide. Gene I có $%\\mathrm{A} = 30\\%$, gene II có $%\\mathrm{A} = 15\\%$.\na) Tính số nucleotide mỗi loại của mỗi gene.\nb) Tính số liên kết hydrogen của mỗi gene.\nc) Gene nào bền vững hơn? Giải thích.",
+   "loi_giai": "Đáp án chi tiết:\na) Gene I có $%\\mathrm{A} = \\%\\mathrm{T} = 30\\%$ nên $%\\mathrm{G} = \\%\\mathrm{C} = 50\\% - 30\\% = 20\\%$:\n$\\mathrm{A} = \\mathrm{T} = 2400 \\times 30\\% = 720$; $\\mathrm{G} = \\mathrm{C} = 2400 \\times 20\\% = 480$\nGene II có $%\\mathrm{A} = \\%\\mathrm{T} = 15\\%$ nên $%\\mathrm{G} = \\%\\mathrm{C} = 50\\% - 15\\% = 35\\%$:\n$\\mathrm{A} = \\mathrm{T} = 2400 \\times 15\\% = 360$; $\\mathrm{G} = \\mathrm{C} = 2400 \\times 35\\% = 840$\nb) Số liên kết hydrogen của mỗi gene:\n$\\mathrm{H_I} = 2 \\times 720 + 3 \\times 480 = 1440 + 1440 = 2880$\n$\\mathrm{H_{II}} = 2 \\times 360 + 3 \\times 840 = 720 + 2520 = 3240$\nc) Gene II bền vững hơn vì có nhiều liên kết hydrogen hơn ($3\\ 240$ so với $2\\ 880$).\nGiải thích: cặp $\\mathrm{G} - \\mathrm{C}$ được nối bằng $3$ liên kết hydrogen, nhiều hơn cặp $\\mathrm{A} - \\mathr …"
+  },
+  {
+   "ma_cau": "K09110208049",
+   "nhom_id": "KNB00556",
+   "loai": "tu_luan",
+   "de": "Một gene có $3$ $000$ nucleotide, trong đó số nucleotide loại $\\mathrm{G}$ nhiều gấp bốn lần số loại $\\mathrm{A}$.\na) Tính số nucleotide mỗi loại.\nb) Tính số liên kết hydrogen.\nc) Tính tỉ lệ phần trăm mỗi loại nucleotide.",
+   "dap_an": "a) A=T=300; G=C=1200\nb) 4200\nc) %A=%T=10%; %G=%C=40%",
+   "loi_giai": "a) Từ công thức $\\mathrm{N} = 2\\mathrm{A} + 2\\mathrm{G} = 3000$ suy ra:\n$\\mathrm{A} + \\mathrm{G} = 1500$\nTheo đề, $\\mathrm{G} = 4\\mathrm{A}$. Thay vào phương trình trên:\n$\\mathrm{A} + 4\\mathrm{A} = 1500 \\Rightarrow 5\\mathrm{A} = 1500 \\Rightarrow \\mathrm{A} = 300$\n$\\mathrm{A} = \\mathrm{T} = 300$; $\\mathrm{G} = \\mathrm{C} = 1200$\nKiểm tra: $300 + 300 + 1200 + 1200 = 3000$ (đúng).\nb) Số liên kết hydrogen:\n$\\mathrm{H} = 2\\mathrm{A} + 3\\mathrm{G} = 2 \\times 300 + 3 \\times 1200 = 600 + 3600 = 4200$\nc) Tỉ lệ phần trăm mỗi loại:\n$\\%\\mathrm{A} = \\%\\mathrm{T} = (300 : 3000) \\times 100\\% = 10\\%$\n$\\%\\mathrm{G} = \\%\\mathrm{C} = (1200 : 3000) \\times 100\\% = 40\\%$\nKiểm tra: $\\%\\mathrm{A} + \\%\\mathrm{G} = 10\\% + 40\\% = 50\\%$ (đúng)."
+  },
+  {
+   "ma_cau": "K09110208050",
+   "nhom_id": "KNB00556",
+   "loai": "tu_luan",
+   "de": "Giải thích ý nghĩa sinh học của việc cặp $\\mathrm{G-C}$ có $3$ liên kết hydrogen còn cặp $\\mathrm{A-T}$ chỉ có $2$. Điều này ảnh hưởng thế nào tới độ bền của gene và tới việc giải bài tập?",
+   "loi_giai": "Đáp án chi tiết:\nVề mặt cấu trúc: guanine và cytosine có các nhóm chức cho phép hình thành $3$ liên kết hydrogen, trong khi adenine và thymine chỉ tạo được $2$. Đây là đặc điểm cố định, không thay đổi.\nẢnh hưởng tới độ bền của gene:\n- Với hai gene có cùng số nucleotide, gene nào có tỉ lệ $\\mathrm{G-C}$ cao hơn sẽ có tổng số liên kết hydrogen lớn hơn, hai mạch gắn bó chặt hơn, phân tử bền vững hơn và cần nhiều năng lượng hơn để tách hai mạch.\n- Liên hệ thực tế: nhiều sinh vật sống ở môi trường nhiệt độ cao (suối nước nóng) có $\\mathrm{DNA}$ với tỉ lệ $\\mathrm{G-C}$ cao, nhờ đó vật chất di truyền không bị biến tính khi nóng.\nẢnh hưởng tới việc giải bài tập:\n- Đây chính là nguồn gốc của công thức $\\mathrm{H=2A+3G}$ — hệ số $2$ và $3$ tương ứng với số liên kết của mỗi loại cặp base.\n- Từ đó su …"
+  },
+  {
+   "ma_cau": "K09110208051",
+   "nhom_id": "KNB00556",
+   "loai": "tu_luan",
+   "de": "Mạch 1 của một gene có: $\\mathrm{A_1} = 300$, $\\mathrm{T_1} = 200$, $\\mathrm{G_1} = 400$, $\\mathrm{C_1} = 100$.\na) Tính số nucleotide mỗi loại trên mạch 2.\nb) Tính số nucleotide mỗi loại của cả gene.\nc) Tính tổng số nucleotide N và số liên kết hydrogen của gene.",
+   "loi_giai": "a) Theo nguyên tắc bổ sung, nucleotide trên mạch 2 là bổ sung của mạch 1:\n$\\mathrm{A_2} = \\mathrm{T_1} = 200$; $\\mathrm{T_2} = \\mathrm{A_1} = 300$\n$\\mathrm{G_2} = \\mathrm{C_1} = 100$; $\\mathrm{C_2} = \\mathrm{G_1} = 400$\nb) Số nucleotide mỗi loại của cả gene bằng tổng của hai mạch:\n$\\mathrm{A} = \\mathrm{A_1} + \\mathrm{A_2} = 300 + 200 = 500$; $\\mathrm{T} = 500$\n$\\mathrm{G} = \\mathrm{G_1} + \\mathrm{G_2} = 400 + 100 = 500$; $\\mathrm{C} = 500$\nKết quả này cũng tính nhanh được bằng công thức $\\mathrm{A} = \\mathrm{T} = \\mathrm{A_1} + \\mathrm{T_1}$ và $\\mathrm{G} = \\mathrm{C} = \\mathrm{G_1} + \\mathrm{C_1}$.\nc) Tổng số nucleotide và số liên kết hydrogen:\n$\\mathrm{N} = 500 \\times 4 = 2000$\n$\\mathrm{H} = 2\\mathrm{A} + 3\\mathrm{G} = 2 \\times 500 + 3 \\times 500 = 1000 + 1500 = 2500$\nKiểm tra: mạch 1 c …"
+  },
+  {
+   "ma_cau": "K09110208052",
+   "nhom_id": "KNB00556",
+   "loai": "tu_luan",
+   "de": "Một học sinh giải bài tập và thu được kết quả: gene có $\\mathrm{A} = 400$, $\\mathrm{T} = 400$, $\\mathrm{G} = 600$, $\\mathrm{C} = 500$.\nHãy chỉ ra chỗ sai trong kết quả này và giải thích vì sao.",
+   "loi_giai": "Kết quả này chắc chắn sai vì vi phạm nguyên tắc bổ sung.\nTheo nguyên tắc bổ sung, trong một phân tử $\\mathrm{DNA}$ (hay một gene) mỗi nucleotide loại $\\mathrm{G}$ trên mạch này luôn bắt cặp với đúng một nucleotide loại $\\mathrm{C}$ trên mạch kia. Do đó bắt buộc phải có:\n$\\mathrm{G} = \\mathrm{C}$\nTrong kết quả của học sinh, $\\mathrm{G} = 600$ nhưng $\\mathrm{C} = 500$ — hai giá trị khác nhau, điều này không thể xảy ra.\nPhần $\\mathrm{A} = \\mathrm{T} = 400$ thì hoàn toàn hợp lệ vì thoả mãn $\\mathrm{A} = \\mathrm{T}$.\nCách sửa: học sinh cần kiểm tra lại phép tính để tìm giá trị đúng của $\\mathrm{G}$ và $\\mathrm{C}$ sao cho chúng bằng nhau.\nNếu tổng $\\mathrm{G} + \\mathrm{C}$ là $1100$ thì mỗi loại phải bằng $550$.\nKinh nghiệm rút ra: sau khi tính xong một bài tập về gene, luôn kiểm tra ba điều ki …"
+  },
+  {
+   "ma_cau": "K09110208056",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có 500 nucleotide loại A. Theo nguyên tắc bổ sung, số nucleotide loại T của gene này là bao nhiêu?",
+   "lua_chon": [
+    "500",
+    "250",
+    "1000",
+    "Không xác định được nếu chưa biết tổng số nucleotide của gene"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Theo nguyên tắc bổ sung A = T, nên số nucleotide loại T bằng số nucleotide loại A, tức 500.\n\nVì sao các phương án khác sai:\n- B: Không cần chia đôi; theo nguyên tắc bổ sung A = T nên hai số bằng nhau.\n- C: Không cần nhân đôi; theo nguyên tắc bổ sung A = T nên hai số bằng nhau.\n- D: Chỉ cần nguyên tắc bổ sung A = T là đủ để tính T, không cần biết tổng số nucleotide."
+  },
+  {
+   "ma_cau": "K09110208057",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có 300 nucleotide loại G. Theo nguyên tắc bổ sung, số nucleotide loại C của gene này là bao nhiêu?",
+   "lua_chon": [
+    "150",
+    "300",
+    "600",
+    "Không xác định được nếu chưa biết tổng số nucleotide của gene"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Theo nguyên tắc bổ sung G = C, nên số nucleotide loại C bằng số nucleotide loại G, tức 300.\n\nVì sao các phương án khác sai:\n- A: Không cần chia đôi; theo nguyên tắc bổ sung G = C nên hai số bằng nhau.\n- C: Không cần nhân đôi; theo nguyên tắc bổ sung G = C nên hai số bằng nhau.\n- D: Chỉ cần nguyên tắc bổ sung G = C là đủ để tính C, không cần biết tổng số nucleotide."
+  },
+  {
+   "ma_cau": "K09110208058",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có 400 nucleotide loại A và 900 nucleotide loại G. Theo nguyên tắc bổ sung, tổng số nucleotide (N) của gene này là bao nhiêu?",
+   "lua_chon": [
+    "2600",
+    "1300",
+    "1700",
+    "3500"
+   ],
+   "dap_an": "A",
+   "loi_giai": "N = 2(A + G) = 2 × (400 + 900) = 2600 nucleotide.\n\nVì sao các phương án khác sai:\n- B: 1300 mới chỉ là tổng A + G, quên nhân đôi theo nguyên tắc bổ sung (N = 2A + 2G).\n- C: 1700 tính nhầm theo 2A + G, thiếu phần nhân đôi của G.\n- D: 3500 là công thức tính số liên kết hydrogen (2A + 3G), không phải tổng số nucleotide."
+  },
+  {
+   "ma_cau": "K09110208059",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số 2000 nucleotide, trong đó có 600 nucleotide loại T. Số nucleotide loại G của gene này là bao nhiêu?",
+   "lua_chon": [
+    "600",
+    "400",
+    "1400",
+    "800"
+   ],
+   "dap_an": "B",
+   "loi_giai": "A = T = 600 → G = C = (N − 2T)/2 = (2000 − 1200)/2 = 400.\n\nVì sao các phương án khác sai:\n- A: 600 là số nucleotide loại A (= T), không phải loại G.\n- C: 1400 là tổng của G + C, không phải riêng số nucleotide loại G.\n- D: 800 tính nhầm khi lấy (N − T) mà không chia đôi cho G và C."
+  },
+  {
+   "ma_cau": "K09110208060",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tỉ lệ nucleotide loại A chiếm 15% tổng số nucleotide. Tính tỉ lệ nucleotide loại G.",
+   "lua_chon": [
+    "15%",
+    "85%",
+    "35%",
+    "50%"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Theo nguyên tắc bổ sung, %A + %G = 50%, mà %A = 15% nên %G = 50% − 15% = 35%.\n\nVì sao các phương án khác sai:\n- A: Nhầm %G bằng %A; thực ra %A + %G = 50%, không phải %A = %G.\n- B: Nhầm %A + %G = 100%; thực ra tổng hai tỉ lệ này chỉ bằng 50% vì còn tỉ lệ của T và C.\n- D: Tỉ lệ %G không cố định bằng 50%; %G phụ thuộc vào %A theo công thức %A + %G = 50%."
+  },
+  {
+   "ma_cau": "K09110208061",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tỉ lệ nucleotide loại G chiếm 40% tổng số nucleotide. Tính tỉ lệ nucleotide loại A.",
+   "lua_chon": [
+    "40%",
+    "60%",
+    "50%",
+    "10%"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Theo nguyên tắc bổ sung, %A + %G = 50%, mà %G = 40% nên %A = 50% − 40% = 10%.\n\nVì sao các phương án khác sai:\n- A: Nhầm %A bằng %G; thực ra %A + %G = 50%, không phải %A = %G.\n- B: Nhầm %A + %G = 100%; thực ra tổng hai tỉ lệ này chỉ bằng 50% vì còn tỉ lệ của T và C.\n- C: Tỉ lệ %A không cố định bằng 50%; %A phụ thuộc vào %G theo công thức %A + %G = 50%."
+  },
+  {
+   "ma_cau": "K09110208062",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tỉ lệ nucleotide loại T chiếm 20% tổng số nucleotide. Tính tỉ lệ nucleotide loại C.",
+   "lua_chon": [
+    "20%",
+    "40%",
+    "30%",
+    "60%"
+   ],
+   "dap_an": "C",
+   "loi_giai": "%A = %T = 20% → %G = %C = (100% − 2×20%)/2 = 30%.\n\nVì sao các phương án khác sai:\n- A: 20% là tỉ lệ loại T (= A), không phải loại C.\n- B: 40% là tổng tỉ lệ G và C cộng lại, không phải riêng loại C.\n- D: 60% tính nhầm khi lấy (100% − 2×20%) mà không chia đôi cho G và C."
+  },
+  {
+   "ma_cau": "K09110208063",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tỉ lệ nucleotide loại C chiếm 45% tổng số nucleotide. Tính tỉ lệ nucleotide loại T.",
+   "lua_chon": [
+    "45%",
+    "55%",
+    "10%",
+    "5%"
+   ],
+   "dap_an": "D",
+   "loi_giai": "%G = %C = 45% → %A = %T = (100% − 2×45%)/2 = 5%.\n\nVì sao các phương án khác sai:\n- A: 45% là tỉ lệ loại C (= G), không phải loại T.\n- B: 55% là (100% − 45%), chưa trừ tiếp phần G bằng C, không phải tỉ lệ T.\n- C: 10% tính nhầm khi không chia đôi phần còn lại cho A và T."
+  },
+  {
+   "ma_cau": "K09110208064",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số 3000 nucleotide. Biết mỗi cặp nucleotide dài 0,34 nm. Chiều dài của gene là",
+   "lua_chon": [
+    "510 nm",
+    "1020 nm",
+    "5100 nm",
+    "255 nm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "L = (N : 2) × 0,34 = 1500 × 0,34 = 510 nm.\n\nVì sao các phương án khác sai:\n- B: Quên chia đôi: 3000 là số nucleotide của cả hai mạch, số cặp là 1500.\n- C: Nhầm 3,4 Å thành 3,4 nm; mỗi cặp dài 0,34 nm.\n- D: Chia đôi hai lần; số cặp nucleotide là 3000 : 2 = 1500."
+  },
+  {
+   "ma_cau": "K09110208065",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số 2400 nucleotide, mỗi cặp nucleotide dài 3,4 Å. Chiều dài của gene tính theo Å là",
+   "lua_chon": [
+    "408 Å",
+    "8160 Å",
+    "4080 Å",
+    "2040 Å"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Số cặp nucleotide = 2400 : 2 = 1200; L = 1200 × 3,4 = 4080 Å.\n\nVì sao các phương án khác sai:\n- A: Đã dùng 0,34 (đơn vị nm) mà ghi Å; mỗi cặp dài 3,4 Å.\n- B: Quên chia đôi: số cặp nucleotide là 1200.\n- D: Chia 4 thay vì chia 2 khi tính số cặp nucleotide."
+  },
+  {
+   "ma_cau": "K09110208066",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene dài 510 nm, mỗi cặp nucleotide dài 0,34 nm. Tổng số nucleotide của gene là",
+   "lua_chon": [
+    "1500",
+    "6000",
+    "150",
+    "3000"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Số cặp nucleotide = 510 : 0,34 = 1500; N = 1500 × 2 = 3000.\n\nVì sao các phương án khác sai:\n- A: Đây là số cặp nucleotide; tổng số nucleotide phải nhân 2.\n- B: Nhân 2 hai lần; N = (510 : 0,34) × 2 = 3000.\n- C: Chia 510 cho 3,4 thay vì 0,34."
+  },
+  {
+   "ma_cau": "K09110208067",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số 6000 nucleotide, mỗi cặp nucleotide dài 0,34 nm. Chiều dài gene tính theo µm (1 µm = 1000 nm) là",
+   "lua_chon": [
+    "1,02 µm",
+    "10,2 µm",
+    "2,04 µm",
+    "0,102 µm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "L = (6000 : 2) × 0,34 = 1020 nm = 1,02 µm.\n\nVì sao các phương án khác sai:\n- B: Đổi sai: 1020 nm = 1,02 µm, không phải 10,2 µm.\n- C: Quên chia đôi số nucleotide khi tính số cặp.\n- D: Đổi sai đơn vị: chia 10 000 thay vì 1000."
+  },
+  {
+   "ma_cau": "K09110208068",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene dài 4080 Å, mỗi cặp nucleotide dài 3,4 Å. Tổng số nucleotide của gene này là bao nhiêu?",
+   "lua_chon": [
+    "1200",
+    "4800",
+    "2400",
+    "2040"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Số cặp nucleotide = L : 3,4 = 4080 : 3,4 = 1200 → N = 1200 × 2 = 2400 nucleotide.\n\nVì sao các phương án khác sai:\n- A: 1200 là số cặp nucleotide (chu kì chiều dài), quên nhân đôi để ra tổng số nucleotide.\n- B: 4800 tính nhầm khi nhân đôi hai lần thay vì một lần.\n- D: 2040 tính nhầm khi chia độ dài cho 2 mà quên chia cho 3,4 Å."
+  },
+  {
+   "ma_cau": "K09110208069",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số 4800 nucleotide, mỗi cặp nucleotide dài 3,4 Å. Chiều dài của gene tính theo Å là bao nhiêu?",
+   "lua_chon": [
+    "16320",
+    "2400",
+    "1411,8",
+    "8160"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chiều dài L = (N : 2) × 3,4 = (4800 : 2) × 3,4 = 8160 Å.\n\nVì sao các phương án khác sai:\n- A: 16320 do quên chia đôi N trước khi nhân với 3,4 Å.\n- B: 2400 mới là số cặp nucleotide (N:2), chưa nhân với 3,4 Å để ra chiều dài.\n- C: 1411,8 do chia N cho 3,4 thay vì nhân, nhầm chiều phép tính."
+  },
+  {
+   "ma_cau": "K09110208070",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số 3000 nucleotide. Biết khối lượng trung bình mỗi nucleotide là 300 amu. Khối lượng của gene là",
+   "lua_chon": [
+    "450 000 amu",
+    "900 000 amu",
+    "1 800 000 amu",
+    "90 000 amu"
+   ],
+   "dap_an": "B",
+   "loi_giai": "M = N × 300 = 3000 × 300 = 900 000 amu.\n\nVì sao các phương án khác sai:\n- A: Đã chia đôi N; khối lượng tính theo tổng số nucleotide của cả hai mạch.\n- C: Nhân đôi N; N đã là tổng số nucleotide của cả hai mạch.\n- D: Tính sai bậc: 3000 × 300 = 900 000."
+  },
+  {
+   "ma_cau": "K09110208071",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số 2400 nucleotide, khối lượng trung bình mỗi nucleotide là 300 amu. Khối lượng của gene là",
+   "lua_chon": [
+    "72 000 amu",
+    "1 440 000 amu",
+    "360 000 amu",
+    "720 000 amu"
+   ],
+   "dap_an": "D",
+   "loi_giai": "M = N × 300 = 2400 × 300 = 720 000 amu.\n\nVì sao các phương án khác sai:\n- A: Tính sai bậc: 2400 × 300 = 720 000.\n- B: Nhân đôi N; N đã là tổng số nucleotide.\n- C: Đã chia đôi N khi tính khối lượng."
+  },
+  {
+   "ma_cau": "K09110208072",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có khối lượng 540 000 amu, khối lượng trung bình mỗi nucleotide là 300 amu. Tổng số nucleotide của gene là",
+   "lua_chon": [
+    "900",
+    "3600",
+    "1800",
+    "180"
+   ],
+   "dap_an": "C",
+   "loi_giai": "N = M : 300 = 540 000 : 300 = 1800 nucleotide.\n\nVì sao các phương án khác sai:\n- A: Đã chia đôi kết quả; N = 540 000 : 300 = 1800.\n- B: Nhân đôi kết quả; 540 000 : 300 đã là tổng số nucleotide.\n- D: Tính sai bậc: 540 000 : 300 = 1800."
+  },
+  {
+   "ma_cau": "K09110208073",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene dài 408 nm; mỗi cặp nucleotide dài 0,34 nm, khối lượng trung bình mỗi nucleotide là 300 amu. Khối lượng của gene là",
+   "lua_chon": [
+    "720 000 amu",
+    "360 000 amu",
+    "122 400 amu",
+    "1 440 000 amu"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số cặp = 408 : 0,34 = 1200; N = 2400; M = 2400 × 300 = 720 000 amu.\n\nVì sao các phương án khác sai:\n- B: Quên nhân 2 khi tính N từ số cặp nucleotide.\n- C: Nhân trực tiếp chiều dài với 300; phải tính N trước.\n- D: Nhân 2 hai lần khi tính N."
+  },
+  {
+   "ma_cau": "K09110208074",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene dài 5100 Å, mỗi cặp nucleotide dài 3,4 Å, khối lượng trung bình mỗi nucleotide là 300 amu. Khối lượng của gene này là bao nhiêu?",
+   "lua_chon": [
+    "900000 amu",
+    "450000 amu",
+    "1530000 amu",
+    "1800000 amu"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số cặp = 5100:3,4 = 1500 → N = 3000 → M = 3000 × 300 = 900 000 amu.\n\nVì sao các phương án khác sai:\n- B: 450000 tính từ số cặp nucleotide (1500), quên nhân đôi để ra N trước khi nhân khối lượng.\n- C: 1530000 nhầm lấy chiều dài L làm tổng số nucleotide N.\n- D: 1800000 do nhân đôi N thêm một lần nữa, N chỉ cần tính đúng 3000."
+  },
+  {
+   "ma_cau": "K09110208075",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có 700 nucleotide loại A và 500 nucleotide loại G, khối lượng trung bình mỗi nucleotide là 300 amu. Khối lượng của gene này là bao nhiêu?",
+   "lua_chon": [
+    "360000 amu",
+    "720000 amu",
+    "900000 amu",
+    "1440000 amu"
+   ],
+   "dap_an": "B",
+   "loi_giai": "N = 2 × (A + G) = 2 × (700 + 500) = 2400 → M = 2400 × 300 = 720 000 amu.\n\nVì sao các phương án khác sai:\n- A: 360000 tính từ (A+G)=1200, quên nhân đôi để ra tổng số nucleotide N.\n- C: 900000 ứng với N = 3000, tính sai tổng số nucleotide từ số liệu đề bài.\n- D: 1440000 do nhân đôi N thêm một lần nữa, N chỉ cần tính đúng 2400."
+  },
+  {
+   "ma_cau": "K09110208076",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có 600 nucleotide loại A và 900 nucleotide loại G. Số liên kết hydrogen của gene là",
+   "lua_chon": [
+    "3600",
+    "1500",
+    "3000",
+    "3900"
+   ],
+   "dap_an": "D",
+   "loi_giai": "H = 2A + 3G = 2 × 600 + 3 × 900 = 3900.\n\nVì sao các phương án khác sai:\n- A: Đảo hệ số: A – T nối bằng 2 liên kết, G – C nối bằng 3 liên kết.\n- B: Chỉ cộng số nucleotide; mỗi cặp A – T có 2, G – C có 3 liên kết hydrogen.\n- C: Coi mọi cặp đều có 2 liên kết; G – C có 3 liên kết."
+  },
+  {
+   "ma_cau": "K09110208077",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số 2000 nucleotide, trong đó loại A chiếm 30%. Số liên kết hydrogen của gene là",
+   "lua_chon": [
+    "2400",
+    "2600",
+    "2000",
+    "3000"
+   ],
+   "dap_an": "A",
+   "loi_giai": "A = 30% × 2000 = 600; G = 20% × 2000 = 400; H = 2 × 600 + 3 × 400 = 2400.\n\nVì sao các phương án khác sai:\n- B: Đảo hệ số: A – T có 2 liên kết, G – C có 3 liên kết.\n- C: Đây là tổng số nucleotide, không phải số liên kết hydrogen.\n- D: Đã coi G = A; G = 50% − 30% = 20%."
+  },
+  {
+   "ma_cau": "K09110208078",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số 2400 nucleotide, trong đó loại G chiếm 35%. Số liên kết hydrogen của gene là",
+   "lua_chon": [
+    "2760",
+    "3240",
+    "4200",
+    "1200"
+   ],
+   "dap_an": "B",
+   "loi_giai": "G = 35% × 2400 = 840; A = 15% × 2400 = 360; H = 2 × 360 + 3 × 840 = 3240.\n\nVì sao các phương án khác sai:\n- A: Đảo hệ số: A – T có 2 liên kết, G – C có 3 liên kết.\n- C: Đã coi A = G; A = 50% − 35% = 15%.\n- D: Chỉ cộng số nucleotide, chưa nhân số liên kết mỗi cặp."
+  },
+  {
+   "ma_cau": "K09110208079",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số 2400 nucleotide và 3120 liên kết hydrogen. Số nucleotide loại G của gene là",
+   "lua_chon": [
+    "480",
+    "1040",
+    "720",
+    "1560"
+   ],
+   "dap_an": "C",
+   "loi_giai": "A + G = 2400 : 2 = 1200; 2A + 3G = 3120 → G = 3120 − 2 × 1200 = 720.\n\nVì sao các phương án khác sai:\n- A: Đây là số nucleotide loại A.\n- B: Đã lấy 3120 : 3; phải giải hệ A + G = 1200 và 2A + 3G = 3120.\n- D: Đã lấy 3120 : 2; phải giải hệ A + G = 1200 và 2A + 3G = 3120."
+  },
+  {
+   "ma_cau": "K09110208080",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene dài 4080 Å, trong đó nucleotide loại A chiếm 20% tổng số nucleotide. Số liên kết hydrogen của gene này là bao nhiêu?",
+   "lua_chon": [
+    "2880",
+    "2400",
+    "3120",
+    "1200"
+   ],
+   "dap_an": "C",
+   "loi_giai": "N = 2400 → A = T = 20%×2400 = 480; G = C = (2400−960)/2 = 720. H = 2A + 3G = 960 + 2160 = 3120.\n\nVì sao các phương án khác sai:\n- A: 2880 do nhầm hoán đổi hệ số: phải là 2A + 3G, không phải 3A + 2G.\n- B: 2400 tính theo 2(A+G), thiếu hệ số 3 dành riêng cho G.\n- D: 1200 chỉ là tổng A + G, chưa nhân hệ số liên kết hydrogen của từng loại."
+  },
+  {
+   "ma_cau": "K09110208081",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một gene có 2700 liên kết hydrogen và 450 nucleotide loại A. Tổng số nucleotide (N) của gene này là bao nhiêu?",
+   "lua_chon": [
+    "1800",
+    "1050",
+    "2700",
+    "2100"
+   ],
+   "dap_an": "D",
+   "loi_giai": "H = 2A + 3G → G = (2700 − 900)/3 = 600. N = 2(A+G) = 2×(450+600) = 2100.\n\nVì sao các phương án khác sai:\n- A: 1800 là 2G (tính nhầm), không phải tổng số nucleotide N.\n- B: 1050 là (A+G), quên nhân đôi để ra N.\n- C: 2700 là số liên kết hydrogen H, không phải tổng số nucleotide N."
+  },
+  {
+   "ma_cau": "K09110208082",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một bạn giải bài toán: \"Gene có N = 2400 nucleotide, A chiếm 30% N. Suy ra A = T = 720 nucleotide, và vì theo nguyên tắc bổ sung nên G = C = 720 nucleotide (bằng A).\" Bạn đã sai ở bước nào?",
+   "lua_chon": [
+    "Sai ở bước đầu: A = T = 360",
+    "Sai ở bước cuối: G = C = 480",
+    "Sai ở bước cuối: G = C = 1200",
+    "Không sai bước nào"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Theo nguyên tắc bổ sung, %A + %G = 50%, không phải %A = %G (trừ trường hợp đặc biệt cả hai đều bằng 25%). Với %A = 30%, suy ra %G = 20%, nên G = C = 20% × 2400 = 480 nucleotide, không phải bằng A = 720.\n\nVì sao các phương án khác sai:\n- A: A = 30% × 2400 = 720 là đúng.\n- C: Đã lấy 50% × 2400; %G = 50% − 30% = 20%.\n- D: G = C phải tính từ %G = 50% − %A, không bằng A."
+  },
+  {
+   "ma_cau": "K09110208083",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một bạn giải bài toán: \"Gene có chiều dài 4080 Å. Vì mỗi vòng xoắn của gene dài 34 Å, nên số vòng xoắn của gene là 4080 : 34 = 120 vòng. Từ đó suy ra tổng số nucleotide N = 120 × 10 = 1200.\" Bạn đã sai ở bước nào?",
+   "lua_chon": [
+    "Sai ở bước đầu: số vòng xoắn là 1200",
+    "Không sai bước nào",
+    "Sai ở bước cuối: N = 120 × 20 = 2400",
+    "Sai ở bước cuối: N = 120 × 10 : 2 = 600"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mỗi vòng xoắn của DNA gồm 10 cặp nucleotide, tức 20 nucleotide (không phải 10 nucleotide). Với 120 vòng xoắn, tổng số nucleotide N = 120 × 20 = 2400, không phải 120 × 10 = 1200.\n\nVì sao các phương án khác sai:\n- A: Mỗi vòng xoắn dài 34 Å nên số vòng = 4080 : 34 = 120 là đúng.\n- B: Mỗi vòng xoắn có 10 cặp = 20 nucleotide.\n- D: Mỗi vòng có 10 cặp nucleotide nên phải nhân 20, không chia."
+  },
+  {
+   "ma_cau": "K09110208084",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một bạn giải bài toán: \"Gene có tỉ lệ A : G = 2 : 3. Bạn kết luận ngay %A = 2% và %G = 3%.\" Bạn đã sai ở bước nào?",
+   "lua_chon": [
+    "Không sai: %A = 2%, %G = 3%",
+    "Sai: %A = 40%, %G = 60%",
+    "Sai: %A = 30%, %G = 20%",
+    "Sai: %A = 20%, %G = 30%"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Từ tỉ lệ A : G = 2 : 3, ta có %A = 2/(2+3) × 50% = 20%, %G = 3/(2+3) × 50% = 30% (vì %A + %G luôn bằng 50% theo nguyên tắc bổ sung), không thể lấy trực tiếp các số trong tỉ lệ làm phần trăm.\n\nVì sao các phương án khác sai:\n- A: Tỉ lệ 2 : 3 không phải là phần trăm.\n- B: Đã chia theo tổng 100%; phải là %A + %G = 50%.\n- C: Đã đảo ngược tỉ lệ; A ứng với 2 phần."
+  },
+  {
+   "ma_cau": "K09110208085",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một bạn giải bài toán: \"Gene có chiều dài 5100 Å. Số nucleotide N = 5100 : 3,4 = 1500.\" Bạn đã sai ở bước nào?",
+   "lua_chon": [
+    "Sai vì phải nhân độ dài với 3,4, không phải chia",
+    "Sai vì phải cộng thêm 2 vào kết quả phép chia",
+    "Sai vì phải lấy 3,4 chia cho 5100 mới đúng chiều phép tính",
+    "Sai vì 5100 : 3,4 chỉ là số cặp nucleotide, cần nhân đôi để được N"
+   ],
+   "dap_an": "D",
+   "loi_giai": "5100 : 3,4 = 1500 chỉ là số cặp nucleotide; phải nhân đôi mới ra tổng số nucleotide N = 3000.\n\nVì sao các phương án khác sai:\n- A: Công thức đổi chiều dài sang số nucleotide là phép chia (L : 3,4), không phải phép nhân.\n- B: Không có bước cộng thêm 2 trong công thức tính N từ chiều dài.\n- C: Chiều phép tính đúng là lấy L chia cho 3,4, không phải ngược lại."
+  },
+  {
+   "ma_cau": "K09110208086",
+   "nhom_id": "KNB00556",
+   "loai": "trac_nghiem",
+   "de": "Một bạn giải bài toán: \"Gene có N = 2000 nucleotide, A chiếm 10%. Suy ra A = T = 200 nucleotide, G = C = 1800 nucleotide.\" Bạn đã sai ở bước nào?",
+   "lua_chon": [
+    "Sai vì G = C = N − A = 1800, phải là (N − 2A):2 = 800",
+    "Sai vì A = T phải là 10% × 2000 : 2 = 100",
+    "Sai vì N = 2000 không phải là tổng số nucleotide",
+    "Sai vì tỉ lệ 10% chỉ áp dụng cho một mạch đơn, không áp dụng cho cả gene"
+   ],
+   "dap_an": "A",
+   "loi_giai": "G = C phải tính bằng (N − 2A) : 2 = (2000 − 400) : 2 = 800, không phải N − A = 1800 (thiếu trừ thêm A và quên chia đôi).\n\nVì sao các phương án khác sai:\n- B: A chiếm 10% tổng số nucleotide nên A = 10% × 2000 = 200, không chia đôi.\n- C: N = 2000 là tổng số nucleotide của gene, đề bài cho đúng như vậy.\n- D: Tỉ lệ % nucleotide cho trong đề áp dụng cho cả gene (hai mạch), không phải chỉ một mạch."
+  }
+ ]
+}

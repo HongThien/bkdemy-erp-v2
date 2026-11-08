@@ -1,0 +1,713 @@
+[
+ {
+  "ma_cau": "T1110000003009",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $f(x)=\\begin{cases}x^2+x&\\text{khi }x\\le1\\\\m^2x+1&\\text{khi }x>1\\end{cases}$. Tính tổng các giá trị của tham số $m$ để hàm số liên tục tại $x=1$.",
+  "dap_an": "0",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Hàm ghép liên tục tại điểm nối khi giới hạn trái, giới hạn phải và giá trị hàm bằng nhau; tham số xuất hiện dưới dạng bình phương nên thường có hai giá trị.\n**Bước 1.** Tính $f(1)$ và giới hạn bên trái từ nhánh có dấu bằng.\n**Bước 2.** Tính giới hạn bên phải theo $m$ từ nhánh còn lại.\n**Bước 3.** Cho các giá trị bằng nhau, giải phương trình theo m rồi cộng các nghiệm.\n**Phần 2. Trình bày**\nTa có $f(1)=1^2+1=2$ và $\\lim\\limits_{x\\to1^-}f(x)=\\lim\\limits_{x\\to1^-}(x^2+x)=2$.\n$\\lim\\limits_{x\\to1^+}f(x)=\\lim\\limits_{x\\to1^+}(m^2x+1)=m^2+1$.\n$f$ liên tục tại $x=1$ khi $m^2+1=2$, tức $m^2=1$ nên $m=1$ hoặc $m=-1$.\nTổng các giá trị của $m$ là $1+(-1)=0$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001811",
+  "loai": "tu_luan",
+  "de": "Chứng minh rằng dãy số $u_n=\\dfrac{1}{n(2n+3)}$ có giới hạn là $0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Mẫu $n(2n+3)$ lớn hơn $n^2$ nên $u_n$ dương và bị chặn trên bởi một dãy cơ bản có giới hạn $0$.\n**Bước 1.** Khai triển mẫu số rồi so sánh nó với $n^2$ để đánh giá $u_n$ từ trên.\n**Bước 2.** Chú ý $u_n>0$ nên có thể chặn giá trị tuyệt đối của $u_n$ bởi dãy $\\dfrac1{n^2}$.\n**Bước 3.** Dùng giới hạn cơ bản của $\\dfrac1{n^2}$ cùng định lí kẹp để kết luận.\n**Phần 2. Trình bày**\nVì $n\\ge1$ nên $n(2n+3)=2n^2+3n>n^2>0$, suy ra $0<u_n<\\dfrac1{n^2}$.\nMà $\\lim\\dfrac1{n^2}=0$.\nVậy $\\lim u_n=0$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002168",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to1}\\dfrac{x+x^2+\\dots+x^n-n}{x-1}$ (với $n$ là số nguyên dương).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tách $-n$ thành $n$ số $-1$ để ghép với từng số hạng, mỗi nhóm $x^k-1$ chia hết cho $x-1$.\n**Bước 1.** Thay $x=1$ để nhận ra dạng vô định $\\dfrac00$, rồi viết tử thành tổng các nhóm $x^k-1$.\n**Bước 2.** Mỗi nhóm $x^k-1$ đều chia hết cho $x-1$ nên viết thương của nhóm đó thành tổng các luỹ thừa.\n**Bước 3.** Thay $x=1$ vào tổng các thương rồi cộng lại bằng công thức tổng của cấp số cộng.\n**Phần 2. Trình bày**\nThay $x=1$: tử $=n-n=0$, mẫu $=0$ nên là dạng $\\dfrac00$.\nTử $=(x-1)+(x^2-1)+\\dots+(x^n-1)$.\nVới $x\\ne1$: $\\dfrac{x^k-1}{x-1}=x^{k-1}+x^{k-2}+\\dots+x+1$, gồm $k$ số hạng.\nDo đó thương của biểu thức đã cho bằng $1+(x+1)+(x^2+x+1)+\\dots+(x^{n-1}+\\dots+x+1 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002861",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $\\lim\\limits_{x\\to-\\infty}\\dfrac{(3+2x^{2})^{5}\\cdot(3x^{3}-4)^{2}}{(5-x^{3})^{2}\\cdot(1-2x^{2})^{3}}=\\lim\\limits_{x\\to-\\infty}x^{4}\\cdot\\dfrac{(\\frac{3}{x^{2}}+a)^{5}\\cdot(b-\\frac{4}{x^{3}})^{2}}{(\\frac{5}{x^{3}}-c)^{2}\\cdot(\\frac{1}{x^{2}}-d)^{3}}$ với $a$, $b$, $c$, $d$ là các số tự nhiên. Tính tích các số $a$, $b$, $c$, $d$.",
+  "dap_an": "12",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Rút luỹ thừa cao nhất của $x$ ở từng thừa số của tử và mẫu, so sánh với dạng đề cho để đọc $a$, $b$, $c$, $d$.\n**Bước 1.** Rút luỹ thừa cao nhất ở từng thừa số của tử: $x^{2}$ ở $3+2x^{2}$ và $x^{3}$ ở $3x^{3}-4$.\n**Bước 2.** Rút luỹ thừa cao nhất ở từng thừa số của mẫu rồi đếm tổng số mũ của $x$ để xác nhận thừa số $x^{4}$.\n**Bước 3.** Đồng nhất từng ngoặc với dạng đề cho để đọc $a$, $b$, $c$, $d$ rồi nhân lại.\n**Phần 2. Trình bày**\nTử: $(3+2x^{2})^{5}(3x^{3}-4)^{2}=x^{10}(\\dfrac{3}{x^{2}}+2)^{5}\\cdot x^{6}(3-\\dfrac{4}{x^{3}})^{2}$.\nMẫu: $(5-x^{3})^{2}(1-2x^{2})^{3}=x^{6}(\\dfrac{5}{x^{3}}-1)^{2}\\cdot x^{6}(\\dfrac{1}{x^{2}}-2)^{3}$.\nDo đó biểu thức bằng $x …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002075",
+  "loai": "trac_nghiem",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to5}\\dfrac{x^2-12x+35}{x-5}$.",
+  "lua_chon": [
+   "$\\dfrac15$",
+   "$+\\infty$",
+   "$-2$",
+   "$2$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Thay $x_0$ vào thấy tử và mẫu cùng dần tới $0$, nên phân tích thành nhân tử rồi triệt nhân tử chung $x-x_0$.\n**Bước 1.** Thay giá trị $x_0$ vào tử và mẫu để nhận ra dạng vô định $\\dfrac00$.\n**Bước 2.** Phân tích tử và mẫu thành nhân tử (có thể chia Horner) để tách nhân tử chung $x-x_0$.\n**Bước 3.** Rút gọn nhân tử chung rồi thay $x=x_0$ vào biểu thức còn lại và đối chiếu với các phương án.\n**Phần 2. Trình bày**\nThay $x=5$: tử $25-60+35=0$, mẫu $0$ nên có dạng $\\dfrac00$.\nPhân tích: $x^2-12x+35=(x-5)(x-7)$.\nVới $x\\ne5$: biểu thức bằng $x-7$.\nDo đó giới hạn bằng $5-7=-2$.\nVậy giới hạn bằng $-2$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002602",
+  "loai": "trac_nghiem",
+  "de": "Giới hạn $\\lim\\limits_{n\\to+\\infty}(\\sqrt{n^2+5n+1}-n)$ bằng",
+  "lua_chon": [
+   "$\\dfrac32$",
+   "$0$",
+   "$\\dfrac14$",
+   "$\\dfrac52$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Nhân và chia với $\\sqrt{n^2+5n+1}+n$ rồi chia cả tử và mẫu cho $n$.\n**Bước 1.** Nhận ra dạng vô định $\\infty-\\infty$ nên cần nhân và chia với biểu thức liên hợp.\n**Bước 2.** Dùng hằng đẳng thức hiệu hai bình phương để tử trở thành đa thức theo $n$ có bậc thấp.\n**Bước 3.** Chia tử và mẫu cho luỹ thừa cao nhất của $n$ rồi tìm giới hạn và so với bốn phương án.\n**Phần 2. Trình bày**\nNhân và chia với $\\sqrt{n^2+5n+1}+n$: $\\sqrt{n^2+5n+1}-n=\\dfrac{5n+1}{\\sqrt{n^2+5n+1}+n}$.\nChia tử và mẫu cho $n$: $\\dfrac{5+\\dfrac1n}{\\sqrt{1+\\dfrac5n+\\dfrac1{n^2}}+1}$.\nTử có giới hạn $5$, mẫu có giới hạn $2$ nên giới hạn bằng $\\dfrac52$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001874",
+  "loai": "tu_luan",
+  "de": "Tìm $\\lim\\limits_{n\\to+\\infty}\\dfrac{n\\sqrt{2+4+\\dots+2n}}{3n^2+n-2}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tính tổng hữu hạn bằng công thức rồi lấy giới hạn của biểu thức thu được.\n**Bước 1.** Nhận dạng các số hạng của tổng là cấp số cộng hay cấp số nhân và đếm số số hạng.\n**Bước 2.** Áp dụng công thức tổng của cấp số tương ứng để viết tổng thành biểu thức theo $n$.\n**Bước 3.** Rút gọn biểu thức thu được rồi tính giới hạn bằng cách chia tử và mẫu cho lũy thừa cao nhất của $n$.\n**Phần 2. Trình bày**\nCác số $2,4,\\dots,2n$ lập thành cấp số cộng nên $2+4+\\dots+2n=\\dfrac{n(2+2n)}2=n(n+1)$.\nChia cả tử và mẫu cho $n^2$: $\\dfrac{n\\sqrt{n(n+1)}}{3n^2+n-2}=\\dfrac{\\sqrt{1+\\dfrac1n}}{3+\\dfrac1n-\\dfrac2{n^2}}$ (vì $\\sqrt{n(n+1)}=n\\sqrt{1+\\dfrac1n}$).\nTử có giới hạn $1$, mẫu …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002615",
+  "loai": "trac_nghiem",
+  "de": "Biết rằng $\\lim\\limits_{n\\to+\\infty}\\dfrac{\\sqrt[3]{an^3+5n^2-7}}{\\sqrt{3n^2-n+2}}=b\\sqrt3$. Tính giá trị của biểu thức $P=\\dfrac{a}{b^3}$.",
+  "lua_chon": [
+   "$P=\\dfrac1{27}$",
+   "$P=3$",
+   "$P=27$",
+   "$P=\\dfrac13$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đưa $n$ ra ngoài cả căn bậc ba ở tử và căn bậc hai ở mẫu, chia cho $n$ để tìm giới hạn theo $a$, rồi so với $b\\sqrt3$.\n**Bước 1.** Viết căn bậc ba ở tử và căn bậc hai ở mẫu dưới dạng $n$ nhân với căn của biểu thức có giới hạn hữu hạn.\n**Bước 2.** Rút gọn $n$ rồi tính giới hạn dưới dạng một biểu thức theo $a$.\n**Bước 3.** Đặt biểu thức đó bằng $b\\sqrt3$, rút ra quan hệ giữa $a$ và $b$ rồi tính $P$.\n**Phần 2. Trình bày**\nChia tử và mẫu cho $n$: biểu thức bằng $\\dfrac{\\sqrt[3]{a+\\dfrac5n-\\dfrac7{n^3}}}{\\sqrt{3-\\dfrac1n+\\dfrac2{n^2}}}$, giới hạn bằng $\\dfrac{\\sqrt[3]a}{\\sqrt3}=\\dfrac{\\sqrt[3]a}{3}\\cdot\\sqrt3$.\nTheo đề, $\\dfrac{\\sqrt[3]a}{3}\\sqrt3=b\\sqrt3$ nên  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002195",
+  "loai": "tu_luan",
+  "de": "Tìm $m$ để hàm số $f(x)=\\begin{cases}\\dfrac{\\sqrt[3]{3x+2}-2}{x-2}&\\text{nếu }x>2\\\\mx-\\dfrac14&\\text{nếu }x\\le2\\end{cases}$ có giới hạn tại $x=2$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Giới hạn tại $x=2$ tồn tại khi giới hạn trái bằng giới hạn phải; giới hạn phải cần liên hợp bậc ba.\n**Bước 1.** Tính giới hạn phải bằng liên hợp bậc ba để triệt nhân tử $x-2$.\n**Bước 2.** Tính giới hạn trái từ nhánh đa thức bằng cách thay $x=2$.\n**Bước 3.** Cho hai giới hạn một bên bằng nhau để lập phương trình theo $m$ rồi giải.\n**Phần 2. Trình bày**\nGiới hạn phải: tại $x=2$ tử $=\\sqrt[3]{8}-2=0$ và mẫu bằng $0$. Với $x>2$:\n$\\dfrac{\\sqrt[3]{3x+2}-2}{x-2}=\\dfrac{(3x+2)-8}{(x-2)(\\sqrt[3]{(3x+2)^2}+2\\sqrt[3]{3x+2}+4)}=\\dfrac{3}{\\sqrt[3]{(3x+2)^2}+2\\sqrt[3]{3x+2}+4}$.\n$\\lim\\limits_{x\\to2^+}f(x)=\\dfrac{3}{4+4+4}=\\dfrac14$.\nGiới hạn trái: $\\lim\\limits_{x\\to2^-} …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000004020",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giới hạn: $\\lim\\frac{3^{n+1}}{4\\cdot3^n}$.",
+  "dap_an": "0,75",
+  "loi_giai": "$\\frac{3^{n+1}}{4\\cdot3^n}=\\frac{3}{4}$ với mọi $n$ nên giới hạn bằng $\\frac{3}{4}=0{,}75$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001753",
+  "loai": "trac_nghiem",
+  "de": "Biết $\\lim\\limits_{n\\to+\\infty}\\dfrac{2n^{3}+n^{2}-4}{an^{3}+2}=\\dfrac{1}{2}$ với $a$ là tham số khác $0$. Khi đó $a-a^{2}$ bằng",
+  "lua_chon": [
+   "$-12$",
+   "$-2$",
+   "$0$",
+   "$-6$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tính giới hạn theo tham số $a$ bằng cách chia cho $n^{3}$, rồi giải phương trình theo $a$ từ giá trị giới hạn đã cho.\n**Bước 1.** Chia cả tử và mẫu cho $n^{3}$ để đưa giới hạn về phân thức theo các hệ số cao nhất.\n**Bước 2.** Tính giới hạn theo tham số $a$ bằng giới hạn cơ bản.\n**Bước 3.** Cho giới hạn bằng giá trị đề bài để lập phương trình ẩn $a$ và giải.\n**Bước 4.** Thay giá trị $a$ tìm được vào biểu thức cần tính.\n**Phần 2. Trình bày**\n$\\lim\\limits_{n\\to+\\infty}\\dfrac{2n^{3}+n^{2}-4}{an^{3}+2}=\\lim\\limits_{n\\to+\\infty}\\dfrac{2+\\dfrac{1}{n}-\\dfrac{4}{n^{3}}}{a+\\dfrac{2}{n^{3}}}=\\dfrac{2}{a}$.\nCho $\\dfrac{2}{a}=\\dfrac{1}{2}$, suy ra $a=4$.\nVậy $a-a^{2}=4 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000003029",
+  "loai": "trac_nghiem",
+  "de": "Tìm $\\lim\\limits_{n\\to+\\infty}\\dfrac{8n^5-2n^3+1}{4n^5+2n^2+1}$.",
+  "lua_chon": [
+   "$2$.",
+   "$8$.",
+   "$1$.",
+   "$4$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Mỗi phương án là một giới hạn cần so với các lựa chọn, nên ta tính giới hạn bằng quy tắc thích hợp rồi đối chiếu.\n**Bước 1.** Quan sát bậc cao nhất của $n$ ở tử và ở mẫu để chọn luỹ thừa cần chia.\n**Bước 2.** Chia cả tử và mẫu cho luỹ thừa đó, các hạng tử còn lại là hằng số hoặc dạng $\\dfrac1{n^k}$.\n**Bước 3.** Cho $n\\to+\\infty$, dùng $\\lim\\dfrac1{n^k}=0$ và quy tắc thương, rồi đối chiếu giá trị với bốn phương án.\n**Phần 2. Trình bày**\n$\\lim\\limits_{n\\to+\\infty}\\dfrac{8n^5-2n^3+1}{4n^5+2n^2+1}=\\lim\\limits_{n\\to+\\infty}\\dfrac{8-\\dfrac2{n^2}+\\dfrac1{n^5}}{4+\\dfrac2{n^3}+\\dfrac1{n^5}}=\\dfrac84=2$.\nVậy giới hạn bằng $2$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000003095",
+  "loai": "tra_loi_ngan",
+  "de": "Giới hạn của dãy $u_{n}=\\dfrac{\\sqrt{n^{2}+2n}-\\sqrt{n^{2}+n}}{n}$ có dạng $\\lim\\dfrac{\\frac{a}{n}}{\\sqrt{1+\\frac{b}{n}}+\\sqrt{1+\\frac{c}{n}}}$ với $a,b,c$ là các số tự nhiên. Tính giá trị $a^{2}+b^{2}+c^{2}$.",
+  "dap_an": "6",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Nhân liên hợp cho hiệu hai căn rồi chia tử và mẫu cho $n$ để đưa về đúng dạng đề cho.\n**Bước 1.** Nhân và chia với biểu thức liên hợp của hiệu hai căn để tử còn lại là đa thức bậc nhất.\n**Bước 2.** Rút gọn thừa số $n$ giữa tử và mẫu.\n**Bước 3.** Chia tử và mẫu cho $n$ để đưa các căn về dạng $\\sqrt{1+\\dfrac{\\cdot}{n}}$, rồi đọc ra $a,b,c$.\n**Phần 2. Trình bày**\n$u_{n}=\\dfrac{(n^{2}+2n)-(n^{2}+n)}{n\\,(\\sqrt{n^{2}+2n}+\\sqrt{n^{2}+n})}=\\dfrac{n}{n\\,(\\sqrt{n^{2}+2n}+\\sqrt{n^{2}+n})}=\\dfrac{1}{\\sqrt{n^{2}+2n}+\\sqrt{n^{2}+n}}$.\nChia tử và mẫu cho $n$: $u_{n}=\\dfrac{\\frac1n}{\\sqrt{1+\\frac2n}+\\sqrt{1+\\frac1n}}$.\nVậy $a=1$, $b=2$, $c=1$ và $a^{2}+b^{2}+c^{2}=1+4+1=6 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002899",
+  "loai": "tu_luan",
+  "de": "Chứng minh rằng phương trình $x^3-2x^2+x-1-\\dfrac{2}{x}+\\dfrac{m}{x+3}=0$ luôn có nghiệm với mọi $m$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Quy đồng bỏ mẫu rồi chọn ba điểm sao cho tích giá trị liên tiếp có dấu phụ thuộc $m$; xét riêng trường hợp $m=0$.\n**Bước 1.** Nêu điều kiện xác định, quy đồng để đưa phương trình về dạng đa thức $g(x)=0$.\n**Bước 2.** Tính $g$ tại các điểm $-3$, $0$, $2$ và lập các tích giá trị liên tiếp theo $m$.\n**Bước 3.** Xét trường hợp $m=0$ riêng, sau đó với $m\\ne0$ chọn khoảng mà tích âm.\n**Bước 4.** Kiểm tra nghiệm tìm được nằm trong khoảng mở nên không trùng với điểm làm mẫu bằng $0$.\n**Phần 2. Trình bày**\nĐiều kiện: $x\\ne0$ và $x\\ne-3$. Nhân hai vế với $x(x+3)$, phương trình tương đương $g(x)=mx+(x-2)(x+3)(x^3+x+1)=0$.\nThật vậy, $x(x^3-2x^2+x-1)-2=x^4-2x^3+x^2-x-2 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002795",
+  "loai": "trac_nghiem",
+  "de": "Giới hạn $\\lim\\limits_{x\\to-\\infty}(3x-\\sqrt{9x^{2}-1})$ bằng:",
+  "lua_chon": [
+   "$+\\infty$",
+   "$0$",
+   "$-\\infty$",
+   "$-1$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Với $x<0$ ta có $\\sqrt{x^{2}}=-x$; đưa $x$ ra ngoài căn rồi rút $x$ làm thừa số chung và dùng quy tắc tích.\n**Bước 1.** Đưa $x$ ra khỏi căn, nhớ đổi dấu vì $x$ âm khi $x\\to-\\infty$.\n**Bước 2.** Rút $x$ làm thừa số chung rồi tìm giới hạn của thừa số còn lại.\n**Bước 3.** Dùng quy tắc tích: $x\\to-\\infty$ nhân với một thừa số có giới hạn xác định, xét dấu thừa số đó.\n**Phần 2. Trình bày**\nVì $x<0$ nên $\\sqrt{9x^{2}-1}=-x\\sqrt{9-\\dfrac{1}{x^{2}}}$.\n$\\lim\\limits_{x\\to-\\infty}(3x-\\sqrt{9x^{2}-1})=\\lim\\limits_{x\\to-\\infty}(3x+x\\sqrt{9-\\dfrac{1}{x^{2}}})=\\lim\\limits_{x\\to-\\infty}x(3+\\sqrt{9-\\dfrac{1}{x^{2}}})$.\nTa có $\\lim\\limits_{x\\to-\\infty}x=-\\infty$ và $\\lim\\li …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001915",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn của dãy số $u_n=\\sqrt{2n^3+n^2-2}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Rút lũy thừa cao nhất của $n$ ra ngoài rồi dùng quy tắc giới hạn của tích với một dãy dần tới vô cực.\n**Bước 1.** Xác định số hạng có lũy thừa cao nhất của $n$ trong biểu thức đã cho.\n**Bước 2.** Rút lũy thừa đó ra ngoài để biểu thức thành tích của lũy thừa của $n$ và một biểu thức có giới hạn hữu hạn.\n**Bước 3.** Tính giới hạn của từng thừa số, xét dấu rồi áp dụng quy tắc giới hạn của tích để kết luận.\n**Phần 2. Trình bày**\nVới $n>0$: $u_n=n\\sqrt n\\cdot\\sqrt{2+\\dfrac1n-\\dfrac2{n^3}}$.\nTa có $\\lim n\\sqrt n=+\\infty$ và $\\lim\\sqrt{2+\\dfrac1n-\\dfrac2{n^3}}=\\sqrt2>0$.\nVậy $\\lim u_n=+\\infty$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001953",
+  "loai": "tu_luan",
+  "de": "Tính $\\lim\\limits_{x\\to 4}\\dfrac{\\sqrt{x}-2}{x-4}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Thay $x=4$ được $\\dfrac{0}{0}$; viết $x-4=(\\sqrt{x}-2)(\\sqrt{x}+2)$ (chính là nhân liên hợp) để rút gọn.\n**Bước 1.** Thay $x=4$ vào tử và mẫu để nhận ra dạng $\\dfrac{0}{0}$.\n**Bước 2.** Phân tích mẫu $x-4$ theo hiệu hai bình phương của $\\sqrt{x}$ và $2$.\n**Bước 3.** Rút gọn nhân tử $\\sqrt{x}-2$ với điều kiện $x\\ne 4$.\n**Bước 4.** Thay $x=4$ vào phân thức còn lại để tính giới hạn.\n**Phần 2. Trình bày**\nThay $x=4$: tử $=0$, mẫu $=0$ nên đây là dạng $\\dfrac{0}{0}$.\nTa có $x-4=(\\sqrt{x}-2)(\\sqrt{x}+2)$, với $x\\ne 4$: $\\dfrac{\\sqrt{x}-2}{x-4}=\\dfrac{1}{\\sqrt{x}+2}$.\nDo đó $\\lim\\limits_{x\\to 4}\\dfrac{\\sqrt{x}-2}{x-4}=\\dfrac{1}{\\sqrt{4}+2}=\\dfrac{1}{4}$.\nVậy giới …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002695",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn sau đây: $\\lim\\limits_{x\\to -1}\\dfrac{\\sqrt{3x^{2}+1}-x}{x-1}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Hàm số xác định tại điểm đang xét (mẫu khác $0$, biểu thức dưới căn không âm) thì giới hạn bằng giá trị của hàm tại điểm đó, chỉ cần thay trực tiếp.\n**Bước 1.** Kiểm tra biểu thức có xác định tại $x=-1$ hay không: mẫu thức khác $0$ và biểu thức dưới dấu căn không âm.\n**Bước 2.** Thay $x=-1$ vào từng thành phần của biểu thức rồi tính riêng tử thức và mẫu thức.\n**Bước 3.** Lập tỉ số các giá trị vừa tính được rồi rút gọn về dạng gọn nhất.\n**Phần 2. Trình bày**\nBiểu thức xác định tại $x=-1$ nên ta thay trực tiếp.\n$\\lim\\limits_{x\\to -1}\\dfrac{\\sqrt{3x^{2}+1}-x}{x-1}=\\dfrac{\\sqrt{3\\cdot(-1)^{2}+1}-(-1)}{-1-1}=\\dfrac{2+1}{-2}=-\\dfrac{3}{2}$.\nVậy $\\lim\\limits_{x\\t …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002730",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn sau đây: $I=\\lim\\limits_{x\\to -\\infty}\\dfrac{(2x-3)^{20}(3x+2)^{30}}{(1+2x)^{50}}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tử và mẫu cùng bậc $50$ nên rút $x$ ra khỏi từng ngoặc rồi giản ước $x^{50}$; mỗi ngoặc chỉ còn lại số hạng hằng cộng các số hạng $\\dfrac{c}{x}$ dần về $0$.\n**Bước 1.** Xác định bậc của tử bằng tổng các số mũ của từng thừa số và so sánh với bậc của mẫu.\n**Bước 2.** Rút $x$ ra khỏi mỗi ngoặc, chú ý các số mũ $20$, $30$, $50$ đều chẵn nên không đổi dấu khi $x<0$.\n**Bước 3.** Giản ước $x^{50}$ rồi thay $\\dfrac{1}{x}\\to0$ vào các ngoặc còn lại để tính.\n**Phần 2. Trình bày**\nTử có bậc $20+30=50$ bằng bậc của mẫu. Rút $x$ ở mỗi ngoặc (số mũ chẵn nên $(x\\cdot A)^{k}=x^{k}A^{k}$):\n$I=\\lim\\limits_{x\\to -\\infty}\\dfrac{x^{20}(2-\\dfrac{3}{x})^{20}\\cdot x^{30}(3+\\dfrac …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001920",
+  "loai": "tu_luan",
+  "de": "Tìm $\\lim\\limits_{n\\to+\\infty}(1{,}001)^n$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** So sánh cơ số của lũy thừa với $1$ rồi dùng giới hạn cơ bản của dãy $q^n$.\n**Bước 1.** So sánh cơ số $1{,}001$ với $1$ để biết tính chất của dãy lũy thừa này.\n**Bước 2.** Nhắc lại giới hạn cơ bản của $q^n$ ứng với trường hợp của cơ số vừa so sánh.\n**Bước 3.** Áp dụng giới hạn đó cho cơ số đã cho và viết kết luận bằng ký hiệu giới hạn.\n**Phần 2. Trình bày**\nVì $1{,}001>1$ nên theo giới hạn cơ bản, $\\lim q^n=+\\infty$ với $q>1$.\nVậy $\\lim\\limits_{n\\to+\\infty}(1{,}001)^n=+\\infty$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001979",
+  "loai": "tu_luan",
+  "de": "Cho hàm số $f(x)=\\dfrac{\\sin^{2}x}{x^{2}}$. Chứng minh rằng $\\lim\\limits_{x\\to+\\infty}f(x)=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Dùng định nghĩa dãy: lấy dãy $(x_{n})$ dần tới $+\\infty$, đánh giá $f(x_{n})$ bằng bất đẳng thức $|\\sin x|\\le 1$ rồi dùng nguyên lí kẹp.\n**Bước 1.** Lấy dãy $(x_{n})$ bất kì thoả mãn $x_{n}\\to+\\infty$, khi đó $x_{n}\\ne 0$ kể từ một số hạng nào đó.\n**Bước 2.** Đánh giá $0\\le f(x_{n})$ và $f(x_{n})\\le\\dfrac{1}{x_{n}^{2}}$ nhờ bất đẳng thức $\\sin^{2}x\\le 1$.\n**Bước 3.** Tính giới hạn của cận trên $\\dfrac{1}{x_{n}^{2}}$ và dùng nguyên lí kẹp để suy ra giới hạn của $f(x_{n})$.\n**Bước 4.** Kết luận giới hạn của hàm số vì dãy $(x_{n})$ được chọn bất kì.\n**Phần 2. Trình bày**\nLấy dãy số $(x_{n})$ bất kì sao cho $x_{n}\\to+\\infty$; khi đó $x_{n}\\ne 0$ kể từ một số h …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001927",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn của dãy số $(u_n)$ với $u_n=\\dfrac{2^{n+1}-3^n+11}{3^{n+2}+2^{n+3}-4}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Chia cả tử và mẫu cho lũy thừa có cơ số lớn nhất rồi dùng $\\lim q^n=0$ khi $|q|<1$.\n**Bước 1.** Viết lại các lũy thừa dạng $a^{n+k}$ thành hệ số nhân với $a^n$ để so sánh được các cơ số.\n**Bước 2.** Xác định cơ số có giá trị tuyệt đối lớn nhất rồi chia cả tử và mẫu cho lũy thừa đó.\n**Bước 3.** Dùng $\\lim q^n=0$ khi $|q|<1$ và quy tắc giới hạn của thương để suy ra kết quả.\n**Phần 2. Trình bày**\nViết $2^{n+1}=2\\cdot2^n$, $3^{n+2}=9\\cdot3^n$, $2^{n+3}=8\\cdot2^n$. Chia cả tử và mẫu cho $3^n$: $u_n=\\dfrac{2(\\dfrac23)^n-1+\\dfrac{11}{3^n}}{9+8(\\dfrac23)^n-\\dfrac4{3^n}}$.\nVì $\\lim(\\dfrac23)^n=\\lim\\dfrac1{3^n}=0$ nên tử có giới hạn $-1$, mẫu có giới hạn $9$.\nVậy $\\ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002110",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hàm số $f(x)$ thoả mãn $\\lim\\limits_{x\\to0}\\dfrac{f(x)}{x}=3$. Tính giá trị của giới hạn $\\lim\\limits_{x\\to0}\\dfrac{x+2f(x)}{f(x)-2x}$.",
+  "dap_an": "7",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Chia cả tử và mẫu cho $x$ để biểu thức chỉ còn phụ thuộc vào thương $\\dfrac{f(x)}{x}$ đã biết giới hạn.\n**Bước 1.** Nhận thấy tử và mẫu đều là tổ hợp của $x$ và $f(x)$, còn giới hạn cho sẵn là của $\\dfrac{f(x)}{x}$.\n**Bước 2.** Chia cả tử và mẫu cho $x$ (với $x\\ne0$) để viết biểu thức theo $\\dfrac{f(x)}{x}$.\n**Bước 3.** Áp dụng quy tắc giới hạn của tổng và thương rồi thay giới hạn đã cho vào.\n**Phần 2. Trình bày**\nVới $x\\ne0$ ta có $\\dfrac{x+2f(x)}{f(x)-2x}=\\dfrac{1+2\\cdot\\dfrac{f(x)}{x}}{\\dfrac{f(x)}{x}-2}$.\nVì $\\lim\\limits_{x\\to0}\\dfrac{f(x)}{x}=3$ nên tử có giới hạn $1+2\\cdot3=7$ và mẫu có giới hạn $3-2=1\\ne0$.\nVậy giới hạn cần tìm bằng $\\dfrac71=7$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002142",
+  "loai": "tra_loi_ngan",
+  "de": "Giới hạn $\\lim\\limits_{x\\to1}\\dfrac{\\sqrt{2x-1}-\\sqrt[3]{3x-2}}{x-1}$ bằng bao nhiêu?",
+  "dap_an": "0",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Cả hai căn bằng $1$ tại $x=1$ nên tách thành hai hiệu với $1$, mỗi hiệu nhân liên hợp riêng.\n**Bước 1.** Kiểm tra tại $x=1$ cả hai căn bằng $1$ nên giới hạn có dạng $\\dfrac00$.\n**Bước 2.** Tách tử thành hai nhóm $(\\sqrt{2x-1}-1)+(1-\\sqrt[3]{3x-2})$ để xử lí riêng.\n**Bước 3.** Nhân liên hợp bậc hai cho nhóm đầu, bậc ba cho nhóm sau để rút gọn $x-1$.\n**Bước 4.** Thay $x=1$ vào hai phân thức còn lại rồi trừ.\n**Phần 2. Trình bày**\nVới $x\\ne1$: $\\sqrt{2x-1}-1=\\dfrac{2x-2}{\\sqrt{2x-1}+1}=\\dfrac{2(x-1)}{\\sqrt{2x-1}+1}$.\n$1-\\sqrt[3]{3x-2}=\\dfrac{1-(3x-2)}{1+\\sqrt[3]{3x-2}+\\sqrt[3]{(3x-2)^{2}}}=\\dfrac{-3(x-1)}{1+\\sqrt[3]{3x-2}+\\sqrt[3]{(3x-2)^{2}}}$.\nDo đó biểu thứ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002808",
+  "loai": "trac_nghiem",
+  "de": "Kết quả của $\\lim\\limits_{x\\to 3^{+}}(x-3)\\cdot\\dfrac{1}{\\sqrt{x^{2}-9}}$ bằng",
+  "lua_chon": [
+   "$1$",
+   "$0$",
+   "$-\\infty$",
+   "$+\\infty$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Phân tích $x^{2}-9$ thành nhân tử rồi biểu diễn $x-3$ qua căn bậc hai để giản ước thừa số $x-3$.\n**Bước 1.** Phân tích $x^{2}-9=(x-3)(x+3)$ dưới dấu căn.\n**Bước 2.** Vì $x>3$ nên $x-3=\\sqrt{x-3}\\cdot\\sqrt{x-3}$, giản ước một căn $\\sqrt{x-3}$ với mẫu.\n**Bước 3.** Thay $x\\to3^{+}$ vào biểu thức còn lại để tìm giới hạn.\n**Phần 2. Trình bày**\nVới $x>3$: $(x-3)\\cdot\\dfrac{1}{\\sqrt{x^{2}-9}}=\\dfrac{x-3}{\\sqrt{(x-3)(x+3)}}=\\dfrac{\\sqrt{x-3}}{\\sqrt{x+3}}$.\nKhi $x\\to3^{+}$: $\\sqrt{x-3}\\to0$ và $\\sqrt{x+3}\\to\\sqrt{6}$.\nVậy giới hạn bằng $0$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001659",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{n^3+3n}{2n-1}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tử bậc cao hơn mẫu, rút $n^3$ ở tử và $n$ ở mẫu rồi xét dấu phần còn lại.\n**Bước 1.** So sánh bậc của tử và mẫu.\n**Bước 2.** Rút $n^3$ ở tử và $n$ ở mẫu để tách thừa số $n^2$.\n**Bước 3.** Xét giới hạn và dấu của phân thức còn lại, dùng quy tắc tích.\n**Phần 2. Trình bày**\n$\\dfrac{n^3+3n}{2n-1}=n^2\\cdot\\dfrac{1+\\dfrac{3}{n^2}}{2-\\dfrac1n}$.\nCó $\\lim\\limits_{n\\to+\\infty}n^2=+\\infty$ và $\\lim\\limits_{n\\to+\\infty}\\dfrac{1+\\dfrac{3}{n^2}}{2-\\dfrac1n}=\\dfrac12>0$.\nVậy giới hạn bằng $+\\infty$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000003159",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f(x)=\\dfrac{2x-1}{x^3-x}$. Kết luận nào sau đây đúng?",
+  "lua_chon": [
+   "Hàm số liên tục tại $x=-1$.",
+   "Hàm số liên tục tại $x=0$.",
+   "Hàm số liên tục tại $x=1$.",
+   "Hàm số liên tục tại $x=\\dfrac12$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Hàm phân thức liên tục tại mọi điểm thuộc tập xác định, và không liên tục tại điểm làm mẫu bằng $0$.\n**Bước 1.** Phân tích mẫu thức thành nhân tử để tìm các giá trị làm mẫu bằng $0$.\n**Bước 2.** Suy ra tập xác định của hàm số.\n**Bước 3.** Kiểm tra từng điểm trong bốn phương án có thuộc tập xác định hay không.\n**Phần 2. Trình bày**\nMẫu $x^3-x=x(x-1)(x+1)$ bằng $0$ khi $x\\in\\{-1;0;1\\}$.\nTập xác định $D=\\mathbb{R}\\setminus\\{-1;0;1\\}$.\nCác điểm $x=-1$, $x=0$, $x=1$ không thuộc $D$ nên hàm số không liên tục tại các điểm đó.\nĐiểm $x=\\dfrac12\\in D$ và $f$ là phân thức hữu tỉ nên liên tục tại $x=\\dfrac12$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002233",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to0}\\dfrac{\\sqrt{1+\\sin^2x}-\\cos x}{\\sin^2x}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tử có một căn thức nên nhân liên hợp, rồi dùng $\\sin^2x+\\cos^2x=1$ để tử xuất hiện nhân tử $\\sin^2x$.\n**Bước 1.** Nhận ra dạng $\\dfrac00$ khi $x\\to0$ và nhân tử và mẫu với liên hợp của tử.\n**Bước 2.** Dùng $\\sin^2x+\\cos^2x=1$ để biến tử thành bội của $\\sin^2x$.\n**Bước 3.** Triệt $\\sin^2x$ (khác $0$ khi $x\\ne0$ gần $0$) rồi thay $x=0$.\n**Phần 2. Trình bày**\nKhi $x\\to0$: tử $\\to1-1=0$ và mẫu $\\to0$ nên là dạng $\\dfrac00$.\nNhân tử và mẫu với $\\sqrt{1+\\sin^2x}+\\cos x>0$. Với $x\\ne0$ gần $0$:\n$\\dfrac{\\sqrt{1+\\sin^2x}-\\cos x}{\\sin^2x}=\\dfrac{1+\\sin^2x-\\cos^2x}{\\sin^2x\\,(\\sqrt{1+\\sin^2x}+\\cos x)}$.\nVì $\\cos^2x=1-\\sin^2x$ nên $1+\\sin^2x-\\cos^2x=2\\sin^2x$, do đó bi …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002933",
+  "loai": "trac_nghiem",
+  "de": "Hàm số $y=\\dfrac{1}{x^2-4}$ gián đoạn tại điểm nào dưới đây?",
+  "lua_chon": [
+   "$x=1$",
+   "$x=0$",
+   "$x=2$",
+   "$x=-1$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Hàm phân thức gián đoạn tại những điểm làm mẫu thức bằng $0$, vì tại đó hàm không xác định.\n**Bước 1.** Giải phương trình mẫu thức bằng $0$ để tìm các điểm hàm số không xác định.\n**Bước 2.** Kiểm tra từng giá trị ở bốn phương án xem có làm mẫu thức bằng $0$ hay không.\n**Bước 3.** Kết luận điểm gián đoạn là giá trị làm mẫu bằng $0$ có trong các phương án.\n**Phần 2. Trình bày**\nMẫu thức $x^2-4=0\\Leftrightarrow x=2$ hoặc $x=-2$.\nHàm số không xác định tại $x=2$ nên gián đoạn tại $x=2$.\nCác giá trị $x=1$, $x=0$, $x=-1$ làm mẫu khác $0$ nên hàm số liên tục tại các điểm đó.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002567",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{2n+1-\\sqrt{n^2+2n-4}}{3n+\\sqrt{n^2+7}}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Với $n>0$, đưa $n$ ra ngoài căn rồi chia cả tử và mẫu cho $n$ để tìm giới hạn của tử và mẫu.\n**Bước 1.** Viết mỗi căn thức dưới dạng $n$ nhân với căn của một biểu thức có giới hạn hữu hạn.\n**Bước 2.** Chia cả tử và mẫu cho $n$ để mọi số hạng có giới hạn hữu hạn.\n**Bước 3.** Tính giới hạn tử, mẫu rồi dùng quy tắc giới hạn của thương.\n**Phần 2. Trình bày**\nVới $n>0$, chia tử và mẫu cho $n$: biểu thức bằng $\\dfrac{2+\\dfrac1n-\\sqrt{1+\\dfrac2n-\\dfrac4{n^2}}}{3+\\sqrt{1+\\dfrac7{n^2}}}$.\nTử có giới hạn $2-1=1$, mẫu có giới hạn $3+1=4$.\nVậy $B=\\dfrac14$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001916",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn của dãy số $u_n=\\dfrac{3n-n^3}{2n+15}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tử có bậc lớn hơn mẫu nên chia cả tử và mẫu cho $n$, xét dấu giới hạn của mẫu và giới hạn vô cực của tử.\n**Bước 1.** So sánh bậc của tử và mẫu để chọn cách biến đổi phù hợp.\n**Bước 2.** Chia cả tử và mẫu cho $n$ rồi viết tử số dưới dạng tích để xét dấu.\n**Bước 3.** Tính giới hạn của mẫu rồi áp dụng quy tắc giới hạn của thương với tử dần tới vô cực.\n**Phần 2. Trình bày**\nChia cả tử và mẫu cho $n$: $u_n=\\dfrac{3-n^2}{2+\\dfrac{15}n}$.\nTử: $3-n^2=n^2\\Big(\\dfrac3{n^2}-1\\Big)$ có $\\lim n^2=+\\infty$ và $\\lim\\Big(\\dfrac3{n^2}-1\\Big)=-1<0$, nên tử dần tới $-\\infty$.\nMẫu có giới hạn $2>0$. Vậy $\\lim u_n=-\\infty$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002152",
+  "loai": "tra_loi_ngan",
+  "de": "Cho đường cong $y=x^{2}$. Trên đường cong lấy điểm $P(t;t^{2})$ với $t>0$, và lấy $O$ là gốc toạ độ. Gọi $M$ là trung điểm của đoạn $OP$. Đường thẳng qua $M$ song song với trục $Ox$ cắt đường cong $y=x^{2}$ tại hai điểm $A,B$. Tính $\\lim\\limits_{t\\to0^{+}}\\dfrac{AB}{OP}$ (làm tròn kết quả đến hàng phần trăm).",
+  "dap_an": "1,41",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tìm tung độ của $M$, giải hoành độ hai giao điểm $A,B$ rồi lập tỉ số $\\dfrac{AB}{OP}$ theo $t$.\n**Bước 1.** Tính toạ độ trung điểm $M$ của $OP$, từ đó có phương trình đường thẳng qua $M$ song song với $Ox$.\n**Bước 2.** Giải phương trình hoành độ giao điểm với parabol để tìm hoành độ của $A$ và $B$, suy ra $AB$.\n**Bước 3.** Tính $OP$ theo $t$, lập tỉ số rồi rút gọn $t$ trước khi lấy giới hạn $t\\to0^{+}$.\n**Phần 2. Trình bày**\nTa có $M(\\dfrac t2;\\dfrac{t^{2}}{2})$ nên đường thẳng cần tìm là $y=\\dfrac{t^{2}}{2}$.\nPhương trình hoành độ giao điểm: $x^{2}=\\dfrac{t^{2}}{2}$, suy ra $x=\\pm\\dfrac{t}{\\sqrt2}$. Do đó $AB=\\dfrac{2t}{\\sqrt2}=t\\sqrt2$.\n$OP=\\sqrt{t^{2}+t …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002738",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn sau đây: $\\lim\\limits_{x\\to +\\infty}(\\sqrt{x^{2}-2x}-x\\sqrt{2})$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Với $x>0$ đưa $x$ ra ngoài căn rồi rút $x$ làm thừa số chung; xét giới hạn của thừa số còn lại để dùng quy tắc tích.\n**Bước 1.** Với $x>0$, đưa $x$ ra ngoài căn: $\\sqrt{x^{2}-2x}=x\\sqrt{1-\\dfrac{2}{x}}$ rồi rút $x$ làm thừa số chung.\n**Bước 2.** Tính giới hạn của thừa số còn lại bằng cách thay $\\dfrac{2}{x}\\to0$.\n**Bước 3.** Xét dấu của giới hạn đó và dùng quy tắc giới hạn của tích với thừa số $x$ dần ra dương vô cực.\n**Phần 2. Trình bày**\nVới $x>0$: $\\sqrt{x^{2}-2x}-x\\sqrt{2}=x\\sqrt{1-\\dfrac{2}{x}}-x\\sqrt{2}=x(\\sqrt{1-\\dfrac{2}{x}}-\\sqrt{2})$.\nTa có $\\lim\\limits_{x\\to +\\infty}x=+\\infty$ và $\\lim\\limits_{x\\to +\\infty}(\\sqrt{1-\\dfrac{2}{x}}-\\sqrt{2})=1-\\sqr …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002554",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{(-1)^n\\cdot2^{5n+1}}{3^{5n+2}}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đưa các luỹ thừa về cùng số mũ $n$ để có dạng $q^n$ với $|q|<1$, thừa số $(-1)^n$ chỉ đổi dấu.\n**Bước 1.** Viết $2^{5n+1}=2\\cdot32^n$ và $3^{5n+2}=9\\cdot243^n$ để đưa về cùng số mũ $n$.\n**Bước 2.** Gom thành dạng hằng số nhân với $q^n$ có $|q|=\\dfrac{32}{243}<1$.\n**Bước 3.** Dùng $\\lim q^n=0$ với $|q|<1$, chú ý $(-1)^n$ chỉ làm đổi dấu nên không đổi giới hạn bằng không.\n**Phần 2. Trình bày**\nTa có $\\dfrac{(-1)^n\\cdot2^{5n+1}}{3^{5n+2}}=\\dfrac29\\cdot(-\\dfrac{32}{243})^n$.\nVì $|-\\dfrac{32}{243}|<1$ nên $\\lim\\limits_{n\\to+\\infty}(-\\dfrac{32}{243})^n=0$.\nVậy $\\lim\\limits_{n\\to+\\infty}\\dfrac{(-1)^n\\cdot2^{5n+1}}{3^{5n+2}}=0$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002627",
+  "loai": "trac_nghiem",
+  "de": "Cho $a,\\ b$ là các số thực thỏa mãn $\\lim(\\sqrt{n^2+an+2}-\\sqrt{n^2+bn+1})=1$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$a+b=2$.",
+   "$a-b=2$.",
+   "$a+b=1$.",
+   "$a-b=1$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Hiệu hai căn cùng bậc được nhân liên hợp để đưa về phân thức, rồi chia tử và mẫu cho $n$ để đọc giới hạn theo $a$ và $b$.\n**Bước 1.** Nhân và chia biểu thức với tổng hai căn (biểu thức liên hợp) để hai số hạng $n^2$ ở tử triệt tiêu nhau.\n**Bước 2.** Chia cả tử và mẫu cho $n$, dùng $\\lim\\dfrac{1}{n}=0$ để tìm giới hạn của phân thức theo $a$ và $b$.\n**Bước 3.** Cho giới hạn đó bằng $1$ để thu được hệ thức giữa $a$ và $b$ rồi đối chiếu với bốn phương án.\n**Phần 2. Trình bày**\n$\\sqrt{n^2+an+2}-\\sqrt{n^2+bn+1}=\\dfrac{(a-b)n+1}{\\sqrt{n^2+an+2}+\\sqrt{n^2+bn+1}}=\\dfrac{(a-b)+\\dfrac{1}{n}}{\\sqrt{1+\\dfrac{a}{n}+\\dfrac{2}{n^2}}+\\sqrt{1+\\dfrac{b}{n}+\\dfrac{1}{n^2}}}$. …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001816",
+  "loai": "tu_luan",
+  "de": "Chứng minh rằng dãy số $u_n=\\dfrac{2\\sin(n^2)}{n^4+1}$ có giới hạn là $0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Chặn giá trị tuyệt đối của dãy bởi một dãy đã biết có giới hạn $0$, rồi dùng định lí kẹp.\n**Bước 1.** Đánh giá tử số của $|u_n|$ bằng các bất đẳng thức quen thuộc như $|\\sin x|\\le1$ hoặc $|\\cos x|\\le1$.\n**Bước 2.** Giữ nguyên hoặc đơn giản hoá mẫu số để chặn $|u_n|$ bởi một dãy cơ bản như $\\dfrac1{n^k}$ hoặc $q^n$.\n**Bước 3.** Nhắc lại giới hạn $0$ của dãy chặn rồi kết luận bằng định lí kẹp: $|u_n|\\le v_n$ và $\\lim v_n=0$.\n**Phần 2. Trình bày**\nVì $|\\sin(n^2)|\\le1$ và $n^4+1>n^4$ nên $|u_n|\\le\\dfrac{2}{n^4+1}<\\dfrac2{n^4}$ với mọi $n\\ge1$.\nMà $\\lim\\dfrac2{n^4}=2\\lim\\dfrac1{n^4}=0$.\nVậy $\\lim u_n=0$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002616",
+  "loai": "trac_nghiem",
+  "de": "Có bao nhiêu giá trị nguyên của $a$ thoả mãn $\\lim\\limits_{n\\to+\\infty}(\\sqrt{n^2-8n}-n+a^2)=0$?",
+  "lua_chon": [
+   "$0$",
+   "$2$",
+   "$1$",
+   "Vô số"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tính riêng giới hạn của $\\sqrt{n^2-8n}-n$ bằng liên hợp, rồi cộng $a^2$ và giải phương trình theo $a$.\n**Bước 1.** Tách riêng phần $\\sqrt{n^2-8n}-n$ và nhân liên hợp để tìm giới hạn của nó.\n**Bước 2.** Cộng giới hạn đó với $a^2$ và cho tổng bằng không để lập phương trình theo $a$.\n**Bước 3.** Giải phương trình, đếm số nghiệm nguyên rồi so với bốn phương án.\n**Phần 2. Trình bày**\nTa có $\\sqrt{n^2-8n}-n=\\dfrac{-8n}{\\sqrt{n^2-8n}+n}=\\dfrac{-8}{\\sqrt{1-\\dfrac8n}+1}$, giới hạn bằng $\\dfrac{-8}{2}=-4$.\nDo đó $\\lim\\limits_{n\\to+\\infty}(\\sqrt{n^2-8n}-n+a^2)=-4+a^2$.\nCho $-4+a^2=0$ ta được $a=2$ hoặc $a=-2$, đều là số nguyên.\nVậy có $2$ giá trị nguyên của $a$.\nChọn …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002346",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f(x)$ xác định trên $[a;b]$. Xét các mệnh đề sau đây:\nI. Nếu hàm số $f(x)$ liên tục trên $[a;b]$ và $f(a)f(b)>0$ thì phương trình $f(x)=0$ không có nghiệm trong khoảng $(a;b)$.\nII. Nếu $f(a)f(b)<0$ thì phương trình $f(x)=0$ có ít nhất một nghiệm trong khoảng $(a;b)$.\nIII. Nếu hàm số $f(x)$ liên tục và tăng trên $[a;b]$ và $f(a)f(b)>0$ thì phương trình $f(x)=0$ không có nghiệm trong khoảng $(a;b)$.\nIV. Nếu phương trình $f(x)=0$ có nghiệm trong khoảng $(a;b)$ thì hàm số $f(x)$ phải liên tục trên $(a;b)$.\nCó bao nhiêu mệnh đề đúng trong các mệnh đề trên?",
+  "lua_chon": [
+   "$1$",
+   "$2$",
+   "$3$",
+   "$4$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Định lí giá trị trung gian cần giả thiết hàm liên tục; mệnh đề nào thiếu giả thiết đó hoặc đảo chiều đều có thể sai, nên xét từng mệnh đề bằng phản ví dụ.\n**Bước 1.** Với mệnh đề I, tìm hàm liên tục có $f(a)f(b)>0$ mà vẫn có nghiệm ở giữa.\n**Bước 2.** Với mệnh đề II, chú ý đề chỉ cho hàm xác định nên thử một hàm có bước nhảy.\n**Bước 3.** Với mệnh đề III, dùng tính tăng của hàm để so sánh $f(x)$ với $f(a)$ và $f(b)$.\n**Bước 4.** Với mệnh đề IV, tìm hàm gián đoạn nhưng có nghiệm, rồi đếm số mệnh đề đúng.\n**Phần 2. Trình bày**\nLưu ý: sách xem mệnh đề II đúng, nhưng II không có giả thiết liên tục nên sai; đáp số dưới đây theo đề in.\nMệnh đề I sai: $f(x)=(x-1)^ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000961",
+  "loai": "trac_nghiem",
+  "de": "Trong các giới hạn dưới đây, giới hạn nào là $+\\infty$?",
+  "lua_chon": [
+   "$\\lim\\limits_{x\\to4^-}\\dfrac{2x-1}{4-x}$.",
+   "$\\lim\\limits_{x\\to+\\infty}\\left(-x^3+2x+3\\right)$.",
+   "$\\lim\\limits_{x\\to-\\infty}\\dfrac{x^2+x+1}{x-1}$.",
+   "$\\lim\\limits_{x\\to4^+}\\dfrac{2x-1}{4-x}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** xét từng phương án: giới hạn một bên thì xét dấu của tử và của mẫu, giới hạn tại vô cực thì đặt luỹ thừa cao nhất của $x$ ra ngoài.\n**Bước 1.** Với hai giới hạn tại $4$, tính giới hạn của tử tại điểm đó rồi xét dấu của mẫu $4-x$ ở từng phía.\n**Bước 2.** Với giới hạn của đa thức khi $x\\to+\\infty$, đặt luỹ thừa cao nhất của $x$ ra ngoài và xét dấu hệ số.\n**Bước 3.** Với giới hạn của phân thức khi $x\\to-\\infty$, chia tử và mẫu cho $x$ rồi xét dấu từng phần.\n**Bước 4.** Tổng hợp dấu của bốn giới hạn để chọn phương án bằng $+\\infty$.\n**Phần 2. Trình bày**\nPhương án A: $\\lim\\limits_{x\\to4^-}(2x-1)=7>0$; $x\\to4^-$ thì $4-x>0$ và tiến về $0$, nên giới hạn bằng $+\\ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000982",
+  "loai": "trac_nghiem",
+  "de": "Hàm số $y=\\dfrac{x}{x+1}$ gián đoạn tại điểm $x_0$ bằng?",
+  "lua_chon": [
+   "$x_0=2018$.",
+   "$x_0=1$.",
+   "$x_0=0$.",
+   "$x_0=-1$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hàm phân thức gián đoạn tại điểm làm mẫu số bằng $0$, vì tại đó hàm không xác định.\n**Bước 1.** Tìm tập xác định của hàm bằng cách giải điều kiện mẫu số khác $0$.\n**Bước 2.** Tìm giá trị của $x$ không thuộc tập xác định, đó là điểm hàm số không xác định.\n**Bước 3.** Đối chiếu với các phương án và nhớ hàm phân thức liên tục tại mọi điểm thuộc tập xác định để chắc chắn các điểm còn lại không gián đoạn.\n**Phần 2. Trình bày**\nHàm số xác định khi $x+1\\ne0$, tức $x\\ne-1$.\nTập xác định là $\\mathbb{R}\\setminus\\{-1\\}$ và hàm phân thức liên tục tại mọi điểm thuộc tập xác định.\nTại $x_0=-1$ hàm số không xác định nên gián đoạn.\nVậy hàm số gián đoạn tại $x_0=-1$.\nChọn  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002082",
+  "loai": "trac_nghiem",
+  "de": "Giới hạn $\\lim\\limits_{x\\to2^+}\\dfrac{x^2-5}{2-x}$ bằng",
+  "lua_chon": [
+   "$\\dfrac32$",
+   "$+\\infty$",
+   "$-\\infty$",
+   "$2$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tử có giới hạn khác $0$ còn mẫu dần tới $0$, nên phải xét dấu của mẫu khi $x$ tiến tới điểm đó từ phía cho trước.\n**Bước 1.** Tính giới hạn của tử số và xác định tử mang dấu dương hay âm khi $x$ gần điểm đang xét.\n**Bước 2.** Xét mẫu số dần tới $0$ và xác định dấu của mẫu theo phía tiến tới, bên phải hay bên trái.\n**Bước 3.** Dùng quy tắc giới hạn của thương khi mẫu dần tới $0$ để suy ra giới hạn là $+\\infty$ hay $-\\infty$ rồi chọn phương án.\n**Phần 2. Trình bày**\nKhi $x\\to2^+$: tử $\\lim(x^2-5)=4-5=-1<0$.\nMẫu $2-x\\to0$ và $x>2$ nên $2-x<0$.\nTử âm, mẫu dần tới $0$ qua giá trị âm nên thương dương và giới hạn là $+\\infty$.\nVậy giới hạn bằng $+\\infty$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000003033",
+  "loai": "trac_nghiem",
+  "de": "Cho hai dãy số $(u_n)$ và $(v_n)$ có $u_n=\\dfrac{1}{n+1}$ và $v_n=\\dfrac{3}{n+3}$. Tính $\\lim\\limits_{n\\to+\\infty}\\dfrac{u_n}{v_n}$.",
+  "lua_chon": [
+   "$0$.",
+   "$3$.",
+   "$\\dfrac13$.",
+   "$+\\infty$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Hai dãy đều có giới hạn $0$ nên không dùng thẳng quy tắc thương; hãy rút gọn thương trước rồi mới tính giới hạn.\n**Bước 1.** Viết thương $\\dfrac{u_n}{v_n}$ và rút gọn thành một phân thức của $n$.\n**Bước 2.** Xác định bậc của tử và của mẫu rồi chia cả hai cho luỹ thừa cao nhất của $n$.\n**Bước 3.** Tính giới hạn bằng $\\lim\\dfrac1n=0$ và đối chiếu với các phương án.\n**Phần 2. Trình bày**\n$\\dfrac{u_n}{v_n}=\\dfrac{1}{n+1}\\cdot\\dfrac{n+3}{3}=\\dfrac{n+3}{3(n+1)}=\\dfrac{1+\\dfrac3n}{3(1+\\dfrac1n)}$.\nVậy $\\lim\\limits_{n\\to+\\infty}\\dfrac{u_n}{v_n}=\\dfrac13$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002883",
+  "loai": "tu_luan",
+  "de": "Xét tính liên tục của hàm số $y=\\dfrac{x^2-3x+2}{2x^2+x-3}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Hàm phân thức hữu tỉ liên tục trên từng khoảng của tập xác định, nên phải tìm các điểm làm mẫu bằng $0$.\n**Bước 1.** Giải phương trình mẫu bằng $0$ để biết các giá trị cần loại khỏi tập xác định.\n**Bước 2.** Viết tập xác định dưới dạng hợp các khoảng.\n**Bước 3.** Dùng định lí về hàm phân thức hữu tỉ để kết luận hàm liên tục trên từng khoảng đó.\n**Phần 2. Trình bày**\nHàm số xác định khi $2x^2+x-3\\ne0$. Ta có $2x^2+x-3=(x-1)(2x+3)$ nên điều kiện là $x\\ne1$ và $x\\ne-\\dfrac32$.\nTập xác định là $D=\\mathbb{R}\\setminus\\{-\\dfrac32;1\\}$.\nHàm số là thương của hai đa thức nên liên tục trên từng khoảng của tập xác định. Vậy hàm số liên tục trên các khoảng $(-\\infty;-\\ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000980",
+  "loai": "trac_nghiem",
+  "de": "Hàm số nào dưới đây gián đoạn tại điểm $x_0=-1$.",
+  "lua_chon": [
+   "$y=(x+1)\\left(x^2+2\\right)$.",
+   "$y=\\dfrac{2x-1}{x+1}$.",
+   "$y=\\dfrac{x}{x-1}$.",
+   "$y=\\dfrac{x+1}{x^2+1}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hàm đa thức liên tục trên $\\mathbb{R}$, hàm phân thức liên tục tại điểm thuộc tập xác định, nên gián đoạn tại $x_0=-1$ chỉ xảy ra khi mẫu số bằng $0$ tại đó.\n**Bước 1.** Nhận dạng từng hàm: hàm nào là đa thức, hàm nào là phân thức.\n**Bước 2.** Với các hàm phân thức, thay $x=-1$ vào mẫu số để xem mẫu có bằng $0$ không.\n**Bước 3.** Chọn hàm không xác định tại $x=-1$ làm hàm gián đoạn, đồng thời xác nhận các hàm còn lại liên tục.\n**Phần 2. Trình bày**\nHàm A là đa thức nên liên tục trên $\\mathbb{R}$, liên tục tại $x_0=-1$.\nHàm C có mẫu $x-1=-2\\ne0$ tại $x=-1$ nên liên tục tại $x_0=-1$.\nHàm D có mẫu $x^2+1\\ge1>0$ với mọi $x$ nên liên tục trên $\\mathbb{R}$, liên …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002240",
+  "loai": "tu_luan",
+  "de": "Dùng định nghĩa, xét tính liên tục của hàm số sau tại điểm $x=-1$. $y=g(x)=\\begin{cases}\\dfrac{x^{3}+1}{x+1}&\\text{khi }x\\ne-1\\\\0&\\text{khi }x=-1\\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Hàm số liên tục tại $x_0$ khi $x_0$ thuộc tập xác định và $\\lim\\limits_{x\\to x_0}f(x)=f(x_0)$.\n**Bước 1.** Xác định giá trị $g(-1)$ theo nhánh dành riêng cho điểm $x=-1$.\n**Bước 2.** Tính giới hạn khi $x\\to-1$ của nhánh $x\\ne-1$; đây là dạng $\\dfrac00$ nên phân tích tử thành nhân tử.\n**Bước 3.** Triệt tiêu nhân tử chung $x+1$ rồi thay trực tiếp để tính giới hạn.\n**Bước 4.** So sánh giới hạn với giá trị $g(-1)$ để kết luận.\n**Phần 2. Trình bày**\nTập xác định của hàm số là $\\mathbb{R}$, chứa điểm $-1$. Ta có $g(-1)=0$.\nVới $x\\ne-1$: $\\dfrac{x^{3}+1}{x+1}=\\dfrac{(x+1)(x^{2}-x+1)}{x+1}=x^{2}-x+1$.\n$\\lim\\limits_{x\\to-1}g(x)=\\lim\\limits_{x\\to-1}(x^{2}-x+1)=(-1)^ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001833",
+  "loai": "tu_luan",
+  "de": "Tìm $\\lim\\limits_{n\\to+\\infty}\\dfrac{n(n+1)}{(n+4)^3}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** So sánh bậc của tử và mẫu theo $n$ rồi chia cả tử và mẫu cho lũy thừa cao nhất của $n$ ở mẫu.\n**Bước 1.** Tìm bậc cao nhất của $n$ ở tử và ở mẫu để chọn số chia chung cho cả hai.\n**Bước 2.** Chia từng số hạng của tử và mẫu cho lũy thừa đã chọn rồi rút gọn các phân số.\n**Bước 3.** Dùng $\\lim\\dfrac{c}{n^k}=0$ với $k>0$ và quy tắc giới hạn của thương để tính kết quả.\n**Phần 2. Trình bày**\nChia cả tử và mẫu cho $n^3$: $\\dfrac{n(n+1)}{(n+4)^3}=\\dfrac{\\dfrac1n+\\dfrac1{n^2}}{(1+\\dfrac4n)^3}$.\nTử có giới hạn $0$, mẫu có giới hạn $1^3=1\\ne0$.\nVậy $\\lim\\limits_{n\\to+\\infty}\\dfrac{n(n+1)}{(n+4)^3}=0$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002108",
+  "loai": "tra_loi_ngan",
+  "de": "Tính $\\lim\\limits_{x\\to+\\infty}\\dfrac{1000x^{4}+x^{3}-2x^{2}-3}{x-4x^{4}}$.",
+  "dap_an": "-250",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tử và mẫu cùng bậc cao nhất nên chia cả hai cho luỹ thừa cao nhất của $x$.\n**Bước 1.** Xác định luỹ thừa cao nhất của $x$ ở tử và mẫu, đều là bậc $4$, khi $x\\to+\\infty$.\n**Bước 2.** Chia cả tử và mẫu cho $x^{4}$ để mọi số hạng còn lại có dạng $\\dfrac{c}{x^{k}}$ với $k>0$.\n**Bước 3.** Dùng $\\lim\\dfrac{1}{x^{k}}=0$ để bỏ các số hạng đó rồi lấy thương hai hệ số đầu.\n**Phần 2. Trình bày**\nChia cả tử và mẫu cho $x^{4}$ ta được $\\dfrac{1000x^{4}+x^{3}-2x^{2}-3}{x-4x^{4}}=\\dfrac{1000+\\dfrac1x-\\dfrac{2}{x^{2}}-\\dfrac{3}{x^{4}}}{\\dfrac{1}{x^{3}}-4}$.\nKhi $x\\to+\\infty$ thì $\\dfrac1x$, $\\dfrac{2}{x^{2}}$, $\\dfrac{3}{x^{4}}$, $\\dfrac{1}{x^{3}}$ đều dần về $0$.\nDo đó g …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001831",
+  "loai": "tu_luan",
+  "de": "Chứng minh rằng $\\lim\\dfrac{1-2n}{\\sqrt{n^2+1}}=-2$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Chứng minh hiệu $u_n+2$ có giới hạn $0$ bằng cách chặn giá trị tuyệt đối của nó.\n**Bước 1.** Quy đồng $u_n+2$ về cùng mẫu $\\sqrt{n^2+1}$.\n**Bước 2.** Chặn tử số từ cả hai phía bằng cách so sánh $\\sqrt{n^2+1}$ với $n$ và với $n+1$.\n**Bước 3.** Chặn mẫu số từ dưới bởi $n$ rồi dùng định lí kẹp để kết luận theo định nghĩa.\n**Phần 2. Trình bày**\nTa có $\\dfrac{1-2n}{\\sqrt{n^2+1}}+2=\\dfrac{1-2n+2\\sqrt{n^2+1}}{\\sqrt{n^2+1}}$.\nVì $n<\\sqrt{n^2+1}\\le n+1$ nên $1<1-2n+2\\sqrt{n^2+1}\\le3$.\nDo đó $0<\\dfrac{1-2n}{\\sqrt{n^2+1}}+2\\le\\dfrac3{\\sqrt{n^2+1}}<\\dfrac3n$ với mọi $n\\ge1$.\nMà $\\lim\\dfrac3n=0$ nên $\\lim\\Big(\\dfrac{1-2n}{\\sqrt{n^2+1}}+2\\Big)=0$.\nTheo định nghĩa, $\\lim …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001912",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn của dãy số $u_n=-n^4-50n+11$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Rút lũy thừa cao nhất của $n$ ra ngoài rồi dùng quy tắc giới hạn của tích với một dãy dần tới vô cực.\n**Bước 1.** Xác định số hạng có lũy thừa cao nhất của $n$ trong biểu thức đã cho.\n**Bước 2.** Rút lũy thừa đó ra ngoài để biểu thức thành tích của lũy thừa của $n$ và một biểu thức có giới hạn hữu hạn.\n**Bước 3.** Tính giới hạn của từng thừa số, xét dấu rồi áp dụng quy tắc giới hạn của tích để kết luận.\n**Phần 2. Trình bày**\nRút $n^4$ ra ngoài: $u_n=n^4\\Big(-1-\\dfrac{50}{n^3}+\\dfrac{11}{n^4}\\Big)$.\nTa có $\\lim n^4=+\\infty$ và $\\lim\\Big(-1-\\dfrac{50}{n^3}+\\dfrac{11}{n^4}\\Big)=-1<0$.\nVậy $\\lim u_n=-\\infty$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002049",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\lim\\limits_{x\\to0}f(x)=1$, $\\lim\\limits_{x\\to0}g(x)=2$. Khi đó $\\lim\\limits_{x\\to0}[f(x)+g(x)]$ bằng",
+  "lua_chon": [
+   "$1$",
+   "$-1$",
+   "$3$",
+   "$0$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Dùng các quy tắc giới hạn của tổng, hiệu, tích, thương và của tích với hằng số để biểu diễn giới hạn cần tính qua các giới hạn đã cho.\n**Bước 1.** Viết lại biểu thức cần tính thành tổng, hiệu, tích hoặc thương của các hàm đã biết giới hạn.\n**Bước 2.** Áp dụng quy tắc giới hạn tương ứng cho từng phép toán, kèm điều kiện mẫu khác $0$ nếu có thương.\n**Bước 3.** Thay các giá trị giới hạn đã cho, tính số rồi đối chiếu với bốn phương án.\n**Phần 2. Trình bày**\nÁp dụng quy tắc giới hạn của tổng:\n$\\lim\\limits_{x\\to0}[f(x)+g(x)]=1+2=3$.\nVậy giới hạn bằng $3$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002407",
+  "loai": "tra_loi_ngan",
+  "de": "Biết hàm số $f(x)=\\begin{cases}\\dfrac{x^{2}-16}{x-4}&\\text{khi }x>4\\\\mx+1&\\text{khi }x\\le4\\end{cases}$ liên tục trên $\\mathbb{R}$ khi tham số $m=\\dfrac{a}{b}$ ($\\dfrac{a}{b}$ là phân số tối giản). Khi đó $2a+b$ bằng bao nhiêu?",
+  "dap_an": "18",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Mỗi nhánh liên tục trên khoảng của nó nên chỉ cần xét tại điểm ghép $x=4$, nơi giới hạn phải (rút gọn nhân tử) phải bằng $f(4)$.\n**Bước 1.** Xét tính liên tục của từng nhánh trên các khoảng $(4;+\\infty)$ và $(-\\infty;4)$ để biết chỉ cần kiểm tra tại $x=4$.\n**Bước 2.** Rút gọn phân thức ở nhánh $x>4$ rồi tính giới hạn phải tại $4$.\n**Bước 3.** Tính $f(4)$ và giới hạn trái từ nhánh $x\\le4$.\n**Bước 4.** Cho các đại lượng bằng nhau để tìm $m$, viết dạng phân số tối giản rồi tính $2a+b$.\n**Phần 2. Trình bày**\nVới $x>4$: $f(x)=\\dfrac{(x-4)(x+4)}{x-4}=x+4$ nên liên tục trên $(4;+\\infty)$; với $x<4$, $f(x)=mx+1$ liên tục trên $(-\\infty;4)$.\nTại $x=4$: $f(4)=4m+1$  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002606",
+  "loai": "trac_nghiem",
+  "de": "Cho các số thực $a$, $b$, $c$ thoả mãn $c^2+a=8$ và $\\lim\\limits_{n\\to+\\infty}(\\sqrt{an^2+bn}-cn)=2$. Tính $P=a+b+c$.",
+  "lua_chon": [
+   "$-24$",
+   "$6$",
+   "$12$",
+   "$14$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Nhân liên hợp để tử thành $(a-c^2)n^2+bn$; giới hạn hữu hạn đòi hỏi hệ số $n^2$ bằng không, từ đó lập hệ với điều kiện còn lại.\n**Bước 1.** Nhận ra giới hạn hữu hạn nên $a>0$ và $c>0$; nhân liên hợp để chuyển về phân thức.\n**Bước 2.** Lập điều kiện hệ số của $n^2$ ở tử bằng không và điều kiện giới hạn bằng $2$.\n**Bước 3.** Kết hợp với $c^2+a=8$ để giải $a$, $c$, $b$ rồi tính $P$.\n**Phần 2. Trình bày**\nVì giới hạn hữu hạn nên $a>0$, $c>0$. Nhân liên hợp: $\\sqrt{an^2+bn}-cn=\\dfrac{(a-c^2)n^2+bn}{\\sqrt{an^2+bn}+cn}$.\nĐể giới hạn hữu hạn cần $a-c^2=0$, khi đó giới hạn bằng $\\dfrac{b}{\\sqrt a+c}=2$.\nTừ $a=c^2$ và $c^2+a=8$ suy ra $a=c^2=4$ nên $c=2$.\nThay vào:  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001698",
+  "loai": "trac_nghiem",
+  "de": "Tính $\\lim\\limits_{n\\to+\\infty}\\dfrac{2n+1}{n^{3}-n^{2}+1}$.",
+  "lua_chon": [
+   "$+\\infty$",
+   "$2$",
+   "$1$",
+   "$0$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tử có bậc thấp hơn mẫu nên chia cả tử và mẫu cho luỹ thừa cao nhất của $n$ ở mẫu rồi dùng giới hạn cơ bản.\n**Bước 1.** So sánh bậc của tử và bậc của mẫu để biết nên chia cho luỹ thừa nào của $n$.\n**Bước 2.** Chia cả tử và mẫu cho $n^{3}$ rồi viết lại thành các phân thức dạng $\\dfrac{1}{n^{k}}$.\n**Bước 3.** Dùng giới hạn cơ bản $\\dfrac{1}{n^{k}}\\to0$ để tìm giới hạn của tử và của mẫu.\n**Bước 4.** Lập tỉ số hai giới hạn rồi chọn phương án phù hợp.\n**Phần 2. Trình bày**\n$\\lim\\limits_{n\\to+\\infty}\\dfrac{2n+1}{n^{3}-n^{2}+1}=\\lim\\limits_{n\\to+\\infty}\\dfrac{\\dfrac{2}{n^{2}}+\\dfrac{1}{n^{3}}}{1-\\dfrac{1}{n}+\\dfrac{1}{n^{3}}}$.\nTử có giới hạn $0$, mẫu có giới hạn  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000003058",
+  "loai": "trac_nghiem",
+  "de": "Tính tổng $S$ của cấp số nhân lùi vô hạn có số hạng đầu $u_{1}=1$ và công bội $q=-\\dfrac{1}{2}$.",
+  "lua_chon": [
+   "$S=2$.",
+   "$S=\\dfrac{3}{2}$.",
+   "$S=1$.",
+   "$S=\\dfrac{2}{3}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Cấp số nhân lùi vô hạn ($|q|<1$) có tổng $S=\\dfrac{u_1}{1-q}$, chỉ cần thay $u_1$ và $q$ đã cho.\n**Bước 1.** Kiểm tra điều kiện $|q|<1$ để chắc chắn đây là cấp số nhân lùi vô hạn.\n**Bước 2.** Viết công thức tính tổng $S$ theo số hạng đầu và công bội.\n**Bước 3.** Thay số, tính giá trị của biểu thức rồi đối chiếu với bốn phương án.\n**Phần 2. Trình bày**\nVì $|q|=\\dfrac12<1$ nên đây là cấp số nhân lùi vô hạn.\nTa có $S=\\dfrac{u_{1}}{1-q}$.\n$S=\\dfrac{1}{1-(-\\dfrac12)}=\\dfrac{1}{\\dfrac32}=\\dfrac23$.\nVậy $S=\\dfrac23$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001843",
+  "loai": "tu_luan",
+  "de": "Tìm $\\lim\\limits_{n\\to+\\infty}\\dfrac{\\sqrt[3]{n^2}+2}{n+\\sqrt n}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đưa $n$ ra ngoài dấu căn (với $n>0$) rồi chia cả tử và mẫu cho lũy thừa cao nhất của $n$ để về các dãy cơ bản.\n**Bước 1.** Với mỗi căn thức, đưa lũy thừa cao nhất của $n$ ra ngoài dấu căn, chú ý $\\sqrt{n^2}=n$ khi $n>0$.\n**Bước 2.** Chia cả tử và mẫu cho lũy thừa cao nhất của $n$ rồi rút gọn các phân số.\n**Bước 3.** Dùng $\\lim\\dfrac{c}{n^k}=0$ với $k>0$ cùng quy tắc giới hạn của căn và của thương để tính kết quả.\n**Phần 2. Trình bày**\nChia cả tử và mẫu cho $n$: $\\dfrac{\\sqrt[3]{n^2}+2}{n+\\sqrt n}=\\dfrac{\\dfrac1{\\sqrt[3]n}+\\dfrac2n}{1+\\dfrac1{\\sqrt n}}$.\nVì $\\lim\\dfrac1{\\sqrt[3]n}=\\lim\\dfrac2n=\\lim\\dfrac1{\\sqrt n}=0$ nên tử có giới hạn $0$, mẫu có giới hạn  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002783",
+  "loai": "trac_nghiem",
+  "de": "$\\lim\\limits_{x\\to+\\infty}\\dfrac{\\sqrt{4x^{2}-2x+1}+2-x}{\\sqrt{9x^{2}-3x}+2x}$ có kết quả là",
+  "lua_chon": [
+   "$-\\dfrac{1}{5}$",
+   "$+\\infty$",
+   "$-\\infty$",
+   "$\\dfrac{1}{5}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Khi $x\\to+\\infty$ thì $x>0$ nên $\\sqrt{x^{2}}=x$; đưa $x$ ra ngoài các căn rồi chia cả tử và mẫu cho $x$.\n**Bước 1.** Nhận xét $x>0$ khi $x\\to+\\infty$, từ đó đưa $x$ ra ngoài mỗi căn thức: $\\sqrt{4x^{2}-2x+1}=x\\sqrt{4-\\dfrac{2}{x}+\\dfrac{1}{x^{2}}}$ và tương tự cho căn ở mẫu.\n**Bước 2.** Chia cả tử và mẫu cho $x$ để mọi số hạng còn lại có dạng $\\dfrac{c}{x^{k}}$.\n**Bước 3.** Dùng $\\lim\\dfrac{c}{x^{k}}=0$ để tính giới hạn của tử và mẫu rồi lấy thương.\n**Phần 2. Trình bày**\nVới $x>0$: $\\dfrac{\\sqrt{4x^{2}-2x+1}+2-x}{\\sqrt{9x^{2}-3x}+2x}=\\dfrac{\\sqrt{4-\\dfrac{2}{x}+\\dfrac{1}{x^{2}}}+\\dfrac{2}{x}-1}{\\sqrt{9-\\dfrac{3}{x}}+2}$.\nGiới hạn của tử là $2-1=1$, giới h …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002699",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn sau đây (với $n$ là số nguyên dương): $\\lim\\limits_{x\\to 1}\\dfrac{x+x^{2}+...+x^{n}-n}{x+1}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Mẫu thức khác $0$ tại điểm đang xét nên thay trực tiếp; tử thức là tổng của $n$ số hạng nên tính giá trị của tổng tại điểm đó.\n**Bước 1.** Kiểm tra mẫu thức $x+1$ tại $x=1$ có khác $0$ hay không để được phép thay trực tiếp.\n**Bước 2.** Thay $x=1$ vào tử thức: đếm xem tử có bao nhiêu số hạng dạng $x^{k}$ rồi tính tổng giá trị của chúng.\n**Bước 3.** Trừ đi hằng số $n$ ở tử, chia cho giá trị của mẫu và kết luận.\n**Phần 2. Trình bày**\nMẫu thức bằng $1+1=2\\ne0$ tại $x=1$ nên ta thay trực tiếp.\nTử thức có $n$ số hạng $x,x^{2},\\dots,x^{n}$, mỗi số hạng bằng $1$ khi $x=1$ nên tổng bằng $n$.\n$\\lim\\limits_{x\\to 1}\\dfrac{x+x^{2}+...+x^{n}-n}{x+1}=\\dfrac{1+1^{2}+...+1 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002927",
+  "loai": "trac_nghiem",
+  "de": "Tìm $m$ để hàm số $f(x)=\\begin{cases}\\dfrac{x^2-1}{x-1}&\\text{nếu }x\\ne1\\\\m+2&\\text{nếu }x=1\\end{cases}$ liên tục tại điểm $x_0=1$.",
+  "lua_chon": [
+   "$m=3$",
+   "$m=0$",
+   "$m=4$",
+   "$m=1$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Hàm số liên tục tại $x_0$ khi và chỉ khi giới hạn của $f(x)$ khi $x\\to x_0$ bằng $f(x_0)$.\n**Bước 1.** Tính $f(1)$ theo nhánh $x=1$, kết quả chứa tham số $m$.\n**Bước 2.** Rút gọn phân thức bằng cách phân tích tử thành nhân tử để tính $\\lim\\limits_{x\\to1}f(x)$.\n**Bước 3.** Cho giới hạn bằng giá trị tại điểm để lập phương trình ẩn $m$ rồi giải.\n**Phần 2. Trình bày**\nTa có $f(1)=m+2$.\nVới $x\\ne1$: $\\dfrac{x^2-1}{x-1}=\\dfrac{(x-1)(x+1)}{x-1}=x+1$.\nSuy ra $\\lim\\limits_{x\\to1}f(x)=\\lim\\limits_{x\\to1}(x+1)=2$.\nHàm số liên tục tại $x_0=1$ khi và chỉ khi $\\lim\\limits_{x\\to1}f(x)=f(1)$, tức là $m+2=2$.\nSuy ra $m=0$.\nVậy $m=0$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002048",
+  "loai": "trac_nghiem",
+  "de": "Tính $\\lim\\limits_{x\\to0}\\dfrac{\\sqrt{2x+9}-3}{x}$ bằng",
+  "lua_chon": [
+   "$2$",
+   "$\\dfrac13$",
+   "$+\\infty$",
+   "$\\dfrac16$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Dạng $\\dfrac00$ chứa căn thức: nhân cả tử và mẫu với biểu thức liên hợp để xuất hiện nhân tử chung rồi triệt tiêu.\n**Bước 1.** Thay giá trị $x_0$ vào tử và mẫu để nhận ra dạng vô định $\\dfrac00$ và xác định căn cần liên hợp.\n**Bước 2.** Nhân cả tử và mẫu với biểu thức liên hợp, dùng hằng đẳng thức hiệu hai bình phương ở tử.\n**Bước 3.** Rút gọn nhân tử chung $x-x_0$ ở tử và mẫu rồi thay $x=x_0$ vào biểu thức còn lại.\n**Bước 4.** Tính giá trị tìm được, kể cả đại lượng đề hỏi thêm nếu có, rồi đối chiếu với phương án.\n**Phần 2. Trình bày**\nThay $x=0$: tử $\\sqrt9-3=0$, mẫu $0$ nên có dạng $\\dfrac00$.\nNhân tử và mẫu với $\\sqrt{2x+9}+3>0$: $\\dfrac{\\sqrt{2x+9}-3}{ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002957",
+  "loai": "trac_nghiem",
+  "de": "Biết rằng hàm số $f(x)=\\begin{cases}\\dfrac{x^2-1}{\\sqrt{x}-1}&\\text{nếu }x\\ne1\\\\m&\\text{nếu }x=1\\end{cases}$ liên tục trên đoạn $[0;+\\infty)$ (với $m$ là tham số). Khẳng định nào dưới đây là đúng?",
+  "lua_chon": [
+   "$m$ là một số hữu tỉ",
+   "$m$ là một số vô tỉ",
+   "$m>10$",
+   "$m<0$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Với $x\\ne1$ hàm xác định trên $[0;+\\infty)$ nên liên tục; vậy chỉ cần liên tục tại $x=1$, tức là $m$ bằng giới hạn của $f(x)$ khi $x\\to1$.\n**Bước 1.** Nêu rằng với $x\\ne1$ biểu thức xác định nên hàm liên tục, chỉ còn điểm $x=1$ cần xét.\n**Bước 2.** Phân tích $x^2-1$ và $x-1$ theo $\\sqrt{x}$ để rút gọn nhân tử $\\sqrt{x}-1$ rồi tính giới hạn tại $x=1$.\n**Bước 3.** Cho $m$ bằng giới hạn vừa tính rồi đối chiếu các tính chất của $m$ ở bốn phương án.\n**Phần 2. Trình bày**\nVới $x\\ge0$, $x\\ne1$ hàm số xác định nên liên tục trên $[0;1)$ và $(1;+\\infty)$.\nTa có $x^2-1=(x-1)(x+1)=(\\sqrt{x}-1)(\\sqrt{x}+1)(x+1)$.\nVới $x\\ne1$: $f(x)=(\\sqrt{x}+1)(x+1)$ nên $\\lim\\limits_{ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002603",
+  "loai": "trac_nghiem",
+  "de": "Tính $\\lim\\limits_{n\\to+\\infty}\\,n(\\sqrt{4n^2+1}-\\sqrt[3]{8n^3+n})$.",
+  "lua_chon": [
+   "$+\\infty$",
+   "$1$",
+   "$-\\infty$",
+   "$\\dfrac16$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Chen $2n$ vào giữa để tách thành hai hiệu, mỗi hiệu liên hợp riêng (bậc hai và bậc ba) rồi cộng hai giới hạn.\n**Bước 1.** Viết $\\sqrt{4n^2+1}-\\sqrt[3]{8n^3+n}=(\\sqrt{4n^2+1}-2n)+(2n-\\sqrt[3]{8n^3+n})$ để tách hai dạng vô định.\n**Bước 2.** Nhân liên hợp bậc hai cho hiệu thứ nhất và liên hợp bậc ba cho hiệu thứ hai, sau khi nhân $n$ vào mỗi hiệu.\n**Bước 3.** Tìm giới hạn từng phần rồi cộng lại và so với bốn phương án.\n**Phần 2. Trình bày**\nTa có $n(\\sqrt{4n^2+1}-\\sqrt[3]{8n^3+n})=n(\\sqrt{4n^2+1}-2n)+n(2n-\\sqrt[3]{8n^3+n})$.\nPhần thứ nhất: $n(\\sqrt{4n^2+1}-2n)=\\dfrac{n}{\\sqrt{4n^2+1}+2n}=\\dfrac{1}{\\sqrt{4+\\dfrac1{n^2}}+2}\\to\\dfrac14$.\nPhần thứ hai: đặt $b=\\sq …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000939",
+  "loai": "trac_nghiem",
+  "de": "Dãy số nào sau đây có giới hạn bằng $0$?",
+  "lua_chon": [
+   "$u_n=\\dfrac{n^2-2}{5n+3n^2}$.",
+   "$u_n=\\dfrac{n^2-2n}{5n+3n^2}$.",
+   "$u_n=\\dfrac{1-2n}{5n+3n^2}$.",
+   "$u_n=\\dfrac{1-2n^2}{5n+3n^2}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** giới hạn của phân thức đa thức theo $n$ bằng $0$ khi bậc của tử nhỏ hơn bậc của mẫu, nên so sánh bậc ở từng phương án.\n**Bước 1.** Xác định bậc của mẫu chung của cả bốn dãy số trong các phương án.\n**Bước 2.** Tìm bậc của tử ở từng phương án rồi so sánh với bậc của mẫu.\n**Bước 3.** Với phương án có bậc tử bằng bậc mẫu, chia tử và mẫu cho $n^2$ để thấy giới hạn là tỉ số hai hệ số cao nhất khác $0$.\n**Bước 4.** Chọn phương án mà tử có bậc nhỏ hơn bậc mẫu và kiểm tra lại bằng cách chia cho $n^2$.\n**Phần 2. Trình bày**\nMẫu của cả bốn dãy đều có bậc $2$.\nPhương án A: tử $n^2-2$ bậc $2$, nên $\\lim u_n=\\dfrac{1}{3}\\ne0$.\nPhương án B: tử $n^2-2n$ bậc $2$, nên $\\lim …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002673",
+  "loai": "tra_loi_ngan",
+  "de": "Giới hạn $\\lim\\sqrt[3]{\\dfrac{2^{3n}-3^{n+1}}{8^{n+1}+6^{n-1}}}=\\lim\\sqrt[3]{\\dfrac{1-3a^n}{8+\\dfrac{1}{6}b^n}}$ với $a;\\ b$ là các số hữu tỉ. Tính giá trị $8(a+b)$.",
+  "dap_an": "9",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đổi mọi luỹ thừa về cơ số cụ thể rồi chia tử và mẫu cho luỹ thừa có cơ số lớn nhất để so với dạng đề cho.\n**Bước 1.** Đưa các luỹ thừa về cơ số cụ thể bằng cách viết $2^{3n}=8^n$, tách $3^{n+1}=3\\cdot3^n$, $8^{n+1}=8\\cdot8^n$, $6^{n-1}=\\dfrac{1}{6}\\cdot6^n$.\n**Bước 2.** Chia tử và mẫu cho $8^n$ (cơ số lớn nhất) để các luỹ thừa còn lại có dạng $q^n$ với $|q|<1$.\n**Bước 3.** Đồng nhất với dạng đề cho để tìm $a$, $b$ rồi tính $8(a+b)$.\n**Phần 2. Trình bày**\n$\\dfrac{2^{3n}-3^{n+1}}{8^{n+1}+6^{n-1}}=\\dfrac{8^n-3\\cdot3^n}{8\\cdot8^n+\\dfrac{1}{6}\\cdot6^n}=\\dfrac{1-3(\\dfrac{3}{8})^n}{8+\\dfrac{1}{6}(\\dfrac{3}{4})^n}$.\nĐồng nhất với dạng đề cho ta được $a=\\dfrac{3}{8 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002595",
+  "loai": "trac_nghiem",
+  "de": "Biết $\\lim\\limits_{n\\to+\\infty}\\dfrac{\\sqrt{16n^4-4}-\\sqrt[3]{n^6+\\pi}}{an^2+\\pi}=-12$ với $a\\ne0$. Mệnh đề nào dưới đây đúng?",
+  "lua_chon": [
+   "$a\\in(-12;-2)$",
+   "$a\\in(-2;2)$",
+   "$a\\in(2;6)$",
+   "$a\\in(6;12)$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đưa $n^2$ ra ngoài mỗi căn ở tử, chia cả tử và mẫu cho $n^2$ rồi cho giới hạn bằng $-12$ để tìm $a$.\n**Bước 1.** Viết mỗi căn ở tử dưới dạng $n^2$ nhân với căn của biểu thức có giới hạn hữu hạn.\n**Bước 2.** Chia cả tử và mẫu cho $n^2$ để được giới hạn là một phân thức theo $a$.\n**Bước 3.** Cho giới hạn đó bằng $-12$, giải tìm $a$ rồi xét xem $a$ thuộc khoảng nào.\n**Phần 2. Trình bày**\nChia tử và mẫu cho $n^2$: biểu thức bằng $\\dfrac{\\sqrt{16-\\dfrac4{n^4}}-\\sqrt[3]{1+\\dfrac{\\pi}{n^6}}}{a+\\dfrac{\\pi}{n^2}}$.\nTử có giới hạn $4-1=3$, mẫu có giới hạn $a$ nên giới hạn bằng $\\dfrac3a$.\nCho $\\dfrac3a=-12$ ta được $a=-\\dfrac14$.\nVì $-2<-\\dfrac14<2$ nên $a\\in(-2;2)$ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001691",
+  "loai": "tu_luan",
+  "de": "Một mẫu chất phóng xạ $^{210}_{84}\\text{Po}$ có khối lượng ban đầu $m_0=42$ (mg), nhưng cứ sau một khoảng thời gian $T=138$ ngày thì khối lượng chất đó giảm đi một nửa ($T$ được gọi là chu kì bán rã). Gọi $u_n$ là khối lượng còn lại của mẫu chất phóng xạ sau $n$ chu kì bán rã.\na) Tìm số hạng tổng quát của dãy số $(u_n)$.\nb) Tính giới hạn của dãy số $(u_n)$ và cho biết ý nghĩa của giới hạn đó.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Mỗi chu kì khối lượng giảm một nửa nên $(u_n)$ là cấp số nhân; số hạng tổng quát cho ta lấy giới hạn.\n**Bước 1.** Tìm khối lượng sau một chu kì để xác định số hạng đầu và công bội.\n**Bước 2.** Viết số hạng tổng quát của cấp số nhân.\n**Bước 3.** Lấy giới hạn bằng $\\lim q^n=0$ với $|q|<1$ rồi giải thích ý nghĩa thực tế.\n**Phần 2. Trình bày**\na) Sau mỗi chu kì khối lượng giảm một nửa nên $u_n=\\dfrac12u_{n-1}$ và $u_1=\\dfrac{42}{2}=21$.\nSuy ra $(u_n)$ là cấp số nhân công bội $\\dfrac12$, và $u_n=21(\\dfrac12)^{n-1}=\\dfrac{42}{2^n}$.\nb) $\\lim\\limits_{n\\to+\\infty}u_n=42\\cdot\\lim\\limits_{n\\to+\\infty}(\\dfrac12)^n=42\\cdot0=0$.\nÝ nghĩa: sau một khoảng thời gian đủ dài …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002543",
+  "loai": "tra_loi_ngan",
+  "de": "Cho dãy số $(u_n)$ với $u_n=\\dfrac{4n^2+n+2}{an^2+5}$. Để dãy số đã cho có giới hạn bằng $2$ thì $a$ bằng bao nhiêu?",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tử và mẫu cùng bậc hai, giới hạn là thương hai hệ số của $n^2$; đặt thương đó bằng $2$ để tìm $a$.\n**Bước 1.** Chia cả tử và mẫu cho $n^2$ để biểu diễn giới hạn theo tham số $a$, chú ý điều kiện $a\\ne0$.\n**Bước 2.** Tính giới hạn của tử và mẫu sau khi chia để được giới hạn của dãy dưới dạng một phân thức theo $a$.\n**Bước 3.** Cho giới hạn đó bằng giá trị đề bài rồi giải phương trình tìm $a$.\n**Phần 2. Trình bày**\nVới $a\\ne0$: $u_n=\\dfrac{4+\\dfrac1n+\\dfrac2{n^2}}{a+\\dfrac5{n^2}}$ nên $\\lim\\limits_{n\\to+\\infty} u_n=\\dfrac4a$.\nTheo đề, $\\dfrac4a=2$ nên $a=2$ (thoả $a\\ne0$).\nVới $a=0$ thì $u_n=\\dfrac{4n^2+n+2}{5}\\to+\\infty$, không thoả đề.\nVậy $a=2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002537",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn sau: $\\lim\\limits_{n\\to+\\infty}\\dfrac{-4n^2+n+2}{2n^2+n+1}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tử và mẫu cùng bậc hai, chia cả tử và mẫu cho $n^2$ rồi dùng $\\lim\\dfrac1{n^k}=0$.\n**Bước 1.** Nhận ra tử và mẫu cùng bậc hai nên chọn chia cho $n^2$.\n**Bước 2.** Rút gọn các số hạng thành hằng số hoặc dạng $\\dfrac{c}{n^k}$.\n**Bước 3.** Tính giới hạn tử, mẫu và dùng quy tắc giới hạn của thương.\n**Phần 2. Trình bày**\nChia cả tử và mẫu cho $n^2$: $\\dfrac{-4n^2+n+2}{2n^2+n+1}=\\dfrac{-4+\\dfrac1n+\\dfrac2{n^2}}{2+\\dfrac1n+\\dfrac1{n^2}}$.\nTử có giới hạn $-4$, mẫu có giới hạn $2\\ne0$.\nVậy $\\lim\\limits_{n\\to+\\infty}\\dfrac{-4n^2+n+2}{2n^2+n+1}=\\dfrac{-4}{2}=-2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000003114",
+  "loai": "trac_nghiem",
+  "de": "Tính $\\lim\\limits_{x\\to5}\\dfrac{x^2-12x+35}{25-5x}$.",
+  "lua_chon": [
+   "$-\\dfrac25$",
+   "$+\\infty$",
+   "$\\dfrac25$",
+   "$-\\infty$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Thay $x=5$ thì cả tử và mẫu đều bằng $0$, nên phải phân tích thành nhân tử và triệt tiêu nhân tử chung $x-5$.\n**Bước 1.** Kiểm tra bằng cách thay $x=5$ vào tử và mẫu để nhận ra dạng $\\dfrac00$.\n**Bước 2.** Phân tích tử thành nhân tử và đặt hệ số chung ở mẫu để lộ nhân tử $x-5$.\n**Bước 3.** Rút gọn nhân tử chung rồi thay $x=5$ vào biểu thức còn lại.\n**Phần 2. Trình bày**\nVới $x\\ne5$: $\\dfrac{x^2-12x+35}{25-5x}=\\dfrac{(x-5)(x-7)}{-5(x-5)}=\\dfrac{x-7}{-5}$.\n$\\lim\\limits_{x\\to5}\\dfrac{x^2-12x+35}{25-5x}=\\lim\\limits_{x\\to5}\\dfrac{x-7}{-5}=\\dfrac{5-7}{-5}=\\dfrac25$.\nVậy giới hạn bằng $\\dfrac25$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002591",
+  "loai": "trac_nghiem",
+  "de": "Tính $\\lim\\limits_{n\\to+\\infty}\\dfrac{\\sqrt[3]{8n^3+n^2-1}+4n+3}{3n-7}$.",
+  "lua_chon": [
+   "$2$",
+   "$\\dfrac23$",
+   "$\\dfrac43$",
+   "$4$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đưa $n$ ra ngoài căn bậc ba rồi chia cả tử và mẫu cho $n$.\n**Bước 1.** Viết căn bậc ba dưới dạng $n$ nhân với căn bậc ba của một biểu thức có giới hạn hữu hạn.\n**Bước 2.** Chia cả tử và mẫu cho $n$ để mọi số hạng có giới hạn hữu hạn.\n**Bước 3.** Tính giới hạn tử, mẫu rồi dùng quy tắc giới hạn của thương.\n**Phần 2. Trình bày**\nChia tử và mẫu cho $n$: biểu thức bằng $\\dfrac{\\sqrt[3]{8+\\dfrac1n-\\dfrac1{n^3}}+4+\\dfrac3n}{3-\\dfrac7n}$.\nTử có giới hạn $\\sqrt[3]8+4=6$, mẫu có giới hạn $3$.\nDo đó giới hạn bằng $\\dfrac63=2$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000002187",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to-2^+}\\dfrac{\\sqrt{x^2+4x+4}}{x+2}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Biểu thức dưới căn là bình phương của $x+2$, nên căn bằng $|x+2|$; khi $x\\to-2^+$ thì $x+2>0$.\n**Bước 1.** Nhận ra biểu thức dưới căn là một bình phương hoàn hảo.\n**Bước 2.** Đổi căn thành giá trị tuyệt đối rồi xét dấu của $x+2$ khi $x\\to-2^+$.\n**Bước 3.** Bỏ dấu giá trị tuyệt đối, rút gọn rồi tính giới hạn.\n**Phần 2. Trình bày**\n$x^2+4x+4=(x+2)^2$ nên $\\sqrt{x^2+4x+4}=|x+2|$.\nKhi $x\\to-2^+$ ta có $x>-2$ nên $x+2>0$ và $|x+2|=x+2$.\nVới $x>-2$: $\\dfrac{\\sqrt{x^2+4x+4}}{x+2}=\\dfrac{x+2}{x+2}=1$.\n$\\lim\\limits_{x\\to-2^+}1=1$.\nVậy giới hạn bằng $1$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

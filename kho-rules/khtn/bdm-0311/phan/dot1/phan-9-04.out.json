@@ -1,0 +1,488 @@
+[
+ {
+  "ma_cau": "K09040101001",
+  "dang_bai_id": "KDB01442",
+  "chac": "cao",
+  "ly_do": "Mô tả thí nghiệm, hỏi tên hiện tượng cảm ứng điện từ"
+ },
+ {
+  "ma_cau": "K09040101002",
+  "dang_bai_id": "KDB01442",
+  "chac": "cao",
+  "ly_do": "Mô tả thí nghiệm, hỏi tên hiện tượng cảm ứng điện từ"
+ },
+ {
+  "ma_cau": "K09040101003",
+  "dang_bai_id": "KDB01442",
+  "chac": "cao",
+  "ly_do": "Mô tả thí nghiệm, hỏi tên hiện tượng cảm ứng điện từ"
+ },
+ {
+  "ma_cau": "K09040101004",
+  "dang_bai_id": "KDB01442",
+  "chac": "cao",
+  "ly_do": "Mô tả thí nghiệm, hỏi tên hiện tượng cảm ứng điện từ"
+ },
+ {
+  "ma_cau": "K09040101005",
+  "dang_bai_id": "KDB01442",
+  "chac": "cao",
+  "ly_do": "Mô tả thí nghiệm, hỏi tên hiện tượng cảm ứng điện từ"
+ },
+ {
+  "ma_cau": "K09040101006",
+  "dang_bai_id": "KDB01442",
+  "chac": "cao",
+  "ly_do": "Mô tả thí nghiệm, hỏi tên hiện tượng cảm ứng điện từ"
+ },
+ {
+  "ma_cau": "K09040101007",
+  "dang_bai_id": "KDB01442",
+  "chac": "cao",
+  "ly_do": "Mô tả thí nghiệm, hỏi tên hiện tượng cảm ứng điện từ"
+ },
+ {
+  "ma_cau": "K09040101008",
+  "dang_bai_id": "KDB01446",
+  "chac": "cao",
+  "ly_do": "Máy phát điện dựa trên hiện tượng nào; dạng sau thắng"
+ },
+ {
+  "ma_cau": "K09040101009",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Hỏi điều kiện/vì sao có hoặc không có dòng cảm ứng"
+ },
+ {
+  "ma_cau": "K09040101010",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Hỏi điều kiện/vì sao có hoặc không có dòng cảm ứng"
+ },
+ {
+  "ma_cau": "K09040101011",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Hỏi điều kiện/vì sao có hoặc không có dòng cảm ứng"
+ },
+ {
+  "ma_cau": "K09040101012",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Hỏi điều kiện/vì sao có hoặc không có dòng cảm ứng"
+ },
+ {
+  "ma_cau": "K09040101013",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Hỏi điều kiện/vì sao có hoặc không có dòng cảm ứng"
+ },
+ {
+  "ma_cau": "K09040101014",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Hỏi điều kiện/vì sao có hoặc không có dòng cảm ứng"
+ },
+ {
+  "ma_cau": "K09040101015",
+  "dang_bai_id": "KDB01444",
+  "chac": "cao",
+  "ly_do": "Đặc điểm dòng xoay chiều về chiều/đổi chiều"
+ },
+ {
+  "ma_cau": "K09040101016",
+  "dang_bai_id": "KDB01444",
+  "chac": "cao",
+  "ly_do": "Đặc điểm dòng xoay chiều về chiều/đổi chiều"
+ },
+ {
+  "ma_cau": "K09040101017",
+  "dang_bai_id": "KDB01444",
+  "chac": "cao",
+  "ly_do": "Đặc điểm dòng xoay chiều về chiều/đổi chiều"
+ },
+ {
+  "ma_cau": "K09040101018",
+  "dang_bai_id": "KDB01444",
+  "chac": "cao",
+  "ly_do": "Đặc điểm dòng xoay chiều về chiều/đổi chiều"
+ },
+ {
+  "ma_cau": "K09040101019",
+  "dang_bai_id": "KDB01445",
+  "chac": "cao",
+  "ly_do": "Dụng cụ đo xoay chiều khác dụng cụ một chiều"
+ },
+ {
+  "ma_cau": "K09040101020",
+  "dang_bai_id": "KDB01446",
+  "chac": "cao",
+  "ly_do": "Cấu tạo, bộ phận quay, năng lượng của máy phát xoay chiều"
+ },
+ {
+  "ma_cau": "K09040101021",
+  "dang_bai_id": "KDB01446",
+  "chac": "cao",
+  "ly_do": "Cấu tạo, bộ phận quay, năng lượng của máy phát xoay chiều"
+ },
+ {
+  "ma_cau": "K09040101022",
+  "dang_bai_id": "KDB01446",
+  "chac": "cao",
+  "ly_do": "Cấu tạo, bộ phận quay, năng lượng của máy phát xoay chiều"
+ },
+ {
+  "ma_cau": "K09040101023",
+  "dang_bai_id": "KDB01446",
+  "chac": "cao",
+  "ly_do": "Cấu tạo, bộ phận quay, năng lượng của máy phát xoay chiều"
+ },
+ {
+  "ma_cau": "K09040101024",
+  "dang_bai_id": "KDB01447",
+  "chac": "cao",
+  "ly_do": "Hiện tượng quan sát được, hỏi tác dụng của dòng xoay chiều"
+ },
+ {
+  "ma_cau": "K09040101025",
+  "dang_bai_id": "KDB01447",
+  "chac": "cao",
+  "ly_do": "Hiện tượng quan sát được, hỏi tác dụng của dòng xoay chiều"
+ },
+ {
+  "ma_cau": "K09040101026",
+  "dang_bai_id": "KDB01447",
+  "chac": "cao",
+  "ly_do": "Hiện tượng quan sát được, hỏi tác dụng của dòng xoay chiều"
+ },
+ {
+  "ma_cau": "K09040101027",
+  "dang_bai_id": "KDB01447",
+  "chac": "vua",
+  "ly_do": "Nêu chuông điện (thiết bị cụ thể) nhưng nhóm này không có dạng thiết bị"
+ },
+ {
+  "ma_cau": "K09040101028",
+  "dang_bai_id": "KDB01447",
+  "chac": "cao",
+  "ly_do": "Hỏi dòng xoay chiều có những tác dụng nào"
+ },
+ {
+  "ma_cau": "K09040101029",
+  "dang_bai_id": "KDB01447",
+  "chac": "vua",
+  "ly_do": "Nêu lò sưởi điện cụ thể, dấu hiệu sưởi ấm; nhóm không có dạng thiết bị"
+ },
+ {
+  "ma_cau": "K09040101030",
+  "dang_bai_id": "KDB01444",
+  "chac": "cao",
+  "ly_do": "Nguồn pin/ổ điện cho dòng có chiều thế nào"
+ },
+ {
+  "ma_cau": "K09040101031",
+  "dang_bai_id": "KDB01444",
+  "chac": "cao",
+  "ly_do": "Nguồn pin/ổ điện cho dòng có chiều thế nào"
+ },
+ {
+  "ma_cau": "K09040101032",
+  "dang_bai_id": "KDB01445",
+  "chac": "cao",
+  "ly_do": "Ampe kế/vôn kế AC đo loại dòng nào"
+ },
+ {
+  "ma_cau": "K09040101033",
+  "dang_bai_id": "KDB01445",
+  "chac": "cao",
+  "ly_do": "Ampe kế/vôn kế AC đo loại dòng nào"
+ },
+ {
+  "ma_cau": "K09040101034",
+  "dang_bai_id": "KDB01444",
+  "chac": "cao",
+  "ly_do": "So sánh chiều dòng của ắc quy với máy phát/ổ điện"
+ },
+ {
+  "ma_cau": "K09040101035",
+  "dang_bai_id": "KDB01444",
+  "chac": "cao",
+  "ly_do": "So sánh chiều dòng của ắc quy với máy phát/ổ điện"
+ },
+ {
+  "ma_cau": "K09040102001",
+  "dang_bai_id": "KDB01448",
+  "chac": "cao",
+  "ly_do": "Đưa vào/rút ra hoặc dao động, giải thích dòng cảm ứng đổi chiều"
+ },
+ {
+  "ma_cau": "K09040102002",
+  "dang_bai_id": "KDB01448",
+  "chac": "cao",
+  "ly_do": "Đưa vào/rút ra hoặc dao động, giải thích dòng cảm ứng đổi chiều"
+ },
+ {
+  "ma_cau": "K09040102003",
+  "dang_bai_id": "KDB01448",
+  "chac": "cao",
+  "ly_do": "Đưa vào/rút ra hoặc dao động, giải thích dòng cảm ứng đổi chiều"
+ },
+ {
+  "ma_cau": "K09040102004",
+  "dang_bai_id": "KDB01448",
+  "chac": "cao",
+  "ly_do": "Đưa vào/rút ra hoặc dao động, giải thích dòng cảm ứng đổi chiều"
+ },
+ {
+  "ma_cau": "K09040102005",
+  "dang_bai_id": "KDB01448",
+  "chac": "cao",
+  "ly_do": "Đưa vào/rút ra hoặc dao động, giải thích dòng cảm ứng đổi chiều"
+ },
+ {
+  "ma_cau": "K09040102006",
+  "dang_bai_id": "KDB01448",
+  "chac": "cao",
+  "ly_do": "Đưa vào/rút ra hoặc dao động, giải thích dòng cảm ứng đổi chiều"
+ },
+ {
+  "ma_cau": "K09040102007",
+  "dang_bai_id": "KDB01448",
+  "chac": "cao",
+  "ly_do": "Đưa vào/rút ra hoặc dao động, giải thích dòng cảm ứng đổi chiều"
+ },
+ {
+  "ma_cau": "K09040102008",
+  "dang_bai_id": "KDB01448",
+  "chac": "cao",
+  "ly_do": "Đưa vào/rút ra hoặc dao động, giải thích dòng cảm ứng đổi chiều"
+ },
+ {
+  "ma_cau": "K09040102009",
+  "dang_bai_id": "KDB01449",
+  "chac": "vua",
+  "ly_do": "Một giai đoạn tiếp tục đưa lại gần, hỏi đèn nào sáng; thiếu đủ bốn giai đoạn"
+ },
+ {
+  "ma_cau": "K09040102010",
+  "dang_bai_id": "KDB01449",
+  "chac": "cao",
+  "ly_do": "Bốn giai đoạn nam châm, hỏi đèn LED sáng từng giai đoạn"
+ },
+ {
+  "ma_cau": "K09040102011",
+  "dang_bai_id": "KDB01449",
+  "chac": "cao",
+  "ly_do": "Bốn giai đoạn nam châm, hỏi đèn LED sáng từng giai đoạn"
+ },
+ {
+  "ma_cau": "K09040102012",
+  "dang_bai_id": "KDB01449",
+  "chac": "cao",
+  "ly_do": "Bốn giai đoạn nam châm, hỏi đèn LED sáng từng giai đoạn"
+ },
+ {
+  "ma_cau": "K09040102013",
+  "dang_bai_id": "KDB01449",
+  "chac": "cao",
+  "ly_do": "Bốn giai đoạn nam châm, hỏi đèn LED sáng từng giai đoạn"
+ },
+ {
+  "ma_cau": "K09040102014",
+  "dang_bai_id": "KDB01449",
+  "chac": "cao",
+  "ly_do": "Bốn giai đoạn nam châm, hỏi đèn LED sáng từng giai đoạn"
+ },
+ {
+  "ma_cau": "K09040102015",
+  "dang_bai_id": "KDB01449",
+  "chac": "cao",
+  "ly_do": "Bốn giai đoạn nam châm, hỏi đèn LED sáng từng giai đoạn"
+ },
+ {
+  "ma_cau": "K09040102016",
+  "dang_bai_id": "KDB01449",
+  "chac": "cao",
+  "ly_do": "Bốn giai đoạn nam châm, hỏi đèn LED sáng từng giai đoạn"
+ },
+ {
+  "ma_cau": "K09040102017",
+  "dang_bai_id": "KDB01449",
+  "chac": "cao",
+  "ly_do": "Bốn giai đoạn nam châm, hỏi đèn LED sáng từng giai đoạn"
+ },
+ {
+  "ma_cau": "K09040102018",
+  "dang_bai_id": "KDB01450",
+  "chac": "cao",
+  "ly_do": "Bốn giai đoạn dòng trong nam châm điện, hỏi đèn sáng"
+ },
+ {
+  "ma_cau": "K09040102019",
+  "dang_bai_id": "KDB01450",
+  "chac": "cao",
+  "ly_do": "Bốn giai đoạn dòng trong nam châm điện, hỏi đèn sáng"
+ },
+ {
+  "ma_cau": "K09040102020",
+  "dang_bai_id": "KDB01450",
+  "chac": "cao",
+  "ly_do": "Bốn giai đoạn dòng trong nam châm điện, hỏi đèn sáng"
+ },
+ {
+  "ma_cau": "K09040102021",
+  "dang_bai_id": "KDB01450",
+  "chac": "cao",
+  "ly_do": "Bốn giai đoạn dòng trong nam châm điện, hỏi đèn sáng"
+ },
+ {
+  "ma_cau": "K09040102022",
+  "dang_bai_id": "KDB01450",
+  "chac": "cao",
+  "ly_do": "Bốn giai đoạn dòng trong nam châm điện, hỏi đèn sáng"
+ },
+ {
+  "ma_cau": "K09040102023",
+  "dang_bai_id": "KDB01450",
+  "chac": "cao",
+  "ly_do": "Bốn giai đoạn dòng trong nam châm điện, hỏi đèn sáng"
+ },
+ {
+  "ma_cau": "K09040102024",
+  "dang_bai_id": "KDB01450",
+  "chac": "cao",
+  "ly_do": "Bốn giai đoạn dòng trong nam châm điện, hỏi đèn sáng"
+ },
+ {
+  "ma_cau": "K09040102025",
+  "dang_bai_id": "KDB01451",
+  "chac": "cao",
+  "ly_do": "Kim nam châm lệch rồi đứng yên hoặc dao động, hỏi loại dòng"
+ },
+ {
+  "ma_cau": "K09040102026",
+  "dang_bai_id": "KDB01451",
+  "chac": "cao",
+  "ly_do": "Kim nam châm lệch rồi đứng yên hoặc dao động, hỏi loại dòng"
+ },
+ {
+  "ma_cau": "K09040102027",
+  "dang_bai_id": "KDB01451",
+  "chac": "cao",
+  "ly_do": "Kim nam châm lệch rồi đứng yên hoặc dao động, hỏi loại dòng"
+ },
+ {
+  "ma_cau": "K09040102028",
+  "dang_bai_id": "KDB01451",
+  "chac": "cao",
+  "ly_do": "Kim nam châm lệch rồi đứng yên hoặc dao động, hỏi loại dòng"
+ },
+ {
+  "ma_cau": "K09040102029",
+  "dang_bai_id": "KDB01451",
+  "chac": "cao",
+  "ly_do": "Kim nam châm lệch rồi đứng yên hoặc dao động, hỏi loại dòng"
+ },
+ {
+  "ma_cau": "K09040102030",
+  "dang_bai_id": "KDB01448",
+  "chac": "cao",
+  "ly_do": "Đèn sợi đốt sáng đều dù dòng xoay chiều đổi chiều nhanh"
+ },
+ {
+  "ma_cau": "K09040102031",
+  "dang_bai_id": "KDB01451",
+  "chac": "cao",
+  "ly_do": "Hai ống dây với kim đứng yên/dao động, phân biệt loại dòng"
+ },
+ {
+  "ma_cau": "K09040103001",
+  "dang_bai_id": "KDB01452",
+  "chac": "cao",
+  "ly_do": "Thiết bị cụ thể, hỏi tác dụng chủ yếu"
+ },
+ {
+  "ma_cau": "K09040103002",
+  "dang_bai_id": "KDB01452",
+  "chac": "cao",
+  "ly_do": "Thiết bị cụ thể, hỏi tác dụng chủ yếu"
+ },
+ {
+  "ma_cau": "K09040103003",
+  "dang_bai_id": "KDB01452",
+  "chac": "cao",
+  "ly_do": "Thiết bị cụ thể, hỏi tác dụng chủ yếu"
+ },
+ {
+  "ma_cau": "K09040103004",
+  "dang_bai_id": "KDB01452",
+  "chac": "cao",
+  "ly_do": "Thiết bị cụ thể, hỏi tác dụng chủ yếu"
+ },
+ {
+  "ma_cau": "K09040103005",
+  "dang_bai_id": "KDB01452",
+  "chac": "cao",
+  "ly_do": "Thiết bị cụ thể, hỏi tác dụng chủ yếu"
+ },
+ {
+  "ma_cau": "K09040103006",
+  "dang_bai_id": "KDB01452",
+  "chac": "cao",
+  "ly_do": "Thiết bị cụ thể, hỏi tác dụng chủ yếu"
+ },
+ {
+  "ma_cau": "K09040103007",
+  "dang_bai_id": "KDB01452",
+  "chac": "cao",
+  "ly_do": "Thiết bị cụ thể, hỏi tác dụng chủ yếu"
+ },
+ {
+  "ma_cau": "K09040103008",
+  "dang_bai_id": "KDB01453",
+  "chac": "cao",
+  "ly_do": "Hỏi mô tả SAI về nam châm điện/thiết bị xoay chiều"
+ },
+ {
+  "ma_cau": "K09040103009",
+  "dang_bai_id": "KDB01453",
+  "chac": "cao",
+  "ly_do": "Hỏi mô tả SAI về nam châm điện/thiết bị xoay chiều"
+ },
+ {
+  "ma_cau": "K09040103010",
+  "dang_bai_id": "KDB01453",
+  "chac": "cao",
+  "ly_do": "Hỏi mô tả SAI về nam châm điện/thiết bị xoay chiều"
+ },
+ {
+  "ma_cau": "K09040103011",
+  "dang_bai_id": "KDB01453",
+  "chac": "cao",
+  "ly_do": "Hỏi mô tả SAI về nam châm điện/thiết bị xoay chiều"
+ },
+ {
+  "ma_cau": "K09040103012",
+  "dang_bai_id": "KDB01453",
+  "chac": "cao",
+  "ly_do": "Hỏi mô tả SAI về nam châm điện/thiết bị xoay chiều"
+ },
+ {
+  "ma_cau": "K09040103013",
+  "dang_bai_id": "KDB01453",
+  "chac": "cao",
+  "ly_do": "Hỏi mô tả SAI về nam châm điện/thiết bị xoay chiều"
+ },
+ {
+  "ma_cau": "K09040103014",
+  "dang_bai_id": "KDB01453",
+  "chac": "cao",
+  "ly_do": "Hỏi mô tả SAI về nam châm điện/thiết bị xoay chiều"
+ },
+ {
+  "ma_cau": "K09040103015",
+  "dang_bai_id": "KDB01453",
+  "chac": "cao",
+  "ly_do": "Hỏi mô tả SAI về nam châm điện/thiết bị xoay chiều"
+ }
+]

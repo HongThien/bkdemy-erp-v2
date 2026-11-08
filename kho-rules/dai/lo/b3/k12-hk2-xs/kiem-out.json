@@ -1,0 +1,14 @@
+[
+{"ma_cau":"T11200000010358","dang_bai_id":"NDB02568","chac":"cao","ly_do":"Cho P(A), P(B), P(A|B), tính P(B|A) qua P(AB) — đúng dạng thay số vào công thức có điều kiện."},
+{"ma_cau":"T11200000010361","dang_bai_id":"NDB02579","chac":"vua","ly_do":"Lập phương trình toàn phần tìm tỉ lệ sinh đôi thật rồi lấy tỉ lệ có điều kiện; gần dạng Bayes NDB02580."},
+{"ma_cau":"T11200000010362","dang_bai_id":"NDB02579","chac":"vua","ly_do":"Lập phương trình toàn phần tìm tỉ lệ sinh đôi thật rồi lấy tỉ lệ có điều kiện; gần dạng Bayes NDB02580."},
+{"ma_cau":"T11200000010363","dang_bai_id":"NDB02568","chac":"cao","ly_do":"Cho P(A), P(B), P(A|B), tính P(B|A) qua P(AB) — đúng dạng thay số vào công thức có điều kiện."},
+{"ma_cau":"T11200000010365","dang_bai_id":"NDB02580","chac":"cao","ly_do":"Biết bị tim mạch, hỏi xác suất béo phì do di truyền: toàn phần hai nhóm rồi Bayes — đúng dạng hậu nghiệm."},
+{"ma_cau":"T11200000010451","dang_bai_id":"NDB02578","chac":"cao","ly_do":"Lấy từ hai lô rồi lấy tiếp, phân nhiều tầng trường hợp kết hợp tổ hợp; hợp cả 02577, dạng sau thắng."},
+{"ma_cau":"T11200000010455","dang_bai_id":"NDB02578","chac":"cao","ly_do":"Trò chơi phi tiêu nhiều vòng luân phiên, cộng xác suất các nhánh thắng — dạng trò chơi nhiều giai đoạn."},
+{"ma_cau":"T11200000010459","dang_bai_id":"NDB02573","chac":"cao","ly_do":"Hai biến cố độc lập, tính xác suất ít nhất một xảy ra bằng 1 trừ tích biến cố đối — dạng độc lập."},
+{"ma_cau":"T11200000010461","dang_bai_id":"NDB02573","chac":"cao","ly_do":"Hai biến cố độc lập, tính xác suất ít nhất một xảy ra bằng 1 trừ tích biến cố đối — dạng độc lập."},
+{"ma_cau":"T11200000010462","dang_bai_id":"NDB02573","chac":"cao","ly_do":"Hai biến cố độc lập, tính xác suất ít nhất một xảy ra bằng 1 trừ tích biến cố đối — dạng độc lập."},
+{"ma_cau":"T11200000010482","dang_bai_id":"NDB02573","chac":"cao","ly_do":"Hai lần tiếp xúc độc lập, xác suất bị lây ít nhất một lần = 1 trừ tích — dạng biến cố độc lập."},
+{"ma_cau":"T11200000010499","dang_bai_id":"NDB02580","chac":"cao","ly_do":"Biết đúng bài hai, tính xác suất đúng bài một: toàn phần hai nhánh rồi Bayes — dạng hậu nghiệm."}
+]

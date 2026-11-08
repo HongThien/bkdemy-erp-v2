@@ -1,0 +1,225 @@
+#NHOM NNB01744 | Kĩ thuật Thêm - Bớt - Tách - Ghép BĐT AM - GM
+@MOTA
+Năm thao tác đưa một biểu thức về đúng dạng áp dụng được Cô-si mà vẫn giữ dấu "=": tách hạng tử, thêm bớt một đại lượng, ghép cặp đối xứng, đánh giá mẫu số, nhân thêm hằng số.
+@LT
+##CY Nguyên tắc bảo toàn dấu "="
+Mỗi lần áp dụng Cô-si cho một nhóm số, dấu "=" của riêng bước đó phải xảy ra đúng tại điểm rơi của bài. Quy trình ba bước: dự đoán điểm rơi (thường nhờ tính đối xứng của giả thiết và của biểu thức); chọn cách tách, đại lượng thêm vào hoặc hằng số nhân thêm, trong đó để lại một tham số chưa biết; áp dụng điều kiện "các số trong mỗi nhóm bằng nhau tại điểm rơi" để tìm tham số. Bỏ qua bước ba thì chuỗi đánh giá vẫn đúng nhưng thường chỉ cho một cận yếu hơn cần chứng minh.
+
+##TC Năm thao tác
+- Tách hạng tử: viết một hạng tử thành tổng nhiều phần có hệ số chưa biết, cân bằng hệ số để dấu "=" khớp điểm rơi.
+- Thêm bớt một đại lượng: cộng vào vế trái một đại lượng để tạo nhóm dùng được Cô-si, sau đó trừ đại lượng ấy đi.
+- Ghép cặp đối xứng: nhóm các hạng tử theo cặp hoặc theo bộ sao cho tích của chúng là biểu thức đơn giản ở vế phải.
+- Đánh giá mẫu số: thay mẫu số phức tạp bằng mẫu đơn giản hơn, hoặc tách nghịch đảo của một tổng nhờ bổ đề tổng nghịch đảo.
+- Nhân thêm hằng số: nhân biểu thức dưới căn với hằng số bằng $1$ tại điểm rơi để hạ bậc căn bằng Cô-si.
+
+##TC Bổ đề ghép cặp đối xứng
+Cho $X,Y,Z,A,B,C\ge0$. Nếu $XY\ge A^2$, $YZ\ge B^2$, $ZX\ge C^2$ thì $X+Y+Z\ge A+B+C$ và $XYZ\ge ABC$. Nếu ba bất đẳng thức ghép cặp đi theo chiều ngược lại ($XY\le A^2$, $YZ\le B^2$, $ZX\le C^2$) thì $XYZ\le ABC$.
+
+##TC Hai đánh giá hay dùng
+- $(x+y)^2\ge4xy$.
+- $\dfrac{x^2}y\ge2x-y$ với $y>0$ (vì $\dfrac{x^2}y+y\ge2x$).
+
+##TC Bổ đề tổng nghịch đảo
+Với $n$ số dương: $\dfrac1{x_1}+\dfrac1{x_2}+\dots+\dfrac1{x_n}\ge\dfrac{n^2}{x_1+x_2+\dots+x_n}$, dấu "=" khi các số bằng nhau (trường hợp $n=2$: $\dfrac1x+\dfrac1y\ge\dfrac4{x+y}$).
+
+#DANG moi | Tách hạng tử với hệ số bất định | muc=5 | bac=A
+@MOTA
+(dạng tôi đề xuất thêm) vế trái là tổng các lũy thừa cùng bậc với hệ số khác nhau, giả thiết là biểu thức đối xứng bậc thấp hơn (ví dụ $ab+bc+ca=7$); tách mỗi hạng tử thành nhiều phần có hệ số $k$ chưa biết, ghép cặp để sinh ra các tích $ab$, $bc$, $ca$, rồi tìm $k$ bằng cách cân bằng hệ số.
+@LT
+##PP Tách hạng tử với tham số $k$
+Chia các hạng tử cho các cặp: hai biến có vai trò như nhau thì chia đều biến còn lại
+Đặt hệ số $k$ chưa biết cho các phần, áp dụng Cô-si cho từng cặp để sinh ra các tích $ab$, $bc$, $ca$
+Cộng lại và cho vế phải là bội của $ab+bc+ca$; giải phương trình của $k$ và chọn nghiệm thỏa miền cho phép của $k$
+Thay $k$, viết lại các đánh giá, dùng giả thiết và tìm điểm rơi
+@VD
+##VD
+Cho $a,b,c$ là các số thực dương thỏa mãn $ab+bc+ca=7$. Chứng minh rằng $6a^2+6b^2+c^2\ge21$.
+
+Bài giải:
+Vế phải là hằng số và có giả thiết $ab+bc+ca$ nên phải làm xuất hiện đủ ba tích $ab$, $bc$, $ca$. Hai biến $a,b$ có vai trò như nhau nên chia đều $c^2$ thành hai nửa: một nửa ghép với một phần của $6a^2$ để ra $ac$, nửa kia ghép với một phần của $6b^2$ để ra $bc$; phần còn lại của $6a^2$ và $6b^2$ ghép với nhau để ra $ab$.
+Đặt $6a^2=ka^2+(6-k)a^2$ và $6b^2=kb^2+(6-k)b^2$ với $0<k<6$. Cô-si cho hai số không âm:
+$ka^2+\dfrac{c^2}2\ge\sqrt{2k}\,ac$, $\quad kb^2+\dfrac{c^2}2\ge\sqrt{2k}\,bc$, $\quad(6-k)a^2+(6-k)b^2\ge2(6-k)ab$.
+Cộng lại: $6a^2+6b^2+c^2\ge\sqrt{2k}\,(ac+bc)+2(6-k)ab$. Để vế phải là bội của $ab+bc+ca$ cần $\sqrt{2k}=2(6-k)$, tức $2k^2-25k+72=0$, cho $k=\dfrac92$ (nghiệm $k=8$ bị loại vì lớn hơn $6$).
+Với $k=\dfrac92$ ta có $\sqrt{2k}=3$, các đánh giá là $\dfrac92a^2+\dfrac{c^2}2\ge3ac$, $\dfrac92b^2+\dfrac{c^2}2\ge3bc$, $\dfrac32a^2+\dfrac32b^2\ge3ab$.
+Cộng ba bất đẳng thức: $6a^2+6b^2+c^2\ge3(ab+bc+ca)=21$.
+Dấu "=" xảy ra khi $a=b$ và $\dfrac92a^2=\dfrac{c^2}2$, tức $c=3a$. Thay vào giả thiết: $7a^2=7$, nên $a=b=1$, $c=3$.
+
+##VD
+Cho $a,b,c$ là các số thực dương thỏa mãn $ab+bc+ca=9$. Chứng minh rằng $10a^2+10b^2+c^2\ge36$.
+
+Bài giải:
+Làm tương tự ví dụ trước: tách $10a^2=ka^2+(10-k)a^2$, $10b^2=kb^2+(10-k)b^2$ và ghép $ka^2+\dfrac{c^2}2\ge\sqrt{2k}\,ac$, $kb^2+\dfrac{c^2}2\ge\sqrt{2k}\,bc$, $(10-k)(a^2+b^2)\ge2(10-k)ab$.
+Điều kiện để vế phải là bội của $ab+bc+ca$: $\sqrt{2k}=2(10-k)$, tức $2k^2-41k+200=0$, cho $k=8$ (nghiệm $k=\dfrac{25}2$ bị loại vì lớn hơn $10$).
+Với $k=8$: $8a^2+\dfrac{c^2}2\ge4ac$, $8b^2+\dfrac{c^2}2\ge4bc$, $2a^2+2b^2\ge4ab$.
+Cộng ba bất đẳng thức: $10a^2+10b^2+c^2\ge4(ab+bc+ca)=36$.
+Dấu "=" xảy ra khi $a=b$ và $8a^2=\dfrac{c^2}2$, tức $c=4a$. Thay vào giả thiết: $9a^2=9$, nên $a=b=1$, $c=4$.
+
+#DANG moi | Thêm một hằng số hoặc một đại lượng rồi bớt đi | muc=4 | bac=A
+@MOTA
+(dạng tôi đề xuất thêm) vế trái chứa các hạng tử không ghép trực tiếp được với nhau (khác bậc với giả thiết, hoặc phân thức có mẫu là nhị thức); cộng vào một hằng số hoặc một đại lượng phụ để mỗi nhóm dùng được Cô-si, rồi cộng các bất đẳng thức và bớt đại lượng đã thêm.
+@LT
+##PP Thêm bớt một đại lượng
+Dự đoán điểm rơi (thường từ tính đối xứng của giả thiết)
+Chọn đại lượng thêm vào: bằng đúng giá trị tại điểm rơi của hạng tử cần ghép (hằng số $t=a^3$ khi $a=b=c=1$; hoặc $\dfrac{b+2c}K$ với $K$ tìm từ điều kiện hai số bằng nhau)
+Áp dụng Cô-si cho từng nhóm, viết các đánh giá tương tự theo hoán vị vòng
+Cộng theo vế rồi bớt các đại lượng đã thêm (chú ý tổng các đại lượng thêm vào thường là bội của $a+b+c$)
+
+##CY
+Hằng số thêm vào không được chọn tùy ý: nó phải bằng đúng giá trị chung của các biến tại điểm rơi, nâng lên đúng lũy thừa đang xét.
+@VD
+##VD
+Cho $a,b,c$ là các số thực dương thỏa mãn $ab+bc+ca=3$. Chứng minh rằng $a^3+b^3+c^3\ge3$.
+
+Bài giải:
+Vế trái bậc $3$, giả thiết bậc $2$ nên chưa ghép trực tiếp để ra $ab$ được; ta thêm hằng số vào mỗi nhóm. Điểm rơi dự đoán $a=b=c=1$, nên hằng số cần thêm là $1^3=1$.
+Cô-si cho ba số dương $a^3,b^3,1$: $a^3+b^3+1\ge3\sqrt[3]{a^3b^3}=3ab$. Tương tự $b^3+c^3+1\ge3bc$ và $c^3+a^3+1\ge3ca$.
+Cộng ba bất đẳng thức: $2(a^3+b^3+c^3)+3\ge3(ab+bc+ca)=9$.
+Suy ra $a^3+b^3+c^3\ge3$. Dấu "=" xảy ra khi $a=b=c=1$.
+
+##VD
+Cho $a,b,c$ là các số thực dương. Chứng minh rằng $\dfrac{a^2}b+\dfrac{b^2}c+\dfrac{c^2}a\ge a+b+c$.
+
+Bài giải:
+Điểm rơi $a=b=c$; tích $\dfrac{a^2}b\cdot b=a^2$ là một bình phương nên ghép từng cặp.
+Cô-si cho hai số dương: $\dfrac{a^2}b+b\ge2a$, $\dfrac{b^2}c+c\ge2b$, $\dfrac{c^2}a+a\ge2c$.
+Cộng theo vế: $\dfrac{a^2}b+\dfrac{b^2}c+\dfrac{c^2}a+(a+b+c)\ge2(a+b+c)$.
+Bớt $a+b+c$ ở hai vế: $\dfrac{a^2}b+\dfrac{b^2}c+\dfrac{c^2}a\ge a+b+c$.
+Dấu "=" xảy ra khi $a=b=c$.
+
+##VD
+Cho $a,b,c$ là các số thực dương. Chứng minh rằng $\dfrac{a^2}{b+2c}+\dfrac{b^2}{c+2a}+\dfrac{c^2}{a+2b}\ge\dfrac{a+b+c}3$.
+
+Bài giải:
+Điểm rơi $a=b=c$. Mẫu số $b+2c$ là nhị thức bậc nhất nên thêm vào đại lượng $\dfrac{b+2c}K$ ($K>0$ chưa biết) để tích của cặp là $\dfrac{a^2}K$, một bình phương chia hằng số. Tại $a=b=c$: $\dfrac{a^2}{b+2c}=\dfrac a3$ và $\dfrac{b+2c}K=\dfrac{3a}K$, hai số bằng nhau khi $\dfrac a3=\dfrac{3a}K$, tức $K=9$.
+Cô-si cho hai số dương: $\dfrac{a^2}{b+2c}+\dfrac{b+2c}9\ge2\sqrt{\dfrac{a^2}9}=\dfrac{2a}3$.
+Tương tự $\dfrac{b^2}{c+2a}+\dfrac{c+2a}9\ge\dfrac{2b}3$ và $\dfrac{c^2}{a+2b}+\dfrac{a+2b}9\ge\dfrac{2c}3$.
+Cộng ba bất đẳng thức; các đại lượng thêm vào có tổng $\dfrac{3(a+b+c)}9=\dfrac{a+b+c}3$. Bớt chúng đi:
+$\dfrac{a^2}{b+2c}+\dfrac{b^2}{c+2a}+\dfrac{c^2}{a+2b}\ge\dfrac{2(a+b+c)}3-\dfrac{a+b+c}3=\dfrac{a+b+c}3$.
+Dấu "=" xảy ra khi $3a=b+2c$, $3b=c+2a$, $3c=a+2b$, tức $a=b=c$.
+
+#DANG moi | Ghép cặp đối xứng | muc=4 | bac=A
+@MOTA
+(dạng tôi đề xuất thêm) hai vế đều là tổng hoặc đều là tích của ba đại lượng; không đánh giá từng hạng tử mà ghép các hạng tử theo cặp sao cho tích của mỗi cặp là bình phương của một đại lượng ở vế phải (hoặc ngược lại).
+@LT
+##PP Ghép cặp đối xứng
+Nhận ra dạng $X+Y+Z\ge A+B+C$ (hoặc tích) và tính các tích $XY$, $YZ$, $ZX$
+Nếu $XY\ge A^2$, $YZ\ge B^2$, $ZX\ge C^2$ thì dùng bổ đề ghép cặp đối xứng
+Mỗi cặp dùng Cô-si cho hai số, cộng theo vế rồi chia $2$
+Hai đại lượng ghép với nhau phải là hai đại lượng đối xứng đối với biến còn lại
+@VD
+##VD
+Cho $a,b,c$ là các số thực dương. Chứng minh rằng $\dfrac{ab}c+\dfrac{bc}a+\dfrac{ca}b\ge a+b+c$.
+
+Bài giải:
+Hai số $\dfrac{ab}c$ và $\dfrac{bc}a$ có tích $b^2$; tương tự $\dfrac{bc}a\cdot\dfrac{ca}b=c^2$ và $\dfrac{ca}b\cdot\dfrac{ab}c=a^2$. Ghép từng cặp và dùng Cô-si:
+$\dfrac{ab}c+\dfrac{bc}a\ge2\sqrt{b^2}=2b$, $\quad\dfrac{bc}a+\dfrac{ca}b\ge2c$, $\quad\dfrac{ca}b+\dfrac{ab}c\ge2a$.
+Cộng theo vế: $2\left(\dfrac{ab}c+\dfrac{bc}a+\dfrac{ca}b\right)\ge2(a+b+c)$, hay $\dfrac{ab}c+\dfrac{bc}a+\dfrac{ca}b\ge a+b+c$.
+Dấu "=" xảy ra khi $\dfrac{ab}c=\dfrac{bc}a=\dfrac{ca}b$, tức $a=b=c$.
+
+##VD
+Cho $a,b,c$ là độ dài ba cạnh của một tam giác và $p$ là nửa chu vi. Chứng minh rằng $(p-a)(p-b)(p-c)\le\dfrac18abc$.
+
+Bài giải:
+Vì $a,b,c$ là ba cạnh của tam giác nên $p-a,\,p-b,\,p-c>0$. Với hai số dương $p-a$ và $p-b$ có $(p-a)+(p-b)=2p-a-b=c$, nên theo Cô-si $\sqrt{(p-a)(p-b)}\le\dfrac{(p-a)+(p-b)}2=\dfrac c2$.
+Tương tự $\sqrt{(p-b)(p-c)}\le\dfrac a2$ và $\sqrt{(p-c)(p-a)}\le\dfrac b2$.
+Nhân ba bất đẳng thức theo vế (các vế dương): $(p-a)(p-b)(p-c)=\sqrt{(p-a)(p-b)}\cdot\sqrt{(p-b)(p-c)}\cdot\sqrt{(p-c)(p-a)}\le\dfrac a2\cdot\dfrac b2\cdot\dfrac c2=\dfrac{abc}8$.
+Dấu "=" xảy ra khi $p-a=p-b=p-c$, tức tam giác đều.
+
+#DANG moi | Đánh giá mẫu số bằng bổ đề tổng nghịch đảo | muc=4 | bac=A
+@MOTA
+(dạng tôi đề xuất thêm) biến nằm dưới mẫu số nên đánh giá mẫu số thay vì tử số: ghép hai phân thức của vế trái (hoặc một của vế trái với một của vế phải) sao cho tổng hai mẫu là bội của một mẫu số cần có, rồi dùng $\dfrac1x+\dfrac1y\ge\dfrac4{x+y}$.
+@LT
+##PP Đánh giá mẫu số
+Quan sát hai bộ mẫu số và tìm quan hệ nối chúng (ví dụ $(p-a)+(p-b)=c$)
+Ghép cặp hai phân thức sao cho tổng hai mẫu chia hết cho $2$ và ra đúng một mẫu của vế còn lại
+Áp dụng $\dfrac1x+\dfrac1y\ge\dfrac4{x+y}$ cho từng cặp
+Cộng theo vế; các phân thức của vế phải xuất hiện ở cả hai phía và tiêu biến
+
+##CY
+Dấu "=" của các đánh giá đòi hỏi hai mẫu trong mỗi cặp bằng nhau; giải hệ các điều kiện đó để tìm điểm rơi.
+@VD
+##VD
+Cho $a,b,c$ là độ dài ba cạnh của một tam giác và $p$ là nửa chu vi. Chứng minh rằng $\dfrac1{p-a}+\dfrac1{p-b}+\dfrac1{p-c}\ge2\left(\dfrac1a+\dfrac1b+\dfrac1c\right)$.
+
+Bài giải:
+Hai bộ mẫu $p-a,p-b,p-c$ và $a,b,c$ nối với nhau qua $(p-a)+(p-b)=c$. Ghép từng cặp mẫu và dùng $\dfrac1x+\dfrac1y\ge\dfrac4{x+y}$ ($x,y>0$):
+$\dfrac1{p-a}+\dfrac1{p-b}\ge\dfrac4{(p-a)+(p-b)}=\dfrac4c$, tương tự $\dfrac1{p-b}+\dfrac1{p-c}\ge\dfrac4a$ và $\dfrac1{p-c}+\dfrac1{p-a}\ge\dfrac4b$.
+Cộng theo vế: $2\left(\dfrac1{p-a}+\dfrac1{p-b}+\dfrac1{p-c}\right)\ge4\left(\dfrac1a+\dfrac1b+\dfrac1c\right)$. Chia hai vế cho $2$ được điều phải chứng minh.
+Dấu "=" xảy ra khi $a=b=c$, tức tam giác đều.
+
+##VD
+Cho $a,b,c$ là các số thực dương. Chứng minh rằng $\dfrac1{3a+2b}+\dfrac1{3b+2c}+\dfrac1{3c+2a}\ge\dfrac1{2a+2b+c}+\dfrac1{a+2b+2c}+\dfrac1{2a+b+2c}$.
+
+Bài giải:
+Điểm rơi $a=b=c$. Ghép mỗi phân thức của vế trái với một phân thức của vế phải sao cho tổng hai mẫu bằng hai lần mẫu của phân thức còn lại của vế phải, rồi dùng $\dfrac1x+\dfrac1y\ge\dfrac4{x+y}$ ($x,y>0$):
+$(3a+2b)+(a+2b+2c)=2(2a+2b+c)$ nên $\dfrac1{3a+2b}+\dfrac1{a+2b+2c}\ge\dfrac2{2a+2b+c}$.
+$(3b+2c)+(2a+b+2c)=2(a+2b+2c)$ nên $\dfrac1{3b+2c}+\dfrac1{2a+b+2c}\ge\dfrac2{a+2b+2c}$.
+$(3c+2a)+(2a+2b+c)=2(2a+b+2c)$ nên $\dfrac1{3c+2a}+\dfrac1{2a+2b+c}\ge\dfrac2{2a+b+2c}$.
+Gọi $T$ là vế trái, $S$ là vế phải. Cộng ba bất đẳng thức: $T+S\ge2S$, suy ra $T\ge S$.
+Dấu "=" xảy ra khi $3a+2b=a+2b+2c$, $3b+2c=2a+b+2c$, $3c+2a=2a+2b+c$, tức $a=c$, $b=a$, $c=b$, nên $a=b=c$.
+
+#DANG moi | Gom phân thức theo mẫu chung, cộng thêm một đơn vị | muc=4 | bac=A
+@MOTA
+(dạng tôi đề xuất thêm) hai vế dùng chung các mẫu số nhưng các tử số bị ghép lệch nhau; chuyển vế rồi gom các phân thức cùng mẫu, được tổng các phân thức có tử chưa rõ dấu; cộng thêm $1$ vào mỗi phân thức để mọi tử trở thành dương, rồi dùng Cô-si hoặc bổ đề tổng nghịch đảo.
+@LT
+##PP Cộng thêm một đơn vị
+Chuyển vế, gom các phân thức cùng mẫu để được dạng $\sum\dfrac{x-y}{\text{mẫu}}\ge0$
+Cộng $1$ vào mỗi phân thức để tử trở thành tổng hai biến dương
+Dùng Cô-si cho ba phân thức có tích bằng $1$, hoặc nhóm các phân thức cùng tử rồi dùng bổ đề tổng nghịch đảo
+Dấu "=" đòi hỏi các phân thức bằng nhau, giải ra các biến bằng nhau (hoặc từng cặp bằng nhau)
+
+##CY
+Tổng các tử ban đầu bằng $0$ là dấu hiệu quen thuộc của thao tác cộng thêm một đơn vị vào mỗi phân thức.
+@VD
+##VD
+Cho $a,b,c$ là các số thực dương. Chứng minh rằng $\dfrac a{b+c}+\dfrac b{c+a}+\dfrac c{a+b}\ge\dfrac a{a+b}+\dfrac b{b+c}+\dfrac c{c+a}$.
+
+Bài giải:
+Chuyển vế và gom các phân thức cùng mẫu: bất đẳng thức tương đương với $\dfrac{a-b}{b+c}+\dfrac{b-c}{c+a}+\dfrac{c-a}{a+b}\ge0$ (ghép $\dfrac a{b+c}$ với $-\dfrac b{b+c}$, ghép $\dfrac b{c+a}$ với $-\dfrac c{c+a}$, ghép $\dfrac c{a+b}$ với $-\dfrac a{a+b}$).
+Cộng $1$ vào mỗi phân thức: $\dfrac{a-b}{b+c}+1=\dfrac{c+a}{b+c}$, $\dfrac{b-c}{c+a}+1=\dfrac{a+b}{c+a}$, $\dfrac{c-a}{a+b}+1=\dfrac{b+c}{a+b}$. Bất đẳng thức tương đương $\dfrac{c+a}{b+c}+\dfrac{a+b}{c+a}+\dfrac{b+c}{a+b}\ge3$.
+Ba phân thức dương có tích bằng $1$ nên theo Cô-si cho ba số dương, tổng $\ge3\sqrt[3]1=3$.
+Dấu "=" xảy ra khi ba phân thức bằng nhau (và bằng $1$), tức $b+c=c+a=a+b$, nên $a=b=c$.
+
+##VD
+Cho $a,b,c,d$ là các số thực dương. Chứng minh rằng $\dfrac{a-d}{b+d}+\dfrac{d-b}{c+b}+\dfrac{b-c}{a+c}+\dfrac{c-a}{a+d}\ge0$.
+
+Bài giải:
+Cộng $1$ vào mỗi phân thức: $\dfrac{a-d}{b+d}+1=\dfrac{a+b}{b+d}$, $\dfrac{d-b}{c+b}+1=\dfrac{c+d}{c+b}$, $\dfrac{b-c}{a+c}+1=\dfrac{a+b}{a+c}$, $\dfrac{c-a}{a+d}+1=\dfrac{c+d}{a+d}$. Bất đẳng thức tương đương $\dfrac{a+b}{b+d}+\dfrac{c+d}{c+b}+\dfrac{a+b}{a+c}+\dfrac{c+d}{a+d}\ge4$.
+Nhóm các phân thức cùng tử: $(a+b)\left(\dfrac1{b+d}+\dfrac1{a+c}\right)+(c+d)\left(\dfrac1{c+b}+\dfrac1{a+d}\right)\ge4$.
+Đặt $s=a+b+c+d$. Vì $(b+d)+(a+c)=s$ và $(c+b)+(a+d)=s$ nên $\dfrac1{b+d}+\dfrac1{a+c}\ge\dfrac4s$ và $\dfrac1{c+b}+\dfrac1{a+d}\ge\dfrac4s$.
+Do $a+b>0$ và $c+d>0$: vế trái $\ge\dfrac{4(a+b)}s+\dfrac{4(c+d)}s=\dfrac{4s}s=4$.
+Dấu "=" xảy ra khi $b+d=a+c$ và $c+b=a+d$; trừ theo vế được $d-c=c-d$, tức $c=d$, rồi suy ra $a=b$. Vậy dấu "=" xảy ra khi $a=b$ và $c=d$.
+
+#DANG moi | Nhân thêm hằng số để hạ bậc căn thức | muc=5 | bac=A
+@MOTA
+(dạng tôi đề xuất thêm) biểu thức chứa căn bậc hai hoặc bậc ba mà cần chặn từng căn thức bằng một biểu thức bậc nhất; viết biểu thức dưới căn thành tích của nó với các hằng số bằng đúng giá trị của nó tại điểm rơi, rồi dùng Cô-si để hạ bậc.
+@LT
+##TC Hạ bậc căn thức
+- Căn bậc hai: $\sqrt{X}=\dfrac1{\sqrt m}\sqrt{mX}\le\dfrac{m+X}{2\sqrt m}$ với $m>0$, dấu "=" khi $X=m$.
+- Căn bậc ba: $\sqrt[3]{X}=\sqrt[3]{X\cdot1\cdot1}\le\dfrac{X+2}3$, dấu "=" khi $X=1$ (nếu điểm rơi cho $X=m$ thì nhân thêm hằng số $m$).
+
+##PP Nhân thêm hằng số
+Dự đoán điểm rơi, tính giá trị của biểu thức dưới căn tại điểm rơi
+Nhân (và chia) biểu thức dưới căn với hằng số bằng đúng giá trị đó (căn bậc hai: một hằng số, căn bậc ba: hai hằng số)
+Áp dụng Cô-si để đưa căn thức về biểu thức bậc nhất, viết các đánh giá tương tự
+Cộng theo vế, dùng giả thiết cho tổng các biến (hoặc bổ đề tổng nghịch đảo nếu căn ở mẫu số)
+@VD
+##VD
+Cho $a,b,c$ là các số thực dương thỏa mãn $a+b+c=1$. Chứng minh rằng $\dfrac1{\sqrt[3]{a+2b}}+\dfrac1{\sqrt[3]{b+2c}}+\dfrac1{\sqrt[3]{c+2a}}\ge3$.
+
+Bài giải:
+Căn bậc ba nằm ở mẫu nên phải chặn trên từng căn thức. Điểm rơi $a=b=c=\dfrac13$, khi đó $a+2b=1$; viết $\sqrt[3]{a+2b}=\sqrt[3]{(a+2b)\cdot1\cdot1}$.
+Cô-si cho ba số dương $a+2b,1,1$: $\sqrt[3]{(a+2b)\cdot1\cdot1}\le\dfrac{(a+2b)+1+1}3=\dfrac{a+2b+2}3$, suy ra $\dfrac1{\sqrt[3]{a+2b}}\ge\dfrac3{a+2b+2}$.
+Tương tự $\dfrac1{\sqrt[3]{b+2c}}\ge\dfrac3{b+2c+2}$ và $\dfrac1{\sqrt[3]{c+2a}}\ge\dfrac3{c+2a+2}$.
+Cộng ba bất đẳng thức rồi dùng $\dfrac1x+\dfrac1y+\dfrac1z\ge\dfrac9{x+y+z}$: tổng ba mẫu là $3(a+b+c)+6=9$ nên vế trái $\ge\dfrac{3\cdot9}9=3$.
+Dấu "=" xảy ra khi $a+2b=b+2c=c+2a=1$ và $a=b=c$, tức $a=b=c=\dfrac13$.
+
+##VD
+Cho $a,b,c$ là các số thực dương thỏa mãn $a+b+c=3$. Chứng minh rằng $\sqrt{3a+b}+\sqrt{3b+c}+\sqrt{3c+a}\le6$.
+
+Bài giải:
+Điểm rơi $a=b=c=1$, khi đó $3a+b=4$. Nhân thêm hằng số $4$ dưới căn: $\sqrt{3a+b}=\dfrac12\sqrt{4(3a+b)}$.
+Cô-si cho hai số dương $4$ và $3a+b$: $\sqrt{4(3a+b)}\le\dfrac{4+(3a+b)}2$, nên $\sqrt{3a+b}\le\dfrac{4+3a+b}4$.
+Tương tự $\sqrt{3b+c}\le\dfrac{4+3b+c}4$ và $\sqrt{3c+a}\le\dfrac{4+3c+a}4$.
+Cộng ba bất đẳng thức: vế trái $\le\dfrac{12+4(a+b+c)}4=\dfrac{12+12}4=6$.
+Dấu "=" xảy ra khi $3a+b=3b+c=3c+a=4$ cùng với $a+b+c=3$, tức $a=b=c=1$.

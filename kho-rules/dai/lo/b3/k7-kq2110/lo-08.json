@@ -1,0 +1,267 @@
+[
+ {
+  "ma_cau": "T107000000693",
+  "loai": "trac_nghiem",
+  "de": "Số $\\dfrac{-3}{8}$ là kết quả của phép tính nào dưới đây:",
+  "lua_chon": [
+   "$\\dfrac{1}{2}-\\dfrac{1}{8}$",
+   "$\\dfrac{-1}{8}-\\dfrac{1}{4}$",
+   "$\\dfrac{1}{8}-\\dfrac{1}{4}$",
+   "$\\dfrac{-1}{2}-\\dfrac{1}{8}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính kết quả của từng phương án rồi chọn phương án cho đúng giá trị $\\dfrac{-3}{8}$.\n**Bước 1.** Với mỗi phương án, quy đồng hai phân số về cùng mẫu dương, chú ý mẫu chung đều có thể lấy là 8.\n**Bước 2.** Trừ hai tử số cho đúng dấu, nhất là khi tử của phân số thứ nhất là số âm.\n**Bước 3.** So sánh kết quả của từng phương án với số $\\dfrac{-3}{8}$ để chọn phương án đúng.\n**Phần 2. Trình bày**\n$\\dfrac{1}{2}-\\dfrac{1}{8}=\\dfrac{4}{8}-\\dfrac{1}{8}=\\dfrac{3}{8}$\n$\\dfrac{-1}{8}-\\dfrac{1}{4}=\\dfrac{-1}{8}-\\dfrac{2}{8}=\\dfrac{-3}{8}$\n$\\dfrac{1}{8}-\\dfrac{1}{4}=\\dfrac{1}{8}-\\dfrac{2}{8}=\\dfrac{-1}{8}$\n$\\dfrac{-1}{2}-\\dfrac{1}{8}=\\dfrac{-4}{8}-\\dfrac{1}{8}=\\dfrac{-5 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000461",
+  "loai": "tu_luan",
+  "de": "Cho biểu đồ khảo sát \"Mục đích vào mạng Internet của học sinh THCS\" (biểu đồ hình quạt tròn: Phục vụ học tập $35\\%$; Kết nối bạn bè $40\\%$; Giải trí $25\\%$):\na) Học sinh THCS vào mạng Internet nhằm mục đích gì là nhiều nhất?\nb) Tổng số học sinh tham gia khảo sát là $720$ em thì có bao nhiêu em lựa chọn sử dụng Internet phục vụ học tập?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** trên biểu đồ hình quạt, hình quạt nào có tỉ lệ phần trăm lớn nhất thì ứng với mục đích nhiều nhất; số em bằng tổng số nhân tỉ lệ phần trăm.\n**Bước 1.** Ý a): đọc tỉ lệ phần trăm ở từng hình quạt và đối chiếu với chú giải để biết mục đích nào ứng với tỉ lệ nào.\n**Bước 2.** So sánh ba tỉ lệ phần trăm để chọn tỉ lệ lớn nhất.\n**Bước 3.** Ý b): tìm tỉ lệ của mục đích \"Phục vụ học tập\" rồi nhân với tổng số học sinh khảo sát.\n**Phần 2. Trình bày**\na) Quan sát biểu đồ: Phục vụ học tập chiếm $35\\%$, Kết nối bạn bè chiếm $40\\%$, Giải trí chiếm $25\\%$.\nVì $40\\%>35\\%>25\\%$ nên học sinh THCS vào mạng Internet nhằm mục đích kết nối bạn bè là nhiều nhất.\nb) Số học sinh s …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107010201019",
+  "loai": "tu_luan",
+  "de": "Tính: $(-3) - (-\\dfrac{5}{6})$",
+  "dap_an": "$-\\dfrac{13}{6}$",
+  "loi_giai": "$= -3 + \\dfrac{5}{6}$\n$= -\\dfrac{18}{6} + \\dfrac{5}{6}$\n$= -\\dfrac{13}{6}$",
+  "nhan_cu": "Thực hiện phép tính Số hữu tỉ › Tính toán với Số hữu tỉ"
+ },
+ {
+  "ma_cau": "T107000000364",
+  "loai": "trac_nghiem",
+  "de": "Cho biểu đồ đoạn thẳng sau, em hãy cho biết ở ngày thứ $5$, chiều cao của cây đậu là bao nhiêu",
+  "lua_chon": [
+   "$1,4cm$",
+   "$1cm$",
+   "$2,5cm$",
+   "$2,4cm$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đọc đúng điểm của biểu đồ ứng với ngày thứ $5$ trên trục ngang rồi lấy số ghi cạnh điểm đó.\n**Bước 1.** Xác định trục ngang là ngày và trục dọc là chiều cao (đơn vị $cm$).\n**Bước 2.** Tìm vị trí ngày thứ $5$ trên trục ngang rồi lên điểm tương ứng của đường gấp khúc.\n**Bước 3.** Đọc giá trị chiều cao ghi tại điểm đó và đối chiếu với bốn phương án.\n**Chú ý:** đừng đọc nhầm điểm của ngày thứ $4$ (giá trị $1,4$) vì điểm này ở sát bên.\n**Phần 2. Trình bày**\nTrên biểu đồ, điểm ứng với ngày thứ $5$ có chiều cao $2,5$ $cm$.\nVậy ở ngày thứ $5$, chiều cao của cây đậu là $2,5cm$.\nChọn C.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000268",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính (hợp lí nếu có thể): $\\dfrac{-1}{9}+\\dfrac{2}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai phân số khác mẫu nên phải quy đồng về cùng mẫu rồi mới cộng các tử.\n**Bước 1.** Tìm mẫu chung của hai phân số: vì 9 chia hết cho 3 nên chọn mẫu chung là 9.\n**Bước 2.** Đổi $\\dfrac{2}{3}$ thành phân số có mẫu 9 bằng cách nhân cả tử và mẫu với 3.\n**Bước 3.** Cộng hai tử, giữ nguyên mẫu, rồi rút gọn nếu được.\n**Phần 2. Trình bày**\n$\\dfrac{-1}{9}+\\dfrac{2}{3}$\n$=\\dfrac{-1}{9}+\\dfrac{6}{9}$\n$=\\dfrac{5}{9}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000055",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$, biết: $5^2+5^4+5^6+\\dots+5^x=\\dfrac{5^{102}-25}{24}$.",
+  "dap_an": "100",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số mũ tăng đều 2 đơn vị nên số hạng sau gấp số hạng trước 25 lần; nhân tổng với 25 rồi trừ đi tổng ban đầu để triệt tiêu các số hạng ở giữa.\n**Bước 1.** Nhận ra quy luật: các số mũ $2;4;6;\\dots;x$ cách nhau 2 nên mỗi số hạng gấp $5^2=25$ lần số hạng đứng trước.\n**Bước 2.** Đặt tổng ở vế trái là $C$ và nhân với 25: số mũ của mỗi số hạng tăng thêm 2, nên phần lớn số hạng trùng với số hạng của $C$.\n**Bước 3.** Lấy $25C$ trừ $C$ để các số hạng trùng nhau triệt tiêu, rồi chia cho 24 để biểu thị $C$ theo $x$.\n**Bước 4.** Cho biểu thức của $C$ bằng vế phải đề bài, loại hai mẫu giống nhau để còn hai luỹ thừa cùng cơ số 5, rồi so sánh số mũ để tìm $x$.\n**Chú ý:** s …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000571",
+  "loai": "tu_luan",
+  "de": "So sánh hai biểu thức: $A=\\dfrac{2008^{2008}+1}{2008^{2009}+1}$ và $B=\\dfrac{2008^{2007}+1}{2008^{2008}+1}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhân mỗi phân số với $2008$ để tử số trở thành mẫu số cộng một số cố định, khi đó so sánh được hai phân số có tử bằng nhau.\n**Bước 1.** Nhân $A$ và $B$ với $2008$ rồi dùng tính chất phân phối để biến tử số thành mẫu số cộng với $2007$.\n**Bước 2.** Tách mỗi phân số thành $1$ cộng với một phân số có tử là $2007$.\n**Bước 3.** So sánh hai phân số có cùng tử dương: mẫu lớn hơn thì phân số nhỏ hơn.\n**Bước 4.** Suy ngược từ kết quả so sánh $2008.A$ và $2008.B$ để so sánh $A$ và $B$.\n**Phần 2. Trình bày**\n$2008.A=\\dfrac{2008^{2009}+2008}{2008^{2009}+1}=1+\\dfrac{2007}{2008^{2009}+1}$\n$2008.B=\\dfrac{2008^{2008}+2008}{2008^{2008}+1}=1+\\dfrac{2007}{2008^{2008}+1}$\nVì  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000201",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm kết quả của phép tính: $\\left(\\dfrac{-5}{11}\\right).\\dfrac{8}{15}.\\dfrac{11}{5}.(-45)$",
+  "dap_an": "24",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tích nhiều thừa số nên nhóm các cặp thừa số rút gọn được với nhau (giao hoán và kết hợp) trước khi nhân.\n**Bước 1.** Quan sát tử và mẫu của các phân số: $\\dfrac{-5}{11}$ và $\\dfrac{11}{5}$ có tử, mẫu đảo ngược nhau.\n**Bước 2.** Nhóm hai phân số đó lại, và nhóm $\\dfrac{8}{15}$ với số nguyên $(-45)$ vì $15$ là ước của $45$.\n**Bước 3.** Tính từng nhóm rồi nhân hai kết quả với nhau, chú ý dấu của tích hai số âm.\n**Phần 2. Trình bày**\n$\\left(\\dfrac{-5}{11}\\right).\\dfrac{8}{15}.\\dfrac{11}{5}.(-45)$\n$=\\left[\\left(\\dfrac{-5}{11}\\right).\\dfrac{11}{5}\\right].\\left[\\dfrac{8}{15}.(-45)\\right]$\n$=(-1).(-24)$\n$=24$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000004",
+  "loai": "trac_nghiem",
+  "de": "Chữ số thập phân thứ $10$ của số $3,2(173)$ là chữ số nào?",
+  "lua_chon": [
+   "$3$",
+   "$1$",
+   "$2$",
+   "$7$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** bỏ chữ số không thuộc chu kì rồi đếm vị trí còn lại theo từng nhóm chu kì.\n**Bước 1.** Xác định phần thập phân của $3,2(173)$ gồm một chữ số đứng trước chu kì và chu kì có ba chữ số.\n**Bước 2.** Tính xem chữ số thập phân thứ $10$ là chữ số thứ mấy kể từ đầu chu kì đầu tiên.\n**Bước 3.** Chia vị trí đó cho độ dài chu kì rồi xem số dư để biết chữ số cần tìm nằm ở vị trí nào trong chu kì.\n**Chú ý:** số dư bằng $0$ nghĩa là chữ số cần tìm là chữ số cuối cùng của chu kì.\n**Phần 2. Trình bày**\nPhần thập phân của $3,2(173)$ có một chữ số $2$ không thuộc chu kì, chu kì $173$ có ba chữ số.\nChữ số thập phân thứ $10$ là chữ số thứ $10-1=9$ kể từ đầu chu kì.\nTa có $9:3 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000449",
+  "loai": "trac_nghiem",
+  "de": "Kết quả phép tính $\\left(\\dfrac{1}{6}\\right)^4.\\left(\\dfrac{1}{6}\\right)$ là:",
+  "lua_chon": [
+   "$\\left(\\dfrac{1}{6}\\right)^5$",
+   "$\\left(\\dfrac{1}{6}\\right)^4$",
+   "$\\left(\\dfrac{-1}{6}\\right)^5$",
+   "$\\left(\\dfrac{1}{6}\\right)^3$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhân hai luỹ thừa cùng cơ số thì giữ nguyên cơ số và cộng hai số mũ.\n**Bước 1.** Nhận ra hai thừa số là luỹ thừa cùng cơ số $\\dfrac{1}{6}$.\n**Bước 2.** Viết thừa số thứ hai dưới dạng luỹ thừa với số mũ $1$ để áp dụng quy tắc.\n**Bước 3.** Cộng hai số mũ, giữ nguyên cơ số rồi đối chiếu với bốn phương án.\n**Chú ý:** cơ số $\\dfrac{1}{6}$ dương, không đổi thành $\\dfrac{-1}{6}$.\n**Phần 2. Trình bày**\n$\\left(\\dfrac{1}{6}\\right)^4.\\left(\\dfrac{1}{6}\\right)=\\left(\\dfrac{1}{6}\\right)^{4+1}=\\left(\\dfrac{1}{6}\\right)^5$\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000314",
+  "loai": "trac_nghiem",
+  "de": "Kết quả của phép tính $(-3)^2.(-3)^8$ là",
+  "lua_chon": [
+   "$3^{15}$",
+   "$(-3)^{10}$",
+   "$(-3)^5$",
+   "$(-3)^{15}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai luỹ thừa cùng cơ số $(-3)$ nhân với nhau thì giữ nguyên cơ số và cộng các số mũ.\n**Bước 1.** Nhận ra hai thừa số có cùng cơ số $(-3)$ nên dùng được quy tắc nhân hai luỹ thừa cùng cơ số.\n**Bước 2.** Giữ nguyên cơ số và thực hiện phép cộng hai số mũ 2 và 8.\n**Bước 3.** Đối chiếu kết quả với các phương án, chú ý cơ số vẫn là $(-3)$ trong ngoặc.\n**Chú ý:** các số mũ được cộng với nhau chứ không nhân với nhau.\n**Phần 2. Trình bày**\n$(-3)^2.(-3)^8$\n$=(-3)^{2+8}$\n$=(-3)^{10}$\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000651",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính: $-\\dfrac{25}{12}+\\dfrac{20}{9}:\\dfrac{4}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** thực hiện phép chia trước phép cộng, chia cho phân số là nhân với số nghịch đảo của nó.\n**Bước 1.** Xác định thứ tự: phép chia được tính trước rồi mới cộng.\n**Bước 2.** Đổi phép chia thành phép nhân với phân số nghịch đảo và rút gọn.\n**Bước 3.** Quy đồng hai phân số rồi cộng các tử.\n**Phần 2. Trình bày**\n$-\\dfrac{25}{12}+\\dfrac{20}{9}:\\dfrac{4}{3}$\n$=-\\dfrac{25}{12}+\\dfrac{20}{9}.\\dfrac{3}{4}$\n$=-\\dfrac{25}{12}+\\dfrac{5}{3}$\n$=\\dfrac{-25}{12}+\\dfrac{20}{12}$\n$=\\dfrac{-5}{12}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107010510006",
+  "loai": "tu_luan",
+  "de": "Chứng minh $\\dfrac{1}{2^2} + \\dfrac{1}{4^2} + \\dfrac{1}{6^2} + ... + \\dfrac{1}{100^2} < \\dfrac{1}{2}$.",
+  "dap_an": "S < 1/2 (cụ thể S < 99/200)",
+  "loi_giai": "Đặt $S = \\dfrac{1}{2^2} + \\dfrac{1}{4^2} + \\dfrac{1}{6^2} + ... + \\dfrac{1}{100^2}$\nTa có $S = \\dfrac{1}{4}\\left(\\dfrac{1}{1^2} + \\dfrac{1}{2^2} + \\dfrac{1}{3^2} + ... + \\dfrac{1}{50^2}\\right)$\nĐặt $D = \\dfrac{1}{1^2} + \\dfrac{1}{2^2} + \\dfrac{1}{3^2} + ... + \\dfrac{1}{50^2} = 1 + \\left(\\dfrac{1}{2^2} + \\dfrac{1}{3^2} + ... + \\dfrac{1}{50^2}\\right)$\nTa có $\\dfrac{1}{2^2} < \\dfrac{1}{1.2}$ ; $\\dfrac{1}{3^2} < \\dfrac{1}{2.3}$ ; ... ; $\\dfrac{1}{50^2} < \\dfrac{1}{49.50}$\nSuy ra $\\dfrac{1}{2^2} + \\dfrac{1}{3^2} + ... + \\dfrac{1}{50^2} < \\dfrac{1}{1.2} + \\dfrac{1}{2.3} + ... + \\dfrac{1}{49.50} = 1 - \\dfrac{1}{50} = \\dfrac{49}{50}$\nSuy ra $D < 1 + \\dfrac{49}{50} = \\dfrac{99}{50}$\nVậy $S = \\dfrac{D …",
+  "nhan_cu": "Dãy Phân số nâng cao › Dãy phân số bình phương"
+ },
+ {
+  "ma_cau": "T107010510005",
+  "loai": "tu_luan",
+  "de": "Cho $B = \\dfrac{3}{4} + \\dfrac{8}{9} + \\dfrac{15}{16} + ... + \\dfrac{2499}{2500}$. Chứng tỏ B không phải là số nguyên.",
+  "dap_an": "B không phải là số nguyên (48 < B < 49)",
+  "loi_giai": "Ta thấy $2500 = 50^2$ nên $B = \\dfrac{3}{4} + \\dfrac{8}{9} + \\dfrac{15}{16} + ... + \\dfrac{50^2-1}{50^2}$\nTa có $\\dfrac{3}{4} = 1 - \\dfrac{1}{2^2}$ ; $\\dfrac{8}{9} = 1 - \\dfrac{1}{3^2}$ ; $\\dfrac{15}{16} = 1 - \\dfrac{1}{4^2}$ ; ... ; $\\dfrac{2499}{2500} = 1 - \\dfrac{1}{50^2}$\nSuy ra $B = 49 - C$, với $C = \\dfrac{1}{2^2} + \\dfrac{1}{3^2} + \\dfrac{1}{4^2} + ... + \\dfrac{1}{50^2}$\nTa có $\\dfrac{1}{2^2} < \\dfrac{1}{1.2}$ ; $\\dfrac{1}{3^2} < \\dfrac{1}{2.3}$ ; $\\dfrac{1}{4^2} < \\dfrac{1}{3.4}$ ; ... ; $\\dfrac{1}{50^2} < \\dfrac{1}{49.50}$\nSuy ra $C < \\dfrac{1}{1.2} + \\dfrac{1}{2.3} + \\dfrac{1}{3.4} + ... + \\dfrac{1}{49.50}$\n$C < 1 - \\dfrac{1}{2} + \\dfrac{1}{2} - \\dfrac{1}{3} + ... + \\dfrac{1}{49} - …",
+  "nhan_cu": "Dãy Phân số nâng cao › Dãy phân số bình phương"
+ },
+ {
+  "ma_cau": "T107000000527",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính: $\\left(1-\\dfrac{12}{7}\\right)^2+8.(0,5)^3+(-1)^{2025}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính trong ngoặc, tính từng luỹ thừa, rồi nhân và cộng; luỹ thừa lẻ của $-1$ bằng $-1$.\n**Bước 1.** Tính hiệu trong ngoặc rồi bình phương kết quả được một phân số dương.\n**Bước 2.** Tính $(0,5)^3$ rồi nhân với $8$, và nhận ra số mũ $2025$ là số lẻ nên $(-1)^{2025}=-1$.\n**Bước 3.** Cộng ba kết quả lại, các số nguyên đối nhau triệt tiêu.\n**Phần 2. Trình bày**\n$\\left(1-\\dfrac{12}{7}\\right)^2+8.(0,5)^3+(-1)^{2025}$\n$=\\left(\\dfrac{-5}{7}\\right)^2+8.0,125+(-1)$\n$=\\dfrac{25}{49}+1-1$\n$=\\dfrac{25}{49}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "07702220320302023",
+  "loai": "tra_loi_ngan",
+  "de": "Tính: $D=\\left|\\dfrac{1}{-28}\\right|-\\dfrac{(-3)^2}{|-28|}-\\dfrac{|-4|}{28}$.",
+  "dap_an": "$-\\dfrac{3}{7}$",
+  "loi_giai": "$D=\\left|\\dfrac{1}{-28}\\right|-\\dfrac{(-3)^2}{|-28|}-\\dfrac{|-4|}{28}$\n$=\\dfrac{1}{28}-\\dfrac{9}{28}-\\dfrac{4}{28}$\n$=-\\dfrac{12}{28}$\n$=-\\dfrac{3}{7}$.",
+  "nhan_cu": "Tập hợp số thực. Giá trị tuyệt đối › Thực hiện phép tính liên quan đến Giá trị tuyệt đối"
+ },
+ {
+  "ma_cau": "T107000000587",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính (tính hợp lí nếu có thể): $\\left|\\dfrac{7}{5}\\right|.\\sqrt{(-5)^2}-2024^0.\\sqrt{\\dfrac{64}{100}}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính riêng từng thành phần (giá trị tuyệt đối, căn bậc hai, luỹ thừa với số mũ $0$) rồi mới nhân và trừ.\n**Bước 1.** Tính $\\sqrt{(-5)^2}$ bằng cách tính $(-5)^2$ trước rồi khai căn bậc hai.\n**Bước 2.** Tính $\\sqrt{\\dfrac{64}{100}}$ bằng số dương có bình phương bằng $\\dfrac{64}{100}$, và nhớ mọi số khác $0$ luỹ thừa $0$ đều bằng $1$.\n**Bước 3.** Thực hiện hai phép nhân rồi trừ hai kết quả sau khi quy đồng.\n**Phần 2. Trình bày**\nVì $(-5)^2=25$ và $5^2=25$, $5>0$ nên $\\sqrt{(-5)^2}=5$.\nVì $\\left(\\dfrac{8}{10}\\right)^2=\\dfrac{64}{100}$ và $\\dfrac{8}{10}>0$ nên $\\sqrt{\\dfrac{64}{100}}=\\dfrac{8}{10}$.\n$\\left|\\dfrac{7}{5}\\right|.\\sqrt{(-5)^2}-2024^0.\\sqrt{\\dfrac{ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000780",
+  "loai": "tu_luan",
+  "de": "Tìm các số nguyên dương $m$ và $n$ sao cho $2^m-2^n=256$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đặt $2^n$ làm thừa số chung, tích bằng $2^8$ nên thừa số còn lại phải là luỹ thừa của $2$, mà nó là số lẻ nên chỉ có thể bằng $1$.\n**Bước 1.** Nhận ra vế trái dương nên $2^m>2^n$, từ đó suy ra $m>n$.\n**Bước 2.** Đặt $2^n$ làm thừa số chung để vế trái thành tích hai thừa số, vế phải viết thành $2^8$.\n**Bước 3.** Chỉ ra thừa số $2^{m-n}-1$ là số lẻ, mà ước lẻ duy nhất của $2^8$ là $1$.\n**Bước 4.** Suy ra $m-n$ và $n$ rồi thử lại vào đề.\n**Phần 2. Trình bày**\nVì $2^m-2^n=256>0$ nên $2^m>2^n$, suy ra $m>n$.\n$2^m-2^n=2^n.\\left(2^{m-n}-1\\right)=256=2^8$\nVì $m-n\\ge1$ nên $2^{m-n}$ là số chẵn, do đó $2^{m-n}-1$ là số lẻ.\nCác ước của $2^8$ đều là luỹ thừa của $2$,  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000479",
+  "loai": "trac_nghiem",
+  "de": "Xem biểu đồ đoạn thẳng trong hình bên. Hãy cho biết ngày nào số ổ bánh mì bán được nhiều nhất?\n(Theo biểu đồ, số ổ bánh mì bán được tại căng tin trường Kim Đồng: Chủ nhật: 48; Thứ Hai: 40; Thứ Ba: 33; Thứ Tư: 18; Thứ Năm: 30; Thứ Sáu: 45; Thứ Bảy: 60.)",
+  "lua_chon": [
+   "Chủ nhật.",
+   "Thứ tư.",
+   "Thứ sáu.",
+   "Thứ bảy."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ngày bán được nhiều nhất là ngày ứng với điểm cao nhất của đường gấp khúc.\n**Bước 1.** Đọc số ổ bánh mì ghi tại từng ngày trên biểu đồ.\n**Bước 2.** So sánh các số liệu với nhau để tìm số lớn nhất.\n**Bước 3.** Xem số lớn nhất đó thuộc ngày nào rồi đối chiếu với các phương án.\n**Phần 2. Trình bày**\nSố ổ bánh mì bán được theo từng ngày: $48;\\ 40;\\ 33;\\ 18;\\ 30;\\ 45;\\ 60$.\nSố lớn nhất là $60$, ứng với Thứ bảy.\nVậy Thứ bảy bán được nhiều ổ bánh mì nhất.\nChọn D.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000784",
+  "loai": "trac_nghiem",
+  "de": "Kết quả của phép tính $\\left[(2,4)^3\\right]^2$ được viết dưới dạng một luỹ thừa là",
+  "lua_chon": [
+   "$(2,4)^5$",
+   "$(2,4)^6$",
+   "$(2,4)^9$",
+   "$(7,2)^2$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** luỹ thừa của một luỹ thừa thì giữ nguyên cơ số và nhân hai số mũ.\n**Bước 1.** Nhận ra biểu thức có dạng $(a^m)^n$ với cơ số $2,4$.\n**Bước 2.** Giữ nguyên cơ số và nhân hai số mũ, không cộng hay luỹ thừa hoá số mũ.\n**Bước 3.** Loại phương án đổi cơ số rồi chọn đáp án có số mũ đúng.\n**Phần 2. Trình bày**\n$\\left[(2,4)^3\\right]^2=(2,4)^{3.2}=(2,4)^6$\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000761",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính: $\\dfrac{5^3+5^8}{5+5^6}$",
+  "dap_an": "25",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đặt thừa số chung ở tử và ở mẫu để xuất hiện một nhân tử giống nhau rồi rút gọn.\n**Bước 1.** Nhận ra tử có luỹ thừa của $5$ nhỏ nhất là $5^3$ và mẫu có luỹ thừa nhỏ nhất là $5$.\n**Bước 2.** Đặt luỹ thừa nhỏ nhất làm thừa số chung ở tử và ở mẫu, chú ý số mũ còn lại trong ngoặc.\n**Bước 3.** Rút gọn nhân tử chung ở tử và mẫu rồi tính phần còn lại.\n**Phần 2. Trình bày**\n$\\dfrac{5^3+5^8}{5+5^6}=\\dfrac{5^3.(1+5^5)}{5.(1+5^5)}$\n$=\\dfrac{5^3}{5}$\n$=5^2$\n$=25$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107010406001",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm x, biết: $\\left(x + \\dfrac{1}{2}\\right)^{2024} = 2 - \\left(1 + \\dfrac{1}{2} + \\dfrac{1}{2^2} + ... + \\dfrac{1}{2^{2023}} + \\dfrac{1}{2^{2024}}\\right)$.",
+  "dap_an": "x = 0 hoặc x = -1",
+  "loi_giai": "Đặt $S = 1 + \\dfrac{1}{2} + \\dfrac{1}{2^2} + ... + \\dfrac{1}{2^{2024}}$.\n$2S = 2 + 1 + \\dfrac{1}{2} + ... + \\dfrac{1}{2^{2023}}$\n$2S - S = 2 - \\dfrac{1}{2^{2024}} \\Rightarrow S = 2 - \\dfrac{1}{2^{2024}}$\nKhi đó vế phải $= 2 - S = 2 - \\left(2 - \\dfrac{1}{2^{2024}}\\right) = \\dfrac{1}{2^{2024}}$.\nVậy $\\left(x+\\dfrac{1}{2}\\right)^{2024} = \\dfrac{1}{2^{2024}} = \\left(\\dfrac{1}{2}\\right)^{2024}$.\nVì số mũ $2024$ chẵn nên $x + \\dfrac{1}{2} = \\dfrac{1}{2}$ hoặc $x + \\dfrac{1}{2} = -\\dfrac{1}{2}$.\n$x + \\dfrac{1}{2} = \\dfrac{1}{2} \\Rightarrow x = 0$\n$x + \\dfrac{1}{2} = -\\dfrac{1}{2} \\Rightarrow x = -1$\nVậy $x = 0$ hoặc $x = -1$.",
+  "nhan_cu": "Thứ tự thực hiện phép tính. Quy tắc chuyển vế › Tìm x ở số mũ"
+ },
+ {
+  "ma_cau": "T107010510002",
+  "loai": "tu_luan",
+  "de": "Chứng minh: $\\dfrac{1}{6} < \\dfrac{1}{5^2} + \\dfrac{1}{6^2} + \\dfrac{1}{7^2} + \\ldots + \\dfrac{1}{100^2} < \\dfrac{1}{4}$.",
+  "dap_an": "1/6 < S < 1/4",
+  "loi_giai": "Đặt $S = \\dfrac{1}{5^2} + \\dfrac{1}{6^2} + \\dfrac{1}{7^2} + ... + \\dfrac{1}{100^2}$\n**Chặn trên:** Ta có $\\dfrac{1}{5^2} < \\dfrac{1}{4.5}$ ; $\\dfrac{1}{6^2} < \\dfrac{1}{5.6}$ ; ... ; $\\dfrac{1}{100^2} < \\dfrac{1}{99.100}$\nSuy ra $S < \\dfrac{1}{4.5} + \\dfrac{1}{5.6} + ... + \\dfrac{1}{99.100}$\n$S < \\dfrac{1}{4} - \\dfrac{1}{5} + \\dfrac{1}{5} - \\dfrac{1}{6} + ... + \\dfrac{1}{99} - \\dfrac{1}{100}$\n$S < \\dfrac{1}{4} - \\dfrac{1}{100} < \\dfrac{1}{4}$\n**Chặn dưới:** Ta có $\\dfrac{1}{5^2} > \\dfrac{1}{5.6}$ ; $\\dfrac{1}{6^2} > \\dfrac{1}{6.7}$ ; ... ; $\\dfrac{1}{100^2} > \\dfrac{1}{100.101}$\nSuy ra $S > \\dfrac{1}{5.6} + \\dfrac{1}{6.7} + ... + \\dfrac{1}{100.101}$\n$S > \\dfrac{1}{5} - \\dfrac{1}{6} + \\dfrac{ …",
+  "nhan_cu": "Dãy Phân số nâng cao › Dãy phân số bình phương"
+ },
+ {
+  "ma_cau": "T107000000303",
+  "loai": "tu_luan",
+  "de": "Tính bằng cách hợp lí: $\\dfrac{5}{7}+\\dfrac{9}{11}.\\left(\\dfrac{-11}{18}\\right)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhân trước, cộng sau; khi nhân hai phân số có thừa số 11 và 9 xuất hiện ở cả tử lẫn mẫu nên rút gọn được.\n**Bước 1.** Thực hiện phép nhân trước vì phép nhân được tính trước phép cộng.\n**Bước 2.** Rút gọn các thừa số chung ở tử và mẫu của tích để được phân số tối giản.\n**Bước 3.** Quy đồng hai phân số còn lại về cùng mẫu rồi cộng.\n**Phần 2. Trình bày**\n$\\dfrac{5}{7}+\\dfrac{9}{11}.\\left(\\dfrac{-11}{18}\\right)$\n$=\\dfrac{5}{7}+\\dfrac{9.(-11)}{11.18}$\n$=\\dfrac{5}{7}+\\dfrac{-1}{2}$\n$=\\dfrac{10}{14}+\\dfrac{-7}{14}$\n$=\\dfrac{3}{14}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107010301054",
+  "loai": "tra_loi_ngan",
+  "de": "So sánh $M = \\dfrac{100^{100}+1}{100^{99}+1}$ và $N = \\dfrac{100^{101}+1}{100^{100}+1}$.",
+  "dap_an": "$M < N$",
+  "loi_giai": "Đặt $y = 100^{99}$, khi đó $100^{100} = 100y$ và $100^{101} = 10000y$.\n$M = \\dfrac{100y+1}{y+1}$, $N = \\dfrac{10000y+1}{100y+1}$\nSo sánh $M$ và $N$ bằng cách so sánh $(100y+1)^2$ và $(y+1)(10000y+1)$:\n$(100y+1)^2 = 10000y^2+200y+1$\n$(y+1)(10000y+1) = 10000y^2+10001y+1$\nHiệu: $(10000y^2+200y+1)-(10000y^2+10001y+1) = -9801y < 0$ (vì $y>0$)\nSuy ra $(100y+1)^2 < (y+1)(10000y+1)$, tức $M < N$.",
+  "nhan_cu": "Luỹ thừa Số hữu tỉ › Tính toán biểu thức luỹ thừa"
+ },
+ {
+  "ma_cau": "T107010101005",
+  "loai": "tu_luan",
+  "de": "Các số sau đây có phải là số hữu tỉ không? Vì sao?\n15;-2.4;0;-3\\dfrac{2}{5};\\dfrac{-8}{0}",
+  "loi_giai": "15 Có. Vì $15 = \\dfrac{15}{1}$.\n-2.4 Có. Vì $-2.4 = \\dfrac{-24}{10} = \\dfrac{-12}{5}$.\n0 Có. Vì $0 = \\dfrac{0}{1}$.\n-3\\dfrac{2}{5} Có. Vì $-3\\dfrac{2}{5} = \\dfrac{-17}{5}$.\n\\dfrac{-8}{0} Không phải số hữu tỉ. Vì mẫu số bằng $0$ (vi phạm điều kiện $b \\neq 0$ trong định nghĩa).",
+  "nhan_cu": "Tính chất Số hữu tỉ › Nhận biết và Biểu diễn Số hữu tỉ trên trục số"
+ },
+ {
+  "ma_cau": "T107000000129",
+  "loai": "tu_luan",
+  "de": "Cho ba số $a,b,c$ thỏa mãn $0\\le a\\le b+1\\le c+2$ và $a+b+c=1$. Tìm giá trị nhỏ nhất của $c$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $a$ và $b$ đều bị chặn trên bởi biểu thức theo $c$, nên cộng lại với $c$ và dùng $a+b+c=1$ để tìm giới hạn dưới của $c$.\n**Bước 1.** Tách chuỗi $a\\le b+1\\le c+2$ thành các bất đẳng thức đơn để biết $a$ và $b$ bị chặn trên bởi biểu thức theo $c$ như thế nào.\n**Bước 2.** Cộng các bất đẳng thức cùng chiều (kể cả $c\\le c$) để $a+b+c$ nhỏ hơn hoặc bằng một biểu thức chỉ chứa $c$.\n**Bước 3.** Thay $a+b+c=1$ vào bất đẳng thức đó để suy ra giới hạn dưới của $c$.\n**Bước 4.** Chọn $a$, $b$ để mọi dấu \"=\" cùng xảy ra rồi thử lại ba điều kiện của đề, xem giá trị đó có đạt được không.\n**Chú ý:** tìm giá trị nhỏ nhất thì phải chỉ ra giá trị đó xảy ra; chỉ chứng minh đượ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000136",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính (hợp lí nếu có thể): $0,6+\\dfrac{2}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai số hạng chưa cùng dạng (một số thập phân, một phân số) nên phải đưa về cùng dạng phân số rồi mới cộng.\n**Bước 1.** Đổi số thập phân $0,6$ thành phân số rồi rút gọn về phân số tối giản.\n**Bước 2.** Quy đồng mẫu hai phân số $\\dfrac{3}{5}$ và $\\dfrac{2}{3}$ về mẫu chung nhỏ nhất.\n**Bước 3.** Cộng hai phân số cùng mẫu bằng cách cộng hai tử và giữ nguyên mẫu.\n**Phần 2. Trình bày**\n$0,6+\\dfrac{2}{3}$\n$=\\dfrac{3}{5}+\\dfrac{2}{3}$\n$=\\dfrac{9}{15}+\\dfrac{10}{15}$\n$=\\dfrac{19}{15}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T10770333330501008",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $A=\\dfrac{1}{3^2}+\\dfrac{3}{3^4}+\\dfrac{5}{3^6}+\\ldots+\\dfrac{99}{3^{100}}$. Chứng minh $A<\\dfrac{5}{32}$.",
+  "loi_giai": "Đặt $B=\\dfrac{1}{3^2}+\\dfrac{1}{3^4}+\\ldots+\\dfrac{1}{3^{98}}$.\n$9B=1+\\dfrac{1}{3^2}+\\dfrac{1}{3^4}+\\ldots+\\dfrac{1}{3^{96}}$.\n$8B=1-\\dfrac{1}{3^{98}}<1$.\nSuy ra $B<\\dfrac{1}{8}$.\n$9A=1+\\dfrac{3}{3^2}+\\dfrac{5}{3^4}+\\ldots+\\dfrac{99}{3^{98}}$.\n$8A=1+\\dfrac{2}{3^2}+\\dfrac{2}{3^4}+\\ldots+\\dfrac{2}{3^{98}}-\\dfrac{99}{3^{100}}$.\n$8A<1+2B<1+\\dfrac{1}{4}=\\dfrac{5}{4}$.\nVậy $A<\\dfrac{5}{32}$.",
+  "nhan_cu": "Nâng cao › Dãy phân số"
+ }
+]

@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "T310010102036",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm (O/I trung điểm), dạng sau thắng"
+ },
+ {
+  "ma_cau": "T310010102037",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm (O/I trung điểm), dạng sau thắng"
+ },
+ {
+  "ma_cau": "T310010102038",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm (O/I trung điểm), dạng sau thắng"
+ },
+ {
+  "ma_cau": "T310010102039",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng véc tơ theo quy tắc 3 điểm/hình bình hành"
+ },
+ {
+  "ma_cau": "T310010102040",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng véc tơ theo quy tắc 3 điểm/hình bình hành"
+ },
+ {
+  "ma_cau": "T310010102042",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng véc tơ theo quy tắc 3 điểm/hình bình hành"
+ },
+ {
+  "ma_cau": "T310010102043",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Rút gọn tổng-hiệu bằng quy tắc 3 điểm, có phép trừ"
+ },
+ {
+  "ma_cau": "T310010102044",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Tổng qua đường trung bình; cũng gần 903/907"
+ },
+ {
+  "ma_cau": "T310010102045",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng véc tơ theo quy tắc 3 điểm/hình bình hành"
+ },
+ {
+  "ma_cau": "T310010102046",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ đối/bằng nhau"
+ },
+ {
+  "ma_cau": "T310010102047",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu/rút gọn tổng hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310010102048",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu/rút gọn tổng hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310010102049",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu/rút gọn tổng hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310010102050",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm (O/I trung điểm), dạng sau thắng"
+ },
+ {
+  "ma_cau": "T310010102051",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu/rút gọn tổng hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310010102052",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu/rút gọn tổng hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310010102053",
+  "dang_bai_id": "NDB00905",
+  "chac": "vua",
+  "ly_do": "Đẳng thức hình bình hành điểm bất kì; 904/905 đều hợp"
+ },
+ {
+  "ma_cau": "T310010102054",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ đối/bằng nhau"
+ },
+ {
+  "ma_cau": "T310010102055",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu/rút gọn tổng hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310010102056",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu/rút gọn tổng hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310010102057",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu/rút gọn tổng hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310010102058",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu/rút gọn tổng hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310010102059",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu/rút gọn tổng hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310010102060",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài |AB-AC| = BC"
+ },
+ {
+  "ma_cau": "T310010102061",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu/rút gọn tổng hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310010102062",
+  "dang_bai_id": "NDB00905",
+  "chac": "vua",
+  "ly_do": "Tìm điểm M thoả đẳng thức véc tơ không tọa độ; bản đồ không có dạng riêng"
+ },
+ {
+  "ma_cau": "T310010102063",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu/rút gọn tổng hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310010102064",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu/rút gọn tổng hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310010102065",
+  "dang_bai_id": "NDB00906",
+  "chac": "vua",
+  "ly_do": "Tập hợp điểm từ |MA+MB|=|MA-MB|; thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310010102066",
+  "dang_bai_id": "NDB00906",
+  "chac": "vua",
+  "ly_do": "Điều kiện tam giác vuông từ độ dài tổng-hiệu; thiếu dạng"
+ },
+ {
+  "ma_cau": "T310010102067",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ tổng/hiệu quy về một véc tơ"
+ },
+ {
+  "ma_cau": "T310010102068",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ tổng/hiệu quy về một véc tơ"
+ },
+ {
+  "ma_cau": "T310010102069",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ dùng tích với số/trung điểm 2AM"
+ },
+ {
+  "ma_cau": "T310010102070",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực 2 lực vuông góc"
+ },
+ {
+  "ma_cau": "T310010102071",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Các lực cân bằng, vật đứng yên"
+ },
+ {
+  "ma_cau": "T310010103001",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ = độ dài đoạn thẳng"
+ },
+ {
+  "ma_cau": "T310010103002",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ = độ dài đoạn thẳng"
+ },
+ {
+  "ma_cau": "T310010103003",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ = độ dài đoạn thẳng"
+ },
+ {
+  "ma_cau": "T310010103004",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ tổng/hiệu quy về một véc tơ"
+ },
+ {
+  "ma_cau": "T310010103005",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ tổng/hiệu quy về một véc tơ"
+ },
+ {
+  "ma_cau": "T310010103006",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ tổng/hiệu quy về một véc tơ"
+ },
+ {
+  "ma_cau": "T310010103007",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ tổng/hiệu quy về một véc tơ"
+ },
+ {
+  "ma_cau": "T310010103008",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ = độ dài đoạn thẳng"
+ },
+ {
+  "ma_cau": "T310010103009",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ = độ dài đoạn thẳng"
+ },
+ {
+  "ma_cau": "T310010103010",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ = độ dài đoạn thẳng"
+ },
+ {
+  "ma_cau": "T310010103011",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ = độ dài đoạn thẳng"
+ },
+ {
+  "ma_cau": "T310010103012",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ đối/bằng nhau"
+ },
+ {
+  "ma_cau": "T310010103013",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ = độ dài đoạn thẳng"
+ },
+ {
+  "ma_cau": "T310010103014",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ tổng/hiệu quy về một véc tơ"
+ },
+ {
+  "ma_cau": "T310010103015",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ tổng/hiệu quy về một véc tơ"
+ },
+ {
+  "ma_cau": "T310010103016",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ dùng tích với số/trung điểm 2AM"
+ },
+ {
+  "ma_cau": "T310010103017",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ dùng tích với số/trung điểm 2AM"
+ },
+ {
+  "ma_cau": "T310010103018",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ dùng tích với số/trung điểm 2AM"
+ },
+ {
+  "ma_cau": "T310010103020",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ tổng/hiệu quy về một véc tơ"
+ },
+ {
+  "ma_cau": "T310010103021",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ tổng/hiệu quy về một véc tơ"
+ },
+ {
+  "ma_cau": "T310010103022",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ dùng tích với số/trung điểm 2AM"
+ },
+ {
+  "ma_cau": "T310010104001",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của 2 lực"
+ },
+ {
+  "ma_cau": "T310010104002",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Các lực cân bằng, vật đứng yên"
+ },
+ {
+  "ma_cau": "T310010104003",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Các lực cân bằng, vật đứng yên"
+ },
+ {
+  "ma_cau": "T310010104004",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của 2 lực"
+ },
+ {
+  "ma_cau": "T310010104005",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của 2 lực"
+ },
+ {
+  "ma_cau": "T310010104006",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Các lực cân bằng, vật đứng yên"
+ },
+ {
+  "ma_cau": "T310010104007",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "Cộng vận tốc tàu và dòng nước"
+ },
+ {
+  "ma_cau": "T310010104008",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của 2 lực"
+ },
+ {
+  "ma_cau": "T310010104009",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "Trọng lực P=mg"
+ },
+ {
+  "ma_cau": "T310010104010",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của 2 lực"
+ },
+ {
+  "ma_cau": "T310010104011",
+  "dang_bai_id": "NDB00915",
+  "chac": "vua",
+  "ly_do": "Hợp lực nhiều lực không cân bằng trong tứ diện; không dạng đúng"
+ },
+ {
+  "ma_cau": "T310010104012",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Các lực cân bằng, vật đứng yên"
+ },
+ {
+  "ma_cau": "T310010104013",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Các lực cân bằng, vật đứng yên"
+ },
+ {
+  "ma_cau": "T310010104014",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của 2 lực"
+ },
+ {
+  "ma_cau": "T310010104015",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Các lực cân bằng, vật đứng yên"
+ },
+ {
+  "ma_cau": "T310010104016",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của 2 lực"
+ },
+ {
+  "ma_cau": "T310010104017",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Các lực cân bằng, vật đứng yên"
+ },
+ {
+  "ma_cau": "T310010104018",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Các lực cân bằng, vật đứng yên"
+ },
+ {
+  "ma_cau": "T310010104019",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Các lực cân bằng, vật đứng yên"
+ },
+ {
+  "ma_cau": "T310010104021",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Các lực cân bằng, vật đứng yên"
+ },
+ {
+  "ma_cau": "T310010104022",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Các lực cân bằng, vật đứng yên"
+ },
+ {
+  "ma_cau": "T310010104023",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của 2 lực"
+ },
+ {
+  "ma_cau": "T310010104024",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của 2 lực"
+ },
+ {
+  "ma_cau": "T310010104025",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của 2 lực"
+ },
+ {
+  "ma_cau": "T310010104026",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Các lực cân bằng, vật đứng yên"
+ },
+ {
+  "ma_cau": "T310010104027",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của 2 lực"
+ },
+ {
+  "ma_cau": "T310010104028",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Các lực cân bằng, vật đứng yên"
+ },
+ {
+  "ma_cau": "T310000000001",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm (O/I trung điểm), dạng sau thắng"
+ },
+ {
+  "ma_cau": "T310000000004",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn AM theo AB, AC"
+ },
+ {
+  "ma_cau": "T310000000005",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong đa giác/tam giác"
+ },
+ {
+  "ma_cau": "T310000000006",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong đa giác/tam giác"
+ },
+ {
+  "ma_cau": "T310000000009",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong đa giác/tam giác"
+ },
+ {
+  "ma_cau": "T310000000010",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Quan hệ AM=-4BM dữ kiện chủ yếu từ hình"
+ },
+ {
+  "ma_cau": "T310000000014",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế đường vòng núi (lưu ý dạng 914)"
+ },
+ {
+  "ma_cau": "T310000000018",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Các lực cân bằng, vật đứng yên"
+ },
+ {
+  "ma_cau": "T310000000019",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "Hai ý: chứng minh tổng bằng 0 và tìm điểm M; chọn dạng sau"
+ },
+ {
+  "ma_cau": "T310000000024",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cùng phương/cùng hướng, véc tơ không"
+ },
+ {
+  "ma_cau": "T310000000025",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cùng phương/cùng hướng, véc tơ không"
+ },
+ {
+  "ma_cau": "T310000000026",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ = độ dài đoạn thẳng"
+ },
+ {
+  "ma_cau": "T310000000027",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cùng phương/cùng hướng, véc tơ không"
+ },
+ {
+  "ma_cau": "T310000000028",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ = độ dài đoạn thẳng"
+ },
+ {
+  "ma_cau": "T310000000029",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ = độ dài đoạn thẳng"
+ },
+ {
+  "ma_cau": "T310000000030",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ đối/bằng nhau"
+ },
+ {
+  "ma_cau": "T310000000031",
+  "dang_bai_id": "NDB00903",
+  "chac": "vua",
+  "ly_do": "Chỉ có trong hình 8: cùng phương/hướng/đối"
+ }
+]

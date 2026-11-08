@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "HHC010072",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"1,0 điểm Cho hình chóp ,…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010082",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa hai đường thẳng / đường vuông góc (đề: \"Khẳng định nào dưới đây đúng…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010083",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa hai đường thẳng / đường vuông góc (đề: \"Cho hình chóp có cạnh vuông…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010084",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Khẳng định nào dưới đây sai…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010085",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Trong không gian, cho đường thẳng…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010086",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Trong không gian, cho ba đường…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010087",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010088",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa hai đường thẳng / đường vuông góc (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010089",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa đường thẳng và mặt phẳng (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010090",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa đường thẳng và mặt phẳng (đề: \"2,0 điểm Cho hình chóp có…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010098",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Mệnh đề nào sau đây sai…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010099",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa hai đường thẳng / đường vuông góc (đề: \"Cho hình lập phương Góc giữa…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010100",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa đường thẳng và mặt phẳng (đề: \"Cho hình chóp có vuông góc…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010101",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010102",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010103",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHỐI ĐA DIỆN / THỂ TÍCH: tính toán trên khối chóp/lăng trụ/chóp cụt (đề: \"Kim tự tháp Khafre ở Ai…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010104",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc nhị diện (đề: \"2,0 điểm Cho hình chóp có…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010109",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa hai đường thẳng / đường vuông góc (đề: \"Cho hình lập phương Góc giữa…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010110",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010111",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010112",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"1,0 điểm Cho hình chóp có…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010117",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa hai đường thẳng / đường vuông góc (đề: \"Cho hình lập phương Góc giữa…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010118",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010119",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010120",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010134",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa hai đường thẳng / đường vuông góc (đề: \"Góc giữa hai đường thẳng và…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010135",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: hai mặt phẳng vuông góc (đề: \"Hai mặt phẳng vuông góc với…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010136",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa hai đường thẳng / đường vuông góc (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010137",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Cho hình chóp có vuông góc…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010138",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Trong các mệnh đề sau, mệnh…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010139",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa đường thẳng và mặt phẳng (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010140",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa hai đường thẳng / đường vuông góc (đề: \"Cho hình lập phương Đường thẳng…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010141",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHỐI ĐA DIỆN / THỂ TÍCH: tính toán trên khối chóp/lăng trụ/chóp cụt (đề: \"Hình chóp cụt đều có hình…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010142",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010143",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010144",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010145",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc nhị diện (đề: \"Hình ảnh máy tính xách tay…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010146",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHOẢNG CÁCH: tính khoảng cách (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010156",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: hai mặt phẳng vuông góc (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010157",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: hai mặt phẳng vuông góc (đề: \"Cho hình hộp có Mặt phẳng…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010158",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010159",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Cho hình lăng trụ tam giác…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010160",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: hai mặt phẳng vuông góc (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010161",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010162",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010163",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa đường thẳng và mặt phẳng (đề: \"Cho hình hộp chữ nhật có…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010164",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa đường thẳng và mặt phẳng (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010174",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc nhị diện (đề: \"Cho hình chóp tứ giác đều…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010175",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Trong các khẳng định sau về…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010176",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010177",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: hai mặt phẳng vuông góc (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010178",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010179",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa hai đường thẳng / đường vuông góc (đề: \"Cho hình lập phương tham khảo…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010180",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010181",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010182",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa đường thẳng và mặt phẳng (đề: \"Trong một khoảng thời gian đầu…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010193",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa hai đường thẳng / đường vuông góc (đề: \"Cho tứ diện đều cạnh Góc…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010194",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: đường thẳng vuông góc mặt phẳng, chứng minh vuông góc (đề: \"Hình hộp đứng luôn có tính…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010195",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa hai đường thẳng / đường vuông góc (đề: \"Trong không gian, cho điểm và…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010196",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa hai đường thẳng / đường vuông góc (đề: \"Cho hình chóp có và Đường…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010197",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa hai đường thẳng / đường vuông góc (đề: \"Hai đường thẳng được gọi là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010198",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: hai mặt phẳng vuông góc (đề: \"Cho hình chóp có với đáy…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010199",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010200",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHỐI ĐA DIỆN / THỂ TÍCH: tính toán trên khối chóp/lăng trụ/chóp cụt (đề: \"Đài phát thanh Slovak Slovenský rozhlas…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010201",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHỐI ĐA DIỆN / THỂ TÍCH: tính toán trên khối chóp/lăng trụ/chóp cụt (đề: \"Diều tứ diện tetrahedral kite là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010202",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: hai mặt phẳng vuông góc (đề: \"Cho hình hộp chữ nhật có…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010210",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHỐI ĐA DIỆN / THỂ TÍCH: tính toán trên khối chóp/lăng trụ/chóp cụt (đề: \"Cho khối lăng trụ có diện…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010211",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: góc giữa hai đường thẳng / đường vuông góc (đề: \"Cho hình lập phương Góc giữa…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010212",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc KHOẢNG CÁCH: tính khoảng cách (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010213",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc QUAN HỆ VUÔNG GÓC: hai mặt phẳng vuông góc (đề: \"Cho hình chóp có đáy là…\")",
+  "can_cu": null
+ }
+]

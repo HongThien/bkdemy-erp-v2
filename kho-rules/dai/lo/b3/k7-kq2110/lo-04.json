@@ -1,0 +1,640 @@
+[
+ {
+  "ma_cau": "077020101026",
+  "loai": "tra_loi_ngan",
+  "de": "Xác định chu kỳ của số thập phân vô hạn tuần hoàn dưới đây và viết gọn số thập phân đó bằng cách sử dụng chu kỳ: $0,888888\\ldots$",
+  "dap_an": "8; 0,(8)",
+  "loi_giai": "Chu kỳ: $8$.\nViết gọn: $0,(8)$.",
+  "nhan_cu": "Số thập phân vô hạn tuần hoàn › Nhận biết STP hữu hạn, STP vô hạn tuần hoàn"
+ },
+ {
+  "ma_cau": "T107000000370",
+  "loai": "tu_luan",
+  "de": "Tìm $x$, biết: $\\left(\\dfrac{1}{5}\\right)^5:\\dfrac{1}{125}+\\dfrac{12}{5}x=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đưa $\\dfrac{1}{125}$ về luỹ thừa của $\\dfrac{1}{5}$ để chia hai luỹ thừa cùng cơ số, rồi mới cô lập số hạng chứa $x$.\n**Bước 1.** Viết $\\dfrac{1}{125}$ thành luỹ thừa của $\\dfrac{1}{5}$ rồi trừ số mũ để tính phép chia.\n**Bước 2.** Chuyển số hạng đã biết sang vế phải (đổi dấu) để vế trái chỉ còn số hạng chứa $x$.\n**Bước 3.** Tính vế phải rồi lấy tích chia cho thừa số $\\dfrac{12}{5}$ (nhân với số nghịch đảo) để tìm $x$.\nThử lại: $\\dfrac{1}{25}+\\dfrac{12}{5}.\\dfrac{2}{5}=\\dfrac{1}{25}+\\dfrac{24}{25}=1$ (đúng).\n**Phần 2. Trình bày**\n$\\left(\\dfrac{1}{5}\\right)^5:\\dfrac{1}{125}+\\dfrac{12}{5}x=1$\n$\\left(\\dfrac{1}{5}\\right)^5:\\left(\\dfrac{1}{5}\\right)^3+\\dfrac{12} …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000760",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính: $\\left(-\\dfrac{1}{7}\\right)^0-2\\dfrac{4}{9}+\\left(-\\dfrac{2}{3}\\right)^7:\\left(-\\dfrac{2}{3}\\right)^5$",
+  "dap_an": "-1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** luỹ thừa mũ $0$ bằng $1$, và phép chia hai luỹ thừa cùng cơ số làm bằng cách trừ số mũ.\n**Bước 1.** Nhận ra số hạng đầu có số mũ $0$ nên bằng $1$, còn hỗn số cần đổi ra phân số.\n**Bước 2.** Rút gọn phép chia hai luỹ thừa cùng cơ số $-\\dfrac{2}{3}$ bằng cách trừ hai số mũ rồi tính luỹ thừa.\n**Bước 3.** Quy đồng các số hạng về mẫu $9$ rồi cộng trừ các tử.\n**Phần 2. Trình bày**\n$\\left(-\\dfrac{1}{7}\\right)^0-2\\dfrac{4}{9}+\\left(-\\dfrac{2}{3}\\right)^7:\\left(-\\dfrac{2}{3}\\right)^5$\n$=1-\\dfrac{22}{9}+\\left(-\\dfrac{2}{3}\\right)^{7-5}$\n$=1-\\dfrac{22}{9}+\\dfrac{4}{9}$\n$=\\dfrac{9}{9}-\\dfrac{22}{9}+\\dfrac{4}{9}$\n$=\\dfrac{-9}{9}$\n$=-1$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1077033330401004",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $\\widehat{xOy}=80^\\circ$. Oz là tia phân giác của $\\widehat{xOy}$. Tính $\\widehat{xOz}$.",
+  "dap_an": "40",
+  "loi_giai": "Vì Oz là tia phân giác của $\\widehat{xOy}$ nên\n$\\widehat{xOz}=\\dfrac{80^\\circ}{2}=40^\\circ$.",
+  "nhan_cu": "Hình học › Hình học"
+ },
+ {
+  "ma_cau": "T107000000639",
+  "loai": "trac_nghiem",
+  "de": "Có bao nhiêu số hữu tỉ $x$ thỏa mãn $x^2=-\\dfrac{25}{4}$?",
+  "lua_chon": [
+   "$1$ số",
+   "$0$ số",
+   "$2$ số",
+   "vô số"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** bình phương của mọi số hữu tỉ đều không âm, còn vế phải ở đây là một số âm.\n**Bước 1.** Nhận xét dấu của vế phải của đẳng thức đã cho.\n**Bước 2.** Nhớ lại tính chất bình phương của một số hữu tỉ bất kì luôn lớn hơn hoặc bằng 0.\n**Bước 3.** So sánh hai nhận xét trên để kết luận số giá trị của $x$.\n**Phần 2. Trình bày**\nVới mọi số hữu tỉ $x$ ta có $x^2\\ge0$.\nMà $-\\dfrac{25}{4}<0$ nên không có số hữu tỉ $x$ nào thỏa mãn $x^2=-\\dfrac{25}{4}$.\nVậy có $0$ số.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000311",
+  "loai": "trac_nghiem",
+  "de": "Số đối của $\\dfrac{2}{3}$ là",
+  "lua_chon": [
+   "$-\\dfrac{2}{3}$",
+   "$\\dfrac{3}{2}$",
+   "$\\dfrac{-3}{2}$",
+   "$\\dfrac{2}{3}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số đối của một số là số có tổng với nó bằng 0, tức là chỉ đổi dấu số đã cho.\n**Bước 1.** Nhớ định nghĩa: hai số đối nhau là hai số có tổng bằng 0.\n**Bước 2.** Viết số đối của $\\dfrac{2}{3}$ bằng cách giữ nguyên tử số, mẫu số và đổi dấu số đó.\n**Bước 3.** Đối chiếu với các phương án, chú ý phương án đổi chỗ tử và mẫu là số nghịch đảo chứ không phải số đối.\n**Chú ý:** $\\dfrac{3}{2}$ là số nghịch đảo của $\\dfrac{2}{3}$ — phương án B là bẫy.\n**Phần 2. Trình bày**\nSố đối của $\\dfrac{2}{3}$ là $-\\dfrac{2}{3}$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000560",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số nguyên $n$, biết: $3^{n+1}-2=5^2$",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính vế phải, cô lập luỹ thừa $3^{n+1}$ rồi đưa về cùng cơ số $3$.\n**Bước 1.** Tính $5^2$ ở vế phải rồi chuyển $-2$ sang vế phải bằng cách cộng thêm $2$.\n**Bước 2.** Viết số vừa tìm ở vế phải thành luỹ thừa của $3$.\n**Bước 3.** Cho hai số mũ bằng nhau rồi chuyển vế để tìm $n$.\n**Phần 2. Trình bày**\n$3^{n+1}-2=5^2$\n$3^{n+1}-2=25$\n$3^{n+1}=27$\n$3^{n+1}=3^3$\n$n+1=3$\n$n=2$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000488",
+  "loai": "trac_nghiem",
+  "de": "Trong các phép tính sau, phép tính nào **sai**:",
+  "lua_chon": [
+   "$(-3)^{2000}=-3^{2000}$",
+   "$\\sqrt{25}=5$",
+   "$\\left|\\dfrac{3}{4}\\right|=\\dfrac{3}{4}$",
+   "$(2^3)^5=2^{15}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** kiểm tra lần lượt từng phương án bằng quy tắc luỹ thừa, căn bậc hai và giá trị tuyệt đối, rồi chọn phương án không đúng.\n**Bước 1.** Với phương án A: xét dấu của luỹ thừa mũ chẵn của một số âm, rồi so với dấu của $-3^{2000}$.\n**Bước 2.** Với phương án B và C: nhớ lại căn bậc hai số học của một số chính phương và giá trị tuyệt đối của một số dương.\n**Bước 3.** Với phương án D: dùng quy tắc luỹ thừa của một luỹ thừa, giữ cơ số và nhân hai số mũ.\n**Chú ý:** đề hỏi phép tính **sai**, nên chọn phương án không thoả mãn chứ không phải phương án đúng.\n**Phần 2. Trình bày**\nA: $(-3)^{2000}=3^{2000}>0$ (mũ chẵn) còn $-3^{2000}<0$ nên $(-3)^{2000}\\ne-3^{2000}$, phép  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000431",
+  "loai": "trac_nghiem",
+  "de": "Quan sát trục số sau và cho biết điểm nào biểu diễn cho phân số $\\dfrac{3}{5}$ ? (theo hình: mỗi đoạn đơn vị trên trục số được chia thành 5 phần bằng nhau; điểm $E$ nằm bên phải điểm $-2$ và cách điểm $-2$ hai phần; điểm $F$ nằm bên trái điểm $0$, cách điểm $0$ một phần; điểm $G$ nằm bên phải điểm $0$, cách điểm $0$ ba phần; điểm $H$ nằm bên phải điểm $1$, cách điểm $1$ một phần)",
+  "lua_chon": [
+   "Điểm $E$",
+   "Điểm $F$",
+   "Điểm $G$",
+   "Điểm $H$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mỗi đoạn đơn vị chia thành bao nhiêu phần bằng nhau thì mẫu của phân số bằng bấy nhiêu, tử là số phần tính từ điểm $0$.\n**Bước 1.** Đếm số phần bằng nhau của một đoạn đơn vị rồi đối chiếu với mẫu của phân số đề cho.\n**Bước 2.** Xác định phân số đề cho là số dương hay số âm để biết điểm phải nằm bên nào của điểm $0$.\n**Bước 3.** Đếm số phần cách điểm $0$ theo tử số, rồi tìm điểm trên hình ở đúng vị trí đó.\n**Phần 2. Trình bày**\nMỗi đoạn đơn vị được chia thành 5 phần bằng nhau nên mỗi phần có độ dài $\\dfrac{1}{5}$.\nPhân số $\\dfrac{3}{5}$ là số dương nên điểm biểu diễn nằm bên phải điểm $0$ và cách điểm $0$ là 3 phần.\nĐiểm $G$ nằm bên phải điểm $0$, cách điểm …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107010205072",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty phát triển kĩ thuật có một số thông báo rất hấp dẫn: Cần thuê một nhóm kĩ thuật viên hoàn thành một dự án trong vòng 17 ngày, công việc rất khó khăn nhưng tiền công cho dự án rất thú vị. Nhóm kĩ thuật viên được nhận làm dự án sẽ lựa chọn một trong hai phương án trả tiền công như sau:\n- Phương án 1: Nhận một lần và nhận tiền công trước với mức tiền 170 triệu đồng;\n- Phương án 2: Ngày đầu tiên nhận 3 đồng, ngày sau nhận gấp 3 lần ngày trước đó.\nEm hãy giúp nhóm kĩ thuật viên lựa chọn phương án để nhận được nhiều tiền công hơn và giải thích tại sao chọn phương án đó.",
+  "dap_an": "Phương án 2; nhiều hơn 23710243 đồng",
+  "loi_giai": "Số tiền công nhận được ở phương án 2 trong 17 ngày là:\n$S = 3 + 3^2 + 3^3 + ... + 3^{17}$\nTa có $3S = 3^2 + 3^3 + ... + 3^{18}$\n$\\Rightarrow 3S - S = 3^{18} - 3$\n$\\Rightarrow 2S = 3^{18} - 3 = 387420486$\n$\\Rightarrow S = 193710243$ (đồng)\nSo sánh với phương án 1 là $170000000$ đồng, ta thấy $193710243 > 170000000$ nên phương án 2 nhận được nhiều tiền công hơn.\nSố tiền phương án 2 nhiều hơn phương án 1 là:\n$193710243 - 170000000 = 23710243$ (đồng)\nVậy nhóm kĩ thuật viên nên chọn phương án 2, nhận được nhiều hơn phương án 1 là 23 710 243 đồng.",
+  "nhan_cu": "Thực hiện phép tính Số hữu tỉ › Toán thực tế Số hữu tỉ"
+ },
+ {
+  "ma_cau": "T107010510001",
+  "loai": "tu_luan",
+  "de": "Với $n \\in \\mathbb{N}, n > 1$, cho $A = \\dfrac{1}{2^2} + \\dfrac{1}{3^2} + \\dfrac{1}{4^2} + \\ldots + \\dfrac{1}{n^2}$. Chứng minh rằng $A < 1$.",
+  "dap_an": "A < 1",
+  "loi_giai": "Ta có $\\dfrac{1}{2^2} < \\dfrac{1}{1.2}$ ; $\\dfrac{1}{3^2} < \\dfrac{1}{2.3}$ ; $\\dfrac{1}{4^2} < \\dfrac{1}{3.4}$ ; ... ; $\\dfrac{1}{n^2} < \\dfrac{1}{(n-1).n}$\nSuy ra $A < \\dfrac{1}{1.2} + \\dfrac{1}{2.3} + \\dfrac{1}{3.4} + ... + \\dfrac{1}{(n-1).n}$\n$A < 1 - \\dfrac{1}{2} + \\dfrac{1}{2} - \\dfrac{1}{3} + \\dfrac{1}{3} - \\dfrac{1}{4} + ... + \\dfrac{1}{n-1} - \\dfrac{1}{n}$\n$A < 1 - \\dfrac{1}{n} < 1$\nVậy $A < 1$",
+  "nhan_cu": "Dãy Phân số nâng cao › Dãy phân số bình phương"
+ },
+ {
+  "ma_cau": "T107000000287",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính hợp lý (nếu có thể): $\\left(-\\dfrac{4}{3}\\right)^3+\\dfrac{1}{3}.\\left(-\\dfrac{4}{3}\\right)^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai số hạng đều chứa luỹ thừa của $-\\dfrac{4}{3}$, nên đặt luỹ thừa bậc nhỏ hơn làm thừa số chung.\n**Bước 1.** Tách $\\left(-\\dfrac{4}{3}\\right)^3$ thành tích của $\\left(-\\dfrac{4}{3}\\right)^2$ với một thừa số $-\\dfrac{4}{3}$ để thấy thừa số chung.\n**Bước 2.** Dùng tính chất phân phối: đặt $\\left(-\\dfrac{4}{3}\\right)^2$ ra ngoài, trong ngoặc còn tổng của hai thừa số còn lại.\n**Bước 3.** Tính tổng trong ngoặc rồi nhân với luỹ thừa còn lại để ra kết quả.\n**Chú ý:** cũng có thể tính riêng từng luỹ thừa rồi cộng, nhưng đặt thừa số chung nhanh và ít sai hơn.\n**Phần 2. Trình bày**\n$\\left(-\\dfrac{4}{3}\\right)^3+\\dfrac{1}{3}.\\left(-\\dfrac{4}{3}\\right)^2$\n$=\\left(-\\ …",
+  "nhan_cu": "Luỹ thừa Số hữu tỉ › Tính toán biểu thức luỹ thừa"
+ },
+ {
+  "ma_cau": "T107010501052",
+  "loai": "tra_loi_ngan",
+  "de": "Tính $A = \\dfrac{5^2}{1.6} + \\dfrac{5^2}{6.11} + ... + \\dfrac{5^2}{26.31}$.",
+  "dap_an": "A = 150/31",
+  "loi_giai": "Ta có $5^2 = 25$, các mẫu là tích 2 số cách nhau 5 đơn vị ($6-1=5$, $11-6=5$, ...).\nTa viết $A = 5 (\\dfrac{5}{1.6} + \\dfrac{5}{6.11} + \\dfrac{5}{11.16} + \\dfrac{5}{16.21} + \\dfrac{5}{21.26} + \\dfrac{5}{26.31})$\nCác phân số trong ngoặc đã chuẩn dạng: tử là hiệu, mẫu là tích. Ta có:\n$\\dfrac{5}{1.6} = \\dfrac{6-1}{1.6} = \\dfrac{1}{1} - \\dfrac{1}{6}$ ; $\\dfrac{5}{6.11} = \\dfrac{11-6}{6.11} = \\dfrac{1}{6} - \\dfrac{1}{11}$ ; ... ; $\\dfrac{5}{26.31} = \\dfrac{31-26}{26.31} = \\dfrac{1}{26} - \\dfrac{1}{31}$\nVậy $A = 5 \\left[ (\\dfrac{1}{1} - \\dfrac{1}{6}) + (\\dfrac{1}{6} - \\dfrac{1}{11}) + ... + (\\dfrac{1}{26} - \\dfrac{1}{31}) \\right] = 5 (\\dfrac{1}{1} - \\dfrac{1}{31}) = 5 \\times \\dfrac{30}{31} = \\dfrac …",
+  "nhan_cu": "Dãy Phân số nâng cao › Dãy phân số dạng Hiệu tích"
+ },
+ {
+  "ma_cau": "T107000000669",
+  "loai": "tu_luan",
+  "de": "Tính bằng cách hợp lý: $\\dfrac{0,75+0,6+\\dfrac{3}{7}+\\dfrac{9}{24}}{2,75+2,2+\\dfrac{11}{7}+\\dfrac{33}{24}}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đưa tử và mẫu về dạng tích của một số với cùng một tổng các phân số nên rút gọn được tổng đó.\n**Bước 1.** Đổi các số thập phân ở tử và mẫu thành phân số tối giản.\n**Bước 2.** Nhận ra các số hạng ở tử có cùng tử số $3$, các số hạng ở mẫu có cùng tử số $11$ rồi đặt thừa số chung ở tử.\n**Bước 3.** Đặt thừa số chung ở mẫu, trong ngoặc xuất hiện cùng một tổng.\n**Bước 4.** Rút gọn tổng chung để tìm giá trị của biểu thức.\n**Phần 2. Trình bày**\nĐặt $S=\\dfrac{1}{4}+\\dfrac{1}{5}+\\dfrac{1}{7}+\\dfrac{1}{8}$.\nTử số: $0,75+0,6+\\dfrac{3}{7}+\\dfrac{9}{24}=\\dfrac{3}{4}+\\dfrac{3}{5}+\\dfrac{3}{7}+\\dfrac{3}{8}=3.S$\nMẫu số: $2,75+2,2+\\dfrac{11}{7}+\\dfrac{33}{24}=\\dfrac{11}{4}+ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000520",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính: $\\dfrac{3}{5}+\\dfrac{-1}{25}-\\dfrac{7}{20}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biểu thức chỉ có cộng và trừ ba phân số khác mẫu nên quy đồng về mẫu chung rồi cộng trừ các tử.\n**Bước 1.** Tìm mẫu chung nhỏ nhất của ba mẫu $5$, $25$ và $20$.\n**Bước 2.** Quy đồng từng phân số về mẫu chung đó bằng cách nhân cả tử và mẫu với cùng một số.\n**Bước 3.** Cộng trừ các tử, giữ nguyên mẫu rồi rút gọn nếu còn rút gọn được.\n**Phần 2. Trình bày**\n$\\dfrac{3}{5}+\\dfrac{-1}{25}-\\dfrac{7}{20}$\n$=\\dfrac{60}{100}+\\dfrac{-4}{100}-\\dfrac{35}{100}$\n$=\\dfrac{60-4-35}{100}$\n$=\\dfrac{21}{100}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T10770333330501006",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $A=\\dfrac{49}{1}+\\dfrac{48}{2}+\\ldots+\\dfrac{2}{48}+\\dfrac{1}{49}$ và $B=\\dfrac{1}{2}+\\dfrac{1}{3}+\\ldots+\\dfrac{1}{49}+\\dfrac{1}{50}$. Tính $\\dfrac{A}{B}$.",
+  "dap_an": "50",
+  "loi_giai": "$A=\\left(\\dfrac{50}{1}-1\\right)+\\left(\\dfrac{50}{2}-1\\right)+\\ldots+\\left(\\dfrac{50}{49}-1\\right)$.\n$A=50\\left(1+\\dfrac{1}{2}+\\ldots+\\dfrac{1}{49}\\right)-49$.\n$A=50\\left(\\dfrac{1}{2}+\\dfrac{1}{3}+\\ldots+\\dfrac{1}{49}\\right)+1$.\n$50B=50\\left(\\dfrac{1}{2}+\\dfrac{1}{3}+\\ldots+\\dfrac{1}{49}\\right)+1$.\nSuy ra $A=50B$.\nVậy $\\dfrac{A}{B}=50$.",
+  "nhan_cu": "Nâng cao › Dãy phân số"
+ },
+ {
+  "ma_cau": "T107000000407",
+  "loai": "tu_luan",
+  "de": "Tìm hai số hữu tỉ $x$ và $y$ khác $0$, biết $2x-3y=6xy=2x:3y$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đẳng thức $6xy=2x:3y$ chỉ chứa $x$ ở hai vế như một thừa số chung, nên khử $x$ (khác $0$) để tìm $y$ trước, rồi thay vào đẳng thức còn lại để tìm $x$.\n**Bước 1.** Viết $2x:3y$ dưới dạng phân số rồi quy đồng, rút gọn thừa số $x$ ở hai vế của $6xy=2x:3y$.\n**Bước 2.** Từ phương trình chỉ còn $y$, tìm các giá trị có thể của $y$ (có hai giá trị đối nhau vì $y^2$ bằng một số dương).\n**Bước 3.** Thay từng giá trị của $y$ vào $2x-3y=6xy$, tìm $x$, loại giá trị làm đẳng thức vô lí.\n**Bước 4.** Thử lại cặp $(x;y)$ tìm được vào cả hai đẳng thức của đề.\n**Phần 2. Trình bày**\nVì $x\\ne0$, $y\\ne0$ nên $2x:3y=\\dfrac{2x}{3y}$.\nTừ $6xy=\\dfrac{2x}{3y}$ suy ra $6xy.3y=2x$, ha …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1077030101001",
+  "loai": "tra_loi_ngan",
+  "de": "Số đối của $\\dfrac{5}{7}$ là?",
+  "dap_an": "$-\\dfrac{5}{7}$",
+  "loi_giai": "Số đối của $\\dfrac{5}{7}$ là $-\\dfrac{5}{7}$.",
+  "nhan_cu": "Tính chất của Số hữu tỉ › Nhận diện Số hữu tỉ"
+ },
+ {
+  "ma_cau": "0770222204220402011",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số nguyên $x,y$ biết: $|y-4|+6=\\dfrac{18}{(3x-6)^2+3}$.",
+  "dap_an": "$x=2$; $y=4$",
+  "loi_giai": "Xét $|y-4|+6$:\nTa có: $|y-4|\\ge0$.\n$\\Rightarrow |y-4|+6\\ge6$.\nXét $\\dfrac{18}{(3x-6)^2+3}$:\nTa có: $(3x-6)^2\\ge0$.\n$\\Rightarrow (3x-6)^2+3\\ge3$.\n$\\Rightarrow \\dfrac{18}{(3x-6)^2+3}\\le\\dfrac{18}{3}$.\n$\\Rightarrow \\dfrac{18}{(3x-6)^2+3}\\le6$.\nMà $|y-4|+6=\\dfrac{18}{(3x-6)^2+3}$.\n$\\Rightarrow |y-4|+6=\\dfrac{18}{(3x-6)^2+3}=6$.\n$|y-4|+6=6\\Rightarrow y=4$.\n$\\dfrac{18}{(3x-6)^2+3}=6\\Rightarrow x=2$.\nVậy $x=2$ và $y=4$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tính Giá trị biểu thức ứng dụng GTLN-GTNN của biểu thức Căn bậc hai và GTTĐ"
+ },
+ {
+  "ma_cau": "T107000000256",
+  "loai": "trac_nghiem",
+  "de": "Cách viết nào sau đây biểu diễn số hữu tỉ?",
+  "lua_chon": [
+   "$\\dfrac{6,5}{14}$",
+   "$\\dfrac{3}{7}$",
+   "$\\dfrac{21}{0}$",
+   "$\\dfrac{15}{0,2}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số hữu tỉ phải viết được dưới dạng $\\dfrac{a}{b}$ với $a$, $b$ là số nguyên và $b\\ne0$.\n**Bước 1.** Nhớ lại định nghĩa: số hữu tỉ là số viết được dưới dạng phân số $\\dfrac{a}{b}$ với $a,b\\in\\mathbb{Z}$ và $b\\ne0$.\n**Bước 2.** Soát từng phương án xem mẫu có khác 0 không và tử, mẫu có đều là số nguyên không.\n**Bước 3.** Loại phương án có mẫu bằng 0 và các phương án có tử hoặc mẫu là số thập phân, giữ lại phương án đúng dạng định nghĩa.\n**Chú ý:** phân số có mẫu bằng 0 không có nghĩa nên không phải là số hữu tỉ.\n**Phần 2. Trình bày**\nSố hữu tỉ là số viết được dưới dạng $\\dfrac{a}{b}$ với $a,b\\in\\mathbb{Z}$, $b\\ne0$.\nPhân số $\\dfrac{3}{7}$ có $3,7\\in\\mathbb{Z} …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "077022220401068",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $B=\\dfrac{8}{|3x-6|+4}$.",
+  "dap_an": "2",
+  "loi_giai": "Ta có: $|3x-6|\\ge0$.\n$\\Rightarrow |3x-6|+4\\ge4$.\n$\\Rightarrow \\dfrac{8}{|3x-6|+4}\\le\\dfrac{8}{4}$.\n$\\Rightarrow B\\le2$.\nDấu bằng xảy ra khi $|3x-6|=0\\Rightarrow 3x-6=0\\Rightarrow x=2$.\nVậy GTLN của biểu thức $B$ là $2$ khi $x=2$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN - GTNN của biểu thức ứng dụng Căn bậc hai và GTTĐ"
+ },
+ {
+  "ma_cau": "T107020501027",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức $A=|x+1|+|x+9|$.",
+  "dap_an": "8",
+  "loi_giai": "$A=|x+1|+|x+9|$\n$A=|x+1|+|-x-9|$\n$A\\ge|x+1+(-x-9)|$\n$A\\ge|-8|$\n$A\\ge8$\nDấu bằng xảy ra khi $(x+1)(-x-9)\\ge0\\Rightarrow -9\\le x\\le-1$.\nVậy GTNN của $A$ là $8$ khi $-9\\le x\\le-1$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN-GTNN của biểu thức ứng dụng BĐT GTTĐ."
+ },
+ {
+  "ma_cau": "T107000000346",
+  "loai": "tu_luan",
+  "de": "Biểu đồ sau thể hiện loại kem bán được trong một ngày của một cửa hàng.\nBiểu đồ hình quạt tròn \"Tỉ lệ loại kem bán được trong một ngày\": Ốc quế $25\\%$; Vani $50\\%$; Trà xanh $11\\%$; Sữa dừa $8\\%$; Socola $6\\%$.\na) Em hãy lập bảng thống kê tỉ lệ các loại kem bán được trong một ngày của cửa hàng.\nb) Biết một ngày cửa hàng đó bán được $200$ cây kem. Em hãy tính số kem Vani đã bán được trong một ngày.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biểu đồ hình quạt cho biết tỉ lệ phần trăm của từng loại trên tổng số, nên số lượng của một loại bằng tỉ lệ của loại đó nhân với tổng số.\n**Bước 1.** Ý a): ghép từng hình quạt với tên loại kem bằng chú giải rồi liệt kê tỉ lệ vào bảng.\n**Bước 2.** Kiểm tra tổng các tỉ lệ có bằng $100\\%$ hay không để chắc không đọc thiếu hay sai hình quạt nào.\n**Bước 3.** Ý b): lấy tỉ lệ của kem Vani nhân với tổng số $200$ cây kem để tìm số lượng.\n**Chú ý:** phần trăm của một số là nhân số đó với tỉ lệ phần trăm.\n**Phần 2. Trình bày**\na) Bảng thống kê tỉ lệ các loại kem bán được trong một ngày:\nỐc quế: $25\\%$\nVani: $50\\%$\nTrà xanh: $11\\%$\nSữa dừa: $8\\%$\nSocola: $6\\%$\n(Kiểm t …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107010508008",
+  "loai": "tra_loi_ngan",
+  "de": "Tính nhanh tổng sau: $H = \\dfrac{38}{25}+\\dfrac{9}{10}-\\dfrac{11}{15}+\\dfrac{13}{21}-\\dfrac{15}{28}+...+\\dfrac{197}{4851}-\\dfrac{199}{4950}$.",
+  "dap_an": "$H=2$",
+  "loi_giai": "Nhận xét: từ số hạng thứ hai trở đi, mẫu số $10,15,21,28,...,4851,4950$ chính là dạng $\\dfrac{n(n+1)}{2}$ với $n=4,5,6,7,...,98,99$ (vì $\\dfrac{4\\cdot5}{2}=10$, $\\dfrac{5\\cdot6}{2}=15$,..., $\\dfrac{99\\cdot100}{2}=4950$), tử số tương ứng là $2n+1$ (vì $2\\cdot4+1=9$,..., $2\\cdot99+1=199$), dấu đan xen $+,-,+,-,...$\nVới mỗi $n$: $\\dfrac{2n+1}{\\frac{n(n+1)}{2}} = \\dfrac{2(2n+1)}{n(n+1)} = \\dfrac{2(n+(n+1))}{n(n+1)} = \\dfrac{2}{n}+\\dfrac{2}{n+1}$\nVậy phần còn lại của $H$ (sau $\\dfrac{38}{25}$) là:\n$\\left(\\dfrac{2}{4}+\\dfrac{2}{5}\\right)-\\left(\\dfrac{2}{5}+\\dfrac{2}{6}\\right)+\\left(\\dfrac{2}{6}+\\dfrac{2}{7}\\right)-...+\\left(\\dfrac{2}{98}+\\dfrac{2}{99}\\right)-\\left(\\dfrac{2}{99}+\\dfrac{2}{100}\\righ …",
+  "nhan_cu": "Dãy Phân số nâng cao › Dãy tích phân số"
+ },
+ {
+  "ma_cau": "07702220301021",
+  "loai": "tra_loi_ngan",
+  "de": "Sắp xếp các số $\\sqrt{31};|-5,4|;5,2;\\left|-\\dfrac{11}{2}\\right|;\\sqrt{28}$ theo giá trị từ bé đến lớn.",
+  "dap_an": "5,2;\\sqrt{28};|-5,4|;\\left|-\\dfrac{11}{2}\\right|;\\sqrt{31}",
+  "loi_giai": "Ta có: $|-5,4|=5,4$; $\\left|-\\dfrac{11}{2}\\right|=\\dfrac{11}{2}=5,5$.\nMà $5,2=\\sqrt{27,04}$; $5,4=\\sqrt{29,16}$. Vì $\\sqrt{27,04}<\\sqrt{28}<\\sqrt{29,16}$ nên $5,2<\\sqrt{28}<5,4<5,5$.\nLại có $5,5=\\sqrt{30,25}<\\sqrt{31}$.\nVậy ta sắp xếp: $5,2;\\sqrt{28};|-5,4|;\\left|-\\dfrac{11}{2}\\right|;\\sqrt{31}$.",
+  "nhan_cu": "Tập hợp số thực. Giá trị tuyệt đối › So sánh, sắp xếp Số thực"
+ },
+ {
+  "ma_cau": "07702202202064",
+  "loai": "tra_loi_ngan",
+  "de": "Tính: $\\sqrt{81}+3\\sqrt{(-4)^2}-6\\sqrt{2,25}+4\\sqrt{\\dfrac{9}{16}}$.",
+  "dap_an": "15",
+  "loi_giai": "$\\sqrt{81}+3\\sqrt{(-4)^2}-6\\sqrt{2,25}+4\\sqrt{\\dfrac{9}{16}}$\n$=9+3\\cdot4-6\\cdot1,5+4\\cdot\\dfrac{3}{4}$\n$=9+12-9+3$\n$=15$.",
+  "nhan_cu": "Số vô tỉ. Căn bậc hai số học › Thực hiện phép tính liên quan đến Căn bậc hai"
+ },
+ {
+  "ma_cau": "T107000000782",
+  "loai": "trac_nghiem",
+  "de": "Quan sát trục số sau. Điểm $B$ và điểm $A$ biểu diễn lần lượt các số hữu tỉ nào sau đây?\nTheo hình: mỗi đoạn đơn vị trên trục số được chia thành $4$ phần bằng nhau; điểm $B$ nằm bên phải điểm $-1$ một vạch chia và điểm $A$ nằm bên phải điểm $1$ một vạch chia.",
+  "lua_chon": [
+   "$\\dfrac{3}{4}$ và $1$",
+   "$\\dfrac{-3}{4}$ và $\\dfrac{5}{4}$",
+   "$\\dfrac{-3}{5}$ và $\\dfrac{5}{4}$",
+   "$\\dfrac{-3}{4}$ và $\\dfrac{5}{6}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đoạn đơn vị chia thành bao nhiêu phần bằng nhau thì mẫu số của số hữu tỉ biểu diễn chính là số phần đó.\n**Bước 1.** Đếm số phần bằng nhau mà mỗi đoạn đơn vị được chia để biết mẫu số của hai điểm.\n**Bước 2.** Xác định điểm $B$ nằm bên trái hay bên phải điểm $0$ và cách điểm nguyên gần nhất mấy phần, từ đó viết số hữu tỉ.\n**Bước 3.** Làm tương tự với điểm $A$ rồi đối chiếu cả hai số với các phương án.\n**Phần 2. Trình bày**\nMỗi đoạn đơn vị được chia thành $4$ phần bằng nhau nên mỗi phần dài $\\dfrac{1}{4}$ đơn vị.\nĐiểm $B$ nằm giữa $-1$ và $0$, cách $-1$ một phần về bên phải nên điểm $B$ biểu diễn số $-1+\\dfrac{1}{4}=\\dfrac{-3}{4}$.\nĐiểm $A$ nằm giữa $1$ và $2 …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000068",
+  "loai": "trac_nghiem",
+  "de": "Khẳng định nào sau đây sai?",
+  "lua_chon": [
+   "$-0,5\\in\\mathbb{Q}$",
+   "$\\dfrac{-3}{2}\\notin\\mathbb{Z}$",
+   "$-1\\in\\mathbb{N}$",
+   "$\\dfrac{-3}{2}\\in\\mathbb{Q}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đề hỏi khẳng định sai nên phải kiểm tra từng phương án xem số có thuộc tập số đã cho hay không.\n**Bước 1.** Với mỗi phương án, nhận ra số đã cho thuộc loại nào: số thập phân, phân số hay số nguyên âm.\n**Bước 2.** Nhớ rằng $\\mathbb{Q}$ chứa mọi phân số và số thập phân hữu hạn, $\\mathbb{Z}$ chỉ chứa số nguyên, $\\mathbb{N}$ chỉ chứa số tự nhiên không âm.\n**Bước 3.** Kiểm tra từng dấu $\\in$, $\\notin$ rồi chọn phương án có khẳng định không đúng.\n**Chú ý:** đề yêu cầu tìm khẳng định SAI, không phải khẳng định đúng.\n**Phần 2. Trình bày**\n$-0,5=\\dfrac{-1}{2}$ là số hữu tỉ nên $-0,5\\in\\mathbb{Q}$ là khẳng định đúng.\n$\\dfrac{-3}{2}$ không phải số nguyên nên $\\dfrac{ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000330",
+  "loai": "tu_luan",
+  "de": "So sánh hai số hữu tỉ $\\dfrac{5}{6}$ và $\\dfrac{6}{5}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai phân số khác mẫu thì quy đồng về cùng mẫu dương rồi so sánh tử.\n**Bước 1.** Kiểm tra cả hai phân số đều có mẫu dương để quy đồng.\n**Bước 2.** Tìm mẫu chung của hai mẫu $6$ và $5$ rồi quy đồng từng phân số.\n**Bước 3.** So sánh hai tử số sau khi quy đồng rồi kết luận.\n**Chú ý:** có thể so sánh nhanh qua số $1$: một phân số có tử nhỏ hơn mẫu, phân số kia có tử lớn hơn mẫu.\n**Phần 2. Trình bày**\nTa có $\\dfrac{5}{6}=\\dfrac{25}{30}$; $\\dfrac{6}{5}=\\dfrac{36}{30}$.\nMà $\\dfrac{25}{30}<\\dfrac{36}{30}$ nên $\\dfrac{5}{6}<\\dfrac{6}{5}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107010505001",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $B = \\dfrac{1}{3} - \\dfrac{1}{3^3} + \\dfrac{1}{3^5} - \\dots + \\dfrac{1}{3^{21}}$.\\nSo sánh $B$ với $\\dfrac{3}{10}$.",
+  "dap_an": "$B > \\dfrac{3}{10}$",
+  "loi_giai": "Bước 1: Nhân $3^2$ vào cả hai vế, ta được:\\n$3^2B = 3^2.\\left(\\dfrac{1}{3} - \\dfrac{1}{3^3} + \\dfrac{1}{3^5} - \\dots + \\dfrac{1}{3^{21}}\\right) = 3 - \\dfrac{1}{3} + \\dfrac{1}{3^3} - \\dots + \\dfrac{1}{3^{19}}$\\nBước 2: Cộng vế với vế $3^2B + B$ để rút gọn:\\n$9B + B = \\left(3 - \\dfrac{1}{3} + \\dfrac{1}{3^3} - \\dots + \\dfrac{1}{3^{19}}\\right) + \\left(\\dfrac{1}{3} - \\dfrac{1}{3^3} + \\dfrac{1}{3^5} - \\dots + \\dfrac{1}{3^{21}}\\right)$\\n$10B = 3 + \\dfrac{1}{3^{21}} > 3$\\nSuy ra $B > \\dfrac{3}{10}$",
+  "nhan_cu": "Dãy Phân số nâng cao › Dãy phân số Luỹ thừa"
+ },
+ {
+  "ma_cau": "0770222204220402014",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số nguyên $x,y$ biết: $|2y-8|+4=\\dfrac{24}{(x-2)^2+6}$.",
+  "dap_an": "$x=2$; $y=4$",
+  "loi_giai": "Xét $|2y-8|+4$:\nTa có: $|2y-8|\\ge0$.\n$\\Rightarrow |2y-8|+4\\ge4$.\nXét $\\dfrac{24}{(x-2)^2+6}$:\nTa có: $(x-2)^2\\ge0$.\n$\\Rightarrow (x-2)^2+6\\ge6$.\n$\\Rightarrow \\dfrac{24}{(x-2)^2+6}\\le\\dfrac{24}{6}$.\n$\\Rightarrow \\dfrac{24}{(x-2)^2+6}\\le4$.\nMà $|2y-8|+4=\\dfrac{24}{(x-2)^2+6}$.\n$\\Rightarrow |2y-8|+4=\\dfrac{24}{(x-2)^2+6}=4$.\n$|2y-8|+4=4\\Rightarrow y=4$.\n$\\dfrac{24}{(x-2)^2+6}=4\\Rightarrow x=2$.\nVậy $x=2$ và $y=4$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tính Giá trị biểu thức ứng dụng GTLN-GTNN của biểu thức Căn bậc hai và GTTĐ"
+ },
+ {
+  "ma_cau": "077022220401048",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $A=\\dfrac{7}{(x-2)^2+1}$.",
+  "dap_an": "7",
+  "loi_giai": "Ta có: $(x-2)^2\\ge0$.\n$\\Rightarrow (x-2)^2+1\\ge1$.\n$\\Rightarrow \\dfrac{7}{(x-2)^2+1}\\le\\dfrac{7}{1}$.\n$\\Rightarrow A\\le7$.\nDấu bằng xảy ra khi $(x-2)^2=0\\Rightarrow x=2$.\nVậy GTLN của biểu thức $A$ là $7$ khi $x=2$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN - GTNN của biểu thức ứng dụng Căn bậc hai và GTTĐ"
+ },
+ {
+  "ma_cau": "T107020501042",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết: $|x+3|+|x-4|=\\dfrac{7}{(x+1)^2+1}$.",
+  "dap_an": "-1",
+  "loi_giai": "$|x+3|+|x-4|=\\dfrac{7}{(x+1)^2+1}$\nXét VT:\n$|x+3|+|x-4|=|x+3|+|4-x|\\ge|x+3+4-x|=7$.\nXét VP:\n$(x+1)^2\\ge0$\n$\\Rightarrow (x+1)^2+1\\ge1$\n$\\Rightarrow \\dfrac{7}{(x+1)^2+1}\\le\\dfrac{7}{1}=7$.\nVậy VT$\\ge7$, VP$\\le7\\Rightarrow |x+3|+|x-4|=\\dfrac{7}{(x+1)^2+1}=7$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{1}(x+3)(4-\nx)\\ge0\\\\(x+1)^2=0\\end{array}\\right.\\Rightarrow x=-1$.\nVậy $x=-1$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN-GTNN của biểu thức ứng dụng BĐT GTTĐ."
+ },
+ {
+  "ma_cau": "T107000000679",
+  "loai": "tu_luan",
+  "de": "Tìm $x$, biết: $\\dfrac{2x-1}{8}=\\dfrac{2}{9\\left(2x-1\\right)}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** khử mẫu bằng cách nhân hai vế với $72\\left(2x-1\\right)$ (với điều kiện $2x-1\\ne0$), được phương trình bình phương.\n**Bước 1.** Tìm điều kiện để mẫu ở vế phải khác $0$.\n**Bước 2.** Nhân hai vế với cùng một số khác $0$ để khử cả hai mẫu số.\n**Bước 3.** Đưa phương trình về dạng bình phương của $\\left(2x-1\\right)$ bằng một số rồi xét hai trường hợp.\n**Bước 4.** Giải từng trường hợp rồi đối chiếu với điều kiện ban đầu.\n**Phần 2. Trình bày**\nĐiều kiện: $2x-1\\ne0$.\nNhân hai vế với $72\\left(2x-1\\right)$ ta được:\n$9\\left(2x-1\\right)^2=16$\n$\\left(2x-1\\right)^2=\\dfrac{16}{9}=\\left(\\dfrac{4}{3}\\right)^2$\nTH1: $2x-1=\\dfrac{4}{3}$ nên $2x=\\dfrac{7}{3}$, suy ra $x=\\dfrac …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107010203060",
+  "loai": "tu_luan",
+  "de": "Tìm các số nguyên x, y biết $\\dfrac{x}{6} - \\dfrac{1}{y} = \\dfrac{1}{2}$.",
+  "dap_an": "(x,y) ∈ {(9,1);(-3,-1);(6,2);(0,-2);(5,3);(1,-3);(4,6);(2,-6)}",
+  "loi_giai": "Từ $\\dfrac{x}{6} - \\dfrac{1}{y} = \\dfrac{1}{2}$ suy ra $x = 6\\left(\\dfrac{1}{2} + \\dfrac{1}{y}\\right) = 3 + \\dfrac{6}{y}$.\nVì $x$ nguyên nên $y$ phải là ước của $6$: $y \\in \\{\\pm1;\\pm2;\\pm3;\\pm6\\}$.\n$y=1 \\Rightarrow x=3+6=9$\n$y=-1 \\Rightarrow x=3-6=-3$\n$y=2 \\Rightarrow x=3+3=6$\n$y=-2 \\Rightarrow x=3-3=0$\n$y=3 \\Rightarrow x=3+2=5$\n$y=-3 \\Rightarrow x=3-2=1$\n$y=6 \\Rightarrow x=3+1=4$\n$y=-6 \\Rightarrow x=3-1=2$\nVậy có 8 cặp: $(x,y) \\in \\{(9,1);(-3,-1);(6,2);(0,-2);(5,3);(1,-3);(4,6);(2,-6)\\}$.",
+  "nhan_cu": "Thực hiện phép tính Số hữu tỉ › Tìm x Cộng trừ nhân chia Số hữu tỉ"
+ },
+ {
+  "ma_cau": "077020101037",
+  "loai": "tra_loi_ngan",
+  "de": "Xác định chu kỳ của số thập phân vô hạn tuần hoàn dưới đây và viết gọn số thập phân đó bằng cách sử dụng chu kỳ: $0,4713585858\\ldots$",
+  "dap_an": "58; 0,4713(58)",
+  "loi_giai": "Sau dấu phẩy có $4$ chữ số $4713$ đứng trước chu kỳ.\nChu kỳ: $58$.\nViết gọn: $0,4713(58)$.",
+  "nhan_cu": "Số thập phân vô hạn tuần hoàn › Nhận biết STP hữu hạn, STP vô hạn tuần hoàn"
+ },
+ {
+  "ma_cau": "T107020501013",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức $A=|4x+8|+|4x-20|$.",
+  "dap_an": "28",
+  "loi_giai": "$A=|4x+8|+|4x-20|$\n$A=|4x+8|+|20-4x|$\n$A\\ge|4x+8+20-4x|$\n$A\\ge28$\nDấu bằng xảy ra khi $(4x+8)(20-4x)\\ge0\\Rightarrow -2\\le x\\le5$.\nVậy GTNN của $A$ là $28$ khi $-2\\le x\\le5$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN-GTNN của biểu thức ứng dụng BĐT GTTĐ."
+ },
+ {
+  "ma_cau": "T107020501048",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết: $|x+6|+|x-2|=\\dfrac{8}{(x+1)^2+1}$.",
+  "dap_an": "-1",
+  "loi_giai": "$|x+6|+|x-2|=\\dfrac{8}{(x+1)^2+1}$\nXét VT:\n$|x+6|+|x-2|=|x+6|+|2-x|\\ge|x+6+2-x|=8$.\nXét VP:\n$(x+1)^2\\ge0$\n$\\Rightarrow (x+1)^2+1\\ge1$\n$\\Rightarrow \\dfrac{8}{(x+1)^2+1}\\le\\dfrac{8}{1}=8$.\nVậy VT$\\ge8$, VP$\\le8\\Rightarrow |x+6|+|x-2|=\\dfrac{8}{(x+1)^2+1}=8$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{1}(x+6)(2-\nx)\\ge0\\\\(x+1)^2=0\\end{array}\\right.\\Rightarrow x=-1$.\nVậy $x=-1$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN-GTNN của biểu thức ứng dụng BĐT GTTĐ."
+ },
+ {
+  "ma_cau": "T107000000529",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính: $1-\\left(\\dfrac{5}{9}-\\dfrac{2}{3}\\right)^2:\\dfrac{4}{27}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính trong ngoặc, rồi luỹ thừa, rồi chia, cuối cùng mới trừ từ số $1$.\n**Bước 1.** Tính hiệu trong ngoặc bằng cách quy đồng hai phân số về mẫu $9$.\n**Bước 2.** Bình phương kết quả rồi chia cho $\\dfrac{4}{27}$ bằng cách nhân với phân số nghịch đảo.\n**Bước 3.** Lấy $1$ trừ kết quả vừa tìm, đổi $1$ thành phân số cùng mẫu.\n**Phần 2. Trình bày**\n$1-\\left(\\dfrac{5}{9}-\\dfrac{2}{3}\\right)^2:\\dfrac{4}{27}$\n$=1-\\left(\\dfrac{5}{9}-\\dfrac{6}{9}\\right)^2:\\dfrac{4}{27}$\n$=1-\\left(\\dfrac{-1}{9}\\right)^2:\\dfrac{4}{27}$\n$=1-\\dfrac{1}{81}.\\dfrac{27}{4}$\n$=1-\\dfrac{1}{12}$\n$=\\dfrac{11}{12}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107020501021",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức $A=|x+2|+|x+5|$.",
+  "dap_an": "3",
+  "loi_giai": "$A=|x+2|+|x+5|$\n$A=|x+2|+|-x-5|$\n$A\\ge|x+2+(-x-5)|$\n$A\\ge|-3|$\n$A\\ge3$\nDấu bằng xảy ra khi $(x+2)(-x-5)\\ge0\\Rightarrow -5\\le x\\le-2$.\nVậy GTNN của $A$ là $3$ khi $-5\\le x\\le-2$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN-GTNN của biểu thức ứng dụng BĐT GTTĐ."
+ },
+ {
+  "ma_cau": "T107020501031",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết: $|2x+2|+|2x-6|=\\dfrac{8}{(x-1)^2+1}$.",
+  "dap_an": "1",
+  "loi_giai": "$|2x+2|+|2x-6|=\\dfrac{8}{(x-1)^2+1}$\nXét VT:\n$|2x+2|+|2x-6|=|2x+2|+|6-2x|\\ge|2x+2+6-2x|=8$.\nXét VP:\n$(x-1)^2\\ge0$\n$\\Rightarrow (x-1)^2+1\\ge1$\n$\\Rightarrow \\dfrac{8}{(x-1)^2+1}\\le\\dfrac{8}{1}=8$.\nVậy $VT\\ge8$, $VP\\le8\\Rightarrow |2x+2|+|2x-6|=\\dfrac{8}{(x-1)^2+1}=8$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}(2x+2)(6-2x)\\ge0\\\\(x-1)^2=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}(2x+2)(6-2x)\\ge0\\\\x-1=0\\end{array}\\right.\\Rightarrow x=1$.\nVậy $x=1$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN-GTNN của biểu thức ứng dụng BĐT GTTĐ."
+ },
+ {
+  "ma_cau": "T107000000464",
+  "loai": "tu_luan",
+  "de": "Tính giá trị biểu thức: $\\dfrac{-3}{4}+\\dfrac{2}{3}:\\dfrac{4}{5}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biểu thức có cả phép chia và phép cộng nên phải thực hiện phép chia trước, rồi mới cộng.\n**Bước 1.** Nhận ra thứ tự thực hiện phép tính: nhân chia làm trước, cộng trừ làm sau, nên chỉ chia hai phân số ở vế sau trước.\n**Bước 2.** Đổi phép chia thành phép nhân với số nghịch đảo của số chia rồi rút gọn kết quả.\n**Bước 3.** Quy đồng mẫu số hai phân số còn lại rồi cộng tử, giữ nguyên mẫu.\n**Phần 2. Trình bày**\n$\\dfrac{-3}{4}+\\dfrac{2}{3}:\\dfrac{4}{5}$\n$=\\dfrac{-3}{4}+\\dfrac{2}{3}.\\dfrac{5}{4}$\n$=\\dfrac{-3}{4}+\\dfrac{5}{6}$\n$=\\dfrac{-9}{12}+\\dfrac{10}{12}$\n$=\\dfrac{1}{12}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107020501050",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết: $|x+3|+|x-5|=\\dfrac{8}{x^2+1}$.",
+  "dap_an": "0",
+  "loi_giai": "$|x+3|+|x-5|=\\dfrac{8}{x^2+1}$\nXét VT:\n$|x+3|+|x-5|=|x+3|+|5-x|\\ge|x+3+5-x|=8$.\nXét VP:\n$x^2\\ge0$\n$\\Rightarrow x^2+1\\ge1$\n$\\Rightarrow \\dfrac{8}{x^2+1}\\le\\dfrac{8}{1}=8$.\nVậy VT$\\ge8$, VP$\\le8\\Rightarrow |x+3|+|x-5|=\\dfrac{8}{x^2+1}=8$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{1}(x+3)(5-\nx)\\ge0\\\\x^2=0\\end{array}\\right.\\Rightarrow x=0$.\nVậy $x=0$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN-GTNN của biểu thức ứng dụng BĐT GTTĐ."
+ },
+ {
+  "ma_cau": "T107010509012",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm tất cả các số nguyên $x$ để $B = \\dfrac{x-3}{2x}$ có giá trị là số nguyên.",
+  "dap_an": "$x \\in \\{-3, -1, 1, 3\\}$",
+  "loi_giai": "Điều kiện: $x \\neq 0$\nĐể $B = \\dfrac{x-3}{2x}$ là số nguyên thì $2B = \\dfrac{x-3}{x}$ cũng là số nguyên\n$\\Rightarrow x - 3 \\vdots x$\nMà $x \\vdots x \\Rightarrow 3 \\vdots x$\n$\\Rightarrow x \\in Ư(3) = \\{-3;\\ -1;\\ 1;\\ 3\\}$\nKiểm tra $B$ nguyên (vì bước nhân 2 chỉ là điều kiện cần):\n$x = -3$: $B = \\dfrac{-6}{-6} = 1$ (nguyên ✓)\n$x = -1$: $B = \\dfrac{-4}{-2} = 2$ (nguyên ✓)\n$x = 1$: $B = \\dfrac{-2}{2} = -1$ (nguyên ✓)\n$x = 3$: $B = \\dfrac{0}{6} = 0$ (nguyên ✓)\nVậy $x \\in \\{-3;\\ -1;\\ 1;\\ 3\\}$",
+  "nhan_cu": "Dãy Phân số nâng cao › Tìm điều kiện để biểu thức nguyên"
+ },
+ {
+  "ma_cau": "T107010202053",
+  "loai": "tra_loi_ngan",
+  "de": "Tính : $1,25:\\dfrac{15}{20}+(0,25-\\dfrac{5}{6}):4\\dfrac{2}{3}$",
+  "dap_an": "$\\dfrac{37}{24}$",
+  "loi_giai": "$1,25:\\dfrac{15}{20}+(0,25-\\dfrac{5}{6}):4\\dfrac{2}{3} = \\dfrac{5}{4}:\\dfrac{15}{20}+(\\dfrac{1}{4}-\\dfrac{5}{6}):\\dfrac{14}{3}$\n$= \\dfrac{5}{4} \\times \\dfrac{20}{15} + \\dfrac{-7}{12} \\times \\dfrac{3}{14}$\n$= \\dfrac{5}{3} + \\dfrac{-1}{8} = \\dfrac{37}{24}$",
+  "nhan_cu": "Thực hiện phép tính Số hữu tỉ › Tính toán với Số hữu tỉ"
+ },
+ {
+  "ma_cau": "T107000000563",
+  "loai": "tu_luan",
+  "de": "Tính giá trị biểu thức: $M=\\dfrac{\\dfrac{2}{3}-\\dfrac{2}{5}-\\dfrac{2}{7}+\\dfrac{2}{11}}{\\dfrac{13}{3}-\\dfrac{13}{5}-\\dfrac{13}{7}+\\dfrac{13}{11}}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tử số có thừa số chung $2$ và mẫu số có thừa số chung $13$, hai ngoặc còn lại giống hệt nhau nên rút gọn được.\n**Bước 1.** Đặt thừa số chung $2$ ra ngoài ở tử số.\n**Bước 2.** Đặt thừa số chung $13$ ra ngoài ở mẫu số, để lại một ngoặc giống ngoặc ở tử.\n**Bước 3.** Kiểm tra ngoặc chung khác $0$ rồi rút gọn nó ở tử và mẫu.\n**Phần 2. Trình bày**\n$M=\\dfrac{2.\\left(\\dfrac{1}{3}-\\dfrac{1}{5}-\\dfrac{1}{7}+\\dfrac{1}{11}\\right)}{13.\\left(\\dfrac{1}{3}-\\dfrac{1}{5}-\\dfrac{1}{7}+\\dfrac{1}{11}\\right)}$\nNgoặc chung $\\dfrac{1}{3}-\\dfrac{1}{5}-\\dfrac{1}{7}+\\dfrac{1}{11}=\\dfrac{94}{1155}\\ne0$ nên rút gọn được.\n$M=\\dfrac{2}{13}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "077022220401030",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $A=5-|4x+8|-2|y-1|$.",
+  "dap_an": "5",
+  "loi_giai": "Ta có: $|4x+8|\\ge0$; $|y-1|\\ge0$.\n$\\Rightarrow -|4x+8|-2|y-1|\\le0$.\n$\\Rightarrow 5-|4x+8|-2|y-1|\\le5+0$.\n$\\Rightarrow A\\le5$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}|4x+8|=0\\\\|y-1|=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}4x+8=0\\\\y-1=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=-2\\\\y=1\\end{array}\\right.$\nVậy GTLN của biểu thức $A$ là $5$ khi $x=-2$ và $y=1$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN - GTNN của biểu thức ứng dụng Căn bậc hai và GTTĐ"
+ },
+ {
+  "ma_cau": "0770220201008",
+  "loai": "tra_loi_ngan",
+  "de": "Trong các số sau, số nào là số hữu tỉ? Số nào là số vô tỉ?: $1,375;\\ 4,(9); \\sqrt{36};\\sqrt{14};\\ -3,2(6);\\ \\pi;\\ \\sqrt{23}$.",
+  "loi_giai": "Số hữu tỉ là: $1,375;\\ 4,(9);\\ \\sqrt{36};\\ -3,2(6)$.\nSố vô tỉ là: $\\sqrt{14};\\ \\pi;\\ \\sqrt{23}$.",
+  "nhan_cu": "Số vô tỉ. Căn bậc hai số học › Nhận biết số vô tỉ, căn bậc hai số học"
+ },
+ {
+  "ma_cau": "T107000000574",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của $x$, biết: $\\dfrac{x+29}{31}-\\dfrac{x+27}{33}=\\dfrac{x+17}{43}-\\dfrac{x+15}{45}$",
+  "dap_an": "-60",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** cộng $1$ rồi trừ $1$ ở mỗi vế (giá trị không đổi) để cả bốn tử số cùng trở thành $x+60$.\n**Bước 1.** Cộng thêm $1$ vào từng phân số ở cả hai vế; mỗi vế là một hiệu nên giá trị của nó không đổi.\n**Bước 2.** Quy đồng tử số để cả bốn phân số có chung tử $x+60$.\n**Bước 3.** Chuyển về một vế, đặt $x+60$ làm thừa số chung và so sánh hai hiệu trong ngoặc để chứng tỏ thừa số còn lại khác $0$.\n**Bước 4.** Từ tích bằng $0$ mà một thừa số khác $0$, suy ra $x+60=0$.\n**Phần 2. Trình bày**\n$\\left(\\dfrac{x+29}{31}+1\\right)-\\left(\\dfrac{x+27}{33}+1\\right)=\\left(\\dfrac{x+17}{43}+1\\right)-\\left(\\dfrac{x+15}{45}+1\\right)$\n$\\dfrac{x+60}{31}-\\dfrac{x+60}{33}=\\dfrac{x+60}{43}-\\ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000315",
+  "loai": "trac_nghiem",
+  "de": "Chọn đáp án đúng?",
+  "lua_chon": [
+   "$-9\\in\\mathbb{N}$",
+   "$-9\\notin\\mathbb{Z}$",
+   "$-9\\in\\mathbb{Q}$",
+   "$-9\\notin\\mathbb{Q}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $-9$ là số nguyên âm, mà số nguyên cũng là số hữu tỉ nên phải xét quan hệ giữa các tập hợp số.\n**Bước 1.** Xác định loại số của $-9$: đây là số nguyên âm, không phải số tự nhiên.\n**Bước 2.** Nhớ quan hệ giữa các tập hợp số: số tự nhiên thuộc số nguyên, số nguyên thuộc số hữu tỉ.\n**Bước 3.** Xét từng phương án với kí hiệu \"thuộc\" và \"không thuộc\", rồi chọn phát biểu đúng.\n**Phần 2. Trình bày**\nVì $-9$ là số nguyên âm nên $-9\\notin\\mathbb{N}$ và $-9\\in\\mathbb{Z}$.\nVì $\\mathbb{Z}\\subset\\mathbb{Q}$ nên $-9\\in\\mathbb{Q}$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000278",
+  "loai": "trac_nghiem",
+  "de": "Kết quả của phép tính $(-3)^2-2^3$ là:",
+  "lua_chon": [
+   "$-1$",
+   "$1$",
+   "$-4$",
+   "$5$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính hai luỹ thừa trước, rồi mới thực hiện phép trừ.\n**Bước 1.** Tính $(-3)^2$: lũy thừa bậc chẵn của số âm cho kết quả dương, bằng tích của hai thừa số $-3$.\n**Bước 2.** Tính $2^3$ bằng tích của ba thừa số 2.\n**Bước 3.** Lấy kết quả thứ nhất trừ kết quả thứ hai rồi đối chiếu với các phương án.\n**Chú ý:** $(-3)^2$ là $9$, không phải $-9$; dấu trừ nằm trong ngoặc nên cũng được nâng lên luỹ thừa.\n**Phần 2. Trình bày**\n$(-3)^2-2^3$\n$=9-8$\n$=1$\nChọn B.",
+  "nhan_cu": "Luỹ thừa Số hữu tỉ › Tính toán biểu thức luỹ thừa"
+ },
+ {
+  "ma_cau": "T107000000188",
+  "loai": "trac_nghiem",
+  "de": "Cho các số sau: $-\\dfrac{3}{2};\\ 1\\dfrac{2}{7};\\ \\dfrac{0}{7};\\ \\dfrac{7}{0}$. Hãy cho biết số nào không phải là số hữu tỉ?",
+  "lua_chon": [
+   "$\\dfrac{0}{7}$",
+   "$\\dfrac{7}{0}$",
+   "$-\\dfrac{3}{2}$",
+   "$1\\dfrac{2}{7}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** một số là số hữu tỉ khi viết được dưới dạng $\\dfrac{a}{b}$ với $a,b$ nguyên và **mẫu $b\\ne0$**.\n**Bước 1.** Nhớ lại định nghĩa: số hữu tỉ là số viết được dưới dạng phân số $\\dfrac{a}{b}$ với $a,b$ là số nguyên, $b\\ne0$.\n**Bước 2.** Đổi hỗn số về phân số rồi kiểm tra từng số xem tử và mẫu có phải số nguyên và mẫu có khác 0 hay không.\n**Bước 3.** Số nào vi phạm điều kiện của mẫu thì không phải số hữu tỉ, đối chiếu với bốn phương án để chọn.\n**Chú ý:** tử bằng 0 thì vẫn là số hữu tỉ (bằng 0); điều kiện bị cấm là mẫu bằng 0.\n**Phần 2. Trình bày**\n$-\\dfrac{3}{2}$ có tử và mẫu là số nguyên, mẫu khác 0 nên là số hữu tỉ.\n$1\\dfrac{2}{7}=\\dfrac{9}{7}$ nên là số hữu  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "077022220401045",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $A=\\dfrac{3}{(2x-3)^4+5}$.",
+  "dap_an": "\\dfrac{3}{5}",
+  "loi_giai": "Ta có: $(2x-3)^4\\ge0$.\n$\\Rightarrow (2x-3)^4+5\\ge5$.\n$\\Rightarrow \\dfrac{3}{(2x-3)^4+5}\\le\\dfrac{3}{5}$.\n$\\Rightarrow A\\le\\dfrac{3}{5}$.\nDấu bằng xảy ra khi $(2x-3)^4=0\\Rightarrow 2x-3=0\\Rightarrow x=\\dfrac{3}{2}$.\nVậy GTLN của biểu thức $A$ là $\\dfrac{3}{5}$ khi $x=\\dfrac{3}{2}$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN - GTNN của biểu thức ứng dụng Căn bậc hai và GTTĐ"
+ },
+ {
+  "ma_cau": "T107010102022",
+  "loai": "trac_nghiem",
+  "de": "Quan sát trục số sau. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "Điểm C biểu diễn số hữu tỉ $\\dfrac{2}{3}$",
+   "Điểm B biểu diễn số hữu tỉ $\\dfrac{-2}{3}$",
+   "Điểm A biểu diễn số hữu tỉ $\\dfrac{-6}{7}$",
+   "Điểm D biểu diễn số hữu tỉ $\\dfrac{7}{3}$"
+  ],
+  "dap_an": "C",
+  "co_hinh": true,
+  "nhan_cu": "Tính chất Số hữu tỉ › Nhận biết và Biểu diễn Số hữu tỉ trên trục số"
+ },
+ {
+  "ma_cau": "T107000000172",
+  "loai": "trac_nghiem",
+  "de": "Cách viết nào sau đây biểu diễn một số hữu tỉ?",
+  "lua_chon": [
+   "$\\dfrac{2,3}{2}$",
+   "$\\dfrac{23}{1}$",
+   "$\\dfrac{4}{0}$",
+   "$\\dfrac{2026}{0,2}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số hữu tỉ là số viết được dưới dạng phân số $\\dfrac{a}{b}$ với $a,b$ là số nguyên và $b\\ne0$.\n**Bước 1.** Nhớ lại định nghĩa: tử và mẫu đều phải là số nguyên, mẫu phải khác 0.\n**Bước 2.** Loại phương án có mẫu bằng 0 vì phân số không có nghĩa.\n**Bước 3.** Loại các phương án có tử hoặc mẫu là số thập phân vì chúng không phải số nguyên.\n**Bước 4.** Chọn phương án còn lại có tử và mẫu đều là số nguyên, mẫu khác 0.\n**Phần 2. Trình bày**\nSố hữu tỉ là số viết được dưới dạng $\\dfrac{a}{b}$ với $a,b\\in\\mathbb{Z}$, $b\\ne0$.\n$\\dfrac{4}{0}$ có mẫu bằng 0 nên không phải số hữu tỉ.\n$\\dfrac{2,3}{2}$ có tử $2,3$ và $\\dfrac{2026}{0,2}$ có mẫu $0,2$ không phải số nguyên nê …",
+  "nhan_cu": "Tính chất Số hữu tỉ › Nhận biết và Biểu diễn Số hữu tỉ trên trục số"
+ },
+ {
+  "ma_cau": "07702202202026",
+  "loai": "tra_loi_ngan",
+  "de": "Tính: $\\sqrt{(-12)^2}$.",
+  "dap_an": "12",
+  "loi_giai": "Vì $-12<0$ nên $\\sqrt{(-12)^2}=-(-12)=12$.",
+  "nhan_cu": "Số vô tỉ. Căn bậc hai số học › Thực hiện phép tính liên quan đến Căn bậc hai"
+ },
+ {
+  "ma_cau": "T107010401013",
+  "loai": "tu_luan",
+  "de": "Tính M = $1 - \\left[\\dfrac{3}{8} - \\left(0,75 - \\dfrac{1}{4}\\right)^2\\right]$",
+  "dap_an": "\\dfrac{7}{8}",
+  "loi_giai": "$1 - \\left[\\dfrac{3}{8} - \\left(0,75 - \\dfrac{1}{4}\\right)^2\\right]$\\n$= 1 - \\left[\\dfrac{3}{8} - \\left(\\dfrac{3}{4} - \\dfrac{1}{4}\\right)^2\\right]$\\n$= 1 - \\left[\\dfrac{3}{8} - \\left(\\dfrac{1}{2}\\right)^2\\right]$\\n$= 1 - \\left[\\dfrac{3}{8} - \\dfrac{1}{4}\\right]$\\n$= 1 - \\left[\\dfrac{3}{8} - \\dfrac{2}{8}\\right]$\\n$= 1 - \\dfrac{1}{8}$\\n$= \\dfrac{7}{8}$",
+  "nhan_cu": "Thứ tự thực hiện phép tính. Quy tắc chuyển vế › Tính toán biểu thức theo thứ tự"
+ },
+ {
+  "ma_cau": "077020101028",
+  "loai": "tra_loi_ngan",
+  "de": "Xác định chu kỳ của số thập phân vô hạn tuần hoàn dưới đây và viết gọn số thập phân đó bằng cách sử dụng chu kỳ: $0,666666\\ldots$",
+  "dap_an": "6; 0,(6)",
+  "loi_giai": "Chu kỳ: $6$.\nViết gọn: $0,(6)$.",
+  "nhan_cu": "Số thập phân vô hạn tuần hoàn › Nhận biết STP hữu hạn, STP vô hạn tuần hoàn"
+ },
+ {
+  "ma_cau": "T107000000572",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của $x$, biết: $\\dfrac{1909-x}{91}+\\dfrac{1907-x}{93}+\\dfrac{1905-x}{95}+\\dfrac{1903-x}{97}+4=0$",
+  "dap_an": "2000",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tách số $4$ thành bốn số $1$ và cộng mỗi số $1$ vào một phân số, tử số mỗi phân số đều trở thành $2000-x$.\n**Bước 1.** Viết $4=1+1+1+1$ rồi cộng mỗi số $1$ vào một phân số ở vế trái.\n**Bước 2.** Quy đồng tử số trong từng nhóm để thấy cả bốn phân số có chung tử $2000-x$.\n**Bước 3.** Đặt $2000-x$ làm thừa số chung và kiểm tra thừa số còn lại là tổng các phân số dương nên khác $0$.\n**Bước 4.** Từ tích bằng $0$ mà một thừa số khác $0$, suy ra thừa số kia bằng $0$ để tìm $x$.\n**Phần 2. Trình bày**\n$\\dfrac{1909-x}{91}+\\dfrac{1907-x}{93}+\\dfrac{1905-x}{95}+\\dfrac{1903-x}{97}+4=0$\n$\\left(\\dfrac{1909-x}{91}+1\\right)+\\left(\\dfrac{1907-x}{93}+1\\right)+\\left(\\dfrac{19 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000776",
+  "loai": "tu_luan",
+  "de": "Tìm các giá trị nguyên của $x$ để biểu thức $A=\\dfrac{4x+7}{x+1}$ nhận giá trị là một số nguyên.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tách tử số để phần còn lại chỉ là một số nguyên chia cho $x+1$, khi đó $x+1$ phải là ước của số nguyên đó.\n**Bước 1.** Viết tử số $4x+7$ thành bội của $x+1$ cộng với một số nguyên để tách $A$ thành tổng.\n**Bước 2.** Nhận ra $A$ nguyên khi và chỉ khi phân số còn lại nguyên, tức là $x+1$ là ước của tử số mới.\n**Bước 3.** Liệt kê các ước nguyên rồi suy ra từng giá trị của $x$ và kiểm tra mẫu khác $0$.\n**Phần 2. Trình bày**\n$A=\\dfrac{4x+7}{x+1}=\\dfrac{4(x+1)+3}{x+1}=4+\\dfrac{3}{x+1}$\nVì $x$ nguyên nên $A$ nguyên khi và chỉ khi $\\dfrac{3}{x+1}$ nguyên, tức là $(x+1)\\in\\text{Ư}(3)=\\left\\{-3;-1;1;3\\right\\}$.\nVới $x+1=-3$ thì $x=-4$.\nVới $x+1=-1$ thì $x=-2$.\nVới $ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000722",
+  "loai": "tu_luan",
+  "de": "a) Chứng minh rằng: $\\dfrac{1}{1.2}+\\dfrac{1}{3.4}+\\dfrac{1}{5.6}+\\dots+\\dfrac{1}{49.50}=\\dfrac{1}{26}+\\dfrac{1}{27}+\\dfrac{1}{28}+\\dots+\\dfrac{1}{50}$.\nb) Chứng minh rằng: $\\dfrac{1}{6}<\\dfrac{1}{5^2}+\\dfrac{1}{6^2}+\\dfrac{1}{7^2}+\\dots+\\dfrac{1}{100^2}<\\dfrac{1}{4}$.\nc) Cho $A=\\dfrac{2}{3^2}+\\dfrac{2}{5^2}+\\dfrac{2}{7^2}+\\dots+\\dfrac{2}{2025^2}$. Chứng minh rằng: $A<\\dfrac{506}{1013}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mỗi số hạng được tách thành hiệu (hoặc làm trội, làm giảm thành hiệu) của hai phân số để dãy tổng triệt tiêu liên tiếp, rồi so sánh kết quả với số cần chứng minh.\n**Bước 1.** Ý a) Tách mỗi số hạng vế trái thành hiệu $\\dfrac{1}{2k-1}-\\dfrac{1}{2k}$, rồi viết vế trái thành hiệu hai tổng.\n**Bước 2.** Ý a) Nhận ra hai lần tổng các số hạng có mẫu chẵn chính là tổng $1+\\dfrac{1}{2}+\\dots+\\dfrac{1}{25}$, rồi trừ để còn các số hạng từ $\\dfrac{1}{26}$ đến $\\dfrac{1}{50}$.\n**Bước 3.** Ý b) Làm trội và làm giảm từng số hạng $\\dfrac{1}{n^2}$ bằng $\\dfrac{1}{n.(n+1)}$ và $\\dfrac{1}{(n-1).n}$, rồi tách thành hiệu để tổng triệt tiêu.\n**Bước 4.** Ý c) Làm trội $\\dfrac{2}{ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000525",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính: $25.\\left(\\dfrac{-1}{5}\\right)^3+\\dfrac{1}{5}-2.\\left(\\dfrac{-1}{2}\\right)^2-\\dfrac{1}{2}$",
+  "dap_an": "-1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính hai luỹ thừa trước, rồi nhân với $25$ và $2$, cuối cùng mới cộng trừ.\n**Bước 1.** Tính hai luỹ thừa của phân số âm, chú ý số mũ lẻ cho kết quả âm còn số mũ chẵn cho kết quả dương.\n**Bước 2.** Thực hiện hai phép nhân $25.\\left(\\dfrac{-1}{5}\\right)^3$ và $2.\\left(\\dfrac{-1}{2}\\right)^2$ rồi rút gọn.\n**Bước 3.** Cộng trừ các số hạng còn lại, nhóm các cặp số đối nhau cho gọn.\n**Phần 2. Trình bày**\n$25.\\left(\\dfrac{-1}{5}\\right)^3+\\dfrac{1}{5}-2.\\left(\\dfrac{-1}{2}\\right)^2-\\dfrac{1}{2}$\n$=25.\\dfrac{-1}{125}+\\dfrac{1}{5}-2.\\dfrac{1}{4}-\\dfrac{1}{2}$\n$=\\dfrac{-1}{5}+\\dfrac{1}{5}-\\dfrac{1}{2}-\\dfrac{1}{2}$\n$=0-1$\n$=-1$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107010202037",
+  "loai": "tu_luan",
+  "de": "Tính: $\\dfrac{1}{9} : \\dfrac{-2}{27} - \\dfrac{1}{4} \\cdot 6$",
+  "dap_an": "-3",
+  "loi_giai": "$= \\dfrac{1}{9} \\cdot \\dfrac{-27}{2} - \\dfrac{6}{4}$\n$= \\dfrac{1}{1} \\cdot \\dfrac{-3}{2} - \\dfrac{3}{2}$\n$= \\dfrac{-3}{2} - \\dfrac{3}{2}$\n$= \\dfrac{-6}{2}$\n$= -3$",
+  "nhan_cu": "Thực hiện phép tính Số hữu tỉ › Tính toán với Số hữu tỉ"
+ },
+ {
+  "ma_cau": "T107000000753",
+  "loai": "trac_nghiem",
+  "de": "Kết quả của phép tính $\\left[(3,5)^2\\right]^5$ được viết dưới dạng một luỹ thừa là",
+  "lua_chon": [
+   "$(3,5)^7$",
+   "$(3,5)^{10}$",
+   "$(3,5)^{32}$",
+   "$(3,5)^{16}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** luỹ thừa của một luỹ thừa thì giữ nguyên cơ số và nhân hai số mũ với nhau.\n**Bước 1.** Nhận ra biểu thức có dạng $(a^m)^n$ với cơ số $3,5$.\n**Bước 2.** Giữ nguyên cơ số rồi nhân hai số mũ, không cộng hai số mũ.\n**Bước 3.** Đối chiếu số mũ vừa tìm với bốn phương án để chọn đáp án.\n**Phần 2. Trình bày**\n$\\left[(3,5)^2\\right]^5=(3,5)^{2.5}=(3,5)^{10}$\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107010505007",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $A = 1+\\dfrac{1}{2^2}+\\dfrac{1}{2^4}+...+\\dfrac{1}{2^{20}}$. Tính $A$",
+  "dap_an": "$\\dfrac{4.2^{20}-1}{3.2^{20}}$",
+  "loi_giai": "Bước 1: Nhân $2^2$ vào cả hai vế ta được:\n$2^2A = 2^2\\left(1+\\dfrac{1}{2^2}+\\dfrac{1}{2^4}+...+\\dfrac{1}{2^{20}}\\right) = 2^2+1+\\dfrac{1}{2^2}+...+\\dfrac{1}{2^{18}}$\nBước 2: Trừ vế với vế $2^2A-A$ để rút gọn:\n$2^2A - A = \\left(2^2+1+\\dfrac{1}{2^2}+...+\\dfrac{1}{2^{18}}\\right)-\\left(1+\\dfrac{1}{2^2}+\\dfrac{1}{2^4}+...+\\dfrac{1}{2^{20}}\\right)$\n$4A - A = 4 - \\dfrac{1}{2^{20}}$\n$3A = \\dfrac{4.2^{20}-1}{2^{20}}$\n$A = \\dfrac{4.2^{20}-1}{3.2^{20}}$",
+  "nhan_cu": "Dãy Phân số nâng cao › Dãy phân số Luỹ thừa"
+ },
+ {
+  "ma_cau": "077020101031",
+  "loai": "tra_loi_ngan",
+  "de": "Xác định chu kỳ của số thập phân vô hạn tuần hoàn dưới đây và viết gọn số thập phân đó bằng cách sử dụng chu kỳ: $0,371371371\\ldots$",
+  "dap_an": "371; 0,(371)",
+  "loi_giai": "Chu kỳ: $371$.\nViết gọn: $0,(371)$.",
+  "nhan_cu": "Số thập phân vô hạn tuần hoàn › Nhận biết STP hữu hạn, STP vô hạn tuần hoàn"
+ },
+ {
+  "ma_cau": "T107010102021",
+  "loai": "trac_nghiem",
+  "de": "Quan sát trục số dưới đây, điểm nào biểu diễn số hữu tỉ $\\dfrac{3}{4}$?",
+  "lua_chon": [
+   "Điểm A",
+   "Điểm B",
+   "Điểm C",
+   "Điểm D"
+  ],
+  "dap_an": "C",
+  "co_hinh": true,
+  "nhan_cu": "Tính chất Số hữu tỉ › Nhận biết và Biểu diễn Số hữu tỉ trên trục số"
+ },
+ {
+  "ma_cau": "T107000000147",
+  "loai": "trac_nghiem",
+  "de": "Số nghịch đảo của $-2\\dfrac{1}{3}$ là",
+  "lua_chon": [
+   "$\\dfrac{-3}{7}$.",
+   "$\\dfrac{-7}{3}$.",
+   "$2\\dfrac{1}{3}$.",
+   "$1\\dfrac{3}{2}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** muốn tìm số nghịch đảo phải đổi hỗn số ra phân số rồi đảo vị trí tử và mẫu.\n**Bước 1.** Đổi hỗn số âm ra phân số: giữ dấu âm, nhân phần nguyên với mẫu rồi cộng tử.\n**Bước 2.** Tìm số nghịch đảo của phân số vừa có: hai số nhân với nhau phải bằng 1, nên đổi chỗ tử và mẫu.\n**Bước 3.** Đưa dấu về tử số rồi đối chiếu với bốn phương án.\n**Chú ý:** số nghịch đảo khác số đối; phương án B chỉ là phân số đã đổi, chưa đảo tử và mẫu.\n**Phần 2. Trình bày**\n$-2\\dfrac{1}{3}=\\dfrac{-7}{3}$\nSố nghịch đảo của $\\dfrac{-7}{3}$ là $\\dfrac{3}{-7}=\\dfrac{-3}{7}$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000521",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính: $\\dfrac{2}{5}+\\dfrac{1}{5}.\\left(\\dfrac{-3}{4}\\right)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phép nhân phải làm trước phép cộng, rồi mới quy đồng để cộng hai phân số.\n**Bước 1.** Nhận ra thứ tự thực hiện phép tính: nhân trước, cộng sau.\n**Bước 2.** Nhân hai phân số bằng cách nhân tử với tử, mẫu với mẫu.\n**Bước 3.** Quy đồng hai phân số còn lại, cộng các tử rồi rút gọn kết quả.\n**Phần 2. Trình bày**\n$\\dfrac{2}{5}+\\dfrac{1}{5}.\\left(\\dfrac{-3}{4}\\right)$\n$=\\dfrac{2}{5}+\\dfrac{-3}{20}$\n$=\\dfrac{8}{20}+\\dfrac{-3}{20}$\n$=\\dfrac{5}{20}$\n$=\\dfrac{1}{4}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107010301025",
+  "loai": "tu_luan",
+  "de": "Tính: $0.25 - \\left(-\\dfrac{1}{4}\\right)^2 + \\dfrac{2}{4} : 4$",
+  "dap_an": "\\dfrac{5}{16}",
+  "loi_giai": "= $\\dfrac{1}{4} - \\dfrac{1}{16} + \\dfrac{1}{2} : 4$\n= $\\dfrac{4}{16} - \\dfrac{1}{16} + \\dfrac{1}{2} \\cdot \\dfrac{1}{4}$\n= $\\dfrac{3}{16} + \\dfrac{1}{8}$\n= $\\dfrac{3}{16} + \\dfrac{2}{16} = \\dfrac{5}{16}$",
+  "nhan_cu": "Luỹ thừa Số hữu tỉ › Tính toán biểu thức luỹ thừa"
+ }
+]

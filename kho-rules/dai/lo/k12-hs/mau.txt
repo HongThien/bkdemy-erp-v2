@@ -1,0 +1,107 @@
+# MẪU — khuôn đã làm cho phần "Giới hạn" lớp 11 (đã duyệt), chép từ DB. Bắt chước khuôn và mức chi tiết.
+# Mã trong mẫu là mã K11 (NNB/NDB); K12 dùng mã H… trong cau-truc.mjs.
+
+=== N NNB01578   (nhóm "Giới hạn dãy số dạng luỹ thừa và dạng tổng")
+@ly_thuyet:
+##TC Luỹ thừa cơ số $q$ và so sánh với $n^k$
+• $\lim q^n=0$ (khi $|q|<1$)
+• $\lim q^n=+\infty$ (khi $q>1$)
+• Với số nguyên dương $k$ và $q>1$ ta có kết quả (được chấp nhận):
+• $\lim\dfrac{n^k}{q^n}=0$
+• Dãy $q^n$ với $q\le-1$ không có giới hạn
+
+##TC Tổng $n$ số hạng của cấp số cộng, cấp số nhân
+• $1+2+3+\dots+n=\dfrac{n(n+1)}{2}$
+• $1+3+5+\dots+(2n-1)=n^2$
+• Cấp số cộng: $S_n=\dfrac{n(u_1+u_n)}{2}$
+• Cấp số nhân ($q\ne1$): $S_n=\dfrac{u_1(1-q^n)}{1-q}$
+• Cấp số nhân có số hạng đầu $1$:
+• $1+q+q^2+\dots+q^n=\dfrac{1-q^{n+1}}{1-q}$ (có $n+1$ số hạng)
+
+##PP Xử lý dãy luỹ thừa và dãy tổng
+Dãy gồm các luỹ thừa $a^n$: chia tử và mẫu cho luỹ thừa có cơ số lớn nhất rồi dùng $\lim q^n=0$ ($|q|<1$).
+Dãy gồm cả $n^k$ và $q^n$ ($q>1$): $q^n$ trội hơn mọi $n^k$, nên chọn $q^n$ làm nhân tử chung.
+Dãy là tổng các số hạng liên tiếp: nhận ra cấp số cộng hay cấp số nhân, dùng công thức tổng để viết gọn rồi lấy giới hạn.
+
+##CY
+• $a^{n+1}=a\cdot a^n$ và $a^{n-1}=\dfrac{a^n}{a}$: tách cho đúng trước khi chia.
+• Tổng $1+q+\dots+q^n$ có $n+1$ số hạng, không phải $n$ số hạng.
+
+=== NDB01157   (dạng "Căn thức dưới dấu thương, đưa n ra ngoài căn" — mô tả: Chia tử và mẫu cho n, chú ý √(n²)=n.)
+@ly_thuyet:
+##TC
+• Vì $n>0$ nên $\sqrt{n^2}=n$
+• $\sqrt{an^2+bn+c}=n\sqrt{a+\dfrac{b}{n}+\dfrac{c}{n^2}}$ (với $n>0$)
+• Nếu $u_n\ge0$ và $\lim u_n=a$ thì:
+• $\lim\sqrt{u_n}=\sqrt{a}$
+
+##PP Rút n ngoài căn rồi chia
+Xác định bậc cao nhất của $n$ ở tử và mẫu (căn bậc hai của $n^2$ tính là bậc $1$).
+Đưa luỹ thừa cao nhất của $n$ ra ngoài dấu căn, ví dụ $\sqrt{an^2+bn+c}=n\sqrt{a+\dfrac{b}{n}+\dfrac{c}{n^2}}$.
+Chia tử và mẫu cho $n$ (hoặc luỹ thừa cao nhất của mẫu).
+Dùng $\lim\dfrac{1}{n^k}=0$ cùng quy tắc căn, quy tắc thương rồi kết luận.
+
+##CY
+• $\sqrt{9n^2+n}$ không bằng $3n+\sqrt{n}$: phải đưa $n^2$ ra ngoài căn rồi mới khai căn.
+• Chỉ có $\sqrt{n^2}=n$ khi $n>0$, đúng với dãy số vì $n\to+\infty$.
+
+@vi_du:
+##VD
+Tìm các giới hạn sau:
+a) $\lim\dfrac{\sqrt{9n^2+n}}{2n-1}$
+b) $\lim\sqrt{\dfrac{8n+3}{2n+5}}$
+
+Bài giải:
+a) Với $n>0$ ta có $\sqrt{9n^2+n}=n\sqrt{9+\dfrac{1}{n}}$ nên $\dfrac{\sqrt{9n^2+n}}{2n-1}=\dfrac{n\sqrt{9+\dfrac{1}{n}}}{n\left(2-\dfrac{1}{n}\right)}=\dfrac{\sqrt{9+\dfrac{1}{n}}}{2-\dfrac{1}{n}}$.
+Vì $\lim\dfrac{1}{n}=0$ nên giới hạn bằng $\dfrac{\sqrt{9}}{2}=\dfrac{3}{2}$.
+b) Chia tử và mẫu của biểu thức dưới căn cho $n$: $\dfrac{8n+3}{2n+5}=\dfrac{8+\dfrac{3}{n}}{2+\dfrac{5}{n}}$ có giới hạn $\dfrac{8}{2}=4$.
+Áp dụng quy tắc căn, $\lim\sqrt{\dfrac{8n+3}{2n+5}}=\sqrt{4}=2$.
+Vậy hai giới hạn lần lượt bằng $\dfrac{3}{2}$ và $2$.
+
+##VD
+Tìm $\lim\dfrac{\sqrt{n^2+3n}+2n}{\sqrt{4n^2-1}+n+1}$.
+
+Bài giải:
+Với $n\ge1$ ta có $\sqrt{n^2+3n}=n\sqrt{1+\dfrac{3}{n}}$ và $\sqrt{4n^2-1}=n\sqrt{4-\dfrac{1}{n^2}}$.
+Do đó $\dfrac{\sqrt{n^2+3n}+2n}{\sqrt{4n^2-1}+n+1}=\dfrac{n\left(\sqrt{1+\dfrac{3}{n}}+2\right)}{n\left(\sqrt{4-\dfrac{1}{n^2}}+1+\dfrac{1}{n}\right)}=\dfrac{\sqrt{1+\dfrac{3}{n}}+2}{\sqrt{4-\dfrac{1}{n^2}}+1+\dfrac{1}{n}}$.
+Tử có giới hạn $\sqrt{1}+2=3$, mẫu có giới hạn $\sqrt{4}+1+0=3$.
+Vậy $\lim\dfrac{\sqrt{n^2+3n}+2n}{\sqrt{4n^2-1}+n+1}=\dfrac{3}{3}=1$.
+
+# ──────────────────────────────────────────────────────────────────────────
+# MẪU K12 CÓ HÌNH — dạng "H2.2 Đọc cực trị từ bảng biến thiên, đồ thị của f" (chỉ để minh hoạ cú pháp hình)
+
+=== H2.2.1   (dạng "Đọc cực trị từ bảng biến thiên" — hình: bbt)
+@ly_thuyet:
+##TC Điểm cực trị, giá trị cực trị
+- Nếu $y'$ đổi dấu từ $+$ sang $-$ khi qua $x_0$ thì $x_0$ là **điểm cực đại**; giá trị $y(x_0)$ là **giá trị cực đại** $y_{\text{CĐ}}$.
+- Nếu $y'$ đổi dấu từ $-$ sang $+$ khi qua $x_0$ thì $x_0$ là **điểm cực tiểu**; giá trị $y(x_0)$ là **giá trị cực tiểu** $y_{\text{CT}}$.
+- Điểm cực trị của đồ thị là điểm $M(x_0;y(x_0))$.
+
+##PP Đọc cực trị từ bảng biến thiên
+Tìm các cột có $y'$ đổi dấu (mũi tên đổi chiều), bỏ qua cột tại đó hàm không xác định.
+Từ $+$ sang $-$ là cực đại, từ $-$ sang $+$ là cực tiểu.
+Đọc giá trị $y$ ở cùng cột để có giá trị cực trị; đọc hoành độ cột để có điểm cực trị.
+Trả lời đúng điều đề hỏi: điểm cực trị ($x$), giá trị cực trị ($y$) hay điểm cực trị của đồ thị $(x;y)$.
+
+##CY
+- Điểm cực đại là $x$, còn $y_{\text{CĐ}}$ mới là giá trị cực đại; đề hỏi "điểm cực đại của đồ thị" thì trả lời cả hai toạ độ.
+- Hàm số không có cực trị tại điểm làm $y'$ không đổi dấu hoặc tại điểm hàm không xác định.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có bảng biến thiên như hình vẽ. Tìm điểm cực đại, điểm cực tiểu và giá trị cực đại, giá trị cực tiểu của hàm số.
+[[HINH {"loai":"bbt","x":["-∞","-1","2","+∞"],"dau":["+","-","+"],"y":["-∞","4","-3","+∞"]}]]
+
+Bài giải:
+Từ bảng biến thiên, $y'$ đổi dấu từ $+$ sang $-$ khi qua $x=-1$ nên hàm số đạt cực đại tại $x=-1$, giá trị cực đại $y_{\text{CĐ}}=4$.
+$y'$ đổi dấu từ $-$ sang $+$ khi qua $x=2$ nên hàm số đạt cực tiểu tại $x=2$, giá trị cực tiểu $y_{\text{CT}}=-3$.
+Vậy điểm cực đại là $x=-1$, điểm cực tiểu là $x=2$, giá trị cực đại bằng $4$, giá trị cực tiểu bằng $-3$.
+
+##VD
+Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Tìm điểm cực đại của hàm số và điểm cực tiểu của đồ thị hàm số.
+[[HINH {"loai":"dothi","x":[-3,3],"y":[-3,3],"f":[{"e":"x^3-3*x","ten":"y=f(x)"}]}]]
+
+Bài giải:
+Đồ thị đạt đỉnh (điểm cao nhất trong lân cận) tại điểm có hoành độ $x=-1$, tung độ $y=2$ nên hàm số đạt cực đại tại $x=-1$.
+Đồ thị đạt đáy tại điểm có hoành độ $x=1$, tung độ $y=-2$ nên điểm cực tiểu của đồ thị là $(1;-2)$.
+Vậy điểm cực đại của hàm số là $x=-1$ và điểm cực tiểu của đồ thị hàm số là $(1;-2)$.

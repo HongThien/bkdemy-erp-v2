@@ -1,0 +1,114 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "NNB00968",
+   "nhom": "Số thực, Giá trị tuyệt đối",
+   "nhom_mo_ta": "So sánh, sắp xếp thứ tự của các Số thực",
+   "nhom_ly_thuyet_ban_do_moi": "**Phương pháp giải:**\n- Muốn so sánh hai căn bậc hai số học, ta dùng tính chất sau: Nếu $a$, $b$ là hai số không âm và $a<b$ thì $\\sqrt{a} <\\sqrt{b}$.\nCăn bậc hai số học là một số không âm. Nó luôn lớn hơn số âm.\n- Muốn so sánh một căn bậc hai số học với một số $a$ không âm đã cho, ta viết $a = \\sqrt{a^2}$ rồi so sánh căn bậc hai số học đã cho với $\\sqrt{a^2}$.\n\n**Ví dụ 1:** So sánh $\\sqrt{15}$ và $4$.\nHướng dẫn giải:\nTa có: $4 = \\sqrt{16}$.\nVì $\\sqrt{15} <\\sqrt{16}$ nên $\\sqrt{15} <4$.\n\n**Ví dụ 2:** So sánh $-\\sqrt{10}$ và $-3$\nHướng dẫn giải:\nTa có: $3 = \\sqrt{9}$.\nVì $-\\sqrt{10} <-\\sqrt{9}$ nên $-\\sqrt{10} < -3$.\n\n**Ví dụ 3:** So sánh: $\\sqrt{24}$ và $2\\sqrt{4}$.\nHướng dẫn giải:\nTa có:\n$2\\sqrt{4}=2\\cdot2 = 4 = \\sqrt{16}$\nVì $\\sqrt{16} < \\sqrt{24}$ nên $2\\sqrt{4} < \\sqrt{24}$.\n\n**Ví dụ 4:** Sắp xếp các số $3; \\sqrt{12}; -4,5; \\dfrac{22}{7}; \\sqrt{44}$ theo giá trị từ bé đến lớn.\nHướng dẫn giải:\nTa có:\n$-4,5 <3$.\n$3=\\dfrac{21}{7} <\\dfrac{22}{7}$.\n$\\dfrac{22}{7} =\\sqrt{\\dfrac{484}{49}} <\\sqrt{12}$\nMà $12 < 44$ nên $\\sqrt{12} < \\sqrt{44}$.\nVậy ta sắp xếp: $-4,5;3;\\dfrac{22}{7}; \\sqrt{12}; \\sqrt{44}$.",
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T107020301",
+     "ten_cu": "So sánh, sắp xếp Số thực",
+     "noi_dung_cu": "**Phương pháp giải:**\n- Muốn so sánh hai căn bậc hai số học, ta dùng tính chất sau: Nếu $a$, $b$ là hai số không âm và $a<b$ thì $\\sqrt{a} <\\sqrt{b}$.\nCăn bậc hai số học là một số không âm. Nó luôn lớn hơn số âm.\n- Muốn so sánh một căn bậc hai số học với một số $a$ không âm đã cho, ta viết $a = \\sqrt{a^2}$ rồi so sánh căn bậc hai số học đã cho với $\\sqrt{a^2}$.\n\n**Ví dụ 1:** So sánh $\\sqrt{15}$ và $4$.\nHướng dẫn giải:\nTa có: $4 = \\sqrt{16}$.\nVì $\\sqrt{15} <\\sqrt{16}$ nên $\\sqrt{15} <4$.\n\n**Ví dụ 2:** So sánh $-\\sqrt{10}$ và $-3$\nHướng dẫn giải:\nTa có: $3 = \\sqrt{9}$.\nVì $-\\sqrt{10} <-\\sqrt{9}$ nên $-\\sqrt{10} < -3$.\n\n**Ví dụ 3:** So sánh: $\\sqrt{24}$ và $2\\sqrt{4}$.\nHướng dẫn giải:\nTa có:\n$2\\sqrt{4}=2\\cdot2 = 4 = \\sqrt{16}$\nVì $\\sqrt{16} < \\sqrt{24}$ nên $2\\sqrt{4} < \\sqrt{24}$.\n\n**Ví dụ 4:** Sắp xếp các số $3; \\sqrt{12}; -4,5; \\dfrac{22}{7}; \\sqrt{44}$ theo giá trị từ bé đến lớn.\nHướng dẫn giải:\nTa có:\n$-4,5 <3$.\n$3=\\dfrac{21}{7} <\\dfrac{22}{7}$.\n$\\dfrac{22}{7} =\\sqrt{\\dfrac{484}{49}} <\\sqrt{12}$\nMà $12 < 44$ nên $\\sqrt{12} < \\sqrt{44}$.\nVậy ta sắp xếp: $-4,5;3;\\dfrac{22}{7}; \\sqrt{12}; \\sqrt{44}$."
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB00962",
+   "nhom": "STP hữu hạn, STP vô hạn tuần hoàn",
+   "nhom_mo_ta": "Xác định đâu là số thập phân vô hạn tuần hoàn, chu kì của số thập phân vô hạn tuần hoàn, làm tròn số,........ các nội dung về Số thập phân vô hạn tuần hoàn",
+   "nhom_ly_thuyet_ban_do_moi": "##TC\nKhi viết một số hữu tỉ $\\dfrac{a}{b}$ dưới dạng số thập phân, ta lấy tử số chia cho mẫu số. Có thể xảy ra một trong hai trường hợp sau:\n+ **Trường hợp 1**: Sau một số bước thực hiện phép chia được số dư bằng 0, kết quả thu được của phép chia đó là một số thập phân có hữu hạn chữ số sau dấu phẩy. Ta cũng nói kết quả là một số thập phân hữu hạn.\n      Ví dụ: $\\dfrac{2}{5} = 0,4$\n+ **Trường hợp 2**: Phép chia không bao giờ dừng lại và trong thương có chữ số hoặc cụm chữ số sau dấu phẩy lặp đi lặp lại.\nVí dụ: $\\dfrac{2}{3} = 0,6666666666.....$; $\\dfrac{11}{6} = 1,8333333333....$\n- Chữ số hoặc cụm chữ số (sau dấu phẩy) lặp đi lặp lại gọi là **chu kỳ** của số thập phân vô hạn tuần hoàn, và có thể viết gọn trong dấu ngoặc ().\n\n##CY\n+ Nếu một phân số tối giản với mẫu dương mà mẫu không có ước nguyên tố khác 2 và 5, thì phân số đó được viết dưới dạng số thập phân hữu hạn.\n+ Nếu một phân số tối giản với mẫu dương mà mẫu có ước nguyên tố khác 2 và 5 thì phân số đó viết được dưới dạng số thập phân vô hạn tuần hoàn.\n+ Mỗi số thập phân vô hạn tuần hoàn biểu diễn một số hữu tỉ.\n+ Các Số thập phân đã học: 0,125; 0,5;.... còn được gọi là **Số thập phân hữu hạn**.",
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T107020101",
+     "ten_cu": "Nhận biết STP hữu hạn, STP vô hạn tuần hoàn",
+     "noi_dung_cu": "##TC\nKhi viết một số hữu tỉ $\\dfrac{a}{b}$ dưới dạng số thập phân, ta lấy tử số chia cho mẫu số. Có thể xảy ra một trong hai trường hợp sau:\n+ **Trường hợp 1**: Sau một số bước thực hiện phép chia được số dư bằng 0, kết quả thu được của phép chia đó là một số thập phân có hữu hạn chữ số sau dấu phẩy. Ta cũng nói kết quả là một số thập phân hữu hạn.\n      Ví dụ: $\\dfrac{2}{5} = 0,4$\n+ **Trường hợp 2**: Phép chia không bao giờ dừng lại và trong thương có chữ số hoặc cụm chữ số sau dấu phẩy lặp đi lặp lại.\nVí dụ: $\\dfrac{2}{3} = 0,6666666666.....$; $\\dfrac{11}{6} = 1,8333333333....$\n- Chữ số hoặc cụm chữ số (sau dấu phẩy) lặp đi lặp lại gọi là **chu kỳ** của số thập phân vô hạn tuần hoàn, và có thể viết gọn trong dấu ngoặc ().\n\n##VD\nVí dụ: $\\dfrac{2}{3}=0,(6)$; $\\dfrac{11}{6}=1,8(3)$.\n\n##CY\n+ Nếu một phân số tối giản với mẫu dương mà mẫu không có ước nguyên tố khác 2 và 5, thì phân số đó được viết dưới dạng số thập phân hữu hạn.\n+ Nếu một phân số tối giản với mẫu dương mà mẫu có ước nguyên tố khác 2 và 5 thì phân số đó viết được dưới dạng số thập phân vô hạn tuần hoàn.\n+ Mỗi số thập phân vô hạn tuần hoàn biểu diễn một số hữu tỉ.\n+ Các Số thập phân đã học: 0,125; 0,5;.... còn được gọi là **Số thập phân hữu hạn**."
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB00971",
+   "nhom": "Tìm GTLN - GTNN của biểu thức ứng dụng Căn bậc hai và GTTĐ",
+   "nhom_mo_ta": "Tìm GTLN - GTNN của các biểu thức trong đó có chứa Tổng hiệu các Căn bậc hai, Bình phương, Giá trị tuyệt đối hoặc tìm x y khi Tổng hiệu các Căn bậc hai, Bình phương, Giá trị tuyệt đối bằng 0",
+   "nhom_ly_thuyet_ban_do_moi": "**Ví dụ 1:** Tìm GTNN của biểu thức: $A = |2x-3|+2025$.\nHướng dẫn giải:\nTa có: $|2x-3|\\ge 0$\n$\\Rightarrow |2x-3|+2025\\ge 0 + 2025$\n$\\Rightarrow A \\ge 2025$\nDấu bằng xảy ra khi $|2x-3|=0 \\Rightarrow 2x-3=0 \\Rightarrow x=\\dfrac{3}{2}$.\nVậy GTNN của biểu thức $A$ là $2025$ khi $x=\\dfrac{3}{2}$.\n\n**Ví dụ 2:** Tìm GTLN của biểu thức: $A =19-\\sqrt{2x-1}$\nHướng dẫn giải:\nTa có: $\\sqrt{2x-1}\\ge 0$\n$\\Rightarrow -\\sqrt{2x-1}\\le 0$\n$\\Rightarrow 19-\\sqrt{2x-1}\\le 19-0$\n$\\Rightarrow A\\le 19$\nDấu bằng xảy ra khi $\\sqrt{2x-1}=0\\Rightarrow 2x-1=0\\Rightarrow x=\\dfrac{1}{2}$.\nVậy GTLN của biểu thức $A$ là $19$ khi $x=\\dfrac{1}{2}$.\n\n**Ví dụ 3:** Tìm GTLN của biểu thức $A = \\dfrac{4}{|x-3|+1}$\nHướng dẫn giải:\nTa có: $|x-3|\\ge 0$\n$\\Rightarrow |x-3|+1\\ge 1$\n$\\Rightarrow \\dfrac{4}{|x-3|+1} \\le \\dfrac{4}{1}$\n$\\Rightarrow A\\le 4$\nDấu bằng xảy ra khi $|x-3|=0\\Rightarrow x-3=0\\Rightarrow x=3$.\nVậy GTLN của biểu thức $A$ là $4$ khi $x=3$.\n\n**Ví dụ 4:** Tìm GTNN của biểu thức: $B = \\sqrt{3x+8,4}+(y-2)^2 -14,2$.\nHướng dẫn giải:\nTa có: $\\sqrt{3x+8,4} \\ge 0$; $(y-2)^2 \\ge 0$\n$\\Rightarrow \\sqrt{3x+8,4}+(y-2)^2 \\ge 0$\n$\\Rightarrow \\sqrt{3x+8,4}+(y-2)^2 - 14,2 \\ge 0-14,2$\n$\\Rightarrow B\\ge -14,2$\nDấu bằng xảy ra khi $\\begin{cases} \\sqrt{3x+8,4} = 0 \\\\ (y-2)^2 = 0 \\end{cases} \\Rightarrow \\begin{cases} 3x+8,4 = 0 \\\\ y-2=0 \\end{cases} \\Rightarrow \\begin{cases} x = -2,8 \\\\ y = 2 \\end{cases}$.\nVậy GTNN của biểu thức $B$ là $-14,2$ khi $x = -2,8$ và $y = 2$.\n\n**Ví dụ 5:** Tìm GTLN của biểu thức: $A =4-|5x-2|-|3y+12|$.\nHướng dẫn giải:\nTa có: $|5x-2|\\ge 0$; $|3y+12|\\ge 0$\n$\\Rightarrow -|5x-2|-|3y+12|\\le 0$\n$\\Rightarrow 4-|5x-2|-|3y+12|\\le 4$\n$\\Rightarrow A\\le 4$\nDấu bằng xảy ra khi $\\begin{cases} |5x-2|=0 \\\\ |3y+12|=0 \\end{cases} \\Rightarrow \\begin{cases} 5x-2=0 \\\\ 3y+12=0 \\end{cases} \\Rightarrow \\begin{cases} x = \\dfrac{2}{5} \\\\ y = -4 \\end{cases}$.\nVậy GTLN của biểu thức $A$ là $4$ khi $x = \\dfrac{2}{5}$ và $y = -4$.",
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T107020401",
+     "ten_cu": "Tìm GTLN - GTNN của biểu thức ứng dụng Căn bậc hai và GTTĐ",
+     "noi_dung_cu": "**Ví dụ 1:** Tìm GTNN của biểu thức: $A = |2x-3|+2025$.\nHướng dẫn giải:\nTa có: $|2x-3|\\ge 0$\n$\\Rightarrow |2x-3|+2025\\ge 0 + 2025$\n$\\Rightarrow A \\ge 2025$\nDấu bằng xảy ra khi $|2x-3|=0 \\Rightarrow 2x-3=0 \\Rightarrow x=\\dfrac{3}{2}$.\nVậy GTNN của biểu thức $A$ là $2025$ khi $x=\\dfrac{3}{2}$.\n\n**Ví dụ 2:** Tìm GTLN của biểu thức: $A =19-\\sqrt{2x-1}$\nHướng dẫn giải:\nTa có: $\\sqrt{2x-1}\\ge 0$\n$\\Rightarrow -\\sqrt{2x-1}\\le 0$\n$\\Rightarrow 19-\\sqrt{2x-1}\\le 19-0$\n$\\Rightarrow A\\le 19$\nDấu bằng xảy ra khi $\\sqrt{2x-1}=0\\Rightarrow 2x-1=0\\Rightarrow x=\\dfrac{1}{2}$.\nVậy GTLN của biểu thức $A$ là $19$ khi $x=\\dfrac{1}{2}$.\n\n**Ví dụ 3:** Tìm GTLN của biểu thức $A = \\dfrac{4}{|x-3|+1}$\nHướng dẫn giải:\nTa có: $|x-3|\\ge 0$\n$\\Rightarrow |x-3|+1\\ge 1$\n$\\Rightarrow \\dfrac{4}{|x-3|+1} \\le \\dfrac{4}{1}$\n$\\Rightarrow A\\le 4$\nDấu bằng xảy ra khi $|x-3|=0\\Rightarrow x-3=0\\Rightarrow x=3$.\nVậy GTLN của biểu thức $A$ là $4$ khi $x=3$.\n\n**Ví dụ 4:** Tìm GTNN của biểu thức: $B = \\sqrt{3x+8,4}+(y-2)^2 -14,2$.\nHướng dẫn giải:\nTa có: $\\sqrt{3x+8,4} \\ge 0$; $(y-2)^2 \\ge 0$\n$\\Rightarrow \\sqrt{3x+8,4}+(y-2)^2 \\ge 0$\n$\\Rightarrow \\sqrt{3x+8,4}+(y-2)^2 - 14,2 \\ge 0-14,2$\n$\\Rightarrow B\\ge -14,2$\nDấu bằng xảy ra khi $\\begin{cases} \\sqrt{3x+8,4} = 0 \\\\ (y-2)^2 = 0 \\end{cases} \\Rightarrow \\begin{cases} 3x+8,4 = 0 \\\\ y-2=0 \\end{cases} \\Rightarrow \\begin{cases} x = -2,8 \\\\ y = 2 \\end{cases}$.\nVậy GTNN của biểu thức $B$ là $-14,2$ khi $x = -2,8$ và $y = 2$.\n\n**Ví dụ 5:** Tìm GTLN của biểu thức: $A =4-|5x-2|-|3y+12|$.\nHướng dẫn giải:\nTa có: $|5x-2|\\ge 0$; $|3y+12|\\ge 0$\n$\\Rightarrow -|5x-2|-|3y+12|\\le 0$\n$\\Rightarrow 4-|5x-2|-|3y+12|\\le 4$\n$\\Rightarrow A\\le 4$\nDấu bằng xảy ra khi $\\begin{cases} |5x-2|=0 \\\\ |3y+12|=0 \\end{cases} \\Rightarrow \\begin{cases} 5x-2=0 \\\\ 3y+12=0 \\end{cases} \\Rightarrow \\begin{cases} x = \\dfrac{2}{5} \\\\ y = -4 \\end{cases}$.\nVậy GTLN của biểu thức $A$ là $4$ khi $x = \\dfrac{2}{5}$ và $y = -4$."
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB01505",
+   "nhom": "Tìm x GTTĐ",
+   "nhom_mo_ta": "Tìm x với biểu thức chứa x nằm trong Giá trị tuyệt đối",
+   "nhom_ly_thuyet_ban_do_moi": "",
+   "bang_cu": []
+  },
+  {
+   "nhom_id": "NNB01506",
+   "nhom": "Tìm x Tích các biểu thức bằng 0",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_ban_do_moi": "",
+   "bang_cu": []
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "NDB01036",
+   "nhom_id": "NNB00968",
+   "chuyen_de": "Tính chất Số thực",
+   "dang": "Nhận biết Số thực, Giá trị tuyệt đối",
+   "mo_ta": "Các tính chất của Số thực, Giá trị tuyệt đối",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  },
+  {
+   "dang_id": "NDB01206",
+   "nhom_id": "NNB00962",
+   "chuyen_de": "Tính chất Số thực",
+   "dang": "Nhận biết STP hữu hạn, vô hạn tuần hoàn.",
+   "mo_ta": "Xác định các số thập phân hữu hạn, vô hạn tuần hoàn từ một nhóm các số cho trước",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "##VD\nTrong các số sau, số nào là số thập phân vô hạn tuần hoàn: $2,5; 3,(4); -0,5; 1,4(57); 2,8; 3,26262626......$.\nHướng dẫn giải:\nCác số thập phân vô hạn tuần hoàn: $3,(4); 1,4(57);  3,26262626......$.",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": false
+  },
+  {
+   "dang_id": "NDB01214",
+   "nhom_id": "NNB00971",
+   "chuyen_de": "GTLN-GTNN của biểu thức",
+   "dang": "Phân thức nhiều biểu thức",
+   "mo_ta": "Tìm GTLN-GTNN mà Biểu thức là Phân thức mà Mẫu chứa tổng hợp nhiều loại Căn bậc hai, Bình phương, Giá trị tuyệt đối",
+   "ly_thuyet_hien_co": "##TC\nGiá trị tuyệt đối, căn bậc hai số học và bình phương đều không âm: $|A| \\ge 0$; $\\sqrt{A} \\ge 0$; $A^2 \\ge 0$.\n\n##PP\nBước 1. Đánh giá mẫu số (dựa vào $|A| \\ge 0$, $\\sqrt{A} \\ge 0$ hoặc $A^2 \\ge 0$).\nBước 2. Từ đánh giá của mẫu số suy ra đánh giá của cả phân thức (lấy tử số chia cho hai vế, chú ý chiều bất đẳng thức đổi chiều).\nBước 3. Tìm $x$ để dấu bằng xảy ra rồi kết luận GTLN (hoặc GTNN).",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": false,
+   "can_dien_vi_du": true
+  },
+  {
+   "dang_id": "NDB01217",
+   "nhom_id": "NNB01505",
+   "chuyen_de": "Tìm x Số thực",
+   "dang": "Tìm x Căn bậc hai",
+   "mo_ta": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  },
+  {
+   "dang_id": "NDB01222",
+   "nhom_id": "NNB01506",
+   "chuyen_de": "Tìm x Số thực",
+   "dang": "Tìm x Tích các biểu thức bằng 0",
+   "mo_ta": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true
+  }
+ ]
+}

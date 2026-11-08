@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T310010201021",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "M chia đoạn AB theo tỉ số, viết đẳng thức véc tơ với số."
+ },
+ {
+  "ma_cau": "T310010201022",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm: MA = -MB."
+ },
+ {
+  "ma_cau": "T310010201023",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "AB = 2AC: hướng và phương của hai véc tơ."
+ },
+ {
+  "ma_cau": "T310010201024",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "a = k.b với k dương: hướng và độ dài."
+ },
+ {
+  "ma_cau": "T310010201025",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm I của BC."
+ },
+ {
+  "ma_cau": "T310010201026",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "M chia AB theo tỉ số 1/4, hệ thức véc tơ với số."
+ },
+ {
+  "ma_cau": "T310010201027",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "C, D là trung điểm liên tiếp: hệ thức véc tơ với số."
+ },
+ {
+  "ma_cau": "T310010201028",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm: AB = 2AI."
+ },
+ {
+  "ma_cau": "T310010201029",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm M của BC."
+ },
+ {
+  "ma_cau": "T310010201030",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: xác định vị trí điểm thoả đẳng thức véc tơ."
+ },
+ {
+  "ma_cau": "T310010201031",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: xác định vị trí điểm thoả đẳng thức véc tơ."
+ },
+ {
+  "ma_cau": "T310010201032",
+  "dang_bai_id": "NDB00906",
+  "chac": "vua",
+  "ly_do": "Độ dài BA + BC trong tam giác vuông; cũng hợp độ dài có hệ số."
+ },
+ {
+  "ma_cau": "T310010201033",
+  "dang_bai_id": "NDB00906",
+  "chac": "vua",
+  "ly_do": "Độ dài AB + AC trong tam giác vuông; cũng hợp độ dài có hệ số."
+ },
+ {
+  "ma_cau": "T310010201034",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Giống ví dụ tam giác đều: |AB + AC + BC|."
+ },
+ {
+  "ma_cau": "T310010201035",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Giống ví dụ tam giác đều: |AB + AC|."
+ },
+ {
+  "ma_cau": "T310010201036",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "Biểu diễn AM theo AB, AC từ điều kiện điểm M."
+ },
+ {
+  "ma_cau": "T310010201037",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Hệ thức với điểm O bất kỳ từ đẳng thức tâm tỉ cự M."
+ },
+ {
+  "ma_cau": "T310010201038",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "AK = k.AB từ KA + 2KB = 0; gần biểu diễn véc tơ."
+ },
+ {
+  "ma_cau": "T310010201039",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "Biểu diễn OK theo OA, OB với O bất kỳ."
+ },
+ {
+  "ma_cau": "T310010201040",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: hệ thức véc tơ giữa trực tâm, tâm ngoại tiếp, trọng tâm."
+ },
+ {
+  "ma_cau": "T310010201041",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Hệ thức trọng tâm hai tam giác trong tứ giác; gần biểu diễn trong tứ giác."
+ },
+ {
+  "ma_cau": "T310010201042",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trọng tâm và trung điểm: GB + GC = 2GM."
+ },
+ {
+  "ma_cau": "T310010201043",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trọng tâm: AG = 1/3(AB + AC)."
+ },
+ {
+  "ma_cau": "T310010201044",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Hệ thức tổng trong hình bình hành; gần quy tắc 3 điểm và trung điểm."
+ },
+ {
+  "ma_cau": "T310010201045",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng ba véc tơ có chung điểm đầu trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310010201046",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung tuyến: AM = 1/2(AB + AC)."
+ },
+ {
+  "ma_cau": "T310010201047",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn AM theo BA, BC khi BM = 2MC."
+ },
+ {
+  "ma_cau": "T310010201048",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ AB + 2AC trong tam giác đều."
+ },
+ {
+  "ma_cau": "T310010201049",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ 4AB - AC trong tam giác vuông cân."
+ },
+ {
+  "ma_cau": "T310010201050",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng AB + AC + AD trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310010201051",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Dùng trung điểm: 2IA + IB + IC = 0."
+ },
+ {
+  "ma_cau": "T310010201052",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Hệ thức với trung điểm M, N của hai cạnh tứ giác."
+ },
+ {
+  "ma_cau": "T310010201053",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Biểu diễn OM từ MN = -2MP; gần biểu diễn véc tơ."
+ },
+ {
+  "ma_cau": "T310010201054",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: xác định vị trí điểm thoả đẳng thức véc tơ."
+ },
+ {
+  "ma_cau": "T310010201055",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn DE theo AB, AC với D đối xứng, E chia AC."
+ },
+ {
+  "ma_cau": "T310010201056",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài AB + 2AD trong hình chữ nhật."
+ },
+ {
+  "ma_cau": "T310010201057",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "Biểu diễn DE theo CA, CB qua tỉ số của phân giác."
+ },
+ {
+  "ma_cau": "T310010201058",
+  "dang_bai_id": "NDB00912",
+  "chac": "vua",
+  "ly_do": "Độ dài tổng hiệu MA + MC - MN trong hình thang."
+ },
+ {
+  "ma_cau": "T310010201059",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "Biểu diễn IK và so sánh trọng tâm từ các điểm chia cạnh."
+ },
+ {
+  "ma_cau": "T310010201060",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Phân tích AG theo hai véc tơ trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310010201061",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm, trọng tâm: mệnh đề sai."
+ },
+ {
+  "ma_cau": "T310010201062",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn AC theo AB, AM trong tam giác."
+ },
+ {
+  "ma_cau": "T310010201063",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trọng tâm, trung điểm: AG = 2GI."
+ },
+ {
+  "ma_cau": "T310010201064",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: xác định vị trí điểm thoả đẳng thức véc tơ."
+ },
+ {
+  "ma_cau": "T310010201065",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trọng tâm với điểm O tuỳ ý."
+ },
+ {
+  "ma_cau": "T310010201066",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Tính chất trung điểm ba cạnh; đề có hình."
+ },
+ {
+  "ma_cau": "T310010201067",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trọng tâm và trung điểm J của NP."
+ },
+ {
+  "ma_cau": "T310010201068",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm: MJ = 1/2(MN + MP)."
+ },
+ {
+  "ma_cau": "T310010201069",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm M của BC."
+ },
+ {
+  "ma_cau": "T310010201070",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Hệ thức véc tơ trong hình bình hành tâm O; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T310010201071",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "ĐỀ LỖI: đề bị hỏng ký hiệu, không đọc được đề bài."
+ },
+ {
+  "ma_cau": "T310010201072",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng AB + AC + AD trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310010201073",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm với điểm M tuỳ ý."
+ },
+ {
+  "ma_cau": "T310010201074",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trọng tâm với điểm M tuỳ ý."
+ },
+ {
+  "ma_cau": "T310010201075",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm E của PQ."
+ },
+ {
+  "ma_cau": "T310010201076",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "Biểu diễn AI + AK qua AC trong hình chữ nhật; có trung điểm."
+ },
+ {
+  "ma_cau": "T310010201077",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trọng tâm và trung điểm: hệ thức sai."
+ },
+ {
+  "ma_cau": "T310010201078",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm I của BC."
+ },
+ {
+  "ma_cau": "T310010201079",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Hệ thức tổng trong hình bình hành tâm O; gần tính chất trung điểm."
+ },
+ {
+  "ma_cau": "T310010201080",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài CA + CH trong tam giác đều."
+ },
+ {
+  "ma_cau": "T310010201081",
+  "dang_bai_id": "NDB00906",
+  "chac": "vua",
+  "ly_do": "Độ dài OA + OB trong hình vuông tâm O."
+ },
+ {
+  "ma_cau": "T310010201082",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Phân tích AM theo AB, AC khi n.BM = m.BC."
+ },
+ {
+  "ma_cau": "T310010201083",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: xác định vị trí điểm thoả đẳng thức véc tơ."
+ },
+ {
+  "ma_cau": "T310010201084",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Dùng trung điểm D của trung tuyến: DA + DB + 2DC = 0."
+ },
+ {
+  "ma_cau": "T310010201085",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài AB + AC trong tam giác đều."
+ },
+ {
+  "ma_cau": "T310010201086",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "AB + AC = 2AM nên M là trung điểm BC."
+ },
+ {
+  "ma_cau": "T310010201087",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: xác định vị trí điểm thoả đẳng thức véc tơ."
+ },
+ {
+  "ma_cau": "T310010201088",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài AB + AC trong tam giác đều."
+ },
+ {
+  "ma_cau": "T310010201089",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu thị AM theo AB, AC với M chia ngoài BC."
+ },
+ {
+  "ma_cau": "T310010201090",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu thị AM theo AB, AD trong hình bình hành."
+ }
+]

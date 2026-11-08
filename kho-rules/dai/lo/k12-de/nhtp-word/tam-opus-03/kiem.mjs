@@ -1,0 +1,17 @@
+const S=(f,a,b,n=20000)=>{const h=(b-a)/n;let s=f(a)+f(b);for(let i=1;i<n;i++)s+=f(a+i*h)*(i%2?4:2);return s*h/3};
+const P=Math.PI;
+console.log('121',S(x=>Math.abs(4*x-3-x*x),1,3),4/3);
+console.log('122 vert',P*S(y=>4-(y-2)**2,2,4)+P*S(y=>(2+Math.sqrt(8*(2-y)))**2,0,2));
+console.log('122 horiz',P*S(y=>4-(y-2)**2,2,4)+P*S(y=>(2+(2-y)**2)**2,0,2));
+console.log('126d',P*S(x=>x-x/4,0,4));
+console.log('127',S(x=>Math.abs(x**3-3*x),-1,1,200000));
+console.log('149',S(x=>Math.abs(x+2-x*x),-1,2,200000));
+console.log('153',S(x=>(x*x+2*x)/x**3,1,Math.E),3-2/Math.E);
+console.log('163',S(x=>Math.abs(x**3+x*x-2*x),-2,1,300000),37/12);
+console.log('168',P*S(x=>x*x+1,0,1),4*P/3);
+console.log('173cd',S(x=>(x-1)**2,0,2),P*S(x=>4*x*x,1,2),28*P/3);
+const F178=x=>x**3/3-x*x/2-5*x; const C=-2-F178(2); console.log('178c',F178(-2)+C);
+console.log('179',S(x=>Math.abs(x**3-4*x),0,3,300000),41/4);
+console.log('180',S(x=>Math.sin(x)+2*x,0,P)+3);
+const F174=x=>-(x**4)+2*x**3/3+3*x*x/2+4*x+2; console.log('174',F174(2),16/3);
+console.log('125 phanh',S(t=>-10*t+20,0,2)+20);

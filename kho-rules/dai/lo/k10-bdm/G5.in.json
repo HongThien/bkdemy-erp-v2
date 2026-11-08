@@ -1,0 +1,146 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "NNB01528",
+   "chu_de": "Véc tơ",
+   "chuyen_de": "Tích vô hướng của 2 véc tơ",
+   "nhom": "Xác định tích vô hướng và góc giữa 2 véc tơ theo định nghĩa",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "bang_cu": []
+  },
+  {
+   "nhom_id": "NNB01529",
+   "chu_de": "Véc tơ",
+   "chuyen_de": "Tích vô hướng của 2 véc tơ",
+   "nhom": "Biểu thức tọa độ của tích vô hướng",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "bang_cu": []
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "NDB00928",
+   "nhom_id": "NNB01528",
+   "chu_de": "Véc tơ",
+   "chuyen_de": "Tích vô hướng của 2 véc tơ",
+   "nhom": "Xác định tích vô hướng và góc giữa 2 véc tơ theo định nghĩa",
+   "dang": "Xác định góc giữa 2 véc tơ trong đa giác",
+   "mo_ta": "Xác định góc giữa 2 véc tơ trong đa giác",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00929",
+   "nhom_id": "NNB01528",
+   "chu_de": "Véc tơ",
+   "chuyen_de": "Tích vô hướng của 2 véc tơ",
+   "nhom": "Xác định tích vô hướng và góc giữa 2 véc tơ theo định nghĩa",
+   "dang": "Tính tích vô hướng theo định nghĩa",
+   "mo_ta": "Tính tích vô hướng theo định nghĩa",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00930",
+   "nhom_id": "NNB01528",
+   "chu_de": "Véc tơ",
+   "chuyen_de": "Tích vô hướng của 2 véc tơ",
+   "nhom": "Xác định tích vô hướng và góc giữa 2 véc tơ theo định nghĩa",
+   "dang": "Tính góc giữa 2 véc tơ dựa khi biết tích vô hướng",
+   "mo_ta": "Tính góc giữa 2 véc tơ dựa khi biết tích vô hướng",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00931",
+   "nhom_id": "NNB01528",
+   "chu_de": "Véc tơ",
+   "chuyen_de": "Tích vô hướng của 2 véc tơ",
+   "nhom": "Xác định tích vô hướng và góc giữa 2 véc tơ theo định nghĩa",
+   "dang": "Tính tích vô hướng của 2 véc tơ trong tam giác, tứ giác",
+   "mo_ta": "Tính tích vô hướng của 2 véc tơ trong tam giác, tứ giác",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00940",
+   "nhom_id": "NNB01529",
+   "chu_de": "Véc tơ",
+   "chuyen_de": "Tích vô hướng của 2 véc tơ",
+   "nhom": "Biểu thức tọa độ của tích vô hướng",
+   "dang": "Tính tích vô hướng của 2 véc tơ trong mặt phẳng tọa độ",
+   "mo_ta": "Tính tích vô hướng của 2 véc tơ trong mặt phẳng tọa độ",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00942",
+   "nhom_id": "NNB01529",
+   "chu_de": "Véc tơ",
+   "chuyen_de": "Tích vô hướng của 2 véc tơ",
+   "nhom": "Biểu thức tọa độ của tích vô hướng",
+   "dang": "Tính góc giữa 2 véc tơ khi biết tọa độ véc tơ",
+   "mo_ta": "Tính góc giữa 2 véc tơ khi biết tọa độ véc tơ",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00941",
+   "nhom_id": "NNB01529",
+   "chu_de": "Véc tơ",
+   "chuyen_de": "Tích vô hướng của 2 véc tơ",
+   "nhom": "Biểu thức tọa độ của tích vô hướng",
+   "dang": "Sử dụng tích vô hướng để kiểm tra 2 véc tơ vuông góc",
+   "mo_ta": "Sử dụng tích vô hướng để kiểm tra 2 véc tơ vuông góc",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  }
+ ],
+ "bang_cu_hgt_chung": [
+  {
+   "ma_dang_cu": "T310010101",
+   "ten_cu": "Các khái niệm mở đầu véc tơ",
+   "noi_dung_cu": "##PP Phương pháp làm bài\nKhi đề bài yêu cầu đếm số vec tơ khác $\\vec{0}$: từ $n$ điểm phân biệt có $n(n - 1)$ vec tơ.\nKhi đề bài hỏi về phương, hướng của hai vec tơ: Bước 1: Giá song song hoặc trùng nhau thì hai vec tơ cùng phương. Bước 2: Cùng phương thì so sánh chiều để kết luận cùng hướng hay ngược hướng.\nKhi đề bài yêu cầu đếm véc tơ cùng phương với một véc tơ cho trước: xét mọi đường thẳng song song hoặc trùng với giá; đường thẳng chứa $k$ điểm cho $k(k - 1)$ véc tơ.\nKhi đề bài hỏi về véc tơ bằng nhau, đối nhau: bằng nhau là cùng hướng và cùng độ dài; đối nhau là ngược hướng và cùng độ dài.\nHình bình hành ABCD: $\\vec{AB} = \\vec{DC}$, $\\vec{AD} = \\vec{BC}$.\n\n**Ví dụ minh họa**\n\n##VD\nVí dụ 1: Cho tam giác ABC. Có bao nhiêu vec tơ khác vec tơ không có điểm đầu và điểm cuối là các đỉnh A, B, C?\nBài giải\n\nCác vec tơ thỏa mãn: $\\vec{AB}, \\vec{BA}, \\vec{AC}, \\vec{CA}, \\vec{BC}, \\vec{CB}$.\n\nVậy có 6 vec tơ.\n\n##VD\nVí dụ 2: Cho hình bình hành ABCD, M là trung điểm của cạnh AB. Có bao nhiêu vec tơ khác vec tơ không và khác $\\vec{AM}$, có điểm đầu và điểm cuối lấy từ các điểm A, B, C, D, M cùng phương với $\\vec{AM}$?\n\nBài giải\n\nVec tơ cùng phương với $\\vec{AM}$ có giá là đường thẳng AB hoặc CD.\n\nTrên đường thẳng AB có 3 điểm A, M, B cho $3 \\cdot 2 = 6$ vec tơ, bỏ $\\vec{AM}$ còn 5 vec tơ.\n\nTrên đường thẳng CD có 2 vec tơ $\\vec{CD}, \\vec{DC}$.\n\nVậy có 7 vec tơ.\n\n##VD\nVí dụ 3: Cho hình vuông ABCD. Tìm vec tơ khác $\\vec{AB}$, có điểm đầu và điểm cuối là các đỉnh của hình vuông, bằng vec tơ $\\vec{AB}$.\nBài giải\n\nVec tơ bằng $\\vec{AB}$ phải có giá song song hoặc trùng AB, cùng hướng và cùng độ dài với $\\vec{AB}$.\n\nCác véc tơ khác $\\vec{AB}$ có giá song song hoặc trùng $\\mathrm{AB}$ là $\\vec{BA}$, $\\vec{CD}$, $\\vec{DC}$.\n$\\vec{BA}$, $\\vec{CD}$ ngược hướng với $\\vec{AB}$; $\\vec{DC}$ cùng hướng và $\\mathrm{DC} = \\mathrm{AB}$.\nVậy $\\vec{AB} = \\vec{DC}$."
+  },
+  {
+   "ma_dang_cu": "T310010102",
+   "ten_cu": "Tổng hiệu của 2 véc tơ",
+   "noi_dung_cu": "##PP Phương pháp làm bài\nQuy tắc ba điểm: $\\vec{AB} + \\vec{BC} = \\vec{AC}$.\nQuy tắc hình bình hành ABCD: $\\vec{AB} + \\vec{AD} = \\vec{AC}$.\nQuy tắc trừ: $\\vec{OB} - \\vec{OA} = \\vec{AB}$.\nKhi hai véc tơ không nối tiếp, không chung điểm đầu: thay một véc tơ bằng véc tơ bằng nó để đưa về nối tiếp.\nKhi đề bài cho đẳng thức chứa nhiều điểm: đổi trừ thành cộng bằng $-\\vec{XY} = \\vec{YX}$, thu gọn từng vế về một véc tơ rồi so sánh.\nKhi đề bài có trung điểm, trọng tâm, tâm hình bình hành: I là trung điểm AB thì $\\vec{IA} + \\vec{IB} = \\vec{0}$; G là trọng tâm tam giác ABC thì $\\vec{GA} + \\vec{GB} + \\vec{GC} = \\vec{0}$; O là tâm hình bình hành ABCD thì $\\vec{OA} + \\vec{OC} = \\vec{0}, \\vec{OB} + \\vec{OD} = \\vec{0}$.\n\n**Ví dụ minh họa**\n\n##VD\nVí dụ 1: Cho hình bình hành ABCD. Tìm véc tơ tổng $\\vec{CB} + \\vec{CD}$.\n\nBài giải\n\nABCD là hình bình hành, hai cạnh CB, CD chung đỉnh C, đường chéo xuất phát từ C là CA.\n\nVậy $\\vec{CB} + \\vec{CD} = \\vec{CA}$.\n\n##VD\nVí dụ 2: Cho ba điểm phân biệt A, B, C. Rút gọn $\\vec{AB} - \\vec{AC}$.\n\nBài giải\n\nHai véc tơ chung điểm đầu A, theo quy tắc trừ:\n\n$\\vec{AB} - \\vec{AC} = \\vec{CB}$.\n\n##VD\nVí dụ 3: Cho tam giác ABC có trọng tâm G. Chứng minh $\\vec{GA} + \\vec{GB} + \\vec{GC} = \\vec{0}$.\n\nBài giải\n\nGọi M là trung điểm BC, D là điểm đối xứng với G qua M. Tứ giác BGCD có hai đường chéo cắt nhau tại trung điểm M nên là hình bình hành.\n\n$\\vec{GB} + \\vec{GC} = \\vec{GD}$.\n\n$\\vec{GD} = 2\\vec{GM} = \\vec{AG}$ và $\\vec{GD}$ cùng hướng với $\\vec{AG}$ nên $\\vec{GD} = \\vec{AG}$.\n\n$\\vec{GA} + \\vec{GB} + \\vec{GC} = \\vec{GA} + \\vec{AG} = \\vec{0}$."
+  },
+  {
+   "ma_dang_cu": "T310010103",
+   "ten_cu": "Độ dài véc tơ",
+   "noi_dung_cu": "##PP Phương pháp làm bài\n- Khi đề bài hỏi độ dài một véc tơ: $|\\vec{XY}| = XY$, tính $XY$ bằng định lí Pythagoras hoặc tính chất hình: đường chéo hình vuông cạnh $a$ là $a\\sqrt{2}$; đường cao tam giác đều cạnh $a$ là $\\dfrac{a\\sqrt{3}}{2}$; hình thoi có hai đường chéo vuông góc, cắt nhau tại trung điểm mỗi đường.\n- Khi đề bài hỏi độ dài véc tơ tổng, hiệu: Bước 1: Thu gọn về một véc tơ $\\vec{XY}$ bằng quy tắc ba điểm, hình bình hành, quy tắc trừ. Riêng $\\vec{AB} + \\vec{AC} = \\vec{AE}$ với $ABEC$ là hình bình hành, $AE = 2AM$ ($M$ là trung điểm $BC$). Bước 2: Tính độ dài $XY$.\n- Khi hình vẽ trên lưới ô vuông: đếm số cạnh ô vuông dọc theo véc tơ.\n\n##CY Lỗi sai hay gặp\n $|\\vec{a} + \\vec{b}| \\neq |\\vec{a}| + |\\vec{b}|$.\n\n**Ví dụ minh họa**\n\n##VD\nVí dụ 1: Cho hình thoi $ABCD$ tâm $O$, cạnh $AB = 2a$ và $\\widehat{ABC} = 60^{\\circ}$. Tính $|\\vec{OA}|$ và $|\\vec{OB}|$.\n\nBài giải\n\nTam giác $ABC$ có $AB = BC$, $\\widehat{ABC} = 60^{\\circ}$ nên là tam giác đều, $AC = 2a$.\n\n$|\\vec{OA}| = OA = \\dfrac{AC}{2} = a$.\n\n$|\\vec{OB}| = OB = \\sqrt{AB^2 - OA^2} = a\\sqrt{3}$.\n\n##VD\nVí dụ 2: Cho hình vuông $ABCD$ cạnh $3\\sqrt{2}$. Tính $|\\vec{AB} + \\vec{AC} + \\vec{AD}|$.\n\nBài giải\n\n$\\vec{AB} + \\vec{AD} = \\vec{AC}$ nên $\\vec{AB} + \\vec{AC} + \\vec{AD} = \\vec{AC} + \\vec{AC}$.\n\n$AC = 3\\sqrt{2} \\cdot \\sqrt{2} = 6$.\n\nHai véc tơ cùng hướng nên $|\\vec{AB} + \\vec{AC} + \\vec{AD}| = AC + AC = 12$.\n\n##VD\nVí dụ 2: Cho hình chữ nhật $ABCD$ có $AB = 3$ cm, $AD = 4$ cm. Tính $|\\vec{BA} - \\vec{CA} + \\vec{CB} - \\vec{DB}|$.\n\nBài giải\n\n$\\vec{BA} - \\vec{CA} + \\vec{CB} - \\vec{DB} = \\vec{BA} + \\vec{AC} + \\vec{CB} + \\vec{BD} = \\vec{BD}$.\n\n$BD = \\sqrt{AB^2 + AD^2} = 5$.\n\nVậy $|\\vec{BA} - \\vec{CA} + \\vec{CB} - \\vec{DB}| = 5$ cm."
+  },
+  {
+   "ma_dang_cu": "T310010201",
+   "ten_cu": "Biểu diễn véc tơ theo các véc tơ khác",
+   "noi_dung_cu": "Phương pháp: \n•\tSử dụng khái niệm tích của vectơ với một số\n•\tSử dụng tính chất tích vectơ với một số\n•\tSử dụng quy tắc trung điểm của đoạn thẳng, trọng tâm của tam giác."
+  }
+ ]
+}

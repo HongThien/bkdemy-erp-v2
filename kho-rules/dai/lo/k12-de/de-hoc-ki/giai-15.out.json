@@ -1,0 +1,542 @@
+[
+ {
+  "id": "X0841",
+  "dap_an": "B",
+  "loi_giai": "Thay toạ độ điểm vào phương trình đường thẳng $d:\\dfrac{x-2}{1}=\\dfrac{y-1}{-2}=\\dfrac{z+1}{3}$.\nVới $P(2;1;-1)$: $\\dfrac{2-2}{1}=0$, $\\dfrac{1-1}{-2}=0$, $\\dfrac{-1+1}{3}=0$ nên ba tỉ số bằng nhau.\nCác điểm còn lại không thoả mãn, chẳng hạn $N(1;-2;3)$: $\\dfrac{1-2}{1}=-1$, $\\dfrac{-2-1}{-2}=\\dfrac{3}{2}$ khác nhau.\nVậy điểm $P(2;1;-1)$ thuộc $d$. Chọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0842",
+  "dap_an": "D",
+  "loi_giai": "Công thức nhân xác suất: $P(A\\cap B)=P(A|B)\\cdot P(B)=P(B|A)\\cdot P(A)$.\nSuy ra $P(A|B)\\cdot P(B)=P(B|A)\\cdot P(A)$.\nCác khẳng định A, B, C đều sai (A nhầm $A\\cup B$ với $A\\cap B$; B và C nhầm biến cố đứng nhân với xác suất có điều kiện).\nVậy khẳng định đúng là D. Chọn D.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0843",
+  "dap_an": "95.5",
+  "loi_giai": "Chọn hệ trục sao cho $A$ là gốc, trục $Oy$ trùng $AD$ (trục quay), $Ox$ trùng $AB$. Khi đó $A(0;0)$, $D(0;4)$, $B(6;0)$, tâm đường tròn $M(0;2)$, bán kính $2$ nên $I(2;2)$.\nCung phần tư $ID$ thuộc đường tròn $x^{2}+(y-2)^{2}=4$ (phần $y\\ge 2$, $x\\ge 0$).\nParabol đỉnh $I(2;2)$, trục đối xứng nằm ngang, có dạng $x=2+m(y-2)^{2}$. Qua $B(6;0)$: $6=2+4m$ nên $m=1$, do đó $x=2+(y-2)^{2}$ với $0\\le y\\le 2$.\nThể tích phần $2\\le y\\le 4$ (nửa khối cầu bán kính $2$): $V_1=\\pi\\int\\limits_{2}^{4}\\left[4-(y-2)^{2}\\right]\\mathrm{d}y=\\pi\\left(8-\\dfrac{8}{3}\\right)=\\dfrac{16\\pi}{3}$.\nThể tích phần $0\\le y\\le 2$: $V_2=\\pi\\int\\limits_{0}^{2}\\left[2+(y-2)^{2}\\right]^{2}\\mathrm{d}y=\\pi\\int\\limits_{0}^{2}\\left(4+4u^{2}+u^{4}\\right)\\mathrm{d}u=\\pi\\left(8+\\dfrac{32}{3}+\\dfrac{32}{5}\\right)=\\dfrac{376\\pi}{15}$.\nThể tích vật: $V=V_1+V_2=\\dfrac{16\\pi}{3}+\\dfrac{376\\pi}{15}=\\dfrac{456\\pi}{15}\\approx 95{,}5$.\nVậy thể tích vật trang trí khoảng $95.5\\ \\text{cm}^{3}$.",
+  "chuong": "NHTP",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Đề không hình: giả định parabol trục ngang, nối trơn với cung tròn tại I"
+ },
+ {
+  "id": "X0844",
+  "dap_an": "D",
+  "loi_giai": "Tổng số bóng đèn: $n=11+20+29+40+30=130$. Tần số tích luỹ: $11;\\,31;\\,60;\\,100;\\,130$.\n$Q_1$ ứng với $\\dfrac{n}{4}=32{,}5$, thuộc nhóm $[7;9)$: $Q_1=7+\\dfrac{32{,}5-31}{29}\\cdot 2=\\dfrac{206}{29}$.\n$Q_3$ ứng với $\\dfrac{3n}{4}=97{,}5$, thuộc nhóm $[9;11)$: $Q_3=9+\\dfrac{97{,}5-60}{40}\\cdot 2=\\dfrac{87}{8}$.\nKhoảng tứ phân vị: $\\Delta_Q=Q_3-Q_1=\\dfrac{87}{8}-\\dfrac{206}{29}=\\dfrac{2523-1648}{232}=\\dfrac{875}{232}$.\nVậy $\\Delta_Q=\\dfrac{875}{232}$. Chọn D.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0845",
+  "dap_an": "0.98",
+  "loi_giai": "Gọi $R$: \"cuộc gọi rác\", $C$: \"cuộc gọi bị chặn\". Có $P(R)=0{,}1$, $P(\\overline{R})=0{,}9$, $P(C|R)=0{,}8$, $P(C|\\overline{R})=0{,}01$.\nSuy ra $P(\\overline{C}|R)=0{,}2$ và $P(\\overline{C}|\\overline{R})=0{,}99$.\nTheo công thức xác suất toàn phần: $P(\\overline{C})=0{,}1\\cdot 0{,}2+0{,}9\\cdot 0{,}99=0{,}02+0{,}891=0{,}911$.\nTheo công thức Bayes: $P(\\overline{R}|\\overline{C})=\\dfrac{0{,}9\\cdot 0{,}99}{0{,}911}=\\dfrac{0{,}891}{0{,}911}\\approx 0{,}978$.\nVậy xác suất cần tìm khoảng $0.98$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0846",
+  "dap_an": "D",
+  "loi_giai": "Diện tích đáy: $S_{ABCD}=a^{2}$. Chiều cao: $h=SA=a\\sqrt{3}$.\nThể tích: $V=\\dfrac{1}{3}S_{ABCD}\\cdot h=\\dfrac{1}{3}\\cdot a^{2}\\cdot a\\sqrt{3}=\\dfrac{a^{3}\\sqrt{3}}{3}$.\nVậy $V=\\dfrac{a^{3}\\sqrt{3}}{3}$. Chọn D.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0847",
+  "dap_an": "A",
+  "loi_giai": "Ta có $u_{4}=u_{1}+3d$ nên $9=3+3d$, suy ra $d=2$.\nKhi đó $u_{15}=u_{1}+14d=3+14\\cdot 2=31$.\nVậy $u_{15}=31$. Chọn A.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0848",
+  "dap_an": "B",
+  "loi_giai": "Vì cơ số $3>1$ nên $3^{x}\\ge 5\\Leftrightarrow x\\ge \\log_{3}5$.\nVậy tập nghiệm là $\\left[ \\log_{3}5\\,;\\,+\\infty \\right)$. Chọn B.",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0849",
+  "dap_an": "C",
+  "loi_giai": "Theo công thức xác suất có điều kiện: $P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0{,}4}{0{,}7}=\\dfrac{4}{7}$.\nVậy $P(A|B)=\\dfrac{4}{7}$. Chọn C.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": true,
+  "ghi": "P(A∩B)=0,4 lớn hơn P(A)=0,3: số liệu đề không nhất quán"
+ },
+ {
+  "id": "X0850",
+  "dap_an": "A",
+  "loi_giai": "Trên $[-2;0]$ có $f(-2)=1>0$, $f(-1)=2>0$, $f(0)=1>0$ và các nghiệm $x=-1\\pm\\sqrt{2}$ của $f(x)$ nằm ngoài $[-2;0]$ nên $f(x)>0$ trên đoạn này.\n$S=\\int\\limits_{-2}^{0}\\left(-x^{2}-2x+1\\right)\\mathrm{d}x=\\left(-\\dfrac{x^{3}}{3}-x^{2}+x\\right)\\Bigg|_{-2}^{0}$.\n$=0-\\left(\\dfrac{8}{3}-4-2\\right)=\\dfrac{10}{3}$.\nVậy $S=\\dfrac{10}{3}$. Chọn A.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0851",
+  "dap_an": "B",
+  "loi_giai": "Phương trình $x^{2}+y^{2}+z^{2}-2ax-2by-2cz+d=0$ là phương trình mặt cầu khi $a^{2}+b^{2}+c^{2}-d>0$.\nPhương án A: chia hai vế cho $2$: $x^{2}+y^{2}+z^{2}+2x+2y-4z-5=0$, có $a=-1,b=-1,c=2,d=-5$, $a^{2}+b^{2}+c^{2}-d=11>0$ (là mặt cầu).\nPhương án B: $a=-1,b=-1,c=2,d=11$, $a^{2}+b^{2}+c^{2}-d=1+1+4-11=-5<0$ (không phải mặt cầu).\nPhương án C: $a=-1,b=-2,c=2,d=-21$, $1+4+4+21=30>0$ (là mặt cầu). Phương án D: là mặt cầu bán kính $1$.\nVậy phương trình không phải mặt cầu là B. Chọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0852",
+  "dap_an": "A",
+  "loi_giai": "Trên $[-2;0]$ có $f(-2)=1>0$, $f(-1)=2>0$, $f(0)=1>0$ và các nghiệm $x=-1\\pm\\sqrt{2}$ của $f(x)$ nằm ngoài $[-2;0]$ nên $f(x)>0$ trên đoạn này.\n$S=\\int\\limits_{-2}^{0}\\left(-x^{2}-2x+1\\right)\\mathrm{d}x=\\left(-\\dfrac{x^{3}}{3}-x^{2}+x\\right)\\Bigg|_{-2}^{0}$.\n$=0-\\left(\\dfrac{8}{3}-4-2\\right)=\\dfrac{10}{3}$.\nVậy $S=\\dfrac{10}{3}$. Chọn A.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0853",
+  "dap_an": "5",
+  "loi_giai": "Hà và Lan lấy lần lượt không hoàn lại. Gọi $A$: \"Hà lấy bộ xã hội\", $B$: \"Lan lấy bộ xã hội\".\n$P(B)=P(\\overline{A})P(B|\\overline{A})+P(A)P(B|A)=\\dfrac{20}{36}\\cdot\\dfrac{16}{35}+\\dfrac{16}{36}\\cdot\\dfrac{15}{35}=\\dfrac{320+240}{1260}=\\dfrac{4}{9}$.\nDo đó $a=4$, $b=9$ (phân số tối giản), $b-a=5$.\nVậy $b-a=5$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0854",
+  "dap_an": "D",
+  "loi_giai": "Khoảng cách từ $I(3;4;2)$ đến trục $Oz$ là $d(I,Oz)=\\sqrt{3^{2}+4^{2}}=5$.\nMặt cầu tâm $I$ tiếp xúc với $Oz$ nên bán kính $R=5$, $R^{2}=25$.\nPhương trình: $(x-3)^{2}+(y-4)^{2}+(z-2)^{2}=25$.\nVậy chọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0855",
+  "dap_an": "D",
+  "loi_giai": "Vì $F(x)$ là nguyên hàm của $f(x)$ nên $\\int\\limits_{2}^{4}f(x)\\,\\mathrm{d}x=F(4)-F(2)$.\nThay số: $F(4)-F(2)=3-6=-3$.\nVậy $\\int\\limits_{2}^{4}f(x)\\,\\mathrm{d}x=-3$. Chọn D.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": true,
+  "ghi": "Đề ghi miền [1;2] nhưng dùng F(4)"
+ },
+ {
+  "id": "X0856",
+  "dap_an": "C",
+  "loi_giai": "Mặt phẳng $(P):x-2y+3z-5=0$ có một vectơ pháp tuyến là $(1;-2;3)$ (hệ số của $x,y,z$).\nVậy chọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0857",
+  "dap_an": "A",
+  "loi_giai": "Theo công thức nhân xác suất: $P(AB)=P(A|B)\\cdot P(B)=0{,}4\\cdot 0{,}5=0{,}2$.\nVậy $P(AB)=0{,}2$. Chọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0858",
+  "dap_an": "D",
+  "loi_giai": "Phương trình $x^{2}+y^{2}+z^{2}-6x+4y-8z+4=0$ viết dưới dạng $x^{2}+y^{2}+z^{2}-2ax-2by-2cz+d=0$ với $a=3$, $b=-2$, $c=4$, $d=4$.\nTâm $I(3;-2;4)$.\nBán kính $R=\\sqrt{a^{2}+b^{2}+c^{2}-d}=\\sqrt{9+4+16-4}=\\sqrt{25}=5$.\nVậy $I(3;-2;4)$, $R=5$. Chọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0859",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "KHAC",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Đề chỉ có dãy số rời rạc, mất đề bài"
+ },
+ {
+  "id": "X0860",
+  "dap_an": "C",
+  "loi_giai": "Đường thẳng $d:\\begin{cases}x=2-t\\\\y=1+2t\\\\z=3+t\\end{cases}$ có vectơ chỉ phương là hệ số của $t$: $\\vec{u}=(-1;2;1)$.\nVậy chọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0861",
+  "dap_an": "2.04",
+  "loi_giai": "Tại thời điểm một đầu thanh chạm sàn $(Oxy):z=0$ thì $4-t=0$, suy ra $t=4$. Đầu đó là $(13;1;0)$.\nVectơ chỉ phương của đường thẳng: $\\vec{u}=(2;1;-1)$, $|\\vec{u}|=\\sqrt{6}$.\nĐiểm ứng với tham số $t$ cách điểm $t=4$ một đoạn $|t-4|\\cdot\\sqrt{6}$. Thanh dài $5$ nên $|t-4|\\sqrt{6}=5$, suy ra $t=4\\pm\\dfrac{5}{\\sqrt{6}}$.\nĐộ cao của đầu còn lại: $z=4-t=\\mp\\dfrac{5}{\\sqrt{6}}$. Thanh thép nằm phía trên sàn nên lấy $z=\\dfrac{5}{\\sqrt{6}}\\approx 2{,}04$.\nVậy đầu còn lại ở độ cao khoảng $2.04$ m.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0862",
+  "dap_an": "D",
+  "loi_giai": "Đường thẳng $MN$ nhận $\\overrightarrow{MN}=(2;2;-2)$ làm vectơ chỉ phương, nên cũng nhận $\\vec{u}=(1;1;-1)$.\nĐường thẳng đi qua $M(1;0;1)$ nên phương trình tham số: $\\begin{cases}x=1+t\\\\y=t\\\\z=1-t\\end{cases}$.\nVậy chọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0863",
+  "dap_an": "0.15",
+  "loi_giai": "Lớp có $30-17=13$ bạn nam, trong đó có $2$ bạn tên An.\nXác suất cần tìm là xác suất có điều kiện: $P=\\dfrac{2}{13}\\approx 0{,}1538$.\nVậy xác suất khoảng $0.15$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0864",
+  "dap_an": "A",
+  "loi_giai": "Theo công thức xác suất có điều kiện: $P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0{,}3}{0{,}7}=\\dfrac{3}{7}$.\nVậy $P(A|B)=\\dfrac{3}{7}$. Chọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0865",
+  "dap_an": "A",
+  "loi_giai": "Ta có $P(A\\cap B)=P(A)-P(A\\cap\\overline{B})=0{,}8-0{,}55=0{,}25$.\nDo đó $P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0{,}25}{0{,}5}=0{,}5$.\nVậy $P(A|B)=0{,}5$. Chọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": true,
+  "ghi": "P(A∩B̄)=0,55 lớn hơn P(B̄)=0,5: số liệu đề không nhất quán"
+ },
+ {
+  "id": "X0866",
+  "dap_an": "6",
+  "loi_giai": "Mặt cầu $(S):x^{2}+y^{2}+z^{2}-2x-4y-6z+5=0$ có tâm $I(1;2;3)$.\nBán kính $R=\\sqrt{1+4+9-5}=\\sqrt{9}=3$.\nKhoảng cách xa nhất giữa hai điểm trong vùng phủ sóng bằng đường kính: $2R=6$.\nVậy khoảng cách xa nhất là $6$ km.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0867",
+  "dap_an": "0.6",
+  "loi_giai": "Sau khi bi thứ nhất màu đỏ được lấy ra, hộp còn $9$ bi xanh và $6$ bi đỏ, tổng $15$ bi.\nXác suất bi thứ hai màu xanh khi biết bi thứ nhất đỏ: $\\dfrac{9}{15}=\\dfrac{3}{5}=0{,}6$.\nVậy xác suất cần tìm là $0.6$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0868",
+  "dap_an": "A",
+  "loi_giai": "Mặt phẳng $(P):3x-z+2=0$, tức $3x+0y-z+2=0$, có một vectơ pháp tuyến là $(3;0;-1)$.\nVậy chọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0869",
+  "dap_an": "C",
+  "loi_giai": "Hai biến cố $A$, $B$ độc lập nên $P(A|B)=P(A)=0{,}2$.\nVậy $P(A|B)=0{,}2$. Chọn C.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0870",
+  "dap_an": "D",
+  "loi_giai": "Đường thẳng $MN$ nhận $\\overrightarrow{MN}=(2;2;-2)$ làm vectơ chỉ phương, nên cũng nhận $\\vec{u}=(1;1;-1)$.\nĐường thẳng đi qua $M(1;0;1)$ nên phương trình tham số: $\\begin{cases}x=1+t\\\\y=t\\\\z=1-t\\end{cases}$.\nVậy chọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0871",
+  "dap_an": "0.6",
+  "loi_giai": "Sau khi bi thứ nhất màu đỏ được lấy ra, hộp còn $9$ bi xanh và $6$ bi đỏ, tổng $15$ bi.\nXác suất bi thứ hai màu xanh khi biết bi thứ nhất đỏ: $\\dfrac{9}{15}=\\dfrac{3}{5}=0{,}6$.\nVậy xác suất cần tìm là $0.6$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0872",
+  "dap_an": "B",
+  "loi_giai": "Mặt phẳng $(P):3x-z+2=0$, tức $3x+0y-z+2=0$, có một vectơ pháp tuyến là $(3;0;-1)$.\nVậy chọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0873",
+  "dap_an": "B",
+  "loi_giai": "Hai biến cố $A$, $B$ độc lập nên $P(A|B)=P(A)=0{,}2$.\nVậy $P(A|B)=0{,}2$. Chọn B.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0874",
+  "dap_an": "B",
+  "loi_giai": "Đường thẳng $d:\\begin{cases}x=2-t\\\\y=1+2t\\\\z=3+t\\end{cases}$ có vectơ chỉ phương là hệ số của $t$: $\\vec{u}=(-1;2;1)$.\nVậy chọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0875",
+  "dap_an": "A",
+  "loi_giai": "Theo công thức xác suất có điều kiện: $P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0{,}3}{0{,}7}=\\dfrac{3}{7}$.\nVậy $P(A|B)=\\dfrac{3}{7}$. Chọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0876",
+  "dap_an": "A",
+  "loi_giai": "Mặt phẳng $(P):3x-z+2=0$, tức $3x+0y-z+2=0$, có một vectơ pháp tuyến là $(3;0;-1)$.\nVậy chọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0877",
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng $d:\\begin{cases}x=2-t\\\\y=1+2t\\\\z=3+t\\end{cases}$ có vectơ chỉ phương là hệ số của $t$: $\\vec{u}=(-1;2;1)$.\nVậy chọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0878",
+  "dap_an": "B",
+  "loi_giai": "Ta có $P(A\\cap B)=P(A)-P(A\\cap\\overline{B})=0{,}8-0{,}55=0{,}25$.\nDo đó $P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0{,}25}{0{,}5}=0{,}5$.\nVậy $P(A|B)=0{,}5$. Chọn B.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": true,
+  "ghi": "P(A∩B̄)=0,55 lớn hơn P(B̄)=0,5: số liệu đề không nhất quán"
+ },
+ {
+  "id": "X0879",
+  "dap_an": "B",
+  "loi_giai": "Theo công thức xác suất có điều kiện: $P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0{,}3}{0{,}7}=\\dfrac{3}{7}$.\nVậy $P(A|B)=\\dfrac{3}{7}$. Chọn B.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0880",
+  "dap_an": "A",
+  "loi_giai": "Hai biến cố $A$, $B$ độc lập nên $P(A|B)=P(A)=0{,}2$.\nVậy $P(A|B)=0{,}2$. Chọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0881",
+  "dap_an": "A",
+  "loi_giai": "Ta có $P(A\\cap B)=P(A)-P(A\\cap\\overline{B})=0{,}8-0{,}55=0{,}25$.\nDo đó $P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0{,}25}{0{,}5}=0{,}5$.\nVậy $P(A|B)=0{,}5$. Chọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": true,
+  "ghi": "P(A∩B̄)=0,55 lớn hơn P(B̄)=0,5: số liệu đề không nhất quán"
+ },
+ {
+  "id": "X0882",
+  "dap_an": "A",
+  "loi_giai": "Theo công thức xác suất có điều kiện: $P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0{,}3}{0{,}7}=\\dfrac{3}{7}$.\nVậy $P(A|B)=\\dfrac{3}{7}$. Chọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0883",
+  "dap_an": "A",
+  "loi_giai": "Mặt phẳng $(P):3x-z+2=0$, tức $3x+0y-z+2=0$, có một vectơ pháp tuyến là $(3;0;-1)$.\nVậy chọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0884",
+  "dap_an": "A",
+  "loi_giai": "Hai biến cố $A$, $B$ độc lập nên $P(A|B)=P(A)=0{,}2$.\nVậy $P(A|B)=0{,}2$. Chọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0885",
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng $d:\\begin{cases}x=2-t\\\\y=1+2t\\\\z=3+t\\end{cases}$ có vectơ chỉ phương là hệ số của $t$: $\\vec{u}=(-1;2;1)$.\nVậy chọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0886",
+  "dap_an": "69.75",
+  "loi_giai": "Vận tốc: $v(t)=\\int a(t)\\,\\mathrm{d}t=\\int (t^{2}+4t)\\,\\mathrm{d}t=\\dfrac{t^{3}}{3}+2t^{2}+C$.\nTại $t=0$: $v(0)=15$ nên $C=15$, suy ra $v(t)=\\dfrac{t^{3}}{3}+2t^{2}+15$.\nQuãng đường trong $3$ giây: $s=\\int\\limits_{0}^{3}\\left(\\dfrac{t^{3}}{3}+2t^{2}+15\\right)\\mathrm{d}t=\\left(\\dfrac{t^{4}}{12}+\\dfrac{2t^{3}}{3}+15t\\right)\\Bigg|_{0}^{3}$.\n$=\\dfrac{81}{12}+18+45=\\dfrac{279}{4}=69{,}75$.\nVậy quãng đường là $69.75$ m.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0887",
+  "dap_an": "13/3",
+  "loi_giai": "Mặt phẳng $(\\alpha)$ song song với $(P)$ nên có dạng $x-2y+2z+d=0$ với $d\\ne -2$.\n$(\\alpha)$ qua $M(1;-2;4)$: $1+4+8+d=0$, suy ra $d=-13$. Vậy $(\\alpha):x-2y+2z-13=0$.\nKhoảng cách từ $O$ đến $(\\alpha)$: $d(O,(\\alpha))=\\dfrac{|-13|}{\\sqrt{1+4+4}}=\\dfrac{13}{3}$.\nVậy khoảng cách là $\\dfrac{13}{3}\\approx 4{,}33$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đáp án phân số 13/3 (xấp xỉ 4,33); đề không yêu cầu làm tròn"
+ },
+ {
+  "id": "X0888",
+  "dap_an": "-12",
+  "loi_giai": "Mặt phẳng $(Q)$ có vectơ pháp tuyến $\\overrightarrow{n_{Q}}=(3;1;1)$; $\\overrightarrow{AB}=(-6;3;1)$.\nVì $(P)$ qua $A,B$ và vuông góc $(Q)$ nên $\\overrightarrow{n_{P}}=[\\overrightarrow{AB},\\overrightarrow{n_{Q}}]=(3\\cdot 1-1\\cdot 1;\\ 1\\cdot 3-(-6)\\cdot 1;\\ -6\\cdot 1-3\\cdot 3)=(2;9;-15)$.\n$(P)$ có dạng $2x+9y-15z+d=0$, qua $A(3;2;1)$: $6+18-15+d=0$, suy ra $d=-9$.\nĐưa về dạng hệ số tự do $-27$: nhân $3$ ta được $6x+27y-45z-27=0$, nên $a=6$, $b=27$, $c=-45$.\nVậy $S=a+b+c=6+27-45=-12$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0889",
+  "dap_an": "4",
+  "loi_giai": "Mặt phẳng $(P)$ có vectơ pháp tuyến $\\vec{n}=(1;-2;-2)$, $|\\vec{n}|^{2}=9$.\nHình chiếu $H$ của $A$ lên $(P)$: $H=A-\\dfrac{x_A-2y_A-2z_A+8}{|\\vec{n}|^{2}}\\vec{n}$.\nCó $1-0-0+8=9$ nên $H=(1;0;0)-\\dfrac{9}{9}(1;-2;-2)=(0;2;2)$.\nKiểm tra: $0-4-4+8=0$ nên $H\\in(P)$.\nVậy $a+b+c=0+2+2=4$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0890",
+  "dap_an": "1",
+  "loi_giai": "Mặt phẳng $(Q)$ có vectơ pháp tuyến $\\overrightarrow{n_{Q}}=(1;2;3)$; $\\overrightarrow{AB}=(-1;-1;1)$.\nVì $(P)$ qua $A,B$ và vuông góc $(Q)$ nên $\\overrightarrow{n_{P}}$ cùng phương với $[\\overrightarrow{AB},\\overrightarrow{n_{Q}}]=(-1\\cdot3-1\\cdot2;\\ 1\\cdot1-(-1)\\cdot3;\\ -1\\cdot2-(-1)\\cdot1)=(-5;4;-1)$.\nChọn vectơ pháp tuyến có toạ độ thứ ba bằng $1$: $\\vec{n}=(5;-4;1)$, nên $a=5$, $b=-4$.\nKiểm tra: $\\vec{n}\\cdot\\overrightarrow{AB}=-5+4+1=0$; $\\vec{n}\\cdot\\overrightarrow{n_Q}=5-8+3=0$.\nVậy $a+b=5-4=1$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0891",
+  "dap_an": "-3",
+  "loi_giai": "Mặt phẳng đi qua $A(3;0;0)$, $B(0;-2;0)$, $C(0;0;1)$ có phương trình đoạn chắn: $\\dfrac{x}{3}+\\dfrac{y}{-2}+\\dfrac{z}{1}=1$.\nNhân hai vế với $6$: $2x-3y+6z=6$, tức $2x-3y+6z-6=0$.\nSuy ra $b=-3$, $c=6$, $d=-6$.\nVậy $b+c+d=-3+6-6=-3$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0892",
+  "dap_an": "0.6",
+  "loi_giai": "Gọi $E$: \"người ném lần thứ hai là Bình\". An hoặc Bình ném đầu với xác suất $0{,}5$ mỗi bên.\nNếu An ném đầu: Bình ném lần 2 khi An ném trượt, xác suất $1-0{,}4=0{,}6$. Nếu Bình ném đầu: Bình ném lần 2 khi Bình ném trúng, xác suất $0{,}6$.\nTheo công thức xác suất toàn phần: $P(E)=0{,}5\\cdot 0{,}6+0{,}5\\cdot 0{,}6=0{,}6$.\nVậy xác suất cần tìm là $0.6$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0893",
+  "dap_an": "-4",
+  "loi_giai": "Đường thẳng $d_1$ có vectơ chỉ phương $\\vec{u}_1=(2;-2;-1)$; $d_2$ có vectơ chỉ phương $\\vec{u}_2=(1;0;-1)$.\n$(P)$ chứa $d_1$ nên $\\vec{n}\\cdot\\vec{u}_1=0$: $2-2b-c=0$, suy ra $c=2-2b$.\n$(P)$ tạo với $d_2$ góc $45^{\\circ}$: $\\sin 45^{\\circ}=\\dfrac{|\\vec{n}\\cdot\\vec{u}_2|}{|\\vec{n}|\\,|\\vec{u}_2|}$, tức $\\dfrac{|1-c|}{\\sqrt{1+b^{2}+c^{2}}\\cdot\\sqrt{2}}=\\dfrac{1}{\\sqrt{2}}$.\nSuy ra $(1-c)^{2}=1+b^{2}+c^{2}$, hay $b^{2}=-2c=-2(2-2b)=4b-4$.\nDo đó $b^{2}-4b+4=0$, $b=2$, suy ra $c=-2$.\nVậy $bc=2\\cdot(-2)=-4$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0894",
+  "dap_an": "0.61",
+  "loi_giai": "Gọi $X$: \"bi lấy từ hộp thứ nhất là xanh\", $Y$: \"bi lấy từ hộp thứ hai là xanh\".\nHộp thứ nhất: $P(X)=\\dfrac{4}{8}=\\dfrac{1}{2}$, $P(\\overline{X})=\\dfrac{1}{2}$.\nNếu bi chuyển sang là xanh, hộp hai có $6$ xanh trong $9$ bi: $P(Y|X)=\\dfrac{6}{9}$. Nếu là đỏ, hộp hai có $5$ xanh trong $9$ bi: $P(Y|\\overline{X})=\\dfrac{5}{9}$.\n$P(Y)=\\dfrac{1}{2}\\cdot\\dfrac{6}{9}+\\dfrac{1}{2}\\cdot\\dfrac{5}{9}=\\dfrac{11}{18}\\approx 0{,}61$.\nVậy xác suất cần tìm khoảng $0.61$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0895",
+  "dap_an": "0.75",
+  "loi_giai": "Gọi $A$: \"người mua là phụ nữ\", $B$: \"người mua trên 50 tuổi\". $P(A)=0{,}48$, $P(A\\cap B)=0{,}36$.\n$P(B|A)=\\dfrac{P(A\\cap B)}{P(A)}=\\dfrac{0{,}36}{0{,}48}=0{,}75$.\nVậy xác suất cần tìm là $0.75$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0896",
+  "dap_an": "0.56",
+  "loi_giai": "Gọi $A$: \"làm đúng bài thứ nhất\", $B$: \"làm đúng bài thứ hai\". $P(A)=0{,}7$, $P(B|A)=0{,}8$.\nXác suất làm đúng cả hai bài: $P(A\\cap B)=P(A)\\cdot P(B|A)=0{,}7\\cdot 0{,}8=0{,}56$.\nVậy xác suất là $0.56$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0897",
+  "dap_an": "0.8",
+  "loi_giai": "Gọi $A$: \"sút không vào\", $B$: \"thủ môn cản phá được\". $P(A)=0{,}25$, $P(B)=0{,}2$.\nThủ môn cản phá được thì cú sút không thành bàn nên $B\\subset A$, do đó $P(A\\cap B)=P(B)=0{,}2$.\n$P(B|A)=\\dfrac{P(A\\cap B)}{P(A)}=\\dfrac{0{,}2}{0{,}25}=0{,}8$.\nVậy xác suất cần tìm là $0.8$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0898",
+  "dap_an": "B",
+  "loi_giai": "Mặt phẳng đi qua $A(1;0;0)$, $B(0;2;0)$, $C(0;0;3)$ có phương trình đoạn chắn $\\dfrac{x}{1}+\\dfrac{y}{2}+\\dfrac{z}{3}=1$.\nVậy chọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0899",
+  "dap_an": "A",
+  "loi_giai": "Mặt phẳng $(P):2x-y+z+3=0$ có vectơ pháp tuyến $(2;-1;1)$.\nVectơ $\\vec{n}_{1}=(-4;2;-2)=-2(2;-1;1)$ cùng phương với $(2;-1;1)$ nên cũng là một vectơ pháp tuyến.\nCác vectơ còn lại không cùng phương với $(2;-1;1)$.\nVậy chọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0900",
+  "dap_an": "A",
+  "loi_giai": "Mặt phẳng $(ABC)$ với $A(3;0;0)$, $B(0;-1;0)$, $C(0;0;2)$ có phương trình đoạn chắn $\\dfrac{x}{3}+\\dfrac{y}{-1}+\\dfrac{z}{2}=1$.\nVậy chọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ }
+]

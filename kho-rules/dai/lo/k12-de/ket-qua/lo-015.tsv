@@ -1,0 +1,100 @@
+T1120000004867	XS	NHOM:NNB01255		3	1	
+T1120000001152	HS	P2.2.3		2	0	DS nhiều ý: đồng biến, cực trị, GTLN, tâm đối xứng
+T112020402104	HS	P4.5.1		2	1	
+T112010201078	HS	P1.3.1		2	1	
+T1120000007001	PPTD	NEW	điểm trên đường thẳng để hai tia tạo góc bằng nhau với mặt phẳng	4	1	bối cảnh thực tế
+T112020401337	HS	P4.4.4		3	1	
+T312000000918	PPTD	NDB00860		1	1	
+T112010102172	HS	P2.2.4		3	1	
+T312010101253	PPTD	NDB00835		1	1	
+T112020302050	HS	P2.2.1		1	1	
+T1120000003476	VT	P2.1.2		2	0	DS nhiều ý: toạ độ điểm, đối xứng, vectơ, diện tích
+T112070101100	VT	P1.2.5		2	1	
+T1120000003950	SDT	NHOM:NNB01259		2	1	đọc từ biểu đồ
+T312010503015	PPTD	NDB00860		1	1	
+T112070203036	VT	P2.3.1		2	1	
+T1120000001451	SDT	NHOM:NNB01258		1	1	
+T1120000004149	VT	P1.4.2		2	1	
+T1120000001001	XS	NHOM:NNB01253		3	1	
+T112000000380	XS	NHOM:NNB01255		3	0	DS nhiều ý: toàn phần và Bayes
+T112000000544	HS	P2.2.3		2	0	DS nhiều ý: đạo hàm, tiệm cận, GTNN
+T312010101246	PPTD	NDB00835		1	1	
+T112010101133	HS	P1.2.1		1	1	
+T112020104048	HS	P2.1.1		1	0	nhận diện đồ thị: bậc ba hay nhất biến
+T1120000006320	HS	P4.8.1		3	0	chi phí trung bình G(x)=C(x)/x, giá trị ngưỡng
+T112010202165	HS	P1.4.2		1	1	
+T1120000003535	VT	P1.2.1		1	1	
+T112070301106	VT	P3.2.1		1	1	
+T112010201135	HS	P1.4.4		2	1	
+T112000000971	NHTP	NEW	diện tích miền parabol trong bối cảnh thực tế rồi tính chi phí	3	1	
+T1120000004322	VT	P3.4.1		2	1	
+T112070301139	VT	P3.2.1		2	0	DS nhiều ý: vectơ AB, vectơ OB, hình bình hành, điểm trên tia
+T1120000006145	VT	P1.4.2		2	1	
+T312010301142	PPTD	NDB00837		1	1	
+T1120000005974	VT	P3.2.3		2	1	
+T1120000004335	HS	P1.7.1		1	1	
+T112020401120	HS	P4.4.2		3	1	
+T1120000001196	HS	P2.3.1		2	0	DS nhiều ý: tiệm cận xiên, tâm đối xứng, tiệm cận đứng
+T1120000001136	HS	P1.9.2		1	1	
+T112070101233	VT	P1.2.4		1	0	quy tắc ba điểm: giữa P1.2.4 và P1.1.1
+T312000000171	PPTD	NEW	đường thẳng cắt trục và đường thẳng khác, song song mặt phẳng, cực trị độ dài đoạn	4	1	
+T112000000612	NHTP	NDB00777		2	1	
+T112010305130	HS	P1.8.1		2	1	
+T112010401058	HS	P1.6.1		1	1	
+T112000000794	HS	P3.2.2		2	1	
+T1120000005651	HS	P2.5.3		3	1	
+T1120000004498	SDT	NHOM:NNB01260		1	1	
+T1120000005128	XS	NHOM:NNB01255		2	1	
+T112010303068	HS	P1.7.1		1	1	
+T1120000003844	VT	P3.1.1		1	1	
+T1120000002920	VT	P1.2.1		1	1	
+T1120000003050	HS	P1.6.2		2	1	
+T312010801014	PPTD	NDB00867		3	0	bối cảnh thực tế: độ dày mái = khoảng cách hai mặt phẳng song song
+T112000000006	XS	NHOM:NNB01256		3	1	DS nhiều ý
+T1120000005601	NHTP	NEW	diện tích miền parabol trong bối cảnh thực tế rồi tính chi phí	3	1	
+T112020402012	HS	P4.5.2		2	0	vận tốc nhỏ nhất đọc từ bảng biến thiên: giữa P4.5.2 và P1.6.2
+T112070101235	VT	P1.4.2		2	0	DS nhiều ý: tổng vectơ, độ dài, tích vô hướng trên tứ diện đều
+T112010102099	HS	P1.2.3		1	1	
+T112010402109	HS	P1.5.4		3	1	
+T112010402214	HS	P1.5.1		2	1	
+T1120000005445	HS	P1.7.1		1	1	
+T1120000001414	NHTP	NDB00742		1	1	
+T1120000004172	SDT	NHOM:NNB01258		1	1	
+T312000000069	VT	P3.6.2		4	0	cực trị toạ độ: giữa VT P3.6.2 và PPTD
+T112010102054	HS	P1.2.2		2	0	đọc đồ thị: đơn điệu và cực trị
+T112000000002	HS	P1.2.1		2	0	DS nhiều ý: đơn điệu, cực trị từ bảng biến thiên
+T1120000004538	HS	P1.5.1		2	1	
+T312000000657	PPTD	NDB00860		2	0	DS nhiều ý: khoảng cách, góc, đường thẳng, hình chiếu
+T1120000003293	VT	P2.1.3		1	1	
+T312010802042	VT	P3.7.1		3	0	flycam bay thẳng đều ra khỏi vùng cầu: giữa VT P3.7.1 và PPTD
+T3120000001034	PPTD	NDB00849		2	1	DS nhiều ý
+T1120000006458	HS	P1.7.3		2	1	
+T312010301145	PPTD	NDB00837		2	0	DS nhiều ý: tâm bán kính, đường thẳng, tiếp diện, tiếp tuyến
+T312000000652	PPTD	NDB00872		2	1	
+T1120000005384	SDT	NHOM:NNB01259		2	1	
+T112020401080	HS	P4.4.2		3	1	
+T1120000006083	HS	P4.3.1		3	1	
+T312010802030	PPTD	NDB00840		3	0	bối cảnh thực tế mặt cầu Trái đất: vị trí điểm với mặt cầu
+T1120000005682	HS	P2.1.4		2	0	tâm đối xứng của đồ thị: bậc ba hay nhất biến
+T312000000879	PPTD	NDB00836		1	1	
+T3120000001041	PPTD	NDB00851		2	0	DS nhiều ý về mặt phẳng
+T1120000006211	HS	P1.1.2		2	1	
+T1120000005014	XS	NHOM:NNB01251		1	1	
+T112000000534	SDT	NHOM:NNB01263		2	1	khoảng biến thiên từ số liệu thô
+T1120000006787	NHTP	NDB00774		1	1	
+T1120000004344	SDT	NHOM:NNB01259		2	1	
+T112000000170	HS	P1.9.2		2	1	
+T1120000006356	HS	P4.1.3		3	0	DS nhiều ý: mô hình K(t) hàm nhất biến
+T112010102229	HS	P1.1.1		2	0	DS nhiều ý: khảo sát hàm bậc ba
+T1120000005003	XS	NHOM:NNB01251		1	1	
+T312010201097	PPTD	NDB00836		1	1	
+T1120000003721	VT	P3.7.3		3	0	lực căng cân bằng bằng toạ độ: giữa P1.5.1 và P3.7.3
+T112070203018	VT	P3.7.2		2	1	
+T112010101056	HS	P1.2.1		1	1	
+T312010301143	PPTD	NDB00837		1	1	
+T1120000005252	XS	NHOM:NNB01251		3	0	giữa xác suất điều kiện và toàn phần
+T1120000003312	SDT	NHOM:NNB01262		2	1	
+T1120000004967	XS	NHOM:NNB01256		3	0	DS nhiều ý: công thức nhân, toàn phần, Bayes
+T1120000003406	O	O	lôgarit: giải phương trình lôgarit cơ bản	1	1	
+T112020302038	HS	P2.2.1		1	1	
+T312000000208	VT	P2.2.1		3	0	DS nhiều ý: gắn hệ trục vào hộp chữ nhật, mặt phẳng, chuyển động

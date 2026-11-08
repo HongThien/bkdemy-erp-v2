@@ -1,0 +1,434 @@
+[
+ {
+  "ma_cau": "K09110501031",
+  "dang_bai_id": "KDB01285",
+  "chac": "cao",
+  "ly_do": "Hỏi bước đầu của diễn biến: tháo xoắn, tách mạch."
+ },
+ {
+  "ma_cau": "K09110501032",
+  "dang_bai_id": "KDB01285",
+  "chac": "cao",
+  "ly_do": "Vai trò mạch khuôn khi tổng hợp mạch mới."
+ },
+ {
+  "ma_cau": "K09110501033",
+  "dang_bai_id": "KDB01284",
+  "chac": "cao",
+  "ly_do": "Hỏi số DNA con tạo ra sau một lần tái bản."
+ },
+ {
+  "ma_cau": "K09110501034",
+  "dang_bai_id": "KDB01285",
+  "chac": "cao",
+  "ly_do": "Nguyên tắc ghép nucleotide tự do vào mạch khuôn."
+ },
+ {
+  "ma_cau": "K09110501035",
+  "dang_bai_id": "KDB01285",
+  "chac": "cao",
+  "ly_do": "Vai trò của mỗi mạch đơn: làm khuôn."
+ },
+ {
+  "ma_cau": "K09110501036",
+  "dang_bai_id": "KDB01284",
+  "chac": "cao",
+  "ly_do": "Hỏi vị trí và thời điểm tái bản."
+ },
+ {
+  "ma_cau": "K09110501037",
+  "dang_bai_id": "KDB01286",
+  "chac": "cao",
+  "ly_do": "Hỏi số mạch cũ/mới trong DNA con: bán bảo toàn."
+ },
+ {
+  "ma_cau": "K09110501038",
+  "dang_bai_id": "KDB01286",
+  "chac": "cao",
+  "ly_do": "Hỏi số mạch cũ/mới trong DNA con: bán bảo toàn."
+ },
+ {
+  "ma_cau": "K09110501039",
+  "dang_bai_id": "KDB01285",
+  "chac": "vua",
+  "ly_do": "Nhờ nguyên tắc bổ sung DNA con giống mẹ; có thể xếp dạng suy luận."
+ },
+ {
+  "ma_cau": "K09110501040",
+  "dang_bai_id": "KDB01284",
+  "chac": "cao",
+  "ly_do": "Đặc điểm DNA con so với DNA mẹ."
+ },
+ {
+  "ma_cau": "K09110501041",
+  "dang_bai_id": "KDB01285",
+  "chac": "cao",
+  "ly_do": "Nguyên tắc bổ sung khi ghép nucleotide."
+ },
+ {
+  "ma_cau": "K09110501042",
+  "dang_bai_id": "KDB01288",
+  "chac": "cao",
+  "ly_do": "Ý nghĩa của tái bản đối với thế hệ tế bào."
+ },
+ {
+  "ma_cau": "K09110501043",
+  "dang_bai_id": "KDB01288",
+  "chac": "vua",
+  "ly_do": "Tổng hợp các nguyên tắc của tái bản; trải nhiều dạng."
+ },
+ {
+  "ma_cau": "K09110501044",
+  "dang_bai_id": "KDB01285",
+  "chac": "cao",
+  "ly_do": "Nguyên tắc khuôn mẫu: vai trò mạch khuôn."
+ },
+ {
+  "ma_cau": "K09110501045",
+  "dang_bai_id": "KDB01284",
+  "chac": "cao",
+  "ly_do": "Đặc điểm DNA con so với DNA mẹ sau tái bản."
+ },
+ {
+  "ma_cau": "K09110202007",
+  "dang_bai_id": "KDB01280",
+  "chac": "cao",
+  "ly_do": "Chọn mạch bổ sung đúng trong 4 phương án."
+ },
+ {
+  "ma_cau": "K09110202008",
+  "dang_bai_id": "KDB01281",
+  "chac": "cao",
+  "ly_do": "Đếm số nucleotide một loại trên mạch bổ sung."
+ },
+ {
+  "ma_cau": "K09110202009",
+  "dang_bai_id": "KDB01281",
+  "chac": "cao",
+  "ly_do": "Đếm số nucleotide một loại trên mạch bổ sung."
+ },
+ {
+  "ma_cau": "K09110202011",
+  "dang_bai_id": "KDB01281",
+  "chac": "cao",
+  "ly_do": "Đếm số nucleotide một loại trên mạch bổ sung."
+ },
+ {
+  "ma_cau": "K09110202012",
+  "dang_bai_id": "KDB01280",
+  "chac": "cao",
+  "ly_do": "Chọn mạch bổ sung đúng trong 4 phương án."
+ },
+ {
+  "ma_cau": "K09110202013",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Câu lí thuyết về NTBS/quan hệ hai mạch: nhóm thiếu dạng nhận định khái niệm NTBS."
+ },
+ {
+  "ma_cau": "K09110202014",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Câu lí thuyết về NTBS/quan hệ hai mạch: nhóm thiếu dạng nhận định khái niệm NTBS."
+ },
+ {
+  "ma_cau": "K09110202015",
+  "dang_bai_id": "KDB01281",
+  "chac": "cao",
+  "ly_do": "Đếm số nucleotide một loại trên mạch bổ sung."
+ },
+ {
+  "ma_cau": "K09110202016",
+  "dang_bai_id": "KDB01280",
+  "chac": "cao",
+  "ly_do": "Chọn mạch bổ sung đúng trong 4 phương án."
+ },
+ {
+  "ma_cau": "K09110202017",
+  "dang_bai_id": "KDB01280",
+  "chac": "vua",
+  "ly_do": "Phương án nêu mạch bổ sung kèm nhận xét thêm về cặp base."
+ },
+ {
+  "ma_cau": "K09110202018",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Câu lí thuyết về NTBS/quan hệ hai mạch: nhóm thiếu dạng nhận định khái niệm NTBS."
+ },
+ {
+  "ma_cau": "K09110202020",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Câu lí thuyết về NTBS/quan hệ hai mạch: nhóm thiếu dạng nhận định khái niệm NTBS."
+ },
+ {
+  "ma_cau": "K09110202022",
+  "dang_bai_id": "KDB01280",
+  "chac": "cao",
+  "ly_do": "Chọn mạch bổ sung đúng trong 4 phương án."
+ },
+ {
+  "ma_cau": "K09110202023",
+  "dang_bai_id": "KDB01280",
+  "chac": "cao",
+  "ly_do": "Chọn mạch bổ sung đúng trong 4 phương án."
+ },
+ {
+  "ma_cau": "K09110202024",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Câu lí thuyết về NTBS/quan hệ hai mạch: nhóm thiếu dạng nhận định khái niệm NTBS."
+ },
+ {
+  "ma_cau": "K09110202025",
+  "dang_bai_id": "KDB01281",
+  "chac": "cao",
+  "ly_do": "Đếm số nucleotide một loại trên mạch bổ sung."
+ },
+ {
+  "ma_cau": "K09110202026",
+  "dang_bai_id": "KDB01280",
+  "chac": "cao",
+  "ly_do": "Chọn mạch bổ sung đúng trong 4 phương án."
+ },
+ {
+  "ma_cau": "K09110202027",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Câu lí thuyết về NTBS/quan hệ hai mạch: nhóm thiếu dạng nhận định khái niệm NTBS."
+ },
+ {
+  "ma_cau": "K09110202028",
+  "dang_bai_id": "KDB01281",
+  "chac": "vua",
+  "ly_do": "Đếm số cặp A-T/G-C, gần dạng đếm nucleotide mạch bổ sung."
+ },
+ {
+  "ma_cau": "K09110202029",
+  "dang_bai_id": "KDB01280",
+  "chac": "cao",
+  "ly_do": "Chọn mạch bổ sung đúng trong 4 phương án."
+ },
+ {
+  "ma_cau": "K09110202030",
+  "dang_bai_id": "KDB01279",
+  "chac": "cao",
+  "ly_do": "Tự viết mạch bổ sung kèm chiều, không phương án."
+ },
+ {
+  "ma_cau": "K09110202031",
+  "dang_bai_id": "KDB01279",
+  "chac": "cao",
+  "ly_do": "Tự viết mạch bổ sung kèm chiều, không phương án."
+ },
+ {
+  "ma_cau": "K09110202032",
+  "dang_bai_id": "KDB01279",
+  "chac": "cao",
+  "ly_do": "Tự viết mạch bổ sung kèm chiều, không phương án."
+ },
+ {
+  "ma_cau": "K09110202033",
+  "dang_bai_id": "KDB01281",
+  "chac": "cao",
+  "ly_do": "Đếm số nucleotide một loại trên mạch bổ sung."
+ },
+ {
+  "ma_cau": "K09110202036",
+  "dang_bai_id": "KDB01281",
+  "chac": "vua",
+  "ly_do": "Đếm số cặp A-T/G-C, gần dạng đếm nucleotide mạch bổ sung."
+ },
+ {
+  "ma_cau": "K09110202037",
+  "dang_bai_id": "KDB01281",
+  "chac": "cao",
+  "ly_do": "Đếm số nucleotide một loại trên mạch bổ sung."
+ },
+ {
+  "ma_cau": "K09110202038",
+  "dang_bai_id": "KDB01281",
+  "chac": "vua",
+  "ly_do": "Tự luận nhiều ý: viết mạch bổ sung, đếm nucleotide, đếm cặp."
+ },
+ {
+  "ma_cau": "K09110202039",
+  "dang_bai_id": "KDB01281",
+  "chac": "cao",
+  "ly_do": "Viết mạch bổ sung rồi đếm trên mạch bổ sung, kiểm tra mẹo hoán đổi."
+ },
+ {
+  "ma_cau": "K09110202040",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Câu lí thuyết về NTBS/quan hệ hai mạch: nhóm thiếu dạng nhận định khái niệm NTBS."
+ },
+ {
+  "ma_cau": "K09110202041",
+  "dang_bai_id": "KDB01279",
+  "chac": "vua",
+  "ly_do": "Tự luận quanh viết mạch bổ sung (sửa lỗi/trình bày/giải thích)."
+ },
+ {
+  "ma_cau": "K09110202042",
+  "dang_bai_id": "KDB01279",
+  "chac": "vua",
+  "ly_do": "Tự luận quanh viết mạch bổ sung (sửa lỗi/trình bày/giải thích)."
+ },
+ {
+  "ma_cau": "K09110202043",
+  "dang_bai_id": "KDB01279",
+  "chac": "vua",
+  "ly_do": "Tự luận quanh viết mạch bổ sung (sửa lỗi/trình bày/giải thích)."
+ },
+ {
+  "ma_cau": "K09110202044",
+  "dang_bai_id": "KDB01279",
+  "chac": "vua",
+  "ly_do": "Tự luận quanh viết mạch bổ sung (sửa lỗi/trình bày/giải thích)."
+ },
+ {
+  "ma_cau": "K09110202045",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Lạc nhóm: thuộc nhóm So sánh DNA - RNA và tái bản - phiên mã."
+ },
+ {
+  "ma_cau": "K09110202046",
+  "dang_bai_id": "KDB01280",
+  "chac": "cao",
+  "ly_do": "Chọn mạch bổ sung đúng trong 4 phương án."
+ },
+ {
+  "ma_cau": "K09110202047",
+  "dang_bai_id": "KDB01280",
+  "chac": "cao",
+  "ly_do": "Chọn mạch bổ sung đúng trong 4 phương án."
+ },
+ {
+  "ma_cau": "K09110202048",
+  "dang_bai_id": "KDB01280",
+  "chac": "cao",
+  "ly_do": "Chọn mạch bổ sung đúng trong 4 phương án."
+ },
+ {
+  "ma_cau": "K09110202049",
+  "dang_bai_id": "KDB01280",
+  "chac": "cao",
+  "ly_do": "Chọn mạch bổ sung đúng trong 4 phương án."
+ },
+ {
+  "ma_cau": "K09110502031",
+  "dang_bai_id": "KDB01290",
+  "chac": "cao",
+  "ly_do": "Hỏi số mạch của RNA."
+ },
+ {
+  "ma_cau": "K09110502032",
+  "dang_bai_id": "KDB01289",
+  "chac": "cao",
+  "ly_do": "Hỏi các loại ribonucleotide cấu tạo RNA."
+ },
+ {
+  "ma_cau": "K09110502033",
+  "dang_bai_id": "KDB01291",
+  "chac": "cao",
+  "ly_do": "Chức năng từng loại RNA."
+ },
+ {
+  "ma_cau": "K09110502034",
+  "dang_bai_id": "KDB01291",
+  "chac": "cao",
+  "ly_do": "Chức năng từng loại RNA."
+ },
+ {
+  "ma_cau": "K09110502035",
+  "dang_bai_id": "KDB01291",
+  "chac": "cao",
+  "ly_do": "Chức năng từng loại RNA."
+ },
+ {
+  "ma_cau": "K09110502036",
+  "dang_bai_id": "KDB01292",
+  "chac": "cao",
+  "ly_do": "Phiên mã: khuôn, nơi diễn ra, nguyên tắc bổ sung."
+ },
+ {
+  "ma_cau": "K09110502037",
+  "dang_bai_id": "KDB01292",
+  "chac": "cao",
+  "ly_do": "Phiên mã: khuôn, nơi diễn ra, nguyên tắc bổ sung."
+ },
+ {
+  "ma_cau": "K09110502038",
+  "dang_bai_id": "KDB01292",
+  "chac": "cao",
+  "ly_do": "Phiên mã: khuôn, nơi diễn ra, nguyên tắc bổ sung."
+ },
+ {
+  "ma_cau": "K09110502039",
+  "dang_bai_id": "KDB01292",
+  "chac": "cao",
+  "ly_do": "Phiên mã: khuôn, nơi diễn ra, nguyên tắc bổ sung."
+ },
+ {
+  "ma_cau": "K09110502040",
+  "dang_bai_id": "KDB01293",
+  "chac": "cao",
+  "ly_do": "Sản phẩm của phiên mã."
+ },
+ {
+  "ma_cau": "K09110502041",
+  "dang_bai_id": "KDB01292",
+  "chac": "cao",
+  "ly_do": "Phiên mã: khuôn, nơi diễn ra, nguyên tắc bổ sung."
+ },
+ {
+  "ma_cau": "K09110502042",
+  "dang_bai_id": "KDB01292",
+  "chac": "vua",
+  "ly_do": "Phiên mã kết thúc khi nào; chưa có dạng diễn biến phiên mã."
+ },
+ {
+  "ma_cau": "K09110503031",
+  "dang_bai_id": "KDB01294",
+  "chac": "cao",
+  "ly_do": "So sánh nucleotide đặc trưng DNA và RNA."
+ },
+ {
+  "ma_cau": "K09110503032",
+  "dang_bai_id": "KDB01295",
+  "chac": "cao",
+  "ly_do": "So sánh số mạch DNA và RNA."
+ },
+ {
+  "ma_cau": "K09110503033",
+  "dang_bai_id": "KDB01297",
+  "chac": "cao",
+  "ly_do": "So sánh tái bản và phiên mã về khuôn, nguyên tắc bổ sung."
+ },
+ {
+  "ma_cau": "K09110503034",
+  "dang_bai_id": "KDB01297",
+  "chac": "cao",
+  "ly_do": "So sánh tái bản và phiên mã về khuôn, nguyên tắc bổ sung."
+ },
+ {
+  "ma_cau": "K09110503035",
+  "dang_bai_id": "KDB01297",
+  "chac": "cao",
+  "ly_do": "So sánh tái bản và phiên mã về khuôn, nguyên tắc bổ sung."
+ },
+ {
+  "ma_cau": "K09110503036",
+  "dang_bai_id": "KDB01297",
+  "chac": "cao",
+  "ly_do": "So sánh tái bản và phiên mã về khuôn, nguyên tắc bổ sung."
+ },
+ {
+  "ma_cau": "K09110503037",
+  "dang_bai_id": "KDB01298",
+  "chac": "vua",
+  "ly_do": "So sánh thời điểm tái bản và phiên mã, gần dạng so sánh tổng thể."
+ }
+]

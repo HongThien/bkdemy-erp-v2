@@ -1,0 +1,250 @@
+[
+ {
+  "ma_cau": "T1110000001168",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn của hàm số $\\lim\\limits_{x\\to+\\infty}\\dfrac{x^2+1}{2x^2-x+1}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Nội dung ôn tập học kì I Toán 11 năm 2025–2026 — Trường THPT Nguyễn Trãi, Ba Đình"
+ },
+ {
+  "ma_cau": "T1110000001169",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn của hàm số $\\lim\\limits_{x\\to-\\infty}\\dfrac{2x^2-x+1}{x-2}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Nội dung ôn tập học kì I Toán 11 năm 2025–2026 — Trường THPT Nguyễn Trãi, Ba Đình"
+ },
+ {
+  "ma_cau": "T1110000001182",
+  "loai": "tu_luan",
+  "de": "Từ hình vuông đầu tiên có cạnh bằng 1 (đơn vị độ dài), nối các trung điểm của bốn cạnh để có hình vuông thứ hai. Tiếp tục nối các trung điểm của bốn cạnh của hình vuông thứ hai để được hình vuông thứ ba. Cứ tiếp tục làm như thế, nhận được một dãy hình vuông (xem Hình 5).\nKí hiệu $p_n$ là chu vi của hình vuông thứ $n$ và $Q_n$ là tổng chu vi của $n$ hình vuông đầu tiên. Viết công thức tính $p_n$ và $Q_n$ ($n=1,2,3,\\ldots$) và tìm $\\lim Q_n$ (giới hạn này nếu có được gọi là tổng chu vi của các hình vuông).",
+  "lua_chon": null,
+  "co_hinh": true,
+  "nguon": "Nội dung ôn tập học kì I Toán 11 năm 2025–2026 — Trường THPT Nguyễn Trãi, Ba Đình"
+ },
+ {
+  "ma_cau": "T1110000001185",
+  "loai": "tu_luan",
+  "de": "Một hãng taxi đưa ra giá cước cho loại xe 4 chỗ như sau: loại xe VF 5 plus có giá cước cho 1 km đầu tiên là 20 000 đồng/km; giá cước cho km thứ 2 đến km thứ 25 là 15 000 đồng/km; giá cước cho km thứ 26 trở lên là 15 000 đồng/km (qua 1 km đầu được tính cho km thứ hai, qua km thứ 25 được tính cho km thứ 26).\nGiá cước được biểu diễn bởi hàm số $T(x)=\\begin{cases}20000 & \\text{khi } 0<x\\le1\\\\20000+(x-1)\\cdot15000 & \\text{khi } 1<x\\le25\\\\380000+(x-25)\\cdot14000 & \\text{khi } x>25\\end{cases}$.\nXét tính liên tục của hàm số $T(x)$, với $x$ (km).",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Nội dung ôn tập học kì I Toán 11 năm 2025–2026 — Trường THPT Nguyễn Trãi, Ba Đình"
+ },
+ {
+  "ma_cau": "T1110000001220",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{2n+1}{5n+9}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001221",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{n-7}{n^2+9n+2}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001222",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{n^3-3n+1}{(2n+3)(n^2+7)}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001223",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{n^2-9n+2}{5n+9}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001224",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{3^n-2^n}{3^{n+2}+1}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001225",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{2^{2n+1}-7^n}{2^{3n-1}+7^{n+1}}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001226",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{n\\to+\\infty}(-2n^3+9n^2+1)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001227",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{n\\to+\\infty}(\\sqrt{4n^2+2}-5n)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001228",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{n\\to+\\infty}(\\sqrt{n^2+1}-\\sqrt{n^2+8n+2})$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001229",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to3}(3x-1)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001230",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to-1}\\dfrac{2x+7}{x-1}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001231",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to(\\frac12)^+}(1-6x)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001232",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to2}\\dfrac{x^2-x-2}{x^2-2x}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001233",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to1}\\dfrac{\\sqrt{3x+1}-2x}{1-x}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001234",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to(\\frac32)^-}\\dfrac{2x^2-x-3}{|2x-3|}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001235",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}(x^2-7x-3)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001236",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{3x-5}{\\sqrt{x^2-x+7}}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001237",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}(\\sqrt{x^2+6x-2}+x)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001238",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to2^+}\\dfrac{5x+1}{x-2}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001239",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to5^-}\\dfrac{1-8x}{x-5}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001240",
+  "loai": "tu_luan",
+  "de": "Tính giới hạn $\\lim\\limits_{x\\to-1}\\dfrac{7x+2}{x^2+2x+1}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001242",
+  "loai": "tu_luan",
+  "de": "Xét tính liên tục của hàm số $f(x)=\\begin{cases}\\dfrac{3x^2-5x+2}{x-1}&\\text{khi }x\\neq1\\\\1&\\text{khi }x=1\\end{cases}$ tại $x=1$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001243",
+  "loai": "tu_luan",
+  "de": "Xét tính liên tục của hàm số $f(x)=\\begin{cases}6x+5&\\text{khi }x\\ge-1\\\\3-x&\\text{khi }x<-1\\end{cases}$ tại $x=-1$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001244",
+  "loai": "tu_luan",
+  "de": "Xét tính liên tục của hàm số $f(x)=x^3-x^2+8x$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001245",
+  "loai": "tu_luan",
+  "de": "Xét tính liên tục của hàm số $f(x)=\\dfrac{x^2}{x^2-3x}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001246",
+  "loai": "tu_luan",
+  "de": "Xét tính liên tục của hàm số $f(x)=\\dfrac{\\sin x+1}{x+1}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ },
+ {
+  "ma_cau": "T1110000001247",
+  "loai": "tu_luan",
+  "de": "Xét tính liên tục của hàm số $f(x)=\\sqrt{x-2}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập cuối học kì I Toán 11 năm 2025–2026 — Trường THPT Hoàng Văn Thụ"
+ }
+]

@@ -12,7 +12,7 @@ import { supabase } from './supabase'
 import { listPhan, addPhan, setCauOfPhan, getTaiLieuFull, updateTaiLieu, deleteTaiLieu, khoCuaMon, nhanhCuaCau, type TaiLieu, type TaiLieuPhan, type TaiLieuFull } from './tailieu'
 import { moBuoi } from './gami'
 import { listLopBac, type CauHoi } from './kho/api'
-import { ganHinhMTVaoBuoi, xoaPhanHinhTai, deleteBuoi as deleteHinhBuoi, type CheDoHinh } from './kho/hinhGiaoTrinh'
+import { ganHinhMTVaoBuoi, ganHinhKhaoSat, xoaPhanHinhTai, deleteBuoi as deleteHinhBuoi, type CheDoHinh } from './kho/hinhGiaoTrinh'
 import { laMaHinh, laTenPhanNangCao, type HinhRowInfo } from './tailieu'
 import type { PickItem } from '../store/useStore'
 
@@ -21,6 +21,7 @@ export function pickCuaHinhRow(ma: string, h: HinhRowInfo): PickItem {
   const base = { key: ma, phan: 'mt' as const, nodeIds: h.nodeIds }
   if (h.kind === 'bienthe') return { ...base, kind: 'bienthe', bienTheId: h.bienTheId! }
   if (h.kind === 'y') return { ...base, kind: 'y', yId: h.yId! }
+  if (h.kind === 'bai') return { ...base, kind: 'bai', baiId: h.baiId!, moHinhId: h.moHinhId ?? null }
   return { ...base, kind: 'ghep', luaId: h.luaId ?? null }
 }
 
@@ -29,9 +30,14 @@ const LIMIT = 10000
 // ── METADATA phân loại MT (Thùy 07-09: "chuyển MT sang dạng list, thêm loại đề") — lưu trong
 // cau_hinh.mtMeta (KHÔNG cột riêng, giống mẫu deThiMeta của dethi.ts) — free-metadata, không phải
 // đo lường (§1.5 không áp), nên NULL = "chưa gắn" là hợp lệ, không phải NULL cấm.
-export type MTLoaiDe = 'khao_sat_thang' | 'test_dau_vao' | 'thi_thu' | 'luyen'
+// ⭐ 23/10 (Thùy): thêm KHẢO SÁT GIỮA THÁNG — kỳ thi riêng xen kẽ MT cuối tháng, đi chung đường MT (chấm từng câu,
+// điểm tự cộng, Elo) nhưng điểm tổng vào kỳ 'khao_sat_thang' ⇒ BXH riêng, không tính Level/xu (mig 202610231349 —
+// DB nhận diện bằng ĐÚNG giá trị 'khao_sat_giua_thang' của đề gốc). Giá trị cũ 'khao_sat_thang' giữ nguyên (15 đề
+// MT cuối tháng đang dùng), chỉ đổi NHÃN thành "Đề MT cuối tháng" cho khỏi nhầm với khảo sát giữa tháng.
+export type MTLoaiDe = 'khao_sat_thang' | 'khao_sat_giua_thang' | 'test_dau_vao' | 'thi_thu' | 'luyen'
 export const MT_LOAI_DE: { value: MTLoaiDe; label: string }[] = [
-  { value: 'khao_sat_thang', label: 'Đề khảo sát tháng' },
+  { value: 'khao_sat_thang', label: 'Đề MT cuối tháng' },
+  { value: 'khao_sat_giua_thang', label: 'Đề khảo sát giữa tháng' },
   { value: 'test_dau_vao', label: 'Đề Test đầu vào' },
   { value: 'thi_thu', label: 'Đề thi thử' },
   { value: 'luyen', label: 'Đề luyện' },
@@ -84,6 +90,13 @@ export async function createMT(input: { ten: string; khoi: string; mon: string; 
   return data as TaiLieu
 }
 export const renameMT = (id: string, ten: string): Promise<void> => updateTaiLieu(id, { ten })
+// Nhân bản MT mẫu (Thùy 28/10: 2 lớp thi gần giống nhau ⇒ chép đề rồi sửa phần khác) — chép ở DB 1 transaction (fn_mt_nhan_ban:
+// phần + câu + cau_hinh, cấp mã mới cho phần / hàng Hình). Trả id MT mới.
+export async function nhanBanMT(id: string, ten: string): Promise<string> {
+  const { data, error } = await supabase.rpc('fn_mt_nhan_ban', { p_de: id, p_ten: ten })
+  if (error) throw error
+  return data as string
+}
 // cascade phan+cau (KHÔNG xoá câu ở kho); xoá master KHÔNG tự xoá các instance đã gán (nguon_id giữ trace, nhưng
 // đứng độc lập). Buổi Hình MẪU (cau_hinh.hinhBuoiId) xoá kèm — bài Hình đã COPY sang buổi lớp vẫn còn (snapshot).
 export async function deleteMT(id: string): Promise<void> {
@@ -260,6 +273,24 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
   const soBaiHinh = await ganHinhMTVaoBuoi(opts.lopId, opts.ngay, { picks: maHinhGiu.map((ma) => pickCuaHinhRow(ma, hinhByMa[ma])), cheDo, soDong }, master.taiLieu.cau_hinh?.hinhMaDe ?? {})
 
   return { buoiId: buoiId!, taiLieuId: docCon.id, buoiMoi, soCauLoai, soBaiHinh, lopChuaCoBac }
+}
+
+// ── 23/10 (Thùy): KỲ KHẢO SÁT CHUNG — "MT gán theo lớp nhưng khảo sát thi chung". 1 kỳ = đề gốc + ngày thi, không thuộc
+// lớp (buoi_hoc loai='khao_sat', de_id) — DB tạo (fn_ks_tao_ky, gọi lại cùng đề+ngày trả đúng kỳ cũ). Danh sách chấm = mọi
+// HS đang học môn đó ở khối của đề (DB). Bài Hình mô hình của đề (cau_hinh.hinhByMa) ghi sang buổi Hình của kỳ như gán MT.
+export async function taoKyKhaoSat(deId: string, ngay: string): Promise<string> {
+  const { data, error } = await supabase.rpc('fn_ks_tao_ky', { p_de: deId, p_ngay: ngay })
+  if (error) throw error
+  const buoiId = data as string
+  const master = await getTaiLieuFull(deId)
+  const hinhByMa = master.taiLieu.cau_hinh?.hinhByMa ?? {}
+  const maHinh = master.phans.filter((p) => p.loai_phan === 'custom').flatMap((p) => p.maCaus.filter((ma) => laMaHinh(ma) && hinhByMa[ma]))
+  if (maHinh.length) {
+    const cheDo: Record<string, CheDoHinh> = {}; const soDong: Record<string, number> = {}
+    for (const ma of maHinh) { const h = hinhByMa[ma]; cheDo[ma] = h.cheDo ?? 'hien'; if (h.soDong != null) soDong[ma] = h.soDong }
+    await ganHinhKhaoSat(buoiId, ngay, { picks: maHinh.map((ma) => pickCuaHinhRow(ma, hinhByMa[ma])), cheDo, soDong }, master.taiLieu.cau_hinh?.hinhMaDe ?? {})
+  }
+  return buoiId
 }
 
 // Các lượt đã gán của 1 MT master (hiện trong editor: "Đã gán cho: 9A1 · 12/07…"). buoiId = buổi

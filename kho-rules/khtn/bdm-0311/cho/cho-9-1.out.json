@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "K09000000101",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện, sơ cứu điện giật; gần nhất ứng dụng điện xoay chiều"
+ },
+ {
+  "ma_cau": "K09000000102",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện, sơ cứu điện giật; gần nhất ứng dụng điện xoay chiều"
+ },
+ {
+  "ma_cau": "K09000000103",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện, sơ cứu điện giật; gần nhất ứng dụng điện xoay chiều"
+ },
+ {
+  "ma_cau": "K09000000104",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện, sơ cứu điện giật; gần nhất ứng dụng điện xoay chiều"
+ },
+ {
+  "ma_cau": "K09000000105",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện, sơ cứu điện giật; gần nhất ứng dụng điện xoay chiều"
+ },
+ {
+  "ma_cau": "K09000000106",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện, sơ cứu điện giật; gần nhất ứng dụng điện xoay chiều"
+ },
+ {
+  "ma_cau": "K09000000107",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện, sơ cứu điện giật; gần nhất ứng dụng điện xoay chiều"
+ },
+ {
+  "ma_cau": "K09000000108",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện, sơ cứu điện giật; gần nhất ứng dụng điện xoay chiều"
+ },
+ {
+  "ma_cau": "K09000000109",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện, sơ cứu điện giật; gần nhất ứng dụng điện xoay chiều"
+ },
+ {
+  "ma_cau": "K09000000110",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện, sơ cứu điện giật; gần nhất ứng dụng điện xoay chiều"
+ },
+ {
+  "ma_cau": "K09000000111",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện, sơ cứu điện giật; gần nhất ứng dụng điện xoay chiều"
+ },
+ {
+  "ma_cau": "K09000000112",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện, sơ cứu điện giật; gần nhất ứng dụng điện xoay chiều"
+ },
+ {
+  "ma_cau": "K09000000113",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện, sơ cứu điện giật; gần nhất ứng dụng điện xoay chiều"
+ },
+ {
+  "ma_cau": "K09000000114",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện, sơ cứu điện giật; gần nhất ứng dụng điện xoay chiều"
+ },
+ {
+  "ma_cau": "K09000000115",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện, sơ cứu điện giật; gần nhất ứng dụng điện xoay chiều"
+ },
+ {
+  "ma_cau": "K09000000116",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện, sơ cứu điện giật; gần nhất ứng dụng điện xoay chiều"
+ },
+ {
+  "ma_cau": "K09000000117",
+  "nhom_id": "KNB00487",
+  "chac": "vua",
+  "ly_do": "An toàn điện, sơ cứu điện giật; gần nhất ứng dụng điện xoay chiều"
+ },
+ {
+  "ma_cau": "K09000000118",
+  "nhom_id": "KNB00488",
+  "chac": "cao",
+  "ly_do": "Chọn/kết hợp nguồn năng lượng tái tạo theo điều kiện vùng"
+ },
+ {
+  "ma_cau": "K09000000119",
+  "nhom_id": "KNB00488",
+  "chac": "cao",
+  "ly_do": "Chọn/kết hợp nguồn năng lượng tái tạo theo điều kiện vùng"
+ },
+ {
+  "ma_cau": "K09000000120",
+  "nhom_id": "KNB00488",
+  "chac": "cao",
+  "ly_do": "Chọn/kết hợp nguồn năng lượng tái tạo theo điều kiện vùng"
+ },
+ {
+  "ma_cau": "K09000000121",
+  "nhom_id": "KNB00488",
+  "chac": "cao",
+  "ly_do": "Chọn/kết hợp nguồn năng lượng tái tạo theo điều kiện vùng"
+ },
+ {
+  "ma_cau": "K09000000122",
+  "nhom_id": "KNB00488",
+  "chac": "cao",
+  "ly_do": "Chọn/kết hợp nguồn năng lượng tái tạo theo điều kiện vùng"
+ },
+ {
+  "ma_cau": "K09000000123",
+  "nhom_id": "KNB00488",
+  "chac": "cao",
+  "ly_do": "Chọn/kết hợp nguồn năng lượng tái tạo theo điều kiện vùng"
+ },
+ {
+  "ma_cau": "K09000000124",
+  "nhom_id": "KNB00488",
+  "chac": "cao",
+  "ly_do": "Chọn/kết hợp nguồn năng lượng tái tạo theo điều kiện vùng"
+ },
+ {
+  "ma_cau": "K09000000125",
+  "nhom_id": "KNB00488",
+  "chac": "cao",
+  "ly_do": "Chọn/kết hợp nguồn năng lượng tái tạo theo điều kiện vùng"
+ },
+ {
+  "ma_cau": "K09000000126",
+  "nhom_id": "KNB00488",
+  "chac": "cao",
+  "ly_do": "Chọn/kết hợp nguồn năng lượng tái tạo theo điều kiện vùng"
+ },
+ {
+  "ma_cau": "K09000000127",
+  "nhom_id": "KNB00488",
+  "chac": "cao",
+  "ly_do": "Chọn/kết hợp nguồn năng lượng tái tạo theo điều kiện vùng"
+ },
+ {
+  "ma_cau": "K09000000128",
+  "nhom_id": "KNB00488",
+  "chac": "cao",
+  "ly_do": "Chọn/kết hợp nguồn năng lượng tái tạo theo điều kiện vùng"
+ },
+ {
+  "ma_cau": "K09000000129",
+  "nhom_id": "KNB00488",
+  "chac": "cao",
+  "ly_do": "Chọn/kết hợp nguồn năng lượng tái tạo theo điều kiện vùng"
+ },
+ {
+  "ma_cau": "K09000000130",
+  "nhom_id": "KNB00488",
+  "chac": "cao",
+  "ly_do": "Chọn/kết hợp nguồn năng lượng tái tạo theo điều kiện vùng"
+ },
+ {
+  "ma_cau": "K09000000131",
+  "nhom_id": "KNB00488",
+  "chac": "cao",
+  "ly_do": "Chọn/kết hợp nguồn năng lượng tái tạo theo điều kiện vùng"
+ },
+ {
+  "ma_cau": "K09000000132",
+  "nhom_id": "KNB00488",
+  "chac": "cao",
+  "ly_do": "Chọn/kết hợp nguồn năng lượng tái tạo theo điều kiện vùng"
+ },
+ {
+  "ma_cau": "K09000000133",
+  "nhom_id": "KNB00488",
+  "chac": "cao",
+  "ly_do": "Chọn/kết hợp nguồn năng lượng tái tạo theo điều kiện vùng"
+ },
+ {
+  "ma_cau": "K09000000134",
+  "nhom_id": "KNB00488",
+  "chac": "cao",
+  "ly_do": "Chọn/kết hợp nguồn năng lượng tái tạo theo điều kiện vùng"
+ },
+ {
+  "ma_cau": "K09000000135",
+  "nhom_id": "KNB00509",
+  "chac": "vua",
+  "ly_do": "Tính %khối lượng nguyên tố từ CTPT; gần nhất nhóm lập CTPT theo %m"
+ },
+ {
+  "ma_cau": "K09000000136",
+  "nhom_id": "KNB00509",
+  "chac": "vua",
+  "ly_do": "Tính %khối lượng nguyên tố từ CTPT; gần nhất nhóm lập CTPT theo %m"
+ },
+ {
+  "ma_cau": "K09000000137",
+  "nhom_id": "KNB00509",
+  "chac": "vua",
+  "ly_do": "Tính %khối lượng nguyên tố từ CTPT; gần nhất nhóm lập CTPT theo %m"
+ },
+ {
+  "ma_cau": "K09000000138",
+  "nhom_id": "KNB00509",
+  "chac": "vua",
+  "ly_do": "Tính %khối lượng nguyên tố từ CTPT; gần nhất nhóm lập CTPT theo %m"
+ },
+ {
+  "ma_cau": "K09000000139",
+  "nhom_id": "KNB00509",
+  "chac": "vua",
+  "ly_do": "Tính %khối lượng nguyên tố từ CTPT; gần nhất nhóm lập CTPT theo %m"
+ },
+ {
+  "ma_cau": "K09000000140",
+  "nhom_id": "KNB00509",
+  "chac": "vua",
+  "ly_do": "Tính %khối lượng nguyên tố từ CTPT; gần nhất nhóm lập CTPT theo %m"
+ },
+ {
+  "ma_cau": "K09000000141",
+  "nhom_id": "KNB00513",
+  "chac": "cao",
+  "ly_do": "Đốt cháy tìm CTPT, nCO2<nH2O: alkane"
+ },
+ {
+  "ma_cau": "K09000000142",
+  "nhom_id": "KNB00513",
+  "chac": "cao",
+  "ly_do": "Đốt cháy tìm CTPT: alkane"
+ },
+ {
+  "ma_cau": "K09000000143",
+  "nhom_id": "KNB00513",
+  "chac": "cao",
+  "ly_do": "Đốt cháy tìm CTPT: alkane"
+ },
+ {
+  "ma_cau": "K09000000144",
+  "nhom_id": "KNB00518",
+  "chac": "cao",
+  "ly_do": "Đốt cháy nCO2=nH2O: alkene"
+ },
+ {
+  "ma_cau": "K09000000145",
+  "nhom_id": "KNB00513",
+  "chac": "cao",
+  "ly_do": "Đốt cháy tìm CTPT: alkane"
+ },
+ {
+  "ma_cau": "K09000000146",
+  "nhom_id": "KNB00518",
+  "chac": "vua",
+  "ly_do": "Đốt cháy ra C4H6 (không alkane/alkene); phân vân"
+ },
+ {
+  "ma_cau": "K09000000147",
+  "nhom_id": "KNB00513",
+  "chac": "vua",
+  "ly_do": "Tìm CTCT theo mạch (phân nhánh) từ đốt cháy alkane"
+ },
+ {
+  "ma_cau": "K09000000148",
+  "nhom_id": "KNB00513",
+  "chac": "vua",
+  "ly_do": "Tìm CTCT theo mạch (phân nhánh) từ đốt cháy alkane"
+ },
+ {
+  "ma_cau": "K09000000149",
+  "nhom_id": "KNB00513",
+  "chac": "cao",
+  "ly_do": "Đốt cháy tìm CTCT alkane"
+ },
+ {
+  "ma_cau": "K09000000150",
+  "nhom_id": "KNB00513",
+  "chac": "cao",
+  "ly_do": "Đốt cháy tìm CTCT alkane"
+ },
+ {
+  "ma_cau": "K09000000151",
+  "nhom_id": "KNB00518",
+  "chac": "cao",
+  "ly_do": "Đốt cháy tìm CTCT alkene"
+ },
+ {
+  "ma_cau": "K09000000152",
+  "nhom_id": "KNB00513",
+  "chac": "vua",
+  "ly_do": "Tìm CTCT alkane theo mạch từ đốt cháy"
+ },
+ {
+  "ma_cau": "K09000000153",
+  "nhom_id": "KNB00513",
+  "chac": "vua",
+  "ly_do": "Tìm CTCT alkane theo mạch từ đốt cháy"
+ },
+ {
+  "ma_cau": "K09000000154",
+  "nhom_id": "KNB00518",
+  "chac": "cao",
+  "ly_do": "Đốt cháy tìm CTCT alkene"
+ },
+ {
+  "ma_cau": "K09000000155",
+  "nhom_id": "KNB00515",
+  "chac": "cao",
+  "ly_do": "Phân biệt alkane với ethylene bằng dung dịch Br2"
+ },
+ {
+  "ma_cau": "K09000000156",
+  "nhom_id": "KNB00515",
+  "chac": "cao",
+  "ly_do": "Phân biệt alkane với ethylene bằng dung dịch Br2"
+ },
+ {
+  "ma_cau": "K09000000157",
+  "nhom_id": "KNB00515",
+  "chac": "cao",
+  "ly_do": "Phân biệt alkane với ethylene bằng dung dịch Br2"
+ },
+ {
+  "ma_cau": "K09000000158",
+  "nhom_id": "KNB00515",
+  "chac": "cao",
+  "ly_do": "Tinh chế alkane lẫn ethylene"
+ },
+ {
+  "ma_cau": "K09000000159",
+  "nhom_id": "KNB00515",
+  "chac": "cao",
+  "ly_do": "Tinh chế alkane lẫn ethylene"
+ },
+ {
+  "ma_cau": "K09000000160",
+  "nhom_id": "KNB00516",
+  "chac": "vua",
+  "ly_do": "Tính theo PTHH cộng Br2 của alkene; không có nhóm tính toán riêng"
+ },
+ {
+  "ma_cau": "K09000000161",
+  "nhom_id": "KNB00516",
+  "chac": "vua",
+  "ly_do": "Tính theo PTHH cộng Br2 của alkene; không có nhóm tính toán riêng"
+ },
+ {
+  "ma_cau": "K09000000162",
+  "nhom_id": "KNB00516",
+  "chac": "vua",
+  "ly_do": "Tính theo PTHH cộng Br2 của alkene; không có nhóm tính toán riêng"
+ },
+ {
+  "ma_cau": "K09000000163",
+  "nhom_id": "KNB00516",
+  "chac": "vua",
+  "ly_do": "Tính theo PTHH cộng Br2 của alkene; không có nhóm tính toán riêng"
+ },
+ {
+  "ma_cau": "K09000000164",
+  "nhom_id": "KNB00518",
+  "chac": "vua",
+  "ly_do": "Xác định loại hydrocarbon từ tỉ lệ CO2/H2O; phân vân alkane"
+ },
+ {
+  "ma_cau": "K09000000165",
+  "nhom_id": "KNB00518",
+  "chac": "vua",
+  "ly_do": "Xác định loại hydrocarbon từ tỉ lệ CO2/H2O; phân vân alkane"
+ },
+ {
+  "ma_cau": "K09000000166",
+  "nhom_id": "KNB00518",
+  "chac": "vua",
+  "ly_do": "Xác định loại hydrocarbon từ tỉ lệ CO2/H2O; phân vân alkane"
+ },
+ {
+  "ma_cau": "K09000000167",
+  "nhom_id": "KNB00518",
+  "chac": "vua",
+  "ly_do": "Xác định loại hydrocarbon từ tỉ lệ CO2/H2O; phân vân alkane"
+ },
+ {
+  "ma_cau": "K09000000168",
+  "nhom_id": "KNB00518",
+  "chac": "vua",
+  "ly_do": "Hỗn hợp alkane/alkene qua dd Br2, tính theo PTHH"
+ },
+ {
+  "ma_cau": "K09000000169",
+  "nhom_id": "KNB00518",
+  "chac": "vua",
+  "ly_do": "Hỗn hợp alkane/alkene qua dd Br2, tính theo PTHH"
+ },
+ {
+  "ma_cau": "K09000000170",
+  "nhom_id": "KNB00518",
+  "chac": "vua",
+  "ly_do": "Hỗn hợp alkane/alkene qua dd Br2, tính theo PTHH"
+ },
+ {
+  "ma_cau": "K09000000171",
+  "nhom_id": "KNB00518",
+  "chac": "vua",
+  "ly_do": "Hỗn hợp alkane/alkene qua dd Br2, tính theo PTHH"
+ },
+ {
+  "ma_cau": "K09000000172",
+  "nhom_id": "KNB00518",
+  "chac": "vua",
+  "ly_do": "Hỗn hợp alkane/alkene qua dd Br2, tính theo PTHH"
+ },
+ {
+  "ma_cau": "K09000000173",
+  "nhom_id": "KNB00518",
+  "chac": "vua",
+  "ly_do": "Hỗn hợp alkane/alkene qua dd Br2, tính theo PTHH"
+ },
+ {
+  "ma_cau": "K09000000174",
+  "nhom_id": "KNB00518",
+  "chac": "vua",
+  "ly_do": "Hỗn hợp alkane/alkene đốt cháy, tìm số mol"
+ },
+ {
+  "ma_cau": "K09000000175",
+  "nhom_id": "KNB00518",
+  "chac": "vua",
+  "ly_do": "Hỗn hợp alkane/alkene đốt cháy, tìm số mol"
+ },
+ {
+  "ma_cau": "K09000000176",
+  "nhom_id": "KNB00518",
+  "chac": "vua",
+  "ly_do": "Hỗn hợp alkane/alkene đốt cháy, tìm số mol"
+ },
+ {
+  "ma_cau": "K09000000177",
+  "nhom_id": "KNB00513",
+  "chac": "vua",
+  "ly_do": "Hỗn hợp hai alkane đốt cháy, tìm số mol"
+ },
+ {
+  "ma_cau": "K09000000178",
+  "nhom_id": "KNB00513",
+  "chac": "vua",
+  "ly_do": "Hỗn hợp hai alkane đốt cháy, tìm số mol"
+ },
+ {
+  "ma_cau": "K09000000179",
+  "nhom_id": "KNB00513",
+  "chac": "vua",
+  "ly_do": "Hỗn hợp hai alkane đốt cháy, tìm số mol"
+ },
+ {
+  "ma_cau": "K09000000180",
+  "nhom_id": "KNB00524",
+  "chac": "vua",
+  "ly_do": "Tính thể tích khí từ ethylic alcohol; nhóm tính toán cồn"
+ },
+ {
+  "ma_cau": "K09000000181",
+  "nhom_id": "KNB00524",
+  "chac": "vua",
+  "ly_do": "Tính thể tích khí từ ethylic alcohol; nhóm tính toán cồn"
+ },
+ {
+  "ma_cau": "K09000000182",
+  "nhom_id": "KNB00524",
+  "chac": "vua",
+  "ly_do": "Tính thể tích khí từ ethylic alcohol; nhóm tính toán cồn"
+ },
+ {
+  "ma_cau": "K09000000183",
+  "nhom_id": "KNB00524",
+  "chac": "vua",
+  "ly_do": "Tính thể tích khí từ ethylic alcohol; nhóm tính toán cồn"
+ },
+ {
+  "ma_cau": "K09000000184",
+  "nhom_id": "KNB00524",
+  "chac": "vua",
+  "ly_do": "Tính thể tích khí từ ethylic alcohol; nhóm tính toán cồn"
+ },
+ {
+  "ma_cau": "K09000000185",
+  "nhom_id": "KNB00524",
+  "chac": "vua",
+  "ly_do": "Tính thể tích khí từ ethylic alcohol; nhóm tính toán cồn"
+ },
+ {
+  "ma_cau": "K09000000186",
+  "nhom_id": "KNB00535",
+  "chac": "vua",
+  "ly_do": "Lên men glucose có hiệu suất; phân vân 00525"
+ },
+ {
+  "ma_cau": "K09000000187",
+  "nhom_id": "KNB00535",
+  "chac": "vua",
+  "ly_do": "Lên men glucose có hiệu suất; phân vân 00525"
+ },
+ {
+  "ma_cau": "K09000000188",
+  "nhom_id": "KNB00535",
+  "chac": "vua",
+  "ly_do": "Lên men glucose có hiệu suất; phân vân 00525"
+ },
+ {
+  "ma_cau": "K09000000189",
+  "nhom_id": "KNB00535",
+  "chac": "vua",
+  "ly_do": "Lên men glucose có hiệu suất; phân vân 00525"
+ },
+ {
+  "ma_cau": "K09000000190",
+  "nhom_id": "KNB00524",
+  "chac": "cao",
+  "ly_do": "Rượu độ: thể tích/khối lượng cồn rồi tính CO2"
+ },
+ {
+  "ma_cau": "K09000000191",
+  "nhom_id": "KNB00524",
+  "chac": "cao",
+  "ly_do": "Rượu độ: thể tích/khối lượng cồn rồi tính CO2"
+ },
+ {
+  "ma_cau": "K09000000192",
+  "nhom_id": "KNB00524",
+  "chac": "cao",
+  "ly_do": "Rượu độ: thể tích/khối lượng cồn rồi tính CO2"
+ },
+ {
+  "ma_cau": "K09000000193",
+  "nhom_id": "KNB00524",
+  "chac": "cao",
+  "ly_do": "Rượu độ: thể tích/khối lượng cồn rồi tính CO2"
+ },
+ {
+  "ma_cau": "K09000000194",
+  "nhom_id": "KNB00524",
+  "chac": "cao",
+  "ly_do": "Rượu độ: thể tích/khối lượng cồn rồi tính CO2"
+ },
+ {
+  "ma_cau": "K09000000195",
+  "nhom_id": "KNB00524",
+  "chac": "cao",
+  "ly_do": "Rượu độ: thể tích/khối lượng cồn rồi tính CO2"
+ },
+ {
+  "ma_cau": "K09000000196",
+  "nhom_id": "KNB00524",
+  "chac": "cao",
+  "ly_do": "Rượu độ: thể tích/khối lượng cồn rồi tính CO2"
+ },
+ {
+  "ma_cau": "K09000000197",
+  "nhom_id": "KNB00524",
+  "chac": "cao",
+  "ly_do": "Rượu độ: thể tích/khối lượng cồn rồi tính CO2"
+ },
+ {
+  "ma_cau": "K09000000198",
+  "nhom_id": "KNB00526",
+  "chac": "vua",
+  "ly_do": "Trung hoà acetic acid bằng NaOH; bài tập cơ bản acetic acid"
+ },
+ {
+  "ma_cau": "K09000000199",
+  "nhom_id": "KNB00526",
+  "chac": "vua",
+  "ly_do": "Trung hoà acetic acid bằng NaOH; bài tập cơ bản acetic acid"
+ },
+ {
+  "ma_cau": "K09000000200",
+  "nhom_id": "KNB00526",
+  "chac": "vua",
+  "ly_do": "Trung hoà acetic acid bằng NaOH; bài tập cơ bản acetic acid"
+ }
+]

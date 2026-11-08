@@ -7,6 +7,16 @@
 ## Mục lục (số dòng trong file này)
 
 - dòng 36 — ⭐⭐⭐ LUẬT DUYỆT (Thùy 14/10, "nói bao lần rồi") — MỌI KHỐI, MỌI LÔ: muốn Thùy duy�
+- Bài học 03/11 — K9 đề cương / đề thi HK1 → Hình–Luyện + tiếp tuyến (ngay dưới mục lục ②)
+- Bài học 07/11 — Kinh tế nông trại (ngay dưới mục lục ②)
+- Bài học 03/11 — Nông trại · tăng tốc bằng Toán · push (ngay dưới mục lục ②)
+- Bài học 03/11 — Phòng làm việc · Báo cáo tuần · thử nghiệm trên DB thật (ngay dưới mục lục ②)
+- Bài học 23/10 — Dashboard học tập · mastery · push (ngay dưới mục lục ②)
+- Bài học 12→23/10 — Nông trại + app HS (cuối file)
+- Bài học 07→23/10 — Chấm MT · Khảo sát · bảng kết quả theo chuyên đề (cuối file)
+- Bài học 14→20/10 — Kho K7 (đề thi, đề cương, bản đồ, hình) (ngay dưới LUẬT DUYỆT)
+- Bài học 20→21/10 — builder bản đồ mới · ET · Chuyên đề (ngay dưới LUẬT DUYỆT)
+- Bài học 17→19/10 — Bản đồ mới · Hình–Luyện · Kho đề thi (bản in)
 - dòng 47 — Bài học 10→17/10 — Bổ trợ (đừng đạp lại)
 - dòng 65 — Bài học 14/10 — Hình–Luyện cây nhánh + kho bài
 - dòng 146 — Bài học 28/09–02/10 — luồng kho + đề thi (nhập, gán vào buổi, đọc PDF)
@@ -33,6 +43,56 @@
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
+## Bài học 07/11 — Kinh tế nông trại
+- **Chỉnh nhịp xu = chỉnh NGUỒN EXP, không chỉnh trần.** Trần chạm sớm ⇒ EXP dồn mà không đổi được, HS thấy "hỏng". Đặt ngân sách EXP/tháng cho em giỏi nhất rồi chia cho từng nguồn; trần chỉ là lưới an toàn (Thùy 05/11 + 07/11).
+- **Thứ mua bằng điểm học tập mà BÁN được ra EXP = cửa đổi điểm ra xu.** Phân bón 3 điểm → bán 5 EXP, không giới hạn, 45 em khai thác (1 em 600 bao). Mọi món mới mua bằng điểm: hỏi "bán lại được không, được bao nhiêu" trước khi mở.
+- **Đo nguồn EXP thật trước khi đoán:** `nt_luu.state.dem` có bộ đếm từng nguồn (muaPhan, bon, thuQua, expGiup, tromExp…). 05/11 tôi tưởng cây là nguồn chính và cắt cây; thật ra phân bón mới là chính.
+- **Bộ giả lập `kich-ban.mjs` không có máy chế biến, giúp-bạn-EXP, bán phân** — số thật cao hơn giả lập; kiểm thêm bằng dữ liệu `nt_luu` thật.
+
+## Bài học 03/11 — Nông trại · tăng tốc bằng Toán · push
+- **KHÔNG chạy truy vấn nặng trên DB thật 17–22h VN** (giờ HS chơi). 03/11 đo tăng tốc (>40s/truy vấn) đúng giờ cao điểm ⇒ cùng lúc HS báo nông trại "về cấp 1", Thùy phải bật bảo trì. Đo diện rộng để sáng/khuya.
+- **Game nhúng: lỗi kết nối phải BÁO, không lặng lẽ dùng bản lưu máy.** Fallback "hết 4s thì dùng localStorage" biến DB chậm thành "mất tiến trình" trong mắt HS (dữ liệu server vẫn nguyên). Nhúng ⇒ chỉ tin server; hỏng thì màn "Chưa kết nối được" + Thử lại.
+- **Chọn câu từ kho: lấy ID trước, lấy nội dung sau.** `_hs_dang_da_hoc` + kéo nội dung cả kho vượt trần 8s PostgREST; tách 2 bước (lọc id theo dạng em đã làm → `_dtv_kho_cau_tim` cho vài ứng viên) xuống ~3s.
+- **Test thời gian chờ trong 1 transaction: `now()` đứng yên** ⇒ cột mốc dùng `clock_timestamp()`.
+- **Push: nối commit + push bằng `&&` cùng lệnh với bước giải xung đột.** 03/11 script giải xung đột DEVLOG fail nhưng commit/push chạy dòng riêng ⇒ lên origin với dấu `<<<<<<<` (vá ở `ffd4ee0c`). `sed -i` trên Git Bash xoá CR ⇒ sửa file CRLF bằng Python mức byte.
+
+## Bài học 03/11 — K9 đề cương / đề thi HK1 → Hình–Luyện + tiếp tuyến (đừng đạp lại)
+
+- **Câu hỏi mơ hồ ⇒ kiểm DB / hỏi MỘT câu trước khi mở việc lớn.** "Các bài trong đề cương thì sao" tôi đọc thành "lượt Đại số" và mở 20 trạm soạn (tốn lớn); Thùy muốn nói phần HÌNH của đề thi + đề cương HK1. Đếm DB theo từng đề (số câu Hình · đã có hinh_bai · đã có mô hình) trả lời ngay và lộ ra 22 đề thi CKI còn 0 bài.
+- **Đỗ tạm vào bài THẬT = làm bẩn bản đồ.** Ghi mọi câu Hình vào HH00108 "tạm" rồi ghi "người xếp tay" ⇒ bài tiếp tuyến lẫn 190 câu lượng giác/quạt. "Cần xếp tay" KHÔNG phải trạng thái bàn giao. Hoặc xếp xong trước khi báo "xong", hoặc đỗ vào dạng chờ/bài riêng chưa hiện cho HS — không đỗ vào bài có tên nghiệp vụ.
+- **Xếp bằng từ khoá: dùng CHỮ CÓ DẤU** (bỏ dấu ⇒ "cũng"≈"cung", "tháp"≈"thấp"…); bỏ lệnh LaTeX phải giữ `\sin \cos \tan \cot`; thứ tự luật quan trọng (quạt trước cung khi đề hỏi diện tích; trig trước đường tròn thì "tam giác nhọn nội tiếp" bị hút nhầm vào lượng giác). Đọc lại cả danh sách đích trước khi `--ghi`, ghi `undo.json`.
+- **Nối nhãn bản soạn ↔ ma_cau luôn cần nhân chứng thứ hai** (nội dung đề khớp DB); số lượng khớp không phải bằng chứng. `sed` làm mất `^` trong `[^\p{L}\p{N}]` ⇒ xoá hết chữ, so sánh báo lệch hàng loạt — nhân chứng chặn được, dùng Edit chứ không `sed` cho regex Unicode.
+- **Trạm Sonnet soạn hay lọt kiến thức học kì II** (đường tròn ngoại tiếp tam giác vuông, góc chắn nửa đường tròn, đường trung bình) dù brief cấm; trạm Opus soát phải kiểm cụ thể. Sub-agent tự xoá cả tệp nháp của nó ⇒ trái Luật xoá: brief ghi rõ "không xoá gì, kể cả nháp".
+- **Giới hạn 20 sub-agent chạy cùng lúc**; soạn xong đề nào giao soát đề đó ngay. Dừng trạm bằng TaskStop không mất tệp đã ghi, nhưng bản nháp dở chưa qua cổng thì không tin.
+- **Chuẩn hoá kết thúc dòng bằng `sed` trên DEVLOG/HANDOFF = viết lại cả tệp** (78k dòng đổi). Kiểm `git ls-files --eol <tệp>` trước: DEVLOG `i/-text` (git không tự đổi), HANDOFF `i/lf w/crlf`. Thêm mục bằng append LF, không `sed -i 's/$/\r/'`.
+- **`tra_loi_ngan` vs `tu_luan`** cho câu có đúng một đáp số nguyên: các đề cương soạn chưa nhất quán — chờ Thùy chốt một cách chung (k9.md §10 / §13).
+
+## Bài học 03/11 — Phòng làm việc · Báo cáo tuần · thử nghiệm trên DB thật
+- **Tạo file mới: KIỂM TÊN TRƯỚC.** Write lên `src/lib/phong.ts` đè mất file danh mục phòng học bổ trợ (tool không chặn). Glob tên trước khi tạo file `lib/*.ts`.
+- **Nút "←"/"‹" ở đầu màn bị hook chung `useNutQuayVe` TỰ ẨN** (thay bằng ← của thanh địa chỉ). Nút quay về riêng phải thấy được ⇒ class `no-nut-ve` (trên nút hoặc khung cha). Popup `.fixed` thì hook bỏ qua.
+- **Băm chuỗi ra chỉ số mảng: dùng `>>>`, không `>>`** — h > 2^31 thì `>>` ra số âm ⇒ `arr[-k]` undefined ⇒ SVG fill đen.
+- **Chiều cao theo % cần khung cha có chiều cao** (`h-full`), thiếu là về 0 im lặng.
+- **Màn làm việc đặt trên tranh nền ⇒ nền TRẮNG riêng** cho nội dung chữ/chat (Thùy: "dùng background của phòng thì khó nhìn").
+- **Tính năng có hạn/gậy: đặt MỐC BẮT ĐẦU.** Gậy "chưa nộp báo cáo" không mốc ⇒ kỳ trước khi có tính năng cũng bị gậy (suýt gậy 7 trưởng khối kỳ 26/10).
+- **Thử luồng GHI trên DB thật mà không để lại dữ liệu:** 1 transaction + `set_config('request.jwt.claims', '{"sub":<tai_khoan.id>,"email":…,"role":"authenticated"}', true)` để giả lập từng người (hàm `current_nhan_su_id`/`la_thanh_vien` đọc được) + savepoint cho các ca mong bị chặn + ROLLBACK cuối. Đếm lại bảng sau đó để chứng minh sạch.
+- **Đổi hàm đang chạy sang bản "tại mốc": thêm hàm MỚI trước, đối chiếu kết quả trên dữ liệu thật, rồi mới nối hàm cũ** (thêm tham số default vào hàm cũ = tạo overload ⇒ "function is not unique"). Đổi cột trả về ⇒ `create or replace` không được ⇒ tên hàm mới, hàm cũ chờ CEO gật xoá.
+- **Hàm chặn quyền bằng `co_chuc_nang` đọc JWT, không đọc role** ⇒ gọi từ hàm security definer vẫn bị chặn; nới cổng phải sửa chính hàm (thân lấy từ bản đang chạy).
+- **Áp migration lên DB thật: hệ thống CHẶN nếu lượt đó Thùy chưa nói "áp đi"** — chuẩn bị xong rồi hỏi một lần cho cả cụm, đừng thử lách.
+- **"Tổng kết tuần ngừng" ≠ hỏng:** bộ đệm `troly_tuan_so_luu` chỉ tính khi có người mở màn — đọc cơ chế làm mới trước khi kết luận lỗi.
+
+## Bài học 23/10 — Dashboard học tập · mastery · push
+
+- **Câu làm trên app có BẢN SAO trong `gami_grades` (`bai_lam_cau_id`)** — do `fn_et_online_dong_bo` / `fn_btvn_online_dong_bo` đẩy vào lưới chấm buổi. Hàm nào đọc CẢ `gami_grades` LẪN `bai_lam_cau` phải loại một bên (`not exists gami_grades.bai_lam_cau_id = blc.id`), nếu không mỗi câu tính 2 lần. Giữ bản gami: TA sửa tay ở đó, `ma_cau` là mã gốc. Dò: `pg_proc.prosrc ilike '%gami_grades%' and ilike '%bai_lam_cau%'`.
+- **App bọc khung `zoom: 1.15`** ⇒ phần tử `position: fixed` bên trong bị nhân toạ độ. Cửa sổ nổi / kéo thả phải chia toạ độ chuột cho tỉ lệ `el.getBoundingClientRect().width / el.offsetWidth`.
+- **Đổi kiểu trả về của hàm SQL** (thêm cột RETURNS TABLE) ⇒ `create or replace` không làm được, phải DROP + CREATE (hàm `language sql` gọi nó không giữ phụ thuộc nên không chặn) — ghi rõ ở mục "MẤT GÌ".
+- **Push khi main lệch + có phiên khác:** đừng nối lệnh gỡ xung đột bằng `;` — bước gỡ hỏng thì bước `git add/commit/push` vẫn chạy và đẩy dấu `<<<<<<<` lên origin (đã dính 23/10). Dùng `&&` và kiểm `grep -a -c '^<<<<<<<'` = 0 TRƯỚC khi add. **Không dùng `sed -i` trên file CRLF** (DEVLOG/HANDOFF): Git Bash ghi lại LF cả file ⇒ diff 77k dòng. Sửa bằng python đọc/ghi bytes.
+- **`npm run schema` có thể không đổi `schema.md`** khi phiên khác đã commit bản mới hơn — không phải lỗi.
+
+### Bài học 23/10 — Đánh giá cuối cấp (đo theo lần)
+- **Hai hàm cùng xếp "gần nhất" trên một tập phải dùng CHUNG một khoá xếp, kể cả khi hoà.** Popup xếp `t tăng, luot tăng`, thẻ xếp `t giảm, luot tăng` ⇒ 2 lần cùng ngày đổi chỗ ⇒ popup lệch thẻ (TB5 88,2 vs 87,2). Kiểm bằng so dòng mới nhất của popup với thẻ trên CẢ LỚP (784/784), không chỉ 1 ô.
+- **Ngưỡng "nhẹ/rõ" lấy từ phân bố thật, theo tầng.** Tầng ít lần (nhóm bài, cửa sổ 3/5) dao động gấp ~1,5 lần ⇒ dùng chung ngưỡng với tầng rộng là gắn "rõ" cho nhiễu (331 ô). Cách: SD của chênh, ngưỡng ≈ 0,5 SD / 1,5 SD.
+- **Số đặt sát mũi tên bị đọc thành độ chênh** ("↓ 26" = 26 lần, Thùy đọc là giảm 26). Số phụ trên thẻ phải có đơn vị, hoặc để vào popup.
+
 ### ⭐⭐⭐ LUẬT DUYỆT (Thùy 14/10, "nói bao lần rồi") — MỌI KHỐI, MỌI LÔ: muốn Thùy duyệt gì thì PHẢI đưa một FILE HTML xem được
 
 - **Mỗi lô cần Thùy duyệt/quyết (đề thi, đề cương, bài học, câu chưa chắc, bản đồ…) phải kèm MỘT trang HTML tự đủ**, dựng NGAY trong lượt báo cáo lô — không chờ bị hỏi, không chỉ liệt kê bằng chữ / đường dẫn `.md` / tên ảnh PNG rời.
@@ -43,6 +103,39 @@
 - **File để cạnh `.soan.md`, mở bằng double-click là xem** (ảnh nhúng base64, KaTeX qua CDN). Đã có: `GKI` → `lo/k7/can-xem/index.html` (chỉ ảnh — thiếu đề/lời giải, nên làm lại theo khuôn mới khi cần), `DC-01.html`, `DC-02.html`, `CKI-7-duyet.html`.
 - **Lỗi đã mắc (14/10):** soạn+soát+ghi 14 đề CKI-7 xong mà chỉ báo bằng bảng chữ + tên PNG, Thùy phải đòi lại HTML. Trạm SOÁT đã cắt ảnh cho CEO nhưng KHÔNG ai gom thành một trang — **bước "dựng HTML duyệt" là bước cuối BẮT BUỘC của mọi dây chuyền kho**, ngang hàng "ghi DB". Thiếu HTML = lô chưa xong.
 - **Cũng nhớ:** phản hồi cuối của lượt phải NÊU ĐƯỜNG DẪN file HTML (link bấm được) trước, rồi mới tóm tắt chỗ cần quyết.
+
+### Bài học 14→20/10 — Kho K7 (đề thi, đề cương, bản đồ, hình)
+
+- **⭐ Nội dung BẢN ĐỒ (lý thuyết/ví dụ/dạng/gán dạng): làm xong chỉ là ĐỀ XUẤT trong HTML; ghi DB CHỈ khi Thùy nói rõ "ghi".** 20/10 "Claude điền" bị tôi hiểu thành ghi thẳng 6 trường ⇒ Thùy gắt "t đã bảo m ghi đâu" ⇒ phải gỡ về trống (Luật xoá: hỏi trước, gỡ chỉ khi nội dung còn y bản tôi ghi). Mẫu trang chọn Giữ/Gỡ/Sửa: \`K7-de-xuat-5-dang-so-thuc.html\`.
+- **⭐ Muốn Thùy quyết gì ⇒ MỘT file HTML có nút chọn + "Sao chép câu trả lời"** (\`scripts/kho/de-thi/build-cau-hoi-html.mjs\`; danh sách chỗ cần quyết sinh bằng \`QUYET_JSON=… build-duyet-html.mjs\`). Báo cáo cuối nêu link file trước.
+- **Trạng thái gán dạng của bản đồ mới KHÔNG đọc từ cột \`dai_cau_hoi.dang_chinh\`** (câu nhập từ đề vẫn \`T107000000\`): đọc ở \`dai_bdm_gan_cau\` + \`dai_bdm_de_xuat\` + \`dai_bdm_cau_thieu_dang\`. 20/10 tôi báo nhầm "395 câu chưa có trạng thái" vì chỉ xét 2 bảng sau; \`bdm-b3-xuat-lo.mjs\` báo 0 câu chưa gán mới lộ.
+- **Trạm sinh JSON làm MẤT dấu \`\\\` của LaTeX** (\`\\left\`→\`left\`, \`\\dfrac\`→\`dfrac\`, \`\\right\`→ký tự điều khiển/xuống dòng): cổng cũ (\`$\` chẵn + JSON hợp lệ) và cả KaTeX parse đều KHÔNG bắt được vì \`left(dfrac{1}{3})\` là chữ hợp lệ. Kiểm bắt buộc trước khi ghi: không ký tự điều khiển; không từ ASCII ≥2 chữ trần trong \`$…$\` (ngoài \`\\text{}\`, ngoài \`cases\`); trạm ghi bằng công cụ Write với \`\\\\\`. Script kiểm cũng phải viết bằng Write (heredoc bash ăn \`\\\`).
+- **Luật phạm vi (CEO 19–20/10): đề/câu có kiến thức KÌ 2 không phải KNTT HK1 ⇒ bỏ** (tỉ lệ thức, dãy tỉ số bằng nhau, tỉ lệ thuận/nghịch, hình hộp/lăng trụ/lập phương, đa thức). Phải ghi vào brief soạn VÀ soát: trạm soạn vẫn để lọt câu tỉ lệ thức (DC-04 Khác Bài 4), chỉ trạm soát bắt được.
+- **Trạm SOÁT lỡ mở \`.soan.md\` trước khi giải mù xong** (3/6 trạm đề cương) ⇒ 30–40 câu đầu không mù hoàn toàn. Brief soát phải CẤM mở \`.soan.md\` tới khi \`.kiem.md\` đủ.
+- **Đề rỗng do người tạo trong app vẫn có 1 dòng \`linkgen_jobs\` (pending, attempt 0) + 1 phần** — khi xoá đề phải kèm job; chạy thử ROLLBACK + kiểm FK (\`pg_constraint confrelid='tai_lieu'\`) trước.
+- **Vẽ hình cho câu hỏi "khái niệm" (song song/vuông góc suy ra từ cặp góc bằng nhau):** vẽ đúng dữ kiện thì hình tự lộ đáp án; chỉ đánh dấu điều ĐỀ CHO (cung góc bằng nhau, ô vuông), không vẽ mũi tên song song. Hình đề + đáp án cùng một tệp (không đuôi) trừ khi lời giải cần thêm đường phụ (dùng đuôi \`_de\`).
+- **Xoá câu khỏi kho: \`xoa_at\` (kho rác), không xoá cứng** (câu nhập từ đề không có FK trỏ vào nhưng \`tai_lieu_cau\` trỏ bằng text). Gỡ câu khỏi đề cương = xoá \`tai_lieu_cau\` + dọn \`cau_hinh.deThi.nhanCau/nhomBai/canhBaoCau\`.
+
+### Bài học 20→21/10 — builder bản đồ mới · ET · Chuyên đề
+
+- **⭐ Chạy `tsc` SAU MỖI lần sửa, kể cả sửa 1 dòng/1 chú thích.** 21/10 chèn `// chú thích` vào GIỮA một lời gọi hàm nhiều đối số ⇒ phần còn lại của dòng thành chú thích ⇒ Vite trắng màn (ngay sau vụ backtick 19/10). `sed` chèn chú thích cũng đã làm gãy 1 script kiểm cùng ngày.
+- **Trước khi tạo bảng/hàm "mới" cho một nhánh, tra `pg_trigger` + `information_schema` xem đã có chưa:** HGT bản đồ mới đã có đủ 4 bảng từ 18/10 (phiên khác dựng) — suýt tạo trùng + thêm policy ghi rộng hơn. Chỗ thiếu thật chỉ là 1 hàm gốc (`_tl_bdm_cau_vi_tri`) — mở hàm gốc thì mọi hàm builder ăn theo.
+- **Bài Hình–Luyện: `de_bai` là bản GỐC trọn (đã gồm các ý), đề hiển thị = `gia_thiet_chung`;** không có giả thiết chung + 1 ý = "bài một ý" (đề nằm trong ý, hình = hình ý → hình bài). In cả hai ⇒ đề lặp. Làm màn mới đọc dữ liệu cũ: chép đúng cách màn đang chạy hiển thị, đừng đoán theo tên cột.
+- **Hàm `listTaiLieu(…, nhanh=null)` lọc CHỈ nhánh Đại** (null ≠ "mọi nhánh"; undefined mới là mọi nhánh) — danh sách nhiều nhánh phải truyền undefined.
+- **Hàm plpgsql có `create temp table` phải `volatile`** (stable bị Postgres từ chối).
+- **Unique "1 tài liệu / buổi" chỉ có cho `btvn`/`giao_trinh_buoi`, KHÔNG có cho `et`** (dữ liệu cũ có buổi 2 ET) ⇒ chặn trộn bản cũ/mới bằng trigger so `ban_do`, không thêm unique.
+- **Lệnh shell: không mở đầu bằng `cat > file` khi không có heredoc** — treo chờ stdin tới timeout (dính 2 lần). Viết file bằng Write rồi chạy.
+- **Browser pane ẩn (phiên không mở trong cửa sổ) ⇒ paged.js không dựng trang** (watchdog 30s); kiểm nội dung nguồn `.pv-src` thay vì đếm trang, và nhờ Thùy xem bản in thật.
+
+### Bài học 17→19/10 — Bản đồ mới · Hình–Luyện · Kho đề thi (bản in)
+
+- **⭐ Lớp phủ (overlay/modal) trong ERP phải z ≥ 65** — header ERP là `z-[60]`; z-50 nằm DƯỚI header, nút đóng bị che (đã dính 2 lần: Duyệt kho full màn, Catalog Hình).
+- **⭐ Cột cố định + cột cuộn riêng:** khung ngoài `h-full min-h-0 overflow-hidden`, cột trái `flex min-h-0 flex-col`, cột phải `min-h-0 flex-1 overflow-y-auto`. Thiếu `min-h-0` ở bất kỳ tầng flex nào ⇒ cả hai cột cuộn chung (Thùy báo 2 lần ở Cây nhánh).
+- **⭐ Bản in paged.js: `break-inside:avoid` trên khối CAO (câu nhiều ý + dòng kẻ) ⇒ nhảy nguyên khối sang trang mới, bỏ trống tới 257mm.** Đề thi giờ `.pv-dethi .pv-cau{break-inside:auto}` (giữ khối chỉ cho phương án TN / dòng Đ-S / cặp dòng kẻ / hình). **Đừng** thêm `.pv-math:first-child{break-after:avoid}` cho đề thi: đo thật, nó đẩy CẢ Phần 1 sang trang 2. Đo bằng JS trong Browser pane (khoảng trống cuối mỗi `.pagedjs_page`); **pane ẩn ⇒ paged.js không dựng xong (watchdog 30s)** — mở pane (`show_pane preview`) trước khi đo.
+- **⭐ CSS nằm trong template literal JS: CẤM dấu backtick trong chú thích** — đóng chuỗi sớm, Vite "Missing semicolon", ERP trắng màn (19/10 đã push lên main 1 commit lỗi). Sửa xong PHẢI chạy `tsc` lại dù chỉ sửa chú thích.
+- **Ghi `cau_hinh` jsonb dùng chung nhiều tính năng:** đọc bản DB rồi trộn ĐÚNG khoá đang sửa (`patchCauHinhDeThi`/`tronCauHinh`, null = bỏ khoá) — ghi nguyên object từ state client sẽ đè meta đề/số dòng do màn khác ghi.
+- **Trigger PL/pgSQL dùng chung nhiều bảng:** không tham chiếu `NEW.<cột>` mà bảng kia không có — tách nhánh `IF TG_TABLE_NAME = …` (lỗi "record new has no field" chỉ hiện khi bảng đó INSERT).
+- **Xoá danh mục có tham chiếu CHỮ (mã `DH.xxx` trong `canh_bao_yeu`/`bo_tro_yeu_dang`):** dò mọi cột text khớp mã trước khi đề xuất xoá, nêu cho Thùy chọn kho rác hay xoá cứng. Auto mode chặn tự áp migration xoá dữ liệu ⇒ viết + thử ROLLBACK, đưa lệnh cho Thùy chạy.
 
 ### Bài học 10→17/10 — Bổ trợ (đừng đạp lại)
 
@@ -72,6 +165,7 @@
 - **Dev server dùng chung với phiên song song tự tải lại liên tục** ⇒ kiểm UI bằng `javascript_tool` đo DOM (vd khoảng cách giữa 2 phần tử) + gọi RPC trực tiếp bằng script RO, đừng chờ ảnh chụp.
 
 - **[Bot TA · 16/10] Biến môi trường của cron phải có trên ĐÚNG project chạy cron.** Code đúng, deploy đúng, thiếu `CRON_SECRET` trên project TA ⇒ im lặng không đăng (nhắc việc 23:30 hỏng từ đầu không ai biết). Sau mỗi lần thêm cron: `curl` endpoint không kèm secret — 401 là đủ biến, 500 "Thiếu …" là thiếu.
+- **[Xu · 28/10] Tách một tổng có làm tròn (ceil + trần) ra theo nguồn: chia SỐ ĐÃ TRẢ theo tỉ lệ, đừng tính lại từng nguồn.** ceil từng nguồn cộng lại ≠ ceil tổng, và tháng đã chốt tay lệch công thức hiện tại ⇒ lấy số đã vào sổ, chia theo tỉ lệ EXP bằng phần dư lớn nhất (Hamilton) để cột cộng đúng tổng, phần không chia được vào "Khác". Tỉ lệ tính trực tiếp quá trần 8 s ⇒ cache bảng, làm mới trong cùng job đồng bộ, trước bước khoá ví.
 - **[Gami · 16/10] Thưởng theo thành tích phải ghi vào THỜI ĐIỂM ĐẠT, không phải lúc hệ thống phát hiện / em bấm nhận** — mở tính năng muộn thì quét bù cả mùa dồn vào tháng hiện tại. Sửa luật đã phát thưởng: chạy thử trong rollback, liệt kê từng em mất gì + ví có âm không, rồi mới xoá (Luật xoá) và chốt lại xu.
 - **[Kỹ thuật · 16/10] JS `String.replace(a, b)` biến `$$` trong `b` thành `$`** ⇒ chèn khối SQL có `$$` bằng replace là hỏng thân hàm. Dùng `s.split(a).join(b)`.
 - **[Bot TA · 15/10] Bản tin để CEO duyệt: gửi bản xem trước vào chat RIÊNG của Thùy (`ban-tin.mjs --gui-rieng`), mẫu 1 TA thì `--chi`; chỉ đăng nhóm khi được bảo "đăng".** Chữ trên tin phải đọc được không cần giải thích ("×2" bị chê ⇒ "2 học sinh"); từ "trễ" chỉ dùng khi thật sự có hạn đã qua mà người dùng đã có cách làm (chấm công hệ thống mới ra ⇒ "cần hoàn thành").
@@ -1046,3 +1140,24 @@
 - **Script ghép data 1 lần: 1 transaction + gộp theo khoá tự nhiên (tên Bài) + xoá script sau khi chạy.** Không idempotent thì đừng để lại trong repo — người sau chạy lại là nhân đôi 150 câu.
 - **Bộ lọc "chỉ hiện khi có dữ liệu" (`coMucDo`) cho component dùng chung.** Thêm filter độ khó vào `DangPicker` mà không làm rối nhánh chưa có `muc_do`: điều kiện hiện = tồn tại ≥1 leaf có giá trị, không `if (nhanh === 'hinh_hoc')` (§1.6 symmetry).
 - **git sau stash-pop/rebase: `git status` NGAY trước `git commit`, add theo tên.** 16/09 một `git commit` trần dính 6 file phiên khác đã staged sẵn (CEO cho push chung, nhưng lẽ ra không được xảy ra).
+
+## Bài học 12→23/10 — Nông trại + app HS (đừng đạp lại)
+
+- **Service worker (Workbox navigateFallback) trả app HS vào iframe game** ⇒ "vào được trò chơi" nhưng hiện app HS thay vì game. Hỏng IM LẶNG, chỉ ở máy từng cài PWA. Luật: mọi đường tĩnh nhúng iframe (`/games/`) phải nằm trong `navigateFallbackDenylist`; sau deploy kiểm `sw.js` production có dòng đó. (Browser pane không đăng ký được SW nên không tái hiện được — sửa từ hành vi Workbox.)
+- **Số tiền/xu cộng theo con số client báo = tin client.** `s.thang.ra` do game gửi lên; server chỉ giới hạn trần. Muốn chống gian thật phải đo ở server (số ngày/phút chơi do `fn_nt_nhip` ghi). Đừng mô tả "tối đa 20 xu/tháng" như thể đã chống gian.
+- **Đồng bộ bằng số LUỸ KẾ (`diemTieu`, `thang.ra`), không bằng sự kiện** — server cộng phần chênh so với lần đã nhận ⇒ gửi lặp/mất gói không nhân đôi/mất tiền. Mẫu để tái dùng cho mọi khoản "game → ví".
+- **"0 dòng" khi đọc bằng role CLI KHÔNG phải bằng chứng bảng rỗng** (RLS/owner): `giai_thuong` đọc qua app hoặc service role. Đã dính khi dò giải thưởng T9.
+- **Đổi luật pha ở game ⇒ sửa `tools/test-engine.mjs` cùng lúc** (đã dính: khẳng định "mèo/chim tắt ở pha 1" làm test đỏ sau khi mở thú cưng). Chạy test TRƯỚC khi sync sang ERP.
+- **Chạy generator migration thất bại vẫn có thể áp file rỗng** (`202610141758` là no-op; việc thật ở `…1759`). Kiểm nội dung file trước `npm run migrate`.
+- **Bảng của owner khác không `ALTER` được** (`thong_bao_hs` "must be owner") ⇒ tạo bảng riêng (`hs_tin_moi`) rồi GỘP khi hiển thị, đừng cố mở rộng bảng cũ.
+- **Đẩy từ worktree tạm cắt từ `origin/main`** khi checkout chính còn commit chưa push/tệp bẩn của phiên khác: copy đúng file của mình + append DEVLOG ở đó; tránh cherry-pick (DEVLOG xung đột).
+
+## Bài học 07→23/10 — Chấm MT · Khảo sát · bảng kết quả theo chuyên đề (đừng đạp lại)
+
+- **"Lưu được chưa" phải kiểm bằng DB, không bằng UI.** Ô nhận xét/điểm trông đã lưu nhưng upsert `gami_grades` dính NOT NULL `result` ⇒ lỗi im lặng. Không gửi `result` thì `update().match()`, có thì `upsert().select().single()`; callback trả dòng vừa ghi để vá tại chỗ. Ô nhập theo HS phải có `key` gồm hsId + giá trị đã lưu, không thì nhận xét em trước dính sang em sau.
+- **Công thức điểm câu ở TRIGGER DB, không ở client** (Đ = full, S = 0, C = để trống chờ người chấm): đổi Đ/C/S thì điểm tự tính lại; tổng MT cũng trigger. Hai đường nhập (buổi học / lá chấm) dùng chung nên không bao giờ lệch.
+- **Nguồn điểm câu = ĐỀ GỐC, không phải bản gán lớp.** Sửa đề gốc mà bản 'mt_buoi' giữ `diemByCau` cũ ⇒ màn chấm vẫn "tối đa 2 điểm". Đọc gốc qua `nguon_id`.
+- **Thi CHUNG (không lớp) = buổi có `lop_id` NULL + `de_id`**, không đẻ N buổi cho N lớp. `hinh_gt_buoi` thuộc owner `postgres` (không thêm cột được) ⇒ nối bằng `cau_hinh->>buoiHocId`. Mọi hàm đọc khung đề phải rẽ nhánh `de_id is not null` ⇒ đọc thẳng đề gốc.
+- **Phân loại nghiệp vụ (Cơ bản/Nâng cao) theo ĐÚNG lời CEO, đừng tự nới.** T suy rộng "tên chuyên đề có 'thực tế' cũng NC" ⇒ gắn nhầm bài cái thang (chuyên đề cũ HGT "Toán thực tế" thuộc "Tỉ số lượng giác"), Thùy hỏi "sao lại có Toán thực tế". Luật hiện hành: chỉ chủ đề "Các mô hình … nâng cao". Cờ `nang_cao` của PHẦN đề KHÔNG dùng được cho việc này (đề KS K9 chỉ 1 phần Tự luận).
+- **Bản xuất ảnh/PDF: bề rộng cột tính theo CỠ CHỮ (đơn vị F), không px cố định** — px cố định ⇒ thêm cột là trang co lại, chữ bé (Thùy: "PH không đọc được"); nhưng khuôn quá hẹp thì chữ to quá (bản dọc 30F ≈ 14pt bị chê, 48F ≈ 11pt vừa). Bản dọc cho điện thoại: cột đánh số + chú giải tên trên đầu, lớp ghi dưới tên.
+- **Chunk động (jspdf, html2canvas) 404 sau mỗi lần deploy** với tab mở sẵn — không phải lỗi chức năng; đã có tự reload qua `vite:preloadError`. Test xuất file trong Browser pane: hook `HTMLAnchorElement.prototype.click` (ảnh) + `URL.createObjectURL` (PDF của jsPDF) rồi đếm `/Type /Page`.

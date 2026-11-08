@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react'
 import { DauTrangHS, HEAD, MAU, NutHS, THE_TRON } from '../skin/KhungHS'
 import { laySkin } from '../skin/registry'
-import { NV_CHON, anhDauNv, hopDauNv, moTaNv, tenNv, type NvId } from '../skin/nhanVat'
+import { NV_CHON, anhDauNvGoc as anhDauNv, hopDauNvGoc as hopDauNv, moTaNv, tenNv, type NvId } from '../skin/nhanVat'
 import type { TuTheDau } from '../skin/heroDau'
 
 const CHU_NOI = { textShadow: '0 0 3px var(--sk-bg), 0 0 6px var(--sk-bg), 0 2px 10px var(--sk-bg)' }

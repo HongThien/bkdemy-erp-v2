@@ -1,0 +1,432 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "NNB01105",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ",
+   "nhom": "Giá trị lượng giác của một góc",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "*) Nếu đề bài cho điểm $M(x_0;y_0)$ là điểm biểu diễn của góc $\\alpha (0^\\circ \\le \\alpha \\le 180^\\circ)$trên nửa đường tròn đơn vị ( $\\widehat{xOM} = \\alpha$) Khi đó:\n\t$\\circ$ $\\sin \\alpha=y_0$\n\t$\\circ$ $\\cos \\alpha=x_0$\n\t$\\circ$ Khi $\\alpha \\ne 90^\\circ$ (hay là $x_0 \\ne 0$), $tan\\alpha=\\dfrac{y_0}{x_0}$ \n\t$\\circ$ Khi $\\alpha \\ne 0^\\circ$ và $\\alpha \\ne 180^\\circ$ (hay là $y_0 \\ne 0$)  $\\cot\\alpha=\\dfrac{x_0}{y_0}$ \n*) Nếu đề bài yêu cầu tính giá trị lượng giác của góc đã biết số đo, sử dụng bảng giá trị lượng giác của các góc đặc biệt hoặc bấm máy tính Casio để tính các giá trị lượng giác có trong yêu cầu đề bài.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/71465ddd-87bc-4bb3-8a48-1f4d5851edb8.png)",
+   "can_dien_ly_thuyet_nhom": false,
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T110030101",
+     "ten_cu": "Giá trị lượng giác của một góc",
+     "noi_dung_cu": "*) Nếu đề bài cho điểm $M(x_0;y_0)$ là điểm biểu diễn của góc $\\alpha (0^\\circ \\le \\alpha \\le 180^\\circ)$trên nửa đường tròn đơn vị ( $\\widehat{xOM} = \\alpha$) Khi đó:\n\t$\\circ$ $\\sin \\alpha=y_0$\n\t$\\circ$ $\\cos \\alpha=x_0$\n\t$\\circ$ Khi $\\alpha \\ne 90^\\circ$ (hay là $x_0 \\ne 0$), $tan\\alpha=\\dfrac{y_0}{x_0}$ \n\t$\\circ$ Khi $\\alpha \\ne 0^\\circ$ và $\\alpha \\ne 180^\\circ$ (hay là $y_0 \\ne 0$)  $\\cot\\alpha=\\dfrac{x_0}{y_0}$ \n*) Nếu đề bài yêu cầu tính giá trị lượng giác của góc đã biết số đo, sử dụng bảng giá trị lượng giác của các góc đặc biệt hoặc bấm máy tính Casio để tính các giá trị lượng giác có trong yêu cầu đề bài.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/71465ddd-87bc-4bb3-8a48-1f4d5851edb8.png)"
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB01107",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ",
+   "nhom": "Nhận diện mối quan hệ của các giá trị lượng giác bù hoặc phụ nhau và các hệ thức lượng giác cơ bản",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Mối quan hệ lượng giác của các góc bù hoặc phụ nhau:\n$\\circ$ Hai góc bù nhau:\n $\\sin(180^\\circ - \\alpha) = \\sin \\alpha$\n $\\cos(180^\\circ - \\alpha) = -\\cos \\alpha$\n $\\tan(180^\\circ - \\alpha) = -\\tan \\alpha$\n $\\cot(180^\\circ - \\alpha) = -\\cot \\alpha$\n$\\circ$ Hai góc phụ nhau:\n $\\sin(90^\\circ - \\alpha) = \\cos \\alpha$\n $\\cos(90^\\circ - \\alpha) = \\sin \\alpha$\n $\\tan(90^\\circ - \\alpha) = \\cot \\alpha$\n $\\cot(90^\\circ - \\alpha) = \\tan \\alpha$",
+   "can_dien_ly_thuyet_nhom": false,
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T110030103",
+     "ten_cu": "Nhận diện mối quan hệ lượng giác của 2 góc bù nhau hoặc phụ nhau",
+     "noi_dung_cu": "Mối quan hệ lượng giác của các góc bù hoặc phụ nhau:\n$\\circ$ Hai góc bù nhau:\n $\\sin(180^\\circ - \\alpha) = \\sin \\alpha$\n $\\cos(180^\\circ - \\alpha) = -\\cos \\alpha$\n $\\tan(180^\\circ - \\alpha) = -\\tan \\alpha$\n $\\cot(180^\\circ - \\alpha) = -\\cot \\alpha$\n$\\circ$ Hai góc phụ nhau:\n $\\sin(90^\\circ - \\alpha) = \\cos \\alpha$\n $\\cos(90^\\circ - \\alpha) = \\sin \\alpha$\n $\\tan(90^\\circ - \\alpha) = \\cot \\alpha$\n $\\cot(90^\\circ - \\alpha) = \\tan \\alpha$"
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB01108",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ",
+   "nhom": "Rút gọn hoặc tính giá trị của biểu thức lượng giác",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Sử dụng mối quan hệ lượng giác của 2 góc bù hoặc phụ nhau để rút gọn biểu thức lượng giác\n$\\circ$ Hai góc bù nhau:\n $\\sin(180^\\circ - \\alpha) = \\sin \\alpha$\n $\\cos(180^\\circ - \\alpha) = -\\cos \\alpha$\n $\\tan(180^\\circ - \\alpha) = -\\tan \\alpha$\n $\\cot(180^\\circ - \\alpha) = -\\cot \\alpha$\n$\\circ$ Hai góc phụ nhau:\n $\\sin(90^\\circ - \\alpha) = \\cos \\alpha$\n $\\cos(90^\\circ - \\alpha) = \\sin \\alpha$\n $\\tan(90^\\circ - \\alpha) = \\cot \\alpha$\n $\\cot(90^\\circ - \\alpha) = \\tan \\alpha$",
+   "can_dien_ly_thuyet_nhom": false,
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T110030104",
+     "ten_cu": "Rút gọn biểu thức lượng giác sử dụng mối quan hệ lượng giác của hai góc bù hoặc phụ nhau",
+     "noi_dung_cu": "Sử dụng mối quan hệ lượng giác của 2 góc bù hoặc phụ nhau để rút gọn biểu thức lượng giác\n$\\circ$ Hai góc bù nhau:\n $\\sin(180^\\circ - \\alpha) = \\sin \\alpha$\n $\\cos(180^\\circ - \\alpha) = -\\cos \\alpha$\n $\\tan(180^\\circ - \\alpha) = -\\tan \\alpha$\n $\\cot(180^\\circ - \\alpha) = -\\cot \\alpha$\n$\\circ$ Hai góc phụ nhau:\n $\\sin(90^\\circ - \\alpha) = \\cos \\alpha$\n $\\cos(90^\\circ - \\alpha) = \\sin \\alpha$\n $\\tan(90^\\circ - \\alpha) = \\cot \\alpha$\n $\\cot(90^\\circ - \\alpha) = \\tan \\alpha$"
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB01410",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Hệ thức lượng trong tam giác",
+   "nhom": "Định lí cosin trong tam giác",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "bang_cu": []
+  },
+  {
+   "nhom_id": "NNB01411",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Hệ thức lượng trong tam giác",
+   "nhom": "Định lí sin trong tam giác",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "bang_cu": []
+  },
+  {
+   "nhom_id": "NNB01412",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Hệ thức lượng trong tam giác",
+   "nhom": "Tính diện tích tam giác",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "bang_cu": []
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "NDB00549",
+   "nhom_id": "NNB01105",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ",
+   "nhom": "Giá trị lượng giác của một góc",
+   "dang": "xác định giá trị lg của góc dựa vào tọa độ điểm biểu diễn trên đường tròn lượng giác",
+   "mo_ta": "Đề bài cho tọa độ điểm M biểu diễn góc đó trên nửa đường tròn đơn vị, yêu cầu tính giá trị lượng giác của góc đó",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00550",
+   "nhom_id": "NNB01105",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ",
+   "nhom": "Giá trị lượng giác của một góc",
+   "dang": "tính giá trị của 1 biểu thức lượng giác không chứa biến",
+   "mo_ta": "Bài tập yêu cầu tính giá trị lượng giác hoặc biểu thức lượng giác khi đã biết số đo các góc, chỉ cần mấy máy tính hoặc sử dụng bảng giá trị lượng giác của một số góc đặc biệt là tính được",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00889",
+   "nhom_id": "NNB01105",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ",
+   "nhom": "Giá trị lượng giác của một góc",
+   "dang": "Xác định dấu của giá trị lượng giác",
+   "mo_ta": "Cho góc là góc nhọn hoặc góc tù, hỏi các giá trị lượng giác của góc có dấu âm hay dương",
+   "ly_thuyet_hien_co": "**1. Phương pháp làm bài:**\nB1: Xác định vị trí điểm biểu diễn của góc đó trên đường tròn lượng giác\nB2: Dựa vào dấu của tọa độ điểm biểu diễn để xác định dấu của các giá trị lượng giác.\n**2. Ví dụ minh họa:**\nCho $\\alpha$ là góc nhọn ($0^\\circ < \\alpha < 90^\\circ$). Khẳng định nào sau đây là đúng?\nLời giải:\nVì $\\alpha$ là góc nhọn nên $\\alpha$ thuộc góc phần tư thứ I.\nDo đó, điểm M là điểm biểu diễn của góc $\\alpha$ sẽ có tọa độ $x_0>0$; $y_0>0$\n=>   $\\sin \\alpha > 0$, $\\cos \\alpha > 0$, $\\tan \\alpha > 0$, $\\cot \\alpha > 0$.",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": false,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": [
+    {
+     "ma_dang_cu": "T110030102",
+     "ten_cu": "Xác định dấu của giá trị lượng giác",
+     "noi_dung_cu": "**1. Phương pháp làm bài:**\nB1: Xác định vị trí điểm biểu diễn của góc đó trên đường tròn lượng giác\nB2: Dựa vào dấu của tọa độ điểm biểu diễn để xác định dấu của các giá trị lượng giác.\n**2. Ví dụ minh họa:**\nCho $\\alpha$ là góc nhọn ($0^\\circ < \\alpha < 90^\\circ$). Khẳng định nào sau đây là đúng?\nLời giải:\nVì $\\alpha$ là góc nhọn nên $\\alpha$ thuộc góc phần tư thứ I.\nDo đó, điểm M là điểm biểu diễn của góc $\\alpha$ sẽ có tọa độ $x_0>0$; $y_0>0$\n=>   $\\sin \\alpha > 0$, $\\cos \\alpha > 0$, $\\tan \\alpha > 0$, $\\cot \\alpha > 0$."
+    }
+   ]
+  },
+  {
+   "dang_id": "NDB00552",
+   "nhom_id": "NNB01107",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ",
+   "nhom": "Nhận diện mối quan hệ của các giá trị lượng giác bù hoặc phụ nhau và các hệ thức lượng giác cơ bản",
+   "dang": "Nhận diện mối quan hệ lượng giác của 2 góc bù nhau",
+   "mo_ta": "Nhận diện mối quan hệ lượng giác của 2 góc bù nhau",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00553",
+   "nhom_id": "NNB01107",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ",
+   "nhom": "Nhận diện mối quan hệ của các giá trị lượng giác bù hoặc phụ nhau và các hệ thức lượng giác cơ bản",
+   "dang": "Nhận diện mối quan hệ lượng giác của 2 góc phụ nhau",
+   "mo_ta": "Nhận diện mối quan hệ lượng giác của 2 góc phụ nhau",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00557",
+   "nhom_id": "NNB01107",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ",
+   "nhom": "Nhận diện mối quan hệ của các giá trị lượng giác bù hoặc phụ nhau và các hệ thức lượng giác cơ bản",
+   "dang": "nhận diện các hệ thức lượng giác cơ bản",
+   "mo_ta": "nhận diện các hệ thức lượng giác cơ bản",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00890",
+   "nhom_id": "NNB01108",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ",
+   "nhom": "Rút gọn hoặc tính giá trị của biểu thức lượng giác",
+   "dang": "Cho một giá trị lượng giác, tính các giá trị lượng giác còn lại",
+   "mo_ta": "Đề bài cho một giá trị lượng giác, yêu cầu tính các giá trị lượng giác còn lại của góc đó hoặc tính giá trị của biểu thức chứa các lượng giác của góc đó",
+   "ly_thuyet_hien_co": "**1. Phương pháp giải**\nSử dụng các hệ thức lượng giác cơ bản để tính các giá trị lượng giác chưa biết từ giá trị lượng giác đã biết\n$\\tan \\alpha = \\dfrac{\\sin \\alpha}{\\cos \\alpha}\\ (\\alpha \\neq 90^{\\circ})$\n$\\cot \\alpha = \\dfrac{\\cos \\alpha}{\\sin \\alpha}\\ (\\alpha \\neq 0^{\\circ};180^{\\circ})$\n$\\tan \\alpha .\\cot \\alpha = 1\\ (\\alpha \\neq 0^{\\circ};90^{\\circ};180^{\\circ})$\n$\\sin^2 \\alpha + \\cos^2 \\alpha = 1$\n$1 + \\tan^2 \\alpha = \\dfrac{1}{\\cos^2 \\alpha}\\ (\\alpha \\neq 90^{\\circ})$\n$1 + \\cot^2 \\alpha = \\dfrac{1}{\\sin^2 \\alpha}\\ (\\alpha \\neq 0^{\\circ};180^{\\circ})$\n\n**2. Ví dụ minh họa**\nVí dụ 1: Nếu $\\tan \\alpha = 3$ thì $\\cos \\alpha$ bằng bao nhiêu?\nLời giải\nTa có $1 + \\tan^2 \\alpha = \\dfrac{1}{\\cos^2 \\alpha} \\Leftrightarrow \\cos^2 \\alpha = \\dfrac{1}{1 + \\tan^2 \\alpha} = \\dfrac{1}{1 + 3^2} = \\dfrac{1}{10}$.\nSuy ra $\\cos \\alpha = \\pm \\dfrac{\\sqrt{10}}{10}$.\nVí dụ 2: Cho $\\sin \\alpha = \\dfrac{1}{3}$, $90^{\\circ} < \\alpha < 180^{\\circ}$. Giá trị của biểu thức $P = 3\\cot \\alpha + 4\\tan \\alpha$ là:\nLời giải\nTa có $\\sin^2 \\alpha + \\cos^2 \\alpha = 1 \\Leftrightarrow \\cos^2 \\alpha = 1 - \\sin^2 \\alpha = \\dfrac{8}{9} \\Leftrightarrow \\begin{cases} \\cos \\alpha = \\dfrac{2\\sqrt{2}}{3} \\\\ \\cos \\alpha = -\\dfrac{2\\sqrt{2}}{3} \\end{cases}$.\nVì $\\sin \\alpha = \\dfrac{1}{3}$, $90^{\\circ} < \\alpha < 180^{\\circ} \\Rightarrow \\cos \\alpha = -\\dfrac{2\\sqrt{2}}{3} \\Rightarrow \\tan \\alpha = \\dfrac{1}{-\\dfrac{2\\sqrt{2}}{3}} = -\\dfrac{3}{2\\sqrt{2}}$, $\\cot \\alpha = -2\\sqrt{2}$.\nVậy $P = 3\\cot \\alpha + 4\\tan \\alpha = -7\\sqrt{2}$",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": false,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": [
+    {
+     "ma_dang_cu": "T110030106",
+     "ten_cu": "Cho một giá trị lượng giác, tính các giá trị lượng giác còn lại",
+     "noi_dung_cu": "**1. Phương pháp giải**\nSử dụng các hệ thức lượng giác cơ bản để tính các giá trị lượng giác chưa biết từ giá trị lượng giác đã biết\n$\\tan \\alpha = \\dfrac{\\sin \\alpha}{\\cos \\alpha}\\ (\\alpha \\neq 90^{\\circ})$\n$\\cot \\alpha = \\dfrac{\\cos \\alpha}{\\sin \\alpha}\\ (\\alpha \\neq 0^{\\circ};180^{\\circ})$\n$\\tan \\alpha .\\cot \\alpha = 1\\ (\\alpha \\neq 0^{\\circ};90^{\\circ};180^{\\circ})$\n$\\sin^2 \\alpha + \\cos^2 \\alpha = 1$\n$1 + \\tan^2 \\alpha = \\dfrac{1}{\\cos^2 \\alpha}\\ (\\alpha \\neq 90^{\\circ})$\n$1 + \\cot^2 \\alpha = \\dfrac{1}{\\sin^2 \\alpha}\\ (\\alpha \\neq 0^{\\circ};180^{\\circ})$\n\n**2. Ví dụ minh họa**\nVí dụ 1: Nếu $\\tan \\alpha = 3$ thì $\\cos \\alpha$ bằng bao nhiêu?\nLời giải\nTa có $1 + \\tan^2 \\alpha = \\dfrac{1}{\\cos^2 \\alpha} \\Leftrightarrow \\cos^2 \\alpha = \\dfrac{1}{1 + \\tan^2 \\alpha} = \\dfrac{1}{1 + 3^2} = \\dfrac{1}{10}$.\nSuy ra $\\cos \\alpha = \\pm \\dfrac{\\sqrt{10}}{10}$.\nVí dụ 2: Cho $\\sin \\alpha = \\dfrac{1}{3}$, $90^{\\circ} < \\alpha < 180^{\\circ}$. Giá trị của biểu thức $P = 3\\cot \\alpha + 4\\tan \\alpha$ là:\nLời giải\nTa có $\\sin^2 \\alpha + \\cos^2 \\alpha = 1 \\Leftrightarrow \\cos^2 \\alpha = 1 - \\sin^2 \\alpha = \\dfrac{8}{9} \\Leftrightarrow \\begin{cases} \\cos \\alpha = \\dfrac{2\\sqrt{2}}{3} \\\\ \\cos \\alpha = -\\dfrac{2\\sqrt{2}}{3} \\end{cases}$.\nVì $\\sin \\alpha = \\dfrac{1}{3}$, $90^{\\circ} < \\alpha < 180^{\\circ} \\Rightarrow \\cos \\alpha = -\\dfrac{2\\sqrt{2}}{3} \\Rightarrow \\tan \\alpha = \\dfrac{1}{-\\dfrac{2\\sqrt{2}}{3}} = -\\dfrac{3}{2\\sqrt{2}}$, $\\cot \\alpha = -2\\sqrt{2}$.\nVậy $P = 3\\cot \\alpha + 4\\tan \\alpha = -7\\sqrt{2}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "NDB00556",
+   "nhom_id": "NNB01108",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ",
+   "nhom": "Rút gọn hoặc tính giá trị của biểu thức lượng giác",
+   "dang": "Rút gọn hoặc tính giá trị biểu thức sử dụng các công thức đảo pha",
+   "mo_ta": "Các bài toán yêu cầu rút gọn hoặc tính giá trị biểu thức chứa giá trị lượng giác của góc (90-alpha) hay (180-alpha). Áp dụng công thức đảo pha của 2 góc phụ hoặc bù rồi thêm 1~2 bước tính toán đơn giản là ra đáp án",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00562",
+   "nhom_id": "NNB01108",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ",
+   "nhom": "Rút gọn hoặc tính giá trị của biểu thức lượng giác",
+   "dang": "Cho tan hoặc cot, tính giá trị biểu thức bậc nhất trên bậc nhất của sin và cos",
+   "mo_ta": "Cho tan hoặc cot, tính giá trị biểu thức bậc nhất trên bậc nhất của sin và cos",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00561",
+   "nhom_id": "NNB01108",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ",
+   "nhom": "Rút gọn hoặc tính giá trị của biểu thức lượng giác",
+   "dang": "Tính giá trị của biểu thức lượng giác không chứa biến",
+   "mo_ta": "Đề bài yêu cầu tính giá trị của biểu thức lượng giác không chứa biến, trong đó các góc đều phụ hoặc bù nhau và có thể sử dụng công thức về mối quan hệ lượng giác giữa 2 góc bù hoặc phụ nhau để đảo pha và sử dụng các hệ thức lượng giác cơ bản để tính toán.",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00560",
+   "nhom_id": "NNB01108",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ",
+   "nhom": "Rút gọn hoặc tính giá trị của biểu thức lượng giác",
+   "dang": "Rút gọn hoặc tính giá trị của biểu thức lượng giác khi biết tổng sin+cos",
+   "mo_ta": "Rút gọn hoặc tính giá trị của biểu thức lượng giác khi biết tổng sin+cos",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00563",
+   "nhom_id": "NNB01108",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ",
+   "nhom": "Rút gọn hoặc tính giá trị của biểu thức lượng giác",
+   "dang": "Một số bài toán khác về rút gọn biểu thức lượng giác",
+   "mo_ta": "Một số bài toán khác về rút gọn biểu thức lượng giác. Học sinh cần biến đổi đại số tự do, có thể sử dụng các công thức mối quan hệ của 2 góc bù, phụ nhau hoặc sử dụng các hệ thức lượng giác cơ bản mà ko có cách làm cố định (Không thuộc một trong các dạng đã nên ở trên)",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00762",
+   "nhom_id": "NNB01410",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Hệ thức lượng trong tam giác",
+   "nhom": "Định lí cosin trong tam giác",
+   "dang": "Nhận diện định lý cos",
+   "mo_ta": "Nhận diện định lý cos",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00765",
+   "nhom_id": "NNB01410",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Hệ thức lượng trong tam giác",
+   "nhom": "Định lí cosin trong tam giác",
+   "dang": "Giải tam giác khi biết 2 cạnh và góc xen giữa",
+   "mo_ta": "Giải tam giác khi biết 2 cạnh và góc xen giữa",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00766",
+   "nhom_id": "NNB01410",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Hệ thức lượng trong tam giác",
+   "nhom": "Định lí cosin trong tam giác",
+   "dang": "Giải tam giác khi biết 3 cạnh",
+   "mo_ta": "Giải tam giác khi biết 3 cạnh",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00767",
+   "nhom_id": "NNB01410",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Hệ thức lượng trong tam giác",
+   "nhom": "Định lí cosin trong tam giác",
+   "dang": "Bài toán thực tế giải tam giác sử dụng định lý cos",
+   "mo_ta": "Bài toán thực tế giải tam giác sử dụng định lý cos",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00763",
+   "nhom_id": "NNB01411",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Hệ thức lượng trong tam giác",
+   "nhom": "Định lí sin trong tam giác",
+   "dang": "Nhận diện định lý sin",
+   "mo_ta": "Nhận diện định lý sin",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00768",
+   "nhom_id": "NNB01411",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Hệ thức lượng trong tam giác",
+   "nhom": "Định lí sin trong tam giác",
+   "dang": "Giải tam giác khi biết 2 cạnh và 1 góc không xen giữa",
+   "mo_ta": "Giải tam giác khi biết 2 cạnh và 1 góc không xen giữa",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00769",
+   "nhom_id": "NNB01411",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Hệ thức lượng trong tam giác",
+   "nhom": "Định lí sin trong tam giác",
+   "dang": "Giải tam giác khi biết 2 góc và 1 cạnh",
+   "mo_ta": "Giải tam giác khi biết 2 góc và 1 cạnh",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00770",
+   "nhom_id": "NNB01411",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Hệ thức lượng trong tam giác",
+   "nhom": "Định lí sin trong tam giác",
+   "dang": "Tính bán kính đường tròn ngoại tiếp tam giác",
+   "mo_ta": "Tính bán kính đường tròn ngoại tiếp tam giác dựa vào định lý sin trong tam giác",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00771",
+   "nhom_id": "NNB01411",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Hệ thức lượng trong tam giác",
+   "nhom": "Định lí sin trong tam giác",
+   "dang": "Bài toán thực tế giải tam giác sử dụng định lý sin",
+   "mo_ta": "Bài toán thực tế giải tam giác sử dụng định lý sin",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00764",
+   "nhom_id": "NNB01412",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Hệ thức lượng trong tam giác",
+   "nhom": "Tính diện tích tam giác",
+   "dang": "Nhận diện công thức tính diện tích tam giác",
+   "mo_ta": "Nhận diện công thức tính diện tích tam giác",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00772",
+   "nhom_id": "NNB01412",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Hệ thức lượng trong tam giác",
+   "nhom": "Tính diện tích tam giác",
+   "dang": "Tính diện tích tam giác",
+   "mo_ta": "Tính diện tích tam giác",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00773",
+   "nhom_id": "NNB01412",
+   "chu_de": "Chủ đề: Hệ thức lượng trong tam giác",
+   "chuyen_de": "Hệ thức lượng trong tam giác",
+   "nhom": "Tính diện tích tam giác",
+   "dang": "Bài toán thực tế tính diện tích tam giác, đa giác",
+   "mo_ta": "Bài toán thực tế tính diện tích tam giác, đa giác",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  }
+ ]
+}

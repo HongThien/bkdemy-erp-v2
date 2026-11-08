@@ -23,7 +23,7 @@ export type LuongThang = {
   ngoai_package: number; gross: number; tien_phat: number; net: number
   chi_tiet: {
     lop: { lop: string; la_chu: boolean; si_tb: number; bac: number; tg_lam: number; so_buoi: number; ti_le_tg: number; btvn_lam: number; btvn_dinh_muc: number; ti_le_btvn: number; tien: number }[]
-    bo_tro: { gio: number; so_lop: number; chi_tieu_moi_lop: number; chi_tieu: number; ti_le: number | null; tong_bac: number; lop_chinh: string | null; tien: number }
+    bo_tro: { gio: number; gio_khai?: number; gio_trung?: number; so_lop: number; chi_tieu_moi_lop: number; chi_tieu: number; ti_le: number | null; tong_bac: number; lop_chinh: string | null; tien: number }
     ngoai_package: { loai: string; ngay: string; lop: string | null; so_luong: number; don_gia: number | null; thieu_don_gia: boolean }[]
     day_thay: number; tien_phat: number
   }
@@ -43,8 +43,8 @@ export const NHAN_CO: Record<string, { t: string; nhe?: boolean }> = {
   quen_ra: { t: 'Quên checkout' }, khai_bu: { t: 'Khai bù', nhe: true }, nhap_ho: { t: 'Nhập hộ', nhe: true },
   ca_khong_viec: { t: 'Ca chưa ghi việc' }, buoi_huy: { t: 'Buổi đã huỷ' }, khong_co_buoi: { t: 'Không có buổi trên lịch' },
   hai_ta_cung_buoi: { t: 'Hai TA cùng buổi' }, truoc_gio_vao: { t: 'Trước giờ checkin' }, sau_gio_ra: { t: 'Sau giờ checkout' },
-  trung_gio: { t: 'Trùng giờ việc khác' }, ngoai_gio: { t: 'Ngoài 7h–22h30' }, thieu_gio: { t: 'Thiếu giờ' },
-  chua_don_gia: { t: 'Chưa có đơn giá', nhe: true }, ca_bi_tu_choi: { t: 'Ca bị từ chối' }, lop_chua_co_ta: { t: 'Lớp hôm đó chưa phân TA' },
+  trung_gio: { t: 'Trùng giờ việc khác (bổ trợ chồng giờ chỉ tính 1 lần)' }, ngoai_gio: { t: 'Ngoài 7h–22h30' }, thieu_gio: { t: 'Thiếu giờ' },
+  chua_don_gia: { t: 'Chưa có đơn giá', nhe: true }, ca_bi_tu_choi: { t: 'Ca bị từ chối — duyệt lại ca hoặc từ chối việc' }, lop_chua_co_ta: { t: 'Lớp hôm đó chưa phân TA' },
 }
 export const nhanCo = (ma: string) => NHAN_CO[ma] ?? { t: ma }
 
@@ -99,20 +99,33 @@ export async function dsLop(): Promise<{ id: string; ten_lop: string; mon: strin
 
 // ── PHÍA QUẢN LÝ (ERP: lá ta_cong_duyet · ta_luong) — quyền chặn ở DB (co_quyen_ghi / co_chuc_nang) ──
 export type ThieuCong = { loai: 'buoi' | 'ca' | 'bo_tro_bu' | 'bo_tro_yeu' | 'bo_tro_duoi'; ngay: string; lop_id: string | null; ten: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; buoi_hoc_id: string | null; ca_bo_tro_id: string | null; nguoi_phu_trach: string | null }
-export type DonGia = { ma: string; ten: string; si_tu: number | null; si_den: number | null; gia_tri: number; don_vi: string; hieu_luc_tu: string; dang_hieu_luc: boolean; ghi_chu: string; nguoi_dat: string | null; dat_at: string }
+export type DonGia = { id: string; khoa_ky: string | null; ma: string; ten: string; si_tu: number | null; si_den: number | null; gia_tri: number; don_vi: string; hieu_luc_tu: string; dang_hieu_luc: boolean; ghi_chu: string; nguoi_dat: string | null; dat_at: string }
 
 export const doiChieu = (tu: string, den: string) => rpc<DongCong[]>('fn_ta_doi_chieu', { p_tu: tu, p_den: den })
 export const thieuCong = (tu: string, den: string) => rpc<ThieuCong[]>('fn_ta_buoi_thieu_cong', { p_tu: tu, p_den: den })
 export const duyetCong = (ca: string[], viec: string[], ketQua: 'da_duyet' | 'tu_choi', lyDo?: string) =>
   rpc<number>('fn_ta_duyet_cong', { p_ca: ca, p_viec: viec, p_ket_qua: ketQua, p_ly_do: lyDo ?? null })
 export const chotGio = (id: string, ngay: string, vao: string, ra: string) => rpc<null>('fn_ta_chot_gio', { p_id: id, p_vao: tsVN(ngay, vao), p_ra: tsVN(ngay, ra) })
+// Chốt giờ theo việc trong ca (Thùy 04/11): DB tính vào = sớm hơn (checkin, việc đầu), ra = việc cuối
+export const chotGioTheoViec = (id: string) => rpc<{ vao: string; ra: string }>('fn_ta_chot_gio_theo_viec', { p_id: id })
 export const nhapHoCa = (ns: string, ngay: string, vao: string, ra: string, lyDo: string) =>
   rpc<string>('fn_ta_cham_cong_nhap_ho', { p_ns: ns, p_vao: tsVN(ngay, vao), p_ra: tsVN(ngay, ra), p_ly_do: lyDo })
 export const nhapHoViec = (ns: string, v: KhaiViec, lyDo: string) => rpc<string>('fn_ta_nhap_ho_viec', {
   p_ns: ns, p_loai: v.loai, p_ngay: v.ngay, p_lop: v.lop ?? null, p_buoi: v.buoi ?? null, p_ca: v.ca ?? null,
   p_bat: v.bat || null, p_ket: v.ket || null, p_hs: v.hs?.trim() || null, p_ly_do: lyDo,
 })
-export const bangDonGia = () => rpc<DonGia[]>('fn_ta_bang_don_gia')
+export const bangDonGia = () => rpc<DonGia[]>('fn_ta_don_gia_ds')   // kèm id + khoa_ky (tháng đã chốt đang dùng dòng này ⇒ không sửa/xoá)
+// Thùy 04/11: sửa / xoá đơn giá (xoá = ẩn dòng, giữ lịch sử); dòng đang dùng cho tháng đã chốt bị DB chặn.
+export const suaDonGia = (id: string, gia: number, hieuLucTu: string, ghiChu: string) => rpc<null>('fn_ta_sua_don_gia', { p_id: id, p_gia: gia, p_hieu_luc_tu: hieuLucTu, p_ten: null, p_ghi_chu: ghiChu })
+export const xoaDonGia = (id: string, lyDo: string) => rpc<null>('fn_ta_xoa_don_gia', { p_id: id, p_ly_do: lyDo })
+export type ThongSoKy = { lan: number; chot_at: string; chup_at: string; don_gia: { ma: string; ten: string; si_tu: number | null; si_den: number | null; gia_tri: number; don_vi: string; hieu_luc_tu: string }[]; loai_viec: { ma: string; ten: string; nhom: string; tinh_vao: string; don_vi: string; active: boolean }[] }
+// Thùy 04/11: LOẠI VIỆC & CƠ CHẾ sửa trên màn (mig 202611042237). Cơ chế: tg (đặc thù) · bo_tro (giờ vào chỉ tiêu) · ngoai (giờ/buổi × giá).
+export type LoaiViecQL = { ma: string; ten: string; co_che: 'tg' | 'bo_tro' | 'ngoai'; dac_thu: boolean; nhom: string; tinh_vao: string; don_vi: 'gio' | 'buoi'; can_lop: boolean; can_hs: boolean; thu_tu: number; active: boolean; ghi_chu: string; gia_tri: number | null; gia_hieu_luc_tu: string | null; gia_id: string | null; gia_khoa_ky: string | null; so_viec: number }
+export const dsLoaiViecQL = () => rpc<LoaiViecQL[]>('fn_ta_loai_viec_ds')
+export type LuuLoaiViec = { ma: string | null; ten: string; coChe: 'tg' | 'bo_tro' | 'ngoai'; donVi: 'gio' | 'buoi'; canLop: boolean; canHs: boolean; ghiChu: string; gia: number | null; giaTu: string | null }
+export const luuLoaiViec = (x: LuuLoaiViec) => rpc<string>('fn_ta_loai_viec_luu', { p_ma: x.ma, p_ten: x.ten, p_co_che: x.coChe, p_don_vi: x.donVi, p_can_lop: x.canLop, p_can_hs: x.canHs, p_ghi_chu: x.ghiChu, p_gia: x.gia, p_gia_tu: x.giaTu })
+export const dungLoaiViec = (ma: string, active: boolean) => rpc<null>('fn_ta_loai_viec_dung', { p_ma: ma, p_active: active })
+export const thongSoKy = (ky: string, lan: number) => rpc<ThongSoKy | null>('fn_ta_ky_thong_so', { p_ky: ky, p_lan: lan })
 // Đổi giá = THÊM dòng mới có hiệu lực từ ngày chỉ định (bảng chỉ-thêm). Bậc lương phải kèm khoảng sĩ số của bậc đó.
 export const datDonGia = (ma: string, gia: number, tu: string, o: { ten?: string; siTu?: number | null; siDen?: number | null; ghiChu?: string } = {}) =>
   rpc<string>('fn_ta_dat_don_gia', { p_ma: ma, p_gia: gia, p_hieu_luc_tu: tu, p_ten: o.ten ?? null, p_si_tu: o.siTu ?? null, p_si_den: o.siDen ?? null, p_ghi_chu: o.ghiChu ?? '' })

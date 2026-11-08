@@ -35,7 +35,9 @@ export async function onThiLuyenSinh(deId: string): Promise<{ baiTestId: string;
 export async function onThiBatDau(deId: string): Promise<{ baiTestId: string; lai: boolean }> {
   const { data, error } = await supabase.rpc('fn_hs_thi_thu_bat_dau', { p_de: deId })
   if (error) throw error
-  const d = data as { bai_test_id: string; lai: boolean }
+  const d = data as { bai_test_id: string | null; lai: boolean } | null
+  // Thiếu mã bài ⇒ báo lỗi rõ. (24/10: trước đây null lọt qua ⇒ app rơi về màn chính, em tưởng bị đá ra.)
+  if (!d?.bai_test_id) throw new Error('Không mở được bài thi lúc này — em thử lại nhé.')
   return { baiTestId: d.bai_test_id, lai: d.lai }
 }
 

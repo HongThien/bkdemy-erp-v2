@@ -1,0 +1,20 @@
+{
+ "id": "NDB01598",
+ "ten": "Xác định dãy số cho bởi cách liệt kê số hạng",
+ "mo_ta": "Dãy số được cho bằng cách viết ra (liệt kê) các số hạng hoặc mô tả bằng lời rồi yêu cầu liệt kê: viết đúng dãy, chọn dãy đúng, đếm số số hạng, tìm số hạng đứng thứ $k$. Không thuộc dạng này: tìm công thức $u_n$ (NDB01019), tính $u_n$ khi đã có công thức hoặc truy hồi, xét tăng giảm của dãy liệt kê (NDB00599).",
+ "ly_thuyet": "##TC\n• Dãy số là hàm số xác định trên $\\mathbb{N}^{\\ast}$, viết $u_1,u_2,u_3,\\dots$; $u_1$ là số hạng đầu.\n• Cách cho bằng liệt kê: viết lần lượt các số hạng theo thứ tự; dãy hữu hạn kết thúc ở số hạng cuối.\n• Thứ tự là một phần của dãy: cùng các số nhưng sắp xếp khác nhau là hai dãy khác nhau.\n\n##PP Xác định dãy số cho bằng liệt kê\nLiệt kê đủ các phần tử thoả mô tả của đề (kiểm tra từng điều kiện, không sót, không thừa).\nSắp xếp theo thứ tự đề yêu cầu (tăng dần, giảm dần) và gán $u_1,u_2,\\dots$\nĐọc yêu cầu: số số hạng, $u_k$ hoặc chọn phương án đúng.\n\n##CY\nSố $0$ và $1$ không phải số nguyên tố; số tự nhiên có hai chữ số thì chữ số hàng chục phải khác $0$.",
+ "vi_du": "##VD\nViết dãy số $(u_n)$ gồm các số tự nhiên chẵn lớn hơn $0$ và nhỏ hơn $12$ theo thứ tự tăng dần. Dãy có bao nhiêu số hạng? Tìm $u_4$.\n\nBài giải:\nCác số tự nhiên chẵn lớn hơn $0$ và nhỏ hơn $12$ là $2;\\ 4;\\ 6;\\ 8;\\ 10$.\nSắp xếp tăng dần ta được dãy $2;\\ 4;\\ 6;\\ 8;\\ 10$ nên dãy có $5$ số hạng và $u_4=8$.\nVậy dãy có $5$ số hạng và $u_4=8$.\n\n##VD\nViết dãy số $(u_n)$ gồm các số nguyên tố nhỏ hơn $20$ theo thứ tự giảm dần. Tìm số số hạng của dãy và $u_5$.\n\nBài giải:\nCác số nguyên tố nhỏ hơn $20$ là $2;\\ 3;\\ 5;\\ 7;\\ 11;\\ 13;\\ 17;\\ 19$ ($1$ không phải số nguyên tố).\nSắp xếp giảm dần ta được dãy $19;\\ 17;\\ 13;\\ 11;\\ 7;\\ 5;\\ 3;\\ 2$.\nDãy có $8$ số hạng, trong đó $u_1=19$, $u_2=17$, $u_3=13$, $u_4=11$, $u_5=7$.\nVậy dãy có $8$ số hạng và $u_5=7$.\n\n##VD\nCho dãy số $(u_n)$ gồm tất cả các số tự nhiên có hai chữ số mà tích hai chữ số bằng $6$, sắp xếp theo thứ tự tăng dần. Viết dãy số đó và tìm $u_3$.\n\nBài giải:\nGọi số cần tìm là $\\overline{ab}$ với $a\\in\\{1;2;\\dots;9\\}$, $b\\in\\{0;1;\\dots;9\\}$ và $a\\cdot b=6$.\nCác cặp $(a;b)$ thoả mãn là $(1;6)$, $(2;3)$, $(3;2)$, $(6;1)$ (cặp $(a;b)$ khác đều có tích khác $6$).\nCác số tương ứng là $16;\\ 23;\\ 32;\\ 61$.\nSắp xếp tăng dần ta được dãy $16;\\ 23;\\ 32;\\ 61$, trong đó $u_3=32$.\nVậy dãy số là $16;\\ 23;\\ 32;\\ 61$ và $u_3=32$.",
+ "nguon": [
+  {
+   "sach": "Toán 11 Từ Tâm",
+   "bai/tep": "C2-B1-DÃY SỐ-P1.docx, mục 2 'Cách xác định dãy số' (liệt kê / công thức / truy hồi / mô tả)",
+   "ghi_chu": "Chỉ có định nghĩa các cách cho dãy, không có ví dụ riêng cho dạng liệt kê. Công thức trong file .docx nguồn không trích được bằng zipfile+xml (MathType/ảnh) nên đề và lời giải TỰ VIẾT lại bằng LaTeX và TỰ KIỂM TOÁN; sách chỉ dùng xác nhận kiểu bài."
+  },
+  {
+   "sach": "PNL Toán 11 2026",
+   "bai/tep": "Bài 01. Dãy số, Dạng 01 (GV/HS)",
+   "ghi_chu": "Không có ví dụ liệt kê riêng; 3 ví dụ do soạn, lấy ý từ câu thật T111060101110 (số nguyên tố nhỏ hơn 10)."
+  }
+ ],
+ "ghi_chu": "Ví dụ tự soạn, đã kiểm lại đáp số. Câu thật gán dạng này trong lô K11: T111060101110."
+}

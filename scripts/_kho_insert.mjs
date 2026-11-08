@@ -19,6 +19,17 @@
 //   · bảng không có các cột ten_de_goc / ai_model / loi_giai_ai / dap_an_ai / ai_de_xuat_at · không có bảng mệnh đề riêng.
 export const SUBJECTS = ['hgt', 'dai', 'khtn', 'hinh_hoc']
 
+// ⭐ 26/10 (Thùy "chuyển hẳn sang bản đồ + kho mới"; "chủ yếu là m làm" = Claude chạy các lệnh nhập kho):
+// Kho Đại/HGT ở KHỐI CHẠY BẢN ĐỒ MỚI (DB quyết: public._bdm_ds_khoi_chay(), hiện K6–12) — cấp 1 và KHTN/Hình giữ y cũ:
+//   · dang_chinh LUÔN = dạng chờ của khối (mã dạng cũ là lưu trữ). Lô truyền mã dạng cũ thật ⇒ đổi sang dạng chờ, mã cũ giữ ở
+//     dang_ai_de_xuat làm vết + cảnh báo (stderr). Mệnh đề Đ/S: ma_dang = dạng chờ (ý không gắn dạng — Thùy 26/10).
+//   · DẠNG BÀI (mã NDB…) đi qua field `dang_bai` của câu thường ⇒ ĐỀ XUẤT `<kho>_bdm_de_xuat` nguon 'ai'
+//     (luật "đề xuất trước, ghi sau"; `dang_bai_chac` 'cao'|'vua', `dang_bai_ly_do`). CHỈ khi người đã chốt (`dang_bai_chot: true`)
+//     mới ghi thẳng GÁN `<kho>_bdm_gan_cau` nguon 'nguoi' (qua hàm DB _bdm_nguoi_gan_cau).
+//   · Câu Đ/S: field `chu_de` (mã NCD…) ⇒ kho Đ/S của chủ đề `<kho>_bdm_kho_ds` (nguon 'ai'; `chu_de_chot: true` ⇒ 'nguoi').
+//   · Mã câu: dạng chờ + STT lớn nhất trên MỌI câu mang tiền tố (kể cả kho rác), khoá CÙNG khoá với RPC fn_bdm_nhap_cau (màn Nhập kho).
+//   Khối chưa chạy bản đồ mới mà lô có `dang_bai`/`chu_de` ⇒ báo lỗi (không ghi bừa).
+
 const PREFIX = { dai: 'T1', hgt: 'T3', khtn: 'K', hinh_hoc: 'HH' }
 /** Mã dạng chờ — PHẢI khớp public._kho_dang_cho(p_tbl, p_khoi) trong DB. */
 export function maDangCho(subject, khoi) {
@@ -37,7 +48,7 @@ const SQL_CHUAN = (col) => `regexp_replace(lower(${col}), '\\s+', '', 'g')`
  * @param {'hgt'|'dai'|'khtn'} p.subject
  * @param {Array<object>} p.cauList        — mỗi câu: { dang_chinh, loai_cau, noi_dung, ... }
  * @param {boolean} [p.choTrung=false]     — true = bỏ lọc trùng (nhập cả bản trùng)
- * @returns {Promise<{maCauList: string[], trung: Array<{idx:number, ma_cau_cu:string, trong_lo?:boolean}>, chua_dang: number[]}>}
+ * @returns {Promise<{maCauList: string[], trung: Array<{idx:number, ma_cau_cu:string, trong_lo?:boolean}>, chua_dang: number[], bdm: {khoi: string[], de_xuat: number, gan: number, kho_ds: number, doi_dang_cu: Array<{idx:number, ma_dang_cu:string}>}}>}
  *   maCauList[i] = ma_cau MỚI nếu insert, = ma_cau CŨ nếu trùng (không insert).
  */
 export async function insertCauBatch({ client, subject, cauList, choTrung = false }) {
@@ -86,6 +97,52 @@ export async function insertCauBatch({ client, subject, cauList, choTrung = fals
 
   const table = `${subject}_cau_hoi`
   const banDo = `${subject}_ban_do`
+
+  // ── Bản đồ mới (xem đầu file): đổi dạng cũ → dạng chờ ở khối mới, gom dạng bài / chủ đề để ghi sau khi chèn câu ──
+  const bdm = { khoi: new Set(), de_xuat: 0, gan: 0, kho_ds: 0, doi_dang_cu: [] }
+  if (subject === 'dai' || subject === 'hgt') {
+    const { rows: [{ k }] } = await client.query(`select public._bdm_ds_khoi_chay() k`)
+    const khoiMoi = new Set(k ?? [])
+    const { rows: kr } = await client.query(`select ma_dang, khoi from ${banDo} where ma_dang = any($1::text[])`, [[...new Set(cauList.map((q) => q.dang_chinh))]])
+    const khoiCua = new Map(kr.map((r) => [r.ma_dang, r.khoi]))
+    for (let i = 0; i < cauList.length; i++) {
+      const q = cauList[i]
+      const kh = q.khoi != null ? String(q.khoi) : khoiCua.get(q.dang_chinh)
+      const moi = kh != null && khoiMoi.has(kh)
+      q._bdm = moi
+      if (!moi) {
+        if (q.dang_bai || q.chu_de) throw new Error(`câu #${i}: khối ${kh ?? '?'} chưa chạy bản đồ mới — không nhận dang_bai/chu_de`)
+        continue
+      }
+      bdm.khoi.add(kh)
+      const cho = maDangCho(subject, kh)
+      if (q.dang_chinh !== cho) {
+        bdm.doi_dang_cu.push({ idx: i, ma_dang_cu: q.dang_chinh })
+        q.dang_ai_de_xuat = q.dang_ai_de_xuat ?? q.dang_chinh
+        q.dang_chinh = cho
+      }
+      if (q.loai_cau === 'dung_sai') {
+        if (q.dang_bai) throw new Error(`câu #${i}: câu Đúng/Sai không gán dạng bài — dùng chu_de (kho Đ/S của chủ đề)`)
+        for (const m of q.menh_de ?? []) m.ma_dang = cho
+      } else if (q.chu_de) throw new Error(`câu #${i}: chu_de chỉ dành cho câu Đúng/Sai — câu thường dùng dang_bai`)
+    }
+    if (bdm.doi_dang_cu.length) console.error(`⚠ bản đồ mới: ${bdm.doi_dang_cu.length} câu khối ${[...bdm.khoi].join(',')} truyền mã dạng CŨ ⇒ vào dạng chờ (mã cũ giữ ở dang_ai_de_xuat); dạng bài đi qua field dang_bai`)
+    // dạng bài / chủ đề phải thuộc đúng nhánh của kho (Đại = 'toan', HGT = 'hgt')
+    const nhanh = subject === 'dai' ? 'toan' : 'hgt'
+    const dbs = [...new Set(cauList.filter((q) => q._bdm && q.dang_bai).map((q) => q.dang_bai))]
+    if (dbs.length) {
+      const { rows } = await client.query(`select d.id from dai_bdm_dang_bai d join dai_bdm_nhom n on n.id = d.nhom_id join dai_bdm_chu_de cd on cd.id = n.chu_de_id
+         where d.id = any($1::text[]) and cd.nhanh = $2`, [dbs, nhanh])
+      const co = new Set(rows.map((r) => r.id)); const sai = dbs.filter((x) => !co.has(x))
+      if (sai.length) throw new Error(`dang_bai không có / không thuộc nhánh ${nhanh} của bản đồ mới: ${sai.join(', ')}`)
+    }
+    const cds = [...new Set(cauList.filter((q) => q._bdm && q.chu_de).map((q) => q.chu_de))]
+    if (cds.length) {
+      const { rows } = await client.query(`select id from dai_bdm_chu_de where id = any($1::text[]) and nhanh = $2`, [cds, nhanh])
+      const co = new Set(rows.map((r) => r.id)); const sai = cds.filter((x) => !co.has(x))
+      if (sai.length) throw new Error(`chu_de không có / không thuộc nhánh ${nhanh} của bản đồ mới: ${sai.join(', ')}`)
+    }
+  }
 
   // Verify dang_chinh có trong bản đồ
   const dangSet = [...new Set(cauList.map(q => q.dang_chinh))]
@@ -156,7 +213,7 @@ export async function insertCauBatch({ client, subject, cauList, choTrung = fals
       if (t.ma_cau_cu) maCauByIdx[t.idx] = t.ma_cau_cu
       else if (t.trong_lo) { maCauByIdx[t.idx] = maCauByIdx[t.idx_goc]; t.ma_cau_cu = maCauByIdx[t.idx_goc] }
     }
-    return { maCauList: maCauByIdx, trung, chua_dang: chuaDang }
+    return { maCauList: maCauByIdx, trung, chua_dang: chuaDang, bdm }
   }
 
   for (const [dang, idxs] of groups) {
@@ -164,6 +221,8 @@ export async function insertCauBatch({ client, subject, cauList, choTrung = fals
       `select pg_advisory_xact_lock(hashtextextended($1, 0))`,
       [`macau:${subject}:${dang}`]
     )
+    // cùng khoá với RPC fn_bdm_nhap_cau (màn Nhập kho cấp mã dạng chờ) — 2 đường cấp mã không giẫm nhau
+    if (laDangCho(dang)) await client.query(`select pg_advisory_xact_lock(hashtext($1))`, [`${table}:${dang}`])
     const { rows: [{ nxt }] } = await client.query(
       `select coalesce(max(
            nullif(substring(ma_cau from ${dang.length + 1}), '')::int
@@ -208,7 +267,7 @@ export async function insertCauBatch({ client, subject, cauList, choTrung = fals
          $5::jsonb, $6::jsonb, $7, $8,
          $9, $10,
          $11, $12, $13, $14,
-         false, $2,
+         false, $19,
          $15, $16, $17, $18,
          ${isAi ? 'now()' : 'null'}
        )`,
@@ -220,8 +279,23 @@ export async function insertCauBatch({ client, subject, cauList, choTrung = fals
         q.nguon || 'de_thi', q.nguon_giai || 'nguoi',
         lc(q.ma_cum), lc(q.ten_de_goc),
         ai.giai_method, ai.ai_model, ai.loi_giai_ai, ai.dap_an_ai,
+        q.dang_ai_de_xuat ?? q.dang_chinh,
       ]
     )
+    // Bản đồ mới: dạng bài (đề xuất AI / gán người đã chốt) · chủ đề kho Đ/S — chỉ câu MỚI chèn
+    if (q._bdm && q.dang_bai) {
+      if (q.dang_bai_chot) { await client.query(`select public._bdm_nguoi_gan_cau($1, $2, $3)`, [subject, maCau, q.dang_bai]); bdm.gan++ }
+      else {
+        await client.query(`insert into ${subject}_bdm_de_xuat (ma_cau, dang_bai_id, chac, ly_do, nguon) values ($1, $2, $3, $4, 'ai') on conflict (ma_cau) do nothing`,
+          [maCau, q.dang_bai, q.dang_bai_chac === 'cao' ? 'cao' : 'vua', String(q.dang_bai_ly_do ?? '')])
+        bdm.de_xuat++
+      }
+    }
+    if (q._bdm && q.chu_de) {
+      await client.query(`insert into ${subject}_bdm_kho_ds (ma_cau, chu_de_id, nguon) values ($1, $2, $3) on conflict (ma_cau) do nothing`,
+        [maCau, q.chu_de, q.chu_de_chot ? 'nguoi' : 'ai'])
+      bdm.kho_ds++
+    }
   }
 
   // Câu trùng với kho: trả ma_cau cũ ở đúng vị trí (đề thi nối được); trùng trong lô: trỏ về ma_cau của bản đầu.
@@ -230,5 +304,5 @@ export async function insertCauBatch({ client, subject, cauList, choTrung = fals
     else if (t.trong_lo) { maCauByIdx[t.idx] = maCauByIdx[t.idx_goc]; t.ma_cau_cu = maCauByIdx[t.idx_goc] }
   }
 
-  return { maCauList: maCauByIdx, trung, chua_dang: chuaDang }
+  return { maCauList: maCauByIdx, trung, chua_dang: chuaDang, bdm: { ...bdm, khoi: [...bdm.khoi] } }
 }

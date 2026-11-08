@@ -10,6 +10,10 @@
 //   ở repo, KHÔNG ghi DB (dang_ai_de_xuat = dạng chờ như insertCauBatch), để lượt gán dạng sau chạy độc lập. Không cần trạm kiem-dang.
 //   Hệ quả DB: câu dạng chờ chưa bấm duyệt được (_kho_la_dang_cho) — duyệt lời giải sau khi gán dạng.
 //
+// ⭐ 26/10 BẢN ĐỒ MỚI (khối chạy bản đồ mới — DB quyết, hiện K6–12; luật ở đầu _kho_insert.mjs): câu LUÔN vào dạng chờ của khối;
+//   dạng của câu = field `dang_bai` (NDB…) của lô ⇒ ĐỀ XUẤT chờ duyệt (*_bdm_de_xuat nguon 'ai'), không đổi dang_chinh. Trạm kiem-dang
+//   so `dang_bai` với dạng bài model khác gán mù (`--kiem-ngoai`: cau[ma].dang_bai, hoặc .dang nếu ghi NDB). --chua-gan-dang ⇒ bỏ dang_bai.
+//   Cấp 1 (4T, 5T…) giữ y cũ.
 // Không --ghi: CHẠY THỬ — xét cổng, chèn trong 1 transaction rồi ROLLBACK, sơ đồ không upload. --ghi: upload SVG + COMMIT.
 //
 // Biên bản mỗi câu (cổng tự quyết câu nào cần trạm nào — cong-ghi.mjs tramBatBuoc):
@@ -117,6 +121,7 @@ const giu = [], tuChoi = [], boQua = []
 // thừa 1 SVG cho câu cũ — file mồ côi trong bucket). Lọc lại lần nữa trong transaction bên dưới (nguồn sự thật lúc ghi).
 const db = new pg.Client({ connectionString: env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
 await db.connect()
+const KHOI_MOI = new Set((await db.query('select public._bdm_ds_khoi_chay() k')).rows[0].k ?? [])   // khối chạy bản đồ mới
 const { rows: coTruoc } = await db.query(`select ten_de_goc from dai_cau_hoi where xoa_at is null and ten_de_goc like $1`, [`${SACH} · %`])
 const daCoTruoc = new Set(coTruoc.map((r) => r.ten_de_goc))
 const boTruoc = []
@@ -128,8 +133,10 @@ for (const c of lo) {
   if (kiemDe?.ket_qua === 'khong_dat') { tuChoi.push({ c, ly_do: [`hình đề: ${kiemDe.ghi_chu}`] }); continue }   // hình sai bài thì không upload
   const { url, kiemA, loi } = await soDo(c)
   if (loi) { tuChoi.push({ c, ly_do: [`sơ đồ: ${loi}`] }); continue }
+  const moi = KHOI_MOI.has(String(c.khoi))
+  if (moi && c.dang_chinh && !/000000$/.test(c.dang_chinh) && !c.dang_bai) console.error(`⚠ ${c.ma_nguon}: khối ${c.khoi} chạy bản đồ mới — mã dạng cũ ${c.dang_chinh} bị bỏ (vào dạng chờ); điền dang_bai (NDB…) để có đề xuất`)
   const cau = {
-    dang_chinh: CHUA_GAN ? maDangCho('dai', c.khoi) : c.dang_chinh, loai_cau: c.loai_cau, noi_dung: c.noi_dung, lua_chon: null, menh_de: null,
+    dang_chinh: CHUA_GAN || moi ? maDangCho('dai', c.khoi) : c.dang_chinh, ...(moi && !CHUA_GAN && c.dang_bai ? { dang_bai: c.dang_bai } : {}), loai_cau: c.loai_cau, noi_dung: c.noi_dung, lua_chon: null, menh_de: null,
     dap_an: c.dap_an, loi_giai: c.loi_giai, anh_de: coHinhDe ? await hinhDe(c) : null, anh_dap_an: url, ma_cum: null,
     nguon_giai: 'ai', hinh_do_may_ve: !!c.so_do, hinh_de_sach: coHinhDe,
   }
@@ -143,10 +150,12 @@ for (const c of lo) {
   if (kiemDe) bb('kiem-hinh-de', 'code', kiemDe, LAN_KIEM_CODE)
   const n = ngoai?.cau?.[c.ma_nguon]
   // nhóm do LUẬT MÁY quyết (lo-tu-chep --co-ban: câu tầng cơ bản ⇒ nhóm Kiến thức cơ bản của bài học) — lô mang sẵn biên bản, không cần gán mù
-  if (c.kiem_dang && !/000000$/.test(cau.dang_chinh)) bb('kiem-dang', 'code', c.kiem_dang, LAN_KIEM_CODE)
-  else if (n && !/000000$/.test(cau.dang_chinh)) bb('kiem-dang', 'model_khac', n.dang === c.dang_chinh
-    ? { ket_qua: 'dat', ghi_chu: `model khác gán mù ra cùng dạng (${n.dang})` }
-    : { ket_qua: 'khong_dat', ghi_chu: `model khác gán mù ra ${n.dang}: ${String(n.ly_do ?? '').slice(0, 160)}` }, ngoai.lan_chay, ngoai.model)
+  const coDang = moi ? !!cau.dang_bai : !/000000$/.test(cau.dang_chinh)   // có dạng (bản đồ mới: dạng bài) ⇒ cần biên bản kiem-dang
+  const dangLam = moi ? cau.dang_bai : c.dang_chinh, dangMu = moi ? (n?.dang_bai ?? n?.dang) : n?.dang
+  if (c.kiem_dang && coDang) bb('kiem-dang', 'code', c.kiem_dang, LAN_KIEM_CODE)
+  else if (n && coDang) bb('kiem-dang', 'model_khac', dangMu === dangLam
+    ? { ket_qua: 'dat', ghi_chu: `model khác gán mù ra cùng ${moi ? 'dạng bài' : 'dạng'} (${dangMu})` }
+    : { ket_qua: 'khong_dat', ghi_chu: `model khác gán mù ra ${dangMu}: ${String(n.ly_do ?? '').slice(0, 160)}` }, ngoai.lan_chay, ngoai.model)
   if (n && c.so_do && n.hinh_dung != null) bb('kiem-hinh-b', 'model_khac', n.hinh_dung
     ? { ket_qua: 'dat', ghi_chu: `model khác xem ảnh sơ đồ: khớp đề${n.hinh_ghi ? ' — ' + n.hinh_ghi : ''}` }
     : { ket_qua: 'khong_dat', ghi_chu: `model khác xem ảnh sơ đồ: ${n.hinh_ghi ?? 'không khớp'}` }, ngoai.lan_chay, ngoai.model)
@@ -175,7 +184,8 @@ try {
   })
   if (moi.length) {
     const cauList = moi.map(({ c, cau }) => ({ ...cau, khoi: c.khoi, nguon: 'le', giai_method: 'claude_code', ai_model: MODEL_LAM, ten_de_goc: `${SACH} · ${c.ma_nguon}` }))
-    const { maCauList, trung } = await insertCauBatch({ client: db, subject: 'dai', cauList })
+    const { maCauList, trung, bdm } = await insertCauBatch({ client: db, subject: 'dai', cauList })
+    if (bdm?.khoi?.length) console.log(`  bản đồ mới (khối ${bdm.khoi.join(',')}): đề xuất dạng bài ${bdm.de_xuat} · gán ${bdm.gan}`)
     const laTrung = new Set(trung.map((t) => t.idx))
     for (let i = 0; i < moi.length; i++) {
       const { c, kq } = moi[i]

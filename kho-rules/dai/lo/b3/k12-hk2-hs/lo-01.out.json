@@ -1,0 +1,434 @@
+[
+ {
+  "ma_cau": "T11200000010289",
+  "dang_bai_id": "NDB02527",
+  "chac": "cao",
+  "ly_do": "Chọn số máy n, tổng chi phí C(n)=an+b/n: đúng dạng số máy tối ưu."
+ },
+ {
+  "ma_cau": "T11200000010392",
+  "dang_bai_id": "NDB02525",
+  "chac": "cao",
+  "ly_do": "Cho sẵn giá p(x) và chi phí C(x); lập lợi nhuận L=R-C rồi tối ưu sản lượng."
+ },
+ {
+  "ma_cau": "T11200000010330",
+  "dang_bai_id": "NDB02531",
+  "chac": "cao",
+  "ly_do": "Từ s(t) tìm thời điểm vận tốc v=s′ lớn nhất."
+ },
+ {
+  "ma_cau": "T11200000010308",
+  "dang_bai_id": "NDB02518",
+  "chac": "cao",
+  "ly_do": "Cắt bốn góc tấm bìa vuông gập hộp không nắp, thể tích lớn nhất."
+ },
+ {
+  "ma_cau": "T11200000010481",
+  "dang_bai_id": "NDB02492",
+  "chac": "cao",
+  "ly_do": "Hai điểm cực trị bậc ba A,B, viết phương trình đường thẳng AB."
+ },
+ {
+  "ma_cau": "T11200000010253",
+  "dang_bai_id": "NDB02518",
+  "chac": "cao",
+  "ly_do": "Bể trụ có nắp thể tích cố định, vật liệu (chi phí) nhỏ nhất."
+ },
+ {
+  "ma_cau": "T11200000010375",
+  "dang_bai_id": "NDB02525",
+  "chac": "cao",
+  "ly_do": "Doanh thu 316x trừ chi phí C(x) cho sẵn, tìm sản lượng lợi nhuận lớn nhất."
+ },
+ {
+  "ma_cau": "T11200000010250",
+  "dang_bai_id": "NDB02493",
+  "chac": "cao",
+  "ly_do": "Tìm m nguyên để hàm bậc ba đồng biến trên R (Δ′≤0)."
+ },
+ {
+  "ma_cau": "T11200000010478",
+  "dang_bai_id": "NDB02476",
+  "chac": "cao",
+  "ly_do": "Tiệm cận đứng, ngang của hàm bậc nhất/bậc nhất rồi tính a+3b."
+ },
+ {
+  "ma_cau": "T11200000010416",
+  "dang_bai_id": "NDB02464",
+  "chac": "cao",
+  "ly_do": "Cực đại, cực tiểu của hàm bậc ba, tính biểu thức x1-3x2."
+ },
+ {
+  "ma_cau": "T11200000010410",
+  "dang_bai_id": "NDB02514",
+  "chac": "cao",
+  "ly_do": "Công thức mô hình P(R) cho sẵn, tìm công suất cực đại."
+ },
+ {
+  "ma_cau": "T11200000010265",
+  "dang_bai_id": "NDB02465",
+  "chac": "cao",
+  "ly_do": "Hàm tích với mũ e^{2x}: tìm giá trị cực tiểu qua y′ và dấu."
+ },
+ {
+  "ma_cau": "T11200000010244",
+  "dang_bai_id": "NDB02524",
+  "chac": "cao",
+  "ly_do": "Tăng giá thêm 1000 thì bán ít hơn 100: lập lợi nhuận theo số lần tăng giá."
+ },
+ {
+  "ma_cau": "T11200000010488",
+  "dang_bai_id": "NDB02525",
+  "chac": "cao",
+  "ly_do": "Giá p(x) và chi phí C(x) cho sẵn, lập lợi nhuận L=R-C trên [0;100]."
+ },
+ {
+  "ma_cau": "T11200000010312",
+  "dang_bai_id": "NDB02513",
+  "chac": "cao",
+  "ly_do": "Đường thẳng cắt hai tiệm cận tại A,B, tính diện tích tam giác IAB."
+ },
+ {
+  "ma_cau": "T11200000010450",
+  "dang_bai_id": "NDB02525",
+  "chac": "vua",
+  "ly_do": "Doanh thu x·giá(x) rồi tối ưu; không có chi phí nên cũng gần dạng giá-lượng 02524."
+ },
+ {
+  "ma_cau": "T11200000010453",
+  "dang_bai_id": "NDB02527",
+  "chac": "cao",
+  "ly_do": "Chọn số máy tối ưu, chi phí thiết lập tăng theo n, giám sát giảm theo n."
+ },
+ {
+  "ma_cau": "T11200000010288",
+  "dang_bai_id": "NDB02513",
+  "chac": "cao",
+  "ly_do": "Hai tiệm cận cùng hai trục tạo hình chữ nhật, tính diện tích."
+ },
+ {
+  "ma_cau": "T11200000010257",
+  "dang_bai_id": "NDB02469",
+  "chac": "cao",
+  "ly_do": "f′ cho dạng tích có nghiệm bội, hỏi số điểm cực đại."
+ },
+ {
+  "ma_cau": "T11200000010339",
+  "dang_bai_id": "NDB02516",
+  "chac": "cao",
+  "ly_do": "Hàm mô hình V(T) cho sẵn, tìm khoảng nhiệt độ V tăng rồi tính b-a."
+ },
+ {
+  "ma_cau": "T11200000010283",
+  "dang_bai_id": "NDB02512",
+  "chac": "vua",
+  "ly_do": "Điểm M trên đồ thị gần I nhất (Cô-si); dạng 02522 cũng có lý thuyết khoảng cách tới điểm cố định."
+ },
+ {
+  "ma_cau": "T11200000010236",
+  "dang_bai_id": "NDB02524",
+  "chac": "cao",
+  "ly_do": "Tăng giá thêm 1 nghìn thì bán ít hơn 100 chiếc: tối ưu lợi nhuận theo giá."
+ },
+ {
+  "ma_cau": "T11200000010297",
+  "dang_bai_id": "NDB02517",
+  "chac": "cao",
+  "ly_do": "Chi phí trung bình T(x)/x, tìm giá trị tiến tới khi x rất lớn (tiệm cận ngang)."
+ },
+ {
+  "ma_cau": "T11200000010311",
+  "dang_bai_id": "NDB02494",
+  "chac": "cao",
+  "ly_do": "Hàm bậc ba chứa m, điểm cực tiểu M(a;b) thoả a+b=1."
+ },
+ {
+  "ma_cau": "T11200000010366",
+  "dang_bai_id": "NDB02525",
+  "chac": "cao",
+  "ly_do": "Doanh thu D(x) và chi phí bình quân C(x) cho sẵn, lợi nhuận L=D-xC."
+ },
+ {
+  "ma_cau": "T11200000010331",
+  "dang_bai_id": "NDB02517",
+  "chac": "cao",
+  "ly_do": "S(x)=800+1200/(x+2): giá trị dài hạn, không thấp hơn tiệm cận ngang."
+ },
+ {
+  "ma_cau": "T11200000010249",
+  "dang_bai_id": "NDB02478",
+  "chac": "cao",
+  "ly_do": "Tìm tiệm cận xiên bằng chia đa thức rồi tính 24a-b."
+ },
+ {
+  "ma_cau": "T11200000010274",
+  "dang_bai_id": "NDB02525",
+  "chac": "cao",
+  "ly_do": "Giá p(x), chi phí cố định và biến đổi, thuế 7% doanh thu: lập lợi nhuận sau thuế."
+ },
+ {
+  "ma_cau": "T11200000010329",
+  "dang_bai_id": "NDB02513",
+  "chac": "cao",
+  "ly_do": "Tiệm cận xiên cùng hai trục tạo tam giác, tính diện tích."
+ },
+ {
+  "ma_cau": "T11200000010302",
+  "dang_bai_id": "NDB02464",
+  "chac": "cao",
+  "ly_do": "Cực đại x=a, cực tiểu x=b của hàm bậc ba, tính 2a+b."
+ },
+ {
+  "ma_cau": "T11200000010252",
+  "dang_bai_id": "NDB02514",
+  "chac": "cao",
+  "ly_do": "Công thức nồng độ thuốc C(t) cho sẵn, tìm giá trị lớn nhất."
+ },
+ {
+  "ma_cau": "T11200000010327",
+  "dang_bai_id": "NDB02471",
+  "chac": "cao",
+  "ly_do": "GTLN của hàm phân thức y=x+4/(x+1) trên đoạn [0;3]."
+ },
+ {
+  "ma_cau": "T11200000010254",
+  "dang_bai_id": "NDB02524",
+  "chac": "cao",
+  "ly_do": "Tăng giá thuê 50 nghìn thì thêm 2 phòng trống: tối ưu doanh thu."
+ },
+ {
+  "ma_cau": "T11200000010518",
+  "dang_bai_id": "NDB02510",
+  "chac": "vua",
+  "ly_do": "Giải y′=1 (hệ số góc bằng 1) lấy tổng nghiệm; không nói tiếp tuyến nên có thể là dạng đạo hàm 02458."
+ },
+ {
+  "ma_cau": "T11200000010282",
+  "dang_bai_id": "NDB02527",
+  "chac": "cao",
+  "ly_do": "Chọn số máy tối ưu, thiết lập tăng theo n, giám sát giảm theo n."
+ },
+ {
+  "ma_cau": "T11200000010526",
+  "dang_bai_id": "NDB02525",
+  "chac": "cao",
+  "ly_do": "Giá p(x) và chi phí C(x) cho sẵn, lập lợi nhuận L=R-C."
+ },
+ {
+  "ma_cau": "T11200000010293",
+  "dang_bai_id": "NDB02501",
+  "chac": "cao",
+  "ly_do": "Hàm hợp g(x)=f(x²-2x), xét đồng biến qua g′=u′·f′(u)."
+ },
+ {
+  "ma_cau": "T11200000010240",
+  "dang_bai_id": "NDB02526",
+  "chac": "cao",
+  "ly_do": "Chi phí trung bình C̄(x)=x/2+3+8/x, tìm giá trị nhỏ nhất."
+ },
+ {
+  "ma_cau": "T11200000010503",
+  "dang_bai_id": "NDB02512",
+  "chac": "vua",
+  "ly_do": "Hai điểm chạy trên hai nhánh đồ thị, khoảng cách nhỏ nhất; có thể xếp 02522."
+ },
+ {
+  "ma_cau": "T11200000010573",
+  "dang_bai_id": "NDB02500",
+  "chac": "cao",
+  "ly_do": "Hai cực trị của hàm bậc hai/bậc nhất, khoảng cách và khoảng cách tới gốc."
+ },
+ {
+  "ma_cau": "T11200000010530",
+  "dang_bai_id": "NDB02529",
+  "chac": "cao",
+  "ly_do": "Cá bơi ngược dòng, năng lượng E=c·v³·t theo vận tốc, khoảng E giảm."
+ },
+ {
+  "ma_cau": "T11200000010277",
+  "dang_bai_id": "NDB02528",
+  "chac": "cao",
+  "ly_do": "Xuất khẩu cà phê chịu thuế m, tỉ lệ lợi nhuận:thuế 4:1, tối ưu hai tầng."
+ },
+ {
+  "ma_cau": "T11200000010310",
+  "dang_bai_id": "NDB02518",
+  "chac": "cao",
+  "ly_do": "Cắt bốn góc tấm bìa vuông gập hộp không nắp, thể tích lớn nhất."
+ },
+ {
+  "ma_cau": "T11200000010328",
+  "dang_bai_id": "NDB02476",
+  "chac": "cao",
+  "ly_do": "Tiệm cận đứng của y=(-2x-3)/(x+1)."
+ },
+ {
+  "ma_cau": "T11200000010226",
+  "dang_bai_id": "NDB02470",
+  "chac": "cao",
+  "ly_do": "GTLN, GTNN của đa thức bậc ba trên đoạn [-4;4], tính 2M+3n."
+ },
+ {
+  "ma_cau": "T11200000010436",
+  "dang_bai_id": "NDB02464",
+  "chac": "cao",
+  "ly_do": "Hàm trùng phương, tìm điểm cực tiểu qua y′ và dấu."
+ },
+ {
+  "ma_cau": "T11200000010572",
+  "dang_bai_id": "NDB02512",
+  "chac": "vua",
+  "ly_do": "Điểm trên đường cong gần gốc O nhất (Cô-si); dạng 02522 cũng có lý thuyết này."
+ },
+ {
+  "ma_cau": "T11200000010520",
+  "dang_bai_id": "NDB02531",
+  "chac": "cao",
+  "ly_do": "Từ x(t) tìm vận tốc lớn nhất của con lắc."
+ },
+ {
+  "ma_cau": "T11200000010260",
+  "dang_bai_id": "NDB02518",
+  "chac": "cao",
+  "ly_do": "Bể hộp không nắp, đáy dài gấp đôi rộng, diện tích cố định, thể tích lớn nhất."
+ },
+ {
+  "ma_cau": "T11200000010306",
+  "dang_bai_id": "NDB02525",
+  "chac": "cao",
+  "ly_do": "Doanh thu f(x) và chi phí bình quân C(x) cho sẵn, lập lợi nhuận."
+ },
+ {
+  "ma_cau": "T11200000010519",
+  "dang_bai_id": "NDB02531",
+  "chac": "cao",
+  "ly_do": "Từ x(t) tìm vận tốc lớn nhất của con lắc."
+ },
+ {
+  "ma_cau": "T11200000010317",
+  "dang_bai_id": "NDB02459",
+  "chac": "cao",
+  "ly_do": "Hàm chứa căn: tìm khoảng nghịch biến bằng tập xác định và y′."
+ },
+ {
+  "ma_cau": "T11200000010442",
+  "dang_bai_id": "NDB02527",
+  "chac": "cao",
+  "ly_do": "Chia tuyến ống thành n đoạn bằng nhau bởi trạm tăng áp, tối ưu số trạm."
+ },
+ {
+  "ma_cau": "T11200000010268",
+  "dang_bai_id": "NDB02517",
+  "chac": "cao",
+  "ly_do": "Chi phí trung bình 50+70000/x, giá trị tiến tới khi x rất lớn."
+ },
+ {
+  "ma_cau": "T11200000010326",
+  "dang_bai_id": "NDB02518",
+  "chac": "cao",
+  "ly_do": "Cắt bốn góc tấm nhôm vuông gập hộp không nắp, thể tích lớn nhất."
+ },
+ {
+  "ma_cau": "T11200000010460",
+  "dang_bai_id": "NDB02500",
+  "chac": "cao",
+  "ly_do": "Hai cực trị của hàm bậc hai/bậc nhất, khoảng cách d và khoảng cách tới gốc."
+ },
+ {
+  "ma_cau": "T11200000010305",
+  "dang_bai_id": "NDB02494",
+  "chac": "cao",
+  "ly_do": "Hàm bậc ba chứa m, điểm cực tiểu M(a;b) thoả a+b=1."
+ },
+ {
+  "ma_cau": "T11200000010300",
+  "dang_bai_id": "NDB02493",
+  "chac": "cao",
+  "ly_do": "Tìm m để hàm bậc ba nghịch biến trên khoảng (-1;1) bằng cô lập m."
+ },
+ {
+  "ma_cau": "T11200000010408",
+  "dang_bai_id": "NDB02514",
+  "chac": "cao",
+  "ly_do": "Công thức mô hình P(R) cho sẵn, tìm công suất cực đại."
+ },
+ {
+  "ma_cau": "T11200000010299",
+  "dang_bai_id": "NDB02469",
+  "chac": "cao",
+  "ly_do": "f′ cho dạng tích, rút gọn nghiệm bội để đếm số điểm cực trị."
+ },
+ {
+  "ma_cau": "T11200000010421",
+  "dang_bai_id": "NDB02525",
+  "chac": "cao",
+  "ly_do": "Doanh thu f(x) và chi phí bình quân C(x) cho sẵn, lập lợi nhuận."
+ },
+ {
+  "ma_cau": "T11200000010255",
+  "dang_bai_id": "NDB02517",
+  "chac": "cao",
+  "ly_do": "Chi phí f(x) phân thức, giá trị tiến tới khi số năm đủ lớn."
+ },
+ {
+  "ma_cau": "T11200000010438",
+  "dang_bai_id": "NDB02525",
+  "chac": "cao",
+  "ly_do": "Giá cầu P(x), chi phí cố định và linh kiện chia khúc, lợi nhuận sau thuế lớn nhất."
+ },
+ {
+  "ma_cau": "T11200000010419",
+  "dang_bai_id": "NDB02531",
+  "chac": "cao",
+  "ly_do": "Từ s(t) tìm thời điểm vận tốc lớn nhất rồi tính quãng đường."
+ },
+ {
+  "ma_cau": "T11200000010313",
+  "dang_bai_id": "NDB02519",
+  "chac": "cao",
+  "ly_do": "Hình chữ nhật diện tích cố định, chu vi (chi phí rào) nhỏ nhất."
+ },
+ {
+  "ma_cau": "T11200000010325",
+  "dang_bai_id": "NDB02514",
+  "chac": "cao",
+  "ly_do": "Công thức lợi nhuận T(x) cho sẵn theo chi phí quảng cáo, tìm lớn nhất."
+ },
+ {
+  "ma_cau": "T11200000010315",
+  "dang_bai_id": "NDB02472",
+  "chac": "cao",
+  "ly_do": "GTLN, GTNN hàm mũ trên đoạn bằng ẩn phụ t=5^x."
+ },
+ {
+  "ma_cau": "T11200000010246",
+  "dang_bai_id": "NDB02478",
+  "chac": "cao",
+  "ly_do": "Tìm tiệm cận xiên bằng chia đa thức rồi tính a-b."
+ },
+ {
+  "ma_cau": "T11200000010333",
+  "dang_bai_id": "NDB02472",
+  "chac": "cao",
+  "ly_do": "GTLN, GTNN hàm lượng giác bằng ẩn phụ t=sin x, miền t∈[-1;1]."
+ },
+ {
+  "ma_cau": "T11200000010565",
+  "dang_bai_id": "NDB02492",
+  "chac": "cao",
+  "ly_do": "Đường thẳng qua hai cực trị, tối ưu MA+MB bằng đối xứng (đúng ví dụ dạng)."
+ },
+ {
+  "ma_cau": "T11200000010335",
+  "dang_bai_id": "NDB02478",
+  "chac": "cao",
+  "ly_do": "Tìm tiệm cận xiên bằng chia đa thức rồi tính 2a+b."
+ },
+ {
+  "ma_cau": "T11200000010259",
+  "dang_bai_id": "NDB02499",
+  "chac": "cao",
+  "ly_do": "Tâm đối xứng là giao tiệm cận đứng và tiệm cận xiên, tính 3a-b."
+ }
+]

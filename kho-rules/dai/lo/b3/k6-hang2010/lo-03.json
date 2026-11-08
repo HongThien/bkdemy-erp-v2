@@ -1,0 +1,639 @@
+[
+ {
+  "ma_cau": "T106000000580",
+  "loai": "tra_loi_ngan",
+  "de": "Nhiệt độ buổi sáng của phòng ướp lạnh là $-11^{\\circ}C$ và nhiệt độ buổi chiều tăng $5^{\\circ}C$ so với buổi sáng. Nhiệt độ buổi chiều của phòng ướp lạnh là: .............",
+  "dap_an": "-6",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** \"tăng\" nghĩa là cộng thêm, nên nhiệt độ buổi chiều bằng nhiệt độ buổi sáng cộng với mức tăng.\n**Bước 1.** Đổi lời văn thành phép tính: nhiệt độ buổi chiều bằng nhiệt độ buổi sáng cộng với mức tăng.\n**Bước 2.** Viết số âm trong ngoặc rồi lập phép cộng hai số nguyên khác dấu.\n**Bước 3.** Cộng hai số nguyên khác dấu: lấy phần số tự nhiên lớn hơn trừ phần số tự nhiên nhỏ hơn, rồi đặt trước kết quả dấu của số có phần số tự nhiên lớn hơn.\n**Chú ý:** nhiệt độ vẫn còn dưới 0 nên kết quả phải là số âm.\n**Phần 2. Trình bày**\nNhiệt độ buổi chiều của phòng ướp lạnh là:\n$(-11)+5=-6$ ($^{\\circ}C$)",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000169",
+  "loai": "trac_nghiem",
+  "de": "Số 1972 có tổng các chữ số bằng",
+  "lua_chon": [
+   "18",
+   "9",
+   "19",
+   "72"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tổng các chữ số là **cộng từng chữ số** của số đó, không phải giá trị của số.\n**Bước 1.** Tách số $1972$ thành bốn chữ số: hàng nghìn, hàng trăm, hàng chục và hàng đơn vị.\n**Bước 2.** Cộng bốn chữ số đó lại với nhau, cộng cẩn thận từng bước.\n**Bước 3.** Đối chiếu kết quả với các phương án, chú ý hai phương án chỉ hơn kém nhau một đơn vị.\n**Chú ý:** $72$ chỉ là hai chữ số cuối của số $1972$, không phải tổng các chữ số.\n**Phần 2. Trình bày**\nTổng các chữ số của số $1972$ là:\n$1+9+7+2=19$\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000924",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$, biết $(2x-1)(x-3)=0$.",
+  "dap_an": "3",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tích hai thừa số bằng 0 thì **ít nhất một thừa số bằng 0**, nên xét từng trường hợp.\n**Bước 1.** Nhận ra vế trái là tích của hai thừa số $(2x-1)$ và $(x-3)$, vế phải là 0, nên một trong hai thừa số phải bằng 0.\n**Bước 2.** Trường hợp thứ nhất: cho $2x-1=0$, tìm $2x$ rồi xem có số tự nhiên $x$ nào thoả mãn không.\n**Bước 3.** Trường hợp thứ hai: cho $x-3=0$ và tìm $x$ bằng cách lấy hiệu cộng với số trừ.\n**Bước 4.** Đối chiếu từng trường hợp với điều kiện $x$ là số tự nhiên rồi kết luận.\n**Chú ý:** trường hợp $2x=1$ không có số tự nhiên $x$ vì $2.0=0$ còn $2.1=2$, không có số tự nhiên nào nhân 2 ra 1.\n**Phần 2. Trình bày**\n$(2x-1).(x-3)=0$\nVì tích bằng 0 nên  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000999",
+  "loai": "tu_luan",
+  "de": "Một người bán năm giỏ táo và lê. Mỗi giỏ chỉ đựng một loại quả táo hoặc lê, với số lượng trong năm giỏ như sau: 20 quả, 25 quả, 30 quả, 35 quả và 40 quả. Sau khi bán một giỏ lê trong năm giỏ, người ấy thấy số táo còn lại gấp 2 lần số lê còn lại.\na) Tổng số táo và lê ban đầu là 150 quả\nb) Số quả lê trong giỏ đã bán phải chia hết cho 3\nc) Người đó đã bán đi giỏ 30 quả lê và số quả còn lại là 120 quả\nd) Số quả táo ban đầu là 50 quả",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** sau khi bán, số táo gấp 2 lần số lê nên tổng số quả còn lại gấp 3 lần số lê còn lại, tức là chia hết cho 3.\n**Bước 1.** Cộng số quả của cả năm giỏ để kiểm tra mệnh đề a.\n**Bước 2.** Gọi tổng còn lại là hiệu của tổng ban đầu và giỏ đã bán, rồi dùng tính chất chia hết của một hiệu để biết giỏ đã bán phải có tính chất gì.\n**Bước 3.** Trong năm giỏ, tìm giỏ thoả mãn tính chất đó để xét mệnh đề b và c.\n**Bước 4.** Chia số quả còn lại thành phần táo và phần lê, rồi đối chiếu với các giỏ để tìm số táo ban đầu và xét mệnh đề d.\n**Thử lại:** số táo còn lại có đúng gấp 2 lần số lê còn lại hay không.\n**Phần 2. Trình bày**\na) Tổng số quả ban đầu là $20+25+30+35+40=150 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000464",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính (tính hợp lí nếu có thể): $(-57).84+(-57).16$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai tích có **chung thừa số $-57$** nên đặt được thừa số chung (tính chất phân phối).\n**Bước 1.** Quan sát hai tích $(-57).84$ và $(-57).16$: cả hai cùng có thừa số $-57$.\n**Bước 2.** Đặt thừa số chung $-57$ ra ngoài ngoặc, trong ngoặc còn lại tổng $84+16$.\n**Bước 3.** Tính tổng trong ngoặc trước (được số tròn trăm) rồi mới nhân với $-57$.\n**Chú ý:** nhân số âm với số dương thì kết quả là số âm.\n**Phần 2. Trình bày**\n$(-57).84+(-57).16$\n$=(-57).(84+16)$\n$=(-57).100$\n$=-5700$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000651",
+  "loai": "tu_luan",
+  "de": "Cho bảng dữ liệu ban đầu về sở thích của các bạn học sinh lớp 6A như sau:\n(Viết tắt: Nghe nhạc: N, đọc sách: S, cầu lông: C, đá bóng: B)\na) Có bao nhiêu học sinh lớp 6A trong bảng dữ liệu trên?\nb) Hãy lập bảng thống kê về sở thích của các bạn học sinh lớp 6A theo mẫu sau: bảng có hàng \"Sở thích\" gồm bốn cột Nghe nhạc, Đọc sách, Cầu lông, Đá bóng và hàng \"Số học sinh\" để trống.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mỗi ô của bảng dữ liệu là sở thích của **đúng một học sinh**, nên đếm ô cho ý a) và kiểm đếm từng kí hiệu cho ý b).\n**Bước 1.** Đếm số ô của bảng dữ liệu (số hàng nhân số ô mỗi hàng): mỗi ô là một học sinh.\n**Bước 2.** Kiểm đếm lần lượt từng kí hiệu N, S, C, B trong bảng, vừa đếm vừa gạch để không sót, không trùng.\n**Bước 3.** Điền kết quả vào bảng thống kê theo đúng thứ tự cột: Nghe nhạc, Đọc sách, Cầu lông, Đá bóng.\n**Bước 4.** Kiểm tra lại: tổng số học sinh ở bảng thống kê phải bằng số học sinh đã đếm ở ý a).\n**Chú ý:** đừng nhầm hai chữ S (đọc sách) và B (đá bóng), vì cả hai xuất hiện rất nhiều lần.\n**Phần 2. Trình bày**\na) Bảng dữ liệu có 2 hàng, mỗi  …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000408",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính: $[126+(-38)]-[-38-(-126)]$",
+  "dap_an": "0",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính riêng từng ngoặc vuông, nhớ rằng trừ đi một số âm bằng cộng với số đối của nó.\n**Bước 1.** Tính ngoặc vuông thứ nhất: cộng hai số nguyên khác dấu.\n**Bước 2.** Ở ngoặc vuông thứ hai, đổi phép trừ một số âm thành phép cộng với số đối của nó.\n**Bước 3.** Thực hiện phép trừ hai kết quả của hai ngoặc vuông.\n**Chú ý:** $-38-(-126)$ khác $-38-126$; dấu trừ trước ngoặc đổi dấu số trong ngoặc.\n**Phần 2. Trình bày**\n$[126+(-38)]-[-38-(-126)]$\n$=88-[-38+126]$\n$=88-88$\n$=0$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000597",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số nguyên $x$, biết: $x+13=-19$",
+  "dap_an": "-32",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $x$ là **số hạng** chưa biết của phép cộng.\n**Bước 1.** Xác định vai trò: trong phép cộng $x+13=-19$, $x$ là số hạng chưa biết.\n**Bước 2.** Tìm số hạng chưa biết bằng cách lấy tổng trừ đi số hạng đã biết.\n**Bước 3.** Thực hiện phép trừ hai số nguyên: muốn trừ đi một số thì cộng với số đối của số đó.\nThử lại: $(-32)+13=-19$ (đúng).\n**Phần 2. Trình bày**\n$x+13=-19$\n$x=-19-13$\n$x=-32$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000899",
+  "loai": "trac_nghiem",
+  "de": "Vận tốc của ánh sáng trong không khí được các nhà khoa học ghi nhận là khoảng $3.10^8$ m/s. Một máy bay không người lái có thể di chuyển với vận tốc tối đa là $10^3$ m/s. Hỏi vận tốc của ánh sáng trong không khí gấp bao nhiêu lần vận tốc tối đa của máy bay không người lái đó?",
+  "lua_chon": [
+   "$3000$.",
+   "$30000$.",
+   "$300000$.",
+   "$3000000$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** \"gấp bao nhiêu lần\" là phép chia hai vận tốc, và hai luỹ thừa của 10 chia nhau bằng cách trừ số mũ.\n**Bước 1.** Đọc đề để thấy phải lấy vận tốc ánh sáng chia cho vận tốc máy bay, cùng đơn vị m/s.\n**Bước 2.** Chia hai luỹ thừa cùng cơ số 10: giữ nguyên cơ số và trừ các số mũ, thừa số 3 giữ nguyên.\n**Bước 3.** Viết kết quả dạng luỹ thừa thành số tự nhiên rồi đối chiếu phương án.\n**Chú ý:** $10^5$ có 5 chữ số 0 sau chữ số 1; các phương án còn lại sai số lượng chữ số 0.\n**Phần 2. Trình bày**\nVận tốc của ánh sáng gấp vận tốc tối đa của máy bay số lần là:\n$3.10^8:10^3=3.10^5=300000$ (lần)\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000945",
+  "loai": "tu_luan",
+  "de": "So sánh $16^{45}$ và $32^{37}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $16$ và $32$ đều là luỹ thừa của $2$, nên đưa cả hai về cùng cơ số $2$ rồi so sánh hai số mũ.\n**Bước 1.** Nhận ra $16=2^4$ và $32=2^5$, tức là cả hai cơ số đều viết được thành luỹ thừa của $2$.\n**Bước 2.** Viết $16^{45}$ là tích của 45 thừa số $2^4$ rồi cộng các số mũ ($a^m.a^n=a^{m+n}$) để được một luỹ thừa của $2$; làm tương tự với $32^{37}$.\n**Bước 3.** Hai luỹ thừa cùng cơ số $2$: số mũ nào lớn hơn thì luỹ thừa đó lớn hơn, từ đó kết luận so sánh.\n**Phần 2. Trình bày**\nTa có $16=2^4$ nên\n$16^{45}=2^4.2^4.\\dots.2^4$ (45 thừa số $2^4$)\n$=2^{4+4+\\dots+4}$ (45 số 4)\n$=2^{180}$\nTa có $32=2^5$ nên\n$32^{37}=2^5.2^5.\\dots.2^5$ (37 thừa số $2^5$)\n$=2^{5+5+\\dots+ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000217",
+  "loai": "trac_nghiem",
+  "de": "Trong các khẳng định sau, khẳng định đúng là:",
+  "lua_chon": [
+   "Có 5 số nguyên tố bé hơn 10.",
+   "Mọi số chẵn đều không là số nguyên tố.",
+   "Các số chia hết cho 3 thì chia hết cho 9.",
+   "Số 1 là ước của mọi số tự nhiên."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** xét **từng** khẳng định và tìm phản ví dụ cho các khẳng định sai.\n**Bước 1.** Với khẳng định A, liệt kê các số nguyên tố nhỏ hơn 10 rồi đếm xem có đủ 5 số không.\n**Bước 2.** Với khẳng định B và C, thử tìm một số cụ thể làm khẳng định đó sai (số chẵn nào là số nguyên tố, số nào chia hết cho 3 mà không chia hết cho 9).\n**Bước 3.** Với khẳng định D, nhớ định nghĩa ước rồi kiểm xem 1 có chia hết được mọi số tự nhiên không.\n**Phần 2. Trình bày**\nA sai vì các số nguyên tố bé hơn 10 là $2;3;5;7$, chỉ có 4 số.\nB sai vì 2 là số chẵn nhưng là số nguyên tố.\nC sai vì $3\\vdots3$ nhưng $3\\not\\vdots9$.\nD đúng vì mọi số tự nhiên đều chia hết cho 1.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000356",
+  "loai": "tra_loi_ngan",
+  "de": "Để đánh số trang của một cuốn sách, người ta dùng dãy số tự nhiên bắt đầu từ số 1 và phải dùng tất cả 1998 chữ số. Hỏi cuốn sách có bao nhiêu trang?",
+  "dap_an": "702",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** **đếm chữ số theo nhóm trang**: trang có 1 chữ số, trang có 2 chữ số, trang có 3 chữ số.\n**Bước 1.** Đếm số trang có 1 chữ số (trang 1 đến trang 9) và số trang có 2 chữ số (trang 10 đến trang 99), rồi tính số chữ số đã dùng cho từng nhóm.\n**Bước 2.** Lấy tổng số chữ số của đề trừ đi số chữ số của hai nhóm trên để biết còn bao nhiêu chữ số dành cho các trang có 3 chữ số.\n**Bước 3.** Mỗi trang loại này dùng 3 chữ số nên chia số chữ số còn lại cho 3 để ra số trang có 3 chữ số, rồi cộng với 99 trang đứng trước.\n**Chú ý:** các trang từ 10 đến 99 có $99-10+1=90$ trang, đừng tính nhầm thành 89.\nThử lại: $9.1+90.2+603.3=1998$ (đúng).\n**Phần 2. Trình bày**\nTừ trang …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000463",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính (tính hợp lí nếu có thể): $(-90)+(49+90)$",
+  "dap_an": "49",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** có hai số đối nhau là $-90$ và $90$, tổng của chúng bằng 0.\n**Bước 1.** Nhận ra trong biểu thức có hai số đối nhau là $-90$ và $90$.\n**Bước 2.** Dùng tính chất giao hoán và kết hợp của phép cộng để đưa hai số đối này ghép thành một cặp.\n**Bước 3.** Tính tổng của cặp số đối (bằng 0) rồi cộng với số còn lại.\n**Phần 2. Trình bày**\n$(-90)+(49+90)$\n$=(-90)+(90+49)$\n$=[(-90)+90]+49$\n$=0+49$\n$=49$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000971",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm các số tự nhiên $x$, biết $65-(73-2x)=36$.",
+  "dap_an": "22",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** coi cả cụm ngoặc $(73-2x)$ là **số trừ** chưa biết, rồi mới tìm tiếp $2x$.\n**Bước 1.** Xác định vai trò: trong phép trừ $65-(73-2x)=36$, cụm $(73-2x)$ là số trừ.\n**Bước 2.** Tìm số trừ bằng cách lấy số bị trừ trừ đi hiệu, được giá trị của cả cụm ngoặc.\n**Bước 3.** Lúc này $2x$ là số trừ trong phép trừ $73-2x$, tìm nó bằng cách lấy số bị trừ trừ đi hiệu.\n**Bước 4.** Cuối cùng $x$ là thừa số chưa biết: lấy tích chia cho thừa số đã biết.\nThử lại: $65-(73-2.22)=65-29=36$ (đúng).\n**Phần 2. Trình bày**\n$65-(73-2x)=36$\n$73-2x=65-36$\n$73-2x=29$\n$2x=73-29$\n$2x=44$\n$x=44:2$\n$x=22$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000402",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $B=\\{2024;-3;0;1\\}$. Tập hợp gồm các phần tử của $B$ và số đối của chúng là:",
+  "lua_chon": [
+   "$\\{2024;-3;-1;0;1;3;-2024\\}$",
+   "$\\{-2024;-3;0;-1\\}$.",
+   "$\\{-2024;3;0;-1\\}$.",
+   "$\\{2024;3;0;-1\\}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tập hợp cần tìm gồm **cả** các phần tử của $B$ **và** số đối của từng phần tử, nên có nhiều phần tử hơn $B$.\n**Bước 1.** Tìm số đối của từng phần tử của $B$: số đối của $a$ là $-a$, số đối của 0 là 0.\n**Bước 2.** Gộp các phần tử của $B$ với các số đối vừa tìm, mỗi phần tử chỉ viết một lần.\n**Bước 3.** Đối chiếu với bốn phương án: phương án nào chỉ có 4 phần tử là thiếu các phần tử của $B$ hoặc thiếu số đối.\n**Chú ý:** số đối của số âm là số dương, và số 0 chỉ xuất hiện một lần.\n**Phần 2. Trình bày**\nSố đối của $2024$ là $-2024$, số đối của $-3$ là $3$, số đối của $0$ là $0$, số đối của $1$ là $-1$.\nTập hợp gồm các phần tử của $B$ và số đối của chúng là $\\{ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000227",
+  "loai": "tu_luan",
+  "de": "Trong giải bóng đá của trường Lương Thế Vinh, khối 6 có 10 đội tham gia, các đội thi đấu theo thể thức vòng tròn một lượt (mỗi đội đấu đúng một trận với mỗi đội khác). Tại một thời điểm của giải đấu, bạn Huy thống kê số trận đã đấu của mỗi đội thì thấy không có hai đội nào có số trận đã đấu giống nhau. Nhưng bạn Dũng khẳng định ngay là kết quả thống kê của bạn Huy bị sai, vì ở bất cứ thời điểm nào luôn có ít nhất hai đội có cùng số trận đã đấu. Theo em, kết quả của bạn Huy đúng hay khẳng định của bạn Dũng đúng? Vì sao?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nếu 10 đội có số trận đã đấu **đôi một khác nhau** thì số trận phải là $0;1;\\dots;9$, mỗi giá trị đúng một lần — rồi tìm **mâu thuẫn**.\n**Bước 1.** Mỗi đội chỉ có thể đấu với 9 đội còn lại, nên số trận đã đấu của một đội chỉ nhận các giá trị từ 0 đến 9, tức 10 giá trị.\n**Bước 2.** Giả sử Huy đúng: 10 đội có 10 số trận khác nhau nên số trận của 10 đội là đúng các số từ 0 đến 9, mỗi số xuất hiện một lần.\n**Bước 3.** Xét hai đội đặc biệt: đội đã đấu 9 trận và đội chưa đấu trận nào, rồi tìm điều vô lí giữa hai đội này.\n**Bước 4.** Từ mâu thuẫn, kết luận giả sử sai và nói bạn nào đúng.\n**Phần 2. Trình bày**\nMỗi đội thi đấu vòng tròn một lượt với 9 đội còn lại n …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000661",
+  "loai": "tu_luan",
+  "de": "Tìm chữ số $x$; $y$ biết: $\\overline{1x8y}$ chia hết cho 2; 3.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chia hết cho 2 chốt $y$ là chữ số chẵn, còn chia hết cho 3 chỉ ràng buộc tổng $x+y$ nên có nhiều cặp — phải xét từng giá trị của $y$.\n**Bước 1.** Dùng dấu hiệu chia hết cho 2: chữ số tận cùng $y$ phải chẵn, nên $y$ chỉ nhận năm giá trị.\n**Bước 2.** Dùng dấu hiệu chia hết cho 3: tổng các chữ số $1+x+8+y$ phải chia hết cho 3.\n**Bước 3.** Rút gọn điều kiện: vì $1+8=9$ chia hết cho 3 nên tổng chia hết cho 3 khi và chỉ khi $x+y$ chia hết cho 3.\n**Bước 4.** Với từng giá trị của $y$, chọn các chữ số $x$ (từ 0 đến 9) sao cho $x+y$ chia hết cho 3 rồi ghi lại các cặp tìm được.\n**Chú ý:** đề không cho thêm điều kiện nên phải xét đủ cả năm giá trị của $y$, không dừng  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000502",
+  "loai": "trac_nghiem",
+  "de": "Số nguyên lớn nhất bé hơn $-9$ là:",
+  "lua_chon": [
+   "$-8$",
+   "$8$",
+   "$-1$",
+   "$-10$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** \"bé hơn $-9$\" nghĩa là nằm bên trái $-9$ trên trục số; trong các số đó phải chọn số lớn nhất.\n**Bước 1.** So sánh từng phương án với $-9$: trên trục số, số nằm bên trái thì nhỏ hơn.\n**Bước 2.** Loại các phương án lớn hơn $-9$ (không thoả điều kiện \"bé hơn\").\n**Bước 3.** Trong các số còn lại, chọn số gần $-9$ nhất.\n**Chú ý:** với số âm, số có giá trị bỏ dấu càng lớn thì càng nhỏ.\n**Phần 2. Trình bày**\nCác số $-8$, $8$, $-1$ đều lớn hơn $-9$ nên loại.\nSố nguyên bé hơn $-9$ và gần $-9$ nhất là $-10$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000788",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$ biết: $x:8=24$.",
+  "dap_an": "192",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $x$ là **số bị chia** nên lấy thương nhân với số chia.\n**Bước 1.** Xác định vai trò của $x$: trong phép chia $x:8=24$, $x$ là số bị chia, 8 là số chia, 24 là thương.\n**Bước 2.** Dùng quy tắc thành phần: số bị chia bằng thương nhân với số chia.\n**Bước 3.** Thực hiện phép nhân để ra giá trị của $x$ rồi thử lại bằng phép chia.\nThử lại: $192:8=24$ (đúng).\n**Phần 2. Trình bày**\n$x:8=24$\n$x=24.8$\n$x=192$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000834",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm BCNN của: 12 và 18",
+  "dap_an": "36",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** BCNN lấy mọi thừa số nguyên tố chung và riêng, mỗi thừa số với số mũ lớn nhất.\n**Bước 1.** Phân tích từng số ra thừa số nguyên tố bằng cách chia lần lượt cho các số nguyên tố nhỏ.\n**Bước 2.** So sánh số mũ của từng thừa số nguyên tố ở hai số rồi chọn số mũ lớn hơn.\n**Bước 3.** Nhân các luỹ thừa đã chọn với nhau để được BCNN.\n**Chú ý:** thừa số chỉ xuất hiện ở một số vẫn phải lấy vào BCNN.\n**Phần 2. Trình bày**\nTa có $12=2^2.3$; $18=2.3^2$.\nSuy ra $\\text{BCNN}(12,18)=2^2.3^2=36$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000941",
+  "loai": "tra_loi_ngan",
+  "de": "Trong đợt ủng hộ sách cho thư viện nhà trường, lớp 6A đã quyên góp được một số cuốn sách. Biết khi xếp số sách đó thành từng chồng 4 cuốn thì vừa hết, nhưng nếu xếp thành từng chồng 5 cuốn thì còn thừa ra 1 cuốn. Hỏi lớp 6A đã đóng góp được bao nhiêu cuốn sách, biết số lượng sách đó là một số tự nhiên có hai chữ số và lớn hơn 80.",
+  "dap_an": "96",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** \"xếp vừa hết\" nghĩa là chia hết, nên số sách là bội của 4; \"thừa ra 1 cuốn\" nghĩa là chia 5 dư 1.\n**Bước 1.** Gọi số sách là $x$; xếp từng chồng 4 cuốn vừa hết nên $x$ chia hết cho 4, tức $x$ là bội của 4.\n**Bước 2.** Số có hai chữ số và lớn hơn 80 nghĩa là $x$ nằm giữa 80 và 100, nên liệt kê các bội của 4 trong khoảng đó.\n**Bước 3.** Xếp từng chồng 5 cuốn thừa 1 cuốn nên bớt đi 1 cuốn thì số còn lại chia hết cho 5, tức tận cùng bằng 0 hoặc 5.\n**Bước 4.** Thử lần lượt từng số đã liệt kê bằng điều kiện ở bước 3, số nào thoả mãn là đáp số.\n**Chú ý:** đề cho điều kiện hai chữ số nên $x<100$; đừng quên cận trên này khi liệt kê.\n**Phần 2. Trình bày**\nGọi số sác …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000456",
+  "loai": "tu_luan",
+  "de": "Bạn An viết các số tự nhiên liên tiếp từ 1 đến 30 lên bảng sau đó thực hiện trò chơi như sau: Mỗi lần xoá hai số $a$, $b$ bất kì trên bảng và viết một số mới bằng $a+b+2$ lên bảng. Việc làm này của An được thực hiện lặp lại liên tục, hỏi sau 29 bước số cuối cùng còn lại trên bảng là bao nhiêu? Tại sao?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** không theo dõi từng số cụ thể mà theo dõi **tổng các số trên bảng** sau mỗi lần thay đổi.\n**Bước 1.** Tính tổng các số trên bảng lúc đầu bằng cách tính tổng dãy số liên tiếp từ 1 đến 30.\n**Bước 2.** Xét một lần xoá $a$, $b$ rồi viết $a+b+2$: so sánh tổng trước và sau để biết tổng tăng thêm bao nhiêu.\n**Bước 3.** Tính tổng tăng thêm sau 29 bước và đếm xem sau 29 bước trên bảng còn lại mấy số.\n**Bước 4.** Số còn lại duy nhất chính là tổng các số trên bảng lúc đó, cộng lại để ra kết quả.\n**Phần 2. Trình bày**\nTổng các số trên bảng lúc đầu là:\n$1+2+3+\\dots+30=(30+1).30:2=465$\nMỗi lần thực hiện, hai số $a$ và $b$ (tổng bằng $a+b$) bị xoá và thay bằng số $a+b+2$ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000874",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$, biết: $(x-36):18=12$.",
+  "dap_an": "252",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** coi cả cụm $(x-36)$ là số bị chia chưa biết, tìm nó trước rồi mới tìm $x$.\n**Bước 1.** Xác định cụm $(x-36)$ là số bị chia trong phép chia $(x-36):18=12$.\n**Bước 2.** Áp dụng quy tắc: số bị chia bằng thương nhân với số chia để tìm $x-36$.\n**Bước 3.** Khi biết $x-36$, nhận ra $x$ là số bị trừ nên bằng hiệu cộng số trừ.\n**Phần 2. Trình bày**\n$(x-36):18=12$\n$x-36=12.18$\n$x-36=216$\n$x=216+36$\n$x=252$\nVậy $x=252$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1060000001008",
+  "loai": "tu_luan",
+  "de": "Cho tập hợp $T=\\{n\\in\\mathbb{N}\\mid 0<n\\le 20\\}$\na) Viết tập hợp $T$ bằng cách liệt kê các phần tử. Tập hợp $T$ có bao nhiêu phần tử.\nb) Dùng kí hiệu $(\\in;\\ \\notin)$ để viết các số 15 và 22 thuộc hay không thuộc tập hợp $T$.\nc) Tính tổng tất cả các phần tử của tập hợp $T$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $T$ gồm các số tự nhiên **lớn hơn 0** và **không vượt quá 20**, nên bắt đầu từ 1 và dừng ở 20; tổng các số cách đều nhau tính được bằng cách ghép cặp.\n**Bước 1.** Đọc điều kiện $0<n\\le 20$: số 0 bị loại vì $n$ phải lớn hơn 0, còn số 20 được giữ vì $n$ có thể bằng 20; rồi liệt kê từng phần tử và đếm.\n**Bước 2.** Ý b: so từng số 15 và 22 với danh sách vừa liệt kê, số nào có mặt thì dùng $\\in$, số nào không có thì dùng $\\notin$.\n**Bước 3.** Ý c: các phần tử cách đều nhau 1 đơn vị, nên ghép số đầu với số cuối, số thứ hai với số kề cuối, … để mọi cặp có cùng một tổng.\n**Bước 4.** Đếm số cặp bằng cách lấy số phần tử chia cho 2, rồi lấy tổng của một cặp nhân với  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000254",
+  "loai": "tra_loi_ngan",
+  "de": "Thả một cụm bèo xuống ao sau 50 ngày thì bèo phủ kín diện tích mặt ao. Hỏi nếu thả 8 cụm bèo vào cái ao đó thì sau bao nhiêu ngày bèo phủ kín diện tích mặt ao? Biết rằng sau một ngày thì cụm bèo nở gấp đôi.",
+  "dap_an": "47",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** thả 8 cụm bèo ngay từ đầu giống như bèo đã nở sẵn từ 1 cụm được vài ngày, nên chỉ cần tìm số ngày bèo nở từ 1 cụm ra 8 cụm.\n**Bước 1.** Đọc quy luật: mỗi ngày số cụm bèo gấp đôi, nên ngày nào cũng nhân số cụm với 2.\n**Bước 2.** Tính xem một cụm bèo cần mấy ngày để nở thành 8 cụm bằng cách nhân đôi liên tiếp.\n**Bước 3.** Số ngày này là số ngày được \"đi trước\" khi thả sẵn 8 cụm, nên lấy 50 ngày trừ đi số ngày đó.\n**Phần 2. Trình bày**\nSau 1 ngày, 1 cụm bèo nở thành $1.2=2$ (cụm).\nSau 2 ngày, bèo có $2.2=4$ (cụm).\nSau 3 ngày, bèo có $4.2=8$ (cụm).\nVậy thả 8 cụm bèo ngay từ đầu cũng giống như thả 1 cụm bèo và đã qua 3 ngày.\nMà thả 1 cụm bèo thì sau 50 ngày bèo …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000303",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính (tính hợp lí nếu có thể): $(-12)+42$",
+  "dap_an": "30",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** cộng hai số nguyên **khác dấu**: tìm hiệu hai phần số tự nhiên (số lớn trừ số nhỏ), kết quả mang dấu của số có phần số tự nhiên lớn hơn.\n**Bước 1.** Nhận ra đây là phép cộng hai số nguyên khác dấu: $-12$ là số âm, 42 là số dương.\n**Bước 2.** Lấy phần số tự nhiên của hai số là 12 và 42, rồi lấy số lớn hơn trừ đi số nhỏ hơn.\n**Bước 3.** Đặt trước hiệu vừa tìm dấu của số có phần số tự nhiên lớn hơn, ở đây là số 42 mang dấu dương.\n**Chú ý:** dấu của kết quả theo số có phần số tự nhiên lớn hơn, không phải theo số lớn hơn: $(-42)+12$ mang dấu âm.\n**Phần 2. Trình bày**\n$(-12)+42$\n$=42-12$\n$=30$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000610",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số nguyên $x$, biết: $16:x-2=6$",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** coi $16:x$ là **số bị trừ** chưa biết, rồi $x$ là **số chia** chưa biết.\n**Bước 1.** Xác định vai trò: trong phép trừ $(16:x)-2=6$, cụm $16:x$ là số bị trừ.\n**Bước 2.** Tìm số bị trừ bằng cách lấy hiệu cộng với số trừ.\n**Bước 3.** Lúc này $x$ là số chia: lấy số bị chia chia cho thương đã biết.\nThử lại: $16:2-2=8-2=6$ (đúng).\n**Phần 2. Trình bày**\n$16:x-2=6$\n$16:x=6+2$\n$16:x=8$\n$x=16:8$\n$x=2$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000592",
+  "loai": "trac_nghiem",
+  "de": "Sắp xếp các số $-21;\\ 8;\\ 0;\\ -19;\\ 5;\\ -3;\\ 1$ theo thứ tự tăng dần ta được thứ tự đúng là:",
+  "lua_chon": [
+   "$0;\\ 1;\\ -3;\\ 5;\\ 8;\\ -19;\\ -21$",
+   "$-21;\\ -19;\\ -3;\\ 0;\\ 1;\\ 5;\\ 8$",
+   "$0;\\ 1;\\ 5;\\ 8;\\ -21;\\ -19;\\ -3$",
+   "$0;\\ 1;\\ -21;\\ -19;\\ 5;\\ 8;\\ -3$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số âm luôn nhỏ hơn 0 và nhỏ hơn mọi số dương, còn trong hai số âm thì số nào có phần số tự nhiên lớn hơn lại nhỏ hơn.\n**Bước 1.** Chia các số đã cho thành ba nhóm: số âm, số 0 và số dương.\n**Bước 2.** Sắp xếp riêng nhóm số âm: số âm có phần số tự nhiên càng lớn thì càng nhỏ, nên đứng càng về bên trái.\n**Bước 3.** Ghép ba nhóm theo thứ tự số âm, số 0, số dương rồi đối chiếu với bốn phương án.\n**Chú ý:** đừng xếp số âm theo thứ tự của phần số tự nhiên, vì $-3$ lớn hơn $-21$.\n**Phần 2. Trình bày**\nCác số âm là $-21;-19;-3$, số 0, các số dương là $1;5;8$.\nVì $21>19>3$ nên $-21<-19<-3$.\nDo đó $-21<-19<-3<0<1<5<8$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000542",
+  "loai": "tu_luan",
+  "de": "Tìm số nguyên $x$, biết: $(x+2).(x-3)=0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** một tích bằng 0 thì **ít nhất một thừa số bằng 0**.\n**Bước 1.** Nhận ra vế trái là tích của hai thừa số $(x+2)$ và $(x-3)$, vế phải bằng 0.\n**Bước 2.** Dùng tính chất: tích bằng 0 thì thừa số thứ nhất bằng 0 hoặc thừa số thứ hai bằng 0, rồi viết hai trường hợp.\n**Bước 3.** Giải từng trường hợp bằng cách tìm số hạng chưa biết, rồi kết luận cả hai giá trị của $x$.\nThử lại: $(-2+2).(-2-3)=0$ và $(3+2).(3-3)=0$ (đúng).\n**Phần 2. Trình bày**\n$(x+2).(x-3)=0$\nSuy ra $x+2=0$ hoặc $x-3=0$.\nTrường hợp 1: $x+2=0$ nên $x=0-2=-2$.\nTrường hợp 2: $x-3=0$ nên $x=0+3=3$.\nVậy $x\\in\\{-2;3\\}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000664",
+  "loai": "tu_luan",
+  "de": "Tìm các số tự nhiên $a$ sao cho: $a\\in\\text{Ư}(30)$ và $a\\ \\square\\ 10$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $a\\in\\text{Ư}(30)$ nghĩa là $a$ là một ước của 30, nên cần liệt kê hết các ước của 30 rồi lọc theo điều kiện so sánh với 10.\n**Bước 1.** Liệt kê tất cả các ước của 30 bằng cách thử chia 30 lần lượt cho $1;2;3;\\dots$ và ghi các số chia hết.\n**Bước 2.** Đọc điều kiện so sánh với 10: ô ký hiệu trong đề cương bị trống, ta lấy cách hiểu hợp lí là $a>10$.\n**Bước 3.** Giữ lại những ước của 30 thoả mãn điều kiện đó rồi viết kết quả dưới dạng tập hợp.\n**Chú ý:** số 10 cũng là ước của 30 nhưng không lớn hơn 10 nên không được chọn.\n**Phần 2. Trình bày**\nTa có $\\text{Ư}(30)=\\{1;2;3;5;6;10;15;30\\}$\nVì $a\\in\\text{Ư}(30)$ và $a>10$ nên $a\\in\\{15;30\\}$.\nVậy $a\\in\\{15;30\\} …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000598",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số nguyên $x$, biết: $(-14)+2.(x+3)=0$",
+  "dap_an": "4",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** coi cả cụm $2.(x+3)$ là **số hạng** chưa biết của phép cộng.\n**Bước 1.** Xác định vai trò: trong phép cộng ngoài cùng, cụm $2.(x+3)$ là số hạng chưa biết.\n**Bước 2.** Tìm số hạng chưa biết bằng cách lấy tổng trừ đi số hạng đã biết, rồi tìm thừa số chưa biết $x+3$.\n**Bước 3.** Biết giá trị của $x+3$ rồi thì $x$ là số hạng chưa biết, lấy tổng trừ số hạng đã biết.\nThử lại: $(-14)+2.(4+3)=-14+14=0$ (đúng).\n**Phần 2. Trình bày**\n$(-14)+2.(x+3)=0$\n$2.(x+3)=0-(-14)$\n$2.(x+3)=14$\n$x+3=14:2$\n$x+3=7$\n$x=7-3$\n$x=4$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000642",
+  "loai": "tu_luan",
+  "de": "Biểu đồ tranh dưới đây cho biết số cuốn sách bán được trong bốn ngày.\na) Số cuốn sách ngày thứ ba bán được là 6 cuốn.\nb) Ngày thứ tư bán được nhiều hơn ngày thứ nhất là 25 cuốn sách.\nc) Tổng số cuốn sách cả bốn ngày bán được là 135 cuốn.\nd) Ngày thứ hai bán được ít hơn ngày thứ tư 1 cuốn.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** dòng chú thích dưới biểu đồ cho biết mỗi kí hiệu là **5 cuốn sách**, nên phải đổi số kí hiệu thành số cuốn rồi mới so sánh.\n**Bước 1.** Đếm số kí hiệu ở từng hàng của biểu đồ tranh, mỗi hàng ứng với một ngày.\n**Bước 2.** Nhân số kí hiệu của từng ngày với 5 để ra số cuốn sách bán được trong ngày đó.\n**Bước 3.** Xét từng ý a), b), c), d): ý nào so sánh hay cộng thì dùng số cuốn vừa tính, rồi kết luận Đúng hay Sai.\n**Chú ý:** số 6 ở ý a) là số kí hiệu chứ không phải số cuốn sách.\n**Phần 2. Trình bày**\nNgày thứ nhất có 4 kí hiệu: $4.5=20$ (cuốn).\nNgày thứ hai có 8 kí hiệu: $8.5=40$ (cuốn).\nNgày thứ ba có 6 kí hiệu: $6.5=30$ (cuốn).\nNgày thứ tư có 9 kí hiệu: $9 …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000602",
+  "loai": "trac_nghiem",
+  "de": "Tập hợp tất cả các số nguyên là ước của 5 là:",
+  "lua_chon": [
+   "$\\{1;5\\}$",
+   "$\\{-1;-5\\}$",
+   "$\\{0;1;5\\}$",
+   "$\\{-1;1;-5;5\\}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** trong tập số nguyên, mỗi ước dương của một số đều đi kèm số đối của nó cũng là ước.\n**Bước 1.** Tìm các ước dương của 5 bằng cách thử chia 5 lần lượt cho các số từ 1 trở đi.\n**Bước 2.** Vì $5=(-1).(-5)$ nên số đối của mỗi ước dương cũng là ước của 5 trong tập số nguyên.\n**Bước 3.** Gộp các ước dương và các ước âm rồi loại phương án nào thiếu hoặc thừa phần tử.\n**Chú ý:** số 0 không là ước của 5 vì không có số nào nhân với 0 để ra 5.\n**Phần 2. Trình bày**\nCác ước nguyên dương của 5 là $1$ và $5$.\nCác số đối của chúng là $-1$ và $-5$ cũng là ước của 5.\nDo đó $\\text{Ư}(5)=\\{-1;1;-5;5\\}$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000461",
+  "loai": "trac_nghiem",
+  "de": "Lúc 4 giờ chiều, nhiệt độ ở Moscow là $-3^\\circ C$, ở Paris là $-8^\\circ C$, ở Đà Lạt là $15^\\circ C$, ở Phanxipang là $0^\\circ C$. Trong các địa danh trên, nơi có nhiệt độ thấp nhất là:",
+  "lua_chon": [
+   "Đà Lạt",
+   "Phanxipang",
+   "Paris",
+   "Moscow"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhiệt độ thấp nhất là **số nguyên nhỏ nhất**; trong hai số âm, số có phần số lớn hơn thì **nhỏ hơn**.\n**Bước 1.** Viết bốn nhiệt độ thành bốn số nguyên: $-3$, $-8$, $15$, $0$.\n**Bước 2.** Phân loại: số âm nhỏ hơn 0 và nhỏ hơn số dương, nên số nhỏ nhất nằm trong hai số âm.\n**Bước 3.** So sánh hai số âm: số nào nằm bên trái trên trục số (xa 0 hơn) thì nhỏ hơn, rồi đối chiếu với địa danh.\n**Chú ý:** $-8$ nhỏ hơn $-3$ dù 8 lớn hơn 3.\n**Phần 2. Trình bày**\nTa có $-8<-3<0<15$.\nNhiệt độ thấp nhất là $-8^\\circ C$, ở Paris.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000981",
+  "loai": "trac_nghiem",
+  "de": "Thứ tự thực hiện các phép tính đối với biểu thức không có dấu ngoặc là :",
+  "lua_chon": [
+   "Nhân và chia $\\Rightarrow$ Lũy thừa $\\Rightarrow$ Cộng và trừ.",
+   "Lũy thừa $\\Rightarrow$ Nhân và chia $\\Rightarrow$ Cộng và trừ.",
+   "Cộng và trừ $\\Rightarrow$ Nhân và chia $\\Rightarrow$ Lũy thừa.",
+   "Lũy thừa $\\Rightarrow$ Cộng và trừ $\\Rightarrow$ Nhân và chia."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phép tính nào \"mạnh\" hơn thì làm trước: luỹ thừa mạnh nhất, rồi đến nhân chia, cuối cùng là cộng trừ.\n**Bước 1.** Nhớ quy tắc cho biểu thức không có ngoặc: làm các phép tính theo thứ tự từ phép mạnh đến phép yếu.\n**Bước 2.** Xếp ba nhóm phép tính theo thứ tự đó: luỹ thừa, rồi nhân và chia, rồi cộng và trừ.\n**Bước 3.** Đối chiếu với bốn phương án và loại những phương án đặt sai thứ tự của các nhóm.\n**Chú ý:** nhân và chia cùng cấp, cộng và trừ cùng cấp, nên trong cùng một cấp thì làm từ trái sang phải.\n**Phần 2. Trình bày**\nVới biểu thức không có dấu ngoặc, ta thực hiện theo thứ tự: luỹ thừa, rồi nhân và chia, rồi cộng và trừ.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000605",
+  "loai": "tra_loi_ngan",
+  "de": "Tổng tất cả các số nguyên $x$ thỏa mãn $-3\\le x<5$ là:",
+  "dap_an": "4",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** liệt kê các số nguyên trong khoảng rồi gom các cặp số đối nhau vì tổng của hai số đối bằng 0.\n**Bước 1.** Đọc điều kiện: $x$ bắt đầu từ $-3$ (lấy cả $-3$) và kết thúc trước 5 (không lấy 5).\n**Bước 2.** Liệt kê mọi số nguyên thỏa điều kiện, nhớ có cả số 0 và các số âm.\n**Bước 3.** Nhóm các cặp số đối nhau trong dãy, mỗi cặp có tổng bằng 0, rồi cộng với các số còn lại.\n**Chú ý:** số 5 không thuộc dãy vì đề cho $x<5$.\n**Phần 2. Trình bày**\nVì $-3\\le x<5$ nên $x\\in\\{-3;-2;-1;0;1;2;3;4\\}$.\nTổng các số nguyên đó là:\n$(-3)+(-2)+(-1)+0+1+2+3+4$\n$=[(-3)+3]+[(-2)+2]+[(-1)+1]+0+4$\n$=0+0+0+0+4$\n$=4$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000634",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$, biết: $71-(33+x)=26$",
+  "dap_an": "12",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** coi cả cụm $(33+x)$ là **số trừ** chưa biết.\n**Bước 1.** Xác định vai trò: trong phép trừ $71-(33+x)=26$, cụm $(33+x)$ là số trừ.\n**Bước 2.** Tìm số trừ bằng cách lấy số bị trừ trừ đi hiệu.\n**Bước 3.** Lúc này $x$ là số hạng chưa biết: lấy tổng trừ đi số hạng đã biết.\nThử lại: $71-(33+12)=71-45=26$ (đúng).\n**Phần 2. Trình bày**\n$71-(33+x)=26$\n$33+x=71-26$\n$33+x=45$\n$x=45-33$\n$x=12$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000839",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm BCNN của: 24, 36 và 54",
+  "dap_an": "216",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** BCNN của ba số lấy mọi thừa số nguyên tố, mỗi thừa số với số mũ lớn nhất trong ba số.\n**Bước 1.** Phân tích từng số ra thừa số nguyên tố, viết dưới dạng tích các luỹ thừa.\n**Bước 2.** Với thừa số $2$ và thừa số $3$, so sánh số mũ ở ba số rồi chọn số mũ lớn nhất.\n**Bước 3.** Nhân các luỹ thừa đã chọn để được BCNN, rồi kiểm tra kết quả chia hết cho cả ba số.\n**Phần 2. Trình bày**\nTa có $24=2^3.3$; $36=2^2.3^2$; $54=2.3^3$.\nSuy ra $\\text{BCNN}(24,36,54)=2^3.3^3=216$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000701",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$, biết: $x-320:32=25.16$.",
+  "dap_an": "410",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính trước các phép chia, nhân đã biết giá trị để $x$ chỉ còn đứng trong một phép trừ đơn giản.\n**Bước 1.** Theo thứ tự thực hiện phép tính, ở vế trái phép chia $320:32$ làm trước phép trừ, ở vế phải làm phép nhân $25.16$.\n**Bước 2.** Viết lại đẳng thức: vế trái chỉ còn $x$ trừ một số, vế phải là một số cụ thể.\n**Bước 3.** Xác định $x$ là số bị trừ chưa biết rồi lấy hiệu cộng với số trừ.\nThử lại: $410-320:32=410-10=400$ và $25.16=400$ (đúng).\n**Phần 2. Trình bày**\n$x-320:32=25.16$\n$x-10=400$\n$x=400+10$\n$x=410$\nVậy $x=410$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000918",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính (tính hợp lí nếu có thể) $2^3.[3^9:3^6-(5^2-3):11]-1^{2026}$.",
+  "dap_an": "199",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** làm trong ngoặc từ trong ra ngoài; chia hai luỹ thừa cùng cơ số thì giữ nguyên cơ số và trừ các số mũ.\n**Bước 1.** Làm ngoặc tròn trước và chia hai luỹ thừa cùng cơ số $3$ bằng cách giữ nguyên cơ số, trừ các số mũ.\n**Bước 2.** Trong ngoặc vuông, thực hiện phép chia cho $11$ rồi mới trừ.\n**Bước 3.** Tính các luỹ thừa còn lại, nhân với giá trị ngoặc vuông rồi trừ đi $1^{2026}$.\n**Chú ý:** $1^{2026}=1$ vì $1$ nhân với chính nó bao nhiêu lần cũng bằng $1$.\n**Phần 2. Trình bày**\n$2^3.[3^9:3^6-(5^2-3):11]-1^{2026}$\n$=2^3.[3^3-(25-3):11]-1^{2026}$\n$=8.[27-22:11]-1$\n$=8.[27-2]-1$\n$=8.25-1$\n$=200-1$\n$=199$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000578",
+  "loai": "tra_loi_ngan",
+  "de": "Số đối của số $(-21)$ là: .............",
+  "dap_an": "21",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai số đối nhau là hai số nằm cách đều gốc 0 về hai phía trên trục số.\n**Bước 1.** Nhớ lại: số đối của một số nguyên là số có cùng phần số tự nhiên nhưng khác dấu.\n**Bước 2.** Đổi dấu của số đã cho từ âm sang dương để viết số đối.\n**Bước 3.** Kiểm lại bằng cách cộng hai số xem tổng có bằng 0 hay không.\n**Phần 2. Trình bày**\nSố đối của số $(-21)$ là $21$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000796",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$ biết: $(x+7)-25=13$.",
+  "dap_an": "31",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** coi cả cụm $(x+7)$ là **số bị trừ** chưa biết.\n**Bước 1.** Xác định vai trò: trong phép trừ $(x+7)-25=13$, cụm $(x+7)$ là số bị trừ, 25 là số trừ, 13 là hiệu.\n**Bước 2.** Tìm số bị trừ bằng cách lấy hiệu cộng với số trừ, được giá trị của cả cụm $x+7$.\n**Bước 3.** Lúc này $x$ là số hạng chưa biết: lấy tổng trừ đi số hạng đã biết là 7.\nThử lại: thay $x$ tìm được vào đề, tính ngoặc trước rồi trừ 25 thì được 13 (đúng).\n**Phần 2. Trình bày**\n$(x+7)-25=13$\n$x+7=13+25$\n$x+7=38$\n$x=38-7$\n$x=31$\nVậy $x=31$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000952",
+  "loai": "tu_luan",
+  "de": "Cho số nguyên tố $p>3$ thỏa mãn $2p+1$ là số nguyên tố. Khi đó $4p+1$ là số nguyên tố hay hợp số? Vì sao?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số nguyên tố $p>3$ không chia hết cho 3 nên chia 3 dư 1 hoặc dư 2; giả thiết $2p+1$ nguyên tố loại một trường hợp, trường hợp còn lại cho biết $4p+1$ có chia hết cho 3 hay không.\n**Bước 1.** Nhận ra $p$ là số nguyên tố lớn hơn 3 nên không chia hết cho 3, tức là $p$ chỉ có thể chia 3 dư 1 hoặc dư 2.\n**Bước 2.** Xét trường hợp $p$ chia 3 dư 1: viết $p=3k+1$ rồi tính $2p+1$ để xem nó có mâu thuẫn với giả thiết $2p+1$ là số nguyên tố hay không.\n**Bước 3.** Xét trường hợp $p$ chia 3 dư 2: viết $p=3k+2$ rồi tính $4p+1$, đặt thừa số chung để xem biểu thức có chia hết cho 3 không.\n**Bước 4.** Một số chia hết cho 3 mà lớn hơn 3 thì có ít nhất ba ước, từ đó nêu kết  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000539",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số nguyên $x$, biết: $23-x=19$",
+  "dap_an": "4",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $x$ là **số trừ** chưa biết trong phép trừ.\n**Bước 1.** Xác định vai trò: trong phép trừ $23-x=19$, $x$ là số trừ, 23 là số bị trừ, 19 là hiệu.\n**Bước 2.** Tìm số trừ bằng cách lấy số bị trừ trừ đi hiệu.\n**Bước 3.** Tính hiệu rồi kiểm tra kết quả có là số nguyên như đề yêu cầu, sau đó thay ngược vào đề để thử lại.\nThử lại: $23-4=19$ (đúng).\n**Phần 2. Trình bày**\n$23-x=19$\n$x=23-19$\n$x=4$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1060000001045",
+  "loai": "tu_luan",
+  "de": "Cho $D=1+4+4^2+4^3+4^4+\\ldots+4^{58}+4^{59}$. Chứng tỏ $C$ chia hết cho 5; cho 21.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mỗi số chia hết cần một cách ghép nhóm riêng: ghép 2 số hạng ra thừa số $1+4=5$, ghép 3 số hạng ra thừa số $1+4+4^2=21$.\n**Bước 1.** Đếm số số hạng của tổng từ $4^0=1$ đến $4^{59}$ để xem ghép nhóm hai số hạng và nhóm ba số hạng có vừa đủ hay không.\n**Bước 2.** Để chứng tỏ chia hết cho 5: ghép hai số hạng liền nhau, đặt luỹ thừa nhỏ làm thừa số chung, phần còn lại trong ngoặc là $1+4$.\n**Bước 3.** Để chứng tỏ chia hết cho 21: ghép ba số hạng liền nhau, đặt luỹ thừa nhỏ nhất làm thừa số chung, tính phần còn lại trong ngoặc.\n**Bước 4.** Mỗi lần nhận ra thừa số 5 (hoặc 21) xuất hiện ở mọi nhóm thì đặt thừa số đó ra ngoài cả tổng để kết luận.\n**Chú ý:** đề in  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106020701001",
+  "loai": "tra_loi_ngan",
+  "de": "Tính: $A = \\dfrac{1}{1 \\times 2} + \\dfrac{1}{2 \\times 3} + \\dfrac{1}{3 \\times 4} + ..... + \\dfrac{1}{99 \\times 100}$.",
+  "dap_an": "\\dfrac{99}{100}",
+  "loi_giai": "Ta có: $A = \\dfrac{1}{1 \\times 2} + \\dfrac{1}{2 \\times 3} + \\dfrac{1}{3 \\times 4} + ..... + \\dfrac{1}{99 \\times 100}$\n$A = 1 - \\dfrac{1}{2} + \\dfrac{1}{2} - \\dfrac{1}{3} + \\dfrac{1}{3} - \\dfrac{1}{4} + ..... + \\dfrac{1}{99} - \\dfrac{1}{100}$\n$A = 1 - \\dfrac{1}{100}$\n$A = \\dfrac{100}{100} - \\dfrac{1}{100}$\n$A = \\dfrac{99}{100}$",
+  "nhan_cu": "Nâng cao › Nâng cao"
+ },
+ {
+  "ma_cau": "T106000000740",
+  "loai": "tu_luan",
+  "de": "Cho $A=10^{2012}+10^{2011}+10^{2010}+10^{2009}+8$.\na) Chứng minh rằng $A$ chia hết cho 24.\nb) Chứng minh rằng $A$ không phải là số chính phương.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $24=8.3$ với 8 và 3 nguyên tố cùng nhau nên chứng minh $A$ chia hết cho 8 và cho 3 riêng rẽ; còn số chính phương thì không bao giờ tận cùng bằng chữ số tận cùng của $A$.\n**Bước 1.** Ý a: phân tích $24=8.3$, thấy ƯCLN(8, 3) bằng 1 nên đủ chứng minh $A$ chia hết cho 8 và chia hết cho 3.\n**Bước 2.** Chia hết cho 8: mọi luỹ thừa của 10 từ $10^3$ trở lên đều chứa thừa số $1000$, mà 1000 chia hết cho 8, còn số hạng 8 cũng chia hết cho 8 nên tổng chia hết cho 8.\n**Bước 3.** Chia hết cho 3: viết $A$ ra dạng số cụ thể (bốn chữ số 1 đứng đầu, nhiều chữ số 0, tận cùng là 8) rồi dùng dấu hiệu chia hết cho 3 qua tổng các chữ số.\n**Bước 4.** Kết luận ý a bằng cách dùng  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000996",
+  "loai": "trac_nghiem",
+  "de": "Số $126=2.3^2.7$ có bao nhiêu ước nguyên tố?",
+  "lua_chon": [
+   "3",
+   "4.",
+   "10.",
+   "12."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ước nguyên tố của một số chính là các thừa số nguyên tố xuất hiện trong phân tích của số đó.\n**Bước 1.** Đọc phân tích $126=2.3^2.7$ để xác định các thừa số nguyên tố có mặt.\n**Bước 2.** Gạch bỏ số mũ và chỉ giữ lại các cơ số khác nhau, vì mỗi cơ số chỉ đếm một lần.\n**Bước 3.** Đếm các cơ số đó rồi chọn phương án.\n**Chú ý:** số ước nguyên tố khác với tổng số ước của 126.\n**Phần 2. Trình bày**\nTa có $126=2.3^2.7$ nên các ước nguyên tố của 126 là 2; 3; 7.\nVậy 126 có 3 ước nguyên tố.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000407",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính: $5^5:5^3.(2024^0-9)+3.10^2$",
+  "dap_an": "100",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** làm luỹ thừa và ngoặc trước, rồi nhân chia từ trái sang phải, cuối cùng mới cộng trừ.\n**Bước 1.** Chia hai luỹ thừa cùng cơ số $5^5:5^3$: giữ nguyên cơ số, trừ hai số mũ.\n**Bước 2.** Tính trong ngoặc: thay $2024^0$ bằng 1 rồi trừ hai số nguyên, kết quả là số âm.\n**Bước 3.** Tính $10^2$ rồi thực hiện phép nhân.\n**Bước 4.** Cộng hai số hạng còn lại, chú ý một số âm và một số dương.\n**Chú ý:** $2024^0=1$, không phải 0 cũng không phải 2024.\n**Phần 2. Trình bày**\n$5^5:5^3.(2024^0-9)+3.10^2$\n$=5^2.(1-9)+3.100$\n$=25.(-8)+300$\n$=-200+300$\n$=100$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000182",
+  "loai": "trac_nghiem",
+  "de": "Viết tích $3.3.3.3$ dưới dạng luỹ thừa, ta được kết quả là:",
+  "lua_chon": [
+   "$4^3$",
+   "$3^4$",
+   "$3^5$",
+   "$3^3$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tích của nhiều thừa số **bằng nhau** viết được thành luỹ thừa: cơ số là thừa số đó, số mũ là số thừa số.\n**Bước 1.** Nhận ra các thừa số của tích đều bằng 3, nên cơ số của luỹ thừa là 3.\n**Bước 2.** Đếm số thừa số 3 trong tích để biết số mũ.\n**Bước 3.** Viết luỹ thừa theo dạng cơ số rồi số mũ và đối chiếu bốn phương án.\n**Chú ý:** số mũ là số thừa số chứ không phải kết quả của phép nhân; phương án A là bẫy đảo cơ số và số mũ.\n**Phần 2. Trình bày**\nTích $3.3.3.3$ có 4 thừa số bằng 3 nên $3.3.3.3=3^4$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000419",
+  "loai": "trac_nghiem",
+  "de": "Cho $a$ là cơ số khác 0, $m,n$ là các số mũ tự nhiên, phép tính luỹ thừa nào sau đây đúng?",
+  "lua_chon": [
+   "$a^m+a^n=a^{m+n}$",
+   "$a^m-a^n=a^{m-n}$",
+   "$a^m.a^n=a^{m+n}$",
+   "$a^m:a^m=0$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** quy tắc nhân hai luỹ thừa cùng cơ số: giữ nguyên cơ số, cộng các số mũ.\n**Bước 1.** Nhớ quy tắc nhân hai luỹ thừa cùng cơ số và đối chiếu với phương án có dấu nhân.\n**Bước 2.** Loại phương án A và B: quy tắc cộng, trừ số mũ chỉ dùng cho phép nhân, phép chia luỹ thừa, không dùng cho phép cộng, phép trừ.\n**Bước 3.** Kiểm phương án có phép chia hai luỹ thừa giống hệt nhau bằng quy ước về luỹ thừa có số mũ 0.\n**Chú ý:** $a^m:a^m=a^{m-m}=a^0=1$ chứ không phải 0.\n**Phần 2. Trình bày**\nNhân hai luỹ thừa cùng cơ số, giữ nguyên cơ số và cộng các số mũ: $a^m.a^n=a^{m+n}$.\nPhép chia: $a^m:a^m=a^0=1$ nên phương án D sai.\nPhép cộng, phép trừ hai luỹ thừa không có quy t …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000472",
+  "loai": "trac_nghiem",
+  "de": "Trong tập hợp các số nguyên sau, tập hợp được sắp xếp theo thứ tự tăng dần là :",
+  "lua_chon": [
+   "$\\{-25;25;0;-24;24\\}$",
+   "$\\{-25;-24;0;24;25\\}$",
+   "$\\{-24;-25;0;24;25\\}$",
+   "$\\{0;-25;-24;24;25\\}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** trên trục số, số nằm bên trái thì nhỏ hơn; số nguyên âm nhỏ hơn 0, 0 nhỏ hơn số nguyên dương.\n**Bước 1.** Chia năm số thành nhóm số âm $-25;-24$, số 0 và nhóm số dương $24;25$.\n**Bước 2.** Xếp thứ tự trong nhóm số âm: số âm có phần số tự nhiên lớn hơn thì nhỏ hơn, nên $-25$ đứng trước $-24$.\n**Bước 3.** Ghép lại theo thứ tự số âm, số 0, số dương rồi đối chiếu với từng phương án.\n**Chú ý:** phương án C chỉ sai ở chỗ đặt $-24$ trước $-25$.\n**Phần 2. Trình bày**\nTa có $-25<-24<0<24<25$.\nDãy sắp xếp theo thứ tự tăng dần là $\\{-25;-24;0;24;25\\}$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106020801001",
+  "loai": "tu_luan",
+  "de": "So sánh hai lũy thừa: $27^{11}$ và $81^8$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai cơ số 27 và 81 đều là lũy thừa của 3, nên **đưa cả hai về cùng cơ số 3** rồi so sánh hai số mũ.\n**Bước 1.** Viết 27 và 81 dưới dạng lũy thừa của 3 bằng cách thử nhân 3 liên tiếp cho tới khi ra đúng hai số này.\n**Bước 2.** Thay vào từng lũy thừa: mỗi lũy thừa là tích của nhiều thừa số giống nhau, nhóm lại thành một lũy thừa của 3 bằng quy tắc nhân hai lũy thừa cùng cơ số.\n**Bước 3.** So sánh hai số mũ vừa tìm: hai lũy thừa cùng cơ số lớn hơn 1 thì lũy thừa nào có số mũ lớn hơn sẽ lớn hơn.\n**Chú ý:** số mũ ban đầu 11 lớn hơn 8 chưa đủ để kết luận, vì hai cơ số 27 và 81 khác nhau; phải đưa về cùng cơ số trước.\n**Phần 2. Trình bày**\nTa có $27=3^3$ nên $27^ …",
+  "nhan_cu": "Các bài toán nâng cao về lũy thừa › So sánh biểu thức lũy thừa"
+ },
+ {
+  "ma_cau": "T106000000497",
+  "loai": "tu_luan",
+  "de": "Bạn Lâm mua $(5n+20)$ quyển vở và $(n+3)$ cái bút. Tính số vở và số bút bạn Lâm mua biết số vở chia hết cho số bút và $n$ là số nguyên dương.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tách $5n+20$ thành bội của $(n+3)$ cộng một số, để $(n+3)$ phải là **ước của số dư** đó.\n**Bước 1.** Dịch đề: số vở chia hết cho số bút nên $(5n+20)\\vdots(n+3)$.\n**Bước 2.** Tách $5n+20$ thành $5.(n+3)$ cộng thêm một số, rồi dùng tính chất chia hết của một tổng để suy ra $(n+3)$ là ước của số đó.\n**Bước 3.** Liệt kê các ước, dùng điều kiện $n$ là số nguyên dương để loại ước quá nhỏ rồi tìm $n$.\n**Bước 4.** Thay $n$ vừa tìm vào $5n+20$ và $n+3$ để ra số vở và số bút.\nThử lại: với $n=2$ thì $5.2+20=30$ và $2+3=5$, mà $30:5=6$ nên $30\\vdots 5$ (đúng).\n**Phần 2. Trình bày**\nVì số vở chia hết cho số bút nên $(5n+20)\\vdots(n+3)$.\nTa có $5n+20=5.(n+3)+5$.\nVì $5.( …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000038",
+  "loai": "tu_luan",
+  "de": "Nhiệt độ nóng chảy của thủy ngân là $39^{\\circ}C$ dưới $0^{\\circ}C$.\na) Hãy dùng số nguyên âm để chỉ nhiệt độ nóng chảy của thủy ngân;\nb) Nhiệt độ sôi của thủy ngân lớn hơn nhiệt độ nóng chảy là $396^{\\circ}C$. Hỏi thủy ngân sôi ở nhiệt độ nào?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhiệt độ **dưới 0** được viết bằng số nguyên **âm**; nhiệt độ sôi **lớn hơn** nên cộng thêm vào nhiệt độ nóng chảy.\n**Bước 1.** Ý a: \"dưới $0^{\\circ}C$\" nghĩa là nhiệt độ thấp hơn 0, nên viết bằng số nguyên âm có dấu trừ.\n**Bước 2.** Ý b: \"lớn hơn nhiệt độ nóng chảy là $396^{\\circ}C$\" nên nhiệt độ sôi bằng nhiệt độ nóng chảy cộng 396.\n**Bước 3.** Cộng một số âm với một số dương: lấy số lớn trừ số nhỏ (bỏ dấu) rồi đặt dấu của số lớn hơn.\n**Chú ý:** nhớ ghi đơn vị $^{\\circ}C$ cho cả hai kết quả.\n**Phần 2. Trình bày**\na) Nhiệt độ nóng chảy của thủy ngân là $-39^{\\circ}C$.\nb) Nhiệt độ sôi của thủy ngân là:\n$(-39)+396=396-39=357$ ($^{\\circ}C$)",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000470",
+  "loai": "tu_luan",
+  "de": "Tìm các số nguyên $x,y$ biết: $2xy-4x+y=14$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biến đổi vế trái thành **một tích hai thừa số** nguyên bằng một số đã biết, rồi tìm các ước.\n**Bước 1.** Gom hai số hạng có chung $x$: $2xy-4x=2x.(y-2)$, nên cụm $(y-2)$ xuất hiện.\n**Bước 2.** Tách số hạng $y$ thành $(y-2)+2$ để cũng có cụm $(y-2)$; số 2 dư ra là một số hạng của tổng bằng 14 nên phần còn lại bằng tổng trừ đi 2, rồi đặt $(y-2)$ làm thừa số chung.\n**Bước 3.** Được tích $(y-2).(2x+1)$ bằng 12: vì $x,y$ nguyên nên $2x+1$ là một ước của 12, và là số lẻ nên chỉ nhận các ước lẻ.\n**Bước 4.** Với mỗi ước lẻ của $2x+1$, tính $x$ rồi tính $y-2$ và $y$, sau đó thử lại.\nThử lại: $x=0$, $y=14$ thì $2.0.14-4.0+14=14$ (đúng).\n**Chú ý:** ước của 12 gồm cả  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000507",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính (tính nhanh nếu có thể): $(-156)+64+(-44)+236$",
+  "dap_an": "100",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đổi chỗ và nhóm các số hạng sao cho được những tổng tròn trăm.\n**Bước 1.** Quan sát bốn số hạng: hai số âm $-156$ và $-44$, hai số dương $64$ và $236$.\n**Bước 2.** Nhóm hai số âm lại với nhau và hai số dương lại với nhau (tính chất giao hoán và kết hợp).\n**Bước 3.** Tính tổng từng nhóm rồi cộng hai kết quả.\n**Chú ý:** tổng hai số âm là số âm, lấy tổng hai số bỏ dấu rồi thêm dấu trừ.\n**Phần 2. Trình bày**\n$(-156)+64+(-44)+236$\n$=[(-156)+(-44)]+(64+236)$\n$=(-200)+300$\n$=100$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106020802002",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm chữ số tận cùng của số $14^{14^{14}}$.",
+  "dap_an": "6",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chữ số tận cùng của $14^{m}$ lặp lại theo chu kì 4 của số mũ, nên **tìm số dư của số mũ khi chia cho 4** rồi dùng chữ số tận cùng của $14^4$.\n**Bước 1.** Xét số mũ $14^{14}$: cơ số 14 là số chẵn, nên kiểm tra xem lũy thừa này có chia hết cho 4 không bằng cách tách ra thừa số $14^2$.\n**Bước 2.** Viết số mũ dưới dạng $4k$ hoặc $4k+r$ rồi tách lũy thừa của $14$ thành tích của $14^{4k}$ với phần còn lại.\n**Bước 3.** Tính $14^4$ để biết chữ số tận cùng của nó, rồi dùng tính chất: số có chữ số tận cùng là 0, 1, 5 hoặc 6 nâng lên lũy thừa nào cũng giữ nguyên chữ số tận cùng.\n**Chú ý:** số mũ ở đây cũng là một lũy thừa, nên phải tìm số dư của nó khi chia cho 4 chứ …",
+  "nhan_cu": "Các bài toán nâng cao về lũy thừa › Tìm chữ số tận cùng của lũy thừa"
+ },
+ {
+  "ma_cau": "T106000000466",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số nguyên $x$, biết: $x+64=34$",
+  "dap_an": "-30",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $x$ là **số hạng chưa biết** của phép cộng; đáp số có thể là số âm.\n**Bước 1.** Xác định vai trò: trong phép cộng $x+64=34$, $x$ là số hạng chưa biết.\n**Bước 2.** Tìm số hạng chưa biết bằng cách lấy tổng trừ đi số hạng đã biết.\n**Bước 3.** Tính hiệu $34-64$: số bị trừ nhỏ hơn số trừ nên kết quả là số nguyên âm.\nThử lại: $-30+64=34$ (đúng).\n**Phần 2. Trình bày**\n$x+64=34$\n$x=34-64$\n$x=-30$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000713",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$, biết: $(x^{54})^2=5^{108}$.",
+  "dap_an": "5",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** viết $(x^{54})^2$ thành một luỹ thừa của $x$ rồi so với $5^{108}$ khi hai vế cùng số mũ.\n**Bước 1.** Hiểu $(x^{54})^2$ là tích của hai thừa số bằng nhau, mỗi thừa số là $x^{54}$.\n**Bước 2.** Nhân hai luỹ thừa cùng cơ số $x$ bằng cách cộng các số mũ để vế trái chỉ còn một luỹ thừa của $x$.\n**Bước 3.** Hai vế có cùng số mũ 108 mà bằng nhau thì hai cơ số bằng nhau, từ đó đọc ra $x$.\n**Chú ý:** đây là trường hợp ẩn nằm ở cơ số, hai vế cùng số mũ.\nThử lại: $(5^{54})^2=5^{54}.5^{54}=5^{108}$ (đúng).\n**Phần 2. Trình bày**\n$(x^{54})^2=5^{108}$\nTa có $(x^{54})^2=x^{54}.x^{54}=x^{108}$.\n$x^{108}=5^{108}$\n$x=5$\nVậy $x=5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000687",
+  "loai": "tu_luan",
+  "de": "Tính tổng: $D=1^2+2^2+3^2+\\dots+100^2$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** viết $k^2=k.(k+1)-k$ để biến tổng các bình phương thành hiệu của tổng các tích hai số liên tiếp và tổng các số tự nhiên liên tiếp.\n**Bước 1.** Viết mỗi bình phương thành tích $k.k$, rồi so với $k.(k+1)=k.k+k$ để thấy $k^2=k.(k+1)-k$.\n**Bước 2.** Thay vào từng số hạng và nhóm lại: tổng các tích $k.(k+1)$ ở một bên, tổng các số $k$ ở bên kia.\n**Bước 3.** Tính tổng các tích hai số liên tiếp bằng cách nhân với 3 rồi cho các tích ba số liên tiếp triệt tiêu nhau.\n**Bước 4.** Tính tổng các số từ 1 đến 100 bằng cách viết ngược lại rồi cộng hai dãy theo từng cặp.\n**Bước 5.** Lấy tổng thứ nhất trừ tổng thứ hai để được tổng $D$.\n**Phần 2. Trình bày**\n$D=1^2+2^2+3^2+\\ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000793",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$ biết: $(x-12):5=8$.",
+  "dap_an": "52",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** coi cả cụm ngoặc $(x-12)$ là **số bị chia** chưa biết của phép chia ngoài cùng.\n**Bước 1.** Xác định vai trò: trong phép chia $(x-12):5=8$, cụm $(x-12)$ là số bị chia nên lấy thương nhân với số chia.\n**Bước 2.** Khi đã biết giá trị của cả cụm ngoặc, nhận ra $x$ là số bị trừ của phép trừ.\n**Bước 3.** Lấy hiệu cộng với số trừ để ra $x$ rồi thay ngược vào đề thử lại.\nThử lại: $(52-12):5=40:5=8$ (đúng).\n**Phần 2. Trình bày**\n$(x-12):5=8$\n$x-12=8.5$\n$x-12=40$\n$x=40+12$\n$x=52$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000708",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$, biết: $(x-5)(x+3)=0$.",
+  "dap_an": "5",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** một tích bằng 0 thì **ít nhất một thừa số bằng 0**, nên xét từng thừa số rồi loại giá trị không là số tự nhiên.\n**Bước 1.** Nhận ra vế trái là tích của hai thừa số và vế phải bằng 0, nên ít nhất một trong hai thừa số phải bằng 0.\n**Bước 2.** Xét thừa số thứ nhất bằng 0: $x$ là số bị trừ, lấy hiệu cộng với số trừ.\n**Bước 3.** Xét thừa số thứ hai bằng 0: với mọi số tự nhiên $x$ thì $x+3$ không nhỏ hơn 3, nên không thể bằng 0.\n**Bước 4.** Chỉ giữ giá trị của trường hợp thoả mãn rồi kết luận.\nThử lại: $(5-5).(5+3)=0.8=0$ (đúng).\n**Phần 2. Trình bày**\n$(x-5).(x+3)=0$\nVì tích bằng 0 nên $x-5=0$ hoặc $x+3=0$.\nTrường hợp $x-5=0$ thì $x=0+5=5$.\nTrường hợp $x+3=0$:  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000576",
+  "loai": "trac_nghiem",
+  "de": "Tập hợp các số nguyên tố nhỏ hơn 12 là:",
+  "lua_chon": [
+   "$A=\\{0;1;2;3;4;5;6;7;8;9;10;11\\}$",
+   "$A=\\{2;3;5;7;11\\}$",
+   "$A=\\{2;3;5;7\\}$",
+   "$A=\\{1;2;3;5;7;11\\}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số nguyên tố là số tự nhiên lớn hơn 1 chỉ có hai ước là 1 và chính nó; 0 và 1 không phải số nguyên tố.\n**Bước 1.** Loại các phương án có chứa số 0 hoặc số 1 vì hai số này không là số nguyên tố.\n**Bước 2.** Xét lần lượt các số tự nhiên từ 2 đến 11, số nào chỉ chia hết cho 1 và chính nó thì giữ lại.\n**Bước 3.** Đối chiếu danh sách vừa lập với các phương án còn lại, chú ý đừng bỏ sót số 11 vì 11 vẫn nhỏ hơn 12.\n**Chú ý:** phương án C thiếu số 11, phương án D thừa số 1.\n**Phần 2. Trình bày**\nCác số tự nhiên nhỏ hơn 12 và chỉ có hai ước là 1 và chính nó là $2;3;5;7;11$.\nVậy $A=\\{2;3;5;7;11\\}$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000601",
+  "loai": "trac_nghiem",
+  "de": "Số đối của số 14 là",
+  "lua_chon": [
+   "$-14$",
+   "$14$",
+   "$41$",
+   "$-41$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai số đối nhau nằm về hai phía của số 0 trên trục số và cách đều số 0.\n**Bước 1.** Nhớ lại: số đối của số nguyên $a$ là số nguyên được viết bằng cách đổi dấu của $a$.\n**Bước 2.** Áp dụng cho số 14: viết thêm hoặc đổi dấu để được số nằm đối xứng với 14 qua số 0 trên trục số.\n**Bước 3.** Loại các phương án chỉ đảo vị trí chữ số, vì đảo chữ số không cho ra số đối.\n**Chú ý:** số đối của một số dương là số âm có cùng phần số.\n**Phần 2. Trình bày**\nSố đối của số 14 là $-14$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000510",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$, biết: $56:(x-3)=8$",
+  "dap_an": "10",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** coi cả cụm $(x-3)$ là **số chia** chưa biết.\n**Bước 1.** Xác định vai trò: trong phép chia $56:(x-3)=8$, cụm $(x-3)$ là số chia.\n**Bước 2.** Tìm số chia bằng cách lấy số bị chia chia cho thương.\n**Bước 3.** Biết giá trị của $x-3$ rồi thì $x$ là số bị trừ: lấy hiệu cộng với số trừ.\nThử lại: $56:(10-3)=56:7=8$ (đúng).\n**Phần 2. Trình bày**\n$56:(x-3)=8$\n$x-3=56:8$\n$x-3=7$\n$x=7+3$\n$x=10$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000828",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm ƯCLN của: 60 và 84",
+  "dap_an": "12",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chỉ lấy các thừa số nguyên tố **chung** của 60 và 84, mỗi thừa số với số mũ **nhỏ nhất**.\n**Bước 1.** Phân tích 60 và 84 ra thừa số nguyên tố, thấy mỗi số còn có một thừa số riêng không trùng nhau.\n**Bước 2.** Gạch bỏ các thừa số riêng, chỉ giữ thừa số có ở cả hai số cùng số mũ nhỏ nhất.\n**Bước 3.** Nhân các thừa số giữ lại với nhau để có ƯCLN.\n**Chú ý:** thừa số 5 chỉ có ở 60 và thừa số 7 chỉ có ở 84 nên không được lấy.\n**Phần 2. Trình bày**\n$60=2^2.3.5$; $84=2^2.3.7$\n$\\text{ƯCLN}(60;84)=2^2.3=12$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106020801009",
+  "loai": "tu_luan",
+  "de": "So sánh hai lũy thừa: $10^{26}$ và $26^{17}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** không đưa được ngay về cùng cơ số hay cùng số mũ, nên **tách mỗi lũy thừa thành một số nhỏ nhân với một lũy thừa số mũ 8**, rồi so sánh từng thừa số.\n**Bước 1.** Chọn số mũ chung 8 và tách $26=2+24$, $17=1+16$ để phần số mũ còn lại chia hết cho 8.\n**Bước 2.** Viết mỗi lũy thừa thành tích của một lũy thừa nhỏ với một lũy thừa có số mũ 8, bằng quy tắc nhân hai lũy thừa cùng cơ số.\n**Bước 3.** Tính các cơ số của phần lũy thừa số mũ 8 ra số cụ thể.\n**Bước 4.** So sánh từng thừa số tương ứng của hai tích, nhân cùng một số thì thứ tự không đổi.\n**Chú ý:** hai thừa số nhỏ (100 và 26) cùng chiều với hai cơ số (1000 và 676), nên so sánh hai tích kết luận được ngay. …",
+  "nhan_cu": "Các bài toán nâng cao về lũy thừa › So sánh biểu thức lũy thừa"
+ },
+ {
+  "ma_cau": "T106000000219",
+  "loai": "trac_nghiem",
+  "de": "Trong các khẳng định sau, khẳng định SAI là:",
+  "lua_chon": [
+   "$2^3.2^4=2^7$",
+   "$201^0=0$",
+   "$7^6:7^3=7^3$",
+   "$2^3=8$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đề hỏi khẳng định **sai**, nên phải kiểm từng phương án và chọn cái không đúng.\n**Bước 1.** Với phương án A và C, dùng quy tắc nhân, chia hai luỹ thừa cùng cơ số (cộng, trừ số mũ) để kiểm.\n**Bước 2.** Với phương án B, nhớ quy ước về luỹ thừa có số mũ bằng 0 của một số khác 0.\n**Bước 3.** Với phương án D, tính luỹ thừa $2^3$ bằng cách nhân ba thừa số 2.\n**Chú ý:** đây là câu hỏi tìm khẳng định sai nên ba phương án còn lại đều đúng.\n**Phần 2. Trình bày**\nA: $2^3.2^4=2^{3+4}=2^7$ nên đúng.\nB: $201^0=1$ nên khẳng định $201^0=0$ sai.\nC: $7^6:7^3=7^{6-3}=7^3$ nên đúng.\nD: $2^3=2.2.2=8$ nên đúng.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000961",
+  "loai": "tu_luan",
+  "de": "Có 6 hộp bút máy với số lượng bút bên trong lần lượt là: 31 chiếc, 20 chiếc, 19 chiếc, 18 chiếc, 16 chiếc, 15 chiếc. Ba bạn Lan, Tùng và Mai đem chia các hộp bút này cho nhau sao cho mỗi bạn đều nhận được nguyên hộp (không chia lẻ từng chiếc bút). Biết rằng tổng số hộp mà Lan và Tùng nhận được là 5 hộp, và tổng số bút máy của Lan gấp đôi tổng số bút máy của Tùng. Hỏi mỗi bạn nhận được tất cả bao nhiêu chiếc bút máy?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Lan và Tùng nhận 5 trong 6 hộp nên Mai nhận đúng **1 hộp**; số bút của Lan và Tùng cộng lại là **3 lần số bút của Tùng** nên chia hết cho 3.\n**Bước 1.** Tính tổng số bút của cả 6 hộp, rồi dựa vào \"Lan và Tùng nhận 5 hộp\" để suy ra Mai chỉ nhận 1 hộp.\n**Bước 2.** Vì bút của Lan gấp đôi bút của Tùng nên bút của Lan và Tùng cộng lại bằng 3 lần bút của Tùng, tức là số chia hết cho 3.\n**Bước 3.** Thử lần lượt từng hộp làm phần của Mai: lấy tổng trừ số bút hộp đó rồi dùng dấu hiệu chia hết cho 3 để loại các trường hợp không phù hợp.\n**Bước 4.** Với hộp của Mai tìm được, tính số bút của Tùng (bằng một phần ba tổng Lan và Tùng) rồi số bút của Lan.\n**Bước 5.** Kiểm …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

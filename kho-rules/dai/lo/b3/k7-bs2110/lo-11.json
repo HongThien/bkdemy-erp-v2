@@ -1,0 +1,25 @@
+[
+ {
+  "ma_cau": "0770222204220402021",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x,y$ biết: $(2x+6)^{2026}+\\left(\\sqrt{y}\\right)^{2023}=0$.",
+  "dap_an": "$x=-3$; $y=0$",
+  "loi_giai": "Ta có: $(2x+6)^{2026}\\ge0$.\nLại có: $\\sqrt{y}\\ge0$ nên $\\left(\\sqrt{y}\\right)^{2023}\\ge0$.\n$\\Rightarrow (2x+6)^{2026}+\\left(\\sqrt{y}\\right)^{2023}\\ge0$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}(2x+6)^{2026}=0\\\\\\left(\\sqrt{y}\\right)^{2023}=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}2x+6=0\\\\\\sqrt{y}=0\\end{array}\\right.\\Rightarrow\\left\\{\\begin{array}{l}x=-3\\\\y=0\\end{array}\\right.$\nVậy $x=-3$ và $y=0$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tính Giá trị biểu thức ứng dụng GTLN-GTNN của biểu thức Căn bậc hai và GTTĐ"
+ },
+ {
+  "ma_cau": "T107000000129",
+  "loai": "tu_luan",
+  "de": "Cho ba số $a,b,c$ thỏa mãn $0\\le a\\le b+1\\le c+2$ và $a+b+c=1$. Tìm giá trị nhỏ nhất của $c$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $a$ và $b$ đều bị chặn trên bởi biểu thức theo $c$, nên cộng lại với $c$ và dùng $a+b+c=1$ để tìm giới hạn dưới của $c$.\n**Bước 1.** Tách chuỗi $a\\le b+1\\le c+2$ thành các bất đẳng thức đơn để biết $a$ và $b$ bị chặn trên bởi biểu thức theo $c$ như thế nào.\n**Bước 2.** Cộng các bất đẳng thức cùng chiều (kể cả $c\\le c$) để $a+b+c$ nhỏ hơn hoặc bằng một biểu thức chỉ chứa $c$.\n**Bước 3.** Thay $a+b+c=1$ vào bất đẳng thức đó để suy ra giới hạn dưới của $c$.\n**Bước 4.** Chọn $a$, $b$ để mọi dấu \"=\" cùng xảy ra rồi thử lại ba điều kiện của đề, xem giá trị đó có đạt được không.\n**Chú ý:** tìm giá trị nhỏ nhất thì phải chỉ ra giá trị đó xảy ra; chỉ chứng minh đượ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "07702202202061",
+  "loai": "tra_loi_ngan",
+  "de": "Tính: $\\sqrt{0,36}\\cdot\\sqrt{225}-\\sqrt{\\dfrac{9}{100}}$.",
+  "dap_an": "\\dfrac{87}{10}",
+  "loi_giai": "$\\sqrt{0,36}\\cdot\\sqrt{225}-\\sqrt{\\dfrac{9}{100}}$\n$=0,6\\cdot15-\\dfrac{3}{10}$\n$=9-\\dfrac{3}{10}$\n$=\\dfrac{87}{10}$.",
+  "nhan_cu": "Số vô tỉ. Căn bậc hai số học › Thực hiện phép tính liên quan đến Căn bậc hai"
+ }
+]

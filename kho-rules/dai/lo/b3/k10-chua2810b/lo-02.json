@@ -1,0 +1,834 @@
+[
+ {
+  "ma_cau": "T110030203085",
+  "loai": "tra_loi_ngan",
+  "de": "Tại một ngã ba đường ($B, H, C$ thẳng hàng) có ba tòa nhà nằm ở ba vị trí $A, B, C$ như hình vẽ. [hình]\nNgười ta đặt một trạm phát tín hiệu tại điểm $I$ cách đều cả ba tòa nhà. Biết rằng $BH = 2,5 \\text{km}$, $AH = 6,5 \\text{km}$ và $CH = 6,5 \\text{km}$, hãy tính giá trị $100AI^2$ (làm tròn đến hàng đơn vị).",
+  "dap_an": "2425",
+  "loi_giai": "Vì $I$ cách đều ba điểm $A, B, C$ nên $I$ là tâm đường tròn ngoại tiếp tam giác $ABC$, do đó $AI = R$ là bán kính đường tròn ngoại tiếp tam giác $ABC$.\nTa chọn hệ trục toạ độ với gốc tại $H$ , tia $Hx$ trùng tia $HC$ và tia $Hy$ trùng tia $HA$ (hợp lí vì $AH \\perp BC$ tại $H$).\nKhi đó $H(0;0)$, $A(0;6,5)$, $B(-2,5;0)$ và $C(6,5;0)$.\nVì $I$ cách đều $B$ và $C$ nên $I$ nằm trên đường trung trực của $BC$, tức là $I$ có hoành độ\n$x_I = \\dfrac{-2,5+6,5}{2} = 2$.\nGọi $I(2;y)$. Từ điều kiện $IA = IB$ ta có\n$(2-0)^2 + (y-6,5)^2 = (2+2,5)^2 + (y-0)^2$.\nKhai triển ta được\n$4 + y^2 - 13y + 42,25 = 20,25 + y^2 \\Leftrightarrow 13y = 26 \\Leftrightarrow y = 2$.\nVậy $I(2;2)$ và\n$AI^2 = (2-0)^2 + (2-6,5)^2 = …",
+  "co_hinh": true,
+  "nhan_cu": "Hệ thức lượng trong tam giác › Giải tam giác và bài toán thực tế áp dụng định lý sin"
+ },
+ {
+  "ma_cau": "T110000000179",
+  "loai": "tra_loi_ngan",
+  "de": "Hai tàu du lịch xuất phát từ hai thành phố cảng $A$ và $B$ cách nhau $200 \\left(km\\right)$ đến đảo $C$ như hình minh họa.\nBiết $\\widehat{CAB}=30^\\circ$; $\\widehat{CBA}=45^\\circ$. Tàu 1 ở thành phố $A$ khởi hành lúc 8h và chuyển động đều với vận tốc $80 \\left(km/h\\right)$. Tàu 2 ở thành phố $B$ muốn đến đảo $C$ cùng lúc với tàu 1 thì phải khởi hành lúc $a$ giờ $b$ phút, biết tàu 2 chuyển động đều cùng vận tốc $80 \\left(km/h\\right)$. Tính $a+b$.",
+  "dap_an": "40",
+  "loi_giai": "Xét tam giác $ABC$, ta có\n$\\widehat{ACB}=180^\\circ-\\left(\\widehat{CAB}+\\widehat{CBA}\\right)=180^\\circ-\\left(30^\\circ+45^\\circ\\right)=105^\\circ.$\nÁp dụng định lí sin trong tam giác $ABC$, ta có\n$\\dfrac{AC}{\\sin \\widehat{CBA}}=\\dfrac{BC}{\\sin \\widehat{CAB}}=\\dfrac{AB}{\\sin \\widehat{ACB}}.$\nĐộ dài quãng đường từ thành phố cảng $A$ đến đảo $C$ là\n$AC=\\dfrac{AB\\cdot \\sin 45^\\circ}{\\sin 105^\\circ}=\\dfrac{200\\cdot \\sin 45^\\circ}{\\sin 105^\\circ}\\approx 146,41 \\left(km\\right).$\nĐộ dài quãng đường từ thành phố cảng $B$ đến đảo $C$ là\n$BC=\\dfrac{AB\\cdot \\sin 30^\\circ}{\\sin 105^\\circ}=\\dfrac{200\\cdot \\sin 30^\\circ}{\\sin 105^\\circ}\\approx 103,53 \\left(km\\right).$\nThời gian tàu 1 đi từ $A$ đến $C$ với vận …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000723",
+  "loai": "tra_loi_ngan",
+  "de": "Cho mẫu số liệu có bảng tần suất như sau:\nGiá trị $x_i$: $4;5;6;7;8$\nTần số tương đối $f_i$: $0{,}1;0{,}45;0{,}2;0{,}1;0{,}15$\nTa có số trung bình của mẫu số liệu là:",
+  "dap_an": "5,75",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** với bảng tần số tương đối, số trung bình là tổng của các tích giá trị nhân tần số tương đối tương ứng.\n**Bước 1.** Kiểm tra các tần số tương đối cộng lại bằng $1$ để chắc bảng hợp lệ.\n**Bước 2.** Nhân mỗi giá trị với tần số tương đối của nó.\n**Bước 3.** Cộng các tích lại để được số trung bình.\n**Phần 2. Trình bày**\nTổng các tần số tương đối: $0{,}1+0{,}45+0{,}2+0{,}1+0{,}15=1$.\n$\\overline{x}=4\\cdot0{,}1+5\\cdot0{,}45+6\\cdot0{,}2+7\\cdot0{,}1+8\\cdot0{,}15$.\n$\\overline{x}=0{,}4+2{,}25+1{,}2+0{,}7+1{,}2=5{,}75$.\nVậy số trung bình của mẫu là $5{,}75$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000700",
+  "loai": "trac_nghiem",
+  "de": "Tiền lương hàng tháng của $7$ nhân viên trong một công ty du lịch lần lượt là: $6{,}5$; $8{,}4$; $6{,}9$; $7{,}2$; $2{,}5$; $6{,}7$; $3{,}0$ (đơn vị: triệu đồng). Số tiền đại diện cho tiền lương hàng tháng của $7$ nhân viên là:",
+  "lua_chon": [
+   "$6{,}7$ triệu đồng.",
+   "$7$ triệu đồng.",
+   "$5{,}9$ triệu đồng.",
+   "$6$ triệu đồng."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** khi mẫu có vài giá trị chênh lệch rất lớn so với phần còn lại thì số trung bình bị kéo lệch, nên số đại diện hợp lí hơn là trung vị.\n**Bước 1.** Nhận xét mẫu số liệu: có hai mức lương thấp hơn hẳn các mức còn lại, nên cần cân nhắc dùng trung bình hay trung vị làm số đại diện.\n**Bước 2.** Sắp xếp mẫu theo thứ tự không giảm để lấy được giá trị chính giữa.\n**Bước 3.** Mẫu có $7$ giá trị là số lẻ nên trung vị là giá trị ở vị trí chính giữa; đối chiếu với các phương án.\n**Phần 2. Trình bày**\nLưu ý: mẫu có hai mức lương $2{,}5$ và $3{,}0$ thấp hơn hẳn các mức còn lại nên ta chọn trung vị làm số đại diện.\nSắp xếp mẫu theo thứ tự không giảm: $2{,}5$; $3{,}0$; $6{, …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000506",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình thoi $ABCD$ có góc $\\widehat{BAD}=150^\\circ$ và độ dài đường chéo $BD$ bằng $8$. Tính độ dài cạnh hình thoi $ABCD$. (Làm tròn đến hàng phần chục).",
+  "dap_an": "4,1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hình thoi có bốn cạnh bằng nhau, nên tam giác $ABD$ cân tại $A$ và dùng định lí côsin với góc $150^\\circ$ để tìm cạnh.\n**Bước 1.** Đặt cạnh hình thoi là $a$ và nhận ra $AB=AD=a$.\n**Bước 2.** Viết định lí côsin trong tam giác $ABD$ cho cạnh $BD$ đối diện góc $A$.\n**Bước 3.** Thay giá trị $\\cos 150^\\circ$ rồi giải ra $a$ và làm tròn theo yêu cầu.\n**Phần 2. Trình bày**\nĐặt $AB=AD=a$. Trong tam giác $ABD$ theo định lí côsin:\n$BD^2=AB^2+AD^2-2AB\\cdot AD\\cos 150^\\circ$.\n$\\Leftrightarrow 64=2a^2-2a^2\\cdot\\left(-\\dfrac{\\sqrt{3}}{2}\\right)$.\n$\\Leftrightarrow 64=a^2\\left(2+\\sqrt{3}\\right)$.\n$\\Leftrightarrow a^2=\\dfrac{64}{2+\\sqrt{3}}=64\\left(2-\\sqrt{3}\\right)$.\n$\\Le …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000475",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=\\{x\\in\\mathbb{R}\\mid -5\\le x<3\\}$ và $B=\\{x\\in\\mathbb{R}\\mid x>1\\}$. Tìm $A\\cap B$.",
+  "lua_chon": [
+   "$[-5;1]$.",
+   "$(1;3)$.",
+   "$(1;3]$.",
+   "$[-5;+\\infty)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** giao của hai tập là phần chung, nên lấy các số thoả mãn đồng thời điều kiện của cả hai tập.\n**Bước 1.** Viết lại hai tập dưới dạng khoảng, đoạn, nửa khoảng để dễ so sánh.\n**Bước 2.** Biểu diễn hai tập trên trục số và xác định đoạn chung.\n**Bước 3.** Xét kĩ từng đầu mút xem có thuộc cả hai tập hay không để chọn đúng ngoặc.\n**Phần 2. Trình bày**\nTa có $A=[-5;3)$ và $B=(1;+\\infty)$.\n$x\\in A\\cap B$ khi và chỉ khi $x\\ge -5$, $x<3$ và $x>1$.\nĐiều này tương đương $1<x<3$.\nVậy $A\\cap B=(1;3)$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000645",
+  "loai": "trac_nghiem",
+  "de": "Chọn công thức đúng trong các đáp án sau:",
+  "lua_chon": [
+   "$S=\\dfrac{1}{2}bc\\sin A$.",
+   "$S=\\dfrac{1}{2}ac\\sin A$.",
+   "$S=\\dfrac{1}{2}bc\\sin B$.",
+   "$S=\\dfrac{1}{2}bc\\sin B$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** diện tích tam giác bằng một nửa tích hai cạnh nhân sin của góc xen giữa hai cạnh đó.\n**Bước 1.** Nhớ công thức diện tích theo hai cạnh và góc xen giữa.\n**Bước 2.** Với mỗi phương án, xác định góc được dùng nằm giữa hai cạnh nào.\n**Bước 3.** Chọn phương án mà góc đứng giữa đúng hai cạnh được nhân với nhau.\n**Phần 2. Trình bày**\nGóc xen giữa hai cạnh $b=AC$ và $c=AB$ là góc $A$, nên $S=\\dfrac{1}{2}bc\\sin A$: phương án A đúng.\nPhương án B: góc $A$ không nằm giữa $a$ và $c$, sai.\nPhương án C và D: góc $B$ không nằm giữa $b$ và $c$, sai.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000469",
+  "loai": "trac_nghiem",
+  "de": "Trong các câu sau, câu nào là mệnh đề?",
+  "lua_chon": [
+   "Hãy yêu Hà Nội!",
+   "Hà Nội đẹp quá!",
+   "Hà Nội là thủ đô của Việt Nam.",
+   "Hà Nội có phải là thủ đô của Việt Nam?"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mệnh đề là câu khẳng định có thể xác định được là đúng hoặc sai, không phải câu cảm thán, câu mệnh lệnh hay câu hỏi.\n**Bước 1.** Nhắc lại định nghĩa: mệnh đề phải là một câu khẳng định và có tính đúng hoặc sai rõ ràng.\n**Bước 2.** Xét từng phương án và loại những câu thuộc dạng mệnh lệnh, cảm thán hoặc nghi vấn vì chúng không có giá trị đúng sai.\n**Bước 3.** Giữ lại phương án là câu khẳng định về một sự việc kiểm chứng được.\n**Phần 2. Trình bày**\nPhương án A là câu mệnh lệnh nên không là mệnh đề.\nPhương án B là câu cảm thán, thể hiện cảm xúc nên không là mệnh đề.\nPhương án D là câu hỏi nên không là mệnh đề.\nPhương án C là câu khẳng định và là một khẳng địn …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000689",
+  "loai": "trac_nghiem",
+  "de": "Quy tròn số $7216{,}4$ đến hàng đơn vị, được số $7216$. Sai số tuyệt đối là:",
+  "lua_chon": [
+   "$0{,}2$.",
+   "$0{,}3$.",
+   "$0{,}4$.",
+   "$0{,}6$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** sai số tuyệt đối khi quy tròn là giá trị tuyệt đối của hiệu giữa số ban đầu và số sau khi quy tròn.\n**Bước 1.** Xác định số đúng (số trước khi quy tròn) và số gần đúng (số sau khi quy tròn).\n**Bước 2.** Tính hiệu hai số rồi lấy giá trị tuyệt đối.\n**Bước 3.** So sánh với các phương án và chọn giá trị khớp.\n**Phần 2. Trình bày**\nSai số tuyệt đối là $\\Delta=|7216{,}4-7216|=0{,}4$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000488",
+  "loai": "tu_luan",
+  "de": "Một gia đình cần ít nhất 900g chất protein và 400g chất lipit trong thức ăn mỗi ngày. Biết rằng trong thịt bò chứa 80% protein và 20% lipit. Trong thịt lợn chứa 60% protein và 40% lipit. Biết rằng gia đình này mua nhiều nhất là 1600g thịt bò, 1100g thịt lợn, giá tiền 1kg thịt bò là 450 000 đồng, 1kg thịt lợn là 350 000 đồng. Hỏi gia đình đó cần mua bao nhiêu kg thịt bò và thịt lợn để chi phí là ít nhất?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đặt ẩn là số kg mỗi loại thịt, lập hệ bất phương trình từ yêu cầu dinh dưỡng và giới hạn mua, rồi tìm giá trị nhỏ nhất của chi phí tại các đỉnh của miền nghiệm.\n**Bước 1.** Đổi đơn vị về kilôgam và đặt $x$, $y$ là số kg thịt bò và thịt lợn mua mỗi ngày, ghi điều kiện của hai ẩn theo giới hạn mua.\n**Bước 2.** Tính lượng protein và lượng lipit từ mỗi loại thịt rồi lập hai bất phương trình theo yêu cầu \"ít nhất\".\n**Bước 3.** Vẽ miền nghiệm, xác định các đỉnh bằng cách giải các hệ gồm hai đường biên giao nhau, rồi lập biểu thức chi phí $T$.\n**Bước 4.** Tính $T$ tại từng đỉnh và chọn giá trị nhỏ nhất, chú ý đổi về đồng khi kết luận.\n**Phần 2. Trình bày**\nGọi $x …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000474",
+  "loai": "trac_nghiem",
+  "de": "Cho $A,B$ là hai tập hợp được minh hoạ như hình vẽ bên. Phần không bị gạch trong hình vẽ là tập hợp nào sau đây?",
+  "lua_chon": [
+   "$A\\cup B$.",
+   "$A\\cap B$.",
+   "$B\\setminus A$.",
+   "$A\\setminus B$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhìn xem phần gạch chéo phủ vùng nào của biểu đồ Ven rồi xác định vùng còn lại thuộc tập hợp nào.\n**Bước 1.** Quan sát hình để xác định vòng nào được gạch chéo hoàn toàn và vòng nào chỉ được gạch một phần.\n**Bước 2.** Gọi tên phần không bị gạch: nó nằm trong vòng của tập nào và nằm ngoài vòng của tập nào.\n**Bước 3.** Đối chiếu với định nghĩa hiệu, giao, hợp của hai tập hợp để chọn phương án.\n**Phần 2. Trình bày**\nTrên hình, toàn bộ vòng của tập $A$ (kể cả phần chung với $B$) được gạch chéo.\nPhần không bị gạch nằm trong vòng của $B$ và nằm ngoài vòng của $A$, gồm các phần tử thuộc $B$ mà không thuộc $A$.\nĐó là tập hợp $B\\setminus A$.\nChọn C.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000725",
+  "loai": "tra_loi_ngan",
+  "de": "Hàm lượng Natri (đơn vị miligam, $1$ mg $=0{,}001$ g) trong $100$ g một số loại ngũ cốc được cho như sau:\n$0;\\ 340;\\ 70;\\ 140;\\ 200;\\ 180;\\ 210;\\ 150;\\ 100;\\ 130;$\n$140;\\ 180;\\ 190;\\ 160;\\ 290;\\ 50;\\ 220;\\ 180;\\ 200;\\ 210$\nHãy tính tổng các tứ phân vị?",
+  "dap_an": "520",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** sắp xếp mẫu $20$ giá trị, lấy trung vị làm $Q_2$ rồi lấy trung vị của hai nửa làm $Q_1$ và $Q_3$, sau đó cộng ba số lại.\n**Bước 1.** Đếm số phần tử rồi sắp xếp mẫu theo thứ tự tăng dần.\n**Bước 2.** Số phần tử chẵn nên chia mẫu thành hai nửa bằng nhau, tìm $Q_2$ là trung bình của hai giá trị giữa.\n**Bước 3.** Tìm $Q_1$ là trung vị nửa dưới, $Q_3$ là trung vị nửa trên rồi cộng $Q_1+Q_2+Q_3$.\n**Phần 2. Trình bày**\nSắp xếp tăng dần ($n=20$):\n$0;\\ 50;\\ 70;\\ 100;\\ 130;\\ 140;\\ 140;\\ 150;\\ 160;\\ 180;\\ 180;\\ 180;\\ 190;\\ 200;\\ 200;\\ 210;\\ 210;\\ 220;\\ 290;\\ 340$.\n$Q_2=\\dfrac{180+180}{2}=180$.\nNửa dưới gồm $10$ giá trị đầu: $Q_1=\\dfrac{130+140}{2}=135$.\nNửa trên gồm $ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000679",
+  "loai": "trac_nghiem",
+  "de": "Số quy tròn của $20182020$ đến hàng trăm là:",
+  "lua_chon": [
+   "$20182000$.",
+   "$20180000$.",
+   "$20182100$.",
+   "$20182020$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** quy tròn đến hàng trăm thì giữ các chữ số từ hàng trăm trở lên và xét chữ số ngay bên phải hàng trăm, tức chữ số hàng chục.\n**Bước 1.** Xác định hàng trăm của số đã cho và chữ số đứng ngay bên phải nó là chữ số hàng chục.\n**Bước 2.** So sánh chữ số hàng chục với $5$ để biết có cộng thêm $1$ vào hàng trăm hay không.\n**Bước 3.** Thay các chữ số bên phải hàng trăm bằng chữ số $0$ rồi đối chiếu với bốn phương án.\n**Phần 2. Trình bày**\nSố $20182020$ có chữ số hàng trăm là $0$, chữ số hàng chục là $2$.\nVì $2<5$ nên ta giữ nguyên chữ số hàng trăm và thay hai chữ số cuối bằng $0$.\nSố quy tròn là $20182000$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030101051",
+  "loai": "trac_nghiem",
+  "de": "Cho biểu thức: $A=\\cos 120^\\circ+\\tan 135^\\circ$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$A=-\\cos 60^\\circ-\\tan 45^\\circ$.",
+   "$A=\\sin 60^\\circ-\\tan 45^\\circ$.",
+   "$A=-\\cos 60^\\circ+\\tan 45^\\circ$.",
+   "$A=-\\sin 60^\\circ+\\tan 45^\\circ$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Sử dụng công thức giá trị lượng giác của hai góc bù nhau:\n$\\cos 120^\\circ=\\cos \\left(180^\\circ-60^\\circ\\right)=-\\cos 60^\\circ,$\n$\\tan 135^\\circ=\\tan \\left(180^\\circ-45^\\circ\\right)=-\\tan 45^\\circ.$\nThay vào biểu thức $A$ ta được:\n$A=\\cos 120^\\circ+\\tan 135^\\circ=-\\cos 60^\\circ-\\tan 45^\\circ.$\nVậy khẳng định đúng là $A=-\\cos 60^\\circ-\\tan 45^\\circ$.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Giá trị lượng giác của một góc"
+ },
+ {
+  "ma_cau": "T110000000644",
+  "loai": "trac_nghiem",
+  "de": "Tam giác $ABC$ có $AC=4$, $\\widehat{BAC}=30^\\circ$, $\\widehat{ACB}=75^\\circ$. Tính diện tích tam giác $ABC$.",
+  "lua_chon": [
+   "$S_{\\triangle ABC}=8$.",
+   "$S_{\\triangle ABC}=4\\sqrt{3}$.",
+   "$S_{\\triangle ABC}=4$.",
+   "$S_{\\triangle ABC}=8\\sqrt{3}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tìm góc còn lại để nhận ra tam giác cân, rồi dùng công thức diện tích theo hai cạnh và góc xen giữa.\n**Bước 1.** Tính góc $B$ từ tổng ba góc trong tam giác.\n**Bước 2.** So sánh các góc để xác định hai cạnh bằng nhau.\n**Bước 3.** Chọn hai cạnh cùng góc xen giữa đã biết và áp dụng công thức diện tích.\n**Phần 2. Trình bày**\n$\\widehat{ABC}=180^\\circ-30^\\circ-75^\\circ=75^\\circ=\\widehat{ACB}$ nên tam giác $ABC$ cân tại $A$, suy ra $AB=AC=4$.\n$S=\\dfrac{1}{2}\\cdot AB\\cdot AC\\cdot\\sin A=\\dfrac{1}{2}\\cdot4\\cdot4\\cdot\\sin30^\\circ=\\dfrac{1}{2}\\cdot4\\cdot4\\cdot\\dfrac{1}{2}=4$\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000698",
+  "loai": "trac_nghiem",
+  "de": "Bảng số liệu sau đây cho biết sản lượng chè thu được trong $1$ năm (kg/sào) của $16$ hộ gia đình: $111;112;113;112;114;127;128;125;119;118;113;126;120;115;123;116$. Các tứ phân vị của mẫu số liệu đã cho là",
+  "lua_chon": [
+   "$Q_1=113,Q_2=117,Q_3=124$.",
+   "$Q_1=117,Q_2=113,Q_3=124$.",
+   "$Q_1=113,Q_2=117,Q_3=123$.",
+   "$Q_1=113,Q_2=122,Q_3=123$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** cỡ mẫu chẵn nên $Q_2$ là trung bình hai giá trị giữa, còn $Q_1$, $Q_3$ là trung vị của hai nửa mỗi nửa có $8$ giá trị.\n**Bước 1.** Sắp xếp $16$ giá trị theo thứ tự không giảm.\n**Bước 2.** Tìm $Q_2$ từ hai giá trị đứng giữa rồi tách mẫu thành nửa dưới và nửa trên.\n**Bước 3.** Tìm trung vị mỗi nửa để được $Q_1$ và $Q_3$ rồi chọn phương án.\n**Phần 2. Trình bày**\nSắp xếp: $111;112;112;113;113;114;115;116;118;119;120;123;125;126;127;128$.\nTrung vị: $Q_2=\\dfrac{116+118}{2}=117$.\nNửa dưới là $111;112;112;113;113;114;115;116$ nên $Q_1=\\dfrac{113+113}{2}=113$.\nNửa trên là $118;119;120;123;125;126;127;128$ nên $Q_3=\\dfrac{123+125}{2}=124$.\nVậy $Q_1=113$, $Q_2=117$,  …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000641",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\triangle ABC$ có $AB=5$; $A=40^\\circ$; $B=60^\\circ$. Độ dài $BC$ gần nhất với kết quả nào?",
+  "lua_chon": [
+   "$3{,}7$.",
+   "$3{,}3$.",
+   "$3{,}5$.",
+   "$3{,}1$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biết hai góc và một cạnh nên tìm góc còn lại rồi dùng định lí sin.\n**Bước 1.** Tính góc $C$ từ tổng ba góc trong tam giác.\n**Bước 2.** Xác định cặp cạnh – góc đối diện đã biết ($AB$ với góc $C$) và cặp cần tìm ($BC$ với góc $A$).\n**Bước 3.** Viết tỉ số theo định lí sin, tính $BC$ và làm tròn một chữ số thập phân.\n**Phần 2. Trình bày**\n$C=180^\\circ-40^\\circ-60^\\circ=80^\\circ$.\nTheo định lí sin: $\\dfrac{BC}{\\sin A}=\\dfrac{AB}{\\sin C}$.\n$BC=\\dfrac{AB\\cdot\\sin A}{\\sin C}=\\dfrac{5\\cdot\\sin40^\\circ}{\\sin80^\\circ}\\approx3{,}26$\nGiá trị gần nhất với $3{,}26$ trong các phương án là $3{,}3$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000554",
+  "loai": "trac_nghiem",
+  "de": "Hình nào sau đây minh họa tập hợp $A$ là con của tập hợp $B$?",
+  "lua_chon": [
+   "Hai hình ôval $A$ và $B$ cắt nhau, có phần chung.",
+   "Hình ôval $B$ nằm trọn bên trong hình ôval $A$.",
+   "Hình ôval $A$ nằm trọn bên trong hình ôval $B$.",
+   "Hai hình ôval $B$ và $A$ cắt nhau, có phần chung."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $A\\subset B$ nghĩa là mọi phần tử của $A$ đều thuộc $B$, nên trên biểu đồ Ven vòng của $A$ phải nằm trọn trong vòng của $B$.\n**Bước 1.** Nhớ định nghĩa tập con và cách biểu diễn tập con bằng biểu đồ Ven.\n**Bước 2.** Xem từng hình xem vòng nào chứa vòng nào, đọc kĩ nhãn $A$ và $B$ của hai vòng.\n**Bước 3.** Phân biệt hình minh họa $A\\subset B$ với hình minh họa $B\\subset A$ và hình hai tập chỉ có phần chung.\n**Phần 2. Trình bày**\nHình A và hình D: hai vòng chỉ cắt nhau nên có phần tử của $A$ không thuộc $B$ (hoặc ngược lại), không minh họa tập con.\nHình B: vòng $B$ nằm trong vòng $A$ nên $B\\subset A$, không phải $A\\subset B$.\nHình C: vòng $A$ nằm trọn trong  …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000036",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$ với $AB=12 cm$; $AC=10 cm$, $\\cos C=-\\dfrac{1}{3}$. Độ dài đường cao $h_{a}$ gần nhất với giá trị nào sau đây?",
+  "lua_chon": [
+   "$h_{a}=8,8 cm$.",
+   "$h_{a}=9,4 cm$.",
+   "$h_{a}=7,8 cm$.",
+   "$h_{a}=6,2 cm$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\sin ^{2}C+\\cos ^{2}C=1\\Rightarrow \\sin ^{2}C=1-\\left(-\\dfrac{1}{3}\\right)^{2}=\\dfrac{8}{9}$.\nVì góc $C$ của tam giác luôn có $0^\\circ<\\hat{C}<180^\\circ$ nên $\\sin C>0$, suy ra $\\sin C=\\dfrac{2\\sqrt{2}}{3}$.\nĐường cao hạ từ đỉnh $A$ là $h_{a}=AC\\cdot \\sin C=10\\cdot \\dfrac{2\\sqrt{2}}{3}=\\dfrac{20\\sqrt{2}}{3}\\approx 9,4 cm$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000685",
+  "loai": "trac_nghiem",
+  "de": "Kết quả đo chiều dài của một cây cầu được ghi là $152\\text{ m}\\pm0{,}2\\text{ m}$, điều đó có nghĩa là gì?",
+  "lua_chon": [
+   "Chiều dài đúng của cây cầu là một số nằm trong khoảng từ $151{,}8\\text{ m}$ đến $152{,}2\\text{ m}$.",
+   "Chiều dài đúng của cây cầu là một số lớn hơn $152\\text{ m}$.",
+   "Chiều dài đúng của cây cầu là một số nhỏ hơn $152\\text{ m}$.",
+   "Chiều dài đúng của cây cầu là $151{,}8\\text{ m}$ hoặc là $152{,}2\\text{ m}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** kết quả đo dạng $a\\pm d$ cho biết giá trị đúng nằm trong đoạn $[a-d;a+d]$.\n**Bước 1.** Nhận ra kết quả đo có dạng $a\\pm d$ với $a$ là giá trị đo và $d$ là độ chính xác.\n**Bước 2.** Tính hai đầu mút $a-d$ và $a+d$ của đoạn chứa giá trị đúng.\n**Bước 3.** Đối chiếu đoạn vừa tìm với từng phương án và loại các phương án khẳng định quá mức.\n**Phần 2. Trình bày**\nKết quả $152\\pm0{,}2$ nghĩa là giá trị đúng $L$ thoả mãn $152-0{,}2\\le L\\le152+0{,}2$, tức $151{,}8\\le L\\le152{,}2$.\nPhương án B và C sai vì chiều dài đúng có thể lớn hơn hoặc nhỏ hơn $152$.\nPhương án D sai vì chiều dài đúng có thể là bất kì số nào trong đoạn, không chỉ hai đầu mút.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000512",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề \"$\\forall x\\in\\mathbb{Z},\\ x^2\\ne x$\" có mệnh đề phủ định là:",
+  "lua_chon": [
+   "\"$\\forall x\\in\\mathbb{Z},\\ x^2\\ne x$\".",
+   "\"$\\exists x\\in\\mathbb{Z},\\ x^2\\ne x$\".",
+   "\"$\\exists x\\in\\mathbb{Z},\\ x^2=x$\".",
+   "\"$\\exists x\\notin\\mathbb{Z},\\ x^2=x$\"."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phủ định của mệnh đề có lượng từ $\\forall$ là mệnh đề có lượng từ $\\exists$ và phần khẳng định phía sau được phủ định.\n**Bước 1.** Xác định lượng từ của mệnh đề đã cho để biết lượng từ mới sau khi phủ định.\n**Bước 2.** Phủ định phần khẳng định phía sau: phủ định của \"khác\" là \"bằng\".\n**Bước 3.** Giữ nguyên tập số mà biến thuộc về rồi đối chiếu với bốn phương án.\n**Phần 2. Trình bày**\nMệnh đề đã cho có lượng từ $\\forall$ nên phủ định có lượng từ $\\exists$.\nPhủ định của $x^2\\ne x$ là $x^2=x$, biến vẫn thuộc $\\mathbb{Z}$.\nVậy phủ định là \"$\\exists x\\in\\mathbb{Z},\\ x^2=x$\".\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000682",
+  "loai": "trac_nghiem",
+  "de": "Cho số $a=367\\,653\\,964\\pm213$. Số quy tròn của số gần đúng $367\\,653\\,964$ là",
+  "lua_chon": [
+   "$367\\,653\\,960$.",
+   "$367\\,653\\,000$.",
+   "$367\\,654\\,000$.",
+   "$367\\,653\\,970$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số quy tròn của số gần đúng được chọn theo độ chính xác $d$: quy tròn đến hàng thấp nhất mà $d$ còn nhỏ hơn một đơn vị của hàng đó.\n**Bước 1.** Đọc độ chính xác $d$ của số gần đúng từ dạng $a\\pm d$.\n**Bước 2.** So sánh $d$ lần lượt với một đơn vị của hàng chục, hàng trăm, hàng nghìn để tìm hàng thấp nhất thoả điều kiện.\n**Bước 3.** Quy tròn số đã cho đến hàng tìm được rồi chọn phương án tương ứng.\n**Phần 2. Trình bày**\nĐộ chính xác là $d=213$.\nTa có $213>10$ và $213>100$, còn $213<1000$.\nHàng thấp nhất mà $d$ nhỏ hơn một đơn vị của hàng đó là hàng nghìn.\nQuy tròn $367\\,653\\,964$ đến hàng nghìn: chữ số hàng trăm là $9\\ge5$ nên ta tăng chữ số hàng nghìn thêm …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000542",
+  "loai": "trac_nghiem",
+  "de": "Trong các phát biểu sau, đâu là mệnh đề chứa biến:",
+  "lua_chon": [
+   "$x^2+1>0$ với $x\\in\\mathbb{R}$.",
+   "$2x^2-3x+1=0$ với $x\\in\\mathbb{R}$.",
+   "$4+x^2<0$ với $x\\in\\mathbb{R}$.",
+   "$3+4=7$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mệnh đề chứa biến là phát biểu có biến mà tính đúng sai chưa xác định được, phải thay giá trị cụ thể của biến mới biết.\n**Bước 1.** Với mỗi phát biểu, xem nó có chứa biến $x$ và tính đúng sai có phụ thuộc giá trị của $x$ hay không.\n**Bước 2.** Phát biểu cho kết quả đúng (hoặc sai) với mọi $x$ thì có tính đúng sai xác định, không còn là mệnh đề chứa biến.\n**Bước 3.** Phát biểu chỉ đúng với một số giá trị của $x$ và sai với những giá trị khác mới là mệnh đề chứa biến.\n**Phần 2. Trình bày**\nPhương án A: $x^2+1>0$ đúng với mọi $x\\in\\mathbb{R}$, đây là mệnh đề đúng.\nPhương án C: $4+x^2\\ge4>0$ nên $4+x^2<0$ sai với mọi $x\\in\\mathbb{R}$, đây là mệnh đề sai.\nPhươn …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000792",
+  "loai": "tra_loi_ngan",
+  "de": "Có bao nhiêu tập hợp $X$ thỏa mãn: $\\{1;2\\}\\subset X\\subset\\{1;2;5\\}$?",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $X$ phải chứa hai phần tử $1$, $2$ và chỉ có thể thêm phần tử $5$ hoặc không, vì $X$ nằm trong tập ba phần tử.\n**Bước 1.** Từ $\\{1;2\\}\\subset X$ suy ra những phần tử nhất định phải có mặt trong $X$.\n**Bước 2.** Từ $X\\subset\\{1;2;5\\}$ suy ra $X$ không có phần tử nào ngoài ba phần tử đó.\n**Bước 3.** Xét hai khả năng còn lại về phần tử $5$ rồi đếm số tập $X$.\n**Phần 2. Trình bày**\nVì $\\{1;2\\}\\subset X$ nên $1\\in X$ và $2\\in X$.\nVì $X\\subset\\{1;2;5\\}$ nên $X$ chỉ có thể chứa thêm phần tử $5$ hoặc không.\nVậy $X=\\{1;2\\}$ hoặc $X=\\{1;2;5\\}$, có $2$ tập hợp.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000517",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $B=\\left\\{x\\in\\mathbb{R}\\mid -\\dfrac{1}{2}<x\\le 3\\right\\}$. Khẳng định nào sau đây **đúng**?",
+  "lua_chon": [
+   "$B=\\left(-\\dfrac{1}{2};3\\right]$.",
+   "$B=\\{1;2;3\\}$.",
+   "$B=\\{0;1;2;3\\}$.",
+   "$B=\\left[-\\dfrac{1}{2};3\\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tập các số thực thoả bất đẳng thức kép được viết thành khoảng, đoạn hoặc nửa khoảng, đầu mút nào bằng được thì dùng ngoặc vuông.\n**Bước 1.** Nhận ra tập $B$ gồm các số thực (không chỉ các số nguyên), nên là một tập vô hạn.\n**Bước 2.** Xét hai đầu mút: đầu trái không lấy dấu bằng, đầu phải có dấu bằng.\n**Bước 3.** Chọn kí hiệu ngoặc tương ứng cho từng đầu rồi loại các phương án liệt kê số nguyên.\n**Phần 2. Trình bày**\nVì $-\\dfrac{1}{2}<x$ nên $-\\dfrac{1}{2}$ không thuộc $B$, dùng ngoặc tròn ở đầu trái.\nVì $x\\le 3$ nên $3$ thuộc $B$, dùng ngoặc vuông ở đầu phải.\nVậy $B=\\left(-\\dfrac{1}{2};3\\right]$. Phương án B, C liệt kê số nguyên nên thiếu nhiều phần tử; p …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000565",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=[-5;3)$, $B=(1;+\\infty)$. Khi đó $A\\cap B$ là tập nào sau đây?",
+  "lua_chon": [
+   "$(1;3)$.",
+   "$(1;3]$.",
+   "$[-5;+\\infty)$.",
+   "$[-5;1]$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** giao của hai khoảng là tập các số thoả mãn đồng thời điều kiện của cả hai khoảng.\n**Bước 1.** Viết điều kiện của $x$ cho từng tập dưới dạng hai bất đẳng thức.\n**Bước 2.** Lấy đầu mút trái lớn hơn và đầu mút phải nhỏ hơn, chú ý loại ngoặc ở mỗi đầu mút.\n**Bước 3.** Viết kết quả bằng kí hiệu khoảng và so với bốn phương án.\n**Phần 2. Trình bày**\n$x\\in A\\cap B\\Leftrightarrow\\begin{cases}-5\\le x<3\\\\x>1\\end{cases}$.\nSuy ra $1<x<3$.\nVậy $A\\cap B=(1;3)$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000127",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\triangle ABC$ có $\\hat{A}=120^\\circ$. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "$S=\\dfrac{1}{4}bc$.",
+   "$S=\\dfrac{\\sqrt{3}}{4}bc$.",
+   "$S=\\dfrac{1}{2}bc$.",
+   "$S=\\dfrac{\\sqrt{3}}{2}bc$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Diện tích tam giác $ABC$ được tính theo công thức:\n$S=\\dfrac{1}{2}bc\\sin A.$\nThay $\\hat{A}=120^\\circ$ vào công thức ta được:\n$S=\\dfrac{1}{2}bc\\sin 120^\\circ=\\dfrac{1}{2}bc\\cdot \\dfrac{\\sqrt{3}}{2}=\\dfrac{\\sqrt{3}}{4}bc.$\nVậy khẳng định đúng là $S=\\dfrac{\\sqrt{3}}{4}bc$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000508",
+  "loai": "tra_loi_ngan",
+  "de": "Điểm $M(b;0)$ với $b$ là số nguyên âm thuộc miền nghiệm của bất phương trình $x+3y+1\\ge 0$. Tìm $b$.",
+  "dap_an": "-1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** điểm thuộc miền nghiệm khi toạ độ của nó thoả bất phương trình, sau đó đối chiếu với điều kiện nguyên âm của $b$.\n**Bước 1.** Thay toạ độ $x=b$, $y=0$ của điểm $M$ vào bất phương trình.\n**Bước 2.** Giải bất phương trình theo $b$ để được một khoảng giá trị.\n**Bước 3.** Chọn trong khoảng đó các số nguyên âm và kết luận.\n**Phần 2. Trình bày**\nĐiểm $M(b;0)$ thuộc miền nghiệm khi $b+3\\cdot 0+1\\ge 0$.\n$\\Leftrightarrow b\\ge -1$.\nVì $b$ là số nguyên âm nên $b=-1$.\nVậy $b=-1$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000795",
+  "loai": "tra_loi_ngan",
+  "de": "Một bác nông dân cần trồng lúa và khoai trên diện tích đất gồm $6$ ha, với lượng phân bón dự trữ là $100$ kg và sử dụng tối đa $120$ ngày công. Để trồng $1$ ha lúa cần sử dụng $20$ kg phân bón, $10$ ngày công với lợi nhuận là $30$ triệu đồng; để trồng $1$ ha khoai cần sử dụng $10$ kg phân bón và $30$ ngày công với lợi nhuận là $60$ triệu đồng. Để đạt được lợi nhuận cao nhất, bác nông dân cần trồng bao nhiêu ha lúa và khoai mỗi loại?",
+  "dap_an": "3",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đặt diện tích mỗi loại làm ẩn, lập hệ bất phương trình theo đất, phân bón, ngày công và tìm giá trị lớn nhất của lợi nhuận tại các đỉnh của miền nghiệm.\n**Bước 1.** Chọn hai ẩn là số ha lúa và số ha khoai, nêu điều kiện của hai ẩn.\n**Bước 2.** Lập ba bất phương trình cho diện tích đất, lượng phân bón và số ngày công, rồi viết biểu thức lợi nhuận.\n**Bước 3.** Xác định miền nghiệm và tìm tọa độ các đỉnh bằng cách giải hệ hai phương trình biên cắt nhau; loại giao điểm không thỏa các bất phương trình còn lại.\n**Bước 4.** Tính lợi nhuận tại từng đỉnh và chọn giá trị lớn nhất để đọc cách trồng.\n**Phần 2. Trình bày**\nGọi $x$, $y$ lần lượt là số ha lúa và khoai $( …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000479",
+  "loai": "trac_nghiem",
+  "de": "Miền nghiệm của bất phương trình $2x+3y>4$ là",
+  "lua_chon": [
+   "Nửa mặt phẳng chứa gốc tọa độ, bờ là đường thẳng $2x+3y=4$ (không kể bờ).",
+   "Nửa mặt phẳng chứa gốc tọa độ, bờ là đường thẳng $2x+3y=4$ (kể cả bờ).",
+   "Nửa mặt phẳng không chứa gốc tọa độ, bờ là đường thẳng $2x+3y=4$ (không kể bờ).",
+   "Nửa mặt phẳng không chứa gốc tọa độ, bờ là đường thẳng $2x+3y=4$ (kể cả bờ)."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** dùng gốc toạ độ làm điểm thử để biết miền nghiệm có chứa gốc hay không, và dựa vào dấu bất đẳng thức để biết có kể bờ hay không.\n**Bước 1.** Kiểm tra gốc toạ độ có nằm trên đường biên $2x+3y=4$ hay không để dùng làm điểm thử.\n**Bước 2.** Thay toạ độ gốc vào bất phương trình để biết nửa mặt phẳng chứa gốc có phải miền nghiệm không.\n**Bước 3.** Xét dấu $>$ là chặt hay không chặt để kết luận về việc kể bờ.\n**Phần 2. Trình bày**\nĐường biên là $2x+3y=4$; gốc $O(0;0)$ không nằm trên đường biên.\nThay $O(0;0)$ vào $2x+3y>4$ được $0>4$, sai nên miền nghiệm không chứa gốc toạ độ.\nBất phương trình có dấu $>$ (chặt) nên không kể bờ.\nVậy miền nghiệm là nửa mặt phẳng kh …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000158",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$ có diện tích bằng $12$ và chu vi bằng $12$. Bán kính $r$ của đường tròn nội tiếp tam giác $ABC$ là?",
+  "lua_chon": [
+   "$r=1$.",
+   "$r=\\dfrac{1}{2}$.",
+   "$r=2$.",
+   "$r=3$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Nửa chu vi của tam giác $ABC$ là\n$p=\\dfrac{12}{2}=6.$\nÁp dụng công thức tính diện tích tam giác theo bán kính đường tròn nội tiếp $S=p\\cdot r$, ta có\n$r=\\dfrac{S}{p}=\\dfrac{12}{6}=2.$\nVậy bán kính đường tròn nội tiếp tam giác $ABC$ là $r=2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000752",
+  "loai": "trac_nghiem",
+  "de": "Hai chiếc tàu thủy cùng xuất phát từ một vị trí $A$, đi thẳng theo hai hướng tạo với nhau góc $60^\\circ$. Tàu $B$ chạy với tốc độ $20$ hải lí một giờ. Tàu $C$ chạy với tốc độ $30$ hải lí một giờ. Sau hai giờ, hai tàu cách nhau bao nhiêu hải lí? Kết quả gần nhất với số nào sau đây?",
+  "lua_chon": [
+   "$61$ hải lí.",
+   "$53$ hải lí.",
+   "$50$ hải lí.",
+   "$68$ hải lí."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** sau hai giờ mỗi tàu đi được quãng đường bằng tốc độ nhân thời gian, rồi dùng định lí côsin trong tam giác tạo bởi $A$ và hai vị trí tàu.\n**Bước 1.** Tính quãng đường mỗi tàu đi được sau hai giờ, đó là hai cạnh kề góc $A$.\n**Bước 2.** Gọi hai vị trí tàu là $B$, $C$ và xác định khoảng cách cần tìm là cạnh $BC$ của tam giác $ABC$.\n**Bước 3.** Áp dụng định lí côsin với góc xen giữa $60^\\circ$ rồi làm tròn kết quả theo yêu cầu \"gần nhất\".\n**Phần 2. Trình bày**\nSau hai giờ: $AB=20\\cdot2=40$ (hải lí), $AC=30\\cdot2=60$ (hải lí), góc $BAC=60^\\circ$.\nTheo định lí côsin: $BC^2=AB^2+AC^2-2\\cdot AB\\cdot AC\\cdot\\cos60^\\circ$\n$BC^2=1600+3600-2\\cdot40\\cdot60\\cdot\\dfrac12= …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000768",
+  "loai": "tu_luan",
+  "de": "Cho hai tập hợp $A=\\{x\\in\\mathbb{R}\\mid -2<x\\le 1\\}$; $B=\\{x\\in\\mathbb{R}\\mid x>0\\}$.\na) Dùng kí hiệu khoảng, đoạn, nửa khoảng viết lại các tập hợp $A$; $B$.\nb) Xác định các tập hợp sau: $A\\cap B$; $A\\cup B$; $B\\setminus A$; $C_{\\mathbb{R}}A$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đổi điều kiện của $x$ thành khoảng – nửa khoảng rồi biểu diễn trên trục số để đọc giao, hợp, hiệu và phần bù.\n**Bước 1.** Ý a: đọc từng điều kiện của $x$, chú ý đầu mút nào có dấu bằng (lấy) và đầu mút nào không (không lấy) để chọn dấu ngoặc tròn hay vuông.\n**Bước 2.** Ý b: biểu diễn cả hai tập trên cùng một trục số để thấy phần chung và phần gộp lại.\n**Bước 3.** Với giao $A\\cap B$ và hợp $A\\cup B$, lấy phần chung và phần phủ của hai tập, kiểm tra riêng từng đầu mút.\n**Bước 4.** Với hiệu $B\\setminus A$ lấy các phần tử thuộc $B$ mà không thuộc $A$; với phần bù $C_{\\mathbb{R}}A$ lấy mọi số thực không thuộc $A$.\n**Phần 2. Trình bày**\na) $A=(-2;1]$; $B=(0;+\\in …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000510",
+  "loai": "tra_loi_ngan",
+  "de": "Một xưởng (quy mô nhỏ) sản xuất hai loại sản phẩm là sản phẩm loại I và sản phẩm loại II. Mỗi kg sản phẩm loại I cần $2$ kg nguyên liệu, được sản xuất trong $2$ giờ và thu lợi được $300\\,000$ đồng. Mỗi kg sản phẩm loại II cần $2$ kg nguyên liệu, được sản xuất trong $5$ giờ và thu lợi được $600\\,000$ đồng. Xưởng có $200$ kg nguyên liệu và $300$ giờ làm việc tối đa. Lợi nhuận cao nhất của xưởng là $a$ triệu đồng. Tìm $a$.",
+  "dap_an": "40",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** lập hệ bất phương trình từ giới hạn nguyên liệu và thời gian, rồi tìm giá trị lớn nhất của hàm lợi nhuận tại một đỉnh của miền nghiệm.\n**Bước 1.** Đặt $x$, $y$ là số kg sản phẩm loại I, loại II rồi viết các điều kiện $x\\ge 0$, $y\\ge 0$.\n**Bước 2.** Lập hai bất phương trình từ giới hạn nguyên liệu và giới hạn thời gian làm việc.\n**Bước 3.** Xác định các đỉnh của miền nghiệm bằng cách giải các cặp đường biên.\n**Bước 4.** Viết hàm lợi nhuận theo đơn vị triệu đồng, tính giá trị ở từng đỉnh và chọn giá trị lớn nhất.\n**Phần 2. Trình bày**\nGọi $x$, $y$ lần lượt là số kg sản phẩm loại I, loại II ($x\\ge 0$, $y\\ge 0$).\nNguyên liệu: $2x+2y\\le 200\\Leftrightarrow x+y\\l …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000533",
+  "loai": "trac_nghiem",
+  "de": "Cho mệnh đề chứa biến $P(x)$: \"$x+15\\le x^2$\" với $x$ là số thực. Mệnh đề nào sau đây là đúng?",
+  "lua_chon": [
+   "$P(0)$.",
+   "$P(3)$.",
+   "$P(4)$.",
+   "$P(5)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mệnh đề chứa biến trở thành mệnh đề khi gán giá trị cụ thể cho biến, nên ta thay từng giá trị vào bất đẳng thức và so sánh hai vế.\n**Bước 1.** Với mỗi phương án, thay giá trị của $x$ vào hai vế $x+15$ và $x^2$.\n**Bước 2.** Tính giá trị của từng vế bằng số cụ thể.\n**Bước 3.** So sánh hai vế để biết bất đẳng thức đã cho đúng hay sai ở từng phương án rồi chọn phương án đúng.\n**Phần 2. Trình bày**\nVới $x=0$: $0+15=15$ và $0^2=0$, ta có $15\\le0$ sai.\nVới $x=3$: $3+15=18$ và $3^2=9$, ta có $18\\le9$ sai.\nVới $x=4$: $4+15=19$ và $4^2=16$, ta có $19\\le16$ sai.\nVới $x=5$: $5+15=20$ và $5^2=25$, ta có $20\\le25$ đúng.\nVậy mệnh đề đúng là $P(5)$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000492",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $A=\\{x\\in\\mathbb{N}\\mid -2<x\\le 3\\}$. Chọn mệnh đề đúng.",
+  "lua_chon": [
+   "$A=\\{1;2;3\\}$.",
+   "$A=\\{-2;-1;1;2;3\\}$.",
+   "$A=\\{-1;0;1;2;3\\}$.",
+   "$A=\\{0;1;2;3\\}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phần tử của $A$ phải vừa là số tự nhiên vừa thoả điều kiện $-2<x\\le 3$.\n**Bước 1.** Nhắc lại $\\mathbb{N}$ gồm các số $0;1;2;3;\\dots$ nên không có số âm.\n**Bước 2.** Liệt kê các số tự nhiên thoả bất đẳng thức kép, chú ý đầu $-2$ không lấy còn đầu $3$ được lấy.\n**Bước 3.** So sánh tập vừa liệt kê với bốn phương án.\n**Phần 2. Trình bày**\nVì $x\\in\\mathbb{N}$ nên $x\\ge 0$; kết hợp với $-2<x\\le 3$ ta được $0\\le x\\le 3$.\nDo đó $A=\\{0;1;2;3\\}$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000732",
+  "loai": "tra_loi_ngan",
+  "de": "Mẫu số liệu sau cho biết số ghế trống tại một rạp chiếu phim trong $9$ ngày.\n$7;\\ 8;\\ 22;\\ 20;\\ 15;\\ 18;\\ 19;\\ 13;\\ 11$\nTìm khoảng tứ phân vị của mẫu số liệu này",
+  "dap_an": "10",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** khoảng tứ phân vị là $\\Delta_Q=Q_3-Q_1$, trong đó $Q_1$, $Q_3$ là trung vị của nửa dưới và nửa trên không chứa $Q_2$.\n**Bước 1.** Sắp xếp $9$ giá trị theo thứ tự tăng dần.\n**Bước 2.** Xác định trung vị là phần tử chính giữa rồi tách hai nửa không chứa nó.\n**Bước 3.** Lấy trung vị mỗi nửa làm $Q_1$, $Q_3$ rồi tính hiệu.\n**Phần 2. Trình bày**\nSắp xếp tăng dần: $7;\\ 8;\\ 11;\\ 13;\\ 15;\\ 18;\\ 19;\\ 20;\\ 22$.\nTrung vị là phần tử thứ $5$: $Q_2=15$.\nNửa dưới $7;8;11;13$ có $Q_1=\\dfrac{8+11}{2}=9{,}5$. Nửa trên $18;19;20;22$ có $Q_3=\\dfrac{19+20}{2}=19{,}5$.\n$\\Delta_Q=19{,}5-9{,}5=10$.\nVậy khoảng tứ phân vị của mẫu là $10$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000457",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$ có $AB=5$; $BC=7$; $AC=8$. Số đo góc $A$ bằng",
+  "lua_chon": [
+   "$45^\\circ$.",
+   "$90^\\circ$.",
+   "$60^\\circ$.",
+   "$30^\\circ$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biết ba cạnh của tam giác thì dùng định lí côsin để tìm côsin của góc rồi suy ra số đo góc.\n**Bước 1.** Xác định góc $A$ nằm giữa hai cạnh $AB$, $AC$ và đối diện cạnh $BC$.\n**Bước 2.** Viết định lí côsin cho cạnh $BC$ rồi giải ra $\\cos A$.\n**Bước 3.** Tính giá trị $\\cos A$ và đối chiếu với các góc đặc biệt ở bốn phương án.\n**Phần 2. Trình bày**\nTheo định lí côsin: $BC^2=AB^2+AC^2-2\\cdot AB\\cdot AC\\cdot\\cos A$.\n$\\cos A=\\dfrac{AB^2+AC^2-BC^2}{2\\cdot AB\\cdot AC}$.\n$\\cos A=\\dfrac{25+64-49}{2\\cdot5\\cdot8}=\\dfrac{40}{80}=\\dfrac12$.\nVì $0^\\circ<A<180^\\circ$ nên $A=60^\\circ$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010204067",
+  "loai": "tra_loi_ngan",
+  "de": "Lớp 10A có $18$ học sinh thích học môn Vẽ, $25$ học sinh thích học môn Âm Nhạc, $11$ học sinh thích học cả hai môn học trên, $4$ học sinh không thích học môn nào. Tính số học sinh lớp 10A.",
+  "dap_an": "36",
+  "loi_giai": "Gọi $A$ là tập hợp học sinh thích học môn Vẽ, $B$ là tập hợp học sinh thích học môn Âm Nhạc.\nTheo giả thiết $n\\left(A\\right)=18$, $n\\left(B\\right)=25$, $n\\left(A\\capB\\right)=11$.\nSố học sinh thích ít nhất một trong hai môn là\n$n\\left(A\\cupB\\right)=n\\left(A\\right)+n\\left(B\\right)-n\\left(A\\capB\\right)=18+25-11=32.$\nNgoài ra còn $4$ học sinh không thích môn nào.\nDo đó tổng số học sinh của lớp 10A là\n$32+4=36.$\nVậy lớp 10A có $36$ học sinh.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán thực tế tập hợp (2 Yếu tố)"
+ },
+ {
+  "ma_cau": "T110010204084",
+  "loai": "tra_loi_ngan",
+  "de": "Trong một cuộc khảo sát. Một lớp học có $26$ học sinh chơi bóng đá, $22$ học sinh chơi bóng bàn, $15$ học sinh chơi cả bóng đá và bóng bàn, $10$ học sinh không chơi môn nào. Tìm số học sinh của lớp.",
+  "dap_an": "43",
+  "loi_giai": "Gọi $A$ là tập hợp học sinh chơi bóng đá, $B$ là tập hợp học sinh chơi bóng bàn trong lớp học.\nTheo đề bài, ta có $|A|=26$, $|B|=22$, số học sinh chơi cả hai môn là $|A\\cap B|=15$ và số học sinh không chơi môn nào là $10$.\nSố học sinh chơi ít nhất một trong hai môn thể thao là\n$|A\\cup B|=|A|+|B|-|A\\cap B|=26+22-15=33.$\nSố học sinh của cả lớp là tổng số học sinh chơi ít nhất một môn và số học sinh không chơi môn nào:\n$33+10=43.$\nVậy số học sinh của lớp là $43$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán thực tế tập hợp (2 Yếu tố)"
+ },
+ {
+  "ma_cau": "T110000000509",
+  "loai": "tra_loi_ngan",
+  "de": "Cho mệnh đề $A$: \"$x\\in\\mathbb{R},\\ x^2-5x+4=0$\". Tính tổng các giá trị của $x$ để mệnh đề $A$ đúng.",
+  "dap_an": "5",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mệnh đề chứa biến chỉ đúng với những giá trị của $x$ là nghiệm của phương trình đã cho.\n**Bước 1.** Nhận ra các giá trị $x$ làm mệnh đề đúng chính là nghiệm thực của phương trình bậc hai.\n**Bước 2.** Giải phương trình bằng phân tích nhân tử hoặc dùng biệt thức.\n**Bước 3.** Cộng các nghiệm tìm được hoặc đối chiếu bằng hệ thức Viète.\n**Phần 2. Trình bày**\nMệnh đề $A$ đúng khi $x^2-5x+4=0$.\n$\\Leftrightarrow (x-1)(x-4)=0$.\n$\\Leftrightarrow x=1$ hoặc $x=4$.\nTổng các giá trị của $x$ là $1+4=5$.\nVậy đáp số là $5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000626",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\alpha$ là góc tù. Mệnh đề nào đúng trong các mệnh đề sau?",
+  "lua_chon": [
+   "$\\tan\\alpha<0$.",
+   "$\\cot\\alpha>0$.",
+   "$\\sin\\alpha<0$.",
+   "$\\cos\\alpha>0$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** góc tù nằm giữa $90^\\circ$ và $180^\\circ$ nên dấu của các giá trị lượng giác được xác định cố định.\n**Bước 1.** Xác định khoảng giá trị của góc tù và dấu của $\\sin$, $\\cos$ trong khoảng đó.\n**Bước 2.** Dùng công thức tỉ số để suy ra dấu của $\\tan$ và $\\cot$.\n**Bước 3.** Đối chiếu với bốn phương án và chọn phương án đúng.\n**Phần 2. Trình bày**\nGóc tù $\\alpha$ thỏa mãn $90^\\circ<\\alpha<180^\\circ$ nên $\\sin\\alpha>0$, $\\cos\\alpha<0$.\nDo đó $\\tan\\alpha=\\dfrac{\\sin\\alpha}{\\cos\\alpha}<0$ và $\\cot\\alpha=\\dfrac{\\cos\\alpha}{\\sin\\alpha}<0$.\nPhương án A đúng; các phương án B, C, D đều sai.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030204034",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$ với $AB = 12\\mathrm{cm}$; $AC = 10\\mathrm{cm}$, $\\mathrm{cos}C = -\\dfrac{1}{3}$. Độ dài đường cao $h_a$ gần nhất với giá trị nào sau đây?",
+  "lua_chon": [
+   "$h_a = 8,8\\mathrm{cm}$.",
+   "$h_a = 9,4\\mathrm{cm}$.",
+   "$h_a = 7,8\\mathrm{cm}$.",
+   "$h_a = 6,2\\mathrm{cm}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\mathrm{sin}^2 C + \\mathrm{cos}^2 C = 1 \\Rightarrow \\mathrm{sin}^2 C = 1 - \\left(-\\dfrac{1}{3}\\right)^2 = \\dfrac{8}{9}$.\nVì góc $C$ của tam giác luôn có $0^\\circ < \\widehat{C} < 180^\\circ$ nên $\\mathrm{sin}C > 0$, suy ra $\\mathrm{sin}C = \\dfrac{2\\sqrt{2}}{3}$.\nĐường cao hạ từ đỉnh $A$ là $h_a = AC \\cdot \\mathrm{sin}C = 10 \\cdot \\dfrac{2\\sqrt{2}}{3} = \\dfrac{20\\sqrt{2}}{3} \\approx 9,4\\mathrm{cm}$.",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Tính diện tích tam giác"
+ },
+ {
+  "ma_cau": "T110000000355",
+  "loai": "tra_loi_ngan",
+  "de": "Để đo chiều cao của cột cờ $AB$ trên nóc một toà nhà (như hình vẽ dưới đây), anh Hùng đã làm như sau: Anh đứng trên một đài quan sát và có tầm quan sát tại $C$ cao $3 m$ so với mặt đất, khi quan sát anh đo được góc quan sát đến chân cột $A$ là $40^\\circ$ và góc quan sát đến đỉnh cột $B$ là $50^\\circ$, khoảng cách từ chân toà nhà đến vị trí quan sát là $16 m$ (như hình vẽ). Chiều cao của cột cờ $AB$ là bao nhiêu mét? (làm tròn kết quả đến hàng phần chục).",
+  "dap_an": "5.6",
+  "loi_giai": "Từ vị trí quan sát $C$, kẻ đoạn thẳng $CD$ vuông góc với đường thẳng $EB$ tại $D$.\nTứ giác $EFCD$ có $\\hat{E}=\\hat{F}=\\hat{D}=90^\\circ$ nên là hình chữ nhật.\nSuy ra $CD=EF=16 m$ và $ED=FC=3 m$.\nTheo giả thiết, góc nhìn đến chân cột cờ $A$ là $\\widehat{DCA}=40^\\circ$ và góc nhìn đến đỉnh cột cờ $B$ là $\\widehat{DCB}=50^\\circ$.\nXét tam giác $CDA$ vuông tại $D$, ta có\n$DA=CD\\cdot \\tan \\widehat{DCA}=16\\cdot \\tan 40^\\circ.$\nXét tam giác $CDB$ vuông tại $D$, ta có\n$DB=CD\\cdot \\tan \\widehat{DCB}=16\\cdot \\tan 50^\\circ.$\nChiều cao của cột cờ $AB$ là\n$AB=DB-DA=16\\cdot \\tan 50^\\circ-16\\cdot \\tan 40^\\circ=16\\left(\\tan 50^\\circ-\\tan 40^\\circ\\right)\\approx 5,64 \\left(m\\right).$\nLàm tròn kết quả đến hàng p …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000373",
+  "loai": "tra_loi_ngan",
+  "de": "Từ vị trí $A$ người ta quan sát một cây cao (hình vẽ). Biết $AH=4 m$, $HB=20 m$, $\\widehat{BAC}=45^\\circ$. Tính chiều cao của cây (theo đơn vị mét, tính chính xác đến hàng phần chục).",
+  "dap_an": "17.3",
+  "loi_giai": "Trên hình vẽ, $K$ là hình chiếu vuông góc của $A$ lên thân cây $BC$.\nTứ giác $AHBK$ có bốn góc vuông nên là hình chữ nhật, do đó\n$AK=HB=20 \\left(m\\right),BK=AH=4 \\left(m\\right).$\nXét tam giác $ABK$ vuông tại $K$ ta có\n$\\tan \\widehat{KAB}=\\dfrac{BK}{AK}=\\dfrac{4}{20}=0,2\\Rightarrow \\widehat{KAB}\\approx 11,31^\\circ.$\nVì tia $AK$ nằm giữa hai tia $AB$ và $AC$ nên\n$\\widehat{KAC}=\\widehat{BAC}-\\widehat{KAB}\\approx 45^\\circ-11,31^\\circ=33,69^\\circ.$\nXét tam giác $ACK$ vuông tại $K$ ta có\n$KC=AK\\cdot \\tan \\widehat{KAC}\\approx 20\\cdot \\tan 33,69^\\circ\\approx 20\\cdot \\dfrac{2}{3}\\approx 13,33 \\left(m\\right).$\nChiều cao của cây là\n$\\text{BC=BK+KC\\approx 4+}13,33=17,33\\approx 17,3 \\left(m\\right).$\nVậy  …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000456",
+  "loai": "trac_nghiem",
+  "de": "Cặp số $(x;y)$ nào sau đây là nghiệm của hệ bất phương trình $\\begin{cases}2x+3y-1>0\\\\ 5x-y+4\\le0\\end{cases}$",
+  "lua_chon": [
+   "$(0;0)$.",
+   "$(-2;-4)$.",
+   "$(-3;-4)$.",
+   "$(0;4)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** một cặp số là nghiệm của hệ khi và chỉ khi thoả mãn đồng thời mọi bất phương trình của hệ.\n**Bước 1.** Thay lần lượt toạ độ từng phương án vào bất phương trình thứ nhất.\n**Bước 2.** Với phương án đã thoả bất phương trình thứ nhất, tiếp tục thay vào bất phương trình thứ hai, chú ý dấu bằng ở bất phương trình này được phép xảy ra.\n**Bước 3.** Chọn phương án thoả cả hai bất phương trình.\n**Phần 2. Trình bày**\nVới $(0;0)$: $2\\cdot0+3\\cdot0-1=-1$, không lớn hơn $0$ nên loại.\nVới $(-2;-4)$: $2\\cdot(-2)+3\\cdot(-4)-1=-17$, không lớn hơn $0$ nên loại.\nVới $(-3;-4)$: $2\\cdot(-3)+3\\cdot(-4)-1=-19$, không lớn hơn $0$ nên loại.\nVới $(0;4)$: $2\\cdot0+3\\cdot4-1=11>0$ và  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000705",
+  "loai": "trac_nghiem",
+  "de": "Nhiệt độ cao nhất của Hà Nội trong $7$ ngày liên tiếp trong tháng tám được ghi lại là: $34$; $34$; $36$; $35$; $33$; $31$; $30$ (độ C). Độ lệch chuẩn của mẫu số liệu thuộc khoảng nào",
+  "lua_chon": [
+   "$(1;2)$.",
+   "$(3;4)$.",
+   "$\\left[2;\\dfrac{7}{2}\\right]$.",
+   "$\\left(0;\\dfrac{3}{4}\\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** độ lệch chuẩn là căn bậc hai của phương sai, phương sai là trung bình của bình phương độ lệch so với số trung bình.\n**Bước 1.** Tính số trung bình của $7$ giá trị nhiệt độ.\n**Bước 2.** Tính phương sai bằng trung bình các bình phương độ lệch so với số trung bình.\n**Bước 3.** Lấy căn bậc hai để được độ lệch chuẩn rồi xác định khoảng chứa nó.\n**Phần 2. Trình bày**\nSố trung bình: $\\overline{x}=\\dfrac{34+34+36+35+33+31+30}{7}=\\dfrac{233}{7}\\approx33{,}29$.\nPhương sai: $s^2=\\dfrac{34^2+34^2+36^2+35^2+33^2+31^2+30^2}{7}-\\overline{x}^{\\,2}=\\dfrac{7783}{7}-\\left(\\dfrac{233}{7}\\right)^2\\approx3{,}92$.\nĐộ lệch chuẩn: $s=\\sqrt{s^2}\\approx1{,}98$.\nVì $1<1{,}98<2$ nên $ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000743",
+  "loai": "trac_nghiem",
+  "de": "Để phục vụ cho một hội nghị quốc tế, ban tổ chức huy động 35 người phiên dịch tiếng Anh, 30 người phiên dịch tiếng Pháp, trong đó có 16 người phiên dịch được cả tiếng Anh và tiếng Pháp. Ban tổ chức đã huy động cho hội nghị đó số người là:",
+  "lua_chon": [
+   "$45$.",
+   "$81$.",
+   "$65$.",
+   "$49$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số người huy động là số phần tử của hợp hai tập, tính bằng công thức $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.\n**Bước 1.** Gọi $A$ là tập người phiên dịch tiếng Anh, $B$ là tập người phiên dịch tiếng Pháp và xác định $n(A)$, $n(B)$.\n**Bước 2.** Xác định số người dịch được cả hai thứ tiếng chính là số phần tử của giao hai tập.\n**Bước 3.** Áp dụng công thức bao hàm loại trừ để tránh đếm hai lần những người dịch được cả hai thứ tiếng.\n**Phần 2. Trình bày**\nGọi $A$, $B$ lần lượt là tập người phiên dịch tiếng Anh và tiếng Pháp. Ta có $n(A)=35$, $n(B)=30$, $n(A\\cap B)=16$.\nSố người ban tổ chức huy động là $n(A\\cup B)=35+30-16=49$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000728",
+  "loai": "tra_loi_ngan",
+  "de": "Hàm lượng Natri (đơn vị $mg$) trong $100$ g một số loại ngũ cốc được cho như sau:\n$0;\\ 340;\\ 70;\\ 140;\\ 200;\\ 180;\\ 210;\\ 150;\\ 100;\\ 130;$\n$140;\\ 180;\\ 190;\\ 160;\\ 290;\\ 50;\\ 220;\\ 180;\\ 200;\\ 210.$\nCó bao nhiêu giá trị bất thường trong mẫu số liệu trên bằng cách sử dụng biểu đồ hộp?",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** trên biểu đồ hộp, giá trị bất thường là giá trị nằm ngoài khoảng từ $Q_1-1{,}5\\Delta_Q$ đến $Q_3+1{,}5\\Delta_Q$.\n**Bước 1.** Sắp xếp $20$ giá trị tăng dần rồi tìm $Q_1$ và $Q_3$ bằng trung vị hai nửa.\n**Bước 2.** Tính $\\Delta_Q$ rồi lập hai hàng rào của biểu đồ hộp.\n**Bước 3.** Đếm các giá trị của mẫu nằm ngoài hai hàng rào.\n**Phần 2. Trình bày**\nSắp xếp tăng dần: $0;\\ 50;\\ 70;\\ 100;\\ 130;\\ 140;\\ 140;\\ 150;\\ 160;\\ 180;\\ 180;\\ 180;\\ 190;\\ 200;\\ 200;\\ 210;\\ 210;\\ 220;\\ 290;\\ 340$.\n$Q_1=\\dfrac{130+140}{2}=135$ và $Q_3=\\dfrac{200+210}{2}=205$.\n$\\Delta_Q=205-135=70$.\nHàng rào dưới: $135-1{,}5\\cdot70=30$. Hàng rào trên: $205+1{,}5\\cdot70=310$.\nCác giá trị ngoài  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000570",
+  "loai": "trac_nghiem",
+  "de": "Lớp 10A có 45 học sinh trong đó có 25 em học giỏi môn Toán, 23 em học giỏi môn Lý, 20 em học giỏi môn Hóa, 11 em học giỏi cả môn Toán và môn Lý, 8 em học giỏi cả môn Lý và môn Hóa, 9 em học giỏi cả môn Toán và môn Hóa. Hỏi lớp 10A có bao nhiêu bạn học giỏi cả ba môn Toán, Lý, Hóa, biết rằng mỗi học sinh trong lớp học giỏi ít nhất một trong 3 môn Toán, Lý, Hóa?",
+  "lua_chon": [
+   "$3$.",
+   "$4$.",
+   "$5$.",
+   "$6$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** dùng công thức bao hàm – loại trừ cho ba tập hợp, trong đó hợp của ba tập chính là cả lớp.\n**Bước 1.** Gọi ba tập là học sinh giỏi Toán, Lý, Hóa và ghi số phần tử của từng tập cùng các phần giao đôi.\n**Bước 2.** Viết công thức số phần tử của hợp ba tập với ẩn là số phần tử của giao ba tập.\n**Bước 3.** Thay dữ kiện sĩ số lớp vào vế trái và giải phương trình tìm ẩn.\n**Phần 2. Trình bày**\nGọi $A$, $B$, $C$ lần lượt là tập học sinh giỏi Toán, Lý, Hóa và $x=|A\\cap B\\cap C|$.\nVì mỗi học sinh giỏi ít nhất một môn nên $|A\\cup B\\cup C|=45$.\nTheo công thức bao hàm – loại trừ: $|A\\cup B\\cup C|=|A|+|B|+|C|-|A\\cap B|-|B\\cap C|-|A\\cap C|+|A\\cap B\\cap C|$.\nThay số: $45=2 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030202040",
+  "loai": "tra_loi_ngan",
+  "de": "Để tính độ dài MN của một đường hầm đi xuyên núi, người ta dựng một đường gấp khúc ABC ở chân núi, trong đó mỗi vị trí A và C đều cách lối vào hầm 1km ( $AM = CN = 1$km ). Giả sử các số liệu được cho như trong hình vẽ dưới. Độ dài MN của đường hầm xuyên núi đó là bằng bao nhiêu kilomet? (làm tròn kết quả đến hàng phần trăm).\n[hình]",
+  "dap_an": "5.33",
+  "loi_giai": "Xét tam giác ABC có $AB = 3.6$km, $BC = 4.2$km và góc $\\widehat{ABC} =140^\\circ$ .\nÁp dụng định lí côsin trong tam giác ABC, ta tính được khoảng cách AC :\n$AC^2 = AB^2 + BC^2 - 2\\cdot AB \\cdot BC \\cdot \\cos \\widehat{ABC}$.\nThay số vào ta được:\n$AC^2 = 3.6^2 +4.2^2-2\\cdot 3.6\\cdot 4.2\\cdot \\cos 140^\\circ\\approx 30.6-30.24\\cdot (-0.766) \\approx 53.765$.\nSuy ra $AC \\approx\\sqrt{53.765} \\approx 7.33$km.\nVì A,M,N,C thẳng hàng theo thứ tự đó nên độ dài của đường hầm MN là:\n$MN = AC - AM - CN = AC -1-1= AC-2 \\approx 7.33-2 = 5.33$ (km).\nVậy độ dài đường hầm MN xấp xỉ $5.33$km.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ thức lượng trong tam giác › Giải tam giác và bài toán thực tế áp dụng định lý cos"
+ },
+ {
+  "ma_cau": "T110000000483",
+  "loai": "tra_loi_ngan",
+  "de": "Lớp 10A5 trường THPT Việt Đức có 51 học sinh, trong đó có 10 em giỏi Văn, 12 em giỏi Toán, 14 em giỏi Tiếng Anh. Có 5 em giỏi hai môn Văn và Toán, 6 em giỏi 2 môn Anh và Văn, 7 em giỏi hai môn Tiếng Anh và Toán. Trong số đó có 2 em giỏi cả ba môn. Tính số học sinh không giỏi môn nào của lớp 10A5?",
+  "dap_an": "31",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính số học sinh giỏi ít nhất một môn bằng công thức bao hàm – loại trừ cho ba tập hợp, rồi lấy sĩ số trừ đi.\n**Bước 1.** Đặt tên ba tập hợp học sinh giỏi Văn, giỏi Toán, giỏi Tiếng Anh và ghi số phần tử của từng tập, từng giao hai tập, giao ba tập.\n**Bước 2.** Áp dụng công thức bao hàm – loại trừ để tìm số học sinh giỏi ít nhất một môn.\n**Bước 3.** Lấy sĩ số cả lớp trừ đi số học sinh giỏi ít nhất một môn để được số học sinh không giỏi môn nào.\n**Phần 2. Trình bày**\nGọi $V$, $T$, $E$ lần lượt là tập học sinh giỏi Văn, Toán, Tiếng Anh. Ta có $n(V)=10$, $n(T)=12$, $n(E)=14$, $n(V\\cap T)=5$, $n(E\\cap V)=6$, $n(E\\cap T)=7$, $n(V\\cap T\\cap E)=2$.\nSố học sinh gi …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000521",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $A=\\{x\\in\\mathbb{N}\\mid x\\le 4\\}$. Khẳng định nào sau đây **đúng**?",
+  "lua_chon": [
+   "$A=\\{1;2;3\\}$.",
+   "$A=\\{1;2;3;4\\}$.",
+   "$A=\\{0;1;2;3;4\\}$.",
+   "$A=\\{0;1;2;3\\}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tập $\\mathbb{N}$ gồm cả số $0$, nên liệt kê phần tử phải bắt đầu từ $0$ và kết thúc ở số lớn nhất còn thoả bất đẳng thức.\n**Bước 1.** Nhớ lại $\\mathbb{N}=\\{0;1;2;3;\\dots\\}$ là tập số tự nhiên có chứa $0$.\n**Bước 2.** Xét dấu bằng trong $x\\le 4$ để biết $4$ có thuộc tập hay không.\n**Bước 3.** Liệt kê đầy đủ các số tự nhiên thoả điều kiện rồi so với các phương án.\n**Phần 2. Trình bày**\nCác số tự nhiên $x$ thoả $x\\le 4$ là $0;1;2;3;4$.\nVậy $A=\\{0;1;2;3;4\\}$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010204060",
+  "loai": "trac_nghiem",
+  "de": "Một lớp học có $22$ học sinh giỏi môn Toán, $18$ học sinh giỏi môn Văn, $10$ học sinh giỏi cả môn Toán và Văn và có $5$ học sinh không giỏi môn nào cả. Hỏi lớp đó có bao nhiêu học sinh?",
+  "lua_chon": [
+   "$35$.",
+   "$25$.",
+   "$45$.",
+   "$55$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Gọi $A$ là tập hợp học sinh giỏi môn Toán, $B$ là tập hợp học sinh giỏi môn Văn.\nTheo đề bài, ta có số phần tử của các tập hợp là $n\\left(A\\right)=22$, $n\\left(B\\right)=18$, $n\\left(A\\capB\\right)=10$.\nSố học sinh giỏi ít nhất một trong hai môn Toán hoặc Văn là\n$n\\left(A\\cupB\\right)=n\\left(A\\right)+n\\left(B\\right)-n\\left(A\\capB\\right)=22+18-10=30.$\nLớp học còn có $5$ học sinh không giỏi môn nào cả, nên tổng số học sinh của lớp là $30+5=35$ (học sinh).",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán thực tế tập hợp (2 Yếu tố)"
+ },
+ {
+  "ma_cau": "T110000000342",
+  "loai": "trac_nghiem",
+  "de": "Cho $A=\\{1;3;5\\}$. Khẳng định nào sau đây là sai?",
+  "lua_chon": [
+   "$\\varnothing \\subset A$.",
+   "$1\\in A$.",
+   "$\\{3;5\\}\\in A$.",
+   "$\\{1;3\\}\\subset A$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Tập hợp $A=\\{1;3;5\\}$ có các phần tử là $1, 3, 5$.\nXét các khẳng định:\n• $\\varnothing \\subset A$ là khẳng định đúng vì tập hợp rỗng là tập con của mọi tập hợp.\n• $1\\in A$ là khẳng định đúng vì $1$ là một phần tử thuộc $A$.\n• $\\{3;5\\}\\in A$ là khẳng định sai vì $\\left\\{3;5\\right\\}$ là một tập con của $A$, quan hệ đúng phải là $\\{3;5\\}\\subset A$.\n• $\\{1;3\\}\\subset A$ là khẳng định đúng vì mọi phần tử của $\\left\\{1;3\\right\\}$ đều thuộc $A$.\nVậy khẳng định sai là $\\{3;5\\}\\in A$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000729",
+  "loai": "tra_loi_ngan",
+  "de": "Mẫu số liệu sau cho biết chiều cao (đơn vị cm) của các bạn trong tổ\n$163;\\ 159;\\ 172;\\ 167;\\ 165;\\ 168;\\ 170;\\ 161$.\nTìm khoảng biến thiên của mẫu số liệu này.",
+  "dap_an": "13",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** khoảng biến thiên bằng giá trị lớn nhất trừ giá trị nhỏ nhất của mẫu.\n**Bước 1.** Duyệt cả mẫu để tìm giá trị lớn nhất.\n**Bước 2.** Duyệt lại để tìm giá trị nhỏ nhất.\n**Bước 3.** Lấy hiệu của hai giá trị đó và ghi đơn vị cm.\n**Phần 2. Trình bày**\nGiá trị lớn nhất: $x_{\\max}=172$. Giá trị nhỏ nhất: $x_{\\min}=159$.\n$R=x_{\\max}-x_{\\min}=172-159=13$.\nVậy khoảng biến thiên của mẫu là $13$ cm.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000730",
+  "loai": "tra_loi_ngan",
+  "de": "Có bao nhiêu giá trị bất thường trong mẫu số liệu sau:\n$5;\\ 6;\\ 19;\\ 21;\\ 22;\\ 23;\\ 24;\\ 25;\\ 26;\\ 27;\\ 28;\\ 29;\\ 30;\\ 31;\\ 32;\\ 33;\\ 34;\\ 48;\\ 49$",
+  "dap_an": "4",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** giá trị bất thường là giá trị nằm ngoài khoảng $\\left[Q_1-1{,}5\\Delta_Q;\\ Q_3+1{,}5\\Delta_Q\\right]$.\n**Bước 1.** Mẫu đã xếp tăng, đếm số phần tử rồi tìm trung vị và loại nó khỏi hai nửa vì số phần tử lẻ.\n**Bước 2.** Tìm $Q_1$, $Q_3$ là trung vị của nửa dưới và nửa trên rồi tính $\\Delta_Q$.\n**Bước 3.** Lập hai hàng rào và đếm các giá trị nằm ngoài khoảng.\n**Phần 2. Trình bày**\nMẫu có $n=19$ phần tử, trung vị là phần tử thứ $10$: $Q_2=27$.\nNửa dưới ($9$ giá trị đầu, từ $5$ đến $26$) có $Q_1=22$. Nửa trên ($9$ giá trị cuối, từ $28$ đến $49$) có $Q_3=32$.\n$\\Delta_Q=32-22=10$.\nHàng rào dưới: $22-1{,}5\\cdot10=7$. Hàng rào trên: $32+1{,}5\\cdot10=47$.\nCác giá trị  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000472",
+  "loai": "trac_nghiem",
+  "de": "Cho mệnh đề $P$: \"$\\exists n\\in\\mathbb{N}\\mid n^2-n-1<0$\". Mệnh đề phủ định của mệnh đề $P$ là",
+  "lua_chon": [
+   "\"$\\forall n\\in\\mathbb{N}\\mid n^2-n-1>0$\".",
+   "\"$\\exists n\\in\\mathbb{N}\\mid n^2-n-1\\ge 0$\".",
+   "\"$\\forall n\\in\\mathbb{N}\\mid n^2-n-1\\ge 0$\".",
+   "\"$\\exists n\\in\\mathbb{N}\\mid n^2-n-1>0$\"."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phủ định của mệnh đề có lượng từ thì đổi $\\exists$ thành $\\forall$ và phủ định phần bất đẳng thức đứng sau.\n**Bước 1.** Xác định lượng từ của mệnh đề $P$ để biết phải đổi thành lượng từ nào khi phủ định.\n**Bước 2.** Phủ định bất đẳng thức đứng sau: phủ định của \"nhỏ hơn\" là \"lớn hơn hoặc bằng\".\n**Bước 3.** Ghép lượng từ mới với bất đẳng thức đã phủ định rồi đối chiếu bốn phương án.\n**Phần 2. Trình bày**\nMệnh đề $P$ có lượng từ $\\exists$ nên phủ định sẽ có lượng từ $\\forall$.\nPhủ định của bất đẳng thức $n^2-n-1<0$ là $n^2-n-1\\ge 0$.\nVậy $\\overline{P}$: \"$\\forall n\\in\\mathbb{N}\\mid n^2-n-1\\ge 0$\".\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000690",
+  "loai": "trac_nghiem",
+  "de": "Thống kê điểm thi môn toán trong một kì thi của $400$ em học sinh. Người ta thấy có $72$ bài được điểm $5$. Hỏi tần suất của giá trị $x_i=5$ là bao nhiêu?",
+  "lua_chon": [
+   "$72\\%$.",
+   "$36\\%$.",
+   "$18\\%$.",
+   "$10\\%$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tần suất của một giá trị bằng tần số của giá trị đó chia cho cỡ mẫu rồi đổi sang phần trăm.\n**Bước 1.** Xác định tần số của giá trị $x_i=5$ và cỡ mẫu của cuộc thống kê.\n**Bước 2.** Lập tỉ số giữa tần số và cỡ mẫu theo công thức tần suất.\n**Bước 3.** Đổi tỉ số thu được sang phần trăm rồi chọn phương án.\n**Phần 2. Trình bày**\nTần số của giá trị $5$ là $72$, cỡ mẫu là $N=400$.\nTần suất: $f=\\dfrac{72}{400}=0{,}18=18\\%$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000631",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\cos x=\\dfrac{1}{2}$. Tính biểu thức $P=3\\sin^2x+4\\cos^2x$.",
+  "lua_chon": [
+   "$\\dfrac{13}{4}$.",
+   "$\\dfrac{7}{4}$.",
+   "$\\dfrac{11}{4}$.",
+   "$\\dfrac{15}{4}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** viết lại $P$ theo $\\cos^2x$ nhờ hệ thức $\\sin^2x+\\cos^2x=1$ rồi thay giá trị đã cho.\n**Bước 1.** Tách $P$ thành tổng của $3$ lần $(\\sin^2x+\\cos^2x)$ và một phần dư theo $\\cos^2x$.\n**Bước 2.** Dùng hệ thức cơ bản để rút gọn biểu thức.\n**Bước 3.** Thay $\\cos x$ đã cho và tính giá trị.\n**Phần 2. Trình bày**\n$P=3\\sin^2x+3\\cos^2x+\\cos^2x=3(\\sin^2x+\\cos^2x)+\\cos^2x=3+\\cos^2x$\nVới $\\cos x=\\dfrac{1}{2}$ thì $P=3+\\dfrac{1}{4}=\\dfrac{13}{4}$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000756",
+  "loai": "trac_nghiem",
+  "de": "Miền nghiệm của bất phương trình $x-y\\ge-2$ là phần tô đậm trong hình vẽ của hình vẽ nào, trong các hình vẽ sau?",
+  "lua_chon": [
+   "Đường thẳng đi qua điểm $(0;2)$ và $(2;0)$, phần tô đậm nằm phía dưới đường thẳng.",
+   "Đường thẳng đi qua điểm $(0;2)$ và $(2;0)$, phần tô đậm nằm phía trên đường thẳng.",
+   "Đường thẳng đi qua điểm $(0;2)$ và $(-2;0)$, phần tô đậm nằm phía trên đường thẳng (không chứa gốc $O$).",
+   "Đường thẳng đi qua điểm $(0;2)$ và $(-2;0)$, phần tô đậm nằm phía dưới đường thẳng (chứa gốc $O$)."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** vẽ đường thẳng biên $x-y=-2$ qua hai điểm trên hai trục rồi chọn nửa mặt phẳng bằng điểm thử không nằm trên biên.\n**Bước 1.** Tìm hai điểm của đường thẳng $x-y=-2$ trên hai trục tọa độ để biết hình nào có đúng đường biên.\n**Bước 2.** Chọn điểm thử $O(0;0)$ không nằm trên đường biên rồi thay vào bất phương trình.\n**Bước 3.** Xác định phía của đường thẳng chứa $O$ hoặc không chứa $O$ và đối chiếu với phần tô đậm trong từng hình.\n**Phần 2. Trình bày**\nĐường thẳng $x-y=-2$ cắt trục $Ox$ tại $(-2;0)$ và cắt trục $Oy$ tại $(0;2)$, nên loại hình A và B.\nThay $O(0;0)$ vào: $0-0=0\\ge-2$ đúng, nên miền nghiệm là nửa mặt phẳng bờ $x-y=-2$ chứa $O$ (kể cả bờ).\nHình C  …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000677",
+  "loai": "tu_luan",
+  "de": "Để đo khoảng cách từ một điểm $A$ trên bờ sông đến gốc cây $C$ trên cù lao giữa sông, người ta chọn một điểm $B$ cùng ở trên bờ với $A$ sao cho từ $A$ và $B$ có thể nhìn thấy điểm $C$. Ta đo được khoảng cách $AB=40\\text{ m}$, $\\widehat{CAB}=45^\\circ$, $\\widehat{CBA}=70^\\circ$. Vậy sau khi đo đạc và tính toán khoảng cách $AC$ bằng bao nhiêu mét? Kết quả làm tròn đến hàng phần chục.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biết một cạnh và hai góc kề của tam giác $ABC$ nên tìm góc còn lại rồi dùng định lí sin để tính cạnh $AC$.\n**Bước 1.** Tính góc $\\widehat{ACB}$ bằng tổng ba góc trong tam giác $ABC$.\n**Bước 2.** Viết định lí sin nối cạnh $AC$ với góc đối diện $\\widehat{ABC}$ và cạnh $AB$ với góc đối diện $\\widehat{ACB}$.\n**Bước 3.** Rút $AC$ từ tỉ lệ thức, thay số rồi làm tròn đến hàng phần chục.\n**Phần 2. Trình bày**\nTrong tam giác $ABC$: $\\widehat{ACB}=180^\\circ-45^\\circ-70^\\circ=65^\\circ$.\nTheo định lí sin: $\\dfrac{AC}{\\sin\\widehat{ABC}}=\\dfrac{AB}{\\sin\\widehat{ACB}}$.\n$AC=\\dfrac{AB\\cdot\\sin 70^\\circ}{\\sin 65^\\circ}=\\dfrac{40\\cdot\\sin 70^\\circ}{\\sin 65^\\circ}\\approx 41{ …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000681",
+  "loai": "trac_nghiem",
+  "de": "Số quy tròn đến hàng phần nghìn của số $a=0{,}1234$ là",
+  "lua_chon": [
+   "$0{,}124$.",
+   "$0{,}12$.",
+   "$0{,}123$.",
+   "$0{,}13$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hàng phần nghìn là chữ số thập phân thứ ba, nên ta xét chữ số thập phân thứ tư để quyết định làm tròn.\n**Bước 1.** Chỉ ra ba chữ số thập phân cần giữ lại và chữ số thập phân thứ tư của số đã cho.\n**Bước 2.** So sánh chữ số thập phân thứ tư với $5$ để biết có tăng chữ số thứ ba hay không.\n**Bước 3.** Viết số quy tròn và đối chiếu với các phương án.\n**Phần 2. Trình bày**\nSố $a=0{,}1234$ có ba chữ số thập phân đầu là $123$, chữ số thập phân thứ tư là $4$.\nVì $4<5$ nên ta giữ nguyên ba chữ số thập phân đầu.\nSố quy tròn đến hàng phần nghìn là $0{,}123$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000567",
+  "loai": "trac_nghiem",
+  "de": "Cho ba tập hợp $A=[-2;2]$, $B=[1;5]$, $C=[0;1)$. Khi đó tập $(A\\setminus B)\\cap C$ là:",
+  "lua_chon": [
+   "$\\{0;1\\}$.",
+   "$[0;1)$.",
+   "$(-2;1)$.",
+   "$[-2;5]$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** thực hiện phép hiệu trong ngoặc trước, rồi lấy giao của kết quả với tập còn lại.\n**Bước 1.** Tính $A\\setminus B$ bằng cách bỏ khỏi $A$ các số thuộc $B$.\n**Bước 2.** Lấy giao của tập vừa tìm được với $C$, chú ý các đầu mút.\n**Bước 3.** Viết kết quả dưới dạng khoảng hoặc đoạn rồi chọn phương án.\n**Phần 2. Trình bày**\n$A\\setminus B=[-2;1)$ vì $B=[1;5]$ lấy cả điểm $1$ nên $1$ bị loại khỏi $A$.\n$(A\\setminus B)\\cap C=[-2;1)\\cap[0;1)=[0;1)$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000736",
+  "loai": "trac_nghiem",
+  "de": "Trong các mệnh đề sau, mệnh đề nào là mệnh đề đúng?",
+  "lua_chon": [
+   "Tổng của hai số tự nhiên là một số chẵn khi và chỉ khi cả hai số đều là số chẵn.",
+   "Tích của hai số tự nhiên là một số chẵn khi và chỉ khi cả hai số đều là số chẵn.",
+   "Tổng của hai số tự nhiên là một số lẻ khi và chỉ khi cả hai số đều là số lẻ.",
+   "Tích của hai số tự nhiên là một số lẻ khi và chỉ khi cả hai số đều là số lẻ."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mệnh đề \"khi và chỉ khi\" chỉ đúng khi cả hai chiều đều đúng, nên chỉ cần một phản ví dụ là loại được phương án.\n**Bước 1.** Với mỗi phương án, tách mệnh đề thành hai chiều \"nếu … thì …\" và \"ngược lại\".\n**Bước 2.** Với mỗi phương án, thử các cặp số tự nhiên nhỏ (hai số lẻ, hoặc một số chẵn và một số lẻ) để tìm phản ví dụ.\n**Bước 3.** Phương án nào không tìm được phản ví dụ thì chứng minh cả hai chiều bằng tính chất chẵn lẻ của phép cộng, phép nhân.\n**Phần 2. Trình bày**\nPhương án A: $1+3=4$ là số chẵn nhưng hai số $1$, $3$ đều lẻ, nên A sai.\nPhương án B: $2\\cdot3=6$ là số chẵn nhưng $3$ là số lẻ, nên B sai.\nPhương án C: $1+2=3$ là số lẻ nhưng $2$ là số chẵn …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000525",
+  "loai": "tra_loi_ngan",
+  "de": "Vào lúc $6$ giờ sáng, một tàu đánh cá xuất phát từ cảng $A$, đi theo hướng $N70^\\circ E$ với vận tốc $50\\,\\text{km/h}$. Lúc $8$ giờ sáng, một tàu du lịch cũng xuất phát từ cảng $A$, đi theo hướng $N30^\\circ W$ với vận tốc $70\\,\\text{km/h}$. Sau $3$ giờ kể từ khi tàu đánh cá xuất phát thì tàu đánh cá chuyển hướng đi về hướng bắc với vận tốc $40\\,\\text{km/h}$. Hỏi đến $11$ giờ tàu du lịch cách tàu đánh cá bao nhiêu kilomet? (Kết quả làm tròn đến hàng đơn vị)",
+  "dap_an": "251",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đổi thời gian thành quãng đường từng đoạn, đặt các vị trí lên một hình rồi dùng định lí côsin hai lần để tìm khoảng cách giữa hai tàu.\n**Bước 1.** Tính quãng đường mỗi đoạn: tàu cá đi $3$ giờ theo hướng đông bắc rồi $2$ giờ về phía bắc, tàu du lịch đi $3$ giờ.\n**Bước 2.** Xét tam giác có hai đỉnh là vị trí xuất phát và hai điểm của tàu cá, tìm góc tại điểm đổi hướng từ hướng của hai đoạn đường.\n**Bước 3.** Dùng định lí côsin để tính khoảng cách từ cảng đến vị trí tàu cá lúc $11$ giờ, rồi dùng định lí côsin lần nữa để tìm góc tại cảng.\n**Bước 4.** Tính góc giữa hai tia từ cảng tới hai tàu (cộng góc lệch về hai phía của hướng bắc), rồi áp dụng định lí côsin  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000514",
+  "loai": "trac_nghiem",
+  "de": "Câu nào sau đây là mệnh đề?",
+  "lua_chon": [
+   "Các em cố gắng học tập!",
+   "Một tam giác cân thì mỗi góc đều bằng $60^\\circ$ phải không?",
+   "Ngày mai bạn có đi du lịch không?",
+   "$3$ là số nguyên tố lẻ nhỏ nhất."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mệnh đề là câu khẳng định có thể xác định được là đúng hoặc sai; câu mệnh lệnh, cảm thán và câu hỏi không phải mệnh đề.\n**Bước 1.** Nhắc lại định nghĩa mệnh đề: phải là câu khẳng định và có tính đúng hoặc sai rõ ràng.\n**Bước 2.** Loại các câu có dấu hiệu mệnh lệnh, cảm thán hoặc nghi vấn vì chúng không có giá trị đúng sai.\n**Bước 3.** Giữ lại câu khẳng định về một sự việc kiểm chứng được.\n**Phần 2. Trình bày**\nPhương án A là câu mệnh lệnh nên không là mệnh đề.\nPhương án B là câu hỏi nên không là mệnh đề.\nPhương án C là câu hỏi nên không là mệnh đề.\nPhương án D là câu khẳng định, kiểm chứng được là đúng nên là mệnh đề.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000780",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $E=\\{x\\in\\mathbb{N}\\mid x^2-4=0\\}$. Số phần tử của tập hợp $E$ là",
+  "lua_chon": [
+   "0.",
+   "2.",
+   "Vô số.",
+   "1."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** giải phương trình định nghĩa tập rồi chỉ giữ các nghiệm thuộc tập số tự nhiên $\\mathbb{N}$.\n**Bước 1.** Giải phương trình $x^2-4=0$ trong tập số thực để có mọi nghiệm.\n**Bước 2.** Loại các nghiệm không thuộc $\\mathbb{N}$, chú ý số âm không là số tự nhiên.\n**Bước 3.** Đếm số nghiệm còn lại để được số phần tử của tập hợp.\n**Phần 2. Trình bày**\nTa có $x^2-4=0\\Leftrightarrow x=2$ hoặc $x=-2$.\nVì $x\\in\\mathbb{N}$ nên chỉ nhận $x=2$, do đó $E=\\{2\\}$ có đúng một phần tử.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000505",
+  "loai": "tra_loi_ngan",
+  "de": "Để tránh vùng bị sạt lở do ảnh hưởng của bão Yagi. Người dân xã $A$ đi đến xã $D$ phải đi qua xã $B$, $C$ như hình mô tả (các đoạn $AB=12\\,km$, $BC=9\\,km$, $CD=15\\,km$, $\\widehat{ABC}=135^\\circ$, $\\widehat{ADC}=45^\\circ$). Để rút ngắn khoảng cách và tránh sạt lở cho người dân, chính quyền địa phương dự định làm đường xuyên núi nối xã $A$ và xã $D$. Hỏi độ dài đường xuyên qua núi giảm bao nhiêu $km$ so với đường cũ đi qua 2 xã $B,C$? (Kết quả làm tròn đến hàng phần chục)",
+  "dap_an": "9,1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính đường chéo $AC$ trong tam giác $ABC$ bằng định lí côsin, rồi dùng $AC$ để tìm $AD$ trong tam giác $ACD$.\n**Bước 1.** Tính độ dài đường cũ $A\\to B\\to C\\to D$ bằng tổng ba đoạn đã cho.\n**Bước 2.** Trong tam giác $ABC$ biết hai cạnh và góc xen giữa, dùng định lí côsin để tính $AC^2$.\n**Bước 3.** Trong tam giác $ACD$ viết định lí côsin cho cạnh $AC$ đối diện góc $D$ để lập phương trình ẩn $AD$.\n**Bước 4.** Giải phương trình bậc hai, lấy nghiệm dương rồi lấy độ dài đường cũ trừ $AD$ và làm tròn đến hàng phần chục.\n**Phần 2. Trình bày**\nĐường cũ dài $AB+BC+CD=12+9+15=36\\ (km)$.\nTrong tam giác $ABC$: $AC^2=AB^2+BC^2-2AB\\cdot BC\\cos 135^\\circ$.\n$AC^2=144+81-2 …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000528",
+  "loai": "tra_loi_ngan",
+  "de": "Biết miền nghiệm của hệ bất phương trình: $\\begin{cases} 2x+3y\\le 18 \\\\ x\\ge 0 \\\\ y\\ge 0 \\end{cases}$ là miền đa giác có diện tích $S$. Tính $S$?",
+  "dap_an": "27",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** miền nghiệm của hệ là phần mặt phẳng nằm trong góc phần tư thứ nhất và nằm dưới một đường thẳng, nên là một tam giác có đỉnh ở gốc toạ độ.\n**Bước 1.** Tìm giao điểm của đường thẳng biên với hai trục toạ độ bằng cách cho lần lượt một ẩn bằng $0$.\n**Bước 2.** Dùng điểm thử $(0;0)$ để xác định miền nghiệm là tam giác nào.\n**Bước 3.** Tính diện tích tam giác vuông có hai cạnh góc vuông nằm trên hai trục.\n**Phần 2. Trình bày**\nĐường thẳng $2x+3y=18$ cắt trục $Ox$ tại $M(9;0)$ và cắt trục $Oy$ tại $N(0;6)$.\nĐiểm $O(0;0)$ thoả $2\\cdot 0+3\\cdot 0=0\\le 18$, nên miền nghiệm là tam giác $OMN$ vuông tại $O$ (kể cả biên).\nDiện tích: $S=\\dfrac{1}{2}\\cdot OM\\cdot ON=\\dfr …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

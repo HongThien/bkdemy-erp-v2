@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T111030503064",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị, hỏi khoảng đồng biến."
+ },
+ {
+  "ma_cau": "T111030104006",
+  "dang_bai_id": "NDB00994",
+  "chac": "cao",
+  "ly_do": "Hỏi hàm nào có chu kì π, dùng chu kì cơ bản."
+ },
+ {
+  "ma_cau": "T111040401012",
+  "dang_bai_id": "NDB00582",
+  "chac": "cao",
+  "ly_do": "Giải cos x = hằng và biểu diễn nghiệm trên đường tròn lượng giác."
+ },
+ {
+  "ma_cau": "T111060303045",
+  "dang_bai_id": "NDB01030",
+  "chac": "cao",
+  "ly_do": "CSN cho u1,u2 và Sn, tìm n."
+ },
+ {
+  "ma_cau": "T111060204007",
+  "dang_bai_id": "NDB00612",
+  "chac": "cao",
+  "ly_do": "CSC cho hệ hai phương trình giữa các số hạng, tìm u15."
+ },
+ {
+  "ma_cau": "T111030501009",
+  "dang_bai_id": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị hàm lượng giác mở rộng (2sin2x...)."
+ },
+ {
+  "ma_cau": "T111060104048",
+  "dang_bai_id": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Xét dãy nào tăng, dãy cho bởi công thức."
+ },
+ {
+  "ma_cau": "T111060202035",
+  "dang_bai_id": "NDB00606",
+  "chac": "cao",
+  "ly_do": "CSC cho hai số hạng đầu, tìm công sai."
+ },
+ {
+  "ma_cau": "T111030503061",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị, hỏi khoảng đồng biến."
+ },
+ {
+  "ma_cau": "T111020403001",
+  "dang_bai_id": "NDB00966",
+  "chac": "cao",
+  "ly_do": "Rút gọn phân thức dùng tổng thành tích."
+ },
+ {
+  "ma_cau": "T111040101130",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải tan(3x-π/4)=-1, dạng f(ax+b)=hằng."
+ },
+ {
+  "ma_cau": "T111060302066",
+  "dang_bai_id": "NDB01026",
+  "chac": "vua",
+  "ly_do": "Dãy liệt kê 1,1/2,1/4..., khẳng định về CSN; cũng gần số hạng tổng quát."
+ },
+ {
+  "ma_cau": "T111060302059",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Lý thuyết công thức số hạng tổng quát CSN; bản đồ thiếu dạng lý thuyết CSN."
+ },
+ {
+  "ma_cau": "T111030503067",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị, hỏi khoảng nghịch biến."
+ },
+ {
+  "ma_cau": "T111010605017",
+  "dang_bai_id": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sinα, tính cos2α bằng công thức nhân đôi."
+ },
+ {
+  "ma_cau": "T111030501045",
+  "dang_bai_id": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị hàm mở rộng (2sinx, cot2x...)."
+ },
+ {
+  "ma_cau": "T111060304001",
+  "dang_bai_id": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Giá trị máy giảm 20% mỗi năm, tính sau 5 năm (u1,q)."
+ },
+ {
+  "ma_cau": "T111020302045",
+  "dang_bai_id": "NDB00965",
+  "chac": "cao",
+  "ly_do": "Cho cos a, cos b, tính tích sin(a+b)sin(a-b) bằng tích thành tổng."
+ },
+ {
+  "ma_cau": "T111060303055",
+  "dang_bai_id": "NDB01029",
+  "chac": "cao",
+  "ly_do": "CSN cho q và u4, tìm vị trí số hạng."
+ },
+ {
+  "ma_cau": "T111000000034",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tính tổng 1/(u_k-u_{k+4}) của CSN; bản đồ thiếu dạng tổng biểu thức liên quan CSN."
+ },
+ {
+  "ma_cau": "T111030203043",
+  "dang_bai_id": "NDB00999",
+  "chac": "cao",
+  "ly_do": "Min max hàm bậc 2 theo cos, không điều kiện biến."
+ },
+ {
+  "ma_cau": "T111010501028",
+  "dang_bai_id": "NDB00952",
+  "chac": "vua",
+  "ly_do": "Chứng minh đẳng thức với góc 530°,640° dùng đảo pha rồi biến đổi thêm."
+ },
+ {
+  "ma_cau": "T111030501034",
+  "dang_bai_id": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị hàm mở rộng (cos2x, 2cotx...)."
+ },
+ {
+  "ma_cau": "T111030503001",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị, hỏi khoảng đồng biến."
+ },
+ {
+  "ma_cau": "T111060201003",
+  "dang_bai_id": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện CSC từ dãy liệt kê."
+ },
+ {
+  "ma_cau": "T111030301024",
+  "dang_bai_id": "NDB00991",
+  "chac": "vua",
+  "ly_do": "Chẵn lẻ của tanx+cotx, tổng hai hàm cơ bản; có thể coi là cơ bản."
+ },
+ {
+  "ma_cau": "T111040401023",
+  "dang_bai_id": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Chọn phương trình có nghiệm biểu diễn bởi 2 điểm M,N."
+ },
+ {
+  "ma_cau": "T111060204043",
+  "dang_bai_id": "NDB00613",
+  "chac": "vua",
+  "ly_do": "CSC cho hệ theo tổng S4-S2, S5+S3; gần dạng số hạng-tổng."
+ },
+ {
+  "ma_cau": "T111000000199",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bài kim giờ kim phút trùng nhau; bản đồ thiếu dạng chuyển động đồng hồ."
+ },
+ {
+  "ma_cau": "T111030502115",
+  "dang_bai_id": "NDB01004",
+  "chac": "cao",
+  "ly_do": "Tìm chu kì của hàm từ đồ thị."
+ },
+ {
+  "ma_cau": "T111060304021",
+  "dang_bai_id": "NDB00618",
+  "chac": "cao",
+  "ly_do": "Tô màu hình vuông nối tiếp, tổng 20 số hạng CSN."
+ },
+ {
+  "ma_cau": "T111040401024",
+  "dang_bai_id": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Chọn phương trình có nghiệm biểu diễn bởi 2 điểm M,N."
+ },
+ {
+  "ma_cau": "T111020203013",
+  "dang_bai_id": "NDB00960",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức dùng nhân đôi."
+ },
+ {
+  "ma_cau": "T111040402003",
+  "dang_bai_id": "NDB00583",
+  "chac": "cao",
+  "ly_do": "Tìm hoành độ giao điểm của y=tanx và y=1."
+ },
+ {
+  "ma_cau": "T111060201034",
+  "dang_bai_id": "NDB00604",
+  "chac": "cao",
+  "ly_do": "Nhận diện CSC từ số hạng tổng quát."
+ },
+ {
+  "ma_cau": "T111000000427",
+  "dang_bai_id": "NDB00958",
+  "chac": "vua",
+  "ly_do": "Khẳng định sai giữa công thức cộng và nhân đôi; lấy dạng sau."
+ },
+ {
+  "ma_cau": "T111060104018",
+  "dang_bai_id": "NDB00599",
+  "chac": "cao",
+  "ly_do": "Chọn dãy không giảm, dãy liệt kê."
+ },
+ {
+  "ma_cau": "T111060201002",
+  "dang_bai_id": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện CSC từ dãy liệt kê."
+ },
+ {
+  "ma_cau": "T111000000279",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm: số trung bình và Q1; dạng duy nhất của chủ đề."
+ },
+ {
+  "ma_cau": "T111000000303",
+  "dang_bai_id": "NDB00966",
+  "chac": "vua",
+  "ly_do": "Tính tổng cosin dùng tổng thành tích; có thể coi biểu thức không biến."
+ },
+ {
+  "ma_cau": "T111010602085",
+  "dang_bai_id": "NDB00960",
+  "chac": "cao",
+  "ly_do": "Chứng minh đẳng thức dùng nhân đôi."
+ },
+ {
+  "ma_cau": "T111030501041",
+  "dang_bai_id": "NDB01002",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị hàm mở rộng (cot x+1, 2tanx)."
+ },
+ {
+  "ma_cau": "T111000000170",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bài thực tế góc ngắm bằng công thức nhân đôi tan; bản đồ thiếu dạng thực tế công thức lượng giác này."
+ },
+ {
+  "ma_cau": "T111060304063",
+  "dang_bai_id": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Gửi lãi kép 3 năm."
+ },
+ {
+  "ma_cau": "T111030501047",
+  "dang_bai_id": "NDB01022",
+  "chac": "cao",
+  "ly_do": "Nhận diện đồ thị 4 hàm cơ bản."
+ },
+ {
+  "ma_cau": "T111000000264",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Câu lí thuyết tứ phân vị; dạng duy nhất của chủ đề mẫu số liệu."
+ },
+ {
+  "ma_cau": "T111060303043",
+  "dang_bai_id": "NDB01030",
+  "chac": "cao",
+  "ly_do": "CSN cho u1,u2 và Sn, tìm n."
+ },
+ {
+  "ma_cau": "T111030203039",
+  "dang_bai_id": "NDB00999",
+  "chac": "cao",
+  "ly_do": "Tập giá trị hàm bậc 2 theo sin(x/2), không điều kiện."
+ },
+ {
+  "ma_cau": "T111060104043",
+  "dang_bai_id": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Chọn dãy không giảm, dãy cho bởi công thức."
+ },
+ {
+  "ma_cau": "T111040101344",
+  "dang_bai_id": "NDB01014",
+  "chac": "vua",
+  "ly_do": "Giải 3 phương trình; ý c sin2x-cos3x=0 là dạng sau cùng."
+ },
+ {
+  "ma_cau": "T111020201002",
+  "dang_bai_id": "NDB00958",
+  "chac": "cao",
+  "ly_do": "Nhận dạng công thức hạ bậc/nhân đôi đúng sai."
+ },
+ {
+  "ma_cau": "T111060101122",
+  "dang_bai_id": "NDB01019",
+  "chac": "vua",
+  "ly_do": "Tìm công thức tổng quát từ dãy liệt kê 1,4,9...; gần dạng số hạng tổng quát."
+ },
+ {
+  "ma_cau": "T111030201104",
+  "dang_bai_id": "NDB00997",
+  "chac": "vua",
+  "ly_do": "Max sin(x+2π/3)-sinx, đưa về Asinx+Bcosx hoặc tổng thành tích."
+ },
+ {
+  "ma_cau": "T111060102001",
+  "dang_bai_id": "NDB01021",
+  "chac": "cao",
+  "ly_do": "Tìm thứ tự số hạng 20/101 của dãy."
+ },
+ {
+  "ma_cau": "T111000000498",
+  "dang_bai_id": "NDB00565",
+  "chac": "cao",
+  "ly_do": "Số đo góc lượng giác giữa các bán kính bát giác đều trên đường tròn lượng giác."
+ },
+ {
+  "ma_cau": "T111040401026",
+  "dang_bai_id": "NDB00581",
+  "chac": "cao",
+  "ly_do": "Chọn phương trình có nghiệm biểu diễn bởi 2 điểm M,N."
+ },
+ {
+  "ma_cau": "T111060304038",
+  "dang_bai_id": "NDB00618",
+  "chac": "cao",
+  "ly_do": "Tam giác chia 4 tô đỏ lặp, tổng diện tích phần trắng là CSN."
+ },
+ {
+  "ma_cau": "T111030503063",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị, hỏi khoảng đồng biến."
+ },
+ {
+  "ma_cau": "T111060101155",
+  "dang_bai_id": "NDB01019",
+  "chac": "vua",
+  "ly_do": "Dãy số tự nhiên chia hết cho 3, mô tả bằng lời, tìm u1."
+ },
+ {
+  "ma_cau": "T111030502038",
+  "dang_bai_id": "NDB01005",
+  "chac": "cao",
+  "ly_do": "Hỏi đồ thị đi qua điểm nào."
+ },
+ {
+  "ma_cau": "T111030502058",
+  "dang_bai_id": "NDB01005",
+  "chac": "cao",
+  "ly_do": "Hỏi đồ thị đi qua điểm nào."
+ },
+ {
+  "ma_cau": "T111030502062",
+  "dang_bai_id": "NDB01005",
+  "chac": "cao",
+  "ly_do": "Hỏi đồ thị đi qua điểm nào."
+ },
+ {
+  "ma_cau": "T111040102062",
+  "dang_bai_id": "NDB01009",
+  "chac": "vua",
+  "ly_do": "Rút gọn về sin2x=1/2 rồi tìm tổng nghiệm trên đoạn."
+ },
+ {
+  "ma_cau": "T111060202144",
+  "dang_bai_id": "NDB01024",
+  "chac": "vua",
+  "ly_do": "Chứng minh dãy diện tích là CSC từ hình nửa đường tròn, tổng 2024 số hạng."
+ },
+ {
+  "ma_cau": "T111000000301",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm tìm Q1; dạng duy nhất của chủ đề."
+ },
+ {
+  "ma_cau": "T111020101010",
+  "dang_bai_id": "NDB00967",
+  "chac": "cao",
+  "ly_do": "Biến đổi sin(a+b)/sin(a-b) bằng công thức cộng."
+ },
+ {
+  "ma_cau": "T111000000205",
+  "dang_bai_id": "NDB01150",
+  "chac": "cao",
+  "ly_do": "Cho lim u_n, tính lim(u_n+2)."
+ },
+ {
+  "ma_cau": "T111000000033",
+  "dang_bai_id": "NDB01025",
+  "chac": "vua",
+  "ly_do": "Ba cạnh tam giác lập CSN, tìm q^2; gần dạng ba số lập CSN."
+ },
+ {
+  "ma_cau": "T111000000370",
+  "dang_bai_id": "NDB00565",
+  "chac": "cao",
+  "ly_do": "Số đo góc lượng giác cho bởi hình vẽ."
+ },
+ {
+  "ma_cau": "T111030503070",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị, hỏi khoảng đồng biến."
+ }
+]

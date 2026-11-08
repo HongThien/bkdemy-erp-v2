@@ -1,0 +1,87 @@
+{
+  "dang": [
+    {
+      "nhom": "Tập xác định",
+      "dang": "TXĐ của hàm cho bằng công thức",
+      "n_cau_that": 129,
+      "cach_dem": "dai_cau_hoi ma_cau like 'T110%', xoa_at null, nguon='de_thi'; noi_dung chứa 'tập xác định/điều kiện xác định' + 'hàm số', không có tham số m, không phương trình/BPT/mệnh đề, không hình (đã loại dạng Đúng/Sai). Gồm 98 trắc nghiệm, 24 tự luận, 7 trả lời ngắn. Đếm bằng regex nên sai số vài câu.",
+      "vi_du": ["T1100000001731", "T1100000001791"],
+      "ghi_chu": "Cả hai là trắc nghiệm, không cần hình, lời giải và đáp án đã tự kiểm đúng. 1731: phân thức bậc nhất, TXĐ = ℝ\\{1}. 1791: căn ở tử + mẫu bậc hai, TXĐ = (-∞;3]\\{0}. Thay thế nếu cần câu tự luận: T1100000001739 hoặc T1100000006892."
+    },
+    {
+      "nhom": "Tập xác định",
+      "dang": "TXĐ có tham số m",
+      "n_cau_that": 8,
+      "cach_dem": "Trong số câu 'tập xác định' của hàm số, lấy các câu có 'tham số m' (hoặc m trong công thức) và hỏi điều kiện xác định trên ℝ/khoảng; rà tay nên sát. Gồm 5 trả lời ngắn, 2 trắc nghiệm, 2 tự luận (ma trận bằng regex, lọc tay).",
+      "vi_du": ["T1100000003746", "T1100000007508"],
+      "ghi_chu": "3746 (tự luận): mẫu x²+x+m ≠ 0 mọi x, m>1/4. 7508 (trắc nghiệm): đếm m nguyên âm để căn xác định trên ℝ, Δ'=m²+2m-3≤0 → 3 giá trị, đáp án C khớp. Đã tự kiểm số học đúng cả 2 và cả T1100000008013, T1100000003053, T1100000009424. Mỏng, chỉ 8 câu."
+    },
+    {
+      "nhom": "Giá trị hàm số",
+      "dang": "Tính giá trị / hàm nhiều công thức",
+      "n_cau_that": 31,
+      "cach_dem": "de_thi, noi_dung dạng 'Cho hàm số f(x)=... Tính f(a)/giá trị của biểu thức/f(x0)=k', loại câu đường thẳng tham số, tọa độ, TXĐ, bậc hai (dạng khác). Lọc tay từ khoảng 90 kết quả regex, còn ~31 (≈ 20 hàm khúc cases, ≈ 11 hàm đơn). Chưa tính ~8 câu hàm cho bằng bảng.",
+      "vi_du": ["T1100000001751", "T1100000003450"],
+      "ghi_chu": "1751: trắc nghiệm, hàm khúc tính f(5)=-117 (đáp án B khớp). 3450: hàm khúc cho f(x0)=5, tìm x0=3 (loại -2 vì không thỏa x≤-3), đáp án B khớp. Không cần hình. Nếu muốn một câu trả lời ngắn: T1100000001408 (T=f(-2)+f(3)=13) hoặc T1100000009138."
+    },
+    {
+      "nhom": "Đồ thị hàm số",
+      "dang": "Điểm thuộc đồ thị, tham số để đồ thị qua điểm",
+      "n_cau_that": 34,
+      "cach_dem": "de_thi, noi_dung có 'thuộc đồ thị' hoặc 'đồ thị … đi qua điểm' kèm 'hàm số/đồ thị', loại đường thẳng/vectơ/tam giác/đường tròn. 32 câu khớp mẫu chuẩn (kể cả 4 câu có hình) + 2 tự luận xác định tham số.",
+      "vi_du": ["T1100000008722", "T1100000003078"],
+      "ghi_chu": "8722: trắc nghiệm, y=3x-2, điểm P(2;4) thuộc đồ thị (đáp án B khớp). 3078: trả lời ngắn, tìm m để y=x²-(1-m)x-3m+1 đi qua A(1;-3), m=2 (giải ra 1-2m=-3, khớp). Không cần hình."
+    },
+    {
+      "nhom": "Đồ thị hàm số",
+      "dang": "Đọc đồ thị / bảng biến thiên",
+      "n_cau_that": 55,
+      "cach_dem": "de_thi, có hình (anh_de không null) hoặc nhắc 'bảng biến thiên/hình vẽ', hỏi về hàm y=f(x) (đồng biến, nghịch biến, tập giá trị, f(0), TXĐ, khẳng định đúng). Từ 103 kết quả regex, loại: nhận dạng 'hàm số nào có đồ thị…' (~23), vẽ BBT bằng tay (~8), biểu đồ thực tế (~10), Đúng/Sai (~10), còn ~55 (≈ 45 trắc nghiệm có hình, 10 BBT).",
+      "vi_du": ["T110000000095", "T1100000003139"],
+      "ghi_chu": "CẦN HÌNH (cả 2 đã có anh_de, đã mở xem và khớp lời giải). 95: BBT, f nghịch biến trên (0;1), đáp án B. 3139: đồ thị hàm khúc xác định trên [-3;2], nghịch biến trên (-1;1), đáp án B. Thay thế: T110000000866 (đọc f(0)=-3, đồ thị parabol)."
+    },
+    {
+      "nhom": "Đồng biến – nghịch biến",
+      "dang": "Xét đơn điệu theo định nghĩa / hàm bậc nhất",
+      "n_cau_that": 5,
+      "cach_dem": "de_thi, 'đồng biến/nghịch biến/đơn điệu' trên ℝ cho hàm bậc nhất (không parabol, không hình): chỉ 5 câu 'Hàm số nào đồng biến trên ℝ'. 0 câu chứng minh theo định nghĩa, 0 câu tham số m cho hàm bậc nhất.",
+      "vi_du": ["T1100000001513", "T1100000009057"],
+      "ghi_chu": "Rất mỏng, chỉ 5 câu đều trắc nghiệm, không có hình. 1513: chọn y=2x+1 (a>0). 9057: chọn y=x, trong đó có bẫy y=√(x-1) không xác định trên ℝ. Cả 2 đáp án khớp. Dạng này hầu như không có tự luận/theo định nghĩa trong kho, nên cân nhắc gộp vào dạng khác."
+    },
+    {
+      "nhom": "Ứng dụng thực tế của hàm số",
+      "dang": "Hàm cho bằng bảng/công thức khúc trong tình huống",
+      "n_cau_that": 22,
+      "cach_dem": "de_thi, noi_dung nhắc giá cước taxi/bưu chính, bảng giá điện bậc thang, giá theo số lượng, nhiệt độ-độ cao, kèm hàm số/bảng/công thức (không thống kê tần số). ~6 taxi, ~8 điện, ~2 bưu, ~2 giá theo số lượng, ~4 doanh nghiệp. Chưa tính ~19 câu 'hàm cho bằng bảng số liệu/biểu đồ' (xem thieu_dang).",
+      "vi_du": ["T1100000006888", "T1100000004528"],
+      "ghi_chu": "6888: trả lời ngắn, hàm cước taxi 3 khúc, tìm quãng đường khi trả 475000 đ → 35 km (khớp). 4528: trắc nghiệm lập công thức nhiệt độ T=28-5h, đáp án D khớp. Cả 2 không cần hình. Chú ý: lẫn một số bài doanh thu/lợi nhuận bậc hai thuộc chuyên đề Hàm số bậc hai."
+    }
+  ],
+  "thieu_dang": [
+    {
+      "kieu": "Hàm số cho bằng bảng số liệu / biểu đồ cột (xác định TXĐ, tập giá trị, đọc giá trị): vận tốc theo thời gian, GDP, lượng mưa, vụ tai nạn, chiều cao học sinh",
+      "n": 19,
+      "ma_cau": "T1100000003448"
+    },
+    {
+      "kieu": "Chọn hàm số có tập xác định là ℝ trong 4 hàm cho sẵn",
+      "n": 6,
+      "ma_cau": "T1100000009049"
+    },
+    {
+      "kieu": "Tập giá trị của hàm số cho bằng công thức (căn, bậc nhất trên đoạn)",
+      "n": 4,
+      "ma_cau": "T1100000009067"
+    },
+    {
+      "kieu": "Nhận dạng đồ thị: 'Hàm số nào có đồ thị như hình' (hầu hết là parabol, hàm bậc hai) — có thể đã thuộc dạng 'Nhận dạng đồ thị parabol' ở chuyên đề Hàm số bậc hai",
+      "n": 25,
+      "ma_cau": "T1100000007315"
+    },
+    {
+      "kieu": "Đồ thị hàm khúc là đường gấp khúc: đọc f(a), tính chất đồ thị gấp khúc (có hình)",
+      "n": 3,
+      "ma_cau": "T1100000009000"
+    }
+  ]
+}

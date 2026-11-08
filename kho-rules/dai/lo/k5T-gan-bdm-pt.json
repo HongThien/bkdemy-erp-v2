@@ -1,0 +1,831 @@
+{
+ "khoi": "5T",
+ "nhom_id": "NNB01747",
+ "nhom": "Bài toán tính toán với tỉ số phần trăm (chuyên đề Tỉ số phần trăm, CEO tạo 25/10)",
+ "lan_chay": "gan-bdm-opus-5T-pt-20261025",
+ "kiem": {
+  "model": "claude-sonnet-5-5",
+  "lan_chay": "gan-mu-sonnet-5T-pt-20261025"
+ },
+ "cau": [
+  {
+   "ma_cau": "T15T000000360",
+   "ma_nguon": "VD 16.1",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài pha loãng nước muối, lượng muối không đổi"
+  },
+  {
+   "ma_cau": "T15T000000361",
+   "ma_nguon": "VD 16.2",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài phơi khô hạt, thuần hạt không đổi"
+  },
+  {
+   "ma_cau": "T15T000000362",
+   "ma_nguon": "VD 16.3",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài pha hai dung dịch muối, cộng khối lượng muối và dung dịch"
+  },
+  {
+   "ma_cau": "T15T000000051",
+   "ma_nguon": "LT 14.1",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Đổi số thập phân, phân số, hỗn số thành tỉ số phần trăm"
+  },
+  {
+   "ma_cau": "T15T000000465",
+   "ma_nguon": "LT 14.2",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Đổi tỉ số phần trăm sang số thập phân"
+  },
+  {
+   "ma_cau": "T15T000000466",
+   "ma_nguon": "LT 14.3",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Đổi tỉ số phần trăm sang phân số tối giản"
+  },
+  {
+   "ma_cau": "T15T000000467",
+   "ma_nguon": "LT 14.4a",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Phép tính cộng/trừ/nhân/chia với tỉ số phần trăm rồi đổi kết quả"
+  },
+  {
+   "ma_cau": "T15T000000468",
+   "ma_nguon": "LT 14.4b",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Phép tính cộng/trừ/nhân/chia với tỉ số phần trăm rồi đổi kết quả"
+  },
+  {
+   "ma_cau": "T15T000000469",
+   "ma_nguon": "LT 14.4c",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Phép tính cộng/trừ/nhân/chia với tỉ số phần trăm rồi đổi kết quả"
+  },
+  {
+   "ma_cau": "T15T000000470",
+   "ma_nguon": "LT 14.4d",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Phép tính cộng/trừ/nhân/chia với tỉ số phần trăm rồi đổi kết quả"
+  },
+  {
+   "ma_cau": "T15T000000471",
+   "ma_nguon": "LT 14.5a",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Phép tính cộng/trừ/nhân/chia với tỉ số phần trăm rồi đổi kết quả"
+  },
+  {
+   "ma_cau": "T15T000000472",
+   "ma_nguon": "LT 14.5b",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Phép tính cộng/trừ/nhân/chia với tỉ số phần trăm rồi đổi kết quả"
+  },
+  {
+   "ma_cau": "T15T000000473",
+   "ma_nguon": "LT 14.5c",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Phép tính cộng/trừ/nhân/chia với tỉ số phần trăm rồi đổi kết quả"
+  },
+  {
+   "ma_cau": "T15T000000474",
+   "ma_nguon": "LT 14.5d",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Phép tính cộng/trừ/nhân/chia với tỉ số phần trăm rồi đổi kết quả"
+  },
+  {
+   "ma_cau": "T15T000000475",
+   "ma_nguon": "LT 14.5e",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Phép tính cộng/trừ/nhân/chia với tỉ số phần trăm rồi đổi kết quả"
+  },
+  {
+   "ma_cau": "T15T000000476",
+   "ma_nguon": "LT 14.5f",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Phép tính cộng/trừ/nhân/chia với tỉ số phần trăm rồi đổi kết quả"
+  },
+  {
+   "ma_cau": "T15T000000477",
+   "ma_nguon": "LT 14.5g",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Phép tính cộng/trừ/nhân/chia với tỉ số phần trăm rồi đổi kết quả"
+  },
+  {
+   "ma_cau": "T15T000000478",
+   "ma_nguon": "LT 14.5h",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Phép tính cộng/trừ/nhân/chia với tỉ số phần trăm rồi đổi kết quả"
+  },
+  {
+   "ma_cau": "T15T000000479",
+   "ma_nguon": "LT 14.5i",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Phép tính cộng/trừ/nhân/chia với tỉ số phần trăm rồi đổi kết quả"
+  },
+  {
+   "ma_cau": "T15T000000480",
+   "ma_nguon": "LT 14.5j",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Phép tính cộng/trừ/nhân/chia với tỉ số phần trăm rồi đổi kết quả"
+  },
+  {
+   "ma_cau": "T15T000000481",
+   "ma_nguon": "LT 14.5k",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Phép tính cộng/trừ/nhân/chia với tỉ số phần trăm rồi đổi kết quả"
+  },
+  {
+   "ma_cau": "T15T000000482",
+   "ma_nguon": "LT 14.5l",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Phép tính cộng/trừ/nhân/chia với tỉ số phần trăm rồi đổi kết quả"
+  },
+  {
+   "ma_cau": "T15T000000052",
+   "ma_nguon": "LT 14.6b",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Tính biểu thức trộn hỗn số, phần trăm, số thập phân bằng cách đổi hết ra số thập phân"
+  },
+  {
+   "ma_cau": "T15T000000483",
+   "ma_nguon": "LT 14.6a",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Tính biểu thức trộn phần trăm, phân số, số thập phân bằng cách đổi hết về số thập phân"
+  },
+  {
+   "ma_cau": "T15T000000484",
+   "ma_nguon": "LT 14.6c",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Tính biểu thức trộn phần trăm, phân số, số thập phân bằng cách đổi hết về số thập phân"
+  },
+  {
+   "ma_cau": "T15T000000485",
+   "ma_nguon": "LT 14.6d",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Tính biểu thức trộn phần trăm, phân số, số thập phân bằng cách đổi hết về số thập phân"
+  },
+  {
+   "ma_cau": "T15T000000486",
+   "ma_nguon": "LT 14.7a",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Tìm x trong biểu thức có tỉ số phần trăm, đổi % ra số thập phân"
+  },
+  {
+   "ma_cau": "T15T000000487",
+   "ma_nguon": "LT 14.7b",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Tìm x trong biểu thức có tỉ số phần trăm, đổi % ra số thập phân"
+  },
+  {
+   "ma_cau": "T15T000000488",
+   "ma_nguon": "LT 14.7c",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Tìm x trong biểu thức có tỉ số phần trăm, đổi % ra số thập phân"
+  },
+  {
+   "ma_cau": "T15T000000489",
+   "ma_nguon": "LT 14.7d",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Tìm x trong biểu thức có tỉ số phần trăm, đổi % ra số thập phân"
+  },
+  {
+   "ma_cau": "T15T000000490",
+   "ma_nguon": "LT 14.8",
+   "dang_bai_id": "NDB01615",
+   "chac": "cao",
+   "ly_do": "Chiều rộng bằng 80% chiều dài đổi ra phân số, giải bằng sơ đồ tổng - tỉ"
+  },
+  {
+   "ma_cau": "T15T000000491",
+   "ma_nguon": "LT 14.9",
+   "dang_bai_id": "NDB01615",
+   "chac": "cao",
+   "ly_do": "Quy đồng tử số để tìm tỉ số hai số từ 2/3 số này = 25% số kia, giải hiệu - tỉ"
+  },
+  {
+   "ma_cau": "T15T000000492",
+   "ma_nguon": "LT 14.10",
+   "dang_bai_id": "NDB01615",
+   "chac": "cao",
+   "ly_do": "Đổi % ra phân số, quy đồng tử để tìm tỉ số hai số, giải tổng - tỉ"
+  },
+  {
+   "ma_cau": "T15T000000053",
+   "ma_nguon": "LT 14.11",
+   "dang_bai_id": "NDB01615",
+   "chac": "cao",
+   "ly_do": "LT 14.11: chuyển 25% công nhân hai tổ bằng nhau — hợp dạng 4 và dạng 5 ⇒ dạng sau (5), cùng loại LT 14.12–14.14"
+  },
+  {
+   "ma_cau": "T15T000000493",
+   "ma_nguon": "LT 14.12",
+   "dang_bai_id": "NDB01615",
+   "chac": "cao",
+   "ly_do": "Con bằng 20% mẹ đổi ra 1/5, giải tổng - tỉ rồi tìm tuổi bà"
+  },
+  {
+   "ma_cau": "T15T000000494",
+   "ma_nguon": "LT 14.13",
+   "dang_bai_id": "NDB01615",
+   "chac": "cao",
+   "ly_do": "Gà bằng 40% vịt sau khi bán, đổi ra 2/5, giải tổng - tỉ trên số còn lại"
+  },
+  {
+   "ma_cau": "T15T000000495",
+   "ma_nguon": "LT 14.14",
+   "dang_bai_id": "NDB01615",
+   "chac": "cao",
+   "ly_do": "Hiệu hai kho cùng tỉ số 250% đổi ra 5/2, giải hiệu - tỉ"
+  },
+  {
+   "ma_cau": "T15T000000496",
+   "ma_nguon": "LT 14.15",
+   "dang_bai_id": "NDB01615",
+   "chac": "cao",
+   "ly_do": "LT 14.15: đổi % ra phần chênh, hợp dạng 4 và 5 ⇒ dạng sau (5)"
+  },
+  {
+   "ma_cau": "T15T000000497",
+   "ma_nguon": "LT 14.16",
+   "dang_bai_id": "NDB01615",
+   "chac": "cao",
+   "ly_do": "LT 14.16: như LT 14.15 ⇒ dạng 5"
+  },
+  {
+   "ma_cau": "T15T000000498",
+   "ma_nguon": "LT 14.17",
+   "dang_bai_id": "NDB01615",
+   "chac": "cao",
+   "ly_do": "LT 14.17: như LT 14.15 ⇒ dạng 5"
+  },
+  {
+   "ma_cau": "T15T000000333",
+   "ma_nguon": "LT 15.1",
+   "dang_bai_id": "NDB01612",
+   "chac": "cao",
+   "ly_do": "Tìm tổng học sinh rồi tính tỉ số phần trăm của nam, nữ so với tổng"
+  },
+  {
+   "ma_cau": "T15T000000334",
+   "ma_nguon": "LT 15.2",
+   "dang_bai_id": "NDB01612",
+   "chac": "cao",
+   "ly_do": "Tìm số kẹo sô-cô-la rồi tỉ số phần trăm kẹo vani so với sô-cô-la"
+  },
+  {
+   "ma_cau": "T15T000000054",
+   "ma_nguon": "LT 15.3",
+   "dang_bai_id": "NDB01612",
+   "chac": "cao",
+   "ly_do": "Tìm tỉ số phần trăm thực tế so với kế hoạch (100:80), rồi phần vượt mức"
+  },
+  {
+   "ma_cau": "T15T000000335",
+   "ma_nguon": "LT 15.4",
+   "dang_bai_id": "NDB01612",
+   "chac": "cao",
+   "ly_do": "Lấy lương trừ tiền nhận được ra tiền bảo hiểm rồi tỉ số phần trăm so với lương"
+  },
+  {
+   "ma_cau": "T15T000000336",
+   "ma_nguon": "LT 15.5",
+   "dang_bai_id": "NDB01612",
+   "chac": "cao",
+   "ly_do": "Tìm tiền được giảm rồi tỉ số phần trăm so với giá niêm yết"
+  },
+  {
+   "ma_cau": "T15T000000337",
+   "ma_nguon": "LT 15.6",
+   "dang_bai_id": "NDB01613",
+   "chac": "cao",
+   "ly_do": "Tiền lãi là 30% của giá vốn rồi cộng giá vốn"
+  },
+  {
+   "ma_cau": "T15T000000338",
+   "ma_nguon": "LT 15.7a",
+   "dang_bai_id": "NDB01613",
+   "chac": "cao",
+   "ly_do": "Tìm 10% của 23 kg: nhân số với a%"
+  },
+  {
+   "ma_cau": "T15T000000339",
+   "ma_nguon": "LT 15.7b",
+   "dang_bai_id": "NDB01613",
+   "chac": "cao",
+   "ly_do": "Tìm 15% của 345 km: nhân số với a%"
+  },
+  {
+   "ma_cau": "T15T000000340",
+   "ma_nguon": "LT 15.7c",
+   "dang_bai_id": "NDB01613",
+   "chac": "cao",
+   "ly_do": "Tìm 20% của 6,12 tạ: nhân số với a%"
+  },
+  {
+   "ma_cau": "T15T000000341",
+   "ma_nguon": "LT 15.7d",
+   "dang_bai_id": "NDB01613",
+   "chac": "cao",
+   "ly_do": "Tìm 50% của 236 m2: nhân số với a%"
+  },
+  {
+   "ma_cau": "T15T000000342",
+   "ma_nguon": "LT 15.7e",
+   "dang_bai_id": "NDB01613",
+   "chac": "cao",
+   "ly_do": "Tìm 2% của 17,02 ha: nhân số với a%"
+  },
+  {
+   "ma_cau": "T15T000000343",
+   "ma_nguon": "LT 15.7f",
+   "dang_bai_id": "NDB01613",
+   "chac": "cao",
+   "ly_do": "Tìm 12,5% của 64 cm2: nhân số với a%"
+  },
+  {
+   "ma_cau": "T15T000000344",
+   "ma_nguon": "LT 15.8",
+   "dang_bai_id": "NDB01613",
+   "chac": "cao",
+   "ly_do": "Lệ phí là 10% của giá xe: nhân giá với a%"
+  },
+  {
+   "ma_cau": "T15T000000345",
+   "ma_nguon": "LT 15.9",
+   "dang_bai_id": "NDB01613",
+   "chac": "cao",
+   "ly_do": "Tiền lãi 20% của giá nhập rồi cộng giá nhập"
+  },
+  {
+   "ma_cau": "T15T000000346",
+   "ma_nguon": "LT 15.10",
+   "dang_bai_id": "NDB01613",
+   "chac": "cao",
+   "ly_do": "Phần tăng thêm là 5% của 46 kg rồi cộng"
+  },
+  {
+   "ma_cau": "T15T000000347",
+   "ma_nguon": "LT 15.11",
+   "dang_bai_id": "NDB01613",
+   "chac": "cao",
+   "ly_do": "Số nữ là 25% của 32 rồi trừ ra số nam"
+  },
+  {
+   "ma_cau": "T15T000000348",
+   "ma_nguon": "LT 15.12",
+   "dang_bai_id": "NDB01613",
+   "chac": "cao",
+   "ly_do": "Diện tích mít là 20% của diện tích khu đất (tính diện tích trước)"
+  },
+  {
+   "ma_cau": "T15T000000055",
+   "ma_nguon": "LT 15.13",
+   "dang_bai_id": "NDB01613",
+   "chac": "cao",
+   "ly_do": "Hai lần tìm a% của một số (25% của 200, 60% của phần còn lại) rồi trừ"
+  },
+  {
+   "ma_cau": "T15T000000349",
+   "ma_nguon": "LT 15.14a",
+   "dang_bai_id": "NDB01614",
+   "chac": "cao",
+   "ly_do": "Biết 50% của A là 32: A = 32:50%"
+  },
+  {
+   "ma_cau": "T15T000000350",
+   "ma_nguon": "LT 15.14b",
+   "dang_bai_id": "NDB01614",
+   "chac": "cao",
+   "ly_do": "Biết 35% của A là 16,8: A = 16,8:35%"
+  },
+  {
+   "ma_cau": "T15T000000351",
+   "ma_nguon": "LT 15.14c",
+   "dang_bai_id": "NDB01614",
+   "chac": "cao",
+   "ly_do": "Biết 40% của A là 15: A = 15:40%"
+  },
+  {
+   "ma_cau": "T15T000000352",
+   "ma_nguon": "LT 15.14d",
+   "dang_bai_id": "NDB01614",
+   "chac": "cao",
+   "ly_do": "Biết 80% của A là 2,08: A = 2,08:80%"
+  },
+  {
+   "ma_cau": "T15T000000353",
+   "ma_nguon": "LT 15.14e",
+   "dang_bai_id": "NDB01614",
+   "chac": "cao",
+   "ly_do": "Biết 20% của A là 1,25: A = 1,25:20%"
+  },
+  {
+   "ma_cau": "T15T000000354",
+   "ma_nguon": "LT 15.14f",
+   "dang_bai_id": "NDB01614",
+   "chac": "cao",
+   "ly_do": "Biết 12,5% của A là 1,2: A = 1,2:12,5%"
+  },
+  {
+   "ma_cau": "T15T000000355",
+   "ma_nguon": "LT 15.15",
+   "dang_bai_id": "NDB01614",
+   "chac": "cao",
+   "ly_do": "12 con là 25% cả đàn, chia 12:25%"
+  },
+  {
+   "ma_cau": "T15T000000356",
+   "ma_nguon": "LT 15.16",
+   "dang_bai_id": "NDB01614",
+   "chac": "cao",
+   "ly_do": "Tìm phần trăm số cây bưởi (39%) rồi 78:39% ra tổng"
+  },
+  {
+   "ma_cau": "T15T000000357",
+   "ma_nguon": "LT 15.17",
+   "dang_bai_id": "NDB01614",
+   "chac": "cao",
+   "ly_do": "Hai lần chia cho phần trăm (24:80% rồi 30:60%) để tìm tổng, rồi từng loại"
+  },
+  {
+   "ma_cau": "T15T000000056",
+   "ma_nguon": "LT 15.18",
+   "dang_bai_id": "NDB01614",
+   "chac": "cao",
+   "ly_do": "70 kg dầu là 35% số đậu phộng, chia 70:35%"
+  },
+  {
+   "ma_cau": "T15T000000358",
+   "ma_nguon": "LT 15.19",
+   "dang_bai_id": "NDB01614",
+   "chac": "cao",
+   "ly_do": "9 em ứng với 25% cả lớp, 9:25% rồi tính các loại"
+  },
+  {
+   "ma_cau": "T15T000000359",
+   "ma_nguon": "LT 15.20",
+   "dang_bai_id": "NDB01614",
+   "chac": "cao",
+   "ly_do": "126720000 đồng ứng với 105,6% tiền gốc, chia cho 105,6%"
+  },
+  {
+   "ma_cau": "T15T000000363",
+   "ma_nguon": "LT 16.1",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài đổ thêm nước cất, muối không đổi, tìm nồng độ mới"
+  },
+  {
+   "ma_cau": "T15T000000057",
+   "ma_nguon": "LT 16.2",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài dung dịch bay hơi: lượng đường không đổi, đoạn cuối tìm tỉ số phần trăm"
+  },
+  {
+   "ma_cau": "T15T000000364",
+   "ma_nguon": "LT 16.3",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài đổ thêm muối, muối và dung dịch cùng tăng, tìm nồng độ mới"
+  },
+  {
+   "ma_cau": "T15T000000365",
+   "ma_nguon": "LT 16.4",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài trộn quặng với sắt, cộng sắt và khối lượng, tìm phần trăm sắt"
+  },
+  {
+   "ma_cau": "T15T000000366",
+   "ma_nguon": "LT 16.5",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài pha hai dung dịch muối, tìm nồng độ sau pha"
+  },
+  {
+   "ma_cau": "T15T000000367",
+   "ma_nguon": "LT 16.6",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài trộn hai quặng khác hàm lượng sắt"
+  },
+  {
+   "ma_cau": "T15T000000058",
+   "ma_nguon": "LT 16.7",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài trộn hai dung dịch khác nồng độ, tìm nồng độ chưa biết"
+  },
+  {
+   "ma_cau": "T15T000000368",
+   "ma_nguon": "LT 16.8",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài pha loãng nước muối, muối không đổi, tìm lượng nước cất"
+  },
+  {
+   "ma_cau": "T15T000000369",
+   "ma_nguon": "LT 16.9",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài thêm muối tinh khiết, lượng nước không đổi"
+  },
+  {
+   "ma_cau": "T15T000000370",
+   "ma_nguon": "LT 16.10",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài nung quặng với sắt, phần không phải sắt không đổi"
+  },
+  {
+   "ma_cau": "T15T000000371",
+   "ma_nguon": "LT 16.11",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài phơi khô hạt, thuần hạt không đổi, tìm phần trăm nước còn lại"
+  },
+  {
+   "ma_cau": "T15T000000372",
+   "ma_nguon": "LT 16.12",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài phơi khô hạt, thuần hạt không đổi, tìm phần trăm nước còn lại"
+  },
+  {
+   "ma_cau": "T15T000000373",
+   "ma_nguon": "LT 16.13",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài phơi cỏ, thuần cỏ không đổi"
+  },
+  {
+   "ma_cau": "T15T000000059",
+   "ma_nguon": "LT 16.14",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài phơi khô, khối lượng thuần hạt không đổi (hai tỉ lệ nước)"
+  },
+  {
+   "ma_cau": "T15T000000374",
+   "ma_nguon": "LT 16.15",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài phơi ngô, thuần ngô không đổi, đi ngược từ hạt khô"
+  },
+  {
+   "ma_cau": "T15T000000375",
+   "ma_nguon": "LT 17.1",
+   "dang_bai_id": "NDB01613",
+   "chac": "vua",
+   "ly_do": "Tăng 10% hai năm liên tiếp, mỗi năm là tìm 10% của số năm trước rồi cộng"
+  },
+  {
+   "ma_cau": "T15T000000376",
+   "ma_nguon": "LT 17.2",
+   "dang_bai_id": "NDB01613",
+   "chac": "vua",
+   "ly_do": "LT 17.2 lãi suất nhập vốn 2 tháng: lượt 1 để thiếu dạng, lượt 2 xếp dạng 3 cho ON 85 cùng loại ⇒ đề xuất dạng 3, chờ người"
+  },
+  {
+   "ma_cau": "T15T000000377",
+   "ma_nguon": "LT 17.3",
+   "dang_bai_id": "NDB01613",
+   "chac": "vua",
+   "ly_do": "Giảm giá 10% hai lần liên tiếp, mỗi lần tìm 10% của giá trước rồi trừ"
+  },
+  {
+   "ma_cau": "T15T000000378",
+   "ma_nguon": "LT 17.4",
+   "dang_bai_id": "NDB01614",
+   "chac": "vua",
+   "ly_do": "Giảm giá liên tiếp, làm ngược: chia 76000:80% rồi chia cho 50% để tìm giá ban đầu"
+  },
+  {
+   "ma_cau": "T15T000000379",
+   "ma_nguon": "LT 17.5",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Cạnh tăng 20% kéo theo chu vi tăng, so sánh hai đại lượng tỉ lệ thuận"
+  },
+  {
+   "ma_cau": "T15T000000060",
+   "ma_nguon": "LT 17.6",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Tăng giảm hai kích thước làm diện tích đổi, nhân 125% x 75%"
+  },
+  {
+   "ma_cau": "T15T000000380",
+   "ma_nguon": "LT 17.7",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Tăng/giảm đồng thời hai đại lượng, đại lượng thứ ba là tích/thương nên nhân hoặc chia các tỉ số phần trăm; không có dạng riêng (bước cuối chỉ là tìm một số khi biết %)"
+  },
+  {
+   "ma_cau": "T15T000000381",
+   "ma_nguon": "LT 17.8",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Tăng/giảm đồng thời hai đại lượng, đại lượng thứ ba là tích/thương nên nhân hoặc chia các tỉ số phần trăm; không có dạng riêng (bước cuối chỉ là tìm một số khi biết %)"
+  },
+  {
+   "ma_cau": "T15T000000382",
+   "ma_nguon": "LT 17.9",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Tăng/giảm đồng thời hai đại lượng, đại lượng thứ ba là tích/thương nên nhân hoặc chia các tỉ số phần trăm; không có dạng riêng (bước cuối chỉ là tìm một số khi biết %)"
+  },
+  {
+   "ma_cau": "T15T000000383",
+   "ma_nguon": "LT 17.11",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Tăng/giảm đồng thời hai đại lượng, đại lượng thứ ba là tích/thương nên nhân hoặc chia các tỉ số phần trăm; không có dạng riêng (bước cuối chỉ là tìm một số khi biết %)"
+  },
+  {
+   "ma_cau": "T15T000000061",
+   "ma_nguon": "LT 17.12",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Năng suất tăng thì thời gian giảm (tỉ lệ nghịch), hai đại lượng liên hệ"
+  },
+  {
+   "ma_cau": "T15T000000384",
+   "ma_nguon": "LT 17.13",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Sức chảy và thời gian tỉ lệ nghịch, đổi tỉ số rồi tìm phần trăm tăng; không có dạng riêng"
+  },
+  {
+   "ma_cau": "T15T000000385",
+   "ma_nguon": "LT 17.14",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Tăng/giảm đồng thời hai đại lượng, đại lượng thứ ba là tích/thương nên nhân hoặc chia các tỉ số phần trăm; không có dạng riêng (khối lượng = năng suất x số người)"
+  },
+  {
+   "ma_cau": "T15T000000386",
+   "ma_nguon": "LT 17.15",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Tăng/giảm đồng thời hai đại lượng, đại lượng thứ ba là tích/thương nên nhân hoặc chia các tỉ số phần trăm; không có dạng riêng (sản lượng = diện tích x năng suất)"
+  },
+  {
+   "ma_cau": "T15T000000387",
+   "ma_nguon": "LT 17.16",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Tăng/giảm đồng thời hai đại lượng, đại lượng thứ ba là tích/thương nên nhân hoặc chia các tỉ số phần trăm; không có dạng riêng (doanh thu = giá vé x số vé)"
+  },
+  {
+   "ma_cau": "T15T000000388",
+   "ma_nguon": "LT 17.17",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Hai lần tăng liên tiếp, nhân hai tỉ số phần trăm; không có dạng riêng"
+  },
+  {
+   "ma_cau": "T15T000000389",
+   "ma_nguon": "LT 17.18",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài giá bán/giảm giá/lãi so với giá nhập, hai mốc giá; không có dạng riêng"
+  },
+  {
+   "ma_cau": "T15T000000390",
+   "ma_nguon": "LT 17.19",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài giá niêm yết/giảm giá/lãi so với giá nhập, hai mốc giá; không có dạng riêng"
+  },
+  {
+   "ma_cau": "T15T000000062",
+   "ma_nguon": "LT 17.20",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài lãi lỗ hai phần hàng so với giá nhập"
+  },
+  {
+   "ma_cau": "T15T000000391",
+   "ma_nguon": "LT 17.21",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài lãi lỗ hai phần hàng, tính tiền bán theo tỉ số phần trăm của vốn; không có dạng riêng"
+  },
+  {
+   "ma_cau": "T15T000000744",
+   "ma_nguon": "ON 3",
+   "dang_bai_id": "NDB01611",
+   "chac": "cao",
+   "ly_do": "Tính biểu thức trộn phần trăm, phân số, hỗn số, số thập phân"
+  },
+  {
+   "ma_cau": "T15T000000713",
+   "ma_nguon": "ON 79",
+   "dang_bai_id": "NDB01612",
+   "chac": "cao",
+   "ly_do": "Tìm tỉ số phần trăm của số nam và số nữ"
+  },
+  {
+   "ma_cau": "T15T000000714",
+   "ma_nguon": "ON 80",
+   "dang_bai_id": "NDB01613",
+   "chac": "cao",
+   "ly_do": "Tiền lãi = 25% của giá nhập, tìm phần trăm của một số"
+  },
+  {
+   "ma_cau": "T15T000000715",
+   "ma_nguon": "ON 81",
+   "dang_bai_id": "NDB01614",
+   "chac": "cao",
+   "ly_do": "ON 81: cùng loại LT 15.16 (đã cao dạng 4); hợp dạng 3 và 4 ⇒ dạng sau (4)"
+  },
+  {
+   "ma_cau": "T15T000000716",
+   "ma_nguon": "ON 82",
+   "dang_bai_id": "NDB01614",
+   "chac": "cao",
+   "ly_do": "ON 82: cùng loại LT 15.19 (đã cao dạng 4); hợp dạng 3 và 4 ⇒ dạng sau (4)"
+  },
+  {
+   "ma_cau": "T15T000000717",
+   "ma_nguon": "ON 83",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Tăng/giảm đồng thời hai đại lượng, đại lượng thứ ba là tích/thương nên nhân hoặc chia các tỉ số phần trăm; không có dạng riêng (thể tích = dài x rộng x cao)"
+  },
+  {
+   "ma_cau": "T15T000000718",
+   "ma_nguon": "ON 84",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài giảm giá/lãi so với vốn, hai mốc giá; không có dạng riêng"
+  },
+  {
+   "ma_cau": "T15T000000719",
+   "ma_nguon": "ON 85",
+   "dang_bai_id": "NDB01613",
+   "chac": "vua",
+   "ly_do": "ON 85 lãi suất nhập vốn 2 tháng (cùng loại LT 17.2) ⇒ đề xuất dạng 3, chờ người"
+  },
+  {
+   "ma_cau": "T15T000000720",
+   "ma_nguon": "ON 86",
+   "dang_bai_id": "NDB01615",
+   "chac": "cao",
+   "ly_do": "90% giá áo = 120% giá mũ suy ra tỉ số 4/3, giải tổng - tỉ"
+  },
+  {
+   "ma_cau": "T15T000000721",
+   "ma_nguon": "ON 87",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài trộn hai dung dịch muối, tính lượng muối và khối lượng rồi tìm tỉ số; không có dạng riêng"
+  },
+  {
+   "ma_cau": "T15T000000722",
+   "ma_nguon": "ON 88",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài dung dịch thêm nước, lượng chất tan không đổi; không có dạng riêng"
+  },
+  {
+   "ma_cau": "T15T000000723",
+   "ma_nguon": "ON 89",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "Chưa có dạng trong nhóm \"Bài toán tính toán với tỉ số phần trăm\": Bài dung dịch thêm chất tan, lượng nước không đổi; không có dạng riêng"
+  }
+ ]
+}

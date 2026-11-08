@@ -1,0 +1,7 @@
+{
+  "P1 Bài 1": { "tt": "khong_tt", "ghi": "tỉ số lượng giác thực tế (dốc), không có tiếp tuyến" },
+  "P1 Bài 2": { "tt": "khong_tt", "ghi": "tỉ số lượng giác thực tế (ngọn đèn, góc hạ), không có tiếp tuyến" },
+  "P1 Bài 3": { "tt": "hai_tt", "ghi": "từ điểm M ngoài đường tròn kẻ hai tiếp tuyến MA, MB; dùng MA = MB, OM phân giác của góc AOB và góc AMB" },
+  "P1 Bài 4": { "tt": "khong_tt", "ghi": "tỉ số lượng giác thực tế (tòa nhà BITEXCO), không có tiếp tuyến" },
+  "P2 Bài 5": { "tt": "ba_tt", "ghi": "BA và KD là hai tiếp tuyến tại hai đầu đường kính AD, BK là tiếp tuyến thứ ba tại M; dùng tính chất hai tiếp tuyến cắt nhau tại B và tại K (OB, OK là phân giác của hai góc kề bù AOM, MOD) ⇒ OB ⊥ OK, rồi BM·MK = OM²" }
+}

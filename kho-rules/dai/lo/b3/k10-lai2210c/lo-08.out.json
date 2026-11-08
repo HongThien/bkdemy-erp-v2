@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T110010203168",
+  "dang_bai_id": "NDB01399",
+  "chac": "cao",
+  "ly_do": "Viết lại khoảng (3;7] bằng tính chất đặc trưng."
+ },
+ {
+  "ma_cau": "T110010203151",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Tính hiệu AB của hai khoảng."
+ },
+ {
+  "ma_cau": "T110000000117",
+  "dang_bai_id": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Đọc tập hợp từ trục số có phần gạch, phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110010101116",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu là mệnh đề."
+ },
+ {
+  "ma_cau": "T110020104017",
+  "dang_bai_id": "NDB00541",
+  "chac": "vua",
+  "ly_do": "Lập bất phương trình bậc nhất hai ẩn từ bài toán bán vé; không đúng hẳn dạng mua đồ."
+ },
+ {
+  "ma_cau": "T110010102083",
+  "dang_bai_id": "NDB00820",
+  "chac": "cao",
+  "ly_do": "Phát biểu mệnh đề đảo."
+ },
+ {
+  "ma_cau": "T110000000280",
+  "dang_bai_id": "NDB00887",
+  "chac": "vua",
+  "ly_do": "Hai ý khác dạng: mua vở bút (00541) và tối ưu lợi nhuận hai ẩn."
+ },
+ {
+  "ma_cau": "T110000000103",
+  "dang_bai_id": "NDB01371",
+  "chac": "cao",
+  "ly_do": "Sơ đồ Ven, hỏi phần không bị gạch."
+ },
+ {
+  "ma_cau": "T110010101031",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện mệnh đề chứa biến."
+ },
+ {
+  "ma_cau": "T110020102078",
+  "dang_bai_id": "NDB00539",
+  "chac": "vua",
+  "ly_do": "Khẳng định về số nghiệm của bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010204089",
+  "dang_bai_id": "NDB00526",
+  "chac": "cao",
+  "ly_do": "Hai tập hợp, tính số phần tử thuộc cả hai."
+ },
+ {
+  "ma_cau": "T110000000439",
+  "dang_bai_id": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Đọc tập hợp từ trục số có phần gạch."
+ },
+ {
+  "ma_cau": "T110020202094",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm tham số để miền nghiệm của hệ bất phương trình có diện tích cho trước."
+ },
+ {
+  "ma_cau": "T110010202029",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Hợp của hai tập hợp liệt kê."
+ },
+ {
+  "ma_cau": "T110010201078",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Viết tập hợp bằng cách liệt kê phần tử."
+ },
+ {
+  "ma_cau": "T110010103084",
+  "dang_bai_id": "NDB01379",
+  "chac": "cao",
+  "ly_do": "Phủ định mệnh đề đơn giản không có với mọi, tồn tại."
+ },
+ {
+  "ma_cau": "T110010201084",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Liệt kê phần tử của tập hợp cho bằng tính chất."
+ },
+ {
+  "ma_cau": "T110010202073",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Hiệu hai tập hợp liệt kê."
+ },
+ {
+  "ma_cau": "T110010203152",
+  "dang_bai_id": "NDB00522",
+  "chac": "cao",
+  "ly_do": "Phần bù của khoảng trong R."
+ },
+ {
+  "ma_cau": "T110010203118",
+  "dang_bai_id": "NDB00522",
+  "chac": "vua",
+  "ly_do": "Ba phép toán hợp, giao, phần bù; xếp vào dạng cuối."
+ },
+ {
+  "ma_cau": "T110020204093",
+  "dang_bai_id": "NDB00887",
+  "chac": "vua",
+  "ly_do": "Gồm biểu diễn miền nghiệm (00538) và bài tối ưu thực tế hai ẩn."
+ },
+ {
+  "ma_cau": "T110000000145",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hàm số: tìm tập xác định của hàm số, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T110010102033",
+  "dang_bai_id": "NDB00821",
+  "chac": "vua",
+  "ly_do": "Nhiều mệnh đề kéo theo/tương đương, tìm mệnh đề sai."
+ },
+ {
+  "ma_cau": "T110010201077",
+  "dang_bai_id": "NDB00829",
+  "chac": "cao",
+  "ly_do": "Tập X nằm giữa hai tập, hỏi tập con."
+ },
+ {
+  "ma_cau": "T110010103057",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Phủ định mệnh đề có tồn tại."
+ },
+ {
+  "ma_cau": "T110010101088",
+  "dang_bai_id": "NDB01378",
+  "chac": "cao",
+  "ly_do": "Tìm tham số m để mệnh đề tồn tại đúng."
+ },
+ {
+  "ma_cau": "T110010204091",
+  "dang_bai_id": "NDB00527",
+  "chac": "cao",
+  "ly_do": "Tìm số phần tử của một tập (hát) từ dữ kiện hai tập."
+ },
+ {
+  "ma_cau": "T110010203100",
+  "dang_bai_id": "NDB01399",
+  "chac": "cao",
+  "ly_do": "Viết lại khoảng bằng tính chất đặc trưng."
+ },
+ {
+  "ma_cau": "T110020202100",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Chọn hệ bất phương trình từ hình miền nghiệm; có thể phải lập đường thẳng, phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110010101090",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu không phải mệnh đề."
+ },
+ {
+  "ma_cau": "T110010206024",
+  "dang_bai_id": "NDB00535",
+  "chac": "cao",
+  "ly_do": "Tìm m để A là tập con của B."
+ },
+ {
+  "ma_cau": "T110010101060",
+  "dang_bai_id": "NDB00818",
+  "chac": "vua",
+  "ly_do": "Mệnh đề chứa biến, tìm giá trị làm mệnh đề đúng."
+ },
+ {
+  "ma_cau": "T110010203078",
+  "dang_bai_id": "NDB01399",
+  "chac": "cao",
+  "ly_do": "Viết lại tập từ tính chất đặc trưng sang khoảng."
+ },
+ {
+  "ma_cau": "T110010101076",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện mệnh đề."
+ },
+ {
+  "ma_cau": "T110010202115",
+  "dang_bai_id": "NDB00521",
+  "chac": "vua",
+  "ly_do": "Chứng minh đồng nhất thức tập hợp dùng hiệu và hợp."
+ },
+ {
+  "ma_cau": "T110000000093",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hàm số: tìm tập xác định hàm căn, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T110010202108",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai tập hợp liệt kê."
+ },
+ {
+  "ma_cau": "T110000000125",
+  "dang_bai_id": "NDB01371",
+  "chac": "cao",
+  "ly_do": "Biểu đồ Ven, hỏi phần gạch sọc."
+ },
+ {
+  "ma_cau": "T110020104020",
+  "dang_bai_id": "NDB00541",
+  "chac": "vua",
+  "ly_do": "Lập bất phương trình hai ẩn từ bài toán thực tế tiền."
+ },
+ {
+  "ma_cau": "T110020102102",
+  "dang_bai_id": "NDB00884",
+  "chac": "vua",
+  "ly_do": "Chọn bất phương trình từ miền nghiệm hình; phải xác định đường thẳng."
+ },
+ {
+  "ma_cau": "T110010103090",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Phủ định mệnh đề có với mọi."
+ },
+ {
+  "ma_cau": "T110010101118",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Mệnh đề chứa biến P(n), xét giá trị đúng."
+ },
+ {
+  "ma_cau": "T110010202116",
+  "dang_bai_id": "NDB00829",
+  "chac": "vua",
+  "ly_do": "Quan hệ A⊂B và các phép toán tập hợp, xét đúng sai."
+ },
+ {
+  "ma_cau": "T110010204082",
+  "dang_bai_id": "NDB00528",
+  "chac": "vua",
+  "ly_do": "Hai tập; ý a chỉ thích văn, ý b số thích văn."
+ },
+ {
+  "ma_cau": "T110010203120",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Tính BA rồi đếm số nguyên."
+ },
+ {
+  "ma_cau": "T110010203170",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giải hai bất phương trình rồi lấy giao A∩B."
+ },
+ {
+  "ma_cau": "T110010205031",
+  "dang_bai_id": "NDB00530",
+  "chac": "cao",
+  "ly_do": "Ba tập, tính số phần tử chỉ thuộc đúng một tập."
+ },
+ {
+  "ma_cau": "T110010101129",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu không phải mệnh đề."
+ },
+ {
+  "ma_cau": "T110010102021",
+  "dang_bai_id": "NDB00819",
+  "chac": "cao",
+  "ly_do": "Phát biểu mệnh đề P kéo theo Q."
+ },
+ {
+  "ma_cau": "T110000000322",
+  "dang_bai_id": "NDB01371",
+  "chac": "cao",
+  "ly_do": "Sơ đồ Ven, hỏi phần không bị gạch."
+ },
+ {
+  "ma_cau": "T110010203097",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Hiệu hai khoảng."
+ },
+ {
+  "ma_cau": "T110010101128",
+  "dang_bai_id": "NDB00825",
+  "chac": "cao",
+  "ly_do": "Phát biểu bằng lời mệnh đề ký hiệu tồn tại."
+ },
+ {
+  "ma_cau": "T110010101079",
+  "dang_bai_id": "NDB00825",
+  "chac": "vua",
+  "ly_do": "Mệnh đề với mọi trên N*, đếm giá trị chẵn; không đúng hẳn dạng viết lại."
+ },
+ {
+  "ma_cau": "T110010203159",
+  "dang_bai_id": "NDB00522",
+  "chac": "cao",
+  "ly_do": "Phần bù của B trong A."
+ },
+ {
+  "ma_cau": "T110010101106",
+  "dang_bai_id": "NDB00818",
+  "chac": "vua",
+  "ly_do": "Đếm mệnh đề đúng, có câu kéo theo xen lẫn."
+ },
+ {
+  "ma_cau": "T110010201080",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Liệt kê phần tử tập hợp."
+ },
+ {
+  "ma_cau": "T110010202027",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Hợp hai tập hợp liệt kê."
+ },
+ {
+  "ma_cau": "T110010101070",
+  "dang_bai_id": "NDB00825",
+  "chac": "cao",
+  "ly_do": "Phát biểu bằng lời mệnh đề tồn tại."
+ },
+ {
+  "ma_cau": "T110010203114",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai nửa khoảng."
+ },
+ {
+  "ma_cau": "T110010101126",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Xét tính đúng sai của mệnh đề."
+ },
+ {
+  "ma_cau": "T110010103067",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Phủ định mệnh đề với mọi."
+ },
+ {
+  "ma_cau": "T110010203084",
+  "dang_bai_id": "NDB00521",
+  "chac": "vua",
+  "ly_do": "Hai phép toán giao và hiệu; xếp vào dạng cuối."
+ },
+ {
+  "ma_cau": "T110010103001",
+  "dang_bai_id": "NDB00825",
+  "chac": "cao",
+  "ly_do": "Viết mệnh đề bằng ký hiệu với mọi."
+ },
+ {
+  "ma_cau": "T110010203166",
+  "dang_bai_id": "NDB00522",
+  "chac": "cao",
+  "ly_do": "Phần bù của nửa khoảng trong R."
+ },
+ {
+  "ma_cau": "T110000000134",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc HGT/hàm số lượng giác: bài đu quay, độ cao theo thời gian."
+ },
+ {
+  "ma_cau": "T110020102076",
+  "dang_bai_id": "NDB00539",
+  "chac": "vua",
+  "ly_do": "Khẳng định về nghiệm của bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010202099",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Hiệu hai tập hợp liệt kê."
+ },
+ {
+  "ma_cau": "T110010101077",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu không phải mệnh đề."
+ },
+ {
+  "ma_cau": "T110000000047",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hàm số: tìm tập xác định hàm phân thức, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T110010203131",
+  "dang_bai_id": "NDB00537",
+  "chac": "cao",
+  "ly_do": "Tìm m để A giao B khác rỗng."
+ }
+]

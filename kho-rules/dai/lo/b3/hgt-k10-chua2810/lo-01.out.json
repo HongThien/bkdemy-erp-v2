@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "T310010102065",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "quỹ tích/tập hợp điểm: bản đồ chưa có dạng"
+ },
+ {
+  "ma_cau": "T310010104021",
+  "dang_bai_id": "NDB01425",
+  "chac": "cao",
+  "ly_do": "tìm cường độ lực thành phần để hợp lực bằng 0"
+ },
+ {
+  "ma_cau": "T310000000014",
+  "dang_bai_id": "NDB00914",
+  "chac": "vua",
+  "ly_do": "bài thực tế đường đi, tổng véc tơ+góc; hình có thể thiếu"
+ },
+ {
+  "ma_cau": "T310000000050",
+  "dang_bai_id": "NDB00914",
+  "chac": "vua",
+  "ly_do": "vật lý ròng rọc, nội dung chỉ trong hình"
+ },
+ {
+  "ma_cau": "T310000000051",
+  "dang_bai_id": "NDB00914",
+  "chac": "vua",
+  "ly_do": "vật lý mặt phẳng nghiêng, nội dung chỉ trong hình"
+ },
+ {
+  "ma_cau": "T3100000001036",
+  "dang_bai_id": "NDB00927",
+  "chac": "vua",
+  "ly_do": "thực tế tọa độ, thẳng hàng rồi cực trị khoảng cách"
+ },
+ {
+  "ma_cau": "T3100000001044",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "cùng hướng/ngược hướng trong hình thang cân (dạng sau 901)"
+ },
+ {
+  "ma_cau": "T3100000001067",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhận dạng tam giác từ hệ thức độ dài véc tơ: bản đồ thiếu dạng"
+ },
+ {
+  "ma_cau": "T3100000001076",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ 4 điểm"
+ },
+ {
+  "ma_cau": "T3100000001097",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "quỹ tích/tập hợp điểm: bản đồ chưa có dạng"
+ },
+ {
+  "ma_cau": "T3100000001099",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "tổng n véc tơ điểm tự do, biến đổi đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001123",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "quỹ tích/tập hợp điểm: bản đồ chưa có dạng"
+ },
+ {
+  "ma_cau": "T3100000001151",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "tọa độ qua i,j và phép toán véc tơ (dạng sau 918)"
+ },
+ {
+  "ma_cau": "T3100000001172",
+  "dang_bai_id": "NDB01628",
+  "chac": "cao",
+  "ly_do": "tìm tọa độ trực tâm"
+ },
+ {
+  "ma_cau": "T3100000001179",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "đối xứng qua trục tọa độ: bản đồ thiếu dạng"
+ },
+ {
+  "ma_cau": "T3100000001199",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "chứng minh đẳng thức tích vô hướng: bản đồ thiếu dạng"
+ },
+ {
+  "ma_cau": "T3100000001212",
+  "dang_bai_id": "NDB00926",
+  "chac": "vua",
+  "ly_do": "tìm tọa độ véc tơ từ hệ điều kiện tích vô hướng; cũng gần 940"
+ },
+ {
+  "ma_cau": "T3100000001278",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "quỹ tích/tập hợp điểm: bản đồ chưa có dạng"
+ },
+ {
+  "ma_cau": "T3100000001279",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "3 lực, vật đứng yên, tìm cường độ F3 (đáp án đề lệch lời giải)"
+ },
+ {
+  "ma_cau": "T3100000001290",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "trung điểm, IA=k AB; đề/đáp án có vẻ lỗi"
+ },
+ {
+  "ma_cau": "T3100000001292",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "đề hỏng ký hiệu; chọn đẳng thức véc tơ đúng"
+ },
+ {
+  "ma_cau": "T3100000001293",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "đề hỏng ký hiệu; chọn đẳng thức véc tơ đúng"
+ },
+ {
+  "ma_cau": "T3100000001294",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "đề hỏng ký hiệu; chọn đẳng thức sai, hình bình hành"
+ },
+ {
+  "ma_cau": "T3100000001298",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "đề hỏng ký hiệu; biểu diễn CI theo CA,CB"
+ },
+ {
+  "ma_cau": "T3100000001313",
+  "dang_bai_id": "NDB01421",
+  "chac": "vua",
+  "ly_do": "số điểm M thỏa độ dài véc tơ, thực chất quỹ tích đường tròn"
+ },
+ {
+  "ma_cau": "T3100000001314",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "quỹ tích/tập hợp điểm: bản đồ chưa có dạng"
+ },
+ {
+  "ma_cau": "T3100000001315",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "quỹ tích/tập hợp điểm: bản đồ chưa có dạng"
+ },
+ {
+  "ma_cau": "T3100000001316",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "quỹ tích/tập hợp điểm: bản đồ chưa có dạng"
+ },
+ {
+  "ma_cau": "T3100000001349",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "quỹ tích/tập hợp điểm: bản đồ chưa có dạng"
+ },
+ {
+  "ma_cau": "T3100000001350",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "quỹ tích/tập hợp điểm: bản đồ chưa có dạng"
+ },
+ {
+  "ma_cau": "T3100000001351",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "quỹ tích/tập hợp điểm: bản đồ chưa có dạng"
+ },
+ {
+  "ma_cau": "T3100000001354",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "đẳng thức tích vô hướng với trung tuyến, tìm hằng số"
+ },
+ {
+  "ma_cau": "T3100000001356",
+  "dang_bai_id": "NDB00912",
+  "chac": "vua",
+  "ly_do": "AM² qua a,b,c có AM=½(AB+AC); gần 931"
+ },
+ {
+  "ma_cau": "T3100000001358",
+  "dang_bai_id": "NDB00941",
+  "chac": "vua",
+  "ly_do": "chứng minh vuông góc bằng tích vô hướng rồi tỉ số độ dài"
+ },
+ {
+  "ma_cau": "T3100000001360",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "quỹ tích/tập hợp điểm: bản đồ chưa có dạng"
+ },
+ {
+  "ma_cau": "T3100000001368",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "hệ thức tổng bình phương độ dài, điểm trên đường tròn: thiếu dạng"
+ },
+ {
+  "ma_cau": "T3100000001371",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "quỹ tích/tập hợp điểm: bản đồ chưa có dạng"
+ },
+ {
+  "ma_cau": "T3100000001372",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc lượng giác: định lý sin, đo chiều cao"
+ },
+ {
+  "ma_cau": "T3100000001374",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "quỹ tích/tập hợp điểm: bản đồ chưa có dạng"
+ },
+ {
+  "ma_cau": "T3100000001375",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "quỹ tích/tập hợp điểm: bản đồ chưa có dạng"
+ },
+ {
+  "ma_cau": "T3100000001376",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "quỹ tích/tập hợp điểm: bản đồ chưa có dạng"
+ },
+ {
+  "ma_cau": "T3100000001377",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "MH·MA=kBC², đẳng thức tích vô hướng trong tam giác"
+ },
+ {
+  "ma_cau": "T3100000001378",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "tích vô hướng DB·AC trong tứ giác từ hệ thức cạnh"
+ },
+ {
+  "ma_cau": "T3100000001379",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "đếm véc tơ cùng phương với AB"
+ },
+ {
+  "ma_cau": "T3100000001380",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "đếm véc tơ bằng MN"
+ },
+ {
+  "ma_cau": "T3100000001381",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "đếm véc tơ cùng phương với OB"
+ },
+ {
+  "ma_cau": "T3100000001382",
+  "dang_bai_id": "NDB00901",
+  "chac": "vua",
+  "ly_do": "chọn mệnh đề sai; phương án sai là so độ dài |MN| với |AC|"
+ },
+ {
+  "ma_cau": "T3100000001383",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "đáp án đúng là độ dài AO trong hình thoi"
+ },
+ {
+  "ma_cau": "T3100000001384",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "đếm véc tơ bằng nhau, chọn mệnh đề sai"
+ },
+ {
+  "ma_cau": "T3100000001385",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chọn đẳng thức véc tơ đúng trong tam giác (dạng sau 903)"
+ },
+ {
+  "ma_cau": "T3100000001386",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chọn đẳng thức véc tơ sai, điểm tự do"
+ },
+ {
+  "ma_cau": "T3100000001387",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chọn mệnh đề sai về trung điểm (dạng sau 907)"
+ },
+ {
+  "ma_cau": "T3100000001388",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chọn đẳng thức véc tơ sai, 3 điểm tự do"
+ },
+ {
+  "ma_cau": "T3100000001389",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "tổng 4 véc tơ khép kín (điểm tự do)"
+ },
+ {
+  "ma_cau": "T3100000001390",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "biểu diễn MB+AP trong tam giác"
+ },
+ {
+  "ma_cau": "T3100000001391",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "đáp án đúng là độ dài tổng/hiệu, không tích với số"
+ },
+ {
+  "ma_cau": "T3100000001392",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "lời giải có BA+2AC, có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001393",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "3 lực, vật đứng yên, tìm F3"
+ },
+ {
+  "ma_cau": "T3100000001394",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "GA=k GM, tính chất trọng tâm"
+ },
+ {
+  "ma_cau": "T3100000001395",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "AM=¼AB, quan hệ tích với số"
+ },
+ {
+  "ma_cau": "T3100000001396",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "biểu diễn AM theo AB,AC"
+ },
+ {
+  "ma_cau": "T3100000001397",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "biểu diễn DC theo AC,BD"
+ },
+ {
+  "ma_cau": "T3100000001398",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "biểu diễn GM theo AB,AC"
+ },
+ {
+  "ma_cau": "T3100000001399",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "tích vô hướng trong tam giác đều"
+ },
+ {
+  "ma_cau": "T3100000001400",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "tích vô hướng trong hình vuông"
+ },
+ {
+  "ma_cau": "T3100000001401",
+  "dang_bai_id": "NDB00929",
+  "chac": "vua",
+  "ly_do": "chọn đẳng thức sai về công thức tích vô hướng"
+ },
+ {
+  "ma_cau": "T3100000001402",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "tích vô hướng trong tam giác vuông"
+ },
+ {
+  "ma_cau": "T3100000001403",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "tích vô hướng trong tam giác đều"
+ },
+ {
+  "ma_cau": "T3100000001404",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "tích vô hướng với trung tuyến tam giác vuông"
+ },
+ {
+  "ma_cau": "T3100000001405",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "tích vô hướng trong hình bình hành"
+ },
+ {
+  "ma_cau": "T3100000001406",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "tính độ dài tổng, không tích với số"
+ },
+ {
+  "ma_cau": "T3100000001407",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "tích vô hướng trong hình thang vuông"
+ },
+ {
+  "ma_cau": "T3100000001408",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "tích vô hướng trong hình bình hành"
+ },
+ {
+  "ma_cau": "T3100000001409",
+  "dang_bai_id": "NDB00930",
+  "chac": "cao",
+  "ly_do": "tìm cos góc từ độ dài, biết |a-b|"
+ },
+ {
+  "ma_cau": "T3100000001410",
+  "dang_bai_id": "NDB00930",
+  "chac": "cao",
+  "ly_do": "tìm góc giữa a,b từ điều kiện vuông góc"
+ },
+ {
+  "ma_cau": "T3100000001411",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "quỹ tích/tập hợp điểm: bản đồ chưa có dạng"
+ },
+ {
+  "ma_cau": "T3100000001428",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "tính độ dài AC, không tích với số"
+ },
+ {
+  "ma_cau": "T3100000001429",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "đếm véc tơ bằng DP"
+ },
+ {
+  "ma_cau": "T3100000001430",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "lời giải dùng trung điểm ½, có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001431",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng AB+BM"
+ },
+ {
+  "ma_cau": "T3100000001432",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài hiệu AC-AB"
+ },
+ {
+  "ma_cau": "T3100000001433",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp của 2 lực góc 45°"
+ },
+ {
+  "ma_cau": "T3100000001434",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "3 lực, ô tô đứng yên, tìm F3"
+ },
+ {
+  "ma_cau": "T3100000001435",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "biểu diễn AB+CD theo IJ"
+ },
+ {
+  "ma_cau": "T3100000001436",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "biểu diễn tổng véc tơ theo GG'"
+ },
+ {
+  "ma_cau": "T3100000001437",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "AB+AC=2AM, có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001438",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "AE=k AF, ba điểm thẳng hàng (dạng sau 909)"
+ },
+ {
+  "ma_cau": "T3100000001439",
+  "dang_bai_id": "NDB01425",
+  "chac": "cao",
+  "ly_do": "tìm lực thành phần để hợp lực bằng 0"
+ },
+ {
+  "ma_cau": "T3100000001440",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "tích vô hướng với trung tuyến tam giác vuông"
+ },
+ {
+  "ma_cau": "T3100000001441",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "công của lực, thực tế"
+ },
+ {
+  "ma_cau": "T3100000001442",
+  "dang_bai_id": "NDB00928",
+  "chac": "cao",
+  "ly_do": "cos góc giữa 2 véc tơ trong tam giác vuông"
+ },
+ {
+  "ma_cau": "T3100000001443",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "tính độ dài tổng, không tích với số"
+ },
+ {
+  "ma_cau": "T310000000177",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "chứng minh đẳng thức độ dài véc tơ: bản đồ thiếu dạng"
+ },
+ {
+  "ma_cau": "T310000000178",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "quỹ tích/tập hợp điểm: bản đồ chưa có dạng"
+ },
+ {
+  "ma_cau": "T310000000179",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "chứng minh bất đẳng thức độ dài véc tơ: bản đồ thiếu dạng"
+ },
+ {
+  "ma_cau": "T310000000180",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "chứng minh tam giác vuông từ đẳng thức độ dài: thiếu dạng"
+ },
+ {
+  "ma_cau": "T310000000181",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "chứng minh đẳng thức độ dài véc tơ cùng hướng: thiếu dạng"
+ },
+ {
+  "ma_cau": "T310000000183",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "quỹ tích/tập hợp điểm: bản đồ chưa có dạng"
+ },
+ {
+  "ma_cau": "T310000000235",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "tính chất phép cộng véc tơ; phương án B ghi 0 thay véc tơ 0"
+ },
+ {
+  "ma_cau": "T310000000337",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "đề sai dấu (IA=IB), chứng minh trung điểm"
+ }
+]

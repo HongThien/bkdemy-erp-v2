@@ -1,0 +1,820 @@
+[
+ {
+  "ma_cau": "T110000000212",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f\\left(x\\right)=\\begin{cases} \\dfrac{x^{2}-5x+6}{x-3};x<3 \\\\ 2x+1;x\\ge 3 \\end{cases}$. Tính $f\\left(4\\right)$.",
+  "lua_chon": [
+   "$f\\left(4\\right)=2$.",
+   "$f\\left(4\\right)=9$.",
+   "$f\\left(4\\right)=7$.",
+   "Không xác định."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Vì $x=4\\ge 3$ nên giá trị của hàm số $f\\left(x\\right)$ được tính theo công thức $f\\left(x\\right)=2x+1$.\nThay $x=4$ vào biểu thức, ta được\n$f\\left(4\\right)=2\\cdot 4+1=9.$\nVậy $f\\left(4\\right)=9$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020202040",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau? [hình]",
+  "lua_chon": [
+   "$\\begin{cases} 2x+y \\le 2 \\\\ x+2y \\ge 2 \\end{cases}$",
+   "$\\begin{cases} x+2y < 2 \\\\ 2x-y > 2 \\end{cases}$",
+   "$\\begin{cases} x+y \\le 2 \\\\ x-y \\ge 2 \\end{cases}$",
+   "$\\begin{cases} 2x-y \\ge 2 \\\\ x+y \\le 2 \\end{cases}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "- Phương trình các đường thẳng biên:\n+ $d_1$ có phương trình $x+y=2$.\n+ $d_2$ có phương trình $x-y=2$.\n- Vì đề bài cho miền nghiệm chứa biên nên ta sử dụng các dấu $\\ge, \\le$.\n- Chọn điểm $M(3; -1)$ thuộc miền nghiệm để thử:\n+ Thay $M$ vào $x+y$: $3-1=2 \\Rightarrow x+y \\le 2$.\n+ Thay $M$ vào $x-y$: $3-(-1)=4 \\ge 2 \\Rightarrow x-y \\ge 2$.\n- Vậy hệ bất phương trình đúng là C.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020102116",
+  "loai": "trac_nghiem",
+  "de": "Một nghiệm của bất phương trình bậc nhất hai ẩn $2x-3y>5$ là",
+  "lua_chon": [
+   "$\\left(x;y\\right)=\\left(1;-2\\right)$.",
+   "$\\left(x;y\\right)=\\left(-1;1\\right)$.",
+   "$\\left(x;y\\right)=\\left(1;-1\\right)$.",
+   "$\\left(x;y\\right)=\\left(1;2\\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta lần lượt thay toạ độ từng cặp số vào bất phương trình $2x-3y>5$.\nVới $\\left(x;y\\right)=\\left(1;-2\\right)$ ta có $2\\cdot 1-3\\cdot \\left(-2\\right)=2+6=8>5$, mệnh đề đúng.\nVới $\\left(x;y\\right)=\\left(-1;1\\right)$ ta có $2\\cdot \\left(-1\\right)-3\\cdot 1=-5$, mà $-5>5$ là sai.\nVới $\\left(x;y\\right)=\\left(1;-1\\right)$ ta có $2\\cdot 1-3\\cdot \\left(-1\\right)=5$, mà $5>5$ là sai.\nVới $\\left(x;y\\right)=\\left(1;2\\right)$ ta có $2\\cdot 1-3\\cdot 2=-4$, mà $-4>5$ là sai.\nVậy $\\left(x;y\\right)=\\left(1;-2\\right)$ là một nghiệm của bất phương trình đã cho.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020204092",
+  "loai": "tra_loi_ngan",
+  "de": "Một trang trại cần thuê xe để vận chuyển một lúc $120$ con bò sữa và $30$ tấn thức ăn cho bò. Nơi cho thuê xe chỉ có $9$ chiếc xe lớn và $10$ chiếc xe nhỏ. Một chiếc xe lớn chỉ có thể chở được $15$ con bò và $5$ tấn thức ăn. Một chiếc xe nhỏ chỉ có thể chở $12$ con bò và $2$ tấn thức ăn. Giá thuê của một chiếc xe lớn là $500$ nghìn đồng và một chiếc xe nhỏ là $350$ nghìn đồng. Gọi số xe lớn và số xe nhỏ mà chủ trang trại cần thuê lần lượt là $x,y \\left(x,y\\in \\mathbb{N}\\right)$. Tính $x+y$ trong trường hợp chi phí thuê xe là thấp nhất.",
+  "dap_an": "9",
+  "loi_giai": "Gọi $x$ là số xe lớn và $y$ là số xe nhỏ cần thuê, với $x,y\\in \\mathbb{N}$.\nVì nơi cho thuê chỉ có $9$ xe lớn và $10$ xe nhỏ nên $0\\le x\\le 9$ và $0\\le y\\le 10$.\nSố bò chở được là $15x+12y$ con, phải chở hết $120$ con bò nên $15x+12y\\ge 120$, hay $5x+4y\\ge 40$.\nSố thức ăn chở được là $5x+2y$ tấn, phải chở hết $30$ tấn nên $5x+2y\\ge 30$.\nChi phí thuê xe (đơn vị nghìn đồng) là $T=500x+350y$, ta cần tìm giá trị nhỏ nhất của $T$.\nMiền nghiệm của hệ ràng buộc là miền đa giác có các đỉnh $\\left(2;10\\right)$, $\\left(4;5\\right)$, $\\left(8;0\\right)$, $\\left(9;0\\right)$, $\\left(9;10\\right)$.\nTrong đó $\\left(4;5\\right)$ là giao điểm của hai đường thẳng $5x+4y=40$ và $5x+2y=30$.\nTính giá trị của $T$ tại …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110020202103",
+  "loai": "trac_nghiem",
+  "de": "Trong hình vẽ sau phần mặt phẳng không bị gạch sọc là miền nghiệm của hệ bất phương trình nào?",
+  "lua_chon": [
+   "$\\begin{cases} x-2y\\le 2 \\\\ x+y\\le 2 \\end{cases}$.",
+   "$\\begin{cases} x-2y\\le 2 \\\\ x+y\\ge 2 \\end{cases}$.",
+   "$\\begin{cases} x-2y\\ge 2 \\\\ x+y\\le 2 \\end{cases}$.",
+   "$\\begin{cases} x-2y\\ge 2 \\\\ x+y\\ge 2 \\end{cases}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng $d_{1}$ đi qua hai điểm $\\left(2;0\\right)$ và $\\left(0;2\\right)$ có phương trình $x+y=2$.\nĐường thẳng $d_{2}$ đi qua hai điểm $\\left(2;0\\right)$ và $\\left(0;-1\\right)$ có phương trình $x-2y=2$.\nXét điểm $O\\left(0;0\\right)$ thuộc miền không bị gạch, ta có:\n• $0+0=0\\le 2$, do đó miền nghiệm chứa $O\\left(0;0\\right)$ của đường thẳng $d_{1}$ biểu diễn bất phương trình $x+y\\le 2$.\n• $0-2\\cdot 0=0\\le 2$, do đó miền nghiệm chứa $O\\left(0;0\\right)$ của đường thẳng $d_{2}$ biểu diễn bất phương trình $x-2y\\le 2$.\nVì các đường biên là nét liền nên miền không bị gạch biểu diễn miền nghiệm của hệ bất phương trình $\\begin{cases} x-2y\\le 2 \\\\ x+y\\le 2. \\end{cases}$",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020204007",
+  "loai": "tra_loi_ngan",
+  "de": "Một cửa hàng hoa quả sạch dự định đóng gói hai loại giỏ quà Tết: Giỏ Lộc Phát và Giỏ Bình An.\nMỗi Giỏ Lộc Phát cần $3\\ \\mathrm{kg}$ táo, $1\\ \\mathrm{kg}$ cam và $1\\ \\mathrm{kg}$ nho. Lãi thu được là $400$ nghìn đồng.\nMỗi Giỏ Bình An cần $1\\ \\mathrm{kg}$ táo, $3\\ \\mathrm{kg}$ cam và $1\\ \\mathrm{kg}$ nho. Lãi thu được là $500$ nghìn đồng.\nHiện tại, trong kho của cửa hàng đang có sẵn tối đa $18\\ \\mathrm{kg}$ táo, $18\\ \\mathrm{kg}$ cam và $8\\ \\mathrm{kg}$ nho.\nHỏi tổng tiền lãi lớn nhất mà cửa hàng có thể thu được khi bán hai loại giỏ quà Tết trên? (đơn vị nghìn đồng)",
+  "dap_an": "3700",
+  "loi_giai": "Gọi $x,y$ lần lượt là số giỏ Lộc Phát và giỏ Bình An cần đóng gói ($x,y \\in \\mathbb{N}$).\nTheo giả thiết, ta có hệ bất phương trình:\n$$\\begin{cases} 3x+y \\le 18 \\\\ x+3y \\le 18 \\\\ x+y \\le 8 \\\\ x \\ge 0, y \\ge 0 \\end{cases}$$\nTổng tiền lãi thu được là $T=400x+500y$ (nghìn đồng).\nMiền nghiệm của hệ bất phương trình là miền đa giác $OABCD$ (kể cả biên) với các đỉnh $O(0;0)$, $A(6;0)$, $B(5;3)$, $C(3;5)$, $D(0;6)$.\nTa tính giá trị của $T$ tại các đỉnh đa giác:\nTại $O(0;0)$, ta có $T = 0$.\nTại $A(6;0)$, ta có $T = 400 \\cdot 6 + 500 \\cdot 0 = 2400$.\nTại $B(5;3)$, ta có $T = 400 \\cdot 5 + 500 \\cdot 3 = 3500$.\nTại $C(3;5)$, ta có $T = 400 \\cdot 3 + 500 \\cdot 5 = 3700$.\nTại $D(0;6)$, ta có $T = 400 \\cd …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110020202036",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau?",
+  "lua_chon": [
+   "$\\begin{cases}x+y\\ge 2\\\\ x-y\\le 0\\end{cases}$",
+   "$\\begin{cases}2x+y<4\\\\ x+2y>0\\end{cases}$",
+   "$\\begin{cases}x+2y\\ge 2\\\\ 2x-y\\le 0\\end{cases}$",
+   "$\\begin{cases}2x-y\\ge 2\\\\ x+y\\le 0\\end{cases}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Phương trình các đường thẳng biên:\n$+ d_1$ có phương trình $x+y=2$.\n$+ d_2$ có phương trình $x-y=0$.\n- Vì đề bài cho miền nghiệm chứa biên nên ta sử dụng các dấu $\\ge$, $\\le$.\n- Chọn điểm $M(2;3)$ thuộc miền nghiệm để thử:\n$+ \\text{Thay } M \\text{ vào } x+y: 2+3=5 \\ge 2 \\Rightarrow x+y \\ge 2$.\n$+ \\text{Thay } M \\text{ vào } x-y: 2-3=-1 \\le 0 \\Rightarrow x-y \\le 0$.\n- Vậy hệ bất phương trình đúng là A.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020202097",
+  "loai": "trac_nghiem",
+  "de": "Phần không gạch chéo ở hình sau đây là biểu diễn miền nghiệm của hệ bất phương trình nào trong bốn đáp án dưới đây?",
+  "lua_chon": [
+   "$\\begin{cases} x>0 \\\\ 3x+2y<6 \\end{cases}$.",
+   "$\\begin{cases} y>0 \\\\ 3x+2y<-6 \\end{cases}$.",
+   "$\\begin{cases} x>0 \\\\ 3x+2y>-6 \\end{cases}$.",
+   "$\\begin{cases} y>0 \\\\ 3x+2y<6 \\end{cases}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Đường thẳng thứ nhất đi qua hai điểm $\\left(2;0\\right)$ và $\\left(0;3\\right)$ có phương trình là $\\dfrac{x}{2}+\\dfrac{y}{3}=1\\Leftrightarrow 3x+2y=6$.\nĐiểm $O\\left(0;0\\right)$ thuộc miền không bị gạch, thay toạ độ điểm $O$ vào biểu thức $3x+2y$ ta được $3\\cdot 0+2\\cdot 0=0<6$.\nDo đó, nửa mặt phẳng không bị gạch tương ứng với bất phương trình $3x+2y<6$.\nĐường thẳng thứ hai là trục hoành $y=0$, phần bị gạch nằm phía dưới trục hoành ($y < 0$) nên miền không bị gạch tương ứng với bất phương trình $y>0$.\nVậy phần không gạch chéo là miền nghiệm của hệ bất phương trình $\\begin{cases} y>0 \\\\ 3x+2y<6 \\end{cases}$.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020204039",
+  "loai": "tra_loi_ngan",
+  "de": "Trong một cuộc thi pha chế, mỗi đội chơi được sử dụng tối đa $24$gam hương liệu, $9$ lít nước và $210$gam đường để pha chế nước ngọt loại I và nước ngọt loại II. Để pha chế $1$ lít nước ngọt loại I cần $10$gam đường, $1$ lít nước và $4$gam hương liệu. Để pha chế $1$ lít nước ngọt loại II cần $30$gam đường, $1$ lít nước và $1$gam hương liệu. Mỗi lít nước ngọt loại I được $80$ điểm thưởng, mỗi lít nước ngọt loại II được $60$ điểm thưởng. Hỏi số điểm thưởng cao nhất có thể của mỗi đội trong cuộc thi là bao nhiêu?",
+  "dap_an": "640",
+  "loi_giai": "Gọi $x,y$ lần lượt là số lít nước ngọt loại I và loại II mà mỗi đội cần pha chế ($x \\ge 0, y \\ge 0$). Dựa vào giả thiết, ta có hệ bất phương trình ràng buộc như sau:\n* Lượng hương liệu: $4x+y \\le 24$.\n* Lượng nước: $x+y \\le 9$.\n* Lượng đường: $10x+30y \\le 210 \\Leftrightarrow x+3y \\le 21$.\nSố điểm thưởng đạt được là $F(x,y)=80x+60y$. Bài toán trở thành tìm giá trị lớn nhất của biểu thức $F(x,y)$ trên miền nghiệm của hệ bất phương trình:\n$$\\begin{cases}x \\ge 0 \\\\ y \\ge 0 \\\\ 4x+y \\le 24 \\\\ x+y \\le 9 \\\\ x+3y \\le 21\\end{cases}$$\nVẽ các đường thẳng $d_1:4x+y=24$, $d_2:x+y=9$, $d_3:x+3y=21$ trên mặt phẳng tọa độ.\nMiền nghiệm của hệ bất phương trình là ngũ giác $OABCD$ (kể cả biên).\nTa tính giá trị  …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110020204087",
+  "loai": "tra_loi_ngan",
+  "de": "Bác An dự định trồng dưa lê và dưa vàng trên đất nông nghiệp. Trên diện tích mỗi ha, nếu trồng dưa lê thì cần $20$ công và thu được tiền lãi là $30$ triệu đồng, nếu trồng dưa vàng thì cần $30$ công và thu được tiền lãi là $40$ triệu đồng. Nếu bác An có $8$ ha đất nông nghiệp và tối đa $180$ công thợ thì bác An có thể lãi được nhiều nhất bao nhiêu triệu đồng?",
+  "dap_an": "260",
+  "loi_giai": "Gọi $x$ và $y$ (đơn vị: ha) lần lượt là diện tích đất dùng để trồng dưa lê và dưa vàng ($x\\ge 0,y\\ge 0$).\nTổng diện tích đất nông nghiệp không quá $8 ha$ nên ta có bất phương trình $x+y\\le 8$.\nTổng số công thợ không quá $180$ công nên ta có bất phương trình $20x+30y\\le 180\\Leftrightarrow 2x+3y\\le 18$.\nTừ đó ta có hệ bất phương trình mô tả các điều kiện ràng buộc:\n$\\begin{cases} x\\ge 0 \\\\ y\\ge 0 \\\\ x+y\\le 8 \\\\ 2x+3y\\le 18. \\end{cases}$\nTổng số tiền lãi thu được (đơn vị: triệu đồng) là $F\\left(x;y\\right)=30x+40y$.\nMiền nghiệm của hệ bất phương trình là tứ giác $OABC$ (kể cả biên) với toạ độ các đỉnh là $O\\left(0;0\\right)$, $A\\left(8;0\\right)$, $B\\left(6;2\\right)$, $C\\left(0;6\\right)$.\nVì $F\\le …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110000000267",
+  "loai": "trac_nghiem",
+  "de": "Cho biết miền nghiệm của một hệ bất phương trình bậc nhất hai ẩn $x,y$ chính là miền của tam giác $ABC$ (kể cả biên) như hình bên. Tìm tổng của giá trị lớn nhất, giá trị nhỏ nhất biểu thức $F\\left(x;y\\right)=20x+35y$?",
+  "lua_chon": [
+   "$165$.",
+   "$150$.",
+   "$180$.",
+   "$140$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Vì $F\\left(x;y\\right)=20x+35y$ là biểu thức bậc nhất nên trên miền đa giác lồi (tam giác $ABC$), $F$ đạt giá trị lớn nhất và giá trị nhỏ nhất tại các đỉnh của miền.\nTừ hình vẽ, ba đỉnh của tam giác là $A\\left(0;0\\right)$, $B\\left(3;0\\right)$, $C\\left(0;4\\right)$. Tính $F$ tại các đỉnh:\n• $F\\left(A\\right)=20\\cdot 0+35\\cdot 0=0$;\n• $F\\left(B\\right)=20\\cdot 3+35\\cdot 0=60$;\n• $F\\left(C\\right)=20\\cdot 0+35\\cdot 4=140$.\nSuy ra giá trị lớn nhất của $F$ bằng $140$ (tại $C$), giá trị nhỏ nhất bằng $0$ (tại $A$).\nVậy tổng giá trị lớn nhất và giá trị nhỏ nhất là $140+0=140$.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020101080",
+  "loai": "trac_nghiem",
+  "de": "Bất phương trình nào dưới đây là bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$2x-3y-2\\ge 0$.",
+   "$x-3y+7z>0$.",
+   "$4x^{2}\\text{+3yz\\le 1}$.",
+   "$5x+y^{3}<3$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Bất phương trình bậc nhất hai ẩn $x,y$ là bất phương trình có dạng tổng quát là $\\text{ax+by+c\\ge 0}$ (hoặc $>0,\\le 0,<0$), trong đó $a,b,c$ là các số thực đã cho thoả mãn $a$ và $b$ không đồng thời bằng $0$.\n- Bất phương trình $2x-3y-2\\ge 0$ có đúng hai ẩn $x,y$ và bậc cao nhất của các ẩn đều là bậc nhất, nên đây là bất phương trình bậc nhất hai ẩn.\n- Bất phương trình $x-3y+7z>0$ có ba ẩn $x,y,z$.\n- Bất phương trình $4x^{2}\\text{+3yz\\le 1}$ chứa $x^{2}$ và tích $yz$, không phải bậc nhất.\n- Bất phương trình $5x+y^{3}<3$ chứa $y^{3}$, có bậc ba đối với $y$.\nVậy bất phương trình bậc nhất hai ẩn là $2x-3y-2\\ge 0$.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Nhận diện bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020204084",
+  "loai": "tu_luan",
+  "de": "Một phân xưởng có hai máy chuyên dụng M1 và M2 để sản xuất hai loại sản phẩm X và Y theo đơn đặt hàng. Muốn sản xuất một tấn sản phẩm loại X, người ta phải dùng máy M1 trong $3$ giờ và máy M2 trong $1$ giờ. Muốn sản xuất một tấn sản phẩm loại Y, người ta phải dùng máy M1 trong $1$ giờ và máy M2 trong $1$ giờ. Biết rằng máy M1 làm việc không quá $6$ giờ một ngày và máy M2 làm việc không quá $4$ giờ một ngày. Gọi $x$, $y$ (tấn) theo thứ tự là khối lượng sản phẩm loại X và loại Y sản xuất được trong ngày.",
+  "loi_giai": "a) Viết hệ bất phương trình theo $x$, $y$ dựa vào tất cả giả thiết đã cho.\nb) Biểu diễn miền nghiệm của hệ bất phương trình trên.\na) Vì $x$, $y$ là khối lượng sản phẩm sản xuất được trong ngày nên $x\\ge 0$ và $y\\ge 0$.\nMỗi tấn sản phẩm loại X cần máy M1 trong $3$ giờ, mỗi tấn sản phẩm loại Y cần máy M1 trong $1$ giờ, nên tổng thời gian máy M1 làm việc là $3x+y$ (giờ). Máy M1 làm việc không quá $6$ giờ một ngày nên $3x+y\\le 6$.\nMỗi tấn sản phẩm loại X cần máy M2 trong $1$ giờ, mỗi tấn sản phẩm loại Y cần máy M2 trong $1$ giờ, nên tổng thời gian máy M2 làm việc là $x+y$ (giờ). Máy M2 làm việc không quá $4$ giờ một ngày nên $x+y\\le 4$.\nVậy hệ bất phương trình cần tìm là\n$\\begin{cases} x\\ge 0 \\\\ …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110020204029",
+  "loai": "tra_loi_ngan",
+  "de": "Trong một xưởng in, người ta sản xuất hai loại poster quảng bá sự kiện. Loại I sử dụng $2$ tờ giấy khổ lớn và $1$ đơn vị mực màu, thu được $35$ nghìn đồng. Loại II sử dụng $3$ tờ giấy khổ lớn và $2$ đơn vị mực màu, thu được $60$ nghìn đồng. Biết rằng xưởng chỉ có tối đa $210$ tờ giấy khổ lớn và $130$ đơn vị mực màu và mỗi poster phải được in trọn vẹn. Hỏi số tiền lớn nhất mà xưởng có thể thu được là bao nhiêu (nghìn đồng)?",
+  "dap_an": "4050",
+  "loi_giai": "Gọi $x$ và $y$ lần lượt là số lượng poster Loại I và Loại II mà xưởng in sản xuất ($x,y \\in \\mathbb{N}$). Số tờ giấy khổ lớn cần dùng là $2x + 3y$.\nVì xưởng có tối đa $210$ tờ nên ta có $2x + 3y \\leq 210$.\nSố đơn vị mực màu cần dùng là $x + 2y$.\nVì xưởng có tối đa $130$ đơn vị nên ta có $x + 2y \\leq 130$.\nTổng số tiền thu được là $T = 35x + 60y$ (nghìn đồng).\nBài toán trở thành tìm giá trị lớn nhất của biểu thức $T = 35x + 60y$ với hệ điều kiện:\n$$\\begin{cases} 2x + 3y \\leq 210 \\\\ x + 2y \\leq 130 \\\\ x \\geq 0 \\\\ y \\geq 0 \\end{cases}$$\nBiểu diễn miền nghiệm của hệ bất phương trình trên mặt phẳng tọa độ $Oxy$.\nMiền nghiệm là tứ giác $OABC$ với các đỉnh $O(0;0)$, $A(105;0)$, $B(30;50)$ và $C(0;6 …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110000000261",
+  "loai": "trac_nghiem",
+  "de": "Tập xác định $D$ của hàm số $y=\\dfrac{x-4}{x+2}$ là:",
+  "lua_chon": [
+   "$D=\\mathbb{R}$.",
+   "$D=\\mathbb{R}\\setminus \\{-2\\}$.",
+   "$D=[-2;+\\infty)$.",
+   "$D=(-\\infty;-2]$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Hàm số $y=\\dfrac{x-4}{x+2}$ xác định khi và chỉ khi:\n$x+2\\ne 0\\Leftrightarrow x\\ne -2.$\nVậy tập xác định của hàm số là $D=\\mathbb{R}\\setminus \\{-2\\}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020102100",
+  "loai": "trac_nghiem",
+  "de": "Phần không bị gạch trong hình vẽ nào sau đây (kể cả đường thẳng) là miền nghiệm của bất phương trình: $3x+2y\\ge 6$?",
+  "lua_chon": [
+   ".",
+   ".",
+   ".",
+   "."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét đường thẳng bờ $d :3x+2y=6$.\nCho $x=0\\Rightarrow y=3$, ta được điểm $B\\left(0;3\\right)\\in d$.\nCho $y=0\\Rightarrow x=2$, ta được điểm $A\\left(2;0\\right)\\in d$.\nDo đó đường thẳng $d$ đi qua hai điểm $A\\left(2;0\\right)$ và $B\\left(0;3\\right)$.\nThay toạ độ gốc toạ độ $O\\left(0;0\\right)$ vào bất phương trình đã cho ta được:\n$3\\cdot 0+2\\cdot 0=0<6(sai).$\nSuy ra gốc toạ độ $O\\left(0;0\\right)$ không thuộc miền nghiệm của bất phương trình $3x+2y\\ge 6$.\nDo đó miền nghiệm của bất phương trình là nửa mặt phẳng có bờ là đường thẳng $d$ đi qua hai điểm $\\left(2;0\\right)$, $\\left(0;3\\right)$ và không chứa gốc toạ độ $O$ (kể cả bờ $d$).\nQuan sát các hình vẽ, hình ở phương án B thoả mãn.",
+  "co_hinh": true,
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020102071",
+  "loai": "tu_luan",
+  "de": "Biểu diễn miền nghiệm của bất phương trình: $x+2y>4$",
+  "loi_giai": "Vẽ đường thẳng $d :x+2y=4$ đi qua hai điểm $\\left(4;0\\right)$ và $\\left(0;2\\right)$.\nVì bất phương trình là $x+2y>4$ nên đường thẳng $d$ được vẽ bằng nét đứt (không kể bờ $d$).\nChọn điểm thử $O\\left(0;0\\right)\\notin d$, thay toạ độ vào vế trái ta được $0+2\\cdot 0=0<4$ (không thỏa mãn bất phương trình).\nDo đó, miền nghiệm của bất phương trình là nửa mặt phẳng bờ $d$ không chứa gốc toạ độ $O\\left(0;0\\right)$ (phần không bị gạch chéo trong hình vẽ, không kể bờ $d$).",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110000000308",
+  "loai": "trac_nghiem",
+  "de": "Tập xác định của hàm số $f\\left(x\\right)=\\dfrac{4}{x-5}$ là",
+  "lua_chon": [
+   "$D=\\{5\\}$.",
+   "$D=\\mathbb{R}$.",
+   "$D=\\mathbb{R}\\setminus \\{4\\}$.",
+   "$D=\\mathbb{R}\\setminus \\{5\\}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Hàm số $f\\left(x\\right)=\\dfrac{4}{x-5}$ xác định khi và chỉ khi\n$x-5\\ne 0\\Leftrightarrow x\\ne 5.$\nVậy tập xác định của hàm số là $D=\\mathbb{R}\\setminus \\{5\\}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020202045",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (không chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau?",
+  "lua_chon": [
+   "$\\left\\{\\begin{matrix}x+y\\leq 1\\\\2x-y\\geq -2\\end{matrix}\\right.$",
+   "$\\left\\{\\begin{matrix}2x-y<1\\\\x-2y>-2\\end{matrix}\\right.$",
+   "$\\left\\{\\begin{matrix}x-y<1\\\\x+2y>-2\\end{matrix}\\right.$",
+   "$\\left\\{\\begin{matrix}x+2y\\geq 1\\\\x-y\\leq -2\\end{matrix}\\right.$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Phương trình các đường thẳng biên:\n$d_1$ có phương trình $x-y=1$.\n$d_2$ có phương trình $x+2y=-2$.\nVì đề bài cho miền nghiệm không chứa biên nên ta sử dụng các dấu $>, <$.\nChọn điểm $M(0;0)$ thuộc miền nghiệm để thử:\nThay $M$ vào $x-y$: $0-0=0<1\\Rightarrow x-y<1$.\nThay $M$ vào $x+2y$: $0+0=0>-2\\Rightarrow x+2y>-2$.\nVậy hệ bất phương trình đúng là C.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020102060",
+  "loai": "trac_nghiem",
+  "de": "Cặp số $\\left(x;y\\right)$ nào sau đây không là nghiệm của bất phương trình $-3x+y\\ge 1$?",
+  "lua_chon": [
+   "$\\left(0;1\\right)$.",
+   "$\\left(1;0\\right)$.",
+   "$\\left(-1;0\\right)$.",
+   "$\\left(0;2\\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Thay tọa độ điểm $\\left(0;1\\right)$ vào bất phương trình: $-3\\left(0\\right)+1=1\\ge 1$ (đúng), nên $\\left(0;1\\right)$ là nghiệm.\nThay tọa độ điểm $\\left(1;0\\right)$ vào bất phương trình: $-3\\left(1\\right)+0=-3\\ge 1$ (sai), nên $\\left(1;0\\right)$ không là nghiệm.\nThay tọa độ điểm $\\left(-1;0\\right)$ vào bất phương trình: $-3\\left(-1\\right)+0=3\\ge 1$ (đúng), nên $\\left(-1;0\\right)$ là nghiệm.\nThay tọa độ điểm $\\left(0;2\\right)$ vào bất phương trình: $-3\\left(0\\right)+2=2\\ge 1$ (đúng), nên $\\left(0;2\\right)$ là nghiệm.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020204040",
+  "loai": "tra_loi_ngan",
+  "de": "Một cơ sở sản xuất lụa dệt thủ công hai loại lụa gấm và lụa tơ tằm. Công suất tối đa một ngày của cả xưởng là $100$ m lụa, biết rằng tiền nguyên liệu cho một mét lụa gấm là $20$ nghìn đồng và cần hai công thợ để dệt xong, còn đối với lụa tơ tằm thì cần $10$ nghìn đồng tiền nguyên liệu và một công thợ. Vốn của xưởng một ngày là không quá $6$ triệu đồng và một công thợ là $40$ nghìn đồng. Giá bán lẻ một mét lụa gấm và tơ tằm lần lượt là $150$ nghìn đồng/mét và $80$ nghìn đồng/mét. Vậy chủ cơ sở cần sản xuất một ngày $x$ mét lụa gấm và $y$ mét lụa tơ tằm để thu lãi nhiều nhất (Giả sử mỗi ngày đều bán hết). Tính giá trị của biểu thức $x+3y$.",
+  "dap_an": "260",
+  "loi_giai": "Gọi $x,y$ lần lượt là số mét lụa gấm và lụa tơ tằm cơ sở sản xuất trong một ngày ($x \\ge 0, y \\ge 0$).\nChi phí để sản xuất $1$ m lụa gấm gồm tiền nguyên liệu và tiền công thợ là: $20+2 \\cdot 40=100$\n(nghìn đồng).\nChi phí để sản xuất $1$ m lụa tơ tằm gồm tiền nguyên liệu và tiền công thợ là: $10+1 \\cdot 40=50$\n(nghìn đồng).\nTiền lãi thu được khi bán $1$ m lụa gấm là: $150-100=50$ (nghìn đồng).\nTiền lãi thu được khi bán $1$ m lụa tơ tằm là: $80-50=30$ (nghìn đồng).\nTổng số tiền lãi thu được trong một ngày là: $P(x,y)=50x+30y$ (nghìn đồng).\nDựa vào các điều kiện của bài toán, ta có hệ bất phương trình:\n$$\\left\\{\\begin{array}{l}x+y \\le 100 \\\\ 100x+50y \\le 6000 \\\\ x \\ge 0 \\\\ y \\ge 0\\end{array}\\ri …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110020202066",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau? [hình]",
+  "lua_chon": [
+   "$\\begin{cases}x-y \\ge 0 \\\\ x+y \\ge 4 \\\\ y \\ge 0\\end{cases}$",
+   "$\\begin{cases}x-y \\ge 0 \\\\ x+y \\le 4 \\\\ y \\ge 0\\end{cases}$",
+   "$\\begin{cases}x-y \\le 0 \\\\ x+y \\le 4 \\\\ y \\ge 0\\end{cases}$",
+   "$\\begin{cases}x-y \\ge 0 \\\\ x+y \\le 4 \\\\ y \\le 0\\end{cases}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "- Phương trình 3 đường biên giới hạn miền:\n+ $d_1$: Qua $(0;0)$, $(2;2) \\Rightarrow x-y=0$.\n+ $d_2$: Qua $(4;0)$, $(2;2) \\Rightarrow x+y=4$.\n+ $d_3$: Trục $Ox \\Rightarrow y=0$.\n- Vì đề bài cho miền nghiệm chứa biên nên ta sử dụng các dấu $\\ge, \\le$.\n- Chọn điểm $M(2;1)$ thuộc miền nghiệm để thử:\n+ Biểu thức $x-y=2-1=1 \\ge 0 \\Rightarrow x-y \\ge 0$.\n+ Biểu thức $x+y=2+1=3 \\le 4 \\Rightarrow x+y \\le 4$.\n+ Tọa độ $y=1 \\ge 0 \\Rightarrow y \\ge 0$.\n- Đối chiếu đáp án, ta chọn hệ B.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020102113",
+  "loai": "tu_luan",
+  "de": "Biểu diễn miền nghiệm của bất phương trình $2x-y>4$ trên mặt phẳng tọa độ.",
+  "loi_giai": "Vẽ đường thẳng $d :2x-y=4$ đi qua hai điểm $\\left(2;0\\right)$ và $\\left(0;-4\\right)$.\nVì bất phương trình chứa dấu $>$ nên ta vẽ đường thẳng $d$ bằng nét đứt.\nLấy điểm $O\\left(0;0\\right)$ không thuộc đường thẳng $d$.\nThay tọa độ điểm $O\\left(0;0\\right)$ vào biểu thức $2x-y$, ta được $2\\cdot 0-0=0≯4$ (khẳng định sai).\nDo đó, miền nghiệm của bất phương trình là nửa mặt phẳng bờ $d$ không chứa gốc tọa độ $O\\left(0;0\\right)$ (không kể đường thẳng $d$, phần không bị gạch trên hình vẽ).",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020204081",
+  "loai": "tra_loi_ngan",
+  "de": "Người ta dùng hai loại nguyên liệu để chiết xuất ít nhất $200 kg$ hóa chất A và $24 kg$ hóa chất B. Từ mỗi tấn nguyên liệu loại I giá $7$ triệu đồng có thể chiết xuất được $40 kg$ hóa chất A và $2,4 kg$ hóa chất B. Từ mỗi tấn nguyên liệu loại II giá $6$ triệu đồng có thể chiết xuất được $25 kg$ hóa chất A và $4 kg$ hóa chất B. Hỏi chi phí mua nguyên liệu ít nhất là bao nhiêu triệu đồng? Biết rằng cơ sở cung cấp nguyên liệu chỉ có thể cung cấp không quá $10$ tấn nguyên liệu loại I và không quá $8$ tấn nguyên liệu loại II.",
+  "dap_an": "42.8",
+  "loi_giai": "Gọi $x,y$ lần lượt là số tấn nguyên liệu loại I và loại II cần mua ($0\\le x\\le 10$, $0\\le y\\le 8$).\nLượng hóa chất A chiết xuất được là $40x+25y \\left(kg\\right)$, theo đề bài cần ít nhất $200 kg$ nên ta có:\n$40x+25y\\ge 200\\Leftrightarrow 8x+5y\\ge 40.$\nLượng hóa chất B chiết xuất được là $2,4x+4y \\left(kg\\right)$, theo đề bài cần ít nhất $24 kg$ nên ta có:\n$2,4x+4y\\ge 24\\Leftrightarrow 3x+5y\\ge 30.$\nTừ đó ta có hệ bất phương trình ràng buộc:\n$\\begin{cases} 0\\le x\\le 10 \\\\ 0\\le y\\le 8 \\\\ 8x+5y\\ge 40 \\\\ 3x+5y\\ge 30. \\end{cases}$\nMiền nghiệm của hệ là tứ giác $MNPQ$ (kể cả biên) với các đỉnh $M\\left(2;4,8\\right)$, $N\\left(0;8\\right)$, $P\\left(10;8\\right)$, $Q\\left(10;0\\right)$.\nTổng chi phí mua  …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110020104017",
+  "loai": "tra_loi_ngan",
+  "de": "Nhân ngày Quốc tế Thiếu nhi 1-6, một rạp chiếu phim phục vụ các khán giả một bộ phim hoạt hình. Vé được bán ra có hai loại: Loại 1 (dành cho trẻ từ 6-13 tuổi): $50 000$ đồng/vé. Loại 2 (dành cho người trên 13 tuổi): $100 000$ đồng/vé. Người ta tính toán rằng, để không phải bù lỗ thì số tiền vé thu được ở rạp chiếu phim này phải đạt tối thiểu $40$ triệu đồng. Nếu gọi $x,y$ ($x,y\\in \\mathbb{N}$) lần lượt là số vé bán ra của loại 1, loại 2. Bất phương trình trong trường hợp rạp chiếu phim không phải bù lỗ là $\\text{x+ay\\ge b}$ ($a,b\\in \\mathbb{N}$). Tính $P=a-b$.",
+  "dap_an": "-798",
+  "loi_giai": "Số tiền thu được từ việc bán $x$ vé loại 1 là $50 000x$ (đồng).\nSố tiền thu được từ việc bán $y$ vé loại 2 là $100 000y$ (đồng).\nTổng số tiền vé thu được là $50 000x+100 000y$ (đồng).\nĐể rạp chiếu phim không phải bù lỗ thì số tiền vé thu được tối thiểu là $40$ triệu đồng, tức là:\n$50 000x+100 000y\\ge 40 000 000.$\nChia cả hai vế của bất phương trình cho $50 000$, ta được bất phương trình tương đương:\n$x+2y\\ge 800.$\nĐối chiếu với dạng $\\text{x+ay\\ge b}$, ta suy ra:\n$a=2,b=800.$\nVậy giá trị của biểu thức $P=a-b$ là:\n$P=2-800=-798.$",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Bài toán thực tế về bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020201088",
+  "loai": "trac_nghiem",
+  "de": "Hệ bất phương trình nào sau đây là hệ bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$\\begin{cases} -2x^{2}+5y<4 \\\\ x^{2}+3y>6 \\end{cases}$.",
+   "$\\begin{cases} -2x+5y<4 \\\\ x+3y>6 \\end{cases}$.",
+   "$\\begin{cases} -2x+5y<4 \\\\ x^{2}+3y>6 \\end{cases}$.",
+   "$\\begin{cases} -2x+5y<4 \\\\ x^{2}+3y^{2}>6 \\end{cases}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Hệ bất phương trình bậc nhất hai ẩn gồm các bất phương trình bậc nhất hai ẩn, tức mỗi bất phương trình chỉ chứa hai ẩn và các ẩn đều có bậc một.\nHệ gồm $-2x+5y<4$ và $x+3y>6$ có cả hai bất phương trình đều bậc nhất hai ẩn nên thoả mãn.\nCác phương án còn lại đều chứa $x^{2}$ hoặc $y^{2}$ nên có bậc hai, không thoả mãn.",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nhận diện hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110000000280",
+  "loai": "tu_luan",
+  "de": "a) Bạn Lan mang $150 000$đồng đi nhà sách để mua một số quyển vở và bút. Biết rằng giá một quyển vở là $8 000$ đồng và giá của một cây bút là $6 000$ đồng. Bạn Lan có thể mua được tối đa bao nhiêu quyển vở nếu bạn đã mua $10$ cây bút.\nb) Một xưởng sản xuất hai loại sản phẩm là sản phẩm loại I và sản phẩm loại II:\n• Mỗi kg sản phẩm loại I cần $2 kg$ nguyên liệu và $30$ giờ, thu lời được $40$ nghìn.\n• Mỗi kg sản phẩm loại II cần $4 kg$ nguyên liệu và $15$ giờ, thu lời được $30$ nghìn. Xưởng có $200 kg$ nguyên liệu và $1200$ giờ làm việc tối đa. Nên sản xuất mỗi loại sản phẩm bao nhiêu để có mức lời cao nhất?",
+  "loi_giai": "a) Số tiền bạn Lan đã dùng để mua $10$ cây bút là\n$10\\cdot 6 000=60 000$\n(đồng)\n$.$\nSố tiền còn lại của bạn Lan để mua vở là\n$150 000-60 000=90 000$\n(đồng)\n$.$\nGọi $x$ ($x\\in \\mathbb{N}$) là số quyển vở bạn Lan có thể mua.\nSố tiền mua $x$ quyển vở là $8 000x$ (đồng).\nVì số tiền mua vở không vượt quá số tiền còn lại nên ta có bất phương trình:\n$8 000x\\le 90 000\\Leftrightarrow x\\le \\dfrac{90 000}{8 000}\\Leftrightarrow x\\le 11,25.$\nVì $x$ là số tự nhiên nên giá trị lớn nhất của $x$ là $11$.\nVậy bạn Lan có thể mua được tối đa $11$ quyển vở.\nb) Gọi $x$ (kg) và $y$ (kg) lần lượt là khối lượng sản phẩm loại I và loại II xưởng cần sản xuất ($x\\ge 0,y\\ge 0$).\nĐể sản xuất $x kg$ sản phẩm loại I và $y  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020204097",
+  "loai": "tra_loi_ngan",
+  "de": "Người ta dự định dùng hai loại nguyên liệu để chiết xuất ít nhất $12 kg$ chất $A$ và $1 kg$ chất $B$. Từ một tấn nguyên liệu loại $I$ giá $40$ triệu đồng, có thể chiết xuất được $8 kg$ chất $A$ và $0,25 kg$ chất $B$. Từ một tấn nguyên liệu loại $II$ giá $30$ triệu đồng, có thể chiết xuất được $4 kg$ chất $A$ và $0,75 kg$ chất $B$. Chi phí mua nguyên liệu thấp nhất bằng bao nhiêu triệu? Biết rằng cơ sở cung cấp nguyên liệu chỉ có thể cung cấp không quá $4$ tấn nguyên liệu loại $I$ và không quá $3$ tấn nguyên liệu loại $II$.",
+  "dap_an": "70",
+  "loi_giai": "Gọi $x$ là số tấn nguyên liệu loại I ($0\\le x\\le 4$), $y$ là số tấn nguyên liệu loại II ($0\\le y\\le 3$).\nTổng lượng chất A chiết xuất được là $8x+4y \\left(kg\\right)$, theo đề bài cần ít nhất $12 kg$ nên\n$8x+4y\\ge 12\\Leftrightarrow 2x+y\\ge 3.$\nTổng lượng chất B chiết xuất được là $0,25x+0,75y \\left(kg\\right)$, theo đề bài cần ít nhất $1 kg$ nên\n$0,25x+0,75y\\ge 1\\Leftrightarrow x+3y\\ge 4.$\nTa có hệ bất phương trình ràng buộc:\n$\\begin{cases} 0\\le x\\le 4 \\\\ 0\\le y\\le 3 \\\\ 2x+y\\ge 3 \\\\ x+3y\\ge 4. \\end{cases}$\nTổng chi phí mua nguyên liệu là $F\\left(x;y\\right)=40x+30y$ (triệu đồng).\nMiền nghiệm của hệ bất phương trình là miền tứ giác $ABCD$ (kể cả biên) với toạ độ các đỉnh là: - $A\\left(0;3\\right) …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110020204036",
+  "loai": "tra_loi_ngan",
+  "de": "Để gây quỹ từ thiện, câu lạc bộ thiện nguyện của một trường THPT tổ chức hoạt động bán hàng với hai mặt hàng là trà sữa và bánh ngọt. Câu lạc bộ thiết kế hai thực đơn. Thực đơn 1 có giá $40$ nghìn đồng, bao gồm hai ly trà sữa và một chiếc bánh ngọt. Thực đơn 2 có giá $65$ nghìn đồng, bao gồm ba ly trà sữa và hai chiếc bánh ngọt. Biết rằng câu lạc bộ chỉ làm được không quá $180$ ly trà sữa và $110$ chiếc bánh ngọt. Số tiền lớn nhất mà câu lạc bộ có thể nhận được sau khi bán hết hàng bằng bao nhiêu nghìn đồng?",
+  "dap_an": "3800",
+  "loi_giai": "Gọi $x,y$ lần lượt là số lượng thực đơn $1$ và thực đơn $2$ mà câu lạc bộ bán ($x, y \\in N$).\nSố ly trà sữa cần dùng là $2x + 3y$.\nSố chiếc bánh ngọt cần dùng là $x + 2y$.\nTheo đề bài, ta có hệ bất phương trình:\n$$\\begin{cases} 2x + 3y \\le 180 \\\\ x + 2y \\le 110 \\\\ x \\ge 0, y \\ge 0 \\end{cases}$$\nSố tiền thu được là $T = 40x + 65y$ (nghìn đồng).\nMiền nghiệm của hệ bất phương trình là tứ giác với các đỉnh $O(0;0)$, $A(90;0)$, $B(30;40)$,\n$C(0;55)$.\nTính giá trị của $T$ tại các đỉnh: $T(0;0) = 0$; $T(90;0) = 40 \\cdot 90 = 3600$;\n$T(30;40) = 40 \\cdot 30 + 65 \\cdot 40 = 3800$ ; $T(0;55) = 65 \\cdot 55 = 3575$.\nGiá trị lớn nhất của $T$ là $3800$ đạt được khi $x = 30, y = 40$.\nVậy số tiền lớn nhất câ …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110020102077",
+  "loai": "trac_nghiem",
+  "de": "Miền nghiệm của bất phương trình $x+2y-4<0$ là nửa mặt phẳng không chứa điểm nào trong các điểm sau?",
+  "lua_chon": [
+   "$\\left(1;1\\right)$.",
+   "$\\left(0;0\\right)$.",
+   "$\\left(1;-1\\right)$.",
+   "$\\left(4;3\\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta thay tọa độ từng điểm vào vế trái của bất phương trình $x+2y-4<0$.\nVới $\\left(1;1\\right)$: $1+2\\cdot 1-4=-1<0$, điểm này thuộc miền nghiệm.\nVới $\\left(0;0\\right)$: $0+0-4=-4<0$, điểm này thuộc miền nghiệm.\nVới $\\left(1;-1\\right)$: $1+2\\cdot \\left(-1\\right)-4=-5<0$, điểm này thuộc miền nghiệm.\nVới $\\left(4;3\\right)$: $4+2\\cdot 3-4=6>0$, điểm này không thuộc miền nghiệm.\nVậy nửa mặt phẳng miền nghiệm không chứa điểm $\\left(4;3\\right)$, chọn đáp án D.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020102097",
+  "loai": "trac_nghiem",
+  "de": "Cặp số nào là một nghiệm của bất phương trình $-5x-y>6$?",
+  "lua_chon": [
+   "$\\left(-1;1\\right)$.",
+   "$\\left(4;-2\\right)$.",
+   "$\\left(-3;0\\right)$.",
+   "$\\left(1;3\\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Thay lần lượt tọa độ các điểm vào vế trái của bất phương trình $-5x-y>6$:\n- Với $\\left(-1;1\\right)$, ta có $-5\\cdot \\left(-1\\right)-1=4<6$ (không thỏa mãn).\n- Với $\\left(4;-2\\right)$, ta có $-5\\cdot 4-\\left(-2\\right)=-18<6$ (không thỏa mãn).\n- Với $\\left(-3;0\\right)$, ta có $-5\\cdot \\left(-3\\right)-0=15>6$ (thỏa mãn).\n- Với $\\left(1;3\\right)$, ta có $-5\\cdot 1-3=-8<6$ (không thỏa mãn).\nVậy cặp số $\\left(-3;0\\right)$ là một nghiệm của bất phương trình đã cho.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020102078",
+  "loai": "trac_nghiem",
+  "de": "Cho bất phương trình $2x+3y<5$. Khẳng định sau đây là đúng?",
+  "lua_chon": [
+   "Bất phương trình có nghiệm duy nhất.",
+   "Bất phương trình có tập nghiệm là $\\left(-\\infty;5\\right)$.",
+   "Bất phương trình có vô số nghiệm.",
+   "Bất phương trình vô nghiệm."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Bất phương trình bậc nhất hai ẩn $2x+3y<5$ có miền nghiệm là nửa mặt phẳng bờ là đường thẳng $2x+3y=5$ không kể bờ và chứa gốc toạ độ $O\\left(0;0\\right)$.\nDo đó, bất phương trình có vô số nghiệm (mỗi cặp số $\\left(x;y\\right)$ biểu diễn một điểm thuộc miền nghiệm đều là một nghiệm của bất phương trình).\nVậy bất phương trình có vô số nghiệm.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020101077",
+  "loai": "trac_nghiem",
+  "de": "Trong các bất phương trình sau, bất phương trình nào là bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$3x-5y+7z\\le 0$.",
+   "$9x^{2}+11y>13$.",
+   "$15x^{2}+17x-19>0$.",
+   "$21x+23y<25$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Bất phương trình bậc nhất hai ẩn $x,y$ là bất phương trình có dạng tổng quát\n$ax+by<c\\left(hoac ax+by\\le c, ax+by>c, ax+by\\ge c\\right),$\ntrong đó $a,b,c$ là các số thực đã cho ($a,b$ không đồng thời bằng $0$), $x$ và $y$ là các ẩn.\n- Bất phương trình $3x-5y+7z\\le 0$ là bất phương trình bậc nhất ba ẩn $x,y,z$.\n- Bất phương trình $9x^{2}+11y>13$ là bất phương trình bậc hai hai ẩn.\n- Bất phương trình $15x^{2}+17x-19>0$ là bất phương trình bậc hai một ẩn $x$.\n- Bất phương trình $21x+23y<25$ có dạng $ax+by<c$ với $a=21,b=23,c=25$, nên là bất phương trình bậc nhất hai ẩn.\nVậy bất phương trình bậc nhất hai ẩn là $21x+23y<25$.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Nhận diện bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020202105",
+  "loai": "trac_nghiem",
+  "de": "Miền không bị gạch kể cả bờ trong hình vẽ dưới là miền nghiệm của hệ bất phương trình",
+  "lua_chon": [
+   "$\\begin{cases} x+2y\\ge 2 \\\\ y\\ge -1 \\end{cases}$.",
+   "$\\begin{cases} x+2y>2 \\\\ y>-1 \\end{cases}$.",
+   "$\\begin{cases} x+2y<2 \\\\ y>-1 \\end{cases}$.",
+   "$\\begin{cases} x+2y\\le 2 \\\\ y\\ge -1 \\end{cases}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Trên hình vẽ có hai đường thẳng làm bờ của miền nghiệm.\nĐường thẳng thứ nhất đi qua điểm $B\\left(0;1\\right)$ và điểm $A\\left(4;-1\\right)$. Đường thẳng này có hệ số góc $k=\\dfrac{-1-1}{4-0}=-\\dfrac{1}{2}$ nên có phương trình $y=-\\dfrac{1}{2}x+1$, hay $x+2y=2$.\nĐường thẳng thứ hai đi qua $C\\left(0;-1\\right)$ và song song với trục hoành nên có phương trình $y=-1$.\nPhần bị gạch nằm về phía trên đường thẳng $x+2y=2$, ứng với $x+2y>2$. Do đó miền không bị gạch (kể cả bờ) ứng với $x+2y\\le 2$.\nPhần bị gạch nằm về phía dưới đường thẳng $y=-1$, ứng với $y<-1$. Do đó miền không bị gạch (kể cả bờ) ứng với $y\\ge -1$.\nVậy miền không bị gạch là miền nghiệm của hệ $\\begin{cases} x+2y\\le 2 \\\\ y\\ge -1 \\end{ca …",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020102058",
+  "loai": "trac_nghiem",
+  "de": "Điểm nào sau đây thuộc miền nghiệm của bất phương trình $2x-y+1<0$?",
+  "lua_chon": [
+   "$\\left(0;-1\\right)$.",
+   "$\\left(2;-1\\right)$.",
+   "$\\left(1;4\\right)$.",
+   "$\\left(1;-5\\right)$."
+  ],
+  "loi_giai": "Thay toạ độ các điểm vào biểu thức $2x-y+1$:\nVới $A\\left(0;-1\\right)$, ta có $2\\cdot 0-\\left(-1\\right)+1=2>0$, suy ra $A$ không thuộc miền nghiệm.\nVới $B\\left(2;-1\\right)$, ta có $2\\cdot 2-\\left(-1\\right)+1=6>0$, suy ra $B$ không thuộc miền nghiệm.\nVới $C\\left(1;4\\right)$, ta có $2\\cdot 1-4+1=-1<0$, suy ra $C$ thuộc miền nghiệm.\nVới $D\\left(1;-5\\right)$, ta có $2\\cdot 1-\\left(-5\\right)+1=8>0$, suy ra $D$ không thuộc miền nghiệm.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020204073",
+  "loai": "tu_luan",
+  "de": "Trong đợt hỗ trợ khắc phục, tặng quà cho người dân vùng lũ lụt ở miền Bắc, một doanh nghiệp cần thuê xe để chở ít nhất $70$ người và $9$ tấn hàng. Nơi thuê xe có hai loại xe A và B, trong đó xe loại A có $10$ chiếc và xe loại B có $10$ chiếc. Một chiếc xe loại A cho thuê với giá $5$ triệu đồng, một chiếc xe loại B cho thuê với giá $3$ triệu đồng. Biết rằng mỗi chiếc xe loại A có thể chở tối đa $10$ người và $0,6$ tấn hàng; mỗi chiếc xe loại B có thể chở tối đa $5$ người và $1,5$ tấn hàng. Nếu là chủ doanh nghiệp, em hãy đề xuất phương án để chi phí thuê xe là ít nhất?",
+  "loi_giai": "Gọi $x,y$ lần lượt là số lượng xe loại A và xe loại B mà doanh nghiệp cần thuê ($x,y\\in \\mathbb{N}$ và $0\\le x\\le 10,0\\le y\\le 10$).\nSố người chở được là $10x+5y$ (người), do cần chở ít nhất $70$ người nên ta có:\n$10x+5y\\ge 70\\Leftrightarrow 2x+y\\ge 14.$\nKhối lượng hàng chở được là $0,6x+1,5y$ (tấn), do cần chở ít nhất $9$ tấn hàng nên ta có:\n$0,6x+1,5y\\ge 9\\Leftrightarrow 2x+5y\\ge 30.$\nTổng chi phí thuê xe là $F\\left(x;y\\right)=5x+3y$ (triệu đồng).\nBài toán trở thành tìm giá trị nhỏ nhất của biểu thức $F\\left(x;y\\right)=5x+3y$ trên miền nghiệm của hệ bất phương trình:\n$\\begin{cases} 0\\le x\\le 10 \\\\ 0\\le y\\le 10 \\\\ 2x+y\\ge 14 \\\\ 2x+5y\\ge 30. \\end{cases}$\nMiền nghiệm của hệ là phần mặt phẳng  …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110020102110",
+  "loai": "trac_nghiem",
+  "de": "Trong các cặp số $\\left(x;y\\right)$ sau đây, cặp nào là nghiệm của bất phương trình $2x+y<1$?",
+  "lua_chon": [
+   "$\\left(2;-1\\right)$.",
+   "$\\left(0;1\\right)$.",
+   "$\\left(-2;1\\right)$.",
+   "$\\left(3;7\\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Thay lần lượt các cặp số $\\left(x;y\\right)$ vào vế trái của bất phương trình $2x+y<1$:\n• Với cặp $\\left(2;-1\\right)$: $2\\cdot 2+\\left(-1\\right)\\text{=3≮1}$ (không thỏa mãn).\n• Với cặp $\\left(0;1\\right)$: $\\text{2\\cdot 0+1=1≮1}$ (không thỏa mãn).\n• Với cặp $\\left(-2;1\\right)$: $2\\cdot \\left(-2\\right)+1=-3<1$ (thỏa mãn).\n• Với cặp $\\left(3;7\\right)$: $\\text{2\\cdot 3+7=13≮1}$ (không thỏa mãn).\nVậy cặp số $\\left(-2;1\\right)$ là nghiệm của bất phương trình đã cho.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020102125",
+  "loai": "trac_nghiem",
+  "de": "Miền nghiệm của bất phương trình $x+y\\ge 2$là phần không bị gạch trong hình vẽ nào sau đây?",
+  "lua_chon": [
+   ".",
+   ".",
+   ".",
+   "."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng $d :x+y=2$ đi qua hai điểm $\\left(2;0\\right)$ và $\\left(0;2\\right)$.\nThay toạ độ điểm $O\\left(0;0\\right)$ vào biểu thức $x+y$, ta được $0+0=0<2$.\nDo đó, điểm $O\\left(0;0\\right)$ không thuộc miền nghiệm của bất phương trình $x+y\\ge 2$.\nVậy miền nghiệm cần tìm là nửa mặt phẳng bờ $d$ không chứa gốc toạ độ $O$ (phần chứa $O$ bị gạch).",
+  "co_hinh": true,
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020101058",
+  "loai": "trac_nghiem",
+  "de": "Bất phương trình nào sau đây là bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$x+y\\ge 0$.",
+   "$x^{2}+y^{2}<2$.",
+   "$x+y^{2}\\ge 0$.",
+   "$2x^{2}+3y>0$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Bất phương trình bậc nhất hai ẩn $x,y$ là bất phương trình có dạng tổng quát là\n$\\text{ax+by\\le c}\\left(hoac ax+by<c, ax+by\\ge c, ax+by>c\\right),$\ntrong đó $a,b,c$ là những số thực đã cho, $a$ và $b$ không đồng thời bằng $0$.\nDo đó, $x+y\\ge 0$ là bất phương trình bậc nhất hai ẩn (với $a=1$, $b=1$, $c=0$).",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Nhận diện bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020202090",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (không chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau?",
+  "lua_chon": [
+   "$\\begin{cases} x-y<0 \\\\ 2x-y>1 \\end{cases}$.",
+   "$\\begin{cases} x-y<0 \\\\ 2x-y<1 \\end{cases}$.",
+   "$\\begin{cases} x-y\\ge 0 \\\\ 2x-y\\ge 1 \\end{cases}$.",
+   "$\\begin{cases} x-y>0 \\\\ 2x-y>1 \\end{cases}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Đường thẳng thứ nhất $d_{1}$ đi qua gốc tọa độ $O\\left(0;0\\right)$ và điểm $\\left(1;1\\right)$ có phương trình $x-y=0$.\nĐường thẳng thứ hai $d_{2}$ đi qua điểm $\\left(0;-1\\right)$ và $\\left(1;1\\right)$ có phương trình $2x-y-1=0\\Leftrightarrow 2x-y=1$.\nLấy điểm $M\\left(2;0\\right)$ thuộc miền không tô đậm, ta thấy:\n$2-0=2>0$\nvà\n$2\\cdot 2-0=4>1.$\nDo đó, điểm $M\\left(2;0\\right)$ thỏa mãn hệ bất phương trình\n$\\begin{cases} x-y>0 \\\\ 2x-y>1. \\end{cases}$\nVì miền nghiệm không chứa biên nên các bất phương trình không có dấu bằng.\nVậy hình vẽ biểu diễn tập nghiệm của hệ bất phương trình $\\begin{cases} x-y>0 \\\\ 2x-y>1. \\end{cases}$",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020202094",
+  "loai": "tra_loi_ngan",
+  "de": "Biết rằng miền nghiệm của hệ bất phương trình $\\begin{cases} x+y-4\\le 0 \\\\ x-y+4\\ge 0 \\\\ y\\ge 0 \\\\ y-\\dfrac{a}{b}\\le 0 \\end{cases}$ (với $a,b\\in \\mathbb{N}^{∗}$ và $\\dfrac{a}{b}$ tối giản) là một miền tứ giác có diện tích bằng $\\dfrac{80}{9}$. Tính tổng $a+b$.",
+  "dap_an": "7",
+  "loi_giai": "Đặt $k=\\dfrac{a}{b}>0$. Hệ bất phương trình đã cho tương đương với $\\begin{cases} y\\le 4-x \\\\ y\\le x+4 \\\\ y\\ge 0 \\\\ y\\le k \\end{cases}$.\nNếu bỏ tạm điều kiện $y\\le k$ thì miền nghiệm là tam giác có ba đỉnh $\\left(-4;0\\right)$, $\\left(4;0\\right)$ và $\\left(0;4\\right)$, trong đó $\\left(0;4\\right)$ là giao điểm của hai đường thẳng $y=x+4$ và $y=4-x$.\nCắt tam giác đó bởi điều kiện $y\\le k$ với $0<k<4$ ta được một hình thang có đáy lớn nằm trên trục hoành dài $8$, đáy nhỏ nằm trên đường thẳng $y=k$ dài $\\left(4-k\\right)-\\left(k-4\\right)=8-2k$ và chiều cao bằng $k$. Diện tích hình thang đó là\n$S=\\dfrac{8+\\left(8-2k\\right)}{2}\\cdot k=\\left(8-k\\right)k.$\nTheo giả thiết $S=\\dfrac{80}{9}$ nên\n$\\left(8 …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020204061",
+  "loai": "tra_loi_ngan",
+  "de": "Bạn Lan mang $150 000$ đồng đi nhà sách để mua một số quyển tập và bút. Biết rằng giá một quyển tập là $8 000$ đồng và giá của một cây bút là $6 000$ đồng. Bạn Lan có thể mua được tối đa bao nhiêu quyển tập nếu bạn đã mua $10$ cây bút.",
+  "dap_an": "11",
+  "loi_giai": "Số tiền Lan dùng để mua $10$ cây bút là\n$10\\cdot 6 000=60 000 \\left(dong\\right).$\nSố tiền còn lại để mua tập là\n$150 000-60 000=90 000 \\left(dong\\right).$\nGọi $x$ là số quyển tập Lan có thể mua ($x\\in \\mathbb{N}$). Ta có bất phương trình\n$8 000x\\le 90 000\\Leftrightarrow x\\le \\dfrac{90 000}{8 000}=11,25.$\nVì $x$ là số tự nhiên nên giá trị lớn nhất của $x$ thoả mãn là $11$.\nVậy bạn Lan có thể mua được tối đa $11$ quyển tập.",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110020101078",
+  "loai": "trac_nghiem",
+  "de": "Bất phương trình nào sau đây là bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$x+y\\ge 0$.",
+   "$2x^{2}+3y>0$.",
+   "$x+y^{2}\\ge 0$.",
+   "$x^{2}+y^{2}<2$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Bất phương trình bậc nhất hai ẩn $x,y$ là bất phương trình có dạng tổng quát:\n$\\text{ax+by\\le c}\\left(hoac ax+by<c, ax+by\\ge c, ax+by>c\\right),$\ntrong đó $a,b,c$ là các số thực cho trước ($a$ và $b$ không đồng thời bằng $0$).\nXét các phương án:\n• $x+y\\ge 0$ là bất phương trình bậc nhất hai ẩn với $a=1,b=1,c=0$.\n• $2x^{2}+3y>0$, $x+y^{2}\\ge 0$, $x^{2}+y^{2}<2$ chứa các biến ở bậc hai ($x^{2}$ hoặc $y^{2}$) nên không phải là bất phương trình bậc nhất hai ẩn.\nVậy $x+y\\ge 0$ là bất phương trình bậc nhất hai ẩn.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Nhận diện bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020202044",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau?",
+  "lua_chon": [
+   "$\\begin{cases}x+2y\\le0\\\\3x-y\\ge-3\\end{cases}$",
+   "$\\begin{cases}2x+y\\le0\\\\x-3y\\ge-3\\end{cases}$",
+   "$\\begin{cases}x-2y<0\\\\3x+y>-3\\end{cases}$",
+   "$\\begin{cases}2x-y\\ge0\\\\x+3y\\le-3\\end{cases}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "- Phương trình các đường thẳng biên:\n+ $d_1$ có phương trình $2x+y=0$.\n+ $d_2$ có phương trình $x-3y=-3$.\n- Vì đề bài cho miền nghiệm chứa biên nên ta sử dụng các dấu $\\ge$, $\\le$.\n- Chọn điểm $M(-2;0)$ thuộc miền nghiệm để thử:\n+ Thay $M$ vào $2x+y$: $-4+0=-4\\le0\\Rightarrow2x+y\\le0$.\n+ Thay $M$ vào $x-3y$: $-2-0=-2\\ge-3\\Rightarrow x-3y\\ge-3$.\n- Vậy hệ bất phương trình đúng là B.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020204078",
+  "loai": "tra_loi_ngan",
+  "de": "Một nhà máy dự tính sản xuất hai loại bột cà phê hòa tan (loại I và loại II) từ $15$ tấn cà phê hạt và $5$ tấn hương liệu tổng hợp. Biết để sản xuất một tấn bột cà phê loại I cần $3$ tấn cà phê hạt và $0,5$ tấn hương liệu tổng hợp, khi bán lãi được $18$ triệu đồng. Để sản xuất một tấn bột cà phê loại II cần $2$ tấn cà phê hạt và $1$ tấn hương liệu tổng hợp, khi bán lãi được $14$ triệu đồng. Biết rằng sản phẩm của nhà máy luôn được tiêu thụ hết. Với lượng nguyên liệu như trên, nhà máy có thể thu được số tiền lãi lớn nhất là bao nhiêu triệu đồng?",
+  "dap_an": "97.5",
+  "loi_giai": "Gọi $x,y$ (tấn) lần lượt là khối lượng bột cà phê loại I và loại II mà nhà máy sản xuất ($x\\ge 0,y\\ge 0$).\nKhối lượng cà phê hạt cần dùng là $3x+2y$ (tấn), theo đề bài không vượt quá $15$ tấn nên ta có $3x+2y\\le 15$.\nKhối lượng hương liệu tổng hợp cần dùng là $0,5x+y$ (tấn), không vượt quá $5$ tấn nên $0,5x+y\\le 5\\Leftrightarrow x+2y\\le 10$.\nTổng số tiền lãi thu được là $F\\left(x;y\\right)=18x+14y$ (triệu đồng).\nBài toán trở thành tìm giá trị lớn nhất của $F\\left(x;y\\right)=18x+14y$ trên miền nghiệm của hệ bất phương trình:\n$\\begin{cases} x\\ge 0 \\\\ y\\ge 0 \\\\ 3x+2y\\le 15 \\\\ x+2y\\le 10. \\end{cases}$\nMiền nghiệm của hệ là miền tứ giác $OABC$ (kể cả biên) với tọa độ các đỉnh là: $O\\left(0;0\\right …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110020202039",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (không chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau?",
+  "lua_chon": [
+   "$\\left\\{\\begin{matrix}2x-y>0\\\\x+2y<4\\end{matrix}\\right.$",
+   "$\\left\\{\\begin{matrix}x-2y\\le0\\\\2x+y\\ge4\\end{matrix}\\right.$",
+   "$\\left\\{\\begin{matrix}x+2y<0\\\\2x-y>4\\end{matrix}\\right.$",
+   "$\\left\\{\\begin{matrix}2x+y\\ge0\\\\x-2y\\le4\\end{matrix}\\right.$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Lời giải chi tiết:\n- Phương trình các đường thẳng biên:\n+ $d_1$ có phương trình $2x - y = 0$.\n+ $d_2$ có phương trình $x + 2y = 4$.\n- Vì đề bài cho miền nghiệm không chứa biên nên ta sử dụng các dấu $>, <$.\n- Chọn điểm $M(1;0)$ thuộc miền nghiệm để thử:\n+ Thay $M$ vào $2x - y: 2 - 0 = 2 > 0 \\implies 2x - y > 0$.\n+ Thay $M$ vào $x + 2y: 1 + 0 = 1 < 4 \\implies x + 2y < 4$.\n- Vậy hệ bất phương trình đúng là A.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020201073",
+  "loai": "trac_nghiem",
+  "de": "Hệ bất phương trình nào sau đây là hệ bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$\\begin{cases} 3x+2y<4 \\\\ xy+1>0 \\end{cases}$.",
+   "$\\begin{cases} 2x+y<0 \\\\ -2^{2}y>0 \\end{cases}$.",
+   "$\\begin{cases} x-y^{2}<4 \\\\ x>0 \\end{cases}$.",
+   "$\\begin{cases} x-5y<2 \\\\ \\sqrt{x}-y<1 \\end{cases}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Hệ bất phương trình bậc nhất hai ẩn là hệ gồm hai hay nhiều bất phương trình bậc nhất hai ẩn $x,y$.\n- Hệ $\\begin{cases} 3x+2y<4 \\\\ xy+1>0 \\end{cases}$ chứa biểu thức $xy$ (bậc hai) nên không phải là hệ bất phương trình bậc nhất hai ẩn.\n- Hệ $\\begin{cases} x-y^{2}<4 \\\\ x>0 \\end{cases}$ chứa $y^{2}$ nên không phải là hệ bất phương trình bậc nhất hai ẩn.\n- Hệ $\\begin{cases} x-5y<2 \\\\ \\sqrt{x}-y<1 \\end{cases}$ chứa $\\sqrt{x}$ nên không phải là hệ bất phương trình bậc nhất hai ẩn.\n- Hệ $\\begin{cases} 2x+y<0 \\\\ -2^{2}y>0 \\end{cases}$ gồm hai bất phương trình bậc nhất hai ẩn $x,y$ (vì $-2^{2}y=-4y$).\nVậy hệ bất phương trình bậc nhất hai ẩn là $\\begin{cases} 2x+y<0 \\\\ -2^{2}y>0 \\end{cases}$.",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nhận diện hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020202050",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau?",
+  "lua_chon": [
+   "$\\begin{cases} 3x+2y\\ge 6 \\\\ x+y\\le 1 \\end{cases}$",
+   "$\\begin{cases} 2x-3y<6 \\\\ x+y>1 \\end{cases}$",
+   "$\\begin{cases} 2x+3y\\ge 6 \\\\ x-y\\le 1 \\end{cases}$",
+   "$\\begin{cases} 3x-2y\\le 6 \\\\ 2x-y\\ge 1 \\end{cases}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Lời giải chi tiết:\n- Phương trình các đường thẳng biên:\n+ $d_1$ có phương trình $2x+3y=6$.\n+ $d_2$ có phương trình $x-y=1$.\n- Vì đề bài cho miền nghiệm chứa biên nên ta sử dụng các dấu $\\ge, \\le$.\n- Chọn điểm $M(2;3)$ thuộc miền nghiệm để thử:\n+ Thay $M$ vào $2x+3y$: $4+9=13\\ge 6 \\Rightarrow 2x+3y\\ge 6$.\n+ Thay $M$ vào $x-y$: $2-3=-1\\le 1 \\Rightarrow x-y\\le 1$.\n- Vậy hệ bất phương trình đúng là C.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020204093",
+  "loai": "tu_luan",
+  "de": "1) Biểu diễn miền nghiệm của bất phương trình $x+2y\\le 4$ trên mặt phẳng tọa độ $Oxy$. 2) Một cơ sở sản xuất dùng ba loại nguyên liệu A, B, C để sản xuất ra hai loại sản phẩm X và Y. Để sản xuất $1 kg$ mỗi loại sản phẩm X hoặc Y phải dùng một số nguyên liệu khác nhau. Tổng số kilôgam nguyên liệu mỗi loại mà cơ sở đang có và số kilôgam từng loại nguyên liệu cần thiết để sản xuất ra $1 kg$ sản phẩm mỗi loại được cho trong bảng sau:\n$\\begin{array}{|c|c|c|c|} \\hline \\text{\\multirow2*Loại nguyên liệu} & \\text{Số kilôgam} & \\text{Số kilôgam nguyên liệu} & \\text{Số kilôgam nguyên liệu} \\\\ \\hline & \\text{nguyên liệu} & \\text{cần để sản xuất 1 kg} & \\text{cần để sản xuất 1 kg} \\\\ \\hline & \\text{đang có} & \\text{sản phẩm X} & \\text{sản phẩm Y} \\\\ \\hline \\text{A} & 10 & 2 & 2 \\\\ \\hline \\text{B} & 4 & 0 & 2 \\\\ \\hline \\text{C} & 12 & 2 & 4 \\\\ \\hline \\end{array}$\nBiết $1 kg$ sản phẩm X có lãi $4$ triệu đồng và $1 kg$ sản phẩm Y có lãi $5$ triệu đồng. a) Gọi $x,y$ (kg) lần lượt là khối lượng các sản phẩm X và Y mà cơ sở lên kế hoạch sản xuất. Hãy lập hệ bất phương trình biểu diễn mối quan hệ giữa $x$ và $y$ theo các dữ kiện nêu trên. b) Cơ sở sản xuất trên thu được số tiền lãi cao nhất bằng bao nhiêu?",
+  "loi_giai": "1) Vẽ đường thẳng $d :x+2y=4$ đi qua hai điểm $\\left(4;0\\right)$ và $\\left(0;2\\right)$.\nChọn gốc tọa độ $O\\left(0;0\\right)$ không thuộc đường thẳng $d$. Thay tọa độ điểm $O\\left(0;0\\right)$ vào vế trái của bất phương trình, ta được\n$0+2\\cdot 0=0\\le 4$\n(mệnh đề đúng)\n$.$\nDo đó, miền nghiệm của bất phương trình $x+2y\\le 4$ là nửa mặt phẳng bờ $d$ chứa gốc tọa độ $O\\left(0;0\\right)$ (kể cả bờ $d$).\n2) a) Gọi $x,y$ (kg) lần lượt là khối lượng các sản phẩm X và Y mà cơ sở lên kế hoạch sản xuất ($x\\ge 0,y\\ge 0$).\nTheo giả thiết: - Tổng số kilôgam nguyên liệu loại A cần dùng là $2x+2y\\le 10\\Leftrightarrow x+y\\le 5$.\n- Tổng số kilôgam nguyên liệu loại B cần dùng là $0x+2y\\le 4\\Leftrightarrow y\\le 2$ …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110000000145",
+  "loai": "tra_loi_ngan",
+  "de": "Biết rằng tập xác định của hàm số $f\\left(x\\right)=\\dfrac{5x-1}{\\sqrt{2x-4}}+\\sqrt{5-x}$ có dạng nửa khoảng $(m;n]$, với $m,n$ là các hằng số dương. Giá trị của biểu thức $2m+n$ bằng bao nhiêu?",
+  "dap_an": "9",
+  "loi_giai": "Biểu thức $f\\left(x\\right)=\\dfrac{5x-1}{\\sqrt{2x-4}}+\\sqrt{5-x}$ có nghĩa khi và chỉ khi\n$\\begin{cases} 2x-4>0 \\\\ 5-x\\ge 0 \\end{cases}$\n$\\Leftrightarrow \\begin{cases} x>2 \\\\ x\\le 5 \\end{cases}$\nDo đó tập xác định của hàm số là $D=(2;5]$.\nSo với dạng $(m;n]$ ta được $m=2$ và $n=5$.\nVậy $2m+n=2\\cdot 2+5=9$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020202069",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (không chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau?",
+  "lua_chon": [
+   "$\\{ \\begin{matrix} 2x-y<0 \\\\ x+y<3 \\\\ y>0 \\end{matrix}$",
+   "$\\{ \\begin{matrix} 2x-y>0 \\\\ x+y>3 \\\\ y>0 \\end{matrix}$",
+   "$\\{ \\begin{matrix} 2x-y>0 \\\\ x+y<3 \\\\ y<0 \\end{matrix}$",
+   "$\\{ \\begin{matrix} 2x-y>0 \\\\ x+y<3 \\\\ y>0 \\end{matrix}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "- Phương trình 3 đường biên giới hạn miền:\n+ $d_1$: Qua $(0;0), (1;2) \\Rightarrow 2x-y=0$.\n+ $d_2$: Qua $(3;0), (1;2) \\Rightarrow x+y=3$.\n+ $d_3$: Trục $Ox \\Rightarrow y=0$.\n- Vì đề bài cho miền nghiệm không chứa biên nên ta sử dụng các dấu $>, <$.\n- Chọn điểm $M(2;0.5)$ thuộc miền nghiệm để thử:\n+ Biểu thức $2x-y = 4-0.5 = 3.5 > 0 \\Rightarrow 2x-y > 0$.\n+ Biểu thức $x+y = 2+0.5 = 2.5 < 3 \\Rightarrow x+y < 3$.\n+ Tọa độ $y=0.5 > 0 \\Rightarrow y > 0$.\n- Đối chiếu đáp án, ta chọn hệ D.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020202100",
+  "loai": "trac_nghiem",
+  "de": "Phần không gạch chéo ở hình sau (không kể biên) biểu diễn miền nghiệm của hệ bất phương trình nào?",
+  "lua_chon": [
+   "$\\begin{cases} x>0 \\\\ 3x+2y>-6 \\end{cases}$.",
+   "$\\begin{cases} y>0 \\\\ 3x+2y<-6 \\end{cases}$.",
+   "$\\begin{cases} x>0 \\\\ 3x+2y<6 \\end{cases}$.",
+   "$\\begin{cases} y>0 \\\\ 3x+2y<6 \\end{cases}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Đường thẳng xiên trong hình đi qua hai điểm $\\left(2;0\\right)$ và $\\left(0;3\\right)$ nên có phương trình theo đoạn chắn $\\dfrac{x}{2}+\\dfrac{y}{3}=1$, tức là $3x+2y=6$.\nPhần mặt phẳng nằm phía dưới trục hoành bị gạch chéo, nên miền nghiệm phải nằm phía trên trục hoành và không kể biên, ứng với bất phương trình $y>0$.\nPhần mặt phẳng nằm về phía bên kia đường thẳng $3x+2y=6$ (không chứa gốc toạ độ) cũng bị gạch chéo, nên miền nghiệm nằm về phía chứa gốc $O$. Thay $O\\left(0;0\\right)$ ta được $3\\cdot 0+2\\cdot 0=0<6$, ứng với bất phương trình $3x+2y<6$.\nVậy phần không gạch chéo (không kể biên) là miền nghiệm của hệ $\\begin{cases} y>0 \\\\ 3x+2y<6 \\end{cases}$.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020202074",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau?",
+  "lua_chon": [
+   "$\\begin{cases}x \\le 1 \\\\ x - y \\le 0 \\\\ x + y \\le 4\\end{cases}$",
+   "$\\begin{cases}x \\ge 1 \\\\ x - y \\ge 0 \\\\ x + y \\ge 4\\end{cases}$",
+   "$\\begin{cases}x \\ge 1 \\\\ x - y \\le 0 \\\\ x + y \\ge 4\\end{cases}$",
+   "$\\begin{cases}x \\ge 1 \\\\ x - y \\le 0 \\\\ x + y \\le 4\\end{cases}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "- Phương trình 3 đường biên giới hạn miền:\n+ $d_1$: Đường $x = 1$.\n+ $d_2$: Qua $(1;1), (2;2) \\Rightarrow x - y = 0$.\n+ $d_3$: Qua $(1;3), (2;2) \\Rightarrow x + y = 4$.\n- Vì đề bài cho miền nghiệm chứa biên nên ta sử dụng các dấu $\\ge, \\le$.\n- Chọn điểm $M(1.5;2)$ thuộc miền nghiệm để thử:\n+ Tọa độ $x = 1.5 \\ge 1 \\Rightarrow x \\ge 1$.\n+ Biểu thức $x - y = 1.5 - 2 = -0.5 \\le 0 \\Rightarrow x - y \\le 0$.\n+ Biểu thức $x + y = 1.5 + 2 = 3.5 \\le 4 \\Rightarrow x + y \\le 4$.\n- Đối chiếu đáp án, ta chọn hệ D.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020204058",
+  "loai": "tra_loi_ngan",
+  "de": "Trong một cuộc thi pha chế, mỗi đội chơi được sử dụng tối đa $24 g$ hương liệu, $9$ lít nước và $210 g$ đường để pha chế hai loại nước A và B. Để pha chế $1$ lít nước A cần $30 g$ đường, $1$ lít nước và $1 g$ hương liệu, để pha chế $1$ lít nước B cần $10 g$ đường, $1$ lít nước và $4 g$ hương liệu. Mỗi lít nước A nhận được $60$ điểm thưởng, mỗi lít nước B nhận được $80$ điểm thưởng. Hỏi số điểm thưởng cao nhất là bao nhiêu?\n\\loigiai{ Gọi $x,y$ lần lượt là số lít nước loại A và loại B mà đội chơi cần pha chế ($x\\ge 0,y\\ge 0$).\nĐể pha chế $x$ lít nước loại A và $y$ lít nước loại B, lượng nguyên liệu cần dùng là:\n- Lượng đường: $30x+10y$ (g).\n- Lượng nước: $x+y$ (lít).\n- Lượng hương liệu: $x+4y$ (g).\nTheo đề bài, ta có hệ bất phương trình ràng buộc:\n$\\begin{cases} 30x+10y\\le 210 \\\\ x+y\\le 9 \\\\ x+4y\\le 24 \\\\ x\\ge 0 \\\\ y\\ge 0 \\end{cases}$\n$\\Leftrightarrow \\begin{cases} 3x+y\\le 21 \\\\ x+y\\le 9 \\\\ x+4y\\le 24 \\\\ x\\ge 0 \\\\ y\\ge 0. \\end{cases}$\nTổng số điểm thưởng nhận được là\n$F\\left(x;y\\right)=60x+80y.$\nMiền nghiệm của hệ bất phương trình là miền ngũ giác $OABCD$ (kể cả biên) với tọa độ các đỉnh:\n- $O\\left(0;0\\right)$.\n- $A\\left(7;0\\right)$ là giao điểm của đường thẳng $3x+y=21$ với trục hoành $y=0$.\n- $B\\left(6;3\\right)$ là nghiệm của hệ phương trình $\\begin{cases} 3x+y=21 \\\\ x+y=9. \\end{cases}$\n- $C\\left(4;5\\right)$ là nghiệm của hệ phương trình $\\begin{cases} x+y=9 \\\\ x+4y=24. \\end{cases}$\n- $D\\left(0;6\\right)$ là giao điểm của đường thẳng $x+4y=24$ với trục tung $x=0$.\nBiểu thức $F …",
+  "dap_an": "640",
+  "loi_giai": "Gọi $x,y$ lần lượt là số lít nước loại A và loại B mà đội chơi cần pha chế ($x\\ge 0,y\\ge 0$).\nĐể pha chế $x$ lít nước loại A và $y$ lít nước loại B, lượng nguyên liệu cần dùng là:\n- Lượng đường: $30x+10y$ (g).\n- Lượng nước: $x+y$ (lít).\n- Lượng hương liệu: $x+4y$ (g).\nTheo đề bài, ta có hệ bất phương trình ràng buộc:\n$\\begin{cases} 30x+10y\\le 210 \\\\ x+y\\le 9 \\\\ x+4y\\le 24 \\\\ x\\ge 0 \\\\ y\\ge 0 \\end{cases}$\n$\\Leftrightarrow \\begin{cases} 3x+y\\le 21 \\\\ x+y\\le 9 \\\\ x+4y\\le 24 \\\\ x\\ge 0 \\\\ y\\ge 0. \\end{cases}$\nTổng số điểm thưởng nhận được là\n$F\\left(x;y\\right)=60x+80y.$\nMiền nghiệm của hệ bất phương trình là miền ngũ giác $OABCD$ (kể cả biên) với tọa độ các đỉnh:\n- $O\\left(0;0\\right)$.\n- $A\\left( …",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110000000305",
+  "loai": "tra_loi_ngan",
+  "de": "Biết cặp nghiệm $\\left(x;y\\right)$ thỏa mãn hệ bất phương trình: $\\begin{cases} x-y\\le 6 \\\\ x\\ge 2 \\\\ x+y\\le 4 \\end{cases}$. Giá trị nhỏ nhất của biểu thức $F=3y-2x$ bằng bao nhiêu?",
+  "dap_an": "-16",
+  "loi_giai": "Miền nghiệm của hệ bất phương trình là miền tam giác $ABC$ (kể cả biên).\nToạ độ các đỉnh của miền nghiệm được xác định như sau: - Điểm $A\\left(2;2\\right)$ là giao điểm của hai đường thẳng $x=2$ và $x+y=4$.\n- Điểm $B\\left(2;-4\\right)$ là giao điểm của hai đường thẳng $x=2$ và $x-y=6$.\n- Điểm $C\\left(5;-1\\right)$ là nghiệm của hệ $\\begin{cases} x-y=6 \\\\ x+y=4 \\end{cases}$.\nVì $F\\left(x;y\\right)=3y-2x$ là biểu thức bậc nhất hai ẩn và miền nghiệm là đa giác lồi đóng nên $F$ đạt giá trị nhỏ nhất tại một trong các đỉnh của miền.\nTính giá trị của $F$ tại các đỉnh: - $F\\left(A\\right)=3\\cdot 2-2\\cdot 2=2$.\n- $F\\left(B\\right)=3\\cdot \\left(-4\\right)-2\\cdot 2=-16$.\n- $F\\left(C\\right)=3\\cdot \\left(-1\\rig …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000093",
+  "loai": "trac_nghiem",
+  "de": "Tập xác định của hàm số $y=\\sqrt{4-x}+\\sqrt{x-2}$ là",
+  "lua_chon": [
+   "$D=\\{2;4\\}$.",
+   "$D=\\left[2;4\\right]$.",
+   "$D=\\left(2;4\\right)$.",
+   "$D=\\left(-\\infty;2\\right)\\cup \\left(4;+\\infty \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Hàm số $y=\\sqrt{4-x}+\\sqrt{x-2}$ xác định khi và chỉ khi\n$\\begin{cases} 4-x\\ge 0 \\\\ x-2\\ge 0 \\end{cases}\\Leftrightarrow \\begin{cases} x\\le 4 \\\\ x\\ge 2 \\end{cases}\\Leftrightarrow 2\\le x\\le 4.$\nVậy tập xác định của hàm số là $D=\\left[2;4\\right]$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020202071",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (không chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau? [hình]",
+  "lua_chon": [
+   "$\\left\\{\\begin{matrix}x-y>1\\\\x+y<-1\\\\y>-3\\end{matrix}\\right.$",
+   "$\\left\\{\\begin{matrix}x-y<1\\\\x+y>-1\\\\y>-3\\end{matrix}\\right.$",
+   "$\\left\\{\\begin{matrix}x-y>1\\\\x+y<-1\\\\y<-3\\end{matrix}\\right.$",
+   "$\\left\\{\\begin{matrix}x+y>1\\\\x-y<-1\\\\y>-3\\end{matrix}\\right.$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "- Phương trình 3 đường biên giới hạn miền:\n+ $d_1$: Qua $(-2; -3)$, $(0; -1) \\Rightarrow x-y=1$.\n+ $d_2$: Qua $(2; -3)$, $(0; -1) \\Rightarrow x+y=-1$.\n+ $d_3$: Đường $y=-3$.\n- Vì đề bài cho miền nghiệm không chứa biên nên ta sử dụng các dấu $>, <$.\n- Chọn điểm $M(0; -2)$ thuộc miền nghiệm để thử:\n+ Biểu thức $x-y=0-(-2)=2>1 \\Rightarrow x-y>1$.\n+ Biểu thức $x+y=0+(-2)=-2<-1 \\Rightarrow x+y<-1$.\n+ Tọa độ $y=-2>-3 \\Rightarrow y>-3$.\n- Đối chiếu đáp án, ta chọn hệ A.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020204009",
+  "loai": "tra_loi_ngan",
+  "de": "Một bãi xe đậu xe ô tô kinh doanh dịch vụ giữ xe qua đêm có diện tích là $200\\ \\mathrm{m^2}$ (không tính phần diện tích lối đi cho xe ra vào). Biết rằng mỗi xe ô tô $7$ chỗ ngồi cần diện tích $10\\ \\mathrm{m^2}$ và mỗi chiếc xe ô tô loại $16$ chỗ ngồi cần diện tích $20\\ \\mathrm{m^2}$. Chi phí gửi xe mỗi đêm với xe ô tô loại $7$ chỗ ngồi là $150$ nghìn đồng và loại xe $16$ chỗ ngồi là $200$ nghìn đồng. Bãi đậu xe không thể chứa quá $16$ xe mỗi đêm. Sau mỗi đêm, doanh thu lớn nhất từ việc kinh doanh dịch vụ trên là bao nhiêu nghìn đồng?",
+  "dap_an": "2600",
+  "loi_giai": "Gọi $x$ và $y$ lần lượt là số lượng xe ô tô $7$ chỗ và $16$ chỗ được giữ qua đêm ($x, y \\in \\mathrm{N}$). Theo bài ra, ta có hệ bất phương trình ràng buộc sau:$$\\begin{cases}x+y \\le 16 \\\\ 10x+20y \\le 200 \\\\ x \\ge 0,y \\ge 0 \\end{cases}\\Leftrightarrow \\begin{cases}x+y \\le 16 \\\\ x+2y \\le 20 \\\\ x \\ge 0,y \\ge 0 \\end{cases}$$\nMiền nghiệm của hệ bất phương trình là một đa giác lồi có các đỉnh là $O(0;0)$, $A(16;0)$, $B(12;4)$ và $C(0;10)$.\nHàm mục tiêu là doanh thu từ việc giữ xe: $F(x;y) = 150x+200y$ (nghìn đồng).\nTính giá trị của $F(x;y)$ tại các đỉnh của miền nghiệm:\nTại $O(0;0): F(0;0)=0$.\nTại $A(16;0): F(16;0)=150 \\cdot 16=2400$.\nTại $B(12;4): F(12;4)=150 \\cdot 12+200 \\cdot 4=2600$.\nTại $C(0;1 …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110020104015",
+  "loai": "trac_nghiem",
+  "de": "Bạn Lan mang $150 000$ đồng đi nhà sách để mua một số quyển vở và bút. Biết rằng giá một quyển vở là $8 000$ đồng và giá của một cây bút là $6 000$ đồng. Bạn Lan có thể mua được tối đa bao nhiêu quyển vở nếu bạn đã mua $10$ cây bút.",
+  "lua_chon": [
+   "$10$.",
+   "$9$.",
+   "$11$.",
+   "$12$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Số tiền bạn Lan dùng để mua $10$ cây bút là:\n$10\\cdot 6 000=60 000 \\left(dong\\right).$\nSố tiền còn lại để mua vở là:\n$150 000-60 000=90 000 \\left(dong\\right).$\nGọi $x$ ($x\\in \\mathbb{N}$) là số quyển vở bạn Lan có thể mua.\nSố tiền mua vở không vượt quá số tiền còn lại nên:\n$8 000x\\le 90 000\\Leftrightarrow x\\le \\dfrac{90 000}{8 000}=11,25.$\nVì $x\\in \\mathbb{N}$ nên giá trị lớn nhất của $x$ là $11$.\nVậy bạn Lan có thể mua được tối đa $11$ quyển vở.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Bài toán thực tế về bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020104020",
+  "loai": "trac_nghiem",
+  "de": "Bạn Hoa tiết kiệm được $420$ nghìn đồng. Trong đợt ủng hộ đồng bào bị lũ lụt thiệt hại do bão Yagi vừa qua, Hoa đã ủng hộ $x$ tờ tiền loại $10$ nghìn đồng và $y$ tờ tiền loại $20$ nghìn đồng. Bất phương trình nào dưới đây thể hiện số tờ tiền $10$ nghìn và $20$ nghìn mà bạn Hoa có thể ủng hộ.",
+  "lua_chon": [
+   "$x+2y<420$.",
+   "$x+2y\\le 420$.",
+   "$x+2y\\le 42$.",
+   "$x+2y\\ge 42$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Số tiền ủng hộ từ $x$ tờ tiền loại $10$ nghìn đồng là $10x$ (nghìn đồng).\nSố tiền ủng hộ từ $y$ tờ tiền loại $20$ nghìn đồng là $20y$ (nghìn đồng).\nTổng số tiền bạn Hoa ủng hộ là $10x+20y$ (nghìn đồng).\nVì tổng số tiền ủng hộ không vượt quá số tiền tiết kiệm được ($420$ nghìn đồng) nên ta có bất phương trình:\n$10x+20y\\le 420\\Leftrightarrow x+2y\\le 42.$\nVậy bất phương trình thể hiện số tờ tiền mà bạn Hoa có thể ủng hộ là $x+2y\\le 42$.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Bài toán thực tế về bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020102102",
+  "loai": "trac_nghiem",
+  "de": "Bất phương trình nào sau đây có miền nghiệm là phần không bị gạch như hình vẽ bên?",
+  "lua_chon": [
+   "$x+2y>6$.",
+   "$x+2y>2$.",
+   "$x+2y<2$.",
+   "$x-y>1$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Đường thẳng bờ $d$ đi qua hai điểm $\\left(2;0\\right)$ và $\\left(0;1\\right)$ có phương trình:\n$\\dfrac{x}{2}+\\dfrac{y}{1}=1\\Leftrightarrow x+2y=2.$\nĐường thẳng $d$ được vẽ bằng nét đứt nên bất phương trình không lấy dấu đẳng thức (dạng $>$ hoặc $<$).\nThay toạ độ gốc toạ độ $O\\left(0;0\\right)$ vào biểu thức $x+2y$, ta có $0+2\\cdot 0=0<2$.\nVì điểm $O\\left(0;0\\right)$ nằm trong miền bị gạch (phần bị loại) nên miền nghiệm là nửa mặt phẳng không chứa gốc toạ độ $O\\left(0;0\\right)$ (không kể bờ $d$).\nDo đó, bất phương trình tương ứng là $x+2y>2$.\nVậy chọn đáp án B.",
+  "co_hinh": true,
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020204032",
+  "loai": "tra_loi_ngan",
+  "de": "Một hợp tác xã nông nghiệp dự định sử dụng một khu nhà màng có diện tích tối đa là $750\\ \\mathrm{m^2}$ để trồng hai loại nông sản giá trị cao: Dưa lưới và Cà chua bi. Hợp tác xã đang cân nhắc việc phân bổ diện tích trồng sao cho thu được lợi nhuận cao nhất, dựa trên các điều kiện thực tế sau: + Về nhân công: Để chăm sóc $100\\ \\mathrm{m^2}$ dưa lưới trong một vụ cần $20$ ngày công; đối với cà chua bi là $30$ ngày công. Hợp tác xã chỉ có thể huy động tối đa $180$ ngày công cho vụ mùa này. + Về vốn đầu tư (giống, vật tư): Chi phí đầu tư cho $100\\ \\mathrm{m^2}$ dưa lưới là $30$ triệu đồng; cho cà chua bi là $20$ triệu đồng. Tổng số vốn hợp tác xã có thể giải ngân tối đa là $210$ triệu đồng. + Về lợi nhuận dự kiến: Sau khi thu hoạch, mỗi $100\\ \\mathrm{m^2}$ dưa lưới mang lại mức lợi nhuận $50$ triệu đồng, và mỗi $100\\ \\mathrm{m^2}$ cà chua bi mang lại $40$ triệu đồng. Ban chủ nhiệm hợp tác xã cần quyết định diện tích trồng mỗi loại nông sản để tổng lợi nhuận thu được là lớn nhất, lợi nhuận lớn nhất đó là bao nhiêu triệu đồng?",
+  "dap_an": "360",
+  "loi_giai": "Gọi $x,y$ lần lượt là diện tích trồng dưa lưới và cà chua bi, đơn vị tính là $100\\ \\mathrm{m^2}$ ($x\\ge 0, y\\ge 0$).\nTheo bài ra, ta có hệ bất phương trình ràng buộc: $\\Leftrightarrow\\begin{cases}x\\ge 0\\\\ y\\ge 0\\\\ x+y\\le 7,5\\\\ 2x+3y\\le 18\\\\ 3x+2y\\le 21\\end{cases}$\nMiền nghiệm của hệ bất phương trình là một đa giác lồi có các đỉnh: $A(0;0)$, $B(7;0)$, $C(6;1,5)$, $D(4,5;3)$, $E(0;6)$.\nHàm lợi nhuận là $P(x,y)=50x+40y$ (triệu đồng).\nTính giá trị của hàm $P$ tại các đỉnh: $P(0,0)=0$.\n$P(7,0)=50\\cdot 7+40\\cdot 0=350$.\n$P(6,1,5)=50\\cdot 6+40\\cdot 1,5=300+60=360$.\n$P(4,5;3)=50\\cdot 4,5+40\\cdot 3=225+120=345$.\n$P(0,6)=50\\cdot 0+40\\cdot 6=240$.\nGiá trị lớn nhất là $360$ đạt được tại $x=6, y=1,5$.\nVậ …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110010204082",
+  "loai": "tu_luan",
+  "de": "Một lớp có $40$ học sinh, trong đó có $20$ học sinh thích môn Toán, $5$ học sinh thích cả $2$ môn Toán và Văn, $4$ học sinh không thích cả $2$ môn Toán và Văn. a) Tính số học sinh chỉ thích môn văn. b) Tính số học sinh thích môn văn.",
+  "loi_giai": "Gọi $T$ là tập hợp các học sinh thích môn Toán, $V$ là tập hợp các học sinh thích môn Văn.\nTheo đề bài, ta có $|T|=20$, số học sinh thích cả hai môn là $|T\\cap V|=5$, và số học sinh không thích môn nào trong hai môn là $4$.\nSố học sinh thích ít nhất một trong hai môn Toán hoặc Văn là:\n$|T\\cup V|=40-4=36 \\left(\\text{hoc sinh}\\right).$\na) Số học sinh chỉ thích môn Văn là:\n$|V\\setminus T|=|T\\cup V|-|T|=36-20=16 \\left(\\text{hoc sinh}\\right).$\nb) Số học sinh thích môn Văn là:\n$|V|=|V\\setminus T|+|T\\cap V|=16+5=21 \\left(\\text{hoc sinh}\\right).$\nVậy số học sinh chỉ thích môn Văn là $16$ học sinh và số học sinh thích môn Văn là $21$ học sinh.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán thực tế tập hợp (2 Yếu tố)"
+ },
+ {
+  "ma_cau": "T110020201087",
+  "loai": "trac_nghiem",
+  "de": "Trong các hệ bất phương trình sau, hệ bất phương trình nào là hệ bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$\\begin{cases} 2x+3y>4 \\\\ 2^{3}x+3y^{2}<1 \\end{cases}$.",
+   "$\\begin{cases} x-y\\le 3 \\\\ y<1 \\\\ \\text{x+y\\ge x+xy} \\end{cases}$.",
+   "$\\begin{cases} x+y^{2}\\ge 1 \\\\ 2x+3y<5 \\end{cases}$.",
+   "$\\begin{cases} x\\ge 0 \\\\ 2x+3y<5 \\end{cases}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Hệ bất phương trình bậc nhất hai ẩn là hệ gồm hai hay nhiều bất phương trình bậc nhất hai ẩn.\nXét các phương án đã cho:\n• Hệ $\\begin{cases} 2x+3y>4 \\\\ 2^{3}x+3y^{2}<1 \\end{cases}$ chứa bất phương trình bậc hai $2^{3}x+3y^{2}<1$ nên không phải là hệ bất phương trình bậc nhất hai ẩn.\n• Hệ $\\begin{cases} x-y\\le 3 \\\\ y<1 \\\\ \\text{x+y\\ge x+xy} \\end{cases}$ chứa bất phương trình bậc hai theo hai ẩn (có tích $xy$) nên không phải là hệ bất phương trình bậc nhất hai ẩn.\n• Hệ $\\begin{cases} x+y^{2}\\ge 1 \\\\ 2x+3y<5 \\end{cases}$ chứa bất phương trình bậc hai $x+y^{2}\\ge 1$ nên không phải là hệ bất phương trình bậc nhất hai ẩn.\n• Hệ $\\begin{cases} x\\ge 0 \\\\ 2x+3y<5 \\end{cases}$ gồm hai bất phương trình b …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nhận diện hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020204055",
+  "loai": "tra_loi_ngan",
+  "de": "Một gia đình dự định trồng cà phê và sầu riêng trên diện tích không quá $8 ha$. Nếu trồng cà phê thì cần $20$công và thu được $300$ triệu đồng trên diện tích mỗi ha, nếu trồng sầu riêng thì cần $30$ công và thu được $400$ triệu đồng trên diện tích mỗi ha. Biết rằng tổng số công không quá $180$. Hỏi lợi nhuận thu được cao nhất là bao nhiêu triệu đồng?",
+  "dap_an": "2600",
+  "loi_giai": "Gọi $x,y$ (ha) lần lượt là diện tích trồng cà phê và sầu riêng ($x\\ge 0$, $y\\ge 0$).\nTổng diện tích trồng không quá $8 ha$ nên $x+y\\le 8$.\nTổng số công không quá $180$ công nên $20x+30y\\le 180\\Leftrightarrow 2x+3y\\le 18$.\nTổng lợi nhuận thu được là $F\\left(x,y\\right)=300x+400y$ (triệu đồng).\nBài toán trở thành tìm giá trị lớn nhất của $F\\left(x,y\\right)$ trên miền nghiệm của hệ bất phương trình:\n$\\begin{cases} x\\ge 0 \\\\ y\\ge 0 \\\\ x+y\\le 8 \\\\ 2x+3y\\le 18 \\end{cases}$\nMiền nghiệm của hệ là đa giác $OABC$ với các đỉnh $O\\left(0;0\\right)$, $A\\left(8;0\\right)$, $B\\left(6;2\\right)$ và $C\\left(0;6\\right)$.\nTa tính giá trị của $F\\left(x,y\\right)$ tại các đỉnh:\n• Tại $O\\left(0;0\\right)$: $F=0$.\n• Tại …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110020102087",
+  "loai": "trac_nghiem",
+  "de": "Điểm $A\\left(-1;3\\right)$ thuộc miền nghiệm của bất phương trình nào?",
+  "lua_chon": [
+   "$x+3y<0$.",
+   "$x-3y>0$.",
+   "$-3x+2y-4>0$.",
+   "$2x+y-4>0$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Thay toạ độ điểm $A\\left(-1;3\\right)$ với $x=-1$ và $y=3$ vào từng bất phương trình:\n+ Với bất phương trình $x+3y<0$: ta có $-1+3\\cdot 3=8>0$ (khẳng định sai).\n+ Với bất phương trình $x-3y>0$: ta có $-1-3\\cdot 3=-10<0$ (khẳng định sai).\n+ Với bất phương trình $-3x+2y-4>0$: ta có $-3\\cdot \\left(-1\\right)+2\\cdot 3-4=5>0$ (khẳng định đúng).\n+ Với bất phương trình $2x+y-4>0$: ta có $2\\cdot \\left(-1\\right)+3-4=-3<0$ (khẳng định sai).\nVậy điểm $A\\left(-1;3\\right)$ thuộc miền nghiệm của bất phương trình $-3x+2y-4>0$.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020204047",
+  "loai": "tra_loi_ngan",
+  "de": "Một xưởng cơ khí có hai công nhân là Chiến và Bình. Xưởng sản xuất loại sản phẩm $I$ và $II$. Mỗi sản phẩm $I$ bán lãi 500 nghìn đồng, mỗi sản phẩm $II$ bán lãi 400 nghìn đồng. Để sản xuất được một sản phẩm $I$ thì Chiến phải làm việc trong 3 giờ, Bình phải làm việc trong 1 giờ. Để sản xuất được một sản phẩm $II$ thì Chiến phải làm việc trong 2 giờ, Bình phải làm việc trong 6 giờ. Một người không thể làm được đồng thời hai sản phẩm. Biết rằng trong một tháng Chiến không thể làm việc quá 180 giờ và Bình không thể làm việc quá 220 giờ. Số tiền lãi lớn nhất trong một tháng của xưởng là bao nhiêu triệu đồng?",
+  "dap_an": "32",
+  "loi_giai": "Gọi $x,y$ lần lượt là số lượng sản phẩm $I$ và $II$ xưởng sản xuất trong một tháng ($x,y\\ge 0$).\nLợi nhuận thu được là $P = 500x + 400y$ (nghìn đồng).\nTổng số giờ làm việc của Chiến là $3x + 2y$, điều kiện $3x + 2y \\le 180$.\nTổng số giờ làm việc của Bình là $x + 6y$, điều kiện $x + 6y \\le 220$.\nTa có hệ bất phương trình mô tả các điều kiện ràng buộc:\n$$\\begin{cases} 3x+2y \\le 180 \\\\ x+6y \\le 220 \\\\ x \\ge 0 \\\\ y \\ge 0 \\end{cases}$$\nMiền nghiệm của hệ bất phương trình là một đa giác có các đỉnh là $O(0;0)$, $A(60;0)$, $B(40;30)$ , $C\\left(0;\\dfrac{110}{3}\\right)$.\nTính giá trị của hàm mục tiêu $P$ tại các đỉnh:\nTại $O(0;0)$, $P=0$.\nTại $A(60;0)$, $P=500\\cdot 60+0=30000$.\nTại $B(40;30)$, $P=500 …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110010101079",
+  "loai": "tra_loi_ngan",
+  "de": "Cho mệnh đề $P :$ \" $\\forall x\\in \\mathbb{N}^{∗},x<100$\". Có bao nhiêu giá trị của $x$ chẵn để mệnh đề $P$ đúng?",
+  "dap_an": "49",
+  "loi_giai": "Mệnh đề chứa biến $P\\left(x\\right)$ đúng khi $x\\in \\mathbb{N}^{∗}$ và $x<100$.\nVì $x$ là số chẵn nên $x\\in \\{2;4;6;\\dots;98\\}$.\nSố giá trị chẵn của $x$ thỏa mãn là\n$\\dfrac{98-2}{2}+1=49.$\nVậy có $49$ giá trị của $x$ chẵn để mệnh đề đúng.",
+  "nhan_cu": "Mệnh đề › Nhận diện, xét tính đúng sai của mệnh đề. Mệnh đề chứa biến"
+ },
+ {
+  "ma_cau": "T110000000210",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị lớn nhất của biểu thức $f\\left(x,y\\right)=x+3y$ với điều kiện $\\begin{cases} 0\\le y\\le 4 \\\\ 0\\le x \\\\ x-y-1\\le 0 \\\\ x+2y-10\\le 0 \\end{cases}$.",
+  "dap_an": "14",
+  "loi_giai": "Miền nghiệm của hệ bất phương trình là phần không bị gạch trong hình vẽ, đó là miền ngũ giác $OABCD$ (kể cả biên).\nToạ độ các đỉnh của miền nghiệm được xác định như sau: - $O\\left(0;0\\right)$ là giao điểm của hai trục toạ độ $x=0$ và $y=0$.\n- $A\\left(1;0\\right)$ là giao điểm của đường thẳng $x-y=1$ và trục hoành $y=0$.\n- $B\\left(4;3\\right)$ là nghiệm của hệ phương trình $\\begin{cases} x-y=1 \\\\ x+2y=10. \\end{cases}$\n- $C\\left(2;4\\right)$ là nghiệm của hệ phương trình $\\begin{cases} x+2y=10 \\\\ y=4. \\end{cases}$\n- $D\\left(0;4\\right)$ là giao điểm của đường thẳng $y=4$ và trục tung $x=0$.\nBiểu thức bậc nhất hai ẩn $f\\left(x,y\\right)=x+3y$ đạt giá trị lớn nhất tại một trong các đỉnh của đa giác m …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020201071",
+  "loai": "trac_nghiem",
+  "de": "Hệ bất phương trình nào sau đây là hệ bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$\\begin{cases} x+y^{2}<0 \\\\ y-x>1 \\end{cases}$.",
+   "$\\begin{cases} x+\\dfrac{1}{y}<0 \\\\ y\\ge 0 \\end{cases}$.",
+   "$\\begin{cases} \\dfrac{2}{3}x+\\dfrac{1}{4}y<3 \\\\ 4x+3y<1 \\end{cases}$.",
+   "$\\begin{cases} x+y+z<0 \\\\ y<0 \\end{cases}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Hệ bất phương trình bậc nhất hai ẩn $x,y$ là hệ gồm các bất phương trình có dạng $ax+by<c$ (hoặc $\\le,>,\\ge$) với $a,b$ không đồng thời bằng $0$.\nXét các phương án:\n- Hệ ở phương án thứ nhất chứa $y^{2}$ (bậc hai) nên không phải hệ bậc nhất.\n- Hệ ở phương án thứ hai chứa $\\dfrac{1}{y}$ (không phải đa thức bậc nhất) nên không phải.\n- Hệ ở phương án thứ tư chứa ba ẩn $x,y,z$ nên không phải.\n- Hệ ở phương án thứ ba là $\\begin{cases} \\dfrac{2}{3}x+\\dfrac{1}{4}y<3 \\\\ 4x+3y<1 \\end{cases}$ chỉ chứa $x,y$ bậc một, nên đây là hệ bất phương trình bậc nhất hai ẩn.",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nhận diện hệ bất phương trình bậc nhất 2 ẩn"
+ }
+]

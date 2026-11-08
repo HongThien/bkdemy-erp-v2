@@ -591,7 +591,20 @@ function iconMoi(id) {
 }
 
 // ---------- CÂY "BÔNG XÙ" kiểu Hay Day: tán nhiều khối tròn đổ bóng mịn, dưới tối trên sáng ----------
-const LA = { tron: [0x5fbf45, 0x4fae3a, 0x74cf52, 0x66c24a], cao: [0x4fae3a, 0x3f9e36, 0x5fbf45], thong: [0x2f8f4a, 0x3a9f52, 0x2a8044], bui: [0x5cbf42, 0x4aae36, 0x6fd24e] };
+// Thùy 03/11 "cây hơi xấu, đổi nhiều mẫu hơn": 4 kiểu cùng 1 màu xanh trùng màu cỏ ⇒ 9 kiểu dáng khác hẳn nhau (tròn · cao · bàng tầng ·
+// bạch dương · bách · thông · tre · dừa · bụi), mỗi kiểu 3 bộ màu (xanh đậm · xanh vàng · xanh lam) tách khỏi nền cỏ, mỗi cây lệch màu riêng (rungBong).
+const LA = { tron: [0x5fbf45, 0x4fae3a, 0x74cf52, 0x66c24a], cao: [0x4fae3a, 0x3f9e36, 0x5fbf45], thong: [0x2f8f4a, 0x3a9f52, 0x2a8044], bui: [0x5cbf42, 0x4aae36, 0x6fd24e] }; // cây trồng / bụi vườn
+const LAR = { // rừng quanh trại
+  tron: [[0x3f9a3c, 0x358a35, 0x4ba944, 0x58b44a], [0x6fae32, 0x5f9e2c, 0x7fbe3c, 0x8cc840], [0x2f8a55, 0x287c4c, 0x38995f, 0x44a668]],
+  cao: [[0x3a9038, 0x2f8031, 0x47a042], [0x5f9e30, 0x548f2a, 0x6fae38], [0x2a8050, 0x237245, 0x348f5a]],
+  tang: [[0x4a9a34, 0x3d8a2e, 0x58aa3c], [0x6aa830, 0x5c982a, 0x78b83a], [0x3a8a48, 0x30793e, 0x469a52]],
+  bach: [[0x88bc3a, 0x78ac32, 0x98ca46], [0xa2c242, 0x92b23a, 0xb0ce50], [0x74b046, 0x66a03c, 0x84be52]],
+  bachTung: [[0x2c7a44, 0x24693a, 0x358a4e], [0x3a7f3a, 0x316f32, 0x448f44], [0x22704a, 0x1c6140, 0x2a8054]],
+  thong: [[0x2a7a48, 0x328a50, 0x3c9a58], [0x2f7440, 0x378448, 0x419452], [0x24704e, 0x2c8058, 0x369062]],
+  tre: [[0x6ab03a, 0x5aa034, 0x7cc044], [0x84b83a, 0x74a834, 0x94c646], [0x58a046, 0x4a903e, 0x68b050]],
+  dua: [[0x4f9a34, 0x43892e, 0x5daa3c], [0x67a632, 0x5a962c, 0x76b63a], [0x3f8c40, 0x357c38, 0x4c9c4a]],
+  bui: [[0x4aa83c, 0x3e9834, 0x58b846], [0x6cb236, 0x5ea230, 0x7cc240], [0x3a9a54, 0x30894a, 0x46aa5e]],
+};
 const toi = (hex, k) => { const c = new T.Color(hex); return c.multiplyScalar(k).getHex(); };
 // ve tán tròn: n khối cầu xếp thành vòm, khối dưới tối hơn (giả bóng khuất), khối trên sáng hơn
 function tanBong(b, cx, cy, cz, R, n, mau, r, min, dh, doiMau) {
@@ -610,24 +623,70 @@ function thanCay(b, h, day, r, mau) { // thân cây hơi cong, gốc loe
   b.cau(day * 1.25, 0, 0.02, 0, toi(m, 0.85), { x: 1, y: 0.35, z: 1 }, null, 0);
   return lech * 3;
 }
+// khối elip đã xoay sẵn (ngả pitch rồi quay yaw) — cho lá dừa / lá tre chĩa ra ngoài
+function laXoay(b, rd, sx, sy, sz, x, y, z, pitch, yaw, mau, min) {
+  const g = new T.IcosahedronGeometry(rd, min || 0); g.scale(sx, sy, sz); g.rotateX(pitch); g.rotateY(yaw); b.geo(g, x, y, z, mau);
+}
 const cayBongCache = {};
 function cayBongGeo(kieu, bien, min) { // hình học 1 cây (gộp) — dùng chung cho nhân bản
   const key = kieu + bien + (min || 0);
   if (cayBongCache[key]) return cayBongCache[key];
-  const b = boDung(true), r = rnd(bien * 13 + kieu.length);
-  if (kieu === 'tron') { const x = thanCay(b, 1.1, 0.13, r); tanBong(b, x, 1.55, 0, 0.8, 8, LA.tron, r, min); }
-  else if (kieu === 'cao') { const x = thanCay(b, 1.3, 0.12, r); tanBong(b, x, 1.9, 0, 0.62, 7, LA.cao, r, min, 1.8); }
-  else if (kieu === 'thong') { b.tru(0.1, 0.13, 0.5, 0, 0.25, 0, 0x7a4a2e, null, 7); for (let i = 0; i < 3; i++) b.non(0.75 - i * 0.18, 0.8, 0, 0.75 + i * 0.5, 0, toi(LA.thong[i], 0.9 + i * 0.1), null, 12); }
-  else if (kieu === 'bui') tanBong(b, 0, 0.32, 0, 0.42, 6, LA.bui, r, min, 0.7);
+  const b = boDung(true), r = rnd(bien * 13 + kieu.length), L = (LAR[kieu] || LAR.tron)[bien % 3];
+  if (kieu === 'tron') { const x = thanCay(b, 1.1, 0.13, r); tanBong(b, x, 1.55, 0, 0.8, 8, L, r, min); }
+  else if (kieu === 'cao') { const x = thanCay(b, 1.3, 0.12, r); tanBong(b, x, 1.9, 0, 0.62, 7, L, r, min, 1.8); }
+  else if (kieu === 'tang') { // cây bàng: thân cao, 3 tầng tán MỎNG xoè ngang cách nhau (thấy thân giữa các tầng), tầng trên nhỏ dần
+    const x = thanCay(b, 1.15, 0.12, r, 0x6e4a30);
+    for (let t = 0; t < 3; t++) { const R = 0.95 - t * 0.24, y = 1.0 + t * 0.78, la = [0, 0.32, -0.22][t], dx = x * (0.4 + t * 0.3) + la, dz = [0, -0.18, 0.2][t];
+      b.cau(R, dx, y, dz, toi(L[t % 3], 0.88 + t * 0.1), { x: 1, y: 0.17, z: 1 }, null, min);
+      for (let i = 0; i < 4; i++) { const a = i / 4 * 6.283 + t * 0.8 + r() * 0.4; b.cau(R * 0.36, dx + Math.cos(a) * R * 0.5, y + 0.07, dz + Math.sin(a) * R * 0.5, toi(L[(i + t) % 3], 1.0 + t * 0.07), { x: 1, y: 0.32, z: 1 }, null, min); }
+      if (t) { const px = x * (0.4 + (t - 1) * 0.3) + [0, 0.32, -0.22][t - 1], pz = [0, -0.18, 0.2][t - 1]; b.tru(0.035, 0.055, Math.hypot(dx - px, dz - pz, 0.78), (px + dx) / 2, y - 0.39, (pz + dz) / 2, 0x6e4a30, { x: (dz - pz) * 1.1, z: -(dx - px) * 1.1 }, 6); } }
+  }
+  else if (kieu === 'bach') { // bạch dương: thân trắng có vằn đen, mảnh, tán xanh vàng lệch 3 chùm
+    const h = 1.6; b.tru(0.07, 0.1, h, 0, h / 2, 0, 0xf2ede2, null, 7);
+    for (let i = 0; i < 6; i++) b.hop(0.08 + r() * 0.05, 0.035, 0.03, (r() - 0.5) * 0.04, 0.2 + i * 0.24 + r() * 0.08, 0.07, 0x3a332c, { y: r() * 6 });
+    b.tru(0.025, 0.04, 0.45, 0.14, 1.25, 0, 0xf2ede2, { z: -0.7 }, 5);
+    tanBong(b, 0.05, 1.85, 0, 0.5, 6, L, r, min, 1.5); tanBong(b, 0.32, 1.45, 0.08, 0.36, 5, L, r, min, 1.2); tanBong(b, -0.2, 1.4, -0.12, 0.32, 5, L, r, min, 1.2);
+  }
+  else if (kieu === 'bachTung') { // cây bách: thon cao như ngọn lửa, đậm màu
+    b.tru(0.07, 0.09, 0.4, 0, 0.2, 0, 0x6b4428, null, 6);
+    for (let i = 0; i < 5; i++) { const t = i / 4, R = 0.52 * (1 - t * 0.62); b.cau(R, (r() - 0.5) * 0.06, 0.6 + i * 0.42, (r() - 0.5) * 0.06, toi(L[i % 3], 0.85 + t * 0.3), { x: 1, y: 1.5, z: 1 }, null, min); }
+    b.cau(0.13, 0, 2.5, 0, toi(L[2], 1.2), { x: 1, y: 1.6, z: 1 }, null, min);
+  }
+  else if (kieu === 'thong') { // thông: 4 tầng nón xếp lệch, đầu tầng hơi lượn
+    b.tru(0.1, 0.14, 0.55, 0, 0.27, 0, 0x7a4a2e, null, 7);
+    for (let i = 0; i < 4; i++) { const R = 0.85 - i * 0.18; b.non(R, 0.78, 0, 0.72 + i * 0.44, 0, toi(L[i % 3], 0.85 + i * 0.1), { y: i * 0.5 }, 9); b.cau(R * 0.98, 0, 0.36 + i * 0.44, 0, toi(L[i % 3], 0.78 + i * 0.1), { x: 1, y: 0.16, z: 1 }, null, 0); }
+  }
+  else if (kieu === 'tre') { // bụi tre: 8 thân đốt nghiêng toả ra, lá mảnh rủ theo từng đốt trên (không chỏm tròn)
+    for (let i = 0; i < 8; i++) {
+      const a = i / 8 * 6.283 + r() * 0.5, d = 0.1 + r() * 0.12, h = 1.8 + r() * 1.0, ng = 0.1 + r() * 0.1, bx = Math.cos(a) * d, bz = Math.sin(a) * d;
+      const tx = bx + Math.cos(a) * h * ng, tz = bz + Math.sin(a) * h * ng, nd = 5, P = t => [bx + (tx - bx) * t, h * t, bz + (tz - bz) * t];
+      for (let j = 0; j < nd; j++) { const [x, y, z] = P((j + 0.5) / nd), [x1, y1, z1] = P((j + 1) / nd);
+        b.tru(0.04, 0.046, h / nd - 0.02, x, y, z, j % 2 ? 0x8cbf4a : 0x7aae40, { x: Math.sin(a) * ng, z: -Math.cos(a) * ng }, 6);
+        b.tru(0.05, 0.05, 0.03, x1, y1, z1, 0x5f8f30, null, 6); }
+      for (const t of [0.62, 0.78, 0.92, 1.0]) { const [x, y, z] = P(t);
+        for (let k = 0; k < 3; k++) { const yaw = a + (k - 1) * 0.9 + t * 2; laXoay(b, 0.15, 0.22, 0.05, 1.7, x + Math.sin(yaw) * 0.2, y - 0.04, z + Math.cos(yaw) * 0.2, 0.55 + k * 0.12, yaw, toi(L[(i + k) % 3], 0.88 + t * 0.15), min); } }
+    }
+  }
+  else if (kieu === 'dua') { // dừa: thân cong có ngấn, 8 tàu lá rủ xuống, chùm quả
+    const h = 2.6, cong = 0.5, n = 7; let px = 0, py = 0;
+    for (let j = 0; j < n; j++) { const t = (j + 1) / n, x = cong * t * t, y = h * t, rr = 0.14 - t * 0.04;
+      b.tru(rr * 0.9, rr, Math.hypot(x - px, y - py) + 0.02, (x + px) / 2, (y + py) / 2, 0, j % 2 ? 0x9a7148 : 0x8a6440, { z: -Math.atan2(x - px, y - py) }, 7); px = x; py = y; }
+    for (let i = 0; i < 8; i++) { const yaw = i / 8 * 6.283 + r() * 0.3, dx = Math.sin(yaw), dz = Math.cos(yaw);
+      for (let k = 0; k < 4; k++) { const pitch = -0.2 + k * 0.34, dd = 0.22 + k * 0.36, yy = py + 0.08 - k * k * 0.07;
+        laXoay(b, 0.24, 0.85 - k * 0.12, 0.08, 1.25, px + dx * dd * 1.15, yy, dz * dd * 1.15, pitch, yaw, toi(L[(i + k) % 3], 1.05 - k * 0.08), min); } }
+    for (let i = 0; i < 3; i++) { const a = i * 2.1; b.cau(0.08, px + Math.cos(a) * 0.1, py - 0.1, Math.sin(a) * 0.1, 0x6b5a2a, null, null, 1); }
+  }
+  else if (kieu === 'bui') tanBong(b, 0, 0.32, 0, 0.42, 6, L, r, min, 0.7);
   return (cayBongCache[key] = b.xong().geometry);
 }
 // rừng/khóm cây nhân bản: ds [{x, z, kieu, xoay, k}]
 // chia theo ô 16×16 m: mỗi nhóm có khối cầu bao đúng chỗ các cây của nó (InstancedMesh r128 lấy khối bao của hình gốc ở gốc toạ độ
 // ⇒ không sửa thì kéo camera ra xa gốc là mất cả rừng); v.min = độ mịn riêng (cây xa dùng 0 cho nhẹ)
+// mỗi bản sao lệch sáng ±7%, ấm/lạnh ±3,5% (nghiên cứu Little Habitats) ⇒ 100 cây cùng mẫu không giống hệt nhau
 function rungBong(ds, min) {
   const g = new T.Group(), nhom = {};
   ds.forEach((v, i) => { const mn = v.min != null ? v.min : min == null ? 1 : min, k = v.kieu + (i % 3) + "|" + mn + "|" + Math.floor(v.x / 16) + "_" + Math.floor(v.z / 16); (nhom[k] = nhom[k] || { kieu: v.kieu, bien: i % 3, mn, ds: [] }).ds.push(v); });
-  const q = new T.Quaternion(), e = new T.Euler(), sc = new T.Vector3(), p = new T.Vector3();
+  const q = new T.Quaternion(), e = new T.Euler(), sc = new T.Vector3(), p = new T.Vector3(), c = new T.Color();
   for (const k in nhom) {
     const n = nhom[k], goc = cayBongGeo(n.kieu, n.bien, n.mn), geo = new T.BufferGeometry();
     for (const a in goc.attributes) geo.setAttribute(a, goc.attributes[a]); // dùng chung bộ đệm, chỉ khác khối bao
@@ -635,7 +694,9 @@ function rungBong(ds, min) {
     let R = 0; n.ds.forEach(v => { R = Math.max(R, Math.hypot(v.x - cx, v.z - cz) + 3.2 * (v.k || 1)); });
     geo.boundingSphere = new T.Sphere(new T.Vector3(cx, 2, cz), R);
     const im = new T.InstancedMesh(geo, MAT_MIN, n.ds.length);
-    n.ds.forEach((v, i) => { e.set(0, v.xoay || 0, 0); q.setFromEuler(e); sc.setScalar(v.k || 1); p.set(v.x, 0, v.z); im.setMatrixAt(i, new T.Matrix4().compose(p, q, sc)); });
+    n.ds.forEach((v, i) => { e.set(0, v.xoay || 0, 0); q.setFromEuler(e); sc.setScalar(v.k || 1); p.set(v.x, 0, v.z); im.setMatrixAt(i, new T.Matrix4().compose(p, q, sc));
+      const h1 = Math.abs(Math.sin(v.x * 12.9898 + v.z * 78.233) * 43758.5453) % 1, h2 = Math.abs(Math.sin(v.x * 39.346 + v.z * 11.135) * 24634.6345) % 1;
+      const s = 0.93 + h1 * 0.14, w = (h2 - 0.5) * 0.07; c.setRGB(s * (1 + w), s, s * (1 - w)); im.setColorAt(i, c); });
     im.castShadow = true; im.receiveShadow = true; g.add(im);
   }
   return g;
@@ -740,6 +801,7 @@ function vatIcon(id) { // trả Object3D cho biểu tượng id
     case 'cam_ga': return bao(0xf2d060); case 'cam_bo': return bao(0x9fd46a); case 'cam_heo': return bao(0xf4a7c0);
     case 'banh_mi': return kk('food_ingredient_bun');
     case 'banh_ngo': return tint(kk('food_ingredient_bun'), 0xf7cf4a);
+    case 'khoai_nghien': { const g = new T.Group(); g.add(vua(kk('bowl'), 1)); b.cau(0.4, 0, 0.3, 0, 0xf1dc9a, { x: 1, y: 0.55, z: 1 }); b.cau(0.13, 0.04, 0.5, 0.02, 0xf7c93a, { x: 1.3, y: 0.5, z: 1 }); b.hop(0.05, 0.02, 0.05, -0.15, 0.48, 0.1, 0x5aa83a); b.hop(0.05, 0.02, 0.05, 0.18, 0.47, -0.08, 0x5aa83a); g.add(b.xong()); return g; }
     case 'banh_quy': return kk('cookie');
     case 'kem_tuoi': { const g = new T.Group(); g.add(vua(kk('bowl'), 1)); b.cau(0.38, 0, 0.3, 0, 0xfffbf0, { x: 1, y: 0.6, z: 1 }); b.cau(0.18, 0, 0.5, 0, 0xffffff); g.add(b.xong()); return g; }
     case 'bo': { b.hop(0.7, 0.35, 0.45, 0, 0.2, 0, 0xf7df6e); b.hop(0.9, 0.06, 0.6, 0, 0.03, 0, 0xffffff); b.hop(0.2, 0.05, 0.3, 0.2, 0.4, 0, 0xfbe98f, { z: 0.3 }); return b.xong(); }

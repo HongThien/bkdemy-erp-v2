@@ -1,0 +1,1961 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00340",
+   "khoi": "7",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Sự truyền ánh sáng",
+   "nhom": "Biện luận bóng tối và bóng nửa tối",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K07050102001",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050102-01-001-de.png) Nguồn sáng nhỏ chiếu vào vật cản, phía sau có màn chắn. Trên màn, vùng nào là vùng tối?",
+     "lua_chon": [
+      "Vùng 1",
+      "Vùng 2",
+      "Vùng 3",
+      "Vùng 1 và vùng 3"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vùng tối là vùng nằm sau vật cản, giữa hai tia sáng đi sát mép vật: đó là vùng 2, ánh sáng từ nguồn bị chặn hết.\n\nVì sao các phương án khác sai:\n- A: Vùng 1 nhận ánh sáng trực tiếp từ nguồn (các tia đi phía trên vật cản) nên được chiếu sáng.\n- C: Vùng 3 nhận ánh sáng trực tiếp từ nguồn (các tia đi phía dưới vật cản) nên được chiếu sáng.\n- D: Vùng 1 và 3 nằm ngoài hai tia đi qua mép vật cản nên được chiếu sáng."
+    },
+    {
+     "ma_cau": "K07050102002",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050102-01-002-de.png) Nguồn sáng rộng chiếu vào vật cản, phía sau có màn chắn. Trên màn, vùng nào là vùng nửa tối?",
+     "lua_chon": [
+      "Vùng 2",
+      "Chỉ vùng 1",
+      "Không có vùng nửa tối",
+      "Vùng 1 và vùng 3"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Với nguồn sáng rộng, vùng 2 ở giữa là vùng tối; vùng 1 và 3 hai bên chỉ nhận ánh sáng từ một phần nguồn nên là vùng nửa tối.\n\nVì sao các phương án khác sai:\n- A: Vùng 2 bị vật cản chặn hết ánh sáng từ mọi điểm của nguồn nên là vùng tối.\n- B: Vùng 3 cũng chỉ nhận ánh sáng từ một phần nguồn, nên cũng là vùng nửa tối.\n- C: Nguồn sáng rộng luôn tạo vùng nửa tối ở hai bên vùng tối."
+    },
+    {
+     "ma_cau": "K07050102003",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050102-01-003-de.png) Nguồn sáng nhỏ chiếu vào vật cản, phía sau có màn chắn. Vùng 1 và vùng 3 trên màn là vùng gì?",
+     "lua_chon": [
+      "Nằm ngoài vùng bóng của vật cản",
+      "Vùng nửa tối",
+      "Vùng tối",
+      "Một vùng tối, một vùng nửa tối"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Với nguồn sáng nhỏ, trên màn chỉ có vùng tối (vùng 2) và vùng được chiếu sáng (vùng 1, 3); không có vùng nửa tối.\n\nVì sao các phương án khác sai:\n- B: Nguồn sáng nhỏ gần như chỉ là một điểm nên không tạo vùng nửa tối.\n- C: Vùng tối là vùng 2; vùng 1 và 3 nhận ánh sáng trực tiếp từ nguồn.\n- D: Hai vùng này đều nằm ngoài các tia đi qua mép vật nên đều được chiếu sáng."
+    },
+    {
+     "ma_cau": "K07050102004",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050102-01-004-de.png) Nguồn sáng rộng chiếu vào vật cản, phía sau có màn chắn. Một điểm nằm ở vùng 2 trên màn nhận ánh sáng từ nguồn như thế nào?",
+     "lua_chon": [
+      "Nhận ánh sáng từ một phần nguồn",
+      "Nhận ánh sáng từ toàn bộ nguồn",
+      "Không nhận được ánh sáng từ nguồn",
+      "Nhận ánh sáng yếu vì ở xa nguồn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vùng 2 là vùng tối: mọi tia sáng từ các điểm của nguồn tới vùng này đều bị vật cản chặn lại.\n\nVì sao các phương án khác sai:\n- A: Nhận ánh sáng từ một phần nguồn là vùng nửa tối (vùng 1, 3), không phải vùng 2.\n- B: Điểm nhận ánh sáng từ toàn bộ nguồn nằm ngoài vùng 1 và 3, không bị vật che.\n- D: Vùng 2 tối vì bị vật cản chặn, không phải vì ở xa nguồn."
+    },
+    {
+     "ma_cau": "K07050102005",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050102-01-007-de.png) Nguồn sáng nhỏ chiếu vào vật cản, phía sau có màn chắn. Vùng 2 trên màn nhận được ánh sáng từ nguồn hay không?",
+     "lua_chon": [
+      "Không nhận được ánh sáng từ nguồn",
+      "Có, nhận toàn bộ ánh sáng từ nguồn",
+      "Có, nhận một phần ánh sáng từ nguồn",
+      "Có, nhưng yếu hơn vùng 1 và 3"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vùng 2 là vùng tối, nằm sau vật cản; mọi tia sáng từ nguồn tới vùng này đều bị vật cản chặn hết nên hoàn toàn không nhận được ánh sáng.\n\nVì sao các phương án khác sai:\n- B: Vùng tối không nhận ánh sáng nào, không phải nhận toàn bộ.\n- C: Nhận một phần ánh sáng là đặc điểm của vùng nửa tối (chỉ có khi nguồn sáng rộng), còn đây là nguồn sáng nhỏ nên vùng 2 hoàn toàn tối.\n- D: Vùng 2 hoàn toàn không nhận ánh sáng, không phải nhận yếu hơn."
+    },
+    {
+     "ma_cau": "K07050102006",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050102-01-008-de.png) Nguồn sáng rộng chiếu vào vật cản, phía sau có màn chắn, tạo vùng tối (vùng 2) và vùng nửa tối (vùng 1, vùng 3). So với vùng tối, độ sáng của vùng nửa tối như thế nào?",
+     "lua_chon": [
+      "Tối hơn vùng tối",
+      "Sáng hơn vùng tối",
+      "Sáng bằng vùng tối",
+      "Lúc sáng hơn, lúc tối hơn vùng tối"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vùng nửa tối nhận được ánh sáng từ một phần nguồn (không bị chặn hết như vùng tối), nên sáng hơn vùng tối (nhưng vẫn tối hơn vùng được chiếu sáng đầy đủ).\n\nVì sao các phương án khác sai:\n- A: Vùng nửa tối nhận được một phần ánh sáng nên sáng hơn, không tối hơn vùng tối (vùng tối không nhận ánh sáng nào).\n- C: Vùng nửa tối nhận được ánh sáng còn vùng tối thì không, nên hai vùng khác độ sáng.\n- D: Vùng nửa tối luôn nhận được một phần ánh sáng nên luôn sáng hơn vùng tối."
+    },
+    {
+     "ma_cau": "K07050102007",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050102-01-009-de.png) Nguồn sáng rộng chiếu vào vật cản, phía sau có màn chắn. Một điểm nằm ở vùng 1 (nửa tối) trên màn nhận ánh sáng từ đâu?",
+     "lua_chon": [
+      "Từ toàn bộ nguồn sáng",
+      "Không nhận được ánh sáng nào",
+      "Từ một phần của nguồn sáng",
+      "Từ vật cản phản xạ tới"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vùng nửa tối (vùng 1) chỉ bị vật cản che khuất một phần nguồn sáng, nên điểm ở đó vẫn nhận được ánh sáng từ phần còn lại của nguồn.\n\nVì sao các phương án khác sai:\n- A: Nhận toàn bộ nguồn là đặc điểm của vùng được chiếu sáng đầy đủ, không phải vùng nửa tối.\n- B: Nếu không nhận được ánh sáng nào thì đó là vùng tối (vùng 2), không phải vùng nửa tối.\n- D: Vật cản không phát ra hay phản xạ ánh sáng trong tình huống này, nó chỉ che khuất bớt ánh sáng từ nguồn."
+    },
+    {
+     "ma_cau": "K07050102008",
+     "loai": "trac_nghiem",
+     "de": "Khi xảy ra nhật thực, Mặt Trăng nằm giữa Mặt Trời và Trái Đất. Vật nào đóng vai trò vật cản sáng? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050102-02-001-de.png)",
+     "lua_chon": [
+      "Trái Đất",
+      "Mặt Trời",
+      "Mặt Trăng",
+      "Đám mây trên bầu trời"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nhật thực: nguồn sáng là Mặt Trời, vật cản là Mặt Trăng (nằm giữa), màn chắn là Trái Đất hứng bóng của Mặt Trăng.\n\nVì sao các phương án khác sai:\n- A: Trái Đất là màn chắn hứng bóng của Mặt Trăng; Trái Đất là vật cản khi có nguyệt thực.\n- B: Mặt Trời phát ra ánh sáng nên là nguồn sáng.\n- D: Mây che nắng chỉ là hiện tượng thời tiết, không gây ra nhật thực."
+    },
+    {
+     "ma_cau": "K07050102009",
+     "loai": "trac_nghiem",
+     "de": "Khi xảy ra nguyệt thực, Trái Đất nằm giữa Mặt Trời và Mặt Trăng. Vật nào đóng vai trò màn chắn? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050102-02-002-de.png)",
+     "lua_chon": [
+      "Trái Đất",
+      "Mặt Trăng",
+      "Mặt Trời",
+      "Mặt đất nơi người quan sát đứng"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nguyệt thực: nguồn sáng là Mặt Trời, vật cản là Trái Đất, màn chắn là Mặt Trăng (Mặt Trăng đi vào vùng tối của Trái Đất).\n\nVì sao các phương án khác sai:\n- A: Trái Đất nằm giữa, chặn ánh sáng Mặt Trời nên là vật cản sáng.\n- C: Mặt Trời phát ra ánh sáng nên là nguồn sáng.\n- D: Bóng của Trái Đất in lên Mặt Trăng, không in lên mặt đất nơi người đứng."
+    },
+    {
+     "ma_cau": "K07050102010",
+     "loai": "trac_nghiem",
+     "de": "Buổi tối, bạn An đứng giữa một ngọn đèn nhỏ và bức tường, trên tường có bóng của An. Trong hiện tượng này, bức tường đóng vai trò gì? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050102-02-006-de.png)",
+     "lua_chon": [
+      "Nguồn sáng",
+      "Vật cản sáng",
+      "Vùng tối",
+      "Màn chắn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đèn là nguồn sáng, An là vật cản sáng, bức tường là màn chắn hứng bóng (vùng tối) của An.\n\nVì sao các phương án khác sai:\n- A: Ngọn đèn phát ra ánh sáng nên là nguồn sáng, không phải bức tường.\n- B: An đứng giữa, chặn ánh sáng nên An là vật cản sáng.\n- C: Vùng tối chỉ là phần bóng in trên tường, không phải vai trò của cả bức tường."
+    },
+    {
+     "ma_cau": "K07050102011",
+     "loai": "trac_nghiem",
+     "de": "Vào ban ngày, ánh sáng Mặt Trời chiếu vào một cột đèn đường, tạo bóng đổ dài trên mặt đường. Trong hiện tượng này, cột đèn đóng vai trò gì?",
+     "lua_chon": [
+      "Nguồn sáng",
+      "Vật cản sáng",
+      "Màn chắn",
+      "Vùng nửa tối"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mặt Trời là nguồn sáng, cột đèn cản ánh sáng nên là vật cản sáng, mặt đường hứng bóng nên là màn chắn.\n\nVì sao các phương án khác sai:\n- A: Ban ngày, nguồn sáng chính là Mặt Trời, không phải cột đèn (cột đèn ban ngày không phát sáng).\n- C: Mặt đường mới là màn chắn hứng bóng, không phải cột đèn.\n- D: Vùng nửa tối là một vùng trên màn (mặt đường), không phải là vai trò của cột đèn."
+    },
+    {
+     "ma_cau": "K07050102012",
+     "loai": "trac_nghiem",
+     "de": "Trong hiện tượng nhật thực toàn phần, người quan sát đứng đúng ở vùng tối trên Trái Đất sẽ thấy gì?",
+     "lua_chon": [
+      "Mặt Trời sáng bình thường như mọi ngày",
+      "Mặt Trăng biến mất hoàn toàn khỏi bầu trời",
+      "Mặt Trời bị Mặt Trăng che khuất hoàn toàn",
+      "Chỉ thấy một phần nhỏ của Mặt Trăng bị che"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ở vùng tối (bị Mặt Trăng che hoàn toàn Mặt Trời), người quan sát thấy nhật thực toàn phần: Mặt Trời bị che khuất hoàn toàn.\n\nVì sao các phương án khác sai:\n- A: Nếu sáng bình thường thì người đó phải đứng ngoài vùng bóng, không phải ở vùng tối.\n- B: Mặt Trăng vẫn ở đó, chỉ là nó che khuất Mặt Trời khỏi tầm nhìn, không phải Mặt Trăng biến mất.\n- D: Đây là mô tả của người ở vùng nửa tối (thấy nhật thực một phần), không phải vùng tối."
+    },
+    {
+     "ma_cau": "K07050102013",
+     "loai": "trac_nghiem",
+     "de": "Vì sao nhật thực chỉ quan sát được ở một số nơi nhất định trên Trái Đất, không phải toàn bộ Trái Đất đều thấy?",
+     "lua_chon": [
+      "Vì Mặt Trời tắt sáng ở một số nơi",
+      "Vì Trái Đất quay nhanh nên nơi khác bị mờ",
+      "Vì khí quyển chỉ cho ánh sáng qua một số vùng",
+      "Vì chỉ vùng có bóng Mặt Trăng mới bị che Mặt Trời"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Bóng của Mặt Trăng chỉ in lên một vùng nhỏ trên Trái Đất; chỉ những người trong vùng bóng đó (vùng tối, vùng nửa tối) mới thấy nhật thực, còn nơi khác vẫn thấy Mặt Trời bình thường.\n\nVì sao các phương án khác sai:\n- A: Mặt Trời không tắt sáng.\n- B: Nhật thực do bóng Mặt Trăng, không do Trái Đất quay.\n- C: Khí quyển không quyết định nơi thấy nhật thực."
+    },
+    {
+     "ma_cau": "K07050102014",
+     "loai": "trac_nghiem",
+     "de": "Một nguồn sáng nhỏ chiếu vật cản, phía sau có màn chắn, tạo vùng tối trên màn. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050103-01-001-de.png) Nếu dịch NGUỒN SÁNG lại gần vật cản hơn (vật cản và màn giữ nguyên), vùng tối trên màn thay đổi thế nào?",
+     "lua_chon": [
+      "Vùng tối nhỏ hơn (thu hẹp lại)",
+      "Vùng tối lớn hơn (loang rộng ra)",
+      "Kích thước vùng tối không đổi",
+      "Không còn xuất hiện vùng tối nào"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nguồn sáng lại gần vật cản thì các tia sáng đi sát mép vật loang rộng hơn trước khi tới màn, nên vùng tối lớn hơn.\n\nVì sao các phương án khác sai:\n- A: Nguồn lại gần vật cản làm vùng tối LOANG RỘNG ra, không thu hẹp lại.\n- C: Khoảng cách nguồn – vật cản thay đổi nên kích thước vùng tối cũng thay đổi, không giữ nguyên.\n- D: Vật cản vẫn chắn sáng nên vùng tối vẫn xuất hiện, không thể biến mất."
+    },
+    {
+     "ma_cau": "K07050102015",
+     "loai": "trac_nghiem",
+     "de": "Một nguồn sáng rộng chiếu vật cản, tạo vùng tối và vùng nửa tối trên màn. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050103-01-002-de.png) Nếu thay nguồn sáng rộng bằng một nguồn sáng nhỏ (coi như một điểm) ở cùng vị trí, vùng nửa tối trên màn thay đổi thế nào?",
+     "lua_chon": [
+      "Vùng nửa tối lớn hơn trước",
+      "Không có gì thay đổi trên màn",
+      "Vùng nửa tối biến mất, chỉ còn vùng tối",
+      "Vùng nửa tối chỉ nhỏ bớt, vẫn còn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vùng nửa tối chỉ xuất hiện khi nguồn sáng rộng; thay bằng nguồn nhỏ thì không còn hiện tượng này, trên màn chỉ có vùng tối và vùng sáng.\n\nVì sao các phương án khác sai:\n- A: Nguồn nhỏ không tạo vùng nửa tối, không phải làm nó lớn hơn.\n- B: Nguồn sáng đổi từ rộng sang nhỏ nên vùng nửa tối biến mất, có thay đổi rõ trên màn.\n- D: Nguồn nhỏ (một điểm) không thể tạo vùng nửa tối, nó biến mất chứ không chỉ nhỏ bớt."
+    },
+    {
+     "ma_cau": "K07050102016",
+     "loai": "trac_nghiem",
+     "de": "Một nguồn sáng nhỏ chiếu vật cản, phía sau có màn chắn, tạo vùng tối trên màn. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050103-01-003-de.png) Nếu dịch MÀN ra xa vật cản hơn (nguồn sáng và vật cản giữ nguyên), vùng tối trên màn thay đổi thế nào?",
+     "lua_chon": [
+      "Vùng tối nhỏ hơn (thu hẹp lại)",
+      "Không còn xuất hiện vùng tối nào",
+      "Kích thước vùng tối không đổi",
+      "Vùng tối lớn hơn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Màn ở xa vật cản hơn thì các tia sáng đi sát mép vật cản tiếp tục loang rộng thêm trước khi tới màn, nên vùng tối lớn hơn.\n\nVì sao các phương án khác sai:\n- A: Màn ra xa vật cản làm vùng tối LOANG RỘNG ra, không thu hẹp lại.\n- B: Vật cản vẫn chắn sáng nên vùng tối vẫn xuất hiện, không thể biến mất.\n- C: Khoảng cách vật cản – màn thay đổi nên kích thước vùng tối cũng thay đổi."
+    },
+    {
+     "ma_cau": "K07050102017",
+     "loai": "trac_nghiem",
+     "de": "Một nguồn sáng nhỏ chiếu vật cản, tạo vùng tối trên màn. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050103-01-004-de.png) Nếu thay vật cản bằng một vật CÓ KÍCH THƯỚC LỚN HƠN (cùng vị trí, cùng khoảng cách tới nguồn và màn), vùng tối trên màn thay đổi thế nào?",
+     "lua_chon": [
+      "Vùng tối lớn hơn",
+      "Vùng tối nhỏ hơn (thu hẹp lại)",
+      "Kích thước vùng tối không đổi",
+      "Không còn xuất hiện vùng tối nào"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vật cản lớn hơn chắn được nhiều tia sáng hơn từ nguồn, nên vùng tối trên màn cũng lớn hơn.\n\nVì sao các phương án khác sai:\n- B: Vật cản lớn hơn chắn NHIỀU ánh sáng hơn nên vùng tối lớn hơn, không nhỏ đi.\n- C: Kích thước vật cản thay đổi nên vùng tối cũng thay đổi theo, không giữ nguyên.\n- D: Vật cản vẫn chắn sáng nên vùng tối vẫn xuất hiện, không thể biến mất."
+    },
+    {
+     "ma_cau": "K07050102018",
+     "loai": "trac_nghiem",
+     "de": "Một nguồn sáng nhỏ chiếu vật cản, phía sau có màn chắn, tạo vùng tối trên màn. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050103-01-005-de.png) Nếu dịch NGUỒN SÁNG ra xa vật cản hơn (vật cản và màn giữ nguyên), vùng tối trên màn thay đổi thế nào?",
+     "lua_chon": [
+      "Vùng tối lớn hơn (loang rộng ra)",
+      "Vùng tối nhỏ hơn (thu hẹp lại)",
+      "Kích thước vùng tối không đổi",
+      "Không còn xuất hiện vùng tối nào"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nguồn sáng càng xa vật cản thì các tia sáng đi sát mép vật cản càng gần song song hơn, nên vùng tối trên màn thu hẹp lại (gần với kích thước vật cản).\n\nVì sao các phương án khác sai:\n- A: Ngược lại: nguồn ra xa làm các tia gần song song hơn nên vùng tối nhỏ đi, không lớn hơn.\n- C: Thay đổi khoảng cách nguồn sáng vẫn làm thay đổi kích thước vùng tối, không giữ nguyên.\n- D: Vẫn còn vùng tối, chỉ là kích thước của nó thay đổi (nhỏ hơn)."
+    },
+    {
+     "ma_cau": "K07050102019",
+     "loai": "trac_nghiem",
+     "de": "Một nguồn sáng nhỏ chiếu vật cản, tạo vùng tối trên màn. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050103-01-006-de.png) Nếu thay vật cản bằng một vật CÓ KÍCH THƯỚC NHỎ HƠN (cùng vị trí, cùng khoảng cách tới nguồn và màn), vùng tối trên màn thay đổi thế nào?",
+     "lua_chon": [
+      "Vùng tối nhỏ hơn (thu hẹp lại)",
+      "Vùng tối lớn hơn",
+      "Kích thước vùng tối không đổi",
+      "Không còn xuất hiện vùng tối nào"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vật cản nhỏ hơn chắn được ít tia sáng hơn từ nguồn, nên vùng tối trên màn cũng nhỏ hơn.\n\nVì sao các phương án khác sai:\n- B: Ngược lại: vật cản nhỏ hơn chắn ít tia sáng hơn nên vùng tối nhỏ đi, không lớn hơn.\n- C: Kích thước vật cản thay đổi nên vùng tối cũng thay đổi theo, không giữ nguyên.\n- D: Vật cản dù nhỏ hơn vẫn chắn một phần ánh sáng nên vẫn còn vùng tối, chỉ là nhỏ hơn."
+    },
+    {
+     "ma_cau": "K07050102020",
+     "loai": "trac_nghiem",
+     "de": "Khi xảy ra nhật thực, một người đứng ở vùng TỐI trên Trái Đất (bị Mặt Trăng che khuất hoàn toàn Mặt Trời) sẽ quan sát thấy hiện tượng gì? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050103-02-001-de.png)",
+     "lua_chon": [
+      "Nhật thực toàn phần",
+      "Nhật thực một phần",
+      "Không thấy gì khác thường",
+      "Nguyệt thực toàn phần"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vùng tối không nhận được ánh sáng Mặt Trời (bị Mặt Trăng che hoàn toàn) nên người ở đó thấy nhật thực toàn phần.\n\nVì sao các phương án khác sai:\n- B: Nhật thực một phần xảy ra ở vùng nửa tối, không phải vùng tối.\n- C: Người ở vùng tối thấy Mặt Trời bị che khuất hết, đây là hiện tượng bất thường rõ rệt.\n- D: Đây là nhật thực (Mặt Trăng che Mặt Trời), không phải nguyệt thực."
+    },
+    {
+     "ma_cau": "K07050102021",
+     "loai": "trac_nghiem",
+     "de": "Khi xảy ra nhật thực, một người đứng ở vùng NỬA TỐI trên Trái Đất (chỉ bị Mặt Trăng che một phần Mặt Trời) sẽ quan sát thấy hiện tượng gì? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050103-02-002-de.png)",
+     "lua_chon": [
+      "Nhật thực toàn phần",
+      "Không thấy Mặt Trời bị che",
+      "Nhật thực một phần",
+      "Nguyệt thực một phần"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vùng nửa tối chỉ nhận ánh sáng từ một phần Mặt Trời (phần còn lại bị Mặt Trăng che) nên người ở đó thấy nhật thực một phần.\n\nVì sao các phương án khác sai:\n- A: Nhật thực toàn phần chỉ xảy ra ở vùng tối, nơi Mặt Trời bị che khuất hết.\n- B: Vùng nửa tối vẫn bị che một phần Mặt Trời nên vẫn thấy hiện tượng bất thường.\n- D: Đây là nhật thực (Mặt Trăng che Mặt Trời), không phải nguyệt thực."
+    },
+    {
+     "ma_cau": "K07050102022",
+     "loai": "trac_nghiem",
+     "de": "Khi xảy ra nguyệt thực, Mặt Trăng đi vào vùng NỬA TỐI của Trái Đất (chưa vào vùng tối). Mặt Trăng sẽ như thế nào? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050103-02-003-de.png)",
+     "lua_chon": [
+      "Tối hẳn, giống như nguyệt thực toàn phần",
+      "Sáng bình thường như chưa có gì xảy ra",
+      "Không còn nhìn thấy Mặt Trăng nữa",
+      "Mờ đi một phần, chưa tối hẳn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vùng nửa tối của Trái Đất chỉ che bớt một phần ánh sáng Mặt Trời chiếu tới Mặt Trăng, nên Mặt Trăng mờ đi một phần, chưa tối hẳn như khi ở vùng tối.\n\nVì sao các phương án khác sai:\n- A: Tối hẳn (như nguyệt thực toàn phần) chỉ xảy ra khi Mặt Trăng vào vùng tối, không phải vùng nửa tối.\n- B: Ánh sáng tới Mặt Trăng đã bị che bớt một phần nên có thay đổi, không giữ nguyên.\n- C: Mặt Trăng vẫn nhận một phần ánh sáng Mặt Trời nên vẫn nhìn thấy được, không mất hẳn."
+    },
+    {
+     "ma_cau": "K07050102023",
+     "loai": "trac_nghiem",
+     "de": "Một người đứng ở vùng nào trên Trái Đất trong lúc có nhật thực sẽ KHÔNG thấy Mặt Trời bị che chút nào? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050103-02-004-de.png)",
+     "lua_chon": [
+      "Vùng tối",
+      "Vùng được chiếu sáng bình thường",
+      "Vùng nửa tối",
+      "Cả ba vùng đều thấy bị che"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Người ở vùng tối hoặc vùng nửa tối bị che một phần hoặc toàn phần Mặt Trời; người ở vùng được chiếu sáng bình thường (ngoài hai vùng này) không thấy nhật thực.\n\nVì sao các phương án khác sai:\n- A: Vùng tối là nơi Mặt Trời bị che khuất hết, chắc chắn quan sát được nhật thực.\n- C: Vùng nửa tối vẫn bị che một phần Mặt Trời, vẫn quan sát được nhật thực một phần.\n- D: Vùng tối và nửa tối bị ảnh hưởng; vùng còn lại thì không."
+    },
+    {
+     "ma_cau": "K07050102024",
+     "loai": "trac_nghiem",
+     "de": "Khi xảy ra nguyệt thực, Mặt Trăng đi vào vùng TỐI của Trái Đất (không phải vùng nửa tối). Mặt Trăng sẽ như thế nào?",
+     "lua_chon": [
+      "Sáng bình thường như chưa có gì xảy ra",
+      "Tối hẳn, gọi là nguyệt thực toàn phần",
+      "Mờ đi một phần, chưa tối hẳn",
+      "Biến mất hoàn toàn, không thể quan sát bằng mắt thường"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vùng tối của Trái Đất hoàn toàn chặn ánh sáng Mặt Trời; khi Mặt Trăng vào vùng này, nó tối hẳn, gọi là nguyệt thực toàn phần.\n\nVì sao các phương án khác sai:\n- A: Sáng bình thường là khi Mặt Trăng ở ngoài vùng bóng, không phải khi vào vùng tối.\n- C: Mờ đi một phần là đặc điểm khi Mặt Trăng ở vùng nửa tối, không phải vùng tối.\n- D: Mặt Trăng chỉ tối đi do không nhận ánh sáng trực tiếp từ Mặt Trời, không phải biến mất khỏi bầu trời."
+    },
+    {
+     "ma_cau": "K07050102025",
+     "loai": "trac_nghiem",
+     "de": "Một người đứng ở vùng nào trên Trái Đất trong lúc có nhật thực sẽ thấy Mặt Trời bị che khuất MỘT PHẦN (không toàn phần, không phải không thấy gì)?",
+     "lua_chon": [
+      "Vùng tối",
+      "Vùng được chiếu sáng bình thường",
+      "Vùng nửa tối",
+      "Cả vùng tối và vùng nửa tối"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Người ở vùng nửa tối chỉ bị Mặt Trăng che một phần Mặt Trời nên thấy nhật thực một phần; vùng tối thấy toàn phần, vùng ngoài không thấy gì.\n\nVì sao các phương án khác sai:\n- A: Vùng tối là nơi Mặt Trời bị che hoàn toàn (toàn phần), không phải một phần.\n- B: Vùng được chiếu sáng bình thường không thấy Mặt Trời bị che chút nào.\n- D: Vùng tối thấy toàn phần khác với vùng nửa tối thấy một phần; không thể gộp chung là cùng thấy một phần."
+    },
+    {
+     "ma_cau": "K07050102026",
+     "loai": "trac_nghiem",
+     "de": "Đèn mổ trong phòng phẫu thuật thường dùng NHIỀU bóng đèn đặt ở các vị trí khác nhau (tạo thành một nguồn sáng rộng) thay vì một bóng đèn nhỏ. Mục đích chính là gì?",
+     "lua_chon": [
+      "Để giảm vùng tối do tay bác sĩ che",
+      "Để tạo ra vùng tối rõ nét hơn",
+      "Để tiết kiệm điện năng",
+      "Để ánh sáng có màu sắc đẹp hơn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nhiều bóng đèn ở các vị trí khác nhau đóng vai trò như một nguồn sáng rộng; khi một vật che một bóng thì các bóng còn lại vẫn chiếu sáng vào chỗ đó, nên vùng tối bị thu hẹp gần như biến mất.\n\nVì sao các phương án khác sai:\n- B: Mục đích ngược lại: dùng nhiều đèn để giảm vùng tối, không phải tạo vùng tối rõ hơn.\n- C: Dùng nhiều bóng đèn không nhằm mục đích tiết kiệm điện, mà để hạn chế vùng tối.\n- D: Bố trí nhiều bóng đèn ở đây không nhằm mục đích màu sắc mà nhằm giảm vùng tối do vật cản."
+    },
+    {
+     "ma_cau": "K07050102027",
+     "loai": "trac_nghiem",
+     "de": "Khi đọc sách vào buổi tối, nên đặt đèn bàn học ở đâu để tay cầm bút KHÔNG che khuất ánh sáng lên trang sách?",
+     "lua_chon": [
+      "Đặt đèn cùng phía với tay cầm bút, ngang tầm trang sách",
+      "Đặt đèn ở phía đối diện tay cầm bút",
+      "Đặt đèn ngay phía sau lưng người đọc, sát trần nhà",
+      "Treo đèn ở dưới gầm bàn, chiếu lên"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đặt đèn ở phía đối diện tay cầm bút (và ở trên cao) thì tia sáng tới trang sách không bị bàn tay và cây bút che khuất, tránh tạo bóng tối lên chỗ đang viết.\n\nVì sao các phương án khác sai:\n- A: Đặt cùng phía tay cầm bút thì chính bàn tay sẽ là vật cản, che khuất ánh sáng lên chỗ đang viết.\n- C: Đèn ở ngay sau lưng, sát trần thì bóng của đầu và vai người đọc dễ đổ xuống trang sách.\n- D: Đèn chiếu từ dưới lên không phải cách chiếu sáng hợp lí để đọc sách, cũng không tránh được bóng tay."
+    },
+    {
+     "ma_cau": "K07050102028",
+     "loai": "trac_nghiem",
+     "de": "Khi chụp ảnh chân dung ngoài trời nắng gắt, bóng đổ trên mặt người thường rất đậm và có viền rõ. Để giảm bớt vùng tối đậm này, thợ chụp ảnh thường làm gì?",
+     "lua_chon": [
+      "Tắt hết các nguồn sáng khác để vùng tối rõ hơn",
+      "Đứng xa Mặt Trời hơn để giảm nắng",
+      "Dùng thêm đèn phụ chiếu vào vùng bị tối",
+      "Che kín toàn bộ khuôn mặt để không có bóng"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thêm một nguồn sáng phụ chiếu vào vùng bị bóng che sẽ làm giảm độ đậm của vùng tối, tương tự như biến một nguồn sáng nhỏ thành nguồn sáng rộng hơn.\n\nVì sao các phương án khác sai:\n- A: Tắt các nguồn sáng khác chỉ làm vùng tối đậm hơn, không giảm bớt.\n- B: Khoảng cách tới Mặt Trời gần như không đổi khi đứng xa hơn một chút; đây không phải cách xử lí vùng tối.\n- D: Che kín khuôn mặt sẽ làm mất chi tiết ảnh, không phải cách giảm vùng tối đậm."
+    },
+    {
+     "ma_cau": "K07050102029",
+     "loai": "trac_nghiem",
+     "de": "Trong nhà xưởng, để giảm bóng tối đậm phía sau máy móc (nơi công nhân dễ vấp ngã), người ta nên bố trí đèn chiếu sáng như thế nào?",
+     "lua_chon": [
+      "Dùng một đèn duy nhất thật sáng ở giữa xưởng",
+      "Tắt bớt đèn để tiết kiệm điện",
+      "Đặt đèn sát ngay phía sau máy móc, hướng vào tường",
+      "Dùng nhiều đèn đặt ở nhiều vị trí khác nhau"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nhiều đèn ở nhiều vị trí đóng vai trò một nguồn sáng rộng, chiếu sáng từ nhiều hướng nên vùng tối phía sau máy móc bị thu hẹp, giảm nguy cơ vấp ngã.\n\nVì sao các phương án khác sai:\n- A: Một đèn duy nhất là nguồn sáng nhỏ, vẫn tạo vùng tối rõ nét phía sau máy móc.\n- B: Tắt bớt đèn làm giảm ánh sáng, khiến vùng tối rộng và đậm hơn, không phải giảm đi.\n- C: Đặt đèn sát sau máy chiếu vào tường không giúp chiếu sáng vùng tối phía trước máy nơi công nhân đi lại."
+    },
+    {
+     "ma_cau": "K07050102030",
+     "loai": "trac_nghiem",
+     "de": "Sân khấu biểu diễn thường dùng NHIỀU đèn chiếu từ các góc khác nhau thay vì chỉ một đèn duy nhất chiếu thẳng từ phía trước diễn viên. Mục đích chính là gì?",
+     "lua_chon": [
+      "Để tiết kiệm điện năng",
+      "Để làm sân khấu nóng hơn",
+      "Để âm thanh phát ra to hơn",
+      "Để giảm vùng tối đậm do vật che khuất"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nhiều đèn từ nhiều góc khác nhau đóng vai trò như nguồn sáng rộng, giúp thu hẹp vùng tối đậm do diễn viên hoặc đạo cụ che khuất nhau.\n\nVì sao các phương án khác sai:\n- A: Dùng nhiều đèn thường tốn điện hơn một đèn, không phải để tiết kiệm.\n- B: Mục đích chính là chiếu sáng, không phải làm nóng sân khấu.\n- C: Ánh sáng không liên quan đến độ to của âm thanh."
+    },
+    {
+     "ma_cau": "K07050102031",
+     "loai": "trac_nghiem",
+     "de": "Khi chụp ảnh sản phẩm trong studio, nhiếp ảnh gia thường đặt thêm các tấm hắt sáng màu trắng xung quanh sản phẩm. Việc này giúp gì cho vùng tối trên sản phẩm?",
+     "lua_chon": [
+      "Hắt thêm ánh sáng vào vùng tối, làm vùng tối bớt đậm",
+      "Làm vùng tối biến mất hoàn toàn, không còn bóng đổ nào",
+      "Làm vùng tối đậm hơn, rõ nét hơn",
+      "Không ảnh hưởng gì đến vùng tối trên sản phẩm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tấm hắt sáng phản xạ ánh sáng từ đèn chính vào vùng bị tối, đóng vai trò như thêm nguồn sáng phụ, làm vùng tối bớt đậm (không biến mất hoàn toàn).\n\nVì sao các phương án khác sai:\n- B: Bóng đổ không biến mất hoàn toàn, chỉ bớt đậm hơn nhờ ánh sáng hắt thêm vào.\n- C: Tấm hắt sáng làm vùng tối SÁNG hơn (bớt đậm), không phải đậm hơn.\n- D: Tấm hắt sáng có tác động rõ rệt, làm giảm độ đậm của vùng tối trên sản phẩm."
+    },
+    {
+     "ma_cau": "K07050102032",
+     "loai": "trac_nghiem",
+     "de": "Một nguồn sáng NHỎ chiếu vào vật cản, phía sau có màn chắn. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050104-01-001-de.png) Nếu dời MÀN ra xa vật cản hơn (nguồn sáng, vật cản giữ nguyên), vùng tối trên màn thay đổi thế nào?",
+     "lua_chon": [
+      "Vùng tối rộng hơn",
+      "Vùng tối hẹp hơn",
+      "Vùng tối không đổi",
+      "Xuất hiện thêm vùng nửa tối"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Với nguồn sáng nhỏ, vùng tối giới hạn bởi các tia sáng đi sát mép vật cản; các tia này toả ra xa dần nên màn càng xa, vùng tối trên màn càng rộng.\n\nVì sao các phương án khác sai:\n- B: Các tia sát mép vật toả rộng ra khi đi xa, nên màn xa hơn thì vùng tối rộng hơn, không hẹp đi.\n- C: Kích thước vùng tối phụ thuộc khoảng cách từ vật tới màn.\n- D: Nguồn sáng nhỏ chỉ tạo vùng tối, không tạo vùng nửa tối."
+    },
+    {
+     "ma_cau": "K07050102033",
+     "loai": "trac_nghiem",
+     "de": "Một nguồn sáng NHỎ chiếu vào vật cản, phía sau có màn chắn. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050104-01-002-de.png) Nếu dời NGUỒN SÁNG lại gần vật cản hơn (vật cản, màn giữ nguyên), vùng tối trên màn thay đổi thế nào?",
+     "lua_chon": [
+      "Vùng tối rộng hơn",
+      "Vùng tối hẹp hơn",
+      "Vùng tối không đổi",
+      "Xuất hiện thêm vùng nửa tối"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nguồn sáng lại gần vật cản thì các tia đi sát mép vật toả ra dưới góc lớn hơn, nên vùng tối trên màn rộng hơn.\n\nVì sao các phương án khác sai:\n- B: Nguồn càng gần vật, các tia sát mép vật càng toả rộng, vùng tối càng rộng chứ không hẹp đi.\n- C: Kích thước vùng tối phụ thuộc khoảng cách từ nguồn tới vật.\n- D: Nguồn sáng nhỏ chỉ tạo vùng tối, không tạo vùng nửa tối."
+    },
+    {
+     "ma_cau": "K07050102034",
+     "loai": "trac_nghiem",
+     "de": "Một nguồn sáng NHỎ chiếu vào vật cản, phía sau có màn chắn. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050104-01-003-de.png) Nếu dời NGUỒN SÁNG ra xa vật cản hơn (vật cản, màn giữ nguyên), vùng tối trên màn thay đổi thế nào?",
+     "lua_chon": [
+      "Vùng tối rộng hơn",
+      "Vùng tối hẹp hơn",
+      "Vùng tối không đổi",
+      "Xuất hiện thêm vùng nửa tối"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nguồn sáng càng xa vật cản thì các tia đi sát mép vật càng gần song song, vùng tối trên màn hẹp lại (tiến dần tới kích thước vật).\n\nVì sao các phương án khác sai:\n- A: Nguồn xa hơn thì các tia sát mép vật toả ít hơn, vùng tối hẹp lại chứ không rộng ra.\n- C: Kích thước vùng tối phụ thuộc khoảng cách từ nguồn tới vật.\n- D: Nguồn sáng nhỏ chỉ tạo vùng tối, không tạo vùng nửa tối."
+    },
+    {
+     "ma_cau": "K07050102035",
+     "loai": "trac_nghiem",
+     "de": "Một nguồn sáng RỘNG chiếu vào vật cản, phía sau có màn chắn, tạo vùng tối và vùng nửa tối. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050104-01-004-de.png) Nếu TĂNG kích thước của nguồn sáng (vị trí nguồn, vật cản, màn giữ nguyên), vùng tối và vùng nửa tối trên màn thay đổi thế nào?",
+     "lua_chon": [
+      "Cả hai đều rộng hơn",
+      "Cả hai đều hẹp hơn",
+      "Vùng tối hẹp hơn, vùng nửa tối rộng hơn",
+      "Vùng tối rộng hơn, vùng nửa tối hẹp hơn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nguồn sáng rộng hơn thì mỗi điểm trên màn dễ nhận được ánh sáng từ ít nhất một phần nguồn hơn, nên vùng tối hoàn toàn thu hẹp lại; đồng thời số điểm chỉ nhận một phần ánh sáng (vùng nửa tối) tăng lên.\n\nVì sao các phương án khác sai:\n- A: Vùng tối không rộng ra mà THU HẸP lại khi nguồn sáng rộng hơn; chỉ vùng nửa tối rộng ra.\n- B: Vùng nửa tối không hẹp lại mà RỘNG ra khi nguồn sáng rộng hơn; chỉ vùng tối hẹp lại.\n- D: Đã đổi ngược chiều thay đổi của hai vùng: vùng tối phải hẹp lại và vùng nửa tối phải rộng ra."
+    },
+    {
+     "ma_cau": "K07050102036",
+     "loai": "trac_nghiem",
+     "de": "Một nguồn sáng RỘNG chiếu vào vật cản, phía sau có màn chắn, tạo vùng tối và vùng nửa tối. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050104-01-005-de.png) Nếu THU NHỎ kích thước của nguồn sáng (vị trí nguồn, vật cản, màn giữ nguyên), vùng tối và vùng nửa tối trên màn thay đổi thế nào?",
+     "lua_chon": [
+      "Vùng tối rộng hơn, vùng nửa tối hẹp hơn",
+      "Cả hai đều hẹp hơn",
+      "Cả hai đều rộng hơn",
+      "Vùng tối hẹp hơn, vùng nửa tối rộng hơn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nguồn sáng nhỏ hơn thì gần với nguồn điểm hơn, vùng nửa tối (chỉ nhận một phần ánh sáng) thu hẹp lại; đồng thời vùng tối hoàn toàn mở rộng ra vì khó có điểm nào trên màn còn nhận được chút ánh sáng nào từ nguồn đã thu nhỏ.\n\nVì sao các phương án khác sai:\n- B: Vùng tối không hẹp lại mà RỘNG ra khi nguồn sáng nhỏ hơn; chỉ vùng nửa tối hẹp lại.\n- C: Vùng nửa tối không rộng ra mà HẸP lại khi nguồn sáng nhỏ hơn; chỉ vùng tối rộng ra.\n- D: Đã đổi ngược chiều thay đổi của hai vùng: vùng tối phải rộng ra và vùng nửa tối phải hẹp lại."
+    },
+    {
+     "ma_cau": "K07050102037",
+     "loai": "trac_nghiem",
+     "de": "Một nguồn sáng NHỎ chiếu vào vật cản, phía sau có màn chắn. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050104-01-006-de.png) Nếu dịch MÀN lại gần vật cản hơn (nguồn sáng, vật cản giữ nguyên), vùng tối trên màn thay đổi thế nào?",
+     "lua_chon": [
+      "Vùng tối rộng hơn",
+      "Vùng tối hẹp hơn",
+      "Vùng tối không đổi",
+      "Xuất hiện thêm vùng nửa tối"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Màn lại gần vật cản hơn thì các tia sáng đi sát mép vật cản chưa kịp loang rộng nhiều, nên vùng tối trên màn hẹp hơn (gần với kích thước vật cản hơn).\n\nVì sao các phương án khác sai:\n- A: Ngược lại: màn gần vật cản hơn làm vùng tối hẹp lại, không rộng hơn.\n- C: Khoảng cách từ màn tới vật cản thay đổi nên kích thước vùng tối cũng thay đổi theo.\n- D: Nguồn sáng vẫn là nguồn nhỏ (một điểm) nên không xuất hiện vùng nửa tối, chỉ có vùng tối và vùng sáng."
+    },
+    {
+     "ma_cau": "K07050102038",
+     "loai": "trac_nghiem",
+     "de": "Một nguồn sáng nhỏ chiếu vào vật cản, phía sau có màn chắn, tạo vùng tối kích thước X trên màn. Nếu đồng thời dùng vật cản NHỎ HƠN và dời màn RA XA hơn, vùng tối trên màn có thể như thế nào so với X?",
+     "lua_chon": [
+      "Chắc chắn nhỏ hơn X",
+      "Chắc chắn lớn hơn X",
+      "Có thể lớn hơn, nhỏ hơn hoặc bằng X",
+      "Chắc chắn bằng X"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vật cản nhỏ hơn làm vùng tối có xu hướng nhỏ lại, còn màn xa hơn làm vùng tối có xu hướng lớn ra; hai xu hướng ngược nhau nên kết quả cuối cùng tùy thuộc mức độ thay đổi của từng yếu tố, không thể khẳng định chắc chắn theo một hướng.\n\nVì sao các phương án khác sai:\n- A: Không chắc chắn nhỏ hơn, vì màn ra xa lại có xu hướng làm vùng tối lớn hơn.\n- B: Không chắc chắn lớn hơn, vì vật cản nhỏ hơn lại có xu hướng làm vùng tối nhỏ hơn.\n- D: Hai yếu tố tác động ngược chiều nhưng không nhất thiết triệt tiêu vừa đủ để bằng đúng X; kết quả phụ thuộc mức độ thay đổi cụ thể."
+    },
+    {
+     "ma_cau": "K07050102039",
+     "loai": "trac_nghiem",
+     "de": "Một nguồn sáng RỘNG chiếu vào vật cản, phía sau có màn chắn, tạo vùng tối và vùng nửa tối. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050104-01-008-de.png) Nếu vừa TĂNG kích thước nguồn sáng, vừa dời NGUỒN SÁNG lại gần vật cản hơn, vùng nửa tối trên màn thay đổi như thế nào?",
+     "lua_chon": [
+      "Chắc chắn hẹp hơn",
+      "Không đổi vì hai thay đổi triệt tiêu nhau",
+      "Vùng nửa tối biến mất hoàn toàn",
+      "Chắc chắn rộng hơn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cả hai thay đổi (nguồn sáng lớn hơn và nguồn sáng gần vật cản hơn) đều có xu hướng làm vùng nửa tối rộng ra, nên chắc chắn vùng nửa tối trên màn rộng hơn.\n\nVì sao các phương án khác sai:\n- A: Cả hai yếu tố đều làm vùng nửa tối rộng ra, không phải hẹp hơn.\n- B: Hai thay đổi cùng chiều (cùng làm rộng ra), không triệt tiêu nhau.\n- C: Nguồn sáng vẫn là nguồn rộng nên vùng nửa tối vẫn tồn tại, không biến mất."
+    },
+    {
+     "ma_cau": "K07050102040",
+     "loai": "trac_nghiem",
+     "de": "Khi xảy ra nhật thực, An đứng ở vùng NGOÀI bóng, Bình đứng ở vùng NỬA TỐI, Chi đứng ở vùng TỐI trên Trái Đất. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050104-02-001-de.png) Điều nào sau đây đúng?",
+     "lua_chon": [
+      "An: một phần; Bình: toàn phần; Chi: không thấy gì",
+      "An: không thấy gì; Bình: toàn phần; Chi: một phần",
+      "An: không thấy gì; Bình: một phần; Chi: toàn phần",
+      "An: toàn phần; Bình: một phần; Chi: không thấy gì"
+     ],
+     "dap_an": "C",
+     "loi_giai": "An ở ngoài vùng bóng nên không thấy nhật thực. Bình ở vùng nửa tối (Mặt Trăng che một phần Mặt Trời) nên thấy nhật thực MỘT PHẦN. Chi ở vùng tối (bị che khuất hoàn toàn) nên thấy nhật thực TOÀN PHẦN.\n\nVì sao các phương án khác sai:\n- A: An ở ngoài vùng bóng nên KHÔNG thấy nhật thực; đồng thời đã đổi vai trò của Bình và Chi.\n- B: Đã đổi vai trò của Bình (vùng nửa tối phải là một phần) và Chi (vùng tối phải là toàn phần).\n- D: Đã đổi ngược vai trò của cả ba: An (ngoài vùng) không phải toàn phần, Chi (vùng tối) không phải không thấy gì."
+    },
+    {
+     "ma_cau": "K07050102041",
+     "loai": "trac_nghiem",
+     "de": "Khi xảy ra nguyệt thực, Dương quan sát lúc Mặt Trăng ở vùng NỬA TỐI, Hoa quan sát lúc Mặt Trăng ở vùng TỐI, Khang quan sát lúc Mặt Trăng ở NGOÀI vùng bóng Trái Đất. Điều nào sau đây đúng?",
+     "lua_chon": [
+      "Dương: một phần; Hoa: toàn phần; Khang: sáng bình thường",
+      "Dương: toàn phần; Hoa: một phần; Khang: sáng bình thường",
+      "Dương: một phần; Hoa: sáng bình thường; Khang: toàn phần",
+      "Dương: sáng bình thường; Hoa: toàn phần; Khang: một phần"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Dương quan sát lúc Mặt Trăng ở vùng nửa tối nên thấy Mặt Trăng mờ đi MỘT PHẦN. Hoa quan sát lúc Mặt Trăng ở vùng tối nên thấy Mặt Trăng tối hẳn (TOÀN PHẦN). Khang quan sát lúc Mặt Trăng ở ngoài vùng bóng nên thấy Mặt Trăng sáng bình thường.\n\nVì sao các phương án khác sai:\n- B: Đã đổi vai trò của Dương (vùng nửa tối phải là một phần) và Hoa (vùng tối phải là toàn phần).\n- C: Hoa quan sát lúc Mặt Trăng ở vùng tối nên phải thấy toàn phần, không phải sáng bình thường; Khang mới là người thấy sáng bình thường.\n- D: Dương quan sát lúc Mặt Trăng ở vùng nửa tối nên phải thấy một phần, không phải sáng bình thường; Khang mới là người thấy sáng bình thường."
+    },
+    {
+     "ma_cau": "K07050102042",
+     "loai": "trac_nghiem",
+     "de": "Khi xảy ra nhật thực, Lâm đứng ở vùng TỐI, Mai đứng ở vùng NỬA TỐI, Nam đứng ở vùng NGOÀI bóng trên Trái Đất. Điều nào sau đây đúng?",
+     "lua_chon": [
+      "Lâm: một phần; Mai: không thấy gì; Nam: toàn phần",
+      "Lâm: không thấy gì; Mai: toàn phần; Nam: một phần",
+      "Lâm: toàn phần; Mai: không thấy gì; Nam: một phần",
+      "Lâm: toàn phần; Mai: một phần; Nam: không thấy gì"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lâm ở vùng tối nên thấy nhật thực TOÀN PHẦN. Mai ở vùng nửa tối nên thấy nhật thực MỘT PHẦN. Nam ở ngoài vùng bóng nên không thấy nhật thực.\n\nVì sao các phương án khác sai:\n- A: Đã đổi vai trò của Lâm (vùng tối phải là toàn phần) và Nam (ngoài vùng phải là không thấy gì).\n- B: Đã đổi vai trò của Lâm (vùng tối phải là toàn phần) và Mai (vùng nửa tối phải là một phần).\n- C: Mai ở vùng nửa tối nên phải thấy một phần, không phải không thấy gì; Nam mới là người không thấy gì."
+    },
+    {
+     "ma_cau": "K07050102043",
+     "loai": "trac_nghiem",
+     "de": "Khi xảy ra nguyệt thực, Phúc quan sát lúc Mặt Trăng ở NGOÀI vùng bóng Trái Đất, Quỳnh quan sát lúc Mặt Trăng ở vùng TỐI, Sơn quan sát lúc Mặt Trăng ở vùng NỬA TỐI. Điều nào sau đây đúng?",
+     "lua_chon": [
+      "Phúc: một phần; Quỳnh: toàn phần; Sơn: sáng bình thường",
+      "Phúc: sáng bình thường; Quỳnh: toàn phần; Sơn: một phần",
+      "Phúc: toàn phần; Quỳnh: sáng bình thường; Sơn: một phần",
+      "Phúc: sáng bình thường; Quỳnh: một phần; Sơn: toàn phần"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Phúc quan sát lúc Mặt Trăng ở ngoài vùng bóng nên thấy Mặt Trăng sáng bình thường. Quỳnh quan sát lúc Mặt Trăng ở vùng tối nên thấy tối hẳn (TOÀN PHẦN). Sơn quan sát lúc Mặt Trăng ở vùng nửa tối nên thấy mờ MỘT PHẦN.\n\nVì sao các phương án khác sai:\n- A: Phúc quan sát lúc Mặt Trăng ở ngoài vùng bóng nên phải thấy sáng bình thường, không phải một phần; Sơn mới là người thấy một phần.\n- C: Đã đổi vai trò của Phúc (ngoài vùng phải là sáng bình thường) và Quỳnh (vùng tối phải là toàn phần).\n- D: Đã đổi vai trò của Quỳnh (vùng tối phải là toàn phần) và Sơn (vùng nửa tối phải là một phần)."
+    },
+    {
+     "ma_cau": "K07050102044",
+     "loai": "trac_nghiem",
+     "de": "Khi xảy ra nhật thực, Tú đứng ở vùng NỬA TỐI, Uyên đứng ở vùng NGOÀI bóng, Vinh đứng ở vùng TỐI trên Trái Đất. Điều nào sau đây đúng?",
+     "lua_chon": [
+      "Tú: toàn phần; Uyên: không thấy gì; Vinh: một phần",
+      "Tú: một phần; Uyên: toàn phần; Vinh: không thấy gì",
+      "Tú: không thấy gì; Uyên: một phần; Vinh: toàn phần",
+      "Tú: một phần; Uyên: không thấy gì; Vinh: toàn phần"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tú ở vùng nửa tối nên thấy nhật thực MỘT PHẦN. Uyên ở ngoài vùng bóng nên không thấy nhật thực. Vinh ở vùng tối nên thấy nhật thực TOÀN PHẦN.\n\nVì sao các phương án khác sai:\n- A: Đã đổi vai trò của Tú (vùng nửa tối phải là một phần) và Vinh (vùng tối phải là toàn phần).\n- B: Uyên ở ngoài vùng bóng nên phải không thấy gì, không phải toàn phần; Vinh mới là người thấy toàn phần.\n- C: Tú ở vùng nửa tối nên phải thấy một phần, không phải không thấy gì; Uyên mới là người không thấy gì."
+    },
+    {
+     "ma_cau": "K07050102045",
+     "loai": "trac_nghiem",
+     "de": "Khi xảy ra nhật thực, Bảo đứng ở vùng NGOÀI bóng, Châu đứng ở vùng TỐI, Đạt đứng ở vùng NỬA TỐI trên Trái Đất. Điều nào sau đây đúng?",
+     "lua_chon": [
+      "Bảo: không thấy gì; Châu: toàn phần; Đạt: một phần",
+      "Bảo: một phần; Châu: không thấy gì; Đạt: toàn phần",
+      "Bảo: toàn phần; Châu: một phần; Đạt: không thấy gì",
+      "Bảo: không thấy gì; Châu: một phần; Đạt: toàn phần"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Bảo ở ngoài vùng bóng nên không thấy nhật thực. Châu ở vùng tối nên thấy nhật thực TOÀN PHẦN. Đạt ở vùng nửa tối nên thấy nhật thực MỘT PHẦN.\n\nVì sao các phương án khác sai:\n- B: Bảo ở ngoài vùng bóng thì không thấy gì (không phải một phần); Châu ở vùng tối phải thấy toàn phần (không phải không thấy gì).\n- C: Bảo ở ngoài vùng bóng thì không thấy nhật thực (không phải toàn phần); Đạt ở vùng nửa tối phải thấy một phần (không phải không thấy gì).\n- D: Châu ở vùng tối phải thấy toàn phần (không phải một phần); Đạt ở vùng nửa tối phải thấy một phần (không phải toàn phần)."
+    },
+    {
+     "ma_cau": "K07050102046",
+     "loai": "trac_nghiem",
+     "de": "Khi xảy ra nguyệt thực, Giang quan sát lúc Mặt Trăng ở vùng TỐI, Hà quan sát lúc Mặt Trăng ở NGOÀI vùng bóng Trái Đất, Khôi quan sát lúc Mặt Trăng ở vùng NỬA TỐI. Điều nào sau đây đúng?",
+     "lua_chon": [
+      "Giang: một phần; Hà: toàn phần; Khôi: sáng bình thường",
+      "Giang: toàn phần; Hà: sáng bình thường; Khôi: một phần",
+      "Giang: sáng bình thường; Hà: một phần; Khôi: toàn phần",
+      "Giang: toàn phần; Hà: một phần; Khôi: sáng bình thường"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Giang quan sát lúc Mặt Trăng ở vùng tối nên thấy Mặt Trăng tối hẳn (TOÀN PHẦN). Hà quan sát lúc Mặt Trăng ở ngoài vùng bóng nên thấy Mặt Trăng sáng bình thường. Khôi quan sát lúc Mặt Trăng ở vùng nửa tối nên thấy mờ MỘT PHẦN.\n\nVì sao các phương án khác sai:\n- A: Giang ở vùng tối phải thấy toàn phần (không phải một phần); Hà ở ngoài vùng bóng phải thấy sáng bình thường (không phải toàn phần).\n- C: Giang ở vùng tối phải thấy toàn phần (không phải sáng bình thường); Khôi ở vùng nửa tối phải thấy một phần (không phải toàn phần).\n- D: Hà ở ngoài vùng bóng phải thấy sáng bình thường (không phải một phần); Khôi ở vùng nửa tối phải thấy một phần (không phải sáng bình thường)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00341",
+   "khoi": "7",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Sự phản xạ ánh sáng",
+   "nhom": "Đặc điểm của phản xạ gương và phản xạ khuếch tán",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K07050201001",
+     "loai": "trac_nghiem",
+     "de": "Chùm sáng song song chiếu tới một bề mặt nhẵn bóng, cho chùm phản xạ cũng song song. Hiện tượng này gọi là gì?",
+     "lua_chon": [
+      "Phản xạ khuếch tán",
+      "Phản xạ âm",
+      "Phản xạ gương",
+      "Sự truyền thẳng ánh sáng"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Bề mặt nhẵn bóng cho chùm phản xạ song song khi chùm tới song song: đó là phản xạ gương.\n\nVì sao các phương án khác sai:\n- A: Phản xạ khuếch tán xảy ra ở mặt gồ ghề, tia phản xạ đi theo mọi hướng.\n- B: Phản xạ âm là âm dội lại, không phải ánh sáng.\n- D: Ánh sáng đã bị hắt lại trên bề mặt, đó là phản xạ, không chỉ truyền thẳng."
+    },
+    {
+     "ma_cau": "K07050201002",
+     "loai": "trac_nghiem",
+     "de": "Vì sao ta có thể nhìn thấy trang sách từ nhiều hướng khác nhau?",
+     "lua_chon": [
+      "Vì trang sách phản xạ khuếch tán ánh sáng",
+      "Vì trang sách tự phát ra ánh sáng",
+      "Vì trang sách phản xạ gương theo một hướng",
+      "Vì mắt người tự phát ra tia sáng"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Bề mặt trang sách gồ ghề nên phản xạ khuếch tán, ánh sáng hắt ra theo mọi hướng nên mắt ở nhiều vị trí đều nhìn thấy.\n\nVì sao các phương án khác sai:\n- B: Sai: trang sách không tự phát sáng, nó chỉ phản xạ ánh sáng chiếu tới.\n- C: Sai: phản xạ gương chỉ cho ảnh theo một hướng xác định.\n- D: Sai: mắt người không phát ra tia sáng để nhìn vật."
+    },
+    {
+     "ma_cau": "K07050201003",
+     "loai": "trac_nghiem",
+     "de": "Bề mặt nào sau đây cho phản xạ khuếch tán?",
+     "lua_chon": [
+      "Mặt gương phẳng",
+      "Mặt nước hồ phẳng lặng",
+      "Mặt nồi inox sáng bóng",
+      "Mặt tờ giấy trắng"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Phản xạ khuếch tán xảy ra ở bề mặt gồ ghề, không nhẵn như tờ giấy, bức tường; bề mặt nhẵn bóng cho phản xạ gương.\n\nVì sao các phương án khác sai:\n- A: Mặt gương nhẵn bóng, cho phản xạ gương.\n- B: Mặt nước phẳng lặng nhẵn, cho phản xạ gương.\n- C: Mặt kim loại sáng bóng nhẵn, cho phản xạ gương."
+    },
+    {
+     "ma_cau": "K07050201004",
+     "loai": "trac_nghiem",
+     "de": "Vào ban đêm, nhìn xuống mặt hồ phẳng lặng, ta thấy ảnh Mặt Trăng rõ nét trên mặt hồ. Đây là hiện tượng gì?",
+     "lua_chon": [
+      "Phản xạ khuếch tán",
+      "Hấp thụ ánh sáng",
+      "Phản xạ gương",
+      "Sự truyền thẳng ánh sáng"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Mặt hồ phẳng lặng có bề mặt nhẵn, cho phản xạ gương nên tạo ảnh rõ nét của Mặt Trăng.\n\nVì sao các phương án khác sai:\n- A: Phản xạ khuếch tán xảy ra ở bề mặt gồ ghề, không tạo ảnh rõ nét như vậy.\n- B: Mặt hồ hắt ánh sáng trở lại tạo ảnh, đó là phản xạ.\n- D: Truyền thẳng ánh sáng là hiện tượng ánh sáng đi theo đường thẳng, không phải hiện tượng tạo ảnh do phản xạ trên mặt gương."
+    },
+    {
+     "ma_cau": "K07050201005",
+     "loai": "trac_nghiem",
+     "de": "Bức tường sơn màu trắng mờ (không bóng) trong phòng học cho phép ta nhìn rõ tường từ mọi góc trong phòng. Đây là kết quả của hiện tượng gì?",
+     "lua_chon": [
+      "Phản xạ gương",
+      "Sự truyền thẳng ánh sáng",
+      "Hấp thụ hoàn toàn ánh sáng",
+      "Phản xạ khuếch tán"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Bề mặt tường sơn mờ gồ ghề ở mức vi mô nên cho phản xạ khuếch tán, ánh sáng hắt ra theo mọi hướng nên nhìn thấy được từ mọi góc.\n\nVì sao các phương án khác sai:\n- A: Phản xạ gương chỉ cho ảnh rõ theo một hướng nhất định, không phải nhìn rõ từ mọi góc.\n- B: Truyền thẳng ánh sáng là ánh sáng đi thẳng từ nguồn, không giải thích việc nhìn thấy tường từ mọi góc nhờ ánh sáng phản xạ.\n- C: Nếu hấp thụ hoàn toàn thì không có ánh sáng phản xạ, mắt sẽ không nhìn thấy tường."
+    },
+    {
+     "ma_cau": "K07050201006",
+     "loai": "trac_nghiem",
+     "de": "Màn chiếu trong rạp chiếu phim được làm bằng vải trắng hơi nhám, không làm bằng gương. Vì sao?",
+     "lua_chon": [
+      "Vải nhám hấp thụ hết ánh sáng chiếu tới",
+      "Vải nhám phản xạ khuếch tán, ai ngồi đâu cũng thấy",
+      "Gương phản xạ khuếch tán nên làm hình bị mờ",
+      "Vải nhám phản xạ ánh sáng theo một hướng"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mặt vải nhám cho phản xạ khuếch tán, ánh sáng hắt ra mọi hướng nên khán giả ở mọi chỗ ngồi đều thấy hình.\n\nVì sao các phương án khác sai:\n- A: Nếu hấp thụ hết ánh sáng thì màn tối, khán giả không thấy hình.\n- C: Gương cho phản xạ gương, không phải phản xạ khuếch tán.\n- D: Phản xạ theo một hướng là phản xạ gương; khi đó chỉ vài chỗ ngồi thấy rõ."
+    },
+    {
+     "ma_cau": "K07050201007",
+     "loai": "trac_nghiem",
+     "de": "Vì sao vào ban đêm, đèn pha ô tô chiếu vào biển báo giao thông làm biển báo sáng rực lên, dễ nhìn thấy từ xa?",
+     "lua_chon": [
+      "Vì biển báo tự phát sáng khi có ánh sáng chiếu vào",
+      "Vì biển báo hấp thụ ánh sáng rồi phát ra ánh sáng màu khác",
+      "Vì mặt biển phủ lớp phản quang, hắt ánh sáng về xe",
+      "Vì đèn pha ô tô làm nóng biển báo lên"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Bề mặt biển báo giao thông thường phủ vật liệu phản quang, phản xạ mạnh ánh sáng đèn xe trở lại theo hướng nguồn sáng, giúp người lái xe dễ nhìn thấy biển báo từ xa vào ban đêm.\n\nVì sao các phương án khác sai:\n- A: Biển báo không tự phát sáng, nó chỉ phản xạ ánh sáng chiếu tới.\n- B: Đây không phải hiện tượng hấp thụ rồi phát quang, mà là phản xạ ánh sáng.\n- D: Nhiệt độ không liên quan đến việc biển báo sáng rực lên khi có ánh sáng chiếu vào."
+    },
+    {
+     "ma_cau": "K07050201008",
+     "loai": "trac_nghiem",
+     "de": "Buổi trưa nắng gắt, nhìn xuống mặt đường nhựa ướt (sau cơn mưa) ở một góc nhìn thấp, ta thường thấy chói mắt như nhìn vào gương, nhưng nhìn từ trên cao xuống lại không thấy chói. Vì sao?",
+     "lua_chon": [
+      "Mặt đường ướt phản xạ khuếch tán đều mọi hướng",
+      "Nước mưa làm mặt đường tự phát sáng",
+      "Ánh sáng Mặt Trời chỉ chiếu vào mặt đường ở một số góc nhìn nhất định",
+      "Mặt đường ướt phản xạ gần như gương theo một hướng"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lớp nước mỏng làm mặt đường nhẵn hơn, phản xạ giống gương theo một số hướng (nhìn thấy chói ở góc thấp trùng hướng phản xạ), trong khi từ góc khác thì không nhận được tia phản xạ đó nên không chói.\n\nVì sao các phương án khác sai:\n- A: Nếu luôn khuếch tán như nhau thì độ chói phải giống nhau ở mọi góc nhìn, không có sự khác biệt như mô tả.\n- B: Nước mưa không làm mặt đường tự phát sáng, chỉ ảnh hưởng đến cách ánh sáng phản xạ.\n- C: Mặt Trời vẫn chiếu sáng toàn bộ mặt đường như nhau; sự khác biệt là do góc nhìn của người quan sát so với hướng tia phản xạ."
+    },
+    {
+     "ma_cau": "K07050201009",
+     "loai": "trac_nghiem",
+     "de": "Vì sao khi lau bóng (đánh bóng) một mặt kim loại xỉn màu, mặt kim loại đó trở nên sáng bóng và có thể soi thấy hình mờ?",
+     "lua_chon": [
+      "Mặt kim loại nhẵn hơn, phản xạ gần như gương",
+      "Kim loại tự phát ra ánh sáng",
+      "Kim loại hấp thụ hết ánh sáng chiếu tới",
+      "Lau chỉ làm sạch bụi, không đổi cách phản xạ"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khi bề mặt kim loại còn xỉn, gồ ghề ở mức nhỏ, nó cho phản xạ khuếch tán; lau bóng làm bề mặt nhẵn hơn, chuyển sang phản xạ gần giống phản xạ gương nên soi thấy hình mờ.\n\nVì sao các phương án khác sai:\n- B: Kim loại không tự phát sáng.\n- C: Mặt sáng bóng phản xạ mạnh chứ không hấp thụ hết.\n- D: Mặt nhẵn hơn thì phản xạ chuyển sang gần như gương."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00342",
+   "khoi": "7",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Sự phản xạ ánh sáng",
+   "nhom": "Tính toán góc tới, góc phản xạ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K07050202001",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng tới gương phẳng với góc tới 35°. Góc phản xạ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-01-001-de.png)",
+     "lua_chon": [
+      "55°",
+      "70°",
+      "35°",
+      "17,5°"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Theo định luật phản xạ ánh sáng, góc phản xạ bằng góc tới: i′ = i = 35°.\n\nVì sao các phương án khác sai:\n- A: Đây là góc giữa tia phản xạ và mặt gương; góc phản xạ đo với pháp tuyến.\n- B: Đây là góc giữa tia tới và tia phản xạ, không phải góc phản xạ.\n- D: Không chia đôi; góc phản xạ bằng đúng góc tới."
+    },
+    {
+     "ma_cau": "K07050202002",
+     "loai": "trac_nghiem",
+     "de": "Hình vẽ tia tới SI chiếu lên gương phẳng. Góc phản xạ của tia sáng này bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-01-002-de.png)",
+     "lua_chon": [
+      "40°",
+      "50°",
+      "100°",
+      "25°"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Trên hình góc tới SIN = 50°; góc phản xạ bằng góc tới nên i′ = 50°.\n\nVì sao các phương án khác sai:\n- A: Đây là góc giữa tia tới và mặt gương; góc phản xạ bằng góc tới đo với pháp tuyến.\n- C: Đây là góc giữa tia tới và tia phản xạ.\n- D: Không chia đôi; góc phản xạ bằng đúng góc tới."
+    },
+    {
+     "ma_cau": "K07050202003",
+     "loai": "trac_nghiem",
+     "de": "Một tia laser chiếu tới gương phẳng tại điểm I. Đo được góc SIN giữa tia tới và pháp tuyến là 42°. Góc NIR giữa tia phản xạ và pháp tuyến bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-01-003-de.png)",
+     "lua_chon": [
+      "48°",
+      "42°",
+      "84°",
+      "21°"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Góc NIR là góc phản xạ, bằng góc tới SIN = 42°.\n\nVì sao các phương án khác sai:\n- A: Đây là góc giữa tia phản xạ và mặt gương, không phải góc NIR.\n- C: Đây là góc SIR giữa tia tới và tia phản xạ.\n- D: Không chia đôi; góc NIR là góc phản xạ, bằng góc tới."
+    },
+    {
+     "ma_cau": "K07050202004",
+     "loai": "trac_nghiem",
+     "de": "Bạn Lan đo được góc phản xạ của một tia sáng trên gương phẳng là 64°. Góc tới của tia sáng đó bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-01-004-de.png)",
+     "lua_chon": [
+      "64°",
+      "26°",
+      "32°",
+      "128°"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Góc tới bằng góc phản xạ nên i = i′ = 64°.\n\nVì sao các phương án khác sai:\n- B: Đây là góc giữa tia tới và mặt gương, không phải góc tới.\n- C: Không chia đôi; góc tới bằng đúng góc phản xạ.\n- D: Đây là góc giữa tia tới và tia phản xạ."
+    },
+    {
+     "ma_cau": "K07050202005",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng vuông góc với mặt gương phẳng (góc tới bằng 0°). Tia phản xạ đi theo hướng nào?",
+     "lua_chon": [
+      "Bật ngược lại theo đường của tia tới",
+      "Đi sát theo mặt gương",
+      "Truyền xuyên qua gương",
+      "Hợp với pháp tuyến góc 45°"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Góc tới 0° thì góc phản xạ cũng 0°: tia phản xạ nằm trên pháp tuyến, bật ngược lại theo đường của tia tới.\n\nVì sao các phương án khác sai:\n- B: Đi sát mặt gương thì góc phản xạ là 90°, nhưng góc tới là 0°.\n- C: Gương phẳng phản xạ ánh sáng, không cho ánh sáng truyền qua.\n- D: Góc phản xạ bằng góc tới là 0°, không phải 45°."
+    },
+    {
+     "ma_cau": "K07050202006",
+     "loai": "trac_nghiem",
+     "de": "Chiếu tia sáng SI tới gương phẳng; tia tới hợp với mặt gương một góc 30°. Góc phản xạ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-02-001-de.png)",
+     "lua_chon": [
+      "30°",
+      "120°",
+      "150°",
+      "60°"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Pháp tuyến vuông góc với gương nên góc tới i = 90° − 30° = 60°; góc phản xạ bằng góc tới = 60°.\n\nVì sao các phương án khác sai:\n- A: Đây là góc giữa tia tới và mặt gương; góc tới phải đo với pháp tuyến.\n- B: Đây là góc giữa tia tới và tia phản xạ (gấp đôi góc tới).\n- C: Lấy 180° trừ là nhầm; pháp tuyến vuông góc gương nên lấy 90° − 30°."
+    },
+    {
+     "ma_cau": "K07050202007",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng chiếu tới gương phẳng, hợp với mặt gương một góc 25°. Góc tới của tia sáng bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-02-002-de.png)",
+     "lua_chon": [
+      "25°",
+      "155°",
+      "130°",
+      "65°"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Pháp tuyến vuông góc với mặt gương nên góc tới i = 90° − 25° = 65°.\n\nVì sao các phương án khác sai:\n- A: Đây là góc với mặt gương; góc tới đo với pháp tuyến.\n- B: Lấy 180° trừ là nhầm; pháp tuyến vuông góc gương nên lấy 90° − 25°.\n- C: Đây là góc giữa tia tới và tia phản xạ, không phải góc tới."
+    },
+    {
+     "ma_cau": "K07050202008",
+     "loai": "trac_nghiem",
+     "de": "Tia phản xạ IR hợp với mặt gương phẳng một góc 40°. Góc tới của tia sáng bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-02-003-de.png)",
+     "lua_chon": [
+      "40°",
+      "50°",
+      "100°",
+      "140°"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Góc phản xạ = 90° − 40° = 50°; góc tới bằng góc phản xạ nên i = 50°.\n\nVì sao các phương án khác sai:\n- A: Đây là góc giữa tia phản xạ và mặt gương, chưa đổi sang góc với pháp tuyến.\n- C: Đây là góc giữa tia tới và tia phản xạ.\n- D: Lấy 180° trừ là nhầm; pháp tuyến vuông góc gương nên lấy 90° − 40°."
+    },
+    {
+     "ma_cau": "K07050202009",
+     "loai": "trac_nghiem",
+     "de": "Chiếu tia sáng SI tới gương phẳng với góc tới 35°. Góc SIR tạo bởi tia tới và tia phản xạ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-03-001-de.png)",
+     "lua_chon": [
+      "70°",
+      "35°",
+      "55°",
+      "110°"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Góc SIR = góc tới + góc phản xạ = 35° + 35° = 70°.\n\nVì sao các phương án khác sai:\n- B: Đây mới là góc tới; góc SIR gồm cả góc tới và góc phản xạ.\n- C: Đây là góc giữa tia tới và mặt gương.\n- D: Nhân đôi góc với mặt gương là sai; phải nhân đôi góc tới."
+    },
+    {
+     "ma_cau": "K07050202010",
+     "loai": "trac_nghiem",
+     "de": "Góc tạo bởi tia tới SI và tia phản xạ IR trên một gương phẳng là 80°. Góc tới bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-03-002-de.png)",
+     "lua_chon": [
+      "40°",
+      "80°",
+      "160°",
+      "50°"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Pháp tuyến chia đôi góc SIR vì góc tới bằng góc phản xạ: i = 80° : 2 = 40°.\n\nVì sao các phương án khác sai:\n- B: Đây là cả góc SIR; góc tới chỉ là một nửa.\n- C: Phải chia đôi góc SIR, không nhân đôi.\n- D: Đây là góc giữa tia tới và mặt gương."
+    },
+    {
+     "ma_cau": "K07050202011",
+     "loai": "trac_nghiem",
+     "de": "Tia tới SI hợp với mặt gương phẳng một góc 50°. Góc SIR tạo bởi tia tới và tia phản xạ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050202-03-003-de.png)",
+     "lua_chon": [
+      "100°",
+      "80°",
+      "40°",
+      "50°"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Góc tới i = 90° − 50° = 40°; góc SIR = 2 × 40° = 80°.\n\nVì sao các phương án khác sai:\n- A: Nhân đôi góc với mặt gương là sai; phải nhân đôi góc tới.\n- C: Đây mới là góc tới, chưa cộng góc phản xạ.\n- D: Đây là góc giữa tia tới và mặt gương."
+    },
+    {
+     "ma_cau": "K07050202012",
+     "loai": "trac_nghiem",
+     "de": "Chiếu tia sáng tới gương phẳng với góc tới 40°. Hình nào vẽ đúng tia phản xạ?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-001-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-001-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-001-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-001-D.png)"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Góc phản xạ phải bằng góc tới: hình đúng có góc NIR = 40°.\n\nVì sao các phương án khác sai:\n- B: Tia phản xạ vẽ với góc 50° là do đo góc với mặt gương.\n- C: Góc phản xạ 20° là chia đôi góc tới; phải bằng góc tới.\n- D: Góc phản xạ 80° là nhân đôi góc tới; phải bằng góc tới."
+    },
+    {
+     "ma_cau": "K07050202013",
+     "loai": "trac_nghiem",
+     "de": "Chiếu tia sáng tới gương phẳng với góc tới 30°. Hình nào vẽ đúng tia phản xạ?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-002-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-002-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-002-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-002-D.png)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Góc phản xạ bằng góc tới nên hình đúng có góc NIR = 30°.\n\nVì sao các phương án khác sai:\n- A: Góc phản xạ 60° là góc lấy theo mặt gương (90° − 30°).\n- B: Góc phản xạ 15° là chia đôi góc tới; phải bằng góc tới.\n- C: Góc phản xạ 45° lớn hơn góc tới, sai định luật."
+    },
+    {
+     "ma_cau": "K07050202014",
+     "loai": "trac_nghiem",
+     "de": "Chiếu tia sáng tới gương phẳng với góc tới 50°. Hình nào vẽ đúng tia phản xạ?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-003-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-003-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-003-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-003-D.png)"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Góc phản xạ bằng góc tới nên hình đúng có góc NIR = 50°.\n\nVì sao các phương án khác sai:\n- B: Góc phản xạ 40° là góc lấy theo mặt gương (90° − 50°).\n- C: Góc phản xạ 25° là chia đôi góc tới; phải bằng góc tới.\n- D: Tia phản xạ nằm trên pháp tuyến chỉ khi góc tới bằng 0°."
+    },
+    {
+     "ma_cau": "K07050202015",
+     "loai": "trac_nghiem",
+     "de": "Chiếu tia sáng tới gương phẳng với góc tới 65°. Hình nào vẽ đúng tia phản xạ?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-006-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-006-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-006-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-006-D.png)"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Góc phản xạ phải bằng góc tới: hình đúng có góc NIR = 65°.\n\nVì sao các phương án khác sai:\n- A: Góc phản xạ 25° khác góc tới 65° nên hình này sai.\n- C: Góc phản xạ 90° khác góc tới 65° nên hình này sai.\n- D: Góc phản xạ 45° khác góc tới 65° nên hình này sai."
+    },
+    {
+     "ma_cau": "K07050202016",
+     "loai": "trac_nghiem",
+     "de": "Tia tới SI hợp với mặt gương phẳng một góc 60°. Hình nào vẽ đúng cả tia tới và tia phản xạ?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-004-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-004-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-004-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-004-D.png)"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Góc tới i = 90° − 60° = 30°; góc phản xạ cũng 30°. Hình đúng: góc SIN = góc NIR = 30°.\n\nVì sao các phương án khác sai:\n- A: Hình này lấy 60° (góc với mặt gương) làm góc tới.\n- C: Góc tới đúng 30° nhưng góc phản xạ phải bằng 30°.\n- D: Góc tới vẽ 60° là đo với mặt gương; góc tới phải là 30°."
+    },
+    {
+     "ma_cau": "K07050202017",
+     "loai": "trac_nghiem",
+     "de": "Chiếu tia sáng tới gương phẳng thì góc tạo bởi tia tới và tia phản xạ là 80°. Hình nào vẽ đúng?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-005-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-005-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-005-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-005-D.png)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Pháp tuyến chia đôi góc SIR: i = i′ = 80° : 2 = 40°.\n\nVì sao các phương án khác sai:\n- A: Hình này lấy cả góc SIR 80° làm góc tới; phải chia đôi.\n- B: Góc tới 40° đúng nhưng góc phản xạ phải bằng 40°.\n- C: Góc 50° là lấy 90° − 40°; góc SIR của hình này là 100°."
+    },
+    {
+     "ma_cau": "K07050202018",
+     "loai": "trac_nghiem",
+     "de": "Tia tới SI hợp với mặt gương phẳng một góc 50°. Hình nào vẽ đúng cả tia tới và tia phản xạ?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-007-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-007-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-007-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-007-D.png)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Góc tới i = 90° − 50° = 40°; góc phản xạ cũng 40°. Hình đúng: góc SIN = góc NIR = 40°.\n\nVì sao các phương án khác sai:\n- A: Đây là dùng luôn 50° (góc hợp với gương) làm góc tới, quên đổi sang góc so với pháp tuyến.\n- B: Góc tới đúng là 40° nhưng góc phản xạ vẽ sai thành 50°, hai góc phải bằng nhau.\n- C: Hai góc bị hoán đổi ngược so với hình đúng."
+    },
+    {
+     "ma_cau": "K07050202019",
+     "loai": "trac_nghiem",
+     "de": "Chiếu tia sáng tới gương phẳng thì góc tạo bởi tia tới và tia phản xạ là 60°. Hình nào vẽ đúng?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-008-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-008-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-008-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-008-D.png)"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Pháp tuyến chia đôi góc SIR: i = i′ = 60° : 2 = 30°.\n\nVì sao các phương án khác sai:\n- B: Đây là dùng luôn 60° (góc giữa tia tới và tia phản xạ) làm từng góc tới và góc phản xạ, quên chia đôi.\n- C: Góc tới đúng là 30° nhưng góc phản xạ vẽ sai thành 60°, hai góc phải bằng nhau.\n- D: Hai góc bị hoán đổi ngược so với hình đúng (góc tới lại vẽ thành 60°)."
+    },
+    {
+     "ma_cau": "K07050202020",
+     "loai": "trac_nghiem",
+     "de": "Trên hình, góc phản xạ là 35°. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-01-009-de.png) Tia tới SI hợp với mặt gương một góc bao nhiêu?",
+     "lua_chon": [
+      "35°",
+      "55°",
+      "70°",
+      "90°"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Góc phản xạ = góc tới = 35° (so với pháp tuyến); góc giữa tia tới và mặt gương = 90° − 35° = 55°.\n\nVì sao các phương án khác sai:\n- A: 35° là góc so với pháp tuyến (góc tới/góc phản xạ), không phải góc hợp với mặt gương.\n- C: 70° không khớp với phép tính 90° − 35°.\n- D: 90° là góc giữa pháp tuyến và mặt gương, không phải góc giữa tia tới và mặt gương."
+    },
+    {
+     "ma_cau": "K07050202021",
+     "loai": "trac_nghiem",
+     "de": "Hình nào vẽ SAI tia phản xạ trên gương phẳng?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-001-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-001-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-001-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-001-D.png)"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Kiểm từng hình: góc phản xạ phải bằng góc tới. Hình có góc tới 60° mà góc phản xạ 30° là sai; góc phản xạ phải là 60°.\n\nVì sao các phương án khác sai:\n- A: Hình này đúng: góc phản xạ bằng góc tới (30°).\n- C: Hình này đúng: góc phản xạ bằng góc tới (45°).\n- D: Hình này đúng: góc phản xạ bằng góc tới (20°)."
+    },
+    {
+     "ma_cau": "K07050202022",
+     "loai": "trac_nghiem",
+     "de": "Bạn Nam vẽ bốn hình tia sáng phản xạ trên gương phẳng. Hình nào Nam vẽ SAI?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-002-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-002-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-002-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-002-D.png)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "So sánh hai số đo góc trên mỗi hình: góc phản xạ phải bằng góc tới. Hình có góc tới 50° mà góc phản xạ 40° là do đo góc với mặt gương.\n\nVì sao các phương án khác sai:\n- A: Hình này đúng: góc phản xạ bằng góc tới (35°).\n- B: Hình này đúng: góc phản xạ bằng góc tới (70°).\n- C: Hình này đúng: góc phản xạ bằng góc tới (25°)."
+    },
+    {
+     "ma_cau": "K07050202023",
+     "loai": "trac_nghiem",
+     "de": "Hình nào vẽ SAI đường đi của tia sáng phản xạ trên gương phẳng?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-003-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-003-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-003-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-003-D.png)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Góc phản xạ phải bằng góc tới. Hình có góc tới 40° mà góc phản xạ 80° là nhân đôi góc tới; phải là 40°.\n\nVì sao các phương án khác sai:\n- A: Hình này đúng: góc phản xạ bằng góc tới (15°).\n- B: Hình này đúng: góc phản xạ bằng góc tới (55°).\n- C: Hình này đúng: góc phản xạ bằng góc tới (65°)."
+    },
+    {
+     "ma_cau": "K07050202024",
+     "loai": "trac_nghiem",
+     "de": "Hình nào vẽ SAI tia phản xạ trên gương phẳng?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-006-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-006-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-006-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050203-02-006-D.png)"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Kiểm từng hình: góc phản xạ phải bằng góc tới. Hình có góc tới 45° mà góc phản xạ 60° là sai; góc phản xạ phải là 45°.\n\nVì sao các phương án khác sai:\n- B: Hình này có góc tới 25° và góc phản xạ 25°, bằng nhau nên vẽ đúng.\n- C: Hình này có góc tới 70° và góc phản xạ 70°, bằng nhau nên vẽ đúng.\n- D: Hình này có góc tới 55° và góc phản xạ 55°, bằng nhau nên vẽ đúng."
+    },
+    {
+     "ma_cau": "K07050202025",
+     "loai": "trac_nghiem",
+     "de": "Bốn bạn vẽ tia phản xạ trên gương phẳng và ghi lại số đo. Bạn nào vẽ SAI?",
+     "lua_chon": [
+      "An: góc tới 40°, IR hợp với gương 50°",
+      "Chi: góc tới 30°, IR hợp với gương 30°",
+      "Bình: SI hợp với gương 20°, góc phản xạ 70°",
+      "Dũng: góc tới 25°, IR hợp với gương 65°"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi mọi góc về góc so với pháp tuyến rồi so sánh. Chi: góc phản xạ = 90° − 30° = 60°, khác góc tới 30°, nên Chi vẽ sai (đo góc với mặt gương).\n\nVì sao các phương án khác sai:\n- A: Đúng: góc phản xạ = 90° − 50° = 40°, bằng góc tới.\n- C: Đúng: góc tới = 90° − 20° = 70°, bằng góc phản xạ.\n- D: Đúng: góc phản xạ = 90° − 65° = 25°, bằng góc tới."
+    },
+    {
+     "ma_cau": "K07050202026",
+     "loai": "trac_nghiem",
+     "de": "Bốn bạn vẽ tia phản xạ trên gương phẳng và ghi lại số đo. Bạn nào vẽ SAI?",
+     "lua_chon": [
+      "An: góc tới 35°, IR hợp với gương 55°",
+      "Bích: góc tới 60°, IR hợp với gương 20°",
+      "Cường: SI hợp với gương 15°, góc phản xạ 75°",
+      "Dung: góc tới 48°, IR hợp với gương 42°"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi các góc hợp với gương sang góc so với pháp tuyến rồi so sánh với góc tới. Bích: góc phản xạ = 90° − 20° = 70°, khác góc tới 60°, nên Bích vẽ sai.\n\nVì sao các phương án khác sai:\n- A: An: góc phản xạ = 90° − 55° = 35°, bằng góc tới 35°, nên An vẽ đúng.\n- C: Cường: góc tới = 90° − 15° = 75°, bằng góc phản xạ 75°, nên Cường vẽ đúng.\n- D: Dung: góc phản xạ = 90° − 42° = 48°, bằng góc tới 48°, nên Dung vẽ đúng."
+    },
+    {
+     "ma_cau": "K07050202027",
+     "loai": "trac_nghiem",
+     "de": "Bốn nhóm đo góc tới và góc phản xạ trên cùng một gương phẳng, kết quả như sau. Nhóm nào đo hoặc vẽ SAI?",
+     "lua_chon": [
+      "Nhóm 1: góc tới 20°, IR hợp với gương 70°",
+      "Nhóm 2: SI hợp với gương 65°, góc phản xạ 25°",
+      "Nhóm 3: góc tới 55°, IR hợp với gương 45°",
+      "Nhóm 4: góc tới 10°, IR hợp với gương 80°"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi các góc hợp với gương sang góc so với pháp tuyến rồi so sánh. Nhóm 3: góc phản xạ = 90° − 45° = 45°, khác góc tới 55°, nên nhóm 3 đo hoặc vẽ sai.\n\nVì sao các phương án khác sai:\n- A: Nhóm 1: góc phản xạ = 90° − 70° = 20°, bằng góc tới 20°, nên đúng.\n- B: Nhóm 2: góc tới = 90° − 65° = 25°, bằng góc phản xạ 25°, nên đúng.\n- D: Nhóm 4: góc phản xạ = 90° − 80° = 10°, bằng góc tới 10°, nên đúng."
+    },
+    {
+     "ma_cau": "K07050202028",
+     "loai": "trac_nghiem",
+     "de": "Bạn Hà muốn đặt một gương phẳng sao cho tia phản xạ IR hợp với tia tới SI một góc 80°. Mặt gương phải hợp với tia tới một góc bao nhiêu?",
+     "lua_chon": [
+      "40°",
+      "80°",
+      "10°",
+      "50°"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Pháp tuyến là phân giác góc SIR nên góc tới = 80° : 2 = 40°; gương vuông góc pháp tuyến nên hợp với tia tới 90° − 40° = 50°.\n\nVì sao các phương án khác sai:\n- A: Đây là góc tới (đo với pháp tuyến), chưa đổi sang góc với mặt gương.\n- B: Đây là góc SIR giữa tia tới và tia phản xạ.\n- C: Quên chia đôi góc SIR trước khi lấy 90° trừ."
+    },
+    {
+     "ma_cau": "K07050202029",
+     "loai": "trac_nghiem",
+     "de": "Tia nắng chiếu xuống, hợp với mặt đất nằm ngang một góc 40°. Cần đặt gương phẳng để tia phản xạ chiếu thẳng đứng xuống đáy giếng. Góc tới của tia nắng trên gương phải bằng bao nhiêu?",
+     "lua_chon": [
+      "130°",
+      "65°",
+      "25°",
+      "45°"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tia IS (từ I hướng về Mặt Trời) hợp với phương nằm ngang 40°, tia IR thẳng đứng hợp với phương nằm ngang 90° nên góc SIR = 130°; pháp tuyến là phân giác nên i = 130° : 2 = 65°.\n\nVì sao các phương án khác sai:\n- A: Đây là góc SIR giữa tia tới và tia phản xạ; phải chia đôi.\n- C: Đây là góc giữa tia tới và mặt gương (90° − 65°).\n- D: Coi góc SIR là 90° là sai; góc SIR = 40° + 90° = 130°."
+    },
+    {
+     "ma_cau": "K07050202030",
+     "loai": "trac_nghiem",
+     "de": "Tia tới SI đi xuống từ trái sang phải, hợp với phương nằm ngang một góc 50°. Cần đặt gương phẳng để tia phản xạ đi nằm ngang sang trái, về phía nguồn sáng S. Góc tới phải bằng bao nhiêu?",
+     "lua_chon": [
+      "50°",
+      "40°",
+      "25°",
+      "65°"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tia IS hợp với phương nằm ngang 50°, tia IR nằm ngang cùng phía với S nên góc SIR = 50°; pháp tuyến là phân giác nên góc tới = 50° : 2 = 25°.\n\nVì sao các phương án khác sai:\n- A: Đây là cả góc SIR; phải chia đôi mới được góc tới.\n- B: Đây là góc giữa tia tới và phương thẳng đứng, không phải góc tới.\n- D: 65° là góc tới khi tia phản xạ đi sang phải; ở đây tia đi sang trái nên góc SIR chỉ 50°."
+    },
+    {
+     "ma_cau": "K07050202031",
+     "loai": "trac_nghiem",
+     "de": "Tia tới SI hợp với mặt gương phẳng một góc 35°. Góc SIR giữa tia tới và tia phản xạ bằng bao nhiêu?",
+     "lua_chon": [
+      "70°",
+      "110°",
+      "145°",
+      "55°"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Góc tới (từ pháp tuyến) = 90°−35° = 55°. SIR = 2×55° = 110°.\n\nVì sao các phương án khác sai:\n- A: Nhầm SIR = 2×35° (quên đổi sang góc tới, trừ từ 180°).\n- C: Tính nhầm 180°−35° thay vì 180°−2×35°.\n- D: Chia đôi nhầm kết quả đúng."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00343",
+   "khoi": "7",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Sự phản xạ ánh sáng",
+   "nhom": "Bài toán quay gương phẳng",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K07050203001",
+     "loai": "trac_nghiem",
+     "de": "Tia tới SI giữ nguyên. Quay gương phẳng quanh điểm tới I một góc 15°. Tia phản xạ quay đi một góc bao nhiêu?",
+     "lua_chon": [
+      "15°",
+      "7,5°",
+      "0°",
+      "30°"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Gương quay 15° thì góc tới đổi 15°, góc phản xạ đổi 15°, nên góc SIR đổi 2 × 15° = 30°: tia phản xạ quay 30°.\n\nVì sao các phương án khác sai:\n- A: Gương quay 15° thì góc tới và góc phản xạ cùng đổi 15°, tia phản xạ quay gấp đôi.\n- B: Phải nhân đôi, không chia đôi góc quay của gương.\n- C: Tia tới giữ nguyên nhưng gương quay nên góc tới đổi, tia phản xạ cũng quay."
+    },
+    {
+     "ma_cau": "K07050203002",
+     "loai": "trac_nghiem",
+     "de": "Chiếu tia sáng tới gương phẳng với góc tới 30°. Giữ nguyên tia tới, quay gương quanh I một góc 10° sao cho góc tới tăng. Góc SIR giữa tia tới và tia phản xạ lúc sau bằng bao nhiêu?",
+     "lua_chon": [
+      "80°",
+      "70°",
+      "40°",
+      "60°"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Góc tới lúc sau = 30° + 10° = 40°; góc SIR = 2 × 40° = 80°.\n\nVì sao các phương án khác sai:\n- B: Góc SIR tăng gấp đôi góc quay (20°), không phải 10°.\n- C: Đây là góc tới lúc sau; góc SIR gấp đôi góc tới.\n- D: Gương đã quay nên góc tới đổi, góc SIR cũng đổi."
+    },
+    {
+     "ma_cau": "K07050203003",
+     "loai": "trac_nghiem",
+     "de": "Tia tới SI giữ nguyên. Muốn tia phản xạ quay đi một góc 40° thì phải quay gương phẳng quanh điểm tới một góc bao nhiêu?",
+     "lua_chon": [
+      "40°",
+      "80°",
+      "50°",
+      "20°"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tia phản xạ quay gấp đôi góc quay của gương, nên góc quay gương = 40° : 2 = 20°.\n\nVì sao các phương án khác sai:\n- A: Gương quay α thì tia phản xạ quay 2α; quay gương 40° làm tia quay 80°.\n- B: Phải chia đôi góc quay của tia, không nhân đôi.\n- C: Lấy 90° trừ là nhầm với cách đổi góc so với mặt gương."
+    },
+    {
+     "ma_cau": "K07050203004",
+     "loai": "trac_nghiem",
+     "de": "Tia tới SI giữ nguyên. Muốn tia phản xạ quay đi một góc 50° thì phải quay gương phẳng quanh điểm tới một góc bao nhiêu?",
+     "lua_chon": [
+      "50°",
+      "100°",
+      "25°",
+      "12,5°"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Góc quay của tia phản xạ = 2 × góc quay của gương → góc quay gương = 50°/2 = 25°.\n\nVì sao các phương án khác sai:\n- A: Nhầm góc quay gương bằng góc quay tia phản xạ (quên chia đôi).\n- B: Nhân đôi nhầm thay vì chia đôi.\n- D: Chia tư nhầm thay vì chia đôi."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00344",
+   "khoi": "7",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Ảnh tạo bởi gương phẳng",
+   "nhom": "Đặc điểm ảnh và bài toán khoảng cách",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K07050301001",
+     "loai": "trac_nghiem",
+     "de": "Ảnh của một vật tạo bởi gương phẳng có độ lớn như thế nào so với vật?",
+     "lua_chon": [
+      "Lớn hơn vật",
+      "Lớn bằng vật",
+      "Nhỏ hơn vật",
+      "Nhỏ dần khi vật ra xa gương"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ảnh tạo bởi gương phẳng luôn có độ lớn bằng vật, dù vật đặt gần hay xa gương.\n\nVì sao các phương án khác sai:\n- A: Gương phẳng không phóng to vật; ảnh lớn bằng vật.\n- C: Gương phẳng không thu nhỏ vật; ảnh lớn bằng vật.\n- D: Ở xa ta thấy ảnh có vẻ nhỏ vì ảnh xa mắt, nhưng ảnh vẫn lớn bằng vật."
+    },
+    {
+     "ma_cau": "K07050301002",
+     "loai": "trac_nghiem",
+     "de": "Khoảng cách từ một điểm của vật đến gương phẳng và khoảng cách từ ảnh của điểm đó đến gương có quan hệ thế nào?",
+     "lua_chon": [
+      "Hai khoảng cách bằng nhau",
+      "Khoảng cách từ ảnh gấp đôi",
+      "Khoảng cách từ ảnh bằng một nửa",
+      "Khoảng cách từ ảnh luôn bằng 0"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ảnh và vật đối xứng nhau qua gương phẳng, nên một điểm và ảnh của nó cách gương những khoảng bằng nhau.\n\nVì sao các phương án khác sai:\n- B: Gấp đôi là khoảng cách giữa vật và ảnh, không phải từ ảnh tới gương.\n- C: Ảnh và vật đối xứng qua gương nên cách gương bằng nhau.\n- D: Ảnh không nằm trên mặt gương mà ở sau gương, cách gương bằng vật."
+    },
+    {
+     "ma_cau": "K07050301003",
+     "loai": "trac_nghiem",
+     "de": "Khi một người đi ra xa gương phẳng, ảnh của người đó trong gương thay đổi thế nào?",
+     "lua_chon": [
+      "Nhỏ dần theo khoảng cách",
+      "Không đổi theo khoảng cách",
+      "Lớn dần theo khoảng cách",
+      "Biến mất khi ra đủ xa"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ảnh tạo bởi gương phẳng luôn lớn bằng vật, không phụ thuộc khoảng cách từ vật đến gương.\n\nVì sao các phương án khác sai:\n- A: Sai: ảnh qua gương phẳng luôn bằng vật, chỉ trông xa hơn chứ không nhỏ đi.\n- C: Sai: ảnh qua gương phẳng luôn bằng vật, không lớn dần lên.\n- D: Sai: ảnh vẫn tồn tại dù người ở xa, chỉ khó nhìn rõ chi tiết hơn."
+    },
+    {
+     "ma_cau": "K07050301004",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây đúng về ảnh của một vật tạo bởi gương phẳng?",
+     "lua_chon": [
+      "Ảnh ở trước gương, cùng phía với vật",
+      "Ảnh lộn ngược so với vật",
+      "Ảnh nhỏ hơn vật",
+      "Ảnh và vật đối xứng nhau qua gương"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ảnh qua gương phẳng là ảnh ảo, lớn bằng vật và đối xứng với vật qua mặt gương (nằm sau gương).\n\nVì sao các phương án khác sai:\n- A: Ảnh nằm sau gương, ở phía bên kia so với vật.\n- B: Vật đặt song song với gương cho ảnh cùng chiều, không lộn ngược.\n- C: Ảnh qua gương phẳng lớn bằng vật."
+    },
+    {
+     "ma_cau": "K07050301005",
+     "loai": "trac_nghiem",
+     "de": "Bạn Hà cao 1,5 m đứng trước một gương phẳng lớn. Ảnh của Hà trong gương cao bao nhiêu?",
+     "lua_chon": [
+      "0,75 m",
+      "3 m",
+      "1,5 m",
+      "1,2 m"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ảnh qua gương phẳng lớn bằng vật, nên ảnh của Hà cũng cao 1,5 m.\n\nVì sao các phương án khác sai:\n- A: Ảnh không bằng một nửa vật; ảnh qua gương phẳng lớn bằng vật.\n- B: Ảnh không lớn gấp đôi vật; ảnh lớn bằng vật.\n- D: Ảnh không nhỏ hơn vật; ảnh qua gương phẳng lớn bằng vật."
+    },
+    {
+     "ma_cau": "K07050301006",
+     "loai": "trac_nghiem",
+     "de": "Ảnh của một vật tạo bởi gương phẳng có hình dạng như thế nào so với vật?",
+     "lua_chon": [
+      "Giống hệt vật về hình dạng",
+      "Nhỏ hơn vật một chút",
+      "Méo mó, biến dạng so với vật",
+      "Chỉ giữ được một phần hình dạng của vật"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ảnh tạo bởi gương phẳng giống hệt vật về hình dạng (chỉ đối xứng ngược qua gương), không bị biến dạng hay thu nhỏ từng phần.\n\nVì sao các phương án khác sai:\n- B: Ảnh qua gương phẳng lớn bằng vật.\n- C: Ảnh qua gương phẳng không bị méo mó hay biến dạng.\n- D: Ảnh giữ nguyên toàn bộ hình dạng của vật, không chỉ một phần."
+    },
+    {
+     "ma_cau": "K07050301007",
+     "loai": "trac_nghiem",
+     "de": "Hai vật giống hệt nhau đặt cách gương phẳng những khoảng khác nhau (vật A gần gương hơn vật B). So sánh độ lớn hai ảnh của chúng.",
+     "lua_chon": [
+      "Ảnh của A lớn hơn ảnh của B",
+      "Hai ảnh lớn bằng nhau (bằng vật)",
+      "Ảnh của B lớn hơn ảnh của A",
+      "Không so sánh được vì thiếu khoảng cách cụ thể"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ảnh qua gương phẳng luôn lớn bằng vật, không phụ thuộc khoảng cách từ vật đến gương; hai vật giống hệt nhau thì hai ảnh cũng lớn bằng nhau.\n\nVì sao các phương án khác sai:\n- A: Khoảng cách đến gương không ảnh hưởng đến độ lớn của ảnh qua gương phẳng.\n- C: Tương tự, khoảng cách không làm ảnh lớn hơn hay nhỏ hơn.\n- D: Vẫn so sánh được vì độ lớn ảnh qua gương phẳng không phụ thuộc khoảng cách, chỉ phụ thuộc độ lớn vật."
+    },
+    {
+     "ma_cau": "K07050301008",
+     "loai": "trac_nghiem",
+     "de": "Ảnh ảo là ảnh như thế nào?",
+     "lua_chon": [
+      "Ảnh hứng được trên màn chắn",
+      "Ảnh không hứng được trên màn chắn",
+      "Ảnh luôn nhỏ hơn vật",
+      "Ảnh chỉ thấy được trong bóng tối"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ảnh ảo là ảnh không hứng được trên màn chắn; ảnh hứng được trên màn chắn là ảnh thật.\n\nVì sao các phương án khác sai:\n- A: Ảnh hứng được trên màn chắn là ảnh thật.\n- C: Ảnh ảo được xác định bởi việc không hứng được trên màn, không theo độ lớn.\n- D: Trong phòng sáng ta vẫn thấy ảnh ảo trong gương."
+    },
+    {
+     "ma_cau": "K07050301009",
+     "loai": "trac_nghiem",
+     "de": "Ảnh của một vật tạo bởi gương phẳng có thể hứng được trên màn chắn hay không?",
+     "lua_chon": [
+      "Có, vì ảnh là chùm sáng hội tụ",
+      "Có, nếu đặt màn đúng vị trí",
+      "Không, vì đó là ảnh ảo",
+      "Có, nhưng ảnh mờ hơn vật"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ảnh tạo bởi gương phẳng là ảnh ảo, do các tia phản xạ kéo dài gặp nhau nên không thể hứng được trên màn chắn.\n\nVì sao các phương án khác sai:\n- A: Sai: ảnh ảo do gương phẳng tạo ra không phải nơi các tia sáng thật sự gặp nhau.\n- B: Sai: dù đặt màn ở đâu sau gương, ảnh ảo vẫn không thể hứng được.\n- D: Sai: ảnh ảo hoàn toàn không hứng được trên màn, không phải chỉ mờ hơn."
+    },
+    {
+     "ma_cau": "K07050301010",
+     "loai": "trac_nghiem",
+     "de": "Dùng một tấm kính phẳng thay cho gương, rồi đưa màn chắn tới đúng vị trí ảnh của cây nến. Kết quả nào sau đây đúng?",
+     "lua_chon": [
+      "Màn không hứng được ảnh của nến",
+      "Màn hứng được ảnh rõ nét của nến",
+      "Màn hứng được ảnh nhỏ hơn nến",
+      "Chỉ hứng được ảnh khi phòng tối"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ảnh tạo bởi gương (tấm kính) phẳng là ảnh ảo: đưa màn chắn tới vị trí ảnh cũng không hứng được ảnh.\n\nVì sao các phương án khác sai:\n- B: Ảnh qua tấm kính phẳng là ảnh ảo nên không hứng được trên màn.\n- C: Không hứng được ảnh trên màn; ảnh cũng lớn bằng nến.\n- D: Ảnh ảo không hứng được trên màn chắn, dù phòng sáng hay tối."
+    },
+    {
+     "ma_cau": "K07050301011",
+     "loai": "trac_nghiem",
+     "de": "Trường hợp nào sau đây là ảnh ảo?",
+     "lua_chon": [
+      "Hình trên màn của máy chiếu",
+      "Bóng của cây trên mặt đất",
+      "Vệt sáng đèn pin trên tường",
+      "Ảnh khuôn mặt em trong gương soi"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ảnh trong gương soi (gương phẳng) không hứng được trên màn chắn nên là ảnh ảo.\n\nVì sao các phương án khác sai:\n- A: Hình này hứng được trên màn nên là ảnh thật.\n- B: Bóng cây là vùng tối do cây chắn ánh sáng, không phải ảnh.\n- C: Vệt sáng là chỗ tường được chiếu sáng, không phải ảnh của vật."
+    },
+    {
+     "ma_cau": "K07050301012",
+     "loai": "trac_nghiem",
+     "de": "Ảnh thật là ảnh như thế nào?",
+     "lua_chon": [
+      "Ảnh không hứng được trên màn chắn",
+      "Ảnh luôn lớn hơn vật",
+      "Ảnh hứng được trên màn chắn",
+      "Ảnh chỉ xuất hiện trong gương phẳng"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ảnh thật là ảnh hứng được trên màn chắn (do các tia sáng thật sự gặp nhau); ảnh không hứng được trên màn là ảnh ảo.\n\nVì sao các phương án khác sai:\n- A: Đây là định nghĩa của ảnh ảo, không phải ảnh thật.\n- B: Độ lớn không phải yếu tố phân biệt ảnh thật với ảnh ảo.\n- D: Ảnh trong gương phẳng là ảnh ảo, không phải ảnh thật; ảnh thật thường gặp ở máy chiếu, ống kính."
+    },
+    {
+     "ma_cau": "K07050301013",
+     "loai": "trac_nghiem",
+     "de": "Trường hợp nào sau đây là ảnh THẬT?",
+     "lua_chon": [
+      "Ảnh khuôn mặt trong gương trang điểm",
+      "Ảnh của bầu trời trên mặt hồ phẳng lặng",
+      "Ảnh của em trong cửa kính tối",
+      "Ảnh trên màn chiếu của máy chiếu phim"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ảnh trên màn chiếu của máy chiếu là ảnh thật vì các tia sáng thật sự hội tụ và hứng được trên màn.\n\nVì sao các phương án khác sai:\n- A: Ảnh trong gương trang điểm là ảnh ảo, không hứng được trên màn.\n- B: Ảnh trên mặt hồ (giống gương phẳng) là ảnh ảo.\n- C: Ảnh trong cửa kính (giống gương phẳng) là ảnh ảo."
+    },
+    {
+     "ma_cau": "K07050301014",
+     "loai": "trac_nghiem",
+     "de": "Một vật đặt trước gương phẳng, cách gương 40 cm. Ảnh của vật cách gương bao nhiêu?",
+     "lua_chon": [
+      "80 cm",
+      "20 cm",
+      "40 cm",
+      "0 cm"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ảnh và vật đối xứng qua gương nên ảnh cách gương bằng vật: 40 cm.\n\nVì sao các phương án khác sai:\n- A: 80 cm là khoảng cách giữa vật và ảnh, không phải từ ảnh tới gương.\n- B: Không chia đôi; ảnh và vật cách gương bằng nhau.\n- D: Ảnh không nằm trên mặt gương mà ở sau gương, cách gương bằng vật."
+    },
+    {
+     "ma_cau": "K07050301015",
+     "loai": "trac_nghiem",
+     "de": "Bạn Lan đứng trước gương phẳng, cách gương 1,2 m. Ảnh của Lan cách gương bao nhiêu?",
+     "lua_chon": [
+      "2,4 m",
+      "1,2 m",
+      "0,6 m",
+      "0 m"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ảnh và vật đối xứng qua gương nên ảnh của Lan cách gương 1,2 m.\n\nVì sao các phương án khác sai:\n- A: 2,4 m là khoảng cách giữa Lan và ảnh, không phải từ ảnh tới gương.\n- C: Không chia đôi; ảnh và Lan cách gương bằng nhau.\n- D: Ảnh không nằm trên mặt gương mà ở sau gương, cách gương bằng Lan."
+    },
+    {
+     "ma_cau": "K07050301016",
+     "loai": "trac_nghiem",
+     "de": "Ảnh của một ngọn nến qua gương phẳng cách gương 25 cm. Ngọn nến cách gương bao nhiêu?",
+     "lua_chon": [
+      "25 cm",
+      "50 cm",
+      "12,5 cm",
+      "100 cm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vật và ảnh cách gương bằng nhau, nên ảnh cách gương 25 cm thì nến cũng cách gương 25 cm.\n\nVì sao các phương án khác sai:\n- B: 50 cm là khoảng cách giữa nến và ảnh, không phải từ nến tới gương.\n- C: Không chia đôi; nến và ảnh cách gương bằng nhau.\n- D: Nhân 2 hai lần là sai; nến và ảnh cách gương bằng nhau: 25 cm."
+    },
+    {
+     "ma_cau": "K07050301017",
+     "loai": "trac_nghiem",
+     "de": "Điểm sáng S đặt trước gương phẳng, cách gương 15 cm. Ảnh S′ của S nằm ở đâu?",
+     "lua_chon": [
+      "Trước gương, cách gương 15 cm",
+      "Sau gương, cách gương 30 cm",
+      "Ngay trên mặt gương",
+      "Sau gương, cách gương 15 cm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "S′ đối xứng với S qua gương: nằm sau gương và cách gương bằng S, tức 15 cm.\n\nVì sao các phương án khác sai:\n- A: Ảnh nằm sau gương, không cùng phía với S.\n- B: 30 cm là khoảng cách S – S′, không phải từ S′ tới gương.\n- C: Ảnh không nằm trên mặt gương mà ở sau gương, cách gương 15 cm."
+    },
+    {
+     "ma_cau": "K07050301018",
+     "loai": "trac_nghiem",
+     "de": "Một vật đặt trước gương phẳng, cách gương 30 cm. Khoảng cách giữa vật và ảnh của nó là bao nhiêu?",
+     "lua_chon": [
+      "30 cm",
+      "15 cm",
+      "60 cm",
+      "120 cm"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vật cách gương 30 cm, ảnh cũng cách gương 30 cm ở phía sau, nên vật – ảnh = 2 × 30 = 60 cm.\n\nVì sao các phương án khác sai:\n- A: 30 cm chỉ là từ vật tới gương; ảnh còn cách gương 30 cm nữa.\n- B: Không chia đôi; vật – ảnh gấp đôi vật – gương.\n- D: Chỉ nhân 2 một lần: 30 cm + 30 cm = 60 cm."
+    },
+    {
+     "ma_cau": "K07050301019",
+     "loai": "trac_nghiem",
+     "de": "Bạn Nam đứng trước gương phẳng, cách gương 1,5 m. Nam cách ảnh của mình bao nhiêu?",
+     "lua_chon": [
+      "1,5 m",
+      "3 m",
+      "0,75 m",
+      "6 m"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nam và ảnh cùng cách gương 1,5 m ở hai phía, nên Nam cách ảnh 2 × 1,5 = 3 m.\n\nVì sao các phương án khác sai:\n- A: 1,5 m chỉ là từ Nam tới gương; ảnh còn cách gương 1,5 m nữa.\n- C: Không chia đôi; Nam – ảnh gấp đôi Nam – gương.\n- D: Chỉ nhân 2 một lần: 1,5 m + 1,5 m = 3 m."
+    },
+    {
+     "ma_cau": "K07050301020",
+     "loai": "trac_nghiem",
+     "de": "Một bạn đứng trước gương phẳng thấy ảnh của mình cách mình 2,4 m. Bạn đó đứng cách gương bao nhiêu?",
+     "lua_chon": [
+      "1,2 m",
+      "2,4 m",
+      "4,8 m",
+      "0,6 m"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Người – ảnh gấp đôi người – gương, nên người cách gương 2,4 : 2 = 1,2 m.\n\nVì sao các phương án khác sai:\n- B: 2,4 m là khoảng cách người – ảnh; người – gương chỉ bằng một nửa.\n- C: Nhân 2 thay vì chia 2.\n- D: Chỉ chia 2 một lần: 2,4 : 2 = 1,2 m."
+    },
+    {
+     "ma_cau": "K07050301021",
+     "loai": "trac_nghiem",
+     "de": "Một vật cách gương phẳng 50 cm, được dịch lại gần gương thêm 20 cm. Lúc này ảnh của vật cách gương bao nhiêu?",
+     "lua_chon": [
+      "70 cm",
+      "60 cm",
+      "50 cm",
+      "30 cm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vật lúc sau cách gương 50 − 20 = 30 cm; ảnh luôn cách gương bằng vật nên ảnh cách gương 30 cm.\n\nVì sao các phương án khác sai:\n- A: Dịch lại gần thì khoảng cách giảm: 50 − 20 = 30 cm, không cộng.\n- B: 60 cm là khoảng cách vật – ảnh lúc sau, không phải ảnh – gương.\n- C: Ảnh không đứng yên; vật lại gần gương thì ảnh cũng lại gần gương."
+    },
+    {
+     "ma_cau": "K07050301022",
+     "loai": "trac_nghiem",
+     "de": "Một người đứng cách gương phẳng 2 m, lùi ra xa gương thêm 1 m. Lúc này ảnh của người cách gương bao nhiêu?",
+     "lua_chon": [
+      "1 m",
+      "6 m",
+      "3 m",
+      "2 m"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Người lúc sau cách gương 2 + 1 = 3 m; ảnh luôn cách gương bằng người nên ảnh cách gương 3 m.\n\nVì sao các phương án khác sai:\n- A: Lùi ra xa thì khoảng cách tăng: 2 + 1 = 3 m, không trừ.\n- B: 6 m là khoảng cách người – ảnh lúc sau, không phải ảnh – gương.\n- D: Ảnh không đứng yên; người ra xa gương thì ảnh cũng ra xa gương."
+    },
+    {
+     "ma_cau": "K07050301023",
+     "loai": "trac_nghiem",
+     "de": "Một vật cách gương phẳng 90 cm, được dịch lại gần gương thêm 35 cm. Lúc này ảnh của vật cách gương bao nhiêu?",
+     "lua_chon": [
+      "125 cm",
+      "90 cm",
+      "35 cm",
+      "55 cm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vật lúc sau cách gương 90 − 35 = 55 cm; ảnh luôn cách gương bằng vật nên ảnh cách gương 55 cm.\n\nVì sao các phương án khác sai:\n- A: 125 cm là cộng nhầm thay vì trừ khi vật dịch lại gần gương.\n- B: 90 cm là quên trừ phần dịch chuyển, lấy luôn khoảng cách ban đầu.\n- C: 35 cm chỉ là quãng đường dịch chuyển, không phải khoảng cách còn lại đến gương."
+    },
+    {
+     "ma_cau": "K07050301024",
+     "loai": "trac_nghiem",
+     "de": "Một bạn học sinh đứng cách gương phẳng 1,2 m, tiến lại gần gương thêm 45 cm. Lúc này ảnh của bạn đó cách gương bao nhiêu?",
+     "lua_chon": [
+      "0,75 m",
+      "1,65 m",
+      "1,2 m",
+      "0,45 m"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi 45 cm = 0,45 m. Bạn đó lúc sau cách gương 1,2 − 0,45 = 0,75 m; ảnh luôn cách gương bằng người nên ảnh cách gương 0,75 m.\n\nVì sao các phương án khác sai:\n- B: 1,65 m là cộng nhầm thay vì trừ khi tiến lại gần gương.\n- C: 1,2 m là quên trừ phần dịch chuyển, lấy luôn khoảng cách ban đầu.\n- D: 0,45 m chỉ là quãng đường dịch chuyển, không phải khoảng cách còn lại đến gương."
+    },
+    {
+     "ma_cau": "K07050301025",
+     "loai": "trac_nghiem",
+     "de": "Một người đứng cách gương phẳng 1,5 m rồi tiến lại gần gương 50 cm. Khoảng cách giữa người và ảnh của người lúc này là bao nhiêu?",
+     "lua_chon": [
+      "1 m",
+      "2 m",
+      "3 m",
+      "4 m"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi 50 cm = 0,5 m. Người lúc sau cách gương 1,5 − 0,5 = 1 m, nên người cách ảnh 2 × 1 = 2 m.\n\nVì sao các phương án khác sai:\n- A: 1 m là khoảng cách người – gương; người – ảnh gấp đôi, bằng 2 m.\n- C: 3 m là khoảng cách lúc đầu; người đã tiến lại gần gương 0,5 m.\n- D: Tiến lại gần thì trừ: 1,5 − 0,5 = 1 m, không cộng."
+    },
+    {
+     "ma_cau": "K07050301026",
+     "loai": "trac_nghiem",
+     "de": "Một vật cách gương phẳng 80 cm, được dịch ra xa gương thêm 0,4 m. Khoảng cách giữa vật và ảnh của nó lúc này là bao nhiêu?",
+     "lua_chon": [
+      "2,4 m",
+      "1,2 m",
+      "0,8 m",
+      "1,6 m"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi 80 cm = 0,8 m. Vật lúc sau cách gương 0,8 + 0,4 = 1,2 m, nên vật cách ảnh 2 × 1,2 = 2,4 m.\n\nVì sao các phương án khác sai:\n- B: 1,2 m là khoảng cách vật – gương; vật – ảnh gấp đôi.\n- C: Dịch ra xa gương thì cộng: 0,8 + 0,4 = 1,2 m, không trừ.\n- D: 1,6 m là khoảng cách vật – ảnh lúc đầu, chưa tính 0,4 m dịch thêm."
+    },
+    {
+     "ma_cau": "K07050301027",
+     "loai": "trac_nghiem",
+     "de": "Một người đứng cách gương phẳng 2 m rồi lùi ra xa gương thêm 70 cm. Khoảng cách giữa người và ảnh của người lúc này là bao nhiêu?",
+     "lua_chon": [
+      "2,7 m",
+      "1,3 m",
+      "3,4 m",
+      "5,4 m"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi 70 cm = 0,7 m. Người lúc sau cách gương 2 + 0,7 = 2,7 m, nên người cách ảnh 2 × 2,7 = 5,4 m.\n\nVì sao các phương án khác sai:\n- A: 2,7 m chỉ là khoảng cách từ người đến gương, chưa nhân đôi để ra khoảng cách người–ảnh.\n- B: 1,3 m là trừ nhầm thay vì cộng khi người lùi ra xa gương.\n- C: 3,4 m là nhân đôi nhầm phần dịch chuyển (0,7 m) rồi cộng vào khoảng cách ban đầu, không đúng cách tính."
+    },
+    {
+     "ma_cau": "K07050301028",
+     "loai": "trac_nghiem",
+     "de": "Một vật cách gương phẳng 1,1 m, được dịch lại gần gương thêm 60 cm. Khoảng cách giữa vật và ảnh của nó lúc này là bao nhiêu?",
+     "lua_chon": [
+      "1 m",
+      "0,5 m",
+      "1,7 m",
+      "2,2 m"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi 60 cm = 0,6 m. Vật lúc sau cách gương 1,1 − 0,6 = 0,5 m, nên vật cách ảnh 2 × 0,5 = 1 m.\n\nVì sao các phương án khác sai:\n- B: 0,5 m chỉ là khoảng cách từ vật đến gương lúc sau, chưa nhân đôi để ra khoảng cách vật–ảnh.\n- C: 1,7 m là cộng nhầm thay vì trừ khi vật dịch lại gần gương.\n- D: 2,2 m là nhân đôi khoảng cách ban đầu (1,1 m), quên trừ phần vật đã dịch lại gần."
+    },
+    {
+     "ma_cau": "K07050301029",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-001-de.png) Hình vẽ vật AB và ảnh A′B′ của nó qua gương phẳng, mỗi ô dài 10 cm. Ảnh A′B′ cách gương bao nhiêu?",
+     "lua_chon": [
+      "60 cm",
+      "3 cm",
+      "10 cm",
+      "30 cm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trên hình, ảnh A′B′ cách gương 3 ô, mỗi ô 10 cm, nên ảnh cách gương 3 × 10 = 30 cm (bằng vật).\n\nVì sao các phương án khác sai:\n- A: 60 cm là khoảng cách vật – ảnh (6 ô), không phải ảnh – gương.\n- B: Đếm đúng 3 ô nhưng quên nhân với 10 cm mỗi ô.\n- C: Ảnh cách gương 3 ô chứ không phải 1 ô: 3 × 10 = 30 cm."
+    },
+    {
+     "ma_cau": "K07050301030",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-002-de.png) Hình vẽ vật AB và ảnh A′B′ của nó qua gương phẳng, mỗi ô dài 5 cm. Điểm A cách ảnh A′ của nó bao nhiêu?",
+     "lua_chon": [
+      "20 cm",
+      "8 cm",
+      "40 cm",
+      "80 cm"
+     ],
+     "dap_an": "C",
+     "loi_giai": "A cách gương 4 ô, A′ cách gương 4 ô ở phía sau, nên A cách A′ 8 ô = 8 × 5 = 40 cm.\n\nVì sao các phương án khác sai:\n- A: 20 cm chỉ là từ A tới gương; A′ còn cách gương 20 cm nữa.\n- B: Đếm đúng 8 ô nhưng quên nhân với 5 cm mỗi ô.\n- D: 8 ô đã gồm cả hai phía gương, không nhân 2 thêm: 8 × 5 = 40 cm."
+    },
+    {
+     "ma_cau": "K07050301031",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-006-de.png) Hình vẽ vật AB và ảnh A′B′ của nó qua gương phẳng, mỗi ô dài 8 cm. Ảnh A′B′ cách gương bao nhiêu?",
+     "lua_chon": [
+      "40 cm",
+      "5 cm",
+      "24 cm",
+      "80 cm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trên hình, ảnh A′B′ cách gương 5 ô, mỗi ô 8 cm, nên ảnh cách gương 5 × 8 = 40 cm (bằng vật).\n\nVì sao các phương án khác sai:\n- B: 5 cm nhầm lấy số ô làm luôn đơn vị cm, quên nhân với độ dài mỗi ô.\n- C: 24 cm không khớp phép tính 5 × 8; có thể do nhầm số ô.\n- D: 80 cm là nhân đôi kết quả đúng (40 cm), không đúng với dữ liệu hình."
+    },
+    {
+     "ma_cau": "K07050301032",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-007-de.png) Hình vẽ vật AB và ảnh A′B′ của nó qua gương phẳng, mỗi ô dài 15 cm. Điểm A cách ảnh A′ của nó bao nhiêu?",
+     "lua_chon": [
+      "30 cm",
+      "60 cm",
+      "15 cm",
+      "120 cm"
+     ],
+     "dap_an": "B",
+     "loi_giai": "A cách gương 2 ô, A′ cách gương 2 ô ở phía sau, nên A cách A′ 4 ô = 4 × 15 = 60 cm.\n\nVì sao các phương án khác sai:\n- A: 30 cm chỉ là khoảng cách từ A (hoặc A′) đến gương (2 ô × 15 cm), chưa nhân đôi để ra khoảng cách A–A′.\n- C: 15 cm là độ dài một ô, chưa nhân với số ô giữa A và A′.\n- D: 120 cm là nhân đôi 60 cm, không đúng với số ô trên hình (4 ô)."
+    },
+    {
+     "ma_cau": "K07050301033",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-008-de.png) Hình vẽ vật AB và ảnh A′B′ của nó qua gương phẳng. So sánh độ dài đoạn A′B′ với đoạn AB trên hình.",
+     "lua_chon": [
+      "A′B′ dài hơn AB",
+      "A′B′ ngắn hơn AB",
+      "A′B′ dài bằng AB",
+      "Không so sánh được vì A′B′ ở phía sau gương"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ảnh qua gương phẳng luôn lớn bằng vật, nên đoạn A′B′ (ảnh) dài bằng đoạn AB (vật) trên hình.\n\nVì sao các phương án khác sai:\n- A: Ảnh qua gương phẳng không lớn hơn vật.\n- B: Ảnh qua gương phẳng không nhỏ hơn vật.\n- D: Dù ở phía sau gương (ảnh ảo), vẫn có thể so sánh độ dài hai đoạn trên hình vẽ; chúng bằng nhau."
+    },
+    {
+     "ma_cau": "K07050301034",
+     "loai": "trac_nghiem",
+     "de": "Một đồng hồ kim có mặt số chỉ có vạch chia, không ghi số, treo đối diện gương phẳng. Nhìn ảnh trong gương, Nam thấy đồng hồ chỉ 3 giờ 40 phút. Giờ thật lúc đó là mấy giờ?",
+     "lua_chon": [
+      "8 giờ 20 phút",
+      "3 giờ 40 phút",
+      "9 giờ 20 phút",
+      "8 giờ 40 phút"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ảnh đối xứng trái – phải với mặt đồng hồ, nên giờ thật = 12 giờ − giờ thấy trong gương = 12 giờ − 3 giờ 40 phút = 8 giờ 20 phút.\n\nVì sao các phương án khác sai:\n- B: Ảnh đối xứng trái – phải với đồng hồ nên kim trong ảnh chỉ khác giờ thật.\n- C: Tính 12 − 3 và 60 − 40 riêng là quên mượn 1 giờ: 12 giờ − 3 giờ 40 phút = 8 giờ 20 phút.\n- D: Chỉ đổi vị trí kim giờ mà quên đổi kim phút: kim phút ở vạch 40 phút đối xứng thành 20 phút."
+    },
+    {
+     "ma_cau": "K07050301035",
+     "loai": "trac_nghiem",
+     "de": "Một đồng hồ kim có mặt số chỉ có vạch chia, không ghi số, treo đối diện gương phẳng. Nhìn ảnh trong gương, Mai thấy đồng hồ chỉ 10 giờ 15 phút. Giờ thật lúc đó là mấy giờ?",
+     "lua_chon": [
+      "10 giờ 15 phút",
+      "2 giờ 45 phút",
+      "1 giờ 15 phút",
+      "1 giờ 45 phút"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ảnh đối xứng trái – phải với mặt đồng hồ, nên giờ thật = 12 giờ − giờ thấy trong gương = 12 giờ − 10 giờ 15 phút = 1 giờ 45 phút.\n\nVì sao các phương án khác sai:\n- A: Ảnh đối xứng trái – phải với đồng hồ nên kim trong ảnh chỉ khác giờ thật.\n- B: Tính 12 − 10 và 60 − 15 riêng là quên mượn 1 giờ: 12 giờ − 10 giờ 15 phút = 1 giờ 45 phút.\n- C: Chỉ đổi vị trí kim giờ mà quên đổi kim phút: kim phút ở vạch 15 phút đối xứng thành 45 phút."
+    },
+    {
+     "ma_cau": "K07050301036",
+     "loai": "trac_nghiem",
+     "de": "Trên đầu nhiều xe cứu thương, dòng chữ AMBULANCE (xe cứu thương) được in ngược trái – phải. Cách in này nhằm mục đích nào sau đây?",
+     "lua_chon": [
+      "Người đi bộ bên đường dễ đọc hơn",
+      "Chữ phản xạ ánh sáng mạnh hơn",
+      "Tài xế xe trước đọc xuôi qua gương chiếu hậu",
+      "Ảnh của chữ trong gương to hơn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Gương chiếu hậu trong xe là gương phẳng, cho ảnh đối xứng trái – phải với vật, nên chữ in ngược sẽ hiện xuôi trong gương của xe phía trước, giúp tài xế nhận ra và nhường đường.\n\nVì sao các phương án khác sai:\n- A: Người nhìn trực tiếp sẽ thấy chữ ngược; chữ chỉ đọc xuôi khi nhìn qua gương.\n- B: Chữ in ngược hay in xuôi phản xạ ánh sáng như nhau.\n- D: Ảnh qua gương phẳng lớn bằng vật; in ngược không làm ảnh to hơn."
+    },
+    {
+     "ma_cau": "K07050301037",
+     "loai": "trac_nghiem",
+     "de": "Một bạn ngồi sau bức tường cao muốn quan sát sân bóng phía bên kia tường mà không cần trèo lên. Dụng cụ nào sau đây giúp bạn làm được việc đó?",
+     "lua_chon": [
+      "Một kính lúp cầm tay",
+      "Kính tiềm vọng có hai gương phẳng song song",
+      "Một tấm kính trong suốt phẳng",
+      "Một gương phẳng đặt nằm dưới đất"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Kính tiềm vọng có hai gương phẳng đặt song song, nghiêng 45°: gương trên hắt ánh sáng từ sân bóng xuống gương dưới, gương dưới hắt tiếp vào mắt, nên nhìn được vật bị tường che khuất.\n\nVì sao các phương án khác sai:\n- A: Kính lúp chỉ giúp nhìn rõ vật nhỏ ở gần, không đưa ánh sáng vượt qua tường.\n- C: Tấm kính trong cho ánh sáng đi thẳng qua, không đổi hướng ánh sáng qua tường.\n- D: Gương dưới đất chỉ cho thấy ảnh những vật phía trên, không thấy được sân bên kia tường."
+    },
+    {
+     "ma_cau": "K07050301038",
+     "loai": "trac_nghiem",
+     "de": "Một người đứng cách gương phẳng 3 m, đi thẳng về phía gương với tốc độ 0,5 m/s. Sau 2 s, khoảng cách giữa người và ảnh của người là bao nhiêu?",
+     "lua_chon": [
+      "4 m",
+      "2 m",
+      "5 m",
+      "8 m"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Quãng đường đi được: s = 0,5 × 2 = 1 m. Người lúc sau cách gương 3 − 1 = 2 m, nên cách ảnh 2 × 2 = 4 m.\n\nVì sao các phương án khác sai:\n- B: 2 m là khoảng cách người – gương lúc sau; người – ảnh gấp đôi.\n- C: Lấy 6 − 1 là quên rằng ảnh cũng lại gần gương 1 m.\n- D: Đi về phía gương thì trừ: 3 − 1 = 2 m, không cộng."
+    },
+    {
+     "ma_cau": "K07050301039",
+     "loai": "trac_nghiem",
+     "de": "Bạn Minh đi thẳng về phía gương phẳng với tốc độ 1,2 m/s. Mỗi giây, khoảng cách giữa Minh và ảnh của Minh giảm bao nhiêu?",
+     "lua_chon": [
+      "1,2 m",
+      "0 m",
+      "0,6 m",
+      "2,4 m"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Mỗi giây Minh lại gần gương 1,2 m, ảnh ở sau gương cũng lại gần gương 1,2 m, nên khoảng cách Minh – ảnh giảm 1,2 + 1,2 = 2,4 m.\n\nVì sao các phương án khác sai:\n- A: Mỗi giây Minh lại gần gương 1,2 m và ảnh cũng lại gần gương 1,2 m, nên giảm 2,4 m.\n- B: Ảnh không đứng yên; Minh lại gần gương thì ảnh cũng lại gần gương.\n- C: Không chia đôi; hai khoảng cách tới gương cùng giảm 1,2 m mỗi giây."
+    },
+    {
+     "ma_cau": "K07050301040",
+     "loai": "trac_nghiem",
+     "de": "Một xe đồ chơi chạy thẳng ra xa gương phẳng với tốc độ 15 cm/s. Mỗi giây, ảnh của xe ra xa gương thêm bao nhiêu và ra xa xe thêm bao nhiêu?",
+     "lua_chon": [
+      "15 cm và 15 cm",
+      "30 cm và 30 cm",
+      "15 cm và 30 cm",
+      "30 cm và 60 cm"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ảnh luôn cách gương bằng xe, nên mỗi giây ảnh ra xa gương 15 cm; xe và ảnh ra xa về hai phía nên xa nhau thêm 15 + 15 = 30 cm.\n\nVì sao các phương án khác sai:\n- A: Xe và ảnh ra xa gương về hai phía ngược nhau, nên mỗi giây xa nhau thêm 30 cm.\n- B: Ảnh đối xứng với xe nên chỉ ra xa gương 15 cm mỗi giây, bằng xe.\n- D: Ảnh ra xa gương 15 cm mỗi giây, bằng xe; xe – ảnh tăng 15 + 15 = 30 cm."
+    },
+    {
+     "ma_cau": "K07050301041",
+     "loai": "trac_nghiem",
+     "de": "Một em bé đi thẳng về phía gương phẳng. Biết khoảng cách giữa em bé và ảnh giảm với tốc độ 1,6 m/s. Tốc độ đi của em bé là bao nhiêu?",
+     "lua_chon": [
+      "1,6 m/s",
+      "3,2 m/s",
+      "0,4 m/s",
+      "0,8 m/s"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khoảng cách vật–ảnh giảm với tốc độ gấp đôi tốc độ vật (vì ảnh cũng tiến lại gần gương với cùng tốc độ). v = 1,6/2 = 0,8 m/s.\n\nVì sao các phương án khác sai:\n- A: Nhầm tốc độ vật bằng tốc độ giảm khoảng cách, quên chia đôi.\n- B: Nhân đôi nhầm thay vì chia đôi.\n- C: Chia tư nhầm thay vì chia đôi."
+    },
+    {
+     "ma_cau": "K07050301042",
+     "loai": "trac_nghiem",
+     "de": "Một vật đứng yên, cách gương phẳng 40 cm. Dịch gương ra xa vật thêm 10 cm. Lúc này ảnh cách vật bao nhiêu?",
+     "lua_chon": [
+      "100 cm",
+      "90 cm",
+      "50 cm",
+      "120 cm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Gương lúc sau cách vật 40 + 10 = 50 cm, ảnh cách gương 50 cm ở phía sau, nên ảnh cách vật 2 × 50 = 100 cm (tăng 20 cm, gấp đôi độ dịch của gương).\n\nVì sao các phương án khác sai:\n- B: Lấy 80 + 10 là nghĩ ảnh chỉ dịch 10 cm như gương; thực ra ảnh dịch 20 cm.\n- C: 50 cm là khoảng cách vật – gương lúc sau; vật – ảnh gấp đôi.\n- D: Ảnh dịch 2 × 10 = 20 cm, không phải 40 cm: 80 + 20 = 100 cm."
+    },
+    {
+     "ma_cau": "K07050301043",
+     "loai": "trac_nghiem",
+     "de": "Một vật đứng yên, cách gương phẳng 1 m. Dịch gương ra xa vật thêm 0,3 m. So với vị trí cũ, ảnh của vật đã dịch chuyển bao nhiêu?",
+     "lua_chon": [
+      "0,3 m",
+      "1,3 m",
+      "2,6 m",
+      "0,6 m"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lúc đầu ảnh cách vật 2 × 1 = 2 m; lúc sau gương cách vật 1,3 m nên ảnh cách vật 2 × 1,3 = 2,6 m. Ảnh đã dịch 2,6 − 2 = 0,6 m, gấp đôi độ dịch của gương.\n\nVì sao các phương án khác sai:\n- A: Gương dịch 0,3 m nhưng ảnh dịch gấp đôi: 2,6 − 2 = 0,6 m.\n- B: 1,3 m là khoảng cách ảnh – gương lúc sau, không phải độ dịch của ảnh.\n- C: 2,6 m là khoảng cách vật – ảnh lúc sau, không phải độ dịch của ảnh."
+    },
+    {
+     "ma_cau": "K07050301044",
+     "loai": "trac_nghiem",
+     "de": "Một vật đứng yên, cách gương phẳng 30 cm. Dịch gương ra xa vật với tốc độ 5 cm/s trong 4 s. Lúc đó khoảng cách giữa vật và ảnh là bao nhiêu?",
+     "lua_chon": [
+      "80 cm",
+      "50 cm",
+      "140 cm",
+      "100 cm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Gương dịch 5 × 4 = 20 cm, lúc sau cách vật 30 + 20 = 50 cm, nên vật cách ảnh 2 × 50 = 100 cm.\n\nVì sao các phương án khác sai:\n- A: Lấy 60 + 20 là nghĩ ảnh chỉ dịch bằng gương; ảnh dịch 2 × 20 = 40 cm.\n- B: 50 cm là khoảng cách vật – gương lúc sau; vật – ảnh gấp đôi.\n- C: Ảnh dịch 2 × 20 = 40 cm, không phải 80 cm: 60 + 40 = 100 cm."
+    },
+    {
+     "ma_cau": "K07050301045",
+     "loai": "trac_nghiem",
+     "de": "Một vật đứng yên trước gương phẳng. Dịch gương lại gần vật thì khoảng cách vật – ảnh giảm từ 2,4 m xuống 1,6 m. Gương đã dịch chuyển bao nhiêu?",
+     "lua_chon": [
+      "0,8 m",
+      "0,2 m",
+      "0,4 m",
+      "1,2 m"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vật – gương lúc đầu 2,4 : 2 = 1,2 m, lúc sau 1,6 : 2 = 0,8 m, nên gương dịch 1,2 − 0,8 = 0,4 m (bằng nửa độ giảm 0,8 m).\n\nVì sao các phương án khác sai:\n- A: 0,8 m là độ giảm của khoảng cách vật – ảnh, gấp đôi độ dịch của gương.\n- B: Chỉ chia 2 một lần: 0,8 : 2 = 0,4 m.\n- D: 1,2 m là khoảng cách vật – gương lúc đầu, không phải độ dịch."
+    },
+    {
+     "ma_cau": "K07050301046",
+     "loai": "trac_nghiem",
+     "de": "Một vật đứng yên, cách gương phẳng 25 cm. Dịch gương ra xa vật một đoạn d. Lúc này khoảng cách vật – ảnh là 90 cm. Đoạn d bằng bao nhiêu?",
+     "lua_chon": [
+      "40 cm",
+      "20 cm",
+      "65 cm",
+      "10 cm"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khoảng cách vật–ảnh ban đầu = 2×25 = 50 cm. Tăng thêm 90−50 = 40 cm = 2d → d = 20 cm.\n\nVì sao các phương án khác sai:\n- A: Lấy thẳng khoảng cách tăng thêm (40 cm) làm d, quên chia đôi.\n- C: Nhầm d = 90 − 25.\n- D: Chia tư nhầm khoảng cách tăng thêm."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00345",
+   "khoi": "7",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Ảnh tạo bởi gương phẳng",
+   "nhom": "Dựng ảnh và xác định vùng nhìn thấy của gương",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K07050302001",
+     "loai": "trac_nghiem",
+     "de": "Vật AB đặt thẳng đứng trước gương phẳng, cách gương 3 ô. Hình nào vẽ đúng ảnh A′B′ của AB?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-003-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-003-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-003-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-003-D.png)"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ảnh đối xứng với vật qua gương: cách gương 3 ô như vật, cùng chiều, lớn bằng vật và vẽ nét đứt.\n\nVì sao các phương án khác sai:\n- A: Ảnh cách gương 2 ô, gần gương hơn vật; ảnh phải cách gương 3 ô.\n- C: Ảnh bị vẽ lộn ngược; vật song song với gương cho ảnh cùng chiều.\n- D: Ảnh cách gương 5 ô, xa hơn vật; ảnh phải đối xứng với vật."
+    },
+    {
+     "ma_cau": "K07050302002",
+     "loai": "trac_nghiem",
+     "de": "Vật AB đặt thẳng đứng trước gương phẳng, cách gương 2 ô. Hình nào vẽ đúng ảnh A′B′ của AB?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-004-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-004-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-004-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-004-D.png)"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ảnh đối xứng với vật qua gương: cách gương 2 ô như vật, cùng chiều và lớn bằng vật.\n\nVì sao các phương án khác sai:\n- B: Ảnh cách gương 4 ô: nhầm lấy khoảng cách vật – ảnh.\n- C: Ảnh bị vẽ lộn ngược; vật song song với gương cho ảnh cùng chiều.\n- D: Ảnh cách gương 1 ô: chia đôi khoảng cách là sai."
+    },
+    {
+     "ma_cau": "K07050302003",
+     "loai": "trac_nghiem",
+     "de": "Vật AB đặt thẳng đứng trước gương phẳng, cách gương 4 ô. Hình nào vẽ đúng ảnh A′B′ của AB?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-005-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-005-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-005-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-005-D.png)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ảnh đối xứng với vật qua gương: cách gương 4 ô như vật, cùng chiều và lớn bằng vật.\n\nVì sao các phương án khác sai:\n- A: Ảnh cách gương 2 ô: chia đôi khoảng cách là sai.\n- B: Ảnh bị vẽ lộn ngược; vật song song với gương cho ảnh cùng chiều.\n- C: Ảnh cách gương 5 ô, xa hơn vật; ảnh phải đối xứng với vật."
+    },
+    {
+     "ma_cau": "K07050302004",
+     "loai": "trac_nghiem",
+     "de": "Vật AB đặt thẳng đứng trước gương phẳng, cách gương 5 ô. Hình nào vẽ đúng ảnh A′B′ của AB?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-009-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-009-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-009-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-009-D.png)"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ảnh đối xứng với vật qua gương: cách gương 5 ô như vật, cùng chiều và lớn bằng vật.\n\nVì sao các phương án khác sai:\n- A: Ảnh vẽ sai khoảng cách: cách gương 3 ô, không đúng bằng khoảng cách của vật (5 ô).\n- C: Ảnh vẽ lộn ngược so với vật là sai; ảnh qua gương phẳng phải cùng chiều với vật.\n- D: Ảnh vẽ sai khoảng cách: cách gương 7 ô, không đúng bằng khoảng cách của vật (5 ô)."
+    },
+    {
+     "ma_cau": "K07050302005",
+     "loai": "trac_nghiem",
+     "de": "Vật AB đặt thẳng đứng trước gương phẳng, cách gương 1 ô. Hình nào vẽ đúng ảnh A′B′ của AB?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-010-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-010-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-010-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-01-010-D.png)"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ảnh đối xứng với vật qua gương: cách gương 1 ô như vật, cùng chiều và lớn bằng vật.\n\nVì sao các phương án khác sai:\n- A: Ảnh vẽ lộn ngược so với vật là sai; ảnh qua gương phẳng phải cùng chiều với vật.\n- B: Ảnh vẽ sai khoảng cách: cách gương 2 ô, không đúng bằng khoảng cách của vật (1 ô).\n- D: Ảnh vẽ sai khoảng cách: cách gương 3 ô, không đúng bằng khoảng cách của vật (1 ô)."
+    },
+    {
+     "ma_cau": "K07050302006",
+     "loai": "trac_nghiem",
+     "de": "Mắt M nhìn thấy ảnh A′ của điểm A qua gương phẳng (vật cách gương 3 ô). Hình nào vẽ đúng đường truyền tia sáng từ A, phản xạ trên gương rồi tới mắt?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-02-001-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-02-001-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-02-001-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-02-001-D.png)"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vẽ ảnh A′ đối xứng với A qua gương, nối A′ với mắt M cắt gương tại I; tia tới AI, tia phản xạ IM có đường kéo dài đi qua A′.\n\nVì sao các phương án khác sai:\n- A: Điểm tới I đặt ngang tầm mắt, nên tia phản xạ kéo dài không đi qua ảnh A′.\n- B: Ảnh A′ vẽ sai chỗ (cách gương 2 ô) nên điểm tới I cũng sai.\n- D: Ảnh A′ cách gương 5 ô, không đối xứng với A nên điểm tới I sai."
+    },
+    {
+     "ma_cau": "K07050302007",
+     "loai": "trac_nghiem",
+     "de": "Mắt M nhìn thấy ảnh A′ của điểm A qua gương phẳng (vật cách gương 4 ô). Hình nào vẽ đúng đường truyền tia sáng từ A, phản xạ trên gương rồi tới mắt?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-02-002-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-02-002-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-02-002-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-02-002-D.png)"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ảnh A′ phải cách gương 4 ô như A; điểm tới I là giao của đoạn A′M với gương; tia sáng đi A → I → M.\n\nVì sao các phương án khác sai:\n- A: Điểm tới I đặt ngang tầm mắt, nên tia phản xạ kéo dài không đi qua ảnh A′.\n- C: Ảnh A′ vẽ sai chỗ (cách gương 3 ô) nên điểm tới I cũng sai.\n- D: Ảnh A′ cách gương 2 ô, không đối xứng với A nên điểm tới I sai."
+    },
+    {
+     "ma_cau": "K07050302008",
+     "loai": "trac_nghiem",
+     "de": "Mắt M nhìn thấy ảnh A′ của điểm A qua gương phẳng (vật cách gương 2 ô). Hình nào vẽ đúng đường truyền tia sáng từ A, phản xạ trên gương rồi tới mắt?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-02-004-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-02-004-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-02-004-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-02-004-D.png)"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ảnh A′ phải cách gương 2 ô như A; điểm tới I là giao của đoạn A′M với gương; tia sáng đi A → I → M.\n\nVì sao các phương án khác sai:\n- A: Điểm tới I bị đặt sai (không đúng giao điểm của A′M với gương).\n- C: Ảnh vẽ sai khoảng cách (4 ô thay vì 2 ô như vật) nên đường tia sáng dựng theo đó cũng sai.\n- D: Ảnh vẽ sai khoảng cách (1 ô thay vì 2 ô như vật) nên đường tia sáng dựng theo đó cũng sai."
+    },
+    {
+     "ma_cau": "K07050302009",
+     "loai": "trac_nghiem",
+     "de": "Mắt M nhìn thấy ảnh A′ của điểm A qua gương phẳng (vật cách gương 5 ô). Hình nào vẽ đúng đường truyền tia sáng từ A, phản xạ trên gương rồi tới mắt?",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-02-005-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-02-005-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-02-005-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050303-02-005-D.png)"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ảnh A′ phải cách gương 5 ô như A; điểm tới I là giao của đoạn A′M với gương; tia sáng đi A → I → M.\n\nVì sao các phương án khác sai:\n- A: Ảnh vẽ sai khoảng cách (3 ô thay vì 5 ô như vật) nên đường tia sáng dựng theo đó cũng sai.\n- B: Điểm tới I bị đặt sai (không đúng giao điểm của A′M với gương).\n- D: Ảnh vẽ sai khoảng cách (6 ô thay vì 5 ô như vật) nên đường tia sáng dựng theo đó cũng sai."
+    }
+   ]
+  }
+ ]
+}

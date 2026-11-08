@@ -1,0 +1,11 @@
+[
+ {"ma_cau": "T11200000010611", "dang_bai_id": "NDB02537", "chac": "cao", "ly_do": "Rút gọn AB+AD+AA' trên hình hộp bằng quy tắc hình hộp; lời giải đủ dữ kiện không cần đọc hình."},
+ {"ma_cau": "T11200000010613", "dang_bai_id": "NDB02551", "chac": "cao", "ly_do": "Tìm toạ độ trung điểm đoạn AB bằng trung bình cộng toạ độ."},
+ {"ma_cau": "T11200000010589", "dang_bai_id": "NDB02537", "chac": "cao", "ly_do": "Chọn đẳng thức tổng vectơ đúng trên lăng trụ, dùng A'C' = AC và quy tắc ba điểm; lời giải đủ dữ kiện."},
+ {"ma_cau": "T11200000010591", "dang_bai_id": "NDB02542", "chac": "cao", "ly_do": "Tính tích vô hướng AM·AB trên tứ diện đều bằng phân tích theo AC, AD và góc 60 độ."},
+ {"ma_cau": "T11200000010627", "dang_bai_id": "NDB02565", "chac": "cao", "ly_do": "Flycam bay thẳng theo hướng u với tốc độ cho trước, tìm vị trí sau 10 giây: A + (v·t/|u|)·u."},
+ {"ma_cau": "T11200000010614", "dang_bai_id": "NDB02556", "chac": "cao", "ly_do": "Cho toạ độ hai vectơ, tính góc bằng tích vô hướng và cos."},
+ {"ma_cau": "T11200000010590", "dang_bai_id": null, "chac": null, "ly_do": "thuộc Hình học: quan hệ song song đường thẳng–mặt phẳng trong hình hộp, không dùng vectơ; bản đồ thiếu dạng này."},
+ {"ma_cau": "T11200000010612", "dang_bai_id": "NDB02548", "chac": "cao", "ly_do": "Tính toạ độ vectơ a + 2b bằng cộng và nhân từng thành phần."},
+ {"ma_cau": "T11200000010628", "dang_bai_id": "NDB02561", "chac": "cao", "ly_do": "Ba lực đôi một vuông góc 3, 4, 12 N, tính độ lớn hợp lực: đúng ví dụ mẫu của dạng."}
+]

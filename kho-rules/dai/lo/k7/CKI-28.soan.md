@@ -115,6 +115,7 @@ Vậy $x\in\left\{2;\dfrac{5}{3};\dfrac{-5}{3}\right\}$.
 **Đề:** Lan thường đi xe đạp từ nhà đến trường với vận tốc $12$ km/h thì hết khoảng $\dfrac{1}{5}$ giờ.
 a) Tính quãng đường từ nhà Lan đến trường?
 b) Hôm nay, nhà trường có gửi thông báo về kế hoạch cấm đường để làm công trình mở rộng đường giao thông nên Lan phải đi đường vòng dài khoảng $3$ km. Lan sẽ đi hết bao nhiêu thời gian biết vận tốc vẫn là $12$ km/h?
+**Ghi chú:** đề in "đi đường vòng dài khoảng 3km"; CEO chốt (20/10) hiểu là đường vòng dài THÊM khoảng 3 km so với đường cũ.
 
 **Phần 1. Hướng dẫn**
 
@@ -122,7 +123,7 @@ b) Hôm nay, nhà trường có gửi thông báo về kế hoạch cấm đư�
 
 **Bước 1.** Ý a): xác định vận tốc và thời gian đã cho, dùng công thức quãng đường bằng vận tốc nhân thời gian.
 
-**Bước 2.** Ý b): xác định quãng đường mới của đường vòng và vận tốc vẫn giữ nguyên.
+**Bước 2.** Ý b): đường vòng dài hơn đường cũ khoảng $3$ km, nên quãng đường mới bằng quãng đường ở ý a) cộng thêm $3$ km; vận tốc vẫn giữ nguyên.
 
 **Bước 3.** Dùng công thức thời gian bằng quãng đường chia vận tốc, rồi đổi ra phút để dễ hình dung.
 
@@ -134,11 +135,15 @@ $12.\dfrac{1}{5}=\dfrac{12}{5}=2,4$ (km)
 
 b) Thời gian Lan đi hết đường vòng là:
 
-$3:12=\dfrac{3}{12}=\dfrac{1}{4}$ (giờ)
+Quãng đường đường vòng là: $2,4+3=5,4$ (km)
 
-$\dfrac{1}{4}$ giờ $=15$ phút.
+Thời gian Lan đi hết đường vòng là:
 
-Vậy quãng đường nhà Lan đến trường dài $2,4$ km, và Lan đi đường vòng hết $\dfrac{1}{4}$ giờ ($15$ phút).
+$5,4:12=0,45$ (giờ)
+
+$0,45$ giờ $=27$ phút.
+
+Vậy quãng đường nhà Lan đến trường dài $2,4$ km, và Lan đi đường vòng hết $0,45$ giờ ($27$ phút).
 
 ### Bài 4.1 | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Cho biểu đồ khảo sát "Mục đích vào mạng Internet của học sinh THCS" (biểu đồ hình quạt tròn: Phục vụ học tập $35\%$; Kết nối bạn bè $40\%$; Giải trí $25\%$):

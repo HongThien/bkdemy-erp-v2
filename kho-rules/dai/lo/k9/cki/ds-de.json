@@ -1,0 +1,178 @@
+[
+ {
+  "ma": "CKI-01",
+  "truong": "THCS Đống Đa",
+  "nam": "2025–2026",
+  "ghi": "",
+  "tu": 1,
+  "den": 1
+ },
+ {
+  "ma": "CKI-02",
+  "truong": "THCS Hà Đông (Phòng VH-XH Hà Đông)",
+  "nam": "2025–2026",
+  "ghi": "",
+  "tu": 2,
+  "den": 3
+ },
+ {
+  "ma": "CKI-03",
+  "truong": "THCS Ái Mộ (Bồ Đề)",
+  "nam": "2025–2026",
+  "ghi": "Mã đề 902",
+  "tu": 4,
+  "den": 4
+ },
+ {
+  "ma": "CKI-04",
+  "truong": "THCS Hoàng Liệt",
+  "nam": "2025–2026",
+  "ghi": "",
+  "tu": 5,
+  "den": 6
+ },
+ {
+  "ma": "CKI-05",
+  "truong": "THCS Ngô Sĩ Liên (Cửa Nam)",
+  "nam": "2025–2026",
+  "ghi": "",
+  "tu": 7,
+  "den": 8
+ },
+ {
+  "ma": "CKI-06",
+  "truong": "THCS Phúc Đồng (Phúc Lợi)",
+  "nam": "2025–2026",
+  "ghi": "Đề số 901",
+  "tu": 9,
+  "den": 10
+ },
+ {
+  "ma": "CKI-07",
+  "truong": "THCS Phúc Đồng (Phúc Lợi)",
+  "nam": "2025–2026",
+  "ghi": "Đề số 902",
+  "tu": 11,
+  "den": 12
+ },
+ {
+  "ma": "CKI-08",
+  "truong": "THCS Phúc Đồng (Phúc Lợi)",
+  "nam": "2025–2026",
+  "ghi": "Đề số 903",
+  "tu": 13,
+  "den": 14
+ },
+ {
+  "ma": "CKI-09",
+  "truong": "THCS Trưng Vương",
+  "nam": "2025–2026",
+  "ghi": "",
+  "tu": 15,
+  "den": 16
+ },
+ {
+  "ma": "CKI-10",
+  "truong": "THCS Nhật Tân (Tây Hồ)",
+  "nam": "2025–2026",
+  "ghi": "",
+  "tu": 17,
+  "den": 17
+ },
+ {
+  "ma": "CKI-11",
+  "truong": "THCS Tân Triều",
+  "nam": "2025–2026",
+  "ghi": "",
+  "tu": 18,
+  "den": 18
+ },
+ {
+  "ma": "CKI-12",
+  "truong": "THCS Cầu Diễn",
+  "nam": "2025–2026",
+  "ghi": "",
+  "tu": 19,
+  "den": 19
+ },
+ {
+  "ma": "CKI-13",
+  "truong": "THCS Giảng Võ",
+  "nam": "2025–2026",
+  "ghi": "",
+  "tu": 20,
+  "den": 21
+ },
+ {
+  "ma": "CKI-14",
+  "truong": "THCS & THPT Tạ Quang Bửu (Sở GD&ĐT Hà Nội)",
+  "nam": "2025–2026",
+  "ghi": "",
+  "tu": 22,
+  "den": 22
+ },
+ {
+  "ma": "CKI-15",
+  "truong": "THCS Dịch Vọng",
+  "nam": "2025–2026",
+  "ghi": "",
+  "tu": 23,
+  "den": 24
+ },
+ {
+  "ma": "CKI-16",
+  "truong": "THCS Nguyễn Du (Hoàn Kiếm)",
+  "nam": "2025–2026",
+  "ghi": "",
+  "tu": 25,
+  "den": 25
+ },
+ {
+  "ma": "CKI-17",
+  "truong": "THPT Chuyên Hà Nội – Amsterdam (Tổ Toán – Tin)",
+  "nam": "2025–2026",
+  "ghi": "120 phút",
+  "tu": 26,
+  "den": 26
+ },
+ {
+  "ma": "CKI-18",
+  "truong": "Cụm chuyên môn số 14 (Kết nối tri thức)",
+  "nam": "2025–2026",
+  "ghi": "",
+  "tu": 27,
+  "den": 27
+ },
+ {
+  "ma": "CKI-19",
+  "truong": "THCS Ba Đình (Phòng VH-XH Ba Đình)",
+  "nam": "2025–2026",
+  "ghi": "",
+  "tu": 28,
+  "den": 29
+ },
+ {
+  "ma": "CKI-20",
+  "truong": "THCS Marie Curie",
+  "nam": "2025–2026",
+  "ghi": "",
+  "tu": 30,
+  "den": 30
+ },
+ {
+  "ma": "CKI-21",
+  "truong": "THCS Chu Văn An (Tây Hồ)",
+  "nam": "2025–2026",
+  "ghi": "",
+  "tu": 31,
+  "den": 31
+ },
+ {
+  "ma": "CKI-22",
+  "truong": "THCS Nguyễn Trường Tộ (Ô Chợ Dừa)",
+  "nam": "2025–2026",
+  "ghi": "120 phút",
+  "tu": 32,
+  "den": 32
+ }
+]

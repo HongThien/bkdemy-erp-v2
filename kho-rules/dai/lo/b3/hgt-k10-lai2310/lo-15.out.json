@@ -1,0 +1,386 @@
+[
+ {
+  "ma_cau": "T310010201028",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Dùng trực tiếp tính chất trung điểm: AB=2AI."
+ },
+ {
+  "ma_cau": "T310010201029",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm M của BC; chọn hệ thức sai."
+ },
+ {
+  "ma_cau": "T310010201030",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "Xác định vị trí K từ đẳng thức véc tơ; bản đồ thiếu dạng riêng, gần 909/907."
+ },
+ {
+  "ma_cau": "T310010201031",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "Xác định vị trí M từ đẳng thức véc tơ; bản đồ thiếu dạng riêng."
+ },
+ {
+  "ma_cau": "T310010201032",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài |BA+BC| trong tam giác vuông; dạng sau 912 thắng 906."
+ },
+ {
+  "ma_cau": "T310010201033",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài |AB+AC| trong tam giác vuông, dạng 912."
+ },
+ {
+  "ma_cau": "T310010201034",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài AB+AC+BC tam giác đều, đúng ví dụ 912."
+ },
+ {
+  "ma_cau": "T310010201035",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài AB+AC tam giác đều, đúng ví dụ 912."
+ },
+ {
+  "ma_cau": "T310010201036",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Từ đẳng thức điểm M biểu diễn AM theo AB, AC."
+ },
+ {
+  "ma_cau": "T310010201037",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn OA+OB+2OC theo OM với O bất kì; dạng sau 909 thắng 907."
+ },
+ {
+  "ma_cau": "T310010201038",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Từ KA+2KB=0 biểu diễn AK theo AB."
+ },
+ {
+  "ma_cau": "T310010201039",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn OK theo OA, OB."
+ },
+ {
+  "ma_cau": "T310010201040",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn OH theo OG/OA,OB,OC trong tam giác (Euler)."
+ },
+ {
+  "ma_cau": "T310010201041",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn AC+BD theo GG' trong tứ giác."
+ },
+ {
+  "ma_cau": "T310010201042",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm/trọng tâm trực tiếp: GB+GC=2GM."
+ },
+ {
+  "ma_cau": "T310010201043",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn AG theo AB, AC; dạng sau 909 thắng 907."
+ },
+ {
+  "ma_cau": "T310010201044",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất tâm hình bình hành, hệ số 2AO,2BO."
+ },
+ {
+  "ma_cau": "T310010201045",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Tổng ba véc tơ HBH ra 2BD; đáp án gốc D sai (đúng là A)."
+ },
+ {
+  "ma_cau": "T310010201046",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn AM theo AB, AC; dạng sau 909 thắng 907."
+ },
+ {
+  "ma_cau": "T310010201047",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "BM=2MC, biểu diễn AM theo AB, AC."
+ },
+ {
+  "ma_cau": "T310010201048",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài |AB+2AC| tam giác đều."
+ },
+ {
+  "ma_cau": "T310010201049",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài |4AB-AC| tam giác vuông cân."
+ },
+ {
+  "ma_cau": "T310010201050",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Quy tắc HBH rồi 2AC; tích với số, dạng sau 907 thắng 904."
+ },
+ {
+  "ma_cau": "T310010201051",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm: 2IA+IB+IC=0."
+ },
+ {
+  "ma_cau": "T310010201052",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn 2MN theo cạnh/đường chéo tứ giác."
+ },
+ {
+  "ma_cau": "T310010201053",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn OM theo ON, OP từ MN=-2MP."
+ },
+ {
+  "ma_cau": "T310010201054",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "Xác định vị trí M từ đẳng thức véc tơ; bản đồ thiếu dạng riêng."
+ },
+ {
+  "ma_cau": "T310010201055",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn DE theo AB, AC rồi tính m.n."
+ },
+ {
+  "ma_cau": "T310010201056",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài |AB+2AD| hình chữ nhật."
+ },
+ {
+  "ma_cau": "T310010201057",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn DE theo CA, CB với chân phân giác."
+ },
+ {
+  "ma_cau": "T310010201058",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ tổng hiệu trong hình thang."
+ },
+ {
+  "ma_cau": "T310010201059",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn các véc tơ theo AB, AC, chọn phát biểu sai."
+ },
+ {
+  "ma_cau": "T310010201060",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Phân tích AG theo a, b trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310010201061",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm/trọng tâm, chọn mệnh đề sai; đề đủ dữ kiện."
+ },
+ {
+  "ma_cau": "T310010201062",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn AC theo AB, AM."
+ },
+ {
+  "ma_cau": "T310010201063",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trọng tâm AG=2GI; đề đủ dữ kiện."
+ },
+ {
+  "ma_cau": "T310010201064",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "Xác định vị trí M từ đẳng thức véc tơ; bản đồ thiếu dạng riêng."
+ },
+ {
+  "ma_cau": "T310010201065",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trọng tâm: OM+ON+OP=3OG."
+ },
+ {
+  "ma_cau": "T310010201066",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Quan hệ các véc tơ theo cạnh/trung điểm trong tam giác; đề đủ dữ kiện."
+ },
+ {
+  "ma_cau": "T310010201067",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trọng tâm/trung điểm trực tiếp."
+ },
+ {
+  "ma_cau": "T310010201068",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn MJ theo MN, MP."
+ },
+ {
+  "ma_cau": "T310010201069",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm: AB+AC=2AM."
+ },
+ {
+  "ma_cau": "T310010201070",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Đề/đáp án lỗi, không khớp lời giải (M không xác định): không phải câu hỏi hoàn chỉnh."
+ },
+ {
+  "ma_cau": "T310010201071",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "không phải câu hỏi: đề và đáp án bị lỗi ký hiệu hoàn toàn."
+ },
+ {
+  "ma_cau": "T310010201072",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Quy tắc HBH ra 2AC (tích với số); đáp án trùng lặp phương án."
+ },
+ {
+  "ma_cau": "T310010201073",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm: MA+MB=2MI."
+ },
+ {
+  "ma_cau": "T310010201074",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trọng tâm: MA+MB+MC=3MG."
+ },
+ {
+  "ma_cau": "T310010201075",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm EQ+EP=0."
+ },
+ {
+  "ma_cau": "T310010201076",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn AI+AK theo AC trong hình chữ nhật."
+ },
+ {
+  "ma_cau": "T310010201077",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trọng tâm, trung điểm; chọn hệ thức sai."
+ },
+ {
+  "ma_cau": "T310010201078",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm AB+AC=2AI."
+ },
+ {
+  "ma_cau": "T310010201079",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biến đổi tổng/hiệu véc tơ hình bình hành theo tâm O; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T310010201080",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài |CA+CH| tam giác đều."
+ },
+ {
+  "ma_cau": "T310010201081",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài |OA+OB| hình vuông; dạng sau 912 thắng 906."
+ },
+ {
+  "ma_cau": "T310010201082",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn AM theo AB, AC với nBM=mBC."
+ },
+ {
+  "ma_cau": "T310010201083",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "Xác định vị trí M từ đẳng thức véc tơ; bản đồ thiếu dạng riêng."
+ },
+ {
+  "ma_cau": "T310010201084",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Tính chất trung điểm; đáp án gốc B sai (đúng A/C, trùng nhau)."
+ },
+ {
+  "ma_cau": "T310010201085",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài |AB+AC| tam giác đều."
+ },
+ {
+  "ma_cau": "T310010201086",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Từ AB+AC=2AM suy M trung điểm BC."
+ },
+ {
+  "ma_cau": "T310010201087",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "Xác định vị trí M từ đẳng thức véc tơ; bản đồ thiếu dạng riêng."
+ },
+ {
+  "ma_cau": "T310010201088",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài AB+AC tam giác đều."
+ },
+ {
+  "ma_cau": "T310010201089",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn AM theo AB, AC với MB=3MC."
+ },
+ {
+  "ma_cau": "T310010201090",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn AM theo AB, AD trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310010201091",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "Xác định vị trí M từ đẳng thức véc tơ; bản đồ thiếu dạng riêng."
+ }
+]

@@ -1,0 +1,758 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00357",
+   "khoi": "7",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Quang hợp ở thực vật",
+   "nhom": "Ảnh hưởng của các yếu tố đến quang hợp",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "I. LÝ THUYẾT DẠNG BÀI\nBốn yếu tố chính của môi trường ảnh hưởng đến quang hợp.\n●\tÁnh sáng: là điều kiện bắt buộc. Khi cường độ ánh sáng tăng thì quang hợp tăng, nhưng nếu ánh sáng quá mạnh thì lá bị đốt nóng và quang hợp lại giảm. Cây ưa sáng như lúa, ngô, phi lao, bạch đàn quang hợp mạnh ở nơi nhiều nắng; cây ưa bóng như lá lốt, trầu không, vạn niên thanh quang hợp tốt ở ánh sáng yếu.\n●\tNước: vừa là nguyên liệu của quang hợp, vừa điều tiết việc đóng mở khí khổng. Khi thiếu nước, khí khổng đóng lại nên carbon dioxide không vào được lá, quang hợp giảm mạnh.\n●\tKhí carbon dioxide: trong không khí chiếm khoảng 0,03%. Khi nồng độ tăng thì quang hợp tăng, nhưng chỉ tăng đến một giới hạn nhất định rồi dừng lại; nếu nồng độ quá cao thì cây bị ngộ độc và có thể chết.\n●\tNhiệt độ: quang hợp diễn ra thuận lợi nhất trong khoảng 25 °C đến 35 °C. Nhiệt độ quá thấp hoặc quá cao đều làm quang hợp giảm mạnh, thậm chí ngừng hẳn.\nCách làm bài: xác định yếu tố mà đề bài thay đổi, sau đó xét xem thay đổi đó làm quang hợp tăng, giảm hay ngừng, và giải thích qua nguyên liệu hoặc điều kiện của quang hợp.\nII. VÍ DỤ MINH HỌA\nVí dụ 1. Vào những ngày nắng gắt giữa trưa hè, nhiều cây trồng có hiện tượng quang hợp giảm mặc dù ánh sáng rất mạnh. Hãy giải thích.\nHướng dẫn: Nắng gắt làm nhiệt độ lên quá cao và làm cây mất nhiều nước. Để giữ nước, khí khổng đóng bớt lại nên carbon dioxide khó vào lá; đồng thời nhiệt độ vượt quá khoảng thuận lợi cũng làm quang hợp giảm. Vì vậy quang hợp giảm dù ánh sáng dồi dào.\nVí dụ 2. Trong nhà kính trồng rau, người ta bổ sung thêm khí carbon dioxide tới nồng độ cao hơn ngoài không khí. Việc này có tác dụng gì và cần lưu ý điều gì?\nHướng dẫn: Nồng độ carbon dioxide tăng làm tăng lượng nguyên liệu cho quang hợp nên năng suất cây trồng tăng. Tuy nhiên chỉ tăng có lợi tới một giới hạn nhất định; nếu nồng độ quá cao thì cây bị ngộ độc và có thể chết, nên phải kiểm soát mức bổ sung.",
+   "can_dien_ly_thuyet_nhom": false,
+   "cau": [
+    {
+     "ma_cau": "K07070203001",
+     "loai": "trac_nghiem",
+     "de": "Yếu tố nào sau đây không thuộc nhóm yếu tố chính ảnh hưởng đến quang hợp?",
+     "lua_chon": [
+      "Ánh sáng.",
+      "Nước.",
+      "Âm thanh.",
+      "Khí carbon dioxide."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Bốn yếu tố chính là ánh sáng, nước, khí carbon dioxide và nhiệt độ."
+    },
+    {
+     "ma_cau": "K07070203002",
+     "loai": "trac_nghiem",
+     "de": "Khi cường độ ánh sáng tăng dần từ mức rất yếu, quang hợp của cây sẽ",
+     "lua_chon": [
+      "ngừng hẳn.",
+      "không thay đổi.",
+      "giảm dần.",
+      "tăng dần."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ánh sáng càng nhiều thì diệp lục càng hấp thụ được nhiều năng lượng cho quang hợp."
+    },
+    {
+     "ma_cau": "K07070203003",
+     "loai": "trac_nghiem",
+     "de": "Khi ánh sáng quá mạnh chiếu trực tiếp và kéo dài, quang hợp của nhiều cây trồng sẽ",
+     "lua_chon": [
+      "tiếp tục tăng không giới hạn.",
+      "chuyển sang xảy ra ở rễ.",
+      "không bị ảnh hưởng.",
+      "giảm vì lá bị đốt nóng và mất nhiều nước."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nhiệt độ lá tăng cao và khí khổng đóng bớt để giữ nước làm quang hợp giảm."
+    },
+    {
+     "ma_cau": "K07070203004",
+     "loai": "trac_nghiem",
+     "de": "Nhóm cây nào sau đây thuộc nhóm cây ưa sáng?",
+     "lua_chon": [
+      "Lúa, ngô, phi lao.",
+      "Lá lốt, trầu không, vạn niên thanh.",
+      "Trầu không, dong riềng, rêu.",
+      "Dương xỉ, rêu, lá lốt."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đây là những cây quang hợp mạnh ở nơi nhiều nắng."
+    },
+    {
+     "ma_cau": "K07070203005",
+     "loai": "trac_nghiem",
+     "de": "Nhóm cây nào sau đây thuộc nhóm cây ưa bóng?",
+     "lua_chon": [
+      "Phi lao, dừa, xoài.",
+      "Lá lốt, trầu không, vạn niên thanh.",
+      "Lúa, mía, ngô.",
+      "Bạch đàn, phi lao, ngô."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Những cây này quang hợp tốt ngay cả khi ánh sáng yếu."
+    },
+    {
+     "ma_cau": "K07070203006",
+     "loai": "trac_nghiem",
+     "de": "Vai trò nào sau đây của nước không liên quan trực tiếp đến quang hợp?",
+     "lua_chon": [
+      "Vận chuyển chất khoáng lên lá.",
+      "Làm cho quả có vị ngọt.",
+      "Là nguyên liệu của quang hợp.",
+      "Điều tiết việc đóng mở khí khổng."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vị ngọt của quả do đường tích luỹ, không phải vai trò trực tiếp của nước với quang hợp."
+    },
+    {
+     "ma_cau": "K07070203007",
+     "loai": "trac_nghiem",
+     "de": "Khi cây bị thiếu nước, khí khổng đóng lại làm cho quang hợp",
+     "lua_chon": [
+      "chuyển sang diễn ra ban đêm.",
+      "không đổi vì ánh sáng vẫn đủ.",
+      "giảm vì carbon dioxide không vào được lá.",
+      "tăng vì lá giữ được nhiều nước."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thiếu nguyên liệu carbon dioxide thì quá trình tổng hợp chất hữu cơ bị hạn chế."
+    },
+    {
+     "ma_cau": "K07070203008",
+     "loai": "trac_nghiem",
+     "de": "Nồng độ khí carbon dioxide trong không khí vào khoảng",
+     "lua_chon": [
+      "$0,03\\%$",
+      "$0,3\\%$",
+      "$3\\%$",
+      "$21\\%$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Giá trị $21\\%$ là tỉ lệ của khí oxygen trong không khí."
+    },
+    {
+     "ma_cau": "K07070203009",
+     "loai": "trac_nghiem",
+     "de": "Khi nồng độ khí carbon dioxide tăng lên trong giới hạn cho phép, quang hợp của cây sẽ",
+     "lua_chon": [
+      "không thay đổi.",
+      "ngừng hẳn.",
+      "tăng lên.",
+      "giảm xuống."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Carbon dioxide là nguyên liệu nên tăng nguyên liệu thì quang hợp mạnh hơn."
+    },
+    {
+     "ma_cau": "K07070203010",
+     "loai": "trac_nghiem",
+     "de": "Nếu nồng độ khí carbon dioxide quá cao thì cây sẽ",
+     "lua_chon": [
+      "tăng lượng diệp lục.",
+      "quang hợp mạnh hơn nhiều lần.",
+      "chuyển sang sống dị dưỡng.",
+      "bị ngộ độc và có thể chết."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vượt quá giới hạn chịu đựng, khí này gây hại cho cây."
+    },
+    {
+     "ma_cau": "K07070203011",
+     "loai": "trac_nghiem",
+     "de": "Khoảng nhiệt độ thuận lợi nhất cho quang hợp của phần lớn cây trồng là",
+     "lua_chon": [
+      "$0^{\\circ}\\mathrm{C}$ đến $10^{\\circ}\\mathrm{C}$",
+      "$10^{\\circ}\\mathrm{C}$ đến $20^{\\circ}\\mathrm{C}$",
+      "$40^{\\circ}\\mathrm{C}$ đến $50^{\\circ}\\mathrm{C}$",
+      "$25^{\\circ}\\mathrm{C}$ đến $35^{\\circ}\\mathrm{C}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ngoài khoảng này, quang hợp giảm mạnh hoặc ngừng hẳn."
+    },
+    {
+     "ma_cau": "K07070203012",
+     "loai": "trac_nghiem",
+     "de": "Khi nhiệt độ môi trường xuống quá thấp, quang hợp của cây sẽ",
+     "lua_chon": [
+      "tăng lên rõ rệt.",
+      "giảm mạnh hoặc ngừng lại.",
+      "chuyển sang xảy ra ở rễ.",
+      "không bị ảnh hưởng."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nhiệt độ thấp làm các hoạt động sống trong tế bào chậm lại."
+    },
+    {
+     "ma_cau": "K07070203013",
+     "loai": "trac_nghiem",
+     "de": "Vì sao vào ban đêm cây xanh không quang hợp?",
+     "lua_chon": [
+      "Vì không có ánh sáng.",
+      "Vì không có khí carbon dioxide.",
+      "Vì nhiệt độ luôn quá cao.",
+      "Vì không có nước."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ánh sáng là điều kiện bắt buộc của quang hợp."
+    },
+    {
+     "ma_cau": "K07070203014",
+     "loai": "trac_nghiem",
+     "de": "Một chậu cây được tưới nước đầy đủ và đặt nơi ấm áp nhưng để trong phòng kín tối.\nQuang hợp của cây sẽ",
+     "lua_chon": [
+      "diễn ra bình thường.",
+      "không diễn ra vì thiếu ánh sáng.",
+      "diễn ra mạnh hơn.",
+      "chỉ ngừng vào ban ngày."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đủ nước và nhiệt độ nhưng thiếu điều kiện ánh sáng thì quang hợp không xảy ra."
+    },
+    {
+     "ma_cau": "K07070203015",
+     "loai": "trac_nghiem",
+     "de": "Cây trồng trên đất khô hạn kéo dài thường cho năng suất thấp, nguyên nhân chủ yếu là",
+     "lua_chon": [
+      "thừa ánh sáng.",
+      "nhiệt độ quá thấp.",
+      "thiếu nước nên quang hợp giảm.",
+      "thừa khí carbon dioxide."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nước vừa là nguyên liệu vừa cần cho khí khổng mở để lấy carbon dioxide."
+    },
+    {
+     "ma_cau": "K07070203016",
+     "loai": "trac_nghiem",
+     "de": "Trong cùng một điều kiện ánh sáng yếu, cây nào sau đây quang hợp tốt hơn?",
+     "lua_chon": [
+      "Cây ngô.",
+      "Cây trầu không.",
+      "Cây phi lao.",
+      "Cây lúa."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Trầu không là cây ưa bóng nên thích nghi với ánh sáng yếu."
+    },
+    {
+     "ma_cau": "K07070203017",
+     "loai": "trac_nghiem",
+     "de": "Vì sao vào giữa trưa hè nắng gắt, nhiều cây trồng lại quang hợp kém hơn buổi sáng?",
+     "lua_chon": [
+      "Vì nhiệt độ quá cao và cây mất nhiều nước nên khí khổng đóng bớt.",
+      "Vì nồng độ carbon dioxide buổi trưa bằng không.",
+      "Vì cây không còn diệp lục vào buổi trưa.",
+      "Vì ánh sáng buổi trưa yếu hơn buổi sáng."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hai yếu tố nhiệt độ và nước cùng vượt khỏi mức thuận lợi làm quang hợp giảm."
+    },
+    {
+     "ma_cau": "K07070203018",
+     "loai": "trac_nghiem",
+     "de": "Yếu tố nào sau đây vừa là nguyên liệu vừa ảnh hưởng đến sự đóng mở khí khổng?",
+     "lua_chon": [
+      "Nước.",
+      "Chất khoáng.",
+      "Ánh sáng.",
+      "Nhiệt độ."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nước tham gia phản ứng quang hợp và quyết định trạng thái đóng mở của khí khổng."
+    },
+    {
+     "ma_cau": "K07070203019",
+     "loai": "trac_nghiem",
+     "de": "Khi trồng cây trong nhà kính, người ta bổ sung khí carbon dioxide nhằm mục đích",
+     "lua_chon": [
+      "thay thế cho việc tưới nước.",
+      "tiêu diệt sâu bệnh.",
+      "tăng lượng nguyên liệu cho quang hợp để tăng năng suất.",
+      "làm giảm nhiệt độ trong nhà kính."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nguyên liệu nhiều hơn thì cây tổng hợp được nhiều chất hữu cơ hơn."
+    },
+    {
+     "ma_cau": "K07070203020",
+     "loai": "trac_nghiem",
+     "de": "Vì sao cây ưa bóng trồng ngoài nắng gắt thường bị vàng lá và sinh trưởng kém?",
+     "lua_chon": [
+      "Vì đất thiếu khí carbon dioxide.",
+      "Vì cây không hút được nước.",
+      "Vì cây không có diệp lục.",
+      "Vì cường độ ánh sáng vượt quá mức thích hợp của cây."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Mỗi nhóm cây có nhu cầu ánh sáng riêng, vượt ngưỡng đó lá sẽ bị tổn thương."
+    },
+    {
+     "ma_cau": "K07070203021",
+     "loai": "trac_nghiem",
+     "de": "Yếu tố nào quyết định lượng năng lượng mà lá thu nhận được cho quang hợp?",
+     "lua_chon": [
+      "Số lượng rễ phụ.",
+      "Màu sắc của hoa.",
+      "Cường độ ánh sáng chiếu tới lá.",
+      "Độ cứng của thân cây."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Diệp lục hấp thụ năng lượng từ ánh sáng nên cường độ ánh sáng quyết định lượng năng lượng thu được."
+    },
+    {
+     "ma_cau": "K07070203022",
+     "loai": "trac_nghiem",
+     "de": "Vào mùa đông giá rét ở miền Bắc, nhiều cây trồng ngừng sinh trưởng chủ yếu do",
+     "lua_chon": [
+      "lượng khí carbon dioxide giảm về không.",
+      "cây không còn khí khổng.",
+      "đất chứa quá nhiều nước.",
+      "nhiệt độ xuống quá thấp làm quang hợp giảm mạnh."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ở nhiệt độ thấp, hoạt động của tế bào chậm lại nên quang hợp bị hạn chế."
+    },
+    {
+     "ma_cau": "K07070203023",
+     "loai": "trac_nghiem",
+     "de": "Khi tưới nước đầy đủ cho cây vào buổi sáng, quang hợp của cây thường",
+     "lua_chon": [
+      "giảm vì lá bị ướt.",
+      "không thay đổi.",
+      "ngừng lại.",
+      "tăng vì đủ nguyên liệu và khí khổng mở."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đủ nước thì khí khổng mở, carbon dioxide vào lá thuận lợi."
+    },
+    {
+     "ma_cau": "K07070203024",
+     "loai": "trac_nghiem",
+     "de": "Nhận định nào sau đây đúng về ảnh hưởng của khí carbon dioxide đến quang hợp?",
+     "lua_chon": [
+      "Nồng độ khí này không ảnh hưởng gì tới quang hợp.",
+      "Quang hợp tăng theo nồng độ nhưng chỉ trong một giới hạn nhất định.",
+      "Cây chỉ cần khí oxygen để quang hợp.",
+      "Nồng độ càng cao thì quang hợp càng mạnh, không có giới hạn."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vượt quá giới hạn, quang hợp không tăng thêm và cây có thể bị ngộ độc."
+    },
+    {
+     "ma_cau": "K07070203025",
+     "loai": "trac_nghiem",
+     "de": "Cây sống ở nơi thiếu ánh sáng lâu ngày thường có biểu hiện nào?",
+     "lua_chon": [
+      "Thân vươn dài, lá nhạt màu, sinh trưởng yếu.",
+      "Ra hoa và kết quả sớm.",
+      "Thân mập, lá dày và xanh đậm.",
+      "Rễ phát triển mạnh bất thường."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thiếu ánh sáng làm cây không tổng hợp đủ chất hữu cơ và tạo ít diệp lục."
+    },
+    {
+     "ma_cau": "K07070203026",
+     "loai": "trac_nghiem",
+     "de": "Trong bốn yếu tố ảnh hưởng đến quang hợp, yếu tố nào là điều kiện bắt buộc, thiếu nó thì quang hợp hoàn toàn không xảy ra?",
+     "lua_chon": [
+      "Chất khoáng.",
+      "Ánh sáng.",
+      "Nhiệt độ cao.",
+      "Gió."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Không có ánh sáng thì diệp lục không thu được năng lượng để tổng hợp chất hữu cơ."
+    },
+    {
+     "ma_cau": "K07070203027",
+     "loai": "trac_nghiem",
+     "de": "Vì sao trong phòng kín nhiều người, cây cảnh đặt gần cửa sổ thường quang hợp mạnh hơn cây đặt trong góc?",
+     "lua_chon": [
+      "Vì nhiệt độ ở góc phòng luôn thấp hơn.",
+      "Vì cây trong góc không có diệp lục.",
+      "Vì cây gần cửa sổ được tưới nhiều nước hơn.",
+      "Vì cây gần cửa sổ nhận được nhiều ánh sáng hơn."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vị trí gần nguồn sáng cho cường độ ánh sáng lớn hơn, thuận lợi cho quang hợp."
+    },
+    {
+     "ma_cau": "K07070203028",
+     "loai": "trac_nghiem",
+     "de": "Khi nhiệt độ tăng từ $20 \\text{ } ^\\circ \\text{C}$ lên $30 \\text{ } ^\\circ \\text{C}$, quang hợp của phần lớn cây trồng sẽ",
+     "lua_chon": [
+      "giảm mạnh vì quá nóng.",
+      "không thay đổi.",
+      "tăng lên vì nằm trong khoảng nhiệt độ thuận lợi.",
+      "ngừng hẳn."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khoảng $25 \\text{ } ^\\circ \\text{C}$ đến $35 \\text{ } ^\\circ \\text{C}$ là khoảng thuận lợi nhất cho quang hợp."
+    },
+    {
+     "ma_cau": "K07070203029",
+     "loai": "trac_nghiem",
+     "de": "Khi nhiệt độ tăng lên trên $40~{}^{\\circ}\\mathrm{C}$, quang hợp của phần lớn cây trồng sẽ",
+     "lua_chon": [
+      "chỉ tăng vào ban đêm.",
+      "giảm mạnh hoặc ngừng lại.",
+      "giữ nguyên như ở $30~{}^{\\circ}\\mathrm{C}$.",
+      "tăng gấp đôi."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nhiệt độ quá cao vượt khỏi khoảng thuận lợi làm quang hợp bị hạn chế."
+    },
+    {
+     "ma_cau": "K07070203030",
+     "loai": "trac_nghiem",
+     "de": "Hiện tượng nào sau đây cho thấy nước ảnh hưởng đến quang hợp?",
+     "lua_chon": [
+      "Lá cây có màu lục.",
+      "Cây héo vào buổi trưa nắng, quang hợp giảm rõ rệt.",
+      "Thân cây to dần theo năm.",
+      "Cây ra hoa vào mùa xuân."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mất nước làm khí khổng đóng, nguyên liệu carbon dioxide không vào được lá."
+    },
+    {
+     "ma_cau": "K07070203031",
+     "loai": "trac_nghiem",
+     "de": "Trong một thí nghiệm, hai chậu cây cùng loại được đặt ở hai nơi có cường độ ánh sáng khác nhau, các điều kiện khác như nhau. Chậu nhận nhiều ánh sáng hơn sẽ",
+     "lua_chon": [
+      "không tạo được chất hữu cơ.",
+      "tạo được ít chất hữu cơ hơn.",
+      "chỉ tạo chất hữu cơ vào ban đêm.",
+      "tạo được nhiều chất hữu cơ hơn."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trong giới hạn cho phép, cường độ ánh sáng càng lớn thì quang hợp càng mạnh."
+    },
+    {
+     "ma_cau": "K07070203032",
+     "loai": "trac_nghiem",
+     "de": "Vì sao ở vùng đất mặn hoặc đất khô, cây trồng thường quang hợp kém?",
+     "lua_chon": [
+      "Vì rễ khó hút nước nên cây thiếu nguyên liệu cho quang hợp.",
+      "Vì đất khô chứa nhiều khí carbon dioxide.",
+      "Vì cây bị mất hết diệp lục.",
+      "Vì đất mặn làm giảm ánh sáng chiếu tới lá."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thiếu nước làm giảm cả nguyên liệu lẫn khả năng mở cửa của khí khổng."
+    },
+    {
+     "ma_cau": "K07070203033",
+     "loai": "trac_nghiem",
+     "de": "Trong nhà kính, biện pháp nào sau đây giúp duy trì nhiệt độ thuận lợi cho quang hợp vào mùa hè?",
+     "lua_chon": [
+      "Tăng thêm nguồn nhiệt.",
+      "Đóng kín cửa cả ngày.",
+      "Thông gió và che bớt nắng.",
+      "Ngừng tưới nước."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Giữ nhiệt độ trong khoảng thuận lợi thì quang hợp mới diễn ra tốt."
+    },
+    {
+     "ma_cau": "K07070203034",
+     "loai": "trac_nghiem",
+     "de": "Hai chậu cây cùng loại, một chậu được tưới đủ nước, một chậu để khô nhiều ngày, các điều kiện khác giống nhau. Kết quả dự đoán đúng là",
+     "lua_chon": [
+      "cả hai chậu đều ngừng quang hợp.",
+      "hai chậu quang hợp như nhau.",
+      "chậu khô quang hợp mạnh hơn.",
+      "chậu đủ nước quang hợp mạnh hơn."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nước là nguyên liệu và cần cho khí khổng mở để lấy carbon dioxide."
+    },
+    {
+     "ma_cau": "K07070203035",
+     "loai": "trac_nghiem",
+     "de": "Yếu tố nào sau đây ảnh hưởng đến quang hợp thông qua việc làm thay đổi tốc độ các hoạt động trong tế bào lá?",
+     "lua_chon": [
+      "Chiều cao của thân.",
+      "Màu sắc của hoa.",
+      "Số lượng rễ phụ.",
+      "Nhiệt độ."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nhiệt độ quá thấp hoặc quá cao đều làm các hoạt động trong tế bào bị chậm lại hoặc ngừng."
+    },
+    {
+     "ma_cau": "K07070203036",
+     "loai": "tra_loi_ngan",
+     "de": "Cây bạch đàn thuộc nhóm cây ưa sáng hay ưa bóng?",
+     "dap_an": "ưa sáng",
+     "loi_giai": "Bạch đàn quang hợp mạnh ở nơi nhiều nắng."
+    },
+    {
+     "ma_cau": "K07070203037",
+     "loai": "tra_loi_ngan",
+     "de": "Cây dương xỉ thuộc nhóm cây ưa sáng hay ưa bóng?",
+     "dap_an": "ưa bóng",
+     "loi_giai": "Dương xỉ thường mọc dưới tán rừng, quang hợp tốt ở ánh sáng yếu."
+    },
+    {
+     "ma_cau": "K07070203038",
+     "loai": "tra_loi_ngan",
+     "de": "Khi cường độ ánh sáng tăng trong giới hạn cho phép, quang hợp tăng hay giảm?",
+     "dap_an": "tăng",
+     "loi_giai": "Diệp lục hấp thụ được nhiều năng lượng hơn nên quang hợp mạnh hơn."
+    },
+    {
+     "ma_cau": "K07070203039",
+     "loai": "tra_loi_ngan",
+     "de": "Cây lá lốt và cây ngô, cây nào cần cường độ ánh sáng lớn hơn?",
+     "dap_an": "cây ngô",
+     "loi_giai": "Ngô là cây ưa sáng, còn lá lốt là cây ưa bóng."
+    },
+    {
+     "ma_cau": "K07070203040",
+     "loai": "tra_loi_ngan",
+     "de": "Yếu tố nào của môi trường quyết định trạng thái đóng hay mở của khí khổng?",
+     "dap_an": "nước",
+     "loi_giai": "Đủ nước thì khí khổng mở, thiếu nước thì khí khổng đóng lại."
+    },
+    {
+     "ma_cau": "K07070203041",
+     "loai": "tra_loi_ngan",
+     "de": "Ngoài ánh sáng, nước và khí carbon dioxide, yếu tố thứ tư ảnh hưởng đến quang hợp là gì?",
+     "dap_an": "nhiệt độ",
+     "loi_giai": "Quang hợp chỉ thuận lợi trong một khoảng nhiệt độ nhất định."
+    },
+    {
+     "ma_cau": "K07070203042",
+     "loai": "tra_loi_ngan",
+     "de": "Cây bị héo vào buổi trưa nắng cho thấy cây đang thiếu yếu tố nào?",
+     "dap_an": "nước",
+     "loi_giai": "Mất nước nhanh hơn lượng nước hút vào khiến cây héo và quang hợp giảm."
+    },
+    {
+     "ma_cau": "K07070203043",
+     "loai": "tra_loi_ngan",
+     "de": "Cây trồng trên đất khô hạn kéo dài cho năng suất cao hay thấp?",
+     "dap_an": "thấp",
+     "loi_giai": "Thiếu nước làm giảm cả nguyên liệu lẫn khả năng mở của khí khổng."
+    },
+    {
+     "ma_cau": "K07070203044",
+     "loai": "tra_loi_ngan",
+     "de": "Hai chậu cây giống nhau, chậu nhận nhiều ánh sáng hơn sẽ tạo nhiều hay ít chất hữu cơ hơn?",
+     "dap_an": "nhiều hơn",
+     "loi_giai": "Trong giới hạn cho phép, ánh sáng càng mạnh thì quang hợp càng mạnh."
+    },
+    {
+     "ma_cau": "K07070203045",
+     "loai": "tra_loi_ngan",
+     "de": "Nhiệt độ $30\\ ^\\circ\\mathrm{C}$ nằm trong hay ngoài khoảng thuận lợi cho quang hợp?",
+     "dap_an": "trong",
+     "loi_giai": "Khoảng thuận lợi cho phần lớn cây trồng là từ $25\\ ^\\circ\\mathrm{C}$ đến $35\\ ^\\circ\\mathrm{C}$."
+    },
+    {
+     "ma_cau": "K07070203046",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng quá mạnh và kéo dài gây ra hậu quả gì cho lá cây?",
+     "dap_an": "lá bị đốt nóng",
+     "loi_giai": "Nhiệt độ lá tăng cao làm quang hợp giảm dù ánh sáng dồi dào."
+    },
+    {
+     "ma_cau": "K07070203047",
+     "loai": "tra_loi_ngan",
+     "de": "Cây ưa bóng trồng ngoài nắng gắt thường có biểu hiện gì ở lá?",
+     "dap_an": "vàng lá",
+     "loi_giai": "Cường độ ánh sáng vượt quá mức thích hợp làm lá bị tổn thương."
+    },
+    {
+     "ma_cau": "K07070203048",
+     "loai": "tra_loi_ngan",
+     "de": "Ruộng lúa bị ngập úng lâu ngày khiến rễ cây thiếu chất khí nào?",
+     "dap_an": "oxygen",
+     "loi_giai": "Rễ hô hấp kém nên việc hút nước và chất khoáng bị ảnh hưởng."
+    },
+    {
+     "ma_cau": "K07070203049",
+     "loai": "tra_loi_ngan",
+     "de": "Trong nhà kính mùa hè, biện pháp thông gió nhằm điều chỉnh yếu tố nào của quang hợp?",
+     "dap_an": "nhiệt độ",
+     "loi_giai": "Giữ nhiệt độ trong khoảng thuận lợi thì quang hợp mới diễn ra tốt."
+    },
+    {
+     "ma_cau": "K07070203050",
+     "loai": "tra_loi_ngan",
+     "de": "Thiếu chất khoáng thì lá tạo được ít chất nào, khiến quang hợp giảm?",
+     "dap_an": "diệp lục",
+     "loi_giai": "Diệp lục ít đi thì khả năng hấp thụ năng lượng ánh sáng cũng giảm theo."
+    },
+    {
+     "ma_cau": "K07070203051",
+     "loai": "trac_nghiem",
+     "de": "Hai chậu cà chua (cây ưa sáng) như nhau: chậu A đặt ngoài vườn nhiều nắng, chậu B đặt trong góc nhà thiếu sáng. Chậu nào quang hợp mạnh hơn?",
+     "lua_chon": [
+      "Chậu A, vì nhận được nhiều ánh sáng hơn",
+      "Chậu B, vì cây ít bị mất nước hơn",
+      "Hai chậu như nhau, vì cùng một loại cây",
+      "Chậu B, vì cây quang hợp mạnh khi thiếu sáng"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trong giới hạn, cường độ ánh sáng tăng thì quang hợp tăng; cà chua ưa sáng đặt nơi nhiều nắng sẽ quang hợp mạnh hơn.\n\nVì sao các phương án khác sai:\n- B: Thiếu ánh sáng làm quang hợp giảm, dù cây có ít mất nước hơn.\n- C: Cùng loại cây nhưng lượng ánh sáng khác nhau nên quang hợp khác nhau.\n- D: Ánh sáng là điều kiện của quang hợp; thiếu sáng thì quang hợp yếu."
+    },
+    {
+     "ma_cau": "K07070203052",
+     "loai": "trac_nghiem",
+     "de": "Khi cây thiếu nước, lá héo và khí khổng đóng lại. Vì vậy quang hợp giảm, do",
+     "lua_chon": [
+      "lá nhận quá nhiều ánh sáng",
+      "lượng oxygen vào lá bị thiếu",
+      "carbon dioxide khó đi vào lá",
+      "diệp lục hấp thụ ánh sáng mạnh hơn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thiếu nước làm khí khổng đóng, carbon dioxide (nguyên liệu) khó đi vào lá nên quang hợp giảm.\n\nVì sao các phương án khác sai:\n- A: Khí khổng đóng không làm lá nhận nhiều ánh sáng hơn.\n- B: Quang hợp không dùng oxygen làm nguyên liệu.\n- D: Nếu diệp lục hấp thụ ánh sáng mạnh hơn thì quang hợp không giảm."
+    },
+    {
+     "ma_cau": "K07070203053",
+     "loai": "trac_nghiem",
+     "de": "Trong nhà kính, người ta tăng nồng độ carbon dioxide (trong giới hạn cho phép). Cường độ quang hợp của rau sẽ thay đổi thế nào?",
+     "lua_chon": [
+      "Giảm, vì rau bị thiếu oxygen",
+      "Mạnh hơn vì có thêm nguyên liệu quang hợp",
+      "Không đổi, vì rau chỉ cần ánh sáng",
+      "Ngừng hẳn, vì carbon dioxide là khí độc"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Carbon dioxide là nguyên liệu của quang hợp; trong giới hạn, tăng nồng độ carbon dioxide thì cường độ quang hợp tăng.\n\nVì sao các phương án khác sai:\n- A: Quang hợp không dùng oxygen làm nguyên liệu.\n- C: Ngoài ánh sáng, quang hợp còn cần carbon dioxide và nước làm nguyên liệu.\n- D: Trong giới hạn cho phép, carbon dioxide là nguyên liệu, không gây hại cho rau."
+    },
+    {
+     "ma_cau": "K07070203054",
+     "loai": "trac_nghiem",
+     "de": "Vì sao trồng cây với mật độ quá dày thường làm năng suất giảm?",
+     "lua_chon": [
+      "Các cây che khuất nhau, lá nhận ít ánh sáng",
+      "Cây nhận quá nhiều ánh sáng nên bị héo",
+      "Không khí quanh cây có quá nhiều carbon dioxide",
+      "Cây lấy quá nhiều oxygen để quang hợp"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trồng quá dày, lá các cây che khuất nhau nên nhận ít ánh sáng, quang hợp giảm, năng suất giảm.\n\nVì sao các phương án khác sai:\n- B: Trồng dày làm cây thiếu ánh sáng chứ không thừa ánh sáng.\n- C: Trồng dày không làm không khí thừa carbon dioxide; vấn đề là lá thiếu ánh sáng.\n- D: Quang hợp không dùng oxygen làm nguyên liệu."
+    },
+    {
+     "ma_cau": "K07070203055",
+     "loai": "trac_nghiem",
+     "de": "Một ruộng lúa được tưới đủ nước nhưng bị cỏ dại mọc cao, che lấp khóm lúa. Nhổ cỏ dại giúp lúa quang hợp tốt hơn vì",
+     "lua_chon": [
+      "lúa hút được nhiều oxygen hơn để quang hợp",
+      "nhiệt độ ruộng giảm mạnh, có lợi cho lúa",
+      "lúa không còn cần carbon dioxide nữa",
+      "lá lúa nhận được nhiều ánh sáng hơn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cỏ dại mọc cao che khuất lá lúa; nhổ cỏ giúp lá lúa nhận đủ ánh sáng nên quang hợp tăng.\n\nVì sao các phương án khác sai:\n- A: Quang hợp không dùng oxygen làm nguyên liệu.\n- B: Nhổ cỏ không làm nhiệt độ ruộng giảm mạnh; lợi ích chính là ánh sáng.\n- C: Carbon dioxide luôn là nguyên liệu cần cho quang hợp."
+    },
+    {
+     "ma_cau": "K07070203056",
+     "loai": "trac_nghiem",
+     "de": "Từ các đồ thị về ảnh hưởng của ánh sáng, CO₂, nhiệt độ đến quang hợp, biện pháp nào KHÔNG hợp lí để tăng năng suất rau trồng trong nhà kính vào mùa đông lạnh?",
+     "lua_chon": [
+      "Bổ sung ánh sáng đèn vào những ngày ít nắng",
+      "Sưởi ấm nhà kính về khoảng nhiệt độ phù hợp",
+      "Mở cửa nhà kính cả đêm cho thông thoáng",
+      "Bổ sung CO₂ khi ánh sáng, nhiệt độ đã đủ"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Mùa đông nhiệt độ đã thấp hơn mức phù hợp cho quang hợp; mở cửa cho không khí lạnh tự do lưu thông sẽ làm nhiệt độ trong nhà kính giảm thêm, xa mức tối ưu, làm quang hợp giảm chứ không tăng năng suất.\n\nVì sao các phương án khác sai:\n- A: Mùa đông ít nắng, bổ sung ánh sáng giúp tăng quang hợp — biện pháp hợp lí.\n- B: Mùa đông lạnh, sưởi ấm đưa nhiệt độ về khoảng tối ưu — hợp lí.\n- D: Khi ánh sáng, nhiệt độ đủ thì CO₂ có thể là yếu tố giới hạn — hợp lí."
+    },
+    {
+     "ma_cau": "K07070203057",
+     "loai": "trac_nghiem",
+     "de": "Nhiều người khuyên nên đặt chậu cây cạnh cửa sổ có ánh sáng thay vì để trong góc tối của nhà. Giải thích nào ĐÚNG dựa vào trao đổi khí ở lá?",
+     "lua_chon": [
+      "Ánh sáng giúp cây quang hợp mạnh hơn, thải nhiều oxygen",
+      "Ánh sáng làm khí khổng đóng bớt, đỡ mất nước",
+      "Nơi tối giúp cây hô hấp mạnh, thải nhiều oxygen",
+      "Vị trí đặt chậu không ảnh hưởng lượng khí trao đổi"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ánh sáng là điều kiện cần cho quang hợp; nơi nhiều ánh sáng giúp cây quang hợp mạnh hơn, thải nhiều oxygen và hấp thu nhiều carbon dioxide hơn.\n\nVì sao các phương án khác sai:\n- B: Ánh sáng thường làm khí khổng mở, không phải đóng lại; khí khổng đóng nhiều hơn khi thiếu nước.\n- C: Hô hấp thải ra carbon dioxide, không phải oxygen; nơi tối không làm cây thải nhiều oxygen hơn.\n- D: Cường độ ánh sáng ảnh hưởng trực tiếp đến quang hợp nên ảnh hưởng rõ đến lượng khí cây trao đổi."
+    },
+    {
+     "ma_cau": "K07070203058",
+     "loai": "trac_nghiem",
+     "de": "Vào những ngày trời âm u nhiều mây kéo dài, người nuôi cá cảnh có bể trồng nhiều cây thuỷ sinh thường phải tăng cường sục khí oxygen hơn bình thường, kể cả ban ngày. Nguyên nhân hợp lí là",
+     "lua_chon": [
+      "Ánh sáng yếu làm quang hợp của cây thuỷ sinh giảm, tạo ra ít oxygen hơn",
+      "Trời nhiều mây làm nước bể lạnh hơn, cá cần thêm oxygen",
+      "Mây che làm cây thuỷ sinh chuyển hẳn sang hô hấp cả ban ngày",
+      "Ánh sáng yếu làm cá trong bể hô hấp mạnh hơn bình thường"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ánh sáng yếu làm cường độ quang hợp của cây thuỷ sinh giảm, lượng oxygen sinh ra không đủ bù cho nhu cầu hô hấp của cá và cây, nên cần sục thêm khí.\n\nVì sao các phương án khác sai:\n- B: Nhiệt độ không phải nguyên nhân chính được nêu trong tình huống này.\n- C: Cây thuỷ sinh vẫn quang hợp ban ngày, chỉ là yếu hơn do thiếu ánh sáng, không chuyển hẳn sang hô hấp.\n- D: Ánh sáng không tác động trực tiếp đến cường độ hô hấp của cá."
+    },
+    {
+     "ma_cau": "K07070203059",
+     "loai": "trac_nghiem",
+     "de": "Một vườn ươm cây con che lưới đen quá dày khiến ánh sáng lọt vào rất ít suốt cả ngày. Sau một thời gian, cây con còi cọc dù đất đủ ẩm và dinh dưỡng. Nguyên nhân liên quan đến trao đổi khí là",
+     "lua_chon": [
+      "Lưới đen ngăn cây hấp thụ nước từ đất",
+      "Thiếu ánh sáng làm quang hợp yếu, cây không đủ chất hữu cơ",
+      "Lưới đen làm khí khổng của cây bị bịt kín",
+      "Thiếu ánh sáng làm hô hấp tế bào của cây ngừng hẳn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ánh sáng quá yếu làm quang hợp diễn ra kém, cây không tổng hợp đủ chất hữu cơ nuôi cơ thể dù đất đủ nước và dinh dưỡng, nên cây còi cọc.\n\nVì sao các phương án khác sai:\n- A: Hấp thụ nước là chức năng của rễ, không liên quan đến lưới che ánh sáng phía trên.\n- C: Khí khổng nằm trên bề mặt lá, lưới che không làm bịt kín khí khổng.\n- D: Hô hấp tế bào không phụ thuộc ánh sáng, vẫn diễn ra bình thường trong bóng râm."
+    },
+    {
+     "ma_cau": "K07070203060",
+     "loai": "trac_nghiem",
+     "de": "Hai chậu cây cùng loài được đặt cùng nơi có nắng, nhưng một chậu thiếu nước tưới nhiều ngày, một chậu được tưới đủ nước. Chậu thiếu nước quang hợp thế nào so với chậu đủ nước?",
+     "lua_chon": [
+      "Mạnh hơn, khí khổng mở rộng hơn để lấy CO₂",
+      "Yếu hơn, khí khổng đóng bớt, giảm CO₂ vào lá",
+      "Không đổi, ánh sáng như nhau nên quang hợp như nhau",
+      "Mạnh hơn, cây dồn hết năng lượng cho quang hợp"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thiếu nước khiến khí khổng đóng bớt để hạn chế mất nước, đồng thời làm giảm lượng CO₂ đi vào lá nên quang hợp ở chậu thiếu nước yếu hơn dù ánh sáng như nhau.\n\nVì sao các phương án khác sai:\n- A: Thiếu nước làm khí khổng đóng bớt lại, không phải mở rộng hơn.\n- C: Ánh sáng như nhau nhưng lượng nước khác nhau ảnh hưởng đến độ mở khí khổng và lượng CO₂ vào lá.\n- D: Cây không tự dồn năng lượng cho quang hợp khi thiếu nước; thiếu nước làm khí khổng đóng bớt, cản trở quang hợp."
+    },
+    {
+     "ma_cau": "K07070203061",
+     "loai": "trac_nghiem",
+     "de": "Vào sáng sớm mùa thu, trời mát và đất còn ẩm sương đêm; buổi trưa cùng ngày trời nắng gắt và đất đã khô. So với buổi trưa, khí khổng của lá vào buổi sáng sớm sẽ",
+     "lua_chon": [
+      "Mở như nhau vì khí khổng không đổi trong ngày",
+      "Đóng bớt hơn buổi trưa vì thiếu ánh sáng mạnh",
+      "Mở rộng hơn, thuận lợi cho việc lấy CO₂ quang hợp",
+      "Đóng lại hẳn vì trời sáng sớm còn lạnh"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Sáng sớm đất còn đủ ẩm nên cây không cần đóng khí khổng để tiết kiệm nước, khí khổng mở rộng hơn; buổi trưa nắng gắt, đất khô, cây phải đóng bớt khí khổng để hạn chế mất nước.\n\nVì sao các phương án khác sai:\n- A: Khí khổng thay đổi độ mở theo độ ẩm đất và cường độ ánh sáng trong ngày.\n- B: Sáng sớm đủ ẩm nên khí khổng mở rộng hơn buổi trưa thiếu nước, không phải đóng bớt.\n- D: Nhiệt độ mát vào sáng sớm không phải nguyên nhân khiến khí khổng đóng lại."
+    },
+    {
+     "ma_cau": "K07070203062",
+     "loai": "trac_nghiem",
+     "de": "Một bạn học sinh quan sát thấy vào buổi trưa nắng gắt, nhiều khí khổng ở mặt dưới lá một loại cây đóng lại tạm thời. Hệ quả trực tiếp nào sau đây có khả năng xảy ra nhất?",
+     "lua_chon": [
+      "Cây ngừng mọi hoạt động sống vì hết trao đổi khí",
+      "Cây giảm trao đổi khí, quang hợp có thể giảm theo",
+      "Cây chuyển sang lấy khí qua rễ thay khí khổng",
+      "Cây quang hợp mạnh hơn vì giữ được nhiều nước"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khí khổng là nơi trao đổi khí chính của lá (CO₂, O₂, hơi nước); khi khí khổng đóng lại, sự trao đổi các khí này giảm, ảnh hưởng trực tiếp đến cả quang hợp (cần CO₂) và hô hấp tế bào (cần O₂) của tế bào lá.\n\nVì sao các phương án khác sai:\n- A: Khí khổng chỉ đóng tạm thời, cây vẫn sống và hoạt động.\n- C: Khí khổng là nơi trao đổi khí chủ yếu của lá; rễ không thay được.\n- D: Khí khổng đóng làm CO₂ vào lá ít đi nên quang hợp giảm."
+    },
+    {
+     "ma_cau": "K07070203063",
+     "loai": "trac_nghiem",
+     "de": "Một nhà kính trồng dưa lưới lắp hệ thống tưới nhỏ giọt, đất luôn đủ ẩm suốt ngày kể cả lúc trưa nắng; ruộng dưa ngoài trời không tưới đều nên đất khô vào trưa. Vào buổi trưa nắng, so với ruộng ngoài trời, khí khổng của cây trong nhà kính sẽ",
+     "lua_chon": [
+      "Đóng chặt hơn vì tưới nước làm đất quá lạnh",
+      "Mở như nhau vì cả hai đều có cùng cường độ ánh sáng trưa",
+      "Đóng lại vì tưới nước gây úng rễ",
+      "Mở rộng hơn vì đủ nước, cây quang hợp thuận lợi hơn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đất đủ ẩm giúp cây trong nhà kính không cần đóng khí khổng để tiết kiệm nước như cây ngoài ruộng bị khô đất, nên khí khổng mở rộng hơn, thuận lợi lấy CO₂ để quang hợp.\n\nVì sao các phương án khác sai:\n- A: Tưới nhỏ giọt không làm đất quá lạnh, không phải nguyên nhân đóng khí khổng.\n- B: Độ ẩm đất khác nhau làm phản ứng khí khổng khác nhau dù ánh sáng như nhau.\n- C: Tưới nhỏ giọt điều tiết lượng nước hợp lí, không gây úng rễ."
+    },
+    {
+     "ma_cau": "K07070203064",
+     "loai": "trac_nghiem",
+     "de": "Một học sinh trồng hai chậu cây con giống hệt nhau: chậu A tưới nước đều đặn mỗi ngày, chậu B không tưới suốt một tuần liền, cùng điều kiện ánh sáng và nhiệt độ. Dự đoán nào về khả năng quang hợp của chậu B so với chậu A là hợp lí nhất?",
+     "lua_chon": [
+      "Chậu B quang hợp yếu hơn do khí khổng đóng bớt làm giảm CO₂ vào lá",
+      "Chậu B quang hợp mạnh hơn vì thiếu nước kích thích cây ra hoa sớm",
+      "Hai chậu quang hợp như nhau vì ánh sáng, nhiệt độ giống nhau",
+      "Chậu B ngừng hô hấp tế bào để tiết kiệm nước"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thiếu nước làm cây đóng bớt khí khổng để hạn chế mất nước, dẫn đến CO₂ vào lá giảm nên quang hợp của chậu B yếu hơn chậu A dù ánh sáng và nhiệt độ như nhau.\n\nVì sao các phương án khác sai:\n- B: Thiếu nước là điều kiện bất lợi cho cây, không giúp quang hợp mạnh lên.\n- C: Độ ẩm đất khác nhau ảnh hưởng đến độ mở khí khổng, làm quang hợp khác nhau dù ánh sáng, nhiệt độ giống nhau.\n- D: Cây không thể ngừng hô hấp tế bào; đây là quá trình luôn diễn ra để duy trì sự sống."
+    }
+   ]
+  }
+ ]
+}

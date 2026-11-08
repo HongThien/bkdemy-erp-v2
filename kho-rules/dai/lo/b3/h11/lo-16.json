@@ -1,0 +1,1167 @@
+[
+ {
+  "ma_cau": "HHC007788",
+  "loai": "trac_nghiem",
+  "de": "Cho đường thẳng $a$ nằm trong $mp(\\alpha)$ và đường thẳng $b\\not\\subset(\\alpha)$. Mệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "Nếu $b$ cắt $(\\alpha)$ thì $b$ cắt $a$.",
+   "Nếu $b\\parallel a$ thì $b\\parallel(\\alpha)$.",
+   "Nếu $b$ cắt $(\\alpha)$ và $mp(\\beta)$ chứa $b$ thì giao tuyến của $(\\alpha)$ và $(\\beta)$ là đường thẳng cắt cả $a$ và $b$.",
+   "Nếu $b\\parallel(\\alpha)$ thì $b\\parallel a$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "B đúng: $b\\parallel a$, $a\\subset(\\alpha)$, $b\\not\\subset(\\alpha)$ thì $b\\parallel(\\alpha)$. A sai ($b$ có thể chéo $a$); C sai (giao tuyến không nhất thiết cắt $a$); D sai ($b$ có thể chéo $a$).",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007789",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian cho ba điểm phân biệt không thẳng hàng, ta có thể xác định được nhiều nhất bao nhiêu mặt phẳng phân biệt?",
+  "lua_chon": [
+   "$4$.",
+   "$2$.",
+   "$3$.",
+   "$1$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Qua ba điểm không thẳng hàng có duy nhất một mặt phẳng.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007790",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp $ABCD.A'B'C'D'$. Mặt phẳng $(CDD'C')$ song song với",
+  "lua_chon": [
+   "$(ABCD)$.",
+   "$(BB'A'A)$.",
+   "$(ADD')$.",
+   "$(AA'C'C)$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Trong hình hộp, hai mặt đối diện song song với nhau. Mặt đối diện của $(CDD'C')$ là $(BB'A'A)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007791",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian cho hai đường thẳng $a$ và $b$. Có bao nhiêu vị trí tương đối giữa $a$ và $b$.",
+  "lua_chon": [
+   "$1$.",
+   "$4$.",
+   "$2$.",
+   "$3$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Có $4$ vị trí tương đối: trùng nhau, song song, cắt nhau, chéo nhau.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007794",
+  "loai": "trac_nghiem",
+  "de": "Hai mặt phẳng được gọi là song song với nhau nếu",
+  "lua_chon": [
+   "chúng có hai điểm chung.",
+   "chúng có một đường thẳng chung.",
+   "chúng có đúng một điểm chung.",
+   "chúng không có điểm chung."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Theo định nghĩa, hai mặt phẳng song song khi chúng không có điểm chung.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007795",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian có bao nhiêu vị trí tương đối giữa đường thẳng và mặt phẳng?",
+  "lua_chon": [
+   "$2$.",
+   "$1$.",
+   "$4$.",
+   "$3$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Có $3$ vị trí tương đối: đường thẳng nằm trong mặt phẳng, song song với mặt phẳng, cắt mặt phẳng.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007806",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp chữ nhật $ABCD.A'B'C'D'$. Mệnh đề nào sau đây là sai?",
+  "lua_chon": [
+   "$(A'B'C')\\parallel(ABD)$.",
+   "$(ABB'A')\\parallel(DCC'D')$.",
+   "$(ABCD)\\parallel(A'B'C'D')$.",
+   "$(ACC'A')\\parallel(ABD)$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "$(ABD)$ chính là mặt phẳng đáy $(ABCD)$ nên A, C đúng (hai đáy song song); B đúng (hai mặt bên đối diện). $(ACC'A')$ cắt $(ABCD)$ theo giao tuyến $AC$ nên D sai.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007807",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật (tham khảo hình vẽ). Gọi $E,F$ theo thứ tự là trung điểm $AB,CD$. $M,N$ theo thứ tự là trọng tâm $\\triangle SAB$, $\\triangle SCD$. Khẳng định nào sau đây sai?",
+  "lua_chon": [
+   "$MN\\parallel AD$.",
+   "$MN\\parallel(ABCD)$.",
+   "$MN\\parallel EF$.",
+   "$MN\\parallel(SEF)$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "$M\\in SE$, $N\\in SF$ với $\\dfrac{SM}{SE}=\\dfrac{SN}{SF}=\\dfrac23$ nên $MN\\parallel EF$ (C đúng). $EF\\parallel AD$ nên $MN\\parallel AD$ (A đúng) và $MN\\parallel(ABCD)$ (B đúng). Còn $M,N$ đều thuộc $(SEF)$ nên $MN\\subset(SEF)$, không song song: D sai.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007808",
+  "loai": "trac_nghiem",
+  "de": "Cho mặt phẳng $(P)$ chứa hai đường thẳng $a,b$ và mặt phẳng $(Q)$ chứa đường thẳng $c$. Mệnh đề nào sau đây là đúng?",
+  "lua_chon": [
+   "Nếu $(P)\\parallel(Q)$ thì $a\\parallel c$.",
+   "Nếu $a\\parallel(Q)$ và $b\\parallel(Q)$ thì $(P)\\parallel(Q)$.",
+   "Nếu $(P)\\parallel(Q)$ thì $a\\parallel(Q)$.",
+   "Nếu $a\\parallel c$ thì $(P)\\parallel(Q)$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "C đúng: đường thẳng nằm trong một mặt phẳng song song với mặt phẳng kia thì song song với mặt phẳng đó. A sai ($a$ và $c$ có thể chéo nhau). B sai (thiếu điều kiện $a,b$ cắt nhau). D sai (hai mặt phẳng có thể cắt nhau).",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007809",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian, khẳng định nào sau đây sai?",
+  "lua_chon": [
+   "Qua một điểm nằm ngoài mặt phẳng, có một và chỉ một đường thẳng song song với mặt phẳng đó.",
+   "Tồn tại bốn điểm không cùng thuộc một mặt phẳng.",
+   "Nếu hai mặt phẳng phân biệt có $1$ điểm chung thì chúng có vô số điểm chung.",
+   "Một mặt phẳng hoàn toàn xác định nếu biết nó chứa hai đường thẳng cắt nhau."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Qua một điểm nằm ngoài mặt phẳng có vô số đường thẳng song song với mặt phẳng đó (mọi đường thẳng qua điểm ấy song song với một đường nào đó của mặt phẳng), nên A sai. B, C, D đúng.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007810",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành tâm $O$ (tham khảo hình vẽ). Gọi $M,N$ theo thứ tự là trung điểm $SA,SD$. Mặt phẳng $(OMN)$ song song với mặt phẳng nào sau đây?",
+  "lua_chon": [
+   "$(SBC)$.",
+   "$(ABCD)$.",
+   "$(SCD)$.",
+   "$(SAB)$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "$O$ là trung điểm $AC$ và $BD$. Trong tam giác $SAC$: $OM\\parallel SC$. Trong tam giác $SBD$: $ON\\parallel SB$. Hai đường cắt nhau $OM,ON$ của $(OMN)$ lần lượt song song với $SC,SB$ nên $(OMN)\\parallel(SBC)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007811",
+  "loai": "trac_nghiem",
+  "de": "Cho $ABCD$ và $ACNM$ là hai hình bình hành không nằm trong cùng một mặt phẳng (tham khảo hình vẽ).\n\nKhẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$B,M,D,N$ là $4$ đỉnh của một hình bình hành.",
+   "$B,M,D,N$ là $4$ đỉnh của một tứ diện.",
+   "Đường thẳng $MN$ và $BD$ cắt nhau.",
+   "$B,M,D,N$ thẳng hàng."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Đặt $A$ làm gốc: $\\vec{AB}=\\vec b$, $\\vec{AD}=\\vec d$, $\\vec{AM}=\\vec m$ thì $\\vec{AC}=\\vec b+\\vec d$, $\\vec{AN}=\\vec b+\\vec d+\\vec m$. Các vectơ $\\vec{BD}=\\vec d-\\vec b$, $\\vec{BM}=\\vec m-\\vec b$, $\\vec{BN}=\\vec d+\\vec m$ có tích hỗn tạp bằng $-2[\\vec b,\\vec d,\\vec m]\\ne0$ (vì $M\\notin(ABCD)$) nên $B,M,D,N$ không đồng phẳng: là $4$ đỉnh của một tứ diện. Các khẳng định A, C, D đều đòi hỏi $4$ điểm đồng phẳng nên sai.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007812",
+  "loai": "dung_sai",
+  "de": "Cho hai hình bình hành $ABCD$ và $ABEF$ không cùng nằm trong một mặt phẳng và có tâm lần lượt là $O$ và $O'$. Gọi $M,N$ theo thứ tự là hai điểm trên các cạnh $AE,BD$ sao cho $AM=\\dfrac13AE$, $BN=\\dfrac13BD$ (tham khảo hình vẽ).",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$O,O'$ là trung điểm $BD,BF$ nên $OO'$ là đường trung bình của tam giác $BDF$: $OO'\\parallel DF$. Mà $DF\\subset(ADF)$ và $OO'\\not\\subset(ADF)$ nên $OO'\\parallel(ADF)$.",
+    "noi_dung": "$OO'$ song song với mặt phẳng $(ADF)$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$O,O'$ là trung điểm $AC,AE$ nên $OO'\\parallel CE$ (đường trung bình tam giác $ACE$), $CE\\subset(BCE)$ nên $OO'\\parallel(BCE)$, không cắt.",
+    "noi_dung": "$OO'$ cắt mặt phẳng $(BCE)$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Đặt $B$ làm gốc, $\\vec{BA}=\\vec a$, $\\vec{BC}=\\vec c$, $\\vec{BE}=\\vec e$: $\\vec{BD}=\\vec a+\\vec c$, $\\vec{BF}=\\vec a+\\vec e$, $\\vec{BM}=\\dfrac{2\\vec a+\\vec e}3$, $\\vec{BN}=\\dfrac{\\vec a+\\vec c}3$. Khi đó $\\vec{MN}=\\dfrac{\\vec c-\\vec a-\\vec e}{3}=-\\dfrac13\\vec{CF}$ (vì $\\vec{CF}=\\vec a+\\vec e-\\vec c$). Vậy $MN\\parallel CF$.",
+    "noi_dung": "$MN$ song song $CF$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$CF\\subset(CDFE)$ và $MN\\parallel CF$; $MN\\not\\subset(CDFE)$ nên $MN\\parallel(CDFE)$.",
+    "noi_dung": "$MN$ song song với mặt phẳng $(CDFE)$."
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007813",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp $S.ABCD$ có đáy là hình bình hành tâm $O$, $SAB$ là tam giác đều cạnh $4$, $M,N$ theo thứ tự là trung điểm $SC,SD$. Hình tạo bởi các đoạn giao tuyến của $(OMN)$ và các mặt của hình chóp có diện tích $S$. Tính $S^2$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "27",
+  "loi_giai": "Gọi $I,J$ là trung điểm $AD,BC$. $MN\\parallel CD\\parallel AB$ nên $(OMN)$ song song với $AB$, đi qua $O$; $IJ\\parallel AB$ và $O\\in IJ$ nên $(OMN)\\cap(ABCD)=IJ$ ($IJ=AB=4$), $(OMN)\\cap(SBC)=JM$, $(OMN)\\cap(SAD)=IN$, $(OMN)\\cap(SCD)=MN$ ($MN=\\dfrac{CD}2=2$). Thiết diện là hình thang cân $IJMN$ với hai đáy $4$ và $2$, hai cạnh bên $JM=\\dfrac{SB}2=2$, $IN=\\dfrac{SA}2=2$. Đường cao $=\\sqrt{2^2-1^2}=\\sqrt3$. Diện tích $S=\\dfrac{4+2}2\\sqrt3=3\\sqrt3$, vậy $S^2=27$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007814",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình thang $(AB\\parallel CD)$, $G$ là trọng tâm của tam giác $SAB$, mặt phẳng $(\\alpha)$ qua $G$ và song song với $(SCD)$. Gọi $E,F$ theo thứ tự là giao điểm của $(\\alpha)$ với $SA,AD$. Tính tỉ số $\\dfrac{SD}{EF}$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "3",
+  "loi_giai": "$(SAB)\\cap(SCD)$ là đường thẳng qua $S$ song song $AB$ (vì $AB\\parallel CD$), nên $(\\alpha)\\cap(SAB)$ là đường thẳng qua $G$ song song $AB$, cắt $SA$ tại $E$ với $\\dfrac{SE}{SA}=\\dfrac{SG}{SM}=\\dfrac23$ ($M$ trung điểm $AB$). Do $(\\alpha)\\parallel(SCD)$ nên $(\\alpha)\\cap(SAD)=EF\\parallel SD$. Suy ra $\\dfrac{EF}{SD}=\\dfrac{AE}{AS}=\\dfrac13$, vậy $\\dfrac{SD}{EF}=3$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007829",
+  "loai": "trac_nghiem",
+  "de": "Cho hình lăng trụ $ABC.A'B'C'$, $M$ là trung điểm của $AB$. Gọi $\\Delta$ là giao tuyến của hai mặt phẳng $(CMC')$ và $(A'B'C')$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$\\Delta$ đi qua trung điểm của $A'C'$.",
+   "$\\Delta$ cắt $AC$.",
+   "$\\Delta$ cắt $AA'$.",
+   "$\\Delta$ đi qua trung điểm của $A'B'$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Gọi $M'$ là trung điểm $A'B'$. Khi đó $MM'\\parallel CC'$ (cùng song song $AA'$) và $MM'=AA'=CC'$ nên $CC'M'M$ là hình bình hành, $M'\\in(CMC')$. Mặt khác $M'\\in(A'B'C')$ và $C'\\in(CMC')\\cap(A'B'C')$. Vậy $\\Delta=C'M'$ đi qua trung điểm $A'B'$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007831",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Gọi $d$ là giao tuyến của hai mặt phẳng $(SAB)$ và $(SCD)$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$d$ qua $S$ và song song với $AC$.",
+   "$d$ qua $S$ và song song với $AD$.",
+   "$d$ qua $S$ và song song với $CD$.",
+   "$d$ qua $S$ và song song với $BD$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "$S$ là điểm chung của hai mặt phẳng. $AB\\subset(SAB)$, $CD\\subset(SCD)$, $AB\\parallel CD$ nên giao tuyến $d$ đi qua $S$ và song song với $AB$, $CD$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007832",
+  "loai": "trac_nghiem",
+  "de": "Cho mặt phẳng $(P)$ và điểm $A$ nằm ngoài mặt phẳng $(P)$. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "Qua $A$ có đúng một mặt phẳng song song với $(P)$.",
+   "Qua $A$ có vô số mặt phẳng song song với $(P)$.",
+   "Qua $A$ không có mặt phẳng nào song song với $(P)$.",
+   "Qua $A$ có đúng hai mặt phẳng song song với $(P)$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Qua một điểm nằm ngoài mặt phẳng có duy nhất một mặt phẳng song song với mặt phẳng đã cho.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007833",
+  "loai": "trac_nghiem",
+  "de": "Hình chóp ngũ giác có bao nhiêu mặt?",
+  "lua_chon": [
+   "$4$.",
+   "$5$.",
+   "$8$.",
+   "$6$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Hình chóp ngũ giác có $5$ mặt bên và $1$ mặt đáy, tổng cộng $6$ mặt.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007834",
+  "loai": "trac_nghiem",
+  "de": "Trong các mệnh đề sau mệnh đề nào sai?",
+  "lua_chon": [
+   "Phép chiếu song song biến hai đường thẳng song song thành hai đường thẳng song song.",
+   "Phép chiếu song song biến ba điểm thẳng hàng thành ba điểm thẳng hàng và không làm thay đổi thứ tự của ba điểm đó.",
+   "Phép chiếu song song biến đoạn thẳng thành đoạn thẳng.",
+   "Phép chiếu song song giữ nguyên tỉ số độ dài của hai đoạn thẳng cùng nằm trên một đường thẳng hoặc nằm trên hai đường thẳng song song."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Phép chiếu song song biến hai đường thẳng song song thành hai đường thẳng song song hoặc trùng nhau (ví dụ khi mặt phẳng chứa hai đường đó song song với phương chiếu, ảnh trùng nhau). Mệnh đề A thiếu trường hợp này nên sai; B, C, D là các tính chất đúng.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007835",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$, có đáy $ABCD$ là hình bình hành tâm $O$. Gọi $M,N$ lần lượt là trung điểm $SC,CD$. Mặt phẳng $(OMN)$ song song với mặt phẳng nào sau đây?",
+  "lua_chon": [
+   "$(SCD)$.",
+   "$(SBC)$.",
+   "$(SAB)$.",
+   "$(SAD)$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "$O$ là trung điểm $AC$, $M$ là trung điểm $SC$ nên $OM\\parallel SA$. $O$ là trung điểm $AC$, $N$ là trung điểm $CD$ nên $ON\\parallel AD$. Hai đường cắt nhau $OM,ON$ của $(OMN)$ song song với $(SAD)$ nên $(OMN)\\parallel(SAD)$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007837",
+  "loai": "trac_nghiem",
+  "de": "Trong các mệnh đề sau, mệnh đề nào đúng?",
+  "lua_chon": [
+   "Hai đường thẳng phân biệt không song song thì chéo nhau.",
+   "Hai đường thẳng chéo nhau thì không có điểm chung.",
+   "Hai đường thẳng phân biệt và không có điểm chung thì song song.",
+   "Hai đường thẳng không có điểm chung thì chéo nhau."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Hai đường thẳng chéo nhau là hai đường thẳng không cùng nằm trong một mặt phẳng nên không có điểm chung: B đúng. A sai (có thể cắt nhau); C sai (có thể chéo nhau); D sai (có thể song song).",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007838",
+  "loai": "dung_sai",
+  "de": "Cho hình chóp $S.ABCD$ có đáy là hình bình hành. Gọi $M$ và $N$ lần lượt là trung điểm của $SB$ và $AB$.",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$MN\\subset(SAB)$, còn $BD$ cắt $(SAB)$ tại $B$ và $B\\notin MN$ ($MN$ chỉ cắt $AB$ tại $N\\ne B$). Vậy $MN$ và $BD$ chéo nhau, không cắt nhau.",
+    "noi_dung": "$MN$ cắt $BD$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$M,N$ là trung điểm $SB,AB$ nên $MN$ là đường trung bình của tam giác $SAB$: $MN\\parallel SA$.",
+    "noi_dung": "$MN\\parallel SA$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Hai mặt phẳng $(AMN)$ và $(SAD)$ có điểm chung $A$ nên không song song.",
+    "noi_dung": "$(AMN)\\parallel(SAD)$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$M\\in SB\\subset(SBD)$ nên $M\\in MN\\cap(SBD)$: đường thẳng $MN$ cắt $(SBD)$ tại $M$ (không song song).",
+    "noi_dung": "$MN\\parallel(SBD)$."
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007839",
+  "loai": "tu_luan",
+  "de": "Để làm một khung lồng đèn kéo quân hình lăng trụ lục giác $ABCDEF.A'B'C'D'E'F'$, Phong gắn hai thanh tre $A_1D_1,F_1C_1$ song song với mặt phẳng đáy và cắt nhau tại $O_1$ (Hình 19).\n\na) Xác định giao tuyến của $mp(A_1D_1,F_1C_1)$ với các mặt bên của lăng trụ.\n\nb) Cho biết $A'A_1=4AA_1$ và $AA'=60\\ cm$. Tính $CC_1$ và $C_1C'$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "a) Các giao tuyến là $A_1F_1,\\ A_1B_1,\\ B_1C_1,\\ C_1D_1,\\ D_1E_1,\\ E_1F_1$ (các cạnh của lục giác $A_1B_1C_1D_1E_1F_1$); b) $CC_1=12\\ cm$, $C_1C'=48\\ cm$",
+  "loi_giai": "a) $(A_1D_1,F_1C_1)$ chứa hai đường cắt nhau $A_1D_1,F_1C_1$ cùng song song với $(ABCDEF)$ nên $(A_1F_1D_1C_1)\\parallel(ABCDEF)$.\n\nMặt khác $(EFF'E')\\cap(ABCDEF)=EF$ và $F_1\\in(A_1F_1D_1C_1)\\cap(EFF'E')$ nên $(A_1F_1D_1C_1)\\cap(EFF'E')=E_1F_1$ với $F_1\\in FF'$, $E_1F_1\\parallel EF$. Lập luận tương tự: $(A_1F_1D_1C_1)\\cap(AFF'A')=A_1F_1$ ($A_1\\in AA'$, $A_1F_1\\parallel AF$); $\\cap(ABB'A')=A_1B_1$ ($B_1\\in BB'$, $A_1B_1\\parallel AB$); $\\cap(BB'C'C)=B_1C_1$ ($C_1\\in CC'$, $B_1C_1\\parallel BC$); $\\c",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007840",
+  "loai": "tu_luan",
+  "de": "Cho tứ diện $ABCD$. Trên cạnh $AD$ lấy điểm $E$ sao cho $ED=\\dfrac12EA$, gọi $M,N$ lần lượt là trung điểm của $BC,AC$.\n\na) Tìm giao điểm của $EN$ và mặt phẳng $(BCD)$.\n\nb) Gọi $F$ là hình chiếu song song của $E$ lên mặt phẳng $(BCD)$ theo phương $AM$. Tính tỉ số $\\dfrac{DF}{FM}$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "a) $I=EN\\cap CD$ là giao điểm của $EN$ và $(BCD)$; b) $\\dfrac{DF}{FM}=\\dfrac12$",
+  "loi_giai": "a) Trong tam giác $ACD$: $\\dfrac{AN}{AC}=\\dfrac12$, $\\dfrac{AE}{AD}=\\dfrac23$ nên $\\dfrac{AN}{AC}\\ne\\dfrac{AE}{AD}$, do đó $NE$ không song song $CD$. Gọi $I=NE\\cap CD$. Vì $CD\\subset(BCD)$ nên $I$ là giao điểm của $NE$ và $(BCD)$.\n\nb) $A,E,D$ thẳng hàng nên qua phép chiếu song song theo phương $AM$ các hình chiếu tương ứng $M,F,D$ cũng thẳng hàng và $EF\\parallel AM$. Xét tam giác $ADM$ có $EF\\parallel AM$ nên $\\dfrac{DF}{FM}=\\dfrac{ED}{EA}=\\dfrac12$ (định lí Thalès). Vậy $\\dfrac{DF}{FM}=\\dfrac12",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007843",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ (xem hình vẽ bên dưới). Giao tuyến của hai mặt phẳng $(SAC)$ và $(SBD)$ là",
+  "lua_chon": [
+   "Đường thẳng đi qua $S$ và giao điểm của hai đường thẳng $AB,CD$.",
+   "Đường thẳng đi qua $S$ và giao điểm của hai đường thẳng $AD,BC$.",
+   "Đường thẳng đi qua $S$ và giao điểm của hai đường thẳng $AC,BC$.",
+   "Đường thẳng đi qua $S$ và giao điểm của hai đường thẳng $AC,BD$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "$S$ là điểm chung thứ nhất. Gọi $O=AC\\cap BD$ thì $O\\in(SAC)$ và $O\\in(SBD)$ là điểm chung thứ hai. Vậy giao tuyến là đường thẳng $SO$, đi qua $S$ và giao điểm của $AC$, $BD$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007844",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Gọi $N,K$ lần lượt là trung điểm của $CD,SB$. Chứng minh rằng: $AB\\parallel(SCD)$ và $NK\\parallel(SAD)$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "—",
+  "loi_giai": "Ta có $AB\\parallel CD$ với $CD\\subset(SCD)$ và $AB\\not\\subset(SCD)$ nên $AB\\parallel(SCD)$.\n\nGọi $M$ là trung điểm của $AB$. Khi đó $MN\\parallel AD$ (vì $AMND$ là hình bình hành: $AM\\parallel DN$ và $AM=DN$) và $MK\\parallel SA$ (đường trung bình tam giác $SAB$). Hai đường cắt nhau $MN,MK$ của $(MNK)$ lần lượt song song với $AD,SA\\subset(SAD)$ nên $(MNK)\\parallel(SAD)$. Mà $NK\\subset(MNK)$ nên $NK\\parallel(SAD)$.\n\nKết luận: $AB\\parallel(SCD)$ và $NK\\parallel(SAD)$ (điều phải chứng minh).",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007851",
+  "loai": "trac_nghiem",
+  "de": "Trong các khẳng định sau, khẳng định nào đúng?",
+  "lua_chon": [
+   "Qua 2 điểm phân biệt có duy nhất một mặt phẳng $.$",
+   "Qua 3 điểm phân biệt bất kì có duy nhất một mặt phẳng $.$",
+   "Qua 3 điểm không thẳng hàng có duy nhất một mặt phẳng $.$",
+   "Qua 4 điểm phân biệt bất kì có duy nhất một mặt phẳng $.$"
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Qua 3 điểm không thẳng hàng có duy nhất một mặt phẳng (tiên đề xác định mặt phẳng). A sai vì qua 2 điểm có vô số mặt phẳng; B sai vì 3 điểm thẳng hàng cho vô số mặt phẳng; D sai vì 4 điểm bất kì có thể không đồng phẳng.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007852",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$. Gọi hai điểm $M,\\,N$ lần lượt là trung điểm của các cạnh $AB,\\,AC$. Đường thẳng $MN$ song song với mặt phẳng nào sau đây?",
+  "lua_chon": [
+   "Mặt phẳng $\\left( ABC \\right)$.",
+   "Mặt phẳng $\\left( BCD \\right)$.",
+   "Mặt phẳng $\\left( ACD \\right)$.",
+   "Mặt phẳng $\\left( ABD \\right)$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "$MN$ là đường trung bình của tam giác $ABC$ nên $MN\\parallel BC$. Mà $BC\\subset(BCD)$ và $MN\\not\\subset(BCD)$ nên $MN\\parallel(BCD)$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007853",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$. Các điểm $M\\,,\\,\\,N$ lần lượt là trung điểm $BD\\,,\\,\\,AD$. Các điểm $H,\\,\\,G$ lần lượt là trọng tâm các tam giác $BCD\\,\\,;\\,\\,ACD$. Đường thẳng $HG$ chéo với đưởng thẳng nào sau đây?",
+  "lua_chon": [
+   "$MN$.",
+   "$CD$.",
+   "$CN$.",
+   "$AB$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "$H,G$ là trọng tâm các tam giác $BCD$, $ACD$ nên $HG\\parallel AB$, mà $MN\\parallel AB$ nên $HG\\parallel MN$; $HG$ cắt $CN$ tại $G$. Còn $HG$ và $CD$ không đồng phẳng (không song song, không cắt nhau) nên chéo nhau. Chọn $CD$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007854",
+  "loai": "dung_sai",
+  "de": "Cho hình chóp $S.ABCD$ có đáy là hình bình hành. Điểm $M$ thuộc cạnh $SA$, điểm $E$ và $F$ lần lượt là trung điểm của $AB$ và $BC$.",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$EF$ là đường trung bình của tam giác $ABC$ nên $EF\\parallel AC$. Đúng.",
+    "noi_dung": "Đường thẳng $EF$ song song $AC$ ."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$S$ và $O=AC\\cap BD$ là hai điểm chung của $(SAC)$ và $(SBD)$ nên giao tuyến là $SO$. Đúng.",
+    "noi_dung": "Giao tuyến của hai mặt phẳng $\\left( SAC \\right)$ và $\\left( SBD \\right)$ là đường thẳng $SO$ với $O$ là giao điểm $AC$ và $BD$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$M$ là điểm chung, $BC\\subset(MBC)$, $AD\\subset(SAD)$, $BC\\parallel AD$ nên giao tuyến đi qua $M$ và song song với $BC$ (và $AD$), không phải song song với $AC$. Sai.",
+    "noi_dung": "Giao tuyến của hai mặt phẳng $\\left( MBC \\right)$ và $\\left( SAD \\right)$ đường thẳng qua $M$ và song song với $AC$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$(MEF)\\cap(SAC)=MN$ với $MN\\parallel EF$ (vì $EF\\parallel AC$). Tứ giác $MNFE$ có $MN\\parallel EF$ nên là hình thang. Đúng.",
+    "noi_dung": "Gọi $N$ là giao điểm của mặt phẳng $\\left( MEF \\right)$ và đường thẳng $SC$. Tứ giác $MNFE$ là hình thang."
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007855",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Gọi $I,K$ lần lượt là trung điểm của $BC$ và $CD$. Gọi $M$ là trung điểm của $SB$. Gọi $F$ là giao điểm của $DM$ và $(SIK)$. Tính tỉ số $\\frac{MF}{MD}$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "1",
+  "loi_giai": "$IK\\parallel BD$ nên $(SIK)\\cap(SBD)=Sx\\parallel BD$. Trong $(SBD)$, $F=DM\\cap Sx$. Vì $SF\\parallel BD$ và $M$ là trung điểm $SB$ nên $\\frac{MF}{MD}=\\frac{MS}{MB}=1$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007856",
+  "loai": "tra_loi_ngan",
+  "de": "Một khối gỗ có dạng hình chóp có đáy là hình vuông và tất cả các cạnh bằng $0,5\\text{ m}$. Một người muốn thiết kế thành đồ trang trí bằng cách cưa đi phần đỉnh của khối gỗ này và gắn dây đèn trang trí theo cách cạnh của khối hình mới (tham khảo hình bên dưới). Biết rằng lưỡi cưa đi qua 3 trung điểm của ba cạnh bên của khối gỗ. Chiều dài của dây đèn trang trí là bao nhiêu mét (làm tròn đến hàng đơn vị).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "4",
+  "loi_giai": "Mặt cưa đi qua trung điểm các cạnh bên nên $A'B'C'D'$ là hình vuông cạnh $\\frac{0{,}5}{2}=0{,}25$ m, các đoạn $AA'=BB'=CC'=DD'=0{,}25$ m. Tổng: $4\\cdot0{,}5+4\\cdot0{,}25+4\\cdot0{,}25=4$ m.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007861",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp $ABCD.A'B'C'D'$. Hình chiếu song song của điểm $A$ lên mặt phẳng $(A'B'C'D')$ theo phương chiếu $DD'$ là",
+  "lua_chon": [
+   "Điểm $A'$.",
+   "Điểm $B'$.",
+   "Điểm $D'$.",
+   "Điểm $C'$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "$AA'\\parallel DD'$ và $A'\\in(A'B'C'D')$ nên hình chiếu của $A$ là $A'$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007862",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy là hình bình hành, gọi $M$ là trung điểm của cạnh $SC$ (như hình vẽ). Hình chiếu song song của điểm $M$ theo phương $AC$ lên mặt phẳng $(SAD)$ là điểm nào sau đây?",
+  "lua_chon": [
+   "Trung điểm của $SB$.",
+   "Trung điểm của $SD$.",
+   "Trung điểm của $SA$.",
+   "Điểm $D$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Trong $(SAC)$, đường thẳng qua $M$ song song $AC$ là đường trung bình của tam giác $SAC$, cắt $SA$ tại trung điểm của $SA$. Trung điểm $SA$ thuộc $(SAD)$ nên là hình chiếu cần tìm.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007863",
+  "loai": "dung_sai",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành tâm $O$. Gọi $M,N$ lần lượt là trung điểm của $SA$ và $SD$. Các mệnh đề sau đây đúng hay sai?",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$MN$ là đường trung bình của tam giác $SAD$ nên $MN\\parallel AD\\parallel BC$, $BC\\subset(SBC)$, $MN\\not\\subset(SBC)$ nên $MN\\parallel(SBC)$. Đúng.",
+    "noi_dung": "$MN\\parallel(SBC)$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$OM$ là đường trung bình của tam giác $ASC$ nên $OM\\parallel SC$; $ON$ là đường trung bình của tam giác $BSD$ nên $ON\\parallel SB$. Hai đường cắt nhau $OM,ON$ của $(OMN)$ song song với $(SBC)$ nên $(OMN)\\parallel(SBC)$. Đúng.",
+    "noi_dung": "$(OMN)\\parallel(SBC)$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$(OMN)\\cap(ABCD)$ là đường thẳng qua $O$ song song $MN\\parallel AD$, đi qua trung điểm $F$ của $AB$ và trung điểm $E$ của $CD$. Vậy $E=CD\\cap(OMN)$. Đúng.",
+    "noi_dung": "Gọi $E$ là trung điểm của đoạn thẳng $CD$. Khi đó $E$ là giao điểm của $CD$ với mặt phẳng $(OMN)$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Thiết diện là tứ giác $MNEF$ với $MN\\parallel FE$, $MN=\\frac12AD$ còn $FE=AD$ nên $MN\\neq FE$: thiết diện là hình thang, không phải hình bình hành. Sai.",
+    "noi_dung": "Mặt phẳng $(OMN)$ cắt các mặt của hình chóp $S.ABCD$ tạo thành một hình bình hành."
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007864",
+  "loai": "tu_luan",
+  "de": "Cho tứ diện $ABCD$. Gọi $G_{1},G_{2},G_{3}$ lần lượt là trọng tâm của các tam giác $ABC$, $ACD$ và $ADB$. Diện tích tam giác $BCD$ bằng $k$ diện tích hình tạo bởi mặt phẳng $(G_{1}G_{2}G_{3})$ với tứ diện $ABCD$. Tính giá trị của $k$. (Kết quả được làm tròn đến hàng phần trăm) (0,5 điểm)",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "2,25",
+  "loi_giai": "Gọi $I_{1},I_{2},I_{3}$ là trung điểm của $BC,CD,DB$. Khi đó $\\frac{AG_{1}}{AI_{1}}=\\frac{AG_{2}}{AI_{2}}=\\frac{AG_{3}}{AI_{3}}=\\frac23$ nên $G_{1}G_{2}G_{3}\\parallel I_{1}I_{2}I_{3}$ và $(G_{1}G_{2}G_{3})\\parallel(BCD)$. Mặt phẳng này cắt tứ diện theo tam giác $E_{1}E_{2}E_{3}$ với $E_{i}$ trên $AB,AC,AD$ sao cho $\\frac{AE_{1}}{AB}=\\frac{AE_{2}}{AC}=\\frac{AE_{3}}{AD}=\\frac23$, nên tam giác đó đồng dạng với tam giác $BCD$ tỉ số $\\frac23$. Do đó $\\frac{S_{E_{1}E_{2}E_{3}}}{S_{BCD}}=\\frac49$, suy ",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007871",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề nào sau đây là sai?",
+  "lua_chon": [
+   "Nếu hai đường thẳng cùng thuộc một mặt phẳng thì chúng không chéo nhau.",
+   "Nếu hai đường thẳng đồng phẳng và không có điểm chung thì chúng song song nhau.",
+   "Nếu hai đường thẳng chéo nhau thì chúng không có điểm chung.",
+   "Nếu hai đường thẳng phân biệt không song song nhau thì chúng chéo nhau."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Hai đường thẳng phân biệt không song song có thể cắt nhau (khi đó đồng phẳng), chưa chắc chéo nhau. Vậy D sai; A, B, C đúng theo định nghĩa.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007872",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$(hình vẽ). Hình chóp đó có bao nhiêu mặt?",
+  "lua_chon": [
+   "5.",
+   "7.",
+   "$8$.",
+   "$4$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Hình chóp có đáy $ABCD$ là tứ giác nên có $4$ mặt bên và $1$ mặt đáy, tổng cộng $5$ mặt.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007873",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian, cho đường thẳng $a$ và mặt phẳng $(P)$. Mệnh đề nào sau đây là đúng?",
+  "lua_chon": [
+   "Nếu $a$ song song với một đường thẳng nằm trong $(P)$ thì $a$ song song với $(P)$.",
+   "Nếu $a$ và $(P)$ có điểm chung thì $a$ và $(P)$ cắt nhau.",
+   "Nếu $a$ không nằm trong $(P)$ và $a$ song song với một đường thẳng nằm trong $(P)$ thì $a$ song song với $(P)$.",
+   "Nếu $a$ và $(P)$ có điểm chung thì $a$ nằm trong $(P)$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Đúng là: $a\\not\\subset(P)$ và $a$ song song với một đường thẳng nằm trong $(P)$ thì $a\\parallel(P)$. A thiếu điều kiện $a\\not\\subset(P)$; B, D sai vì có điểm chung có thể là cắt hoặc nằm trong.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007874",
+  "loai": "trac_nghiem",
+  "de": "Cho hình lăng trụ tam giác $ABC.A'B'C'$ (hình vẽ). Khẳng định nào sau đây là sai?",
+  "lua_chon": [
+   "Hình lăng trụ đã cho có 6 đỉnh.",
+   "Các mặt bên của hình lăng trụ là các hình bình hành bằng nhau.",
+   "Các mặt đáy của hình lăng trụ là các tam giác bằng nhau.",
+   "Các cạnh bên của hình lăng trụ song song và bằng nhau."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Các mặt bên của lăng trụ là các hình bình hành nhưng nói chung không bằng nhau; vậy B sai. A, C, D đúng.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007875",
+  "loai": "dung_sai",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình thang, $AB$ là đáy lớn (hình vẽ). Gọi $M$ là trung điểm cạnh $SA$.",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$AC\\subset(ABCD)$, $SD\\cap(ABCD)=D\\notin AC$ nên $AC$ và $SD$ chéo nhau. Sai.",
+    "noi_dung": "Đường thẳng $AC$ và đường thẳng $SD$ cắt nhau."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$AB\\parallel CD$, $CD\\subset(SCD)$, $AB\\not\\subset(SCD)$ nên $AB\\parallel(SCD)$. Đúng.",
+    "noi_dung": "Đường thẳng $AB$ song song với mặt phẳng $(SCD)$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Trong $(SAC)$, đường thẳng qua $M$ song song $SC$ cắt $AC$ tại trung điểm $N$ của $AC$. $N$ không thuộc cạnh $CD$ (chỉ thuộc $AC$). Sai.",
+    "noi_dung": "Hình chiếu song song của điểm $M$ lên mặt phẳng $(ABCD)$ theo phương chiếu $SC$ là điểm $N$ thuộc cạnh $CD$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$M\\in(MBD)\\cap(SAC)$ và $O=AC\\cap BD$ cũng là điểm chung, nên giao tuyến là $MO$, không phải $SO$ ($S\\notin(MBD)$). Sai.",
+    "noi_dung": "Giao tuyến của mặt phẳng $(MBD)$ và mặt phẳng $(SAC)$ là đường thẳng $SO$ với $O=AC\\cap BD$."
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007876",
+  "loai": "tu_luan",
+  "de": "(1,0 điểm) Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Gọi $M,N$ lần lượt là trung điểm của cạnh $SA,SC$. Điểm $P$ thuộc cạnh $SB$ sao cho $SP=2BP$. Xác định giao điểm của đường thẳng $SD$ và mặt phẳng $(MNP)$.\n--- HẾT ---",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "$E=SD\\cap PI$, với $I=MN\\cap SO$ ($O=AC\\cap BD$); $E$ là giao điểm cần tìm (thực tế $SE=\\frac25SD$)",
+  "loi_giai": "Trong $(ABCD)$, gọi $O=AC\\cap BD$. Trong $(SAC)$, gọi $I=MN\\cap SO$. Vì $SO\\subset(SBD)$, $MN\\subset(MNP)$ nên $I$ là điểm chung của $(SBD)$ và $(MNP)$; cùng với điểm chung $P$ suy ra $(SBD)\\cap(MNP)=PI$. Trong $(SBD)$, gọi $E=SD\\cap PI$. Vì $PI\\subset(MNP)$ nên $E=SD\\cap(MNP)$. (Kiểm tra bằng vectơ: $\\overrightarrow{SE}=\\frac25\\overrightarrow{SD}$.)",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007881",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành tâm $O$. Hình chiếu song song của điểm $O$ lên $(SAD)$ theo phương của đường thẳng $SB$ là:",
+  "lua_chon": [
+   "Điểm $A$",
+   "Điểm $D$",
+   "Điểm $M$ là trung điểm của đoạn $SA$",
+   "Điểm $N$ là trung điểm của đoạn $SD$"
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "$O$ là trung điểm $BD$. Gọi $N$ là trung điểm $SD$ thì $ON$ là đường trung bình của tam giác $BSD$ nên $ON\\parallel SB$ và $N\\in(SAD)$. Vậy hình chiếu là $N$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007882",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$. Gọi $M,N$ lần lượt là trung điểm của $AB$, $BC$. Giao tuyến của hai mặt phẳng $(MCD)$ và $(ADN)$ là:",
+  "lua_chon": [
+   "Đường thẳng MN.",
+   "Đường thẳng AM.",
+   "Đường thẳng DH (H là trọng tâm tam giác ABC).",
+   "Đường thẳng BG ( G là trọng tâm tam giác ACD)."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "$D$ là điểm chung. Trong $(ABC)$, $CM\\cap AN=H$ là trọng tâm tam giác $ABC$ (hai trung tuyến), $H$ thuộc cả hai mặt phẳng. Vậy giao tuyến là $DH$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007883",
+  "loai": "dung_sai",
+  "de": "Các mệnh đề sau đúng hay sai ?",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Hai đường thẳng chéo nhau là không đồng phẳng, không có điểm chung. Đúng.",
+    "noi_dung": "Hai đường thẳng chéo nhau thì không có điểm chung."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Hai đường thẳng song song thì đồng phẳng, xác định một mặt phẳng duy nhất. Đúng.",
+    "noi_dung": "Hai đường thẳng song song xác định một mặt phẳng."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Hai đường thẳng song song phải đồng phẳng và không có điểm chung; chỉ \"không có điểm chung\" thì có thể chéo nhau. Sai.",
+    "noi_dung": "Hai đường thẳng được gọi là song song nếu chúng không có điểm chung."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Tính chất bắc cầu chỉ đúng với hai đường thẳng phân biệt; đề không ghi \"phân biệt\" (hai đường có thể trùng nhau) nên theo đáp án file là Sai.",
+    "noi_dung": "Hai đường thẳng cùng song song với một đường thẳng thứ ba thì song song với nhau"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007884",
+  "loai": "dung_sai",
+  "de": "Cho hình hộp $ABCD.A'B'C'D'$. Gọi $M,N$ lần lượt là trọng tâm tam giác $B'AC$ và $DA'C'$\nCác mệnh đề sau đúng hay sai ?",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$A'C'\\parallel AC$, $AC\\subset(ABCD)$, $A'C'\\not\\subset(ABCD)$ nên $A'C'\\parallel(ABCD)$. Đúng.",
+    "noi_dung": "$A'C'//\\left( ABCD \\right)$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$AB'\\parallel DC'$ (vì $\\overrightarrow{AB'}=\\overrightarrow{DC'}$), $DC'\\subset(CDD')$, $AB'\\not\\subset(CDD')$ nên $AB'\\parallel(CDD')$. Đúng.",
+    "noi_dung": "$AB'//\\left( CDD' \\right)$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$AC\\parallel A'C'$ và $AB'\\parallel DC'$ nên $(B'AC)\\parallel(DA'C')$ (hai đường cắt nhau trong mặt này song song với mặt kia). Đúng.",
+    "noi_dung": "$\\left( B'AC \\right)//\\left( DA'C' \\right)$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$(NA'B')$ chứa $A'B'\\parallel DC$ và $(MDC)$ chứa $DC$; dùng toạ độ, hai mặt phẳng cùng vectơ pháp tuyến $\\propto(0;1;2)$ nên song song (không cắt nhau). Sai.",
+    "noi_dung": "$\\left( NA'B' \\right)$ cắt $\\left( MDC \\right)$"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007891",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian, cho bốn điểm không đồng phẳng $A,B,C,D$. Có thể xác định được bao nhiêu mặt phẳng từ bốn điểm đã cho trên?",
+  "lua_chon": [
+   "1.",
+   "2.",
+   "6.",
+   "4."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Bốn điểm không đồng phẳng thì không có ba điểm nào thẳng hàng; cứ ba điểm xác định một mặt phẳng: $ABC, ABD, ACD, BCD$. Có $C_4^3=4$ mặt phẳng.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007892",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$. Mệnh đề nào sau đây đúng ?",
+  "lua_chon": [
+   "$SC$ và $AD$ cắt nhau.",
+   "$AB$ và $CD$ chéo nhau.",
+   "$SB$ và $CD$ chéo nhau.",
+   "$SA$ và $CD$ song song nhau."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "$SB$ cắt mặt phẳng đáy $(ABCD)$ tại $B$ và $B\\notin CD$ nên $SB$, $CD$ chéo nhau. Các phương án còn lại sai: $SC$, $AD$ cũng chéo nhau (không cắt, không song song); $AB$, $CD$ cùng nằm trong mặt đáy nên đồng phẳng; $SA$ và $CD$ chéo nhau.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007893",
+  "loai": "trac_nghiem",
+  "de": "Cho các đường thẳng không song song với phương chiếu. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "Phép chiếu song song biến hai đường thẳng song song thành hai đoạn thẳng song song hoặc trùng nhau.",
+   "Phép chiếu song song biến hai đường thẳng song song thành hai đường thẳng song song hoặc trùng nhau.",
+   "Phép chiếu song song biến hai đường thẳng song song thành hai đường thẳng song song.",
+   "Phép chiếu song song biến hai đường thẳng song song thành hai đoạn thẳng song song."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Tính chất của phép chiếu song song: biến hai đường thẳng song song thành hai đường thẳng song song hoặc trùng nhau.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007894",
+  "loai": "dung_sai",
+  "de": "Cho hình hộp $ABCD.EFGH$. Khi đó, ta có:",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$BD\\parallel FH$ (vì $BDHF$ là hình bình hành) và $BE\\parallel CH$ ($BCHE$ là hình bình hành) nên hai đường thẳng cắt nhau $BD,BE$ của $(BDE)$ lần lượt song song với $FH,CH$ của $(CFH)$. Vậy $(BDE)\\parallel(CFH)$, không cắt nhau.",
+    "noi_dung": "Hai mặt phẳng $(BDE)$ và $(CFH)$ cắt nhau."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$BE\\subset(BDE)\\parallel(CFH)$ và hai mặt phẳng song song không có điểm chung nên $BE$ không nằm trên $(CFH)$.",
+    "noi_dung": "Đường thẳng $BE$ không nằm trên mặt phẳng $(CFH)$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$BE\\subset(BDE)$ mà $(BDE)\\parallel(CFH)$ nên $BE\\parallel(CFH)$, không cắt.",
+    "noi_dung": "Đường thẳng $BE$ cắt mặt phẳng $(CFH)$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$\\overrightarrow{BE}=\\overrightarrow{AE}-\\overrightarrow{AB}$ và $\\overrightarrow{CH}=\\overrightarrow{AH}-\\overrightarrow{AC}=\\overrightarrow{AE}-\\overrightarrow{AB}$ (vì $\\overrightarrow{AH}=\\overrightarrow{AD}+\\overrightarrow{AE}$, $\\overrightarrow{AC}=\\overrightarrow{AB}+\\overrightarrow{AD}$), nên $BE\\parallel CH$, không chéo nhau.",
+    "noi_dung": "Hai đường thẳng $BE$ và $CH$ chéo nhau."
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007895",
+  "loai": "tu_luan",
+  "de": "(1,5 điểm) Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Gọi $G,K$ lần lượt là trọng tâm của tam giác $SAB$ và tam giác $ABC$.\na) Tìm giao tuyến của hai mặt phẳng $(SAC)$ và $(SBD)$.\nb) Chứng minh rằng $GK$ song song với mặt phẳng $(SAC)$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "a) SO (O = AC ∩ BD); b) GK // IO nên GK // (SAC)",
+  "loi_giai": "a) $S$ là điểm chung. Gọi $O=AC\\cap BD$ thì $O\\in AC\\subset(SAC)$ và $O\\in BD\\subset(SBD)$ nên $O$ là điểm chung thứ hai. Vậy $(SAC)\\cap(SBD)=SO$.\nb) Gọi $I$ là trung điểm $SA$. $G$ là trọng tâm $\\triangle SAB$ nên $G\\in BI$; $K$ là trọng tâm $\\triangle ABC$ nên $K\\in BO$ ($O$ là trung điểm $AC$). Khi đó $\\dfrac{BG}{BI}=\\dfrac23$ và $\\dfrac{BK}{BO}=\\dfrac23$ nên $\\dfrac{BG}{BI}=\\dfrac{BK}{BO}\\Rightarrow GK\\parallel IO$. Mà $IO\\subset(SAC)$ và $GK\\not\\subset(SAC)$ nên $GK\\parallel(SAC)$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007896",
+  "loai": "tu_luan",
+  "de": "(0,75 điểm) Một khối gỗ được nghệ nhân chạm thành hình một hình chóp tứ giác $S.ABCD$ có cạnh bên và cạnh đáy đều bằng $45\\,cm$. Nghệ nhân đó tiếp tục dùng cưa cắt khối gỗ thành 2 phần theo mặt phẳng $(\\alpha)$ song song với mặt phẳng $(SAB)$ và đi qua trung điểm của $SC$. Tính diện tích bề mặt gỗ xuất hiện sau khi được cắt bởi cưa bằng bao nhiêu $cm^2$? (làm tròn đến hàng đơn vị)",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "658",
+  "loi_giai": "Đáy $ABCD$ là hình vuông cạnh $45$, các cạnh bên bằng $45$. Gọi $M,N,P,Q$ lần lượt là trung điểm $SC,BC,AD,SD$. Mặt phẳng $(\\alpha)$ cắt khối gỗ theo thiết diện $MNPQ$ là hình thang với $NP\\parallel MQ$ ($NP=AB=45$, $MQ=\\dfrac{CD}2=22{,}5$) và hai cạnh bên $MN=PQ=\\dfrac{SB}2=\\dfrac{SA}2=22{,}5$. Hình thang cân này có đường cao $h=\\sqrt{22{,}5^2-11{,}25^2}=11{,}25\\sqrt3$. Diện tích: $S=\\dfrac{(45+22{,}5)\\cdot11{,}25\\sqrt3}2=\\dfrac{6075\\sqrt3}{16}\\approx658\\ (cm^2)$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007906",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$. Lấy điểm $M$ trên cạnh $AC$ kéo dài (như hình vẽ).\nMệnh đề nào sau đây là mệnh đề sai?",
+  "lua_chon": [
+   "$A\\in(MBC)$.",
+   "$B\\in(ACM)$.",
+   "$M\\in(ABC)$.",
+   "$C\\in(ABM)$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "$A,C,M$ thẳng hàng nên $A\\in MC\\subset(MBC)$, $M\\in AC\\subset(ABC)$, $C\\in AM\\subset(ABM)$ — các phương án A, C, D đúng. Ba điểm $A,C,M$ thẳng hàng không xác định mặt phẳng $(ACM)$ nên B sai.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007907",
+  "loai": "trac_nghiem",
+  "de": "Hình tứ diện có bao nhiêu mặt?",
+  "lua_chon": [
+   "$3$.",
+   "$4$.",
+   "$5$.",
+   "$6$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Tứ diện có $4$ mặt (bốn mặt tam giác).",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007908",
+  "loai": "trac_nghiem",
+  "de": "Một mặt phẳng hoàn toàn được xác định nếu biết điều nào sau đây?",
+  "lua_chon": [
+   "Ba điểm không thẳng hàng mà nó đi qua.",
+   "Hai điểm thuộc mặt phẳng.",
+   "Một đường thẳng và một điểm thuộc nó.",
+   "Ba điểm mà nó đi qua."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Một mặt phẳng được xác định bởi ba điểm không thẳng hàng.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007909",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành (như hình vẽ).\nHai đường thẳng $SB$ và $CD$ là hai đường thẳng",
+  "lua_chon": [
+   "Song song.",
+   "Chéo nhau.",
+   "Cắt nhau.",
+   "Trùng nhau."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "$SB$ cắt mặt phẳng $(ABCD)$ tại $B$ mà $B\\notin CD$, $CD\\subset(ABCD)$ nên $SB$ và $CD$ chéo nhau.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007910",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành tâm $O$. Gọi $I,J$ lần lượt là trung điểm $SA,SC$. Đường thẳng $IJ$ song song với đường thẳng nào trong các đường thẳng sau?",
+  "lua_chon": [
+   "$SO$.",
+   "$BD$.",
+   "$AC$.",
+   "$BC$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "$IJ$ là đường trung bình của tam giác $SAC$ nên $IJ\\parallel AC$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007911",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$. Gọi $E,F$ lần lượt là trung điểm $AB,AC$ (như hình vẽ).\nĐường thẳng $EF$ song song với mặt phẳng nào sau đây?",
+  "lua_chon": [
+   "$(BCD)$.",
+   "$(ACD)$.",
+   "$(ABC)$.",
+   "$(ABD)$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "$EF$ là đường trung bình của tam giác $ABC$ nên $EF\\parallel BC$, mà $BC\\subset(BCD)$ và $EF\\not\\subset(BCD)$ nên $EF\\parallel(BCD)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007912",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp $ABCD.A'B'C'D'$. Mặt phẳng $(BCC')$ song song với mặt phẳng nào sau đây?",
+  "lua_chon": [
+   "$(CDA')$.",
+   "$(A'DD')$.",
+   "$(A'C'A)$.",
+   "$(DC'D')$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "$(BCC')$ chính là mặt bên $(BCC'B')$ và song song với mặt đối diện $(ADD'A')$, tức $(A'DD')$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007913",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành tâm $O$. Gọi $M,N,P,Q$ lần lượt là trung điểm của các cạnh $SA,SB,SC,SD$ (tham khảo hình vẽ). Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$(ABNM)\\parallel(CDQP)$.",
+   "$(OMN)\\parallel(SCD)$.",
+   "$(SAB)\\parallel(OCD)$.",
+   "$(OMN)\\parallel(ABC)$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "$MN\\parallel AB\\parallel CD$ và $OM\\parallel SC$ ($OM$ là đường trung bình của tam giác $SAC$). Mặt phẳng $(OMN)$ chứa hai đường cắt nhau $MN,OM$ lần lượt song song với $CD,SC\\subset(SCD)$ nên $(OMN)\\parallel(SCD)$. Các phương án còn lại sai ($(ABNM)$ và $(CDQP)$ cắt nhau theo giao tuyến qua $S$; $(SAB)$ và $(OCD)$ cắt nhau; $(OMN)$ cắt $(ABC)$).",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007914",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Gọi $M,N$ lần lượt là điểm trên cạnh $SC$ và $SD$ sao cho $\\dfrac{SM}{SC}=\\dfrac{SN}{SD}=\\dfrac13$.\na) Tìm giao tuyến của hai mặt phẳng $(SAB)$ và $(SCD)$.\nb) Chứng minh $MN\\parallel(SAB)$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "a) đường thẳng Sx qua S, Sx // AB // CD; b) chứng minh trong lời giải",
+  "loi_giai": "a) $S$ là điểm chung của $(SAB)$ và $(SCD)$; $AB\\subset(SAB)$, $CD\\subset(SCD)$ và $AB\\parallel CD$ nên $(SAB)\\cap(SCD)=Sx$ với $Sx\\parallel AB\\parallel CD$.\nb) Vì $\\dfrac{SM}{SC}=\\dfrac{SN}{SD}=\\dfrac13$ nên theo định lí Ta-lét đảo $MN\\parallel CD\\parallel AB$. Mà $AB\\subset(SAB)$ và $MN\\not\\subset(SAB)$ nên $MN\\parallel(SAB)$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007921",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp $ABCD.A'B'C'D'$ có hình vẽ dưới đây. Mặt phẳng nào sau đây song song với $(ABCD)$?",
+  "lua_chon": [
+   "$(A'B'C'D')$.",
+   "$(A'B'CD)$.",
+   "$(A'C'CA)$.",
+   "$(AA'B'B)$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Hai mặt đáy của hình hộp song song với nhau nên $(A'B'C'D')\\parallel(ABCD)$; các mặt phẳng còn lại cắt $(ABCD)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007922",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy là hình bình hành tâm $O$. Giao tuyến hai mặt phẳng $(SAB)$ và $(ABCD)$ là",
+  "lua_chon": [
+   "$SO$.",
+   "$AD$.",
+   "$AB$.",
+   "$SA$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "$A,B$ cùng thuộc cả hai mặt phẳng nên giao tuyến là $AB$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007923",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy là hình bình hành tâm $O$. Gọi $M$, $N$ lần lượt là trung điểm cạnh $SA$, $SD$.\nĐường thẳng $MN$ song song với mặt phẳng nào sau đây?",
+  "lua_chon": [
+   "$(SBC)$.",
+   "$(SBD)$.",
+   "$(SAB)$.",
+   "$(SAC)$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "$MN$ là đường trung bình của tam giác $SAD$ nên $MN\\parallel AD\\parallel BC$. Mà $BC\\subset(SBC)$ và $MN\\not\\subset(SBC)$ nên $MN\\parallel(SBC)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007924",
+  "loai": "trac_nghiem",
+  "de": "Chọn khẳng định sai:",
+  "lua_chon": [
+   "Các mặt bên của hình hộp là các hình bình hành.",
+   "Hai đáy của hình lăng trụ là hai đa giác có các cạnh tương ứng song song và bằng nhau",
+   "Các cạnh bên của hình lăng trụ song song và bằng nhau",
+   "Các mặt bên của hình lăng trụ là hình chữ nhật"
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Các mặt bên của hình lăng trụ là các hình bình hành (chỉ là hình chữ nhật khi là lăng trụ đứng), nên D sai.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007925",
+  "loai": "dung_sai",
+  "de": "Cho hình hộp $ABCD.A'B'C'D'$. Khi đó:",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Hai mặt phẳng cùng chứa đường thẳng $A'B'$ ($DC\\parallel A'B'$ nên $A'B'\\subset(DCB'A')$), do đó chúng cắt nhau theo $A'B'$, không song song.",
+    "noi_dung": "$(DCB'A')\\parallel(ABB'A')$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$ABCD$ là hình bình hành nên $DC\\parallel AB$.",
+    "noi_dung": "$DC\\parallel AB$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$B'$ và $D'$ đều thuộc cả hai mặt phẳng ($D'\\in(B'BD)$ vì $BB'D'D$ là hình bình hành nên bốn điểm $B,B',D',D$ đồng phẳng) nên giao tuyến là $B'D'$, không phải $B'B$ ($B'B$ chỉ cắt $(A'B'C'D')$ tại $B'$, không nằm trong mặt phẳng đó).",
+    "noi_dung": "Giao tuyến của mặt phẳng $(B'BD)$ và $(A'B'C'D')$ là đường thẳng $B'B$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$DC\\parallel AB$, $AB\\subset(ABB'A')$ và $DC\\not\\subset(ABB'A')$ nên $DC\\parallel(ABB'A')$.",
+    "noi_dung": "$DC\\parallel(ABB'A')$."
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC007926",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Gọi $I,K$ lần lượt là trung điểm của $BC$ và $CD$. Gọi $M$ là trung điểm của $SB$. Gọi $F$ là giao điểm của $DM$ và $(SIK)$. Tính tỉ số $\\dfrac{MF}{MD}$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "1",
+  "loi_giai": "$IK$ là đường trung bình của tam giác $BCD$ nên $IK\\parallel BD$. Mặt phẳng $(SIK)$ và $(SBD)$ có điểm chung $S$, chứa hai đường song song $IK$, $BD$ nên $(SIK)\\cap(SBD)=Sx$ với $Sx\\parallel BD\\parallel IK$. Trong $(SBD)$, gọi $F=Sx\\cap DM$; khi đó $F=DM\\cap(SIK)$. Vì $SF\\parallel BD$ nên $\\dfrac{MF}{MD}=\\dfrac{MS}{MB}=1$ ($M$ là trung điểm $SB$).",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007932",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$, có đáy $ABCD$ là hình bình hành. $CD$ song song với mặt phẳng",
+  "lua_chon": [
+   "$(SAC)$.",
+   "$(ABC)$.",
+   "$(SBC)$.",
+   "$(SAB)$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "$CD\\parallel AB$ và $AB\\subset(SAB)$, $CD\\not\\subset(SAB)$ nên $CD\\parallel(SAB)$. Các mặt phẳng còn lại đều chứa $CD$ hoặc cắt $CD$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC007933",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp $ABCD.A'B'C'D'$. Mặt phẳng $(B'AC)$ song song với mặt phẳng nào trong các mặt phẳng sau?",
+  "lua_chon": [
+   "$(A'CD)$.",
+   "$(BA'C')$.",
+   "$(A'C'D)$.",
+   "$(BDD')$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Trong hình hộp, $AC\\parallel A'C'$ và $AB'\\parallel DC'$ (vì $AB'C'D$ là hình bình hành). Mặt phẳng $(B'AC)$ chứa hai đường cắt nhau $AC,AB'$ lần lượt song song với $A'C',DC'$ của $(A'C'D)$ nên $(B'AC)\\parallel(A'C'D)$.",
+  "co_hinh": true
+ }
+]

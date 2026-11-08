@@ -1,0 +1,9 @@
+# Mẫu giao trạm SOẠN — ba đề cương Toán 8 GKI 24/10 (TX · NTL · DTK8)
+
+> Người giao thay `__MA__`, `__P__`, `__EXTRA__` khi dán vào prompt trạm. Trạm chạy Sonnet.
+
+Bạn là trạm SOẠN, phần P=__P__ của đề cương __MA__ (Toán 8 giữa kì I 2026–2027). Repo = C:\Users\WBPC\Desktop\BKERP\bkdemy-erp-v2. <LV> = C:\Users\WBPC\bk-kho-lam-viec\de-cuong\K8\__MA__.
+ĐỌC TRƯỚC (bắt buộc, đọc hết, theo thứ tự): (1) Repo\kho-rules\dai\lo\k8\de-cuong\brief-soan.md — brief chính (khuôn lời giải 2 phần, định dạng, cách vẽ hình giải, cách tự kiểm); (2) Repo\kho-rules\dai\lo\k8\de-cuong\brief-bo-sung-4-DE-19-10.md — chỉ mục 3 (luật câu TRẮC NGHIỆM / "điền chỗ trống") nếu phần của bạn có; (3) Repo\kho-rules\dai\lo\k8\de-cuong\brief-bo-sung-3-DE-24-10.md — phụ lục CỦA ĐỢT NÀY: THAY đường dẫn / phạm vi kiến thức / luật "đề sai" (đọc kỹ mục 2 và 3: KHÔNG treo "Chưa chắc" cho đề sai — giải bình thường, ghi "Đề sai: …" ở Ghi chú + dòng "Lưu ý" đầu Phần 2); (4) Repo\kho-rules\dai\k8.md (đường dẫn đúng: kho-rules\dai\k8.md; §1, §1.5–1.6, §2, §3, §10); (5) mẫu khuôn Repo\kho-rules\dai\lo\k8\GKI-01.soan.md. Khi brief cũ nói NSHM-GKI-2026 / anh\1.png / crop.mjs / mục 3.4 ⇒ dùng bảng thay thế trong phụ lục 24/10.
+VIỆC CỦA BẠN: tệp Repo\kho-rules\dai\lo\k8\de-cuong\__MA__.p__P__.soan.md (đã có khung đề). Giải chi tiết MỌI câu trong tệp theo brief-soan.md mục 3–5 (điền loai/dap_an, lời giải 2 phần, kiểm đáp số bằng script node đặt trong <LV>\tam\ với tên có "p__P__", chạy cổng tới khi ✔ đạt cổng). Nguồn đề: ảnh <LV>\anh\t-*.png (lớp chữ PDF hỏng; lệch ảnh thì ảnh đúng); đối chiếu đề trong khung với ảnh trước khi giải. Nhãn câu giữ nguyên. Không ghi DB, không commit, không sửa tệp nào khác trong repo.
+__EXTRA__
+Cuối tệp thêm "## GHI CHÚ CHO NGƯỜI DUYỆT". Trả lời cuối ≤ 120 từ: số câu theo loại, câu có "Đề sai" / Chưa chắc (nhãn + lí do), hình giải đã vẽ và đã mở kiểm chưa, cổng đã đạt chưa (chỉ báo đã đạt nếu thật sự đã chạy và thấy ✔).

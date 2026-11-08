@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T310000000942",
+  "dang_bai_id": "NDB00920",
+  "chac": "cao",
+  "ly_do": "Thuyền chuyển động thẳng đều, tìm vị trí sau thời gian tiếp theo."
+ },
+ {
+  "ma_cau": "T310000000943",
+  "dang_bai_id": "NDB00927",
+  "chac": "cao",
+  "ly_do": "Tìm M trên Ox để |MA + 2MB| nhỏ nhất, dùng điểm I."
+ },
+ {
+  "ma_cau": "T310000000944",
+  "dang_bai_id": "NDB00926",
+  "chac": "vua",
+  "ly_do": "Tỉ lệ diện tích dẫn đến tỉ số đoạn, tìm D theo đẳng thức véc tơ."
+ },
+ {
+  "ma_cau": "T310000000945",
+  "dang_bai_id": "NDB00920",
+  "chac": "cao",
+  "ly_do": "Máy bay chuyển động thẳng đều, tìm vị trí sau 3 giờ."
+ },
+ {
+  "ma_cau": "T310000000946",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm x để hai véc tơ cùng phương."
+ },
+ {
+  "ma_cau": "T310000000947",
+  "dang_bai_id": "NDB00920",
+  "chac": "cao",
+  "ly_do": "Tàu chuyển động thẳng đều với véc tơ vận tốc, tìm vị trí sau 2 giờ."
+ },
+ {
+  "ma_cau": "T310000000948",
+  "dang_bai_id": "NDB00922",
+  "chac": "vua",
+  "ly_do": "Điểm cách đều hai điểm và cách điểm khác 5 km; dùng khoảng cách toạ độ."
+ },
+ {
+  "ma_cau": "T310000000949",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: toạ độ chân đường phân giác trong theo tỉ số cạnh."
+ },
+ {
+  "ma_cau": "T310000000950",
+  "dang_bai_id": "NDB00927",
+  "chac": "cao",
+  "ly_do": "Tìm M trên Ox để |MA + 2MB| nhỏ nhất, dùng điểm I."
+ },
+ {
+  "ma_cau": "T310000000951",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp của hai lực khi biết độ lớn và góc giữa chúng."
+ },
+ {
+  "ma_cau": "T310000000952",
+  "dang_bai_id": "NDB00922",
+  "chac": "vua",
+  "ly_do": "Tâm ngoại tiếp bằng IA = IB = IC, tính khoảng cách; có thể xếp thiếu dạng."
+ },
+ {
+  "ma_cau": "T310000000953",
+  "dang_bai_id": "NDB00942",
+  "chac": "cao",
+  "ly_do": "Tính góc tam giác từ toạ độ các véc tơ cạnh."
+ },
+ {
+  "ma_cau": "T310000000954",
+  "dang_bai_id": "NDB00926",
+  "chac": "vua",
+  "ly_do": "Ý a trung điểm, ý b, c đẳng thức véc tơ trên trục; trộn hai dạng."
+ },
+ {
+  "ma_cau": "T310000000955",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "Ba ý đều là toạ độ véc tơ có cộng, trừ, nhân với số."
+ },
+ {
+  "ma_cau": "T310000000956",
+  "dang_bai_id": "NDB00926",
+  "chac": "vua",
+  "ly_do": "Các ý nhân số, đối xứng (trung điểm) và điểm chia theo tỉ số; trộn dạng."
+ },
+ {
+  "ma_cau": "T310000000957",
+  "dang_bai_id": "NDB00924",
+  "chac": "vua",
+  "ly_do": "Ý a chứng minh thẳng hàng; ý b tỉ số chia, trộn."
+ },
+ {
+  "ma_cau": "T310000000958",
+  "dang_bai_id": "NDB00926",
+  "chac": "vua",
+  "ly_do": "Ý toạ độ véc tơ, trung điểm và hai đẳng thức véc tơ; trộn dạng."
+ },
+ {
+  "ma_cau": "T310000000959",
+  "dang_bai_id": "NDB00923",
+  "chac": "vua",
+  "ly_do": "Ý đối xứng và trọng tâm là trung điểm, ý hình bình hành; trộn dạng."
+ },
+ {
+  "ma_cau": "T310000000960",
+  "dang_bai_id": "NDB00922",
+  "chac": "vua",
+  "ly_do": "Nhiều ý: độ dài, trọng tâm, hình bình hành, cách đều; trộn dạng."
+ },
+ {
+  "ma_cau": "T310000000961",
+  "dang_bai_id": "NDB00923",
+  "chac": "vua",
+  "ly_do": "Nhiều ý: chu vi, hình bình hành, trọng tâm, trực tâm, ngoại tiếp; trộn dạng."
+ },
+ {
+  "ma_cau": "T310000000962",
+  "dang_bai_id": "NDB00923",
+  "chac": "vua",
+  "ly_do": "Nhiều ý: chu vi, trung điểm, trọng tâm, hình bình hành, trực tâm; trộn dạng."
+ },
+ {
+  "ma_cau": "T310000000963",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Tìm véc tơ bằng OA trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310000000964",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm số véc tơ khác 0 lập từ 3 điểm."
+ },
+ {
+  "ma_cau": "T310000000965",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Tính độ dài véc tơ AM trong tam giác đều."
+ },
+ {
+  "ma_cau": "T310000000966",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng hai véc tơ OA + BO trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310000000967",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu hai véc tơ AO - BO trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310000000968",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ hiệu |OA - CB| trong hình vuông."
+ },
+ {
+  "ma_cau": "T310000000969",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: quỹ tích/đếm điểm M thoả điều kiện độ dài tổng véc tơ."
+ },
+ {
+  "ma_cau": "T310000000970",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng BA.BC trong hình vuông."
+ },
+ {
+  "ma_cau": "T310000000971",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng AB.AC trong tam giác đều."
+ },
+ {
+  "ma_cau": "T310000000972",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng AB.CA trong hình vuông."
+ },
+ {
+  "ma_cau": "T310000000977",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng BK.AC trong hình chữ nhật."
+ },
+ {
+  "ma_cau": "T310000000978",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực hai lực vuông góc, biết độ lớn."
+ },
+ {
+  "ma_cau": "T310000000979",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Giống ví dụ chứng minh B, I, K thẳng hàng, tìm hệ số."
+ },
+ {
+  "ma_cau": "T310000000980",
+  "dang_bai_id": "NDB00914",
+  "chac": "vua",
+  "ly_do": "Lực kéo ngược hướng với tỉ lệ RA = -3RB; ứng dụng tích với số, phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T310000000981",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng OA.OD trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310000000982",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Tích vô hướng/trọng tâm trong tam giác nội tiếp, điều kiện OG vuông OM."
+ },
+ {
+  "ma_cau": "T310000000983",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Phát biểu về véc tơ cùng phương, cùng hướng."
+ },
+ {
+  "ma_cau": "T310000000984",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm số véc tơ khác 0 lập từ 3 đỉnh tam giác."
+ },
+ {
+  "ma_cau": "T310000000985",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Chọn cặp véc tơ cùng hướng trên 3 điểm thẳng hàng."
+ },
+ {
+  "ma_cau": "T310000000986",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu hai véc tơ AO - DO trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310000000987",
+  "dang_bai_id": "NDB00905",
+  "chac": "vua",
+  "ly_do": "Rút gọn tổng hiệu nhiều véc tơ; cũng hợp quy tắc tổng."
+ },
+ {
+  "ma_cau": "T310000000988",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: xác định vị trí điểm thoả đẳng thức véc tơ."
+ },
+ {
+  "ma_cau": "T310000000989",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Giống ví dụ |AB + AC + AD| trong hình vuông."
+ },
+ {
+  "ma_cau": "T310000000990",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Mệnh đề về trung điểm I của BC; gần tính chất trung điểm hoặc tổng véc tơ."
+ },
+ {
+  "ma_cau": "T310000000995",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ MN qua đường trung bình."
+ },
+ {
+  "ma_cau": "T310000000996",
+  "dang_bai_id": "NDB00906",
+  "chac": "vua",
+  "ly_do": "Độ dài véc tơ AB + AC trong hình chữ nhật; cũng hợp dạng độ dài có tích."
+ },
+ {
+  "ma_cau": "T310000000997",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn GM theo BA, BC trong hình thoi."
+ },
+ {
+  "ma_cau": "T310000000998",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "Cộng vận tốc ca nô và dòng nước."
+ },
+ {
+  "ma_cau": "T310000000999",
+  "dang_bai_id": "NDB00917",
+  "chac": "vua",
+  "ly_do": "Cộng vận tốc máy bay và gió; góc phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T310010201001",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Dùng trung điểm: 2AO = AC."
+ },
+ {
+  "ma_cau": "T310010201002",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Dùng trung điểm: -1/2 DB = BO."
+ },
+ {
+  "ma_cau": "T310010201003",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Dùng trung điểm: 2AM = AB."
+ },
+ {
+  "ma_cau": "T310010201004",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Dùng trung điểm: 1/2 BA = BM."
+ },
+ {
+  "ma_cau": "T310010201005",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức véc tơ với trung điểm M."
+ },
+ {
+  "ma_cau": "T310010201006",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Đẳng thức AB = k AI mô tả hình vẽ; đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T310010201007",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Định nghĩa tích véc tơ với số: độ dài |k||b|."
+ },
+ {
+  "ma_cau": "T310010201008",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất hướng và độ dài của a = -3b."
+ },
+ {
+  "ma_cau": "T310010201009",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Hướng của k.a theo dấu của k."
+ },
+ {
+  "ma_cau": "T310010201010",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Chọn hình vẽ đúng vị trí P theo MN = -3MP; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T310010201011",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Dùng OM = 3a, ON = -5a để tính MN."
+ },
+ {
+  "ma_cau": "T310010201012",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Khẳng định về tích của số với véc tơ."
+ },
+ {
+  "ma_cau": "T310010201013",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Chọn đẳng thức MN = k PN theo hình vẽ; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T310010201014",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tìm m từ hai véc tơ ngược hướng và độ dài."
+ },
+ {
+  "ma_cau": "T310010201015",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "AB = k AI từ AI = 1/3 AB, A nằm giữa I và B."
+ },
+ {
+  "ma_cau": "T310010201016",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Chọn đẳng thức hai véc tơ trên trục số theo hình; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T310010201017",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất cùng phương, cùng hướng, độ dài của k.a."
+ },
+ {
+  "ma_cau": "T310010201018",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Từ AB = -2AC suy ra BC theo AC."
+ },
+ {
+  "ma_cau": "T310010201019",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Số điểm A thoả OA = 5a (tích số với véc tơ)."
+ },
+ {
+  "ma_cau": "T310010201020",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất véc tơ với trung điểm I của AB."
+ }
+]

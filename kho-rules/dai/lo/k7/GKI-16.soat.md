@@ -27,3 +27,7 @@ Không.
 | Câu | Ảnh (tên tệp) | Trang trong PDF gốc BỘ-ĐỀ-GKI-7 | Vấn đề |
 |---|---|---|---|
 | Bài 1c | `can-xem/GKI-16_Bai1c.png` | 33 | Đề in số mũ của $\left(\frac{2025}{2026}\right)$ là chữ "o" nghiêng — đã hiểu và sửa thành số mũ $0$ (đáp số $1$); CEO chỉ cần liếc xác nhận. |
+
+## ĐỐI CHIẾU ĐÁP ÁN CHÍNH THỨC (19/10)
+
+Thùy gửi bản PDF của CHÍNH đề này kèm đáp án + hướng dẫn chấm của trường (file `dap-an-chinh-thuc.pdf` trong thư mục làm việc GKI-16). Đối chiếu 17/17 câu KHỚP: TN D · B · A · C; TLN 1/27 · 24 · x ∈ {1/4; 7/4} · 60°; Bài 1a 5/2 · 1b 5 · 1c 1; 2a −1,9 · 2b 11/36 · 2c 3; Bài 3a 244 000 đ · 3b 6 000 đ; Bài 4 ∠ABy′ = ∠tCz′ = 50°, Am ⊥ Cn (kẻ Ig ∥ xx′, 25° + 65°); Bài 5 x = 25 (đề in lỗi số hạng, đáp án chính thức cũng quy về 5/(a(a+3)) như bản soạn).

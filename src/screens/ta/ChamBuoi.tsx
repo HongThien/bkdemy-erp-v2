@@ -7,7 +7,7 @@ import {
   getBuoi, getRoster, getDangTen, listProblems, listGrades, addProblem, setProblemDang,
   ensureProblems, gradeMuc, gradeET, gradeETBulk, deleteGrade, closePhase, reopenPhase,
   loadETForBuoi, syncDocProblems, loadHinhForBuoiPhase, syncHinhProblems, xepLuoiTheoDe, listCanhBao,
-  type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type ETResult, type LuoiSync, type CanhBao,
+  type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type ETResult, type LuoiSync, type CanhBao, laOHinh,
 } from '../../lib/gami'
 import { tenHienThiDs } from '../../lib/hoten'
 import DangPickerOne from '../../components/DangPickerOne'
@@ -191,7 +191,7 @@ function IngamePanel({ buoi, roster, tenDang, napTenDang, onChange }: {
           )
         })}
       </div>
-      {dangPick && <DangPickerOne khoi={buoi.lop?.khoi ?? ''} mon={buoi.lop?.mon} onClose={() => setDangPick(null)}
+      {dangPick && <DangPickerOne khoi={buoi.lop?.khoi ?? ''} mon={buoi.lop?.mon} banDoMoi onClose={() => setDangPick(null)}
         onPick={async (md) => { const pid = dangPick; setDangPick(null); await setProblemDang(pid, md); reloadP() }} />}
     </div>
   )
@@ -287,7 +287,9 @@ function EtPanel({ buoi, roster, tenDang, napTenDang, onChange }: {
         <div className="ml-auto"><DongBar dong={dong} dongLbl="✓ Xác nhận ET" onDong={() => dong_()} onMoLai={async () => { await reopenPhase(buoiId, 'et'); onChange() }} closing={closing} disabled={!probs.length} /></div>
       </div>
       {/* Cảnh báo lưới lệch đề — so NỘI DUNG không so số lượng (bài học 07-21), không bao giờ im lặng */}
-      {sync?.doiCauTruc && <CanhBaoLuoi mau="amber" text="Đề ET đã đổi sau khi xác nhận — lưới giữ theo lúc chấm (Elo đã tính). Muốn bám đề mới: ↩ Mở lại, hệ tự đồng bộ." />}
+      {sync?.doiCauTruc && (sync.probs.length
+        ? <CanhBaoLuoi mau="amber" text="Đề ET đã đổi sau khi xác nhận — lưới giữ theo lúc chấm (Elo đã tính). Muốn bám đề mới: ↩ Mở lại, hệ tự đồng bộ." />
+        : <CanhBaoLuoi mau="amber" text="Buổi đã được xác nhận đóng ET lúc CHƯA có đề (chưa chấm ô nào, chưa tính Elo). Nay đã có ET — bấm ↩ Mở lại là lưới chấm tự dựng theo đề." />)}
       {sync?.khongRoRang === 'lech_so' && <CanhBaoLuoi mau="rose" text={`Số ô (${probs.length}) khác số câu trong đề — hệ KHÔNG tự đoán ô nào ứng câu nào. Đối chiếu trên ERP desktop.`} />}
       {sync?.khongRoRang === 'lech_dang' && <CanhBaoLuoi mau="rose" text="Dạng của ô không khớp dạng của câu (đề bị thay/bớt câu ở giữa sau khi chấm) — hệ không đoán. Đối chiếu trên ERP desktop." />}
       {!!sync?.moCoi.length && <CanhBaoLuoi mau="rose" text={`${sync.moCoi.length} ô có điểm nhưng câu đã bị bỏ khỏi đề — điểm giữ nguyên, ô xếp cuối.`} />}
@@ -298,9 +300,9 @@ function EtPanel({ buoi, roster, tenDang, napTenDang, onChange }: {
             <tr className="bg-slate-50">
               <th className="sticky left-0 z-20 border-b border-r border-slate-200 bg-slate-50 px-3 py-2 text-left text-[12px] font-semibold text-slate-600">Học sinh</th>
               {probs.map((p) => (
-                <th key={p.id} className={`min-w-[128px] border-b border-slate-200 px-2 py-1.5 text-center align-top ${p.hinh_baitoan_id ? 'bg-violet-50' : ''} ${moCoiIds.has(p.id) ? 'bg-rose-50' : ''}`}>
-                  <div className="text-[12px] font-bold text-slate-700">{p.hinh_baitoan_id ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</div>
-                  <div className="mx-auto max-w-[120px] truncate text-[10.5px] font-medium text-violet-600">{p.hinh_baitoan_id ? 'Hình' : tenDang(p.ma_dang)}</div>
+                <th key={p.id} className={`min-w-[128px] border-b border-slate-200 px-2 py-1.5 text-center align-top ${laOHinh(p) ? 'bg-violet-50' : ''} ${moCoiIds.has(p.id) ? 'bg-rose-50' : ''}`}>
+                  <div className="text-[12px] font-bold text-slate-700">{laOHinh(p) ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</div>
+                  <div className="mx-auto max-w-[120px] truncate text-[10.5px] font-medium text-violet-600">{laOHinh(p) ? 'Hình' : tenDang(p.ma_dang)}</div>
                 </th>
               ))}
             </tr>

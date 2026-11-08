@@ -1,0 +1,460 @@
+[
+ {
+  "ma_cau": "T109000000594",
+  "loai": "tu_luan",
+  "de": "Giải bài toán sau bằng cách lập phương trình hoặc hệ phương trình:\nMột trường THCS tổ chức cho $250$ người bao gồm giáo viên và học sinh đi tham quan khu du lịch Đảo Ngọc Xanh. Biết giá vé vào cổng của một giáo viên là $80000$ đồng, vé vào cổng của một học sinh là $60000$ đồng. Nhà trường tổ chức đi vào đúng dịp khai trương nên được giảm $5\\%$ cho mỗi vé vào cổng. Vì vậy nhà trường chỉ phải trả tổng số tiền là $14\\,535\\,000$ đồng. Hỏi có bao nhiêu giáo viên và học sinh của trường đi tham quan?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai ẩn (số giáo viên, số học sinh) và hai quan hệ: tổng số người, tổng số tiền sau khi giảm giá.\n**Bước 1.** Gọi số giáo viên là $x$ và số học sinh là $y$, nêu điều kiện của hai ẩn (số người là số nguyên dương).\n**Bước 2.** Lập phương trình thứ nhất từ tổng số người; lập phương trình thứ hai từ tổng tiền, nhớ rằng sau khi giảm $5\\%$ mỗi vé chỉ còn $95\\%$ giá gốc.\n**Bước 3.** Thu gọn phương trình thứ hai bằng cách chia hai vế cho một số thích hợp để hệ số nhỏ lại.\n**Bước 4.** Giải hệ bằng phương pháp cộng đại số hoặc thế, đối chiếu điều kiện rồi trả lời đủ hai câu hỏi.\n**Phần 2. Trình bày**\nGọi $x$ là số giáo viên, $y$ là số học sinh đi tham quan ($x,y$ là  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000409",
+  "loai": "tu_luan",
+  "de": "Một cửa hàng bán bưởi Da Xanh với giá bán mỗi quả là $50000$ đồng. Với giá bán này thì mỗi ngày cửa hàng bán được $40$ quả. Cửa hàng dự định giảm giá bán và ước tính nếu cứ giảm giá mỗi quả $1000$ đồng thì số bưởi bán ra tăng thêm $10$ quả mỗi ngày. Hỏi giá bán của mỗi quả bưởi là bao nhiêu để cửa hàng thu được lợi nhuận cao nhất? Biết rằng giá nhập về ban đầu cho mỗi quả bưởi là $30000$ đồng.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** gọi $x$ là số lần giảm giá $1000$ đồng; lợi nhuận mỗi ngày là tích của lãi mỗi quả và số quả bán ra, biến đổi về dạng một hằng số trừ một bình phương để tìm giá trị lớn nhất.\n**Bước 1.** Chọn ẩn $x$ là số lần giảm giá $1000$ đồng và tìm điều kiện của $x$ để giá bán vẫn không thấp hơn giá nhập.\n**Bước 2.** Biểu diễn giá bán, số quả bán ra mỗi ngày và lãi mỗi quả (giá bán trừ giá nhập) theo $x$.\n**Bước 3.** Lập lợi nhuận mỗi ngày bằng lãi mỗi quả nhân số quả bán ra rồi khai triển thành đa thức bậc hai của $x$.\n**Bước 4.** Biến đổi biểu thức bậc hai bằng cách đặt hệ số âm ra ngoài và hoàn thành bình phương; bình phương luôn không âm nên lợi nhuận không vượt q …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000014",
+  "loai": "tu_luan",
+  "de": "Xác định $a,\\ b$ để đồ thị của hàm số $y=ax+b$ đi qua hai điểm $A$ và $B$, biết: $A(2;1)$ và $B(4;-2)$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** điểm nằm trên đồ thị thì toạ độ của nó nghiệm đúng công thức hàm số, nên mỗi điểm cho một phương trình bậc nhất của hai ẩn $a,\\ b$.\n**Bước 1.** Thay toạ độ điểm $A$ vào công thức $y=ax+b$ để được phương trình thứ nhất theo $a$ và $b$.\n**Bước 2.** Thay toạ độ điểm $B$ vào công thức đó để được phương trình thứ hai, ghép hai phương trình thành một hệ.\n**Bước 3.** Hai phương trình có hệ số của $b$ bằng nhau nên dùng phương pháp cộng đại số (trừ từng vế) để tìm $a$ trước.\n**Bước 4.** Thế giá trị $a$ vừa tìm vào một phương trình để tìm $b$, rồi kết luận giá trị của $a$ và $b$ như đề hỏi.\n**Phần 2. Trình bày**\nVì đồ thị hàm số $y=ax+b$ đi qua điểm $A(2;1)$ nên th …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109090202001",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty kinh doanh vận tải có một đội gồm 35 xe chở hàng , lợi nhuận trung bình mỗi xe là 1 triệu đồng một ngày.Công ty muốn mở rộng kinh doanh nên đã tiến hành khảo sát thị trường.Kết quả cho thấy, nếu cứ bổ sung thêm 1 xe chở hàng thì lợi nhuận trung bình của mỗi xe sẽ giảm đi 20 nghìn đồng một ngày.Hỏi công ty nên bổ sung bao nhiêu xe để lợi nhuận trung bình mỗi ngày của đội xe là lớn nhất ?",
+  "dap_an": "7 hoặc 8",
+  "loi_giai": "Gọi số xe công ty cần bổ sung thêm là $x$ ($x \\in N^*$).Tổng số xe của công ty là : $35+x$ (xe)\nLợi nhuận trung bình của một xe là : $1000-20x$ (nghìn đồng)\nLợi nhuận của cả đội xe là :$M = (35+x)(1000-20x) = 20(35+x)(50-x)=20(-x^2 +15x+1750)$ (nghìn đồng)\nXét biểu thức $A = -x^2+15x+1750$\nTa có $A-1806 = -x^2 +15x+1750-1806 = -(x^2-15x+56)=-(x-7)(x-8)$\nXét $x \\geq 8$, khi đó $\\{x-8 \\geq 0 \\\\ x-7>0 \\}$ $\\Rightarrow -(x-8)(x-7) \\leq 0$\nXét $x < 8, x \\in N^*$ nên $x \\leq 7$. Khi đó $\\{x-7 \\leq 0 \\\\ x-8<0 \\}$ $\\Rightarrow -(x-8)(x-7)\\leq 0$\nVậy $-(x-8)(x-7) \\leq 0$. Suy ra $A-1806 \\leq 0 \\Rightarrow A \\leq 1806$\nDấu ' = ' xảy ra khi $x = 7$ hoặc $x =8$.\nVậy công ty nên bổ sung 7 hoặc 8 xe thì l …",
+  "nhan_cu": "Bài toán tối ưu chi phí › Bài toán tối ưu chi phí sản xuất - Dạng 1 biến nguyên"
+ },
+ {
+  "ma_cau": "T109030203124",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn biểu thức $B = \\dfrac{3\\sqrt{x}-6}{\\sqrt{x}-2} + \\dfrac{x+2\\sqrt{x}}{\\sqrt{x}+2}$ với $x \\ge 0; x \\ne 4$.",
+  "dap_an": "$\\sqrt{x}+3$",
+  "loi_giai": "$B = \\dfrac{3\\sqrt{x}-6}{\\sqrt{x}-2} + \\dfrac{x+2\\sqrt{x}}{\\sqrt{x}+2}$\n$B = \\dfrac{3(\\sqrt{x}-2)}{\\sqrt{x}-2} + \\dfrac{\\sqrt{x}(\\sqrt{x}+2)}{\\sqrt{x}+2}$\n$B = 3+\\sqrt{x}$\n$B = \\sqrt{x}+3$",
+  "nhan_cu": "Rút gọn Căn thức › Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109000000568",
+  "loai": "tu_luan",
+  "de": "Cho hai biểu thức $A=\\dfrac{\\sqrt{x}}{\\sqrt{x}+1}$ và $B=\\dfrac{\\sqrt{x}-2}{\\sqrt{x}+2}+\\dfrac{\\sqrt{x}+2}{\\sqrt{x}-2}-\\dfrac{x-2\\sqrt{x}+8}{x-4}$ với $x>0$; $x\\ne4$.\n1) Tính giá trị của biểu thức $A$ khi $x=9$.\n2) Chứng minh $B=\\dfrac{\\sqrt{x}}{\\sqrt{x}-2}$.\n3) Xét biểu thức $P=A:B$. Tìm các số nguyên tố $x$ sao cho $P<0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ý 2 cần quy đồng về mẫu chung $x-4=(\\sqrt{x}-2)(\\sqrt{x}+2)$; ý 3 dùng kết quả ý 2 để rút gọn $P$, khi đó dấu của $P$ chỉ còn phụ thuộc vào tử số.\n**Bước 1.** Ý 1: kiểm tra $x=9$ thoả điều kiện, tính $\\sqrt{x}$ rồi thay vào biểu thức $A$.\n**Bước 2.** Ý 2: viết mẫu $x-4$ dưới dạng tích $(\\sqrt{x}-2)(\\sqrt{x}+2)$, quy đồng ba phân số và cộng trừ các tử số.\n**Bước 3.** Ý 2: thu gọn tử số, phân tích tử và mẫu thành nhân tử rồi rút gọn nhân tử chung để ra biểu thức cần chứng minh.\n**Bước 4.** Ý 3: thay $A$ và $B$ vào $P=A:B$, đổi phép chia thành phép nhân với phân số nghịch đảo rồi rút gọn.\n**Bước 5.** Ý 3: mẫu của $P$ luôn dương nên $P<0$ khi tử âm; giải bất p …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109020301008",
+  "loai": "tra_loi_ngan",
+  "de": "Một đội công nhân dự định xây 120 m tường rào trong một thời gian nhất định. Thực tế đội đã xây 175 m tường rào. Vì vậy mặc dù mỗi giờ đội đã xây thêm 5 m, song thời gian hoàn thành công việc vẫn chậm hơn so với dự định là 1 giờ. Hỏi theo dự định, mỗi giờ đội xây được bao nhiêu mét tường rào? Biết rằng khả năng của đội không quá 25 m tường rào mỗi giờ.",
+  "dap_an": "20",
+  "loi_giai": "Gọi số mét tường rào đội xây mỗi giờ theo dự định là $x$ (m, $0 < x \\le 25$).\nDo mỗi giờ đội xây thêm 5 m tường rào nên số mét tường rào đội xây mỗi giờ thực tế là: $x+5$ (m).\nThời gian xây 120 m tường rào theo dự định là: $\\dfrac{120}{x}$ (giờ).\nThời gian xây 175 m tường rào thực tế là: $\\dfrac{175}{x+5}$ (giờ).\nVì thời gian thực tế chậm hơn so với dự định 1 giờ nên ta có PT:\n$\\dfrac{175}{x+5} - \\dfrac{120}{x} = 1$\n$\\dfrac{175x-120(x+5)}{x(x+5)} = 1$\n$\\dfrac{175x-120x-600}{x(x+5)} = 1$\n$\\dfrac{55x-600}{x(x+5)} = 1$\n$x(x+5)=1(55x-600)$\n$x^2+5x = 55x-600$\n$x^2 - 50x + 600 = 0$\n$(x-20)(x-30) = 0$\nTH1: $x-20 = 0$\n$x = 20$ (TMĐK)\nTH2: $x-30 = 0$\n$x = 30$ (KTMĐK)\nVậy theo dự định, mỗi giờ đội xây …",
+  "nhan_cu": "Giải toán bằng cách lập phương trình › Bài toán Năng suất"
+ },
+ {
+  "ma_cau": "T109000000022",
+  "loai": "tu_luan",
+  "de": "Giải phương trình: $3(x-5)(x+2)-x^2-5x=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** sau khi khai triển và thu gọn, vế trái là tam thức bậc hai không phân tích được thành tích hai nhân tử hữu tỉ, nên phải hoàn thành bình phương.\n**Bước 1.** Khai triển tích $(x-5)(x+2)$ rồi nhân với hệ số đứng trước, trừ tiếp hai hạng tử còn lại để thu gọn vế trái về dạng đa thức bậc hai.\n**Bước 2.** Chia hai vế cho hệ số chung rồi thử phân tích thành tích hai nhị thức có hệ số nguyên; thấy không tách được cặp hệ số phù hợp.\n**Bước 3.** Nhân hai vế với $4$ để hệ số của $x^2$ là số chính phương, ghép với hạng tử bậc nhất thành bình phương của một nhị thức.\n**Bước 4.** Chuyển số hạng tự do sang vế phải thu được dạng bình phương bằng một số dương, rồi dùng căn …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109110301005",
+  "loai": "tra_loi_ngan",
+  "de": "Cho tam giác ABC nhọn $(AB<AC)$. Kẻ 3 đường cao $AD$, $BE$, $CF$ cắt nhau tại H. Chứng minh rằng: $\\triangle AEB\\sim\\triangle AFC$ và $AE\\cdot AC=AF\\cdot AB$.",
+  "loi_giai": "Vì $BE \\perp AC$ tại $E$ nên $\\widehat{AEB}=90^\\circ$.\nVì $CF \\perp AB$ tại $F$ nên $\\widehat{AFC}=90^\\circ$.\nXét $\\triangle AEB$ và $\\triangle AFC$ có:\n$\\widehat{AEB}=\\widehat{AFC}=90^\\circ$\n$\\widehat{A}$ chung\n$\\Rightarrow \\triangle AEB \\sim \\triangle AFC$ (g-g)\nSuy ra $\\dfrac{AE}{AF}=\\dfrac{AB}{AC}$ (2 cặp cạnh tương ứng tỉ lệ)\n$\\Rightarrow AE \\cdot AC = AF \\cdot AB$ (điều phải chứng minh)",
+  "nhan_cu": "Hình học › Hình học"
+ },
+ {
+  "ma_cau": "T109000000142",
+  "loai": "tra_loi_ngan",
+  "de": "Bạn Lâm muốn mua một khối rubik lập phương 3x3x3 trị giá $1\\,200\\,000$ đồng. Tính đến nay, Lâm đã tiết kiệm được $300\\,000$ đồng. Sau đó, mỗi tháng Lâm tiết kiệm tiền tiêu vặt được $130\\,000$ đồng. Hỏi sau ít nhất bao nhiêu tháng bạn Lâm có thể mua được khối rubik đó?",
+  "dap_an": "7",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số tiền Lâm có sau một số tháng là $300\\,000$ cộng với tiền tiết kiệm mỗi tháng nhân số tháng; \"mua được\" nghĩa là số tiền đó không nhỏ hơn giá khối rubik, nên đây là bài toán lập **bất phương trình**.\n**Bước 1.** Gọi ẩn là số tháng cần tiết kiệm và biểu diễn tổng số tiền Lâm có sau số tháng đó.\n**Bước 2.** Lập bất phương trình: tổng số tiền phải lớn hơn hoặc bằng giá khối rubik.\n**Bước 3.** Giải bất phương trình bậc nhất: chuyển vế rồi chia hai vế cho số dương, giữ nguyên chiều.\n**Bước 4.** Số tháng là số nguyên và cần ít nhất, nên chọn số nguyên nhỏ nhất thoả mãn bất phương trình, rồi kết luận.\n**Chú ý:** nghiệm không nguyên của bất phương trình phải làm …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000102",
+  "loai": "tu_luan",
+  "de": "Cho các số thực $x\\ge1$; $y\\ge1$; $z\\ge1$ thỏa mãn $xy+yz+xz=9$. Tìm GTNN, GTLN của $P=x^2+y^2+z^2$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $P$ liên hệ với $xy+yz+zx$ qua các bình phương nên GTNN tìm bằng tổng ba bình phương $(x-y)^2$, $(y-z)^2$, $(z-x)^2$, còn GTLN dùng điều kiện $x,y,z\\ge1$ bằng cách đặt $a=x-1$, $b=y-1$, $c=z-1$ không âm.\n**Bước 1.** Ý GTNN: khai triển $(x-y)^2+(y-z)^2+(z-x)^2\\ge0$ để so sánh $x^2+y^2+z^2$ với $xy+yz+zx$ mà giả thiết đã cho giá trị.\n**Bước 2.** Ý GTNN: tìm điều kiện để dấu \"=\" xảy ra, giải ra giá trị của biến và kiểm tra giá trị đó có thoả điều kiện $\\ge1$ và giả thiết hay không, vì có đạt được mới kết luận là GTNN.\n**Bước 3.** Ý GTLN: đặt $a=x-1$, $b=y-1$, $c=z-1$ rồi viết giả thiết và $P$ theo $a+b+c$ và $ab+bc+ca$, dùng $a,b,c\\ge0$ để chặn $a+b+c$.\n**Bướ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109090201014",
+  "loai": "tra_loi_ngan",
+  "de": "Một nhà xuất bản nhận được đơn hàng đặt in 12 000 cuốn sách. Nhà xuất bản có hệ thống gồm nhiều máy in giống hệt nhau. Mỗi máy in có thể in được 40 cuốn sách trong một giờ. Mỗi lần khởi động một máy in, chi phí tiêu tốn là 400 nghìn đồng trên một máy. Khi các máy hoạt động, cần có một đội kĩ thuật trực để xử lý sự cố, chi phí chi trả cho đội kỹ thuật này là 300 nghìn đồng trên một giờ (đội này giám sát toàn bộ các máy đang chạy cùng một lúc). Hỏi nhà xuất bản phải sử dụng bao nhiêu máy in để tổng chi phí thực hiện đơn hàng là thấp nhất.",
+  "dap_an": "15",
+  "loi_giai": "Gọi $x$ là số máy in được sử dụng ($x \\in \\mathbb{N}^*$).\nTổng số cuốn sách cần in là 12000 cuốn.\nMỗi máy in được 40 cuốn sách trong một giờ.\nThời gian để in hết 12000 cuốn sách với $x$ máy là:\n$t = \\dfrac{12000}{40x} = \\dfrac{300}{x}$ (giờ).\nChi phí khởi động $x$ máy là:\n$C_1 = 400x$ (nghìn đồng).\nChi phí trả cho đội kỹ thuật là:\n$C_2 = 300t = 300 \\cdot \\dfrac{300}{x} = \\dfrac{90000}{x}$ (nghìn đồng).\nTổng chi phí thực hiện đơn hàng là:\n$C(x) = C_1 + C_2 = 400x + \\dfrac{90000}{x}$ (nghìn đồng).\nTa xét hiệu giữa $C(x)$ và $12000$:\n$C(x) - 12000 = 400x + \\dfrac{90000}{x} - 12000$\n$= \\dfrac{400x^2 - 12000x + 90000}{x}$\n$= \\dfrac{400(x^2 - 30x + 225)}{x}$\n$= \\dfrac{400(x-15)^2}{x}$.\nVì $x \\in \\ …",
+  "nhan_cu": "Bài toán tối ưu chi phí › Bài toán tối ưu chi phí sản xuất - Dạng 1 biến"
+ },
+ {
+  "ma_cau": "T109000000355",
+  "loai": "tu_luan",
+  "de": "Một nhà hảo tâm gửi tiền vào ngân hàng để lấy tiền lãi giúp đỡ học sinh mồ côi, không nơi nương tựa. Bình quân mỗi tháng tiền sinh hoạt phí của học sinh hết 2 235 000 đồng, tiền học phí hết 765 000 đồng. Hỏi nhà hảo tâm trên phải gửi bao nhiêu tiền vào ngân hàng để tiền lãi đủ chi phí cho mỗi tháng. Biết lãi suất là $0{,}6\\%$ một tháng.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tiền lãi mỗi tháng phải bằng tổng chi phí mỗi tháng; gọi số tiền gửi là ẩn thì tiền lãi một tháng là $0{,}6\\%$ của số tiền đó.\n**Bước 1.** Tính tổng chi phí mỗi tháng của học sinh bằng cách cộng tiền sinh hoạt phí với tiền học phí.\n**Bước 2.** Gọi $x$ là số tiền cần gửi (đơn vị đồng) và biểu diễn tiền lãi một tháng theo $x$ bằng lãi suất $0{,}6\\%$.\n**Bước 3.** Lập phương trình: tiền lãi một tháng bằng tổng chi phí mỗi tháng, rồi giải phương trình bậc nhất một ẩn.\n**Bước 4.** Kết luận số tiền phải gửi, kèm đơn vị.\n**Chú ý:** đổi $0{,}6\\%=\\dfrac{0{,}6}{100}=0{,}006$ trước khi nhân.\n**Phần 2. Trình bày**\nTổng chi phí mỗi tháng là $2\\,235\\,000+765\\,000=3\\,000\\ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109110301003",
+  "loai": "tra_loi_ngan",
+  "de": "Cho tam giác ABC vuông ở A có $BC=17cm$, $\\tan B=\\dfrac{15}{8}$. Giải tam giác ABC.",
+  "dap_an": "$AB=8$ cm, $AC=15$ cm, $\\widehat{B}\\approx 61^\\circ56'$, $\\widehat{C}\\approx 28^\\circ4'$",
+  "loi_giai": "Trong $\\triangle ABC$ vuông tại $A$: $\\tan B = \\dfrac{AC}{AB} = \\dfrac{15}{8}$\nĐặt $AC = 15k$, $AB = 8k$ ($k>0$).\nÁp dụng định lý Pythagore: $AB^2+AC^2=BC^2$\n$(8k)^2+(15k)^2=17^2$\n$64k^2+225k^2=289$\n$289k^2=289 \\Rightarrow k=1$\nVậy $AB=8$ cm, $AC=15$ cm.\nVì $\\tan B=\\dfrac{15}{8}$ nên:\n$\\widehat{B}\\approx 61^\\circ56'$\n$\\widehat{C}=90^\\circ-\\widehat{B}\\approx 28^\\circ4'$",
+  "nhan_cu": "Hình học › Hình học"
+ },
+ {
+  "ma_cau": "T109000000327",
+  "loai": "tu_luan",
+  "de": "Cho hai biểu thức $A=\\dfrac{\\sqrt{x}+3}{\\sqrt{x}}$ và $B=\\dfrac{x+\\sqrt{x}+6}{x-9}+\\dfrac{2}{\\sqrt{x}+3}$ với $x>0$; $x\\ne9$.\na) Tính giá trị biểu thức $A$ khi $x=4$.\nb) Chứng minh $B=\\dfrac{\\sqrt{x}}{\\sqrt{x}-3}$.\nc) Tìm số nguyên tố $x$ lớn nhất thoả mãn $A \\cdot B<1$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ý b là chìa khoá: sau khi rút gọn $B$ thì tích $A \\cdot B$ ở ý c gọn lại rất nhiều, và ý c giải được bằng cách xét hiệu $A \\cdot B-1$.\n**Bước 1.** Ý a: kiểm tra $x=4$ thoả điều kiện, tính $\\sqrt{x}$ rồi thay vào biểu thức $A$.\n**Bước 2.** Ý b: phân tích mẫu $x-9$ thành nhân tử để tìm mẫu chung, quy đồng rồi cộng hai phân thức của $B$.\n**Bước 3.** Ý b: thu gọn tử thức, đặt nhân tử chung để rút gọn với mẫu và đưa về đúng biểu thức cần chứng minh.\n**Bước 4.** Ý c: dùng kết quả ý b để rút gọn tích $A \\cdot B$, rồi trừ đi $1$ để so sánh với $0$.\n**Bước 5.** Ý c: từ dấu của một phân thức có tử dương suy ra điều kiện của $\\sqrt{x}-3$, giải ra khoảng của $x$ và ch …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000029",
+  "loai": "tu_luan",
+  "de": "Giải phương trình: $x^2-4x^2+4-x=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** gộp hai đơn thức đồng dạng và sắp xếp lại theo luỹ thừa giảm dần để được tam thức bậc hai, rồi phân tích bằng cách tách hạng tử.\n**Bước 1.** Gộp hai hạng tử cùng chứa $x^2$, sắp xếp các hạng tử theo thứ tự luỹ thừa giảm dần của $x$.\n**Bước 2.** Đổi dấu hai vế để hệ số của $x^2$ dương, rồi tìm hai số có tích bằng tích của hệ số $x^2$ với số hạng tự do và có tổng bằng hệ số của $x$.\n**Bước 3.** Tách hạng tử bậc nhất theo hai số đó, nhóm và đặt nhân tử chung để đưa vế trái về tích hai nhị thức.\n**Bước 4.** Cho từng nhị thức bằng $0$ rồi giải hai phương trình bậc nhất.\n**Phần 2. Trình bày**\n$x^2-4x^2+4-x=0$\n$-3x^2-x+4=0$\nNhân hai vế với $-1$, ta được $3x^2+x-4 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109080103012",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của $A = 2x + \\dfrac{8}{x^2}$ ; $x > 0$",
+  "dap_an": "6",
+  "loi_giai": "Bước 1: Nhẩm dấu \"=\" xảy ra:\nLý thuyết gốc: BĐT Cosi 3 số: $A = 2x + \\dfrac{8}{x^2} = x + x + \\dfrac{8}{x^2} \\ge 3\\sqrt[3]{x.x.\\dfrac{8}{x^2}} = 6$\nVậy dấu bằng xảy ra khi $x = \\dfrac{8}{x^2} \\Rightarrow x = 2$. Khi đó $A = 6$\nBước 2: Trình bày\nXét $A - 6 = 2x + \\dfrac{8}{x^2} - 6 = \\dfrac{2x^3 + 8 - 6x^2}{x^2} = \\dfrac{(x - 2)^2 (2x + 2)}{x^2}$\nVì $x > 0 \\Rightarrow 2x + 2 > 0$ mà $(x - 2)^2 \\ge 0$; $x^2 > 0 \\Rightarrow \\dfrac{(x - 2)^2 (2x + 2)}{x^2} \\ge 0$\nSuy ra $A - 6 \\ge 0 \\Rightarrow A \\ge 6$\nDấu \"=\" xảy ra khi $(x - 2)^2 = 0 \\Rightarrow x = 2$\nVậy GTNN của A là 6 khi $x = 2$",
+  "nhan_cu": "Bất đẳng thức một biến › GTLN - GTNN của biểu thức bậc 3 dạng ứng dụng Cauchy chiều xuôi"
+ },
+ {
+  "ma_cau": "T109000000125",
+  "loai": "tu_luan",
+  "de": "Trong giờ học môn Toán bạn Mai vẽ một đồ thị hàm số bậc nhất nhưng quên chưa ghi công thức của hàm số đó trên hình vẽ. Biết đồ thị hàm số bạn Mai đã vẽ là đường thẳng $(d): y=ax+b$ $(a\\ne0)$ đi qua hai điểm $A$ và $B$ (như hình vẽ bên). Em hãy tìm $a$, $b$ để xác định công thức của hàm số đó.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đường thẳng đi qua một điểm thì toạ độ điểm đó **thoả mãn** công thức $y=ax+b$, nên mỗi điểm cho một phương trình.\n**Bước 1.** Đọc toạ độ của hai điểm $A$, $B$ từ hình vẽ: điểm nằm trên trục nào thì có một toạ độ bằng 0.\n**Bước 2.** Thay toạ độ điểm $B$ (có hoành độ bằng 0) vào công thức để tìm ngay hệ số $b$.\n**Bước 3.** Thay toạ độ điểm $A$ và giá trị $b$ vừa tìm để tìm $a$, rồi kiểm tra $a\\ne0$ và viết công thức hàm số.\n**Phần 2. Trình bày**\nTừ hình vẽ, ta có $A(-2;0)$ và $B(0;2)$.\nVì đường thẳng $(d)$ đi qua $B(0;2)$ nên thay $x=0$, $y=2$ vào $y=ax+b$, ta được $2=a \\cdot 0+b$, suy ra $b=2$.\nVì đường thẳng $(d)$ đi qua $A(-2;0)$ nên thay $x=-2$, $y=0$,  …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000069",
+  "loai": "tu_luan",
+  "de": "Cho $a,\\ b,\\ c,\\ d$ là các số dương. Chứng minh: $1<\\dfrac{a}{a+b}+\\dfrac{b}{b+c}+\\dfrac{c}{c+a}<2$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** kẹp từng phân số giữa hai phân số có cùng mẫu $a+b+c$ rồi cộng ba bất đẳng thức, mỗi vế của bất đẳng thức kép ứng với một lần kẹp.\n**Bước 1.** Với vế bên trái, so từng phân số với phân số cùng tử nhưng mẫu là $a+b+c$: mẫu lớn hơn thì phân số nhỏ hơn vì tử dương.\n**Bước 2.** Cộng ba bất đẳng thức vừa có, vế phải thành tổng ba tử chia cho cùng một mẫu nên rút gọn được.\n**Bước 3.** Với vế bên phải, chứng minh một nhận xét tổng quát bằng cách xét hiệu: thêm cùng một số dương vào tử và mẫu của một phân số nhỏ hơn $1$ thì phân số lớn lên.\n**Bước 4.** Áp dụng nhận xét cho ba phân số, chọn số được thêm là phần còn thiếu để mẫu mới là $a+b+c$, rồi cộng ba bất đẳng  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000608",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $(2x+7)^2=9(x+2)^2$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai vế đều là bình phương của một biểu thức, vì $9(x+2)^2=(3x+6)^2$, nên chuyển vế rồi dùng hằng đẳng thức hiệu hai bình phương để phân tích thành tích.\n**Bước 1.** Viết lại vế phải thành bình phương của một biểu thức: $9(x+2)^2=\\big(3(x+2)\\big)^2=(3x+6)^2$.\n**Bước 2.** Chuyển vế phải sang trái để vế phải bằng $0$, rồi áp dụng hằng đẳng thức hiệu hai bình phương.\n**Bước 3.** Thu gọn từng thừa số trong ngoặc, cho từng thừa số bằng $0$ và giải hai phương trình bậc nhất.\n**Chú ý:** không khai căn hai vế rồi chỉ lấy một dấu, vì sẽ mất một nghiệm.\n**Phần 2. Trình bày**\n$(2x+7)^2=9(x+2)^2$\n$(2x+7)^2=(3x+6)^2$\n$(2x+7)^2-(3x+6)^2=0$\n$(2x+7-3x-6)(2x+7+3x+6)=0$\n$(1- …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000054",
+  "loai": "tu_luan",
+  "de": "Một mảnh đất có dạng hình chữ nhật với chu vi bằng $52\\ \\text{m}$. Trên mảnh đất đó, người ta làm vườn rau có dạng hình chữ nhật với diện tích là $112\\ \\text{m}^2$ và một lối đi xung quanh vườn rộng $1\\ \\text{m}$. Tính các kích thước của mảnh đất đó.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chu vi cho biết tổng hai kích thước của mảnh đất; lối đi rộng $1\\ \\text{m}$ ở cả hai phía nên mỗi kích thước của vườn rau kém kích thước mảnh đất đúng $2\\ \\text{m}$.\n**Bước 1.** Từ chu vi tính nửa chu vi, rồi gọi chiều rộng là ẩn để biểu diễn được chiều dài theo ẩn đó.\n**Bước 2.** Vì lối đi bao quanh nên trừ $2\\ \\text{m}$ ở mỗi kích thước để có hai kích thước của vườn rau, rồi viết diện tích vườn bằng tích hai kích thước ấy.\n**Bước 3.** Cho diện tích vườn bằng số đã cho, khai triển và chuyển vế để đưa về phương trình dạng $x^2-bx+c=0$, rồi phân tích vế trái thành nhân tử bằng cách tách hạng tử.\n**Bước 4.** Giải phương trình tích, đối chiếu từng nghiệm với  …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000059",
+  "loai": "tra_loi_ngan",
+  "de": "Một xí nghiệp dự định chia đều 12 600 000 đồng để thưởng cho các công nhân tham gia hội thao nhân ngày thành lập xí nghiệp. Khi đến ngày hội thao chỉ có $80\\%$ số công nhân tham gia, vì thế mỗi người tham gia hội thao được nhận thêm 105 000 đồng. Tính số công nhân dự định tham gia lúc đầu.",
+  "dap_an": "30",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tổng tiền thưởng không đổi nên tiền mỗi người bằng tổng tiền chia cho số người; mức thưởng thực tế lớn hơn mức dự định vì số người giảm.\n**Bước 1.** Gọi số công nhân dự định là ẩn (số nguyên dương) rồi tính số công nhân thực tế bằng $80\\%$ của ẩn.\n**Bước 2.** Đổi tiền sang đơn vị nghìn đồng cho số nhỏ gọn, rồi biểu diễn tiền mỗi người nhận theo dự định và theo thực tế (cùng chia một tổng tiền).\n**Bước 3.** Mỗi người thực tế nhận hơn dự định một khoản đã cho nên lập được phương trình chứa ẩn ở mẫu; thu gọn hiệu hai phân số cùng mẫu.\n**Bước 4.** Giải phương trình, kiểm tra ẩn thoả điều kiện (cả số công nhân thực tế cũng phải nguyên) rồi trả lời.\n**Phần 2. Tr …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000599",
+  "loai": "tu_luan",
+  "de": "Vào ngày 21/11/2025, có 615 người gồm học sinh khối lớp 9 và giáo viên phụ trách của trường THCS Dịch Vọng tham quan Hồ Núi Cốc bằng ô tô. Nhà trường đã thuê 15 chiếc xe gồm hai loại: loại 45 chỗ và loại 30 chỗ. Hỏi nhà trường cần thuê bao nhiêu xe mỗi loại để chở hết số người đó? (Biết rằng trường mong muốn các xe không còn chỗ trống.)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** \"không còn chỗ trống\" nghĩa là tổng số chỗ của tất cả các xe đúng bằng 615, nên có hai điều kiện để lập hệ hai ẩn: tổng số xe và tổng số chỗ.\n**Bước 1.** Chọn hai ẩn là số xe loại 45 chỗ và số xe loại 30 chỗ, nêu điều kiện là số nguyên dương.\n**Bước 2.** Lập phương trình thứ nhất từ tổng số xe là 15, phương trình thứ hai từ tổng số chỗ bằng 615 (số xe nhân với số chỗ của mỗi loại).\n**Bước 3.** Rút một ẩn từ phương trình thứ nhất rồi thế vào phương trình thứ hai để giải hệ.\n**Bước 4.** Đối chiếu nghiệm với điều kiện của ẩn rồi trả lời đủ số xe của từng loại.\n**Chú ý:** phương trình thứ hai có các hệ số chia hết cho 15, chia hai vế cho 15 trước khi thế sẽ tí …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109080107001",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của $A=x+\\dfrac{6}{x}$ với $x \\in N^*$",
+  "dap_an": "5",
+  "loi_giai": "Với dạng biểu thức $A = x + \\dfrac{6}{x}$ thì ta đã học $A$ sẽ đạt GTNN khi $x = \\dfrac{6}{x} \\Rightarrow x^2 = 6 \\Rightarrow x = \\sqrt{6}$",
+  "nhan_cu": "Bất đẳng thức một biến › GTLN - GTNN của biểu thức dạng phân thức ứng dụng Cauchy 2 số với điều kiện x nguyên"
+ },
+ {
+  "ma_cau": "T109080105001",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức $A = x + \\dfrac{4}{x}$ $(x > 0)$",
+  "dap_an": "4",
+  "loi_giai": "Nhận xét : Dấu '=' của bài toán này xảy ra khi $x = \\dfrac{4}{x} \\Rightarrow x^2 = 4 \\Rightarrow x = 2$\nKhi $x = 2 \\Rightarrow A = 4$\nVậy ta trình bày như sau :\nXét $A - 4 = x + \\dfrac{4}{x} - 4 = \\dfrac{x^2 + 4 - 4x}{x} = \\dfrac{(x - 2)^2}{x}$\nVì $x > 0$; $(x - 2)^2 \\ge 0 \\Rightarrow \\dfrac{(x - 2)^2}{x} \\ge 0 \\Rightarrow A - 4 \\ge 0 \\Rightarrow A \\ge 4$\nDấu '=' xảy ra khi $x = 2$\nVậy GTNN của A là 4 khi $x = 2$",
+  "nhan_cu": "Bất đẳng thức một biến › GTLN - GTNN của biểu thức dạng phân thức ứng dụng Cauchy 2 số"
+ },
+ {
+  "ma_cau": "T109000000297",
+  "loai": "tra_loi_ngan",
+  "de": "Trong một kỳ kiểm tra bắn đạn thật, mỗi học viên phải thực hiện $4$ lượt bắn. Anh Minh đã thu được kết quả sau ba lượt bắn với số điểm như sau: lượt $1$ đạt $9{,}5$ điểm, lượt $2$ đạt $7{,}5$ điểm, lượt $3$ đạt $8{,}0$ điểm. Theo quy định, muốn vượt qua được kỳ kiểm tra thì học viên phải có điểm trung bình của các lượt bắn lớn hơn hoặc bằng $8{,}5$. Biết số điểm lượt $1$ và $2$ tính hệ số $1$, số điểm lượt $3$ và $4$ được tính hệ số $2$. Hãy cho biết anh Minh phải đạt ít nhất bao nhiêu điểm trong lượt bắn cuối cùng để vượt qua được kỳ kiểm tra nói trên?",
+  "dap_an": "9",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** điểm trung bình ở đây là trung bình có hệ số, nên mẫu số là tổng các hệ số chứ không phải số lượt bắn; \"ít nhất để vượt qua\" dẫn tới bất phương trình bậc nhất.\n**Bước 1.** Gọi ẩn là số điểm ở lượt bắn cuối cùng (lượt thứ tư, hệ số $2$).\n**Bước 2.** Viết điểm trung bình có hệ số: tổng của (điểm nhân hệ số) của bốn lượt chia cho tổng các hệ số.\n**Bước 3.** Lập bất phương trình: điểm trung bình phải lớn hơn hoặc bằng $8{,}5$.\n**Bước 4.** Giải bất phương trình bậc nhất (nhân hai vế với số dương để khử mẫu), rồi kết luận số điểm ít nhất cần đạt.\n**Chú ý:** tổng các hệ số là $1+1+2+2$, không phải $4$.\n**Phần 2. Trình bày**\nGọi $x$ là số điểm anh Minh đạt được ở  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000519",
+  "loai": "tu_luan",
+  "de": "Bác Hảo có một khu vườn $PMNQ$ có dạng hình chữ U như hình vẽ. Trên cạnh $MN=5$ m, bác Hảo đặt cố định một vòi tưới nước $A$ sao cho $MA=4$ m và $AN=1$ m. Để hoàn thiện khu vườn hoa, bác Hảo bố trí thêm khu ươm cây $C$ trên đoạn $NQ$ và kho dụng cụ $B$ trên đoạn thẳng $MP$. Ba vị trí $A$, $B$, $C$ sẽ tạo thành một khu trồng hoa tam giác vuông $ABC$ (vuông tại $A$) như hình vẽ. Hãy xác định các vị trí của điểm $B$ và điểm $C$ trên các đoạn thẳng $MP$ và $NQ$ sao cho khu trồng hoa tam giác vuông $ABC$ có diện tích nhỏ nhất.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai tam giác vuông $MBA$ và $NAC$ đồng dạng nên tích $MB \\cdot NC$ không đổi; nhờ đó diện tích chỉ còn phụ thuộc một ẩn và tìm được giá trị nhỏ nhất bằng cách đưa về bình phương.\n**Bước 1.** Đặt $MB=b$, $NC=c$, rồi chứng minh $\\triangle MBA\\backsim\\triangle NAC$ nhờ hai góc nhọn cùng phụ với $\\widehat{MAB}$ để có hệ thức giữa $b$ và $c$.\n**Bước 2.** Dùng định lí Pythagore để biểu diễn $AB^2$ và $AC^2$ theo $b$ và $c$.\n**Bước 3.** Lập $(2S)^2=AB^2 \\cdot AC^2$, thay hệ thức giữa $b$ và $c$ để chỉ còn một biến $c$.\n**Bước 4.** Dùng $\\left(c-\\dfrac{1}{c}\\right)^2\\ge0$ để đánh giá biểu thức, tìm giá trị nhỏ nhất của $S$ và dấu bằng xảy ra khi nào.\n**Chú ý:** kh …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109110301004",
+  "loai": "tra_loi_ngan",
+  "de": "Một cột đèn điện AB cao 10 m có bóng in trên mặt đất là AC dài 6 m (như hình vẽ). Hãy tính góc mà tia nắng mặt trời tạo với mặt đất (kết quả làm tròn đến phút).",
+  "dap_an": "$\\approx 59^\\circ2'$",
+  "loi_giai": "Cột đèn $AB$ vuông góc với mặt đất tại $A$, $C$ là điểm cuối bóng trên mặt đất. Tia nắng đi theo $BC$, góc tia nắng tạo với mặt đất là $\\widehat{ACB}$.\nXét $\\triangle ABC$ vuông tại $A$:\n$\\tan C = \\dfrac{AB}{AC} = \\dfrac{10}{6} = \\dfrac{5}{3}$\n$\\widehat{C} \\approx 59^\\circ2'$\nVậy tia nắng mặt trời tạo với mặt đất một góc xấp xỉ $59^\\circ2'$.",
+  "nhan_cu": "Hình học › Hình học"
+ },
+ {
+  "ma_cau": "T109000000020",
+  "loai": "tu_luan",
+  "de": "Cho ba đường thẳng $(d_1)\\colon x-2y=-3$; $(d_2)\\colon \\sqrt{2}x+y=\\sqrt{2}+2$; $(d_3)\\colon mx-(1-2m)y=5-m$. Xác định tham số $m$ để ba đường thẳng đồng quy.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ba đường thẳng đồng quy khi chúng cùng đi qua một điểm; nên tìm giao điểm của hai đường thẳng không chứa tham số rồi bắt $(d_3)$ đi qua điểm đó.\n**Bước 1.** Lập hệ hai phương trình của $(d_1)$ và $(d_2)$, giải hệ bằng phương pháp thế, coi $\\sqrt{2}$ chỉ là một số cụ thể để tìm giao điểm.\n**Bước 2.** Thử lại toạ độ giao điểm vừa tìm bằng cách thay vào cả hai phương trình để chắc không nhầm.\n**Bước 3.** Cho $(d_3)$ đi qua giao điểm đó, tức là thay toạ độ vào phương trình của $(d_3)$ để được phương trình bậc nhất ẩn $m$ và giải.\n**Bước 4.** Đối chiếu giá trị $m$ tìm được: kiểm tra $(d_3)$ có đúng là đường thẳng và không trùng hay song song với $(d_1)$, $(d_2) …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000578",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính: $2\\sqrt{48}-6\\sqrt{\\dfrac{1}{3}}-\\dfrac{2\\sqrt{3}+\\sqrt{21}}{2+\\sqrt{7}}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai số hạng sau đều \"ẩn\" một số hạng chứa $\\sqrt{3}$: $6\\sqrt{\\dfrac{1}{3}}$ khử được mẫu, còn tử của phân thức có nhân tử $\\sqrt{3}$ để rút gọn với mẫu.\n**Bước 1.** Đưa $2\\sqrt{48}$ về dạng $k\\sqrt{3}$ bằng cách đưa thừa số chính phương ra ngoài dấu căn.\n**Bước 2.** Với $6\\sqrt{\\dfrac{1}{3}}$, khai căn một thương rồi khử căn ở mẫu để được số hạng chứa $\\sqrt{3}$.\n**Bước 3.** Với phân thức, viết $\\sqrt{21}=\\sqrt{3} \\cdot \\sqrt{7}$ rồi đặt $\\sqrt{3}$ làm nhân tử chung ở tử để rút gọn với mẫu $2+\\sqrt{7}$.\n**Bước 4.** Thay ba kết quả vào biểu thức và cộng trừ các số hạng cùng chứa $\\sqrt{3}$.\n**Phần 2. Trình bày**\n$2\\sqrt{48}=2\\sqrt{16 \\cdot 3}=8\\sqrt{3}$\n$6 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000314",
+  "loai": "tu_luan",
+  "de": "Một bình đựng $12$ quả cầu được đánh số từ $1$ đến $12$ có kích thước và khối lượng như nhau. Chọn ngẫu nhiên một quả cầu. Tính xác suất của biến cố $A$: \"Chọn được quả cầu có đánh số là số tự nhiên có hai chữ số\".",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** các quả cầu giống hệt nhau nên mọi kết quả đồng khả năng, xác suất bằng số kết quả thuận lợi chia cho số kết quả có thể xảy ra.\n**Bước 1.** Liệt kê không gian mẫu: các số ghi trên quả cầu có thể được chọn và đếm số kết quả.\n**Bước 2.** Trong các số đó, chọn ra những số có hai chữ số để được các kết quả thuận lợi cho biến cố $A$ và đếm chúng.\n**Bước 3.** Lập tỉ số số kết quả thuận lợi trên số kết quả có thể rồi rút gọn.\n**Phần 2. Trình bày**\nCác quả cầu có kích thước và khối lượng như nhau nên $12$ kết quả có thể xảy ra là đồng khả năng.\nKhông gian mẫu: $\\Omega=\\{1;2;3;4;5;6;7;8;9;10;11;12\\}$, có $12$ kết quả.\nCác kết quả thuận lợi cho biến cố $A$ là: $10$; …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000624",
+  "loai": "tu_luan",
+  "de": "Cho hai biểu thức $A=\\dfrac{\\sqrt{x}+2}{\\sqrt{x}-3}$ và $B=\\dfrac{\\sqrt{x}}{\\sqrt{x}+2}+\\dfrac{4\\sqrt{x}+4}{x+2\\sqrt{x}}$ với $x>0$; $x\\ne9$.\n1) Tính giá trị của biểu thức $A$ với $x=25$.\n2) Chứng minh $B=\\dfrac{\\sqrt{x}+2}{\\sqrt{x}}$.\n3) Cho $P=A:B$. Tìm số nguyên $x$ nhỏ nhất để $2P>1$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ý 2 phải phân tích mẫu $x+2\\sqrt{x}$ thành tích để tìm mẫu chung; ý 3 dùng kết quả ý 2 để rút gọn $P$, rồi xét dấu một phân thức.\n**Bước 1.** Ý 1: giá trị $x=25$ thoả điều kiện, tính $\\sqrt{x}$ rồi thay vào $A$.\n**Bước 2.** Ý 2: phân tích $x+2\\sqrt{x}$ bằng cách đặt nhân tử chung $\\sqrt{x}$, thấy nó chứa mẫu của phân thức thứ nhất nên dùng làm mẫu chung.\n**Bước 3.** Ý 2: quy đồng, cộng hai phân thức, nhận ra tử số là bình phương của một tổng rồi rút gọn nhân tử chung.\n**Bước 4.** Ý 3: chia $A$ cho $B$ bằng cách nhân $A$ với nghịch đảo của $B$, rút gọn $P$.\n**Bước 5.** Ý 3: chuyển $2P>1$ về $2P-1>0$, quy đồng, nhận ra tử luôn dương nên chỉ còn xét dấu của m …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030201046",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm ĐKXĐ của biểu thức $\\dfrac{\\sqrt{x}}{\\sqrt{x-1}}$.",
+  "dap_an": "$x>1$",
+  "loi_giai": "ĐKXĐ: $\\begin{cases}x\\ge0\\\\x-1>0\\end{cases}\\Rightarrow\\begin{cases}x\\ge0\\\\x>1\\end{cases}\\Rightarrow x>1$",
+  "nhan_cu": "Rút gọn Căn thức › Tìm ĐKXĐ của Căn thức"
+ },
+ {
+  "ma_cau": "T109020306007",
+  "loai": "tra_loi_ngan",
+  "de": "Một thành phố dự kiến dành khu đất ở huyện ngoại thành để bố trí tái định cư cho một số hộ dân đang sinh sống tại trung tâm thuộc diện di dời phục vụ mở rộng không gian công cộng. Biết khu đất rộng 8000 mét vuông và mỗi hộ dân nhận được diện tích đất như nhau. Trong thực tế, có thêm 10 hộ dân phải di dời nên diện tích đất mà mỗi hộ nhận được bị giảm đi 40 mét vuông. Hỏi có bao nhiêu hộ dân thuộc diện dự kiến di dời?",
+  "dap_an": "40",
+  "loi_giai": "Gọi số hộ dân thuộc diện dự kiến di dời là $x$ (hộ, $x \\in \\mathbb{N}^*$).\nDiện tích đất mỗi hộ dự kiến nhận được là $\\dfrac{8000}{x}$ (mét vuông).\nThực tế, số hộ dân thuộc diện di dời là $x + 10$ hộ và mỗi hộ lúc này nhận được $\\dfrac{8000}{x + 10}$ mét vuông.\nVì diện tích đất mỗi hộ nhận bị giảm đi 40 mét vuông nên ta có PT:\n$\\dfrac{8000}{x} - \\dfrac{8000}{x + 10} = 40$\n$\\dfrac{8000(x + 10) - 8000x}{x(x + 10)} = 40$\n$\\dfrac{80000}{x(x + 10)} = 40$\n$x^2 + 10x = 2000$\n$x^2 + 10x - 2000 = 0$\n$(x + 50)(x - 40) = 0$\nTH1: $x + 50 = 0$\n$x = -50$ (loại)\nTH2: $x - 40 = 0$\n$x = 40$ (TMĐK)\nVậy có 40 hộ dân thuộc diện dự kiến di dời.",
+  "nhan_cu": "Giải toán bằng cách lập phương trình › Bài toán Hai đại lượng"
+ },
+ {
+  "ma_cau": "T109030203108",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn biểu thức $B = \\dfrac{2}{\\sqrt{x}-1} - \\dfrac{\\sqrt{x}-2}{x-\\sqrt{x}}$ với $x > 0; x \\ne 1$.",
+  "dap_an": "$\\dfrac{\\sqrt{x}+2}{\\sqrt{x}(\\sqrt{x}-1)}$",
+  "loi_giai": "$B = \\dfrac{2}{\\sqrt{x}-1} - \\dfrac{\\sqrt{x}-2}{x-\\sqrt{x}}$\n$B = \\dfrac{2}{\\sqrt{x}-1} - \\dfrac{\\sqrt{x}-2}{\\sqrt{x}(\\sqrt{x}-1)}$\n$B = \\dfrac{2\\sqrt{x}-(\\sqrt{x}-2)}{\\sqrt{x}(\\sqrt{x}-1)}$\n$B = \\dfrac{\\sqrt{x}+2}{\\sqrt{x}(\\sqrt{x}-1)}$",
+  "nhan_cu": "Rút gọn Căn thức › Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109000000625",
+  "loai": "tu_luan",
+  "de": "Giải bài toán bằng cách lập phương trình hoặc lập hệ phương trình:\nTrong một xưởng có hai chiếc máy sản xuất cốc giấy. Mỗi giờ máy thứ nhất làm được nhiều hơn máy thứ hai 100 chiếc cốc giấy. Nếu máy thứ nhất làm trong 3 giờ và máy thứ hai làm trong 4 giờ thì cả hai máy làm được 1700 cốc giấy. Hỏi mỗi giờ mỗi máy làm được bao nhiêu chiếc cốc giấy?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chọn ẩn là số cốc máy thứ hai làm trong một giờ, khi đó số cốc của máy thứ nhất biểu diễn được qua ẩn đó, và tổng số cốc làm được cho ta phương trình.\n**Bước 1.** Chọn ẩn là số cốc giấy máy thứ hai làm được mỗi giờ và nêu điều kiện của ẩn.\n**Bước 2.** Biểu diễn số cốc máy thứ nhất làm mỗi giờ theo ẩn, rồi biểu diễn số cốc mỗi máy làm được trong thời gian của nó.\n**Bước 3.** Lập phương trình từ điều kiện tổng số cốc của hai máy, giải phương trình.\n**Bước 4.** Đối chiếu nghiệm với điều kiện, tính số cốc máy thứ nhất và trả lời đủ cả hai máy.\n**Phần 2. Trình bày**\nGọi số cốc giấy mà máy thứ hai làm được trong một giờ là $x$ (chiếc; $x$ nguyên dương).\nSố cốc g …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109080107012",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của $A=x+\\dfrac{6}{x}$ với $x \\in N^*$",
+  "dap_an": "5",
+  "loi_giai": "Với dạng biểu thức $A = x + \\dfrac{6}{x}$ thì ta đã học $A$ sẽ đạt GTNN khi $x = \\sqrt{\\dfrac{6}{x}}$ \\Rightarrow $x^2 = 6$ \\Rightarrow $x = \\sqrt{6}$\nTuy nhiên vì $x \\in N^*$ nên không thể bằng $\\sqrt{6}$, nên ta sẽ chứng minh $A$ đạt GTNN tại giá trị xung quanh $\\sqrt{6}$ là $x=2$; $x=3$\nVới $x=2$ \\Rightarrow $A=5$\nVới $x=3$ \\Rightarrow $A=5$\nVậy ta dự đoán GTNN của $A$ sẽ là $5$ khi $x=2$ hoặc $x=3$\nTa trình bày như sau :\nTa có $A-5=x+\\dfrac{6}{x}-5=\\dfrac{x^2+6-5x}{x} = \\dfrac{x^2-5x+6}{x}=\\dfrac{(x-2)(x-3)}{x}$\nXét $x \\ge 3$ \\Rightarrow $x-3 \\ge 0$; $x-2 > 0$; $x > 0$ \\Rightarrow $\\dfrac{(x-2)(x-3)}{x} \\ge 0$\nXét $x < 3$ mà $x \\in N^*$ \\Rightarrow $x \\le 2$ \\Rightarrow $x-2 \\le 0$; $x-3 …",
+  "nhan_cu": "Bất đẳng thức một biến › GTLN - GTNN của biểu thức dạng phân thức ứng dụng Cauchy 2 số với điều kiện x nguyên"
+ },
+ {
+  "ma_cau": "T109000000241",
+  "loai": "tu_luan",
+  "de": "Một mảnh đất hình vuông $ABCD$ cạnh $30$ m. Người ta xây dựng một vườn hoa dạng hình vuông $EFGH$ có các đỉnh $E$, $F$, $G$, $H$ thuộc các cạnh của hình vuông $ABCD$ (hình vẽ). Xác định vị trí điểm $E$ trên cạnh $AB$ để diện tích vườn hoa nhỏ nhất.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đặt $AE=x$ rồi chứng minh $BF=AE$; khi đó diện tích vườn hoa là một đa thức bậc hai theo $x$, đưa về dạng \"bình phương cộng hằng số\" để tìm giá trị nhỏ nhất.\n**Bước 1.** Đặt $AE=x$ nên $EB=30-x$; diện tích vườn hoa bằng $EF^2$, và $EF$ là cạnh huyền của tam giác vuông $EBF$ nên tính được theo $EB$ và $BF$.\n**Bước 2.** Muốn biết $BF$, so sánh hai tam giác vuông $AEH$ và $BFE$: chúng có cạnh huyền bằng nhau (cạnh hình vuông) và một cặp góc nhọn bằng nhau vì cùng phụ với $\\widehat{BEF}$.\n**Bước 3.** Từ hai tam giác bằng nhau suy ra $BF=AE$, rồi viết diện tích $S$ theo $x$ và khai triển thành đa thức bậc hai.\n**Bước 4.** Nhóm về dạng $2(x-a)^2+k$ (hoàn thành b …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000638",
+  "loai": "tra_loi_ngan",
+  "de": "Một người công nhân dự định được giao làm $120$ sản phẩm trong thời gian nhất định. Nhưng thực tế người công nhân đó phải làm $150$ sản phẩm. Vì vậy mặc dù người đó đã làm mỗi giờ thêm $10$ sản phẩm, song thời gian hoàn thành công việc vẫn chậm hơn so với dự định là $6$ phút. Hỏi theo dự định, mỗi giờ người công nhân đó làm bao nhiêu sản phẩm? Biết rằng khả năng của người đó làm được không quá $60$ sản phẩm mỗi giờ.",
+  "dap_an": "50",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** thời gian $=$ số sản phẩm $:$ năng suất; thời gian thực tế hơn thời gian dự định đúng $6$ phút, và $6$ phút phải đổi ra giờ vì năng suất tính theo giờ.\n**Bước 1.** Chọn ẩn là năng suất dự định (sản phẩm mỗi giờ), biểu diễn năng suất thực tế qua ẩn đó; năng suất thực tế là số người đó đã làm được thật nên chính nó phải không quá $60$, từ đó ra điều kiện của ẩn.\n**Bước 2.** Biểu diễn thời gian dự định và thời gian thực tế (đơn vị giờ), đổi $6$ phút thành giờ rồi lập phương trình \"thực tế trừ dự định bằng $6$ phút\".\n**Bước 3.** Quy đồng khử mẫu, đưa về phương trình bậc hai và giải bằng cách phân tích thành nhân tử (tách hạng tử bậc nhất).\n**Bước 4.** Đối chiế …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000129",
+  "loai": "tra_loi_ngan",
+  "de": "Bác Sơn muốn xây một bể chứa nước có dạng hình hộp chữ nhật không nắp có thể tích bằng $36$ $m^3$. Đáy bể có dạng hình chữ nhật với chiều rộng là $x$ (m), chiều dài gấp đôi chiều rộng. Bác Sơn muốn phần diện tích cần xây (bao gồm diện tích xung quanh và đáy bể) là nhỏ nhất để tiết kiệm chi phí thì $x$ phải bằng bao nhiêu?",
+  "dap_an": "3",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** từ thể tích tính chiều cao theo $x$, đưa diện tích cần xây về một biểu thức chỉ chứa $x$, rồi chứng minh biểu thức đó không nhỏ hơn một hằng số bằng cách phân tích hiệu thành nhân tử có bình phương.\n**Bước 1.** Gọi chiều cao của bể và dùng công thức thể tích hình hộp chữ nhật để biểu diễn chiều cao theo $x$.\n**Bước 2.** Diện tích cần xây gồm đáy bể và bốn mặt xung quanh (không nắp); tính từng phần rồi cộng lại để có biểu thức theo $x$.\n**Bước 3.** Xét hiệu của diện tích với một hằng số thích hợp, quy đồng và phân tích tử thành nhân tử, trong đó có một thừa số là bình phương.\n**Bước 4.** Chỉ ra hiệu không âm nên diện tích không nhỏ hơn hằng số đó, rồi tìm $ …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000193",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $0<x<2$. Tìm giá trị nhỏ nhất của biểu thức $A=\\dfrac{x}{2-x}+\\dfrac{8}{x}$.",
+  "dap_an": "8",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tách $\\dfrac{8}{x}$ để xuất hiện $\\dfrac{2-x}{x}$, là nghịch đảo của $\\dfrac{x}{2-x}$; khi đó $A$ có dạng \"một số dương cộng bốn lần nghịch đảo của nó, cộng hằng số\".\n**Bước 1.** Từ $0<x<2$ suy ra $x>0$ và $2-x>0$, nên các phân thức trong $A$ đều dương.\n**Bước 2.** Viết $8=4(2-x)+4x$ để tách $\\dfrac{8}{x}$ thành hai phần, một phần chứa $\\dfrac{2-x}{x}$ và một phần là hằng số.\n**Bước 3.** Đặt $a=\\dfrac{x}{2-x}$ ($a>0$) để đưa $A$ về dạng $a+\\dfrac{4}{a}$ cộng một hằng số.\n**Bước 4.** Chứng minh $a+\\dfrac{4}{a}$ không nhỏ hơn một giá trị cố định bằng cách xét hiệu rồi quy đồng, đưa về bình phương chia cho $a$ (tự chứng minh, không dùng bất đẳng thức có sẵn). …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000631",
+  "loai": "tu_luan",
+  "de": "Năm ngoái hai đơn vị của nhà máy sản xuất được $740$ tấn gạo. Năm nay đơn vị thứ nhất sản xuất vượt mức $15\\%$, đơn vị thứ hai sản xuất vượt mức $13\\%$ so với năm ngoái. Do đó năm nay cả hai đơn vị đã sản xuất được $845$ tấn gạo. Hỏi năm ngoái, mỗi đơn vị sản xuất được bao nhiêu tấn gạo?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** sản lượng năm nay của mỗi đơn vị bằng sản lượng năm ngoái nhân với một cộng tỉ lệ vượt mức, nên gọi sản lượng năm ngoái của hai đơn vị làm hai ẩn rồi lập hệ hai phương trình theo tổng năm ngoái và tổng năm nay.\n**Bước 1.** Chọn hai ẩn là số tấn gạo năm ngoái của đơn vị thứ nhất và đơn vị thứ hai, nêu điều kiện của ẩn.\n**Bước 2.** Lập phương trình thứ nhất từ tổng sản lượng năm ngoái của hai đơn vị.\n**Bước 3.** Biểu diễn sản lượng năm nay của mỗi đơn vị theo ẩn (đổi phần trăm ra số thập phân) và lập phương trình thứ hai từ tổng sản lượng năm nay.\n**Bước 4.** Giải hệ phương trình bằng phương pháp thế, đối chiếu điều kiện rồi trả lời cho cả hai đơn vị.\n**Chú  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000565",
+  "loai": "tu_luan",
+  "de": "Một mảnh vườn hình chữ nhật có chiều dài $20$ m, chiều rộng $15$ m. Bố An muốn phân hai khu vực hình vuông ở hai góc đối của mảnh vườn để thiết kế trang trí (hình minh họa). Để vừa đảm bảo tính thẩm mĩ, vừa tiết kiệm chi phí, mỗi khu vực có diện tích không nhỏ hơn $1\\ \\text{m}^2$ và tổng diện tích hai khu vực là $5\\ \\text{m}^2$. Ngoài ra để phân rõ hai khu vực trên với phần diện tích còn lại, bố An trồng hoa bao quanh cả bốn cạnh của mỗi khu vực:\n- Khu vực I trồng hoa mười giờ với chi phí $30\\,000$ đồng/mét.\n- Khu vực II trồng hoa ngũ sắc với chi phí $70\\,000$ đồng/mét.\nHỏi chi phí trồng hoa dao động từ ít nhất bao nhiêu tiền và nhiều nhất bao nhiêu tiền, để bố An có thể chủ động?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** gọi cạnh hai hình vuông là $a$, $b$ thì chi phí là một biểu thức bậc nhất của $a$ và $b$, trong khi điều kiện $a^2+b^2=5$ cùng hai diện tích không nhỏ hơn $1$ giới hạn $a$, $b$ trong một đoạn; bài toán thành tìm giá trị nhỏ nhất và lớn nhất của biểu thức đó.\n**Bước 1.** Gọi cạnh khu vực I là $a$, cạnh khu vực II là $b$, viết các điều kiện về diện tích rồi suy ra $a$, $b$ nằm giữa hai số nào.\n**Bước 2.** Tính chi phí mỗi khu vực bằng chu vi nhân đơn giá, cộng lại và đặt nhân tử chung để chỉ còn phải tìm giá trị lớn nhất, nhỏ nhất của biểu thức $3a+7b$.\n**Bước 3.** Để tìm cận trên, xét hiệu giữa số cần so sánh và $3a+7b$, tách theo $a-1$ và $b-2$, rồi dùng $ …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030203123",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn biểu thức $B = \\left( \\dfrac{\\sqrt{x}}{\\sqrt{x}+4} + \\dfrac{4}{\\sqrt{x}-4} \\right) : \\dfrac{x+16}{\\sqrt{x}+2}$ với $x \\ge 0; x \\ne 16$.",
+  "dap_an": "$\\dfrac{\\sqrt{x}+2}{x-16}$",
+  "loi_giai": "$B = \\left( \\dfrac{\\sqrt{x}}{\\sqrt{x}+4} + \\dfrac{4}{\\sqrt{x}-4} \\right) : \\dfrac{x+16}{\\sqrt{x}+2}$\n$B = \\left( \\dfrac{\\sqrt{x}(\\sqrt{x}-4)+4(\\sqrt{x}+4)}{(\\sqrt{x}-4)(\\sqrt{x}+4)} \\right) : \\dfrac{x+16}{\\sqrt{x}+2}$\n$B = \\dfrac{x+16}{(\\sqrt{x}-4)(\\sqrt{x}+4)} \\times \\dfrac{\\sqrt{x}+2}{x+16}$\n$B = \\dfrac{\\sqrt{x}+2}{(\\sqrt{x}-4)(\\sqrt{x}+4)}$\n$B = \\dfrac{\\sqrt{x}+2}{x-16}$",
+  "nhan_cu": "Rút gọn Căn thức › Rút gọn Căn thức"
+ },
+ {
+  "ma_cau": "T109090302001",
+  "loai": "tra_loi_ngan",
+  "de": "Trên một cánh đồng trống tiếp giáp với một bờ sông, người nông dân dự định rào lại cánh đồng hình chữ nhật để trồng cây với diện tích cần rào là $320000$ m$^2$ và không cần rào phía giáp bờ sông (xem hình vẽ).\nNgười nông dân cần chọn các kích thước cần rào như thế nào để độ dài của hàng rào là nhỏ nhất?",
+  "dap_an": "400; 800",
+  "loi_giai": "Gọi cạnh vuông góc với bờ sông là $x(m)$, cạnh song song với bờ sông là $y(m)$ ($x,y>0$)\nTheo đề bài, diện tích mảnh đất cần rào là $320000$ m$^2$ nên $xy = 320000(m^2)$\nTổng chiều dài của hàng rào là : $M = 2x + y$\nVì $xy = 320000 \\Rightarrow y = \\dfrac{320000}{x}$\nSuy ra $M = 2x + \\dfrac{320000}{x}$\nXét $M-1600 = 2x + \\dfrac{320000}{x} - 1600 = \\dfrac{2x^2-1600x+320000}{x} = \\dfrac{2(x-400)^2}{x}$\nVì $x>0$; $(x-400)^2 \\ge 0 \\Rightarrow \\dfrac{2(x-400)^2}{x} \\ge 0 \\Rightarrow M \\ge 1600$\nDấu '$=$' xảy ra khi $(x-400)^2 = 0 \\Rightarrow x=400(m) \\Rightarrow y=\\dfrac{320000}{400} = 800(m)$\nVậy để độ dài hàng rào nhỏ nhất thì ta chọn cạnh vuông góc với bờ sông là 400m và cạnh song song với bờ s …",
+  "nhan_cu": "Bài toán thực tế hình học › Bài toán chu vi - diện tích : Cho tích - hỏi tổng"
+ },
+ {
+  "ma_cau": "T109000000364",
+  "loai": "tra_loi_ngan",
+  "de": "Một công nhân theo kế hoạch phải làm $88$ chi tiết máy trong một khoảng thời gian dự định. Thực tế, người công nhân đó phải làm $90$ chi tiết máy. Do đó mỗi giờ, người đó đã làm tăng thêm $3$ chi tiết máy, nên người đó đã hoàn thành công việc sớm hơn dự định $24$ phút. Hỏi mỗi giờ, người công nhân đó dự định làm bao nhiêu chi tiết máy?",
+  "dap_an": "22",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** thời gian làm $=$ số chi tiết $:$ số chi tiết làm trong một giờ; \"sớm hơn $24$ phút\" nghĩa là thời gian dự định lớn hơn thời gian thực tế đúng $24$ phút, cần đổi ra giờ.\n**Bước 1.** Chọn ẩn là số chi tiết máy mỗi giờ dự định làm, đặt điều kiện cho ẩn, rồi biểu diễn số chi tiết mỗi giờ làm trên thực tế.\n**Bước 2.** Biểu diễn thời gian dự định và thời gian thực tế theo ẩn, đổi $24$ phút ra giờ rồi lập phương trình từ hiệu hai thời gian.\n**Bước 3.** Quy đồng khử mẫu để đưa về phương trình bậc hai, rồi phân tích vế trái thành nhân tử (không dùng công thức nghiệm).\n**Bước 4.** Cho từng nhân tử bằng $0$, đối chiếu với điều kiện của ẩn rồi trả lời.\n**Chú ý:** $24 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109090301014",
+  "loai": "tra_loi_ngan",
+  "de": "Một khách hàng đặt một người thợ làm một chiếc bể hình hộp chữ nhật không có nắp phải chứa được $4m^3$ nước, đáy là hình vuông có cạnh là $x$ và chiều cao bể là $h$. Hỏi chiều dài cạnh đáy và chiều cao của bể bằng bao nhiêu để người thợ tiết kiệm chi phí và nguyên vật liệu nhất?",
+  "dap_an": "x=2m, h=1m",
+  "loi_giai": "Gọi cạnh đáy hình vuông là $x$ (m, $x>0$), chiều cao bể là $h$ (m, $h>0$).\nThể tích bể: $x^2h=4 \\Rightarrow h=\\dfrac{4}{x^2}$.\nBể không có nắp nên diện tích vật liệu cần dùng là diện tích đáy cộng $4$ mặt bên:\n$S=x^2+4xh=x^2+4x\\cdot\\dfrac{4}{x^2}=x^2+\\dfrac{16}{x}$.\nTiết kiệm chi phí và nguyên vật liệu nhất nghĩa là $S$ nhỏ nhất. Viết lại $S=x^2+\\dfrac{8}{x}+\\dfrac{8}{x}$.\nÁp dụng bất đẳng thức Cô-si cho $3$ số dương $x^2,\\dfrac{8}{x},\\dfrac{8}{x}$:\n$S\\ge 3\\sqrt[3]{x^2\\cdot\\dfrac{8}{x}\\cdot\\dfrac{8}{x}}=3\\sqrt[3]{64}=3\\cdot4=12$.\nDấu \"=\" xảy ra khi $x^2=\\dfrac{8}{x} \\Leftrightarrow x^3=8 \\Leftrightarrow x=2$.\nKhi đó $h=\\dfrac{4}{x^2}=\\dfrac{4}{4}=1$.\nVậy cạnh đáy $x=2$ (m) và chiều cao $h=1$ …",
+  "co_hinh": true,
+  "nhan_cu": "Bài toán thực tế hình học › Bài toán chu vi - diện tích : Cho tổng - hỏi tích"
+ },
+ {
+  "ma_cau": "T109030305043",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+6}{\\sqrt{x}-3}$ $(x\\in\\mathbb{N};x\ne9)$. Tìm $x\\in\\mathbb {N}$ để $P$ có giá trị lớn nhất.",
+  "dap_an": "10",
+  "loi_giai": "$P=\\dfrac{\\sqrt{x}+6}{\\sqrt{x}-3}=\\dfrac{\\sqrt{x}-3+9}{\\sqrt{x}-3}=1+\\dfrac{9}{\\sqrt{x}-3}$.\nTH1: Với $0\\le x<9\\Rightarrow\\sqrt{x}-3<0\\Rightarrow P<1$.\nTH2: Với $x>9$ mà $x\\in\\mathbb{N}\\Rightarrow x\\ge10\\Rightarrow\\sqrt{x}-3\\ge\\sqrt{10}-3>0$.\nDo đó $\\dfrac{9}{\\sqrt{x}-3}\\le\\dfrac{9}{\\sqrt{10}-3}$.\n$\\Rightarrow P\\le1+\\dfrac{9}{\\sqrt{10}-3}$.\nDấu bằng xảy ra khi $x=10$ (thỏa mãn).\nVậy $x=10$ thì $P$ có giá trị lớn nhất.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109110401002",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN – GTNN của biểu thức: $-3x^2-8x+11$.",
+  "dap_an": "GTLN = 49/3 khi x = -4/3; không có GTNN",
+  "loi_giai": "Ta có: $-3x^2-8x+11=-3\\left(x^2+\\dfrac{8}{3}x\\right)+11=-3\\left(x+\\dfrac{4}{3}\\right)^2+\\dfrac{16}{3}+11=-3\\left(x+\\dfrac{4}{3}\\right)^2+\\dfrac{49}{3}$.\nVì $-3\\left(x+\\dfrac{4}{3}\\right)^2\\le 0$ với mọi $x$ nên $-3\\left(x+\\dfrac{4}{3}\\right)^2+\\dfrac{49}{3}\\le \\dfrac{49}{3}$, dấu \"=\" xảy ra khi $x=-\\dfrac{4}{3}$.\nVậy biểu thức có GTLN bằng $\\dfrac{49}{3}$ khi $x=-\\dfrac{4}{3}$.\nKhi $x\\to\\pm\\infty$ thì biểu thức $\\to-\\infty$ nên không có GTNN.",
+  "nhan_cu": "Nâng cao › Nâng cao"
+ },
+ {
+  "ma_cau": "T109110201008",
+  "loai": "tra_loi_ngan",
+  "de": "Giải toán bằng cách lập phương trình: Theo kế hoạch, một nông trường cao su phải khai thác 384 tấn mủ trong một thời gian nhất định. Trên thực tế, mỗi ngày nông trường đều khai thác vượt định mức 3 tấn nên nông trường đã khai thác được 385 tấn và xong trước thời hạn 1 ngày. Hỏi theo kế hoạch mỗi ngày nông trường phải khai thác bao nhiêu tấn mủ cao su?",
+  "dap_an": "32 tấn",
+  "loi_giai": "Gọi $x$ (tấn) là khối lượng mủ nông trường phải khai thác mỗi ngày theo kế hoạch ($x>0$).\nThời gian dự định hoàn thành theo kế hoạch: $\\dfrac{384}{x}$ (ngày).\nThực tế mỗi ngày khai thác $x+3$ (tấn), tổng khai thác thực tế là $385$ tấn nên thời gian thực tế: $\\dfrac{385}{x+3}$ (ngày).\nVì xong trước thời hạn $1$ ngày nên ta có phương trình:\n$\\dfrac{384}{x}-\\dfrac{385}{x+3}=1$\n$384(x+3)-385x=x(x+3)$\n$384x+1152-385x=x^2+3x$\n$x^2+4x-1152=0$\n$\\Delta=4^2+4\\cdot1152=4624=68^2$\n$x=\\dfrac{-4+68}{2}=32$ hoặc $x=\\dfrac{-4-68}{2}=-36$ (loại vì $x>0$)\nVậy theo kế hoạch mỗi ngày nông trường phải khai thác $32$ tấn mủ cao su.",
+  "nhan_cu": "Phương trình và Bất phương trình bậc nhất › Phương trình và Bất phương trình bậc nhất"
+ },
+ {
+  "ma_cau": "T109000000558",
+  "loai": "tu_luan",
+  "de": "Cho hai biểu thức: $A=\\dfrac{5}{\\sqrt{x}(\\sqrt{x}+3)}$ và $B=\\dfrac{\\sqrt{x}}{\\sqrt{x}-3}-\\dfrac{6\\sqrt{x}}{x-9}-\\dfrac{3}{\\sqrt{x}+3}$ với $x>0$, $x\\ne9$.\n1) Tính giá trị của biểu thức $A$ khi $x=4$.\n2) Chứng minh $B=\\dfrac{\\sqrt{x}-3}{\\sqrt{x}+3}$.\n3) Đặt $P=\\dfrac{B}{A}$. Tìm $x$ để $P\\le\\sqrt{x}-\\dfrac{16}{5}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ở ý 2 tìm mẫu chung bằng cách viết $x-9=(\\sqrt{x}-3)(\\sqrt{x}+3)$; ở ý 3 sau khi rút gọn $P$, bất phương trình sẽ đưa được về dạng bình phương nhỏ hơn hoặc bằng $0$.\n**Bước 1.** Ý 1: kiểm tra $x=4$ thoả điều kiện, tính $\\sqrt{4}$ rồi thay vào biểu thức $A$.\n**Bước 2.** Ý 2: quy đồng ba phân thức của $B$ về mẫu chung $x-9=(\\sqrt{x}-3)(\\sqrt{x}+3)$, cộng trừ các tử, chú ý dấu trừ trước phân thức thứ ba.\n**Bước 3.** Ý 2: thu gọn tử thành hằng đẳng thức bình phương của một hiệu rồi rút gọn thừa số chung với mẫu.\n**Bước 4.** Ý 3: lập $P=B:A$ bằng cách nhân $B$ với phân thức nghịch đảo của $A$, rút gọn các thừa số chung.\n**Bước 5.** Ý 3: nhân hai vế của bất phươ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000636",
+  "loai": "tu_luan",
+  "de": "Cho hai biểu thức $A=\\dfrac{2\\sqrt{x}-1}{\\sqrt{x}+1}$; $B=\\dfrac{2\\sqrt{x}+5}{\\sqrt{x}+1}-\\dfrac{\\sqrt{x}}{\\sqrt{x}-1}+\\dfrac{6}{x-1}$ với $x\\ge0$, $x\\ne1$.\n1) Tìm giá trị của $A$ tại $x=4$.\n2) Chứng minh $B=\\dfrac{\\sqrt{x}+1}{\\sqrt{x}-1}$.\n3) Đặt $P=A \\cdot B$. Tìm tất cả các giá trị của $x$ thoả mãn $P=\\dfrac{9}{4}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ý 3 dùng kết quả ý 2: nhờ $B=\\dfrac{\\sqrt{x}+1}{\\sqrt{x}-1}$ mà tích $A \\cdot B$ triệt tiêu được thừa số $\\sqrt{x}+1$, còn lại một phân thức đơn giản để giải phương trình.\n**Bước 1.** Ý 1: kiểm tra $x=4$ thoả mãn điều kiện, tính $\\sqrt{x}$ rồi thay vào $A$.\n**Bước 2.** Ý 2: phân tích $x-1=(\\sqrt{x}-1)(\\sqrt{x}+1)$ để chọn mẫu chung rồi quy đồng ba phân thức của $B$.\n**Bước 3.** Ý 2: cộng trừ các tử, thu gọn thì tử thức trở thành một bình phương; rút gọn thừa số chung ở tử và mẫu để ra kết quả cần chứng minh.\n**Bước 4.** Ý 3: thay $B$ đã rút gọn vào tích $P=A \\cdot B$ và rút gọn thừa số $\\sqrt{x}+1$ để được $P$ theo $\\sqrt{x}$.\n**Bước 5.** Ý 3: viết phương  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109110401005",
+  "loai": "tra_loi_ngan",
+  "de": "Một vé xem phim có giá 80.000. Theo kế hoạch sẽ có 100 người mua. Rạp chiếu phim thấy nếu giá vé cứ giảm mỗi 2000 thì số người lại tăng thêm 5 người. Hỏi rạp chiếu phim bán giá vé ở mức nào để doanh thu là cao nhất?",
+  "dap_an": "$60\\,000$ đồng (doanh thu lớn nhất $9\\,000\\,000$ đồng)",
+  "loi_giai": "Gọi $x$ (nghìn đồng) là số tiền giảm giá vé theo từng bước $2$, với $x \\geq 0$ và giá vé không âm nên $80 - 2x \\geq 0$, tức $0 \\leq x \\leq 40$.\nMỗi lần giảm $2$ (nghìn đồng) thì số người mua tăng thêm $5$, nên với mức giảm $x$ (nghìn đồng) số người mua tăng thêm $5x$.\nGiá vé lúc đó là $(80-2x)$ (nghìn đồng), số người mua là $(100+5x)$ người.\nDoanh thu: $R(x) = (80-2x)(100+5x) = 8000 + 200x - 10x^2$ (nghìn đồng).\nTa có $R(x) = -10x^2+200x+8000 = -10(x^2-20x)+8000 = -10(x-10)^2 + 1000 + 8000 = -10(x-10)^2 + 9000$.\nVì $-10(x-10)^2 \\leq 0$ nên $R(x) \\leq 9000$, dấu bằng khi $x=10$ (thoả $0 \\leq 10 \\leq 40$).\nVới $x=10$: giá vé $= 80-2\\cdot10 = 60$ (nghìn đồng) $=60000$ đồng, doanh thu lớn nhất $ …",
+  "nhan_cu": "Nâng cao › Nâng cao"
+ },
+ {
+  "ma_cau": "T109000000212",
+  "loai": "tu_luan",
+  "de": "Bất phương trình nào sau đây là bất phương trình bậc nhất một ẩn?\na) $5x+2<0$.\nb) $y\\le0$.\nc) $y^2>0$.\nd) $3x-7\\ge5x$.\ne) $6(x+7)-x>0$.\nf) $\\dfrac{1}{x}-6>0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** bất phương trình bậc nhất một ẩn đưa được về dạng $ax+b<0$ (hoặc $>$, $\\le$, $\\ge$) với $a\\ne0$, nên phải thu gọn từng bất phương trình rồi mới kết luận.\n**Bước 1.** Nhắc lại định nghĩa: chỉ có một ẩn, ẩn có số mũ $1$, không nằm ở mẫu và hệ số của ẩn khác $0$.\n**Bước 2.** Với bất phương trình còn dấu ngoặc hoặc có ẩn ở hai vế, chuyển vế và thu gọn về dạng $ax+b<0$ rồi xác định hệ số $a$.\n**Bước 3.** Loại bất phương trình có ẩn bậc hai hoặc có ẩn ở mẫu.\n**Chú ý:** tên ẩn không quan trọng, chữ $y$ hay chữ $x$ đều được; điều quan trọng là bậc của ẩn.\n**Phần 2. Trình bày**\nBất phương trình bậc nhất một ẩn có dạng $ax+b<0$ (hoặc $ax+b>0$, $ax+b\\le0$, $ax+b\\ge0$ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000051",
+  "loai": "tu_luan",
+  "de": "Cho hệ phương trình $\\begin{cases} mx+4y=9 \\\\ x+my=8 \\end{cases}$. Với giá trị nào của $m$ thì hệ phương trình có nghiệm $(x;y)$ thoả mãn $2x+y+\\dfrac{38}{m^2-4}=3$?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biểu thức $\\dfrac{38}{m^2-4}$ chỉ có nghĩa khi mẫu khác $0$, nên phải xét riêng các giá trị của $m$ làm mẫu bằng $0$ trước rồi mới tìm nghiệm của hệ theo $m$.\n**Bước 1.** Xét riêng các giá trị của $m$ làm mẫu $m^2-4$ bằng $0$: thay vào hệ, so sánh hai phương trình xem hệ có nghiệm hay không, rồi loại khỏi điều kiện.\n**Bước 2.** Với các $m$ còn lại, rút một ẩn ở phương trình đơn giản hơn và thế vào phương trình kia để tìm $y$ rồi suy ra $x$ theo $m$.\n**Bước 3.** Thay $x$, $y$ vừa tìm vào hệ thức của đề, quy về cùng mẫu rồi nhân hai vế với mẫu (khác $0$) để khử mẫu.\n**Bước 4.** Đưa phương trình bậc hai theo $m$ về phương trình tích bằng cách tách hạng tử ở g …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000115",
+  "loai": "tu_luan",
+  "de": "Một người gửi tiết kiệm $250$ triệu đồng vào ngân hàng. Khi đó, có hai sự lựa chọn: Người gửi có thể nhận được lãi suất $7{,}5\\%$ một năm hoặc nhận ngay tiền thưởng $3$ triệu đồng và gửi với lãi suất $6\\%$ một năm. Hỏi lựa chọn nào sẽ có lợi hơn nếu người đó chỉ gửi một năm?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** so sánh tổng số tiền người đó nhận được thêm sau một năm ở mỗi lựa chọn, nhớ cộng cả tiền thưởng ở lựa chọn thứ hai.\n**Bước 1.** Tính tiền lãi sau một năm của lựa chọn thứ nhất: lấy $7{,}5\\%$ của số tiền gửi.\n**Bước 2.** Tính tiền lãi sau một năm của lựa chọn thứ hai bằng $6\\%$ của số tiền gửi, rồi cộng với số tiền thưởng nhận ngay.\n**Bước 3.** So sánh hai số tiền nhận được thêm và chọn lựa chọn có số tiền lớn hơn.\n**Chú ý:** lựa chọn thứ hai có thưởng nhưng lãi suất thấp hơn, nên phải cộng cả tiền thưởng vào mới so sánh công bằng.\n**Phần 2. Trình bày**\nLựa chọn thứ nhất: sau một năm người đó nhận được tiền lãi là:\n$250 \\cdot 7{,}5\\%=250 \\cdot \\dfrac{7{,}5 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000592",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn biểu thức $\\sqrt{(1-\\sqrt{3})^2}-\\sqrt{48}+\\dfrac{9}{\\sqrt{3}}$.",
+  "dap_an": "-1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $\\sqrt{A^2}=|A|$, nên phải xét dấu của $1-\\sqrt{3}$ trước khi bỏ dấu giá trị tuyệt đối.\n**Bước 1.** So sánh $\\sqrt{3}$ với $1$ để biết $1-\\sqrt{3}$ âm hay dương, từ đó bỏ được dấu giá trị tuyệt đối.\n**Bước 2.** Đưa $\\sqrt{48}$ về dạng một số nhân với $\\sqrt{3}$ (đưa thừa số ra ngoài dấu căn).\n**Bước 3.** Trục căn thức ở mẫu của số hạng cuối để nó cũng thành một số nhân với $\\sqrt{3}$.\n**Bước 4.** Gom các số hạng chứa $\\sqrt{3}$ lại với nhau rồi cộng phần số còn lại.\n**Phần 2. Trình bày**\nVì $\\sqrt{3}>1$ nên $1-\\sqrt{3}<0$, do đó $\\sqrt{(1-\\sqrt{3})^2}=|1-\\sqrt{3}|=\\sqrt{3}-1$.\nTa có $\\sqrt{48}=\\sqrt{16 \\cdot 3}=4\\sqrt{3}$.\nTa có $\\dfrac{9}{\\sqrt{3}}=\\dfrac …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030305060",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=-\\dfrac{7}{\\sqrt{x}-4}$ $(x\\ge0;x\ne16)$. Tìm các giá trị nguyên dương của $x$ để $P$ đạt giá trị nhỏ nhất.",
+  "dap_an": "17",
+  "loi_giai": "TH1: Với $1\\le x<16\\Rightarrow\\sqrt{x}-4<0\\Rightarrow P>0$.\nTH2: Với $x>16$ mà $x$ là số nguyên dương $\\Rightarrow x\\ge17\\Rightarrow\\sqrt{x}-4\\ge\\sqrt{17}-4>0$.\nDo đó $\\dfrac{7}{\\sqrt{x}-4}\\le\\dfrac{7}{\\sqrt{17}-4}$.\n$\\Rightarrow-\\dfrac{7}{\\sqrt{x}-4}\\ge-\\dfrac{7}{\\sqrt{17}-4}$.\n$\\Rightarrow P\\ge-\\dfrac{7}{\\sqrt{17}-4}$.\nDấu bằng xảy ra khi $x=17$ (thỏa mãn).\nVì ở TH1 thì $P>0$ còn tại $x=17$ thì $P<0$.\nVậy $x=17$ thì $P$ đạt giá trị nhỏ nhất.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109030305056",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=-\\dfrac{3}{\\sqrt{x}-1}$ $(x\\ge0;x\ne1)$. Tìm các giá trị nguyên dương của $x$ để $P$ đạt giá trị nhỏ nhất.",
+  "dap_an": "2",
+  "loi_giai": "Vì $x$ là số nguyên dương và $x\\ne1\\Rightarrow x\\ge2$.\n$\\Rightarrow\\sqrt{x}-1\\ge\\sqrt{2}-1>0$.\n$\\Rightarrow\\dfrac{3}{\\sqrt{x}-1}\\le\\dfrac{3}{\\sqrt{2}-1}$.\n$\\Rightarrow-\\dfrac{3}{\\sqrt{x}-1}\\ge-\\dfrac{3}{\\sqrt{2}-1}$.\n$\\Rightarrow P\\ge-\\dfrac{3}{\\sqrt{2}-1}$.\nDấu bằng xảy ra khi $x=2$ (thỏa mãn).\nVậy $x=2$ thì $P$ đạt giá trị nhỏ nhất.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109030305051",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $M=\\dfrac{\\sqrt{x}-2}{\\sqrt{x}-4}$ $(x\\ge0;x\ne16)$. Tìm giá trị nguyên của $x$ để $M$ đạt giá trị lớn nhất.",
+  "dap_an": "17",
+  "loi_giai": "$M=\\dfrac{\\sqrt{x}-2}{\\sqrt{x}-4}=\\dfrac{\\sqrt{x}-4+2}{\\sqrt{x}-4}=1+\\dfrac{2}{\\sqrt{x}-4}$.\nTH1: Với $0\\le x<16\\Rightarrow\\sqrt{x}-4<0\\Rightarrow M<1$.\nTH2: Với $x>16$ mà $x$ nguyên $\\Rightarrow x\\ge17\\Rightarrow\\sqrt{x}-4\\ge\\sqrt{17}-4>0$.\nDo đó $\\dfrac{2}{\\sqrt{x}-4}\\le\\dfrac{2}{\\sqrt{17}-4}$.\n$\\Rightarrow M\\le1+\\dfrac{2}{\\sqrt{17}-4}$.\nDấu bằng xảy ra khi $x=17$ (thỏa mãn).\nVậy $x=17$ thì $M$ đạt giá trị lớn nhất.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ }
+]

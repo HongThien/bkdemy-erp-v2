@@ -1,0 +1,734 @@
+[
+  {
+    "id": "nbv-b1-d-1",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Xét tính đúng – sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}(\\dfrac{2}{3})^{n}=0$",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{(\\sqrt{2})^{n}}=-\\infty$",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{n^{3}}=0$",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}4=0$",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi ý chỉ cần nhận ra dãy thuộc nhóm giới hạn cơ bản nào: luỹ thừa $q^n$, phân thức $\\dfrac{1}{n^k}$ hay dãy hằng.\n\n**Bước 1.** Với mỗi ý, xác định xem dãy có dạng $q^{n}$ ($n$ nằm ở số mũ), phân thức dạng $\\dfrac{1}{n^{k}}$ hay dãy hằng.\n\n**Bước 2.** Với dãy dạng $q^{n}$, đưa về cơ số dương rồi so sánh cơ số với $1$ để biết dãy dần về $0$ hay ra vô cực.\n\n**Bước 3.** Nhớ kết quả cơ bản của $\\lim\\dfrac{1}{n^{k}}$ và giới hạn của dãy hằng bằng đúng hằng số đó.\n\n**Bước 4.** Đối chiếu giới hạn vừa tìm được với giá trị mệnh đề đưa ra rồi kết luận từng ý.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $0<\\dfrac{2}{3}<1$ nên $(\\dfrac{2}{3})^{n}\\to0$.\n\nÝ b) Sai vì $\\dfrac{1}{(\\sqrt{2})^{n}}=(\\dfrac{1}{\\sqrt{2}})^{n}$ với $0<\\dfrac{1}{\\sqrt{2}}<1$ nên giới hạn bằng $0$ (dãy dương không thể có giới hạn $-\\infty$).\n\nÝ c) Đúng vì đây là giới hạn cơ bản $\\lim\\dfrac{1}{n^{k}}=0$ với $k$ nguyên dương.\n\nÝ d) Sai vì dãy hằng $u_n=4$ có giới hạn bằng chính hằng số đó: $\\lim\\limits_{n\\to+\\infty}4=4\\ne0$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Sai.",
+    "kiem": [
+      "Math.pow(2/3,500)<1e-80",
+      "Math.pow(1/Math.SQRT2,200)<1e-29",
+      "1/Math.pow(1e5,3)<1e-14",
+      "4!==0"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b1-d-2",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}(\\sqrt{2})^{n}=-\\infty$",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}\\pi^{n}=0$",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}(2n^{3}+2n^{2}-4)=+\\infty$",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}(-5n^{4}+n^{3}-4n)=-\\infty$",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dãy luỹ thừa xét theo cơ số, còn đa thức theo $n$ thì rút luỹ thừa bậc cao nhất của $n$ rồi dùng quy tắc tích.\n\n**Bước 1.** Với dãy luỹ thừa $q^{n}$, so sánh cơ số $q$ với $1$ để biết giới hạn là $0$ hay $+\\infty$.\n\n**Bước 2.** Với đa thức theo $n$, rút luỹ thừa bậc cao nhất của $n$ làm thừa số chung.\n\n**Bước 3.** Tìm giới hạn của thừa số còn lại trong ngoặc và xét dấu của nó.\n\n**Bước 4.** Áp dụng quy tắc tích giữa $\\lim n^{k}=+\\infty$ và giới hạn thừa số còn lại để kết luận dấu của vô cực.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $\\sqrt{2}>1$ nên $\\lim\\limits_{n\\to+\\infty}(\\sqrt{2})^{n}=+\\infty$, không phải $-\\infty$.\n\nÝ b) Sai vì $\\pi>1$ nên $\\lim\\limits_{n\\to+\\infty}\\pi^{n}=+\\infty$.\n\nÝ c) Đúng vì $2n^{3}+2n^{2}-4=n^{3}(2+\\dfrac{2}{n}-\\dfrac{4}{n^{3}})$ với $\\lim n^{3}=+\\infty$ và $\\lim(2+\\dfrac{2}{n}-\\dfrac{4}{n^{3}})=2>0$, nên giới hạn là $+\\infty$.\n\nÝ d) Đúng vì $-5n^{4}+n^{3}-4n=n^{4}(-5+\\dfrac{1}{n}-\\dfrac{4}{n^{3}})$ với $\\lim n^{4}=+\\infty$ và $\\lim(-5+\\dfrac{1}{n}-\\dfrac{4}{n^{3}})=-5<0$, nên giới hạn là $-\\infty$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Sai, Đúng, Đúng.",
+    "kiem": [
+      "Math.pow(Math.SQRT2,2000)>1e100",
+      "Math.pow(Math.PI,500)>1e200",
+      "(()=>{const n=1e6;return 2*n**3+2*n**2-4>1e17})()",
+      "(()=>{const n=1e6;return -5*n**4+n**3-4*n<-1e24})()"
+    ],
+    "sach_dap_so": "a) Sai; b) Sai; c) Đúng; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b1-d-3",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hai dãy số $(u_{n})$, $(v_{n})$ xác định bởi $u_{n}=\\sqrt{n^{2}+1}$ và $v_{n}=\\sqrt[3]{n^{3}+n^{2}}$.",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}(u_{n}^{2}-v_{n}^{3})=+\\infty$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}n^{2}(u_{n}-n)=+\\infty$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}(u_{n}+v_{n}-n)=+\\infty$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}n(v_{n}-u_{n})=-\\infty$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với căn thức ở dạng hiệu thì nhân liên hợp (căn bậc hai) hoặc dùng $a-b=\\dfrac{a^{3}-b^{3}}{a^{2}+ab+b^{2}}$ (căn bậc ba) rồi đưa $n$ ra ngoài.\n\n**Bước 1.** Thay $u_{n}$ và $v_{n}$ vào từng biểu thức của mỗi ý rồi quan sát dạng cần tính.\n\n**Bước 2.** Với ý chỉ gồm luỹ thừa của hai căn, bình phương hoặc lập phương hoá để bỏ căn, rồi rút luỹ thừa cao nhất.\n\n**Bước 3.** Với hiệu có căn, nhân và chia với biểu thức liên hợp tương ứng để mẫu đưa được về dạng chia cho $n$.\n\n**Bước 4.** Tách hiệu hai căn thành hai hiệu $v_{n}-n$ và $u_{n}-n$, rồi xét riêng giới hạn của $n(v_{n}-n)$ và $n(u_{n}-n)$.\n\n**Bước 5.** Rút $n$ ra ngoài, xét giới hạn thừa số còn lại và dấu của nó để kết luận $\\pm\\infty$.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $u_{n}^{2}-v_{n}^{3}=(n^{2}+1)-(n^{3}+n^{2})=1-n^{3}=n^{3}(-1+\\dfrac{1}{n^{3}})$ với $\\lim n^{3}=+\\infty$ và $\\lim(-1+\\dfrac{1}{n^{3}})=-1<0$, nên giới hạn là $-\\infty$.\n\nÝ b) Đúng vì $n^{2}(\\sqrt{n^{2}+1}-n)=\\dfrac{n^{2}}{\\sqrt{n^{2}+1}+n}=\\dfrac{n}{\\sqrt{1+\\dfrac{1}{n^{2}}}+1}$, tử $\\to+\\infty$ còn mẫu $\\to2$, nên giới hạn là $+\\infty$.\n\nÝ c) Đúng vì $u_{n}+v_{n}-n=n(\\sqrt{1+\\dfrac{1}{n^{2}}}+\\sqrt[3]{1+\\dfrac{1}{n}}-1)$ với $\\lim n=+\\infty$ và thừa số trong ngoặc có giới hạn $1+1-1=1>0$, nên giới hạn là $+\\infty$.\n\nÝ d) Sai vì $n(v_{n}-u_{n})=n(v_{n}-n)-n(u_{n}-n)$.\nTa có $n(v_{n}-n)=\\dfrac{n\\cdot n^{2}}{v_{n}^{2}+nv_{n}+n^{2}}=\\dfrac{n}{(\\sqrt[3]{1+\\frac{1}{n}})^{2}+\\sqrt[3]{1+\\frac{1}{n}}+1}$ có dạng $n$ chia cho đại lượng $\\to3$ nên $\\to+\\infty$.\nCòn $n(u_{n}-n)=\\dfrac{n}{\\sqrt{n^{2}+1}+n}\\to\\dfrac{1}{2}$ hữu hạn, nên hiệu $\\to+\\infty$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const n=1e4;return n**2+1-(n**3+n**2)<-9e11})()",
+      "(()=>{const f=n=>n*n*(Math.sqrt(n*n+1)-n);return f(1e6)>4e5&&f(1e6)>f(1e3)})()",
+      "(()=>{const f=n=>Math.sqrt(n*n+1)+Math.cbrt(n**3+n**2)-n;return f(1e6)>9e5})()",
+      "(()=>{const f=n=>n*(Math.cbrt(n**3+n**2)-Math.sqrt(n*n+1));return f(1e5)>3e4&&f(1e4)>3e3})()"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b1-d-4",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hai dãy số $(u_{n})$, $(v_{n})$ với $u_{n}=4\\cdot3^{n}-7^{n+1}$ và $v_{n}=7^{n}$.",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\dfrac{1}{v_{n}}=0$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim v_{n}=+\\infty$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\dfrac{u_{n}-v_{n}}{3u_{n}+2v_{n}}=\\dfrac{8}{19}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim u_{n}=+\\infty$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mọi dãy đều gồm các luỹ thừa $3^{n}$, $7^{n}$ nên chia hoặc rút luỹ thừa có cơ số lớn nhất là $7^{n}$.\n\n**Bước 1.** Viết $u_{n}=4\\cdot3^{n}-7\\cdot7^{n}$ để mọi luỹ thừa đều có dạng cơ số mũ $n$.\n\n**Bước 2.** Với hai ý đầu, nhận ra dãy là luỹ thừa của $\\dfrac{1}{7}$ hoặc của $7$ rồi so cơ số với $1$.\n\n**Bước 3.** Với phân thức ở ý thứ ba, lập tử và mẫu theo $3^{n}$, $7^{n}$ rồi chia cả hai cho $7^{n}$.\n\n**Bước 4.** Với $u_{n}$, rút $7^{n}$ ra ngoài và xét dấu giới hạn của thừa số còn lại để suy ra dấu của vô cực.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $\\dfrac{1}{v_{n}}=(\\dfrac{1}{7})^{n}$ với $0<\\dfrac{1}{7}<1$ nên giới hạn bằng $0$.\n\nÝ b) Đúng vì $v_{n}=7^{n}$ với cơ số $7>1$ nên $\\lim v_{n}=+\\infty$.\n\nÝ c) Đúng vì $u_{n}-v_{n}=4\\cdot3^{n}-8\\cdot7^{n}$ và $3u_{n}+2v_{n}=12\\cdot3^{n}-19\\cdot7^{n}$.\nChia tử và mẫu cho $7^{n}$: $\\dfrac{4\\cdot(\\frac{3}{7})^{n}-8}{12\\cdot(\\frac{3}{7})^{n}-19}\\to\\dfrac{0-8}{0-19}=\\dfrac{8}{19}$.\n\nÝ d) Sai vì $u_{n}=7^{n}[4(\\dfrac{3}{7})^{n}-7]$ với $\\lim7^{n}=+\\infty$ và $\\lim[4(\\dfrac{3}{7})^{n}-7]=-7<0$, nên $\\lim u_{n}=-\\infty$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const n=80,u=4*3**n-7**(n+1),v=7**n;return Math.abs((u-v)/(3*u+2*v)-8/19)<1e-9})()",
+      "(()=>{const n=30;return 4*3**n-7**(n+1)<-1e25})()",
+      "Math.pow(1/7,50)<1e-40"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b1-d-5",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho các dãy số $(a_{n})$, $(b_{n})$ với $a_{n}=1-2n$ và $b_{n}=-n^{3}+2n+1$.",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}\\dfrac{a_{n}}{b_{n}}=0$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}\\dfrac{b_{n}}{a_{n}}=0$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}b_{n}=-\\infty$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{a_{n}}=+\\infty$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với phân thức của hai đa thức theo $n$, so bậc tử với bậc mẫu rồi chia cho luỹ thừa cao nhất hoặc rút chúng ra ngoài.\n\n**Bước 1.** Viết rõ tử và mẫu của từng phân thức rồi so sánh bậc cao nhất của $n$ ở hai phía.\n\n**Bước 2.** Nếu bậc tử nhỏ hơn bậc mẫu thì chia cả tử và mẫu cho luỹ thừa cao nhất của $n$ và dùng $\\lim\\dfrac{1}{n^{k}}=0$.\n\n**Bước 3.** Nếu bậc tử lớn hơn bậc mẫu thì rút $n^{k}$ ở tử và mẫu, tách ra một thừa số $n^{m}$ nhân với phân thức có giới hạn hữu hạn.\n\n**Bước 4.** Xét dấu giới hạn hữu hạn đó rồi dùng quy tắc tích để kết luận $\\pm\\infty$ cho từng ý.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $\\dfrac{1-2n}{-n^{3}+2n+1}=\\dfrac{\\dfrac{1}{n^{3}}-\\dfrac{2}{n^{2}}}{-1+\\dfrac{2}{n^{2}}+\\dfrac{1}{n^{3}}}\\to\\dfrac{0}{-1}=0$.\n\nÝ b) Sai vì $\\dfrac{b_{n}}{a_{n}}=n^{2}\\cdot\\dfrac{-1+\\dfrac{2}{n^{2}}+\\dfrac{1}{n^{3}}}{\\dfrac{1}{n}-2}$ với $\\lim n^{2}=+\\infty$ và thừa số sau có giới hạn $\\dfrac{-1}{-2}=\\dfrac{1}{2}>0$, nên giới hạn là $+\\infty$, không bằng $0$.\n\nÝ c) Đúng vì $b_{n}=n^{3}(-1+\\dfrac{2}{n^{2}}+\\dfrac{1}{n^{3}})$ với $\\lim n^{3}=+\\infty$ và thừa số trong ngoặc $\\to-1<0$, nên $\\lim b_{n}=-\\infty$.\n\nÝ d) Sai vì $\\dfrac{1}{1-2n}=\\dfrac{\\dfrac{1}{n}}{\\dfrac{1}{n}-2}\\to\\dfrac{0}{-2}=0$, không phải $+\\infty$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const n=1e6,a=1-2*n,b=-(n**3)+2*n+1;return Math.abs(a/b)<1e-11})()",
+      "(()=>{const f=n=>(-(n**3)+2*n+1)/(1-2*n);return f(1e5)>1e9&&f(1e5)>f(1e3)})()",
+      "(()=>{const n=1e5;return -(n**3)+2*n+1<-9e14})()",
+      "(()=>{const n=1e7;return Math.abs(1/(1-2*n))<1e-6})()"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b1-d-6",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Biết giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{2n+1}{-3n+2}=a$. Khi đó:",
+    "menh_de": [
+      {
+        "noi_dung": "Giá trị $a$ lớn hơn $0$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Ba số $-\\dfrac{5}{3};\\ a;\\ \\dfrac{1}{3}$ tạo thành một cấp số cộng với công sai bằng $2$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Trên khoảng $(-\\pi;\\pi)$ phương trình $\\sin x=a$ có $3$ nghiệm.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Cho cấp số nhân $(u_{n})$ có công bội $q=3$ và $u_{1}=a$. Khi đó $u_{3}=-6$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trước hết tính $a$ bằng cách chia cả tử và mẫu cho $n$, sau đó thay $a$ vào bốn ý còn lại, mỗi ý là một kiến thức lớp 10–11.\n\n**Bước 1.** Chia tử và mẫu của phân thức cho $n$ rồi dùng $\\lim\\dfrac{1}{n}=0$ để tính giá trị $a$.\n\n**Bước 2.** Thay $a$ vào ý thứ nhất để so sánh với $0$, và vào ý thứ hai để tính hiệu hai số liên tiếp.\n\n**Bước 3.** Với phương trình $\\sin x=a$, kiểm tra $a$ có thuộc $[-1;1]$ không rồi đếm số điểm trên đường tròn lượng giác thuộc $(-\\pi;\\pi)$.\n\n**Bước 4.** Với cấp số nhân, dùng $u_{3}=u_{1}q^{2}$ rồi so sánh kết quả với giá trị cho trong ý.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $\\dfrac{2n+1}{-3n+2}=\\dfrac{2+\\dfrac{1}{n}}{-3+\\dfrac{2}{n}}\\to\\dfrac{2}{-3}$, nên $a=-\\dfrac{2}{3}<0$.\n\nÝ b) Sai vì với $a=-\\dfrac{2}{3}$, hiệu hai số liền nhau là $-\\dfrac{2}{3}-(-\\dfrac{5}{3})=1$ và $\\dfrac{1}{3}-(-\\dfrac{2}{3})=1$. Đây là cấp số cộng nhưng công sai bằng $1$, không phải $2$.\n\nÝ c) Sai vì $-\\dfrac{2}{3}\\in[-1;1]$ nên phương trình $\\sin x=-\\dfrac{2}{3}$ có nghiệm. Vì $\\sin x<0$ nên nghiệm nằm trong $(-\\pi;0)$; trên đường tròn lượng giác có đúng hai điểm có tung độ $-\\dfrac{2}{3}$, tức $2$ nghiệm, không phải $3$.\n\nÝ d) Đúng vì $u_{3}=u_{1}q^{2}=-\\dfrac{2}{3}\\cdot9=-6$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Sai, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const n=1e7;return Math.abs((2*n+1)/(-3*n+2)+2/3)<1e-6})()",
+      "(()=>{const a=-2/3;return Math.abs((a+5/3)-1)<1e-12&&Math.abs((1/3-a)-1)<1e-12})()",
+      "(()=>{const a=-2/3;let c=0,p=Math.sin(-3.14159)-a;for(let x=-3.14159;x<3.14159;x+=1e-4){const v=Math.sin(x)-a;if(v*p<0)c++;p=v}return c===2})()",
+      "Math.abs(-2/3*9+6)<1e-12"
+    ],
+    "sach_dap_so": "a) Sai; b) Sai; c) Sai; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b1-d-7",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Biết giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{5n^{3}-2n+1}{n-2n^{3}}=a$. Khi đó:",
+    "menh_de": [
+      {
+        "noi_dung": "Giá trị $a$ nhỏ hơn $0$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$x=a$ là trục đối xứng của parabol $(P):y=x^{2}+5x+2$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Phương trình $\\sin x=a$ vô nghiệm.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Cho cấp số cộng $(u_{n})$ có công sai $d=3$ và $u_{1}=a$. Khi đó $u_{3}=6$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính $a$ bằng cách chia tử và mẫu cho luỹ thừa cao nhất của $n$, rồi dùng $a$ vào parabol, phương trình lượng giác và cấp số cộng.\n\n**Bước 1.** Chia cả tử và mẫu cho $n^{3}$ rồi dùng $\\lim\\dfrac{1}{n^{k}}=0$ để tìm giá trị $a$.\n\n**Bước 2.** So sánh $a$ với $0$ để trả lời ý thứ nhất.\n\n**Bước 3.** Tính trục đối xứng của parabol bằng công thức $x=-\\dfrac{b}{2a}$ và so với $a$.\n\n**Bước 4.** Kiểm tra $a$ có nằm trong $[-1;1]$ không để biết $\\sin x=a$ có nghiệm hay không.\n\n**Bước 5.** Tính $u_{3}=u_{1}+2d$ với dữ kiện cho trong ý cuối rồi đối chiếu.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $\\dfrac{5n^{3}-2n+1}{n-2n^{3}}=\\dfrac{5-\\dfrac{2}{n^{2}}+\\dfrac{1}{n^{3}}}{\\dfrac{1}{n^{2}}-2}\\to\\dfrac{5}{-2}$, nên $a=-\\dfrac{5}{2}<0$.\n\nÝ b) Đúng vì trục đối xứng của $(P)$ là $x=-\\dfrac{b}{2a}=-\\dfrac{5}{2}$, trùng với $a$.\n\nÝ c) Đúng vì $a=-\\dfrac{5}{2}<-1$ nên không có $x$ nào để $\\sin x=a$.\n\nÝ d) Sai vì $u_{3}=u_{1}+2d=-\\dfrac{5}{2}+6=\\dfrac{7}{2}\\ne6$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const n=1e7;return Math.abs((5*n**3-2*n+1)/(n-2*n**3)+5/2)<1e-6})()",
+      "-5/2===-5/(2*1)",
+      "-5/2<-1",
+      "Math.abs(-5/2+6-7/2)<1e-12&&-5/2+6!==6"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b1-d-8",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Biết giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{2n^{2}+1}{3n^{3}-3n+3}=a$ và $\\lim\\limits_{n\\to+\\infty}\\dfrac{n\\sqrt{n^{2}+1}}{\\sqrt{4n^{4}-n^{2}+3}}=b$. Khi đó:",
+    "menh_de": [
+      {
+        "noi_dung": "Giá trị $a$ nhỏ hơn $0$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Giá trị $b$ lớn hơn $0$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Phương trình $\\cos x=a$ có một nghiệm là $x=\\dfrac{\\pi}{2}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Cho cấp số cộng $(u_{n})$ có công sai $d=b$ và $u_{1}=a$. Khi đó $u_{3}=\\dfrac{3}{2}$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính hai giới hạn $a$ và $b$ bằng cách chia hoặc rút luỹ thừa cao nhất của $n$, rồi thay giá trị vào từng ý.\n\n**Bước 1.** Với $a$, chia tử và mẫu cho $n^{3}$ rồi dùng $\\lim\\dfrac{1}{n^{k}}=0$.\n\n**Bước 2.** Với $b$, đưa $n^{2}$ ra ngoài căn ở cả tử và mẫu rồi rút gọn, chú ý $\\sqrt{n^{4}}=n^{2}$.\n\n**Bước 3.** So sánh $a$, $b$ với $0$ để trả lời hai ý đầu.\n\n**Bước 4.** Thay $a$ vào phương trình $\\cos x=a$ và kiểm tra $x=\\dfrac{\\pi}{2}$ có thoả mãn không.\n\n**Bước 5.** Tính $u_{3}=u_{1}+2d$ với $d=b$, $u_{1}=a$ rồi đối chiếu với giá trị cho.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $\\dfrac{2n^{2}+1}{3n^{3}-3n+3}=\\dfrac{\\dfrac{2}{n}+\\dfrac{1}{n^{3}}}{3-\\dfrac{3}{n^{2}}+\\dfrac{3}{n^{3}}}\\to\\dfrac{0}{3}=0$, nên $a=0$, không nhỏ hơn $0$.\n\nÝ b) Đúng vì $\\dfrac{n\\sqrt{n^{2}+1}}{\\sqrt{4n^{4}-n^{2}+3}}=\\dfrac{\\sqrt{1+\\dfrac{1}{n^{2}}}}{\\sqrt{4-\\dfrac{1}{n^{2}}+\\dfrac{3}{n^{4}}}}\\to\\dfrac{1}{2}$, nên $b=\\dfrac{1}{2}>0$.\n\nÝ c) Đúng vì với $a=0$, phương trình $\\cos x=0$ có nghiệm $x=\\dfrac{\\pi}{2}$.\n\nÝ d) Sai vì $u_{3}=u_{1}+2d=0+2\\cdot\\dfrac{1}{2}=1\\ne\\dfrac{3}{2}$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const n=1e7;return Math.abs((2*n*n+1)/(3*n**3-3*n+3))<1e-6})()",
+      "(()=>{const n=1e4;return Math.abs(n*Math.sqrt(n*n+1)/Math.sqrt(4*n**4-n*n+3)-0.5)<1e-6})()",
+      "Math.abs(Math.cos(Math.PI/2))<1e-12",
+      "0+2*0.5===1"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b1-d-9",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Biết giới hạn $\\lim\\limits_{n\\to+\\infty}(-2n^{3}-5n+9)=a$ và $\\lim\\limits_{n\\to+\\infty}\\dfrac{4^{n}+3}{1+3\\cdot4^{n+1}}=b$. Khi đó:",
+    "menh_de": [
+      {
+        "noi_dung": "Tích $a\\cdot b=3$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Hàm số $y=\\sqrt{1-x}$ có tập xác định là $D=(a;1]$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Giá trị $b$ là số lớn hơn $0$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Phương trình $\\cos x=b$ vô nghiệm.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính $a$ bằng cách rút $n^{3}$, tính $b$ bằng cách chia tử và mẫu cho $4^{n}$, rồi thay hai giá trị vào từng ý.\n\n**Bước 1.** Rút $n^{3}$ ra ngoài để tìm $a$: thừa số còn lại có giới hạn âm nên dấu của vô cực suy ra được.\n\n**Bước 2.** Viết $4^{n+1}=4\\cdot4^{n}$ rồi chia tử và mẫu cho $4^{n}$ để tìm $b$.\n\n**Bước 3.** Với ý có tích $a\\cdot b$, nhớ quy tắc tích giữa $-\\infty$ và một số dương.\n\n**Bước 4.** Với hàm căn, tìm tập xác định từ điều kiện biểu thức trong căn không âm rồi so với $(a;1]$.\n\n**Bước 5.** Với phương trình lượng giác, kiểm tra $b$ có thuộc đoạn $[-1;1]$ không.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $a=-\\infty$ và $b=\\dfrac{1}{12}>0$ nên tích $a\\cdot b=-\\infty$, không phải số $3$.\n\nÝ b) Đúng vì điều kiện $1-x\\ge0$, tức $x\\le1$. Với $a=-\\infty$ thì $(a;1]=(-\\infty;1]$, đúng là tập xác định.\n\nÝ c) Đúng vì $b=\\dfrac{1}{12}>0$.\n\nÝ d) Sai vì $b=\\dfrac{1}{12}\\in[-1;1]$ nên phương trình $\\cos x=\\dfrac{1}{12}$ có nghiệm.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const n=1e4;return -2*n**3-5*n+9<-1e12})()",
+      "(()=>{const n=60;return Math.abs((4**n+3)/(1+3*4**(n+1))-1/12)<1e-12})()",
+      "1/12>0&&Math.abs(1/12)<=1"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": "Ý b in \"D(a;1]\" (thiếu dấu =), hiểu là D=(a;1] với a=-∞ nên bằng (-∞;1]; theo đó sách chọn Đúng."
+  },
+  {
+    "id": "nbv-b1-d-10",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Biết giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{-3n^{3}+1}{2n+5}=a$ và $\\lim\\limits_{n\\to+\\infty}\\dfrac{(-1)^{n}\\cdot5^{n}}{2^{n}+5^{2n}}=b$. Khi đó:",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}(-3n^{2}+\\dfrac{1}{n})=a$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$x=b$ là hoành độ giao điểm của đường thẳng $y=2x$ với trục hoành.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim(\\dfrac{1}{2024})^{n}=b$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Cho cấp số cộng $(u_{n})$ có công sai $d=\\dfrac{1}{2}$ và $u_{1}=b$. Khi đó $u_{3}=2$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính $a$ bằng cách đưa $n$ ra ngoài và xét dấu, tính $b$ bằng cách chia cho $25^{n}$, rồi thay hai giá trị vào từng ý.\n\n**Bước 1.** Với $a$, chia tử và mẫu cho $n$ để thấy tử dần ra vô cực còn mẫu dần về một số dương.\n\n**Bước 2.** Với $b$, viết $5^{2n}=25^{n}$ rồi chia tử và mẫu cho $25^{n}$ để mọi cơ số nhỏ hơn $1$ về $0$.\n\n**Bước 3.** So sánh từng ý với $a$ và $b$ vừa tìm: dùng đúng quy tắc giới hạn cho ý đầu và ý thứ ba.\n\n**Bước 4.** Với đường thẳng và trục hoành, giải $y=0$ để tìm hoành độ giao điểm, rồi so với $b$.\n\n**Bước 5.** Với cấp số cộng, tính $u_{3}=u_{1}+2d$ rồi đối chiếu.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $\\dfrac{-3n^{3}+1}{2n+5}=\\dfrac{-3n^{2}+\\dfrac{1}{n}}{2+\\dfrac{5}{n}}$ với tử $\\to-\\infty$ và mẫu $\\to2>0$, nên $a=-\\infty$. Mặt khác $-3n^{2}+\\dfrac{1}{n}=n^{2}(-3+\\dfrac{1}{n^{3}})\\to-\\infty$, bằng $a$.\n\nÝ b) Đúng vì tính $b$: $\\dfrac{(-1)^{n}\\cdot5^{n}}{2^{n}+25^{n}}=\\dfrac{(-\\frac{1}{5})^{n}}{(\\frac{2}{25})^{n}+1}\\to\\dfrac{0}{0+1}=0$, nên $b=0$. Đường thẳng $y=2x$ cắt trục hoành khi $2x=0$, tức $x=0=b$.\n\nÝ c) Đúng vì $0<\\dfrac{1}{2024}<1$ nên $\\lim(\\dfrac{1}{2024})^{n}=0=b$.\n\nÝ d) Sai vì $u_{3}=u_{1}+2d=0+2\\cdot\\dfrac{1}{2}=1\\ne2$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const n=1e5;return (-3*n**3+1)/(2*n+5)<-1e9&&-3*n*n+1/n<-1e9})()",
+      "(()=>{const n=40;return Math.abs((-1)**n*5**n/(2**n+25**n))<1e-20})()",
+      "Math.pow(1/2024,10)<1e-30",
+      "0+2*0.5===1&&1!==2"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": "LỆCH SÁCH — lời giải sách ghi nhầm \"b=2\"; tính đúng b=0 và đáp án Đ,Đ,Đ,S của sách khớp với b=0."
+  },
+  {
+    "id": "nbv-b1-d-11",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Từ độ cao $100$ m, người ta thả một quả bóng cao su xuống đất. Giả sử cứ sau mỗi lần chạm đất, quả bóng nảy lên một độ cao bằng $\\dfrac{1}{4}$ độ cao mà quả bóng đạt được trước đó. Gọi $h_{n}$ là độ cao quả bóng đạt được ở lần nảy thứ $n$.",
+    "menh_de": [
+      {
+        "noi_dung": "$h_{n}=\\dfrac{25}{4^{n}}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}h_{n}=0$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Khi $n$ càng lớn thì độ cao quả bóng đạt được sau khi nảy càng nhỏ.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Gọi $S_{n}$ là tổng quãng đường quả bóng đi được từ lúc thả đến khi chạm đất lần thứ $n+1$. Nếu quá trình này tiếp diễn mãi thì tổng quãng đường quả bóng đi được là $\\dfrac{200}{3}$ m.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dãy độ cao nảy là cấp số nhân với công bội $\\dfrac{1}{4}$; quãng đường tổng cộng là $100$ cộng hai lần tổng cấp số nhân lùi vô hạn của các độ cao.\n\n**Bước 1.** Xác định $h_{1}$ từ độ cao thả ban đầu và công bội của dãy $(h_{n})$ rồi lập công thức $h_{n}$.\n\n**Bước 2.** Đối chiếu công thức tìm được với công thức đề cho bằng cách thử $n=1$.\n\n**Bước 3.** Xét $\\lim h_{n}$ bằng cách dùng giới hạn của $q^{n}$ với $0<q<1$ và nhận xét chiều biến thiên của dãy.\n\n**Bước 4.** Với tổng quãng đường, đếm mỗi độ cao nảy là đi lên rồi đi xuống nên được tính hai lần, cộng thêm quãng thả ban đầu.\n\n**Bước 5.** Dùng công thức tổng cấp số nhân lùi vô hạn $\\dfrac{u_{1}}{1-q}$ rồi so sánh với giá trị đề cho.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $(h_{n})$ là cấp số nhân có $h_{1}=\\dfrac{100}{4}=25$ và công bội $q=\\dfrac{1}{4}$ nên $h_{n}=25\\cdot(\\dfrac{1}{4})^{n-1}=\\dfrac{100}{4^{n}}$. Công thức $\\dfrac{25}{4^{n}}$ cho $h_{1}=\\dfrac{25}{4}\\ne25$.\n\nÝ b) Đúng vì $h_{n}=100\\cdot(\\dfrac{1}{4})^{n}$ với $0<\\dfrac{1}{4}<1$ nên $\\lim h_{n}=0$.\n\nÝ c) Đúng vì $h_{n+1}=\\dfrac{1}{4}h_{n}<h_{n}$ nên dãy giảm và dần về $0$.\n\nÝ d) Sai vì quãng đường gồm $100$ m lúc thả và mỗi độ cao $h_{k}$ được đi hai lần (lên và xuống):\n$S=100+2(h_{1}+h_{2}+\\dots)=100+2\\cdot\\dfrac{25}{1-\\frac{1}{4}}=100+\\dfrac{200}{3}=\\dfrac{500}{3}$ (m), khác $\\dfrac{200}{3}$ m.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Sai.",
+    "kiem": [
+      "Math.abs(25/4-25)>1",
+      "Math.pow(0.25,60)*100<1e-30",
+      "(()=>{let h=25,ok=true;for(let i=0;i<30;i++){if(h*0.25>=h)ok=false;h*=0.25}return ok})()",
+      "(()=>{let s=100,h=25;for(let i=0;i<200;i++){s+=2*h;h*=0.25}return Math.abs(s-500/3)<1e-9&&Math.abs(s-200/3)>1})()"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": "Bỏ ảnh minh hoạ quả bóng (chỉ trang trí, đề đủ chữ)."
+  },
+  {
+    "id": "nbv-b1-d-12",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hình vuông $ABCD$ có cạnh bằng $1$. Nối các trung điểm của bốn cạnh hình vuông $ABCD$ ta được hình vuông thứ hai. Tiếp tục nối các trung điểm của bốn cạnh hình vuông thứ hai ta được hình vuông thứ ba. Cứ tiếp tục như thế ta được một dãy các hình vuông. Xét tính đúng sai của các khẳng định sau.",
+    "menh_de": [
+      {
+        "noi_dung": "Cạnh của hình vuông thứ hai là $\\dfrac{\\sqrt{2}}{2}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Cạnh của hình vuông thứ ba là $1$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Tổng chu vi các hình vuông được tính theo công thức $S=u_{1}+u_{2}+u_{3}+\\dots$ với $u_{1},u_{2},u_{3},\\dots$ là cạnh các hình vuông.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Tổng chu vi các hình vuông là $S=8+4\\sqrt{2}$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cạnh các hình vuông lập thành một cấp số nhân; viết chu vi từng hình theo cạnh của nó để đưa tổng chu vi về tổng cấp số nhân lùi vô hạn.\n\n**Bước 1.** Tính cạnh hình vuông thứ hai bằng định lí Pythagore trong tam giác vuông nhỏ ở góc hình vuông.\n\n**Bước 2.** Nhận ra mỗi bước cạnh nhân với cùng một hệ số nên dãy cạnh là cấp số nhân, rồi suy ra cạnh hình vuông thứ ba.\n\n**Bước 3.** Chu vi mỗi hình vuông bằng $4$ lần cạnh, nên viết tổng chu vi theo các cạnh.\n\n**Bước 4.** Kiểm tra $|q|<1$ rồi áp dụng công thức $\\dfrac{u_{1}}{1-q}$ và trục căn thức ở mẫu để tính tổng.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì cạnh hình vuông mới là cạnh huyền của tam giác vuông cân có hai cạnh góc vuông bằng $\\dfrac{1}{2}$ nên bằng $\\sqrt{\\dfrac{1}{4}+\\dfrac{1}{4}}=\\dfrac{\\sqrt{2}}{2}$.\n\nÝ b) Sai vì mỗi lần nối trung điểm, cạnh nhân với $\\dfrac{\\sqrt{2}}{2}$ nên $u_{3}=\\dfrac{\\sqrt{2}}{2}\\cdot\\dfrac{\\sqrt{2}}{2}=\\dfrac{1}{2}$, khác $1$.\n\nÝ c) Sai vì chu vi mỗi hình vuông bằng $4$ lần cạnh nên tổng chu vi là $S=4u_{1}+4u_{2}+4u_{3}+\\dots$, thiếu thừa số $4$.\n\nÝ d) Đúng vì $S=4(u_{1}+u_{2}+\\dots)$ với $(u_{n})$ là cấp số nhân lùi vô hạn có $u_{1}=1$, $q=\\dfrac{\\sqrt{2}}{2}$, $|q|<1$.\n$S=4\\cdot\\dfrac{1}{1-\\frac{\\sqrt{2}}{2}}=\\dfrac{8}{2-\\sqrt{2}}=\\dfrac{8(2+\\sqrt{2})}{2}=8+4\\sqrt{2}$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Sai, Đúng.",
+    "kiem": [
+      "Math.abs(Math.sqrt(0.25+0.25)-Math.SQRT2/2)<1e-12",
+      "Math.abs(Math.SQRT1_2**2-0.5)<1e-12&&Math.abs(Math.SQRT1_2**2-1)>0.4",
+      "(()=>{let s=0;for(let k=0;k<400;k++)s+=4*Math.SQRT1_2**k;return Math.abs(s-(8+4*Math.SQRT2))<1e-9&&Math.abs(s-(1+Math.SQRT1_2+0.5))>1})()"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Sai; d) Đúng",
+    "ghi_chu": "Bỏ ảnh minh hoạ dãy hình vuông (đề đủ chữ, không cần hình để giải)."
+  },
+  {
+    "id": "nbv-b1-d-13",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Biết giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{2n^{2}+1}{3n^{3}-3n+3}=a$ và $\\lim\\limits_{n\\to+\\infty}\\dfrac{n\\sqrt{n^{2}+1}}{\\sqrt{4n^{4}-n^{2}+3}}=b$. Khi đó:",
+    "menh_de": [
+      {
+        "noi_dung": "Giá trị $a$ nhỏ hơn $0$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Giá trị $b$ lớn hơn $0$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Phương trình $\\cos x=a$ có nghiệm là $x=\\dfrac{\\pi}{2}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Cho cấp số cộng $(u_{n})$ có công sai $d=b$ và $u_{1}=a$. Khi đó $u_{3}=\\dfrac{3}{2}$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính hai giới hạn $a$ và $b$ bằng cách chia hoặc rút luỹ thừa cao nhất của $n$, rồi thay giá trị vào từng ý.\n\n**Bước 1.** Với $a$, chia tử và mẫu cho $n^{3}$ rồi dùng $\\lim\\dfrac{1}{n^{k}}=0$.\n\n**Bước 2.** Với $b$, đưa $n^{2}$ ra ngoài căn ở cả tử và mẫu rồi rút gọn, chú ý $\\sqrt{n^{4}}=n^{2}$.\n\n**Bước 3.** So sánh $a$, $b$ với $0$ để trả lời hai ý đầu.\n\n**Bước 4.** Thay $a$ vào phương trình $\\cos x=a$ và kiểm tra $x=\\dfrac{\\pi}{2}$ có thoả mãn không.\n\n**Bước 5.** Tính $u_{3}=u_{1}+2d$ với $d=b$, $u_{1}=a$ rồi đối chiếu với giá trị cho.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $\\dfrac{2n^{2}+1}{3n^{3}-3n+3}=\\dfrac{\\dfrac{2}{n}+\\dfrac{1}{n^{3}}}{3-\\dfrac{3}{n^{2}}+\\dfrac{3}{n^{3}}}\\to\\dfrac{0}{3}=0$, nên $a=0$, không nhỏ hơn $0$.\n\nÝ b) Đúng vì $\\dfrac{n\\sqrt{n^{2}+1}}{\\sqrt{4n^{4}-n^{2}+3}}=\\dfrac{\\sqrt{1+\\dfrac{1}{n^{2}}}}{\\sqrt{4-\\dfrac{1}{n^{2}}+\\dfrac{3}{n^{4}}}}\\to\\dfrac{1}{2}$, nên $b=\\dfrac{1}{2}>0$.\n\nÝ c) Đúng vì với $a=0$, phương trình $\\cos x=0$ nhận $x=\\dfrac{\\pi}{2}$ làm nghiệm.\n\nÝ d) Sai vì $u_{3}=u_{1}+2d=0+2\\cdot\\dfrac{1}{2}=1\\ne\\dfrac{3}{2}$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const n=1e7;return Math.abs((2*n*n+1)/(3*n**3-3*n+3))<1e-6})()",
+      "(()=>{const n=1e4;return Math.abs(n*Math.sqrt(n*n+1)/Math.sqrt(4*n**4-n*n+3)-0.5)<1e-6})()",
+      "Math.abs(Math.cos(Math.PI/2))<1e-12",
+      "0+2*0.5===1"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": "Trùng câu 8 trong cùng đơn vị (khác một chữ ở ý c: \"có nghiệm là\" thay \"có một nghiệm là\"); giữ cả hai theo sách."
+  },
+  {
+    "id": "nbv-b1-d-14",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Biết $\\lim\\limits_{n\\to+\\infty}\\dfrac{5n^{3}-2n+2025}{n-2n^{3}}=a$. Khi đó, các mệnh đề sau đúng hay sai?",
+    "menh_de": [
+      {
+        "noi_dung": "Giá trị $a$ lớn hơn $0$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Phương trình $\\cos x=a$ vô nghiệm.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$x=a$ là trục đối xứng của parabol $(P):y=x^{2}+5x+2$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Cho cấp số cộng $(u_{n})$ có công sai $d=3$ và $u_{1}=a$. Khi đó $u_{5}=19$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính $a$ bằng cách chia tử và mẫu cho luỹ thừa cao nhất của $n$, rồi dùng $a$ cho dấu, phương trình lượng giác, parabol và cấp số cộng.\n\n**Bước 1.** Chia cả tử và mẫu cho $n^{3}$ rồi dùng $\\lim\\dfrac{1}{n^{k}}=0$ để tìm $a$.\n\n**Bước 2.** So sánh $a$ với $0$ để trả lời ý đầu tiên.\n\n**Bước 3.** Kiểm tra $a$ có thuộc $[-1;1]$ không để biết $\\cos x=a$ có nghiệm hay không.\n\n**Bước 4.** Tính trục đối xứng của parabol bằng $x=-\\dfrac{b}{2a}$ rồi so với $a$.\n\n**Bước 5.** Tính $u_{5}=u_{1}+4d$ rồi đối chiếu với giá trị cho.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $\\dfrac{5n^{3}-2n+2025}{n-2n^{3}}=\\dfrac{5-\\dfrac{2}{n^{2}}+\\dfrac{2025}{n^{3}}}{\\dfrac{1}{n^{2}}-2}\\to\\dfrac{5}{-2}$, nên $a=-\\dfrac{5}{2}<0$.\n\nÝ b) Đúng vì $a=-\\dfrac{5}{2}<-1$ nên không có $x$ nào để $\\cos x=a$.\n\nÝ c) Đúng vì trục đối xứng của $(P)$ là $x=-\\dfrac{5}{2}$, trùng với $a$.\n\nÝ d) Sai vì $u_{5}=u_{1}+4d=-\\dfrac{5}{2}+12=\\dfrac{19}{2}\\ne19$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const n=1e7;return Math.abs((5*n**3-2*n+2025)/(n-2*n**3)+5/2)<1e-6})()",
+      "-5/2<-1",
+      "-5/(2*1)===-5/2",
+      "Math.abs(-5/2+4*3-19/2)<1e-12&&-5/2+12!==19"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b1-d-15",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Các nhà môi trường phát hiện một chủng vi khuẩn mới. Kể từ lúc phát hiện đến thời điểm $t$ (giờ), số lượng vi khuẩn được mô tả bởi công thức $u(t)=\\dfrac{at+6}{t+3}$ với $a>2$ (đơn vị: nghìn tế bào).",
+    "menh_de": [
+      {
+        "noi_dung": "Số lượng vi khuẩn ban đầu là $2$ nghìn tế bào.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Sau ba giờ người ta thấy có $51$ nghìn con vi khuẩn. Khi đó $a<50$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Nếu xét $t\\in\\mathbb{N}^{*}$ thì dãy số $u(t)$ luôn tăng.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Nếu số lượng vi khuẩn luôn tăng theo thời gian nhưng không vượt quá $100$ nghìn tế bào thì $a>100$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thay giá trị $t$ vào công thức $u(t)$, xét hiệu $u(t+1)-u(t)$ để biết chiều biến thiên, và dùng $\\lim u(t)=a$ để xử lí giới hạn số lượng.\n\n**Bước 1.** Với số lượng ban đầu, thay $t=0$ vào $u(t)$.\n\n**Bước 2.** Với dữ kiện sau ba giờ, thay $t=3$ rồi giải phương trình để tìm $a$ và so sánh với $50$.\n\n**Bước 3.** Để xét dãy tăng, lập hiệu $u(t+1)-u(t)$, quy đồng và xét dấu theo điều kiện $a>2$.\n\n**Bước 4.** Tính giới hạn của $u(t)$ khi $t\\to+\\infty$ và so sánh $u(t)$ với giới hạn đó nhờ hiệu $a-u(t)$.\n\n**Bước 5.** Từ điều kiện không vượt quá $100$ suy ra giá trị $a$ có thể lớn tới mức nào rồi đối chiếu với $a>100$.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì lúc đầu $t=0$ nên $u(0)=\\dfrac{6}{3}=2$ (nghìn tế bào).\n\nÝ b) Sai vì $u(3)=\\dfrac{3a+6}{6}=51$ suy ra $3a+6=306$, tức $a=100$, không nhỏ hơn $50$.\n\nÝ c) Đúng vì $u(t+1)-u(t)=\\dfrac{a(t+1)+6}{t+4}-\\dfrac{at+6}{t+3}=\\dfrac{(at+a+6)(t+3)-(at+6)(t+4)}{(t+3)(t+4)}=\\dfrac{3a-6}{(t+3)(t+4)}>0$ vì $a>2$.\n\nÝ d) Sai vì $a-u(t)=\\dfrac{a(t+3)-(at+6)}{t+3}=\\dfrac{3a-6}{t+3}>0$ và $\\to0$ khi $t\\to+\\infty$, nên $u(t)\\to a$ và $u(t)<a$.\nNếu $a>100$ thì với $t$ đủ lớn $u(t)>100$, trái với giả thiết không vượt quá $100$. Do đó phải có $a\\le100$, ý d) sai.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Sai.",
+    "kiem": [
+      "(0*3+6)/(0+3)===2",
+      "(300+6)/6===51",
+      "(()=>{const a=5;let ok=true;for(let t=1;t<200;t++){const u=x=>(a*x+6)/(x+3);if(!(u(t+1)>u(t)))ok=false}return ok})()",
+      "(()=>{const a=101;return (a*1000+6)/1003>100})()"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Sai",
+    "ghi_chu": "Sách kết luận ở ý d là \"a=100\" (thực ra a≤100); kết luận Sai của ý d vẫn đúng."
+  },
+  {
+    "id": "nbv-b1-d-16",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim(3n^{2}+5n-3)=3$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim(3^{n}+2^{n}+6)=+\\infty$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\dfrac{2n^{2}+1}{n+3}=-\\infty$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim(\\sqrt{n^{2}-1}-\\sqrt{3n^{2}+2})=-\\infty$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rút luỹ thừa cao nhất của $n$ (hoặc cơ số lớn nhất) ra ngoài rồi dùng quy tắc tích: dấu của vô cực do dấu giới hạn thừa số còn lại quyết định.\n\n**Bước 1.** Xác định số hạng trội nhất trong mỗi biểu thức: luỹ thừa cao nhất của $n$ hoặc cơ số lớn nhất.\n\n**Bước 2.** Rút số hạng trội đó ra ngoài thành thừa số chung, phần còn lại viết bằng các phân thức dạng $\\dfrac{1}{n^{k}}$ hoặc $(\\dfrac{a}{b})^{n}$.\n\n**Bước 3.** Tính giới hạn của thừa số còn lại và xác định dấu của nó.\n\n**Bước 4.** Áp dụng quy tắc tích với thừa số $+\\infty$ để kết luận $+\\infty$ hay $-\\infty$, rồi đối chiếu với mệnh đề.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $3n^{2}+5n-3=n^{2}(3+\\dfrac{5}{n}-\\dfrac{3}{n^{2}})$ với $\\lim n^{2}=+\\infty$ và thừa số trong ngoặc $\\to3>0$, nên giới hạn là $+\\infty$, không phải $3$.\n\nÝ b) Đúng vì $3^{n}+2^{n}+6=3^{n}[1+(\\dfrac{2}{3})^{n}+6(\\dfrac{1}{3})^{n}]$ với $\\lim3^{n}=+\\infty$ và thừa số trong ngoặc $\\to1>0$, nên giới hạn là $+\\infty$.\n\nÝ c) Sai vì $\\dfrac{2n^{2}+1}{n+3}=n\\cdot\\dfrac{2+\\dfrac{1}{n^{2}}}{1+\\dfrac{3}{n}}$ với $\\lim n=+\\infty$ và phân thức $\\to2>0$, nên giới hạn là $+\\infty$, không phải $-\\infty$.\n\nÝ d) Đúng vì $\\sqrt{n^{2}-1}-\\sqrt{3n^{2}+2}=n(\\sqrt{1-\\dfrac{1}{n^{2}}}-\\sqrt{3+\\dfrac{2}{n^{2}}})$ với $\\lim n=+\\infty$ và thừa số trong ngoặc $\\to1-\\sqrt{3}<0$, nên giới hạn là $-\\infty$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const n=1e6;return 3*n*n+5*n-3>1e12})()",
+      "(()=>{const n=50;return 3**n+2**n+6>1e23})()",
+      "(()=>{const f=n=>(2*n*n+1)/(n+3);return f(1e6)>1e5&&f(1e6)>f(1e3)})()",
+      "(()=>{const n=1e6;return Math.sqrt(n*n-1)-Math.sqrt(3*n*n+2)<-7e5})()"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Sai; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b1-d-17",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim(n^{2}-2n)=+\\infty$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim(2n+\\dfrac{3n+1}{n+3})=-\\infty$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Có $16$ giá trị nguyên của tham số $a$ thuộc khoảng $(-10;10)$ để $\\lim(5n-3(a^{2}-2)n^{3})=-\\infty$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\dfrac{(n^{2}+1)\\sqrt{1^{3}+2^{3}+\\dots+n^{3}}}{3n^{3}+n+2}=\\dfrac{1}{3}$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rút luỹ thừa cao nhất của $n$ rồi xét dấu; ý có tham số cần điều kiện cho hệ số của $n^{3}$ âm; ý có tổng lập phương dùng công thức rút gọn.\n\n**Bước 1.** Với hai ý đầu, rút luỹ thừa cao nhất của $n$ làm thừa số chung rồi tính giới hạn thừa số còn lại.\n\n**Bước 2.** Với ý có tham số $a$, rút $n^{3}$ và tìm điều kiện để thừa số còn lại có giới hạn âm.\n\n**Bước 3.** Giải bất phương trình theo $a^{2}$ rồi đếm các số nguyên $a$ thuộc khoảng $(-10;10)$ thoả mãn.\n\n**Bước 4.** Với ý cuối, dùng công thức $1^{3}+\\dots+n^{3}=(1+\\dots+n)^{2}$ để bỏ căn.\n\n**Bước 5.** Rút gọn tử và mẫu theo luỹ thừa cao nhất của $n$ rồi so sánh bậc để biết giới hạn hữu hạn hay vô cực.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $n^{2}-2n=n^{2}(1-\\dfrac{2}{n})$ với $\\lim n^{2}=+\\infty$ và $\\lim(1-\\dfrac{2}{n})=1>0$, nên giới hạn là $+\\infty$.\n\nÝ b) Sai vì $2n+\\dfrac{3n+1}{n+3}=n[2+\\dfrac{1}{n}\\cdot\\dfrac{3+\\frac{1}{n}}{1+\\frac{3}{n}}]$ với $\\lim n=+\\infty$ và thừa số trong ngoặc $\\to2>0$, nên giới hạn là $+\\infty$.\n\nÝ c) Đúng vì $5n-3(a^{2}-2)n^{3}=n^{3}[\\dfrac{5}{n^{2}}-3(a^{2}-2)]$ với $\\lim n^{3}=+\\infty$ và thừa số trong ngoặc $\\to-3(a^{2}-2)$.\nGiới hạn là $-\\infty$ khi $-3(a^{2}-2)<0$, tức $a^{2}>2$ (nếu $a^{2}=2$ thì giới hạn là $+\\infty$ do còn $5n$).\nVới $a$ nguyên thuộc $(-10;10)$: $a\\in\\{-9;\\dots;-2\\}\\cup\\{2;\\dots;9\\}$, gồm $8+8=16$ giá trị.\n\nÝ d) Sai vì $1^{3}+2^{3}+\\dots+n^{3}=[\\dfrac{n(n+1)}{2}]^{2}$ nên căn bằng $\\dfrac{n(n+1)}{2}$.\nBiểu thức bằng $\\dfrac{(n^{2}+1)\\cdot n(n+1)}{2(3n^{3}+n+2)}$, tử bậc $4$, mẫu bậc $3$. Chia tử và mẫu cho $n^{3}$ được $n\\cdot\\dfrac{(1+\\frac{1}{n^{2}})(1+\\frac{1}{n})}{2(3+\\frac{1}{n^{2}}+\\frac{2}{n^{3}})}$ với phân thức $\\to\\dfrac{1}{6}>0$, nên giới hạn là $+\\infty$, không phải $\\dfrac{1}{3}$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const n=1e6;return n*n-2*n>1e11})()",
+      "(()=>{const n=1e6;return 2*n+(3*n+1)/(n+3)>1e6})()",
+      "(()=>{let c=0;for(let a=-9;a<=9;a++)if(a*a>2)c++;const f=(a,n)=>5*n-3*(a*a-2)*n**3;return c===16&&f(3,1e4)<-1e12&&f(2,1e4)<-1e12&&f(1,1e4)>0&&f(0,1e4)>0})()",
+      "(()=>{const g=n=>{let s=0;for(let k=1;k<=n;k++)s+=k**3;return (n*n+1)*Math.sqrt(s)/(3*n**3+n+2)};return g(3000)>400&&g(3000)>g(300)})()"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b1-d-18",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim(n^{4}-2n^{2}+3)=-\\infty$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\dfrac{2n^{4}-3n^{3}+2024}{n^{3}+2025}=\\dfrac{2024}{2025}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim u_{n}=2$ với $(u_{n})$ xác định bởi $u_{1}=1$, $u_{n+1}=\\dfrac{1}{2}u_{n}+\\dfrac{3}{2}$ với mọi $n\\in\\mathbb{N}^{*}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$\\lim\\dfrac{3+3^{2}+3^{3}+\\dots+3^{n}}{1+2+2^{2}+\\dots+2^{n}}=+\\infty$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai ý đầu rút luỹ thừa cao nhất của $n$; ý dãy truy hồi đặt $u_{n}=v_{n}+c$ để đưa về cấp số nhân; ý cuối tính hai tổng bằng công thức cấp số nhân.\n\n**Bước 1.** Với hai ý đa thức và phân thức, rút luỹ thừa cao nhất của $n$ rồi xét dấu giới hạn thừa số còn lại.\n\n**Bước 2.** Với dãy truy hồi, tìm hằng số $c$ sao cho đặt $u_{n}=v_{n}+c$ thì $v_{n+1}$ chỉ còn tỉ lệ với $v_{n}$.\n\n**Bước 3.** Nhận ra $(v_{n})$ là cấp số nhân, viết số hạng tổng quát rồi lấy giới hạn của $u_{n}$.\n\n**Bước 4.** Với ý cuối, tính tử và mẫu bằng công thức tổng cấp số nhân hữu hạn $\\dfrac{u_{1}(q^{n}-1)}{q-1}$.\n\n**Bước 5.** Chia tử và mẫu cho các luỹ thừa trội để thấy tỉ số có dạng $(\\dfrac{3}{2})^{n}$ nhân với một phân thức có giới hạn dương.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $n^{4}-2n^{2}+3=n^{4}(1-\\dfrac{2}{n^{2}}+\\dfrac{3}{n^{4}})$ với $\\lim n^{4}=+\\infty$ và thừa số trong ngoặc $\\to1>0$, nên giới hạn là $+\\infty$.\n\nÝ b) Sai vì tử bậc $4$, mẫu bậc $3$: $\\dfrac{2n^{4}-3n^{3}+2024}{n^{3}+2025}=n\\cdot\\dfrac{2-\\frac{3}{n}+\\frac{2024}{n^{4}}}{1+\\frac{2025}{n^{3}}}$ với $\\lim n=+\\infty$ và phân thức $\\to2>0$, nên giới hạn là $+\\infty$.\n\nÝ c) Sai vì đặt $u_{n}=v_{n}+3$ thì $v_{1}=-2$ và $v_{n+1}+3=\\dfrac{1}{2}(v_{n}+3)+\\dfrac{3}{2}$, suy ra $v_{n+1}=\\dfrac{1}{2}v_{n}$.\nVậy $(v_{n})$ là cấp số nhân có $v_{1}=-2$, $q=\\dfrac{1}{2}$ nên $v_{n}=-2(\\dfrac{1}{2})^{n-1}\\to0$.\nDo đó $u_{n}=3+v_{n}\\to3$, khác $2$.\n\nÝ d) Đúng vì tử là tổng $n$ số hạng đầu của cấp số nhân có $u_{1}=3$, $q=3$: $3+3^{2}+\\dots+3^{n}=\\dfrac{3(3^{n}-1)}{2}$.\nMẫu là tổng $n+1$ số hạng đầu của cấp số nhân có số hạng đầu $1$, $q=2$: $1+2+\\dots+2^{n}=2^{n+1}-1$.\nTỉ số bằng $\\dfrac{3(3^{n}-1)}{2(2^{n+1}-1)}=(\\dfrac{3}{2})^{n}\\cdot\\dfrac{3(1-(\\frac{1}{3})^{n})}{4(1-(\\frac{1}{2})^{n+1})}$ với $\\lim(\\dfrac{3}{2})^{n}=+\\infty$ và phân thức $\\to\\dfrac{3}{4}>0$, nên giới hạn là $+\\infty$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Sai, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const n=1e5;return n**4-2*n*n+3>1e19})()",
+      "(()=>{const f=n=>(2*n**4-3*n**3+2024)/(n**3+2025);return f(1e6)>1e5&&f(1e6)>f(1e3)})()",
+      "(()=>{let u=1;const u2=[];for(let k=1;k<=200;k++){if(Math.abs(u-(3-Math.pow(0.5,k-2)))>1e-9)return false;u=u/2+1.5}return Math.abs(u-3)<1e-9})()",
+      "(()=>{const f=n=>{let t=0,m=0;for(let k=1;k<=n;k++)t+=3**k;for(let k=0;k<=n;k++)m+=2**k;return t/m};return f(60)>1e9&&Math.abs(f(30)-3*(3**30-1)/2/(2**31-1))<1})()"
+    ],
+    "sach_dap_so": "a) Sai; b) Sai; c) Sai; d) Đúng",
+    "ghi_chu": "Lời giải sách ở ý d ghi mẫu \"2(2^{n+1}-1)/1\" (nhầm); tính đúng 1+2+…+2^n=2^{n+1}-1, kết luận +∞ không đổi."
+  },
+  {
+    "id": "nbv-b1-d-19",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\dfrac{9^{n}-3\\cdot4^{n}}{6\\cdot7^{n}+8^{n}}=+\\infty$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Cho $A=5+\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\dots+\\dfrac{1}{2^{n}}+\\dots$. Tổng vô hạn của biểu thức $A$ là $6$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Rút gọn $S=1+\\cos^{2}x+\\cos^{4}x+\\dots+\\cos^{2n}x+\\dots$ với $\\cos x\\ne\\pm1$, ta được $S=\\dfrac{1}{\\sin^{2}x}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Cho hình vuông cạnh bằng $a$. Lấy bốn trung điểm các cạnh để được hình vuông nhỏ hơn nằm bên trong, quá trình này lặp lại vô hạn. Khi đó tổng diện tích tất cả các hình vuông là $\\dfrac{5}{4}a^{2}$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ý đầu là thương các luỹ thừa nên chia cho cơ số lớn nhất; ba ý còn lại nhận ra cấp số nhân lùi vô hạn và dùng $S=\\dfrac{u_{1}}{1-q}$.\n\n**Bước 1.** Với thương các luỹ thừa, tìm cơ số lớn nhất ở tử và ở mẫu rồi chia để phần còn lại có cơ số nhỏ hơn $1$.\n\n**Bước 2.** Với tổng vô hạn, kiểm tra các số hạng lập thành cấp số nhân và xác định $u_{1}$, $q$.\n\n**Bước 3.** Kiểm tra điều kiện $|q|<1$ trước khi dùng công thức $\\dfrac{u_{1}}{1-q}$; với ý lượng giác, dùng điều kiện cho trước của $\\cos x$.\n\n**Bước 4.** Với bài hình vuông lồng nhau, tính tỉ số hai cạnh liên tiếp rồi suy ra tỉ số hai diện tích, lập cấp số nhân diện tích.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì chia tử cho $9^{n}$ và mẫu cho $8^{n}$: $\\dfrac{9^{n}-3\\cdot4^{n}}{6\\cdot7^{n}+8^{n}}=(\\dfrac{9}{8})^{n}\\cdot\\dfrac{1-3(\\frac{4}{9})^{n}}{6(\\frac{7}{8})^{n}+1}$ với $\\lim(\\dfrac{9}{8})^{n}=+\\infty$ và phân thức $\\to1>0$, nên giới hạn là $+\\infty$.\n\nÝ b) Đúng vì $\\dfrac{1}{2}+\\dfrac{1}{4}+\\dots$ là tổng cấp số nhân lùi vô hạn có $u_{1}=\\dfrac{1}{2}$, $q=\\dfrac{1}{2}$ nên bằng $\\dfrac{\\frac{1}{2}}{1-\\frac{1}{2}}=1$. Vậy $A=5+1=6$.\n\nÝ c) Đúng vì đây là tổng cấp số nhân lùi vô hạn có $u_{1}=1$, $q=\\cos^{2}x$ với $0\\le q<1$ (vì $\\cos x\\ne\\pm1$). $S=\\dfrac{1}{1-\\cos^{2}x}=\\dfrac{1}{\\sin^{2}x}$.\n\nÝ d) Sai vì cạnh hình vuông sau bằng cạnh hình vuông trước nhân $\\dfrac{\\sqrt{2}}{2}$ nên diện tích nhân $\\dfrac{1}{2}$. Các diện tích lập thành cấp số nhân lùi vô hạn có $S_{1}=a^{2}$, $q=\\dfrac{1}{2}$.\nTổng $=\\dfrac{a^{2}}{1-\\frac{1}{2}}=2a^{2}$, khác $\\dfrac{5}{4}a^{2}$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(()=>{const f=n=>(9**n-3*4**n)/(6*7**n+8**n);return f(300)>1e10&&f(300)>f(100)})()",
+      "(()=>{let s=5,t=0.5;for(let k=0;k<200;k++){s+=t;t/=2}return Math.abs(s-6)<1e-9})()",
+      "(()=>{const x=1;let s=0,t=1;for(let k=0;k<5000;k++){s+=t;t*=Math.cos(x)**2}return Math.abs(s-1/Math.sin(x)**2)<1e-9})()",
+      "(()=>{const a=3;let s=0,t=a*a;for(let k=0;k<200;k++){s+=t;t/=2}return Math.abs(s-2*a*a)<1e-9&&Math.abs(s-1.25*a*a)>1})()"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b1-d-20",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Biết giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{2n+1}{2-3n}=a$. Khi đó các mệnh đề sau đúng hay sai?",
+    "menh_de": [
+      {
+        "noi_dung": "Giá trị $a$ lớn hơn $0$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$x=a$ là trục đối xứng của parabol $(P):y=3x^{2}+4x-7$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Bộ ba số $-\\dfrac{5}{3};\\ a;\\ \\dfrac{1}{3}$ lập thành một cấp số cộng với công sai bằng $2$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Cho cấp số nhân $(u_{n})$ có công bội $q=3$ và $u_{1}=a$. Khi đó $u_{3}=6$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính $a$ bằng cách chia tử và mẫu cho $n$, rồi thay $a$ vào parabol, cấp số cộng và cấp số nhân.\n\n**Bước 1.** Chia cả tử và mẫu cho $n$ rồi dùng $\\lim\\dfrac{1}{n}=0$ để tìm giá trị $a$.\n\n**Bước 2.** So sánh $a$ với $0$ để trả lời ý đầu.\n\n**Bước 3.** Tính trục đối xứng của parabol bằng $x=-\\dfrac{b}{2a}$ rồi so sánh với $a$.\n\n**Bước 4.** Tính hiệu hai số liên tiếp của bộ ba số để biết công sai của cấp số cộng.\n\n**Bước 5.** Dùng $u_{3}=u_{1}q^{2}$ cho cấp số nhân rồi đối chiếu với giá trị cho.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $\\dfrac{2n+1}{2-3n}=\\dfrac{2+\\dfrac{1}{n}}{\\dfrac{2}{n}-3}\\to\\dfrac{2}{-3}$, nên $a=-\\dfrac{2}{3}<0$.\n\nÝ b) Đúng vì trục đối xứng của $(P)$ là $x=-\\dfrac{4}{2\\cdot3}=-\\dfrac{2}{3}$, trùng với $a$.\n\nÝ c) Sai vì với $a=-\\dfrac{2}{3}$, hiệu hai số liền nhau là $-\\dfrac{2}{3}-(-\\dfrac{5}{3})=1$ và $\\dfrac{1}{3}-(-\\dfrac{2}{3})=1$. Công sai bằng $1$, không phải $2$.\n\nÝ d) Sai vì $u_{3}=u_{1}q^{2}=-\\dfrac{2}{3}\\cdot9=-6\\ne6$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Sai, Sai.",
+    "kiem": [
+      "(()=>{const n=1e7;return Math.abs((2*n+1)/(2-3*n)+2/3)<1e-6})()",
+      "Math.abs(-4/(2*3)+2/3)<1e-12",
+      "(()=>{const a=-2/3;return Math.abs(a+5/3-1)<1e-12&&Math.abs(1/3-a-1)<1e-12})()",
+      "Math.abs(-2/3*9+6)<1e-12&&-2/3*9!==6"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Sai; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b1-d-21",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Xét hai tổng của cấp số nhân lùi vô hạn $S=1+\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\dots$ và $T=1-\\dfrac{1}{3}+\\dfrac{1}{3^{2}}-\\dots+(-1)^{n}\\dfrac{1}{3^{n}}+\\dots$. Khi đó:",
+    "menh_de": [
+      {
+        "noi_dung": "$S$ là tổng của cấp số nhân lùi vô hạn có công bội $q=\\dfrac{1}{2}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$T$ là tổng của cấp số nhân lùi vô hạn có công bội $q=\\dfrac{1}{3}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$S>T$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$S=\\dfrac{1}{T}$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Xác định số hạng đầu và công bội của từng tổng (chú ý dấu), rồi dùng $\\dfrac{u_{1}}{1-q}$ khi $|q|<1$ để tính $S$ và $T$.\n\n**Bước 1.** Với mỗi tổng, lấy số hạng thứ hai chia số hạng đầu để tìm công bội và kiểm tra các số hạng sau có cùng tỉ số.\n\n**Bước 2.** Chú ý dấu của từng số hạng khi lập tỉ số, vì dấu của công bội được quyết định từ đó.\n\n**Bước 3.** Kiểm tra $|q|<1$ rồi tính $S$ và $T$ bằng công thức $\\dfrac{u_{1}}{1-q}$.\n\n**Bước 4.** Dùng giá trị vừa tính để so sánh $S$ với $T$ và so sánh $S$ với $\\dfrac{1}{T}$.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì các số hạng $1,\\dfrac{1}{2},\\dfrac{1}{4},\\dots$ có $u_{1}=1$ và mỗi số bằng số trước nhân $\\dfrac{1}{2}$, nên $q=\\dfrac{1}{2}$, $|q|<1$. Khi đó $S=\\dfrac{1}{1-\\frac{1}{2}}=2$.\n\nÝ b) Sai vì các số hạng $1,-\\dfrac{1}{3},\\dfrac{1}{9},\\dots$ đổi dấu xen kẽ, mỗi số bằng số trước nhân $-\\dfrac{1}{3}$, nên $q=-\\dfrac{1}{3}$ chứ không phải $\\dfrac{1}{3}$. Khi đó $T=\\dfrac{1}{1+\\frac{1}{3}}=\\dfrac{3}{4}$.\n\nÝ c) Đúng vì $S=2$ và $T=\\dfrac{3}{4}$ nên $S>T$.\n\nÝ d) Sai vì $\\dfrac{1}{T}=\\dfrac{4}{3}\\ne2=S$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Sai.",
+    "kiem": [
+      "(()=>{let s=0,t=1;for(let k=0;k<200;k++){s+=t;t*=0.5}return Math.abs(s-2)<1e-9})()",
+      "(()=>{let s=0,t=1;for(let k=0;k<200;k++){s+=t;t*=-1/3}return Math.abs(s-3/4)<1e-9&&(1/3)!==(-1/3)})()",
+      "2>3/4",
+      "Math.abs(2-4/3)>0.5"
+    ],
+    "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Sai",
+    "ghi_chu": "Sách đánh nhãn ý lặp (a, b, a, b); đã đánh lại a–d theo thứ tự. Câu 8 vs 13 trùng nhau."
+  }
+]

@@ -27,6 +27,7 @@ try {
   const lop = (await q("select id from lop where ten_lop = '6S2'"))[0].id;
   await vai(ta);
   // dọn ca hôm qua của TA trong rollback để kịch bản sạch
+  await q("update ta_cong_viec set trang_thai = 'tu_choi' where nhan_su_id = $1 and ngay = $2::date", [ta, homQua]);   // việc trước: ca còn việc đã duyệt thì không từ chối được (mig 202611041729)
   await q("update ta_cham_cong set duyet = 'tu_choi', ra_at = coalesce(ra_at, vao_at) where nhan_su_id = $1 and ngay = $2::date", [ta, homQua]);
   const ca = (await q('select fn_ta_cham_cong_khai_bu($1::timestamptz, $2::timestamptz) id', [ts('17:00'), ts('19:00')]))[0].id;
   const viec = (await q("select fn_ta_khai_viec('bo_tro_on_thi', $1::date, $2, null, null, '17:00', '18:00', null, 'nhầm') id", [homQua, lop]))[0].id;

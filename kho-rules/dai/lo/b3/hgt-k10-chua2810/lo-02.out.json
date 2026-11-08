@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "T310000000349",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000350",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000360",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "rút gọn biểu thức véc tơ có tích với số"
+ },
+ {
+  "ma_cau": "T310000000408",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000444",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000445",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000468",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000518",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "chứng minh đồng quy bằng đẳng thức véc tơ; không chắc đúng dạng"
+ },
+ {
+  "ma_cau": "T310000000519",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "chứng minh đồng quy/điểm cố định bằng đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000520",
+  "dang_bai_id": "NDB00913",
+  "chac": "vua",
+  "ly_do": "Menelaus/Ceva: thẳng hàng, đồng quy qua tích với số; ý b là đồng quy"
+ },
+ {
+  "ma_cau": "T310000000523",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh điểm thuộc đường tròn bằng véc tơ"
+ },
+ {
+  "ma_cau": "T310000000524",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000525",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000526",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000527",
+  "dang_bai_id": "NDB01421",
+  "chac": "vua",
+  "ly_do": "ý a tìm vị trí điểm I, ý b quỹ tích (thiếu dạng)"
+ },
+ {
+  "ma_cau": "T310000000528",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000529",
+  "dang_bai_id": "NDB01421",
+  "chac": "vua",
+  "ly_do": "ý a,b tìm vị trí điểm; ý c quỹ tích (thiếu dạng)"
+ },
+ {
+  "ma_cau": "T310000000530",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000531",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000548",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000549",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000550",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000551",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "ý a chứng minh, ý b tính tích vô hướng trong hình; hình có sẵn"
+ },
+ {
+  "ma_cau": "T310000000554",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000556",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000569",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000579",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000580",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000590",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000591",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000622",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000650",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000653",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000656",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000659",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "tính tích vô hướng trong nửa đường tròn; không phải tam giác/tứ giác thuần"
+ },
+ {
+  "ma_cau": "T310000000660",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000668",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000678",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "tính tích vô hướng trong hình vuông"
+ },
+ {
+  "ma_cau": "T310000000691",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "ý a tính trong hình vuông, ý b chứng minh đẳng thức"
+ },
+ {
+  "ma_cau": "T310000000692",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "ý a tính trong hình vuông, ý b chứng minh đẳng thức"
+ },
+ {
+  "ma_cau": "T310000000693",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000694",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000695",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000696",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000697",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000698",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000699",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000700",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000701",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000702",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000703",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000704",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000705",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000706",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000707",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000715",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh tam giác vuông cân bằng hình học/cosin (không tọa độ)"
+ },
+ {
+  "ma_cau": "T310000000719",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000720",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000721",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000722",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000723",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000724",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000725",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000726",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000727",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000728",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000729",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000730",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000731",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000732",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000733",
+  "dang_bai_id": "NDB01421",
+  "chac": "vua",
+  "ly_do": "ý a vị trí điểm P, b thẳng hàng, c quỹ tích (thiếu dạng)"
+ },
+ {
+  "ma_cau": "T310000000734",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000735",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000736",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000737",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000755",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: điểm thuộc trục/phân giác góc phần tư (tọa độ điểm đặc biệt)"
+ },
+ {
+  "ma_cau": "T310000000759",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: điểm thuộc trục/phân giác góc phần tư (tọa độ điểm đặc biệt)"
+ },
+ {
+  "ma_cau": "T310000000760",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: hình chiếu, đối xứng qua trục/gốc"
+ },
+ {
+  "ma_cau": "T310000000773",
+  "dang_bai_id": "NDB00925",
+  "chac": "vua",
+  "ly_do": "ý a độ dài (922), ý b hình vuông ABDC quy về hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000774",
+  "dang_bai_id": "NDB00924",
+  "chac": "vua",
+  "ly_do": "ý a thẳng hàng; ý b,c đối xứng (thiếu dạng)"
+ },
+ {
+  "ma_cau": "T310000000776",
+  "dang_bai_id": "NDB01628",
+  "chac": "cao",
+  "ly_do": "ý b tìm trực tâm (dạng sau thắng)"
+ },
+ {
+  "ma_cau": "T310000000778",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "tìm đỉnh hình vuông từ điều kiện, lập hệ"
+ },
+ {
+  "ma_cau": "T310000000782",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "hình thang theo điều kiện PQ=2MN, lập hệ"
+ },
+ {
+  "ma_cau": "T310000000783",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "ý c hình thang; dạng sau thắng"
+ },
+ {
+  "ma_cau": "T310000000798",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tọa độ trên trục"
+ },
+ {
+  "ma_cau": "T310000000799",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tọa độ trên trục"
+ },
+ {
+  "ma_cau": "T310000000800",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tọa độ trên trục"
+ },
+ {
+  "ma_cau": "T310000000801",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tọa độ trên trục"
+ },
+ {
+  "ma_cau": "T310000000802",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tọa độ trên trục"
+ },
+ {
+  "ma_cau": "T310000000803",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tọa độ trên trục"
+ },
+ {
+  "ma_cau": "T310000000804",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tọa độ trên trục"
+ },
+ {
+  "ma_cau": "T310000000805",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tọa độ trên trục"
+ },
+ {
+  "ma_cau": "T310000000806",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tọa độ trên trục"
+ },
+ {
+  "ma_cau": "T310000000821",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "AB = x·AC cho tọa độ: hai véc tơ cùng phương, tìm hệ số"
+ },
+ {
+  "ma_cau": "T310000000835",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: phân tích véc tơ theo 2 véc tơ bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000836",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: phân tích véc tơ theo 2 véc tơ bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000837",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: phân tích véc tơ theo 2 véc tơ bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000838",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: phân tích véc tơ theo 2 véc tơ bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000839",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: phân tích véc tơ theo 2 véc tơ bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000840",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: phân tích véc tơ theo 2 véc tơ bằng tọa độ"
+ }
+]

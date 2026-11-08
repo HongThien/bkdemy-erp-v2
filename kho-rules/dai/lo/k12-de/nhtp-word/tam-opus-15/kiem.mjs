@@ -1,0 +1,15 @@
+const S=(f,a,b,n=20000)=>{const h=(b-a)/n;let s=f(a)+f(b);for(let i=1;i<n;i++)s+=(i%2?4:2)*f(a+i*h);return s*h/3};
+console.log('W0850d F=x2+3x-2', S(x=>(x*x+3*x-2)**2,1,3), 2576/15);
+console.log('W0850d F=x2+3x+2', S(x=>(x*x+3*x+2)**2,1,3));
+console.log('W0850c', S(x=>Math.abs(2*x+3),-2,1));
+console.log('W0850b', S(x=>2*x+3,-1,5));
+let mx=0,tm=0;for(let t=0;t<=25;t+=0.001){const W=650+S(s=>100+20*s-s*s-150,0,t,20);if(W>mx){mx=W;tm=t}}console.log('W0876d max',mx,tm);
+console.log('W0847', S(x=>(3*x+1)/(2*x*x-x-1),2,3), 4/3*Math.log(2)+Math.log(7)/6-Math.log(5)/6);
+console.log('W0845d f=x^3+x-1', S(x=>x**3+x-1,0,1));
+const f=x=>x**3+x-1; for(const x of [-2,-1,0.5,1.7]) console.log('chk845',f(x)+2*x*f(x*x)-(2*x**7+3*x**3-x-1));
+console.log('W0872', S(x=>5*x+7,4,7)/1, 207/2);
+console.log('W0889', S(x=>Math.exp(x)-x,1,2), Math.E**2-Math.E-1.5);
+console.log('W0880 d', 10*Math.sqrt(6)/80*60, 'phut');
+console.log('W0888 c', 20+S(t=>5/6*t+10,0,24)+4*30);
+console.log('W0893 d', 2+S(x=>x-1/x,1,3), 6-Math.log(3));
+console.log('W0852', (()=>{const a=-3/25,b=1.2,h=t=>520+a*t**3/3+b*t*t/2;return [h(5),h(10),h(15)]})());

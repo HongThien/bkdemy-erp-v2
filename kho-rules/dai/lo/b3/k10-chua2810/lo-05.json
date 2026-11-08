@@ -1,0 +1,216 @@
+[
+ {
+  "ma_cau": "T110000000708",
+  "loai": "trac_nghiem",
+  "de": "Một mẫu số liệu có tứ phân vị thứ nhất là $15$ và tứ phân vị thứ ba là $20$. Giá trị nào sau đây bất thường?",
+  "lua_chon": [
+   "$8$.",
+   "$10$.",
+   "$27$.",
+   "$28$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** giá trị bất thường là giá trị nhỏ hơn $Q_1-1{,}5\\Delta_Q$ hoặc lớn hơn $Q_3+1{,}5\\Delta_Q$.\n**Bước 1.** Tính khoảng tứ phân vị từ hai tứ phân vị đã cho.\n**Bước 2.** Tính mốc dưới và mốc trên của phép kiểm tra giá trị bất thường.\n**Bước 3.** Kiểm tra từng phương án có nằm ngoài hai mốc đó hay không.\n**Phần 2. Trình bày**\nKhoảng tứ phân vị: $\\Delta_Q=20-15=5$.\nMốc dưới: $15-1{,}5\\cdot5=7{,}5$. Mốc trên: $20+1{,}5\\cdot5=27{,}5$.\nCác giá trị $8$; $10$; $27$ đều thuộc $[7{,}5;27{,}5]$ nên không bất thường.\nGiá trị $28>27{,}5$ nên $28$ là giá trị bất thường.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000605",
+  "loai": "trac_nghiem",
+  "de": "Cho hệ bất phương trình $\\begin{cases} 2x-\\dfrac32y\\ge1 \\\\ 4x-3y\\le2 \\end{cases}$ có tập nghiệm $S$. Khẳng định nào sau đây là khẳng định đúng?",
+  "lua_chon": [
+   "$\\left(-\\dfrac14;-1\\right)\\notin S$.",
+   "$S=\\{(x;y)\\mid4x-3y=2\\}$.",
+   "Biểu diễn hình học của $S$ là nửa mặt phẳng chứa gốc toạ độ và kể cả bờ $d$, với $d$ là là đường thẳng $4x-3y=2$.",
+   "Biểu diễn hình học của $S$ là nửa mặt phẳng không chứa gốc toạ độ và kể cả bờ $d$, với $d$ là là đường thẳng $4x-3y=2$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đưa hai bất phương trình về cùng một biểu thức $4x-3y$ rồi xem hai điều kiện ngược chiều cho tập nghiệm thế nào.\n**Bước 1.** Nhân hai vế của bất phương trình thứ nhất với $2$ để bỏ mẫu và so sánh với bất phương trình thứ hai.\n**Bước 2.** Nhận ra hai bất phương trình cùng biểu thức nhưng ngược chiều rồi suy ra tập nghiệm $S$.\n**Bước 3.** Kiểm tra từng khẳng định A, B, C, D dựa trên tập nghiệm vừa tìm.\n**Phần 2. Trình bày**\nBất phương trình thứ nhất: $2x-\\dfrac32y\\ge1\\Leftrightarrow4x-3y\\ge2$.\nHệ trở thành $\\begin{cases} 4x-3y\\ge2 \\\\ 4x-3y\\le2 \\end{cases}$.\nDo đó $4x-3y=2$, nên $S=\\{(x;y)\\mid4x-3y=2\\}$, là đường thẳng $4x-3y=2$.\nKhẳng định A: với $\\left(-\\df …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000471",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "$\\exists n\\in\\mathbb{N}: n-3\\ne 0$.",
+   "$\\forall x\\in\\mathbb{R}: x^2>0$.",
+   "Nếu $a\\ge b$ thì $a^2\\ge b^2$.",
+   "Nếu $a$ chia hết cho 3 thì $a$ chia hết cho 9."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mệnh đề có lượng từ \"với mọi\" chỉ cần một phản ví dụ để bị bác bỏ, còn mệnh đề \"tồn tại\" chỉ cần một ví dụ để được chứng minh.\n**Bước 1.** Với mệnh đề có \"$\\exists$\", tìm một giá trị cụ thể của biến làm cho khẳng định đúng.\n**Bước 2.** Với mệnh đề có \"$\\forall$\" hoặc mệnh đề dạng \"nếu … thì …\" tổng quát, thử tìm một phản ví dụ.\n**Bước 3.** Xét đủ bốn phương án rồi mới kết luận phương án duy nhất đúng.\n**Phần 2. Trình bày**\nPhương án A: chọn $n=0\\in\\mathbb{N}$ thì $n-3=-3\\ne 0$, nên mệnh đề đúng.\nPhương án B: với $x=0$ thì $x^2=0$, không lớn hơn $0$, nên mệnh đề sai.\nPhương án C: với $a=1$, $b=-2$ thì $a\\ge b$ nhưng $a^2=1<4=b^2$, nên mệnh đề sai.\nPhương án …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000451",
+  "loai": "trac_nghiem",
+  "de": "Cho mệnh đề \"$\\forall x\\in\\mathbb{R},\\ x^2-x+7<0$\". Hỏi mệnh đề nào là mệnh đề phủ định của mệnh đề trên?",
+  "lua_chon": [
+   "$\\exists x\\in\\mathbb{R},\\ x^2-x+7\\ge0$.",
+   "$\\forall x\\in\\mathbb{R},\\ x^2-x+7>0$.",
+   "$\\forall x\\in\\mathbb{R},\\ x^2-x+7<0$.",
+   "$\\nexists x\\in\\mathbb{R},\\ x^2-x+7<0$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phủ định của mệnh đề có lượng từ \"với mọi\" là mệnh đề có lượng từ \"tồn tại\" kèm bất đẳng thức đảo lại.\n**Bước 1.** Nhận ra mệnh đề gốc có dạng \"với mọi $x$ thì điều kiện $P(x)$ đúng\".\n**Bước 2.** Đổi lượng từ \"với mọi\" thành \"tồn tại\" theo quy tắc phủ định.\n**Bước 3.** Phủ định phần bất đẳng thức: phủ định của dấu \"nhỏ hơn\" là \"lớn hơn hoặc bằng\".\n**Bước 4.** So với bốn phương án và loại các phương án giữ nguyên lượng từ.\n**Phần 2. Trình bày**\nMệnh đề đã cho có dạng $\\forall x\\in\\mathbb{R},\\ P(x)$ với $P(x)$: $x^2-x+7<0$.\nPhủ định của nó là $\\exists x\\in\\mathbb{R},\\ \\overline{P(x)}$, trong đó $\\overline{P(x)}$: $x^2-x+7\\ge0$.\nVậy mệnh đề phủ định là \"$\\exi …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000676",
+  "loai": "tu_luan",
+  "de": "Trên ngọn đồi có một cái tháp cao $100\\text{ m}$ (hình vẽ). Đỉnh tháp $B$ và chân tháp $C$ lần lượt nhìn điểm $A$ ở chân đồi dưới các góc tương ứng bằng $30^\\circ$ và $60^\\circ$ so với phương thẳng đứng. Tính chiều cao $AH$ của ngọn đồi.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tìm góc $\\widehat{BCA}$ bù với góc $60^\\circ$ để biết đủ ba góc của tam giác $ABC$, từ đó có $CA$ rồi tính $AH$ trong tam giác vuông $CHA$.\n**Bước 1.** Chỉ ra $\\widehat{BCA}$ bằng cách dùng việc $B$, $C$ nằm trên cùng đường thẳng đứng và góc $60^\\circ$ tính từ phương thẳng đứng hướng xuống.\n**Bước 2.** Tính góc $A$ của tam giác $ABC$ bằng tổng ba góc trong tam giác rồi nhận xét dạng của tam giác này.\n**Bước 3.** Suy ra độ dài $CA$ (có thể dùng định lí sin), sau đó xét góc $\\widehat{ACH}$ giữa $CA$ và đường nằm ngang $CH$.\n**Bước 4.** Dùng tỉ số lượng giác trong tam giác vuông $CHA$ để tính $AH$.\n**Phần 2. Trình bày**\n$B$, $C$ nằm trên cùng một đường thẳng  …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000637",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$ thoả mãn: $b^2+c^2-a^2=\\sqrt{3}\\,bc$. Khi đó:",
+  "lua_chon": [
+   "$A=30^\\circ$.",
+   "$A=45^\\circ$.",
+   "$A=60^\\circ$.",
+   "$A=75^\\circ$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** vế trái là biểu thức xuất hiện trong định lí côsin nên đưa về $\\cos A$.\n**Bước 1.** Viết công thức tính $\\cos A$ theo ba cạnh từ định lí côsin.\n**Bước 2.** Thay hệ thức của đề vào tử số của phân thức.\n**Bước 3.** Rút gọn, tìm $\\cos A$ rồi suy ra số đo góc $A$.\n**Phần 2. Trình bày**\nTheo định lí côsin: $\\cos A=\\dfrac{b^2+c^2-a^2}{2bc}$.\nThay $b^2+c^2-a^2=\\sqrt{3}\\,bc$ ta được $\\cos A=\\dfrac{\\sqrt{3}\\,bc}{2bc}=\\dfrac{\\sqrt{3}}{2}$.\nVì $0^\\circ<A<180^\\circ$ nên $A=30^\\circ$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000701",
+  "loai": "trac_nghiem",
+  "de": "Cho mẫu số liệu sau: $152$; $154$; $156$; $158$; $160$. Khoảng tứ phân vị của mẫu số liệu trên là",
+  "lua_chon": [
+   "$153$.",
+   "$6$.",
+   "$3$.",
+   "$159$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** khoảng tứ phân vị bằng hiệu giữa tứ phân vị thứ ba và tứ phân vị thứ nhất.\n**Bước 1.** Mẫu đã sắp xếp tăng dần, tìm trung vị $Q_2$ để chia mẫu thành hai nửa.\n**Bước 2.** Lấy nửa dưới và nửa trên (không chứa $Q_2$), tìm trung vị của từng nửa để được $Q_1$ và $Q_3$.\n**Bước 3.** Lấy $Q_3$ trừ $Q_1$ rồi đối chiếu với các phương án.\n**Phần 2. Trình bày**\nMẫu có $5$ giá trị nên trung vị là $Q_2=156$.\nNửa dưới là $152$; $154$ nên $Q_1=\\dfrac{152+154}{2}=153$.\nNửa trên là $158$; $160$ nên $Q_3=\\dfrac{158+160}{2}=159$.\nKhoảng tứ phân vị là $\\Delta_Q=Q_3-Q_1=159-153=6$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000695",
+  "loai": "trac_nghiem",
+  "de": "Điểm kiểm tra toán của một lớp cho kết quả như sau: $7;9;6;10;5;8;4$. Tứ phân vị thứ nhì của mẫu số liệu trên là:",
+  "lua_chon": [
+   "$6$.",
+   "$7$.",
+   "$9$.",
+   "$5$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tứ phân vị thứ nhì $Q_2$ chính là trung vị của mẫu số liệu đã sắp xếp theo thứ tự không giảm.\n**Bước 1.** Sắp xếp mẫu số liệu theo thứ tự không giảm.\n**Bước 2.** Xác định cỡ mẫu để biết trung vị là giá trị đứng giữa hay trung bình hai giá trị giữa.\n**Bước 3.** Lấy giá trị ở vị trí giữa và đối chiếu phương án.\n**Phần 2. Trình bày**\nSắp xếp: $4;5;6;7;8;9;10$.\nCỡ mẫu $n=7$ lẻ nên trung vị là giá trị thứ $4$, tức $7$.\nTứ phân vị thứ nhì là $Q_2=7$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000733",
+  "loai": "tra_loi_ngan",
+  "de": "Mẫu số liệu sau cho biết số ghế trống tại một rạp chiếu phim trong $9$ ngày\n$12;\\ 7;\\ 10;\\ 9;\\ 12;\\ 9;\\ 10;\\ 11;\\ 10;\\ 14$\nTìm khoảng tứ phân vị của mẫu số liệu này",
+  "dap_an": "3",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** khoảng tứ phân vị là $\\Delta_Q=Q_3-Q_1$, với mẫu có số phần tử chẵn thì chia đôi mẫu thành hai nửa bằng nhau.\n**Bước 1.** Đếm số phần tử của dãy rồi sắp xếp tăng dần.\n**Bước 2.** Chia mẫu thành nửa dưới và nửa trên có số phần tử bằng nhau.\n**Bước 3.** Tính $Q_1$, $Q_3$ là trung vị của hai nửa rồi lấy hiệu.\n**Phần 2. Trình bày**\nLưu ý: đề ghi $9$ ngày nhưng dãy có $10$ giá trị; ta làm theo $10$ giá trị đã cho.\nSắp xếp tăng dần: $7;\\ 9;\\ 9;\\ 10;\\ 10;\\ 10;\\ 11;\\ 12;\\ 12;\\ 14$.\nNửa dưới $7;9;9;10;10$ có $Q_1=9$. Nửa trên $10;11;12;12;14$ có $Q_3=12$.\n$\\Delta_Q=12-9=3$.\nVậy khoảng tứ phân vị của mẫu là $3$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000787",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$, mệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "$a^2=b^2+c^2+2bc\\cos A$.",
+   "$a^2=b^2+c^2-2bc\\cos A$.",
+   "$a^2=b^2+c^2-2bc\\cos C$.",
+   "$a^2=b^2+c^2-2bc\\cos B$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** định lí côsin cho cạnh nào thì dùng góc đối diện với cạnh đó và có dấu trừ trước tích hai cạnh kia.\n**Bước 1.** Nhớ dạng tổng quát của định lí côsin cho một cạnh bất kì.\n**Bước 2.** Xác định góc đối diện với cạnh $a$ ở vế trái.\n**Bước 3.** Đối chiếu dấu và tên góc trong từng phương án.\n**Phần 2. Trình bày**\nCạnh $a=BC$ đối diện với góc $A$, nên theo định lí côsin: $a^2=b^2+c^2-2bc\\cos A$.\nPhương án A sai dấu; các phương án C, D dùng góc không đối diện với cạnh $a$ nên sai.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000609",
+  "loai": "trac_nghiem",
+  "de": "Trong một cuộc thi pha chế, hai đội A, B được sử dụng tối đa $24\\,g$ hương liệu, $9$ lít nước và $210\\,g$ đường để pha chế nước cam và nước táo. Để pha chế $1$ lít nước cam cần $30\\,g$ đường, $1$ lít nước và $1\\,g$ hương liệu; pha chế $1$ lít nước táo cần $10\\,g$ đường, $1$ lít nước và $4\\,g$ hương liệu. Mỗi lít nước cam nhận được $60$ điểm thưởng, mỗi lít nước táo nhận được $80$ điểm thưởng. Đội A pha chế được $a$ lít nước cam và $b$ lít nước táo và dành được điểm thưởng cao nhất. Hiệu số $a-b$ là",
+  "lua_chon": [
+   "$1$.",
+   "$3$.",
+   "$-1$.",
+   "$-6$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đây là bài quy hoạch tuyến tính nên lập hệ ràng buộc theo ba nguyên liệu, tìm các đỉnh của miền nghiệm và tính điểm thưởng tại từng đỉnh.\n**Bước 1.** Đặt $a,b$ là số lít nước cam, nước táo và lập hệ bất phương trình từ giới hạn đường, nước, hương liệu cùng điều kiện không âm.\n**Bước 2.** Viết hàm điểm thưởng cần làm lớn nhất theo $a$ và $b$.\n**Bước 3.** Tìm các đỉnh của miền nghiệm bằng cách giải hệ các đường biên và loại điểm vi phạm ràng buộc khác.\n**Bước 4.** Tính điểm thưởng tại mỗi đỉnh, chọn đỉnh cho điểm lớn nhất rồi tính hiệu $a-b$.\n**Phần 2. Trình bày**\nGọi $a,b$ lần lượt là số lít nước cam, nước táo. Ta có hệ:\n$\\begin{cases} 30a+10b\\le210 \\\\ a+b\\ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000630",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\sin\\alpha=\\dfrac{1}{3}$ và $90^\\circ<x<180^\\circ$ thì",
+  "lua_chon": [
+   "$\\cos\\alpha=\\dfrac{2}{3}$.",
+   "$\\cos\\alpha=-\\dfrac{2}{3}$.",
+   "$\\cos\\alpha=\\dfrac{2\\sqrt{2}}{3}$.",
+   "$\\cos\\alpha=-\\dfrac{2\\sqrt{2}}{3}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** dùng hệ thức $\\sin^2\\alpha+\\cos^2\\alpha=1$ để tìm độ lớn của $\\cos\\alpha$, rồi xét dấu theo khoảng chứa góc.\n**Bước 1.** Thay giá trị $\\sin\\alpha$ đã cho vào hệ thức cơ bản để tính $\\cos^2\\alpha$.\n**Bước 2.** Khai căn để được hai giá trị đối nhau của $\\cos\\alpha$.\n**Bước 3.** Xét dấu của $\\cos\\alpha$ khi góc nằm trong khoảng từ $90^\\circ$ đến $180^\\circ$ để chọn một giá trị.\n**Phần 2. Trình bày**\nLưu ý: đề in biến $x$ ở điều kiện góc, ta hiểu là góc $\\alpha$.\n$\\cos^2\\alpha=1-\\sin^2\\alpha=1-\\dfrac{1}{9}=\\dfrac{8}{9}$\nSuy ra $\\cos\\alpha=\\pm\\dfrac{2\\sqrt{2}}{3}$.\nVì $90^\\circ<\\alpha<180^\\circ$ nên $\\cos\\alpha<0$, do đó $\\cos\\alpha=-\\dfrac{2\\sqrt{2}}{3}$.\nChọn …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000771",
+  "loai": "tu_luan",
+  "de": "Cho hệ bất phương trình $\\begin{cases} x\\le 0 \\\\ y\\ge -1 \\\\ 4x-3y\\ge -12 \\\\ x+y\\le 1 \\end{cases}$ $(I)$.\na) Biểu diễn miền nghiệm của hệ bất phương trình $(I)$ trên mặt phẳng hệ trục tọa độ $Oxy$.\nb) Tìm giá trị lớn nhất và giá trị nhỏ nhất của biểu thức $f(x;y)=4x-3y$ biết $(x;y)$ thỏa mãn $(I)$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** miền nghiệm của hệ là phần chung của bốn nửa mặt phẳng; giá trị lớn nhất, nhỏ nhất của biểu thức bậc nhất đạt tại các đỉnh của miền.\n**Bước 1.** Ý a: vẽ bốn đường thẳng biên, với mỗi đường chọn nửa mặt phẳng bằng một điểm thử không nằm trên biên.\n**Bước 2.** Ý a: tô phần chung của bốn nửa mặt phẳng rồi xác định hình dạng miền nghiệm và các cạnh của nó.\n**Bước 3.** Ý b: tìm tọa độ từng đỉnh bằng cách giải hệ hai phương trình của hai đường biên gặp nhau, kiểm tra đỉnh có thỏa cả bốn bất phương trình.\n**Bước 4.** Ý b: tính $f(x;y)$ tại mọi đỉnh rồi so sánh các giá trị để chọn số lớn nhất và số nhỏ nhất.\n**Phần 2. Trình bày**\na) Vẽ bốn đường thẳng: $x=0$ (trục …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000737",
+  "loai": "trac_nghiem",
+  "de": "Hình nào sau đây minh họa tập hợp $A$ là tập con của tập hợp $B$?",
+  "lua_chon": [
+   "Hai hình tròn $A$ và $B$ cắt nhau, có phần chung.",
+   "Hình $B$ nằm gọn bên trong hình $A$.",
+   "Hình $A$ nằm gọn bên trong hình $B$.",
+   "Hai hình tròn $B$ và $A$ cắt nhau, có phần chung."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $A\\subset B$ nghĩa là mọi phần tử của $A$ đều thuộc $B$, nên trên biểu đồ Ven miền của $A$ phải nằm trọn trong miền của $B$.\n**Bước 1.** Nhớ định nghĩa tập con và cách biểu diễn tập con bằng biểu đồ Ven.\n**Bước 2.** Quan sát từng hình để xem hình nào có miền của $A$ nằm hoàn toàn bên trong miền của $B$.\n**Bước 3.** Loại các hình mà hai miền chỉ giao nhau một phần hoặc miền của $B$ nằm trong miền của $A$.\n**Phần 2. Trình bày**\nỞ hình A và hình D, hai miền chỉ cắt nhau một phần nên $A$ không là tập con của $B$.\nỞ hình B, miền $B$ nằm trong miền $A$ nên $B\\subset A$, không phải $A\\subset B$.\nỞ hình C, miền $A$ nằm hoàn toàn trong miền $B$ nên $A\\subset B$.\nCh …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000699",
+  "loai": "trac_nghiem",
+  "de": "Để khảo sát kết quả thi tuyển sinh môn Toán trong kì thi tuyển sinh đại học năm vừa qua của trường A, người điều tra chọn một mẫu gồm $100$ học sinh tham gia kì thi tuyển sinh đó. Điểm môn Toán (thang điểm $10$) của các học sinh này được cho ở bảng phân bố tần số sau đây (điểm $0,1,2,\\dots,10$ có tần số lần lượt là $1,1,3,5,8,13,19,24,14,10,2$; $N=100$). Tìm mốt.",
+  "lua_chon": [
+   "$5$.",
+   "$6$.",
+   "$8$.",
+   "$7$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mốt của mẫu số liệu cho dưới dạng bảng tần số là giá trị có tần số lớn nhất.\n**Bước 1.** Đọc hàng tần số của bảng và nhận ra mẫu số liệu được cho theo từng giá trị điểm kèm số học sinh đạt điểm đó.\n**Bước 2.** So sánh các tần số để tìm giá trị đứng ở cột có tần số lớn nhất.\n**Bước 3.** Đối chiếu điểm tìm được với bốn phương án.\n**Phần 2. Trình bày**\nCác tần số là $1;1;3;5;8;13;19;24;14;10;2$.\nTần số lớn nhất là $24$, ứng với điểm $7$.\nVậy mốt của mẫu số liệu là $7$.\nChọn D.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000448",
+  "loai": "trac_nghiem",
+  "de": "Trong các câu sau, câu nào là mệnh đề?",
+  "lua_chon": [
+   "Bạn cao bao nhiêu ?",
+   "Hôm nay là thứ mấy?",
+   "Việt Nam giáp Trung Quốc.",
+   "Con học bài đi!"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mệnh đề là câu khẳng định có thể xác định được là đúng hoặc sai, còn câu hỏi và câu mệnh lệnh thì không.\n**Bước 1.** Nhớ định nghĩa mệnh đề: một câu khẳng định chỉ có thể hoặc đúng hoặc sai, không thể vừa đúng vừa sai.\n**Bước 2.** Xét hình thức từng câu: câu nghi vấn và câu cầu khiến không khẳng định điều gì nên không phải mệnh đề.\n**Bước 3.** Với câu còn lại, kiểm tra xem có thể kết luận đúng hoặc sai được hay không rồi chọn phương án.\n**Phần 2. Trình bày**\nPhương án A là câu hỏi, không khẳng định gì nên không phải mệnh đề.\nPhương án B là câu hỏi nên không phải mệnh đề.\nPhương án D là câu mệnh lệnh nên không phải mệnh đề.\nPhương án C là câu khẳng định, có …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000593",
+  "loai": "tu_luan",
+  "de": "Lớp 10A có $40$ học sinh, trong đó số học sinh tham gia đội bóng đá là $18$, số học sinh tham gia đội bóng chuyền là $15$. Biết rằng có $20$ học sinh không tham gia bất cứ môn nào. Hỏi có bao nhiêu em tham gia đồng thời cả hai môn bóng đá và bóng chuyền?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đếm số học sinh tham gia ít nhất một môn rồi dùng công thức bao hàm – loại trừ cho hai tập hợp để tìm phần giao.\n**Bước 1.** Đặt hai tập hợp là các học sinh tham gia bóng đá và bóng chuyền, dùng số học sinh không tham gia môn nào để tìm số học sinh thuộc hợp của hai tập.\n**Bước 2.** Viết công thức $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$ và thay các số đã biết.\n**Bước 3.** Giải phương trình để tìm số học sinh thuộc phần giao.\n**Phần 2. Trình bày**\nGọi $A$ là tập học sinh tham gia bóng đá, $B$ là tập học sinh tham gia bóng chuyền.\nSố học sinh tham gia ít nhất một môn là $n(A\\cup B)=40-20=20$.\nTa có $n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$.\n$\\Leftrightarrow20=18+15-n(A\\ca …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

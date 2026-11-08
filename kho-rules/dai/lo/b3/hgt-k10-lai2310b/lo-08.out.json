@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "T310000000239",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "tìm vị trí điểm M thỏa đẳng thức, không tọa độ"
+ },
+ {
+  "ma_cau": "T310000000240",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "hiệu hai véc tơ"
+ },
+ {
+  "ma_cau": "T310000000241",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "lời giải dùng 2GI, 2/3 BI: có tích với số"
+ },
+ {
+  "ma_cau": "T310000000242",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "3 lực cân bằng, tìm F3"
+ },
+ {
+  "ma_cau": "T310000000243",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "rút gọn tổng/hiệu véc tơ, có phép trừ"
+ },
+ {
+  "ma_cau": "T310000000244",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "chọn khẳng định: đáp án đúng là độ dài tổng"
+ },
+ {
+  "ma_cau": "T310000000245",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chọn đẳng thức véc tơ đúng"
+ },
+ {
+  "ma_cau": "T310000000246",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "tìm vị trí M thỏa MB+MC=AB"
+ },
+ {
+  "ma_cau": "T310000000247",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "tam giác, trung điểm; tìm véc tơ bằng tổng, dùng đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000248",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "hiệu hai véc tơ"
+ },
+ {
+  "ma_cau": "T310000000249",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chọn đẳng thức véc tơ đúng, có hiệu"
+ },
+ {
+  "ma_cau": "T310000000250",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "tìm vị trí điểm M thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000251",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng, không có tích với số"
+ },
+ {
+  "ma_cau": "T310000000281",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực"
+ },
+ {
+  "ma_cau": "T310000000282",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "3 lực cân bằng, tìm số người kéo"
+ },
+ {
+  "ma_cau": "T310000000283",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài hiệu, không tích với số"
+ },
+ {
+  "ma_cau": "T310000000285",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng 3 véc tơ, lời giải không có tích với số"
+ },
+ {
+  "ma_cau": "T310000000286",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "thực tế trọng lực, mặt dốc"
+ },
+ {
+  "ma_cau": "T310000000287",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng hai véc tơ"
+ },
+ {
+  "ma_cau": "T310000000288",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực"
+ },
+ {
+  "ma_cau": "T310000000289",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng/hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310000000290",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "cộng vận tốc ca nô, dòng nước"
+ },
+ {
+  "ma_cau": "T310000000291",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310000000292",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "3 lực cân bằng, tìm F3"
+ },
+ {
+  "ma_cau": "T310000000293",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài GB+GC, lời giải chỉ dùng độ dài; ĐÁP ÁN LƯU 0,33 NGHI SAI (đúng 10/3)"
+ },
+ {
+  "ma_cau": "T310000000294",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310000000295",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực vuông góc"
+ },
+ {
+  "ma_cau": "T310000000296",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực"
+ },
+ {
+  "ma_cau": "T310000000297",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "cộng vận tốc ca nô"
+ },
+ {
+  "ma_cau": "T310000000298",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực"
+ },
+ {
+  "ma_cau": "T310000000299",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "cộng vận tốc thuyền, dòng nước"
+ },
+ {
+  "ma_cau": "T310000000300",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng trong hình thoi"
+ },
+ {
+  "ma_cau": "T310000000301",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài véc tơ tổng/hiệu hình vuông"
+ },
+ {
+  "ma_cau": "T310000000302",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "rút gọn rồi độ dài MN, không tích với số"
+ },
+ {
+  "ma_cau": "T310000000304",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài véc tơ tổng/hiệu, đường tròn nội tiếp chỉ là dữ kiện phụ"
+ },
+ {
+  "ma_cau": "T310000000305",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng/hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310000000306",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực"
+ },
+ {
+  "ma_cau": "T310000000307",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng; lời giải dùng hình bình hành, không tích với số"
+ },
+ {
+  "ma_cau": "T310000000308",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực"
+ },
+ {
+  "ma_cau": "T310000000309",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng hai véc tơ"
+ },
+ {
+  "ma_cau": "T310000000310",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "bóng đèn cân bằng, lực căng dây"
+ },
+ {
+  "ma_cau": "T310000000311",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "3 lực cân bằng, tìm F3"
+ },
+ {
+  "ma_cau": "T310000000312",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng hai véc tơ"
+ },
+ {
+  "ma_cau": "T310000000313",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực"
+ },
+ {
+  "ma_cau": "T310000000314",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng/hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310000000315",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài; lời giải chỉ dùng độ dài trọng tâm, không tích số véc tơ"
+ },
+ {
+  "ma_cau": "T310000000316",
+  "dang_bai_id": "NDB01401",
+  "chac": "cao",
+  "ly_do": "giá trị lớn nhất của biểu thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000317",
+  "dang_bai_id": "NDB01425",
+  "chac": "cao",
+  "ly_do": "tìm lực ròng rọc 2 để hợp lực đi dọc bờ"
+ },
+ {
+  "ma_cau": "T310000000318",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng hai véc tơ"
+ },
+ {
+  "ma_cau": "T310000000319",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "3 lực cân bằng, tìm F3"
+ },
+ {
+  "ma_cau": "T310000000320",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực"
+ },
+ {
+  "ma_cau": "T310000000322",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài hiệu véc tơ, đường trung bình"
+ },
+ {
+  "ma_cau": "T310000000323",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310000000324",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "3 lực cân bằng, tìm F3"
+ },
+ {
+  "ma_cau": "T310000000325",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng véc tơ, lời giải dùng hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000328",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "cộng vận tốc tàu, dòng nước"
+ },
+ {
+  "ma_cau": "T310000000329",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "hợp lực hai xe cân bằng với xe tải"
+ },
+ {
+  "ma_cau": "T310000000331",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "tính hợp lực 3 lực không cân bằng"
+ },
+ {
+  "ma_cau": "T310000000333",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "vật cân bằng dưới hai cáp, lực căng"
+ },
+ {
+  "ma_cau": "T310000000334",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "a+b=0, hai véc tơ đối nhau"
+ },
+ {
+  "ma_cau": "T310000000335",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "tổng hai véc tơ"
+ },
+ {
+  "ma_cau": "T310000000336",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "hiệu hai véc tơ"
+ },
+ {
+  "ma_cau": "T310000000337",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "chứng minh tính chất trung điểm; có thể 00903 hoặc 00907"
+ },
+ {
+  "ma_cau": "T310000000338",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000339",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ trong tam giác đều"
+ },
+ {
+  "ma_cau": "T310000000340",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000341",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ trong hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000342",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ trong hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000343",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ với 5 điểm"
+ },
+ {
+  "ma_cau": "T310000000344",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ trong ngũ giác đều"
+ },
+ {
+  "ma_cau": "T310000000345",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ với 6 điểm"
+ },
+ {
+  "ma_cau": "T310000000346",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ trong lục giác đều"
+ },
+ {
+  "ma_cau": "T310000000347",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "tìm điểm M thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000348",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "tìm điểm M thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000349",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000350",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000351",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng/hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310000000352",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng véc tơ, không tích với số"
+ },
+ {
+  "ma_cau": "T310000000353",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng/hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310000000354",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng/hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310000000355",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng/hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310000000356",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài véc tơ trong hình vuông, dạng sau thắng"
+ },
+ {
+  "ma_cau": "T310000000357",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài véc tơ và tổng"
+ },
+ {
+  "ma_cau": "T310000000358",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng/hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310000000359",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng/hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310000000360",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "tính chất phép nhân véc tơ với số, không hình"
+ },
+ {
+  "ma_cau": "T310000000362",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "tìm bộ ba điểm thẳng hàng"
+ },
+ {
+  "ma_cau": "T310000000363",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "xác định điểm M thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000364",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "xác định điểm M thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000365",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "xác định điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000366",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "xác định điểm thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000367",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "tìm điểm K thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000368",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "biểu thị AG theo AM, tính chất trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000369",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "biểu thị véc tơ theo a,b trong hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000370",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "biểu thị OM theo OA, OB"
+ },
+ {
+  "ma_cau": "T310000000371",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "chứng minh ba điểm thẳng hàng (sau 00909)"
+ },
+ {
+  "ma_cau": "T310000000372",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "chứng minh ba điểm thẳng hàng"
+ },
+ {
+  "ma_cau": "T310000000373",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "biểu thị véc tơ theo AD, BE"
+ },
+ {
+  "ma_cau": "T310000000374",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ trong hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000375",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ trong hình bình hành"
+ }
+]

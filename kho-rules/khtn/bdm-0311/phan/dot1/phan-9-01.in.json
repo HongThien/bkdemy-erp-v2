@@ -1,0 +1,1063 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00409",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Động năng",
+   "nhom": "KHÁI NIỆM VÀ ĐẶC ĐIỂM ĐỘNG NĂNG",
+   "nhom_ly_thuyet": "•\tĐộng năng là năng lượng mà một vật có được do đang chuyển động, kí hiệu Wđ, đơn vị jun (J) — cùng đơn vị với công cơ học.\n•\tVật đứng yên (tốc độ v = 0) thì động năng bằng 0. Vật chỉ có động năng khi đang chuyển động.\nCông thức\n•\tWđ = ½mv2, trong đó m là khối lượng vật (kg), v là tốc độ của vật (m/s).\n•\tĐộng năng phụ thuộc hai yếu tố: khối lượng và tốc độ của vật; không phụ thuộc vị trí hay hướng chuyển động.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00970",
+     "thu_tu": 1,
+     "ten": "ĐỊNH NGHĨA VÀ ĐIỀU KIỆN VẬT CÓ ĐỘNG NĂNG",
+     "mo_ta": "Hỏi khái niệm động năng: định nghĩa, điều kiện để vật có động năng, vật nào có hoặc không có động năng.\nCó thể hỏi chọn đúng công thức động năng hoặc đơn vị của động năng (jun) ở mức nhận biết.\nKhông có phép tính số, không hỏi động năng tăng hay giảm khi thay đổi đại lượng.\nLưu ý: hỏi ý nghĩa kí hiệu $m$, $v$ hoặc đơn vị từng đại lượng trong công thức ⇒ thuộc dạng \"KÍ HIỆU, ĐƠN VỊ VÀ CÁC ĐẠI LƯỢNG TRONG CÔNG THỨC\".\nLưu ý: hỏi động năng thay đổi thế nào khi $m$, $v$ thay đổi ⇒ thuộc dạng \"YẾU TỐ ẢNH HƯỞNG ĐẾN ĐỘ LỚN ĐỘNG NĂNG\".",
+     "ly_thuyet": "##TC Động năng và điều kiện có động năng\nĐộng năng là năng lượng mà vật có được do đang chuyển động, kí hiệu $W_đ$, đơn vị jun (J).\nVật đứng yên ($v = 0$) thì động năng bằng 0; vật chỉ có động năng khi đang chuyển động.\nCông thức: $W_đ = \\dfrac{1}{2}mv^2$.\n\n##PP Nhận biết vật có động năng\nXác định vật đang chuyển động (tốc độ khác 0) hay đang đứng yên.\nVật đang chuyển động thì có động năng; vật đứng yên thì động năng bằng 0.\nĐối chiếu với công thức $W_đ = \\dfrac{1}{2}mv^2$ để chọn đáp án.\n\n##CY Chú ý\nVật đứng yên có $v = 0$ nên $W_đ = 0$, dù vật nặng hay nhẹ.\nĐộ cao của vật không có mặt trong công thức tính động năng.",
+     "vi_du": "##VD\nVật nào sau đây KHÔNG có động năng?\nA. Một chiếc xe đạp đang đổ dốc.\nB. Một viên bi đang nằm yên trên mặt bàn.\nC. Một viên đạn đang bay trong không khí.\nD. Một dòng nước đang chảy xiết.\n\nBài giải:\nVật có động năng khi đang chuyển động.\nXe đạp đang đổ dốc, viên đạn đang bay, dòng nước đang chảy đều có tốc độ khác $0$ nên đều có động năng.\nViên bi nằm yên có $v = 0$ nên $W_đ = \\dfrac{1}{2}m \\times 0^2 = 0$, tức là không có động năng.\nChọn B.\n\n##VD\nĐại lượng nào sau đây KHÔNG xuất hiện trực tiếp trong công thức tính động năng?\nA. Khối lượng của vật.\nB. Tốc độ của vật.\nC. Độ cao của vật so với mốc.\nD. Hệ số $\\dfrac{1}{2}$ trong công thức.\n\nBài giải:\nCông thức động năng là $W_đ = \\dfrac{1}{2}mv^2$.\nCông thức chứa khối lượng $m$, tốc độ $v$ và hệ số $\\dfrac{1}{2}$.\nĐộ cao của vật không xuất hiện trong công thức này.\nChọn C."
+    },
+    {
+     "dang_id": "KDB00971",
+     "thu_tu": 2,
+     "ten": "KÍ HIỆU, ĐƠN VỊ VÀ CÁC ĐẠI LƯỢNG TRONG CÔNG THỨC",
+     "mo_ta": "Hỏi ý nghĩa kí hiệu và đơn vị của các đại lượng $W_đ$, $m$, $v$ trong công thức động năng.\nHỏi đơn vị cần dùng của $m$ (kg) và $v$ (m/s) để kết quả ra jun, và việc cần làm khi đề cho gam hoặc km/h.\nChỉ hỏi lí thuyết, không cho số để tính.\nLưu ý: đề cho số cụ thể và yêu cầu tính động năng ⇒ thuộc dạng \"TÍNH ĐỘNG NĂNG ...\" của nhóm tính Wđ.\nLưu ý: hỏi vật nào có hoặc không có động năng ⇒ thuộc dạng \"ĐỊNH NGHĨA VÀ ĐIỀU KIỆN VẬT CÓ ĐỘNG NĂNG\".",
+     "ly_thuyet": "##TC Kí hiệu và đơn vị trong công thức động năng\n$W_đ = \\dfrac{1}{2}mv^2$: $W_đ$ là động năng (jun, J); $m$ là khối lượng (kilôgam, kg); $v$ là tốc độ (mét trên giây, m/s).\nĐộng năng và công cơ học có cùng đơn vị là jun (J).\nĐổi đơn vị: $1\\ \\mathrm{g} = 0{,}001\\ \\mathrm{kg}$; muốn đổi km/h sang m/s thì chia cho $3{,}6$.\n\n##PP Xác định đơn vị cần dùng\nXác định đại lượng mà đề hỏi và nhớ đơn vị chuẩn của nó.\nNếu đề cho đơn vị khác kg hoặc m/s thì đổi về kg, m/s trước khi thay vào công thức.\n\n##CY Chú ý\nMuốn kết quả ra jun thì bắt buộc $m$ tính bằng kg và $v$ tính bằng m/s.\nĐổi km/h sang m/s là chia cho $3{,}6$ (nhân với $3{,}6$ là phép đổi ngược từ m/s sang km/h).",
+     "vi_du": "##VD\nTrong công thức $W_đ = \\dfrac{1}{2}mv^2$, đại lượng $v$ biểu thị\nA. tốc độ của vật (m/s).\nB. quãng đường vật đi được (m).\nC. gia tốc của vật (m/s$^2$).\nD. thời gian chuyển động của vật (s).\n\nBài giải:\nTrong công thức động năng, $W_đ$ là động năng, $m$ là khối lượng, $v$ là tốc độ của vật.\nTốc độ có đơn vị mét trên giây (m/s).\nChọn A.\n\n##VD\nNếu đề bài cho tốc độ vật ở đơn vị km/h thì trước khi thay vào công thức tính động năng, cần\nA. giữ nguyên đơn vị km/h.\nB. đổi tốc độ ra m/phút.\nC. nhân tốc độ với 3,6.\nD. đổi tốc độ ra m/s.\n\nBài giải:\nCông thức $W_đ = \\dfrac{1}{2}mv^2$ cho kết quả đơn vị jun chỉ khi $v$ tính bằng m/s.\nVì vậy phải đổi tốc độ từ km/h sang m/s, bằng cách chia cho $3{,}6$ (ví dụ $36\\ \\mathrm{km/h} = 36 : 3{,}6 = 10\\ \\mathrm{m/s}$).\nPhương án C sai vì nhân với $3{,}6$ là đổi ngược từ m/s sang km/h.\nChọn D."
+    },
+    {
+     "dang_id": "KDB00972",
+     "thu_tu": 3,
+     "ten": "YẾU TỐ ẢNH HƯỞNG ĐẾN ĐỘ LỚN ĐỘNG NĂNG",
+     "mo_ta": "Hỏi định tính xem động năng phụ thuộc vào đại lượng nào và thay đổi ra sao khi khối lượng hoặc tốc độ thay đổi.\nGồm: so sánh hai vật cùng khối lượng (khác tốc độ) hoặc cùng tốc độ (khác khối lượng); đại lượng nào không ảnh hưởng đến động năng (hướng chuyển động, độ cao).\nKhông cho số liệu cụ thể của $m$, $v$.\nLưu ý: đề cho hệ số thay đổi rõ ràng (\"tăng 3 lần\", \"giảm còn $\\dfrac{1}{2}$\") và hỏi động năng đổi bao nhiêu lần ⇒ thuộc dạng \"KHỐI LƯỢNG THAY ĐỔI K LẦN…\" hoặc \"TỐC ĐỘ THAY ĐỔI K LẦN…\".",
+     "ly_thuyet": "##TC Động năng phụ thuộc vào đại lượng nào\nKhi tốc độ không đổi, động năng tỉ lệ thuận với khối lượng $m$.\nKhi khối lượng không đổi, động năng tỉ lệ thuận với bình phương tốc độ $v^2$.\nĐộng năng chỉ phụ thuộc độ lớn của $m$ và $v$; không phụ thuộc hướng chuyển động hay độ cao của vật.\n\n##PP So sánh động năng\nXác định đại lượng nào giữ nguyên, đại lượng nào thay đổi.\nÁp dụng đúng bậc trong công thức $W_đ = \\dfrac{1}{2}mv^2$: khối lượng bậc 1, tốc độ bậc 2.\nKết luận động năng tăng hay giảm, mạnh hay yếu.\n\n##CY Chú ý\nTốc độ giảm một nửa thì động năng giảm 4 lần, không phải 2 lần.\nHướng chuyển động và độ cao không làm thay đổi động năng.",
+     "vi_du": "##VD\nHai vật có cùng khối lượng, chuyển động với hai tốc độ khác nhau. Vật có tốc độ lớn hơn thì\nA. có động năng nhỏ hơn.\nB. có động năng lớn hơn.\nC. có động năng bằng vật kia.\nD. không xác định được động năng lớn hơn nếu không biết thêm dữ kiện.\n\nBài giải:\nHai vật có cùng $m$ nên động năng chỉ còn phụ thuộc tốc độ, tỉ lệ thuận với $v^2$.\nVật có tốc độ lớn hơn thì $v^2$ lớn hơn, nên động năng lớn hơn.\nChọn B.\n\n##VD\nKhi tốc độ của một vật giảm đi một nửa (khối lượng không đổi) thì động năng của vật sẽ\nA. giảm còn một nửa giá trị ban đầu.\nB. không đổi.\nC. giảm còn một phần tám giá trị ban đầu.\nD. giảm còn một phần tư giá trị ban đầu.\n\nBài giải:\nKhối lượng không đổi nên $W_đ$ tỉ lệ thuận với $v^2$.\nTốc độ mới là $\\dfrac{v}{2}$ nên $W_đ' = \\dfrac{1}{2}m\\left(\\dfrac{v}{2}\\right)^2 = \\dfrac{1}{4} \\times \\dfrac{1}{2}mv^2 = \\dfrac{W_đ}{4}$.\nVậy động năng giảm còn một phần tư giá trị ban đầu.\nChọn D."
+    },
+    {
+     "dang_id": "KDB00973",
+     "thu_tu": 4,
+     "ten": "NHẬN BIẾT ĐỘNG NĂNG QUA VÍ DỤ VÀ HIỆN TƯỢNG THỰC TẾ",
+     "mo_ta": "Cho một hiện tượng hoặc tình huống đời thường, hỏi vật nào có hoặc không có động năng, động năng tăng hay giảm.\nGồm: xe tăng tốc, tàu hãm phanh, gió làm quay cánh quạt, dòng nước, xe tải so với xe con ở cùng tốc độ…\nTrả lời bằng lập luận theo $m$, $v$, không cần tính số.\nLưu ý: hỏi vì sao va chạm nguy hiểm, biện pháp an toàn, thiết bị bảo hộ ⇒ thuộc nhóm \"ỨNG DỤNG THỰC TẾ CỦA ĐỘNG NĂNG\" (dạng \"AN TOÀN GIAO THÔNG VÀ TỐC ĐỘ\" hoặc \"SO SÁNH MỨC ĐỘ NGUY HIỂM…\").",
+     "ly_thuyet": "##TC Động năng trong hiện tượng thực tế\nVật đang chuyển động (xe chạy, gió thổi, nước chảy…) đều mang động năng.\nTốc độ tăng thì động năng tăng; tốc độ giảm về 0 thì động năng giảm về 0.\nỞ cùng tốc độ, vật có khối lượng lớn hơn thì có động năng lớn hơn; động năng tăng theo bình phương tốc độ.\n\n##PP Giải thích hiện tượng\nXác định vật đang chuyển động hay đứng yên, đại lượng nào ($m$ hay $v$) thay đổi.\nLiên hệ với $W_đ = \\dfrac{1}{2}mv^2$ để biết động năng tăng hay giảm.\nKết luận theo ý nghĩa của hiện tượng.\n\n##CY Chú ý\nVật đứng yên thì động năng bằng 0.\nPhương án nói khối lượng thay đổi theo tốc độ hay tốc độ không ảnh hưởng đến động năng đều sai.",
+     "vi_du": "##VD\nKhi một chiếc ô tô đang chuyển động tăng tốc dần thì động năng của ô tô sẽ\nA. giảm dần.\nB. không đổi.\nC. bằng 0 trong suốt quá trình.\nD. tăng dần.\n\nBài giải:\nÔ tô tăng tốc nên tốc độ $v$ tăng dần, khối lượng $m$ không đổi.\nTheo $W_đ = \\dfrac{1}{2}mv^2$, $v$ tăng thì động năng tăng dần.\nChọn D.\n\n##VD\nXe tải chở nặng khi chạy cùng tốc độ với một xe con thường khó dừng lại hơn. Cách giải thích đúng dựa trên động năng là\nA. xe tải có thế năng lớn hơn nên khó dừng.\nB. xe tải có tốc độ thực tế luôn lớn hơn xe con.\nC. xe tải có khối lượng lớn hơn nên động năng lớn hơn ở cùng tốc độ.\nD. khối lượng không ảnh hưởng đến động năng nên hai xe khó dừng như nhau.\n\nBài giải:\nHai xe cùng tốc độ nên động năng tỉ lệ thuận với khối lượng.\nXe tải có khối lượng lớn hơn nên động năng lớn hơn, do đó khó dừng lại hơn.\nPhương án B sai vì đề cho hai xe cùng tốc độ; phương án D sai vì khối lượng có ảnh hưởng đến động năng.\nChọn C."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00410",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Động năng",
+   "nhom": "Tính động năng Wđ khi biết khối lượng m và vận tốc v",
+   "nhom_ly_thuyet": "•\tWđ = ½mv2, với m là khối lượng (kg), v là tốc độ (m/s), Wđ tính ra jun (J).\n•\tĐổi khối lượng ra kilôgam: 1 g = 0,001 kg; 1 tấn = 1 000 kg; 1 tạ = 100 kg; 1 yến = 10 kg.\n•\tĐổi tốc độ ra mét trên giây: 1 km/h = 1/3,6 m/s (muốn đổi km/h sang m/s thì chia cho 3,6); 1 cm/s = 0,01 m/s; 1 mm/s = 0,001 m/s.\n•\tNếu đề cho trọng lượng P (N) thay vì khối lượng, dùng P = 10m để suy ra m = P/10 (lấy g = 10 m/s2).",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00974",
+     "thu_tu": 1,
+     "ten": "TÍNH ĐỘNG NĂNG TỪ KHỐI LƯỢNG VÀ TỐC ĐỘ CHO TRỰC TIẾP",
+     "mo_ta": "Đề cho khối lượng $m$ (kg) và tốc độ $v$ (m/s) — đã đúng đơn vị chuẩn — rồi hỏi tính động năng.\nLàm bằng cách thay thẳng vào công thức $W_đ = \\dfrac{1}{2}mv^2$.\nKhông có bước đổi đơn vị.\nLưu ý: đề cho gam, tạ, yến, tấn, trọng lượng hay phần trăm ⇒ thuộc dạng đổi khối lượng tương ứng.\nLưu ý: đề cho km/h, cm/s, mm/s ⇒ thuộc dạng đổi tốc độ tương ứng.",
+     "ly_thuyet": "##TC Công thức động năng\n$W_đ = \\dfrac{1}{2}mv^2$, trong đó $m$ tính bằng kg, $v$ tính bằng m/s thì $W_đ$ ra jun (J).\n\n##PP Tính động năng\nGhi các đại lượng đã cho: $m$ và $v$; kiểm tra đã đúng đơn vị kg, m/s chưa.\nTính $v^2$ trước.\nThay vào $W_đ = \\dfrac{1}{2}mv^2$ rồi tính kết quả.\nGhi đơn vị jun (J).\n\n##CY Chú ý\nChỉ $v$ được bình phương, $m$ không bình phương.\nQuên hệ số $\\dfrac{1}{2}$ làm kết quả gấp đôi; quên bình phương $v$ cho kết quả sai hoàn toàn.",
+     "vi_du": "##VD\nMột vật có khối lượng 5 kg, chuyển động với tốc độ 2 m/s. Tính động năng của vật.\nA. 20 J.\nB. 5 J.\nC. 10 J.\nD. 2 J.\n\nBài giải:\nKhối lượng và tốc độ đã đúng đơn vị chuẩn ($m = 5\\ \\mathrm{kg}$, $v = 2\\ \\mathrm{m/s}$).\n$W_đ = \\dfrac{1}{2}mv^2 = \\dfrac{1}{2} \\times 5 \\times 2^2 = \\dfrac{1}{2} \\times 5 \\times 4 = 10\\ \\mathrm{J}$.\nChọn C.\n\n##VD\nMột vật có khối lượng 7 kg, chuyển động với tốc độ 3 m/s. Tính động năng của vật.\nA. 63 J.\nB. 10,5 J.\nC. 31,5 J.\nD. 4,5 J.\n\nBài giải:\nKhối lượng và tốc độ đã đúng đơn vị chuẩn ($m = 7\\ \\mathrm{kg}$, $v = 3\\ \\mathrm{m/s}$).\n$W_đ = \\dfrac{1}{2}mv^2 = \\dfrac{1}{2} \\times 7 \\times 3^2 = \\dfrac{1}{2} \\times 63 = 31{,}5\\ \\mathrm{J}$.\nChọn C."
+    },
+    {
+     "dang_id": "KDB00975",
+     "thu_tu": 2,
+     "ten": "KHỐI LƯỢNG CHO Ở ĐƠN VỊ GAM, CẦN ĐỔI RA KILÔGAM",
+     "mo_ta": "Đề cho khối lượng ở đơn vị gam (g) và tốc độ ở m/s, hỏi tính động năng.\nPhải đổi gam sang kilôgam trước khi thay vào công thức.\nLưu ý: tốc độ cũng cho ở km/h cùng lúc ⇒ thuộc dạng \"CẢ KHỐI LƯỢNG VÀ TỐC ĐỘ ĐỀU CẦN ĐỔI ĐƠN VỊ\".\nLưu ý: khối lượng cho ở tạ, yến ⇒ thuộc dạng \"KHỐI LƯỢNG CHO Ở ĐƠN VỊ TẠ HOẶC YẾN\".",
+     "ly_thuyet": "##TC Đổi gam sang kilôgam\n$1\\ \\mathrm{g} = 0{,}001\\ \\mathrm{kg}$, tức là chia số gam cho $1\\ 000$ để được số kg.\nĐộng năng $W_đ = \\dfrac{1}{2}mv^2$ với $m$ tính bằng kg.\n\n##PP Tính động năng khi khối lượng cho bằng gam\nĐổi khối lượng từ gam ra kilôgam (chia cho $1\\ 000$).\nGiữ nguyên tốc độ nếu đã ở m/s.\nThay vào $W_đ = \\dfrac{1}{2}mv^2$ và tính.\nGhi đơn vị jun (J).\n\n##CY Chú ý\nKhông đổi gam ra kg thì kết quả lớn hơn đúng $1\\ 000$ lần.",
+     "vi_du": "##VD\nMột vật có khối lượng 4 000 gam, chuyển động với tốc độ 5 m/s. Tính động năng của vật.\nA. 50 000 J.\nB. 500 J.\nC. 100 J.\nD. 50 J.\n\nBài giải:\nĐổi $m = 4\\ 000\\ \\mathrm{g} = 4\\ \\mathrm{kg}$.\n$W_đ = \\dfrac{1}{2}mv^2 = \\dfrac{1}{2} \\times 4 \\times 5^2 = \\dfrac{1}{2} \\times 4 \\times 25 = 50\\ \\mathrm{J}$.\nPhương án A sai vì chưa đổi gam ra kilôgam.\nChọn D.\n\n##VD\nMột vật có khối lượng 1 200 gam, chuyển động với tốc độ 5 m/s. Tính động năng của vật.\nA. 15 000 J.\nB. 15 J.\nC. 150 J.\nD. 30 J.\n\nBài giải:\nĐổi $m = 1\\ 200\\ \\mathrm{g} = 1{,}2\\ \\mathrm{kg}$.\n$W_đ = \\dfrac{1}{2}mv^2 = \\dfrac{1}{2} \\times 1{,}2 \\times 5^2 = \\dfrac{1}{2} \\times 1{,}2 \\times 25 = 15\\ \\mathrm{J}$.\nChọn B."
+    },
+    {
+     "dang_id": "KDB00976",
+     "thu_tu": 3,
+     "ten": "TỐC ĐỘ CHO Ở ĐƠN VỊ KM/H, CẦN ĐỔI RA MÉT TRÊN GIÂY",
+     "mo_ta": "Đề cho khối lượng ở kg và tốc độ ở km/h, hỏi tính động năng.\nPhải đổi km/h sang m/s (chia cho $3{,}6$) rồi mới thay vào công thức.\nLưu ý: khối lượng cũng cho ở gam hoặc tấn ⇒ thuộc dạng \"CẢ KHỐI LƯỢNG VÀ TỐC ĐỘ ĐỀU CẦN ĐỔI ĐƠN VỊ\".\nLưu ý: tốc độ cho ở cm/s, mm/s ⇒ thuộc dạng \"TỐC ĐỘ CHO Ở ĐƠN VỊ CENTIMÉT HOẶC MILIMÉT TRÊN GIÂY\".",
+     "ly_thuyet": "##TC Đổi km/h sang m/s\n$1\\ \\mathrm{km/h} = \\dfrac{1}{3{,}6}\\ \\mathrm{m/s}$, tức là muốn đổi km/h sang m/s thì chia cho $3{,}6$.\nĐộng năng $W_đ = \\dfrac{1}{2}mv^2$ với $v$ tính bằng m/s.\n\n##PP Tính động năng khi tốc độ cho bằng km/h\nĐổi tốc độ từ km/h ra m/s (chia cho $3{,}6$).\nGiữ nguyên khối lượng nếu đã ở kg.\nThay vào $W_đ = \\dfrac{1}{2}mv^2$ và tính.\nGhi đơn vị jun (J).\n\n##CY Chú ý\nKhông đổi km/h ra m/s thì kết quả sai rất lớn (vì $v$ bị bình phương).\nNhân với $3{,}6$ thay vì chia là đổi ngược đơn vị.",
+     "vi_du": "##VD\nMột vật có khối lượng 3 kg, chuyển động với tốc độ 36 km/h. Tính động năng của vật.\nA. 1 944 J.\nB. 150 J.\nC. 25 194,24 J.\nD. 15 J.\n\nBài giải:\nĐổi $v = 36\\ \\mathrm{km/h} = 36 : 3{,}6 = 10\\ \\mathrm{m/s}$.\n$W_đ = \\dfrac{1}{2}mv^2 = \\dfrac{1}{2} \\times 3 \\times 10^2 = \\dfrac{1}{2} \\times 3 \\times 100 = 150\\ \\mathrm{J}$.\nPhương án A sai vì dùng $v = 36$ mà chưa đổi; phương án C sai vì nhân với $3{,}6$ thay vì chia.\nChọn B.\n\n##VD\nMột vật có khối lượng 6 kg, chuyển động với tốc độ 108 km/h. Tính động năng của vật.\nA. 34 992 J.\nB. 453 496,32 J.\nC. 90 J.\nD. 2 700 J.\n\nBài giải:\nĐổi $v = 108\\ \\mathrm{km/h} = 108 : 3{,}6 = 30\\ \\mathrm{m/s}$.\n$W_đ = \\dfrac{1}{2}mv^2 = \\dfrac{1}{2} \\times 6 \\times 30^2 = \\dfrac{1}{2} \\times 6 \\times 900 = 2\\ 700\\ \\mathrm{J}$.\nChọn D."
+    },
+    {
+     "dang_id": "KDB00977",
+     "thu_tu": 4,
+     "ten": "CẢ KHỐI LƯỢNG VÀ TỐC ĐỘ ĐỀU CẦN ĐỔI ĐƠN VỊ",
+     "mo_ta": "Đề cho khối lượng ở gam (hoặc tấn) và tốc độ ở km/h, hỏi tính động năng.\nPhải đổi cả hai: khối lượng ra kg, tốc độ ra m/s, rồi mới thay vào công thức.\nLưu ý: chỉ có một đại lượng cần đổi ⇒ thuộc dạng \"KHỐI LƯỢNG CHO Ở ĐƠN VỊ GAM…\" hoặc \"TỐC ĐỘ CHO Ở ĐƠN VỊ KM/H…\".",
+     "ly_thuyet": "##TC Đổi đồng thời khối lượng và tốc độ\n$1\\ \\mathrm{g} = 0{,}001\\ \\mathrm{kg}$; $1$ tấn $= 1\\ 000\\ \\mathrm{kg}$.\nĐổi km/h sang m/s: chia cho $3{,}6$.\nĐộng năng $W_đ = \\dfrac{1}{2}mv^2$ với $m$ tính bằng kg, $v$ tính bằng m/s.\n\n##PP Tính động năng khi cả hai đại lượng cần đổi\nĐổi khối lượng ra kilôgam.\nĐổi tốc độ ra mét trên giây (chia cho $3{,}6$).\nThay vào $W_đ = \\dfrac{1}{2}mv^2$ và tính.\nGhi đơn vị jun (J).\n\n##CY Chú ý\nĐổi thiếu một trong hai đại lượng cho kết quả sai lệch rất lớn (gấp $1\\ 000$ lần hoặc gấp $3{,}6^2$ lần).",
+     "vi_du": "##VD\nMột vật có khối lượng 1 500 g, chuyển động với tốc độ 54 km/h. Tính động năng của vật.\nA. 2 187 000 J.\nB. 2 187 J.\nC. 168,75 J.\nD. 168 750 J.\n\nBài giải:\nĐổi $m = 1\\ 500\\ \\mathrm{g} = 1{,}5\\ \\mathrm{kg}$; $v = 54\\ \\mathrm{km/h} = 54 : 3{,}6 = 15\\ \\mathrm{m/s}$.\n$W_đ = \\dfrac{1}{2}mv^2 = \\dfrac{1}{2} \\times 1{,}5 \\times 15^2 = \\dfrac{1}{2} \\times 1{,}5 \\times 225 = 168{,}75\\ \\mathrm{J}$.\nChọn C.\n\n##VD\nMột vật có khối lượng 0,5 tấn, chuyển động với tốc độ 90 km/h. Tính động năng của vật.\nA. 156 250 J.\nB. 2 025 J.\nC. 2 025 000 J.\nD. 156,25 J.\n\nBài giải:\nĐổi $m = 0{,}5$ tấn $= 500\\ \\mathrm{kg}$; $v = 90\\ \\mathrm{km/h} = 90 : 3{,}6 = 25\\ \\mathrm{m/s}$.\n$W_đ = \\dfrac{1}{2}mv^2 = \\dfrac{1}{2} \\times 500 \\times 25^2 = \\dfrac{1}{2} \\times 500 \\times 625 = 156\\ 250\\ \\mathrm{J}$.\nChọn A."
+    },
+    {
+     "dang_id": "KDB00978",
+     "thu_tu": 5,
+     "ten": "KHỐI LƯỢNG CHO Ở ĐƠN VỊ TẠ HOẶC YẾN",
+     "mo_ta": "Đề cho khối lượng ở đơn vị tạ hoặc yến, tốc độ ở m/s, hỏi tính động năng.\nPhải đổi tạ ($1$ tạ $= 100$ kg) hoặc yến ($1$ yến $= 10$ kg) ra kilôgam trước khi tính.\nLưu ý: khối lượng cho ở gam hoặc tấn ⇒ thuộc dạng \"KHỐI LƯỢNG CHO Ở ĐƠN VỊ GAM, CẦN ĐỔI RA KILÔGAM\" hoặc dạng đổi cả hai đại lượng.",
+     "ly_thuyet": "##TC Đổi tạ và yến sang kilôgam\n$1$ tạ $= 100\\ \\mathrm{kg}$; $1$ yến $= 10\\ \\mathrm{kg}$.\nĐộng năng $W_đ = \\dfrac{1}{2}mv^2$ với $m$ tính bằng kg.\n\n##PP Tính động năng khi khối lượng cho bằng tạ hoặc yến\nĐổi khối lượng ra kilôgam (nhân số tạ với $100$, nhân số yến với $10$).\nGiữ nguyên tốc độ nếu đã ở m/s.\nThay vào $W_đ = \\dfrac{1}{2}mv^2$ và tính.\nGhi đơn vị jun (J).\n\n##CY Chú ý\nNhớ đúng hệ số: tạ là $100$ kg, yến là $10$ kg; nhầm hệ số làm sai kết quả cuối.",
+     "vi_du": "##VD\nMột vật có khối lượng 1 tạ, chuyển động với tốc độ 5 m/s. Tính động năng của vật.\n\nBài giải:\nĐổi $m = 1$ tạ $= 100\\ \\mathrm{kg}$.\n$W_đ = \\dfrac{1}{2}mv^2 = \\dfrac{1}{2} \\times 100 \\times 5^2 = \\dfrac{1}{2} \\times 100 \\times 25 = 1\\ 250\\ \\mathrm{J}$.\nĐáp án: $1\\ 250\\ \\mathrm{J}$.\n\n##VD\nMột vật có khối lượng 5 yến, chuyển động với tốc độ 6 m/s. Tính động năng của vật.\n\nBài giải:\nĐổi $m = 5$ yến $= 50\\ \\mathrm{kg}$.\n$W_đ = \\dfrac{1}{2}mv^2 = \\dfrac{1}{2} \\times 50 \\times 6^2 = \\dfrac{1}{2} \\times 50 \\times 36 = 900\\ \\mathrm{J}$.\nĐáp án: $900\\ \\mathrm{J}$."
+    },
+    {
+     "dang_id": "KDB00979",
+     "thu_tu": 6,
+     "ten": "TỐC ĐỘ CHO Ở ĐƠN VỊ CENTIMÉT HOẶC MILIMÉT TRÊN GIÂY",
+     "mo_ta": "Đề cho khối lượng ở kg và tốc độ ở cm/s hoặc mm/s, hỏi tính động năng.\nPhải đổi tốc độ ra m/s ($1$ cm/s $= 0{,}01$ m/s; $1$ mm/s $= 0{,}001$ m/s) trước khi tính.\nLưu ý: tốc độ cho ở km/h ⇒ thuộc dạng \"TỐC ĐỘ CHO Ở ĐƠN VỊ KM/H, CẦN ĐỔI RA MÉT TRÊN GIÂY\".\nLưu ý: đề cho cm/s nhưng hỏi tính khối lượng ⇒ thuộc dạng \"TỐC ĐỘ CHO Ở ĐƠN VỊ CENTIMÉT TRÊN GIÂY, TÍNH KHỐI LƯỢNG\".",
+     "ly_thuyet": "##TC Đổi cm/s và mm/s sang m/s\n$1\\ \\mathrm{cm/s} = 0{,}01\\ \\mathrm{m/s}$ (chia số cm/s cho $100$).\n$1\\ \\mathrm{mm/s} = 0{,}001\\ \\mathrm{m/s}$ (chia số mm/s cho $1\\ 000$).\nĐộng năng $W_đ = \\dfrac{1}{2}mv^2$ với $v$ tính bằng m/s.\n\n##PP Tính động năng khi tốc độ cho bằng cm/s hoặc mm/s\nĐổi tốc độ ra mét trên giây.\nGiữ nguyên khối lượng nếu đã ở kg.\nThay vào $W_đ = \\dfrac{1}{2}mv^2$ và tính.\nGhi đơn vị jun (J).\n\n##CY Chú ý\nKhông đổi đơn vị tốc độ thì $v^2$ lớn lên $10\\ 000$ lần (cm/s) hoặc $1\\ 000\\ 000$ lần (mm/s).",
+     "vi_du": "##VD\nMột vật có khối lượng 4 kg, chuyển động với tốc độ 300 cm/s. Tính động năng của vật.\n\nBài giải:\nĐổi $v = 300\\ \\mathrm{cm/s} = 3\\ \\mathrm{m/s}$.\n$W_đ = \\dfrac{1}{2}mv^2 = \\dfrac{1}{2} \\times 4 \\times 3^2 = \\dfrac{1}{2} \\times 4 \\times 9 = 18\\ \\mathrm{J}$.\nĐáp án: $18\\ \\mathrm{J}$.\n\n##VD\nMột vật có khối lượng 2 kg, chuyển động với tốc độ 50 000 mm/s. Tính động năng của vật.\n\nBài giải:\nĐổi $v = 50\\ 000\\ \\mathrm{mm/s} = 50\\ \\mathrm{m/s}$.\n$W_đ = \\dfrac{1}{2}mv^2 = \\dfrac{1}{2} \\times 2 \\times 50^2 = 2\\ 500\\ \\mathrm{J}$.\nĐáp án: $2\\ 500\\ \\mathrm{J}$."
+    },
+    {
+     "dang_id": "KDB00980",
+     "thu_tu": 7,
+     "ten": "CHO TRỌNG LƯỢNG THAY VÌ KHỐI LƯỢNG",
+     "mo_ta": "Đề cho trọng lượng $P$ (N) thay vì khối lượng, kèm tốc độ và $g = 10\\ \\mathrm{m/s^2}$, hỏi tính động năng.\nPhải suy khối lượng từ $m = \\dfrac{P}{10}$ rồi mới thay vào công thức động năng.\nLưu ý: đề cho khối lượng trực tiếp ⇒ thuộc dạng \"TÍNH ĐỘNG NĂNG TỪ KHỐI LƯỢNG VÀ TỐC ĐỘ CHO TRỰC TIẾP\".\nLưu ý: cho trọng lượng nhưng hỏi tính tốc độ ⇒ thuộc dạng \"CHO TRỌNG LƯỢNG THAY VÌ KHỐI LƯỢNG, TÍNH TỐC ĐỘ\" (nhóm tính $m$ hoặc $v$).",
+     "ly_thuyet": "##TC Từ trọng lượng suy ra khối lượng\nTrọng lượng $P = 10m$ (lấy $g = 10\\ \\mathrm{m/s^2}$), nên $m = \\dfrac{P}{10}$ với $P$ tính bằng niutơn (N), $m$ tính bằng kg.\nĐộng năng $W_đ = \\dfrac{1}{2}mv^2$.\n\n##PP Tính động năng khi cho trọng lượng\nTính khối lượng $m = P : 10$.\nKiểm tra tốc độ đã ở m/s chưa.\nThay $m$ và $v$ vào $W_đ = \\dfrac{1}{2}mv^2$ và tính.\nGhi đơn vị jun (J).\n\n##CY Chú ý\nKhông thay thẳng $P$ vào chỗ của $m$; phải chia $P$ cho $10$ trước.",
+     "vi_du": "##VD\nMột vật có trọng lượng 200 N, chuyển động với tốc độ 3 m/s. Lấy $g = 10\\ \\mathrm{m/s^2}$, tính động năng của vật.\n\nBài giải:\nKhối lượng của vật: $m = P : 10 = 200 : 10 = 20\\ \\mathrm{kg}$.\n$W_đ = \\dfrac{1}{2}mv^2 = \\dfrac{1}{2} \\times 20 \\times 3^2 = \\dfrac{1}{2} \\times 20 \\times 9 = 90\\ \\mathrm{J}$.\nĐáp án: $90\\ \\mathrm{J}$.\n\n##VD\nMột vật có trọng lượng 500 N, chuyển động với tốc độ 4 m/s. Lấy $g = 10\\ \\mathrm{m/s^2}$, tính động năng của vật.\n\nBài giải:\nKhối lượng của vật: $m = P : 10 = 500 : 10 = 50\\ \\mathrm{kg}$.\n$W_đ = \\dfrac{1}{2}mv^2 = \\dfrac{1}{2} \\times 50 \\times 4^2 = \\dfrac{1}{2} \\times 50 \\times 16 = 400\\ \\mathrm{J}$.\nĐáp án: $400\\ \\mathrm{J}$."
+    },
+    {
+     "dang_id": "KDB00981",
+     "thu_tu": 8,
+     "ten": "KHỐI LƯỢNG CHO QUA TỈ LỆ PHẦN TRĂM CỦA MỘT KHỐI LƯỢNG CHUẨN",
+     "mo_ta": "Đề cho khối lượng của vật bằng một tỉ lệ phần trăm khối lượng của vật khác (đã biết số kg), kèm tốc độ, hỏi tính động năng.\nPhải tính khối lượng vật ra kg bằng cách lấy phần trăm nhân với khối lượng chuẩn, rồi mới tính động năng.\nLưu ý: đề cho khối lượng trực tiếp ⇒ thuộc dạng \"TÍNH ĐỘNG NĂNG TỪ KHỐI LƯỢNG VÀ TỐC ĐỘ CHO TRỰC TIẾP\".",
+     "ly_thuyet": "##TC Khối lượng cho qua tỉ lệ phần trăm\nKhối lượng vật $= p\\% \\times$ khối lượng chuẩn, với $p\\% = \\dfrac{p}{100}$.\nĐộng năng $W_đ = \\dfrac{1}{2}mv^2$.\n\n##PP Tính động năng khi khối lượng cho qua phần trăm\nTính khối lượng của vật: lấy phần trăm nhân với khối lượng chuẩn.\nKiểm tra tốc độ đã ở m/s chưa.\nThay $m$ và $v$ vào $W_đ = \\dfrac{1}{2}mv^2$ và tính.\nGhi đơn vị jun (J).\n\n##CY Chú ý\nPhần trăm phải lấy của khối lượng vật chuẩn, không phải của tốc độ hay động năng.",
+     "vi_du": "##VD\nMột vật có khối lượng bằng 60% khối lượng của một vật khác nặng 40 kg, chuyển động với tốc độ 3 m/s. Tính động năng của vật.\n\nBài giải:\nKhối lượng của vật: $m = 60\\% \\times 40 = 24\\ \\mathrm{kg}$.\n$W_đ = \\dfrac{1}{2}mv^2 = \\dfrac{1}{2} \\times 24 \\times 3^2 = \\dfrac{1}{2} \\times 24 \\times 9 = 108\\ \\mathrm{J}$.\nĐáp án: $108\\ \\mathrm{J}$.\n\n##VD\nMột vật có khối lượng bằng 40% khối lượng của một vật khác nặng 50 kg, chuyển động với tốc độ 6 m/s. Tính động năng của vật.\n\nBài giải:\nKhối lượng của vật: $m = 40\\% \\times 50 = 20\\ \\mathrm{kg}$.\n$W_đ = \\dfrac{1}{2}mv^2 = \\dfrac{1}{2} \\times 20 \\times 6^2 = \\dfrac{1}{2} \\times 20 \\times 36 = 360\\ \\mathrm{J}$.\nĐáp án: $360\\ \\mathrm{J}$."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00411",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Động năng",
+   "nhom": "Tính khối lượng m hoặc vận tốc v khi biết động năng Wđ",
+   "nhom_ly_thuyet": "Mục tiêu: Từ giá trị động năng cho trước, biến đổi công thức để tính đại lượng còn lại.\n\nCác bước giải:\n\n**Bước 1:** Biến đổi công thức gốc $W_đ = \\dfrac{1}{2} mv^2$ sang đại lượng cần tìm:\n\nNếu tìm khối lượng: $m = \\dfrac{2\\cdot W_đ}{v^2}$\n\nNếu tìm vận tốc: $v = \\sqrt{\\dfrac{2\\cdot W_đ}{m}}$\n\n**Bước 2:** Đổi các dữ kiện đề bài về đơn vị chuẩn ($W_đ$ về J, m về kg).\n\n**Bước 3:** Thay số vào công thức biến đổi ở Bước 1 để tìm kết quả.\n\n**Ví dụ minh họa:** Một vật có khối lượng 2 kg đang chuyển động và có động năng bằng 16 J. Tính vận tốc của vật đó.\n\nHướng dẫn giải\n\n**Bước 1:** Công thức tính vận tốc rút ra từ công thức động năng là: $v = \\sqrt{\\dfrac{2\\cdot W_đ}{m}}$.\n\n**Bước 2:** Đơn vị bài cho đã chuẩn ($W_đ = 16$ J, $m = 2$ kg).\n\n**Bước 3:** Thay số vào tính toán: $v = \\sqrt{\\dfrac{2\\times 16}{2}} = \\sqrt{32} = \\sqrt{16} = 4$ m/s .\n\nKết luận: Vận tốc của vật là 4 m/s .",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00982",
+     "thu_tu": 1,
+     "ten": "CHO ĐỘNG NĂNG VÀ TỐC ĐỘ, TÍNH KHỐI LƯỢNG",
+     "mo_ta": "Đề cho động năng $W_đ$ (J) và tốc độ $v$ (m/s), hỏi tính khối lượng của vật.\nLàm bằng cách biến đổi công thức: $m = \\dfrac{2W_đ}{v^2}$ rồi thay số.\nCác đại lượng đều đã đúng đơn vị chuẩn, không phải đổi.\nLưu ý: đề cho $W_đ$ và $m$, hỏi tốc độ ⇒ thuộc dạng \"CHO ĐỘNG NĂNG VÀ KHỐI LƯỢNG, TÍNH TỐC ĐỘ\".\nLưu ý: động năng cho ở kJ, hoặc tốc độ ở cm/s ⇒ thuộc các dạng đổi đơn vị tương ứng.",
+     "ly_thuyet": "##TC Tính khối lượng từ động năng và tốc độ\nTừ $W_đ = \\dfrac{1}{2}mv^2$ suy ra $m = \\dfrac{2W_đ}{v^2}$.\n$W_đ$ tính bằng J, $v$ tính bằng m/s thì $m$ ra kilôgam (kg).\n\n##PP Tính khối lượng\nViết công thức $m = \\dfrac{2W_đ}{v^2}$.\nTính $v^2$ và $2W_đ$.\nChia $2W_đ$ cho $v^2$.\nGhi đơn vị kilôgam (kg).\n\n##CY Chú ý\nPhải nhân $W_đ$ với $2$ rồi chia cho $v^2$ (bình phương tốc độ); chia cho $v$ thay vì $v^2$ hoặc quên nhân $2$ đều sai.",
+     "vi_du": "##VD\nMột vật có động năng 450 J, chuyển động với tốc độ 10 m/s. Tính khối lượng của vật.\n\nBài giải:\n$m = \\dfrac{2W_đ}{v^2} = \\dfrac{2 \\times 450}{10^2} = \\dfrac{900}{100} = 9\\ \\mathrm{kg}$.\nĐáp án: $9\\ \\mathrm{kg}$.\n\n##VD\nMột vật có động năng $1\\ 470\\ \\mathrm{J}$, chuyển động với tốc độ $14\\ \\mathrm{m/s}$. Tính khối lượng của vật.\n\nBài giải:\n$m = \\dfrac{2W_đ}{v^2} = \\dfrac{2 \\times 1\\ 470}{14^2} = \\dfrac{2\\ 940}{196} = 15\\ \\mathrm{kg}$.\nĐáp án: $15\\ \\mathrm{kg}$."
+    },
+    {
+     "dang_id": "KDB00983",
+     "thu_tu": 2,
+     "ten": "CHO ĐỘNG NĂNG VÀ KHỐI LƯỢNG, TÍNH TỐC ĐỘ",
+     "mo_ta": "Đề cho động năng $W_đ$ (J) và khối lượng $m$ (kg), hỏi tính tốc độ của vật (m/s).\nLàm bằng cách biến đổi $v = \\sqrt{\\dfrac{2W_đ}{m}}$ rồi thay số, lấy căn bậc hai.\nCác đại lượng đều đã đúng đơn vị chuẩn, kết quả ra m/s.\nLưu ý: kết quả yêu cầu ra km/h ⇒ thuộc dạng \"CHO ĐỘNG NĂNG VÀ KHỐI LƯỢNG, TÍNH TỐC ĐỘ RA KM/H\".\nLưu ý: đề cho $W_đ$ và $v$, hỏi khối lượng ⇒ thuộc dạng \"CHO ĐỘNG NĂNG VÀ TỐC ĐỘ, TÍNH KHỐI LƯỢNG\".",
+     "ly_thuyet": "##TC Tính tốc độ từ động năng và khối lượng\nTừ $W_đ = \\dfrac{1}{2}mv^2$ suy ra $v^2 = \\dfrac{2W_đ}{m}$, nên $v = \\sqrt{\\dfrac{2W_đ}{m}}$.\n$W_đ$ tính bằng J, $m$ tính bằng kg thì $v$ ra mét trên giây (m/s).\n\n##PP Tính tốc độ\nTính $v^2 = \\dfrac{2W_đ}{m}$.\nLấy căn bậc hai của $v^2$ để được $v$.\nGhi đơn vị m/s.\n\n##CY Chú ý\nQuên lấy căn bậc hai thì chọn nhầm giá trị của $v^2$.\nQuên nhân $2$ ở tử số cho kết quả nhỏ hơn đúng (ví dụ ra $v$ lẻ).",
+     "vi_du": "##VD\nMột vật có khối lượng 4 kg, động năng 128 J. Tính tốc độ của vật.\nA. 64 m/s.\nB. 5,66 m/s.\nC. 8 m/s.\nD. 4 m/s.\n\nBài giải:\n$v^2 = \\dfrac{2W_đ}{m} = \\dfrac{2 \\times 128}{4} = 64$.\nLấy căn bậc hai: $v = \\sqrt{64} = 8\\ \\mathrm{m/s}$.\nPhương án A sai vì chưa lấy căn bậc hai.\nChọn C.\n\n##VD\nMột vật có khối lượng 14 kg, động năng 1 575 J. Tính tốc độ của vật.\nA. 225 m/s.\nB. 10,61 m/s.\nC. 4,01 m/s.\nD. 15 m/s.\n\nBài giải:\n$v^2 = \\dfrac{2W_đ}{m} = \\dfrac{2 \\times 1\\ 575}{14} = \\dfrac{3\\ 150}{14} = 225$.\nLấy căn bậc hai: $v = \\sqrt{225} = 15\\ \\mathrm{m/s}$.\nPhương án A sai vì chưa lấy căn bậc hai.\nChọn D."
+    },
+    {
+     "dang_id": "KDB00984",
+     "thu_tu": 3,
+     "ten": "ĐỘNG NĂNG CHO Ở ĐƠN VỊ KILÔJUN, TÍNH KHỐI LƯỢNG",
+     "mo_ta": "Đề cho động năng ở đơn vị kilôjun (kJ) và tốc độ (m/s), hỏi tính khối lượng.\nPhải đổi kJ sang J ($1$ kJ $= 1\\ 000$ J) trước khi dùng $m = \\dfrac{2W_đ}{v^2}$.\nLưu ý: động năng cho ở J ⇒ thuộc dạng \"CHO ĐỘNG NĂNG VÀ TỐC ĐỘ, TÍNH KHỐI LƯỢNG\".",
+     "ly_thuyet": "##TC Đổi kilôjun sang jun\n$1\\ \\mathrm{kJ} = 1\\ 000\\ \\mathrm{J}$.\nKhối lượng $m = \\dfrac{2W_đ}{v^2}$ với $W_đ$ tính bằng J, $v$ tính bằng m/s thì $m$ ra kg.\n\n##PP Tính khối lượng khi động năng cho bằng kJ\nĐổi động năng từ kJ ra J (nhân với $1\\ 000$).\nViết công thức $m = \\dfrac{2W_đ}{v^2}$.\nThay số và tính.\nGhi đơn vị kilôgam (kg).\n\n##CY Chú ý\nKhông đổi kJ ra J thì khối lượng nhỏ hơn đúng $1\\ 000$ lần.",
+     "vi_du": "##VD\nMột vật có động năng 10 kJ, chuyển động với tốc độ 5 m/s. Tính khối lượng của vật.\nA. 0,8 kg.\nB. 0 kg.\nC. 4 000 kg.\nD. 800 kg.\n\nBài giải:\nĐổi $W_đ = 10\\ \\mathrm{kJ} = 10\\ 000\\ \\mathrm{J}$.\n$m = \\dfrac{2W_đ}{v^2} = \\dfrac{2 \\times 10\\ 000}{5^2} = \\dfrac{20\\ 000}{25} = 800\\ \\mathrm{kg}$.\nPhương án A sai vì chưa đổi kJ ra J.\nChọn D.\n\n##VD\nMột vật có động năng 244 kJ, chuyển động với tốc độ 20 m/s. Tính khối lượng của vật.\nA. 1,22 kg.\nB. 1 220 kg.\nC. 0 kg.\nD. 24 400 kg.\n\nBài giải:\nĐổi $W_đ = 244\\ \\mathrm{kJ} = 244\\ 000\\ \\mathrm{J}$.\n$m = \\dfrac{2W_đ}{v^2} = \\dfrac{2 \\times 244\\ 000}{20^2} = \\dfrac{488\\ 000}{400} = 1\\ 220\\ \\mathrm{kg}$.\nPhương án A sai vì chưa đổi kJ ra J.\nChọn B."
+    },
+    {
+     "dang_id": "KDB00985",
+     "thu_tu": 4,
+     "ten": "CHO ĐỘNG NĂNG VÀ KHỐI LƯỢNG, TÍNH TỐC ĐỘ RA KM/H",
+     "mo_ta": "Đề cho động năng (J) và khối lượng (kg), yêu cầu tính tốc độ và đưa kết quả ra km/h.\nTính $v$ (m/s) bằng $v = \\sqrt{\\dfrac{2W_đ}{m}}$ rồi nhân $3{,}6$ để ra km/h.\nLưu ý: kết quả yêu cầu ra m/s ⇒ thuộc dạng \"CHO ĐỘNG NĂNG VÀ KHỐI LƯỢNG, TÍNH TỐC ĐỘ\".",
+     "ly_thuyet": "##TC Đổi kết quả tốc độ ra km/h\nTính $v$ bằng m/s từ $v = \\sqrt{\\dfrac{2W_đ}{m}}$.\nĐổi m/s sang km/h bằng cách nhân với $3{,}6$ ($1\\ \\mathrm{m/s} = 3{,}6\\ \\mathrm{km/h}$).\n\n##PP Tính tốc độ ra km/h\nTính $v^2 = \\dfrac{2W_đ}{m}$.\nLấy căn bậc hai để được $v$ bằng m/s.\nNhân $v$ với $3{,}6$ để đổi ra km/h.\nGhi đơn vị km/h.\n\n##CY Chú ý\nQuên đổi ra km/h thì chọn nhầm giá trị m/s; chia cho $3{,}6$ thay vì nhân là đổi ngược chiều.",
+     "vi_du": "##VD\nMột vật có khối lượng 16 kg, động năng 392 J. Tính tốc độ của vật ra đơn vị km/h.\nA. 7 km/h.\nB. 1,94 km/h.\nC. 176,4 km/h.\nD. 25,2 km/h.\n\nBài giải:\n$v^2 = \\dfrac{2W_đ}{m} = \\dfrac{2 \\times 392}{16} = 49$ nên $v = \\sqrt{49} = 7\\ \\mathrm{m/s}$.\nĐổi ra km/h: $v = 7 \\times 3{,}6 = 25{,}2\\ \\mathrm{km/h}$.\nPhương án A sai vì chưa đổi m/s ra km/h; phương án B sai vì chia cho $3{,}6$ thay vì nhân.\nChọn D.\n\n##VD\nMột vật có khối lượng 17 kg, động năng 1 028,5 J. Tính tốc độ của vật ra đơn vị km/h.\nA. 11 km/h.\nB. 39,6 km/h.\nC. 3,06 km/h.\nD. 435,6 km/h.\n\nBài giải:\n$v^2 = \\dfrac{2W_đ}{m} = \\dfrac{2 \\times 1\\ 028{,}5}{17} = 121$ nên $v = \\sqrt{121} = 11\\ \\mathrm{m/s}$.\nĐổi ra km/h: $v = 11 \\times 3{,}6 = 39{,}6\\ \\mathrm{km/h}$.\nPhương án A sai vì chưa đổi m/s ra km/h.\nChọn B."
+    },
+    {
+     "dang_id": "KDB00986",
+     "thu_tu": 5,
+     "ten": "TÍNH KHỐI LƯỢNG VÀ ĐỔI KẾT QUẢ RA GAM",
+     "mo_ta": "Đề cho động năng (J) và tốc độ (m/s), hỏi tính khối lượng và yêu cầu đưa kết quả ra gam.\nTính $m$ (kg) bằng $m = \\dfrac{2W_đ}{v^2}$ rồi nhân $1\\ 000$ để ra gam.\nLưu ý: kết quả yêu cầu ra kg ⇒ thuộc dạng \"CHO ĐỘNG NĂNG VÀ TỐC ĐỘ, TÍNH KHỐI LƯỢNG\".",
+     "ly_thuyet": "##TC Đổi kết quả khối lượng ra gam\nTính $m$ bằng kg từ $m = \\dfrac{2W_đ}{v^2}$.\nĐổi kg sang g bằng cách nhân với $1\\ 000$ ($1\\ \\mathrm{kg} = 1\\ 000\\ \\mathrm{g}$).\n\n##PP Tính khối lượng ra gam\nTính $m = \\dfrac{2W_đ}{v^2}$ (đơn vị kg).\nNhân kết quả với $1\\ 000$ để đổi ra gam.\nGhi đơn vị gam (g).\n\n##CY Chú ý\nQuên đổi ra gam thì đáp số nhỏ hơn đúng $1\\ 000$ lần.",
+     "vi_du": "##VD\nMột vật có động năng 288 J, chuyển động với tốc độ 12 m/s. Tính khối lượng của vật, kết quả đổi ra đơn vị gam.\n\nBài giải:\n$m = \\dfrac{2W_đ}{v^2} = \\dfrac{2 \\times 288}{12^2} = \\dfrac{576}{144} = 4\\ \\mathrm{kg}$.\nĐổi ra gam: $4\\ \\mathrm{kg} = 4 \\times 1\\ 000 = 4\\ 000\\ \\mathrm{g}$.\nĐáp án: $4\\ 000\\ \\mathrm{g}$.\n\n##VD\nMột vật có động năng 76,5 J, chuyển động với tốc độ 3 m/s. Tính khối lượng của vật, kết quả đổi ra đơn vị gam.\n\nBài giải:\n$m = \\dfrac{2W_đ}{v^2} = \\dfrac{2 \\times 76{,}5}{3^2} = \\dfrac{153}{9} = 17\\ \\mathrm{kg}$.\nĐổi ra gam: $17\\ \\mathrm{kg} = 17 \\times 1\\ 000 = 17\\ 000\\ \\mathrm{g}$.\nĐáp án: $17\\ 000\\ \\mathrm{g}$."
+    },
+    {
+     "dang_id": "KDB00987",
+     "thu_tu": 6,
+     "ten": "TỐC ĐỘ CHO Ở ĐƠN VỊ CENTIMÉT TRÊN GIÂY, TÍNH KHỐI LƯỢNG",
+     "mo_ta": "Đề cho động năng (J) và tốc độ ở cm/s, hỏi tính khối lượng.\nPhải đổi tốc độ ra m/s (chia cho $100$) trước khi dùng $m = \\dfrac{2W_đ}{v^2}$.\nLưu ý: đề cho cm/s nhưng hỏi tính động năng ⇒ thuộc dạng \"TỐC ĐỘ CHO Ở ĐƠN VỊ CENTIMÉT HOẶC MILIMÉT TRÊN GIÂY\" của nhóm tính $W_đ$.",
+     "ly_thuyet": "##TC Tính khối lượng khi tốc độ cho bằng cm/s\n$1\\ \\mathrm{cm/s} = 0{,}01\\ \\mathrm{m/s}$ (chia số cm/s cho $100$).\nKhối lượng $m = \\dfrac{2W_đ}{v^2}$ với $W_đ$ tính bằng J, $v$ tính bằng m/s.\n\n##PP Tính khối lượng\nĐổi tốc độ từ cm/s ra m/s.\nViết công thức $m = \\dfrac{2W_đ}{v^2}$.\nThay số và tính.\nGhi đơn vị kilôgam (kg).\n\n##CY Chú ý\nKhông đổi cm/s ra m/s thì $v^2$ lớn hơn đúng $10\\ 000$ lần, khối lượng tính ra nhỏ hơn rất nhiều.",
+     "vi_du": "##VD\nMột vật có động năng 200 J, chuyển động với tốc độ 1 000 cm/s. Tính khối lượng của vật.\n\nBài giải:\nĐổi $v = 1\\ 000\\ \\mathrm{cm/s} = 10\\ \\mathrm{m/s}$.\n$m = \\dfrac{2W_đ}{v^2} = \\dfrac{2 \\times 200}{10^2} = \\dfrac{400}{100} = 4\\ \\mathrm{kg}$.\nĐáp án: $4\\ \\mathrm{kg}$.\n\n##VD\nMột vật có động năng 1 237,5 J, chuyển động với tốc độ 1 500 cm/s. Tính khối lượng của vật.\n\nBài giải:\nĐổi $v = 1\\ 500\\ \\mathrm{cm/s} = 15\\ \\mathrm{m/s}$.\n$m = \\dfrac{2W_đ}{v^2} = \\dfrac{2 \\times 1\\ 237{,}5}{15^2} = \\dfrac{2\\ 475}{225} = 11\\ \\mathrm{kg}$.\nĐáp án: $11\\ \\mathrm{kg}$."
+    },
+    {
+     "dang_id": "KDB00988",
+     "thu_tu": 7,
+     "ten": "CHO TRỌNG LƯỢNG THAY VÌ KHỐI LƯỢNG, TÍNH TỐC ĐỘ",
+     "mo_ta": "Đề cho động năng (J) và trọng lượng $P$ (N), kèm $g = 10\\ \\mathrm{m/s^2}$, hỏi tính tốc độ của vật.\nPhải suy khối lượng $m = \\dfrac{P}{10}$ trước, rồi dùng $v = \\sqrt{\\dfrac{2W_đ}{m}}$.\nLưu ý: đề cho trọng lượng nhưng hỏi tính động năng ⇒ thuộc dạng \"CHO TRỌNG LƯỢNG THAY VÌ KHỐI LƯỢNG\" của nhóm tính $W_đ$.",
+     "ly_thuyet": "##TC Tính tốc độ khi cho trọng lượng\nTrọng lượng $P = 10m$ (lấy $g = 10\\ \\mathrm{m/s^2}$), nên $m = \\dfrac{P}{10}$.\nTốc độ $v = \\sqrt{\\dfrac{2W_đ}{m}}$ với $W_đ$ tính bằng J, $m$ tính bằng kg.\n\n##PP Tính tốc độ\nTính khối lượng $m = P : 10$.\nTính $v^2 = \\dfrac{2W_đ}{m}$.\nLấy căn bậc hai để được $v$ (m/s).\n\n##CY Chú ý\nKhông dùng thẳng $P$ thay cho $m$ trong công thức; phải chia $P$ cho $10$ trước.",
+     "vi_du": "##VD\nMột vật có động năng $136\\ \\mathrm{J}$ và trọng lượng $170\\ \\mathrm{N}$. Lấy $g = 10\\ \\mathrm{m/s^2}$, tính tốc độ của vật.\n\nBài giải:\nKhối lượng của vật: $m = P : 10 = 170 : 10 = 17\\ \\mathrm{kg}$.\n$v^2 = \\dfrac{2W_đ}{m} = \\dfrac{2 \\times 136}{17} = 16$.\nLấy căn bậc hai: $v = \\sqrt{16} = 4\\ \\mathrm{m/s}$.\nĐáp án: $4\\ \\mathrm{m/s}$.\n\n##VD\nMột vật có động năng $1\\ 764\\ \\mathrm{J}$ và trọng lượng $180\\ \\mathrm{N}$. Lấy $g = 10\\ \\mathrm{m/s^2}$, tính tốc độ của vật.\n\nBài giải:\nKhối lượng của vật: $m = P : 10 = 180 : 10 = 18\\ \\mathrm{kg}$.\n$v^2 = \\dfrac{2W_đ}{m} = \\dfrac{2 \\times 1\\ 764}{18} = 196$.\nLấy căn bậc hai: $v = \\sqrt{196} = 14\\ \\mathrm{m/s}$.\nĐáp án: $14\\ \\mathrm{m/s}$."
+    },
+    {
+     "dang_id": "KDB00989",
+     "thu_tu": 8,
+     "ten": "KHỐI LƯỢNG CHO Ở ĐƠN VỊ YẾN, TÍNH TỐC ĐỘ",
+     "mo_ta": "Đề cho động năng (J) và khối lượng ở đơn vị yến, hỏi tính tốc độ của vật.\nPhải đổi yến ra kg ($1$ yến $= 10$ kg) trước, rồi dùng $v = \\sqrt{\\dfrac{2W_đ}{m}}$.\nLưu ý: khối lượng cho trực tiếp ở kg ⇒ thuộc dạng \"CHO ĐỘNG NĂNG VÀ KHỐI LƯỢNG, TÍNH TỐC ĐỘ\".",
+     "ly_thuyet": "##TC Tính tốc độ khi khối lượng cho bằng yến\n$1$ yến $= 10\\ \\mathrm{kg}$ (nhân số yến với $10$ để được số kg).\nTốc độ $v = \\sqrt{\\dfrac{2W_đ}{m}}$ với $W_đ$ tính bằng J, $m$ tính bằng kg.\n\n##PP Tính tốc độ\nĐổi khối lượng từ yến ra kilôgam.\nTính $v^2 = \\dfrac{2W_đ}{m}$.\nLấy căn bậc hai để được $v$ (m/s).\n\n##CY Chú ý\nNhầm $1$ yến $= 100$ kg (nhầm với tạ) làm sai kết quả cuối.",
+     "vi_du": "##VD\nMột vật có động năng $560\\ \\mathrm{J}$ và khối lượng 7 yến. Tính tốc độ của vật.\n\nBài giải:\nĐổi $m = 7$ yến $= 70\\ \\mathrm{kg}$.\n$v^2 = \\dfrac{2W_đ}{m} = \\dfrac{2 \\times 560}{70} = 16$.\nLấy căn bậc hai: $v = \\sqrt{16} = 4\\ \\mathrm{m/s}$.\nĐáp án: $4\\ \\mathrm{m/s}$.\n\n##VD\nMột vật có động năng $2\\ 125\\ \\mathrm{J}$ và khối lượng 17 yến. Tính tốc độ của vật.\n\nBài giải:\nĐổi $m = 17$ yến $= 170\\ \\mathrm{kg}$.\n$v^2 = \\dfrac{2W_đ}{m} = \\dfrac{2 \\times 2\\ 125}{170} = 25$.\nLấy căn bậc hai: $v = \\sqrt{25} = 5\\ \\mathrm{m/s}$.\nĐáp án: $5\\ \\mathrm{m/s}$."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00412",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Động năng",
+   "nhom": "SO SÁNH VÀ TỈ LỆ ĐỘNG NĂNG",
+   "nhom_ly_thuyet": "$W_d = \\dfrac{1}{2}mv^2$: động năng tỉ lệ thuận với khối lượng m (khi v không đổi).\n$W_d = \\dfrac{1}{2}mv^2$: động năng tỉ lệ thuận với bình phương tốc độ v (khi m không đổi).\nNếu m tăng a lần và v tăng b lần đồng thời thì $W_d$ tăng $a \\times b^2$ lần.\nSo sánh hai vật: nếu $m_A = p \\times m_B$ và $v_A = q \\times v_B$ thì $W_{dA} : W_{dB} = p \\times q^2$.\nTrình tự làm bài\nXác định đại lượng nào thay đổi (khối lượng, tốc độ, hay cả hai) và đại lượng nào giữ nguyên.\nÁp dụng đúng bậc của mỗi đại lượng trong công thức $W_d = \\dfrac{1}{2}mv^2$: khối lượng ở bậc 1, tốc độ ở bậc 2.\nNhân các hệ số thay đổi tương ứng để suy ra số lần (hoặc phần trăm) động năng thay đổi; không cần biết giá trị tuyệt đối của m, v.\nVÍ DỤ 1. Một vật đang chuyển động, tốc độ giữ nguyên, khối lượng tăng 3 lần. Hỏi động năng của vật tăng bao nhiêu lần?\nHướng dẫn: $W_d = \\dfrac{1}{2}mv^2$, v không đổi nên $W_d$ tỉ lệ thuận với m. Khối lượng tăng 3 lần thì động năng tăng 3 lần.\nVÍ DỤ 2. Một vật đang chuyển động, khối lượng giữ nguyên, tốc độ tăng 3 lần. Hỏi động năng của vật tăng bao nhiêu lần?\nHướng dẫn: $W_d = \\dfrac{1}{2}mv^2$, m không đổi nên $W_d$ tỉ lệ thuận với $v^2$. Tốc độ tăng 3 lần thì động năng tăng $3^2 = 9$ lần.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00990",
+     "thu_tu": 1,
+     "ten": "KHỐI LƯỢNG THAY ĐỔI K LẦN, TỐC ĐỘ KHÔNG ĐỔI",
+     "mo_ta": "Đề cho khối lượng thay đổi (tăng hoặc giảm $k$ lần), tốc độ giữ nguyên, hỏi động năng thay đổi bao nhiêu lần.\nLàm bằng cách dùng $W_đ$ tỉ lệ thuận với $m$: khối lượng đổi $k$ lần thì động năng đổi $k$ lần.\nLưu ý: tốc độ cũng thay đổi cùng lúc ⇒ thuộc dạng \"KHỐI LƯỢNG VÀ TỐC ĐỘ CÙNG THAY ĐỔI\".\nLưu ý: khối lượng đổi theo phần trăm ⇒ thuộc dạng \"KHỐI LƯỢNG TĂNG THÊM P%, TÍNH PHẦN TRĂM ĐỘNG NĂNG TĂNG THÊM\".",
+     "ly_thuyet": "##TC Động năng và khối lượng\nKhi tốc độ không đổi, $W_đ = \\dfrac{1}{2}mv^2$ tỉ lệ thuận với khối lượng $m$.\nKhối lượng tăng (giảm) $k$ lần thì động năng tăng (giảm) $k$ lần.\n\n##PP Tìm số lần thay đổi của động năng\nXác định tốc độ không đổi, chỉ có khối lượng thay đổi.\nDùng tỉ lệ thuận: số lần đổi của $W_đ$ bằng số lần đổi của $m$.\nKết luận động năng tăng hay giảm bao nhiêu lần.\n\n##CY Chú ý\nKhối lượng ở bậc 1 nên không bình phương hệ số (bình phương là sai: tăng 3 lần không cho 9 lần).\nKhông lấy nghịch đảo hay chia đôi hệ số.",
+     "vi_du": "##VD\nMột vật đang chuyển động, nếu tốc độ giữ nguyên và khối lượng tăng 3 lần thì động năng của vật thay đổi bao nhiêu lần?\nA. 9 lần.\nB. 0,33 lần.\nC. 3 lần.\nD. 1,5 lần.\n\nBài giải:\nTốc độ không đổi nên $W_đ = \\dfrac{1}{2}mv^2$ tỉ lệ thuận với $m$.\nKhối lượng tăng 3 lần thì động năng tăng 3 lần.\nPhương án A sai vì khối lượng chỉ ở bậc 1, không bình phương.\nChọn C.\n\n##VD\nMột vật đang chuyển động, nếu tốc độ giữ nguyên và khối lượng tăng 7 lần thì động năng của vật thay đổi bao nhiêu lần?\nA. 49 lần.\nB. 0,14 lần.\nC. 7 lần.\nD. 3,5 lần.\n\nBài giải:\nTốc độ không đổi nên $W_đ = \\dfrac{1}{2}mv^2$ tỉ lệ thuận với $m$.\nKhối lượng tăng 7 lần thì động năng tăng 7 lần.\nPhương án A sai vì khối lượng chỉ ở bậc 1, không bình phương.\nChọn C."
+    },
+    {
+     "dang_id": "KDB00991",
+     "thu_tu": 2,
+     "ten": "TỐC ĐỘ THAY ĐỔI K LẦN, KHỐI LƯỢNG KHÔNG ĐỔI",
+     "mo_ta": "Đề cho tốc độ thay đổi (tăng hoặc giảm $k$ lần), khối lượng giữ nguyên, hỏi động năng thay đổi bao nhiêu lần.\nLàm bằng cách dùng $W_đ$ tỉ lệ thuận với $v^2$: tốc độ đổi $k$ lần thì động năng đổi $k^2$ lần.\nLưu ý: khối lượng cũng thay đổi cùng lúc ⇒ thuộc dạng \"KHỐI LƯỢNG VÀ TỐC ĐỘ CÙNG THAY ĐỔI\".\nLưu ý: tốc độ đổi theo phần trăm hoặc \"còn một phần $n$\" và hỏi phần trăm động năng ⇒ thuộc dạng \"TỐC ĐỘ GIẢM P%…\" hoặc \"TỐC ĐỘ GIẢM CÒN MỘT PHẦN N…\".",
+     "ly_thuyet": "##TC Động năng và tốc độ\nKhi khối lượng không đổi, $W_đ = \\dfrac{1}{2}mv^2$ tỉ lệ thuận với bình phương tốc độ $v^2$.\nTốc độ tăng (giảm) $k$ lần thì động năng tăng (giảm) $k^2$ lần.\n\n##PP Tìm số lần thay đổi của động năng\nXác định khối lượng không đổi, chỉ có tốc độ thay đổi.\nBình phương số lần đổi của tốc độ để được số lần đổi của động năng.\nKết luận động năng tăng hay giảm bao nhiêu lần.\n\n##CY Chú ý\nTốc độ ở bậc 2 nên phải bình phương hệ số: tăng 6 lần tốc độ thì động năng tăng 36 lần, không phải 6 lần hay 12 lần.",
+     "vi_du": "##VD\nMột vật đang chuyển động, nếu khối lượng giữ nguyên và tốc độ tăng 6 lần thì động năng của vật thay đổi bao nhiêu lần?\nA. 6 lần.\nB. 36 lần.\nC. 12 lần.\nD. 0,17 lần.\n\nBài giải:\nKhối lượng không đổi nên $W_đ = \\dfrac{1}{2}mv^2$ tỉ lệ thuận với $v^2$.\nTốc độ tăng 6 lần thì động năng tăng $6^2 = 36$ lần.\nPhương án A sai vì chưa bình phương hệ số; phương án C sai vì nhân đôi hệ số thay vì bình phương.\nChọn B.\n\n##VD\nMột vật đang chuyển động, nếu khối lượng giữ nguyên và tốc độ tăng 9 lần thì động năng của vật thay đổi bao nhiêu lần?\nA. 9 lần.\nB. 18 lần.\nC. 0,11 lần.\nD. 81 lần.\n\nBài giải:\nKhối lượng không đổi nên $W_đ = \\dfrac{1}{2}mv^2$ tỉ lệ thuận với $v^2$.\nTốc độ tăng 9 lần thì động năng tăng $9^2 = 81$ lần.\nPhương án A sai vì chưa bình phương hệ số; phương án B sai vì nhân đôi hệ số thay vì bình phương.\nChọn D."
+    },
+    {
+     "dang_id": "KDB00992",
+     "thu_tu": 3,
+     "ten": "KHỐI LƯỢNG VÀ TỐC ĐỘ CÙNG THAY ĐỔI",
+     "mo_ta": "Đề cho cả khối lượng và tốc độ của MỘT vật cùng thay đổi (cho số lần), hỏi động năng thay đổi bao nhiêu lần.\nLàm bằng cách nhân hệ số của khối lượng với bình phương hệ số của tốc độ.\nLưu ý: so sánh động năng giữa HAI vật A và B (A gấp B bao nhiêu lần) ⇒ thuộc dạng \"SO SÁNH ĐỘNG NĂNG GIỮA HAI VẬT\".\nLưu ý: chỉ một đại lượng thay đổi ⇒ thuộc dạng \"KHỐI LƯỢNG THAY ĐỔI K LẦN…\" hoặc \"TỐC ĐỘ THAY ĐỔI K LẦN…\".",
+     "ly_thuyet": "##TC Khối lượng và tốc độ cùng thay đổi\n$W_đ = \\dfrac{1}{2}mv^2$: nếu $m$ tăng $a$ lần và $v$ tăng $b$ lần đồng thời thì $W_đ$ tăng $a \\times b^2$ lần.\n\n##PP Tìm số lần thay đổi của động năng\nXác định số lần thay đổi của khối lượng ($a$) và của tốc độ ($b$).\nTính hệ số động năng $a \\times b^2$ (bình phương chỉ cho $b$).\nKết luận động năng tăng bao nhiêu lần.\n\n##CY Chú ý\nChỉ bình phương hệ số của tốc độ; bình phương cả hai hệ số hoặc cộng thay vì nhân đều sai.",
+     "vi_du": "##VD\nMột vật đang chuyển động, nếu khối lượng tăng 3 lần và đồng thời tốc độ tăng 2 lần thì động năng của vật tăng bao nhiêu lần?\nA. 6 lần.\nB. 36 lần.\nC. 4 lần.\nD. 12 lần.\n\nBài giải:\n$W_đ = \\dfrac{1}{2}mv^2$, khối lượng tăng 3 lần ($a = 3$), tốc độ tăng 2 lần ($b = 2$).\nĐộng năng tăng $a \\times b^2 = 3 \\times 2^2 = 12$ lần.\nChọn D.\n\n##VD\nMột vật đang chuyển động, nếu khối lượng tăng 2 lần và đồng thời tốc độ tăng 4 lần thì động năng của vật tăng bao nhiêu lần?\nA. 8 lần.\nB. 32 lần.\nC. 64 lần.\nD. 16 lần.\n\nBài giải:\n$W_đ = \\dfrac{1}{2}mv^2$, khối lượng tăng 2 lần ($a = 2$), tốc độ tăng 4 lần ($b = 4$).\nĐộng năng tăng $a \\times b^2 = 2 \\times 4^2 = 32$ lần.\nChọn B."
+    },
+    {
+     "dang_id": "KDB00993",
+     "thu_tu": 4,
+     "ten": "SO SÁNH ĐỘNG NĂNG GIỮA HAI VẬT",
+     "mo_ta": "Đề so sánh hai vật A và B qua tỉ số khối lượng và tỉ số tốc độ, hỏi động năng vật A gấp bao nhiêu lần vật B.\nLàm bằng cách nhân tỉ số khối lượng với bình phương tỉ số tốc độ: $\\dfrac{W_{đA}}{W_{đB}} = \\dfrac{m_A}{m_B} \\times \\left(\\dfrac{v_A}{v_B}\\right)^2$.\nLưu ý: chỉ nói một vật có khối lượng, tốc độ thay đổi (\"tăng 3 lần\") ⇒ thuộc dạng \"KHỐI LƯỢNG VÀ TỐC ĐỘ CÙNG THAY ĐỔI\".\nLưu ý: cho tỉ số động năng, hỏi tỉ số tốc độ ⇒ thuộc dạng \"CHO TỈ SỐ ĐỘNG NĂNG VÀ TỈ SỐ KHỐI LƯỢNG, TÍNH TỈ SỐ TỐC ĐỘ\".",
+     "ly_thuyet": "##TC So sánh động năng hai vật\nNếu $m_A = p \\times m_B$ và $v_A = q \\times v_B$ thì $\\dfrac{W_{đA}}{W_{đB}} = p \\times q^2$.\n\n##PP So sánh động năng hai vật\nXác định tỉ số khối lượng $p = \\dfrac{m_A}{m_B}$ và tỉ số tốc độ $q = \\dfrac{v_A}{v_B}$.\nTính $\\dfrac{W_{đA}}{W_{đB}} = p \\times q^2$.\nKết luận động năng vật A gấp bao nhiêu lần vật B.\n\n##CY Chú ý\nBình phương tỉ số tốc độ, không bình phương tỉ số khối lượng.\nKhông cộng hai tỉ số hay nhân hai tỉ số mà quên bình phương.",
+     "vi_du": "##VD\nVật A có khối lượng gấp 6 lần và tốc độ gấp 2 lần vật B. Hỏi động năng vật A gấp bao nhiêu lần động năng vật B?\nA. 12 lần.\nB. 144 lần.\nC. 4 lần.\nD. 24 lần.\n\nBài giải:\nTa có $\\dfrac{m_A}{m_B} = 6$ và $\\dfrac{v_A}{v_B} = 2$.\n$\\dfrac{W_{đA}}{W_{đB}} = \\dfrac{m_A}{m_B} \\times \\left(\\dfrac{v_A}{v_B}\\right)^2 = 6 \\times 2^2 = 24$.\nVậy động năng vật A gấp 24 lần động năng vật B.\nChọn D.\n\n##VD\nVật A có khối lượng gấp 5 lần và tốc độ gấp 4 lần vật B. Hỏi động năng vật A gấp bao nhiêu lần động năng vật B?\nA. 20 lần.\nB. 400 lần.\nC. 16 lần.\nD. 80 lần.\n\nBài giải:\nTa có $\\dfrac{m_A}{m_B} = 5$ và $\\dfrac{v_A}{v_B} = 4$.\n$\\dfrac{W_{đA}}{W_{đB}} = \\dfrac{m_A}{m_B} \\times \\left(\\dfrac{v_A}{v_B}\\right)^2 = 5 \\times 4^2 = 80$.\nVậy động năng vật A gấp 80 lần động năng vật B.\nChọn D."
+    },
+    {
+     "dang_id": "KDB00994",
+     "thu_tu": 5,
+     "ten": "TỐC ĐỘ GIẢM CÒN MỘT PHẦN N, TÍNH PHẦN TRĂM ĐỘNG NĂNG GIẢM",
+     "mo_ta": "Đề cho khối lượng không đổi, tốc độ giảm còn $\\dfrac{1}{n}$ tốc độ ban đầu, hỏi động năng giảm bao nhiêu phần trăm so với ban đầu.\nLàm bằng cách: động năng còn $\\left(\\dfrac{1}{n}\\right)^2$ lần, phần trăm giảm $= \\left(1 - \\dfrac{1}{n^2}\\right) \\times 100\\%$.\nLưu ý: tốc độ giảm theo phần trăm (\"giảm 10%\") ⇒ thuộc dạng \"TỐC ĐỘ GIẢM P%, TÍNH PHẦN TRĂM ĐỘNG NĂNG GIẢM\".\nLưu ý: hỏi động năng đổi bao nhiêu lần (không hỏi phần trăm) ⇒ thuộc dạng \"TỐC ĐỘ THAY ĐỔI K LẦN, KHỐI LƯỢNG KHÔNG ĐỔI\".",
+     "ly_thuyet": "##TC Động năng khi tốc độ giảm còn một phần $n$\nKhối lượng không đổi nên $W_đ$ tỉ lệ thuận với $v^2$.\nTốc độ còn $\\dfrac{1}{n}$ ban đầu thì động năng còn $\\dfrac{1}{n^2}$ ban đầu.\nPhần trăm động năng giảm $= \\left(1 - \\dfrac{1}{n^2}\\right) \\times 100\\%$.\n\n##PP Tính phần trăm động năng giảm\nXác định hệ số còn lại của tốc độ: $\\dfrac{1}{n}$.\nBình phương để được hệ số còn lại của động năng: $\\dfrac{1}{n^2}$.\nLấy $1$ trừ hệ số còn lại rồi nhân $100\\%$ để được phần trăm giảm.\n\n##CY Chú ý\nPhần trăm đề hỏi là phần giảm đi, không phải phần còn lại ($\\dfrac{1}{n^2}$).\nPhải bình phương hệ số tốc độ trước khi lấy $1$ trừ.",
+     "vi_du": "##VD\nMột vật đang chuyển động, khối lượng không đổi, nếu tốc độ giảm còn $\\dfrac{1}{2}$ tốc độ ban đầu thì động năng của vật giảm bao nhiêu phần trăm so với ban đầu?\n\nBài giải:\nTốc độ còn $\\dfrac{1}{2}$ nên động năng còn $\\left(\\dfrac{1}{2}\\right)^2 = \\dfrac{1}{4}$ so với ban đầu.\nĐộng năng giảm $1 - \\dfrac{1}{4} = \\dfrac{3}{4} = 75\\%$ so với ban đầu.\nĐáp án: $75\\%$.\n\n##VD\nMột vật đang chuyển động, khối lượng không đổi, nếu tốc độ giảm còn $\\dfrac{1}{4}$ tốc độ ban đầu thì động năng của vật giảm bao nhiêu phần trăm so với ban đầu?\n\nBài giải:\nTốc độ còn $\\dfrac{1}{4}$ nên động năng còn $\\left(\\dfrac{1}{4}\\right)^2 = \\dfrac{1}{16}$ so với ban đầu.\nĐộng năng giảm $1 - \\dfrac{1}{16} = \\dfrac{15}{16} = 0{,}9375 = 93{,}75\\%$ so với ban đầu.\nĐáp án: $93{,}75\\%$."
+    },
+    {
+     "dang_id": "KDB00995",
+     "thu_tu": 6,
+     "ten": "KHỐI LƯỢNG TĂNG THÊM P%, TÍNH PHẦN TRĂM ĐỘNG NĂNG TĂNG THÊM",
+     "mo_ta": "Đề cho tốc độ không đổi, khối lượng tăng thêm $p\\%$ so với ban đầu, hỏi động năng tăng thêm bao nhiêu phần trăm.\nVì $W_đ$ tỉ lệ thuận với $m$ nên động năng cũng tăng thêm đúng $p\\%$.\nLưu ý: khối lượng đổi theo số lần (\"tăng 3 lần\") ⇒ thuộc dạng \"KHỐI LƯỢNG THAY ĐỔI K LẦN, TỐC ĐỘ KHÔNG ĐỔI\".\nLưu ý: tốc độ đổi theo phần trăm ⇒ thuộc dạng \"TỐC ĐỘ GIẢM P%…\".",
+     "ly_thuyet": "##TC Động năng khi khối lượng tăng thêm $p\\%$\nKhi tốc độ không đổi, $W_đ$ tỉ lệ thuận với $m$.\nKhối lượng tăng thêm $p\\%$ thì động năng tăng thêm đúng $p\\%$ so với ban đầu.\n\n##PP Tính phần trăm động năng tăng thêm\nXác định tốc độ không đổi, chỉ khối lượng thay đổi.\nDùng tỉ lệ thuận giữa $W_đ$ và $m$.\nKết luận phần trăm động năng tăng thêm bằng phần trăm khối lượng tăng thêm.\n\n##CY Chú ý\nKhông bình phương hệ số khối lượng (bình phương chỉ dành cho tốc độ).",
+     "vi_du": "##VD\nMột vật đang chuyển động, tốc độ không đổi, nếu khối lượng tăng thêm 20% so với ban đầu thì động năng của vật tăng thêm bao nhiêu phần trăm so với ban đầu?\n\nBài giải:\nTốc độ không đổi nên $W_đ = \\dfrac{1}{2}mv^2$ tỉ lệ thuận với $m$.\nKhối lượng mới là $1{,}2m$ nên động năng mới là $1{,}2W_đ$, tức tăng thêm $20\\%$.\nĐáp án: $20\\%$.\n\n##VD\nMột vật đang chuyển động, tốc độ không đổi, nếu khối lượng tăng thêm 65% so với ban đầu thì động năng của vật tăng thêm bao nhiêu phần trăm so với ban đầu?\n\nBài giải:\nTốc độ không đổi nên $W_đ = \\dfrac{1}{2}mv^2$ tỉ lệ thuận với $m$.\nKhối lượng mới là $1{,}65m$ nên động năng mới là $1{,}65W_đ$, tức tăng thêm $65\\%$.\nĐáp án: $65\\%$."
+    },
+    {
+     "dang_id": "KDB00996",
+     "thu_tu": 7,
+     "ten": "TỐC ĐỘ GIẢM P%, TÍNH PHẦN TRĂM ĐỘNG NĂNG GIẢM",
+     "mo_ta": "Đề cho khối lượng không đổi, tốc độ giảm $p\\%$ so với ban đầu, hỏi động năng giảm bao nhiêu phần trăm so với ban đầu.\nLàm bằng cách: tốc độ còn $(1 - \\dfrac{p}{100})$ lần, động năng còn bình phương hệ số đó, phần trăm giảm $= 1 - (\\text{hệ số còn lại})^2$ (đổi ra phần trăm).\nLưu ý: tốc độ \"giảm còn một phần $n$\" ⇒ thuộc dạng \"TỐC ĐỘ GIẢM CÒN MỘT PHẦN N, TÍNH PHẦN TRĂM ĐỘNG NĂNG GIẢM\".\nLưu ý: khối lượng đổi theo phần trăm ⇒ thuộc dạng \"KHỐI LƯỢNG TĂNG THÊM P%…\".",
+     "ly_thuyet": "##TC Động năng khi tốc độ giảm $p\\%$\nKhối lượng không đổi nên $W_đ$ tỉ lệ thuận với $v^2$.\nTốc độ giảm $p\\%$ thì còn $\\left(1 - \\dfrac{p}{100}\\right)$ lần ban đầu; động năng còn $\\left(1 - \\dfrac{p}{100}\\right)^2$ lần ban đầu.\nPhần trăm động năng giảm $= \\left[1 - \\left(1 - \\dfrac{p}{100}\\right)^2\\right] \\times 100\\%$.\n\n##PP Tính phần trăm động năng giảm\nTính hệ số còn lại của tốc độ: $1 - \\dfrac{p}{100}$.\nBình phương hệ số này để được hệ số còn lại của động năng.\nLấy $1$ trừ hệ số còn lại rồi đổi ra phần trăm.\n\n##CY Chú ý\nTốc độ giảm $p\\%$ thì động năng KHÔNG giảm đúng $p\\%$ mà giảm nhiều hơn (vì $v$ bị bình phương).\nĐề hỏi phần giảm đi, không phải phần còn lại.",
+     "vi_du": "##VD\nMột vật đang chuyển động, khối lượng không đổi, nếu tốc độ giảm 10% so với ban đầu thì động năng của vật giảm bao nhiêu phần trăm so với ban đầu?\n\nBài giải:\nTốc độ còn lại $0{,}9$ lần ban đầu nên $W_đ$ còn $0{,}9^2 = 0{,}81$ lần ban đầu.\nĐộng năng giảm $1 - 0{,}81 = 0{,}19 = 19\\%$ so với ban đầu.\nĐáp án: $19\\%$.\n\n##VD\nMột vật đang chuyển động, khối lượng không đổi, nếu tốc độ giảm 30% so với ban đầu thì động năng của vật giảm bao nhiêu phần trăm so với ban đầu?\n\nBài giải:\nTốc độ còn lại $0{,}7$ lần ban đầu nên $W_đ$ còn $0{,}7^2 = 0{,}49$ lần ban đầu.\nĐộng năng giảm $1 - 0{,}49 = 0{,}51 = 51\\%$ so với ban đầu.\nĐáp án: $51\\%$."
+    },
+    {
+     "dang_id": "KDB00997",
+     "thu_tu": 8,
+     "ten": "CHO TỈ SỐ ĐỘNG NĂNG VÀ TỈ SỐ KHỐI LƯỢNG, TÍNH TỈ SỐ TỐC ĐỘ",
+     "mo_ta": "Đề cho tỉ số động năng và tỉ số khối lượng của hai vật A, B, hỏi tốc độ vật A gấp bao nhiêu lần tốc độ vật B.\nLàm bằng cách từ $\\dfrac{W_{đA}}{W_{đB}} = \\dfrac{m_A}{m_B} \\times \\left(\\dfrac{v_A}{v_B}\\right)^2$ suy ra $\\left(\\dfrac{v_A}{v_B}\\right)^2$ rồi lấy căn bậc hai.\nLưu ý: cho tỉ số khối lượng và tỉ số tốc độ, hỏi tỉ số động năng ⇒ thuộc dạng \"SO SÁNH ĐỘNG NĂNG GIỮA HAI VẬT\".",
+     "ly_thuyet": "##TC Tìm tỉ số tốc độ từ tỉ số động năng và khối lượng\n$\\dfrac{W_{đA}}{W_{đB}} = \\dfrac{m_A}{m_B} \\times \\left(\\dfrac{v_A}{v_B}\\right)^2$.\nSuy ra $\\left(\\dfrac{v_A}{v_B}\\right)^2 = \\dfrac{W_{đA}/W_{đB}}{m_A/m_B}$, rồi lấy căn bậc hai để được $\\dfrac{v_A}{v_B}$.\n\n##PP Tính tỉ số tốc độ\nViết hệ thức $\\dfrac{W_{đA}}{W_{đB}} = \\dfrac{m_A}{m_B} \\times \\left(\\dfrac{v_A}{v_B}\\right)^2$.\nChia tỉ số động năng cho tỉ số khối lượng để được $\\left(\\dfrac{v_A}{v_B}\\right)^2$.\nLấy căn bậc hai để được tỉ số tốc độ.\n\n##CY Chú ý\nQuên lấy căn bậc hai thì chọn nhầm giá trị của $\\left(\\dfrac{v_A}{v_B}\\right)^2$.",
+     "vi_du": "##VD\nVật A có động năng gấp 20 lần và khối lượng gấp 5 lần vật B. Hỏi tốc độ vật A gấp bao nhiêu lần tốc độ vật B?\n\nBài giải:\nTa có $\\dfrac{W_{đA}}{W_{đB}} = \\dfrac{m_A}{m_B} \\times \\left(\\dfrac{v_A}{v_B}\\right)^2$ nên $20 = 5 \\times \\left(\\dfrac{v_A}{v_B}\\right)^2$.\nSuy ra $\\left(\\dfrac{v_A}{v_B}\\right)^2 = \\dfrac{20}{5} = 4$.\nVậy $\\dfrac{v_A}{v_B} = \\sqrt{4} = 2$ lần.\nĐáp án: $2$ lần.\n\n##VD\nVật A có động năng gấp 96 lần và khối lượng gấp 6 lần vật B. Hỏi tốc độ vật A gấp bao nhiêu lần tốc độ vật B?\n\nBài giải:\nTa có $\\dfrac{W_{đA}}{W_{đB}} = \\dfrac{m_A}{m_B} \\times \\left(\\dfrac{v_A}{v_B}\\right)^2$ nên $96 = 6 \\times \\left(\\dfrac{v_A}{v_B}\\right)^2$.\nSuy ra $\\left(\\dfrac{v_A}{v_B}\\right)^2 = \\dfrac{96}{6} = 16$.\nVậy $\\dfrac{v_A}{v_B} = \\sqrt{16} = 4$ lần.\nĐáp án: $4$ lần."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00413",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Động năng",
+   "nhom": "Ứng dụng thực tế của động năng",
+   "nhom_ly_thuyet": "•\tWđ = ½mv2: động năng tỉ lệ thuận với khối lượng, tỉ lệ thuận với bình phương tốc độ.\n•\tVa chạm càng mạnh (hậu quả càng lớn) khi động năng của vật ngay trước va chạm càng lớn.\nTrình tự làm bài\n1.\tXác định hiện tượng thực tế liên quan đến khối lượng, tốc độ hay động năng của vật/phương tiện.\n2.\tLiên hệ với công thức Wđ = ½mv2 để xác định chiều thay đổi của động năng (tăng/giảm) trong tình huống đó.\n3.\tGiải thích hiện tượng hoặc ứng dụng dựa trên vai trò của động năng (mức độ nguy hiểm khi va chạm, khả năng thực hiện công của vật đang chuyển động…).",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00998",
+     "thu_tu": 1,
+     "ten": "AN TOÀN GIAO THÔNG VÀ TỐC ĐỘ",
+     "mo_ta": "Hỏi vì sao cần giới hạn, giảm tốc độ khi tham gia giao thông (khúc cua, đường trơn, khu đông dân, gần chướng ngại vật) hoặc so sánh hậu quả khi xe chạy nhanh và chậm.\nGiải thích dựa trên động năng tỉ lệ với bình phương tốc độ: tốc độ lớn thì động năng lớn, nguy hiểm khi va chạm.\nTrả lời bằng lập luận, không có phép tính số.\nLưu ý: hỏi về túi khí, dây an toàn, mũ bảo hiểm, đệm ⇒ thuộc dạng \"THIẾT BỊ, KẾT CẤU GIẢM TÁC HẠI CỦA ĐỘNG NĂNG KHI VA CHẠM\".\nLưu ý: so sánh nguy hiểm giữa các vật, tình huống không phải giao thông ⇒ thuộc dạng \"SO SÁNH MỨC ĐỘ NGUY HIỂM, THIỆT HẠI QUA TÌNH HUỐNG THỰC TẾ\".",
+     "ly_thuyet": "##TC Động năng và an toàn giao thông\n$W_đ = \\dfrac{1}{2}mv^2$: động năng tỉ lệ với bình phương tốc độ, nên tốc độ tăng gấp đôi thì động năng tăng gấp bốn lần.\nĐộng năng của phương tiện càng lớn thì va chạm càng nguy hiểm và càng khó dừng lại.\nQuy định tốc độ tối đa và việc giảm tốc độ ở khu đông người, đường trơn, khúc cua nhằm giữ động năng ở mức an toàn.\n\n##PP Giải thích bằng động năng\nXác định đại lượng thay đổi trong tình huống (thường là tốc độ).\nLiên hệ với $W_đ = \\dfrac{1}{2}mv^2$ để biết động năng lớn hay nhỏ.\nKết luận về mức độ nguy hiểm hoặc lí do giảm tốc độ.\n\n##CY Chú ý\nTốc độ ảnh hưởng đến động năng theo bình phương, không chỉ tỉ lệ thuận đơn giản.\nKhối lượng xe không tự thay đổi theo thời tiết hay đoạn đường.",
+     "vi_du": "##VD\nHai xe cùng loại, cùng khối lượng, nhưng khi gặp chướng ngại vật phải phanh gấp, xe đang chạy 80 km/h cần quãng đường phanh dài hơn nhiều và nếu va chạm thì gây hậu quả nghiêm trọng hơn xe đang chạy 40 km/h. Cách giải thích đúng dựa trên động năng là\nA. vì xe chạy 80 km/h luôn có khối lượng lớn hơn xe chạy 40 km/h.\nB. vì động năng của hai xe là như nhau, chỉ khác về quãng đường phanh.\nC. vì động năng tỉ lệ thuận đơn giản với tốc độ, tốc độ tăng gấp đôi thì động năng cũng chỉ tăng gấp đôi.\nD. vì động năng tỉ lệ với bình phương tốc độ, xe chạy 80 km/h có động năng lớn hơn hẳn xe chạy 40 km/h dù cùng khối lượng.\n\nBài giải:\nHai xe cùng khối lượng, tốc độ tăng từ $40$ lên $80\\ \\mathrm{km/h}$, tức gấp đôi.\nĐộng năng $W_đ = \\dfrac{1}{2}mv^2$ tỉ lệ với $v^2$ nên tăng $2^2 = 4$ lần.\nĐộng năng lớn hơn hẳn nên xe khó dừng hơn và hậu quả va chạm nghiêm trọng hơn.\nPhương án A sai vì hai xe cùng khối lượng; B sai vì động năng hai xe khác nhau; C sai vì động năng tỉ lệ với bình phương tốc độ.\nChọn D.\n\n##VD\nVì sao pháp luật giao thông thường quy định tốc độ tối đa ở khu vực đông dân cư, gần trường học thấp hơn nhiều so với trên đường cao tốc?\nA. Vì ở khu đông dân cư, khối lượng của phương tiện luôn nhỏ hơn.\nB. Vì tốc độ không liên quan đến mức độ nguy hiểm khi va chạm.\nC. Vì tốc độ thấp giúp giảm động năng của phương tiện, hạn chế mức độ nguy hiểm nếu xảy ra va chạm với người đi bộ.\nD. Vì đường ở khu đông dân cư luôn ngắn hơn đường cao tốc.\n\nBài giải:\nĐộng năng $W_đ = \\dfrac{1}{2}mv^2$ tỉ lệ với bình phương tốc độ.\nGiảm tốc độ ở nơi đông người giúp giảm mạnh động năng của phương tiện, nên hậu quả nếu va chạm với người đi bộ nhẹ hơn.\nPhương án B sai vì tốc độ có liên quan đến động năng, tức liên quan đến mức độ nguy hiểm.\nChọn C."
+    },
+    {
+     "dang_id": "KDB00999",
+     "thu_tu": 2,
+     "ten": "THIẾT BỊ, KẾT CẤU GIẢM TÁC HẠI CỦA ĐỘNG NĂNG KHI VA CHẠM",
+     "mo_ta": "Hỏi tác dụng của các thiết bị, kết cấu làm giảm tác hại khi va chạm (túi khí, dây an toàn, mũ bảo hiểm, lưới an toàn, đệm xốp, đệm hạ cánh…).\nGiải thích theo ý: hấp thụ dần động năng, làm chậm quá trình dừng lại, giảm tác động lên cơ thể hoặc vật.\nTrả lời bằng lập luận, không có phép tính số.\nLưu ý: hỏi vì sao cần giảm tốc độ, quy định tốc độ ⇒ thuộc dạng \"AN TOÀN GIAO THÔNG VÀ TỐC ĐỘ\".\nLưu ý: hỏi máy móc dùng động năng để thực hiện công (búa máy, tuabin…) ⇒ thuộc dạng \"ỨNG DỤNG ĐỘNG NĂNG TRONG ĐỜI SỐNG VÀ KỸ THUẬT\".",
+     "ly_thuyet": "##TC Giảm tác hại của động năng khi va chạm\nVật đang chuyển động mang động năng; khi va chạm, động năng này truyền sang vật cản hoặc cơ thể và có thể gây hư hại, chấn thương.\nTúi khí, dây an toàn, mũ bảo hiểm, lưới an toàn, lớp đệm… hấp thụ dần động năng và làm chậm quá trình dừng lại, nhờ đó giảm tác động lên cơ thể hoặc vật dễ vỡ.\n\n##PP Giải thích tác dụng của thiết bị\nXác định vật hoặc người đang chuyển động nên mang động năng.\nNêu thiết bị làm gì với động năng đó (hấp thụ dần, làm chậm quá trình dừng, giữ người lại).\nKết luận thiết bị giảm tác động, giảm chấn thương hoặc hư hỏng.\n\n##CY Chú ý\nThiết bị bảo hộ không làm vật hay người hết động năng trước va chạm, không làm đổi khối lượng và không làm tăng tốc độ.\nLớp đệm không chỉ có tác dụng thẩm mỹ mà liên quan trực tiếp đến va đập.",
+     "vi_du": "##VD\nTúi khí trên ô tô bung ra khi xảy ra va chạm mạnh có tác dụng chính là gì?\nA. Làm tăng động năng của người ngồi trong xe để họ phản ứng nhanh hơn.\nB. Hấp thụ bớt và làm chậm quá trình động năng của người ngồi trong xe truyền vào các bộ phận cứng của xe, giảm chấn thương.\nC. Ngăn không cho xe có động năng trước khi va chạm.\nD. Làm giảm khối lượng của người ngồi trong xe khi va chạm.\n\nBài giải:\nKhi va chạm, người ngồi trong xe vẫn tiếp tục chuyển động nên mang động năng.\nTúi khí là lớp đệm hấp thụ bớt động năng đó và làm chậm quá trình người dừng lại, giảm tác động lên cơ thể.\nPhương án A, C, D sai vì túi khí không làm tăng động năng, không ngăn xe có động năng và không làm giảm khối lượng.\nChọn B.\n\n##VD\nNguyên tắc chung của các thiết bị bảo hộ như mũ bảo hiểm, túi khí, đệm an toàn trong việc bảo vệ con người khỏi tác hại của va chạm là gì?\nA. Ngăn hoàn toàn không cho cơ thể người có động năng trước khi va chạm.\nB. Làm tăng tốc độ va chạm để giảm thời gian tiếp xúc.\nC. Kéo dài thời gian và hấp thụ dần động năng trong quá trình va chạm, thay vì để cơ thể dừng lại đột ngột.\nD. Làm giảm khối lượng cơ thể người trong quá trình va chạm.\n\nBài giải:\nCác thiết bị bảo hộ biến dạng hoặc nén lại khi va chạm.\nNhờ đó chúng hấp thụ dần động năng của cơ thể trong thời gian dài hơn, giảm tác động so với va chạm đột ngột.\nPhương án A, B, D sai vì không thể ngăn cơ thể có động năng, không làm tăng tốc độ và không làm giảm khối lượng.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01000",
+     "thu_tu": 3,
+     "ten": "SO SÁNH MỨC ĐỘ NGUY HIỂM, THIỆT HẠI QUA TÌNH HUỐNG THỰC TẾ",
+     "mo_ta": "Cho tình huống thực tế (bi lăn, xe tải và xe máy, rơi từ độ cao, quả bóng ném hoặc sút…), hỏi bên nào gây thiệt hại hoặc đau nặng hơn và vì sao.\nGiải thích bằng động năng: cùng tốc độ thì khối lượng lớn hơn có động năng lớn hơn; cùng khối lượng thì tốc độ lớn hơn có động năng lớn hơn rất nhiều.\nTrả lời bằng lập luận, không có phép tính số.\nLưu ý: hỏi quy định tốc độ, giảm tốc độ khi lái xe ⇒ thuộc dạng \"AN TOÀN GIAO THÔNG VÀ TỐC ĐỘ\".\nLưu ý: hỏi nhận biết vật có hay không có động năng ⇒ thuộc nhóm \"KHÁI NIỆM VÀ ĐẶC ĐIỂM ĐỘNG NĂNG\".",
+     "ly_thuyet": "##TC So sánh mức độ nguy hiểm theo động năng\nVa chạm càng nguy hiểm khi động năng của vật ngay trước va chạm càng lớn.\nCùng tốc độ: vật có khối lượng lớn hơn thì động năng lớn hơn.\nCùng khối lượng: vật có tốc độ lớn hơn thì động năng lớn hơn rất nhiều (tỉ lệ với bình phương tốc độ).\n\n##PP So sánh mức độ thiệt hại\nXác định đại lượng nào ($m$ hay $v$) khác nhau giữa hai tình huống.\nLiên hệ với $W_đ = \\dfrac{1}{2}mv^2$ để biết bên nào có động năng lớn hơn.\nKết luận bên có động năng lớn hơn gây thiệt hại hoặc đau nặng hơn.\n\n##CY Chú ý\nKhối lượng vật không tăng lên khi ném nhanh hay rơi từ cao.\nĐộng năng phụ thuộc cả khối lượng lẫn tốc độ nên không thể nói chỉ một đại lượng quyết định.",
+     "vi_du": "##VD\nHai viên bi có khối lượng bằng nhau lăn trên mặt phẳng ngang rồi va vào cùng một vật cản.\nViên bi nào lăn nhanh hơn sẽ tác dụng lực va chạm mạnh hơn lên vật cản?\nA. Viên bi lăn chậm hơn, vì bi lăn chậm có nhiều thời gian tác dụng lực hơn.\nB. Cả hai viên bi tác dụng lực như nhau, vì khối lượng bằng nhau.\nC. Viên bi lăn nhanh hơn, vì ở cùng khối lượng, tốc độ lớn hơn tạo ra động năng lớn hơn.\nD. Không thể xác định được, vì tốc độ không ảnh hưởng đến động năng.\n\nBài giải:\nHai viên bi có cùng khối lượng nên động năng $W_đ = \\dfrac{1}{2}mv^2$ chỉ phụ thuộc tốc độ, tỉ lệ với $v^2$.\nViên bi lăn nhanh hơn có động năng lớn hơn nên tác dụng va chạm mạnh hơn lên vật cản.\nPhương án B sai vì động năng còn phụ thuộc tốc độ; phương án D sai vì tốc độ có ảnh hưởng đến động năng.\nChọn C.\n\n##VD\nTrong một vụ va chạm giao thông, xe tải nặng và xe máy nhẹ cùng chạy với tốc độ như nhau. So với xe máy, xe tải có khả năng gây thiệt hại như thế nào khi va chạm?\nA. Gây thiệt hại nhỏ hơn, vì xe tải di chuyển chậm hơn xe máy.\nB. Gây thiệt hại như nhau, vì động năng chỉ phụ thuộc tốc độ, không phụ thuộc khối lượng.\nC. Không thể so sánh được vì động năng của xe tải và xe máy là hai đại lượng khác loại.\nD. Gây thiệt hại lớn hơn, vì ở cùng tốc độ, xe có khối lượng lớn hơn thì động năng lớn hơn.\n\nBài giải:\nHai xe cùng tốc độ nên động năng $W_đ = \\dfrac{1}{2}mv^2$ tỉ lệ thuận với khối lượng.\nXe tải có khối lượng lớn hơn xe máy nên động năng lớn hơn, do đó khả năng gây thiệt hại khi va chạm lớn hơn.\nPhương án B sai vì động năng phụ thuộc cả khối lượng; phương án A sai vì đề cho hai xe cùng tốc độ.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01001",
+     "thu_tu": 4,
+     "ten": "ỨNG DỤNG ĐỘNG NĂNG TRONG ĐỜI SỐNG VÀ KỸ THUẬT",
+     "mo_ta": "Hỏi dạng năng lượng của vật chuyển động trong máy móc, kĩ thuật, đời sống (dòng nước làm quay tuabin, búa máy, mũi tên, bộ phận quay của máy nghiền, viên đạn…) và vì sao đó là động năng.\nGiải thích dựa trên vật đang chuyển động nhanh mang động năng lớn, động năng này thực hiện công; cũng gồm vì sao quan tâm tốc độ ngay trước va chạm.\nTrả lời bằng lập luận, không có phép tính số.\nLưu ý: hỏi thiết bị làm giảm tác hại của va chạm (túi khí, dây an toàn…) ⇒ thuộc dạng \"THIẾT BỊ, KẾT CẤU GIẢM TÁC HẠI CỦA ĐỘNG NĂNG KHI VA CHẠM\".\nLưu ý: hỏi quy định tốc độ khi lái xe ⇒ thuộc dạng \"AN TOÀN GIAO THÔNG VÀ TỐC ĐỘ\".",
+     "ly_thuyet": "##TC Động năng trong đời sống và kĩ thuật\nVật đang chuyển động nhanh mang động năng; động năng này có thể thực hiện công lên vật khác (làm tuabin quay, đóng cọc xuống đất, xuyên vào mục tiêu, nghiền vỡ vật liệu).\nĐộng năng tính theo tốc độ của vật tại thời điểm xét; khi va chạm, mức độ tác động phụ thuộc động năng ngay trước va chạm.\n$W_đ = \\dfrac{1}{2}mv^2$ nên tốc độ rất lớn có thể cho động năng rất lớn dù khối lượng nhỏ.\n\n##PP Xác định dạng năng lượng trong ứng dụng\nXác định vật nào đang chuyển động và tác động lên vật còn lại.\nKết luận dạng năng lượng của vật đang chuyển động là động năng.\nNêu động năng đó thực hiện công (làm quay, đóng, xuyên, nghiền…).\n\n##CY Chú ý\nVật đang chuyển động không thể \"không mang năng lượng nào\".\nTốc độ để xét động năng khi va chạm là tốc độ ngay trước lúc va chạm, không phải tốc độ trung bình trước đó.",
+     "vi_du": "##VD\nNhà máy thủy điện sử dụng dòng nước chảy mạnh để làm quay tuabin phát điện. Dòng nước đang chảy mạnh dạng năng lượng chủ yếu nào để làm quay tuabin?\nA. Thế năng đàn hồi của dòng nước.\nB. Động năng, do dòng nước đang chuyển động với tốc độ lớn.\nC. Quang năng của dòng nước.\nD. Dòng nước chảy không mang dạng năng lượng nào có thể sử dụng được.\n\nBài giải:\nDòng nước đang chảy mạnh nên đang chuyển động với tốc độ lớn.\nVật đang chuyển động mang động năng, động năng này truyền sang tuabin làm tuabin quay.\nPhương án D sai vì dòng nước chảy mang động năng.\nChọn B.\n\n##VD\nBúa máy (máy đóng cọc) sử dụng một khối kim loại nặng được nâng lên cao rồi thả rơi xuống để đóng cọc xuống đất. Ngay trước khi va chạm với cọc, khối kim loại chủ yếu mang dạng năng lượng nào để thực hiện công đóng cọc?\nA. Thế năng đàn hồi, do khối kim loại bị nén lại trước khi rơi.\nB. Nhiệt năng, do ma sát với không khí khi rơi.\nC. Khối kim loại không mang năng lượng nào khi đang rơi.\nD. Động năng, do khối kim loại đang chuyển động với tốc độ lớn ngay trước khi chạm cọc.\n\nBài giải:\nKhối kim loại rơi xuống nên chuyển động nhanh dần.\nNgay trước khi va chạm với cọc, khối kim loại có tốc độ lớn nên mang động năng lớn.\nĐộng năng này thực hiện công làm cọc lún sâu xuống đất.\nPhương án C sai vì vật đang chuyển động luôn mang động năng.\nChọn D."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09010101041",
+   "nhom_id": "KNB00409",
+   "loai": "trac_nghiem",
+   "de": "Năng lượng mà một vật có được do đang chuyển động gọi là gì?",
+   "lua_chon": [
+    "Động năng",
+    "Thế năng",
+    "Nhiệt năng",
+    "Quang năng"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Động năng là năng lượng mà vật có được do đang chuyển động.\n\nVì sao các phương án khác sai:\n- B: Thế năng là năng lượng do vị trí hoặc biến dạng, không phải do chuyển động.\n- C: Nhiệt năng liên quan chuyển động của phân tử, không phải chuyển động của cả vật.\n- D: Quang năng là năng lượng của ánh sáng, không liên quan đến chuyển động của vật."
+  },
+  {
+   "ma_cau": "K09010101042",
+   "nhom_id": "KNB00409",
+   "loai": "trac_nghiem",
+   "de": "Một chiếc xe đạp đang lăn bánh trên đường mang dạng năng lượng nào do chuyển động?",
+   "lua_chon": [
+    "Thế năng đàn hồi",
+    "Động năng",
+    "Hoá năng",
+    "Điện năng"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Xe đang chuyển động nên mang động năng.\n\nVì sao các phương án khác sai:\n- A: Thế năng đàn hồi có ở vật bị biến dạng đàn hồi, xe lăn không biến dạng.\n- C: Hoá năng dự trữ trong nhiên liệu, không phải năng lượng do chuyển động.\n- D: Điện năng là năng lượng dòng điện, không liên quan chuyển động cơ học."
+  },
+  {
+   "ma_cau": "K09010101043",
+   "nhom_id": "KNB00409",
+   "loai": "trac_nghiem",
+   "de": "Phát biểu nào sau đây đúng khi nói về động năng của một vật?",
+   "lua_chon": [
+    "Là năng lượng do vật ở độ cao nhất định",
+    "Là năng lượng do vật bị nén hoặc dãn",
+    "Là năng lượng do vật đang chuyển động",
+    "Là năng lượng do vật có nhiệt độ cao"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Động năng là năng lượng vật có được do đang chuyển động.\n\nVì sao các phương án khác sai:\n- A: Đó là thế năng hấp dẫn, phụ thuộc độ cao chứ không phải chuyển động.\n- B: Đó là thế năng đàn hồi của vật biến dạng, không phải động năng.\n- D: Đó liên quan tới nhiệt năng, không phải năng lượng do chuyển động."
+  },
+  {
+   "ma_cau": "K09010101044",
+   "nhom_id": "KNB00409",
+   "loai": "trac_nghiem",
+   "de": "Đại lượng nào đặc trưng cho năng lượng của một vật do nó đang chuyển động?",
+   "lua_chon": [
+    "Thế năng",
+    "Cơ năng toàn phần",
+    "Nội năng",
+    "Động năng"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Động năng đặc trưng cho năng lượng của vật do đang chuyển động.\n\nVì sao các phương án khác sai:\n- A: Thế năng đặc trưng cho vị trí hoặc biến dạng, không phải do chuyển động.\n- B: Cơ năng toàn phần gồm cả động năng và thế năng, không chỉ do chuyển động.\n- C: Nội năng liên quan chuyển động của phân tử bên trong vật, không phải cả vật."
+  },
+  {
+   "ma_cau": "K09010101045",
+   "nhom_id": "KNB00409",
+   "loai": "trac_nghiem",
+   "de": "Một tàu lượn siêu tốc lao xuống dốc, tốc độ tăng dần và lớn nhất khi tới chân dốc. Tại chân dốc, tàu lượn có dạng năng lượng nào do đang chuyển động?",
+   "lua_chon": [
+    "Thế năng đàn hồi",
+    "Động năng",
+    "Cơ năng toàn phần",
+    "Nhiệt năng"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Tàu lượn đang chuyển động nên có động năng; động năng lớn nhất khi tốc độ lớn nhất.\n\nVì sao các phương án khác sai:\n- A: Tàu lượn không bị biến dạng đàn hồi nên không có thế năng đàn hồi.\n- C: Cơ năng toàn phần gồm cả động năng và thế năng, không chỉ do chuyển động.\n- D: Nhiệt năng liên quan chuyển động phân tử bên trong vật, không phải do cả vật chuyển động."
+  },
+  {
+   "ma_cau": "K09010101046",
+   "nhom_id": "KNB00409",
+   "loai": "trac_nghiem",
+   "de": "Động năng của một vật phụ thuộc vào những yếu tố nào?",
+   "lua_chon": [
+    "Khối lượng và tốc độ của vật",
+    "Khối lượng và độ cao của vật",
+    "Tốc độ và độ cao của vật",
+    "Khối lượng và màu sắc của vật"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Động năng phụ thuộc khối lượng và tốc độ của vật.\n\nVì sao các phương án khác sai:\n- B: Độ cao liên quan thế năng hấp dẫn, không phải động năng.\n- C: Độ cao không ảnh hưởng đến động năng, chỉ ảnh hưởng thế năng.\n- D: Màu sắc của vật không liên quan đến năng lượng chuyển động."
+  },
+  {
+   "ma_cau": "K09010101047",
+   "nhom_id": "KNB00409",
+   "loai": "trac_nghiem",
+   "de": "Hai ô tô cùng khối lượng, xe chạy nhanh hơn thì động năng lớn hơn. Đó là do động năng phụ thuộc thêm yếu tố nào?",
+   "lua_chon": [
+    "Màu sơn xe",
+    "Tốc độ của xe",
+    "Kích thước bánh xe",
+    "Nhiệt độ động cơ"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ngoài khối lượng, động năng còn phụ thuộc tốc độ của xe.\n\nVì sao các phương án khác sai:\n- A: Màu sơn không liên quan đến năng lượng chuyển động của xe.\n- C: Kích thước bánh xe không phải yếu tố quyết định động năng.\n- D: Nhiệt độ động cơ không ảnh hưởng tới động năng của xe."
+  },
+  {
+   "ma_cau": "K09010101048",
+   "nhom_id": "KNB00409",
+   "loai": "trac_nghiem",
+   "de": "Ngoài tốc độ, động năng của một vật còn phụ thuộc vào đại lượng nào?",
+   "lua_chon": [
+    "Hình dạng của vật",
+    "Chất liệu bề mặt vật",
+    "Khối lượng của vật",
+    "Màu sắc của vật"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ngoài tốc độ, động năng còn phụ thuộc khối lượng viên bi.\n\nVì sao các phương án khác sai:\n- A: Hình dạng không phải yếu tố quyết định độ lớn động năng.\n- B: Chất liệu bề mặt không ảnh hưởng tới động năng của vật.\n- D: Màu sắc không liên quan đến năng lượng chuyển động."
+  },
+  {
+   "ma_cau": "K09010101049",
+   "nhom_id": "KNB00409",
+   "loai": "trac_nghiem",
+   "de": "Khi khối lượng và tốc độ của một vật đều tăng lên thì động năng của vật thay đổi thế nào?",
+   "lua_chon": [
+    "Giảm đi",
+    "Không đổi",
+    "Có thể tăng hoặc giảm",
+    "Tăng lên"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Động năng tỉ lệ thuận với khối lượng và bình phương tốc độ nên tăng lên.\n\nVì sao các phương án khác sai:\n- A: Động năng tỉ lệ thuận với m và v² nên tăng, không giảm.\n- B: Khi m và v đều tăng thì Wđ chắc chắn thay đổi, không thể không đổi.\n- C: Cả hai yếu tố cùng tăng nên động năng chắc chắn tăng, không có trường hợp khác."
+  },
+  {
+   "ma_cau": "K09010101050",
+   "nhom_id": "KNB00409",
+   "loai": "trac_nghiem",
+   "de": "Xe máy và xe đạp chạy cùng tốc độ 20 km/h, xe máy nặng hơn xe đạp. So với xe đạp, động năng của xe máy thế nào?",
+   "lua_chon": [
+    "Lớn hơn, vì khối lượng lớn hơn",
+    "Nhỏ hơn, vì xe máy chạy êm hơn",
+    "Bằng nhau, vì cùng tốc độ",
+    "Không xác định được vì thiếu độ cao"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Cùng tốc độ, động năng tỉ lệ thuận với khối lượng nên xe máy (nặng hơn) có động năng lớn hơn.\n\nVì sao các phương án khác sai:\n- B: Độ êm khi chạy không liên quan đến động năng của xe.\n- C: Động năng còn phụ thuộc khối lượng, khác khối lượng thì không thể bằng nhau.\n- D: Động năng không phụ thuộc độ cao, chỉ cần khối lượng và tốc độ là đủ để so sánh."
+  },
+  {
+   "ma_cau": "K09010101051",
+   "nhom_id": "KNB00409",
+   "loai": "trac_nghiem",
+   "de": "Trong các vật sau, vật nào đang có động năng?",
+   "lua_chon": [
+    "Chiếc thuyền đang trôi trên sông",
+    "Quyển sách đặt yên trên bàn",
+    "Lò xo đang bị nén, chưa thả ra",
+    "Viên gạch đặt trên giá cao, đứng yên"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Thuyền đang trôi là đang chuyển động nên có động năng.\n\nVì sao các phương án khác sai:\n- B: Quyển sách đứng yên nên không có động năng.\n- C: Lò xo bị nén nhưng đứng yên, có thế năng đàn hồi, chưa có động năng.\n- D: Viên gạch đứng yên trên cao có thế năng hấp dẫn, không có động năng."
+  },
+  {
+   "ma_cau": "K09010101052",
+   "nhom_id": "KNB00409",
+   "loai": "trac_nghiem",
+   "de": "Trong các vật sau, vật nào KHÔNG có động năng?",
+   "lua_chon": [
+    "Quả bóng đang lăn trên sân",
+    "Chiếc ghế đặt yên trong phòng",
+    "Con chim đang bay trên trời",
+    "Chiếc xe máy đang chạy trên đường"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Chiếc ghế đứng yên nên không có động năng.\n\nVì sao các phương án khác sai:\n- A: Quả bóng đang lăn nên đang chuyển động, có động năng.\n- C: Con chim đang bay là đang chuyển động, có động năng.\n- D: Xe máy đang chạy là đang chuyển động, có động năng."
+  },
+  {
+   "ma_cau": "K09010101053",
+   "nhom_id": "KNB00409",
+   "loai": "trac_nghiem",
+   "de": "Vật nào sau đây có động năng lớn hơn 0?",
+   "lua_chon": [
+    "Chậu cây đặt yên trên bậu cửa sổ",
+    "Quả tạ treo yên trên giá đỡ",
+    "Giọt mưa đang rơi xuống mặt đất",
+    "Viên phấn đặt yên trên bàn"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Giọt mưa đang rơi là đang chuyển động nên có động năng lớn hơn 0.\n\nVì sao các phương án khác sai:\n- A: Chậu cây đứng yên nên động năng bằng 0.\n- B: Quả tạ treo yên, không chuyển động nên động năng bằng 0.\n- D: Viên phấn đứng yên nên động năng bằng 0."
+  },
+  {
+   "ma_cau": "K09010101054",
+   "nhom_id": "KNB00409",
+   "loai": "trac_nghiem",
+   "de": "Một vận động viên trượt ván lên tới điểm cao nhất của đường dốc, dừng lại tức thời rồi trượt xuống. Tại điểm cao nhất đó, động năng của vận động viên bằng bao nhiêu?",
+   "lua_chon": [
+    "Rất lớn, vì ở vị trí cao nhất",
+    "Bằng đúng thế năng tại đó",
+    "Bằng 0, vì đang đứng yên tức thời",
+    "Không xác định được vì đang đổi hướng"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Tại điểm cao nhất, tốc độ bằng 0 (đứng yên tức thời) nên động năng bằng 0.\n\nVì sao các phương án khác sai:\n- A: Vị trí cao chỉ liên quan tới thế năng, không làm động năng lớn khi vận tốc bằng 0.\n- B: Đề chưa cho biết cơ năng hay thế năng cụ thể nên không thể khẳng định bằng thế năng.\n- D: Đổi hướng chuyển động không liên quan đến độ lớn tốc độ tại thời điểm đó."
+  },
+  {
+   "ma_cau": "K09010102063",
+   "nhom_id": "KNB00410",
+   "loai": "trac_nghiem",
+   "de": "Một vật khối lượng 2 kg chuyển động với tốc độ 3 m/s. Động năng của vật là bao nhiêu?",
+   "lua_chon": [
+    "18 J",
+    "3 J",
+    "36 J",
+    "9 J"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Wđ = ½·m·v² = ½·2·3² = 9 J.\n\nVì sao các phương án khác sai:\n- A: Đã tính m·v² = 18 J mà quên nhân hệ số ½.\n- B: Đã quên bình phương tốc độ, chỉ tính ½·m·v = 3 J.\n- C: Đã nhân 2·m·v² = 36 J thay vì chia đôi."
+  },
+  {
+   "ma_cau": "K09010102064",
+   "nhom_id": "KNB00410",
+   "loai": "trac_nghiem",
+   "de": "Một vật khối lượng 4 kg chuyển động với tốc độ 5 m/s. Động năng của vật bằng bao nhiêu?",
+   "lua_chon": [
+    "50 J",
+    "100 J",
+    "10 J",
+    "200 J"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Wđ = ½·4·5² = 50 J.\n\nVì sao các phương án khác sai:\n- B: Đã tính m·v² mà quên nhân hệ số ½.\n- C: Đã quên bình phương tốc độ, chỉ tính ½·m·v = 10 J.\n- D: Đã nhân 2·m·v² thay vì chia đôi."
+  },
+  {
+   "ma_cau": "K09010102065",
+   "nhom_id": "KNB00410",
+   "loai": "trac_nghiem",
+   "de": "Một vật khối lượng 0,4 kg chuyển động với tốc độ 10 m/s. Động năng của vật bằng bao nhiêu?",
+   "lua_chon": [
+    "40 J",
+    "20 J",
+    "2 J",
+    "80 J"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Wđ = ½·0,4·10² = 20 J.\n\nVì sao các phương án khác sai:\n- A: Đã tính m·v² = 40 J mà quên nhân hệ số ½.\n- C: Đã quên bình phương tốc độ, chỉ tính ½·m·v = 2 J.\n- D: Đã nhân 2·m·v² thay vì chia đôi."
+  },
+  {
+   "ma_cau": "K09010102066",
+   "nhom_id": "KNB00410",
+   "loai": "trac_nghiem",
+   "de": "Một vật khối lượng 3 kg chuyển động với tốc độ 4 m/s. Động năng của vật bằng bao nhiêu?",
+   "lua_chon": [
+    "48 J",
+    "6 J",
+    "96 J",
+    "24 J"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Wđ = ½·3·4² = 24 J.\n\nVì sao các phương án khác sai:\n- A: Đã tính m·v² = 48 J mà quên nhân hệ số ½.\n- B: Đã quên bình phương tốc độ, chỉ tính ½·m·v = 6 J.\n- C: Đã nhân 2·m·v² = 96 J thay vì chia đôi."
+  },
+  {
+   "ma_cau": "K09010102067",
+   "nhom_id": "KNB00410",
+   "loai": "trac_nghiem",
+   "de": "Một vật có khối lượng 500 g chuyển động với tốc độ 4 m/s. Động năng của vật là bao nhiêu?",
+   "lua_chon": [
+    "4 000 J",
+    "1 J",
+    "8 J",
+    "4 J"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đổi 500 g = 0,5 kg. Wđ = ½·0,5·4² = 4 J.\n\nVì sao các phương án khác sai:\n- A: Đã quên đổi 500 g sang kg, tính ½·500·4² = 4 000 (sai đơn vị khối lượng).\n- B: Đã quên bình phương tốc độ, tính ½·0,5·4 = 1 J.\n- C: Đã quên hệ số ½, tính 0,5·4² = 8 J."
+  },
+  {
+   "ma_cau": "K09010102068",
+   "nhom_id": "KNB00410",
+   "loai": "trac_nghiem",
+   "de": "Một vật khối lượng 2 kg chuyển động với tốc độ 36 km/h. Động năng của vật là bao nhiêu?",
+   "lua_chon": [
+    "1 296 J",
+    "100 J",
+    "10 J",
+    "200 J"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đổi 36 km/h = 10 m/s. Wđ = ½·2·10² = 100 J.\n\nVì sao các phương án khác sai:\n- A: Đã quên đổi 36 km/h sang m/s, tính ½·2·36² = 1 296 (sai đơn vị tốc độ).\n- C: Đã quên bình phương tốc độ sau khi đổi đơn vị, tính ½·2·10 = 10 J.\n- D: Đã quên hệ số ½, tính 2·10² = 200 J."
+  },
+  {
+   "ma_cau": "K09010102069",
+   "nhom_id": "KNB00410",
+   "loai": "trac_nghiem",
+   "de": "Một vật khối lượng 20 kg chuyển động với tốc độ 10 m/s. Động năng của vật bằng bao nhiêu kJ?",
+   "lua_chon": [
+    "1 000 kJ",
+    "0,1 kJ",
+    "1 kJ",
+    "2 kJ"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Wđ = ½·20·10² = 1 000 J = 1 kJ.\n\nVì sao các phương án khác sai:\n- A: Đã quên đổi 1 000 J sang kJ (phải chia 1000), ghi nhầm là 1 000 kJ.\n- B: Đã quên bình phương tốc độ, tính ½·20·10 = 100 J = 0,1 kJ.\n- D: Đã quên hệ số ½, tính 20·10² = 2 000 J = 2 kJ."
+  },
+  {
+   "ma_cau": "K09010102070",
+   "nhom_id": "KNB00410",
+   "loai": "trac_nghiem",
+   "de": "Một vật khối lượng 250 g chuyển động với tốc độ 8 m/s. Động năng của vật bằng bao nhiêu?",
+   "lua_chon": [
+    "8 000 J",
+    "8 J",
+    "1 J",
+    "16 J"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đổi 250 g = 0,25 kg. Wđ = ½·0,25·8² = 8 J.\n\nVì sao các phương án khác sai:\n- A: Đã quên đổi 250 g sang kg, tính ½·250·8² = 8 000 J (sai đơn vị khối lượng).\n- C: Đã quên bình phương tốc độ, tính ½·0,25·8 = 1 J.\n- D: Đã quên hệ số ½, tính 0,25·8² = 16 J."
+  },
+  {
+   "ma_cau": "K09010102071",
+   "nhom_id": "KNB00410",
+   "loai": "trac_nghiem",
+   "de": "Một vật khối lượng 50 kg chuyển động với tốc độ 72 km/h. Động năng của vật bằng bao nhiêu kJ?",
+   "lua_chon": [
+    "129,6 kJ",
+    "0,5 kJ",
+    "10 kJ",
+    "20 kJ"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đổi 72 km/h = 20 m/s. Wđ = ½·50·20² = 10 000 J = 10 kJ.\n\nVì sao các phương án khác sai:\n- A: Đã quên đổi 72 km/h sang m/s, tính ½·50·72² = 129 600 J = 129,6 kJ.\n- B: Đã quên bình phương tốc độ, tính ½·50·20 = 500 J = 0,5 kJ.\n- D: Đã quên hệ số ½, tính 50·20² = 20 000 J = 20 kJ."
+  },
+  {
+   "ma_cau": "K09010102072",
+   "nhom_id": "KNB00410",
+   "loai": "trac_nghiem",
+   "de": "Một xe tải có khối lượng 2 tấn chuyển động với tốc độ 54 km/h. Động năng của xe bằng bao nhiêu kJ?",
+   "lua_chon": [
+    "0,225 kJ",
+    "2 916 kJ",
+    "225 000 kJ",
+    "225 kJ"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đổi 2 tấn = 2 000 kg; 54 km/h = 15 m/s. Wđ = ½·2 000·15² = 225 000 J = 225 kJ.\n\nVì sao các phương án khác sai:\n- A: Đã quên đổi 2 tấn sang kg, dùng luôn số 2 nên ra 0,225 kJ.\n- B: Đã quên đổi 54 km/h sang m/s, dùng luôn số 54 nên ra 2 916 kJ.\n- C: Đã quên đổi 225 000 J sang kJ, ghi nhầm là 225 000 kJ."
+  },
+  {
+   "ma_cau": "K09010102073",
+   "nhom_id": "KNB00410",
+   "loai": "trac_nghiem",
+   "de": "Một toa tàu có khối lượng 5 tấn chuyển động với tốc độ 36 km/h. Động năng của toa tàu bằng bao nhiêu kJ?",
+   "lua_chon": [
+    "250 kJ",
+    "0,25 kJ",
+    "3 240 kJ",
+    "250 000 kJ"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đổi 5 tấn = 5 000 kg; 36 km/h = 10 m/s. Wđ = ½·5 000·10² = 250 000 J = 250 kJ.\n\nVì sao các phương án khác sai:\n- B: Đã quên đổi 5 tấn sang kg, dùng luôn số 5 nên ra 0,25 kJ.\n- C: Đã quên đổi 36 km/h sang m/s, dùng luôn số 36 nên ra 3 240 kJ.\n- D: Đã quên đổi 250 000 J sang kJ, ghi nhầm là 250 000 kJ."
+  },
+  {
+   "ma_cau": "K09010102074",
+   "nhom_id": "KNB00410",
+   "loai": "trac_nghiem",
+   "de": "Một xe container có khối lượng 8 tấn đang chạy với tốc độ 72 km/h. Động năng của xe bằng bao nhiêu kJ?",
+   "lua_chon": [
+    "1,6 kJ",
+    "1 600 kJ",
+    "20 736 kJ",
+    "1 600 000 kJ"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đổi 8 tấn = 8 000 kg; 72 km/h = 20 m/s. Wđ = ½·8 000·20² = 1 600 000 J = 1 600 kJ.\n\nVì sao các phương án khác sai:\n- A: Đã quên đổi 8 tấn sang kg, dùng luôn số 8 nên ra 1,6 kJ.\n- C: Đã quên đổi 72 km/h sang m/s, dùng luôn số 72 nên ra 20 736 kJ.\n- D: Đã quên đổi 1 600 000 J sang kJ, ghi nhầm là 1 600 000 kJ."
+  },
+  {
+   "ma_cau": "K09010102075",
+   "nhom_id": "KNB00410",
+   "loai": "trac_nghiem",
+   "de": "Một chiếc thuyền máy có khối lượng 1,2 tấn chạy với tốc độ 18 km/h. Động năng của thuyền bằng bao nhiêu kJ?",
+   "lua_chon": [
+    "0,015 kJ",
+    "194,4 kJ",
+    "15 kJ",
+    "15 000 kJ"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đổi 1,2 tấn = 1 200 kg; 18 km/h = 5 m/s. Wđ = ½·1 200·5² = 15 000 J = 15 kJ.\n\nVì sao các phương án khác sai:\n- A: Đã quên đổi 1,2 tấn sang kg, dùng luôn số 1,2 nên ra 0,015 kJ.\n- B: Đã quên đổi 18 km/h sang m/s, dùng luôn số 18 nên ra 194,4 kJ.\n- D: Đã quên đổi 15 000 J sang kJ, ghi nhầm là 15 000 kJ."
+  },
+  {
+   "ma_cau": "K09010102076",
+   "nhom_id": "KNB00410",
+   "loai": "trac_nghiem",
+   "de": "Một xe buýt có khối lượng 10 tấn chạy với tốc độ 90 km/h. Động năng của xe bằng bao nhiêu kJ?",
+   "lua_chon": [
+    "3,125 kJ",
+    "40 500 kJ",
+    "3 125 000 kJ",
+    "3 125 kJ"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đổi 10 tấn = 10 000 kg; 90 km/h = 25 m/s. Wđ = ½·10 000·25² = 3 125 000 J = 3 125 kJ.\n\nVì sao các phương án khác sai:\n- A: Đã quên đổi 10 tấn sang kg, dùng luôn số 10 nên ra 3,125 kJ.\n- B: Đã quên đổi 90 km/h sang m/s, dùng luôn số 90 nên ra 40 500 kJ.\n- C: Đã quên đổi 3 125 000 J sang kJ, ghi nhầm là 3 125 000 kJ."
+  },
+  {
+   "ma_cau": "K09010103051",
+   "nhom_id": "KNB00411",
+   "loai": "trac_nghiem",
+   "de": "Một vật có động năng 16 J đang chuyển động với tốc độ 4 m/s. Khối lượng của vật là bao nhiêu?",
+   "lua_chon": [
+    "1 kg",
+    "8 kg",
+    "2 kg",
+    "4 kg"
+   ],
+   "dap_an": "C",
+   "loi_giai": "m = 2Wđ/v² = 2·16/4² = 2 kg.\n\nVì sao các phương án khác sai:\n- A: Đã quên nhân hệ số 2, tính Wđ/v² = 1 kg.\n- B: Đã quên bình phương tốc độ, tính 2Wđ/v = 8 kg.\n- D: Đã tính Wđ/v = 4 kg, quên cả nhân 2 lẫn bình phương v."
+  },
+  {
+   "ma_cau": "K09010103052",
+   "nhom_id": "KNB00411",
+   "loai": "trac_nghiem",
+   "de": "Một vật có động năng 54 J đang chuyển động với tốc độ 6 m/s. Khối lượng của vật là bao nhiêu?",
+   "lua_chon": [
+    "1,5 kg",
+    "18 kg",
+    "9 kg",
+    "3 kg"
+   ],
+   "dap_an": "D",
+   "loi_giai": "m = 2Wđ/v² = 2·54/6² = 3 kg.\n\nVì sao các phương án khác sai:\n- A: Đã quên nhân hệ số 2, tính Wđ/v² = 1,5 kg.\n- B: Đã quên bình phương tốc độ, tính 2Wđ/v = 18 kg.\n- C: Đã tính Wđ/v = 9 kg, quên cả nhân 2 lẫn bình phương v."
+  },
+  {
+   "ma_cau": "K09010103053",
+   "nhom_id": "KNB00411",
+   "loai": "trac_nghiem",
+   "de": "Một vật có động năng 100 J đang chuyển động với tốc độ 5 m/s. Khối lượng của vật là bao nhiêu?",
+   "lua_chon": [
+    "8 kg",
+    "4 kg",
+    "40 kg",
+    "20 kg"
+   ],
+   "dap_an": "A",
+   "loi_giai": "m = 2Wđ/v² = 2·100/5² = 8 kg.\n\nVì sao các phương án khác sai:\n- B: Đã quên nhân hệ số 2, tính Wđ/v² = 4 kg.\n- C: Đã quên bình phương tốc độ, tính 2Wđ/v = 40 kg.\n- D: Đã tính Wđ/v = 20 kg, quên cả nhân 2 lẫn bình phương v."
+  },
+  {
+   "ma_cau": "K09010103054",
+   "nhom_id": "KNB00411",
+   "loai": "trac_nghiem",
+   "de": "Một vật có động năng 72 J đang chuyển động với tốc độ 6 m/s. Khối lượng của vật là bao nhiêu?",
+   "lua_chon": [
+    "4 kg",
+    "2 kg",
+    "24 kg",
+    "12 kg"
+   ],
+   "dap_an": "A",
+   "loi_giai": "m = 2Wđ/v² = 2·72/6² = 4 kg.\n\nVì sao các phương án khác sai:\n- B: Đã quên nhân hệ số 2, tính Wđ/v² = 2 kg.\n- C: Đã quên bình phương tốc độ, tính 2Wđ/v = 24 kg.\n- D: Đã tính Wđ/v = 12 kg, quên cả nhân 2 lẫn bình phương v."
+  },
+  {
+   "ma_cau": "K09010103055",
+   "nhom_id": "KNB00411",
+   "loai": "trac_nghiem",
+   "de": "Một vật khối lượng 2 kg có động năng 25 J. Tốc độ chuyển động của vật là bao nhiêu?",
+   "lua_chon": [
+    "25 m/s",
+    "5 m/s",
+    "0,2 m/s",
+    "2,5 m/s"
+   ],
+   "dap_an": "B",
+   "loi_giai": "v = √(2Wđ/m) = √(2·25/2) = √25 = 5 m/s.\n\nVì sao các phương án khác sai:\n- A: Đã quên khai căn, lấy luôn 2Wđ/m = 25 làm tốc độ.\n- C: Đã đảo ngược tỉ số, tính √(m/2Wđ) = 0,2 m/s.\n- D: Đã đặt hệ số 2 xuống mẫu số, tính √(Wđ/2m) = 2,5 m/s."
+  },
+  {
+   "ma_cau": "K09010103056",
+   "nhom_id": "KNB00411",
+   "loai": "trac_nghiem",
+   "de": "Một vật khối lượng 4 kg có động năng 32 J. Tốc độ chuyển động của vật là bao nhiêu?",
+   "lua_chon": [
+    "16 m/s",
+    "0,25 m/s",
+    "4 m/s",
+    "2 m/s"
+   ],
+   "dap_an": "C",
+   "loi_giai": "v = √(2Wđ/m) = √(2·32/4) = √16 = 4 m/s.\n\nVì sao các phương án khác sai:\n- A: Đã quên khai căn, lấy luôn 2Wđ/m = 16 làm tốc độ.\n- B: Đã đảo ngược tỉ số, tính √(m/2Wđ) = 0,25 m/s.\n- D: Đã đặt hệ số 2 xuống mẫu số, tính √(Wđ/2m) = 2 m/s."
+  },
+  {
+   "ma_cau": "K09010103057",
+   "nhom_id": "KNB00411",
+   "loai": "trac_nghiem",
+   "de": "Một vật khối lượng 4 kg có động năng 200 J. Tốc độ chuyển động của vật là bao nhiêu?",
+   "lua_chon": [
+    "10 m/s",
+    "100 m/s",
+    "0,1 m/s",
+    "5 m/s"
+   ],
+   "dap_an": "A",
+   "loi_giai": "v = √(2Wđ/m) = √(2·200/4) = √100 = 10 m/s.\n\nVì sao các phương án khác sai:\n- B: Đã quên khai căn, lấy luôn 2Wđ/m = 100 làm tốc độ.\n- C: Đã đảo ngược tỉ số, tính √(m/2Wđ) = 0,1 m/s.\n- D: Đã đặt hệ số 2 xuống mẫu số, tính √(Wđ/2m) = 5 m/s."
+  },
+  {
+   "ma_cau": "K09010103058",
+   "nhom_id": "KNB00411",
+   "loai": "trac_nghiem",
+   "de": "Một vật khối lượng 8 kg có động năng 100 J. Tốc độ chuyển động của vật là bao nhiêu?",
+   "lua_chon": [
+    "25 m/s",
+    "5 m/s",
+    "0,2 m/s",
+    "2,5 m/s"
+   ],
+   "dap_an": "B",
+   "loi_giai": "v = √(2Wđ/m) = √(2·100/8) = √25 = 5 m/s.\n\nVì sao các phương án khác sai:\n- A: Đã quên khai căn, lấy luôn 2Wđ/m = 25 làm tốc độ.\n- C: Đã đảo ngược tỉ số, tính √(m/2Wđ) = 0,2 m/s.\n- D: Đã đặt hệ số 2 xuống mẫu số, tính √(Wđ/2m) = 2,5 m/s."
+  },
+  {
+   "ma_cau": "K09010103059",
+   "nhom_id": "KNB00411",
+   "loai": "trac_nghiem",
+   "de": "Một vật khối lượng 5 kg có động năng 250 J. Tốc độ chuyển động của vật là bao nhiêu?",
+   "lua_chon": [
+    "100 m/s",
+    "0,1 m/s",
+    "5 m/s",
+    "10 m/s"
+   ],
+   "dap_an": "D",
+   "loi_giai": "v = √(2Wđ/m) = √(2·250/5) = √100 = 10 m/s.\n\nVì sao các phương án khác sai:\n- A: Đã quên khai căn, lấy luôn 2Wđ/m = 100 làm tốc độ.\n- B: Đã đảo ngược tỉ số, tính √(m/2Wđ) = 0,1 m/s.\n- C: Đã đặt hệ số 2 xuống mẫu số, tính √(Wđ/2m) = 5 m/s."
+  },
+  {
+   "ma_cau": "K09010104051",
+   "nhom_id": "KNB00412",
+   "loai": "trac_nghiem",
+   "de": "Giữ nguyên tốc độ, nếu khối lượng của một vật tăng lên 3 lần thì động năng của vật thay đổi thế nào?",
+   "lua_chon": [
+    "Tăng 3 lần",
+    "Tăng 9 lần",
+    "Tăng 6 lần",
+    "Không đổi"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Wđ tỉ lệ thuận với m (v không đổi) nên m tăng 3 lần thì Wđ tăng 3 lần.\n\nVì sao các phương án khác sai:\n- B: 9 lần chỉ đúng khi tốc độ tăng 3 lần (bình phương), không phải khối lượng.\n- C: 6 lần không đúng với tỉ lệ thuận đơn giản giữa Wđ và m.\n- D: Khối lượng tăng thì động năng phải thay đổi theo, không thể không đổi."
+  },
+  {
+   "ma_cau": "K09010104052",
+   "nhom_id": "KNB00412",
+   "loai": "trac_nghiem",
+   "de": "Giữ nguyên tốc độ, nếu khối lượng của một vật giảm đi 4 lần thì động năng của vật thay đổi thế nào?",
+   "lua_chon": [
+    "Giảm 16 lần",
+    "Giảm 2 lần",
+    "Giảm 4 lần",
+    "Tăng 4 lần"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Wđ tỉ lệ thuận với m nên m giảm 4 lần thì Wđ giảm 4 lần.\n\nVì sao các phương án khác sai:\n- A: 16 lần là bình phương của 4, chỉ đúng khi tốc độ đổi k lần, không phải khối lượng.\n- B: Sai tỉ lệ: khối lượng giảm bao nhiêu lần thì Wđ giảm bấy nhiêu lần.\n- D: Khối lượng giảm thì động năng phải giảm, không thể tăng."
+  },
+  {
+   "ma_cau": "K09010104053",
+   "nhom_id": "KNB00412",
+   "loai": "trac_nghiem",
+   "de": "Giữ nguyên tốc độ, khối lượng một vật tăng lên 5 lần thì động năng của vật tăng lên bao nhiêu lần?",
+   "lua_chon": [
+    "10 lần",
+    "25 lần",
+    "20 lần",
+    "5 lần"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Wđ tỉ lệ thuận với m nên tăng 5 lần thì Wđ cũng tăng 5 lần.\n\nVì sao các phương án khác sai:\n- A: 10 lần không đúng tỉ lệ thuận đơn giản giữa Wđ và m.\n- B: 25 lần là bình phương của 5, chỉ đúng nếu là tốc độ đổi 5 lần.\n- C: 20 lần không có căn cứ đúng theo tỉ lệ thuận giữa Wđ và m."
+  },
+  {
+   "ma_cau": "K09010104054",
+   "nhom_id": "KNB00412",
+   "loai": "trac_nghiem",
+   "de": "Giữ nguyên khối lượng, nếu tốc độ của một vật tăng lên 2 lần thì động năng của vật thay đổi thế nào?",
+   "lua_chon": [
+    "Tăng 2 lần",
+    "Tăng 4 lần",
+    "Tăng 8 lần",
+    "Không đổi"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Wđ tỉ lệ với bình phương tốc độ nên v tăng 2 lần thì Wđ tăng 2² = 4 lần.\n\nVì sao các phương án khác sai:\n- A: Đã quên bình phương hệ số tốc độ, chỉ nhân đơn giản theo k = 2.\n- C: 8 lần là lập phương của 2, Wđ chỉ tỉ lệ với bình phương tốc độ.\n- D: Tốc độ tăng thì động năng phải tăng, không thể không đổi."
+  },
+  {
+   "ma_cau": "K09010104055",
+   "nhom_id": "KNB00412",
+   "loai": "trac_nghiem",
+   "de": "Giữ nguyên khối lượng, nếu tốc độ của một vật giảm đi 3 lần thì động năng của vật thay đổi thế nào?",
+   "lua_chon": [
+    "Giảm 9 lần",
+    "Giảm 3 lần",
+    "Giảm 6 lần",
+    "Tăng 9 lần"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Wđ tỉ lệ với bình phương tốc độ nên v giảm 3 lần thì Wđ giảm 3² = 9 lần.\n\nVì sao các phương án khác sai:\n- B: Đã quên bình phương hệ số tốc độ, chỉ chia đơn giản theo k = 3.\n- C: 6 lần không có căn cứ đúng theo công thức bình phương tốc độ.\n- D: Tốc độ giảm thì động năng phải giảm, không thể tăng."
+  },
+  {
+   "ma_cau": "K09010104056",
+   "nhom_id": "KNB00412",
+   "loai": "trac_nghiem",
+   "de": "Giữ nguyên khối lượng, tốc độ một vật tăng lên 4 lần thì động năng của vật tăng lên bao nhiêu lần?",
+   "lua_chon": [
+    "8 lần",
+    "4 lần",
+    "16 lần",
+    "12 lần"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Wđ tỉ lệ với bình phương tốc độ nên v tăng 4 lần thì Wđ tăng 4² = 16 lần.\n\nVì sao các phương án khác sai:\n- A: 8 lần không đúng, không phải bình phương của 4.\n- B: Đã quên bình phương hệ số tốc độ, chỉ nhân đơn giản theo k = 4.\n- D: 12 lần không có căn cứ đúng theo công thức bình phương tốc độ."
+  },
+  {
+   "ma_cau": "K09010104057",
+   "nhom_id": "KNB00412",
+   "loai": "trac_nghiem",
+   "de": "Vật thứ hai có khối lượng gấp 2 lần và tốc độ gấp 3 lần vật thứ nhất. Động năng vật thứ hai gấp bao nhiêu lần động năng vật thứ nhất?",
+   "lua_chon": [
+    "6 lần",
+    "18 lần",
+    "9 lần",
+    "12 lần"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Wđ2/Wđ1 = (m₂/m₁)·(v₂/v₁)² = 2·3² = 2·9 = 18 lần.\n\nVì sao các phương án khác sai:\n- A: Đã chỉ nhân 2·3 = 6, quên bình phương hệ số tốc độ.\n- C: 9 lần chỉ là phần do tốc độ (3²), đã quên nhân thêm hệ số khối lượng 2.\n- D: 12 lần không có căn cứ đúng theo công thức tỉ lệ."
+  },
+  {
+   "ma_cau": "K09010104058",
+   "nhom_id": "KNB00412",
+   "loai": "trac_nghiem",
+   "de": "Vật thứ hai có khối lượng bằng một nửa và tốc độ gấp 4 lần vật thứ nhất. Động năng vật thứ hai gấp bao nhiêu lần động năng vật thứ nhất?",
+   "lua_chon": [
+    "2 lần",
+    "16 lần",
+    "8 lần",
+    "4 lần"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Wđ2/Wđ1 = (m₂/m₁)·(v₂/v₁)² = 0,5·4² = 0,5·16 = 8 lần.\n\nVì sao các phương án khác sai:\n- A: 2 lần không đúng, không dựa theo công thức tỉ lệ đầy đủ.\n- B: 16 lần chỉ là phần do tốc độ (4²), đã quên nhân thêm hệ số khối lượng 0,5.\n- D: 4 lần không có căn cứ đúng theo công thức tỉ lệ."
+  },
+  {
+   "ma_cau": "K09010104059",
+   "nhom_id": "KNB00412",
+   "loai": "trac_nghiem",
+   "de": "Một vật giảm khối lượng đi 2 lần nhưng tăng tốc độ lên 3 lần. Động năng của vật thay đổi thế nào so với ban đầu?",
+   "lua_chon": [
+    "Tăng 4,5 lần",
+    "Tăng 1,5 lần",
+    "Tăng 9 lần",
+    "Giảm 4,5 lần"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Wđ mới/Wđ cũ = (1/2)·3² = 0,5·9 = 4,5 lần, tức tăng 4,5 lần.\n\nVì sao các phương án khác sai:\n- B: Đã quên bình phương hệ số tốc độ, chỉ nhân 0,5·3 = 1,5.\n- C: Đã quên nhân thêm hệ số khối lượng 0,5, chỉ lấy phần do tốc độ 3² = 9.\n- D: Khối lượng giảm nhưng tốc độ tăng mạnh hơn (bình phương) nên động năng vẫn tăng, không giảm."
+  },
+  {
+   "ma_cau": "K09010104060",
+   "nhom_id": "KNB00412",
+   "loai": "trac_nghiem",
+   "de": "Một vật tăng khối lượng lên 4 lần nhưng giảm tốc độ đi 2 lần. Động năng của vật thay đổi thế nào so với ban đầu?",
+   "lua_chon": [
+    "Tăng 2 lần",
+    "Không đổi",
+    "Giảm 2 lần",
+    "Tăng 8 lần"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Wđ mới/Wđ cũ = 4·(1/2)² = 4·0,25 = 1, tức động năng không đổi.\n\nVì sao các phương án khác sai:\n- A: Đã quên bình phương hệ số tốc độ, chỉ nhân 4·(1/2) = 2.\n- C: Khối lượng tăng đủ bù lại phần giảm do tốc độ nên động năng không giảm.\n- D: Đã nhầm 'giảm tốc độ 2 lần' thành nhân thêm hệ số 2 thay vì chia."
+  },
+  {
+   "ma_cau": "K09010106031",
+   "nhom_id": "KNB00413",
+   "loai": "trac_nghiem",
+   "de": "Một ô tô tăng tốc độ từ 30 km/h lên 60 km/h. Về mức độ nguy hiểm khi va chạm do động năng, điều gì đúng?",
+   "lua_chon": [
+    "Động năng tăng gấp 2 lần",
+    "Động năng tăng gấp 4 lần",
+    "Động năng không đổi",
+    "Động năng tăng gấp 8 lần"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Tốc độ tăng gấp 2 lần nên động năng tăng gấp 2² = 4 lần, va chạm nguy hiểm hơn nhiều.\n\nVì sao các phương án khác sai:\n- A: Đã quên bình phương hệ số tốc độ, chỉ nhân theo tỉ lệ tốc độ.\n- C: Tốc độ tăng thì động năng chắc chắn tăng, không thể không đổi.\n- D: 8 lần là lập phương của 2, Wđ chỉ tỉ lệ với bình phương tốc độ."
+  },
+  {
+   "ma_cau": "K09010106032",
+   "nhom_id": "KNB00413",
+   "loai": "trac_nghiem",
+   "de": "Vì sao các biển báo giới hạn tốc độ ở khu vực đông dân cư thường quy định tốc độ thấp?",
+   "lua_chon": [
+    "Vì tốc độ thấp làm giảm khối lượng xe",
+    "Vì khối lượng xe quan trọng hơn tốc độ",
+    "Vì tốc độ lớn làm động năng và độ nguy hiểm tăng",
+    "Vì tốc độ thấp giúp xe tiêu thụ nhiều nhiên liệu hơn"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Động năng tỉ lệ bình phương tốc độ nên tốc độ càng lớn thì càng nguy hiểm khi va chạm.\n\nVì sao các phương án khác sai:\n- A: Tốc độ không làm thay đổi khối lượng của xe.\n- B: Tốc độ chính là yếu tố quyết định lớn tới động năng của xe.\n- D: Tốc độ thấp thường giúp tiết kiệm nhiên liệu hơn, không phải tiêu thụ nhiều hơn."
+  },
+  {
+   "ma_cau": "K09010106033",
+   "nhom_id": "KNB00413",
+   "loai": "trac_nghiem",
+   "de": "Hai ô tô cùng loại, xe A chạy 40 km/h, xe B chạy 80 km/h. Khi phanh gấp, vì sao xe B nguy hiểm hơn nhiều dù tốc độ chỉ gấp đôi?",
+   "lua_chon": [
+    "Vì động năng xe B gấp 2 lần xe A tương ứng tốc độ",
+    "Vì khối lượng xe B tự động tăng theo tốc độ",
+    "Vì xe B tiêu thụ nhiều nhiên liệu hơn",
+    "Vì động năng xe B gấp 4 lần xe A do tỉ lệ bình phương tốc độ"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Động năng tỉ lệ bình phương tốc độ nên tốc độ gấp 2 lần làm động năng gấp 2² = 4 lần, nguy hiểm hơn hẳn khi va chạm.\n\nVì sao các phương án khác sai:\n- A: Đã quên bình phương hệ số tốc độ, chỉ nhân theo tỉ lệ tốc độ.\n- B: Tốc độ không làm thay đổi khối lượng của xe.\n- C: Mức tiêu thụ nhiên liệu không liên quan đến độ nguy hiểm do động năng khi va chạm."
+  },
+  {
+   "ma_cau": "K09010106034",
+   "nhom_id": "KNB00413",
+   "loai": "trac_nghiem",
+   "de": "Búa máy đóng cọc hoạt động dựa trên nguyên lí nào liên quan đến động năng?",
+   "lua_chon": [
+    "Búa rơi từ trên cao, động năng khi rơi đóng cọc xuống",
+    "Búa đứng yên tạo ra lực đóng cọc liên tục",
+    "Toàn bộ khối lượng búa tự biến thành lực đẩy",
+    "Búa đóng cọc nhờ nhiệt năng toả ra khi rơi"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Búa được nâng cao rồi thả rơi, động năng lúc rơi xuống truyền lực làm cọc lún xuống đất.\n\nVì sao các phương án khác sai:\n- B: Búa cần chuyển động (rơi xuống) để có động năng, đứng yên không sinh lực đóng cọc.\n- C: Khối lượng không tự chuyển hoá thành lực, phải kết hợp tốc độ rơi mới có động năng.\n- D: Tác dụng đóng cọc là do động năng khi va chạm, không phải do nhiệt năng."
+  },
+  {
+   "ma_cau": "K09010106035",
+   "nhom_id": "KNB00413",
+   "loai": "trac_nghiem",
+   "de": "Túi khí trên ô tô được thiết kế để làm gì khi xảy ra va chạm?",
+   "lua_chon": [
+    "Tăng thêm động năng cho người ngồi trong xe",
+    "Giúp người ngồi giảm tốc độ, hấp thụ bớt động năng",
+    "Giữ nguyên tốc độ của người ngồi trong xe",
+    "Làm tăng khối lượng của người ngồi trong xe"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Túi khí bung ra giúp người ngồi giảm tốc độ dần, hấp thụ bớt động năng va chạm nên giảm chấn thương.\n\nVì sao các phương án khác sai:\n- A: Mục đích của túi khí là giảm bớt động năng va chạm, không phải tăng thêm.\n- C: Túi khí giúp giảm tốc độ dần, không giữ nguyên tốc độ khi va chạm.\n- D: Túi khí không làm thay đổi khối lượng của người ngồi trong xe."
+  },
+  {
+   "ma_cau": "K09010106036",
+   "nhom_id": "KNB00413",
+   "loai": "trac_nghiem",
+   "de": "Hộ lan (rào chắn) mềm bên đường cao tốc được thiết kế biến dạng khi xe va vào. Mục đích chính là gì liên quan đến động năng?",
+   "lua_chon": [
+    "Tăng động năng của xe để xe bật ngược lại nhanh hơn",
+    "Giữ nguyên tốc độ xe trước khi va chạm",
+    "Hấp thụ dần động năng, giảm lực lên người trong xe",
+    "Làm tăng khối lượng của xe khi va chạm"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Hộ lan biến dạng để hấp thụ dần động năng của xe, giảm lực và mức độ va chạm truyền tới người ngồi trong xe.\n\nVì sao các phương án khác sai:\n- A: Mục đích là giảm bớt, không phải làm tăng thêm động năng của xe.\n- B: Khi va chạm, hộ lan làm xe giảm tốc độ dần, không giữ nguyên tốc độ.\n- D: Hộ lan không làm thay đổi khối lượng của xe."
+  },
+  {
+   "ma_cau": "K09010106037",
+   "nhom_id": "KNB00413",
+   "loai": "trac_nghiem",
+   "de": "Cuối đường trượt nước tại công viên thường có một hồ nước sâu. Vai trò của hồ nước liên quan đến động năng của người trượt là gì?",
+   "lua_chon": [
+    "Hấp thụ dần động năng, giúp người dừng lại an toàn",
+    "Làm tăng tốc độ của người trước khi xuống hồ",
+    "Giữ nguyên động năng của người khi chạm nước",
+    "Chuyển động năng thành khối lượng của người"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nước cản trở chuyển động, hấp thụ dần động năng của người trượt nên người dừng lại an toàn, không bị va chạm mạnh.\n\nVì sao các phương án khác sai:\n- B: Hồ nước làm giảm tốc độ chứ không làm tăng tốc độ người trượt.\n- C: Lực cản của nước làm động năng giảm dần, không giữ nguyên.\n- D: Động năng không thể chuyển thành khối lượng, chỉ chuyển hoá thành dạng năng lượng khác."
+  }
+ ]
+}

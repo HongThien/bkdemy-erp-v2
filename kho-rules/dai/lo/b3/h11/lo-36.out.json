@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "HHC010638",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Cho hai đường thẳng phân»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010639",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Chọn mệnh đề đúng trong»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010640",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tính/nhận biết góc giữa đường thẳng, mặt phẳng (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010641",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010642",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tính/nhận biết góc giữa đường thẳng, mặt phẳng (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010643",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Cho hình chóp có cạnh»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010644",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tính/nhận biết góc giữa đường thẳng, mặt phẳng (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010652",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010653",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Trong không gian cho hai»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010654",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tính/nhận biết góc giữa đường thẳng, mặt phẳng (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010655",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: góc nhị diện giữa hai mặt phẳng (đề «Cho hình chóp tứ giác»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010656",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010657",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc hai mặt phẳng song song (mặt phẳng qua C song song đáy) và tính góc cắt: không có bài trong 5 bài.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010658",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tính/nhận biết góc giữa đường thẳng, mặt phẳng (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010665",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tính/nhận biết góc giữa đường thẳng, mặt phẳng (đề «Cho hình chóp có Xác»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010666",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Cho hai đường thẳng phân»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010667",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Để làm đường dẫn lên»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010668",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010669",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tính/nhận biết góc giữa đường thẳng, mặt phẳng (đề «Cho hình chóp có và»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010670",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tính/nhận biết góc giữa đường thẳng, mặt phẳng (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010690",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Bốn điểm không đồng phẳng, đếm mặt phẳng đi qua ba điểm không thẳng hàng: cách xác định mặt phẳng.",
+  "can_cu": "Nó đi qua ba điểm không thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC010691",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Hỏi giả thiết kết luận đường thẳng a song song mặt phẳng: nhận biết vị trí tương đối đường-mặt.",
+  "can_cu": "$d$ và $(P)$ không có điểm chung: $d$ song song với $(P)$"
+ },
+ {
+  "ma_cau": "HHC010692",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010693",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010694",
+  "dang_bai_id": "HH00148",
+  "chac": "cao",
+  "ly_do": "Cắt chóp bằng mặt phẳng song song đáy, tính diện tích thiết diện đồng dạng đáy theo tỉ số k.",
+  "can_cu": "$S_{td}=k^2S_{đáy}$"
+ },
+ {
+  "ma_cau": "HHC010695",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc phép chiếu song song: bóng của biển báo, tỉ số B'G'/B'D' qua phép chiếu.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010706",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tính/nhận biết góc giữa đường thẳng, mặt phẳng (đề «Cho hình chóp có tất»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010707",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Cho hình chóp tam giác»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010708",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tính/nhận biết góc giữa đường thẳng, mặt phẳng (đề «Cho hình chóp có vuông»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010709",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010710",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: tính khoảng cách (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010711",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: tính thể tích khối (đề «Cho cái nêm hình lăng»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010712",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: tính thể tích khối (đề «Cho khối chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010713",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010714",
+  "dang_bai_id": "HH00148",
+  "chac": "vua",
+  "ly_do": "Tính diện tích thiết diện MNPQ do mặt phẳng cắt chóp, nhưng mặt phẳng xác định bởi vuông góc SB.",
+  "can_cu": "Tính diện tích, chu vi thiết diện"
+ },
+ {
+  "ma_cau": "HHC010715",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: tính thể tích khối (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010720",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Cho hình chóp tam giác»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010721",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010722",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: tính thể tích khối (đề «Cho lăng trụ đứng có»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010723",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: tính khoảng cách (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010732",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: tính thể tích khối (đề «Tính thể tích của khối»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010733",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010734",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tính/nhận biết góc giữa đường thẳng, mặt phẳng (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010735",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010736",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010737",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010738",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: tính khoảng cách (đề «Cho lăng trụ đứng có»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010739",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tính/nhận biết góc giữa đường thẳng, mặt phẳng (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010749",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tính/nhận biết góc giữa đường thẳng, mặt phẳng (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010750",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Cho mặt phẳng và một»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010751",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: tính khoảng cách (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010752",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Cho hình chóp có vuông»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010753",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: tính thể tích khối (đề «Cho hình chóp có tứ»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010754",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Cho đường thẳng và mặt»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010755",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010756",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: tính khoảng cách (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010757",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tính/nhận biết góc giữa đường thẳng, mặt phẳng (đề «Cho hình chóp có tứ»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010766",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: tính thể tích khối (đề «Cho khối lập phương có»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010767",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: góc nhị diện giữa hai mặt phẳng (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010768",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Thể tích khối đa diện: tính thể tích khối (đề «Cho hình chóp có diện»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010769",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Cho tứ diện có đôi»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010770",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: tính khoảng cách (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010771",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tính/nhận biết góc giữa đường thẳng, mặt phẳng (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010772",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010773",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: tính khoảng cách (đề «điểm Cho hình chóp có»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010781",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Khoảng cách: tính khoảng cách (đề «Cho hình lập phương có»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010782",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tính/nhận biết góc giữa đường thẳng, mặt phẳng (đề «Cho hình chóp có Góc»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010783",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: chứng minh/nhận biết quan hệ vuông góc (đề «Cho hình chóp có tứ»), không cần quan hệ song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC010784",
+  "dang_bai_id": "HH00087",
+  "chac": "vua",
+  "ly_do": "Nhận biết khái niệm hình chóp đều (đáy đa giác đều, cạnh bên bằng nhau): yếu tố hình chóp.",
+  "can_cu": "Nếu đáy của hình chóp là một tam giác, tứ giác, ngũ giác"
+ },
+ {
+  "ma_cau": "HHC010785",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Quan hệ vuông góc: tính/nhận biết góc giữa đường thẳng, mặt phẳng (đề «Cho hình chóp có đáy»), không cần quan hệ song song.",
+  "can_cu": null
+ }
+]

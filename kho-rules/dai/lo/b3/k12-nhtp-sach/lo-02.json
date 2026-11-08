@@ -1,0 +1,65 @@
+[
+ {
+  "ma_cau": "T1120000008834",
+  "loai": "tu_luan",
+  "de": "Biết $F\\left( x \\right)$ là một nguyên hàm của hàm số $f\\left( x \\right)=\\frac{1+2x^{2}}{x}$ thỏa mãn $F\\left( -1 \\right)=3$. Tìm $F\\left( x \\right)$.",
+  "loi_giai": "Ta có $F\\left( x \\right)=\\int\\frac{1+2x^{2}}{x}\\text{~d}x=\\int\\left( \\frac{1}{x}+2x \\right)\\text{d}x=\\text{ln}\\left| x \\right|+x^{2}+C$.\nMà $F\\left( -1 \\right)=3\\Leftrightarrow\\text{ln}\\left| -1 \\right|+(-1)^{2}+C=3\\Leftrightarrow C=2$ nên $F\\left( x \\right)=\\text{ln}\\left| x \\right|+x^{2}+2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008739",
+  "loai": "trac_nghiem",
+  "de": "(Chuyên Lê Khiết - Quảng Ngãi 2025) Nguyên hàm của hàm số $f(x)=x^{2}$là",
+  "lua_chon": [
+   "$\\frac{x^{2}}{2}+C$.",
+   "$2x+C$.",
+   "$\\frac{x^{3}}{3}+C$.",
+   "$x^{3}+C$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn C\nTa có $\\int x^{2}dx=\\frac{x^{3}}{3}+C$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008772",
+  "loai": "trac_nghiem",
+  "de": "(Sở Hà Tĩnh 2025) Tính $\\int\\limits_{-1}^{1} f\\left( x \\right)\\text{d}x$ biết rằng $\\int\\limits_{-1}^{1} \\left[ f\\left( x \\right)-x \\right]\\text{d}x=3.$",
+  "lua_chon": [
+   "$2$.",
+   "$1$.",
+   "$4$.",
+   "$3$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có:\n$\\begin{array}{l} \\int\\limits_{-1}^{1} \\left[ f\\left( x \\right)-x \\right]\\text{d}x=3\\Leftrightarrow\\int\\limits_{-1}^{1} f\\left( x \\right)\\text{d}x-\\int\\limits_{-1}^{1} x\\,\\text{d}x\\,=3 \\\\ \\Leftrightarrow\\int\\limits_{-1}^{1} f\\left( x \\right)\\text{d}x=3+\\int\\limits_{-1}^{1} x\\,\\text{d}x\\Leftrightarrow\\int\\limits_{-1}^{1} f\\left( x \\right)\\text{d}x=3. \\end{array}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008803",
+  "loai": "trac_nghiem",
+  "de": "(Sở Bình Dương 2025) Cho hình phẳng $\\left( H \\right)$ được giới hạn bởi các đường $y=x^{2}-2x-3,x=-1,x=4$ (như hình minh hoạ)\nDiện tích hình phẳng của $\\left( H \\right)$ là",
+  "lua_chon": [
+   "$13$.",
+   "$12$.",
+   "$8,3$.",
+   "$11$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Chọn A\nTa có $x^{2}-2x-3=0\\Leftrightarrow\\left[ \\begin{array}{l} x=-1 \\\\ x=3 \\end{array} \\right.$\nKhi đó $S_{1}=\\int\\limits_{-1}^{3} \\left( 0-x^{2}+2x+3 \\right)dx=\\frac{32}{3}$, $S_{2}=\\int\\limits_{3}^{4} \\left( x^{2}-2x-3-0 \\right)dx=\\frac{7}{3}$.\nVậy $S=\\frac{32}{3}+\\frac{7}{3}=13$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008781",
+  "loai": "trac_nghiem",
+  "de": "(Đề Minh Họa 2020 Lần 1) Nếu $\\int\\limits_{1}^{2} f\\left( x \\right)\\text{d}x=-2$ và $\\int\\limits_{2}^{3} f\\left( x \\right)\\text{d}x=1$ thì $\\int\\limits_{1}^{3} f\\left( x \\right)\\text{d}x$ bằng",
+  "lua_chon": [
+   "$-3$.",
+   "$-1$.",
+   "$1$.",
+   "$3$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chọn B\nTa có $\\int\\limits_{1}^{3} f\\left( x \\right)\\text{d}x=\\int\\limits_{1}^{2} f\\left( x \\right)\\text{d}x+\\int\\limits_{2}^{3} f\\left( x \\right)\\text{d}x=-2+1=-1$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

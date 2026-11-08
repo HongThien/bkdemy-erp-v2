@@ -1,0 +1,542 @@
+[
+ {
+  "id": "X0181",
+  "dap_an": "C",
+  "loi_giai": "Tốc độ lây lan là $N'(t)=-3t^{2}+18t$.\nTại tuần thứ ba, $t=3$ nên $N'(3)=-3\\cdot 3^{2}+18\\cdot 3=-27+54=27$.\nVậy tốc độ lây lan ở tuần thứ ba là $27$ (trăm người/tuần). Chọn C.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0182",
+  "dap_an": "A",
+  "loi_giai": "Hàm số $y=x-3+\\dfrac{1}{x+1}$ có $y-(x-3)=\\dfrac{1}{x+1}\\to 0$ khi $x\\to\\pm\\infty$.\nDo đó đường thẳng $y=x-3$ là tiệm cận xiên của đồ thị.\nVậy tiệm cận xiên là $y=x-3$. Chọn A.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0183",
+  "dap_an": "C",
+  "loi_giai": "Ta có $2\\overrightarrow{a}=(2;-4;6)$, nên $2\\overrightarrow{a}+\\overrightarrow{b}=(2-3;-4+0;6+4)=(-1;-4;10)$: đúng.\n$\\overrightarrow{a}+\\overrightarrow{b}=(1-3;-2+0;3+4)=(-2;-2;7)$: đúng.\n$2\\overrightarrow{a}=(2;-4;6)\\ne(2;-4;3)$: sai.\n$\\overrightarrow{a}-\\overrightarrow{b}=(1+3;-2-0;3-4)=(4;-2;-1)$: đúng.\nVậy khẳng định sai là $2\\overrightarrow{a}=(2;-4;3)$. Chọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0184",
+  "dap_an": "-2.5",
+  "loi_giai": "Lấy giá trị đại diện mỗi nhóm: $20;30;40;50;60$. Cả hai lĩnh vực có $n=20$ tháng.\n$\\overline{x_{A}}=\\dfrac{3\\cdot 20+4\\cdot 30+5\\cdot 40+3\\cdot 50+5\\cdot 60}{20}=\\dfrac{830}{20}=41{,}5$.\n$\\overline{x_{B}}=\\dfrac{3\\cdot 20+2\\cdot 30+5\\cdot 40+4\\cdot 50+6\\cdot 60}{20}=\\dfrac{880}{20}=44$.\nVậy $\\overline{x_{A}}-\\overline{x_{B}}=41{,}5-44=-2{,}5$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0185",
+  "dap_an": "2517",
+  "loi_giai": "Máy bay chuyển động đều nên quãng đường tỉ lệ với thời gian. Từ $A$ đến $B$ mất $20$ phút, từ $B$ đến $C$ mất $5$ phút, nên $\\overrightarrow{BC}=\\dfrac{1}{4}\\overrightarrow{AB}$.\nSuy ra $\\overrightarrow{AC}=\\overrightarrow{AB}+\\overrightarrow{BC}=\\dfrac{5}{4}\\overrightarrow{AB}$, hay $\\overrightarrow{AB}=\\dfrac{4}{5}\\overrightarrow{AC}$.\n$\\overrightarrow{AC}=(1900-1200;800-500;18-13)=(700;300;5)$ nên $\\overrightarrow{AB}=(560;240;4)$.\nToạ độ $B=(1200+560;500+240;13+4)=(1760;740;17)$.\nVậy $a+b+c=1760+740+17=2517$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0186",
+  "dap_an": "10",
+  "loi_giai": "Chi phí sản xuất $x$ sản phẩm là $x\\cdot G(x)=x^{3}-3x^{2}+500-20x$.\nLợi nhuận $L(x)=F(x)-xG(x)=220x-x^{3}+3x^{2}-500+20x=-x^{3}+3x^{2}+240x-500$, với $1\\le x\\le 18$.\n$L'(x)=-3x^{2}+6x+240=0\\Leftrightarrow x^{2}-2x-80=0\\Leftrightarrow x=10$ hoặc $x=-8$ (loại).\nTính: $L(1)=-258$; $L(10)=1200$; $L(18)=-1040$.\nVậy lợi nhuận lớn nhất khi sản xuất $10$ sản phẩm mỗi ngày.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đề có dòng \"HẾT\" dính cuối."
+ },
+ {
+  "id": "X0187",
+  "dap_an": "B",
+  "loi_giai": "Trung điểm $I$ của $AB$ có toạ độ $I=\\left(\\dfrac{1-1}{2};\\dfrac{2+2}{2};\\dfrac{1+5}{2}\\right)=(0;2;3)$.\nChọn B.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0188",
+  "dap_an": "D",
+  "loi_giai": "$\\overrightarrow{OA}=0\\cdot\\overrightarrow{i}+1\\cdot\\overrightarrow{j}-5\\overrightarrow{k}$ nên $A=(0;1;-5)$.\nChọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0189",
+  "dap_an": "B",
+  "loi_giai": "Khoảng biến thiên của mẫu số liệu ghép nhóm là hiệu giữa đầu mút phải của nhóm cuối và đầu mút trái của nhóm đầu.\n$R=45-20=25$.\nVậy khoảng biến thiên là 25. Chọn B.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0190",
+  "dap_an": "D",
+  "loi_giai": "$|\\overrightarrow{a}|=\\sqrt{3^{2}+2^{2}+(-1)^{2}}=\\sqrt{14}$.\nChọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0191",
+  "dap_an": "A",
+  "loi_giai": "Doanh thu theo giá vé $x$ là $R(x)=x\\cdot y(x)=-\\dfrac{1}{50}x^{2}+1300x$ (đồng), $x>0$.\n$R'(x)=-\\dfrac{1}{25}x+1300=0\\Leftrightarrow x=32500$.\n$R'(x)>0$ khi $x<32500$ và $R'(x)<0$ khi $x>32500$ nên $R$ đạt lớn nhất tại $x=32500$.\n$R(32500)=-\\dfrac{32500^{2}}{50}+1300\\cdot 32500=-21125000+42250000=21125000$.\nVậy doanh thu cao nhất là $21125000$ đồng. Chọn A.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0192",
+  "dap_an": "A",
+  "loi_giai": "Chia đa thức: $2x^{2}+15x-16=(x+5)(2x+5)-41$.\nNên $y=2x+5-\\dfrac{41}{x+5}$, và $\\dfrac{41}{x+5}\\to 0$ khi $x\\to\\pm\\infty$.\nVậy tiệm cận xiên là $y=2x+5$. Chọn A.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0193",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{OM}=1\\cdot\\overrightarrow{i}+a\\overrightarrow{j}+b\\overrightarrow{k}$ nên $M=(1;a;b)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0194",
+  "dap_an": "A",
+  "loi_giai": "Tập xác định: $8-x^{2}\\ge 0\\Leftrightarrow x\\in[-2\\sqrt{2};2\\sqrt{2}]$.\n$y'=2\\sqrt{8-x^{2}}-\\dfrac{2x^{2}}{\\sqrt{8-x^{2}}}=\\dfrac{16-4x^{2}}{\\sqrt{8-x^{2}}}$, với $x\\in(-2\\sqrt{2};2\\sqrt{2})$.\n$y'=0\\Leftrightarrow x=\\pm 2$.\nBảng xét dấu: $y'<0$ trên $(-2\\sqrt{2};-2)$, $y'>0$ trên $(-2;2)$, $y'<0$ trên $(2;2\\sqrt{2})$.\n$y'$ đổi dấu từ $+$ sang $-$ tại $x=2$ nên điểm cực đại của hàm số là $x=2$. Chọn A.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0195",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{u}+\\overrightarrow{v}=(1+2;3+1;-2-1)=(3;4;-3)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0196",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{a}\\cdot\\overrightarrow{b}=2\\cdot(-1)+1\\cdot 0+0\\cdot(-2)=-2$.\n$|\\overrightarrow{a}|=\\sqrt{4+1+0}=\\sqrt{5}$, $|\\overrightarrow{b}|=\\sqrt{1+0+4}=\\sqrt{5}$.\n$\\cos\\left(\\overrightarrow{a},\\overrightarrow{b}\\right)=\\dfrac{-2}{\\sqrt{5}\\cdot\\sqrt{5}}=-\\dfrac{2}{5}$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0197",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{u}+\\overrightarrow{v}=(1+2;2-2;-2+3)=(3;0;1)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0198",
+  "dap_an": "10",
+  "loi_giai": "$\\overrightarrow{AB}=(3;4;0)$, $AB=\\sqrt{9+16}=5$. $M\\in(Oyz)$ nên $M(0;b;c)$, $\\overrightarrow{AM}=(-4;b+1;c-2)$.\nTam giác $ABM$ vuông cân tại $A$ nên $\\overrightarrow{AB}\\cdot\\overrightarrow{AM}=0$ và $AM=AB$.\n$\\overrightarrow{AB}\\cdot\\overrightarrow{AM}=-12+4(b+1)=0\\Rightarrow b=2$.\n$AM^{2}=16+(b+1)^{2}+(c-2)^{2}=16+9+(c-2)^{2}=25\\Rightarrow (c-2)^{2}=0\\Rightarrow c=2$.\nVậy $M(0;2;2)$ và $K=2b+3c=4+6=10$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0199",
+  "dap_an": "A",
+  "loi_giai": "Khoảng biến thiên của mẫu số liệu ghép nhóm là hiệu giữa đầu mút phải của nhóm cuối và đầu mút trái của nhóm đầu.\n$R=45-20=25$.\nVậy khoảng biến thiên là 25. Chọn A.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0200",
+  "dap_an": "0.36",
+  "loi_giai": "Độ lệch chuẩn bằng căn bậc hai của phương sai: $s=\\sqrt{0{,}1314}\\approx 0{,}3625$.\nLàm tròn đến hàng phần trăm: $s\\approx 0{,}36$ (km).\nVậy độ lệch chuẩn bằng $0{,}36$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0201",
+  "dap_an": "C",
+  "loi_giai": "$\\overrightarrow{b}=-1\\cdot\\overrightarrow{i}+4\\cdot\\overrightarrow{j}+0\\cdot\\overrightarrow{k}$ nên $\\overrightarrow{b}=(-1;4;0)$.\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0202",
+  "dap_an": "3.3",
+  "loi_giai": "$M$ thuộc đoạn $AB$ và $MA=2MB$ nên $AM=\\dfrac{2}{3}AB$, hay $\\overrightarrow{AM}=\\dfrac{2}{3}\\overrightarrow{AB}$.\n$\\overrightarrow{AB}=(-1;-4;7)$ nên $\\overrightarrow{AM}=\\left(-\\dfrac{2}{3};-\\dfrac{8}{3};\\dfrac{14}{3}\\right)$.\n$M=\\left(3-\\dfrac{2}{3};1-\\dfrac{8}{3};-2+\\dfrac{14}{3}\\right)=\\left(\\dfrac{7}{3};-\\dfrac{5}{3};\\dfrac{8}{3}\\right)$.\n$a+b+c=\\dfrac{7-5+8}{3}=\\dfrac{10}{3}\\approx 3{,}333$.\nLàm tròn đến hàng phần mười: $3{,}3$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0203",
+  "dap_an": "C",
+  "loi_giai": "$\\overrightarrow{AB}=(3;-4;0)$ nên $AB=\\sqrt{9+16+0}=5$.\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0204",
+  "dap_an": "D",
+  "loi_giai": "$O$ là trung điểm của $AC$ và $BD$ nên $\\overrightarrow{SA}+\\overrightarrow{SC}=2\\overrightarrow{SO}$ và $\\overrightarrow{SB}+\\overrightarrow{SD}=2\\overrightarrow{SO}$.\nSuy ra $\\overrightarrow{SA}+\\overrightarrow{SB}+\\overrightarrow{SC}+\\overrightarrow{SD}=4\\overrightarrow{SO}$. Chọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0205",
+  "dap_an": "A",
+  "loi_giai": "Giá trị đại diện các nhóm: $6;8;10;12;14$ với tần số $2;7;7;3;1$ ($n=20$).\n$\\overline{x}=\\dfrac{2\\cdot 6+7\\cdot 8+7\\cdot 10+3\\cdot 12+1\\cdot 14}{20}=\\dfrac{188}{20}=9{,}4$.\nVì $9\\le 9{,}4<11$ nên số trung bình thuộc khoảng $[9;11)$. Chọn A.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0206",
+  "dap_an": "D",
+  "loi_giai": "$y'=-3x^{2}+6x=-3x(x-2)$.\n$y'>0\\Leftrightarrow 0<x<2$ nên hàm số đồng biến trên $(0;2)$. Chọn D.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0207",
+  "dap_an": "A",
+  "loi_giai": "Với ba điểm $S,A,B$ ta có $\\overrightarrow{SA}-\\overrightarrow{SB}=\\overrightarrow{SA}+\\overrightarrow{BS}=\\overrightarrow{BA}$.\nVậy mệnh đề đúng là $\\overrightarrow{SA}-\\overrightarrow{SB}=\\overrightarrow{BA}$. Chọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0208",
+  "dap_an": "C",
+  "loi_giai": "Trung điểm $MN$: $\\left(\\dfrac{1+1}{2};\\dfrac{-2+0}{2};\\dfrac{2+4}{2}\\right)=(1;-1;3)$.\nChọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0209",
+  "dap_an": "C",
+  "loi_giai": "Hàm số $y=\\dfrac{x+1}{x+3}$: tại $x=-3$ mẫu bằng $0$, tử bằng $-2\\ne 0$ nên $\\lim_{x\\to -3^{\\pm}}y=\\mp\\infty$.\nVậy tiệm cận đứng là $x=-3$. Chọn C.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0210",
+  "dap_an": "D",
+  "loi_giai": "Hình chiếu vuông góc của $M(2;-2;1)$ lên mặt phẳng $(Oxy)$ giữ nguyên $x,y$ và cho $z=0$.\nVậy hình chiếu là $(2;-2;0)$. Chọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0211",
+  "dap_an": "C",
+  "loi_giai": "Hình chiếu vuông góc của $M(2;-2;1)$ lên mặt phẳng $(Oxy)$ giữ nguyên $x,y$ và cho $z=0$.\nVậy hình chiếu là $(2;-2;0)$. Chọn C.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0212",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{a}\\cdot\\overrightarrow{b}=2\\cdot(-1)+1\\cdot 0+0\\cdot(-2)=-2$.\n$|\\overrightarrow{a}|=\\sqrt{4+1+0}=\\sqrt{5}$, $|\\overrightarrow{b}|=\\sqrt{1+0+4}=\\sqrt{5}$.\n$\\cos\\left(\\overrightarrow{a},\\overrightarrow{b}\\right)=\\dfrac{-2}{\\sqrt{5}\\cdot\\sqrt{5}}=-\\dfrac{2}{5}$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0213",
+  "dap_an": "D",
+  "loi_giai": "$\\overrightarrow{b}=-1\\cdot\\overrightarrow{i}+4\\cdot\\overrightarrow{j}+0\\cdot\\overrightarrow{k}$ nên $\\overrightarrow{b}=(-1;4;0)$.\nChọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0214",
+  "dap_an": "0.4",
+  "loi_giai": "Độ lệch chuẩn bằng căn bậc hai của phương sai: $s=\\sqrt{0{,}1314}\\approx 0{,}3625$.\nLàm tròn đến hàng phần mười: $s\\approx 0{,}4$ (km).\nVậy độ lệch chuẩn bằng $0{,}4$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0215",
+  "dap_an": "D",
+  "loi_giai": "$y'=-3x^{2}+6x=-3x(x-2)$.\n$y'>0\\Leftrightarrow 0<x<2$ nên hàm số đồng biến trên $(0;2)$. Chọn D.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0216",
+  "dap_an": "3.33",
+  "loi_giai": "$M$ thuộc đoạn $AB$ và $MA=2MB$ nên $AM=\\dfrac{2}{3}AB$, hay $\\overrightarrow{AM}=\\dfrac{2}{3}\\overrightarrow{AB}$.\n$\\overrightarrow{AB}=(-1;-4;7)$ nên $\\overrightarrow{AM}=\\left(-\\dfrac{2}{3};-\\dfrac{8}{3};\\dfrac{14}{3}\\right)$.\n$M=\\left(3-\\dfrac{2}{3};1-\\dfrac{8}{3};-2+\\dfrac{14}{3}\\right)=\\left(\\dfrac{7}{3};-\\dfrac{5}{3};\\dfrac{8}{3}\\right)$.\n$a+b+c=\\dfrac{7-5+8}{3}=\\dfrac{10}{3}\\approx 3{,}333$.\nLàm tròn đến hàng phần trăm: $3{,}33$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0217",
+  "dap_an": "A",
+  "loi_giai": "Với ba điểm $S,A,B$ ta có $\\overrightarrow{SA}-\\overrightarrow{SB}=\\overrightarrow{SA}+\\overrightarrow{BS}=\\overrightarrow{BA}$.\nVậy mệnh đề đúng là $\\overrightarrow{SA}-\\overrightarrow{SB}=\\overrightarrow{BA}$. Chọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0218",
+  "dap_an": "C",
+  "loi_giai": "Khoảng biến thiên của mẫu số liệu ghép nhóm là hiệu giữa đầu mút phải của nhóm cuối và đầu mút trái của nhóm đầu.\n$R=45-20=25$.\nVậy khoảng biến thiên là 25. Chọn C.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0219",
+  "dap_an": "B",
+  "loi_giai": "Trung điểm $MN$: $\\left(\\dfrac{1+1}{2};\\dfrac{-2+0}{2};\\dfrac{2+4}{2}\\right)=(1;-1;3)$.\nChọn B.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0220",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{AB}=(3;-4;0)$ nên $AB=\\sqrt{9+16+0}=5$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0221",
+  "dap_an": "C",
+  "loi_giai": "Giá trị đại diện các nhóm: $6;8;10;12;14$ với tần số $2;7;7;3;1$ ($n=20$).\n$\\overline{x}=\\dfrac{2\\cdot 6+7\\cdot 8+7\\cdot 10+3\\cdot 12+1\\cdot 14}{20}=\\dfrac{188}{20}=9{,}4$.\nVì $9\\le 9{,}4<11$ nên số trung bình thuộc khoảng $[9;11)$. Chọn C.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0222",
+  "dap_an": "A",
+  "loi_giai": "$O$ là trung điểm của $AC$ và $BD$ nên $\\overrightarrow{SA}+\\overrightarrow{SC}=2\\overrightarrow{SO}$ và $\\overrightarrow{SB}+\\overrightarrow{SD}=2\\overrightarrow{SO}$.\nSuy ra $\\overrightarrow{SA}+\\overrightarrow{SB}+\\overrightarrow{SC}+\\overrightarrow{SD}=4\\overrightarrow{SO}$. Chọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0223",
+  "dap_an": "A",
+  "loi_giai": "Hàm số $y=\\dfrac{x+1}{x+3}$: tại $x=-3$ mẫu bằng $0$, tử bằng $-2\\ne 0$ nên $\\lim_{x\\to -3^{\\pm}}y=\\mp\\infty$.\nVậy tiệm cận đứng là $x=-3$. Chọn A.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0224",
+  "dap_an": "B",
+  "loi_giai": "Cỡ mẫu $n=6+6+4+1+1=18$.\nTần số tích luỹ: $6;12;16;17;18$.\n$Q_{1}$ ứng với giá trị thứ $\\dfrac{n}{4}=4{,}5$. Vì $4{,}5\\le 6$ nên $Q_{1}$ thuộc nhóm đầu tiên $[20;25)$.\nChọn B.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0225",
+  "dap_an": "A",
+  "loi_giai": "Theo định nghĩa, $\\lim_{x\\to+\\infty}f(x)=1$ nên đường thẳng $y=1$ là tiệm cận ngang; $\\lim_{x\\to-\\infty}f(x)=-1$ nên đường thẳng $y=-1$ là tiệm cận ngang.\nVậy đồ thị có hai tiệm cận ngang $y=1$ và $y=-1$. Chọn A.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0226",
+  "dap_an": "D",
+  "loi_giai": "Hình hộp chữ nhật nên $ABCD$ và $A'B'C'D'$ là hình chữ nhật, $AB\\parallel D'C'$ và $AB=D'C'$.\nHai vectơ $\\overrightarrow{AB}$ và $\\overrightarrow{D'C'}$ cùng hướng, cùng độ dài nên $\\overrightarrow{AB}=\\overrightarrow{D'C'}$.\nCác vectơ $\\overrightarrow{B'A'},\\overrightarrow{BA},\\overrightarrow{CD}$ đều ngược hướng với $\\overrightarrow{AB}$. Chọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0227",
+  "dap_an": "C",
+  "loi_giai": "Khoảng biến thiên của mẫu số liệu ghép nhóm là hiệu giữa đầu mút phải của nhóm cuối và đầu mút trái của nhóm đầu.\n$R=19-14=5$.\nVậy khoảng biến thiên là 5. Chọn C.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0228",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{a}\\cdot\\overrightarrow{b}=2\\cdot(-1)+1\\cdot 0+0\\cdot(-2)=-2$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0229",
+  "dap_an": "B",
+  "loi_giai": "Giá trị đại diện: $2{,}85;3{,}15;3{,}45;3{,}75;4{,}05$ với tần số $3;6;5;4;2$ ($n=20$).\n$\\overline{x}=\\dfrac{3\\cdot 2{,}85+6\\cdot 3{,}15+5\\cdot 3{,}45+4\\cdot 3{,}75+2\\cdot 4{,}05}{20}=\\dfrac{67{,}8}{20}=3{,}39$.\n$s^{2}=\\dfrac{3\\cdot 2{,}85^{2}+6\\cdot 3{,}15^{2}+5\\cdot 3{,}45^{2}+4\\cdot 3{,}75^{2}+2\\cdot 4{,}05^{2}}{20}-3{,}39^{2}=0{,}1314$.\n$s=\\sqrt{0{,}1314}\\approx 0{,}36$.\nVậy độ lệch chuẩn gần nhất với $0{,}36$. Chọn B.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0230",
+  "dap_an": "B",
+  "loi_giai": "Hình chiếu vuông góc của $M(2;1;-1)$ lên mặt phẳng $(Ozx)$ giữ nguyên $x,z$ và cho $y=0$.\nVậy hình chiếu là $(2;0;-1)$. Chọn B.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0231",
+  "dap_an": "60",
+  "loi_giai": "$\\overline{C}(x)=2x-230+\\dfrac{7200}{x}$ với $x\\in[30;120]$.\n$\\overline{C}'(x)=2-\\dfrac{7200}{x^{2}}=0\\Leftrightarrow x^{2}=3600\\Leftrightarrow x=60$ (nhận).\nTính: $\\overline{C}(30)=70$; $\\overline{C}(60)=10$; $\\overline{C}(120)=70$.\nVậy chi phí trung bình thấp nhất ($10$ nghìn đồng) khi làm $60$ phần ăn.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0232",
+  "dap_an": "4",
+  "loi_giai": "Gọi $G$ là điểm thoả $2\\overrightarrow{GA}+\\overrightarrow{GB}+\\overrightarrow{GC}=\\overrightarrow{0}$, tức $G=\\dfrac{2A+B+C}{4}$.\n$G=\\left(\\dfrac{12+4+0}{4};\\dfrac{-4+5+3}{4};\\dfrac{0-2+2}{4}\\right)=(4;1;0)$.\nKhi đó $2\\overrightarrow{MA}+\\overrightarrow{MB}+\\overrightarrow{MC}=4\\overrightarrow{MG}$ nên $Q=4MG$.\n$M$ chạy trên trục $Ox$ nên $MG$ nhỏ nhất bằng khoảng cách từ $G$ đến $Ox$: $d(G,Ox)=\\sqrt{1^{2}+0^{2}}=1$ (khi $M(4;0;0)$).\nVậy $Q_{\\min}=4\\cdot 1=4$.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0233",
+  "dap_an": null,
+  "loi_giai": "",
+  "chuong": "KHAC",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đề rỗng: chỉ là đoạn bảng đáp án/tên người ra đề, không có câu hỏi."
+ },
+ {
+  "id": "X0234",
+  "dap_an": "D",
+  "loi_giai": "Gọi $C(0;0;c)$. $\\overrightarrow{AB}=(0;-1;2)$, $\\overrightarrow{BC}=(-1;1;c)$.\n$AB\\perp BC\\Leftrightarrow\\overrightarrow{AB}\\cdot\\overrightarrow{BC}=0\\Leftrightarrow 0-1+2c=0\\Leftrightarrow c=\\dfrac{1}{2}$.\nVậy $C\\left(0;0;\\dfrac{1}{2}\\right)$. Chọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0235",
+  "dap_an": "A",
+  "loi_giai": "$A'$ đối xứng với $A$ qua $B$ nên $B$ là trung điểm của $AA'$: $A'=2B-A$.\n$A'=(2\\cdot(-1)-2;2\\cdot 2-1;2\\cdot 1-1)=(-4;3;1)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0236",
+  "dap_an": "B",
+  "loi_giai": "Mẫu số $3x+2=0\\Leftrightarrow x=-\\dfrac{2}{3}$; tại đó tử số $4\\cdot\\dfrac{4}{9}+\\dfrac{2}{3}+1=\\dfrac{31}{9}\\ne 0$.\nDo đó $\\lim_{x\\to-\\frac{2}{3}^{\\pm}}y=\\pm\\infty$ và tiệm cận đứng là $x=-\\dfrac{2}{3}$. Chọn B.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0237",
+  "dap_an": "3",
+  "loi_giai": "Gọi $x$ (cm) là cạnh hình vuông cắt bỏ, $0<x<7{,}5$. Hình hộp có các cạnh $x$; $15-2x$; $24-2x$.\n$V(x)=x(15-2x)(24-2x)=4x^{3}-78x^{2}+360x$.\n$V'(x)=12x^{2}-156x+360=0\\Leftrightarrow x^{2}-13x+30=0\\Leftrightarrow x=3$ hoặc $x=10$ (loại vì $x<7{,}5$).\n$V'(x)>0$ khi $0<x<3$, $V'(x)<0$ khi $3<x<7{,}5$ nên $V$ lớn nhất tại $x=3$ ($V=486\\ \\text{cm}^{3}$).\nVậy cạnh hình vuông cần cắt bỏ là $3$ cm.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0238",
+  "dap_an": "D",
+  "loi_giai": "Độ lệch chuẩn bằng căn bậc hai của phương sai: $s=\\sqrt{25}=5$.\nChọn D.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0239",
+  "dap_an": "3.89",
+  "loi_giai": "Cỡ mẫu $n=45+34+23+18+5=125$. Tần số tích luỹ: $45;79;102;120;125$.\n$Q_{1}$ ứng với $\\dfrac{n}{4}=31{,}25$, thuộc nhóm $[0;2)$: $Q_{1}=0+\\dfrac{31{,}25-0}{45}\\cdot 2\\approx 1{,}3889$.\n$Q_{3}$ ứng với $\\dfrac{3n}{4}=93{,}75$, thuộc nhóm $[4;6)$ (vì $79<93{,}75\\le 102$): $Q_{3}=4+\\dfrac{93{,}75-79}{23}\\cdot 2\\approx 5{,}2826$.\nKhoảng tứ phân vị $\\Delta_{Q}=Q_{3}-Q_{1}\\approx 5{,}2826-1{,}3889\\approx 3{,}89$.\nVậy khoảng tứ phân vị bằng $3{,}89$.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Đề có dòng \"HẾT\" dính cuối."
+ },
+ {
+  "id": "X0240",
+  "dap_an": "D",
+  "loi_giai": "$f'(x)=\\dfrac{-2}{(x-1)^{2}}<0$ với mọi $x\\in[3;5]$ nên $f$ nghịch biến trên $[3;5]$.\n$M=f(3)=\\dfrac{4}{2}=2$, $m=f(5)=\\dfrac{6}{4}=\\dfrac{3}{2}$.\n$M-m=2-\\dfrac{3}{2}=\\dfrac{1}{2}$. Chọn D.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ }
+]

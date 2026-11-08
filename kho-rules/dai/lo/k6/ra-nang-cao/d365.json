@@ -1,0 +1,200 @@
+[
+ {
+  "ma_cau": "T106000000149",
+  "parent_ma_cau": null,
+  "loai_cau": "tu_luan",
+  "nguon": "de_thi",
+  "da_duyet": false,
+  "noi_dung": "Trên một bàn cờ vua, ô thứ nhất bỏ 1 hạt gạo, ô thứ hai bỏ 2 hạt gạo, ô thứ ba bỏ 4 hạt gạo,... Cứ như vậy người ta để số hạt gạo ở ô sau gấp đôi ô trước.\nBạn Mai tính toán một lúc thì phát biểu: Vậy tổng số hạt gạo trên cả bàn cờ (64 ô) sẽ là $2^{64}-1$. Hỏi Mai phát biểu vậy đúng hay sai? Vì sao?",
+  "lua_chon": null,
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số hạt mỗi ô gấp đôi ô trước nên là dãy luỹ thừa của 2; **nhân dãy với 2 rồi trừ** để triệt tiêu gần hết các số hạng.\n\n**Bước 1.** Viết số hạt gạo mỗi ô thành luỹ thừa của 2: ô thứ nhất là $2^0$, ô thứ hai là $2^1$, và cứ thế tới ô thứ 64; từ đó lập tổng $S$ của cả 64 ô.\n\n**Bước 2.** Nhân hai vế của $S$ với cơ số 2 để được dãy mới lệch đi một bậc luỹ thừa so với $S$.\n\n**Bước 3.** Lấy dãy $2S$ trừ dãy $S$: các số hạng giống nhau triệt tiêu, chỉ còn số hạng cuối của $2S$ và số hạng đầu của $S$.\n\n**Bước 4.** So kết quả của $S$ với số $2^{64}-1$ mà Mai nêu để kết luận đúng hay sai.\n\n**Chú ý:** ô thứ 64 có $2^{63}$ hạt (số mũ kém số thứ tự ô một đơn vị), không phải $2^{64}$ hạt.\n\n**Phần 2. Trình bày**\n\nSố hạt gạo ở ô thứ nhất, thứ hai, thứ ba, ... lần lượt là $1=2^0$, $2=2^1$, $4=2^2$, ... nên ô thứ 64 có $2^{63}$ hạt gạo.\n\nTổng số hạt gạo trên cả bàn cờ là $S=1+2+2^2+\\dots+2^{63}$.\n\nTa có $2S=2.(1+2+2^2+\\dots+2^{63})=2+2^2+2^3+\\dots+2^{64}$\n\nSuy ra $2S-S=(2+2^2+\\dots+2^{64})-(1+2+\\dots+2^{63})$\n\n$S=2^{64}-1$\n\nVậy bạn Mai phát biểu đúng."
+ },
+ {
+  "ma_cau": "T106000000614",
+  "parent_ma_cau": null,
+  "loai_cau": "tu_luan",
+  "nguon": "de_thi",
+  "da_duyet": false,
+  "noi_dung": "Cho $A=1+2+2^2+\\dots+2^{2024}+2^{2025}$ và $B=2^{2026}$. Chứng minh: $A$ và $B$ là hai số tự nhiên liên tiếp.",
+  "lua_chon": null,
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** nhân $A$ với cơ số 2 để được dãy gần giống $A$, rồi lấy hiệu hai dãy để các số hạng giữa triệt tiêu.\n\n**Bước 1.** Nhân cả $A$ với 2: mỗi số hạng được nhân thêm 2 nên số mũ mỗi luỹ thừa tăng thêm 1.\n\n**Bước 2.** Lấy $2A$ trừ $A$: các số hạng ở giữa hai dãy giống nhau nên triệt tiêu, chỉ còn số hạng cuối của $2A$ và số hạng đầu của $A$.\n\n**Bước 3.** Rút ra $A$ rồi so sánh với $B=2^{2026}$: nếu hai số hơn kém nhau đúng 1 đơn vị thì là hai số tự nhiên liên tiếp.\n\n**Phần 2. Trình bày**\n\n$A=1+2+2^2+\\dots+2^{2024}+2^{2025}$\n\nTa có $2A=2.(1+2+2^2+\\dots+2^{2025})=2+2^2+2^3+\\dots+2^{2026}$\n\nSuy ra $2A-A=(2+2^2+\\dots+2^{2026})-(1+2+2^2+\\dots+2^{2025})$\n\n$A=2^{2026}-1$\n\nMà $B=2^{2026}$ nên $B=A+1$.\n\nVậy $A$ và $B$ là hai số tự nhiên liên tiếp."
+ },
+ {
+  "ma_cau": "T106020601001",
+  "parent_ma_cau": null,
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "le",
+  "da_duyet": true,
+  "noi_dung": "Tính $B=1+3+3^2+...+3^{100}$",
+  "lua_chon": null,
+  "dap_an": "$\\dfrac{3^{101}-1}{2}$",
+  "loi_giai": "Ta có $3B=3.(1+3+3^2+...+3^{100})=3^1+3^2+3^3+...+3^{101}$\nSuy ra $3B-B=(3^1+3^2+3^3+...+3^{101})-(1+3+3^2+...+3^{100})$\n$2B=3^{101}-1$\n$B=\\dfrac{3^{101}-1}{2}$"
+ },
+ {
+  "ma_cau": "T106020601002",
+  "parent_ma_cau": "T106020601001",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Tính $A=1+2+2^2+...+2^{50}$",
+  "lua_chon": null,
+  "dap_an": "2^{51}-1",
+  "loi_giai": "Ta có $2A=2.(1+2+2^2+...+2^{50})=2^1+2^2+2^3+...+2^{51}$\nSuy ra $2A-A=(2^1+2^2+2^3+...+2^{51})-(1+2+2^2+...+2^{50})$\n$A=2^{51}-1$"
+ },
+ {
+  "ma_cau": "T106020601003",
+  "parent_ma_cau": "T106020601001",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Tính $C=1+4+4^2+...+4^{60}$",
+  "lua_chon": null,
+  "dap_an": "$\\dfrac{4^{61}-1}{3}$",
+  "loi_giai": "Ta có $4C=4.(1+4+4^2+...+4^{60})=4^1+4^2+4^3+...+4^{61}$\nSuy ra $4C-C=(4^1+4^2+4^3+...+4^{61})-(1+4+4^2+...+4^{60})$\n$3C=4^{61}-1$\n$C=\\dfrac{4^{61}-1}{3}$"
+ },
+ {
+  "ma_cau": "T106020601004",
+  "parent_ma_cau": "T106020601001",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Tính $D=1+5+5^2+...+5^{30}$",
+  "lua_chon": null,
+  "dap_an": "$\\dfrac{5^{31}-1}{4}$",
+  "loi_giai": "Ta có $5D=5.(1+5+5^2+...+5^{30})=5^1+5^2+5^3+...+5^{31}$\nSuy ra $5D-D=(5^1+5^2+5^3+...+5^{31})-(1+5+5^2+...+5^{30})$\n$4D=5^{31}-1$\n$D=\\dfrac{5^{31}-1}{4}$"
+ },
+ {
+  "ma_cau": "T106020601005",
+  "parent_ma_cau": "T106020601001",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Tính $E=1+3+3^2+...+3^{99}$",
+  "lua_chon": null,
+  "dap_an": "$\\dfrac{3^{100}-1}{2}$",
+  "loi_giai": "Ta có $3E=3.(1+3+3^2+...+3^{99})=3^1+3^2+3^3+...+3^{100}$\nSuy ra $3E-E=(3^1+3^2+3^3+...+3^{100})-(1+3+3^2+...+3^{99})$\n$2E=3^{100}-1$\n$E=\\dfrac{3^{100}-1}{2}$"
+ },
+ {
+  "ma_cau": "T106020601006",
+  "parent_ma_cau": "T106020601001",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Tính $F=1+6+6^2+...+6^{40}$",
+  "lua_chon": null,
+  "dap_an": "$\\dfrac{6^{41}-1}{5}$",
+  "loi_giai": "Ta có $6F=6.(1+6+6^2+...+6^{40})=6^1+6^2+6^3+...+6^{41}$\nSuy ra $6F-F=(6^1+6^2+6^3+...+6^{41})-(1+6+6^2+...+6^{40})$\n$5F=6^{41}-1$\n$F=\\dfrac{6^{41}-1}{5}$"
+ },
+ {
+  "ma_cau": "T106020601035",
+  "parent_ma_cau": null,
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "le",
+  "da_duyet": true,
+  "noi_dung": "Tính $A =1+3^2 +3^4 + .... + 3^{20}$.",
+  "lua_chon": null,
+  "dap_an": "$\\dfrac{3^{22}-1}{8}$",
+  "loi_giai": "$3^2 A = 3^2 +3^4 + 3^6 + ..... + 3^{22}$\n$3^2 A-A = 3^{22} -1$\n$8A = 3^{22}-1$\n$A = \\dfrac{3^{22}-1}{8}$"
+ },
+ {
+  "ma_cau": "T106020601036",
+  "parent_ma_cau": null,
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "le",
+  "da_duyet": true,
+  "noi_dung": "Tính $A=1+2^2+2^4+\\ldots+2^{16}$.",
+  "lua_chon": null,
+  "dap_an": "$\\dfrac{2^{18}-1}{3}$",
+  "loi_giai": "$2^2A=2^2+2^4+2^6+\\ldots+2^{18}$\n$2^2A-A=2^{18}-1$\n$3A=2^{18}-1$\n$A=\\dfrac{2^{18}-1}{3}$"
+ },
+ {
+  "ma_cau": "T106020601037",
+  "parent_ma_cau": null,
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "le",
+  "da_duyet": true,
+  "noi_dung": "Tính $A=1+4^2+4^4+\\ldots+4^{12}$.",
+  "lua_chon": null,
+  "dap_an": "$\\dfrac{4^{14}-1}{15}$",
+  "loi_giai": "$4^2A=4^2+4^4+4^6+\\ldots+4^{14}$\n$4^2A-A=4^{14}-1$\n$15A=4^{14}-1$\n$A=\\dfrac{4^{14}-1}{15}$"
+ },
+ {
+  "ma_cau": "T106020601038",
+  "parent_ma_cau": null,
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "le",
+  "da_duyet": true,
+  "noi_dung": "Tính $A=1+5^2+5^4+\\ldots+5^{18}$.",
+  "lua_chon": null,
+  "dap_an": "$\\dfrac{5^{20}-1}{24}$",
+  "loi_giai": "$5^2A=5^2+5^4+5^6+\\ldots+5^{20}$\n$5^2A-A=5^{20}-1$\n$24A=5^{20}-1$\n$A=\\dfrac{5^{20}-1}{24}$"
+ },
+ {
+  "ma_cau": "T106020601039",
+  "parent_ma_cau": null,
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "le",
+  "da_duyet": true,
+  "noi_dung": "Tính $A=1+2^2+2^4+\\ldots+2^{24}$.",
+  "lua_chon": null,
+  "dap_an": "$\\dfrac{2^{26}-1}{3}$",
+  "loi_giai": "$2^2A=2^2+2^4+2^6+\\ldots+2^{26}$\n$2^2A-A=2^{26}-1$\n$3A=2^{26}-1$\n$A=\\dfrac{2^{26}-1}{3}$"
+ },
+ {
+  "ma_cau": "T106020601040",
+  "parent_ma_cau": null,
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "le",
+  "da_duyet": true,
+  "noi_dung": "Tính $A=1+6^2+6^4+\\ldots+6^{10}$.",
+  "lua_chon": null,
+  "dap_an": "$\\dfrac{6^{12}-1}{35}$",
+  "loi_giai": "$6^2A=6^2+6^4+6^6+\\ldots+6^{12}$\n$6^2A-A=6^{12}-1$\n$35A=6^{12}-1$\n$A=\\dfrac{6^{12}-1}{35}$"
+ },
+ {
+  "ma_cau": "T106020601041",
+  "parent_ma_cau": null,
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "le",
+  "da_duyet": true,
+  "noi_dung": "Tính $A=1+2^3+2^6+\\ldots+2^{18}$.",
+  "lua_chon": null,
+  "dap_an": "$\\dfrac{2^{21}-1}{7}$",
+  "loi_giai": "$2^3A=2^3+2^6+2^9+\\ldots+2^{21}$\n$2^3A-A=2^{21}-1$\n$7A=2^{21}-1$\n$A=\\dfrac{2^{21}-1}{7}$"
+ },
+ {
+  "ma_cau": "T106020601042",
+  "parent_ma_cau": null,
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "le",
+  "da_duyet": true,
+  "noi_dung": "Tính $A=1+3^3+3^6+\\ldots+3^{15}$.",
+  "lua_chon": null,
+  "dap_an": "$\\dfrac{3^{18}-1}{26}$",
+  "loi_giai": "$3^3A=3^3+3^6+3^9+\\ldots+3^{18}$\n$3^3A-A=3^{18}-1$\n$26A=3^{18}-1$\n$A=\\dfrac{3^{18}-1}{26}$"
+ },
+ {
+  "ma_cau": "T106020601043",
+  "parent_ma_cau": null,
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "le",
+  "da_duyet": true,
+  "noi_dung": "Tính $A=1+4^3+4^6+\\ldots+4^{12}$.",
+  "lua_chon": null,
+  "dap_an": "$\\dfrac{4^{15}-1}{63}$",
+  "loi_giai": "$4^3A=4^3+4^6+4^9+\\ldots+4^{15}$\n$4^3A-A=4^{15}-1$\n$63A=4^{15}-1$\n$A=\\dfrac{4^{15}-1}{63}$"
+ },
+ {
+  "ma_cau": "T106020601044",
+  "parent_ma_cau": null,
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "le",
+  "da_duyet": true,
+  "noi_dung": "Tính $A=1+5^3+5^6+\\ldots+5^{21}$.",
+  "lua_chon": null,
+  "dap_an": "$\\dfrac{5^{24}-1}{124}$",
+  "loi_giai": "$5^3A=5^3+5^6+5^9+\\ldots+5^{24}$\n$5^3A-A=5^{24}-1$\n$124A=5^{24}-1$\n$A=\\dfrac{5^{24}-1}{124}$"
+ }
+]

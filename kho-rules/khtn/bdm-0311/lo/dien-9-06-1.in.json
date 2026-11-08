@@ -1,0 +1,2766 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00500",
+   "khoi": "9",
+   "chu_de": "Kim loại & Hợp kim",
+   "chuyen_de": "Tính chất chung của kim loại",
+   "nhom": "TÍNH TOÁN THEO PHƯƠNG TRÌNH HOÁ HỌC KHI KIM LOẠI TÁC DỤNG VỚI DUNG DỊCH MUỐI",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true
+  },
+  {
+   "nhom_id": "KNB00501",
+   "khoi": "9",
+   "chu_de": "Kim loại & Hợp kim",
+   "chuyen_de": "Tách kim loại và sử dụng hợp kim",
+   "nhom": "PHƯƠNG PHÁP TÁCH KIM LOẠI THEO DÃY HOẠT ĐỘNG HOÁ HỌC",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•\tTrong tự nhiên, kim loại chủ yếu tồn tại dưới dạng hợp chất (oxide, muối) trong quặng; một số kim loại quý (Au) có thể tồn tại ở dạng đơn chất. Một số quặng tiêu biểu: bauxite (Al2O3), hematite (Fe2O3), sphalerite (ZnS).\n•\tĐiện phân nóng chảy: dùng dòng điện, áp dụng cho kim loại hoạt động hoá học mạnh (K, Na, Ca, Mg, Al…).\n•\tNhiệt luyện: dùng chất khử (C, CO, H2, Al…) khử oxide kim loại ở nhiệt độ cao, áp dụng cho kim loại hoạt động hoá học trung bình (Fe, Zn…).\n•\tThuỷ luyện: hoà tan hợp chất kim loại thành dung dịch muối, dùng kim loại hoạt động mạnh hơn đẩy kim loại cần tách ra khỏi dung dịch (theo đúng dãy hoạt động hoá học), áp dụng cho kim loại hoạt động hoá học yếu (Ag, Au…).\nTrình tự làm bài\n1.\tXác định mức độ hoạt động hoá học của kim loại cần tách (mạnh, trung bình hay yếu) theo đúng dãy hoạt động hoá học đã học.\n2.\tChọn phương pháp tương ứng: mạnh → điện phân nóng chảy; trung bình → nhiệt luyện; yếu → thuỷ luyện.\n3.\tVới thuỷ luyện, kiểm tra thêm kim loại dùng để đẩy có đứng trước kim loại cần tách và không thuộc nhóm phản ứng mạnh với nước (K, Na, Ca) hay không.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00502",
+   "khoi": "9",
+   "chu_de": "Kim loại & Hợp kim",
+   "chuyen_de": "Tách kim loại và sử dụng hợp kim",
+   "nhom": "Viết phương trình hóa học điều chế kim loại từ hợp chất",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Điện phân nóng chảy (kim loại mạnh: $\\mathrm{K}$, $\\mathrm{Na}$, $\\mathrm{Ca}$, $\\mathrm{Mg}$, $\\mathrm{Al}$): muối hoặc oxide nóng chảy của kim loại $\\to$ kim loại + phi kim ($\\mathrm{Cl_2}$, $\\mathrm{O_2}$). \nNhiệt luyện (kim loại trung bình: $\\mathrm{Fe}$, $\\mathrm{Zn}$, $\\mathrm{Pb}$, $\\mathrm{Cu}$, $\\mathrm{Sn}$...): oxide kim loại + chất khử ($\\mathrm{C}$, $\\mathrm{CO}$, $\\mathrm{H_2}$) $\\to$ kim loại + sản phẩm khử ($\\mathrm{CO_2}$, $\\mathrm{H_2O}$, $\\mathrm{CO}$). \nVới quặng dạng sulfide (như $\\mathrm{ZnS}$), phải đốt trong không khí chuyển thành oxide trước, rồi mới khử oxide bằng chất khử.\nTrình tự làm bài\nXác định đúng phương pháp tách ứng với kim loại đề bài (dựa vào dãy hoạt động hoá học).\nViết đúng công thức oxide/muối ban đầu và công thức kim loại, sản phẩm phụ sinh ra.\nCân bằng số nguyên tử hai vế.\nLỗi thường gặp\nNhầm sản phẩm phụ: dùng $\\mathrm{O_2}$ thay vì $\\mathrm{Cl_2}$ khi điện phân muối chloride nóng chảy, hoặc ngược lại.\nQuên cân bằng hệ số sau khi viết đúng công thức.\nNhầm chất khử hoặc viết sai sản phẩm khử ($\\mathrm{CO_2}$ thay vì $\\mathrm{H_2O}$ khi dùng $\\mathrm{H_2}$, hoặc ngược lại).\nGhép sai phương pháp tách với kim loại (ví dụ dùng nhiệt luyện cho kim loại mạnh như $\\mathrm{Na}$). \nVÍ DỤ 1. Viết phương trình hoá học điện phân nóng chảy để tách nhôm ($\\mathrm{Al}$) ra khỏi aluminium oxide.\nHướng dẫn:\n$$2\\mathrm{Al_2O_3} \\xrightarrow{\\text{đpnc}} 4\\mathrm{Al} + 3\\mathrm{O_2}.$$ \nTrong công nghiệp, $\\mathrm{Al_2O_3}$ được trộn với cryolite nóng chảy để hạ nhiệt độ nóng chảy của hỗn hợp, tiết kiệm năng lượng. \nVÍ DỤ 2. Viết phương trình hoá học tách kẽm ($\\mathrm{Zn}$) ra khỏi zinc sulfide ($\\mathrm{ZnS}$) trong quặng sphalerite.\nHướng dẫn:\nQuá trình gồm hai bước: đốt $\\mathrm{ZnS}$ trong không khí thành $\\mathrm{ZnO}$, sau đó khử $\\mathrm{ZnO}$ bằng carbon.\n$$2\\mathrm{ZnS} + 3\\mathrm{O_2} \\xrightarrow{\\text{t°}} 2\\mathrm{ZnO} + 2\\mathrm{SO_2}; \\mathrm{ZnO} + \\mathrm{C} \\xrightarrow{\\text{t°}} \\mathrm{Zn} + \\mathrm{CO}.$$",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00503",
+   "khoi": "9",
+   "chu_de": "Kim loại & Hợp kim",
+   "chuyen_de": "Tách kim loại và sử dụng hợp kim",
+   "nhom": "HỢP KIM: KHÁI NIỆM, THÀNH PHẦN, ỨNG DỤNG",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•\tHợp kim là vật liệu kim loại chứa ít nhất một kim loại cơ bản (kim loại chiếm thành phần chính) và một số kim loại hoặc phi kim khác.\n•\tHợp kim thường có độ cứng, độ bền, khả năng chống ăn mòn và gỉ sét tốt hơn kim loại nguyên chất tạo nên nó, nên được dùng phổ biến hơn kim loại nguyên chất.\n•\tGang, thép: hợp kim của sắt với carbon (gang: carbon 2% – 5%; thép: carbon dưới 2%). Inox: thép có thêm chromium, nickel. Đuy-ra: hợp kim của nhôm với đồng, manganese, magnesium.\nTrình tự làm bài\n1.\tXác định kim loại cơ bản của hợp kim (kim loại chiếm thành phần chính).\n2.\tĐối chiếu thành phần (loại nguyên tố thêm vào, tỉ lệ carbon…) với tính chất đặc trưng đã học của từng hợp kim.\n3.\tChọn ứng dụng phù hợp với tính chất đặc trưng đó.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00504",
+   "khoi": "9",
+   "chu_de": "Kim loại & Hợp kim",
+   "chuyen_de": "Tách kim loại và sử dụng hợp kim",
+   "nhom": "SẢN XUẤT GANG, THÉP TRONG LÒ CAO (LÝ THUYẾT)",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•\tNguyên liệu sản xuất gang: quặng sắt (hematite, thành phần chính Fe2O3), than cốc, đá vôi (CaCO3).\n•\tCác phản ứng chính trong lò cao: than cốc cháy tạo CO2 rồi phản ứng với than cốc dư tạo CO; khí CO khử oxide sắt thành Fe; đá vôi bị phân huỷ thành CaO; CaO kết hợp SiO2 (tạp chất trong quặng) tạo xỉ CaSiO3.\n•\tSản xuất thép: thổi khí oxygen vào gang nóng chảy (nguyên liệu chính là gang hoặc thép phế liệu) để đốt cháy tạp chất; oxide dạng khí thoát ra theo khí thải, oxide dạng rắn tạo xỉ nhẹ nổi lên, tách ra thu được thép.\nTrình tự làm bài\n1.\tXác định đúng nguyên liệu và vai trò của từng nguyên liệu (quặng, than cốc, đá vôi hoặc oxygen).\n2.\tXác định đúng giai đoạn và phương trình hoá học tương ứng (tạo CO, khử oxide sắt, phân huỷ đá vôi, tạo xỉ, đốt tạp chất).\n3.\tCân bằng phương trình hoặc xác định đúng thứ tự, vai trò các chất trong quá trình.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00505",
+   "khoi": "9",
+   "chu_de": "Kim loại & Hợp kim",
+   "chuyen_de": "Tách kim loại và sử dụng hợp kim",
+   "nhom": "Bài toán Sản xuất kim loại có Tạp chất và Hiệu suất",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "- Công thức\nSố mol: $n = m/M$ (mol); từ hệ số cân bằng trong PTHH suy ra tỉ lệ mol giữa các chất.\nHiệu suất phản ứng: $\\mathrm{H\\%}$ = (khối lượng thực tế thu được / khối lượng tính theo lí thuyết) $\\times 100\\%$. Muốn tìm khối lượng thực tế: nhân khối lượng lí thuyết với $\\mathrm{H}/100$.\nThành phần phần trăm theo khối lượng trong quặng: $\\mathrm{\\%X}$ = (khối lượng X / khối lượng quặng) $\\times 100\\%$. Muốn tìm khối lượng quặng: lấy khối lượng X chia cho $\\mathrm{\\%X}$ rồi nhân 100.\nThể tích chất khí ở điều kiện chuẩn ($25^\\circ\\mathrm{C}$, 1 bar): $\\mathrm{V = n \\times 24}$ (lít), với 1 mol khí ở điều kiện chuẩn chiếm 24 lít.\n- Trình tự làm bài\nViết đúng và cân bằng phương trình hoá học của quá trình tách kim loại hoặc luyện gang, thép.\nĐổi dữ kiện đề bài về số mol của chất đã biết ($\\mathrm{n = m/M}$). Dựa vào tỉ lệ hệ số trong PTHH, suy ra số mol chất cần tìm.\nTính khối lượng hoặc thể tích chất cần tìm; nếu đề cho hiệu suất hoặc yêu cầu qua nhiều giai đoạn thì nhân thêm hệ số hiệu suất hoặc tính nối tiếp qua từng giai đoạn.\nVới bài tính theo chuỗi hai giai đoạn (ví dụ $\\mathrm{ZnS \\to ZnO \\to Zn}$), quên rằng số mol chất trung gian phải được dùng làm dữ kiện cho phương trình tiếp theo.\nVÍ dụ 1. Điện phân nóng chảy hoàn toàn 20,4 gam $\\mathrm{Al_2O_3}$ theo phương trình $\\mathrm{2Al_2O_3 \\xrightarrow{dpnc} 4Al + 3O_2}$. Tính khối lượng nhôm (Al) thu được.\nHướng dẫn: $\\mathrm{n(Al_2O_3) = 20,4 : 102 = 0,2}$ mol. Theo PTHH, $\\mathrm{n(Al) = 2 \\times n(Al_2O_3) = 0,4}$ mol. $\\mathrm{m(Al) = 0,4 \\times 27 = 10,8}$ gam.\nVÍ dụ 2. Nhiệt luyện 16 gam $\\mathrm{Fe_2O_3}$ bằng khí CO dư theo phương trình $\\mathrm{Fe_2O_3 + 3CO \\xrightarrow{t^\\circ} 2Fe + 3CO_2}$, hiệu suất phản ứng đạt 80%. Tính khối lượng sắt (Fe) thực tế thu được.\nHướng dẫn: $\\mathrm{n(Fe_2O_3) = 16 : 160 = 0,1}$ mol. Theo PTHH, $\\mathrm{n(Fe)}$ lí thuyết = $\\mathrm{2 \\times 0,1 = 0,2}$ mol, $\\mathrm{m(Fe)}$ lí thuyết = $\\mathrm{0,2 \\times 56 = 11,2}$ gam. Vì hiệu suất chỉ đạt 80% nên $\\mathrm{m(Fe)}$ thực tế = $\\mathrm{11,2 \\times 80/100 = 8,96}$ gam.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00506",
+   "khoi": "9",
+   "chu_de": "Kim loại & Hợp kim",
+   "chuyen_de": "Tách kim loại và sử dụng hợp kim",
+   "nhom": "VẬN DỤNG TỔNG HỢP TÁCH KIM LOẠI, HỢP KIM VÀ LIÊN HỆ DÃY HOẠT ĐỘNG HOÁ HỌC",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Công thức\n•\tVị trí kim loại trong dãy hoạt động hoá học (K, Na, Ca, Mg, Al, Zn, Fe, Pb, (H), Cu, Ag, Au) quyết định đồng thời: phương pháp tách phù hợp (điện phân nóng chảy / nhiệt luyện / thuỷ luyện) và một số tính chất liên quan khi kim loại đó là thành phần của hợp kim.\n•\tMột chuỗi sản xuất thực tế (ví dụ luyện gang, thép) có thể kết hợp nhiều loại phản ứng: khử oxide bằng CO, phân huỷ đá vôi, tạo xỉ, oxi hoá tạp chất bằng O2.",
+   "can_dien_ly_thuyet_nhom": false
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB01227",
+   "nhom_id": "KNB00500",
+   "thu_tu": 1,
+   "dang": "TỪ KHỐI LƯỢNG KIM LOẠI TÍNH KHỐI LƯỢNG KIM LOẠI MỚI BÁM VÀO",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060109003",
+     "loai": "tra_loi_ngan",
+     "de": "Nhúng 3,6 gam magnesium ($\\mathrm{Mg}$) vào dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$) dư cho đến khi phản ứng xảy ra hoàn toàn. Tính khối lượng đồng ($\\mathrm{Cu}$) bám vào.",
+     "dap_an": "9,6",
+     "loi_giai": "$\\mathrm{n(Mg) = 3,6 : 24 = 0,15 \\ mol}$. \nTheo PTHH $\\mathrm{Mg + CuSO_4 \\to MgSO_4 + Cu}$, tỉ lệ mol $\\mathrm{Mg : Cu = 1 : 1}$ nên $\\mathrm{n(Cu) = 0,15 \\ mol}$.\n$\\mathrm{m(Cu) = 0,15 \\times 64 = 9,6 \\ gam}$."
+    },
+    {
+     "ma_cau": "K09060109005",
+     "loai": "tra_loi_ngan",
+     "de": "Nhúng 14 gam sắt ($\\mathrm{Fe}$) vào dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$) dư cho đến khi phản ứng xảy ra hoàn toàn. Tính khối lượng đồng ($\\mathrm{Cu}$) bám vào.",
+     "dap_an": "16",
+     "loi_giai": "$\\mathrm{n(Fe) = 14 : 56 = 0,25 \\ mol}$. \nTheo PTHH $\\mathrm{Fe + CuSO_4 \\to FeSO_4 + Cu}$, tỉ lệ mol $\\mathrm{Fe : Cu = 1 : 1}$ nên $\\mathrm{n(Cu) = 0,25 \\ mol}$.\n$\\mathrm{m(Cu) = 0,25 \\times 64 = 16 \\ gam}$."
+    },
+    {
+     "ma_cau": "K09060109006",
+     "loai": "tra_loi_ngan",
+     "de": "Nhúng 7,2 gam magnesium ($\\mathrm{Mg}$) vào dung dịch silver nitrate ($\\mathrm{AgNO_3}$) dư cho đến khi phản ứng xảy ra hoàn toàn. Tính khối lượng bạc ($\\mathrm{Ag}$) bám vào.",
+     "dap_an": "64,8",
+     "loi_giai": "$\\mathrm{n(Mg) = 7,2 : 24 = 0,3 \\ mol}$. \nTheo PTHH $\\mathrm{Mg + 2AgNO_3 \\to Mg(NO_3)_2 + 2Ag}$, tỉ lệ mol $\\mathrm{Mg : Ag = 1 : 2}$ nên $\\mathrm{n(Ag) = 0,3 \\times 2 = 0,6 \\ mol}$.\n$\\mathrm{m(Ag) = 0,6 \\times 108 = 64,8 \\ gam}$."
+    },
+    {
+     "ma_cau": "K09060109001",
+     "loai": "tra_loi_ngan",
+     "de": "Nhúng 3,25 gam kẽm ($\\mathrm{Zn}$) vào dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$) dư cho đến khi phản ứng xảy ra hoàn toàn. Tính khối lượng đồng ($\\mathrm{Cu}$) bám vào.",
+     "dap_an": "3,2",
+     "loi_giai": "$\\mathrm{n(Zn) = 3,25 : 65 = 0,05 \\ mol}$. \nTheo PTHH $\\mathrm{Zn + CuSO_4 \\to ZnSO_4 + Cu}$, tỉ lệ mol $\\mathrm{Zn : Cu = 1 : 1}$ nên $\\mathrm{n(Cu) = 0,05 \\ mol}$.\n$\\mathrm{m(Cu) = 0,05 \\times 64 = 3,2 \\ gam}$."
+    },
+    {
+     "ma_cau": "K09060109007",
+     "loai": "tra_loi_ngan",
+     "de": "Nhúng $22,75$ gam kẽm ($\\mathrm{Zn}$) vào dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$) dư cho đến khi phản ứng xảy ra hoàn toàn. Tính khối lượng đồng ($\\mathrm{Cu}$) bám vào.",
+     "dap_an": "22.4",
+     "loi_giai": "$\\mathrm{n(Zn) = 22,75 : 65 = 0,35 mol}$. \nTheo PTHH $\\mathrm{Zn + CuSO_4 \\rightarrow ZnSO_4 + Cu}$, tỉ lệ mol $\\mathrm{Zn : Cu = 1 : 1}$ nên $\\mathrm{n(Cu) = 0,35 mol}$.\n$\\mathrm{m(Cu) = 0,35 \\times 64 = 22,4}$ gam."
+    },
+    {
+     "ma_cau": "K09060109008",
+     "loai": "tra_loi_ngan",
+     "de": "Nhúng $22,4$ gam sắt ($\\mathrm{Fe}$) vào dung dịch silver nitrate ($\\mathrm{AgNO_3}$) dư cho đến khi phản ứng xảy ra hoàn toàn. Tính khối lượng bạc ($\\mathrm{Ag}$) bám vào.",
+     "dap_an": "86.4",
+     "loi_giai": "$\\mathrm{n(Fe) = 22,4 : 56 = 0,4 mol}$. \nTheo PTHH $\\mathrm{Fe + 2AgNO_3 \\rightarrow Fe(NO_3)_2 + 2Ag}$, tỉ lệ mol $\\mathrm{Fe : Ag = 1 : 2}$ nên $\\mathrm{n(Ag) = 0,4 \\times 2 = 0,8 mol}$.\n$\\mathrm{m(Ag) = 0,8 \\times 108 = 86,4}$ gam."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01228",
+   "nhom_id": "KNB00500",
+   "thu_tu": 2,
+   "dang": "KHỐI LƯỢNG CHẤT RẮN THU ĐƯỢC KHI KIM LOẠI DƯ PHẢN ỨNG VỚI DUNG DỊCH CuSO4",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060109011",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 30 gam sắt (Fe) (dư) vào 300 mL dung dịch copper(II) sulfate (CuSO$_4$) nồng độ 1.5 mol/l, để phản ứng xảy ra hoàn toàn (CuSO$_4$ phản ứng hết, Fe còn dư). Tính khối lượng chất rắn thu được sau phản ứng (gồm Fe dư và Cu bám vào).",
+     "dap_an": "33.6",
+     "loi_giai": "Đổi $300\\ \\mathrm{mL} = 0.3\\ \\mathrm{lit}$. $n(\\mathrm{CuSO_4}) = 1.5 \\times 0.3 = 0.45\\ \\mathrm{mol}$. \nTheo PTHH, số mol $\\mathrm{Fe}$ phản ứng = số mol $\\mathrm{Cu}$ sinh ra = $0.45\\ \\mathrm{mol}$.\nKhối lượng chất rắn sau phản ứng = khối lượng $\\mathrm{Fe}$ ban đầu + độ tăng khối lượng = $30 + 0.45 \\times (64 - 56) = 33.6\\ \\mathrm{gam}$."
+    },
+    {
+     "ma_cau": "K09060109015",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 25 gam magnesium ($\\mathrm{Mg}$) (dư) vào 600 \\text{ mL} dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$) nồng độ 1,5 \\text{ mol/l}, để phản ứng xảy ra hoàn toàn ($\\mathrm{CuSO_4}$ phản ứng hết, \\text{Mg} còn dư). Tính khối lượng chất rắn thu được sau phản ứng (gồm \\text{Mg} dư và \\text{Cu} bám vào).",
+     "dap_an": "61",
+     "loi_giai": "Đổi 600 \\text{ mL} = 0,6 \\text{ lit}. $n(\\mathrm{CuSO_4}) = 1,5 \\times 0,6 = 0,9 \\text{ mol}$. \nTheo \\text{PTHH}, số \\text{ mol Mg} phản ứng $=$ số \\text{ mol Cu} sinh ra $= 0,9 \\text{ mol}$. \nKhối lượng chất rắn sau phản ứng $=$ khối lượng \\text{Mg} ban đầu $+$ độ tăng khối lượng $= 25 + 0,9 \\times (64 - 24) = 61 \\text{ gam}."
+    },
+    {
+     "ma_cau": "K09060109009",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 20 gam sắt (Fe) (dư) vào 200 mL dung dịch copper(II) sulfate (CuSO$_4$) nồng độ 1 mol/l, để phản ứng xảy ra hoàn toàn (CuSO$_4$ phản ứng hết, Fe còn dư). Tính khối lượng chất rắn thu được sau phản ứng (gồm Fe dư và Cu bám vào).",
+     "dap_an": "21.6",
+     "loi_giai": "Đổi $200\\ \\mathrm{mL} = 0.2\\ \\mathrm{lit}$. $n(\\mathrm{CuSO_4}) = 1 \\times 0.2 = 0.2\\ \\mathrm{mol}$. \nTheo PTHH, số mol $\\mathrm{Fe}$ phản ứng = số mol $\\mathrm{Cu}$ sinh ra = $0.2\\ \\mathrm{mol}$.\nKhối lượng chất rắn sau phản ứng = khối lượng $\\mathrm{Fe}$ ban đầu + độ tăng khối lượng = $20 + 0.2 \\times (64 - 56) = 21.6\\ \\mathrm{gam}$."
+    },
+    {
+     "ma_cau": "K09060109016",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 30 gam kẽm ($\\mathrm{Zn}$) (dư) vào 350 \\text{ mL} dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$) nồng độ 1,2 \\text{ mol/l}, để phản ứng xảy ra hoàn toàn ($\\mathrm{CuSO_4}$ phản ứng hết, \\text{Zn} còn dư). Tính khối lượng chất rắn thu được sau phản ứng (gồm \\text{Zn} dư và \\text{Cu} bám vào).",
+     "dap_an": "29.58",
+     "loi_giai": "Đổi 350 \\text{ mL} = 0,35 \\text{ lit}. $n(\\mathrm{CuSO_4}) = 1,2 \\times 0,35 = 0,42 \\text{ mol}$. \nTheo \\text{PTHH}, số \\text{ mol Zn} phản ứng $=$ số \\text{ mol Cu} sinh ra $= 0,42 \\text{ mol}$. \nKhối lượng chất rắn sau phản ứng $=$ khối lượng \\text{Zn} ban đầu $+$ độ tăng khối lượng $= 30 + 0,42 \\times (64 - 65) = 29,58 \\text{ gam}."
+    },
+    {
+     "ma_cau": "K09060109010",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 10 gam magnesium (Mg) (dư) vào 400 mL dung dịch copper(II) sulfate (CuSO$_4$) nồng độ 0.5 mol/l, để phản ứng xảy ra hoàn toàn (CuSO$_4$ phản ứng hết, Mg còn dư). Tính khối lượng chất rắn thu được sau phản ứng (gồm Mg dư và Cu bám vào).",
+     "dap_an": "18",
+     "loi_giai": "Đổi $400\\ \\mathrm{mL} = 0.4\\ \\mathrm{lit}$. $n(\\mathrm{CuSO_4}) = 0.5 \\times 0.4 = 0.2\\ \\mathrm{mol}$. \nTheo PTHH, số mol $\\mathrm{Mg}$ phản ứng = số mol $\\mathrm{Cu}$ sinh ra = $0.2\\ \\mathrm{mol}$.\nKhối lượng chất rắn sau phản ứng = khối lượng $\\mathrm{Mg}$ ban đầu + độ tăng khối lượng = $10 + 0.2 \\times (64 - 24) = 18\\ \\mathrm{gam}$."
+    },
+    {
+     "ma_cau": "K09060109012",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 15 gam magnesium (Mg) (dư) vào 500 mL dung dịch copper(II) sulfate (CuSO$_4$) nồng độ 1 mol/l, để phản ứng xảy ra hoàn toàn (CuSO$_4$ phản ứng hết, Mg còn dư). Tính khối lượng chất rắn thu được sau phản ứng (gồm Mg dư và Cu bám vào).",
+     "dap_an": "35",
+     "loi_giai": "Đổi $500\\ \\mathrm{mL} = 0.5\\ \\mathrm{lit}$. $n(\\mathrm{CuSO_4}) = 1 \\times 0.5 = 0.5\\ \\mathrm{mol}$. \nTheo PTHH, số mol $\\mathrm{Mg}$ phản ứng = số mol $\\mathrm{Cu}$ sinh ra = $0.5\\ \\mathrm{mol}$.\nKhối lượng chất rắn sau phản ứng = khối lượng $\\mathrm{Mg}$ ban đầu + độ tăng khối lượng = $15 + 0.5 \\times (64 - 24) = 35\\ \\mathrm{gam}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01229",
+   "nhom_id": "KNB00500",
+   "thu_tu": 3,
+   "dang": "KHỐI LƯỢNG THANH KIM LOẠI THAY ĐỔI KHI NHÚNG VÀO DUNG DỊCH CuSO4 DƯ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060109021",
+     "loai": "tra_loi_ngan",
+     "de": "Nhúng một thanh magnesium ($\\mathrm{Mg}$) vào dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$) dư, sau khi phản ứng xảy ra hoàn toàn thì lấy thanh kim loại ra, thấy khối lượng thanh tăng 8 gam so với ban đầu. Tính khối lượng $\\mathrm{Mg}$ đã phản ứng.",
+     "dap_an": "4.8",
+     "loi_giai": "Gọi $\\mathrm{x}$ là số mol $\\mathrm{Mg}$ phản ứng. \nTheo $\\mathrm{PTHH}$ $\\mathrm{Mg}$ + $\\mathrm{CuSO_4}$ $\\rightarrow$ $\\mathrm{MgSO_4}$ + $\\mathrm{Cu}$, \ncứ 1 mol $\\mathrm{Mg}$ tan ra (24 gam) thì có 1 mol $\\mathrm{Cu}$ bám vào (64 gam), khối lượng thanh tăng $\\mathrm{x}$ $\\times$ (64 $-$ 24) = $\\mathrm{x}$ $\\times$ 40 gam.\nTheo đề, $\\mathrm{x}$ $\\times$ 40 = 8 nên $\\mathrm{x}$ = 0,2 mol.\n$\\mathrm{m(Mg)}$ đã phản ứng = $\\mathrm{0,2 \\times 24}$ = 4,8 gam."
+    },
+    {
+     "ma_cau": "K09060109018",
+     "loai": "tra_loi_ngan",
+     "de": "Nhúng một thanh magnesium (Mg) vào dung dịch copper(II) sulfate (CuSO$_{4}$) dư, sau khi phản ứng xảy ra hoàn toàn thì lấy thanh kim loại ra, thấy khối lượng thanh tăng 4 gam so với ban đầu. Tính khối lượng Mg đã phản ứng.",
+     "dap_an": "2.4",
+     "loi_giai": "Gọi $x$ là số mol $\\mathrm{Mg}$ phản ứng. \nTheo $\\mathrm{PTHH}\\,\\mathrm{Mg}+\\mathrm{CuSO_4}\\to \\mathrm{MgSO_4}+\\mathrm{Cu}$, \ncứ $1\\,\\mathrm{mol}\\,\\mathrm{Mg}$ tan ra ($24\\,\\mathrm{gam}$) thì có $1\\,\\mathrm{mol}\\,\\mathrm{Cu}$ bám vào ($64\\,\\mathrm{gam}$), khối lượng thanh tăng $x\\times (64-24)=x\\times 40\\,\\mathrm{gam}$.\nTheo đề, $x\\times 40 = 4$ nên $x = 0,1\\,\\mathrm{mol}$.\n$m(\\mathrm{Mg})$ đã phản ứng $= 0,1\\times 24 = 2,4\\,\\mathrm{gam}$."
+    },
+    {
+     "ma_cau": "K09060109023",
+     "loai": "tra_loi_ngan",
+     "de": "Nhúng một thanh sắt ($\\mathrm{Fe}$) vào dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$) dư, sau khi phản ứng xảy ra hoàn toàn thì lấy thanh kim loại ra, thấy khối lượng thanh tăng 2 gam so với ban đầu. Tính khối lượng $\\mathrm{Fe}$ đã phản ứng.",
+     "dap_an": "14",
+     "loi_giai": "Gọi $\\mathrm{x}$ là số mol $\\mathrm{Fe}$ phản ứng. \nTheo $\\mathrm{PTHH}$ $\\mathrm{Fe}$ + $\\mathrm{CuSO_4}$ $\\rightarrow$ $\\mathrm{FeSO_4}$ + $\\mathrm{Cu}$, \ncứ 1 mol $\\mathrm{Fe}$ tan ra (56 gam) thì có 1 mol $\\mathrm{Cu}$ bám vào (64 gam), khối lượng thanh tăng $\\mathrm{x}$ $\\times$ (64 $-$ 56) = $\\mathrm{x}$ $\\times$ 8 gam.\nTheo đề, $\\mathrm{x}$ $\\times$ 8 = 2 nên $\\mathrm{x}$ = 0,25 mol.\n$\\mathrm{m(Fe)}$ đã phản ứng = $\\mathrm{0,25 \\times 56}$ = 14 gam."
+    },
+    {
+     "ma_cau": "K09060109019",
+     "loai": "tra_loi_ngan",
+     "de": "Nhúng một thanh chì (Pb) vào dung dịch copper(II) sulfate (CuSO$_{4}$) dư, sau khi phản ứng xảy ra hoàn toàn thì lấy thanh kim loại ra, thấy khối lượng thanh giảm 2,86 gam so với ban đầu. Tính khối lượng Pb đã phản ứng.",
+     "dap_an": "4.14",
+     "loi_giai": "Gọi $x$ là số mol $\\mathrm{Pb}$ phản ứng. \nTheo $\\mathrm{PTHH}\\,\\mathrm{Pb}+\\mathrm{CuSO_4}\\to \\mathrm{PbSO_4}+\\mathrm{Cu}$, \ncứ $1\\,\\mathrm{mol}\\,\\mathrm{Pb}$ tan ra ($207\\,\\mathrm{gam}$) thì có $1\\,\\mathrm{mol}\\,\\mathrm{Cu}$ bám vào ($64\\,\\mathrm{gam}$), khối lượng thanh giảm $x\\times (207-64)=x\\times 143\\,\\mathrm{gam}$.\nTheo đề, $x\\times 143 = 2,86$ nên $x = 0,02\\,\\mathrm{mol}$.\n$m(\\mathrm{Pb})$ đã phản ứng $= 0,02\\times 207 = 4,14\\,\\mathrm{gam}$."
+    },
+    {
+     "ma_cau": "K09060109017",
+     "loai": "tra_loi_ngan",
+     "de": "Nhúng một thanh sắt (Fe) vào dung dịch copper(II) sulfate (CuSO$_{4}$) dư, sau khi phản ứng xảy ra hoàn toàn thì lấy thanh kim loại ra, thấy khối lượng thanh tăng 0,4 gam so với ban đầu. Tính khối lượng Fe đã phản ứng.",
+     "dap_an": "2.8",
+     "loi_giai": "Gọi $x$ là số mol $\\mathrm{Fe}$ phản ứng. \nTheo $\\mathrm{PTHH}\\,\\mathrm{Fe}+\\mathrm{CuSO_4}\\to \\mathrm{FeSO_4}+\\mathrm{Cu}$, \ncứ $1\\,\\mathrm{mol}\\,\\mathrm{Fe}$ tan ra ($56\\,\\mathrm{gam}$) thì có $1\\,\\mathrm{mol}\\,\\mathrm{Cu}$ bám vào ($64\\,\\mathrm{gam}$), khối lượng thanh tăng $x\\times (64-56)=x\\times 8\\,\\mathrm{gam}$.\nTheo đề, $x\\times 8 = 0,4$ nên $x = 0,05\\,\\mathrm{mol}$.\n$m(\\mathrm{Fe})$ đã phản ứng $= 0,05\\times 56 = 2,8\\,\\mathrm{gam}$."
+    },
+    {
+     "ma_cau": "K09060109020",
+     "loai": "tra_loi_ngan",
+     "de": "Nhúng một thanh sắt (Fe) vào dung dịch copper(II) sulfate (CuSO$_{4}$) dư, sau khi phản ứng xảy ra hoàn toàn thì lấy thanh kim loại ra, thấy khối lượng thanh tăng 1,2 gam so với ban đầu. Tính khối lượng Fe đã phản ứng.",
+     "dap_an": "8.4",
+     "loi_giai": "Gọi $x$ là số mol $\\mathrm{Fe}$ phản ứng. \nTheo $\\mathrm{PTHH}\\,\\mathrm{Fe}+\\mathrm{CuSO_4}\\to \\mathrm{FeSO_4}+\\mathrm{Cu}$, \ncứ $1\\,\\mathrm{mol}\\,\\mathrm{Fe}$ tan ra ($56\\,\\mathrm{gam}$) thì có $1\\,\\mathrm{mol}\\,\\mathrm{Cu}$ bám vào ($64\\,\\mathrm{gam}$), khối lượng thanh tăng $x\\times (64-56)=x\\times 8\\,\\mathrm{gam}$.\nTheo đề, $x\\times 8 = 1,2$ nên $x = 0,15\\,\\mathrm{mol}$.\n$m(\\mathrm{Fe})$ đã phản ứng $= 0,15\\times 56 = 8,4\\,\\mathrm{gam}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01230",
+   "nhom_id": "KNB00500",
+   "thu_tu": 4,
+   "dang": "HỖN HỢP HAI KIM LOẠI TÁC DỤNG DUNG DỊCH CuSO4 DƯ, TÍNH % KHỐI LƯỢNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060109026",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 18 gam hỗn hợp bột gồm sắt ($\\mathrm{Fe}$) và bạc ($\\mathrm{Ag}$) vào dung dịch $\\mathrm{copper(II)}$ sulfate ($\\mathrm{CuSO_4}$) dư, khuấy đều cho phản ứng xảy ra hoàn toàn rồi lọc lấy chất rắn, thấy khối lượng chất rắn tăng thêm 1,6 gam so với khối lượng hỗn hợp ban đầu. Tính phần trăm khối lượng $\\mathrm{Fe}$ trong hỗn hợp ban đầu.",
+     "dap_an": "62.22",
+     "loi_giai": "Gọi $\\mathrm{x}$ là số mol $\\mathrm{Fe}$ phản ứng. \nCứ $\\mathrm{1 mol Fe}$ tan ra (56 gam) thì có $\\mathrm{1 mol Cu}$ bám vào (64 gam), \nkhối lượng chất rắn tăng $\\mathrm{x \\times (64 \\text{ – } 56) = x \\times 8}$ gam. \nTheo đề, $\\mathrm{x \\times 8 = 1,6}$ nên $\\mathrm{x = 0,2 mol}$.\n$\\mathrm{m(Fe) = 0,2 \\times 56 = 11,2}$ gam.\n$\\% \\mathrm{Fe = 11,2 \\div 18 \\times 100 = 62,22\\%}$."
+    },
+    {
+     "ma_cau": "K09060109024",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 10 gam hỗn hợp bột gồm sắt (Fe) và đồng (Cu) vào dung dịch $\\mathrm{copper(II)}$ sulfate ($\\mathrm{CuSO_4}$) dư, khuấy đều cho phản ứng xảy ra hoàn toàn rồi lọc lấy chất rắn, thấy khối lượng chất rắn tăng thêm 0,8 gam so với khối lượng hỗn hợp ban đầu. Tính phần trăm khối lượng $\\mathrm{Fe}$ trong hỗn hợp ban đầu.",
+     "dap_an": "56",
+     "loi_giai": "Gọi $\\mathrm{x}$ là số mol $\\mathrm{Fe}$ phản ứng. \nCứ $\\mathrm{1 mol Fe}$ tan ra (56 gam) thì có $\\mathrm{1 mol Cu}$ bám vào (64 gam), \nkhối lượng chất rắn tăng $\\mathrm{x \\times (64 \\text{ – } 56) = x \\times 8}$ gam. \nTheo đề, $\\mathrm{x \\times 8 = 0,8}$ nên $\\mathrm{x = 0,1 mol}$.\n$\\mathrm{m(Fe) = 0,1 \\times 56 = 5,6}$ gam.\n$\\% \\mathrm{Fe = 5,6 \\div 10 \\times 100 = 56\\%}$."
+    },
+    {
+     "ma_cau": "K09060109028",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 16 gam hỗn hợp bột gồm magnesium (Mg) và bạc (Ag) vào dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$) dư, khuấy đều cho phản ứng xảy ra hoàn toàn rồi lọc lấy chất rắn, thấy khối lượng chất rắn tăng thêm 14 gam so với khối lượng hỗn hợp ban đầu. Tính phần trăm khối lượng Mg trong hỗn hợp ban đầu.",
+     "dap_an": "52,5",
+     "loi_giai": "Goi x là số mol $\\mathrm{Mg}$ phản ứng. \nCứ 1 mol $\\mathrm{Mg}$ tan ra (24 gam) thì có 1 mol $\\mathrm{Cu}$ bám vào (64 gam), \nkhối lượng chất rắn tăng $x \\times (64 - 24) = x \\times 40$ gam. \nTheo đề, $x \\times 40 = 14$ nên $x = 0,35$ mol. $\\mathrm{m(Mg) = 0,35 \\times 24 = 8,4}$ gam. \n$\\mathrm{\\%Mg = 8,4 : 16 \\times 100 = 52,5}\\%$."
+    },
+    {
+     "ma_cau": "K09060109029",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 35 gam hỗn hợp bột gồm sắt (Fe) và bạc (Ag) vào dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$) dư, khuấy đều cho phản ứng xảy ra hoàn toàn rồi lọc lấy chất rắn, thấy khối lượng chất rắn tăng thêm 3,2 gam so với khối lượng hỗn hợp ban đầu. Tính phần trăm khối lượng Fe trong hỗn hợp ban đầu.",
+     "dap_an": "64",
+     "loi_giai": "Goi x là số mol $\\mathrm{Fe}$ phản ứng. \nCứ 1 mol $\\mathrm{Fe}$ tan ra (56 gam) thì có 1 mol $\\mathrm{Cu}$ bám vào (64 gam), \nkhối lượng chất rắn tăng $x \\times (64 - 56) = x \\times 8$ gam. \nTheo đề, $x \\times 8 = 3,2$ nên $x = 0,4$ mol. $\\mathrm{m(Fe) = 0,4 \\times 56 = 22,4}$ gam. \n$\\mathrm{\\%Fe = 22,4 : 35 \\times 100 = 64}\\%$."
+    },
+    {
+     "ma_cau": "K09060109027",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 10 gam hỗn hợp bột gồm magnesium ($\\mathrm{Mg}$) và đồng ($\\mathrm{Cu}$) vào dung dịch $\\mathrm{copper(II)}$ sulfate ($\\mathrm{CuSO_4}$) dư, khuấy đều cho phản ứng xảy ra hoàn toàn rồi lọc lấy chất rắn, thấy khối lượng chất rắn tăng thêm 10 gam so với khối lượng hỗn hợp ban đầu. Tính phần trăm khối lượng $\\mathrm{Mg}$ trong hỗn hợp ban đầu.",
+     "dap_an": "60",
+     "loi_giai": "Gọi $\\mathrm{x}$ là số mol $\\mathrm{Mg}$ phản ứng. \nCứ $\\mathrm{1 mol Mg}$ tan ra (24 gam) thì có $\\mathrm{1 mol Cu}$ bám vào (64 gam), \nkhối lượng chất rắn tăng $\\mathrm{x \\times (64 \\text{ – } 24) = x \\times 40}$ gam. \nTheo đề, $\\mathrm{x \\times 40 = 10}$ nên $\\mathrm{x = 0,25}$ mol.\n$\\mathrm{m(Mg) = 0,25 \\times 24 = 6}$ gam.\n$\\% \\mathrm{Mg = 6 \\div 10 \\times 100 = 60\\%}$."
+    },
+    {
+     "ma_cau": "K09060109025",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 8 gam hỗn hợp bột gồm magnesium ($\\mathrm{Mg}$) và bạc ($\\mathrm{Ag}$) vào dung dịch $\\mathrm{copper(II)}$ sulfate ($\\mathrm{CuSO_4}$) dư, khuấy đều cho phản ứng xảy ra hoàn toàn rồi lọc lấy chất rắn, thấy khối lượng chất rắn tăng thêm 6 gam so với khối lượng hỗn hợp ban đầu. Tính phần trăm khối lượng $\\mathrm{Mg}$ trong hỗn hợp ban đầu.",
+     "dap_an": "45",
+     "loi_giai": "Gọi $\\mathrm{x}$ là số mol $\\mathrm{Mg}$ phản ứng. \nCứ $\\mathrm{1 mol Mg}$ tan ra (24 gam) thì có $\\mathrm{1 mol Cu}$ bám vào (64 gam), \nkhối lượng chất rắn tăng $\\mathrm{x \\times (64 \\text{ – } 24) = x \\times 40}$ gam. \nTheo đề, $\\mathrm{x \\times 40 = 6}$ nên $\\mathrm{x = 0,15 mol}$.\n$\\mathrm{m(Mg) = 0,15 \\times 24 = 3,6}$ gam.\n$\\% \\mathrm{Mg = 3,6 \\div 8 \\times 100 = 45\\%}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01231",
+   "nhom_id": "KNB00501",
+   "thu_tu": 1,
+   "dang": "XÁC ĐỊNH ĐÚNG PHƯƠNG PHÁP TÁCH KIM LOẠI DỰA VÀO MỨC ĐỘ HOẠT ĐỘNG HOÁ HỌC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060201047",
+     "loai": "trac_nghiem",
+     "de": "Phương pháp nào sau đây được dùng để tách kim loại nhôm (Al) ra khỏi hợp chất của nó?",
+     "lua_chon": [
+      "Nhiệt luyện.",
+      "Thủy luyện.",
+      "Điện phân nóng chảy.",
+      "Chưng cất."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $\\mathrm{Al}$ là kim loại hoạt động hoá học mạnh nên được tách bằng phương pháp điện phân nóng chảy."
+    },
+    {
+     "ma_cau": "K09060201042",
+     "loai": "trac_nghiem",
+     "de": "Phương pháp nào sau đây được dùng để tách kim loại bạc (Ag) ra khỏi hợp chất của nó?",
+     "lua_chon": [
+      "Điện phân nóng chảy.",
+      "Nhiệt luyện.",
+      "Chưng cất.",
+      "Thuỷ luyện."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Ag}$ là kim loại hoạt động hoá học yếu nên được tách bằng phương pháp thuỷ luyện."
+    },
+    {
+     "ma_cau": "K09060201046",
+     "loai": "trac_nghiem",
+     "de": "Cho các kim loại sau, kim loại nào phù hợp để tách bằng phương pháp nhiệt luyện (dùng chất khử $\\mathrm{C}$, $\\mathrm{CO}$, $\\mathrm{H_2}$)?",
+     "lua_chon": [
+      "$\\mathrm{K}$",
+      "$\\mathrm{Zn}$",
+      "$\\mathrm{Ag}$",
+      "$\\mathrm{Na}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Zn}$ là kim loại hoạt động hoá học trung bình nên thường được tách bằng phương pháp nhiệt luyện."
+    },
+    {
+     "ma_cau": "K09060201048",
+     "loai": "trac_nghiem",
+     "de": "Trong ba phương pháp tách kim loại đã học, phương pháp nào dùng chất khử như carbon, carbon monoxide để tách kim loại ra khỏi oxide của nó ở nhiệt độ cao?",
+     "lua_chon": [
+      "Điện phân nóng chảy.",
+      "Nhiệt luyện.",
+      "Thuỷ luyện.",
+      "Cả ba phương pháp trên."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: Phương pháp nhiệt luyện dùng các chất khử như $\\mathrm{C}$, $\\mathrm{CO}$, $\\mathrm{H_2}$, $\\mathrm{Al}$ để khử oxide kim loại ở nhiệt độ cao, thu được kim loại."
+    },
+    {
+     "ma_cau": "K09060201043",
+     "loai": "trac_nghiem",
+     "de": "Trong các kim loại có hoạt động hoá học trung bình sau, kim loại nào thường được tách bằng phương pháp nhiệt luyện?",
+     "lua_chon": [
+      "Na",
+      "Ca",
+      "Fe",
+      "Au"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{Fe}$ là kim loại hoạt động hoá học trung bình nên thường được tách bằng phương pháp nhiệt luyện."
+    },
+    {
+     "ma_cau": "K09060201044",
+     "loai": "trac_nghiem",
+     "de": "Phương pháp nào sau đây được dùng để tách kim loại calcium ($\\mathrm{Ca}$) ra khỏi hợp chất của nó?",
+     "lua_chon": [
+      "Điện phân nóng chảy.",
+      "Nhiệt luyện.",
+      "Thuỷ luyện.",
+      "Chưng cất."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Ca}$ là kim loại hoạt động hoá học mạnh nên được tách bằng phương pháp điện phân nóng chảy."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01232",
+   "nhom_id": "KNB00501",
+   "thu_tu": 2,
+   "dang": "XÁC ĐỊNH KIM LOẠI TỒN TẠI Ở DẠNG HỢP CHẤT HAY ĐƠN CHẤT VÀ QUẶNG TƯƠNG ỨNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060201051",
+     "loai": "trac_nghiem",
+     "de": "Thành phần chính trong quặng hematite là hợp chất nào?",
+     "lua_chon": [
+      "$\\mathrm{Al_2O_3}$",
+      "$\\mathrm{ZnS}$",
+      "$\\mathrm{CaCO_3}$",
+      "$\\mathrm{Fe_2O_3}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Iron(III) oxide ($\\mathrm{Fe_2O_3}$) là thành phần chính trong quặng hematite."
+    },
+    {
+     "ma_cau": "K09060201049",
+     "loai": "trac_nghiem",
+     "de": "Trong tự nhiên, nhôm ($\\mathrm{Al}$) tồn tại chủ yếu ở dạng nào?",
+     "lua_chon": [
+      "Đơn chất kim loại.",
+      "Hợp chất oxide trong quặng bauxite.",
+      "Hợp chất muối trong quặng sphalerite.",
+      "Hợp chất hydroxide trong quặng hematite."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Aluminum oxide là thành phần chính trong quặng bauxite, đây là dạng tồn tại chủ yếu của nhôm trong tự nhiên."
+    },
+    {
+     "ma_cau": "K09060201050",
+     "loai": "trac_nghiem",
+     "de": "Kim loại nào sau đây có thể tồn tại ở dạng đơn chất trong tự nhiên, lẫn trong đất, cát?",
+     "lua_chon": [
+      "Vàng ($\\mathrm{Au}$).",
+      "Sắt ($\\mathrm{Fe}$).",
+      "Nhôm ($\\mathrm{Al}$).",
+      "Kẽm ($\\mathrm{Zn}$)."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Au}$ là kim loại quý, hoạt động hoá học rất yếu, có thể tồn tại ở dạng đơn chất (hạt nhỏ) trong tự nhiên."
+    },
+    {
+     "ma_cau": "K09060201053",
+     "loai": "trac_nghiem",
+     "de": "Vì sao kim loại sắt ($\\mathrm{Fe}$) không tồn tại ở dạng đơn chất trong tự nhiên (trừ trong thiên thạch) mà tồn tại chủ yếu ở dạng hợp chất trong quặng?",
+     "lua_chon": [
+      "Vì \\mathrm{Fe} không có trong tự nhiên.",
+      "Vì \\mathrm{Fe} là kim loại hoạt động hoá học yếu, dễ tồn tại ở dạng đơn chất nhưng lượng rất ít.",
+      "Vì \\mathrm{Fe} không phản ứng được với oxygen.",
+      "Vì \\mathrm{Fe} là kim loại hoạt động hoá học ở mức trung bình, dễ phản ứng với oxygen và các phi kim khác trong tự nhiên để tạo hợp chất bền."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Fe}$ có mức độ hoạt động hoá học đủ để phản ứng với oxygen, các phi kim khác trong môi trường tự nhiên theo thời gian, tạo thành hợp chất bền như oxide, nên tồn tại chủ yếu ở dạng hợp chất."
+    },
+    {
+     "ma_cau": "K09060201056",
+     "loai": "trac_nghiem",
+     "de": "Quặng nào sau đây có thành phần chính là hợp chất sulfide của kim loại?",
+     "lua_chon": [
+      "Bauxite",
+      "Sphalerite",
+      "Hematite",
+      "Đá vôi"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Sphalerite có thành phần chính là zinc sulfide ($\\mathrm{ZnS}$), một hợp chất sulfide của kẽm."
+    },
+    {
+     "ma_cau": "K09060201054",
+     "loai": "trac_nghiem",
+     "de": "Trong tự nhiên, kim loại tồn tại chủ yếu ở dạng hợp chất là do nguyên nhân nào sau đây?",
+     "lua_chon": [
+      "Vì kim loại không có ứng dụng ở dạng đơn chất.",
+      "Vì hợp chất kim loại có màu sắc đẹp hơn.",
+      "Vì hầu hết kim loại có hoạt động hoá học đủ mạnh để phản ứng với các chất khác trong môi trường, tạo thành hợp chất bền theo thời gian.",
+      "Vì đơn chất kim loại không tồn tại được trong tự nhiên."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hầu hết kim loại có hoạt động hoá học đủ mạnh để phản ứng với oxygen, nước và các chất khác trong tự nhiên, tạo thành hợp chất bền như oxide, muối theo thời gian."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01233",
+   "nhom_id": "KNB00501",
+   "thu_tu": 3,
+   "dang": "NHẬN ĐỊNH ĐÚNG, SAI VỀ NGUYÊN TẮC VÀ CHẤT KHỬ DÙNG TRONG NHIỆT LUYỆN, ĐIỆN PHÂN NÓNG CHẢY",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060201058",
+     "loai": "trac_nghiem",
+     "de": "Chất nào sau đây KHÔNG được dùng làm chất khử trong phương pháp nhiệt luyện để tách kim loại?",
+     "lua_chon": [
+      "Carbon (C)",
+      "Carbon monoxide (CO)",
+      "Hydrogen ($\\mathrm{H_2}$)",
+      "Oxygen ($\\mathrm{O_2}$)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{O_2}$ là chất oxi hoá, không phải chất khử, không được dùng trong phương pháp nhiệt luyện để tách kim loại ra khỏi oxide."
+    },
+    {
+     "ma_cau": "K09060201060",
+     "loai": "trac_nghiem",
+     "de": "Vì sao phương pháp nhiệt luyện không được dùng để tách các kim loại hoạt động hoá học mạnh như $\\mathrm{Na}$, $\\mathrm{Ca}$?",
+     "lua_chon": [
+      "Vì các kim loại này hoạt động hoá học quá mạnh, các chất khử thông thường ($\\mathrm{C}$, $\\mathrm{CO}$, $\\mathrm{H_2}$) không đủ khả năng khử oxide của chúng.",
+      "Vì $\\mathrm{Na}$, $\\mathrm{Ca}$ không tồn tại dưới dạng oxide trong tự nhiên.",
+      "Vì nhiệt luyện chỉ áp dụng được ở nhiệt độ thấp.",
+      "Vì $\\mathrm{Na}$, $\\mathrm{Ca}$ không phản ứng được với chất khử."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Na}$, $\\mathrm{Ca}$ hoạt động hoá học rất mạnh, liên kết trong oxide của chúng rất bền, các chất khử thông thường dùng trong nhiệt luyện không đủ mạnh để khử, nên phải dùng phương pháp điện phân nóng chảy."
+    },
+    {
+     "ma_cau": "K09060201057",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về phương pháp nhiệt luyện, phát biểu nào đúng?",
+     "lua_chon": [
+      "Nhiệt luyện dùng dòng điện để tách kim loại ra khỏi hợp chất nóng chảy.",
+      "Nhiệt luyện chỉ áp dụng được cho kim loại hoạt động hoá học mạnh nhất.",
+      "Nhiệt luyện dùng chất khử (như $\\mathrm{C}$, $\\mathrm{CO}$, $\\mathrm{H_2}$, $\\mathrm{Al}$) để khử oxide kim loại ở nhiệt độ cao, thu được kim loại.",
+      "Nhiệt luyện không cần nhiệt độ cao, có thể thực hiện ở nhiệt độ thường."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C đúng theo đúng nguyên tắc phương pháp nhiệt luyện đã học."
+    },
+    {
+     "ma_cau": "K09060201061",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về phương pháp điện phân nóng chảy, phát biểu nào đúng?",
+     "lua_chon": [
+      "Điện phân nóng chảy dùng dòng điện để tách kim loại ra khỏi hợp chất ở trạng thái nóng chảy, áp dụng cho kim loại hoạt động hoá học mạnh.",
+      "Điện phân nóng chảy dùng chất khử như carbon để tách kim loại.",
+      "Điện phân nóng chảy chỉ áp dụng cho kim loại hoạt động hoá học yếu.",
+      "Điện phân nóng chảy không cần dùng đến dòng điện."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng theo đúng nguyên tắc phương pháp điện phân nóng chảy đã học."
+    },
+    {
+     "ma_cau": "K09060201062",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về phương pháp thuỷ luyện, phát biểu nào SAI?",
+     "lua_chon": [
+      "Thuỷ luyện thường được dùng để tách các kim loại hoạt động hoá học yếu như $\\mathrm{Ag}$, $\\mathrm{Au}$.",
+      "Thuỷ luyện có bước hoà tan hợp chất của kim loại cần tách thành dung dịch muối tan.",
+      "Thuỷ luyện dùng dòng điện để tách kim loại ra khỏi dung dịch muối.",
+      "Thuỷ luyện dùng kim loại hoạt động hoá học mạnh hơn để đẩy kim loại cần tách ra khỏi dung dịch muối của nó."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C sai vì thuỷ luyện không dùng dòng điện mà dùng kim loại hoạt động mạnh hơn để đẩy kim loại cần tách ra khỏi dung dịch muối, theo đúng nguyên tắc dãy hoạt động hoá học."
+    },
+    {
+     "ma_cau": "K09060201059",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về phương pháp nhiệt luyện, phát biểu nào SAI?",
+     "lua_chon": [
+      "Nhiệt luyện thường được dùng để tách các kim loại hoạt động hoá học trung bình như $\\mathrm{Fe}$, $\\mathrm{Zn}$.",
+      "Nhiệt luyện là phương pháp duy nhất áp dụng được cho mọi kim loại, không phân biệt mức độ hoạt động.",
+      "Nhiệt luyện cần thực hiện ở nhiệt độ cao để phản ứng khử xảy ra.",
+      "Nhôm ($\\mathrm{Al}$) cũng có thể được dùng làm chất khử trong một số phản ứng nhiệt luyện."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B sai vì mỗi phương pháp tách kim loại chỉ phù hợp với một nhóm kim loại theo mức độ hoạt động hoá học nhất định, không phải nhiệt luyện áp dụng được cho mọi kim loại."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01234",
+   "nhom_id": "KNB00501",
+   "thu_tu": 4,
+   "dang": "GIẢI THÍCH CƠ SỞ CỦA PHƯƠNG PHÁP THUỶ LUYỆN DỰA TRÊN DÃY HOẠT ĐỘNG HOÁ HỌC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060201068",
+     "loai": "trac_nghiem",
+     "de": "Trong phương pháp thuỷ luyện, sau khi hoà tan hợp chất kim loại cần tách thành dung dịch muối, bước tiếp theo là gì?",
+     "lua_chon": [
+      "Đun nóng dung dịch đến khi cạn nước.",
+      "Điện phân dung dịch để thu kim loại.",
+      "Thêm chất khử như carbon vào dung dịch.",
+      "Dùng kim loại hoạt động hoá học mạnh hơn kim loại cần tách để đẩy kim loại đó ra khỏi dung dịch muối."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{D}$ đúng — đây là bước cốt lõi của phương pháp thuỷ luyện, dựa trên phản ứng kim loại mạnh hơn đẩy kim loại yếu hơn ra khỏi dung dịch muối."
+    },
+    {
+     "ma_cau": "K09060201067",
+     "loai": "trac_nghiem",
+     "de": "Một kim loại $\\mathrm{M}$ có hoạt động hoá học rất yếu, hầu như không phản ứng với oxygen hay dung dịch acid. Phương pháp nào sau đây phù hợp nhất để tách kim loại $\\mathrm{M}$ ra khỏi hợp chất của nó trong tự nhiên?",
+     "lua_chon": [
+      "Điện phân nóng chảy.",
+      "Nhiệt luyện.",
+      "Thuỷ luyện.",
+      "Chưng cất."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Kim loại hoạt động hoá học rất yếu (như $\\mathrm{Ag}$, $\\mathrm{Au}$) được tách bằng phương pháp thuỷ luyện."
+    },
+    {
+     "ma_cau": "K09060201069",
+     "loai": "trac_nghiem",
+     "de": "Vì sao không thể dùng kim loại potassium ($\\mathrm{K}$) trong phương pháp thuỷ luyện để đẩy kim loại khác ra khỏi dung dịch muối?",
+     "lua_chon": [
+      "Vì $\\mathrm{K}$ không phải kim loại hoạt động mạnh.",
+      "Vì $\\mathrm{K}$ phản ứng ngay với nước có trong dung dịch trước khi kịp đẩy kim loại cần tách ra khỏi muối.",
+      "Vì $\\mathrm{K}$ không tồn tại ở dạng đơn chất.",
+      "Vì $\\mathrm{K}$ chỉ dùng được trong phương pháp nhiệt luyện."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{K}$ hoạt động hoá học rất mạnh, phản ứng ngay với nước có trong dung dịch trước khi kịp thực hiện phản ứng đẩy kim loại khác ra khỏi dung dịch muối, nên không dùng trong thuỷ luyện."
+    },
+    {
+     "ma_cau": "K09060201065",
+     "loai": "trac_nghiem",
+     "de": "Cơ sở hoá học của phương pháp thủy luyện để tách kim loại hoạt động yếu là gì?",
+     "lua_chon": [
+      "Dùng dòng điện để khử ion kim loại trong dung dịch.",
+      "Dùng nhiệt độ cao để phân huỷ hợp chất kim loại.",
+      "Dùng chất khử như carbon để khử oxide kim loại.",
+      "Dùng kim loại hoạt động hoá học mạnh hơn để đẩy kim loại cần tách ra khỏi dung dịch muối của nó, theo đúng dãy hoạt động hoá học."
+     ],
+     "dap_an": "D",
+     "loi_giai": "D đúng — đây chính là nguyên tắc phản ứng kim loại đẩy kim loại ra khỏi dung dịch muối đã học ở chuyên đề Kim loại, áp dụng vào phương pháp thuỷ luyện."
+    },
+    {
+     "ma_cau": "K09060201070",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau, phát biểu nào đúng khi liên hệ phương pháp thủy luyện với dãy hoạt động hoá học đã học?",
+     "lua_chon": [
+      "Phương pháp thủy luyện chính là ứng dụng thực tế của phản ứng kim loại đẩy kim loại ra khỏi dung dịch muối theo đúng dãy hoạt động hoá học.",
+      "Phương pháp thủy luyện không liên quan gì đến dãy hoạt động hoá học.",
+      "Phương pháp thủy luyện chỉ dùng được khi hai kim loại có cùng mức độ hoạt động hoá học.",
+      "Phương pháp thủy luyện áp dụng được cho mọi kim loại, không phân biệt vị trí trong dãy hoạt động."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng — thủy luyện vận dụng trực tiếp nguyên tắc kim loại hoạt động mạnh hơn đẩy được kim loại hoạt động yếu hơn ra khỏi dung dịch muối, đúng theo dãy hoạt động hóa học đã học."
+    },
+    {
+     "ma_cau": "K09060201064",
+     "loai": "trac_nghiem",
+     "de": "Trong phương pháp thủy luyện để tách bạc (Ag) từ dung dịch muối bạc, kim loại nào sau đây phù hợp nhất để dùng đẩy Ag ra khỏi dung dịch?",
+     "lua_chon": [
+      "Na",
+      "Cu",
+      "Au",
+      "K"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Cu}$ đứng trước $\\mathrm{Ag}$ trong dãy hoạt động hoá học nên đẩy được $\\mathrm{Ag}$ ra khỏi dung dịch muối.\n$\\mathrm{Na}$, $\\mathrm{K}$ tuy cũng đứng trước $\\mathrm{Ag}$ nhưng hoạt động quá mạnh, phản ứng ngay với nước trong dung dịch nên không dùng được;$\\mathrm{Au}$ đứng sau $\\mathrm{Ag}$ nên không đẩy được."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01235",
+   "nhom_id": "KNB00502",
+   "thu_tu": 1,
+   "dang": "XÁC ĐỊNH ĐÚNG PHƯƠNG TRÌNH HOÁ HỌC ĐIỆN PHÂN NÓNG CHẢY ĐỂ TÁCH KIM LOẠI HOẠT ĐỘNG MẠNH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060202048",
+     "loai": "trac_nghiem",
+     "de": "Trong phương trình hóa học điện phân nóng chảy đã cân bằng $2\\mathrm{NaCl} \\xrightarrow{\\text{đpnc}} 2\\mathrm{Na} + \\mathrm{Cl_2}$, tỉ lệ hệ số giữa $\\mathrm{NaCl}$ và $\\mathrm{Cl_2}$ là bao nhiêu?",
+     "lua_chon": [
+      "$1:1$",
+      "$2:1$",
+      "$1:2$",
+      "$2:2"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hệ số của $\\mathrm{NaCl}$ là $2$, hệ số của $\\mathrm{Cl_2}$ là $1$, nên tỉ lệ hệ số $\\mathrm{NaCl} : \\mathrm{Cl_2} = 2 : 1$."
+    },
+    {
+     "ma_cau": "K09060202046",
+     "loai": "trac_nghiem",
+     "de": "Trong phương trình hoá học điện phân nóng chảy đã cân bằng $\\mathrm{2Al_2O_3} \\to \\mathrm{4Al} + \\mathrm{3O_2}$, hệ số đứng trước $\\mathrm{Al_2O_3}$ là bao nhiêu?",
+     "lua_chon": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Phương trình cân bằng đúng có hệ số $2$ trước $\\mathrm{Al_2O_3}$, ứng với $\\mathrm{4Al}$ và $\\mathrm{3O_2}$ ở vế phải ($\\mathrm{Al}: 4 = 4$; $\\mathrm{O}: 6 = 6$)."
+    },
+    {
+     "ma_cau": "K09060202042",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi điện phân nóng chảy sodium chloride để tách sodium (Na)?",
+     "lua_chon": [
+      "$\\mathrm{NaCl} \\xrightarrow{\\text{đpnc}} \\mathrm{Na} + \\mathrm{Cl_2}$",
+      "$2\\mathrm{NaCl} \\xrightarrow{\\text{đpnc}} 2\\mathrm{Na} + \\mathrm{O_2}$",
+      "$2\\mathrm{NaCl} \\xrightarrow{\\text{đpnc}} 2\\mathrm{Na} + \\mathrm{Cl_2}$",
+      "$2\\mathrm{NaCl} \\xrightarrow{\\text{đpnc}} \\mathrm{Na_2} + \\mathrm{Cl_2}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$2\\mathrm{NaCl} \\xrightarrow{\\text{đpnc}} 2\\mathrm{Na} + \\mathrm{Cl_2}$ là phương trình đúng và đã cân bằng ($\\mathrm{Na}: 2=2; \\mathrm{Cl}: 2=2$)."
+    },
+    {
+     "ma_cau": "K09060202043",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi điện phân nóng chảy magnesium chloride để tách magnesium (Mg)?",
+     "lua_chon": [
+      "$2\\mathrm{MgCl_2} \\xrightarrow{\\text{đpnc}} 2\\mathrm{Mg} + \\mathrm{Cl_2}$",
+      "$\\mathrm{MgCl_2} \\xrightarrow{\\text{đpnc}} \\mathrm{Mg} + \\mathrm{O_2}$",
+      "$\\mathrm{MgCl_2} \\xrightarrow{\\text{đpnc}} \\mathrm{Mg} + \\mathrm{Cl_2}$",
+      "$\\mathrm{MgCl_2} \\xrightarrow{\\text{đpnc}} \\mathrm{Mg_2} + \\mathrm{Cl_2}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{MgCl_2} \\xrightarrow{\\text{đpnc}} \\mathrm{Mg} + \\mathrm{Cl_2}$ là phương trình đúng và đã cân bằng ($\\mathrm{Mg}: 1=1; \\mathrm{Cl}: 2=2$)."
+    },
+    {
+     "ma_cau": "K09060202047",
+     "loai": "trac_nghiem",
+     "de": "Trong phương trình hóa học điện phân nóng chảy đã cân bằng $\\mathrm{CaCl_2} \\xrightarrow{\\text{đpnc}} \\mathrm{Ca} + \\mathrm{Cl_2}$, tổng hệ số của tất cả các chất (đã tối giản) bằng bao nhiêu?",
+     "lua_chon": [
+      "2",
+      "6",
+      "4",
+      "3"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Phương trình đã tối giản có hệ số $1$ cho cả ba chất $\\mathrm{CaCl_2}$, $\\mathrm{Ca}$, $\\mathrm{Cl_2}$, tổng hệ số bằng $1+1+1=3$."
+    },
+    {
+     "ma_cau": "K09060202044",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hóa học nào sau đây đúng khi điện phân nóng chảy calcium chloride để tách calcium (Ca)?",
+     "lua_chon": [
+      "$\\mathrm{2CaCl_2} \\xrightarrow{\\text{đpnc}} \\mathrm{2Ca} + \\mathrm{Cl_2}$",
+      "$\\mathrm{CaCl_2} \\xrightarrow{\\text{đpnc}} \\mathrm{Ca} + \\mathrm{Cl_2}$",
+      "$\\mathrm{CaCl_2} \\xrightarrow{\\text{đpnc}} \\mathrm{Ca} + \\mathrm{2Cl_2}$",
+      "$\\mathrm{CaCl} \\xrightarrow{\\text{đpnc}} \\mathrm{Ca} + \\mathrm{Cl_2}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{CaCl_2} \\xrightarrow{\\text{đpnc}} \\mathrm{Ca} + \\mathrm{Cl_2}$ là phương trình đúng và đã cân bằng ($\\mathrm{Ca}$: $1 = 1$; $\\mathrm{Cl}$: $2 = 2$)."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01236",
+   "nhom_id": "KNB00502",
+   "thu_tu": 2,
+   "dang": "XÁC ĐỊNH ĐÚNG PHƯƠNG TRÌNH HOÁ HỌC NHIỆT LUYỆN ĐỂ TÁCH KIM LOẠI HOẠT ĐỘNG TRUNG BÌNH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060202049",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hóa học nào sau đây đúng khi dùng khí carbon monoxide khử iron(III) oxide để tách sắt (Fe)?",
+     "lua_chon": [
+      "$\\mathrm{Fe_2O_3} + \\mathrm{CO} \\xrightarrow{\\mathrm{t^o}} 2\\mathrm{Fe} + \\mathrm{CO_2}$",
+      "$\\mathrm{Fe_2O_3} + 3\\mathrm{CO} \\xrightarrow{\\mathrm{t^o}} \\mathrm{Fe} + 3\\mathrm{CO_2}$",
+      "$\\mathrm{Fe_2O_3} + 3\\mathrm{CO} \\xrightarrow{\\mathrm{t^o}} 2\\mathrm{Fe} + 3\\mathrm{CO_2}$",
+      "$\\mathrm{Fe_2O_3} + 3\\mathrm{CO_2} \\xrightarrow{\\mathrm{t^o}} 2\\mathrm{Fe} + 3\\mathrm{CO}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{Fe_2O_3} + 3\\mathrm{CO} \\xrightarrow{\\mathrm{t^o}} 2\\mathrm{Fe} + 3\\mathrm{CO_2}$ là phương trình đúng và đã cân bằng (Fe: $2 = 2$; C: $3 = 3$; O: $3 + 3 = 6 = 6$)."
+    },
+    {
+     "ma_cau": "K09060202054",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi dùng khí hydrogen khử copper(II) oxide để tách đồng ($\\mathrm{Cu}$)?",
+     "lua_chon": [
+      "$\\mathrm{CuO + H_2 \\xrightarrow{t^o} Cu + H_2O}$",
+      "$\\mathrm{2CuO + H_2 \\xrightarrow{t^o} 2Cu + H_2O}$",
+      "$\\mathrm{CuO + 2H_2 \\xrightarrow{t^o} Cu + 2H_2O}$",
+      "$\\mathrm{CuO + H_2 \\xrightarrow{t^o} Cu + O_2}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{CuO + H_2 \\xrightarrow{t^o} Cu + H_2O}$ là phương trình đúng và đã cân bằng ($\\mathrm{Cu}: 1 = 1; O: 1 = 1; H: 2 = 2$)."
+    },
+    {
+     "ma_cau": "K09060202052",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi dùng khí hydrogen khử lead(II) oxide để tách chì ($\\mathrm{Pb}$)?",
+     "lua_chon": [
+      "$\\mathrm{PbO + H_2 \\xrightarrow{t^o} Pb + H_2O}$",
+      "$\\mathrm{PbO + H_2 \\xrightarrow{t^o} Pb + O_2}$",
+      "$\\mathrm{2PbO + H_2 \\xrightarrow{t^o} 2Pb + H_2O}$",
+      "$\\mathrm{PbO + 2H_2 \\xrightarrow{t^o} Pb + 2H_2O}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{PbO + H_2 \\xrightarrow{t^o} Pb + H_2O}$ là phương trình đúng và đã cân bằng ($\\mathrm{Pb}: 1 = 1; O: 1 = 1; H: 2 = 2$)."
+    },
+    {
+     "ma_cau": "K09060202053",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi dùng khí carbon monoxide khử lead(II) oxide để tách chì ($\\mathrm{Pb}$)?",
+     "lua_chon": [
+      "$\\mathrm{PbO + CO \\xrightarrow{t^o} Pb + CO_2}$",
+      "$\\mathrm{PbO + 2CO \\xrightarrow{t^o} Pb + 2CO_2}$",
+      "$\\mathrm{PbO + CO \\xrightarrow{t^o} Pb + C + O_2}$",
+      "$\\mathrm{2PbO + CO \\xrightarrow{t^o} 2Pb + CO_2}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{PbO + CO \\xrightarrow{t^o} Pb + CO_2}$ là phương trình đúng và đã cân bằng ($\\mathrm{Pb}: 1 = 1; O: 1 + 1 = 2; C: 1 = 1$)."
+    },
+    {
+     "ma_cau": "K09060202055",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hóa học nào sau đây đúng khi dùng khí carbon monoxide khử copper(II) oxide để tách đồng (Cu)?",
+     "lua_chon": [
+      "$\\mathrm{CuO} + \\mathrm{CO} \\xrightarrow{t^o} \\mathrm{Cu} + \\mathrm{CO_2}$",
+      "$\\mathrm{CuO} + 2\\mathrm{CO} \\xrightarrow{t^o} \\mathrm{Cu} + 2\\mathrm{CO_2}$",
+      "$2\\mathrm{CuO} + \\mathrm{CO} \\xrightarrow{t^o} 2\\mathrm{Cu} + \\mathrm{CO_2}$",
+      "$\\mathrm{CuO} + \\mathrm{CO} \\xrightarrow{t^o} \\mathrm{Cu} + \\mathrm{C} + \\mathrm{O_2}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{CuO} + \\mathrm{CO} \\xrightarrow{t^o} \\mathrm{Cu} + \\mathrm{CO_2}$ là phương trình đúng và đã cân bằng ($\\mathrm{Cu}$: $1=1$; $\\mathrm{O}$: $1+1=2=2$; $\\mathrm{C}$: $1=1$)."
+    },
+    {
+     "ma_cau": "K09060202056",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hóa học nào sau đây đúng khi dùng carbon khử tin(IV) oxide để tách thiếc (Sn)?",
+     "lua_chon": [
+      "$\\mathrm{SnO_2} + \\mathrm{C} \\xrightarrow{t^o} \\mathrm{Sn} + \\mathrm{CO}$",
+      "$\\mathrm{SnO_2} + 2\\mathrm{C} \\xrightarrow{t^o} \\mathrm{Sn} + 2\\mathrm{CO_2}$",
+      "$\\mathrm{SnO_2} + \\mathrm{C} \\xrightarrow{t^o} \\mathrm{Sn} + \\mathrm{CO_2}$",
+      "$\\mathrm{SnO_2} + 2\\mathrm{C} \\xrightarrow{t^o} \\mathrm{Sn} + 2\\mathrm{CO}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{SnO_2} + \\mathrm{C} \\xrightarrow{t^o} \\mathrm{Sn} + \\mathrm{CO_2}$ là phương trình đúng và đã cân bằng ($\\mathrm{Sn}$: $1=1$; $\\mathrm{O}$: $2=2$; $\\mathrm{C}$: $1=1$)."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01237",
+   "nhom_id": "KNB00502",
+   "thu_tu": 3,
+   "dang": "NHẬN ĐỊNH ĐÚNG, SAI VỀ PHƯƠNG TRÌNH HOÁ HỌC TÁCH KIM LOẠI CỤ THỂ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060202058",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $\\mathrm{Fe_2O_3} + 3\\mathrm{CO} \\xrightarrow{\\text{t}^\\circ} 2\\mathrm{Fe} + 3\\mathrm{CO_2}$. Phát biểu nào sau đây đúng?",
+     "lua_chon": [
+      "$\\mathrm{CO}$ đóng vai trò chất khử, $\\mathrm{Fe_2O_3}$ bị khử thành $\\mathrm{Fe}$.",
+      "$\\mathrm{CO}$ đóng vai trò chất oxi hoá, $\\mathrm{Fe_2O_3}$ bị oxi hoá thành $\\mathrm{Fe}$.",
+      "Phản ứng này là phản ứng điện phân nóng chảy.",
+      "Sản phẩm khí sinh ra là $\\mathrm{O_2}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng --- trong nhiệt luyện, $\\mathrm{CO}$ nhường oxygen cho $\\mathrm{Fe_2O_3}$ (đóng vai trò chất khử), $\\mathrm{Fe_2O_3}$ bị khử thành $\\mathrm{Fe}$ kim loại, sản phẩm khí là $\\mathrm{CO_2}$."
+    },
+    {
+     "ma_cau": "K09060202059",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $\\mathrm{ZnO} + \\mathrm{C} \\xrightarrow{\\text{t}^\\circ} \\mathrm{Zn} + \\mathrm{CO}$. Phát biểu nào sau đây SAI?",
+     "lua_chon": [
+      "Carbon đóng vai trò chất khử trong phản ứng.",
+      "Phản ứng thuộc phương pháp nhiệt luyện.",
+      "Sản phẩm khí sinh ra là $\\mathrm{CO_2}$.",
+      "Phản ứng này thường thực hiện sau bước đốt $\\mathrm{ZnS}$ trong không khí để tạo $\\mathrm{ZnO}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C sai vì sản phẩm khí của phản ứng này là $\\mathrm{CO}$, không phải $\\mathrm{CO_2}$ (khác với trường hợp dùng $\\mathrm{CO}$ dư khử oxide sắt tạo $\\mathrm{CO_2}$)."
+    },
+    {
+     "ma_cau": "K09060202063",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $\\mathrm{MgCl_2}\\xrightarrow{\\text{đpnc}} \\mathrm{Mg} + \\mathrm{Cl_2}$. Phát biểu nào sau đây đúng?",
+     "lua_chon": [
+      "Đây là phản ứng nhiệt luyện vì magnesium là kim loại hoạt động trung bình.",
+      "Có thể thay phương pháp điện phân nóng chảy bằng nhiệt luyện mà vẫn tách được $\\mathrm{Mg}$ hiệu quả tương đương.",
+      "Phản ứng cần thực hiện ở trạng thái $\\mathrm{MgCl_2}$ nóng chảy và có dòng điện một chiều đi qua.",
+      "Sản phẩm khí sinh ra là $\\mathrm{O_2}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{C}$ đúng — magnesium là kim loại hoạt động mạnh nên phải tách bằng điện phân nóng chảy $\\mathrm{MgCl_2}$, cần nhiệt độ để muối nóng chảy và dòng điện một chiều để điện phân."
+    },
+    {
+     "ma_cau": "K09060202057",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $2\\mathrm{Al_2O_3} \\xrightarrow{\\text{dpnc}} 4\\mathrm{Al} + 3\\mathrm{O_2}$. Phát biểu nào sau đây đúng?",
+     "lua_chon": [
+      "Phản ứng dùng khí $\\mathrm{CO}$ làm chất khử.",
+      "Phản ứng xảy ra ở nhiệt độ nóng chảy của $\\mathrm{Al_2O_3}$, không cần dòng điện.",
+      "Đây là phản ứng điện phân, sinh ra khí $\\mathrm{O_2}$ ở một điện cực và kim loại $\\mathrm{Al}$ ở điện cực còn lại.",
+      "Phản ứng chỉ áp dụng được cho kim loại hoạt động trung bình."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C đúng --- đây là phản ứng điện phân nóng chảy, dòng điện một chiều tách $\\mathrm{Al_2O_3}$ nóng chảy thành $\\mathrm{Al}$ (thu ở một điện cực) và khí $\\mathrm{O_2}$ (thoát ra ở điện cực còn lại)."
+    },
+    {
+     "ma_cau": "K09060202060",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $\\mathrm{CuO} + \\mathrm{H_2} \\xrightarrow{\\text{t}^\\circ} \\mathrm{Cu} + \\mathrm{H_2O}$. Phát biểu nào sau đây SAI?",
+     "lua_chon": [
+      "$\\mathrm{H_2}$ đóng vai trò chất khử.",
+      "Phản ứng thuộc phương pháp nhiệt luyện, áp dụng cho kim loại hoạt động trung bình.",
+      "Sản phẩm sinh ra ngoài $\\mathrm{Cu}$ còn có nước.",
+      "Phản ứng chỉ xảy ra khi có dòng điện một chiều đi qua."
+     ],
+     "dap_an": "D",
+     "loi_giai": "D sai vì đây là phản ứng nhiệt luyện, chỉ cần nhiệt độ cao để $\\mathrm{H_2}$ khử $\\mathrm{CuO}$, không cần dòng điện (dòng điện chỉ dùng trong điện phân nóng chảy)."
+    },
+    {
+     "ma_cau": "K09060202062",
+     "loai": "trac_nghiem",
+     "de": "Cho phương trình hoá học: $\\mathrm{PbO} + \\mathrm{CO} \\xrightarrow{\\text{t}^\\circ} \\mathrm{Pb} + \\mathrm{CO_2}$. Phát biểu nào sau đây SAI?",
+     "lua_chon": [
+      "$\\mathrm{CO}$ đóng vai trò chất khử.",
+      "Phản ứng áp dụng phương pháp nhiệt luyện vì chì là kim loại hoạt động trung bình.",
+      "Có thể thay $\\mathrm{CO}$ bằng khí $\\mathrm{H_2}$ và vẫn thu được $\\mathrm{Pb}$ theo nguyên tắc tương tự.",
+      "Phản ứng bắt buộc phải có dòng điện một chiều đi qua hỗn hợp nóng chảy."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{D}$ sai vì đây là phản ứng nhiệt luyện, chỉ cần chất khử và nhiệt độ cao, không cần dòng điện."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01238",
+   "nhom_id": "KNB00502",
+   "thu_tu": 4,
+   "dang": "VẬN DỤNG TỔNG HỢP VỀ QUÁ TRÌNH VÀ PHƯƠNG TRÌNH HOÁ HỌC TÁCH KIM LOẠI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060202070",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau, phát biểu nào đúng khi tổng kết mối liên hệ giữa phương pháp tách kim loại và phương trình hoá học tương ứng?",
+     "lua_chon": [
+      "Phương trình có chất khử $\\mathrm{C}$, $\\mathrm{CO}$ hoặc $\\mathrm{H_2}$ ứng với phương pháp nhiệt luyện, áp dụng cho kim loại hoạt động trung bình.",
+      "Phương trình có dòng điện một chiều đi qua muối hoặc oxide ở trạng thái rắn (chưa nóng chảy) ứng với phương pháp điện phân nóng chảy.",
+      "Mọi phương trình tách kim loại đều có thể viết dưới dạng kim loại mạnh hơn đẩy kim loại yếu hơn ra khỏi dung dịch muối.",
+      "Chất khử trong nhiệt luyện luôn là chính kim loại cần tách."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng — sự có mặt của chất khử $\\mathrm{C}$, $\\mathrm{CO}$ hoặc $\\mathrm{H_2}$ trong phương trình là dấu hiệu nhận biết phương pháp nhiệt luyện, áp dụng cho các kim loại hoạt động hoá học trung bình như $\\mathrm{Fe}$, $\\mathrm{Zn}$, $\\mathrm{Pb}$, $\\mathrm{Cu}$, $\\mathrm{Sn}$."
+    },
+    {
+     "ma_cau": "K09060202065",
+     "loai": "trac_nghiem",
+     "de": "Vì sao trong sản xuất nhôm công nghiệp, người ta trộn aluminium oxide với cryolite nóng chảy trước khi điện phân, thay vì điện phân $\\mathrm{Al_2O_3}$ nguyên chất?",
+     "lua_chon": [
+      "Vì cryolite phản ứng với $\\mathrm{Al_2O_3}$ sinh ra khí $\\mathrm{O_2}$ nhiều hơn.",
+      "Vì cryolite làm tăng hoá trị của nhôm trong hợp chất.",
+      "Vì hỗn hợp cryolite và $\\mathrm{Al_2O_3}$ có nhiệt độ nóng chảy thấp hơn $\\mathrm{Al_2O_3}$ nguyên chất, giúp tiết kiệm năng lượng.",
+      "Vì cryolite thay thế hoàn toàn vai trò của dòng điện trong phản ứng."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{C}$ đúng — trộn cryolite giúp hạ nhiệt độ nóng chảy của hỗn hợp so với $\\mathrm{Al_2O_3}$ nguyên chất (vốn có nhiệt độ nóng chảy rất cao), nhờ đó tiết kiệm năng lượng khi điện phân."
+    },
+    {
+     "ma_cau": "K09060202069",
+     "loai": "trac_nghiem",
+     "de": "Cho các phát biểu sau về phương trình hoá học tách kim loại. Phát biểu nào đúng?",
+     "lua_chon": [
+      "Phương trình điện phân nóng chảy luôn sinh ra khí $\\mathrm{CO_2}$ làm sản phẩm phụ.",
+      "Phương trình nhiệt luyện luôn cần dòng điện một chiều để phản ứng xảy ra.",
+      "Kim loại càng hoạt động mạnh thì càng dễ bị khử bởi $\\mathrm{CO}$ ở nhiệt độ cao.",
+      "Cùng một oxide kim loại hoạt động trung bình, có thể chọn $\\mathrm{C}$, $\\mathrm{CO}$ hoặc $\\mathrm{H_2}$ làm chất khử tuỳ điều kiện thực tế."
+     ],
+     "dap_an": "D",
+     "loi_giai": "D đúng — với kim loại hoạt động trung bình, nguyên tắc nhiệt luyện cho phép dùng nhiều chất khử khác nhau ($\\mathrm{C}$, $\\mathrm{CO}$, $\\mathrm{H_2}$) miễn là chất khử mạnh hơn kim loại cần tách về khả năng lấy oxygen, như các phương trình đã xét ở Cụm 2."
+    },
+    {
+     "ma_cau": "K09060202067",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây SAI về mặt phương pháp tách kim loại (dù có thể cân bằng đúng về mặt số nguyên tử)?",
+     "lua_chon": [
+      "$\\mathrm{Fe_2O_3} + 3\\mathrm{CO} \\xrightarrow{t^\\circ} 2\\mathrm{Fe} + 3\\mathrm{CO_2}$",
+      "$\\mathrm{CuO} + \\mathrm{H_2} \\xrightarrow{t^\\circ} \\mathrm{Cu} + \\mathrm{H_2O}$",
+      "$2\\mathrm{NaCl} \\xrightarrow{dpnc} 2\\mathrm{Na} + \\mathrm{Cl_2}$",
+      "$2\\mathrm{NaO} + \\mathrm{C} \\xrightarrow{t^\\circ} 2\\mathrm{Na} + \\mathrm{CO}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "D sai — vừa sai công thức oxide của sodium (không tồn tại $\\mathrm{NaO}$, phải là $\\mathrm{Na_2O}$), vừa sai phương pháp: sodium là kim loại hoạt động mạnh, phải tách bằng điện phân nóng chảy, không dùng nhiệt luyện với chất khử $\\mathrm{C}$."
+    },
+    {
+     "ma_cau": "K09060202068",
+     "loai": "trac_nghiem",
+     "de": "Trong ba phương trình sau, phương trình nào có thể dùng khí $\\mathrm{H_2}$ thay cho $\\mathrm{CO}$ mà phản ứng vẫn xảy ra theo đúng nguyên tắc nhiệt luyện?",
+     "lua_chon": [
+      "$2\\mathrm{Al_2O_3} \\xrightarrow{dpnc} 4\\mathrm{Al} + 3\\mathrm{O_2}$",
+      "$\\mathrm{PbO} + \\mathrm{CO} \\xrightarrow{t^\\circ} \\mathrm{Pb} + \\mathrm{CO_2}$",
+      "$2\\mathrm{NaCl} \\xrightarrow{dpnc} 2\\mathrm{Na} + \\mathrm{Cl_2}$",
+      "$\\mathrm{CaCl_2} \\xrightarrow{dpnc} \\mathrm{Ca} + \\mathrm{Cl_2}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "B đúng — $\\mathrm{PbO} + \\mathrm{CO} \\xrightarrow{t^\\circ} \\mathrm{Pb} + \\mathrm{CO_2}$ là phản ứng nhiệt luyện nên có thể thay $\\mathrm{CO}$ bằng $\\mathrm{H_2}$ ($\\mathrm{PbO} + \\mathrm{H_2} \\xrightarrow{t^\\circ} \\mathrm{Pb} + \\mathrm{H_2O}$); A, C, D đều là phản ứng điện phân nóng chảy, không dùng chất khử $\\mathrm{C/CO/H_2}$."
+    },
+    {
+     "ma_cau": "K09060202064",
+     "loai": "trac_nghiem",
+     "de": "Cặp phương trình hoá học nào sau đây mô tả đúng và đầy đủ quá trình tách kẽm ($\\mathrm{Zn}$) từ quặng sphalerite (thành phần chính $\\mathrm{ZnS}$)?",
+     "lua_chon": [
+      "$\\mathrm{ZnS} \\xrightarrow{t^{\\circ}} \\mathrm{Zn} + \\mathrm{S}$ và $\\mathrm{ZnO} + \\mathrm{C} \\xrightarrow{t^{\\circ}} \\mathrm{Zn} + \\mathrm{CO}$",
+      "$\\mathrm{ZnS} + \\mathrm{O_2} \\xrightarrow{t^{\\circ}} \\mathrm{Zn} + \\mathrm{SO_2}$",
+      "$2\\mathrm{ZnS} + 3\\mathrm{O_2} \\xrightarrow{t^{\\circ}} 2\\mathrm{ZnO} + 2\\mathrm{SO_2}$ và $\\mathrm{ZnO} \\xrightarrow{dpnc} \\mathrm{Zn} + \\mathrm{O_2}$",
+      "$2\\mathrm{ZnS} + 3\\mathrm{O_2} \\xrightarrow{t^{\\circ}} 2\\mathrm{ZnO} + 2\\mathrm{SO_2}$ và $\\mathrm{ZnO} + \\mathrm{C} \\xrightarrow{t^{\\circ}} \\mathrm{Zn} + \\mathrm{CO}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{A}$ đúng — quá trình gồm hai bước: đốt $\\mathrm{ZnS}$ trong không khí chuyển thành $\\mathrm{ZnO}$, sau đó dùng carbon khử $\\mathrm{ZnO}$ thành $\\mathrm{Zn}$ theo phương pháp nhiệt luyện."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01239",
+   "nhom_id": "KNB00503",
+   "thu_tu": 1,
+   "dang": "KHÁI NIỆM HỢP KIM VÀ KIM LOẠI CƠ BẢN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060203044",
+     "loai": "trac_nghiem",
+     "de": "Đuy-ra (duralumin) có kim loại cơ bản là kim loại nào?",
+     "lua_chon": [
+      "Manganese (Mn).",
+      "Đồng (Cu).",
+      "Magnesium (Mg).",
+      "Nhôm (Al)."
+     ],
+     "dap_an": "D",
+     "loi_giai": "D đúng — đuy-ra là hợp kim của nhôm với đồng, mangan, magie...., nhôm chiếm thành phần chính nên là kim loại cơ bản."
+    },
+    {
+     "ma_cau": "K09060203045",
+     "loai": "trac_nghiem",
+     "de": "Gang có kim loại cơ bản là kim loại nào?",
+     "lua_chon": [
+      "Carbon.",
+      "Sắt (Fe).",
+      "Nhôm (Al).",
+      "Chromium (Cr)."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B đúng \t gang là hợp kim của sắt với carbon (carbon chiếm $2\\% \t 5\\%$), sắt là thành phần chính nên là kim loại cơ bản; carbon là phi kim thêm vào, không phải kim loại cơ bản."
+    },
+    {
+     "ma_cau": "K09060203042",
+     "loai": "trac_nghiem",
+     "de": "Kim loại cơ bản trong một hợp kim được hiểu là gì?",
+     "lua_chon": [
+      "Kim loại có khối lượng riêng lớn nhất trong hợp kim.",
+      "Kim loại đứng đầu dãy hoạt động hoá học trong số các kim loại thành phần.",
+      "Kim loại chiếm thành phần chính trong hợp kim.",
+      "Kim loại được thêm vào sau cùng trong quá trình chế tạo hợp kim."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C đúng — kim loại cơ bản là kim loại chiếm thành phần chính (tỉ lệ khối lượng lớn nhất) trong hợp kim."
+    },
+    {
+     "ma_cau": "K09060203046",
+     "loai": "trac_nghiem",
+     "de": "Inox (thép không gỉ) có kim loại cơ bản là kim loại nào?",
+     "lua_chon": [
+      "Chromium (Cr).",
+      "Nickel (Ni).",
+      "Sắt (Fe).",
+      "Carbon."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C đúng \t inox là một loại thép đặc biệt (thép có thêm chromium, nickel), nên vẫn có kim loại cơ bản là sắt (Fe) như thép thông thường."
+    },
+    {
+     "ma_cau": "K09060203048",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây đúng khi so sánh hợp kim với kim loại nguyên chất tạo nên nó?",
+     "lua_chon": [
+      "Hợp kim luôn có khối lượng riêng nhỏ hơn kim loại nguyên chất thành phần.",
+      "Hợp kim là kim loại nguyên chất được tinh chế thêm một lần nữa.",
+      "Hợp kim chứa kim loại cơ bản cùng một số nguyên tố khác được pha thêm có chủ đích.",
+      "Hợp kim không còn giữ tính chất kim loại nào của kim loại cơ bản."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C đúng \t hợp kim được tạo thành bằng cách pha thêm có chủ đích một số kim loại hoặc phi kim khác vào kim loại cơ bản, nhằm cải thiện tính chất."
+    },
+    {
+     "ma_cau": "K09060203041",
+     "loai": "trac_nghiem",
+     "de": "Hợp kim là gì?",
+     "lua_chon": [
+      "Là một kim loại nguyên chất được nung ở nhiệt độ cao.",
+      "Là một hợp chất hoá học giữa kim loại và phi kim theo tỉ lệ cố định.",
+      "Là hỗn hợp của hai hay nhiều phi kim với nhau.",
+      "Là vật liệu kim loại chứa ít nhất một kim loại cơ bản và một số kim loại hoặc phi kim khác."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đ đúng — theo định nghĩa, hợp kim là vật liệu kim loại chứa ít nhất một kim loại cơ bản (thành phần chính) và một số kim loại hoặc phi kim khác."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01240",
+   "nhom_id": "KNB00503",
+   "thu_tu": 2,
+   "dang": "ĐẶC ĐIỂM, ƯU ĐIỂM CỦA HỢP KIM SO VỚI KIM LOẠI NGUYÊN CHẤT",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060203054",
+     "loai": "trac_nghiem",
+     "de": "Vì sao đuy-ra được ưu tiên chọn làm vật liệu chế tạo máy bay, ô tô thay vì dùng nhôm nguyên chất?",
+     "lua_chon": [
+      "Đuy-ra có nhiệt độ nóng chảy thấp hơn nhôm nguyên chất rất nhiều.",
+      "Đuy-ra nặng hơn nhôm nguyên chất nên chịu lực tốt hơn.",
+      "Đuy-ra không chứa nhôm nên không bị oxi hoá trong không khí.",
+      "Đuy-ra nhẹ tương đương nhôm nhưng bền và cứng hơn nhiều so với nhôm nguyên chất."
+     ],
+     "dap_an": "D",
+     "loi_giai": "D đúng — đuy-ra (hợp kim của nhôm với đồng, manganese, magnesium) có khối lượng riêng nhẹ tương đương nhôm nhưng bền và cứng hơn nhiều, phù hợp chế tạo máy bay, ô tô."
+    },
+    {
+     "ma_cau": "K09060203049",
+     "loai": "trac_nghiem",
+     "de": "So với kim loại nguyên chất tạo nên nó, hợp kim thường có đặc điểm nào sau đây?",
+     "lua_chon": [
+      "Độ cứng, độ bền và khả năng chống ăn mòn tốt hơn.",
+      "Luôn dẫn điện tốt hơn kim loại nguyên chất.",
+      "Luôn có nhiệt độ nóng chảy cao hơn mọi kim loại thành phần.",
+      "Luôn mềm và dễ uốn hơn kim loại nguyên chất."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng \t hợp kim thường có độ cứng, độ bền, khả năng chống ăn mòn và gỉ sét tốt hơn kim loại nguyên chất tạo nên nó."
+    },
+    {
+     "ma_cau": "K09060203051",
+     "loai": "trac_nghiem",
+     "de": "Một hợp kim gồm bismuth, lead, tin, cadmium có nhiệt độ nóng chảy thấp hơn nhiệt độ nóng chảy của từng kim loại thành phần riêng lẻ. Điều này cho thấy tính chất nào của hợp kim?",
+     "lua_chon": [
+      "Hợp kim luôn có nhiệt độ nóng chảy cao hơn kim loại thành phần.",
+      "Hợp kim chỉ nóng chảy khi tất cả kim loại thành phần cùng đạt nhiệt độ nóng chảy riêng.",
+      "Hợp kim không có nhiệt độ nóng chảy xác định.",
+      "Nhiệt độ nóng chảy của hợp kim có thể khác (thậm chí thấp hơn) nhiệt độ nóng chảy của các kim loại thành phần."
+     ],
+     "dap_an": "D",
+     "loi_giai": "D đúng \t tính chất của hợp kim (kể cả nhiệt độ nóng chảy) có thể khác hẳn so với từng kim loại nguyên chất thành phần, thậm chí thấp hơn tất cả các kim loại đó."
+    },
+    {
+     "ma_cau": "K09060203050",
+     "loai": "trac_nghiem",
+     "de": "Vì sao trong thực tế, kim loại thường được sử dụng dưới dạng hợp kim thay vì kim loại nguyên chất?",
+     "lua_chon": [
+      "Vì hợp kim luôn rẻ hơn kim loại nguyên chất.",
+      "Vì hợp kim có tính chất vượt trội hơn (cứng hơn, bền hơn, chống ăn mòn tốt hơn), phù hợp nhiều ứng dụng hơn.",
+      "Vì kim loại nguyên chất không dẫn điện, dẫn nhiệt.",
+      "Vì hợp kim luôn nhẹ hơn kim loại nguyên chất thành phần."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B đúng \t hợp kim được ưa dùng vì có tính chất vượt trội hơn kim loại nguyên chất (cứng hơn, bền hơn, chống ăn mòn/gỉ sét tốt hơn), phù hợp với nhiều ứng dụng thực tế."
+    },
+    {
+     "ma_cau": "K09060203053",
+     "loai": "trac_nghiem",
+     "de": "Tính chất vượt trội nào của hợp kim khiến chúng được dùng làm cốt thép, khung xây dựng thay vì dùng sắt nguyên chất?",
+     "lua_chon": [
+      "Độ cứng, độ bền và khả năng chịu lực tốt hơn sắt nguyên chất.",
+      "Khối lượng riêng nhỏ hơn sắt nguyên chất nhiều lần.",
+      "Không dẫn điện, dẫn nhiệt như sắt nguyên chất.",
+      "Có màu sắc đẹp hơn sắt nguyên chất."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng — thép (hợp kim của sắt) có độ cứng, độ đàn hồi và khả năng chịu lực tốt hơn sắt nguyên chất nên được dùng rộng rãi trong xây dựng."
+    },
+    {
+     "ma_cau": "K09060203056",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây đúng về mối liên hệ giữa thành phần và tính chất của hợp kim?",
+     "lua_chon": [
+      "Thành phần các nguyên tố thêm vào không ảnh hưởng đến tính chất của hợp kim.",
+      "Thay đổi tỉ lệ hoặc loại nguyên tố thêm vào có thể làm thay đổi tính chất của hợp kim (độ cứng, khả năng chống gỉ...).",
+      "Mọi hợp kim của cùng một kim loại cơ bản đều có tính chất giống hệt nhau.",
+      "Tính chất của hợp kim chỉ phụ thuộc vào kim loại cơ bản, không phụ thuộc nguyên tố thêm vào."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B đúng — ví dụ rõ nhất là thép thường và inox: cùng kim loại cơ bản là sắt nhưng nhờ thêm chromium, nickel mà inox có tính chất chống gỉ vượt trội hơn hẳn."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01241",
+   "nhom_id": "KNB00503",
+   "thu_tu": 3,
+   "dang": "THÀNH PHẦN VÀ TÍNH CHẤT CỦA GANG, THÉP, INOX",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060203062",
+     "loai": "trac_nghiem",
+     "de": "Inox khác thép thường ở điểm nào về thành phần?",
+     "lua_chon": [
+      "Inox không chứa sắt, chỉ chứa chromium và nickel.",
+      "Inox có thêm chromium, nickel ngoài sắt và carbon.",
+      "Inox không chứa carbon còn thép thường có chứa carbon.",
+      "Inox chứa nhôm thay cho sắt."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B đúng — inox là thép đặc biệt, ngoài sắt và carbon còn có thêm các nguyên tố như chromium, nickel, giúp tăng khả năng chống gỉ."
+    },
+    {
+     "ma_cau": "K09060203058",
+     "loai": "trac_nghiem",
+     "de": "Hàm lượng carbon trong gang thường nằm trong khoảng nào?",
+     "lua_chon": [
+      "Dưới $2\\%$.",
+      "Từ $2\\%$ đến $5\\%$.",
+      "Từ $5\\%$ đến $10\\%$.",
+      "Trên $10\\%$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B đúng — gang là hợp kim của sắt với carbon, trong đó carbon chiếm hàm lượng từ $2\\%$ đến $5\\%$."
+    },
+    {
+     "ma_cau": "K09060203059",
+     "loai": "trac_nghiem",
+     "de": "Hàm lượng carbon trong thép thường như thế nào so với gang?",
+     "lua_chon": [
+      "Thép có hàm lượng carbon dưới $2\\%$, thấp hơn gang.",
+      "Thép có hàm lượng carbon trên $5\\%$, cao hơn gang.",
+      "Thép và gang có hàm lượng carbon bằng nhau.",
+      "Thép không chứa carbon còn gang chứa carbon."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng — thép có hàm lượng carbon dưới $2\\%$, thấp hơn so với gang (carbon từ $2\\%$ đến $5\\%$)."
+    },
+    {
+     "ma_cau": "K09060203063",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về gang, thép, inox, phát biểu nào SAI?",
+     "lua_chon": [
+      "Gang và thép đều có kim loại cơ bản là sắt.",
+      "Hàm lượng carbon trong gang cao hơn trong thép.",
+      "Inox là một kim loại nguyên chất, không phải hợp kim của sắt.",
+      "Inox cứng và khó bị gỉ hơn thép thường nhờ có thêm chromium, nickel."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C sai — inox là một loại thép đặc biệt (hợp kim của sắt với carbon, chromium, nickel), không phải kim loại nguyên chất."
+    },
+    {
+     "ma_cau": "K09060203061",
+     "loai": "trac_nghiem",
+     "de": "Vì sao gang thường được dùng để đúc các chi tiết máy, ống dẫn nước, nắp cống thay vì dùng thép?",
+     "lua_chon": [
+      "Vì gang cứng và giòn hơn thép, dễ đúc thành hình dạng phức tạp, không cần chịu lực uốn lớn.",
+      "Vì gang mềm và dẻo hơn thép rất nhiều.",
+      "Vì gang nhẹ hơn thép nên tiết kiệm vật liệu.",
+      "Vì gang không thể sản xuất thành thép được."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng — gang cứng và giòn hơn thép nên phù hợp để đúc thành các chi tiết máy, ống dẫn nước, nắp cống — những vật dụng không đòi hỏi độ đàn hồi cao."
+    },
+    {
+     "ma_cau": "K09060203057",
+     "loai": "trac_nghiem",
+     "de": "Gang và thép đều là hợp kim của sắt với nguyên tố nào là chính?",
+     "lua_chon": [
+      "Carbon.",
+      "Chromium.",
+      "Nickel.",
+      "Nhôm."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng  — gang và thép đều là hợp kim của sắt với carbon (có thể kèm một số nguyên tố khác), khác nhau chủ yếu ở hàm lượng carbon."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01242",
+   "nhom_id": "KNB00503",
+   "thu_tu": 4,
+   "dang": "ỨNG DỤNG THỰC TẾ CỦA HỢP KIM THEO TÍNH CHẤT ĐẶC TRƯNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060203067",
+     "loai": "trac_nghiem",
+     "de": "Vật liệu nào sau đây phù hợp nhất để làm cốt thép, dầm chịu lực trong các công trình xây dựng cao tầng?",
+     "lua_chon": [
+      "Gang.",
+      "Thép.",
+      "Đuy-ra.",
+      "Nhôm (Al) nguyên chất."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B đúng — thép có độ đàn hồi và khả năng chịu lực tốt, là vật liệu chính làm cốt thép, dầm chịu lực trong xây dựng cao tầng."
+    },
+    {
+     "ma_cau": "K09060203068",
+     "loai": "trac_nghiem",
+     "de": "Một kĩ sư cần chọn vật liệu chế tạo chi tiết máy đúc sẵn, có hình dạng phức tạp, không chịu lực uốn lớn, giá thành thấp. Vật liệu nào sau đây phù hợp nhất?",
+     "lua_chon": [
+      "Gang.",
+      "Inox.",
+      "Duy-ra.",
+      "Đồng (Cu) nguyên chất."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng — gang cứng, giòn, dễ đúc thành hình dạng phức tạp và có giá thành thấp hơn các hợp kim khác, phù hợp làm chi tiết máy đúc sẵn không chịu lực uốn lớn."
+    },
+    {
+     "ma_cau": "K09060203069",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau, phát biểu nào đúng về việc lựa chọn hợp kim theo ứng dụng thực tế?",
+     "lua_chon": [
+      "Chỉ cần xét đến giá thành, không cần xét đến tính chất của hợp kim.",
+      "Cần đối chiếu tính chất đặc trưng của hợp kim (độ cứng, độ đàn hồi, khả năng chống gỉ, khối lượng riêng...) với yêu cầu sử dụng thực tế.",
+      "Mọi hợp kim của sắt đều dùng thay thế được cho nhau trong mọi ứng dụng.",
+      "Hợp kim càng chứa nhiều nguyên tố thì càng phù hợp với mọi ứng dụng."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B đúng — việc chọn hợp kim phù hợp cần dựa trên đối chiếu tính chất đặc trưng của hợp kim với yêu cầu thực tế của từng ứng dụng cụ thể."
+    },
+    {
+     "ma_cau": "K09060203070",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau, phát biểu nào SAI khi tổng kết về ứng dụng của gang, thép, inox, duy-ra?",
+     "lua_chon": [
+      "Thép dùng trong xây dựng nhờ độ đàn hồi và khả năng chịu lực tốt.",
+      "Gang dùng đúc chi tiết máy, ống dẫn nước nhờ dễ đúc và giá thành thấp.",
+      "Inox dùng làm đồ gia dụng nhờ khó bị gỉ.",
+      "Duy-ra dùng chế tạo máy bay vì nặng hơn thép nhưng rẻ hơn nhiều."
+     ],
+     "dap_an": "D",
+     "loi_giai": "D sai — duy-ra được dùng chế tạo máy bay vì nhẹ tương đương nhôm nhưng bền, cứng hơn nhiều, không phải vì nặng hơn thép."
+    },
+    {
+     "ma_cau": "K09060203065",
+     "loai": "trac_nghiem",
+     "de": "Vật liệu nào sau đây phù hợp nhất để làm dụng cụ y tế, dao, thìa cần độ bền và không bị gỉ khi tiếp xúc nước, hoá chất?",
+     "lua_chon": [
+      "Gang.",
+      "Sắt (Fe) nguyên chất.",
+      "Nhôm (Al) nguyên chất.",
+      "Inox."
+     ],
+     "dap_an": "D",
+     "loi_giai": "D đúng — inox cứng và khó bị gỉ nhờ có thêm chromium, nickel, phù hợp làm dụng cụ y tế, đồ gia dụng thường xuyên tiếp xúc với nước, hoá chất."
+    },
+    {
+     "ma_cau": "K09060203064",
+     "loai": "trac_nghiem",
+     "de": "Vật liệu nào sau đây phù hợp nhất để làm khung, vỏ máy bay, đòi hỏi vừa nhẹ vừa bền, cứng?",
+     "lua_chon": [
+      "Sắt (Fe) nguyên chất.",
+      "Gang.",
+      "Đuy-ra.",
+      "Đồng (Cu) nguyên chất."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C đúng — đuy-ra nhẹ tương đương nhôm nhưng bền và cứng hơn nhiều, đáp ứng đúng yêu cầu vừa nhẹ vừa bền, cứng của vật liệu chế tạo máy bay."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01243",
+   "nhom_id": "KNB00504",
+   "thu_tu": 1,
+   "dang": "NGUYÊN LIỆU VÀ NGUYÊN TẮC CHUNG CỦA QUÁ TRÌNH SẢN XUẤT GANG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060204042",
+     "loai": "trac_nghiem",
+     "de": "Quặng sắt dùng trong sản xuất gang thường là quặng hematite, có thành phần chính là hợp chất nào?",
+     "lua_chon": [
+      "$\\mathrm{FeS}$",
+      "$\\mathrm{FeCO_3}$",
+      "$\\mathrm{Fe_2O_3}$",
+      "$\\mathrm{Fe_3O_4}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "C đúng — hematite là quặng sắt phổ biến dùng trong sản xuất gang, có thành phần chính là iron(III) oxide $\\mathrm{Fe_2O_3}$."
+    },
+    {
+     "ma_cau": "K09060204044",
+     "loai": "trac_nghiem",
+     "de": "Trong lò cao, đá vôi ($\\mathrm{CaCO_3}$) đóng vai trò chính nào sau đây?",
+     "lua_chon": [
+      "Là chất khử trực tiếp oxide sắt thành sắt kim loại.",
+      "Bị phân huỷ thành $\\mathrm{CaO}$, $\\mathrm{CaO}$ kết hợp với $\\mathrm{SiO_2}$ (tạp chất trong quặng) tạo xỉ, giúp loại bỏ tạp chất.",
+      "Là nguyên liệu cung cấp carbon cho phản ứng tạo khí $\\mathrm{CO}$.",
+      "Là chất hoà tan sắt kim loại để tạo thành gang lỏng."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B đúng — đá vôi bị phân huỷ thành $\\mathrm{CaO}$ ở nhiệt độ cao, $\\mathrm{CaO}$ kết hợp với $\\mathrm{SiO_2}$ (tạp chất có trong quặng) tạo thành xỉ, giúp tách tạp chất ra khỏi gang lỏng."
+    },
+    {
+     "ma_cau": "K09060204048",
+     "loai": "trac_nghiem",
+     "de": "Vì sao trong lò cao, sắt sinh ra lại hoà tan thêm carbon và một số nguyên tố khác để tạo thành gang lỏng, chứ không thu được sắt nguyên chất?",
+     "lua_chon": [
+      "Vì sắt sinh ra ở nhiệt độ cao, tiếp xúc trực tiếp với carbon dư (than cốc) và các tạp chất trong quặng nên hoà tan thêm các nguyên tố này.",
+      "Vì đá vôi phản ứng trực tiếp với sắt tạo thành gang.",
+      "Vì khí $\\mathrm{CO}$ phản ứng với sắt tạo thành hợp chất chứa carbon.",
+      "Vì không khí nóng thổi vào mang theo carbon vào sắt nóng chảy."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng — sắt sinh ra trong lò cao ở dạng nóng chảy, tiếp xúc trực tiếp với than cốc dư và một số tạp chất trong quặng nên hoà tan thêm carbon và các nguyên tố khác, tạo thành gang lỏng."
+    },
+    {
+     "ma_cau": "K09060204046",
+     "loai": "trac_nghiem",
+     "de": "Quặng sắt, than cốc, đá vôi được đưa vào lò cao qua vị trí nào, và không khí nóng được thổi vào từ đâu?",
+     "lua_chon": [
+      "Nguyên liệu đưa vào từ đáy lò, không khí nóng thổi vào từ miệng lò.",
+      "Nguyên liệu đưa vào qua miệng lò, không khí nóng được thổi từ dưới lên.",
+      "Nguyên liệu và không khí nóng đều được đưa vào từ miệng lò.",
+      "Nguyên liệu và không khí nóng đều được đưa vào từ đáy lò."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B đúng — quặng sắt, than cốc, đá vôi được đưa vào lò cao qua miệng lò (chuyển dần từ trên xuống), trong khi không khí nóng được thổi từ dưới lên."
+    },
+    {
+     "ma_cau": "K09060204043",
+     "loai": "trac_nghiem",
+     "de": "Trong lò cao, than cốc đóng vai trò chính nào sau đây?",
+     "lua_chon": [
+      "Là nguyên liệu tạo xỉ, loại bỏ tạp chất khỏi gang lỏng.",
+      "Là nguồn cung cấp khí $\\mathrm{CO}$ để khử oxide sắt thành sắt kim loại.",
+      "Là chất xúc tác, không tham gia phản ứng hoá học.",
+      "Là nguyên liệu duy nhất cung cấp nhiệt, không sinh ra chất khử."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B đúng — than cốc cháy và phản ứng với khí $\\mathrm{CO_2}$ sinh ra khí $\\mathrm{CO}$, chính khí $\\mathrm{CO}$ này khử oxide sắt trong quặng thành sắt kim loại."
+    },
+    {
+     "ma_cau": "K09060204041",
+     "loai": "trac_nghiem",
+     "de": "Nguyên liệu chính để sản xuất gang trong lò cao gồm những gì?",
+     "lua_chon": [
+      "Quặng sắt, khí hydrogen, đá vôi.",
+      "Quặng sắt, khí oxygen, đá vôi.",
+      "Gang phế liệu, than cốc, khí oxygen.",
+      "Quặng sắt, than cốc, đá vôi."
+     ],
+     "dap_an": "D",
+     "loi_giai": "D đúng — ba nguyên liệu chính đưa vào lò cao để sản xuất gang là quặng sắt, than cốc và đá vôi."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01244",
+   "nhom_id": "KNB00504",
+   "thu_tu": 2,
+   "dang": "PHƯƠNG TRÌNH HOÁ HỌC CÁC GIAI ĐOẠN TRONG LÒ CAO",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060204049",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi than cốc cháy trong lò cao, sinh ra khí $\\mathrm{CO_2}$?",
+     "lua_chon": [
+      "$\\mathrm{C + 2O_2 \\xrightarrow{t^o} CO_2}$",
+      "$\\mathrm{2C + O_2 \\xrightarrow{t^o} 2CO_2}$",
+      "$\\mathrm{C + O_2 \\xrightarrow{t^o} CO}$",
+      "$\\mathrm{C + O_2 \\xrightarrow{t^o} CO_2}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{C + O_2 \\xrightarrow{t^o} CO_2}$ là phương trình đúng và đã cân bằng ($\\mathrm{C: 1 = 1}$; $\\mathrm{O: 2 = 2}$)."
+    },
+    {
+     "ma_cau": "K09060204053",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hóa học nào sau đây đúng khi $\\mathrm{CaO}$ kết hợp với $\\mathrm{SiO_2}$ (tạp chất trong quặng) tạo thành xỉ?",
+     "lua_chon": [
+      "$\\mathrm{CaO} + \\mathrm{Si} \\xrightarrow{t^{\\circ}} \\mathrm{CaSiO_3}$",
+      "$\\mathrm{Ca} + \\mathrm{SiO_2} \\xrightarrow{t^{\\circ}} \\mathrm{CaSiO_3}$",
+      "$2\\mathrm{CaO} + \\mathrm{SiO_2} \\xrightarrow{t^{\\circ}} \\mathrm{Ca_2SiO_4}$",
+      "$\\mathrm{CaO} + \\mathrm{SiO_2} \\xrightarrow{t^{\\circ}} \\mathrm{CaSiO_3}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{CaO} + \\mathrm{SiO_2} \\xrightarrow{t^{\\circ}} \\mathrm{CaSiO_3}$ là phương trình đúng và đã cân bằng ($\\mathrm{Ca}: 1 = 1$; $\\mathrm{Si}: 1 = 1$; $\\mathrm{O}: 1 + 2 = 3 = 3$)."
+    },
+    {
+     "ma_cau": "K09060204055",
+     "loai": "trac_nghiem",
+     "de": "Trong phương trình hoá học đã cân bằng $\\mathrm{CO} + \\mathrm{Fe_2O_3} \\xrightarrow{t^{\\circ}} \\mathrm{Fe} + \\mathrm{CO_2}$, tỉ lệ hệ số giữa $\\mathrm{CO}$ và $\\mathrm{Fe_2O_3}$ là bao nhiêu?",
+     "lua_chon": [
+      "1 : 1",
+      "2 : 1",
+      "3 : 1",
+      "3 : 2"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hệ số của $\\mathrm{CO}$ là $3$, hệ số của $\\mathrm{Fe_2O_3}$ là $1$, nên tỉ lệ hệ số $\\mathrm{CO} : \\mathrm{Fe_2O_3} = 3 : 1$."
+    },
+    {
+     "ma_cau": "K09060204056",
+     "loai": "trac_nghiem",
+     "de": "Trong phương trình hoá học đã cân bằng $\\mathrm{CaCO_3} \\xrightarrow{t^{\\circ}} \\mathrm{CaO} + \\mathrm{CO_2}$, tổng hệ số của tất cả các chất (đã tối giản) bằng bao nhiêu?",
+     "lua_chon": [
+      "2",
+      "3",
+      "4",
+      "6"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Phương trình đã tối giản có hệ số $1$ cho cả ba chất $\\mathrm{CaCO_3}$, $\\mathrm{CaO}$, $\\mathrm{CO_2}$, tổng hệ số bằng $1 + 1 + 1 = 3$."
+    },
+    {
+     "ma_cau": "K09060204054",
+     "loai": "trac_nghiem",
+     "de": "Trong phương trình hóa học đã cân bằng $\\mathrm{C} + \\mathrm{CO_2} \\xrightarrow{t^{\\circ}} \\mathrm{CO}$, hệ số của khí $\\mathrm{CO}$ sinh ra là bao nhiêu?",
+     "lua_chon": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Phương trình cân bằng đúng có hệ số $2$ trước $\\mathrm{CO}$, ứng với $1\\mathrm{C}$ và $1\\mathrm{CO_2}$ ở vế trái ($\\mathrm{C}: 2 = 2$; $\\mathrm{O}: 2 = 2$)."
+    },
+    {
+     "ma_cau": "K09060204050",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi khí $\\mathrm{CO_2}$ sinh ra tiếp tục phản ứng với than cốc dư, tạo thành khí $\\mathrm{CO}$?",
+     "lua_chon": [
+      "$\\mathrm{C + 2CO_2 \\xrightarrow{t^o} 2CO}$",
+      "$\\mathrm{B. C + CO_2 \\xrightarrow{t^o} CO}$",
+      "$\\mathrm{2C + CO_2 \\xrightarrow{t^o} 2CO}$",
+      "$\\mathrm{C + CO_2 \\xrightarrow{t^o} 2CO}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{C + CO_2 \\xrightarrow{t^o} 2CO}$ là phương trình đúng và đã cân bằng ($\\mathrm{C: 2 = 2}$; $\\mathrm{O: 2 = 2}$)."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01245",
+   "nhom_id": "KNB00504",
+   "thu_tu": 3,
+   "dang": "THỨ TỰ VÀ VAI TRÒ CÁC GIAI ĐOẠN TRONG LÒ CAO",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060204057",
+     "loai": "trac_nghiem",
+     "de": "Trong lò cao, giai đoạn nào sau đây xảy ra TRƯỚC TIÊN, ngay khi than cốc gặp không khí nóng thổi từ dưới lên?",
+     "lua_chon": [
+      "$\\mathrm{CaO}$ kết hợp $\\mathrm{SiO_2}$ tạo xỉ.",
+      "$\\mathrm{CaCO_3}$ bị phân huỷ thành $\\mathrm{CaO}$.",
+      "Than cốc cháy tạo khí $\\mathrm{CO_2}$.",
+      "Khí $\\mathrm{CO}$ khử oxide sắt thành $\\mathrm{Fe}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C đúng — giai đoạn đầu tiên là than cốc cháy trong không khí nóng thổi từ dưới lên, sinh ra khí $\\mathrm{CO_2}$, sau đó $\\mathrm{CO_2}$ mới phản ứng tiếp với than cốc dư để tạo $\\mathrm{CO}$."
+    },
+    {
+     "ma_cau": "K09060204060",
+     "loai": "trac_nghiem",
+     "de": "Trong lò cao, sản phẩm nào nổi lên trên gang lỏng và được tháo ra qua cửa tháo xỉ?",
+     "lua_chon": [
+      "Khí $\\mathrm{CO_2}$.",
+      "Khí $\\mathrm{CO}$.",
+      "Xỉ $(\\mathrm{CaSiO_3})$.",
+      "Than cốc dư."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{C}$ đúng — xỉ $(\\mathrm{CaSiO_3})$ nhẹ hơn gang lỏng nên nổi lên trên, được tháo ra ngoài qua cửa tháo xỉ, tách riêng khỏi gang lỏng ở cửa tháo gang."
+    },
+    {
+     "ma_cau": "K09060204063",
+     "loai": "trac_nghiem",
+     "de": "Sắp xếp đúng thứ tự các giai đoạn chính xảy ra trong lò cao, từ khi than cốc gặp không khí nóng đến khi thu được gang lỏng và xỉ:",
+     "lua_chon": [
+      "$\\mathrm{Fe}$ hoà tan carbon tạo gang lỏng $\\to$ than cốc cháy tạo $\\mathrm{CO_2}$ $\\to$ $\\mathrm{CO_2}$ phản ứng than cốc dư tạo $\\mathrm{CO}$ $\\to$ $\\mathrm{CO}$ khử oxide sắt.",
+      "$\\mathrm{CO}$ khử oxide sắt tạo $\\mathrm{Fe}$ $\\to$ than cốc cháy tạo $\\mathrm{CO_2}$ $\\to$ đá vôi phân huỷ tạo $\\mathrm{CaO}$ $\\to$ $\\mathrm{CaO}$ kết hợp $\\mathrm{SiO_2}$ tạo xỉ.",
+      "Đá vôi phân huỷ tạo $\\mathrm{CaO}$ $\\to$ $\\mathrm{CaO}$ khử oxide sắt tạo $\\mathrm{Fe}$ $\\to$ than cốc cháy tạo $\\mathrm{CO_2}$ $\\to$ $\\mathrm{CO_2}$ tạo xỉ.",
+      "Than cốc cháy tạo $\\mathrm{CO_2}$ $\\to$ $\\mathrm{CO_2}$ phản ứng than cốc dư tạo $\\mathrm{CO}$ $\\to$ $\\mathrm{CO}$ khử oxide sắt tạo $\\mathrm{Fe}$ $\\to$ $\\mathrm{Fe}$ hoà tan carbon tạo gang lỏng; đồng thời đá vôi phân huỷ tạo $\\mathrm{CaO}$ rồi kết hợp $\\mathrm{SiO_2}$ tạo xỉ."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đúng thứ tự là than cốc cháy tạo $\\mathrm{CO_2}$, $\\mathrm{CO_2}$ phản ứng tiếp với than cốc dư tạo $\\mathrm{CO}$, $\\mathrm{CO}$ khử oxide sắt thành $\\mathrm{Fe}$, $\\mathrm{Fe}$ hoà tan carbon tạo gang lỏng; song song đó đá vôi phân huỷ tạo $\\mathrm{CaO}$ rồi kết hợp $\\mathrm{SiO_2}$ tạo xỉ."
+    },
+    {
+     "ma_cau": "K09060204061",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây SAI về quá trình sản xuất gang trong lò cao?",
+     "lua_chon": [
+      "Khí $\\mathrm{CO}$ đóng vai trò chất khử, khử oxide sắt thành sắt kim loại.",
+      "Đá vôi đóng vai trò tạo xỉ, giúp loại bỏ tạp chất $\\mathrm{SiO_2}$ khỏi gang lỏng.",
+      "Than cốc chỉ đóng vai trò cung cấp nhiệt, hoàn toàn không tham gia phản ứng hoá học nào.",
+      "Sắt sinh ra hoà tan thêm carbon và một số nguyên tố khác tạo thành gang lỏng."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{C}$ sai — than cốc vừa cháy tạo khí $\\mathrm{CO_2}$ (cung cấp nhiệt), vừa phản ứng với $\\mathrm{CO_2}$ tạo khí $\\mathrm{CO}$ — chất khử chính trong lò cao, nên than cốc có tham gia phản ứng hoá học chứ không chỉ cung cấp nhiệt."
+    },
+    {
+     "ma_cau": "K09060204062",
+     "loai": "trac_nghiem",
+     "de": "Khí thoát ra khỏi lò cao qua cửa gần miệng lò chủ yếu gồm những khí nào?",
+     "lua_chon": [
+      "Chỉ có khí $\\mathrm{O_2}$ dư.",
+      "Khí $\\mathrm{CO}$ dư, $\\mathrm{CO_2}$ và một số khí khác chưa phản ứng hết.",
+      "Chỉ có hơi nước.",
+      "Khí $\\mathrm{Cl_2}$ sinh ra từ đá vôi."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{B}$ đúng — khí thải thoát ra khỏi lò cao qua cửa gần miệng lò chủ yếu gồm khí $\\mathrm{CO}$ dư, khí $\\mathrm{CO_2}$ sinh ra từ các phản ứng và một số khí khác chưa phản ứng hết."
+    },
+    {
+     "ma_cau": "K09060204059",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây đúng về vai trò của $\\mathrm{CaO}$ sinh ra từ đá vôi trong lò cao?",
+     "lua_chon": [
+      "$\\mathrm{CaO}$ khử trực tiếp oxide sắt thành sắt kim loại.",
+      "$\\mathrm{CaO}$ hoà tan vào gang lỏng để tăng độ cứng của gang.",
+      "$\\mathrm{CaO}$ kết hợp với $\\mathrm{SiO_2}$ (tạp chất trong quặng) tạo thành xỉ $\\mathrm{CaSiO_3}$, nổi lên trên gang lỏng và được tách ra.",
+      "$\\mathrm{CaO}$ phản ứng với than cốc tạo thêm khí $\\mathrm{CO}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C đúng — $\\mathrm{CaO}$ sinh ra từ sự phân huỷ đá vôi kết hợp với $\\mathrm{SiO_2}$ (tạp chất có trong quặng) tạo thành xỉ $\\mathrm{CaSiO_3}$, xỉ nhẹ nổi lên trên gang lỏng và được tháo ra ngoài qua cửa tháo xỉ."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01246",
+   "nhom_id": "KNB00504",
+   "thu_tu": 4,
+   "dang": "SẢN XUẤT THÉP TỪ GANG VÀ VẬN DỤNG TỔNG HỢP",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060204065",
+     "loai": "trac_nghiem",
+     "de": "Trong quá trình sản xuất thép, khí oxygen được thổi vào lò đựng gang nóng chảy nhằm mục đích gì?",
+     "lua_chon": [
+      "Kết hợp với sắt tạo thành oxide sắt.",
+      "Hoà tan thêm carbon vào gang để tăng hàm lượng carbon.",
+      "Làm nguội nhanh gang nóng chảy.",
+      "Đốt cháy các tạp chất có trong gang (như carbon dư, silicon, manganese...) để giảm hàm lượng của chúng."
+     ],
+     "dap_an": "D",
+     "loi_giai": "D đúng — khí oxygen thổi vào gang nóng chảy để đốt cháy các tạp chất (carbon dư, silicon, manganese...), làm giảm hàm lượng các nguyên tố này xuống mức phù hợp với thép."
+    },
+    {
+     "ma_cau": "K09060204068",
+     "loai": "trac_nghiem",
+     "de": "Vì sao sau khi thổi oxygen vào gang nóng chảy để sản xuất thép, hàm lượng carbon trong sản phẩm thu được lại giảm so với gang ban đầu?",
+     "lua_chon": [
+      "Vì oxygen phản ứng với carbon dư trong gang tạo thành khí $\\mathrm{CO}$, $\\mathrm{CO}$ thoát ra theo khí thải, làm giảm hàm lượng carbon còn lại trong kim loại.",
+      "Vì carbon bị hoà tan hết vào xỉ nổi lên trên.",
+      "Vì carbon chuyển hoá thành đá vôi trong quá trình luyện thép.",
+      "Vì nhiệt độ cao làm carbon bay hơi trực tiếp mà không phản ứng với oxygen."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng — khí oxygen thổi vào oxi hoá carbon dư trong gang thành khí $\\mathrm{CO}$ thoát ra theo khí thải, làm giảm hàm lượng carbon trong sản phẩm cuối cùng (thép có carbon dưới 2%, thấp hơn gang)."
+    },
+    {
+     "ma_cau": "K09060204064",
+     "loai": "trac_nghiem",
+     "de": "Nguyên liệu chính để sản xuất thép là gì?",
+     "lua_chon": [
+      "Quặng sắt hematite và than cốc.",
+      "Gang (hoặc thép phế liệu) và khí oxygen.",
+      "Đá vôi và khí oxygen.",
+      "Quặng sắt và khí hydrogen."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B đúng — nguyên liệu chính để sản xuất thép là gang (hoặc thép phế liệu) và khí oxygen, khác với nguyên liệu sản xuất gang (quặng sắt, than cốc, đá vôi)."
+    },
+    {
+     "ma_cau": "K09060204069",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau, phát biểu nào đúng khi so sánh vai trò của than cốc (trong sản xuất gang) và khí oxygen (trong sản xuất thép)?",
+     "lua_chon": [
+      "Than cốc đóng vai trò chất khử (qua khí $\\mathrm{CO}$ sinh ra) để tạo sắt từ oxide; khí oxygen đóng vai trò oxi hoá tạp chất để giảm hàm lượng carbon và các nguyên tố khác trong gang.",
+      "Cả than cốc và khí oxygen đều đóng vai trò chất khử.",
+      "Cả than cốc và khí oxygen đều đóng vai trò tạo xỉ.",
+      "Than cốc đóng vai trò oxi hoá; khí oxygen đóng vai trò khử."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng — trong sản xuất gang, than cốc (qua khí $\\mathrm{CO}$ sinh ra) đóng vai trò chất khử để tạo sắt từ oxide sắt; trong sản xuất thép, khí oxygen đóng vai trò ngược lại, oxi hoá bớt carbon và tạp chất trong gang để hạ hàm lượng của chúng."
+    },
+    {
+     "ma_cau": "K09060204066",
+     "loai": "trac_nghiem",
+     "de": "Trong quá trình sản xuất thép, các oxide tạo thành ở dạng khí (như $\\mathrm{CO}$, $\\mathrm{SO_2}$) và các oxide dạng rắn (như $\\mathrm{SiO_2}$, $\\mathrm{MnO}$) được xử lí như thế nào?",
+     "lua_chon": [
+      "Oxide khí thoát ra theo khí thải; oxide rắn tạo thành xỉ nhẹ, nổi lên trên thép lỏng và được tách ra.",
+      "Cả hai loại oxide đều hoà tan trở lại vào thép lỏng.",
+      "Oxide khí tạo xỉ; oxide rắn thoát ra theo khí thải.",
+      "Cả hai loại oxide đều lắng xuống đáy lò cùng với thép lỏng."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng — các oxide dạng khí ($\\mathrm{CO}$, $\\mathrm{SO_2}$...) thoát ra ngoài theo khí thải, còn các oxide dạng rắn ($\\mathrm{SiO_2}$, $\\mathrm{MnO}$...) tạo thành xỉ nhẹ, nổi lên trên thép lỏng và được tách ra để thu lấy thép."
+    },
+    {
+     "ma_cau": "K09060204067",
+     "loai": "trac_nghiem",
+     "de": "Điểm khác biệt chính giữa nguyên liệu sản xuất gang và nguyên liệu sản xuất thép là gì?",
+     "lua_chon": [
+      "Sản xuất gang dùng quặng sắt, than cốc, đá vôi; sản xuất thép dùng gang (hoặc thép phế liệu) và khí oxygen.",
+      "Sản xuất gang và sản xuất thép dùng chung một loại nguyên liệu duy nhất là quặng sắt.",
+      "Sản xuất gang dùng khí oxygen; sản xuất thép dùng than cốc.",
+      "Sản xuất gang không cần nguyên liệu nào chứa carbon; sản xuất thép cần than cốc."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng — sản xuất gang bắt đầu từ quặng sắt, than cốc, đá vôi; còn sản xuất thép bắt đầu từ gang (hoặc thép phế liệu) và khí oxygen để giảm bớt tạp chất, hạ hàm lượng carbon."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01247",
+   "nhom_id": "KNB00505",
+   "thu_tu": 1,
+   "dang": "TỪ KHỐI LƯỢNG Al2O3 TÍNH KHỐI LƯỢNG Al THU ĐƯỢC KHI ĐIỆN PHÂN NÓNG CHẢY",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060205045",
+     "loai": "trac_nghiem",
+     "de": "Điện phân nóng chảy hoàn toàn 5,1 gam $\\mathrm{Al_2O_3}$ theo phương trình $\\mathrm{2Al_2O_3 \\xrightarrow{dpnc} 4Al + 3O_2}$. Tính khối lượng nhôm ($\\mathrm{Al}$) thu được.",
+     "lua_chon": [
+      "2,7 gam",
+      "1,35 gam",
+      "3,93 gam",
+      "0,67 gam"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{n(Al_2O_3) = 5,1 : 102 = 0,05 \\ mol}$. Theo PTHH, $\\mathrm{n(Al) = 2 \\times n(Al_2O_3) = 0,1 \\ mol}$. $\\mathrm{m(Al) = 0,1 \\times 27 = 2,7 \\ gam}$."
+    },
+    {
+     "ma_cau": "K09060205041",
+     "loai": "trac_nghiem",
+     "de": "Điện phân nóng chảy hoàn toàn 10,2 gam $\\mathrm{Al_2O_3}$ theo phương trình $\\mathrm{2Al_2O_3} \\xrightarrow{\\text{đpnc}} \\mathrm{4Al} + \\mathrm{3O_2}$.\nTính khối lượng nhôm ($\\mathrm{Al}$) thu được.",
+     "lua_chon": [
+      "2,7 gam",
+      "7,87 gam",
+      "5,4 gam",
+      "1,35 gam"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$n(\\mathrm{Al_2O_3}) = 10,2 : 102 = 0,1 \\text{ mol}$. Theo $\\mathrm{PTHH}$, $n(\\mathrm{Al}) = 2 \\times n(\\mathrm{Al_2O_3}) = 0,2 \\text{ mol}$. $m(\\mathrm{Al}) = 0,2 \\times 27 = 5,4 \\text{ gam}$."
+    },
+    {
+     "ma_cau": "K09060205044",
+     "loai": "trac_nghiem",
+     "de": "Điện phân nóng chảy hoàn toàn 51 gam $\\mathrm{Al_2O_3}$ theo phương trình $\\mathrm{2Al_2O_3 \\xrightarrow{dpnc} 4Al + 3O_2}$. Tính khối lượng nhôm ($\\mathrm{Al}$) thu được.",
+     "lua_chon": [
+      "13,5 gam",
+      "27 gam",
+      "39,34 gam",
+      "6,75 gam"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{n(Al_2O_3) = 51 : 102 = 0,5 \\ mol}$. Theo PTHH, $\\mathrm{n(Al) = 2 \\times n(Al_2O_3) = 1 \\ mol}$. $\\mathrm{m(Al) = 1 \\times 27 = 27 \\ gam}$."
+    },
+    {
+     "ma_cau": "K09060205048",
+     "loai": "trac_nghiem",
+     "de": "Điện phân nóng chảy hoàn toàn 25,5 gam $\\mathrm{Al_2O_3}$ theo phương trình $\\mathrm{2Al_2O_3 \\xrightarrow{dpnc} 4Al + 3O_2}$.\nTính khối lượng nhôm ($\\mathrm{Al}$) thu được.",
+     "lua_chon": [
+      "13,5 gam",
+      "6,75 gam",
+      "19,67 gam",
+      "3,38 gam"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{n(Al_2O_3) = 25,5 : 102 = 0,25\\ mol}$. Theo PTHH, $\\mathrm{n(Al) = 2 \\times n(Al_2O_3) = 0,5\\ mol}$. $\\mathrm{m(Al) = 0,5 \\times 27 = 13,5\\ gam}$."
+    },
+    {
+     "ma_cau": "K09060205046",
+     "loai": "trac_nghiem",
+     "de": "Điện phân nóng chảy hoàn toàn 40,8 gam $\\mathrm{Al_2O_3}$ theo phương trình $\\mathrm{2Al_2O_3 \\xrightarrow{dpnc} 4Al + 3O_2}$. Tính khối lượng nhôm ($\\mathrm{Al}$) thu được.",
+     "lua_chon": [
+      "10,8 gam",
+      "31,47 gam",
+      "21,6 gam",
+      "5,4 gam"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{n(Al_2O_3) = 40,8 : 102 = 0,4 \\ mol}$. Theo PTHH, $\\mathrm{n(Al) = 2 \\times n(Al_2O_3) = 0,8 \\ mol}$. $\\mathrm{m(Al) = 0,8 \\times 27 = 21,6 \\ gam}$."
+    },
+    {
+     "ma_cau": "K09060205047",
+     "loai": "trac_nghiem",
+     "de": "Điện phân nóng chảy hoàn toàn 15,3 gam $\\mathrm{Al_2O_3}$ theo phương trình $\\mathrm{2Al_2O_3 \\xrightarrow{dpnc} 4Al + 3O_2}$.\nTính khối lượng nhôm ($\\mathrm{Al}$) thu được.",
+     "lua_chon": [
+      "4,05 gam",
+      "8,1 gam",
+      "11,8 gam",
+      "2,02 gam"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{n(Al_2O_3) = 15,3 : 102 = 0,15\\ mol}$. Theo PTHH, $\\mathrm{n(Al) = 2 \\times n(Al_2O_3) = 0,3\\ mol}$. $\\mathrm{m(Al) = 0,3 \\times 27 = 8,1\\ gam}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01248",
+   "nhom_id": "KNB00505",
+   "thu_tu": 2,
+   "dang": "TỪ KHỐI LƯỢNG OXIDE TÍNH KHỐI LƯỢNG KIM LOẠI THU ĐƯỢC KHI NHIỆT LUYỆN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060205051",
+     "loai": "trac_nghiem",
+     "de": "Nhiệt luyện hoàn toàn 8 gam $\\mathrm{Fe_2O_3}$ bằng khí $\\mathrm{CO}$ dư theo phương trình $\\mathrm{Fe_2O_3} + 3\\mathrm{CO} \\xrightarrow{t^o} 2\\mathrm{Fe} + 3\\mathrm{CO_2}$. Tính khối lượng sắt ($\\mathrm{Fe}$) thu được.",
+     "lua_chon": [
+      "2,8 gam",
+      "7 gam",
+      "4,2 gam",
+      "5,6 gam"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{n(Fe_2O_3)} = 8 : 160 = 0,05$ mol.\nTheo PTHH, $\\mathrm{n(Fe)} = 2 \\times \\mathrm{n(Fe_2O_3)} = 0,1$ mol.\n$\\mathrm{m(Fe)} = 0,1 \\times 56 = 5,6$ gam."
+    },
+    {
+     "ma_cau": "K09060205055",
+     "loai": "trac_nghiem",
+     "de": "Nhiệt luyện hoàn toàn 24,3 gam $\\mathrm{ZnO}$ bằng carbon dư theo phương trình $\\mathrm{ZnO} + \\mathrm{C} \\xrightarrow{\\mathrm{t^o}} \\mathrm{Zn} + \\mathrm{CO}$.\nTính khối lượng kẽm ($\\mathrm{Zn}$) thu được.",
+     "lua_chon": [
+      "39 gam",
+      "19,5 gam",
+      "16,28 gam",
+      "24,3 gam"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{n(ZnO)} = 24,3 : 81 = 0,3 \\mathrm{\\ mol}$. Theo $\\mathrm{PTHH}$, $\\mathrm{n(Zn)} = \\mathrm{n(ZnO)} = 0,3 \\mathrm{\\ mol}$. $\\mathrm{m(Zn)} = 0,3 \\times 65 = 19,5 \\mathrm{\\ gam}$."
+    },
+    {
+     "ma_cau": "K09060205053",
+     "loai": "trac_nghiem",
+     "de": "Nhiệt luyện hoàn toàn 8,1 gam $\\mathrm{ZnO}$ bằng carbon dư theo phương trình $\\mathrm{ZnO} + \\mathrm{C} \\xrightarrow{t^o} \\mathrm{Zn} + \\mathrm{CO}$. Tính khối lượng kẽm ($\\mathrm{Zn}$) thu được.",
+     "lua_chon": [
+      "13 gam",
+      "5,43 gam",
+      "6,5 gam",
+      "8,1 gam"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{n(ZnO)} = 8,1 : 81 = 0,1 \\mathrm{mol}$.\nTheo PTHH, $\\mathrm{n(Zn)} = \\mathrm{n(ZnO)} = 0,1 \\mathrm{mol}$.\n$\\mathrm{m(Zn)} = 0,1 \\times 65 = 6,5 \\mathrm{gam}$."
+    },
+    {
+     "ma_cau": "K09060205052",
+     "loai": "trac_nghiem",
+     "de": "Nhiệt luyện hoàn toàn 48 gam $\\mathrm{Fe_2O_3}$ bằng khí $\\mathrm{CO}$ dư theo phương trình $\\mathrm{Fe_2O_3} + 3\\mathrm{CO} \\xrightarrow{t^o} 2\\mathrm{Fe} + 3\\mathrm{CO_2}$. Tính khối lượng sắt ($\\mathrm{Fe}$) thu được.",
+     "lua_chon": [
+      "16,8 gam",
+      "42 gam",
+      "33,6 gam",
+      "25,2 gam"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{n(Fe_2O_3)} = 48 : 160 = 0,3 \\mathrm{mol}$.\nTheo PTHH, $\\mathrm{n(Fe)} = 2 \\times \\mathrm{n(Fe_2O_3)} = 0,6 \\mathrm{mol}$.\n$\\mathrm{m(Fe)} = 0,6 \\times 56 = 33,6 \\mathrm{gam}$."
+    },
+    {
+     "ma_cau": "K09060205050",
+     "loai": "trac_nghiem",
+     "de": "Nhiệt luyện hoàn toàn 32 gam $\\mathrm{Fe_2O_3}$ bằng khí $\\mathrm{CO}$ dư theo phương trình $\\mathrm{Fe_2O_3} + 3\\mathrm{CO} \\xrightarrow{t^o} 2\\mathrm{Fe} + 3\\mathrm{CO_2}$. Tính khối lượng sắt ($\\mathrm{Fe}$) thu được.",
+     "lua_chon": [
+      "11,2 gam",
+      "28 gam",
+      "16,8 gam",
+      "22,4 gam"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{n(Fe_2O_3)} = 32 : 160 = 0,2$ mol.\nTheo PTHH, $\\mathrm{n(Fe)} = 2 \\times \\mathrm{n(Fe_2O_3)} = 0,4$ mol.\n$\\mathrm{m(Fe)} = 0,4 \\times 56 = 22,4$ gam."
+    },
+    {
+     "ma_cau": "K09060205056",
+     "loai": "trac_nghiem",
+     "de": "Nhiệt luyện hoàn toàn 4,05 gam $\\mathrm{ZnO}$ bằng carbon dư theo phương trình $\\mathrm{ZnO} + \\mathrm{C} \\xrightarrow{\\mathrm{t^o}} \\mathrm{Zn} + \\mathrm{CO}$.\nTính khối lượng kẽm ($\\mathrm{Zn}$) thu được.",
+     "lua_chon": [
+      "6,5 gam",
+      "2,71 gam",
+      "4,05 gam",
+      "3,25 gam"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{n(ZnO)} = 4,05 : 81 = 0,05 \\mathrm{\\ mol}$. Theo $\\mathrm{PTHH}$, $\\mathrm{n(Zn)} = \\mathrm{n(ZnO)} = 0,05 \\mathrm{\\ mol}$. $\\mathrm{m(Zn)} = 0,05 \\times 65 = 3,25 \\mathrm{\\ gam}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01249",
+   "nhom_id": "KNB00505",
+   "thu_tu": 3,
+   "dang": "TỪ THÀNH PHẦN PHẦN TRĂM TÍNH KHỐI LƯỢNG QUẶNG CẦN LẤY",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060205059",
+     "loai": "trac_nghiem",
+     "de": "Một mẫu quặng hematite chứa $25\\%\\ \\mathrm{Fe_2O_3}$ về khối lượng (phần còn lại là tạp chất không chứa sắt). Để có đủ $60\\ \\mathrm{gam}\\ \\mathrm{Fe_2O_3}$ nguyên chất, cần lấy bao nhiêu gam quặng trên?",
+     "lua_chon": [
+      "15 gam",
+      "240 gam",
+      "80 gam",
+      "2,4 gam"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng quặng = khối lượng $\\mathrm{Fe_2O_3}$ : $\\%\\mathrm{Fe_2O_3}$ $\\times\\ 100 = 60 : 25 \\times\\ 100 = 240\\ \\mathrm{gam}$."
+    },
+    {
+     "ma_cau": "K09060205058",
+     "loai": "trac_nghiem",
+     "de": "Một mẫu quặng hematite chứa $15\\%\\ \\mathrm{Fe_2O_3}$ về khối lượng (phần còn lại là tạp chất không chứa sắt). Để có đủ $90\\ \\mathrm{gam}\\ \\mathrm{Fe_2O_3}$ nguyên chất, cần lấy bao nhiêu gam quặng trên?",
+     "lua_chon": [
+      "13,5 gam",
+      "105,88 gam",
+      "600 gam",
+      "6 gam"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khối lượng quặng = khối lượng $\\mathrm{Fe_2O_3}$ : $\\%\\mathrm{Fe_2O_3}$ $\\times\\ 100 = 90 : 15 \\times\\ 100 = 600\\ \\mathrm{gam}$."
+    },
+    {
+     "ma_cau": "K09060205060",
+     "loai": "trac_nghiem",
+     "de": "Một mẫu quặng hematite chứa $24\\%\\ \\mathrm{Fe_2O_3}$ về khối lượng (phần còn lại là tạp chất không chứa sắt). Để có đủ $108\\ \\mathrm{gam}\\ \\mathrm{Fe_2O_3}$ nguyên chất, cần lấy bao nhiêu gam quặng trên?",
+     "lua_chon": [
+      "25,92 gam",
+      "142,11 gam",
+      "4,5 gam",
+      "450 gam"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khối lượng quặng = khối lượng $\\mathrm{Fe_2O_3}$ : $\\%\\mathrm{Fe_2O_3}$ $\\times\\ 100 = 108 : 24 \\times\\ 100 = 450\\ \\mathrm{gam}$."
+    },
+    {
+     "ma_cau": "K09060205061",
+     "loai": "trac_nghiem",
+     "de": "Một mẫu quặng hematite chứa 30% $\\mathrm{Fe_2O_3}$ về khối lượng (phần còn lại là tạp chất không chứa sắt). Để có đủ 45 gam $\\mathrm{Fe_2O_3}$ nguyên chất, cần lấy bao nhiêu gam quặng trên?",
+     "lua_chon": [
+      "150 gam",
+      "13,5 gam",
+      "64,29 gam",
+      "1,5 gam"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng quặng = khối lượng $\\mathrm{Fe_2O_3}$ : %$\\mathrm{Fe_2O_3}$ $\\times$ 100 = 45 : 30 $\\times$ 100 = 150 gam."
+    },
+    {
+     "ma_cau": "K09060205057",
+     "loai": "trac_nghiem",
+     "de": "Một mẫu quặng hematite chứa $20\\%\\ \\mathrm{Fe_2O_3}$ về khối lượng (phần còn lại là tạp chất không chứa sắt). Để có đủ $80\\ \\mathrm{gam}\\ \\mathrm{Fe_2O_3}$ nguyên chất, cần lấy bao nhiêu gam quặng trên?",
+     "lua_chon": [
+      "400 gam",
+      "16 gam",
+      "100 gam",
+      "4 gam"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng quặng = khối lượng $\\mathrm{Fe_2O_3}$ : $\\%\\mathrm{Fe_2O_3}$ $\\times\\ 100 = 80 : 20 \\times\\ 100 = 400\\ \\mathrm{gam}$."
+    },
+    {
+     "ma_cau": "K09060205063",
+     "loai": "trac_nghiem",
+     "de": "Một mẫu quặng hematite chứa 12% $\\mathrm{Fe_2O_3}$ về khối lượng (phần còn lại là tạp chất không chứa sắt). Để có đủ 96 gam $\\mathrm{Fe_2O_3}$ nguyên chất, cần lấy bao nhiêu gam quặng trên?",
+     "lua_chon": [
+      "11,52 gam",
+      "109,09 gam",
+      "8 gam",
+      "800 gam"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khối lượng quặng = khối lượng $\\mathrm{Fe_2O_3}$ : %$\\mathrm{Fe_2O_3}$ $\\times$ 100 = 96 : 12 $\\times$ 100 = 800 gam."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01250",
+   "nhom_id": "KNB00505",
+   "thu_tu": 4,
+   "dang": "TỪ HIỆU SUẤT PHẢN ỨNG TÍNH KHỐI LƯỢNG KIM LOẠI THỰC TẾ THU ĐƯỢC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060205067",
+     "loai": "trac_nghiem",
+     "de": "Điện phân nóng chảy 51 gam $\\mathrm{Al_2O_3}$ theo phương trình $\\mathrm{2Al_2O_3} \\xrightarrow{\\text{đpnc}} \\mathrm{4Al} + \\mathrm{3O_2}$, với hiệu suất phản ứng đạt 60%. Tính khối lượng nhôm ($\\mathrm{Al}$) thực tế thu được.",
+     "lua_chon": [
+      "27 gam",
+      "16,2 gam",
+      "45 gam",
+      "8,1 gam"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{n(Al_2O_3) = 51 : 102 = 0,5 \\, mol}$. \nKhối lượng $\\mathrm{Al}$ lí thuyết $= 2 \\times 0,5 \\times 27 = 27 \\, gam$. \nVì hiệu suất chỉ đạt $60\\%$ nên $\\mathrm{m(Al)}$ thực tế $= 27 \\times 60/100 = 16,2 \\, gam$."
+    },
+    {
+     "ma_cau": "K09060205070",
+     "loai": "trac_nghiem",
+     "de": "Điện phân nóng chảy 25,5 gam $\\mathrm{Al_2O_3}$ theo phương trình $2\\mathrm{Al_2O_3} \\xrightarrow{dpnc} 4\\mathrm{Al} + 3\\mathrm{O_2}$, với hiệu suất phản ứng đạt 70%. Tính khối lượng nhôm ($\\mathrm{Al}$) thực tế thu được.",
+     "lua_chon": [
+      "9,45 gam",
+      "13,5 gam",
+      "19,29 gam",
+      "4,72 gam"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$n(\\mathrm{Al_2O_3}) = 25,5 : 102 = 0,25$ mol.\nKhối lượng $\\mathrm{Al}$ lí thuyết $= 2 \\times 0,25 \\times 27 = 13,5$ gam.\nVì hiệu suất chi đạt 70% nên $m(\\mathrm{Al})$ thực tế $= 13,5 \\times 70/100 = 9,45$ gam."
+    },
+    {
+     "ma_cau": "K09060205064",
+     "loai": "trac_nghiem",
+     "de": "Điện phân nóng chảy 20,4 gam $\\mathrm{Al_2O_3}$ theo phương trình $2\\mathrm{Al_2O_3} \\xrightarrow{\\text{đpnc}} 4\\mathrm{Al} + 3\\mathrm{O_2}$, với hiệu suất phản ứng đạt 80%. Tính khối lượng nhôm ($\\mathrm{Al}$) thực tế thu được.",
+     "lua_chon": [
+      "10,8 gam",
+      "13,5 gam",
+      "4,32 gam",
+      "8,64 gam"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{n(Al_2O_3)} = 20,4 : 102 = 0,2$ mol.\nKhối lượng $\\mathrm{Al}$ lí thuyết = $2 \\times 0,2 \\times 27 = 10,8$ gam.\nVì hiệu suất chỉ đạt 80% nên $\\mathrm{m(Al)}$ thực tế = $10,8 \\times 80/100 = 8,64$ gam."
+    },
+    {
+     "ma_cau": "K09060205069",
+     "loai": "trac_nghiem",
+     "de": "Điện phân nóng chảy 15,3 gam $\\mathrm{Al_2O_3}$ theo phương trình $\\mathrm{2Al_2O_3} \\xrightarrow{\\text{đpnc}} \\mathrm{4Al} + \\mathrm{3O_2}$, với hiệu suất phản ứng đạt 95%. Tính khối lượng nhôm ($\\mathrm{Al}$) thực tế thu được.",
+     "lua_chon": [
+      "8,1 gam",
+      "8,53 gam",
+      "7,7 gam",
+      "3,85 gam"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{n(Al_2O_3) = 15,3 : 102 = 0,15 \\, mol}$. \nKhối lượng $\\mathrm{Al}$ lí thuyết $= 2 \\times 0,15 \\times 27 = 8,1 \\, gam$. \nVì hiệu suất chỉ đạt $95\\%$ nên $\\mathrm{m(Al)}$ thực tế $= 8,1 \\times 95/100 = 7,7 \\, gam$."
+    },
+    {
+     "ma_cau": "K09060205065",
+     "loai": "trac_nghiem",
+     "de": "Điện phân nóng chảy 40,8 gam $\\mathrm{Al_2O_3}$ theo phương trình $2\\mathrm{Al_2O_3} \\xrightarrow{\\text{đpnc}} 4\\mathrm{Al} + 3\\mathrm{O_2}$, với hiệu suất phản ứng đạt 90%. Tính khối lượng nhôm ($\\mathrm{Al}$) thực tế thu được.",
+     "lua_chon": [
+      "21,6 gam",
+      "24 gam",
+      "19,44 gam",
+      "9,72 gam"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{n(Al_2O_3)} = 40,8 : 102 = 0,4$ mol.\nKhối lượng $\\mathrm{Al}$ lí thuyết = $2 \\times 0,4 \\times 27 = 21,6$ gam.\nVì hiệu suất chỉ đạt 90% nên $\\mathrm{m(Al)}$ thực tế = $21,6 \\times 90/100 = 19,44$ gam."
+    },
+    {
+     "ma_cau": "K09060205066",
+     "loai": "trac_nghiem",
+     "de": "Điện phân nóng chảy 10,2 gam $\\mathrm{Al_2O_3}$ theo phương trình $2\\mathrm{Al_2O_3} \\xrightarrow{\\text{đpnc}} 4\\mathrm{Al} + 3\\mathrm{O_2}$, với hiệu suất phản ứng đạt 75%. Tính khối lượng nhôm ($\\mathrm{Al}$) thực tế thu được.",
+     "lua_chon": [
+      "5,4 gam",
+      "4,05 gam",
+      "7,2 gam",
+      "2,02 gam"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{n(Al_2O_3)} = 10,2 : 102 = 0,1$ mol.\nKhối lượng $\\mathrm{Al}$ lí thuyết = $2 \\times 0,1 \\times 27 = 5,4$ gam.\nVì hiệu suất chỉ đạt 75% nên $\\mathrm{m(Al)}$ thực tế = $5,4 \\times 75/100 = 4,05$ gam."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01251",
+   "nhom_id": "KNB00505",
+   "thu_tu": 5,
+   "dang": "LƯỢNG SẮT THU ĐƯỢC KHI LUYỆN GANG TRONG LÒ CAO",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060205074",
+     "loai": "tra_loi_ngan",
+     "de": "Trong lò cao, 24 gam $\\mathrm{Fe_2O_3}$ trong quặng phản ứng với $\\mathrm{CO}$ dư theo phương trình $\\mathrm{Fe_2O_3} + \\mathrm{3CO} \\xrightarrow{t^{\\circ}} \\mathrm{2Fe} + \\mathrm{3CO_2}$, với hiệu suất phản ứng đạt 80%. Coi như toàn bộ sắt sinh ra đều hoà vào gang lỏng và bỏ qua khối lượng carbon cùng các nguyên tố khác trong gang, tính khối lượng sắt ($\\mathrm{Fe}$) nguyên chất thu được.",
+     "dap_an": "13.44",
+     "loi_giai": "$\\mathrm{n(Fe_2O_3)} = 24 : 160 = 0.15\\ \\mathrm{mol}$.\nKhối lượng $\\mathrm{Fe}$ lí thuyết $= 2 \\times 0.15 \\times 56 = 16.8\\ \\mathrm{gam}$.\nVì hiệu suất đạt 80% nên $\\mathrm{m(Fe)}$ thực tế $= 16.8 \\times 80/100 = 13.44\\ \\mathrm{gam}$."
+    },
+    {
+     "ma_cau": "K09060205072",
+     "loai": "tra_loi_ngan",
+     "de": "Trong lò cao, 16 gam $\\mathrm{Fe_2O_3}$ trong quặng phản ứng với $\\mathrm{CO}$ dư theo phương trình $\\mathrm{Fe_2O_3} + \\mathrm{3CO} \\xrightarrow{t^{\\circ}} \\mathrm{2Fe} + \\mathrm{3CO_2}$, với hiệu suất phản ứng đạt 95%. Coi như toàn bộ sắt sinh ra đều hoà vào gang lỏng và bỏ qua khối lượng carbon cùng các nguyên tố khác trong gang, tính khối lượng sắt ($\\mathrm{Fe}$) nguyên chất thu được.",
+     "dap_an": "10.64",
+     "loi_giai": "$\\mathrm{n(Fe_2O_3)} = 16 : 160 = 0.1\\ \\mathrm{mol}$.\nKhối lượng $\\mathrm{Fe}$ lí thuyết $= 2 \\times 0.1 \\times 56 = 11.2\\ \\mathrm{gam}$.\nVì hiệu suất đạt 95% nên $\\mathrm{m(Fe)}$ thực tế $= 11.2 \\times 95/100 = 10.64\\ \\mathrm{gam}$."
+    },
+    {
+     "ma_cau": "K09060205073",
+     "loai": "tra_loi_ngan",
+     "de": "Trong lò cao, 48 gam $\\mathrm{Fe_2O_3}$ trong quặng phản ứng với $\\mathrm{CO}$ dư theo phương trình $\\mathrm{Fe_2O_3} + \\mathrm{3CO} \\xrightarrow{t^{\\circ}} \\mathrm{2Fe} + \\mathrm{3CO_2}$, với hiệu suất phản ứng đạt 90%. Coi như toàn bộ sắt sinh ra đều hoà vào gang lỏng và bỏ qua khối lượng carbon cùng các nguyên tố khác trong gang, tính khối lượng sắt ($\\mathrm{Fe}$) nguyên chất thu được.",
+     "dap_an": "30.24",
+     "loi_giai": "$\\mathrm{n(Fe_2O_3)} = 48 : 160 = 0.3\\ \\mathrm{mol}$.\nKhối lượng $\\mathrm{Fe}$ lí thuyết $= 2 \\times 0.3 \\times 56 = 33.6\\ \\mathrm{gam}$.\nVì hiệu suất đạt 90% nên $\\mathrm{m(Fe)}$ thực tế $= 33.6 \\times 90/100 = 30.24\\ \\mathrm{gam}$."
+    },
+    {
+     "ma_cau": "K09060205071",
+     "loai": "tra_loi_ngan",
+     "de": "Trong lò cao, 32 gam $\\mathrm{Fe_2O_3}$ trong quặng phản ứng với $\\mathrm{CO}$ dư theo phương trình $\\mathrm{Fe_2O_3} + \\mathrm{3CO} \\xrightarrow{t^{\\circ}} \\mathrm{2Fe} + \\mathrm{3CO_2}$, với hiệu suất phản ứng đạt 100%. Coi như toàn bộ sắt sinh ra đều hoà vào gang lỏng và bỏ qua khối lượng carbon cùng các nguyên tố khác trong gang, tính khối lượng sắt ($\\mathrm{Fe}$) nguyên chất thu được.",
+     "dap_an": "22.4",
+     "loi_giai": "$\\mathrm{n(Fe_2O_3)} = 32 : 160 = 0.2\\ \\mathrm{mol}$.\nKhối lượng $\\mathrm{Fe}$ lí thuyết $= 2 \\times 0.2 \\times 56 = 22.4\\ \\mathrm{gam}$.\nVì hiệu suất đạt 100% nên $\\mathrm{m(Fe)}$ thực tế $= 22.4 \\times 100/100 = 22.4\\ \\mathrm{gam}$."
+    },
+    {
+     "ma_cau": "K09060205075",
+     "loai": "tra_loi_ngan",
+     "de": "Trong lò cao, 40 gam $\\mathrm{Fe_2O_3}$ trong quặng phản ứng với $\\mathrm{CO}$ dư theo phương trình $\\mathrm{Fe_2O_3} + \\mathrm{3CO} \\xrightarrow{t^{\\circ}} \\mathrm{2Fe} + \\mathrm{3CO_2}$, với hiệu suất phản ứng đạt 85%. Coi như toàn bộ sắt sinh ra đều hoà vào gang lỏng và bỏ qua khối lượng carbon cùng các nguyên tố khác trong gang, tính khối lượng sắt ($\\mathrm{Fe}$) nguyên chất thu được.",
+     "dap_an": "23.8",
+     "loi_giai": "$\\mathrm{n(Fe_2O_3)} = 40 : 160 = 0.25\\ \\mathrm{mol}$.\nKhối lượng $\\mathrm{Fe}$ lí thuyết $= 2 \\times 0.25 \\times 56 = 28\\ \\mathrm{gam}$.\nVì hiệu suất đạt 85% nên $\\mathrm{m(Fe)}$ thực tế $= 28 \\times 85/100 = 23.8\\ \\mathrm{gam}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01252",
+   "nhom_id": "KNB00505",
+   "thu_tu": 6,
+   "dang": "THỂ TÍCH KHÍ CO2 SINH RA KHI NHIỆT LUYỆN Fe2O3",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060205076",
+     "loai": "tra_loi_ngan",
+     "de": "Nhiệt luyện hoàn toàn 16 gam $\\mathrm{Fe_2O_3}$ bằng khí $\\mathrm{CO}$ dư theo phương trình $\\mathrm{Fe_2O_3} + 3\\mathrm{CO} \\xrightarrow{t^\\circ} 2\\mathrm{Fe} + 3\\mathrm{CO_2}$. Tính thể tích khí $\\mathrm{CO_2}$ sinh ra (đo ở điều kiện chuẩn, 1 mol khí chiếm 24 lít).",
+     "dap_an": "7.2",
+     "loi_giai": "$n(\\mathrm{Fe_2O_3}) = 16 : 160 = 0.1\\ mol$. \nTheo PTHH, $n(\\mathrm{CO_2}) = 3 \\times n(\\mathrm{Fe_2O_3}) = 0.3\\ mol$.\n$V(\\mathrm{CO_2}) = 0.3 \\times 24 = 7.2\\ lít$."
+    },
+    {
+     "ma_cau": "K09060205078",
+     "loai": "tra_loi_ngan",
+     "de": "Nhiệt luyện hoàn toàn 8 gam $\\mathrm{Fe_2O_3}$ bằng khí $\\mathrm{CO}$ dư theo phương trình $\\mathrm{Fe_2O_3} + 3\\mathrm{CO} \\xrightarrow{t^\\circ} 2\\mathrm{Fe} + 3\\mathrm{CO_2}$. Tính thể tích khí $\\mathrm{CO_2}$ sinh ra (đo ở điều kiện chuẩn, 1 mol khí chiếm 24 lít).",
+     "dap_an": "3.6",
+     "loi_giai": "$n(\\mathrm{Fe_2O_3}) = 8 : 160 = 0.05\\ mol$. \nTheo PTHH, $n(\\mathrm{CO_2}) = 3 \\times n(\\mathrm{Fe_2O_3}) = 0.15\\ mol$.\n$V(\\mathrm{CO_2}) = 0.15 \\times 24 = 3.6\\ lít$."
+    },
+    {
+     "ma_cau": "K09060205077",
+     "loai": "tra_loi_ngan",
+     "de": "Nhiệt luyện hoàn toàn 32 gam $\\mathrm{Fe_2O_3}$ bằng khí $\\mathrm{CO}$ dư theo phương trình $\\mathrm{Fe_2O_3} + 3\\mathrm{CO} \\xrightarrow{t^\\circ} 2\\mathrm{Fe} + 3\\mathrm{CO_2}$. Tính thể tích khí $\\mathrm{CO_2}$ sinh ra (đo ở điều kiện chuẩn, 1 mol khí chiếm 24 lít).",
+     "dap_an": "14.4",
+     "loi_giai": "$n(\\mathrm{Fe_2O_3}) = 32 : 160 = 0.2\\ mol$. \nTheo PTHH, $n(\\mathrm{CO_2}) = 3 \\times n(\\mathrm{Fe_2O_3}) = 0.6\\ mol$.\n$V(\\mathrm{CO_2}) = 0.6 \\times 24 = 14.4\\ lít$."
+    },
+    {
+     "ma_cau": "K09060205080",
+     "loai": "tra_loi_ngan",
+     "de": "Nhiệt luyện hoàn toàn 40 gam $\\mathrm{Fe_2O_3}$ bằng khí $\\mathrm{CO}$ dư theo phương trình $\\mathrm{Fe_2O_3} + 3\\mathrm{CO} \\xrightarrow{t^\\circ} 2\\mathrm{Fe} + 3\\mathrm{CO_2}$. Tính thể tích khí $\\mathrm{CO_2}$ sinh ra (đo ở điều kiện chuẩn, 1 mol khí chiếm 24 lít).",
+     "dap_an": "18",
+     "loi_giai": "$n(\\mathrm{Fe_2O_3}) = 40 : 160 = 0.25\\ mol$. \nTheo PTHH, $n(\\mathrm{CO_2}) = 3 \\times n(\\mathrm{Fe_2O_3}) = 0.75\\ mol$.\n$V(\\mathrm{CO_2}) = 0.75 \\times 24 = 18\\ lít$."
+    },
+    {
+     "ma_cau": "K09060205079",
+     "loai": "tra_loi_ngan",
+     "de": "Nhiệt luyện hoàn toàn 24 gam $\\mathrm{Fe_2O_3}$ bằng khí $\\mathrm{CO}$ dư theo phương trình $\\mathrm{Fe_2O_3} + 3\\mathrm{CO} \\xrightarrow{t^\\circ} 2\\mathrm{Fe} + 3\\mathrm{CO_2}$. Tính thể tích khí $\\mathrm{CO_2}$ sinh ra (đo ở điều kiện chuẩn, 1 mol khí chiếm 24 lít).",
+     "dap_an": "10.8",
+     "loi_giai": "$n(\\mathrm{Fe_2O_3}) = 24 : 160 = 0.15\\ mol$. \nTheo PTHH, $n(\\mathrm{CO_2}) = 3 \\times n(\\mathrm{Fe_2O_3}) = 0.45\\ mol$.\n$V(\\mathrm{CO_2}) = 0.45 \\times 24 = 10.8\\ lít$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01253",
+   "nhom_id": "KNB00505",
+   "thu_tu": 7,
+   "dang": "KHỐI LƯỢNG THÉP THU ĐƯỢC TỪ GANG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060205082",
+     "loai": "trac_nghiem",
+     "de": "Trong lò luyện thép, 100 gam gang lỏng được thổi oxygen để oxi hoá bớt carbon và các tạp chất ($\\mathrm{Si}$, $\\mathrm{Mn}$, $\\mathrm{P}$...) dưới dạng xỉ và khí thoát ra; do đó khối lượng thép thu được chỉ còn bằng 92% khối lượng gang ban đầu. Tính khối lượng thép thu được.",
+     "lua_chon": [
+      "90 gam",
+      "92 gam",
+      "94 gam",
+      "96 gam"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng thép = khối lượng gang $\\times$ tỉ lệ khối lượng còn lại = $100 \\times 92/100 = 92$ gam."
+    },
+    {
+     "ma_cau": "K09060205081",
+     "loai": "trac_nghiem",
+     "de": "Trong lò luyện thép, 50 gam gang lỏng được thổi oxygen để oxi hoá bớt carbon và các tạp chất ($\\mathrm{Si}$, $\\mathrm{Mn}$, $\\mathrm{P}$...) dưới dạng xỉ và khí thoát ra; do đó khối lượng thép thu được chỉ còn bằng 96% khối lượng gang ban đầu. Tính khối lượng thép thu được.",
+     "lua_chon": [
+      "48 gam",
+      "46 gam",
+      "44 gam",
+      "42 gam"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng thép = khối lượng gang $\\times$ tỉ lệ khối lượng còn lại = $50 \\times 96/100 = 48$ gam."
+    },
+    {
+     "ma_cau": "K09060205084",
+     "loai": "trac_nghiem",
+     "de": "Trong lò luyện thép, 60 gam gang lỏng được thổi oxygen để oxi hoá bớt carbon và các tạp chất ($\\mathrm{Si}$, $\\mathrm{Mn}$, $\\mathrm{P}$...) dưới dạng xỉ và khí thoát ra; do đó khối lượng thép thu được chỉ còn bằng 90% khối lượng gang ban đầu. Tính khối lượng thép thu được.",
+     "lua_chon": [
+      "52 gam",
+      "50 gam",
+      "53 gam",
+      "54 gam"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khối lượng thép = khối lượng gang $\\times$ tỉ lệ khối lượng còn lại = $60 \\times 90/100 = 54$ gam."
+    },
+    {
+     "ma_cau": "K09060205085",
+     "loai": "trac_nghiem",
+     "de": "Trong lò luyện thép, 40 gam gang lỏng được thổi oxygen để oxi hoá bớt carbon và các tạp chất ($\\mathrm{Si}$, $\\mathrm{Mn}$, $\\mathrm{P}$...) dưới dạng xỉ và khí thoát ra; do đó khối lượng thép thu được chỉ còn bằng 95% khối lượng gang ban đầu. Tính khối lượng thép thu được.",
+     "lua_chon": [
+      "38 gam",
+      "36 gam",
+      "34 gam",
+      "32 gam"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng thép = khối lượng gang $\\times$ tỉ lệ khối lượng còn lại = $40 \\times 95/100 = 38$ gam."
+    },
+    {
+     "ma_cau": "K09060205083",
+     "loai": "trac_nghiem",
+     "de": "Trong lò luyện thép, 80 gam gang lỏng được thổi oxygen để oxi hoá bớt carbon và các tạp chất ($\\mathrm{Si}$, $\\mathrm{Mn}$, $\\mathrm{P}$...) dưới dạng xỉ và khí thoát ra; do đó khối lượng thép thu được chỉ còn bằng 98% khối lượng gang ban đầu. Tính khối lượng thép thu được.",
+     "lua_chon": [
+      "77,2 gam",
+      "78 gam",
+      "78,4 gam",
+      "79,6 gam"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khối lượng thép = khối lượng gang $\\times$ tỉ lệ khối lượng còn lại = $80 \\times 98/100 = 78,4$ gam."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01254",
+   "nhom_id": "KNB00505",
+   "thu_tu": 8,
+   "dang": "KHỐI LƯỢNG Zn THU ĐƯỢC QUA CHUỖI HAI GIAI ĐOẠN TỪ ZnS",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060205087",
+     "loai": "tu_luan",
+     "de": "Đốt 9,7 gam $\\mathrm{ZnS}$ trong không khí dư thu được $\\mathrm{ZnO}$ theo phương trình $2\\mathrm{ZnS} + 3\\mathrm{O_2} \\xrightarrow{\\text{t°}} 2\\mathrm{ZnO} + 2\\mathrm{SO_2}$; toàn bộ $\\mathrm{ZnO}$ sinh ra được khử hết bằng carbon dư theo phương trình $\\mathrm{ZnO} + \\mathrm{C} \\xrightarrow{\\text{t°}} \\mathrm{Zn} + \\mathrm{CO}$. Tính khối lượng kẽm ($\\mathrm{Zn}$) thu được sau cả hai giai đoạn (giả sử hiệu suất mỗi giai đoạn đều là 100%).",
+     "dap_an": "6,5",
+     "loi_giai": "$\\mathrm{n(ZnS)} = 9,7 : 97 = 0,1 \\text{ mol}$. Theo $\\mathrm{PTHH}$ giai đoạn 1, $\\mathrm{n(ZnO)} = \\mathrm{n(ZnS)} = 0,1 \\text{ mol}$. Theo $\\mathrm{PTHH}$ giai đoạn 2, $\\mathrm{n(Zn)} = \\mathrm{n(ZnO)} = 0,1 \\text{ mol}$. $\\mathrm{m(Zn)} = 0,1 \\times 65 = 6,5 \\text{ gam}$."
+    },
+    {
+     "ma_cau": "K09060205086",
+     "loai": "tu_luan",
+     "de": "Đốt 19,4 gam $\\mathrm{ZnS}$ trong không khí dư thu được $\\mathrm{ZnO}$ theo phương trình $2\\mathrm{ZnS} + 3\\mathrm{O_2} \\xrightarrow{\\text{t°}} 2\\mathrm{ZnO} + 2\\mathrm{SO_2}$; toàn bộ $\\mathrm{ZnO}$ sinh ra được khử hết bằng carbon dư theo phương trình $\\mathrm{ZnO} + \\mathrm{C} \\xrightarrow{\\text{t°}} \\mathrm{Zn} + \\mathrm{CO}$. Tính khối lượng kẽm ($\\mathrm{Zn}$) thu được sau cả hai giai đoạn (giả sử hiệu suất mỗi giai đoạn đều là 100%).",
+     "dap_an": "13",
+     "loi_giai": "$\\mathrm{n(ZnS)} = 19,4 : 97 = 0,2 \\text{ mol}$. Theo $\\mathrm{PTHH}$ giai đoạn 1, $\\mathrm{n(ZnO)} = \\mathrm{n(ZnS)} = 0,2 \\text{ mol}$. Theo $\\mathrm{PTHH}$ giai đoạn 2, $\\mathrm{n(Zn)} = \\mathrm{n(ZnO)} = 0,2 \\text{ mol}$. $\\mathrm{m(Zn)} = 0,2 \\times 65 = 13 \\text{ gam}$."
+    },
+    {
+     "ma_cau": "K09060205090",
+     "loai": "tu_luan",
+     "de": "Đốt 14,55 gam $\\mathrm{ZnS}$ trong không khí dư thu được $\\mathrm{ZnO}$ theo phương trình $2\\mathrm{ZnS} + 3\\mathrm{O_2} \\xrightarrow{\\text{t°}} 2\\mathrm{ZnO} + 2\\mathrm{SO_2}$; toàn bộ $\\mathrm{ZnO}$ sinh ra được khử hết bằng carbon dư theo phương trình $\\mathrm{ZnO} + \\mathrm{C} \\xrightarrow{\\text{t°}} \\mathrm{Zn} + \\mathrm{CO}$. Tính khối lượng kẽm ($\\mathrm{Zn}$) thu được sau cả hai giai đoạn (giả sử hiệu suất mỗi giai đoạn đều là 100%).",
+     "dap_an": "9,75",
+     "loi_giai": "$\\mathrm{n(ZnS)} = 14,55 : 97 = 0,15 \\text{ mol}$. Theo $\\mathrm{PTHH}$ giai đoạn 1, $\\mathrm{n(ZnO)} = \\mathrm{n(ZnS)} = 0,15 \\text{ mol}$. Theo $\\mathrm{PTHH}$ giai đoạn 2, $\\mathrm{n(Zn)} = \\mathrm{n(ZnO)} = 0,15 \\text{ mol}$. $\\mathrm{m(Zn)} = 0,15 \\times 65 = 9,75 \\text{ gam}$."
+    },
+    {
+     "ma_cau": "K09060205088",
+     "loai": "tu_luan",
+     "de": "Đốt 29,1 gam $\\mathrm{ZnS}$ trong không khí dư thu được $\\mathrm{ZnO}$ theo phương trình $2\\mathrm{ZnS} + 3\\mathrm{O_2} \\xrightarrow{\\text{t°}} 2\\mathrm{ZnO} + 2\\mathrm{SO_2}$; toàn bộ $\\mathrm{ZnO}$ sinh ra được khử hết bằng carbon dư theo phương trình $\\mathrm{ZnO} + \\mathrm{C} \\xrightarrow{\\text{t°}} \\mathrm{Zn} + \\mathrm{CO}$. Tính khối lượng kẽm ($\\mathrm{Zn}$) thu được sau cả hai giai đoạn (giả sử hiệu suất mỗi giai đoạn đều là 100%).",
+     "dap_an": "19,5",
+     "loi_giai": "$\\mathrm{n(ZnS)} = 29,1 : 97 = 0,3 \\text{ mol}$. Theo $\\mathrm{PTHH}$ giai đoạn 1, $\\mathrm{n(ZnO)} = \\mathrm{n(ZnS)} = 0,3 \\text{ mol}$. Theo $\\mathrm{PTHH}$ giai đoạn 2, $\\mathrm{n(Zn)} = \\mathrm{n(ZnO)} = 0,3 \\text{ mol}$. $\\mathrm{m(Zn)} = 0,3 \\times 65 = 19,5 \\text{ gam}$."
+    },
+    {
+     "ma_cau": "K09060205089",
+     "loai": "tu_luan",
+     "de": "Đốt 4,85 gam $\\mathrm{ZnS}$ trong không khí dư thu được $\\mathrm{ZnO}$ theo phương trình $2\\mathrm{ZnS} + 3\\mathrm{O_2} \\xrightarrow{\\text{t°}} 2\\mathrm{ZnO} + 2\\mathrm{SO_2}$; toàn bộ $\\mathrm{ZnO}$ sinh ra được khử hết bằng carbon dư theo phương trình $\\mathrm{ZnO} + \\mathrm{C} \\xrightarrow{\\text{t°}} \\mathrm{Zn} + \\mathrm{CO}$. Tính khối lượng kẽm ($\\mathrm{Zn}$) thu được sau cả hai giai đoạn (giả sử hiệu suất mỗi giai đoạn đều là 100%).",
+     "dap_an": "3,25",
+     "loi_giai": "$\\mathrm{n(ZnS)} = 4,85 : 97 = 0,05 \\text{ mol}$. Theo $\\mathrm{PTHH}$ giai đoạn 1, $\\mathrm{n(ZnO)} = \\mathrm{n(ZnS)} = 0,05 \\text{ mol}$. Theo $\\mathrm{PTHH}$ giai đoạn 2, $\\mathrm{n(Zn)} = \\mathrm{n(ZnO)} = 0,05 \\text{ mol}$. $\\mathrm{m(Zn)} = 0,05 \\times 65 = 3,25 \\text{ gam}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01255",
+   "nhom_id": "KNB00506",
+   "thu_tu": 1,
+   "dang": "LIÊN HỆ DÃY HOẠT ĐỘNG HOÁ HỌC VỚI PHƯƠNG PHÁP TÁCH VÀ HỢP KIM CỦA KIM LOẠI CƠ BẢN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060206005",
+     "loai": "trac_nghiem",
+     "de": "Kim loại bạc ($\\mathrm{Ag}$) và vàng ($\\mathrm{Au}$) đều được tách bằng phương pháp thuỷ luyện. Đặc điểm chung nào của hai kim loại này khiến chúng phù hợp với phương pháp này?",
+     "lua_chon": [
+      "Chúng là những kim loại hoạt động hoá học rất yếu, đứng cuối dãy hoạt động hoá học.",
+      "Chúng là những kim loại hoạt động hoá học rất mạnh, đứng đầu dãy hoạt động hoá học.",
+      "Chúng có nhiệt độ nóng chảy thấp nhất trong các kim loại.",
+      "Chúng chỉ tồn tại ở dạng hợp chất sulfide trong tự nhiên."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng — $\\mathrm{Ag}$, $\\mathrm{Au}$ là những kim loại hoạt động hoá học rất yếu, đứng cuối dãy hoạt động hoá học, nên có thể tách bằng thuỷ luyện (dùng kim loại mạnh hơn đẩy chúng ra khỏi dung dịch muối)."
+    },
+    {
+     "ma_cau": "K09060206002",
+     "loai": "trac_nghiem",
+     "de": "Kim loại nào sau đây vừa được tách bằng phương pháp điện phân nóng chảy, vừa là kim loại cơ bản của duy-ra?",
+     "lua_chon": [
+      "Sắt ($\\mathrm{Fe}$).",
+      "Nhôm ($\\mathrm{Al}$).",
+      "Kẽm ($\\mathrm{Zn}$).",
+      "Đồng ($\\mathrm{Cu}$)."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B đúng — $\\mathrm{Al}$ là kim loại hoạt động mạnh nên được tách bằng điện phân nóng chảy $\\mathrm{Al_2O_3}$, đồng thời cũng là kim loại cơ bản của duy-ra."
+    },
+    {
+     "ma_cau": "K09060206008",
+     "loai": "trac_nghiem",
+     "de": "Trong các kim loại sau, kim loại nào vừa được tách bằng phương pháp điện phân nóng chảy, vừa KHÔNG phải là kim loại cơ bản của bất kì hợp kim phổ biến nào đã học (gang, thép, inox, duy-ra)?",
+     "lua_chon": [
+      "Sodium ($\\mathrm{Na}$).",
+      "Nhôm ($\\mathrm{Al}$).",
+      "Sắt ($\\mathrm{Fe}$).",
+      "Đồng ($\\mathrm{Cu}$)."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng — $\\mathrm{Na}$ được tách bằng điện phân nóng chảy (kim loại hoạt động mạnh) nhưng không phải kim loại cơ bản của gang, thép, inox (đều là $\\mathrm{Fe}$) hay duy-ra (là $\\mathrm{Al}$)."
+    },
+    {
+     "ma_cau": "K09060206001",
+     "loai": "trac_nghiem",
+     "de": "Kim loại nào sau đây vừa được tách bằng phương pháp nhiệt luyện, vừa là kim loại cơ bản của cả gang và thép?",
+     "lua_chon": [
+      "Sodium ($\\mathrm{Na}$).",
+      "Nhôm ($\\mathrm{Al}$).",
+      "Bạc ($\\mathrm{Ag}$).",
+      "Sắt ($\\mathrm{Fe}$)."
+     ],
+     "dap_an": "D",
+     "loi_giai": "D đúng — $\\mathrm{Fe}$ là kim loại hoạt động trung bình nên được tách bằng nhiệt luyện, đồng thời cũng là kim loại cơ bản của cả gang và thép."
+    },
+    {
+     "ma_cau": "K09060206006",
+     "loai": "trac_nghiem",
+     "de": "Kim loại calcium ($\\mathrm{Ca}$) được tách bằng phương pháp điện phân nóng chảy. $\\mathrm{Ca}$ có được dùng làm kim loại cơ bản của gang, thép, inox hay đuy-ra hay không?",
+     "lua_chon": [
+      "Có, $\\mathrm{Ca}$ là kim loại cơ bản của inox.",
+      "Có, $\\mathrm{Ca}$ là kim loại cơ bản của gang.",
+      "Không, trong các hợp kim đã học, kim loại cơ bản chỉ là sắt (gang, thép, inox) hoặc nhôm (đuy-ra), không phải calcium.",
+      "Có, $\\mathrm{Ca}$ là kim loại cơ bản của thép."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C đúng — trong các hợp kim phổ biến đã học (gang, thép, inox có kim loại cơ bản là $\\mathrm{Fe}$; đuy-ra có kim loại cơ bản là $\\mathrm{Al}$), không có hợp kim nào lấy calcium làm kim loại cơ bản."
+    },
+    {
+     "ma_cau": "K09060206003",
+     "loai": "trac_nghiem",
+     "de": "Đồng ($\\mathrm{Cu}$) được tách bằng phương pháp nhiệt luyện tương tự sắt, nhưng vì sao hợp kim của đồng với carbon không được gọi là “gang” hay “thép”?",
+     "lua_chon": [
+      "Vì đồng không phản ứng được với carbon monoxide.",
+      "Vì gang, thép theo định nghĩa là hợp kim có kim loại cơ bản là sắt ($\\mathrm{Fe}$), không phải đồng.",
+      "Vì đồng chỉ có thể tách bằng thuỷ luyện, không thể nhiệt luyện.",
+      "Vì đồng không tồn tại ở dạng hợp chất trong tự nhiên."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B đúng — gang và thép là tên gọi riêng cho hợp kim của sắt với carbon; một hợp kim của đồng với carbon (nếu có) sẽ không được gọi là gang hay thép vì kim loại cơ bản khác."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01256",
+   "nhom_id": "KNB00506",
+   "thu_tu": 2,
+   "dang": "TỔNG HỢP PHƯƠNG TRÌNH HOÁ HỌC TRONG CHUỖI TÁCH KIM LOẠI VÀ LUYỆN GANG, THÉP",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060206014",
+     "loai": "trac_nghiem",
+     "de": "Trong các phương trình đã học ở Dạng 2 và Dạng 4, phương trình nào có chất khử là carbon đơn chất (không phải $\\mathrm{CO}$ hay $\\mathrm{H_2}$)?",
+     "lua_chon": [
+      "$\\mathrm{CuO + H_2 \\xrightarrow{t^\\circ} Cu + H_2O}$",
+      "$\\mathrm{PbO + CO \\xrightarrow{t^\\circ} Pb + CO_2}$",
+      "$\\mathrm{ZnO + C \\xrightarrow{t^\\circ} Zn + CO}$",
+      "$\\mathrm{3CO + Fe_2O_3 \\xrightarrow{t^\\circ} 2Fe + 3CO_2}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "C đúng — trong $\\mathrm{ZnO + C \\xrightarrow{t^\\circ} Zn + CO}$, chất khử là carbon đơn chất ($\\mathrm{C}$); các phương trình còn lại dùng $\\mathrm{CO}$ hoặc $\\mathrm{H_2}$ làm chất khử."
+    },
+    {
+     "ma_cau": "K09060206016",
+     "loai": "trac_nghiem",
+     "de": "Trong các phương trình đã học liên quan đến đá vôi ($\\mathrm{CaCO_3}$), phương trình nào KHÔNG sinh ra khí $\\mathrm{CO_2}$?",
+     "lua_chon": [
+      "$\\mathrm{CaCO_3 \\xrightarrow{t^o} CaO + CO_2}$",
+      "$\\mathrm{CaO + SiO_2 \\xrightarrow{t^o} CaSiO_3}$",
+      "Cả hai phương trình trên đều sinh ra khí $\\mathrm{CO_2}$.",
+      "Cả hai phương trình trên đều không sinh ra khí $\\mathrm{CO_2}$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{B}$ đúng — $\\mathrm{CaO + SiO_2 \\xrightarrow{t^o} CaSiO_3}$ là phản ứng tạo xỉ, không sinh ra khí $\\mathrm{CO_2}$; chỉ có phản ứng phân huỷ $\\mathrm{CaCO_3}$ mới sinh ra khí $\\mathrm{CO_2}$."
+    },
+    {
+     "ma_cau": "K09060206012",
+     "loai": "trac_nghiem",
+     "de": "Trong quá trình sản xuất thép từ gang, phản ứng đốt cháy tạp chất bằng khí oxygen có vai trò gì khác so với phản ứng khử oxide sắt bằng $\\mathrm{CO}$ trong sản xuất gang?",
+     "lua_chon": [
+      "Cả hai đều là phản ứng khử, giúp tạo thêm sắt kim loại.",
+      "Phản ứng với oxygen là phản ứng oxi hoá, làm giảm hàm lượng carbon và tạp chất; còn phản ứng với $\\mathrm{CO}$ là phản ứng khử, tạo ra sắt kim loại từ oxide.",
+      "Cả hai đều là phản ứng tạo xỉ.",
+      "Phản ứng với oxygen tạo ra thêm gang; phản ứng với $\\mathrm{CO}$ tạo ra thêm thép."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B đúng — hai giai đoạn có vai trò ngược nhau: $\\mathrm{CO}$ khử oxide sắt thành sắt kim loại (tạo gang), còn oxygen oxi hoá bớt carbon và tạp chất trong gang để hạ hàm lượng xuống mức của thép."
+    },
+    {
+     "ma_cau": "K09060206013",
+     "loai": "trac_nghiem",
+     "de": "Phương trình nào sau đây, nếu xảy ra, thể hiện đúng nguyên tắc thuỷ luyện (kim loại mạnh hơn đẩy kim loại yếu hơn ra khỏi dung dịch muối), khác với các phương trình khử oxide đã học ở Dạng 2, 4?",
+     "lua_chon": [
+      "$\\mathrm{Fe_2O_3 + 3CO \\xrightarrow{t^\\circ} 2Fe + 3CO_2}$",
+      "$\\mathrm{Pb + 2AgNO_3 \\rightarrow Pb(NO_3)_2 + 2Ag}$",
+      "$\\mathrm{CaCO_3 \\xrightarrow{t^\\circ} CaO + CO_2}$",
+      "$\\mathrm{2Al_2O_3 \\xrightarrow{dpnc} 4Al + 3O_2}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "B đúng — $\\mathrm{Pb + 2AgNO_3 \\rightarrow Pb(NO_3)_2 + 2Ag}$ là phản ứng $\\mathrm{Pb}$ (mạnh hơn) đẩy $\\mathrm{Ag}$ (yếu hơn) ra khỏi dung dịch muối, đúng nguyên tắc thuỷ luyện; các phương trình còn lại là phản ứng khử oxide hoặc điện phân, không phải thuỷ luyện."
+    },
+    {
+     "ma_cau": "K09060206015",
+     "loai": "trac_nghiem",
+     "de": "Giả sử một học sinh muốn tách kim loại $\\mathrm{M}$ từ oxide $\\mathrm{M_2O_3}$ bằng khí $\\mathrm{CO}$. Sau phản ứng, khí sinh ra làm đục nước vôi trong. Khí đó là khí gì, và điều này phù hợp với phương trình nào đã học?",
+     "lua_chon": [
+      "Khí $\\mathrm{CO_2}$, phù hợp với phương trình khử $\\mathrm{Fe_2O_3}$ bằng $\\mathrm{CO}$ ở Dạng 2, 4.",
+      "Khí $\\mathrm{Cl_2}$, phù hợp với phương trình điện phân nóng chảy $\\mathrm{NaCl}$.",
+      "Khí $\\mathrm{O_2}$, phù hợp với phương trình điện phân nóng chảy $\\mathrm{Al_2O_3}$.",
+      "Khí $\\mathrm{H_2}$, phù hợp với phương trình khử $\\mathrm{CuO}$ bằng $\\mathrm{H_2}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng — khí làm đục nước vôi trong là $\\mathrm{CO_2}$, đúng với sản phẩm khí của phản ứng $\\mathrm{CO}$ khử oxide sắt (dạng $\\mathrm{M_2O_3}$) đã học ở Dạng 2, 4."
+    },
+    {
+     "ma_cau": "K09060206011",
+     "loai": "trac_nghiem",
+     "de": "So sánh hai phản ứng $\\mathrm{2Al_2O_3 \\xrightarrow{dpnc} 4Al + 3O_2}$ (tách nhôm) và $\\mathrm{3CO + Fe_2O_3 \\xrightarrow{t^o} 2Fe + 3CO_2}$ (tách sắt), điểm khác biệt cơ bản nhất là gì?",
+     "lua_chon": [
+      "Phản ứng tách nhôm cần dòng điện một chiều (điện phân), còn phản ứng tách sắt dùng chất khử hoá học (CO) và chỉ cần nhiệt độ cao.",
+      "Cả hai phản ứng đều cần dòng điện một chiều.",
+      "Cả hai phản ứng đều dùng khí CO làm chất khử.",
+      "Phản ứng tách nhôm không sinh ra sản phẩm phụ, còn phản ứng tách sắt sinh ra khí $\\mathrm{O_2}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng — nhôm là kim loại hoạt động mạnh nên phải tách bằng điện phân nóng chảy (cần dòng điện), còn sắt là kim loại hoạt động trung bình nên tách bằng nhiệt luyện (dùng chất khử $\\mathrm{CO}$, chỉ cần nhiệt độ cao)."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01257",
+   "nhom_id": "KNB00506",
+   "thu_tu": 3,
+   "dang": "TỔNG HỢP HỢP KIM VÀ QUÁ TRÌNH TÁCH, LUYỆN KIM LOẠI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060206017",
+     "loai": "trac_nghiem",
+     "de": "Vì sao thép (hợp kim của $\\mathrm{Fe}$ với carbon) phải trải qua hai giai đoạn: tách sắt từ quặng (sản xuất gang) rồi mới luyện thành thép, chứ không thể tạo thép trực tiếp từ quặng sắt?",
+     "lua_chon": [
+      "Vì quặng sắt không chứa carbon nên phải thêm carbon riêng ở giai đoạn luyện thép.",
+      "Vì sắt kim loại thu được trực tiếp từ quặng (qua khử oxide) hoà tan carbon dư và tạp chất tạo thành gang (carbon $2-5\\%$); cần thêm giai đoạn thổi oxygen để giảm carbon và tạp chất xuống mức của thép (dưới $2\\%$).",
+      "Vì quặng sắt chỉ có thể chuyển hoá trực tiếp thành thép nếu dùng phương pháp điện phân.",
+      "Vì đá vôi chỉ có thể thêm vào ở giai đoạn luyện thép, không thể thêm ở giai đoạn sản xuất gang."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B đúng — giai đoạn khử oxide sắt trong lò cao luôn cho ra gang (carbon $2-5\\%$ do hoà tan than cốc dư), nên cần thêm giai đoạn thổi oxygen để giảm carbon và tạp chất xuống mức của thép."
+    },
+    {
+     "ma_cau": "K09060206019",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau, phát biểu nào đúng khi so sánh gang và thép về mặt phương pháp thu được?",
+     "lua_chon": [
+      "Gang thu được từ thép qua giai đoạn thổi oxygen.",
+      "Gang và thép đều thu được trực tiếp từ quặng sắt qua cùng một giai đoạn duy nhất.",
+      "Thép thu được trước, sau đó thêm carbon để tạo thành gang.",
+      "Gang thu được trực tiếp từ giai đoạn khử oxide sắt trong lò cao; thép thu được từ gang qua giai đoạn thổi oxygen giảm carbon và tạp chất."
+     ],
+     "dap_an": "D",
+     "loi_giai": "D đúng — gang là sản phẩm trực tiếp của giai đoạn khử oxide sắt trong lò cao; thép là sản phẩm của giai đoạn tiếp theo, thổi oxygen vào gang để giảm carbon và tạp chất."
+    },
+    {
+     "ma_cau": "K09060206020",
+     "loai": "trac_nghiem",
+     "de": "Kim loại chromium, nickel được thêm vào thép để tạo inox. Đây là quá trình gì, giống với quá trình tạo duy-ra ở điểm nào?",
+     "lua_chon": [
+      "Là quá trình pha trộn có chủ đích thêm nguyên tố khác vào kim loại cơ bản ($\\mathrm{Fe}$ với inox, $\\mathrm{Al}$ với duy-ra) để cải thiện tính chất — giống nhau về bản chất tạo hợp kim.",
+      "Là quá trình tách kim loại từ quặng, khác hẳn với quá trình tạo duy-ra.",
+      "Là quá trình điện phân nóng chảy, giống với quá trình tách nhôm.",
+      "Là quá trình thuỷ luyện, giống với quá trình tách bạc."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng — cả việc tạo inox (thêm $\\mathrm{Cr}$, $\\mathrm{Ni}$ vào thép) và tạo duy-ra (thêm $\\mathrm{Cu}$, $\\mathrm{Mn}$, $\\mathrm{Mg}$ vào nhôm) đều là quá trình pha trộn có chủ đích để cải thiện tính chất của kim loại cơ bản, cùng bản chất là tạo hợp kim."
+    },
+    {
+     "ma_cau": "K09060206023",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau, phát biểu nào đúng khi tổng kết mối liên hệ giữa phương pháp tách kim loại (Dạng 1, 2) và việc tạo hợp kim (Dạng 3)?",
+     "lua_chon": [
+      "Phương pháp tách kim loại chỉ áp dụng được sau khi đã có hợp kim.",
+      "Phương pháp tách kim loại và việc tạo hợp kim là một quá trình duy nhất, không thể tách rời.",
+      "Việc tạo hợp kim luôn xảy ra trước, sau đó mới tách được kim loại nguyên chất.",
+      "Phương pháp tách kim loại là bước thu được kim loại nguyên chất (hoặc gần nguyên chất) từ hợp chất trong quặng; việc tạo hợp kim là bước tiếp theo, pha trộn có chủ đích kim loại đó với nguyên tố khác để cải thiện tính chất."
+     ],
+     "dap_an": "D",
+     "loi_giai": "D đúng — hai bước có thứ tự và mục đích khác nhau: tách kim loại (từ hợp chất trong quặng ra kim loại) diễn ra trước, tạo hợp kim (pha trộn có chủ đích) diễn ra sau để cải thiện tính chất kim loại đã tách được."
+    },
+    {
+     "ma_cau": "K09060206022",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây SAI khi liên hệ giữa Dạng 3 (hợp kim) và Dạng 4 (sản xuất gang, thép) đã học?",
+     "lua_chon": [
+      "Gang là hợp kim có hàm lượng carbon từ 2% đến 5%, được tạo ra trực tiếp từ lò cao.",
+      "Thép là hợp kim có hàm lượng carbon dưới 2%, được tạo ra bằng cách thổi oxygen vào gang.",
+      "Kim loại cơ bản của cả gang và thép là carbon, không phải sắt.",
+      "Gang cứng, giòn hơn thép do hàm lượng carbon cao hơn."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C sai — kim loại cơ bản của cả gang và thép là sắt ($\\mathrm{Fe}$), carbon chỉ là nguyên tố thêm vào chứ không phải kim loại cơ bản."
+    },
+    {
+     "ma_cau": "K09060206018",
+     "loai": "trac_nghiem",
+     "de": "Duy-ra được tạo thành bằng cách nào, khác gì so với việc tách một kim loại từ quặng của nó?",
+     "lua_chon": [
+      "Duy-ra được tạo bằng cách pha trộn có chủ đích nhôm nguyên chất (đã tách từ quặng) với đồng, manganese, magnesium; khác với việc tách một kim loại đơn lẻ ra khỏi hợp chất của nó trong quặng.",
+      "Duy-ra được tách trực tiếp từ một loại quặng riêng chứa sẵn nhôm, đồng, manganese, magnesium.",
+      "Duy-ra được tạo thành từ phản ứng $\\mathrm{CO}$ khử oxide nhôm.",
+      "Duy-ra được tạo thành bằng phương pháp thuỷ luyện, dùng nhôm đẩy đồng ra khỏi dung dịch muối."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng — hợp kim (như duy-ra) được tạo thành bằng cách pha trộn có chủ đích các kim loại/nguyên tố đã có sẵn (ở đây là nhôm nguyên chất với đồng, manganese, magnesium), khác hẳn với việc tách một kim loại ra khỏi hợp chất của nó trong quặng."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01258",
+   "nhom_id": "KNB00506",
+   "thu_tu": 4,
+   "dang": "VẬN DỤNG THỰC TẾ TỔNG HỢP TOÀN CHUYÊN ĐỀ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060206029",
+     "loai": "trac_nghiem",
+     "de": "Cho các phát biểu sau, phát biểu nào đúng khi tổng kết toàn bộ chuyên đề để tách kim loại và hợp kim?",
+     "lua_chon": [
+      "Vị trí kim loại trong dãy hoạt động hoá học quyết định phương pháp tách phù hợp; kim loại sau khi tách có thể được dùng nguyên chất hoặc pha trộn thành hợp kim để cải thiện tính chất, ứng dụng theo yêu cầu thực tế.",
+      "Mọi kim loại đều được tách bằng cùng một phương pháp duy nhất, không phụ thuộc vị trí trong dãy hoạt động.",
+      "Hợp kim luôn được tạo ra trước khi tách kim loại nguyên chất.",
+      "Gang, thép, inox, đuy-ra là các kim loại nguyên chất, không phải hợp kim."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng — đây là mạch kiến thức xuyên suốt chuyên đề: vị trí trong dãy hoạt động hoá học quyết định phương pháp tách; kim loại tách được có thể dùng trực tiếp hoặc pha trộn thành hợp kim theo yêu cầu ứng dụng thực tế."
+    },
+    {
+     "ma_cau": "K09060206027",
+     "loai": "trac_nghiem",
+     "de": "Một xưởng cơ khí cần chọn vật liệu đúc chi tiết máy phức tạp, giá rẻ, không cần độ đàn hồi cao; đồng thời kim loại cơ bản của vật liệu đó được tách bằng phương pháp nhiệt luyện. Vật liệu phù hợp nhất là gì?",
+     "lua_chon": [
+      "Một hợp kim có kim loại cơ bản tách bằng điện phân nóng chảy.",
+      "Đuy-ra (kim loại cơ bản là nhôm, tách bằng điện phân nóng chảy).",
+      "Một kim loại nguyên chất tách bằng thủy luyện.",
+      "Gang (kim loại cơ bản là sắt, tách bằng nhiệt luyện)."
+     ],
+     "dap_an": "D",
+     "loi_giai": "D đúng — gang giá rẻ, dễ đúc, không cần đàn hồi cao, và kim loại cơ bản của gang là sắt, đúng loại kim loại được tách bằng phương pháp nhiệt luyện."
+    },
+    {
+     "ma_cau": "K09060206028",
+     "loai": "trac_nghiem",
+     "de": "Vì sao trong công nghiệp, người ta không sản xuất thép trực tiếp từ quặng sắt mà luôn phải qua giai đoạn trung gian là gang?",
+     "lua_chon": [
+      "Vì thép chỉ có thể sản xuất từ thép phế liệu, không thể từ quặng.",
+      "Vì quặng sắt không thể phản ứng trực tiếp với khí $\\mathrm{CO}$.",
+      "Vì phản ứng khử oxide sắt bằng $\\mathrm{CO}$ trong lò cao luôn cho ra sản phẩm chứa carbon hoà tan (gang); muốn có carbon thấp như thép cần thêm giai đoạn oxi hoá bớt carbon.",
+      "Vì đá vôi chỉ phản ứng được với gang, không phản ứng được với quặng sắt."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C đúng — sản phẩm trực tiếp của quá trình khử oxide sắt trong lò cao luôn là gang (do sắt nóng chảy hoà tan carbon dư từ than cốc); để có thép (carbon thấp hơn) cần thêm giai đoạn oxi hoá bớt carbon."
+    },
+    {
+     "ma_cau": "K09060206024",
+     "loai": "trac_nghiem",
+     "de": "Một nhà máy cần sản xuất vật liệu vừa nhẹ, vừa bền để chế tạo vỏ máy bay, đồng thời kim loại cơ bản của vật liệu đó phải được tách bằng phương pháp điện phân nóng chảy. Vật liệu và kim loại cơ bản phù hợp là gì?",
+     "lua_chon": [
+      "Thép, kim loại cơ bản là sắt.",
+      "Inox, kim loại cơ bản là sắt.",
+      "Đuy-ra, kim loại cơ bản là nhôm.",
+      "Gang, kim loại cơ bản là sắt."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C đúng — đuy-ra vừa nhẹ vừa bền, phù hợp chế tạo vỏ máy bay; kim loại cơ bản của đuy-ra là nhôm, được tách bằng điện phân nóng chảy $\\mathrm{Al_2O_3}$ — đúng yêu cầu đề bài."
+    },
+    {
+     "ma_cau": "K09060206030",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau, phát biểu nào SAI khi tổng kết toàn chuyên đề?",
+     "lua_chon": [
+      "Kim loại hoạt động càng mạnh thì càng khó tách bằng phương pháp nhiệt luyện thông thường.",
+      "Hợp kim luôn có tính chất giống hệt kim loại cơ bản, không thay đổi gì.",
+      "Gang và thép khác nhau chủ yếu ở hàm lượng cacbon.",
+      "Quá trình sản xuất thép từ gang là quá trình oxi hoá bớt cacbon và tạp chất."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B sai - hợp kim thường có tính chất khác biệt và vượt trội hơn (cứng hơn, bền hơn, chống ăn mòn tốt hơn) so với kim loại cơ bản nguyên chất, không phải giống hệt."
+    },
+    {
+     "ma_cau": "K09060206025",
+     "loai": "trac_nghiem",
+     "de": "Một kĩ sư luyện kim thực hiện lần lượt hai giai đoạn:\n(1) khử oxide sắt trong quặng bằng khí $\\mathrm{CO}$ trong lò cao;\n(2) thổi khí oxygen vào sản phẩm của giai đoạn (1) để giảm hàm lượng carbon.\nSản phẩm cuối cùng thu được là gì?",
+     "lua_chon": [
+      "Quặng sắt.",
+      "Gang.",
+      "Thép.",
+      "Đuy-ra."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C đúng — giai đoạn (1) cho ra gang, giai đoạn (2) (thổi oxygen giảm carbon) chuyển gang thành thép, nên sản phẩm cuối cùng là thép."
+    }
+   ]
+  }
+ ]
+}

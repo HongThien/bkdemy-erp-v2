@@ -1,0 +1,54 @@
+[
+ {
+  "ma_cau": "T107000000303",
+  "loai": "tu_luan",
+  "de": "Tính bằng cách hợp lí: $\\dfrac{5}{7}+\\dfrac{9}{11}.\\left(\\dfrac{-11}{18}\\right)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhân trước, cộng sau; khi nhân hai phân số có thừa số 11 và 9 xuất hiện ở cả tử lẫn mẫu nên rút gọn được.\n**Bước 1.** Thực hiện phép nhân trước vì phép nhân được tính trước phép cộng.\n**Bước 2.** Rút gọn các thừa số chung ở tử và mẫu của tích để được phân số tối giản.\n**Bước 3.** Quy đồng hai phân số còn lại về cùng mẫu rồi cộng.\n**Phần 2. Trình bày**\n$\\dfrac{5}{7}+\\dfrac{9}{11}.\\left(\\dfrac{-11}{18}\\right)$\n$=\\dfrac{5}{7}+\\dfrac{9.(-11)}{11.18}$\n$=\\dfrac{5}{7}+\\dfrac{-1}{2}$\n$=\\dfrac{10}{14}+\\dfrac{-7}{14}$\n$=\\dfrac{3}{14}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000085",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính (hợp lí nếu có thể): $(2,71-4,3)-(-4,3+2,71)$",
+  "dap_an": "0",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai ngoặc chứa cùng hai số hạng $2,71$ và $4,3$ nên phá ngoặc là thấy các số đối nhau triệt tiêu.\n**Bước 1.** Phá ngoặc thứ hai có dấu trừ đứng trước: đổi dấu mọi số hạng bên trong ngoặc.\n**Bước 2.** Dùng giao hoán và kết hợp để ghép mỗi số với số đối của nó.\n**Bước 3.** Cộng từng cặp số đối nhau rồi cộng các kết quả.\n**Phần 2. Trình bày**\n$(2,71-4,3)-(-4,3+2,71)$\n$=2,71-4,3+4,3-2,71$\n$=(2,71-2,71)+(-4,3+4,3)$\n$=0+0$\n$=0$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000153",
+  "loai": "trac_nghiem",
+  "de": "Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "$2^3.2^5=2^{15}$.",
+   "$2022^0=0$.",
+   "$(-3)^6:(-3)^2=(-3)^3$.",
+   "$(5^2)^3=5^6$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** kiểm từng phương án bằng đúng quy tắc luỹ thừa: nhân cùng cơ số cộng mũ, chia cùng cơ số trừ mũ, luỹ thừa của luỹ thừa nhân mũ, và $a^0=1$.\n**Bước 1.** Với phương án A và C: xác định phép nhân hay phép chia hai luỹ thừa cùng cơ số rồi cộng hoặc trừ số mũ để so sánh với vế phải.\n**Bước 2.** Với phương án B: nhớ rằng luỹ thừa bậc 0 của một số khác 0 luôn bằng một giá trị cố định.\n**Bước 3.** Với phương án D: luỹ thừa của một luỹ thừa thì giữ cơ số và nhân hai số mũ.\n**Chú ý:** dễ nhầm giữa \"cộng số mũ\" (phép nhân) và \"nhân số mũ\" (luỹ thừa của luỹ thừa).\n**Phần 2. Trình bày**\nA: $2^3.2^5=2^{3+5}=2^8\\ne2^{15}$ nên A sai.\nB: $2022^0=1\\ne0$ nên B sai.\nC: $(-3)^ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "07702202202061",
+  "loai": "tra_loi_ngan",
+  "de": "Tính: $\\sqrt{0,36}\\cdot\\sqrt{225}-\\sqrt{\\dfrac{9}{100}}$.",
+  "dap_an": "\\dfrac{87}{10}",
+  "loi_giai": "$\\sqrt{0,36}\\cdot\\sqrt{225}-\\sqrt{\\dfrac{9}{100}}$\n$=0,6\\cdot15-\\dfrac{3}{10}$\n$=9-\\dfrac{3}{10}$\n$=\\dfrac{87}{10}$.",
+  "nhan_cu": "Số vô tỉ. Căn bậc hai số học › Thực hiện phép tính liên quan đến Căn bậc hai"
+ },
+ {
+  "ma_cau": "T107000000025",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính (Tính hợp lí nếu có thể): $0,125.\\dfrac{17}{6}+\\dfrac{31}{6}.0,125$;",
+  "dap_an": "1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai tích có chung thừa số $0,125$ và hai phân số còn lại cùng mẫu 6, nên đặt thừa số chung ra ngoài.\n**Bước 1.** Nhận ra thừa số chung $0,125$ ở cả hai tích, một tích đặt trước và một tích đặt sau.\n**Bước 2.** Đặt thừa số chung ra ngoài ngoặc theo tính chất phân phối của phép nhân đối với phép cộng.\n**Bước 3.** Cộng hai phân số cùng mẫu trong ngoặc, đổi ra số nguyên rồi nhân với $0,125$.\n**Chú ý:** $0,125=\\dfrac{1}{8}$.\n**Phần 2. Trình bày**\n$0,125.\\dfrac{17}{6}+\\dfrac{31}{6}.0,125$\n$=0,125.\\left(\\dfrac{17}{6}+\\dfrac{31}{6}\\right)$\n$=0,125.\\dfrac{48}{6}$\n$=0,125.8$\n$=1$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000136",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính (hợp lí nếu có thể): $0,6+\\dfrac{2}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai số hạng chưa cùng dạng (một số thập phân, một phân số) nên phải đưa về cùng dạng phân số rồi mới cộng.\n**Bước 1.** Đổi số thập phân $0,6$ thành phân số rồi rút gọn về phân số tối giản.\n**Bước 2.** Quy đồng mẫu hai phân số $\\dfrac{3}{5}$ và $\\dfrac{2}{3}$ về mẫu chung nhỏ nhất.\n**Bước 3.** Cộng hai phân số cùng mẫu bằng cách cộng hai tử và giữ nguyên mẫu.\n**Phần 2. Trình bày**\n$0,6+\\dfrac{2}{3}$\n$=\\dfrac{3}{5}+\\dfrac{2}{3}$\n$=\\dfrac{9}{15}+\\dfrac{10}{15}$\n$=\\dfrac{19}{15}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

@@ -1,0 +1,78 @@
+[
+ {
+  "ma": "BT.07.130.01",
+  "so": "B1",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB < AC$. Tia phân giác của $\\widehat{BAC}$ cắt $BC$ tại $I$. Trên cạnh $AC$ lấy điểm $K$ sao cho $AK = AB$.",
+  "gia_thiet_them": [],
+  "cau_hoi": "Chứng minh $\\triangle ABI=\\triangle AKI$.",
+  "tien_de": []
+ },
+ {
+  "ma": "BT.07.130.02",
+  "so": "B2",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB < AC$. Tia phân giác của $\\widehat{BAC}$ cắt $BC$ tại $I$. Trên cạnh $AC$ lấy điểm $K$ sao cho $AK = AB$.",
+  "gia_thiet_them": [
+   "Gọi $O$ là giao điểm của $AI$ và $BK$."
+  ],
+  "cau_hoi": "Chứng minh $AI\\perp BK$ tại $O$.",
+  "tien_de": [
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $\\triangle ABI=\\triangle AKI$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.130.03",
+  "so": "B3",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB < AC$. Tia phân giác của $\\widehat{BAC}$ cắt $BC$ tại $I$. Trên cạnh $AC$ lấy điểm $K$ sao cho $AK = AB$.",
+  "gia_thiet_them": [
+   "Gọi $O$ là giao điểm của $AI$ và $BK$.",
+   "Gọi $E$ là giao điểm của $AB$ và $KI$."
+  ],
+  "cau_hoi": "Chứng minh $\\triangle BIE=\\triangle KIC$.",
+  "tien_de": [
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $\\triangle ABI=\\triangle AKI$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.130.04",
+  "so": "B4",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB < AC$. Tia phân giác của $\\widehat{BAC}$ cắt $BC$ tại $I$. Trên cạnh $AC$ lấy điểm $K$ sao cho $AK = AB$.",
+  "gia_thiet_them": [
+   "Gọi $O$ là giao điểm của $AI$ và $BK$.",
+   "Gọi $E$ là giao điểm của $AB$ và $KI$."
+  ],
+  "cau_hoi": "Chứng minh $BK\\parallel EC$.",
+  "tien_de": [
+   {
+    "so": "B2",
+    "phat_bieu": "Chứng minh $AI\\perp BK$ tại $O$."
+   },
+   {
+    "so": "B1",
+    "phat_bieu": "Chứng minh $\\triangle ABI=\\triangle AKI$."
+   }
+  ]
+ },
+ {
+  "ma": "BT.07.130.05",
+  "so": "B5",
+  "gia_thiet_goc": "Cho $\\triangle ABC$ có $AB < AC$. Tia phân giác của $\\widehat{BAC}$ cắt $BC$ tại $I$. Trên cạnh $AC$ lấy điểm $K$ sao cho $AK = AB$.",
+  "gia_thiet_them": [
+   "Gọi $O$ là giao điểm của $AI$ và $BK$.",
+   "Gọi $E$ là giao điểm của $AB$ và $KI$.",
+   "Gọi $H$ là trung điểm của $EC$."
+  ],
+  "cau_hoi": "Chứng minh ba điểm $A, I, H$ thẳng hàng.",
+  "tien_de": [
+   {
+    "so": "B3",
+    "phat_bieu": "Chứng minh $\\triangle BIE=\\triangle KIC$."
+   }
+  ]
+ }
+]

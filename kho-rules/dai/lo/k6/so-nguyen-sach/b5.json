@@ -1,0 +1,1350 @@
+[
+  {
+    "id": "B5-1A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01304",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép chia hết hai số nguyên, xét dấu thương",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $132:(-2)$",
+    "dap_an": "-66",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia hai số nguyên thì xác định dấu của thương trước, rồi chia hai số không dấu như chia số tự nhiên.\n\n**Bước 1.** Xét dấu hai số: số bị chia $132$ là số dương, số chia $-2$ là số âm, hai số khác dấu nên thương là số âm.\n\n**Bước 2.** Bỏ dấu của hai số rồi thực hiện phép chia hai số tự nhiên $132:2$.\n\n**Bước 3.** Đặt dấu của thương đã xác định ở Bước 1 trước kết quả vừa tìm được.\n\n**Chú ý:** thương của hai số nguyên cùng dấu là số dương, thương của hai số nguyên khác dấu là số âm.\n\n**Phần 2. Trình bày**\n\n$132:(-2)=-(132:2)=-66$",
+    "kiem": [
+      "(132)%(-2)===0&&(132)/(-2)===-66"
+    ],
+    "sach_dap_so": "-66",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-1A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01304",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép chia hết hai số nguyên, xét dấu thương",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $789:(-3)$",
+    "dap_an": "-263",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia hai số nguyên thì xác định dấu của thương trước, rồi chia hai số không dấu như chia số tự nhiên.\n\n**Bước 1.** Xét dấu hai số: số bị chia $789$ là số dương, số chia $-3$ là số âm, hai số khác dấu nên thương là số âm.\n\n**Bước 2.** Bỏ dấu của hai số rồi thực hiện phép chia hai số tự nhiên $789:3$.\n\n**Bước 3.** Đặt dấu của thương đã xác định ở Bước 1 trước kết quả vừa tìm được.\n\n**Chú ý:** thương của hai số nguyên cùng dấu là số dương, thương của hai số nguyên khác dấu là số âm.\n\n**Phần 2. Trình bày**\n\n$789:(-3)=-(789:3)=-263$",
+    "kiem": [
+      "(789)%(-3)===0&&(789)/(-3)===-263"
+    ],
+    "sach_dap_so": "263",
+    "ghi_chu": "LỆCH SÁCH — sách in đáp số 263 (thiếu dấu trừ). 789 và -3 khác dấu nên thương âm; kiểm: (-263).(-3)=789. Tin kết quả -263."
+  },
+  {
+    "id": "B5-1A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01304",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép chia hết hai số nguyên, xét dấu thương",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $-900:30$",
+    "dap_an": "-30",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia hai số nguyên thì xác định dấu của thương trước, rồi chia hai số không dấu như chia số tự nhiên.\n\n**Bước 1.** Xét dấu hai số: số bị chia $-900$ là số âm, số chia $30$ là số dương, hai số khác dấu nên thương là số âm.\n\n**Bước 2.** Bỏ dấu của hai số rồi thực hiện phép chia hai số tự nhiên $900:30$.\n\n**Bước 3.** Đặt dấu của thương đã xác định ở Bước 1 trước kết quả vừa tìm được.\n\n**Chú ý:** thương của hai số nguyên cùng dấu là số dương, thương của hai số nguyên khác dấu là số âm.\n\n**Phần 2. Trình bày**\n\n$-900:30=-(900:30)=-30$",
+    "kiem": [
+      "(-900)%(30)===0&&(-900)/(30)===-30"
+    ],
+    "sach_dap_so": "-30",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-1A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01304",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép chia hết hai số nguyên, xét dấu thương",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $-215:5$",
+    "dap_an": "-43",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia hai số nguyên thì xác định dấu của thương trước, rồi chia hai số không dấu như chia số tự nhiên.\n\n**Bước 1.** Xét dấu hai số: số bị chia $-215$ là số âm, số chia $5$ là số dương, hai số khác dấu nên thương là số âm.\n\n**Bước 2.** Bỏ dấu của hai số rồi thực hiện phép chia hai số tự nhiên $215:5$.\n\n**Bước 3.** Đặt dấu của thương đã xác định ở Bước 1 trước kết quả vừa tìm được.\n\n**Chú ý:** thương của hai số nguyên cùng dấu là số dương, thương của hai số nguyên khác dấu là số âm.\n\n**Phần 2. Trình bày**\n\n$-215:5=-(215:5)=-43$",
+    "kiem": [
+      "(-215)%(5)===0&&(-215)/(5)===-43"
+    ],
+    "sach_dap_so": "-43",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-1B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01304",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép chia hết hai số nguyên, xét dấu thương",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $256:(-2)$",
+    "dap_an": "-128",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia hai số nguyên thì xác định dấu của thương trước, rồi chia hai số không dấu như chia số tự nhiên.\n\n**Bước 1.** Xét dấu hai số: số bị chia $256$ là số dương, số chia $-2$ là số âm, hai số khác dấu nên thương là số âm.\n\n**Bước 2.** Bỏ dấu của hai số rồi thực hiện phép chia hai số tự nhiên $256:2$.\n\n**Bước 3.** Đặt dấu của thương đã xác định ở Bước 1 trước kết quả vừa tìm được.\n\n**Chú ý:** thương của hai số nguyên cùng dấu là số dương, thương của hai số nguyên khác dấu là số âm.\n\n**Phần 2. Trình bày**\n\n$256:(-2)=-(256:2)=-128$",
+    "kiem": [
+      "(256)%(-2)===0&&(256)/(-2)===-128"
+    ],
+    "sach_dap_so": "-128",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-1B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01304",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép chia hết hai số nguyên, xét dấu thương",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $198:(-9)$",
+    "dap_an": "-22",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia hai số nguyên thì xác định dấu của thương trước, rồi chia hai số không dấu như chia số tự nhiên.\n\n**Bước 1.** Xét dấu hai số: số bị chia $198$ là số dương, số chia $-9$ là số âm, hai số khác dấu nên thương là số âm.\n\n**Bước 2.** Bỏ dấu của hai số rồi thực hiện phép chia hai số tự nhiên $198:9$.\n\n**Bước 3.** Đặt dấu của thương đã xác định ở Bước 1 trước kết quả vừa tìm được.\n\n**Chú ý:** thương của hai số nguyên cùng dấu là số dương, thương của hai số nguyên khác dấu là số âm.\n\n**Phần 2. Trình bày**\n\n$198:(-9)=-(198:9)=-22$",
+    "kiem": [
+      "(198)%(-9)===0&&(198)/(-9)===-22"
+    ],
+    "sach_dap_so": "-22",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-1B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01304",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép chia hết hai số nguyên, xét dấu thương",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $1250:50$",
+    "dap_an": "25",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia hai số nguyên thì xác định dấu của thương trước, rồi chia hai số không dấu như chia số tự nhiên.\n\n**Bước 1.** Xét dấu hai số: số bị chia $1250$ là số dương, số chia $50$ là số dương, hai số cùng dấu nên thương là số dương.\n\n**Bước 2.** Bỏ dấu của hai số rồi thực hiện phép chia hai số tự nhiên $1250:50$.\n\n**Bước 3.** Đặt dấu của thương đã xác định ở Bước 1 trước kết quả vừa tìm được.\n\n**Chú ý:** thương của hai số nguyên cùng dấu là số dương, thương của hai số nguyên khác dấu là số âm.\n\n**Phần 2. Trình bày**\n\n$1250:50=25$",
+    "kiem": [
+      "(1250)%(50)===0&&(1250)/(50)===25"
+    ],
+    "sach_dap_so": "25",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-1B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01304",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép chia hết hai số nguyên, xét dấu thương",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $-896:(-14)$",
+    "dap_an": "64",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia hai số nguyên thì xác định dấu của thương trước, rồi chia hai số không dấu như chia số tự nhiên.\n\n**Bước 1.** Xét dấu hai số: số bị chia $-896$ là số âm, số chia $-14$ là số âm, hai số cùng dấu nên thương là số dương.\n\n**Bước 2.** Bỏ dấu của hai số rồi thực hiện phép chia hai số tự nhiên $896:14$.\n\n**Bước 3.** Đặt dấu của thương đã xác định ở Bước 1 trước kết quả vừa tìm được.\n\n**Chú ý:** thương của hai số nguyên cùng dấu là số dương, thương của hai số nguyên khác dấu là số âm.\n\n**Phần 2. Trình bày**\n\n$-896:(-14)=896:14=64$",
+    "kiem": [
+      "(-896)%(-14)===0&&(-896)/(-14)===64"
+    ],
+    "sach_dap_so": "64",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-2A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01308",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Phải phá ngoặc rồi nhóm mới thấy hai tích triệt tiêu, thừa số chung 13",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính nhanh (nếu có thể): $29.(19-13)-19.(29-13)$",
+    "dap_an": "-130",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai tích $29.(19-13)$ và $19.(29-13)$ dùng cùng các thừa số nhưng đổi chỗ nhau, nên sau khi phá ngoặc sẽ có hai số hạng triệt tiêu.\n\n**Bước 1.** Dùng tính chất phân phối của phép nhân đối với phép trừ để phá cả hai ngoặc, được bốn tích.\n\n**Bước 2.** Nhóm hai tích $29.19$ và $19.29$ lại với nhau, nhóm hai tích còn lại thành một nhóm khác vì chúng có chung thừa số $13$.\n\n**Bước 3.** Đặt thừa số chung $13$ ra ngoài ngoặc rồi tính hiệu trong ngoặc.\n\n**Bước 4.** Nhân $13$ với kết quả trong ngoặc, chú ý đây là tích của số dương với số âm.\n\n**Chú ý:** có thể tính ngay hai ngoặc $19-13$ và $29-13$ nhưng sẽ phải nhân các số lớn hơn; cách phá ngoặc rồi triệt tiêu gọn hơn.\n\n**Phần 2. Trình bày**\n\n$29.(19-13)-19.(29-13)$\n\n$=29.19-29.13-19.29+19.13$\n\n$=(29.19-19.29)+(19.13-29.13)$\n\n$=0+13.(19-29)$\n\n$=13.(-10)$\n\n$=-130$",
+    "kiem": [
+      "29*(19-13)-19*(29-13)===-130",
+      "29*19===19*29"
+    ],
+    "sach_dap_so": "-130",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-2A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01308",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Số hạng -31 ẩn thừa số chung 31 dạng 31.(-1)",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính nhanh (nếu có thể): $31.(-18)+31.(-81)-31$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số hạng cuối $-31$ viết được thành $31.(-1)$ nên cả ba số hạng đều có thừa số chung $31$.\n\n**Bước 1.** Viết số hạng cuối dưới dạng tích $31.(-1)$ để thấy cả ba số hạng cùng có thừa số $31$.\n\n**Bước 2.** Đặt thừa số chung $31$ ra ngoài ngoặc, trong ngoặc là tổng của ba số nguyên âm.\n\n**Bước 3.** Cộng ba số nguyên âm trong ngoặc: cộng các phần số tự nhiên của chúng rồi đặt dấu âm trước kết quả.\n\n**Bước 4.** Nhân $31$ với kết quả trong ngoặc, đây là tích của số dương với số âm.\n\n**Chú ý:** số hạng $-31$ ứng với hệ số $-1$ chứ không phải $1$ hay $0$ khi đặt thừa số chung.\n\n**Phần 2. Trình bày**\n\n$31.(-18)+31.(-81)-31$\n\n$=31.(-18)+31.(-81)+31.(-1)$\n\n$=31.[(-18)+(-81)+(-1)]$\n\n$=31.(-100)$\n\n$=-3100$",
+    "kiem": [
+      "31*(-18)+31*(-81)-31===-3100"
+    ],
+    "sach_dap_so": "-3100",
+    "ghi_chu": "Đáp số -3100 dài 5 ký tự, không tô vừa 4 ô nên để tự luận."
+  },
+  {
+    "id": "B5-2A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Biểu thức một cấp ngoặc: nhân trừ trong ngoặc rồi chia",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính nhanh (nếu có thể): $(7.3-3):(-6)$",
+    "dap_an": "-3",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thứ tự thực hiện: làm trong ngoặc trước (nhân rồi trừ), sau đó mới thực hiện phép chia.\n\n**Bước 1.** Trong ngoặc, thực hiện phép nhân $7.3$ trước phép trừ.\n\n**Bước 2.** Tính hiệu của hai số tự nhiên trong ngoặc để thu gọn ngoặc thành một số.\n\n**Bước 3.** Chia số vừa tính cho $-6$: xác định dấu của thương rồi chia hai số không dấu.\n\n**Chú ý:** bài này không có cách tính nhanh hơn, cứ làm đúng thứ tự thực hiện phép tính.\n\n**Phần 2. Trình bày**\n\n$(7.3-3):(-6)$\n\n$=(21-3):(-6)$\n\n$=18:(-6)$\n\n$=-3$",
+    "kiem": [
+      "(7*3-3)/(-6)===-3"
+    ],
+    "sach_dap_so": "-3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-2A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Biểu thức một cấp ngoặc vuông: nhân cộng rồi chia",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính nhanh (nếu có thể): $72:[(-6).2+4]$",
+    "dap_an": "-9",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm trong ngoặc vuông trước (nhân rồi cộng), sau đó mới chia 72 cho kết quả.\n\n**Bước 1.** Trong ngoặc vuông, tính tích $(-6).2$ trước: hai số khác dấu nên tích là số âm.\n\n**Bước 2.** Cộng số vừa tìm với $4$: hai số khác dấu nên lấy hiệu hai phần số tự nhiên rồi đặt dấu của số có phần số tự nhiên lớn hơn.\n\n**Bước 3.** Chia $72$ cho số trong ngoặc: số dương chia cho số âm cho thương âm.\n\n**Chú ý:** không được chia $72$ cho từng số hạng riêng lẻ trong ngoặc, phải tính xong ngoặc mới chia.\n\n**Phần 2. Trình bày**\n\n$72:[(-6).2+4]$\n\n$=72:[-12+4]$\n\n$=72:(-8)$\n\n$=-9$",
+    "kiem": [
+      "72/((-6)*2+4)===-9"
+    ],
+    "sach_dap_so": "-9",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-2B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01308",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Số hạng -12 ẩn thừa số chung dạng (-12).1",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính nhanh (nếu có thể): $(-12).47+(-12).52+(-12)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số hạng cuối $-12$ viết được thành $(-12).1$ nên cả ba số hạng cùng có thừa số chung $-12$.\n\n**Bước 1.** Viết số hạng cuối thành tích $(-12).1$ để cả ba số hạng đều có thừa số $-12$.\n\n**Bước 2.** Đặt thừa số chung $-12$ ra ngoài ngoặc, trong ngoặc là tổng ba số tự nhiên.\n\n**Bước 3.** Tính tổng trong ngoặc, chú ý các số hạng ghép lại thành một số tròn.\n\n**Bước 4.** Nhân $-12$ với kết quả trong ngoặc, tích của số âm với số dương là số âm.\n\n**Phần 2. Trình bày**\n\n$(-12).47+(-12).52+(-12)$\n\n$=(-12).47+(-12).52+(-12).1$\n\n$=(-12).(47+52+1)$\n\n$=(-12).100$\n\n$=-1200$",
+    "kiem": [
+      "(-12)*47+(-12)*52+(-12)===-1200"
+    ],
+    "sach_dap_so": "-1200",
+    "ghi_chu": "Đáp số -1200 dài 5 ký tự, không tô vừa 4 ô nên để tự luận."
+  },
+  {
+    "id": "B5-2B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01308",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tính hai tổng trong ngoặc mới thấy cùng bằng 45, rút thừa số chung",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính nhanh (nếu có thể): $13.(23+22)-3.(17+28)$",
+    "dap_an": "450",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai tổng trong ngoặc $23+22$ và $17+28$ bằng nhau nên hai tích có thừa số chung.\n\n**Bước 1.** Tính hai tổng trong ngoặc trước và so sánh kết quả của chúng.\n\n**Bước 2.** Thấy hai tổng bằng nhau, đặt tổng đó làm thừa số chung của hai tích.\n\n**Bước 3.** Tính hiệu $13-3$ trong ngoặc mới sau khi đặt thừa số chung.\n\n**Bước 4.** Nhân hai số còn lại để ra kết quả.\n\n**Phần 2. Trình bày**\n\n$13.(23+22)-3.(17+28)$\n\n$=13.45-3.45$\n\n$=(13-3).45$\n\n$=10.45$\n\n$=450$",
+    "kiem": [
+      "13*(23+22)-3*(17+28)===450"
+    ],
+    "sach_dap_so": "450",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-2B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Biểu thức không ngoặc: chia trước rồi cộng trừ",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính nhanh (nếu có thể): $18-10:(-2)-7$",
+    "dap_an": "16",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** không có ngoặc nên làm phép chia trước, rồi cộng trừ lần lượt từ trái sang phải.\n\n**Bước 1.** Thực hiện phép chia $10:(-2)$ trước: hai số khác dấu nên thương là số âm.\n\n**Bước 2.** Trừ cho một số âm tức là cộng với số đối của nó, đổi phép trừ thành phép cộng.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải để ra kết quả.\n\n**Chú ý:** $18-(-5)$ ra lớn hơn $18$, không phải nhỏ hơn.\n\n**Phần 2. Trình bày**\n\n$18-10:(-2)-7$\n\n$=18-(-5)-7$\n\n$=18+5-7$\n\n$=23-7$\n\n$=16$",
+    "kiem": [
+      "18-10/(-2)-7===16"
+    ],
+    "sach_dap_so": "16",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-2B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Biểu thức một cấp ngoặc vuông: nhân cộng rồi chia",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính nhanh (nếu có thể): $99:[(-7).2+5]$",
+    "dap_an": "-11",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm trong ngoặc vuông trước (nhân rồi cộng), sau đó mới chia 99 cho kết quả.\n\n**Bước 1.** Trong ngoặc vuông, tính tích $(-7).2$ trước: hai số khác dấu nên tích là số âm.\n\n**Bước 2.** Cộng số vừa tìm với $5$: hai số khác dấu nên lấy hiệu hai phần số tự nhiên rồi đặt dấu của số có phần số tự nhiên lớn hơn.\n\n**Bước 3.** Chia $99$ cho số trong ngoặc: số dương chia cho số âm cho thương âm.\n\n**Phần 2. Trình bày**\n\n$99:[(-7).2+5]$\n\n$=99:[-14+5]$\n\n$=99:(-9)$\n\n$=-11$",
+    "kiem": [
+      "99/((-7)*2+5)===-11"
+    ],
+    "sach_dap_so": "-11",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-3A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01324",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm sáu bội của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm sáu bội của: $4$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** các bội của $4$ là những số có dạng $4.n$ với $n$ là số nguyên, nên chỉ cần nhân $4$ với các số nguyên bất kì.\n\n**Bước 1.** Chọn sáu số nguyên $n$ đơn giản và khác nhau để nhân với $4$, ví dụ $0$ và các cặp số đối.\n\n**Bước 2.** Tính từng tích $4.n$; mỗi tích tìm được là một bội của $4$.\n\n**Bước 3.** Ghi lại đủ sáu bội khác nhau rồi kết luận.\n\n**Chú ý:** số $0$ là bội của mọi số nguyên khác $0$ nên có thể dùng làm một bội. Đề chỉ hỏi sáu bội nên có nhiều cách chọn đúng: chọn các số $n$ khác thì được sáu bội khác, vẫn đúng.\n\n**Phần 2. Trình bày**\n\nNhân $4$ lần lượt với $0;1;-1;2;-2;3$ ta được: $4.0=0$; $4.1=4$; $4.(-1)=-4$; $4.2=8$; $4.(-2)=-8$; $4.3=12$.\n\nVậy sáu bội của $4$ là $0;4;-4;8;-8;12$.",
+    "kiem": [
+      "[0,4,-4,8,-8,12].every(v=>v%(4)===0)&&new Set([0,4,-4,8,-8,12]).size===6"
+    ],
+    "sach_dap_so": "-4;-8;-12;0;4;8",
+    "ghi_chu": "Đề chỉ yêu cầu số lượng bội nên có nhiều đáp án đúng; lời giải chọn 0 và các bội nhỏ."
+  },
+  {
+    "id": "B5-3A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01324",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm sáu bội của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm sáu bội của: $-4$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** các bội của $-4$ là những số có dạng $(-4).n$ với $n$ là số nguyên, nên chỉ cần nhân $-4$ với các số nguyên bất kì.\n\n**Bước 1.** Chọn sáu số nguyên $n$ đơn giản và khác nhau để nhân với $-4$, ví dụ $0$ và các cặp số đối.\n\n**Bước 2.** Tính từng tích $(-4).n$; mỗi tích tìm được là một bội của $-4$.\n\n**Bước 3.** Ghi lại đủ sáu bội khác nhau rồi kết luận.\n\n**Chú ý:** số $0$ là bội của mọi số nguyên khác $0$ nên có thể dùng làm một bội. Đề chỉ hỏi sáu bội nên có nhiều cách chọn đúng: chọn các số $n$ khác thì được sáu bội khác, vẫn đúng.\n\n**Phần 2. Trình bày**\n\nNhân $-4$ lần lượt với $0;1;-1;2;-2;3$ ta được: $(-4).0=0$; $(-4).1=-4$; $(-4).(-1)=4$; $(-4).2=-8$; $(-4).(-2)=8$; $(-4).3=-12$.\n\nVậy sáu bội của $-4$ là $0;-4;4;-8;8;-12$.",
+    "kiem": [
+      "[0,-4,4,-8,8,-12].every(v=>v%(-4)===0)&&new Set([0,-4,4,-8,8,-12]).size===6"
+    ],
+    "sach_dap_so": "4;8;12;-4;-8;-12",
+    "ghi_chu": "Đề chỉ yêu cầu số lượng bội nên có nhiều đáp án đúng; lời giải chọn 0 và các bội nhỏ."
+  },
+  {
+    "id": "B5-3B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01324",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm sáu bội của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm sáu bội của: $7$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** các bội của $7$ là những số có dạng $7.n$ với $n$ là số nguyên, nên chỉ cần nhân $7$ với các số nguyên bất kì.\n\n**Bước 1.** Chọn sáu số nguyên $n$ đơn giản và khác nhau để nhân với $7$, ví dụ $0$ và các cặp số đối.\n\n**Bước 2.** Tính từng tích $7.n$; mỗi tích tìm được là một bội của $7$.\n\n**Bước 3.** Ghi lại đủ sáu bội khác nhau rồi kết luận.\n\n**Chú ý:** số $0$ là bội của mọi số nguyên khác $0$ nên có thể dùng làm một bội. Đề chỉ hỏi sáu bội nên có nhiều cách chọn đúng: chọn các số $n$ khác thì được sáu bội khác, vẫn đúng.\n\n**Phần 2. Trình bày**\n\nNhân $7$ lần lượt với $0;1;-1;2;-2;3$ ta được: $7.0=0$; $7.1=7$; $7.(-1)=-7$; $7.2=14$; $7.(-2)=-14$; $7.3=21$.\n\nVậy sáu bội của $7$ là $0;7;-7;14;-14;21$.",
+    "kiem": [
+      "[0,7,-7,14,-14,21].every(v=>v%(7)===0)&&new Set([0,7,-7,14,-14,21]).size===6"
+    ],
+    "sach_dap_so": "-14;-7;0;7;14;21",
+    "ghi_chu": "Đề chỉ yêu cầu số lượng bội nên có nhiều đáp án đúng; lời giải chọn 0 và các bội nhỏ."
+  },
+  {
+    "id": "B5-3B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01324",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm sáu bội của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm sáu bội của: $-7$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** các bội của $-7$ là những số có dạng $(-7).n$ với $n$ là số nguyên, nên chỉ cần nhân $-7$ với các số nguyên bất kì.\n\n**Bước 1.** Chọn sáu số nguyên $n$ đơn giản và khác nhau để nhân với $-7$, ví dụ $0$ và các cặp số đối.\n\n**Bước 2.** Tính từng tích $(-7).n$; mỗi tích tìm được là một bội của $-7$.\n\n**Bước 3.** Ghi lại đủ sáu bội khác nhau rồi kết luận.\n\n**Chú ý:** số $0$ là bội của mọi số nguyên khác $0$ nên có thể dùng làm một bội. Đề chỉ hỏi sáu bội nên có nhiều cách chọn đúng: chọn các số $n$ khác thì được sáu bội khác, vẫn đúng.\n\n**Phần 2. Trình bày**\n\nNhân $-7$ lần lượt với $0;1;-1;2;-2;3$ ta được: $(-7).0=0$; $(-7).1=-7$; $(-7).(-1)=7$; $(-7).2=-14$; $(-7).(-2)=14$; $(-7).3=-21$.\n\nVậy sáu bội của $-7$ là $0;-7;7;-14;14;-21$.",
+    "kiem": [
+      "[0,-7,7,-14,14,-21].every(v=>v%(-7)===0)&&new Set([0,-7,7,-14,14,-21]).size===6"
+    ],
+    "sach_dap_so": "14;7;0;-7;-14;-21",
+    "ghi_chu": "Đề chỉ yêu cầu số lượng bội nên có nhiều đáp án đúng; lời giải chọn 0 và các bội nhỏ."
+  },
+  {
+    "id": "B5-4A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01323",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm tất cả các ước của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm tất cả các ước của: $-5$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ước của một số nguyên gồm các ước dương của nó cùng với số đối của chúng.\n\n**Bước 1.** Số $-5$ là số âm; vì $5=b.q$ thì $-5=b.(-q)$ nên $-5$ có cùng các ước với số đối $5$ của nó.\n\n**Bước 2.** Tìm các ước dương của $5$ bằng cách chia $5$ lần lượt cho $1;2;3;\\dots$ và ghi lại những phép chia hết.\n\n**Bước 3.** Mỗi phép chia hết cho một cặp ước (số chia và thương), dừng khi số chia vượt quá thương.\n\n**Bước 4.** Với mỗi ước dương $b$, số đối $-b$ cũng là ước, nên viết thêm các số đối rồi gộp thành một tập hợp.\n\n**Chú ý:** đừng bỏ sót các ước âm: ước dương nào cũng có số đối cũng là ước.\n\n**Phần 2. Trình bày**\n\nCác ước của $-5$ chính là các ước của $5$.\n\nTa có $5=1.5$ nên các ước dương của $5$ là $1;5$.\n\nThêm các số đối của chúng, ta được $\\text{Ư}(-5)=\\{-5;-1;1;5\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:11},(_, i)=>i-5).filter(d=>d!==0&&(-5)%d===0))===JSON.stringify([-5,-1,1,5])"
+    ],
+    "sach_dap_so": "Ư(-5)={-5;-1;1;5}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-4A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01323",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm tất cả các ước của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm tất cả các ước của: $8$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ước của một số nguyên gồm các ước dương của nó cùng với số đối của chúng.\n\n**Bước 1.** Tìm các ước dương của $8$ bằng cách chia $8$ lần lượt cho $1;2;3;\\dots$ và ghi lại những phép chia hết.\n\n**Bước 2.** Mỗi phép chia hết cho một cặp ước (số chia và thương), dừng khi số chia vượt quá thương.\n\n**Bước 3.** Với mỗi ước dương $b$, số đối $-b$ cũng là ước, nên viết thêm các số đối rồi gộp thành một tập hợp.\n\n**Chú ý:** đừng bỏ sót các ước âm: ước dương nào cũng có số đối cũng là ước.\n\n**Phần 2. Trình bày**\n\nTa có $8=1.8=2.4$ nên các ước dương của $8$ là $1;2;4;8$.\n\nThêm các số đối của chúng, ta được $\\text{Ư}(8)=\\{-8;-4;-2;-1;1;2;4;8\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:17},(_, i)=>i-8).filter(d=>d!==0&&(8)%d===0))===JSON.stringify([-8,-4,-2,-1,1,2,4,8])"
+    ],
+    "sach_dap_so": "Ư(8)={-8;-4;-2;-1;1;2;4;8}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-4A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01323",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm tất cả các ước của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm tất cả các ước của: $121$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ước của một số nguyên gồm các ước dương của nó cùng với số đối của chúng.\n\n**Bước 1.** Tìm các ước dương của $121$ bằng cách chia $121$ lần lượt cho $1;2;3;\\dots$ và ghi lại những phép chia hết.\n\n**Bước 2.** Mỗi phép chia hết cho một cặp ước (số chia và thương), dừng khi số chia vượt quá thương.\n\n**Bước 3.** Với mỗi ước dương $b$, số đối $-b$ cũng là ước, nên viết thêm các số đối rồi gộp thành một tập hợp.\n\n**Chú ý:** đừng bỏ sót các ước âm: ước dương nào cũng có số đối cũng là ước.\n\n**Phần 2. Trình bày**\n\nTa có $121=1.121=11.11$ nên các ước dương của $121$ là $1;11;121$.\n\nThêm các số đối của chúng, ta được $\\text{Ư}(121)=\\{-121;-11;-1;1;11;121\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:243},(_, i)=>i-121).filter(d=>d!==0&&(121)%d===0))===JSON.stringify([-121,-11,-1,1,11,121])"
+    ],
+    "sach_dap_so": "Ư(121)={-121;-11;-1;1;11;121}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-4A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01323",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm tất cả các ước của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm tất cả các ước của: $-55$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ước của một số nguyên gồm các ước dương của nó cùng với số đối của chúng.\n\n**Bước 1.** Số $-55$ là số âm; vì $55=b.q$ thì $-55=b.(-q)$ nên $-55$ có cùng các ước với số đối $55$ của nó.\n\n**Bước 2.** Tìm các ước dương của $55$ bằng cách chia $55$ lần lượt cho $1;2;3;\\dots$ và ghi lại những phép chia hết.\n\n**Bước 3.** Mỗi phép chia hết cho một cặp ước (số chia và thương), dừng khi số chia vượt quá thương.\n\n**Bước 4.** Với mỗi ước dương $b$, số đối $-b$ cũng là ước, nên viết thêm các số đối rồi gộp thành một tập hợp.\n\n**Chú ý:** đừng bỏ sót các ước âm: ước dương nào cũng có số đối cũng là ước.\n\n**Phần 2. Trình bày**\n\nCác ước của $-55$ chính là các ước của $55$.\n\nTa có $55=1.55=5.11$ nên các ước dương của $55$ là $1;5;11;55$.\n\nThêm các số đối của chúng, ta được $\\text{Ư}(-55)=\\{-55;-11;-5;-1;1;5;11;55\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:111},(_, i)=>i-55).filter(d=>d!==0&&(-55)%d===0))===JSON.stringify([-55,-11,-5,-1,1,5,11,55])"
+    ],
+    "sach_dap_so": "Ư(-55)={-55;-11;-5;-1;1;5;11;-55}",
+    "ghi_chu": "Sách in -55 hai lần ở cuối, đúng phải là 55 (lỗi in); đáp số đúng: Ư(-55)={-55;-11;-5;-1;1;5;11;55}."
+  },
+  {
+    "id": "B5-4B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01323",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm tất cả các ước của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm tất cả các ước của: $-3$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ước của một số nguyên gồm các ước dương của nó cùng với số đối của chúng.\n\n**Bước 1.** Số $-3$ là số âm; vì $3=b.q$ thì $-3=b.(-q)$ nên $-3$ có cùng các ước với số đối $3$ của nó.\n\n**Bước 2.** Tìm các ước dương của $3$ bằng cách chia $3$ lần lượt cho $1;2;3;\\dots$ và ghi lại những phép chia hết.\n\n**Bước 3.** Mỗi phép chia hết cho một cặp ước (số chia và thương), dừng khi số chia vượt quá thương.\n\n**Bước 4.** Với mỗi ước dương $b$, số đối $-b$ cũng là ước, nên viết thêm các số đối rồi gộp thành một tập hợp.\n\n**Chú ý:** đừng bỏ sót các ước âm: ước dương nào cũng có số đối cũng là ước.\n\n**Phần 2. Trình bày**\n\nCác ước của $-3$ chính là các ước của $3$.\n\nTa có $3=1.3$ nên các ước dương của $3$ là $1;3$.\n\nThêm các số đối của chúng, ta được $\\text{Ư}(-3)=\\{-3;-1;1;3\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:7},(_, i)=>i-3).filter(d=>d!==0&&(-3)%d===0))===JSON.stringify([-3,-1,1,3])"
+    ],
+    "sach_dap_so": "HS tự làm",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-4B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01323",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm tất cả các ước của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm tất cả các ước của: $21$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ước của một số nguyên gồm các ước dương của nó cùng với số đối của chúng.\n\n**Bước 1.** Tìm các ước dương của $21$ bằng cách chia $21$ lần lượt cho $1;2;3;\\dots$ và ghi lại những phép chia hết.\n\n**Bước 2.** Mỗi phép chia hết cho một cặp ước (số chia và thương), dừng khi số chia vượt quá thương.\n\n**Bước 3.** Với mỗi ước dương $b$, số đối $-b$ cũng là ước, nên viết thêm các số đối rồi gộp thành một tập hợp.\n\n**Chú ý:** đừng bỏ sót các ước âm: ước dương nào cũng có số đối cũng là ước.\n\n**Phần 2. Trình bày**\n\nTa có $21=1.21=3.7$ nên các ước dương của $21$ là $1;3;7;21$.\n\nThêm các số đối của chúng, ta được $\\text{Ư}(21)=\\{-21;-7;-3;-1;1;3;7;21\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:43},(_, i)=>i-21).filter(d=>d!==0&&(21)%d===0))===JSON.stringify([-21,-7,-3,-1,1,3,7,21])"
+    ],
+    "sach_dap_so": "HS tự làm",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-4B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01323",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm tất cả các ước của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm tất cả các ước của: $-18$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ước của một số nguyên gồm các ước dương của nó cùng với số đối của chúng.\n\n**Bước 1.** Số $-18$ là số âm; vì $18=b.q$ thì $-18=b.(-q)$ nên $-18$ có cùng các ước với số đối $18$ của nó.\n\n**Bước 2.** Tìm các ước dương của $18$ bằng cách chia $18$ lần lượt cho $1;2;3;\\dots$ và ghi lại những phép chia hết.\n\n**Bước 3.** Mỗi phép chia hết cho một cặp ước (số chia và thương), dừng khi số chia vượt quá thương.\n\n**Bước 4.** Với mỗi ước dương $b$, số đối $-b$ cũng là ước, nên viết thêm các số đối rồi gộp thành một tập hợp.\n\n**Chú ý:** đừng bỏ sót các ước âm: ước dương nào cũng có số đối cũng là ước.\n\n**Phần 2. Trình bày**\n\nCác ước của $-18$ chính là các ước của $18$.\n\nTa có $18=1.18=2.9=3.6$ nên các ước dương của $18$ là $1;2;3;6;9;18$.\n\nThêm các số đối của chúng, ta được $\\text{Ư}(-18)=\\{-18;-9;-6;-3;-2;-1;1;2;3;6;9;18\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:37},(_, i)=>i-18).filter(d=>d!==0&&(-18)%d===0))===JSON.stringify([-18,-9,-6,-3,-2,-1,1,2,3,6,9,18])"
+    ],
+    "sach_dap_so": "HS tự làm",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-4B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01323",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm tất cả các ước của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm tất cả các ước của: $24$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ước của một số nguyên gồm các ước dương của nó cùng với số đối của chúng.\n\n**Bước 1.** Tìm các ước dương của $24$ bằng cách chia $24$ lần lượt cho $1;2;3;\\dots$ và ghi lại những phép chia hết.\n\n**Bước 2.** Mỗi phép chia hết cho một cặp ước (số chia và thương), dừng khi số chia vượt quá thương.\n\n**Bước 3.** Với mỗi ước dương $b$, số đối $-b$ cũng là ước, nên viết thêm các số đối rồi gộp thành một tập hợp.\n\n**Chú ý:** đừng bỏ sót các ước âm: ước dương nào cũng có số đối cũng là ước.\n\n**Phần 2. Trình bày**\n\nTa có $24=1.24=2.12=3.8=4.6$ nên các ước dương của $24$ là $1;2;3;4;6;8;12;24$.\n\nThêm các số đối của chúng, ta được $\\text{Ư}(24)=\\{-24;-12;-8;-6;-4;-3;-2;-1;1;2;3;4;6;8;12;24\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:49},(_, i)=>i-24).filter(d=>d!==0&&(24)%d===0))===JSON.stringify([-24,-12,-8,-6,-4,-3,-2,-1,1,2,3,4,6,8,12,24])"
+    ],
+    "sach_dap_so": "HS tự làm",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-5A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01324",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm ước chung của các số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các ước chung của $12$ và $-24$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ước chung của các số là những số vừa là ước của số này vừa là ước của số kia, nên liệt kê tập ước của từng số rồi chọn phần chung.\n\n**Bước 1.** Tìm tập hợp các ước của từng số đã cho, nhớ lấy cả ước dương lẫn số đối của chúng.\n\n**Bước 2.** So sánh các tập hợp vừa tìm, chọn những số có mặt ở tất cả các tập.\n\n**Bước 3.** Viết các số chọn được thành tập hợp ước chung trong dấu ngoặc nhọn.\n\n**Chú ý:** số âm và số đối của nó (ví dụ $-24$ và $24$) có cùng tập ước.\n\n**Phần 2. Trình bày**\n\n$\\text{Ư}(12)=\\{-12;-6;-4;-3;-2;-1;1;2;3;4;6;12\\}$\n\n$\\text{Ư}(-24)=\\{-24;-12;-8;-6;-4;-3;-2;-1;1;2;3;4;6;8;12;24\\}$\n\nChọn các số có mặt trong tất cả các tập trên.\n\nVậy $\\text{ƯC}(12;-24)=\\{-12;-6;-4;-3;-2;-1;1;2;3;4;6;12\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:25},(_, i)=>i-12).filter(d=>d!==0&&[12,-24].every(n=>n%d===0)))===JSON.stringify([-12,-6,-4,-3,-2,-1,1,2,3,4,6,12])"
+    ],
+    "sach_dap_so": "ƯC(12;-24)={±1;±2;±3;±4;±6;±12}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-5A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01324",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm ước chung của các số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các ước chung của $-3$, $9$ và $-18$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ước chung của các số là những số vừa là ước của số này vừa là ước của số kia, nên liệt kê tập ước của từng số rồi chọn phần chung.\n\n**Bước 1.** Tìm tập hợp các ước của từng số đã cho, nhớ lấy cả ước dương lẫn số đối của chúng.\n\n**Bước 2.** So sánh các tập hợp vừa tìm, chọn những số có mặt ở tất cả các tập.\n\n**Bước 3.** Viết các số chọn được thành tập hợp ước chung trong dấu ngoặc nhọn.\n\n**Chú ý:** số âm và số đối của nó (ví dụ $-18$ và $18$) có cùng tập ước.\n\n**Phần 2. Trình bày**\n\n$\\text{Ư}(-3)=\\{-3;-1;1;3\\}$\n\n$\\text{Ư}(9)=\\{-9;-3;-1;1;3;9\\}$\n\n$\\text{Ư}(-18)=\\{-18;-9;-6;-3;-2;-1;1;2;3;6;9;18\\}$\n\nChọn các số có mặt trong tất cả các tập trên.\n\nVậy $\\text{ƯC}(-3;9;-18)=\\{-3;-1;1;3\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:7},(_, i)=>i-3).filter(d=>d!==0&&[-3,9,-18].every(n=>n%d===0)))===JSON.stringify([-3,-1,1,3])"
+    ],
+    "sach_dap_so": "ƯC(-3;9;-18)={±1;±3}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-5B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01324",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm ước chung của các số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các ước chung của $-5$ và $35$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ước chung của các số là những số vừa là ước của số này vừa là ước của số kia, nên liệt kê tập ước của từng số rồi chọn phần chung.\n\n**Bước 1.** Tìm tập hợp các ước của từng số đã cho, nhớ lấy cả ước dương lẫn số đối của chúng.\n\n**Bước 2.** So sánh các tập hợp vừa tìm, chọn những số có mặt ở tất cả các tập.\n\n**Bước 3.** Viết các số chọn được thành tập hợp ước chung trong dấu ngoặc nhọn.\n\n**Chú ý:** số âm và số đối của nó (ví dụ $-5$ và $5$) có cùng tập ước.\n\n**Phần 2. Trình bày**\n\n$\\text{Ư}(-5)=\\{-5;-1;1;5\\}$\n\n$\\text{Ư}(35)=\\{-35;-7;-5;-1;1;5;7;35\\}$\n\nChọn các số có mặt trong tất cả các tập trên.\n\nVậy $\\text{ƯC}(-5;35)=\\{-5;-1;1;5\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:11},(_, i)=>i-5).filter(d=>d!==0&&[-5,35].every(n=>n%d===0)))===JSON.stringify([-5,-1,1,5])"
+    ],
+    "sach_dap_so": "ƯC(-5;35)={-5;-1;1;5}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-5B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01324",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm ước chung của các số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các ước chung của $-4$, $28$ và $-16$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ước chung của các số là những số vừa là ước của số này vừa là ước của số kia, nên liệt kê tập ước của từng số rồi chọn phần chung.\n\n**Bước 1.** Tìm tập hợp các ước của từng số đã cho, nhớ lấy cả ước dương lẫn số đối của chúng.\n\n**Bước 2.** So sánh các tập hợp vừa tìm, chọn những số có mặt ở tất cả các tập.\n\n**Bước 3.** Viết các số chọn được thành tập hợp ước chung trong dấu ngoặc nhọn.\n\n**Chú ý:** số âm và số đối của nó (ví dụ $-16$ và $16$) có cùng tập ước.\n\n**Phần 2. Trình bày**\n\n$\\text{Ư}(-4)=\\{-4;-2;-1;1;2;4\\}$\n\n$\\text{Ư}(28)=\\{-28;-14;-7;-4;-2;-1;1;2;4;7;14;28\\}$\n\n$\\text{Ư}(-16)=\\{-16;-8;-4;-2;-1;1;2;4;8;16\\}$\n\nChọn các số có mặt trong tất cả các tập trên.\n\nVậy $\\text{ƯC}(-4;28;-16)=\\{-4;-2;-1;1;2;4\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:9},(_, i)=>i-4).filter(d=>d!==0&&[-4,28,-16].every(n=>n%d===0)))===JSON.stringify([-4,-2,-1,1,2,4])"
+    ],
+    "sach_dap_so": "ƯC(-4;28;-26)={-2;-1;1;2}",
+    "ghi_chu": "LỆCH SÁCH — đề in -16, sách giải ra {-2;-1;1;2} (khớp với -26, không khớp -16). Với -16 thì ước chung lớn nhất là 4 nên đáp số {-4;-2;-1;1;2;4}; lời giải làm theo đúng đề in. Nghi đề hoặc đáp số sách in nhầm -16/-26."
+  },
+  {
+    "id": "B5-6A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01325",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "x là ước của số cho trước, có điều kiện về dấu",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x$, biết: $8\\vdots x$ và $x>0$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $8\\vdots x$ có nghĩa là $x$ là một ước của $8$; liệt kê các ước rồi lọc theo điều kiện của đề.\n\n**Bước 1.** Đổi cách nói: $8$ chia hết cho $x$ nghĩa là $x$ là ước của $8$.\n\n**Bước 2.** Liệt kê tất cả các ước của $8$, gồm các ước dương và số đối của chúng.\n\n**Bước 3.** Giữ lại những ước thoả điều kiện $x>0$ của đề rồi viết tập hợp kết quả.\n\n**Chú ý:** ước âm cũng là ước, đừng bỏ sót trước khi lọc theo điều kiện.\n\n**Phần 2. Trình bày**\n\nVì $8\\vdots x$ nên $x\\in\\text{Ư}(8)=\\{-8;-4;-2;-1;1;2;4;8\\}$.\n\nMà $x>0$ nên $x\\in\\{1;2;4;8\\}$.\n\nVậy $x\\in\\{1;2;4;8\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>(8)%x===0&&x!==0&&x>0))===JSON.stringify([1,2,4,8])"
+    ],
+    "sach_dap_so": "x∈{1;2;4;8}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-6A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01325",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "x là bội của số cho trước, nằm trong khoảng",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x$, biết: $x\\vdots 3$ và $-6<x<6$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $x\\vdots 3$ có nghĩa là $x$ là một bội của $3$; liệt kê các bội gần khoảng đề cho rồi chọn những bội nằm trong khoảng.\n\n**Bước 1.** Đổi cách nói: $x$ chia hết cho $3$ nghĩa là $x$ là bội của $3$.\n\n**Bước 2.** Liệt kê các bội của $3$ (gồm cả bội âm và số $0$) quanh khoảng cần xét.\n\n**Bước 3.** Chọn những bội thoả $-6<x<6$, chú ý dấu $<$ nên không lấy hai đầu mút.\n\n**Chú ý:** số $0$ là bội của mọi số nguyên khác $0$, nếu $0$ nằm trong khoảng thì phải lấy.\n\n**Phần 2. Trình bày**\n\nVì $x\\vdots 3$ nên $x$ là bội của $3$, $\\text{B}(3)=\\{\\dots;-9;-6;-3;0;3;6;9;\\dots\\}$.\n\nVì $-6<x<6$ nên $x\\in\\{-3;0;3\\}$.\n\nVậy $x\\in\\{-3;0;3\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>x%3===0&&x>-6&&x<6))===JSON.stringify([-3,0,3])"
+    ],
+    "sach_dap_so": "x∈{-3;0;3}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-6A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01325",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "x là ước chung của hai số cho trước",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x$, biết: $-8\\vdots x$ và $12\\vdots x$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $-8\\vdots x$ và $12\\vdots x$ cho biết $x$ vừa là ước của $-8$ vừa là ước của $12$, tức là ước chung của hai số.\n\n**Bước 1.** Đổi cách nói: $x$ là ước của $-8$ và $x$ cũng là ước của $12$.\n\n**Bước 2.** Liệt kê tập ước của từng số, nhớ lấy cả ước âm.\n\n**Bước 3.** Chọn các số có mặt ở cả hai tập rồi viết tập hợp kết quả.\n\n**Phần 2. Trình bày**\n\nVì $-8\\vdots x$ và $12\\vdots x$ nên $x\\in\\text{ƯC}(-8;12)$.\n\nTa có $\\text{Ư}(-8)=\\{-8;-4;-2;-1;1;2;4;8\\}$ và $\\text{Ư}(12)=\\{-12;-6;-4;-3;-2;-1;1;2;3;4;6;12\\}$.\n\nVậy $x\\in\\{-4;-2;-1;1;2;4\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>x!==0&&(-8)%x===0&&(12)%x===0))===JSON.stringify([-4,-2,-1,1,2,4])"
+    ],
+    "sach_dap_so": "x∈ƯC(-8;12)={±1;±2;±4}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-6A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01325",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "x là bội chung của hai số, nằm trong khoảng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm $x$, biết: $x\\vdots 4$, $x\\vdots(-6)$ và $-20<x<-10$",
+    "dap_an": "-12",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $x$ là bội của cả hai số nên liệt kê bội của một số trong khoảng đề cho, rồi giữ lại số cũng chia hết cho số còn lại.\n\n**Bước 1.** Đổi cách nói: $x$ là bội của $4$ và $x$ cũng là bội của $-6$.\n\n**Bước 2.** Liệt kê các bội của $4$ nằm trong khoảng $-20<x<-10$.\n\n**Bước 3.** Lần lượt chia từng bội vừa liệt kê cho $-6$ để xem số nào chia hết.\n\n**Chú ý:** $-6$ và $6$ có chung các bội nên dấu của $-6$ không làm đổi tập bội.\n\n**Phần 2. Trình bày**\n\nVì $x\\vdots 4$ và $x\\vdots (-6)$ nên $x$ là bội chung của $4$ và $-6$.\n\nCác bội của $4$ thoả $-20<x<-10$ là $-16;-12$.\n\nXét từng số: $-16$ không chia hết cho $-6$; $-12:(-6)=2$.\n\nVậy $x=-12$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>x%4===0&&x%-6===0&&x>-20&&x<-10))===JSON.stringify([-12])",
+      "[-12].length===1"
+    ],
+    "sach_dap_so": "x=-12",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-6B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01325",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "x là ước của số cho trước, có điều kiện về dấu",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x$, biết: $10\\vdots x$ và $x<0$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $10\\vdots x$ có nghĩa là $x$ là một ước của $10$; liệt kê các ước rồi lọc theo điều kiện của đề.\n\n**Bước 1.** Đổi cách nói: $10$ chia hết cho $x$ nghĩa là $x$ là ước của $10$.\n\n**Bước 2.** Liệt kê tất cả các ước của $10$, gồm các ước dương và số đối của chúng.\n\n**Bước 3.** Giữ lại những ước thoả điều kiện $x<0$ của đề rồi viết tập hợp kết quả.\n\n**Chú ý:** ước âm cũng là ước, đừng bỏ sót trước khi lọc theo điều kiện.\n\n**Phần 2. Trình bày**\n\nVì $10\\vdots x$ nên $x\\in\\text{Ư}(10)=\\{-10;-5;-2;-1;1;2;5;10\\}$.\n\nMà $x<0$ nên $x\\in\\{-10;-5;-2;-1\\}$.\n\nVậy $x\\in\\{-10;-5;-2;-1\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>(10)%x===0&&x!==0&&x<0))===JSON.stringify([-10,-5,-2,-1])"
+    ],
+    "sach_dap_so": "x∈{-10;-5;-2;-1}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-6B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01325",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "x là bội của số cho trước, nằm trong khoảng",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x$, biết: $x\\vdots 5$ và $-10<x<6$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $x\\vdots 5$ có nghĩa là $x$ là một bội của $5$; liệt kê các bội gần khoảng đề cho rồi chọn những bội nằm trong khoảng.\n\n**Bước 1.** Đổi cách nói: $x$ chia hết cho $5$ nghĩa là $x$ là bội của $5$.\n\n**Bước 2.** Liệt kê các bội của $5$ (gồm cả bội âm và số $0$) quanh khoảng cần xét.\n\n**Bước 3.** Chọn những bội thoả $-10<x<6$, chú ý dấu $<$ nên không lấy hai đầu mút.\n\n**Chú ý:** số $0$ là bội của mọi số nguyên khác $0$, nếu $0$ nằm trong khoảng thì phải lấy.\n\n**Phần 2. Trình bày**\n\nVì $x\\vdots 5$ nên $x$ là bội của $5$, $\\text{B}(5)=\\{\\dots;-15;-10;-5;0;5;10;15;\\dots\\}$.\n\nVì $-10<x<6$ nên $x\\in\\{-5;0;5\\}$.\n\nVậy $x\\in\\{-5;0;5\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>x%5===0&&x>-10&&x<6))===JSON.stringify([-5,0,5])"
+    ],
+    "sach_dap_so": "x∈{-5;0;5}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-6B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01325",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "x là ước chung của hai số cho trước",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x$, biết: $-9\\vdots x$ và $15\\vdots x$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $-9\\vdots x$ và $15\\vdots x$ cho biết $x$ vừa là ước của $-9$ vừa là ước của $15$, tức là ước chung của hai số.\n\n**Bước 1.** Đổi cách nói: $x$ là ước của $-9$ và $x$ cũng là ước của $15$.\n\n**Bước 2.** Liệt kê tập ước của từng số, nhớ lấy cả ước âm.\n\n**Bước 3.** Chọn các số có mặt ở cả hai tập rồi viết tập hợp kết quả.\n\n**Phần 2. Trình bày**\n\nVì $-9\\vdots x$ và $15\\vdots x$ nên $x\\in\\text{ƯC}(-9;15)$.\n\nTa có $\\text{Ư}(-9)=\\{-9;-3;-1;1;3;9\\}$ và $\\text{Ư}(15)=\\{-15;-5;-3;-1;1;3;5;15\\}$.\n\nVậy $x\\in\\{-3;-1;1;3\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>x!==0&&(-9)%x===0&&(15)%x===0))===JSON.stringify([-3,-1,1,3])"
+    ],
+    "sach_dap_so": "x∈ƯC(-9;15)={±1;±3}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-6B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01325",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "x là bội chung của hai số, nằm trong khoảng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm $x$, biết: $x\\vdots(-9)$, $x\\vdots 12$ và $20<x<50$",
+    "dap_an": "36",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $x$ là bội của cả hai số nên liệt kê bội của một số trong khoảng đề cho, rồi giữ lại số cũng chia hết cho số còn lại.\n\n**Bước 1.** Đổi cách nói: $x$ là bội của $12$ và $x$ cũng là bội của $-9$.\n\n**Bước 2.** Liệt kê các bội của $12$ nằm trong khoảng $20<x<50$.\n\n**Bước 3.** Lần lượt chia từng bội vừa liệt kê cho $-9$ để xem số nào chia hết.\n\n**Chú ý:** $-9$ và $9$ có chung các bội nên dấu của $-9$ không làm đổi tập bội.\n\n**Phần 2. Trình bày**\n\nVì $x\\vdots 12$ và $x\\vdots (-9)$ nên $x$ là bội chung của $12$ và $-9$.\n\nCác bội của $12$ thoả $20<x<50$ là $24;36;48$.\n\nXét từng số: $24$ không chia hết cho $-9$; $36:(-9)=-4$; $48$ không chia hết cho $-9$.\n\nVậy $x=36$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>x%12===0&&x%-9===0&&x>20&&x<50))===JSON.stringify([36])",
+      "[36].length===1"
+    ],
+    "sach_dap_so": "x=36",
+    "ghi_chu": "Đề in \"x⋮(+12)\" — đã bỏ dấu + khi chép đề."
+  },
+  {
+    "id": "B5-7A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01326",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Mẫu là x (b=0): hợp 01325 và 01326, lấy dạng sau",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $6\\vdots x$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $6\\vdots x$ cho biết $x$ là một ước của $6$; liệt kê các ước rồi tìm $x$.\n\n**Bước 1.** Đổi cách nói: $6$ chia hết cho $x$ nghĩa là $x$ là một ước của $6$.\n\n**Bước 2.** Liệt kê tất cả ước của $6$, gồm các ước dương và số đối của chúng.\n\n**Bước 3.** Mỗi ước tìm được chính là một giá trị của $x$; viết tất cả vào một tập hợp.\n\n**Chú ý:** ước của một số không bao giờ bằng $0$ nên không có giá trị $x=0$.\n\n**Phần 2. Trình bày**\n\nVì $6\\vdots x$ nên $x\\in\\text{Ư}(6)=\\{-6;-3;-2;-1;1;2;3;6\\}$.\n\nVậy $x\\in\\{-6;-3;-2;-1;1;2;3;6\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x;return d!==0&&(6)%d===0}))===JSON.stringify([-6,-3,-2,-1,1,2,3,6])"
+    ],
+    "sach_dap_so": "x∈Ư(6)={±1;±2;±3;±6}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-7A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01326",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Số nguyên cố định chia hết cho biểu thức chứa x",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $3\\vdots (x+1)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $3\\vdots (x+1)$ cho biết $x+1$ là một ước của $3$; liệt kê các ước rồi tìm $x$.\n\n**Bước 1.** Đổi cách nói: $3$ chia hết cho $(x+1)$ nghĩa là $x+1$ là một ước của $3$.\n\n**Bước 2.** Liệt kê tất cả ước của $3$, gồm các ước dương và số đối của chúng.\n\n**Bước 3.** Mỗi giá trị của $x+1$ cho một giá trị của $x$: $x$ là số hạng chưa biết nên lấy giá trị đó trừ $1$.\n\n**Chú ý:** đừng bỏ sót ước âm vì mỗi ước âm cũng cho một giá trị của $x$.\n\n**Phần 2. Trình bày**\n\nVì $3\\vdots (x+1)$ nên $x+1\\in\\text{Ư}(3)=\\{-3;-1;1;3\\}$.\n\nVới $x+1=-3$ thì $x=-4$; với $x+1=-1$ thì $x=-2$; với $x+1=1$ thì $x=0$; với $x+1=3$ thì $x=2$.\n\nVậy $x\\in\\{-4;-2;0;2\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x+1;return d!==0&&(3)%d===0}))===JSON.stringify([-4,-2,0,2])"
+    ],
+    "sach_dap_so": "x∈{-4;-2;0;2}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-7A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01326",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Số nguyên cố định chia hết cho biểu thức chứa x",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $11\\vdots (x-2)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $11\\vdots (x-2)$ cho biết $x-2$ là một ước của $11$; liệt kê các ước rồi tìm $x$.\n\n**Bước 1.** Đổi cách nói: $11$ chia hết cho $(x-2)$ nghĩa là $x-2$ là một ước của $11$.\n\n**Bước 2.** Liệt kê tất cả ước của $11$, gồm các ước dương và số đối của chúng.\n\n**Bước 3.** Mỗi giá trị của $x-2$ cho một giá trị của $x$: $x$ là số bị trừ nên lấy giá trị đó cộng $2$.\n\n**Chú ý:** đừng bỏ sót ước âm vì mỗi ước âm cũng cho một giá trị của $x$.\n\n**Phần 2. Trình bày**\n\nVì $11\\vdots (x-2)$ nên $x-2\\in\\text{Ư}(11)=\\{-11;-1;1;11\\}$.\n\nVới $x-2=-11$ thì $x=-9$; với $x-2=-1$ thì $x=1$; với $x-2=1$ thì $x=3$; với $x-2=11$ thì $x=13$.\n\nVậy $x\\in\\{-9;1;3;13\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x-2;return d!==0&&(11)%d===0}))===JSON.stringify([-9,1,3,13])"
+    ],
+    "sach_dap_so": "x∈{-9;1;3;13}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-7B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01326",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Mẫu là x (b=0): hợp 01325 và 01326, lấy dạng sau",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $4\\vdots x$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $4\\vdots x$ cho biết $x$ là một ước của $4$; liệt kê các ước rồi tìm $x$.\n\n**Bước 1.** Đổi cách nói: $4$ chia hết cho $x$ nghĩa là $x$ là một ước của $4$.\n\n**Bước 2.** Liệt kê tất cả ước của $4$, gồm các ước dương và số đối của chúng.\n\n**Bước 3.** Mỗi ước tìm được chính là một giá trị của $x$; viết tất cả vào một tập hợp.\n\n**Chú ý:** ước của một số không bao giờ bằng $0$ nên không có giá trị $x=0$.\n\n**Phần 2. Trình bày**\n\nVì $4\\vdots x$ nên $x\\in\\text{Ư}(4)=\\{-4;-2;-1;1;2;4\\}$.\n\nVậy $x\\in\\{-4;-2;-1;1;2;4\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x;return d!==0&&(4)%d===0}))===JSON.stringify([-4,-2,-1,1,2,4])"
+    ],
+    "sach_dap_so": "x∈Ư(4)={±1;±2;±4}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-7B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01326",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Số nguyên cố định chia hết cho biểu thức chứa x",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $5\\vdots (x+1)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $5\\vdots (x+1)$ cho biết $x+1$ là một ước của $5$; liệt kê các ước rồi tìm $x$.\n\n**Bước 1.** Đổi cách nói: $5$ chia hết cho $(x+1)$ nghĩa là $x+1$ là một ước của $5$.\n\n**Bước 2.** Liệt kê tất cả ước của $5$, gồm các ước dương và số đối của chúng.\n\n**Bước 3.** Mỗi giá trị của $x+1$ cho một giá trị của $x$: $x$ là số hạng chưa biết nên lấy giá trị đó trừ $1$.\n\n**Chú ý:** đừng bỏ sót ước âm vì mỗi ước âm cũng cho một giá trị của $x$.\n\n**Phần 2. Trình bày**\n\nVì $5\\vdots (x+1)$ nên $x+1\\in\\text{Ư}(5)=\\{-5;-1;1;5\\}$.\n\nVới $x+1=-5$ thì $x=-6$; với $x+1=-1$ thì $x=-2$; với $x+1=1$ thì $x=0$; với $x+1=5$ thì $x=4$.\n\nVậy $x\\in\\{-6;-2;0;4\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x+1;return d!==0&&(5)%d===0}))===JSON.stringify([-6,-2,0,4])"
+    ],
+    "sach_dap_so": "x∈{-6;-2;0;4}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-7B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01326",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Số nguyên cố định chia hết cho biểu thức chứa x",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $13\\vdots (x-2)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $13\\vdots (x-2)$ cho biết $x-2$ là một ước của $13$; liệt kê các ước rồi tìm $x$.\n\n**Bước 1.** Đổi cách nói: $13$ chia hết cho $(x-2)$ nghĩa là $x-2$ là một ước của $13$.\n\n**Bước 2.** Liệt kê tất cả ước của $13$, gồm các ước dương và số đối của chúng.\n\n**Bước 3.** Mỗi giá trị của $x-2$ cho một giá trị của $x$: $x$ là số bị trừ nên lấy giá trị đó cộng $2$.\n\n**Chú ý:** đừng bỏ sót ước âm vì mỗi ước âm cũng cho một giá trị của $x$.\n\n**Phần 2. Trình bày**\n\nVì $13\\vdots (x-2)$ nên $x-2\\in\\text{Ư}(13)=\\{-13;-1;1;13\\}$.\n\nVới $x-2=-13$ thì $x=-11$; với $x-2=-1$ thì $x=1$; với $x-2=1$ thì $x=3$; với $x-2=13$ thì $x=15$.\n\nVậy $x\\in\\{-11;1;3;15\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x-2;return d!==0&&(13)%d===0}))===JSON.stringify([-11,1,3,15])"
+    ],
+    "sach_dap_so": "x∈{-11;1;3;15}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-8A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01327",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử có hệ số của biến chia hết cho hệ số ở mẫu",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $x+6\\vdots x$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm mất $x$ ở số bị chia bằng cách trừ đi một bội của $x$ có cùng phần chứa $x$, đưa bài về một số cụ thể chia hết cho $x$.\n\n**Bước 1.** Chọn một bội của $x$ có phần chứa $x$ giống $x+6$: đó là $x$, vì $x$ chia hết cho chính nó.\n\n**Bước 2.** Hai số $x+6$ và $x$ cùng chia hết cho $x$ nên hiệu của chúng cũng chia hết cho $x$; tính hiệu để $x$ biến mất.\n\n**Bước 3.** Số vừa tìm được chia hết cho $x$ nên $x$ là một ước của số đó; liệt kê mọi ước, nhớ cả ước âm.\n\n**Phần 2. Trình bày**\n\nVì $x+6\\vdots x$ và $x\\vdots x$ nên $[(x+6)-x]\\vdots x$, tức là $6\\vdots x$.\n\nSuy ra $x\\in\\text{Ư}(6)=\\{-6;-3;-2;-1;1;2;3;6\\}$.\n\nVậy $x\\in\\{-6;-3;-2;-1;1;2;3;6\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x;return d!==0&&(x+6)%d===0}))===JSON.stringify([-6,-3,-2,-1,1,2,3,6])"
+    ],
+    "sach_dap_so": "x∈Ư(6)={±1;±2;±3;±6}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-8A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01327",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử có hệ số của biến chia hết cho hệ số ở mẫu",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $x+8\\vdots (x+1)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm mất $x$ ở số bị chia bằng cách trừ đi một bội của $(x+1)$ có cùng phần chứa $x$, đưa bài về một số cụ thể chia hết cho $(x+1)$.\n\n**Bước 1.** Chọn một bội của $(x+1)$ có phần chứa $x$ giống $x+8$: đó là $(x+1)$, vì $x+1$ chia hết cho chính nó.\n\n**Bước 2.** Hai số $x+8$ và $(x+1)$ cùng chia hết cho $(x+1)$ nên hiệu của chúng cũng chia hết cho $(x+1)$; tính hiệu để $x$ biến mất.\n\n**Bước 3.** Số vừa tìm được chia hết cho $(x+1)$ nên $x+1$ là một ước của số đó; liệt kê mọi ước, nhớ cả ước âm.\n\n**Bước 4.** Cho $x+1$ bằng từng ước vừa liệt kê rồi tìm $x$, chú ý chỉ nhận $x$ là số nguyên.\n\n**Phần 2. Trình bày**\n\nVì $x+8\\vdots (x+1)$ và $(x+1)\\vdots (x+1)$ nên $[(x+8)-(x+1)]\\vdots (x+1)$, tức là $7\\vdots (x+1)$.\n\nSuy ra $x+1\\in\\text{Ư}(7)=\\{-7;-1;1;7\\}$.\n\nVới $x+1=-7$ thì $x=-8$; với $x+1=-1$ thì $x=-2$; với $x+1=1$ thì $x=0$; với $x+1=7$ thì $x=6$.\n\nVậy $x\\in\\{-8;-2;0;6\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x+1;return d!==0&&(x+8)%d===0}))===JSON.stringify([-8,-2,0,6])"
+    ],
+    "sach_dap_so": "x∈{-8;-2;0;6}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-8A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01327",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử có hệ số của biến chia hết cho hệ số ở mẫu",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $2x-12\\vdots (x-2)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm mất $x$ ở số bị chia bằng cách trừ đi một bội của $(x-2)$ có cùng phần chứa $x$, đưa bài về một số cụ thể chia hết cho $(x-2)$.\n\n**Bước 1.** Chọn một bội của $(x-2)$ có phần chứa $x$ giống $2x-12$: đó là $2.(x-2)$, vì $2.(x-2)$ là tích có thừa số $x-2$.\n\n**Bước 2.** Hai số $2x-12$ và $2.(x-2)$ cùng chia hết cho $(x-2)$ nên hiệu của chúng cũng chia hết cho $(x-2)$; tính hiệu để $x$ biến mất.\n\n**Bước 3.** Số vừa tìm được chia hết cho $(x-2)$ nên $x-2$ là một ước của số đó; liệt kê mọi ước, nhớ cả ước âm.\n\n**Bước 4.** Cho $x-2$ bằng từng ước vừa liệt kê rồi tìm $x$, chú ý chỉ nhận $x$ là số nguyên.\n\n**Phần 2. Trình bày**\n\nVì $2x-12\\vdots (x-2)$ và $2.(x-2)\\vdots (x-2)$ nên $[(2x-12)-2.(x-2)]\\vdots (x-2)$, tức là $-8\\vdots (x-2)$.\n\nSuy ra $x-2\\in\\text{Ư}(-8)=\\{-8;-4;-2;-1;1;2;4;8\\}$.\n\nVới $x-2=-8$ thì $x=-6$; với $x-2=-4$ thì $x=-2$; với $x-2=-2$ thì $x=0$; với $x-2=-1$ thì $x=1$; với $x-2=1$ thì $x=3$; với $x-2=2$ thì $x=4$; với $x-2=4$ thì $x=6$; với $x-2=8$ thì $x=10$.\n\nVậy $x\\in\\{-6;-2;0;1;3;4;6;10\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x-2;return d!==0&&(2*x-12)%d===0}))===JSON.stringify([-6,-2,0,1,3,4,6,10])"
+    ],
+    "sach_dap_so": "x∈{-6;-2;0;1;3;4;6;10}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-8B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01327",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử có hệ số của biến chia hết cho hệ số ở mẫu",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $x+3\\vdots x$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm mất $x$ ở số bị chia bằng cách trừ đi một bội của $x$ có cùng phần chứa $x$, đưa bài về một số cụ thể chia hết cho $x$.\n\n**Bước 1.** Chọn một bội của $x$ có phần chứa $x$ giống $x+3$: đó là $x$, vì $x$ chia hết cho chính nó.\n\n**Bước 2.** Hai số $x+3$ và $x$ cùng chia hết cho $x$ nên hiệu của chúng cũng chia hết cho $x$; tính hiệu để $x$ biến mất.\n\n**Bước 3.** Số vừa tìm được chia hết cho $x$ nên $x$ là một ước của số đó; liệt kê mọi ước, nhớ cả ước âm.\n\n**Phần 2. Trình bày**\n\nVì $x+3\\vdots x$ và $x\\vdots x$ nên $[(x+3)-x]\\vdots x$, tức là $3\\vdots x$.\n\nSuy ra $x\\in\\text{Ư}(3)=\\{-3;-1;1;3\\}$.\n\nVậy $x\\in\\{-3;-1;1;3\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x;return d!==0&&(x+3)%d===0}))===JSON.stringify([-3,-1,1,3])"
+    ],
+    "sach_dap_so": "x∈Ư(3)={±1;±3}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-8B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01327",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử có hệ số của biến chia hết cho hệ số ở mẫu",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $x+7\\vdots (x+3)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm mất $x$ ở số bị chia bằng cách trừ đi một bội của $(x+3)$ có cùng phần chứa $x$, đưa bài về một số cụ thể chia hết cho $(x+3)$.\n\n**Bước 1.** Chọn một bội của $(x+3)$ có phần chứa $x$ giống $x+7$: đó là $(x+3)$, vì $x+3$ chia hết cho chính nó.\n\n**Bước 2.** Hai số $x+7$ và $(x+3)$ cùng chia hết cho $(x+3)$ nên hiệu của chúng cũng chia hết cho $(x+3)$; tính hiệu để $x$ biến mất.\n\n**Bước 3.** Số vừa tìm được chia hết cho $(x+3)$ nên $x+3$ là một ước của số đó; liệt kê mọi ước, nhớ cả ước âm.\n\n**Bước 4.** Cho $x+3$ bằng từng ước vừa liệt kê rồi tìm $x$, chú ý chỉ nhận $x$ là số nguyên.\n\n**Phần 2. Trình bày**\n\nVì $x+7\\vdots (x+3)$ và $(x+3)\\vdots (x+3)$ nên $[(x+7)-(x+3)]\\vdots (x+3)$, tức là $4\\vdots (x+3)$.\n\nSuy ra $x+3\\in\\text{Ư}(4)=\\{-4;-2;-1;1;2;4\\}$.\n\nVới $x+3=-4$ thì $x=-7$; với $x+3=-2$ thì $x=-5$; với $x+3=-1$ thì $x=-4$; với $x+3=1$ thì $x=-2$; với $x+3=2$ thì $x=-1$; với $x+3=4$ thì $x=1$.\n\nVậy $x\\in\\{-7;-5;-4;-2;-1;1\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x+3;return d!==0&&(x+7)%d===0}))===JSON.stringify([-7,-5,-4,-2,-1,1])"
+    ],
+    "sach_dap_so": "x∈{-7;-5;-4;-2;-1;1}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-8B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01327",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử có hệ số của biến chia hết cho hệ số ở mẫu",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $3x-5\\vdots (x-1)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm mất $x$ ở số bị chia bằng cách trừ đi một bội của $(x-1)$ có cùng phần chứa $x$, đưa bài về một số cụ thể chia hết cho $(x-1)$.\n\n**Bước 1.** Chọn một bội của $(x-1)$ có phần chứa $x$ giống $3x-5$: đó là $3.(x-1)$, vì $3.(x-1)$ là tích có thừa số $x-1$.\n\n**Bước 2.** Hai số $3x-5$ và $3.(x-1)$ cùng chia hết cho $(x-1)$ nên hiệu của chúng cũng chia hết cho $(x-1)$; tính hiệu để $x$ biến mất.\n\n**Bước 3.** Số vừa tìm được chia hết cho $(x-1)$ nên $x-1$ là một ước của số đó; liệt kê mọi ước, nhớ cả ước âm.\n\n**Bước 4.** Cho $x-1$ bằng từng ước vừa liệt kê rồi tìm $x$, chú ý chỉ nhận $x$ là số nguyên.\n\n**Phần 2. Trình bày**\n\nVì $3x-5\\vdots (x-1)$ và $3.(x-1)\\vdots (x-1)$ nên $[(3x-5)-3.(x-1)]\\vdots (x-1)$, tức là $-2\\vdots (x-1)$.\n\nSuy ra $x-1\\in\\text{Ư}(-2)=\\{-2;-1;1;2\\}$.\n\nVới $x-1=-2$ thì $x=-1$; với $x-1=-1$ thì $x=0$; với $x-1=1$ thì $x=2$; với $x-1=2$ thì $x=3$.\n\nVậy $x\\in\\{-1;0;2;3\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x-1;return d!==0&&(3*x-5)%d===0}))===JSON.stringify([-1,0,2,3])"
+    ],
+    "sach_dap_so": "x∈{-1;0;2;3}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-9A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01327",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử có hệ số của biến chia hết cho hệ số ở mẫu",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $n\\in\\mathbb{Z}$ sao cho: $2n+4\\vdots n$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm mất $n$ ở số bị chia bằng cách trừ đi một bội của $n$ có cùng phần chứa $n$, đưa bài về một số cụ thể chia hết cho $n$.\n\n**Bước 1.** Chọn một bội của $n$ có phần chứa $n$ giống $2n+4$: đó là $2n$, vì $2n$ là tích có thừa số $n$.\n\n**Bước 2.** Hai số $2n+4$ và $2n$ cùng chia hết cho $n$ nên hiệu của chúng cũng chia hết cho $n$; tính hiệu để $n$ biến mất.\n\n**Bước 3.** Số vừa tìm được chia hết cho $n$ nên $n$ là một ước của số đó; liệt kê mọi ước, nhớ cả ước âm.\n\n**Phần 2. Trình bày**\n\nVì $2n+4\\vdots n$ và $2n\\vdots n$ nên $[(2n+4)-2n]\\vdots n$, tức là $4\\vdots n$.\n\nSuy ra $n\\in\\text{Ư}(4)=\\{-4;-2;-1;1;2;4\\}$.\n\nVậy $n\\in\\{-4;-2;-1;1;2;4\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(n=>{const d=n;return d!==0&&(2*n+4)%d===0}))===JSON.stringify([-4,-2,-1,1,2,4])"
+    ],
+    "sach_dap_so": "n∈Ư(4)",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-9A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01327",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử có hệ số của biến chia hết cho hệ số ở mẫu",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $n\\in\\mathbb{Z}$ sao cho: $4n+7\\vdots (2n+1)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm mất $n$ ở số bị chia bằng cách trừ đi một bội của $(2n+1)$ có cùng phần chứa $n$, đưa bài về một số cụ thể chia hết cho $(2n+1)$.\n\n**Bước 1.** Chọn một bội của $(2n+1)$ có phần chứa $n$ giống $4n+7$: đó là $2.(2n+1)$, vì $2.(2n+1)$ là tích có thừa số $2n+1$.\n\n**Bước 2.** Hai số $4n+7$ và $2.(2n+1)$ cùng chia hết cho $(2n+1)$ nên hiệu của chúng cũng chia hết cho $(2n+1)$; tính hiệu để $n$ biến mất.\n\n**Bước 3.** Số vừa tìm được chia hết cho $(2n+1)$ nên $2n+1$ là một ước của số đó; liệt kê mọi ước, nhớ cả ước âm.\n\n**Bước 4.** Cho $2n+1$ bằng từng ước vừa liệt kê rồi tìm $n$, chú ý chỉ nhận $n$ là số nguyên.\n\n**Chú ý:** $2n+1$ luôn là số lẻ nên các ước lẻ của số đó đều cho $n$ nguyên; ước chẵn (nếu có) phải loại.\n\n**Phần 2. Trình bày**\n\nVì $4n+7\\vdots (2n+1)$ và $2.(2n+1)\\vdots (2n+1)$ nên $[(4n+7)-2.(2n+1)]\\vdots (2n+1)$, tức là $5\\vdots (2n+1)$.\n\nSuy ra $2n+1\\in\\text{Ư}(5)=\\{-5;-1;1;5\\}$.\n\nVới $2n+1=-5$ thì $2n=-6$ nên $n=-3$; với $2n+1=-1$ thì $2n=-2$ nên $n=-1$; với $2n+1=1$ thì $2n=0$ nên $n=0$; với $2n+1=5$ thì $2n=4$ nên $n=2$.\n\nVậy $n\\in\\{-3;-1;0;2\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(n=>{const d=2*n+1;return d!==0&&(4*n+7)%d===0}))===JSON.stringify([-3,-1,0,2])"
+    ],
+    "sach_dap_so": "n∈{-3;-1;0;2}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-9A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01329",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử bậc hai, mẫu bậc nhất",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $n\\in\\mathbb{Z}$ sao cho: $n^2+2n-5\\vdots (n+2)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm mất $n$ ở số bị chia bằng cách trừ đi một bội của $(n+2)$ có cùng phần chứa $n$, đưa bài về một số cụ thể chia hết cho $(n+2)$.\n\n**Bước 1.** Chọn một bội của $(n+2)$ có phần chứa $n$ giống $n^2+2n-5$: đó là $n.(n+2)$, vì $n.(n+2)$ là tích có thừa số $n+2$.\n\n**Bước 2.** Hai số $n^2+2n-5$ và $n.(n+2)$ cùng chia hết cho $(n+2)$ nên hiệu của chúng cũng chia hết cho $(n+2)$; tính hiệu để $n$ biến mất.\n\n**Bước 3.** Số vừa tìm được chia hết cho $(n+2)$ nên $n+2$ là một ước của số đó; liệt kê mọi ước, nhớ cả ước âm.\n\n**Bước 4.** Cho $n+2$ bằng từng ước vừa liệt kê rồi tìm $n$, chú ý chỉ nhận $n$ là số nguyên.\n\n**Phần 2. Trình bày**\n\nVì $n^2+2n-5\\vdots (n+2)$ và $n.(n+2)\\vdots (n+2)$ nên $[(n^2+2n-5)-n.(n+2)]\\vdots (n+2)$, tức là $-5\\vdots (n+2)$.\n\nSuy ra $n+2\\in\\text{Ư}(-5)=\\{-5;-1;1;5\\}$.\n\nVới $n+2=-5$ thì $n=-7$; với $n+2=-1$ thì $n=-3$; với $n+2=1$ thì $n=-1$; với $n+2=5$ thì $n=3$.\n\nVậy $n\\in\\{-7;-3;-1;3\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(n=>{const d=n+2;return d!==0&&(n*n+2*n-5)%d===0}))===JSON.stringify([-7,-3,-1,3])"
+    ],
+    "sach_dap_so": "(sách in lời giải của bài 9B-c: n∈{-14;-4;-2;8})",
+    "ghi_chu": "LỆCH SÁCH — hướng dẫn của sách ở 9A-c giải bài n²+3n-11 ⋮ n+3 (đúng là đề 9B-c), không phải n²+2n-5 ⋮ n+2. Giải theo đề in: n∈{-7;-3;-1;3}."
+  },
+  {
+    "id": "B5-9B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01327",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử có hệ số của biến chia hết cho hệ số ở mẫu",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $n\\in\\mathbb{Z}$ sao cho: $3n+2\\vdots n$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm mất $n$ ở số bị chia bằng cách trừ đi một bội của $n$ có cùng phần chứa $n$, đưa bài về một số cụ thể chia hết cho $n$.\n\n**Bước 1.** Chọn một bội của $n$ có phần chứa $n$ giống $3n+2$: đó là $3n$, vì $3n$ là tích có thừa số $n$.\n\n**Bước 2.** Hai số $3n+2$ và $3n$ cùng chia hết cho $n$ nên hiệu của chúng cũng chia hết cho $n$; tính hiệu để $n$ biến mất.\n\n**Bước 3.** Số vừa tìm được chia hết cho $n$ nên $n$ là một ước của số đó; liệt kê mọi ước, nhớ cả ước âm.\n\n**Phần 2. Trình bày**\n\nVì $3n+2\\vdots n$ và $3n\\vdots n$ nên $[(3n+2)-3n]\\vdots n$, tức là $2\\vdots n$.\n\nSuy ra $n\\in\\text{Ư}(2)=\\{-2;-1;1;2\\}$.\n\nVậy $n\\in\\{-2;-1;1;2\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(n=>{const d=n;return d!==0&&(3*n+2)%d===0}))===JSON.stringify([-2,-1,1,2])"
+    ],
+    "sach_dap_so": "n∈Ư(2)={±1;±2}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-9B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01327",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử có hệ số của biến chia hết cho hệ số ở mẫu",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $n\\in\\mathbb{Z}$ sao cho: $4n+7\\vdots (2n+1)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm mất $n$ ở số bị chia bằng cách trừ đi một bội của $(2n+1)$ có cùng phần chứa $n$, đưa bài về một số cụ thể chia hết cho $(2n+1)$.\n\n**Bước 1.** Chọn một bội của $(2n+1)$ có phần chứa $n$ giống $4n+7$: đó là $2.(2n+1)$, vì $2.(2n+1)$ là tích có thừa số $2n+1$.\n\n**Bước 2.** Hai số $4n+7$ và $2.(2n+1)$ cùng chia hết cho $(2n+1)$ nên hiệu của chúng cũng chia hết cho $(2n+1)$; tính hiệu để $n$ biến mất.\n\n**Bước 3.** Số vừa tìm được chia hết cho $(2n+1)$ nên $2n+1$ là một ước của số đó; liệt kê mọi ước, nhớ cả ước âm.\n\n**Bước 4.** Cho $2n+1$ bằng từng ước vừa liệt kê rồi tìm $n$, chú ý chỉ nhận $n$ là số nguyên.\n\n**Chú ý:** $2n+1$ luôn là số lẻ nên các ước lẻ của số đó đều cho $n$ nguyên; ước chẵn (nếu có) phải loại.\n\n**Phần 2. Trình bày**\n\nVì $4n+7\\vdots (2n+1)$ và $2.(2n+1)\\vdots (2n+1)$ nên $[(4n+7)-2.(2n+1)]\\vdots (2n+1)$, tức là $5\\vdots (2n+1)$.\n\nSuy ra $2n+1\\in\\text{Ư}(5)=\\{-5;-1;1;5\\}$.\n\nVới $2n+1=-5$ thì $2n=-6$ nên $n=-3$; với $2n+1=-1$ thì $2n=-2$ nên $n=-1$; với $2n+1=1$ thì $2n=0$ nên $n=0$; với $2n+1=5$ thì $2n=4$ nên $n=2$.\n\nVậy $n\\in\\{-3;-1;0;2\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(n=>{const d=2*n+1;return d!==0&&(4*n+7)%d===0}))===JSON.stringify([-3,-1,0,2])"
+    ],
+    "sach_dap_so": "n∈{-3;-1;0;2}",
+    "ghi_chu": "Đề 9B-b trùng hệt đề 9A-b trong sách (4n+7 ⋮ 2n+1), có thể sách in lặp."
+  },
+  {
+    "id": "B5-9B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01329",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử bậc hai, mẫu bậc nhất",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $n\\in\\mathbb{Z}$ sao cho: $n^2+3n-11\\vdots (n+3)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm mất $n$ ở số bị chia bằng cách trừ đi một bội của $(n+3)$ có cùng phần chứa $n$, đưa bài về một số cụ thể chia hết cho $(n+3)$.\n\n**Bước 1.** Chọn một bội của $(n+3)$ có phần chứa $n$ giống $n^2+3n-11$: đó là $n.(n+3)$, vì $n.(n+3)$ là tích có thừa số $n+3$.\n\n**Bước 2.** Hai số $n^2+3n-11$ và $n.(n+3)$ cùng chia hết cho $(n+3)$ nên hiệu của chúng cũng chia hết cho $(n+3)$; tính hiệu để $n$ biến mất.\n\n**Bước 3.** Số vừa tìm được chia hết cho $(n+3)$ nên $n+3$ là một ước của số đó; liệt kê mọi ước, nhớ cả ước âm.\n\n**Bước 4.** Cho $n+3$ bằng từng ước vừa liệt kê rồi tìm $n$, chú ý chỉ nhận $n$ là số nguyên.\n\n**Phần 2. Trình bày**\n\nVì $n^2+3n-11\\vdots (n+3)$ và $n.(n+3)\\vdots (n+3)$ nên $[(n^2+3n-11)-n.(n+3)]\\vdots (n+3)$, tức là $-11\\vdots (n+3)$.\n\nSuy ra $n+3\\in\\text{Ư}(-11)=\\{-11;-1;1;11\\}$.\n\nVới $n+3=-11$ thì $n=-14$; với $n+3=-1$ thì $n=-4$; với $n+3=1$ thì $n=-2$; với $n+3=11$ thì $n=8$.\n\nVậy $n\\in\\{-14;-4;-2;8\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(n=>{const d=n+3;return d!==0&&(n*n+3*n-11)%d===0}))===JSON.stringify([-14,-4,-2,8])"
+    ],
+    "sach_dap_so": "n∈{-14;-4;-2;1}",
+    "ghi_chu": "LỆCH SÁCH — sách in n∈{-14;-4;-2;1} nhưng n=1 sai (1+3-11=-7 không chia hết cho 4); n+3=11 cho n=8. Tin kết quả {-14;-4;-2;8}."
+  },
+  {
+    "id": "B5-10-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01304",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép chia hết hai số nguyên, xét dấu thương",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $30:(-15)$",
+    "dap_an": "-2",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia hai số nguyên thì xác định dấu của thương trước, rồi chia hai số không dấu như chia số tự nhiên.\n\n**Bước 1.** Xét dấu hai số: số bị chia $30$ là số dương, số chia $-15$ là số âm, hai số khác dấu nên thương là số âm.\n\n**Bước 2.** Bỏ dấu của hai số rồi thực hiện phép chia hai số tự nhiên $30:15$.\n\n**Bước 3.** Đặt dấu của thương đã xác định ở Bước 1 trước kết quả vừa tìm được.\n\n**Chú ý:** thương của hai số nguyên cùng dấu là số dương, thương của hai số nguyên khác dấu là số âm.\n\n**Phần 2. Trình bày**\n\n$30:(-15)=-(30:15)=-2$",
+    "kiem": [
+      "(30)%(-15)===0&&(30)/(-15)===-2"
+    ],
+    "sach_dap_so": "-2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-10-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01304",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép chia hết hai số nguyên, xét dấu thương",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $-280:7$",
+    "dap_an": "-40",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia hai số nguyên thì xác định dấu của thương trước, rồi chia hai số không dấu như chia số tự nhiên.\n\n**Bước 1.** Xét dấu hai số: số bị chia $-280$ là số âm, số chia $7$ là số dương, hai số khác dấu nên thương là số âm.\n\n**Bước 2.** Bỏ dấu của hai số rồi thực hiện phép chia hai số tự nhiên $280:7$.\n\n**Bước 3.** Đặt dấu của thương đã xác định ở Bước 1 trước kết quả vừa tìm được.\n\n**Chú ý:** thương của hai số nguyên cùng dấu là số dương, thương của hai số nguyên khác dấu là số âm.\n\n**Phần 2. Trình bày**\n\n$-280:7=-(280:7)=-40$",
+    "kiem": [
+      "(-280)%(7)===0&&(-280)/(7)===-40"
+    ],
+    "sach_dap_so": "-40",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-10-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01304",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép chia hết hai số nguyên, xét dấu thương",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $-125:(-5)$",
+    "dap_an": "25",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia hai số nguyên thì xác định dấu của thương trước, rồi chia hai số không dấu như chia số tự nhiên.\n\n**Bước 1.** Xét dấu hai số: số bị chia $-125$ là số âm, số chia $-5$ là số âm, hai số cùng dấu nên thương là số dương.\n\n**Bước 2.** Bỏ dấu của hai số rồi thực hiện phép chia hai số tự nhiên $125:5$.\n\n**Bước 3.** Đặt dấu của thương đã xác định ở Bước 1 trước kết quả vừa tìm được.\n\n**Chú ý:** thương của hai số nguyên cùng dấu là số dương, thương của hai số nguyên khác dấu là số âm.\n\n**Phần 2. Trình bày**\n\n$-125:(-5)=125:5=25$",
+    "kiem": [
+      "(-125)%(-5)===0&&(-125)/(-5)===25"
+    ],
+    "sach_dap_so": "25",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-10-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Biểu thức một cấp ngoặc: nhân chia, cộng trừ",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $(6.8-10:5)+3.(-7)$",
+    "dap_an": "25",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm trong ngoặc trước (nhân chia rồi trừ), sau đó tính tích ngoài ngoặc và cộng lại.\n\n**Bước 1.** Trong ngoặc, thực hiện phép nhân $6.8$ và phép chia $10:5$ trước phép trừ.\n\n**Bước 2.** Tính hiệu trong ngoặc, rồi tính tích $3.(-7)$ ở ngoài ngoặc: hai số khác dấu nên tích là số âm.\n\n**Bước 3.** Cộng số dương với số âm vừa tìm: lấy hiệu hai phần số tự nhiên rồi đặt dấu của số có phần số tự nhiên lớn hơn.\n\n**Phần 2. Trình bày**\n\n$(6.8-10:5)+3.(-7)$\n\n$=(48-2)+(-21)$\n\n$=46+(-21)$\n\n$=25$",
+    "kiem": [
+      "(6*8-10/5)+3*(-7)===25"
+    ],
+    "sach_dap_so": "25",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-10-e",
+    "vai": "luyen",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Biểu thức không ngoặc: nhân chia trước, cộng trừ sau",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $(-4).15+27:(-3)-25$",
+    "dap_an": "-94",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** không có ngoặc lớn nên làm nhân chia trước, rồi cộng trừ lần lượt từ trái sang phải.\n\n**Bước 1.** Tính tích $(-4).15$ và thương $27:(-3)$: mỗi phép tính đều có hai số khác dấu nên kết quả là số âm.\n\n**Bước 2.** Cộng hai số âm vừa tìm: cộng các phần số tự nhiên rồi đặt dấu âm.\n\n**Bước 3.** Trừ tiếp $25$, tức là cộng thêm một số âm nữa.\n\n**Phần 2. Trình bày**\n\n$(-4).15+27:(-3)-25$\n\n$=-60+(-9)-25$\n\n$=-69-25$\n\n$=-94$",
+    "kiem": [
+      "(-4)*15+27/(-3)-25===-94"
+    ],
+    "sach_dap_so": "-94",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-10-f",
+    "vai": "luyen",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một cấp ngoặc vuông: nhân chia, cộng, rồi trừ cả ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $12-[(-4).3+18:(-6)]$",
+    "dap_an": "27",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm trong ngoặc vuông trước (nhân chia rồi cộng), sau đó trừ cả kết quả ngoặc khỏi 12.\n\n**Bước 1.** Trong ngoặc vuông, tính tích $(-4).3$ và thương $18:(-6)$: cả hai đều là số âm.\n\n**Bước 2.** Cộng hai số âm trong ngoặc để thu gọn ngoặc vuông thành một số.\n\n**Bước 3.** Thực hiện $12$ trừ số trong ngoặc: trừ một số âm tức là cộng với số đối của nó.\n\n**Chú ý:** dấu trừ trước ngoặc vuông chỉ được xử lý sau khi ngoặc đã tính xong thành một số.\n\n**Phần 2. Trình bày**\n\n$12-[(-4).3+18:(-6)]$\n\n$=12-[-12+(-3)]$\n\n$=12-(-15)$\n\n$=12+15$\n\n$=27$",
+    "kiem": [
+      "12-((-4)*3+18/(-6))===27"
+    ],
+    "sach_dap_so": "27",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-11-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01323",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm tất cả các ước của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm tất cả các ước của: $-5$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ước của một số nguyên gồm các ước dương của nó cùng với số đối của chúng.\n\n**Bước 1.** Số $-5$ là số âm; vì $5=b.q$ thì $-5=b.(-q)$ nên $-5$ có cùng các ước với số đối $5$ của nó.\n\n**Bước 2.** Tìm các ước dương của $5$ bằng cách chia $5$ lần lượt cho $1;2;3;\\dots$ và ghi lại những phép chia hết.\n\n**Bước 3.** Mỗi phép chia hết cho một cặp ước (số chia và thương), dừng khi số chia vượt quá thương.\n\n**Bước 4.** Với mỗi ước dương $b$, số đối $-b$ cũng là ước, nên viết thêm các số đối rồi gộp thành một tập hợp.\n\n**Chú ý:** đừng bỏ sót các ước âm: ước dương nào cũng có số đối cũng là ước.\n\n**Phần 2. Trình bày**\n\nCác ước của $-5$ chính là các ước của $5$.\n\nTa có $5=1.5$ nên các ước dương của $5$ là $1;5$.\n\nThêm các số đối của chúng, ta được $\\text{Ư}(-5)=\\{-5;-1;1;5\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:11},(_, i)=>i-5).filter(d=>d!==0&&(-5)%d===0))===JSON.stringify([-5,-1,1,5])"
+    ],
+    "sach_dap_so": "Ư(-5)={±1;±5}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-11-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01323",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm tất cả các ước của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm tất cả các ước của: $-30$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ước của một số nguyên gồm các ước dương của nó cùng với số đối của chúng.\n\n**Bước 1.** Số $-30$ là số âm; vì $30=b.q$ thì $-30=b.(-q)$ nên $-30$ có cùng các ước với số đối $30$ của nó.\n\n**Bước 2.** Tìm các ước dương của $30$ bằng cách chia $30$ lần lượt cho $1;2;3;\\dots$ và ghi lại những phép chia hết.\n\n**Bước 3.** Mỗi phép chia hết cho một cặp ước (số chia và thương), dừng khi số chia vượt quá thương.\n\n**Bước 4.** Với mỗi ước dương $b$, số đối $-b$ cũng là ước, nên viết thêm các số đối rồi gộp thành một tập hợp.\n\n**Chú ý:** đừng bỏ sót các ước âm: ước dương nào cũng có số đối cũng là ước.\n\n**Phần 2. Trình bày**\n\nCác ước của $-30$ chính là các ước của $30$.\n\nTa có $30=1.30=2.15=3.10=5.6$ nên các ước dương của $30$ là $1;2;3;5;6;10;15;30$.\n\nThêm các số đối của chúng, ta được $\\text{Ư}(-30)=\\{-30;-15;-10;-6;-5;-3;-2;-1;1;2;3;5;6;10;15;30\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:61},(_, i)=>i-30).filter(d=>d!==0&&(-30)%d===0))===JSON.stringify([-30,-15,-10,-6,-5,-3,-2,-1,1,2,3,5,6,10,15,30])"
+    ],
+    "sach_dap_so": "Ư(-30)={±1;±2;±3;±5;±6;±10;±15;±30}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-11-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01323",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm tất cả các ước của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm tất cả các ước của: $19$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ước của một số nguyên gồm các ước dương của nó cùng với số đối của chúng.\n\n**Bước 1.** Tìm các ước dương của $19$ bằng cách chia $19$ lần lượt cho $1;2;3;\\dots$ và ghi lại những phép chia hết.\n\n**Bước 2.** Mỗi phép chia hết cho một cặp ước (số chia và thương), dừng khi số chia vượt quá thương.\n\n**Bước 3.** Với mỗi ước dương $b$, số đối $-b$ cũng là ước, nên viết thêm các số đối rồi gộp thành một tập hợp.\n\n**Chú ý:** đừng bỏ sót các ước âm: ước dương nào cũng có số đối cũng là ước.\n\n**Phần 2. Trình bày**\n\nTa có $19=1.19$ nên các ước dương của $19$ là $1;19$.\n\nThêm các số đối của chúng, ta được $\\text{Ư}(19)=\\{-19;-1;1;19\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:39},(_, i)=>i-19).filter(d=>d!==0&&(19)%d===0))===JSON.stringify([-19,-1,1,19])"
+    ],
+    "sach_dap_so": "Ư(19)={±1;±19}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-11-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01323",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm tất cả các ước của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm tất cả các ước của: $22$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ước của một số nguyên gồm các ước dương của nó cùng với số đối của chúng.\n\n**Bước 1.** Tìm các ước dương của $22$ bằng cách chia $22$ lần lượt cho $1;2;3;\\dots$ và ghi lại những phép chia hết.\n\n**Bước 2.** Mỗi phép chia hết cho một cặp ước (số chia và thương), dừng khi số chia vượt quá thương.\n\n**Bước 3.** Với mỗi ước dương $b$, số đối $-b$ cũng là ước, nên viết thêm các số đối rồi gộp thành một tập hợp.\n\n**Chú ý:** đừng bỏ sót các ước âm: ước dương nào cũng có số đối cũng là ước.\n\n**Phần 2. Trình bày**\n\nTa có $22=1.22=2.11$ nên các ước dương của $22$ là $1;2;11;22$.\n\nThêm các số đối của chúng, ta được $\\text{Ư}(22)=\\{-22;-11;-2;-1;1;2;11;22\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:45},(_, i)=>i-22).filter(d=>d!==0&&(22)%d===0))===JSON.stringify([-22,-11,-2,-1,1,2,11,22])"
+    ],
+    "sach_dap_so": "Ư(22)={±1;±2;±11;±22}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-12-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01324",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm năm bội của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm năm bội của: $-8$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** các bội của $-8$ là những số có dạng $(-8).n$ với $n$ là số nguyên, nên chỉ cần nhân $-8$ với các số nguyên bất kì.\n\n**Bước 1.** Chọn năm số nguyên $n$ đơn giản và khác nhau để nhân với $-8$, ví dụ $0$ và các cặp số đối.\n\n**Bước 2.** Tính từng tích $(-8).n$; mỗi tích tìm được là một bội của $-8$.\n\n**Bước 3.** Ghi lại đủ năm bội khác nhau rồi kết luận.\n\n**Chú ý:** số $0$ là bội của mọi số nguyên khác $0$ nên có thể dùng làm một bội. Đề chỉ hỏi năm bội nên có nhiều cách chọn đúng: chọn các số $n$ khác thì được năm bội khác, vẫn đúng.\n\n**Phần 2. Trình bày**\n\nNhân $-8$ lần lượt với $0;1;-1;2;-2$ ta được: $(-8).0=0$; $(-8).1=-8$; $(-8).(-1)=8$; $(-8).2=-16$; $(-8).(-2)=16$.\n\nVậy năm bội của $-8$ là $0;-8;8;-16;16$.",
+    "kiem": [
+      "[0,-8,8,-16,16].every(v=>v%(-8)===0)&&new Set([0,-8,8,-16,16]).size===5"
+    ],
+    "sach_dap_so": "±8;±16;±24;…",
+    "ghi_chu": "Đề chỉ yêu cầu số lượng bội nên có nhiều đáp án đúng; lời giải chọn 0 và các bội nhỏ."
+  },
+  {
+    "id": "B5-12-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01324",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm năm bội của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm năm bội của: $-4$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** các bội của $-4$ là những số có dạng $(-4).n$ với $n$ là số nguyên, nên chỉ cần nhân $-4$ với các số nguyên bất kì.\n\n**Bước 1.** Chọn năm số nguyên $n$ đơn giản và khác nhau để nhân với $-4$, ví dụ $0$ và các cặp số đối.\n\n**Bước 2.** Tính từng tích $(-4).n$; mỗi tích tìm được là một bội của $-4$.\n\n**Bước 3.** Ghi lại đủ năm bội khác nhau rồi kết luận.\n\n**Chú ý:** số $0$ là bội của mọi số nguyên khác $0$ nên có thể dùng làm một bội. Đề chỉ hỏi năm bội nên có nhiều cách chọn đúng: chọn các số $n$ khác thì được năm bội khác, vẫn đúng.\n\n**Phần 2. Trình bày**\n\nNhân $-4$ lần lượt với $0;1;-1;2;-2$ ta được: $(-4).0=0$; $(-4).1=-4$; $(-4).(-1)=4$; $(-4).2=-8$; $(-4).(-2)=8$.\n\nVậy năm bội của $-4$ là $0;-4;4;-8;8$.",
+    "kiem": [
+      "[0,-4,4,-8,8].every(v=>v%(-4)===0)&&new Set([0,-4,4,-8,8]).size===5"
+    ],
+    "sach_dap_so": "±4;±8;12…",
+    "ghi_chu": "Đề chỉ yêu cầu số lượng bội nên có nhiều đáp án đúng; lời giải chọn 0 và các bội nhỏ."
+  },
+  {
+    "id": "B5-12-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01324",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm năm bội của một số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm năm bội của: $9$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** các bội của $9$ là những số có dạng $9.n$ với $n$ là số nguyên, nên chỉ cần nhân $9$ với các số nguyên bất kì.\n\n**Bước 1.** Chọn năm số nguyên $n$ đơn giản và khác nhau để nhân với $9$, ví dụ $0$ và các cặp số đối.\n\n**Bước 2.** Tính từng tích $9.n$; mỗi tích tìm được là một bội của $9$.\n\n**Bước 3.** Ghi lại đủ năm bội khác nhau rồi kết luận.\n\n**Chú ý:** số $0$ là bội của mọi số nguyên khác $0$ nên có thể dùng làm một bội. Đề chỉ hỏi năm bội nên có nhiều cách chọn đúng: chọn các số $n$ khác thì được năm bội khác, vẫn đúng.\n\n**Phần 2. Trình bày**\n\nNhân $9$ lần lượt với $0;1;-1;2;-2$ ta được: $9.0=0$; $9.1=9$; $9.(-1)=-9$; $9.2=18$; $9.(-2)=-18$.\n\nVậy năm bội của $9$ là $0;9;-9;18;-18$.",
+    "kiem": [
+      "[0,9,-9,18,-18].every(v=>v%(9)===0)&&new Set([0,9,-9,18,-18]).size===5"
+    ],
+    "sach_dap_so": "Tương tự tìm bội của 9",
+    "ghi_chu": "Đề chỉ yêu cầu số lượng bội nên có nhiều đáp án đúng; lời giải chọn 0 và các bội nhỏ."
+  },
+  {
+    "id": "B5-13-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01325",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "x là ước của số cho trước, có điều kiện về dấu",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x$, biết: $21\\vdots x$ và $x>0$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $21\\vdots x$ có nghĩa là $x$ là một ước của $21$; liệt kê các ước rồi lọc theo điều kiện của đề.\n\n**Bước 1.** Đổi cách nói: $21$ chia hết cho $x$ nghĩa là $x$ là ước của $21$.\n\n**Bước 2.** Liệt kê tất cả các ước của $21$, gồm các ước dương và số đối của chúng.\n\n**Bước 3.** Giữ lại những ước thoả điều kiện $x>0$ của đề rồi viết tập hợp kết quả.\n\n**Chú ý:** ước âm cũng là ước, đừng bỏ sót trước khi lọc theo điều kiện.\n\n**Phần 2. Trình bày**\n\nVì $21\\vdots x$ nên $x\\in\\text{Ư}(21)=\\{-21;-7;-3;-1;1;3;7;21\\}$.\n\nMà $x>0$ nên $x\\in\\{1;3;7;21\\}$.\n\nVậy $x\\in\\{1;3;7;21\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>(21)%x===0&&x!==0&&x>0))===JSON.stringify([1,3,7,21])"
+    ],
+    "sach_dap_so": "x∈{1;3;7;21}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-13-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01325",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "x là bội của số cho trước, nằm trong khoảng",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x$, biết: $x\\vdots 7$ và $-8<x<7$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $x\\vdots 7$ có nghĩa là $x$ là một bội của $7$; liệt kê các bội gần khoảng đề cho rồi chọn những bội nằm trong khoảng.\n\n**Bước 1.** Đổi cách nói: $x$ chia hết cho $7$ nghĩa là $x$ là bội của $7$.\n\n**Bước 2.** Liệt kê các bội của $7$ (gồm cả bội âm và số $0$) quanh khoảng cần xét.\n\n**Bước 3.** Chọn những bội thoả $-8<x<7$, chú ý dấu $<$ nên không lấy hai đầu mút.\n\n**Chú ý:** số $0$ là bội của mọi số nguyên khác $0$, nếu $0$ nằm trong khoảng thì phải lấy.\n\n**Phần 2. Trình bày**\n\nVì $x\\vdots 7$ nên $x$ là bội của $7$, $\\text{B}(7)=\\{\\dots;-21;-14;-7;0;7;14;21;\\dots\\}$.\n\nVì $-8<x<7$ nên $x\\in\\{-7;0\\}$.\n\nVậy $x\\in\\{-7;0\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>x%7===0&&x>-8&&x<7))===JSON.stringify([-7,0])"
+    ],
+    "sach_dap_so": "x∈{-7;-1;1}",
+    "ghi_chu": "LỆCH SÁCH — sách in {-7;-1;1} nhưng -1 và 1 không chia hết cho 7. Các bội của 7 thoả -8<x<7 là -7 và 0 (7 bị loại vì x<7). Tin kết quả {-7;0}."
+  },
+  {
+    "id": "B5-13-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01325",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "x là ước chung của hai số cho trước",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x$, biết: $-8\\vdots x$ và $12\\vdots x$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $-8\\vdots x$ và $12\\vdots x$ cho biết $x$ vừa là ước của $-8$ vừa là ước của $12$, tức là ước chung của hai số.\n\n**Bước 1.** Đổi cách nói: $x$ là ước của $-8$ và $x$ cũng là ước của $12$.\n\n**Bước 2.** Liệt kê tập ước của từng số, nhớ lấy cả ước âm.\n\n**Bước 3.** Chọn các số có mặt ở cả hai tập rồi viết tập hợp kết quả.\n\n**Phần 2. Trình bày**\n\nVì $-8\\vdots x$ và $12\\vdots x$ nên $x\\in\\text{ƯC}(-8;12)$.\n\nTa có $\\text{Ư}(-8)=\\{-8;-4;-2;-1;1;2;4;8\\}$ và $\\text{Ư}(12)=\\{-12;-6;-4;-3;-2;-1;1;2;3;4;6;12\\}$.\n\nVậy $x\\in\\{-4;-2;-1;1;2;4\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>x!==0&&(-8)%x===0&&(12)%x===0))===JSON.stringify([-4,-2,-1,1,2,4])"
+    ],
+    "sach_dap_so": "x∈{-4;-2;-1;1;2;4}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-13-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01325",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "x là bội chung của hai số, nằm trong khoảng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm $x$, biết: $x\\vdots(-6)$, $x\\vdots 5$ và $20<x<50$",
+    "dap_an": "30",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $x$ là bội của cả hai số nên liệt kê bội của một số trong khoảng đề cho, rồi giữ lại số cũng chia hết cho số còn lại.\n\n**Bước 1.** Đổi cách nói: $x$ là bội của $5$ và $x$ cũng là bội của $-6$.\n\n**Bước 2.** Liệt kê các bội của $5$ nằm trong khoảng $20<x<50$.\n\n**Bước 3.** Lần lượt chia từng bội vừa liệt kê cho $-6$ để xem số nào chia hết.\n\n**Chú ý:** $-6$ và $6$ có chung các bội nên dấu của $-6$ không làm đổi tập bội.\n\n**Phần 2. Trình bày**\n\nVì $x\\vdots 5$ và $x\\vdots (-6)$ nên $x$ là bội chung của $5$ và $-6$.\n\nCác bội của $5$ thoả $20<x<50$ là $25;30;35;40;45$.\n\nXét từng số: $25$ không chia hết cho $-6$; $30:(-6)=-5$; $35$ không chia hết cho $-6$; $40$ không chia hết cho $-6$; $45$ không chia hết cho $-6$.\n\nVậy $x=30$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>x%5===0&&x%-6===0&&x>20&&x<50))===JSON.stringify([30])",
+      "[30].length===1"
+    ],
+    "sach_dap_so": "x=30",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-14-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01326",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Mẫu là x (b=0): hợp 01325 và 01326, lấy dạng sau",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$ sao cho: $17\\vdots x$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $17\\vdots x$ cho biết $x$ là một ước của $17$; liệt kê các ước rồi tìm $x$.\n\n**Bước 1.** Đổi cách nói: $17$ chia hết cho $x$ nghĩa là $x$ là một ước của $17$.\n\n**Bước 2.** Liệt kê tất cả ước của $17$, gồm các ước dương và số đối của chúng.\n\n**Bước 3.** Mỗi ước tìm được chính là một giá trị của $x$; viết tất cả vào một tập hợp.\n\n**Chú ý:** ước của một số không bao giờ bằng $0$ nên không có giá trị $x=0$.\n\n**Phần 2. Trình bày**\n\nVì $17\\vdots x$ nên $x\\in\\text{Ư}(17)=\\{-17;-1;1;17\\}$.\n\nVậy $x\\in\\{-17;-1;1;17\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x;return d!==0&&(17)%d===0}))===JSON.stringify([-17,-1,1,17])"
+    ],
+    "sach_dap_so": "x∈Ư(17)={±1;±17}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-14-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01326",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Số nguyên cố định chia hết cho biểu thức chứa x",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$ sao cho: $23\\vdots (x+1)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $23\\vdots (x+1)$ cho biết $x+1$ là một ước của $23$; liệt kê các ước rồi tìm $x$.\n\n**Bước 1.** Đổi cách nói: $23$ chia hết cho $(x+1)$ nghĩa là $x+1$ là một ước của $23$.\n\n**Bước 2.** Liệt kê tất cả ước của $23$, gồm các ước dương và số đối của chúng.\n\n**Bước 3.** Mỗi giá trị của $x+1$ cho một giá trị của $x$: $x$ là số hạng chưa biết nên lấy giá trị đó trừ $1$.\n\n**Chú ý:** đừng bỏ sót ước âm vì mỗi ước âm cũng cho một giá trị của $x$.\n\n**Phần 2. Trình bày**\n\nVì $23\\vdots (x+1)$ nên $x+1\\in\\text{Ư}(23)=\\{-23;-1;1;23\\}$.\n\nVới $x+1=-23$ thì $x=-24$; với $x+1=-1$ thì $x=-2$; với $x+1=1$ thì $x=0$; với $x+1=23$ thì $x=22$.\n\nVậy $x\\in\\{-24;-2;0;22\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x+1;return d!==0&&(23)%d===0}))===JSON.stringify([-24,-2,0,22])"
+    ],
+    "sach_dap_so": "x∈{-24;-2;0;22}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-14-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01326",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Số nguyên cố định chia hết cho biểu thức chứa x",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$ sao cho: $-9\\vdots (x-3)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $-9\\vdots (x-3)$ cho biết $x-3$ là một ước của $-9$; liệt kê các ước rồi tìm $x$.\n\n**Bước 1.** Đổi cách nói: $-9$ chia hết cho $(x-3)$ nghĩa là $x-3$ là một ước của $-9$.\n\n**Bước 2.** Liệt kê tất cả ước của $9$, gồm các ước dương và số đối của chúng.\n\n**Bước 3.** Mỗi giá trị của $x-3$ cho một giá trị của $x$: $x$ là số bị trừ nên lấy giá trị đó cộng $3$.\n\n**Chú ý:** đừng bỏ sót ước âm vì mỗi ước âm cũng cho một giá trị của $x$.\n\n**Phần 2. Trình bày**\n\nVì $-9\\vdots (x-3)$ nên $x-3\\in\\text{Ư}(-9)=\\{-9;-3;-1;1;3;9\\}$.\n\nVới $x-3=-9$ thì $x=-6$; với $x-3=-3$ thì $x=0$; với $x-3=-1$ thì $x=2$; với $x-3=1$ thì $x=4$; với $x-3=3$ thì $x=6$; với $x-3=9$ thì $x=12$.\n\nVậy $x\\in\\{-6;0;2;4;6;12\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x-3;return d!==0&&(-9)%d===0}))===JSON.stringify([-6,0,2,4,6,12])"
+    ],
+    "sach_dap_so": "x∈{-6;0;2;4;6;12}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-15-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01327",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử có hệ số của biến chia hết cho hệ số ở mẫu",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$ sao cho: $x+5\\vdots x$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm mất $x$ ở số bị chia bằng cách trừ đi một bội của $x$ có cùng phần chứa $x$, đưa bài về một số cụ thể chia hết cho $x$.\n\n**Bước 1.** Chọn một bội của $x$ có phần chứa $x$ giống $x+5$: đó là $x$, vì $x$ chia hết cho chính nó.\n\n**Bước 2.** Hai số $x+5$ và $x$ cùng chia hết cho $x$ nên hiệu của chúng cũng chia hết cho $x$; tính hiệu để $x$ biến mất.\n\n**Bước 3.** Số vừa tìm được chia hết cho $x$ nên $x$ là một ước của số đó; liệt kê mọi ước, nhớ cả ước âm.\n\n**Phần 2. Trình bày**\n\nVì $x+5\\vdots x$ và $x\\vdots x$ nên $[(x+5)-x]\\vdots x$, tức là $5\\vdots x$.\n\nSuy ra $x\\in\\text{Ư}(5)=\\{-5;-1;1;5\\}$.\n\nVậy $x\\in\\{-5;-1;1;5\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x;return d!==0&&(x+5)%d===0}))===JSON.stringify([-5,-1,1,5])"
+    ],
+    "sach_dap_so": "x∈Ư(5)={±1;±5}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-15-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01327",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử có hệ số của biến chia hết cho hệ số ở mẫu",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$ sao cho: $3x-4\\vdots (x+1)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm mất $x$ ở số bị chia bằng cách trừ đi một bội của $(x+1)$ có cùng phần chứa $x$, đưa bài về một số cụ thể chia hết cho $(x+1)$.\n\n**Bước 1.** Chọn một bội của $(x+1)$ có phần chứa $x$ giống $3x-4$: đó là $3.(x+1)$, vì $3.(x+1)$ là tích có thừa số $x+1$.\n\n**Bước 2.** Hai số $3x-4$ và $3.(x+1)$ cùng chia hết cho $(x+1)$ nên hiệu của chúng cũng chia hết cho $(x+1)$; tính hiệu để $x$ biến mất.\n\n**Bước 3.** Số vừa tìm được chia hết cho $(x+1)$ nên $x+1$ là một ước của số đó; liệt kê mọi ước, nhớ cả ước âm.\n\n**Bước 4.** Cho $x+1$ bằng từng ước vừa liệt kê rồi tìm $x$, chú ý chỉ nhận $x$ là số nguyên.\n\n**Phần 2. Trình bày**\n\nVì $3x-4\\vdots (x+1)$ và $3.(x+1)\\vdots (x+1)$ nên $[(3x-4)-3.(x+1)]\\vdots (x+1)$, tức là $-7\\vdots (x+1)$.\n\nSuy ra $x+1\\in\\text{Ư}(-7)=\\{-7;-1;1;7\\}$.\n\nVới $x+1=-7$ thì $x=-8$; với $x+1=-1$ thì $x=-2$; với $x+1=1$ thì $x=0$; với $x+1=7$ thì $x=6$.\n\nVậy $x\\in\\{-8;-2;0;6\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x+1;return d!==0&&(3*x-4)%d===0}))===JSON.stringify([-8,-2,0,6])"
+    ],
+    "sach_dap_so": "x∈{-8;-2;0;6}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-15-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01327",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử có hệ số của biến chia hết cho hệ số ở mẫu",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$ sao cho: $4x+2\\vdots (x-2)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm mất $x$ ở số bị chia bằng cách trừ đi một bội của $(x-2)$ có cùng phần chứa $x$, đưa bài về một số cụ thể chia hết cho $(x-2)$.\n\n**Bước 1.** Chọn một bội của $(x-2)$ có phần chứa $x$ giống $4x+2$: đó là $4.(x-2)$, vì $4.(x-2)$ là tích có thừa số $x-2$.\n\n**Bước 2.** Hai số $4x+2$ và $4.(x-2)$ cùng chia hết cho $(x-2)$ nên hiệu của chúng cũng chia hết cho $(x-2)$; tính hiệu để $x$ biến mất.\n\n**Bước 3.** Số vừa tìm được chia hết cho $(x-2)$ nên $x-2$ là một ước của số đó; liệt kê mọi ước, nhớ cả ước âm.\n\n**Bước 4.** Cho $x-2$ bằng từng ước vừa liệt kê rồi tìm $x$, chú ý chỉ nhận $x$ là số nguyên.\n\n**Phần 2. Trình bày**\n\nVì $4x+2\\vdots (x-2)$ và $4.(x-2)\\vdots (x-2)$ nên $[(4x+2)-4.(x-2)]\\vdots (x-2)$, tức là $10\\vdots (x-2)$.\n\nSuy ra $x-2\\in\\text{Ư}(10)=\\{-10;-5;-2;-1;1;2;5;10\\}$.\n\nVới $x-2=-10$ thì $x=-8$; với $x-2=-5$ thì $x=-3$; với $x-2=-2$ thì $x=0$; với $x-2=-1$ thì $x=1$; với $x-2=1$ thì $x=3$; với $x-2=2$ thì $x=4$; với $x-2=5$ thì $x=7$; với $x-2=10$ thì $x=12$.\n\nVậy $x\\in\\{-8;-3;0;1;3;4;7;12\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x-2;return d!==0&&(4*x+2)%d===0}))===JSON.stringify([-8,-3,0,1,3,4,7,12])"
+    ],
+    "sach_dap_so": "x∈{-2;0;2;4}",
+    "ghi_chu": "LỆCH SÁCH — sách in x∈{-2;0;2;4} nhưng x=-2 sai (4.(-2)+2=-6 không chia hết cho -4); (4x+2)-4(x-2)=10 nên x-2∈Ư(10), cho 8 giá trị x. Tin kết quả {-8;-3;0;1;3;4;7;12}."
+  },
+  {
+    "id": "B5-16-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01329",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử bậc hai, mẫu bậc nhất",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$ sao cho: $2x^2+5\\vdots x$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm mất $x$ ở số bị chia bằng cách trừ đi một bội của $x$ có cùng phần chứa $x$, đưa bài về một số cụ thể chia hết cho $x$.\n\n**Bước 1.** Chọn một bội của $x$ có phần chứa $x$ giống $2x^2+5$: đó là $2x^2$, vì $2x^2=x.(2x)$ có thừa số $x$.\n\n**Bước 2.** Hai số $2x^2+5$ và $2x^2$ cùng chia hết cho $x$ nên hiệu của chúng cũng chia hết cho $x$; tính hiệu để $x$ biến mất.\n\n**Bước 3.** Số vừa tìm được chia hết cho $x$ nên $x$ là một ước của số đó; liệt kê mọi ước, nhớ cả ước âm.\n\n**Phần 2. Trình bày**\n\nVì $2x^2+5\\vdots x$ và $2x^2\\vdots x$ nên $[(2x^2+5)-2x^2]\\vdots x$, tức là $5\\vdots x$.\n\nSuy ra $x\\in\\text{Ư}(5)=\\{-5;-1;1;5\\}$.\n\nVậy $x\\in\\{-5;-1;1;5\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x;return d!==0&&(2*x*x+5)%d===0}))===JSON.stringify([-5,-1,1,5])"
+    ],
+    "sach_dap_so": "x∈Ư(5)={±1;±5}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-16-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01329",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử bậc hai, mẫu bậc nhất",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$ sao cho: $x^2+x-3\\vdots (x+1)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm mất $x$ ở số bị chia bằng cách trừ đi một bội của $(x+1)$ có cùng phần chứa $x$, đưa bài về một số cụ thể chia hết cho $(x+1)$.\n\n**Bước 1.** Chọn một bội của $(x+1)$ có phần chứa $x$ giống $x^2+x-3$: đó là $x.(x+1)$, vì $x.(x+1)$ là tích có thừa số $x+1$.\n\n**Bước 2.** Hai số $x^2+x-3$ và $x.(x+1)$ cùng chia hết cho $(x+1)$ nên hiệu của chúng cũng chia hết cho $(x+1)$; tính hiệu để $x$ biến mất.\n\n**Bước 3.** Số vừa tìm được chia hết cho $(x+1)$ nên $x+1$ là một ước của số đó; liệt kê mọi ước, nhớ cả ước âm.\n\n**Bước 4.** Cho $x+1$ bằng từng ước vừa liệt kê rồi tìm $x$, chú ý chỉ nhận $x$ là số nguyên.\n\n**Phần 2. Trình bày**\n\nVì $x^2+x-3\\vdots (x+1)$ và $x.(x+1)\\vdots (x+1)$ nên $[(x^2+x-3)-x.(x+1)]\\vdots (x+1)$, tức là $-3\\vdots (x+1)$.\n\nSuy ra $x+1\\in\\text{Ư}(-3)=\\{-3;-1;1;3\\}$.\n\nVới $x+1=-3$ thì $x=-4$; với $x+1=-1$ thì $x=-2$; với $x+1=1$ thì $x=0$; với $x+1=3$ thì $x=2$.\n\nVậy $x\\in\\{-4;-2;0;2\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=x+1;return d!==0&&(x*x+x-3)%d===0}))===JSON.stringify([-4,-2,0,2])"
+    ],
+    "sach_dap_so": "x∈{-4;-2;0;2}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B5-16-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01329",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử bậc hai, mẫu bậc nhất",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$ sao cho: $2x^2-x+7\\vdots (2x-1)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm mất $x$ ở số bị chia bằng cách trừ đi một bội của $(2x-1)$ có cùng phần chứa $x$, đưa bài về một số cụ thể chia hết cho $(2x-1)$.\n\n**Bước 1.** Chọn một bội của $(2x-1)$ có phần chứa $x$ giống $2x^2-x+7$: đó là $x.(2x-1)$, vì $x.(2x-1)$ là tích có thừa số $2x-1$.\n\n**Bước 2.** Hai số $2x^2-x+7$ và $x.(2x-1)$ cùng chia hết cho $(2x-1)$ nên hiệu của chúng cũng chia hết cho $(2x-1)$; tính hiệu để $x$ biến mất.\n\n**Bước 3.** Số vừa tìm được chia hết cho $(2x-1)$ nên $2x-1$ là một ước của số đó; liệt kê mọi ước, nhớ cả ước âm.\n\n**Bước 4.** Cho $2x-1$ bằng từng ước vừa liệt kê rồi tìm $x$, chú ý chỉ nhận $x$ là số nguyên.\n\n**Chú ý:** $2x-1$ luôn là số lẻ; nếu số tìm được ở Bước 2 có ước chẵn thì ước đó phải loại.\n\n**Phần 2. Trình bày**\n\nVì $2x^2-x+7\\vdots (2x-1)$ và $x.(2x-1)\\vdots (2x-1)$ nên $[(2x^2-x+7)-x.(2x-1)]\\vdots (2x-1)$, tức là $7\\vdots (2x-1)$.\n\nSuy ra $2x-1\\in\\text{Ư}(7)=\\{-7;-1;1;7\\}$.\n\nVới $2x-1=-7$ thì $2x=-6$ nên $x=-3$; với $2x-1=-1$ thì $2x=0$ nên $x=0$; với $2x-1=1$ thì $2x=2$ nên $x=1$; với $2x-1=7$ thì $2x=8$ nên $x=4$.\n\nVậy $x\\in\\{-3;0;1;4\\}$.",
+    "kiem": [
+      "JSON.stringify(Array.from({length:1001},(_, i)=>i-500).filter(x=>{const d=2*x-1;return d!==0&&(2*x*x-x+7)%d===0}))===JSON.stringify([-3,0,1,4])"
+    ],
+    "sach_dap_so": "x∈{-3;0;1;4}",
+    "ghi_chu": ""
+  }
+]

@@ -1,0 +1,692 @@
+[
+ {
+  "ma_cau": "K09120101001",
+  "dang_bai_id": "KDB01603",
+  "chac": "cao",
+  "ly_do": "Hỏi cấu tạo NST: chromatid, tâm động, NST đơn"
+ },
+ {
+  "ma_cau": "K09120101002",
+  "dang_bai_id": "KDB01603",
+  "chac": "cao",
+  "ly_do": "Hỏi cấu tạo NST: chromatid, tâm động, NST đơn"
+ },
+ {
+  "ma_cau": "K09120101003",
+  "dang_bai_id": "KDB01603",
+  "chac": "cao",
+  "ly_do": "Hỏi cấu tạo NST: chromatid, tâm động, NST đơn"
+ },
+ {
+  "ma_cau": "K09120101004",
+  "dang_bai_id": "KDB01603",
+  "chac": "cao",
+  "ly_do": "Hỏi cấu tạo NST: chromatid, tâm động, NST đơn"
+ },
+ {
+  "ma_cau": "K09120101005",
+  "dang_bai_id": "KDB01604",
+  "chac": "cao",
+  "ly_do": "Thời điểm/kì NST đổi hình thái, vì sao đóng xoắn"
+ },
+ {
+  "ma_cau": "K09120101006",
+  "dang_bai_id": "KDB01603",
+  "chac": "cao",
+  "ly_do": "Hỏi cấu tạo NST: chromatid, tâm động, NST đơn"
+ },
+ {
+  "ma_cau": "K09120101007",
+  "dang_bai_id": "KDB01604",
+  "chac": "cao",
+  "ly_do": "Thời điểm/kì NST đổi hình thái, vì sao đóng xoắn"
+ },
+ {
+  "ma_cau": "K09120101008",
+  "dang_bai_id": "KDB01604",
+  "chac": "cao",
+  "ly_do": "Thời điểm/kì NST đổi hình thái, vì sao đóng xoắn"
+ },
+ {
+  "ma_cau": "K09120101009",
+  "dang_bai_id": "KDB01605",
+  "chac": "vua",
+  "ly_do": "Đếm NST/cặp trong hình, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K09120101010",
+  "dang_bai_id": "KDB01605",
+  "chac": "cao",
+  "ly_do": "Khái niệm NST tương đồng, bộ lưỡng bội"
+ },
+ {
+  "ma_cau": "K09120101011",
+  "dang_bai_id": "KDB01605",
+  "chac": "cao",
+  "ly_do": "Khái niệm NST tương đồng, bộ lưỡng bội"
+ },
+ {
+  "ma_cau": "K09120101012",
+  "dang_bai_id": "KDB01605",
+  "chac": "vua",
+  "ly_do": "Đếm NST/cặp trong hình, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K09120101013",
+  "dang_bai_id": "KDB01605",
+  "chac": "vua",
+  "ly_do": "Đếm NST/cặp trong hình, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K09120201001",
+  "dang_bai_id": "KDB01607",
+  "chac": "cao",
+  "ly_do": "Đặc điểm NST ở một kì cụ thể, chỉ hỏi chữ"
+ },
+ {
+  "ma_cau": "K09120201002",
+  "dang_bai_id": "KDB01607",
+  "chac": "cao",
+  "ly_do": "Đặc điểm NST ở một kì cụ thể, chỉ hỏi chữ"
+ },
+ {
+  "ma_cau": "K09120201003",
+  "dang_bai_id": "KDB01607",
+  "chac": "cao",
+  "ly_do": "Đặc điểm NST ở một kì cụ thể, chỉ hỏi chữ"
+ },
+ {
+  "ma_cau": "K09120201004",
+  "dang_bai_id": "KDB01607",
+  "chac": "cao",
+  "ly_do": "Đặc điểm NST ở một kì cụ thể, chỉ hỏi chữ"
+ },
+ {
+  "ma_cau": "K09120201005",
+  "dang_bai_id": "KDB01607",
+  "chac": "cao",
+  "ly_do": "Đặc điểm NST ở một kì cụ thể, chỉ hỏi chữ"
+ },
+ {
+  "ma_cau": "K09120201006",
+  "dang_bai_id": "KDB01607",
+  "chac": "cao",
+  "ly_do": "Đặc điểm NST ở một kì cụ thể, chỉ hỏi chữ"
+ },
+ {
+  "ma_cau": "K09120201007",
+  "dang_bai_id": "KDB01608",
+  "chac": "vua",
+  "ly_do": "Nhận kì qua hình, đáp án phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K09120201008",
+  "dang_bai_id": "KDB01608",
+  "chac": "vua",
+  "ly_do": "Nhận kì qua hình, đáp án phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K09120201009",
+  "dang_bai_id": "KDB01608",
+  "chac": "vua",
+  "ly_do": "Nhận kì qua hình, đáp án phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K09120201010",
+  "dang_bai_id": "KDB01608",
+  "chac": "vua",
+  "ly_do": "Nhận kì qua hình, đáp án phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K09120201011",
+  "dang_bai_id": "KDB01609",
+  "chac": "cao",
+  "ly_do": "So sánh bộ NST/số lần nhân đôi tế bào con với mẹ"
+ },
+ {
+  "ma_cau": "K09120201012",
+  "dang_bai_id": "KDB01609",
+  "chac": "cao",
+  "ly_do": "So sánh bộ NST/số lần nhân đôi tế bào con với mẹ"
+ },
+ {
+  "ma_cau": "K09120201013",
+  "dang_bai_id": "KDB01609",
+  "chac": "cao",
+  "ly_do": "So sánh bộ NST/số lần nhân đôi tế bào con với mẹ"
+ },
+ {
+  "ma_cau": "K09120201014",
+  "dang_bai_id": "KDB01610",
+  "chac": "cao",
+  "ly_do": "Ý nghĩa nguyên phân, giảm phân, thụ tinh"
+ },
+ {
+  "ma_cau": "K09120201015",
+  "dang_bai_id": "KDB01610",
+  "chac": "cao",
+  "ly_do": "Ý nghĩa nguyên phân, giảm phân, thụ tinh"
+ },
+ {
+  "ma_cau": "K09120201016",
+  "dang_bai_id": "KDB01610",
+  "chac": "cao",
+  "ly_do": "Ý nghĩa nguyên phân, giảm phân, thụ tinh"
+ },
+ {
+  "ma_cau": "K09120301001",
+  "dang_bai_id": "KDB01615",
+  "chac": "cao",
+  "ly_do": "Cho 2n, hỏi số cặp NST thường (đề ghi 2n bằng chữ)"
+ },
+ {
+  "ma_cau": "K09120301002",
+  "dang_bai_id": "KDB01615",
+  "chac": "cao",
+  "ly_do": "Cho 2n, hỏi số cặp NST thường (đề ghi 2n bằng chữ)"
+ },
+ {
+  "ma_cau": "K09120301003",
+  "dang_bai_id": "KDB01615",
+  "chac": "cao",
+  "ly_do": "Cho 2n, hỏi số cặp NST thường (đề ghi 2n bằng chữ)"
+ },
+ {
+  "ma_cau": "K09120301004",
+  "dang_bai_id": "KDB01616",
+  "chac": "cao",
+  "ly_do": "Đặc điểm/kí hiệu NST thường, giới tính, X và Y"
+ },
+ {
+  "ma_cau": "K09120301005",
+  "dang_bai_id": "KDB01616",
+  "chac": "cao",
+  "ly_do": "Đặc điểm/kí hiệu NST thường, giới tính, X và Y"
+ },
+ {
+  "ma_cau": "K09120301006",
+  "dang_bai_id": "KDB01615",
+  "chac": "vua",
+  "ly_do": "Số cặp giới tính/thường theo 2n, hơi lý thuyết, có thể nghiêng dạng đặc điểm"
+ },
+ {
+  "ma_cau": "K09120301007",
+  "dang_bai_id": "KDB01616",
+  "chac": "cao",
+  "ly_do": "Đặc điểm/kí hiệu NST thường, giới tính, X và Y"
+ },
+ {
+  "ma_cau": "K09120301008",
+  "dang_bai_id": "KDB01615",
+  "chac": "vua",
+  "ly_do": "Số cặp giới tính/thường theo 2n, hơi lý thuyết, có thể nghiêng dạng đặc điểm"
+ },
+ {
+  "ma_cau": "K09120301009",
+  "dang_bai_id": "KDB01616",
+  "chac": "cao",
+  "ly_do": "Đặc điểm/kí hiệu NST thường, giới tính, X và Y"
+ },
+ {
+  "ma_cau": "K09120301010",
+  "dang_bai_id": "KDB01616",
+  "chac": "cao",
+  "ly_do": "Đặc điểm/kí hiệu NST thường, giới tính, X và Y"
+ },
+ {
+  "ma_cau": "K09120301011",
+  "dang_bai_id": "KDB01617",
+  "chac": "cao",
+  "ly_do": "Cơ chế xác định giới tính ở người (XX/XY, trứng, tinh trùng)"
+ },
+ {
+  "ma_cau": "K09120301012",
+  "dang_bai_id": "KDB01616",
+  "chac": "cao",
+  "ly_do": "Đặc điểm/kí hiệu NST thường, giới tính, X và Y"
+ },
+ {
+  "ma_cau": "K09120301013",
+  "dang_bai_id": "KDB01615",
+  "chac": "cao",
+  "ly_do": "Cho 2n=46 hỏi số cặp thường và giới tính"
+ },
+ {
+  "ma_cau": "K09120301014",
+  "dang_bai_id": "KDB01617",
+  "chac": "cao",
+  "ly_do": "Cơ chế xác định giới tính ở người (XX/XY, trứng, tinh trùng)"
+ },
+ {
+  "ma_cau": "K09120301015",
+  "dang_bai_id": "KDB01617",
+  "chac": "cao",
+  "ly_do": "Cơ chế xác định giới tính ở người (XX/XY, trứng, tinh trùng)"
+ },
+ {
+  "ma_cau": "K09120301016",
+  "dang_bai_id": "KDB01618",
+  "chac": "cao",
+  "ly_do": "Tách tinh trùng X/Y chọn giới tính bê, vật nuôi"
+ },
+ {
+  "ma_cau": "K09120301017",
+  "dang_bai_id": "KDB01618",
+  "chac": "cao",
+  "ly_do": "Tách tinh trùng X/Y chọn giới tính bê, vật nuôi"
+ },
+ {
+  "ma_cau": "K09120301018",
+  "dang_bai_id": "KDB01618",
+  "chac": "cao",
+  "ly_do": "Tách tinh trùng X/Y chọn giới tính bê, vật nuôi"
+ },
+ {
+  "ma_cau": "K09120301019",
+  "dang_bai_id": "KDB01618",
+  "chac": "cao",
+  "ly_do": "Tách tinh trùng X/Y chọn giới tính bê, vật nuôi"
+ },
+ {
+  "ma_cau": "K09120401001",
+  "dang_bai_id": "KDB01621",
+  "chac": "cao",
+  "ly_do": "Khái niệm, cơ sở tế bào học, số nhóm gene liên kết"
+ },
+ {
+  "ma_cau": "K09120401002",
+  "dang_bai_id": "KDB01621",
+  "chac": "cao",
+  "ly_do": "Khái niệm, cơ sở tế bào học, số nhóm gene liên kết"
+ },
+ {
+  "ma_cau": "K09120401003",
+  "dang_bai_id": "KDB01621",
+  "chac": "cao",
+  "ly_do": "Khái niệm, cơ sở tế bào học, số nhóm gene liên kết"
+ },
+ {
+  "ma_cau": "K09120401004",
+  "dang_bai_id": "KDB01621",
+  "chac": "cao",
+  "ly_do": "Khái niệm, cơ sở tế bào học, số nhóm gene liên kết"
+ },
+ {
+  "ma_cau": "K09120401005",
+  "dang_bai_id": "KDB01621",
+  "chac": "cao",
+  "ly_do": "Khái niệm, cơ sở tế bào học, số nhóm gene liên kết"
+ },
+ {
+  "ma_cau": "K09120401006",
+  "dang_bai_id": "KDB01622",
+  "chac": "cao",
+  "ly_do": "So sánh liên kết với phân li độc lập, ý nghĩa chọn giống, lai phân tích"
+ },
+ {
+  "ma_cau": "K09120401007",
+  "dang_bai_id": "KDB01622",
+  "chac": "cao",
+  "ly_do": "So sánh liên kết với phân li độc lập, ý nghĩa chọn giống, lai phân tích"
+ },
+ {
+  "ma_cau": "K09120401008",
+  "dang_bai_id": "KDB01622",
+  "chac": "cao",
+  "ly_do": "So sánh liên kết với phân li độc lập, ý nghĩa chọn giống, lai phân tích"
+ },
+ {
+  "ma_cau": "K09120401009",
+  "dang_bai_id": "KDB01622",
+  "chac": "cao",
+  "ly_do": "So sánh liên kết với phân li độc lập, ý nghĩa chọn giống, lai phân tích"
+ },
+ {
+  "ma_cau": "K09120501001",
+  "dang_bai_id": "KDB01628",
+  "chac": "cao",
+  "ly_do": "Tên/đặc điểm dạng đột biến cấu trúc theo khái niệm"
+ },
+ {
+  "ma_cau": "K09120501002",
+  "dang_bai_id": "KDB01628",
+  "chac": "cao",
+  "ly_do": "Tên/đặc điểm dạng đột biến cấu trúc theo khái niệm"
+ },
+ {
+  "ma_cau": "K09120501003",
+  "dang_bai_id": "KDB01628",
+  "chac": "cao",
+  "ly_do": "Tên/đặc điểm dạng đột biến cấu trúc theo khái niệm"
+ },
+ {
+  "ma_cau": "K09120501004",
+  "dang_bai_id": "KDB01628",
+  "chac": "cao",
+  "ly_do": "Tên/đặc điểm dạng đột biến cấu trúc theo khái niệm"
+ },
+ {
+  "ma_cau": "K09120501005",
+  "dang_bai_id": "KDB01628",
+  "chac": "cao",
+  "ly_do": "Tên/đặc điểm dạng đột biến cấu trúc theo khái niệm"
+ },
+ {
+  "ma_cau": "K09120501006",
+  "dang_bai_id": "KDB01628",
+  "chac": "cao",
+  "ly_do": "Tên/đặc điểm dạng đột biến cấu trúc theo khái niệm"
+ },
+ {
+  "ma_cau": "K09120501007",
+  "dang_bai_id": "KDB01628",
+  "chac": "cao",
+  "ly_do": "Tên/đặc điểm dạng đột biến cấu trúc theo khái niệm"
+ },
+ {
+  "ma_cau": "K09120501008",
+  "dang_bai_id": "KDB01628",
+  "chac": "cao",
+  "ly_do": "Tên/đặc điểm dạng đột biến cấu trúc theo khái niệm"
+ },
+ {
+  "ma_cau": "K09120501009",
+  "dang_bai_id": "KDB01630",
+  "chac": "cao",
+  "ly_do": "Phân loại, tên gọi các thể đột biến số lượng"
+ },
+ {
+  "ma_cau": "K09120501010",
+  "dang_bai_id": "KDB01630",
+  "chac": "cao",
+  "ly_do": "Phân loại, tên gọi các thể đột biến số lượng"
+ },
+ {
+  "ma_cau": "K09120501011",
+  "dang_bai_id": "KDB01630",
+  "chac": "cao",
+  "ly_do": "Phân loại, tên gọi các thể đột biến số lượng"
+ },
+ {
+  "ma_cau": "K09120501012",
+  "dang_bai_id": "KDB01630",
+  "chac": "cao",
+  "ly_do": "Phân loại, tên gọi các thể đột biến số lượng"
+ },
+ {
+  "ma_cau": "K09120501013",
+  "dang_bai_id": "KDB01630",
+  "chac": "cao",
+  "ly_do": "Phân loại, tên gọi các thể đột biến số lượng"
+ },
+ {
+  "ma_cau": "K09120501014",
+  "dang_bai_id": "KDB01630",
+  "chac": "cao",
+  "ly_do": "Phân loại, tên gọi các thể đột biến số lượng"
+ },
+ {
+  "ma_cau": "K09120501015",
+  "dang_bai_id": "KDB01630",
+  "chac": "cao",
+  "ly_do": "Phân loại, tên gọi các thể đột biến số lượng"
+ },
+ {
+  "ma_cau": "K09120501016",
+  "dang_bai_id": "KDB01629",
+  "chac": "vua",
+  "ly_do": "Sơ đồ trình tự gene nằm trong hình, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K09120501017",
+  "dang_bai_id": "KDB01629",
+  "chac": "vua",
+  "ly_do": "Sơ đồ trình tự gene nằm trong hình, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K09120501018",
+  "dang_bai_id": "KDB01629",
+  "chac": "vua",
+  "ly_do": "Sơ đồ trình tự gene nằm trong hình, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K09120501019",
+  "dang_bai_id": "KDB01629",
+  "chac": "vua",
+  "ly_do": "Sơ đồ trình tự gene nằm trong hình, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K09120501020",
+  "dang_bai_id": "KDB01631",
+  "chac": "cao",
+  "ly_do": "Cho số NST từng cặp, xác định thể ba/một/không"
+ },
+ {
+  "ma_cau": "K09120501021",
+  "dang_bai_id": "KDB01631",
+  "chac": "cao",
+  "ly_do": "Cho số NST từng cặp, xác định thể ba/một/không"
+ },
+ {
+  "ma_cau": "K09120501022",
+  "dang_bai_id": "KDB01631",
+  "chac": "cao",
+  "ly_do": "Cho số NST từng cặp, xác định thể ba/một/không"
+ },
+ {
+  "ma_cau": "K09120501023",
+  "dang_bai_id": "KDB01633",
+  "chac": "cao",
+  "ly_do": "Hội chứng Down/Turner/Klinefelter, nguyên nhân, xét nghiệm NST"
+ },
+ {
+  "ma_cau": "K09120501024",
+  "dang_bai_id": "KDB01633",
+  "chac": "cao",
+  "ly_do": "Hội chứng Down/Turner/Klinefelter, nguyên nhân, xét nghiệm NST"
+ },
+ {
+  "ma_cau": "K09120501025",
+  "dang_bai_id": "KDB01633",
+  "chac": "cao",
+  "ly_do": "Hội chứng Down/Turner/Klinefelter, nguyên nhân, xét nghiệm NST"
+ },
+ {
+  "ma_cau": "K09120501026",
+  "dang_bai_id": "KDB01633",
+  "chac": "cao",
+  "ly_do": "Hội chứng Down/Turner/Klinefelter, nguyên nhân, xét nghiệm NST"
+ },
+ {
+  "ma_cau": "K09120501027",
+  "dang_bai_id": "KDB01633",
+  "chac": "cao",
+  "ly_do": "Hội chứng Down/Turner/Klinefelter, nguyên nhân, xét nghiệm NST"
+ },
+ {
+  "ma_cau": "K09120501028",
+  "dang_bai_id": "KDB01633",
+  "chac": "cao",
+  "ly_do": "Hội chứng Down/Turner/Klinefelter, nguyên nhân, xét nghiệm NST"
+ },
+ {
+  "ma_cau": "K09120501029",
+  "dang_bai_id": "KDB01633",
+  "chac": "cao",
+  "ly_do": "Hội chứng Down/Turner/Klinefelter, nguyên nhân, xét nghiệm NST"
+ },
+ {
+  "ma_cau": "K09120501030",
+  "dang_bai_id": "KDB01633",
+  "chac": "cao",
+  "ly_do": "Hội chứng Down/Turner/Klinefelter, nguyên nhân, xét nghiệm NST"
+ },
+ {
+  "ma_cau": "K09120501031",
+  "dang_bai_id": "KDB01632",
+  "chac": "cao",
+  "ly_do": "Thể đa bội và ứng dụng chọn giống, lợi ích đột biến"
+ },
+ {
+  "ma_cau": "K09120501032",
+  "dang_bai_id": "KDB01632",
+  "chac": "cao",
+  "ly_do": "Thể đa bội và ứng dụng chọn giống, lợi ích đột biến"
+ },
+ {
+  "ma_cau": "K09120501033",
+  "dang_bai_id": "KDB01632",
+  "chac": "cao",
+  "ly_do": "Thể đa bội và ứng dụng chọn giống, lợi ích đột biến"
+ },
+ {
+  "ma_cau": "K09120501034",
+  "dang_bai_id": "KDB01632",
+  "chac": "cao",
+  "ly_do": "Thể đa bội và ứng dụng chọn giống, lợi ích đột biến"
+ },
+ {
+  "ma_cau": "K09120501035",
+  "dang_bai_id": "KDB01632",
+  "chac": "cao",
+  "ly_do": "Thể đa bội và ứng dụng chọn giống, lợi ích đột biến"
+ },
+ {
+  "ma_cau": "K09120501036",
+  "dang_bai_id": "KDB01632",
+  "chac": "cao",
+  "ly_do": "Thể đa bội và ứng dụng chọn giống, lợi ích đột biến"
+ },
+ {
+  "ma_cau": "K09120501037",
+  "dang_bai_id": "KDB01629",
+  "chac": "cao",
+  "ly_do": "So sánh trình tự gene trước/sau đột biến"
+ },
+ {
+  "ma_cau": "K09120501038",
+  "dang_bai_id": "KDB01629",
+  "chac": "cao",
+  "ly_do": "So sánh trình tự gene trước/sau đột biến"
+ },
+ {
+  "ma_cau": "K09120501039",
+  "dang_bai_id": "KDB01629",
+  "chac": "cao",
+  "ly_do": "So sánh trình tự gene trước/sau đột biến"
+ },
+ {
+  "ma_cau": "K09120501040",
+  "dang_bai_id": "KDB01633",
+  "chac": "cao",
+  "ly_do": "Hội chứng Down/Turner/Klinefelter, nguyên nhân, xét nghiệm NST"
+ },
+ {
+  "ma_cau": "K09120501041",
+  "dang_bai_id": "KDB01632",
+  "chac": "cao",
+  "ly_do": "Thể đa bội và ứng dụng chọn giống, lợi ích đột biến"
+ },
+ {
+  "ma_cau": "K09120501042",
+  "dang_bai_id": "KDB01632",
+  "chac": "cao",
+  "ly_do": "Thể đa bội và ứng dụng chọn giống, lợi ích đột biến"
+ },
+ {
+  "ma_cau": "K09120501043",
+  "dang_bai_id": "KDB01633",
+  "chac": "cao",
+  "ly_do": "Hội chứng Down/Turner/Klinefelter, nguyên nhân, xét nghiệm NST"
+ },
+ {
+  "ma_cau": "K09120501044",
+  "dang_bai_id": "KDB01633",
+  "chac": "cao",
+  "ly_do": "Hội chứng Down/Turner/Klinefelter, nguyên nhân, xét nghiệm NST"
+ },
+ {
+  "ma_cau": "K09120102001",
+  "dang_bai_id": "KDB01606",
+  "chac": "cao",
+  "ly_do": "Giao tử từ loài 2n cho trước, tìm n"
+ },
+ {
+  "ma_cau": "K09120102002",
+  "dang_bai_id": "KDB01606",
+  "chac": "cao",
+  "ly_do": "Giao tử từ loài 2n cho trước, tìm n"
+ },
+ {
+  "ma_cau": "K09120202001",
+  "dang_bai_id": "KDB01611",
+  "chac": "cao",
+  "ly_do": "Số tế bào con sau k lần nguyên phân"
+ },
+ {
+  "ma_cau": "K09120202002",
+  "dang_bai_id": "KDB01611",
+  "chac": "cao",
+  "ly_do": "Số tế bào con sau k lần nguyên phân"
+ },
+ {
+  "ma_cau": "K09120202003",
+  "dang_bai_id": "KDB01611",
+  "chac": "cao",
+  "ly_do": "Số tế bào con sau k lần nguyên phân"
+ },
+ {
+  "ma_cau": "K09120202004",
+  "dang_bai_id": "KDB01611",
+  "chac": "cao",
+  "ly_do": "Số tế bào con sau k lần nguyên phân"
+ },
+ {
+  "ma_cau": "K09120202005",
+  "dang_bai_id": "KDB01611",
+  "chac": "cao",
+  "ly_do": "Số tế bào con sau k lần nguyên phân"
+ },
+ {
+  "ma_cau": "K09120202006",
+  "dang_bai_id": "KDB01611",
+  "chac": "cao",
+  "ly_do": "Số tế bào con sau k lần nguyên phân"
+ },
+ {
+  "ma_cau": "K09120202007",
+  "dang_bai_id": "KDB01612",
+  "chac": "cao",
+  "ly_do": "NST môi trường cung cấp 2n(2^k-1)"
+ },
+ {
+  "ma_cau": "K09120202008",
+  "dang_bai_id": "KDB01612",
+  "chac": "cao",
+  "ly_do": "NST môi trường cung cấp 2n(2^k-1)"
+ },
+ {
+  "ma_cau": "K09120202009",
+  "dang_bai_id": "KDB01612",
+  "chac": "cao",
+  "ly_do": "NST môi trường cung cấp 2n(2^k-1)"
+ },
+ {
+  "ma_cau": "K09120202010",
+  "dang_bai_id": "KDB01612",
+  "chac": "cao",
+  "ly_do": "NST môi trường cung cấp 2n(2^k-1)"
+ },
+ {
+  "ma_cau": "K09120202011",
+  "dang_bai_id": "KDB01612",
+  "chac": "cao",
+  "ly_do": "NST môi trường cung cấp 2n(2^k-1)"
+ },
+ {
+  "ma_cau": "K09120202012",
+  "dang_bai_id": "KDB01612",
+  "chac": "cao",
+  "ly_do": "NST môi trường cung cấp 2n(2^k-1)"
+ }
+]

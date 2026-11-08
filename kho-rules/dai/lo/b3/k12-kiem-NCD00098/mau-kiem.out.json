@@ -1,0 +1,17 @@
+[
+{"ma_cau":"T1120000007562","dang_bai_id":"NDB02587","chac":"cao","ly_do":"Bảng ghép nhóm (trong hình) hỏi độ lệch chuẩn làm tròn: tính trung bình, phương sai rồi lấy căn."},
+{"ma_cau":"T1120000007591","dang_bai_id":"NDB02583","chac":"cao","ly_do":"Hỏi nhóm chứa tứ phân vị thứ nhất: tính n/4 rồi dò tần số tích luỹ, không nội suy."},
+{"ma_cau":"T1120000007159","dang_bai_id":"NDB02582","chac":"cao","ly_do":"Chọn công thức khoảng biến thiên R = đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."},
+{"ma_cau":"T1120000007553","dang_bai_id":"NDB02582","chac":"cao","ly_do":"Bảng ghép nhóm hỏi khoảng biến thiên: lấy đầu mút phải nhóm cuối trừ đầu mút trái nhóm đầu."},
+{"ma_cau":"T1120000003777","dang_bai_id":"NDB02591","chac":"cao","ly_do":"Tính số trung bình mẫu ghép nhóm bằng giá trị đại diện."},
+{"ma_cau":"T1120000003138","dang_bai_id":"NDB02591","chac":"cao","ly_do":"Tính số trung bình mẫu ghép nhóm bằng giá trị đại diện."},
+{"ma_cau":"T1120000007082","dang_bai_id":"NDB02587","chac":"cao","ly_do":"Cho bảng ghép nhóm, tính độ lệch chuẩn qua trung bình và phương sai."},
+{"ma_cau":"T1120000004389","dang_bai_id":"NDB02591","chac":"cao","ly_do":"Tính số trung bình mẫu ghép nhóm rồi xác định khoảng chứa nó."},
+{"ma_cau":"T1120000007844","dang_bai_id":"NDB02587","chac":"cao","ly_do":"Cho bảng ghép nhóm, tính phương sai làm tròn bằng công thức rút gọn."},
+{"ma_cau":"T1120000007161","dang_bai_id":"NDB02583","chac":"cao","ly_do":"Hỏi nhóm chứa tứ phân vị thứ nhất: dò tần số tích luỹ với n/4."},
+{"ma_cau":"T1120000007059","dang_bai_id":"NDB02582","chac":"cao","ly_do":"Bảng ghép nhóm hỏi khoảng biến thiên R = 40 − 10."},
+{"ma_cau":"T1120000007458","dang_bai_id":"NDB02585","chac":"cao","ly_do":"Cho bảng, tính Q1 và Q3 bằng nội suy rồi lấy khoảng tứ phân vị dạng phân số."},
+{"ma_cau":"T1120000007123","dang_bai_id":"NDB02582","chac":"cao","ly_do":"Bảng ghép nhóm hỏi khoảng biến thiên R = 300 − 50."},
+{"ma_cau":"T1120000007834","dang_bai_id":"NDB02582","chac":"cao","ly_do":"Bảng ghép nhóm hỏi khoảng biến thiên R = 24,5 − 9,5."},
+{"ma_cau":"T1120000007835","dang_bai_id":"NDB02586","chac":"cao","ly_do":"Nhận biết công thức khoảng tứ phân vị ΔQ = Q3 − Q1, bẫy Q2."}
+]

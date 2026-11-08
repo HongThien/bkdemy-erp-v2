@@ -1,0 +1,1748 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00510",
+   "chu_de": "Giới thiệu về hợp chất hữu cơ, hydrocarbon & nguồn nhiên liệu",
+   "chuyen_de": "Alkane",
+   "nhom": "Các dạng bài tập cơ bản về alkane",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nAlkane là hydrocarbon mạch hở, trong phân tử chỉ có liên kết đơn C-C và C-H; công thức chung $\\mathrm{C_{n}H_{2n+2}}$ (n ≥ 1).\nTên các alkane đầu dãy: $\\mathrm{CH_{4}}$ methane, $\\mathrm{C_{2}H_{6}}$ ethane, $\\mathrm{C_{3}H_{8}}$ propane, $\\mathrm{C_{4}H_{10}}$ butane.\nAlkene có 1 liên kết đôi C=C, công thức chung $\\mathrm{C_{n}H_{2n}}$ (n ≥ 2); alcohol có nhóm -OH; acid có nhóm -COOH.\nỞ điều kiện thường, alkane và alkene có từ 1 đến 4 carbon là chất khí, không màu, hầu như không tan trong nước.\n\n##PP 2. Các bước làm bài\nXác định phân tử có liên kết đôi C=C hay nhóm chức nào không\nĐối chiếu công thức với công thức chung của từng loại hợp chất\nNếu hỏi tên: đếm số carbon rồi ghép tiền tố với đuôi -ane\n\n##CY 3. Lưu ý\nĐuôi -ane là alkane (liên kết đơn), -ene là alkene (liên kết đôi), -ol là alcohol.\nAlkane có nhiều hydrogen hơn alkene cùng số carbon.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01502",
+     "thu_tu": 1,
+     "ten": "Nhận biết alkane qua cấu tạo hoặc công thức chung",
+     "mo_ta": "Đề cho công thức cấu tạo hoặc công thức chung của hydrocarbon · hỏi chất thuộc loại hợp chất nào · đối chiếu đặc điểm liên kết với alkane.\nBiến thể: cho công thức cấu tạo chỉ có liên kết đơn; cho dạng công thức chung.\nLưu ý: đề hỏi tên gọi cụ thể của một chất ⇒ thuộc dạng \"Gọi tên alkane từ công thức phân tử\".",
+     "ly_thuyet": "##TC Nhận biết alkane\nAlkane chỉ có liên kết đơn C-C và C-H, công thức chung $\\mathrm{C_{n}H_{2n+2}}$ (n ≥ 1).\nAlkene có 1 liên kết đôi C=C, công thức chung $\\mathrm{C_{n}H_{2n}}$.\nAlcohol có nhóm -OH, acid có nhóm -COOH nên trong phân tử có oxygen.\n\n##PP Cách làm\nXem phân tử có liên kết đôi hoặc có nguyên tử oxygen không\nNếu chỉ gồm C, H và toàn liên kết đơn thì là alkane\nVới công thức chung, đối chiếu $\\mathrm{C_{n}H_{2n+2}}$ hay $\\mathrm{C_{n}H_{2n}}$\n\n##CY Chú ý\nPhương án nhiễu thường là alkene (nhầm số hydrogen), alcohol hoặc acid (có oxygen).",
+     "vi_du": "##VD\nChất có công thức cấu tạo $\\mathrm{CH_{3}-CH_{2}-CH_{2}-CH_{3}}$ (chỉ có liên kết đơn) thuộc loại chất nào?\nA. Alkene\nB. Alcohol\nC. Alkane\nD. Acid\n\nBài giải:\nPhân tử chỉ gồm carbon và hydrogen, chỉ có liên kết đơn C-C và C-H.\nKhông có liên kết đôi C=C nên không phải alkene.\nKhông có oxygen nên không phải alcohol (nhóm -OH) hay acid (nhóm -COOH).\nVậy chất này thuộc loại alkane.\nChọn C.\n\n##VD\nHydrocarbon có công thức phân tử dạng $\\mathrm{C_{n}H_{2n+2}}$ (n từ 1 trở lên) thuộc loại chất nào?\nA. Alkene\nB. Alkane\nC. Alcohol\nD. Acid\n\nBài giải:\nCông thức chung $\\mathrm{C_{n}H_{2n+2}}$ ứng với alkane, chỉ có liên kết đơn trong mạch.\nAlkene có công thức chung $\\mathrm{C_{n}H_{2n}}$, ít hydrogen hơn.\nAlcohol và acid có nhóm chức chứa oxygen nên không thuộc dạng hydrocarbon $\\mathrm{C_{n}H_{2n+2}}$.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01503",
+     "thu_tu": 2,
+     "ten": "Gọi tên alkane từ công thức phân tử",
+     "mo_ta": "Đề cho công thức phân tử của một chất có 1 đến 4 carbon · hỏi tên gọi · đếm số carbon rồi chọn tên theo dãy alkane.\nBiến thể: cho $\\mathrm{CH_{4}}$, $\\mathrm{C_{3}H_{8}}$, $\\mathrm{C_{4}H_{10}}$.\nLưu ý: đề hỏi tên chất có liên kết đôi (ethylene, propylene) ⇒ thuộc nhóm Alkene.",
+     "ly_thuyet": "##TC Tên alkane đầu dãy\n$\\mathrm{CH_{4}}$: methane; $\\mathrm{C_{2}H_{6}}$: ethane; $\\mathrm{C_{3}H_{8}}$: propane; $\\mathrm{C_{4}H_{10}}$: butane.\nTên gồm tiền tố chỉ số carbon (meth- 1, eth- 2, prop- 3, but- 4) và đuôi -ane.\n\n##PP Cách làm\nĐếm số nguyên tử carbon trong công thức\nChọn tiền tố ứng với số carbon và thêm đuôi -ane\nLoại phương án có đuôi -ene, -ol hoặc số carbon khác\n\n##CY Chú ý\nPropylene, butene là alkene; butanol, methanol là alcohol, đều khác alkane cùng số carbon.",
+     "vi_du": "##VD\nChất có công thức hoá học $\\mathrm{CH_{4}}$ có tên gọi là\nA. Methane\nB. Ethane\nC. Ethylene\nD. Methanol\n\nBài giải:\n$\\mathrm{CH_{4}}$ có 1 nguyên tử carbon, chỉ có liên kết đơn nên là alkane.\nAlkane 1 carbon có tên methane.\nEthane là $\\mathrm{C_{2}H_{6}}$, ethylene là $\\mathrm{C_{2}H_{4}}$, methanol là $\\mathrm{CH_{3}OH}$, đều khác $\\mathrm{CH_{4}}$.\nChọn A.\n\n##VD\nChất có công thức hoá học $\\mathrm{C_{4}H_{10}}$ có tên gọi là\nA. Propane\nB. Butane\nC. Butene\nD. Butanol\n\nBài giải:\n$\\mathrm{C_{4}H_{10}}$ có 4 nguyên tử carbon và thoả $\\mathrm{C_{n}H_{2n+2}}$ với n = 4 nên là alkane.\nAlkane 4 carbon có tên butane.\nPropane chỉ có 3 carbon; đuôi -ene dùng cho alkene; butanol là alcohol có nhóm -OH.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01504",
+     "thu_tu": 3,
+     "ten": "Tính chất vật lí của alkane và alkene có ít carbon",
+     "mo_ta": "Đề hỏi trạng thái, màu sắc, độ tan trong nước của methane, ethane, propane hoặc của nhóm alkane, alkene 1 đến 4 carbon ở điều kiện thường · chọn phát biểu đúng.\nLưu ý: đề hỏi tính chất vật lí của ethylene riêng lẻ ở nhóm Alkene ⇒ thuộc dạng \"Tính chất vật lí của ethylene\" của nhóm đó.",
+     "ly_thuyet": "##TC Tính chất vật lí\nỞ điều kiện thường, alkane và alkene có từ 1 đến 4 carbon là chất khí, không màu.\nChúng hầu như không tan trong nước.\n\n##CY Chú ý\nKhông nhầm với chất lỏng, chất rắn hoặc khí tan tốt trong nước.",
+     "vi_du": "##VD\nỞ điều kiện thường, khí methane có tính chất vật lí nào sau đây?\nA. Chất khí, không tan trong nước\nB. Chất lỏng, tan tốt trong nước\nC. Chất rắn, không màu\nD. Chất khí, tan tốt trong nước\n\nBài giải:\nMethane là chất khí, không màu ở điều kiện thường.\nMethane hầu như không tan trong nước.\nVậy phương án đúng là chất khí, không tan trong nước.\nChọn A.\n\n##VD\nAlkane và alkene có từ 1 đến 4 carbon (như methane, ethane, propane, butane, ethylene…) đều có đặc điểm chung nào về trạng thái ở điều kiện thường?\nA. Đều là chất rắn, dễ bay hơi\nB. Đều là chất lỏng, dễ cháy\nC. Đều là chất khí, tan tốt trong nước\nD. Đều là chất khí, không màu\n\nBài giải:\nCác alkane, alkene có 1 đến 4 carbon ở điều kiện thường đều là chất khí, không màu.\nChúng hầu như không tan trong nước nên phương án \"tan tốt trong nước\" sai.\nKhông có chất rắn hay chất lỏng trong nhóm này.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00515",
+   "chu_de": "Giới thiệu về hợp chất hữu cơ, hydrocarbon & nguồn nhiên liệu",
+   "chuyen_de": "Alkene",
+   "nhom": "Các dạng bài tập cơ bản về Alkene",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nAlkene là hydrocarbon mạch hở có 1 liên kết đôi C=C; công thức chung $\\mathrm{C_{n}H_{2n}}$ (n ≥ 2).\nTên alkene đơn giản: $\\mathrm{C_{2}H_{4}}$ ethylene; $\\mathrm{C_{3}H_{6}}$ propylene.\nỞ điều kiện thường, alkene có ít carbon là chất khí, không màu, hầu như không tan trong nước.\n\n##PP 2. Các bước làm bài\nXác định phân tử có liên kết đôi C=C hay không\nĐối chiếu công thức với $\\mathrm{C_{n}H_{2n}}$ (alkene) và $\\mathrm{C_{n}H_{2n+2}}$ (alkane)\nNếu hỏi tên: đếm số carbon rồi chọn tên của alkene\n\n##CY 3. Lưu ý\nAlkene có ít hydrogen hơn alkane cùng số carbon.\nAlcohol có nhóm -OH, acid có nhóm -COOH nên có oxygen.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01510",
+     "thu_tu": 1,
+     "ten": "Nhận biết alkene qua cấu tạo hoặc công thức chung",
+     "mo_ta": "Đề cho công thức cấu tạo có liên kết đôi hoặc công thức chung của hydrocarbon · hỏi chất thuộc loại hợp chất nào · đối chiếu với alkene.\nLưu ý: đề hỏi tên gọi cụ thể ⇒ thuộc dạng \"Gọi tên alkene từ công thức phân tử\".",
+     "ly_thuyet": "##TC Nhận biết alkene\nAlkene có 1 liên kết đôi C=C, công thức chung $\\mathrm{C_{n}H_{2n}}$ (n ≥ 2).\nAlkane chỉ có liên kết đơn, công thức chung $\\mathrm{C_{n}H_{2n+2}}$.\n\n##PP Cách làm\nTìm liên kết đôi C=C trong công thức cấu tạo\nHoặc đối chiếu công thức chung $\\mathrm{C_{n}H_{2n}}$\nLoại alcohol, acid vì có oxygen\n\n##CY Chú ý\nPhương án alkane sai vì chỉ có liên kết đơn hoặc có nhiều hydrogen hơn.",
+     "vi_du": "##VD\nChất có công thức cấu tạo $\\mathrm{CH_{2}=CH_{2}}$ (có một liên kết đôi C=C) thuộc loại chất nào?\nA. Alkane\nB. Alkene\nC. Alcohol\nD. Acid\n\nBài giải:\nPhân tử có 1 liên kết đôi C=C nên thuộc loại alkene.\nAlkane chỉ có liên kết đơn.\nAlcohol và acid có chứa oxygen, phân tử này không có.\nChọn B.\n\n##VD\nHydrocarbon có công thức phân tử dạng $\\mathrm{C_{n}H_{2n}}$ (n từ 2 trở lên) thuộc loại chất nào?\nA. Alkane\nB. Alcohol\nC. Acid\nD. Alkene\n\nBài giải:\nCông thức chung $\\mathrm{C_{n}H_{2n}}$ ứng với alkene, có 1 liên kết đôi C=C trong mạch.\nAlkane có công thức chung $\\mathrm{C_{n}H_{2n+2}}$, nhiều hydrogen hơn.\nAlcohol, acid có oxygen nên không có dạng $\\mathrm{C_{n}H_{2n}}$.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01511",
+     "thu_tu": 2,
+     "ten": "Gọi tên alkene từ công thức phân tử",
+     "mo_ta": "Đề cho công thức phân tử $\\mathrm{C_{2}H_{4}}$ hoặc $\\mathrm{C_{3}H_{6}}$ · hỏi tên gọi · chọn tên alkene tương ứng.\nLưu ý: tên alkane (đuôi -ane) thuộc nhóm Alkane.",
+     "ly_thuyet": "##TC Tên alkene\n$\\mathrm{C_{2}H_{4}}$: ethylene; $\\mathrm{C_{3}H_{6}}$: propylene.\n\n##PP Cách làm\nĐếm số carbon\nChọn alkene có số carbon tương ứng (2 carbon: ethylene; 3 carbon: propylene)\n\n##CY Chú ý\nEthane và propane là alkane; ethanol, propanol là alcohol.",
+     "vi_du": "##VD\nChất có công thức hoá học $\\mathrm{C_{2}H_{4}}$ có tên gọi là\nA. Ethane\nB. Propylene\nC. Ethylene\nD. Ethanol\n\nBài giải:\n$\\mathrm{C_{2}H_{4}}$ có 1 liên kết đôi C=C, là alkene 2 carbon, tên ethylene.\nEthane là $\\mathrm{C_{2}H_{6}}$; propylene là $\\mathrm{C_{3}H_{6}}$; ethanol là $\\mathrm{C_{2}H_{5}OH}$.\nChọn C.\n\n##VD\nChất có công thức hoá học $\\mathrm{C_{3}H_{6}}$ có tên gọi là\nA. Propane\nB. Ethylene\nC. Propanol\nD. Propylene\n\nBài giải:\n$\\mathrm{C_{3}H_{6}}$ có 1 liên kết đôi C=C, là alkene 3 carbon, tên propylene.\nPropane là $\\mathrm{C_{3}H_{8}}$; ethylene là $\\mathrm{C_{2}H_{4}}$; propanol là alcohol có nhóm -OH.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01512",
+     "thu_tu": 3,
+     "ten": "Tính chất vật lí của ethylene",
+     "mo_ta": "Đề hỏi trạng thái, màu sắc, độ tan trong nước của ethylene ở điều kiện thường · chọn phát biểu đúng.\nLưu ý: đề nhắc chung alkane và alkene 1 đến 4 carbon ⇒ thuộc nhóm Alkane.",
+     "ly_thuyet": "##TC Tính chất vật lí của ethylene\nEthylene là chất khí, không màu, hầu như không tan trong nước.\n\n##CY Chú ý\nKhông nhầm với chất lỏng, chất rắn hay khí tan tốt trong nước.",
+     "vi_du": "##VD\nỞ điều kiện thường, khí ethylene có tính chất vật lí nào sau đây?\nA. Chất lỏng, tan tốt trong nước\nB. Chất rắn, không màu\nC. Chất khí, không tan trong nước\nD. Chất khí, tan tốt trong nước\n\nBài giải:\nEthylene là chất khí, không màu ở điều kiện thường.\nEthylene hầu như không tan trong nước.\nChọn C."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00519",
+   "chu_de": "Giới thiệu về hợp chất hữu cơ, hydrocarbon & nguồn nhiên liệu",
+   "chuyen_de": "Nguồn nhiên liệu",
+   "nhom": "Các dạng bài tập cơ bản về nguồn nhiên liệu",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nNhiên liệu phân loại theo trạng thái: rắn (than đá, than củi, gỗ), lỏng (xăng, dầu diesel, dầu hoả, dầu mỏ, cồn ethanol), khí (khí thiên nhiên, khí mỏ dầu, biogas, LPG).\nChưng cất dầu mỏ thu được xăng, dầu diesel, dầu hoả, nhựa đường…\nKhí thiên nhiên có thành phần chính là methane; khí mỏ dầu (khí đồng hành) lẫn trong mỏ dầu; LPG gồm propane và butane; biogas sinh ra từ sự phân huỷ yếm khí chất thải hữu cơ.\n\n##PP 2. Các bước làm bài\nXác định đề hỏi về trạng thái, nguồn gốc hay thành phần của nhiên liệu\nNhớ lại nhóm hoặc nguồn gốc của từng nhiên liệu trong các phương án\nLoại các phương án thuộc nhóm hoặc nguồn gốc khác\n\n##CY 3. Lưu ý\nDầu mỏ và cồn là nhiên liệu lỏng; khí mỏ dầu, biogas là nhiên liệu khí; gỗ, than là nhiên liệu rắn.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01517",
+     "thu_tu": 1,
+     "ten": "Phân loại nhiên liệu theo trạng thái rắn, lỏng, khí",
+     "mo_ta": "Đề cho 4 nhiên liệu · hỏi chất nào thuộc nhóm nhiên liệu rắn, lỏng hoặc khí · phân loại theo trạng thái tồn tại ở điều kiện thường.\nLưu ý: đề hỏi nguồn gốc hoặc thành phần của nhiên liệu ⇒ thuộc dạng \"Thành phần và nguồn gốc của các nhiên liệu khí\".",
+     "ly_thuyet": "##TC Phân loại nhiên liệu\nNhiên liệu rắn: than đá, than củi, gỗ.\nNhiên liệu lỏng: xăng, dầu diesel, dầu hoả, dầu mỏ, cồn (ethanol).\nNhiên liệu khí: khí thiên nhiên, khí mỏ dầu (khí đồng hành), biogas.\n\n##PP Cách làm\nXác định trạng thái của từng chất trong các phương án\nChọn chất có trạng thái đúng với nhóm được hỏi\n\n##CY Chú ý\nDầu mỏ và cồn là chất lỏng; khí mỏ dầu là chất khí dù khai thác cùng dầu mỏ.",
+     "vi_du": "##VD\nTrong các nhiên liệu sau, chất nào thuộc nhóm nhiên liệu lỏng?\nA. Than đá\nB. Dầu diesel\nC. Biogas\nD. Gỗ\n\nBài giải:\nDầu diesel tồn tại ở trạng thái lỏng nên thuộc nhóm nhiên liệu lỏng.\nThan đá và gỗ là nhiên liệu rắn; biogas là nhiên liệu khí.\nChọn B.\n\n##VD\nTrong các nhiên liệu sau, chất nào thuộc nhóm nhiên liệu rắn?\nA. Dầu mỏ\nB. Than củi\nC. Khí đồng hành\nD. Cồn (ethanol)\n\nBài giải:\nThan củi tồn tại ở trạng thái rắn nên thuộc nhóm nhiên liệu rắn.\nDầu mỏ và cồn là nhiên liệu lỏng; khí đồng hành là nhiên liệu khí.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01518",
+     "thu_tu": 2,
+     "ten": "Sản phẩm chưng cất dầu mỏ và ứng dụng",
+     "mo_ta": "Đề hỏi sản phẩm thu được khi chưng cất dầu mỏ, hoặc sản phẩm của dầu mỏ dùng vào việc gì · chọn sản phẩm đúng.\nLưu ý: đề hỏi thành phần của khí nhiên liệu (khí thiên nhiên, LPG, biogas) ⇒ thuộc dạng \"Thành phần và nguồn gốc của các nhiên liệu khí\".",
+     "ly_thuyet": "##TC Chế biến dầu mỏ\nChưng cất dầu mỏ cho các phân đoạn: xăng, dầu diesel, dầu hoả, nhựa đường…\nNhựa đường là sản phẩm nặng, có độ nhớt cao, dùng để rải mặt đường.\n\n##CY Chú ý\nKhí thiên nhiên, than đá, biogas không phải sản phẩm chưng cất dầu mỏ.",
+     "vi_du": "##VD\nSản phẩm nào sau đây thu được khi chưng cất dầu mỏ?\nA. Khí thiên nhiên\nB. Than đá\nC. Nhựa đường\nD. Biogas\n\nBài giải:\nChưng cất dầu mỏ cho các sản phẩm như xăng, dầu diesel, dầu hoả và nhựa đường.\nKhí thiên nhiên, than đá, biogas không phải sản phẩm của quá trình này.\nChọn C.\n\n##VD\nSản phẩm chế biến từ dầu mỏ nào sau đây được dùng để rải mặt đường?\nA. Xăng\nB. Dầu hoả\nC. Nhựa đường\nD. Dầu diesel\n\nBài giải:\nNhựa đường là sản phẩm nặng thu được khi chưng cất dầu mỏ, có độ nhớt cao.\nVì vậy nhựa đường được dùng để rải mặt đường.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01519",
+     "thu_tu": 3,
+     "ten": "Thành phần và nguồn gốc của các nhiên liệu khí",
+     "mo_ta": "Đề hỏi thành phần chính của LPG, khí thiên nhiên, hoặc khí mỏ dầu đi cùng chất nào, biogas thu được từ quá trình nào · chọn đáp án đúng.\nLưu ý: đề chỉ yêu cầu xếp nhiên liệu vào nhóm rắn, lỏng, khí ⇒ thuộc dạng \"Phân loại nhiên liệu theo trạng thái rắn, lỏng, khí\".",
+     "ly_thuyet": "##TC Nhiên liệu khí\nLPG dùng đun nấu gồm propane và butane, được nén hoá lỏng để dễ vận chuyển.\nKhí thiên nhiên khai thác từ mỏ khí có thành phần chính là methane.\nKhí mỏ dầu (khí đồng hành) khai thác cùng với dầu mỏ.\nBiogas thu được từ sự phân huỷ yếm khí phân, rác hữu cơ, thành phần chủ yếu là methane.\n\n##CY Chú ý\nKhông nhầm LPG (propane, butane) với khí thiên nhiên (methane).",
+     "vi_du": "##VD\nKhí LPG dùng làm nhiên liệu đun nấu có thành phần chính là\nA. Methane\nB. Khí carbon dioxide\nC. Ethylene\nD. Propane và butane\n\nBài giải:\nLPG dùng đun nấu có thành phần chính là propane và butane, được nén hoá lỏng để dễ vận chuyển.\nMethane là thành phần chính của khí thiên nhiên; $\\mathrm{CO_{2}}$ không cháy được; ethylene không phải thành phần của LPG.\nChọn D.\n\n##VD\nKhí biogas thu được từ quá trình nào?\nA. Phân huỷ yếm khí phân, rác hữu cơ\nB. Chưng cất dầu mỏ\nC. Khai thác từ mỏ khí thiên nhiên\nD. Đốt than trong lò kín\n\nBài giải:\nBiogas là hỗn hợp khí (chủ yếu methane) sinh ra từ quá trình phân huỷ yếm khí, tức không có oxygen, các chất thải hữu cơ như phân gia súc, rác hữu cơ.\nCác quá trình còn lại cho sản phẩm khác.\nChọn A."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00511",
+   "chu_de": "Giới thiệu về hợp chất hữu cơ, hydrocarbon & nguồn nhiên liệu",
+   "chuyen_de": "Alkane",
+   "nhom": "Viết phương trình hóa học mô tả tính chất của alkane",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nAlkane cháy hoàn toàn trong oxygen tạo carbon dioxide và nước, toả nhiều nhiệt.\nPhản ứng thế: nguyên tử H trong phân tử alkane bị thay bằng nguyên tử khác. Methane tác dụng với chlorine khi có ánh sáng: $\\mathrm{CH_{4} + Cl_{2} \\rightarrow  CH_{3}Cl + HCl}$.\nPhản ứng thế có thể xảy ra lần lượt ở nhiều nguyên tử H; alkane không có phản ứng cộng.\n\n##PP 2. Các bước làm bài\nXác định loại phản ứng (cháy hoặc thế) và chất tham gia\nViết sản phẩm theo đúng loại phản ứng\nCân bằng: C, rồi H, cuối cùng O (với phản ứng cháy)\nKiểm tra số nguyên tử mỗi nguyên tố hai vế và điều kiện phản ứng\n\n##CY 3. Lưu ý\nPhản ứng thế tạo thêm sản phẩm $\\mathrm{HCl}$, không tạo $\\mathrm{H_{2}}$.\nKhi số nguyên tử O ở vế phải lẻ, nhân đôi hệ số của alkane.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01505",
+     "thu_tu": 1,
+     "ten": "Chọn phương trình đốt cháy hoàn toàn alkane đã cân bằng đúng",
+     "mo_ta": "Đề nêu alkane (methane, ethane, propane, butane) cháy hoàn toàn · hỏi phương trình hoá học đúng · chọn phương án có hệ số cân bằng chính xác.\nLưu ý: đề cho khối lượng hoặc thể tích chất rồi hỏi lượng chất khác ⇒ thuộc nhóm \"Bài toán đốt cháy alkane\".",
+     "ly_thuyet": "##TC Phản ứng cháy của alkane\nAlkane + oxygen → carbon dioxide + nước (cháy hoàn toàn).\nSố $\\mathrm{CO_{2}}$ bằng số carbon của alkane, số $\\mathrm{H_{2}O}$ bằng nửa số hydrogen.\n\n##PP Cân bằng\nCân bằng số C bằng hệ số của $\\mathrm{CO_{2}}$\nCân bằng số H bằng hệ số của $\\mathrm{H_{2}O}$\nĐếm số O vế phải rồi đặt hệ số $\\mathrm{O_{2}}$; nếu lẻ thì nhân đôi cả phương trình\nKiểm tra lại từng nguyên tố hai vế\n\n##CY Chú ý\nPhương án nhiễu hay thiếu hệ số trước alkane khi hệ số $\\mathrm{O_{2}}$ là số lẻ, hoặc ghi sai số $\\mathrm{CO_{2}}$, $\\mathrm{H_{2}O}$.",
+     "vi_du": "##VD\nPhương trình hoá học nào sau đây viết đúng khi đốt cháy hoàn toàn khí methane?\nA. $\\mathrm{CH_{4} + O_{2} \\rightarrow  CO_{2} + H_{2}O}$\nB. $\\mathrm{CH_{4} + 2O_{2} \\rightarrow  2CO_{2} + 2H_{2}O}$\nC. $\\mathrm{CH_{4} + 2O_{2} \\rightarrow  CO_{2} + 2H_{2}O}$\nD. $\\mathrm{2CH_{4} + O_{2} \\rightarrow  2CO_{2} + 2H_{2}O}$\n\nBài giải:\n$\\mathrm{CH_{4}}$ có 1 carbon nên tạo 1 $\\mathrm{CO_{2}}$; có 4 hydrogen nên tạo 2 $\\mathrm{H_{2}O}$.\nVế phải có 2 + 2 = 4 nguyên tử O nên cần 2 $\\mathrm{O_{2}}$.\nPhương trình đúng: $\\mathrm{CH_{4} + 2O_{2} \\rightarrow  CO_{2} + 2H_{2}O}$.\nChọn C.\n\n##VD\nPhương trình hoá học nào sau đây viết đúng khi đốt cháy hoàn toàn khí ethane?\nA. $\\mathrm{C_{2}H_{6} + 7O_{2} \\rightarrow  4CO_{2} + 6H_{2}O}$\nB. $\\mathrm{2C_{2}H_{6} + 7O_{2} \\rightarrow  4CO_{2} + 6H_{2}O}$\nC. $\\mathrm{2C_{2}H_{6} + 5O_{2} \\rightarrow  4CO_{2} + 6H_{2}O}$\nD. $\\mathrm{2C_{2}H_{6} + 7O_{2} \\rightarrow  2CO_{2} + 6H_{2}O}$\n\nBài giải:\nVế phải có 4 $\\mathrm{CO_{2}}$ và 6 $\\mathrm{H_{2}O}$ nên cần 4 carbon và 12 hydrogen, tức 2 $\\mathrm{C_{2}H_{6}}$.\nSố nguyên tử O vế phải: 4 × 2 + 6 = 14, nên cần 7 $\\mathrm{O_{2}}$.\nPhương trình đúng: $\\mathrm{2C_{2}H_{6} + 7O_{2} \\rightarrow  4CO_{2} + 6H_{2}O}$.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01506",
+     "thu_tu": 2,
+     "ten": "Viết phương trình và sản phẩm của phản ứng thế alkane với chlorine",
+     "mo_ta": "Đề cho alkane (methane, ethane) phản ứng với chlorine khi có ánh sáng, thế 1 nguyên tử H · hỏi phương trình đúng hoặc sản phẩm thu được.\nBiến thể: chọn phương trình; chọn tập sản phẩm; chọn công thức sản phẩm hữu cơ.\nLưu ý: đề hỏi điều kiện hay loại phản ứng ⇒ thuộc dạng \"Điều kiện và đặc điểm của phản ứng thế ở alkane\".",
+     "ly_thuyet": "##TC Phản ứng thế với chlorine\nKhi có ánh sáng, một nguyên tử H của alkane được thay bằng một nguyên tử Cl; tỉ lệ mol 1 : 1 thì thế một nguyên tử H.\nSản phẩm gồm dẫn xuất chlorine và $\\mathrm{HCl}$. Ví dụ: $\\mathrm{CH_{4} + Cl_{2} \\rightarrow  CH_{3}Cl + HCl}$.\n\n##PP Cách làm\nViết công thức alkane và $\\mathrm{Cl_{2}}$\nBỏ một nguyên tử H khỏi alkane, thay bằng một nguyên tử Cl để được dẫn xuất\nNguyên tử H và nguyên tử Cl còn lại tạo $\\mathrm{HCl}$\nKiểm tra số nguyên tử mỗi nguyên tố hai vế\n\n##CY Chú ý\nSản phẩm phụ là $\\mathrm{HCl}$, không phải $\\mathrm{H_{2}}$; thế 1 nguyên tử H chỉ cần 1 $\\mathrm{Cl_{2}}$.",
+     "vi_du": "##VD\nKhi có ánh sáng, methane phản ứng với chlorine, thế 1 nguyên tử H. Phương trình đúng là\nA. $\\mathrm{CH_{4} + Cl_{2} \\rightarrow  CH_{2}Cl_{2} + H_{2}}$\nB. $\\mathrm{CH_{4} + Cl_{2} \\rightarrow  CH_{3}Cl + HCl}$\nC. $\\mathrm{CH_{4} + 2Cl_{2} \\rightarrow  CH_{3}Cl + HCl}$\nD. $\\mathrm{CH_{4} + Cl_{2} \\rightarrow  CH_{3}Cl + H_{2}}$\n\nBài giải:\nMột nguyên tử H trong $\\mathrm{CH_{4}}$ bị thay bằng một nguyên tử Cl nên tạo $\\mathrm{CH_{3}Cl}$.\nNguyên tử H được thay ra kết hợp với nguyên tử Cl còn lại của $\\mathrm{Cl_{2}}$ tạo $\\mathrm{HCl}$.\nPhương trình: $\\mathrm{CH_{4} + Cl_{2} \\rightarrow  CH_{3}Cl + HCl}$, chỉ cần 1 phân tử $\\mathrm{Cl_{2}}$.\nChọn B.\n\n##VD\nKhi có ánh sáng, ethane ($\\mathrm{C_{2}H_{6}}$) phản ứng với chlorine theo tỉ lệ mol 1 : 1. Sản phẩm hữu cơ thu được là\nA. $\\mathrm{C_{2}H_{4}Cl_{2}}$\nB. $\\mathrm{C_{2}H_{6}Cl_{2}}$\nC. $\\mathrm{C_{2}H_{4}}$\nD. $\\mathrm{C_{2}H_{5}Cl}$\n\nBài giải:\nTỉ lệ mol 1 : 1 nên chỉ một nguyên tử H của $\\mathrm{C_{2}H_{6}}$ bị thay bằng một nguyên tử Cl.\nSản phẩm hữu cơ có công thức $\\mathrm{C_{2}H_{5}Cl}$, kèm $\\mathrm{HCl}$: $\\mathrm{C_{2}H_{6} + Cl_{2} \\rightarrow  C_{2}H_{5}Cl + HCl}$.\n$\\mathrm{C_{2}H_{4}Cl_{2}}$ ứng với thế hai nguyên tử H; $\\mathrm{C_{2}H_{6}Cl_{2}}$ vượt hoá trị của carbon.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01507",
+     "thu_tu": 3,
+     "ten": "Điều kiện và đặc điểm của phản ứng thế ở alkane",
+     "mo_ta": "Đề hỏi điều kiện xảy ra phản ứng thế của methane với chlorine, hoặc hỏi phản ứng đã cho thuộc loại nào, hoặc đặc điểm của phản ứng thế · chọn phát biểu đúng, không phải viết phương trình.\nLưu ý: đề yêu cầu chọn phương trình hoặc sản phẩm ⇒ thuộc dạng \"Viết phương trình và sản phẩm của phản ứng thế alkane với chlorine\".",
+     "ly_thuyet": "##TC Đặc điểm phản ứng thế\nPhản ứng thế giữa alkane và chlorine xảy ra khi có ánh sáng.\nĐặc điểm: một hoặc nhiều nguyên tử H của alkane lần lượt được thay bằng nguyên tử Cl.\nPhản ứng cộng xảy ra với chất có liên kết đôi (alkene); phản ứng cháy cần oxygen và tạo $\\mathrm{CO_{2}}$, $\\mathrm{H_{2}O}$; phản ứng phân huỷ chỉ có một chất ban đầu.\n\n##CY Chú ý\nĐiều kiện đun nóng có xúc tác Ni là của phản ứng cộng hydrogen vào alkene, không phải phản ứng thế của alkane.",
+     "vi_du": "##VD\nPhản ứng thế giữa methane và chlorine cần điều kiện nào để xảy ra?\nA. Đun nóng, có xúc tác Ni\nB. Có ánh sáng\nC. Có mặt dung dịch base\nD. Áp suất cao, nhiệt độ thấp\n\nBài giải:\nPhản ứng thế giữa methane và chlorine xảy ra khi có ánh sáng.\nĐun nóng có xúc tác Ni là điều kiện của phản ứng cộng hydrogen vào alkene.\nDung dịch base, áp suất cao – nhiệt độ thấp không phải điều kiện của phản ứng này.\nChọn B.\n\n##VD\nPhản ứng $\\mathrm{CH_{4} + Cl_{2} \\rightarrow  CH_{3}Cl + HCl}$ (có ánh sáng) thuộc loại phản ứng nào?\nA. Phản ứng cộng\nB. Phản ứng cháy\nC. Phản ứng phân huỷ\nD. Phản ứng thế\n\nBài giải:\nMột nguyên tử H trong $\\mathrm{CH_{4}}$ được thay bằng một nguyên tử Cl.\nĐây là phản ứng thế.\nPhản ứng cộng cần liên kết đôi, phản ứng cháy cần oxygen, phản ứng phân huỷ chỉ có một chất ban đầu.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00516",
+   "chu_de": "Giới thiệu về hợp chất hữu cơ, hydrocarbon & nguồn nhiên liệu",
+   "chuyen_de": "Alkene",
+   "nhom": "Viết phương trình hóa học mô tả tính chất của Alkene",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nAlkene cháy hoàn toàn tạo $\\mathrm{CO_{2}}$ và $\\mathrm{H_{2}O}$, toả nhiều nhiệt.\nPhản ứng cộng: liên kết đôi C=C bị mở ra, mỗi nguyên tử carbon gắn thêm một nguyên tử hoặc nhóm nguyên tử.\nCộng bromine: $\\mathrm{C_{2}H_{4} + Br_{2} \\rightarrow  C_{2}H_{4}Br_{2}}$; alkene làm mất màu dung dịch bromine.\nCộng hydrogen (xúc tác Ni, nhiệt độ): $\\mathrm{C_{2}H_{4} + H_{2} \\rightarrow  C_{2}H_{6}}$, tạo alkane tương ứng.\n\n##PP 2. Các bước làm bài\nXác định phản ứng (cháy hay cộng) và chất phản ứng cùng alkene\nVới phản ứng cộng: giữ nguyên số carbon, thêm các nguyên tử vào hai carbon ở liên kết đôi\nVới phản ứng cháy: cân bằng C, H rồi O\nKiểm tra số nguyên tử mỗi nguyên tố hai vế\n\n##CY 3. Lưu ý\nPhản ứng cộng không tạo thêm sản phẩm như $\\mathrm{H_{2}}$; tỉ lệ mol alkene : $\\mathrm{Br_{2}}$ hoặc $\\mathrm{H_{2}}$ là 1 : 1.\nAlkene không phản ứng thế như alkane trong các phản ứng này.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01513",
+     "thu_tu": 1,
+     "ten": "Chọn phương trình đốt cháy hoàn toàn alkene đúng",
+     "mo_ta": "Đề nêu ethylene hoặc propylene cháy hoàn toàn · hỏi phương trình hoá học đúng · chọn phương án cân bằng chính xác.\nLưu ý: đề cho lượng chất rồi tính khối lượng sản phẩm ⇒ thuộc nhóm \"Bài toán đốt cháy alkene\".",
+     "ly_thuyet": "##TC Phản ứng cháy của alkene\nAlkene + oxygen → carbon dioxide + nước.\nSố $\\mathrm{CO_{2}}$ bằng số carbon, số $\\mathrm{H_{2}O}$ bằng nửa số hydrogen của alkene.\n\n##PP Cân bằng\nCân bằng C bằng hệ số $\\mathrm{CO_{2}}$\nCân bằng H bằng hệ số $\\mathrm{H_{2}O}$\nĐếm O ở vế phải, đặt hệ số $\\mathrm{O_{2}}$; nếu lẻ thì nhân đôi cả phương trình\n\n##CY Chú ý\nPhương án nhiễu thường sai số $\\mathrm{H_{2}O}$ hoặc số $\\mathrm{O_{2}}$, hoặc thiếu hệ số 2 của alkene khi $\\mathrm{O_{2}}$ lẻ.",
+     "vi_du": "##VD\nPhương trình hoá học nào sau đây viết đúng khi đốt cháy hoàn toàn khí ethylene?\nA. $\\mathrm{C_{2}H_{4} + 3O_{2} \\rightarrow  2CO_{2} + 2H_{2}O}$\nB. $\\mathrm{C_{2}H_{4} + 2O_{2} \\rightarrow  2CO_{2} + 2H_{2}O}$\nC. $\\mathrm{C_{2}H_{4} + 3O_{2} \\rightarrow  2CO_{2} + 3H_{2}O}$\nD. $\\mathrm{C_{2}H_{4} + 3O_{2} \\rightarrow  CO_{2} + 2H_{2}O}$\n\nBài giải:\n$\\mathrm{C_{2}H_{4}}$ có 2 carbon nên tạo 2 $\\mathrm{CO_{2}}$; có 4 hydrogen nên tạo 2 $\\mathrm{H_{2}O}$.\nSố O vế phải: 2 × 2 + 2 = 6, nên cần 3 $\\mathrm{O_{2}}$.\nChọn A.\n\n##VD\nPhương trình hoá học nào sau đây viết đúng khi đốt cháy hoàn toàn khí propylene ($\\mathrm{C_{3}H_{6}}$)?\nA. $\\mathrm{C_{3}H_{6} + 9O_{2} \\rightarrow  3CO_{2} + 3H_{2}O}$\nB. $\\mathrm{2C_{3}H_{6} + 9O_{2} \\rightarrow  6CO_{2} + 6H_{2}O}$\nC. $\\mathrm{2C_{3}H_{6} + 6O_{2} \\rightarrow  6CO_{2} + 6H_{2}O}$\nD. $\\mathrm{C_{3}H_{6} + 4O_{2} \\rightarrow  3CO_{2} + 3H_{2}O}$\n\nBài giải:\n$\\mathrm{C_{3}H_{6}}$ có 3 carbon, 6 hydrogen nên 1 phân tử tạo 3 $\\mathrm{CO_{2}}$ và 3 $\\mathrm{H_{2}O}$.\nSố O vế phải: 3 × 2 + 3 = 9, cần 4,5 $\\mathrm{O_{2}}$; nhân đôi cả phương trình để hệ số nguyên.\nPhương trình đúng: $\\mathrm{2C_{3}H_{6} + 9O_{2} \\rightarrow  6CO_{2} + 6H_{2}O}$.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01514",
+     "thu_tu": 2,
+     "ten": "Viết phương trình phản ứng cộng bromine của alkene",
+     "mo_ta": "Đề hỏi phương trình khi dẫn alkene (ethylene, propylene) qua dung dịch bromine, hoặc giải thích vì sao alkene làm mất màu nước bromine.\nLưu ý: đề nêu phản ứng với hydrogen có xúc tác Ni ⇒ thuộc dạng \"Viết phương trình phản ứng cộng hydrogen của alkene\".",
+     "ly_thuyet": "##TC Phản ứng cộng bromine\nAlkene có liên kết đôi C=C nên cộng $\\mathrm{Br_{2}}$ theo tỉ lệ 1 : 1, tạo dẫn xuất dibromo, làm mất màu dung dịch bromine.\nVí dụ: $\\mathrm{C_{2}H_{4} + Br_{2} \\rightarrow  C_{2}H_{4}Br_{2}}$; $\\mathrm{C_{3}H_{6} + Br_{2} \\rightarrow  C_{3}H_{6}Br_{2}}$.\n\n##PP Cách làm\nGiữ nguyên số carbon và số hydrogen của alkene\nThêm 2 nguyên tử Br vào hai carbon ở liên kết đôi\nKiểm tra tỉ lệ 1 : 1\n\n##CY Chú ý\nKhông tạo $\\mathrm{H_{2}}$; không có phản ứng thế; không cộng 2 phân tử $\\mathrm{Br_{2}}$ vào một liên kết đôi.",
+     "vi_du": "##VD\nPhương trình hoá học nào sau đây viết đúng khi dẫn khí ethylene qua dung dịch bromine?\nA. $\\mathrm{C_{2}H_{4} + Br_{2} \\rightarrow  C_{2}H_{4}Br_{2}}$\nB. $\\mathrm{C_{2}H_{4} + Br_{2} \\rightarrow  C_{2}H_{2}Br_{2} + H_{2}}$\nC. $\\mathrm{C_{2}H_{4} + 2Br_{2} \\rightarrow  C_{2}H_{4}Br_{4}}$\nD. $\\mathrm{C_{2}H_{4} + Br_{2} \\rightarrow  C_{2}H_{6}Br_{2}}$\n\nBài giải:\nEthylene có liên kết đôi C=C nên cộng với $\\mathrm{Br_{2}}$ theo tỉ lệ 1 : 1.\nPhương trình: $\\mathrm{C_{2}H_{4} + Br_{2} \\rightarrow  C_{2}H_{4}Br_{2}}$, làm mất màu dung dịch bromine.\nChọn A.\n\n##VD\nEthylene làm mất màu dung dịch nước bromine là do nguyên nhân nào?\nA. Ethylene tan tốt trong nước bromine\nB. Ethylene phản ứng thế với $\\mathrm{Br_{2}}$\nC. Ethylene có liên kết đôi C=C, cộng với $\\mathrm{Br_{2}}$\nD. Ethylene bị oxi hoá bởi $\\mathrm{Br_{2}}$ tạo $\\mathrm{CO_{2}}$\n\nBài giải:\nEthylene có liên kết đôi C=C nên cộng với $\\mathrm{Br_{2}}$ tạo $\\mathrm{C_{2}H_{4}Br_{2}}$ không màu.\nVì vậy dung dịch bromine bị mất màu.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01515",
+     "thu_tu": 3,
+     "ten": "Viết phương trình phản ứng cộng hydrogen của alkene",
+     "mo_ta": "Đề hỏi phương trình khi cho alkene (ethylene, propylene) tác dụng với hydrogen, xúc tác Ni, nhiệt độ · sản phẩm là alkane tương ứng.\nLưu ý: đề nêu bromine ⇒ thuộc dạng \"Viết phương trình phản ứng cộng bromine của alkene\".",
+     "ly_thuyet": "##TC Phản ứng cộng hydrogen\nAlkene cộng $\\mathrm{H_{2}}$ (xúc tác Ni, nhiệt độ) tạo alkane có cùng số carbon.\nVí dụ: $\\mathrm{C_{2}H_{4} + H_{2} \\rightarrow  C_{2}H_{6}}$; $\\mathrm{C_{3}H_{6} + H_{2} \\rightarrow  C_{3}H_{8}}$.\n\n##PP Cách làm\nGiữ nguyên số carbon\nThêm 2 nguyên tử H vào hai carbon ở liên kết đôi\nSản phẩm có công thức $\\mathrm{C_{n}H_{2n+2}}$\n\n##CY Chú ý\nTỉ lệ mol alkene : $\\mathrm{H_{2}}$ là 1 : 1; sản phẩm không phải alkene hay alkyne.",
+     "vi_du": "##VD\nPhương trình hoá học nào sau đây viết đúng khi cho ethylene phản ứng với khí hydrogen, xúc tác Ni, nhiệt độ?\nA. $\\mathrm{C_{2}H_{4} + H_{2} \\rightarrow  C_{2}H_{4}}$\nB. $\\mathrm{C_{2}H_{4} + H_{2} \\rightarrow  C_{2}H_{6}}$\nC. $\\mathrm{C_{2}H_{4} + 2H_{2} \\rightarrow  C_{2}H_{6}}$\nD. $\\mathrm{C_{2}H_{4} + H_{2} \\rightarrow  C_{2}H_{2}}$\n\nBài giải:\nEthylene cộng $\\mathrm{H_{2}}$ (xúc tác Ni, nhiệt độ) tạo ethane.\nPhương trình: $\\mathrm{C_{2}H_{4} + H_{2} \\rightarrow  C_{2}H_{6}}$, tỉ lệ mol 1 : 1.\nChọn B.\n\n##VD\nPhương trình hoá học nào sau đây viết đúng khi cho propylene ($\\mathrm{C_{3}H_{6}}$) phản ứng với khí hydrogen, xúc tác Ni, nhiệt độ?\nA. $\\mathrm{C_{3}H_{6} + 2H_{2} \\rightarrow  C_{3}H_{8}}$\nB. $\\mathrm{C_{3}H_{6} + H_{2} \\rightarrow  C_{3}H_{8}}$\nC. $\\mathrm{C_{3}H_{6} + H_{2} \\rightarrow  C_{3}H_{6}}$\nD. $\\mathrm{C_{3}H_{6} + H_{2} \\rightarrow  C_{3}H_{4}}$\n\nBài giải:\nPropylene cộng $\\mathrm{H_{2}}$ tạo propane, số carbon không đổi.\nPhương trình: $\\mathrm{C_{3}H_{6} + H_{2} \\rightarrow  C_{3}H_{8}}$, tỉ lệ mol 1 : 1.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00520",
+   "chu_de": "Giới thiệu về hợp chất hữu cơ, hydrocarbon & nguồn nhiên liệu",
+   "chuyen_de": "Nguồn nhiên liệu",
+   "nhom": "Ứng dụng thực tế của nguồn nhiên liệu",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nCháy hoàn toàn: đủ oxygen, sản phẩm là $\\mathrm{CO_{2}}$ và $\\mathrm{H_{2}O}$, toả nhiều nhiệt, ngọn lửa xanh, không khói.\nCháy không hoàn toàn: thiếu oxygen, sinh khí $\\mathrm{CO}$ độc và muội than (khói đen), toả ít nhiệt, lãng phí nhiên liệu.\nMuốn nhiên liệu cháy hoàn toàn: cung cấp đủ oxygen (quạt gió, mở van gió) và tăng diện tích tiếp xúc giữa nhiên liệu với oxygen (đập nhỏ, chẻ nhỏ, phun sương, trộn khí với không khí).\nHơi xăng, dầu, khí gas (LPG), khí methane dễ cháy nổ; LPG nặng hơn không khí nên tụ ở sát nền. Khí $\\mathrm{CO}$ không màu, không mùi, rất độc.\nĐốt nhiên liệu hoá thạch sinh ra $\\mathrm{CO_{2}}$ gây hiệu ứng nhà kính, cùng bụi và khí độc gây ô nhiễm không khí.\n\n##PP 2. Các bước làm bài\nXác định tình huống liên quan đến cháy, an toàn hay môi trường\nGọi tên hiện tượng: cháy hoàn toàn hay không hoàn toàn, thiếu oxygen hay diện tích tiếp xúc nhỏ\nChọn biện pháp phù hợp với nguyên nhân rồi loại các phương án ngược lại\n\n##CY 3. Lưu ý\nCác phương án nhiễu thường đưa ra việc bịt kín, giảm không khí hoặc thải trực tiếp, đều trái với điều kiện cháy hoàn toàn và an toàn.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01520",
+     "thu_tu": 1,
+     "ten": "Nhận biết cháy hoàn toàn và cháy không hoàn toàn",
+     "mo_ta": "Đề hỏi điều kiện, dấu hiệu hoặc sản phẩm của phản ứng cháy hoàn toàn hay cháy không hoàn toàn · chọn khái niệm hoặc hiện tượng đúng.\nLưu ý: đề nêu tình huống cụ thể rồi hỏi cách khắc phục ⇒ thuộc dạng \"Tìm nguyên nhân và cách khắc phục khi nhiên liệu cháy không hoàn toàn\".",
+     "ly_thuyet": "##TC Cháy hoàn toàn và không hoàn toàn\nCháy hoàn toàn khi nhiên liệu được cấp đủ oxygen; sản phẩm chỉ gồm $\\mathrm{CO_{2}}$ và $\\mathrm{H_{2}O}$.\nCháy không hoàn toàn khi thiếu oxygen; xuất hiện khói đen (muội than) hoặc khí $\\mathrm{CO}$.\n\n##PP Cách làm\nXem tình huống đủ hay thiếu oxygen\nĐối chiếu dấu hiệu khói đen, khí $\\mathrm{CO}$ với cháy không hoàn toàn\n\n##CY Chú ý\nNgọn lửa xanh, không khói là dấu hiệu cháy hoàn toàn.",
+     "vi_du": "##VD\nPhản ứng cháy hoàn toàn của nhiên liệu xảy ra khi\nA. Nhiên liệu được đốt ở nhiệt độ rất thấp\nB. Nhiên liệu được cấp đủ oxygen cần thiết\nC. Nhiên liệu tiếp xúc với khí carbon dioxide\nD. Nhiên liệu được nén chặt lại với nhau\n\nBài giải:\nNhiên liệu cháy hoàn toàn khi được cấp đủ oxygen.\nNhiệt độ thấp, khí $\\mathrm{CO_{2}}$ hay nén chặt đều không giúp cháy hoàn toàn.\nChọn B.\n\n##VD\nTrong động cơ xe máy, nếu bộ chế hoà khí cung cấp không khí quá ít so với lượng xăng, hiện tượng thường gặp là\nA. Xăng cháy sạch hơn, tiết kiệm nhiên liệu\nB. Động cơ chạy nhanh hơn bình thường\nC. Xăng cháy không hoàn toàn, khí thải có nhiều khí CO\nD. Khí thải chỉ gồm hơi nước và khí oxygen\n\nBài giải:\nKhông khí quá ít nghĩa là thiếu oxygen so với lượng xăng.\nXăng cháy không hoàn toàn, sinh nhiều khí $\\mathrm{CO}$ trong khí thải.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01521",
+     "thu_tu": 2,
+     "ten": "Giải thích biện pháp tăng diện tích tiếp xúc với oxygen",
+     "mo_ta": "Đề hỏi vì sao đập nhỏ than, chẻ nhỏ củi, phun xăng thành sương, chia nhỏ dòng gas, hoặc chuyển gas lỏng thành khí lại giúp nhiên liệu cháy hoàn toàn · chọn mục đích đúng.\nLưu ý: đề nhấn mạnh quạt gió, mở van gió, cấp thêm không khí ⇒ thuộc dạng \"Giải thích biện pháp cấp đủ oxygen cho phản ứng cháy\".",
+     "ly_thuyet": "##TC Diện tích tiếp xúc\nChia nhỏ nhiên liệu hoặc trộn đều nhiên liệu với không khí làm tăng diện tích tiếp xúc với oxygen.\nNhờ đó nhiên liệu cháy nhanh và hoàn toàn hơn.\n\n##PP Cách làm\nNhận ra biện pháp là chia nhỏ hoặc trộn đều nhiên liệu\nKết luận: tăng diện tích tiếp xúc với oxygen nên cháy hoàn toàn hơn\n\n##CY Chú ý\nViệc chia nhỏ không làm giảm khối lượng, nhiệt độ cháy hay lượng carbon của nhiên liệu.",
+     "vi_du": "##VD\nSo với để than nguyên cục lớn, than đã đập nhỏ cháy nhanh và hoàn toàn hơn vì\nA. Khối lượng than giảm đi sau khi đập nhỏ\nB. Nhiệt độ ngoài trời tăng lên khi đập than\nC. Diện tích tiếp xúc giữa than và oxygen tăng lên\nD. Than nhỏ chứa ít carbon hơn than cục lớn\n\nBài giải:\nĐập than thành cục nhỏ làm tăng diện tích tiếp xúc giữa than và oxygen trong không khí.\nNhờ đó than cháy nhanh và hoàn toàn hơn.\nKhối lượng, nhiệt độ ngoài trời và lượng carbon không thay đổi do đập nhỏ.\nChọn C.\n\n##VD\nTrong bếp gas công nghiệp cỡ lớn, người ta thiết kế nhiều lỗ nhỏ ở đầu vòi phun gas thay vì một lỗ lớn duy nhất. Mục đích chính là\nA. Giảm lượng gas thoát ra để tiết kiệm gas\nB. Chia nhỏ dòng gas để gas trộn đều với không khí\nC. Làm ngọn lửa yếu đi cho an toàn\nD. Giữ gas ở dạng lỏng lâu hơn\n\nBài giải:\nNhiều lỗ nhỏ chia dòng gas thành nhiều tia nhỏ.\nGas trộn đều với không khí, tăng diện tích tiếp xúc với oxygen nên cháy hoàn toàn.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01522",
+     "thu_tu": 3,
+     "ten": "Giải thích biện pháp cấp đủ oxygen cho phản ứng cháy",
+     "mo_ta": "Đề hỏi vì sao quạt gió, mở van gió, xếp củi thưa hoặc trộn thêm không khí giúp nhiên liệu cháy hoàn toàn · chọn mục đích hoặc biện pháp cung cấp thêm oxygen.\nLưu ý: đề chỉ nhắc đập nhỏ, chia nhỏ nhiên liệu ⇒ thuộc dạng \"Giải thích biện pháp tăng diện tích tiếp xúc với oxygen\".",
+     "ly_thuyet": "##TC Cấp thêm oxygen\nQuạt gió, mở van gió, xếp củi thưa hoặc trộn khí với không khí làm tăng lượng oxygen cho phản ứng cháy.\nĐủ oxygen thì nhiên liệu cháy hoàn toàn và toả nhiều nhiệt.\n\n##PP Cách làm\nXác định biện pháp có đưa thêm không khí vào không\nChọn đáp án là cung cấp thêm oxygen để cháy hoàn toàn\n\n##CY Chú ý\nQuạt gió không làm giảm nhiệt độ lò hay tăng khối lượng nhiên liệu.",
+     "vi_du": "##VD\nQuạt gió vào bếp lò đang cháy giúp nhiên liệu cháy hoàn toàn hơn vì việc này\nA. Làm giảm nhiệt độ của bếp lò\nB. Làm tăng khối lượng nhiên liệu trong bếp\nC. Đẩy hết khí carbon dioxide ra khỏi bếp\nD. Cung cấp thêm oxygen cho phản ứng cháy\n\nBài giải:\nQuạt gió đưa thêm không khí, chứa oxygen, vào bếp lò.\nĐủ oxygen thì nhiên liệu cháy hoàn toàn và toả nhiều nhiệt hơn.\nChọn D.\n\n##VD\nKhi đun bếp củi, nếu thấy khói bốc lên nhiều và lửa cháy yếu, biện pháp nào giúp củi cháy hoàn toàn hơn?\nA. Xếp thêm nhiều củi to chồng khít lên nhau\nB. Đậy kín miệng bếp để giữ nhiệt\nC. Quạt thêm gió và xếp củi thưa ra\nD. Phủ vải ướt lên đống lửa\n\nBài giải:\nKhói nhiều, lửa yếu cho thấy củi cháy không hoàn toàn do thiếu oxygen.\nQuạt thêm gió và xếp củi thưa giúp cấp thêm oxygen cho củi cháy.\nChồng củi khít, đậy kín miệng bếp hay phủ vải ướt đều làm giảm oxygen.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01523",
+     "thu_tu": 4,
+     "ten": "Phòng cháy nổ khi bảo quản và sử dụng nhiên liệu",
+     "mo_ta": "Đề hỏi cách bảo quản, sử dụng xăng dầu, gas, khí methane ở hầm mỏ hoặc dung môi dễ cháy để tránh cháy nổ · chọn biện pháp và lí do đúng.\nBiến thể: nêu tính chất của khí rò rỉ; đánh giá một đề xuất phòng cháy.\nLưu ý: đề nói về ngộ độc khí CO khi đun bếp ⇒ thuộc dạng \"Phòng tránh ngộ độc khí CO\".",
+     "ly_thuyet": "##TC An toàn với nhiên liệu\nHơi xăng, dầu, gas, khí methane dễ cháy và gây nổ khi gặp tia lửa.\nKho nhiên liệu cần thông thoáng, tránh xa nguồn lửa và nguồn nhiệt.\nLPG nặng hơn không khí nên tụ ở sát nền, góc thấp; khi rò rỉ phải mở cửa thông gió, không bật điện.\nHầm mỏ than cần thông gió liên tục để giữ nồng độ methane dưới ngưỡng nổ.\n\n##PP Cách làm\nXác định chất dễ cháy nổ trong tình huống\nChọn biện pháp thông thoáng, tránh lửa, hạn chế tụ khí\nLoại phương án đóng kín hoặc đặt gần nguồn lửa, nguồn điện\n\n##CY Chú ý\nBình chữa cháy không thay thế được việc sắp xếp kho thông thoáng, xa nguồn nhiệt.",
+     "vi_du": "##VD\nKhí gas (LPG) nặng hơn không khí nên khi bị rò rỉ thường tích tụ ở\nA. Trên trần nhà\nB. Lơ lửng giữa phòng\nC. Thoát ra ngoài ngay lập tức\nD. Sát nền nhà, các góc thấp\n\nBài giải:\nLPG nặng hơn không khí nên khi rò rỉ sẽ chìm xuống.\nKhí gas tích tụ ở sát nền nhà, các góc thấp.\nChọn D.\n\n##VD\nTrong hầm mỏ khai thác than, khí methane (khí mỏ) tích tụ có thể gây nổ khi gặp tia lửa. Biện pháp phòng tránh đúng và lí do là\nA. Thông gió liên tục để giữ nồng độ methane dưới ngưỡng nổ\nB. Đóng kín cửa hầm để methane không lan ra ngoài\nC. Thông gió để tăng oxygen giúp than trong hầm cháy hết\nD. Cấm dùng đèn pin sáng mạnh vì ánh sáng làm methane cháy\n\nBài giải:\nMethane tích tụ trong hầm mỏ có thể nổ khi gặp tia lửa.\nThông gió liên tục đưa methane ra ngoài, giữ nồng độ dưới ngưỡng nổ.\nĐóng kín hầm làm methane tích tụ; ánh sáng đèn pin không làm methane cháy.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01524",
+     "thu_tu": 5,
+     "ten": "Phòng tránh ngộ độc khí CO",
+     "mo_ta": "Đề hỏi vì sao khí CO nguy hiểm, vì sao không đun bếp than, bếp gas trong phòng kín, hoặc biện pháp phòng tránh · chọn lí do hoặc biện pháp đúng.\nLưu ý: đề nói về cháy nổ của xăng, gas, methane ⇒ thuộc dạng \"Phòng cháy nổ khi bảo quản và sử dụng nhiên liệu\".",
+     "ly_thuyet": "##TC Khí CO\nKhí $\\mathrm{CO}$ sinh ra khi nhiên liệu cháy không hoàn toàn do thiếu oxygen.\n$\\mathrm{CO}$ không màu, không mùi, rất độc, khó nhận biết nên dễ gây ngộ độc.\nĐun bếp than, bếp gas trong phòng đóng kín dễ thiếu oxygen và tích tụ $\\mathrm{CO}$.\n\n##PP Cách làm\nNhận ra nguyên nhân sinh $\\mathrm{CO}$: cháy thiếu oxygen\nChọn biện pháp đun ở nơi thông thoáng, đủ oxygen\n\n##CY Chú ý\nChỉ hé một khe cửa nhỏ hoặc mở điều hoà vẫn chưa đủ thông thoáng; $\\mathrm{CO}$ rất độc chứ không chỉ gây ngạt.",
+     "vi_du": "##VD\nKhông nên đun bếp than, bếp gas trong phòng đóng kín cửa vì dễ gây\nA. Cháy nổ do dư oxygen trong phòng\nB. Tăng độ ẩm không khí trong phòng\nC. Ngộ độc khí CO do thiếu oxygen\nD. Giảm nhiệt độ của phòng đun nấu\n\nBài giải:\nTrong phòng đóng kín, oxygen dần hết nên nhiên liệu cháy không hoàn toàn.\nNhiên liệu sinh khí $\\mathrm{CO}$ độc, gây ngộ độc.\nChọn C.\n\n##VD\nNhiều trường hợp ngộ độc khí CO do đun bếp than tổ ong trong phòng đóng kín cửa. Biện pháp phòng tránh đúng và lí do là\nA. Đun trong phòng kín, chỉ cần hé một khe cửa nhỏ\nB. Đun nơi thoáng, vì CO không độc, chỉ gây ngạt\nC. Đun nơi thoáng, vì than cháy thiếu oxygen sinh ra CO độc\nD. Đun trong phòng kín, vì chỉ than kém chất lượng mới sinh CO\n\nBài giải:\nThan cháy thiếu oxygen sinh khí $\\mathrm{CO}$, là khí độc.\nPhải đun ở nơi thông thoáng để đủ oxygen cho than cháy hoàn toàn.\n$\\mathrm{CO}$ độc chứ không chỉ gây ngạt, và mọi nhiên liệu cháy thiếu oxygen đều sinh $\\mathrm{CO}$.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01525",
+     "thu_tu": 6,
+     "ten": "Tác động của nhiên liệu đến môi trường và biện pháp giảm khí thải",
+     "mo_ta": "Đề hỏi khí nào gây hiệu ứng nhà kính, vì sao phải xử lí khí thải, hoặc biện pháp giảm khí thải từ nhà máy, phương tiện giao thông · chọn đáp án đúng.\nLưu ý: đề tả tình huống nhiên liệu cháy không hoàn toàn rồi hỏi cách khắc phục ⇒ thuộc dạng \"Tìm nguyên nhân và cách khắc phục khi nhiên liệu cháy không hoàn toàn\".",
+     "ly_thuyet": "##TC Môi trường\nĐốt nhiên liệu hoá thạch sinh $\\mathrm{CO_{2}}$ góp phần gây hiệu ứng nhà kính.\nKhí thải công nghiệp chứa bụi và khí độc nên cần lọc, xử lí trước khi thải.\nBảo dưỡng động cơ định kì giúp nhiên liệu cháy hoàn toàn, giảm khí thải độc; dùng thêm năng lượng mặt trời, gió thay một phần nhiên liệu hoá thạch.\n\n##PP Cách làm\nXác định nguồn phát thải và chất gây ô nhiễm\nChọn biện pháp giảm khí thải tại nguồn hoặc xử lí trước khi thải ra\n\n##CY Chú ý\nXây ống khói cao hoặc pha loãng khí thải không làm giảm lượng chất độc hại thải ra.",
+     "vi_du": "##VD\nĐốt nhiên liệu hoá thạch (than, dầu, khí) sinh ra khí nào góp phần gây hiệu ứng nhà kính?\nA. Carbon dioxide\nB. Nitrogen\nC. Oxygen\nD. Khí hiếm\n\nBài giải:\nĐốt nhiên liệu hoá thạch sinh ra khí carbon dioxide ($\\mathrm{CO_{2}}$).\n$\\mathrm{CO_{2}}$ giữ nhiệt, góp phần gây hiệu ứng nhà kính; nitrogen, oxygen, khí hiếm không gây hiệu ứng này.\nChọn A.\n\n##VD\nNhà máy nhiệt điện đốt than sinh ra khí thải chứa bụi và khí độc, góp phần gây ô nhiễm và hiệu ứng nhà kính. Biện pháp giảm tác động đúng là\nA. Xây ống khói thật cao để khí thải bay đi xa\nB. Đốt thêm thật nhiều than để lò nóng hơn\nC. Pha loãng khí thải với không khí rồi mới thải ra\nD. Lắp hệ thống lọc bụi, xử lí khí thải trước khi thải ra\n\nBài giải:\nMuốn giảm tác động phải giảm lượng bụi, khí độc thải ra môi trường.\nLắp hệ thống lọc bụi, xử lí khí thải trước khi thải làm được điều đó.\nỐng khói cao hay pha loãng chỉ đưa chất độc đi xa, còn đốt thêm than làm thải nhiều hơn.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01526",
+     "thu_tu": 7,
+     "ten": "Tìm nguyên nhân và cách khắc phục khi nhiên liệu cháy không hoàn toàn",
+     "mo_ta": "Đề tả tình huống thực tế (bếp gas ngọn lửa vàng, bếp than cháy chậm, củi cháy yếu, xe xả khói đen, đèn cồn nhiều khói…) · hỏi nguyên nhân và biện pháp khắc phục · xác định thiếu oxygen hay diện tích tiếp xúc nhỏ rồi chọn cách xử lí.\nLưu ý: đề chỉ hỏi vì sao một biện pháp có sẵn giúp cháy tốt ⇒ thuộc dạng \"Giải thích biện pháp tăng diện tích tiếp xúc với oxygen\" hoặc \"Giải thích biện pháp cấp đủ oxygen cho phản ứng cháy\".",
+     "ly_thuyet": "##TC Nguyên nhân cháy không hoàn toàn\nKhói đen, bồ hóng, lửa vàng, cháy yếu cho thấy nhiên liệu cháy không hoàn toàn.\nHai nguyên nhân chính: thiếu oxygen và diện tích tiếp xúc giữa nhiên liệu với oxygen quá nhỏ.\n\n##PP Cách làm\nNhận biết dấu hiệu cháy không hoàn toàn trong đề\nXác định nguyên nhân: thiếu không khí hay nhiên liệu ở dạng khối lớn\nChọn biện pháp ngược lại: tăng không khí hoặc chia nhỏ, xếp thưa nhiên liệu\n\n##CY Chú ý\nCác phương án sai thường bịt kín, nén chặt, giảm không khí, hoặc cho thêm nhiên liệu.",
+     "vi_du": "##VD\nBếp gas gia đình khi cháy cho ngọn lửa màu vàng, đáy nồi bám nhiều bồ hóng đen. Nguyên nhân và biện pháp khắc phục đúng là\nA. Do thừa không khí trộn vào khí gas; cần giảm lượng không khí cấp vào\nB. Do thiếu không khí trộn vào khí gas; cần điều chỉnh để tăng lượng không khí cấp vào\nC. Do van gas mở quá nhỏ; cần vặn van to hơn để tăng lượng gas\nD. Do thiếu không khí trộn vào khí gas; cần đậy kín bếp lại để giữ nhiệt\n\nBài giải:\nLửa vàng, bồ hóng đen là dấu hiệu gas cháy không hoàn toàn do thiếu oxygen.\nCần điều chỉnh để tăng lượng không khí trộn vào gas.\nĐậy kín bếp hay tăng lượng gas chỉ làm thiếu oxygen nặng hơn.\nChọn B.\n\n##VD\nBếp than tổ ong dùng nguyên cục than lớn (không đập nhỏ, không có lỗ) cháy rất chậm, sinh nhiều khói đen. Nguyên nhân và biện pháp khắc phục đúng là\nA. Do diện tích tiếp xúc giữa than và không khí quá lớn; cần nén than thành cục to hơn nữa\nB. Do than bị ẩm nên cháy chậm; cần phơi than thật khô trước khi đốt\nC. Do diện tích tiếp xúc giữa than và không khí nhỏ; chỉ cần quạt gió, không cần đập nhỏ than\nD. Do diện tích tiếp xúc giữa than và không khí nhỏ; cần đập than thành viên nhỏ, có lỗ\n\nBài giải:\nCục than lớn, không có lỗ nên diện tích tiếp xúc với không khí nhỏ, than cháy không hoàn toàn.\nCần đập than thành viên nhỏ, có lỗ để tăng diện tích tiếp xúc với oxygen.\nNén than to hơn làm diện tích tiếp xúc nhỏ hơn nữa; chỉ quạt gió thì chưa khắc phục được.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00513",
+   "chu_de": "Giới thiệu về hợp chất hữu cơ, hydrocarbon & nguồn nhiên liệu",
+   "chuyen_de": "Alkane",
+   "nhom": "Bài toán đốt cháy alkane",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nSố mol: $\\mathrm{n = V : 24,79}$ (V đo ở đkc, đơn vị L); $\\mathrm{n = m : M}$ (m tính bằng g, M tính bằng g/mol).\nTỉ lệ mol các chất bằng tỉ lệ hệ số trong phương trình hoá học.\nPhân tử khối: $\\mathrm{CH_{4}}$ 16; $\\mathrm{C_{2}H_{6}}$ 30; $\\mathrm{C_{3}H_{8}}$ 44; $\\mathrm{C_{4}H_{10}}$ 58; $\\mathrm{CO_{2}}$ 44; $\\mathrm{H_{2}O}$ 18.\n\n##PP 2. Các bước làm bài\nViết và cân bằng phương trình đốt cháy alkane\nTính số mol chất đã cho\nDựa vào hệ số để suy ra số mol chất cần tìm\nĐổi số mol sang thể tích (nhân 24,79) hoặc khối lượng (nhân M)\n\n##CY 3. Lưu ý\nKhí thải cháy hoàn toàn là $\\mathrm{CO_{2}}$ (M = 44), không phải CO.\nPhải nhân hệ số mol của chất cần tìm rồi mới đổi sang khối lượng hoặc thể tích.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01508",
+     "thu_tu": 1,
+     "ten": "Tính thể tích oxygen cần dùng khi đốt cháy alkane khí ở đkc",
+     "mo_ta": "Đề cho thể tích alkane khí ở đkc · hỏi thể tích oxygen cần dùng · tính số mol alkane, nhân tỉ lệ hệ số $\\mathrm{O_{2}}$ rồi đổi ra thể tích.\nLưu ý: đề cho khối lượng alkane và hỏi khối lượng $\\mathrm{CO_{2}}$ ⇒ thuộc dạng \"Tính khối lượng $\\mathrm{CO_{2}}$ sinh ra khi đốt cháy alkane theo phương trình\".",
+     "ly_thuyet": "##TC Tính theo thể tích khí\nỞ đkc, 1 mol khí chiếm 24,79 L.\n$\\mathrm{n(O_{2})}$ = hệ số $\\mathrm{O_{2}}$ chia hệ số alkane, nhân $\\mathrm{n(alkane)}$.\n\n##PP Cách làm\nTính số mol alkane: $\\mathrm{n = V : 24,79}$\nLập tỉ lệ mol theo phương trình để tìm $\\mathrm{n(O_{2})}$\nTính $\\mathrm{V(O_{2}) = n(O_{2}) × 24,79}$\n\n##CY Chú ý\nPhương án nhiễu hay quên nhân hệ số của $\\mathrm{O_{2}}$, hoặc nhầm hệ số.",
+     "vi_du": "##VD\nĐốt cháy hoàn toàn 2,479 L khí methane (đkc). Thể tích khí oxygen (đkc) cần dùng là\nA. 2,479 L\nB. 4,958 L\nC. 9,916 L\nD. 7,437 L\n\nBài giải:\n$\\mathrm{n(CH_{4}) = 2,479 : 24,79 = 0,1}$ mol.\nPhương trình: $\\mathrm{CH_{4} + 2O_{2} \\rightarrow  CO_{2} + 2H_{2}O}$ nên $\\mathrm{n(O_{2}) = 0,1 × 2 = 0,2}$ mol.\n$\\mathrm{V(O_{2}) = 0,2 × 24,79 = 4,958}$ L.\nChọn B.\n\n##VD\nĐốt cháy hoàn toàn 1,2395 L khí propane (đkc). Thể tích khí oxygen (đkc) cần dùng là\nA. 1,2395 L\nB. 3,099 L\nC. 6,198 L\nD. 12,395 L\n\nBài giải:\n$\\mathrm{n(C_{3}H_{8}) = 1,2395 : 24,79 = 0,05}$ mol.\nPhương trình: $\\mathrm{C_{3}H_{8} + 5O_{2} \\rightarrow  3CO_{2} + 4H_{2}O}$ nên $\\mathrm{n(O_{2}) = 0,05 × 5 = 0,25}$ mol.\n$\\mathrm{V(O_{2}) = 0,25 × 24,79 ≈ 6,198}$ L.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01509",
+     "thu_tu": 2,
+     "ten": "Tính khối lượng CO₂ sinh ra khi đốt cháy alkane theo phương trình",
+     "mo_ta": "Đề cho khối lượng alkane (kèm hoặc không kèm phương trình) · hỏi khối lượng $\\mathrm{CO_{2}}$ sinh ra · tính số mol alkane, theo tỉ lệ hệ số suy ra số mol $\\mathrm{CO_{2}}$, đổi ra khối lượng.\nLưu ý: đề cho thể tích khí ở đkc và hỏi thể tích $\\mathrm{O_{2}}$ ⇒ thuộc dạng \"Tính thể tích oxygen cần dùng khi đốt cháy alkane khí ở đkc\".",
+     "ly_thuyet": "##TC Tính theo khối lượng\n$\\mathrm{n = m : M}$; $\\mathrm{m = n × M}$; $\\mathrm{M(CO_{2})}$ = 44 g/mol.\nTỉ lệ mol alkane : $\\mathrm{CO_{2}}$ bằng tỉ lệ hệ số trong phương trình.\n\n##PP Cách làm\nTính số mol alkane từ khối lượng\nDựa vào phương trình để tìm $\\mathrm{n(CO_{2})}$\nTính $\\mathrm{m(CO_{2}) = n × 44}$\n\n##CY Chú ý\nNhầm tỉ lệ mol alkane : $\\mathrm{CO_{2}}$, nhầm $\\mathrm{CO_{2}}$ với CO (M = 28), hoặc lấy luôn khối lượng alkane làm đáp số là các sai hay gặp.",
+     "vi_du": "##VD\nĐốt cháy hoàn toàn 8 g khí methane theo phương trình $\\mathrm{CH_{4} + 2O_{2} \\rightarrow  CO_{2} + 2H_{2}O}$. Khối lượng $\\mathrm{CO_{2}}$ sinh ra là bao nhiêu?\nA. 44 g\nB. 14 g\nC. 22 g\nD. 8 g\n\nBài giải:\n$\\mathrm{n(CH_{4}) = 8 : 16 = 0,5}$ mol.\nTỉ lệ mol $\\mathrm{CH_{4} : CO_{2} = 1 : 1}$ nên $\\mathrm{n(CO_{2}) = 0,5}$ mol.\n$\\mathrm{m(CO_{2}) = 0,5 × 44 = 22}$ g.\nChọn C.\n\n##VD\nĐốt cháy hoàn toàn 9 g khí ethane theo phương trình $\\mathrm{2C_{2}H_{6} + 7O_{2} \\rightarrow  4CO_{2} + 6H_{2}O}$. Khối lượng $\\mathrm{CO_{2}}$ sinh ra là bao nhiêu?\nA. 13,2 g\nB. 26,4 g\nC. 16,8 g\nD. 9 g\n\nBài giải:\n$\\mathrm{n(C_{2}H_{6}) = 9 : 30 = 0,3}$ mol.\nTỉ lệ mol $\\mathrm{C_{2}H_{6} : CO_{2} = 2 : 4 = 1 : 2}$ nên $\\mathrm{n(CO_{2}) = 0,6}$ mol.\n$\\mathrm{m(CO_{2}) = 0,6 × 44 = 26,4}$ g.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00518",
+   "chu_de": "Giới thiệu về hợp chất hữu cơ, hydrocarbon & nguồn nhiên liệu",
+   "chuyen_de": "Alkene",
+   "nhom": "Bài toán đốt cháy alkene",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nAlkene cháy hoàn toàn: $\\mathrm{C_{2}H_{4} + 3O_{2} \\rightarrow  2CO_{2} + 2H_{2}O}$; $\\mathrm{2C_{3}H_{6} + 9O_{2} \\rightarrow  6CO_{2} + 6H_{2}O}$.\nSố mol: $\\mathrm{n = V : 24,79}$ (đkc, V tính bằng L); $\\mathrm{m = n × M}$.\nPhân tử khối: $\\mathrm{CO_{2}}$ 44; $\\mathrm{H_{2}O}$ 18.\n\n##PP 2. Các bước làm bài\nViết phương trình đốt cháy alkene\nTính số mol alkene từ thể tích khí (đkc)\nTheo hệ số suy ra số mol $\\mathrm{CO_{2}}$ hoặc $\\mathrm{H_{2}O}$\nNhân với phân tử khối để ra khối lượng\n\n##CY 3. Lưu ý\nChọn đúng sản phẩm (nước hay $\\mathrm{CO_{2}}$) theo đề; nhầm $\\mathrm{M(H_{2}O)}$ và $\\mathrm{M(CO_{2})}$ là lỗi hay gặp.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01516",
+     "thu_tu": 1,
+     "ten": "Tính khối lượng sản phẩm cháy khi đốt cháy alkene ở đkc",
+     "mo_ta": "Đề cho thể tích alkene khí ở đkc (ethylene, propylene) cháy hoàn toàn · hỏi khối lượng nước hoặc $\\mathrm{CO_{2}}$ tạo thành · tính số mol alkene, theo hệ số suy ra số mol sản phẩm, đổi ra khối lượng.",
+     "ly_thuyet": "##TC Tính theo sản phẩm cháy\nEthylene: 1 mol tạo 2 mol $\\mathrm{CO_{2}}$ và 2 mol $\\mathrm{H_{2}O}$.\nPropylene: 1 mol tạo 3 mol $\\mathrm{CO_{2}}$ và 3 mol $\\mathrm{H_{2}O}$.\n\n##PP Cách làm\nTính $\\mathrm{n(alkene) = V : 24,79}$\nDựa vào số carbon (cho $\\mathrm{CO_{2}}$) hoặc nửa số hydrogen (cho $\\mathrm{H_{2}O}$) để tìm số mol sản phẩm\nTính khối lượng bằng số mol nhân phân tử khối\n\n##CY Chú ý\nNhầm hệ số hoặc nhầm phân tử khối $\\mathrm{M(H_{2}O) = 18}$, $\\mathrm{M(CO_{2}) = 44}$ dẫn đến chọn sai đáp án.",
+     "vi_du": "##VD\nĐốt cháy hoàn toàn 4,958 L khí ethylene (đkc). Khối lượng nước tạo thành là\nA. 3,6 g\nB. 6,4 g\nC. 7,2 g\nD. 14,4 g\n\nBài giải:\n$\\mathrm{n(C_{2}H_{4}) = 4,958 : 24,79 = 0,2}$ mol.\nPhương trình: $\\mathrm{C_{2}H_{4} + 3O_{2} \\rightarrow  2CO_{2} + 2H_{2}O}$ nên $\\mathrm{n(H_{2}O) = 0,2 × 2 = 0,4}$ mol.\n$\\mathrm{m(H_{2}O) = 0,4 × 18 = 7,2}$ g.\nChọn C.\n\n##VD\nĐốt cháy hoàn toàn 2,479 L khí propylene ($\\mathrm{C_{3}H_{6}}$, đkc). Khối lượng $\\mathrm{CO_{2}}$ tạo thành là\nA. 4,4 g\nB. 8,8 g\nC. 26,4 g\nD. 13,2 g\n\nBài giải:\n$\\mathrm{n(C_{3}H_{6}) = 2,479 : 24,79 = 0,1}$ mol.\nMỗi phân tử $\\mathrm{C_{3}H_{6}}$ có 3 carbon nên $\\mathrm{n(CO_{2}) = 0,1 × 3 = 0,3}$ mol.\n$\\mathrm{m(CO_{2}) = 0,3 × 44 = 13,2}$ g.\nChọn D."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09070201001",
+   "nhom_id": "KNB00510",
+   "loai": "trac_nghiem",
+   "de": "Chất có công thức cấu tạo CH₄ (chỉ có liên kết đơn) thuộc loại chất nào? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070201-01-001-de.png)",
+   "lua_chon": [
+    "Alkane",
+    "Alkene",
+    "Alcohol",
+    "Acid"
+   ],
+   "dap_an": "A",
+   "loi_giai": "CH₄ chỉ có các liên kết đơn C-H, không có liên kết đôi C=C nên thuộc loại alkane.\n\nVì sao các phương án khác sai:\n- B: Alkene phải có 1 liên kết đôi C=C, CH₄ không có.\n- C: Alcohol có nhóm -OH, CH₄ không có oxygen.\n- D: Acid có nhóm -COOH, CH₄ không có oxygen."
+  },
+  {
+   "ma_cau": "K09070201002",
+   "nhom_id": "KNB00510",
+   "loai": "trac_nghiem",
+   "de": "Chất có công thức cấu tạo CH₃-CH₂-CH₂-CH₃ (chỉ có liên kết đơn) thuộc loại chất nào? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070201-01-003-de.png)",
+   "lua_chon": [
+    "Alkene",
+    "Alcohol",
+    "Alkane",
+    "Acid"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Phân tử chỉ có liên kết đơn C-C và C-H nên thuộc loại alkane.\n\nVì sao các phương án khác sai:\n- A: Alkene phải có 1 liên kết đôi C=C, chất này không có.\n- B: Alcohol có nhóm -OH, chất này không có oxygen.\n- D: Acid có nhóm -COOH, chất này không có oxygen."
+  },
+  {
+   "ma_cau": "K09070201003",
+   "nhom_id": "KNB00510",
+   "loai": "trac_nghiem",
+   "de": "Hydrocarbon có công thức phân tử dạng CnH₂n+2 (n từ 1 trở lên) thuộc loại chất nào?",
+   "lua_chon": [
+    "Alkene",
+    "Alkane",
+    "Alcohol",
+    "Acid"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Công thức chung CnH₂n+2 (n từ 1 trở lên) ứng với alkane, chỉ có liên kết đơn trong mạch.\n\nVì sao các phương án khác sai:\n- A: Alkene có công thức chung CnH₂n, ít hydrogen hơn công thức này.\n- C: Alcohol có nhóm -OH, không được biểu diễn bằng công thức CnH₂n+2.\n- D: Acid có nhóm -COOH, không được biểu diễn bằng công thức CnH₂n+2."
+  },
+  {
+   "ma_cau": "K09070201004",
+   "nhom_id": "KNB00510",
+   "loai": "trac_nghiem",
+   "de": "Chất có công thức hoá học CH₄ có tên gọi là",
+   "lua_chon": [
+    "Methane",
+    "Ethane",
+    "Ethylene",
+    "Methanol"
+   ],
+   "dap_an": "A",
+   "loi_giai": "CH₄ có 1 nguyên tử carbon, chỉ có liên kết đơn, thuộc alkane, tên gọi là methane.\n\nVì sao các phương án khác sai:\n- B: Ethane có công thức C₂H₆, khác CH₄.\n- C: Ethylene là alkene C₂H₄, không phải CH₄.\n- D: Methanol là alcohol CH₃OH, có nhóm -OH, khác CH₄."
+  },
+  {
+   "ma_cau": "K09070201005",
+   "nhom_id": "KNB00510",
+   "loai": "trac_nghiem",
+   "de": "Chất có công thức hoá học C₄H₁₀ có tên gọi là",
+   "lua_chon": [
+    "Propane",
+    "Butane",
+    "Butene",
+    "Butanol"
+   ],
+   "dap_an": "B",
+   "loi_giai": "C₄H₁₀ có 4 nguyên tử carbon, chỉ có liên kết đơn, thuộc alkane, tên gọi là butane.\n\nVì sao các phương án khác sai:\n- A: Propane có công thức C₃H₈, chỉ 3 carbon, khác C₄H₁₀.\n- C: Đuôi '-ene' dùng cho alkene có liên kết đôi, C₄H₁₀ chỉ có liên kết đơn.\n- D: Butanol là alcohol, có nhóm -OH, khác C₄H₁₀."
+  },
+  {
+   "ma_cau": "K09070201006",
+   "nhom_id": "KNB00510",
+   "loai": "trac_nghiem",
+   "de": "Chất có công thức hoá học C₃H₈ có tên gọi là",
+   "lua_chon": [
+    "Propane",
+    "Propylene",
+    "Butane",
+    "Propanol"
+   ],
+   "dap_an": "A",
+   "loi_giai": "C₃H₈ có 3 nguyên tử carbon, chỉ có liên kết đơn, thuộc alkane, tên gọi là propane.\n\nVì sao các phương án khác sai:\n- B: Propylene là alkene C₃H₆, khác C₃H₈.\n- C: Butane có công thức C₄H₁₀, khác C₃H₈.\n- D: Propanol là alcohol, có nhóm -OH, khác C₃H₈."
+  },
+  {
+   "ma_cau": "K09070201007",
+   "nhom_id": "KNB00510",
+   "loai": "trac_nghiem",
+   "de": "Ở điều kiện thường, khí methane có tính chất vật lí nào sau đây?",
+   "lua_chon": [
+    "Chất khí, không tan trong nước",
+    "Chất lỏng, tan tốt trong nước",
+    "Chất rắn, không màu",
+    "Chất khí, tan tốt trong nước"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Ở điều kiện thường methane là chất khí, không màu, hầu như không tan trong nước.\n\nVì sao các phương án khác sai:\n- B: Methane là chất khí ở điều kiện thường, không phải chất lỏng.\n- C: Methane là chất khí, không phải chất rắn.\n- D: Methane hầu như không tan trong nước, không tan tốt."
+  },
+  {
+   "ma_cau": "K09070201008",
+   "nhom_id": "KNB00510",
+   "loai": "trac_nghiem",
+   "de": "Ở điều kiện thường, khí ethane có tính chất vật lí nào sau đây?",
+   "lua_chon": [
+    "Chất lỏng, tan tốt trong nước",
+    "Chất khí, không tan trong nước",
+    "Chất rắn, không màu",
+    "Chất khí, tan tốt trong nước"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ở điều kiện thường ethane là chất khí, không màu, hầu như không tan trong nước.\n\nVì sao các phương án khác sai:\n- A: Ethane là chất khí ở điều kiện thường, không phải chất lỏng.\n- C: Ethane là chất khí, không phải chất rắn.\n- D: Ethane hầu như không tan trong nước, không tan tốt."
+  },
+  {
+   "ma_cau": "K09070201009",
+   "nhom_id": "KNB00510",
+   "loai": "trac_nghiem",
+   "de": "Ở điều kiện thường, khí propane có tính chất vật lí nào sau đây?",
+   "lua_chon": [
+    "Chất lỏng, tan tốt trong nước",
+    "Chất rắn, không màu",
+    "Chất khí, không tan trong nước",
+    "Chất khí, tan tốt trong nước"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ở điều kiện thường propane là chất khí, không màu, hầu như không tan trong nước.\n\nVì sao các phương án khác sai:\n- A: Propane là chất khí ở điều kiện thường, không phải chất lỏng.\n- B: Propane là chất khí, không phải chất rắn.\n- D: Propane hầu như không tan trong nước, không tan tốt."
+  },
+  {
+   "ma_cau": "K09070201010",
+   "nhom_id": "KNB00510",
+   "loai": "trac_nghiem",
+   "de": "Alkane và alkene có từ 1 đến 4 carbon (như methane, ethane, propane, butane, ethylene…) đều có đặc điểm chung nào về trạng thái ở điều kiện thường?",
+   "lua_chon": [
+    "Đều là chất rắn, dễ bay hơi",
+    "Đều là chất lỏng, dễ cháy",
+    "Đều là chất khí, tan tốt trong nước",
+    "Đều là chất khí, không màu"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Các alkane, alkene có từ 1 đến 4 carbon đều là chất khí, không màu, hầu như không tan trong nước ở điều kiện thường.\n\nVì sao các phương án khác sai:\n- A: Alkane, alkene nhỏ (1-4 carbon) là chất khí, không phải chất rắn.\n- B: Alkane, alkene nhỏ (1-4 carbon) là chất khí, không phải chất lỏng.\n- C: Alkane, alkene đều hầu như không tan trong nước, không tan tốt."
+  },
+  {
+   "ma_cau": "K09070301001",
+   "nhom_id": "KNB00515",
+   "loai": "trac_nghiem",
+   "de": "Chất có công thức cấu tạo CH₂=CH₂ (có một liên kết đôi C=C) thuộc loại chất nào? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070201-01-002-de.png)",
+   "lua_chon": [
+    "Alkane",
+    "Alkene",
+    "Alcohol",
+    "Acid"
+   ],
+   "dap_an": "B",
+   "loi_giai": "CH₂=CH₂ có 1 liên kết đôi C=C nên thuộc loại alkene.\n\nVì sao các phương án khác sai:\n- A: Alkane chỉ có liên kết đơn, CH₂=CH₂ có liên kết đôi C=C.\n- C: Alcohol có nhóm -OH, CH₂=CH₂ không có oxygen.\n- D: Acid có nhóm -COOH, CH₂=CH₂ không có oxygen."
+  },
+  {
+   "ma_cau": "K09070301002",
+   "nhom_id": "KNB00515",
+   "loai": "trac_nghiem",
+   "de": "Hydrocarbon có công thức phân tử dạng CnH₂n (n từ 2 trở lên) thuộc loại chất nào?",
+   "lua_chon": [
+    "Alkane",
+    "Alcohol",
+    "Acid",
+    "Alkene"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Công thức chung CnH₂n (n từ 2 trở lên) ứng với alkene, có 1 liên kết đôi C=C trong mạch.\n\nVì sao các phương án khác sai:\n- A: Alkane có công thức chung CnH₂n+2, nhiều hydrogen hơn công thức này.\n- B: Alcohol có nhóm -OH, không được biểu diễn bằng công thức CnH₂n.\n- C: Acid có nhóm -COOH, không được biểu diễn bằng công thức CnH₂n."
+  },
+  {
+   "ma_cau": "K09070301003",
+   "nhom_id": "KNB00515",
+   "loai": "trac_nghiem",
+   "de": "Chất có công thức hoá học C₂H₄ có tên gọi là",
+   "lua_chon": [
+    "Ethane",
+    "Propylene",
+    "Ethylene",
+    "Ethanol"
+   ],
+   "dap_an": "C",
+   "loi_giai": "C₂H₄ có 1 liên kết đôi C=C, là alkene 2 carbon, tên gọi là ethylene.\n\nVì sao các phương án khác sai:\n- A: Ethane là alkane C₂H₆, chỉ có liên kết đơn, khác C₂H₄.\n- B: Propylene có công thức C₃H₆, khác C₂H₄.\n- D: Ethanol là alcohol C₂H₅OH, khác C₂H₄."
+  },
+  {
+   "ma_cau": "K09070301004",
+   "nhom_id": "KNB00515",
+   "loai": "trac_nghiem",
+   "de": "Chất có công thức hoá học C₃H₆ có tên gọi là",
+   "lua_chon": [
+    "Propane",
+    "Ethylene",
+    "Propanol",
+    "Propylene"
+   ],
+   "dap_an": "D",
+   "loi_giai": "C₃H₆ có 1 liên kết đôi C=C, là alkene 3 carbon, tên gọi là propylene.\n\nVì sao các phương án khác sai:\n- A: Propane là alkane C₃H₈, chỉ có liên kết đơn, khác C₃H₆.\n- B: Ethylene có công thức C₂H₄, chỉ 2 carbon, khác C₃H₆.\n- C: Propanol là alcohol, có nhóm -OH, khác C₃H₆."
+  },
+  {
+   "ma_cau": "K09070301005",
+   "nhom_id": "KNB00515",
+   "loai": "trac_nghiem",
+   "de": "Ở điều kiện thường, khí ethylene có tính chất vật lí nào sau đây?",
+   "lua_chon": [
+    "Chất lỏng, tan tốt trong nước",
+    "Chất rắn, không màu",
+    "Chất khí, không tan trong nước",
+    "Chất khí, tan tốt trong nước"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ở điều kiện thường ethylene là chất khí, không màu, hầu như không tan trong nước.\n\nVì sao các phương án khác sai:\n- A: Ethylene là chất khí ở điều kiện thường, không phải chất lỏng.\n- B: Ethylene là chất khí, không phải chất rắn.\n- D: Ethylene hầu như không tan trong nước, không tan tốt."
+  },
+  {
+   "ma_cau": "K09070401001",
+   "nhom_id": "KNB00519",
+   "loai": "trac_nghiem",
+   "de": "Trong các nhiên liệu sau, chất nào thuộc nhóm nhiên liệu rắn?",
+   "lua_chon": [
+    "Than đá",
+    "Dầu hoả",
+    "Khí thiên nhiên",
+    "Xăng"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Than đá tồn tại ở trạng thái rắn nên thuộc nhóm nhiên liệu rắn; dầu hoả và xăng là nhiên liệu lỏng, khí thiên nhiên là nhiên liệu khí.\n\nVì sao các phương án khác sai:\n- B: Dầu hoả ở trạng thái lỏng, không phải rắn.\n- C: Khí thiên nhiên ở trạng thái khí, không phải rắn.\n- D: Xăng ở trạng thái lỏng, không phải rắn."
+  },
+  {
+   "ma_cau": "K09070401002",
+   "nhom_id": "KNB00519",
+   "loai": "trac_nghiem",
+   "de": "Trong các nhiên liệu sau, chất nào thuộc nhóm nhiên liệu lỏng?",
+   "lua_chon": [
+    "Than đá",
+    "Dầu diesel",
+    "Biogas",
+    "Gỗ"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Dầu diesel tồn tại ở trạng thái lỏng nên thuộc nhóm nhiên liệu lỏng; than đá và gỗ là nhiên liệu rắn, biogas là nhiên liệu khí.\n\nVì sao các phương án khác sai:\n- A: Than đá ở trạng thái rắn, không phải lỏng.\n- C: Biogas ở trạng thái khí, không phải lỏng.\n- D: Gỗ ở trạng thái rắn, không phải lỏng."
+  },
+  {
+   "ma_cau": "K09070401003",
+   "nhom_id": "KNB00519",
+   "loai": "trac_nghiem",
+   "de": "Trong các nhiên liệu sau, chất nào thuộc nhóm nhiên liệu khí?",
+   "lua_chon": [
+    "Gỗ",
+    "Dầu mỏ",
+    "Khí thiên nhiên",
+    "Than đá"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khí thiên nhiên tồn tại ở trạng thái khí nên thuộc nhóm nhiên liệu khí; gỗ và than đá là nhiên liệu rắn, dầu mỏ là nhiên liệu lỏng.\n\nVì sao các phương án khác sai:\n- A: Gỗ ở trạng thái rắn, không phải khí.\n- B: Dầu mỏ ở trạng thái lỏng, không phải khí.\n- D: Than đá ở trạng thái rắn, không phải khí."
+  },
+  {
+   "ma_cau": "K09070401004",
+   "nhom_id": "KNB00519",
+   "loai": "trac_nghiem",
+   "de": "Trong các nhiên liệu sau, chất nào thuộc nhóm nhiên liệu rắn?",
+   "lua_chon": [
+    "Xăng",
+    "Khí mỏ dầu",
+    "Dầu hoả",
+    "Gỗ"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Gỗ tồn tại ở trạng thái rắn nên thuộc nhóm nhiên liệu rắn; xăng và dầu hoả là nhiên liệu lỏng, khí mỏ dầu là nhiên liệu khí.\n\nVì sao các phương án khác sai:\n- A: Xăng ở trạng thái lỏng, không phải rắn.\n- B: Khí mỏ dầu ở trạng thái khí, không phải rắn.\n- C: Dầu hoả ở trạng thái lỏng, không phải rắn."
+  },
+  {
+   "ma_cau": "K09070401005",
+   "nhom_id": "KNB00519",
+   "loai": "trac_nghiem",
+   "de": "Trong các nhiên liệu sau, chất nào thuộc nhóm nhiên liệu lỏng?",
+   "lua_chon": [
+    "Dầu hoả",
+    "Than đá",
+    "Khí mỏ dầu",
+    "Gỗ"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Dầu hoả tồn tại ở trạng thái lỏng nên thuộc nhóm nhiên liệu lỏng; than đá và gỗ là nhiên liệu rắn, khí mỏ dầu là nhiên liệu khí.\n\nVì sao các phương án khác sai:\n- B: Than đá ở trạng thái rắn, không phải lỏng.\n- C: Khí mỏ dầu ở trạng thái khí, không phải lỏng.\n- D: Gỗ ở trạng thái rắn, không phải lỏng."
+  },
+  {
+   "ma_cau": "K09070401006",
+   "nhom_id": "KNB00519",
+   "loai": "trac_nghiem",
+   "de": "Trong các nhiên liệu sau, chất nào thuộc nhóm nhiên liệu khí?",
+   "lua_chon": [
+    "Dầu diesel",
+    "Biogas",
+    "Than đá",
+    "Gỗ"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Biogas tồn tại ở trạng thái khí nên thuộc nhóm nhiên liệu khí; dầu diesel là nhiên liệu lỏng, than đá và gỗ là nhiên liệu rắn.\n\nVì sao các phương án khác sai:\n- A: Dầu diesel ở trạng thái lỏng, không phải khí.\n- C: Than đá ở trạng thái rắn, không phải khí.\n- D: Gỗ ở trạng thái rắn, không phải khí."
+  },
+  {
+   "ma_cau": "K09070401007",
+   "nhom_id": "KNB00519",
+   "loai": "trac_nghiem",
+   "de": "Trong các nhiên liệu sau, chất nào thuộc nhóm nhiên liệu rắn?",
+   "lua_chon": [
+    "Dầu mỏ",
+    "Than củi",
+    "Khí đồng hành",
+    "Cồn (ethanol)"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Than củi tồn tại ở trạng thái rắn nên thuộc nhóm nhiên liệu rắn; dầu mỏ và cồn là nhiên liệu lỏng, khí đồng hành là nhiên liệu khí.\n\nVì sao các phương án khác sai:\n- A: Dầu mỏ ở trạng thái lỏng, không phải rắn.\n- C: Khí đồng hành ở trạng thái khí, không phải rắn.\n- D: Cồn (ethanol) ở trạng thái lỏng, không phải rắn."
+  },
+  {
+   "ma_cau": "K09070401008",
+   "nhom_id": "KNB00519",
+   "loai": "trac_nghiem",
+   "de": "Trong các nhiên liệu sau, chất nào thuộc nhóm nhiên liệu lỏng?",
+   "lua_chon": [
+    "Than đá",
+    "Khí thiên nhiên",
+    "Cồn (ethanol)",
+    "Gỗ"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Cồn (ethanol) tồn tại ở trạng thái lỏng nên thuộc nhóm nhiên liệu lỏng; than đá và gỗ là nhiên liệu rắn, khí thiên nhiên là nhiên liệu khí.\n\nVì sao các phương án khác sai:\n- A: Than đá ở trạng thái rắn, không phải lỏng.\n- B: Khí thiên nhiên ở trạng thái khí, không phải lỏng.\n- D: Gỗ ở trạng thái rắn, không phải lỏng."
+  },
+  {
+   "ma_cau": "K09070401009",
+   "nhom_id": "KNB00519",
+   "loai": "trac_nghiem",
+   "de": "Sản phẩm nào sau đây thu được khi chưng cất dầu mỏ?",
+   "lua_chon": [
+    "Khí thiên nhiên",
+    "Than đá",
+    "Nhựa đường",
+    "Biogas"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Chưng cất dầu mỏ cho các sản phẩm như xăng, dầu diesel, dầu hoả và nhựa đường; khí thiên nhiên, than đá, biogas không phải sản phẩm chưng cất dầu mỏ.\n\nVì sao các phương án khác sai:\n- A: Khí thiên nhiên là nhiên liệu khai thác riêng, không phải sản phẩm chưng cất dầu mỏ.\n- B: Than đá là nhiên liệu rắn khai thác từ mỏ than, không liên quan dầu mỏ.\n- D: Biogas sinh ra từ phân huỷ chất thải hữu cơ, không phải sản phẩm chưng cất dầu mỏ."
+  },
+  {
+   "ma_cau": "K09070401010",
+   "nhom_id": "KNB00519",
+   "loai": "trac_nghiem",
+   "de": "Khí LPG dùng làm nhiên liệu đun nấu có thành phần chính là",
+   "lua_chon": [
+    "Methane",
+    "Khí carbon dioxide",
+    "Ethylene",
+    "Propane và butane"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khí hoá lỏng LPG dùng đun nấu có thành phần chính là propane và butane, được nén hoá lỏng để dễ vận chuyển và bảo quản.\n\nVì sao các phương án khác sai:\n- A: Methane là thành phần chính của khí thiên nhiên, không phải LPG.\n- B: Carbon dioxide không cháy được, không phải nhiên liệu.\n- C: Ethylene không phải thành phần chính của khí LPG."
+  },
+  {
+   "ma_cau": "K09070401011",
+   "nhom_id": "KNB00519",
+   "loai": "trac_nghiem",
+   "de": "Khí thiên nhiên khai thác từ các mỏ khí riêng có thành phần chính là",
+   "lua_chon": [
+    "Methane",
+    "Propane",
+    "Butane",
+    "Ethylene"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khí thiên nhiên có thành phần chính là methane, chiếm tỉ lệ lớn nhất trong hỗn hợp khí khai thác được.\n\nVì sao các phương án khác sai:\n- B: Propane chỉ chiếm tỉ lệ nhỏ trong khí thiên nhiên, không phải thành phần chính.\n- C: Butane chỉ chiếm tỉ lệ nhỏ trong khí thiên nhiên, không phải thành phần chính.\n- D: Ethylene không có trong thành phần khí thiên nhiên khai thác được."
+  },
+  {
+   "ma_cau": "K09070401012",
+   "nhom_id": "KNB00519",
+   "loai": "trac_nghiem",
+   "de": "Khí mỏ dầu (khí đồng hành) được khai thác cùng với",
+   "lua_chon": [
+    "Than đá",
+    "Dầu mỏ",
+    "Đá vôi",
+    "Quặng sắt"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khí mỏ dầu là khí đồng hành, tồn tại lẫn cùng với dầu mỏ trong các mỏ dầu và được khai thác cùng lúc.\n\nVì sao các phương án khác sai:\n- A: Than đá là mỏ nhiên liệu rắn riêng, không chứa khí mỏ dầu.\n- C: Đá vôi là nguyên liệu sản xuất vôi, không liên quan khí mỏ dầu.\n- D: Quặng sắt dùng luyện kim, không liên quan khí mỏ dầu."
+  },
+  {
+   "ma_cau": "K09070401013",
+   "nhom_id": "KNB00519",
+   "loai": "trac_nghiem",
+   "de": "Sản phẩm chế biến từ dầu mỏ nào sau đây được dùng để rải mặt đường?",
+   "lua_chon": [
+    "Xăng",
+    "Dầu hoả",
+    "Nhựa đường",
+    "Dầu diesel"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Nhựa đường là sản phẩm nặng thu được khi chưng cất dầu mỏ, có độ nhớt cao, được dùng để rải mặt đường.\n\nVì sao các phương án khác sai:\n- A: Xăng dùng làm nhiên liệu cho động cơ, không dùng rải mặt đường.\n- B: Dầu hoả dùng làm nhiên liệu đốt, không dùng rải mặt đường.\n- D: Dầu diesel dùng làm nhiên liệu cho động cơ diesel, không dùng rải mặt đường."
+  },
+  {
+   "ma_cau": "K09070401014",
+   "nhom_id": "KNB00519",
+   "loai": "trac_nghiem",
+   "de": "Xăng, dầu diesel, dầu hoả đều là các sản phẩm thu được từ quá trình nào?",
+   "lua_chon": [
+    "Lên men glucose",
+    "Nung đá vôi",
+    "Điện phân nước biển",
+    "Chưng cất dầu mỏ"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Xăng, dầu diesel, dầu hoả đều là các phân đoạn thu được khi chưng cất dầu mỏ ở các khoảng nhiệt độ khác nhau.\n\nVì sao các phương án khác sai:\n- A: Lên men glucose tạo ethanol, không liên quan đến xăng, dầu.\n- B: Nung đá vôi tạo vôi sống, không liên quan đến xăng, dầu.\n- C: Điện phân nước biển tạo các sản phẩm vô cơ, không liên quan đến xăng, dầu."
+  },
+  {
+   "ma_cau": "K09070401015",
+   "nhom_id": "KNB00519",
+   "loai": "trac_nghiem",
+   "de": "Khí biogas thu được từ quá trình nào?",
+   "lua_chon": [
+    "Phân huỷ yếm khí phân, rác hữu cơ",
+    "Chưng cất dầu mỏ",
+    "Khai thác từ mỏ khí thiên nhiên",
+    "Đốt than trong lò kín"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Biogas là hỗn hợp khí (chủ yếu methane) sinh ra từ quá trình phân huỷ yếm khí (không có oxygen) các chất thải hữu cơ như phân gia súc, rác hữu cơ.\n\nVì sao các phương án khác sai:\n- B: Chưng cất dầu mỏ cho xăng, dầu diesel, dầu hoả, không sinh ra biogas.\n- C: Khí thiên nhiên được khai thác từ mỏ khí riêng, không phải nguồn gốc của biogas.\n- D: Đốt than sinh khí thải như CO₂, không tạo ra biogas."
+  },
+  {
+   "ma_cau": "K09070202001",
+   "nhom_id": "KNB00511",
+   "loai": "trac_nghiem",
+   "de": "Phương trình hoá học nào sau đây viết đúng khi đốt cháy hoàn toàn khí methane?",
+   "lua_chon": [
+    "CH₄ + O₂ → CO₂ + H₂O",
+    "CH₄ + 2O₂ → 2CO₂ + 2H₂O",
+    "CH₄ + 2O₂ → CO₂ + 2H₂O",
+    "2CH₄ + O₂ → 2CO₂ + 2H₂O"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Cân bằng C, H rồi O: CH₄ + 2O₂ → CO₂ + 2H₂O.\n\nVì sao các phương án khác sai:\n- A: Thiếu hệ số 2 trước O₂ nên chưa đủ oxygen để tạo 2H₂O.\n- B: CH₄ chỉ có 1 carbon nên tạo 1CO₂, không phải 2.\n- D: Vế trái chỉ có 2 nguyên tử oxygen (từ 1O₂) nhưng vế phải cần 6 nguyên tử oxygen, chưa cân bằng."
+  },
+  {
+   "ma_cau": "K09070202002",
+   "nhom_id": "KNB00511",
+   "loai": "trac_nghiem",
+   "de": "Phương trình hoá học nào sau đây viết đúng khi đốt cháy hoàn toàn khí ethane?",
+   "lua_chon": [
+    "C₂H₆ + 7O₂ → 4CO₂ + 6H₂O",
+    "2C₂H₆ + 7O₂ → 4CO₂ + 6H₂O",
+    "2C₂H₆ + 5O₂ → 4CO₂ + 6H₂O",
+    "2C₂H₆ + 7O₂ → 2CO₂ + 6H₂O"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Cân bằng C, H rồi O: 2C₂H₆ + 7O₂ → 4CO₂ + 6H₂O.\n\nVì sao các phương án khác sai:\n- A: Thiếu hệ số 2 trước C₂H₆ nên vế trái chỉ có 2 carbon, không đủ để tạo 4CO₂.\n- C: Hệ số O₂ phải là 7 để cân bằng đủ 14 nguyên tử oxygen ở vế phải, không phải 5.\n- D: 2C₂H₆ có 4 carbon nên phải tạo 4CO₂, không phải 2."
+  },
+  {
+   "ma_cau": "K09070202003",
+   "nhom_id": "KNB00511",
+   "loai": "trac_nghiem",
+   "de": "Phương trình hoá học nào sau đây viết đúng khi đốt cháy hoàn toàn khí propane?",
+   "lua_chon": [
+    "C₃H₈ + 5O₂ → 3CO₂ + 3H₂O",
+    "C₃H₈ + 3O₂ → 3CO₂ + 4H₂O",
+    "C₃H₈ + 5O₂ → 4CO₂ + 4H₂O",
+    "C₃H₈ + 5O₂ → 3CO₂ + 4H₂O"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Cân bằng C, H rồi O: C₃H₈ + 5O₂ → 3CO₂ + 4H₂O.\n\nVì sao các phương án khác sai:\n- A: C₃H₈ có 8 hydrogen nên tạo 4H₂O, không phải 3H₂O.\n- B: Cần 5 O₂ để cân bằng đủ 10 nguyên tử oxygen ở vế phải, không phải 3.\n- C: C₃H₈ chỉ có 3 carbon nên tạo 3CO₂, không phải 4."
+  },
+  {
+   "ma_cau": "K09070202004",
+   "nhom_id": "KNB00511",
+   "loai": "trac_nghiem",
+   "de": "Phương trình hoá học nào sau đây viết đúng khi đốt cháy hoàn toàn khí butane?",
+   "lua_chon": [
+    "2C₄H₁₀ + 13O₂ → 8CO₂ + 10H₂O",
+    "C₄H₁₀ + 13O₂ → 4CO₂ + 5H₂O",
+    "2C₄H₁₀ + 13O₂ → 4CO₂ + 10H₂O",
+    "2C₄H₁₀ + 8O₂ → 8CO₂ + 10H₂O"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Cân bằng C, H rồi O: 2C₄H₁₀ + 13O₂ → 8CO₂ + 10H₂O.\n\nVì sao các phương án khác sai:\n- B: Vế trái chỉ có 1 C₄H₁₀ (4 carbon) nhưng vế phải cần 8 carbon (8CO₂); phải nhân đôi cả 2 vế.\n- C: 2C₄H₁₀ có 8 carbon nên phải tạo 8CO₂, không phải 4CO₂.\n- D: Cần 13 O₂ để cân bằng đủ 26 nguyên tử oxygen ở vế phải (8×2+10×1=26), không phải 8."
+  },
+  {
+   "ma_cau": "K09070202005",
+   "nhom_id": "KNB00511",
+   "loai": "trac_nghiem",
+   "de": "Khi có ánh sáng, methane phản ứng với chlorine, thế 1 nguyên tử H. Phương trình đúng là",
+   "lua_chon": [
+    "CH₄ + Cl₂ → CH₂Cl₂ + H₂",
+    "CH₄ + Cl₂ → CH₃Cl + HCl",
+    "CH₄ + 2Cl₂ → CH₃Cl + HCl",
+    "CH₄ + Cl₂ → CH₃Cl + H₂"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khi có ánh sáng, 1 nguyên tử H trong CH₄ bị thay bằng 1 nguyên tử Cl: CH₄ + Cl₂ → CH₃Cl + HCl.\n\nVì sao các phương án khác sai:\n- A: Phản ứng thế 1 nguyên tử Cl chỉ tạo CH₃Cl, không tạo CH₂Cl₂ hay khí H₂.\n- C: Chỉ cần 1 Cl₂ để thế 1 nguyên tử H, không cần hệ số 2.\n- D: Sản phẩm phụ của phản ứng thế là HCl, không phải khí H₂."
+  },
+  {
+   "ma_cau": "K09070202006",
+   "nhom_id": "KNB00511",
+   "loai": "trac_nghiem",
+   "de": "Phản ứng thế giữa methane và chlorine cần điều kiện nào để xảy ra?",
+   "lua_chon": [
+    "Đun nóng, có xúc tác Ni",
+    "Có ánh sáng",
+    "Có mặt dung dịch base",
+    "Áp suất cao, nhiệt độ thấp"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Phản ứng thế giữa methane và chlorine xảy ra khi có ánh sáng.\n\nVì sao các phương án khác sai:\n- A: Đun nóng có xúc tác Ni là điều kiện của phản ứng cộng hydrogen vào alkene.\n- C: Dung dịch base không phải điều kiện của phản ứng thế này.\n- D: Ánh sáng mới là điều kiện cần của phản ứng thế methane."
+  },
+  {
+   "ma_cau": "K09070202007",
+   "nhom_id": "KNB00511",
+   "loai": "trac_nghiem",
+   "de": "Khi có ánh sáng, methane phản ứng với chlorine theo tỉ lệ mol 1 : 1. Sản phẩm thu được gồm những chất nào?",
+   "lua_chon": [
+    "CH₂Cl₂ và H₂",
+    "CH₃Cl và Cl₂",
+    "CH₄ và HCl",
+    "CH₃Cl và HCl"
+   ],
+   "dap_an": "D",
+   "loi_giai": "CH₄ + Cl₂ → CH₃Cl + HCl (có ánh sáng): một nguyên tử H được thay bằng một nguyên tử Cl.\n\nVì sao các phương án khác sai:\n- A: Thế một nguyên tử H chỉ tạo CH₃Cl; sản phẩm còn lại là HCl, không phải H₂.\n- B: Theo tỉ lệ 1 : 1, Cl₂ đã phản ứng hết.\n- C: CH₄ đã phản ứng, sản phẩm hữu cơ là CH₃Cl."
+  },
+  {
+   "ma_cau": "K09070202008",
+   "nhom_id": "KNB00511",
+   "loai": "trac_nghiem",
+   "de": "Phản ứng CH₄ + Cl₂ → CH₃Cl + HCl (có ánh sáng) thuộc loại phản ứng nào?",
+   "lua_chon": [
+    "Phản ứng cộng",
+    "Phản ứng cháy",
+    "Phản ứng phân huỷ",
+    "Phản ứng thế"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Một nguyên tử H trong CH₄ được thay thế bởi một nguyên tử Cl: đây là phản ứng thế.\n\nVì sao các phương án khác sai:\n- A: Phản ứng cộng xảy ra với chất có liên kết đôi như ethylene; methane chỉ có liên kết đơn.\n- B: Phản ứng cháy cần oxygen, tạo CO₂ và H₂O.\n- C: Phản ứng phân huỷ chỉ có một chất ban đầu."
+  },
+  {
+   "ma_cau": "K09070202009",
+   "nhom_id": "KNB00511",
+   "loai": "trac_nghiem",
+   "de": "Phản ứng thế giữa alkane và chlorine (khi có ánh sáng) có đặc điểm gì?",
+   "lua_chon": [
+    "Liên kết đôi C=C bị phá vỡ để cộng thêm Cl₂",
+    "Alkane bị đốt cháy tạo CO₂ và HCl",
+    "Một nguyên tử H trong alkane bị thay bằng một nguyên tử Cl",
+    "Hai phân tử alkane kết hợp thành một phân tử lớn hơn"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Trong phản ứng thế, một hoặc nhiều nguyên tử H của alkane lần lượt được thay thế bởi nguyên tử Cl khi có ánh sáng.\n\nVì sao các phương án khác sai:\n- A: Alkane không có liên kết đôi C=C; đây là mô tả phản ứng cộng của alkene, không phải phản ứng thế.\n- B: Phản ứng thế không tạo CO₂; đây là mô tả phản ứng cháy.\n- D: Đây là mô tả phản ứng trùng hợp của alkene, không phải phản ứng thế của alkane."
+  },
+  {
+   "ma_cau": "K09070202010",
+   "nhom_id": "KNB00511",
+   "loai": "trac_nghiem",
+   "de": "Khi có ánh sáng, ethane (C₂H₆) phản ứng với chlorine theo tỉ lệ mol 1:1. Sản phẩm hữu cơ thu được là",
+   "lua_chon": [
+    "C₂H₄Cl₂",
+    "C₂H₆Cl₂",
+    "C₂H₄",
+    "C₂H₅Cl"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Ethane + Cl₂ (ánh sáng, tỉ lệ 1:1) → C₂H₅Cl + HCl: một nguyên tử H được thay bằng một nguyên tử Cl.\n\nVì sao các phương án khác sai:\n- A: C₂H₄Cl₂ ứng với việc thế 2 nguyên tử H, không khớp tỉ lệ mol 1:1 (chỉ thế 1 nguyên tử H).\n- B: Công thức C₂H₆Cl₂ không đúng vì vượt quá hoá trị của carbon khi vẫn giữ nguyên 6 hydrogen mà thêm 2 Cl.\n- C: C₂H₄ là alkene, không phải sản phẩm thế của ethane với chlorine."
+  },
+  {
+   "ma_cau": "K09070302001",
+   "nhom_id": "KNB00516",
+   "loai": "trac_nghiem",
+   "de": "Phương trình hoá học nào sau đây viết đúng khi đốt cháy hoàn toàn khí ethylene?",
+   "lua_chon": [
+    "C₂H₄ + 3O₂ → 2CO₂ + 2H₂O",
+    "C₂H₄ + 2O₂ → 2CO₂ + 2H₂O",
+    "C₂H₄ + 3O₂ → 2CO₂ + 3H₂O",
+    "C₂H₄ + 3O₂ → CO₂ + 2H₂O"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Cân bằng C, H rồi O: C₂H₄ + 3O₂ → 2CO₂ + 2H₂O.\n\nVì sao các phương án khác sai:\n- B: Cần 3 O₂ để cân bằng đủ 6 nguyên tử oxygen ở vế phải, không phải 2.\n- C: C₂H₄ có 4 hydrogen nên tạo 2H₂O, không phải 3H₂O.\n- D: C₂H₄ có 2 carbon nên tạo 2CO₂, không phải 1."
+  },
+  {
+   "ma_cau": "K09070302002",
+   "nhom_id": "KNB00516",
+   "loai": "trac_nghiem",
+   "de": "Phương trình hoá học nào sau đây viết đúng khi đốt cháy hoàn toàn khí propylene (C₃H₆)?",
+   "lua_chon": [
+    "C₃H₆ + 9O₂ → 3CO₂ + 3H₂O",
+    "2C₃H₆ + 9O₂ → 6CO₂ + 6H₂O",
+    "2C₃H₆ + 6O₂ → 6CO₂ + 6H₂O",
+    "C₃H₆ + 4O₂ → 3CO₂ + 3H₂O"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Cân bằng C, H rồi O: 2C₃H₆ + 9O₂ → 6CO₂ + 6H₂O.\n\nVì sao các phương án khác sai:\n- A: Vế trái chỉ có 1 C₃H₆ (3 carbon) nhưng vế phải cần 6 carbon (6CO₂); phải nhân đôi cả 2 vế.\n- C: Cần 9 O₂ để cân bằng đủ 18 nguyên tử oxygen ở vế phải (6×2+6×1=18), không phải 6.\n- D: Với hệ số 1 C₃H₆ cần 4,5 O₂ mới đủ cân bằng (số không nguyên); phải nhân đôi cả phương trình để có hệ số nguyên, hệ số 4 chưa đủ."
+  },
+  {
+   "ma_cau": "K09070302003",
+   "nhom_id": "KNB00516",
+   "loai": "trac_nghiem",
+   "de": "Phương trình hoá học nào sau đây viết đúng khi dẫn khí ethylene qua dung dịch bromine?",
+   "lua_chon": [
+    "C₂H₄ + Br₂ → C₂H₄Br₂",
+    "C₂H₄ + Br₂ → C₂H₂Br₂ + H₂",
+    "C₂H₄ + 2Br₂ → C₂H₄Br₄",
+    "C₂H₄ + Br₂ → C₂H₆Br₂"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Ethylene có liên kết đôi C=C cộng với Br₂ theo tỉ lệ 1:1: C₂H₄ + Br₂ → C₂H₄Br₂, làm mất màu nước bromine.\n\nVì sao các phương án khác sai:\n- B: Phản ứng cộng không tạo khí H₂, chỉ tạo 1 sản phẩm cộng duy nhất.\n- C: Chỉ cần 1 Br₂ để cộng vào 1 liên kết đôi, không cần hệ số 2.\n- D: Phản ứng cộng không làm tăng số nguyên tử hydrogen, sản phẩm phải là C₂H₄Br₂."
+  },
+  {
+   "ma_cau": "K09070302004",
+   "nhom_id": "KNB00516",
+   "loai": "trac_nghiem",
+   "de": "Phương trình hoá học nào sau đây viết đúng khi cho ethylene phản ứng với khí hydrogen, xúc tác Ni, nhiệt độ?",
+   "lua_chon": [
+    "C₂H₄ + H₂ → C₂H₄",
+    "C₂H₄ + H₂ → C₂H₆",
+    "C₂H₄ + 2H₂ → C₂H₆",
+    "C₂H₄ + H₂ → C₂H₂"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ethylene cộng H₂ (xúc tác Ni, nhiệt độ) tạo ethane: C₂H₄ + H₂ → C₂H₆.\n\nVì sao các phương án khác sai:\n- A: Phản ứng cộng phải làm thay đổi công thức, không thể giữ nguyên C₂H₄.\n- C: Chỉ cần 1 H₂ để cộng vào 1 liên kết đôi, không cần hệ số 2.\n- D: Cộng H₂ vào liên kết đôi phải tạo ra chất no C₂H₆, không phải công thức này."
+  },
+  {
+   "ma_cau": "K09070302005",
+   "nhom_id": "KNB00516",
+   "loai": "trac_nghiem",
+   "de": "Ethylene làm mất màu dung dịch nước bromine là do nguyên nhân nào?",
+   "lua_chon": [
+    "Ethylene tan tốt trong nước bromine",
+    "Ethylene phản ứng thế với Br₂",
+    "Ethylene có liên kết đôi C=C, cộng với Br₂",
+    "Ethylene bị oxi hoá bởi Br₂ tạo CO₂"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ethylene có liên kết đôi C=C nên cộng với Br₂ tạo C₂H₄Br₂ không màu, làm mất màu nước bromine.\n\nVì sao các phương án khác sai:\n- A: Mất màu là do phản ứng hoá học, không chỉ do hoà tan vật lí.\n- B: Đây là phản ứng cộng vào liên kết đôi, không phải phản ứng thế.\n- D: Phản ứng cộng Br₂ không phải phản ứng oxi hoá tạo CO₂."
+  },
+  {
+   "ma_cau": "K09070302006",
+   "nhom_id": "KNB00516",
+   "loai": "trac_nghiem",
+   "de": "Phương trình hoá học nào sau đây viết đúng khi dẫn khí propylene (C₃H₆) qua dung dịch bromine?",
+   "lua_chon": [
+    "C₃H₆ + Br₂ → C₃H₆Br₂",
+    "C₃H₆ + 2Br₂ → C₃H₆Br₄",
+    "C₃H₆ + Br₂ → C₃H₄Br₂ + H₂",
+    "C₃H₆ + Br₂ → C₃H₈Br₂"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Propylene có liên kết đôi C=C cộng với Br₂ theo tỉ lệ 1:1: C₃H₆ + Br₂ → C₃H₆Br₂, làm mất màu nước bromine.\n\nVì sao các phương án khác sai:\n- B: Chỉ cần 1 Br₂ để cộng vào 1 liên kết đôi, không cần hệ số 2.\n- C: Phản ứng cộng không tạo khí H₂, chỉ tạo 1 sản phẩm cộng duy nhất.\n- D: Phản ứng cộng không làm tăng số nguyên tử hydrogen, sản phẩm phải là C₃H₆Br₂."
+  },
+  {
+   "ma_cau": "K09070302007",
+   "nhom_id": "KNB00516",
+   "loai": "trac_nghiem",
+   "de": "Phương trình hoá học nào sau đây viết đúng khi cho propylene (C₃H₆) phản ứng với khí hydrogen, xúc tác Ni, nhiệt độ?",
+   "lua_chon": [
+    "C₃H₆ + 2H₂ → C₃H₈",
+    "C₃H₆ + H₂ → C₃H₈",
+    "C₃H₆ + H₂ → C₃H₆",
+    "C₃H₆ + H₂ → C₃H₄"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Propylene cộng H₂ (xúc tác Ni, nhiệt độ) tạo propane: C₃H₆ + H₂ → C₃H₈.\n\nVì sao các phương án khác sai:\n- A: Chỉ cần 1 H₂ để cộng vào 1 liên kết đôi, không cần hệ số 2.\n- C: Phản ứng cộng phải làm thay đổi công thức, không thể giữ nguyên C₃H₆.\n- D: Cộng H₂ vào liên kết đôi phải tạo ra chất no C₃H₈ (thêm H, không bớt), không phải C₃H₄."
+  },
+  {
+   "ma_cau": "K09070402001",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Nhiên liệu cháy không hoàn toàn do thiếu oxygen thường sinh thêm khí nào gây độc?",
+   "lua_chon": [
+    "Carbon dioxide",
+    "Carbon monoxide",
+    "Oxygen",
+    "Nitrogen"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khi thiếu oxygen, nhiên liệu cháy không hoàn toàn sinh ra khí carbon monoxide (CO) là khí độc, khác với cháy hoàn toàn chỉ sinh carbon dioxide.\n\nVì sao các phương án khác sai:\n- A: Carbon dioxide là sản phẩm của cháy HOÀN TOÀN, không phải khí sinh thêm khi thiếu oxygen.\n- C: Oxygen là chất tham gia phản ứng cháy, không phải sản phẩm sinh ra.\n- D: Nitrogen không tham gia phản ứng cháy của nhiên liệu."
+  },
+  {
+   "ma_cau": "K09070402002",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "So với để than nguyên cục lớn, than đã đập nhỏ cháy nhanh và hoàn toàn hơn vì",
+   "lua_chon": [
+    "Khối lượng than giảm đi sau khi đập nhỏ",
+    "Nhiệt độ ngoài trời tăng lên khi đập than",
+    "Diện tích tiếp xúc giữa than và oxygen tăng lên",
+    "Than nhỏ chứa ít carbon hơn than cục lớn"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đập than thành cục nhỏ làm tăng diện tích tiếp xúc giữa than với oxygen trong không khí, nhờ đó than cháy nhanh và hoàn toàn hơn.\n\nVì sao các phương án khác sai:\n- A: Đập nhỏ không làm thay đổi khối lượng than.\n- B: Đập than không ảnh hưởng đến nhiệt độ ngoài trời.\n- D: Đập nhỏ không làm thay đổi lượng carbon có trong than."
+  },
+  {
+   "ma_cau": "K09070402003",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Quạt gió vào bếp lò đang cháy giúp nhiên liệu cháy hoàn toàn hơn vì việc này",
+   "lua_chon": [
+    "Làm giảm nhiệt độ của bếp lò",
+    "Làm tăng khối lượng nhiên liệu trong bếp",
+    "Đẩy hết khí carbon dioxide ra khỏi bếp",
+    "Cung cấp thêm oxygen cho phản ứng cháy"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Quạt gió đưa thêm không khí (chứa oxygen) vào bếp lò, cung cấp đủ oxygen cho phản ứng cháy nên nhiên liệu cháy hoàn toàn và toả nhiều nhiệt hơn.\n\nVì sao các phương án khác sai:\n- A: Quạt gió cấp thêm oxygen làm TĂNG nhiệt độ cháy, không phải giảm.\n- B: Quạt gió không làm tăng khối lượng nhiên liệu.\n- C: Quạt gió cấp thêm oxygen, không phải để đẩy khí carbon dioxide ra."
+  },
+  {
+   "ma_cau": "K09070402004",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Đốt cồn trong đèn cồn có bấc quá to, ngọn lửa cháy kèm nhiều khói đen là dấu hiệu của",
+   "lua_chon": [
+    "Cồn cháy không hoàn toàn do thiếu oxygen",
+    "Cồn cháy mạnh hơn, toả nhiều nhiệt",
+    "Cồn đã bay hơi hết khỏi đèn",
+    "Đèn cồn đã hết nhiên liệu để cháy"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Bấc quá to làm lượng hơi cồn bốc lên nhiều hơn lượng oxygen cung cấp, cồn cháy không hoàn toàn nên sinh khói đen (muội carbon).\n\nVì sao các phương án khác sai:\n- B: Khói đen là dấu hiệu cháy KHÔNG hết (thiếu oxygen), không phải cháy mạnh hơn hay toả nhiều nhiệt hơn.\n- C: Khói đen do thiếu oxygen khi cháy, không liên quan việc cồn bay hơi hết.\n- D: Đèn vẫn còn cồn để cháy nên mới sinh khói đen, chưa hết nhiên liệu."
+  },
+  {
+   "ma_cau": "K09070402005",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Trong động cơ, xăng được phun thành tia sương mịn vào buồng đốt thay vì để chảy thành dòng, nhằm mục đích",
+   "lua_chon": [
+    "Giảm lượng oxygen cần dùng khi đốt xăng",
+    "Tăng diện tích tiếp xúc để xăng cháy hoàn toàn hơn",
+    "Làm xăng khó bắt cháy hơn để an toàn",
+    "Giảm nhiệt lượng toả ra khi đốt xăng"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Phun sương làm xăng chia thành các hạt rất nhỏ, tăng diện tích tiếp xúc với oxygen trong không khí nên xăng cháy nhanh và hoàn toàn hơn.\n\nVì sao các phương án khác sai:\n- A: Phun sương KHÔNG làm giảm nhu cầu oxygen, mà giúp trộn đều với oxygen hơn.\n- C: Mục đích là giúp xăng dễ bắt cháy và cháy hoàn toàn hơn, không phải khó cháy.\n- D: Cháy hoàn toàn hơn giúp TĂNG nhiệt lượng toả ra hữu ích, không phải giảm."
+  },
+  {
+   "ma_cau": "K09070402006",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Gas trong bình gas mini tồn tại ở dạng lỏng nhưng khi qua van sẽ chuyển thành khí trước khi cháy. Việc chuyển thành khí giúp gas cháy hoàn toàn hơn vì",
+   "lua_chon": [
+    "Khí gas có khối lượng phân tử lớn hơn dạng lỏng",
+    "Khí gas khó bắt cháy hơn dạng lỏng nên an toàn hơn",
+    "Khí gas dễ trộn đều với oxygen trong không khí hơn",
+    "Khí gas không còn chứa carbon như dạng lỏng"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ở dạng khí, các phân tử gas phân tán và dễ trộn đều với oxygen trong không khí hơn dạng lỏng, nhờ đó gas cháy nhanh và hoàn toàn hơn.\n\nVì sao các phương án khác sai:\n- A: Chuyển trạng thái không làm thay đổi khối lượng phân tử của gas.\n- B: Mục đích là giúp gas cháy hoàn toàn hơn, không phải khó cháy.\n- D: Gas ở dạng khí vẫn chứa carbon như ở dạng lỏng, không đổi thành phần."
+  },
+  {
+   "ma_cau": "K09070402007",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Phản ứng cháy hoàn toàn của nhiên liệu xảy ra khi",
+   "lua_chon": [
+    "Nhiên liệu được đốt ở nhiệt độ rất thấp",
+    "Nhiên liệu được cấp đủ oxygen cần thiết",
+    "Nhiên liệu tiếp xúc với khí carbon dioxide",
+    "Nhiên liệu được nén chặt lại với nhau"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Nhiên liệu cháy hoàn toàn khi được cung cấp đủ oxygen để phản ứng với toàn bộ nhiên liệu, sinh ra carbon dioxide và nước, không còn khí CO.\n\nVì sao các phương án khác sai:\n- A: Nhiệt độ thấp không đảm bảo cháy hoàn toàn; nhiên liệu cần đủ oxygen mới cháy hết.\n- C: Carbon dioxide là sản phẩm của phản ứng cháy, không phải chất giúp cháy hoàn toàn.\n- D: Nén chặt nhiên liệu làm giảm diện tích tiếp xúc với oxygen, khiến cháy kém hoàn toàn hơn."
+  },
+  {
+   "ma_cau": "K09070402008",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Vì sao tăng diện tích tiếp xúc giữa nhiên liệu rắn với không khí giúp nhiên liệu cháy hoàn toàn hơn?",
+   "lua_chon": [
+    "Vì làm giảm khối lượng nhiên liệu cần đốt",
+    "Vì làm giảm nhiệt độ cháy của nhiên liệu",
+    "Vì nhiên liệu tiếp xúc với oxygen nhiều hơn",
+    "Vì làm nhiên liệu chứa ít carbon hơn"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Diện tích tiếp xúc lớn giúp nhiều phân tử nhiên liệu ở bề mặt tiếp xúc được với oxygen trong không khí cùng lúc, nhờ đó phản ứng cháy diễn ra nhanh và hoàn toàn hơn.\n\nVì sao các phương án khác sai:\n- A: Tăng diện tích tiếp xúc không làm giảm khối lượng nhiên liệu.\n- B: Tăng diện tích tiếp xúc giúp cháy nhanh và tốt hơn, không làm giảm nhiệt độ cháy.\n- D: Tăng diện tích tiếp xúc không làm thay đổi thành phần carbon trong nhiên liệu."
+  },
+  {
+   "ma_cau": "K09070402009",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Dấu hiệu nào cho thấy nhiên liệu đang cháy KHÔNG hoàn toàn?",
+   "lua_chon": [
+    "Ngọn lửa cháy xanh, không có khói",
+    "Sản phẩm cháy chỉ có carbon dioxide và nước",
+    "Nhiên liệu cháy hết nhanh, toả nhiều nhiệt",
+    "Xuất hiện khói đen hoặc khí CO"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khi thiếu oxygen, nhiên liệu cháy không hoàn toàn thường sinh khói đen (muội carbon) hoặc khí CO độc, khác với cháy hoàn toàn chỉ sinh CO₂ và nước.\n\nVì sao các phương án khác sai:\n- A: Ngọn lửa xanh, không khói là dấu hiệu cháy hoàn toàn, không phải không hoàn toàn.\n- B: Chỉ sinh CO₂ và nước là dấu hiệu cháy hoàn toàn.\n- C: Cháy hết nhanh, toả nhiều nhiệt là đặc điểm của cháy hoàn toàn, hiệu quả."
+  },
+  {
+   "ma_cau": "K09070402010",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Trong lò đốt công nghiệp sử dụng khí thiên nhiên, người ta trộn khí với một lượng không khí thích hợp trước khi đốt nhằm mục đích chính là",
+   "lua_chon": [
+    "Làm giảm nhiệt lượng toả ra khi cháy",
+    "Ngăn không cho khí thiên nhiên bốc cháy",
+    "Tăng lượng khí CO sinh ra khi cháy",
+    "Giúp nhiên liệu cháy hoàn toàn, ít ô nhiễm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Trộn khí thiên nhiên với không khí ở tỉ lệ thích hợp giúp đủ oxygen cho phản ứng cháy, nhiên liệu cháy hoàn toàn hơn, tiết kiệm và giảm khí độc sinh ra.\n\nVì sao các phương án khác sai:\n- A: Trộn không khí thích hợp không làm giảm nhiệt lượng toả ra khi cháy hoàn toàn.\n- B: Mục đích là để đốt cháy hiệu quả, không phải ngăn cháy.\n- C: Cháy hoàn toàn do đủ oxygen làm GIẢM khí CO, không phải tăng."
+  },
+  {
+   "ma_cau": "K09070402011",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Khi nhóm bếp than tổ ong, người ta đập than thành viên nhỏ có nhiều lỗ thay vì để nguyên cục lớn nhằm",
+   "lua_chon": [
+    "Tăng diện tích tiếp xúc với oxygen để cháy hoàn toàn",
+    "Giảm nhiệt độ cháy của than để an toàn hơn",
+    "Giảm khối lượng than cần dùng mỗi lần đun",
+    "Ngăn không cho than tiếp xúc với không khí"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Than tổ ong có nhiều lỗ nhỏ giúp tăng diện tích tiếp xúc giữa than và oxygen trong không khí, nhờ đó than cháy nhanh và hoàn toàn hơn.\n\nVì sao các phương án khác sai:\n- B: Đục lỗ không nhằm giảm nhiệt độ cháy mà để tăng diện tích tiếp xúc.\n- C: Đục lỗ không làm giảm khối lượng than sử dụng.\n- D: Đục lỗ giúp TĂNG tiếp xúc với không khí, không phải ngăn cản."
+  },
+  {
+   "ma_cau": "K09070402012",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Khi đun bếp bằng củi, người ta thường chẻ nhỏ củi và xếp thưa trong bếp thay vì để nguyên thân củi to nhằm",
+   "lua_chon": [
+    "Giảm nhiệt lượng toả ra để tránh cháy quá to",
+    "Tăng diện tích tiếp xúc để củi cháy hoàn toàn hơn",
+    "Ngăn oxygen tiếp xúc với củi để cháy chậm hơn",
+    "Giảm khối lượng carbon có trong củi"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Chẻ nhỏ củi và xếp thưa giúp tăng diện tích tiếp xúc giữa củi với oxygen trong không khí, nhờ đó củi cháy nhanh và hoàn toàn hơn, ít khói.\n\nVì sao các phương án khác sai:\n- A: Mục đích là cháy nhanh và hoàn toàn hơn, không phải giảm nhiệt lượng.\n- C: Chẻ nhỏ và xếp thưa giúp TĂNG tiếp xúc oxygen, không phải ngăn cản.\n- D: Chẻ nhỏ củi không làm thay đổi lượng carbon có trong củi."
+  },
+  {
+   "ma_cau": "K09070402013",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Trong động cơ xe máy, nếu bộ chế hoà khí cung cấp không khí quá ít so với lượng xăng, hiện tượng thường gặp là",
+   "lua_chon": [
+    "Xăng cháy sạch hơn, tiết kiệm nhiên liệu",
+    "Động cơ chạy nhanh hơn bình thường",
+    "Xăng cháy không hoàn toàn, khí thải có nhiều khí CO",
+    "Khí thải chỉ gồm hơi nước và khí oxygen"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Thiếu không khí (thiếu oxygen) so với lượng xăng làm xăng cháy không hoàn toàn, sinh nhiều khí CO độc trong khí thải và hao xăng hơn.\n\nVì sao các phương án khác sai:\n- A: Thiếu oxygen làm xăng cháy KHÔNG sạch (sinh khói, CO), không phải sạch hơn hay tiết kiệm hơn.\n- B: Thiếu không khí không làm động cơ chạy nhanh hơn.\n- D: Cháy không hoàn toàn sinh thêm khí CO, khí thải không chỉ có hơi nước và oxygen."
+  },
+  {
+   "ma_cau": "K09070402014",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Bếp gas gia đình khi cháy cho ngọn lửa màu vàng, đáy nồi bám nhiều bồ hóng đen. Để khí gas cháy hoàn toàn (ngọn lửa xanh), cần",
+   "lua_chon": [
+    "Khoá nhỏ van gió của bếp lại",
+    "Tăng gấp đôi lượng gas cấp vào bếp",
+    "Bịt kín các lỗ thông khí của bếp",
+    "Mở to van gió của bếp để cấp thêm oxygen"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Ngọn lửa vàng kèm bồ hóng đen là dấu hiệu cháy không hoàn toàn do thiếu oxygen; mở to van gió giúp cấp thêm không khí, gas cháy hoàn toàn hơn, ngọn lửa chuyển xanh.\n\nVì sao các phương án khác sai:\n- A: Khoá nhỏ van gió làm GIẢM oxygen, khiến cháy càng không hoàn toàn.\n- B: Tăng lượng gas mà không tăng không khí sẽ làm cháy không hoàn toàn hơn.\n- C: Bịt kín lỗ thông khí làm giảm oxygen cấp cho ngọn lửa."
+  },
+  {
+   "ma_cau": "K09070402015",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Khi đốt lò than sưởi ấm, người ta vừa đập nhỏ than vừa dùng quạt thổi thêm gió vào lò. Cả hai việc này đều nhằm mục đích",
+   "lua_chon": [
+    "Tăng diện tích tiếp xúc, tăng oxygen cho than cháy hoàn toàn",
+    "Giảm nhiệt độ của lò than để an toàn hơn",
+    "Giảm lượng than cần đốt bằng cách hạn chế oxygen",
+    "Ngăn không cho than tiếp xúc với không khí"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đập nhỏ than làm tăng diện tích tiếp xúc, quạt thổi gió làm tăng lượng oxygen cấp vào; cả hai đều giúp than cháy nhanh và hoàn toàn hơn.\n\nVì sao các phương án khác sai:\n- B: Mục đích là cháy hoàn toàn hơn, không phải giảm nhiệt độ.\n- C: Hạn chế oxygen sẽ làm than cháy KHÔNG hoàn toàn, tốn than hơn.\n- D: Cả hai việc đều giúp TĂNG tiếp xúc với không khí, không phải ngăn cản."
+  },
+  {
+   "ma_cau": "K09070402016",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Trong lò luyện gang, người ta đập nhỏ quặng sắt và than cốc trước khi đưa vào lò nhằm mục đích",
+   "lua_chon": [
+    "Tăng diện tích tiếp xúc, phản ứng nhanh và hoàn toàn hơn",
+    "Giảm khối lượng nguyên liệu cần dùng",
+    "Giảm nhiệt độ trong lò để an toàn hơn",
+    "Ngăn than cốc tiếp xúc với oxygen"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đập nhỏ quặng và than cốc làm tăng diện tích tiếp xúc với không khí (oxygen), giúp than cháy và phản ứng khử oxide sắt diễn ra nhanh, hoàn toàn hơn.\n\nVì sao các phương án khác sai:\n- B: Đập nhỏ không làm giảm khối lượng nguyên liệu.\n- C: Đập nhỏ giúp cháy mạnh hơn, không làm giảm nhiệt độ.\n- D: Đập nhỏ làm than tiếp xúc với oxygen nhiều hơn."
+  },
+  {
+   "ma_cau": "K09070402017",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Trong bếp gas công nghiệp cỡ lớn, người ta thiết kế nhiều lỗ nhỏ ở đầu vòi phun gas thay vì một lỗ lớn duy nhất. Mục đích chính là",
+   "lua_chon": [
+    "Giảm lượng gas thoát ra để tiết kiệm gas",
+    "Chia nhỏ dòng gas để gas trộn đều với không khí",
+    "Làm ngọn lửa yếu đi cho an toàn",
+    "Giữ gas ở dạng lỏng lâu hơn"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Chia dòng gas thành nhiều tia nhỏ giúp gas trộn đều hơn với oxygen trong không khí, tăng diện tích tiếp xúc nên gas cháy nhanh và hoàn toàn hơn.\n\nVì sao các phương án khác sai:\n- A: Mục đích chính là trộn gas với không khí tốt hơn.\n- C: Nhiều lỗ nhỏ giúp gas cháy hoàn toàn hơn, không làm lửa yếu đi.\n- D: Gas phun ra ở dạng khí."
+  },
+  {
+   "ma_cau": "K09070402018",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Khi đun bếp củi, nếu thấy khói bốc lên nhiều và lửa cháy yếu, biện pháp nào giúp củi cháy hoàn toàn hơn?",
+   "lua_chon": [
+    "Xếp thêm nhiều củi to chồng khít lên nhau",
+    "Đậy kín miệng bếp để giữ nhiệt",
+    "Quạt thêm gió và xếp củi thưa ra",
+    "Phủ vải ướt lên đống lửa"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Quạt thêm gió cung cấp thêm oxygen, xếp củi thưa tăng diện tích tiếp xúc với không khí, giúp củi cháy nhanh và hoàn toàn hơn, giảm khói.\n\nVì sao các phương án khác sai:\n- A: Xếp thêm củi to, khít làm giảm tiếp xúc với không khí, khói càng nhiều.\n- B: Đậy kín làm giảm oxygen, lửa càng yếu và nhiều khói hơn.\n- D: Phủ vải ướt sẽ dập lửa, không giúp cháy hoàn toàn hơn."
+  },
+  {
+   "ma_cau": "K09070402019",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Hơi xăng, dầu rất dễ bắt cháy nên khi bảo quản trong kho cần để nơi",
+   "lua_chon": [
+    "Đóng kín phòng, đặt gần bếp lửa",
+    "Ngoài trời nắng gắt, gần máy phát điện",
+    "Thông thoáng, tránh xa nguồn lửa",
+    "Trong phòng kín, gần thiết bị điện"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Kho chứa xăng, dầu cần thông thoáng để hơi nhiên liệu không tích tụ và phải tránh xa nguồn lửa để giảm nguy cơ bắt cháy.\n\nVì sao các phương án khác sai:\n- A: Gần bếp lửa là nguồn tia lửa trực tiếp gây cháy hơi xăng dầu.\n- B: Nắng gắt và máy phát điện đều là nguồn nhiệt, tia lửa nguy hiểm.\n- D: Phòng kín làm hơi xăng dầu tích tụ, thiết bị điện có thể phát tia lửa."
+  },
+  {
+   "ma_cau": "K09070402020",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Khí gas (LPG) nặng hơn không khí nên khi bị rò rỉ thường tích tụ ở",
+   "lua_chon": [
+    "Trên trần nhà",
+    "Lơ lửng giữa phòng",
+    "Thoát ra ngoài ngay lập tức",
+    "Sát nền nhà, các góc thấp"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khí LPG có khối lượng riêng lớn hơn không khí nên khi rò rỉ sẽ chìm xuống và tích tụ ở sát nền nhà, các góc thấp trong phòng.\n\nVì sao các phương án khác sai:\n- A: Khí LPG nặng hơn không khí nên chìm xuống, không bay lên trần nhà.\n- B: Khí nặng hơn không khí sẽ chìm xuống, không lơ lửng giữa phòng.\n- C: Trong phòng kín, khí gas không tự thoát ra ngoài mà tích tụ lại."
+  },
+  {
+   "ma_cau": "K09070402021",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Đốt nhiên liệu hoá thạch (than, dầu, khí) sinh ra khí nào góp phần gây hiệu ứng nhà kính?",
+   "lua_chon": [
+    "Carbon dioxide",
+    "Nitrogen",
+    "Oxygen",
+    "Khí hiếm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đốt nhiên liệu hoá thạch sinh ra khí carbon dioxide, là một trong những khí gây hiệu ứng nhà kính, làm Trái Đất ấm lên.\n\nVì sao các phương án khác sai:\n- B: Nitrogen không phải khí gây hiệu ứng nhà kính chính từ đốt nhiên liệu.\n- C: Oxygen là chất tham gia phản ứng cháy, không gây hiệu ứng nhà kính.\n- D: Khí hiếm không sinh ra khi đốt nhiên liệu hoá thạch."
+  },
+  {
+   "ma_cau": "K09070402022",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Xử lí khí thải công nghiệp trước khi thải ra môi trường giúp giảm",
+   "lua_chon": [
+    "Lượng nhiên liệu tiêu thụ của nhà máy",
+    "Lượng khí độc và bụi phát ra môi trường",
+    "Nhiệt độ của lò đốt trong nhà máy",
+    "Giá thành sản xuất nhiên liệu của nhà máy"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Hệ thống xử lí khí thải lọc bớt bụi và khí độc trong khí thải trước khi thải ra khí quyển, trực tiếp làm giảm ô nhiễm môi trường.\n\nVì sao các phương án khác sai:\n- A: Xử lí khí thải không làm giảm lượng nhiên liệu nhà máy tiêu thụ.\n- C: Xử lí khí thải không làm thay đổi nhiệt độ lò đốt.\n- D: Xử lí khí thải thường làm TĂNG chi phí, không giảm giá thành."
+  },
+  {
+   "ma_cau": "K09070402023",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Không nên đun bếp than, bếp gas trong phòng đóng kín cửa vì dễ gây",
+   "lua_chon": [
+    "Cháy nổ do dư oxygen trong phòng",
+    "Tăng độ ẩm không khí trong phòng",
+    "Ngộ độc khí CO do thiếu oxygen",
+    "Giảm nhiệt độ của phòng đun nấu"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Phòng kín thiếu oxygen làm nhiên liệu cháy không hoàn toàn, sinh khí CO độc tích tụ trong phòng, gây ngộ độc cho người ở trong.\n\nVì sao các phương án khác sai:\n- A: Phòng kín làm THIẾU oxygen, không phải dư, nên khó gây cháy nổ.\n- B: Nguy cơ chính là ngộ độc khí CO, không phải tăng độ ẩm.\n- D: Đun bếp làm TĂNG nhiệt độ phòng, không phải giảm."
+  },
+  {
+   "ma_cau": "K09070402024",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Hầm mỏ khai thác than cần hệ thống thông gió chủ yếu để",
+   "lua_chon": [
+    "Làm mát cho công nhân làm việc trong hầm",
+    "Tăng lượng than khai thác được mỗi ngày",
+    "Chiếu sáng cho hầm mỏ tối",
+    "Giảm nồng độ khí methane dễ gây nổ"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Hệ thống thông gió đưa khí methane tích tụ trong hầm mỏ ra ngoài, giảm nồng độ khí này nên giảm nguy cơ nổ khí khi gặp tia lửa.\n\nVì sao các phương án khác sai:\n- A: Làm mát chỉ là lợi ích phụ, mục đích chính là giảm khí methane.\n- B: Thông gió không làm tăng lượng than khai thác được.\n- C: Thông gió không có tác dụng chiếu sáng hầm mỏ."
+  },
+  {
+   "ma_cau": "K09070402025",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Vì sao các bình chứa khí gas (LPG) cần được đặt ở nơi thoáng khí, tránh xa nguồn nhiệt?",
+   "lua_chon": [
+    "Vì khí gas là khí trơ, không cháy được",
+    "Vì khí gas làm tăng độ ẩm không khí",
+    "Vì khí gas nhẹ hơn không khí nên dễ bay mất",
+    "Vì khí gas dễ cháy, dễ nổ khi gặp lửa"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khí gas rất dễ bắt cháy; nếu rò rỉ và tích tụ, gặp nguồn nhiệt hoặc tia lửa có thể gây cháy nổ, nên cần đặt nơi thoáng khí, xa nguồn lửa.\n\nVì sao các phương án khác sai:\n- A: Khí gas rất dễ cháy.\n- B: Khí gas không làm tăng độ ẩm.\n- C: Khí gas (LPG) nặng hơn không khí."
+  },
+  {
+   "ma_cau": "K09070402026",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Khí CO sinh ra khi nhiên liệu cháy không hoàn toàn nguy hiểm với con người vì lí do nào?",
+   "lua_chon": [
+    "Khí CO không màu, không mùi, khó nhận biết, gây ngộ độc",
+    "Khí CO có mùi hắc, gây khó thở tức thì",
+    "Khí CO làm phòng nóng lên, gây bỏng",
+    "Khí CO tan trong nước tạo acid mạnh"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khí CO không màu, không mùi nên con người khó nhận biết khi hít phải; CO kết hợp với hemoglobin trong máu, ngăn cản máu vận chuyển oxygen, gây ngộ độc nguy hiểm.\n\nVì sao các phương án khác sai:\n- B: Khí CO không mùi nên khó nhận biết.\n- C: Khí CO nguy hiểm vì gây ngộ độc, không gây bỏng.\n- D: CO hầu như không tan và không tạo acid."
+  },
+  {
+   "ma_cau": "K09070402027",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Biện pháp nào sau đây giúp giảm khí thải độc hại ra môi trường khi sử dụng nhiên liệu hoá thạch?",
+   "lua_chon": [
+    "Đốt nhiên liệu ở nơi thật kín để giữ nhiệt",
+    "Dùng thêm năng lượng mặt trời, gió thay một phần",
+    "Tăng lượng nhiên liệu mỗi lần đốt",
+    "Thải khí trực tiếp để tiết kiệm chi phí"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Sử dụng thêm năng lượng sạch (mặt trời, gió...) giúp giảm bớt lượng nhiên liệu hoá thạch cần đốt, nhờ đó giảm lượng khí thải độc hại và khí gây hiệu ứng nhà kính ra môi trường.\n\nVì sao các phương án khác sai:\n- A: Nơi kín thiếu oxygen, cháy không hoàn toàn, sinh khí độc.\n- C: Đốt nhiều nhiên liệu hơn làm tăng khí thải.\n- D: Khí thải không xử lí gây ô nhiễm."
+  },
+  {
+   "ma_cau": "K09070402028",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Kho chứa xăng, dầu của một xí nghiệp được xây dựng thông thoáng và đặt xa nguồn lửa vì hơi xăng, dầu",
+   "lua_chon": [
+    "Rất dễ bắt cháy khi gặp tia lửa hoặc nguồn nhiệt",
+    "Không cháy được nên không cần đề phòng",
+    "Chỉ bốc hơi khi bị đun nóng tới 500°C",
+    "Nặng hơn không khí nên không thể bốc hơi"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Hơi xăng, dầu rất dễ bắt cháy, chỉ cần gặp tia lửa hoặc nguồn nhiệt nhỏ cũng có thể gây cháy nổ nên kho chứa cần thông thoáng, xa nguồn lửa.\n\nVì sao các phương án khác sai:\n- B: Hơi xăng dầu RẤT dễ cháy, không phải không cháy được.\n- C: Xăng, dầu bốc hơi ngay ở nhiệt độ thường, không cần đun tới 500°C.\n- D: Hơi xăng dầu vẫn bốc hơi liên tục ở nhiệt độ thường dù nặng hơn không khí."
+  },
+  {
+   "ma_cau": "K09070402029",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Trong hầm mỏ khai thác than, khí methane (khí mỏ) tích tụ có thể gây nổ khi gặp tia lửa. Biện pháp cần thực hiện là",
+   "lua_chon": [
+    "Đóng kín hầm mỏ để khí methane không thoát ra",
+    "Tăng cường chiếu sáng hầm mỏ bằng đèn có ngọn lửa trần",
+    "Lắp hệ thống thông gió để đưa khí methane ra ngoài",
+    "Chỉ cấm công nhân hút thuốc, không cần thông gió"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Thông gió giúp đưa khí methane tích tụ ra ngoài, giảm nồng độ khí trong hầm mỏ, nhờ đó giảm nguy cơ nổ khí khi có tia lửa.\n\nVì sao các phương án khác sai:\n- A: Đóng kín hầm làm khí methane tích tụ NHIỀU hơn, tăng nguy cơ nổ.\n- B: Đèn có ngọn lửa trần chính là nguồn tia lửa gây nổ khí methane.\n- D: Chỉ cấm hút thuốc không đủ, vẫn cần thông gió để giảm nồng độ khí."
+  },
+  {
+   "ma_cau": "K09070402030",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Nhà máy nhiệt điện đốt than sinh ra khí thải chứa bụi và khí độc. Để giảm ô nhiễm môi trường, nhà máy cần",
+   "lua_chon": [
+    "Thải trực tiếp khí thải qua ống khói thật cao",
+    "Chỉ đốt than vào ban đêm để giảm ô nhiễm",
+    "Trộn thêm không khí sạch vào khí thải trước khi đo",
+    "Lắp hệ thống lọc bụi và xử lí khí thải"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Lắp hệ thống lọc bụi và xử lí khí thải giúp loại bỏ hoặc giảm bớt bụi, khí độc trước khi thải ra khí quyển, giảm ô nhiễm môi trường thực sự.\n\nVì sao các phương án khác sai:\n- A: Ống khói cao chỉ phát tán khí thải đi xa, không làm giảm lượng khí độc.\n- B: Đốt than vào ban đêm không làm giảm tổng lượng khí độc sinh ra.\n- C: Trộn không khí sạch trước khi đo chỉ làm sai số liệu, không giảm ô nhiễm thật."
+  },
+  {
+   "ma_cau": "K09070402031",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Để giảm lượng khí thải độc hại ra môi trường, xe máy và ô tô cần được",
+   "lua_chon": [
+    "Bảo dưỡng động cơ định kì để nhiên liệu cháy hoàn toàn",
+    "Đổ đầy bình xăng mỗi khi đi ra ngoài",
+    "Rút ngắn ống xả để khí thải thoát nhanh hơn",
+    "Tháo bộ phận lọc khí thải để xe chạy nhẹ hơn"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Bảo dưỡng động cơ định kì giúp nhiên liệu cháy hoàn toàn hơn, giảm lượng khí CO và khí độc khác sinh ra trong khí thải.\n\nVì sao các phương án khác sai:\n- B: Đổ đầy bình xăng không liên quan đến mức độ cháy hoàn toàn của nhiên liệu.\n- C: Rút ngắn ống xả không làm giảm lượng khí độc sinh ra khi cháy.\n- D: Tháo bộ lọc khí thải làm TĂNG lượng khí độc thải ra môi trường."
+  },
+  {
+   "ma_cau": "K09070402032",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Nhiều trường hợp ngộ độc khí CO do đun bếp than tổ ong trong phòng đóng kín cửa. Biện pháp phòng tránh đúng là",
+   "lua_chon": [
+    "Đun trong phòng kín nhưng để bếp than cách xa người",
+    "Đặt bếp than ở nơi thông thoáng, không đun trong phòng kín",
+    "Dùng quạt thổi khí CO tụ về một góc phòng",
+    "Đun bếp than trong phòng kín nhưng mở điều hoà"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đặt bếp than ở nơi thông thoáng, có lưu thông không khí giúp khí CO sinh ra được phát tán, không tích tụ gây ngộ độc như khi đun trong phòng kín.\n\nVì sao các phương án khác sai:\n- A: Phòng vẫn kín nên khí CO vẫn tích tụ, dù bếp đặt xa người.\n- C: Thổi khí CO tụ vào một góc không làm khí thoát khỏi phòng kín.\n- D: Điều hoà không đưa không khí sạch từ ngoài vào, khí CO vẫn tích tụ."
+  },
+  {
+   "ma_cau": "K09070402033",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Một xưởng sản xuất sơn có sử dụng dung môi hữu cơ dễ bay hơi, dễ cháy. Để phòng cháy nổ, xưởng cần",
+   "lua_chon": [
+    "Đóng kín cửa xưởng để hơi dung môi không bay ra ngoài",
+    "Đặt máy phát điện chạy dầu ngay trong xưởng cho tiện",
+    "Đặt xưởng thông thoáng, có hệ thống hút hơi dung môi, tránh xa nguồn lửa",
+    "Cho phép công nhân hút thuốc trong giờ nghỉ tại xưởng"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Hơi dung môi hữu cơ dễ cháy cần được thông thoáng, hút bớt và xưởng phải tránh xa mọi nguồn lửa, tia lửa để phòng cháy nổ.\n\nVì sao các phương án khác sai:\n- A: Đóng kín làm hơi dung môi dễ cháy tích tụ trong xưởng, tăng nguy cơ cháy nổ.\n- B: Máy phát điện là nguồn nhiệt, tia lửa tiềm ẩn, đặt trong xưởng có hơi dễ cháy rất nguy hiểm.\n- D: Tàn thuốc lá có thể là nguồn tia lửa gây cháy hơi dung môi dễ bay hơi."
+  },
+  {
+   "ma_cau": "K09070402034",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Một gia đình dùng bình gas mini để đun nấu dã ngoại. Sau khi dùng xong, cần",
+   "lua_chon": [
+    "Để bình gas gần đống lửa trại cho ấm",
+    "Lắc mạnh bình gas trước khi cất để kiểm tra còn gas không",
+    "Dùng vật nhọn chọc thủng bình gas cho hết khí an toàn",
+    "Khoá van bình gas và cất nơi thoáng mát, xa nguồn lửa"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Sau khi dùng, cần khoá van để ngăn gas rò rỉ và cất bình ở nơi thoáng mát, xa nguồn lửa để đảm bảo an toàn.\n\nVì sao các phương án khác sai:\n- A: Để gần đống lửa là đưa bình gas dễ cháy đến gần nguồn nhiệt, rất nguy hiểm.\n- B: Lắc mạnh bình gas không cần thiết và có thể làm hỏng van, gây rò rỉ.\n- C: Chọc thủng bình gas làm khí gas thoát nhanh, dễ gặp tia lửa gây cháy nổ, rất nguy hiểm."
+  },
+  {
+   "ma_cau": "K09070402035",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Một khu dân cư gần nhà máy đốt rác thải sinh hoạt phản ánh về khói và mùi khét. Biện pháp nào nhà máy cần thực hiện để giảm ảnh hưởng tới khu dân cư?",
+   "lua_chon": [
+    "Lắp hệ thống lọc bụi, xử lí khí thải trước khi thải",
+    "Chuyển sang đốt rác vào ban đêm",
+    "Xây ống khói cao hơn để khói bay xa",
+    "Trộn thêm nước vào khí thải cho bớt khét"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Lắp hệ thống lọc bụi và xử lí khí thải giúp loại bỏ hoặc giảm bớt bụi, khí độc thực sự trước khi thải ra môi trường, giảm ảnh hưởng tới khu dân cư xung quanh.\n\nVì sao các phương án khác sai:\n- B: Đốt rác ban đêm không làm giảm tổng lượng khí thải độc hại sinh ra.\n- C: Ống khói cao chỉ phát tán khí thải đi xa hơn, không giảm lượng khí độc thải ra.\n- D: Trộn nước vào khí thải không loại bỏ được khí độc, chỉ làm giảm mùi tạm thời."
+  },
+  {
+   "ma_cau": "K09070402036",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Bếp gas gia đình khi cháy cho ngọn lửa màu vàng, đáy nồi bám nhiều bồ hóng đen. Nguyên nhân và biện pháp khắc phục đúng là",
+   "lua_chon": [
+    "Do thừa không khí trộn vào khí gas; cần giảm lượng không khí cấp vào",
+    "Do thiếu không khí trộn vào khí gas; cần điều chỉnh để tăng lượng không khí cấp vào",
+    "Do van gas mở quá nhỏ; cần vặn van to hơn để tăng lượng gas",
+    "Do thiếu không khí trộn vào khí gas; cần đậy kín bếp lại để giữ nhiệt"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ngọn lửa vàng kèm bồ hóng đen là dấu hiệu khí gas cháy không hoàn toàn do thiếu không khí (oxygen) trộn vào. Cần điều chỉnh tăng lượng không khí cấp vào để gas cháy hoàn toàn, cho ngọn lửa xanh.\n\nVì sao các phương án khác sai:\n- A: Lửa vàng, bồ hóng là dấu hiệu THIẾU không khí.\n- C: Tăng gas mà không tăng không khí thì càng thiếu oxygen, càng nhiều bồ hóng.\n- D: Đậy kín làm giảm thêm không khí, gas càng cháy không hoàn toàn."
+  },
+  {
+   "ma_cau": "K09070402037",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Bếp than tổ ong dùng nguyên cục than lớn (không đập nhỏ, không có lỗ) cháy rất chậm, sinh nhiều khói đen. Nguyên nhân và biện pháp khắc phục đúng là",
+   "lua_chon": [
+    "Do diện tích tiếp xúc giữa than và không khí quá lớn; cần nén than thành cục to hơn nữa",
+    "Do than bị ẩm nên cháy chậm; cần phơi than thật khô trước khi đốt",
+    "Do diện tích tiếp xúc giữa than và không khí nhỏ; chỉ cần quạt gió, không cần đập nhỏ than",
+    "Do diện tích tiếp xúc giữa than và không khí nhỏ; cần đập than thành viên nhỏ, có lỗ"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Cục than to, không có lỗ khiến diện tích tiếp xúc với không khí (oxygen) nhỏ, than cháy chậm và không hoàn toàn. Cần đập than thành viên nhỏ, có lỗ để tăng diện tích tiếp xúc, giúp than cháy nhanh và hoàn toàn hơn.\n\nVì sao các phương án khác sai:\n- A: Diện tích tiếp xúc đang NHỎ (do than để nguyên cục lớn), không phải quá lớn; nén thêm sẽ càng làm than cháy chậm hơn.\n- B: Trọng tâm nguyên nhân đã học ở đây là diện tích tiếp xúc với không khí, không phải độ ẩm của than.\n- C: Quạt gió có tác dụng nhưng biện pháp chính đã học để tăng diện tích tiếp xúc là đập nhỏ than thành viên có lỗ; không thể bỏ qua bước này."
+  },
+  {
+   "ma_cau": "K09070402038",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Đun bếp bằng một thân củi to nguyên khúc, xếp khít nhau, lửa cháy yếu và nhiều khói. Nguyên nhân và biện pháp khắc phục đúng là",
+   "lua_chon": [
+    "Do diện tích tiếp xúc giữa củi và không khí nhỏ; cần chẻ nhỏ củi và xếp thưa hơn",
+    "Do thiếu nhiên liệu; cần cho thêm củi to nguyên khúc vào bếp",
+    "Do diện tích tiếp xúc giữa củi và không khí quá lớn; cần xếp khít củi lại hơn nữa",
+    "Do nhiệt độ bếp thấp; cần đậy kín miệng bếp để giữ nhiệt"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Để nguyên khúc củi to và xếp khít làm diện tích tiếp xúc giữa củi với không khí nhỏ, lửa cháy yếu, nhiều khói. Cần chẻ nhỏ củi và xếp thưa để tăng diện tích tiếp xúc với không khí, giúp củi cháy mạnh và hoàn toàn hơn.\n\nVì sao các phương án khác sai:\n- B: Thêm củi to xếp khít càng làm thiếu không khí.\n- C: Củi to xếp khít làm diện tích tiếp xúc NHỎ, cần tăng lên.\n- D: Đậy kín làm thiếu oxygen, lửa càng yếu."
+  },
+  {
+   "ma_cau": "K09070402039",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Lò than sưởi ấm cháy yếu dù đã đập nhỏ than, cần cải thiện thêm. Nguyên nhân và biện pháp khắc phục đúng là",
+   "lua_chon": [
+    "Do than đã bị đập quá nhỏ; cần nén than trở lại thành cục to",
+    "Do than chưa đủ nhiều; cần đổ thêm thật nhiều than vào lò",
+    "Do vẫn còn thiếu oxygen cấp cho quá trình cháy; cần dùng quạt thổi thêm gió vào lò",
+    "Do vẫn còn thiếu oxygen; cần đậy bớt cửa lò lại để giữ nhiệt"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Dù đã đập nhỏ than (tăng diện tích tiếp xúc), lò vẫn cần thêm oxygen để than cháy mạnh hơn. Dùng quạt thổi thêm gió vào lò giúp cung cấp thêm oxygen, than cháy hoàn toàn và mạnh hơn.\n\nVì sao các phương án khác sai:\n- A: Than nhỏ giúp tăng diện tích tiếp xúc; nén lại thành cục to làm cháy kém hơn.\n- B: Đổ nhiều than vào lò làm bí gió, càng thiếu oxygen.\n- D: Đậy cửa lò làm giảm thêm oxygen."
+  },
+  {
+   "ma_cau": "K09070402040",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Động cơ xe máy nổ có khói đen, tốn nhiên liệu hơn bình thường. Nguyên nhân và biện pháp khắc phục đúng là",
+   "lua_chon": [
+    "Do bộ chế hoà khí cấp quá nhiều không khí so với xăng; cần điều chỉnh giảm lượng không khí",
+    "Do bộ chế hoà khí cấp quá ít không khí so với xăng; cần điều chỉnh tăng lượng không khí",
+    "Do động cơ quá nóng; cần tắt máy cho nguội rồi chạy tiếp",
+    "Do thiếu không khí; cần bịt bớt đường dẫn khí vào động cơ"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khói đen và tốn nhiên liệu là dấu hiệu xăng cháy không hoàn toàn do bộ chế hoà khí cấp quá ít không khí so với lượng xăng. Cần điều chỉnh bộ chế hoà khí để tăng lượng không khí hoà trộn với xăng cho phù hợp.\n\nVì sao các phương án khác sai:\n- A: Khói đen là dấu hiệu THIẾU không khí, xăng cháy không hoàn toàn.\n- C: Để nguội không làm thay đổi tỉ lệ xăng – không khí.\n- D: Bịt đường khí làm thiếu không khí hơn nữa."
+  },
+  {
+   "ma_cau": "K09070402041",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Đun nước bằng bếp cồn nhưng bấc đèn cồn để quá cao khiến ngọn lửa bốc cao, có nhiều khói đen bám đáy ấm. Nguyên nhân và biện pháp khắc phục đúng là",
+   "lua_chon": [
+    "Do cồn kém chất lượng; cần thay cồn khác",
+    "Do đáy ấm quá dày; cần thay ấm mỏng hơn",
+    "Do cồn cháy quá nhanh; cần châm thêm cồn",
+    "Do thiếu oxygen so với hơi cồn; cần hạ bấc xuống"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Bấc quá cao làm lượng hơi cồn bốc lên nhiều hơn lượng oxygen cung cấp, cồn cháy không hoàn toàn sinh khói đen; cần vặn bấc thấp vừa phải để cân bằng lượng cồn bay hơi với oxygen cung cấp.\n\nVì sao các phương án khác sai:\n- A: Nguyên nhân là bấc quá cao làm thiếu oxygen so với hơi cồn.\n- B: Độ dày đáy ấm không làm sinh khói đen.\n- C: Châm thêm cồn không làm cồn cháy hoàn toàn hơn."
+  },
+  {
+   "ma_cau": "K09070402042",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Lò sấy nông sản dùng củi đun, xếp củi thành đống lớn, chèn chặt trong lò kín gió khiến củi cháy âm ỉ, không đủ nhiệt. Nguyên nhân và biện pháp khắc phục đúng là",
+   "lua_chon": [
+    "Thiếu oxygen; cần xếp thưa củi, mở thêm cửa gió",
+    "Củi bị ẩm; cần tưới thêm nước cho dễ cháy",
+    "Lò quá nhỏ; cần xây lò to hơn nhiều lần",
+    "Thừa oxygen; cần chèn củi chặt thêm nữa"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Củi xếp chặt trong lò kín gió làm giảm diện tích tiếp xúc và lượng oxygen cấp vào, củi cháy không hoàn toàn, âm ỉ. Cần xếp thưa củi và mở thêm cửa gió để tăng oxygen, giúp củi cháy mạnh và hoàn toàn hơn.\n\nVì sao các phương án khác sai:\n- B: Tưới nước làm củi càng khó cháy.\n- C: Nguyên nhân là củi chèn chặt, lò kín gió.\n- D: Lò kín gió, củi chèn chặt là thiếu oxygen chứ không thừa."
+  },
+  {
+   "ma_cau": "K09070402043",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Xe ô tô chạy dầu diesel xả khói đen mù mịt khi tăng ga đột ngột. Nguyên nhân và biện pháp khắc phục đúng (theo kiến thức đã học về điều kiện cháy hoàn toàn) là",
+   "lua_chon": [
+    "Nhiên liệu quá ít; cần tăng ga mạnh hơn nữa",
+    "Nhiên liệu nhiều hơn không khí; cần bảo dưỡng cân đối",
+    "Thừa không khí; cần bịt bớt cửa gió động cơ",
+    "Động cơ quá nguội; cần để máy chạy không tải lâu"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khi tăng ga đột ngột, lượng nhiên liệu phun vào tăng nhanh hơn lượng không khí được cấp, nhiên liệu cháy không hoàn toàn sinh khói đen (muội carbon). Cần bảo dưỡng để hệ thống cấp khí và nhiên liệu hoạt động cân đối.\n\nVì sao các phương án khác sai:\n- A: Khói đen do nhiên liệu nhiều so với không khí, tăng ga càng nặng hơn.\n- C: Khói đen là dấu hiệu thiếu không khí.\n- D: Khói đen do nhiên liệu cháy không hoàn toàn vì thiếu không khí."
+  },
+  {
+   "ma_cau": "K09070402044",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Khí gas (LPG) nặng hơn không khí. Khi phát hiện mùi gas rò rỉ trong bếp, cách xử lí đúng và lí do là",
+   "lua_chon": [
+    "Gas dồn lên trần; bật quạt trần để thổi khí gas đi",
+    "Gas dồn xuống sàn; bật đèn để tìm chỗ rò rỉ",
+    "Gas dồn xuống sàn; mở cửa thông gió, không bật điện",
+    "Gas dồn lên trần; mở cửa sổ tầng trên cho khí thoát"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Vì khí gas nặng hơn không khí nên tích tụ ở vị trí thấp (sàn nhà). Cần mở hết cửa để thông gió, làm loãng khí gas; tuyệt đối không bật công tắc điện hay tạo tia lửa vì dễ gây cháy nổ.\n\nVì sao các phương án khác sai:\n- A: Gas nặng hơn không khí nên dồn xuống thấp; bật quạt (thiết bị điện) có thể gây tia lửa.\n- B: Bật công tắc điện có thể phát tia lửa, gây nổ.\n- D: Gas nặng hơn không khí nên dồn xuống sàn, không bay lên trần."
+  },
+  {
+   "ma_cau": "K09070402045",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Trong hầm mỏ khai thác than, khí methane (khí mỏ) tích tụ có thể gây nổ khi gặp tia lửa. Biện pháp phòng tránh đúng và lí do là",
+   "lua_chon": [
+    "Thông gió liên tục để giữ nồng độ methane dưới ngưỡng nổ",
+    "Đóng kín cửa hầm để methane không lan ra ngoài",
+    "Thông gió để tăng oxygen giúp than trong hầm cháy hết",
+    "Cấm dùng đèn pin sáng mạnh vì ánh sáng làm methane cháy"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Thông gió liên tục giúp làm loãng nồng độ khí methane trong hầm, giữ nồng độ dưới ngưỡng có thể gây nổ khi gặp tia lửa.\n\nVì sao các phương án khác sai:\n- B: Đóng kín làm methane tích tụ, nồng độ tăng, dễ nổ hơn.\n- C: Mục đích thông gió là làm loãng methane, không phải đốt than trong hầm.\n- D: Ánh sáng không làm methane cháy; nguy hiểm là tia lửa."
+  },
+  {
+   "ma_cau": "K09070402046",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Nhà máy nhiệt điện đốt than sinh ra khí thải chứa bụi và khí độc, góp phần gây ô nhiễm và hiệu ứng nhà kính. Biện pháp giảm tác động đúng là",
+   "lua_chon": [
+    "Xây ống khói thật cao để khí thải bay đi xa",
+    "Đốt thêm thật nhiều than để lò nóng hơn",
+    "Pha loãng khí thải với không khí rồi mới thải ra",
+    "Lắp hệ thống lọc bụi, xử lí khí thải trước khi thải ra"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Lắp hệ thống lọc bụi và xử lí khí thải trước khi thải ra môi trường giúp giảm trực tiếp lượng bụi và khí độc, khí gây hiệu ứng nhà kính phát thải ra ngoài.\n\nVì sao các phương án khác sai:\n- A: Khí thải bay xa vẫn gây ô nhiễm, lượng khí thải không giảm.\n- B: Đốt thêm than làm tăng lượng bụi và khí thải.\n- C: Pha loãng không làm giảm tổng lượng bụi và khí độc thải ra."
+  },
+  {
+   "ma_cau": "K09070402047",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Khí thải từ xe máy, ô tô góp phần gây ô nhiễm không khí. Biện pháp đã học để giảm khí thải độc hại từ phương tiện giao thông là",
+   "lua_chon": [
+    "Đổ đầy bình xăng mỗi lần để động cơ chạy êm",
+    "Bảo dưỡng động cơ định kì để nhiên liệu cháy hoàn toàn",
+    "Tháo bộ lọc khí thải để động cơ chạy mạnh hơn",
+    "Tăng ga thật mạnh để nhiên liệu cháy hết nhanh"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Bảo dưỡng động cơ định kì (vệ sinh bộ chế hoà khí, kiểm tra tỉ lệ nhiên liệu-không khí...) giúp nhiên liệu cháy hoàn toàn hơn, giảm lượng khí thải độc hại.\n\nVì sao các phương án khác sai:\n- A: Lượng xăng trong bình không làm nhiên liệu cháy hoàn toàn hơn.\n- C: Tháo bộ lọc làm khí độc thải thẳng ra môi trường.\n- D: Tăng ga mạnh làm tốn nhiên liệu, khí thải nhiều hơn."
+  },
+  {
+   "ma_cau": "K09070402048",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Nhiều trường hợp ngộ độc khí CO do đun bếp than tổ ong trong phòng đóng kín cửa. Biện pháp phòng tránh đúng và lí do là",
+   "lua_chon": [
+    "Đun trong phòng kín, chỉ cần hé một khe cửa nhỏ",
+    "Đun nơi thoáng, vì CO không độc, chỉ gây ngạt",
+    "Đun nơi thoáng, vì than cháy thiếu oxygen sinh ra CO độc",
+    "Đun trong phòng kín, vì chỉ than kém chất lượng mới sinh CO"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Than cháy trong phòng kín, thiếu oxygen sẽ sinh ra khí CO độc. Cần đun bếp than ở nơi thông thoáng, không đóng kín cửa để tránh tích tụ khí CO gây ngộ độc.\n\nVì sao các phương án khác sai:\n- A: Khe cửa nhỏ không đủ thông gió, khí CO vẫn tích tụ.\n- B: CO là khí rất độc, không chỉ gây ngạt.\n- D: Than nào cháy thiếu oxygen cũng sinh ra CO."
+  },
+  {
+   "ma_cau": "K09070402049",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Một xưởng may sử dụng nhiều thiết bị điện và có kho chứa vải, chỉ dễ cháy. Bạn A đề xuất: chỉ cần trang bị bình chữa cháy, không cần quan tâm đến việc sắp xếp kho hàng. Nhận xét về đề xuất này là",
+   "lua_chon": [
+    "Đúng, vì bình chữa cháy dập được mọi đám cháy",
+    "Đúng, vì vải và chỉ khó bắt cháy",
+    "Sai, vì chỉ cần tắt hết thiết bị điện là đủ",
+    "Sai, vì còn phải xếp kho gọn, thoáng, xa nguồn nhiệt"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Phòng cháy cần kết hợp nhiều biện pháp: sắp xếp kho hàng dễ cháy gọn gàng, thông thoáng, xa nguồn nhiệt/điện, đồng thời trang bị bình chữa cháy để ứng phó kịp thời nếu sự cố xảy ra.\n\nVì sao các phương án khác sai:\n- A: Cần phòng cháy từ gốc, không chỉ chữa cháy.\n- B: Vải, chỉ là vật liệu dễ cháy.\n- C: Vẫn cần bình chữa cháy và sắp xếp kho hợp lí."
+  },
+  {
+   "ma_cau": "K09070402050",
+   "nhom_id": "KNB00520",
+   "loai": "trac_nghiem",
+   "de": "Một nhà máy xi măng thải nhiều bụi ra môi trường xung quanh. Giám đốc nhà máy đề xuất: xây thêm ống khói cao gấp đôi để bụi bay xa khu dân cư hơn, không cần lắp thêm thiết bị lọc bụi. Nhận xét về đề xuất này là",
+   "lua_chon": [
+    "Sai, vì ống khói cao không làm giảm lượng bụi thải ra",
+    "Đúng, vì bụi bay xa thì không còn gây hại",
+    "Đúng, vì bụi xi măng không hại sức khoẻ",
+    "Sai, vì phải đóng cửa nhà máy mới hết bụi"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Xây ống khói cao chỉ giúp bụi phát tán xa hơn chứ không làm giảm lượng bụi thải ra; biện pháp đúng là lắp đặt hệ thống lọc bụi, xử lí khí thải trước khi thải ra môi trường.\n\nVì sao các phương án khác sai:\n- B: Bụi bay xa vẫn gây ô nhiễm nơi khác.\n- C: Bụi xi măng gây hại cho đường hô hấp.\n- D: Lắp thiết bị lọc bụi là đủ để giảm bụi, không cần đóng cửa nhà máy."
+  },
+  {
+   "ma_cau": "K09070204001",
+   "nhom_id": "KNB00513",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 2,479 L khí methane (đkc). Thể tích khí oxygen (đkc) cần dùng là",
+   "lua_chon": [
+    "2,479 L",
+    "4,958 L",
+    "9,916 L",
+    "7,437 L"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n(CH₄) = 2,479 : 24,79 = 0,1 mol. CH₄ + 2O₂ → CO₂ + 2H₂O nên n(O₂) = 0,1 x 2 = 0,2 mol. V(O₂) = 0,2 x 24,79 = 4,958 L.\n\nVì sao các phương án khác sai:\n- A: Bằng số mol CH₄, quên nhân hệ số 2 của O₂ trong phương trình.\n- C: Nhân nhầm gấp đôi giá trị đúng của V(O₂).\n- D: Nhầm hệ số O₂ với tổng hệ số CO₂ và H₂O (1 cộng 2 bằng 3 lần n(CH₄))."
+  },
+  {
+   "ma_cau": "K09070204002",
+   "nhom_id": "KNB00513",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 1,2395 L khí propane (đkc). Thể tích khí oxygen (đkc) cần dùng là",
+   "lua_chon": [
+    "1,2395 L",
+    "3,099 L",
+    "6,198 L",
+    "12,395 L"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(C₃H₈)=1,2395:24,79=0,05mol. C₃H₈+5O₂→3CO₂+4H₂O nên n(O₂)=0,05×5=0,25mol. V(O₂)=0,25×24,79=6,198L.\n\nVì sao các phương án khác sai:\n- A: Bằng số mol/thể tích propane ban đầu, quên nhân hệ số 5 của O₂ trong phương trình.\n- B: Chỉ nhân hệ số 2,5 (một nửa hệ số đúng) thay vì 5.\n- D: Nhân nhầm gấp đôi giá trị đúng."
+  },
+  {
+   "ma_cau": "K09070204003",
+   "nhom_id": "KNB00513",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 8 g khí methane theo phương trình CH₄ + 2O₂ → CO₂ + 2H₂O. Khối lượng CO₂ sinh ra là bao nhiêu?",
+   "lua_chon": [
+    "44 g",
+    "14 g",
+    "22 g",
+    "8 g"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(CH₄) = 8:16 = 0,5 mol; theo PTHH tỉ lệ mol CH₄ : CO₂ = 1:1 nên n(CO₂) = 0,5 mol; m(CO₂) = 0,5×44 = 22 g.\n\nVì sao các phương án khác sai:\n- A: Nhầm tỉ lệ mol CH₄ : CO₂ là 1:2, đúng ra là 1:1.\n- B: Nhầm sản phẩm cháy là CO (M=28) thay vì CO₂ (M=44).\n- D: Quên tính theo tỉ lệ mol và phân tử khối, lấy luôn khối lượng CH₄."
+  },
+  {
+   "ma_cau": "K09070204004",
+   "nhom_id": "KNB00513",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 9 g khí ethane theo phương trình 2C₂H₆ + 7O₂ → 4CO₂ + 6H₂O. Khối lượng CO₂ sinh ra là bao nhiêu?",
+   "lua_chon": [
+    "13,2 g",
+    "26,4 g",
+    "16,8 g",
+    "9 g"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n(C₂H₆) = 9:30 = 0,3 mol; theo PTHH 2C₂H₆ + 7O₂ → 4CO₂ + 6H₂O, tỉ lệ mol C₂H₆:CO₂ = 1:2 nên n(CO₂) = 0,6 mol; m(CO₂) = 0,6×44 = 26,4 g.\n\nVì sao các phương án khác sai:\n- A: Nhầm tỉ lệ mol C₂H₆ : CO₂ là 1:1, đúng ra là 1:2.\n- C: Nhầm sản phẩm cháy là CO (M=28) thay vì CO₂ (M=44).\n- D: Quên tính theo tỉ lệ mol và phân tử khối, lấy luôn khối lượng C₂H₆."
+  },
+  {
+   "ma_cau": "K09070204005",
+   "nhom_id": "KNB00513",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 14,5 g khí butane theo phương trình 2C₄H₁₀ + 13O₂ → 8CO₂ + 10H₂O. Khối lượng CO₂ sinh ra là bao nhiêu?",
+   "lua_chon": [
+    "11 g",
+    "28 g",
+    "14,5 g",
+    "44 g"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(C₄H₁₀) = 14,5:58 = 0,25 mol; theo PTHH 2C₄H₁₀ + 13O₂ → 8CO₂ + 10H₂O, tỉ lệ mol C₄H₁₀:CO₂ = 1:4 nên n(CO₂) = 1 mol; m(CO₂) = 1×44 = 44 g.\n\nVì sao các phương án khác sai:\n- A: Nhầm tỉ lệ mol C₄H₁₀ : CO₂ là 1:1, đúng ra là 1:4.\n- B: Nhầm sản phẩm cháy là CO (M=28) thay vì CO₂ (M=44).\n- C: Quên tính theo tỉ lệ mol và phân tử khối, lấy luôn khối lượng C₄H₁₀."
+  },
+  {
+   "ma_cau": "K09070204006",
+   "nhom_id": "KNB00513",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 4,4 g khí propane theo phương trình C₃H₈ + 5O₂ → 3CO₂ + 4H₂O. Khối lượng CO₂ sinh ra là bao nhiêu?",
+   "lua_chon": [
+    "13,2 g",
+    "8,8 g",
+    "4,4 g",
+    "26,4 g"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n(C₃H₈)=4,4:44=0,1mol; theo PTHH C₃H₈+5O₂→3CO₂+4H₂O, tỉ lệ mol C₃H₈:CO₂=1:3 nên n(CO₂)=0,3mol; m(CO₂)=0,3×44=13,2g.\n\nVì sao các phương án khác sai:\n- B: Nhầm tỉ lệ mol C₃H₈:CO₂ là 1:2, đúng ra là 1:3.\n- C: Quên tính theo tỉ lệ mol và phân tử khối, lấy luôn khối lượng C₃H₈.\n- D: Nhân đôi nhầm kết quả đúng do nhầm hệ số phản ứng."
+  },
+  {
+   "ma_cau": "K09070304001",
+   "nhom_id": "KNB00518",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 4,958 L khí ethylene (đkc). Khối lượng nước tạo thành là",
+   "lua_chon": [
+    "3,6 g",
+    "6,4 g",
+    "7,2 g",
+    "14,4 g"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(C₂H₄) = 4,958 : 24,79 = 0,2 mol. C₂H₄ + 3O₂ → 2CO₂ + 2H₂O nên n(H₂O) = 0,2 x 2 = 0,4 mol. m(H₂O) = 0,4 x 18 = 7,2 g.\n\nVì sao các phương án khác sai:\n- A: Bằng số mol C₂H₄, quên nhân hệ số 2 của H₂O trong phương trình.\n- B: Dùng nhầm khối lượng mol nước là 16 g/mol thay vì 18 g/mol.\n- D: Nhân nhầm khối lượng mol nước thành 36 g/mol, gấp đôi giá trị đúng."
+  },
+  {
+   "ma_cau": "K09070304002",
+   "nhom_id": "KNB00518",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 2,479 L khí propylene (C₃H₆, đkc). Khối lượng CO₂ tạo thành là",
+   "lua_chon": [
+    "4,4 g",
+    "8,8 g",
+    "26,4 g",
+    "13,2 g"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(C₃H₆)=2,479:24,79=0,1mol. Mỗi phân tử C₃H₆ có 3 carbon nên n(CO₂)=0,1×3=0,3mol. m(CO₂)=0,3×44=13,2g.\n\nVì sao các phương án khác sai:\n- A: Quên nhân hệ số 3 (số C trong C₃H₆), lấy bằng số mol ban đầu rồi nhân M(CO₂): 0,1×44=4,4g.\n- B: Chỉ nhân hệ số 2 thay vì 3.\n- C: Nhân nhầm gấp đôi giá trị đúng."
+  }
+ ]
+}

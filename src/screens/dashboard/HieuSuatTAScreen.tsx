@@ -2,8 +2,8 @@
 // Bản cũ (ChatLuongVanHanhScreen: CL − (100 − TĐ), leader chấm CL tay, toán ở JS) đã outdate — file còn
 // đó để đối chiếu, không còn gắn vào menu.
 // Hiện làm TRỢ GIẢNG trước: Chấm BTVN 50% · Chấm ET 15% · Bổ trợ 35%.
-//   · Task BTVN/ET: CHỈ dựa vào GẬY đã xác nhận (CEO 08/10) — không gậy = 100; gậy Chậm deadline trừ tiến độ theo
-//     số phút gậy ghi (−10/−20/−30/−40), gậy khác −15. Chỉ lớp TA chính. Mọi số tính ở fn_hsta_*.
+//   · Task BTVN/ET: CHỈ dựa vào GẬY đã xác nhận (CEO 08/10) — không gậy = 100; mỗi gậy đã vào sổ
+//     mỗi gậy (trễ hay khác) −50 — Thùy 05/11. Chỉ lớp TA chính. Mọi số tính ở fn_hsta_*.
 //   · Bổ trợ: hệ thống CHƯA đo giờ chính xác ⇒ chỉ hiện đủ số liệu từng ca, quản lý nhập điểm tay.
 //   · Mỗi ô: hệ thống ĐỀ XUẤT + quản lý CHỐT; "Ghi thêm" cho việc ngoài hệ thống.
 // Sau mutation KHÔNG reload cả bảng (CLAUDE.md §2): vá đúng dòng TA đó, refetch nền 1 dòng.
@@ -80,7 +80,7 @@ export default function HieuSuatTAScreen() {
         <span className="min-w-[110px] text-center text-[13px] font-semibold text-slate-700">{kyNhan(ky)}</span>
         <button disabled={kyNext > kyNay()} onClick={() => setKy(kyNext)} className="rounded-lg border border-slate-300 px-2 py-1 text-slate-500 hover:border-indigo-400 disabled:opacity-30">›</button>
         <button onClick={() => quet(ky, true)} title="Quét lại" className="ml-1 rounded-lg border border-slate-300 px-2 py-1 text-[13px] text-slate-500 hover:border-indigo-400">↻</button>
-        <span className="ml-auto text-[11.5px] text-slate-400">BTVN 50% · ET 15% · Bổ trợ 35% — điểm task chỉ từ gậy đã xác nhận: không gậy = 100 · gậy trễ −10…−40 theo số phút · gậy khác −15</span>
+        <span className="ml-auto text-[11.5px] text-slate-400">BTVN 50% · ET 15% · Bổ trợ 35% — điểm task chỉ từ gậy đã xác nhận: không gậy = 100 · mỗi gậy −50 (trễ hay lỗi khác)</span>
       </div>
       <div ref={scrollRef} onScroll={(e) => { NHO.scrollTop = e.currentTarget.scrollTop }} className="min-h-0 flex-1 overflow-auto p-6">
         {err && <div className="mx-auto mb-3 max-w-[1200px] rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-600">Lỗi: {err}</div>}

@@ -4,13 +4,16 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
-import { getTaiLieuFull, type TaiLieuFull } from '../../lib/tailieu'
-import { deThiMeta as getMeta, coDongKeDeThi, dongMacDinhDeThi, nhomBaiCuaDe, boLoiDan, type NhomBai } from '../../lib/dethi'
-import { CauItem, CauList, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
+import { getTaiLieuFull, kieuCols, anhPhaiCua, type TaiLieuFull } from '../../lib/tailieu'
+import { deThiMeta as getMeta, coDongKeDeThi, dongMacDinhDeThi, baiTheoDe } from '../../lib/dethi'
+import type { CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
+import { CauFlow, itemsTheoDe, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
+import { AnhMmCtx, AnhPhaiCtx } from './anhMmCtx'
 
 const CAP_LABEL: Record<string, string> = { vao_10: 'Tuyển sinh vào 10', thpt_qg: 'THPT Quốc gia', hsg: 'Học sinh giỏi' }
 
-export default function DeThiPrintView({ id, onClose, headless, linkOnly, onFail, onReady, onRenderErr }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void }) {
+// onlyPhanId = chỉ dựng 1 PHẦN (nút "👁 Xem phần" ở màn soạn — như "👁 Xem buổi" của builder giáo trình); số câu vẫn đếm như cả đề.
+export default function DeThiPrintView({ id, onClose, headless, linkOnly, onFail, onReady, onRenderErr, onlyPhanId }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void; onlyPhanId?: string }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false)
@@ -122,7 +125,8 @@ export default function DeThiPrintView({ id, onClose, headless, linkOnly, onFail
   return createPortal(
     <div className="pv-overlay fixed inset-0 z-[80] flex flex-col bg-slate-300/90">
       <div className="no-print flex items-center gap-3 border-b border-slate-300 bg-white px-5 py-2.5 shadow-sm">
-        <span className="text-sm font-semibold text-slate-800">Xem &amp; in đề thi</span>
+        <span className="text-sm font-semibold text-slate-800">{onlyPhanId ? 'Xem thử phần' : 'Xem & in đề thi'}</span>
+        {onlyPhanId && <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-[12px] font-medium text-indigo-700">{full?.phans.find((p) => p.id === onlyPhanId)?.tieu_de ?? 'Phần'}</span>}
         <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
           <button onClick={() => setGv(false)} className={seg(!gv)}>Bản học sinh</button>
           <button onClick={() => setGv(true)} className={seg(gv)}>Bản giáo viên</button>
@@ -139,15 +143,27 @@ export default function DeThiPrintView({ id, onClose, headless, linkOnly, onFail
           : !full ? <p className="text-center text-slate-400">Đang tải…</p>
           : <div ref={dstRef} className="pv-pages" />}
       </div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <DeThiDoc full={full} gv={gv} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <DeThiDoc full={full} gv={gv} onlyPhanId={onlyPhanId} />}</div>
       <style>{CHROME_CSS}</style>
     </div>,
     document.body,
   )
 }
 
-function DeThiDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
+// Cỡ ảnh IN theo câu (cau_hinh.anhMmByCau) — cùng context với giáo trình để <AnhDe> đọc được.
+function DeThiDoc(props: { full: TaiLieuFull; gv: boolean; onlyPhanId?: string }) {
+  const tl = props.full.taiLieu
+  return (
+    <AnhMmCtx.Provider value={tl.cau_hinh?.anhMmByCau ?? {}}>
+      <AnhPhaiCtx.Provider value={anhPhaiCua(tl.cau_hinh, tl.nhanh)}><DeThiDocInner {...props} /></AnhPhaiCtx.Provider>
+    </AnhMmCtx.Provider>
+  )
+}
+function DeThiDocInner({ full, gv, onlyPhanId }: { full: TaiLieuFull; gv: boolean; onlyPhanId?: string }) {
   const ch = full.taiLieu.cau_hinh ?? {}
+  // Như builder giáo trình (Thùy 19/10): mỗi câu chọn in 2 cột / chế độ hình riêng. Câu chưa đặt cột ⇒ theo kiểu của phần (cũ).
+  const colByCau = ch.colByCau ?? {}
+  const cheDoByCau: Record<string, CheDoHinh> = ch.hinhCheDoByCau ?? {}
   const dt = getMeta(full.taiLieu as any)
   const lines = ch.btvnLinesByCau ?? {}
   const deCuong = ((ch as { deThi?: { kieu?: string } }).deThi)?.kieu === 'de_cuong' // đề cương in "Bài N." (đúng đề gốc), đề thi in "Câu N."
@@ -155,23 +171,7 @@ function DeThiDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
   let no = 0
   const next = () => ++no
   // Nhóm BÀI: các câu kho đã tách ý (Bài 2a–2d) IN LẠI thành MỘT bài có đủ ý — đề giữ cấu trúc gốc (CEO 13/10); kho vẫn là câu riêng.
-  const nhomOf = new Map<string, { g: NhomBai; k: number }>()
-  for (const g of nhomBaiCuaDe(full.taiLieu as any)) g.cau.forEach((x, k) => nhomOf.set(x.ma_cau, { g, k }))
-  const gopBai = (caus: any[]): { c: any; lines: number }[] => {
-    const ra: { c: any; lines: number }[] = []
-    for (const c of caus) {
-      const r = nhomOf.get(c.ma_cau)
-      const dong = (x: any) => (!gv && coDongKeDeThi(x.loai_cau) ? (lines[x.ma_cau] ?? dongMacDinhDeThi(x.loai_cau)) : 0)
-      if (!r) { ra.push({ c, lines: dong(c) }); continue }
-      if (r.k > 0) continue // các ý sau đã gộp vào ý đầu
-      const mem = r.g.cau.map((x) => caus.find((cc) => cc.ma_cau === x.ma_cau))
-      if (mem.some((m) => !m)) { ra.push({ c, lines: dong(c) }); continue } // thiếu ý trong phần ⇒ để nguyên từng câu
-      const noiDung = [r.g.dan, ...mem.map((m, i) => `${r.g.cau[i].y}) ${boLoiDan(m.noi_dung, r.g.dan)}`)].filter((x) => x !== '').join('\n')
-      const loiGiai = mem.map((m, i) => (m.loi_giai ? `**${r.g.cau[i].y})**\n${m.loi_giai}` : '')).filter(Boolean).join('\n\n')
-      ra.push({ c: { ...mem[0], noi_dung: noiDung, loi_giai: loiGiai || null, loai_cau: 'tu_luan', dap_an: null, lua_chon: null, menh_de: null }, lines: mem.reduce((t: number, m: any) => t + dong(m), 0) })
-    }
-    return ra
-  }
+  const dong = (x: any) => (!gv && coDongKeDeThi(x.loai_cau) ? (lines[x.ma_cau] ?? dongMacDinhDeThi(x.loai_cau)) : 0)
   return (
     <div className="pv-dethi" style={{ '--pv-accent': ch.mau || '#2D9CDB' } as CSSProperties}>
       <div className="pv-bt-head">
@@ -194,18 +194,21 @@ function DeThiDoc({ full, gv }: { full: TaiLieuFull; gv: boolean }) {
         )}
       </div>
 
-      {phans.map((p) => (
-        <section key={p.id} className="pv-sec">
-          <h2 className="pv-h-dang">{p.tieu_de}</h2>
-          {p.caus.length === 0 ? <p className="pv-empty">Phần này chưa có câu.</p> : (
-            <CauList kieu={p.kieu}>
-              {gopBai(p.caus).map(({ c, lines: nDong }) => (
-                <CauItem key={c.ma_cau} no={next()} c={c} gv={gv} lines={nDong} tienTo={deCuong ? 'Bài' : 'Câu'} />
-              ))}
-            </CauList>
-          )}
-        </section>
-      ))}
+      {phans.map((p) => {
+        // Đánh số cho MỌI phần (kể cả phần không hiện khi "Xem phần") để số câu khớp bản in cả đề.
+        // Bài nhiều ý: đầu bài + từng ý, mỗi ý dòng kẻ/cột riêng (Thùy 25/10) — itemsTheoDe dùng chung với BTVN gán từ đề.
+        const items = itemsTheoDe(baiTheoDe(full.taiLieu as any, p.caus), {
+          gv, dong, next, tienTo: deCuong ? 'Bài' : 'Câu',
+          col: (c, laY) => colByCau[c.ma_cau] ?? (laY ? 1 : kieuCols(p.kieu)), cheDo: (c) => cheDoByCau[c.ma_cau],
+        })
+        if (onlyPhanId && p.id !== onlyPhanId) return null
+        return (
+          <section key={p.id} className="pv-sec">
+            <h2 className="pv-h-dang">{p.tieu_de}</h2>
+            {items.length === 0 ? <p className="pv-empty">Phần này chưa có câu.</p> : <CauFlow items={items} />}
+          </section>
+        )
+      })}
       {phans.length === 0 && <p className="pv-empty">Đề thi chưa có phần nào.</p>}
     </div>
   )
@@ -215,4 +218,11 @@ const DETHI_CSS = `
 .pv-dethi-meta{font-size:12px;color:#64748b;margin-top:4px}
 .pv-dethi .pv-h-dang{border-bottom:none;padding-bottom:0}
 .pv-empty{color:#8a9097;font-style:italic;margin-top:10px}
+/* ⭐ 19/10 (Thùy: "tự sang trang khi chưa hết chỗ trống"): .pv-cau mặc định break-inside:avoid ⇒ bài nhiều ý + dòng kẻ
+   (đo đề GKI Toán 7 Trưng Vương: Câu 5 cao 246mm, Câu 8 201mm, Câu 10 199mm) không vừa chỗ còn lại ⇒ CẢ CÂU nhảy trang,
+   bỏ trống 120–257mm. Cho câu CHẢY qua trang như giáo trình/BTVN (.gtbk-card-body .pv-cau, .pv-btvn .pv-cau); phương án TN /
+   dòng Đ-S / cặp dòng kẻ / hình tự giữ khối. ĐỪNG thêm ".pv-math:first-child{break-after:avoid}" như giáo trình: đo cùng đề,
+   có dòng đó thì CẢ Phần 1 bị đẩy sang trang 2 (trang 1 chỉ còn đầu đề, trống 193mm); bỏ đi ⇒ 11 → 7 trang, mỗi trang dư ≤13mm. */
+.pv-dethi .pv-cau{break-inside:auto}
+.pv-dethi .pv-opts{break-inside:avoid}
 `

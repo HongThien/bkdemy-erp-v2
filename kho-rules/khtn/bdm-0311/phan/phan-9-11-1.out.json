@@ -1,0 +1,428 @@
+[
+ {
+  "ma_cau": "K09110208013",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208014",
+  "dang_bai_id": "KDB01282",
+  "chac": "cao",
+  "ly_do": "Tính số lượng hoặc phần trăm nucleotide, N, không liên quan H."
+ },
+ {
+  "ma_cau": "K09110208015",
+  "dang_bai_id": "KDB01282",
+  "chac": "cao",
+  "ly_do": "Tính số lượng hoặc phần trăm nucleotide, N, không liên quan H."
+ },
+ {
+  "ma_cau": "K09110208016",
+  "dang_bai_id": "KDB01282",
+  "chac": "cao",
+  "ly_do": "Tính số lượng hoặc phần trăm nucleotide, N, không liên quan H."
+ },
+ {
+  "ma_cau": "K09110208017",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208018",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208019",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208020",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208021",
+  "dang_bai_id": "KDB01282",
+  "chac": "cao",
+  "ly_do": "Tính số lượng hoặc phần trăm nucleotide, N, không liên quan H."
+ },
+ {
+  "ma_cau": "K09110208022",
+  "dang_bai_id": "KDB01282",
+  "chac": "cao",
+  "ly_do": "Tính số lượng hoặc phần trăm nucleotide, N, không liên quan H."
+ },
+ {
+  "ma_cau": "K09110208023",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208024",
+  "dang_bai_id": "KDB01283",
+  "chac": "vua",
+  "ly_do": "Liên quan H nhưng có thêm ý khác (bền vững, mạch, chiều dài)."
+ },
+ {
+  "ma_cau": "K09110208025",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208026",
+  "dang_bai_id": "KDB01283",
+  "chac": "vua",
+  "ly_do": "Liên quan H nhưng có thêm ý khác (bền vững, mạch, chiều dài)."
+ },
+ {
+  "ma_cau": "K09110208027",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: liên kết cộng hoá trị giữa các nucleotide."
+ },
+ {
+  "ma_cau": "K09110208028",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: liên kết cộng hoá trị giữa các nucleotide."
+ },
+ {
+  "ma_cau": "K09110208029",
+  "dang_bai_id": "KDB01282",
+  "chac": "vua",
+  "ly_do": "Tính nucleotide theo từng mạch rồi suy ra cả gene."
+ },
+ {
+  "ma_cau": "K09110208030",
+  "dang_bai_id": "KDB01282",
+  "chac": "vua",
+  "ly_do": "Tính nucleotide theo từng mạch rồi suy ra cả gene."
+ },
+ {
+  "ma_cau": "K09110208031",
+  "dang_bai_id": "KDB01282",
+  "chac": "vua",
+  "ly_do": "Tính nucleotide theo từng mạch rồi suy ra cả gene."
+ },
+ {
+  "ma_cau": "K09110208032",
+  "dang_bai_id": "KDB01282",
+  "chac": "vua",
+  "ly_do": "Tính nucleotide theo từng mạch rồi suy ra cả gene."
+ },
+ {
+  "ma_cau": "K09110208033",
+  "dang_bai_id": "KDB01282",
+  "chac": "vua",
+  "ly_do": "Tính nucleotide theo từng mạch rồi suy ra cả gene."
+ },
+ {
+  "ma_cau": "K09110208034",
+  "dang_bai_id": "KDB01282",
+  "chac": "vua",
+  "ly_do": "Tính nucleotide theo từng mạch rồi suy ra cả gene."
+ },
+ {
+  "ma_cau": "K09110208035",
+  "dang_bai_id": "KDB01282",
+  "chac": "vua",
+  "ly_do": "Tính nucleotide theo từng mạch rồi suy ra cả gene."
+ },
+ {
+  "ma_cau": "K09110208036",
+  "dang_bai_id": "KDB01282",
+  "chac": "cao",
+  "ly_do": "Tính số lượng hoặc phần trăm nucleotide, N, không liên quan H."
+ },
+ {
+  "ma_cau": "K09110208037",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208038",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: liên kết cộng hoá trị giữa các nucleotide."
+ },
+ {
+  "ma_cau": "K09110208039",
+  "dang_bai_id": "KDB01282",
+  "chac": "cao",
+  "ly_do": "Tính số lượng hoặc phần trăm nucleotide, N, không liên quan H."
+ },
+ {
+  "ma_cau": "K09110208040",
+  "dang_bai_id": "KDB01282",
+  "chac": "cao",
+  "ly_do": "Tính số lượng hoặc phần trăm nucleotide, N, không liên quan H."
+ },
+ {
+  "ma_cau": "K09110208041",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208042",
+  "dang_bai_id": "KDB01282",
+  "chac": "cao",
+  "ly_do": "Tính số lượng hoặc phần trăm nucleotide, N, không liên quan H."
+ },
+ {
+  "ma_cau": "K09110208043",
+  "dang_bai_id": "KDB01282",
+  "chac": "vua",
+  "ly_do": "Tính nucleotide theo từng mạch rồi suy ra cả gene."
+ },
+ {
+  "ma_cau": "K09110208044",
+  "dang_bai_id": "KDB01282",
+  "chac": "vua",
+  "ly_do": "Tính nucleotide theo từng mạch rồi suy ra cả gene."
+ },
+ {
+  "ma_cau": "K09110208045",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208046",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208047",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208048",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208049",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208050",
+  "dang_bai_id": "KDB01283",
+  "chac": "vua",
+  "ly_do": "Liên quan H nhưng có thêm ý khác (bền vững, mạch, chiều dài)."
+ },
+ {
+  "ma_cau": "K09110208051",
+  "dang_bai_id": "KDB01283",
+  "chac": "vua",
+  "ly_do": "Liên quan H nhưng có thêm ý khác (bền vững, mạch, chiều dài)."
+ },
+ {
+  "ma_cau": "K09110208052",
+  "dang_bai_id": "KDB01282",
+  "chac": "vua",
+  "ly_do": "Dạng tìm lỗi giải về số lượng/phần trăm nucleotide."
+ },
+ {
+  "ma_cau": "K09110208056",
+  "dang_bai_id": "KDB01282",
+  "chac": "cao",
+  "ly_do": "Tính số lượng hoặc phần trăm nucleotide, N, không liên quan H."
+ },
+ {
+  "ma_cau": "K09110208057",
+  "dang_bai_id": "KDB01282",
+  "chac": "cao",
+  "ly_do": "Tính số lượng hoặc phần trăm nucleotide, N, không liên quan H."
+ },
+ {
+  "ma_cau": "K09110208058",
+  "dang_bai_id": "KDB01282",
+  "chac": "cao",
+  "ly_do": "Tính số lượng hoặc phần trăm nucleotide, N, không liên quan H."
+ },
+ {
+  "ma_cau": "K09110208059",
+  "dang_bai_id": "KDB01282",
+  "chac": "cao",
+  "ly_do": "Tính số lượng hoặc phần trăm nucleotide, N, không liên quan H."
+ },
+ {
+  "ma_cau": "K09110208060",
+  "dang_bai_id": "KDB01282",
+  "chac": "cao",
+  "ly_do": "Tính số lượng hoặc phần trăm nucleotide, N, không liên quan H."
+ },
+ {
+  "ma_cau": "K09110208061",
+  "dang_bai_id": "KDB01282",
+  "chac": "cao",
+  "ly_do": "Tính số lượng hoặc phần trăm nucleotide, N, không liên quan H."
+ },
+ {
+  "ma_cau": "K09110208062",
+  "dang_bai_id": "KDB01282",
+  "chac": "cao",
+  "ly_do": "Tính số lượng hoặc phần trăm nucleotide, N, không liên quan H."
+ },
+ {
+  "ma_cau": "K09110208063",
+  "dang_bai_id": "KDB01282",
+  "chac": "cao",
+  "ly_do": "Tính số lượng hoặc phần trăm nucleotide, N, không liên quan H."
+ },
+ {
+  "ma_cau": "K09110208064",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: chiều dài gene, vòng xoắn, quy đổi với N."
+ },
+ {
+  "ma_cau": "K09110208065",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: chiều dài gene, vòng xoắn, quy đổi với N."
+ },
+ {
+  "ma_cau": "K09110208066",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: chiều dài gene, vòng xoắn, quy đổi với N."
+ },
+ {
+  "ma_cau": "K09110208067",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: chiều dài gene, vòng xoắn, quy đổi với N."
+ },
+ {
+  "ma_cau": "K09110208068",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: chiều dài gene, vòng xoắn, quy đổi với N."
+ },
+ {
+  "ma_cau": "K09110208069",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: chiều dài gene, vòng xoắn, quy đổi với N."
+ },
+ {
+  "ma_cau": "K09110208070",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: khối lượng gene."
+ },
+ {
+  "ma_cau": "K09110208071",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: khối lượng gene."
+ },
+ {
+  "ma_cau": "K09110208072",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: khối lượng gene."
+ },
+ {
+  "ma_cau": "K09110208073",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: khối lượng gene."
+ },
+ {
+  "ma_cau": "K09110208074",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: khối lượng gene."
+ },
+ {
+  "ma_cau": "K09110208075",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: khối lượng gene."
+ },
+ {
+  "ma_cau": "K09110208076",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208077",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208078",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208079",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208080",
+  "dang_bai_id": "KDB01283",
+  "chac": "vua",
+  "ly_do": "Liên quan H nhưng có thêm ý khác (bền vững, mạch, chiều dài)."
+ },
+ {
+  "ma_cau": "K09110208081",
+  "dang_bai_id": "KDB01283",
+  "chac": "cao",
+  "ly_do": "Tính hoặc dùng liên kết hydrogen H với N."
+ },
+ {
+  "ma_cau": "K09110208082",
+  "dang_bai_id": "KDB01282",
+  "chac": "vua",
+  "ly_do": "Dạng tìm lỗi giải về số lượng/phần trăm nucleotide."
+ },
+ {
+  "ma_cau": "K09110208083",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: chiều dài gene, vòng xoắn, quy đổi với N."
+ },
+ {
+  "ma_cau": "K09110208084",
+  "dang_bai_id": "KDB01282",
+  "chac": "vua",
+  "ly_do": "Dạng tìm lỗi giải về số lượng/phần trăm nucleotide."
+ },
+ {
+  "ma_cau": "K09110208085",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: chiều dài gene, vòng xoắn, quy đổi với N."
+ },
+ {
+  "ma_cau": "K09110208086",
+  "dang_bai_id": "KDB01282",
+  "chac": "vua",
+  "ly_do": "Dạng tìm lỗi giải về số lượng/phần trăm nucleotide."
+ }
+]

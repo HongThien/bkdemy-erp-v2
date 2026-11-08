@@ -1,0 +1,9 @@
+[
+{"ma_cau":"T109090401008","dang_bai_id":"NDB00513","chac":"cao","ly_do":"Tối ưu lợi nhuận hai biến có hai ràng buộc, giải bằng phối hợp hai bất đẳng thức của hệ; đề không đòi x, y nguyên."},
+{"ma_cau":"T109090401009","dang_bai_id":"NDB00513","chac":"cao","ly_do":"Tối ưu lợi nhuận hai biến có hai ràng buộc, giải bằng phối hợp hai bất đẳng thức của hệ; đề không đòi x, y nguyên."},
+{"ma_cau":"T109090401010","dang_bai_id":"NDB00513","chac":"cao","ly_do":"Tối ưu lợi nhuận hai biến có hai ràng buộc, giải bằng phối hợp hai bất đẳng thức của hệ; đề không đòi x, y nguyên."},
+{"ma_cau":"T109090401015","dang_bai_id":"NDB00514","chac":"cao","ly_do":"Tối ưu doanh thu hai biến có miền điều kiện, x, y là số kiện hàng nguyên; dạng sau thắng."},
+{"ma_cau":"T109090401016","dang_bai_id":"NDB00514","chac":"cao","ly_do":"Tối ưu chi phí hai biến có miền điều kiện, x, y là số thùng nguyên; dạng sau thắng."},
+{"ma_cau":"T109090401017","dang_bai_id":"NDB00514","chac":"cao","ly_do":"Tối ưu doanh thu hai biến có miền điều kiện, x, y là số xe nguyên; dạng sau thắng."},
+{"ma_cau":"T109090401019","dang_bai_id":"NDB00514","chac":"cao","ly_do":"Tối ưu doanh thu hai biến có miền điều kiện, phải xét nghiệm nguyên (x chẵn, nhiều cặp) nên là dạng xét x nguyên."}
+]

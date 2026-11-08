@@ -1,0 +1,375 @@
+=== N C3.1
+@ly_thuyet:
+##TC Giao điểm của đồ thị với đường và với trục
+- Số giao điểm của $(C):y=f(x)$ và $(C'):y=g(x)$ bằng số nghiệm (thuộc tập xác định) của phương trình hoành độ giao điểm $f(x)=g(x)$; mỗi nghiệm $x_0$ cho giao điểm $(x_0;f(x_0))$.
+- Giao với trục hoành $Ox$: giải $f(x)=0$, giao điểm có dạng $(x_0;0)$. Giao với trục tung $Oy$: thay $x=0$, giao điểm là $(0;f(0))$.
+- Đồ thị cho bằng hình hoặc bảng biến thiên thì số giao điểm với đường ngang $y=m$ đọc trực tiếp từ hình, không cần công thức.
+
+##PP Giải bài toán tương giao
+Xác định hai đồ thị (hoặc đồ thị và trục) và lập phương trình hoành độ giao điểm; hàm phân thức thì ghi điều kiện mẫu khác $0$.
+Quy đồng, đưa về phương trình đa thức rồi giải; nghiệm nào làm mẫu bằng $0$ thì loại.
+Đề cho hình hoặc bảng biến thiên: đưa phương trình về dạng $f(x)=m$ rồi đếm giao điểm với đường ngang $y=m$.
+Trả lời đúng điều đề hỏi (số giao điểm, toạ độ, độ dài, giá trị biểu thức), thay nghiệm vào đường đơn giản hơn để tính tung độ.
+
+##CY
+- Phương trình hoành độ giao điểm của hàm phân thức phải kiểm tra điều kiện xác định: nghiệm làm mẫu bằng $0$ không phải giao điểm.
+- Giao điểm là một điểm $(x;y)$, đề hỏi toạ độ thì không chỉ trả lời hoành độ.
+
+=== C3.1.1   (dạng "Điểm thuộc đồ thị, giao điểm với trục toạ độ")
+@ly_thuyet:
+##TC Điểm thuộc đồ thị, điểm có toạ độ nguyên
+- Điểm $M(x_0;y_0)$ thuộc đồ thị $y=f(x)$ khi $x_0$ thuộc tập xác định và $y_0=f(x_0)$.
+- Giao điểm với $Oy$ là $(0;f(0))$; giao điểm với $Ox$ là $(x_0;0)$ với $f(x_0)=0$ (với hàm phân thức, nghiệm của tử mà mẫu khác $0$).
+- Hàm viết được dạng $y=ax+b+\dfrac{r}{x+d}$ ($a,b,r,d$ nguyên, kể cả $a=0$ như $y=\dfrac{2x+3}{x-1}=2+\dfrac{5}{x-1}$): với $x$ nguyên, $y$ nguyên khi và chỉ khi $x+d$ là ước nguyên của $r$.
+
+##PP Kiểm điểm thuộc đồ thị, tìm điểm nguyên
+Thay hoành độ của điểm vào hàm số, so với tung độ; điểm có hoành độ ngoài tập xác định thì không thuộc đồ thị.
+Giao điểm với trục: cho $x=0$ để lấy tung độ, cho $y=0$ rồi giải phương trình để lấy hoành độ.
+Điểm nguyên: chia tử cho mẫu để tách phần nguyên, đưa về "mẫu là ước của hằng số", liệt kê cả ước dương và ước âm.
+Giải từng ước để có $x$, tính $y$, giữ lại cặp $(x;y)$ nguyên rồi đếm.
+
+##CY
+- Phải lấy cả ước âm của hằng số, nếu không sẽ thiếu một nửa số điểm.
+- Đọc giao điểm từ hình: giao với $Oy$ có hoành độ $0$, viết $(0;y_0)$; giao với $Ox$ viết $(x_0;0)$, đừng đảo thứ tự hai toạ độ.
+
+@vi_du:
+##VD
+a) Cho hàm số $y=\dfrac{x^2-x-6}{x-1}$ có đồ thị $(C)$. Trong bốn điểm $A(2;-4)$, $B(3;1)$, $C(1;-6)$, $D(0;-6)$, điểm nào thuộc $(C)$? Tìm giao điểm của $(C)$ với hai trục toạ độ.
+b) Cho hàm số bậc ba $y=g(x)$ có đồ thị như hình vẽ. Tìm toạ độ các giao điểm của đồ thị với trục hoành và trục tung.
+[[HINH {"loai":"dothi","x":[-1.5,2.5],"y":[-5,4],"f":[{"e":"x^3-2*x^2-x+2","ten":"y=g(x)"}]}]]
+
+Bài giải:
+a) Tập xác định $\mathbb{R}\setminus\{1\}$. Với $x=2$: $y=\dfrac{4-2-6}{1}=-4$ nên $A$ thuộc $(C)$.
+Với $x=3$: $y=\dfrac{9-3-6}{2}=0\ne1$ nên $B$ không thuộc $(C)$. Với $x=1$ hàm không xác định nên $C$ không thuộc $(C)$. Với $x=0$: $y=\dfrac{-6}{-1}=6\ne-6$ nên $D$ không thuộc $(C)$.
+Giao với $Oy$: $x=0$ cho $y=6$, điểm $(0;6)$.
+Giao với $Ox$: $x^2-x-6=0$ cho $x=3$ hoặc $x=-2$, đều khác $1$, nên có hai điểm $(3;0)$ và $(-2;0)$.
+b) Từ hình, đồ thị cắt trục hoành tại ba điểm có hoành độ $-1$, $1$, $2$ và cắt trục tung tại điểm có tung độ $2$.
+Vậy ở câu a) chỉ điểm $A$ thuộc $(C)$, $(C)$ cắt $Oy$ tại $(0;6)$ và cắt $Ox$ tại $(3;0)$, $(-2;0)$; ở câu b) đồ thị cắt $Ox$ tại $(-1;0)$, $(1;0)$, $(2;0)$ và cắt $Oy$ tại $(0;2)$.
+
+##VD
+Có bao nhiêu điểm có toạ độ nguyên thuộc đồ thị hàm số $y=\dfrac{x^2+3x+5}{x+2}$?
+
+Bài giải:
+Chia tử cho mẫu: $x^2+3x+5=(x+2)(x+1)+3$ nên $y=x+1+\dfrac{3}{x+2}$ với $x\ne-2$.
+Với $x$ nguyên thì $y$ nguyên khi và chỉ khi $\dfrac{3}{x+2}$ nguyên, tức $x+2$ là ước nguyên của $3$: $x+2\in\{-3;-1;1;3\}$.
+$x+2=-3$: $x=-5$, $y=-4-1=-5$; $x+2=-1$: $x=-3$, $y=-2-3=-5$.
+$x+2=1$: $x=-1$, $y=0+3=3$; $x+2=3$: $x=1$, $y=2+1=3$.
+Vậy có $4$ điểm nguyên: $(-5;-5)$, $(-3;-5)$, $(-1;3)$, $(1;3)$.
+
+=== C3.1.2   (dạng "Đếm nghiệm f(x)=m, số giao điểm từ đồ thị")
+@ly_thuyet:
+##TC Số nghiệm của phương trình và đường ngang
+- Số nghiệm của $f(x)=m$ bằng số giao điểm của đồ thị $y=f(x)$ với đường thẳng ngang $y=m$.
+- Phương trình dạng $af(x)+b=0$ được đưa về $f(x)=-\dfrac{b}{a}$, nghiệm là số giao điểm với đường ngang $y=-\dfrac{b}{a}$.
+- Hàm bậc ba có cực đại $y_{\text{CĐ}}$ và cực tiểu $y_{\text{CT}}$: đường $y=m$ cắt đồ thị tại $3$ điểm khi $y_{\text{CT}}<m<y_{\text{CĐ}}$, tại $2$ điểm khi $m=y_{\text{CĐ}}$ hoặc $m=y_{\text{CT}}$, tại $1$ điểm khi $m$ nằm ngoài đoạn $[y_{\text{CT}};y_{\text{CĐ}}]$. Hàm bậc bốn trùng phương có ba cực trị: $y=m$ cắt tại $4$ điểm khi $m$ nằm thực sự giữa giá trị cực trị tại $x=0$ và giá trị cực trị chung của hai điểm còn lại.
+- Số giao điểm với trục hoành là số nghiệm của $f(x)=0$ (đường ngang $y=0$).
+- Đề cho công thức (thường là phân thức) thì tự tính $y'$, lập bảng biến thiên rồi đếm như trên.
+
+##PP Đếm nghiệm từ đồ thị hoặc bảng biến thiên
+Đưa phương trình về dạng $f(x)=m$ với $m$ là một số hoặc biểu thức của tham số.
+Đọc từ hình hoặc bảng biến thiên (đề cho công thức thì tính $y'$ và lập bảng) các giá trị cực đại, cực tiểu và giới hạn ở hai đầu.
+Vẽ đường ngang $y=m$ và đếm số giao điểm; chú ý hai trường hợp đường ngang đúng bằng giá trị cực trị.
+Đề hỏi $m$ để có số nghiệm cho trước thì giải bất đẳng thức giữa $m$ (hoặc biểu thức của $m$) và các giá trị cực trị, rồi đếm giá trị $m$ nguyên nếu đề yêu cầu.
+
+##CY
+- Đường ngang đi đúng qua điểm cực trị thì chỉ có hai giao điểm (một là tiếp xúc), không phải ba.
+- Phải chuyển hết hệ số và hằng số sang vế phải: $2f(x)+7=0$ là $f(x)=-\dfrac{7}{2}$, không phải $f(x)=-7$.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Tìm số nghiệm của mỗi phương trình sau:
+a) $f(x)=0$; b) $f(x)=1$; c) $2f(x)+7=0$.
+[[HINH {"loai":"dothi","x":[-1.5,3.5],"y":[-4,3],"f":[{"e":"x^3-3*x^2+1","ten":"y=f(x)"}]}]]
+
+Bài giải:
+Từ hình, hàm số có cực đại $y_{\text{CĐ}}=1$ tại $x=0$ và cực tiểu $y_{\text{CT}}=-3$ tại $x=2$.
+a) Đường $y=0$ nằm giữa $-3$ và $1$ nên cắt đồ thị tại $3$ điểm: phương trình có $3$ nghiệm.
+b) Đường $y=1$ đi đúng qua điểm cực đại nên cắt đồ thị tại $2$ điểm (tiếp xúc ở $x=0$ và cắt ở $x=3$): phương trình có $2$ nghiệm.
+c) $2f(x)+7=0\Leftrightarrow f(x)=-\dfrac{7}{2}$. Vì $-\dfrac{7}{2}<-3=y_{\text{CT}}$ nên đường $y=-\dfrac{7}{2}$ cắt đồ thị tại $1$ điểm: phương trình có $1$ nghiệm.
+Vậy các phương trình lần lượt có $3$, $2$ và $1$ nghiệm.
+
+##VD
+a) Cho hàm số $y=f(x)$ có bảng biến thiên như hình vẽ. Có bao nhiêu giá trị nguyên của $m$ để phương trình $f(x)-m+1=0$ có đúng ba nghiệm phân biệt?
+[[HINH {"loai":"bbt","x":["-∞","-1","2","+∞"],"dau":["+","-","+"],"y":["-∞","4","-2","+∞"]}]]
+b) Có bao nhiêu giá trị nguyên của $m$ để đường thẳng $y=m$ không cắt đồ thị hàm số $y=\dfrac{x^2+2x+10}{x+1}$?
+
+Bài giải:
+a) Phương trình tương đương $f(x)=m-1$.
+Từ bảng biến thiên, hàm số có giá trị cực đại $4$ và giá trị cực tiểu $-2$, hai đầu tiến tới $-\infty$ và $+\infty$.
+Đường $y=m-1$ cắt đồ thị tại đúng ba điểm khi $-2<m-1<4$, tức $-1<m<5$.
+Các số nguyên $m$ thoả là $0;1;2;3;4$, có $5$ giá trị.
+b) Tập xác định $\mathbb{R}\setminus\{-1\}$. Ta có $y=x+1+\dfrac{9}{x+1}$ nên $y'=1-\dfrac{9}{(x+1)^2}$.
+$y'=0\Leftrightarrow(x+1)^2=9\Leftrightarrow x=2$ hoặc $x=-4$; $y(2)=6$, $y(-4)=-6$.
+Bảng biến thiên: trên $(-\infty;-1)$ hàm số tăng từ $-\infty$ lên giá trị cực đại $-6$ tại $x=-4$ rồi giảm về $-\infty$; trên $(-1;+\infty)$ hàm số giảm từ $+\infty$ xuống giá trị cực tiểu $6$ tại $x=2$ rồi tăng lên $+\infty$.
+Vậy tập giá trị là $(-\infty;-6]\cup[6;+\infty)$, đường $y=m$ không cắt đồ thị khi $-6<m<6$.
+Các số nguyên $m$ thoả là $-5;-4;\dots;5$, có $11$ giá trị.
+Vậy câu a) có $5$ giá trị nguyên của $m$, câu b) có $11$ giá trị nguyên của $m$.
+
+=== C3.1.3   (dạng "Giao điểm thoả hệ thức hoặc điều kiện hình học")
+@ly_thuyet:
+##TC Hệ thức giữa các giao điểm của đồ thị và đường thẳng
+- Với phương trình hoành độ giao điểm đưa được về $ax^2+bx+c=0$ có hai nghiệm phân biệt $x_1,x_2$ (khác nghiệm làm mẫu bằng $0$) thì $S=x_1+x_2=-\dfrac{b}{a}$, $P=x_1x_2=\dfrac{c}{a}$.
+- Hai giao điểm $A(x_1;y_1)$, $B(x_2;y_2)$ nằm trên đường thẳng $d:y=kx+n$ (đường $Ax+By+C=0$ thì đổi về dạng này) nên $y_i=kx_i+n$ và $y_1+y_2=kS+2n$.
+- Độ dài: $AB^2=(1+k^2)(x_1-x_2)^2=(1+k^2)(S^2-4P)$; hai giao điểm nằm trên $Ox$ thì $AB=|x_1-x_2|$. Khoảng cách từ gốc tới giao điểm $M$: $OM=\sqrt{x_M^2+y_M^2}$.
+- Hoành độ giao điểm $a_n$ của đồ thị với đường $y=n$ phụ thuộc $n$: không cần giải ra $a_n$, chỉ cần kẹp $a_n$ giữa hai biểu thức cùng giới hạn rồi cho $n\to+\infty$.
+
+##PP Tính biểu thức từ các giao điểm
+Lập phương trình hoành độ giao điểm, đưa về phương trình đa thức, kiểm tra các nghiệm khác nghiệm làm mẫu bằng $0$.
+Tính $S$, $P$ theo Viète (hoặc giải thẳng nếu nghiệm đẹp), tính tung độ qua phương trình đường thẳng.
+Biểu diễn đại lượng của đề (tổng tung độ, độ dài, khoảng cách tới gốc) qua $S$ và $P$ rồi tính.
+Đề hỏi giới hạn của hoành độ giao điểm: từ phương trình hoành độ suy ra dấu và một đánh giá của $a_n$, kẹp lại rồi lấy giới hạn.
+
+##CY
+- $AB^2=(1+k^2)(x_1-x_2)^2$, không phải $(x_1-x_2)^2$, vì $A$, $B$ lệch cả theo $y$.
+- Hai vế cùng hệ số $x^2$ thì phương trình hoành độ chỉ còn bậc nhất (tối đa một giao điểm); nghiệm nào trùng nghiệm của mẫu thì loại.
+
+@vi_du:
+##VD
+Cho hàm số $y=\dfrac{3x+1}{x-2}$ có đồ thị $(C)$ và đường thẳng $d:y=x+7$. Biết $d$ cắt $(C)$ tại hai điểm phân biệt $M$, $N$. Tính độ dài $MN$.
+
+Bài giải:
+Phương trình hoành độ giao điểm: $\dfrac{3x+1}{x-2}=x+7$ với $x\ne2$, tương đương $3x+1=(x+7)(x-2)$, hay $x^2+2x-15=0$.
+Phương trình có $\Delta=4+60=64>0$, hai nghiệm $x_1,x_2$ đều khác $2$, nên $d$ cắt $(C)$ tại hai điểm phân biệt, với $x_1+x_2=-2$, $x_1x_2=-15$.
+$M$, $N$ nằm trên $d$ có $k=1$ nên $MN^2=(1+1^2)\left[(x_1+x_2)^2-4x_1x_2\right]=2\left[4+60\right]=128$.
+Vậy $MN=8\sqrt{2}$.
+
+##VD
+a) Đường thẳng $d:3x-y-2=0$ cắt đồ thị hàm số $y=\dfrac{2x+1}{x+1}$ tại hai điểm phân biệt $A(x_1;y_1)$, $B(x_2;y_2)$. Tính $y_1+y_2$.
+b) Với mỗi số nguyên dương $n$, đường thẳng $y=n$ cắt đồ thị hàm số $f(x)=\dfrac{2-x^3}{x}$ tại đúng một điểm, có hoành độ $a_n$. Tính $\lim\limits_{n\to+\infty}a_n$.
+
+Bài giải:
+a) Đường thẳng $d$ viết lại là $y=3x-2$.
+Phương trình hoành độ giao điểm: $\dfrac{2x+1}{x+1}=3x-2$ với $x\ne-1$, tương đương $2x+1=(3x-2)(x+1)$, hay $3x^2-x-3=0$.
+Phương trình có $\Delta=1+36=37>0$ và $x=-1$ không là nghiệm ($3+1-3=1\ne0$), nên $x_1+x_2=\dfrac{1}{3}$.
+$y_1+y_2=3(x_1+x_2)-4=1-4=-3$.
+b) $a_n$ là nghiệm của $\dfrac{2-x^3}{x}=n$ với $x\ne0$, tức $a_n^3+na_n-2=0$.
+Nếu $a_n<0$ thì $a_n^3+na_n-2<0$, vô lí; vậy $a_n>0$.
+Khi đó $na_n=2-a_n^3<2$ nên $0<a_n<\dfrac{2}{n}$.
+Vì $\lim\limits_{n\to+\infty}\dfrac{2}{n}=0$ nên theo nguyên lí kẹp $\lim\limits_{n\to+\infty}a_n=0$.
+Vậy a) $y_1+y_2=-3$; b) $\lim\limits_{n\to+\infty}a_n=0$.
+
+=== N C3.2
+@ly_thuyet:
+##TC Phương trình tiếp tuyến của đồ thị
+- Tiếp tuyến của $(C):y=f(x)$ tại điểm $M_0(x_0;y_0)\in(C)$ có hệ số góc $k=f'(x_0)$.
+- Phương trình tiếp tuyến tại $M_0$: $y=f'(x_0)(x-x_0)+f(x_0)$; thu gọn về $y=kx+b$.
+- Đường thẳng $y=ax+b$ có hệ số góc $a$; đường thẳng $Ax+By+C=0$ ($B\ne0$) có hệ số góc $-\dfrac{A}{B}$.
+- Hai đường thẳng có hệ số góc $k_1$, $k_2$ song song khi $k_1=k_2$ (và không trùng nhau), vuông góc khi $k_1k_2=-1$.
+- Hàm $y=\dfrac{ax+b}{cx+d}$ có $y'=\dfrac{ad-bc}{(cx+d)^2}$, luôn cùng dấu với $ad-bc$.
+
+##PP Viết tiếp tuyến
+Xác định tiếp điểm $x_0$ từ điều kiện đề cho (hoành độ, tung độ, hệ số góc hoặc giao điểm với trục).
+Tính $y_0=f(x_0)$ và $k=f'(x_0)$.
+Viết $y=k(x-x_0)+y_0$ rồi thu gọn.
+
+##CY
+- Mỗi nghiệm $x_0$ của điều kiện cho đúng một tiếp tuyến; đề cho hệ số góc hoặc tung độ có thể ra nhiều tiếp tuyến, viết đủ rồi mới kết luận.
+- $x_0$ phải thuộc tập xác định; đừng nhầm $f(x_0)$ với $f'(x_0)$.
+
+=== C3.2.1   (dạng "Viết tiếp tuyến tại điểm hoặc biết hệ số góc")
+@ly_thuyet:
+##TC Các cách đề cho tiếp điểm hoặc hệ số góc
+- Cho hoành độ $x_0$: tính ngay $y_0=f(x_0)$. Cho tung độ $y_0$: giải $f(x)=y_0$ (có thể có nhiều tiếp điểm).
+- Tiếp tuyến tại giao điểm với $Ox$ thì tiếp điểm có $y_0=0$; tại giao điểm với $Oy$ thì $x_0=0$.
+- Cho hệ số góc $k$ (trực tiếp, hoặc song song/vuông góc đường thẳng): giải $f'(x_0)=k$; song song với $y=ax+b$ thì $k=a$, vuông góc thì $k=-\dfrac{1}{a}$.
+- Hệ số góc tiếp tuyến lớn nhất (nhỏ nhất) là giá trị lớn nhất (nhỏ nhất) của $f'(x)$ theo $x$, đạt tại tiếp điểm.
+- Tiếp tuyến cắt hai trục tại $A\left(-\dfrac{b}{k};0\right)$ và $B(0;b)$ nên tạo với hai trục tam giác vuông có diện tích $\dfrac{1}{2}\cdot\dfrac{b^2}{|k|}$.
+
+##PP Tiếp tuyến theo tiếp điểm hoặc hệ số góc
+Từ điều kiện đề tìm các hoành độ tiếp điểm $x_0$ (giải $f(x_0)=y_0$ hoặc $f'(x_0)=k$ nếu cần).
+Với mỗi $x_0$, tính $y_0$ và $k=f'(x_0)$ rồi viết $y=k(x-x_0)+y_0$.
+Với "song song", so sánh hệ số tự do để loại tiếp tuyến trùng với đường thẳng đã cho.
+Đề hỏi hệ số góc lớn nhất: viết $f'(x)$ dưới dạng $-A(x-x_1)^2+B$ rồi suy ra giá trị lớn nhất và $x_0$ tương ứng.
+
+##CY
+- Với hàm phân thức $y'$ luôn cùng dấu với $ad-bc$: hệ số góc trái dấu thì không có tiếp tuyến.
+- Đường thẳng dạng $Ax+By+C=0$ phải đưa về $y=ax+b$ trước khi lấy hệ số góc.
+
+@vi_du:
+##VD
+Cho hàm số $y=\dfrac{x-2}{x+1}$ có đồ thị $(C)$. Viết phương trình tiếp tuyến của $(C)$:
+a) tại giao điểm của $(C)$ với trục hoành;
+b) song song với đường thẳng $d:3x-4y+8=0$.
+
+Bài giải:
+Tập xác định $\mathbb{R}\setminus\{-1\}$ và $y'=\dfrac{1\cdot1-(-2)\cdot1}{(x+1)^2}=\dfrac{3}{(x+1)^2}$.
+a) Giao với $Ox$: $y=0\Leftrightarrow x_0=2$. Hệ số góc $k=y'(2)=\dfrac{3}{9}=\dfrac{1}{3}$.
+Tiếp tuyến là $y=\dfrac{1}{3}(x-2)+0$, tức $y=\dfrac{1}{3}x-\dfrac{2}{3}$.
+b) Đường thẳng $d$ có dạng $y=\dfrac{3}{4}x+2$ nên tiếp tuyến có $k=\dfrac{3}{4}$.
+$\dfrac{3}{(x+1)^2}=\dfrac{3}{4}\Leftrightarrow(x+1)^2=4\Leftrightarrow x=1$ hoặc $x=-3$.
+Với $x_0=1$: $y_0=-\dfrac{1}{2}$, tiếp tuyến $y=\dfrac{3}{4}(x-1)-\dfrac{1}{2}=\dfrac{3}{4}x-\dfrac{5}{4}$.
+Với $x_0=-3$: $y_0=\dfrac{5}{2}$, tiếp tuyến $y=\dfrac{3}{4}(x+3)+\dfrac{5}{2}=\dfrac{3}{4}x+\dfrac{19}{4}$.
+Cả hai đều có hệ số tự do khác $2$ nên không trùng $d$.
+Vậy a) $y=\dfrac{1}{3}x-\dfrac{2}{3}$; b) $y=\dfrac{3}{4}x-\dfrac{5}{4}$ và $y=\dfrac{3}{4}x+\dfrac{19}{4}$.
+
+##VD
+Cho hàm số $y=-x^3+3x^2+4x-2$ có đồ thị $(C)$. Trong các tiếp tuyến của $(C)$, tiếp tuyến có hệ số góc lớn nhất là $\Delta$. Viết phương trình $\Delta$ và tính diện tích tam giác tạo bởi $\Delta$ với hai trục toạ độ.
+
+Bài giải:
+Ta có $y'=-3x^2+6x+4=-3(x-1)^2+7\le7$ nên hệ số góc lớn nhất là $k=7$, đạt tại $x_0=1$.
+Với $x_0=1$: $y_0=-1+3+4-2=4$. Tiếp tuyến $\Delta:y=7(x-1)+4$, tức $y=7x-3$.
+$\Delta$ cắt $Ox$ tại $A\left(\dfrac{3}{7};0\right)$ và cắt $Oy$ tại $B(0;-3)$.
+Tam giác $OAB$ vuông tại $O$ có diện tích $\dfrac{1}{2}\cdot\dfrac{3}{7}\cdot3=\dfrac{9}{14}$.
+Vậy $\Delta:y=7x-3$ và diện tích tam giác bằng $\dfrac{9}{14}$.
+
+=== C3.2.2   (dạng "Tiếp tuyến cắt hai tiệm cận của hàm nhất biến")
+@ly_thuyet:
+##TC Tiếp tuyến và hai tiệm cận của hàm nhất biến
+- Hàm $y=y_I+\dfrac{K}{x-x_I}$ ($K\ne0$) có tiệm cận đứng $x=x_I$, tiệm cận ngang $y=y_I$, giao điểm hai tiệm cận $I(x_I;y_I)$.
+- Tiếp tuyến tại $M\left(a;y_I+\dfrac{K}{a-x_I}\right)$ cắt tiệm cận đứng tại $A\left(x_I;y_I+\dfrac{2K}{a-x_I}\right)$ và cắt tiệm cận ngang tại $B(2a-x_I;y_I)$.
+- $M$ là trung điểm của $AB$; $IA=\dfrac{2|K|}{|a-x_I|}$, $IB=2|a-x_I|$.
+- Tam giác $IAB$ vuông tại $I$, diện tích $S=\dfrac{1}{2}IA\cdot IB=2|K|$ không đổi, $AB^2=IA^2+IB^2$.
+
+##PP Khai thác tiếp tuyến cắt hai tiệm cận
+Đưa hàm về dạng $y=y_I+\dfrac{K}{x-x_I}$, xác định hai tiệm cận và $I$.
+Gọi $M\left(a;y_I+\dfrac{K}{a-x_I}\right)$, viết tiếp tuyến tại $M$ và tìm $A$, $B$ (thay $x=x_I$ và $y=y_I$ vào tiếp tuyến).
+Tính $IA$, $IB$ theo $|a-x_I|$; kiểm tra trung điểm hoặc diện tích $\dfrac{1}{2}IA\cdot IB$.
+Đề cho điều kiện hoặc cực trị (như chu vi nhỏ nhất, $IA^2+IB^2=$ hằng số): đặt $t=|a-x_I|$, dùng Cô-si với hai số hạng có tích không đổi, nêu điều kiện dấu bằng và suy ra $a$.
+
+##CY
+- Tích $IA\cdot IB$ không đổi nên tổng $IA+IB$ và $AB$ cùng đạt nhỏ nhất tại $IA=IB$; kiểm tra dấu bằng xảy ra được.
+- Dấu bằng thường cho hai giá trị $a$ (đối xứng qua tâm $I$): hai điểm $M$.
+
+@vi_du:
+##VD
+Cho hàm số $y=\dfrac{2x-5}{x-3}$ có đồ thị $(C)$ và $M$ là điểm bất kì thuộc $(C)$. Tiếp tuyến của $(C)$ tại $M$ cắt tiệm cận đứng và tiệm cận ngang lần lượt tại $A$ và $B$; $I$ là giao điểm hai tiệm cận. Chứng minh $M$ là trung điểm của $AB$ và diện tích tam giác $IAB$ không đổi.
+
+Bài giải:
+Ta có $y=2+\dfrac{1}{x-3}$ nên tiệm cận đứng $x=3$, tiệm cận ngang $y=2$, $I(3;2)$ và $y'=-\dfrac{1}{(x-3)^2}$.
+Gọi $M\left(a;2+\dfrac{1}{a-3}\right)$ với $a\ne3$. Tiếp tuyến tại $M$: $y=-\dfrac{1}{(a-3)^2}(x-a)+2+\dfrac{1}{a-3}$.
+Cho $x=3$: $y=\dfrac{1}{a-3}+2+\dfrac{1}{a-3}=2+\dfrac{2}{a-3}$, nên $A\left(3;2+\dfrac{2}{a-3}\right)$.
+Cho $y=2$: $-\dfrac{x-a}{(a-3)^2}=-\dfrac{1}{a-3}$, suy ra $x=2a-3$, nên $B(2a-3;2)$.
+Trung điểm $AB$ có hoành độ $\dfrac{3+2a-3}{2}=a$ và tung độ $\dfrac{1}{2}\left(2+\dfrac{2}{a-3}+2\right)=2+\dfrac{1}{a-3}$, trùng với $M$.
+Ta có $IA=\dfrac{2}{|a-3|}$, $IB=|2a-6|=2|a-3|$. Tam giác $IAB$ vuông tại $I$ nên $S=\dfrac{1}{2}\cdot\dfrac{2}{|a-3|}\cdot2|a-3|=2$.
+Vậy $M$ luôn là trung điểm của $AB$ và diện tích tam giác $IAB$ luôn bằng $2$.
+
+##VD
+Cho hàm số $y=\dfrac{x+3}{x-1}$ có đồ thị $(C)$, $I$ là giao điểm hai tiệm cận. Tiếp tuyến của $(C)$ tại điểm $M$ cắt tiệm cận đứng và tiệm cận ngang lần lượt tại $A$, $B$. Biết chu vi tam giác $IAB$ nhỏ nhất bằng $a+\sqrt{b}$ với $a,b\in\mathbb{N}$. Tìm $a+b$ và toạ độ các điểm $M$ khi đó.
+
+Bài giải:
+Ta có $y=1+\dfrac{4}{x-1}$ nên $I(1;1)$ và $y'=-\dfrac{4}{(x-1)^2}$.
+Gọi $M\left(m;1+\dfrac{4}{m-1}\right)$ với $m\ne1$. Tiếp tuyến cắt $x=1$ tại $A\left(1;1+\dfrac{8}{m-1}\right)$ và cắt $y=1$ tại $B(2m-1;1)$.
+Đặt $t=|m-1|>0$: $IA=\dfrac{8}{t}$, $IB=2t$, $IA\cdot IB=16$, và $AB=\sqrt{IA^2+IB^2}$.
+Chu vi $IA+IB+AB$. Theo Cô-si, $IA+IB\ge2\sqrt{IA\cdot IB}=8$ và $AB^2=IA^2+IB^2\ge2\,IA\cdot IB=32$ nên $AB\ge4\sqrt{2}$.
+Hai dấu bằng cùng xảy ra khi $IA=IB$, tức $\dfrac{8}{t}=2t\Leftrightarrow t=2$. Chu vi nhỏ nhất bằng $8+4\sqrt{2}=8+\sqrt{32}$ nên $a=8$, $b=32$.
+$t=2$ cho $m-1=2$ hoặc $m-1=-2$, tức $m=3$ hoặc $m=-1$: $M(3;3)$ và $M(-1;-1)$.
+Vậy $a+b=40$, đạt tại $M(3;3)$ hoặc $M(-1;-1)$.
+
+=== N C3.3
+@ly_thuyet:
+##TC Tiệm cận và điểm di động trên đồ thị
+- Hàm $y=y_I+\dfrac{K}{x-x_I}$: tiệm cận đứng $x=x_I$, tiệm cận ngang $y=y_I$; hàm $y=ax+b+\dfrac{r}{x-x_I}$ ($a\ne0$, $r\ne0$): tiệm cận đứng $x=x_I$, tiệm cận xiên $y=ax+b$ (chia đa thức để tìm).
+- Điểm $M$ chạy trên đồ thị $y=f(x)$ có toạ độ $M(t;f(t))$, $t$ thuộc tập xác định (hoặc miền đề giới hạn).
+- Khoảng cách: $AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$; từ $M(x_0;y_0)$ đến $Ax+By+C=0$ là $\dfrac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}$.
+- Cô-si: với $a\ge0$, $b\ge0$ thì $a+b\ge2\sqrt{ab}$, dấu bằng khi $a=b$; nếu $ab$ không đổi thì $a+b$ có giá trị nhỏ nhất.
+
+##PP Hình học trên tiệm cận và điểm di động
+Chia đa thức để viết hàm dưới dạng tiệm cận cộng phần dư và xác định các tiệm cận.
+Đặt toạ độ điểm di động theo một ẩn (thuộc tập xác định) hoặc xác định các giao điểm của tiệm cận với trục.
+Lập biểu thức cần tính (khoảng cách, diện tích, góc) theo ẩn đó.
+Tìm giá trị nhỏ nhất bằng Cô-si khi có tích không đổi, hoặc khảo sát hàm một biến; nêu điều kiện dấu bằng rồi kết luận.
+
+##CY
+- Khoảng cách từ $M$ đến tiệm cận ngang $y=y_I$ là $|y_M-y_I|$, không phải $|y_M|$.
+- Cô-si chỉ dùng cho các số hạng không âm; phải chỉ ra dấu bằng xảy ra được thì mới kết luận giá trị nhỏ nhất.
+
+=== C3.3.1   (dạng "Khoảng cách nhỏ nhất từ điểm trên đồ thị")
+@ly_thuyet:
+##TC Khoảng cách từ điểm di động
+- Hàm $y=y_I+\dfrac{K}{x-x_I}$, điểm $M\left(x_I+u;\,y_I+\dfrac{K}{u}\right)$: khoảng cách tới tiệm cận đứng là $|u|$, tới tiệm cận ngang là $\dfrac{|K|}{|u|}$; tích hai khoảng cách bằng $|K|$ không đổi.
+- Tổng khoảng cách tới hai tiệm cận $|u|+\dfrac{|K|}{|u|}\ge2\sqrt{|K|}$, dấu bằng khi $|u|=\sqrt{|K|}$ (cho hai điểm $M$, đối xứng nhau qua $I$).
+- Hàm $y=ax+b+\dfrac{r}{x-x_I}$ có tiệm cận xiên: với $M\left(x_I+u;\,a(x_I+u)+b+\dfrac{r}{u}\right)$, khoảng cách tới tiệm cận đứng là $|u|$, tới tiệm cận xiên là $\dfrac{|r|}{|u|\sqrt{1+a^2}}$; tích hai khoảng cách bằng $\dfrac{|r|}{\sqrt{1+a^2}}$ không đổi.
+- Khoảng cách từ $M(t;f(t))$ đến đường thẳng $d:Ax+By+C=0$ là $\dfrac{|h(t)|}{\sqrt{A^2+B^2}}$ với $h(t)=At+Bf(t)+C$; giá trị nhỏ nhất tìm bằng bảng biến thiên của $h$ trên miền của $M$. Khi đồ thị nằm hẳn về một phía của $d$, điểm gần nhất (nếu không ở đầu mút) là tiếp điểm của tiếp tuyến song song với $d$.
+- Bài thực tế (bờ hồ, đảo, đường cong quỹ đạo và một con đường, bờ sông thẳng): bờ cong là một phần đồ thị, con đường là đường thẳng $d$; cây cầu hay đường ống ngắn nhất bằng khoảng cách nhỏ nhất từ điểm trên phần đồ thị đó tới $d$, nhân đơn vị trục để đổi ra mét.
+- Khoảng cách tới một điểm $I$ cố định: xét $MI^2$ theo ẩn; với hàm phân thức và $I$ là giao điểm hai tiệm cận, $MI^2$ thường có dạng $\alpha u^2+\dfrac{\beta}{u^2}+\gamma$ ($\alpha,\beta>0$), dùng Cô-si cho hai số hạng đầu.
+
+##PP Tìm điểm trên đồ thị làm khoảng cách nhỏ nhất
+Đặt $M$ theo một ẩn ($u$ hoặc $t$), ghi miền của ẩn (đề giới hạn nhánh hoặc đoạn thì dùng miền đó).
+Viết khoảng cần tìm (tới tiệm cận, tới đường thẳng; với khoảng cách tới điểm thì dùng bình phương).
+Hai số hạng có tích không đổi thì Cô-si; ngược lại tính đạo hàm, lập bảng biến thiên trên miền của ẩn, so với các giá trị đầu mút.
+Chỉ ra ẩn khi dấu bằng (hoặc cực tiểu) xảy ra, suy ra toạ độ $M$ và tính giá trị đề hỏi.
+
+##CY
+- Bỏ dấu giá trị tuyệt đối trong khoảng cách đến đường thẳng: kiểm tra $h(t)$ giữ nguyên dấu trên miền; nếu không thì xét từng khoảng.
+- Đề giới hạn miền của $M$ thì giá trị nhỏ nhất có thể ở đầu mút; phải so sánh với giá trị cực tiểu.
+
+@vi_du:
+##VD
+Cho hàm số $y=\dfrac{x+4}{x-2}$ có đồ thị $(C)$.
+a) Chứng minh tích các khoảng cách từ một điểm $M\in(C)$ bất kì đến hai đường tiệm cận là hằng số, và tính hằng số đó.
+b) Gọi $M_1(x_1;y_1)$, $M_2(x_2;y_2)$ là hai điểm thuộc $(C)$ có tổng khoảng cách đến hai đường tiệm cận nhỏ nhất. Tính $P=x_1x_2+y_1y_2$.
+
+Bài giải:
+Ta có $y=1+\dfrac{6}{x-2}$ nên tiệm cận đứng $x=2$, tiệm cận ngang $y=1$.
+Gọi $M\left(2+u;\,1+\dfrac{6}{u}\right)$ với $u\ne0$. Khoảng cách tới tiệm cận đứng là $|u|$, tới tiệm cận ngang là $\dfrac{6}{|u|}$.
+a) Tích hai khoảng cách bằng $|u|\cdot\dfrac{6}{|u|}=6$, không phụ thuộc $M$.
+b) Tổng hai khoảng cách $|u|+\dfrac{6}{|u|}\ge2\sqrt{6}$ (Cô-si), dấu bằng khi $|u|=\sqrt{6}$.
+Với $u=\sqrt{6}$: $M_1(2+\sqrt{6};\,1+\sqrt{6})$; với $u=-\sqrt{6}$: $M_2(2-\sqrt{6};\,1-\sqrt{6})$ (hai điểm này thuộc hai nhánh của $(C)$).
+$P=(2+\sqrt{6})(2-\sqrt{6})+(1+\sqrt{6})(1-\sqrt{6})=(4-6)+(1-6)=-7$.
+Vậy a) hằng số bằng $6$; b) $P=-7$.
+
+##VD
+Một hồ nước trong công viên, trong hệ trục toạ độ $Oxy$ (đơn vị mỗi trục là $100$ m), được giới hạn bởi hai trục toạ độ và phần đồ thị hàm số $f(x)=-x^3+3x+2$ ứng với $0\le x\le2$. Một con đường thẳng chạy dọc theo đường $d:3x+y-12=0$ (hình vẽ). Người ta muốn làm một đường ống thẳng nối từ một điểm $M$ trên bờ cong của hồ ra con đường sao cho đường ống ngắn nhất. Tìm toạ độ $M$ và độ dài ngắn nhất của đường ống (làm tròn đến hàng đơn vị của mét).
+[[HINH {"loai":"dothi","x":[-0.3,4.3],"y":[-1,13],"f":[{"e":"-x^3+3*x+2","x":[0,2],"ten":"bờ hồ"}],"duong":[{"xien":[-3,12],"ten":"d"}]}]]
+
+Bài giải:
+Gọi $M(t;\,-t^3+3t+2)$ với $0\le t\le2$. Khoảng cách từ $M$ đến $d$ là $\dfrac{|3t-t^3+3t+2-12|}{\sqrt{10}}=\dfrac{|h(t)|}{\sqrt{10}}$ với $h(t)=-t^3+6t-10$.
+$h'(t)=-3t^2+6=0\Leftrightarrow t=\sqrt{2}$ (thuộc $[0;2]$).
+$h(0)=-10$, $h(\sqrt{2})=-2\sqrt{2}+6\sqrt{2}-10=4\sqrt{2}-10$, $h(2)=-6$; giá trị lớn nhất của $h$ trên $[0;2]$ là $4\sqrt{2}-10<0$.
+Do đó $h(t)<0$ trên đoạn, $|h(t)|=-h(t)$ nhỏ nhất bằng $10-4\sqrt{2}$ tại $t=\sqrt{2}$ (đúng là điểm có tiếp tuyến song song với $d$: $f'(\sqrt{2})=-3$).
+Khoảng cách nhỏ nhất là $\dfrac{10-4\sqrt{2}}{\sqrt{10}}\approx1{,}3734$ đơn vị, tức khoảng $137$ m; khi đó $M\left(\sqrt{2};\,2+\sqrt{2}\right)$.
+Vậy đường ống ngắn nhất dài khoảng $137$ m, nối từ điểm $M\left(\sqrt{2};\,2+\sqrt{2}\right)$ trên bờ hồ.
+
+=== C3.3.2   (dạng "Diện tích, góc tạo bởi tiệm cận và trục toạ độ")
+@ly_thuyet:
+##TC Diện tích và góc của hình tạo bởi tiệm cận
+- Tiệm cận đứng $x=\alpha$, tiệm cận ngang $y=\beta$ cùng $Ox$, $Oy$ tạo hình chữ nhật có hai kích thước $|\alpha|$, $|\beta|$, diện tích $S=|\alpha\beta|$.
+- Tiệm cận xiên $y=kx+b$ ($k\ne0$, $b\ne0$) cắt $Ox$ tại $A\left(-\dfrac{b}{k};0\right)$ và cắt $Oy$ tại $B(0;b)$, tạo với hai trục tam giác vuông $OAB$ có $S=\dfrac{b^2}{2|k|}$.
+- Tiệm cận đứng $x=\alpha$, tiệm cận xiên $y=kx+b$ cùng $Oy$ và $Ox$ có thể tạo hình thang vuông: diện tích bằng tổng hai đáy (độ dài đoạn nằm trên $x=0$ và trên $x=\alpha$) nhân chiều cao $|\alpha|$ rồi chia $2$.
+- Góc giữa hai đường có hệ số góc $k_1$, $k_2$: $\tan\varphi=\left|\dfrac{k_1-k_2}{1+k_1k_2}\right|$; tiệm cận đứng và đường có hệ số góc $k\ne0$ tạo góc $\varphi$ với $\tan\varphi=\dfrac{1}{|k|}$. Tiệm cận đứng và tiệm cận ngang vuông góc.
+
+##PP Tìm tiệm cận rồi tính diện tích hoặc góc
+Chia đa thức, viết các tiệm cận (đứng, ngang hoặc xiên).
+Xác định giao điểm của chúng với nhau và với hai trục; vẽ phác để biết hình nào được tạo (hình chữ nhật, tam giác, hình thang).
+Tính độ dài các cạnh bằng giá trị tuyệt đối của toạ độ rồi áp dụng công thức diện tích.
+Đề hỏi góc: lấy hệ số góc (hoặc vectơ pháp tuyến) của hai tiệm cận, tính $\tan\varphi$ hoặc $\cos\varphi$, lấy góc trong khoảng từ $0^\circ$ đến $90^\circ$.
+
+##CY
+- Độ dài lấy giá trị tuyệt đối của toạ độ: $\alpha$ hay $\beta$ âm vẫn cho diện tích dương.
+- Hình thang vuông: chỉ cộng hai đáy song song với nhau (hai đoạn trên các đường $x=0$ và $x=\alpha$), đường cao là khoảng cách giữa chúng.
+
+@vi_du:
+##VD
+a) Hai đường tiệm cận của đồ thị hàm số $y=\dfrac{4x-1}{2x+6}$ cùng hai trục toạ độ tạo thành hình chữ nhật. Tính diện tích hình chữ nhật đó.
+b) Tiệm cận xiên của đồ thị hàm số $y=\dfrac{x^2+3x-1}{x-2}$ cắt $Ox$, $Oy$ tại $A$, $B$. Tính diện tích tam giác $OAB$.
+
+Bài giải:
+a) Đồ thị có tiệm cận đứng $x=-3$ và tiệm cận ngang $y=\dfrac{4}{2}=2$.
+Bốn đường $x=0$, $y=0$, $x=-3$, $y=2$ tạo hình chữ nhật có hai kích thước $3$ và $2$ nên diện tích bằng $6$.
+b) Chia đa thức: $x^2+3x-1=(x-2)(x+5)+9$ nên $y=x+5+\dfrac{9}{x-2}$, tiệm cận xiên là $y=x+5$.
+Tiệm cận xiên cắt $Ox$ tại $A(-5;0)$ và cắt $Oy$ tại $B(0;5)$.
+Tam giác $OAB$ vuông tại $O$ có $OA=OB=5$ nên $S=\dfrac{1}{2}\cdot5\cdot5=\dfrac{25}{2}$.
+Vậy a) diện tích bằng $6$; b) diện tích bằng $\dfrac{25}{2}$.
+
+##VD
+Cho hàm số $y=\dfrac{x^2-2x+3}{x-3}$ có đồ thị $(C)$.
+a) Hình thang tạo bởi tiệm cận đứng, tiệm cận xiên của $(C)$ và hai trục toạ độ (hình vẽ). Tính diện tích hình thang đó.
+[[HINH {"loai":"dothi","x":[-2,7],"y":[-4,10],"f":[{"e":"(x^2-2*x+3)/(x-3)","ten":"(C)"}],"duong":[{"dung":3,"ten":"x=3"},{"xien":[1,1],"ten":"y=x+1"}]}]]
+b) Cho hàm số $y=3x-1+\dfrac{4}{x+2}$. Hai đường tiệm cận của đồ thị hàm số này tạo với nhau một góc $\alpha$ ($0^\circ<\alpha\le90^\circ$). Tính $\tan\alpha$.
+
+Bài giải:
+a) Chia đa thức: $x^2-2x+3=(x-3)(x+1)+6$ nên $y=x+1+\dfrac{6}{x-3}$, tiệm cận đứng $x=3$, tiệm cận xiên $y=x+1$.
+Hình thang có bốn đỉnh $O(0;0)$, $(3;0)$, $(3;4)$ (giao của $x=3$ với $y=x+1$) và $(0;1)$ (giao của $y=x+1$ với $Oy$).
+Hai đáy song song với nhau nằm trên $x=0$ và $x=3$ có độ dài $1$ và $4$, chiều cao bằng $3$ nên $S=\dfrac{(1+4)\cdot3}{2}=\dfrac{15}{2}$.
+b) Hàm có tiệm cận đứng $x=-2$ và tiệm cận xiên $y=3x-1$ có hệ số góc $k=3$.
+Tiệm cận đứng tạo với đường có hệ số góc $3$ một góc $\alpha$ với $\tan\alpha=\dfrac{1}{3}$.
+Vậy diện tích hình thang bằng $\dfrac{15}{2}$ và $\tan\alpha=\dfrac{1}{3}$.
+
+## GHI CHÚ CHO CEO
+- Đã đọc: hồ sơ ba tác giả cho chương Hàm số (`hoso-nbv-5-6-7.md` mục 5.9–5.11, 6.10–6.12, TN/ĐS/TLN của 12-7; `hoso-tutam.md` Dạng 8 sự tương giao và K6–K8 hình học tiệm cận; `hoso-pnl-3-5.md` mục 3.1.h, 3.3.c, 3.4.a, 4.3.e–f) cùng bản v1 đã soát (`ra/J6.txt` mục H4.5.2–H4.5.4, `ra/J7.txt` H6.1, `ra/J8.txt` H6.2–H6.3); nguồn văn bản gốc `txt\nbv`, `txt\tutam`, `txt\pnl` ở máy này gần như rỗng (chỉ có 2 tệp PNL) nên không đọc được thêm chương sách gốc. Mọi ví dụ đều tự giải lại và thử bằng số (`soan/HS/thu-H.mjs`).
+- Trạm soát (03/11) đã đọc thêm sách gốc: PNL Bài 04 Dạng 04 (ứng dụng khảo sát vào bài thực tế: hồ, đảo, đường), NBV 12-6 A. Lý thuyết + F. Nâng cao (hàm hữu tỉ, khoảng cách tới tiệm cận), Từ Tâm C1-B4-P2 (tiếp tuyến, tổng khoảng cách tới tiệm cận).
+- C3.1.2: bảng ánh xạ xếp vào dạng này nhiều câu "giao điểm với hai trục" (vd tính $2a+3b$) — theo mô tả cây, loại câu đó thuộc C3.1.1, nên ví dụ 2 b) đã đổi sang "$y=m$ không cắt đồ thị phân thức" (cũng là câu đề thật của dạng). Nếu muốn các câu "giao với trục" ở lại C3.1.2 thì cần sửa mô tả một trong hai dạng.
+- C3.1.3: đề thật chỉ hỏi tính $y_1+y_2$, $MN$, $OM$, giới hạn hoành độ giao điểm — không có câu tìm tham số; đã bỏ ví dụ "tìm $m$ để trung điểm thuộc đường thẳng" và phần trung điểm/$x_1^2+x_2^2$ trong lý thuyết, thay bằng ví dụ $y_1+y_2$ + giới hạn $a_n$.
+- C3.3.1: phần lớn câu đề thi là bài thực tế (hồ, sông, đảo, quỹ đạo); ví dụ 2 đã đổi thành bài hồ nước – con đường (có hình), đáp số làm tròn ra mét như đề thật.
+- C3.3.2: ví dụ 2 b) dùng công thức $\tan\varphi=1/|k|$ cho góc giữa tiệm cận đứng và tiệm cận xiên; không dùng điểm uốn hay đạo hàm cấp hai.
+- Dạng C3.2.2 chỉ có 2 câu đề thi (cả hai mức VDC: $IA^2+IB^2$ cho trước, chu vi nhỏ nhất); ví dụ 2 theo kiểu chu vi nhỏ nhất, ví dụ 1 là tính chất nền (trung điểm, diện tích không đổi) mà cả hai câu đề đều dùng.

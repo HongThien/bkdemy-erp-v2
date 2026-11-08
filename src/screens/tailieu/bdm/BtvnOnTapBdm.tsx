@@ -8,6 +8,13 @@ import { fetchCausCuaTaiLieu, renumberBuoiLop, DEFAULT_BTVN_LINES, type TaiLieuN
 import type { CauHoi } from '../../../lib/kho/api'
 import { useStore } from '../../../store/useStore'
 import { cauItemParts, CauFlow, CHROME_CSS } from '../PrintView'
+import { KhoiCau, type CfgCau } from './BuilderBanDoMoi'
+import ChonCauBdm from './ChonCauBdm'
+
+// Ôn tập KHÔNG lưu cấu hình in theo câu (dòng/cột/chế độ hình) — KhoiCau chạy chế độ `gon`, cfg chỉ để đủ kiểu.
+const CFG_TRONG: CfgCau = { lines: {}, cols: {}, cheDo: {}, onLine: () => {}, onLineAll: () => {}, onCol: () => {}, onCheDo: () => {} }
+// Mặc định đề xuất SO_CAU_ON_TAP (2) câu / nhóm; GV đổi số theo loại + Gợi ý lại, hoặc ✎ Chọn câu / ✕ như builder.
+const SO_ON_TAP_MAC_DINH: Record<string, number> = { trac_nghiem: SO_CAU_ON_TAP, tra_loi_ngan: 0, tu_luan: 0 }
 
 export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, tenLop, ngay, khoi, onClose, onDone }: {
   tl: TaiLieuNhanhCtx; masterId: string; buoiId: string; tenBuoi: string; lopId: string; tenLop: string; ngay: string; khoi: string
@@ -20,6 +27,7 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
   const [gv, setGv] = useState(false)
   const [busy, setBusy] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
+  const [chonCau, setChonCau] = useState<string | null>(null) // nhóm đang mở hộp "✎ Chọn câu"
 
   async function napCau(ms: string[]) {
     const can = ms.filter((m) => !cauMap.has(m))
@@ -54,20 +62,26 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
     await napCau(ds)
     return ds
   }
-  async function doiCau(nhom: string) {
+  // "↻ Gợi ý" theo số câu từng loại GV đặt (như builder): lấy câu ÍT DÙNG NHẤT, né câu của buổi + câu đang có ở nhóm này (để ra bộ khác).
+  async function goiYLai(nhom: string, so: Record<string, number>) {
     setLoi(null)
     try {
       const cu = chon.find((c) => c.nhom === nhom)?.caus ?? []
-      const ds = await goiY(nhom, null, { _tong: SO_CAU_ON_TAP }, [...tru(nhom), ...cu])
+      const ds = await goiY(nhom, null, so, [...tru(nhom), ...cu])
       await napCau(ds)
       setChon((s) => s.map((c) => c.nhom === nhom ? { ...c, caus: ds.length ? ds : c.caus } : c))
-      if (!ds.length) setLoi('Nhóm này hết câu khác để đổi.')
+      if (!ds.length) setLoi('Nhóm này hết câu khác để gợi ý.')
     } catch (e) { setLoi(loiDoc(e)) }
+  }
+  const xoaCau = (nhom: string, m: string) => setChon((s) => s.map((c) => c.nhom === nhom ? { ...c, caus: c.caus.filter((x) => x !== m) } : c))
+  async function datCau(nhom: string, ms: string[]) {
+    await napCau(ms)
+    setChon((s) => s.map((c) => c.nhom === nhom ? { ...c, caus: ms } : c))
   }
   async function xacNhan() {
     setBusy(true); setLoi(null)
     try {
-      const doc = await trichBuoiBdm(masterId, buoiId, { lopId, ngay, khoi, tenLop, tenBuoi, loai: 'btvn', onTap: chon.map((c) => ({ nhom: c.nhom, caus: c.caus })) })
+      const doc = await trichBuoiBdm(masterId, buoiId, { lopId, ngay, khoi, tenLop, tenBuoi, loai: 'btvn', onTap: chon.filter((c) => c.caus.length > 0).map((c) => ({ nhom: c.nhom, caus: c.caus })) })
       useStore.getState().enqueueLinkGen(doc.id, doc.loai)
       for (const d of await renumberBuoiLop(lopId)) useStore.getState().enqueueLinkGen(d.id, d.loai)
       onDone()
@@ -95,7 +109,7 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
       <div className="grid min-h-0 flex-1 grid-cols-2 overflow-hidden">
         <div className="min-h-0 overflow-auto border-r border-slate-200 bg-[#fafafb] p-5">
           <div className="mb-2 text-[12px] font-semibold uppercase tracking-wide text-slate-500">Ôn tập · chọn tối đa {CAP_NHOM_ON_TAP} nhóm đã học ở buổi trước</div>
-          <p className="mb-3 text-[12px] text-slate-400">Chưa xếp theo mức nắm của lớp (bản đồ mới chưa có số đo theo nhóm) — GV tự chọn. Không chọn = phiếu không có ôn tập.</p>
+          <p className="mb-3 text-[12px] text-slate-400">Chưa xếp theo mức nắm của lớp — GV tự chọn nhóm. Mỗi nhóm máy đề xuất {SO_CAU_ON_TAP} câu (đổi số câu từng loại + ↻ Gợi ý, hoặc ✎ Chọn câu / ✕ như giáo trình). Không chọn = phiếu không có ôn tập.</p>
           {ungVien.length === 0
             ? <div className="rounded-lg border border-dashed border-slate-300 p-4 text-center text-[12px] italic text-slate-400">Không có nhóm nào ở các buổi trước (hoặc đều đã học lại ở buổi này).</div>
             : <div className="space-y-1.5">
@@ -109,9 +123,11 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
                       <span className="shrink-0 text-[11px] text-slate-400">{u.buoi}</span>
                     </label>
                     {c && (
-                      <div className="mt-1.5 flex items-center gap-2 pl-6 text-[11.5px] text-slate-500">
-                        <span>{c.caus.length} câu: {c.caus.join(', ')}</span>
-                        <button onClick={() => doiCau(u.nhom)} className="ml-auto rounded border border-slate-200 px-1.5 py-0.5 text-[11px] text-indigo-600 hover:border-indigo-300">↻ Đổi câu</button>
+                      <div className="mt-1.5 rounded-md border border-violet-100 bg-violet-50/30">
+                        <KhoiCau tieuDe={`Ôn tập · ${c.caus.length} câu`} mau="sky" gon caus={c.caus} cauMap={cauMap} cfg={CFG_TRONG} chiXem={false} soMacDinh={SO_ON_TAP_MAC_DINH}
+                          onXoa={(m) => xoaCau(u.nhom, m)}
+                          onGoiY={(so) => goiYLai(u.nhom, so)}
+                          onChonCau={() => setChonCau(u.nhom)} />
                       </div>
                     )}
                   </div>
@@ -155,6 +171,15 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
           </div>
         </div>
       </div>
+      {chonCau && (() => {
+        const hien = chon.find((c) => c.nhom === chonCau)
+        return hien ? (
+          <ChonCauBdm tl={tl} nhomId={chonCau} uuTien={null} selected={hien.caus} coKhoLop={false} macDinh="luyen"
+            khoa={tru(chonCau).filter((m) => !hien.caus.includes(m))}
+            onClose={() => setChonCau(null)}
+            onConfirm={async (ms) => { await datCau(chonCau, ms); setChonCau(null) }} />
+        ) : null
+      })()}
       <div className="flex items-center justify-end gap-2 border-t border-slate-200 px-5 py-3">
         {loi && <span className="mr-auto text-[12.5px] text-rose-600">⚠ {loi}</span>}
         <button onClick={onClose} disabled={busy} className="rounded-lg border border-slate-300 px-4 py-2 text-sm text-slate-600 disabled:opacity-40">Huỷ</button>

@@ -1,0 +1,338 @@
+[
+ {
+  "ma_cau": "HHC008225",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng (OMN) song song (SBC) qua OM, MN",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC008238",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng song song với mặt bên (AA'B'B) hình hộp",
+  "can_cu": "Sáu mặt đều là hình bình hành, các mặt đối diện song song và bằng nhau."
+ },
+ {
+  "ma_cau": "HHC008239",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng (OMN) song song (SBC) trong hình chóp",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC008250",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng (AB1D1) song song (BC1D) trong hình hộp",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC008252",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Chứng minh MN song song (ABC), rồi giao điểm AB với (MNP)",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC008258",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Khẳng định đúng về mặt phẳng song song, bắc cầu",
+  "can_cu": "Hai mặt phẳng phân biệt cùng song song với mặt phẳng thứ ba thì song song với nhau."
+ },
+ {
+  "ma_cau": "HHC008259",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Khẳng định sai về cạnh đáy, mặt bên hình lăng trụ",
+  "can_cu": "nhận biết và vận dụng tính chất của hình lăng trụ, hình hộp"
+ },
+ {
+  "ma_cau": "HHC008260",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Khẳng định đúng về hình hộp, hình bình hành AB'C'D",
+  "can_cu": "Sáu mặt đều là hình bình hành, các mặt đối diện song song và bằng nhau."
+ },
+ {
+  "ma_cau": "HHC008271",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng (ACB1) song song (A1C1D) trong hình hộp",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC008273",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "a song song P, Q chứa a cắt P theo b thì a song song b",
+  "can_cu": "mọi mặt phẳng $(Q)$ chứa $d$ mà cắt $(P)$ đều cắt theo giao tuyến $a$ song song với $d$"
+ },
+ {
+  "ma_cau": "HHC008280",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Giao tuyến (SAD),(SBC) song song AD, BC qua S",
+  "can_cu": "giao tuyến là đường thẳng $Sx$ đi qua $S$ và song song với $AB$, $CD$"
+ },
+ {
+  "ma_cau": "HHC008282",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng song song đáy lồng đèn chắn cạnh bên, tính CC1",
+  "can_cu": "định lí Thales giữa các mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC008296",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Vị trí tương đối giữa a song song P và b nằm trong P",
+  "can_cu": "xét tính đúng sai của các mệnh đề về đường thẳng và mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC008297",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Khẳng định đúng về ba mặt phẳng phân biệt song song",
+  "can_cu": "Hai mặt phẳng phân biệt cùng song song với mặt phẳng thứ ba thì song song với nhau."
+ },
+ {
+  "ma_cau": "HHC008298",
+  "dang_bai_id": "HH00150",
+  "chac": "cao",
+  "ly_do": "Hình chiếu song song của tam giác đều không thể là một điểm",
+  "can_cu": "vận dụng các tính chất của phép chiếu song song"
+ },
+ {
+  "ma_cau": "HHC008301",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Ba mặt phẳng song song chắn hai đường chéo nhau, tính B2B3",
+  "can_cu": "định lí Thales giữa các mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC008302",
+  "dang_bai_id": "HH00148",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng (MNP) cắt lăng trụ, đếm số cạnh của thiết diện",
+  "can_cu": "yêu cầu xác định thiết diện"
+ },
+ {
+  "ma_cau": "HHC008310",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao tuyến (SMN),(SAC) qua S và tâm O, điểm chung",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC008311",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Giao tuyến qua G song song CD vì IJ song song CD",
+  "can_cu": "giao tuyến là đường thẳng $Sx$ đi qua $S$ và song song với $AB$, $CD$"
+ },
+ {
+  "ma_cau": "HHC008312",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng (AHC') song song đường CB' nhờ đường trung bình",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC008313",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng (AB'D') song song (BC'D) trong hình hộp",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC008322",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao tuyến (SAC),(SAD) có hai điểm chung S, A",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC008324",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng (IMN) song song (SAB) bằng tỉ lệ cạnh",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC008331",
+  "dang_bai_id": "HH00149",
+  "chac": "vua",
+  "ly_do": "Hộp chữ nhật không nắp, đếm giao tuyến các cặp mặt cắt nhau",
+  "can_cu": "Sáu mặt đều là hình bình hành, các mặt đối diện song song và bằng nhau."
+ },
+ {
+  "ma_cau": "HHC008332",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mâm giữa song song, Thales trên hai cát tuyến, tính GK",
+  "can_cu": "định lí Thales giữa các mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC008340",
+  "dang_bai_id": "HH00150",
+  "chac": "cao",
+  "ly_do": "Mệnh đề sai về phép chiếu song song, tam giác đều",
+  "can_cu": "Biến hai đường thẳng song song thành hai đường thẳng song song hoặc trùng nhau."
+ },
+ {
+  "ma_cau": "HHC008342",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Ý a chứng minh (AFD) song song (BEC), ý b tỉ số",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC008386",
+  "dang_bai_id": "HH00149",
+  "chac": "vua",
+  "ly_do": "Định nghĩa lăng trụ đứng, khái niệm về hình lăng trụ",
+  "can_cu": "nhận biết và vận dụng tính chất của hình lăng trụ, hình hộp"
+ },
+ {
+  "ma_cau": "HHC008616",
+  "dang_bai_id": "HH00149",
+  "chac": "vua",
+  "ly_do": "Phân biệt lăng trụ đứng, lăng trụ đều, hình lập phương",
+  "can_cu": "nhận biết và vận dụng tính chất của hình lăng trụ, hình hộp"
+ },
+ {
+  "ma_cau": "HHC009300",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Mệnh đề về mặt phẳng có điểm chung có đường thẳng chung",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC009302",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Mệnh đề sai về hai mặt phẳng có điểm chung",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC009313",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mệnh đề sai về đường thẳng và hai mặt phẳng song song",
+  "can_cu": "thì mọi đường thẳng nằm trong $(P)$ đều song song với $(Q)$."
+ },
+ {
+  "ma_cau": "HHC009314",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Giao tuyến hai mặt chứa AB, CD song song qua S",
+  "can_cu": "giao tuyến là đường thẳng $Sx$ đi qua $S$ và song song với $AB$, $CD$"
+ },
+ {
+  "ma_cau": "HHC009337",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Giao tuyến (SAD),(SBC) song song với AD, BC",
+  "can_cu": "giao tuyến là đường thẳng $Sx$ đi qua $S$ và song song với $AB$, $CD$"
+ },
+ {
+  "ma_cau": "HHC009338",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng (BC'D) song song (AB'D') trong hình hộp",
+  "can_cu": "chứng minh hai mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC009339",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao tuyến (ABC),(CDB) có hai điểm chung B, C",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC009341",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Tầng giữa song song, Thales hai cát tuyến, tính KG",
+  "can_cu": "định lí Thales giữa các mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC009348",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao tuyến hình thang đáy lớn qua S và giao điểm AD, BC",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC009351",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "Giao điểm P của (MNQ) với BC, tính tỉ số PC/PB",
+  "can_cu": "TÍNH tỉ số độ dài các đoạn thẳng thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC009352",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "Giao tuyến song song AB, CD rồi tính SQ/SC",
+  "can_cu": "TÍNH tỉ số độ dài các đoạn thẳng thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC009363",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao tuyến (SAB),(SCD) qua S và N=AB giao CD",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC009490",
+  "dang_bai_id": "HH00149",
+  "chac": "vua",
+  "ly_do": "Số mặt hình chữ nhật của lăng trụ tứ giác đều",
+  "can_cu": "Sáu mặt đều là hình bình hành, các mặt đối diện song song và bằng nhau."
+ },
+ {
+  "ma_cau": "HHC009906",
+  "dang_bai_id": "HH00149",
+  "chac": "vua",
+  "ly_do": "Tính chất lăng trụ đều, có nhắc góc mặt bên và đáy",
+  "can_cu": "nhận biết và vận dụng tính chất của hình lăng trụ, hình hộp"
+ },
+ {
+  "ma_cau": "HHC010457",
+  "dang_bai_id": "HH00149",
+  "chac": "vua",
+  "ly_do": "Phân loại lăng trụ đứng, hình hộp đứng, lăng trụ đều",
+  "can_cu": "nhận biết và vận dụng tính chất của hình lăng trụ, hình hộp"
+ },
+ {
+  "ma_cau": "HHC010512",
+  "dang_bai_id": "HH00149",
+  "chac": "vua",
+  "ly_do": "Tính chất lăng trụ tam giác đều, có nhắc vuông góc",
+  "can_cu": "nhận biết và vận dụng tính chất của hình lăng trụ, hình hộp"
+ },
+ {
+  "ma_cau": "HHC010637",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Tìm mệnh đề đúng: hình lập phương, hình hộp, lăng trụ đều",
+  "can_cu": "Sáu mặt đều là hình bình hành, các mặt đối diện song song và bằng nhau."
+ },
+ {
+  "ma_cau": "HHC010657",
+  "dang_bai_id": "HH00149",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng qua C song song đáy, tỉ lệ trên khối gỗ",
+  "can_cu": "định lí Thales giữa các mặt phẳng song song"
+ },
+ {
+  "ma_cau": "HHC010695",
+  "dang_bai_id": "HH00150",
+  "chac": "cao",
+  "ly_do": "Bóng của trọng tâm qua phép chiếu song song bảo toàn tỉ số",
+  "can_cu": "Hệ quả: trung điểm biến thành trung điểm, trọng tâm tam giác biến thành trọng tâm tam giác ảnh."
+ }
+]

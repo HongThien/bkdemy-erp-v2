@@ -20,8 +20,11 @@ export type MoHinh = {
   // CÂY NHÁNH (spec-hinh-cay-nhanh.md, mig 202610140048). `neo_baitoan_id` = bài mẹ nơi nhánh rẽ ra (null = gốc cây /
   // mô hình con kiểu cũ); cha của nhánh SUY từ neo, không lưu. `la_mo_hinh=false` = nhánh inline.
   neo_baitoan_id?: string | null; la_mo_hinh?: boolean; chu_de_id?: string | null; thu_tu?: number | null
+  // NHÓM MÔ HÌNH (mig 202610181651, Thùy 18/10): mô hình gốc luyện thuộc 1 nhóm trong chủ đề; null = nhánh / mô hình cũ / chưa xếp
+  nhom_mh_id?: string | null
 }
-export type CanhMoHinh = { mo_hinh_id: string; cha_id: string }
+// Cạnh giả thiết cha → con. `chinh` (mig 202610221743): nhánh CHÍNH đi thẳng tiếp giả thiết cha (≤1/cha), còn lại là nhánh PHỤ.
+export type CanhMoHinh = { mo_hinh_id: string; cha_id: string; chinh?: boolean }
 export type BaiToan = {
   id: string; mon: string; ma: string; phat_bieu: string
   mo_hinh_id: string; cap: number
@@ -52,8 +55,8 @@ export type CachGiai = {
   // Nhãn nguồn/duyệt (mig 0044/202609041826): dùng cho luật "lời giải Claude phải duyệt" — xem loiGiaiDungDuoc.
   nguon_giai?: string | null; da_duyet?: boolean | null; giai_method?: string | null
 }
-export type DangHinh = { id: string; mon: string; ma: string; ten: string; cap: 'loai_ch' | 'dang'; cha_id: string | null; thu_tu: number; khoi: string | null }
-export type BoDe = { id: string; mon: string; ma: string; ten: string; phat_bieu: string | null; thu_tu: number; khoi: string | null }
+export type DangHinh = { id: string; mon: string; ma: string; ten: string; cap: 'loai_ch' | 'dang'; cha_id: string | null; thu_tu: number; khoi: string | null; mo_ta?: string }
+export type BoDe = { id: string; mon: string; ma: string; ten: string; phat_bieu: string | null; thu_tu: number; khoi: string | null; mo_ta?: string }
 export type Bai = {
   id: string; mon: string; ma_bai: string; de_bai: string; anh_de: string
   nguon: string | null; khoi: string | null; trang_thai: 'tam' | 'chinh'
@@ -346,6 +349,21 @@ export function mucDoCua(L: Luoi, baiToanId: string): number | null {
   return mucDoTuCap(bt.cap, !!c && boDeCuaCach(L, c.id).length > 0)
 }
 
+/** Thứ tự các ý được hỏi: GIỮ thứ tự người chọn (popup chọn xếp theo số B = đúng thứ tự chip trên hàng Hình), chỉ đẩy ý lên
+ *  sau tiền đề của nó (ý tick là tiền đề của ý tick khác ⇒ phải đứng trước). Trước đây sort cap↑ ⇒ lệch chip (B12 cap 3 đứng sau B24 cap 2). */
+function thuTuYTick(L: Luoi, tickIds: string[]): BaiToan[] {
+  const ds = tickIds.map((id) => L.baiToan.find((b) => b.id === id)).filter(Boolean) as BaiToan[]
+  const set = new Set(ds.map((b) => b.id))
+  const tienDeTick = new Map(ds.map((b) => [b.id, [...baoDongTienDe(L, b.id).keys()].filter((x) => set.has(x) && x !== b.id)]))
+  const out: BaiToan[] = []; const xong = new Set<string>(); const con = [...ds]
+  while (con.length) {
+    const i = con.findIndex((b) => (tienDeTick.get(b.id) ?? []).every((x) => xong.has(x)))
+    const [b] = con.splice(i < 0 ? 0 : i, 1)   // vòng (không xảy ra với DAG) ⇒ lấy tiếp theo thứ tự chọn
+    out.push(b); xong.add(b.id)
+  }
+  return out
+}
+
 /** Bao đóng tiền đề trên snapshot (theo cách mặc định) — id → số bước lùi tối thiểu. */
 export function baoDongTienDe(L: Luoi, goc: string): Map<string, number> {
   const ra = new Map<string, number>()
@@ -405,7 +423,7 @@ export type YKhung = { node: BaiToan; buocNodes: BaiToan[]; gtPhuKeo: string[] }
 export function noDapAn(L: Luoi, tickIds: string[]): YKhung[] {
   const tick = new Set(tickIds)
   const bt = (id: string) => L.baiToan.find((b) => b.id === id)
-  const ticks = (tickIds.map(bt).filter(Boolean) as BaiToan[]).sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma))
+  const ticks = thuTuYTick(L, tickIds)
   const emitted = new Set<string>()   // node ẩn đã nở ở ý trước ⇒ không nở lại (hiện 1 lần)
   const gom = (goc: string, next: (id: string) => string[], stop: (id: string) => boolean): BaiToan[] => {
     const out: BaiToan[] = []; const seen = new Set<string>(); const stack = [...next(goc)]
@@ -441,7 +459,7 @@ export function noDapAnLua(L: Luoi, bienThes: BienThe[], tickIds: string[]): YKh
     return v ? (v.tien_de_ids.map(nodeOfVar).filter(Boolean) as string[]) : []
   }
   const tick = new Set(tickIds)
-  const ticks = (tickIds.map(bt).filter(Boolean) as BaiToan[]).sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma))
+  const ticks = thuTuYTick(L, tickIds)
   const emitted = new Set<string>()
   const gom = (goc: string, next: (id: string) => string[], stop: (id: string) => boolean): BaiToan[] => {
     const out: BaiToan[] = []; const seen = new Set<string>(); const stack = [...next(goc)]
@@ -666,7 +684,7 @@ export async function createDang(input: { ten: string; cap: 'loai_ch' | 'dang'; 
   if (error) throw error
   return data as DangHinh
 }
-export async function updateDang(id: string, patch: { ten?: string; thu_tu?: number; cha_id?: string | null }): Promise<void> {
+export async function updateDang(id: string, patch: { ten?: string; thu_tu?: number; cha_id?: string | null; mo_ta?: string }): Promise<void> {
   const { error } = await supabase.from('hinh_dang').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id)
   if (error) throw error
 }
@@ -691,7 +709,7 @@ export async function createBoDe(input: { ten: string; phat_bieu?: string | null
   if (error) throw error
   return data as BoDe
 }
-export async function updateBoDe(id: string, patch: { ten?: string; phat_bieu?: string | null; thu_tu?: number }): Promise<void> {
+export async function updateBoDe(id: string, patch: { ten?: string; phat_bieu?: string | null; thu_tu?: number; mo_ta?: string }): Promise<void> {
   const { error } = await supabase.from('hinh_bo_de').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id)
   if (error) throw error
 }
@@ -1251,3 +1269,29 @@ export async function duyetLoiGiaiCachGiai(id: string, nguoiDuyet: string): Prom
   const { error } = await supabase.from('hinh_cach_giai').update({ da_duyet: true, duyet_boi: nguoiDuyet, duyet_at: new Date().toISOString() }).eq('id', id)
   if (error) throw error
 }
+
+// ══════════════════ VÍ DỤ của DẠNG / BỔ ĐỀ (mig 202610191656, Thùy 19/10) ══════════════════
+// Cùng khuôn *_ly_thuyet (shape LyThuyetApi) để dùng chung LyThuyetModal — dạng/bổ đề có đủ Mô tả · Lý thuyết · Ví dụ như Đại.
+function apiViDu(bang: 'hinh_dang_vi_du' | 'hinh_bo_de_vi_du', khoa: 'dang_id' | 'bo_de_id') {
+  type ND = { noi_dung: string; file_url: string | null; ten_file: string | null; cap_nhat_at?: string }
+  return {
+    async list(): Promise<Record<string, ND>> {
+      const { data, error } = await supabase.from(bang).select('*').limit(LIMIT)
+      if (error) throw error
+      const m: Record<string, ND> = {}
+      for (const r of (data ?? []) as any[]) m[r[khoa]] = { noi_dung: r.noi_dung ?? '', file_url: r.file_url, ten_file: r.ten_file, cap_nhat_at: r.cap_nhat_at }
+      return m
+    },
+    async upsert(id: string, noiDung: string, fileUrl: string | null, tenFile: string | null): Promise<void> {
+      const { error } = await supabase.from(bang)
+        .upsert({ [khoa]: id, noi_dung: noiDung, file_url: fileUrl, ten_file: tenFile, cap_nhat_at: new Date().toISOString() }, { onConflict: khoa })
+      if (error) throw error
+    },
+    async remove(id: string): Promise<void> {
+      const { error } = await supabase.from(bang).delete().eq(khoa, id)
+      if (error) throw error
+    },
+  }
+}
+export const hinhDangViDu = apiViDu('hinh_dang_vi_du', 'dang_id')
+export const hinhBoDeViDu = apiViDu('hinh_bo_de_vi_du', 'bo_de_id')

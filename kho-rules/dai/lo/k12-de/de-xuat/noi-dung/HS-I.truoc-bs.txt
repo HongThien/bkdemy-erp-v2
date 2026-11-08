@@ -1,0 +1,358 @@
+=== N C4.1   (nhóm "Hàm mô hình cho sẵn")
+@ly_thuyet:
+##TC Hàm mô hình và miền thực tế của biến
+- Đề cho sẵn công thức $y=f(x)$ (hoặc $f(t)$) mô tả một đại lượng thực tế: nồng độ, lợi nhuận, chi phí, độ cao, số lượng… Biến có nghĩa thực tế nên **miền của bài toán** thường hẹp hơn tập xác định của công thức: thời gian $t\ge0$, số lượng $x\ge0$, và đề thường ghi sẵn đoạn $[a;b]$.
+- Nếu $f'>0$ trên một khoảng thì đại lượng **tăng** trong khoảng đó; nếu $f'<0$ thì **giảm**. Điểm $f'$ đổi dấu từ $+$ sang $-$ là lúc đại lượng chuyển từ tăng sang giảm.
+- GTLN, GTNN trên đoạn $[a;b]$: so sánh giá trị của $f$ tại các nghiệm của $f'=0$ thuộc $[a;b]$ và tại hai đầu mút.
+- Trên khoảng hoặc nửa khoảng (như $t\ge0$): lập bảng biến thiên rồi đọc giá trị lớn nhất, nhỏ nhất.
+
+##PP Giải bài toán mô hình cho sẵn
+Đọc đề, xác định biến, đơn vị, **miền thực tế** của biến và điều đề hỏi: giá trị của biến (thời điểm, số lượng) hay giá trị của đại lượng.
+Đổi câu hỏi thành việc toán: "lớn nhất, nhỏ nhất" là tìm GTLN, GTNN; "tăng, giảm" là xét dấu $f'$; "không vượt mức, có lãi" là giải bất phương trình; "về lâu dài" là tính giới hạn khi biến dần tới $+\infty$.
+Giải việc toán đó và chỉ giữ các kết quả thuộc miền thực tế.
+Kết luận bằng ngữ cảnh, kèm đơn vị; làm tròn đúng theo yêu cầu của đề ở bước cuối cùng, không làm tròn giữa chừng.
+
+##CY
+- Nghiệm (của $f'=0$ hay của bất phương trình) nằm ngoài miền thực tế (âm, vượt giới hạn) thì phải loại, không được kết luận ngay.
+- Phân biệt "thời điểm đạt lớn nhất" ($t$) với "giá trị lớn nhất" ($f(t)$); trả lời đúng điều đề hỏi.
+
+=== C4.1.1   (dạng "Tìm GTLN, GTNN của hàm mô hình cho sẵn" — mô tả: Đề cho sẵn công thức mô hình (nồng độ, lợi nhuận, chi phí…) và miền thực tế; tìm giá trị lớn nhất/nhỏ nhất hoặc thời điểm đạt.)
+@ly_thuyet:
+##TC Dạng câu hay gặp
+- Đề hỏi một trong ba điều: **thời điểm** (hoặc số lượng) để đại lượng lớn nhất; **giá trị** lớn nhất; hoặc cả hai. Ví dụ: "sau bao nhiêu giây số vi khuẩn lớn nhất", "liều thuốc để huyết áp giảm nhiều nhất", "doanh thu lớn nhất".
+- Hàm thường gặp là đa thức bậc ba, ví dụ $N(t)=a+bt^2-t^3$ hay $G(x)=kx^2(m-x)$, đạo hàm là tam thức bậc hai nên phân tích thành nhân tử được; cũng gặp phân thức như $C(t)=\dfrac{3t}{27+t^3}$ (xét dấu tử của đạo hàm).
+
+##PP Tìm GTLN, GTNN của hàm mô hình
+Ghi rõ miền của biến theo đề rồi tính $f'$ và phân tích thành nhân tử.
+Giải $f'=0$, loại nghiệm ngoài miền; miền là đoạn thì tính $f$ tại nghiệm còn lại và tại hai đầu mút, miền là khoảng hoặc nửa khoảng thì lập bảng biến thiên.
+Chọn giá trị lớn nhất, nhỏ nhất; đề hỏi gì thì trả lời đúng cái đó (biến hay đại lượng).
+
+##CY
+- Chỉ cần lấy nghiệm của $f'=0$ thuộc miền, không lấy nghiệm của $f=0$.
+- Giá trị cực đại (cực tiểu) bên trong miền chưa chắc là giá trị lớn nhất (nhỏ nhất): vẫn phải so với hai đầu mút.
+
+@vi_du:
+##VD
+Một loại vi khuẩn được nuôi cấy trong phòng thí nghiệm. Sau $t$ giờ, số vi khuẩn (con) được xác định bởi công thức $N(t)=2000+24t^2-t^3$ với $0\le t\le24$. Hỏi sau bao nhiêu giờ thì số vi khuẩn lớn nhất, và khi đó có bao nhiêu con?
+
+Bài giải:
+Hàm số $N(t)=2000+24t^2-t^3$ xác định trên $[0;24]$ và $N'(t)=48t-3t^2=3t(16-t)$.
+$N'(t)=0\Leftrightarrow t=0$ hoặc $t=16$, cả hai đều thuộc $[0;24]$.
+Tính $N(0)=2000$, $N(16)=2000+24\cdot256-4096=4048$, $N(24)=2000+24\cdot576-13824=2000$.
+So sánh ba giá trị, lớn nhất là $4048$ tại $t=16$.
+Vậy sau $16$ giờ thì số vi khuẩn lớn nhất, bằng $4048$ con.
+
+##VD
+Số lượt truy cập (đơn vị: trăm lượt) vào một trang web trong $t$ giờ đầu tiên kể từ lúc $0$ giờ được mô hình hoá bởi $P(t)=t^3-9t^2+24t+10$ với $0\le t\le6$. Tìm số lượt truy cập lớn nhất, nhỏ nhất trong $6$ giờ đầu và thời điểm đạt được.
+
+Bài giải:
+Hàm $P$ xác định trên $[0;6]$ và $P'(t)=3t^2-18t+24=3(t-2)(t-4)$.
+$P'(t)=0\Leftrightarrow t=2$ hoặc $t=4$, cả hai thuộc $[0;6]$.
+Tính $P(0)=10$, $P(2)=8-36+48+10=30$, $P(4)=64-144+96+10=26$, $P(6)=216-324+144+10=46$.
+So sánh bốn giá trị: lớn nhất là $46$ tại $t=6$, nhỏ nhất là $10$ tại $t=0$; giá trị cực đại $30$ tại $t=2$ không phải giá trị lớn nhất.
+Vậy trong $6$ giờ đầu, lượt truy cập lớn nhất là $4600$ lượt (lúc $6$ giờ) và nhỏ nhất là $1000$ lượt (lúc $0$ giờ).
+
+=== C4.1.2   (dạng "Tìm tham số của mô hình từ điều kiện" — mô tả: Mô hình có hệ số chưa biết; dùng giá trị cho trước, điều kiện đầu hoặc điều kiện cực trị để lập hệ tìm hệ số rồi tính tiếp.)
+@ly_thuyet:
+##TC Đổi điều kiện của đề thành phương trình
+- Đồ thị đi qua điểm $A(x_0;y_0)$, hoặc "tại thời điểm $x_0$ giá trị là $y_0$", cho phương trình $f(x_0)=y_0$. "Lúc ban đầu" hay "lúc xuất phát" là $t=0$.
+- Hàm đạt cực trị tại $x_0$ thì $f'(x_0)=0$. Nếu đề cho cả giá trị cực trị $y_0$ thì có thêm $f(x_0)=y_0$.
+- Hàm bậc ba $h(t)=at^3+bt^2+ct+d$ có $h'(t)=3at^2+2bt+c$; đồ thị qua gốc toạ độ thì $d=0$.
+- Hàm dạng $C(x)=\dfrac{ax+b}{d-x}$ có hai hệ số cần tìm nên cần hai điều kiện (hai giá trị cho trước).
+- Số phương trình lập được phải bằng số hệ số chưa biết.
+- Mô hình chứa tham số $m$ và đề yêu cầu đại lượng **tăng (giảm) liên tục** trên khoảng $K$: cần $K$ nằm trong miền xác định của hàm và $f'(x)\ge0$ (hoặc $f'(x)\le0$) với mọi $x\in K$; giải ra điều kiện của $m$ rồi chọn các giá trị nguyên.
+
+##PP Tìm hệ số của mô hình
+Gọi hàm số với các hệ số chưa biết, nêu rõ miền của biến theo đề.
+Viết mỗi điều kiện của đề thành một phương trình (giá trị, điểm thuộc đồ thị, đạo hàm bằng $0$ tại điểm cực trị) hoặc một bất phương trình (tăng, giảm liên tục trên khoảng).
+Giải hệ để có các hệ số (hoặc điều kiện của $m$), rồi **kiểm tra lại**: tính $f'$ và xem điểm cực trị đúng là cực đại hay cực tiểu như đề nói, hoặc thử lại một điều kiện chưa dùng.
+Thay hệ số vào hàm và tính đại lượng đề yêu cầu (giá trị tại một thời điểm khác, chênh lệch hai mức…).
+
+##CY
+- Điều kiện cực trị chỉ cho $f'(x_0)=0$, chưa nói đó là cực đại hay cực tiểu: phải xét dấu $f'$ sau khi tìm được hệ số.
+- Bài tham số $m$: quên điều kiện khoảng $K$ nằm trong miền xác định (mẫu khác $0$) thì lấy thừa giá trị của $m$.
+
+@vi_du:
+##VD
+Chi phí (tỉ đồng) để loại bỏ $x\%$ chất ô nhiễm trong khí thải của một nhà máy được mô hình hoá bởi $C(x)=\dfrac{ax+b}{100-x}$ với $0\le x<100$. Biết chi phí khởi động hệ thống (ứng với $x=0$) là $0{,}1$ tỉ đồng và chi phí để loại bỏ $60\%$ chất ô nhiễm là $1{,}75$ tỉ đồng. Tìm $a$, $b$ rồi tính chi phí chênh lệch giữa việc loại bỏ $95\%$ và loại bỏ $90\%$ chất ô nhiễm.
+
+Bài giải:
+Từ $C(0)=0{,}1$ ta có $\dfrac{b}{100}=0{,}1$, suy ra $b=10$.
+Từ $C(60)=1{,}75$ ta có $\dfrac{60a+10}{40}=1{,}75$, suy ra $60a+10=70$, $a=1$.
+Do đó $C(x)=\dfrac{x+10}{100-x}$. Kiểm tra: $C'(x)=\dfrac{(100-x)+(x+10)}{(100-x)^2}=\dfrac{110}{(100-x)^2}>0$ nên chi phí tăng theo $x$, hợp với thực tế.
+Tính $C(90)=\dfrac{100}{10}=10$ và $C(95)=\dfrac{105}{5}=21$.
+Chi phí chênh lệch là $21-10=11$ tỉ đồng.
+Vậy $a=1$, $b=10$ và việc nâng mức loại bỏ từ $90\%$ lên $95\%$ tốn thêm $11$ tỉ đồng.
+
+##VD
+a) Trong $6$ phút đầu tiên kể từ khi xuất phát từ mặt đất, độ cao $h$ (mét) của một khinh khí cầu tại phút thứ $t$ được cho bởi $h(t)=at^3+bt^2+ct+d$ ($a\ne0$). Đồ thị của $h(t)$ như hình vẽ: đi qua gốc toạ độ, đạt cực đại tại điểm $A(2;20)$ và đạt cực tiểu tại điểm $B(4;16)$. Tính độ cao của khinh khí cầu ở phút thứ $6$.
+[[HINH {"loai":"dothi","x":[-1,7],"y":[-5,40],"f":[{"e":"x^3-9*x^2+24*x","x":[0,6],"ten":"h(t)"}],"diem":[{"x":2,"y":20,"nhan":"A"},{"x":4,"y":16,"nhan":"B"}]}]]
+b) Chi phí trung bình (triệu đồng/sản phẩm) khi một xưởng sản xuất $x$ trăm sản phẩm được mô hình hoá bởi $C(x)=\dfrac{x^2-mx+25}{x-m}$ với $x>m$, trong đó $m$ là tham số nguyên dương. Tính tổng các giá trị của $m$ để chi phí trung bình giảm liên tục khi số sản phẩm tăng từ $1000$ đến $1200$ (tức $x\in(10;12)$).
+
+Bài giải:
+a) Ta có $h'(t)=3at^2+2bt+c$.
+Đồ thị đi qua gốc toạ độ nên $h(0)=0$, suy ra $d=0$.
+Hàm đạt cực trị tại $t=2$ và $t=4$ nên $h'(2)=0$: $12a+4b+c=0$ (1) và $h'(4)=0$: $48a+8b+c=0$ (2).
+Điểm $A(2;20)$ thuộc đồ thị nên $8a+4b+2c=20$ (3).
+Lấy (2) trừ (1): $36a+4b=0$, suy ra $b=-9a$. Thay vào (1): $12a-36a+c=0$, suy ra $c=24a$.
+Thay vào (3): $8a-36a+48a=20$, tức $20a=20$, nên $a=1$, $b=-9$, $c=24$.
+Kiểm tra: $h(t)=t^3-9t^2+24t$ có $h'(t)=3(t-2)(t-4)$ đổi dấu từ $+$ sang $-$ tại $t=2$ và từ $-$ sang $+$ tại $t=4$; $h(4)=64-144+96=16$ đúng với điểm $B$.
+Độ cao ở phút thứ $6$ là $h(6)=216-324+144=36$ (m).
+b) Hàm $C$ xác định khi $x>m$, nên khoảng $(10;12)$ phải nằm trong miền này: $m\le10$.
+$C'(x)=\dfrac{(2x-m)(x-m)-(x^2-mx+25)}{(x-m)^2}=\dfrac{(x-m)^2-25}{(x-m)^2}$.
+Chi phí giảm liên tục trên $(10;12)$ khi $(x-m)^2\le25$, tức $0<x-m\le5$, với mọi $x\in(10;12)$.
+Điều đó xảy ra khi $12-m\le5$, tức $m\ge7$. Kết hợp $m\le10$ và $m$ nguyên dương được $m\in\{7;8;9;10\}$.
+Tổng các giá trị là $7+8+9+10=34$.
+Vậy ở phút thứ $6$ khinh khí cầu ở độ cao $36$ m; có $4$ giá trị của $m$ thoả mãn, tổng bằng $34$.
+
+=== C4.1.3   (dạng "Khoảng tăng giảm và ngưỡng của hàm mô hình" — mô tả: Hàm mô hình cho sẵn: khoảng tăng/giảm và ý nghĩa thực tiễn; tìm ngưỡng của biến để đại lượng không vượt mức, hoà vốn, có lãi (giải bất phương trình, có khi không cần đạo hàm).)
+@ly_thuyet:
+##TC Khoảng tăng giảm và ngưỡng
+- **Khoảng tăng, giảm:** lập bảng xét dấu $f'$ trong miền thực tế của biến. Đề thường hỏi khoảng $(a;b)$ dài nhất mà đại lượng tăng (giảm) rồi tính một biểu thức như $a+b$ hoặc $a+2b$; hoặc hỏi "bắt đầu tăng từ lúc nào" (mút trái của khoảng tăng).
+- **Ngưỡng của biến:** giải bất phương trình $f(x)\ge m$ hoặc $f(x)\le M$ rồi lấy phần giao với miền thực tế. Với hàm bậc hai chỉ cần xét dấu tam thức, không cần đạo hàm; với phân thức có mẫu dương (như $\dfrac{k}{v}+av$, $v>0$) thì nhân hai vế với mẫu để đưa về tam thức.
+- **Kinh tế:** lợi nhuận $P(x)=R(x)-C(x)$ (doanh thu trừ chi phí). **Hoà vốn** là $P(x)=0$; **có lãi** là $P(x)>0$; **lợi nhuận tối thiểu** $m$ là $P(x)\ge m$.
+
+##PP Tìm khoảng tăng giảm và ngưỡng
+Khoảng tăng giảm: tính $f'$, giải $f'=0$, lập bảng xét dấu trong miền thực tế rồi đọc các khoảng; nếu đề hỏi biểu thức của $a$, $b$ thì tính sau khi có khoảng.
+Ngưỡng: viết điều kiện của đề thành bất phương trình (có lãi, không vượt mức, ít nhất…).
+Giải bất phương trình bằng cách xét dấu tam thức hoặc tìm nghiệm của vế tương ứng.
+Lấy giao với miền thực tế của biến; kết luận bằng ngữ cảnh (số sản phẩm, số giờ…).
+
+##CY
+- Khoảng tăng giảm chỉ xét trong miền thực tế; không đưa các khoảng nằm ngoài miền vào đáp án.
+- Biến là số lượng thì kết quả phải làm tròn hợp lí ("ít nhất" thì làm tròn lên).
+- Hoà vốn là lợi nhuận bằng $0$, không phải doanh thu bằng $0$.
+
+@vi_du:
+##VD
+Số người đang truy cập (đơn vị: trăm người) vào một trang web trong $t$ giờ đầu tiên của một sự kiện được mô hình hoá bởi $f(t)=-t^3+12t^2-36t+100$ với $0\le t\le8$. Trong những khoảng thời gian nào số người truy cập tăng, trong những khoảng thời gian nào giảm?
+
+Bài giải:
+Hàm $f$ xác định trên $[0;8]$ và $f'(t)=-3t^2+24t-36=-3(t-2)(t-6)$.
+$f'(t)=0\Leftrightarrow t=2$ hoặc $t=6$, cả hai thuộc $[0;8]$.
+Bảng xét dấu: $f'<0$ trên $(0;2)$, $f'>0$ trên $(2;6)$, $f'<0$ trên $(6;8)$.
+Vậy số người truy cập giảm trong các khoảng $(0;2)$ và $(6;8)$, tăng trong khoảng $(2;6)$, tức là từ giờ thứ $2$ đến giờ thứ $6$.
+
+##VD
+a) Một xưởng sản xuất $x$ nghìn sản phẩm mỗi tháng ($0\le x\le80$) thì lợi nhuận thu được là $P(x)=-x^2+80x-1500$ (triệu đồng). Xưởng có lãi khi sản xuất trong khoảng nào? Để lợi nhuận mỗi tháng ít nhất $75$ triệu đồng thì xưởng phải sản xuất ít nhất bao nhiêu nghìn sản phẩm?
+b) Chi phí tiền xăng $C$ (nghìn đồng) của một chuyến xe tải phụ thuộc tốc độ trung bình $v$ (km/h) theo công thức $C(v)=\dfrac{18000}{v}+2v$ với $0<v\le120$. Tài xế phải chạy với tốc độ trung bình thấp nhất là bao nhiêu để tiền xăng không vượt quá $420$ nghìn đồng?
+
+Bài giải:
+a) Xưởng có lãi khi $P(x)>0\Leftrightarrow x^2-80x+1500<0\Leftrightarrow(x-30)(x-50)<0\Leftrightarrow30<x<50$ (thuộc $[0;80]$).
+$P(x)\ge75\Leftrightarrow x^2-80x+1575\le0$. Phương trình $x^2-80x+1575=0$ có $\Delta'=1600-1575=25$ nên có hai nghiệm $x=40\pm5$, tức $35$ và $45$. Do đó $35\le x\le45$.
+b) Với $0<v\le120$: $C(v)\le420\Leftrightarrow18000+2v^2\le420v\Leftrightarrow v^2-210v+9000\le0$.
+Phương trình $v^2-210v+9000=0$ có $\Delta=44100-36000=8100$ nên có hai nghiệm $v=60$ và $v=150$. Do đó $60\le v\le150$.
+Kết hợp với miền thực tế $0<v\le120$ được $60\le v\le120$.
+Vậy xưởng có lãi khi sản xuất trong khoảng từ $30$ đến $50$ nghìn sản phẩm, lợi nhuận đạt từ $75$ triệu đồng trở lên khi sản xuất từ $35$ đến $45$ nghìn sản phẩm, tức là ít nhất $35$ nghìn sản phẩm; xe tải phải chạy với tốc độ trung bình thấp nhất là $60$ km/h.
+
+=== C4.1.4   (dạng "Giá trị ngưỡng dài hạn của mô hình (tiệm cận)" — mô tả: Mô hình bão hoà cho sẵn hoặc tự lập hàm nồng độ, chi phí trung bình; tìm tiệm cận ngang để kết luận giá trị dài hạn.)
+@ly_thuyet:
+##TC Tiệm cận ngang và giá trị dài hạn
+- Nếu $\lim_{t\to+\infty}f(t)=L$ thì đồ thị có tiệm cận ngang $y=L$: khi $t$ đủ lớn, đại lượng tiến gần $L$ ("không vượt quá $L$" hoặc "không thấp hơn $L$" tuỳ phía tiến tới).
+- Hàm phân thức cùng bậc: giới hạn là tỉ số hai hệ số của số hạng bậc cao nhất, ví dụ $\lim_{t\to+\infty}\dfrac{40t+500}{t+50}=40$.
+- Mô hình có $e^{-kt}$ ($k>0$): $\lim_{t\to+\infty}e^{-kt}=0$, nên $\lim_{t\to+\infty}\dfrac{a}{b+e^{-kt}}=\dfrac{a}{b}$.
+- Tự lập hàm: nồng độ bằng lượng chất chia cho thể tích tại cùng thời điểm; chi phí trung bình $\overline{C}(x)=\dfrac{C(x)}{x}$.
+- Viết $f(t)=L-\dfrac{k}{g(t)}$ với $k>0$, $g(t)>0$ thì $f(t)<L$ với mọi $t$: đại lượng tăng và không bao giờ đạt $L$.
+
+##PP Tìm giá trị dài hạn của mô hình
+Nếu đề chưa cho hàm thì lập hàm: lượng chất (hoặc tổng chi phí) và thể tích (hoặc số lượng) theo $t$ hay $x$, rồi lập tỉ số.
+Tính $\lim_{t\to+\infty}f(t)$ bằng cách chia tử và mẫu cho luỹ thừa cao nhất của $t$ (hoặc dùng $e^{-kt}\to0$).
+Đối chiếu với đề: giá trị đó là mức đại lượng tiến tới; nếu đề hỏi "có vượt hay đạt không" thì viết $f(t)=L-\dfrac{k}{g(t)}$ hoặc xét dấu $f'$.
+Kết luận bằng ngữ cảnh, kèm đơn vị.
+
+##CY
+- Giá trị $L$ là mức tiến gần khi $t$ rất lớn, thường không đạt tại thời điểm nào; đề hỏi "khi nào đạt đúng $L$" thì không có thời điểm như vậy.
+- Lập hàm nồng độ phải cộng cả lượng chất ban đầu và lượng đưa vào thêm; thể tích cũng cộng cả hai phần.
+- Hàm chi phí trung bình phải chia tổng chi phí cho $x$ trước khi tìm giới hạn.
+
+@vi_du:
+##VD
+a) Số lượng cá thể (nghìn con) của một quần thể tảo trong bể nuôi sau $t$ ngày được mô hình hoá bởi $P(t)=\dfrac{60}{2+3e^{-0{,}5t}}$. Khi thời gian nuôi càng kéo dài thì số lượng cá thể tiến tới giá trị nào?
+b) Tổng chi phí (triệu đồng) để sản xuất $x$ sản phẩm là $C(x)=\dfrac{4x^3+10x+8}{x^2+2}$. Chi phí trung bình mỗi sản phẩm là $\overline{C}(x)=\dfrac{C(x)}{x}$. Khi số sản phẩm rất lớn thì chi phí trung bình tiến tới giá trị nào?
+
+Bài giải:
+a) Vì $\lim_{t\to+\infty}e^{-0{,}5t}=0$ nên $\lim_{t\to+\infty}P(t)=\dfrac{60}{2+0}=30$.
+Mặt khác $P(t)=\dfrac{30}{1+1{,}5e^{-0{,}5t}}<30$ với mọi $t$, nên số lượng không bao giờ vượt quá $30$ nghìn con.
+b) Với $x>0$: $\overline{C}(x)=\dfrac{4x^3+10x+8}{x(x^2+2)}=\dfrac{4x^3+10x+8}{x^3+2x}$.
+Chia tử và mẫu cho $x^3$: $\overline{C}(x)=\dfrac{4+\dfrac{10}{x^2}+\dfrac{8}{x^3}}{1+\dfrac{2}{x^2}}$ nên $\lim_{x\to+\infty}\overline{C}(x)=4$.
+Hơn nữa $\overline{C}(x)-4=\dfrac{2x+8}{x^3+2x}>0$ nên chi phí trung bình luôn lớn hơn $4$.
+Vậy số lượng tảo tiến tới $30$ nghìn con (không vượt quá mức này); chi phí trung bình tiến tới $4$ triệu đồng nhưng không bao giờ thấp hơn mức đó.
+
+##VD
+Một bể chứa $1000$ lít nước muối có nồng độ $10$ g/lít. Người ta bơm vào bể nước muối nồng độ $40$ g/lít với tốc độ $20$ lít/phút (bể đủ lớn, không rút nước ra). a) Lập hàm nồng độ muối $C(t)$ (g/lít) trong bể sau $t$ phút. b) Về lâu dài nồng độ muối tiến tới giá trị nào? Nồng độ có thể đạt đúng giá trị đó không? c) Sau bao lâu nồng độ muối đạt $30$ g/lít?
+
+Bài giải:
+a) Sau $t$ phút, lượng muối trong bể là $1000\cdot10+20t\cdot40=10000+800t$ (g) và thể tích nước là $1000+20t$ (lít).
+Do đó $C(t)=\dfrac{10000+800t}{1000+20t}=\dfrac{500+40t}{50+t}$ với $t\ge0$.
+b) $\lim_{t\to+\infty}C(t)=\dfrac{40}{1}=40$, đồ thị có tiệm cận ngang $y=40$.
+Viết $C(t)=40-\dfrac{1500}{t+50}$ thì $C(t)<40$ với mọi $t\ge0$, nên nồng độ tăng dần, tiến tới $40$ nhưng không bao giờ đạt đúng $40$ g/lít.
+c) $C(t)=30\Leftrightarrow500+40t=30(50+t)\Leftrightarrow10t=1000\Leftrightarrow t=100$.
+Vậy $C(t)=\dfrac{500+40t}{50+t}$; về lâu dài nồng độ tiến tới $40$ g/lít (bằng nồng độ nước muối bơm vào) nhưng không bao giờ đạt đúng mức đó; sau $100$ phút nồng độ đạt $30$ g/lít.
+
+=== N C4.2   (nhóm "Tối ưu phải lập hàm từ hình học")
+@ly_thuyet:
+##TC Bài toán tối ưu phải tự lập hàm
+- Đề mô tả một hình (hộp, bể, lon, khung, mảnh vườn, sợi dây…) kèm một đại lượng **cố định** (thể tích, chu vi, độ dài dây, diện tích); hỏi kích thước để một đại lượng khác lớn nhất hoặc nhỏ nhất. Việc khó nhất là tự chọn ẩn và lập hàm một biến.
+- Công thức hay dùng: hình hộp chữ nhật $V=abc$, $S_{xq}=2(a+b)c$; hình trụ $V=\pi r^2h$, $S_{tp}=2\pi r^2+2\pi rh$; khối chóp $V=\dfrac13S_{\text{đáy}}\cdot h$; hình chữ nhật $S=ab$; hình tròn $S=\pi r^2$, chu vi $2\pi r$; tam giác đều cạnh $a$: $S=\dfrac{a^2\sqrt3}{4}$.
+- Hàm cần tối ưu phải chỉ còn **một biến** $x$, và miền xác định của $x$ lấy theo điều kiện hình học (độ dài dương, kích thước còn lại dương).
+- Trên khoảng $(a;b)$, nếu $f'$ đổi dấu tại duy nhất một điểm $x_0$ thì đó là điểm cực trị duy nhất, cũng là điểm làm hàm lớn nhất (nhỏ nhất) trên khoảng.
+
+##PP Lập hàm và tối ưu
+Chọn ẩn $x$ (một độ dài, hoặc một góc) và nêu **điều kiện của $x$** theo hình.
+Dùng đại lượng cố định để biểu diễn mọi yếu tố còn lại theo $x$ (khử bớt biến).
+Lập hàm $f(x)$ cần tối ưu và xác định miền của $x$.
+Tính $f'$, giải $f'=0$, lập bảng xét dấu trên miền (hoặc so sánh với đầu mút) để tìm giá trị lớn nhất (nhỏ nhất).
+Tính các kích thước còn lại và trả lời bằng ngữ cảnh, kèm đơn vị; làm tròn đúng yêu cầu ở bước cuối.
+
+##CY
+- Hàm cần tối ưu còn hai biến thì phải dùng đại lượng cố định để khử trước khi đạo hàm.
+- Quên điều kiện của $x$ dễ lấy phải nghiệm vô nghĩa; khoảng mở không có đầu mút nên phải dùng bảng biến thiên.
+- Chi phí = đơn giá nhân diện tích từng phần; bể, hộp không nắp thì không tính diện tích nắp.
+
+=== C4.2.1   (dạng "Hộp, bể, lon: vật liệu nhỏ nhất, thể tích lớn nhất" — mô tả: Khối hộp, hình trụ, bể có thể tích hoặc diện tích cố định; đặt ẩn kích thước, lập hàm vật liệu/thể tích rồi tìm cực trị (kể cả bài tối ưu tổng thể tích các khối cầu).)
+@ly_thuyet:
+##TC Hộp, bể, lon, khối chóp từ tấm bìa
+- Hộp chữ nhật đáy vuông cạnh $x$, cao $h$: $V=x^2h$; không nắp $S=x^2+4xh$; có nắp $S=2x^2+4xh$. Bể đáy chữ nhật hai cạnh $x$ và $kx$, cao $h$: $V=kx^2h$, đáy $kx^2$, bốn mặt bên $2(1+k)xh$.
+- Lon có nắp dùng $S_{tp}$ của hình trụ (lý thuyết nhóm); xô, bể trụ không nắp chỉ có một đáy: $S=\pi r^2+2\pi rh$.
+- Cắt bốn góc hình vuông cạnh $x$ của tấm bìa chữ nhật rồi gập thành hộp không nắp: chiều cao bằng $x$, hai kích thước đáy mỗi chiều giảm $2x$.
+- Khối chóp tứ giác đều đáy cạnh $a$, trung đoạn $l$: chiều cao $h=\sqrt{l^2-\dfrac{a^2}{4}}$, $V=\dfrac13a^2h$.
+- Tám phần tám khối cầu bán kính $r$ đặt ở tám đỉnh của hình lập phương gộp lại đúng một khối cầu bán kính $r$; hai khối cầu bán kính $r$, $R$ có tổng thể tích $\dfrac{4\pi}{3}(r^3+R^3)$, và khi hai khối tiếp xúc ngoài thì khoảng cách hai tâm bằng $r+R$.
+
+##PP Tối ưu hộp, bể, lon
+Thể tích cố định $V$: rút chiều cao $h$ theo $x$ từ công thức thể tích rồi thay vào diện tích (hoặc chi phí) để có hàm một biến.
+Chi phí: nhân đơn giá với diện tích từng phần (đáy, mặt bên, nắp).
+Bài cắt tấm bìa: biểu diễn các kích thước của hộp (hoặc chóp) theo $x$, lập $V(x)$, tìm điều kiện của $x$ để các kích thước dương.
+Giải $f'=0$, dùng bảng xét dấu để kết luận, rồi tính các kích thước còn lại.
+
+##CY
+- Bể hoặc hộp không nắp: không tính diện tích nắp; đáy và mặt bên có đơn giá khác nhau thì nhân đúng từng phần.
+- Tấm bìa cắt góc: kích thước đáy còn lại phải dương, nên $x$ nhỏ hơn nửa cạnh nhỏ nhất của tấm bìa.
+- Bài hình cầu trong hình lập phương: kiểm tra bán kính nghiệm tìm được có thoả điều kiện hình học (như $r\le\dfrac12$ cạnh hình lập phương) rồi mới kết luận.
+
+@vi_du:
+##VD
+Người ta muốn xây một bể chứa nước hình hộp chữ nhật không nắp có thể tích $16\ \text{m}^3$, đáy là hình chữ nhật có chiều dài gấp đôi chiều rộng. Giá vật liệu làm đáy là $600$ nghìn đồng/$\text{m}^2$ và làm mặt bên là $400$ nghìn đồng/$\text{m}^2$. Tìm kích thước bể để chi phí vật liệu thấp nhất và tính chi phí đó.
+
+Bài giải:
+Gọi chiều rộng đáy là $x$ (m), $x>0$; chiều dài là $2x$; chiều cao là $h$ (m). Từ $2x^2h=16$ suy ra $h=\dfrac{8}{x^2}$.
+Diện tích đáy là $2x^2$; diện tích bốn mặt bên là $2(x+2x)h=6x\cdot\dfrac{8}{x^2}=\dfrac{48}{x}$.
+Chi phí (nghìn đồng): $C(x)=600\cdot2x^2+400\cdot\dfrac{48}{x}=1200x^2+\dfrac{19200}{x}$ với $x>0$.
+$C'(x)=2400x-\dfrac{19200}{x^2}=\dfrac{2400(x^3-8)}{x^2}$, nên $C'(x)=0\Leftrightarrow x=2$.
+$C'(x)<0$ trên $(0;2)$ và $C'(x)>0$ trên $(2;+\infty)$ nên $C$ nhỏ nhất tại $x=2$.
+Khi đó $h=\dfrac{8}{4}=2$ và $C(2)=1200\cdot4+\dfrac{19200}{2}=4800+9600=14400$.
+Vậy bể có chiều rộng $2$ m, chiều dài $4$ m, chiều cao $2$ m thì chi phí thấp nhất là $14400$ nghìn đồng, tức $14{,}4$ triệu đồng.
+
+##VD
+Từ một tấm bìa mỏng hình vuông $ABCD$ cạnh $8$ dm, tâm $O$, bạn Nam vẽ hình vuông $EFGH$ cạnh $x$ dm cùng tâm $O$, với các đỉnh $E$, $F$, $G$, $H$ lần lượt nằm trên các đoạn nối $O$ với trung điểm của $AB$, $BC$, $CD$, $DA$. Bạn cắt bỏ bốn tam giác cân $AEB$, $BFC$, $CGD$, $DHA$; phần còn lại gồm hình vuông $EFGH$ và bốn tam giác cân $AEH$, $BFE$, $CGF$, $DHG$. Gập bốn tam giác này lên sao cho $A$, $B$, $C$, $D$ trùng nhau, được khối chóp tứ giác đều có đáy $EFGH$. Tìm $x$ để thể tích khối chóp lớn nhất và tính thể tích lớn nhất đó (làm tròn đến hàng phần trăm).
+
+Bài giải:
+Gọi $M$ là trung điểm của $EF$. Tam giác $BEF$ cân tại $B$ nên $BM\perp EF$; $O$, $M$, $B$ thẳng hàng với $OB=4\sqrt2$ và $OM=\dfrac{x}{2}$ (khoảng cách từ tâm đến cạnh của hình vuông $EFGH$).
+Khi gập, $BM$ thành trung đoạn của khối chóp: $l=BM=4\sqrt2-\dfrac{x}{2}$.
+Chiều cao khối chóp: $h=\sqrt{l^2-\dfrac{x^2}{4}}=\sqrt{32-4\sqrt2x+\dfrac{x^2}{4}-\dfrac{x^2}{4}}=\sqrt{32-4\sqrt2x}$. Điều kiện $h>0$ cho $0<x<4\sqrt2$.
+Thể tích $V(x)=\dfrac13x^2\sqrt{32-4\sqrt2x}$ với $0<x<4\sqrt2$.
+$V'(x)=\dfrac13\left[2x\sqrt{32-4\sqrt2x}-\dfrac{2\sqrt2x^2}{\sqrt{32-4\sqrt2x}}\right]=\dfrac{2x\left(32-5\sqrt2x\right)}{3\sqrt{32-4\sqrt2x}}$.
+$V'(x)=0\Leftrightarrow x=\dfrac{32}{5\sqrt2}=\dfrac{16\sqrt2}{5}\approx4{,}53$ (thuộc $(0;4\sqrt2)$); $V'>0$ trên $\left(0;\dfrac{16\sqrt2}{5}\right)$ và $V'<0$ trên $\left(\dfrac{16\sqrt2}{5};4\sqrt2\right)$.
+Với $x=\dfrac{16\sqrt2}{5}$: $x^2=\dfrac{512}{25}$ và $32-4\sqrt2x=32-\dfrac{128}{5}=\dfrac{32}{5}$ nên $h=\dfrac{4\sqrt{10}}{5}$.
+$V_{\max}=\dfrac13\cdot\dfrac{512}{25}\cdot\dfrac{4\sqrt{10}}{5}=\dfrac{2048\sqrt{10}}{375}\approx17{,}27$.
+Vậy thể tích lớn nhất khi $x=\dfrac{16\sqrt2}{5}\approx4{,}53$ dm, và thể tích đó xấp xỉ $17{,}27\ \text{dm}^3$.
+
+=== C4.2.2   (dạng "Diện tích, chu vi hình phẳng lớn nhất; cắt uốn dây" — mô tả: Hình chữ nhật, tam giác, hình nội tiếp nửa đường tròn (ẩn có thể là góc); cắt sợi dây thành hai hình có tổng diện tích nhỏ nhất.)
+@ly_thuyet:
+##TC Hình phẳng, lề trang sách, cắt dây
+- Rào ba cạnh với một cạnh là bờ tường (bờ sông): hai cạnh vuông góc tường dài $x$, cạnh song song tường dài $L-2x$ nếu lưới dài $L$; hàng rào chữ E (hai khu chung một vách) có ba cạnh vuông góc bờ sông, và nếu hai loại cạnh có đơn giá khác nhau thì tổng tiền cố định cho một ràng buộc giữa hai kích thước.
+- Trang sách có hai kích thước $x$ và $y$, lề trái và phải mỗi bên $a$, lề trên và dưới mỗi bên $b$: phần in có hai kích thước $x-2a$ và $y-2b$. Trang có diện tích $S$ cố định thì $y=\dfrac{S}{x}$.
+- Cắt sợi dây dài $L$ thành hai đoạn $x$ và $L-x$ ($0<x<L$), mỗi đoạn uốn thành một hình. Diện tích **theo chu vi $p$**: hình vuông $\dfrac{p^2}{16}$, hình tròn $\dfrac{p^2}{4\pi}$, tam giác đều $\dfrac{\sqrt3p^2}{36}$.
+- Hình chữ nhật nội tiếp nửa đường tròn bán kính $R$, đáy nằm trên đường kính: nửa đáy $x$ thì chiều cao $\sqrt{R^2-x^2}$; nếu chọn ẩn là góc $\alpha$ ($0<\alpha<\dfrac{\pi}{2}$) thì nửa đáy $R\cos\alpha$, chiều cao $R\sin\alpha$, diện tích $S=R^2\sin2\alpha$.
+- Đường thẳng đi qua điểm $M(a;b)$ ($a,b>0$) cắt $Ox$, $Oy$ tại $(m;0)$, $(0;n)$ thì $\dfrac{a}{m}+\dfrac{b}{n}=1$, và tam giác tạo thành có diện tích $\dfrac12mn$.
+
+##PP Tối ưu diện tích, chu vi
+Chọn ẩn là một cạnh (hoặc một đoạn, một góc) và nêu điều kiện của ẩn.
+Dùng giả thiết cố định (diện tích trang, độ dài dây, độ dài lưới…) để biểu diễn các kích thước còn lại theo ẩn.
+Lập hàm cần tối ưu (phần in, tổng diện tích, diện tích hình), tính đạo hàm và xét dấu trên miền của ẩn.
+Tính các kích thước ứng với điểm tối ưu và kết luận bằng ngữ cảnh.
+
+##CY
+- Phần in của trang sách là $(x-2a)(y-2b)$, không phải $(x-a)(y-b)$: lề có ở cả hai bên.
+- Cắt dây uốn hai hình: dùng đúng công thức diện tích **theo chu vi** của từng hình, không lẫn bán kính hay cạnh với chu vi.
+- Tổng diện tích hai hình là tam thức bậc hai theo $x$ với hệ số của $x^2$ dương nên nhỏ nhất tại hoành độ đỉnh; đề hỏi độ dài đoạn nào (đoạn uốn hình vuông hay đoạn uốn hình kia, hay cạnh của hình) thì trả lời đúng đoạn đó.
+
+@vi_du:
+##VD
+Một trang sách hình chữ nhật có diện tích $375\ \text{cm}^2$. Người ta để lề trái và lề phải mỗi bên $1{,}5$ cm, lề trên và lề dưới mỗi bên $2{,}5$ cm; phần còn lại được in chữ. Tìm kích thước trang sách để phần in chữ có diện tích lớn nhất và tính diện tích lớn nhất đó.
+
+Bài giải:
+Gọi chiều rộng trang sách là $x$ (cm); chiều dài là $\dfrac{375}{x}$ (cm). Phần in phải có kích thước dương nên $x>3$ và $\dfrac{375}{x}>5$, tức $3<x<75$.
+Diện tích phần in $S(x)=(x-3)\left(\dfrac{375}{x}-5\right)=375-5x-\dfrac{1125}{x}+15=390-5x-\dfrac{1125}{x}$.
+$S'(x)=-5+\dfrac{1125}{x^2}=\dfrac{5(225-x^2)}{x^2}$, nên trên $(3;75)$ ta có $S'(x)=0\Leftrightarrow x=15$.
+$S'>0$ trên $(3;15)$ và $S'<0$ trên $(15;75)$ nên $S$ lớn nhất tại $x=15$.
+Khi đó chiều dài là $\dfrac{375}{15}=25$ và $S(15)=390-75-75=240$.
+Vậy trang sách rộng $15$ cm, dài $25$ cm thì phần in chữ có diện tích lớn nhất, bằng $240\ \text{cm}^2$.
+
+##VD
+Một sợi dây dài $36$ m được cắt thành hai đoạn: đoạn thứ nhất uốn thành một tam giác đều, đoạn thứ hai uốn thành một hình vuông. Tìm độ dài mỗi đoạn để tổng diện tích hai hình nhỏ nhất và tính tổng diện tích nhỏ nhất đó (làm tròn đến hàng phần trăm).
+
+Bài giải:
+Gọi $x$ (m) là độ dài đoạn uốn tam giác đều, $0<x<36$; đoạn uốn hình vuông dài $36-x$.
+Tam giác đều có cạnh $\dfrac{x}{3}$ nên diện tích $S_1=\dfrac{\sqrt3}{4}\cdot\dfrac{x^2}{9}=\dfrac{\sqrt3x^2}{36}$. Hình vuông có cạnh $\dfrac{36-x}{4}$ nên diện tích $S_2=\dfrac{(36-x)^2}{16}$.
+Tổng diện tích $S(x)=\dfrac{\sqrt3x^2}{36}+\dfrac{(36-x)^2}{16}$.
+$S'(x)=\dfrac{\sqrt3x}{18}-\dfrac{36-x}{8}$; $S'(x)=0\Leftrightarrow x\left(\dfrac{\sqrt3}{18}+\dfrac18\right)=\dfrac92\Leftrightarrow x\cdot\dfrac{4\sqrt3+9}{72}=\dfrac92\Leftrightarrow x=\dfrac{324}{4\sqrt3+9}\approx20{,}34$.
+$S'(x)$ là hàm bậc nhất có hệ số của $x$ dương nên đổi dấu từ $-$ sang $+$ tại điểm này, do đó $S$ nhỏ nhất tại $x=\dfrac{324}{4\sqrt3+9}$.
+Khi đó đoạn uốn hình vuông dài $36-20{,}34\approx15{,}66$ và $S_{\min}=\dfrac{324\sqrt3}{4\sqrt3+9}\approx35{,}23$.
+Vậy đoạn uốn tam giác đều dài khoảng $20{,}34$ m, đoạn uốn hình vuông dài khoảng $15{,}66$ m; tổng diện tích nhỏ nhất khoảng $35{,}23\ \text{m}^2$.
+
+=== C4.2.3   (dạng "Tối ưu trên parabol, đồ thị đặt trong hệ toạ độ" — mô tả: Hình (cổng, mái vòm, mặt cắt) mô hình bằng parabol/bậc ba trong hệ trục; lập hàm theo toạ độ điểm rồi tối ưu.)
+@ly_thuyet:
+##TC Đặt hệ trục toạ độ cho cổng, mái vòm, sườn đồi
+- Chọn hệ trục thuận lợi: đặt mặt đất là $Ox$ và trục đối xứng của cổng là $Oy$, hoặc đặt một đầu cung tại gốc $O$.
+- Parabol có đỉnh $(0;h)$ và cắt $Ox$ tại $(\pm c;0)$ có phương trình $y=h-\dfrac{h}{c^2}x^2$ (đối xứng qua $Oy$).
+- Hàm bậc ba $y=ax^3+bx^2+cx+d$ (hoặc thiếu hệ số) đi qua các điểm cho trước: thay toạ độ vào để lập hệ phương trình tìm hệ số.
+- Hình chữ nhật nội tiếp parabol đối xứng qua $Oy$ có hai đỉnh $(\pm x;f(x))$ trên parabol và hai đỉnh $(\pm x;0)$ trên $Ox$: cạnh ngang $2x$, cạnh đứng $f(x)$, với $0<x<c$. Nếu hai đỉnh dưới nằm trên thanh ngang $y=k$ (hoặc trên sàn xe cao $k$) thì cạnh đứng là $f(x)-k$.
+- Đoạn thẳng đứng $MN$ (cột đỡ, dây treo) nối điểm $M$ trên đường cong $y=f(x)$ với điểm $N$ trên đường thẳng $y=g(x)$ có cùng hoành độ $x$: $MN=|g(x)-f(x)|$.
+
+##PP Lập phương trình đường cong rồi tối ưu
+Đặt hệ trục toạ độ phù hợp và ghi lại toạ độ các điểm đề cho (đỉnh, chân, điểm thuộc đường cong).
+Lập phương trình đường cong $y=f(x)$ từ các điểm đó.
+Gọi $M(x;f(x))$ là điểm thay đổi, viết đại lượng cần tối ưu (diện tích, chu vi, độ cao…) theo $x$ cùng điều kiện của $x$.
+Tìm giá trị lớn nhất (nhỏ nhất) bằng đạo hàm và bảng xét dấu; trả lời bằng đơn vị thực tế.
+
+##CY
+- Hình chữ nhật nội tiếp parabol đối xứng qua $Oy$: cạnh ngang là $2x$, không phải $x$.
+- Điều kiện của $x$ lấy theo vị trí điểm trên đường cong (như $0<x<3$), không lấy nghiệm ngoài khoảng đó.
+- Đoạn $MN$ dài nhất không nằm ở điểm thấp nhất (cao nhất) của đường cong: phải tối ưu hiệu $g(x)-f(x)$, không tối ưu riêng $f$.
+- Đơn vị trên hai trục là mét hay $10$ m, $100$ m tuỳ đề: đổi về đơn vị thực tế khi trả lời.
+
+@vi_du:
+##VD
+Một cổng chào có dạng parabol, cao $6$ m và chân cổng rộng $6$ m. Người ta muốn lắp một khung kính hình chữ nhật có hai đỉnh nằm trên mặt đất và hai đỉnh còn lại nằm trên parabol. Tìm kích thước khung kính để diện tích lớn nhất và tính diện tích đó.
+[[HINH {"loai":"dothi","x":[-5,5],"y":[-1,7],"f":[{"e":"6-2*x^2/3","x":[-3,3],"ten":"(P)"}],"diem":[{"x":-3,"y":0,"nhan":"A"},{"x":3,"y":0,"nhan":"B"},{"x":0,"y":6,"nhan":"I"}]}]]
+
+Bài giải:
+Đặt hệ trục có gốc $O$ là trung điểm $AB$, $Ox$ trùng $AB$ và $Oy$ là trục đối xứng của cổng. Parabol có đỉnh $I(0;6)$ và đi qua $B(3;0)$.
+Gọi $y=ax^2+6$. Vì đi qua $B(3;0)$ nên $9a+6=0$, suy ra $a=-\dfrac23$, vậy $y=6-\dfrac23x^2$.
+Khung kính có hai đỉnh trên parabol là $\left(\pm x;6-\dfrac23x^2\right)$ với $0<x<3$, nên rộng $2x$ và cao $6-\dfrac23x^2$.
+Diện tích $S(x)=2x\left(6-\dfrac23x^2\right)=12x-\dfrac43x^3$.
+$S'(x)=12-4x^2=4(3-x^2)$; $S'(x)=0\Leftrightarrow x=\sqrt3$ (thuộc $(0;3)$).
+$S'>0$ trên $(0;\sqrt3)$ và $S'<0$ trên $(\sqrt3;3)$ nên $S$ lớn nhất tại $x=\sqrt3$; khi đó chiều cao là $6-2=4$ và $S(\sqrt3)=2\sqrt3\cdot4=8\sqrt3$.
+Vậy khung kính rộng $2\sqrt3\approx3{,}46$ m, cao $4$ m thì diện tích lớn nhất, bằng $8\sqrt3\approx13{,}86\ \text{m}^2$.
+
+##VD
+Người ta làm một cây cầu bắc qua một hẻm núi. Gắn hệ trục $Oxy$ với đơn vị trên mỗi trục là $10$ m: mặt cắt lòng hẻm núi là đồ thị hàm số $y=f(x)=\dfrac14x^3-\dfrac32x^2+x$ với $0\le x\le6$; mặt cầu là đoạn thẳng nối hai mép hẻm $O(0;0)$ và $D(6;6)$ (hai mép cao khác nhau). Mỗi cột đỡ là một đoạn thẳng đứng $MN$ với $M$ trên lòng hẻm và $N$ trên mặt cầu. Cột đỡ dài nhất dài bao nhiêu mét và đặt ở đâu?
+[[HINH {"loai":"dothi","x":[-1,7],"y":[-6,8],"f":[{"e":"x^3/4-3*x^2/2+x","x":[0,6],"ten":"y=f(x)"},{"e":"x","x":[0,6],"ten":"OD"}],"diem":[{"x":0,"y":0,"nhan":"O"},{"x":6,"y":6,"nhan":"D"}]}]]
+
+Bài giải:
+Đường thẳng $OD$ đi qua $O(0;0)$ và $D(6;6)$ nên có phương trình $y=x$; điểm $D$ thuộc đồ thị vì $f(6)=54-54+6=6$.
+Với $M(x;f(x))$ và $N(x;x)$, $0<x<6$, cột đỡ dài $MN=x-f(x)=-\dfrac14x^3+\dfrac32x^2=\dfrac14x^2(6-x)>0$.
+Đặt $g(x)=-\dfrac14x^3+\dfrac32x^2$ thì $g'(x)=-\dfrac34x^2+3x=\dfrac34x(4-x)$; trên $(0;6)$, $g'(x)=0\Leftrightarrow x=4$.
+$g'>0$ trên $(0;4)$ và $g'<0$ trên $(4;6)$ nên $g$ lớn nhất tại $x=4$, và $g(4)=\dfrac14\cdot16\cdot2=8$.
+Khi đó $M(4;-4)$, $N(4;4)$. Đổi đơn vị: $8$ đơn vị ứng với $80$ m, $x=4$ ứng với $40$ m.
+Vậy cột đỡ dài nhất là $80$ m, đặt cách mép $O$ theo phương ngang $40$ m.
+
+## GHI CHÚ CHO CEO
+- Đã đọc: hồ sơ nguồn `ho-so/hoso-pnl-3-5.md` (các bảng kiểu câu Bài 5, B4-D4, B3-D4), `hoso-nbv-3-4.md`, `hoso-tutam.md` (các dạng thực tế), và bản chữ PNL Bài 5 GV (`txt/pnl/BAI 5. UDDH GIAI BAI THUC TE/..._GV.txt`, phần lý thuyết tốc độ thay đổi và tối ưu); không trích lại Word gốc ba bộ sách vì hồ sơ và bản chữ đã có. Đối chiếu câu đề thi thật bằng `cau-dang.cjs HS C4.1.x/C4.2.x` (tổng 68, 15, 27, 29, 133, 58, 16 câu). Lấy gốc từ bản v1 đã soát `ra/J9.txt` (H7.1, H7.2) và `ra/J10.txt` (H7.8), viết lại theo dạng mới, đổi toàn bộ số liệu và tự thử lại bằng node (`soan/HS/thu-HS-I.mjs`, 20 phép kiểm, tất cả đạt, gồm quét lưới GTLN/GTNN, đối chiếu hình học trực tiếp cho khối chóp và đối chiếu vật lí cho bài nồng độ).
+- Trạm soát (Opus, 03/11) đã đối chiếu thêm Word gốc PNL Bài 5 Dạng 02 (tối ưu đơn giản) và Dạng 03 (tăng trưởng, tiệm cận) bản GV — trích ở `S/sach/hsI/`; bản chữ `txt/pnl/BAI 5` trạm soạn dùng thực ra chỉ có Dạng 01. Quy trình 3 bước của PNL khớp ##PP nhóm C4.2; công thức trong sách là ảnh WMF nên chỉ đối chiếu được kiểu bài và cách đặt ẩn. Từ Tâm không có bài riêng cho toán thực tế; NBV để ở tệp nén `17 CĐ TOÁN THỰC TẾ 12 2026.rar` (không giải nén).
+- C4.1.2: đã thêm ý b) ở ví dụ 2 cho kiểu đề "tham số $m$ nguyên để chi phí giảm liên tục" (1/15 câu đề). Câu đề gốc ($\dfrac{x^2-mx+9}{9x-9m}$, $x\in(50;53)$) cho đáp án $m\in\{50;53\}$, nhưng với $m=53$ chi phí âm khi $x$ gần $53$ (mẫu âm) — đề gốc bỏ qua miền thực tế; ví dụ đã đặt điều kiện $x>m$ để tránh ca này.
+- C4.1.3: một số câu đề thi dùng hàm mũ ($C(x)=100e^{0{,}001x}$, giải bất phương trình mũ bằng lôgarit — kiến thức lớp 11), hàm căn ($10\sqrt v-v$) hoặc thuế suất chia khúc; ví dụ chỉ dùng tam thức và phân thức đưa về tam thức. CEO quyết có cần thêm ví dụ mũ không.
+- C4.1.4: đề thi có mô hình $e^{-kt}$ (quần thể tảo, nấm men), ví dụ 1 phần a) đã dùng $\lim e^{-kt}=0$; không dùng đạo hàm của hàm mũ trong ví dụ. Câu đề dựa trên phương trình vi phân $y'=-ky^2$ (một câu) để ngoài.
+- C4.2.1: bài khối chóp từ tấm bìa (đề gặp nhiều lần, cạnh 6 dm, đáp án 7,3) là ví dụ 2 với cạnh 8 dm; trạm soát dựng lại bằng toạ độ (E, F trên đoạn nối tâm với trung điểm cạnh, AE = BE, trung đoạn = BM) — khớp $V_{\max}=\dfrac{2048\sqrt{10}}{375}\approx17{,}27$ và khi thu nhỏ về cạnh 6 cho 7,29 ≈ 7,3 như đề. Đề đã viết lại để hiểu được không cần hình (đặt tên tam giác cắt bỏ, vị trí E, F, G, H). Bài tám phần tám khối cầu chỉ ở lý thuyết (1 câu đề).
+- C4.2.2: dạng "đường thẳng qua điểm cố định cắt hai trục/hai bờ, diện tích tam giác nhỏ nhất" (2 câu đề thi) mới có công thức trong lý thuyết, chưa có ví dụ. Ẩn là góc ($S=R^2\sin2\alpha$) chỉ có trong lý thuyết; ví dụ dùng ẩn độ dài.
+- C4.2.3: câu đề cổng parabol tính **chi phí theo diện tích phần parabol** (tích phân) và câu "khoảng cách từ điểm trên bờ hồ đến con đường" (công thức khoảng cách điểm–đường thẳng) chưa có ví dụ. Ví dụ 2 đổi sang kiểu "cột đỡ $MN$ thẳng đứng giữa đường cong và đường thẳng" (đề: cầu qua hẻm núi, dây đèn công viên).

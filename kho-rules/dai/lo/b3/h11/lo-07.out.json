@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "HHC003827",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Giao tuyến hai mặt phẳng chứa AD∥BC, dùng đường song song qua S",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng chứa hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC003828",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Chỉ tìm giao tuyến bằng hai điểm chung, không cần song song",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003829",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Xác định giao điểm đường thẳng với mặt phẳng bằng điểm chung",
+  "can_cu": "tìm giao điểm của đường thẳng và mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003830",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao điểm BD với (SAC) và DM với (SAB) bằng mặt phẳng phụ",
+  "can_cu": "tìm giao điểm của đường thẳng và mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003831",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao điểm CM với (SAB) và các giao tuyến qua điểm chung",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003832",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao điểm BD, BC với (OMN) qua giao tuyến với (BCD)",
+  "can_cu": "tìm giao điểm của đường thẳng và mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003833",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Ba ý tìm giao điểm đường thẳng với mặt phẳng, mặt phẳng phụ",
+  "can_cu": "tìm giao điểm của đường thẳng và mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003834",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao điểm SD với (AMN) qua mặt phẳng phụ (SBD)",
+  "can_cu": "tìm giao điểm của đường thẳng và mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003835",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "MN∥CD suy ra PQ∥MN∥CD qua đường thẳng song song mặt phẳng và giao tuyến",
+  "can_cu": "vận dụng tính chất đường thẳng song song mặt phẳng để tìm giao tuyến, chứng minh hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC003836",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Chứng minh MN∥CD bằng đường trung bình và cùng song song AB",
+  "can_cu": "chứng minh hai đường thẳng song song (bằng đường trung bình, định lí Thales đảo, hình bình hành"
+ },
+ {
+  "ma_cau": "HHC003837",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Chứng minh IJ∥CD bằng trọng tâm và Thales đảo",
+  "can_cu": "chứng minh hai đường thẳng song song (bằng đường trung bình, định lí Thales đảo, hình bình hành"
+ },
+ {
+  "ma_cau": "HHC003838",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Chứng minh GK∥MJ cùng song song SC bằng trọng tâm, đường trung bình",
+  "can_cu": "chứng minh hai đường thẳng song song (bằng đường trung bình, định lí Thales đảo, hình bình hành"
+ },
+ {
+  "ma_cau": "HHC003839",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Chứng minh MN∥(BCD) bằng đường trung bình",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003840",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Chứng minh MN∥(ABC) qua trọng tâm và đường song song",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003841",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Chứng minh FG∥(SCD) bằng hình bình hành phụ",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003842",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Hai ý chứng minh đường thẳng song song (SAC)",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003843",
+  "dang_bai_id": "HH00141",
+  "chac": "vua",
+  "ly_do": "Chứng minh OO′, MN song song mặt phẳng; ý b có thể dùng hai mặt phẳng song song",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003844",
+  "dang_bai_id": "HH00141",
+  "chac": "vua",
+  "ly_do": "Chứng minh MG∥(SCD), lời giải đi qua hai mặt phẳng song song",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003845",
+  "dang_bai_id": "HH00141",
+  "chac": "vua",
+  "ly_do": "Chứng minh OG∥(SBC), lời giải dựng mặt phẳng song song (SBC)",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003846",
+  "dang_bai_id": "HH00141",
+  "chac": "vua",
+  "ly_do": "Chứng minh CM∥(SAB), lời giải dựng mặt phẳng song song (SAB)",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003847",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Giao tuyến (SAB),(SCD) chứa AB∥CD, giao tuyến qua S song song",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng chứa hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC003848",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Giao tuyến (SAB),(IJG) nhờ IJ∥AB, giao tuyến qua G song song AB",
+  "can_cu": "vận dụng tính chất đường thẳng song song mặt phẳng để tìm giao tuyến, chứng minh hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC003849",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Giao tuyến (AG1G2),(ABC) nhờ G1G2∥BC, qua A song song",
+  "can_cu": "vận dụng tính chất đường thẳng song song mặt phẳng để tìm giao tuyến, chứng minh hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC003850",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Chứng minh MN song song giao tuyến, dựa AD∥BC và hình bình hành",
+  "can_cu": "chứng minh hai đường thẳng song song (bằng đường trung bình, định lí Thales đảo, hình bình hành"
+ },
+ {
+  "ma_cau": "HHC003851",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: chứng minh (SBC)∥(OMN), (OMR)∥(SCD)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003852",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: chứng minh (MNP)∥(ABC), (HGL)∥(MNP)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003853",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: chứng minh (ADF)∥(BCE), (DEF)∥(MM′N′N)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003854",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: hình hộp, chứng minh (GHK)∥(A′BCD′)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003855",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: lăng trụ, chứng minh (MNQ)∥(A′B′C)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003976",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Nhận biết định nghĩa vị trí tương đối của hai đường thẳng",
+  "can_cu": "xét vị trí tương đối của hai đường thẳng trong không gian (cắt nhau, song song, chéo nhau, trùng nhau)"
+ },
+ {
+  "ma_cau": "HHC003977",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Xét EF song song AC nên EF song song mặt phẳng nào",
+  "can_cu": "nhận biết vị trí tương đối của đường thẳng và mặt phẳng (cắt, song song, nằm trong)"
+ },
+ {
+  "ma_cau": "HHC003978",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003979",
+  "dang_bai_id": "HH00148",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng (α) song song (SAB) cắt hình chóp, tính diện tích thiết diện MNPQ",
+  "can_cu": "tính chu vi, diện tích thiết diện (kể cả tỉ số diện tích)"
+ },
+ {
+  "ma_cau": "HHC003980",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Chứng minh BD∥(MNP) rồi tìm giao tuyến nhờ đường thẳng song song mặt phẳng",
+  "can_cu": "vận dụng tính chất đường thẳng song song mặt phẳng để tìm giao tuyến, chứng minh hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC003981",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm giao tuyến (SAB),(SCD) chứa AB∥CD",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng chứa hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC003982",
+  "dang_bai_id": "HH00141",
+  "chac": "vua",
+  "ly_do": "Xét MP song song mặt phẳng nào; lời giải đi qua mặt phẳng song song",
+  "can_cu": "nhận biết vị trí tương đối của đường thẳng và mặt phẳng (cắt, song song, nằm trong)"
+ },
+ {
+  "ma_cau": "HHC003983",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003984",
+  "dang_bai_id": "HH00141",
+  "chac": "vua",
+  "ly_do": "Dùng điều kiện GM∥(SCD) để xác định M rồi so diện tích; không tìm giao điểm",
+  "can_cu": "vận dụng tính chất đường thẳng song song mặt phẳng để tìm giao tuyến, chứng minh hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC003985",
+  "dang_bai_id": "HH00148",
+  "chac": "cao",
+  "ly_do": "Xác định giao tuyến của (MNP) với các mặt hình chóp, tức thiết diện",
+  "can_cu": "xác định thiết diện, nhận biết hình dạng, số cạnh của thiết diện"
+ },
+ {
+  "ma_cau": "HHC003986",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Xét đúng sai các mệnh đề về song song, chéo nhau, đồng phẳng",
+  "can_cu": "xét vị trí tương đối của hai đường thẳng trong không gian (cắt nhau, song song, chéo nhau, trùng nhau)"
+ },
+ {
+  "ma_cau": "HHC003987",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Tính chất đường thẳng a song song mặt phẳng (P) với b nằm trong (P)",
+  "can_cu": "nhận biết vị trí tương đối của đường thẳng và mặt phẳng (cắt, song song, nằm trong)"
+ },
+ {
+  "ma_cau": "HHC003988",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: khẳng định về ba mặt phẳng phân biệt song song",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003989",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Phép chiếu song song: tính chất bảo toàn trung điểm của phép chiếu",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003990",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003991",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003992",
+  "dang_bai_id": "HH00148",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng (MNO) cắt hình chóp, hỏi số cạnh của thiết diện",
+  "can_cu": "xác định thiết diện, nhận biết hình dạng, số cạnh của thiết diện"
+ },
+ {
+  "ma_cau": "HHC003993",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: mặt nước song song đáy bể chia thang theo tỉ lệ (Thales không gian)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC004021",
+  "dang_bai_id": "HH00087",
+  "chac": "vua",
+  "ly_do": "Nhận biết hình biểu diễn của hình chóp tứ giác, phụ thuộc hình vẽ",
+  "can_cu": "nhận biết yếu tố của hình chóp, tứ diện (số đỉnh, cạnh, mặt) và hình biểu diễn"
+ },
+ {
+  "ma_cau": "HHC004022",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Nhận biết cặp đường thẳng chéo nhau trong tứ diện",
+  "can_cu": "xét vị trí tương đối của hai đường thẳng trong không gian (cắt nhau, song song, chéo nhau, trùng nhau)"
+ },
+ {
+  "ma_cau": "HHC004023",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Phân biệt điểm thuộc đường thẳng, mặt phẳng; ký hiệu liên thuộc",
+  "can_cu": "nhận biết điểm, đường thẳng, mặt phẳng và các cách xác định mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC004024",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Số mặt phẳng chứa ba đỉnh tam giác: cách xác định mặt phẳng",
+  "can_cu": "nhận biết điểm, đường thẳng, mặt phẳng và các cách xác định mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC004025",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Đối chiếu các tính chất thừa nhận về giao hai mặt phẳng",
+  "can_cu": "nhận biết điểm, đường thẳng, mặt phẳng và các cách xác định mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC004026",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "I thuộc hai mặt bên nên thuộc giao tuyến, tìm giao tuyến bằng điểm chung",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC004027",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao tuyến qua S và giao điểm của hai đường, điểm chung",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC004028",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Tìm giao điểm của SO với (ADL) bằng mặt phẳng phụ",
+  "can_cu": "tìm giao điểm của đường thẳng và mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC004029",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Giao tuyến (SAB),(SCD) song song AB, CD vì đáy hình bình hành",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng chứa hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC004030",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Hai trọng tâm cho IJ∥CD, xét vị trí hai đường thẳng",
+  "can_cu": "chứng minh hai đường thẳng song song (bằng đường trung bình, định lí Thales đảo, hình bình hành"
+ },
+ {
+  "ma_cau": "HHC004031",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Tính chất của hai đường thẳng chéo nhau",
+  "can_cu": "xét vị trí tương đối của hai đường thẳng trong không gian (cắt nhau, song song, chéo nhau, trùng nhau)"
+ },
+ {
+  "ma_cau": "HHC004032",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "MN∥AB nên giao tuyến (ABC),(CMN) song song AB qua định lí giao tuyến",
+  "can_cu": "vận dụng tính chất đường thẳng song song mặt phẳng để tìm giao tuyến, chứng minh hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC004033",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "Tìm giao điểm S của AD với (PQR) rồi tính tỉ số AD/DS",
+  "can_cu": "tìm giao điểm (hoặc giao tuyến) của đường thẳng với mặt phẳng rồi TÍNH tỉ số độ dài các đoạn thẳng thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC004034",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: hình hộp, mặt phẳng song song",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC004035",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: tìm mặt phẳng song song với (MNO)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC004036",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Phép chiếu song song: hình chiếu song song của điểm A",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC004037",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC004038",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC004039",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC004040",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC004041",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Chứng minh AC∥(SMN), G1G2∥(SAC) và tìm giao tuyến nhờ song song",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC004042",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Giao tuyến, MN∥(ABC), IN song song nhờ đáy hình thang và trọng tâm",
+  "can_cu": "vận dụng tính chất đường thẳng song song mặt phẳng để tìm giao tuyến, chứng minh hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC004043",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: chứng minh (ADF)∥(BCE), (DEF)∥(MM′N′N)",
+  "can_cu": null
+ }
+]

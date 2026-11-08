@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "HHC003757",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "đếm số cạnh của hình tứ diện",
+  "can_cu": "nhận biết yếu tố của hình chóp, tứ diện (số đỉnh, cạnh, mặt)"
+ },
+ {
+  "ma_cau": "HHC003758",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "định nghĩa tứ diện: bốn điểm A,B,C,D không đồng phẳng",
+  "can_cu": "nhận biết yếu tố của hình chóp, tứ diện (số đỉnh, cạnh, mặt)"
+ },
+ {
+  "ma_cau": "HHC003759",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "các mặt của tứ diện là tam giác",
+  "can_cu": "nhận biết yếu tố của hình chóp, tứ diện (số đỉnh, cạnh, mặt)"
+ },
+ {
+  "ma_cau": "HHC003760",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "tên hình chóp tứ giác theo mặt đáy",
+  "can_cu": "nhận biết yếu tố của hình chóp, tứ diện (số đỉnh, cạnh, mặt)"
+ },
+ {
+  "ma_cau": "HHC003761",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "giao tuyến (SAB),(SBC) là SB bằng hai điểm chung",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003762",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "giao tuyến (SAO),(SBD) là SO bằng hai điểm chung S, O",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003763",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "đường thẳng cắt hai đường thì đồng phẳng, dùng tiên đề điểm chung",
+  "can_cu": "Có một và chỉ một mặt phẳng đi qua ba điểm không thẳng hàng cho trước"
+ },
+ {
+  "ma_cau": "HHC003764",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "các vị trí tương đối của hai đường thẳng, định nghĩa chéo nhau",
+  "can_cu": "xét vị trí tương đối của hai đường thẳng trong không gian (cắt nhau, song song, chéo nhau, trùng nhau)"
+ },
+ {
+  "ma_cau": "HHC003765",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "mệnh đề sai trong tiên đề: qua ba điểm không thẳng hàng mới xác định mặt phẳng",
+  "can_cu": "Có một và chỉ một mặt phẳng đi qua ba điểm không thẳng hàng cho trước"
+ },
+ {
+  "ma_cau": "HHC003766",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "ba đường thẳng cắt nhau từng đôi: đồng quy hoặc đồng phẳng",
+  "can_cu": "các cách xác định mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003767",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "giao tuyến (SAB),(SCD) qua S song song AB, CD",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng chứa hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC003768",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "giao tuyến (SAB),(IJG) qua G song song AB, IJ, CD",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng chứa hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC003769",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "mệnh đề đúng về hai đường thẳng chéo nhau, đồng phẳng",
+  "can_cu": "xét vị trí tương đối của hai đường thẳng trong không gian (cắt nhau, song song, chéo nhau, trùng nhau)"
+ },
+ {
+  "ma_cau": "HHC003770",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "mệnh đề sai về ba đường thẳng phân biệt, song song và cắt nhau",
+  "can_cu": "xét vị trí tương đối của hai đường thẳng trong không gian (cắt nhau, song song, chéo nhau, trùng nhau)"
+ },
+ {
+  "ma_cau": "HHC003771",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "mệnh đề sai về mặt phẳng (P) song song hai đường thẳng a∥b",
+  "can_cu": "nhận biết vị trí tương đối của đường thẳng và mặt phẳng (cắt, song song, nằm trong)"
+ },
+ {
+  "ma_cau": "HHC003772",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "GE song song CD nhờ hai trọng tâm và tỉ số trên trung tuyến",
+  "can_cu": "định lí Thales đảo"
+ },
+ {
+  "ma_cau": "HHC003773",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "các đoạn nối trung điểm cạnh tứ diện, song song hoặc đồng quy",
+  "can_cu": "đường trung bình"
+ },
+ {
+  "ma_cau": "HHC003774",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "hai đường thẳng nằm trong hai mặt phẳng cắt nhau, xét vị trí tương đối",
+  "can_cu": "xét vị trí tương đối của hai đường thẳng trong không gian (cắt nhau, song song, chéo nhau, trùng nhau)"
+ },
+ {
+  "ma_cau": "HHC003775",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "tìm cặp đường thẳng cắt nhau trong hình chóp",
+  "can_cu": "xét vị trí tương đối của hai đường thẳng trong không gian (cắt nhau, song song, chéo nhau, trùng nhau)"
+ },
+ {
+  "ma_cau": "HHC003776",
+  "dang_bai_id": "HH00141",
+  "chac": "vua",
+  "ly_do": "mệnh đề đúng về đường thẳng và mặt phẳng không có điểm chung thì song song",
+  "can_cu": "nhận biết vị trí tương đối của đường thẳng và mặt phẳng (cắt, song song, nằm trong)"
+ },
+ {
+  "ma_cau": "HHC003777",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "MG song song một mặt phẳng nhờ so sánh tỉ số trên tam giác",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003778",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "PR∥AC nên PR∥(ACD), giao tuyến (PQR),(ACD) qua Q song song AC",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003779",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "MN∥BC nên giao tuyến d∥BC, suy ra d song song (ABC)",
+  "can_cu": "nhận biết vị trí tương đối của đường thẳng và mặt phẳng (cắt, song song, nằm trong)"
+ },
+ {
+  "ma_cau": "HHC003780",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "MN đường trung bình tam giác SAB nên MN song song một mặt phẳng",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003781",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "đếm mệnh đề đúng về đường thẳng song song mặt phẳng và giao tuyến",
+  "can_cu": "Nếu hai mặt phẳng cắt nhau cùng song song với một đường thẳng"
+ },
+ {
+  "ma_cau": "HHC003782",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "đếm số mặt phẳng chứa a và song song với đường thẳng chéo b",
+  "can_cu": "nhận biết vị trí tương đối của đường thẳng và mặt phẳng (cắt, song song, nằm trong)"
+ },
+ {
+  "ma_cau": "HHC003783",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "hai mặt phẳng cùng song song với một đường thẳng thì giao tuyến song song nó",
+  "can_cu": "Nếu hai mặt phẳng cắt nhau cùng song song với một đường thẳng"
+ },
+ {
+  "ma_cau": "HHC003784",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "MN đường trung bình nên MN∥(ABC)",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003785",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "đúng là hai đường thẳng cắt nhau xác định mặt phẳng; các phương án về xác định mặt phẳng",
+  "can_cu": "các cách xác định mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003786",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "hai đường thẳng cùng song song một mặt phẳng chưa chắc song song nhau",
+  "can_cu": "nhận biết vị trí tương đối của đường thẳng và mặt phẳng (cắt, song song, nằm trong)"
+ },
+ {
+  "ma_cau": "HHC003787",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: hai mặt phẳng phân biệt song song hay cắt nhau, điều kiện hai mặt phẳng song song",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003788",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: mệnh đề sai về hai mặt phẳng song song và đường thẳng cắt chúng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003789",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: hai hình bình hành chung cạnh, chứng minh hai mặt phẳng song song",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003790",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: đáp án (A'C'D')∥(ABC), hai mặt phẳng song song",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003791",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: tính chất của hai mặt phẳng song song",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003792",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: điều kiện để hai mặt phẳng song song",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003793",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: đếm mặt phẳng chứa a và song song với (P), hai mặt phẳng song song",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003794",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: hai đường thẳng nằm trong hai mặt phẳng song song",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003795",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "chọn khẳng định sai: hai đường thẳng cùng song song một mặt phẳng chưa chắc song song",
+  "can_cu": "nhận biết vị trí tương đối của đường thẳng và mặt phẳng (cắt, song song, nằm trong)"
+ },
+ {
+  "ma_cau": "HHC003796",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: tính chất hình lăng trụ, hình hộp",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003797",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: hình hộp, tìm mặt phẳng song song (AB'D')",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003798",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "mệnh đề sai: hai đường thẳng cùng song song một mặt phẳng chưa chắc song song",
+  "can_cu": "nhận biết vị trí tương đối của đường thẳng và mặt phẳng (cắt, song song, nằm trong)"
+ },
+ {
+  "ma_cau": "HHC003799",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: tính chất hai mặt phẳng song song",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003800",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: tính chất hình lăng trụ, hình hộp",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003801",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: hai mặt phẳng cùng song song mặt phẳng thứ ba",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003802",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "CB' song song HE đường trung bình, suy ra CB' song song (AC'D')",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003803",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "mệnh đề sai: hai đường thẳng cùng song song một mặt phẳng chưa chắc song song",
+  "can_cu": "nhận biết vị trí tương đối của đường thẳng và mặt phẳng (cắt, song song, nằm trong)"
+ },
+ {
+  "ma_cau": "HHC003804",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: tính chất đường thẳng nằm trong hai mặt phẳng song song",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003805",
+  "dang_bai_id": "HH00141",
+  "chac": "vua",
+  "ly_do": "OM∥SC, MN∥(SBC), ON và CB; khẳng định sai trộn quan hệ đường và mặt phẳng",
+  "can_cu": "nhận biết vị trí tương đối của đường thẳng và mặt phẳng (cắt, song song, nằm trong)"
+ },
+ {
+  "ma_cau": "HHC003806",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: dấu hiệu nhận biết hai mặt phẳng song song",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003807",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003808",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003809",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003810",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003811",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003812",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003813",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003814",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003815",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003816",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003817",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC003818",
+  "dang_bai_id": "HH00148",
+  "chac": "cao",
+  "ly_do": "mặt phẳng qua G song song (BCD) cắt các mặt tứ diện, tính diện tích đa giác",
+  "can_cu": "tính chu vi, diện tích thiết diện"
+ },
+ {
+  "ma_cau": "HHC003819",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "giao điểm P của AD với (KLN), tính tỉ số PA/PD",
+  "can_cu": "Tìm giao điểm của đường thẳng với mặt phẳng rồi tính tỉ số"
+ },
+ {
+  "ma_cau": "HHC003820",
+  "dang_bai_id": "HH00148",
+  "chac": "cao",
+  "ly_do": "mặt phẳng song song đáy cắt hình chóp, thiết diện tứ giác đồng dạng, tính diện tích",
+  "can_cu": "tính chu vi, diện tích thiết diện"
+ },
+ {
+  "ma_cau": "HHC003821",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "giao điểm P của SC với (AMN), tính SP=k·SC",
+  "can_cu": "Tìm giao điểm của đường thẳng với mặt phẳng rồi tính tỉ số"
+ },
+ {
+  "ma_cau": "HHC003822",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "giao điểm M của SB với (AEF), tính tỉ số SM/SB",
+  "can_cu": "Tìm giao điểm của đường thẳng với mặt phẳng rồi tính tỉ số"
+ },
+ {
+  "ma_cau": "HHC003823",
+  "dang_bai_id": "HH00147",
+  "chac": "vua",
+  "ly_do": "mặt phẳng qua AI song song BD cắt SD tại K, tính tỉ số diện tích SIK/SCD",
+  "can_cu": "Tìm giao điểm của đường thẳng với mặt phẳng rồi tính tỉ số"
+ },
+ {
+  "ma_cau": "HHC003824",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "giao tuyến (MBC) với (ABCD) và (SAB) bằng hai điểm chung",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003825",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "giao tuyến (SCM),(SAN) bằng điểm chung S và trọng tâm",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC003826",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "giao tuyến (SAM),(SBC) bằng điểm chung S và giao điểm trong đáy",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ }
+]

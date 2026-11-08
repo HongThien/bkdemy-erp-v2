@@ -1,0 +1,1845 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00354",
+   "khoi": "7",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Khái quát về trao đổi chất & chuyển hóa năng lượng",
+   "nhom": "Phân biệt sinh vật tự dưỡng và sinh vật dị dưỡng",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "I. LÝ THUYẾT DẠNG BÀI\nDựa vào cách lấy chất hữu cơ, sinh vật được chia thành hai nhóm.\n●\tSinh vật tự dưỡng: tự tổng hợp được chất hữu cơ từ các chất vô cơ là nước và carbon dioxide, nhờ năng lượng ánh sáng được diệp lục hấp thụ. Nhóm này gồm thực vật, tảo và một số vi khuẩn.\n●\tSinh vật dị dưỡng: không tự tổng hợp được chất hữu cơ, phải lấy chất hữu cơ có sẵn từ sinh vật khác. Nhóm này gồm động vật, con người, nấm và phần lớn vi khuẩn.\nDấu hiệu nhận biết nhanh: cơ thể có diệp lục và quang hợp được thì tự dưỡng; cơ thể không có diệp lục thì dị dưỡng.\nBa trường hợp dễ nhầm:\n●\tCây bắt mồi như cây nắp ấm, cây gọng vó vẫn có diệp lục và vẫn quang hợp nên thuộc nhóm tự dưỡng; việc bắt côn trùng chỉ nhằm bổ sung chất khoáng ở nơi đất nghèo dinh dưỡng.\n●\tCây tơ hồng, tơ xanh sống bám trên cây khác, thân màu vàng do không có diệp lục nên không quang hợp được, phải lấy chất hữu cơ của cây chủ, vì vậy thuộc nhóm dị dưỡng.\n●\tNấm tuy sống bám vào cây hoặc gỗ mục nhưng không có diệp lục nên cũng thuộc nhóm dị dưỡng.\nQuan hệ giữa hai nhóm: sinh vật tự dưỡng tạo ra chất hữu cơ và khí oxygen, là nguồn sống cho sinh vật dị dưỡng; nếu không còn sinh vật tự dưỡng thì sinh vật dị dưỡng cũng không tồn tại được.\nII. VÍ DỤ MINH HỌA\nVí dụ 1. Xếp các sinh vật sau vào nhóm tự dưỡng hoặc dị dưỡng và giải thích: cây ngô, con thỏ, nấm rơm, tảo lục.\nHướng dẫn: Cây ngô và tảo lục có diệp lục, tự tổng hợp được chất hữu cơ nên thuộc nhóm tự dưỡng. Con thỏ ăn cỏ và nấm rơm hút chất hữu cơ từ rơm rạ, cả hai đều không có diệp lục nên thuộc nhóm dị dưỡng.\nVí dụ 2. Cây tơ hồng sống bám trên cây bụi, thân màu vàng, không có lá xanh. Cây tơ hồng thuộc nhóm dinh dưỡng nào?\nHướng dẫn: Thân màu vàng cho thấy cây không có diệp lục nên không quang hợp được, toàn bộ chất hữu cơ phải lấy từ cây chủ. Vì vậy cây tơ hồng là sinh vật dị dưỡng, mặc dù nó là thực vật.",
+   "can_dien_ly_thuyet_nhom": false,
+   "cau": [
+    {
+     "ma_cau": "K07070103001",
+     "loai": "trac_nghiem",
+     "de": "Sinh vật tự dưỡng là những sinh vật",
+     "lua_chon": [
+      "không cần trao đổi chất với môi trường.",
+      "chỉ sống được trong bóng tối.",
+      "lấy chất hữu cơ có sẵn từ sinh vật khác.",
+      "tự tổng hợp được chất hữu cơ từ chất vô cơ."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nhờ diệp lục và năng lượng ánh sáng, sinh vật tự dưỡng tạo được chất hữu cơ từ nước và carbon dioxide."
+    },
+    {
+     "ma_cau": "K07070103002",
+     "loai": "trac_nghiem",
+     "de": "Sinh vật dị dưỡng là những sinh vật",
+     "lua_chon": [
+      "lấy chất hữu cơ có sẵn từ sinh vật khác.",
+      "sống được nhờ ánh sáng mặt trời trực tiếp.",
+      "không cần chất hữu cơ để sống.",
+      "tự tổng hợp được chất hữu cơ."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Không có diệp lục nên nhóm này phải sử dụng nguồn chất hữu cơ do sinh vật khác tạo ra."
+    },
+    {
+     "ma_cau": "K07070103003",
+     "loai": "trac_nghiem",
+     "de": "Nhóm sinh vật nào sau đây gồm toàn sinh vật tự dưỡng?",
+     "lua_chon": [
+      "Cây lúa, tảo lục, cây ngô.",
+      "Con thỏ, con cá, cây bắp cải.",
+      "Nấm men, vi khuẩn lam, con gà.",
+      "Cây lúa, con bò, nấm rơm."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cả ba sinh vật này đều có diệp lục và tự tổng hợp được chất hữu cơ."
+    },
+    {
+     "ma_cau": "K07070103004",
+     "loai": "trac_nghiem",
+     "de": "Nhóm sinh vật nào sau đây gồm toàn sinh vật dị dưỡng?",
+     "lua_chon": [
+      "Cây thông, cây dương xỉ, rêu.",
+      "Cây bàng, con mèo, tảo lục.",
+      "Con trâu, nấm hương, con cá.",
+      "Cây rêu, cây ngô, con gà."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cả ba đều không có diệp lục và phải lấy chất hữu cơ có sẵn."
+    },
+    {
+     "ma_cau": "K07070103005",
+     "loai": "trac_nghiem",
+     "de": "Dấu hiệu nào giúp nhận biết nhanh một sinh vật thuộc nhóm tự dưỡng?",
+     "lua_chon": [
+      "Cơ thể sống trên cạn.",
+      "Cơ thể có diệp lục và quang hợp được.",
+      "Cơ thể có kích thước lớn.",
+      "Cơ thể có khả năng di chuyển."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Diệp lục là điều kiện để hấp thụ năng lượng ánh sáng phục vụ tổng hợp chất hữu cơ."
+    },
+    {
+     "ma_cau": "K07070103006",
+     "loai": "trac_nghiem",
+     "de": "Nấm thuộc nhóm dinh dưỡng nào và vì sao?",
+     "lua_chon": [
+      "Dị dưỡng, vì nấm có kích thước nhỏ.",
+      "Tự dưỡng, vì nấm sống bám vào cây xanh.",
+      "Dị dưỡng, vì nấm không có diệp lục nên phải lấy chất hữu cơ có sẵn.",
+      "Tự dưỡng, vì nấm có màu sắc."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Việc sống bám không tạo ra chất hữu cơ; điều quyết định là nấm không có diệp lục."
+    },
+    {
+     "ma_cau": "K07070103007",
+     "loai": "trac_nghiem",
+     "de": "Cây nắp ấm bắt và tiêu hoá côn trùng. Cây nắp ấm thuộc nhóm dinh dưỡng nào?",
+     "lua_chon": [
+      "Vừa tự dưỡng vừa không cần quang hợp.",
+      "Dị dưỡng, vì cây ăn côn trùng.",
+      "Không thuộc nhóm nào.",
+      "Tự dưỡng, vì cây vẫn có diệp lục và quang hợp được."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cây vẫn tổng hợp chất hữu cơ nhờ quang hợp, việc bắt mồi chỉ bổ sung chất khoáng."
+    },
+    {
+     "ma_cau": "K07070103008",
+     "loai": "trac_nghiem",
+     "de": "Cây tơ hồng có thân màu vàng, sống bám trên cây khác. Cây tơ hồng thuộc nhóm dinh dưỡng nào?",
+     "lua_chon": [
+      "Tự dưỡng, vì nó là thực vật.",
+      "Tự dưỡng, vì nó sống ngoài ánh sáng.",
+      "Dị dưỡng, vì nó có thân mềm.",
+      "Dị dưỡng, vì nó không có diệp lục nên phải lấy chất hữu cơ từ cây chủ."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Không có diệp lục thì không quang hợp được, dù thuộc giới Thực vật vẫn phải sống dị dưỡng."
+    },
+    {
+     "ma_cau": "K07070103009",
+     "loai": "trac_nghiem",
+     "de": "Nguyên liệu mà sinh vật tự dưỡng dùng để tổng hợp chất hữu cơ là",
+     "lua_chon": [
+      "nước và carbon dioxide.",
+      "khí oxygen và chất đạm.",
+      "chất hữu cơ có sẵn.",
+      "thức ăn từ sinh vật khác."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đây là hai chất vô cơ được lấy từ môi trường và biến đổi thành chất hữu cơ khi quang hợp."
+    },
+    {
+     "ma_cau": "K07070103010",
+     "loai": "trac_nghiem",
+     "de": "Vì sao nói sinh vật dị dưỡng phụ thuộc vào sinh vật tự dưỡng?",
+     "lua_chon": [
+      "Vì sinh vật tự dưỡng có kích thước lớn hơn.",
+      "Vì chất hữu cơ mà sinh vật dị dưỡng sử dụng đều do sinh vật tự dưỡng tạo ra.",
+      "Vì sinh vật tự dưỡng sống lâu hơn.",
+      "Vì sinh vật dị dưỡng không cần năng lượng."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nguồn chất hữu cơ và khí oxygen trên Trái Đất chủ yếu bắt nguồn từ hoạt động quang hợp."
+    },
+    {
+     "ma_cau": "K07070103011",
+     "loai": "trac_nghiem",
+     "de": "Con người thuộc nhóm dinh dưỡng nào?",
+     "lua_chon": [
+      "Không thuộc nhóm nào.",
+      "Dị dưỡng.",
+      "Vừa tự dưỡng vừa dị dưỡng.",
+      "Tự dưỡng."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Con người không có diệp lục, mọi chất hữu cơ đều lấy từ thức ăn."
+    },
+    {
+     "ma_cau": "K07070103012",
+     "loai": "trac_nghiem",
+     "de": "Tảo lục sống trong nước ao thuộc nhóm dinh dưỡng nào?",
+     "lua_chon": [
+      "Tự dưỡng, vì tảo có diệp lục và quang hợp được.",
+      "Dị dưỡng, vì tảo sống trong nước.",
+      "Dị dưỡng, vì tảo có kích thước nhỏ.",
+      "Không thuộc nhóm nào."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tảo có diệp lục nên tự tổng hợp được chất hữu cơ như thực vật."
+    },
+    {
+     "ma_cau": "K07070103013",
+     "loai": "trac_nghiem",
+     "de": "Điểm khác nhau cơ bản giữa sinh vật tự dưỡng và sinh vật dị dưỡng là",
+     "lua_chon": [
+      "cách lấy chất hữu cơ cho cơ thể.",
+      "nơi sống trên cạn hay dưới nước.",
+      "kích thước của cơ thể.",
+      "khả năng di chuyển."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Một bên tự tổng hợp chất hữu cơ, một bên phải sử dụng chất hữu cơ có sẵn."
+    },
+    {
+     "ma_cau": "K07070103014",
+     "loai": "trac_nghiem",
+     "de": "Vi khuẩn lam có khả năng quang hợp. Vi khuẩn lam thuộc nhóm dinh dưỡng nào?",
+     "lua_chon": [
+      "Chuyển từ dị dưỡng sang tự dưỡng theo mùa.",
+      "Không thuộc nhóm nào.",
+      "Dị dưỡng.",
+      "Tự dưỡng."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Có khả năng quang hợp nghĩa là tự tổng hợp được chất hữu cơ."
+    },
+    {
+     "ma_cau": "K07070103015",
+     "loai": "trac_nghiem",
+     "de": "Nếu toàn bộ sinh vật tự dưỡng trên Trái Đất biến mất thì điều gì sẽ xảy ra với sinh vật dị dưỡng?",
+     "lua_chon": [
+      "Không bị ảnh hưởng gì.",
+      "Sinh trưởng nhanh hơn do bớt cạnh tranh.",
+      "Chuyển thành sinh vật tự dưỡng.",
+      "Mất nguồn chất hữu cơ và khí oxygen nên không tồn tại được lâu."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Sinh vật dị dưỡng sống dựa hoàn toàn vào chất hữu cơ và oxygen do nhóm tự dưỡng tạo ra."
+    },
+    {
+     "ma_cau": "K07070103016",
+     "loai": "trac_nghiem",
+     "de": "Cây gọng vó bắt côn trùng nhỏ ở vùng đất nghèo dinh dưỡng. Mục đích chủ yếu của việc này là",
+     "lua_chon": [
+      "bổ sung chất khoáng còn thiếu trong đất.",
+      "giảm bớt lượng nước trong cơ thể.",
+      "thay thế cho quá trình quang hợp.",
+      "tăng lượng diệp lục cho lá."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cây vẫn quang hợp bình thường, côn trùng chỉ là nguồn cung cấp thêm chất khoáng."
+    },
+    {
+     "ma_cau": "K07070103017",
+     "loai": "trac_nghiem",
+     "de": "Sinh vật nào sau đây không thuộc nhóm tự dưỡng?",
+     "lua_chon": [
+      "Cây rêu.",
+      "Tảo lục.",
+      "Nấm linh chi.",
+      "Cây phượng."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nấm linh chi không có diệp lục nên phải lấy chất hữu cơ có sẵn."
+    },
+    {
+     "ma_cau": "K07070103018",
+     "loai": "trac_nghiem",
+     "de": "Sinh vật nào sau đây không thuộc nhóm dị dưỡng?",
+     "lua_chon": [
+      "Con giun đất.",
+      "Con ong.",
+      "Cây bèo tấm.",
+      "Nấm men."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Bèo tấm là thực vật có diệp lục, tự tổng hợp được chất hữu cơ."
+    },
+    {
+     "ma_cau": "K07070103019",
+     "loai": "trac_nghiem",
+     "de": "Yếu tố nào sau đây là điều kiện bắt buộc để một sinh vật sống tự dưỡng theo kiểu quang hợp?",
+     "lua_chon": [
+      "Sống ở nơi có nhiệt độ thấp.",
+      "Có diệp lục và được chiếu sáng.",
+      "Có khả năng di chuyển nhanh.",
+      "Có bộ rễ phát triển."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thiếu một trong hai điều kiện này thì quá trình tổng hợp chất hữu cơ không diễn ra được."
+    },
+    {
+     "ma_cau": "K07070103020",
+     "loai": "trac_nghiem",
+     "de": "Trong một khu rừng, nhóm sinh vật nào tạo ra nguồn chất hữu cơ ban đầu?",
+     "lua_chon": [
+      "Các loài thú ăn thịt.",
+      "Các loài nấm.",
+      "Các loài cây xanh.",
+      "Các loài côn trùng."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cây xanh quang hợp và tạo ra chất hữu cơ nuôi các sinh vật còn lại."
+    },
+    {
+     "ma_cau": "K07070103021",
+     "loai": "trac_nghiem",
+     "de": "Một cây trồng trong tối lâu ngày sẽ chết dần vì",
+     "lua_chon": [
+      "cây không thải được khí carbon dioxide.",
+      "cây bị mất hết chất khoáng.",
+      "cây không tổng hợp được chất hữu cơ để nuôi cơ thể.",
+      "cây không lấy được nước từ đất."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Không có ánh sáng thì hình thức dinh dưỡng tự dưỡng của cây không thực hiện được."
+    },
+    {
+     "ma_cau": "K07070103022",
+     "loai": "trac_nghiem",
+     "de": "Vì sao nấm sống trên thân cây gỗ mục vẫn được xếp vào nhóm dị dưỡng?",
+     "lua_chon": [
+      "Vì nấm có màu trắng.",
+      "Vì nấm sống nơi ẩm ướt.",
+      "Vì nấm mọc thành cụm.",
+      "Vì nấm lấy chất hữu cơ từ gỗ mục chứ không tự tổng hợp được."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nguồn chất hữu cơ nuôi nấm hoàn toàn lấy từ xác thực vật đang phân huỷ."
+    },
+    {
+     "ma_cau": "K07070103023",
+     "loai": "trac_nghiem",
+     "de": "Trong hai nhóm dinh dưỡng, nhóm nào cung cấp khí oxygen cho khí quyển?",
+     "lua_chon": [
+      "Cả hai nhóm như nhau.",
+      "Không nhóm nào.",
+      "Nhóm dị dưỡng.",
+      "Nhóm tự dưỡng."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Oxygen là sản phẩm của quá trình quang hợp ở sinh vật tự dưỡng."
+    },
+    {
+     "ma_cau": "K07070103024",
+     "loai": "trac_nghiem",
+     "de": "Bò, cừu và dê ăn cỏ. Ba loài này thuộc nhóm dinh dưỡng nào?",
+     "lua_chon": [
+      "Dị dưỡng, vì chúng lấy chất hữu cơ có sẵn từ cỏ.",
+      "Tự dưỡng, vì chúng sống ngoài đồng cỏ.",
+      "Tự dưỡng, vì chúng ăn thực vật.",
+      "Không thuộc nhóm nào."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ăn thực vật vẫn là sử dụng chất hữu cơ do sinh vật khác tạo ra."
+    },
+    {
+     "ma_cau": "K07070103025",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây đúng?",
+     "lua_chon": [
+      "Mọi thực vật đều là sinh vật tự dưỡng.",
+      "Mọi vi khuẩn đều là sinh vật tự dưỡng.",
+      "Có thực vật sống dị dưỡng như cây tơ hồng.",
+      "Nấm là sinh vật tự dưỡng."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cây tơ hồng không có diệp lục nên phải sống nhờ chất hữu cơ của cây chủ."
+    },
+    {
+     "ma_cau": "K07070103026",
+     "loai": "trac_nghiem",
+     "de": "Sinh vật tự dưỡng lấy năng lượng để tổng hợp chất hữu cơ từ",
+     "lua_chon": [
+      "thức ăn có sẵn.",
+      "chuyển động của gió.",
+      "nhiệt của đất.",
+      "ánh sáng mặt trời."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Năng lượng ánh sáng được diệp lục hấp thụ và tích luỹ vào chất hữu cơ."
+    },
+    {
+     "ma_cau": "K07070103027",
+     "loai": "trac_nghiem",
+     "de": "Trong ao nuôi cá, nhóm sinh vật nào giúp bổ sung khí oxygen hoà tan cho nước?",
+     "lua_chon": [
+      "Tảo và các thực vật thuỷ sinh.",
+      "Cá và tôm.",
+      "Vi khuẩn phân huỷ.",
+      "Ốc và trai."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đây là những sinh vật tự dưỡng, quang hợp và thải oxygen ngay trong nước."
+    },
+    {
+     "ma_cau": "K07070103028",
+     "loai": "trac_nghiem",
+     "de": "Điểm giống nhau giữa sinh vật tự dưỡng và sinh vật dị dưỡng là",
+     "lua_chon": [
+      "đều có diệp lục.",
+      "đều không cần khí oxygen.",
+      "đều quang hợp được.",
+      "đều thực hiện trao đổi chất và chuyển hoá năng lượng."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Mọi cơ thể sống đều trao đổi chất với môi trường, dù cách lấy chất hữu cơ khác nhau."
+    },
+    {
+     "ma_cau": "K07070103029",
+     "loai": "trac_nghiem",
+     "de": "Một loài sinh vật đơn bào sống trong nước, có diệp lục và quang hợp được. Loài đó thuộc nhóm nào?",
+     "lua_chon": [
+      "Dị dưỡng.",
+      "Tự dưỡng.",
+      "Chỉ tự dưỡng vào ban đêm.",
+      "Không thuộc nhóm nào."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Có diệp lục và quang hợp được là dấu hiệu của sinh vật tự dưỡng."
+    },
+    {
+     "ma_cau": "K07070103030",
+     "loai": "trac_nghiem",
+     "de": "Trong chuỗi thức ăn cỏ – châu chấu – ếch, sinh vật nào là sinh vật tự dưỡng?",
+     "lua_chon": [
+      "Cỏ.",
+      "Ếch.",
+      "Cá ba.",
+      "Châu chấu."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Chỉ cỏ có diệp lục và tự tổng hợp được chất hữu cơ."
+    },
+    {
+     "ma_cau": "K07070103031",
+     "loai": "trac_nghiem",
+     "de": "Vì sao động vật không thể sống tự dưỡng?",
+     "lua_chon": [
+      "Vì cơ thể động vật không có diệp lục nên không quang hợp được.",
+      "Vì động vật sống trên cạn.",
+      "Vì động vật có kích thước lớn.",
+      "Vì động vật di chuyển nhiều."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thiếu diệp lục thì không hấp thụ được năng lượng ánh sáng để tổng hợp chất hữu cơ."
+    },
+    {
+     "ma_cau": "K07070103032",
+     "loai": "trac_nghiem",
+     "de": "Một cây được trồng trong dung dịch dinh dưỡng, không có đất, vẫn xanh tốt dưới ánh sáng. Cây đó thuộc nhóm nào?",
+     "lua_chon": [
+      "Tự dưỡng, vì cây vẫn quang hợp tạo chất hữu cơ.",
+      "Dị dưỡng, vì cây không trồng trên đất.",
+      "Không thuộc nhóm nào.",
+      "Dị dưỡng, vì cây lấy chất từ dung dịch."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Dung dịch chỉ cung cấp nước và chất khoáng, còn chất hữu cơ vẫn do cây tự tổng hợp."
+    },
+    {
+     "ma_cau": "K07070103033",
+     "loai": "trac_nghiem",
+     "de": "Nhận định nào sau đây sai?",
+     "lua_chon": [
+      "Sinh vật dị dưỡng tự tạo được chất hữu cơ từ chất vô cơ.",
+      "Thực vật là nhóm sinh vật tự dưỡng điển hình.",
+      "Tảo là sinh vật tự dưỡng.",
+      "Nấm và động vật đều là sinh vật dị dưỡng."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nếu tự tạo được chất hữu cơ từ chất vô cơ thì đó đã là sinh vật tự dưỡng."
+    },
+    {
+     "ma_cau": "K07070103034",
+     "loai": "trac_nghiem",
+     "de": "Khi trồng nấm rơm, người ta phải ủ rơm rạ làm giá thể. Việc này nhằm cung cấp cho nấm",
+     "lua_chon": [
+      "khí carbon dioxide.",
+      "diệp lục.",
+      "nguồn chất hữu cơ để sống.",
+      "ánh sáng để quang hợp."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nấm là sinh vật dị dưỡng nên cần nguồn chất hữu cơ có sẵn từ rơm rạ."
+    },
+    {
+     "ma_cau": "K07070103035",
+     "loai": "trac_nghiem",
+     "de": "Vì sao trong nhà kính trồng rau, người ta vẫn phải chiếu sáng đầy đủ cho cây?",
+     "lua_chon": [
+      "Vì ánh sáng tiêu diệt sâu bệnh.",
+      "Vì ánh sáng làm đất tơi xốp.",
+      "Vì ánh sáng giúp cây thải bớt nước.",
+      "Vì cây là sinh vật tự dưỡng, cần ánh sáng để tổng hợp chất hữu cơ."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Không có ánh sáng thì quá trình quang hợp không diễn ra và cây không có chất hữu cơ để sống."
+    },
+    {
+     "ma_cau": "K07070103036",
+     "loai": "tra_loi_ngan",
+     "de": "Cây dương xỉ thuộc nhóm dinh dưỡng nào?",
+     "dap_an": "tự dưỡng",
+     "loi_giai": "Dương xỉ có diệp lục nên tự tổng hợp được chất hữu cơ."
+    },
+    {
+     "ma_cau": "K07070103037",
+     "loai": "tra_loi_ngan",
+     "de": "Con ong mật thuộc nhóm dinh dưỡng nào?",
+     "dap_an": "dị dưỡng",
+     "loi_giai": "Ong lấy chất hữu cơ có sẵn từ mật và phấn hoa."
+    },
+    {
+     "ma_cau": "K07070103038",
+     "loai": "tra_loi_ngan",
+     "de": "Cây rêu thuộc nhóm dinh dưỡng nào?",
+     "dap_an": "tự dưỡng",
+     "loi_giai": "Rêu có diệp lục và quang hợp được như các thực vật khác."
+    },
+    {
+     "ma_cau": "K07070103039",
+     "loai": "tra_loi_ngan",
+     "de": "Nhóm sinh vật nào tạo ra nguồn chất hữu cơ ban đầu cho các sinh vật khác?",
+     "dap_an": "tự dưỡng",
+     "loi_giai": "Chất hữu cơ nuôi sinh vật dị dưỡng đều bắt nguồn từ nhóm này."
+    },
+    {
+     "ma_cau": "K07070103040",
+     "loai": "tra_loi_ngan",
+     "de": "Nấm mốc mọc trên bánh mì thuộc nhóm dinh dưỡng nào?",
+     "dap_an": "dị dưỡng",
+     "loi_giai": "Nấm không có diệp lục nên phải dùng chất hữu cơ có sẵn."
+    },
+    {
+     "ma_cau": "K07070103041",
+     "loai": "tra_loi_ngan",
+     "de": "Sinh vật dị dưỡng có tự tổng hợp được chất hữu cơ từ chất vô cơ không?",
+     "dap_an": "không",
+     "loi_giai": "Đó chính là điểm khác biệt cơ bản với sinh vật tự dưỡng."
+    },
+    {
+     "ma_cau": "K07070103042",
+     "loai": "tra_loi_ngan",
+     "de": "Ngoài diệp lục, điều kiện còn lại để một sinh vật sống tự dưỡng theo kiểu quang hợp là gì?",
+     "dap_an": "ánh sáng",
+     "loi_giai": "Thiếu ánh sáng thì diệp lục không thu được năng lượng."
+    },
+    {
+     "ma_cau": "K07070103043",
+     "loai": "tra_loi_ngan",
+     "de": "Cá rô phi sống trong ao thuộc nhóm dinh dưỡng nào?",
+     "dap_an": "dị dưỡng",
+     "loi_giai": "Cá lấy chất hữu cơ từ thức ăn có sẵn trong ao."
+    },
+    {
+     "ma_cau": "K07070103044",
+     "loai": "tra_loi_ngan",
+     "de": "Cây lúa thuộc nhóm dinh dưỡng nào?",
+     "dap_an": "tự dưỡng",
+     "loi_giai": "Cây lúa có diệp lục và tự tổng hợp chất hữu cơ nhờ quang hợp."
+    },
+    {
+     "ma_cau": "K07070103045",
+     "loai": "tra_loi_ngan",
+     "de": "Vi khuẩn gây bệnh sống trong cơ thể người thuộc nhóm dinh dưỡng nào?",
+     "dap_an": "dị dưỡng",
+     "loi_giai": "Chúng sử dụng chất hữu cơ có sẵn của vật chủ."
+    },
+    {
+     "ma_cau": "K07070103046",
+     "loai": "tra_loi_ngan",
+     "de": "Sinh vật tự dưỡng biến các chất vô cơ thành loại chất nào?",
+     "dap_an": "chất hữu cơ",
+     "loi_giai": "Nguyên liệu là nước và carbon dioxide, sản phẩm là chất hữu cơ."
+    },
+    {
+     "ma_cau": "K07070103047",
+     "loai": "tra_loi_ngan",
+     "de": "Trong chuỗi thức ăn lá cây – sâu – chim sâu, sinh vật nào là sinh vật tự dưỡng?",
+     "dap_an": "lá cây",
+     "loi_giai": "Chỉ cây xanh có diệp lục và tự tổng hợp được chất hữu cơ."
+    },
+    {
+     "ma_cau": "K07070103048",
+     "loai": "tra_loi_ngan",
+     "de": "Nấm hương mọc trên gỗ mục lấy chất hữu cơ từ đâu?",
+     "dap_an": "gỗ mục",
+     "loi_giai": "Gỗ mục là xác thực vật đang phân huỷ, chứa nguồn chất hữu cơ cho nấm."
+    },
+    {
+     "ma_cau": "K07070103049",
+     "loai": "tra_loi_ngan",
+     "de": "Con người và động vật lấy chất hữu cơ cho cơ thể từ đâu?",
+     "dap_an": "thức ăn",
+     "loi_giai": "Không có diệp lục nên nguồn chất hữu cơ duy nhất là thức ăn."
+    },
+    {
+     "ma_cau": "K07070103050",
+     "loai": "tra_loi_ngan",
+     "de": "Sinh vật tự dưỡng thải ra chất khí nào khi tổng hợp chất hữu cơ?",
+     "dap_an": "oxygen",
+     "loi_giai": "Oxygen là sản phẩm của quá trình quang hợp."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00355",
+   "khoi": "7",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Quang hợp ở thực vật",
+   "nhom": "Nhận biết khái niệm, nguyên liệu, sản phẩm và phương trình quang hợp",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "I. LÝ THUYẾT DẠNG BÀI\nQuang hợp là quá trình lá cây sử dụng nước và khí carbon dioxide, nhờ năng lượng ánh sáng đã được diệp lục hấp thụ, để tổng hợp chất hữu cơ và giải phóng khí oxygen.\nPhương trình chữ của quang hợp:\n●\tNước + Carbon dioxide → (ánh sáng, diệp lục) → Glucose + Oxygen.\nBốn thành phần cần phân biệt rõ:\n●\tNguyên liệu: nước do rễ hút từ đất và khí carbon dioxide do lá lấy từ không khí qua khí khổng.\n●\tSản phẩm: glucose là chất hữu cơ được tạo thành và khí oxygen được giải phóng ra môi trường.\n●\tĐiều kiện: có ánh sáng và có diệp lục; thiếu một trong hai thì quang hợp không xảy ra.\n●\tNơi diễn ra: lục lạp trong tế bào thịt lá, vì lục lạp là bào quan chứa diệp lục.\nSố phận của sản phẩm: glucose được vận chuyển đi nuôi các bộ phận của cây hoặc được chuyển thành tinh bột để dự trữ trong củ, quả, hạt.\nVề mặt năng lượng, quang hợp là quá trình chuyển hoá quang năng của ánh sáng thành hoá năng tích luỹ trong chất hữu cơ.\nÝ nghĩa: quang hợp tạo ra nguồn chất hữu cơ nuôi sống hầu hết sinh vật, cung cấp khí oxygen và làm giảm lượng khí carbon dioxide, góp phần điều hoà không khí.\nII. VÍ DỤ MINH HỌA\nVí dụ 1. Viết phương trình chữ của quang hợp và chỉ rõ đâu là nguyên liệu, đâu là sản phẩm.\nHướng dẫn: Phương trình chữ là Nước + Carbon dioxide → (ánh sáng, diệp lục) → Glucose + Oxygen. Nguyên liệu nằm ở vế trái gồm nước và carbon dioxide; sản phẩm nằm ở vế phải gồm glucose và oxygen; ánh sáng và diệp lục là điều kiện, được ghi trên mũi tên chứ không phải nguyên liệu.\nVí dụ 2. Vì sao một cây được tưới nước đầy đủ nhưng đặt trong phòng kín tối om thì không thực hiện được quang hợp?\nHướng dẫn: Quang hợp cần đủ cả nguyên liệu lẫn điều kiện. Cây đã có nước nhưng thiếu ánh sáng, mà ánh sáng là điều kiện bắt buộc để diệp lục thu nhận năng lượng, nên quá trình tổng hợp chất hữu cơ không diễn ra được.",
+   "can_dien_ly_thuyet_nhom": false,
+   "cau": [
+    {
+     "ma_cau": "K07070201001",
+     "loai": "trac_nghiem",
+     "de": "Quang hợp là quá trình",
+     "lua_chon": [
+      "lá cây dùng nước và carbon dioxide, nhờ năng lượng ánh sáng và diệp lục, tổng hợp chất hữu cơ và thải oxygen.",
+      "lá cây dùng oxygen để phân giải chất hữu cơ.",
+      "rễ cây hút nước và chất khoáng từ đất.",
+      "cây thải hơi nước ra không khí."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đây là định nghĩa quang hợp, nêu đủ nguyên liệu, điều kiện và sản phẩm."
+    },
+    {
+     "ma_cau": "K07070201002",
+     "loai": "trac_nghiem",
+     "de": "Nguyên liệu của quá trình quang hợp gồm",
+     "lua_chon": [
+      "nước và khí carbon dioxide.",
+      "chất khoáng và khí oxygen.",
+      "nước và khí oxygen.",
+      "glucose và khí oxygen."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hai chất này nằm ở vế trái của phương trình quang hợp."
+    },
+    {
+     "ma_cau": "K07070201003",
+     "loai": "trac_nghiem",
+     "de": "Sản phẩm của quá trình quang hợp gồm",
+     "lua_chon": [
+      "nước và carbon dioxide.",
+      "glucose và khí oxygen.",
+      "glucose và nước.",
+      "carbon dioxide và khí oxygen."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chất hữu cơ được tạo thành là glucose, khí được giải phóng là oxygen."
+    },
+    {
+     "ma_cau": "K07070201004",
+     "loai": "trac_nghiem",
+     "de": "Điều kiện cần thiết để quang hợp diễn ra là",
+     "lua_chon": [
+      "khí oxygen và nước.",
+      "nhiệt độ thấp và bóng tối.",
+      "chất khoáng và gió.",
+      "ánh sáng và diệp lục."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thiếu ánh sáng hoặc thiếu diệp lục thì cây không tổng hợp được chất hữu cơ."
+    },
+    {
+     "ma_cau": "K07070201005",
+     "loai": "trac_nghiem",
+     "de": "Quang hợp ở thực vật diễn ra chủ yếu trong bào quan nào của tế bào?",
+     "lua_chon": [
+      "Màng tế bào.",
+      "Lục lạp.",
+      "Nhân tế bào.",
+      "Không bào."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Lục lạp là bào quan chứa diệp lục nên là nơi thực hiện quang hợp."
+    },
+    {
+     "ma_cau": "K07070201006",
+     "loai": "trac_nghiem",
+     "de": "Chất nào sau đây là chất hữu cơ được tạo thành trong quang hợp?",
+     "lua_chon": [
+      "Glucose.",
+      "Carbon dioxide.",
+      "Chất khoáng.",
+      "Nước."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Glucose sau đó được vận chuyển đi nuôi cây hoặc chuyển thành tinh bột để dự trữ."
+    },
+    {
+     "ma_cau": "K07070201007",
+     "loai": "trac_nghiem",
+     "de": "Nước dùng cho quang hợp được cây lấy từ đâu?",
+     "lua_chon": [
+      "Từ không khí qua lá.",
+      "Từ chất hữu cơ trong thân.",
+      "Từ ánh sáng mặt trời.",
+      "Từ đất nhờ rễ hút lên."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Rễ hút nước từ đất rồi nước được vận chuyển theo mạch gỗ lên lá."
+    },
+    {
+     "ma_cau": "K07070201008",
+     "loai": "trac_nghiem",
+     "de": "Khí carbon dioxide dùng cho quang hợp được lá lấy vào qua",
+     "lua_chon": [
+      "cuống lá.",
+      "gân lá.",
+      "khí khổng.",
+      "lớp cutin."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khí khổng là những lỗ nhỏ trên biểu bì lá, cho khí đi vào và đi ra."
+    },
+    {
+     "ma_cau": "K07070201009",
+     "loai": "trac_nghiem",
+     "de": "Trong phương trình quang hợp, ánh sáng và diệp lục đóng vai trò là",
+     "lua_chon": [
+      "chất thải.",
+      "sản phẩm.",
+      "nguyên liệu.",
+      "điều kiện."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Chúng được ghi trên mũi tên của phương trình chứ không phải chất tham gia hay tạo thành."
+    },
+    {
+     "ma_cau": "K07070201010",
+     "loai": "trac_nghiem",
+     "de": "Quá trình quang hợp chuyển hoá dạng năng lượng nào?",
+     "lua_chon": [
+      "Quang năng thành hoá năng.",
+      "Hoá năng thành quang năng.",
+      "Nhiệt năng thành hoá năng.",
+      "Cơ năng thành nhiệt năng."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Năng lượng ánh sáng được tích luỹ trong chất hữu cơ mà cây tổng hợp được."
+    },
+    {
+     "ma_cau": "K07070201011",
+     "loai": "trac_nghiem",
+     "de": "Cơ quan thực hiện quang hợp chủ yếu ở cây xanh là",
+     "lua_chon": [
+      "thân.",
+      "hoa.",
+      "rễ.",
+      "lá."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lá chứa nhiều lục lạp và có cấu tạo phù hợp với việc thu nhận ánh sáng."
+    },
+    {
+     "ma_cau": "K07070201012",
+     "loai": "trac_nghiem",
+     "de": "Chất hữu cơ tạo ra trong quang hợp được cây dự trữ chủ yếu dưới dạng",
+     "lua_chon": [
+      "chất khoáng.",
+      "nước.",
+      "khí oxygen.",
+      "tinh bột."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Glucose được chuyển thành tinh bột và tích luỹ trong củ, quả, hạt."
+    },
+    {
+     "ma_cau": "K07070201013",
+     "loai": "trac_nghiem",
+     "de": "Sắc tố có khả năng hấp thụ năng lượng ánh sáng cho quang hợp là",
+     "lua_chon": [
+      "chất nhờn ở lá.",
+      "chất khoáng trong đất.",
+      "sắc tố đỏ của hoa.",
+      "diệp lục."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Diệp lục nằm trong lục lạp và có màu lục đặc trưng."
+    },
+    {
+     "ma_cau": "K07070201014",
+     "loai": "trac_nghiem",
+     "de": "Khí nào được cây giải phóng ra môi trường trong quá trình quang hợp?",
+     "lua_chon": [
+      "Nitrogen.",
+      "Oxygen.",
+      "Hơi nước.",
+      "Carbon dioxide."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Oxygen là sản phẩm khí của quang hợp."
+    },
+    {
+     "ma_cau": "K07070201015",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây về quang hợp là sai?",
+     "lua_chon": [
+      "Quang hợp diễn ra mạnh nhất vào ban đêm.",
+      "Quang hợp giải phóng khí oxygen.",
+      "Quang hợp tạo ra chất hữu cơ.",
+      "Quang hợp cần ánh sáng."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ban đêm không có ánh sáng nên quang hợp không diễn ra."
+    },
+    {
+     "ma_cau": "K07070201016",
+     "loai": "trac_nghiem",
+     "de": "Trong phương trình chữ của quang hợp, chất nào đứng ở vế phải cùng với oxygen?",
+     "lua_chon": [
+      "Chất khoáng.",
+      "Nước.",
+      "Carbon dioxide.",
+      "Glucose."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vế phải của phương trình là các sản phẩm, gồm glucose và oxygen."
+    },
+    {
+     "ma_cau": "K07070201017",
+     "loai": "trac_nghiem",
+     "de": "Ý nghĩa nào sau đây không phải của quang hợp đối với tự nhiên?",
+     "lua_chon": [
+      "Làm tăng nhiệt độ của khí quyển.",
+      "Làm giảm lượng khí carbon dioxide trong không khí.",
+      "Tạo ra nguồn chất hữu cơ nuôi sống sinh vật.",
+      "Cung cấp khí oxygen cho khí quyển."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ba ý nghĩa đầu là đúng; quang hợp không có tác dụng làm tăng nhiệt độ khí quyển."
+    },
+    {
+     "ma_cau": "K07070201018",
+     "loai": "trac_nghiem",
+     "de": "Bào quan chứa diệp lục trong tế bào lá được gọi là",
+     "lua_chon": [
+      "không bào.",
+      "nhân.",
+      "ti thể.",
+      "lục lạp."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lục lạp là bào quan mang diệp lục, nơi diễn ra quang hợp."
+    },
+    {
+     "ma_cau": "K07070201019",
+     "loai": "trac_nghiem",
+     "de": "Nếu cây bị thiếu nước kéo dài thì quá trình quang hợp sẽ",
+     "lua_chon": [
+      "giảm hoặc ngừng lại vì thiếu nguyên liệu.",
+      "tăng lên vì cây phải bù đắp.",
+      "chuyển sang xảy ra ở rễ.",
+      "không thay đổi."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nước vừa là nguyên liệu vừa cần cho hoạt động của khí khổng."
+    },
+    {
+     "ma_cau": "K07070201020",
+     "loai": "trac_nghiem",
+     "de": "Chất hữu cơ do lá tổng hợp được vận chuyển đi nuôi cây theo",
+     "lua_chon": [
+      "mạch rây.",
+      "khí khổng.",
+      "lớp cutin.",
+      "mạch gỗ."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mạch rây vận chuyển chất hữu cơ từ lá tới các bộ phận khác của cây."
+    },
+    {
+     "ma_cau": "K07070201021",
+     "loai": "trac_nghiem",
+     "de": "Nước và chất khoáng được vận chuyển từ rễ lên lá theo",
+     "lua_chon": [
+      "khí khổng.",
+      "mạch rây.",
+      "lông hút.",
+      "mạch gỗ."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Mạch gỗ dẫn nước và chất khoáng hoà tan đi lên các bộ phận phía trên."
+    },
+    {
+     "ma_cau": "K07070201022",
+     "loai": "trac_nghiem",
+     "de": "Vì sao lá cây thường có màu lục?",
+     "lua_chon": [
+      "Vì lá chứa nhiều nước.",
+      "Vì lá có nhiều khí khổng.",
+      "Vì trong lá chứa nhiều diệp lục.",
+      "Vì lá hấp thụ toàn bộ ánh sáng chiếu tới."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Diệp lục là sắc tố màu lục và có mặt với lượng lớn trong lục lạp của lá."
+    },
+    {
+     "ma_cau": "K07070201023",
+     "loai": "trac_nghiem",
+     "de": "Cây nào sau đây không thực hiện được quang hợp?",
+     "lua_chon": [
+      "Cây ngô.",
+      "Cây tơ hồng không có diệp lục.",
+      "Cây bàng.",
+      "Cây rêu."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Không có diệp lục thì thiếu điều kiện bắt buộc để quang hợp."
+    },
+    {
+     "ma_cau": "K07070201024",
+     "loai": "trac_nghiem",
+     "de": "Quang hợp có vai trò gì đối với bản thân cây xanh?",
+     "lua_chon": [
+      "Làm cho thân cây cứng lại.",
+      "Tạo chất hữu cơ làm nguyên liệu và nguồn năng lượng cho cây.",
+      "Giúp cây thải bớt chất khoáng.",
+      "Giúp cây hút nước nhanh hơn."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chất hữu cơ vừa xây dựng cơ thể vừa là nguồn năng lượng cho các hoạt động sống."
+    },
+    {
+     "ma_cau": "K07070201025",
+     "loai": "trac_nghiem",
+     "de": "Trong quá trình quang hợp, chất nào bị cây lấy bớt khỏi không khí?",
+     "lua_chon": [
+      "Khí nitrogen.",
+      "Khí carbon dioxide.",
+      "Hơi nước.",
+      "Khí oxygen."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Carbon dioxide là nguyên liệu nên nồng độ khí này trong không khí xung quanh lá giảm đi."
+    },
+    {
+     "ma_cau": "K07070201026",
+     "loai": "trac_nghiem",
+     "de": "Cây xanh có thể quang hợp trong điều kiện nào sau đây?",
+     "lua_chon": [
+      "Trong phòng tối hoàn toàn.",
+      "Dưới ánh sáng mặt trời.",
+      "Khi cây bị mất toàn bộ diệp lục.",
+      "Khi lá đã rụng hết."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cần đồng thời ánh sáng và diệp lục thì quang hợp mới diễn ra."
+    },
+    {
+     "ma_cau": "K07070201027",
+     "loai": "trac_nghiem",
+     "de": "Lá cây lấy nguyên liệu cho quang hợp từ hai nguồn nào?",
+     "lua_chon": [
+      "Từ chất hữu cơ trong thân.",
+      "Từ đất và từ không khí.",
+      "Chỉ từ không khí.",
+      "Chỉ từ đất."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nước lấy từ đất qua rễ, carbon dioxide lấy từ không khí qua khí khổng."
+    },
+    {
+     "ma_cau": "K07070201028",
+     "loai": "trac_nghiem",
+     "de": "Khi quang hợp, cây sử dụng năng lượng từ",
+     "lua_chon": [
+      "ánh sáng.",
+      "nước chảy.",
+      "nhiệt của đất.",
+      "gió."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Năng lượng ánh sáng được diệp lục hấp thụ để tổng hợp chất hữu cơ."
+    },
+    {
+     "ma_cau": "K07070201029",
+     "loai": "trac_nghiem",
+     "de": "Nhận định nào sau đây đúng?",
+     "lua_chon": [
+      "Quang hợp tạo ra cả chất hữu cơ và khí oxygen.",
+      "Quang hợp chỉ tạo ra khí oxygen mà không tạo chất hữu cơ.",
+      "Quang hợp không cần nước.",
+      "Quang hợp chỉ xảy ra ở rễ cây."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vế phải của phương trình gồm cả glucose và oxygen."
+    },
+    {
+     "ma_cau": "K07070201030",
+     "loai": "trac_nghiem",
+     "de": "Bộ phận nào của lá chứa nhiều lục lạp nhất?",
+     "lua_chon": [
+      "Lớp biểu bì.",
+      "Cuống lá.",
+      "Thịt lá.",
+      "Gân lá."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tế bào thịt lá chứa nhiều lục lạp nên là nơi quang hợp diễn ra mạnh."
+    },
+    {
+     "ma_cau": "K07070201031",
+     "loai": "trac_nghiem",
+     "de": "Vì sao quang hợp được coi là quá trình quan trọng nhất đối với sự sống trên Trái Đất?",
+     "lua_chon": [
+      "Vì quang hợp làm cây cao lên.",
+      "Vì quang hợp tạo ra chất hữu cơ và khí oxygen nuôi sống hầu hết sinh vật.",
+      "Vì quang hợp diễn ra suốt ngày đêm.",
+      "Vì quang hợp làm cho lá có màu lục."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hầu hết chuỗi thức ăn và nguồn oxygen trong khí quyển đều bắt nguồn từ quang hợp."
+    },
+    {
+     "ma_cau": "K07070201032",
+     "loai": "trac_nghiem",
+     "de": "Trong tế bào lá, diệp lục nằm ở",
+     "lua_chon": [
+      "không bào.",
+      "lục lạp.",
+      "nhân.",
+      "vách tế bào."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Lục lạp là bào quan chứa diệp lục."
+    },
+    {
+     "ma_cau": "K07070201033",
+     "loai": "trac_nghiem",
+     "de": "Khi cây quang hợp, lượng khí oxygen trong không khí xung quanh lá sẽ",
+     "lua_chon": [
+      "không đổi.",
+      "bằng không.",
+      "tăng lên.",
+      "giảm đi."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Oxygen là sản phẩm được cây thải ra môi trường."
+    },
+    {
+     "ma_cau": "K07070201034",
+     "loai": "trac_nghiem",
+     "de": "Chất nào sau đây không tham gia vào phương trình quang hợp?",
+     "lua_chon": [
+      "Chất đạm trong phân bón.",
+      "Carbon dioxide.",
+      "Nước.",
+      "Glucose."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Phương trình quang hợp chỉ gồm nước, carbon dioxide, glucose và oxygen."
+    },
+    {
+     "ma_cau": "K07070201035",
+     "loai": "trac_nghiem",
+     "de": "Vì sao nói quang hợp giúp điều hoà không khí?",
+     "lua_chon": [
+      "Vì quang hợp làm giảm nhiệt độ của nước.",
+      "Vì quang hợp làm tăng lượng bụi trong không khí.",
+      "Vì quang hợp lấy bớt khí carbon dioxide và thải khí oxygen.",
+      "Vì quang hợp làm tăng độ ẩm của đất."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nhờ đó thành phần không khí được giữ ở mức phù hợp cho sự sống."
+    },
+    {
+     "ma_cau": "K07070201036",
+     "loai": "tra_loi_ngan",
+     "de": "Quang hợp diễn ra ở loại tế bào nào của lá?",
+     "dap_an": "tế bào thịt lá",
+     "loi_giai": "Đây là nơi tập trung nhiều lục lạp nhất trong lá."
+    },
+    {
+     "ma_cau": "K07070201037",
+     "loai": "tra_loi_ngan",
+     "de": "Trong phương trình quang hợp, chất nào đứng cùng vế với nước?",
+     "dap_an": "carbon dioxide",
+     "loi_giai": "Nước và carbon dioxide là hai nguyên liệu ở vế trái của phương trình."
+    },
+    {
+     "ma_cau": "K07070201038",
+     "loai": "tra_loi_ngan",
+     "de": "Chất hữu cơ do quang hợp tạo ra được tích luỹ nhiều ở những bộ phận nào của cây?",
+     "dap_an": "củ, quả, hạt",
+     "loi_giai": "Ở các bộ phận này, glucose được chuyển thành tinh bột để dự trữ."
+    },
+    {
+     "ma_cau": "K07070201039",
+     "loai": "tra_loi_ngan",
+     "de": "Quang hợp làm giảm lượng chất khí nào trong không khí?",
+     "dap_an": "carbon dioxide",
+     "loi_giai": "Carbon dioxide bị cây lấy đi làm nguyên liệu."
+    },
+    {
+     "ma_cau": "K07070201040",
+     "loai": "tra_loi_ngan",
+     "de": "Quang hợp làm tăng lượng chất khí nào trong không khí?",
+     "dap_an": "oxygen",
+     "loi_giai": "Oxygen là sản phẩm được cây thải ra môi trường."
+    },
+    {
+     "ma_cau": "K07070201041",
+     "loai": "tra_loi_ngan",
+     "de": "Ban đêm cây xanh có thực hiện quang hợp không?",
+     "dap_an": "không",
+     "loi_giai": "Không có ánh sáng thì điều kiện bắt buộc của quang hợp không được đáp ứng."
+    },
+    {
+     "ma_cau": "K07070201042",
+     "loai": "tra_loi_ngan",
+     "de": "Lá cây có màu lục là do bào quan nào trong tế bào?",
+     "dap_an": "lục lạp",
+     "loi_giai": "Lục lạp chứa sắc tố diệp lục có màu lục."
+    },
+    {
+     "ma_cau": "K07070201043",
+     "loai": "tra_loi_ngan",
+     "de": "Khi cây bị thiếu nước kéo dài thì quang hợp tăng hay giảm?",
+     "dap_an": "giảm",
+     "loi_giai": "Nước vừa là nguyên liệu vừa cần cho khí khổng mở."
+    },
+    {
+     "ma_cau": "K07070201044",
+     "loai": "tra_loi_ngan",
+     "de": "Hai điều kiện cần cho quá trình quang hợp là gì?",
+     "dap_an": "ánh sáng và diệp lục",
+     "loi_giai": "Thiếu một trong hai thì quang hợp không diễn ra."
+    },
+    {
+     "ma_cau": "K07070201045",
+     "loai": "tra_loi_ngan",
+     "de": "Cây tơ hồng không có diệp lục thì có quang hợp được không?",
+     "dap_an": "không",
+     "loi_giai": "Không có diệp lục thì cây không hấp thụ được năng lượng ánh sáng."
+    },
+    {
+     "ma_cau": "K07070201046",
+     "loai": "tra_loi_ngan",
+     "de": "Trong quang hợp, năng lượng ánh sáng được tích luỹ vào loại chất nào?",
+     "loi_giai": "Đó là lí do quang hợp được coi là quá trình chuyển quang năng thành hoá năng."
+    },
+    {
+     "ma_cau": "K07070201047",
+     "loai": "tra_loi_ngan",
+     "de": "Quang hợp cung cấp cho sinh giới hai thứ gì?",
+     "loi_giai": "Đây là nguồn thức ăn và nguồn khí thở của hầu hết sinh vật."
+    },
+    {
+     "ma_cau": "K07070201048",
+     "loai": "tra_loi_ngan",
+     "de": "Nếu che kín một chiếc lá không cho ánh sáng chiếu vào thì lá đó có tạo được tinh bột không?",
+     "loi_giai": "Không quang hợp được thì lá không tạo ra glucose để chuyển thành tinh bột."
+    },
+    {
+     "ma_cau": "K07070201049",
+     "loai": "tra_loi_ngan",
+     "de": "Rễ, thân hay lá là cơ quan tổng hợp chất hữu cơ chính của cây xanh?",
+     "loi_giai": "Lá chứa nhiều lục lạp và có cấu tạo thích nghi với việc thu nhận ánh sáng."
+    },
+    {
+     "ma_cau": "K07070201050",
+     "loai": "tra_loi_ngan",
+     "de": "Sản phẩm khí của quang hợp có vai trò gì đối với hô hấp của sinh vật?",
+     "loi_giai": "Oxygen do cây thải ra được các sinh vật khác dùng cho hô hấp."
+    },
+    {
+     "ma_cau": "K07070201051",
+     "loai": "trac_nghiem",
+     "de": "Trong phương trình chữ của quang hợp, ánh sáng và diệp lục được ghi trên mũi tên vì chúng là",
+     "lua_chon": [
+      "nguyên liệu bị biến đổi thành glucose",
+      "sản phẩm được tạo ra cùng oxygen",
+      "điều kiện cần để quá trình xảy ra",
+      "chất thải được lá thải ra ngoài"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ánh sáng (nguồn năng lượng) và diệp lục (chất hấp thụ ánh sáng) là điều kiện của quang hợp nên ghi trên mũi tên, không phải nguyên liệu hay sản phẩm.\n\nVì sao các phương án khác sai:\n- A: Nguyên liệu chỉ gồm nước và carbon dioxide, ghi ở vế trái.\n- B: Sản phẩm là glucose và oxygen, ghi ở vế phải.\n- D: Ánh sáng và diệp lục không bị thải ra; diệp lục vẫn nằm trong lục lạp."
+    },
+    {
+     "ma_cau": "K07070201052",
+     "loai": "trac_nghiem",
+     "de": "Bạn Minh viết: Nước + Oxygen → (ánh sáng, diệp lục) Glucose + Carbon dioxide. Phương trình quang hợp này sai ở điểm nào?",
+     "lua_chon": [
+      "Đảo chỗ oxygen và carbon dioxide",
+      "Glucose phải được thay bằng tinh bột",
+      "Nước phải chuyển sang vế sản phẩm",
+      "Thiếu muối khoáng ở vế nguyên liệu"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khi quang hợp, lá lấy carbon dioxide làm nguyên liệu và thải oxygen là sản phẩm; bạn Minh đã đặt ngược hai khí này.\n\nVì sao các phương án khác sai:\n- B: Sản phẩm ghi trong phương trình chữ là glucose; tinh bột được tạo ra sau từ glucose.\n- C: Nước là nguyên liệu do rễ hút từ đất, nằm ở vế trái.\n- D: Muối khoáng không có mặt trong phương trình chữ của quang hợp."
+    },
+    {
+     "ma_cau": "K07070201053",
+     "loai": "trac_nghiem",
+     "de": "Đặt một chậu cây xanh trong chuông thuỷ tinh kín, chiếu sáng liên tục vài giờ. Dựa vào phương trình quang hợp, so với lúc đầu, lượng khí trong chuông thay đổi thế nào?",
+     "lua_chon": [
+      "Carbon dioxide tăng, oxygen giảm",
+      "Carbon dioxide giảm, oxygen tăng",
+      "Carbon dioxide và oxygen đều tăng",
+      "Carbon dioxide và oxygen đều không đổi"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ngoài sáng cây quang hợp: lấy carbon dioxide làm nguyên liệu và thải oxygen là sản phẩm, nên trong chuông kín carbon dioxide giảm, oxygen tăng. (Cây cũng hô hấp, nhưng ngoài sáng quang hợp diễn ra mạnh hơn nhiều nên nhìn chung carbon dioxide vẫn giảm, oxygen vẫn tăng.)\n\nVì sao các phương án khác sai:\n- A: Đảo chiều: khi quang hợp cây lấy carbon dioxide và thải oxygen.\n- C: Carbon dioxide bị lá dùng làm nguyên liệu nên phải giảm.\n- D: Có ánh sáng nên cây quang hợp, làm lượng hai khí thay đổi."
+    },
+    {
+     "ma_cau": "K07070201054",
+     "loai": "trac_nghiem",
+     "de": "Đặt chậu cây xanh và một cốc nước vôi trong vào chung một chuông thuỷ tinh kín, chiếu sáng liên tục nhiều giờ. So với trước khi chiếu sáng, nước vôi trong trong chuông sẽ",
+     "lua_chon": [
+      "Đục hơn vì hơi nước từ lá làm nước vôi bị vẩn",
+      "Vẫn trong, ít vẩn đục vì CO₂ giảm do cây quang hợp",
+      "Đục hơn vì carbon dioxide trong chuông tăng do cây thải ra",
+      "Không đổi vì cây không trao đổi khí khi có ánh sáng"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khi có ánh sáng, cây quang hợp lấy CO₂ làm nguyên liệu nên CO₂ trong chuông giảm dần, nước vôi trong ít bị vẩn đục hơn trước.\n\nVì sao các phương án khác sai:\n- A: Hơi nước thoát qua khí khổng không làm nước vôi trong đổi màu, chỉ CO₂ mới gây đục.\n- C: Nhầm chiều: quang hợp lấy CO₂ làm nguyên liệu chứ không thải CO₂ ra.\n- D: Khi có ánh sáng cây vẫn trao đổi khí, chỉ là quang hợp mạnh hơn hô hấp nên CO₂ giảm."
+    },
+    {
+     "ma_cau": "K07070201055",
+     "loai": "trac_nghiem",
+     "de": "Khi quang hợp, năng lượng ánh sáng được chuyển thành hoá năng. Phần hoá năng này được tích luỹ ở đâu?",
+     "lua_chon": [
+      "Trong khí oxygen thải ra ngoài",
+      "Trong nước lá hút vào",
+      "Trong khí carbon dioxide lấy vào",
+      "Trong chất hữu cơ như glucose, tinh bột"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Quang năng được chuyển thành hoá năng tích luỹ trong chất hữu cơ do lá tổng hợp (glucose, sau đó là tinh bột).\n\nVì sao các phương án khác sai:\n- A: Oxygen là sản phẩm phụ thải ra, không tích luỹ năng lượng lá thu được.\n- B: Nước là nguyên liệu, bị biến đổi trong quang hợp chứ không tích luỹ năng lượng.\n- C: Carbon dioxide là nguyên liệu, được dùng để tạo chất hữu cơ."
+    },
+    {
+     "ma_cau": "K07070201056",
+     "loai": "trac_nghiem",
+     "de": "Củ khoai lang dự trữ nhiều tinh bột. Khi ăn khoai, cơ thể người nhận được năng lượng. Năng lượng này có nguồn gốc ban đầu từ đâu?",
+     "lua_chon": [
+      "Năng lượng ánh sáng do lá hấp thụ khi quang hợp",
+      "Nhiệt năng của lớp đất bao quanh củ",
+      "Muối khoáng do rễ cây hút từ đất",
+      "Hoá năng có sẵn trong khí oxygen"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Lá hấp thụ quang năng, chuyển thành hoá năng tích luỹ trong glucose; glucose được chuyển thành tinh bột dự trữ ở củ. Vì vậy năng lượng trong khoai có nguồn gốc từ ánh sáng.\n\nVì sao các phương án khác sai:\n- B: Củ không lấy nhiệt của đất để tạo tinh bột; tinh bột do lá quang hợp tạo ra.\n- C: Muối khoáng không cung cấp năng lượng; năng lượng đến từ ánh sáng qua quang hợp.\n- D: Oxygen là sản phẩm của quang hợp, không phải nguồn năng lượng cho tinh bột."
+    },
+    {
+     "ma_cau": "K07070201057",
+     "loai": "trac_nghiem",
+     "de": "Khi lá quang hợp, khí nào đi từ không khí vào lá qua khí khổng?",
+     "lua_chon": [
+      "oxygen",
+      "carbon dioxide",
+      "nitrogen",
+      "hydrogen"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Quang hợp cần nguyên liệu là carbon dioxide; khí này đi từ không khí vào lá qua khí khổng.\n\nVì sao các phương án khác sai:\n- A: Oxygen là sản phẩm của quang hợp, được thải ra chứ không được lấy vào.\n- C: Nitrogen có nhiều trong không khí nhưng không phải nguyên liệu của quang hợp.\n- D: Hydrogen không phải nguyên liệu của quang hợp."
+    },
+    {
+     "ma_cau": "K07070201058",
+     "loai": "trac_nghiem",
+     "de": "Khí nào được tạo ra trong quang hợp và thải ra môi trường qua khí khổng?",
+     "lua_chon": [
+      "carbon dioxide",
+      "nitrogen",
+      "hydrogen",
+      "oxygen"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Quang hợp tạo ra glucose và oxygen; oxygen đi từ lá ra ngoài không khí qua khí khổng.\n\nVì sao các phương án khác sai:\n- A: Carbon dioxide là nguyên liệu của quang hợp, đi vào lá chứ không được tạo ra.\n- B: Nitrogen không được tạo ra trong quang hợp.\n- C: Hydrogen không phải sản phẩm của quang hợp."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00356",
+   "khoi": "7",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Quang hợp ở thực vật",
+   "nhom": "Phân tích đặc điểm của lá thích nghi với chức năng quang hợp",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "I. LÝ THUYẾT DẠNG BÀI\nLá là cơ quan quang hợp chính của cây xanh. Mỗi đặc điểm cấu tạo của lá đều gắn với một vai trò cụ thể trong quang hợp.\n●\tPhiến lá rộng và dẹt: tăng diện tích tiếp xúc với ánh sáng nên lá thu nhận được nhiều năng lượng.\n●\tPhiến lá mỏng: rút ngắn quãng đường khuếch tán của khí, giúp carbon dioxide đi vào và oxygen đi ra dễ dàng.\n●\tLớp biểu bì có nhiều khí khổng, tập trung nhiều ở mặt dưới lá: là cửa ngõ trao đổi khí và thoát hơi nước.\n●\tTế bào thịt lá chứa nhiều lục lạp mang diệp lục: là nơi trực tiếp diễn ra quang hợp.\n●\tGân lá có mạch dẫn: mạch gỗ đưa nước và chất khoáng từ rễ lên lá, mạch rây đưa chất hữu cơ từ lá đi nuôi các bộ phận khác.\n●\tLá thường mọc so le và hướng về phía có ánh sáng: giúp các lá không che khuất nhau, mọi lá đều nhận được ánh sáng.\nCách làm bài: đọc kĩ đặc điểm được nêu, xác định đặc điểm đó phục vụ việc thu nhận ánh sáng, trao đổi khí, vận chuyển chất hay chứa diệp lục, rồi chọn vai trò tương ứng.\nII. VÍ DỤ MINH HỌA\nVí dụ 1. Vì sao phiến lá của phần lớn cây xanh có dạng bản rộng và dẹt?\nHướng dẫn: Dạng bản rộng và dẹt làm diện tích bề mặt lá lớn, nhờ đó lá hứng được nhiều ánh sáng hơn và diệp lục hấp thụ được nhiều năng lượng hơn cho quang hợp.\nVí dụ 2. Ở phần lớn cây trên cạn, khí khổng tập trung nhiều ở mặt dưới của lá. Điều đó có ý nghĩa gì?\nHướng dẫn: Mặt dưới lá ít bị ánh nắng chiếu trực tiếp nên nhiệt độ thấp hơn. Khí khổng nằm ở đó vẫn bảo đảm trao đổi khí cho quang hợp mà hạn chế được sự thoát hơi nước quá mạnh, giúp cây giữ nước.",
+   "can_dien_ly_thuyet_nhom": false,
+   "cau": [
+    {
+     "ma_cau": "K07070202001",
+     "loai": "trac_nghiem",
+     "de": "Cơ quan nào của cây xanh giữ vai trò quang hợp chủ yếu?",
+     "lua_chon": [
+      "Lá.",
+      "Rễ.",
+      "Thân.",
+      "Hoa."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Lá có cấu tạo thích nghi với việc thu nhận ánh sáng và chứa nhiều lục lạp."
+    },
+    {
+     "ma_cau": "K07070202002",
+     "loai": "trac_nghiem",
+     "de": "Phiến lá có dạng bản rộng và dẹt có tác dụng gì đối với quang hợp?",
+     "lua_chon": [
+      "Giúp lá cứng cáp hơn.",
+      "Tăng diện tích tiếp xúc với ánh sáng.",
+      "Giúp lá giữ nước tốt hơn.",
+      "Giúp lá hút chất khoáng."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Diện tích bề mặt lớn giúp lá hứng được nhiều ánh sáng hơn."
+    },
+    {
+     "ma_cau": "K07070202003",
+     "loai": "trac_nghiem",
+     "de": "Phiến lá mỏng có tác dụng gì đối với quá trình quang hợp?",
+     "lua_chon": [
+      "Giúp khí carbon dioxide và oxygen khuếch tán dễ dàng.",
+      "Giúp lá chứa nhiều nước hơn.",
+      "Giúp lá hấp thụ nước từ không khí.",
+      "Giúp lá chịu được gió mạnh."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Lá mỏng nên quãng đường khuếch tán của khí ngắn, việc trao đổi khí diễn ra nhanh."
+    },
+    {
+     "ma_cau": "K07070202004",
+     "loai": "trac_nghiem",
+     "de": "Bộ phận nào trên biểu bì lá là cửa ngõ trao đổi khí với môi trường?",
+     "lua_chon": [
+      "Cuống lá.",
+      "Gân lá.",
+      "Lông trên mặt lá.",
+      "Khí khổng."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khí khổng đóng mở để cho khí carbon dioxide đi vào và oxygen, hơi nước đi ra."
+    },
+    {
+     "ma_cau": "K07070202005",
+     "loai": "trac_nghiem",
+     "de": "Tế bào thịt lá thực hiện được quang hợp là nhờ chứa nhiều",
+     "lua_chon": [
+      "chất khoáng.",
+      "vách dày.",
+      "không bào.",
+      "lục lạp."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lục lạp mang diệp lục, là nơi trực tiếp diễn ra quang hợp."
+    },
+    {
+     "ma_cau": "K07070202006",
+     "loai": "trac_nghiem",
+     "de": "Gân lá có chức năng gì đối với hoạt động của lá?",
+     "lua_chon": [
+      "Thoát hơi nước.",
+      "Trao đổi khí với môi trường.",
+      "Hấp thụ ánh sáng cho quang hợp.",
+      "Vận chuyển nước, chất khoáng và chất hữu cơ."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trong gân lá có mạch gỗ và mạch rây làm nhiệm vụ vận chuyển các chất."
+    },
+    {
+     "ma_cau": "K07070202007",
+     "loai": "trac_nghiem",
+     "de": "Mạch gỗ trong gân lá vận chuyển chất gì tới lá?",
+     "lua_chon": [
+      "Diệp lục.",
+      "Chất hữu cơ.",
+      "Nước và chất khoáng.",
+      "Khí oxygen."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nước và chất khoáng do rễ hút được đưa lên lá theo mạch gỗ."
+    },
+    {
+     "ma_cau": "K07070202008",
+     "loai": "trac_nghiem",
+     "de": "Mạch rây trong gân lá vận chuyển chất gì đi khỏi lá?",
+     "lua_chon": [
+      "Chất hữu cơ.",
+      "Nước.",
+      "Chất khoáng.",
+      "Khí carbon dioxide."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Chất hữu cơ do lá tổng hợp được đưa tới các bộ phận khác của cây."
+    },
+    {
+     "ma_cau": "K07070202009",
+     "loai": "trac_nghiem",
+     "de": "Ở phần lớn cây trên cạn, khí khổng tập trung nhiều ở",
+     "lua_chon": [
+      "mặt trên của lá.",
+      "gân lá.",
+      "mặt dưới của lá.",
+      "cuống lá."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vị trí này giúp trao đổi khí bình thường mà hạn chế thoát hơi nước do nắng chiếu trực tiếp."
+    },
+    {
+     "ma_cau": "K07070202010",
+     "loai": "trac_nghiem",
+     "de": "Lá cây thường mọc so le trên cành. Đặc điểm này có tác dụng gì?",
+     "lua_chon": [
+      "Giúp các lá không che khuất nhau nên đều nhận được ánh sáng.",
+      "Giúp cây hút nước nhanh hơn.",
+      "Giúp lá dễ rụng vào mùa đông.",
+      "Giúp cành cây chắc chắn hơn."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cách sắp xếp này bảo đảm ánh sáng đến được nhiều lá nhất có thể."
+    },
+    {
+     "ma_cau": "K07070202011",
+     "loai": "trac_nghiem",
+     "de": "Đặc điểm nào sau đây của lá liên quan trực tiếp đến việc chứa diệp lục?",
+     "lua_chon": [
+      "Tế bào thịt lá có nhiều lục lạp.",
+      "Có gân lá phân nhánh.",
+      "Có khí khổng ở biểu bì.",
+      "Phiến lá rộng."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Diệp lục nằm trong lục lạp, tập trung ở tế bào thịt lá."
+    },
+    {
+     "ma_cau": "K07070202012",
+     "loai": "trac_nghiem",
+     "de": "Nếu bịt kín toàn bộ khí khổng ở hai mặt lá bằng lớp keo trong suốt thì quang hợp của lá sẽ",
+     "lua_chon": [
+      "tăng lên vì lá giữ được nhiều nước.",
+      "không thay đổi vì ánh sáng vẫn chiếu tới.",
+      "giảm mạnh vì lá không lấy được khí carbon dioxide.",
+      "chỉ ngừng vào ban đêm."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ánh sáng vẫn xuyên qua nhưng nguyên liệu carbon dioxide không vào được lá nên quang hợp giảm mạnh."
+    },
+    {
+     "ma_cau": "K07070202013",
+     "loai": "trac_nghiem",
+     "de": "Vì sao lá cây thường hướng về phía có ánh sáng?",
+     "lua_chon": [
+      "Để giảm khối lượng của cành.",
+      "Để hạn chế sâu bệnh.",
+      "Để tránh gió mạnh.",
+      "Để nhận được nhiều ánh sáng cho quang hợp."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ánh sáng là điều kiện bắt buộc của quang hợp nên lá luôn có xu hướng hướng về nguồn sáng."
+    },
+    {
+     "ma_cau": "K07070202014",
+     "loai": "trac_nghiem",
+     "de": "Ngoài trao đổi khí, khí khổng còn giữ vai trò nào sau đây?",
+     "lua_chon": [
+      "Tổng hợp chất hữu cơ.",
+      "Hấp thụ ánh sáng.",
+      "Thoát hơi nước.",
+      "Vận chuyển chất khoáng."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hơi nước từ trong lá đi ra ngoài qua khí khổng."
+    },
+    {
+     "ma_cau": "K07070202015",
+     "loai": "trac_nghiem",
+     "de": "Đặc điểm nào sau đây của lá không liên quan đến chức năng quang hợp?",
+     "lua_chon": [
+      "Lá có màu sắc rực rỡ khi già và sắp rụng.",
+      "Tế bào thịt lá chứa nhiều lục lạp.",
+      "Lá có nhiều khí khổng.",
+      "Phiến lá rộng và dẹt."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Màu sắc của lá già sắp rụng là dấu hiệu diệp lục bị phân huỷ, không phải đặc điểm phục vụ quang hợp."
+    },
+    {
+     "ma_cau": "K07070202016",
+     "loai": "trac_nghiem",
+     "de": "Vì sao cây có nhiều lá thường quang hợp mạnh hơn cây cùng loại nhưng ít lá?",
+     "lua_chon": [
+      "Vì thân cây to hơn.",
+      "Vì lá dày hơn.",
+      "Vì tổng diện tích hấp thụ ánh sáng lớn hơn.",
+      "Vì rễ hút được nhiều nước hơn."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Diện tích lá càng lớn thì lượng ánh sáng thu nhận được càng nhiều."
+    },
+    {
+     "ma_cau": "K07070202017",
+     "loai": "trac_nghiem",
+     "de": "Bộ phận nào của cây cung cấp nước cho lá thực hiện quang hợp?",
+     "lua_chon": [
+      "Rễ.",
+      "Hạt.",
+      "Quả.",
+      "Hoa."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Rễ hút nước từ đất và nước được vận chuyển lên lá theo mạch gỗ."
+    },
+    {
+     "ma_cau": "K07070202018",
+     "loai": "trac_nghiem",
+     "de": "Khi lá bị phủ một lớp bụi dày, quang hợp của cây sẽ giảm chủ yếu vì",
+     "lua_chon": [
+      "lớp bụi cản ánh sáng và bịt bớt khí khổng.",
+      "lớp bụi làm gân lá bị đứt.",
+      "lớp bụi hút hết nước trong lá.",
+      "lớp bụi làm lá nặng hơn."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ánh sáng tới lá giảm và việc trao đổi khí qua khí khổng bị cản trở."
+    },
+    {
+     "ma_cau": "K07070202019",
+     "loai": "trac_nghiem",
+     "de": "Cấu tạo nào của lá bảo đảm nguyên liệu carbon dioxide đến được tế bào thịt lá?",
+     "lua_chon": [
+      "Khí khổng và khoảng trống giữa các tế bào thịt lá.",
+      "Gân lá to.",
+      "Cuống lá dài.",
+      "Lớp cutin dày trên biểu bì."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khí đi vào qua khí khổng rồi khuếch tán trong các khoảng trống tới tế bào thịt lá."
+    },
+    {
+     "ma_cau": "K07070202020",
+     "loai": "trac_nghiem",
+     "de": "Vì sao một chiếc lá bị sâu ăn khuyết nhiều thì khả năng quang hợp giảm?",
+     "lua_chon": [
+      "Vì lá mất hết gân.",
+      "Vì diện tích chứa lục lạp và hấp thụ ánh sáng bị giảm.",
+      "Vì lá không còn khí khổng.",
+      "Vì lá không hút được nước."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Phần lá bị mất kéo theo mất số lượng tế bào chứa lục lạp tương ứng."
+    },
+    {
+     "ma_cau": "K07070202021",
+     "loai": "trac_nghiem",
+     "de": "Đặc điểm nào giúp lá vừa nhận được ánh sáng vừa trao đổi khí thuận lợi?",
+     "lua_chon": [
+      "Phiến lá dày và không có khí khổng.",
+      "Phiến lá rộng, mỏng và có nhiều khí khổng.",
+      "Lá cuốn tròn quanh thân.",
+      "Lá biến thành gai."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Rộng để hứng sáng, mỏng và nhiều khí khổng để khí ra vào dễ dàng."
+    },
+    {
+     "ma_cau": "K07070202022",
+     "loai": "trac_nghiem",
+     "de": "Ở cây xương rồng sống nơi khô hạn, lá biến thành gai. Chức năng quang hợp lúc này chủ yếu do bộ phận nào đảm nhận?",
+     "lua_chon": [
+      "Thân.",
+      "Gai.",
+      "Rễ.",
+      "Hoa."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thân xương rồng màu lục, chứa diệp lục nên thay lá thực hiện quang hợp."
+    },
+    {
+     "ma_cau": "K07070202023",
+     "loai": "trac_nghiem",
+     "de": "Cây sống dưới tán rừng rậm thường có phiến lá rộng hơn cây cùng loại sống nơi trống trải. Đặc điểm này giúp cây",
+     "lua_chon": [
+      "hứng được nhiều ánh sáng yếu dưới tán rừng.",
+      "hút nhiều chất khoáng hơn.",
+      "chống lại gió mạnh.",
+      "giảm thoát hơi nước."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ở nơi thiếu sáng, tăng diện tích lá là cách để thu nhận đủ ánh sáng cho quang hợp."
+    },
+    {
+     "ma_cau": "K07070202024",
+     "loai": "trac_nghiem",
+     "de": "Lớp cutin phủ ngoài biểu bì lá có vai trò chủ yếu là",
+     "lua_chon": [
+      "vận chuyển chất khoáng.",
+      "tổng hợp chất hữu cơ.",
+      "hạn chế sự thoát hơi nước.",
+      "hấp thụ ánh sáng."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Lớp cutin trong suốt vẫn cho ánh sáng đi qua nhưng giúp lá giữ nước."
+    },
+    {
+     "ma_cau": "K07070202025",
+     "loai": "trac_nghiem",
+     "de": "Vì sao lá cây mọc trong bóng tối lâu ngày thường có màu vàng nhạt?",
+     "lua_chon": [
+      "Vì thiếu ánh sáng nên lá không hình thành đủ diệp lục.",
+      "Vì gân lá phát triển mạnh.",
+      "Vì lá hút quá nhiều nước.",
+      "Vì lá thải nhiều oxygen."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Không có ánh sáng, quá trình tạo diệp lục bị hạn chế nên lá mất màu lục."
+    },
+    {
+     "ma_cau": "K07070202026",
+     "loai": "trac_nghiem",
+     "de": "Trong lá, quá trình quang hợp diễn ra trực tiếp ở",
+     "lua_chon": [
+      "lớp cutin của biểu bì.",
+      "lục lạp của tế bào thịt lá.",
+      "mạch gỗ của gân lá.",
+      "khoang chứa khí dưới khí khổng."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Lục lạp là nơi diệp lục hấp thụ ánh sáng và tổng hợp chất hữu cơ."
+    },
+    {
+     "ma_cau": "K07070202027",
+     "loai": "trac_nghiem",
+     "de": "Nếu cắt bỏ toàn bộ lá của một cây non thì cây sẽ",
+     "lua_chon": [
+      "hút được nhiều nước hơn.",
+      "sinh trưởng nhanh hơn.",
+      "ra hoa sớm hơn.",
+      "không tổng hợp được chất hữu cơ nên yếu dần."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Mất cơ quan quang hợp chính thì cây không tạo được chất hữu cơ nuôi cơ thể."
+    },
+    {
+     "ma_cau": "K07070202028",
+     "loai": "trac_nghiem",
+     "de": "Sự sắp xếp của các lá trên cây bảo đảm điều gì cho quang hợp?",
+     "lua_chon": [
+      "Mọi lá đều nhận được ánh sáng.",
+      "Mọi lá đều có cùng kích thước.",
+      "Mọi lá đều có gân song song.",
+      "Mọi lá đều rụng cùng lúc."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cách mọc so le và hướng sáng giúp lá phía trên không che khuất lá phía dưới."
+    },
+    {
+     "ma_cau": "K07070202029",
+     "loai": "trac_nghiem",
+     "de": "Bộ phận nào của lá vừa cho ánh sáng đi qua vừa bảo vệ phần thịt lá bên trong?",
+     "lua_chon": [
+      "Lục lạp.",
+      "Gân lá.",
+      "Cuống lá.",
+      "Biểu bì."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lớp biểu bì trong suốt nên ánh sáng vẫn xuống được tới tế bào thịt lá."
+    },
+    {
+     "ma_cau": "K07070202030",
+     "loai": "trac_nghiem",
+     "de": "Cây trồng dày quá mức thường quang hợp kém, nguyên nhân trực tiếp là",
+     "lua_chon": [
+      "rễ cây bị thối.",
+      "lá bị mất hết khí khổng.",
+      "gân lá không phát triển.",
+      "các lá che khuất nhau nên nhiều lá thiếu ánh sáng."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lá phía dưới bị che nên không nhận đủ ánh sáng cho quang hợp."
+    },
+    {
+     "ma_cau": "K07070202031",
+     "loai": "trac_nghiem",
+     "de": "Đặc điểm nào của lá giúp hạn chế mất nước mà vẫn bảo đảm quang hợp?",
+     "lua_chon": [
+      "Lá luôn cuộn lại vào ban ngày.",
+      "Lá không có biểu bì.",
+      "Phiến lá dày và không có gân.",
+      "Lớp cutin trong suốt và khí khổng tập trung ở mặt dưới."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ánh sáng vẫn đi qua được, còn nước thì ít bị mất do khí khổng nằm ở mặt ít nắng."
+    },
+    {
+     "ma_cau": "K07070202032",
+     "loai": "trac_nghiem",
+     "de": "Vì sao gân lá thường phân nhánh khắp phiến lá?",
+     "lua_chon": [
+      "Để lá đổi màu theo mùa.",
+      "Để đưa nước tới và lấy chất hữu cơ đi từ mọi vùng của phiến lá.",
+      "Để làm phiến lá cứng hơn khi gặp mưa.",
+      "Để tăng lượng diệp lục trong lá."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nhờ mạng gân dày, mọi vùng của lá đều được cấp nước và vận chuyển sản phẩm quang hợp."
+    },
+    {
+     "ma_cau": "K07070202033",
+     "loai": "trac_nghiem",
+     "de": "Ở cây thuỷ sinh có lá nổi trên mặt nước, khí khổng thường tập trung ở mặt trên của lá. Điều này là do",
+     "lua_chon": [
+      "mặt trên tiếp xúc với không khí nên trao đổi khí thuận lợi.",
+      "mặt trên có nhiều diệp lục hơn.",
+      "mặt trên ít ánh sáng hơn.",
+      "mặt trên có gân lá dày hơn."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mặt dưới ngập nước nên khí khổng phải nằm ở mặt trên mới lấy được khí từ không khí."
+    },
+    {
+     "ma_cau": "K07070202034",
+     "loai": "trac_nghiem",
+     "de": "Đặc điểm nào sau đây của lá phục vụ trực tiếp cho việc thu nhận năng lượng ánh sáng?",
+     "lua_chon": [
+      "Cuống lá dài.",
+      "Phiến lá rộng và chứa nhiều diệp lục.",
+      "Mép lá có răng cưa.",
+      "Lá có mùi thơm."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Diện tích lớn và lượng diệp lục nhiều quyết định lượng năng lượng lá thu được."
+    },
+    {
+     "ma_cau": "K07070202035",
+     "loai": "trac_nghiem",
+     "de": "Khi quan sát một lá cây dưới kính hiển vi, học sinh thấy các hạt nhỏ màu lục nằm trong tế bào. Các hạt đó là",
+     "lua_chon": [
+      "hạt tinh bột.",
+      "nhân tế bào.",
+      "giọt nước.",
+      "lục lạp."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lục lạp mang diệp lục nên có màu lục đặc trưng."
+    },
+    {
+     "ma_cau": "K07070202036",
+     "loai": "tra_loi_ngan",
+     "de": "Ngoài cuống lá, lá cây còn gồm phần chính nào?",
+     "dap_an": "phiến lá",
+     "loi_giai": "Phiến lá là phần bản rộng, nơi diễn ra quang hợp."
+    },
+    {
+     "ma_cau": "K07070202037",
+     "loai": "tra_loi_ngan",
+     "de": "Khoảng trống giữa các tế bào thịt lá tạo thuận lợi cho chất khí thực hiện điều gì?",
+     "dap_an": "khuếch tán",
+     "loi_giai": "Nhờ đó carbon dioxide đi từ khí khổng tới được mọi tế bào thịt lá."
+    },
+    {
+     "ma_cau": "K07070202038",
+     "loai": "tra_loi_ngan",
+     "de": "Khi lá bị sâu ăn khuyết nhiều, khả năng quang hợp của lá tăng hay giảm?",
+     "dap_an": "giảm",
+     "loi_giai": "Diện tích chứa lục lạp và hấp thụ ánh sáng bị mất đi một phần."
+    },
+    {
+     "ma_cau": "K07070202039",
+     "loai": "tra_loi_ngan",
+     "de": "Cây trồng quá dày làm cho lá ở tầng dưới thiếu yếu tố nào?",
+     "dap_an": "ánh sáng",
+     "loi_giai": "Lá phía trên che khuất nên lá phía dưới không nhận đủ ánh sáng."
+    },
+    {
+     "ma_cau": "K07070202040",
+     "loai": "tra_loi_ngan",
+     "de": "Mạng gân lá phân nhánh khắp phiến lá phục vụ cho hoạt động nào?",
+     "dap_an": "vận chuyển các chất",
+     "loi_giai": "Nhờ đó mọi vùng của lá đều được cấp nước và chuyển đi chất hữu cơ."
+    },
+    {
+     "ma_cau": "K07070202041",
+     "loai": "tra_loi_ngan",
+     "de": "Bộ phận nào của lá nối phiến lá với thân hoặc cành?",
+     "dap_an": "cuống lá",
+     "loi_giai": "Cuống lá cũng là đường đi của các mạch dẫn vào phiến lá."
+    },
+    {
+     "ma_cau": "K07070202042",
+     "loai": "tra_loi_ngan",
+     "de": "Cây có nhiều lá hay ít lá thì tổng diện tích hấp thụ ánh sáng lớn hơn?",
+     "dap_an": "nhiều lá",
+     "loi_giai": "Diện tích lá càng lớn thì lượng ánh sáng thu nhận được càng nhiều."
+    },
+    {
+     "ma_cau": "K07070202043",
+     "loai": "tra_loi_ngan",
+     "de": "Khí khổng nằm ở lớp nào của lá?",
+     "dap_an": "biểu bì",
+     "loi_giai": "Khí khổng là những lỗ nhỏ nằm trên lớp tế bào biểu bì."
+    },
+    {
+     "ma_cau": "K07070202044",
+     "loai": "tra_loi_ngan",
+     "de": "Lá cây thường hướng về phía nào?",
+     "dap_an": "phía có ánh sáng",
+     "loi_giai": "Nhờ vậy lá nhận được nhiều ánh sáng nhất cho quang hợp."
+    },
+    {
+     "ma_cau": "K07070202045",
+     "loai": "tra_loi_ngan",
+     "de": "Bụi bám dày trên lá làm cản trở hoạt động nào của khí khổng?",
+     "dap_an": "trao đổi khí",
+     "loi_giai": "Bụi bịt bớt khí khổng nên carbon dioxide khó đi vào lá."
+    },
+    {
+     "ma_cau": "K07070202046",
+     "loai": "tra_loi_ngan",
+     "de": "Việc rụng lá vào mùa đông ở nhiều loài cây có tác dụng gì đối với lượng nước trong cây?",
+     "dap_an": "giảm thoát hơi nước",
+     "loi_giai": "Không còn lá thì lượng nước mất qua khí khổng giảm hẳn."
+    },
+    {
+     "ma_cau": "K07070202047",
+     "loai": "tra_loi_ngan",
+     "de": "Ở cây xương rồng, lá biến đổi thành bộ phận gì?",
+     "dap_an": "gai",
+     "loi_giai": "Việc quang hợp khi đó do thân màu lục đảm nhận."
+    },
+    {
+     "ma_cau": "K07070202048",
+     "loai": "tra_loi_ngan",
+     "de": "Gân lá chứa những loại mạch nào?",
+     "dap_an": "mạch gỗ và mạch rây",
+     "loi_giai": "Mạch gỗ đưa nước tới lá, mạch rây đưa chất hữu cơ đi khỏi lá."
+    },
+    {
+     "ma_cau": "K07070202049",
+     "loai": "tra_loi_ngan",
+     "de": "Vì sao lá non thường có màu lục nhạt hơn lá trưởng thành?",
+     "dap_an": "chứa ít diệp lục hơn",
+     "loi_giai": "Lượng diệp lục tăng dần khi lá phát triển đầy đủ."
+    },
+    {
+     "ma_cau": "K07070202050",
+     "loai": "tra_loi_ngan",
+     "de": "Ngoài trao đổi khí, lá còn giữ vai trò gì đối với lượng nước trong cây?",
+     "dap_an": "thoát hơi nước",
+     "loi_giai": "Hơi nước đi ra ngoài qua khí khổng trên bề mặt lá."
+    },
+    {
+     "ma_cau": "K07070202051",
+     "loai": "trac_nghiem",
+     "de": "Tế bào thịt lá chứa rất nhiều lục lạp. Đặc điểm này giúp lá quang hợp mạnh vì lục lạp",
+     "lua_chon": [
+      "hút muối khoáng từ đất lên lá",
+      "dẫn nước từ rễ lên đến lá",
+      "giúp khí carbon dioxide đi vào lá",
+      "chứa diệp lục hấp thụ năng lượng ánh sáng"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lục lạp chứa diệp lục hấp thụ năng lượng ánh sáng và là nơi diễn ra quang hợp; càng nhiều lục lạp, lá càng quang hợp mạnh.\n\nVì sao các phương án khác sai:\n- A: Rễ (lông hút) hút muối khoáng từ đất, không phải lục lạp.\n- B: Mạch gỗ dẫn nước từ rễ lên lá, không phải lục lạp.\n- C: Carbon dioxide vào lá qua khí khổng, không phải nhờ lục lạp."
+    },
+    {
+     "ma_cau": "K07070202052",
+     "loai": "trac_nghiem",
+     "de": "Vì sao rễ cây nằm trong đất KHÔNG thực hiện được quang hợp?",
+     "lua_chon": [
+      "Vì trong đất không có nước",
+      "Vì tế bào rễ không có lục lạp, không nhận ánh sáng",
+      "Vì rễ chỉ quang hợp vào ban đêm",
+      "Vì rễ đã lấy đủ tinh bột từ đất"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Quang hợp cần ánh sáng và diệp lục trong lục lạp; rễ trong đất không nhận được ánh sáng và tế bào rễ không có lục lạp.\n\nVì sao các phương án khác sai:\n- A: Trong đất có nước; rễ còn hút nước cung cấp cho cả cây.\n- C: Quang hợp cần ánh sáng nên không diễn ra vào ban đêm.\n- D: Rễ không lấy tinh bột từ đất; tinh bột do lá tạo ra rồi chuyển đến rễ."
+    }
+   ]
+  }
+ ]
+}

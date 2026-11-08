@@ -1,0 +1,2558 @@
+[
+ {
+  "ma_cau": "T109000000372",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Vế trái là tích hai nhị thức, vế phải bằng 0."
+ },
+ {
+  "ma_cau": "T109030301028",
+  "dang_bai_id": "NDB00499",
+  "chac": "cao",
+  "ly_do": "Tìm x để P bằng hằng số 11/5."
+ },
+ {
+  "ma_cau": "T109000000116",
+  "dang_bai_id": "NDB00938",
+  "chac": "vua",
+  "ly_do": "Lập BPT tìm điểm tối thiểu để trung bình đạt mức; dạng gần nhất nhưng không chắc."
+ },
+ {
+  "ma_cau": "T109030101060",
+  "dang_bai_id": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chứa căn số bằng đưa thừa số ra ngoài."
+ },
+ {
+  "ma_cau": "T109000000143",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu diện tích hình chữ nhật khi cho chu vi (hoàn thành bình phương)."
+ },
+ {
+  "ma_cau": "T109000000253",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ hai phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T109030101120",
+  "dang_bai_id": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu và căn dạng bình phương; không rõ dạng chủ đạo."
+ },
+ {
+  "ma_cau": "T109000000152",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc bất đẳng thức/cực trị nhiều biến x,y,z; bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T109000000403",
+  "dang_bai_id": "NDB00513",
+  "chac": "vua",
+  "ly_do": "Tối ưu chi phí rào có ràng buộc cạnh dài ≥ cạnh ngắn; mô tả dạng bản đồ thiếu."
+ },
+ {
+  "ma_cau": "T109000000254",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ hai phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T109000000377",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu doanh thu bậc hai một ẩn (hoàn thành bình phương)."
+ },
+ {
+  "ma_cau": "T109030101049",
+  "dang_bai_id": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức chứa căn số bằng đưa thừa số ra ngoài."
+ },
+ {
+  "ma_cau": "T109030101018",
+  "dang_bai_id": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu và căn dạng bình phương; không rõ dạng chủ đạo."
+ },
+ {
+  "ma_cau": "T109000000502",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT có mẫu số, phải khử mẫu rồi giải."
+ },
+ {
+  "ma_cau": "T109000000382",
+  "dang_bai_id": "NDB00713",
+  "chac": "cao",
+  "ly_do": "Cho thời gian hai vòi chảy chung, tìm thời gian chảy riêng."
+ },
+ {
+  "ma_cau": "T109020202024",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT cần khai triển ngoặc, thu gọn rồi giải."
+ },
+ {
+  "ma_cau": "T109030102082",
+  "dang_bai_id": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức dưới căn viết được thành bình phương của tổng/hiệu."
+ },
+ {
+  "ma_cau": "T109000000120",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: viết bất đẳng thức biểu thị tình huống thực tế."
+ },
+ {
+  "ma_cau": "T109000000332",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ hai phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T109030301011",
+  "dang_bai_id": "NDB00498",
+  "chac": "cao",
+  "ly_do": "Tìm x khi P bình phương bằng hằng số, xét hai trường hợp P."
+ },
+ {
+  "ma_cau": "T109000000400",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109030102010",
+  "dang_bai_id": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức dưới căn viết được thành bình phương của tổng/hiệu."
+ },
+ {
+  "ma_cau": "T109020304028",
+  "dang_bai_id": "NDB00729",
+  "chac": "cao",
+  "ly_do": "Cùng quãng đường, vận tốc chênh nhau, thời gian chênh 30 phút."
+ },
+ {
+  "ma_cau": "T109030101005",
+  "dang_bai_id": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức căn số thuần túy."
+ },
+ {
+  "ma_cau": "T109030102078",
+  "dang_bai_id": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức dưới căn viết được thành bình phương của tổng/hiệu."
+ },
+ {
+  "ma_cau": "T109000000184",
+  "dang_bai_id": "NDB00731",
+  "chac": "cao",
+  "ly_do": "Ca nô xuôi/ngược dòng cùng quãng đường, cho vận tốc dòng nước."
+ },
+ {
+  "ma_cau": "T109030101107",
+  "dang_bai_id": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức căn số bằng đưa thừa số ra ngoài."
+ },
+ {
+  "ma_cau": "T109000000481",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109030102015",
+  "dang_bai_id": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức dưới căn viết được thành bình phương của tổng/hiệu."
+ },
+ {
+  "ma_cau": "T109000000352",
+  "dang_bai_id": "NDB00721",
+  "chac": "cao",
+  "ly_do": "Phương trình bậc nhất có mẫu là số, quy đồng khử mẫu."
+ },
+ {
+  "ma_cau": "T109000000268",
+  "dang_bai_id": "NDB00939",
+  "chac": "cao",
+  "ly_do": "Lãi suất gửi tiết kiệm, lập BPT tìm số tiền gửi tối thiểu."
+ },
+ {
+  "ma_cau": "T109000000498",
+  "dang_bai_id": "NDB00732",
+  "chac": "cao",
+  "ly_do": "Khối lượng (số trang) cố định, năng suất đổi dẫn đến thời gian đổi."
+ },
+ {
+  "ma_cau": "T109000000358",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109030304021",
+  "dang_bai_id": "NDB00510",
+  "chac": "vua",
+  "ly_do": "Tử và mẫu đều có căn; viết được dạng hằng trừ phân thức nhưng không chắc."
+ },
+ {
+  "ma_cau": "T109000000469",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu doanh thu bậc hai một ẩn (tăng giá, giảm số căn thuê)."
+ },
+ {
+  "ma_cau": "T109000000289",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT có nhiều mẫu số, quy đồng khử mẫu."
+ },
+ {
+  "ma_cau": "T109030102132",
+  "dang_bai_id": "NDB00484",
+  "chac": "vua",
+  "ly_do": "Có thể nhân hệ số hoặc bình phương cả biểu thức; dạng khác cũng hợp lý."
+ },
+ {
+  "ma_cau": "T109030101042",
+  "dang_bai_id": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu và căn dạng bình phương; không rõ dạng chủ đạo."
+ },
+ {
+  "ma_cau": "T109000000328",
+  "dang_bai_id": "NDB00718",
+  "chac": "vua",
+  "ly_do": "Tìm số vé người lớn/trẻ em có giảm giá; có thể xếp tăng giảm giá."
+ },
+ {
+  "ma_cau": "T109000000216",
+  "dang_bai_id": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Hệ có ngoặc cần khai triển, thu gọn rồi giải."
+ },
+ {
+  "ma_cau": "T109000000495",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Phương trình ẩn ở mẫu, mẫu x²-3x phân tích nhân tử để tìm mẫu chung."
+ },
+ {
+  "ma_cau": "T109000000453",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng cộng đại số."
+ },
+ {
+  "ma_cau": "T109000000465",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Chuyển vế, phân tích x²-1, đặt nhân tử chung đưa về tích."
+ },
+ {
+  "ma_cau": "T109000000507",
+  "dang_bai_id": "NDB00514",
+  "chac": "vua",
+  "ly_do": "Tối ưu chi phí thuê xe hai loại, số xe nguyên; mô tả dạng bản đồ thiếu."
+ },
+ {
+  "ma_cau": "T109030304028",
+  "dang_bai_id": "NDB00507",
+  "chac": "vua",
+  "ly_do": "P có dạng hằng cộng phân thức tử hằng; có thể cũng là dạng cần biến đổi."
+ },
+ {
+  "ma_cau": "T109030304078",
+  "dang_bai_id": "NDB00508",
+  "chac": "cao",
+  "ly_do": "Tìm x để P nhận giá trị nguyên lớn nhất bằng đánh giá khoảng."
+ },
+ {
+  "ma_cau": "T109030102063",
+  "dang_bai_id": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức dưới căn viết được thành bình phương của tổng/hiệu."
+ },
+ {
+  "ma_cau": "T109030101030",
+  "dang_bai_id": "NDB00482",
+  "chac": "cao",
+  "ly_do": "Biểu thức có phân thức chứa căn ở mẫu, trục căn và rút gọn."
+ },
+ {
+  "ma_cau": "T109020202026",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT cần khai triển tích, thu gọn rồi giải."
+ },
+ {
+  "ma_cau": "T109000000306",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Phân tích x²-4, đặt nhân tử chung đưa về tích."
+ },
+ {
+  "ma_cau": "T109030102100",
+  "dang_bai_id": "NDB00483",
+  "chac": "cao",
+  "ly_do": "Biểu thức dưới căn viết được thành bình phương của tổng/hiệu."
+ },
+ {
+  "ma_cau": "T109000000200",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Đổi dấu 7-6x, đặt nhân tử chung đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109010309007",
+  "dang_bai_id": "NDB00711",
+  "chac": "cao",
+  "ly_do": "Hai xe đi ngược chiều gặp nhau, lập hệ từ quãng đường."
+ },
+ {
+  "ma_cau": "T109000000439",
+  "dang_bai_id": "NDB00727",
+  "chac": "cao",
+  "ly_do": "BPT bậc nhất cơ bản."
+ },
+ {
+  "ma_cau": "T109030304062",
+  "dang_bai_id": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Tìm x để P là số nguyên tố."
+ },
+ {
+  "ma_cau": "T109030101014",
+  "dang_bai_id": "NDB00481",
+  "chac": "cao",
+  "ly_do": "Căn của bình phương một biểu thức, xét dấu giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T109030301024",
+  "dang_bai_id": "NDB00498",
+  "chac": "cao",
+  "ly_do": "Tìm x khi P bình phương bằng hằng số, xét hai trường hợp P."
+ },
+ {
+  "ma_cau": "T109000000413",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT có nhiều mẫu số, quy đồng khử mẫu."
+ },
+ {
+  "ma_cau": "T109030202060",
+  "dang_bai_id": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức căn tại x cho trước."
+ },
+ {
+  "ma_cau": "T109030202020",
+  "dang_bai_id": "NDB00486",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức căn tại x cho trước."
+ },
+ {
+  "ma_cau": "T109030101024",
+  "dang_bai_id": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức căn số bằng đưa thừa số ra ngoài."
+ },
+ {
+  "ma_cau": "T109000000373",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Chuyển vế, hiệu hai bình phương phân tích thành tích rồi giải."
+ },
+ {
+  "ma_cau": "T109000000488",
+  "dang_bai_id": "NDB00705",
+  "chac": "cao",
+  "ly_do": "Hệ có 1/x, 1/y, đặt ẩn phụ."
+ },
+ {
+  "ma_cau": "T109000000224",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Biết tổng giá niêm yết và tổng tiền sau giảm giá của hai mặt hàng."
+ },
+ {
+  "ma_cau": "T109000000376",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Biết tổng giá niêm yết và tổng tiền sau giảm giá của hai mặt hàng."
+ },
+ {
+  "ma_cau": "T109000000258",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT cần khai triển tích, thu gọn rồi giải."
+ },
+ {
+  "ma_cau": "T109000000459",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000496",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT cần khai triển, thu gọn rồi giải."
+ },
+ {
+  "ma_cau": "T109000000371",
+  "dang_bai_id": "NDB00936",
+  "chac": "cao",
+  "ly_do": "Lập BPT tìm số quyển sổ tối đa với giới hạn sticker."
+ },
+ {
+  "ma_cau": "T109000000452",
+  "dang_bai_id": "NDB00723",
+  "chac": "cao",
+  "ly_do": "Phương trình chứa ẩn ở mẫu, tìm ĐKXĐ rồi quy đồng."
+ },
+ {
+  "ma_cau": "T109000000426",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp cộng đại số."
+ },
+ {
+  "ma_cau": "T109000000282",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000271",
+  "dang_bai_id": "NDB00727",
+  "chac": "cao",
+  "ly_do": "BPT bậc nhất dạng cơ bản."
+ },
+ {
+  "ma_cau": "T109000000475",
+  "dang_bai_id": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Hệ có hệ số phân số, quy đồng đưa về hệ bậc nhất rồi giải."
+ },
+ {
+  "ma_cau": "T109000000113",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu, cần phân tích x³-8 bằng hằng đẳng thức để tìm mẫu chung."
+ },
+ {
+  "ma_cau": "T109000000308",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT có nhiều mẫu số, quy đồng khử mẫu."
+ },
+ {
+  "ma_cau": "T109000000326",
+  "dang_bai_id": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn trục căn ở mẫu và căn dạng bình phương; không rõ dạng chủ đạo."
+ },
+ {
+  "ma_cau": "T109000000126",
+  "dang_bai_id": "NDB00719",
+  "chac": "cao",
+  "ly_do": "Bài toán số tiền dự định và thực tế gấp 2, gấp 3, không thuộc nhóm có sẵn."
+ },
+ {
+  "ma_cau": "T109000000225",
+  "dang_bai_id": "NDB00720",
+  "chac": "vua",
+  "ly_do": "Chu vi, tăng/giảm kích thước làm đổi diện tích, giải bằng hệ; cũng giống dạng lập PT."
+ },
+ {
+  "ma_cau": "T109000000270",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu với mẫu x²-4 phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T109000000264",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu với mẫu x²-16 phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T109000000137",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Khai triển rồi đặt nhân tử chung đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109000000177",
+  "dang_bai_id": "NDB00717",
+  "chac": "cao",
+  "ly_do": "Chia vốn hai khoản đầu tư với lãi suất khác nhau, biết tổng lãi."
+ },
+ {
+  "ma_cau": "T109000000232",
+  "dang_bai_id": "NDB00938",
+  "chac": "cao",
+  "ly_do": "Thi trắc nghiệm cộng/trừ điểm, tìm số câu đúng tối thiểu."
+ },
+ {
+  "ma_cau": "T109000000146",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp cộng đại số."
+ },
+ {
+  "ma_cau": "T109000000223",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT có nhiều mẫu số, quy đồng khử mẫu."
+ },
+ {
+  "ma_cau": "T109000000236",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu với mẫu x²-4 phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T109000000141",
+  "dang_bai_id": "NDB00713",
+  "chac": "cao",
+  "ly_do": "Cho thời gian làm chung và một tình huống làm lần lượt, tìm thời gian làm riêng."
+ },
+ {
+  "ma_cau": "T109000000198",
+  "dang_bai_id": "NDB00718",
+  "chac": "cao",
+  "ly_do": "Mua hai loại vở, biết tổng số quyển và tổng tiền."
+ },
+ {
+  "ma_cau": "T109000000389",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: so sánh biểu thức bằng tính chất bất đẳng thức."
+ },
+ {
+  "ma_cau": "T109000000414",
+  "dang_bai_id": "NDB00936",
+  "chac": "cao",
+  "ly_do": "Lập BPT tìm số hộp bút tối đa với ngân sách còn lại."
+ },
+ {
+  "ma_cau": "T109000000180",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình tích có thừa số thứ hai chỉ cần thu gọn."
+ },
+ {
+  "ma_cau": "T109000000295",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu với mẫu x²-1 phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T109000000251",
+  "dang_bai_id": "NDB00717",
+  "chac": "cao",
+  "ly_do": "Chia vốn hai khoản đầu tư với lãi suất khác nhau, biết tổng lãi."
+ },
+ {
+  "ma_cau": "T109000000349",
+  "dang_bai_id": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Hệ cần khai triển tích, thu gọn về hệ bậc nhất."
+ },
+ {
+  "ma_cau": "T109000000325",
+  "dang_bai_id": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức căn số bằng đưa thừa số ra ngoài."
+ },
+ {
+  "ma_cau": "T109000000191",
+  "dang_bai_id": "NDB00719",
+  "chac": "vua",
+  "ly_do": "Hai tổ vượt mức theo phần trăm; có thể xếp cùng dạng tăng/giảm phần trăm."
+ },
+ {
+  "ma_cau": "T109000000174",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp cộng đại số."
+ },
+ {
+  "ma_cau": "T109000000429",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: bài toán cổ lập phương trình bậc hai (bầy khỉ)."
+ },
+ {
+  "ma_cau": "T109000000375",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT cần bỏ ngoặc, chuyển vế rồi giải."
+ },
+ {
+  "ma_cau": "T109000000503",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp cộng đại số."
+ },
+ {
+  "ma_cau": "T109000000133",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000135",
+  "dang_bai_id": "NDB00938",
+  "chac": "cao",
+  "ly_do": "Thi đố vui cộng/trừ điểm, tìm số câu đúng tối thiểu."
+ },
+ {
+  "ma_cau": "T109000000486",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: hệ phương trình bậc cao đối xứng."
+ },
+ {
+  "ma_cau": "T109000000267",
+  "dang_bai_id": "NDB00719",
+  "chac": "vua",
+  "ly_do": "Hai tổ tăng phần trăm so với quý trước; có thể xếp cùng dạng tăng/giảm phần trăm."
+ },
+ {
+  "ma_cau": "T109000000399",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu với mẫu x²-16 phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T109000000474",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000256",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu với mẫu x²-25 phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T109000000233",
+  "dang_bai_id": "NDB00715",
+  "chac": "vua",
+  "ly_do": "Tiền điện, nước tăng theo phần trăm; có thể xếp dạng Các bài toán khác."
+ },
+ {
+  "ma_cau": "T109000000357",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: chứng minh đẳng thức từ giả thiết (biến đổi đại số nâng cao)."
+ },
+ {
+  "ma_cau": "T109000000472",
+  "dang_bai_id": "NDB00937",
+  "chac": "cao",
+  "ly_do": "Giới hạn tải trọng xe, tìm số xe tối thiểu chở hết hàng."
+ },
+ {
+  "ma_cau": "T109000000467",
+  "dang_bai_id": "NDB00736",
+  "chac": "vua",
+  "ly_do": "Mảnh đất đổi kích thước, diện tích giảm; có thể giải bằng hệ nên cũng hợp dạng hình học."
+ },
+ {
+  "ma_cau": "T109000000312",
+  "dang_bai_id": "NDB00938",
+  "chac": "cao",
+  "ly_do": "Thi đố vui cộng/trừ điểm, tìm số câu đúng tối thiểu."
+ },
+ {
+  "ma_cau": "T109000000157",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000418",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Đặt nhân tử chung đưa phương trình bậc hai về phương trình tích."
+ },
+ {
+  "ma_cau": "T109000000155",
+  "dang_bai_id": "NDB00720",
+  "chac": "vua",
+  "ly_do": "Chu vi, tăng/giảm kích thước làm đổi diện tích, giải bằng hệ; cũng giống dạng lập PT."
+ },
+ {
+  "ma_cau": "T109000000405",
+  "dang_bai_id": "NDB00727",
+  "chac": "cao",
+  "ly_do": "BPT bậc nhất dạng cơ bản."
+ },
+ {
+  "ma_cau": "T109000000396",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: so sánh biểu thức bằng tính chất bất đẳng thức."
+ },
+ {
+  "ma_cau": "T109000000288",
+  "dang_bai_id": "NDB00512",
+  "chac": "vua",
+  "ly_do": "Cho thể tích hồ, tìm kích thước để chi phí diện tích nhỏ nhất; dạng này thiếu mô tả."
+ },
+ {
+  "ma_cau": "T109000000404",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình tích có thừa số thứ hai bậc nhất."
+ },
+ {
+  "ma_cau": "T109000000196",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp cộng đại số."
+ },
+ {
+  "ma_cau": "T109000000231",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT có mẫu âm, đổi dấu rồi khử mẫu."
+ },
+ {
+  "ma_cau": "T109000000238",
+  "dang_bai_id": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Hệ cần khai triển tích, thu gọn về hệ bậc nhất."
+ },
+ {
+  "ma_cau": "T109000000428",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Biết tổng giá niêm yết và mức giảm giá của hai mặt hàng."
+ },
+ {
+  "ma_cau": "T109000000302",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000359",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu với mẫu x²-1 phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T109000000147",
+  "dang_bai_id": "NDB00705",
+  "chac": "cao",
+  "ly_do": "Hệ có 1/(x-1), 1/(y+1), đặt ẩn phụ."
+ },
+ {
+  "ma_cau": "T109000000207",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: nhận biết phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T109000000501",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu, đổi 4-x² thành -(x-2)(x+2) để có mẫu chung."
+ },
+ {
+  "ma_cau": "T109000000211",
+  "dang_bai_id": "NDB00717",
+  "chac": "cao",
+  "ly_do": "Chia vốn hai khoản đầu tư với lãi suất khác nhau, biết tổng lãi."
+ },
+ {
+  "ma_cau": "T109000000249",
+  "dang_bai_id": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Hệ cần bỏ ngoặc, thu gọn về hệ bậc nhất rồi giải."
+ },
+ {
+  "ma_cau": "T109000000139",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu, đổi dấu 4-x² để có nhân tử chung."
+ },
+ {
+  "ma_cau": "T109000000419",
+  "dang_bai_id": "NDB00725",
+  "chac": "vua",
+  "ly_do": "PT ẩn ở mẫu có hai mẫu đối nhau; cũng có thể xếp dạng thường."
+ },
+ {
+  "ma_cau": "T109000000252",
+  "dang_bai_id": "NDB00512",
+  "chac": "vua",
+  "ly_do": "Cho thể tích hộp, tìm kích thước để diện tích mạ nhỏ nhất; đề có hình, dạng thiếu mô tả."
+ },
+ {
+  "ma_cau": "T109000000128",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm GTNN của biểu thức phân thức một biến bằng bất đẳng thức."
+ },
+ {
+  "ma_cau": "T109000000497",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT có nhiều mẫu số, quy đồng khử mẫu."
+ },
+ {
+  "ma_cau": "T109000000162",
+  "dang_bai_id": "NDB00719",
+  "chac": "vua",
+  "ly_do": "Hai câu lạc bộ có phần trăm đạt giải; không rõ thuộc nhóm nào."
+ },
+ {
+  "ma_cau": "T109000000313",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Thống kê: đọc biểu đồ, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T109000000365",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: bài toán thực tế so sánh biểu thức bình phương (bất đẳng thức)."
+ },
+ {
+  "ma_cau": "T109000000383",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu lợi nhuận bậc hai một biến (giảm giá bán)."
+ },
+ {
+  "ma_cau": "T109000000500",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Hai vế cùng thừa số 3x-1, chuyển vế đặt nhân tử chung."
+ },
+ {
+  "ma_cau": "T109000000226",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu doanh thu bậc hai một ẩn (tăng giá vé)."
+ },
+ {
+  "ma_cau": "T109000000322",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000206",
+  "dang_bai_id": "NDB00939",
+  "chac": "cao",
+  "ly_do": "Thu nhập theo giờ, lập BPT tìm số giờ tối thiểu đạt mức tiền."
+ },
+ {
+  "ma_cau": "T109000000381",
+  "dang_bai_id": "NDB00936",
+  "chac": "cao",
+  "ly_do": "Lập BPT tìm số bút tối đa với số tiền còn lại."
+ },
+ {
+  "ma_cau": "T109000000432",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu với mẫu x²-9 phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T109000000127",
+  "dang_bai_id": "NDB00936",
+  "chac": "cao",
+  "ly_do": "Lập BPT tìm số quyển sổ tối đa với giới hạn sticker."
+ },
+ {
+  "ma_cau": "T109000000390",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu diện tích hình chữ nhật khi cho chu vi (hoàn thành bình phương)."
+ },
+ {
+  "ma_cau": "T109000000444",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Đặt thừa số chung (x-7) đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109000000277",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu với mẫu x²-9, đổi dấu 3-x."
+ },
+ {
+  "ma_cau": "T109000000140",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT có mẫu số, quy đồng khử mẫu."
+ },
+ {
+  "ma_cau": "T109000000262",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp cộng đại số."
+ },
+ {
+  "ma_cau": "T109000000240",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Biết tổng giá niêm yết và mức giảm giá của hai mặt hàng."
+ },
+ {
+  "ma_cau": "T109000000136",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: chứng minh bất đẳng thức nhiều biến."
+ },
+ {
+  "ma_cau": "T109000000451",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Đặt thừa số chung (x-3) đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109000000379",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Đặt nhân tử chung (x+2) đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109000000309",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000455",
+  "dang_bai_id": "NDB00718",
+  "chac": "cao",
+  "ly_do": "Mua hai loại trái cây, biết tổng khối lượng và tổng tiền."
+ },
+ {
+  "ma_cau": "T109000000504",
+  "dang_bai_id": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Hệ cần khai triển tích, thu gọn về hệ bậc nhất."
+ },
+ {
+  "ma_cau": "T109000000122",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu với mẫu x²-4 phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T109000000230",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: kiểm tra một số có là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T109000000222",
+  "dang_bai_id": "NDB00727",
+  "chac": "cao",
+  "ly_do": "BPT bậc nhất dạng cơ bản."
+ },
+ {
+  "ma_cau": "T109000000436",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000217",
+  "dang_bai_id": "NDB00705",
+  "chac": "cao",
+  "ly_do": "Hệ có 1/(x+1), 1/(y-2), đặt ẩn phụ."
+ },
+ {
+  "ma_cau": "T109000000351",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000315",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000470",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT có mẫu số, quy đồng khử mẫu."
+ },
+ {
+  "ma_cau": "T109000000392",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000331",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu doanh thu bậc hai một ẩn (tăng giá vé)."
+ },
+ {
+  "ma_cau": "T109000000219",
+  "dang_bai_id": "NDB00711",
+  "chac": "cao",
+  "ly_do": "Hai xe đi ngược chiều gặp nhau, lập hệ từ quãng đường."
+ },
+ {
+  "ma_cau": "T109000000132",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT có nhiều mẫu số, quy đồng khử mẫu."
+ },
+ {
+  "ma_cau": "T109000000247",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Biết tổng giá niêm yết và tổng tiền sau giảm giá của hai mặt hàng."
+ },
+ {
+  "ma_cau": "T109000000228",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu với mẫu x²-9, đổi dấu 3-x."
+ },
+ {
+  "ma_cau": "T109000000348",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp cộng đại số."
+ },
+ {
+  "ma_cau": "T109000000395",
+  "dang_bai_id": "NDB00729",
+  "chac": "cao",
+  "ly_do": "Cùng quãng đường, vận tốc chênh nhau, thời gian chênh 12 phút."
+ },
+ {
+  "ma_cau": "T109000000320",
+  "dang_bai_id": "NDB00936",
+  "chac": "cao",
+  "ly_do": "Lập BPT tìm số bút tối đa với số tiền còn lại."
+ },
+ {
+  "ma_cau": "T109000000360",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT có mẫu số, quy đồng khử mẫu."
+ },
+ {
+  "ma_cau": "T109000000494",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu hình học bằng hoàn thành bình phương; đề phụ thuộc hình vẽ."
+ },
+ {
+  "ma_cau": "T109000000266",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT cần khai triển, thu gọn rồi giải."
+ },
+ {
+  "ma_cau": "T109000000330",
+  "dang_bai_id": "NDB00936",
+  "chac": "cao",
+  "ly_do": "Lập BPT tìm số bút tối đa với số tiền còn lại."
+ },
+ {
+  "ma_cau": "T109000000124",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000243",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu với mẫu x²-4, đổi dấu 2-x."
+ },
+ {
+  "ma_cau": "T109000000272",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000123",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT cần bỏ ngoặc rồi giải."
+ },
+ {
+  "ma_cau": "T109000000462",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu diện tích hình chữ nhật khi cho chu vi (hoàn thành bình phương)."
+ },
+ {
+  "ma_cau": "T109000000160",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000305",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu thể tích bậc hai; đề có hình."
+ },
+ {
+  "ma_cau": "T109000000471",
+  "dang_bai_id": "NDB00719",
+  "chac": "cao",
+  "ly_do": "Chuyển sách giữa hai thùng, lập hệ, không thuộc nhóm có sẵn."
+ },
+ {
+  "ma_cau": "T109000000317",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp cộng đại số."
+ },
+ {
+  "ma_cau": "T109000000164",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000350",
+  "dang_bai_id": "NDB00719",
+  "chac": "vua",
+  "ly_do": "Phần trăm trúng tuyển của hai trường; có thể xếp cùng dạng tăng/giảm phần trăm."
+ },
+ {
+  "ma_cau": "T109000000410",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Đặt nhân tử chung (2x+1) đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109000000218",
+  "dang_bai_id": "NDB00719",
+  "chac": "cao",
+  "ly_do": "Tìm số có hai chữ số bằng hệ, không thuộc nhóm có sẵn."
+ },
+ {
+  "ma_cau": "T109000000449",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm GTNN biểu thức nhiều biến bằng bất đẳng thức."
+ },
+ {
+  "ma_cau": "T109000000362",
+  "dang_bai_id": "NDB00705",
+  "chac": "cao",
+  "ly_do": "Hệ có 1/(x-1), 1/(y-4), đặt ẩn phụ."
+ },
+ {
+  "ma_cau": "T109000000425",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT cần bỏ ngoặc, chuyển vế rồi giải."
+ },
+ {
+  "ma_cau": "T109000000121",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000190",
+  "dang_bai_id": "NDB00705",
+  "chac": "cao",
+  "ly_do": "Hệ có 1/(x-2), 1/(y-1), đặt ẩn phụ."
+ },
+ {
+  "ma_cau": "T109000000363",
+  "dang_bai_id": "NDB00717",
+  "chac": "cao",
+  "ly_do": "Chia vốn hai khoản đầu tư với lãi suất khác nhau, biết tổng tiền gốc lãi."
+ },
+ {
+  "ma_cau": "T109000000159",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu với mẫu x²-4 phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T109000000434",
+  "dang_bai_id": "NDB00718",
+  "chac": "vua",
+  "ly_do": "Nam mua hoa, nữ mua kẹp tóc, tìm số học sinh; cũng có thể xếp Các bài toán khác."
+ },
+ {
+  "ma_cau": "T109000000138",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Chuyển vế, hiệu hai bình phương phân tích thành tích rồi giải."
+ },
+ {
+  "ma_cau": "T109000000339",
+  "dang_bai_id": "NDB00721",
+  "chac": "cao",
+  "ly_do": "Phương trình bậc nhất đơn giản, chuyển vế."
+ },
+ {
+  "ma_cau": "T109000000291",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Biết tổng giá gốc và tổng tiền sau giảm giá của hai quyển sách."
+ },
+ {
+  "ma_cau": "T109000000280",
+  "dang_bai_id": "NDB00720",
+  "chac": "vua",
+  "ly_do": "Chu vi, tăng/giảm kích thước làm đổi diện tích, giải bằng hệ; cũng giống dạng lập PT."
+ },
+ {
+  "ma_cau": "T109000000197",
+  "dang_bai_id": "NDB00736",
+  "chac": "vua",
+  "ly_do": "Diện tích tăng thêm khi mở rộng vườn, có ý viết biểu thức; cũng có thể xếp PT bậc nhất."
+ },
+ {
+  "ma_cau": "T109000000370",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Biết tổng giá niêm yết và tổng tiền sau giảm giá của hai mặt hàng."
+ },
+ {
+  "ma_cau": "T109000000505",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Biết tổng giá niêm yết và số tiền được giảm của hai mặt hàng."
+ },
+ {
+  "ma_cau": "T109000000150",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: chứng minh bất đẳng thức bằng tính chất BĐT."
+ },
+ {
+  "ma_cau": "T109000000165",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Đặt nhân tử chung (x-2) đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109000000334",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu với mẫu x²-4 phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T109000000151",
+  "dang_bai_id": "NDB00729",
+  "chac": "cao",
+  "ly_do": "Cùng quãng đường AB, vận tốc chênh nhau, thời gian chênh 36 phút."
+ },
+ {
+  "ma_cau": "T109000000368",
+  "dang_bai_id": "NDB00727",
+  "chac": "cao",
+  "ly_do": "BPT bậc nhất dạng cơ bản."
+ },
+ {
+  "ma_cau": "T109000000341",
+  "dang_bai_id": "NDB00721",
+  "chac": "cao",
+  "ly_do": "Phương trình bậc nhất có mẫu là số, quy đồng khử mẫu."
+ },
+ {
+  "ma_cau": "T109000000134",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Biết tổng giá niêm yết và số tiền được giảm của hai mặt hàng."
+ },
+ {
+  "ma_cau": "T109000000408",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Biết tổng giá niêm yết và tổng tiền sau giảm giá của hai mặt hàng."
+ },
+ {
+  "ma_cau": "T109000000310",
+  "dang_bai_id": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Hệ cần bỏ ngoặc, thu gọn về hệ bậc nhất rồi giải."
+ },
+ {
+  "ma_cau": "T109000000482",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu với mẫu x²-1 phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T109000000343",
+  "dang_bai_id": "NDB00718",
+  "chac": "cao",
+  "ly_do": "Mua bút chì, bút bi hai lần, lập hệ tìm đơn giá."
+ },
+ {
+  "ma_cau": "T109000000388",
+  "dang_bai_id": "NDB00729",
+  "chac": "cao",
+  "ly_do": "Cùng quãng đường AB, vận tốc chênh nhau, thời gian chênh 30 phút."
+ },
+ {
+  "ma_cau": "T109000000301",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu với mẫu x²-1 phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T109000000473",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu diện tích khu đất với ngân sách rào; đề có hình."
+ },
+ {
+  "ma_cau": "T109000000401",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm xong sớm nhưng còn làm thêm; khối lượng không cố định hẳn."
+ },
+ {
+  "ma_cau": "T109000000385",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000275",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu diện tích khung ảnh/trang giấy cho trước phần chữ; đề có hình."
+ },
+ {
+  "ma_cau": "T109000000433",
+  "dang_bai_id": "NDB00727",
+  "chac": "cao",
+  "ly_do": "BPT bậc nhất dạng cơ bản."
+ },
+ {
+  "ma_cau": "T109000000338",
+  "dang_bai_id": "NDB00514",
+  "chac": "vua",
+  "ly_do": "Thuê hai loại xe vừa đủ chỗ, chi phí ít nhất, ẩn nguyên; mô tả dạng thiếu."
+ },
+ {
+  "ma_cau": "T109000000298",
+  "dang_bai_id": "NDB00513",
+  "chac": "vua",
+  "ly_do": "Tối ưu lợi nhuận ba loại cơm có miền điều kiện; mô tả dạng thiếu, có thể Xét x nguyên."
+ },
+ {
+  "ma_cau": "T109000000276",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000318",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT có nhiều mẫu số, quy đồng khử mẫu."
+ },
+ {
+  "ma_cau": "T109000000354",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp cộng đại số."
+ },
+ {
+  "ma_cau": "T109000000391",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000458",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT cần bỏ ngoặc rồi giải."
+ },
+ {
+  "ma_cau": "T109000000442",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu lợi nhuận bậc hai một ẩn (giảm giá bán)."
+ },
+ {
+  "ma_cau": "T109000000287",
+  "dang_bai_id": "NDB00719",
+  "chac": "cao",
+  "ly_do": "Hai loại xe tải, biết tổng số xe và tổng tải trọng, không thuộc nhóm có sẵn."
+ },
+ {
+  "ma_cau": "T109000000340",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Phân tích x²-4, đặt nhân tử chung đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109000000417",
+  "dang_bai_id": "NDB00701",
+  "chac": "vua",
+  "ly_do": "Kiểm tra cặp số là nghiệm của PT/hệ; dạng gần nhất nhưng bản đồ thiếu dạng kiểm tra nghiệm."
+ },
+ {
+  "ma_cau": "T109000000242",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000321",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu diện tích khung ảnh/trang giấy cho trước phần chữ."
+ },
+ {
+  "ma_cau": "T109000000324",
+  "dang_bai_id": "NDB00723",
+  "chac": "cao",
+  "ly_do": "Phương trình chứa ẩn ở mẫu, tìm ĐKXĐ rồi quy đồng."
+ },
+ {
+  "ma_cau": "T109000000156",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm xong sớm nhưng còn làm thêm; khối lượng không cố định hẳn."
+ },
+ {
+  "ma_cau": "T109000000456",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm GTNN biểu thức nhiều biến bằng bất đẳng thức."
+ },
+ {
+  "ma_cau": "T109000000214",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT cần bỏ ngoặc, thu gọn rồi giải."
+ },
+ {
+  "ma_cau": "T109000000319",
+  "dang_bai_id": "NDB00713",
+  "chac": "cao",
+  "ly_do": "Cho thời gian làm chung và tình huống làm lần lượt, tìm thời gian làm riêng."
+ },
+ {
+  "ma_cau": "T109000000493",
+  "dang_bai_id": "NDB00936",
+  "chac": "cao",
+  "ly_do": "Lập BPT tìm số quyển vở tối đa với số tiền còn lại."
+ },
+ {
+  "ma_cau": "T109000000144",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000286",
+  "dang_bai_id": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Hệ có ngoặc cần thu gọn về hệ bậc nhất."
+ },
+ {
+  "ma_cau": "T109000000260",
+  "dang_bai_id": "NDB00939",
+  "chac": "cao",
+  "ly_do": "Lãi suất gửi tiết kiệm, lập BPT tìm số tiền gửi tối thiểu."
+ },
+ {
+  "ma_cau": "T109000000229",
+  "dang_bai_id": "NDB00706",
+  "chac": "vua",
+  "ly_do": "Hệ phân thức có "
+ },
+ {
+  "ma_cau": "T109000000463",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000119",
+  "dang_bai_id": "NDB00703",
+  "chac": "vua",
+  "ly_do": "Trắc nghiệm một bước nhân hai vế khi giải hệ bằng cộng đại số."
+ },
+ {
+  "ma_cau": "T109000000384",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000468",
+  "dang_bai_id": "NDB00939",
+  "chac": "vua",
+  "ly_do": "Tiết kiệm và trả góp để đủ tiền mua nhà; cũng có thể xếp số lượng tối thiểu."
+ },
+ {
+  "ma_cau": "T109000000154",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT ẩn ở mẫu với mẫu x²-1 phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T109000000394",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Biết tổng giá niêm yết và tổng tiền sau giảm giá của hai mặt hàng."
+ },
+ {
+  "ma_cau": "T109000000203",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT có nhiều mẫu số, quy đồng khử mẫu."
+ },
+ {
+  "ma_cau": "T109000000255",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000234",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu doanh thu bậc hai một ẩn (giảm giá vé)."
+ },
+ {
+  "ma_cau": "T109000000274",
+  "dang_bai_id": "NDB00939",
+  "chac": "cao",
+  "ly_do": "Thu nhập trừ chi tiêu, lập BPT tìm số ngày tối thiểu đủ tiền."
+ },
+ {
+  "ma_cau": "T109000000170",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm GTLN của biểu thức phân thức một biến bằng bất đẳng thức."
+ },
+ {
+  "ma_cau": "T109000000397",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu diện tích hình chữ nhật khi cho chu vi (hoàn thành bình phương)."
+ },
+ {
+  "ma_cau": "T109000000209",
+  "dang_bai_id": "NDB00723",
+  "chac": "cao",
+  "ly_do": "Phương trình chứa ẩn ở mẫu, tìm ĐKXĐ rồi quy đồng."
+ },
+ {
+  "ma_cau": "T109000000378",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "BPT cần bỏ ngoặc, chuyển vế rồi giải."
+ },
+ {
+  "ma_cau": "T109000000204",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: so sánh biểu thức bằng tính chất bất đẳng thức."
+ },
+ {
+  "ma_cau": "T109000000323",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000263",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000239",
+  "dang_bai_id": "NDB00729",
+  "chac": "vua",
+  "ly_do": "Cùng quãng đường, đổi vận tốc làm đổi thời gian, giải bằng hệ; có thể xếp chuyển động thường."
+ },
+ {
+  "ma_cau": "T109000000186",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu doanh thu bậc hai một ẩn (tăng giá phòng)."
+ },
+ {
+  "ma_cau": "T109000000168",
+  "dang_bai_id": "NDB00701",
+  "chac": "vua",
+  "ly_do": "Lập PT bậc nhất hai ẩn và kiểm tra nghiệm; bản đồ thiếu dạng lập phương trình."
+ },
+ {
+  "ma_cau": "T109000000506",
+  "dang_bai_id": "NDB00732",
+  "chac": "cao",
+  "ly_do": "Khối lượng 600 chi tiết cố định, năng suất tăng làm thời gian giảm."
+ },
+ {
+  "ma_cau": "T109000000438",
+  "dang_bai_id": "NDB00723",
+  "chac": "cao",
+  "ly_do": "Phương trình chứa ẩn ở mẫu, tìm ĐKXĐ rồi quy đồng."
+ },
+ {
+  "ma_cau": "T109000000393",
+  "dang_bai_id": "NDB00723",
+  "chac": "cao",
+  "ly_do": "Phương trình chứa ẩn ở mẫu, tìm ĐKXĐ rồi quy đồng."
+ },
+ {
+  "ma_cau": "T109000000269",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000213",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: chứng minh bất đẳng thức bằng tính chất BĐT."
+ },
+ {
+  "ma_cau": "T109000000478",
+  "dang_bai_id": "NDB00713",
+  "chac": "cao",
+  "ly_do": "Cho thời gian hai vòi chảy chung, tìm thời gian chảy riêng."
+ },
+ {
+  "ma_cau": "T109000000167",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000187",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000303",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm xong sớm nhưng còn làm thêm; khối lượng không cố định hẳn."
+ },
+ {
+  "ma_cau": "T109000000311",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Biết tổng giá niêm yết và số tiền được giảm của hai mặt hàng."
+ },
+ {
+  "ma_cau": "T109000000489",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000457",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu x^2-9 phải phân tích để tìm mẫu chung, đặt ĐKXĐ rồi đối chiếu nghiệm."
+ },
+ {
+  "ma_cau": "T109000000336",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Hai mặt hàng giảm giá 20% và 10%, cho tổng giá niêm yết và tổng tiền sau giảm."
+ },
+ {
+  "ma_cau": "T109000000427",
+  "dang_bai_id": "NDB00729",
+  "chac": "cao",
+  "ly_do": "Cùng quãng đường AB, vận tốc đi/về khác nhau, cho hiệu thời gian 45 phút."
+ },
+ {
+  "ma_cau": "T109000000299",
+  "dang_bai_id": "NDB00721",
+  "chac": "cao",
+  "ly_do": "Phương trình bậc nhất một ẩn dạng cơ bản."
+ },
+ {
+  "ma_cau": "T109000000172",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Đặt nhân tử chung x+5 để đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109000000192",
+  "dang_bai_id": "NDB00736",
+  "chac": "cao",
+  "ly_do": "Chữ nhật cho quan hệ dài hơn rộng, đổi kích thước làm diện tích thay đổi; lời giải một ẩn."
+ },
+ {
+  "ma_cau": "T109000000499",
+  "dang_bai_id": "NDB00513",
+  "chac": "vua",
+  "ly_do": "Tối ưu lãi trên hai loại cây có miền điều kiện (số công), dạng tối ưu có miền; mô tả dạng còn mơ hồ."
+ },
+ {
+  "ma_cau": "T109000000273",
+  "dang_bai_id": "NDB00714",
+  "chac": "vua",
+  "ly_do": "Hai tổ tăng năng suất theo % so với kế hoạch, lập hệ; cũng có thể coi dạng khác (tỉ lệ %)."
+ },
+ {
+  "ma_cau": "T109000000491",
+  "dang_bai_id": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất chuyển vế, chia số âm đổi chiều."
+ },
+ {
+  "ma_cau": "T109000000437",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Hai vế cùng nhân tử x-2, chuyển vế và đặt nhân tử chung."
+ },
+ {
+  "ma_cau": "T109000000445",
+  "dang_bai_id": "NDB00723",
+  "chac": "cao",
+  "ly_do": "Phương trình chứa ẩn ở mẫu với mẫu chung x(x-2) đã sẵn dạng tích."
+ },
+ {
+  "ma_cau": "T109000000202",
+  "dang_bai_id": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Khai triển thu gọn để triệt tiêu xy, đưa về hệ bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T109000000296",
+  "dang_bai_id": "NDB00719",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế hai lớp: tổng học sinh và tổng khối lượng giấy, không thuộc giá/lãi/mua bán."
+ },
+ {
+  "ma_cau": "T109000000245",
+  "dang_bai_id": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Hệ chưa ở dạng chuẩn, phải thu gọn từng phương trình trước khi giải."
+ },
+ {
+  "ma_cau": "T109000000476",
+  "dang_bai_id": "NDB00721",
+  "chac": "cao",
+  "ly_do": "Phá ngoặc đưa về phương trình bậc nhất một ẩn."
+ },
+ {
+  "ma_cau": "T109000000464",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu x^2-4 phân tích thành tích hai mẫu còn lại, phương trình chứa ẩn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000250",
+  "dang_bai_id": "NDB00710",
+  "chac": "vua",
+  "ly_do": "Lập hệ hai ẩn vận tốc và thời gian quy định; cũng gần dạng cùng quãng đường cho hiệu thời gian."
+ },
+ {
+  "ma_cau": "T109000000483",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bậc nhất hai ẩn bằng cộng đại số."
+ },
+ {
+  "ma_cau": "T109000000281",
+  "dang_bai_id": "NDB00514",
+  "chac": "vua",
+  "ly_do": "Tối ưu doanh thu hàm bậc hai theo số lần tăng giá (x nguyên); dạng 513/514 mô tả còn mơ hồ."
+ },
+ {
+  "ma_cau": "T109000000420",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Hiệu hai bình phương phân tích thành tích hai nhị thức rồi giải."
+ },
+ {
+  "ma_cau": "T109000000227",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Hai hạng tử cùng nhân tử x+1, đặt nhân tử chung."
+ },
+ {
+  "ma_cau": "T109000000337",
+  "dang_bai_id": "NDB00710",
+  "chac": "vua",
+  "ly_do": "Lập hệ hai ẩn vận tốc và thời gian dự định; cũng gần dạng cùng quãng đường cho hiệu thời gian."
+ },
+ {
+  "ma_cau": "T109000000220",
+  "dang_bai_id": "NDB00709",
+  "chac": "vua",
+  "ly_do": "Hệ chứa tham số có nghiệm duy nhất rồi tìm GTNN x+y; phần cực trị không có dạng riêng."
+ },
+ {
+  "ma_cau": "T109000000205",
+  "dang_bai_id": "NDB00715",
+  "chac": "vua",
+  "ly_do": "Giảm giá 10% và 20%, tổng niêm yết 750 nghìn; lời giải lập một phương trình một ẩn, bản đồ chỉ có dạng này ở phần lập hệ."
+ },
+ {
+  "ma_cau": "T109000000409",
+  "dang_bai_id": "NDB00514",
+  "chac": "vua",
+  "ly_do": "Tối ưu lợi nhuận hàm bậc hai theo số lần giảm giá (x nguyên); dạng 513/514 mô tả còn mơ hồ."
+ },
+ {
+  "ma_cau": "T109000000415",
+  "dang_bai_id": "NDB00713",
+  "chac": "vua",
+  "ly_do": "Hai đội làm chung 6 giờ rồi chia giai đoạn làm riêng; giống dạng 713 nhưng cũng hợp dạng 714."
+ },
+ {
+  "ma_cau": "T109000000158",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Đặt nhân tử chung x-1 đưa về phương trình tích, không chia hai vế."
+ },
+ {
+  "ma_cau": "T109000000188",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Đặt nhân tử chung 3x-2 đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109000000367",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu x^2-1 là tích hai mẫu còn lại, đặt ĐKXĐ, quy đồng và đối chiếu nghiệm."
+ },
+ {
+  "ma_cau": "T109000000423",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Vế trái đã là tích hai thừa số, vế phải bằng 0."
+ },
+ {
+  "ma_cau": "T109000000278",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Hệ hai ẩn hệ số y đối nhau, cộng đại số."
+ },
+ {
+  "ma_cau": "T109000000183",
+  "dang_bai_id": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Hệ có phân số, khử mẫu để đưa về hệ bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T109000000424",
+  "dang_bai_id": "NDB00723",
+  "chac": "cao",
+  "ly_do": "Phương trình chứa ẩn ở mẫu đơn giản, đặt ĐKXĐ rồi khử mẫu."
+ },
+ {
+  "ma_cau": "T109000000492",
+  "dang_bai_id": "NDB00736",
+  "chac": "cao",
+  "ly_do": "Chữ nhật dài hơn rộng 5 m, đổi kích thước làm diện tích giảm; lời giải một ẩn."
+ },
+ {
+  "ma_cau": "T109000000380",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu x^2-3x phân tích thành nhân tử làm mẫu chung, phương trình chứa ẩn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000292",
+  "dang_bai_id": "NDB00937",
+  "chac": "cao",
+  "ly_do": "Tổng khối lượng người và thùng hàng không vượt tải trọng thang máy, tìm số thùng tối đa."
+ },
+ {
+  "ma_cau": "T109000000485",
+  "dang_bai_id": "NDB00732",
+  "chac": "cao",
+  "ly_do": "Khối lượng 240 sản phẩm cố định, tăng năng suất 10 sản phẩm/ngày nên sớm 2 ngày."
+ },
+ {
+  "ma_cau": "T109000000412",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Hệ hai ẩn hệ số y bằng nhau, trừ từng vế."
+ },
+ {
+  "ma_cau": "T109000000356",
+  "dang_bai_id": "NDB00713",
+  "chac": "vua",
+  "ly_do": "Cho thời gian làm chung và hai giai đoạn làm riêng; cũng hợp dạng thay đổi giữa chừng 714."
+ },
+ {
+  "ma_cau": "T109000000346",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Hiệu hai bình phương phân tích thành tích để giải."
+ },
+ {
+  "ma_cau": "T109000000148",
+  "dang_bai_id": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất cơ bản, chia hai vế cho số âm."
+ },
+ {
+  "ma_cau": "T109000000447",
+  "dang_bai_id": "NDB00701",
+  "chac": "vua",
+  "ly_do": "Viết phương trình bậc nhất hai ẩn và kiểm tra cặp số có là nghiệm; chưa đúng hẳn chữ tìm nghiệm."
+ },
+ {
+  "ma_cau": "T109000000422",
+  "dang_bai_id": "NDB00719",
+  "chac": "cao",
+  "ly_do": "Hợp kim vàng-đồng cho tổng thể tích và khối lượng, lập hệ; không thuộc giá/lãi/mua bán."
+ },
+ {
+  "ma_cau": "T109000000333",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Nhóm hạng tử để có nhân tử chung x-2 rồi đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109000000142",
+  "dang_bai_id": "NDB00939",
+  "chac": "vua",
+  "ly_do": "Tiết kiệm mỗi tháng để đủ tiền mua rubik, bất phương trình; cũng hợp dạng số lượng tối thiểu."
+ },
+ {
+  "ma_cau": "T109000000448",
+  "dang_bai_id": "NDB00718",
+  "chac": "cao",
+  "ly_do": "Mua hai loại thực phẩm cho tổng khối lượng và tổng tiền, lập hệ."
+ },
+ {
+  "ma_cau": "T109000000145",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu x^2-1 phân tích thành tích hai mẫu còn lại, phương trình chứa ẩn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000342",
+  "dang_bai_id": "NDB00723",
+  "chac": "cao",
+  "ly_do": "Phương trình chứa ẩn ở mẫu, mẫu chung x(x-2) đã sẵn dạng tích."
+ },
+ {
+  "ma_cau": "T109000000355",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: lập phương trình tìm số tiền gửi gốc khi biết lãi suất tháng và tiền lãi cần có."
+ },
+ {
+  "ma_cau": "T109000000327",
+  "dang_bai_id": "NDB00501",
+  "chac": "vua",
+  "ly_do": "Nhiều ý rải: tính giá trị, chứng minh rút gọn, tìm x để A.B<1 với x nguyên tố."
+ },
+ {
+  "ma_cau": "T109000000300",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Bỏ ngoặc thu gọn rồi đặt nhân tử chung đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109000000171",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Vế trái đã là tích hai thừa số, vế phải bằng 0."
+ },
+ {
+  "ma_cau": "T109000000466",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Khai triển thu gọn rồi đưa về bất phương trình bậc nhất một ẩn."
+ },
+ {
+  "ma_cau": "T109000000125",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: xác định hàm số bậc nhất y=ax+b qua hai điểm đọc từ đồ thị (đề có hình)."
+ },
+ {
+  "ma_cau": "T109000000344",
+  "dang_bai_id": "NDB00709",
+  "chac": "vua",
+  "ly_do": "Hệ chứa tham số có nghiệm duy nhất rồi tìm GTNN của S; phần cực trị không có dạng riêng."
+ },
+ {
+  "ma_cau": "T109000000195",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu x^2-5x phân tích thành nhân tử làm mẫu chung, phương trình chứa ẩn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000185",
+  "dang_bai_id": "NDB00717",
+  "chac": "cao",
+  "ly_do": "Chia vốn 600 triệu vào hai khoản có lãi suất khác nhau, cho tổng tiền lãi."
+ },
+ {
+  "ma_cau": "T109000000374",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu 25-x^2 đổi dấu phân tích thành tích hai mẫu, phương trình chứa ẩn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000235",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Vế trái đã là tích hai nhị thức, vế phải bằng 0."
+ },
+ {
+  "ma_cau": "T109000000345",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Vế trái đã là tích hai nhị thức, vế phải bằng 0."
+ },
+ {
+  "ma_cau": "T109000000166",
+  "dang_bai_id": "NDB00723",
+  "chac": "cao",
+  "ly_do": "Phương trình chứa ẩn ở mẫu, mẫu chung (x+1)(x-2) đã sẵn dạng tích."
+ },
+ {
+  "ma_cau": "T109000000387",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Hai mặt hàng giảm giá 20% và 25%, cho tổng niêm yết và tổng tiền sau giảm."
+ },
+ {
+  "ma_cau": "T109000000297",
+  "dang_bai_id": "NDB00938",
+  "chac": "vua",
+  "ly_do": "Bất phương trình điểm trung bình có hệ số để đạt ngưỡng; gần dạng điểm số nhưng không phải thi trắc nghiệm."
+ },
+ {
+  "ma_cau": "T109000000114",
+  "dang_bai_id": "NDB00705",
+  "chac": "cao",
+  "ly_do": "Hệ phân thức, đặt 1/(x+2) và 1/(x-2y) làm ẩn phụ."
+ },
+ {
+  "ma_cau": "T109000000178",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Phương trình chứa ẩn ở mẫu cần phân tích mẫu và tách phân thức triệt tiêu."
+ },
+ {
+  "ma_cau": "T109000000259",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Hai cuốn sách giảm giá 20% và 25%, cho tổng niêm yết và tổng tiền thanh toán."
+ },
+ {
+  "ma_cau": "T109000000402",
+  "dang_bai_id": "NDB00717",
+  "chac": "cao",
+  "ly_do": "Chia 600 triệu vào ngân hàng 7% và đầu tư 9%, cho tổng lãi và lợi nhuận."
+ },
+ {
+  "ma_cau": "T109000000446",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Hệ hai ẩn hệ số y đối nhau, cộng đại số."
+ },
+ {
+  "ma_cau": "T109000000169",
+  "dang_bai_id": "NDB00719",
+  "chac": "cao",
+  "ly_do": "Hai câu lạc bộ cho tổng thành viên và tổng số đạt giải theo %, không phải bài toán giá."
+ },
+ {
+  "ma_cau": "T109000000179",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Khai triển thu gọn thành hằng đẳng thức rồi giải phương trình."
+ },
+ {
+  "ma_cau": "T109000000386",
+  "dang_bai_id": "NDB00723",
+  "chac": "cao",
+  "ly_do": "Phương trình chứa ẩn ở mẫu, mẫu chung (x+1)(x-2) đã sẵn dạng tích."
+ },
+ {
+  "ma_cau": "T109000000398",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Vế trái đã là tích hai biểu thức, vế phải bằng 0."
+ },
+ {
+  "ma_cau": "T109000000314",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Xác suất: tính xác suất biến cố chọn quả cầu, không phải Đại số trong bảng đích."
+ },
+ {
+  "ma_cau": "T109000000131",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu 4-x đổi dấu và x^2-16 phân tích, phương trình chứa ẩn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000369",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bậc nhất hai ẩn bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000440",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Bất phương trình có phân số, quy đồng khử mẫu rồi giải."
+ },
+ {
+  "ma_cau": "T109000000210",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bậc nhất hai ẩn bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000117",
+  "dang_bai_id": "NDB00711",
+  "chac": "cao",
+  "ly_do": "Hai xe đi ngược chiều gặp nhau, tổng quãng đường bằng AB, cho hiệu vận tốc."
+ },
+ {
+  "ma_cau": "T109000000294",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Hai hạng tử cùng nhân tử 3x-1, đặt nhân tử chung đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109000000181",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu x^2-3x phân tích thành nhân tử làm mẫu chung, phương trình chứa ẩn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000366",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Hai hạng tử cùng nhân tử x+1, đặt nhân tử chung."
+ },
+ {
+  "ma_cau": "T109000000430",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Hệ hai ẩn hệ số y bằng nhau, trừ từng vế."
+ },
+ {
+  "ma_cau": "T109000000161",
+  "dang_bai_id": "NDB00701",
+  "chac": "vua",
+  "ly_do": "Viết phương trình bậc nhất hai ẩn và kiểm tra cặp số có là nghiệm; chưa đúng hẳn chữ tìm nghiệm."
+ },
+ {
+  "ma_cau": "T109000000460",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Tăng năng suất nên xong sớm 2 ngày nhưng khối lượng thực tế dư 15 áo, không hẳn khối lượng cố định."
+ },
+ {
+  "ma_cau": "T109000000479",
+  "dang_bai_id": "NDB00719",
+  "chac": "cao",
+  "ly_do": "Tìm số có hai chữ số từ tổng chữ số và hiệu khi đổi chỗ, lập hệ, không thuộc các nhóm khác."
+ },
+ {
+  "ma_cau": "T109000000241",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu diện tích hình học thực tế (hình vuông nội tiếp, đề có hình), hoàn thành bình phương."
+ },
+ {
+  "ma_cau": "T109000000307",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu 4-x đổi dấu và x^2-16 phân tích, phương trình chứa ẩn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000443",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Vế trái đã là tích hai thừa số, vế phải bằng 0."
+ },
+ {
+  "ma_cau": "T109000000221",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Vế trái đã là tích hai nhị thức, vế phải bằng 0."
+ },
+ {
+  "ma_cau": "T109000000421",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Hai mặt hàng giảm giá 20% và 10%, cho tổng niêm yết và tổng tiền được giảm."
+ },
+ {
+  "ma_cau": "T109000000129",
+  "dang_bai_id": "NDB00512",
+  "chac": "vua",
+  "ly_do": "Cho thể tích bể, hỏi diện tích xây nhỏ nhất; khớp tên nhóm nhưng dạng 512 chưa có mô tả, đề có hình."
+ },
+ {
+  "ma_cau": "T109000000193",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm GTNN biểu thức phân thức bằng bất đẳng thức Cô-si, không chứa căn."
+ },
+ {
+  "ma_cau": "T109000000490",
+  "dang_bai_id": "NDB00723",
+  "chac": "cao",
+  "ly_do": "Phương trình chứa ẩn ở mẫu, mẫu chung (x+5)(x-1) đã sẵn dạng tích."
+ },
+ {
+  "ma_cau": "T109000000130",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Vế phải x^2-1 chứa nhân tử x+1, chuyển vế rồi đặt nhân tử chung."
+ },
+ {
+  "ma_cau": "T109000000361",
+  "dang_bai_id": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Khai triển thu gọn để triệt tiêu xy, đưa về hệ bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T109000000364",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng 3 chi tiết/giờ nên sớm 24 phút nhưng khối lượng thực tế đổi từ 88 lên 90."
+ },
+ {
+  "ma_cau": "T109000000353",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu 1-x^2 đổi dấu phân tích thành tích hai mẫu còn lại, phương trình chứa ẩn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000285",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Hệ hai ẩn hệ số y đối nhau, cộng đại số."
+ },
+ {
+  "ma_cau": "T109000000487",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bậc nhất hai ẩn bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000411",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu x^2-4 phân tích thành tích hai mẫu còn lại, phương trình chứa ẩn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000212",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: nhận biết bất phương trình bậc nhất một ẩn (kiểm tra khái niệm, không phải giải)."
+ },
+ {
+  "ma_cau": "T109000000257",
+  "dang_bai_id": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất cơ bản, chuyển vế rồi chia cho hệ số dương."
+ },
+ {
+  "ma_cau": "T109000000435",
+  "dang_bai_id": "NDB00710",
+  "chac": "vua",
+  "ly_do": "Lập hệ hai ẩn vận tốc và thời gian dự định; cũng gần dạng cùng quãng đường cho hiệu thời gian."
+ },
+ {
+  "ma_cau": "T109000000115",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: so sánh hai phương án gửi tiết kiệm (lãi suất và tiền thưởng), chỉ tính toán, không lập phương trình."
+ },
+ {
+  "ma_cau": "T109000000461",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Hai mặt hàng giảm giá 10% và 20%, cho tổng niêm yết và tổng tiền được giảm."
+ },
+ {
+  "ma_cau": "T109000000431",
+  "dang_bai_id": "NDB00705",
+  "chac": "cao",
+  "ly_do": "Hệ có ẩn ở mẫu, đặt 1/y làm ẩn phụ để đưa về hệ bậc nhất."
+ },
+ {
+  "ma_cau": "T109000000244",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bậc nhất hai ẩn bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000406",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bậc nhất hai ẩn bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000199",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu diện tích hình chữ nhật khi cho chu vi (hoàn thành bình phương)."
+ },
+ {
+  "ma_cau": "T109000000248",
+  "dang_bai_id": "NDB00514",
+  "chac": "vua",
+  "ly_do": "Tối ưu doanh thu hàm bậc hai theo số lần tăng giá (x nguyên); dạng 513/514 mô tả còn mơ hồ."
+ },
+ {
+  "ma_cau": "T109000000416",
+  "dang_bai_id": "NDB00514",
+  "chac": "vua",
+  "ly_do": "Tối ưu doanh thu hàm bậc hai theo số lần tăng giá bội 10 nghìn (x nguyên); dạng 513/514 mô tả còn mơ hồ."
+ },
+ {
+  "ma_cau": "T109000000176",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Bất phương trình có phân số, quy đồng khử mẫu rồi giải."
+ },
+ {
+  "ma_cau": "T109000000163",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm GTNN phân thức bậc hai bằng cách xét hiệu và biến đổi thành bình phương."
+ },
+ {
+  "ma_cau": "T109000000215",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Hệ hai ẩn hệ số y đối nhau, cộng đại số."
+ },
+ {
+  "ma_cau": "T109000000189",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu 4x^2-9 phân tích thành tích hai mẫu còn lại, phương trình chứa ẩn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000407",
+  "dang_bai_id": "NDB00936",
+  "chac": "cao",
+  "ly_do": "Số tiền còn lại chia giá bút, lập bất phương trình tìm số bút tối đa."
+ },
+ {
+  "ma_cau": "T109000000480",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu diện tích khu rào ba cạnh hình chữ nhật cho chu vi (đề có hình)."
+ },
+ {
+  "ma_cau": "T109000000246",
+  "dang_bai_id": "NDB00710",
+  "chac": "vua",
+  "ly_do": "Lập hệ hai ẩn vận tốc và thời gian dự định; cũng gần dạng cùng quãng đường cho hiệu thời gian."
+ },
+ {
+  "ma_cau": "T109000000265",
+  "dang_bai_id": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất cơ bản, chuyển vế rồi chia hệ số."
+ },
+ {
+  "ma_cau": "T109000000290",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu x^2-2x-3 phân tích thành (x-3)(x+1), phương trình chứa ẩn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000261",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Hệ hai ẩn hệ số y đối nhau, cộng đại số."
+ },
+ {
+  "ma_cau": "T109000000284",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu x^2-1 phân tích thành tích hai mẫu còn lại, phương trình chứa ẩn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000279",
+  "dang_bai_id": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Hệ chưa ở dạng chuẩn, chuyển vế thu gọn trước khi giải."
+ },
+ {
+  "ma_cau": "T109000000175",
+  "dang_bai_id": "NDB00727",
+  "chac": "cao",
+  "ly_do": "Bất phương trình bậc nhất cơ bản."
+ },
+ {
+  "ma_cau": "T109000000347",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu 3-x đổi dấu về x-3, mẫu chung (x+2)(x-3), phương trình chứa ẩn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000454",
+  "dang_bai_id": "NDB00701",
+  "chac": "vua",
+  "ly_do": "Viết phương trình bậc nhất hai ẩn và kiểm tra cặp số có là nghiệm; chưa đúng hẳn chữ tìm nghiệm."
+ },
+ {
+  "ma_cau": "T109000000335",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Bất phương trình có phân số, nhân 12 khử mẫu rồi giải."
+ },
+ {
+  "ma_cau": "T109000000149",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Bỏ ngoặc thu gọn rồi giải bất phương trình bậc nhất."
+ },
+ {
+  "ma_cau": "T109000000182",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bậc nhất hai ẩn bằng phương pháp thế."
+ },
+ {
+  "ma_cau": "T109000000283",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Phân tích x^2-16 có nhân tử x+4 chung, đặt nhân tử chung đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109000000112",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Vế phải x^2-4 chứa nhân tử x-2, chuyển vế rồi đặt nhân tử chung."
+ },
+ {
+  "ma_cau": "T109000000153",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bậc nhất hai ẩn bằng cộng đại số nhân hệ số."
+ },
+ {
+  "ma_cau": "T109000000194",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Hai hạng tử cùng nhân tử 2x+1, đặt nhân tử chung đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109000000118",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: nhận biết phương trình bậc nhất hai ẩn (kiểm tra định nghĩa, câu trắc nghiệm)."
+ },
+ {
+  "ma_cau": "T109000000450",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Vế trái đã là tích hai thừa số, vế phải bằng 0."
+ },
+ {
+  "ma_cau": "T109000000304",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Hai mặt hàng chịu thuế VAT 10% và 8% (tăng giá), cho tổng chưa thuế và tổng phải trả."
+ },
+ {
+  "ma_cau": "T109000000173",
+  "dang_bai_id": "NDB00723",
+  "chac": "cao",
+  "ly_do": "Phương trình chứa ẩn ở mẫu đơn giản, tìm ĐKXĐ rồi khử mẫu."
+ },
+ {
+  "ma_cau": "T109000000208",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Vế trái đã là tích hai thừa số, vế phải bằng 0."
+ },
+ {
+  "ma_cau": "T109000000477",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu 4-y^2 đổi dấu phân tích thành tích hai mẫu, phương trình chứa ẩn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000316",
+  "dang_bai_id": "NDB00723",
+  "chac": "cao",
+  "ly_do": "Phương trình chứa ẩn ở mẫu, mẫu chung x(x-2) đã sẵn dạng tích."
+ },
+ {
+  "ma_cau": "T109000000329",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Bỏ ngoặc hai vế, thu gọn rồi giải bất phương trình bậc nhất, chia số âm đổi chiều."
+ },
+ {
+  "ma_cau": "T109000000237",
+  "dang_bai_id": "NDB00703",
+  "chac": "cao",
+  "ly_do": "Giải hệ bậc nhất hai ẩn bằng cộng đại số nhân hệ số."
+ },
+ {
+  "ma_cau": "T109000000484",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Hai mặt hàng giảm giá 10% và 20%, cho tổng niêm yết và tổng tiền phải trả."
+ },
+ {
+  "ma_cau": "T109000000201",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Mẫu x^2+x phân tích thành x(x+1), phương trình chứa ẩn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000441",
+  "dang_bai_id": "NDB00719",
+  "chac": "cao",
+  "ly_do": "Hai lớp cho tổng học sinh và tổng số cây trồng, lập hệ, không thuộc giá/lãi/mua bán."
+ },
+ {
+  "ma_cau": "T109000000293",
+  "dang_bai_id": "NDB00721",
+  "chac": "cao",
+  "ly_do": "Khai triển thu gọn, x^2 triệt tiêu, còn phương trình bậc nhất một ẩn."
+ }
+]

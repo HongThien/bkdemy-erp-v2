@@ -1,0 +1,1610 @@
+[
+ {
+  "ma_cau": "T109000000116",
+  "dang_bai_id": "NDB00938",
+  "chac": "vua",
+  "ly_do": "Bài thi lập BPT điều kiện điểm trung bình tối thiểu; không đúng khuôn tích điểm cộng/trừ."
+ },
+ {
+  "ma_cau": "T109000000143",
+  "dang_bai_id": "NDB01208",
+  "chac": "cao",
+  "ly_do": "Chu vi cố định (tổng hai cạnh không đổi), tìm diện tích hình chữ nhật lớn nhất."
+ },
+ {
+  "ma_cau": "T109110401003",
+  "dang_bai_id": "NDB01381",
+  "chac": "cao",
+  "ly_do": "GTLN và GTNN của tam thức bậc hai với điều kiện 0≤x≤4, x=2 nằm trong đoạn."
+ },
+ {
+  "ma_cau": "T109000000152",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: BĐT/GTLN biểu thức phân thức ba biến dương (x,y,z), bảng đích chỉ có một và hai biến."
+ },
+ {
+  "ma_cau": "T109000000403",
+  "dang_bai_id": "NDB01209",
+  "chac": "vua",
+  "ly_do": "Biết diện tích, tìm chi phí rào nhỏ nhất, hai loại dây và ràng buộc cạnh dài≥cạnh ngắn; lệch mô tả."
+ },
+ {
+  "ma_cau": "T109000000377",
+  "dang_bai_id": "NDB01203",
+  "chac": "cao",
+  "ly_do": "Quy luật tăng giá thì giảm số phòng thuê, tìm mức giá để doanh thu lớn nhất."
+ },
+ {
+  "ma_cau": "T109030201059",
+  "dang_bai_id": "NDB00740",
+  "chac": "cao",
+  "ly_do": "ĐKXĐ gồm √x và căn dưới mẫu; phải kết hợp hai điều kiện, theo luật dạng sau."
+ },
+ {
+  "ma_cau": "T109000000120",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: viết bất đẳng thức/BPT biểu thị tình huống thực tế (tối thiểu, tối đa); đề có hình."
+ },
+ {
+  "ma_cau": "T109030201054",
+  "dang_bai_id": "NDB00740",
+  "chac": "cao",
+  "ly_do": "ĐKXĐ gồm √x và căn dưới mẫu; phải kết hợp hai điều kiện, theo luật dạng sau."
+ },
+ {
+  "ma_cau": "T109020103008",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT chứa ẩn ở mẫu có 1−x² phải đổi dấu/phân tích mẫu để quy đồng, theo luật dạng sau."
+ },
+ {
+  "ma_cau": "T109000000598",
+  "dang_bai_id": "NDB00498",
+  "chac": "cao",
+  "ly_do": "Nhiều ý; ý cuối P²=4 thuộc nhóm bình phương/giá trị tuyệt đối của P, lấy dạng sau cùng."
+ },
+ {
+  "ma_cau": "T109080101023",
+  "dang_bai_id": "NDB01380",
+  "chac": "cao",
+  "ly_do": "GTNN tam thức bậc hai 2x²+5x+2, x thực tuỳ ý, hoàn thành bình phương."
+ },
+ {
+  "ma_cau": "T109000000469",
+  "dang_bai_id": "NDB01203",
+  "chac": "cao",
+  "ly_do": "Tăng giá thì bỏ trống căn hộ, tìm giá thuê để doanh thu lớn nhất bằng hoàn thành bình phương."
+ },
+ {
+  "ma_cau": "T109090301013",
+  "dang_bai_id": "NDB01208",
+  "chac": "cao",
+  "ly_do": "Rào chữ E bên bờ sông, biết tổng chi phí, hai đơn giá, tìm diện tích lớn nhất; đề đủ số liệu."
+ },
+ {
+  "ma_cau": "T109030201053",
+  "dang_bai_id": "NDB00740",
+  "chac": "cao",
+  "ly_do": "ĐKXĐ gồm √x và căn dưới mẫu; phải kết hợp hai điều kiện, theo luật dạng sau."
+ },
+ {
+  "ma_cau": "T109000000507",
+  "dang_bai_id": "NDB00514",
+  "chac": "vua",
+  "ly_do": "Tối ưu chi phí hai biến nguyên có điều kiện chở đủ; mô tả dạng chưa rõ nên chưa chắc."
+ },
+ {
+  "ma_cau": "T109090304001",
+  "dang_bai_id": "NDB01211",
+  "chac": "cao",
+  "ly_do": "Cắt bốn góc tấm vuông cạnh 12 cm gấp hộp không nắp, tìm x để thể tích lớn nhất."
+ },
+ {
+  "ma_cau": "T109030305036",
+  "dang_bai_id": "NDB00832",
+  "chac": "cao",
+  "ly_do": "GTNN của P có tử và mẫu chứa căn, chia tử cho mẫu rồi đánh giá với x≥1."
+ },
+ {
+  "ma_cau": "T109090102001",
+  "dang_bai_id": "NDB01207",
+  "chac": "cao",
+  "ly_do": "Thêm xe thì lợi nhuận mỗi xe giảm, tìm số xe bổ sung (nguyên); khớp 01204 và 01207, lấy dạng sau."
+ },
+ {
+  "ma_cau": "T109030305057",
+  "dang_bai_id": "NDB00832",
+  "chac": "vua",
+  "ly_do": "GTNN của P tử hằng số −4, mẫu √x−1 và x nguyên dương; mô tả chỉ nói tử chứa căn."
+ },
+ {
+  "ma_cau": "T109000000619",
+  "dang_bai_id": "NDB01209",
+  "chac": "vua",
+  "ly_do": "Cho diện tích phần chữ, tìm diện tích trang giấy nhỏ nhất theo kiểu tích–tổng; không đúng khuôn rào đất."
+ },
+ {
+  "ma_cau": "T109000000326",
+  "dang_bai_id": "NDB00482",
+  "chac": "cao",
+  "ly_do": "Trục căn thức ở mẫu kèm √A² và gộp căn; khớp 00481 và 00482, lấy dạng sau."
+ },
+ {
+  "ma_cau": "T109080102013",
+  "dang_bai_id": "NDB01381",
+  "chac": "cao",
+  "ly_do": "GTLN và GTNN của tam thức bậc hai với 0≤x≤4, x=1 nằm trong đoạn."
+ },
+ {
+  "ma_cau": "T109030201051",
+  "dang_bai_id": "NDB00740",
+  "chac": "cao",
+  "ly_do": "ĐKXĐ gồm √x và căn dưới mẫu; phải kết hợp hai điều kiện, theo luật dạng sau."
+ },
+ {
+  "ma_cau": "T109000000581",
+  "dang_bai_id": "NDB00511",
+  "chac": "cao",
+  "ly_do": "Nhiều ý; ý cuối tìm x để Q=2B/A là số nguyên tố, lấy dạng sau cùng."
+ },
+ {
+  "ma_cau": "T109000000597",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Không thuộc Đại số: bài xác suất (thuộc Xác suất, không có trong bảng đích)."
+ },
+ {
+  "ma_cau": "T109000000389",
+  "dang_bai_id": "NDB01395",
+  "chac": "vua",
+  "ly_do": "So sánh hai biểu thức bằng tính chất liên hệ thứ tự; chỉ gần dạng chứng minh BĐT đa thức."
+ },
+ {
+  "ma_cau": "T109020301017",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm thời gian đổi, nhưng khối lượng dự định và thực tế khác nhau nên lệch mô tả."
+ },
+ {
+  "ma_cau": "T109110301006",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: chứng minh hai tam giác đồng dạng."
+ },
+ {
+  "ma_cau": "T109000000583",
+  "dang_bai_id": "NDB00513",
+  "chac": "vua",
+  "ly_do": "Tối ưu chi phí hai biến thực với hệ điều kiện protein, lipit; mô tả dạng chưa rõ."
+ },
+ {
+  "ma_cau": "T109020204018",
+  "dang_bai_id": "NDB00937",
+  "chac": "cao",
+  "ly_do": "Lập BPT về tải trọng xe chở hết hàng, tìm số xe ít nhất; khớp 00936 và 00937, lấy dạng sau."
+ },
+ {
+  "ma_cau": "T109000000429",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: giải toán bằng cách lập phương trình bậc hai (bài toán cổ, bảng vuông)."
+ },
+ {
+  "ma_cau": "T109000000634",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT chứa ẩn ở mẫu có x²−9 phân tích thành tích để quy đồng, theo luật dạng sau."
+ },
+ {
+  "ma_cau": "T109000000486",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: hệ phương trình bậc cao đối xứng, giải bằng trừ vế và phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T109000000111",
+  "dang_bai_id": "NDB01208",
+  "chac": "cao",
+  "ly_do": "Rào ba mặt với 80 m hàng rào, tìm diện tích lớn nhất; đề đủ dữ kiện dù có hình."
+ },
+ {
+  "ma_cau": "T109000000357",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: chứng minh đẳng thức có điều kiện (nâng cao), không phải BĐT."
+ },
+ {
+  "ma_cau": "T109000000467",
+  "dang_bai_id": "NDB00736",
+  "chac": "cao",
+  "ly_do": "Chiều dài hơn rộng 5 m, đổi kích thước thì diện tích giảm 180 m²; lập một phương trình."
+ },
+ {
+  "ma_cau": "T109030305023",
+  "dang_bai_id": "NDB00832",
+  "chac": "cao",
+  "ly_do": "GTNN của P tử và mẫu chứa căn, chia tử cho mẫu, đánh giá với x nguyên dương."
+ },
+ {
+  "ma_cau": "T109030305024",
+  "dang_bai_id": "NDB00832",
+  "chac": "cao",
+  "ly_do": "GTNN của P tử và mẫu chứa căn, chia tử cho mẫu, đánh giá với x nguyên dương."
+ },
+ {
+  "ma_cau": "T109110201005",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: rút gọn biểu thức phân thức đại số (không chứa căn)."
+ },
+ {
+  "ma_cau": "T109000000396",
+  "dang_bai_id": "NDB01395",
+  "chac": "vua",
+  "ly_do": "So sánh hai biểu thức bằng tính chất liên hệ thứ tự; chỉ gần dạng chứng minh BĐT đa thức."
+ },
+ {
+  "ma_cau": "T109000000288",
+  "dang_bai_id": "NDB01210",
+  "chac": "cao",
+  "ly_do": "Hồ hình hộp không nắp, biết thể tích và đáy dài gấp đôi rộng, tìm kích thước tốn vật liệu nhất."
+ },
+ {
+  "ma_cau": "T109000000551",
+  "dang_bai_id": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Nhiều ý; ý cuối tìm x nguyên để A·B lớn hơn 3/2, lấy dạng sau cùng."
+ },
+ {
+  "ma_cau": "T109090301001",
+  "dang_bai_id": "NDB01208",
+  "chac": "cao",
+  "ly_do": "Rào ba mặt bên bờ sông với 200 m, tìm diện tích lớn nhất."
+ },
+ {
+  "ma_cau": "T109090201001",
+  "dang_bai_id": "NDB01205",
+  "chac": "cao",
+  "ly_do": "Chi phí thiết lập máy tăng theo số máy, chi phí giám sát giảm theo thời gian; tìm số máy tối ưu."
+ },
+ {
+  "ma_cau": "T109090305001",
+  "dang_bai_id": "NDB01212",
+  "chac": "cao",
+  "ly_do": "Vách tựa góc tường sát hộp 60×90, tìm độ dài vách để diện tích nhỏ nhất; số liệu đủ."
+ },
+ {
+  "ma_cau": "T109080102001",
+  "dang_bai_id": "NDB01381",
+  "chac": "cao",
+  "ly_do": "GTLN và GTNN của tam thức bậc hai với 0≤x≤4, x=2 nằm trong đoạn."
+ },
+ {
+  "ma_cau": "T109020301040",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm thời gian đổi, nhưng khối lượng dự định và thực tế khác nhau nên lệch mô tả."
+ },
+ {
+  "ma_cau": "T109000000538",
+  "dang_bai_id": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Nhiều ý; ý cuối tìm x nguyên để I=D/C ≤0, lấy dạng sau cùng."
+ },
+ {
+  "ma_cau": "T109000000207",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: nhận biết phương trình bậc nhất hai ẩn theo định nghĩa."
+ },
+ {
+  "ma_cau": "T109030305022",
+  "dang_bai_id": "NDB00832",
+  "chac": "cao",
+  "ly_do": "GTNN của P tử và mẫu chứa căn, chia tử cho mẫu, đánh giá với x nguyên dương."
+ },
+ {
+  "ma_cau": "T109080101001",
+  "dang_bai_id": "NDB01380",
+  "chac": "cao",
+  "ly_do": "GTNN tam thức bậc hai 2x²+4x+5, x thực tuỳ ý, hoàn thành bình phương."
+ },
+ {
+  "ma_cau": "T109000000607",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: giải phương trình chứa căn bằng cách bình phương hai vế."
+ },
+ {
+  "ma_cau": "T109110401004",
+  "dang_bai_id": "NDB01396",
+  "chac": "cao",
+  "ly_do": "Chứng minh S=2x+3200/x ≥160 bằng Cô-si; khớp 01384 và 01396, lấy dạng sau."
+ },
+ {
+  "ma_cau": "T109000000419",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT chứa ẩn ở mẫu có hai mẫu đối nhau 7−x và x−7, cần đổi dấu; lấy dạng sau."
+ },
+ {
+  "ma_cau": "T109000000252",
+  "dang_bai_id": "NDB01210",
+  "chac": "cao",
+  "ly_do": "Hộp đáy vuông biết thể tích 4 dm³, tìm kích thước để diện tích mạ nhỏ nhất; đề đủ dữ kiện."
+ },
+ {
+  "ma_cau": "T109000000128",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: GTNN tổng hai phân thức có tổng mẫu không đổi (0<x<3), không phải Cô-si trực tiếp."
+ },
+ {
+  "ma_cau": "T109030305031",
+  "dang_bai_id": "NDB00832",
+  "chac": "cao",
+  "ly_do": "GTNN của P tử và mẫu chứa căn, chia tử cho mẫu, đánh giá với x nguyên dương."
+ },
+ {
+  "ma_cau": "T109000000068",
+  "dang_bai_id": "NDB01395",
+  "chac": "cao",
+  "ly_do": "Chứng minh BĐT đa thức ba biến a²+b²+c²≥ab+bc+ca bằng tổng bình phương."
+ },
+ {
+  "ma_cau": "T109000000313",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Không thuộc Đại số: đọc biểu đồ thống kê (thuộc Thống kê)."
+ },
+ {
+  "ma_cau": "T109080501007",
+  "dang_bai_id": "NDB01395",
+  "chac": "cao",
+  "ly_do": "Chứng minh B=5−2(x+2)²≤5 bằng bình phương không âm; BĐT đa thức."
+ },
+ {
+  "ma_cau": "T109000000562",
+  "dang_bai_id": "NDB00503",
+  "chac": "cao",
+  "ly_do": "Nhiều ý; ý cuối |P|−P=0 là điều kiện giá trị tuyệt đối của P, lấy dạng sau cùng."
+ },
+ {
+  "ma_cau": "T109000000539",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: thay số vào công thức chứa căn bậc ba trong bài toán thực tế."
+ },
+ {
+  "ma_cau": "T109000000365",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: so sánh/GTNN tổng bình phương ba biến khi tổng cố định (BĐT ba biến)."
+ },
+ {
+  "ma_cau": "T109000000383",
+  "dang_bai_id": "NDB01203",
+  "chac": "cao",
+  "ly_do": "Giảm giá thì tăng lượng bán, tìm giá bán để lợi nhuận lớn nhất bằng hoàn thành bình phương."
+ },
+ {
+  "ma_cau": "T109000000226",
+  "dang_bai_id": "NDB01203",
+  "chac": "cao",
+  "ly_do": "Tăng giá thì ghế trống tăng, tìm giá vé để doanh thu lớn nhất."
+ },
+ {
+  "ma_cau": "T109000000028",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Cộng đơn thức đồng dạng rồi đặt nhân tử chung và hằng đẳng thức để đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109030201048",
+  "dang_bai_id": "NDB00740",
+  "chac": "cao",
+  "ly_do": "ĐKXĐ gồm √x và căn dưới mẫu; phải kết hợp hai điều kiện, theo luật dạng sau."
+ },
+ {
+  "ma_cau": "T109000000600",
+  "dang_bai_id": "NDB01208",
+  "chac": "vua",
+  "ly_do": "Tổng 60−2h cố định, tìm diện tích mặt cắt lớn nhất; cùng cấu trúc cho tổng hỏi tích nhưng không phải rào."
+ },
+ {
+  "ma_cau": "T109000000390",
+  "dang_bai_id": "NDB01208",
+  "chac": "cao",
+  "ly_do": "Chu vi hình chữ nhật cố định 800 m, tìm diện tích lớn nhất."
+ },
+ {
+  "ma_cau": "T109000000057",
+  "dang_bai_id": "NDB00729",
+  "chac": "vua",
+  "ly_do": "Hai xe cùng quãng đường, vận tốc gấp 3 và chênh thời gian; mô tả nói một đối tượng hai vận tốc."
+ },
+ {
+  "ma_cau": "T109030203101",
+  "dang_bai_id": "NDB00817",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức căn cho kết quả có tử là đa thức bậc hai theo √x."
+ },
+ {
+  "ma_cau": "T109110301002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc nhánh Tỉ số lượng giác: tính cạnh tam giác vuông bằng cos."
+ },
+ {
+  "ma_cau": "T109000000639",
+  "dang_bai_id": "NDB01396",
+  "chac": "cao",
+  "ly_do": "Chứng minh BĐT dạng phân thức (x²/2+1/x≥3/2) rồi áp dụng cho ba biến."
+ },
+ {
+  "ma_cau": "T109000000067",
+  "dang_bai_id": "NDB01395",
+  "chac": "cao",
+  "ly_do": "Chứng minh BĐT đa thức a⁴+3≥4a bằng tổng bình phương."
+ },
+ {
+  "ma_cau": "T109000000136",
+  "dang_bai_id": "NDB01395",
+  "chac": "cao",
+  "ly_do": "Chứng minh BĐT đa thức (1−a)(1−b)(1−c)(1−d)>1−a−b−c−d bằng khai triển."
+ },
+ {
+  "ma_cau": "T109000000540",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: GTNN biểu thức hai biến dạng phân thức với ràng buộc tổng (bài thực tế robot)."
+ },
+ {
+  "ma_cau": "T109080104001",
+  "dang_bai_id": "NDB01383",
+  "chac": "cao",
+  "ly_do": "GTLN của x²(a−x) với 0≤x≤6, dạng Cauchy chiều ngược; ghi x·x·(12−2x)."
+ },
+ {
+  "ma_cau": "T109020301009",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm thời gian đổi, nhưng khối lượng dự định và thực tế khác nhau nên lệch mô tả."
+ },
+ {
+  "ma_cau": "T109000000630",
+  "dang_bai_id": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Nhiều ý; ý cuối tìm x nguyên để P<1/3, lấy dạng sau cùng."
+ },
+ {
+  "ma_cau": "T109000000230",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: kiểm tra một số có là nghiệm của bất phương trình bậc nhất một ẩn."
+ },
+ {
+  "ma_cau": "T109030305061",
+  "dang_bai_id": "NDB00832",
+  "chac": "vua",
+  "ly_do": "GTNN của P=−8/(√x−5), tử hằng số, mẫu đổi dấu, x nguyên dương; mô tả chỉ nói tử chứa căn."
+ },
+ {
+  "ma_cau": "T109000000632",
+  "dang_bai_id": "NDB01397",
+  "chac": "cao",
+  "ly_do": "Chứng minh BĐT dạng căn thức ba biến với a+b+c=1 bằng căn của tích ≤ trung bình cộng."
+ },
+ {
+  "ma_cau": "T109030305045",
+  "dang_bai_id": "NDB00831",
+  "chac": "cao",
+  "ly_do": "GTLN của P tử và mẫu chứa căn, chia tử cho mẫu thành 1+phân thức, xét x nguyên."
+ },
+ {
+  "ma_cau": "T109000000331",
+  "dang_bai_id": "NDB01203",
+  "chac": "cao",
+  "ly_do": "Tăng giá thì ghế trống tăng, tìm giá vé để doanh thu lớn nhất."
+ },
+ {
+  "ma_cau": "T109030305050",
+  "dang_bai_id": "NDB00831",
+  "chac": "cao",
+  "ly_do": "GTLN của M tử và mẫu chứa căn, chia tử cho mẫu thành 1+phân thức, xét x nguyên."
+ },
+ {
+  "ma_cau": "T109030305055",
+  "dang_bai_id": "NDB00831",
+  "chac": "cao",
+  "ly_do": "GTLN của M tử và mẫu chứa căn, chia tử cho mẫu thành 1+phân thức, xét x nguyên."
+ },
+ {
+  "ma_cau": "T109000000591",
+  "dang_bai_id": "NDB00482",
+  "chac": "cao",
+  "ly_do": "Rút gọn phân thức có căn ở cả tử và mẫu bằng đặt nhân tử chung; khớp 00480 và 00482, lấy dạng sau."
+ },
+ {
+  "ma_cau": "T109000000595",
+  "dang_bai_id": "NDB00504",
+  "chac": "cao",
+  "ly_do": "Nhiều ý; ý cuối chứng minh A/B>2 với mọi x thuộc ĐKXĐ, lấy dạng sau cùng."
+ },
+ {
+  "ma_cau": "T109000000494",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu hình học (tứ giác nội tiếp hình vuông, Pythagore); đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T109080101034",
+  "dang_bai_id": "NDB01380",
+  "chac": "cao",
+  "ly_do": "GTLN tam thức bậc hai −2x²+6x+3, x thực tuỳ ý, hoàn thành bình phương."
+ },
+ {
+  "ma_cau": "T109000000626",
+  "dang_bai_id": "NDB01212",
+  "chac": "cao",
+  "ly_do": "Lưới đi qua cọc cách hai bờ 5 m và 12 m, tìm diện tích tam giác nhỏ nhất; số liệu đủ."
+ },
+ {
+  "ma_cau": "T109000000601",
+  "dang_bai_id": "NDB00507",
+  "chac": "cao",
+  "ly_do": "Nhiều ý; ý cuối M=5/(√x+2) tử hằng số, tìm x để M nguyên, lấy dạng sau cùng."
+ },
+ {
+  "ma_cau": "T109000000547",
+  "dang_bai_id": "NDB01209",
+  "chac": "vua",
+  "ly_do": "Cho diện tích phần chữ, tìm diện tích trang giấy nhỏ nhất theo kiểu tích–tổng; không đúng khuôn rào đất."
+ },
+ {
+  "ma_cau": "T109000000305",
+  "dang_bai_id": "NDB01211",
+  "chac": "vua",
+  "ly_do": "Gò tấm tôn thành máng, tìm chiều cao để thể tích lớn nhất; gần khuôn gấp hộp nhưng không cắt góc."
+ },
+ {
+  "ma_cau": "T109000000572",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "PT chứa ẩn ở mẫu có mẫu x²−25 phân tích thành tích, theo luật dạng sau."
+ },
+ {
+  "ma_cau": "T109000000573",
+  "dang_bai_id": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Nhiều ý; ý cuối tìm x nguyên lớn nhất để P<3, lấy dạng sau cùng."
+ },
+ {
+  "ma_cau": "T109000000531",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: thay số vào công thức v=√(dg) rồi tính căn bằng máy tính, bài thực tế."
+ },
+ {
+  "ma_cau": "T109000000449",
+  "dang_bai_id": "NDB01389",
+  "chac": "vua",
+  "ly_do": "Hai biến đối xứng a+b=1, GTNN tổng hai bình phương; dạng chưa có mô tả nên chưa chắc."
+ },
+ {
+  "ma_cau": "T109010401001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: hệ phương trình đối xứng loại tổng–tích (đặt S=x+y, P=xy)."
+ },
+ {
+  "ma_cau": "T109110201001",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm thời gian đổi, nhưng khối lượng dự định và thực tế khác nhau nên lệch mô tả."
+ },
+ {
+  "ma_cau": "T109000000623",
+  "dang_bai_id": "NDB00482",
+  "chac": "cao",
+  "ly_do": "Trục căn ở mẫu, đưa thừa số ra ngoài, √A²=|A|; khớp 00480–00482, lấy dạng sau."
+ },
+ {
+  "ma_cau": "T109000000197",
+  "dang_bai_id": "NDB00736",
+  "chac": "vua",
+  "ly_do": "Mở rộng vườn vuông thành chữ nhật, diện tích tăng 21; không có chu vi nên chưa khớp hẳn."
+ },
+ {
+  "ma_cau": "T109030201058",
+  "dang_bai_id": "NDB00740",
+  "chac": "cao",
+  "ly_do": "ĐKXĐ gồm √x và căn dưới mẫu; phải kết hợp hai điều kiện, theo luật dạng sau."
+ },
+ {
+  "ma_cau": "T109000000150",
+  "dang_bai_id": "NDB01395",
+  "chac": "vua",
+  "ly_do": "Chứng minh BĐT bằng tính chất cộng hai vế; chỉ gần dạng chứng minh BĐT đa thức."
+ },
+ {
+  "ma_cau": "T109080106007",
+  "dang_bai_id": "NDB01385",
+  "chac": "cao",
+  "ly_do": "GTNN tam thức bậc hai với x nguyên, điểm đặc biệt 5/4 không nguyên."
+ },
+ {
+  "ma_cau": "T109030201050",
+  "dang_bai_id": "NDB00740",
+  "chac": "cao",
+  "ly_do": "ĐKXĐ gồm √x và căn dưới mẫu; phải kết hợp hai điều kiện, theo luật dạng sau."
+ },
+ {
+  "ma_cau": "T109030305053",
+  "dang_bai_id": "NDB00831",
+  "chac": "cao",
+  "ly_do": "GTLN của M tử và mẫu chứa căn, chia tử cho mẫu thành 1+phân thức, xét x nguyên."
+ },
+ {
+  "ma_cau": "T109000000571",
+  "dang_bai_id": "NDB01203",
+  "chac": "cao",
+  "ly_do": "Giảm giá thì tăng lượng bán, tìm giá bán để lợi nhuận lớn nhất bằng hoàn thành bình phương."
+ },
+ {
+  "ma_cau": "T109080106001",
+  "dang_bai_id": "NDB01385",
+  "chac": "cao",
+  "ly_do": "GTNN tam thức bậc hai với x nguyên, điểm đặc biệt 3/2 không nguyên."
+ },
+ {
+  "ma_cau": "T109000000473",
+  "dang_bai_id": "NDB01208",
+  "chac": "cao",
+  "ly_do": "Rào ba mặt sát tường, biết ngân sách 4 triệu, tìm diện tích lớn nhất."
+ },
+ {
+  "ma_cau": "T109000000401",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm thời gian đổi, nhưng khối lượng dự định và thực tế khác nhau nên lệch mô tả."
+ },
+ {
+  "ma_cau": "T109000000275",
+  "dang_bai_id": "NDB01209",
+  "chac": "vua",
+  "ly_do": "Cho diện tích phần ảnh, tìm diện tích tấm bìa nhỏ nhất theo kiểu tích–tổng; không đúng khuôn rào đất."
+ },
+ {
+  "ma_cau": "T109000000338",
+  "dang_bai_id": "NDB00514",
+  "chac": "vua",
+  "ly_do": "Tối ưu chi phí thuê hai loại xe, phương trình nghiệm nguyên 35x+50y=645; mô tả dạng chưa rõ."
+ },
+ {
+  "ma_cau": "T109000000298",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu lợi nhuận ba biến nguyên với bất phương trình ngân sách."
+ },
+ {
+  "ma_cau": "T109000000066",
+  "dang_bai_id": "NDB01395",
+  "chac": "cao",
+  "ly_do": "Chứng minh BĐT đa thức a⁴+b⁴≥a³b+ab³ bằng phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T109090101001",
+  "dang_bai_id": "NDB01203",
+  "chac": "cao",
+  "ly_do": "Giảm giá thì tăng người xem, tìm giá vé để doanh thu lớn nhất."
+ },
+ {
+  "ma_cau": "T109000000610",
+  "dang_bai_id": "NDB00510",
+  "chac": "cao",
+  "ly_do": "Nhiều ý; ý cuối A nguyên, A=5/2−phân thức nên đánh giá khoảng; lấy dạng sau cùng."
+ },
+ {
+  "ma_cau": "T109020302018",
+  "dang_bai_id": "NDB00736",
+  "chac": "cao",
+  "ly_do": "Chiều dài hơn rộng 11 m, đổi kích thước thì diện tích tăng 46 m²; lập một phương trình."
+ },
+ {
+  "ma_cau": "T109030201052",
+  "dang_bai_id": "NDB00740",
+  "chac": "cao",
+  "ly_do": "ĐKXĐ gồm √x và căn dưới mẫu; phải kết hợp hai điều kiện, theo luật dạng sau."
+ },
+ {
+  "ma_cau": "T109000000644",
+  "dang_bai_id": "NDB01203",
+  "chac": "cao",
+  "ly_do": "Giảm giá mỗi lần thì bán thêm, tìm mức giảm cho lợi nhuận lớn nhất."
+ },
+ {
+  "ma_cau": "T109110401006",
+  "dang_bai_id": "NDB01208",
+  "chac": "cao",
+  "ly_do": "Rào chuồng chữ nhật một cạnh giáp bờ sông, biết tổng hàng rào, tìm diện tích lớn nhất."
+ },
+ {
+  "ma_cau": "T109000000442",
+  "dang_bai_id": "NDB01203",
+  "chac": "cao",
+  "ly_do": "Giảm giá cứ mỗi bước thì bán thêm, tìm giá bán cho lợi nhuận cao nhất."
+ },
+ {
+  "ma_cau": "T109000000517",
+  "dang_bai_id": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Ý cuối tìm x để P nhỏ hơn hoặc bằng một số; các ý trước thuộc dạng đứng trước, chọn dạng sau."
+ },
+ {
+  "ma_cau": "T109030305048",
+  "dang_bai_id": "NDB00831",
+  "chac": "cao",
+  "ly_do": "P tử và mẫu chứa căn, chia tử cho mẫu rồi đánh giá để tìm GTLN (x tự nhiên)."
+ },
+ {
+  "ma_cau": "T109030203102",
+  "dang_bai_id": "NDB00817",
+  "chac": "cao",
+  "ly_do": "Tử bậc hai theo căn x phải phân tích nhân tử để rút gọn với mẫu."
+ },
+ {
+  "ma_cau": "T109020301006",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm đổi thời gian, nhưng khối lượng thực tế khác dự định, trái mô tả khối lượng không đổi."
+ },
+ {
+  "ma_cau": "T109030203117",
+  "dang_bai_id": "NDB00817",
+  "chac": "vua",
+  "ly_do": "Rút gọn cộng trừ phân thức, tử bậc nhất không rút gọn thêm; không rõ 816 hay 817."
+ },
+ {
+  "ma_cau": "T109000000321",
+  "dang_bai_id": "NDB01384",
+  "chac": "vua",
+  "ly_do": "Đưa diện tích trang giấy về dạng ax+b/x tìm GTNN bằng Cauchy; nhưng là bài thực tế hình học."
+ },
+ {
+  "ma_cau": "T109000000156",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm đổi thời gian, nhưng khối lượng thực tế làm thêm so với kế hoạch."
+ },
+ {
+  "ma_cau": "T109000000456",
+  "dang_bai_id": "NDB01389",
+  "chac": "cao",
+  "ly_do": "GTNN của tổng hai bình phương với a+b=1, hai biến đối xứng."
+ },
+ {
+  "ma_cau": "T109030201060",
+  "dang_bai_id": "NDB00740",
+  "chac": "cao",
+  "ly_do": "ĐKXĐ có căn ở tử và căn dưới mẫu, phải kết hợp hai điều kiện."
+ },
+ {
+  "ma_cau": "T109080104022",
+  "dang_bai_id": "NDB01383",
+  "chac": "cao",
+  "ly_do": "GTLN của x(6-x)^2 trên [0;6], dùng Cauchy 3 số chiều ngược."
+ },
+ {
+  "ma_cau": "T109000000544",
+  "dang_bai_id": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Ý cuối tìm x để P nhỏ hơn một số; các ý trước thuộc dạng đứng trước, chọn dạng sau."
+ },
+ {
+  "ma_cau": "T109000000576",
+  "dang_bai_id": "NDB01203",
+  "chac": "cao",
+  "ly_do": "Tăng giá vé thì ghế trống tăng, tìm giá vé cho doanh thu lớn nhất (cùng khuôn giá-lượng)."
+ },
+ {
+  "ma_cau": "T109030305052",
+  "dang_bai_id": "NDB00831",
+  "chac": "cao",
+  "ly_do": "M tử mẫu chứa căn, chia tử cho mẫu đánh giá GTLN với x nguyên."
+ },
+ {
+  "ma_cau": "T109000000468",
+  "dang_bai_id": "NDB00939",
+  "chac": "cao",
+  "ly_do": "Tiết kiệm cộng trả góp mỗi tháng đạt mức tiền tối thiểu, lập bất phương trình."
+ },
+ {
+  "ma_cau": "T109000000234",
+  "dang_bai_id": "NDB01203",
+  "chac": "cao",
+  "ly_do": "Giảm giá vé thì thêm người, tìm mức giảm cho doanh thu lớn nhất."
+ },
+ {
+  "ma_cau": "T109000000588",
+  "dang_bai_id": "NDB00498",
+  "chac": "cao",
+  "ly_do": "Ý cuối tìm x để giá trị tuyệt đối của P bằng hằng số."
+ },
+ {
+  "ma_cau": "T109000000170",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng GTLN-GTNN của phân thức bậc hai trên bậc hai một biến."
+ },
+ {
+  "ma_cau": "T109000000397",
+  "dang_bai_id": "NDB01208",
+  "chac": "vua",
+  "ly_do": "Chu vi cố định tìm diện tích lớn nhất, nhưng mô tả 1208 là rào đất có một mặt giáp tường."
+ },
+ {
+  "ma_cau": "T109080102007",
+  "dang_bai_id": "NDB01381",
+  "chac": "cao",
+  "ly_do": "GTLN-GTNN của tam thức bậc hai trên đoạn [0;4], điểm làm bình phương bằng 0 nằm trong đoạn."
+ },
+ {
+  "ma_cau": "T109000000204",
+  "dang_bai_id": "NDB01395",
+  "chac": "vua",
+  "ly_do": "So sánh hai biểu thức bậc nhất bằng tính chất cơ bản của bất đẳng thức; dạng 1395 chưa chắc bao phủ."
+ },
+ {
+  "ma_cau": "T109000000566",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Phương trình chứa ẩn ở mẫu, cần phân tích x^2-1 để tìm mẫu chung."
+ },
+ {
+  "ma_cau": "T109090301007",
+  "dang_bai_id": "NDB01208",
+  "chac": "cao",
+  "ly_do": "Rào ba mặt khu chữ nhật giáp toà nhà, biết tổng 60 m, tìm diện tích lớn nhất."
+ },
+ {
+  "ma_cau": "T109030201055",
+  "dang_bai_id": "NDB00740",
+  "chac": "cao",
+  "ly_do": "ĐKXĐ có căn ở tử và căn dưới mẫu, phải kết hợp hai điều kiện."
+ },
+ {
+  "ma_cau": "T109080105012",
+  "dang_bai_id": "NDB01384",
+  "chac": "cao",
+  "ly_do": "GTNN của 4x+9/x với x>0, dùng Cauchy 2 số."
+ },
+ {
+  "ma_cau": "T109020301016",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm đổi thời gian, nhưng khối lượng thực tế khác dự định, trái mô tả khối lượng không đổi."
+ },
+ {
+  "ma_cau": "T109020306013",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng chia đều một lượng cố định, đổi số phần thì mỗi phần đổi (lập phương trình)."
+ },
+ {
+  "ma_cau": "T109000000239",
+  "dang_bai_id": "NDB00710",
+  "chac": "cao",
+  "ly_do": "Chuyển động s=vt với hai tình huống nhanh hơn/chậm hơn; hợp cả 719 và 710, chọn dạng sau."
+ },
+ {
+  "ma_cau": "T109000000615",
+  "dang_bai_id": "NDB00482",
+  "chac": "cao",
+  "ly_do": "Trục căn thức ở mẫu và căn dạng bình phương; hợp cả 481 và 482, chọn dạng sau."
+ },
+ {
+  "ma_cau": "T109000000186",
+  "dang_bai_id": "NDB01203",
+  "chac": "cao",
+  "ly_do": "Tăng giá phòng thì phòng trống tăng, tìm giá phòng cho thu nhập lớn nhất."
+ },
+ {
+  "ma_cau": "T109080501001",
+  "dang_bai_id": "NDB01395",
+  "chac": "cao",
+  "ly_do": "Chứng minh bất đẳng thức đa thức bằng bình phương không âm."
+ },
+ {
+  "ma_cau": "T109020302014",
+  "dang_bai_id": "NDB00736",
+  "chac": "cao",
+  "ly_do": "Chiều dài hơn rộng, đổi kích thước làm diện tích đổi một lượng cho trước."
+ },
+ {
+  "ma_cau": "T109000000213",
+  "dang_bai_id": "NDB01395",
+  "chac": "vua",
+  "ly_do": "Chứng minh bất đẳng thức bậc nhất bằng tính chất cơ bản; dạng 1395 chưa chắc bao phủ."
+ },
+ {
+  "ma_cau": "T109020301035",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm đổi thời gian, nhưng khối lượng thực tế tăng 20%, trái mô tả khối lượng không đổi."
+ },
+ {
+  "ma_cau": "T109000000065",
+  "dang_bai_id": "NDB01395",
+  "chac": "cao",
+  "ly_do": "Chứng minh bất đẳng thức đa thức bậc ba bằng xét hiệu."
+ },
+ {
+  "ma_cau": "T109080101012",
+  "dang_bai_id": "NDB01380",
+  "chac": "cao",
+  "ly_do": "GTLN của tam thức bậc hai một biến, biến đổi về hằng số trừ bình phương."
+ },
+ {
+  "ma_cau": "T109030201047",
+  "dang_bai_id": "NDB00740",
+  "chac": "cao",
+  "ly_do": "ĐKXĐ có căn ở tử và căn dưới mẫu, phải kết hợp hai điều kiện."
+ },
+ {
+  "ma_cau": "T109030305059",
+  "dang_bai_id": "NDB00832",
+  "chac": "vua",
+  "ly_do": "Tìm GTNN của P tử hằng số với x nguyên dương; có thể là 1013 (chỉ GTLN) nên chưa chắc."
+ },
+ {
+  "ma_cau": "T109030305044",
+  "dang_bai_id": "NDB00831",
+  "chac": "cao",
+  "ly_do": "P tử mẫu chứa căn, chia tử cho mẫu đánh giá GTLN với x tự nhiên."
+ },
+ {
+  "ma_cau": "T109080103001",
+  "dang_bai_id": "NDB01382",
+  "chac": "cao",
+  "ly_do": "GTNN của x^2+16/x với x>0, Cauchy 3 số chiều xuôi."
+ },
+ {
+  "ma_cau": "T109090401022",
+  "dang_bai_id": "NDB00513",
+  "chac": "vua",
+  "ly_do": "Tối ưu lợi nhuận hai biến có miền ràng buộc bằng hệ bất phương trình; có thể cần xét nguyên (514)."
+ },
+ {
+  "ma_cau": "T109020301030",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm đổi thời gian, nhưng khối lượng thực tế khác kế hoạch, trái mô tả khối lượng không đổi."
+ },
+ {
+  "ma_cau": "T109000000303",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm đổi thời gian, nhưng khối lượng thực tế làm thêm so với kế hoạch."
+ },
+ {
+  "ma_cau": "T109000000532",
+  "dang_bai_id": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Ý cuối tìm x để A-B nhỏ hơn hoặc bằng một số; các ý trước thuộc dạng đứng trước."
+ },
+ {
+  "ma_cau": "T109000000103",
+  "dang_bai_id": "NDB01395",
+  "chac": "cao",
+  "ly_do": "Chứng minh bất đẳng thức đa thức hai biến bằng cách đặt t=xy."
+ },
+ {
+  "ma_cau": "T109000000070",
+  "dang_bai_id": "NDB01396",
+  "chac": "cao",
+  "ly_do": "Chứng minh bất đẳng thức tổng các phân thức."
+ },
+ {
+  "ma_cau": "T109000000499",
+  "dang_bai_id": "NDB00513",
+  "chac": "vua",
+  "ly_do": "Tối ưu tiền lãi có ràng buộc diện tích và công, quy về một biến; không chắc 513 hay 514."
+ },
+ {
+  "ma_cau": "T109110301001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc HGT: tỉ số lượng giác của hai góc phụ nhau."
+ },
+ {
+  "ma_cau": "T109000000596",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng thống kê: bảng tần số ghép nhóm, tần số tương đối."
+ },
+ {
+  "ma_cau": "T109030201049",
+  "dang_bai_id": "NDB00740",
+  "chac": "cao",
+  "ly_do": "ĐKXĐ có căn ở tử và căn dưới mẫu, phải kết hợp hai điều kiện."
+ },
+ {
+  "ma_cau": "T109000000616",
+  "dang_bai_id": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Ý cuối tìm x để P nhỏ hơn một số; các ý trước thuộc dạng đứng trước, chọn dạng sau."
+ },
+ {
+  "ma_cau": "T109000000064",
+  "dang_bai_id": "NDB01395",
+  "chac": "cao",
+  "ly_do": "Chứng minh bất đẳng thức kép đa thức bằng xét hiệu."
+ },
+ {
+  "ma_cau": "T109000000281",
+  "dang_bai_id": "NDB01203",
+  "chac": "cao",
+  "ly_do": "Tăng giá vé thì ghế trống tăng, tìm giá vé cho doanh thu lớn nhất."
+ },
+ {
+  "ma_cau": "T109030203065",
+  "dang_bai_id": "NDB00817",
+  "chac": "vua",
+  "ly_do": "Rút gọn nhiều phân thức rồi chia, kết quả tử bậc nhất; không rõ 816 hay 817."
+ },
+ {
+  "ma_cau": "T109030201057",
+  "dang_bai_id": "NDB00740",
+  "chac": "cao",
+  "ly_do": "ĐKXĐ có căn ở tử và căn dưới mẫu, phải kết hợp hai điều kiện."
+ },
+ {
+  "ma_cau": "T109000000554",
+  "dang_bai_id": "NDB00514",
+  "chac": "vua",
+  "ly_do": "Tối thiểu chi phí thuê xe hai loại với số xe nguyên; không chắc 513 hay 514."
+ },
+ {
+  "ma_cau": "T109080502001",
+  "dang_bai_id": "NDB01396",
+  "chac": "cao",
+  "ly_do": "Chứng minh bất đẳng thức dạng phân thức bằng đánh giá mẫu."
+ },
+ {
+  "ma_cau": "T109000000603",
+  "dang_bai_id": "NDB00482",
+  "chac": "cao",
+  "ly_do": "Rút gọn phân thức, trục căn ở mẫu và căn dạng bình phương; chọn dạng sau."
+ },
+ {
+  "ma_cau": "T109000000594",
+  "dang_bai_id": "NDB01338",
+  "chac": "cao",
+  "ly_do": "Hai ẩn số người, có tổng số người và tổng số tiền (số lượng × đơn giá); hợp 718 và 1338, chọn dạng sau."
+ },
+ {
+  "ma_cau": "T109000000409",
+  "dang_bai_id": "NDB01203",
+  "chac": "cao",
+  "ly_do": "Giảm giá mỗi bước thì bán thêm, có giá nhập, tìm giá bán cho lợi nhuận cao nhất."
+ },
+ {
+  "ma_cau": "T109000000014",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng xác định hàm số bậc nhất y=ax+b đi qua hai điểm (chủ đề Hàm số)."
+ },
+ {
+  "ma_cau": "T109090202001",
+  "dang_bai_id": "NDB01207",
+  "chac": "cao",
+  "ly_do": "Bổ sung xe thì lợi nhuận mỗi xe giảm, biến nguyên; hợp 1204 và 1207, chọn dạng sau."
+ },
+ {
+  "ma_cau": "T109030203124",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng rút gọn biểu thức mà mỗi phân thức rút gọn ngay thành đa thức."
+ },
+ {
+  "ma_cau": "T109000000568",
+  "dang_bai_id": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Ý cuối tìm x để P nhỏ hơn 0; các ý trước thuộc dạng đứng trước, chọn dạng sau."
+ },
+ {
+  "ma_cau": "T109020301008",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm đổi thời gian, nhưng khối lượng thực tế khác dự định, trái mô tả khối lượng không đổi."
+ },
+ {
+  "ma_cau": "T109000000022",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng phương trình bậc hai không phân tích được nhân tử (hoàn thành bình phương)."
+ },
+ {
+  "ma_cau": "T109110301005",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: chứng minh hai tam giác đồng dạng."
+ },
+ {
+  "ma_cau": "T109000000142",
+  "dang_bai_id": "NDB00939",
+  "chac": "cao",
+  "ly_do": "Tiết kiệm mỗi tháng để đạt đủ số tiền mua đồ, lập bất phương trình tìm số tháng ít nhất."
+ },
+ {
+  "ma_cau": "T109000000102",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng bất đẳng thức ba biến có điều kiện xy+yz+zx cố định."
+ },
+ {
+  "ma_cau": "T109090201014",
+  "dang_bai_id": "NDB01205",
+  "chac": "cao",
+  "ly_do": "Chi phí khởi động tăng theo số máy, chi phí giám sát giảm theo thời gian, tìm số máy chi phí thấp nhất."
+ },
+ {
+  "ma_cau": "T109000000355",
+  "dang_bai_id": "NDB00939",
+  "chac": "vua",
+  "ly_do": "Số tiền gửi để tiền lãi đủ chi phí hằng tháng; là phương trình bậc nhất, không phải bất phương trình."
+ },
+ {
+  "ma_cau": "T109110301003",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc HGT: giải tam giác vuông bằng tỉ số lượng giác."
+ },
+ {
+  "ma_cau": "T109000000327",
+  "dang_bai_id": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Ý cuối tìm x (nguyên tố) để tích A·B nhỏ hơn 1; các ý trước thuộc dạng đứng trước, chọn dạng sau."
+ },
+ {
+  "ma_cau": "T109000000029",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Gộp đơn thức đồng dạng rồi tách hạng tử, nhóm nhân tử để đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109080103012",
+  "dang_bai_id": "NDB01382",
+  "chac": "cao",
+  "ly_do": "GTNN của biểu thức có hạng tử x và 1/x^2 với x>0, dùng Cauchy 3 số chiều xuôi."
+ },
+ {
+  "ma_cau": "T109000000125",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng xác định hàm số bậc nhất từ đồ thị (có hình, chủ đề Hàm số)."
+ },
+ {
+  "ma_cau": "T109000000069",
+  "dang_bai_id": "NDB01396",
+  "chac": "cao",
+  "ly_do": "Chứng minh bất đẳng thức tổng các phân thức bằng cách kẹp giữa hai phân số."
+ },
+ {
+  "ma_cau": "T109000000608",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Hai vế đều là bình phương, chuyển vế dùng hiệu hai bình phương để đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109000000054",
+  "dang_bai_id": "NDB00736",
+  "chac": "vua",
+  "ly_do": "Cho chu vi, lối đi làm kích thước vườn giảm 2 m, tìm kích thước theo diện tích; có hình, khớp 736 chưa rõ."
+ },
+ {
+  "ma_cau": "T109000000059",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng chia đều một lượng cố định, đổi số phần thì mỗi phần đổi (lập phương trình)."
+ },
+ {
+  "ma_cau": "T109000000599",
+  "dang_bai_id": "NDB00716",
+  "chac": "vua",
+  "ly_do": "Thuê xe hai loại chỗ ngồi, tổng số xe và tổng chỗ; có thể 716 hoặc 1338."
+ },
+ {
+  "ma_cau": "T109080107001",
+  "dang_bai_id": "NDB01386",
+  "chac": "cao",
+  "ly_do": "GTNN của x+6/x với x nguyên dương, điểm Cauchy là căn 6 nên thử hai số nguyên kề."
+ },
+ {
+  "ma_cau": "T109080105001",
+  "dang_bai_id": "NDB01384",
+  "chac": "cao",
+  "ly_do": "GTNN của x+4/x với x>0, dùng Cauchy 2 số."
+ },
+ {
+  "ma_cau": "T109000000297",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng điểm trung bình có hệ số, tìm điểm tối thiểu bằng bất phương trình."
+ },
+ {
+  "ma_cau": "T109000000519",
+  "dang_bai_id": "NDB01212",
+  "chac": "vua",
+  "ly_do": "Tam giác vuông tại điểm cố định, tối ưu diện tích nhỏ nhất, có hình; gần 1212 nhưng không giống hẳn."
+ },
+ {
+  "ma_cau": "T109110301004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc HGT: tính góc bằng tỉ số lượng giác trong tam giác vuông."
+ },
+ {
+  "ma_cau": "T109000000020",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng ba đường thẳng đồng quy tìm tham số m (chủ đề Hàm số)."
+ },
+ {
+  "ma_cau": "T109000000578",
+  "dang_bai_id": "NDB00482",
+  "chac": "cao",
+  "ly_do": "Rút gọn phân thức có căn ở mẫu và đưa thừa số ra ngoài căn; chọn dạng sau."
+ },
+ {
+  "ma_cau": "T109000000314",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Xác suất: tính xác suất biến cố, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T109000000624",
+  "dang_bai_id": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Ý cuối tìm x để 2P lớn hơn 1, tức P lớn hơn một số; các ý trước thuộc dạng đứng trước."
+ },
+ {
+  "ma_cau": "T109030201046",
+  "dang_bai_id": "NDB00740",
+  "chac": "cao",
+  "ly_do": "ĐKXĐ có căn ở tử và căn dưới mẫu, phải kết hợp hai điều kiện."
+ },
+ {
+  "ma_cau": "T109020306007",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng chia đều một lượng cố định, đổi số phần thì mỗi phần đổi (lập phương trình)."
+ },
+ {
+  "ma_cau": "T109030203108",
+  "dang_bai_id": "NDB00817",
+  "chac": "vua",
+  "ly_do": "Rút gọn cộng trừ phân thức, tử bậc nhất không rút gọn thêm; không rõ 816 hay 817."
+ },
+ {
+  "ma_cau": "T109000000625",
+  "dang_bai_id": "NDB01338",
+  "chac": "cao",
+  "ly_do": "Hai máy có hiệu năng suất và tổng số cốc theo thời gian làm; hợp 713, 714 và 1338, chọn dạng sau."
+ },
+ {
+  "ma_cau": "T109080107012",
+  "dang_bai_id": "NDB01386",
+  "chac": "cao",
+  "ly_do": "GTNN của x+6/x với x nguyên dương, điểm Cauchy là căn 6 nên thử hai số nguyên kề."
+ },
+ {
+  "ma_cau": "T109000000241",
+  "dang_bai_id": "NDB01380",
+  "chac": "vua",
+  "ly_do": "Đặt AE=x, diện tích vườn hoa là tam thức bậc hai cần GTNN; bài hình học có hình."
+ },
+ {
+  "ma_cau": "T109000000638",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm đổi thời gian, nhưng khối lượng thực tế khác dự định, trái mô tả khối lượng không đổi."
+ },
+ {
+  "ma_cau": "T109000000129",
+  "dang_bai_id": "NDB01210",
+  "chac": "cao",
+  "ly_do": "Bể hộp chữ nhật không nắp thể tích cố định, có ràng buộc giữa các cạnh, tìm kích thước tốn ít vật liệu nhất."
+ },
+ {
+  "ma_cau": "T109000000193",
+  "dang_bai_id": "NDB01384",
+  "chac": "vua",
+  "ly_do": "Đặt a=x/(2-x) thì về dạng a+4/a cộng hằng số bằng Cauchy 2 số; biến đổi trước khi vào dạng."
+ },
+ {
+  "ma_cau": "T109000000631",
+  "dang_bai_id": "NDB00715",
+  "chac": "vua",
+  "ly_do": "Tổng cũ và tổng mới sau khi tăng phần trăm từng phần; giống 715 nhưng là sản lượng, không phải giá."
+ },
+ {
+  "ma_cau": "T109000000565",
+  "dang_bai_id": "NDB01394",
+  "chac": "vua",
+  "ly_do": "Tìm min max của biểu thức bậc nhất hai biến với nhiều điều kiện của biến; có hình và lời văn."
+ },
+ {
+  "ma_cau": "T109030203123",
+  "dang_bai_id": "NDB00817",
+  "chac": "vua",
+  "ly_do": "Rút gọn phân thức rồi chia, tử quy đồng x+16 rút gọn với số chia; không rõ 816 hay 817."
+ },
+ {
+  "ma_cau": "T109090302001",
+  "dang_bai_id": "NDB01209",
+  "chac": "cao",
+  "ly_do": "Rào ruộng hình chữ nhật giáp bờ sông, biết diện tích, tìm hàng rào ngắn nhất."
+ },
+ {
+  "ma_cau": "T109000000364",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm đổi thời gian, nhưng khối lượng thực tế khác dự định, trái mô tả khối lượng không đổi."
+ },
+ {
+  "ma_cau": "T109090301014",
+  "dang_bai_id": "NDB01210",
+  "chac": "cao",
+  "ly_do": "Bể hộp chữ nhật không nắp thể tích cố định, đáy vuông, tìm kích thước tốn ít vật liệu nhất."
+ },
+ {
+  "ma_cau": "T109030305043",
+  "dang_bai_id": "NDB00831",
+  "chac": "cao",
+  "ly_do": "P tử mẫu chứa căn, chia tử cho mẫu đánh giá GTLN với x tự nhiên."
+ },
+ {
+  "ma_cau": "T109110401002",
+  "dang_bai_id": "NDB01380",
+  "chac": "cao",
+  "ly_do": "GTLN của tam thức bậc hai một biến, hoàn thành bình phương."
+ },
+ {
+  "ma_cau": "T109110201008",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm đổi thời gian, nhưng khối lượng thực tế khác kế hoạch, trái mô tả khối lượng không đổi."
+ },
+ {
+  "ma_cau": "T109000000558",
+  "dang_bai_id": "NDB00502",
+  "chac": "cao",
+  "ly_do": "Ý cuối tìm x để P nhỏ hơn hoặc bằng một biểu thức; các ý trước thuộc dạng đứng trước."
+ },
+ {
+  "ma_cau": "T109000000636",
+  "dang_bai_id": "NDB00499",
+  "chac": "cao",
+  "ly_do": "Ý cuối tìm x để P bằng hằng số; các ý trước thuộc dạng đứng trước, chọn dạng sau."
+ },
+ {
+  "ma_cau": "T109110401005",
+  "dang_bai_id": "NDB01203",
+  "chac": "cao",
+  "ly_do": "Giảm giá vé thì thêm người, tìm giá vé cho doanh thu lớn nhất."
+ },
+ {
+  "ma_cau": "T109000000212",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng nhận biết bất phương trình bậc nhất một ẩn (định nghĩa)."
+ },
+ {
+  "ma_cau": "T109000000051",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng hệ phương trình có tham số m mà nghiệm thoả một hệ thức cho trước."
+ },
+ {
+  "ma_cau": "T109000000115",
+  "dang_bai_id": "NDB00939",
+  "chac": "vua",
+  "ly_do": "So sánh hai lựa chọn gửi tiết kiệm có lãi và tiền thưởng; chỉ tính toán, không lập bất phương trình."
+ },
+ {
+  "ma_cau": "T109000000592",
+  "dang_bai_id": "NDB00482",
+  "chac": "cao",
+  "ly_do": "Căn dạng bình phương và trục căn thức ở mẫu; hợp 481 và 482, chọn dạng sau."
+ },
+ {
+  "ma_cau": "T109030305060",
+  "dang_bai_id": "NDB00832",
+  "chac": "vua",
+  "ly_do": "Tìm GTNN của P tử hằng số với x nguyên dương; có thể là 1013 (chỉ GTLN) nên chưa chắc."
+ },
+ {
+  "ma_cau": "T109030305056",
+  "dang_bai_id": "NDB00832",
+  "chac": "vua",
+  "ly_do": "Tìm GTNN của P tử hằng số với x nguyên dương; có thể là 1013 (chỉ GTLN) nên chưa chắc."
+ },
+ {
+  "ma_cau": "T109030305051",
+  "dang_bai_id": "NDB00831",
+  "chac": "cao",
+  "ly_do": "M tử mẫu chứa căn, chia tử cho mẫu đánh giá GTLN với x nguyên."
+ },
+ {
+  "ma_cau": "T109030305046",
+  "dang_bai_id": "NDB00831",
+  "chac": "cao",
+  "ly_do": "P có tử và mẫu chứa căn, chia tử cho mẫu rồi đánh giá để tìm GTLN của P (xét x nguyên)."
+ },
+ {
+  "ma_cau": "T109000000199",
+  "dang_bai_id": "NDB01208",
+  "chac": "cao",
+  "ly_do": "Biết tổng (chu vi 60 m) của hình chữ nhật, tìm diện tích lớn nhất bằng hoàn thành bình phương."
+ },
+ {
+  "ma_cau": "T109000000248",
+  "dang_bai_id": "NDB01203",
+  "chac": "cao",
+  "ly_do": "Quy luật giá đổi thì lượng bán đổi ngược, hỏi giá vé để doanh thu lớn nhất."
+ },
+ {
+  "ma_cau": "T109000000416",
+  "dang_bai_id": "NDB01203",
+  "chac": "vua",
+  "ly_do": "Giá thuê đổi kéo theo số tủ thuê đổi, tìm giá để doanh thu lớn nhất; có bội số 10 nghìn nên có thể là dạng biến nguyên."
+ },
+ {
+  "ma_cau": "T109080105018",
+  "dang_bai_id": "NDB01384",
+  "chac": "cao",
+  "ly_do": "Biểu thức ax + b/x với x>0, nhẩm dấu bằng Cauchy 2 số rồi xét hiệu A−12."
+ },
+ {
+  "ma_cau": "T109000000163",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng GTNN của phân thức bậc nhất/bậc hai đưa tử về bình phương, không khớp dạng nào trong bảng."
+ },
+ {
+  "ma_cau": "T109000000480",
+  "dang_bai_id": "NDB01208",
+  "chac": "cao",
+  "ly_do": "Rào ba cạnh hình chữ nhật với tổng 80 m, tìm diện tích lớn nhất; hình chỉ minh hoạ, đề đủ dữ kiện."
+ },
+ {
+  "ma_cau": "T109000000590",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng hình chữ nhật nội tiếp nửa hình tròn, tìm diện tích lớn nhất (có hình, dùng Pythagore)."
+ },
+ {
+  "ma_cau": "T109030305047",
+  "dang_bai_id": "NDB00831",
+  "chac": "cao",
+  "ly_do": "P có tử và mẫu chứa căn, chia tử cho mẫu rồi đánh giá để tìm GTLN của P (xét x nguyên)."
+ },
+ {
+  "ma_cau": "T109000000511",
+  "dang_bai_id": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Ba ý (tính A, rút gọn B, tìm x để P>0); theo luật dạng sau thắng chọn ý cuối: P lớn hơn một số."
+ },
+ {
+  "ma_cau": "T109000000016",
+  "dang_bai_id": "NDB00703",
+  "chac": "vua",
+  "ly_do": "Thay toạ độ hai điểm lập hệ hai ẩn a, b rồi giải; bản đồ thiếu dạng xác định hàm số bậc nhất."
+ },
+ {
+  "ma_cau": "T109030305049",
+  "dang_bai_id": "NDB00831",
+  "chac": "cao",
+  "ly_do": "M có tử và mẫu chứa căn, chia tử cho mẫu rồi đánh giá để tìm GTLN của M (xét x nguyên)."
+ },
+ {
+  "ma_cau": "T109000000118",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng nhận biết phương trình bậc nhất hai ẩn (định nghĩa, hệ số a, b không đồng thời bằng 0)."
+ },
+ {
+  "ma_cau": "T109000000105",
+  "dang_bai_id": "NDB01203",
+  "chac": "cao",
+  "ly_do": "Giảm giá bán làm tăng lượng bán, tìm giá bán để lợi nhuận cao nhất."
+ },
+ {
+  "ma_cau": "T109030305058",
+  "dang_bai_id": "NDB00832",
+  "chac": "cao",
+  "ly_do": "P có tử là hằng số âm, đánh giá mẫu (xét x nguyên) để tìm GTNN của P."
+ },
+ {
+  "ma_cau": "T109000000640",
+  "dang_bai_id": "NDB00501",
+  "chac": "cao",
+  "ly_do": "Ba ý; theo luật dạng sau thắng chọn ý cuối: tìm x để P<1/2, tức P nhỏ hơn một số."
+ },
+ {
+  "ma_cau": "T109030305054",
+  "dang_bai_id": "NDB00831",
+  "chac": "cao",
+  "ly_do": "M có tử và mẫu chứa căn, chia tử cho mẫu rồi đánh giá để tìm GTLN của M (xét x nguyên)."
+ },
+ {
+  "ma_cau": "T109000000575",
+  "dang_bai_id": "NDB00936",
+  "chac": "vua",
+  "ly_do": "Lập bất phương trình, chọn số tuần nguyên nhỏ nhất đạt mục tiêu; dạng 'tối đa' gần nhất nhưng đề hỏi tối thiểu."
+ },
+ {
+  "ma_cau": "T109110401001",
+  "dang_bai_id": "NDB01380",
+  "chac": "cao",
+  "ly_do": "Tam thức bậc hai a>0, x thực không điều kiện, đưa về (x−2)²+5 để tìm GTNN."
+ },
+ {
+  "ma_cau": "T109030201056",
+  "dang_bai_id": "NDB00740",
+  "chac": "cao",
+  "ly_do": "Có căn ở tử và căn ở mẫu, phải kết hợp hai điều kiện x≥0 và x>12; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T109000000052",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng phương trình bậc nhất chứa tham số m, tìm m để nghiệm thoả điều kiện (dương)."
+ },
+ {
+  "ma_cau": "T109090401008",
+  "dang_bai_id": "NDB00513",
+  "chac": "cao",
+  "ly_do": "Tối ưu lợi nhuận hai biến có hai ràng buộc, giải bằng phối hợp hai bất đẳng thức của hệ; đề không đòi x, y nguyên."
+ },
+ {
+  "ma_cau": "T109090401009",
+  "dang_bai_id": "NDB00513",
+  "chac": "cao",
+  "ly_do": "Tối ưu lợi nhuận hai biến có hai ràng buộc, giải bằng phối hợp hai bất đẳng thức của hệ; đề không đòi x, y nguyên."
+ },
+ {
+  "ma_cau": "T109090401010",
+  "dang_bai_id": "NDB00513",
+  "chac": "cao",
+  "ly_do": "Tối ưu lợi nhuận hai biến có hai ràng buộc, giải bằng phối hợp hai bất đẳng thức của hệ; đề không đòi x, y nguyên."
+ },
+ {
+  "ma_cau": "T109090401015",
+  "dang_bai_id": "NDB00514",
+  "chac": "cao",
+  "ly_do": "Tối ưu doanh thu hai biến có miền điều kiện, x, y là số kiện hàng nguyên; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T109090401016",
+  "dang_bai_id": "NDB00514",
+  "chac": "cao",
+  "ly_do": "Tối ưu chi phí hai biến có miền điều kiện, x, y là số thùng nguyên; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T109090401017",
+  "dang_bai_id": "NDB00514",
+  "chac": "cao",
+  "ly_do": "Tối ưu doanh thu hai biến có miền điều kiện, x, y là số xe nguyên; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T109090401019",
+  "dang_bai_id": "NDB00514",
+  "chac": "cao",
+  "ly_do": "Tối ưu doanh thu hai biến có miền điều kiện, phải xét nghiệm nguyên (x chẵn, nhiều cặp) nên là dạng xét x nguyên."
+ }
+]

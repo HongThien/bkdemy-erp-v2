@@ -1,0 +1,18 @@
+{
+  "P1 Bài 1a": { "tt": "khong_tt", "ghi": "Rút gọn biểu thức lượng giác (góc phụ nhau), không hình" },
+  "P1 Bài 1b": { "tt": "khong_tt", "ghi": "Rút gọn biểu thức lượng giác (góc phụ nhau), không hình" },
+  "P1 Bài 1c": { "tt": "khong_tt", "ghi": "Giá trị lượng giác góc đặc biệt, không hình" },
+  "P1 Bài 1d": { "tt": "khong_tt", "ghi": "Rút gọn biểu thức lượng giác (góc phụ nhau), không hình" },
+  "P1 Bài 1e": { "tt": "khong_tt", "ghi": "Rút gọn biểu thức lượng giác (góc phụ nhau), không hình" },
+  "P1 Bài 1f": { "tt": "khong_tt", "ghi": "Rút gọn biểu thức lượng giác (góc phụ nhau), không hình" },
+  "P1 Bài 2": { "tt": "khong_tt", "ghi": "Tam giác thường: kẻ đường cao, tính cạnh và góc bằng tỉ số lượng giác" },
+  "P1 Bài 3": { "tt": "khong_tt", "ghi": "Giải tam giác vuông, đường cao, tia phân giác" },
+  "P1 Bài 4": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: chiều cao tháp (đề in 3,65 m, hình 13,65 m — sửa theo hình)" },
+  "P1 Bài 5": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: hai trụ điện, góc nâng 30° và 60°" },
+  "P1 Bài 6": { "tt": "khong_tt", "ghi": "Chứng minh công thức diện tích tam giác bằng sin" },
+  "P1 Bài 7": { "tt": "khong_tt", "ghi": "Chứng minh đẳng thức cos qua ba đường cao" },
+  "P1 Bài 8": { "tt": "khong_tt", "ghi": "Chứng minh hệ thức sin, cos trong tam giác nhọn" },
+  "P1 Bài 9": { "tt": "hai_tt", "ghi": "Từ điểm ngoài kẻ hai tiếp tuyến AB, AC (đường tròn đường kính AO); AB=AC, AO phân giác" },
+  "P1 Bài 10": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến ME, MF cắt nhau tại M; MI phân giác, tính MI" },
+  "P1 Bài 11": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến PA, PB; OP vuông góc AB, PA=PB, AD//PO, KO=KP" }
+}

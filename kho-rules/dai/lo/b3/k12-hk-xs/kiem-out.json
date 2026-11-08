@@ -1,0 +1,22 @@
+[
+{"ma_cau":"T11200000010000","dang_bai_id":"NDB02570","chac":"cao","ly_do":"Khảo sát tỉ lệ % (xem quảng cáo, mua hàng), tính P(B|A)=P(AB)/P(A) trên dữ liệu thực tế; dạng sau thắng 02568."},
+{"ma_cau":"T11200000010001","dang_bai_id":"NDB02580","chac":"cao","ly_do":"Cho P(A), P(B|A), P(B|Ā), tính P(A|B): toàn phần rồi Bayes, đề ký hiệu."},
+{"ma_cau":"T11200000010003","dang_bai_id":"NDB02575","chac":"cao","ly_do":"Cho P(B̄), P(A|B), P(A|B̄) bằng ký hiệu, thay vào công thức toàn phần hai nhánh."},
+{"ma_cau":"T11200000010004","dang_bai_id":"NDB02570","chac":"cao","ly_do":"Số liệu khảo sát nam/nữ và bệnh, lấy n(AB)/n(A) trên dữ liệu thống kê."},
+{"ma_cau":"T11200000010006","dang_bai_id":"NDB02573","chac":"cao","ly_do":"A, B độc lập nên P(A|B)=P(A)."},
+{"ma_cau":"T11200000010007","dang_bai_id":"NDB02570","chac":"cao","ly_do":"Khảo sát tỉ lệ % quảng cáo–mua hàng, tính xác suất có điều kiện trên tỉ lệ thống kê."},
+{"ma_cau":"T11200000010012","dang_bai_id":"NDB02572","chac":"cao","ly_do":"Cho P(B), P(A|B) tìm P(ĀB) qua công thức nhân; hợp cả 02568, dạng sau thắng."},
+{"ma_cau":"T11200000010017","dang_bai_id":"NDB02577","chac":"cao","ly_do":"Chuyển một món từ thùng I sang thùng II rồi lấy tiếp, toàn phần theo kết quả lần chuyển."},
+{"ma_cau":"T11200000010020","dang_bai_id":"NDB02574","chac":"cao","ly_do":"Chọn công thức xác suất toàn phần đúng trong 4 phương án."},
+{"ma_cau":"T11200000010023","dang_bai_id":"NDB02577","chac":"cao","ly_do":"Chuyển một món từ thùng I sang thùng II rồi lấy tiếp, toàn phần theo kết quả lần chuyển."},
+{"ma_cau":"T11200000010025","dang_bai_id":"NDB02574","chac":"cao","ly_do":"Chọn công thức xác suất toàn phần đúng trong 4 phương án."},
+{"ma_cau":"T11200000010062","dang_bai_id":"NDB02576","chac":"cao","ly_do":"Thực tế hai dây chuyền – phế phẩm, cộng các nhánh theo công thức toàn phần."},
+{"ma_cau":"T11200000010064","dang_bai_id":"NDB02570","chac":"cao","ly_do":"Tỉ lệ thống kê tai nạn, tách P(AB) qua biến cố đối rồi lấy tỉ số; dạng sau thắng 02569."},
+{"ma_cau":"T11200000010069","dang_bai_id":"NDB02569","chac":"cao","ly_do":"Cho P(A∪B), dùng công thức cộng tìm P(AB) rồi tính P(B|A)."},
+{"ma_cau":"T11200000010074","dang_bai_id":"NDB02568","chac":"cao","ly_do":"Cho P(A), P(AB) bằng ký hiệu, thay vào P(B|A)=P(AB)/P(A)."},
+{"ma_cau":"T11200000010078","dang_bai_id":"NDB02568","chac":"cao","ly_do":"Cho P(B), P(A∩B), thay trực tiếp vào P(A|B)=P(AB)/P(B)."},
+{"ma_cau":"T11200000010080","dang_bai_id":"NDB02567","chac":"cao","ly_do":"Câu lý thuyết chọn khẳng định đúng P(A|B)P(B)=P(B|A)P(A), khớp ví dụ của dạng."},
+{"ma_cau":"T11200000010082","dang_bai_id":"NDB02580","chac":"cao","ly_do":"Thực tế hai nhóm (rác/đúng), biết không bị chặn, hỏi xác suất cuộc gọi đúng: Bayes."},
+{"ma_cau":"T11200000010089","dang_bai_id":"NDB02577","chac":"cao","ly_do":"Lấy liên tiếp không hoàn lại, hỏi xác suất lần lấy sau; hệ đầy đủ là kết quả lần đầu."},
+{"ma_cau":"T11200000010092","dang_bai_id":"NDB02572","chac":"cao","ly_do":"Tìm P(AB)=P(A|B)·P(B) bằng công thức nhân; hợp cả 02568, dạng sau thắng."}
+]

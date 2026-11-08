@@ -1,0 +1,314 @@
+[
+ {
+  "ma_cau": "K07010302081",
+  "dang_bai_id": "KDB00675",
+  "chac": "vua",
+  "ly_do": "Hỏi quan hệ lý thuyết chu kì/nhóm với cấu tạo"
+ },
+ {
+  "ma_cau": "K07010302082",
+  "dang_bai_id": "KDB00676",
+  "chac": "cao",
+  "ly_do": "Cho cấu tạo/số hạt, hỏi vị trí"
+ },
+ {
+  "ma_cau": "K07010302083",
+  "dang_bai_id": "KDB00676",
+  "chac": "cao",
+  "ly_do": "Cho cấu tạo/số hạt, hỏi vị trí"
+ },
+ {
+  "ma_cau": "K07010302084",
+  "dang_bai_id": "KDB00676",
+  "chac": "vua",
+  "ly_do": "Đề có hình mô hình, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K07010302085",
+  "dang_bai_id": "KDB00676",
+  "chac": "cao",
+  "ly_do": "Cho cấu tạo/số hạt, hỏi vị trí"
+ },
+ {
+  "ma_cau": "K07010302086",
+  "dang_bai_id": "KDB00676",
+  "chac": "cao",
+  "ly_do": "Cho cấu tạo/số hạt, hỏi vị trí"
+ },
+ {
+  "ma_cau": "K07010302087",
+  "dang_bai_id": "KDB00676",
+  "chac": "vua",
+  "ly_do": "Đề có hình mô hình, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K07010302088",
+  "dang_bai_id": "KDB00675",
+  "chac": "cao",
+  "ly_do": "Cho chu kì, nhóm, hỏi số hiệu/cấu tạo"
+ },
+ {
+  "ma_cau": "K07010302089",
+  "dang_bai_id": "KDB00675",
+  "chac": "cao",
+  "ly_do": "Cho chu kì, nhóm, hỏi số hiệu/cấu tạo"
+ },
+ {
+  "ma_cau": "K07010302090",
+  "dang_bai_id": "KDB00675",
+  "chac": "cao",
+  "ly_do": "Cho chu kì, nhóm, hỏi số hiệu/cấu tạo"
+ },
+ {
+  "ma_cau": "K07010302091",
+  "dang_bai_id": "KDB00675",
+  "chac": "cao",
+  "ly_do": "Cho chu kì, nhóm, hỏi số hiệu/cấu tạo"
+ },
+ {
+  "ma_cau": "K07010302092",
+  "dang_bai_id": "KDB00675",
+  "chac": "vua",
+  "ly_do": "Hỏi quan hệ lý thuyết chu kì/nhóm với cấu tạo"
+ },
+ {
+  "ma_cau": "K07010302093",
+  "dang_bai_id": "KDB00676",
+  "chac": "cao",
+  "ly_do": "Cho cấu tạo/số hạt, hỏi vị trí"
+ },
+ {
+  "ma_cau": "K07010302094",
+  "dang_bai_id": "KDB00676",
+  "chac": "vua",
+  "ly_do": "Đề có hình mô hình, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K07010302095",
+  "dang_bai_id": "KDB00676",
+  "chac": "cao",
+  "ly_do": "Cho cấu tạo/số hạt, hỏi vị trí"
+ },
+ {
+  "ma_cau": "K07010302096",
+  "dang_bai_id": "KDB00676",
+  "chac": "vua",
+  "ly_do": "Đề có hình mô hình, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K07010302097",
+  "dang_bai_id": "KDB00676",
+  "chac": "cao",
+  "ly_do": "Cho cấu tạo/số hạt, hỏi vị trí"
+ },
+ {
+  "ma_cau": "K07010302098",
+  "dang_bai_id": "KDB00675",
+  "chac": "cao",
+  "ly_do": "Cho chu kì, nhóm, hỏi số hiệu/cấu tạo"
+ },
+ {
+  "ma_cau": "K07010302099",
+  "dang_bai_id": "KDB00675",
+  "chac": "cao",
+  "ly_do": "Cho chu kì, nhóm, hỏi số hiệu/cấu tạo"
+ },
+ {
+  "ma_cau": "K07010302100",
+  "dang_bai_id": "KDB00675",
+  "chac": "cao",
+  "ly_do": "Cho chu kì, nhóm, hỏi số hiệu/cấu tạo"
+ },
+ {
+  "ma_cau": "K07010302101",
+  "dang_bai_id": "KDB00675",
+  "chac": "cao",
+  "ly_do": "Cho chu kì, nhóm, hỏi số hiệu/cấu tạo"
+ },
+ {
+  "ma_cau": "K07010302102",
+  "dang_bai_id": "KDB00676",
+  "chac": "cao",
+  "ly_do": "Cho cấu tạo/số hạt, hỏi vị trí"
+ },
+ {
+  "ma_cau": "K07010302103",
+  "dang_bai_id": "KDB00676",
+  "chac": "vua",
+  "ly_do": "Cho số hạt, hỏi vị trí và loại; giáp nhóm xác định nguyên tố từ số hạt"
+ },
+ {
+  "ma_cau": "K07010302104",
+  "dang_bai_id": "KDB00676",
+  "chac": "vua",
+  "ly_do": "Cho số hạt, hỏi vị trí và loại; giáp nhóm xác định nguyên tố từ số hạt"
+ },
+ {
+  "ma_cau": "K07010302105",
+  "dang_bai_id": "KDB00676",
+  "chac": "cao",
+  "ly_do": "Cho cấu tạo/số hạt, hỏi vị trí"
+ },
+ {
+  "ma_cau": "K07010302106",
+  "dang_bai_id": "KDB00676",
+  "chac": "cao",
+  "ly_do": "Cho cấu tạo/số hạt, hỏi vị trí"
+ },
+ {
+  "ma_cau": "K07010304031",
+  "dang_bai_id": "KDB00680",
+  "chac": "cao",
+  "ly_do": "Hỏi nguyên tố cùng nhóm, tính chất tương tự"
+ },
+ {
+  "ma_cau": "K07010304032",
+  "dang_bai_id": "KDB00680",
+  "chac": "cao",
+  "ly_do": "Hỏi nguyên tố cùng nhóm, tính chất tương tự"
+ },
+ {
+  "ma_cau": "K07010304033",
+  "dang_bai_id": "KDB00680",
+  "chac": "cao",
+  "ly_do": "Hỏi nguyên tố cùng nhóm, tính chất tương tự"
+ },
+ {
+  "ma_cau": "K07010304034",
+  "dang_bai_id": "KDB00680",
+  "chac": "cao",
+  "ly_do": "Hỏi nguyên tố cùng nhóm, tính chất tương tự"
+ },
+ {
+  "ma_cau": "K07010304035",
+  "dang_bai_id": "KDB00680",
+  "chac": "cao",
+  "ly_do": "Hỏi nguyên tố cùng nhóm, tính chất tương tự"
+ },
+ {
+  "ma_cau": "K07010304036",
+  "dang_bai_id": "KDB00679",
+  "chac": "vua",
+  "ly_do": "Hỏi lý do argon là khí hiếm, thiên lý thuyết"
+ },
+ {
+  "ma_cau": "K07010304037",
+  "dang_bai_id": "KDB00679",
+  "chac": "cao",
+  "ly_do": "Cho Z/vị trí, hỏi xếp loại nguyên tố"
+ },
+ {
+  "ma_cau": "K07010304038",
+  "dang_bai_id": "KDB00679",
+  "chac": "cao",
+  "ly_do": "Cho Z/vị trí, hỏi xếp loại nguyên tố"
+ },
+ {
+  "ma_cau": "K07010304039",
+  "dang_bai_id": "KDB00679",
+  "chac": "cao",
+  "ly_do": "Cho Z/vị trí, hỏi xếp loại nguyên tố"
+ },
+ {
+  "ma_cau": "K07010304040",
+  "dang_bai_id": "KDB00679",
+  "chac": "cao",
+  "ly_do": "Cho Z/vị trí, hỏi xếp loại nguyên tố"
+ },
+ {
+  "ma_cau": "K07010304041",
+  "dang_bai_id": "KDB00679",
+  "chac": "cao",
+  "ly_do": "Cho Z/vị trí, hỏi xếp loại nguyên tố"
+ },
+ {
+  "ma_cau": "K07010304042",
+  "dang_bai_id": "KDB00680",
+  "chac": "cao",
+  "ly_do": "Hỏi nguyên tố cùng nhóm, tính chất tương tự"
+ },
+ {
+  "ma_cau": "K07010304043",
+  "dang_bai_id": "KDB00679",
+  "chac": "cao",
+  "ly_do": "Cho Z/vị trí, hỏi xếp loại nguyên tố"
+ },
+ {
+  "ma_cau": "K07010304044",
+  "dang_bai_id": "KDB00680",
+  "chac": "cao",
+  "ly_do": "Hỏi nguyên tố cùng nhóm, tính chất tương tự"
+ },
+ {
+  "ma_cau": "K07010105041",
+  "dang_bai_id": "KDB00665",
+  "chac": "cao",
+  "ly_do": "Cho số electron/proton, hỏi số lớp và e ngoài cùng"
+ },
+ {
+  "ma_cau": "K07010105042",
+  "dang_bai_id": "KDB00665",
+  "chac": "cao",
+  "ly_do": "Cho số electron/proton, hỏi số lớp và e ngoài cùng"
+ },
+ {
+  "ma_cau": "K07010105043",
+  "dang_bai_id": "KDB00665",
+  "chac": "cao",
+  "ly_do": "Cho số electron/proton, hỏi số lớp và e ngoài cùng"
+ },
+ {
+  "ma_cau": "K07010105044",
+  "dang_bai_id": "KDB00665",
+  "chac": "cao",
+  "ly_do": "Cho số electron/proton, hỏi số lớp và e ngoài cùng"
+ },
+ {
+  "ma_cau": "K07010105045",
+  "dang_bai_id": "KDB00665",
+  "chac": "cao",
+  "ly_do": "Cho số electron/proton, hỏi số lớp và e ngoài cùng"
+ },
+ {
+  "ma_cau": "K07010105046",
+  "dang_bai_id": "KDB00665",
+  "chac": "cao",
+  "ly_do": "Cho số electron/proton, hỏi số lớp và e ngoài cùng"
+ },
+ {
+  "ma_cau": "K07010105047",
+  "dang_bai_id": "KDB00666",
+  "chac": "vua",
+  "ly_do": "Chọn mô hình đúng, đáp án là hình; gần dạng vẽ mô hình"
+ },
+ {
+  "ma_cau": "K07010105048",
+  "dang_bai_id": "KDB00666",
+  "chac": "vua",
+  "ly_do": "Chọn mô hình đúng, đáp án là hình; gần dạng vẽ mô hình"
+ },
+ {
+  "ma_cau": "K07010105049",
+  "dang_bai_id": "KDB00666",
+  "chac": "vua",
+  "ly_do": "Chọn mô hình đúng, đáp án là hình; gần dạng vẽ mô hình"
+ },
+ {
+  "ma_cau": "K07010105050",
+  "dang_bai_id": "KDB00666",
+  "chac": "vua",
+  "ly_do": "Chọn mô hình đúng, đáp án là hình; gần dạng vẽ mô hình"
+ },
+ {
+  "ma_cau": "K07010105051",
+  "dang_bai_id": "KDB00666",
+  "chac": "vua",
+  "ly_do": "Chọn mô hình đúng, đáp án là hình; gần dạng vẽ mô hình"
+ },
+ {
+  "ma_cau": "K07010105052",
+  "dang_bai_id": "KDB00666",
+  "chac": "vua",
+  "ly_do": "Chọn mô hình đúng, đáp án là hình; gần dạng vẽ mô hình"
+ }
+]

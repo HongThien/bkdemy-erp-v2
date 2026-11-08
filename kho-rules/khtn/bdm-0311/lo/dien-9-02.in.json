@@ -1,0 +1,2503 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00441",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Khúc xạ ánh sáng",
+   "nhom": "Lý thuyết cơ bản về khúc xạ ánh sáng",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Hiện tượng khúc xạ ánh sáng\nKhúc xạ ánh sáng là hiện tượng tia sáng bị đổi hướng đột ngột khi truyền xiên góc qua mặt phân cách giữa hai môi trường trong suốt khác nhau.\nĐiều kiện để xảy ra khúc xạ:\n1. Hai môi trường đều trong suốt và có chiết suất khác nhau.\n2. Tia sáng truyền xiên góc tới mặt phân cách (góc tới khác $0^\\circ$).\nNguyên nhân: tốc độ truyền ánh sáng trong hai môi trường khác nhau. Trong một môi trường trong suốt và đồng tính, ánh sáng truyền theo đường thẳng.\nCác yếu tố hình học\n$\\begin{array}{|l|l|}\\hline\n\\text{Yếu tố} & \\text{Định nghĩa} \\\\\n\\hline\n\\text{Mặt phân cách} & \\text{Mặt tiếp xúc giữa hai môi trường trong suốt} \\\\\n\\hline\n\\text{Điểm tới I} & \\text{Giao điểm của tia tới với mặt phân cách} \\\\\n\\hline\n\\text{Pháp tuyến} & \\text{Đường thẳng vuông góc với mặt phân cách tại điểm tới} \\\\\n\\hline\n\\text{Tia tới SI} & \\text{Tia sáng đi tới mặt phân cách} \\\\\n\\hline\n\\text{Tia khúc xạ IK} & \\text{Tia sáng truyền tiếp sang môi trường thứ hai} \\\\\n\\hline\n\\text{Góc tới i} & \\text{Góc giữa tia tới và pháp tuyến} \\\\\n\\hline\n\\text{Góc khúc xạ r} & \\text{Góc giữa tia khúc xạ và pháp tuyến} \\\\\n\\hline\n\\end{array}$\nCả hai góc đều đo so với pháp tuyến, không đo so với mặt phân cách.\nĐịnh luật khúc xạ ánh sáng\n• Tia khúc xạ nằm trong mặt phẳng tới và ở phía bên kia pháp tuyến so với tia tới.\n• Với hai môi trường trong suốt xác định, tỉ số giữa sin góc tới và sin góc khúc xạ là một hằng số:\n$\\sin i / \\sin r = n$\nn là chiết suất tỉ đối của môi trường khúc xạ đối với môi trường tới, là số không có đơn vị. Môi trường có chiết suất càng lớn thì tốc độ ánh sáng trong môi trường đó càng nhỏ. Chiết suất của chân không bằng 1, của không khí xấp xỉ 1.\nTrường hợp đặc biệt\nKhi tia sáng chiếu vuông góc với mặt phân cách thì $i = 0^\\circ$ và $r = 0^\\circ$; tia sáng truyền thẳng, không bị đổi hướng.\nPhân biệt với phản xạ\nPhản xạ hát tia sáng trở lại môi trường cũ, góc phản xạ bằng góc tới. Khúc xạ cho tia sáng truyền tiếp sang môi trường thứ hai và đổi hướng. Tại mặt phân cách, hai hiện tượng thường xảy ra đồng thời.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00442",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Khúc xạ ánh sáng",
+   "nhom": "XÁC ĐỊNH GÓC TỚI VÀ GÓC KHÚC XẠ TỪ DỮ KIỆN HÌNH HỌC",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Các đường và góc\nPháp tuyến: đường thẳng vuông góc với mặt phân cách tại điểm tới.\nGóc tới i: góc giữa tia tới và pháp tuyến.\nGóc khúc xạ r: góc giữa tia khúc xạ và pháp tuyến.\nCác quan hệ dùng để tính\nTia tới hợp với mặt phân cách góc α: i = 90° − α\nTia khúc xạ hợp với mặt phân cách góc β: r = 90° − β\nGóc lệch của tia sáng khi khúc xạ: D = i − r\nGóc giữa tia tới và tia phản xạ: 2i\nGóc giữa tia phản xạ và tia khúc xạ: 180° − (i + r)\nLỗi thường gặp\nLấy góc giữa tia sáng và mặt phân cách làm góc tới. Góc tới luôn đo từ pháp tuyến, không đo từ mặt phân cách. Hai góc này phụ nhau, tổng bằng 90°.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00443",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Khúc xạ ánh sáng",
+   "nhom": "Tính chiết suất tỉ đối từ góc tới và góc khúc xạ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Mục tiêu: Thông qua đo đạc thực nghiệm góc i và r, tính ngược lại chiết suất n của một chất lỏng/chất rắn.\nCác bước giải:\n**Bước 1:** Xác định góc i và góc r từ dữ kiện đề bài.\n**Bước 2:** Viết định luật khúc xạ: $n_1 \\cdot \\sin i = n_2 \\cdot \\sin r$.\n**Bước 3:** Thường tia sáng đi từ không khí ($n_1 = 1$), ta suy ra công thức tính chiết suất môi trường 2: $n_2 = \\dfrac{\\sin i}{\\sin r}$.\n**Ví dụ minh họa:** Trong giờ thực hành, học sinh chiếu tia sáng từ không khí vào một khối chất lỏng trong suốt. Học sinh đo được góc tới $i = 60^\\circ$ và góc khúc xạ $r = 45^\\circ$. Tính chiết suất của chất lỏng đó.\nHướng dẫn giải\nÁp dụng công thức: $n_{cl} = \\dfrac{\\sin i}{\\sin r} = \\dfrac{\\sin 60^\\circ}{\\sin 45^\\circ}$.\nBấm máy tính: $n_{cl} = \\dfrac{\\dfrac{\\sqrt{3}}{2}}{\\dfrac{\\sqrt{2}}{2}} = \\sqrt{\\dfrac{3}{2}} \\approx 1,22$.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00444",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Khúc xạ ánh sáng",
+   "nhom": "TÍNH THUẬN NGHỊCH VÀ ĐƯỜNG ĐI CỦA TIA SÁNG QUA BẢN MẶT SONG SONG",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "ư",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00446",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Khúc xạ ánh sáng",
+   "nhom": "So sánh góc tới với góc khúc xạ, xác định môi trường chiết quang hơn",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Chiết suất\nChiết suất đặc trưng cho mức độ làm lệch tia sáng của một môi trường. Môi trường có chiết suất lớn hơn được gọi là môi trường chiết quang hơn.\nChiết suất một số môi trường: không khí 1,00; nước 1,33; rượu 1,36; dầu 1,47; thuỷ tinh 1,50; kim cương 2,42.\nQuy tắc so sánh\nÁnh sáng đi từ môi trường chiết quang kém sang môi trường chiết quang hơn: r < i, tia khúc xạ lệch lại gần pháp tuyến.\nÁnh sáng đi từ môi trường chiết quang hơn sang môi trường chiết quang kém: r > i, tia khúc xạ lệch xa pháp tuyến.\nHai môi trường có chiết suất bằng nhau: r = i, tia sáng truyền thẳng.\nTốc độ ánh sáng\nChiết suất càng lớn thì tốc độ truyền ánh sáng trong môi trường đó càng nhỏ.\nMức độ lệch\nVới cùng một góc tới, môi trường có chiết suất lớn hơn cho góc khúc xạ nhỏ hơn, tia sáng bị lệch nhiều hơn.\nVới cùng một môi trường, góc tới càng lớn thì tia sáng bị lệch càng nhiều. Khi góc tới bằng 0° thì tia sáng truyền thẳng, không bị lệch.",
+   "can_dien_ly_thuyet_nhom": false
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB01103",
+   "nhom_id": "KNB00441",
+   "thu_tu": 1,
+   "dang": "Hiện tượng khúc xạ ánh sáng",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020101003",
+     "loai": "trac_nghiem",
+     "de": "Hiện tượng khúc xạ ánh sáng xảy ra ở vị trí nào?",
+     "lua_chon": [
+      "Tại mặt phân cách giữa hai môi trường.",
+      "Trong lòng môi trường thứ nhất.",
+      "Trong lòng môi trường thứ hai.",
+      "Tại một điểm bất kì trên pháp tuyến."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tia sáng chỉ đổi hướng ngay tại chỗ nó chuyển từ môi trường này sang môi trường kia. Trong lòng mỗi môi trường trong suốt và đồng tính, ánh sáng vẫn truyền thẳng."
+    },
+    {
+     "ma_cau": "K09020101004",
+     "loai": "trac_nghiem",
+     "de": "Trong một môi trường trong suốt và đồng tính, ánh sáng truyền đi theo",
+     "lua_chon": [
+      "đường cong bất kì.",
+      "đường gấp khúc.",
+      "đường thẳng.",
+      "đường tròn."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đây là định luật truyền thẳng của ánh sáng. Ánh sáng chỉ bị gây khúc khúc khi gặp mặt phân cách giữa hai môi trường khác nhau."
+    },
+    {
+     "ma_cau": "K09020101007",
+     "loai": "trac_nghiem",
+     "de": "Nguyên nhân làm tia sáng bị gãy khúc khi truyền qua mặt phân cách giữa hai môi trường là do đại lượng nào của ánh sáng thay đổi?",
+     "lua_chon": [
+      "Tốc độ truyền ánh sáng trong hai môi trường khác nhau.",
+      "Màu sắc của ánh sáng bị biến đổi.",
+      "Cường độ chùm sáng bị giảm.",
+      "Tần số của ánh sáng bị thay đổi."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ánh sáng truyền trong hai môi trường với tốc độ khác nhau nên hướng truyền bị đổi tại mặt phân cách. Màu sắc và tần số của ánh sáng không đổi khi chuyển môi trường."
+    },
+    {
+     "ma_cau": "K09020101002",
+     "loai": "trac_nghiem",
+     "de": "Điều kiện để xảy ra hiện tượng khúc xạ ánh sáng là",
+     "lua_chon": [
+      "hai môi trường phải giống hệt nhau.",
+      "tia sáng phải truyền vuông góc với mặt phân cách.",
+      "ít nhất một môi trường phải là môi trường đục.",
+      "tia sáng truyền xiên góc qua mặt phân cách giữa hai môi trường trong suốt khác nhau."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Phải hội đủ hai điều kiện: hai môi trường trong suốt khác nhau và tia sáng tới xiên góc. Phương án B chính là trường hợp tia sáng truyền thẳng, không bị khúc xạ."
+    },
+    {
+     "ma_cau": "K09020101001",
+     "loai": "trac_nghiem",
+     "de": "Hiện tượng khúc xạ ánh sáng là hiện tượng tia sáng",
+     "lua_chon": [
+      "bị hắt trở lại môi trường cũ khi gặp một mặt nhắn bóng.",
+      "bị đổi hướng đột ngột khi truyền xiên góc qua mặt phân cách giữa hai môi trường trong suốt khác nhau.",
+      "bị hấp thụ hoàn toàn khi đi vào môi trường thứ hai.",
+      "bị tách thành nhiều chùm sáng màu khác nhau."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khúc xạ gắn với việc tia sáng truyền tiếp sang môi trường thứ hai và bị gãy khúc tại mặt phân cách. Phương án A mô tả hiện tượng phản xạ, phương án D mô tả hiện tượng tán sắc."
+    },
+    {
+     "ma_cau": "K09020101005",
+     "loai": "trac_nghiem",
+     "de": "Khi chiếu một tia sáng xiên góc từ không khí tới mặt nước, tại mặt nước xảy ra hiện tượng gì?",
+     "lua_chon": [
+      "Chỉ có hiện tượng phản xạ.",
+      "Đồng thời có hiện tượng phản xạ và hiện tượng khúc xạ.",
+      "Chỉ có hiện tượng khúc xạ.",
+      "Không có hiện tượng nào xảy ra."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Một phần ánh sáng bị hắt trở lại không khí (phản xạ), phần còn lại truyền vào nước và bị đổi hướng (khúc xạ). Hai hiện tượng này diễn ra cùng lúc tại mặt phân cách."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01104",
+   "nhom_id": "KNB00441",
+   "thu_tu": 2,
+   "dang": "CÁC YẾU TỐ HÌNH HỌC TRONG HIỆN TƯỢNG KHÚC XẠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020101014",
+     "loai": "trac_nghiem",
+     "de": "Tia tới, tia khúc xạ và pháp tuyến tại điểm tới có quan hệ vị trí như thế nào?",
+     "lua_chon": [
+      "Nằm trên ba mặt phẳng khác nhau.",
+      "Luôn vuông góc với nhau từng đôi một.",
+      "Luôn trùng nhau.",
+      "Cùng nằm trong một mặt phẳng, gọi là mặt phẳng tới."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ba đường này đồng phẳng nên có thể vẽ toàn bộ hiện tượng khúc xạ trên một hình phẳng. Mặt phẳng chứa chúng được gọi là mặt phẳng tới."
+    },
+    {
+     "ma_cau": "K09020101015",
+     "loai": "trac_nghiem",
+     "de": "Mặt phân cách giữa hai môi trường là",
+     "lua_chon": [
+      "mặt tiếp xúc giữa hai môi trường trong suốt.",
+      "mặt phẳng chứa pháp tuyến và vuông góc tia tới.",
+      "mặt phẳng chứa tia tới và tia phản xạ.",
+      "mặt phẳng vuông góc với tia khúc xạ."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mặt phân cách là ranh giới thực giữa hai môi trường, chẳng hạn mặt nước ngăn cách nước với không khí. Đây là nơi hiện tượng khúc xạ diễn ra."
+    },
+    {
+     "ma_cau": "K09020101010",
+     "loai": "trac_nghiem",
+     "de": "Góc tới là góc tạo bởi",
+     "lua_chon": [
+      "tia tới và mặt phân cách.",
+      "tia tới và tia khúc xạ.",
+      "pháp tuyến và mặt phân cách.",
+      "tia tới và pháp tuyến tại điểm tới."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Mọi góc trong hiện tượng khúc xạ đều đo so với pháp tuyến. Phương án A là góc phụ với góc tới, rất hay bị nhầm khi để cho góc hợp bởi tia sáng với mặt phân cách."
+    },
+    {
+     "ma_cau": "K09020101012",
+     "loai": "trac_nghiem",
+     "de": "Trong các bài toán về khúc xạ ánh sáng, góc tới và góc khúc xạ thường được kí hiệu lần lượt là",
+     "lua_chon": [
+      "$r$ và $i$.",
+      "$\\alpha$ và $\\beta$.",
+      "$i$ và $r$.",
+      "$n$ và $r$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Kí hiệu quy ước là $i$ cho góc tới và $r$ cho góc khúc xạ; $n$ là kí hiệu của chiết suất\nchứ không phải của góc."
+    },
+    {
+     "ma_cau": "K09020101009",
+     "loai": "trac_nghiem",
+     "de": "Pháp tuyến tại điểm tới là đường thẳng",
+     "lua_chon": [
+      "nằm trong mặt phân cách và đi qua điểm tới.",
+      "vuông góc với mặt phân cách tại điểm tới.",
+      "song song với tia tới.",
+      "trùng với tia khúc xạ."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Pháp tuyến là đường chuẩn để đo cả góc tới lẫn góc khúc xạ, luôn vuông góc với mặt phân cách tại đúng điểm tới."
+    },
+    {
+     "ma_cau": "K09020101013",
+     "loai": "trac_nghiem",
+     "de": "Tia tới và tia khúc xạ nằm ở vị trí nào so với pháp tuyến tại điểm tới?",
+     "lua_chon": [
+      "Cùng một phía của pháp tuyến.",
+      "Ở hai phía khác nhau của pháp tuyến.",
+      "Trùng khít lên nhau.",
+      "Vuông góc với nhau."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đây là một nội dung của định luật khúc xạ. Nếu vẽ tia khúc xạ cùng phía với tia\ntới thì hình vẽ sai ngay từ đầu."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01105",
+   "nhom_id": "KNB00441",
+   "thu_tu": 3,
+   "dang": "ĐỊNH LUẬT KHÚC XẠ ÁNH SÁNG VÀ CHIẾT SUẤT",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020101018",
+     "loai": "trac_nghiem",
+     "de": "Trong biểu thức $\\sin i / \\sin r = n$, đại lượng $n$ được gọi là",
+     "lua_chon": [
+      "góc lệch của tia sáng.",
+      "tiêu cự của môi trường.",
+      "hệ số phản xạ của mặt phân cách.",
+      "chiết suất tỉ đối của môi trường khúc xạ đối với môi trường tới."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$n$ đặc trưng cho cặp hai môi trường đang xét, cho biết môi trường thứ hai làm đổi hướng tia sáng mạnh hay yếu so với môi trường thứ nhất."
+    },
+    {
+     "ma_cau": "K09020101016",
+     "loai": "trac_nghiem",
+     "de": "Nội dung định luật khúc xạ ánh sáng là",
+     "lua_chon": [
+      "góc tới luôn bằng góc khúc xạ.",
+      "tia khúc xạ luôn trùng với phương của tia tới.",
+      "tia khúc xạ nằm trong mặt phẳng tới và ở phía bên kia pháp tuyến so với tia tới; tỉ số giữa sin góc tới và sin góc khúc xạ là một hằng số.",
+      "tia khúc xạ luôn vuông góc với tia tới."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Định luật gồm hai ý: vị trí của tia khúc xạ và hệ thức về tỉ số các sin. Phương án A chỉ đúng trong trường hợp đặc biệt khi cả hai góc cùng bằng $0^\\circ$."
+    },
+    {
+     "ma_cau": "K09020101020",
+     "loai": "trac_nghiem",
+     "de": "Với hai môi trường trong suốt đã xác định, khi thay đổi góc tới thì tỉ số $\\sin i$ / $\\sin r$ sẽ",
+     "lua_chon": [
+      "thay đổi theo góc tới.",
+      "thay đổi theo cường độ chùm sáng.",
+      "giữ nguyên một giá trị không đổi.",
+      "luôn bằng 1."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đây chính là điểm mấu chốt của định luật khúc xạ: tỉ số các sin chỉ phụ thuộc cặp môi trường, không phụ thuộc góc tới. Tỉ số bằng 1 chỉ xảy ra khi hai môi trường có cùng chiết suất."
+    },
+    {
+     "ma_cau": "K09020101019",
+     "loai": "trac_nghiem",
+     "de": "Chiết suất là đại lượng",
+     "lua_chon": [
+      "không có đơn vị.",
+      "được đo bằng độ.",
+      "được đo bằng mét.",
+      "được đo bằng jun."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Chiết suất là thương của hai đại lượng cùng loại là sin của hai góc nên các đơn\nvị triệt tiêu, kết quả chỉ là một con số."
+    },
+    {
+     "ma_cau": "K09020101023",
+     "loai": "trac_nghiem",
+     "de": "Chiết suất của chân không, và gần đúng cũng là chiết suất của không khí, bằng",
+     "lua_chon": [
+      "1.",
+      "0.",
+      "1,33.",
+      "1,5."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Chân không có chiết suất đúng bằng 1 và không khí có chiết suất xấp xỉ 1 nên trong bài tập thường lấy bằng 1. Giá trị 1,33 là của nước, 1,5 là của thuỷ tinh thường."
+    },
+    {
+     "ma_cau": "K09020101017",
+     "loai": "trac_nghiem",
+     "de": "Biểu thức của định luật khúc xạ ánh sáng là",
+     "lua_chon": [
+      "$\\sin i \\cdot \\sin r = n$.",
+      "$\\sin i / \\sin r = n$.",
+      "$i / r = n$.",
+      "$\\sin i + \\sin r = n$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hằng số $n$ bằng thương của sin góc tới với sin góc khúc xạ. Phương án C sai vì tỉ số của chính hai góc không phải hằng số, chỉ tỉ số của các sin mới là hằng số."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01106",
+   "nhom_id": "KNB00441",
+   "thu_tu": 4,
+   "dang": "TRƯỜNG HỢP ĐẶC BIỆT VÀ PHÂN BIỆT KHÚC XẠ VỚI PHẢN XẠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020101028",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây sai?",
+     "lua_chon": [
+      "Tia khúc xạ nằm trong mặt phẳng tới.",
+      "Tia tới và tia khúc xạ nằm ở hai phía của pháp tuyến.",
+      "Góc khúc xạ luôn bằng góc tới.",
+      "Khi góc tới bằng $0^\\circ$ thì tia sáng truyền thẳng qua mặt phân cách."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Góc khúc xạ chỉ bằng góc tới khi hai môi trường có cùng chiết suất hoặc khi cả hai góc cùng bằng $0^\\circ$. Ba phát biểu còn lại đều là nội dung đúng của định luật khúc xạ."
+    },
+    {
+     "ma_cau": "K09020101025",
+     "loai": "trac_nghiem",
+     "de": "Khi góc tới bằng $0^\\circ$ thì góc khúc xạ bằng",
+     "lua_chon": [
+      "$90^\\circ$.",
+      "$0^\\circ$.",
+      "$45^\\circ$.",
+      "giá trị của chiết suất."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tia tới trùng pháp tuyến thì tia khúc xạ cũng trùng pháp tuyến nên góc khúc xạ bằng $0^\\circ$. Phương án D nhầm lẫn giữa một số đo góc với một con số không có đơn vị là chiết suất."
+    },
+    {
+     "ma_cau": "K09020101027",
+     "loai": "trac_nghiem",
+     "de": "Trong hiện tượng phản xạ ánh sáng, quan hệ giữa góc phản xạ và góc tới là",
+     "lua_chon": [
+      "góc phản xạ bằng góc tới.",
+      "góc phản xạ luôn lớn hơn góc tới.",
+      "góc phản xạ luôn nhỏ hơn góc tới.",
+      "hai góc không có quan hệ nào."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Định luật phản xạ cho góc phản xạ bằng góc tới trong mọi trường hợp. Cần phân biệt với khúc xạ, nơi góc khúc xạ nói chung khác góc tới."
+    },
+    {
+     "ma_cau": "K09020101026",
+     "loai": "trac_nghiem",
+     "de": "Điểm khác nhau giữa hiện tượng phản xạ và hiện tượng khúc xạ ánh sáng là",
+     "lua_chon": [
+      "cả hai đều làm tia sáng quay trở lại môi trường cũ.",
+      "cả hai đều không làm đổi hướng tia sáng.",
+      "khúc xạ làm tia sáng quay trở lại môi trường cũ, còn phản xạ cho tia sáng đi tiếp.",
+      "phản xạ hắt tia sáng trở lại môi trường cũ, còn khúc xạ cho tia sáng truyền tiếp sang môi trường thứ hai."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Điểm phân biệt nằm ở chỗ tia sáng đi về đâu sau khi gặp mặt phân cách. Phương án C mô tả đúng hai hiện tượng nhưng gán tên ngược nhau."
+    },
+    {
+     "ma_cau": "K09020101024",
+     "loai": "trac_nghiem",
+     "de": "Khi tia sáng truyền tới mặt phân cách theo phương vuông góc với mặt đó thì",
+     "lua_chon": [
+      "tia sáng bị hắt ngược trở lại hoàn toàn.",
+      "tia sáng bị lệch đi một góc $90^\\circ$.",
+      "tia sáng truyền thẳng, không bị đổi hướng.",
+      "tia sáng không truyền qua được mặt phân cách."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tia sáng vuông góc với mặt phân cách trùng với pháp tuyến nên góc tới bằng $0^\\circ$, kéo theo góc khúc xạ cũng bằng $0^\\circ$. Đây là trường hợp duy nhất ánh sáng qua mặt phân cách mà không gây khúc."
+    },
+    {
+     "ma_cau": "K09020101029",
+     "loai": "trac_nghiem",
+     "de": "Khi ánh sáng truyền từ môi trường này sang môi trường trong suốt khác, đại lượng nào của ánh sáng không thay đổi?",
+     "lua_chon": [
+      "Tốc độ truyền.",
+      "Màu sắc, ứng với tần số của ánh sáng.",
+      "Hướng truyền.",
+      "Bước sóng."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ánh sáng đỏ đi vào nước vẫn là ánh sáng đỏ, tần số giữ nguyên. Tốc độ, hướng truyền và bước sóng đều thay đổi khi chuyển môi trường."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01107",
+   "nhom_id": "KNB00442",
+   "thu_tu": 1,
+   "dang": "TÍNH GÓC TỚI KHI BIẾT GÓC GIỮA TIA TỚI VÀ MẶT PHÂN CÁCH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020102008",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng truyền từ không khí tới mặt một khối nhựa trong suốt, tia tới hợp với mặt khối nhựa một góc $48^\\circ$. Góc tới bằng",
+     "lua_chon": [
+      "48^\\circ.",
+      "42^\\circ.",
+      "52^\\circ.",
+      "32^\\circ."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $i = 90^\\circ - 48^\\circ = 42^\\circ$."
+    },
+    {
+     "ma_cau": "K09020102007",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng chiếu tới mặt nước, tia tới hợp với mặt nước một góc $15^\\circ$. Góc tới bằng",
+     "lua_chon": [
+      "$15^\\circ$.",
+      "$30^\\circ$.",
+      "$45^\\circ$.",
+      "$75^\\circ$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $i = 90^\\circ - 15^\\circ = 75^\\circ$. Tia sáng truyền gần như là là mặt nước nên góc tới rất lớn."
+    },
+    {
+     "ma_cau": "K09020102005",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng chiếu tới mặt phân cách giữa không khí và thuỷ tinh, tia tới hợp với mặt phân cách một góc $20^\\circ$. Góc tới bằng",
+     "lua_chon": [
+      "$20^\\circ$.",
+      "$40^\\circ$.",
+      "$70^\\circ$.",
+      "$110^\\circ$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $i = 90^\\circ - 20^\\circ = 70^\\circ$."
+    },
+    {
+     "ma_cau": "K09020102003",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng truyền tới mặt phân cách giữa không khí và dầu, tia tới hợp với mặt phân cách một góc $25^{\\circ}$. Góc tới bằng",
+     "lua_chon": [
+      "$25^{\\circ}$.",
+      "50°",
+      "55°",
+      "65°"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $i = 90^{\\circ} - 25^{\\circ} = 65^{\\circ}$. Phương án $25^{\\circ}$ là góc hợp với mặt phân cách, không phải góc tới."
+    },
+    {
+     "ma_cau": "K09020102001",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng truyền từ không khí tới mặt nước, tia tới hợp với mặt nước một góc $30^{\\circ}$. Góc tới của tia sáng bằng",
+     "lua_chon": [
+      "$30^{\\circ}$.",
+      "45°",
+      "60°",
+      "120°"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Góc tới đo giữa tia tới và pháp tuyến, mà pháp tuyến vuông góc với mặt nước nên $i = 90^{\\circ} - 30^{\\circ} = 60^{\\circ}$. Phương án $30^{\\circ}$ là kết quả của học sinh lấy nhầm góc hợp với mặt nước làm góc tới."
+    },
+    {
+     "ma_cau": "K09020102006",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng truyền từ không khí vào rượu, tia tới hợp với mặt rượu một góc $65^\\circ$. Góc tới bằng",
+     "lua_chon": [
+      "$25^\\circ$.",
+      "$65^\\circ$.",
+      "$35^\\circ$.",
+      "$15^\\circ$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $i = 90^\\circ - 65^\\circ = 25^\\circ$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01108",
+   "nhom_id": "KNB00442",
+   "thu_tu": 2,
+   "dang": "TÍNH GÓC KHÚC XẠ KHI BIẾT GÓC GIỮA TIA KHÚC XẠ VÀ MẶT PHÂN CÁCH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020102009",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng khúc xạ khi đi vào nước, tia khúc xạ hợp với mặt nước một góc $60^{\\circ}$. Góc khúc xạ bằng",
+     "lua_chon": [
+      "$30^{\\circ}$.",
+      "$60^{\\circ}$.",
+      "$45^{\\circ}$.",
+      "$120^{\\circ}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Góc khúc xạ đo giữa tia khúc xạ và pháp tuyến nên $r = 90^{\\circ} - 60^{\\circ} = 30^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020102013",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng khúc xạ tại mặt phân cách không khí - thuỷ tinh, tia khúc xạ hợp với mặt phân cách một góc $50^\\circ$. Góc khúc xạ bằng",
+     "lua_chon": [
+      "$40^\\circ$.",
+      "$50^\\circ$.",
+      "$30^\\circ$.",
+      "$60^\\circ$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $r = 90^\\circ - 50^\\circ = 40^\\circ$."
+    },
+    {
+     "ma_cau": "K09020102012",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng đi từ nước ra không khí, tia khúc xạ hợp với mặt nước một góc $28^\\circ$. Góc khúc xạ bằng",
+     "lua_chon": [
+      "$28^\\circ$.",
+      "$32^\\circ$.",
+      "$56^\\circ$.",
+      "$62^\\circ$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $r = 90^\\circ - 28^\\circ = 62^\\circ$."
+    },
+    {
+     "ma_cau": "K09020102011",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng khúc xạ khi truyền vào dầu, tia khúc xạ hợp với mặt phân cách một góc $72^{\\circ}$. Góc khúc xạ bằng",
+     "lua_chon": [
+      "$72^{\\circ}$.",
+      "$18^{\\circ}$.",
+      "$28^{\\circ}$.",
+      "$36^{\\circ}$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$r = 90^{\\circ} - 72^{\\circ} = 18^{\\circ}$. Tia khúc xạ gần sát pháp tuyến nên góc khúc xạ nhỏ."
+    },
+    {
+     "ma_cau": "K09020102010",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng đi vào tấm thuỷ tinh, tia khúc xạ hợp với mặt thuỷ tinh một góc $35^{\\circ}$. Góc khúc xạ bằng",
+     "lua_chon": [
+      "$35^{\\circ}$.",
+      "$45^{\\circ}$.",
+      "$55^{\\circ}$.",
+      "$65^{\\circ}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$r = 90^{\\circ} - 35^{\\circ} = 55^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020102014",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng truyền vào khối nhựa trong suốt, tia khúc xạ hợp với mặt khối nhựa một góc $22^\\circ$. Góc khúc xạ bằng",
+     "lua_chon": [
+      "$22^\\circ$.",
+      "$44^\\circ$.",
+      "$68^\\circ$.",
+      "$78^\\circ$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $r = 90^\\circ - 22^\\circ = 68^\\circ$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01109",
+   "nhom_id": "KNB00442",
+   "thu_tu": 3,
+   "dang": "TÍNH GÓC GIỮA TIA SÁNG VÀ MẶT PHÂN CÁCH KHI BIẾT GÓC TỚI HOẶC GÓC KHÚC XẠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020102018",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng truyền tới tấm thuỷ tinh với góc tới $52^{\\circ}$. Góc hợp bởi tia tới và mặt thuỷ tinh bằng",
+     "lua_chon": [
+      "$52^{\\circ}$.",
+      "$48^{\\circ}$.",
+      "$28^{\\circ}$.",
+      "$38^{\\circ}$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$90^{\\circ} - 52^{\\circ} = 38^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020102017",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng chiếu tới mặt nước với góc tới $60^{\\circ}$. Góc hợp bởi tia tới và mặt nước bằng",
+     "lua_chon": [
+      "$60^{\\circ}$.",
+      "$30^{\\circ}$.",
+      "$45^{\\circ}$.",
+      "$120^{\\circ}$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Góc hợp bởi tia tới và mặt nước phụ với góc tới, bằng $90^{\\circ} - 60^{\\circ} = 30^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020102023",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng khúc xạ khi đi ra khỏi khối nhựa trong suốt, góc khúc xạ bằng $41^{\\circ}$. Góc hợp bởi tia khúc xạ và mặt khối nhựa bằng",
+     "lua_chon": [
+      "$49^{\\circ}$.",
+      "$41^{\\circ}$.",
+      "$59^{\\circ}$.",
+      "$39^{\\circ}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $90^{\\circ} - 41^{\\circ} = 49^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020102021",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng khúc xạ vào khối thuỷ tinh, góc khúc xạ bằng $70^{\\circ}$. Góc hợp bởi tia khúc xạ và mặt khối thuỷ tinh bằng",
+     "lua_chon": [
+      "$70^{\\circ}$.",
+      "$20^{\\circ}$.",
+      "$30^{\\circ}$.",
+      "$40^{\\circ}$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $90^{\\circ} - 70^{\\circ} = 20^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020102019",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng khúc xạ khi đi vào nước, góc khúc xạ bằng $32^{\\circ}$. Góc hợp bởi tia khúc xạ và mặt nước bằng",
+     "lua_chon": [
+      "$58^{\\circ}$.",
+      "$32^{\\circ}$.",
+      "$48^{\\circ}$.",
+      "$64^{\\circ}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$90^{\\circ} - 32^{\\circ} = 58^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020102020",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng chiếu tới mặt phân cách giữa không khí và dầu với góc tới $18^{\\circ}$. Góc hợp bởi tia tới và mặt phân cách bằng",
+     "lua_chon": [
+      "$18^{\\circ}$.",
+      "$36^{\\circ}$.",
+      "$72^{\\circ}$.",
+      "$82^{\\circ}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$90^{\\circ} - 18^{\\circ} = 72^{\\circ}$. Góc tới nhỏ nghĩa là tia sáng truyền gần pháp tuyến, nên nó gần vuông góc với mặt phân cách."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01110",
+   "nhom_id": "KNB00442",
+   "thu_tu": 4,
+   "dang": "TÍNH GÓC LỆCH GIỮA TIA KHÚC XẠ VÀ PHƯƠNG TIA TỚI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020102025",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng đi từ không khí vào nước với góc tới $45^\\circ$, góc khúc xạ đo được $28^\\circ$. Góc lệch giữa tia khúc xạ và phương của tia tới bằng",
+     "lua_chon": [
+      "$17^\\circ$.",
+      "$73^\\circ$.",
+      "$27^\\circ$.",
+      "$7^\\circ$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$D = 45^\\circ - 28^\\circ = 17^\\circ$."
+    },
+    {
+     "ma_cau": "K09020102024",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng chiếu từ không khí vào thuỷ tinh với góc tới $60^\\circ$, góc khúc xạ đo được $35^\\circ$. Góc lệch giữa tia khúc xạ và phương của tia tới bằng",
+     "lua_chon": [
+      "$95^\\circ$.",
+      "$30^\\circ$.",
+      "$25^\\circ$.",
+      "$15^\\circ$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$D = i - r = 60^\\circ - 35^\\circ = 25^\\circ$. Phương án $95^\\circ$ là kết quả của việc cộng hai góc thay vì trừ."
+    },
+    {
+     "ma_cau": "K09020102029",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng chiếu vào tấm thuỷ tinh với góc tới $48^{\\circ}$, tia khúc xạ hợp với mặt thuỷ tinh một góc $57^{\\circ}$. Góc lệch giữa tia khúc xạ và phương của tia tới bằng",
+     "lua_chon": [
+      "$15^{\\circ}$.",
+      "$9^{\\circ}$.",
+      "$33^{\\circ}$.",
+      "$105^{\\circ}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi về góc khúc xạ: $r = 90^{\\circ} - 57^{\\circ} = 33^{\\circ}$. Khi đó $D = 48^{\\circ} - 33^{\\circ} = 15^{\\circ}$.\nPhương án $9^{\\circ}$ là kết quả của việc lấy luôn $57^{\\circ}$ làm góc khúc xạ."
+    },
+    {
+     "ma_cau": "K09020102028",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng chiếu tới mặt nước, tia tới hợp với mặt nước một góc $25^{\\circ}$, góc khúc xạ đo được $40^{\\circ}$. Góc lệch giữa tia khúc xạ và phương của tia tới bằng",
+     "lua_chon": [
+      "$15^{\\circ}$.",
+      "$65^{\\circ}$.",
+      "$25^{\\circ}$.",
+      "$35^{\\circ}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Trước hết đổi về góc tới: $i = 90^{\\circ} - 25^{\\circ} = 65^{\\circ}$. Sau đó $D = i - r = 65^{\\circ} - 40^{\\circ} = 25^{\\circ}$.\nPhương án $15^{\\circ}$ là kết quả của việc lấy luôn $25^{\\circ}$ làm góc tới rồi trừ nhầm."
+    },
+    {
+     "ma_cau": "K09020102027",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng chiếu từ không khí vào khối nhựa trong suốt với góc tới $70^\\circ$, góc khúc xạ đo được $38^\\circ$. Góc lệch giữa tia khúc xạ và phương của tia tới bằng",
+     "lua_chon": [
+      "$108^\\circ$.",
+      "$32^\\circ$.",
+      "$42^\\circ$.",
+      "$22^\\circ$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$D = 70^\\circ - 38^\\circ = 32^\\circ$."
+    },
+    {
+     "ma_cau": "K09020102030",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng chiếu tới mặt một khối chất lỏng trong suốt, tia tới hợp với mặt chất lỏng một góc $32^{\\circ}$, tia khúc xạ hợp với mặt chất lỏng một góc $48^{\\circ}$. Góc lệch giữa tia khúc xạ và phương của tia tới bằng",
+     "lua_chon": [
+      "$80^{\\circ}$.",
+      "$100^{\\circ}$.",
+      "$32^{\\circ}$.",
+      "$16^{\\circ}$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$i = 90^{\\circ} - 32^{\\circ} = 58^{\\circ}$; $r = 90^{\\circ} - 48^{\\circ} = 42^{\\circ}$. Do đó $D = 58^{\\circ} - 42^{\\circ} = 16^{\\circ}$.\nCó thể tính nhanh: $D = (90^{\\circ} - 32^{\\circ}) - (90^{\\circ} - 48^{\\circ}) = 48^{\\circ} - 32^{\\circ} = 16^{\\circ}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01111",
+   "nhom_id": "KNB00442",
+   "thu_tu": 5,
+   "dang": "TÍNH GÓC TỚI TỪ GÓC GIỮA TIA TỚI VÀ TIA PHẢN XẠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020102035",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng chiếu tới mặt rượu. Góc hợp bởi tia tới và tia phản xạ đo được $148^{\\circ}$. Tính góc tới của tia sáng (đơn vị độ).",
+     "dap_an": "74",
+     "loi_giai": "$i = 148^{\\circ} : 2 = 74^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020102034",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng chiếu tới mặt một khối nhựa trong suốt. Góc hợp bởi tia tới và tia phản xạ đo được $54^{\\circ}$. Tính góc tới của tia sáng (đơn vị độ).",
+     "dap_an": "27",
+     "loi_giai": "$i = 54^{\\circ} : 2 = 27^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020102033",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng chiếu tới mặt phân cách giữa không khí và dầu. Góc hợp bởi tia tới và tia phản xạ đo được $126^{\\circ}$. Tính góc tới của tia sáng (đơn vị độ).",
+     "dap_an": "63",
+     "loi_giai": "$i = 126^{\\circ} : 2 = 63^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020102032",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng chiếu tới mặt một tấm thuỷ tinh. Góc hợp bởi tia tới và tia phản xạ đo được $110^{\\circ}$. Tính góc tới của tia sáng (đơn vị độ).",
+     "dap_an": "55",
+     "loi_giai": "$i = 110^{\\circ} : 2 = 55^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020102031",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng chiếu tới mặt nước. Góc hợp bởi tia tới và tia phản xạ đo được $80^{\\circ}$. Tính góc tới của tia sáng (đơn vị độ).",
+     "dap_an": "40",
+     "loi_giai": "Tia tới và tia phản xạ đối xứng nhau qua pháp tuyến nên góc giữa chúng bằng $2i$.\nVây $i = 80^{\\circ} : 2 = 40^{\\circ}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01112",
+   "nhom_id": "KNB00442",
+   "thu_tu": 6,
+   "dang": "TÍNH GÓC KHÚC XẠ TỪ GÓC GIỮA TIA PHẢN XẠ VÀ TIA KHÚC XẠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020102038",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng chiếu từ không khí vào dầu với góc tới $45^\\circ$. Góc hợp bởi tia phản xạ và tia khúc xạ do được $113^\\circ$. Tính góc khúc xạ (đơn vị độ).",
+     "dap_an": "22",
+     "loi_giai": "Đáp án chi tiết: $r = 180^\\circ - 113^\\circ - 45^\\circ = 22^\\circ$."
+    },
+    {
+     "ma_cau": "K09020102036",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng chiếu từ không khí vào nước với góc tới $50^\\circ$. Tại mặt nước, một phần ánh sáng phản xạ, một phần khúc xạ. Góc hợp bởi tia phản xạ và tia khúc xạ do được $100^\\circ$. Tính góc khúc xạ (đơn vị độ).",
+     "dap_an": "30",
+     "loi_giai": "Tia phản xạ và tia khúc xạ nằm hai bên mặt phân cách, góc giữa chúng bằng $180^\\circ - (i + r)$. Vậy $100^\\circ = 180^\\circ - (50^\\circ + r)$, suy ra $r = 30^\\circ$."
+    },
+    {
+     "ma_cau": "K09020102037",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng chiếu từ không khí vào thuỷ tinh với góc tới $60^\\circ$. Góc hợp bởi tia phản xạ và tia khúc xạ do được $85^\\circ$. Tính góc khúc xạ (đơn vị độ).",
+     "dap_an": "35",
+     "loi_giai": "Đáp án chi tiết: $85^\\circ = 180^\\circ - (60^\\circ + r)$ nên $r = 180^\\circ - 85^\\circ - 60^\\circ = 35^\\circ$."
+    },
+    {
+     "ma_cau": "K09020102039",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng chiếu từ không khí vào một khối nhựa trong suốt với góc tới $70^\\circ$. Góc hợp bởi tia phản xạ và tia khúc xạ do được $68^\\circ$. Tính góc khúc xạ (đơn vị độ).",
+     "dap_an": "42",
+     "loi_giai": "Đáp án chi tiết: $r = 180^\\circ - 68^\\circ - 70^\\circ = 42^\\circ$."
+    },
+    {
+     "ma_cau": "K09020102040",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng chiếu từ không khí vào rượu với góc tới $36^\\circ$. Góc hợp bởi tia phản xạ và tia khúc xạ do được $126^\\circ$. Tính góc khúc xạ (đơn vị độ).",
+     "dap_an": "18",
+     "loi_giai": "Đáp án chi tiết: $r = 180^\\circ - 126^\\circ - 36^\\circ = 18^\\circ$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01113",
+   "nhom_id": "KNB00442",
+   "thu_tu": 7,
+   "dang": "TÍNH GÓC TỚI VÀ GÓC KHÚC XẠ TỪ TỔNG VÀ HIỆU HAI GÓC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020102044",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng khúc xạ tại mặt một khối nhựa trong suốt. Tổng của góc tới và góc khúc xạ bằng $120^\\circ$, góc lệch giữa tia khúc xạ và phương của tia tới bằng $40^\\circ$. Tính góc khúc xạ (đơn vị độ).",
+     "dap_an": "40",
+     "loi_giai": "$2r = 120^\\circ - 40^\\circ = 80^\\circ$, suy ra $r = 40^\\circ$."
+    },
+    {
+     "ma_cau": "K09020102042",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng khúc xạ tại mặt tấm thuỷ tinh. Tổng của góc tới và góc khúc xạ bằng $100^\\circ$, góc lệch giữa tia khúc xạ và phương của tia tới bằng $30^\\circ$. Tính góc khúc xạ (đơn vị độ).",
+     "dap_an": "35",
+     "loi_giai": "$i + r = 100^\\circ$ và $i - r = 30^\\circ$. Trừ hai đẳng thức: $2r = 70^\\circ$, suy ra $r = 35^\\circ$."
+    },
+    {
+     "ma_cau": "K09020102041",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng khúc xạ tại mặt nước. Tổng của góc tới và góc khúc xạ bằng $90^\\circ$, góc lệch giữa tia khúc xạ và phương của tia tới bằng $20^\\circ$. Tính góc tới (đơn vị độ).",
+     "dap_an": "55",
+     "loi_giai": "Ta có $i + r = 90^\\circ$ và $i - r = 20^\\circ$. Cộng hai đẳng thức: $2i = 110^\\circ$, suy ra $i = 55^\\circ$."
+    },
+    {
+     "ma_cau": "K09020102043",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng khúc xạ tại mặt phân cách giữa không khí và dầu. Tổng của góc tới và góc khúc xạ bằng $76^\\circ$, góc lệch giữa tia khúc xạ và phương của tia tới bằng $16^\\circ$. Tính góc tới (đơn vị độ).",
+     "dap_an": "46",
+     "loi_giai": "$2i = 76^\\circ + 16^\\circ = 92^\\circ$, suy ra $i = 46^\\circ$."
+    },
+    {
+     "ma_cau": "K09020102045",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng khúc xạ tại mặt rượu. Tổng của góc tới và góc khúc xạ bằng $64^\\circ$, góc lệch giữa tia khúc xạ và phương của tia tới bằng $24^\\circ$. Tính góc tới (đơn vị độ).",
+     "dap_an": "44",
+     "loi_giai": "$2i = 64^\\circ + 24^\\circ = 88^\\circ$, suy ra $i = 44^\\circ$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01114",
+   "nhom_id": "KNB00442",
+   "thu_tu": 8,
+   "dang": "TÍNH GÓC GIỮA TIA KHÚC XẠ VÀ MẶT PHÂN CÁCH KHI BIẾT GÓC TỚI VÀ GÓC LỆCH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020102046",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng chiếu từ không khí vào nước với góc tới $60^\\circ$. Góc lệch giữa tia khúc xạ và phương của tia tới bằng $22^\\circ$. Tính góc hợp bởi tia khúc xạ và mặt nước (đơn vị độ).",
+     "dap_an": "52",
+     "loi_giai": "Góc khúc xạ $r = i - D = 60^\\circ - 22^\\circ = 38^\\circ$. Góc hợp bởi tia khúc xạ và mặt nước phụ với $r$ nên bằng $90^\\circ - 38^\\circ = 52^\\circ$."
+    },
+    {
+     "ma_cau": "K09020102047",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng chiếu từ không khí vào tấm thuỷ tinh với góc tới $55^\\circ$. Góc lệch giữa tia khúc xạ và phương của tia tới bằng $15^\\circ$. Tính góc hợp bởi tia khúc xạ và mặt thuỷ tinh (đơn vị độ).",
+     "dap_an": "50",
+     "loi_giai": "$r = 55^\\circ - 15^\\circ = 40^\\circ$; góc cần tìm = $90^\\circ - 40^\\circ = 50^\\circ$."
+    },
+    {
+     "ma_cau": "K09020102048",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng chiếu tới mặt dầu, tia tới hợp với mặt dầu một góc $20^\\circ$. Góc lệch giữa tia khúc xạ và phương của tia tới bằng $25^\\circ$. Tính góc hợp bởi tia khúc xạ và mặt dầu (đơn vị độ).",
+     "dap_an": "45",
+     "loi_giai": "Góc tới $i = 90^\\circ - 20^\\circ = 70^\\circ$. Góc khúc xạ $r = 70^\\circ - 25^\\circ = 45^\\circ$. Góc hợp bởi tia khúc xạ và mặt dầu = $90^\\circ - 45^\\circ = 45^\\circ$."
+    },
+    {
+     "ma_cau": "K09020102050",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng chiếu từ không khí vào rượu với góc tới $72^\\circ$. Góc lệch giữa tia khúc xạ và phương của tia tới bằng $30^\\circ$. Tính góc hợp bởi tia khúc xạ và mặt rượu (đơn vị độ).",
+     "dap_an": "48",
+     "loi_giai": "$r = 72^\\circ - 30^\\circ = 42^\\circ$; góc cần tìm = $90^\\circ - 42^\\circ = 48^\\circ$."
+    },
+    {
+     "ma_cau": "K09020102049",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng chiếu tới mặt một khối nhựa trong suốt, tia tới hợp với mặt khối nhựa một góc $40^\\circ$. Góc lệch giữa tia khúc xạ và phương của tia tới bằng $14^\\circ$. Tính góc hợp bởi tia khúc xạ và mặt khối nhựa (đơn vị độ).",
+     "dap_an": "54",
+     "loi_giai": "$i = 90^\\circ - 40^\\circ = 50^\\circ$; $r = 50^\\circ - 14^\\circ = 36^\\circ$; góc cần tìm = $90^\\circ - 36^\\circ = 54^\\circ$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01115",
+   "nhom_id": "KNB00443",
+   "thu_tu": 1,
+   "dang": "TÍNH CHIẾT SUẤT KHI ĐỀ CHO TRỰC TIẾP GÓC TỚI VÀ GÓC KHÚC XẠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020104007",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $70^\\circ$, đo được góc khúc xạ $45^\\circ$. Chiết suất của môi trường đó đối với không khí bằng",
+     "lua_chon": [
+      "0,75.",
+      "1,56.",
+      "1,33.",
+      "1,18."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $n = \\sin 70^\\circ / \\sin 45^\\circ = 0,940 / 0,707 = 1,33$. Phương án $1,56$ là tỉ số hai góc $70^\\circ / 45^\\circ$."
+    },
+    {
+     "ma_cau": "K09020104002",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $45^\\circ$, đo được góc khúc xạ $30^\\circ$. Chiết suất của môi trường đó đối với không khí bằng",
+     "lua_chon": [
+      "0,71.",
+      "1,41.",
+      "1,50.",
+      "2,12."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chiết suất tỉ đối: $n = \\dfrac{\\sin 45^\\circ}{\\sin 30^\\circ} = 0,707 / 0,500 = 1,41$. Phương án $1,50$ ứng với việc lấy tỉ số $45^\\circ / 30^\\circ$."
+    },
+    {
+     "ma_cau": "K09020104003",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $60^\\circ$, đo được góc khúc xạ $45^\\circ$. Chiết suất của môi trường đó đối với không khí bằng",
+     "lua_chon": [
+      "0,82.",
+      "1,50.",
+      "1,22.",
+      "1,33."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Chiết suất tỉ đối: $n = \\dfrac{\\sin 60^\\circ}{\\sin 45^\\circ} = 0,866 / 0,707 = 1,22$. Phương án $1,33$ là tỉ số hai góc $60^\\circ / 45^\\circ$."
+    },
+    {
+     "ma_cau": "K09020104004",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $45^\\circ$, đo được góc khúc xạ $32^\\circ$. Chiết suất của môi trường đó đối với không khí bằng",
+     "lua_chon": [
+      "1,33.",
+      "0,75.",
+      "1,41.",
+      "1,15."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $n = \\sin 45^\\circ / \\sin 32^\\circ = 0,707 / 0,530 = 1,33$. Phương án $1,41$ là tỉ số hai góc $45^\\circ / 32^\\circ$."
+    },
+    {
+     "ma_cau": "K09020104005",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $60^\\circ$, đo được góc khúc xạ $40^\\circ$. Chiết suất của môi trường đó đối với không khí bằng",
+     "lua_chon": [
+      "0,74.",
+      "1,20.",
+      "1,50.",
+      "1,35."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $n = \\sin 60^\\circ / \\sin 40^\\circ = 0,866 / 0,643 = 1,35$. Phương án $1,50$ là tỉ số hai góc $60^\\circ / 40^\\circ$."
+    },
+    {
+     "ma_cau": "K09020104001",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $60^\\circ$, đo được góc khúc xạ $30^\\circ$. Chiết suất của môi trường đó đối với không khí bằng",
+     "lua_chon": [
+      "0,58.",
+      "2,00.",
+      "0,50.",
+      "1,73."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Chiết suất tỉ đối: $n = \\dfrac{\\sin 60^\\circ}{\\sin 30^\\circ} = 0,866 / 0,500 = 1,73$. Phương án $2,00$ là kết quả của việc lấy tỉ số hai góc $60^\\circ / 30^\\circ$; phương án $0,58$ là kết quả của việc đảo ngược tỉ số thành $\\sin 30^\\circ / \\sin 60^\\circ$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01116",
+   "nhom_id": "KNB00443",
+   "thu_tu": 2,
+   "dang": "TÍNH CHIẾT SUẤT ĐỂ NHẬN BIẾT MÔI TRƯỜNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020104016",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một chất trong suốt với góc tới $68^\\circ$, đo được góc khúc xạ $43^\\circ$. Đối chiếu bảng chiết suất (nước $1,33$; rượu $1,36$; dầu $1,47$; thuỷ tinh $1,50$; kim cương $2,42$), chất đó là",
+     "lua_chon": [
+      "rượu.",
+      "thuỷ tinh.",
+      "dầu.",
+      "kim cương."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $n = \\sin 68^\\circ / \\sin 43^\\circ = 0,927 / 0,682 = 1,36$, ứng với rượu."
+    },
+    {
+     "ma_cau": "K09020104010",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một chất trong suốt với góc tới $68^\\circ$, đo được góc khúc xạ $38^\\circ$. Đối chiếu bảng chiết suất (nước $1,33$; rượu $1,36$; dầu $1,47$; thuỷ tinh $1,50$; kim cương $2,42$), chất đó là",
+     "lua_chon": [
+      "nước.",
+      "thuỷ tinh.",
+      "rượu.",
+      "kim cương."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $n = \\sin 68^\\circ / \\sin 38^\\circ = 0,927 / 0,616 = 1,51$, ứng với thuỷ tinh."
+    },
+    {
+     "ma_cau": "K09020104015",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một chất trong suốt với góc tới $75^\\circ$, đo được góc khúc xạ $40^\\circ$. Đối chiếu bảng chiết suất (nước $1,33$; rượu $1,36$; dầu $1,47$; thuỷ tinh $1,50$; kim cương $2,42$), chất đó là",
+     "lua_chon": [
+      "rượu.",
+      "nước.",
+      "thuỷ tinh.",
+      "kim cương."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $n = \\sin 75^\\circ / \\sin 40^\\circ = 0,966 / 0,643 = 1,50$, ứng với thủy tinh."
+    },
+    {
+     "ma_cau": "K09020104011",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một chất trong suốt với góc tới $35^\\circ$, đo được góc khúc xạ $25^\\circ$. Đối chiếu bảng chiết suất (nước $1,33$; rượu $1,36$; dầu $1,47$; thuỷ tinh $1,50$; kim cương $2,42$), chất đó là",
+     "lua_chon": [
+      "nước.",
+      "dầu.",
+      "rượu.",
+      "thuỷ tinh."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $n = \\sin 35^\\circ / \\sin 25^\\circ = 0,574 / 0,423 = 1,36$, ứng với rượu."
+    },
+    {
+     "ma_cau": "K09020104013",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một chất trong suốt với góc tới $56^\\circ$, đo được góc khúc xạ $20^\\circ$. Đối chiếu bảng chiết suất (nước 1,33; rượu 1,36; dầu 1,47; thuỷ tinh 1,50; kim cương 2,42), chất đó là",
+     "lua_chon": [
+      "nước.",
+      "dầu.",
+      "thuỷ tinh.",
+      "kim cương."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $n = \\sin 56^\\circ / \\sin 20^\\circ = 0,829 / 0,342 = 2,42$, ứng với kim cương. Góc khúc xạ nhỏ hơn nhiều so với góc tới cho thấy môi trường có chiết suất rất lớn."
+    },
+    {
+     "ma_cau": "K09020104012",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một chất trong suốt với góc tới $62^\\circ$, đo được góc khúc xạ $37^\\circ$. Đối chiếu bảng chiết suất (nước 1,33; rượu 1,36; dầu 1,47; thuỷ tinh 1,50; kim cương 2,42), chất đó là",
+     "lua_chon": [
+      "dầu.",
+      "nước.",
+      "kim cương.",
+      "rượu."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $n = \\sin 62^\\circ / \\sin 37^\\circ = 0,883 / 0,602 = 1,47$, ứng với dầu."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01117",
+   "nhom_id": "KNB00443",
+   "thu_tu": 3,
+   "dang": "TÍNH CHIẾT SUẤT KHI ĐỀ CHO GÓC HỢP VỚI MẶT PHÂN CÁCH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020104018",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt. Tia tới hợp với mặt phân cách một góc $40^{\\circ}$, góc khúc xạ đo được $33^{\\circ}$. Chiết suất của môi trường đó đối với không khí bằng",
+     "lua_chon": [
+      "1,41.",
+      "1,18.",
+      "0,71.",
+      "1,21."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $i = 90^{\\circ} - 40^{\\circ} = 50^{\\circ}$; $n = \\sin 50^{\\circ} / \\sin 33^{\\circ} = 0,766 / 0,545 = 1,41$. Phương án $1,18$ là kết quả của việc lấy luôn $40^{\\circ}$ làm góc tới."
+    },
+    {
+     "ma_cau": "K09020104020",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt. Tia tới hợp với mặt phân cách một góc $20^o$, góc khúc xạ đo được $45^o$. Chiết suất của môi trường đó đối với không khí bằng",
+     "lua_chon": [
+      "0,48.",
+      "1,33.",
+      "2,08.",
+      "0,44."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $i = 90^o - 20^o = 70^o$; $n = \\sin 70^o / \\sin 45^o = 1,33$. Phương án $0,48$ là kết quả của việc lấy luôn $20^o$ làm góc tới, cho chiết suất nhỏ hơn $1$ trong khi tia sáng đang đi vào môi trường chiết quang hơn."
+    },
+    {
+     "ma_cau": "K09020104021",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $45^o$. Tia khúc xạ hợp với mặt phân cách một góc $62^o$. Chiết suất của môi trường đó đối với không khí bằng",
+     "lua_chon": [
+      "0,80.",
+      "1,25.",
+      "1,51.",
+      "0,73."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $r = 90^o - 62^o = 28^o$; $n = \\sin 45^o / \\sin 28^o = 0,707/0,469 = 1,51$."
+    },
+    {
+     "ma_cau": "K09020104022",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt. Tia tới hợp với mặt phân cách một góc $40^o$, tia khúc xạ hợp với mặt phân cách một góc $59^o$. Chiết suất của môi trường đó đối với không khí bằng",
+     "lua_chon": [
+      "1,49.",
+      "0,75.",
+      "1,33.",
+      "0,67."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $i = 90^o - 40^o = 50^o$; $r = 90^o - 59^o = 31^o$; $n = \\sin 50^o / \\sin 31^o = 0,766/0,515 = 1,49$. Phương án $0,75$ là kết quả của việc dùng luôn hai góc $40^o$ và $59^o$."
+    },
+    {
+     "ma_cau": "K09020104023",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt. Tia tới hợp với mặt phân cách một góc $25^{\\circ}$, góc khúc xạ đo được $40^{\\circ}$. Chiết suất của môi trường đó đối với không khí bằng",
+     "lua_chon": [
+      "0,66.",
+      "1,52.",
+      "0,63.",
+      "1,41."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $i = 90^{\\circ} - 25^{\\circ} = 65^{\\circ}$; $n = \\sin 65^{\\circ} / \\sin 40^{\\circ} = 0,906 / 0,643 = 1,41$. Phương án 0,66 là kết quả của việc lấy luôn $25^{\\circ}$ làm góc tới."
+    },
+    {
+     "ma_cau": "K09020104019",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $60^{\\circ}$. Tia khúc xạ hợp với mặt phân cách một góc $55^{\\circ}$. Chiết suất của môi trường đó đối với không khí bằng",
+     "lua_chon": [
+      "1,06.",
+      "0,66.",
+      "1,09.",
+      "1,51."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: Góc khúc xạ $r = 90^{\\circ} - 55^{\\circ} = 35^{\\circ}$; $n = \\sin 60^{\\circ} / \\sin 35^{\\circ} = 1,51$. Phương án $1,06$ là kết quả của việc lấy luôn $55^{\\circ}$ làm góc khúc xạ."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01118",
+   "nhom_id": "KNB00443",
+   "thu_tu": 4,
+   "dang": "TÍNH CHIẾT SUẤT KHI ĐỀ CHO GÓC TỚI VÀ GÓC LỆCH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020104030",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $72^\\circ$. Tia khúc xạ lệch so với phương của tia tới một góc $32^\\circ$. Chiết suất của môi trường đó đối với không khí bằng",
+     "lua_chon": [
+      "1,48.",
+      "1,79.",
+      "0,68.",
+      "1,80."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $r = 72^\\circ - 32^\\circ = 40^\\circ$; $n = \\sin 72^\\circ / \\sin 40^\\circ = 0,951 / 0,643 = 1,48$."
+    },
+    {
+     "ma_cau": "K09020104026",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $50^\\circ$. Tia khúc xạ lệch so với phương của tia tới một góc $19^\\circ$. Chiết suất của môi trường đó đối với không khí bằng",
+     "lua_chon": [
+      "1,49.",
+      "2,35.",
+      "0,67.",
+      "1,34."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Góc khúc xạ $r = 50^\\circ - 19^\\circ = 31^\\circ$; $n = \\dfrac{\\sin 50^\\circ}{\\sin 31^\\circ} = 1,49$."
+    },
+    {
+     "ma_cau": "K09020104029",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $42^\\circ$. Tia khúc xạ lệch so với phương của tia tới một góc $14^\\circ$. Chiết suất của môi trường đó đối với không khí bằng",
+     "lua_chon": [
+      "2,77.",
+      "0,70.",
+      "1,43.",
+      "1,50."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $r = 42^\\circ - 14^\\circ = 28^\\circ$; $n = \\sin 42^\\circ / \\sin 28^\\circ = 0,669 / 0,469 = 1,43$."
+    },
+    {
+     "ma_cau": "K09020104028",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $60^\\circ$. Tia khúc xạ lệch so với phương của tia tới một góc $15^\\circ$. Chiết suất của môi trường đó đối với không khí bằng",
+     "lua_chon": [
+      "3,35.",
+      "1,22.",
+      "0,82.",
+      "1,73."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $r = 60^\\circ - 15^\\circ = 45^\\circ$; $n = \\sin 60^\\circ / \\sin 45^\\circ = 1,22$."
+    },
+    {
+     "ma_cau": "K09020104027",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $70^\\circ$. Tia khúc xạ lệch so với phương của tia tới một góc $32^\\circ$. Chiết suất của môi trường đó đối với không khí bằng",
+     "lua_chon": [
+      "1,77.",
+      "0,65.",
+      "1,33.",
+      "1,53."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $r = 70^\\circ - 32^\\circ = 38^\\circ$; $n = \\sin 70^\\circ / \\sin 38^\\circ = 0,940 / 0,616 = 1,53$."
+    },
+    {
+     "ma_cau": "K09020104024",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $60^\\circ$. Tia khúc xạ lệch so với phương của tia tới một góc $25^\\circ$. Chiết suất của môi trường đó đối với không khí bằng",
+     "lua_chon": [
+      "2,05.",
+      "1,51.",
+      "0,66.",
+      "1,22."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Góc khúc xạ $r = 60^\\circ - 25^\\circ = 35^\\circ$; $n = \\dfrac{\\sin 60^\\circ}{\\sin 35^\\circ} = 1,51$. Phương án $2,05$ là kết quả của việc lấy $\\dfrac{\\sin 60^\\circ}{\\sin 25^\\circ}$, tức dùng nhầm góc lệch làm góc khúc xạ."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01119",
+   "nhom_id": "KNB00443",
+   "thu_tu": 5,
+   "dang": "CHIẾT SUẤT TỈ ĐỐI THEO CHIỀU TRUYỀN NGƯỢC LẠI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020104033",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một khối chất rắn trong suốt với góc tới $60^{\\circ}$, đo được góc khúc xạ $30^{\\circ}$. Tính chiết suất tỉ đối của không khí đối với khối chất rắn đó (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "0.58",
+     "loi_giai": "$n = \\sin 60^{\\circ} / \\sin 30^{\\circ} = 1.73$; nghịch đảo bằng $1 / 1.73 = 0.58$."
+    },
+    {
+     "ma_cau": "K09020104035",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một khối chất trong suốt với góc tới $50^{\\circ}$, đo được góc khúc xạ $31^{\\circ}$. Tính chiết suất tỉ đối của không khí đối với khối chất đó (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "0.67",
+     "loi_giai": "$n = \\sin 50^{\\circ} / \\sin 31^{\\circ} = 1.49$; nghịch đảo bằng $1 / 1.49 = 0.67$."
+    },
+    {
+     "ma_cau": "K09020104031",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào nước với góc tới $60^{\\circ}$, đo được góc khúc xạ $40^{\\circ}$. Tính chiết suất tỉ đối của không khí đối với nước (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "0.74",
+     "loi_giai": "Chiết suất của nước đối với không khí là $n = \\sin 60^{\\circ} / \\sin 40^{\\circ} = 1.35$. Khi đảo chiều truyền, chiết suất tỉ đối nghịch đảo: $1 / 1.35 = 0.74$."
+    },
+    {
+     "ma_cau": "K09020104032",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một chất lỏng trong suốt với góc tới $45^{\\circ}$, đo được góc khúc xạ $30^{\\circ}$. Tính chiết suất tỉ đối của không khí đối với chất lỏng đó (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "0.71",
+     "loi_giai": "$n = \\sin 45^{\\circ} / \\sin 30^{\\circ} = 1.41$; chiết suất tỉ đối theo chiều ngược lại bằng $1 / 1.41 = 0.71$."
+    },
+    {
+     "ma_cau": "K09020104034",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một chất lỏng trong suốt với góc tới $70^{\\circ}$, đo được góc khúc xạ $45^{\\circ}$. Tính chiết suất tỉ đối của không khí đối với chất lỏng đó (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "0.75",
+     "loi_giai": "$n = \\sin 70^{\\circ} / \\sin 45^{\\circ} = 1.33$; nghịch đảo bằng $1 / 1.33 = 0.75$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01120",
+   "nhom_id": "KNB00443",
+   "thu_tu": 6,
+   "dang": "TÍNH CHIẾT SUẤT TỪ TỔNG VÀ HIỆU CỦA GÓC TỚI VỚI GÓC KHÚC XẠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020104036",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng truyền từ không khí vào một môi trường trong suốt. Tổng của góc tới và góc khúc xạ bằng $90^\\circ$, hiệu của chúng bằng $30^\\circ$. Tính chiết suất của môi trường đó đối với không khí (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.73",
+     "loi_giai": "$$i = (90^\\circ + 30^\\circ) : 2 = 60^\\circ$$ $$r = 90^\\circ - 60^\\circ = 30^\\circ$$ Vậy $n = \\sin 60^\\circ / \\sin 30^\\circ = 1.73$."
+    },
+    {
+     "ma_cau": "K09020104039",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng truyền từ không khí vào một môi trường trong suốt. Tổng của góc tới và góc khúc xạ bằng $85^\\circ$, hiệu của chúng bằng $15^\\circ$. Tính chiết suất của môi trường đó đối với không khí (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.34",
+     "loi_giai": "$$i = (85^\\circ + 15^\\circ) : 2 = 50^\\circ$$ $$r = 35^\\circ$$ Vậy $n = \\sin 50^\\circ / \\sin 35^\\circ = 1.34$."
+    },
+    {
+     "ma_cau": "K09020104040",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng truyền từ không khí vào một môi trường trong suốt. Tổng của góc tới và góc khúc xạ bằng $95^\\circ$, hiệu của chúng bằng $25^\\circ$. Tính chiết suất của môi trường đó đối với không khí (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.51",
+     "loi_giai": "$$i = (95^\\circ + 25^\\circ) : 2 = 60^\\circ$$ $$r = 35^\\circ$$ Vậy $n = \\sin 60^\\circ / \\sin 35^\\circ = 1.51$."
+    },
+    {
+     "ma_cau": "K09020104037",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng truyền từ không khí vào một môi trường trong suốt. Tổng của góc tới và góc khúc xạ bằng $75^\\circ$, hiệu của chúng bằng $15^\\circ$. Tính chiết suất của môi trường đó đối với không khí (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.41",
+     "loi_giai": "$$i = (75^\\circ + 15^\\circ) : 2 = 45^\\circ$$ $$r = 30^\\circ$$ Vậy $n = \\sin 45^\\circ / \\sin 30^\\circ = 1.41$."
+    },
+    {
+     "ma_cau": "K09020104038",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng truyền từ không khí vào một môi trường trong suốt. Tổng của góc tới và góc khúc xạ bằng $105^\\circ$, hiệu của chúng bằng $15^\\circ$. Tính chiết suất của môi trường đó đối với không khí (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.22",
+     "loi_giai": "$$i = (105^\\circ + 15^\\circ) : 2 = 60^\\circ$$ $$r = 45^\\circ$$ Vậy $n = \\sin 60^\\circ / \\sin 45^\\circ = 1.22$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01121",
+   "nhom_id": "KNB00443",
+   "thu_tu": 7,
+   "dang": "TÍNH CHIẾT SUẤT TỪ GÓC GIỮA TIA TỚI VÀ TIA PHẢN XẠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020104042",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới mặt một môi trường trong suốt. Góc hợp bởi tia tới và tia phản xạ bằng $90^\\circ$, góc khúc xạ đo được $32^\\circ$. Tính chiết suất của môi trường đó đối với không khí (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.33",
+     "loi_giai": "$i = 90^\\circ : 2 = 45^\\circ$; $n = \\sin 45^\\circ / \\sin 32^\\circ = 1.33$."
+    },
+    {
+     "ma_cau": "K09020104045",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới mặt một môi trường trong suốt. Góc hợp bởi tia tới và tia phản xạ bằng $136^\\circ$, góc khúc xạ đo được $38^\\circ$. Tính chiết suất của môi trường đó đối với không khí (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.51",
+     "loi_giai": "$i = 136^\\circ : 2 = 68^\\circ$; $n = \\sin 68^\\circ / \\sin 38^\\circ = 1.51$."
+    },
+    {
+     "ma_cau": "K09020104044",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới mặt một môi trường trong suốt. Góc hợp bởi tia tới và tia phản xạ bằng $100^\\circ$, góc khúc xạ đo được $35^\\circ$. Tính chiết suất của môi trường đó đối với không khí (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.34",
+     "loi_giai": "$i = 100^\\circ : 2 = 50^\\circ$; $n = \\sin 50^\\circ / \\sin 35^\\circ = 1.34$."
+    },
+    {
+     "ma_cau": "K09020104043",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới mặt một môi trường trong suốt. Góc hợp bởi tia tới và tia phản xạ bằng $140^\\circ$, góc khúc xạ đo được $38^\\circ$. Tính chiết suất của môi trường đó đối với không khí (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.53",
+     "loi_giai": "$i = 140^\\circ : 2 = 70^\\circ$; $n = \\sin 70^\\circ / \\sin 38^\\circ = 1.53$."
+    },
+    {
+     "ma_cau": "K09020104041",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới mặt một môi trường trong suốt. Góc hợp bởi tia tới và tia phản xạ bằng $120^\\circ$, góc khúc xạ đo được $40^\\circ$. Tính chiết suất của môi trường đó đối với không khí (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.35",
+     "loi_giai": "Góc giữa tia tới và tia phản xạ bằng $2i$ nên $i = 120^\\circ : 2 = 60^\\circ$. Vậy $n = \\sin 60^\\circ / \\sin 40^\\circ = 1.35$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01122",
+   "nhom_id": "KNB00443",
+   "thu_tu": 8,
+   "dang": "TÍNH CHIẾT SUẤT TỪ GÓC GIỮA TIA PHẢN XẠ VÀ TIA KHÚC XẠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020104049",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $50^\\circ$. Góc hợp bởi tia phản xạ và tia khúc xạ bằng $99^\\circ$. Tính chiết suất của môi trường đó đối với không khí (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.49",
+     "loi_giai": "$r = 180^\\circ - 99^\\circ - 50^\\circ = 31^\\circ$; $n = \\sin 50^\\circ / \\sin 31^\\circ = 1.49$."
+    },
+    {
+     "ma_cau": "K09020104046",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $60^\\circ$. Góc hợp bởi tia phản xạ và tia khúc xạ bằng $85^\\circ$. Tính chiết suất của môi trường đó đối với không khí (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.51",
+     "loi_giai": "Góc giữa tia phản xạ và tia khúc xạ bằng $180^\\circ - (i + r)$, nên $85^\\circ = 180^\\circ - (60^\\circ + r)$, suy ra $r = 35^\\circ$. Vậy $n = \\sin 60^\\circ / \\sin 35^\\circ = 1.51$."
+    },
+    {
+     "ma_cau": "K09020104050",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $72^\\circ$. Góc hợp bởi tia phản xạ và tia khúc xạ bằng $68^\\circ$. Tính chiết suất của môi trường đó đối với không khí (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.48",
+     "loi_giai": "$r = 180^\\circ - 68^\\circ - 72^\\circ = 40^\\circ$; $n = \\sin 72^\\circ / \\sin 40^\\circ = 1.48$."
+    },
+    {
+     "ma_cau": "K09020104047",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $45^\\circ$. Góc hợp bởi tia phản xạ và tia khúc xạ bằng $103^\\circ$. Tính chiết suất của môi trường đó đối với không khí (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.33",
+     "loi_giai": "$r = 180^\\circ - 103^\\circ - 45^\\circ = 32^\\circ$; $n = \\sin 45^\\circ / \\sin 32^\\circ = 1.33$."
+    },
+    {
+     "ma_cau": "K09020104048",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $70^\\circ$. Góc hợp bởi tia phản xạ và tia khúc xạ bằng $72^\\circ$. Tính chiết suất của môi trường đó đối với không khí (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.53",
+     "loi_giai": "$r = 180^\\circ - 72^\\circ - 70^\\circ = 38^\\circ$; $n = \\sin 70^\\circ / \\sin 38^\\circ = 1.53$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01123",
+   "nhom_id": "KNB00444",
+   "thu_tu": 1,
+   "dang": "TÍNH THUẬN NGHỊCH KHI ĐẢO CHIỀU TRUYỀN ÁNH SÁNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020105005",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào rượu với góc tới $65^o$, đo được góc khúc xạ $42^o$. Nếu chiếu một tia sáng từ rượu ra không khí với góc tới $42^o$ thì góc khúc xạ bằng",
+     "lua_chon": [
+      "$65^o$.",
+      "$42^o$.",
+      "$25^o$.",
+      "$23^o$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Theo tính thuận nghịch, góc khúc xạ bằng $65^o$."
+    },
+    {
+     "ma_cau": "K09020105007",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào thuỷ tinh với góc tới $40^o$, đo được góc khúc xạ $25^o$. Nếu chiếu một tia sáng từ thuỷ tinh ra không khí với góc tới $25^o$ thì góc khúc xạ bằng",
+     "lua_chon": [
+      "$25^o$.",
+      "$40^o$.",
+      "$50^o$.",
+      "$15^o$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Theo tính thuận nghịch, góc khúc xạ bằng $40^o$."
+    },
+    {
+     "ma_cau": "K09020105003",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào thuỷ tinh với góc tới $50^\\circ$, đo được góc khúc xạ $31^\\circ$. Nếu chiếu một tia sáng từ thuỷ tinh ra không khí với góc tới $31^\\circ$ thì góc khúc xạ bằng",
+     "lua_chon": [
+      "$31^\\circ$.",
+      "$50^\\circ$.",
+      "$40^\\circ$.",
+      "$19^\\circ$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Theo tính thuận nghịch, góc khúc xạ bằng $50^\\circ$."
+    },
+    {
+     "ma_cau": "K09020105004",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước với góc tới $70^o$, đo được góc khúc xạ $45^o$. Nếu chiếu một tia sáng từ nước ra không khí với góc tới $45^o$ thì góc khúc xạ bằng",
+     "lua_chon": [
+      "$45^o$.",
+      "$20^o$.",
+      "$25^o$.",
+      "$70^o$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Theo tính thuận nghịch, góc khúc xạ bằng $70^o$."
+    },
+    {
+     "ma_cau": "K09020105008",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước với góc tới $75^o$, đo được góc khúc xạ $47^o$. Nếu chiếu một tia sáng từ nước ra không khí với góc tới $47^o$ thì góc khúc xạ bằng",
+     "lua_chon": [
+      "$47^o$.",
+      "$43^o$.",
+      "$15^o$.",
+      "$75^o$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Theo tính thuận nghịch, góc khúc xạ bằng $75^o$. Đây cũng là góc tới lớn nhất còn cho tia ló, vì góc khúc xạ trong nước không vượt quá khoảng $49^o$."
+    },
+    {
+     "ma_cau": "K09020105006",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào dầu với góc tới $55^o$, đo được góc khúc xạ $34^o$. Nếu chiếu một tia sáng từ dầu ra không khí với góc tới $34^o$ thì góc khúc xạ bằng",
+     "lua_chon": [
+      "$34^o$.",
+      "$35^o$.",
+      "$55^o$.",
+      "$21^o$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Theo tính thuận nghịch, góc khúc xạ bằng $55^o$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01124",
+   "nhom_id": "KNB00444",
+   "thu_tu": 2,
+   "dang": "TÍNH GÓC KHÚC XẠ BÊN TRONG BẢN MẶT SONG SONG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020105015",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí tới một bản nhựa trong suốt hai mặt song song có chiết suất 1,55 với góc tới $55^\\circ$. Góc khúc xạ bên trong bản xấp xỉ bằng",
+     "lua_chon": [
+      "$55^\\circ$",
+      "$34^\\circ$",
+      "$58^\\circ$",
+      "$32^\\circ$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $\\sin r = \\sin 55^\\circ / 1,55 = 0,819 / 1,55 = 0,529$, suy ra $r \\approx 32^\\circ$."
+    },
+    {
+     "ma_cau": "K09020105010",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí tới một bản thuỷ tinh hai mặt song song có chiết suất $1,6$ với góc tới $45^o$. Góc khúc xạ bên trong bản xấp xỉ bằng",
+     "lua_chon": [
+      "$26^o$.",
+      "$45^o$.",
+      "$28^o$.",
+      "$64^o$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $\\sin r = \\sin 45^o / 1,6 = 0,707 / 1,6 = 0,442$, suy ra $r \\approx 26^o$."
+    },
+    {
+     "ma_cau": "K09020105014",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí tới một bản nhựa trong suốt hai mặt song song có chiết suất 1,55 với góc tới 38°. Góc khúc xạ bên trong bản xấp xỉ bằng",
+     "lua_chon": [
+      "$23°$.",
+      "$38°$.",
+      "$25°$.",
+      "$67°$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $\\sin r = \\sin 38° / 1,55 = 0,616 / 1,55 = 0,397$, suy ra $r \\approx 23°$."
+    },
+    {
+     "ma_cau": "K09020105013",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí tới một bản thuỷ tinh hai mặt song song có chiết suất 1,6 với góc tới 70°. Góc khúc xạ bên trong bản xấp xỉ bằng",
+     "lua_chon": [
+      "$70°$.",
+      "$39°$.",
+      "$36°$.",
+      "$54°$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $\\sin r = \\sin 70° / 1,6 = 0,940 / 1,6 = 0,587$, suy ra $r \\approx 36°$."
+    },
+    {
+     "ma_cau": "K09020105016",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí tới một bản nhựa trong suốt hai mặt song song có chiết suất 1,55 với góc tới $68^\\circ$. Góc khúc xạ bên trong bản xấp xỉ bằng",
+     "lua_chon": [
+      "$68^\\circ$",
+      "$37^\\circ$",
+      "$39^\\circ$",
+      "$53^\\circ$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $\\sin r = \\sin 68^\\circ / 1,55 = 0,927 / 1,55 = 0,598$, suy ra $r \\approx 37^\\circ$."
+    },
+    {
+     "ma_cau": "K09020105012",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí tới một bản thuỷ tinh hai mặt song song có chiết suất 1,6 với góc tới 50°. Góc khúc xạ bên trong bản xấp xỉ bằng",
+     "lua_chon": [
+      "$50°$.",
+      "$29°$.",
+      "$31°$.",
+      "$61°$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $\\sin r = \\sin 50° / 1,6 = 0,766 / 1,6 = 0,479$, suy ra $r \\approx 29°$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01125",
+   "nhom_id": "KNB00444",
+   "thu_tu": 3,
+   "dang": "XÁC ĐỊNH TIA LÓ RA KHỎI BẢN MẶT SONG SONG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020105018",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí tới một bản thuỷ tinh hai mặt song song với góc tới $38^\\circ$. Góc ló ra khỏi bản bằng",
+     "lua_chon": [
+      "$24^\\circ$.",
+      "$52^\\circ$.",
+      "$38^\\circ$.",
+      "$0^\\circ$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Góc ló bằng góc tới, tức $38^\\circ$. Phương án $52^\\circ$ là góc hợp bởi tia ló và mặt bản."
+    },
+    {
+     "ma_cau": "K09020105022",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí tới một bản thuỷ tinh hai mặt song song, tia tới hợp với mặt bản một góc $34^\\circ$. Góc ló ra khỏi bản bằng",
+     "lua_chon": [
+      "$34^\\circ$.",
+      "$35^\\circ$.",
+      "$56^\\circ$.",
+      "$62^\\circ$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "ĐÁP ÁN CHI TIẾT: $i = 90^\\circ - 34^\\circ = 56^\\circ$; góc ló bằng $56^\\circ$."
+    },
+    {
+     "ma_cau": "K09020105019",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí tới một bản thuỷ tinh hai mặt song song với góc tới $62^\\circ$. Góc ló ra khỏi bản bằng",
+     "lua_chon": [
+      "$36^\\circ$.",
+      "$62^\\circ$.",
+      "$28^\\circ$.",
+      "$124^\\circ$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Góc ló bằng góc tới, tức $62^\\circ$."
+    },
+    {
+     "ma_cau": "K09020105020",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí tới một bản nhựa trong suốt hai mặt song song với góc tới $25^\\circ$. Góc ló ra khỏi bản bằng",
+     "lua_chon": [
+      "$16^\\circ$.",
+      "$65^\\circ$.",
+      "$50^\\circ$.",
+      "$25^\\circ$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Góc ló bằng góc tới, tức $25^\\circ$, dù bản làm bằng nhựa hay thuỷ tinh."
+    },
+    {
+     "ma_cau": "K09020105021",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí tới một bản thuỷ tinh hai mặt song song, tia tới hợp với mặt bản một góc $26^\\circ$. Góc ló ra khỏi bản bằng",
+     "lua_chon": [
+      "$64^\\circ$.",
+      "$26^\\circ$.",
+      "$32^\\circ$.",
+      "$58^\\circ$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Góc tới $i = 90^\\circ - 26^\\circ = 64^\\circ$. Góc ló bằng góc tới nên bằng $64^\\circ$. Phương án $26^\\circ$ là kết quả của việc lấy luôn góc hợp với mặt bản làm góc ló."
+    },
+    {
+     "ma_cau": "K09020105023",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí tới một bản thuỷ tinh hai mặt song song với góc tới $36^\\circ$. Góc hợp bởi tia ló và mặt dưới của bản bằng",
+     "lua_chon": [
+      "$36^\\circ$.",
+      "$54^\\circ$.",
+      "$22^\\circ$.",
+      "$68^\\circ$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Góc ló bằng góc tới, tức $36^\\circ$. Góc hợp bởi tia ló và mặt bản phụ với góc ló, bằng $90^\\circ - 36^\\circ = 54^\\circ$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01126",
+   "nhom_id": "KNB00444",
+   "thu_tu": 4,
+   "dang": "TIA SÁNG QUA NHIỀU LỚP MÔI TRƯỜNG CÓ MẶT PHÂN CÁCH SONG SONG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020105030",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng đi từ không khí qua nhiều lớp môi trường trong suốt có các mặt phẳng phân cách song song với nhau. Nhận định đúng về góc của tia sáng trong lớp cuối cùng là",
+     "lua_chon": [
+      "chỉ phụ thuộc góc tới ban đầu và chiết suất của lớp cuối cùng.",
+      "phụ thuộc chiết suất của tất cả các lớp mà tia sáng đi qua.",
+      "phụ thuộc bề dày của từng lớp.",
+      "luôn bằng góc tới ban đầu."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tại mỗi mặt phân cách, tích của chiết suất với sin góc được bảo toàn, nên các lớp trung gian triệt tiêu lẫn nhau. Góc trong lớp cuối chỉ còn phụ thuộc góc tới ban đầu và chiết suất lớp cuối. Nó chỉ bằng góc tới ban đầu trong trường hợp riêng là lớp cuối cùng là không khí."
+    },
+    {
+     "ma_cau": "K09020105027",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng đi từ không khí, xuyên qua một lớp nước có hai mặt song song, rồi ra lại không khí ở phía dưới. Góc tới ở mặt trên của lớp nước là $50^{\\circ}$. Góc ló ra khỏi lớp nước ở phía dưới bằng",
+     "lua_chon": [
+      "$31^{\\circ}$",
+      "$35^{\\circ}$",
+      "$50^{\\circ}$",
+      "$0^{\\circ}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Lớp nước đóng vai trò một bản mặt song song, môi trường ở hai phía đều là không khí nên góc ló bằng góc tới, tức $50^{\\circ}$. Phương án $35^{\\circ}$ là góc trong lớp nước."
+    },
+    {
+     "ma_cau": "K09020105029",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng đi từ không khí, qua một lớp nước, rồi vào một khối nhựa trong suốt có chiết suất $1,55$. Các mặt phân cách đều song song với nhau. Góc tới ở mặt nước là $36^{\\circ}$. Góc khúc xạ trong khối nhựa xấp xỉ bằng",
+     "lua_chon": [
+      "$36^{\\circ}$",
+      "$22^{\\circ}$",
+      "$26^{\\circ}$",
+      "$28^{\\circ}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\sin r = \\sin 36^{\\circ} / 1,55 = 0,588 / 1,55 = 0,379$, suy ra $r \\approx 22^{\\circ}$. Phương án $26^{\\circ}$ là góc trong lớp nước."
+    },
+    {
+     "ma_cau": "K09020105025",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng đi từ không khí, qua một lớp nước, rồi vào một khối kim cương có chiết suất 2,42. Các mặt phân cách đều song song với nhau. Góc tới ở mặt nước là 62°. Góc khúc xạ trong khối kim cương xấp xỉ bằng",
+     "lua_chon": [
+      "42°.",
+      "21°.",
+      "62°.",
+      "26°."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\sin r = \\sin 62^{\\circ} / 2,42 = 0,883 / 2,42 = 0,365$, suy ra $r \\approx 21^{\\circ}$. Phương án 42° là góc trong lớp nước, không phải góc trong kim cương."
+    },
+    {
+     "ma_cau": "K09020105028",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng đi từ không khí, qua một lớp thuỷ tinh, rồi vào một lớp rượu có chiết suất $1,36$. Các mặt phân cách đều song song với nhau. Góc tới ở mặt thuỷ tinh là $58^{\\circ}$. Góc khúc xạ trong lớp rượu xấp xỉ bằng",
+     "lua_chon": [
+      "$58^{\\circ}$",
+      "$35^{\\circ}$",
+      "$44^{\\circ}$",
+      "$39^{\\circ}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\sin r = \\sin 58^{\\circ} / 1,36 = 0,848 / 1,36 = 0,624$, suy ra $r \\approx 39^{\\circ}$. Phương án $35^{\\circ}$ là góc trong lớp thuỷ tinh."
+    },
+    {
+     "ma_cau": "K09020105026",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng đi từ không khí, qua một lớp nước, rồi vào một lớp dầu có chiết suất 1,47. Các mặt phân cách đều song song với nhau. Góc tới ở mặt nước là 70°. Góc khúc xạ trong lớp dầu xấp xỉ bằng",
+     "lua_chon": [
+      "40°.",
+      "45°.",
+      "70°.",
+      "48°."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\sin r = \\sin 70^{\\circ} / 1,47 = 0,940 / 1,47 = 0,639$, suy ra $r \\approx 40^{\\circ}$. Phương án 45° là góc trong lớp nước."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01127",
+   "nhom_id": "KNB00444",
+   "thu_tu": 5,
+   "dang": "XÁC ĐỊNH GÓC KHI ĐẢO CHIỀU TRUYỀN ÁNH SÁNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020105032",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào thuỷ tinh với góc tới $68^{\\circ}$, đo được góc khúc xạ $38^{\\circ}$. Sau đó chiếu một tia sáng từ thuỷ tinh ra không khí với góc tới $38^{\\circ}$. Tính góc khúc xạ của tia sáng lúc này (đơn vị độ).",
+     "dap_an": "68",
+     "loi_giai": "Theo tính thuận nghịch, góc khúc xạ bằng $68^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020105033",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào dầu với góc tới $44^{\\circ}$, đo được góc khúc xạ $28^{\\circ}$. Sau đó chiếu một tia sáng từ dầu ra không khí với góc tới $28^{\\circ}$. Tính góc khúc xạ của tia sáng lúc này (đơn vị độ).",
+     "dap_an": "44",
+     "loi_giai": "Theo tính thuận nghịch, góc khúc xạ bằng $44^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020105035",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào kim cương với góc tới $58^{\\circ}$, đo được góc khúc xạ $21^{\\circ}$. Sau đó chiếu một tia sáng từ kim cương ra không khí với góc tới $21^{\\circ}$. Tính góc khúc xạ của tia sáng lúc này (đơn vị độ).",
+     "dap_an": "58",
+     "loi_giai": "Theo tính thuận nghịch, góc khúc xạ bằng $58^{\\circ}$. Chỉ một góc tới nhỏ trong kim cương đã cho góc ló rất lớn ngoài không khí."
+    },
+    {
+     "ma_cau": "K09020105031",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào nước với góc tới $52^{\\circ}$, đo được góc khúc xạ $36^{\\circ}$. Sau đó chiếu một tia sáng từ nước ra không khí với góc tới $36^{\\circ}$. Tính góc khúc xạ của tia sáng lúc này (đơn vị độ).",
+     "dap_an": "52",
+     "loi_giai": "Đường truyền của ánh sáng có tính thuận nghịch nên khi đảo chiều, góc tới và góc khúc xạ đổi vai trò cho nhau. Góc khúc xạ bằng $52^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020105034",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào rượu với góc tới $72^{\\circ}$, đo được góc khúc xạ $44^{\\circ}$. Sau đó chiếu một tia sáng từ rượu ra không khí với góc tới $44^{\\circ}$. Tính góc khúc xạ của tia sáng lúc này (đơn vị độ).",
+     "dap_an": "72",
+     "loi_giai": "Theo tính thuận nghịch, góc khúc xạ bằng $72^{\\circ}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01128",
+   "nhom_id": "KNB00444",
+   "thu_tu": 6,
+   "dang": "TÍNH GÓC LỆCH GIỮA TIA TRONG BẢN VÀ TIA LÓ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020105036",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới một bản thuỷ tinh hai mặt song song có chiết suất $1,6$ với góc tới $66^\\circ$. Tính góc lệch giữa tia truyền bên trong bản và tia ló ra khỏi bản (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "31",
+     "loi_giai": "$$\\sin r = \\dfrac{\\sin 66^\\circ}{1,6} = \\dfrac{0,914}{1,6} = 0,571$$ suy ra $r \\approx 35^\\circ$.\nTia ló song song với tia tới nên góc lệch tia trong bản và tia ló bằng $66^\\circ - 35^\\circ = 31^\\circ$."
+    },
+    {
+     "ma_cau": "K09020105038",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới một bản nhựa trong suốt hai mặt song song có chiết suất $1,55$ với góc tới $58^\\circ$. Tính góc lệch giữa tia truyền bên trong bản và tia ló ra khỏi bản (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "25",
+     "loi_giai": "$$\\sin r = \\dfrac{\\sin 58^\\circ}{1,55} = \\dfrac{0,848}{1,55} = 0,547$$ suy ra $r \\approx 33^\\circ$.\nGóc lệch bằng $58^\\circ - 33^\\circ = 25^\\circ$."
+    },
+    {
+     "ma_cau": "K09020105040",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới một bản nhựa trong suốt hai mặt song song có chiết suất $1,55$ với góc tới $74^\\circ$. Tính góc lệch giữa tia truyền bên trong bản và tia ló ra khỏi bản (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "36",
+     "loi_giai": "$$\\sin r = \\dfrac{\\sin 74^\\circ}{1,55} = \\dfrac{0,961}{1,55} = 0,620$$ suy ra $r \\approx 38^\\circ$.\nGóc lệch bằng $74^\\circ - 38^\\circ = 36^\\circ$."
+    },
+    {
+     "ma_cau": "K09020105039",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới một bản thuỷ tinh hai mặt song song có chiết suất $1,6$ với góc tới $42^\\circ$. Tính góc lệch giữa tia truyền bên trong bản và tia ló ra khỏi bản (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "17",
+     "loi_giai": "$$\\sin r = \\dfrac{\\sin 42^\\circ}{1,6} = \\dfrac{0,669}{1,6} = 0,418$$ suy ra $r \\approx 25^\\circ$.\nGóc lệch bằng $42^\\circ - 25^\\circ = 17^\\circ$."
+    },
+    {
+     "ma_cau": "K09020105037",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới một bản thuỷ tinh hai mặt song song có chiết suất $1,6$ với góc tới $52^\\circ$. Tính góc lệch giữa tia truyền bên trong bản và tia ló ra khỏi bản (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "22",
+     "loi_giai": "$$\\sin r = \\dfrac{\\sin 52^\\circ}{1,6} = \\dfrac{0,788}{1,6} = 0,492$$ suy ra $r \\approx 30^\\circ$.\nGóc lệch bằng $52^\\circ - 30^\\circ = 22^\\circ$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01129",
+   "nhom_id": "KNB00444",
+   "thu_tu": 7,
+   "dang": "TÍNH GÓC TRONG LỚP MÔI TRƯỜNG Ở GIỮA",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020105042",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng đi từ không khí, qua một lớp nước có chiết suất 1,33, rồi vào một khối nhựa trong suốt. Các mặt phân cách đều song song. Góc tới ở mặt nước là $42^{\\circ}$. Tính góc của tia sáng trong lớp nước (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "30",
+     "loi_giai": "$\\sin r = \\sin 42^{\\circ} / 1,33 = 0,669 / 1,33 = 0,503$, suy ra $r \\approx 30^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020105043",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng đi từ không khí, qua một lớp nước có chiết suất 1,33, rồi vào một khối kim cương. Các mặt phân cách đều song song. Góc tới ở mặt nước là $56^{\\circ}$. Tính góc của tia sáng trong lớp nước (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "39",
+     "loi_giai": "$\\sin r = \\sin 56^{\\circ} / 1,33 = 0,829 / 1,33 = 0,623$, suy ra $r \\approx 39^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020105044",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng đi từ không khí, qua một lớp nước có chiết suất 1,33, rồi vào một lớp dầu. Các mặt phân cách đều song song. Góc tới ở mặt nước là $34^{\\circ}$. Tính góc của tia sáng trong lớp nước (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "25",
+     "loi_giai": "$\\sin r = \\sin 34^{\\circ} / 1,33 = 0,559 / 1,33 = 0,420$, suy ra $r \\approx 25^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020105045",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng đi từ không khí, qua một lớp nước có chiết suất 1,33, rồi vào một khối thuỷ tinh. Các mặt phân cách đều song song. Góc tới ở mặt nước là $74^{\\circ}$. Tính góc của tia sáng trong lớp nước (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "46",
+     "loi_giai": "$\\sin r = \\sin 74^{\\circ} / 1,33 = 0,961 / 1,33 = 0,723$, suy ra $r \\approx 46^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020105041",
+     "loai": "tra_loi_ngan",
+     "de": "Một tia sáng đi từ không khí, qua một lớp nước có chiết suất 1,33, rồi vào một khối thuỷ tinh. Các mặt phân cách đều song song. Góc tới ở mặt nước là $58^{\\circ}$. Tính góc của tia sáng trong lớp nước (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "40",
+     "loi_giai": "$\\sin r = \\sin 58^{\\circ} / 1,33 = 0,848 / 1,33 = 0,638$, suy ra $r \\approx 40^{\\circ}$. Chiết suất của khối thuỷ tinh phía dưới không ảnh hưởng đến góc trong lớp nước."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01130",
+   "nhom_id": "KNB00444",
+   "thu_tu": 8,
+   "dang": "TÍNH GÓC HỢP BỞI TIA LÓ VÀ MẶT DƯỚI CỦA BẢN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020105048",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới một bản nhựa trong suốt hai mặt song song với góc tới $69^\\circ$. Tính góc hợp bởi tia ló và mặt dưới của bản (đơn vị độ).",
+     "dap_an": "21",
+     "loi_giai": "Góc ló bằng $69^\\circ$; góc cần tìm bằng $90^\\circ - 69^\\circ = 21^\\circ$."
+    },
+    {
+     "ma_cau": "K09020105050",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới một bản nhựa trong suốt hai mặt song song với góc tới $43^\\circ$. Tính góc hợp bởi tia ló và mặt dưới của bản (đơn vị độ).",
+     "dap_an": "47",
+     "loi_giai": "Góc ló bằng $43^\\circ$; góc cần tìm bằng $90^\\circ - 43^\\circ = 47^\\circ$."
+    },
+    {
+     "ma_cau": "K09020105046",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới một bản thuỷ tinh hai mặt song song với góc tới $33^\\circ$. Tính góc hợp bởi tia ló và mặt dưới của bản (đơn vị độ).",
+     "dap_an": "57",
+     "loi_giai": "Tia ló song song với tia tới nên góc ló bằng góc tới, tức $33^\\circ$. Góc hợp bởi tia ló và mặt bản bằng $90^\\circ - 33^\\circ = 57^\\circ$."
+    },
+    {
+     "ma_cau": "K09020105049",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới một bản thuỷ tinh hai mặt song song với góc tới $39^\\circ$. Tính góc hợp bởi tia ló và mặt dưới của bản (đơn vị độ).",
+     "dap_an": "51",
+     "loi_giai": "Góc ló bằng $39^\\circ$; góc cần tìm bằng $90^\\circ - 39^\\circ = 51^\\circ$."
+    },
+    {
+     "ma_cau": "K09020105047",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới một bản thuỷ tinh hai mặt song song với góc tới $29^\\circ$. Tính góc hợp bởi tia ló và mặt dưới của bản (đơn vị độ).",
+     "dap_an": "61",
+     "loi_giai": "Góc ló bằng $29^\\circ$; góc cần tìm bằng $90^\\circ - 29^\\circ = 61^\\circ$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01139",
+   "nhom_id": "KNB00446",
+   "thu_tu": 1,
+   "dang": "NHẬN BIẾT GÓC KHÚC XẠ KHI BIẾT CHIỀU TRUYỀN ÁNH SÁNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020107004",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ khối thuỷ tinh ra không khí. Tại điểm tới đo được hai góc là $28^{\\circ}$ và $47^{\\circ}$. Góc khúc xạ bằng",
+     "lua_chon": [
+      "$28^{\\circ}$.",
+      "$19^{\\circ}$.",
+      "$47^{\\circ}$.",
+      "$75^{\\circ}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ánh sáng đi ra môi trường chiết quang kém nên $r > i$, góc khúc xạ là $47^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020107001",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước. Tại điểm tới đo được hai góc là $55^\\circ$ và $40^\\circ$. Góc khúc xạ bằng",
+     "lua_chon": [
+      "$55^\\circ$.",
+      "~$40^\\circ$.",
+      "~$15^\\circ$.",
+      "~$95^\\circ$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nước chiết quang hơn không khí nên góc khúc xạ nhỏ hơn góc tới. Trong hai số đo,$40^\\circ$ là góc khúc xạ, $55^\\circ$ là góc tới."
+    },
+    {
+     "ma_cau": "K09020107002",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ nước ra không khí. Tại điểm tới đo được hai góc là $32^\\circ$ và $45^\\circ$. Góc khúc xạ bằng",
+     "lua_chon": [
+      "$32^\\circ$.",
+      "~$13^\\circ$.",
+      "~$77^\\circ$.",
+      "~$45^\\circ$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ánh sáng đi từ môi trường chiết quang hơn ra môi trường chiết quang kém nên góc khúc xạ lớn hơn góc tới. Vậy góc khúc xạ là $45^\\circ$."
+    },
+    {
+     "ma_cau": "K09020107008",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ rượu ra không khí. Tại điểm tới đo được hai góc là $30^\\circ$ và $42^\\circ$. Góc khúc xạ bằng",
+     "lua_chon": [
+      "$30^\\circ$.",
+      "$12^\\circ$.",
+      "$42^\\circ$.",
+      "$72^\\circ$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ánh sáng đi ra môi trường chiết quang kém nên $r > i$, góc khúc xạ là $42^\\circ$."
+    },
+    {
+     "ma_cau": "K09020107005",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào dầu. Tại điểm tới đo được hai góc là $50^{\\circ}$ và $32^{\\circ}$. Góc khúc xạ bằng",
+     "lua_chon": [
+      "$50^{\\circ}$.",
+      "$32^{\\circ}$.",
+      "$18^{\\circ}$.",
+      "$82^{\\circ}$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Dầu chiết quang hơn không khí nên $r < i$, góc khúc xạ là $32^{\\circ}$. Phương án $18^{\\circ}$ là hiệu hai số đo, không phải một góc trong bài."
+    },
+    {
+     "ma_cau": "K09020107003",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một khối thuỷ tinh. Tại điểm tới đo được hai góc là $60^\\circ$ và $35^\\circ$. Góc khúc xạ bằng",
+     "lua_chon": [
+      "$35^\\circ$.",
+      "~$60^\\circ$.",
+      "~$25^\\circ$.",
+      "~$95^\\circ$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thuỷ tinh chiết quang hơn không khí nên $r < i$, góc khúc xạ là $35^\\circ$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01140",
+   "nhom_id": "KNB00446",
+   "thu_tu": 2,
+   "dang": "XÁC ĐỊNH MÔI TRƯỜNG CHIẾT QUANG HƠN TỪ GÓC TỚI VÀ GÓC KHÚC XẠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020107016",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng truyền từ môi trường (1) sang môi trường (2) với góc tới $68^\\circ$ và góc khúc xạ $40^\\circ$. Kết luận đúng là",
+     "lua_chon": [
+      "chiết suất của (1) lớn hơn chiết suất của (2) và tốc độ ánh sáng trong (1) lớn hơn trong (2).",
+      "chiết suất của (1) lớn hơn chiết suất của (2) và tốc độ ánh sáng trong (1) nhỏ hơn trong (2).",
+      "chiết suất của (2) lớn hơn chiết suất của (1) và tốc độ ánh sáng trong (2) nhỏ hơn trong (1).",
+      "chiết suất của (2) lớn hơn chiết suất của (1) và tốc độ ánh sáng trong (2) lớn hơn trong (1)."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$r < i$ nên (2) chiết quang hơn (1), tức chiết suất của (2) lớn hơn. Môi trường có chiết suất lớn hơn thì tốc độ ánh sáng trong đó nhỏ hơn."
+    },
+    {
+     "ma_cau": "K09020107011",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng truyền từ môi trường (1) sang môi trường (2) với góc tới $55^\\circ$ và góc khúc xạ $35^\\circ$. So sánh tốc độ truyền ánh sáng trong hai môi trường, kết luận đúng là",
+     "lua_chon": [
+      "tốc độ ánh sáng trong (2) nhỏ hơn trong (1).",
+      "tốc độ ánh sáng trong (2) lớn hơn trong (1).",
+      "tốc độ ánh sáng trong hai môi trường bằng nhau.",
+      "tốc độ ánh sáng không phụ thuộc môi trường."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$r < i$ nên (2) chiết quang hơn (1). Chiết suất lớn hơn thì tốc độ ánh sáng nhỏ hơn, vậy tốc độ trong (2) nhỏ hơn trong (1)."
+    },
+    {
+     "ma_cau": "K09020107012",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng truyền từ môi trường (1) sang môi trường (2) với góc tới $25^\\circ$ và góc khúc xạ $40^\\circ$. So sánh tốc độ truyền ánh sáng trong hai môi trường, kết luận đúng là",
+     "lua_chon": [
+      "Tốc độ ánh sáng trong (1) lớn hơn trong (2).",
+      "Tốc độ ánh sáng trong hai môi trường bằng nhau.",
+      "Tốc độ ánh sáng trong (1) nhỏ hơn trong (2).",
+      "Tốc độ ánh sáng trong (1) bằng tốc độ ánh sáng trong chân không."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Góc khúc xạ $r > i$ nên (1) chiết quang hơn (2). Môi trường chiết quang hơn có tốc độ ánh sáng nhỏ hơn, vậy tốc độ trong (1) nhỏ hơn trong (2)."
+    },
+    {
+     "ma_cau": "K09020107009",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng truyền từ môi trường (1) sang môi trường (2) với góc tới $50^\\circ$ và góc khúc xạ $30^\\circ$. Kết luận đúng là",
+     "lua_chon": [
+      "môi trường (1) chiết quang hơn môi trường (2).",
+      "môi trường (2) chiết quang hơn môi trường (1).",
+      "hai môi trường có chiết suất bằng nhau.",
+      "không so sánh được vì chưa biết chiết suất từng môi trường."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Góc khúc xạ nhỏ hơn góc tới, tia khúc xạ lệch lại gần pháp tuyến, nghĩa là ánh sáng đi vào môi trường chiết quang hơn. Vậy (2) chiết quang hơn (1)."
+    },
+    {
+     "ma_cau": "K09020107010",
+     "loai": "trac_nghiem",
+     "de": "Một tia sáng truyền từ môi trường (1) sang môi trường (2) với góc tới $30^\\circ$ và góc khúc xạ $48^\\circ$. Kết luận đúng là",
+     "lua_chon": [
+      "môi trường (2) chiết quang hơn môi trường (1).",
+      "hai môi trường có chiết suất bằng nhau.",
+      "không so sánh được vì chưa biết chiết suất từng môi trường.",
+      "môi trường (1) chiết quang hơn môi trường (2)."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Góc khúc xạ lớn hơn góc tới, tia khúc xạ lệch xa pháp tuyến, nghĩa là ánh sáng đi sang môi trường chiết quang kém hơn. Vậy (1) chiết quang hơn (2)."
+    },
+    {
+     "ma_cau": "K09020107014",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ một chất lỏng trong suốt Y ra không khí với góc tới $35^\\circ$, đo được góc khúc xạ $52^\\circ$. Kết luận đúng về chiết suất của Y là",
+     "lua_chon": [
+      "Chiết suất của Y nhỏ hơn 1.",
+      "Chiết suất của Y bằng 1.",
+      "Chưa đủ dữ kiện để kết luận.",
+      "Chiết suất của Y lớn hơn 1."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ánh sáng đi từ Y ra không khí mà góc khúc xạ lớn hơn góc tới, chứng tỏ Y chiết quang hơn không khí, nên chiết suất của Y lớn hơn 1."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01141",
+   "nhom_id": "KNB00446",
+   "thu_tu": 3,
+   "dang": "DỰ ĐOÁN GIÁ TRỊ GÓC KHÚC XẠ KHI BIẾT CHIẾT SUẤT HAI MÔI TRƯỜNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020107020",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí (chiết suất 1,00) vào rượu (chiết suất 1,36) với góc tới $70^\\circ$. Giá trị nào sau đây có thể là góc khúc xạ?",
+     "lua_chon": [
+      "70\\circ.",
+      "46\\circ.",
+      "85\\circ.",
+      "90\\circ."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Rượu chiết quang hơn không khí nên góc khúc xạ nhỏ hơn $70^\\circ$. Chỉ có $46^\\circ$ thoả mãn."
+    },
+    {
+     "ma_cau": "K09020107018",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ thủy tinh (chiết suất 1,50) ra không khí (chiết suất 1,00) với góc tới $25^\\circ$. Giá trị nào sau đây có thể là góc khúc xạ?",
+     "lua_chon": [
+      "40\\circ.",
+      "25\\circ.",
+      "16\\circ.",
+      "10\\circ."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ánh sáng đi từ thủy tinh ra không khí nên góc khúc xạ lớn hơn góc tới $25^\\circ$. Chỉ có $40^\\circ$ thoả mãn."
+    },
+    {
+     "ma_cau": "K09020107017",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí (chiết suất 1,00) vào nước (chiết suất 1,33) với góc tới $45^\\circ$. Giá trị nào sau đây có thể là góc khúc xạ?",
+     "lua_chon": [
+      "$45^\\circ$.",
+      "$58^\\circ$.",
+      "$70^\\circ$.",
+      "$32^\\circ$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nước chiết quang hơn không khí nên góc khúc xạ phải nhỏ hơn góc tới $45^\\circ$. Chỉ có $32^\\circ$ thoả mãn."
+    },
+    {
+     "ma_cau": "K09020107019",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí (chiết suất 1,00) vào kim cương (chiết suất 2,42) với góc tới $50^\\circ$. Giá trị nào sau đây có thể là góc khúc xạ?",
+     "lua_chon": [
+      "50\\circ.",
+      "65\\circ.",
+      "80\\circ.",
+      "19\\circ."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Kim cương có chiết suất rất lớn nên tia sáng bị lệch mạnh về phía pháp tuyến, góc khúc xạ nhỏ hơn nhiều so với $50^\\circ$. Chỉ có $19^\\circ$ thoả mãn."
+    },
+    {
+     "ma_cau": "K09020107021",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ dầu (chiết suất 1,47) ra không khí (chiết suất 1,00) với góc tới $20^\\circ$. Giá trị nào sau đây có thể là góc khúc xạ?",
+     "lua_chon": [
+      "$20^\\circ$.",
+      "$14^\\circ$.",
+      "$30^\\circ$.",
+      "$10^\\circ$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ánh sáng đi từ dầu ra không khí nên góc khúc xạ lớn hơn góc tới $20^\\circ$. Chỉ có $30^\\circ$ thoả mãn."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01142",
+   "nhom_id": "KNB00446",
+   "thu_tu": 4,
+   "dang": "SO SÁNH ĐỘ LỆCH CỦA TIA SÁNG TRONG CÁC MÔI TRƯỜNG KHÁC NHAU",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020107023",
+     "loai": "trac_nghiem",
+     "de": "Chiếu hai tia sáng cùng góc tới $45^\\circ$ từ không khí, một tia đi vào nước (chiết suất 1,33), một tia đi vào kim cương (chiết suất 2,42). Tia nào bị lệch nhiều hơn so với phương ban đầu?",
+     "lua_chon": [
+      "Tia đi vào nước, vì nước là chất lỏng.",
+      "Hai tia lệch như nhau vì cùng góc tới.",
+      "Không xác định được nếu chưa đo góc khúc xạ.",
+      "Tia đi vào kim cương, vì kim cương có chiết suất lớn hơn."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Chiết suất càng lớn thì góc khúc xạ càng nhỏ, độ lệch so với phương tia tới càng lớn. Kim cương có chiết suất 2,42 nên tia đi vào kim cương lệch nhiều hơn."
+    },
+    {
+     "ma_cau": "K09020107028",
+     "loai": "trac_nghiem",
+     "de": "Chiếu hai tia sáng từ không khí vào cùng một khối thuỷ tinh, tia thứ nhất có góc tới $30^\\circ$, tia thứ hai có góc tới $60^\\circ$. So sánh độ lệch của hai tia so với phương ban đầu, kết luận đúng là",
+     "lua_chon": [
+      "tia có góc tới $30^\\circ$ lệch nhiều hơn.",
+      "tia có góc tới $60^\\circ$ lệch nhiều hơn.",
+      "hai tia lệch như nhau vì cùng một khối thuỷ tinh.",
+      "tia có góc tới $60^\\circ$ không bị lệch."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Trong cùng một môi trường, góc tới càng lớn thì tia sáng bị lệch càng nhiều. Khi góc tới bằng $0^\\circ$ thì tia sáng truyền thẳng, không lệch."
+    },
+    {
+     "ma_cau": "K09020107027",
+     "loai": "trac_nghiem",
+     "de": "Chiếu các tia sáng cùng góc tới $35^\\circ$ từ không khí vào bốn môi trường có chiết suất 1,33; 1,36; 1,47 và 2,42. Tia sáng bị lệch nhiều nhất so với phương ban đầu khi đi vào môi trường có chiết suất",
+     "lua_chon": [
+      "1,33.",
+      "1,36.",
+      "1,47.",
+      "2,42."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Với cùng góc tới, chiết suất càng lớn thì góc khúc xạ càng nhỏ và độ lệch càng lớn.\nMôi trường có chiết suất 2,42 làm tia sáng lệch nhiều nhất."
+    },
+    {
+     "ma_cau": "K09020107024",
+     "loai": "trac_nghiem",
+     "de": "Chiếu hai tia sáng cùng góc tới $50^\\circ$ từ không khí, một tia đi vào rượu (chiết suất 1,36), một tia đi vào dầu (chiết suất 1,47). So sánh hai góc khúc xạ, kết luận đúng là",
+     "lua_chon": [
+      "góc khúc xạ trong dầu lớn hơn trong rượu.",
+      "góc khúc xạ trong dầu nhỏ hơn trong rượu.",
+      "hai góc khúc xạ bằng nhau.",
+      "góc khúc xạ trong dầu bằng $50^\\circ$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Dầu có chiết suất 1,47 lớn hơn rượu 1,36 nên với cùng góc tới, góc khúc xạ trong dầu nhỏ hơn."
+    },
+    {
+     "ma_cau": "K09020107026",
+     "loai": "trac_nghiem",
+     "de": "Chiếu ba tia sáng cùng góc tới $55^\\circ$ từ không khí lần lượt vào nước (chiết suất 1,33), thuỷ tinh (chiết suất 1,50) và kim cương (chiết suất 2,42). Thứ tự các góc khúc xạ từ lớn đến nhỏ là",
+     "lua_chon": [
+      "nước, thuỷ tinh, kim cương.",
+      "kim cương, thuỷ tinh, nước.",
+      "thuỷ tinh, nước, kim cương.",
+      "ba góc khúc xạ bằng nhau."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Chiết suất tăng dần theo thứ tự nước, thuỷ tinh, kim cương nên góc khúc xạ giảm dần theo đúng thứ tự đó."
+    },
+    {
+     "ma_cau": "K09020107022",
+     "loai": "trac_nghiem",
+     "de": "Chiếu hai tia sáng cùng góc tới $60^\\circ$ từ không khí, một tia đi vào nước (chiết suất 1,33), một tia đi vào thủy tinh (chiết suất 1,50). So sánh hai góc khúc xạ, kết luận đúng là",
+     "lua_chon": [
+      "góc khúc xạ trong thủy tinh nhỏ hơn trong nước.",
+      "góc khúc xạ trong thủy tinh lớn hơn trong nước.",
+      "hai góc khúc xạ bằng nhau vì góc tới bằng nhau.",
+      "không so sánh được vì hai môi trường khác nhau."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Với cùng góc tới, môi trường có chiết suất lớn hơn cho góc khúc xạ nhỏ hơn. Thủy tinh có chiết suất 1,50 lớn hơn nước 1,33 nên góc khúc xạ trong thủy tinh nhỏ hơn."
+    }
+   ]
+  }
+ ]
+}

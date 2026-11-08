@@ -1,0 +1,7 @@
+[
+{"ma_cau":"T11200000010345","dang_bai_id":"NDB02585","chac":"cao","ly_do":"Cho bảng ghép nhóm, tính Q1, Q3 bằng nội suy rồi lấy hiệu — đúng dạng khoảng tứ phân vị từ bảng."},
+{"ma_cau":"T11200000010359","dang_bai_id":"NDB02584","chac":"cao","ly_do":"Tính trung vị (Q2) của mẫu ghép nhóm bằng công thức nội suy — đúng dạng tính tứ phân vị."},
+{"ma_cau":"T11200000010452","dang_bai_id":"NDB02585","chac":"cao","ly_do":"Cho bảng ghép nhóm, tính Q1, Q3 rồi lấy hiệu làm tròn — đúng dạng khoảng tứ phân vị từ bảng."},
+{"ma_cau":"T11200000010545","dang_bai_id":"NDB02584","chac":"cao","ly_do":"Tính trung vị của mẫu ghép nhóm bằng nội suy — đúng dạng tính Q1, Q2, Q3."},
+{"ma_cau":"T11200000010546","dang_bai_id":"NDB02584","chac":"cao","ly_do":"Tính trung vị của mẫu ghép nhóm bằng nội suy — đúng dạng tính Q1, Q2, Q3."}
+]

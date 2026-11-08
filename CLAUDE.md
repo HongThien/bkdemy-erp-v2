@@ -334,7 +334,8 @@
 - **`kho-rules/README.md` — ĐỌC BẮT BUỘC trước khi giải / nhập bài cho BẤT KỲ khối nào** (CEO chốt 08/10, §0 — khối nào cũng làm thế này):
   **(1)** Claude đọc sách → giải thử → CEO duyệt → rút luật giải ghi vào `kho-rules/dai/k<khối>.md` · **(2)** luật đủ tốt (một lô không bị sửa = v1)
   ⇒ giải TOÀN BỘ tài liệu, lên DB chờ sẵn ở dạng chờ `…000000` · **(3)** CEO làm xong bản đồ kiến thức khối đó ⇒ Claude xếp các bài vào bản đồ ⇒ CEO duyệt.
-  **Bản đồ kiến thức là việc của CEO** — Claude không tự dựng/sửa bản đồ. Khối nào đang ở bước nào: README §5.
+  ~~Bản đồ kiến thức là việc của CEO~~ — **THAY 01/11: Claude dựng nháp bản đồ + lý thuyết dạng + phân dạng, trưởng khối trở lên duyệt/sửa/chốt qua phiên Claude** (`spec-phong-truong-khoi.md`; bước 1–2 luật giải vẫn do Thùy cầm lái). Khối nào đang ở bước nào: README §5.
+- **⭐ LUẬT DUYỆT KHO — MỌI KHỐI (Thùy 05/11): câu đã gán dạng bài mức CAO (`dai/hgt_bdm_gan_cau` nguon 'ai') hoặc vào kho Đ/S chủ đề (`*_bdm_kho_ds` nguon 'ai') ⇒ DB TỰ duyệt (`da_duyet=true, duyet_nguon='ai'`) nếu có đáp án đầy đủ** — trigger `_bdm_tu_duyet_sau_gan` (mig 202611051930), KHÔNG còn bước "nhớ chạy script duyệt cao". Mức "vừa", gán nguon cum/doi_ung/nguoi, câu thiếu đáp án vẫn chờ người. Script `duyet-cao-moi-khoi.mjs` chỉ còn để vá tồn đọng.
 - **`spec-hinh-cay-nhanh.md` — ĐỌC BẮT BUỘC trước khi đụng bản đồ HÌNH phần LUYỆN** (CEO duyệt mockup 14/10): mô hình = cây nhánh (thân 1.1→1.2, rẽ nhánh từ bài mẹ thành 1.6.1, 1.6.1.1) · số hiển thị = vị trí (suy), mã bất biến · giả thiết hiệu lực = đường gốc→nhánh (bỏ luật 17/08) · xếp chỗ CHỈ xuống/sang phải, nhánh phía sau ưu tiên hàng 1, nhánh trước không đè · thẻ giả thiết thêm lục giác khác thẻ bài · popup đề·hình·đáp án. Mockup: `docs/mockup-hinh-mo-hinh-2tab.html`. Phần tách ý/nhập kho: `spec-hinh-luyen.md`.
 - **`spec-luong-kho.md` — ĐỌC BẮT BUỘC trước khi đụng LUỒNG KHO** (tài liệu vào → bản đồ + câu đạt chuẩn; CEO chốt 28/09): 3 lớp
   Tri thức / Dây chuyền / Đo · luật phân tầng dạng–cụm–biến thể · cổng ghi "không biên bản kiểm thì không ghi" · luật lên cấp tự duyệt
@@ -348,11 +349,30 @@
   hẹn `dang_ky_test` ≠ `ca_test` (ca sinh lúc em có mặt) · web gọi Edge Function `dang-ky-test`, Lộc nhập thay cùng hàm ghi `_ts_dang_ky_test`.
 - **`spec-bot-telegram-ta.md` — ĐỌC BẮT BUỘC trước khi đụng bot Telegram của TA** (Thùy chốt 14/10): bản tin 08:00 việc tồn từ ERP (mỗi TA 1 tin, tag phụ trách khối) ·
   webhook ghi mọi tin ngay (Telegram chỉ giữ 24h) · 24:00 Claude tổng kết theo `ref_key` → Trang duyệt → gậy + bản tin hôm sau · danh tính = `tg_user_id` nối mã 1 lần.
+- **`spec-phong-truong-khoi.md` — ĐỌC BẮT BUỘC trước khi sửa PHIÊN CLAUDE (`claude_phien*`, `scripts/phien/`) hoặc Phòng làm việc trưởng khối** (Thùy chốt 30/10–01/11):
+  trưởng khối chat thẳng với Claude Code, mỗi việc một PHIÊN theo loại việc (bản đồ · lý thuyết dạng · nhập kho & phân dạng · câu báo sai) · bot chạy máy Thùy bằng subscription ·
+  Claude làm, trưởng khối trở lên duyệt/sửa/chốt, Thùy chỉ phát động · rào cứng ở DB (`fn_phien_bd_*` đóng vai người mở phiên, đúng khối, không lệnh xoá) · mỗi bản đồ một phiên sửa · phòng = lối đi tắt, không bản sao.
+- **`spec-truong-khoi.md` — ĐỌC BẮT BUỘC trước khi sửa PHÂN QUYỀN (ghế · phạm vi môn×khối · ai duyệt gì) hoặc trợ lý/dashboard Trưởng khối–Trang** (Thùy chốt 29/10):
+  team QLCL = Thùy + Trang + 6 trưởng khối · khối là đơn vị thấp nhất, có tính môn · phạm vi = bảng PHÂN CÔNG (môn × khối) sửa trên màn, không mặc định, cấm uuid (1 hàm `fn_pham_vi_cua_toi`) ·
+  trưởng khối quyết, Trang hậu kiểm · KPI dạng yếu đóng băng lúc Trang Chốt tuần (Vào/Ra/Độ phủ, chưa chốt số) · Lộc xếp lịch như cũ.
+- **`spec-bao-cao-tuan.md` — ĐỌC BẮT BUỘC trước khi build/sửa BÁO CÁO TUẦN** (Thùy chốt 03/11): trưởng khối nộp chiều T2 (kỳ T2→CN tuần trước) · bấm Nộp là SNAP, không tính lại ·
+  cá nhân = task phát triển (đã duyệt tự điền) · quản lý = ET · BTVN · dạng yếu · HS yếu (≥1 dạng) · bổ trợ Yếu+Nhẹ · trend 4 tuần, toàn khối + từng lớp · tự viết Plans/Progress/Problems ·
+  dạng yếu tại mốc D = 1 hàm tính ngược (chỉ lần đo ≤ D), chụp tự động T2 00:00 · nộp trễ ⇒ gậy · trưởng bộ môn duyệt/trả lại → ghép Báo cáo Chuyên môn tuần theo môn → chiếu TV cho CEO.
 - **`SPEC-troly-nhansu.md` — ĐỌC BẮT BUỘC (§6–§7) trước khi sửa tab 🤖 TRỢ LÝ** (CEO chốt 29/09): **báo cáo là chính, hỏi là phụ** · chỉ 3 tài khoản ·
   Báo cáo Sư phạm = 3 luồng (đếm chậm/miss → Detail → cảnh báo), mỗi người quản một mảng có một bộ báo cáo riêng (Trang = Sư phạm, Lộc = Vận hành) ·
   Tổng kết tuần = dashboard theo BẢNG, ngưỡng của mọi chỉ số là **thường đạt** (trung bình 8 tuần gần nhất đã lọc nhiễu), trình chiếu mỗi bảng một màn ·
   cả hai KHÔNG realtime (lưu DB). Mọi con số tính ở `fn_troly_*`/`_troly_*`; thêm chỉ số = thêm 1 dòng vào `_troly_tuan_danh_muc()`.
   Kiểm bằng `scripts/check-troly-cong-cu.mjs` rồi **mở trên app bằng phiên đăng nhập thật** (script không thấy RLS và trần 8 giây).
+
+## Worktree tạm để commit/push (Thùy chốt 07/11 — máy đầy vì nó)
+Mỗi worktree là nguyên một bản repo **~1.3 GB**. 04–06/11 các phiên tạo `wt-push`, `wt-push2`…`wt-push7`, `wt-et`, `wt-handoff`… trong scratchpad
+để push khi checkout chính có file phiên khác sửa dở, push xong **bỏ lại** ⇒ 11 bản = **~14 GB trong 3 ngày**, ổ C còn 9 GB.
+- **Ưu tiên KHÔNG tạo worktree:** commit đúng file của mình ngay trong checkout chính (stage + commit 1 lệnh, kiểm danh sách đã stage — xem memory "nhiều phiên song song").
+- **Bắt buộc phải tạo ⇒ một worktree, dùng lại suốt phiên** (đưa về `origin/main` bằng `git checkout --detach origin/main` trước mỗi lượt) — **cấm** đẻ `wt-push2`, `wt-push3`… mỗi lần push.
+- **Push xong và đã kiểm `git status -sb` ⇒ gỡ ngay** bằng `git worktree remove <đường dẫn>` (đường dẫn quá dài: robocopy thư mục rỗng `/MIR` rồi `git worktree prune`).
+  Đây là ngoại lệ của Luật xoá bên dưới, **không cần hỏi**, chỉ khi đủ cả 3: worktree do **chính phiên này** tạo · `git status --porcelain` rỗng · `git rev-list origin/main..HEAD` = 0. Thiếu một điều kiện ⇒ hỏi như thường.
+- Không bao giờ gỡ worktree của phiên khác đang chạy (thư mục vừa đổi trong vài giờ, hoặc còn file đang sửa).
+
 ## Luật xoá (bắt buộc)
 Trước khi XOÁ bất cứ gì — xoá file, drop/alter/delete bảng/cột/dòng DB,
 hay lệnh git phá lịch sử (reset --hard, push -f, branch -D, clean) — DỪNG lại:

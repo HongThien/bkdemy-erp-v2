@@ -1,0 +1,590 @@
+[
+ {
+  "ma_cau": "T1120000002656",
+  "dang_bai_id": "NDB00787",
+  "chac": "cao",
+  "ly_do": "Biển hình vuông: các miền là parabol cắt bởi đường thẳng BD và trục hoành, dùng công thức parabol; tính diện tích rồi nhân đơn giá."
+ },
+ {
+  "ma_cau": "T1120000002689",
+  "dang_bai_id": "NDB00782",
+  "chac": "cao",
+  "ly_do": "Lều có mặt cắt không đổi dọc chiều dài: V = diện tích mặt cắt nhân 30 m."
+ },
+ {
+  "ma_cau": "T1120000002655",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích sân trồng hoa giới hạn bởi parabol, đường tròn và tường, lập hàm từ hình rồi tích phân."
+ },
+ {
+  "ma_cau": "T1120000002672",
+  "dang_bai_id": "NDB00781",
+  "chac": "cao",
+  "ly_do": "Thể tích ly = nón cụt + nửa mặt cầu, các hình quen thuộc có công thức (hoặc quay quanh Ox)."
+ },
+ {
+  "ma_cau": "T1120000002679",
+  "dang_bai_id": "NDB00778",
+  "chac": "cao",
+  "ly_do": "Hồ lô gồm chỏm cầu và trụ, đọc cung tròn trên hình rồi quay quanh Ox; có thể dùng công thức chỏm cầu (781)."
+ },
+ {
+  "ma_cau": "T11200000010588",
+  "dang_bai_id": "NDB00775",
+  "chac": "cao",
+  "ly_do": "Diện tích giới hạn bởi parabol và hai tiếp tuyến, tự tìm giao điểm làm cận."
+ },
+ {
+  "ma_cau": "T1120000005555",
+  "dang_bai_id": "NDB00755",
+  "chac": "vua",
+  "ly_do": "Tính f(3) từ diện tích các miền trên đồ thị f′; có thể xếp 02592 (Newton–Leibniz) hoặc 755 (tích phân bằng diện tích)."
+ },
+ {
+  "ma_cau": "T1120000002637",
+  "dang_bai_id": "NDB00787",
+  "chac": "cao",
+  "ly_do": "Diện tích cổng gồm hình chữ nhật và viên phân (cung tròn cắt bởi dây BC), rồi nhân đơn giá sơn."
+ },
+ {
+  "ma_cau": "T1120000002717",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Diện tích giới hạn bởi parabol, đường tròn tiếp xúc và trục hoành lập từ hình; lời giải bị cắt nên chưa chắc có dùng đối xứng."
+ },
+ {
+  "ma_cau": "T1120000002682",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Sáu cung tròn giống nhau (6 cánh): tính một phần giữa OA, OB rồi nhân 6."
+ },
+ {
+  "ma_cau": "T11200000010582",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích kênh giữa đường y=5 và đồ thị bậc ba dựng từ hình, cận tự tìm."
+ },
+ {
+  "ma_cau": "T1120000002644",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Miền trong đường tròn tâm F ngoài ba nửa đường tròn: vừa công thức tròn vừa tích phân cung; chưa chắc 777 hay 787."
+ },
+ {
+  "ma_cau": "T1120000002648",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Chiếc lá gồm hai phần parabol giống nhau đối xứng: S = 2 nhân tích phân một phần."
+ },
+ {
+  "ma_cau": "T1120000007251",
+  "dang_bai_id": "NDB00787",
+  "chac": "cao",
+  "ly_do": "Cánh hoa parabol cắt bởi đoạn thẳng cộng nửa hình tròn: các hình có công thức diện tích."
+ },
+ {
+  "ma_cau": "T1120000002662",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Bốn miền hoa parabol giống nhau, hình vuông có tâm đối xứng; lời giải bị cắt nên chưa thấy nhân đối xứng."
+ },
+ {
+  "ma_cau": "T1120000002649",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Biển quảng cáo: miền giữa hai đường thẳng và parabol, lập hàm từ toạ độ trên hình rồi tích phân."
+ },
+ {
+  "ma_cau": "T1120000002657",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Hai phần cỏ nhung parabol đối xứng, S = 2 nhân tích phân; sau đó nhân đơn giá."
+ },
+ {
+  "ma_cau": "T11200000010587",
+  "dang_bai_id": "NDB00782",
+  "chac": "cao",
+  "ly_do": "Vòm hầm có thiết diện không đổi (giữa hai parabol) dọc chiều dài HT: V = S nhân 10."
+ },
+ {
+  "ma_cau": "T1120000002729",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Hàm bậc bốn phải dựng từ dữ kiện diện tích rồi tính diện tích với Ox; bản đồ thiếu dạng tìm hàm từ diện tích cho trước."
+ },
+ {
+  "ma_cau": "T1120000002714",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Parabol chia elip, tính tỉ số diện tích; dùng đối xứng (nhân 2 nửa) và công thức elip."
+ },
+ {
+  "ma_cau": "T1120000002707",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Điều kiện của a, b để hai diện tích parabol bằng nhau, dùng S = 2 nhân tích phân; bản đồ thiếu dạng diện tích chứa tham số."
+ },
+ {
+  "ma_cau": "T11200000010583",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Logo đối xứng: S = 2 nhân diện tích nửa phải, miền giới hạn bởi hai parabol và đoạn thẳng."
+ },
+ {
+  "ma_cau": "T1120000002732",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Hàm trùng phương dựng từ dữ kiện đồ thị rồi tính diện tích giới hạn bởi f, f″ và Ox; bản đồ thiếu dạng tìm hàm từ đồ thị."
+ },
+ {
+  "ma_cau": "T1120000007166",
+  "dang_bai_id": "NDB00780",
+  "chac": "cao",
+  "ly_do": "Nêm hình trụ do cốc nghiêng: phải tự xây diện tích thiết diện S(x) rồi tích phân."
+ },
+ {
+  "ma_cau": "T1120000002748",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng tích phân đổi biến số (hàm hợp f(2x−8)) kết hợp đồ thị; chỉ hai số hạng đầu là Newton–Leibniz (02592)."
+ },
+ {
+  "ma_cau": "T1120000002703",
+  "dang_bai_id": "NDB00781",
+  "chac": "cao",
+  "ly_do": "Bình rượu gồm nón cụt và hình cầu cắt hai chỏm, tính bằng công thức thể tích các hình quen thuộc."
+ },
+ {
+  "ma_cau": "T11200000010581",
+  "dang_bai_id": "NDB00779",
+  "chac": "cao",
+  "ly_do": "Thiết diện hình chữ nhật 3 nhân 0,8^x cho sẵn dạng, V = tích phân S(x): đúng ví dụ dạng 779."
+ },
+ {
+  "ma_cau": "T11200000010580",
+  "dang_bai_id": "NDB00778",
+  "chac": "cao",
+  "ly_do": "Quay miền giới hạn bởi hai cung phần tư và cạnh hình vuông quanh AB, đọc hàm từ hình."
+ },
+ {
+  "ma_cau": "T1120000002651",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích hai phần của khu đất giới hạn bởi đường cong bậc ba dựng từ hình và tịnh tiến, tính tỉ số."
+ },
+ {
+  "ma_cau": "T1120000002664",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích giữa đường tròn ngoại tiếp và parabol, dựng hàm từ toạ độ trên hình."
+ },
+ {
+  "ma_cau": "T1120000002643",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Hai đồ thị y=x³−x và y=x đối xứng qua gốc: S = 2 nhân tích phân nửa; rồi tính chi phí."
+ },
+ {
+  "ma_cau": "T1120000002702",
+  "dang_bai_id": "NDB00781",
+  "chac": "cao",
+  "ly_do": "Quay miền parabol y=√(4x) quanh Ox (khối parabol tròn xoay), nhân đôi hai nửa."
+ },
+ {
+  "ma_cau": "T11200000010579",
+  "dang_bai_id": "NDB00778",
+  "chac": "cao",
+  "ly_do": "Quay miền giới hạn bởi đường tròn đường kính AB và cung tròn tâm A quanh AB, đọc hàm từ hình."
+ },
+ {
+  "ma_cau": "T1120000002734",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Tìm k để đường y=k chia miền dưới parabol thành hai phần bằng nhau; bản đồ thiếu dạng diện tích chứa tham số."
+ },
+ {
+  "ma_cau": "T1120000002736",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Hai miền tô đen đối xứng, S1 = 2 nhân tích phân parabol; rồi tính tiền theo đơn giá."
+ },
+ {
+  "ma_cau": "T1120000002663",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Logo giới hạn bởi hai parabol dựng từ hình trừ hình tròn con ngươi, nhân đơn giá sơn."
+ },
+ {
+  "ma_cau": "T1120000002647",
+  "dang_bai_id": "NDB00787",
+  "chac": "cao",
+  "ly_do": "Phần màu vàng là parabol cắt bởi dây, dùng công thức 2/3·đáy·cao; sau đó đếm lọ sơn và tính tiền."
+ },
+ {
+  "ma_cau": "T1120000002687",
+  "dang_bai_id": "NDB00781",
+  "chac": "cao",
+  "ly_do": "Thùng kem là khối parabol tròn xoay y=a√x quanh Ox: V = π tích phân f²."
+ },
+ {
+  "ma_cau": "T1120000002690",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích miền giới hạn bởi y=x·e^(1−x), trục Ox và x=2 đọc từ hình, rồi đổi đơn vị và chia 20 m²."
+ },
+ {
+  "ma_cau": "T1120000008832",
+  "dang_bai_id": "NDB00775",
+  "chac": "cao",
+  "ly_do": "Diện tích giữa hai đồ thị bậc ba và bậc hai cắt nhau tại ba hoành độ cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000002724",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Hàm chẵn y=x⁴−4x²+m dùng đối xứng so sánh diện tích để tìm m; bản đồ thiếu dạng diện tích chứa tham số."
+ },
+ {
+  "ma_cau": "T1120000002677",
+  "dang_bai_id": "NDB00778",
+  "chac": "cao",
+  "ly_do": "Quay quanh Ox miền giới hạn bởi hai hàm mũ, parabol và đường tròn đọc từ hình."
+ },
+ {
+  "ma_cau": "T11200000010578",
+  "dang_bai_id": "NDB00778",
+  "chac": "cao",
+  "ly_do": "Quay quanh MN miền giữa elip và đường tròn, dựng hàm từ kích thước trên hình."
+ },
+ {
+  "ma_cau": "T1120000002666",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Hai parabol đối xứng qua đường giữa sân: S hoa văn = 2 nhân tích phân."
+ },
+ {
+  "ma_cau": "T1120000002727",
+  "dang_bai_id": "NDB00782",
+  "chac": "cao",
+  "ly_do": "Nhịp cầu có mặt cắt không đổi (giữa hai parabol) dày 0,2 m: V = diện tích nhân bề dày."
+ },
+ {
+  "ma_cau": "T1120000002633",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Hai parabol đối xứng qua AB: tính diện tích một phần bằng công thức parabol rồi nhân 2, trừ khỏi hình tròn."
+ },
+ {
+  "ma_cau": "T1120000002638",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Hoa văn 4 cánh parabol giống nhau (8 nhân tích phân) cộng vành khuyên."
+ },
+ {
+  "ma_cau": "T1120000002746",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Diện tích thiết diện là phần elip bị cắt bởi dây (hình không gian); gần nhất dạng 787 nhưng không đúng hoàn toàn."
+ },
+ {
+  "ma_cau": "T1120000002653",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Vườn hình tròn trừ 4 viên phân giống nhau: S = πR² − 4 nhân tích phân."
+ },
+ {
+  "ma_cau": "T1120000002640",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Tìm k để hai diện tích giữa các parabol bằng nhau; bản đồ thiếu dạng diện tích chứa tham số."
+ },
+ {
+  "ma_cau": "T1120000002710",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Phần giao hai hình tròn (bò ăn cỏ): tính phần phía trên Ox rồi nhân 2."
+ },
+ {
+  "ma_cau": "T1120000002636",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Hai parabol đối xứng qua O trong bồn tròn, S1=S2, S3=S4: tính một nửa rồi nhân đôi."
+ },
+ {
+  "ma_cau": "T1120000002693",
+  "dang_bai_id": "NDB00755",
+  "chac": "vua",
+  "ly_do": "Tích phân của hiệu hai hàm cho bởi đồ thị, tính qua diện tích các miền ghi trên hình; có thể 777."
+ },
+ {
+  "ma_cau": "T1120000002652",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Cửa sắt có 4 miền parabol giống nhau: S2 = 4 nhân S1, rồi nhân số cánh cửa và đơn giá."
+ },
+ {
+  "ma_cau": "T1120000002742",
+  "dang_bai_id": "NDB00778",
+  "chac": "cao",
+  "ly_do": "Mũ tròn xoay: khối trụ cộng khối quay quanh Oy của miền giới hạn bởi parabol, đọc từ hình."
+ },
+ {
+  "ma_cau": "T1120000002674",
+  "dang_bai_id": "NDB00782",
+  "chac": "cao",
+  "ly_do": "Máng silic có mặt cắt không đổi (giữa hai parabol) dài 3 m: V = diện tích nhân 3, nhân 90 máng."
+ },
+ {
+  "ma_cau": "T1120000002650",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Dùng công thức parabol cắt bởi dây (x1−x2)³/6 nhưng đề trộn hàm bậc hai trên bậc nhất và tiệm cận xiên."
+ },
+ {
+  "ma_cau": "T11200000010577",
+  "dang_bai_id": "NDB00787",
+  "chac": "cao",
+  "ly_do": "Cánh hoa parabol cắt bởi dây cộng nửa hình tròn, các hình có công thức diện tích; nhân đơn giá."
+ },
+ {
+  "ma_cau": "T1120000002699",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa parabol và đường tròn (S1) cộng nửa elip (S2): trộn tích phân và công thức elip."
+ },
+ {
+  "ma_cau": "T1120000002658",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích ba phần tường giới hạn bởi đồ thị mũ và lôgarit đối xứng qua y=x, tính bằng tích phân rồi đếm hộp sơn."
+ },
+ {
+  "ma_cau": "T1120000008831",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích miền giữa hai nửa đường tròn và đường thẳng AC, dựng hàm từ hình và tích phân."
+ },
+ {
+  "ma_cau": "T1120000002642",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Hai diện tích parabol cắt bởi dây bằng nhau để tìm a; bản đồ thiếu dạng diện tích chứa tham số."
+ },
+ {
+  "ma_cau": "T1120000002733",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Tỉ số hai diện tích của hàm bậc năm có cực trị lập cấp số cộng; bản đồ thiếu dạng tìm hàm từ đặc điểm cực trị."
+ },
+ {
+  "ma_cau": "T1120000002740",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng tích phân đổi biến số (hàm hợp f(3lnx−4)/x) kết hợp đồ thị có diện tích các miền cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000002739",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Tỉ số hai diện tích của hàm bậc bốn có cực trị lập cấp số cộng; bản đồ thiếu dạng tìm hàm từ đặc điểm cực trị."
+ },
+ {
+  "ma_cau": "T1120000002725",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Dựng f bậc ba từ diện tích cho trước rồi tính tích phân của f trên [0;2]; trộn tìm hàm và tích phân."
+ },
+ {
+  "ma_cau": "T11200000010585",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Vườn hoa giữa elip và hai parabol đối xứng: tính một góc phần tư rồi nhân 4, kèm công thức elip."
+ },
+ {
+  "ma_cau": "T1120000002731",
+  "dang_bai_id": "NDB00775",
+  "chac": "cao",
+  "ly_do": "Diện tích giữa đồ thị bậc ba và bậc hai cắt nhau tại ba hoành độ cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000002671",
+  "dang_bai_id": "NDB00778",
+  "chac": "cao",
+  "ly_do": "Vòng đeo tay quay đường tròn x²+(y−6)²=1 quanh Ox, đọc đường tròn từ hình."
+ },
+ {
+  "ma_cau": "T1120000002700",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích hình càng cua giữa các cung phần tư của các đường tròn, dựng hàm từ toạ độ trên hình."
+ },
+ {
+  "ma_cau": "T1120000002708",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Vườn elip chia 4 phần bởi hai parabol đối xứng, S_A=S_B, S_C=S_D: tính một phần rồi nhân đôi."
+ },
+ {
+  "ma_cau": "T1120000002685",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Diện tích lát giữa bờ và tuyến đối xứng qua Oy: tính nửa phải rồi nhân đôi."
+ },
+ {
+  "ma_cau": "T1120000002632",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Viên gạch có 4 cánh hoa parabol giống nhau: tính một cánh góc phần tư rồi nhân 4."
+ },
+ {
+  "ma_cau": "T1120000002665",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Viên gạch 16 phần giống nhau, mỗi cánh là phần giao hai phần tư hình tròn: tính một phần rồi nhân lên."
+ },
+ {
+  "ma_cau": "T1120000002692",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích thành cầu trượt dưới hai đường e^x và parabol đọc từ hình, nhân hai bên."
+ },
+ {
+  "ma_cau": "T1120000002711",
+  "dang_bai_id": "NDB00787",
+  "chac": "cao",
+  "ly_do": "Hình vuông khoét 4 nửa elip, dùng công thức diện tích elip πab."
+ },
+ {
+  "ma_cau": "T1120000002511",
+  "dang_bai_id": "NDB00627",
+  "chac": "cao",
+  "ly_do": "Tích phân chứa giá trị tuyệt đối |3x²−2x| với cận m, xét dấu bỏ trị tuyệt đối rồi giải tìm m."
+ },
+ {
+  "ma_cau": "T1120000002745",
+  "dang_bai_id": "NDB00778",
+  "chac": "cao",
+  "ly_do": "Thùng rượu tròn xoay với đường sinh parabol dựng từ hình, V = π tích phân f²."
+ },
+ {
+  "ma_cau": "T1120000002705",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Dùng công thức diện tích parabol cắt bởi dây (b−a)³/6 rồi tìm giá trị lớn nhất; có thêm bước tối ưu."
+ },
+ {
+  "ma_cau": "T1120000002634",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Mặt nạ đối xứng qua Oy: S = 2 nhân tích phân giữa hai parabol, trừ hai hình thoi."
+ },
+ {
+  "ma_cau": "T1120000002635",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Logo 6 cánh hoa giống nhau, S = 6 nhân tích phân giữa đường bậc ba và parabol."
+ },
+ {
+  "ma_cau": "T1120000002676",
+  "dang_bai_id": "NDB00778",
+  "chac": "cao",
+  "ly_do": "Thùng rượu có đường sinh là cung tròn dựng từ ba điểm, V = π tích phân f² quanh Ox."
+ },
+ {
+  "ma_cau": "T1120000002701",
+  "dang_bai_id": "NDB00778",
+  "chac": "cao",
+  "ly_do": "Quả bóng bầu dục quay parabol qua ba điểm đọc từ đề quanh Ox, V = π tích phân f²."
+ },
+ {
+  "ma_cau": "T11200000010584",
+  "dang_bai_id": "NDB00787",
+  "chac": "cao",
+  "ly_do": "Hình vuông trừ tam giác và đoạn parabol cắt bởi dây, dùng công thức diện tích parabol."
+ },
+ {
+  "ma_cau": "T1120000002645",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Hypebol đối xứng: diện tích trồng hoa S1 = 4 nhân tích phân; đề thuộc dạng đối xứng."
+ },
+ {
+  "ma_cau": "T1120000005330",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Bốn parabol đối xứng quanh tâm: tính góc phần tư thứ nhất rồi nhân 4."
+ },
+ {
+  "ma_cau": "T1120000002747",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Hàm chẵn y=x⁴−6x²+m, hai phần diện tích bằng nhau, dùng đối xứng để tìm m; bản đồ thiếu dạng diện tích chứa tham số."
+ },
+ {
+  "ma_cau": "T1120000002659",
+  "dang_bai_id": "NDB00782",
+  "chac": "cao",
+  "ly_do": "Đường bê tông dày đều 16 cm: V = diện tích giữa hai đồ thị bậc ba nhân độ dày."
+ },
+ {
+  "ma_cau": "T1120000002678",
+  "dang_bai_id": "NDB00780",
+  "chac": "vua",
+  "ly_do": "Khối chóp cụt trừ chỏm cầu, thể tích chỏm cầu tính bằng thiết diện S(a) tự xây; cũng có thể 781."
+ },
+ {
+  "ma_cau": "T1120000002744",
+  "dang_bai_id": "NDB00635",
+  "chac": "cao",
+  "ly_do": "Quay quanh Ox miền giữa parabol và đường thẳng cho sẵn hàm, cận phải tự tìm từ giao điểm."
+ },
+ {
+  "ma_cau": "T1120000002723",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Dải vườn rộng 8 m của elip đối xứng qua trục bé, dùng 2 nhân tích phân; có thể xếp 774 vì cận cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000002737",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Tỉ số diện tích của hàm bậc bốn có trục đối xứng và điều kiện cực trị; bản đồ thiếu dạng tìm hàm từ đặc điểm cực trị."
+ },
+ {
+  "ma_cau": "T1120000002673",
+  "dang_bai_id": "NDB00781",
+  "chac": "vua",
+  "ly_do": "Trộn tốc độ thay đổi (v(t) ra thể tích cát 300 cm³) với thể tích parabol tròn xoay y=a√x để tìm chiều cao."
+ },
+ {
+  "ma_cau": "T1120000002691",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Mặt tiền đối xứng, S = 2 nhân tích phân trừ cổng và cửa; thêm bước nhân bề dày lớp sơn (có thể 782)."
+ },
+ {
+  "ma_cau": "T1120000002715",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng tích phân đổi biến số hàm hợp f(−¾x²+2x+5) kết hợp đồ thị có diện tích các miền cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000007381",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Hai phần trồng hoa parabol diện tích bằng nhau, đối xứng: tính một phần rồi nhân 2, trừ khỏi hình chữ nhật."
+ },
+ {
+  "ma_cau": "T11200000010586",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Hoa gồm 8 miền giống nhau dùng đối xứng nhưng thêm tìm hệ số a, b, c; bản đồ thiếu dạng diện tích chứa tham số."
+ },
+ {
+  "ma_cau": "T1120000002654",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Logo giới hạn bởi nửa đường tròn và hai parabol dựng từ hình; lời giải bị cắt nên chưa rõ có dùng đối xứng."
+ }
+]

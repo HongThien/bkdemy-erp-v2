@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "HHC007644",
+  "dang_bai_id": "HH00087",
+  "chac": "vua",
+  "ly_do": "Xét điểm I thuộc mặt phẳng nào theo hình vẽ; đề không tự đủ dữ kiện, phụ thuộc hình.",
+  "can_cu": "Tìm giao điểm của đường thẳng $AM$ và mặt phẳng $(SBD)$."
+ },
+ {
+  "ma_cau": "HHC007645",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc hai mặt phẳng song song: tìm khẳng định sai về các cặp mặt phẳng song song trong hình chóp.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007646",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007647",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc hai mặt phẳng song song: mặt nước song song đáy bồn, Thales tính mực nước.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007648",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng α qua A, M song song SD cắt SB tại N, tính tỉ số SN/SB.",
+  "can_cu": "Tính tỉ số $\\dfrac{SD}{SK}$."
+ },
+ {
+  "ma_cau": "HHC007656",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc hai mặt phẳng song song: (ABA') song song mặt bên đối diện của hình hộp.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007657",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "IJ là đường trung bình nên IJ∥BD⊂(BCD), suy IJ∥(BCD).",
+  "can_cu": "Chỉ ra $d\\not\\subset(P)$."
+ },
+ {
+  "ma_cau": "HHC007658",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc phép chiếu song song: ảnh của tam giác ABC' qua phép chiếu theo phương AA'.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007659",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Các yếu tố xác định một mặt phẳng duy nhất: hai đường thẳng cắt nhau.",
+  "can_cu": "Có một và chỉ một mặt phẳng đi qua ba điểm không thẳng hàng cho trước."
+ },
+ {
+  "ma_cau": "HHC007660",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Vị trí tương đối của FH và CD: không đồng phẳng nên chéo nhau.",
+  "can_cu": "Hai đường thẳng không có điểm chung thì có thể song song hoặc chéo nhau."
+ },
+ {
+  "ma_cau": "HHC007661",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007662",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Ý a chứng minh OG∥(SAD), ý b giao điểm BG với (SCD); ý sau thắng.",
+  "can_cu": "Chứng minh $IJ\\parallel(SBD)$."
+ },
+ {
+  "ma_cau": "HHC007670",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Tìm mặt phẳng song song đường thẳng CD: CD∥AB⊂(SAB), CD⊄(SAB).",
+  "can_cu": "Chỉ ra $d\\not\\subset(P)$."
+ },
+ {
+  "ma_cau": "HHC007671",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao tuyến (SAC),(SAD) là SA nhờ hai điểm chung S và A.",
+  "can_cu": "Tìm giao tuyến của hai mặt phẳng $(SAC)$ và $(SBD)$."
+ },
+ {
+  "ma_cau": "HHC007672",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Hai cạnh đối AD, BC của tứ diện không đồng phẳng nên chéo nhau, vị trí tương đối.",
+  "can_cu": "Hai đường thẳng không có điểm chung thì có thể song song hoặc chéo nhau."
+ },
+ {
+  "ma_cau": "HHC007673",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc hai mặt phẳng song song: (AA1D1) song song mặt bên đối diện của hình hộp.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007674",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007675",
+  "dang_bai_id": "HH00147",
+  "chac": "vua",
+  "ly_do": "IJ∥SM trong tam giác ASM cho JA/JS=IA/IM=2; tỉ lệ trọng tâm bằng Thales, không tìm giao điểm.",
+  "can_cu": "Tính tỉ số $\\dfrac{SD}{SK}$."
+ },
+ {
+  "ma_cau": "HHC007676",
+  "dang_bai_id": "HH00147",
+  "chac": "vua",
+  "ly_do": "Ý a giao tuyến, ý b (OMK)∥(SCD), ý c giao điểm F rồi tính KF/KD; ý sau thắng.",
+  "can_cu": "Tính tỉ số $\\dfrac{SD}{SK}$."
+ },
+ {
+  "ma_cau": "HHC007684",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc hai mặt phẳng song song: tìm mệnh đề sai về hai mặt phẳng song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007685",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc hai mặt phẳng song song: (A'BD) song song (CB'D') trong hình hộp.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007686",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc hai mặt phẳng song song: cạnh, mặt, đỉnh đối diện của hình hộp.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007687",
+  "dang_bai_id": "HH00141",
+  "chac": "vua",
+  "ly_do": "Khẳng định sai về đường thẳng song song mặt phẳng trong lăng trụ; lăng trụ thuộc bài đã ngoài danh sách.",
+  "can_cu": "Chỉ ra $d\\not\\subset(P)$."
+ },
+ {
+  "ma_cau": "HHC007688",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007689",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "Đường thẳng AB cắt (A'IJ) tại K, tính KB/AB trong lăng trụ.",
+  "can_cu": "Tính tỉ số $\\dfrac{KB}{AB}$."
+ },
+ {
+  "ma_cau": "HHC007690",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc hai mặt phẳng song song: mặt phẳng α qua E song song (ABC) cắt BM tại F, tính EF.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007698",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc hai mặt phẳng song song: tìm mệnh đề sai về hai mặt phẳng song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007699",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc hai mặt phẳng song song: (OMN) song song mặt phẳng nào của hình chóp.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007700",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc hai mặt phẳng song song: ba mâm kệ song song, Thalès tính KC.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007701",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Đếm số mặt của hình chóp biết số cạnh: đáy n-giác có n+1 mặt.",
+  "can_cu": "Nếu đáy của hình chóp là một tam giác, tứ giác, ngũ giác"
+ },
+ {
+  "ma_cau": "HHC007702",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007703",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng α qua A, M song song SD cắt SB tại N, tính tỉ số SN/BN.",
+  "can_cu": "Tính tỉ số $\\dfrac{SD}{SK}$."
+ },
+ {
+  "ma_cau": "HHC007704",
+  "dang_bai_id": "HH00147",
+  "chac": "vua",
+  "ly_do": "Ý a giao điểm và giao tuyến, ý b tỉ số diện tích hai tam giác KCD, KBA nhờ tỉ lệ cạnh.",
+  "can_cu": "Tính tỉ số $\\dfrac{SD}{SK}$."
+ },
+ {
+  "ma_cau": "HHC007709",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Số cạnh hình chóp đáy ngũ giác: yếu tố hình chóp.",
+  "can_cu": "Nếu đáy của hình chóp là một tam giác, tứ giác, ngũ giác"
+ },
+ {
+  "ma_cau": "HHC007710",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc hai mặt phẳng song song: tính chất hình lăng trụ: mặt bên là hình bình hành.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007711",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007712",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Ý a giao tuyến SI, ý b chứng minh MN∥(SCD); ý chứng minh song song thắng.",
+  "can_cu": "Chứng minh $IJ\\parallel(SBD)$."
+ },
+ {
+  "ma_cau": "HHC007721",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc hai mặt phẳng song song: mệnh đề đúng về hai mặt phẳng song song và đường thẳng.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007722",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Tìm hai đường thẳng chéo nhau: IJ nằm trong (SAB), BD cắt mặt phẳng tại B.",
+  "can_cu": "Hai đường thẳng không có điểm chung thì có thể song song hoặc chéo nhau."
+ },
+ {
+  "ma_cau": "HHC007723",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc phép chiếu song song: hình chiếu của A theo phương CD lên (SBC).",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007724",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Chọn bốn điểm đồng phẳng trong tứ diện bằng liên thuộc.",
+  "can_cu": "Tìm giao điểm của đường thẳng $AM$ và mặt phẳng $(SBD)$."
+ },
+ {
+  "ma_cau": "HHC007725",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007726",
+  "dang_bai_id": "HH00148",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng cắt bốn cạnh bên hình lập phương, tính chu vi tứ giác MNPQ.",
+  "can_cu": "Tính diện tích, chu vi thiết diện"
+ },
+ {
+  "ma_cau": "HHC007727",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "Q là giao điểm SB với (MNP), tính tỉ số QB/QS.",
+  "can_cu": "Tính tỉ số $\\dfrac{SD}{SK}$."
+ },
+ {
+  "ma_cau": "HHC007728",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Ý a GH∥(ABCD) bằng Thales; ý b bốn trọng tâm đồng phẳng; ý chứng minh song song thắng.",
+  "can_cu": "Chứng minh $IJ\\parallel(SBD)$."
+ },
+ {
+  "ma_cau": "HHC007737",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Điểm E=MN∩BD không thuộc mặt phẳng nào: xét điểm thuộc mặt phẳng.",
+  "can_cu": "Tìm giao điểm của đường thẳng $AM$ và mặt phẳng $(SBD)$."
+ },
+ {
+  "ma_cau": "HHC007738",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "AD∥BC⊂(SBC), AD⊄(SBC), nên AD∥(SBC).",
+  "can_cu": "Chỉ ra $d\\not\\subset(P)$."
+ },
+ {
+  "ma_cau": "HHC007739",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc hai mặt phẳng song song: các cặp mặt đối diện của hình hộp song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007740",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "Tìm đường thẳng song song CD: MN∥AB∥CD nhờ đường trung bình.",
+  "can_cu": "Chứng minh tứ giác $MNPQ$ là hình bình hành."
+ },
+ {
+  "ma_cau": "HHC007741",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007742",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007743",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "Đường thẳng SD cắt (ANM) tại I, tính SI bằng tỉ số trên SD.",
+  "can_cu": "Tính tỉ số $\\dfrac{SD}{SK}$."
+ },
+ {
+  "ma_cau": "HHC007744",
+  "dang_bai_id": "HH00148",
+  "chac": "cao",
+  "ly_do": "Khung thép MNPQ là thiết diện của tứ diện đều, tính chu vi.",
+  "can_cu": "Tính diện tích, chu vi thiết diện"
+ },
+ {
+  "ma_cau": "HHC007750",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "IJ là đường trung bình tam giác SAC nên IJ∥AC, chọn đường thẳng song song.",
+  "can_cu": "Chứng minh tứ giác $MNPQ$ là hình bình hành."
+ },
+ {
+  "ma_cau": "HHC007751",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc hai mặt phẳng song song: tìm khẳng định đúng về các cặp mặt phẳng song song.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007752",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "MN∥EF⊂(BCD) nên MN song song mặt phẳng (BCD).",
+  "can_cu": "Chỉ ra $d\\not\\subset(P)$."
+ },
+ {
+  "ma_cau": "HHC007753",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng α qua A, M song song SD cắt SB tại N, tính tỉ số SN/SB.",
+  "can_cu": "Tính tỉ số $\\dfrac{SD}{SK}$."
+ },
+ {
+  "ma_cau": "HHC007754",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao tuyến (SAC),(SBD) gồm S và giao điểm O của hai đường chéo.",
+  "can_cu": "Tìm giao tuyến của hai mặt phẳng $(SAC)$ và $(SBD)$."
+ },
+ {
+  "ma_cau": "HHC007762",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định sai về đường thẳng song song mặt phẳng: PQ nằm trong (SAD).",
+  "can_cu": "Chỉ ra $d\\not\\subset(P)$."
+ },
+ {
+  "ma_cau": "HHC007763",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc phép chiếu song song: hình chiếu của tam giác A'B'C' theo phương B'B.",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007764",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "Giao tuyến (SAB),(SCD) là SI nhờ hai điểm chung S và I=AB∩CD.",
+  "can_cu": "Tìm giao tuyến của hai mặt phẳng $(SAC)$ và $(SBD)$."
+ },
+ {
+  "ma_cau": "HHC007765",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "MN là đường trung bình tam giác ABC nên MN∥AC, chọn đường thẳng song song.",
+  "can_cu": "Chứng minh tứ giác $MNPQ$ là hình bình hành."
+ },
+ {
+  "ma_cau": "HHC007766",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007767",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "Tìm x để MG∥(ACD): cần MG∥CN⊂(ACD) nhờ tỉ lệ trọng tâm.",
+  "can_cu": "Chỉ ra $d\\not\\subset(P)$."
+ },
+ {
+  "ma_cau": "HHC007768",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc hai mặt phẳng song song: ý a chứng minh (A'BD)∥(B'D'C).",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007772",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "CD∥AB⊂(SAB), CD⊄(SAB), nên CD∥(SAB).",
+  "can_cu": "Chỉ ra $d\\not\\subset(P)$."
+ },
+ {
+  "ma_cau": "HHC007773",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "ON là đường trung bình tam giác SBD nên ON∥SD⊂(SCD), ON∥(SCD).",
+  "can_cu": "Chứng minh $IJ\\parallel(SBD)$."
+ },
+ {
+  "ma_cau": "HHC007774",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc hai mặt phẳng song song: chứng minh (MNP)∥(ABCD).",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC007786",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "IJ là đường trung bình nên IJ∥AB⊂(ABCD), suy IJ∥(ABCD).",
+  "can_cu": "Chỉ ra $d\\not\\subset(P)$."
+ },
+ {
+  "ma_cau": "HHC007787",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc phép chiếu song song: hình chiếu của C' lên (ABB'A') theo phương CB.",
+  "can_cu": null
+ }
+]

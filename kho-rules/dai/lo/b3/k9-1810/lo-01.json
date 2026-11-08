@@ -1,0 +1,536 @@
+[
+ {
+  "ma_cau": "T109000000372",
+  "loai": "tu_luan",
+  "de": "Giải phương trình: $(x-5)(5x-1)=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tích hai thừa số bằng $0$ khi có ít nhất một thừa số bằng $0$.\n**Bước 1.** Nhận ra vế trái đã là tích của hai biểu thức bậc nhất và vế phải bằng $0$, nên không cần khai triển.\n**Bước 2.** Cho từng thừa số bằng $0$ để được hai phương trình bậc nhất.\n**Bước 3.** Giải từng phương trình bậc nhất rồi kết luận phương trình có hai nghiệm.\n**Chú ý:** không khai triển thành phương trình bậc hai, vì ở bài này chưa dùng công thức nghiệm.\n**Phần 2. Trình bày**\n$(x-5)(5x-1)=0$\nSuy ra $x-5=0$ hoặc $5x-1=0$.\n• $x-5=0$ suy ra $x=5$.\n• $5x-1=0$ suy ra $5x=1$, do đó $x=\\dfrac{1}{5}$.\nVậy phương trình đã cho có hai nghiệm là $x=5$ và $x=\\dfrac{1}{5}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030301028",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{2\\sqrt{x}-1}{\\sqrt{x}-1}$ $(x\\ge0;x \\ne1)$. Tìm $x$ để $P=\\dfrac{11}{5}$.",
+  "dap_an": "36",
+  "loi_giai": "$\\dfrac{2\\sqrt{x}-1}{\\sqrt{x}-1}=\\dfrac{11}{5}$\n$5(2\\sqrt{x}-1)=11(\\sqrt{x}-1)$\n$10\\sqrt{x}-5=11\\sqrt{x}-11$\n$\\sqrt{x}=6$\n$x=36$ (TMĐK).\nVậy $x=36$ thì $P=\\dfrac{11}{5}$.",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P thoả mãn Đẳng thức"
+ },
+ {
+  "ma_cau": "T109000000116",
+  "loai": "tu_luan",
+  "de": "Trong kì thi thử vào lớp 10 trường \"THCS&THPT LƯƠNG THẾ VINH\", Dũng phải làm ba bài thi môn Toán, Ngữ văn và Tiếng anh. Biết rằng Dũng được $7{,}5$ điểm môn Ngữ văn và $9$ điểm môn Toán. Hỏi bài thi môn Tiếng anh, bạn cần phải đạt điểm số là bao nhiêu để điểm trung bình của cả ba bài thi ít nhất là $8{,}5$?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** điểm trung bình của ba bài là tổng ba điểm chia cho $3$, và \"ít nhất là $8{,}5$\" nghĩa là trung bình lớn hơn hoặc bằng $8{,}5$, nên ta giải một bất phương trình bậc nhất.\n**Bước 1.** Gọi $x$ là điểm môn Tiếng anh rồi viết biểu thức điểm trung bình của ba bài thi.\n**Bước 2.** Lập bất phương trình \"điểm trung bình $\\ge 8{,}5$\", rồi nhân hai vế với $3$ (số dương nên không đổi chiều) để khử mẫu.\n**Bước 3.** Chuyển vế, giải bất phương trình tìm điều kiện của $x$.\n**Bước 4.** Đối chiếu với thang điểm tối đa là $10$ để trả lời Dũng cần đạt điểm tối thiểu là bao nhiêu.\n**Chú ý:** cụm \"ít nhất\" tương ứng với dấu $\\ge$, không phải dấu $>$.\n**Phần 2. Trình bày**\nGọi  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030101060",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $3\\sqrt{10}-\\sqrt{40}+4\\sqrt{90}-3\\sqrt{160}$.",
+  "dap_an": "$\\sqrt{10}$",
+  "loi_giai": "$3\\sqrt{10}-\\sqrt{40}+4\\sqrt{90}-3\\sqrt{160}$\n$=3\\sqrt{10}-2\\sqrt{10}+4\\cdot3\\sqrt{10}-3\\cdot4\\sqrt{10}$\n$=3\\sqrt{10}-2\\sqrt{10}+12\\sqrt{10}-12\\sqrt{10}$\n$=\\sqrt{10}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109000000143",
+  "loai": "tu_luan",
+  "de": "Ngày xưa có một vị tể tướng nổi tiếng thông thái. Đến khi tể tướng muốn cáo quan về quê, nhà vua liền ban thưởng bằng cách đưa cho tể tướng một đoạn dây dài $400$ mét và nói: \"Ngươi hãy căng sợi dây này thành một hình chữ nhật, sao cho hai đầu dây chạm vào nhau. Mảnh đất bên trong hình chữ nhật đó sẽ thuộc về ngươi\". Hỏi tể tướng sẽ căng sợi dây như thế nào để mảnh đất có diện tích lớn nhất?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** sợi dây là chu vi nên tổng hai kích thước của hình chữ nhật không đổi; diện tích viết theo một kích thước là một biểu thức bậc hai, ta hoàn thành bình phương để thấy nó lớn nhất khi nào.\n**Bước 1.** Gọi một kích thước là $x$, dùng chu vi $400$ m để biểu diễn kích thước còn lại theo $x$ và nêu điều kiện của $x$.\n**Bước 2.** Lập biểu thức diện tích $S$ theo $x$ rồi khai triển thành đa thức bậc hai.\n**Bước 3.** Hoàn thành bình phương: viết $S$ dưới dạng một số trừ đi một bình phương; vì bình phương luôn không âm nên $S$ không vượt quá số đó.\n**Bước 4.** Tìm giá trị của $x$ làm dấu bằng xảy ra, tính kích thước còn lại, kiểm tra điều kiện rồi mô tả cách căng dâ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000253",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình sau: $\\begin{cases} x-4y=8 \\\\ -3x+5y=11 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phương trình thứ nhất có hệ số của $x$ bằng $1$, nên rút $x$ theo $y$ rồi thế vào phương trình thứ hai là gọn nhất.\n**Bước 1.** Chọn ẩn có hệ số $\\pm1$ để rút: từ phương trình thứ nhất biểu diễn $x$ theo $y$.\n**Bước 2.** Thế biểu thức của $x$ vào phương trình thứ hai để được một phương trình chỉ chứa ẩn $y$, chú ý nhân đủ và đổi dấu khi bỏ ngoặc.\n**Bước 3.** Giải phương trình một ẩn vừa có, rồi thay giá trị $y$ vào biểu thức rút ở bước 1 để tìm $x$.\n**Chú ý:** thử lại nghiệm vào cả hai phương trình của hệ để tránh sai dấu.\n**Phần 2. Trình bày**\nTừ phương trình thứ nhất, ta có $x=8+4y$ (1).\nThế vào phương trình thứ hai, ta được:\n$-3(8+4y)+5y=11$\n$-24-12y+5y …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030101120",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $\\dfrac{6}{\\sqrt{7}+1}-2\\sqrt{7}+\\sqrt{(3-\\sqrt{7})^2}$.",
+  "dap_an": "$2-2\\sqrt{7}$",
+  "loi_giai": "$\\dfrac{6}{\\sqrt{7}+1}-2\\sqrt{7}+\\sqrt{(3-\\sqrt{7})^2}$\n$=\\dfrac{6(\\sqrt{7}-1)}{(\\sqrt{7}+1)(\\sqrt{7}-1)}-2\\sqrt{7}+|3-\\sqrt{7}|$\n$=\\dfrac{6(\\sqrt{7}-1)}{7-1}-2\\sqrt{7}+|3-\\sqrt{7}|$\n$=\\sqrt{7}-1-2\\sqrt{7}+(3-\\sqrt{7})$\n$=2-2\\sqrt{7}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109000000152",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $x,y,z>0$. Tìm giá trị lớn nhất của biểu thức $M=\\dfrac{2x}{2x+y}+\\dfrac{2y}{2y+z}+\\dfrac{2z}{2z+x}$.",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** viết mỗi phân số dạng $1-\\dfrac{y}{2x+y}$ để $M$ thành $3$ trừ một tổng ba phân số, rồi chứng minh tổng đó có cận dưới nhờ so sánh từng phân số với một biểu thức có mẫu chung $x+y+z$.\n**Bước 1.** Tách $\\dfrac{2x}{2x+y}=1-\\dfrac{y}{2x+y}$ và tương tự cho hai phân số còn lại, để đưa bài toán về tìm giá trị nhỏ nhất của $N=\\dfrac{y}{2x+y}+\\dfrac{z}{2y+z}+\\dfrac{x}{2z+x}$.\n**Bước 2.** Dự đoán dấu bằng ở $x=y=z$ rồi chọn mẫu chung $S=x+y+z$ để so sánh từng phân số với biểu thức $\\dfrac{2y}{S}-\\dfrac{y(2x+y)}{S^2}$.\n**Bước 3.** Xét hiệu của hai biểu thức đó: quy đồng rồi nhận ra tử số là bình phương (chú ý $S-(2x+y)=z-x$) nên hiệu không âm.\n**Bước 4.** Viết ba b …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000403",
+  "loai": "tu_luan",
+  "de": "Một khu đất hình chữ nhật có diện tích $600$ $m^2$. Người ta muốn rào xung quanh bằng hai loại dây: Cạnh dài dùng loại dây giá $15000$ đ/m, cạnh ngắn dùng loại dây giá $10000$ đ/m. Tìm kích thước khu đất sao cho chi phí rào thấp nhất.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chi phí rào là một biểu thức của hai cạnh liên hệ với nhau qua diện tích, nhưng cạnh dài phải không nhỏ hơn cạnh ngắn, và ràng buộc này ảnh hưởng đến chỗ đạt chi phí thấp nhất.\n**Bước 1.** Đặt hai ẩn là cạnh dài và cạnh ngắn, ghi điều kiện cạnh dài không nhỏ hơn cạnh ngắn và hệ thức từ diện tích.\n**Bước 2.** Viết chi phí rào bằng tổng tiền hai cạnh dài và hai cạnh ngắn, rồi đặt nhân tử chung để chỉ còn một biểu thức cần so sánh.\n**Bước 3.** Từ điều kiện cạnh dài không nhỏ hơn cạnh ngắn và diện tích không đổi, suy ra một cận dưới cho cạnh dài.\n**Bước 4.** Chứng minh biểu thức lớn hơn hoặc bằng một số cố định bằng cách đưa hiệu của chúng về dạng tích hai thừ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000254",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình sau: $\\begin{cases} 5x+7y=-1 \\\\ 3x+2y=-5 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** không có ẩn nào hệ số $\\pm1$, nên dùng phương pháp cộng đại số: nhân hai vế để hai hệ số của $y$ bằng nhau rồi trừ từng vế.\n**Bước 1.** Chọn khử ẩn $y$ vì hệ số $7$ và $2$ có bội chung nhỏ nhất là $14$.\n**Bước 2.** Nhân hai vế của phương trình thứ nhất với $2$ và hai vế của phương trình thứ hai với $7$ (nhớ nhân cả vế phải), để hệ số của $y$ đều bằng $14$.\n**Bước 3.** Trừ từng vế hai phương trình mới để được phương trình một ẩn $x$, giải ra $x$.\n**Bước 4.** Thay $x$ vào một phương trình ban đầu để tìm $y$ rồi kết luận nghiệm.\n**Phần 2. Trình bày**\nNhân hai vế của phương trình thứ nhất với $2$ và hai vế của phương trình thứ hai với $7$, ta được hệ:\n$\\begin{ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000377",
+  "loai": "tu_luan",
+  "de": "Một khách sạn có 50 phòng. Hiện tại mỗi phòng khách sạn cho thuê với giá 400 nghìn đồng một ngày và toàn bộ phòng đã được cho thuê hết. Biết cứ mỗi lần khách sạn tăng giá thuê phòng thêm 20 nghìn đồng mỗi ngày thì có thêm 2 phòng trống. Hỏi khách sạn nên tăng giá phòng thêm bao nhiêu để doanh thu của khách sạn trong một ngày là lớn nhất?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** doanh thu một ngày bằng giá một phòng nhân số phòng cho thuê, mà cả hai đều phụ thuộc số tiền tăng thêm nên doanh thu là biểu thức bậc hai của một ẩn; tìm giá trị lớn nhất bằng cách hoàn thành bình phương.\n**Bước 1.** Chọn ẩn là số tiền tăng thêm cho mỗi phòng (nghìn đồng) và dùng tỉ lệ \"tăng 20 nghìn đồng thì thêm 2 phòng trống\" để tính số phòng trống theo ẩn.\n**Bước 2.** Biểu diễn giá thuê mới của mỗi phòng và số phòng còn cho thuê qua ẩn, rồi viết doanh thu một ngày là tích của hai biểu thức đó.\n**Bước 3.** Khai triển rồi đưa doanh thu về dạng một số trừ đi tích của số dương với một bình phương, bằng cách hoàn thành bình phương.\n**Bước 4.** Vì bình phươ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030101049",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $A=\\sqrt{150}+\\dfrac12\\sqrt{24}-0{,}5\\sqrt{96}$.",
+  "dap_an": "$4\\sqrt{6}$",
+  "loi_giai": "$A=\\sqrt{150}+\\dfrac12\\sqrt{24}-0{,}5\\sqrt{96}$\n$A=5\\sqrt{6}+\\dfrac12\\cdot2\\sqrt{6}-0{,}5\\cdot4\\sqrt{6}$\n$A=5\\sqrt{6}+\\sqrt{6}-2\\sqrt{6}$\n$A=4\\sqrt{6}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109030101018",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $B=\\dfrac{8}{3+\\sqrt{5}}+\\sqrt{(3-2\\sqrt{5})^2}$.",
+  "dap_an": "3",
+  "loi_giai": "$B=\\dfrac{8}{3+\\sqrt{5}}+\\sqrt{(3-2\\sqrt{5})^2}$\n$B=\\dfrac{8(3-\\sqrt{5})}{9-5}+|3-2\\sqrt{5}|$\n$B=2(3-\\sqrt{5})+(2\\sqrt{5}-3)$\n$B=3$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109000000502",
+  "loai": "tu_luan",
+  "de": "Giải bất phương trình sau: $\\dfrac{2x-11}{-7}<\\dfrac{3x+5}{11}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** muốn khử mẫu mà không đổi chiều bất phương trình thì phải nhân hai vế với một số dương; mẫu $-7$ là số âm nên đổi dấu trước để mẫu thành $7$.\n**Bước 1.** Đổi dấu cả tử và mẫu của phân thức ở vế trái để mẫu trở thành số dương $7$.\n**Bước 2.** Nhân hai vế với $77$ (bội chung nhỏ nhất của $7$ và $11$, là số dương nên giữ nguyên chiều) để khử hết mẫu.\n**Bước 3.** Bỏ ngoặc, chuyển các hạng tử chứa $x$ sang một vế, số hạng tự do sang vế còn lại rồi thu gọn.\n**Bước 4.** Chia hai vế cho hệ số của $x$ và để ý hệ số đó dương hay âm để quyết định có đổi chiều hay không.\n**Phần 2. Trình bày**\n$\\dfrac{2x-11}{-7}<\\dfrac{3x+5}{11}$\n$\\dfrac{11-2x}{7}<\\dfrac{3x+5}{11}$\nNhâ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000382",
+  "loai": "tu_luan",
+  "de": "Giải bài toán bằng cách lập hệ phương trình:\nHai vòi nước cùng chảy vào một bể không có nước thì sau 3 giờ đầy bể. Nếu mở vòi 1 chảy một mình trong 20 phút rồi khoá lại, mở tiếp vòi 2 chảy trong 30 phút thì cả hai vòi chảy được $\\dfrac{1}{8}$ bể. Tính thời gian mỗi vòi chảy một mình đầy bể.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đặt ẩn là phần bể mỗi vòi chảy được trong $1$ giờ (nghịch đảo của thời gian chảy đầy bể) thì cả hai phương trình đều là phương trình bậc nhất.\n**Bước 1.** Gọi thời gian mỗi vòi chảy một mình đầy bể là hai ẩn, nêu điều kiện, rồi suy ra phần bể mỗi vòi chảy được trong một giờ.\n**Bước 2.** Lập phương trình thứ nhất từ việc hai vòi cùng chảy $3$ giờ thì đầy bể, tức mỗi giờ cả hai chảy được một phần ba bể.\n**Bước 3.** Đổi $20$ phút và $30$ phút ra giờ rồi lập phương trình thứ hai theo lượng nước mỗi vòi chảy được trong thời gian mở.\n**Bước 4.** Đặt ẩn phụ là phần bể chảy được trong một giờ của từng vòi, giải hệ bằng phương pháp cộng đại số rồi trở về ẩn ban đầu …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109020202024",
+  "loai": "tra_loi_ngan",
+  "de": "Giải bất phương trình: $2 - 3x > 2(x + 6)$",
+  "dap_an": "$x < -2$",
+  "loi_giai": "$2 - 3x > 2(x + 6)$\\n$2 - 3x > 2x + 12$\\n$-3x - 2x > 12 - 2$\\n$-5x > 10$\\n$x < -2$\\nVậy tập nghiệm của bất phương trình là $x < -2$.",
+  "nhan_cu": "Bất phương trình bậc nhất một ẩn › Giải bất phương trình quy về bất phương trình bậc nhất một ẩn -  Dạng đa thức"
+ },
+ {
+  "ma_cau": "T109030102082",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{49+12\\sqrt{5}}-\\sqrt{49-12\\sqrt{5}}$.",
+  "dap_an": "$4$",
+  "loi_giai": "$A=\\sqrt{49+12\\sqrt{5}}-\\sqrt{49-12\\sqrt{5}}$\n$A=\\sqrt{(2+3\\sqrt{5})^2}-\\sqrt{(2-3\\sqrt{5})^2}$\n$A=|2+3\\sqrt{5}|-|2-3\\sqrt{5}|$\n$A=2+3\\sqrt{5}-(3\\sqrt{5}-2)$\n$A=2+3\\sqrt{5}-3\\sqrt{5}+2$\n$A=4$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn"
+ },
+ {
+  "ma_cau": "T109000000120",
+  "loai": "trac_nghiem",
+  "de": "Viết bất đẳng thức biểu thị tình huống: \"Các phương tiện lưu thông trên một tuyến đường cao tốc với vận tốc là $x$ (km/h). Biết rằng tốc độ tối thiểu trên biển báo R.306 ở tuyến đường đó là 60 km/h.\"",
+  "lua_chon": [
+   "$x\\ge60$",
+   "$x\\le60$",
+   "$x<60$",
+   "$x>60$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** \"tối thiểu\" nghĩa là không được thấp hơn mức đó, và đúng bằng mức đó vẫn được phép.\n**Bước 1.** Dịch cụm \"tốc độ tối thiểu là 60 km/h\" thành ngôn ngữ bất đẳng thức: vận tốc không được nhỏ hơn 60.\n**Bước 2.** Xác định mức 60 có được phép hay không để chọn dấu có hoặc không có dấu bằng.\n**Bước 3.** Đối chiếu bất đẳng thức vừa viết với bốn phương án.\n**Chú ý:** \"tối thiểu\" ứng với dấu $\\ge$, còn \"tối đa\" ứng với dấu $\\le$.\n**Phần 2. Trình bày**\nTốc độ tối thiểu là 60 km/h nên vận tốc của các phương tiện phải lớn hơn hoặc bằng 60 km/h.\nDo đó $x\\ge60$.\nChọn A.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000332",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình sau: $\\begin{cases} 3x+2y=6 \\\\ 2x-2y=14 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hệ số của $y$ ở hai phương trình là $2$ và $-2$, đối nhau, nên cộng từng vế hai phương trình sẽ khử được $y$.\n**Bước 1.** Nhận ra hệ số của $y$ đã đối nhau, không cần nhân thêm số nào.\n**Bước 2.** Cộng từng vế hai phương trình để được một phương trình bậc nhất một ẩn $x$ rồi giải.\n**Bước 3.** Thế giá trị $x$ vừa tìm vào một phương trình của hệ để tìm $y$, rồi kết luận nghiệm.\n**Phần 2. Trình bày**\nCộng từng vế hai phương trình của hệ, ta được $5x=20$ suy ra $x=4$.\nThay $x=4$ vào phương trình $3x+2y=6$, ta được $12+2y=6$ suy ra $y=-3$.\nVậy hệ phương trình đã cho có nghiệm là $(x;y)=(4;-3)$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030301011",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+7}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm $x$ để $P^2=4$.",
+  "dap_an": "9",
+  "loi_giai": "TH1: $P=2$.\n$\\dfrac{\\sqrt{x}+7}{\\sqrt{x}+2}=2$\n$\\sqrt{x}+7=2(\\sqrt{x}+2)$\n$\\sqrt{x}+7=2\\sqrt{x}+4$\n$\\sqrt{x}=3$\n$x=9$ (TMĐK).\nTH2: $P=-2$.\n$\\dfrac{\\sqrt{x}+7}{\\sqrt{x}+2}=-2$\n$\\sqrt{x}+7=-2(\\sqrt{x}+2)$\n$\\sqrt{x}+7=-2\\sqrt{x}-4$\n$3\\sqrt{x}=-11$\n$\\sqrt{x}=-\\dfrac{11}{3}$ (Vô lí).\nVậyy $x=9$ thì $P^2=4$.",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P thoả mãn Đẳng thức"
+ },
+ {
+  "ma_cau": "T109000000400",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình: $\\begin{cases} 3x=4y \\\\ 2x+5=y \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phương trình thứ hai đã cho sẵn $y$ theo $x$ (hệ số của $y$ là $1$), nên dùng phương pháp thế là gọn nhất.\n**Bước 1.** Chọn phương trình thứ hai để rút $y$ theo $x$ vì ở đó $y$ có hệ số $1$, không phải chia.\n**Bước 2.** Thế biểu thức của $y$ vào phương trình thứ nhất để được phương trình bậc nhất một ẩn $x$ và giải nó.\n**Bước 3.** Thay giá trị $x$ tìm được vào biểu thức rút $y$ để tìm $y$, rồi kết luận nghiệm của hệ.\n**Thử lại:** thay cặp nghiệm vào cả hai phương trình ban đầu, hai vế phải bằng nhau.\n**Phần 2. Trình bày**\nTừ phương trình thứ hai, ta có $y=2x+5$ (1).\nThế (1) vào phương trình thứ nhất, ta được:\n$3x=4(2x+5)$\n$3x=8x+20$\n$3x-8x=20$\n$-5x=20$\n$x= …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030102010",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{9+4\\sqrt5}-\\sqrt{9-4\\sqrt5}$.",
+  "dap_an": "$4$",
+  "loi_giai": "$A=\\sqrt{9+4\\sqrt5}-\\sqrt{9-4\\sqrt5}$\n$A=\\sqrt{(2+\\sqrt5)^2}-\\sqrt{(2-\\sqrt5)^2}$\n$A=|2+\\sqrt5|-|2-\\sqrt5|$\n$A=2+\\sqrt5-(\\sqrt5-2)$\n$A=4$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn"
+ },
+ {
+  "ma_cau": "T109020304028",
+  "loai": "tra_loi_ngan",
+  "de": "Hai ô tô khởi hành cùng một lúc từ A đến B. Vận tốc của ô tô thứ nhất lớn hơn vận tốc của ô tô thứ hai là $15 \\text{km/h}$ nên ô tô thứ nhất đến trước ô tô thứ hai $30$ phút. Tính vận tốc mỗi ô tô biết quãng đường AB dài $150 \\text{ km}$.",
+  "dap_an": "75; 60",
+  "loi_giai": "Đổi $30$ phút $= \\dfrac{1}{2}$ (giờ)\nGọi vận tốc của ô tô thứ nhất là $x$ (km/h, $x > 0$).\nVận tốc ô tô thứ nhất lớn hơn vận tốc của ô tô thứ hai là $15 \\text{ km/h}$ nên vận tốc của ô tô thứ hai là: $x - 15$ (km/h).\nThời gian ô tô thứ nhất đi quãng đường AB là: $\\dfrac{150}{x}$ (giờ)\nThời gian ô tô thứ hai đi quãng đường AB là: $\\dfrac{150}{x-15}$ (giờ)\nVì ô tô thứ nhất đến trước ô tô thứ hai $30$ phút nên ta có PT:\n$\\dfrac{150}{x-15} - \\dfrac{150}{x} = \\dfrac{1}{2}$\n$\\dfrac{150x - 150(x - 15)}{x(x - 15)} = \\dfrac{1}{2}$\n$\\dfrac{150x - 150x + 2250}{x(x - 15)} = \\dfrac{1}{2}$\n$\\dfrac{2250}{x(x - 15)} = \\dfrac{1}{2}$\n$x(x - 15) = 2 \\cdot 2250$\n$x^2 - 15x - 4500 = 0$\n$(x + 60)(x - 75) = 0$\nTH1 …",
+  "nhan_cu": "Giải toán bằng cách lập phương trình › Bài toán Chuyển động cổ điển"
+ },
+ {
+  "ma_cau": "T109030101005",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $\\sqrt{36}\\cdot\\sqrt{25}+\\sqrt{625}:\\sqrt{25}$.",
+  "dap_an": "35",
+  "loi_giai": "$\\sqrt{36}\\cdot\\sqrt{25}+\\sqrt{625}:\\sqrt{25}$\n$=6\\cdot5+25:5$\n$=30+5$\n$=35$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109030102078",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{29+12\\sqrt{5}}-\\sqrt{29-12\\sqrt{5}}$.",
+  "dap_an": "$6$",
+  "loi_giai": "$A=\\sqrt{29+12\\sqrt{5}}-\\sqrt{29-12\\sqrt{5}}$\n$A=\\sqrt{(3+2\\sqrt{5})^2}-\\sqrt{(3-2\\sqrt{5})^2}$\n$A=|3+2\\sqrt{5}|-|3-2\\sqrt{5}|$\n$A=3+2\\sqrt{5}-(2\\sqrt{5}-3)$\n$A=3+2\\sqrt{5}-2\\sqrt{5}+3$\n$A=6$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn"
+ },
+ {
+  "ma_cau": "T109000000184",
+  "loai": "tra_loi_ngan",
+  "de": "Một ca nô xuôi dòng từ bến $A$ đến bến $B$ hết $5$ giờ. Thời gian ca nô ngược dòng từ bến $B$ về bến $A$ hết $7$ giờ. Tính quãng đường $AB$ biết vận tốc dòng nước là $3$ km/h.",
+  "dap_an": "105",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** quãng đường $AB$ không đổi dù xuôi hay ngược dòng, nên lập phương trình bằng cách cho hai cách tính quãng đường này bằng nhau.\n**Bước 1.** Chọn ẩn là vận tốc riêng của ca nô (khi nước đứng yên) và nêu điều kiện cho ẩn.\n**Bước 2.** Biểu diễn vận tốc xuôi dòng và ngược dòng theo vận tốc riêng và vận tốc dòng nước, rồi tính quãng đường $AB$ theo hai cách.\n**Bước 3.** Cho hai biểu thức quãng đường bằng nhau, giải phương trình bậc nhất để tìm vận tốc riêng.\n**Bước 4.** Dùng vận tốc riêng vừa tìm để tính quãng đường $AB$ rồi trả lời đúng điều đề hỏi.\n**Chú ý:** đề hỏi quãng đường, không phải vận tốc, nên nghiệm của phương trình chưa phải là câu trả lời.\n**Phần 2 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030101107",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $\\sqrt{12}-2\\sqrt{27}-3\\sqrt{48}+\\sqrt{75}$.",
+  "dap_an": "$-11\\sqrt{3}$",
+  "loi_giai": "$\\sqrt{12}-2\\sqrt{27}-3\\sqrt{48}+\\sqrt{75}$\n$=2\\sqrt{3}-2\\cdot3\\sqrt{3}-3\\cdot4\\sqrt{3}+5\\sqrt{3}$\n$=2\\sqrt{3}-6\\sqrt{3}-12\\sqrt{3}+5\\sqrt{3}$\n$=-11\\sqrt{3}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109000000481",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $(x+3)(x-8)=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** vế trái đã là một tích, vế phải bằng $0$ nên dùng tính chất: tích bằng $0$ khi có ít nhất một thừa số bằng $0$.\n**Bước 1.** Nhận ra phương trình đã ở dạng phương trình tích $A \\cdot B=0$ nên không cần khai triển.\n**Bước 2.** Cho từng thừa số bằng $0$ và giải hai phương trình bậc nhất một ẩn riêng rẽ.\n**Bước 3.** Gộp hai kết quả và kết luận phương trình có mấy nghiệm.\n**Phần 2. Trình bày**\nTa có $(x+3)(x-8)=0$.\nSuy ra $x+3=0$ hoặc $x-8=0$.\n• $x+3=0$ suy ra $x=-3$.\n• $x-8=0$ suy ra $x=8$.\nVậy phương trình đã cho có hai nghiệm là $x=-3$ và $x=8$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030102015",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{28+8\\sqrt6}+\\sqrt{10-4\\sqrt6}$.",
+  "dap_an": "$3\\sqrt6$",
+  "loi_giai": "$A=\\sqrt{28+8\\sqrt6}+\\sqrt{10-4\\sqrt6}$\n$A=\\sqrt{(2\\sqrt6+2)^2}+\\sqrt{(\\sqrt6-2)^2}$\n$A=|2\\sqrt6+2|+|\\sqrt6-2|$\n$A=2\\sqrt6+2+\\sqrt6-2$\n$A=3\\sqrt6$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn"
+ },
+ {
+  "ma_cau": "T109000000352",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình sau: $\\dfrac{3-x}{2}=\\dfrac{3x-4}{4}$.",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai vế là hai phân thức có mẫu là số, nên quy đồng rồi khử mẫu để đưa về phương trình bậc nhất một ẩn.\n**Bước 1.** Chọn mẫu chung của hai vế là $4$ (vì $4$ chia hết cho $2$) rồi nhân hai vế với $4$ để khử mẫu.\n**Bước 2.** Bỏ ngoặc ở vế trái, chuyển các hạng tử chứa $x$ sang một vế, số hạng tự do sang vế kia.\n**Bước 3.** Chia hai vế cho hệ số của $x$ rồi kết luận nghiệm.\n**Chú ý:** khi nhân hai vế với $4$ phải nhân cả vế phải; $\\dfrac{3-x}{2}\\cdot4=2(3-x)$, đừng quên nhân $2$ cho cả hai hạng tử trong ngoặc.\n**Phần 2. Trình bày**\nNhân hai vế với $4$, ta được:\n$2(3-x)=3x-4$\n$6-2x=3x-4$\n$-2x-3x=-4-6$\n$-5x=-10$\n$x=2$\nVậy phương trình đã cho có nghiệm là $x=2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000268",
+  "loai": "tu_luan",
+  "de": "Một ngân hàng đang áp dụng lãi suất gửi tiết kiệm kì hạn $12$ tháng là $4{,}8\\%$. Hỏi nếu bác An muốn nhận được số tiền lãi ít nhất $1{,}2$ triệu đồng sau $12$ tháng thì số tiền bác gửi tiết kiệm ít nhất là bao nhiêu?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tiền lãi sau $12$ tháng bằng $4{,}8\\%$ số tiền gửi; \"ít nhất\" cho ta một bất phương trình chứ không phải phương trình.\n**Bước 1.** Gọi số tiền gửi là ẩn, đặt đơn vị là triệu đồng cho cùng đơn vị với số tiền lãi.\n**Bước 2.** Biểu diễn tiền lãi sau $12$ tháng theo ẩn rồi lập bất phương trình từ điều kiện tiền lãi ít nhất bằng mức đề cho.\n**Bước 3.** Giải bất phương trình bậc nhất một ẩn và trả lời bằng đúng đơn vị của đề.\n**Phần 2. Trình bày**\nGọi số tiền bác An gửi tiết kiệm là $x$ (triệu đồng, $x>0$).\nTiền lãi sau $12$ tháng là $4{,}8\\% \\cdot x=0{,}048x$ (triệu đồng).\nĐể nhận được tiền lãi ít nhất $1{,}2$ triệu đồng thì:\n$0{,}048x\\ge1{,}2$\n$x\\ge\\dfrac{1{,} …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000498",
+  "loai": "tra_loi_ngan",
+  "de": "Mưa Đỏ là một tiểu thuyết nổi tiếng viết về cuộc kháng chiến chống Mĩ của quân dân Việt Nam do nhà văn Chu Lai sáng tác, lấy bối cảnh 81 ngày đêm ác liệt ở Thành cổ Quảng Trị, mùa hè năm 1972. Bạn An dự định đọc hết cuốn tiểu thuyết này trong một khoảng thời gian nhất định, mỗi ngày đọc một số trang như nhau. Tuy nhiên:\n- Nếu mỗi ngày An đọc nhiều hơn dự định 9 trang, thì bạn ấy sẽ hoàn thành sớm hơn 2 ngày.\n- Ngược lại, nếu mỗi ngày An đọc ít hơn dự định 12 trang, thì bạn ấy phải mất thêm 5 ngày mới đọc xong.\nHỏi cuốn tiểu thuyết Mưa Đỏ dài bao nhiêu trang?",
+  "dap_an": "360",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số trang của cuốn sách không đổi, nên (số trang mỗi ngày) $\\cdot$ (số ngày) luôn bằng cùng một số ở cả ba tình huống; hai tình huống thay đổi cho hai phương trình.\n**Bước 1.** Gọi $x$ là số trang dự định đọc mỗi ngày và $y$ là số ngày dự định đọc hết, khi đó số trang của cuốn sách là $xy$; nêu điều kiện của hai ẩn.\n**Bước 2.** Với mỗi tình huống thay đổi, viết số trang mỗi ngày và số ngày mới, cho tích của chúng bằng $xy$ để lập hai phương trình.\n**Bước 3.** Khai triển rồi trừ $xy$ ở hai vế, được hệ hai phương trình bậc nhất hai ẩn.\n**Bước 4.** Giải hệ bằng phương pháp cộng đại số, đối chiếu điều kiện, rồi tính $xy$ để trả lời câu hỏi.\n**Chú ý:** câu hỏi l …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000358",
+  "loai": "tu_luan",
+  "de": "Giải phương trình: $(7-x)(2x-6)=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** vế trái đã là tích của hai biểu thức và vế phải bằng $0$, nên đây là phương trình tích: tích bằng $0$ khi có ít nhất một thừa số bằng $0$.\n**Bước 1.** Nhận ra phương trình đã ở dạng $A \\cdot B=0$, không cần khai triển ngoặc.\n**Bước 2.** Cho từng thừa số bằng $0$ và giải hai phương trình bậc nhất một ẩn.\n**Bước 3.** Kết luận bằng lời, nêu đủ cả hai nghiệm.\n**Chú ý:** không chia hai vế cho một biểu thức chứa $x$ vì sẽ làm mất nghiệm.\n**Phần 2. Trình bày**\n$(7-x)(2x-6)=0$\nSuy ra $7-x=0$ hoặc $2x-6=0$.\n• $7-x=0$ suy ra $x=7$.\n• $2x-6=0$ suy ra $2x=6$, do đó $x=3$.\nVậy phương trình đã cho có hai nghiệm là $x=7$ và $x=3$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030304021",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{7\\sqrt{x}}{3\\sqrt{x}+1}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "0; 1/16; 4",
+  "loi_giai": "Ta có $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow P\\ge0$.\nVới $x>0$ thì $\\sqrt{x}>0\\Rightarrow3\\sqrt{x}+1>3\\sqrt{x}$.\n$\\Rightarrow\\dfrac{7\\sqrt{x}}{3\\sqrt{x}+1}<\\dfrac{7\\sqrt{x}}{3\\sqrt{x}}=\\dfrac{7}{3}$.\nDo đó $0\\le P<\\dfrac{7}{3}$. Mà $P$ nguyên nên $P\\in\\{0;1;2\\}$.\nTH1:\n$P=0\\Rightarrow\\dfrac{7\\sqrt{x}}{3\\sqrt{x}+1}=0\\Rightarrow7\\sqrt{x}=0\\Rightarrow\\sqrt{x}=0\\Rightarrow x=0$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=1\\Rightarrow\\dfrac{7\\sqrt{x}}{3\\sqrt{x}+1}=1\\Rightarrow7\\sqrt{x}=3\\sqrt{x}+1\\Rightarrow4\\sqrt{x}=1\\Rightarrow\\sqrt{x}=\\dfrac{1}{4}\\Rightarrow x=\\dfrac{1}{16}$ (thỏa mãn ĐKXĐ).\nTH3:\n$P=2\\Rightarrow\\dfrac{7\\sqrt{x}}{3\\sqrt{x}+1}=2\\Rightarrow7\\sqrt{x}=6\\sqrt{x}+2\\Rightarrow\\sqrt{x}=2\\Rightarrow x=4$ …",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P nguyên"
+ },
+ {
+  "ma_cau": "T109000000469",
+  "loai": "tu_luan",
+  "de": "Một công ty bất động sản có $40$ căn hộ cho thuê. Ban đầu, công ty cho thuê mỗi căn với giá $5$ triệu đồng/$1$ tháng thì mọi căn hộ đều có người thuê. Vì muốn tăng doanh thu nên công ty đã tăng giá. Biết rằng cứ mỗi lần tăng giá cho thuê mỗi căn thêm $500$ nghìn đồng/$1$ tháng thì có $2$ căn bị bỏ trống (không có người thuê). Hỏi công ty muốn có doanh thu cao nhất thì phải cho thuê mỗi căn bao nhiêu tiền/$1$ tháng?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** doanh thu bằng giá thuê một căn nhân với số căn có người thuê; cả hai đều thay đổi theo số lần tăng giá, nên lấy số lần tăng giá làm ẩn và đưa doanh thu về dạng \"hằng số trừ một bình phương\".\n**Bước 1.** Gọi số lần tăng giá là ẩn $x$, biểu diễn giá thuê mỗi căn và số căn có người thuê theo $x$, kèm điều kiện để số căn không âm.\n**Bước 2.** Lập biểu thức doanh thu bằng tích của hai biểu thức đó rồi nhân ra thành đa thức bậc hai theo $x$.\n**Bước 3.** Đặt dấu trừ làm nhân tử chung ở các hạng tử chứa $x$ và hoàn thành bình phương để viết doanh thu thành hằng số trừ một bình phương.\n**Bước 4.** Đánh giá giá trị lớn nhất nhờ bình phương luôn không âm, tìm $x$ để …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000289",
+  "loai": "tu_luan",
+  "de": "Giải bất phương trình: $\\dfrac{x+1}{3}-\\dfrac{x+2}{4}\\le\\dfrac{x-2}{6}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** quy đồng rồi khử mẫu bằng một số **dương** thì chiều bất phương trình giữ nguyên; chiều chỉ đổi khi nhân hoặc chia hai vế với số âm.\n**Bước 1.** Tìm mẫu chung nhỏ nhất của $3$, $4$, $6$ rồi nhân cả hai vế với số đó để khử mẫu.\n**Bước 2.** Bỏ ngoặc và thu gọn từng vế, chú ý dấu trừ đứng trước phân thức thứ hai.\n**Bước 3.** Chuyển các hạng tử chứa $x$ về một vế, các số hạng tự do về vế còn lại.\n**Bước 4.** Chia hai vế cho hệ số của $x$ (đổi chiều nếu hệ số âm) rồi kết luận nghiệm.\n**Chú ý:** khi bỏ ngoặc sau dấu trừ phải đổi dấu cả hai hạng tử trong ngoặc.\n**Phần 2. Trình bày**\n$\\dfrac{x+1}{3}-\\dfrac{x+2}{4}\\le\\dfrac{x-2}{6}$\nNhân hai vế với $12$ (số dương n …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030102132",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{7-\\sqrt{13}}+\\sqrt{7+\\sqrt{13}}$.",
+  "dap_an": "$\\sqrt{26}$",
+  "loi_giai": "$A=\\sqrt{7-\\sqrt{13}}+\\sqrt{7+\\sqrt{13}}$\n$A=\\sqrt{\\dfrac{28-4\\sqrt{13}}{4}}+\\sqrt{\\dfrac{28+4\\sqrt{13}}{4}}$\n$A=\\sqrt{\\dfrac{26-2\\sqrt{2}\\cdot \\sqrt{26}+2}{4}}+\\sqrt{\\dfrac{26+2\\sqrt{2}\\cdot \\sqrt{26}+2}{4}}$\n$A=\\dfrac{1}{2}\\sqrt{(\\sqrt{26}-\\sqrt{2})^2}+\\dfrac{1}{2}\\sqrt{(\\sqrt{26}+\\sqrt{2})^2}$\n$A=\\dfrac{1}{2}(\\sqrt{26}-\\sqrt{2})+\\dfrac{1}{2}(\\sqrt{26}+\\sqrt{2})$\n$A=\\sqrt{26}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn"
+ },
+ {
+  "ma_cau": "T109030101042",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $B=\\dfrac{44}{5+\\sqrt{3}}+\\sqrt{(3-2\\sqrt{3})^2}$.",
+  "dap_an": "7",
+  "loi_giai": "$B=\\dfrac{44}{5+\\sqrt{3}}+\\sqrt{(3-2\\sqrt{3})^2}$\n$B=\\dfrac{44(5-\\sqrt{3})}{(5+\\sqrt{3})(5-\\sqrt{3})}+|3-2\\sqrt{3}|$\n$B=\\dfrac{44(5-\\sqrt{3})}{25-3}+|3-2\\sqrt{3}|$\n$B=2(5-\\sqrt{3})+(2\\sqrt{3}-3)$\n$B=7$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109000000328",
+  "loai": "tu_luan",
+  "de": "Giải bài toán bằng cách lập hệ phương trình:\nĐoàn khách $250$ người gồm người lớn và trẻ em tham gia trải nghiệm tại một khu du lịch. Biết giá vé vào cổng của khu du lịch này: người lớn là $80\\,000$ đồng/vé, trẻ em là $60\\,000$ đồng/vé. Do đang thực hiện chương trình khuyến mại nên giảm $5\\%$ cho mỗi vé vào cổng của trẻ em. Vì vậy đoàn khách chỉ phải trả tổng số tiền là $14\\,480\\,000$ đồng. Hỏi đoàn khách có bao nhiêu người lớn, bao nhiêu trẻ em?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** khuyến mại chỉ giảm giá vé của trẻ em, nên phải tính giá vé trẻ em sau giảm trước khi lập phương trình về tiền.\n**Bước 1.** Chọn hai ẩn là số người lớn và số trẻ em, nêu điều kiện là các số nguyên dương.\n**Bước 2.** Lập phương trình thứ nhất từ tổng số người của đoàn khách.\n**Bước 3.** Tính giá vé trẻ em sau khi giảm rồi lập phương trình thứ hai từ tổng số tiền phải trả.\n**Bước 4.** Giải hệ bằng phương pháp thế, đối chiếu điều kiện và trả lời đủ cả hai câu hỏi của đề.\n**Phần 2. Trình bày**\nGọi $x$ là số người lớn, $y$ là số trẻ em của đoàn khách ($x,y\\in\\mathbb{N}^*$).\nĐoàn khách có $250$ người nên $x+y=250$ (1).\nGiá vé của một trẻ em sau khi giảm $5\\%$ là …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000216",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình:\n$\\begin{cases} 2(x+3)-y=7 \\\\ 3x+2(y+1)=2 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hệ còn dấu ngoặc nên phải bỏ ngoặc và thu gọn từng phương trình về dạng $ax+by=c$ trước khi giải.\n**Bước 1.** Bỏ ngoặc ở mỗi phương trình, chuyển các số hạng tự do sang vế phải để đưa hệ về dạng $ax+by=c$.\n**Bước 2.** Chọn phương pháp cộng đại số: nhân một phương trình với số thích hợp để hệ số của $y$ đối nhau.\n**Bước 3.** Cộng từng vế để tìm $x$, rồi thay $x$ vào phương trình thu gọn đơn giản hơn để tìm $y$.\n**Chú ý:** hệ này có nghiệm là phân số, nên thay nghiệm ngược vào cả hai phương trình ban đầu để kiểm tra.\n**Phần 2. Trình bày**\nBỏ ngoặc và thu gọn hai phương trình, ta được:\n$2x+6-y=7$, suy ra $2x-y=1$ (1)\n$3x+2y+2=2$, suy ra $3x+2y=0$ (2)\nNhân hai …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000495",
+  "loai": "tu_luan",
+  "de": "Giải phương trình: $\\dfrac{x}{x-3}+\\dfrac{1}{x^2-3x}=\\dfrac{x-1}{x}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mẫu $x^2-3x=x(x-3)$ chính là mẫu chung của cả ba phân thức; phải đặt điều kiện xác định trước và đối chiếu nghiệm ở cuối.\n**Bước 1.** Phân tích $x^2-3x$ thành nhân tử để thấy mẫu chung và tìm điều kiện xác định (các mẫu phải khác $0$).\n**Bước 2.** Quy đồng mẫu ba phân thức rồi khử mẫu, được một phương trình không còn ẩn ở mẫu.\n**Bước 3.** Khai triển, thu gọn: hai vế đều có $x^2$ nên hạng tử này triệt tiêu, còn lại phương trình bậc nhất.\n**Bước 4.** Đối chiếu nghiệm với điều kiện xác định rồi mới kết luận.\n**Chú ý:** quên đối chiếu điều kiện xác định có thể nhận phải nghiệm ngoại lai.\n**Phần 2. Trình bày**\nTa có $x^2-3x=x(x-3)$.\nĐiều kiện xác định: $x\\ne0$  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000453",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình $\\begin{cases} 7x+4y=18 \\\\ 3x-4y=2 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai phương trình có hệ số của $y$ là hai số đối nhau, nên cộng từng vế sẽ làm mất ẩn $y$.\n**Bước 1.** Quan sát hệ số của từng ẩn ở hai phương trình để chọn ẩn có hệ số đối nhau hoặc bằng nhau.\n**Bước 2.** Cộng từng vế hai phương trình để được một phương trình chỉ chứa một ẩn rồi giải ra ẩn đó.\n**Bước 3.** Thay giá trị vừa tìm vào một trong hai phương trình của hệ để tìm ẩn còn lại.\n**Bước 4.** Kết luận nghiệm của hệ dưới dạng cặp số $(x;y)$.\n**Phần 2. Trình bày**\nCộng từng vế của hai phương trình, ta được:\n$(7x+4y)+(3x-4y)=18+2$\n$10x=20$\n$x=2$\nThay $x=2$ vào phương trình $7x+4y=18$, ta được:\n$7 \\cdot 2+4y=18$\n$14+4y=18$\n$4y=4$\n$y=1$\nVậy hệ phương trình đã  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000465",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $x^2-1=5(x+1)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** vế trái $x^2-1$ phân tích được thành $(x-1)(x+1)$ nên hai vế cùng có thừa số $x+1$; phải chuyển vế rồi đặt nhân tử chung, không được chia hai vế cho $x+1$.\n**Bước 1.** Phân tích vế trái bằng hằng đẳng thức hiệu hai bình phương để thấy thừa số chung với vế phải.\n**Bước 2.** Chuyển vế phải sang trái và đặt nhân tử chung để đưa về phương trình tích.\n**Bước 3.** Cho từng thừa số bằng $0$, giải hai phương trình bậc nhất rồi kết luận đủ cả hai nghiệm.\n**Chú ý:** nếu chia hai vế cho $x+1$ thì mất một nghiệm, vì có thể $x+1=0$.\n**Phần 2. Trình bày**\n$x^2-1=5(x+1)$\n$(x-1)(x+1)-5(x+1)=0$\n$(x+1)(x-1-5)=0$\n$(x+1)(x-6)=0$\nSuy ra $x+1=0$ hoặc $x-6=0$.\nVới $x+1=0$ thì $x …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000507",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty cần thuê xe để vận chuyển $76$ tấn hàng. Đơn vị cho thuê xe chỉ có hai loại xe. Loại xe thứ nhất mỗi xe chở được $15$ tấn hàng có giá thuê là $13$ triệu đồng cho mỗi lượt vận chuyển. Loại xe thứ hai mỗi xe chở được $10$ tấn hàng có giá thuê là $9$ triệu đồng cho mỗi lượt vận chuyển. Hỏi chi phí thuê xe nhỏ nhất mà công ty phải trả để vận chuyển $76$ tấn hàng là bao nhiêu (triệu đồng)?",
+  "dap_an": "70",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số xe mỗi loại là số tự nhiên và tổng sức chở phải không nhỏ hơn $76$ tấn (không thể đúng $76$ vì tổng sức chở luôn là bội của $5$); chỉ có hữu hạn cách thuê hợp lí nên liệt kê rồi so sánh chi phí.\n**Bước 1.** Gọi số xe loại thứ nhất và loại thứ hai là hai số tự nhiên $a$, $b$; viết điều kiện chở đủ hàng và biểu thức chi phí theo $a$, $b$.\n**Bước 2.** Với số xe loại thứ nhất đã cố định, chi phí tăng khi tăng số xe loại thứ hai, nên chỉ cần lấy số xe loại thứ hai nhỏ nhất vẫn chở đủ hàng.\n**Bước 3.** Lần lượt cho $a$ từ $0$ đến $5$, tìm số $b$ nhỏ nhất thoả mãn rồi tính chi phí tương ứng.\n**Bước 4.** Với $a$ từ $6$ trở lên chi phí đã vượt mọi giá trị trong  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030304028",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=3+\\dfrac{6}{\\sqrt{x}+1}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "0; 1/25; 1/4; 1; 4; 25",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+1>0\\Rightarrow\\dfrac{6}{\\sqrt{x}+1}>0\\Rightarrow P>3$.\nMặt khác $\\sqrt{x}+1\\ge1\\Rightarrow\\dfrac{6}{\\sqrt{x}+1}\\le6\\Rightarrow P\\le9$.\nVậy $3<P\\le9$. Mà $P$ nguyên nên $P\\in\\{4;5;6;7;8;9\\}$.\nTH1:\n$P=4\\Rightarrow3+\\dfrac{6}{\\sqrt{x}+1}=4\\Rightarrow\\dfrac{6}{\\sqrt{x}+1}=1\\Rightarrow\\sqrt{x}=5\\Rightarrow x=25$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=5\\Rightarrow3+\\dfrac{6}{\\sqrt{x}+1}=5\\Rightarrow\\dfrac{6}{\\sqrt{x}+1}=2\\Rightarrow\\sqrt{x}=2\\Rightarrow x=4$ (thỏa mãn ĐKXĐ).\nTH3:\n$P=6\\Rightarrow3+\\dfrac{6}{\\sqrt{x}+1}=6\\Rightarrow\\dfrac{6}{\\sqrt{x}+1}=3\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$ (thỏa mãn ĐKXĐ).\nTH4:\n$P=7\\Rightarrow3+\\dfrac{6}{\\sqrt{x}+1}=7\\Rightarrow\\dfrac{6}{\\sqrt{x}+1} …",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P nguyên"
+ },
+ {
+  "ma_cau": "T109030304078",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=4-\\dfrac{5}{\\sqrt{x}+3}$ $(x\\ge0)$. Tìm giá trị của $x$ để $P$ nhận giá trị nguyên lớn nhất.",
+  "dap_an": "4",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+3\\ge3\\Rightarrow0<\\dfrac{5}{\\sqrt{x}+3}\\le\\dfrac{5}{3}$.\n$\\Rightarrow\\dfrac{7}{3}\\le4-\\dfrac{5}{\\sqrt{x}+3}<4$.\nVậy $\\dfrac{7}{3}\\le P<4$. Mà $P$ nguyên nên $P=3$.\nDo đó giá trị nguyên lớn nhất của $P$ là 3.\n$P=3\\Rightarrow4-\\dfrac{5}{\\sqrt{x}+3}=3\\Rightarrow\\dfrac{5}{\\sqrt{x}+3}=1\\Rightarrow\\sqrt{x}+3=5\\Rightarrow\\sqrt{x}=2\\Rightarrow x=4$ (thỏa mãn ĐKXĐ).\nVậy $x=4$ thì $P$ nhận giá trị nguyên lớn nhất.",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P nguyên"
+ },
+ {
+  "ma_cau": "T109030102063",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{15+4\\sqrt{11}}-\\sqrt{17-2\\sqrt{66}}$.",
+  "dap_an": "$2+\\sqrt{6}$",
+  "loi_giai": "$A=\\sqrt{15+4\\sqrt{11}}-\\sqrt{17-2\\sqrt{66}}$\n$A=\\sqrt{(2+\\sqrt{11})^2}-\\sqrt{(\\sqrt{11}-\\sqrt{6})^2}$\n$A=|2+\\sqrt{11}|-|\\sqrt{11}-\\sqrt{6}|$\n$A=2+\\sqrt{11}-(\\sqrt{11}-\\sqrt{6})$\n$A=2+\\sqrt{6}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn"
+ },
+ {
+  "ma_cau": "T109030101030",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $B=\\left(\\dfrac{\\sqrt{12}+\\sqrt{6}}{1+\\sqrt{2}}+\\dfrac{23}{\\sqrt{29}-\\sqrt{6}}\\right)(\\sqrt{29}-\\sqrt{24})$.",
+  "dap_an": "5",
+  "loi_giai": "$B=\\left(\\dfrac{\\sqrt{12}+\\sqrt{6}}{1+\\sqrt{2}}+\\dfrac{23}{\\sqrt{29}-\\sqrt{6}}\\right)(\\sqrt{29}-\\sqrt{24})$\n$B=\\left(\\dfrac{\\sqrt{6}(\\sqrt{2}+1)}{1+\\sqrt{2}}+\\dfrac{23(\\sqrt{29}+\\sqrt{6})}{29-6}\\right)(\\sqrt{29}-2\\sqrt{6})$\n$B=(\\sqrt{6}+\\sqrt{29}+\\sqrt{6})(\\sqrt{29}-2\\sqrt{6})$\n$B=(\\sqrt{29}+2\\sqrt{6})(\\sqrt{29}-2\\sqrt{6})$\n$B=29-24$\n$B=5$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109020202026",
+  "loai": "tra_loi_ngan",
+  "de": "Giải bất phương trình: $(x+2)(3x-1) < 3x^2 - 5x + 3$.",
+  "dap_an": "$x < \\dfrac{1}{2}$",
+  "loi_giai": "$(x+2)(3x-1) < 3x^2 - 5x + 3\\\\\n3x^2 - x + 6x - 2 < 3x^2 - 5x + 3\\\\\n3x^2 - x + 6x - 3x^2 + 5x < 3 + 2\\\\\n10x < 5\\\\x < \\dfrac{5}{10}\\\\\nx < \\dfrac{1}{2}\\\\$\nVậy tập nghiệm của bất phương trình là $x < \\dfrac{1}{2}$.",
+  "nhan_cu": "Bất phương trình bậc nhất một ẩn › Giải bất phương trình quy về bất phương trình bậc nhất một ẩn -  Dạng đa thức"
+ },
+ {
+  "ma_cau": "T109000000306",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $(3x-1)(x+2)=x^2-4$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** vế phải $x^2-4$ phân tích được thành $(x-2)(x+2)$, có chung nhân tử $x+2$ với vế trái; chuyển hết về một vế rồi đặt nhân tử chung để đưa về phương trình tích.\n**Bước 1.** Phân tích $x^2-4$ thành tích hai nhân tử bằng hằng đẳng thức hiệu hai bình phương để thấy nhân tử chung với vế trái.\n**Bước 2.** Chuyển vế phải sang vế trái và đặt $x+2$ làm nhân tử chung, được dạng $A \\cdot B=0$.\n**Bước 3.** Thu gọn thừa số còn lại thành biểu thức bậc nhất, rồi cho từng thừa số bằng 0 và giải hai phương trình bậc nhất.\n**Chú ý:** không chia hai vế cho $x+2$ vì $x+2$ có thể bằng 0, làm mất một nghiệm.\n**Phần 2. Trình bày**\n$(3x-1)(x+2)=x^2-4$\n$(3x-1)(x+2)=(x-2)(x+2)$\n$(3x …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030102100",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{19+6\\sqrt{10}}+\\sqrt{19-6\\sqrt{10}}$.",
+  "dap_an": "$2\\sqrt{10}$",
+  "loi_giai": "$A=\\sqrt{19+6\\sqrt{10}}+\\sqrt{19-6\\sqrt{10}}$\n$A=\\sqrt{(\\sqrt{10}+3)^2}+\\sqrt{(\\sqrt{10}-3)^2}$\n$A=|\\sqrt{10}+3|+|\\sqrt{10}-3|$\n$A=\\sqrt{10}+3+\\sqrt{10}-3$\n$A=2\\sqrt{10}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn"
+ },
+ {
+  "ma_cau": "T109000000200",
+  "loai": "tu_luan",
+  "de": "Giải phương trình: $(6x-7)(3x+4)=(7-6x)(x-1)$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai vế cùng chứa thừa số $6x-7$ nhưng ở vế phải nó bị đổi dấu ($7-6x=-(6x-7)$), nên đặt nhân tử chung thay vì khai triển.\n**Bước 1.** Nhận ra thừa số chung của hai vế bằng cách đổi dấu $7-6x$ thành $-(6x-7)$.\n**Bước 2.** Chuyển hạng tử ở vế phải sang vế trái, đặt $6x-7$ làm nhân tử chung rồi thu gọn biểu thức trong ngoặc còn lại.\n**Bước 3.** Dùng tính chất: tích bằng $0$ thì có ít nhất một thừa số bằng $0$; giải hai phương trình bậc nhất rồi kết luận số nghiệm.\n**Chú ý:** không chia hai vế cho $6x-7$, vì khi $6x-7=0$ phép chia không thực hiện được và sẽ làm mất một nghiệm.\n**Phần 2. Trình bày**\n$(6x-7)(3x+4)=(7-6x)(x-1)$\nVì $7-6x=-(6x-7)$ nên ta có:\n$(6x-7 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109010309007",
+  "loai": "tra_loi_ngan",
+  "de": "Lúc 7 giờ, có một ô tô đi từ A đến B. Lúc 8 giờ, có một xe máy đi từ B về A. Hai xe gặp nhau lúc 9 giờ. Biết vận tốc của ô tô gấp đôi vận tốc xe máy và quãng đường AB dài 200 km. Tính vận tốc của ô tô và xe máy.",
+  "dap_an": "80; 40",
+  "loi_giai": "Gọi vận tốc của ô tô và xe máy lần lượt là $x,y$ (km/h) ($x > y > 0$).\nThời gian ô tô đi từ lúc xuất phát đến lúc gặp nhau là: $9 - 7 = 2$ (giờ)\nThời gian xe máy đi từ lúc xuất phát đến lúc gặp nhau là: $9 - 8 = 1$ (giờ)\nQuãng đường ô tô đi được là: $2x$ (km)\nQuãng đường xe máy đi được là: $1y$ (km)\nVì hai xe đi ngược chiều và gặp nhau lúc 9 giờ nên ta có PT: $2x + y = 200$ (1)\nVận tốc ô tô gấp đôi vận tốc xe máy nên ta có PT:\n$x = 2y$\n$x - 2y = 0$ (2)\nTừ (1) và (2) ta có HPT:\n$$\\begin{cases} 2x + y = 200 \\\\ x - 2y = 0 \\end{cases}$$\nGiải HPT ta được: $x = 80; y = 40$ (tmdk)\nVậy vận tốc của ô tô là 80 km/h, vận tốc của xe máy là 40 km/h.",
+  "nhan_cu": "Giải toán bằng cách lập Hệ phương trình › Bài toán Chuyển động Cùng chiều - Ngược chiều"
+ },
+ {
+  "ma_cau": "T109000000439",
+  "loai": "tu_luan",
+  "de": "Giải bất phương trình sau: $5x+18\\ge0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đây là bất phương trình bậc nhất một ẩn, ta chuyển số hạng tự do sang vế phải rồi chia hai vế cho hệ số của $x$.\n**Bước 1.** Chuyển hạng tử $18$ sang vế phải và đổi dấu thành $-18$.\n**Bước 2.** Chia hai vế cho hệ số $5$ của $x$; vì $5>0$ nên chiều bất đẳng thức giữ nguyên.\n**Bước 3.** Viết nghiệm dưới dạng $x\\ge$ một phân số rồi kết luận.\n**Phần 2. Trình bày**\n$5x+18\\ge0$\n$5x\\ge-18$\n$x\\ge-\\dfrac{18}{5}$\nVậy nghiệm của bất phương trình là $x\\ge-\\dfrac{18}{5}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030304062",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=1+\\dfrac{8}{\\sqrt{x}+3}$ $(x\\ge0)$. Tìm $x$ để $P$ nhận giá trị là số nguyên tố.",
+  "dap_an": "{1;25}",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+3>0\\Rightarrow\\dfrac{8}{\\sqrt{x}+3}>0\\Rightarrow P>1$.\nMặt khác $\\sqrt{x}+3\\ge3\\Rightarrow\\dfrac{8}{\\sqrt{x}+3}\\le\\dfrac{8}{3}\\Rightarrow P\\le\\dfrac{11}{3}$.\nVậy $1<P\\le\\dfrac{11}{3}$. Mà $P$ là số nguyên tố nên $P\\in\\{2;3\\}$.\nTH1:\n$P=2\\Rightarrow1+\\dfrac{8}{\\sqrt{x}+3}=2\\Rightarrow\\dfrac{8}{\\sqrt{x}+3}=1\\Rightarrow\\sqrt{x}+3=8\\Rightarrow\\sqrt{x}=5\\Rightarrow x=25$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=3\\Rightarrow1+\\dfrac{8}{\\sqrt{x}+3}=3\\Rightarrow\\dfrac{8}{\\sqrt{x}+3}=2\\Rightarrow\\sqrt{x}+3=4\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\{1;25\\}$ thì $P$ nhận giá trị là số nguyên tố.",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P nguyên"
+ },
+ {
+  "ma_cau": "T109030101014",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $B=\\sqrt{6}+\\sqrt{(\\sqrt{6}-3)^2}$.",
+  "dap_an": "3",
+  "loi_giai": "$B=\\sqrt{6}+\\sqrt{(\\sqrt{6}-3)^2}$\n$B=\\sqrt{6}+|\\sqrt{6}-3|$\n$B=\\sqrt{6}+(3-\\sqrt{6})$\n$B=3$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109030301024",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+10}{\\sqrt{x}+1}$ $(x\\ge0;x \\ne1)$. Tìm $x$ để $P^2=4$.",
+  "dap_an": "64",
+  "loi_giai": "TH1: $P=2$.\n$\\dfrac{\\sqrt{x}+10}{\\sqrt{x}+1}=2$\n$\\sqrt{x}+10=2(\\sqrt{x}+1)$\n$\\sqrt{x}+10=2\\sqrt{x}+2$\n$\\sqrt{x}=8$\n$x=64$ (TMĐK).\nTH2: $P=-2$.\n$\\dfrac{\\sqrt{x}+10}{\\sqrt{x}+1}=-2$\n$\\sqrt{x}+10=-2(\\sqrt{x}+$\n$\\sqrt{x}+10=-2\\sqrt{x}-2$\n$3\\sqrt{x}=-12$\n$\\sqrt{x}=-4$ (Vô lí).\nVậy $x=64$ thì $P^2=4$.",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P thoả mãn Đẳng thức"
+ },
+ {
+  "ma_cau": "T109000000413",
+  "loai": "tu_luan",
+  "de": "Giải bất phương trình: $\\dfrac{3x-1}{3}-\\dfrac{x}{6}>\\dfrac{x+1}{2}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** quy đồng rồi nhân hai vế với mẫu chung dương để khử mẫu thì chiều bất đẳng thức không đổi.\n**Bước 1.** Chọn mẫu chung của các phân số là số dương, nhân cả hai vế với số đó để bỏ mẫu và bỏ ngoặc.\n**Bước 2.** Chuyển các hạng tử chứa $x$ về một vế, các số hạng tự do về vế còn lại rồi thu gọn.\n**Bước 3.** Chia hai vế cho hệ số của $x$; chú ý hệ số đó âm hay dương để biết có đổi chiều hay không rồi kết luận.\n**Phần 2. Trình bày**\n$\\dfrac{3x-1}{3}-\\dfrac{x}{6}>\\dfrac{x+1}{2}$\nQuy đồng mẫu số $6$ rồi nhân hai vế với $6>0$, ta được:\n$2(3x-1)-x>3(x+1)$\n$6x-2-x>3x+3$\n$5x-2>3x+3$\n$5x-3x>3+2$\n$2x>5$\n$x>\\dfrac{5}{2}$ (chia hai vế cho $2>0$)\nVậy nghiệm của bất phương tr …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030202060",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}+6}{3\\sqrt{x}-2}$ tại $x=144$.",
+  "dap_an": "\\dfrac{9}{17}",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne\\dfrac{4}{9}$.\nThay $x=144$ (thỏa mãn ĐKXĐ) vào $A$ ta được:\n$A=\\dfrac{\\sqrt{144}+6}{3\\sqrt{144}-2}=\\dfrac{12+6}{3\\cdot12-2}=\\dfrac{18}{34}=\\dfrac{9}{17}$.",
+  "nhan_cu": "Rút gọn Căn thức › Tính giá trị Căn thức khi biết giá trị của biến"
+ },
+ {
+  "ma_cau": "T109030202020",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}+2}{\\sqrt{x}-6}$ tại $x=49$.",
+  "dap_an": "9",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne36$.\nThay $x=49$ (tm ĐKXĐ) vào $A$ ta được: $A=\\dfrac{\\sqrt{49}+2}{\\sqrt{49}-6}=\\dfrac{7+2}{7-6}=9$.",
+  "nhan_cu": "Rút gọn Căn thức › Tính giá trị Căn thức khi biết giá trị của biến"
+ },
+ {
+  "ma_cau": "T109030101024",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $A=\\sqrt{54}+\\dfrac13\\sqrt{216}-0{,}75\\sqrt{96}$.",
+  "dap_an": "$2\\sqrt{6}$",
+  "loi_giai": "$A=\\sqrt{54}+\\dfrac13\\sqrt{216}-0{,}75\\sqrt{96}$\n$A=3\\sqrt{6}+\\dfrac13\\cdot6\\sqrt{6}-0{,}75\\cdot4\\sqrt{6}$\n$A=3\\sqrt{6}+2\\sqrt{6}-3\\sqrt{6}$\n$A=2\\sqrt{6}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109000000373",
+  "loai": "tu_luan",
+  "de": "Giải phương trình: $(2x+1)^2=49$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** viết $49=7^2$ rồi chuyển về vế trái để có hiệu hai bình phương, từ đó phân tích thành tích.\n**Bước 1.** Chuyển $49$ sang vế trái để vế phải bằng $0$, vì chỉ giải được phương trình tích khi một vế là $0$.\n**Bước 2.** Viết $49$ thành $7^2$ và dùng hằng đẳng thức hiệu hai bình phương để phân tích vế trái thành tích hai thừa số.\n**Bước 3.** Cho từng thừa số bằng $0$, giải hai phương trình bậc nhất rồi kết luận.\n**Chú ý:** phương trình có hai nghiệm; quên trường hợp biểu thức trong ngoặc bằng $-7$ là lỗi hay gặp.\n**Phần 2. Trình bày**\n$(2x+1)^2=49$\n$(2x+1)^2-7^2=0$\n$(2x+1-7)(2x+1+7)=0$\n$(2x-6)(2x+8)=0$\nSuy ra $2x-6=0$ hoặc $2x+8=0$.\n• $2x-6=0$ suy ra $x=3$.\n• $ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000488",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình: $\\begin{cases} \\dfrac{1}{x}-\\dfrac{2}{y}=2 \\\\ \\dfrac{3}{x}+\\dfrac{1}{y}=1 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ẩn $x$, $y$ nằm ở mẫu và chỉ xuất hiện dưới dạng $\\dfrac{1}{x}$, $\\dfrac{1}{y}$, nên đặt hai ẩn phụ để đưa về hệ bậc nhất hai ẩn quen thuộc.\n**Bước 1.** Nêu điều kiện để các mẫu khác $0$, rồi đặt $u=\\dfrac{1}{x}$, $v=\\dfrac{1}{y}$ để viết lại hệ theo $u$, $v$.\n**Bước 2.** Giải hệ theo $u$, $v$ bằng phương pháp cộng đại số: nhân phương trình thứ hai với $2$ để hệ số của $v$ đối nhau rồi cộng hai phương trình.\n**Bước 3.** Từ $u$ tìm $v$, sau đó trả về ẩn cũ bằng cách lấy nghịch đảo, và đối chiếu với điều kiện đã nêu.\n**Chú ý:** phải nhân cả vế phải của phương trình thứ hai với $2$.\n**Phần 2. Trình bày**\nĐiều kiện: $x\\neq 0$, $y\\neq 0$.\nĐặt $u=\\dfrac{1}{x}$,  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000224",
+  "loai": "tu_luan",
+  "de": "Nhân dịp khai trương, một cửa hàng điện tử giảm giá 15% cho mỗi chiếc tai nghe và 20% cho mỗi chiếc chuột máy tính. Chú Hà mua 3 chiếc tai nghe và 2 chiếc chuột máy tính, sau khi giảm giá chú phải trả 701600 đồng. Biết rằng tổng số tiền chú Hà phải trả nếu không được giảm giá là 832000 đồng. Tính giá niêm yết (giá ban đầu khi chưa giảm) của mỗi chiếc tai nghe và mỗi chiếc chuột máy tính.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** có hai đại lượng chưa biết (giá hai loại hàng) và hai tổng tiền (trước và sau khi giảm), nên lập hệ hai phương trình bậc nhất hai ẩn.\n**Bước 1.** Chọn ẩn là giá niêm yết của mỗi chiếc tai nghe và mỗi chiếc chuột, kèm điều kiện và đơn vị của ẩn.\n**Bước 2.** Lập phương trình thứ nhất từ tổng số tiền khi chưa giảm giá, mua $3$ tai nghe và $2$ chuột.\n**Bước 3.** Lập phương trình thứ hai từ tổng số tiền sau khi giảm: giảm $15\\%$ nghĩa là còn $85\\%$ giá, giảm $20\\%$ nghĩa là còn $80\\%$ giá.\n**Bước 4.** Giải hệ bằng phương pháp cộng đại số: nhân một phương trình để hệ số của một ẩn bằng nhau rồi trừ từng vế.\n**Bước 5.** Thay ẩn vừa tìm vào phương trình còn lại để …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000376",
+  "loai": "tu_luan",
+  "de": "Tổng giá niêm yết của một quyển từ điển và một món đồ lưu niệm là 750 nghìn đồng. Bạn Minh mua hàng vào đúng dịp Lễ kỉ niệm 80 năm Quốc khánh 2/9 nên cửa hàng có chương trình khuyến mãi, giá quyển từ điển giảm $20\\%$, giá đồ lưu niệm giảm $10\\%$ so với giá niêm yết. Do đó, tổng số tiền mà bạn Minh phải trả là 630 nghìn đồng. Hỏi giá niêm yết của mỗi sản phẩm là bao nhiêu tiền?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** có hai đại lượng chưa biết (giá niêm yết của hai sản phẩm) và hai mối quan hệ (tổng giá niêm yết, tổng tiền sau giảm giá), nên lập hệ hai phương trình bậc nhất hai ẩn.\n**Bước 1.** Chọn ẩn là giá niêm yết của quyển từ điển và của món đồ lưu niệm, ghi rõ đơn vị nghìn đồng và điều kiện của ẩn.\n**Bước 2.** Lập phương trình thứ nhất từ dữ kiện tổng giá niêm yết của hai sản phẩm.\n**Bước 3.** Đổi phần trăm giảm giá thành phần trăm phải trả: giảm $20\\%$ thì còn phải trả $80\\%$ giá niêm yết, giảm $10\\%$ thì còn $90\\%$; từ đó lập phương trình thứ hai từ tổng số tiền phải trả.\n**Bước 4.** Giải hệ bằng phương pháp thế hoặc cộng đại số, đối chiếu điều kiện rồi trả lời  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000258",
+  "loai": "tu_luan",
+  "de": "Giải bất phương trình sau: $(x+1)(2x-1)<2x^2-4x+1$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai vế đều có $2x^2$, nên sau khi khai triển tích ở vế trái, hạng tử bậc hai triệt tiêu và còn bất phương trình bậc nhất.\n**Bước 1.** Nhân đa thức với đa thức ở vế trái để bỏ ngoặc và thu gọn.\n**Bước 2.** Chuyển các hạng tử chứa $x$ sang một vế, hằng số sang vế kia; hai hạng tử $2x^2$ ở hai vế triệt tiêu.\n**Bước 3.** Chia hai vế cho hệ số của $x$ (số dương nên giữ nguyên chiều) rồi kết luận bằng lời.\n**Phần 2. Trình bày**\n$(x+1)(2x-1)<2x^2-4x+1$\n$2x^2-x+2x-1<2x^2-4x+1$\n$2x^2+x-1<2x^2-4x+1$\n$x+4x<1+1$\n$5x<2$\n$x<\\dfrac{2}{5}$ (chia hai vế cho $5>0$ nên giữ nguyên chiều)\nVậy nghiệm của bất phương trình là $x<\\dfrac{2}{5}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000459",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình: $\\begin{cases} -2x+3y=1 \\\\ x+5y=32 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phương trình thứ hai có hệ số của $x$ bằng $1$ nên rút $x$ theo $y$ rồi thế vào phương trình thứ nhất (phương pháp thế) mà không sinh phân số.\n**Bước 1.** Từ phương trình thứ hai rút $x$ theo $y$, vì hệ số của $x$ là $1$.\n**Bước 2.** Thế biểu thức của $x$ vào phương trình thứ nhất để được phương trình bậc nhất một ẩn $y$ và giải tìm $y$.\n**Bước 3.** Thay giá trị của $y$ vào biểu thức rút ở bước 1 để tìm $x$, rồi kết luận nghiệm của hệ.\n**Thử lại:** thay cặp nghiệm tìm được vào cả hai phương trình của hệ ban đầu.\n**Phần 2. Trình bày**\nTừ phương trình thứ hai, ta có $x=32-5y$ (1).\nThế vào phương trình thứ nhất, ta được:\n$-2(32-5y)+3y=1$\n$-64+10y+3y=1$\n$13y=6 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000496",
+  "loai": "tu_luan",
+  "de": "Giải bất phương trình: $3x(x-1)-(x+2)(2-x)>(2x+1)^2-7x$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** sau khi khai triển và thu gọn, hai vế có cùng phần chứa $x$ nên khi chuyển vế các hạng tử chứa $x$ triệt tiêu hết, chỉ còn so sánh hai số.\n**Bước 1.** Khai triển vế trái: nhân đơn thức với đa thức và nhân hai đa thức, chú ý dấu trừ đứng trước ngoặc thứ hai.\n**Bước 2.** Khai triển vế phải bằng hằng đẳng thức bình phương của một tổng rồi thu gọn.\n**Bước 3.** Chuyển vế để các hạng tử chứa $x$ triệt tiêu, rồi xem bất đẳng thức giữa hai số còn lại đúng hay sai.\n**Bước 4.** Nếu bất đẳng thức đó sai thì không có giá trị nào của $x$ thoả mãn, bất phương trình vô nghiệm.\n**Chú ý:** $(x+2)(2-x)=4-x^2$, hai thừa số có dạng $(a+b)(a-b)$ nên dùng hằng đẳng thức hiệu ha …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000371",
+  "loai": "tra_loi_ngan",
+  "de": "Bạn Phong có $20$ chiếc sticker mang đổi quà tặng. Phong muốn đổi lấy $2$ chiếc bút và một số quyển sổ. Biết rằng, để đổi lấy một chiếc bút cần $3$ chiếc sticker, một quyển sổ cần $4$ chiếc sticker. Hỏi bạn Phong có thể đổi được nhiều nhất bao nhiêu quyển sổ?",
+  "dap_an": "3",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tổng số sticker dùng để đổi bút và sổ không được vượt quá $20$, nên lập bất phương trình bậc nhất một ẩn.\n**Bước 1.** Tính số sticker phải dành để đổi đủ $2$ chiếc bút, từ đó biết số sticker còn lại dùng cho sổ.\n**Bước 2.** Gọi số quyển sổ cần tìm là ẩn, lập bất phương trình: số sticker đổi sổ không vượt quá số sticker còn lại.\n**Bước 3.** Giải bất phương trình; vì số quyển sổ là số tự nhiên nên chọn số tự nhiên lớn nhất thoả mãn.\n**Chú ý:** nghiệm của bất phương trình có thể là số thập phân, nhưng số quyển sổ phải là số tự nhiên.\n**Phần 2. Trình bày**\nSố sticker dùng để đổi $2$ chiếc bút là $2 \\cdot 3=6$ (chiếc).\nSố sticker còn lại dành cho sổ nhiều nhất  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000452",
+  "loai": "tu_luan",
+  "de": "Giải phương trình $\\dfrac{4}{x(x-1)}+\\dfrac{3}{x}=\\dfrac{5}{x-1}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ẩn nằm ở mẫu nên phải nêu điều kiện xác định trước, sau đó quy đồng để khử mẫu và cuối cùng đối chiếu nghiệm với điều kiện.\n**Bước 1.** Tìm điều kiện xác định: mọi mẫu thức phải khác $0$.\n**Bước 2.** Quy đồng mẫu hai vế về mẫu chung $x(x-1)$ rồi khử mẫu để được phương trình bậc nhất một ẩn.\n**Bước 3.** Giải phương trình bậc nhất vừa thu được.\n**Bước 4.** Đối chiếu giá trị tìm được với điều kiện xác định rồi kết luận.\n**Chú ý:** nếu giá trị tìm được vi phạm điều kiện xác định thì phải loại.\n**Phần 2. Trình bày**\nĐiều kiện xác định: $x\\ne0$ và $x\\ne1$.\nQuy đồng mẫu thức hai vế, ta có:\n$\\dfrac{4}{x(x-1)}+\\dfrac{3(x-1)}{x(x-1)}=\\dfrac{5x}{x(x-1)}$\nKhử mẫu, ta  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

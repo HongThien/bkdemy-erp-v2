@@ -1,0 +1,449 @@
+{
+ "truy_hoi": [
+  {
+   "ma_cau": "T1110000002555",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $u_1=1$, $u_{n+1}=\\dfrac{u_n-4}{u_n+6}$ với mọi $n\\ge1$. Tính $\\lim\\limits_{n\\to+\\infty}\\dfrac{u_n+1}{u_n+4}$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đặt dãy phụ $v_n=\\dfrac{u_n+1}{u_n+4}$, chứng minh $(v_n)$ là cấp số nhân rồi tính giới hạn của nó.\n**Bước 1.** Đặt $v_n=\\dfrac{u_n+1}{u_n+4}$ và thay công thức truy hồi vào $v_{n+1}$.\n**Bước 2.** Biến đổi $v_{n+1}$ để tìm mối liên hệ với $v_n$, xác định công bội.\n**Bước 3.** Tính $v_1$ từ $u_1$ rồi suy ra công thức tổng quát của $v_n$.\n**Bước 4.** Dùng $\\lim q^n=0$ với $|q|<1$ để kết luận giới hạn.\n**Phần 2. Trình bày**\nTa chứng minh $u_n>-1$ với mọi $n\\ge1$ bằng quy nạp: $u_1=1>-1$; nếu $u_n>-1$ thì $u_{n+1}+1=\\dfrac{2(u_n+1)}{u_n+6}>0$.\nDo đó $u_n+6>0$ và $u_n+4>0$ với mọi $n$, nên dãy và biểu thức $\\dfrac{u_n+1}{u_n+4}$ luôn xác định.\nĐặt $v_n=\\dfrac{u …",
+   "ly_do": "Bản đồ thiếu dạng dãy số cho bởi công thức truy hồi."
+  },
+  {
+   "ma_cau": "T1110000001882",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $\\begin{cases}u_1=1\\\\u_{n+1}=\\dfrac12u_n+\\dfrac32,\\ \\forall n\\ge1.\\end{cases}$ Tính giới hạn của dãy $(u_n)$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Trừ đi một hằng số thích hợp để dãy mới thoả mãn hệ thức của cấp số nhân, từ đó tìm được $u_n$ theo $n$.\n**Bước 1.** Tìm số $c$ thoả $c=\\dfrac12c+\\dfrac32$ rồi đặt $v_n=u_n-c$ để triệt số hạng tự do.\n**Bước 2.** Chứng tỏ $(v_n)$ là cấp số nhân, xác định số hạng đầu và công bội rồi viết $v_n$.\n**Bước 3.** Quay lại $u_n$ và dùng $\\lim q^n=0$ khi $|q|<1$ để tính giới hạn.\n**Phần 2. Trình bày**\nĐặt $v_n=u_n-3$. Khi đó $v_{n+1}=\\dfrac12u_n+\\dfrac32-3=\\dfrac12(u_n-3)=\\dfrac12v_n$.\nVậy $(v_n)$ là cấp số nhân có $v_1=u_1-3=-2$ và công bội $\\dfrac12$, nên $v_n=-2(\\dfrac12)^{n-1}$.\nSuy ra $u_n=3-2(\\dfrac12)^{n-1}$.\nVì $\\lim(\\dfrac12)^{n-1}=0$ nên $\\lim u_n=3$.",
+   "ly_do": "Bản đồ thiếu dạng dãy số cho bởi công thức truy hồi."
+  },
+  {
+   "ma_cau": "T1110000002636",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $u_1=3,\\ 2u_{n+1}=u_n+1,\\ \\forall n\\ge1$. Gọi $S_n$ là tổng $n$ số hạng đầu tiên của dãy số $(u_n)$. Tính $\\lim S_n$.",
+   "lua_chon": [
+    "$\\lim S_n=-\\infty$.",
+    "$\\lim S_n=1$.",
+    "$\\lim S_n=+\\infty$.",
+    "$\\lim S_n=-1$."
+   ],
+   "dap_an": "C",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đặt dãy phụ để đưa công thức truy hồi về cấp số nhân, rồi tách $S_n$ thành tổng cấp số nhân cộng với số hạng $n$.\n**Bước 1.** Viết $u_{n+1}$ theo $u_n$ và tìm hằng số để đặt $v_n=u_n-c$ khiến $(v_n)$ có dạng nhân với một số cố định.\n**Bước 2.** Chứng minh $(v_n)$ là cấp số nhân, xác định số hạng đầu và công bội của nó.\n**Bước 3.** Biểu diễn $S_n$ qua tổng $n$ số hạng đầu của $(v_n)$ cộng với $n$.\n**Bước 4.** Dùng công bội có giá trị tuyệt đối nhỏ hơn $1$ để biết tổng cấp số nhân hữu hạn, rồi kết luận về $S_n$.\n**Phần 2. Trình bày**\nTa có $u_{n+1}=\\dfrac{1}{2}u_n+\\dfrac{1}{2}$. Đặt $v_n=u_n-1$ thì $v_{n+1}=u_{n+1}-1=\\dfrac{1}{2}(u_n-1)=\\dfrac{1}{2}v_n$.\nVậy …",
+   "ly_do": "Bản đồ thiếu dạng dãy số cho bởi công thức truy hồi."
+  },
+  {
+   "ma_cau": "T1110000001881",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $\\begin{cases}u_1=-1\\\\u_{n+1}=u_n+3,\\ \\forall n\\ge1.\\end{cases}$ Tính $\\lim\\limits_{n\\to+\\infty}\\dfrac{u_n}{5n+2020}$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Hệ thức truy hồi cho biết dãy là một cấp số cộng nên viết được số hạng tổng quát theo $n$ rồi mới tính giới hạn.\n**Bước 1.** Nhận ra hệ thức truy hồi là của cấp số cộng và xác định số hạng đầu, công sai.\n**Bước 2.** Dùng công thức số hạng tổng quát của cấp số cộng để viết $u_n$ theo $n$.\n**Bước 3.** Thay vào biểu thức cần tính rồi chia cả tử và mẫu cho $n$.\n**Phần 2. Trình bày**\nTừ $u_{n+1}-u_n=3$ nên $(u_n)$ là cấp số cộng có $u_1=-1$, công sai $d=3$.\nSố hạng tổng quát: $u_n=-1+3(n-1)=3n-4$.\nDo đó $\\dfrac{u_n}{5n+2020}=\\dfrac{3n-4}{5n+2020}=\\dfrac{3-\\dfrac4n}{5+\\dfrac{2020}n}$.\nTử có giới hạn $3$, mẫu có giới hạn $5$. Vậy giới hạn bằng $\\dfrac35$.",
+   "ly_do": "Bản đồ thiếu dạng dãy số cho bởi công thức truy hồi."
+  },
+  {
+   "ma_cau": "T1110000001889",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $\\begin{cases}u_1=1,\\ u_2=2\\\\u_{n+2}=\\dfrac{2u_nu_{n+1}}{u_n+u_{n+1}},\\ \\forall n\\ge1.\\end{cases}$ Tính giới hạn của dãy $(u_n)$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Lấy nghịch đảo hai vế để hệ thức trở thành trung bình cộng, rồi tìm một tổ hợp không đổi để tìm công thức tổng quát.\n**Bước 1.** Chứng minh mọi số hạng dương rồi đặt $v_n=\\dfrac1{u_n}$ để đưa hệ thức về dạng tuyến tính.\n**Bước 2.** Tìm một biểu thức hai số hạng liên tiếp của $(v_n)$ có giá trị không đổi, từ đó lập hệ thức giữa $v_{n+1}$ và $v_n$.\n**Bước 3.** Viết $v_n$ theo $n$ bằng cách trừ đi hằng số cân bằng, tính giới hạn của $v_n$ rồi suy ra giới hạn của $u_n$.\n**Phần 2. Trình bày**\nTừ công thức truy hồi, bằng quy nạp ta có $u_n>0$ với mọi $n$. Đặt $v_n=\\dfrac1{u_n}$: $v_{n+2}=\\dfrac{v_n+v_{n+1}}2$, $v_1=1$, $v_2=\\dfrac12$.\nSuy ra $v_{n+2}+\\dfrac12v_{ …",
+   "ly_do": "Bản đồ thiếu dạng dãy số cho bởi công thức truy hồi."
+  },
+  {
+   "ma_cau": "T1110000001893",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $\\begin{cases}u_1=2019\\\\u_{n+1}=\\sqrt[3]{u_n},\\ \\forall n\\ge1.\\end{cases}$ Tính giới hạn của dãy $(u_n)$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đoán giới hạn bằng nghiệm của phương trình điểm bất động rồi nhân liên hợp bậc ba để chặn $u_n-L$ bởi một cấp số nhân.\n**Bước 1.** Giải phương trình $L=\\sqrt[3]L$ để chọn giá trị phù hợp làm dự đoán, và chứng minh $u_n>1$ bằng quy nạp.\n**Bước 2.** Lập $u_{n+1}-L$ bằng liên hợp bậc ba rồi đánh giá mẫu từ dưới nhờ $u_n>1$.\n**Bước 3.** Áp dụng liên tiếp bất đẳng thức tìm được rồi dùng định lí kẹp.\n**Phần 2. Trình bày**\nBằng quy nạp, $u_n>1$ với mọi $n$. Phương trình $L=\\sqrt[3]L$ cho dự đoán $L=1$.\nTa có $u_{n+1}-1=\\sqrt[3]{u_n}-1=\\dfrac{u_n-1}{\\sqrt[3]{u_n^2}+\\sqrt[3]{u_n}+1}$.\nVì $u_n>1$ nên mẫu lớn hơn $3$, suy ra $0<u_{n+1}-1<\\dfrac13(u_n-1)$.\nDo đó $0<u_ …",
+   "ly_do": "Bản đồ thiếu dạng giới hạn dãy số cho bởi công thức truy hồi"
+  },
+  {
+   "ma_cau": "T1110000001895",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $\\begin{cases}u_1=1\\\\u_{n+1}=\\dfrac{2(2u_n+1)}{u_n+3},\\ \\forall n\\ge1.\\end{cases}$ Tính $\\lim u_n$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đoán giới hạn bằng nghiệm dương của phương trình điểm bất động rồi chặn $|u_n-L|$ bởi một cấp số nhân.\n**Bước 1.** Giải phương trình $L=\\dfrac{2(2L+1)}{L+3}$ để chọn nghiệm dương làm dự đoán, và chứng minh $u_n>0$ bằng quy nạp.\n**Bước 2.** Lập $u_{n+1}-L$, quy đồng để xuất hiện thừa số $u_n-L$.\n**Bước 3.** Chặn hệ số của $|u_n-L|$ bởi một hằng số nhỏ hơn $1$ rồi áp dụng liên tiếp và dùng định lí kẹp.\n**Phần 2. Trình bày**\nBằng quy nạp, $u_n>0$ với mọi $n$. Phương trình $L=\\dfrac{2(2L+1)}{L+3}$ có nghiệm dương $L=2$ nên ta chứng minh $\\lim u_n=2$.\nTa có $u_{n+1}-2=\\dfrac{4u_n+2-2u_n-6}{u_n+3}=\\dfrac{2(u_n-2)}{u_n+3}$.\nVì $u_n>0$ nên $u_n+3>3$, suy ra $|u_{n …",
+   "ly_do": "Bản đồ thiếu dạng giới hạn dãy số cho bởi công thức truy hồi"
+  },
+  {
+   "ma_cau": "T1110000002679",
+   "de": "Cho dãy số $(u_n)$ với $\\begin{cases}u_1=-2\\\\u_n=3u_{n-1}-1,\\ \\forall n\\ge2\\end{cases}$, tính $\\lim\\dfrac{u_n}{3^n}$. Kết quả làm tròn đến hàng phần mười.",
+   "dap_an": "-0,8",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đặt dãy phụ $v_n=u_n-c$ với hằng số $c$ phù hợp để $(v_n)$ là cấp số nhân, từ đó tìm công thức của $u_n$ rồi lấy giới hạn.\n**Bước 1.** Tìm hằng số $c$ sao cho $u_n-c=3(u_{n-1}-c)$ với mọi $n\\ge2$.\n**Bước 2.** Đặt $v_n=u_n-c$, chứng tỏ $(v_n)$ là cấp số nhân và xác định số hạng đầu, công bội.\n**Bước 3.** Suy ra công thức tổng quát của $u_n$ theo $n$.\n**Bước 4.** Chia cho $3^n$, lấy giới hạn rồi làm tròn đến hàng phần mười.\n**Phần 2. Trình bày**\nTìm $c$ sao cho $u_n-c=3(u_{n-1}-c)$, tức là $u_n=3u_{n-1}-2c$. So với $u_n=3u_{n-1}-1$ ta có $2c=1$, $c=\\dfrac{1}{2}$.\nĐặt $v_n=u_n-\\dfrac{1}{2}$ thì $v_1=-\\dfrac{5}{2}$ và $v_n=3v_{n-1}$, nên $(v_n)$ là cấp số nhân …",
+   "ly_do": "Bản đồ thiếu dạng giới hạn dãy số cho bởi công thức truy hồi"
+  },
+  {
+   "ma_cau": "T1110000001886",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $\\begin{cases}u_1=2\\\\u_{n+1}=2u_n+3\\cdot2^{n+1},\\ \\forall n\\ge1.\\end{cases}$ Tính $\\lim\\limits_{n\\to+\\infty}\\dfrac{u_n}{(2n+1)2^{n-1}}$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Chia hai vế cho $2^{n+1}$ để đưa hệ thức về dạng của cấp số cộng cho dãy $\\dfrac{u_n}{2^n}$.\n**Bước 1.** Chia hai vế hệ thức truy hồi cho $2^{n+1}$ để hai vế cùng dạng theo $n$ và $n+1$.\n**Bước 2.** Đặt $v_n=\\dfrac{u_n}{2^n}$, nhận ra $(v_n)$ là cấp số cộng rồi viết $v_n$ theo $n$.\n**Bước 3.** Suy ra $u_n$, thay vào biểu thức cần tính rồi chia cả tử và mẫu cho $n$.\n**Phần 2. Trình bày**\nChia hai vế cho $2^{n+1}$: $\\dfrac{u_{n+1}}{2^{n+1}}=\\dfrac{u_n}{2^n}+3$.\nĐặt $v_n=\\dfrac{u_n}{2^n}$, ta có $v_1=1$ và $v_{n+1}=v_n+3$ nên $(v_n)$ là cấp số cộng, $v_n=1+3(n-1)=3n-2$.\nSuy ra $u_n=(3n-2)2^n$ và $\\dfrac{u_n}{(2n+1)2^{n-1}}=\\dfrac{2(3n-2)}{2n+1}=\\dfrac{6-\\dfra …",
+   "ly_do": "Bản đồ thiếu dạng giới hạn dãy số cho bởi công thức truy hồi"
+  },
+  {
+   "ma_cau": "T1110000001894",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $\\begin{cases}u_1=1\\\\u_{n+1}=\\sqrt{6+u_n},\\ \\forall n\\ge1.\\end{cases}$ Tính giới hạn của dãy $(u_n)$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đoán giới hạn bằng nghiệm của phương trình điểm bất động rồi chặn khoảng cách $|u_n-L|$ bởi một cấp số nhân.\n**Bước 1.** Giải phương trình $L=\\sqrt{6+L}$ để chọn nghiệm không âm làm dự đoán, và chứng minh $1\\le u_n<L$ bằng quy nạp.\n**Bước 2.** Lập $L-u_{n+1}$ bằng liên hợp để xuất hiện thừa số $L-u_n$ ở tử số.\n**Bước 3.** Chặn mẫu số từ dưới, áp dụng liên tiếp rồi dùng định lí kẹp.\n**Phần 2. Trình bày**\nPhương trình $L=\\sqrt{6+L}$ có nghiệm không âm $L=3$. Bằng quy nạp: $1\\le u_n<3$ (nếu $1\\le u_n<3$ thì $\\sqrt7\\le u_{n+1}<\\sqrt9=3$).\nTa có $3-u_{n+1}=3-\\sqrt{6+u_n}=\\dfrac{9-(6+u_n)}{3+\\sqrt{6+u_n}}=\\dfrac{3-u_n}{3+\\sqrt{6+u_n}}$.\nVì mẫu lớn hơn $3$ nên $0 …",
+   "ly_do": "Bản đồ thiếu dạng giới hạn dãy số cho bởi công thức truy hồi"
+  },
+  {
+   "ma_cau": "T1110000003017",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $u_1=3$ và $u_{n+1}=\\dfrac{u_n+1}{2}$ với mọi $n\\ge1$. Tính giới hạn $\\lim\\limits_{n\\to+\\infty}u_n$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Với dãy truy hồi dạng $u_{n+1}=\\dfrac{u_n+c}{2}$, tìm hằng số $L$ để $u_n-L$ lập thành cấp số nhân rồi suy ra công thức của $u_n$.\n**Bước 1.** Biến đổi công thức truy hồi để thấy hiệu $u_{n+1}-L$ gấp công bội lần $u_n-L$ với một hằng số $L$ thích hợp.\n**Bước 2.** Đặt $w_n=u_n-L$, xác định $w_1$ và công bội rồi viết công thức $w_n$ theo $n$.\n**Bước 3.** Suy ra công thức $u_n$ theo $n$ và dùng $\\lim q^n=0$ khi $|q|<1$ để tìm giới hạn.\n**Phần 2. Trình bày**\nTừ $u_{n+1}=\\dfrac{u_n+1}{2}$ ta có $u_{n+1}-1=\\dfrac{u_n-1}{2}$.\nĐặt $w_n=u_n-1$ thì $w_{n+1}=\\dfrac12w_n$ và $w_1=2$, nên $(w_n)$ là cấp số nhân có công bội $\\dfrac12$: $w_n=2\\cdot(\\dfrac12)^{n-1}=4\\cdot …",
+   "ly_do": "Bản đồ thiếu dạng giới hạn dãy số cho bởi công thức truy hồi"
+  },
+  {
+   "ma_cau": "T1110000002556",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $u_1=3$, $u_{n+1}=\\dfrac{u_n+1}{2}$ với mọi $n\\ge1$. Tính $\\lim\\limits_{n\\to+\\infty} u_n$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Trừ cả hai vế cho $1$ để thấy dãy $(u_n-1)$ là cấp số nhân, tìm công thức tổng quát rồi lấy giới hạn.\n**Bước 1.** Biến đổi công thức truy hồi sao cho xuất hiện hiệu $u_{n+1}-1$ theo hiệu $u_n-1$.\n**Bước 2.** Nhận ra dãy $(u_n-1)$ là cấp số nhân, xác định số hạng đầu và công bội.\n**Bước 3.** Viết công thức tổng quát của $u_n$ rồi dùng $\\lim q^n=0$ với $|q|<1$.\n**Phần 2. Trình bày**\nTa có $u_{n+1}-1=\\dfrac{u_n+1}{2}-1=\\dfrac{u_n-1}{2}$.\nVậy $(u_n-1)$ là cấp số nhân có số hạng đầu $u_1-1=2$ và công bội $q=\\dfrac12$.\nSuy ra $u_n-1=2\\cdot(\\dfrac12)^{n-1}=(\\dfrac12)^{n-2}$, tức $u_n=1+(\\dfrac12)^{n-2}$.\nVì $\\lim\\limits_{n\\to+\\infty}(\\dfrac12)^{n-2}=0$ nên $\\lim\\ …",
+   "ly_do": "thiếu dạng: dãy truy hồi u_{n+1}=f(u_n)"
+  },
+  {
+   "ma_cau": "T1110000003066",
+   "de": "Cho dãy số $(u_{n})$ biết $u_{1}=-2$ và $u_{n}=3u_{n-1}-1$ với mọi $n\\ge2$. Khi đó $L=\\lim\\dfrac{u_{n}}{3^{n}}$",
+   "lua_chon": [
+    "Không xác định.",
+    "$L=+\\infty$.",
+    "$L=-\\dfrac{5}{6}$.",
+    "$L=0$."
+   ],
+   "dap_an": "C",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đặt $u_n=v_n+c$ với hằng số $c$ thích hợp để $(v_n)$ thành cấp số nhân, từ đó tìm công thức $u_n$ theo $n$.\n**Bước 1.** Tìm hằng số $c$ sao cho khi đặt $u_n=v_n+c$ thì hệ thức truy hồi chuyển thành $v_n=3v_{n-1}$.\n**Bước 2.** Xác định số hạng đầu và công bội của cấp số nhân $(v_n)$, suy ra $v_n$ rồi $u_n$ theo $n$.\n**Bước 3.** Chia $u_n$ cho $3^n$ và tách thành các số hạng có giới hạn quen thuộc.\n**Bước 4.** Tính giới hạn và đối chiếu với bốn phương án.\n**Phần 2. Trình bày**\nĐặt $u_{n}=v_{n}+\\dfrac12$. Từ $u_{n}=3u_{n-1}-1$ ta được $v_{n}+\\dfrac12=3v_{n-1}+\\dfrac32-1$, tức là $v_{n}=3v_{n-1}$.\nVậy $(v_{n})$ là cấp số nhân có $v_{1}=u_{1}-\\dfrac12=-\\dfrac52 …",
+   "ly_do": "thiếu dạng: dãy truy hồi"
+  },
+  {
+   "ma_cau": "T1110000001891",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $\\begin{cases}u_1=2\\\\u_{n+1}=\\sqrt{3-\\sqrt{3+u_n}},\\ \\forall n\\ge1.\\end{cases}$ Tính giới hạn của dãy $(u_n)$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đoán giới hạn bằng nghiệm của phương trình điểm bất động, rồi liên hợp hai lần để chặn $|u_n-L|$ bởi một cấp số nhân.\n**Bước 1.** Giải phương trình $L=\\sqrt{3-\\sqrt{3+L}}$ để có dự đoán giới hạn, và kiểm tra dãy luôn xác định.\n**Bước 2.** Lập $u_{n+1}-L$, nhân liên hợp hai lần để xuất hiện thừa số $u_n-L$.\n**Bước 3.** Chặn hệ số của $|u_n-L|$ bởi một hằng số nhỏ hơn $1$ rồi áp dụng liên tiếp và dùng định lí kẹp.\n**Phần 2. Trình bày**\nBằng quy nạp, $0<u_n\\le2$ với mọi $n$ (nếu $0<u_n\\le2$ thì $\\sqrt3<\\sqrt{3+u_n}\\le\\sqrt5<3$ nên $0<3-\\sqrt{3+u_n}<2$), do đó dãy xác định. Phương trình điểm bất động cho dự đoán $L=1$.\nTa có $u_{n+1}-1=\\dfrac{(3-\\sqrt{3+u_n})- …",
+   "ly_do": "thiếu dạng: dãy truy hồi/điểm bất động"
+  },
+  {
+   "ma_cau": "T1110000001802",
+   "de": "Cho dãy số $(u_n)$ biết $u_1=\\dfrac12$ và $u_{n+1}=\\dfrac{u_n}{1+(n+2)u_n}$. Tính $\\lim\\limits_{n\\to+\\infty}(u_1+u_2+\\dots+u_n)$ (làm tròn kết quả đến hàng phần trăm).",
+   "dap_an": "1,22",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Lấy nghịch đảo hai vế đưa công thức truy hồi về dạng cộng dồn, tìm được số hạng tổng quát, rồi tách thành hiệu để tổng khử liên tiếp.\n**Bước 1.** Đặt $v_n=\\dfrac{1}{u_n}$ và biến đổi công thức truy hồi thành quan hệ giữa $v_{n+1}$ và $v_n$.\n**Bước 2.** Cộng dồn các hệ thức để tìm $v_n$ (tổng của một cấp số cộng), từ đó suy ra $u_n$.\n**Bước 3.** Tách $u_n$ thành hiệu hai phân số cách nhau $3$ đơn vị ở mẫu để tổng khử liên tiếp.\n**Bước 4.** Thu gọn tổng theo $n$, lấy giới hạn rồi làm tròn.\n**Phần 2. Trình bày**\nTừ $u_1>0$ suy ra mọi $u_n>0$. Đặt $v_n=\\dfrac1{u_n}$ thì $v_1=2$ và $v_{n+1}=\\dfrac{1+(n+2)u_n}{u_n}=v_n+n+2$.\nSuy ra $v_n-v_{n-1}=n+1$ với $n\\ge2$. …",
+   "ly_do": "thiếu dạng: dãy truy hồi cộng tổng khử liên tiếp"
+  },
+  {
+   "ma_cau": "T1110000003016",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $u_1=1$ và $u_{n+1}=\\dfrac{u_n-4}{u_n+6}$ với mọi $n\\ge1$. Tính giới hạn $\\lim\\limits_{n\\to+\\infty}\\dfrac{u_n+1}{u_n+4}$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Với dãy cho bằng truy hồi, đặt dãy phụ $v_n$ thoả $v_{n+1}=qv_n$ thì $(v_n)$ là cấp số nhân và $v_n=v_1q^{n-1}$.\n**Bước 1.** Đặt $v_n$ bằng biểu thức cần tìm giới hạn và tính số hạng đầu $v_1$.\n**Bước 2.** Thay công thức truy hồi vào $v_{n+1}$ và rút gọn để tìm hệ thức liên hệ giữa $v_{n+1}$ và $v_n$.\n**Bước 3.** Nhận ra cấp số nhân, viết công thức $v_n$ theo $n$ rồi dùng $\\lim q^n=0$ khi $|q|<1$.\n**Phần 2. Trình bày**\nĐặt $v_n=\\dfrac{u_n+1}{u_n+4}$. Ta có $v_1=\\dfrac{1+1}{1+4}=\\dfrac25$.\n$v_{n+1}=\\dfrac{u_{n+1}+1}{u_{n+1}+4}=\\dfrac{\\dfrac{u_n-4}{u_n+6}+1}{\\dfrac{u_n-4}{u_n+6}+4}=\\dfrac{2u_n+2}{5u_n+20}=\\dfrac25\\cdot\\dfrac{u_n+1}{u_n+4}=\\dfrac25v_n$.\nSuy r …",
+   "ly_do": "thiếu dạng: dãy truy hồi phân thức"
+  },
+  {
+   "ma_cau": "T1110000001892",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $\\begin{cases}u_1=\\dfrac12\\\\u_{n+1}=u_n^2+\\dfrac13u_n,\\ \\forall n\\ge1.\\end{cases}$ Tính giới hạn của dãy $(u_n)$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Chứng minh dãy dương, bị chặn trên rồi đánh giá $u_{n+1}$ không vượt quá một hằng số nhỏ hơn $1$ nhân với $u_n$.\n**Bước 1.** Chứng minh bằng quy nạp rằng $0<u_n\\le\\dfrac12$ với mọi $n\\ge1$.\n**Bước 2.** Phân tích $u_{n+1}=u_n\\big(u_n+\\dfrac13\\big)$ và dùng cận trên của $u_n$ để chặn thừa số thứ hai.\n**Bước 3.** Áp dụng liên tiếp bất đẳng thức thu được để chặn $u_n$ bởi một cấp số nhân rồi dùng định lí kẹp.\n**Phần 2. Trình bày**\nVới $n=1$: $0<u_1=\\dfrac12\\le\\dfrac12$. Nếu $0<u_n\\le\\dfrac12$ thì $0<u_{n+1}=u_n(u_n+\\dfrac13)\\le\\dfrac12\\cdot\\dfrac56=\\dfrac5{12}<\\dfrac12$. Vậy $0<u_n\\le\\dfrac12$ với mọi $n$.\nDo đó $u_n+\\dfrac13\\le\\dfrac56$, suy ra $0<u_{n+1}\\le\\ …",
+   "ly_do": "thiếu dạng: dãy truy hồi, chặn và giới hạn"
+  },
+  {
+   "ma_cau": "T1110000001883",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $\\begin{cases}u_1=1\\\\u_{n+1}=\\dfrac{(n+2)u_n+2}{n},\\ \\forall n\\ge1.\\end{cases}$ Tính $\\lim\\limits_{n\\to+\\infty}\\dfrac{u_n}{n^2}$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đổi biến $v_n=u_n+c$ để triệt số hạng tự do, rồi nhận ra một đại lượng không đổi qua mỗi bước để tìm $u_n$ theo $n$.\n**Bước 1.** Nhân hai vế hệ thức truy hồi với $n$ rồi thử đặt $v_n=u_n+c$ sao cho phần tự do biến mất.\n**Bước 2.** Từ hệ thức mới của $v_n$, chia hai vế cho $n(n+1)(n+2)$ để so sánh hai đại lượng cùng dạng ở chỉ số $n$ và $n+1$.\n**Bước 3.** Suy ra công thức $u_n$ theo $n$, chia cả tử và mẫu cho $n^2$ rồi tính giới hạn.\n**Phần 2. Trình bày**\nĐặt $v_n=u_n+1$. Từ $nu_{n+1}=(n+2)u_n+2$ ta có $n(v_{n+1}-1)=(n+2)(v_n-1)+2$, tức $nv_{n+1}=(n+2)v_n$.\nChia hai vế cho $n(n+1)(n+2)$: $\\dfrac{v_{n+1}}{(n+1)(n+2)}=\\dfrac{v_n}{n(n+1)}$.\nVậy $\\dfrac{v_n}{n( …",
+   "ly_do": "thiếu dạng: dãy truy hồi"
+  },
+  {
+   "ma_cau": "T1110000001896",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $\\begin{cases}u_1=2019\\\\u_{n+1}=\\dfrac{u_n^3+12u_n}{3u_n^2+4},\\ \\forall n\\ge1.\\end{cases}$ Tính giới hạn của dãy $(u_n)$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tìm nhân tử đặc biệt của $u_{n+1}-L$ để thấy $u_{n+1}-L$ cùng dấu với $u_n-L$, rồi chặn bởi một cấp số nhân.\n**Bước 1.** Giải phương trình điểm bất động $L=\\dfrac{L^3+12L}{3L^2+4}$ để chọn giá trị dương làm dự đoán.\n**Bước 2.** Phân tích $u_{n+1}-L$ thành nhân tử chứa $(u_n-L)$, suy ra dấu của nó và chứng minh $u_n>L$ bằng quy nạp.\n**Bước 3.** Chặn hệ số của $u_n-L$ bởi một hằng số nhỏ hơn $1$ rồi áp dụng liên tiếp và dùng định lí kẹp.\n**Phần 2. Trình bày**\nPhương trình $L=\\dfrac{L^3+12L}{3L^2+4}$ cho nghiệm dương $L=2$. Ta có $u_{n+1}-2=\\dfrac{u_n^3-6u_n^2+12u_n-8}{3u_n^2+4}=\\dfrac{(u_n-2)^3}{3u_n^2+4}$.\nVì $u_1-2>0$ nên bằng quy nạp $u_n>2$ với mọi $n$.\n …",
+   "ly_do": "Dãy số cho bởi hệ thức truy hồi phi tuyến, tìm giới hạn: bản đồ thiếu dạng \"giới hạn dãy truy hồi\"."
+  },
+  {
+   "ma_cau": "T1110000003091",
+   "de": "Cho dãy số $(u_{n})$ với $u_{1}=-2$ và $u_{n}=3u_{n-1}-1$ với mọi $n\\ge2$. Tính $\\lim\\dfrac{u_{n}}{3^{n}}$. Kết quả làm tròn đến hàng phần mười.",
+   "dap_an": "-0,8",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đặt $u_n=v_n+c$ để đưa hệ thức truy hồi về cấp số nhân, tìm $u_n$ theo $n$ rồi chia cho $3^n$.\n**Bước 1.** Tìm hằng số $c$ để dãy $v_n=u_n-c$ thoả mãn $v_n=3v_{n-1}$.\n**Bước 2.** Tìm số hạng đầu của $(v_n)$ và viết $v_n$, rồi suy ra $u_n$ theo $n$.\n**Bước 3.** Chia $u_n$ cho $3^n$, tách thành các số hạng có giới hạn quen thuộc.\n**Bước 4.** Tính giới hạn rồi làm tròn đến hàng phần mười.\n**Phần 2. Trình bày**\nChọn $c=\\dfrac12$: đặt $v_{n}=u_{n}-\\dfrac12$ thì từ $u_{n}=3u_{n-1}-1$ ta được $v_{n}=3v_{n-1}$ với mọi $n\\ge2$.\n$(v_{n})$ là cấp số nhân có $v_{1}=-2-\\dfrac12=-\\dfrac52$ và công bội $3$, nên $v_{n}=-\\dfrac52\\cdot3^{n-1}$.\nSuy ra $u_{n}=-\\dfrac52\\cdot3 …",
+   "ly_do": "Dãy truy hồi u_n=3u_{n-1}-1 tìm lim u_n/3^n: bản đồ thiếu dạng \"dãy truy hồi / số hạng tổng quát\"."
+  },
+  {
+   "ma_cau": "T1110000001888",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $\\begin{cases}u_1=2\\\\u_{n+1}=2-\\dfrac1{u_n},\\ \\forall n\\ge1.\\end{cases}$ Tính giới hạn của dãy $(u_n)$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tính vài số hạng đầu để dự đoán công thức tổng quát, chứng minh công thức bằng quy nạp rồi lấy giới hạn.\n**Bước 1.** Tính $u_2,u_3,u_4$ rồi quan sát quy luật để dự đoán $u_n$ theo $n$.\n**Bước 2.** Chứng minh công thức dự đoán bằng quy nạp: kiểm tra $n=1$ rồi suy từ $n=k$ sang $n=k+1$.\n**Bước 3.** Chia tử và mẫu của công thức tìm được cho $n$ rồi tính giới hạn.\n**Phần 2. Trình bày**\nTa có $u_1=2=\\dfrac21$, $u_2=2-\\dfrac12=\\dfrac32$, $u_3=2-\\dfrac23=\\dfrac43$. Dự đoán $u_n=\\dfrac{n+1}n$ với mọi $n\\ge1$.\nVới $n=1$: $u_1=2$, đúng. Giả sử $u_k=\\dfrac{k+1}k$ với $k\\ge1$.\nKhi đó $u_{k+1}=2-\\dfrac1{u_k}=2-\\dfrac k{k+1}=\\dfrac{k+2}{k+1}$, tức công thức đúng với $k+ …",
+   "ly_do": "Dãy truy hồi u_{n+1}=2-1/u_n tìm giới hạn: bản đồ thiếu dạng \"dãy truy hồi\"."
+  },
+  {
+   "ma_cau": "T1110000001885",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $\\begin{cases}u_1=1\\\\u_{n+1}=u_n+\\dfrac1{2^n},\\ \\forall n\\ge1.\\end{cases}$ Tính $\\lim\\limits_{n\\to+\\infty}(u_n-2)$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Cộng dồn các hiệu liên tiếp để biểu diễn $u_n$ thành tổng của một cấp số nhân hữu hạn.\n**Bước 1.** Viết $u_n$ bằng $u_1$ cộng các hiệu $u_{k+1}-u_k$ với $k$ chạy từ $1$ đến $n-1$.\n**Bước 2.** Nhận ra các số hạng thu được lập thành cấp số nhân và dùng công thức tổng $n$ số hạng đầu.\n**Bước 3.** Lập hiệu $u_n-2$ rồi dùng giới hạn $\\lim q^n=0$ khi $|q|<1$ để kết luận.\n**Phần 2. Trình bày**\nTa có $u_n=u_1+(u_2-u_1)+\\dots+(u_n-u_{n-1})=1+\\dfrac12+\\dfrac1{2^2}+\\dots+\\dfrac1{2^{n-1}}$.\nĐây là tổng $n$ số hạng đầu của cấp số nhân có số hạng đầu $1$, công bội $\\dfrac12$: $u_n=\\dfrac{1-(\\dfrac12)^n}{1-\\dfrac12}=2-(\\dfrac12)^{n-1}$.\nDo đó $u_n-2=-(\\dfrac12)^{n-1}$ và …",
+   "ly_do": "Dãy truy hồi u_{n+1}=u_n+1/2^n (cộng dồn cấp số nhân): bản đồ thiếu dạng \"dãy truy hồi / số hạng tổng quát\"."
+  },
+  {
+   "ma_cau": "T1110000001890",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $\\begin{cases}u_1=2019\\\\u_{n+1}=\\dfrac3{u_n+2},\\ \\forall n\\ge1.\\end{cases}$ Tính giới hạn của dãy $(u_n)$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đoán giới hạn bằng nghiệm dương của phương trình điểm bất động, rồi chứng minh bằng cách chặn $|u_n-L|$ bởi một cấp số nhân.\n**Bước 1.** Giả sử dãy có giới hạn $L$ thì $L$ thoả $L=\\dfrac3{L+2}$; giải phương trình để chọn giá trị dương làm dự đoán.\n**Bước 2.** Lập hiệu $u_{n+1}-L$, quy đồng và so sánh với $|u_n-L|$ nhờ điều kiện $u_n>0$.\n**Bước 3.** Áp dụng liên tiếp bất đẳng thức tìm được để chặn $|u_n-L|$ rồi dùng định lí kẹp.\n**Phần 2. Trình bày**\nBằng quy nạp, $u_n>0$ với mọi $n$. Phương trình $L=\\dfrac3{L+2}$ có nghiệm dương $L=1$ nên ta chứng minh $\\lim u_n=1$.\nTa có $u_{n+1}-1=\\dfrac3{u_n+2}-1=\\dfrac{1-u_n}{u_n+2}$, nên $|u_{n+1}-1|=\\dfrac{|u_n-1|}{u …",
+   "ly_do": "Dãy truy hồi u_{n+1}=3/(u_n+2) tìm giới hạn: bản đồ thiếu dạng \"dãy truy hồi\"."
+  },
+  {
+   "ma_cau": "T1110000001884",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $u_1=1$ và $u_{n+1}=u_n+2n+1$ với mọi $n\\ge1$. Tính $\\lim\\limits_{n\\to+\\infty}\\dfrac{\\sqrt{u_n}+\\sqrt{u_{4n}}+\\sqrt{u_{4^2n}}+\\dots+\\sqrt{u_{4^{2018}n}}}{\\sqrt{u_n}+\\sqrt{u_{2n}}+\\sqrt{u_{2^2n}}+\\dots+\\sqrt{u_{2^{2018}n}}}$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tìm công thức của $u_n$ để các căn thức trở nên đơn giản, khi đó tử và mẫu là hai tổng cấp số nhân.\n**Bước 1.** Đặt $u_n=v_n+n^2$ để triệt số hạng $2n+1$ trong hệ thức truy hồi và tìm $u_n$.\n**Bước 2.** Dùng công thức vừa tìm để tính từng căn $\\sqrt{u_{kn}}$ ở tử và ở mẫu.\n**Bước 3.** Gộp tử và mẫu thành hai tổng cấp số nhân, áp dụng công thức tổng rồi rút gọn.\n**Phần 2. Trình bày**\nĐặt $u_n=v_n+n^2$. Khi đó $v_{n+1}+(n+1)^2=v_n+n^2+2n+1$, suy ra $v_{n+1}=v_n$ với mọi $n\\ge1$.\nVì $v_1=u_1-1=0$ nên $v_n=0$, tức $u_n=n^2$ và $\\sqrt{u_m}=m$ với mọi $m\\ge1$.\nTử bằng $n(1+4+4^2+\\dots+4^{2018})=n\\cdot\\dfrac{4^{2019}-1}{3}$; mẫu bằng $n(1+2+2^2+\\dots+2^{2018})=n( …",
+   "ly_do": "Dãy truy hồi u_{n+1}=u_n+2n+1 rồi tổng căn: bản đồ thiếu dạng \"dãy truy hồi / số hạng tổng quát\"."
+  },
+  {
+   "ma_cau": "T1110000003067",
+   "de": "Cho hai dãy số $(u_{n}),(v_{n})$ đều tồn tại giới hạn hữu hạn. Biết hai dãy đồng thời thoả mãn $u_{n+1}=4v_{n}-2$ và $v_{n+1}=u_{n}+1$ với mọi $n\\in\\mathbb{Z}^{+}$. Giá trị của $\\lim\\limits_{n\\to+\\infty}(u_{n}+2v_{n})$ bằng",
+   "lua_chon": [
+    "$0$.",
+    "$\\dfrac{3}{2}$.",
+    "$-1$.",
+    "$\\dfrac{1}{2}$."
+   ],
+   "dap_an": "A",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Gọi $a,b$ là giới hạn của hai dãy rồi chuyển qua giới hạn trong hai hệ thức truy hồi để lập hệ phương trình.\n**Bước 1.** Đặt $\\lim u_n=a$ và $\\lim v_n=b$ vì đề cho biết cả hai dãy có giới hạn hữu hạn.\n**Bước 2.** Lấy giới hạn hai vế của từng hệ thức, chú ý $\\lim u_{n+1}=\\lim u_n$ và $\\lim v_{n+1}=\\lim v_n$.\n**Bước 3.** Giải hệ hai phương trình ẩn $a,b$ vừa thu được.\n**Bước 4.** Tính biểu thức $a+2b$ rồi đối chiếu với bốn phương án.\n**Phần 2. Trình bày**\nĐặt $\\lim u_{n}=a$ và $\\lim v_{n}=b$. Vì $\\lim u_{n+1}=a$ và $\\lim v_{n+1}=b$ nên khi lấy giới hạn hai vế ta được hệ $\\begin{cases}a=4b-2\\\\b=a+1\\end{cases}$\nThế $b=a+1$ vào phương trình đầu: $a=4a+4-2$, suy …",
+   "ly_do": "Hệ hai dãy truy hồi có giới hạn hữu hạn, chuyển qua giới hạn: bản đồ thiếu dạng \"dãy truy hồi\"."
+  },
+  {
+   "ma_cau": "T1110000001887",
+   "de": "Cho dãy số $(u_n)$ xác định bởi $\\begin{cases}u_1=\\dfrac23\\\\u_{n+1}=\\dfrac{2nu_n}{n+3},\\ \\forall n\\ge1.\\end{cases}$ Tính $L=\\lim\\limits_{n\\to+\\infty}\\Big(\\dfrac{u_1}2+\\dfrac{u_2}{2^2}+\\dots+\\dfrac{u_n}{2^n}\\Big)$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tìm đại lượng $v_n$ làm cho hệ thức truy hồi thành cấp số nhân, từ đó có $u_n$ rồi tách số hạng của tổng thành hiệu để triệt tiêu.\n**Bước 1.** Nhân hai vế với $(n+1)(n+2)$ để đưa vế phải về dạng $2\\cdot n(n+1)(n+2)u_n$.\n**Bước 2.** Đặt $v_n=n(n+1)(n+2)u_n$, chứng tỏ $(v_n)$ là cấp số nhân và suy ra $u_n$ theo $n$.\n**Bước 3.** Tách $\\dfrac{u_n}{2^n}$ thành hiệu hai phân số liền kề, cộng lại để rút gọn dây chuyền rồi lấy giới hạn.\n**Phần 2. Trình bày**\nNhân hai vế với $(n+1)(n+2)$: $(n+1)(n+2)(n+3)u_{n+1}=2\\cdot n(n+1)(n+2)u_n$.\nĐặt $v_n=n(n+1)(n+2)u_n$. Khi đó $v_{n+1}=2v_n$ và $v_1=1\\cdot2\\cdot3\\cdot\\dfrac23=4$, nên $v_n=4\\cdot2^{n-1}=2^{n+1}$.\nSuy ra $u_n …",
+   "ly_do": "Dãy truy hồi u_{n+1}=2nu_n/(n+3) rồi tổng: bản đồ thiếu dạng \"dãy truy hồi\"."
+  }
+ ],
+ "khu_lien_tiep": [
+  {
+   "ma_cau": "T1110000003071",
+   "de": "Tính giá trị của tổng $S=\\dfrac{12}{4\\cdot16}+\\dfrac{20}{16\\cdot36}+\\dfrac{28}{36\\cdot64}+\\dots+\\dfrac{84}{400\\cdot484}$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Các mẫu là tích hai bình phương số chẵn liên tiếp và tử là hiệu của hai bình phương đó, nên mỗi số hạng tách được thành hiệu hai phân số.\n**Bước 1.** Nhận ra các mẫu là bình phương của các số chẵn $2,4,6,\\dots$ và mỗi số hạng có dạng tử chia tích hai bình phương liên tiếp.\n**Bước 2.** Kiểm tra tử bằng hiệu hai bình phương trong mẫu để tách mỗi số hạng thành hiệu hai phân số.\n**Bước 3.** Viết lại tổng và triệt tiêu các cặp số hạng đối nhau.\n**Bước 4.** Quy đồng phần còn lại để được kết quả là một phân số.\n**Phần 2. Trình bày**\nTa có $\\dfrac{12}{4\\cdot16}=\\dfrac14-\\dfrac1{16}$ vì $16-4=12$; $\\dfrac{20}{16\\cdot36}=\\dfrac1{16}-\\dfrac1{36}$ vì $36-16=20$.\nTương …",
+   "ly_do": "Bản đồ thiếu dạng giới hạn tổng/tích khử liên tiếp (telescoping)."
+  },
+  {
+   "ma_cau": "T1110000002644",
+   "de": "Cho dãy số $(u_n)$ với $u_n=\\dfrac{1}{1\\cdot3}+\\dfrac{1}{3\\cdot5}+\\dots+\\dfrac{1}{(2n-1)(2n+1)}$. Tính $\\lim u_n$.",
+   "lua_chon": [
+    "$\\dfrac{1}{2}$.",
+    "$0$.",
+    "$1$.",
+    "$\\dfrac{1}{4}$."
+   ],
+   "dap_an": "A",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tách mỗi số hạng thành hiệu hai phân số để các số hạng liên tiếp triệt tiêu, thu được công thức gọn của $u_n$.\n**Bước 1.** Tách $\\dfrac{1}{(2k-1)(2k+1)}$ thành hiệu hai phân số có mẫu $2k-1$ và $2k+1$.\n**Bước 2.** Cộng các hiệu với $k=1,2,\\dots,n$ và gạch bỏ các số hạng đối nhau liên tiếp.\n**Bước 3.** Thu gọn $u_n$ rồi lấy giới hạn bằng cách dùng $\\lim\\dfrac{1}{n}=0$.\n**Phần 2. Trình bày**\nTa có $\\dfrac{1}{(2k-1)(2k+1)}=\\dfrac{1}{2}(\\dfrac{1}{2k-1}-\\dfrac{1}{2k+1})$.\nSuy ra $u_n=\\dfrac{1}{2}(1-\\dfrac{1}{3}+\\dfrac{1}{3}-\\dfrac{1}{5}+\\dots+\\dfrac{1}{2n-1}-\\dfrac{1}{2n+1})=\\dfrac{1}{2}(1-\\dfrac{1}{2n+1})$.\nVì $\\lim\\dfrac{1}{2n+1}=0$ nên $\\lim u_n=\\dfrac{1}{2} …",
+   "ly_do": "Bản đồ thiếu dạng giới hạn tổng/tích khử liên tiếp (telescoping)."
+  },
+  {
+   "ma_cau": "T1110000002651",
+   "de": "Với $n$ là số tự nhiên lớn hơn $2$, đặt $S_n=\\dfrac{1}{C_3^3}+\\dfrac{1}{C_4^3}+\\dfrac{1}{C_5^3}+\\dots+\\dfrac{1}{C_n^3}$. Tính $\\lim S_n$.",
+   "lua_chon": [
+    "$1$.",
+    "$\\dfrac{3}{2}$.",
+    "$3$.",
+    "$\\dfrac{1}{3}$."
+   ],
+   "dap_an": "B",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Viết số hạng tổng quát qua giai thừa rồi tách tích ba thừa số liên tiếp thành hiệu hai phân số để tổng triệt tiêu.\n**Bước 1.** Dùng công thức tổ hợp $C_k^3$ để viết $\\dfrac{1}{C_k^3}$ dưới dạng phân thức theo $k$.\n**Bước 2.** Tách $\\dfrac{2}{(k-2)(k-1)k}$ thành hiệu của $\\dfrac{1}{(k-2)(k-1)}$ và $\\dfrac{1}{(k-1)k}$.\n**Bước 3.** Cộng với $k=3,\\dots,n$, triệt tiêu các số hạng liên tiếp rồi lấy giới hạn.\n**Phần 2. Trình bày**\nLưu ý: đề sách in $C_5^4$, hiển nhiên là $C_5^3$ theo quy luật của dãy; đã sửa.\nTa có $C_k^3=\\dfrac{k(k-1)(k-2)}{6}$ nên $\\dfrac{1}{C_k^3}=\\dfrac{6}{k(k-1)(k-2)}$.\nMặt khác $\\dfrac{2}{(k-2)(k-1)k}=\\dfrac{1}{(k-2)(k-1)}-\\dfrac{1}{(k-1)k} …",
+   "ly_do": "Bản đồ thiếu dạng giới hạn tổng/tích khử liên tiếp (telescoping)."
+  },
+  {
+   "ma_cau": "T1110000002646",
+   "de": "Tính giới hạn $\\lim[\\dfrac{1}{1\\cdot2}+\\dfrac{1}{2\\cdot3}+\\dfrac{1}{3\\cdot4}+\\dots+\\dfrac{1}{n(n+1)}]$.",
+   "lua_chon": [
+    "$0$.",
+    "$2$.",
+    "$1$.",
+    "$\\dfrac{3}{2}$."
+   ],
+   "dap_an": "C",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tách $\\dfrac{1}{k(k+1)}$ thành hiệu hai phân số liên tiếp để cả tổng triệt tiêu chỉ còn số hạng đầu và cuối.\n**Bước 1.** Viết $\\dfrac{1}{k(k+1)}$ dưới dạng hiệu của $\\dfrac{1}{k}$ và $\\dfrac{1}{k+1}$.\n**Bước 2.** Cộng các hiệu với $k$ từ $1$ đến $n$ và gạch bỏ các cặp số hạng đối nhau.\n**Bước 3.** Thu gọn tổng theo $n$ rồi lấy giới hạn.\n**Phần 2. Trình bày**\nTa có $\\dfrac{1}{k(k+1)}=\\dfrac{1}{k}-\\dfrac{1}{k+1}$.\nDo đó tổng bằng $(1-\\dfrac{1}{2})+(\\dfrac{1}{2}-\\dfrac{1}{3})+\\dots+(\\dfrac{1}{n}-\\dfrac{1}{n+1})=1-\\dfrac{1}{n+1}$.\nVì $\\lim\\dfrac{1}{n+1}=0$ nên giới hạn bằng $1$.\nChọn C.",
+   "ly_do": "Bản đồ thiếu dạng giới hạn tổng/tích khử liên tiếp (telescoping)."
+  },
+  {
+   "ma_cau": "T1110000001364",
+   "de": "Tính giới hạn $\\lim u_n$, với $u_n=(1-\\dfrac{1}{2^2})(1-\\dfrac{1}{3^2})\\dots(1-\\dfrac{1}{n^2})$ $(\\forall n\\ge2)$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mỗi thừa số $1-\\dfrac{1}{k^2}$ phân tích được thành tích hai phân số liền kề nên tích triệt tiêu dần.\n**Bước 1.** Phân tích $1-\\dfrac{1}{k^2}$ bằng hằng đẳng thức hiệu hai bình phương thành tích hai thừa số.\n**Bước 2.** Viết $u_n$ thành hai tích riêng và rút gọn các thừa số giống nhau ở tử và mẫu.\n**Bước 3.** Được biểu thức đơn giản của $u_n$ theo $n$ rồi tính giới hạn.\n**Phần 2. Trình bày**\nVới $k\\ge2$: $1-\\dfrac{1}{k^2}=\\dfrac{k^2-1}{k^2}=\\dfrac{(k-1)(k+1)}{k\\cdot k}=\\dfrac{k-1}{k}\\cdot\\dfrac{k+1}{k}$.\nDo đó $u_n=(\\dfrac{1}{2}\\cdot\\dfrac{2}{3}\\cdot\\dfrac{3}{4}\\dots\\dfrac{n-1}{n})\\cdot(\\dfrac{3}{2}\\cdot\\dfrac{4}{3}\\cdot\\dfrac{5}{4}\\dots\\dfrac{n+1}{n})$.\nT …",
+   "ly_do": "Bản đồ thiếu dạng giới hạn tổng/tích khử liên tiếp (telescoping)."
+  },
+  {
+   "ma_cau": "T1110000002650",
+   "de": "Đặt $f(n)=(n^2+n+1)^2+1$, xét dãy số $(u_n)$ sao cho $u_n=\\dfrac{f(1)\\cdot f(3)\\cdot f(5)\\cdots f(2n-1)}{f(2)\\cdot f(4)\\cdot f(6)\\cdots f(2n)}$. Tìm $\\lim n\\sqrt{u_n}$.",
+   "lua_chon": [
+    "$\\lim n\\sqrt{u_n}=\\dfrac{1}{\\sqrt{3}}$.",
+    "$\\lim n\\sqrt{u_n}=\\sqrt{3}$.",
+    "$\\lim n\\sqrt{u_n}=\\dfrac{1}{\\sqrt{2}}$.",
+    "$\\lim n\\sqrt{u_n}=\\sqrt{2}$."
+   ],
+   "dap_an": "C",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Phân tích $f(n)$ thành tích hai nhân tử có dạng $g(n)\\cdot g(n+1)$ để các nhân tử ở tử và mẫu triệt tiêu với nhau.\n**Bước 1.** Khai triển và phân tích $f(n)$ thành tích của $n^2+1$ và $(n+1)^2+1$.\n**Bước 2.** Viết $u_n$ dưới dạng tích các nhân tử $g(k)=k^2+1$ ở tử và mẫu rồi gạch bỏ các nhân tử chung.\n**Bước 3.** Rút gọn $u_n$ theo $n$, thay vào $n\\sqrt{u_n}$ và chia cho $n$ để lấy giới hạn.\n**Phần 2. Trình bày**\nTa có $f(n)=(n^2+1)[(n+1)^2+1]$ (kiểm tra bằng khai triển hai vế).\nĐặt $g(k)=k^2+1$ thì $f(k)=g(k)\\cdot g(k+1)$ và $u_n=\\dfrac{g(1)g(2)\\cdot g(3)g(4)\\cdots g(2n-1)g(2n)}{g(2)g(3)\\cdot g(4)g(5)\\cdots g(2n)g(2n+1)}=\\dfrac{g(1)}{g(2n+1)}$.\nDo đó $u_n …",
+   "ly_do": "Bản đồ thiếu dạng giới hạn tổng/tích khử liên tiếp (telescoping)."
+  },
+  {
+   "ma_cau": "T1110000003065",
+   "de": "Cho dãy số $(u_{n})$ với $u_{n}=\\dfrac{n}{1+n^{2}+n^{4}}$ với mọi $n=1,2,\\dots$ Tính $\\lim(u_{1}+u_{2}+\\dots+u_{n})$.",
+   "lua_chon": [
+    "$\\dfrac{1}{4}$.",
+    "$1$.",
+    "$\\dfrac{1}{2}$.",
+    "$\\dfrac{1}{3}$."
+   ],
+   "dap_an": "C",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Phân tích mẫu thành tích hai tam thức để tách $u_n$ thành hiệu hai phân số, khi cộng lại các số hạng liên tiếp sẽ triệt tiêu.\n**Bước 1.** Viết mẫu $1+n^2+n^4$ dưới dạng hiệu hai bình phương để phân tích thành tích hai nhân tử.\n**Bước 2.** Tách $u_n$ thành hiệu của hai phân số có mẫu là hai nhân tử vừa tìm.\n**Bước 3.** Viết tổng $u_1+u_2+\\dots+u_n$ và gạch bỏ các cặp số hạng đối nhau liên tiếp.\n**Bước 4.** Rút gọn tổng còn lại thành phân thức theo $n$ rồi tính giới hạn.\n**Phần 2. Trình bày**\nTa có $1+n^{2}+n^{4}=(n^{2}+1)^{2}-n^{2}=(n^{2}-n+1)(n^{2}+n+1)$.\nNên $u_{n}=\\dfrac{n}{(n^{2}-n+1)(n^{2}+n+1)}=\\dfrac12(\\dfrac{1}{n^{2}-n+1}-\\dfrac{1}{n^{2}+n+1})$.\nVì  …",
+   "ly_do": "Bản đồ thiếu dạng giới hạn tổng/tích khử liên tiếp (telescoping)."
+  },
+  {
+   "ma_cau": "T1110000001780",
+   "de": "Tính $\\lim\\limits_{n\\to+\\infty}\\Big(\\dfrac{1}{1\\cdot2}+\\dfrac{1}{2\\cdot3}+\\dfrac{1}{3\\cdot4}+\\dots+\\dfrac{1}{n(n+1)}\\Big)$.",
+   "dap_an": "1",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Mỗi số hạng $\\dfrac{1}{k(k+1)}$ tách được thành hiệu hai phân số, nên khi cộng lại các số hạng ở giữa triệt tiêu nhau.\n**Bước 1.** Quy đồng ngược để viết số hạng tổng quát $\\dfrac{1}{k(k+1)}$ thành hiệu của hai phân số đơn giản.\n**Bước 2.** Viết cả tổng thành các hiệu liên tiếp rồi gạch những số hạng đối nhau ở giữa.\n**Bước 3.** Thu gọn tổng thành một biểu thức theo $n$ chỉ còn hai số hạng.\n**Bước 4.** Cho $n$ tiến ra vô cực, dùng giới hạn cơ bản của phân thức có mẫu dần ra vô cực để tính.\n**Phần 2. Trình bày**\nTa có $\\dfrac{1}{k(k+1)}=\\dfrac1k-\\dfrac1{k+1}$.\n$\\dfrac{1}{1\\cdot2}+\\dfrac{1}{2\\cdot3}+\\dots+\\dfrac{1}{n(n+1)}=\\Big(1-\\dfrac12\\Big)+\\Big(\\dfrac12- …",
+   "ly_do": "Bản đồ thiếu dạng tổng phân thức khử liên tiếp (1/(k(k+1)))"
+  },
+  {
+   "ma_cau": "T1110000001877",
+   "de": "Tìm $\\lim\\limits_{n\\to+\\infty}\\Big[\\dfrac1{2\\sqrt1+1\\sqrt2}+\\dfrac1{3\\sqrt2+2\\sqrt3}+\\dots+\\dfrac1{(n+1)\\sqrt n+n\\sqrt{n+1}}\\Big]$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Biến đổi số hạng tổng quát thành hiệu hai phân số chứa căn để tổng triệt tiêu dây chuyền.\n**Bước 1.** Đặt thừa số chung $\\sqrt k\\cdot\\sqrt{k+1}$ ở mẫu của số hạng tổng quát.\n**Bước 2.** Nhân tử và mẫu với liên hợp $\\sqrt{k+1}-\\sqrt k$ để tách số hạng thành hiệu hai phân số.\n**Bước 3.** Cộng các số hạng, rút gọn dây chuyền rồi tính giới hạn của tổng thu gọn.\n**Phần 2. Trình bày**\nSố hạng tổng quát: $\\dfrac1{(k+1)\\sqrt k+k\\sqrt{k+1}}=\\dfrac1{\\sqrt k\\sqrt{k+1}\\big(\\sqrt{k+1}+\\sqrt k\\big)}$.\nNhân tử và mẫu với $\\sqrt{k+1}-\\sqrt k$: $=\\dfrac{\\sqrt{k+1}-\\sqrt k}{\\sqrt k\\sqrt{k+1}}=\\dfrac1{\\sqrt k}-\\dfrac1{\\sqrt{k+1}}$.\nCộng theo $k=1,2,\\dots,n$: $S_n=1-\\dfrac1{\\ …",
+   "ly_do": "Bản đồ thiếu dạng tổng phân thức chứa căn khử liên tiếp"
+  },
+  {
+   "ma_cau": "T1110000001522",
+   "de": "Tìm $L=\\lim_{n\\to+\\infty}(\\dfrac{1}{1}+\\dfrac{1}{1+2}+\\dots+\\dfrac{1}{1+2+\\dots+n})$.",
+   "lua_chon": [
+    "$L=\\dfrac{5}{2}$.",
+    "$L=+\\infty$.",
+    "$L=2$.",
+    "$L=\\dfrac{3}{2}$."
+   ],
+   "dap_an": "C",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** viết số hạng tổng quát dưới dạng hiệu hai phân số liên tiếp để tổng thu gọn (khử liên tiếp).\n**Bước 1.** Tính tổng $1+2+\\dots+k$ bằng công thức tổng cấp số cộng để viết được số hạng thứ $k$.\n**Bước 2.** Tách số hạng tổng quát thành hiệu $\\dfrac{1}{k}-\\dfrac{1}{k+1}$ nhân với một hằng số.\n**Bước 3.** Cộng các số hạng, các phần tử liên tiếp triệt tiêu, rồi tính giới hạn của tổng thu gọn.\n**Phần 2. Trình bày**\nTa có $1+2+\\dots+k=\\dfrac{k(k+1)}{2}$ nên $\\dfrac{1}{1+2+\\dots+k}=\\dfrac{2}{k(k+1)}=2(\\dfrac{1}{k}-\\dfrac{1}{k+1})$.\nGọi $S_n=\\dfrac{1}{1}+\\dfrac{1}{1+2}+\\dots+\\dfrac{1}{1+2+\\dots+n}$.\n$S_n=2[(1-\\dfrac{1}{2})+(\\dfrac{1}{2}-\\dfrac{1}{3})+\\dots+(\\dfrac{1} …",
+   "ly_do": "Bản đồ thiếu dạng tổng phân thức khử liên tiếp (tổng 1+2+…+k ở mẫu)"
+  },
+  {
+   "ma_cau": "T1110000002645",
+   "de": "Tìm $\\lim u_n$ biết $u_n=\\dfrac{1}{2^2-1}+\\dfrac{1}{3^2-1}+\\dots+\\dfrac{1}{n^2-1}$.",
+   "lua_chon": [
+    "$\\dfrac{3}{4}$.",
+    "$\\dfrac{3}{5}$.",
+    "$\\dfrac{2}{3}$.",
+    "$\\dfrac{4}{3}$."
+   ],
+   "dap_an": "A",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Phân tích $k^2-1=(k-1)(k+1)$ rồi tách thành hiệu hai phân số; các số hạng triệt tiêu so le với nhau.\n**Bước 1.** Phân tích mẫu $k^2-1$ thành tích hai thừa số rồi tách phân số thành hiệu hai phân số cách nhau $2$ đơn vị ở mẫu.\n**Bước 2.** Cộng từ $k=2$ đến $k=n$ và liệt kê các số hạng còn lại sau khi triệt tiêu so le.\n**Bước 3.** Thu gọn $u_n$ và lấy giới hạn bằng các giới hạn cơ bản.\n**Phần 2. Trình bày**\nTa có $\\dfrac{1}{k^2-1}=\\dfrac{1}{(k-1)(k+1)}=\\dfrac{1}{2}(\\dfrac{1}{k-1}-\\dfrac{1}{k+1})$.\nSuy ra $u_n=\\dfrac{1}{2}(\\dfrac{1}{1}-\\dfrac{1}{3}+\\dfrac{1}{2}-\\dfrac{1}{4}+\\dfrac{1}{3}-\\dfrac{1}{5}+\\dots+\\dfrac{1}{n-1}-\\dfrac{1}{n+1})$.\nCác số hạng từ $\\dfra …",
+   "ly_do": "thiếu dạng: tổng khử liên tiếp (telescoping) của dãy"
+  },
+  {
+   "ma_cau": "T1110000002648",
+   "de": "Tìm $L=\\lim(\\dfrac{1}{1}+\\dfrac{1}{1+2}+\\dots+\\dfrac{1}{1+2+\\dots+n})$.",
+   "lua_chon": [
+    "$L=\\dfrac{5}{2}$.",
+    "$L=+\\infty$.",
+    "$L=2$.",
+    "$L=\\dfrac{3}{2}$."
+   ],
+   "dap_an": "C",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Mẫu mỗi số hạng là tổng cấp số cộng nên tính được; sau đó tách phân số thành hiệu để các số hạng triệt tiêu.\n**Bước 1.** Tính mẫu $1+2+\\dots+k$ bằng công thức tổng cấp số cộng để viết số hạng tổng quát theo $k$.\n**Bước 2.** Tách số hạng tổng quát thành hiệu hai phân số có mẫu $k$ và $k+1$.\n**Bước 3.** Cộng với $k=1,\\dots,n$, triệt tiêu các số hạng đối nhau rồi lấy giới hạn.\n**Phần 2. Trình bày**\nTa có $1+2+\\dots+k=\\dfrac{k(k+1)}{2}$ nên $\\dfrac{1}{1+2+\\dots+k}=\\dfrac{2}{k(k+1)}=\\dfrac{2}{k}-\\dfrac{2}{k+1}$.\nSuy ra tổng bằng $(\\dfrac{2}{1}-\\dfrac{2}{2})+(\\dfrac{2}{2}-\\dfrac{2}{3})+\\dots+(\\dfrac{2}{n}-\\dfrac{2}{n+1})=2-\\dfrac{2}{n+1}$.\nVì $\\lim\\dfrac{2}{n+1} …",
+   "ly_do": "thiếu dạng: tổng khử liên tiếp (telescoping) của dãy"
+  },
+  {
+   "ma_cau": "T1110000002674",
+   "de": "Tìm giới hạn $\\lim[\\dfrac{1}{1\\cdot3}+\\dfrac{1}{3\\cdot5}+\\dfrac{1}{5\\cdot7}+\\dots+\\dfrac{1}{(2n-1)(2n+1)}]$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tách mỗi số hạng thành hiệu hai phân số để các số hạng liên tiếp triệt tiêu, thu được công thức gọn của tổng.\n**Bước 1.** Tách $\\dfrac{1}{(2k-1)(2k+1)}$ thành hiệu hai phân số có mẫu $2k-1$ và $2k+1$.\n**Bước 2.** Cộng các hiệu với $k=1,2,\\dots,n$ và gạch bỏ các số hạng đối nhau liên tiếp.\n**Bước 3.** Thu gọn tổng rồi lấy giới hạn bằng cách dùng $\\lim\\dfrac{1}{n}=0$.\n**Phần 2. Trình bày**\nTa có $\\dfrac{1}{(2k-1)(2k+1)}=\\dfrac{1}{2}(\\dfrac{1}{2k-1}-\\dfrac{1}{2k+1})$.\nTổng bằng $\\dfrac{1}{2}(1-\\dfrac{1}{3}+\\dfrac{1}{3}-\\dfrac{1}{5}+\\dots+\\dfrac{1}{2n-1}-\\dfrac{1}{2n+1})=\\dfrac{1}{2}(1-\\dfrac{1}{2n+1})$.\nVì $\\lim\\dfrac{1}{2n+1}=0$ nên giới hạn bằng $\\dfrac{1}{ …",
+   "ly_do": "Tổng 1/(1·3)+... tách hiệu triệt tiêu: bản đồ thiếu dạng \"tổng tách hiệu (telescoping)\"."
+  },
+  {
+   "ma_cau": "T1110000002649",
+   "de": "Với $n$ là số nguyên dương, đặt $S_n=\\dfrac{1}{1\\sqrt{2}+2\\sqrt{1}}+\\dfrac{1}{2\\sqrt{3}+3\\sqrt{2}}+\\dots+\\dfrac{1}{n\\sqrt{n+1}+(n+1)\\sqrt{n}}$. Khi đó $\\lim S_n$ bằng",
+   "lua_chon": [
+    "$\\dfrac{1}{\\sqrt{2}+1}$.",
+    "$\\dfrac{1}{\\sqrt{2}-1}$.",
+    "$1$.",
+    "$\\dfrac{1}{\\sqrt{2}+2}$."
+   ],
+   "dap_an": "C",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Phân tích mẫu thành tích rồi trục căn thức để mỗi số hạng trở thành hiệu hai phân số, sau đó các số hạng triệt tiêu liên tiếp.\n**Bước 1.** Đặt thừa số chung $\\sqrt{k}\\sqrt{k+1}$ ở mẫu của số hạng tổng quát để phân tích mẫu thành tích.\n**Bước 2.** Nhân tử và mẫu với $\\sqrt{k+1}-\\sqrt{k}$ để rút gọn, đưa số hạng về hiệu hai phân số.\n**Bước 3.** Cộng với $k=1,\\dots,n$, triệt tiêu rồi lấy giới hạn.\n**Phần 2. Trình bày**\nLưu ý: đề sách in lẫn ký hiệu thừa ($\\frac{r_1}{r_2}=\\frac13$, $\\frac{r_2}{r_3}=\\frac1{\\sqrt2}$); đề được khôi phục theo lời giải sách, đáp án giữ nguyên.\nTa có $k\\sqrt{k+1}+(k+1)\\sqrt{k}=\\sqrt{k}\\sqrt{k+1}(\\sqrt{k}+\\sqrt{k+1})$.\nNên $\\dfrac{1} …",
+   "ly_do": "Tổng các phân thức chứa căn trục căn thức rồi triệt tiêu liên tiếp: bản đồ thiếu dạng \"tổng tách hiệu (telescoping)\"."
+  },
+  {
+   "ma_cau": "T1110000001876",
+   "de": "Tìm $\\lim\\limits_{n\\to+\\infty}\\Big[\\dfrac1{1\\cdot3}+\\dfrac1{3\\cdot5}+\\dfrac1{5\\cdot7}+\\dots+\\dfrac1{(2n-1)(2n+1)}\\Big]$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tách mỗi số hạng thành hiệu hai phân số để các số hạng liền kề triệt tiêu nhau, rồi lấy giới hạn của tổng thu gọn.\n**Bước 1.** Tìm hằng số $A$ sao cho $\\dfrac1{(2k-1)(2k+1)}=A\\Big(\\dfrac1{2k-1}-\\dfrac1{2k+1}\\Big)$.\n**Bước 2.** Viết tổng với $k=1,2,\\dots,n$ rồi nhận ra các số hạng ở giữa triệt tiêu từng cặp.\n**Bước 3.** Rút gọn tổng thành biểu thức theo $n$ rồi tính giới hạn.\n**Phần 2. Trình bày**\nVới mỗi $k\\ge1$: $\\dfrac1{(2k-1)(2k+1)}=\\dfrac12\\Big(\\dfrac1{2k-1}-\\dfrac1{2k+1}\\Big)$.\nCộng theo $k=1,2,\\dots,n$, các số hạng ở giữa triệt tiêu: $S_n=\\dfrac12\\Big(1-\\dfrac1{2n+1}\\Big)$.\nVì $\\lim\\dfrac1{2n+1}=0$ nên $\\lim S_n=\\dfrac12$.",
+   "ly_do": "Tổng 1/(1·3)+... tách hiệu triệt tiêu: bản đồ thiếu dạng \"tổng tách hiệu (telescoping)\"."
+  }
+ ],
+ "luong_giac_0_0": [
+  {
+   "ma_cau": "T1110000003113",
+   "de": "Giới hạn $\\lim\\limits_{x\\to+\\infty}\\dfrac{\\sin x+1}{x}$ bằng",
+   "lua_chon": [
+    "$+\\infty$",
+    "$1$",
+    "$-\\infty$",
+    "$0$"
+   ],
+   "dap_an": "D",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tử bị chặn còn mẫu tăng vô hạn, nên ta chặn hàm số giữa hai biểu thức cùng có giới hạn rồi dùng dãy số bất kì.\n**Bước 1.** Dùng tính chất $|\\sin x|\\le1$ để chặn tử số giữa hai giá trị không đổi.\n**Bước 2.** Với $x>0$, chia các bất đẳng thức cho $x$ để chặn cả hàm số giữa hai biểu thức đơn giản.\n**Bước 3.** Lấy dãy $(x_n)$ bất kì với $x_n\\to+\\infty$, tính giới hạn của hai vế chặn rồi dùng nguyên lí kẹp cho dãy số.\n**Phần 2. Trình bày**\nVì $-1\\le\\sin x\\le1$ nên $0\\le\\sin x+1\\le2$.\nVới $x>0$ ta có $0\\le\\dfrac{\\sin x+1}{x}\\le\\dfrac2x$.\nLấy dãy $(x_n)$ bất kì sao cho $x_n>0$ và $x_n\\to+\\infty$. Khi đó $0\\le\\dfrac{\\sin x_n+1}{x_n}\\le\\dfrac2{x_n}$ và $\\lim\\dfrac2 …",
+   "ly_do": "Bản đồ thiếu dạng giới hạn hàm số bằng nguyên lí kẹp (|sin x|≤1) khi x→+∞"
+  },
+  {
+   "ma_cau": "T1110000002230",
+   "de": "Tính giới hạn $\\lim\\limits_{x\\to0}\\dfrac{1-\\cos3x}{1-\\cos5x}$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đặt $u=\\dfrac x2$ để đưa về tỉ số $\\dfrac{\\sin^23u}{\\sin^25u}$, rồi dùng công thức cộng tách nhân tử $\\sin u$ ở cả tử và mẫu.\n**Bước 1.** Dùng $1-\\cos2a=2\\sin^2a$ để viết tử và mẫu theo $\\sin\\dfrac{3x}2$, $\\sin\\dfrac{5x}2$; đặt $u=\\dfrac x2$, khi $x\\to0$ thì $u\\to0$.\n**Bước 2.** Dùng công thức cộng với $\\sin3u=\\sin(2u+u)$ để viết $\\dfrac{\\sin3u}{\\sin u}$ thành biểu thức chỉ chứa côsin, rồi tính giới hạn khi $u\\to0$.\n**Bước 3.** Làm tương tự với $\\sin5u=\\sin(3u+2u)$, dùng lại kết quả của $\\dfrac{\\sin3u}{\\sin u}$ để tìm giới hạn của $\\dfrac{\\sin5u}{\\sin u}$.\n**Bước 4.** Lập tỉ số hai giới hạn vừa tìm rồi bình phương để ra kết quả.\n**Phần 2. Trình bày**\nTa có …",
+   "ly_do": "Bản đồ thiếu dạng giới hạn lượng giác 0/0 (1−cos kx)"
+  },
+  {
+   "ma_cau": "T1110000001339",
+   "de": "Huyết áp là áp lực cần thiết tác động lên thành của động mạch để đưa máu từ tim đến nuôi dưỡng các mô trong cơ thể. Huyết áp được tạo ra do lực co bóp của cơ tim và sức cản của thành động mạch. Mỗi lần tim đập, huyết áp của chúng ta tăng rồi giảm giữa các nhịp. Huyết áp tối đa và huyết áp tối thiểu gọi là huyết áp tâm thu và tâm trương, tương ứng. Chỉ số huyết áp của chúng ta được viết là tâm thu/tâm trương. Chỉ số huyết áp $120/80$ là bình thường. Giả sử một người nào đó có nhịp tim là $70$ lần trên phút và huyết áp của người đó được mô hình hoá bởi hàm số $P(t)=100+20\\sin\\Big(\\dfrac{7\\pi}{3}t\\Big)$ ở đó $P(t)$ là huyết áp tính theo đơn vị $mmHg$ (milimét thuỷ ngân) và thời gian $t$ tính theo giây.\na) Trong khoảng từ $0$ đến $1$ giây, hãy xác định số lần huyết áp là $100$ $mmHg$.\nb) Trong khoảng từ $0$ đến $1$ giây, hãy xác định số lần huyết áp là $120$ $mmHg$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mỗi ý là một phương trình sin cơ bản theo $t$; ta tìm họ nghiệm rồi đếm số giá trị nguyên $k$ làm $t$ thuộc đoạn $[0;1]$.\n**Bước 1.** Ý a: giải $P(t)=100$ bằng cách chuyển về $\\sin\\Big(\\dfrac{7\\pi}{3}t\\Big)=a$ với $a$ đặc biệt và viết họ nghiệm.\n**Bước 2.** Giải bất phương trình $0\\le t\\le1$ theo $k$ để liệt kê các số nguyên $k$ và đếm số lần.\n**Bước 3.** Ý b: giải $P(t)=120$ tương tự, chú ý giá trị của $\\sin$ lúc này là giá trị lớn nhất.\n**Bước 4.** Giải bất phương trình theo $k$ để đếm các nghiệm thuộc đoạn $[0;1]$.\n**Phần 2. Trình bày**\na) $P(t)=100\\Leftrightarrow\\sin\\Big(\\dfrac{7\\pi}{3}t\\Big)=0$.\n$\\Leftrightarrow\\dfrac{7\\pi}{3}t=k\\pi\\Leftrightarrow t=\\ …",
+   "ly_do": "thuộc HGT: phương trình lượng giác thực tế (huyết áp)"
+  },
+  {
+   "ma_cau": "T1110000001422",
+   "de": "Hội Lim được tổ chức vào mùa xuân thường có trò chơi đánh đu. Khi người chơi đu nhún đều, cây đu sẽ đưa người chơi đu dao động quanh vị trí cân bằng. Nghiên cứu trò chơi này, người ta thấy khoảng cách $h$ (m) từ vị trí người chơi đu đến vị trí cân bằng được biểu diễn qua thời gian $t$ (s) bởi hệ thức $h=|d|$ với $d=3\\cos[\\dfrac{\\pi}{3}(2t-1)]$, trong đó ta quy ước $d>0$ khi vị trí cân bằng ở phía sau lưng người chơi đu và $d<0$ trong trường hợp ngược lại. Vào thời gian $t$ gần nhất nào thì khoảng cách $h$ là $3$ m?",
+   "lua_chon": [
+    "$1$.",
+    "$\\dfrac{1}{3}$.",
+    "$2$.",
+    "$\\dfrac{1}{2}$."
+   ],
+   "dap_an": "D",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** khoảng cách đạt $3$ m, bằng biên độ, khi cosin có giá trị tuyệt đối bằng $1$.\n**Bước 1.** Đặt $h=3$ và rút ra điều kiện về giá trị tuyệt đối của $\\cos[\\dfrac{\\pi}{3}(2t-1)]$.\n**Bước 2.** Giải phương trình $|\\cos u|=1$ để được góc $u$ là bội nguyên của $\\pi$.\n**Bước 3.** Rút $t$ theo $k$ và chọn giá trị $t$ không âm nhỏ nhất vì $t$ là thời gian.\n**Phần 2. Trình bày**\n$h=3\\Leftrightarrow3|\\cos[\\dfrac{\\pi}{3}(2t-1)]|=3\\Leftrightarrow|\\cos[\\dfrac{\\pi}{3}(2t-1)]|=1$.\n$\\Leftrightarrow\\dfrac{\\pi}{3}(2t-1)=k\\pi$ với $k\\in\\mathbb{Z}$.\n$\\Leftrightarrow2t-1=3k\\Leftrightarrow t=\\dfrac{3k+1}{2}$.\nVì $t\\ge0$ nên $k\\ge0$ (với $k=-1$ thì $t=-1<0$, loại).\nVới $k=0$ ta được …",
+   "ly_do": "thuộc HGT: phương trình lượng giác thực tế (đu dao động)"
+  },
+  {
+   "ma_cau": "T1110000002232",
+   "de": "Tính giới hạn $\\lim\\limits_{x\\to\\frac{\\pi}{3}}\\dfrac{\\sin(x-\\dfrac{\\pi}{3})}{1-2\\cos x}$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Đặt $t=x-\\dfrac\\pi3$ rồi khai triển $\\cos(t+\\dfrac\\pi3)$ bằng công thức cộng; dùng công thức nhân đôi theo $\\dfrac t2$ để tử và mẫu cùng có nhân tử $\\sin\\dfrac t2$.\n**Bước 1.** Đặt $t=x-\\dfrac\\pi3$, khi $x\\to\\dfrac\\pi3$ thì $t\\to0$, và nhận ra dạng $\\dfrac00$.\n**Bước 2.** Khai triển $\\cos(t+\\dfrac\\pi3)$ bằng công thức cộng để viết lại mẫu theo $\\cos t$ và $\\sin t$.\n**Bước 3.** Dùng $1-\\cos t=2\\sin^2\\dfrac t2$ và $\\sin t=2\\sin\\dfrac t2\\cos\\dfrac t2$ để đặt nhân tử chung $2\\sin\\dfrac t2$ ở cả tử và mẫu.\n**Bước 4.** Triệt nhân tử chung rồi thay $t=0$ vào biểu thức còn lại.\n**Phần 2. Trình bày**\nĐặt $t=x-\\dfrac\\pi3$; khi $x\\to\\dfrac\\pi3$ thì $t\\to0$, tử $\\to0$ …",
+   "ly_do": "Giới hạn hàm lượng giác dạng 0/0 (sin, cos): bản đồ thiếu dạng \"giới hạn hàm lượng giác\"."
+  },
+  {
+   "ma_cau": "T111030105011",
+   "de": "Hội Lim (tỉnh Bắc Ninh) là lễ hội mùa xuân nổi tiếng có trò chơi đánh đu truyền thống. Khi người chơi đu nhún đều, cây đu sẽ đưa người đu dao động quanh vị trí cân bằng. Giả sử khoảng cách $h\\left(m\\right)$ từ người chơi đu đến vị trí cân bằng theo thời gian $t\\left(s\\right)$ (với $t\\ge 0$) được mô tả bởi công thức: $h=|d|$ với $d\\left(t\\right)=3,5\\cos \\left(\\dfrac{2\\pi }{3}t-\\dfrac{\\pi }{3}\\right)$, trong đó ta quy ước $d>0$ khi vị trí cân bằng ở phía sau lưng người đu và $d<0$ trong trường hợp ngược lại. Tìm khoảng cách lớn nhất của người đu so với vị trí cân bằng.",
+   "dap_an": "3.5",
+   "loi_giai": "Khoảng cách từ người chơi đu đến vị trí cân bằng là $h=|d\\left(t\\right)|=|3,5\\cos \\left(\\dfrac{2\\pi }{3}t-\\dfrac{\\pi }{3}\\right)|$.\nVì $-1\\le \\cos \\left(\\dfrac{2\\pi }{3}t-\\dfrac{\\pi }{3}\\right)\\le 1$ với mọi $t\\ge 0$, nên\n$0\\le |\\cos \\left(\\dfrac{2\\pi }{3}t-\\dfrac{\\pi }{3}\\right)|\\le 1.$\nSuy ra\n$h=3,5|\\cos \\left(\\dfrac{2\\pi }{3}t-\\dfrac{\\pi }{3}\\right)|\\le 3,5\\cdot 1=3,5 \\left(m\\right).$\nDấu đẳng thức xảy ra khi $|\\cos \\left(\\dfrac{2\\pi }{3}t-\\dfrac{\\pi }{3}\\right)|=1\\Leftrightarrow \\dfrac{2\\pi }{3}t-\\dfrac{\\pi }{3}=k\\pi \\Leftrightarrow t=\\dfrac{1}{2}+\\dfrac{3k}{2}$ ($k\\in \\mathbb{N}$).\nVậy khoảng cách lớn nhất của người đu so với vị trí cân bằng là $3,5 m$.",
+   "ly_do": "thuộc HGT: bài ứng dụng hàm cosin, giá trị lớn nhất của |3,5cos(...)|, không phải giới hạn."
+  },
+  {
+   "ma_cau": "T1110000002229",
+   "de": "Tính giới hạn $\\lim\\limits_{x\\to0}\\dfrac{\\sin2x}{\\sin\\dfrac x2}$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Dùng công thức nhân đôi hai lần để tử xuất hiện nhân tử $\\sin\\dfrac x2$, rồi triệt với mẫu.\n**Bước 1.** Nhận ra khi $x\\to0$ cả tử và mẫu đều dần tới $0$, đây là dạng $\\dfrac00$.\n**Bước 2.** Viết $\\sin2x=2\\sin x\\cos x$ rồi tiếp tục viết $\\sin x=2\\sin\\dfrac x2\\cos\\dfrac x2$.\n**Bước 3.** Triệt nhân tử $\\sin\\dfrac x2$ (khác $0$ khi $x\\ne0$ gần $0$) để được biểu thức chỉ còn côsin.\n**Bước 4.** Thay $x=0$ vào biểu thức còn lại vì hàm côsin liên tục.\n**Phần 2. Trình bày**\nKhi $x\\to0$: $\\sin2x\\to0$ và $\\sin\\dfrac x2\\to0$ nên là dạng $\\dfrac00$.\nTa có $\\sin2x=2\\sin x\\cos x=4\\sin\\dfrac x2\\cos\\dfrac x2\\cos x$.\nVới $x\\ne0$ gần $0$ thì $\\sin\\dfrac x2\\ne0$, nên $\\dfrac{ …",
+   "ly_do": "Giới hạn hàm lượng giác sin2x/sin(x/2) dạng 0/0: bản đồ thiếu dạng \"giới hạn hàm lượng giác\"."
+  },
+  {
+   "ma_cau": "T1110000002231",
+   "de": "Tính giới hạn $\\lim\\limits_{x\\to0}\\dfrac{3-\\cos x-\\cos2x-\\cos3x}{1-\\cos x}$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tách tử thành $(1-\\cos x)+(1-\\cos2x)+(1-\\cos3x)$, đưa mỗi $1-\\cos kx$ về $2\\sin^2\\dfrac{kx}2$ rồi so với $1-\\cos x=2\\sin^2\\dfrac x2$.\n**Bước 1.** Tách phân thức thành tổng ba phân thức có cùng mẫu $1-\\cos x$.\n**Bước 2.** Đặt $u=\\dfrac x2$ và dùng $1-\\cos2a=2\\sin^2a$ để mỗi phân thức thành bình phương của $\\dfrac{\\sin ku}{\\sin u}$.\n**Bước 3.** Dùng công thức nhân đôi và công thức cộng để viết $\\dfrac{\\sin2u}{\\sin u}$, $\\dfrac{\\sin3u}{\\sin u}$ thành biểu thức chỉ chứa côsin, rồi tính giới hạn khi $u\\to0$.\n**Bước 4.** Cộng các giới hạn của ba phân thức để ra kết quả.\n**Phần 2. Trình bày**\nTa có $\\dfrac{3-\\cos x-\\cos2x-\\cos3x}{1-\\cos x}=1+\\dfrac{1-\\cos2x}{1-\\c …",
+   "ly_do": "Giới hạn lượng giác dạng 0/0 (1-cos kx); bản đồ thiếu dạng giới hạn hàm lượng giác."
+  }
+ ],
+ "nhanh_khac": [
+  {
+   "ma_cau": "T1110000001427",
+   "de": "Trên một mảnh đất hình vuông $ABCD$ bác An đặt một chiếc đèn pin tại vị trí $A$ chiếu chùm sáng phân kì sang phía góc $C$. Bác An nhận thấy góc chiếu sáng của đèn pin giới hạn bởi hai tia $AM$ và $AN$ mà ở đó các điểm $M\\in BC$, $N\\in DC$ sao cho $BM=\\dfrac{1}{2}BC$, $DN=\\dfrac{1}{3}DC$. Góc chiếu sáng của đèn pin bằng bao nhiêu độ?",
+   "dap_an": "45",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** góc $\\widehat{MAN}$ là phần còn lại của góc vuông $\\widehat{BAD}$ sau khi bớt hai góc $\\widehat{BAM}$ và $\\widehat{DAN}$, mà hai góc này tính được qua tang.\n**Bước 1.** Tính $\\tan\\widehat{BAM}$ và $\\tan\\widehat{DAN}$ trong các tam giác vuông $ABM$ và $ADN$ theo cạnh hình vuông.\n**Bước 2.** Dùng công thức tang của tổng để tính tang của tổng hai góc $\\widehat{BAM}+\\widehat{DAN}$.\n**Bước 3.** Từ giá trị tang đó suy ra số đo tổng hai góc rồi lấy $90^\\circ$ trừ đi để ra góc chiếu sáng.\n**Phần 2. Trình bày**\nGọi $a$ là độ dài cạnh hình vuông. Khi đó $AB=AD=a$, $BM=\\dfrac{a}{2}$, $DN=\\dfrac{a}{3}$.\nTrong tam giác $ABM$ vuông tại $B$: $\\tan\\widehat{BAM}=\\dfrac{BM} …",
+   "ly_do": "thuộc Hình học: tính góc MAN trong hình vuông bằng tang, không phải giới hạn."
+  }
+ ],
+ "khac": [
+  {
+   "ma_cau": "T1110000001794",
+   "de": "Tính giới hạn $L=\\lim\\Big[\\dfrac{(3^{n}+2)(2^{n}+1)}{3^{n}+2}-2^{n}+2\\Big]$.",
+   "dap_an": "3",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Thừa số $3^n+2$ ở tử và mẫu giản ước được, sau đó các số hạng chứa $2^n$ triệt tiêu và chỉ còn hằng số.\n**Bước 1.** Nhận ra thừa số $3^n+2$ khác $0$ xuất hiện ở cả tử và mẫu của phân thức.\n**Bước 2.** Giản ước thừa số đó, rồi gộp với $-2^n+2$ để các số hạng chứa $2^n$ triệt tiêu.\n**Bước 3.** Biểu thức còn lại là hằng số với mọi $n$ nên lấy giới hạn của dãy hằng.\n**Phần 2. Trình bày**\nVì $3^n+2\\ne0$ nên $\\dfrac{(3^{n}+2)(2^{n}+1)}{3^{n}+2}=2^n+1$.\nDo đó biểu thức bằng $2^n+1-2^n+2=3$ với mọi $n$.\nVậy $L=\\lim3=3$.",
+   "ly_do": "Bản đồ thiếu dạng dãy rút gọn được về hằng/biểu thức đơn giản trước khi lấy giới hạn."
+  },
+  {
+   "ma_cau": "T1110000001458",
+   "de": "Sinh nhật bạn của An vào ngày $01$ tháng năm. An muốn mua một món quà sinh nhật cho bạn nên quyết định bỏ ống heo $100$ đồng vào ngày $01$ tháng $01$ năm $2016$, sau đó cứ liên tục ngày sau hơn ngày trước $100$ đồng. Hỏi đến ngày sinh nhật của bạn, An đã tích lũy được bao nhiêu tiền? (thời gian bỏ ống heo tính từ ngày $01$ tháng $01$ năm $2016$ đến ngày $30$ tháng $4$ năm $2016$)",
+   "lua_chon": [
+    "738 100 đồng.",
+    "726 000 đồng.",
+    "714 000 đồng.",
+    "750 300 đồng."
+   ],
+   "dap_an": "A",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số tiền bỏ ống mỗi ngày lập thành cấp số cộng, cần đếm đúng số ngày kể cả năm nhuận.\n**Bước 1.** Đếm số ngày từ $01/01/2016$ đến $30/04/2016$, chú ý năm $2016$ là năm nhuận nên tháng $2$ có $29$ ngày.\n**Bước 2.** Xác định số hạng đầu và công sai của cấp số cộng số tiền bỏ ống mỗi ngày.\n**Bước 3.** Dùng công thức tổng $n$ số hạng đầu với $n$ là số ngày vừa đếm.\n**Phần 2. Trình bày**\nSố ngày: $31+29+31+30=121$ ngày (năm $2016$ nhuận).\nSố tiền bỏ ống ngày thứ $k$ là $u_k=100k$ (đồng), cấp số cộng có $u_1=100$, $d=100$.\n$S_{121}=\\dfrac{121\\,(100+100\\cdot121)}{2}=\\dfrac{121\\cdot12200}{2}=738100$\nVậy An tích luỹ được $738\\,100$ đồng.\nChọn A.",
+   "ly_do": "Bản đồ thiếu dạng tổng cấp số cộng thực tế (không giới hạn)"
+  },
+  {
+   "ma_cau": "T1110000002687",
+   "de": "Tính giới hạn $L=\\lim[\\dfrac{(3^n+2)(2^n+1)}{3^n+2}-2^n+2]$.",
+   "dap_an": "3",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Phân thức có thừa số $3^n+2$ ở cả tử và mẫu nên rút gọn trước; sau đó các luỹ thừa $2^n$ triệt tiêu và chỉ còn hằng số.\n**Bước 1.** Nhận ra thừa số chung $3^n+2$ ở tử và mẫu (khác $0$) để rút gọn phân thức.\n**Bước 2.** Thay phân thức bằng biểu thức đã rút gọn rồi cộng trừ các số hạng cùng loại.\n**Bước 3.** Kết luận giới hạn của dãy hằng thu được.\n**Phần 2. Trình bày**\nVì $3^n+2\\ne0$ nên $\\dfrac{(3^n+2)(2^n+1)}{3^n+2}=2^n+1$.\nDo đó biểu thức trong ngoặc vuông bằng $2^n+1-2^n+2=3$ với mọi $n$.\nDãy hằng $3$ có giới hạn $3$, vậy $L=3$.",
+   "ly_do": "thiếu dạng: rút gọn thừa số chung rồi lấy giới hạn dãy"
+  },
+  {
+   "ma_cau": "T1110000001908",
+   "de": "Tìm $\\lim\\limits_{n\\to+\\infty}\\dfrac{1^3+2^3+\\dots+n^3}{n^2+3n\\sqrt n+2}$.",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** Tử số là tổng các số dương nên không nhỏ hơn số hạng lớn nhất; dùng cận dưới này để so sánh phân thức với một dãy đơn giản.\n**Bước 1.** Nhận xét mọi số hạng của tử đều dương nên tử không nhỏ hơn số hạng cuối $n^3$.\n**Bước 2.** Chặn mẫu số từ trên bởi một bội của $n^2$ để chặn dưới cả phân thức bởi một bội của $n$.\n**Bước 3.** Dùng định nghĩa giới hạn vô cực: với số dương $M$ bất kì, chỉ ra phân thức lớn hơn $M$ kể từ một số hạng nào đó.\n**Phần 2. Trình bày**\nĐặt $u_n=\\dfrac{1^3+2^3+\\dots+n^3}{n^2+3n\\sqrt n+2}$.\nMọi số hạng $k^3$ đều dương nên $1^3+2^3+\\dots+n^3\\ge n^3$.\nVới $n\\ge1$: $n^2+3n\\sqrt n+2\\le n^2+3n^2+2n^2=6n^2$.\nDo đó $u_n\\ge\\dfrac{n^3}{6n^2}=\\d …",
+   "ly_do": "Tổng 1³+...+n³ chia mẫu, dùng so sánh/kẹp ra +∞: bản đồ thiếu dạng \"giới hạn bằng so sánh/kẹp, tổng luỹ thừa\"."
+  }
+ ]
+}

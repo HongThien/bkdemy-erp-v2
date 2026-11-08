@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T111040101358",
+  "dang_bai_id": "NDB00575",
+  "chac": "vua",
+  "ly_do": "Lý thuyết công thức nghiệm sinx=sinα, thuộc nhóm phương trình cơ bản."
+ },
+ {
+  "ma_cau": "T111060302071",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng lý thuyết công thức tổng n số hạng đầu của cấp số nhân."
+ },
+ {
+  "ma_cau": "T111000000166",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm; dạng duy nhất của chủ đề nhưng mô tả trống."
+ },
+ {
+  "ma_cau": "T111060302129",
+  "dang_bai_id": "NDB00617",
+  "chac": "vua",
+  "ly_do": "Hình học lặp, diện tích lập thành cấp số nhân, tìm công thức tổng quát; không chắc dạng."
+ },
+ {
+  "ma_cau": "T111030502101",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: đọc giá trị lớn nhất/nhỏ nhất của hàm số từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030502117",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: đọc giá trị lớn nhất/nhỏ nhất của hàm số từ đồ thị."
+ },
+ {
+  "ma_cau": "T111010101098",
+  "dang_bai_id": "NDB00567",
+  "chac": "cao",
+  "ly_do": "Tính góc quét của guồng tròn quay đều theo phần chu kì."
+ },
+ {
+  "ma_cau": "T111030502086",
+  "dang_bai_id": "NDB01005",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc đồ thị, dựa vào đồ thị."
+ },
+ {
+  "ma_cau": "T111000000018",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: cấp số nhân cho hệ phương trình quan hệ giữa các số hạng."
+ },
+ {
+  "ma_cau": "T111030502118",
+  "dang_bai_id": "NDB01005",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc đồ thị, dựa vào đồ thị."
+ },
+ {
+  "ma_cau": "T111010602043",
+  "dang_bai_id": "NDB00967",
+  "chac": "vua",
+  "ly_do": "Nhận dạng đẳng thức sinα+cosα=√2 sin(α+π/4) từ công thức cộng."
+ },
+ {
+  "ma_cau": "T111040202003",
+  "dang_bai_id": "NDB01015",
+  "chac": "cao",
+  "ly_do": "Hạ bậc/nhân đôi về cos(...) rồi giải phương trình cơ bản hai vế."
+ },
+ {
+  "ma_cau": "T111030301054",
+  "dang_bai_id": "NDB00991",
+  "chac": "cao",
+  "ly_do": "Xét tính chẵn lẻ nhiều hàm hỗn hợp; chọn dạng hàm mở rộng (đứng sau)."
+ },
+ {
+  "ma_cau": "T111060205055",
+  "dang_bai_id": "NDB00614",
+  "chac": "vua",
+  "ly_do": "Thực tế cấp số cộng cho u1,d, tính tổng sau khi xác định số tầng; có hình."
+ },
+ {
+  "ma_cau": "T111030503006",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Đọc đơn điệu trực tiếp từ đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T111030503055",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Đọc đơn điệu trực tiếp từ đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T111000000178",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm; dạng duy nhất của chủ đề nhưng mô tả trống."
+ },
+ {
+  "ma_cau": "T111000000382",
+  "dang_bai_id": "NDB00567",
+  "chac": "cao",
+  "ly_do": "Tính góc quay của quạt theo tốc độ vòng/phút và thời gian."
+ },
+ {
+  "ma_cau": "T111040202011",
+  "dang_bai_id": "NDB01015",
+  "chac": "cao",
+  "ly_do": "Hạ bậc/nhân đôi về cos(...) rồi giải phương trình cơ bản hai vế."
+ },
+ {
+  "ma_cau": "T111030503011",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Đọc đơn điệu trực tiếp từ đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T111030203041",
+  "dang_bai_id": "NDB00997",
+  "chac": "cao",
+  "ly_do": "Đưa về √3sin4x−cos4x rồi tìm max dạng Asinx+Bcosx."
+ },
+ {
+  "ma_cau": "T111060202187",
+  "dang_bai_id": "NDB00608",
+  "chac": "vua",
+  "ly_do": "Cấp số cộng cho quan hệ tỉ số tổng Sp/Sq; nâng cao, không khớp hẳn dạng nào."
+ },
+ {
+  "ma_cau": "T111000000493",
+  "dang_bai_id": "NDB00943",
+  "chac": "cao",
+  "ly_do": "Tính độ dài cung tròn từ bán kính và số đo cung."
+ },
+ {
+  "ma_cau": "T111030503046",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Đọc đơn điệu trực tiếp từ đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T111030502070",
+  "dang_bai_id": "NDB01005",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc đồ thị, dựa vào đồ thị."
+ },
+ {
+  "ma_cau": "T111030502055",
+  "dang_bai_id": "NDB01004",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì hàm số từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030505001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: giải bất phương trình lượng giác sin2x≥0 trên đoạn."
+ },
+ {
+  "ma_cau": "T111060302010",
+  "dang_bai_id": "NDB01025",
+  "chac": "vua",
+  "ly_do": "Cấp số nhân có ẩn x, y thuộc nhóm bài toán khác về cấp số nhân."
+ },
+ {
+  "ma_cau": "T111060305013",
+  "dang_bai_id": "NDB01025",
+  "chac": "vua",
+  "ly_do": "Kết hợp cấp số nhân và cấp số cộng tìm ba số; nhóm bài toán khác."
+ },
+ {
+  "ma_cau": "T111000000058",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm; dạng duy nhất của chủ đề nhưng mô tả trống."
+ },
+ {
+  "ma_cau": "T111000000391",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc lượng giác thực tế (hệ thức tan góc ngắm): bản đồ thiếu dạng."
+ },
+ {
+  "ma_cau": "T111000000127",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm; dạng duy nhất của chủ đề nhưng mô tả trống."
+ },
+ {
+  "ma_cau": "T111040102097",
+  "dang_bai_id": "NDB01009",
+  "chac": "cao",
+  "ly_do": "Tích hai phương trình tan, mỗi cái một họ nghiệm, đếm nghiệm trên khoảng."
+ },
+ {
+  "ma_cau": "T111030503032",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Đọc đơn điệu trực tiếp từ đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T111030503028",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Đọc đơn điệu trực tiếp từ đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T111030502054",
+  "dang_bai_id": "NDB01005",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc đồ thị, dựa vào đồ thị."
+ },
+ {
+  "ma_cau": "T111030502019",
+  "dang_bai_id": "NDB01004",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì hàm số từ đồ thị."
+ },
+ {
+  "ma_cau": "T111010502057",
+  "dang_bai_id": "NDB00960",
+  "chac": "cao",
+  "ly_do": "Rút gọn dùng công thức nhân đôi cos2x."
+ },
+ {
+  "ma_cau": "T111060303012",
+  "dang_bai_id": "NDB01030",
+  "chac": "cao",
+  "ly_do": "Xen số vào cấp số nhân biết hai số hạng đầu cuối."
+ },
+ {
+  "ma_cau": "T111030502042",
+  "dang_bai_id": "NDB01005",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc đồ thị, dựa vào đồ thị."
+ },
+ {
+  "ma_cau": "T111040204056",
+  "dang_bai_id": "NDB01018",
+  "chac": "cao",
+  "ly_do": "Hạ về bậc 2 theo sinx, đếm nghiệm trên đoạn."
+ },
+ {
+  "ma_cau": "T111040102089",
+  "dang_bai_id": "NDB01014",
+  "chac": "cao",
+  "ly_do": "sin2x=cos3x đổi về sin cơ bản rồi đếm nghiệm trên đoạn."
+ },
+ {
+  "ma_cau": "T111030101118",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: nhận xét tính chất hàm sin qua đồ thị (chu kì, đơn điệu)."
+ },
+ {
+  "ma_cau": "T111040102093",
+  "dang_bai_id": "NDB01010",
+  "chac": "vua",
+  "ly_do": "Tìm nghiệm lớn nhất của sinx=1 trên nửa khoảng rồi tính khoảng cách; có hình."
+ },
+ {
+  "ma_cau": "T111030502087",
+  "dang_bai_id": "NDB01004",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì hàm số từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030503057",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Đọc đơn điệu trực tiếp từ đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T111060304032",
+  "dang_bai_id": "NDB00619",
+  "chac": "vua",
+  "ly_do": "Thực tế truy hồi số sản phẩm trừ dần, gần dạng trả góp; không chắc."
+ },
+ {
+  "ma_cau": "T111030103009",
+  "dang_bai_id": "NDB00991",
+  "chac": "cao",
+  "ly_do": "Xét tính chẵn lẻ nhiều hàm hỗn hợp; chọn dạng hàm mở rộng (đứng sau)."
+ },
+ {
+  "ma_cau": "T111060304065",
+  "dang_bai_id": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Tăng 15% mỗi năm là cấp số nhân, tìm năm vượt ngưỡng."
+ },
+ {
+  "ma_cau": "T111000000134",
+  "dang_bai_id": "NDB01170",
+  "chac": "vua",
+  "ly_do": "Nhận biết mệnh đề sai về giới hạn cơ bản của hàm số."
+ },
+ {
+  "ma_cau": "T111030502132",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: đọc tập giá trị của hàm số từ đồ thị."
+ },
+ {
+  "ma_cau": "T111040202021",
+  "dang_bai_id": "NDB01015",
+  "chac": "cao",
+  "ly_do": "Hạ bậc/nhân đôi về cos(...) rồi giải phương trình cơ bản hai vế."
+ },
+ {
+  "ma_cau": "T111030502036",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: đọc tập giá trị của hàm số từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030503056",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Đọc đơn điệu trực tiếp từ đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T111060302056",
+  "dang_bai_id": "NDB01030",
+  "chac": "cao",
+  "ly_do": "Xen số vào cấp số nhân biết hai số hạng đầu cuối."
+ },
+ {
+  "ma_cau": "T111040202022",
+  "dang_bai_id": "NDB01015",
+  "chac": "cao",
+  "ly_do": "Hạ bậc/nhân đôi về cos(...) rồi giải phương trình cơ bản hai vế."
+ },
+ {
+  "ma_cau": "T111030502051",
+  "dang_bai_id": "NDB01004",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì hàm số từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030503013",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Đọc đơn điệu trực tiếp từ đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T111060205035",
+  "dang_bai_id": "NDB01024",
+  "chac": "cao",
+  "ly_do": "Thực tế cấp số cộng so sánh hai phương án thuê, không thuộc dạng nêu."
+ },
+ {
+  "ma_cau": "T111000000108",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm; dạng duy nhất của chủ đề nhưng mô tả trống."
+ },
+ {
+  "ma_cau": "T111000000177",
+  "dang_bai_id": "NDB00945",
+  "chac": "cao",
+  "ly_do": "Giá trị lượng giác của góc qua tọa độ điểm biểu diễn trên hình."
+ },
+ {
+  "ma_cau": "T111030502029",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: đọc giá trị lớn nhất/nhỏ nhất của hàm số từ đồ thị."
+ },
+ {
+  "ma_cau": "T111050402001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Xác suất: biến cố đối, chưa có trong bảng đích."
+ },
+ {
+  "ma_cau": "T111030105033",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: thực tế đồ thị hàm cos, giải phương trình tính diện tích cổng."
+ },
+ {
+  "ma_cau": "T111060202168",
+  "dang_bai_id": "NDB01024",
+  "chac": "vua",
+  "ly_do": "Chứng minh cấp số cộng từ hình học lặp rồi tính tổng; có hình."
+ },
+ {
+  "ma_cau": "T111030503050",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Đọc đơn điệu trực tiếp từ đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T111040101168",
+  "dang_bai_id": "NDB00575",
+  "chac": "vua",
+  "ly_do": "Lý thuyết công thức nghiệm cosx=cosα (độ), thuộc nhóm phương trình cơ bản."
+ },
+ {
+  "ma_cau": "T111030503024",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Đọc đơn điệu trực tiếp từ đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T111030502119",
+  "dang_bai_id": "NDB01004",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì hàm số từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030105041",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Tìm giá trị lớn nhất của hàm sin trong bài thực tế giờ nắng."
+ }
+]

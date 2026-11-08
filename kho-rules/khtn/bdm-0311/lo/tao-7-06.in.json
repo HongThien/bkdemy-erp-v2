@@ -1,0 +1,1169 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00346",
+   "khoi": "7",
+   "chu_de": "Từ",
+   "chuyen_de": "Nam châm vĩnh cửu",
+   "nhom": "Lý thuyết cơ bản về nam châm vĩnh cửu",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K07060101001",
+     "loai": "trac_nghiem",
+     "de": "Vật nào sau đây bị nam châm hút?",
+     "lua_chon": [
+      "Chiếc đinh sắt",
+      "Chiếc thìa nhôm",
+      "Đoạn dây đồng",
+      "Chiếc cốc thủy tinh"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nam châm hút các vật làm bằng vật liệu từ như sắt, thép, nickel, cobalt; đinh sắt bị hút, còn nhôm, đồng, thủy tinh thì không.\n\nVì sao các phương án khác sai:\n- B: Nhôm KHÔNG phải vật liệu từ nên không bị nam châm hút.\n- C: Đồng KHÔNG phải vật liệu từ nên không bị nam châm hút.\n- D: Thủy tinh không phải vật liệu từ nên không bị nam châm hút."
+    },
+    {
+     "ma_cau": "K07060101002",
+     "loai": "trac_nghiem",
+     "de": "Nhóm nào sau đây gồm toàn vật liệu từ?",
+     "lua_chon": [
+      "Sắt, nhôm, đồng, thép",
+      "Nhôm, đồng, gỗ, nhựa",
+      "Sắt, thép, nickel, cobalt",
+      "Thép, nickel, đồng, bạc"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vật liệu từ là vật liệu bị nam châm hút, gồm sắt, thép, nickel, cobalt…; nhôm, đồng, bạc, gỗ, nhựa không phải vật liệu từ.\n\nVì sao các phương án khác sai:\n- A: Nhôm và đồng không bị nam châm hút nên không phải vật liệu từ.\n- B: Cả bốn chất đều không bị nam châm hút.\n- D: Đồng và bạc không bị nam châm hút nên không phải vật liệu từ."
+    },
+    {
+     "ma_cau": "K07060101003",
+     "loai": "trac_nghiem",
+     "de": "Nam châm có hút được nhôm hay không?",
+     "lua_chon": [
+      "Có, vì nhôm là vật liệu từ",
+      "Nhôm hút được nếu hơ nóng trước",
+      "Nhôm hút được nếu được mài nhẵn",
+      "Không, vì nhôm không phải vật liệu từ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nam châm chỉ hút các vật liệu từ như sắt, thép, nickel, cobalt; nhôm không phải vật liệu từ nên không bị hút.\n\nVì sao các phương án khác sai:\n- A: Sai: nhôm không bị nam châm hút nên không phải vật liệu từ.\n- B: Sai: nhiệt độ thông thường không làm nhôm trở thành vật liệu từ, dù có hơ nóng.\n- C: Sai: độ nhẵn bề mặt không ảnh hưởng đến việc nam châm có hút vật hay không."
+    },
+    {
+     "ma_cau": "K07060101004",
+     "loai": "trac_nghiem",
+     "de": "Trong các vật dụng gia đình sau, vật nào KHÔNG bị nam châm hút?",
+     "lua_chon": [
+      "Lưỡi kéo bằng thép",
+      "Chìa khóa bằng sắt",
+      "Thìa nhôm",
+      "Đinh vít bằng thép"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nhôm không phải vật liệu từ nên không bị nam châm hút; thép, sắt là vật liệu từ nên bị hút.\n\nVì sao các phương án khác sai:\n- A: Lưỡi kéo bằng thép là vật liệu từ nên bị nam châm hút.\n- B: Chìa khóa bằng sắt là vật liệu từ nên bị nam châm hút.\n- D: Đinh vít bằng thép là vật liệu từ nên bị nam châm hút."
+    },
+    {
+     "ma_cau": "K07060101005",
+     "loai": "trac_nghiem",
+     "de": "Đưa cực Bắc của nam châm này lại gần cực Bắc của nam châm kia. Hai nam châm sẽ",
+     "lua_chon": [
+      "Hút nhau",
+      "Không tác dụng lên nhau",
+      "Lúc hút nhau, lúc đẩy nhau",
+      "Đẩy nhau"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hai cực từ cùng tên thì đẩy nhau, khác tên thì hút nhau; cực Bắc gặp cực Bắc là cùng tên nên đẩy nhau.\n\nVì sao các phương án khác sai:\n- A: Hai cực cùng tên (cùng là cực Bắc) thì đẩy nhau, không hút nhau.\n- B: Hai nam châm để gần nhau luôn hút hoặc đẩy nhau.\n- C: Hai cực cùng tên luôn đẩy nhau, không đổi thành hút."
+    },
+    {
+     "ma_cau": "K07060101006",
+     "loai": "trac_nghiem",
+     "de": "Đưa cực Nam của nam châm này lại gần cực Bắc của nam châm kia. Hai nam châm sẽ",
+     "lua_chon": [
+      "Đẩy nhau",
+      "Hút nhau",
+      "Không tác dụng lên nhau",
+      "Lúc hút nhau, lúc đẩy nhau"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hai cực từ khác tên thì hút nhau; cực Nam và cực Bắc là khác tên nên hai nam châm hút nhau.\n\nVì sao các phương án khác sai:\n- A: Cực Nam và cực Bắc là hai cực khác tên nên hút nhau, không đẩy.\n- C: Hai nam châm để gần nhau luôn hút hoặc đẩy nhau.\n- D: Hai cực khác tên luôn hút nhau, không đổi thành đẩy."
+    },
+    {
+     "ma_cau": "K07060101007",
+     "loai": "trac_nghiem",
+     "de": "Khi đưa hai cực từ cùng tên của hai nam châm lại gần nhau, chúng tương tác như thế nào?",
+     "lua_chon": [
+      "Đẩy nhau, vì cùng cực tên",
+      "Hút nhau, vì cùng cực tên",
+      "Không hút cũng không đẩy nhau",
+      "Đẩy nhau nhưng lực rất yếu ớt"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hai cực từ cùng tên đặt gần nhau thì đẩy nhau; hai cực khác tên mới hút nhau.\n\nVì sao các phương án khác sai:\n- B: Sai: hai cực cùng tên đẩy nhau; chỉ hai cực khác tên mới hút nhau.\n- C: Sai: nam châm luôn có tương tác (hút hoặc đẩy) khi đặt gần nhau, không có trường hợp không tương tác.\n- D: Sai: lực đẩy giữa hai cực cùng tên có thể rất mạnh, không nhất thiết yếu ớt."
+    },
+    {
+     "ma_cau": "K07060101008",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060101-02-004-de.png) Trong hình, đầu bên trái của thanh nam châm là",
+     "lua_chon": [
+      "Cực Bắc",
+      "Cực Nam",
+      "Cực dương",
+      "Cực âm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hai cực của nam châm kí hiệu N (cực Bắc) và S (cực Nam); đầu bên trái ghi N nên là cực Bắc.\n\nVì sao các phương án khác sai:\n- B: Chữ N là kí hiệu cực Bắc; cực Nam kí hiệu là S.\n- C: Nam châm có cực Bắc và cực Nam, không có cực dương như pin.\n- D: Nam châm có cực Bắc và cực Nam, không có cực âm như pin."
+    },
+    {
+     "ma_cau": "K07060101009",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060101-02-006-de.png) Trong hình, đầu bên phải của thanh nam châm là",
+     "lua_chon": [
+      "Cực Bắc",
+      "Cực Nam",
+      "Cực dương",
+      "Cực âm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hai cực của nam châm kí hiệu N (cực Bắc) và S (cực Nam); đầu bên phải ghi N nên là cực Bắc.\n\nVì sao các phương án khác sai:\n- B: Đầu bên phải ghi N (cực Bắc), không phải S (cực Nam).\n- C: Nam châm chỉ có cực Bắc và cực Nam, không có khái niệm cực dương.\n- D: Nam châm chỉ có cực Bắc và cực Nam, không có khái niệm cực âm."
+    },
+    {
+     "ma_cau": "K07060101010",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060101-02-005-de.png) Đưa đầu bên phải của thanh nam châm trong hình lại gần cực Bắc của một kim nam châm. Hiện tượng xảy ra là",
+     "lua_chon": [
+      "Cực Bắc của kim bị đẩy ra xa",
+      "Kim đứng yên, không quay",
+      "Cực Bắc của kim bị hút lại gần",
+      "Kim mất hết từ tính"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đọc hình: đầu bên phải là cực Nam (S). Cực Nam và cực Bắc của kim khác tên nên hút nhau.\n\nVì sao các phương án khác sai:\n- A: Đầu bên phải là cực Nam (S), khác tên với cực Bắc của kim nên hút chứ không đẩy.\n- B: Kim nam châm ở gần thanh nam châm luôn bị hút hoặc đẩy nên quay.\n- D: Đưa lại gần nam châm không làm kim mất từ tính."
+    },
+    {
+     "ma_cau": "K07060101011",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060101-02-007-de.png) Đưa đầu bên trái của thanh nam châm trong hình lại gần cực Nam của một kim nam châm. Hiện tượng xảy ra là",
+     "lua_chon": [
+      "Cực Nam của kim bị hút lại gần",
+      "Cực Nam của kim bị đẩy ra xa",
+      "Kim đứng yên, không quay",
+      "Kim mất hết từ tính"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đọc hình: đầu bên trái là cực Nam (S). Cực Nam của thanh gần cực Nam của kim là hai cực cùng tên nên đẩy nhau.\n\nVì sao các phương án khác sai:\n- A: Hai cực cùng tên (Nam - Nam) thì đẩy nhau, không hút nhau.\n- C: Hai cực cùng tên tương tác với nhau (đẩy nhau), kim không thể đứng yên.\n- D: Việc đưa lại gần nam châm khác không làm kim mất từ tính."
+    },
+    {
+     "ma_cau": "K07060101012",
+     "loai": "trac_nghiem",
+     "de": "Loại nam châm được đặt trên một trục quay, dùng làm bộ phận chính của la bàn là",
+     "lua_chon": [
+      "Nam châm chữ U",
+      "Kim nam châm",
+      "Nam châm thẳng",
+      "Nam châm điện"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Kim nam châm là nam châm nhỏ, nhẹ, đặt trên trục quay; đây là bộ phận chính của la bàn.\n\nVì sao các phương án khác sai:\n- A: Nam châm chữ U có dạng cong, không đặt trên trục quay trong la bàn.\n- C: Nam châm thẳng là một thanh thẳng, không phải bộ phận quay của la bàn.\n- D: Nam châm điện gồm ống dây có dòng điện, không dùng làm kim la bàn."
+    },
+    {
+     "ma_cau": "K07060101013",
+     "loai": "trac_nghiem",
+     "de": "Nam châm thẳng, nam châm chữ U và kim nam châm có điểm chung nào sau đây?",
+     "lua_chon": [
+      "Đều có dạng thanh thẳng",
+      "Đều hút được đồng và nhôm",
+      "Đều chỉ có một cực từ",
+      "Đều có hai cực Bắc và Nam"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Mọi nam châm, dù có hình dạng nào, đều có hai cực từ là cực Bắc (N) và cực Nam (S).\n\nVì sao các phương án khác sai:\n- A: Nam châm chữ U có dạng cong, không phải thanh thẳng.\n- B: Nam châm không hút đồng và nhôm.\n- C: Mọi nam châm đều có hai cực: cực Bắc và cực Nam."
+    },
+    {
+     "ma_cau": "K07060101014",
+     "loai": "trac_nghiem",
+     "de": "Hai cực từ của nam châm chữ U nằm ở đâu?",
+     "lua_chon": [
+      "Ở hai đầu của chữ U",
+      "Ở chỗ uốn cong của chữ U",
+      "Cùng nằm ở một đầu chữ U",
+      "Ở mặt trong của chữ U"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nam châm chữ U là thanh nam châm uốn cong, nên hai cực Bắc và Nam nằm ở hai đầu của chữ U.\n\nVì sao các phương án khác sai:\n- B: Chỗ uốn cong là phần giữa của nam châm, không phải cực.\n- C: Hai cực của nam châm luôn ở hai đầu khác nhau.\n- D: Cực từ là hai đầu của nam châm, không phải mặt trong."
+    },
+    {
+     "ma_cau": "K07060101015",
+     "loai": "trac_nghiem",
+     "de": "Nam châm hình chữ U (nam châm móng ngựa) thường được dùng khi cần gì?",
+     "lua_chon": [
+      "Chỉ hướng Bắc – Nam như la bàn",
+      "Đo góc trong hình học",
+      "Đo khối lượng của vật",
+      "Tạo từ trường mạnh ở giữa hai cực"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nam châm chữ U có hai cực gần nhau, tạo ra vùng từ trường khá mạnh và đều ở khoảng giữa hai cực, thường dùng trong các thiết bị cần từ trường mạnh.\n\nVì sao các phương án khác sai:\n- A: Chỉ hướng Bắc – Nam là công dụng của kim nam châm trong la bàn, không phải đặc điểm riêng của nam châm chữ U.\n- B: Nam châm không dùng để đo góc.\n- C: Nam châm không dùng để đo khối lượng."
+    },
+    {
+     "ma_cau": "K07060101016",
+     "loai": "trac_nghiem",
+     "de": "Nam châm thẳng có đặc điểm hình dạng như thế nào?",
+     "lua_chon": [
+      "Có dạng thanh dài, hai cực ở hai đầu",
+      "Uốn cong hình chữ U",
+      "Có dạng kim nhỏ đặt trên trục quay",
+      "Có dạng hình tròn khép kín"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nam châm thẳng có dạng thanh dài, hai cực Bắc và Nam nằm ở hai đầu thanh.\n\nVì sao các phương án khác sai:\n- B: Đây là mô tả nam châm chữ U, không phải nam châm thẳng.\n- C: Đây là mô tả kim nam châm (dùng trong la bàn), không phải nam châm thẳng.\n- D: Nam châm thẳng không có dạng hình tròn khép kín."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00347",
+   "khoi": "7",
+   "chu_de": "Từ",
+   "chuyen_de": "Từ trường và Đường sức từ",
+   "nhom": "Lý thuyết cơ bản về từ trường & đường sức từ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K07060201001",
+     "loai": "trac_nghiem",
+     "de": "Rắc đều mạt sắt lên tấm nhựa đặt trên thanh nam châm rồi gõ nhẹ. Mạt sắt sắp xếp thành",
+     "lua_chon": [
+      "Những vòng tròn quanh giữa thanh",
+      "Một lớp rải đều, không theo hình nào",
+      "Những đường cong nối từ cực này sang cực kia",
+      "Những đường thẳng vuông góc với thanh"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Mạt sắt trong từ trường xếp thành những đường cong nối từ cực này sang cực kia của nam châm; hình ảnh đó gọi là từ phổ.\n\nVì sao các phương án khác sai:\n- A: Mạt sắt xếp thành đường cong đi từ cực này sang cực kia, không thành vòng tròn quanh giữa thanh.\n- B: Mạt sắt bị nam châm tác dụng nên xếp thành các đường cong có trật tự.\n- D: Mạt sắt xếp thành đường cong nối hai cực, không vuông góc với thanh."
+    },
+    {
+     "ma_cau": "K07060201002",
+     "loai": "trac_nghiem",
+     "de": "Quan sát từ phổ của một thanh nam châm, mạt sắt tập trung dày nhất ở đâu?",
+     "lua_chon": [
+      "Ở chính giữa thanh nam châm",
+      "Ở gần hai cực của nam châm",
+      "Ở xa nam châm nhất",
+      "Chỉ ở gần cực Bắc"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Từ phổ cho thấy mạt sắt tập trung dày ở gần hai cực của nam châm, nơi từ tính mạnh nhất.\n\nVì sao các phương án khác sai:\n- A: Giữa thanh, mạt sắt thưa nhất; mạt sắt dày ở gần hai cực.\n- C: Càng xa nam châm, mạt sắt càng thưa.\n- D: Mạt sắt dày ở gần cả hai cực, cực Nam cũng như cực Bắc."
+    },
+    {
+     "ma_cau": "K07060201003",
+     "loai": "trac_nghiem",
+     "de": "Đặt một kim nam châm nhỏ lên một đường sức từ của thanh nam châm. Khi đứng yên, kim nằm như thế nào? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060102-01-004-de.png)",
+     "lua_chon": [
+      "Vuông góc với đường sức",
+      "Dọc đường sức, cực Nam chỉ theo chiều đường sức",
+      "Quay tròn liên tục, không đứng yên",
+      "Dọc đường sức, cực Bắc chỉ theo chiều đường sức"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Kim nam châm đặt trên đường sức từ nằm dọc theo đường sức; chiều đường sức là chiều đi từ cực Nam sang cực Bắc của kim.\n\nVì sao các phương án khác sai:\n- A: Kim nam châm nằm dọc theo đường sức, không vuông góc.\n- B: Chiều đường sức được quy ước từ cực Nam sang cực Bắc của kim, nên cực Bắc chỉ theo chiều đường sức.\n- C: Kim quay rồi đứng yên dọc theo đường sức."
+    },
+    {
+     "ma_cau": "K07060201004",
+     "loai": "trac_nghiem",
+     "de": "Để vẽ từ phổ, bạn An rắc mạt đồng lên tấm nhựa đặt trên thanh nam châm rồi gõ nhẹ. Kết quả là",
+     "lua_chon": [
+      "Mạt đồng không xếp thành đường cong nào",
+      "Mạt đồng xếp thành đường cong như mạt sắt",
+      "Mạt đồng dồn hết về cực Bắc",
+      "Mạt đồng dồn hết về giữa thanh"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đồng không phải vật liệu từ nên không bị nam châm tác dụng; muốn có từ phổ phải dùng mạt sắt.\n\nVì sao các phương án khác sai:\n- B: Đồng không phải vật liệu từ nên không bị nam châm tác dụng, không xếp thành đường cong.\n- C: Nam châm không hút đồng nên mạt đồng không dồn về cực nào.\n- D: Nam châm không tác dụng lên đồng nên mạt đồng không dồn về đâu."
+    },
+    {
+     "ma_cau": "K07060201005",
+     "loai": "trac_nghiem",
+     "de": "Từ phổ của một thanh nam châm cho thấy các đường mạt sắt càng gần hai cực thì càng dày, càng xa nam châm thì càng thưa. Điều này cho biết gì về từ trường của nam châm?",
+     "lua_chon": [
+      "Từ trường chỉ tồn tại ở ngay sát bề mặt nam châm",
+      "Từ trường mạnh hơn ở gần hai cực và yếu dần khi ra xa",
+      "Từ trường mạnh nhất ở chính giữa thanh nam châm",
+      "Mạt sắt dày ở hai cực vì hai cực nặng hơn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đường mạt sắt dày biểu thị nơi từ trường mạnh (gần hai cực), thưa dần biểu thị từ trường yếu dần khi ra xa nam châm.\n\nVì sao các phương án khác sai:\n- A: Từ trường vẫn tồn tại ở xa nam châm, chỉ là yếu hơn, không phải chỉ có ngay sát bề mặt.\n- C: Từ trường yếu nhất ở giữa thanh (xa hai cực), không phải mạnh nhất.\n- D: Mạt sắt dày ở nơi từ trường mạnh, không phải do khối lượng."
+    },
+    {
+     "ma_cau": "K07060201006",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060102-01-009-de.png) Trên hình vẽ đường sức từ của thanh nam châm, hai đường sức có thể cắt nhau tại một điểm hay không?",
+     "lua_chon": [
+      "Có, tại điểm chính giữa hai cực",
+      "Có, tại vị trí bất kì gần nam châm",
+      "Không, các đường sức từ không bao giờ cắt nhau",
+      "Có, nhưng chỉ khi nam châm rất mạnh"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tại mỗi điểm trong từ trường chỉ có một hướng đường sức xác định (là hướng của kim nam châm đặt tại đó), nên các đường sức từ không bao giờ cắt nhau.\n\nVì sao các phương án khác sai:\n- A: Nếu cắt nhau tại một điểm, điểm đó sẽ có hai hướng đường sức khác nhau, điều này không xảy ra trong thực tế.\n- B: Tương tự, các đường sức từ không cắt nhau ở bất kì vị trí nào.\n- D: Việc nam châm mạnh hay yếu không làm các đường sức từ cắt nhau."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00348",
+   "khoi": "7",
+   "chu_de": "Từ",
+   "chuyen_de": "Từ trường và Đường sức từ",
+   "nhom": "Xác định tên từ cực thông qua hình ảnh đường sức (hoặc kim nam châm thử)",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K07060202001",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060102-01-007-de.png) Hình vẽ đường sức từ của một thanh nam châm. Nếu đặt một kim nam châm nhỏ ở gần đầu bên trái (ngoài nam châm), cực Bắc của kim sẽ chỉ theo hướng nào?",
+     "lua_chon": [
+      "Hướng ra xa nam châm",
+      "Hướng vào nam châm",
+      "Vuông góc với đường sức tại đó",
+      "Không xác định được hướng"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Gần cực Bắc (N), đường sức đi ra khỏi nam châm; cực Bắc của kim luôn chỉ theo chiều đường sức tại vị trí đặt, nên chỉ ra xa nam châm.\n\nVì sao các phương án khác sai:\n- B: Cực Bắc của kim chỉ theo chiều đường sức (đi ra), không chỉ ngược vào nam châm.\n- C: Kim nam châm nằm dọc theo đường sức, không vuông góc với nó.\n- D: Chiều đường sức tại mỗi điểm đã xác định, nên hướng chỉ của kim cũng xác định được."
+    },
+    {
+     "ma_cau": "K07060202002",
+     "loai": "trac_nghiem",
+     "de": "Đưa cực Bắc của một kim nam châm lại gần đầu X của một thanh nam châm chưa ghi tên cực. Cực Bắc của kim bị đẩy ra xa. Đầu X là",
+     "lua_chon": [
+      "Cực Nam",
+      "Cực Bắc",
+      "Cực dương",
+      "Chỗ không có từ tính"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cực Bắc của kim bị đẩy nên X cùng tên với cực Bắc của kim, tức X là cực Bắc.\n\nVì sao các phương án khác sai:\n- A: Nếu X là cực Nam thì khác tên với cực Bắc của kim, sẽ hút chứ không đẩy.\n- C: Nam châm có cực Bắc và cực Nam, không có cực dương.\n- D: Kim bị đẩy chứng tỏ X có từ tính; đầu thanh nam châm là một cực."
+    },
+    {
+     "ma_cau": "K07060202003",
+     "loai": "trac_nghiem",
+     "de": "Đưa cực Nam của một kim nam châm lại gần đầu Y của một thanh nam châm chưa ghi tên cực. Cực Nam của kim bị hút lại gần. Đầu Y là",
+     "lua_chon": [
+      "Cực Nam",
+      "Cực Bắc",
+      "Cực dương",
+      "Chỗ không có từ tính"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cực Nam của kim bị hút nghĩa là Y khác tên với cực Nam, tức Y là cực Bắc.\n\nVì sao các phương án khác sai:\n- A: Nếu Y là cực Nam thì hai cực Nam - Nam cùng tên sẽ đẩy nhau, không hút.\n- C: Nam châm không có khái niệm cực dương.\n- D: Nếu không có từ tính thì sẽ không có tương tác hút với kim nam châm."
+    },
+    {
+     "ma_cau": "K07060202004",
+     "loai": "trac_nghiem",
+     "de": "Đưa cực Bắc của một kim nam châm lại gần đầu Z của một thanh nam châm chưa ghi tên cực. Cực Bắc của kim bị hút lại gần. Đầu Z là",
+     "lua_chon": [
+      "Cực Bắc",
+      "Cực âm",
+      "Cực Nam",
+      "Chỗ không có từ tính"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cực Bắc của kim bị hút nghĩa là Z khác tên với cực Bắc, tức Z là cực Nam.\n\nVì sao các phương án khác sai:\n- A: Nếu Z là cực Bắc thì hai cực Bắc - Bắc cùng tên sẽ đẩy nhau, không hút.\n- B: Nam châm không có khái niệm cực âm.\n- D: Nếu không có từ tính thì sẽ không có tương tác hút với kim nam châm."
+    },
+    {
+     "ma_cau": "K07060202005",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060103-01-002-de.png) Hình vẽ thanh nam châm chưa ghi tên cực và 4 kim la bàn đặt xung quanh; mũi màu đỏ là cực Bắc của kim. Tên hai cực của thanh là",
+     "lua_chon": [
+      "Trái là S, phải là N",
+      "Cả hai đầu đều là N",
+      "Cả hai đầu đều là S",
+      "Trái là N, phải là S"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cực Bắc của kim chỉ theo chiều đường sức. Kim bên trái có mũi đỏ quay ra xa đầu trái → đường sức đi ra, đầu trái là N; kim bên phải có mũi đỏ chỉ vào đầu phải → đường sức đi vào, đầu phải là S.\n\nVì sao các phương án khác sai:\n- A: Kim bên trái có mũi đỏ quay ra xa đầu trái: đường sức đi ra từ đầu trái nên đầu trái là N.\n- B: Mỗi nam châm có hai cực khác tên; kim bên phải có mũi đỏ chỉ vào đầu phải nên đầu phải là S.\n- C: Mỗi nam châm có hai cực khác tên; kim bên trái có mũi đỏ quay ra xa đầu trái nên đầu trái là N."
+    },
+    {
+     "ma_cau": "K07060202006",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060103-01-003-de.png) Hình vẽ thanh nam châm chưa ghi tên cực và 4 kim la bàn; mũi màu đỏ là cực Bắc của kim. Dựa vào kim đặt bên phải thanh, đầu bên phải là cực gì?",
+     "lua_chon": [
+      "Cực Bắc, vì mũi đỏ của kim quay ra xa đầu đó",
+      "Cực Nam, vì mũi đỏ của kim quay ra xa đầu đó",
+      "Cực Nam, vì đường sức đi vào đầu đó",
+      "Cực Bắc, vì đường sức đi vào đầu đó"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Kim bên phải có mũi đỏ (cực Bắc của kim) quay ra xa thanh → đường sức đi ra từ đầu phải → đầu phải là cực Bắc.\n\nVì sao các phương án khác sai:\n- B: Mũi đỏ quay ra xa nghĩa là đường sức đi ra từ đầu đó; đường sức đi ra từ cực Bắc.\n- C: Mũi đỏ của kim quay ra xa nên đường sức đi ra khỏi đầu phải, không đi vào.\n- D: Đường sức đi vào cực Nam; hơn nữa ở đây đường sức đi ra khỏi đầu phải."
+    },
+    {
+     "ma_cau": "K07060202007",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060103-01-004-de.png) Hình vẽ thanh nam châm chưa ghi tên cực và 4 kim la bàn; mũi màu đỏ là cực Bắc của kim. Dựa vào kim đặt phía trên thanh, đầu bên phải là cực gì?",
+     "lua_chon": [
+      "Cực Bắc, vì mũi đỏ chỉ về phía đầu phải",
+      "Cực Bắc, vì đường sức đi ra từ đầu phải",
+      "Cực Nam, vì đường sức hướng về đầu phải",
+      "Cực Nam, vì mũi đỏ chỉ ra xa đầu phải"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Phía trên thanh, cực Bắc của kim chỉ theo chiều đường sức, tức là về phía đầu phải; đường sức đi vào cực Nam nên đầu phải là cực Nam.\n\nVì sao các phương án khác sai:\n- A: Mũi đỏ chỉ về phía đầu phải nghĩa là đường sức đi về đầu phải; đường sức đi vào cực Nam.\n- B: Mũi đỏ của kim phía trên chỉ về phía đầu phải nên đường sức đi tới đầu phải, không đi ra.\n- D: Đọc sai hình: mũi đỏ của kim phía trên chỉ về phía đầu phải, không ra xa."
+    },
+    {
+     "ma_cau": "K07060202008",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060103-02-001-de.png) Thanh nam châm như hình. Bên ngoài nam châm, đường sức từ có chiều như thế nào?",
+     "lua_chon": [
+      "Đi ra từ đầu trái, đi vào đầu phải",
+      "Đi ra từ đầu phải, đi vào đầu trái",
+      "Đi ra từ cả hai đầu",
+      "Đi vào cả hai đầu"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Bên ngoài nam châm, đường sức đi ra từ cực Bắc, đi vào cực Nam. Đầu phải là N, đầu trái là S nên đường sức đi ra từ đầu phải, vào đầu trái.\n\nVì sao các phương án khác sai:\n- A: Đầu trái là S; đường sức đi vào cực Nam chứ không đi ra từ cực Nam.\n- C: Đường sức đi ra từ cực Bắc và đi vào cực Nam, không đi ra ở cả hai đầu.\n- D: Đường sức chỉ đi vào cực Nam; ở cực Bắc đường sức đi ra."
+    },
+    {
+     "ma_cau": "K07060202009",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060103-02-005-de.png) Thanh nam châm như hình. Bên ngoài nam châm, đường sức từ có chiều như thế nào?",
+     "lua_chon": [
+      "Đi ra từ đầu phải, đi vào đầu trái",
+      "Đi ra từ cả hai đầu",
+      "Đi vào cả hai đầu",
+      "Đi ra từ đầu trái, đi vào đầu phải"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Bên ngoài nam châm, đường sức đi ra từ cực Bắc, đi vào cực Nam. Đầu trái là N, đầu phải là S nên đường sức đi ra từ đầu trái, vào đầu phải.\n\nVì sao các phương án khác sai:\n- A: Ngược lại: đường sức phải đi ra từ N (đầu trái), không phải đầu phải.\n- B: Đường sức chỉ đi ra từ cực Bắc, không phải cả hai đầu.\n- C: Đường sức chỉ đi vào cực Nam, không phải cả hai đầu."
+    },
+    {
+     "ma_cau": "K07060202010",
+     "loai": "trac_nghiem",
+     "de": "Biết bên ngoài một thanh nam châm, đường sức từ đi vào ở đầu bên trái. Đầu bên trái của thanh là cực gì?",
+     "lua_chon": [
+      "Cực Nam",
+      "Cực Bắc",
+      "Không xác định được",
+      "Cả hai cực"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Bên ngoài nam châm, đường sức đi vào cực Nam; đường sức đi vào đầu bên trái nên đầu bên trái là cực Nam.\n\nVì sao các phương án khác sai:\n- B: Đường sức đi RA từ cực Bắc, không phải đi VÀO; nếu đầu trái là nơi đường sức đi vào thì đó là cực Nam.\n- C: Chiều đường sức tại một đầu xác định rõ đó là cực Bắc hay cực Nam.\n- D: Mỗi đầu nam châm chỉ có một loại cực, không thể là cả hai."
+    },
+    {
+     "ma_cau": "K07060202011",
+     "loai": "trac_nghiem",
+     "de": "Hình nào vẽ ĐÚNG? (Mũi tên là chiều đường sức; mũi màu đỏ là cực Bắc của kim la bàn.)",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060103-02-002-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060103-02-002-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060103-02-002-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060103-02-002-D.png)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Bên ngoài nam châm, đường sức đi ra từ cực Bắc, đi vào cực Nam; cực Bắc của kim chỉ theo chiều đường sức. Chỉ hình có mũi tên đi ra từ N, vào S là đúng.\n\nVì sao các phương án khác sai:\n- A: Mũi tên đi ra từ cực S, vào cực N: ngược chiều đúng.\n- B: Mũi đỏ của các kim chỉ ngược chiều đường sức (kim phía trên chỉ về phía cực N).\n- C: Mũi tên đi ra từ cực S, vào cực N: ngược chiều đúng."
+    },
+    {
+     "ma_cau": "K07060202012",
+     "loai": "trac_nghiem",
+     "de": "Hình nào vẽ ĐÚNG? (Mũi tên là chiều đường sức; mũi màu đỏ là cực Bắc của kim la bàn.)",
+     "lua_chon": [
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060103-02-003-A.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060103-02-003-B.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060103-02-003-C.png)",
+      "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060103-02-003-D.png)"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cực Bắc của kim chỉ theo chiều đường sức: ra xa cực N, hướng vào cực S. Hình có kim cạnh cực N quay mũi đỏ ra xa, kim cạnh cực S chỉ mũi đỏ vào là đúng.\n\nVì sao các phương án khác sai:\n- B: Kim bên trái có mũi đỏ chỉ vào cực N: sai, vì đường sức đi ra từ cực N.\n- C: Mũi tên đi ra từ cực S, vào cực N: ngược chiều đúng.\n- D: Kim bên phải có mũi đỏ chỉ vào cực N: sai, vì đường sức đi ra từ cực N."
+    },
+    {
+     "ma_cau": "K07060202013",
+     "loai": "trac_nghiem",
+     "de": "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L060103-02-004-de.png) Hình vẽ đường sức từ của một thanh nam châm chưa ghi tên cực, mũi tên chỉ chiều đường sức. Tên hai cực của thanh là",
+     "lua_chon": [
+      "Trái là N, phải là S",
+      "Cả hai đầu đều là N",
+      "Trái là S, phải là N",
+      "Cả hai đầu đều là S"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Bên ngoài nam châm, đường sức đi ra từ cực Bắc, đi vào cực Nam. Trên hình, mũi tên đi ra từ đầu phải, đi vào đầu trái nên phải là N, trái là S.\n\nVì sao các phương án khác sai:\n- A: Đường sức đi vào đầu trái và đi ra từ đầu phải; đường sức đi ra từ cực Bắc nên đầu phải mới là N.\n- B: Mỗi nam châm có hai cực khác tên; đường sức đi vào đầu trái nên đầu trái là S.\n- D: Mỗi nam châm có hai cực khác tên; đường sức đi ra từ đầu phải nên đầu phải là N."
+    },
+    {
+     "ma_cau": "K07060202014",
+     "loai": "trac_nghiem",
+     "de": "Kim la bàn đặt cạnh đầu P của thanh nam châm A: cực Bắc của kim bị ĐẨY ra xa. Đầu Q (đầu còn lại của A) đặt đối diện đầu R của thanh nam châm B, hai đầu này HÚT nhau. Tên hai cực R, S (S là đầu còn lại của B) là gì?",
+     "lua_chon": [
+      "R Nam, S Bắc",
+      "R Bắc, S Nam",
+      "R Bắc, S Bắc",
+      "R Nam, S Nam"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cực Bắc của kim bị ĐẨY ra xa nghĩa là P cùng cực Bắc với kim, nên P là cực Bắc; đầu Q còn lại của A là cực Nam. Q hút R nghĩa là R khác cực với Q, nên R là cực Bắc; đầu S còn lại của B là cực Nam.\n\nVì sao các phương án khác sai:\n- A: Đã đổi ngược cực của R và S.\n- C: Q là cực Nam mà hút R nên R phải là cực Bắc; một thanh nam châm luôn có hai cực khác nhau nên R và S không thể cùng là cực Bắc.\n- D: R phải là cực Bắc (khác cực với Q mới hút được); một thanh nam châm luôn có hai cực khác nhau nên R và S không thể cùng là cực Nam."
+    },
+    {
+     "ma_cau": "K07060202015",
+     "loai": "trac_nghiem",
+     "de": "Kim la bàn đặt cạnh đầu P của thanh nam châm A: cực Bắc của kim bị HÚT lại gần. Đầu Q (đầu còn lại của A) đặt đối diện đầu R của thanh nam châm B, hai đầu này ĐẨY nhau. Tên hai cực R, S (S là đầu còn lại của B) là gì?",
+     "lua_chon": [
+      "R Bắc, S Nam",
+      "R Nam, S Bắc",
+      "R Nam, S Nam",
+      "R Bắc, S Bắc"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cực Bắc của kim bị HÚT lại gần nghĩa là P khác cực với Bắc, nên P là cực Nam; đầu Q còn lại của A là cực Bắc. Q đẩy R nghĩa là R cùng cực với Q, nên R là cực Bắc; đầu S còn lại của B là cực Nam.\n\nVì sao các phương án khác sai:\n- B: Đã đổi ngược cực của R và S.\n- C: Q là cực Bắc mà đẩy R nên R phải cùng là cực Bắc; một thanh nam châm luôn có hai cực khác nhau nên R và S không thể cùng là cực Nam.\n- D: R đúng là cực Bắc nhưng một thanh nam châm luôn có hai cực khác nhau nên S không thể cũng là cực Bắc; S phải là cực Nam."
+    },
+    {
+     "ma_cau": "K07060202016",
+     "loai": "trac_nghiem",
+     "de": "Kim la bàn đặt cạnh đầu P của thanh nam châm A: cực Bắc của kim bị ĐẨY ra xa. Đầu Q (đầu còn lại của A) đặt đối diện đầu R của thanh nam châm B, hai đầu này ĐẨY nhau. Tên hai cực R, S (S là đầu còn lại của B) là gì?",
+     "lua_chon": [
+      "R Nam, S Bắc",
+      "R Bắc, S Nam",
+      "R Bắc, S Bắc",
+      "R Nam, S Nam"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cực Bắc của kim bị ĐẨY ra xa nghĩa là P là cực Bắc; đầu Q còn lại của A là cực Nam. Q đẩy R nghĩa là R cùng cực với Q, nên R là cực Nam; đầu S còn lại của B là cực Bắc.\n\nVì sao các phương án khác sai:\n- B: Đã đổi ngược cực của R và S.\n- C: Q là cực Nam mà đẩy R nên R phải cùng là cực Nam, không phải cực Bắc; R và S cũng không thể cùng là cực Bắc.\n- D: R đúng là cực Nam nhưng một thanh nam châm luôn có hai cực khác nhau nên S không thể cũng là cực Nam; S phải là cực Bắc."
+    },
+    {
+     "ma_cau": "K07060202017",
+     "loai": "trac_nghiem",
+     "de": "Kim la bàn đặt cạnh đầu P của thanh nam châm A: cực Bắc của kim bị HÚT lại gần. Đầu Q (đầu còn lại của A) đặt đối diện đầu R của thanh nam châm B, hai đầu này HÚT nhau. Tên hai cực R, S (S là đầu còn lại của B) là gì?",
+     "lua_chon": [
+      "R Bắc, S Nam",
+      "R Nam, S Nam",
+      "R Bắc, S Bắc",
+      "R Nam, S Bắc"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cực Bắc của kim bị HÚT lại gần nghĩa là P là cực Nam; đầu Q còn lại của A là cực Bắc. Q hút R nghĩa là R khác cực với Q, nên R là cực Nam; đầu S còn lại của B là cực Bắc.\n\nVì sao các phương án khác sai:\n- A: Đã đổi ngược cực của R và S.\n- B: Q là cực Bắc mà hút R nên R phải là cực Nam (đúng phần này), nhưng một thanh nam châm luôn có hai cực khác nhau nên S không thể cũng là cực Nam.\n- C: R phải là cực Nam (khác cực với Q mới hút được); một thanh nam châm luôn có hai cực khác nhau nên R và S không thể cùng là cực Bắc."
+    },
+    {
+     "ma_cau": "K07060202018",
+     "loai": "trac_nghiem",
+     "de": "Kim la bàn đặt cạnh đầu P của thanh nam châm A: cực Bắc của kim bị ĐẨY ra xa. Đầu Q (đầu còn lại của A) đặt đối diện đầu R của thanh nam châm B, hai đầu này HÚT nhau. Tên hai cực R, S là gì (yêu cầu ngược lại: S là đầu gần Q, R là đầu còn lại của B)?",
+     "lua_chon": [
+      "R Nam, S Bắc",
+      "R Nam, S Nam",
+      "R Bắc, S Nam",
+      "R Bắc, S Bắc"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cực Bắc của kim bị ĐẨY ra xa nghĩa là P là cực Bắc; đầu Q còn lại của A là cực Nam. Q hút S (đầu gần Q) nghĩa là S khác cực với Q, nên S là cực Bắc; đầu R còn lại của B là cực Nam.\n\nVì sao các phương án khác sai:\n- A: Đã đổi ngược cực của R và S.\n- B: S phải là cực Bắc (khác cực với Q mới hút được); một thanh nam châm luôn có hai cực khác nhau nên R và S không thể cùng là cực Nam.\n- D: S đúng là cực Bắc nhưng một thanh nam châm luôn có hai cực khác nhau nên R không thể cũng là cực Bắc; R phải là cực Nam."
+    },
+    {
+     "ma_cau": "K07060202019",
+     "loai": "trac_nghiem",
+     "de": "Kim la bàn đặt cạnh đầu M của thanh nam châm C: cực Nam của kim bị ĐẨY ra xa. Đầu N (đầu còn lại của C) đặt đối diện đầu K của thanh nam châm D, hai đầu này HÚT nhau. Tên hai cực K, L (L là đầu còn lại của D) là gì?",
+     "lua_chon": [
+      "K Bắc, L Nam",
+      "K Bắc, L Bắc",
+      "K Nam, L Nam",
+      "K Nam, L Bắc"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cực Nam của kim bị ĐẨY ra xa nghĩa là M cùng cực Nam với kim, nên M là cực Nam; đầu N còn lại của C là cực Bắc. N hút K nghĩa là K khác cực với N, nên K là cực Nam; đầu L còn lại của D là cực Bắc.\n\nVì sao các phương án khác sai:\n- A: K phải là cực Nam (khác tên với N là cực Bắc để hút nhau), không phải cực Bắc; do đó L là cực Bắc, không phải Nam.\n- B: N là cực Bắc nên để hút K, K phải khác tên (cực Nam), không thể cùng là cực Bắc.\n- C: K phải là cực Nam (đúng), nhưng L khi đó là cực Bắc, không phải cực Nam."
+    },
+    {
+     "ma_cau": "K07060202020",
+     "loai": "trac_nghiem",
+     "de": "Kim la bàn đặt cạnh đầu M của thanh nam châm C: cực Bắc của kim bị ĐẨY ra xa. Đầu N (đầu còn lại của C) đặt đối diện đầu K của thanh nam châm D, hai đầu này ĐẨY nhau. Tên hai cực K, L (L là đầu còn lại của D) là gì?",
+     "lua_chon": [
+      "K Nam, L Bắc",
+      "K Bắc, L Nam",
+      "K Bắc, L Bắc",
+      "K Nam, L Nam"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cực Bắc của kim bị ĐẨY ra xa nghĩa là M là cực Bắc; đầu N còn lại của C là cực Nam. N đẩy K nghĩa là K cùng cực với N, nên K là cực Nam; đầu L còn lại của D là cực Bắc.\n\nVì sao các phương án khác sai:\n- B: K phải cùng tên với N (cực Nam) để đẩy nhau, không phải cực Bắc; do đó L là cực Bắc, không phải Nam.\n- C: N là cực Nam nên để đẩy K, K phải cùng tên (cực Nam), không thể là cực Bắc.\n- D: K là cực Nam (đúng), nhưng L khi đó phải là cực Bắc, không phải cực Nam."
+    },
+    {
+     "ma_cau": "K07060202021",
+     "loai": "trac_nghiem",
+     "de": "Kim la bàn đặt cạnh đầu M của thanh nam châm C: cực Nam của kim bị HÚT lại gần. Đầu N (đầu còn lại của C) đặt đối diện đầu K của thanh nam châm D, hai đầu này ĐẨY nhau. Tên hai cực K, L (L là đầu còn lại của D) là gì?",
+     "lua_chon": [
+      "K Bắc, L Nam",
+      "K Nam, L Bắc",
+      "K Bắc, L Bắc",
+      "K Nam, L Nam"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cực Nam của kim bị HÚT lại gần nghĩa là M khác cực với cực Nam, nên M là cực Bắc; đầu N còn lại của C là cực Nam. N đẩy K nghĩa là K cùng cực với N, nên K là cực Nam; đầu L còn lại của D là cực Bắc.\n\nVì sao các phương án khác sai:\n- A: K phải cùng tên với N (cực Nam), không phải cực Bắc; do đó L là cực Bắc, không phải Nam.\n- C: N là cực Nam nên để đẩy K, K phải là cực Nam, không thể là cực Bắc.\n- D: K là cực Nam (đúng), nhưng L phải là cực Bắc, không phải cực Nam."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00349",
+   "khoi": "7",
+   "chu_de": "Từ",
+   "chuyen_de": "Nam châm điện & Từ trường Trái Đất",
+   "nhom": "Lý thuyết cơ bản về Nam châm điện & Từ trường Trái Đất",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K07060301001",
+     "loai": "trac_nghiem",
+     "de": "Vì sao kim la bàn khi đứng yên luôn nằm theo hướng Bắc – Nam?",
+     "lua_chon": [
+      "Trục quay giữ kim cố định một hướng",
+      "Gió luôn thổi kim theo hướng Bắc – Nam",
+      "Từ trường Trái Đất tác dụng lên kim",
+      "Chữ N trên mặt la bàn hút kim"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Trái Đất có từ trường như một nam châm khổng lồ; từ trường này làm kim la bàn nằm theo hướng Bắc – Nam.\n\nVì sao các phương án khác sai:\n- A: Trục chỉ đỡ để kim quay tự do, không giữ kim theo một hướng.\n- B: Kim nằm trong hộp kín và hướng gió luôn thay đổi.\n- D: Chữ N chỉ là kí hiệu in trên mặt, không hút kim."
+    },
+    {
+     "ma_cau": "K07060301002",
+     "loai": "trac_nghiem",
+     "de": "Đặt một thanh nam châm sát cạnh la bàn. Kim la bàn sẽ",
+     "lua_chon": [
+      "Vẫn chỉ đúng hướng Bắc – Nam",
+      "Lệch khỏi hướng Bắc – Nam",
+      "Mất hết từ tính",
+      "Quay tròn mãi không dừng"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ở gần nam châm, kim la bàn bị nam châm hút hoặc đẩy nên lệch khỏi hướng Bắc – Nam; vì vậy dùng la bàn phải để xa nam châm, vật sắt thép.\n\nVì sao các phương án khác sai:\n- A: Ở sát nam châm, kim bị nam châm hút, đẩy nên lệch khỏi hướng Bắc – Nam.\n- C: Để gần nam châm không làm kim mất từ tính.\n- D: Kim quay rồi đứng yên theo hướng do nam châm gần đó quyết định."
+    },
+    {
+     "ma_cau": "K07060301003",
+     "loai": "trac_nghiem",
+     "de": "Bạn Hà cầm la bàn đặt nằm ngang và đi quanh sân, đổi hướng nhiều lần. Mỗi lần dừng lại, kim la bàn đứng yên",
+     "lua_chon": [
+      "Luôn chỉ theo hướng Hà đang đi",
+      "Luôn có cực Bắc chỉ hướng Nam",
+      "Luôn nằm theo hướng Đông – Tây",
+      "Luôn có cực Bắc chỉ hướng Bắc"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Dù người cầm quay theo hướng nào, kim la bàn đứng yên vẫn nằm theo hướng Bắc – Nam, cực Bắc của kim chỉ hướng Bắc.\n\nVì sao các phương án khác sai:\n- A: Kim chỉ hướng Bắc – Nam, không phụ thuộc hướng người đi.\n- B: Cực Bắc của kim chỉ hướng Bắc địa lí, không chỉ hướng Nam.\n- C: Kim la bàn nằm theo hướng Bắc – Nam, không theo Đông – Tây."
+    },
+    {
+     "ma_cau": "K07060301004",
+     "loai": "trac_nghiem",
+     "de": "Treo một thanh nam châm bằng sợi chỉ buộc ở giữa thanh để nó quay tự do. Khi đứng yên, thanh nam châm",
+     "lua_chon": [
+      "Nằm theo hướng Bắc – Nam địa lí",
+      "Nằm theo hướng Đông – Tây",
+      "Có cực Bắc chỉ hướng Nam",
+      "Quay mãi, không đứng yên"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nam châm quay tự do, khi đứng yên luôn nằm theo hướng Bắc – Nam; cực chỉ hướng Bắc gọi là cực Bắc, cực chỉ hướng Nam gọi là cực Nam.\n\nVì sao các phương án khác sai:\n- B: Nam châm quay tự do luôn nằm theo hướng Bắc – Nam, không theo Đông – Tây.\n- C: Cực Bắc của nam châm chỉ hướng Bắc; vì thế mới gọi là cực Bắc.\n- D: Thanh quay một lúc rồi đứng yên theo hướng Bắc – Nam."
+    },
+    {
+     "ma_cau": "K07060301005",
+     "loai": "trac_nghiem",
+     "de": "Bạn Nam cọ xát một chiếc kim khâu bằng thép nhiều lần theo một chiều vào cực của nam châm, rồi đặt kim nằm trên miếng xốp thả nổi trên chậu nước. Kim khâu quay một lúc rồi đứng yên theo hướng Bắc – Nam. Kết luận nào sau đây đúng?",
+     "lua_chon": [
+      "Dòng nước đẩy kim khâu về hướng Bắc – Nam",
+      "Miếng xốp có từ tính nên quay theo hướng Bắc – Nam",
+      "Kim khâu đã thành nam châm, dùng được như la bàn",
+      "Kim khâu bằng thép không bao giờ có từ tính"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Kim khâu quay tự do rồi đứng yên theo hướng Bắc – Nam giống kim la bàn, chứng tỏ nó đã có từ tính (thành nam châm) và nằm theo từ trường Trái Đất.\n\nVì sao các phương án khác sai:\n- A: Nước trong chậu đứng yên; kim quay về hướng Bắc – Nam là do từ trường Trái Đất.\n- B: Xốp không phải vật liệu từ; chính kim khâu có từ tính.\n- D: Thép cọ xát với nam châm thì có từ tính, nên kim mới chỉ hướng Bắc – Nam."
+    },
+    {
+     "ma_cau": "K07060301006",
+     "loai": "trac_nghiem",
+     "de": "Một bạn học sinh cọ xát một chiếc đinh sắt nhiều lần theo một chiều vào cực của nam châm, sau đó treo đinh bằng một sợi chỉ mảnh ở giữa thân đinh. Đinh quay một lúc rồi đứng yên theo hướng Bắc – Nam. Kết luận nào sau đây đúng?",
+     "lua_chon": [
+      "Sợi chỉ có từ tính nên kéo đinh về hướng Bắc – Nam",
+      "Đinh sắt đã bị nhiễm từ, có thể dùng để chỉ hướng như kim la bàn",
+      "Đinh sắt không thể bị nhiễm từ vì đã bị cọ xát",
+      "Đinh quay theo hướng gió thổi trong phòng"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đinh quay tự do rồi đứng yên theo hướng Bắc – Nam giống kim la bàn, chứng tỏ đinh đã bị nhiễm từ (thành nam châm nhỏ) và định hướng theo từ trường Trái Đất.\n\nVì sao các phương án khác sai:\n- A: Sợi chỉ chỉ dùng để treo, không có từ tính, không kéo đinh theo hướng nào.\n- C: Chính việc cọ xát nhiều lần theo một chiều làm đinh sắt bị nhiễm từ.\n- D: Đinh đứng yên theo hướng Bắc – Nam do từ trường Trái Đất, không do gió."
+    },
+    {
+     "ma_cau": "K07060301007",
+     "loai": "trac_nghiem",
+     "de": "Hai bạn đứng ở hai vị trí khác nhau trong sân trường (cách xa nhau), cùng đặt la bàn nằm ngang; xung quanh không có nam châm hay vật sắt thép lớn. Khi kim la bàn đứng yên, hướng chỉ của cực Bắc kim ở hai la bàn có gì khác nhau không?",
+     "lua_chon": [
+      "Khác nhau, tuỳ vị trí đứng",
+      "Luôn lệch nhau đúng 90°",
+      "Giống nhau, đều chỉ về hướng Bắc",
+      "Không xác định được nếu không biết khoảng cách"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Từ trường Trái Đất tác dụng như nhau lên mọi la bàn ở gần bề mặt Trái Đất trong phạm vi nhỏ; nếu không bị ảnh hưởng bởi nam châm hay vật sắt thép lớn gần đó, các kim la bàn đều chỉ về cùng hướng Bắc địa lí, bất kể vị trí đứng.\n\nVì sao các phương án khác sai:\n- A: Từ trường Trái Đất có hướng gần như thống nhất trong phạm vi nhỏ như sân trường, không phụ thuộc vị trí đứng.\n- B: Không có cơ sở để khẳng định lệch đúng 90°; hai la bàn ở gần nhau chỉ cùng một hướng.\n- D: Không cần biết khoảng cách; cả hai la bàn cùng chịu tác dụng của từ trường Trái Đất theo cùng một hướng."
+    },
+    {
+     "ma_cau": "K07060301008",
+     "loai": "trac_nghiem",
+     "de": "Vì sao khi sử dụng la bàn để xác định phương hướng, người ta khuyên nên tránh xa các đường dây điện cao thế, thiết bị điện tử lớn?",
+     "lua_chon": [
+      "Vì đường dây điện làm kim la bàn nóng chảy",
+      "Vì thiết bị điện phát âm làm kim rung",
+      "Vì đường dây phát sáng làm chói mắt",
+      "Vì dòng điện tạo từ trường làm lệch kim la bàn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Dòng điện trong dây dẫn và một số thiết bị điện tử có thể tạo ra từ trường riêng, tác dụng lên kim la bàn và làm kim lệch khỏi hướng Bắc – Nam thực, khiến việc xác định phương hướng bị sai.\n\nVì sao các phương án khác sai:\n- A: Đường dây điện thông thường không làm kim la bàn nóng chảy.\n- B: Nguyên nhân là từ trường do dòng điện tạo ra.\n- C: Ánh sáng không phải nguyên nhân khiến la bàn chỉ sai hướng."
+    },
+    {
+     "ma_cau": "K07060301009",
+     "loai": "trac_nghiem",
+     "de": "Nam châm điện gồm những bộ phận chính nào?",
+     "lua_chon": [
+      "Ống dây dẫn, lõi sắt, nguồn điện",
+      "Ống dây dẫn, lõi đồng, nguồn điện",
+      "Nam châm thẳng, dây dẫn, pin",
+      "Ống dây dẫn, lõi nhựa, bóng đèn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nam châm điện gồm ống dây dẫn quấn quanh lõi sắt, hai đầu ống dây nối với nguồn điện để có dòng điện chạy qua.\n\nVì sao các phương án khác sai:\n- B: Lõi của nam châm điện làm bằng sắt; lõi đồng KHÔNG làm nam châm mạnh hơn.\n- C: Nam châm điện KHÔNG cần nam châm thẳng; từ trường do dòng điện trong ống dây tạo ra.\n- D: Lõi phải bằng sắt và cần nguồn điện; bóng đèn không phải bộ phận của nam châm điện."
+    },
+    {
+     "ma_cau": "K07060301010",
+     "loai": "trac_nghiem",
+     "de": "Lõi đặt trong lòng ống dây của nam châm điện thường làm bằng vật liệu nào?",
+     "lua_chon": [
+      "Đồng",
+      "Nhôm",
+      "Sắt",
+      "Nhựa"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Lõi của nam châm điện làm bằng sắt, vì sắt là vật liệu từ, đặt trong ống dây có dòng điện thì làm nam châm điện mạnh hơn nhiều.\n\nVì sao các phương án khác sai:\n- A: Đồng không phải vật liệu từ, lõi đồng KHÔNG làm nam châm điện mạnh hơn.\n- B: Nhôm không phải vật liệu từ, không bị nhiễm từ như sắt.\n- D: Nhựa không phải vật liệu từ, lõi nhựa không làm từ trường mạnh hơn."
+    },
+    {
+     "ma_cau": "K07060301011",
+     "loai": "trac_nghiem",
+     "de": "Lõi của nam châm điện thường được làm bằng vật liệu gì?",
+     "lua_chon": [
+      "Đồng",
+      "Sắt",
+      "Nhôm",
+      "Nhựa"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Lõi của nam châm điện làm bằng sắt (vật liệu từ) để tăng từ tính; dây quấn quanh lõi mới thường làm bằng đồng có vỏ cách điện.\n\nVì sao các phương án khác sai:\n- A: Sai: đồng dẫn điện tốt nhưng không phải vật liệu từ nên không dùng làm lõi.\n- C: Sai: nhôm không phải vật liệu từ nên không dùng làm lõi nam châm điện.\n- D: Sai: nhựa là vật liệu cách điện, không có tính từ nên không dùng làm lõi."
+    },
+    {
+     "ma_cau": "K07060301012",
+     "loai": "trac_nghiem",
+     "de": "Dây quấn quanh lõi sắt của nam châm điện (có lớp vỏ cách điện bên ngoài) thường làm bằng vật liệu gì?",
+     "lua_chon": [
+      "Đồng",
+      "Sắt",
+      "Nhựa",
+      "Gỗ"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Dây quấn quanh lõi (dây điện từ) làm bằng đồng có vỏ cách điện, dẫn điện tốt để tạo dòng điện chạy qua ống dây.\n\nVì sao các phương án khác sai:\n- B: Sắt dùng làm lõi bên trong ống dây, không phải dây quấn.\n- C: Nhựa không dẫn điện, không thể dùng làm dây dẫn.\n- D: Gỗ không dẫn điện, không thể dùng làm dây dẫn."
+    },
+    {
+     "ma_cau": "K07060301013",
+     "loai": "trac_nghiem",
+     "de": "Bộ phận nào của mạch nam châm điện dùng để đóng hoặc ngắt dòng điện?",
+     "lua_chon": [
+      "Lõi sắt",
+      "Công tắc",
+      "Ống dây dẫn",
+      "Vỏ cách điện của dây"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Công tắc dùng để đóng (nối kín mạch) hoặc ngắt (làm hở mạch) dòng điện chạy qua ống dây.\n\nVì sao các phương án khác sai:\n- A: Lõi sắt làm tăng từ tính, không có chức năng đóng ngắt điện.\n- C: Ống dây dẫn tạo ra từ trường khi có dòng điện, không dùng để đóng ngắt.\n- D: Vỏ cách điện chỉ để dây không bị chạm chập, không dùng để đóng ngắt mạch."
+    },
+    {
+     "ma_cau": "K07060301014",
+     "loai": "trac_nghiem",
+     "de": "Nguồn điện (pin) trong mạch nam châm điện có vai trò gì?",
+     "lua_chon": [
+      "Làm lõi sắt có từ tính vĩnh viễn",
+      "Làm mát ống dây khi hoạt động lâu",
+      "Tạo ra dòng điện chạy qua ống dây",
+      "Tăng độ dài của ống dây"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Pin (nguồn điện) cung cấp dòng điện chạy qua ống dây, nhờ đó ống dây có dòng điện tạo ra từ trường.\n\nVì sao các phương án khác sai:\n- A: Từ tính của nam châm điện chỉ tồn tại khi có dòng điện, không phải vĩnh viễn; pin không làm lõi có từ tính vĩnh viễn.\n- B: Pin không có chức năng làm mát ống dây.\n- D: Pin không ảnh hưởng đến độ dài của ống dây."
+    },
+    {
+     "ma_cau": "K07060301015",
+     "loai": "trac_nghiem",
+     "de": "Nam châm điện hút được ghim sắt khi nào?",
+     "lua_chon": [
+      "Khi ống dây được quấn thật chặt",
+      "Khi có dòng điện chạy qua ống dây",
+      "Khi ngắt công tắc của mạch",
+      "Khi tháo pin ra khỏi mạch"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nam châm điện chỉ có từ tính khi có dòng điện chạy qua ống dây; ngắt dòng điện thì từ tính mất.\n\nVì sao các phương án khác sai:\n- A: Quấn chặt hay lỏng thì không có dòng điện vẫn KHÔNG có từ tính.\n- C: Ngắt công tắc thì không có dòng điện, nam châm điện mất từ tính.\n- D: Tháo pin thì không có dòng điện, nam châm điện KHÔNG có từ tính."
+    },
+    {
+     "ma_cau": "K07060301016",
+     "loai": "trac_nghiem",
+     "de": "Khi ngắt dòng điện qua nam châm điện, từ tính của nó thay đổi thế nào?",
+     "lua_chon": [
+      "Vẫn hút mạnh như lúc có dòng điện",
+      "Từ tính tăng lên đột ngột",
+      "Mất từ tính, không hút ghim sắt nữa",
+      "Từ tính mất dần trong vài giây"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nam châm điện chỉ có từ tính khi có dòng điện chạy qua ống dây; ngắt dòng điện thì mất từ tính, thả ghim sắt ra ngay.\n\nVì sao các phương án khác sai:\n- A: Sai: nam châm điện chỉ có từ tính khi có dòng điện chạy qua.\n- B: Sai: ngắt dòng điện làm mất nguồn tạo từ tính chứ không tăng thêm.\n- D: Sai: nam châm điện mất từ tính ngay lập tức khi ngắt dòng điện, không mất dần."
+    },
+    {
+     "ma_cau": "K07060301017",
+     "loai": "trac_nghiem",
+     "de": "Quấn dây quanh đinh sắt, nối với pin rồi đóng công tắc. Đưa đầu đinh lại gần ghim sắt thì thấy hiện tượng gì?",
+     "lua_chon": [
+      "Ghim sắt bị đẩy ra xa",
+      "Ghim sắt nóng đỏ lên",
+      "Ghim sắt đứng yên như cũ",
+      "Ghim sắt bị hút vào đầu đinh"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đóng công tắc thì có dòng điện chạy qua ống dây, đinh sắt trở thành nam châm điện và hút ghim sắt.\n\nVì sao các phương án khác sai:\n- A: Nam châm điện hút vật bằng sắt, không đẩy ghim sắt ra xa.\n- B: Ghim KHÔNG nằm trong mạch điện nên không nóng lên; ghim bị hút vào đinh.\n- C: Có dòng điện chạy qua nên đinh sắt thành nam châm điện, hút được ghim."
+    },
+    {
+     "ma_cau": "K07060301018",
+     "loai": "trac_nghiem",
+     "de": "Muốn nam châm điện đang hút ghim sắt mất từ tính, ta làm thế nào?",
+     "lua_chon": [
+      "Quấn thêm vòng dây quanh lõi",
+      "Lắp thêm một pin vào mạch",
+      "Ngắt dòng điện qua ống dây",
+      "Thay đinh sắt bằng đinh sắt to hơn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nam châm điện chỉ có từ tính khi có dòng điện; ngắt công tắc (ngắt dòng điện) thì nó mất từ tính.\n\nVì sao các phương án khác sai:\n- A: Tăng số vòng dây làm nam châm điện mạnh hơn, không làm mất từ tính.\n- B: Tăng số pin làm nam châm điện mạnh hơn, không làm mất từ tính.\n- D: Lõi vẫn bằng sắt, dòng điện vẫn chạy nên vẫn có từ tính."
+    },
+    {
+     "ma_cau": "K07060301019",
+     "loai": "trac_nghiem",
+     "de": "Nam châm điện có từ tính VĨNH VIỄN hay chỉ có từ tính TẠM THỜI?",
+     "lua_chon": [
+      "Vĩnh viễn, giống như nam châm thẳng thông thường",
+      "Vĩnh viễn, nhưng yếu hơn nam châm thẳng",
+      "Tạm thời, chỉ trong 1 giờ sau khi ngắt điện",
+      "Tạm thời, chỉ khi có dòng điện chạy qua ống dây"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nam châm điện chỉ có từ tính tạm thời, khi có dòng điện chạy qua ống dây; ngắt dòng điện thì mất từ tính ngay.\n\nVì sao các phương án khác sai:\n- A: Nam châm điện không có từ tính vĩnh viễn như nam châm thẳng (nam châm vĩnh cửu).\n- B: Nam châm điện không có từ tính vĩnh viễn, dù mạnh hay yếu.\n- C: Nam châm điện mất từ tính ngay khi ngắt điện, không duy trì thêm một khoảng thời gian nào."
+    },
+    {
+     "ma_cau": "K07060301020",
+     "loai": "trac_nghiem",
+     "de": "Một nam châm điện đang hút một khối sắt nhỏ. Muốn thả khối sắt đó ra mà không cần chạm tay vào nó, ta nên làm gì?",
+     "lua_chon": [
+      "Ngắt công tắc để ngắt dòng điện",
+      "Lắc mạnh ống dây",
+      "Thổi hơi vào lõi sắt",
+      "Đảo ngược chiều quấn dây"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ngắt công tắc làm ngắt dòng điện qua ống dây, nam châm điện mất từ tính ngay nên thả khối sắt ra mà không cần chạm tay.\n\nVì sao các phương án khác sai:\n- B: Lắc ống dây không làm mất từ tính khi vẫn còn dòng điện chạy qua.\n- C: Thổi hơi không ảnh hưởng đến từ tính của nam châm điện.\n- D: Đảo chiều quấn dây (nếu có thể) chỉ đổi cực từ, không làm mất từ tính khi vẫn có dòng điện."
+    },
+    {
+     "ma_cau": "K07060301021",
+     "loai": "trac_nghiem",
+     "de": "Cần cẩu điện ở bãi phế liệu hút các khối sắt thép, đưa đến đúng chỗ rồi ngắt điện. Vì sao khi ngắt điện, cần cẩu thả vật ra?",
+     "lua_chon": [
+      "Nam châm điện mất từ tính khi hết dòng điện",
+      "Khối sắt quá nặng nên tự rơi",
+      "Ngắt điện làm nam châm điện đẩy vật ra",
+      "Móc của cần cẩu tự mở ra"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nam châm điện chỉ có từ tính khi có dòng điện chạy qua; ngắt điện thì mất từ tính, không còn hút nên vật rơi xuống.\n\nVì sao các phương án khác sai:\n- B: Khi có điện, cần cẩu vẫn giữ được khối sắt nặng; vật rơi vì nam châm mất từ tính.\n- C: Ngắt điện chỉ làm nam châm mất từ tính, không đẩy vật ra.\n- D: Cần cẩu điện giữ vật nhờ nam châm điện hút, không dùng móc."
+    },
+    {
+     "ma_cau": "K07060301022",
+     "loai": "trac_nghiem",
+     "de": "Vì sao khi thiết kế cần cẩu điện ở bãi phế liệu, người ta chọn nam châm điện thay vì nam châm vĩnh cửu?",
+     "lua_chon": [
+      "Vì nam châm điện nhẹ hơn nam châm vĩnh cửu",
+      "Vì nam châm điện có thể bật, tắt từ tính để hút rồi thả vật đúng lúc",
+      "Vì nam châm điện không cần bảo trì",
+      "Vì nam châm điện hút được cả vật liệu không phải là sắt"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nam châm điện có thể bật (đóng điện) để hút vật và tắt (ngắt điện) để thả vật đúng vị trí mong muốn, điều mà nam châm vĩnh cửu không làm được vì luôn có từ tính.\n\nVì sao các phương án khác sai:\n- A: Khối lượng không phải lí do chính để chọn nam châm điện cho cần cẩu.\n- C: Nam châm điện vẫn cần bảo trì (nguồn điện, dây dẫn…), không phải lí do chính.\n- D: Cả nam châm điện và nam châm vĩnh cửu đều chỉ hút được vật liệu từ (như sắt), không hút được vật liệu khác."
+    },
+    {
+     "ma_cau": "K07060301023",
+     "loai": "trac_nghiem",
+     "de": "Một nam châm điện đang hoạt động (có dòng điện qua ống dây) bỗng dưng bị đứt một đoạn dây trong mạch. Điều gì xảy ra với từ tính của nam châm điện?",
+     "lua_chon": [
+      "Từ tính vẫn giữ nguyên vì lõi sắt vẫn còn đó",
+      "Từ tính tăng lên vì dòng điện dồn về một chỗ",
+      "Từ tính mất ngay vì mạch bị hở, không còn dòng điện chạy qua",
+      "Từ tính chỉ giảm nhẹ, vẫn còn hút được ghim sắt"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đứt dây làm mạch điện bị hở, không còn dòng điện chạy qua ống dây nên nam châm điện mất từ tính ngay lập tức, giống như ngắt công tắc.\n\nVì sao các phương án khác sai:\n- A: Lõi sắt chỉ có từ tính khi có dòng điện chạy qua ống dây bao quanh nó; mạch hở thì không còn dòng điện.\n- B: Mạch hở nghĩa là không có dòng điện chạy qua, không có chuyện dòng điện dồn về một chỗ.\n- D: Mạch hở làm mất hoàn toàn dòng điện, nên mất hoàn toàn từ tính, không chỉ giảm nhẹ."
+    },
+    {
+     "ma_cau": "K07060301024",
+     "loai": "trac_nghiem",
+     "de": "So với nam châm vĩnh cửu (nam châm thẳng), khả năng thay đổi độ mạnh của nam châm điện như thế nào?",
+     "lua_chon": [
+      "Nam châm điện không đổi được độ mạnh",
+      "Cả hai đều không đổi được độ mạnh",
+      "Chỉ nam châm vĩnh cửu đổi được độ mạnh",
+      "Nam châm điện đổi được độ mạnh, vĩnh cửu thì không"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nam châm điện có thể thay đổi độ mạnh bằng cách tăng/giảm số vòng dây hoặc số pin (cường độ dòng điện); nam châm vĩnh cửu có độ mạnh cố định, không thay đổi được.\n\nVì sao các phương án khác sai:\n- A: Nam châm điện hoàn toàn có thể thay đổi độ mạnh, đây là một ưu điểm của nó.\n- B: Nam châm điện thay đổi được độ mạnh, khác với nam châm vĩnh cửu.\n- C: Ngược lại, chính nam châm điện mới thay đổi được độ mạnh dễ dàng, không phải nam châm vĩnh cửu."
+    },
+    {
+     "ma_cau": "K07060301025",
+     "loai": "trac_nghiem",
+     "de": "Trong chuông điện, nam châm điện có vai trò gì?",
+     "lua_chon": [
+      "Hút thanh sắt để búa gõ vào chuông",
+      "Tự phát ra tiếng chuông",
+      "Cung cấp dòng điện cho chuông",
+      "Làm nóng chuông để phát ra âm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khi có dòng điện, nam châm điện trong chuông hút thanh sắt gắn búa, búa gõ vào chuông làm chuông phát ra âm.\n\nVì sao các phương án khác sai:\n- B: Âm do chuông bị búa gõ dao động phát ra, nam châm điện không tự kêu.\n- C: Dòng điện do nguồn điện (pin) cung cấp, không phải nam châm điện.\n- D: Chuông phát ra âm vì bị gõ và dao động, không vì bị nóng."
+    },
+    {
+     "ma_cau": "K07060301026",
+     "loai": "trac_nghiem",
+     "de": "Trong rơ-le điện từ, nam châm điện được dùng để làm gì?",
+     "lua_chon": [
+      "Tăng số pin trong mạch điện",
+      "Hút thanh sắt để đóng, ngắt mạch điện",
+      "Biến điện năng thành ánh sáng",
+      "Hút các mảnh nhôm trong mạch"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khi có dòng điện, nam châm điện trong rơ-le hút thanh sắt, làm đóng hoặc ngắt một mạch điện khác.\n\nVì sao các phương án khác sai:\n- A: Số pin do người lắp quyết định, nam châm điện không làm tăng số pin.\n- C: Biến điện thành ánh sáng là việc của bóng đèn, không phải rơ-le.\n- D: Nhôm không phải vật liệu từ nên nam châm điện KHÔNG hút nhôm."
+    },
+    {
+     "ma_cau": "K07060301027",
+     "loai": "trac_nghiem",
+     "de": "Ở bãi phế liệu, vì sao cần cẩu dùng nam châm điện mà KHÔNG dùng nam châm vĩnh cửu?",
+     "lua_chon": [
+      "Nam châm điện hút được cả nhôm, đồng",
+      "Nam châm điện không cần nguồn điện",
+      "Có thể ngắt điện để thả vật đúng chỗ",
+      "Nam châm vĩnh cửu không hút được sắt"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nam châm điện bật, tắt được: có điện thì hút vật, ngắt điện thì thả vật đúng chỗ; nam châm vĩnh cửu luôn hút nên khó thả vật.\n\nVì sao các phương án khác sai:\n- A: Nam châm điện cũng chỉ hút vật liệu từ như sắt, KHÔNG hút nhôm, đồng.\n- B: Nam châm điện cần dòng điện mới có từ tính.\n- D: Nam châm vĩnh cửu vẫn hút sắt, nhưng khó thả vật ra."
+    },
+    {
+     "ma_cau": "K07060301028",
+     "loai": "trac_nghiem",
+     "de": "Cần cẩu điện hạ xuống một đống phế liệu gồm vỏ lon nhôm, mảnh đồng, thanh sắt và chai nhựa, rồi đóng điện và nhấc lên. Những vật nào được nhấc lên?",
+     "lua_chon": [
+      "Chỉ các thanh sắt",
+      "Vỏ lon nhôm và thanh sắt",
+      "Mọi vật bằng kim loại",
+      "Mảnh đồng và thanh sắt"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cần cẩu điện hút vật nhờ nam châm điện; nam châm chỉ hút vật liệu từ, trong đống phế liệu chỉ có sắt là vật liệu từ.\n\nVì sao các phương án khác sai:\n- B: Nhôm không phải vật liệu từ nên KHÔNG bị nam châm điện hút.\n- C: Nhôm, đồng là kim loại nhưng không phải vật liệu từ nên KHÔNG bị hút.\n- D: Đồng không phải vật liệu từ nên KHÔNG bị nam châm điện hút."
+    },
+    {
+     "ma_cau": "K07060301029",
+     "loai": "trac_nghiem",
+     "de": "Cửa phòng dùng khóa điện từ: khi có điện, nam châm điện ở khung cửa hút chặt tấm sắt gắn trên cánh cửa. Nếu mất điện, cánh cửa sẽ thế nào?",
+     "lua_chon": [
+      "Vẫn bị giữ chặt như khi có điện",
+      "Không còn bị giữ, đẩy ra được",
+      "Bị đẩy bật mở ra thật mạnh",
+      "Bị hút chặt hơn, rất khó mở"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mất điện → không có dòng điện qua ống dây → nam châm điện mất từ tính → không hút tấm sắt nữa nên cánh cửa đẩy ra được.\n\nVì sao các phương án khác sai:\n- A: Mất điện thì nam châm điện mất từ tính, KHÔNG giữ được tấm sắt trên cánh cửa.\n- C: Nam châm điện mất từ tính chỉ thôi hút, không đẩy tấm sắt ra.\n- D: Không có dòng điện thì nam châm điện mất từ tính, không hút mạnh hơn."
+    },
+    {
+     "ma_cau": "K07060301030",
+     "loai": "trac_nghiem",
+     "de": "Nhà máy tái chế cần tách mảnh sắt khỏi đống rác gồm nhựa, giấy, mảnh sắt. Thiết bị nào vừa hút riêng được mảnh sắt, vừa dễ thả chúng vào thùng riêng?",
+     "lua_chon": [
+      "Nam châm vĩnh cửu thật mạnh",
+      "Quạt thổi thật mạnh",
+      "Lưới lọc có lỗ nhỏ",
+      "Nam châm điện có công tắc"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Chỉ sắt là vật liệu từ nên nam châm hút riêng được sắt; nam châm điện còn ngắt điện được để thả sắt vào thùng riêng.\n\nVì sao các phương án khác sai:\n- A: Nam châm vĩnh cửu hút được sắt nhưng luôn hút, khó thả sắt vào thùng.\n- B: Quạt làm giấy, nhựa nhẹ bay đi nhưng khó gom riêng mảnh sắt vào thùng.\n- C: Lưới giữ lại mọi vật lớn hơn lỗ lưới, không tách riêng được sắt."
+    },
+    {
+     "ma_cau": "K07060301031",
+     "loai": "trac_nghiem",
+     "de": "Chuông điện ở một nhà đang hoạt động bình thường (nhấn nút thì kêu liên tục). Nếu giữ nguyên nhấn nút nhưng dùng tay giữ chặt thanh sắt gắn búa (không cho nó dao động), điều gì xảy ra?",
+     "lua_chon": [
+      "Chuông vẫn kêu liên tục như bình thường",
+      "Chuông ngừng kêu vì búa không còn gõ vào chuông được",
+      "Chuông kêu to hơn vì búa được giữ chắc chắn",
+      "Chuông kêu chậm hơn nhưng vẫn đều đặn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chuông điện phát ra âm nhờ búa liên tục dao động gõ vào chuông; giữ chặt thanh sắt (không cho dao động) làm búa không gõ được nữa nên chuông ngừng kêu.\n\nVì sao các phương án khác sai:\n- A: Giữ chặt thanh sắt cản trở dao động cần thiết để búa gõ chuông, nên chuông không thể kêu bình thường.\n- C: Giữ chặt búa làm nó không gõ được, chuông không kêu to hơn mà ngừng hẳn.\n- D: Nếu búa không dao động được thì chuông ngừng kêu hẳn, không phải kêu chậm lại."
+    },
+    {
+     "ma_cau": "K07060301032",
+     "loai": "trac_nghiem",
+     "de": "Rơ-le điện từ trong một số thiết bị dùng để đóng, ngắt một mạch điện có dòng điện lớn bằng một mạch điều khiển có dòng điện nhỏ. Vì sao cách làm này có lợi?",
+     "lua_chon": [
+      "Vì mạch nhỏ làm mạch lớn chạy nhanh hơn",
+      "Vì rơ-le làm điện áp mạch lớn giảm về 0",
+      "Vì người dùng chỉ thao tác mạch dòng nhỏ, an toàn hơn",
+      "Vì mạch nhỏ không cần nam châm điện"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nhờ rơ-le, người dùng chỉ cần thao tác với mạch điều khiển dòng nhỏ (an toàn hơn) mà vẫn đóng, ngắt được mạch điện lớn (có thể nguy hiểm) một cách gián tiếp, an toàn hơn.\n\nVì sao các phương án khác sai:\n- A: Rơ-le chỉ đóng, ngắt mạch điện lớn, không làm dòng điện trong mạch đó chạy nhanh hơn.\n- B: Rơ-le không làm giảm điện áp về 0, nó chỉ đóng hoặc ngắt mạch.\n- D: Rơ-le hoạt động chính là nhờ có nam châm điện trong mạch điều khiển."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00351",
+   "khoi": "7",
+   "chu_de": "Từ",
+   "chuyen_de": "Nam châm điện & Từ trường Trái Đất",
+   "nhom": "Bài toán định hướng la bàn và Từ trường Trái Đất",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K07060303001",
+     "loai": "trac_nghiem",
+     "de": "Em đứng yên, cầm la bàn nằm ngang. Khi kim đứng yên, cực Bắc của kim chỉ thẳng về phía trước mặt em. Bên tay trái em là hướng nào?",
+     "lua_chon": [
+      "Hướng Đông",
+      "Hướng Tây",
+      "Hướng Nam",
+      "Hướng Bắc"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cực Bắc của kim chỉ hướng Bắc nên em nhìn về hướng Bắc; khi đó sau lưng là Nam, tay phải là Đông, tay trái là Tây.\n\nVì sao các phương án khác sai:\n- A: Nhìn về hướng Bắc thì hướng Đông ở bên tay phải, không phải tay trái.\n- C: Hướng Nam ở sau lưng khi em nhìn về hướng Bắc.\n- D: Hướng Bắc ở trước mặt em, theo cực Bắc của kim."
+    },
+    {
+     "ma_cau": "K07060303002",
+     "loai": "trac_nghiem",
+     "de": "Em đứng yên, cầm la bàn nằm ngang. Khi kim đứng yên, cực Bắc của kim chỉ về phía sau lưng em. Em đang nhìn về hướng nào?",
+     "lua_chon": [
+      "Hướng Bắc",
+      "Hướng Đông",
+      "Hướng Tây",
+      "Hướng Nam"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cực Bắc của kim chỉ hướng Bắc; hướng Bắc ở sau lưng thì trước mặt là hướng Nam.\n\nVì sao các phương án khác sai:\n- A: Cực Bắc của kim chỉ hướng Bắc, tức hướng Bắc ở sau lưng; trước mặt là hướng ngược lại.\n- B: Nhìn về hướng Đông thì hướng Bắc ở bên tay trái, không ở sau lưng.\n- C: Nhìn về hướng Tây thì hướng Bắc ở bên tay phải, không ở sau lưng."
+    },
+    {
+     "ma_cau": "K07060303003",
+     "loai": "trac_nghiem",
+     "de": "Em đứng yên, cầm la bàn nằm ngang. Khi kim đứng yên, cực Bắc của kim chỉ về phía bên tay trái em. Em đang nhìn về hướng nào?",
+     "lua_chon": [
+      "Hướng Đông",
+      "Hướng Tây",
+      "Hướng Bắc",
+      "Hướng Nam"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cực Bắc của kim chỉ hướng Bắc, nằm bên tay trái. Người nhìn về hướng Đông thì tay trái là Bắc, tay phải là Nam.\n\nVì sao các phương án khác sai:\n- B: Nhìn về hướng Tây thì hướng Bắc ở bên tay phải, không phải tay trái.\n- C: Hướng Bắc ở bên tay trái em (theo cực Bắc của kim), không ở trước mặt.\n- D: Nhìn về hướng Nam thì hai bên tay là Đông và Tây, không có hướng Bắc."
+    },
+    {
+     "ma_cau": "K07060303004",
+     "loai": "trac_nghiem",
+     "de": "Em đứng yên, cầm la bàn nằm ngang, cực Bắc kim chỉ thẳng về phía trước mặt em. Em quay sang PHẢI 90°, rồi quay tiếp sang PHẢI 90° nữa. Lúc này em nhìn về hướng nào?",
+     "lua_chon": [
+      "Bắc",
+      "Đông",
+      "Nam",
+      "Tây"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ban đầu nhìn hướng Bắc. Quay phải 90° lần 1: hướng Đông. Quay phải 90° lần 2: hướng Nam.\n\nVì sao các phương án khác sai:\n- A: Quay phải 90° hai lần nghĩa là đổi hướng 180° so với ban đầu, không quay về đúng hướng cũ.\n- B: Đông là hướng sau LẦN QUAY THỨ NHẤT, chưa tính lần quay thứ hai.\n- D: Tây là hướng nếu quay TRÁI (không phải phải) 90° hai lần từ Bắc."
+    },
+    {
+     "ma_cau": "K07060303005",
+     "loai": "trac_nghiem",
+     "de": "Em đứng yên, cầm la bàn nằm ngang, cực Bắc kim chỉ về phía sau lưng em. Em quay sang TRÁI 90°, rồi quay tiếp sang TRÁI 90° nữa. Lúc này em nhìn về hướng nào?",
+     "lua_chon": [
+      "Nam",
+      "Đông",
+      "Tây",
+      "Bắc"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ban đầu nhìn hướng Nam. Quay trái 90° lần 1: hướng Đông. Quay trái 90° lần 2: hướng Bắc.\n\nVì sao các phương án khác sai:\n- A: Quay trái 90° hai lần nghĩa là đổi hướng 180° so với ban đầu, không quay về đúng hướng cũ.\n- B: Đông là hướng sau LẦN QUAY THỨ NHẤT, chưa tính lần quay thứ hai.\n- C: Tây là hướng nếu quay PHẢI (không phải trái) từ Nam, không đúng chiều quay đã cho."
+    },
+    {
+     "ma_cau": "K07060303006",
+     "loai": "trac_nghiem",
+     "de": "Em đứng yên, cầm la bàn nằm ngang, cực Bắc kim chỉ về phía bên tay trái em. Em quay sang PHẢI 90°, rồi quay tiếp sang PHẢI 90° nữa. Lúc này em nhìn về hướng nào?",
+     "lua_chon": [
+      "Tây",
+      "Bắc",
+      "Đông",
+      "Nam"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ban đầu nhìn hướng Đông. Quay phải 90° lần 1: hướng Nam. Quay phải 90° lần 2: hướng Tây.\n\nVì sao các phương án khác sai:\n- B: Bắc là hướng nếu quay TRÁI (không phải phải) 90° hai lần từ Đông.\n- C: Đông là hướng BAN ĐẦU (trước khi quay), chưa tính hai lần quay phải.\n- D: Nam là hướng sau LẦN QUAY THỨ NHẤT, chưa tính lần quay thứ hai."
+    },
+    {
+     "ma_cau": "K07060303007",
+     "loai": "trac_nghiem",
+     "de": "Em đứng yên, cầm la bàn nằm ngang, cực Bắc kim chỉ về phía bên tay phải em. Em quay sang TRÁI 90°, rồi quay tiếp sang TRÁI 90° nữa. Lúc này em nhìn về hướng nào?",
+     "lua_chon": [
+      "Tây",
+      "Đông",
+      "Nam",
+      "Bắc"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ban đầu nhìn hướng Tây. Quay trái 90° lần 1: hướng Nam. Quay trái 90° lần 2: hướng Đông.\n\nVì sao các phương án khác sai:\n- A: Tây là hướng BAN ĐẦU (trước khi quay), chưa tính hai lần quay trái.\n- C: Nam là hướng sau LẦN QUAY THỨ NHẤT, chưa tính lần quay thứ hai.\n- D: Bắc là hướng nếu quay PHẢI (không phải trái) 90° hai lần từ Tây."
+    },
+    {
+     "ma_cau": "K07060303008",
+     "loai": "trac_nghiem",
+     "de": "Em đứng yên, cầm la bàn nằm ngang, cực Bắc kim chỉ thẳng về phía trước mặt em. Em quay sang PHẢI 90°, rồi quay tiếp sang TRÁI 180°. Lúc này em nhìn về hướng nào?",
+     "lua_chon": [
+      "Bắc",
+      "Đông",
+      "Nam",
+      "Tây"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ban đầu nhìn hướng Bắc. Quay phải 90°: hướng Đông. Quay thêm trái 180° là đổi sang hướng đối diện của Đông, tức hướng Tây.\n\nVì sao các phương án khác sai:\n- A: Quay trái 180° từ hướng Đông cho hướng đối diện là Tây, không quay lại đúng hướng Bắc ban đầu.\n- B: Đông là hướng chỉ sau LẦN QUAY THỨ NHẤT, chưa tính lần quay trái 180° tiếp theo.\n- C: Nam là hướng nếu quay PHẢI 90° hai lần liên tiếp, không đúng với đề (lần hai quay trái 180°)."
+    },
+    {
+     "ma_cau": "K07060303009",
+     "loai": "trac_nghiem",
+     "de": "Em đứng yên, cầm la bàn nằm ngang, cực Bắc kim chỉ về phía bên tay phải em. Em quay sang PHẢI 90°, rồi quay tiếp sang PHẢI 90° nữa. Lúc này em nhìn về hướng nào?",
+     "lua_chon": [
+      "Tây",
+      "Bắc",
+      "Đông",
+      "Nam"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ban đầu nhìn hướng Tây (vì cực Bắc ở bên tay phải). Quay phải 90° lần 1: hướng Bắc. Quay phải 90° lần 2: hướng Đông.\n\nVì sao các phương án khác sai:\n- A: Tây là hướng ban đầu, trước khi quay, không phải sau hai lần quay phải.\n- B: Bắc là hướng sau lần quay phải thứ nhất, chưa phải sau lần quay thứ hai.\n- D: Nam không khớp với việc quay phải hai lần 90° từ hướng Tây."
+    },
+    {
+     "ma_cau": "K07060303010",
+     "loai": "trac_nghiem",
+     "de": "Em đứng yên, cầm la bàn nằm ngang, cực Bắc kim chỉ thẳng về phía sau lưng em. Em quay sang PHẢI 90°, rồi quay tiếp sang PHẢI 180° nữa. Lúc này em nhìn về hướng nào?",
+     "lua_chon": [
+      "Nam",
+      "Tây",
+      "Bắc",
+      "Đông"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ban đầu nhìn hướng Nam (vì cực Bắc ở phía sau lưng). Quay phải 90°: hướng Tây. Quay thêm phải 180° là đổi sang hướng đối diện của Tây, tức hướng Đông.\n\nVì sao các phương án khác sai:\n- A: Nam là hướng ban đầu, trước khi quay.\n- B: Tây là hướng sau lần quay phải 90° đầu tiên, chưa tính tiếp 180° sau đó.\n- C: Bắc không khớp với phép quay phải 90° rồi phải 180° từ hướng Nam."
+    }
+   ]
+  }
+ ]
+}

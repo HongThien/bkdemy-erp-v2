@@ -1,0 +1,163 @@
+[
+ {
+  "ma_cau": "T1110000001054",
+  "dang_bai_id": "NDB01177",
+  "chac": "cao",
+  "ly_do": "Hàm hai công thức tại x=1, giới hạn trái khác phải nên không tồn tại.",
+  "can_cu": "Hai giới hạn một bên khác nhau, hoặc một trong hai không tồn tại"
+ },
+ {
+  "ma_cau": "T1110000001580",
+  "dang_bai_id": "NDB01178",
+  "chac": "cao",
+  "ly_do": "Phân thức khi x→-∞, tử mẫu cùng bậc, giới hạn bằng thương hệ số cao nhất.",
+  "can_cu": "Bậc tử bằng bậc mẫu: giới hạn bằng thương hai hệ số cao nhất"
+ },
+ {
+  "ma_cau": "T1110000001626",
+  "dang_bai_id": "NDB01179",
+  "chac": "cao",
+  "ly_do": "Căn ở mẫu khi x→-∞, đưa |x|=-x ra ngoài căn.",
+  "can_cu": "Đưa |x| ra ngoài căn, √(x²)=-x khi x<0"
+ },
+ {
+  "ma_cau": "T1110000001577",
+  "dang_bai_id": "NDB01170",
+  "chac": "cao",
+  "ly_do": "Cho lim f, lim g hữu hạn, tính giới hạn biểu thức 3f-4g.",
+  "can_cu": "Biết giới hạn của hai hàm số đều là số hữu hạn"
+ },
+ {
+  "ma_cau": "T1110000001518",
+  "dang_bai_id": "NDB01177",
+  "chac": "cao",
+  "ly_do": "Căn bình phương thành trị tuyệt đối, hai giới hạn một bên khác nhau nên không tồn tại; chọn dạng sau.",
+  "can_cu": "Hai giới hạn một bên khác nhau, hoặc một trong hai không tồn tại"
+ },
+ {
+  "ma_cau": "T1110000001060",
+  "dang_bai_id": "NDB01185",
+  "chac": "cao",
+  "ly_do": "Bài thực tế nồng độ muối trong hồ theo thời gian, lấy giới hạn khi t→+∞.",
+  "can_cu": "Nồng độ chất tan bằng lượng chất tan chia cho thể tích dung dịch"
+ },
+ {
+  "ma_cau": "T1110000001508",
+  "dang_bai_id": "NDB01153",
+  "chac": "cao",
+  "ly_do": "Dãy phân thức chứa tham số a, tìm a để giới hạn bằng 1/2.",
+  "can_cu": "Tìm tham số để giới hạn bằng giá trị cho trước"
+ },
+ {
+  "ma_cau": "T1110000001534",
+  "dang_bai_id": "NDB01197",
+  "chac": "cao",
+  "ly_do": "Tìm số giá trị m để hàm hai nhánh liên tục trên ℝ.",
+  "can_cu": "Tìm tham số để hàm số liên tục trên tập số thực"
+ },
+ {
+  "ma_cau": "T1110000001619",
+  "dang_bai_id": "NDB01177",
+  "chac": "cao",
+  "ly_do": "Tìm a,b để giới hạn tại x=1 tồn tại: cho giới hạn trái bằng giới hạn phải.",
+  "can_cu": "Tìm tham số để giới hạn tồn tại: tính hai giới hạn một bên"
+ },
+ {
+  "ma_cau": "T1110000002231",
+  "dang_bai_id": "NDB01862",
+  "chac": "cao",
+  "ly_do": "Giới hạn 0/0 có cos, tách thành 1-cos kx rồi dùng hạ bậc và sin u / u.",
+  "can_cu": "bằng nhân chia hệ số, công thức nhân đôi, hạ bậc"
+ },
+ {
+  "ma_cau": "T1110000001581",
+  "dang_bai_id": "NDB01179",
+  "chac": "cao",
+  "ly_do": "Căn ở tử khi x→-∞, đưa |x|=-x ra ngoài căn.",
+  "can_cu": "Đưa |x| ra ngoài căn, √(x²)=-x khi x<0"
+ },
+ {
+  "ma_cau": "T1110000001575",
+  "dang_bai_id": "NDB01148",
+  "chac": "cao",
+  "ly_do": "Nhận biết dãy qⁿ nào có giới hạn 0 (|q|<1).",
+  "can_cu": "Dãy số nào sau đây có giới hạn là một số thực khác"
+ },
+ {
+  "ma_cau": "T1110000001075",
+  "dang_bai_id": "NDB01186",
+  "chac": "cao",
+  "ly_do": "Điểm A dịch chuyển ra vô cực, lập hàm theo tham số a rồi lấy giới hạn.",
+  "can_cu": "Lập hàm theo tham số rồi lấy giới hạn"
+ },
+ {
+  "ma_cau": "T1110000001229",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Đa thức bậc nhất tại x=3, thay trực tiếp.",
+  "can_cu": "Hàm đa thức: giới hạn bằng giá trị của hàm tại điểm đó"
+ },
+ {
+  "ma_cau": "T1110000001131",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Dãy phân thức tử mẫu cùng bậc 1, chia cho n.",
+  "can_cu": "Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc"
+ },
+ {
+  "ma_cau": "T1110000001569",
+  "dang_bai_id": "NDB01164",
+  "chac": "cao",
+  "ly_do": "Số thập phân vô hạn tuần hoàn 2,(13) viết thành phân số.",
+  "can_cu": "Tách thành tổng cấp số nhân lùi vô hạn"
+ },
+ {
+  "ma_cau": "T1110000003125",
+  "dang_bai_id": "NDB01179",
+  "chac": "cao",
+  "ly_do": "Tìm a từ giới hạn khi x→+∞ có căn, đưa x ra ngoài căn rồi chia.",
+  "can_cu": "Đưa |x| ra ngoài căn, √(x²)=-x khi x<0"
+ },
+ {
+  "ma_cau": "T1110000001079",
+  "dang_bai_id": "NDB01195",
+  "chac": "cao",
+  "ly_do": "Đếm hàm sơ cấp liên tục trên ℝ: đa thức, sin, cos, tan theo tập xác định.",
+  "can_cu": "Đa thức, phân thức, căn, lượng giác, tổng hiệu tích thương hàm liên tục"
+ },
+ {
+  "ma_cau": "T1110000001161",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Căn ở tử dưới dấu thương, đưa n² ra ngoài căn và chia.",
+  "can_cu": "Chia tử và mẫu cho n, chú ý √(n²)=n"
+ },
+ {
+  "ma_cau": "T1110000001070",
+  "dang_bai_id": "NDB01178",
+  "chac": "cao",
+  "ly_do": "Phân thức hữu tỉ khi x→+∞, tử bậc thấp hơn mẫu nên bằng 0.",
+  "can_cu": "Chia tử và mẫu cho luỹ thừa cao nhất của x"
+ },
+ {
+  "ma_cau": "T1110000001142",
+  "dang_bai_id": "NDB01178",
+  "chac": "cao",
+  "ly_do": "Tìm a từ giới hạn phân thức bậc nhất khi x→+∞ bằng 3.",
+  "can_cu": "Chia tử và mẫu cho luỹ thừa cao nhất của x"
+ },
+ {
+  "ma_cau": "T1110000001535",
+  "dang_bai_id": "NDB01191",
+  "chac": "vua",
+  "ly_do": "Tìm a để liên tục, tham số chỉ ở nhánh x≥2 (có thêm trị tuyệt đối và bất phương trình bậc hai).",
+  "can_cu": "trong đó tham số chỉ nằm ở 1 nhánh"
+ },
+ {
+  "ma_cau": "T1110000001541",
+  "dang_bai_id": "NDB01185",
+  "chac": "cao",
+  "ly_do": "Bài thực tế nồng độ muối trong hồ theo thời gian, lấy giới hạn khi t→+∞.",
+  "can_cu": "Nồng độ chất tan bằng lượng chất tan chia cho thể tích dung dịch"
+ }
+]

@@ -1,0 +1,417 @@
+=== H5.2.1
+@ly_thuyet:
+##TC Nhận dạng hàm bậc ba
+- Đồ thị hàm bậc ba $y=ax^3+bx^2+cx+d$ không có tiệm cận.
+- Đầu bên phải đi lên thì $a>0$, đi xuống thì $a<0$.
+- Có hai cực trị khi $y'=0$ có hai nghiệm phân biệt; đồ thị đơn điệu, không có cực trị khi $y'$ không đổi dấu.
+- Giao với $Oy$ là điểm $(0;d)$; tâm đối xứng có hoành độ $-\dfrac{b}{3a}$.
+
+##PP Chọn hàm bậc ba theo hình
+Đọc dáng đồ thị: có hai cực trị hay không, đầu bên phải đi lên hay đi xuống để suy ra dấu $a$.
+Loại phương án có dấu $a$ sai hoặc có số cực trị sai (xét $y'$).
+Dùng giao với $Oy$ và điểm cực trị hoặc điểm đi qua để loại tiếp.
+
+##CY
+- Hệ số $d$ bằng tung độ giao điểm với $Oy$ chứ không phải tung độ cực đại.
+- Đừng quên kiểm tra hoành độ cực trị: hai phương án cùng dấu $a$ và cùng $d$ vẫn có thể khác ở vị trí cực trị.
+
+@vi_du:
+##VD
+Đồ thị trong hình bên là đồ thị của hàm số nào dưới đây?
+[[HINH {"loai":"dothi","x":[-3,3],"y":[-3,5],"f":[{"e":"x^3-3*x+1","ten":"y=f(x)"}],"diem":[{"x":-1,"y":3,"nhan":"(-1;3)"},{"x":1,"y":-1,"nhan":"(1;-1)"},{"x":0,"y":1,"nhan":"(0;1)","chi":false}]}]]
+a) $y=x^3-3x+1$
+b) $y=-x^3+3x+1$
+c) $y=x^3+3x+1$
+d) $y=x^3-3x^2+1$
+
+Bài giải:
+Đồ thị có hai cực trị và đi lên ở bên phải nên $a>0$.
+Phương án b) có $a=-1<0$: loại.
+Phương án c) có $y'=3x^2+3>0$, hàm đồng biến, không có cực trị: loại.
+Còn a) và d). Với d), $y'=3x^2-6x=0$ cho cực trị tại $x=0$ và $x=2$, không khớp với hình (cực trị tại $x=\pm1$): loại.
+Với a), $y'=3x^2-3=0$ cho $x=\pm1$; $y(-1)=3$, $y(1)=-1$, $y(0)=1$, khớp với hình.
+Vậy chọn a) $y=x^3-3x+1$.
+
+##VD
+Đồ thị trong hình bên là đồ thị của hàm số nào dưới đây?
+[[HINH {"loai":"dothi","x":[-1,3],"y":[-6,10],"f":[{"e":"-(x^3)+3*x^2-3*x+3","ten":"y=f(x)"}],"diem":[{"x":0,"y":3,"nhan":"(0;3)"},{"x":1,"y":2,"nhan":"(1;2)"},{"x":2,"y":1,"nhan":"(2;1)"}]}]]
+a) $y=x^3-3x^2+3x+3$
+b) $y=-x^3+3x^2-3x+3$
+c) $y=-x^3+3x+3$
+d) $y=-x^3+3x^2-3x-1$
+
+Bài giải:
+Đồ thị đi xuống từ trái sang phải, không có cực trị, đầu bên phải đi xuống nên $a<0$.
+Phương án a) có $a=1>0$: loại.
+Phương án c) có $y'=-3x^2+3=0$ tại $x=\pm1$, có hai cực trị: loại.
+Còn b) và d). Đồ thị cắt $Oy$ tại $(0;3)$; d) có $y(0)=-1$: loại.
+Với b), $y(0)=3$, $y(1)=2$, $y(2)=1$, $y'=-3(x-1)^2\le0$, khớp với hình.
+Vậy chọn b) $y=-x^3+3x^2-3x+3$.
+
+=== H5.3.1
+@ly_thuyet:
+##TC Dấu của $a,b,c,d$ theo đồ thị hàm bậc ba
+- Dấu của $a$ theo nhánh bên phải của đồ thị; $d$ là tung độ giao điểm với $Oy$.
+- Gọi $S=x_1+x_2$, $P=x_1x_2$ là tổng và tích hoành độ hai điểm cực trị, khi đó $b=-\dfrac{3aS}{2}$ và $c=3aP$.
+- Suy ra: $b$ ngược dấu với $a\cdot S$ và $c$ cùng dấu với $a\cdot P$.
+- $S=0$ thì $b=0$; $P=0$ (một cực trị nằm trên $Oy$) thì $c=0$.
+
+##PP Xác định dấu của $a,b,c,d$
+Nhìn nhánh bên phải đi lên hay đi xuống để kết luận dấu của $a$.
+Đọc tung độ giao điểm với $Oy$ để kết luận dấu của $d$.
+Đọc hoành độ hai điểm cực trị rồi tính dấu của tổng $S$ và tích $P$.
+Kết luận $b$ ngược dấu $a\cdot S$, $c$ cùng dấu $a\cdot P$.
+
+##CY
+- Không kết luận dấu $b$ chỉ từ dấu của tổng $S$: phải nhân với dấu của $a$.
+- Một điểm cực trị nằm đúng trên trục tung cho $c=0$; hai hoành độ cực trị đối nhau cho $b=0$: lúc đó hệ số bằng $0$, không phải âm hay dương.
+
+@vi_du:
+##VD
+Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị như hình vẽ. Xác định dấu của $a,b,c,d$.
+[[HINH {"loai":"dothi","x":[-1,5],"y":[-4,7],"f":[{"e":"x^3-6*x^2+9*x+1","ten":"y=f(x)","xt":4.3}]}]]
+
+Bài giải:
+Nhánh bên phải đi lên nên $a>0$.
+Đồ thị cắt trục $Oy$ tại điểm $(0;1)$ nên $d=1>0$.
+Hai điểm cực trị có hoành độ $x_1=1$ và $x_2=3$, nên tổng $S=4>0$ và tích $P=3>0$.
+Vì $b=-\dfrac{3aS}{2}$ với $a>0$, $S>0$ nên $b<0$; vì $c=3aP$ với $a>0$, $P>0$ nên $c>0$.
+Vậy $a>0$, $b<0$, $c>0$, $d>0$.
+
+##VD
+Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị như hình vẽ. Trong các số $a,b,c,d$ có bao nhiêu số dương, bao nhiêu số bằng $0$?
+[[HINH {"loai":"dothi","x":[-4,2],"y":[-4,4],"f":[{"e":"-x^3-3*x^2+2","ten":"y=f(x)","xt":1.2}]}]]
+
+Bài giải:
+Nhánh bên phải đi xuống nên $a<0$.
+Đồ thị cắt $Oy$ tại $(0;2)$ nên $d=2>0$.
+Hai điểm cực trị là $(-2;-2)$ và $(0;2)$, nên $x_1=-2$, $x_2=0$: tổng $S=-2$, tích $P=0$.
+Từ $c=3aP=0$ suy ra $c=0$.
+Vì $b=-\dfrac{3aS}{2}$ với $a<0$ và $S<0$ nên $aS>0$, do đó $b<0$.
+Vậy chỉ có một số dương là $d$, và một số bằng $0$ là $c$.
+
+=== H5.3.4
+@ly_thuyet:
+##TC Lập công thức hàm bậc ba từ điều kiện
+- Hàm bậc ba $y=ax^3+bx^2+cx+d$ có bốn hệ số chưa biết, nên cần đủ bốn phương trình; $y'=3ax^2+2bx+c$.
+- Điểm $A(x_0;y_0)$ thuộc đồ thị: $y(x_0)=y_0$. Đồ thị cắt $Oy$ tại $(0;d_0)$ thì $d=d_0$.
+- Đạt cực trị tại $x_0$: $y'(x_0)=0$.
+- Có điểm cực trị $(x_0;y_0)$ thì có cả hai điều kiện $y'(x_0)=0$ và $y(x_0)=y_0$.
+
+##PP Lập hệ phương trình tìm hàm bậc ba
+Viết dạng tổng quát $y=ax^3+bx^2+cx+d$ và tính $y'$.
+Chuyển từng điều kiện của đề thành một phương trình theo các hệ số.
+Giải hệ (khử dần, thường tìm được $b$ và $c$ theo $a$ trước).
+Thay hệ số vào, kiểm tra lại $y'$ đổi dấu đúng loại cực trị đề cho (cực đại hay cực tiểu).
+
+##CY
+- Điều kiện $y'(x_0)=0$ chỉ là điều kiện cần của cực trị: phải kiểm tra $y'$ đổi dấu.
+- Cực đại ở bên trái cực tiểu thì $a>0$; cực đại ở bên phải cực tiểu thì $a<0$: dùng để loại nghiệm khi hệ cho hai giá trị của $a$.
+
+@vi_du:
+##VD
+Tìm hàm số bậc ba $y=ax^3+bx^2+cx+d$ có điểm cực đại là $(1;5)$ và điểm cực tiểu là $(3;1)$.
+
+Bài giải:
+Ta có $y'=3ax^2+2bx+c$.
+Hàm số đạt cực trị tại $x=1$ và $x=3$ nên $3a+2b+c=0$ và $27a+6b+c=0$.
+Trừ hai phương trình: $24a+4b=0$ nên $b=-6a$, rồi $c=-3a-2b=9a$.
+Đồ thị đi qua $(3;1)$: $27a+9b+3c+d=1$, thay $b=-6a$, $c=9a$ được $27a-54a+27a+d=1$ nên $d=1$.
+Đồ thị đi qua $(1;5)$: $a+b+c+d=5$ nên $a-6a+9a+1=5$, suy ra $a=1$, $b=-6$, $c=9$.
+Kiểm tra: $y=x^3-6x^2+9x+1$ có $y'=3(x-1)(x-3)$ đổi dấu từ $+$ sang $-$ tại $x=1$ (cực đại, $y(1)=5$) và từ $-$ sang $+$ tại $x=3$ (cực tiểu, $y(3)=1$).
+Vậy $y=x^3-6x^2+9x+1$.
+
+##VD
+Tìm hàm số bậc ba $y=ax^3+bx^2+cx+d$ biết đồ thị cắt trục tung tại điểm có tung độ $1$, hàm số đạt cực đại tại $x=-1$, đạt cực tiểu tại $x=2$ và giá trị cực đại hơn giá trị cực tiểu $27$ đơn vị.
+
+Bài giải:
+Ta có $y'=3ax^2+2bx+c$. Đồ thị cắt $Oy$ tại $(0;1)$ nên $d=1$.
+Đạt cực trị tại $x=-1$ và $x=2$ nên $3a-2b+c=0$ và $12a+4b+c=0$.
+Trừ hai phương trình: $9a+6b=0$ nên $b=-\dfrac{3a}{2}$, rồi $c=-3a+2b=-6a$.
+Khi đó $y=ax^3-\dfrac{3a}{2}x^2-6ax+1$, suy ra $y(-1)=\dfrac{7a}{2}+1$ và $y(2)=-10a+1$.
+Giá trị cực đại hơn giá trị cực tiểu $27$ đơn vị: $y(-1)-y(2)=\dfrac{27a}{2}=27$ nên $a=2$, $b=-3$, $c=-12$.
+Kiểm tra: $y=2x^3-3x^2-12x+1$ có $y'=6(x+1)(x-2)$ đổi dấu từ $+$ sang $-$ tại $x=-1$ (cực đại, $y(-1)=8$) và từ $-$ sang $+$ tại $x=2$ (cực tiểu, $y(2)=-19$); hiệu $8-(-19)=27$.
+Vậy $y=2x^3-3x^2-12x+1$.
+
+=== H5.4.3
+@ly_thuyet:
+##TC Điểm uốn và tâm đối xứng của đồ thị hàm bậc ba
+- Đồ thị hàm bậc ba $y=ax^3+bx^2+cx+d$ có tâm đối xứng là điểm uốn $I(x_0;y_0)$, trong đó $x_0=-\dfrac{b}{3a}$ là nghiệm của $y''=6ax+2b=0$ và $y_0=y(x_0)$.
+- Khi hàm có hai điểm cực trị thì $I$ là trung điểm của đoạn nối hai điểm cực trị.
+- Hai điểm $A,B$ đối xứng nhau qua $I$ khi $I$ là trung điểm $AB$: $x_A+x_B=2x_0$, $y_A+y_B=2y_0$.
+- Đồ thị nhận $I(x_0;y_0)$ làm tâm đối xứng khi $f(2x_0-x)+f(x)=2y_0$ với mọi $x$.
+
+##PP Tìm tâm đối xứng và điểm đối xứng
+Tính $x_0=-\dfrac{b}{3a}$ rồi $y_0=y(x_0)$ để có tâm $I$.
+Muốn chứng minh, tịnh tiến gốc về $I$ bằng $x=X+x_0$, $y=Y+y_0$ rồi kiểm tra $Y$ là hàm lẻ của $X$ (hoặc kiểm tra $f(2x_0-x)+f(x)=2y_0$).
+Điểm đối xứng với $A$ qua $I$ là $B(2x_0-x_A;2y_0-y_A)$.
+Kiểm tra $B$ thuộc đồ thị (thay vào hàm số).
+
+##CY
+- Hoành độ tâm đối xứng là $-\dfrac{b}{3a}$ (mẫu số có hệ số $3$), dễ ghi nhầm mẫu số.
+- Tâm $I$ luôn nằm trên đồ thị: nếu $y_0\ne y(x_0)$ thì đã tính sai.
+
+@vi_du:
+##VD
+Cho hàm số $y=x^3-3x^2+4x-2$ có đồ thị $(C)$. Tìm tâm đối xứng $I$ của $(C)$ và điểm $B$ đối xứng với $A(0;-2)$ qua $I$.
+
+Bài giải:
+Với $a=1$, $b=-3$ thì $x_0=-\dfrac{b}{3a}=1$ và $y_0=y(1)=1-3+4-2=0$ nên $I(1;0)$.
+Kiểm tra: đặt $x=X+1$, $y=Y$ thì $Y=(X+1)^3-3(X+1)^2+4(X+1)-2=X^3+X$ là hàm lẻ của $X$, nên $I$ là tâm đối xứng.
+Điểm $B$ đối xứng với $A$ qua $I$ có $x_B=2\cdot1-0=2$, $y_B=2\cdot0-(-2)=2$ nên $B(2;2)$.
+Thay vào hàm số: $y(2)=8-12+8-2=2$, nên $B\in(C)$.
+Vậy tâm đối xứng là $I(1;0)$ và $B(2;2)$.
+
+##VD
+Cho hàm số $y=x^3-3mx^2+2$ có đồ thị $(C_m)$.
+a) Tìm toạ độ tâm đối xứng $I$ của $(C_m)$ theo $m$ và chứng minh $I$ đúng là tâm đối xứng.
+b) Tìm $m$ để $I$ thuộc trục hoành, rồi tìm điểm $B$ đối xứng với $A(0;2)$ qua $I$.
+
+Bài giải:
+a) Với $a=1$, $b=-3m$ thì $x_0=-\dfrac{b}{3a}=m$ và $y_0=y(m)=m^3-3m^3+2=2-2m^3$, nên $I(m;2-2m^3)$.
+Gọi $f(x)=x^3-3mx^2+2$. Ta có $f(2m-x)=(2m-x)^3-3m(2m-x)^2+2=-x^3+3mx^2-4m^3+2$.
+Cộng với $f(x)$ được $f(2m-x)+f(x)=4-4m^3=2y_0$ với mọi $x$, nên $I$ là tâm đối xứng của $(C_m)$.
+b) $I$ thuộc trục hoành ⇔ $2-2m^3=0$ ⇔ $m=1$, khi đó $I(1;0)$.
+Điểm $B$ đối xứng với $A(0;2)$ qua $I$ có $x_B=2\cdot1-0=2$, $y_B=2\cdot0-2=-2$ nên $B(2;-2)$.
+Kiểm tra: đồ thị khi $m=1$ là $y=x^3-3x^2+2$ có $y(2)=8-12+2=-2$, nên $B$ thuộc đồ thị.
+Vậy a) $I(m;2-2m^3)$; b) $m=1$ và $B(2;-2)$.
+
+=== H5.4.2
+@ly_thuyet:
+##TC Số nghiệm của phương trình $f(x)=m$ với $f$ là hàm bậc ba
+- Số nghiệm của $f(x)=m$ bằng số giao điểm của đồ thị $y=f(x)$ với đường thẳng ngang $y=m$.
+- Hàm bậc ba có hai cực trị $y_{\text{CĐ}}>y_{\text{CT}}$: $m>y_{\text{CĐ}}$ hoặc $m<y_{\text{CT}}$ cho 1 nghiệm; $m=y_{\text{CĐ}}$ hoặc $m=y_{\text{CT}}$ cho 2 nghiệm; $y_{\text{CT}}<m<y_{\text{CĐ}}$ cho 3 nghiệm.
+- Hàm bậc ba không có cực trị (luôn đơn điệu) thì $f(x)=m$ có đúng 1 nghiệm với mọi $m$.
+- Phương trình $pf(x)+q=0$ đưa về $f(x)=-\dfrac{q}{p}$.
+
+##PP Đếm nghiệm bằng đồ thị hoặc bảng biến thiên
+Đưa phương trình về dạng $f(x)=g(m)$ (hoặc $f(x)=k$) với vế phải là hằng.
+Xác định hai giá trị cực trị $y_{\text{CĐ}}$, $y_{\text{CT}}$ từ đồ thị hay bảng biến thiên.
+So sánh vế phải với $y_{\text{CT}}$ và $y_{\text{CĐ}}$ để biết đường ngang cắt đồ thị tại mấy điểm.
+Kết luận số nghiệm, hoặc giải bất phương trình theo $m$ khi đề hỏi tìm $m$.
+
+##CY
+- Đường $y=m$ chạm đúng điểm cực trị cho nghiệm kép: đếm là một nghiệm phân biệt trên chỗ chạm đó, nên tổng cộng có 2 nghiệm phân biệt.
+- Khi đổi $2f(x)-5=0$ phải chia hai vế (thành $f(x)=\dfrac{5}{2}$), không đếm theo $f(x)=5$.
+
+@vi_du:
+##VD
+Cho hàm số bậc ba $y=f(x)$ có đồ thị như hình vẽ.
+a) Tìm số nghiệm của các phương trình $f(x)=1$, $f(x)=-2$, $f(x)=3$.
+b) Tìm $m$ để phương trình $f(x)=m$ có ba nghiệm phân biệt và có đúng một nghiệm.
+[[HINH {"loai":"dothi","x":[-3,3],"y":[-4,4],"f":[{"e":"-x^3+3*x","ten":"y=f(x)","xt":-2.4}]}]]
+
+Bài giải:
+Đồ thị có điểm cực tiểu $(-1;-2)$ và điểm cực đại $(1;2)$.
+a) Đường $y=1$ nằm giữa $-2$ và $2$ nên cắt đồ thị tại $3$ điểm: $f(x)=1$ có $3$ nghiệm.
+Đường $y=-2$ đi qua điểm cực tiểu và cắt thêm một nhánh: $f(x)=-2$ có $2$ nghiệm.
+Đường $y=3>2$ chỉ cắt một nhánh: $f(x)=3$ có $1$ nghiệm.
+b) Ba nghiệm phân biệt khi $-2<m<2$; đúng một nghiệm khi $m<-2$ hoặc $m>2$.
+Vậy $f(x)=1$ có $3$ nghiệm, $f(x)=-2$ có $2$ nghiệm, $f(x)=3$ có $1$ nghiệm; $f(x)=m$ có ba nghiệm khi $-2<m<2$ và có một nghiệm khi $m<-2$ hoặc $m>2$.
+
+##VD
+Cho hàm số bậc ba $y=f(x)$ liên tục trên $\mathbb{R}$ có bảng biến thiên như hình vẽ.
+a) Tìm $m$ để phương trình $f(x)=m$ có đúng hai nghiệm phân biệt.
+b) Tìm số nghiệm của phương trình $2f(x)-5=0$.
+c) Có bao nhiêu giá trị nguyên của $m$ để phương trình $f(x)=m$ có ba nghiệm phân biệt?
+[[HINH {"loai":"bbt","x":["-∞","0","2","+∞"],"dau":["+","-","+"],"y":["-∞","4","0","+∞"],"ten_ham":"f(x)","ten_dao":"f'(x)"}]]
+
+Bài giải:
+Từ bảng biến thiên: hàm đạt cực đại tại $x=0$ với $y_{\text{CĐ}}=4$ và cực tiểu tại $x=2$ với $y_{\text{CT}}=0$.
+a) Phương trình $f(x)=m$ có đúng hai nghiệm khi đường $y=m$ chạm một điểm cực trị, tức $m=4$ hoặc $m=0$.
+b) Phương trình tương đương $f(x)=\dfrac{5}{2}$; vì $0<\dfrac{5}{2}<4$ nên đường $y=\dfrac{5}{2}$ cắt đồ thị tại $3$ điểm: có $3$ nghiệm.
+c) Phương trình $f(x)=m$ có ba nghiệm phân biệt khi $0<m<4$, các giá trị nguyên là $m\in\{1;2;3\}$.
+Vậy a) $m=4$ hoặc $m=0$; b) $3$ nghiệm; c) có $3$ giá trị nguyên của $m$.
+
+=== H2.5.1
+@ly_thuyet:
+##TC Phương trình đường thẳng qua hai điểm cực trị của hàm bậc ba
+- Viết $y=y'\cdot(px+q)+(rx+s)$ (chia $y$ cho $y'$). Tại điểm cực trị $y'=0$ nên $y=rx+s$; vậy đường thẳng qua hai điểm cực trị là $y=rx+s$ (phần dư).
+- Công thức phần dư với $y=ax^3+bx^2+cx+d$: $y=\left(\dfrac{2c}{3}-\dfrac{2b^2}{9a}\right)x+d-\dfrac{bc}{9a}$.
+- Hàm có hai điểm cực trị khi $a\ne0$ và $\Delta'=b^2-3ac>0$.
+
+##PP Viết phương trình đường thẳng qua hai điểm cực trị
+Tìm điều kiện để có hai cực trị ($a\ne0$ và $\Delta'>0$).
+Chia $y$ cho $y'$ và lấy phần dư.
+Phần dư chính là phương trình đường thẳng cần tìm.
+Thử lại bằng một điểm cực trị cụ thể khi nghiệm đẹp.
+
+##CY
+- Phần dư chỉ là phương trình đường thẳng qua hai cực trị khi hai cực trị tồn tại; với tham số $m$ vẫn phải đặt điều kiện trước.
+- Phải chia $y$ cho đạo hàm $y'$ (không chia cho một nhân tử tuỳ ý): phần dư là đa thức bậc nhất theo $x$.
+
+@vi_du:
+##VD
+Viết phương trình đường thẳng đi qua hai điểm cực trị của đồ thị hàm số $y=x^3-3x^2-9x+1$.
+
+Bài giải:
+Ta có $y'=3x^2-6x-9=3(x+1)(x-3)$ có hai nghiệm phân biệt nên hàm số có hai cực trị.
+Chia $y$ cho $y'$: $y=\left(\dfrac{x}{3}-\dfrac{1}{3}\right)y'-8x-2$.
+Tại các điểm cực trị $y'=0$ nên $y=-8x-2$.
+Kiểm tra: cực trị $x=-1$ có $y=6$ và $-8\cdot(-1)-2=6$; cực trị $x=3$ có $y=-26$ và $-8\cdot3-2=-26$.
+Vậy đường thẳng cần tìm là $y=-8x-2$.
+
+##VD
+Cho hàm số $y=x^3-3x^2+mx+2$ ($m$ là tham số). Tìm $m$ để hàm số có hai điểm cực trị, viết phương trình đường thẳng $AB$ đi qua hai điểm cực trị và tìm $m$ để $AB$ đi qua gốc toạ độ $O$.
+
+Bài giải:
+Ta có $y'=3x^2-6x+m$, hàm số có hai cực trị ⇔ $\Delta'=9-3m>0$ ⇔ $m<3$.
+Chia $y$ cho $y'$: $y=\left(\dfrac{x}{3}-\dfrac{1}{3}\right)y'+\dfrac{2(m-3)}{3}x+\dfrac{m+6}{3}$.
+Tại các điểm cực trị $y'=0$ nên đường thẳng $AB$ là $y=\dfrac{2(m-3)}{3}x+\dfrac{m+6}{3}$.
+$AB$ đi qua $O$ ⇔ $\dfrac{m+6}{3}=0$ ⇔ $m=-6$ (thoả $m<3$).
+Vậy $AB:y=\dfrac{2(m-3)}{3}x+\dfrac{m+6}{3}$ khi $m<3$, và $AB$ đi qua $O$ khi $m=-6$.
+
+=== H2.5.2
+@ly_thuyet:
+##TC Độ dài $AB$, khoảng cách và diện tích với gốc toạ độ
+- $AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$; khi $A,B$ nằm trên đường $y=kx+q$ thì $AB=|x_B-x_A|\sqrt{1+k^2}$.
+- $d(O,AB)=\dfrac{|c|}{\sqrt{a^2+b^2}}$ khi $AB:ax+by+c=0$.
+- $S_{OAB}=\dfrac{1}{2}\left|x_Ay_B-x_By_A\right|$.
+- Cần tổng và tích thì dùng Viète: $(x_B-x_A)^2=S^2-4P$.
+
+##PP Tính $AB$, $d(O,AB)$, diện tích $OAB$
+Tìm điều kiện có hai cực trị và toạ độ $A$, $B$ (giải $y'=0$ rồi thay vào $y$, hoặc viết qua $m$).
+Với độ dài: thay vào công thức khoảng cách giữa hai điểm.
+Với khoảng cách từ $O$: viết phương trình $AB$ rồi dùng công thức khoảng cách điểm tới đường thẳng.
+Với diện tích: dùng $\dfrac{1}{2}|x_Ay_B-x_By_A|$; nếu đề cho giá trị diện tích thì giải phương trình theo $m$ và loại trường hợp $O\in AB$.
+
+##CY
+- Công thức $\dfrac{1}{2}|x_Ay_B-x_By_A|$ chỉ đúng khi một đỉnh tam giác là gốc $O$.
+- Phải có dấu giá trị tuyệt đối; bỏ đi sẽ ra diện tích âm hoặc thiếu nghiệm.
+
+@vi_du:
+##VD
+Cho hàm số $y=x^3-3x^2+2$. Gọi $A$, $B$ là hai điểm cực trị của đồ thị. Tính độ dài $AB$, khoảng cách từ gốc toạ độ $O$ đến đường thẳng $AB$ và diện tích tam giác $OAB$.
+
+Bài giải:
+Ta có $y'=3x(x-2)$, nên hai điểm cực trị là $A(0;2)$ và $B(2;-2)$.
+$AB=\sqrt{2^2+(-4)^2}=\sqrt{20}=2\sqrt{5}$.
+Đường thẳng $AB$ đi qua $A(0;2)$ có hệ số góc $\dfrac{-2-2}{2-0}=-2$ nên có phương trình $2x+y-2=0$; do đó $d(O,AB)=\dfrac{|-2|}{\sqrt{5}}=\dfrac{2}{\sqrt{5}}$.
+Diện tích $S_{OAB}=\dfrac{1}{2}|0\cdot(-2)-2\cdot2|=2$ (kiểm tra: $\dfrac{1}{2}\cdot2\sqrt{5}\cdot\dfrac{2}{\sqrt{5}}=2$).
+Vậy $AB=2\sqrt{5}$, $d(O,AB)=\dfrac{2}{\sqrt{5}}$, $S_{OAB}=2$.
+
+##VD
+Cho hàm số $y=x^3-3mx+1$. Tìm $m$ để đồ thị có hai điểm cực trị $A$, $B$ sao cho diện tích tam giác $OAB$ bằng $2$.
+
+Bài giải:
+Ta có $y'=3x^2-3m$, hàm có hai cực trị ⇔ $m>0$, khi đó $x=\pm\sqrt{m}$.
+$y(\pm\sqrt{m})=\pm m\sqrt{m}\mp3m\sqrt{m}+1$, nên $A\left(-\sqrt{m};1+2m\sqrt{m}\right)$ và $B\left(\sqrt{m};1-2m\sqrt{m}\right)$.
+$x_Ay_B=-\sqrt{m}+2m^2$ và $x_By_A=\sqrt{m}+2m^2$, suy ra $x_Ay_B-x_By_A=-2\sqrt{m}$.
+$S_{OAB}=\dfrac{1}{2}\cdot2\sqrt{m}=\sqrt{m}$.
+$S_{OAB}=2$ ⇔ $\sqrt{m}=2$ ⇔ $m=4$ (thoả $m>0$).
+Vậy $m=4$.
+
+=== H2.5.3
+@ly_thuyet:
+##TC Quan hệ của $AB$ với đường thẳng hoặc điểm khác
+- $AB\parallel d$ ⇔ cùng hệ số góc và khác đường thẳng; $AB\perp d$ ⇔ tích hệ số góc bằng $-1$ (hoặc tích vô hướng hai vectơ chỉ phương bằng $0$).
+- $A,B$ đối xứng qua điểm $I_0$ ⇔ $I_0$ là trung điểm của $AB$.
+- $A,B$ đối xứng qua đường thẳng $d$ ⇔ $AB\perp d$ và trung điểm của $AB$ thuộc $d$.
+- $A,B,M$ thẳng hàng ⇔ $M$ thuộc đường thẳng $AB$.
+
+##PP Giải bài về quan hệ của $AB$ với đường hay điểm khác
+Đặt điều kiện có hai cực trị.
+Viết phương trình đường thẳng $AB$ (bằng phần dư) và toạ độ trung điểm $I$ của $AB$ theo $m$.
+Dịch quan hệ của đề (song song, vuông góc, đối xứng, thẳng hàng) thành phương trình theo hệ số góc hoặc toạ độ trung điểm.
+Giải theo $m$; loại trường hợp trùng đường (khi đề nói song song) và đối chiếu điều kiện có hai cực trị.
+
+##CY
+- Song song phải loại trường hợp trùng nhau.
+- Đối xứng qua đường thẳng cần đủ hai điều kiện: vuông góc và trung điểm thuộc đường.
+
+@vi_du:
+##VD
+Tìm $m$ để đồ thị hàm số $y=x^3-3mx+1$ có hai điểm cực trị $A$, $B$ sao cho đường thẳng $AB$ song song với đường thẳng $d:y=-4x+3$.
+
+Bài giải:
+$y'=3x^2-3m$, hàm có hai cực trị ⇔ $m>0$.
+Chia $y$ cho $y'$: $y=\dfrac{x}{3}y'-2mx+1$, nên đường thẳng $AB$ có phương trình $y=-2mx+1$.
+$AB\parallel d$ ⇔ $-2m=-4$ và $1\ne3$ ⇔ $m=2$ (thoả $m>0$).
+Vậy $m=2$.
+
+##VD
+Cho hàm số $y=x^3-3x^2+m$. Tìm $m$ để hai điểm cực trị $A$, $B$ của đồ thị đối xứng với nhau qua đường thẳng $d:x-2y+3=0$.
+
+Bài giải:
+$y'=3x(x-2)$ nên $A(0;m)$, $B(2;m-4)$, trung điểm $I(1;m-2)$.
+Hệ số góc $AB=\dfrac{-4}{2}=-2$; đường thẳng $d:y=\dfrac{1}{2}x+\dfrac{3}{2}$ có hệ số góc $\dfrac{1}{2}$ và $-2\cdot\dfrac{1}{2}=-1$ nên $AB\perp d$ với mọi $m$.
+Điều kiện còn lại: $I\in d$ ⇔ $1-2(m-2)+3=0$ ⇔ $8-2m=0$ ⇔ $m=4$.
+Vậy $m=4$.
+
+=== M2.1.1
+@ly_thuyet:
+##TC Các điều kiện thường gặp của hàm bậc ba
+- Hàm $y=ax^3+bx^2+cx+d$ ($a\ne0$) có $y'=3ax^2+2bx+c$ và $\Delta'=b^2-3ac$.
+- Đơn điệu trên $\mathbb{R}$: đồng biến ⇔ $a>0$ và $\Delta'\le0$; nghịch biến ⇔ $a<0$ và $\Delta'\le0$.
+- Đơn điệu trên một khoảng $K$: $y'\ge0$ (đồng biến) hoặc $y'\le0$ (nghịch biến) với mọi $x\in K$; cô lập $m$ rồi so với giá trị lớn nhất hoặc nhỏ nhất của hàm vế kia.
+- Có cực đại và cực tiểu (hai điểm cực trị) ⇔ $a\ne0$ và $\Delta'>0$; không có cực trị ⇔ $\Delta'\le0$.
+- Đạt cực trị tại $x_0$: $y'(x_0)=0$, sau đó thử lại $y'$ đổi dấu đúng loại cực trị.
+- Hệ thức giữa hai điểm cực trị $x_1,x_2$: Viète $S=x_1+x_2=-\dfrac{2b}{3a}$, $P=x_1x_2=\dfrac{c}{3a}$.
+- Vị trí hai điểm cực trị: hai phía của $Ox$ ⇔ $y_1y_2<0$; cùng phía ⇔ $y_1y_2>0$; đối xứng, cách đều một đường thẳng thì dùng trung điểm và hệ số góc của $AB$.
+
+##PP Giải bài toán tìm tham số $m$ cho hàm bậc ba
+Tính $y'$ và nhận ra đề thuộc loại điều kiện nào (đơn điệu, số cực trị, đạt cực trị tại điểm, hệ thức hay vị trí hai cực trị).
+Nếu hệ số của $x^3$ chứa $m$ thì xét riêng giá trị làm hệ số này bằng $0$.
+Dịch điều kiện thành điều kiện về $y'$: $\Delta'$, cô lập $m$ rồi lập bảng biến thiên, $y'(x_0)=0$, hay Viète $S$, $P$.
+Giải theo $m$, đối chiếu điều kiện có hai cực trị ($a\ne0$ và $\Delta'>0$) nếu có nhắc tới điểm cực trị.
+Thử lại các giá trị biên của $m$ rồi kết luận.
+
+##CY
+- Hệ số của $x^3$ chứa $m$: xét riêng trường hợp bằng $0$, vì hàm khi đó thành bậc hai hoặc bậc nhất và kết luận khác hẳn.
+- Dấu bằng ở $\Delta'\le0$ được nhận (đơn điệu trên $\mathbb{R}$), nhưng ở "hai cực trị" phải là $\Delta'>0$.
+- $y'(x_0)=0$ chỉ là điều kiện cần của cực trị; khi dùng Viète phải kiểm tra điều kiện có hai cực trị trước.
+
+@vi_du:
+##VD
+Tìm tất cả giá trị của $m$ để hàm số $y=(m^2-1)x^3+(m-1)x^2-x+4$ nghịch biến trên $\mathbb{R}$.
+
+Bài giải:
+Ta có $y'=3(m^2-1)x^2+2(m-1)x-1$.
+Trường hợp $m^2-1=0$: với $m=1$ thì $y=-x+4$ có $y'=-1<0$ nên nghịch biến trên $\mathbb{R}$ (thỏa mãn); với $m=-1$ thì $y=-2x^2-x+4$ là hàm bậc hai, không nghịch biến trên $\mathbb{R}$ (loại).
+Trường hợp $m^2-1\ne0$: $y'\le0$ với mọi $x$ $\Leftrightarrow\begin{cases} m^2-1<0 \\ \Delta'=(m-1)^2+3(m^2-1)\le0 \end{cases}$.
+Ta có $m^2-1<0\Leftrightarrow-1<m<1$ và $\Delta'=(m-1)(4m+2)\le0\Leftrightarrow-\dfrac{1}{2}\le m\le1$.
+Hai điều kiện cho $-\dfrac{1}{2}\le m<1$; hợp với $m=1$ ở trường hợp đầu.
+Vậy $m\in\left[-\dfrac{1}{2};1\right]$.
+
+##VD
+Tìm $m$ để hàm số $y=x^3-3mx^2+3x+1$ đồng biến trên khoảng $(1;+\infty)$.
+
+Bài giải:
+Ta có $y'=3x^2-6mx+3$.
+Hàm đồng biến trên $(1;+\infty)$ ⇔ $y'\ge0$ với mọi $x>1$ ⇔ $x^2+1\ge2mx$ ⇔ $m\le\dfrac{x^2+1}{2x}$ với mọi $x>1$ (chia hai vế cho $2x>0$).
+Đặt $h(x)=\dfrac{x^2+1}{2x}$, có $h'(x)=\dfrac{x^2-1}{2x^2}>0$ với $x>1$ nên $h$ đồng biến trên $(1;+\infty)$ và $h(x)>h(1)=1$ với mọi $x>1$.
+Do đó $m\le h(x)$ với mọi $x>1$ ⇔ $m\le1$.
+Thử lại: $m=1$ cho $y'=3(x-1)^2\ge0$ với mọi $x$, hàm vẫn đồng biến trên $(1;+\infty)$ nên nhận.
+Vậy $m\le1$.
+
+##VD
+Tìm $m$ để hàm số $y=\dfrac{1}{3}x^3-mx^2+(m^2-m+1)x+1$ đạt cực đại tại $x=1$.
+
+Bài giải:
+Ta có $y'=x^2-2mx+m^2-m+1$ và $y''=2x-2m$.
+Điều kiện cần: $y'(1)=0$ ⇔ $1-2m+m^2-m+1=0$ ⇔ $m^2-3m+2=0$ ⇔ $m=1$ hoặc $m=2$.
+Với $m=1$: $y'=(x-1)^2\ge0$ không đổi dấu nên hàm số không có cực trị, loại.
+Với $m=2$: $y''(1)=2-4=-2<0$ nên $x=1$ là điểm cực đại, nhận.
+Vậy $m=2$.
+
+##VD
+Cho hàm số $y=\dfrac{1}{3}x^3-mx^2+(2m-3)x+1$. Tìm $m$ để hàm số có hai điểm cực trị $x_1,x_2$ thoả $x_1+2x_2=0$.
+
+Bài giải:
+Ta có $y'=x^2-2mx+2m-3$ và $\Delta'=m^2-2m+3=(m-1)^2+2>0$ với mọi $m$ nên luôn có hai cực trị.
+Theo Viète: $x_1+x_2=2m$, $x_1x_2=2m-3$.
+Từ $x_1+2x_2=0$ và $x_1+x_2=2m$ suy ra $x_2=-2m$, $x_1=4m$.
+Thế vào tích: $4m\cdot(-2m)=2m-3$ ⇔ $8m^2+2m-3=0$ ⇔ $m=\dfrac{1}{2}$ hoặc $m=-\dfrac{3}{4}$.
+Thử lại: $m=\dfrac{1}{2}$ cho $y'=x^2-x-2$ có nghiệm $2$ và $-1$ thoả $2+2\cdot(-1)=0$; $m=-\dfrac{3}{4}$ cho nghiệm $-3$ và $\dfrac{3}{2}$ thoả $-3+2\cdot\dfrac{3}{2}=0$.
+Vậy $m=\dfrac{1}{2}$ hoặc $m=-\dfrac{3}{4}$.
+
+##VD
+Cho hàm số $y=x^3-3mx+2$. Tìm $m$ để:
+a) hàm số có hai điểm cực trị;
+b) hai điểm cực trị của đồ thị hàm số nằm về hai phía của trục hoành.
+
+Bài giải:
+a) Ta có $y'=3x^2-3m$; hàm số có hai điểm cực trị ⇔ $y'=0$ có hai nghiệm phân biệt ⇔ $m>0$.
+b) Với $m>0$, hai điểm cực trị có hoành độ $x=\pm\sqrt{m}$ và tung độ $y_1=y(-\sqrt{m})=2+2m\sqrt{m}$, $y_2=y(\sqrt{m})=2-2m\sqrt{m}$.
+Hai điểm nằm về hai phía của $Ox$ ⇔ $y_1y_2<0$ ⇔ $4-4m^3<0$ ⇔ $m>1$ (thoả $m>0$).
+Vậy a) $m>0$; b) $m>1$.

@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T108020601049",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn có tích dạng tổng hai lập phương."
+ },
+ {
+  "ma_cau": "T108000000402",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Tính tổng hai đa thức."
+ },
+ {
+  "ma_cau": "T108000000145",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000304",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Rút gọn nhiều biến bằng nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108020401001",
+  "dang_bai_id": "NDB00692",
+  "chac": "cao",
+  "ly_do": "Viết 9x^2-16 thành tích theo hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108020203001",
+  "dang_bai_id": "NDB00698",
+  "chac": "vua",
+  "ly_do": "Đưa về (x-y-1)^2+(y+1)^2=0; kỹ thuật bình phương 3 số, đề không hỏi GTNN."
+ },
+ {
+  "ma_cau": "T108010402001",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108010104029",
+  "dang_bai_id": "NDB00667",
+  "chac": "cao",
+  "ly_do": "Chỉ ra các đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000477",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Bỏ ngoặc đưa về bậc nhất tìm x."
+ },
+ {
+  "ma_cau": "T108030603019",
+  "dang_bai_id": "NDB00980",
+  "chac": "cao",
+  "ly_do": "Nhóm hạng tử rồi tích bằng 0 tìm x."
+ },
+ {
+  "ma_cau": "T108020301001",
+  "dang_bai_id": "NDB00690",
+  "chac": "cao",
+  "ly_do": "Khai triển lập phương của tổng."
+ },
+ {
+  "ma_cau": "T108000000719",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000322",
+  "dang_bai_id": "NDB00667",
+  "chac": "cao",
+  "ly_do": "Nhận biết đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108030601025",
+  "dang_bai_id": "NDB00981",
+  "chac": "cao",
+  "ly_do": "Tách hạng tử x^2-4x+3 rồi tích bằng 0."
+ },
+ {
+  "ma_cau": "T108000000479",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Bỏ ngoặc đưa về bậc nhất tìm x."
+ },
+ {
+  "ma_cau": "T108000000217",
+  "dang_bai_id": "NDB00667",
+  "chac": "cao",
+  "ly_do": "Đếm nhóm đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108020203064",
+  "dang_bai_id": "NDB00698",
+  "chac": "cao",
+  "ly_do": "Tách (3x-2y+3)^2+2y^2 tìm GTNN, bình phương 3 số."
+ },
+ {
+  "ma_cau": "T108000000764",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108030501005",
+  "dang_bai_id": "NDB00477",
+  "chac": "cao",
+  "ly_do": "Nhẩm nghiệm x=-1 phân tích đa thức bậc 3."
+ },
+ {
+  "ma_cau": "T108000000026",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Tính tổng hai đa thức."
+ },
+ {
+  "ma_cau": "T108020602001",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Khai triển lập phương, đưa về bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000100",
+  "dang_bai_id": "NDB00692",
+  "chac": "cao",
+  "ly_do": "Tích (A-B)(A+B) bằng hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000261",
+  "dang_bai_id": "NDB00683",
+  "chac": "cao",
+  "ly_do": "Thu gọn đa thức rồi tính giá trị hai biến."
+ },
+ {
+  "ma_cau": "T108000000462",
+  "dang_bai_id": "NDB00689",
+  "chac": "cao",
+  "ly_do": "Điền hạng tử khuyết của bình phương tổng."
+ },
+ {
+  "ma_cau": "T108020202084",
+  "dang_bai_id": "NDB00699",
+  "chac": "vua",
+  "ly_do": "Đưa về tổng ba bình phương (x-1)^2+(y-1)^2+(x+y-2)^2=0, đề không hỏi GTNN."
+ },
+ {
+  "ma_cau": "T108020104054",
+  "dang_bai_id": "NDB00693",
+  "chac": "cao",
+  "ly_do": "Tách tam thức hệ số x^2 khác 1 thành bình phương."
+ },
+ {
+  "ma_cau": "T108020201001",
+  "dang_bai_id": "NDB00696",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức hai biến độc lập."
+ },
+ {
+  "ma_cau": "T108000000735",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức, x^2 triệt tiêu, bậc nhất."
+ },
+ {
+  "ma_cau": "T108020202001",
+  "dang_bai_id": "NDB00697",
+  "chac": "cao",
+  "ly_do": "Tách (x+y)^2+(x-2)^2 tìm GTNN."
+ },
+ {
+  "ma_cau": "T108020701046",
+  "dang_bai_id": "NDB00468",
+  "chac": "cao",
+  "ly_do": "Cho a+b+c và ab+bc+ca, suy ra a=b=c."
+ },
+ {
+  "ma_cau": "T108000000303",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000579",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Bỏ ngoặc, x^2 triệt tiêu, bậc nhất."
+ },
+ {
+  "ma_cau": "T108030603061",
+  "dang_bai_id": "NDB00980",
+  "chac": "vua",
+  "ly_do": "Nhóm hạng tử tìm x; cũng có thể nhẩm nghiệm x=-1."
+ },
+ {
+  "ma_cau": "T108000000717",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000196",
+  "dang_bai_id": "NDB00671",
+  "chac": "cao",
+  "ly_do": "Thu gọn bằng cộng trừ đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000142",
+  "dang_bai_id": "NDB00668",
+  "chac": "cao",
+  "ly_do": "Nhận biết biểu thức không phải đa thức."
+ },
+ {
+  "ma_cau": "T108020302001",
+  "dang_bai_id": "NDB00970",
+  "chac": "cao",
+  "ly_do": "Nhận ra lập phương tổng rồi tính giá trị."
+ },
+ {
+  "ma_cau": "T108000000028",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức, x^2 triệt tiêu, bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000020",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000202",
+  "dang_bai_id": "NDB00971",
+  "chac": "cao",
+  "ly_do": "Tính nhanh hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108030603007",
+  "dang_bai_id": "NDB00980",
+  "chac": "cao",
+  "ly_do": "Nhóm hạng tử rồi tích bằng 0."
+ },
+ {
+  "ma_cau": "T108000000282",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Bỏ ngoặc đưa về bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000652",
+  "dang_bai_id": "NDB00680",
+  "chac": "cao",
+  "ly_do": "Rút gọn một biến bằng nhân hai đa thức."
+ },
+ {
+  "ma_cau": "T108000000751",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000271",
+  "dang_bai_id": "NDB00665",
+  "chac": "cao",
+  "ly_do": "Tìm hệ số của đơn thức."
+ },
+ {
+  "ma_cau": "T108000000357",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Bỏ ngoặc, x^2 triệt tiêu, bậc nhất."
+ },
+ {
+  "ma_cau": "T108020202091",
+  "dang_bai_id": "NDB00698",
+  "chac": "vua",
+  "ly_do": "Tách (x-y-1)^2+2(y-1/2)^2 có hằng số trong bình phương; gần dạng tổng ba bình phương khác."
+ },
+ {
+  "ma_cau": "T108000000762",
+  "dang_bai_id": "NDB00666",
+  "chac": "cao",
+  "ly_do": "Tìm bậc của đơn thức."
+ },
+ {
+  "ma_cau": "T108020501022",
+  "dang_bai_id": "NDB00691",
+  "chac": "cao",
+  "ly_do": "Tổng hai lập phương thành tích."
+ },
+ {
+  "ma_cau": "T108000000043",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Tìm đa thức chưa biết bằng cộng trừ đa thức."
+ },
+ {
+  "ma_cau": "T108000000498",
+  "dang_bai_id": "NDB00981",
+  "chac": "cao",
+  "ly_do": "Nhân ra, tách hạng tử x^2-4x+3 rồi tích bằng 0."
+ },
+ {
+  "ma_cau": "T108020105007",
+  "dang_bai_id": "NDB00695",
+  "chac": "cao",
+  "ly_do": "GTNN của tam thức bậc hai một biến."
+ },
+ {
+  "ma_cau": "T108020103043",
+  "dang_bai_id": "NDB00689",
+  "chac": "cao",
+  "ly_do": "Điền hạng tử khuyết của bình phương tổng."
+ },
+ {
+  "ma_cau": "T108010302053",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000067",
+  "dang_bai_id": "NDB00683",
+  "chac": "cao",
+  "ly_do": "Tính giá trị đa thức hai biến."
+ },
+ {
+  "ma_cau": "T108000000663",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn có hiệu hai bình phương và chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000283",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân hai đa thức, x^2 triệt tiêu, bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000481",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "x^2 hai vế triệt tiêu, bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000605",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Cộng trừ ba đa thức."
+ },
+ {
+  "ma_cau": "T108000000592",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Chứng minh biểu thức không phụ thuộc biến."
+ },
+ {
+  "ma_cau": "T108020202080",
+  "dang_bai_id": "NDB00699",
+  "chac": "vua",
+  "ly_do": "Chứng minh luôn dương qua tổng ba bình phương hai biến."
+ },
+ {
+  "ma_cau": "T108030301007",
+  "dang_bai_id": "NDB00976",
+  "chac": "cao",
+  "ly_do": "Nhóm hạng tử rút nhân tử chung tầng hai."
+ },
+ {
+  "ma_cau": "T108020401050",
+  "dang_bai_id": "NDB00692",
+  "chac": "cao",
+  "ly_do": "Gom thành hiệu hai bình phương (a-d)^2-(b-c)^2."
+ },
+ {
+  "ma_cau": "T108000000444",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn dùng hiệu hai bình phương và bình phương hiệu."
+ },
+ {
+  "ma_cau": "T108020601007",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn dùng lập phương hiệu và bình phương hiệu."
+ },
+ {
+  "ma_cau": "T108040201002",
+  "dang_bai_id": "NDB00683",
+  "chac": "cao",
+  "ly_do": "Rút gọn rồi tính giá trị hai biến."
+ },
+ {
+  "ma_cau": "T108000000058",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Hằng đẳng thức, x^2 triệt tiêu, bậc nhất."
+ },
+ {
+  "ma_cau": "T108050202004",
+  "dang_bai_id": "NDB00469",
+  "chac": "cao",
+  "ly_do": "Biến đổi a^3+b^3+c^3 với c=-1."
+ },
+ {
+  "ma_cau": "T108000000256",
+  "dang_bai_id": "NDB00666",
+  "chac": "cao",
+  "ly_do": "Tìm bậc của đơn thức."
+ },
+ {
+  "ma_cau": "T108020602029",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Hằng đẳng thức, x^2 triệt tiêu, bậc nhất."
+ }
+]

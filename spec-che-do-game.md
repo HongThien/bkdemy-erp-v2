@@ -48,6 +48,9 @@
 ## 4. Luật trận đua (PvP · Tournament người thật)
 
 - 4 đáp án, hai bên trả lời cùng lúc, **ai đúng trước ăn câu**, điểm theo tốc độ (ngưỡng co giãn theo giờ/câu của môn) + chuỗi.
+- **SAI = BỊ TRỪ ĐIỂM bằng đúng điểm câu đúng ở cùng tốc độ** (100/70/50, không cộng chuỗi; tổng trận được âm) — **Thùy chốt 03/11**: không trừ thì bấm bừa thật nhanh là lời (trúng thì ăn câu, trật cũng chẳng mất gì), "cho nghiêm túc". Áp mọi trận đua (bot · online · giải), cả bot cũng bị trừ. Code: `src/dautu/lib/trongTai.ts`; ghi điểm âm: mig 202611031857.
+- **Thách đấu = NGẪU NHIÊN mọi dạng em đã học, KHÔNG chọn chủ đề lẻ** (Thùy chốt 03/11, tránh học thuộc). Trong app HS vào thẳng màn chế độ.
+- **Đáp án XÁO vị trí mỗi đề** (Thùy 03/11, HS thuộc vị trí): đề chấm máy chủ xáo bằng khoá bí mật `dtv_de.xao` (mig 202611031841); đề không qua máy chủ xáo ở client. Chỉ game Đấu trường — bài có giấy vẫn không xáo.
 - **SAI = KHOÁ CẢ CÂU với em đó** (mỗi em chỉ 1 lần trả lời/câu); đối thủ vẫn làm tiếp tới hết giờ.
   ⇒ đoán bừa = mất lượt, không còn là lợi thế. **ĐÃ SỬA 03/10 trong code Đấu Từ** (`lib/trongTai.ts` + bot + màn đấu; trước đó theo Bufopia: sai chỉ khoá ĐÁP ÁN đó, bấm tiếp được ⇒ bấm lần lượt 4 đáp án là ăn — với Toán là lỗ hổng lớn). Áp cho MỌI môn (symmetry). Cả 2 cùng sai ⇒ hết câu ngay. Leo tháp vốn đã 1 lần/câu. Góc luyện từ (Anh, tự ôn không thi đấu) vẫn cho chọn lại tới khi đúng.
 - Bot (Tournament khi chơi một mình): mức Dễ/Vừa/Khó; luật thắng của Thử thách = **đạt ngưỡng đúng**, không phải đua bấm với bot.

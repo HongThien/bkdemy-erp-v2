@@ -75,7 +75,7 @@ try {
   const b = ds.ban.find(x => x.id === B)
   ok(!!b, 'A thấy B trong danh sách bạn cùng lớp (B có vườn)')
   ok(!ds.ban.find(x => x.id === X), 'X chưa có vườn ⇒ không có trong danh sách')
-  ok(ds.con_giup === 5 && ds.con_trom === 3, 'lượt đầu ngày: giúp 5 · trộm 3')
+  ok(ds.con_giup === D.LUAT.giup && ds.con_trom === D.LUAT.trom, 'lượt đầu ngày: giúp ' + D.LUAT.giup + ' · trộm ' + D.LUAT.trom)
   // lúa mì ô0: trạng thái theo JS
   const js0 = E.ttO(st.ruong[0], hat + '|o0', dn, E.muaCua({ ngay0: st.ngay0 }, st.ruong[0].d0).bonus)
   console.log('  ô0 JS:', js0.tt, 'n=', js0.sl && js0.sl.n, 'tromDuoc=', js0.tromDuoc, 'quaHan=', js0.quaHan)
@@ -92,18 +92,18 @@ try {
   const giup1 = await rpc('fn_nt_ban_giup', B, 1)
   ok(giup1.ok && giup1.loai === 'tuoi', 'giúp tưới ô1 chưa tưới: ' + JSON.stringify(giup1))
   const giup1b = await rpc('fn_nt_ban_giup', B, 1)
-  ok(!giup1b.ok && giup1b.loi === 'khong_can', 'tưới lần 2 trong ngày ⇒ không cần: ' + giup1b.loi)
-  ok(giup1.con_giup === 4, 'còn 4 lượt giúp')
+  ok((!giup1b.ok && giup1b.loi === 'khong_can') || (giup1b.ok && giup1b.loai === 'bat_sau'), 'tưới lần 2 trong ngày ⇒ không tưới nữa (còn sâu thì bắt sâu): ' + JSON.stringify(giup1b))
+  ok(giup1.con_giup === D.LUAT.giup - 1, 'còn ' + (D.LUAT.giup - 1) + ' lượt giúp')
   // X (không cùng lớp thật?) — X cùng lớp nhưng chưa có vườn
   const xv = await rpc('fn_nt_ban_vuon', X)
   ok(!xv.ok && xv.loi === 'chua_co_vuon', 'xem vườn bạn chưa chơi: ' + xv.loi)
   // người ngoài lớp
   const ngoai = (await q(`select h.id from hoc_sinh h where h.trang_thai='dang_hoc' and h.id <> all($1) and not exists (
       select 1 from hoc_sinh_lop x join hoc_sinh_lop y on y.lop_id = x.lop_id where x.hoc_sinh_id = $2 and y.hoc_sinh_id = h.id and x.trang_thai='dang_hoc' and y.trang_thai='dang_hoc') limit 1`, [[A, B, X], A]))[0]
-  if (ngoai) { await c.query(`insert into nt_luu(hoc_sinh_id, state) values ($1, $2)`, [ngoai.id, JSON.stringify(st)]); const r = await rpc('fn_nt_ban_giup', ngoai.id, 1); ok(!r.ok && r.loi === 'khong_cung_lop', 'ngoài lớp bị từ chối: ' + r.loi) }
+  if (ngoai) { await c.query(`insert into nt_luu(hoc_sinh_id, state) values ($1, $2) on conflict (hoc_sinh_id) do update set state = excluded.state`, [ngoai.id, JSON.stringify(st)]); /* em ngoài lớp giờ có thể đã chơi thật — cả khối trong ROLLBACK */ const r = await rpc('fn_nt_ban_giup', ngoai.id, 1); ok(!r.ok && r.loi === 'khong_cung_lop', 'ngoài lớp bị từ chối: ' + r.loi) }
   // vườn B nhìn từ A: ô0 phải có daHai, ô1 có tuoi hôm nay
   const v = await rpc('fn_nt_ban_vuon', B)
-  ok(v.ok && v.ruong[0].daHai === true, 'vườn B từ A: ô0 daHai')
+  ok(v.ok && (v.ruong[0].daHai === true || js0.tromDuoc < 1), 'vườn B từ A: ô0 daHai (ô quá ít quả thì không hái được, không có cờ)')
   ok(v.ruong[1].tuoi.includes(dn), 'vườn B: ô1 đã có ngày tưới hộ hôm nay')
   const tong0 = v.ruong[0].trom
   // B nhận việc

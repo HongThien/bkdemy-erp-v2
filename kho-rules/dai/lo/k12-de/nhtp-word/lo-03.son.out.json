@@ -1,0 +1,462 @@
+[
+ {
+  "id": "W0121",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Giao điểm x=1,3; ∫(4x-3-x²)=4/3; kiểm số"
+ },
+ {
+  "id": "W0122",
+  "dap_an": "95.5",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Giả định parabola trục ngang r=2+(y-2)²; V=30,4π; không thấy hình"
+ },
+ {
+  "id": "W0123",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": true,
+  "ghi": "F(4)-F(2)=-3; đề lỗi: F xác định trên [1;2] mà dùng F(4)"
+ },
+ {
+  "id": "W0124",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x³/3 - x² + x"
+ },
+ {
+  "id": "W0125",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Dừng sau 2s; s(2)=20; 20+20=40>30 nên va chạm"
+ },
+ {
+  "id": "W0126",
+  "dap_an": [
+   "Đ",
+   "S",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V2=π∫x/4 dx nên tỉ số 1/4; V=6π≈18,8"
+ },
+ {
+  "id": "W0127",
+  "dap_an": "2.5",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫|x³-3x| trên [-1;1]=5/2; kiểm số"
+ },
+ {
+  "id": "W0128",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x⁴/4"
+ },
+ {
+  "id": "W0129",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2^x/ln2 + x"
+ },
+ {
+  "id": "W0130",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "(sin+cos)²=1+sin x; nguyên hàm x-cos x"
+ },
+ {
+  "id": "W0131",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x³/3 - 2/x"
+ },
+ {
+  "id": "W0132",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "-2+1=-1"
+ },
+ {
+  "id": "W0133",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x³/3 - x² + x"
+ },
+ {
+  "id": "W0134",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x - cos x"
+ },
+ {
+  "id": "W0135",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x⁴/4"
+ },
+ {
+  "id": "W0136",
+  "dap_an": "2.5",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Như W0127; bỏ dòng HẾT; kiểm số"
+ },
+ {
+  "id": "W0137",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x³/3 - 2/x"
+ },
+ {
+  "id": "W0138",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2^x/ln2 + x"
+ },
+ {
+  "id": "W0139",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x⁴/4"
+ },
+ {
+  "id": "W0140",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x³/3 - 2/x"
+ },
+ {
+  "id": "W0141",
+  "dap_an": [
+   "S",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V2=π∫x/4 dx nên a sai; V1 đúng; tỉ số 1/4; V=6π≈18,8"
+ },
+ {
+  "id": "W0142",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2^x/ln2 + x"
+ },
+ {
+  "id": "W0143",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x³/3 - x² + x"
+ },
+ {
+  "id": "W0144",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x - cos x"
+ },
+ {
+  "id": "W0145",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x - cos x"
+ },
+ {
+  "id": "W0146",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x³/3 - x² + x"
+ },
+ {
+  "id": "W0147",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2^x/ln2 + x"
+ },
+ {
+  "id": "W0148",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "-2cos x + sin x"
+ },
+ {
+  "id": "W0149",
+  "dap_an": "4.5",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Giao x=-1,2; ∫(x+2-x²)=9/2; kiểm số"
+ },
+ {
+  "id": "W0150",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "(log₃x)'=1/(x ln3)"
+ },
+ {
+  "id": "W0151",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫√x = (2/3)x√x"
+ },
+ {
+  "id": "W0152",
+  "dap_an": "2026",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "(2^2024-2)/ln2: a=2024, b=-2"
+ },
+ {
+  "id": "W0153",
+  "dap_an": "1",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫(1/x+2/x²)=3-2/e; a=3,b=-2; kiểm số"
+ },
+ {
+  "id": "W0154",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫4x³=x⁴+C"
+ },
+ {
+  "id": "W0155",
+  "dap_an": "-1",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=e^x - cos x: a=1,b=-1"
+ },
+ {
+  "id": "W0156",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Khớp đáp án file; x⁵/5+x³/3"
+ },
+ {
+  "id": "W0157",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=ln|x|+1/x+C; F(1)=0 nên C=-1"
+ },
+ {
+  "id": "W0158",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Tổng nguyên hàm"
+ },
+ {
+  "id": "W0159",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x⁴+3x²/2+2x+C (B thiếu C)"
+ },
+ {
+  "id": "W0160",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "(e^{-2x})'=-2e^{-2x}"
+ },
+ {
+  "id": "W0161",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "e^{ln3}-1=2; C và D trùng nhau (lỗi in nhẹ)"
+ },
+ {
+  "id": "W0162",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "f=3x²; ∫(1+3x²)=2+26=28; kiểm số"
+ },
+ {
+  "id": "W0163",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Giao x=-2,0,1; 8/3+5/12=37/12; kiểm số"
+ },
+ {
+  "id": "W0164",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "5+2=7"
+ },
+ {
+  "id": "W0165",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2·3=6"
+ },
+ {
+  "id": "W0166",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3·3-∫g=10 nên ∫g=-1"
+ },
+ {
+  "id": "W0167",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Công thức diện tích dùng trị tuyệt đối, cận a→b"
+ },
+ {
+  "id": "W0168",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "π∫(x²+1)=4π/3; kiểm số"
+ },
+ {
+  "id": "W0169",
+  "dap_an": [
+   "S",
+   null,
+   "Đ",
+   null
+  ],
+  "do_chac": "vua",
+  "de_sai": true,
+  "ghi": "Đề thiếu dx; ý b, d cần f trên [2;4], không đủ dữ kiện (cận 4 vs 2 lệch)"
+ },
+ {
+  "id": "W0170",
+  "dap_an": [
+   "S",
+   "S",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Ý a thiếu +C coi là sai; b là f'; d: f>0 nên không cực trị; c: C=0 nên -72"
+ },
+ {
+  "id": "W0171",
+  "dap_an": "C",
+  "do_chac": "vua",
+  "de_sai": true,
+  "ghi": "Đề thiếu dấu f'(x): f(1)=f(4)-5=-2"
+ },
+ {
+  "id": "W0172",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "-7x²/2 - 6x"
+ },
+ {
+  "id": "W0173",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫₀²2x=4; S=2/3; V=28π/3; kiểm số"
+ },
+ {
+  "id": "W0174",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "C=2 từ F(2)=16/3; kiểm số"
+ },
+ {
+  "id": "W0175",
+  "dap_an": [
+   "S",
+   "S",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a:14/3; b:7; c:12; d:474+14=488"
+ },
+ {
+  "id": "W0176",
+  "dap_an": "3",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3(-11)+6·6=3"
+ },
+ {
+  "id": "W0177",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "4·3=12"
+ },
+ {
+  "id": "W0178",
+  "dap_an": [
+   "S",
+   "S",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Ý a thiếu +C coi sai; b là f'; C=22/3 nên F(-2)=38/3; f có 2 nghiệm nên 2 cực trị"
+ },
+ {
+  "id": "W0179",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "4+25/4=41/4; kiểm số"
+ },
+ {
+  "id": "W0180",
+  "dap_an": "14.9",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=-cos x+x²+4; F(π)=5+π²≈14,87"
+ }
+]

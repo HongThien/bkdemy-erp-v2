@@ -13,7 +13,7 @@ import {
   listProblems, listGrades, gradeET, gradeETBulk, deleteGrade, loadBTVNForBuoi, syncBTVNProblems,
   loadHinhForBuoiPhase, syncHinhProblems, getBtvnKetQua, setBtvnKetQua, closeBTVN, reopenBTVN,
   listCanhBao,
-  type BuoiHocHS, type Problem, type Grade, type ETResult, type BtvnKQ, type BtvnTrangThai, type BtvnThaiDo, type CanhBao, type DangTaiLieu, type LuoiSync,
+  type BuoiHocHS, type Problem, type Grade, type ETResult, type BtvnKQ, type BtvnTrangThai, type BtvnThaiDo, type CanhBao, type DangTaiLieu, type LuoiSync, laOHinh,
 } from '../../lib/gami'
 import { listNopTheoBuoi, deXuatTrangThai, signUrls, uploadAnhCham, boAnhCham, listNhanXetMau, setNhanXet, traBai, xacNhanBuoi, chuyenBuoi, listBuoiBtvnCuaLop, type BtvnNop, type BtvnNopAnh, type NhanXetMau, type BuoiBtvn } from '../../lib/btvnnop'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
@@ -287,8 +287,8 @@ function ChamMotHS({ r, ten, buoi, n, dx, v, probs, gradeOf, dong, moCoiIds, url
                   return (
                     <div key={p.id} className="flex items-center gap-2">
                       <span className="min-w-0 flex-1 truncate text-[12px] text-slate-600">
-                        <b>{moCoiIds.has(p.id) ? 'Ngoài phiếu' : p.hinh_baitoan_id ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</b>
-                        <span className="text-slate-400"> · {p.hinh_baitoan_id ? 'Hình' : tenDang(p.ma_dang)}</span>
+                        <b>{moCoiIds.has(p.id) ? 'Ngoài phiếu' : laOHinh(p) ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</b>
+                        <span className="text-slate-400"> · {laOHinh(p) ? 'Hình' : tenDang(p.ma_dang)}</span>
                       </span>
                       <div className="flex gap-1">
                         {ET_KQ.map((k) => (

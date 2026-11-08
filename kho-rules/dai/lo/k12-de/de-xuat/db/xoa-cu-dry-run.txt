@@ -1,0 +1,10 @@
+Id CŨ sẽ xoá: 94 (chuyên đề 9 · nhóm 68 · dạng 17)
+chủ đề	chuyên đề cũ	nhóm cũ	dạng cũ	kỳ vọng	mới (giữ) ch/nhóm/dạng
+NCD00094	3	33	11	3/33/11 ✔	4/19/77
+NCD00096	3	21	6	3/21/6 ✔	4/13/32
+NCD00097	2	7	0	2/7/0 ✔	2/6/15
+NCD00098	1	7	0	1/7/0 ✔	2/6/10
+  kiểm bai_cau_bao_loi (SET NULL ← bai_test_cau): 0
+  kiểm gami_grades.bai_lam_cau_id (SET NULL ← bai_lam_cau): 0
+  kiểm tln_ai_cham_log (NO ACTION ← bai_lam_cau: CHẶN): 0
+  kiểm dang_yeu_hien_tai.dang (jsonb, không FK): 0

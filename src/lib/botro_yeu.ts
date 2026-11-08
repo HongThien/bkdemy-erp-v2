@@ -99,12 +99,13 @@ export type CaseBoTroYeuItem = {
   ly_do: string | null
   created_at: string
   soDang: number
+  ban_do?: 'cu' | 'moi' // bản đồ mastery lúc MỞ ca (DB điền theo công tắc, không đổi suốt đời ca — mig 202610241000)
 }
 
 // Case đang mở (dang_xu) — cho màn "Nội dung bổ trợ yếu" chọn/rà dạng trước khi xếp lịch.
 export async function listCaseDangMo(mon?: string): Promise<CaseBoTroYeuItem[]> {
   let q = supabase.from('bo_tro_yeu')
-    .select('id, hoc_sinh_id, mon, nguon, ly_do, created_at, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs, khoi), bo_tro_yeu_dang(id)')
+    .select('id, hoc_sinh_id, mon, nguon, ly_do, created_at, ban_do, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs, khoi), bo_tro_yeu_dang(id)')
     .eq('trang_thai', 'dang_xu').order('created_at', { ascending: true }).limit(LIMIT)
   if (mon) q = q.eq('mon', mon)
   const { data, error } = await q
@@ -112,7 +113,7 @@ export async function listCaseDangMo(mon?: string): Promise<CaseBoTroYeuItem[]> 
   return (data ?? []).map((r: any) => ({
     id: r.id, hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.hoc_sinh?.ho_ten ?? '?', ma_hs: r.hoc_sinh?.ma_hs ?? null,
     khoi: r.hoc_sinh?.khoi ?? null, mon: r.mon, nguon: r.nguon, ly_do: r.ly_do, created_at: r.created_at,
-    soDang: (r.bo_tro_yeu_dang ?? []).length,
+    soDang: (r.bo_tro_yeu_dang ?? []).length, ban_do: r.ban_do ?? 'cu',
   }))
 }
 
@@ -147,7 +148,16 @@ export type DangGoiY = {
   ma_dang: string; ten_dang: string; ten_chuyen_de: string
   score: number; n: number; muc: 'yeu' | 'can_luyen'; tin: 'cao' | 'tb' | 'thap'
 }
-export async function getDangYeuGoiY(hocSinhId: string, mon: string): Promise<DangGoiY[]> {
+export async function getDangYeuGoiY(hocSinhId: string, mon: string, banDo: 'cu' | 'moi' = 'moi'): Promise<DangGoiY[]> {
+  // Ca mở sau khi bật bản đồ mới ⇒ gợi ý theo mastery bản đồ mới (lọc + tên + sắp ở DB — §2.0)
+  if (banDo === 'moi') {
+    const { data, error } = await supabase.rpc('fn_btyeu_dang_goi_y_moi', { p_hs: hocSinhId, p_mon: mon })
+    if (error) throw error
+    return ((data ?? []) as any[]).map((d) => ({
+      ma_dang: d.ma_dang, ten_dang: d.ten_dang, ten_chuyen_de: d.ten_chuyen_de,
+      score: Number(d.score), n: d.n, muc: d.muc, tin: d.tin,
+    }))
+  }
   const all = await getMasteryHS(hocSinhId, mon, { includeBTVN: true })
   return all // mọi nhánh của môn — bổ trợ yếu bật cho Hình học + Hình giải tích (Thùy 29/09)
     .filter((d) => d.mastery && d.mastery.muc !== 'dat') // lọc theo NHÃN DB đã tính (fn_mastery_cells), không tính lại
@@ -259,6 +269,13 @@ export async function laySucChua(): Promise<SucChua> {
   const { data, error } = await supabase.rpc('fn_btyeu_suc_chua')
   if (error) throw error
   return data as SucChua
+}
+// Capacity THEO KHỐI (Thùy 27/10): 40% × tổng đơn vị trong lịch bổ trợ (lịch trực) của khối. Chỉ hiển thị, không chặn. Mig 202610271546.
+export type CapacityKhoi = { khoi: string; dv_lich: number; capacity: number; dung: number; case_n: number; cao_n: number }
+export async function layCapacityKhoi(mon?: string): Promise<CapacityKhoi[]> {
+  const { data, error } = await supabase.rpc('fn_btyeu_capacity_khoi', { p_mon: mon ?? null })
+  if (error) throw error
+  return (data ?? []) as CapacityKhoi[]
 }
 // null = được mở case mới với ưu tiên này; text = lý do chặn (kiểm TRƯỚC khi Duyệt ghi level).
 export async function kiemSucChua(hocSinhId: string, mon: string, uuTien: UuTienCase): Promise<string | null> {

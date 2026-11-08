@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T111000000672",
+  "dang_bai_id": "NDB00949",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính cot: tính GTLG còn lại."
+ },
+ {
+  "ma_cau": "T111000000818",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "cos(-x+π/3)=1 đưa về cos(ax+b)=cosα."
+ },
+ {
+  "ma_cau": "T111000000777",
+  "dang_bai_id": "NDB00968",
+  "chac": "cao",
+  "ly_do": "Cho sinα, tính cos(π/3-α) bằng công thức cộng."
+ },
+ {
+  "ma_cau": "T111000000925",
+  "dang_bai_id": "NDB01354",
+  "chac": "vua",
+  "ly_do": "Mẫu số liệu ghép nhóm (mốt, tứ phân vị, đếm nhóm): dạng duy nhất của chủ đề, mô tả chưa rõ."
+ },
+ {
+  "ma_cau": "T111000000918",
+  "dang_bai_id": "NDB01354",
+  "chac": "vua",
+  "ly_do": "Mẫu số liệu ghép nhóm (mốt, tứ phân vị, đếm nhóm): dạng duy nhất của chủ đề, mô tả chưa rõ."
+ },
+ {
+  "ma_cau": "T111000000606",
+  "dang_bai_id": "NDB00603",
+  "chac": "cao",
+  "ly_do": "Nhận diện cấp số cộng cho bằng liệt kê."
+ },
+ {
+  "ma_cau": "T111000000650",
+  "dang_bai_id": "NDB00614",
+  "chac": "cao",
+  "ly_do": "Thực tế CSC cho u1=240, d=12, tìm u16."
+ },
+ {
+  "ma_cau": "T111000000911",
+  "dang_bai_id": "NDB01354",
+  "chac": "vua",
+  "ly_do": "Mẫu số liệu ghép nhóm (mốt, tứ phân vị, đếm nhóm): dạng duy nhất của chủ đề, mô tả chưa rõ."
+ },
+ {
+  "ma_cau": "T111000000881",
+  "dang_bai_id": "NDB01020",
+  "chac": "cao",
+  "ly_do": "Xét tính bị chặn của dãy số."
+ },
+ {
+  "ma_cau": "T111000000692",
+  "dang_bai_id": "NDB00990",
+  "chac": "cao",
+  "ly_do": "Chọn hàm số chẵn trong các hàm lượng giác."
+ },
+ {
+  "ma_cau": "T111000000895",
+  "dang_bai_id": "NDB01352",
+  "chac": "cao",
+  "ly_do": "Tìm x để ba số lập thành cấp số cộng."
+ },
+ {
+  "ma_cau": "T111000000757",
+  "dang_bai_id": "NDB00949",
+  "chac": "cao",
+  "ly_do": "Cho sinα, tính biểu thức theo tan, cot qua các GTLG còn lại."
+ },
+ {
+  "ma_cau": "T111000000967",
+  "dang_bai_id": "NDB01177",
+  "chac": "cao",
+  "ly_do": "Tìm m để hàm có giới hạn tại x=0 (giới hạn trái = phải)."
+ },
+ {
+  "ma_cau": "T111000000661",
+  "dang_bai_id": "NDB00568",
+  "chac": "cao",
+  "ly_do": "Bánh xe quay số vòng cho trước, tính quãng đường."
+ },
+ {
+  "ma_cau": "T111000000744",
+  "dang_bai_id": "NDB01009",
+  "chac": "cao",
+  "ly_do": "Đếm nghiệm PT cos cơ bản có 2 họ nghiệm trên đoạn."
+ },
+ {
+  "ma_cau": "T111000000861",
+  "dang_bai_id": "NDB01030",
+  "chac": "cao",
+  "ly_do": "CSN cho 2 số hạng a1,a2, tìm a5."
+ },
+ {
+  "ma_cau": "T111000000645",
+  "dang_bai_id": "NDB00568",
+  "chac": "cao",
+  "ly_do": "Bánh xe quay 30 vòng/10 giây, tính quãng đường."
+ },
+ {
+  "ma_cau": "T111000000651",
+  "dang_bai_id": "NDB00564",
+  "chac": "cao",
+  "ly_do": "Đổi độ sang rad."
+ },
+ {
+  "ma_cau": "T111000000740",
+  "dang_bai_id": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho cosα, tính cos2α."
+ },
+ {
+  "ma_cau": "T111000000729",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "tan2x=√3 đưa về tan(ax+b)=tanα."
+ },
+ {
+  "ma_cau": "T111000000689",
+  "dang_bai_id": "NDB00968",
+  "chac": "cao",
+  "ly_do": "Cho sin a, cos b, tính sin(a-b) bằng công thức cộng."
+ },
+ {
+  "ma_cau": "T111000000598",
+  "dang_bai_id": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Đề có hình: nhận diện đồ thị hàm lượng giác mở rộng, phụ thuộc hình (có thể 01022)."
+ },
+ {
+  "ma_cau": "T111000000772",
+  "dang_bai_id": "NDB00956",
+  "chac": "vua",
+  "ly_do": "Chứng minh đẳng thức lượng giác, biến đổi tự do."
+ },
+ {
+  "ma_cau": "T111000000647",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải PT cos(x+π/6)=-√2/2 đưa về cos cơ bản."
+ },
+ {
+  "ma_cau": "T111000000605",
+  "dang_bai_id": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Chọn dãy giảm cho bởi công thức số hạng tổng quát."
+ },
+ {
+  "ma_cau": "T111000000780",
+  "dang_bai_id": "NDB00954",
+  "chac": "vua",
+  "ly_do": "Biểu thức không biến sin² các góc 20,100,140; cần hạ bậc, mô tả chưa khít."
+ },
+ {
+  "ma_cau": "T111000000684",
+  "dang_bai_id": "NDB00984",
+  "chac": "cao",
+  "ly_do": "Rút gọn bằng công thức cộng sin(a-b)."
+ },
+ {
+  "ma_cau": "T111000000671",
+  "dang_bai_id": "NDB00948",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức lượng giác cơ bản sai."
+ },
+ {
+  "ma_cau": "T111000000938",
+  "dang_bai_id": "NDB01148",
+  "chac": "cao",
+  "ly_do": "lim 2018/n: dãy giới hạn 0 cơ bản."
+ },
+ {
+  "ma_cau": "T111000000573",
+  "dang_bai_id": "NDB00565",
+  "chac": "cao",
+  "ly_do": "Hình vẽ góc lượng giác hỏi số đo (theo mô tả dạng)."
+ },
+ {
+  "ma_cau": "T111000000630",
+  "dang_bai_id": "NDB00999",
+  "chac": "vua",
+  "ly_do": "min max y=5-2sin²2x: đặt t bậc 2, cũng làm được bằng hạ bậc hoặc đánh giá cơ bản."
+ },
+ {
+  "ma_cau": "T111000000984",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Liên tục tại x=-2, tham số m ở một nhánh."
+ },
+ {
+  "ma_cau": "T1110000001029",
+  "dang_bai_id": "NDB01180",
+  "chac": "cao",
+  "ly_do": "Giới hạn x→-∞ dạng ∞-∞ nhân liên hợp."
+ },
+ {
+  "ma_cau": "T111000000899",
+  "dang_bai_id": "NDB00612",
+  "chac": "cao",
+  "ly_do": "CSC cho hệ quan hệ giữa các số hạng, lập hệ u1,d."
+ },
+ {
+  "ma_cau": "T111000000653",
+  "dang_bai_id": "NDB00564",
+  "chac": "cao",
+  "ly_do": "Đổi rad sang độ."
+ },
+ {
+  "ma_cau": "T111000000585",
+  "dang_bai_id": "NDB01010",
+  "chac": "cao",
+  "ly_do": "Nghiệm dương nhỏ nhất của PT lượng giác."
+ },
+ {
+  "ma_cau": "T1110000001025",
+  "dang_bai_id": "NDB01173",
+  "chac": "cao",
+  "ly_do": "Giới hạn hàm có căn bậc ba, liên hợp."
+ },
+ {
+  "ma_cau": "T111000000812",
+  "dang_bai_id": "NDB00987",
+  "chac": "cao",
+  "ly_do": "TXĐ của hàm cot(ax+b)."
+ },
+ {
+  "ma_cau": "T111000000949",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Dãy căn thức dưới dạng thương, chia cho n."
+ },
+ {
+  "ma_cau": "T111000000992",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Thương chứa căn, chia tử mẫu cho n."
+ },
+ {
+  "ma_cau": "T111000000983",
+  "dang_bai_id": "NDB01195",
+  "chac": "cao",
+  "ly_do": "Tính liên tục của hàm phân thức trên các điểm."
+ },
+ {
+  "ma_cau": "T111000000834",
+  "dang_bai_id": "NDB01020",
+  "chac": "cao",
+  "ly_do": "Xét tính bị chặn của dãy n³/(n²+1)."
+ },
+ {
+  "ma_cau": "T111000000973",
+  "dang_bai_id": "NDB01189",
+  "chac": "cao",
+  "ly_do": "Nhận biết đồ thị gián đoạn tại x=1, đề cần hình."
+ },
+ {
+  "ma_cau": "T111000000540",
+  "dang_bai_id": "NDB00990",
+  "chac": "cao",
+  "ly_do": "Đồ thị nhận Oy làm trục đối xứng là hàm chẵn."
+ },
+ {
+  "ma_cau": "T111000000954",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Giới hạn tại điểm, thay trực tiếp, mẫu khác 0."
+ },
+ {
+  "ma_cau": "T111000000885",
+  "dang_bai_id": "NDB01020",
+  "chac": "cao",
+  "ly_do": "Xét tính bị chặn của dãy n+1/n."
+ },
+ {
+  "ma_cau": "T111000000779",
+  "dang_bai_id": "NDB00966",
+  "chac": "cao",
+  "ly_do": "Rút gọn tỉ số tổng sin, tổng cos bằng tổng thành tích."
+ },
+ {
+  "ma_cau": "T111000000602",
+  "dang_bai_id": "NDB01014",
+  "chac": "vua",
+  "ly_do": "cos(x-30°)=-cos2x, dạng cos u + cos v = 0 đảo pha; mô tả chỉ nêu sin±cos."
+ },
+ {
+  "ma_cau": "T111000000527",
+  "dang_bai_id": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Giải PT sinx=1/2 cơ bản."
+ },
+ {
+  "ma_cau": "T1110000001034",
+  "dang_bai_id": "NDB01177",
+  "chac": "cao",
+  "ly_do": "Giới hạn trái, phải và kết luận sự tồn tại giới hạn."
+ },
+ {
+  "ma_cau": "T1110000001020",
+  "dang_bai_id": "NDB01172",
+  "chac": "cao",
+  "ly_do": "Một căn thức ở tử, nhân liên hợp dạng 0/0."
+ },
+ {
+  "ma_cau": "T111000000874",
+  "dang_bai_id": "NDB00614",
+  "chac": "cao",
+  "ly_do": "Thực tế CSC, so sánh hai phương án tổng 3 năm."
+ },
+ {
+  "ma_cau": "T111000000910",
+  "dang_bai_id": "NDB01354",
+  "chac": "vua",
+  "ly_do": "Mẫu số liệu ghép nhóm (mốt, tứ phân vị, đếm nhóm): dạng duy nhất của chủ đề, mô tả chưa rõ."
+ },
+ {
+  "ma_cau": "T111000000915",
+  "dang_bai_id": "NDB01354",
+  "chac": "vua",
+  "ly_do": "Mẫu số liệu ghép nhóm (mốt, tứ phân vị, đếm nhóm): dạng duy nhất của chủ đề, mô tả chưa rõ."
+ },
+ {
+  "ma_cau": "T111000000576",
+  "dang_bai_id": "NDB00959",
+  "chac": "cao",
+  "ly_do": "Cho sinα, tính cos2α."
+ },
+ {
+  "ma_cau": "T111000000766",
+  "dang_bai_id": "NDB00952",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức bằng công thức đảo pha."
+ },
+ {
+  "ma_cau": "T1110000001001",
+  "dang_bai_id": "NDB01152",
+  "chac": "cao",
+  "ly_do": "Phân thức tử bậc cao hơn mẫu."
+ },
+ {
+  "ma_cau": "T111000000705",
+  "dang_bai_id": "NDB01002",
+  "chac": "vua",
+  "ly_do": "Đề có hình: nhận diện đồ thị hàm mở rộng, phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T111000000986",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Liên tục tại x=-1, tham số a ở một nhánh."
+ },
+ {
+  "ma_cau": "T1110000001006",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Hiệu căn trừ đa thức dãy số, nhân liên hợp."
+ },
+ {
+  "ma_cau": "T1110000001019",
+  "dang_bai_id": "NDB01172",
+  "chac": "cao",
+  "ly_do": "Một căn thức, nhân liên hợp dạng 0/0."
+ },
+ {
+  "ma_cau": "T111000000814",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Giải sin(ax+b)=hằng cơ bản."
+ },
+ {
+  "ma_cau": "T111000000553",
+  "dang_bai_id": "NDB00968",
+  "chac": "cao",
+  "ly_do": "Cho sin a, tan b, tính theo công thức cộng."
+ },
+ {
+  "ma_cau": "T1110000001046",
+  "dang_bai_id": "NDB01201",
+  "chac": "cao",
+  "ly_do": "Chứng minh PT chứa tham số luôn có nghiệm (đổi dấu)."
+ },
+ {
+  "ma_cau": "T111000000950",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Căn thức dưới dạng thương, chia cho n."
+ },
+ {
+  "ma_cau": "T111000000559",
+  "dang_bai_id": "NDB00988",
+  "chac": "cao",
+  "ly_do": "TXĐ hàm phân thức lượng giác."
+ },
+ {
+  "ma_cau": "T111000000708",
+  "dang_bai_id": "NDB00987",
+  "chac": "cao",
+  "ly_do": "TXĐ hàm có cot, sin, cos cơ bản."
+ },
+ {
+  "ma_cau": "T111000000904",
+  "dang_bai_id": "NDB01025",
+  "chac": "vua",
+  "ly_do": "Ba số lập CSN đồng thời bớt thành CSC; gần dạng 3 số lập CSN."
+ },
+ {
+  "ma_cau": "T111000000872",
+  "dang_bai_id": "NDB00612",
+  "chac": "vua",
+  "ly_do": "Bốn số CSC cho quan hệ tổng các số hạng."
+ },
+ {
+  "ma_cau": "T111000000858",
+  "dang_bai_id": "NDB01025",
+  "chac": "cao",
+  "ly_do": "Tìm x để ba số lập thành cấp số nhân."
+ }
+]

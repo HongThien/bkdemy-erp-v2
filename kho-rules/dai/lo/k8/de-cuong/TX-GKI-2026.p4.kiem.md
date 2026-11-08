@@ -1,0 +1,15 @@
+# TX-GKI-2026 — Phần 4 — Pha 1 (giải MÙ, trạm soát Opus, 24/10)
+
+Nguồn: `<LV>\anh\t-3.png`, `t-4.png`; phóng to f–i ở 400 dpi (`<LV>\z\soat_p4_fi-3.png`). Máy kiểm: `<LV>\tam\soat_p4_kiem.mjs` (vét nghiệm theo lưới 1/4 trên [−50; 50] + toạ độ số 3 bộ cho mỗi bài hình).
+
+| Nhãn | Đáp án / đáp số / hướng chứng minh (1 dòng) | Ghi chú về đề (in lỗi, mờ, hai cách hiểu, đề sai) |
+|---|---|---|
+| Dạng 3 Bài 3f | $x=-2$ — $(2-x)^2=(x-2)^2$, ba hạng tử đầu $=[(x-2)-(x+1)]^2=9$ ⇒ $9-3x-5=10$ ⇒ $x=-2$ (máy: đồng nhất thức $=9$ ở 4 điểm, nghiệm duy nhất $-2$) | Scan mất ngoặc; phóng to: khoảng trống đúng chỗ $(2-x)^2-2(x-2)(x+1)+(x+1)^2-3x-5=10$ — khôi phục khớp, số mũ 2 nằm sau "2−x" và sau "x+1" thứ hai |
+| Dạng 3 Bài 3g | $x\in\{-1;1\}$ — $(x^2-1)^2=0$ ⇒ $x^2=1$ | — |
+| Dạng 3 Bài 3h | $x\in\{0;1\}$ — $x(x-1)^2=0$ | — |
+| Dạng 3 Bài 3i | $x\in\{-4;-2;1;3\}$ — đặt $t=x^2+x$: $(t-2)(t-12)=0$; $x^2+x-2=(x-1)(x+2)$, $x^2+x-12=(x-3)(x+4)$ | Scan mất ngoặc; phóng to: $(x^2+x)^2-14(x^2+x)+24=0$ — khôi phục khớp (số mũ 2 ngoài ngoặc thứ nhất) |
+| Hình Bài 1 | a) $I$ trung điểm $HC$ và $AK$ ⇒ $AHKC$ HBH (đường chéo cắt nhau tại trung điểm). b) $MH\perp AB$, $AC\perp AB$ ⇒ $MH\parallel AC$; $AMHN$ HCN (tổng góc 360° ⇒ 4 góc vuông) ⇒ $O$ trung điểm $MN$, $AH$, $OM=OH$ ⇒ $\widehat{OMH}=\widehat{OHM}=\widehat{HAC}$ (so le trong, $MH\parallel AC$) $=\widehat{HKC}$ (góc đối HBH $AHKC$). c) $O$, $I$ trung điểm $AH$, $HC$ ⇒ $CO$, $AI$ trung tuyến $\triangle AHC$ ⇒ $D$ trọng tâm ⇒ $AD=\tfrac23 AI$, $AK=2AI$ ⇒ $AK=3AD$ (máy: AK/AD = 3,000000; góc bằng nhau 3 bộ) | — |
+| Hình Bài 2 | a) $I$ trung điểm $AC$, $HM$ ⇒ $AHCM$ HBH; $\widehat{AHC}=90^\circ$ ⇒ HCN. b) KHÔNG đường trung bình: $IH=IC$ (đường chéo HCN bằng nhau, cắt tại trung điểm) ⇒ $\triangle IHC$ cân, $IK$ trung tuyến ⇒ $IK\perp HC$; $AH\perp HC$ ⇒ $AH\parallel KI$. c) $H$ trung điểm $BC$ (tam giác cân) ⇒ $AM\parallel BH$, $AM=HC=BH$ ⇒ $ABHM$ HBH ⇒ $BM$ qua trung điểm $E$ của $AH$ ⇒ $B,E,M$ thẳng hàng (máy 2 bộ) | b) là cấu hình đường trung bình ($K$, $I$ trung điểm $HC$, $AC$) — phải tự chứng minh |
+| Hình Bài 3 | a) $MKHI$ HCN (ba góc vuông + tổng 360° ⇒ góc thứ tư vuông, định nghĩa). b) $MH=IK$ (hai đường chéo HCN). c) $MKHI$ vuông ⇔ đường chéo $MH$ là phân giác $\widehat{IMK}$ ⇔ $\triangle MNP$ có đường cao $MH$ đồng thời phân giác / $\widehat{N}=45^\circ$ ⇔ $\triangle MNP$ **vuông cân tại M** (máy: $MI=MK$ chỉ khi $MN=MP$) | — |
+| Hình Bài 4 | a) $AFHE$ HCN (ba góc vuông + tổng góc). b) $HF\perp AC$, $AB\perp AC$ ⇒ $FM\parallel AE$; $FM=FH=AE$ ⇒ $AEFM$ HBH. c) Tương tự $AFEN$ HBH ($EN=EH=AF$, $EN\parallel AF$) ⇒ $AM\parallel EF$, $AN\parallel EF$ ⇒ $A,M,N$ thẳng hàng (Euclid) (máy: $A$ là trung điểm $MN$) | — |
+| Hình Bài 5 | a) $APMN$ HCN (ba góc vuông + tổng góc). b) $AP=MN=NQ$, $AP\parallel NQ$ ⇒ $APNQ$ HBH ⇒ $AQ\parallel PN$; $AN=PM=PK$, $AN\parallel PK$ ⇒ $ANPK$ HBH ⇒ $AK\parallel PN$ ⇒ $Q,A,K$ thẳng hàng (Euclid). (Cách khác: $AQ=AM=AK$, $\widehat{QAK}=2\widehat{NAP}=180^\circ$.) Máy 3 bộ: thẳng hàng, $A$ nằm giữa | Dữ kiện "trung tuyến $AM$" không cần cho ý a, b (không sai) |

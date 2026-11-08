@@ -26,8 +26,12 @@ export type HinhHocBai = {
   duyet_at: string | null
   created_at?: string
   chu_de_id?: string | null                          // chủ đề (chương) trong Bản đồ mới — vùng hinh_hoc; null = chưa xếp
+  mo_ta?: string                                     // 04/11: mô tả nhận biết bài học (như mô tả dạng bài của Đại) — B3 đọc khi phân dạng
+  vi_du?: string                                     // ví dụ (thẻ ##VD … Bài giải:) — cùng khuôn với Đại
+  vi_du_file_url?: string | null
+  vi_du_ten_file?: string | null
 }
-export type HinhHocBaiInput = { khoi: string; ten_bai: string; thu_tu?: number; bac_toi_thieu?: string | null; muc_do?: number | null; chu_de_id?: string | null }
+export type HinhHocBaiInput = { khoi: string; ten_bai: string; thu_tu?: number; bac_toi_thieu?: string | null; muc_do?: number | null; chu_de_id?: string | null; mo_ta?: string }
 
 export async function listHinhHocBai(khoi: string): Promise<HinhHocBai[]> {
   const { data, error } = await supabase.from('hinh_hoc_bai')
@@ -73,11 +77,11 @@ export async function countHinhHocCauByBai(khoi: string): Promise<Record<string,
 export async function listHinhHocMap(khoi: string): Promise<MapRow[]> {
   const bais = await listHinhHocBai(khoi)
   const t1Ma = `HH.K${khoi}`
-  const t2Ma = `${t1Ma}.BAI`
+  // Thùy 28/10: mỗi bài học = 1 chuyên đề = 1 nhóm = 1 dạng bài, cùng tên ⇒ tầng 2 của bộ chọn = chính bài học
   return bais.map((b) => ({
     leafMa: b.ma_bai, khoi: b.khoi,
     t1Ma, t1Ten: `Hình học · Khối ${khoi}`,
-    t2Ma, t2Ten: 'Danh sách Bài',
+    t2Ma: b.ma_bai, t2Ten: b.ten_bai,
     leafTen: b.ten_bai, bac: b.bac_toi_thieu ?? '', mucDo: b.muc_do,   // CEO 27/09: truyền độ khó thật để DangPicker filter
   }))
 }
@@ -114,5 +118,24 @@ export async function upsertHinhHocLyThuyet(ma_bai: string, noi_dung: string, fi
 }
 export async function deleteHinhHocLyThuyet(ma_bai: string): Promise<void> {
   const { error } = await supabase.from('hinh_hoc_bai_ly_thuyet').delete().eq('ma_bai', ma_bai)
+  if (error) throw error
+}
+
+// ── Ví dụ của Bài (04/11) — cùng shape LyThuyetApi để LyThuyetModal dùng nguyên (như vi_du của dạng bài Đại) ──
+export async function listHinhHocViDu(): Promise<Record<string, LyThuyet>> {
+  const { data, error } = await supabase.from('hinh_hoc_bai').select('ma_bai, vi_du, vi_du_file_url, vi_du_ten_file').limit(LIMIT)
+  if (error) throw error
+  const m: Record<string, LyThuyet> = {}
+  for (const r of (data ?? []) as { ma_bai: string; vi_du: string | null; vi_du_file_url: string | null; vi_du_ten_file: string | null }[]) {
+    if ((r.vi_du ?? '').trim() || r.vi_du_file_url) m[r.ma_bai] = { noi_dung: r.vi_du ?? '', file_url: r.vi_du_file_url, ten_file: r.vi_du_ten_file }
+  }
+  return m
+}
+export async function upsertHinhHocViDu(ma_bai: string, noi_dung: string, file_url: string | null, ten_file: string | null): Promise<void> {
+  const { error } = await supabase.from('hinh_hoc_bai').update({ vi_du: noi_dung, vi_du_file_url: file_url, vi_du_ten_file: ten_file }).eq('ma_bai', ma_bai)
+  if (error) throw error
+}
+export async function deleteHinhHocViDu(ma_bai: string): Promise<void> {
+  const { error } = await supabase.from('hinh_hoc_bai').update({ vi_du: '', vi_du_file_url: null, vi_du_ten_file: null }).eq('ma_bai', ma_bai)
   if (error) throw error
 }

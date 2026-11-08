@@ -1,0 +1,605 @@
+[
+ {
+  "ma_cau": "T1120000001517",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho điểm $A\\left( 1;\\,0;\\,-3 \\right)$. Chọn khẳng định đúng có tọa độ là",
+  "lua_chon": [
+   "$\\text{A}\\in\\left( Oxy \\right)$.",
+   "$\\text{A}\\in\\left( Oyz \\right)$.",
+   "$\\text{A}\\in\\left( Oxz \\right)$.",
+   "$\\text{A}\\in Oy$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn C",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112010305001",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y = \\dfrac{2x^2 - 3x - 1}{x - 2}$.\nTiệm cận xiên của đồ thị hàm số là đường thẳng:",
+  "lua_chon": [
+   "$y = 2x - 1$.",
+   "$y = 2x + 1$.",
+   "$y = 2x - 3$.",
+   "$y = 2x + 3$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chia tử thức cho mẫu thức ta được\n$\\begin{cases} y = 2x + 1 - \\dfrac{1}{x - 2} \\\\ \\lim_{x\\to\\pm\\infty} \\dfrac{-1}{x - 2} = 0 \\end{cases}$\n$\\Rightarrow$ Tiệm cận xiên của đồ thị hàm số là đường thẳng có phương trình $y = 2x + 1$.",
+  "nhan_cu": "Đường tiệm cận của đồ thị hàm số › Tìm tiệm cận xiên của hàm số"
+ },
+ {
+  "ma_cau": "T112010401004",
+  "loai": "trac_nghiem",
+  "de": "(THPT Tiên Du - Bắc Ninh 2025) Cho hàm số $y = f(x)$ xác định trên $[-2;4]$ có đồ thị như hình vẽ bên. Giá trị lớn nhất hàm số $y = f(x)$ trên đoạn $[0;4]$ là",
+  "lua_chon": [
+   "3.",
+   "2.",
+   "-2.",
+   "7."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chọn B\nXét hàm số $y = f(x)$ trên đoạn $[0;4]$ ta suy ra $\\max\\limits_{[0;4]} f(x) = f(3) = 2$",
+  "co_hinh": true,
+  "nhan_cu": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số › Tìm GTLN - GTNN của hàm số trên khoảng cho trước khi biết đồ thị hoặc bảng biến thiên"
+ },
+ {
+  "ma_cau": "T112010402001",
+  "loai": "trac_nghiem",
+  "de": "Giá trị nhỏ nhất của hàm số $f(x)=x^3-3x+2$ trên đoạn $[-3;3]$ bằng",
+  "lua_chon": [
+   "0.",
+   "-16.",
+   "4.",
+   "20 अनुसंधान।",
+   "20. "
+  ],
+  "nhan_cu": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số › Tìm GTLN - GTNN trên khoảng cho trước khi biết hàm số"
+ },
+ {
+  "ma_cau": "T112020104002",
+  "loai": "trac_nghiem",
+  "de": "(THPT Nguyễn Viết Xuân - Vĩnh Phúc 2025) Đường cong ở hình sau là đồ thị của một trong bốn hàm số dưới đây. Hàm số đó là hàm số nào? [hình]",
+  "lua_chon": [
+   "$y = x^3 - 3x + 2$.",
+   "$y = x^3 - 3x^2 + 2$.",
+   "$y = x^3 - 6x + 2$.",
+   "$y = -x^3 + 3x^2 + 2$. "
+  ],
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan đến đồ thị hàm số bậc 3"
+ },
+ {
+  "ma_cau": "T112020201010",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y = \\dfrac{ax+b}{x+1}$ có đồ thị như hình vẽ dưới đây. Tìm khẳng định đúng trong các khẳng định sau. [hình]",
+  "lua_chon": [
+   "$0 < a < b$.",
+   " $b < 0 < a$.",
+   " $0 < b < a$.",
+   " $a < b < 0$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có: $y' = \\dfrac{a-b}{(x+1)^2}$, $\\forall x \\neq -1$. Dựa vào đồ thị ta thấy:\nTa có: $\\lim_{x \\to +\\infty} y = a \\Rightarrow y = a$ là tiệm cận ngang của đồ thị hàm số. Dựa vào đồ thị ta có: $a > 0$.\nĐồ thị hàm số nghịch biến trên khoảng $(-\\infty;-1)$ và $(-1;+\\infty) \\Rightarrow y' < 0, \\forall x \\neq -1$\n$\\Leftrightarrow a-b < 0 \\Leftrightarrow a < b \\Rightarrow 0 < a < b$.",
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan đến các hệ số của hàm bậc nhất trên bậc nhất"
+ },
+ {
+  "ma_cau": "T112020202017",
+  "loai": "trac_nghiem",
+  "de": "(THPT Ngô Sĩ Liên - Bắc Giang 2025) Cho hàm số $y=f(x)$ có đồ thị như hình dưới đây. [hình] Biểu thức $f(x)$ là biểu thức nào sau đây?",
+  "lua_chon": [
+   "$x+\\dfrac{1}{x}$",
+   "$-x^3+3x-1$",
+   "$x^3-1$",
+   "$\\dfrac{x-1}{x+1}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Chọn D\nĐồ thị hàm số $y=f(x)$ có tiệm cận đứng là $x=-1$ nên biểu thức $f(x)$ là $\\dfrac{x-1}{x+1}$.",
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan đến đồ thị hàm số bậc nhất trên bậc nhất"
+ },
+ {
+  "ma_cau": "T112020302020",
+  "loai": "trac_nghiem",
+  "de": "Đồ thị dưới đây là của một trong bốn hàm số sau. Hỏi hàm số đó là hàm số nào? [hình] Đồ thị hàm số.",
+  "lua_chon": [
+   "$y = \\dfrac{x^2 - x + 4}{x + 1}$",
+   "$y = \\dfrac{x^2 - 2x + 3}{x + 1}$",
+   "$y = \\dfrac{-x^2 - x + 2}{x + 1}$",
+   "$y = \\dfrac{x^2 + x - 1}{x + 1}$"
+  ],
+  "dap_an": "C",
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan đến đồ thị hàm bậc hai trên bậc nhất"
+ },
+ {
+  "ma_cau": "T112020303001",
+  "loai": "trac_nghiem",
+  "de": "Đường thẳng qua 2 điểm cực trị của đồ thị hàm số $y=\\dfrac{x^2-x+2}{x+2}$ có phương trình là",
+  "lua_chon": [
+   "y = 2x - 1",
+   "y = 2x + 1",
+   "y = x - 2",
+   "y = -2x - 1"
+  ],
+  "dap_an": "A",
+  "loi_giai": "1. Thực hiện phép chia đa thức: $y = \\dfrac{x^2-x+2}{x+2} = x-3 + \\dfrac{8}{x+2}$.\n2. Tính đạo hàm $y'$: $y' = (x-3 + \\dfrac{8}{x+2})' = 1 - \\dfrac{8}{(x+2)^2}$.\n3. Tìm các điểm cực trị: $y'=0 \\Leftrightarrow 1 - \\dfrac{8}{(x+2)^2} = 0 \\Leftrightarrow (x+2)^2 = 8$.\n$x+2 = \\pm \\sqrt{8} = \\pm 2\\sqrt{2}$.\n$x_1 = -2+2\\sqrt{2}$, $x_2 = -2-2\\sqrt{2}$.\n4. Tính giá trị $y$ tương ứng:\nVới $x_1 = -2+2\\sqrt{2}$: $y_1 = (-2+2\\sqrt{2})-3 + \\dfrac{8}{(-2+2\\sqrt{2})+2} = -5+2\\sqrt{2} + \\dfrac{8}{2\\sqrt{2}} = -5+2\\sqrt{2} + 2\\sqrt{2} = -5+4\\sqrt{2}$.\nVới $x_2 = -2-2\\sqrt{2}$: $y_2 = (-2-2\\sqrt{2})-3 + \\dfrac{8}{(-2-2\\sqrt{2})+2} = -5-2\\sqrt{2} + \\dfrac{8}{-2\\sqrt{2}} = -5-2\\sqrt{2} - 2\\sqrt{2} = -5-4\\sqrt{2 …",
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Phương trình đường thẳng đi qua hai điểm cực trị"
+ },
+ {
+  "ma_cau": "T112020305010",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y = \\dfrac{x-1}{x+1}$ có đồ thị $(C)$.\nCó bao nhiêu điểm thuộc đồ thị $(C)$ sao cho tiếp tuyến của đồ thị $(C)$ tại các điểm đó song song với đường thẳng $y = 2x+7$?",
+  "lua_chon": [
+   "2.",
+   "1.",
+   "0.",
+   "3ゥ."
+  ],
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Một số bài toán cơ bản liên quan đến phương trình tiếp tuyến"
+ },
+ {
+  "ma_cau": "T112020401146",
+  "loai": "tra_loi_ngan",
+  "de": "Một nhà sản xuất trung bình bán được $1000$ ti vi mỗi tuần với giá $14$ triệu đồng một chiếc. Một cuộc khảo sát thị trường chỉ ra rằng nếu cứ giảm giá bán $500$ nghìn đồng, số lượng ti vi bán ra sẽ tăng $100$ ti vi mỗi tuần. Nếu hàm chi phí hàng tuần là $C\\left(x\\right)=12000-3x$ (triệu đồng), trong đó $x$ là số ti vi bán ra ở mỗi tuần. Nhà sản xuất nên đặt giá bán (triệu đồng) như thế nào để lợi nuận lớn nhất?",
+  "dap_an": "8",
+  "loi_giai": "Gọi $p$ (triệu đồng) là giá bán của mỗi chiếc ti vi ($p>0$).\nTheo khảo sát, giá bán ban đầu là $14$ triệu đồng với lượng bán $1000$ chiếc/tuần.\nCứ giảm giá $0,5$ triệu đồng ($500$ nghìn đồng) thì lượng bán tăng thêm $100$ chiếc/tuần.\nSố lần giảm giá $0,5$ triệu đồng là $\\dfrac{14-p}{0,5}=28-2p$.\nSố ti vi bán ra trong một tuần theo giá $p$ là\n$x=1000+100\\left(28-2p\\right)=3800-200p\\Rightarrow p=19-\\dfrac{x}{200} \\left(\\text{trieu dong}\\right).$\nDoanh thu hàng tuần khi bán $x$ chiếc ti vi là\n$R\\left(x\\right)=x\\cdot p=x\\left(19-\\dfrac{x}{200}\\right)=19x-\\dfrac{x^{2}}{200} \\left(\\text{trieu dong}\\right).$\nHàm chi phí hàng tuần là $C\\left(x\\right)=12000-3x \\left(\\text{trieu dong}\\right)$.\nLợi nhu …",
+  "nhan_cu": "Ứng dụng đạo hàm để giải quyết một số vấn đề thực tiễn › Tối ưu phải lập hàm từ kinh tế"
+ },
+ {
+  "ma_cau": "T112020402025",
+  "loai": "tra_loi_ngan",
+  "de": "Một vật chuyển động phương ngang theo quy luật $s=-t^{3}+9t^{2}+21t+1$ với $t$ (giây) là khoảng thời gian tính từ lúc bắt đầu chuyển động và $s$ (mét) là quãng đường vật đi được trong khoảng thời gian đó. Tính gia tốc của chất điểm tại thời điểm vật dừng lại (đơn vị $m/s^{2}$).",
+  "dap_an": "-24",
+  "loi_giai": "Vận tốc tức thời của vật tại thời điểm $t$ là\n$v\\left(t\\right)=s'\\left(t\\right)=-3t^{2}+18t+21.$\nVật dừng lại khi vận tốc bằng $0$, tức là\n$v\\left(t\\right)=0\\Leftrightarrow -3t^{2}+18t+21=0\\Leftrightarrow \\left[\\begin{array}{l} \\left.t=7\\text{ (thoa man }t\\ge 0\\right) \\\\ t=-1 (loai). \\end{array}\\right.$\nGia tốc tức thời của vật tại thời điểm $t$ là\n$a\\left(t\\right)=v'\\left(t\\right)=-6t+18.$\nTại thời điểm vật dừng lại ($t=7 s$), gia tốc của chất điểm là\n$a\\left(7\\right)=-6\\cdot 7+18=-24 \\left({m/s}^{2}\\right).$\nVậy gia tốc của chất điểm tại thời điểm vật dừng lại bằng $-24 \\left({m/s}^{2}\\right)$.",
+  "nhan_cu": "Ứng dụng đạo hàm để giải quyết một số vấn đề thực tiễn › Các bài toán thực tế có sẵn biểu thức (đang phân lại — lô đầu)"
+ },
+ {
+  "ma_cau": "T112070102038",
+  "loai": "trac_nghiem",
+  "de": "Cho hình lăng trụ đứng $ABC.A'B'C'$ có tất cả các cạnh bằng nhau và\n$A'C = 4$ (tham khảo hình bên). Giá trị của $\\vec{AA'} \\cdot \\vec{BC'}$ bằng.",
+  "lua_chon": [
+   "4.",
+   "2.",
+   "0.",
+   "-2."
+  ],
+  "nhan_cu": "Vectơ trong không gian › Tính tích vô hướng giữa hai vecto khi biết góc"
+ },
+ {
+  "ma_cau": "T112070102049",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện đều $ABCD$ có độ dài cạnh bằng $a$, gọi $M$ là trung điểm của đoạn thẳng $CD$.\nTích vô hướng $\\vec{AM} \\cdot \\vec{AB}$ bằng",
+  "lua_chon": [
+   "$a^2$",
+   "$\\dfrac{a^2}{2}$",
+   "$\\dfrac{a^2}{3}$",
+   "$\\dfrac{a^2}{4}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Lời giải chi tiết:\nCách 1: Phân tích vecto\nVì $M$ là trung điểm của $CD$, ta có:\n$\\vec{AM} = \\dfrac{1}{2}(\\vec{AC} + \\vec{AD})$\nNhân vô hướng cả hai vế với $\\vec{AB}$:\n$\\vec{AM} \\cdot \\vec{AB} = \\dfrac{1}{2}(\\vec{AC} + \\vec{AD}) \\cdot \\vec{AB} = \\dfrac{1}{2}(\\vec{AC} \\cdot \\vec{AB} + \\vec{AD} \\cdot \\vec{AB})$\nDo $ABCD$ là tứ diện đều cạnh $a$ nên $\\triangle ABC$ và $\\triangle ABD$ là các tam giác đều cạnh $a$, suy ra $\\widehat{BAC} = \\widehat{BAD} = 60^\\circ$:\n$\\vec{AC} \\cdot \\vec{AB} = AC \\cdot AB \\cdot \\cos 60^\\circ = a \\cdot a \\cdot \\dfrac{1}{2} = \\dfrac{a^2}{2}$\n$\\vec{AD} \\cdot \\vec{AB} = AD \\cdot AB \\cdot \\cos 60^\\circ = a \\cdot a \\cdot \\dfrac{1}{2} = \\dfrac{a^2}{2}$\nThay vào biểu thức: …",
+  "nhan_cu": "Vectơ trong không gian › Tính tích vô hướng giữa hai vecto khi biết góc"
+ },
+ {
+  "ma_cau": "T112070105010",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABC$ (xem hình bên).\nGọi $G$ là trọng tâm $\\triangle ABC$. Phát biểu nào sau đây là đúng?",
+  "lua_chon": [
+   "$\\overrightarrow{SA} + \\overrightarrow{SB} + \\overrightarrow{SC} = \\overrightarrow{0}$.",
+   "$\\overrightarrow{SA} + \\overrightarrow{SB} + \\overrightarrow{SC} = \\overrightarrow{SG}$.",
+   "$\\overrightarrow{SA} + \\overrightarrow{SB} + \\overrightarrow{SC} = 3\\overrightarrow{SG}$.",
+   "$\\overrightarrow{SA} + \\overrightarrow{SB} + \\overrightarrow{SC} = 2\\overrightarrow{SG}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Vì $G$ là trọng tâm của tam giác $ABC$ nên với mọi điểm $S$ ta luôn có\n$\\overrightarrow{SA} + \\overrightarrow{SB} + \\overrightarrow{SC} = 3\\overrightarrow{SG}$.\nThật vậy, ta có:\n$\\overrightarrow{SA} + \\overrightarrow{SB} + \\overrightarrow{SC} = (\\overrightarrow{SG} + \\overrightarrow{GA}) + (\\overrightarrow{SG} + \\overrightarrow{GB}) + (\\overrightarrow{SG} + \\overrightarrow{GC})$\n$= 3\\overrightarrow{SG} + (\\overrightarrow{GA} + \\overrightarrow{GB} + \\overrightarrow{GC})$.\nVì $G$ là trọng tâm $\\triangle ABC$ nên $\\overrightarrow{GA} + \\overrightarrow{GB} + \\overrightarrow{GC} = \\overrightarrow{0}$.\nDo đó $\\overrightarrow{SA} + \\overrightarrow{SB} + \\overrightarrow{SC} = 3\\overrightarrow{SG}$.",
+  "co_hinh": true,
+  "nhan_cu": "Vectơ trong không gian › Dùng hệ thức trung điểm, trọng tâm để tính toán hoặc chứng minh."
+ },
+ {
+  "ma_cau": "T112070105011",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp $ABCD.A'B'C'D'$. Gọi $O$ là tâm của hình hộp, khẳng định nào dưới đây đúng?",
+  "lua_chon": [
+   "$\\overrightarrow{OA} + \\overrightarrow{OA'} = \\overrightarrow{0}$.",
+   "$\\overrightarrow{OA} + \\overrightarrow{OC'} = \\overrightarrow{0}$.",
+   "$\\overrightarrow{OA} + \\overrightarrow{OB} = \\overrightarrow{0}$.",
+   "$\\overrightarrow{OA} + \\overrightarrow{OD} = \\overrightarrow{0}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Trong hình hộp $ABCD.A'B'C'D'$, tâm $O$ là trung điểm của các đường chéo $AC',BD',CA',DB'$.\nDo $O$ là trung điểm của đoạn thẳng $AC'$ nên $\\overrightarrow{OA} + \\overrightarrow{OC'} = \\overrightarrow{0}$.",
+  "nhan_cu": "Vectơ trong không gian › Dùng hệ thức trung điểm, trọng tâm để tính toán hoặc chứng minh."
+ },
+ {
+  "ma_cau": "T112070105017",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$ có $G$ là trọng tâm của tam giác $BCD$. Đẳng thức nào sau đây đúng?",
+  "lua_chon": [
+   "$\\overrightarrow{AG} = \\dfrac{1}{2}(\\overrightarrow{AB} + \\overrightarrow{AC} + \\overrightarrow{AD})$.",
+   "$\\overrightarrow{AG} = \\dfrac{1}{3}(\\overrightarrow{AB} + \\overrightarrow{AC} + \\overrightarrow{AD})$.",
+   "$\\overrightarrow{AG} = \\dfrac{1}{4}(\\overrightarrow{AB} + \\overrightarrow{AC} + \\overrightarrow{AD})$.",
+   "$\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{AC} + \\overrightarrow{AD}$."
+  ],
+  "nhan_cu": "Vectơ trong không gian › Dùng hệ thức trung điểm, trọng tâm để tính toán hoặc chứng minh."
+ },
+ {
+  "ma_cau": "T112070108002",
+  "loai": "trac_nghiem",
+  "de": "Cho ba vecto $\\vec{a},\\vec{b},\\vec{c}$ không đồng phẳng. Xét các vecto $\\vec{x} = 2\\vec{a}+\\vec{b}$ và $\\vec{y} = \\vec{a}-\\vec{b}-\\vec{c}$ và $\\vec{z} = -3\\vec{b}-2\\vec{c}$. Khẳng định nào dưới đây là đúng?",
+  "lua_chon": [
+   "$\\vec{x},\\vec{y},\\vec{z}$ đồng phẳng.",
+   "$\\vec{x},\\vec{a}$ cùng phương.",
+   "$\\vec{x},\\vec{b}$ cùng phương.",
+   "$\\vec{x},\\vec{y},\\vec{z}$ đôi một cùng phương."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Vectơ trong không gian › Điều kiện đồng phẳng giữa các vecto"
+ },
+ {
+  "ma_cau": "T112070109004",
+  "loai": "tra_loi_ngan",
+  "de": "Một chiếc đèn chùm treo có khối lượng $m = 5$ kg được thiết kế với đĩa đèn được giữ bởi bốn đoạn xích $SA, SB, SC, SD$ sao cho $S.ABCD$ là hình chóp tứ giác đều có $\\widehat{ASC} = 60^\\circ$. Gọi $g$ là vectơ gia tốc rơi tự do có độ lớn $10$ m/s$^2$. Tìm độ lớn của lực căng cho mỗi sợi xích.",
+  "dap_an": "$\\dfrac{25\\sqrt{3}}{3}$",
+  "loi_giai": "Phân tích lực: Trọng lượng của đèn chùm là $P = m \\cdot g = 5 \\cdot 10 = 50$ (N). Đèn được giữ cân bằng bởi $4$ sợi xích $SA, SB, SC, SD$. Do $S.ABCD$ là hình chóp tứ giác đều nên tâm $O$ của đáy hình vuông $ABCD$ là hình chiếu vuông góc của đỉnh $S$ xuống mặt đáy. Trọng lực hướng thẳng đứng dọc theo $SO$ xuống dưới. Tổng hình chiếu lực căng của $4$ sợi xích lên phương thẳng đứng $SO$ sẽ cân bằng với trọng lượng $P$. Gọi lực căng trên mỗi sợi xích là $T$.\nTính toán: Xét tam giác $\\triangle SAC$ cân tại $S$ (do $SA = SC$), có góc ở đỉnh $\\widehat{ASC} = 60^\\circ$ nên $\\triangle SAC$ là tam giác đều. Góc tạo bởi mỗi sợi xích (ví dụ $SA$) và phương thẳng đứng $SO$ là $\\alpha = \\widehat{ASO} = \\ …",
+  "co_hinh": true,
+  "nhan_cu": "Vectơ trong không gian › Một số mô hình toán thực tế liên quan đến Lực"
+ },
+ {
+  "ma_cau": "T112070202053",
+  "loai": "trac_nghiem",
+  "de": "Dựa vào hình lập phương $ABCD.A'B'C'D'$ [hình] có $A$ là gốc tọa độ, $A(0;0;0)$, ta có tọa độ điểm $C'$ là",
+  "lua_chon": [
+   "$(1;0;1)$.",
+   "$(0;1;1)$.",
+   "$(1;1;0)$.",
+   "$(1;1;1)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Dựa vào hệ trục tọa độ, ta có điểm $A(0;0;0)$.\nVì hình lập phương có cạnh bằng $1$ nên tọa độ các điểm trên trục là $B(1;0;0)$,\n$D(0;1;0)$ và $A'(0;0;1)$.\nĐỉnh $C'$ thỏa mãn quy tắc hình hộp $\\overrightarrow{AC'} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'} = (1;1;1)$.\nSuy ra $C'(1;1;1)$.\nVector $\\overrightarrow{A'C'} = (1-0;1-0;1-1) = (1;1;0)$.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112070202055",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho $\\overrightarrow{a} = -\\overrightarrow{i} + 3\\overrightarrow{j} - 2\\overrightarrow{k}$. Tọa độ của $\\overrightarrow{a}$ là",
+  "lua_chon": [
+   "$(-3;2;-1)$.",
+   "$(-2;-1;-3)$.",
+   "$(2;-3;-1)$.",
+   "$(-1;3;-2)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $\\overrightarrow{a} = x\\overrightarrow{i} + y\\overrightarrow{j} + z\\overrightarrow{k} \\Rightarrow \\overrightarrow{a} = (x;y;z)$.\nDo đó $\\overrightarrow{a} = -\\overrightarrow{i} + 3\\overrightarrow{j} - 2\\overrightarrow{k} \\Rightarrow \\overrightarrow{a} = (-1;3;-2)$.",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112070202056",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ tọa độ $Oxyz$, cho điểm $M$ thỏa mãn $\\overrightarrow{OM} = -2\\overrightarrow{i} + \\overrightarrow{j} + 3\\overrightarrow{k}$. Tọa độ của điểm $M$ là",
+  "lua_chon": [
+   "$(-2;1;3)$.",
+   "$(2;1;3)$.",
+   "$(1;-2;3)$.",
+   "$(1;2;3)$."
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112070202057",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho vecto $\\vec{u}=-3\\vec{i}+5\\vec{j}+2\\vec{k}$. Tọa độ của vecto $\\vec{u}$ là",
+  "lua_chon": [
+   "$(-3;5;2)$",
+   "$(3;5;2)$",
+   "$(5;-3;2)$",
+   "$(-3;5;-2)$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vecto $\\vec{u}=x\\vec{i}+y\\vec{j}+z\\vec{k}$ có tọa độ là $(x;y;z)$.\nDo đó $\\vec{u}=-3\\vec{i}+5\\vec{j}+2\\vec{k}$ có tọa độ là $(-3;5;2)$.",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112070202058",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho hai điểm $A(1;1;-2)$ và $B(3;-1;2)$. Tọa độ của vecto $\\vec{BA}$ là:",
+  "lua_chon": [
+   "$(2;-2;4)$",
+   "$(2;0;0)$",
+   "$(-2;2;-4)$",
+   "$(1;-1;2)$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $\\vec{BA}=(x_A-x_B;y_A-y_B;z_A-z_B)=(1-3;1-(-1);-2-2)=(-2;2;-4)$.",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112070202059",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho vecto $\\vec{u}=2\\vec{i}+3\\vec{j}-4\\vec{k}$. Tọa độ của vecto $\\vec{u}$ là",
+  "lua_chon": [
+   "$(-2;-3;4)$",
+   "$(2;-3;4)$",
+   "$(2;3;-4)$",
+   "$(2;3;4)$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $\\vec{u}=2\\vec{i}+3\\vec{j}-4\\vec{k}\\Leftrightarrow \\vec{u}=(2;3;-4)$.",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112070202060",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ tọa độ $Oxyz$, cho $A(1;0;1)$ và vecto $\\vec{AC}=(0;6;1)$. Điểm $C$ nào sau đây thỏa mãn điều kiện?",
+  "lua_chon": [
+   "$C(1;6;0)$",
+   "$C(1;6;2)$",
+   "$C(-1;6;-1)$",
+   "$C(-1;-6;-2)$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Gọi $C(x;y;z)$.\nTa có $\\vec{AC}=(x-1;y;z-1)$.\nTheo giả thiết $\\vec{AC}=(0;6;1)$, suy ra $\\begin{cases} x-1=0 \\ y=6 \\ z-1=1 \\\\ \\end{cases}\\Leftrightarrow \\begin{cases} x=1 \\ y=6 \\ z=2 \\\\ \\end{cases}$.\nVậy điểm cần tìm là $C(1;6;2)$.",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112070202061",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho $\\vec{a}=-\\vec{i}+3\\vec{j}-5\\vec{k}$. Tọa độ của vecto $\\vec{a}$ là",
+  "lua_chon": [
+   "$(1;-3;5)$",
+   "$(-5;3;-1)$",
+   "$(5;-3;1)$",
+   "$(-1;3;-5)$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Vecto $\\vec{a}=-\\vec{i}+3\\vec{j}-5\\vec{k}$ có tọa độ là $(-1;3;-5)$.",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112070202063",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho vectơ $\\vec{w} = (-9;-7;7)$. Tìm tọa độ điểm $D$ sao cho $\\vec{OD} = \\vec{w}$.",
+  "lua_chon": [
+   "$(0;-9;7)$.",
+   "$(9;7;7)$.",
+   "$(-9;7;-7)$.",
+   "$(-9;-7;7)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Theo định nghĩa tọa độ của điểm trong không gian, tọa độ của vectơ $\\vec{OD}$ chính là tọa độ của điểm $D$.\nVì $\\vec{OD} = \\vec{w} = (-9;-7;7)$ nên điểm $D$ có tọa độ là $(-9;-7;7)$.",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112070203003",
+  "loai": "tra_loi_ngan",
+  "de": "Hình dưới đây mô tả một sân cầu lông với kích thước theo tiêu chuẩn quốc tế. Ta chọn hệ trục $Oxyz$ cho sân đó (đơn vị trên mỗi trục là mét) và hai điểm $A,B$ như hình. Xác định tọa độ của $\\vec{AB}$.",
+  "dap_an": "(0; 6,1; 1,55)",
+  "loi_giai": "Ta có $A(6,7;0;0), B(6,7;6,1;1,55)$. Vậy tọa độ $\\vec{AB}$ là:\n$\\vec{AB}=(6,7-6,7;6,1-0;1,55-0)=(0;6,1;1,55)$.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Một số mô hình toán thực tế"
+ },
+ {
+  "ma_cau": "T112070203017",
+  "loai": "tra_loi_ngan",
+  "de": "(TH) Một căn phòng dạng hình hộp chữ nhật với chiều dài $8m$, rộng $6m$ và cao $4m$ có hai chiếc quạt treo tường. Chiếc quạt $A$ treo chính giữa bức tường $8m$ và cách trần $1m$, chiếc quạt $B$ treo chính giữa bức tường $6m$ và cách trần $1,5m$. Hỏi khoảng cách giữa hai chiếc quạt $AB$ cách nhau bao nhiêu $m$ (làm tròn đến hàng phần nghìn)",
+  "dap_an": "5.025",
+  "loi_giai": "Chọn hệ trục tọa độ như hình vẽ, khi đó ta có điểm $A(4;0;3)$ và điểm $B(0;3;\\dfrac{5}{2})\\Rightarrow \\vec{AB} = (-4;3;-\\dfrac{1}{2})$. Do đó độ dài đoạn thẳng $AB = 5,025$.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Một số mô hình toán thực tế"
+ },
+ {
+  "ma_cau": "T112070301185",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho $\\vec{a}=2\\overrightarrow{i}-3\\overrightarrow{k}$. Tìm tọa độ của vectơ $\\vec{a}$.",
+  "lua_chon": [
+   "$\\left( 0;-2;3 \\right)$.",
+   "$\\left( 2;0;-3 \\right)$.",
+   "$\\left( 2;-3;0 \\right)$.",
+   "$\\left( -2;-3;0 \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chọn C\nA",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tìm toạ độ của điểm hoặc véc tơ từ dữ kiện cho trước"
+ },
+ {
+  "ma_cau": "T112070302009",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ toạ độ $Oxyz$, cho $\\vec{a}=(1;2;3)$, $\\vec{b}=(2;2;-1)$. Toạ độ $\\vec{a}-2\\vec{b}$ là:",
+  "lua_chon": [
+   "$(-3;-2;1)$.",
+   "$(3;2;5)$.",
+   "$(-3;-2;5)$.",
+   "$(-1;0;4)$.",
+   "D."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $2\\vec{b}=(4;4;-2)$.\nSuy ra $\\vec{a}-2\\vec{b}=(1-4;2-4;3-(-2))=(-3;-2;5)$.",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tính tổng, hiệu, tích của véc tơ với một số theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070302011",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho $\\vec{a}(1;2;3)$ và $\\vec{b}(0;-1;2)$. Vectơ $\\vec{c}=\\vec{a}-\\vec{b}$ có tọa độ là",
+  "lua_chon": [
+   "$(-1;-3;-1)$.",
+   "$(1;1;5)$.",
+   "$(0;-2;6)$.",
+   "$(1;3;1)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $\\vec{c}=\\vec{a}-\\vec{b}=(1-0;2-(-1);3-2)=(1;3;1)$.\nVậy vectơ $\\vec{c}$ có tọa độ là $(1;3;1)$.",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tính tổng, hiệu, tích của véc tơ với một số theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070302012",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho hai vectơ $\\vec{a}=(1;2;3)$, $\\vec{b}=(2;2;-1)$. Tọa độ của vectơ $\\vec{a}-2\\vec{b}$ là",
+  "lua_chon": [
+   "$(-3;-2;5)$.",
+   "$(-1;0;4)$.",
+   "$(3;2;5)$.",
+   "$(-3;-2;1)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $2\\vec{b}=(4;4;-2)$.\nSuy ra $\\vec{a}-2\\vec{b}=(1-4;2-4;3-(-2))=(-3;-2;5)$.",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tính tổng, hiệu, tích của véc tơ với một số theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070302024",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho hai véctơ $\\vec{a}=(3;0;1)$, $\\vec{c}=(1;1;0)$. Tìm tọa độ của véctơ $\\vec{b}$\nthỏa mãn đẳng thức $\\vec{b}-\\vec{a}+2\\vec{c}=\\vec{0}$?",
+  "lua_chon": [
+   "$\\vec{b}=(-1;2;-1)$.",
+   "$\\vec{b}=(-2;1;-1)$.",
+   "$\\vec{b}=(1;-2;1)$.",
+   "$\\vec{b}=(1;2;1)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn C\nDo $\\vec{b}-\\vec{a}+2\\vec{c}=\\vec{0}\\Leftrightarrow\\vec{b}=\\vec{a}-2\\vec{c}=(1;-2;1)$.",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tính tổng, hiệu, tích của véc tơ với một số theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070302056",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, tìm tọa độ của $2\\overrightarrow{i}$.",
+  "lua_chon": [
+   "$\\left( 2;0;0 \\right)$.",
+   "$\\left( 1;0;0 \\right)$.",
+   "$\\left( 0;2;0 \\right)$.",
+   "$\\left( 2;1;1 \\right)$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{i}=\\left( 1;0;0 \\right)\\Rightarrow 2\\overrightarrow{i}=\\left( 2;0;0 \\right)$",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tính tổng, hiệu, tích của véc tơ với một số theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070303001",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho hai vecto $\\vec{u} = (2; -1; -2)$ và $\\vec{v} = (1; 1; 3)$. Giá trị của $\\vec{u} \\cdot \\vec{v}$ bằng",
+  "lua_chon": [
+   "9.",
+   "7.",
+   "$3\\sqrt{11}$.",
+   "-5."
+  ],
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tính tích vô hướng và góc giữa hai véc tơ theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070304002",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ tọa độ $Oxyz$, cho $\\vec{a} = -3\\vec{i} + 5\\vec{j} + \\vec{k}$. Độ dài của $\\vec{a}$ là",
+  "lua_chon": [
+   "$\\sqrt{17}$.",
+   "35.",
+   "17.",
+   "$\\sqrt{35}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $\\vec{a} = -3\\vec{i} + 5\\vec{j} + \\vec{k} \\Rightarrow \\vec{a} = (-3;5;1)$.\nĐộ dài của vector $\\vec{a}$ là $|\\vec{a}| = \\sqrt{(-3)^2 + 5^2 + 1^2} = \\sqrt{9+25+1} = \\sqrt{35}$.",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tính độ dài véc tơ hoặc khoảng cách giữa hai điểm"
+ },
+ {
+  "ma_cau": "T112070304014",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ tọa độ $Oxyz$, cho hai vecto $\\vec{a}(1;2;3)$, $\\vec{b}(0;-1;1)$. Độ dài của vecto $2\\vec{a} - \\vec{b}$ bằng",
+  "lua_chon": [
+   "54.",
+   "$\\sqrt{54}$",
+   "62.",
+   "$\\sqrt{62}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $2\\vec{a} = (2;4;6).$\nSuy ra $2\\vec{a} - \\vec{b} = (2-0;4-(-1);6-1) = (2;5;5).$\nĐộ dài của vecto $2\\vec{a} - \\vec{b}$ là $|2\\vec{a} - \\vec{b}| = \\sqrt{2^2 + 5^2 + 5^2} = \\sqrt{54}.$",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tính độ dài véc tơ hoặc khoảng cách giữa hai điểm"
+ },
+ {
+  "ma_cau": "T112070305001",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ tọa độ $Oxyz$, cho hai điểm $A(2; 1; -2)$ và $B(-4; 3; 4)$. Tọa độ trung điểm $M$ của đoạn $AB$ là:",
+  "lua_chon": [
+   "$(-2; 4; 2).$",
+   "$(-8; 2; -8).$",
+   "$(-1; 2; 1)$",
+   "$(-6; 2; 6).$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Tọa độ trung điểm $M$ của đoạn $AB$ là $M\\left(\\dfrac{2-4}{2}; \\dfrac{1+3}{2}; \\dfrac{-2+4}{2}\\right) \\Rightarrow M(-1; 2; 1).$",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Dùng hệ thức trung điểm, trọng tâm theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070306001",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho vecto $\\vec{a} = (-1;-2;3)$. Tìm tọa độ của vecto $\\vec{b} = (2;y;z)$, biết rằng vecto $\\vec{b}$ cùng phương với vecto $\\vec{a}$.",
+  "lua_chon": [
+   "$\\vec{b} = (2; 4;-6).$",
+   "$\\vec{b} = (2;-4; 6).$",
+   "$\\vec{b} = (2; 4; 6).$",
+   "$\\vec{b} = (2;-3; 3)."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vì vecto $\\vec{b}$ cùng phương với vecto $\\vec{a}$ nên tồn tại số thực $k \\neq 0$ sao cho $\\vec{b} = k\\vec{a}$.\nSuy ra $\\begin{cases} 2 = k \\cdot (-1) \\\\ y = k \\cdot (-2) \\\\ z = k \\cdot 3 \\end{cases} \\Leftrightarrow \\begin{cases} k = -2 \\\\ y = 4 \\\\ z = -6 \\end{cases}$\nVậy $\\vec{b} = (2;4;-6)$.\nChọn đáp án A",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Xét hai véc tơ cùng phương, vuông góc hoặc ba véc tơ đồng phẳng"
+ },
+ {
+  "ma_cau": "T112070307005",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho ba điểm $A(2;-1;0)$, $B(5;0;1)$, $C(3;2;-1)$. Tọa độ điểm $M$ thỏa mãn đẳng thức $6\\vec{MA} - 11\\vec{MB} + 9\\vec{MC} = \\vec{0}$ là",
+  "lua_chon": [
+   "$(4;-3;5)$",
+   "$(-3;-4;-5)$",
+   "$(-4;3;-5)$",
+   "$(4;3;-5)$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $6\\vec{MA} - 11\\vec{MB} + 9\\vec{MC} = \\vec{0} \\Leftrightarrow x_M = \\dfrac{6x_A - 11x_B + 9x_C}{6-11+9};... \\Rightarrow M(-4;3;-5)$. Chọn C.",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tìm điểm thoả mãn điều kiện cho trước hoặc cực trị hình học (tâm tỉ cự)"
+ },
+ {
+  "ma_cau": "T112070308001",
+  "loai": "tra_loi_ngan",
+  "de": "Cho khối chóp $S.ABC$ được đặt vào trong hệ trục toạ độ $Oxyz$ với $B = (0; 6; 0)$, $C = (8; 0; 0)$, $A$ là điểm trên mặt $(Oxy)$ và $S$ là điểm nằm trên trục $Oz$ sao cho $\\vec{AS} = -\\dfrac{1}{12}[\\vec{AB}, \\vec{AC}]$. Tính thể tích của khối chóp $S.ABC$. (Làm tròn đến hàng đơn vị)",
+  "dap_an": "32",
+  "loi_giai": "Do $A \\in (Oxy)$ nên $A(x; y; 0)$.\n$S \\in Oz$ nên $S(0; 0; z)$.\nTa có $\\vec{AB} = (-x; 6 - y; 0)$, $\\vec{AC} = (8 - x; -y; 0)$.\n$[\\vec{AB}, \\vec{AC}] = (0; 0; xy - (6 - y)(8 - x)) = (0; 0; xy - (48 - 6x - 8y + xy)) = (0; 0; 6x + 8y - 48)$.\nMặt khác, $\\vec{AS} = (-x; -y; z)$.\nTheo giả thiết: $\\vec{AS} = -\\dfrac{1}{12}[\\vec{AB}, \\vec{AC}] \\Leftrightarrow \\begin{cases} -x = 0 \\\\ -y = 0 \\\\ z = -\\dfrac{1}{12}(6x + 8y - 48) \\end{cases} \\Leftrightarrow \\begin{cases} x = 0 \\\\ y = 0 \\\\ z = 4 \\end{cases}$\nVậy $A(0; 0; 0)$, $S(0; 0; 4)$.\nKhi đó $A \\equiv O$, tam giác $ABC$ vuông tại $A$ nên diện tích đáy là $S_{\\triangle ABC} = \\dfrac{1}{2}AB \\cdot AC = \\dfrac{1}{2} \\cdot 6 \\cdot 8 = 24$.\nĐường cao của …",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Toạ độ hoá một số bài toán hình học không gian"
+ },
+ {
+  "ma_cau": "T112070308005",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình lập phương $ABCD.A_1B_1C_1D_1$ có cạnh bằng 3. Tính $|\\overrightarrow{AB} + 2\\overrightarrow{AD} + 4\\overrightarrow{AA_1}|$ (kết quả làm tròn đến hàng phần chục).",
+  "dap_an": "13.7",
+  "loi_giai": "Chọn hệ trục tọa độ với $A(0;0;0)$, $B(3;0;0)$, $D(0;3;0)$ và $A_1(0;0;3)$.\nKhi đó ta có các tọa độ vecto $\\overrightarrow{AB} = (3;0;0)$, $\\overrightarrow{AD} = (0;3;0)$ và $\\overrightarrow{AA_1} = (0;0;3)$.\nVecto tổng $\\overrightarrow{V} = \\overrightarrow{AB} + 2\\overrightarrow{AD} + 4\\overrightarrow{AA_1} = (3; 6; 12)$.\nĐộ dài của vecto tổng là $|\\overrightarrow{V}| = \\sqrt{3^2 + 6^2 + 12^2} = \\sqrt{189} \\approx 13,7477$.\nLàm tròn kết quả đến hàng phần chục, ta được 13,7.",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Toạ độ hoá một số bài toán hình học không gian"
+ },
+ {
+  "ma_cau": "T112070310001",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho hai điểm $A(0;3;-1)$ và $B(-1;-6;2)$. Tìm giao điểm $C$ của đường thẳng $AB$ và trục $Ox$.",
+  "lua_chon": [
+   "$C\\left(-\\dfrac{1}{3};0;0\\right)$",
+   "$C\\left(\\dfrac{1}{3};0;0\\right)$",
+   "$C(3;0;0)$",
+   "$C(-3;0;0)$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Chọn A\nDo $C$ thuộc trục $Ox$ nên $C(c;0;0)$.\nTa có $\\overrightarrow{AB} = (-1;-9;3)$ và $\\overrightarrow{AC} = (c;-3;1)$.\nVì $C = AB \\cap Ox$ nên ba điểm $A, B, C$ thẳng hàng hay $\\overrightarrow{AB}$ cùng phương $\\overrightarrow{AC}$\n$\\Leftrightarrow \\dfrac{c}{-1} = \\dfrac{-3}{-9} = \\dfrac{1}{3} \\Leftrightarrow c = -\\dfrac{1}{3}$. Vậy $C\\left(-\\dfrac{1}{3};0;0\\right)$.",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Điều kiện cùng phương của hai vecto"
+ },
+ {
+  "ma_cau": "T112070311007",
+  "loai": "tra_loi_ngan",
+  "de": "Một chiếc máy bay đang bay trong hệ trục toạ độ $Oxyz$ với mặt phẳng $(Oxy)$ là mặt đất như hình vẽ. [hình: hệ trục tọa độ Oxyz có điểm A]\nBiết rằng khi đang ở độ cao $8000$ mét so với mặt đất (vị trí $A$) thì máy bay chuyển động đều với vận tốc $\\vec{v}(100; 110; 200)$ (đơn vị m/s).\nHỏi sau $30$ giây thì máy bay đã lên đến độ cao bao nhiêu km so với mặt đất?",
+  "dap_an": "14",
+  "loi_giai": "Mặt phẳng $(Oxy)$ là mặt đất, do đó độ cao của máy bay chính là cao độ $z$ của nó.\nTại vị trí $A$, máy bay ở độ cao $8000$ m, suy ra cao độ ban đầu của máy bay là $z_0 = 8000$ m.\nVận tốc của máy bay được biểu diễn bởi vectơ $\\vec{v}(100; 110; 200)$, suy ra tốc độ thay đổi theo phương thẳng đứng (trục $Oz$) là $v_z = 200$ m/s.\nSau $30$ giây, độ cao của máy bay tăng thêm một lượng là:\n$\\Delta z = v_z \\cdot t = 200 \\cdot 30 = 6000$ m.\nĐộ cao mới của máy bay so với mặt đất là:\n$z = z_0 + \\Delta z = 8000 + 6000 = 14000$ m.\nĐổi đơn vị sang km: $14000$ m $= 14$ km.\nVậy sau $30$ giây máy bay lên đến độ cao $14$ km so với mặt đất.",
+  "co_hinh": true,
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Toán thực tế liên quan đến vecto vận tốc"
+ },
+ {
+  "ma_cau": "T112070312001",
+  "loai": "tra_loi_ngan",
+  "de": "Trong không gian $Oxyz$, một chiếc điện thoại iphone được đặt trên một giá đỡ có ba chân với điểm đặt $S(0;0;20)$ và các điểm chạm mặt đất của ba chân lần lượt là $A(0;-6;0)$, $B(3\\sqrt{3};3;0)$, $C(-3\\sqrt{3};3;0)$ (đơn vị cm).\nCho biết điện thoại có trọng lượng là $2N$. Gọi ba lực $\\vec{F_1}$, $\\vec{F_2}$, $\\vec{F_3}$ tác dụng tại $S$ và có phương lần lượt theo các đoạn $SA,SB,SC$ có độ lớn bằng nhau.\nBiết tọa độ của lực $\\vec{F_1}=(a;b;c)$, khi đó $T=2a+5b+6c$ bằng?",
+  "dap_an": "-5",
+  "loi_giai": "Trọng lượng của điện thoại là $2N$ và hướng thẳng đứng xuống dưới nên véc-tơ trọng lực là $\\vec{P}=(0;0;-2)$.\nĐiện thoại ở trạng thái cân bằng nên tổng các lực do điện thoại tác dụng lên giá đỡ tại $S$ chính bằng trọng lực của điện thoại.\nDo đó $\\vec{F_1}+\\vec{F_2}+\\vec{F_3}=\\vec{P}=(0;0;-2)$.\nTa có $\\vec{SA}=(0;-6;-20)$, $\\vec{SB}=(3\\sqrt{3};3;-20)$, $\\vec{SC}=(-3\\sqrt{3};3;-20)$.\nSuy ra $\\vec{SA}+\\vec{SB}+\\vec{SC}=(0;0;-60)$.\nVì $\\vec{F_1}$, $\\vec{F_2}$, $\\vec{F_3}$ có phương lần lượt theo các đoạn $SA,SB,SC$ và có độ lớn bằng nhau, đồng thời $SA=SB=SC=\\sqrt{436}$ nên tồn tại số thực $k>0$ sao cho $\\vec{F_1}=k\\vec{SA}$, $\\vec{F_2}=k\\vec{SB}$, $\\vec{F_3}=k\\vec{SC}$.\nKhi đó $\\vec{F_1}+\\vec{F …",
+  "co_hinh": true,
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Một số bài toán thực tế liên quan đến Lực"
+ }
+]

@@ -1,0 +1,100 @@
+T1120000005441	XS	NNB01252		2	1	
+T1120000004767	HS	P1.2.2		1	1	
+T1120000004380	HS	P2.2.3		2	1	
+T112020301014	HS	P2.3.2		3	1	
+T112020202078	HS	P2.2.1		2	1	
+T112000000278	HS	NEW	đọc toạ độ giao điểm của đồ thị với trục từ hình vẽ	1	0	giữa P2.1.1 và dạng đọc đồ thị
+T1120000005798	VT	P1.2.1		2	0	DS nhiều ý: tổng hiệu, độ dài, tích vô hướng trên lập phương
+T1120000005292	NHTP	NEW	tích phân tính thể tích công trình thực tế mái parabol	4	0	có thể HS tối ưu hoặc thể tích thiết diện
+T112020402050	HS	P4.4.2		3	1	
+T1120000005985	HS	P1.2.3		2	1	
+T112070101083	VT	P1.2.6		2	1	
+T112020401104	HS	P4.4.2		4	0	tự lập hàm lợi nhuận nhiều tham số
+T312010802070	PPTD	NDB00854		3	0	DS nhiều ý: vectơ chỉ phương, PT tham số, điểm, khoảng cách điểm-đường
+T1120000005888	HS	P4.6.2		3	1	
+T112010101226	HS	P1.2.3		1	1	
+T112070308018	VT	P2.2.2		3	0	gắn hệ trục chóp đều tìm toạ độ vectơ
+T1120000004276	VT	P1.2.1		2	1	
+T3120000001088	PPTD	NDB00849		2	0	DS nhiều ý: VTPT, PT mặt phẳng
+T112000000604	HS	P1.9.2		2	1	
+T1120000006546	HS	P1.4.3		1	1	
+T1120000006790	NHTP	NDB00753		2	0	hàm đa thức + căn
+T312000000516	PPTD	NDB00859		1	1	
+T112020104082	HS	P2.1.1		2	1	
+T1120000006904	NHTP	NDB00752		2	1	
+T3120000001068	PPTD	NDB00835		2	0	DS nhiều ý: VTPT, mp song song, vectơ AB, ...
+T1120000004399	HS	P2.2.1		2	1	
+T312000000965	VT	P3.7.2		3	0	DS: vùng radar, PT đường thẳng, thời gian; có thể PPTD
+T1120000006144	HS	P4.6.1		3	0	dân số, tốc độ tăng, hàm hữu tỉ
+T1120000005103	NHTP	NDB00742		1	1	
+T1120000006591	HS	P2.2.2		2	1	
+T112020104075	HS	P2.1.1		2	1	
+T1120000004815	NHTP	NDB00752		2	1	
+T1120000003858	HS	P2.1.1		2	1	
+T1120000004397	SDT	NNB01259		2	1	
+T112010305026	HS	P1.8.1		2	1	
+T112010305059	HS	P1.8.1		2	1	
+T1120000004475	VT	P3.4.1		1	1	
+T1120000004717	SDT	NEW	xác định cỡ mẫu từ bảng số liệu ghép nhóm	1	1	
+T312010202048	PPTD	NDB00843		1	1	
+T112070302041	VT	P3.1.1		1	1	
+T1120000005681	HS	P1.9.1		2	0	đọc tiệm cận xiên từ đồ thị
+T312010101227	PPTD	NDB00851		3	0	DS nhiều ý: mp song song trục, khoảng cách
+T1120000001212	HS	P1.4.2		2	0	DS nhiều ý đọc đồ thị: cực trị, GTNN, đơn điệu, giao trục
+T1120000004364	HS	P2.2.2		3	0	DS nhiều ý hàm nhất biến
+T1120000006391	HS	P1.7.1		1	1	
+T112000000487	HS	P2.2.2		3	0	DS nhiều ý hàm nhất biến
+T112000000301	HS	P2.2.2		2	0	hàm 2/(cx+b), đọc hệ số từ đồ thị
+T1120000004227	VT	P1.5.1		3	1	
+T112010401114	HS	P1.6.2		2	1	
+T1120000006184	HS	NEW	đọc toạ độ giao điểm của đồ thị với trục từ hình vẽ	1	0	giữa P2.2.1 và dạng đọc đồ thị
+T1120000004382	HS	P1.3.1		2	1	
+T312000000942	PPTD	?	mô hình giá đỡ ba chân: độ dài trụ để mặt phẳng nghiêng góc cho trước	4	0	hình học không gian thực tế; chưa chắc chương
+T312010102133	PPTD	NDB00841		1	1	
+T112000000391	HS	P1.4.1		3	0	DS nhiều ý: cực trị, tiệm cận, lập hàm từ BBT
+T1120000004341	HS	P1.7.1		1	1	
+T312000000245	PPTD	NEW	điểm trên mặt cầu có khoảng cách đến mặt phẳng nhỏ nhất	4	1	
+T112010202113	HS	P1.4.1		1	1	
+T1120000004987	SDT	NNB01262		1	0	độ lệch chuẩn là căn phương sai, lý thuyết
+T1120000004385	HS	P1.6.1		1	1	
+T1120000006596	VT	P1.5.1		3	0	DS nhiều ý: lực căng chóp đều, vectơ
+T3120000001045	PPTD	NDB00837		1	1	
+T1120000006050	VT	P3.1.1		1	1	
+T1120000003947	HS	P2.3.1		2	1	
+T112000000462	HS	NEW	tìm m để hàm đa thức bậc cao đạt cực đại tại điểm cho trước	4	1	
+T1120000003264	VT	NEW	tìm toạ độ đỉnh hình thang cân biết ba đỉnh	3	1	
+T1120000004662	SDT	NNB01260		2	1	
+T1120000003023	VT	P3.7.3		4	0	lực giá đỡ ba chân viết bằng toạ độ
+T112070304048	VT	P3.3.1		1	1	
+T1120000003238	HS	P1.4.4		2	1	
+T312010802056	PPTD	NEW	mô hình chuyển động trong Oxyz: tốc độ thay đổi diện tích bóng	4	0	có thể HS tốc độ liên quan P4.7
+T1120000006621	VT	P3.2.3		2	1	
+T112000000808	NHTP	NDB00781		3	0	thể tích trụ khoét chỏm cầu, chưa chắc chương (hình học 12 cũ)
+T1120000004834	XS	NNB01256		3	1	
+T1120000001260	SDT	NNB01260		2	1	
+T1120000002934	HS	P2.3.3		3	0	đường thẳng qua 2 cực trị hàm bậc 2/bậc 1 và khoảng cách
+T112010202089	HS	P1.4.1		1	1	
+T1120000006597	VT	P3.4.3		2	1	
+T112070101061	VT	P1.2.1		1	1	
+T1120000003984	VT	P3.4.1		3	1	
+T112070101203	VT	P1.2.5		2	1	
+T1120000006312	VT	P1.2.3		1	0	quy tắc ba điểm
+T1120000005011	NHTP	NDB00636		2	1	
+T112020401237	HS	P4.3.3		4	1	
+T1120000006659	VT	P1.4.2		3	0	DS nhiều ý: tổng vectơ, độ dài, tích vô hướng, cosin
+T112070101144	O	NEW	hình học không gian: thể tích và khoảng cách hình chóp	4	1	DS nhiều ý
+T312000000375	PPTD	NDB00839		1	1	
+T312000000431	PPTD	NDB00867		3	1	
+T112010301072	HS	P1.7.1		1	1	
+T1120000003224	HS	P1.4.3		1	1	
+T112020104103	HS	P2.1.1		2	1	
+T1120000004801	XS	NNB01251		2	1	
+T1120000005953	VT	P1.4.2		3	1	
+T112020401081	HS	P4.4.1		3	1	
+T112070109035	VT	P1.5.1		3	1	
+T1120000001309	HS	P1.5.1		3	0	DS nhiều ý: đạo hàm, giá trị, nghiệm, GTLN
+T1120000006011	HS	P4.2.2		3	1	
+T112020104065	HS	P2.1.1		2	1	
+T1120000006025	VT	P2.1.2		1	1	
+T312000000358	PPTD	NDB00873		2	1	
+T1120000004633	VT	P3.2.3		2	0	DS nhiều ý: hình bình hành, vuông, hình chiếu, trọng tâm

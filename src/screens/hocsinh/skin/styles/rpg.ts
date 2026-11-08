@@ -13,6 +13,7 @@ import { BAN_DO_RPG } from './rpgBanDo2d'
 import { ANH_NV, ANH_TT } from './rpgGiaoDien'
 import { LOC } from './rpgLoc'
 import { BOSS_TRANG, BOSS_CUONG } from './rpgBossTC'
+import { BOSS_THUY_1, BOSS_THUY_2, BOSS_THUY_3 } from './rpgBossThuy'
 
 const A = '/bk-ui/hs/skin/rpg'
 const BVP = "'Be Vietnam Pro', system-ui, sans-serif"
@@ -132,11 +133,13 @@ export const RPG: Skin = {
     // 07/10: Trang + Cường (kit hoạt ảnh Thùy đưa — rpgBossTC.ts). Cùng Minh Quân + Thùy ⇒ 4 boss có hoạt ảnh, mỗi trận boss chọn NGẪU NHIÊN trong số này (the3d/loai.ts).
     boss_trang: BOSS_TRANG,
     boss_cuong: BOSS_CUONG,
+    // THÙY (24/10): Form 1 nhà khoa học có HOẠT ẢNH (rpgBossThuy.ts, thay 6 ảnh tĩnh chibi cũ) — vẫn nằm trong bể boss ngẫu nhiên; mo3d giữ cho trang xem mô hình 3D chibi.
+    // Form 2 (Ác quỷ Fi Fai) + Form 3 (form cuối) = boss CUỐI cốt truyện (cuoi: true — ngoài bể ngẫu nhiên); chưa gắn pha trận, xem thử ở hs.html?xem=boss&ma=boss_thuy_2 / _3.
     boss_thuy: {
-      ten: 'Thùy', cao: 2.9, dang: 'anh',
+      ...BOSS_THUY_1,
       mo3d: { da: '#efc197', toc: '#17141c', kinh: true, ao: '#2a2143', aoLot: '#b88f4a', vien: '#e9c77b', ngoc: '#7a4dff', hao: '#9b6bff', haoGian: '#ffc94d' },
-      dung: `${A}/boss_thuy_dung.png`, noi: `${A}/boss_thuy_noi.png`, chieu: `${A}/boss_thuy_chieu.png`,
-      trung: `${A}/boss_thuy_trung.png`, gian: `${A}/boss_thuy_gian.png`, ha: `${A}/boss_thuy_ha.png`, chandung: `${A}/boss_thuy_chandung.png`,
     },
+    boss_thuy_2: BOSS_THUY_2,
+    boss_thuy_3: BOSS_THUY_3,
   },
 }

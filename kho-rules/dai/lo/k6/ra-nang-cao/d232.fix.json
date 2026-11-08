@@ -1,0 +1,17 @@
+[
+  {
+    "ma_cau": "T106020802013",
+    "noi_dung": "Tìm chữ số tận cùng của số $23^{21^{21}}$.",
+    "dap_an": "3",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chữ số tận cùng của $23^{m}$ lặp lại theo chu kì 4 của số mũ, nên **tìm số dư của số mũ khi chia cho 4** rồi dùng chữ số tận cùng của $23^4$.\n\n**Bước 1.** Xét số mũ $21^{21}$: cơ số 21 chia 4 dư 1, nên mọi thừa số của tích đều có cùng số dư và ta tìm số dư của cả lũy thừa bằng cách nhân các số dư.\n\n**Bước 2.** Viết số mũ dưới dạng $4k$ hoặc $4k+r$ rồi tách lũy thừa của $23$ thành tích của $23^{4k}$ với phần còn lại.\n\n**Bước 3.** Tính $23^4$ để biết chữ số tận cùng của nó, rồi dùng tính chất: số có chữ số tận cùng là 0, 1, 5 hoặc 6 nâng lên lũy thừa nào cũng giữ nguyên chữ số tận cùng.\n\n**Bước 4.** Nhân chữ số tận cùng của $23^{4k}$ với chữ số tận cùng của phần lũy thừa còn lại, chữ số tận cùng của tích là chữ số cần tìm.\n\n**Chú ý:** số mũ ở đây cũng là một lũy thừa, nên phải tìm số dư của nó khi chia cho 4 chứ không chia cho 10.\n\n**Phần 2. Trình bày**\n\nVì $21$ chia 4 dư 1 nên mỗi thừa số $21$ của $21^{21}$ chia 4 dư 1, mà tích các số chia 4 dư 1 thì chia 4 dư 1 (vì $(4a+1).(4b+1)=4.(4ab+a+b)+1$).\n\nSuy ra $21^{21}=4k+1$ ($kinmathbb{N}^*$).\n\nDo đó $23^{21^{21}}=23^{4k+1}=23^{4k}.23$.\n\nTa có $23^4=279841$ có chữ số tận cùng là 1 nên $23^{4k}=279841^k$ cũng có chữ số tận cùng là 1 (tích các số cùng có chữ số tận cùng là 1 thì vẫn có chữ số tận cùng là 1).\n\nSố $23$ có chữ số tận cùng là 3.\n\nTa có $1.3=3$ nên $23^{4k}.23$ có chữ số tận cùng là 3.\n\nVậy $23^{21^{21}}$ có chữ số tận cùng là 3.",
+    "loai_cau": "tra_loi_ngan",
+    "lua_chon": null,
+    "ly_do": "Lệch khuôn gốc: gốc là lũy thừa tầng (cơ số^{lũy thừa}) còn clone là $2^{2022}$ một tầng, Phần 1 cũng khác khuôn (Chia số mũ 2022…). Đáp số cũ (4) vẫn đúng; đổi đề sang dạng tầng cùng khuôn gốc 003 (số mũ $21^{21}$ chia 4 dư 1), cơ số 23 khác gốc và các clone khác.",
+    "kiem": [
+      "(()=>{const mp=(b,e,m)=>{let r=1n;b%=m;while(e>0n){if(e&1n)r=r*b%m;b=b*b%m;e>>=1n}return r};return mp(23n,21n**21n,10n)===3n})()",
+      "(21n**21n)%4n===1n",
+      "23n**4n===279841n",
+      "23n**4n%10n===1n"
+    ]
+  }
+]

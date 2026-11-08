@@ -1,0 +1,54 @@
+{
+ "P1 Bài 1": {
+  "tt": "khong_tt",
+  "ghi": "vành khuyên, diện tích"
+ },
+ "P1 Bài 2": {
+  "tt": "khong_tt",
+  "ghi": "hình tròn, tìm bán kính"
+ },
+ "P1 Bài 3": {
+  "tt": "khong_tt",
+  "ghi": "hình quạt, diện tích phần giấy (hiệu hai hình quạt)"
+ },
+ "P1 Bài 4": {
+  "tt": "khong_tt",
+  "ghi": "chu vi, diện tích hình tròn"
+ },
+ "P1 Bài 5": {
+  "tt": "khong_tt",
+  "ghi": "một phần tư hình vành khuyên"
+ },
+ "P1 Bài 6": {
+  "tt": "khong_tt",
+  "ghi": "hình quạt 245 độ và dây cung, khoảng cách từ tâm đến dây"
+ },
+ "P1 Bài 7": {
+  "tt": "hai_tt",
+  "ghi": "hai tiếp tuyến MA, MB cắt nhau tại M; MA=MB, MO vuông góc AB; ý d dùng tam giác đồng dạng"
+ },
+ "P1 Bài 8": {
+  "tt": "hai_tt",
+  "ghi": "hai tiếp tuyến AB, AC cắt nhau tại A; OA trung trực BC; ý d dùng BED=90 độ và tam giác đồng dạng"
+ },
+ "P1 Bài 9": {
+  "tt": "ba_tt",
+  "ghi": "nửa đường tròn đường kính AB, tiếp tuyến Ax, By và tiếp tuyến tại C (DE); DO, OE là trung trực AC, BC; H là trọng tâm tam giác ABC"
+ },
+ "P1 Bài 10": {
+  "tt": "ba_tt",
+  "ghi": "nửa đường tròn đường kính AB, tiếp tuyến Ax, By và tiếp tuyến tại M (CD); AC+BD=CD, AC.BD=R^2"
+ },
+ "P1 Bài 11": {
+  "tt": "hai_tt",
+  "ghi": "chứng minh CA, CB là tiếp tuyến của (O'), hai tiếp tuyến cắt nhau tại C; ý b dùng hai phân giác và góc so le trong"
+ },
+ "P1 Bài 12": {
+  "tt": "hai_tt",
+  "ghi": "hai đường tròn tiếp xúc ngoài, tiếp tuyến chung MN và tiếp tuyến chung tại A; ý a–c dùng đối xứng trục; ý d dùng tính chất hai tiếp tuyến cắt nhau tại B (BM = BA với (O), BN = BA với (O')) ⇒ B trung điểm MN (trạm soát đổi từ tt_khac)"
+ },
+ "P1 Bài 13": {
+  "tt": "ba_tt",
+  "ghi": "nửa đường tròn đường kính AB, tiếp tuyến Ax, By và tiếp tuyến tại C (MN); MN=AM+BN, AM.BN=R^2, CKOH hình chữ nhật, AB tiếp xúc đường tròn ngoại tiếp MON"
+ }
+}

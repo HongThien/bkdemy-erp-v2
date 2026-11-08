@@ -76,7 +76,7 @@ function MauTheGioi({ tt }: { tt: number }) {
       onAnTin={noop} onDongY={noop} onDeSau={noop} onMoKetBan={noop} onBack={noop} choKhoe={TG.CHO_KHOE} onKhoe={noop} onGoKhoe={noop}>
       {tt === 4 && <TamKetBan tim="" onTim={noop} ds={TG.GOI_Y} onGui={noop} onDong={noop} />}
       {tt >= 7 && tt <= 10 && <TamBinhLuan tin={TG.TIN_MO} ct={TG.CHI_TIET} xem={xem} onXem={setXem} loc={loc} onLoc={setLoc} banPhim={banPhim} onBanPhim={setBanPhim}
-        danhMuc={TG.DANH_MUC} onGui={noop} dangGui={false} loi={null} onGo={noop} onAn={noop} onDong={noop} />}
+        danhMuc={TG.DANH_MUC} onGui={noop} dangGui={false} loi={null} onGo={noop} onAn={noop} onDong={noop} choGo onGuiChu={async () => true} />}
       {tt === 12 && <TamKhoe tt={TG.CHO_KHOE.tin[0]} danhMuc={TG.DANH_MUC} cau={cauKhoe} onCau={setCauKhoe} onDang={noop} dangDang={false} loi={null} onDong={noop} />}
       {tt === 13 && <LenSong tt={TG.CHO_KHOE.tin[0]} onXem={noop} />}
       {tt === 11 && <TamCamXuc tin={TG.TIN_MO} danhMuc={TG.DANH_MUC} onChon={noop} onDong={noop} />}

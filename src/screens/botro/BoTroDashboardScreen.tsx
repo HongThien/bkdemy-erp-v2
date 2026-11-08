@@ -5,6 +5,7 @@
 import { useEffect, useState } from 'react'
 import { dashboardBoTroTuan, type TuanBT, type LoaiBT, type TtLuot, type SoLoai } from '../../lib/botro_dashboard'
 import { congNgay, ddmmVN, thuCuaNgay, tuanCuaNgay } from '../../lib/tuan'
+import KetQuaBoTroTuan from './KetQuaBoTroTuan'
 
 const LOAI: { k: LoaiBT; ten: string; vach: string }[] = [
   { k: 'bo_tro_yeu', ten: 'Yếu', vach: 'border-l-amber-400' },
@@ -28,7 +29,7 @@ const pct = (a: number, b: number) => (b > 0 ? Math.round((a / b) * 100) : 0)
 
 // Rời màn rồi quay lại = đúng chỗ cũ (CLAUDE.md §2): nhớ tuần đang xem + ô đang mở + dữ liệu đã tải.
 type Mo = { tu: string; loai: LoaiBT; tt: TtLuot } | null
-const NHO: { den: string | null; mo: Mo; rows: TuanBT[] | null } = { den: null, mo: null, rows: null }
+const NHO: { den: string | null; mo: Mo; rows: TuanBT[] | null; kq: string | null } = { den: null, mo: null, rows: null, kq: null } // kq = tuần (tu) đang mở panel 'Kết quả'
 
 export default function BoTroDashboardScreen() {
   const [den, setDenState] = useState<string | null>(NHO.den) // null = tuần này
@@ -37,6 +38,8 @@ export default function BoTroDashboardScreen() {
   const [dangTai, setDangTai] = useState(false)
   const [mo, setMoState] = useState<Mo>(NHO.mo)
   const setMo = (m: Mo) => { NHO.mo = m; setMoState(m) }
+  const [kqTu, setKqTuState] = useState<string | null>(NHO.kq)
+  const setKqTu = (v: string | null) => { NHO.kq = v; setKqTuState(v) }
 
   async function tai(d: string | null) {
     setDangTai(true); setLoi(null)
@@ -70,7 +73,7 @@ export default function BoTroDashboardScreen() {
       {rows === null && !loi && <p className="py-16 text-center text-[13.5px] text-slate-400">Đang tải…</p>}
 
       <div className="flex flex-col gap-4">
-        {(rows ?? []).map((w) => <TheTuan key={w.tu} w={w} mo={mo?.tu === w.tu ? mo : null} onMo={setMo} />)}
+        {(rows ?? []).map((w) => <TheTuan key={w.tu} w={w} mo={mo?.tu === w.tu ? mo : null} onMo={setMo} kqMo={kqTu === w.tu} onKq={(b) => setKqTu(b ? w.tu : null)} />)}
       </div>
 
       {rows && rows.length > 0 && (
@@ -87,7 +90,7 @@ export default function BoTroDashboardScreen() {
   )
 }
 
-function TheTuan({ w, mo, onMo }: { w: TuanBT; mo: Mo; onMo: (m: Mo) => void }) {
+function TheTuan({ w, mo, onMo, kqMo, onKq }: { w: TuanBT; mo: Mo; onMo: (m: Mo) => void; kqMo: boolean; onKq: (b: boolean) => void }) {
   const so = tuanCuaNgay(w.tu)
   const tong = w.tong // tổng cả 3 loại — tính ở DB
   const ds = mo ? w.ds.filter((x) => x.loai === mo.loai && x.tt === mo.tt) : []
@@ -102,8 +105,10 @@ function TheTuan({ w, mo, onMo }: { w: TuanBT; mo: Mo; onMo: (m: Mo) => void }) 
       </div>
       <div className="flex flex-col gap-2.5">
         {LOAI.map((l) => <DongLoai key={l.k} ten={l.ten} vach={l.vach} s={w.loai[l.k]} dangMo={mo?.loai === l.k ? mo.tt : null}
-          onMo={(tt) => onMo(mo && mo.loai === l.k && mo.tt === tt ? null : { tu: w.tu, loai: l.k, tt })} />)}
+          onMo={(tt) => onMo(mo && mo.loai === l.k && mo.tt === tt ? null : { tu: w.tu, loai: l.k, tt })}
+          onKetQua={l.k === 'bo_tro_yeu' && !w.tuong_lai && w.loai.bo_tro_yeu.da_chay > 0 ? () => onKq(!kqMo) : undefined} ketQuaMo={kqMo} />)}
       </div>
+      {kqMo && <KetQuaBoTroTuan tu={w.tu} den={w.den} onDong={() => onKq(false)} />}
       {mo && (
         <div className="mt-3 rounded-xl border border-slate-200 bg-slate-50/60 p-3">
           <div className="mb-2 flex items-center gap-2">
@@ -136,7 +141,7 @@ function TheTuan({ w, mo, onMo }: { w: TuanBT; mo: Mo; onMo: (m: Mo) => void }) 
   )
 }
 
-function DongLoai({ ten, vach, s, dangMo, onMo }: { ten: string; vach: string; s: SoLoai; dangMo: TtLuot | null; onMo: (tt: TtLuot) => void }) {
+function DongLoai({ ten, vach, s, dangMo, onMo, onKetQua, ketQuaMo }: { ten: string; vach: string; s: SoLoai; dangMo: TtLuot | null; onMo: (tt: TtLuot) => void; onKetQua?: () => void; ketQuaMo?: boolean }) {
   return (
     <div className={`rounded-xl border border-slate-200/70 border-l-4 ${vach} px-4 py-3`}>
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
@@ -159,6 +164,10 @@ function DongLoai({ ten, vach, s, dangMo, onMo }: { ten: string; vach: string; s
             {x.ten} <b>{s[x.k]}</b>
           </button>
         ))}
+        {onKetQua && (
+          <button onClick={onKetQua} title="Xem từng ca × từng em: dạng đã học, trước ca → nay, luyện/test — giảm được bao nhiêu dạng yếu"
+            className={`ml-auto rounded-full border px-3 py-0.5 text-[12.5px] font-semibold ${ketQuaMo ? 'border-indigo-300 bg-indigo-600 text-white' : 'border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100'}`}>📊 Kết quả bổ trợ</button>
+        )}
         {s.go > 0 && (
           <button onClick={() => onMo('go')} title="Ca đã gỡ khỏi lịch (đổi lịch) — không tính vào chốt. Bấm để xem danh sách"
             className={`ml-1 rounded-full border px-2.5 py-0.5 text-[12.5px] font-medium ${PILL_TT.go} ${dangMo === 'go' ? 'ring-2 ring-indigo-300' : 'hover:bg-slate-50'}`}>

@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "HHC001721",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "hai đường thẳng cắt nhau xác định đúng một mặt phẳng",
+  "can_cu": "Nó chứa hai đường thẳng cắt nhau."
+ },
+ {
+  "ma_cau": "HHC001722",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC001723",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "giao điểm K=SN∩(MAD) rồi tính hệ số SK=xKN",
+  "can_cu": "TÍNH tỉ số độ dài các đoạn thẳng thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC001724",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "giao tuyến (SAB),(IDC) song song AB, CD, tính IJ=kAB",
+  "can_cu": "giao tuyến của hai mặt phẳng chứa hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC001725",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song: chứng minh (IJK) song song (BCD)",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC001726",
+  "dang_bai_id": "HH00137",
+  "chac": "vua",
+  "ly_do": "giao điểm SD với (AGI) dùng Thales với MC song song AD",
+  "can_cu": "chứng minh hai đường thẳng song song (bằng đường trung bình"
+ },
+ {
+  "ma_cau": "HHC001727",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "IJ song song BD nên IJ song song (BCD)",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC001728",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "ba điểm không thẳng hàng xác định một mặt phẳng",
+  "can_cu": "Có một và chỉ một mặt phẳng đi qua ba điểm không thẳng hàng cho trước"
+ },
+ {
+  "ma_cau": "HHC001729",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "mệnh đề đúng về hai đường thẳng chéo nhau",
+  "can_cu": "Hai đường thẳng không có điểm chung thì có thể song song hoặc chéo nhau"
+ },
+ {
+  "ma_cau": "HHC001730",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "a song song (P), b nằm trong (P): trường hợp không xảy ra",
+  "can_cu": "nhận biết vị trí tương đối của đường thẳng và mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC001731",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "giao tuyến (SAD),(SBC) song song AD, BC",
+  "can_cu": "giao tuyến của hai mặt phẳng chứa hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC001732",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "đếm số mặt và cạnh hình chóp tứ giác",
+  "can_cu": "nhận biết yếu tố của hình chóp, tứ diện (số đỉnh, cạnh, mặt)"
+ },
+ {
+  "ma_cau": "HHC001733",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC001734",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC001735",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "giao điểm N=SD∩(MBC) rồi tính tỉ số SN/SD",
+  "can_cu": "TÍNH tỉ số độ dài các đoạn thẳng thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC001736",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "giao tuyến (SAC),(SBD) là SO",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC001737",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "SA và BC chéo nhau trong đáy hình thang",
+  "can_cu": "xét vị trí tương đối của hai đường thẳng trong không gian"
+ },
+ {
+  "ma_cau": "HHC001738",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "AB song song CD nên AB song song (SCD)",
+  "can_cu": "nhận biết vị trí tương đối của đường thẳng và mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC001739",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song (hình hộp): mặt phẳng song song mặt phẳng",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC001740",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "khẳng định sai về hai mặt phẳng có điểm chung",
+  "can_cu": "Nếu hai mặt phẳng phân biệt có một điểm chung thì chúng còn có một điểm chung khác nữa"
+ },
+ {
+  "ma_cau": "HHC001741",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hai mặt phẳng song song (hình lăng trụ, hình hộp): tính chất lăng trụ",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC001742",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC001743",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC001744",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "giao điểm N=SD∩(ABM) rồi tính tỉ số SN/SD",
+  "can_cu": "TÍNH tỉ số độ dài các đoạn thẳng thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC001745",
+  "dang_bai_id": "HH00148",
+  "chac": "cao",
+  "ly_do": "mặt phẳng qua M,N cắt hình chóp, diện tích MPQ và MNPQ",
+  "can_cu": "tính chu vi, diện tích thiết diện"
+ },
+ {
+  "ma_cau": "HHC001746",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "AJ và BI của tứ diện chéo nhau",
+  "can_cu": "Hai đường thẳng không có điểm chung thì có thể song song hoặc chéo nhau"
+ },
+ {
+  "ma_cau": "HHC001747",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "OO' song song AC nên OO' song song (BCE)",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC001748",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "giao tuyến (SAC),(SBD) là SO",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC001749",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC001750",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "giao điểm I=SA∩(MNP) rồi tính tỉ số IS/IA",
+  "can_cu": "TÍNH tỉ số độ dài các đoạn thẳng thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC001751",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "chứng minh CD song song (SAB), giao điểm K rồi tính tỉ số",
+  "can_cu": "TÍNH tỉ số độ dài các đoạn thẳng thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC001752",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "yếu tố xác định một mặt phẳng duy nhất",
+  "can_cu": "Nó chứa hai đường thẳng cắt nhau."
+ },
+ {
+  "ma_cau": "HHC001753",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "giao tuyến (SAC),(SBD) là SO",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC001754",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "số mặt phẳng chứa a và song song đường chéo b",
+  "can_cu": "nhận biết vị trí tương đối của đường thẳng và mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC001755",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "MN song song BD nên MN song song (ABCD)",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC001756",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC001757",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "giao điểm I=CM∩(SBD) rồi tính tỉ số MC/MI",
+  "can_cu": "TÍNH tỉ số độ dài các đoạn thẳng thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC001758",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "điểm I=MN∩BD không thuộc mặt phẳng nào",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC001759",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "MD song song NC nhờ đường trung bình và hình bình hành",
+  "can_cu": "chứng minh tứ giác là hình bình hành, hình thang"
+ },
+ {
+  "ma_cau": "HHC001760",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "giao tuyến (GIJ),(BCD) qua G song song CD",
+  "can_cu": "giao tuyến của hai mặt phẳng chứa hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC001761",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC001762",
+  "dang_bai_id": "HH00137",
+  "chac": "vua",
+  "ly_do": "tìm k để MN song song DE, giải bằng vectơ",
+  "can_cu": "chứng minh hai đường thẳng song song (bằng đường trung bình"
+ },
+ {
+  "ma_cau": "HHC001763",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "giao tuyến, giao điểm I rồi tính tỉ số AI/AM",
+  "can_cu": "TÍNH tỉ số độ dài các đoạn thẳng thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC001764",
+  "dang_bai_id": "HH00087",
+  "chac": "vua",
+  "ly_do": "đường AG cắt đường nào, lập luận đồng phẳng; đề dựa hình",
+  "can_cu": "tìm giao điểm của đường thẳng và mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC001765",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "MN song song EF nên MN song song (ABCD)",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC001766",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "đếm số mặt và cạnh hình chóp ngũ giác",
+  "can_cu": "nhận biết yếu tố của hình chóp, tứ diện (số đỉnh, cạnh, mặt)"
+ },
+ {
+  "ma_cau": "HHC001767",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "số mặt phẳng chứa bốn đỉnh một tứ giác",
+  "can_cu": "Có một và chỉ một mặt phẳng đi qua ba điểm không thẳng hàng cho trước"
+ },
+ {
+  "ma_cau": "HHC001768",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "mặt phẳng qua điểm và đường thẳng không chứa điểm",
+  "can_cu": "Có một và chỉ một mặt phẳng đi qua ba điểm không thẳng hàng cho trước"
+ },
+ {
+  "ma_cau": "HHC001769",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC001770",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC001771",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "mặt phẳng song song SA,BD tìm N rồi tính CN/CS",
+  "can_cu": "TÍNH tỉ số độ dài các đoạn thẳng thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC001772",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "ba điểm không thẳng hàng xác định một mặt phẳng",
+  "can_cu": "Có một và chỉ một mặt phẳng đi qua ba điểm không thẳng hàng cho trước"
+ },
+ {
+  "ma_cau": "HHC001773",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "giao tuyến (SAC),(SBD) là SM",
+  "can_cu": "tìm giao tuyến của hai mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC001774",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "các điểm đồng phẳng thuộc (SAD)",
+  "can_cu": "Có một và chỉ một mặt phẳng đi qua ba điểm không thẳng hàng cho trước"
+ },
+ {
+  "ma_cau": "HHC001775",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC001776",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "giao tuyến (IJK),(ACD) rồi tính tỷ số đoạn thẳng",
+  "can_cu": "TÍNH tỉ số độ dài các đoạn thẳng thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC001777",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "giao điểm MN với (BCD) bằng điểm chung",
+  "can_cu": "tìm giao điểm của đường thẳng và mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC001784",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "tổng số cạnh và mặt hình chóp tứ giác",
+  "can_cu": "nhận biết yếu tố của hình chóp, tứ diện (số đỉnh, cạnh, mặt)"
+ },
+ {
+  "ma_cau": "HHC001785",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC001786",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC001787",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC001788",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "MN song song CD nên MN song song (ABCD)",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC001789",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "cặp đường thẳng cắt nhau trong hình chóp",
+  "can_cu": "xét vị trí tương đối của hai đường thẳng trong không gian"
+ },
+ {
+  "ma_cau": "HHC001790",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ },
+ {
+  "ma_cau": "HHC001791",
+  "dang_bai_id": "HH00147",
+  "chac": "cao",
+  "ly_do": "giao điểm I=AM∩(SBD) rồi tính IA=xIM",
+  "can_cu": "TÍNH tỉ số độ dài các đoạn thẳng thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC001792",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "giao tuyến (MAB),(SCD) song song AB, CD",
+  "can_cu": "giao tuyến của hai mặt phẳng chứa hai đường thẳng song song"
+ },
+ {
+  "ma_cau": "HHC001793",
+  "dang_bai_id": "HH00137",
+  "chac": "cao",
+  "ly_do": "IJ song song CD nhờ trọng tâm và Thales đảo",
+  "can_cu": "chứng minh hai đường thẳng song song (bằng đường trung bình"
+ },
+ {
+  "ma_cau": "HHC001794",
+  "dang_bai_id": "HH00141",
+  "chac": "cao",
+  "ly_do": "MN song song BC nên MN song song (BCD)",
+  "can_cu": "chứng minh đường thẳng song song với mặt phẳng"
+ },
+ {
+  "ma_cau": "HHC001795",
+  "dang_bai_id": "HH00087",
+  "chac": "cao",
+  "ly_do": "khẳng định sai về điểm thuộc mặt phẳng",
+  "can_cu": "Có một và chỉ một mặt phẳng đi qua ba điểm không thẳng hàng cho trước"
+ },
+ {
+  "ma_cau": "HHC001796",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề",
+  "can_cu": null
+ }
+]

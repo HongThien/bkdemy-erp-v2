@@ -1,0 +1,944 @@
+[
+ {
+  "id": "tt-b1-p2-C40",
+  "vai": "luyen",
+  "dang_bai": "NDB01159",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hiệu căn bậc hai và căn bậc ba: tách ra từng hiệu rồi nhân liên hợp.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tính giới hạn $L=\\lim(\\sqrt{n^{2}+n+1}-\\sqrt[3]{n^{3}+n^{2}})$.",
+  "lua_chon": [
+   "$+\\infty$.",
+   "$\\dfrac{5}{4}$.",
+   "$\\dfrac{53}{2}$.",
+   "$\\dfrac{1}{6}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thêm bớt $n$ để tách thành hai hiệu, mỗi hiệu chứa đúng một căn, rồi nhân liên hợp tương ứng (bậc hai và bậc ba).\n\n**Bước 1.** Thêm và bớt $n$ để tách biểu thức thành tổng của hiệu căn bậc hai với $n$ và hiệu $n$ với căn bậc ba.\n\n**Bước 2.** Hiệu thứ nhất nhân liên hợp bậc hai, hiệu thứ hai dùng hằng đẳng thức $a^3-b^3$ để làm mất căn ở tử.\n\n**Bước 3.** Chia cả tử và mẫu của từng phân thức cho luỹ thừa cao nhất của $n$ rồi dùng giới hạn của $\\dfrac1n$.\n\n**Bước 4.** Tính giới hạn từng phần, lấy hiệu hai kết quả và đối chiếu với bốn phương án.\n\n**Phần 2. Trình bày**\n\nĐặt $a=\\sqrt[3]{n^{3}+n^{2}}$. Ta có $\\sqrt{n^{2}+n+1}-a=(\\sqrt{n^{2}+n+1}-n)+(n-a)$.\n\n$\\sqrt{n^{2}+n+1}-n=\\dfrac{n+1}{\\sqrt{n^{2}+n+1}+n}=\\dfrac{1+\\dfrac1n}{\\sqrt{1+\\dfrac1n+\\dfrac1{n^{2}}}+1}$.\n\n$n-a=\\dfrac{n^{3}-a^{3}}{n^{2}+na+a^{2}}=\\dfrac{-n^{2}}{n^{2}+na+a^{2}}=\\dfrac{-1}{1+\\sqrt[3]{1+\\dfrac1n}+(\\sqrt[3]{1+\\dfrac1n})^{2}}$.\n\nKhi $n\\to+\\infty$ thì phân thức thứ nhất có giới hạn $\\dfrac{1}{1+1}=\\dfrac12$ và phân thức thứ hai có giới hạn $\\dfrac{-1}{1+1+1}=-\\dfrac13$.\n\nVậy $L=\\dfrac12-\\dfrac13=\\dfrac16$.\n\nChọn D.",
+  "kiem": [
+   "(()=>{const v=(n=>Math.sqrt(n*n+n+1)-Math.cbrt(n**3+n*n))(1e6);const o=[Infinity,5/4,53/2,1/6];return o.map(x=>Math.abs(x-v)<1e-4).join()==='false,false,false,true'})()"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C41",
+  "vai": "luyen",
+  "dang_bai": "NDB01148",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Nhận biết dãy $q^n$ có giới hạn $0$ khi $|q|<1$.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Dãy số nào sau đây có giới hạn bằng $0$?",
+  "lua_chon": [
+   "$(\\dfrac{4}{\\text{e}})^{n}$.",
+   "$(\\dfrac{1}{3})^{n}$.",
+   "$(\\dfrac{5}{3})^{n}$.",
+   "$(\\dfrac{-5}{3})^{n}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dãy $q^n$ có giới hạn $0$ khi và chỉ khi $|q|<1$, nên chỉ cần so sánh giá trị tuyệt đối của cơ số với $1$.\n\n**Bước 1.** Nhớ quy tắc: dãy luỹ thừa $q^n$ có giới hạn $0$ khi $|q|<1$ và không có giới hạn hữu hạn khi $|q|>1$.\n\n**Bước 2.** Tính giá trị tuyệt đối của từng cơ số ở bốn phương án, với số $\\text{e}$ lấy giá trị gần đúng $2{,}718$.\n\n**Bước 3.** So sánh giá trị tuyệt đối của từng cơ số với $1$ để loại các phương án không thoả quy tắc.\n\n**Phần 2. Trình bày**\n\nVới số $\\text{e}\\approx2{,}718$ ta có $\\dfrac{4}{\\text{e}}>1$ nên $|\\dfrac{4}{\\text{e}}|>1$ và dãy $(\\dfrac{4}{\\text{e}})^{n}$ không có giới hạn $0$.\n\nTa có $|\\dfrac13|<1$ nên $\\lim(\\dfrac13)^{n}=0$.\n\nTa có $|\\dfrac53|=|\\dfrac{-5}{3}|>1$ nên hai dãy $(\\dfrac53)^{n}$ và $(\\dfrac{-5}{3})^{n}$ không có giới hạn $0$.\n\nVậy dãy có giới hạn bằng $0$ là $(\\dfrac13)^{n}$.\n\nChọn B.",
+  "kiem": [
+   "Math.pow(1/3,200)<1e-90&&[4/Math.E,5/3,-5/3].every(q=>Math.abs(q)>1)"
+  ],
+  "sach_dap_so": "A (sách in chữ A nhưng lời giải sách dẫn tới (1/3)^n)",
+  "ghi_chu": "LỆCH SÁCH — sách in \"Chọn A\" nhưng lời giải sách kết luận $\\lim(1/3)^n=0$, tức phương án B; giữ B. Đề chứa số e (ngoài chương trình 11, chỉ dùng như hằng số ≈2,718)."
+ },
+ {
+  "id": "tt-b1-p2-C42",
+  "vai": "luyen",
+  "dang_bai": "NDB01163",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tổng cấp số nhân lùi vô hạn cho $u_1$ và $q$.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tính tổng $S$ của cấp số nhân lùi vô hạn có số hạng đầu $u_{1}=1$ và công bội $q=-\\dfrac{1}{2}$.",
+  "lua_chon": [
+   "$S=2$.",
+   "$S=\\dfrac{3}{2}$.",
+   "$S=1$.",
+   "$S=\\dfrac{2}{3}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cấp số nhân lùi vô hạn ($|q|<1$) có tổng $S=\\dfrac{u_1}{1-q}$, chỉ cần thay $u_1$ và $q$ đã cho.\n\n**Bước 1.** Kiểm tra điều kiện $|q|<1$ để chắc chắn đây là cấp số nhân lùi vô hạn.\n\n**Bước 2.** Viết công thức tính tổng $S$ theo số hạng đầu và công bội.\n\n**Bước 3.** Thay số, tính giá trị của biểu thức rồi đối chiếu với bốn phương án.\n\n**Phần 2. Trình bày**\n\nVì $|q|=\\dfrac12<1$ nên đây là cấp số nhân lùi vô hạn.\n\nTa có $S=\\dfrac{u_{1}}{1-q}$.\n\n$S=\\dfrac{1}{1-(-\\dfrac12)}=\\dfrac{1}{\\dfrac32}=\\dfrac23$.\n\nVậy $S=\\dfrac23$.\n\nChọn D.",
+  "kiem": [
+   "(()=>{const v=Array.from({length:200},(_,k)=>(-0.5)**k).reduce((a,b)=>a+b,0);const o=[2,3/2,1,2/3];return o.map(x=>Math.abs(x-v)<1e-4).join()==='false,false,false,true'})()"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C43",
+  "vai": "luyen",
+  "dang_bai": "NDB01163",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tổng vô hạn $2+\\dfrac23+\\dots$ là cấp số nhân lùi vô hạn.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tổng vô hạn $S=2+\\dfrac{2}{3}+\\dfrac{2}{3^{2}}+\\dots+\\dfrac{2}{3^{n}}+\\dots$ có giá trị bằng",
+  "lua_chon": [
+   "$\\dfrac{8}{3}$.",
+   "$3$.",
+   "$4$.",
+   "$2$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số hạng của tổng lập thành một cấp số nhân có công bội nhỏ hơn $1$ về giá trị tuyệt đối nên dùng công thức tổng cấp số nhân lùi vô hạn.\n\n**Bước 1.** Nhận ra dãy các số hạng là cấp số nhân và xác định số hạng đầu cùng công bội.\n\n**Bước 2.** Kiểm tra công bội thoả điều kiện của cấp số nhân lùi vô hạn.\n\n**Bước 3.** Áp dụng công thức tổng rồi so với bốn phương án.\n\n**Phần 2. Trình bày**\n\nCác số hạng $2;\\dfrac23;\\dfrac2{3^{2}};\\dots$ lập thành cấp số nhân có $u_{1}=2$ và $q=\\dfrac13$.\n\nVì $|q|<1$ nên $S=\\dfrac{u_{1}}{1-q}$.\n\n$S=\\dfrac{2}{1-\\dfrac13}=\\dfrac{2}{\\dfrac23}=3$.\n\nVậy $S=3$.\n\nChọn B.",
+  "kiem": [
+   "(()=>{const v=Array.from({length:200},(_,k)=>2/3**k).reduce((a,b)=>a+b,0);const o=[8/3,3,4,2];return o.map(x=>Math.abs(x-v)<1e-4).join()==='false,true,false,false'})()"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C44",
+  "vai": "luyen",
+  "dang_bai": "NDB01164",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Biểu diễn số thập phân vô hạn tuần hoàn thành phân số bằng tổng cấp số nhân lùi vô hạn.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Số thập phân vô hạn tuần hoàn $3{,}1555\\dots=3{,}1(5)$ viết dưới dạng hữu tỉ là",
+  "lua_chon": [
+   "$\\dfrac{63}{20}$.",
+   "$\\dfrac{142}{45}$.",
+   "$\\dfrac{1}{18}$.",
+   "$\\dfrac{7}{2}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tách số đã cho thành phần không tuần hoàn cộng với tổng một cấp số nhân lùi vô hạn tạo bởi phần tuần hoàn.\n\n**Bước 1.** Tách số thập phân thành phần hữu hạn và phần tuần hoàn bắt đầu từ chữ số $5$ đầu tiên.\n\n**Bước 2.** Viết phần tuần hoàn thành tổng các số hạng của một cấp số nhân với số hạng đầu và công bội xác định.\n\n**Bước 3.** Tính tổng cấp số nhân lùi vô hạn đó rồi cộng với phần không tuần hoàn.\n\n**Bước 4.** Quy đồng để được một phân số rồi đối chiếu với bốn phương án.\n\n**Phần 2. Trình bày**\n\nTa có $3{,}1(5)=3{,}1+0{,}05+0{,}005+0{,}0005+\\dots$\n\nCác số $0{,}05;\\ 0{,}005;\\ 0{,}0005;\\dots$ lập thành cấp số nhân lùi vô hạn có $u_{1}=0{,}05$ và $q=\\dfrac1{10}$.\n\nTổng của chúng là $\\dfrac{0{,}05}{1-\\dfrac1{10}}=\\dfrac{1}{18}$.\n\nDo đó $3{,}1(5)=\\dfrac{31}{10}+\\dfrac1{18}=\\dfrac{279}{90}+\\dfrac{5}{90}=\\dfrac{284}{90}=\\dfrac{142}{45}$.\n\nVậy $3{,}1(5)=\\dfrac{142}{45}$.\n\nChọn B.",
+  "kiem": [
+   "(()=>{const v=3.1+Array.from({length:40},(_,k)=>5*10**-(k+2)).reduce((a,b)=>a+b,0);const o=[63/20,142/45,1/18,7/2];return o.map(x=>Math.abs(x-v)<1e-4).join()==='false,true,false,false'})()"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": "Đề in \"3,15555…=3,1(5)\" — chuẩn hoá thành $3{,}1555\\dots$"
+ },
+ {
+  "id": "tt-b1-p2-C45",
+  "vai": "luyen",
+  "dang_bai": "NDB01163",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tổng $1+\\dfrac12+\\dfrac14+\\dots$ là tổng cấp số nhân lùi vô hạn.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tổng $1+\\dfrac{1}{2}+\\dfrac{1}{4}+\\dots+\\dfrac{1}{2^{n}}+\\dots$ bằng",
+  "lua_chon": [
+   "$\\dfrac{1}{2}$.",
+   "$2$.",
+   "$1$.",
+   "$+\\infty$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số hạng $1;\\dfrac12;\\dfrac14;\\dots$ lập thành cấp số nhân với công bội có giá trị tuyệt đối nhỏ hơn $1$ nên có tổng hữu hạn.\n\n**Bước 1.** Nhận ra các số hạng là cấp số nhân và xác định số hạng đầu, công bội.\n\n**Bước 2.** Kiểm tra điều kiện $|q|<1$ để dùng được công thức tổng vô hạn.\n\n**Bước 3.** Thay vào công thức $S=\\dfrac{u_1}{1-q}$ rồi chọn phương án.\n\n**Phần 2. Trình bày**\n\nCác số hạng lập thành cấp số nhân có $u_{1}=1$ và $q=\\dfrac12$, $|q|<1$.\n\nDo đó tổng bằng $\\dfrac{u_{1}}{1-q}=\\dfrac{1}{1-\\dfrac12}=2$.\n\nVậy tổng đã cho bằng $2$.\n\nChọn B.",
+  "kiem": [
+   "(()=>{const v=Array.from({length:200},(_,k)=>0.5**k).reduce((a,b)=>a+b,0);const o=[1/2,2,1,Infinity];return o.map(x=>Math.abs(x-v)<1e-4).join()==='false,true,false,false'})()"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": "Đề in \"1+1/2+1/4+1/2^n+…\" thiếu số hạng, hiểu là cấp số nhân $1,\\dfrac12,\\dfrac14,\\dots$"
+ },
+ {
+  "id": "tt-b1-p2-C46",
+  "vai": "luyen",
+  "dang_bai": "NDB01163",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dãy truy hồi thực chất là cấp số nhân; tính $\\lim S_n$ bằng tổng cấp số nhân lùi vô hạn.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho dãy số $(u_{n})$, $n\\in\\mathbb{N}^{*}$, thoả mãn $u_{1}=3$ và $u_{n+1}=-\\dfrac{u_{n}}{5}$. Gọi $S_{n}=u_{1}+u_{2}+u_{3}+\\dots+u_{n}$ là tổng $n$ số hạng đầu tiên của dãy. Khi đó $\\lim S_{n}$ bằng",
+  "lua_chon": [
+   "$\\dfrac{1}{2}$.",
+   "$\\dfrac{3}{5}$.",
+   "$0$.",
+   "$\\dfrac{5}{2}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hệ thức $u_{n+1}=-\\dfrac{u_n}{5}$ cho thấy dãy là cấp số nhân, nên $\\lim S_n$ chính là tổng cấp số nhân lùi vô hạn.\n\n**Bước 1.** Lập tỉ số $\\dfrac{u_{n+1}}{u_n}$ để nhận ra dãy là cấp số nhân và tìm công bội.\n\n**Bước 2.** Kiểm tra công bội có giá trị tuyệt đối nhỏ hơn $1$ để biết tổng $S_n$ có giới hạn hữu hạn.\n\n**Bước 3.** Dùng công thức tổng cấp số nhân lùi vô hạn với số hạng đầu đã cho.\n\n**Phần 2. Trình bày**\n\nTa có $\\dfrac{u_{n+1}}{u_{n}}=-\\dfrac15$ với mọi $n$ nên $(u_{n})$ là cấp số nhân có $u_{1}=3$, công bội $q=-\\dfrac15$.\n\nVì $|q|<1$ nên $\\lim S_{n}=\\dfrac{u_{1}}{1-q}$.\n\n$\\lim S_{n}=\\dfrac{3}{1+\\dfrac15}=\\dfrac{3}{\\dfrac65}=\\dfrac52$.\n\nVậy $\\lim S_{n}=\\dfrac52$.\n\nChọn D.",
+  "kiem": [
+   "(()=>{const v=(()=>{let u=3,s=0;for(let i=0;i<200;i++){s+=u;u=-u/5}return s})();const o=[1/2,3/5,0,5/2];return o.map(x=>Math.abs(x-v)<1e-4).join()==='false,false,false,true'})()"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": "Sách ghi \"d=-1/5\" cho công bội, đúng là $q=-1/5$."
+ },
+ {
+  "id": "tt-b1-p2-C47",
+  "vai": "luyen",
+  "dang_bai": "NDB01151",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Tính $u_n$ của cấp số cộng rồi giới hạn phân thức cùng bậc.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho cấp số cộng $(u_{n})$ có số hạng đầu $u_{1}=2$ và công sai $d=3$. Tìm $\\lim\\dfrac{n}{u_{n}}$.",
+  "lua_chon": [
+   "$L=\\dfrac{1}{3}$.",
+   "$L=\\dfrac{1}{2}$.",
+   "$L=3$.",
+   "$L=2$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết số hạng tổng quát của cấp số cộng theo $n$ rồi chia cả tử và mẫu cho $n$ để tính giới hạn phân thức cùng bậc.\n\n**Bước 1.** Dùng công thức số hạng tổng quát của cấp số cộng để biểu diễn $u_n$ theo $n$.\n\n**Bước 2.** Thay $u_n$ vào phân thức $\\dfrac{n}{u_n}$ và nhận ra tử, mẫu cùng bậc theo $n$.\n\n**Bước 3.** Chia cả tử và mẫu cho $n$ rồi dùng $\\lim\\dfrac1n=0$ để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nTa có $u_{n}=u_{1}+(n-1)d=2+3(n-1)=3n-1$.\n\nDo đó $\\lim\\dfrac{n}{u_{n}}=\\lim\\dfrac{n}{3n-1}$.\n\nChia tử và mẫu cho $n$: $\\lim\\dfrac{n}{3n-1}=\\lim\\dfrac{1}{3-\\dfrac1n}=\\dfrac13$.\n\nVậy $L=\\dfrac13$.\n\nChọn A.",
+  "kiem": [
+   "(()=>{const v=(n=>n/(2+3*(n-1)))(1e7);const o=[1/3,1/2,3,2];return o.map(x=>Math.abs(x-v)<1e-4).join()==='true,false,false,false'})()"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C48",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Bản đồ thiếu dạng dãy cho bởi công thức truy hồi (tìm số hạng tổng quát, giới hạn); câu gộp 4 kiểu khác nhau (phân thức, liên hợp, truy hồi, tổng rút gọn).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Dãy số $(u_{n})$ nào sau đây có giới hạn khác số $1$ khi $n$ dần đến vô cùng?",
+  "lua_chon": [
+   "$u_{n}=\\dfrac{(2017-n)^{2018}}{n(2018-n)^{2017}}$.",
+   "$u_{n}=n(\\sqrt{n^{2}+2018}-\\sqrt{n^{2}+2016})$.",
+   "$u_{1}=2017$, $u_{n+1}=\\dfrac12(u_{n}+1)$ với $n=1,2,3,\\dots$",
+   "$u_{n}=\\dfrac{1}{1\\cdot2}+\\dfrac{1}{2\\cdot3}+\\dfrac{1}{3\\cdot4}+\\dots+\\dfrac{1}{n(n+1)}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phải tính giới hạn của cả bốn dãy rồi chọn dãy có giới hạn khác $1$, mỗi dãy cần một kĩ thuật riêng.\n\n**Bước 1.** Với dãy ở phương án A, tách thành tích hai phân thức có dạng $\\dfrac{c-n}{n}$ rồi chia cho $n$.\n\n**Bước 2.** Với dãy ở phương án B, nhân liên hợp để biến hiệu hai căn thành phân thức rồi chia cho $n$.\n\n**Bước 3.** Với dãy truy hồi ở phương án C, đặt dãy phụ $u_n-1$ để thành cấp số nhân rồi tìm giới hạn.\n\n**Bước 4.** Với tổng ở phương án D, tách mỗi số hạng thành hiệu hai phân số để các số hạng liên tiếp triệt tiêu.\n\n**Bước 5.** Đối chiếu bốn giới hạn tìm được với số $1$ để chọn phương án thoả đề.\n\n**Phần 2. Trình bày**\n\nPhương án A: $u_{n}=\\dfrac{2017-n}{n}\\cdot(\\dfrac{2017-n}{2018-n})^{2017}=(\\dfrac{2017}{n}-1)(\\dfrac{\\frac{2017}{n}-1}{\\frac{2018}{n}-1})^{2017}$.\n\nKhi $n\\to+\\infty$ thì $\\dfrac{2017}{n}-1\\to-1$ và thương trong ngoặc $\\to1$, nên $\\lim u_{n}=-1\\ne1$.\n\nPhương án B: $u_{n}=\\dfrac{n(2018-2016)}{\\sqrt{n^{2}+2018}+\\sqrt{n^{2}+2016}}=\\dfrac{2}{\\sqrt{1+\\frac{2018}{n^{2}}}+\\sqrt{1+\\frac{2016}{n^{2}}}}\\to\\dfrac{2}{1+1}=1$.\n\nPhương án C: từ $u_{n+1}-1=\\dfrac12(u_{n}-1)$ suy ra $u_{n}-1=\\dfrac{2016}{2^{n-1}}$, nên $\\lim u_{n}=1$.\n\nPhương án D: $u_{n}=1-\\dfrac12+\\dfrac12-\\dfrac13+\\dots+\\dfrac1n-\\dfrac1{n+1}=1-\\dfrac1{n+1}\\to1$.\n\nVậy chỉ dãy ở phương án A có giới hạn khác $1$ (bằng $-1$).\n\nChọn A.",
+  "kiem": [
+   "(()=>{const n=1e9;const a=((2017-n)/n)*Math.pow((2017-n)/(2018-n),2017);const m=1e5;const b=m*(Math.sqrt(m*m+2018)-Math.sqrt(m*m+2016));let u=2017;for(let i=0;i<200;i++)u=(u+1)/2;let d=0;for(let k=1;k<=1e6;k++)d+=1/(k*(k+1));return Math.abs(a+1)<1e-4&&Math.abs(b-1)<1e-4&&Math.abs(u-1)<1e-4&&Math.abs(d-1)<1e-4})()"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C49",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Bản đồ thiếu dạng tổng rút gọn liên tiếp (khử các số hạng đối nhau).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho dãy số $(u_{n})$ với $u_{n}=\\dfrac{n}{1+n^{2}+n^{4}}$ với mọi $n=1,2,\\dots$ Tính $\\lim(u_{1}+u_{2}+\\dots+u_{n})$.",
+  "lua_chon": [
+   "$\\dfrac{1}{4}$.",
+   "$1$.",
+   "$\\dfrac{1}{2}$.",
+   "$\\dfrac{1}{3}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân tích mẫu thành tích hai tam thức để tách $u_n$ thành hiệu hai phân số, khi cộng lại các số hạng liên tiếp sẽ triệt tiêu.\n\n**Bước 1.** Viết mẫu $1+n^2+n^4$ dưới dạng hiệu hai bình phương để phân tích thành tích hai nhân tử.\n\n**Bước 2.** Tách $u_n$ thành hiệu của hai phân số có mẫu là hai nhân tử vừa tìm.\n\n**Bước 3.** Viết tổng $u_1+u_2+\\dots+u_n$ và gạch bỏ các cặp số hạng đối nhau liên tiếp.\n\n**Bước 4.** Rút gọn tổng còn lại thành phân thức theo $n$ rồi tính giới hạn.\n\n**Phần 2. Trình bày**\n\nTa có $1+n^{2}+n^{4}=(n^{2}+1)^{2}-n^{2}=(n^{2}-n+1)(n^{2}+n+1)$.\n\nNên $u_{n}=\\dfrac{n}{(n^{2}-n+1)(n^{2}+n+1)}=\\dfrac12(\\dfrac{1}{n^{2}-n+1}-\\dfrac{1}{n^{2}+n+1})$.\n\nVì $(n+1)^{2}-(n+1)+1=n^{2}+n+1$ nên khi cộng, các số hạng liên tiếp triệt tiêu.\n\n$u_{1}+u_{2}+\\dots+u_{n}=\\dfrac12(1-\\dfrac{1}{n^{2}+n+1})=\\dfrac12\\cdot\\dfrac{n^{2}+n}{n^{2}+n+1}$.\n\nDo đó giới hạn bằng $\\dfrac12\\lim\\dfrac{1+\\frac1n}{1+\\frac1n+\\frac1{n^{2}}}=\\dfrac12$.\n\nVậy giới hạn cần tìm bằng $\\dfrac12$.\n\nChọn C.",
+  "kiem": [
+   "(()=>{const v=Array.from({length:100000},(_,i)=>i+1).reduce((s,n)=>s+n/(1+n*n+n**4),0);const o=[1/4,1,1/2,1/3];return o.map(x=>Math.abs(x-v)<1e-4).join()==='false,false,true,false'})()"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": "Đề in lim với \"x→+∞\" nhưng biến là $n$ (lỗi in), chuẩn hoá thành $n\\to+\\infty$."
+ },
+ {
+  "id": "tt-b1-p2-C50",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Bản đồ thiếu dạng dãy cho bởi công thức truy hồi (tìm số hạng tổng quát, giới hạn).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho dãy số $(u_{n})$ biết $u_{1}=-2$ và $u_{n}=3u_{n-1}-1$ với mọi $n\\ge2$. Khi đó $L=\\lim\\dfrac{u_{n}}{3^{n}}$",
+  "lua_chon": [
+   "Không xác định.",
+   "$L=+\\infty$.",
+   "$L=-\\dfrac{5}{6}$.",
+   "$L=0$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đặt $u_n=v_n+c$ với hằng số $c$ thích hợp để $(v_n)$ thành cấp số nhân, từ đó tìm công thức $u_n$ theo $n$.\n\n**Bước 1.** Tìm hằng số $c$ sao cho khi đặt $u_n=v_n+c$ thì hệ thức truy hồi chuyển thành $v_n=3v_{n-1}$.\n\n**Bước 2.** Xác định số hạng đầu và công bội của cấp số nhân $(v_n)$, suy ra $v_n$ rồi $u_n$ theo $n$.\n\n**Bước 3.** Chia $u_n$ cho $3^n$ và tách thành các số hạng có giới hạn quen thuộc.\n\n**Bước 4.** Tính giới hạn và đối chiếu với bốn phương án.\n\n**Phần 2. Trình bày**\n\nĐặt $u_{n}=v_{n}+\\dfrac12$. Từ $u_{n}=3u_{n-1}-1$ ta được $v_{n}+\\dfrac12=3v_{n-1}+\\dfrac32-1$, tức là $v_{n}=3v_{n-1}$.\n\nVậy $(v_{n})$ là cấp số nhân có $v_{1}=u_{1}-\\dfrac12=-\\dfrac52$ và công bội $3$, nên $v_{n}=-\\dfrac52\\cdot3^{n-1}$.\n\nDo đó $u_{n}=-\\dfrac52\\cdot3^{n-1}+\\dfrac12$.\n\nSuy ra $\\dfrac{u_{n}}{3^{n}}=-\\dfrac56+\\dfrac{1}{2\\cdot3^{n}}$.\n\nVì $\\lim\\dfrac{1}{3^{n}}=0$ nên $L=-\\dfrac56$.\n\nChọn C.",
+  "kiem": [
+   "(()=>{let u=-2n;for(let n=2n;n<=60n;n++)u=3n*u-1n;const v=Number(u*10n**12n/3n**60n)/1e12;return Math.abs(v+5/6)<1e-4&&v!==0})()"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C51",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Bản đồ thiếu dạng hai dãy cho bởi hệ truy hồi chéo có giới hạn hữu hạn (chuyển qua giới hạn để lập hệ).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hai dãy số $(u_{n}),(v_{n})$ đều tồn tại giới hạn hữu hạn. Biết hai dãy đồng thời thoả mãn $u_{n+1}=4v_{n}-2$ và $v_{n+1}=u_{n}+1$ với mọi $n\\in\\mathbb{Z}^{+}$. Giá trị của $\\lim\\limits_{n\\to+\\infty}(u_{n}+2v_{n})$ bằng",
+  "lua_chon": [
+   "$0$.",
+   "$\\dfrac{3}{2}$.",
+   "$-1$.",
+   "$\\dfrac{1}{2}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Gọi $a,b$ là giới hạn của hai dãy rồi chuyển qua giới hạn trong hai hệ thức truy hồi để lập hệ phương trình.\n\n**Bước 1.** Đặt $\\lim u_n=a$ và $\\lim v_n=b$ vì đề cho biết cả hai dãy có giới hạn hữu hạn.\n\n**Bước 2.** Lấy giới hạn hai vế của từng hệ thức, chú ý $\\lim u_{n+1}=\\lim u_n$ và $\\lim v_{n+1}=\\lim v_n$.\n\n**Bước 3.** Giải hệ hai phương trình ẩn $a,b$ vừa thu được.\n\n**Bước 4.** Tính biểu thức $a+2b$ rồi đối chiếu với bốn phương án.\n\n**Phần 2. Trình bày**\n\nĐặt $\\lim u_{n}=a$ và $\\lim v_{n}=b$. Vì $\\lim u_{n+1}=a$ và $\\lim v_{n+1}=b$ nên khi lấy giới hạn hai vế ta được hệ $\\begin{cases}a=4b-2\\\\b=a+1\\end{cases}$\n\nThế $b=a+1$ vào phương trình đầu: $a=4a+4-2$, suy ra $a=-\\dfrac23$.\n\nKhi đó $b=a+1=\\dfrac13$.\n\nVậy $\\lim(u_{n}+2v_{n})=a+2b=-\\dfrac23+\\dfrac23=0$.\n\nChọn A.",
+  "kiem": [
+   "(()=>{const a=-2/3,b=1/3;return Math.abs(a-(4*b-2))<1e-12&&Math.abs(b-(a+1))<1e-12&&Math.abs(a+2*b)<1e-12&&[0,3/2,-1,1/2].map(x=>Math.abs(x-(a+2*b))<1e-9).join()==='true,false,false,false'})()"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C52",
+  "vai": "luyen",
+  "dang_bai": "NDB01167",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Chiều cao cột khối cầu là tổng cấp số nhân lùi vô hạn (hình học lặp vô hạn).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Một mô hình gồm các khối cầu xếp chồng lên nhau tạo thành một cột thẳng đứng. Biết rằng mỗi khối cầu có bán kính gấp đôi khối cầu nằm ngay trên nó và bán kính khối cầu dưới cùng là $50$ cm. Hỏi mệnh đề nào sau đây là đúng?",
+  "lua_chon": [
+   "Chiều cao mô hình không quá $1{,}5$ mét.",
+   "Chiều cao mô hình tối đa là $2$ mét.",
+   "Chiều cao mô hình dưới $2$ mét.",
+   "Mô hình có thể đạt được chiều cao tuỳ ý."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chiều cao cột là tổng đường kính các khối cầu, tức là tổng một cấp số nhân có công bội $\\dfrac12$, nên bị chặn bởi giá trị của tổng vô hạn.\n\n**Bước 1.** Gọi bán kính các khối cầu từ dưới lên là $R_1,R_2,\\dots$ và tìm quan hệ giữa hai bán kính liên tiếp.\n\n**Bước 2.** Biểu diễn chiều cao $h_n$ của cột $n$ khối cầu bằng tổng các đường kính.\n\n**Bước 3.** Rút gọn $h_n$ bằng công thức tổng của $n$ số hạng đầu của cấp số nhân.\n\n**Bước 4.** So sánh $h_n$ với giá trị tổng vô hạn để biết chiều cao bị chặn ra sao rồi đối chiếu bốn phương án.\n\n**Phần 2. Trình bày**\n\nTa có $R_{1}=50$ cm và $R_{k+1}=\\dfrac12R_{k}$, nên $R_{k}=50\\cdot(\\dfrac12)^{k-1}$ (cm).\n\nChiều cao cột $n$ khối cầu: $h_{n}=2R_{1}+2R_{2}+\\dots+2R_{n}=100(1+\\dfrac12+\\dfrac1{2^{2}}+\\dots+\\dfrac1{2^{n-1}})$.\n\nTổng trong ngoặc bằng $\\dfrac{1-(\\frac12)^{n}}{1-\\frac12}=2-\\dfrac{1}{2^{n-1}}$, nên $h_{n}=200-\\dfrac{200}{2^{n}}$.\n\nDo đó $h_{n}<200$ cm với mọi $n$ và $\\lim h_{n}=200$ cm.\n\nVậy chiều cao mô hình luôn nhỏ hơn $2$ m, không thể đạt tới $2$ m và càng không lớn tuỳ ý; mệnh đề đúng là chiều cao dưới $2$ mét.\n\nChọn C.",
+  "kiem": [
+   "(()=>{const h=Array.from({length:60},(_,k)=>100*0.5**k).reduce((a,b)=>a+b,0);return h>150&&h<=200&&200-h<1e-6})()"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": "Phương án B (\"tối đa là 2 mét\") gây tranh cãi vì 2 m là cận trên không đạt được; theo sách chọn C (dưới 2 mét)."
+ },
+ {
+  "id": "tt-b1-p2-C53",
+  "vai": "luyen",
+  "dang_bai": "NDB01166",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tổng quãng đường quả bóng nảy lên rồi rơi xuống: cấp số nhân lùi vô hạn.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Bạn Nam thả một quả bóng từ độ cao $8$ m so với mặt đất. Mỗi lần chạm đất quả bóng lại nảy lên độ cao bằng $\\dfrac34$ độ cao lần rơi trước. Biết quả bóng chuyển động vuông góc với mặt đất. Tổng quãng đường quả bóng đã bay từ lúc thả đến khi bóng không nảy nữa gần bằng số nào dưới đây nhất?",
+  "lua_chon": [
+   "$57$ m.",
+   "$54$ m.",
+   "$56$ m.",
+   "$58$ m."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quãng đường là độ cao thả ban đầu cộng hai lần mỗi độ cao nảy lên, các độ cao nảy lập thành cấp số nhân lùi vô hạn.\n\n**Bước 1.** Xác định quãng đường của lần rơi đầu tiên rồi quãng đường mỗi lần nảy lên và rơi xuống.\n\n**Bước 2.** Nhận ra các độ cao nảy lên lập thành cấp số nhân và tìm số hạng đầu, công bội của nó.\n\n**Bước 3.** Tính tổng các độ cao nảy lên bằng công thức tổng cấp số nhân lùi vô hạn.\n\n**Bước 4.** Cộng quãng đường rơi ban đầu với hai lần tổng đó rồi chọn phương án gần nhất.\n\n**Phần 2. Trình bày**\n\nQuãng đường lần rơi đầu là $8$ m.\n\nĐộ cao các lần nảy lên: $8\\cdot\\dfrac34;\\ 8\\cdot(\\dfrac34)^{2};\\ 8\\cdot(\\dfrac34)^{3};\\dots$ là cấp số nhân có số hạng đầu $6$ và công bội $\\dfrac34$.\n\nMỗi lần nảy lên bóng bay lên rồi rơi xuống nên đi quãng đường gấp đôi độ cao đó.\n\nTổng quãng đường là $8+2\\cdot\\dfrac{6}{1-\\frac34}=8+2\\cdot24=56$ (m).\n\nVậy tổng quãng đường bóng đã bay bằng $56$ m.\n\nChọn C.",
+  "kiem": [
+   "(()=>{const v=(()=>{let t=8,h=8;for(let i=0;i<300;i++){h*=0.75;t+=2*h}return t})();const o=[57,54,56,58];return o.map(x=>Math.abs(x-v)<1e-4).join()==='false,false,true,false'})()"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": "Công thức trung gian trong lời giải sách in sai ($8+(1-(3/4)^n)/(1-3/4)$ thiếu hệ số), kết quả 56 vẫn đúng."
+ },
+ {
+  "id": "tt-b1-p2-C55",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Bản đồ thiếu dạng tổng rút gọn liên tiếp (khử các số hạng đối nhau).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tính giới hạn $\\lim[\\dfrac{1}{1\\cdot2}+\\dfrac{1}{2\\cdot3}+\\dfrac{1}{3\\cdot4}+\\dots+\\dfrac{1}{n(n+1)}]$.",
+  "lua_chon": [
+   "$0$.",
+   "$2$.",
+   "$1$.",
+   "$\\dfrac{3}{2}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi số hạng $\\dfrac{1}{k(k+1)}$ tách được thành hiệu hai phân số, nên tổng thu gọn lại chỉ còn hai số hạng.\n\n**Bước 1.** Tách số hạng tổng quát $\\dfrac{1}{k(k+1)}$ thành hiệu của hai phân số có mẫu là $k$ và $k+1$.\n\n**Bước 2.** Viết tổng ra và gạch bỏ các cặp số hạng đối nhau ở hai số hạng liên tiếp.\n\n**Bước 3.** Thu gọn tổng thành một biểu thức theo $n$ rồi tính giới hạn.\n\n**Phần 2. Trình bày**\n\nVới mọi số nguyên dương $k$ ta có $\\dfrac{1}{k(k+1)}=\\dfrac1k-\\dfrac1{k+1}$.\n\nDo đó tổng bằng $(1-\\dfrac12)+(\\dfrac12-\\dfrac13)+\\dots+(\\dfrac1n-\\dfrac1{n+1})=1-\\dfrac1{n+1}$.\n\nVậy giới hạn bằng $\\lim(1-\\dfrac1{n+1})=1$.\n\nChọn C.",
+  "kiem": [
+   "(()=>{const v=Array.from({length:1000000},(_,i)=>1/((i+1)*(i+2))).reduce((a,b)=>a+b,0);const o=[0,2,1,3/2];return o.map(x=>Math.abs(x-v)<1e-4).join()==='false,false,true,false'})()"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C56",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Bản đồ thiếu dạng tổng rút gọn liên tiếp (khử các số hạng đối nhau). (kèm tổng cấp số cộng).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tìm $L=\\lim(\\dfrac{1}{1}+\\dfrac{1}{1+2}+\\dots+\\dfrac{1}{1+2+\\dots+n})$.",
+  "lua_chon": [
+   "$L=\\dfrac{5}{2}$.",
+   "$L=+\\infty$.",
+   "$L=2$.",
+   "$L=\\dfrac{3}{2}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu của mỗi số hạng là tổng của một cấp số cộng nên viết được gọn, từ đó số hạng tổng quát tách thành hiệu hai phân số.\n\n**Bước 1.** Tính tổng $1+2+\\dots+k$ của cấp số cộng để viết gọn mẫu của số hạng tổng quát.\n\n**Bước 2.** Tách số hạng tổng quát thành hiệu hai phân số có mẫu là $k$ và $k+1$.\n\n**Bước 3.** Cộng các số hạng và triệt tiêu những cặp đối nhau liên tiếp.\n\n**Bước 4.** Rút gọn tổng còn lại theo $n$ rồi tính giới hạn.\n\n**Phần 2. Trình bày**\n\nVới mọi $k\\in\\mathbb{N}^{*}$ ta có $1+2+\\dots+k=\\dfrac{k(k+1)}{2}$.\n\nSuy ra $\\dfrac{1}{1+2+\\dots+k}=\\dfrac{2}{k(k+1)}=\\dfrac2k-\\dfrac2{k+1}$.\n\nVậy tổng bằng $(\\dfrac21-\\dfrac22)+(\\dfrac22-\\dfrac23)+\\dots+(\\dfrac2n-\\dfrac2{n+1})=2-\\dfrac{2}{n+1}$.\n\nDo đó $L=\\lim(2-\\dfrac{2}{n+1})=2$.\n\nChọn C.",
+  "kiem": [
+   "(()=>{const v=(()=>{let s=0,t=0;for(let k=1;k<=1000000;k++){s+=k;t+=1/s}return t})();const o=[5/2,Infinity,2,3/2];return o.map(x=>Math.abs(x-v)<1e-4).join()==='false,false,true,false'})()"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C57",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Bản đồ thiếu dạng tổng rút gọn liên tiếp (khử các số hạng đối nhau).",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính tổng $S=\\dfrac{100}{10\\cdot15\\cdot20}+\\dfrac{100}{15\\cdot20\\cdot25}+\\dfrac{100}{20\\cdot25\\cdot30}+\\dots+\\dfrac{100}{110\\cdot115\\cdot120}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi số hạng có mẫu là tích ba số cách đều nhau, tách được thành hiệu hai phân số có mẫu là tích hai số liên tiếp để các số hạng triệt tiêu.\n\n**Bước 1.** Nhận ra mỗi mẫu là tích ba số cách đều $5$ đơn vị và gọi số đứng đầu là $a$.\n\n**Bước 2.** Tách $\\dfrac{100}{a(a+5)(a+10)}$ thành một bội của hiệu hai phân số có mẫu là hai thừa số liên tiếp.\n\n**Bước 3.** Viết cả tổng ra và triệt tiêu các cặp số hạng đối nhau.\n\n**Bước 4.** Tính phần còn lại (số hạng đầu trừ số hạng cuối) bằng cách quy đồng.\n\n**Phần 2. Trình bày**\n\nVới $a$ là số đứng đầu ta có $\\dfrac{1}{a(a+5)}-\\dfrac{1}{(a+5)(a+10)}=\\dfrac{(a+10)-a}{a(a+5)(a+10)}=\\dfrac{10}{a(a+5)(a+10)}$.\n\nNên $\\dfrac{100}{a(a+5)(a+10)}=10\\,(\\dfrac{1}{a(a+5)}-\\dfrac{1}{(a+5)(a+10)})$.\n\n$S=10\\,(\\dfrac{1}{10\\cdot15}-\\dfrac{1}{15\\cdot20}+\\dfrac{1}{15\\cdot20}-\\dfrac{1}{20\\cdot25}+\\dots+\\dfrac{1}{110\\cdot115}-\\dfrac{1}{115\\cdot120})$.\n\nCác số hạng ở giữa triệt tiêu: $S=10\\,(\\dfrac{1}{150}-\\dfrac{1}{13800})=10\\cdot\\dfrac{92-1}{13800}$.\n\nVậy $S=\\dfrac{910}{13800}=\\dfrac{91}{1380}$.",
+  "kiem": [
+   "(()=>{let s=0;for(let a=10;a<=110;a+=5)s+=100/(a*(a+5)*(a+10));return Math.abs(s-91/1380)<1e-12})()"
+  ],
+  "sach_dap_so": "91/1380",
+  "ghi_chu": "Sách là trắc nghiệm nhưng 4 phương án là ảnh WMF không đọc được; chuyển thành tự luận, đáp số theo lời giải sách (sách chọn D)."
+ },
+ {
+  "id": "tt-b1-p2-C58",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Bản đồ thiếu dạng tổng rút gọn liên tiếp (khử các số hạng đối nhau).",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giá trị của tổng $S=\\dfrac{12}{4\\cdot16}+\\dfrac{20}{16\\cdot36}+\\dfrac{28}{36\\cdot64}+\\dots+\\dfrac{84}{400\\cdot484}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các mẫu là tích hai bình phương số chẵn liên tiếp và tử là hiệu của hai bình phương đó, nên mỗi số hạng tách được thành hiệu hai phân số.\n\n**Bước 1.** Nhận ra các mẫu là bình phương của các số chẵn $2,4,6,\\dots$ và mỗi số hạng có dạng tử chia tích hai bình phương liên tiếp.\n\n**Bước 2.** Kiểm tra tử bằng hiệu hai bình phương trong mẫu để tách mỗi số hạng thành hiệu hai phân số.\n\n**Bước 3.** Viết lại tổng và triệt tiêu các cặp số hạng đối nhau.\n\n**Bước 4.** Quy đồng phần còn lại để được kết quả là một phân số.\n\n**Phần 2. Trình bày**\n\nTa có $\\dfrac{12}{4\\cdot16}=\\dfrac14-\\dfrac1{16}$ vì $16-4=12$; $\\dfrac{20}{16\\cdot36}=\\dfrac1{16}-\\dfrac1{36}$ vì $36-16=20$.\n\nTương tự $\\dfrac{28}{36\\cdot64}=\\dfrac1{36}-\\dfrac1{64}$, và số hạng cuối $\\dfrac{84}{400\\cdot484}=\\dfrac1{400}-\\dfrac1{484}$ vì $484-400=84$.\n\n$S=(\\dfrac14-\\dfrac1{16})+(\\dfrac1{16}-\\dfrac1{36})+\\dots+(\\dfrac1{400}-\\dfrac1{484})=\\dfrac14-\\dfrac1{484}$.\n\n$S=\\dfrac{121-1}{484}=\\dfrac{120}{484}=\\dfrac{30}{121}$.\n\nVậy $S=\\dfrac{30}{121}$.",
+  "kiem": [
+   "(()=>{let s=0;for(let k=1;k<=10;k++)s+=(4*(2*k+1))/((2*k)**2*(2*k+2)**2);return Math.abs(s-30/121)<1e-12&&Math.abs(12/(4*16)+20/(16*36)+28/(36*64)-(1/4-1/64))<1e-12})()"
+  ],
+  "sach_dap_so": "30/121",
+  "ghi_chu": "Sách là trắc nghiệm nhưng 4 phương án là ảnh WMF không đọc được; chuyển thành tự luận, đáp số theo lời giải sách (sách chọn B)."
+ },
+ {
+  "id": "tt-b1-p2-C59",
+  "vai": "luyen",
+  "dang_bai": "NDB01156",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Tính tổng $n+1$ số hạng đầu của cấp số nhân bằng cách nhân hai vế với $1-q$.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $S_{n}=1+\\dfrac{1}{2}+\\dfrac{1}{2^{2}}+\\dots+\\dfrac{1}{2^{n}}$. Tìm công thức tính $S_{n}$ theo $n$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tổng là các số hạng liên tiếp của một cấp số nhân công bội $\\dfrac12$, nhân hai vế với $1-\\dfrac12$ để các số hạng giữa triệt tiêu.\n\n**Bước 1.** Nhận ra các số hạng là cấp số nhân và xác định công bội của nó.\n\n**Bước 2.** Nhân hai vế của $S_n$ với $1-q$ (với $q$ là công bội) rồi khai triển vế phải.\n\n**Bước 3.** Triệt tiêu các số hạng ở giữa để vế phải chỉ còn hai số hạng.\n\n**Bước 4.** Chia hai vế cho hệ số của $S_n$ để rút ra công thức của $S_n$.\n\n**Phần 2. Trình bày**\n\nCác số hạng lập thành cấp số nhân có số hạng đầu $1$ và công bội $q=\\dfrac12$.\n\nNhân hai vế với $1-\\dfrac12=\\dfrac12$: $\\dfrac12S_{n}=(1-\\dfrac12)(1+\\dfrac12+\\dfrac1{2^{2}}+\\dots+\\dfrac1{2^{n}})$.\n\nVế phải triệt tiêu các số hạng giữa: $\\dfrac12S_{n}=1-\\dfrac1{2^{n+1}}$.\n\nSuy ra $S_{n}=2-\\dfrac1{2^{n}}=\\dfrac{2^{n+1}-1}{2^{n}}$.\n\nVậy $S_{n}=\\dfrac{2^{n+1}-1}{2^{n}}$.",
+  "kiem": [
+   "Array.from({length:30},(_,i)=>i+1).every(n=>Math.abs(Array.from({length:n+1},(_,k)=>0.5**k).reduce((a,b)=>a+b,0)-(2**(n+1)-1)/2**n)<1e-12)"
+  ],
+  "sach_dap_so": "(2^{n+1}-1)/2^n",
+  "ghi_chu": "Sách là trắc nghiệm, đề in thiếu vế sau chữ \"Công thức của\" (ảnh WMF) và 4 phương án là ảnh không đọc được; suy luận câu hỏi là công thức của $S_n$ (khớp lời giải sách, chọn B); chuyển tự luận."
+ },
+ {
+  "id": "tt-b1-p2-C60",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Câu Đúng/Sai không gán dạng.",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho dãy số $(u_{n})$ với $u_{n}=\\dfrac{4n^{2}+n+2}{an^{2}+5}$. Xét tính đúng – sai của các mệnh đề sau:",
+  "menh_de": [
+   {
+    "noi_dung": "Để dãy số đã cho có giới hạn bằng $2$, giá trị của $a=2$.",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "Để dãy số đã cho có giới hạn bằng $1$, giá trị của $a=3$.",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "Để dãy số đã cho có giới hạn bằng $3$, giá trị của $a$ là một số nguyên.",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "Để dãy số đã cho có giới hạn bằng $-2$, giá trị của $a=-2$.",
+    "dap_an": "D"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính giới hạn của dãy theo tham số $a$ bằng cách chia tử và mẫu cho $n^2$, rồi giải phương trình theo $a$ cho từng ý.\n\n**Bước 1.** Chia cả tử và mẫu cho $n^2$ để tìm giới hạn của $u_n$ theo $a$ (với $a\\ne0$).\n\n**Bước 2.** Với mỗi ý, cho giới hạn đó bằng giá trị đề nêu rồi giải phương trình tìm $a$.\n\n**Bước 3.** So sánh giá trị $a$ tìm được với giá trị $a$ mà mệnh đề đưa ra, kiểm tra thêm tính nguyên ở ý c).\n\n**Phần 2. Trình bày**\n\nVới $a\\ne0$: $\\lim u_{n}=\\lim\\dfrac{4+\\frac1n+\\frac2{n^{2}}}{a+\\frac5{n^{2}}}=\\dfrac4a$.\n\nÝ a) Đúng vì $\\dfrac4a=2\\Leftrightarrow a=2$.\n\nÝ b) Sai vì $\\dfrac4a=1\\Leftrightarrow a=4$, không phải $a=3$.\n\nÝ c) Sai vì $\\dfrac4a=3\\Leftrightarrow a=\\dfrac43$, không phải số nguyên.\n\nÝ d) Đúng vì $\\dfrac4a=-2\\Leftrightarrow a=-2$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Sai, Đúng.",
+  "kiem": [
+   "(()=>{const f=(a,n)=>(4*n*n+n+2)/(a*n*n+5);const ok=(x,y)=>Math.abs(x-y)<1e-4;return ok(f(2,1e7),2)&&!ok(f(3,1e7),1)&&ok(f(4,1e7),1)&&!Number.isInteger(4/3)&&ok(f(-2,1e7),-2)})()"
+  ],
+  "sach_dap_so": "a) Đúng; b) Sai; c) Sai; d) Đúng",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C61",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Câu Đúng/Sai không gán dạng.",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Đặt $I=\\lim(\\sqrt{n^{2}+a^{2}n}-\\sqrt{n^{2}+(a+2)n+1})$. Xét tính đúng – sai của các mệnh đề sau:",
+  "menh_de": [
+   {
+    "noi_dung": "Ta biến đổi được $I=\\lim\\dfrac{n-1}{\\sqrt{n^{2}+n}+\\sqrt{n^{2}+1}}$.",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "Nếu $I=0$ thì có $3$ giá trị $a$ thoả mãn.",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "Nếu $I=0$ thì tổng các giá trị $a$ tìm được bằng $1$.",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "Có $2$ giá trị $a$ nguyên để $I=1$.",
+    "dap_an": "S"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân liên hợp để đưa $I$ về phân thức theo $a$ rồi chia cho $n$, từ đó $I$ là một biểu thức bậc hai của $a$.\n\n**Bước 1.** Nhân và chia với biểu thức liên hợp để hiệu hai căn thành phân thức có tử là hiệu hai biểu thức dưới căn.\n\n**Bước 2.** Chia tử và mẫu cho $n$ để tìm $I$ theo $a$, rồi so sánh với biểu thức mà ý a) đưa ra.\n\n**Bước 3.** Giải phương trình $I=0$ rồi dùng kết quả cho các ý b), c).\n\n**Bước 4.** Giải phương trình $I=1$ rồi kiểm tra nghiệm có nguyên hay không ở ý d).\n\n**Phần 2. Trình bày**\n\nNhân liên hợp: $\\sqrt{n^{2}+a^{2}n}-\\sqrt{n^{2}+(a+2)n+1}=\\dfrac{(a^{2}-a-2)n-1}{\\sqrt{n^{2}+a^{2}n}+\\sqrt{n^{2}+(a+2)n+1}}$.\n\nChia tử và mẫu cho $n$ ta được $I=\\lim\\dfrac{(a^{2}-a-2)-\\frac1n}{\\sqrt{1+\\frac{a^{2}}n}+\\sqrt{1+\\frac{a+2}n+\\frac1{n^{2}}}}=\\dfrac{a^{2}-a-2}{2}$.\n\nÝ a) Sai vì $I=\\dfrac{a^{2}-a-2}{2}$ phụ thuộc $a$, trong khi biểu thức đưa ra cho $I=\\dfrac12$; hai giá trị này chỉ trùng khi $a^{2}-a-3=0$, không đúng với mọi $a$.\n\nÝ b) Sai vì $I=0\\Leftrightarrow a^{2}-a-2=0\\Leftrightarrow a=-1$ hoặc $a=2$, chỉ có $2$ giá trị.\n\nÝ c) Đúng vì tổng hai giá trị vừa tìm là $-1+2=1$.\n\nÝ d) Sai vì $I=1\\Leftrightarrow a^{2}-a-4=0\\Leftrightarrow a=\\dfrac{1\\pm\\sqrt{17}}{2}$, không có giá trị nguyên nào.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Sai, Đúng, Sai.",
+  "kiem": [
+   "(()=>{const I=(a,n)=>Math.sqrt(n*n+a*a*n)-Math.sqrt(n*n+(a+2)*n+1);const ok=(x,y)=>Math.abs(x-y)<1e-4;const n=1e7,s=Math.sqrt(17);return ok(I(-1,n),0)&&ok(I(2,n),0)&&!ok(I(0,n),0.5)&&ok(I((1+s)/2,n),1)&&ok(I((1-s)/2,n),1)&&-1+2===1&&![...Array(41).keys()].map(i=>i-20).some(a=>a*a-a-4===0)})()"
+  ],
+  "sach_dap_so": "a) Sai; b) Sai; c) Sai (sách); d) Sai",
+  "ghi_chu": "LỆCH SÁCH — ý c): sách chọn SAI với lí do \"-1+2=1≠0\", nhưng mệnh đề nói tổng bằng 1 nên ĐÚNG; giữ ĐÚNG. Ý a) sách chỉ ghi SAI, đã giải thích lại."
+ },
+ {
+  "id": "tt-b1-p2-C62",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Câu Đúng/Sai không gán dạng.",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Biết $\\lim(\\sqrt{n^{2}-8n}-n+a^{2})=0$. Xét tính đúng – sai của các mệnh đề sau:",
+  "menh_de": [
+   {
+    "noi_dung": "Có tất cả $3$ giá trị $a$ thoả mãn.",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "Tổng các giá trị $a$ tìm được bằng $0$.",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "Có $2$ giá trị nguyên âm $a$ thoả mãn.",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "Tích các giá trị $a$ tìm được bằng $-4$.",
+    "dap_an": "D"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân liên hợp tính giới hạn của $\\sqrt{n^2-8n}-n$ rồi cho tổng với $a^2$ bằng $0$ để tìm các giá trị $a$.\n\n**Bước 1.** Nhân liên hợp cho hiệu $\\sqrt{n^2-8n}-n$ rồi chia tử và mẫu cho $n$ để tìm giới hạn của nó.\n\n**Bước 2.** Cộng giới hạn đó với $a^2$ và cho kết quả bằng $0$ để lập phương trình theo $a$.\n\n**Bước 3.** Giải phương trình tìm tất cả các giá trị $a$.\n\n**Bước 4.** Đối chiếu tập giá trị $a$ với từng mệnh đề (số giá trị, tổng, giá trị âm, tích).\n\n**Phần 2. Trình bày**\n\nTa có $\\sqrt{n^{2}-8n}-n=\\dfrac{-8n}{\\sqrt{n^{2}-8n}+n}=\\dfrac{-8}{\\sqrt{1-\\frac8n}+1}\\to-4$.\n\nDo đó $\\lim(\\sqrt{n^{2}-8n}-n+a^{2})=a^{2}-4$.\n\nĐiều kiện đề bài tương đương $a^{2}-4=0$, tức $a=-2$ hoặc $a=2$.\n\nÝ a) Sai vì chỉ có $2$ giá trị $a=\\pm2$.\n\nÝ b) Đúng vì $-2+2=0$.\n\nÝ c) Sai vì chỉ có một giá trị âm là $a=-2$.\n\nÝ d) Đúng vì $(-2)\\cdot2=-4$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Sai, Đúng.",
+  "kiem": [
+   "(()=>{const f=(a,n)=>Math.sqrt(n*n-8*n)-n+a*a;const ok=(x,y)=>Math.abs(x-y)<1e-4;return ok(f(2,1e7),0)&&ok(f(-2,1e7),0)&&!ok(f(0,1e7),0)&&!ok(f(1,1e7),0)&&-2+2===0&&-2*2===-4})()"
+  ],
+  "sach_dap_so": "a) Sai; b) Đúng; c) Sai; d) Đúng",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C63",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Câu Đúng/Sai không gán dạng.",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho giới hạn $L=\\lim\\dfrac{\\sqrt[3]{an^{3}+5n^{2}-7}}{\\sqrt{3n^{2}-n+2}}$. Xét tính đúng – sai của các mệnh đề sau:",
+  "menh_de": [
+   {
+    "noi_dung": "Khi $a=1$ thì $L=\\dfrac{1}{\\sqrt3}$.",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "Khi $a=0$ thì $L=\\dfrac13$.",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "Khi $a>0$ thì $L>0$.",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "Khi $L=b\\sqrt3+c$ với $b,c$ là các tham số thì $P=\\dfrac{a+c}{b^{3}}=\\dfrac12$.",
+    "dap_an": "S"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với $a\\ne0$ chia tử và mẫu cho $n$ để $L$ có dạng $\\dfrac{\\sqrt[3]{a}}{\\sqrt3}$; trường hợp $a=0$ cần xét riêng vì bậc tử giảm.\n\n**Bước 1.** Chia cả tử và mẫu cho $n$, đưa $n$ vào trong từng căn với số mũ tương ứng để tính $L$ theo $a$ khi $a\\ne0$.\n\n**Bước 2.** Riêng $a=0$, thay vào biểu thức rồi so sánh bậc của tử và mẫu để biết giới hạn.\n\n**Bước 3.** Dùng công thức $L$ theo $a$ để kiểm tra dấu ở ý c) và đồng nhất $L=b\\sqrt3+c$ ở ý d).\n\n**Phần 2. Trình bày**\n\nVới $a\\ne0$: $L=\\lim\\dfrac{\\sqrt[3]{a+\\frac5n-\\frac7{n^{3}}}}{\\sqrt{3-\\frac1n+\\frac2{n^{2}}}}=\\dfrac{\\sqrt[3]{a}}{\\sqrt3}=\\dfrac{\\sqrt[3]{a}}{3}\\sqrt3$.\n\nÝ a) Đúng vì $a=1$ cho $L=\\dfrac{1}{\\sqrt3}$.\n\nÝ b) Sai vì khi $a=0$ tử là $\\sqrt[3]{5n^{2}-7}$ có bậc $\\dfrac23$ nhỏ hơn bậc $1$ của mẫu nên $L=0$, không phải $\\dfrac13$.\n\nÝ c) Đúng vì $a>0$ thì $\\sqrt[3]{a}>0$ nên $L>0$.\n\nÝ d) Sai vì $L=\\dfrac{\\sqrt[3]{a}}{3}\\sqrt3$ cho $b=\\dfrac{\\sqrt[3]{a}}{3}$, $c=0$ nên $P=\\dfrac{a}{b^{3}}=\\dfrac{a}{a/27}=27\\ne\\dfrac12$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Sai.",
+  "kiem": [
+   "(()=>{const L=(a,n)=>Math.cbrt(a*n**3+5*n*n-7)/Math.sqrt(3*n*n-n+2);const ok=(x,y)=>Math.abs(x-y)<1e-4;return ok(L(1,1e8),1/Math.sqrt(3))&&ok(L(0,1e15),0)&&!ok(L(0,1e15),1/3)&&L(8,1e8)>0&&Math.abs(8/Math.pow(Math.cbrt(8)/3,3)-27)<1e-9})()"
+  ],
+  "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Sai",
+  "ghi_chu": "Lời giải sách ý b) và d) viết tắt/nhầm giá trị $a$; đáp án Đúng/Sai khớp. Ý d) hiểu $b,c$ hữu tỉ ($c=0$)."
+ },
+ {
+  "id": "tt-b1-p2-C64",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Câu Đúng/Sai không gán dạng.",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho giới hạn $L=\\lim\\sqrt{3+\\dfrac{an^{2}-1}{3+n^{2}}-\\dfrac{1}{2^{n}}}$. Xét tính đúng – sai của các mệnh đề sau:",
+  "menh_de": [
+   {
+    "noi_dung": "$L=2$ khi $a=1$.",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "$L=3$ thì có $2$ giá trị nguyên $a$ thoả mãn.",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "$L>3$ khi $a>6$.",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "Có $3$ giá trị nguyên của $a$ thuộc $(0;20)$ sao cho $\\lim\\sqrt{3+\\dfrac{an^{2}-1}{3+n^{2}}-\\dfrac{1}{2^{n}}}$ là một số nguyên.",
+    "dap_an": "D"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính giới hạn của biểu thức dưới căn bằng quy tắc tổng, rồi lấy căn để có $L$ theo $a$, sau đó giải từng điều kiện.\n\n**Bước 1.** Tính giới hạn của hai phân số dưới dấu căn bằng cách chia cho $n^2$ và dùng $\\lim(\\dfrac12)^n=0$.\n\n**Bước 2.** Dùng quy tắc giới hạn của căn để viết $L$ theo $a$.\n\n**Bước 3.** Với mỗi ý, đặt điều kiện cho $L$ rồi giải phương trình hoặc bất phương trình theo $a$.\n\n**Bước 4.** Ở ý d), liệt kê các số nguyên $a$ trong khoảng đã cho làm $L$ là số nguyên.\n\n**Phần 2. Trình bày**\n\nTa có $\\lim\\dfrac{an^{2}-1}{3+n^{2}}=\\lim\\dfrac{a-\\frac1{n^{2}}}{\\frac3{n^{2}}+1}=a$ và $\\lim\\dfrac1{2^{n}}=0$, nên $L=\\sqrt{3+a}$ (với $a\\ge-3$).\n\nÝ a) Đúng vì $\\sqrt{3+a}=2\\Leftrightarrow3+a=4\\Leftrightarrow a=1$.\n\nÝ b) Sai vì $\\sqrt{3+a}=3\\Leftrightarrow3+a=9\\Leftrightarrow a=6$, chỉ có một giá trị.\n\nÝ c) Đúng vì $\\sqrt{3+a}>3\\Leftrightarrow3+a>9\\Leftrightarrow a>6$.\n\nÝ d) Đúng vì $a\\in(0;20)$ nguyên thì $a+3\\in\\{4;\\dots;22\\}$, mà $a+3$ là số chính phương khi $a+3\\in\\{4;9;16\\}$, tức $a\\in\\{1;6;13\\}$: có $3$ giá trị.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Đúng.",
+  "kiem": [
+   "(()=>{const L=(a,n)=>Math.sqrt(3+(a*n*n-1)/(3+n*n)-1/2**n);const ok=(x,y)=>Math.abs(x-y)<1e-4;const cnt=[...Array(19).keys()].map(i=>i+1).filter(a=>Number.isInteger(Math.sqrt(a+3))).length;return ok(L(1,1e7),2)&&ok(L(6,1e7),3)&&L(7,1e7)>3&&cnt===3&&[...Array(81).keys()].map(i=>i-40).filter(a=>a>=-3&&a*0+Math.sqrt(a+3)===3).length===1})()"
+  ],
+  "sach_dap_so": "a) Đúng; b) Sai; c) Đúng; d) Đúng",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C65",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Câu Đúng/Sai không gán dạng.",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Biết $\\lim\\dfrac{2n^{2}-n+4}{an^{2}+n+3}=2$ và $\\lim\\dfrac{3^{n}+4^{n+1}}{4^{n}+3}=b$. Xét tính đúng – sai của các mệnh đề sau:",
+  "menh_de": [
+   {
+    "noi_dung": "Giá trị của $a=2$.",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "Giá trị của $b=4$.",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "$2a-b=0$.",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "Ba số $a,b,16$ lập thành một cấp số nhân.",
+    "dap_an": "D"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm $a$ bằng cách chia tử và mẫu cho $n^2$ và tìm $b$ bằng cách chia cho luỹ thừa cơ số lớn nhất, sau đó kiểm tra từng mệnh đề.\n\n**Bước 1.** Chia cả tử và mẫu của giới hạn thứ nhất cho $n^2$ rồi cho kết quả bằng $2$ để tìm $a$.\n\n**Bước 2.** Chia cả tử và mẫu của giới hạn thứ hai cho $4^n$ để tìm $b$.\n\n**Bước 3.** Thay $a,b$ vào từng mệnh đề, với ý d) dùng tính chất ba số liên tiếp của cấp số nhân.\n\n**Phần 2. Trình bày**\n\nTa có $\\lim\\dfrac{2n^{2}-n+4}{an^{2}+n+3}=\\lim\\dfrac{2-\\frac1n+\\frac4{n^{2}}}{a+\\frac1n+\\frac3{n^{2}}}=\\dfrac2a$. Từ $\\dfrac2a=2$ suy ra $a=1$.\n\nTa có $b=\\lim\\dfrac{3^{n}+4\\cdot4^{n}}{4^{n}+3}=\\lim\\dfrac{(\\frac34)^{n}+4}{1+3(\\frac14)^{n}}=4$.\n\nÝ a) Sai vì $a=1$, không phải $2$.\n\nÝ b) Đúng vì $b=4$.\n\nÝ c) Sai vì $2a-b=2\\cdot1-4=-2\\ne0$.\n\nÝ d) Đúng vì $b^{2}=16=a\\cdot16$ nên ba số $1;4;16$ lập thành cấp số nhân với công bội $4$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Sai, Đúng.",
+  "kiem": [
+   "(()=>{const f=(a,n)=>(2*n*n-n+4)/(a*n*n+n+3);const ok=(x,y)=>Math.abs(x-y)<1e-4;const n=200;const g=(Math.pow(3,n)+Math.pow(4,n+1))/(Math.pow(4,n)+3);return ok(f(1,1e7),2)&&!ok(f(2,1e7),2)&&ok(g,4)&&2*1-4!==0&&4*4===1*16})()"
+  ],
+  "sach_dap_so": "a) Sai; b) Đúng; c) Sai; d) Đúng",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C66",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Câu Đúng/Sai không gán dạng.",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho dãy số $(u_{n})$ với $u_{n}=an^{2}+n-1$ và $a\\in\\mathbb{R}$. Xét tính đúng – sai của các mệnh đề sau:",
+  "menh_de": [
+   {
+    "noi_dung": "Với $a=1$, giới hạn của dãy số đã cho là $1$.",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "Với $a=2$, giới hạn của dãy số đã cho là $+\\infty$.",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "Với $a=-\\dfrac52$, giới hạn của dãy số đã cho là $-\\infty$.",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "Với $a\\le0$, giới hạn của dãy số đã cho là $-\\infty$.",
+    "dap_an": "S"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rút luỹ thừa cao nhất của $n$ ra ngoài rồi xét dấu của hệ số còn lại để biết giới hạn là $+\\infty$ hay $-\\infty$; chú ý trường hợp $a=0$ làm bậc giảm.\n\n**Bước 1.** Với mỗi giá trị $a$, xác định số hạng bậc cao nhất của $u_n$ rồi rút luỹ thừa đó ra ngoài.\n\n**Bước 2.** Xét dấu của hệ số tương ứng để kết luận dãy tiến tới $+\\infty$ hay $-\\infty$.\n\n**Bước 3.** Ở ý d), tách riêng trường hợp $a<0$ và trường hợp $a=0$ vì bậc của dãy khác nhau.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì với $a=1$: $u_{n}=n^{2}(1+\\dfrac1n-\\dfrac1{n^{2}})$, có $\\lim n^{2}=+\\infty$ và thừa số còn lại $\\to1>0$ nên $\\lim u_{n}=+\\infty$, không phải $1$.\n\nÝ b) Đúng vì $a=2$: $u_{n}=n^{2}(2+\\dfrac1n-\\dfrac1{n^{2}})$ với thừa số còn lại $\\to2>0$ nên $\\lim u_{n}=+\\infty$.\n\nÝ c) Đúng vì $a=-\\dfrac52$: $u_{n}=n^{2}(-\\dfrac52+\\dfrac1n-\\dfrac1{n^{2}})$ với thừa số còn lại $\\to-\\dfrac52<0$ nên $\\lim u_{n}=-\\infty$.\n\nÝ d) Sai vì với $a<0$ thì $\\lim u_{n}=-\\infty$ nhưng với $a=0$ thì $u_{n}=n-1=n(1-\\dfrac1n)$ có $\\lim u_{n}=+\\infty$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Sai.",
+  "kiem": [
+   "(()=>{const u=(a,n)=>a*n*n+n-1;const n=1e7;return u(1,n)>1e12&&u(2,n)>1e12&&u(-2.5,n)<-1e12&&u(-1,n)<-1e12&&u(0,n)>0&&u(0,n)<1e8})()"
+  ],
+  "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Sai",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C67",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Câu Đúng/Sai không gán dạng.",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Ông An bắt đầu đi làm với mức lương khởi điểm là $5\\,000\\,000$ đồng một tháng. Cứ sau một chu kì $3$ năm thì ông An được tăng lương $4\\%$. Xét tính đúng – sai của các mệnh đề sau:",
+  "menh_de": [
+   {
+    "noi_dung": "Mức lương ông An nhận được sau $3$ năm là $5\\,200\\,000$ đồng.",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "Tổng số tiền lương ông An nhận được sau $6$ năm đầu là $374\\,400\\,000$ đồng.",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "Dự đoán công thức tính mức lương $u_{n}$ của ông An sau $n$ chu kì công tác là $u_{n}=5\\,000\\,000\\cdot(\\dfrac{26}{25})^{n}$ đồng.",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "Giả sử ông An đi làm đúng $35$ năm thì về hưu. Tổng số tiền lương ông nhận được trong cả quá trình công tác là $2\\,612\\,277\\,740$ đồng.",
+    "dap_an": "D"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mức lương mỗi chu kì nhân với $1{,}04=\\dfrac{26}{25}$ so với chu kì trước, tức là một cấp số nhân; tổng lương nhiều chu kì là tổng hữu hạn của cấp số nhân.\n\n**Bước 1.** Tính mức lương chu kì thứ hai và các chu kì sau để thấy quy luật cấp số nhân.\n\n**Bước 2.** Ý b): tính tổng lương của hai chu kì đầu với mỗi chu kì có $36$ tháng.\n\n**Bước 3.** Ý c): so sánh số mũ trong công thức đề cho với số chu kì đã tăng lương.\n\n**Bước 4.** Ý d): chia $35$ năm thành $11$ chu kì đủ $3$ năm và phần còn lại, áp dụng công thức tổng cấp số nhân cho các chu kì đủ.\n\n**Phần 2. Trình bày**\n\nMỗi chu kì lương tăng $4\\%$ nên lương chu kì sau bằng lương chu kì trước nhân $1+\\dfrac{4}{100}=\\dfrac{26}{25}$.\n\nÝ a) Đúng vì $5\\,000\\,000\\cdot\\dfrac{26}{25}=5\\,200\\,000$ đồng.\n\nÝ b) Sai vì $3$ năm đầu nhận $36\\cdot5\\,000\\,000=180\\,000\\,000$ và $3$ năm tiếp theo nhận $36\\cdot5\\,200\\,000=187\\,200\\,000$; tổng là $367\\,200\\,000$ đồng, không phải $374\\,400\\,000$.\n\nÝ c) Sai vì chu kì thứ nhất lương vẫn là $5\\,000\\,000$ (chưa tăng), nên $u_{n}=5\\,000\\,000\\cdot(\\dfrac{26}{25})^{n-1}$, số mũ là $n-1$ chứ không phải $n$.\n\nÝ d) $35$ năm gồm $11$ chu kì đủ $3$ năm ($33$ năm) cộng thêm $2$ năm ($24$ tháng) ở chu kì thứ $12$.\n\nTổng lương: $S=36\\cdot5\\,000\\,000\\,[1+\\dfrac{26}{25}+\\dots+(\\dfrac{26}{25})^{10}]+24\\cdot5\\,000\\,000\\cdot(\\dfrac{26}{25})^{11}$.\n\nDùng tổng cấp số nhân: $S=\\dfrac{36\\cdot5\\,000\\,000\\,[1-(\\frac{26}{25})^{11}]}{1-\\frac{26}{25}}+24\\cdot5\\,000\\,000\\cdot(\\dfrac{26}{25})^{11}\\approx2\\,612\\,277\\,740$ đồng, nên ý d) Đúng.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Sai, Đúng.",
+  "kiem": [
+   "(()=>{const q=1.04;let s=0;for(let k=0;k<=10;k++)s+=36*5e6*q**k;s+=24*5e6*q**11;return Math.abs(s-2612277740)<1&&5e6*q===5200000&&36*5e6+36*5.2e6===367200000&&367200000!==374400000})()"
+  ],
+  "sach_dap_so": "a) Đúng; b) Sai; c) Sai; d) Đúng",
+  "ghi_chu": "Sách ý b) in \"36.520000\" (thiếu chữ số 0) và số liệu ý d) làm tròn; kết quả Đúng/Sai khớp."
+ },
+ {
+  "id": "tt-b1-p2-C68",
+  "vai": "luyen",
+  "dang_bai": "NDB01157",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Phân thức có căn $\\sqrt n$: chia cho luỹ thừa cao nhất $n\\sqrt n$.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Giới hạn $\\lim\\dfrac{2n^{2}-3\\sqrt{n}+1}{3n\\sqrt{n}+2n}=\\lim\\dfrac{a\\sqrt{n}-\\frac{3}{n}+\\frac{1}{n\\sqrt{n}}}{b+\\frac{2}{\\sqrt{n}}}$ với $a,b$ là các số tự nhiên. Tính $P=a+b^{2}$.",
+  "dap_an": "11",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cả tử và mẫu cho luỹ thừa cao nhất $n\\sqrt n$ rồi so sánh với dạng đề cho để đọc ra $a,b$.\n\n**Bước 1.** Xác định luỹ thừa cao nhất của $n$ ở mẫu để chọn đại lượng chia chung.\n\n**Bước 2.** Chia từng số hạng của tử và mẫu cho đại lượng đó, rút gọn các luỹ thừa của $n$.\n\n**Bước 3.** So khớp biểu thức nhận được với dạng đề cho để đọc ra $a$ và $b$.\n\n**Bước 4.** Thay $a,b$ vừa tìm được vào biểu thức $P=a+b^2$ để tính kết quả.\n\n**Phần 2. Trình bày**\n\nChia tử và mẫu cho $n\\sqrt{n}$: $\\dfrac{2n^{2}-3\\sqrt{n}+1}{3n\\sqrt{n}+2n}=\\dfrac{2\\sqrt{n}-\\frac3n+\\frac1{n\\sqrt{n}}}{3+\\frac2{\\sqrt{n}}}$.\n\nSo với dạng đề cho ta có $a=2$ và $b=3$.\n\nVậy $P=a+b^{2}=2+9=11$.",
+  "kiem": [
+   "(()=>{const n=1e4;const f=(2*n*n-3*Math.sqrt(n)+1)/(3*n*Math.sqrt(n)+2*n);const g=(2*Math.sqrt(n)-3/n+1/(n*Math.sqrt(n)))/(3+2/Math.sqrt(n));return Math.abs(f-g)<1e-9&&2+3*3===11})()"
+  ],
+  "sach_dap_so": "11",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C69",
+  "vai": "luyen",
+  "dang_bai": "NDB01158",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hiệu căn bậc hai và $n$ (dạng $\\infty-\\infty$): nhân liên hợp.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Giá trị của giới hạn $\\lim(\\sqrt{n^{2}+2n-2}-n)=\\lim\\dfrac{a\\,(1-\\frac1n)}{\\sqrt{1+b\\,(\\frac1n-\\frac1{n^{2}})}+1}$ với $a,b$ là các số tự nhiên. Tính $S=(a+b)^{2}$.",
+  "dap_an": "16",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân liên hợp rồi chia tử và mẫu cho $n$ để đưa về đúng dạng đề cho, từ đó đọc ra $a$ và $b$.\n\n**Bước 1.** Nhân và chia với biểu thức liên hợp để tử trở thành đa thức bậc nhất theo $n$.\n\n**Bước 2.** Chia tử và mẫu cho $n$ rồi đặt nhân tử chung trong tử và trong căn.\n\n**Bước 3.** So khớp với dạng đề cho để tìm $a,b$ rồi tính $S$.\n\n**Phần 2. Trình bày**\n\n$\\sqrt{n^{2}+2n-2}-n=\\dfrac{2n-2}{\\sqrt{n^{2}+2n-2}+n}=\\dfrac{2-\\frac2n}{\\sqrt{1+\\frac2n-\\frac2{n^{2}}}+1}$.\n\nViết lại: $\\dfrac{2\\,(1-\\frac1n)}{\\sqrt{1+2\\,(\\frac1n-\\frac1{n^{2}})}+1}$, nên $a=2$ và $b=2$.\n\nVậy $S=(a+b)^{2}=4^{2}=16$.",
+  "kiem": [
+   "(()=>{const n=1e4;const f=Math.sqrt(n*n+2*n-2)-n;const g=2*(1-1/n)/(Math.sqrt(1+2*(1/n-1/n**2))+1);return Math.abs(f-g)<1e-9&&(2+2)**2===16})()"
+  ],
+  "sach_dap_so": "16",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C70",
+  "vai": "luyen",
+  "dang_bai": "NDB01156",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tử là tổng cấp số cộng $1+2+\\dots+n$: tính tổng rồi giới hạn.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tìm giới hạn $\\lim\\dfrac{1+2+\\dots+n}{n^{2}+3n}$.",
+  "dap_an": "0,5",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử là tổng $n$ số hạng đầu của cấp số cộng nên viết gọn bằng công thức, sau đó chia tử và mẫu cho $n^2$.\n\n**Bước 1.** Nhận ra tử là tổng của cấp số cộng và dùng công thức tổng $n$ số hạng đầu.\n\n**Bước 2.** Thay vào biểu thức rồi chia tử và mẫu cho $n^2$.\n\n**Bước 3.** Tính giới hạn của phân thức còn lại bằng cách dùng $\\lim\\dfrac1n=0$.\n\n**Phần 2. Trình bày**\n\nTa có $1+2+\\dots+n=\\dfrac{n(n+1)}{2}$.\n\n$\\lim\\dfrac{1+2+\\dots+n}{n^{2}+3n}=\\lim\\dfrac{n(n+1)}{2(n^{2}+3n)}=\\lim\\dfrac{1+\\frac1n}{2\\,(1+\\frac3n)}=\\dfrac12$.\n\nVậy giới hạn bằng $0{,}5$.",
+  "kiem": [
+   "(()=>{const n=1e7;return Math.abs((n*(n+1)/2)/(n*n+3*n)-0.5)<1e-4})()"
+  ],
+  "sach_dap_so": "0,5",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C71",
+  "vai": "luyen",
+  "dang_bai": "NDB01156",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tử chứa căn của tổng cấp số cộng $1+3+\\dots+(2n-1)=n^2$.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tìm giới hạn $\\lim\\dfrac{n\\sqrt{1+3+5+\\dots+(2n-1)}}{2n^{2}+n+1}$.",
+  "dap_an": "0,5",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dưới căn là tổng của cấp số cộng nên tính gọn được, căn bậc hai của một bình phương cho $n$, rồi giới hạn phân thức cùng bậc.\n\n**Bước 1.** Nhận ra các số lẻ lập thành cấp số cộng và tính tổng $n$ số hạng đầu.\n\n**Bước 2.** Thay tổng vào biểu thức và rút gọn căn của một bình phương (với $n>0$).\n\n**Bước 3.** Chia tử và mẫu cho $n^2$ rồi tính giới hạn.\n\n**Phần 2. Trình bày**\n\nTổng $1+3+\\dots+(2n-1)$ có $n$ số hạng, $u_{1}=1$, $u_{n}=2n-1$ nên bằng $\\dfrac{n(1+2n-1)}{2}=n^{2}$.\n\nDo đó $\\dfrac{n\\sqrt{n^{2}}}{2n^{2}+n+1}=\\dfrac{n^{2}}{2n^{2}+n+1}$ (vì $n>0$).\n\n$\\lim\\dfrac{n^{2}}{2n^{2}+n+1}=\\lim\\dfrac{1}{2+\\frac1n+\\frac1{n^{2}}}=\\dfrac12$.\n\nVậy giới hạn bằng $0{,}5$.",
+  "kiem": [
+   "(()=>{const n=1e7;let s=n*n;return Math.abs(n*Math.sqrt(s)/(2*n*n+n+1)-0.5)<1e-4&&(()=>{let t=0;for(let k=1;k<=50;k++)t+=2*k-1;return t===2500})()})()"
+  ],
+  "sach_dap_so": "0,5",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C72",
+  "vai": "luyen",
+  "dang_bai": "NDB01167",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dãy hình vuông nối trung điểm: chu vi lập thành cấp số nhân lùi vô hạn.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hình vuông $ABCD$ có cạnh bằng $1$. Nối các trung điểm của bốn cạnh hình vuông $ABCD$ ta được hình vuông thứ hai. Tiếp tục nối các trung điểm của bốn cạnh hình vuông thứ hai ta được hình vuông thứ ba, cứ tiếp tục như thế ta nhận được một dãy các hình vuông. Tìm tổng chu vi của dãy các hình vuông đó. Kết quả làm tròn đến hàng phần mười.",
+  "dap_an": "13,7",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cạnh hình vuông sau bằng $\\dfrac{\\sqrt2}{2}$ lần cạnh hình vuông trước nên chu vi lập thành cấp số nhân lùi vô hạn.\n\n**Bước 1.** Tính cạnh hình vuông mới theo cạnh hình vuông trước bằng định lí Pythagore trong tam giác vuông nhỏ ở góc.\n\n**Bước 2.** Suy ra chu vi các hình vuông lập thành cấp số nhân và tìm số hạng đầu, công bội.\n\n**Bước 3.** Tính tổng cấp số nhân lùi vô hạn rồi làm tròn đến hàng phần mười.\n\n**Phần 2. Trình bày**\n\nHình vuông cạnh $x$ có hình vuông kế tiếp với cạnh $\\sqrt{(\\dfrac x2)^{2}+(\\dfrac x2)^{2}}=\\dfrac{x\\sqrt2}{2}$.\n\nCạnh các hình vuông lập thành cấp số nhân $1;\\dfrac{\\sqrt2}{2};\\dfrac12;\\dots$ nên chu vi cũng là cấp số nhân có số hạng đầu $4$ và công bội $q=\\dfrac{\\sqrt2}{2}$, $|q|<1$.\n\nTổng chu vi $S=\\dfrac{4}{1-\\frac{\\sqrt2}{2}}=\\dfrac{8}{2-\\sqrt2}=8+4\\sqrt2\\approx13{,}66$.\n\nVậy tổng chu vi làm tròn là $13{,}7$.",
+  "kiem": [
+   "(()=>{let s=0,c=1;for(let i=0;i<500;i++){s+=4*c;c*=Math.SQRT2/2}return Math.abs(s-(8+4*Math.SQRT2))<1e-9&&s.toFixed(1)===\"13.7\"})()"
+  ],
+  "sach_dap_so": "13,7",
+  "ghi_chu": "Đề sách in thừa dòng \"S=1-1/2+1/4-…\" (lẫn từ câu khác) — bỏ. Hình chỉ minh hoạ dãy hình vuông, đề tự đủ dữ kiện."
+ },
+ {
+  "id": "tt-b1-p2-C73",
+  "vai": "luyen",
+  "dang_bai": "NDB01154",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Thương các luỹ thừa $a^n,b^n$ dưới căn bậc ba: chia cho $8^n$.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Giới hạn $\\lim\\sqrt[3]{\\dfrac{2^{3n}-3^{n+1}}{8^{n+1}+6^{n-1}}}=\\lim\\sqrt[3]{\\dfrac{1-3\\,a^{n}}{8+\\frac16\\,b^{n}}}$ với $a,b$ là các số hữu tỉ. Tính giá trị $8\\,(a+b)$.",
+  "dap_an": "9",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia tử và mẫu dưới căn cho luỹ thừa có cơ số lớn nhất là $8^n$ rồi so khớp với dạng đề cho để đọc ra $a,b$.\n\n**Bước 1.** Viết lại các luỹ thừa về cơ số $8$, $3$ và $6$ bằng quy tắc nhân luỹ thừa cùng cơ số.\n\n**Bước 2.** Chia tử và mẫu dưới căn cho $8^n$ để mỗi số hạng thành luỹ thừa của một phân số.\n\n**Bước 3.** So khớp với dạng đề cho để tìm $a,b$ rồi tính $8(a+b)$.\n\n**Phần 2. Trình bày**\n\nTa có $2^{3n}=8^{n}$, $3^{n+1}=3\\cdot3^{n}$, $8^{n+1}=8\\cdot8^{n}$, $6^{n-1}=\\dfrac16\\cdot6^{n}$.\n\nChia tử và mẫu cho $8^{n}$: $\\dfrac{8^{n}-3\\cdot3^{n}}{8\\cdot8^{n}+\\frac16\\,6^{n}}=\\dfrac{1-3\\,(\\frac38)^{n}}{8+\\frac16\\,(\\frac68)^{n}}=\\dfrac{1-3\\,(\\frac38)^{n}}{8+\\frac16\\,(\\frac34)^{n}}$.\n\nVậy $a=\\dfrac38$ và $b=\\dfrac34$.\n\n$8\\,(a+b)=8\\cdot\\dfrac98=9$.",
+  "kiem": [
+   "(()=>{const n=60;const f=Math.cbrt((Math.pow(2,3*n)-Math.pow(3,n+1))/(Math.pow(8,n+1)+Math.pow(6,n-1)));const g=Math.cbrt((1-3*Math.pow(3/8,n))/(8+Math.pow(3/4,n)/6));return Math.abs(f-g)<1e-12&&Math.abs(8*(3/8+3/4)-9)<1e-12})()"
+  ],
+  "sach_dap_so": "9",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C74",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Bản đồ thiếu dạng tổng rút gọn liên tiếp (khử các số hạng đối nhau).",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tìm giới hạn $\\lim[\\dfrac{1}{1\\cdot3}+\\dfrac{1}{3\\cdot5}+\\dfrac{1}{5\\cdot7}+\\dots+\\dfrac{1}{(2n-1)(2n+1)}]$.",
+  "dap_an": "0,5",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi số hạng $\\dfrac{1}{(2k-1)(2k+1)}$ tách được thành hiệu hai phân số nên tổng thu gọn chỉ còn hai số hạng.\n\n**Bước 1.** Tách số hạng tổng quát thành hiệu hai phân số có mẫu là hai số lẻ liên tiếp.\n\n**Bước 2.** Viết tổng ra và gạch bỏ các cặp số hạng đối nhau.\n\n**Bước 3.** Rút gọn tổng còn lại theo $n$ rồi tính giới hạn.\n\n**Phần 2. Trình bày**\n\nTa có $\\dfrac{1}{(2k-1)(2k+1)}=\\dfrac12\\,(\\dfrac1{2k-1}-\\dfrac1{2k+1})$.\n\nTổng bằng $\\dfrac12\\,(1-\\dfrac13+\\dfrac13-\\dfrac15+\\dots+\\dfrac1{2n-1}-\\dfrac1{2n+1})=\\dfrac12\\,(1-\\dfrac1{2n+1})$.\n\nVậy giới hạn bằng $\\lim\\dfrac12\\,(1-\\dfrac1{2n+1})=\\dfrac12=0{,}5$.",
+  "kiem": [
+   "(()=>{let s=0;for(let k=1;k<=1000000;k++)s+=1/((2*k-1)*(2*k+1));return Math.abs(s-0.5)<1e-4})()"
+  ],
+  "sach_dap_so": "0,5",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C75",
+  "vai": "luyen",
+  "dang_bai": "NDB01163",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tổng cấp số nhân lùi vô hạn có công bội âm.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tìm tổng $S=\\dfrac13-\\dfrac19+\\dfrac1{27}-\\dots+\\dfrac{(-1)^{n+1}}{3^{n}}+\\dots$",
+  "dap_an": "0,25",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số hạng đổi dấu xen kẽ lập thành cấp số nhân với công bội âm có giá trị tuyệt đối nhỏ hơn $1$, nên áp dụng công thức tổng vô hạn.\n\n**Bước 1.** Xác định số hạng đầu và công bội (có dấu) của cấp số nhân.\n\n**Bước 2.** Kiểm tra $|q|<1$ để dùng được công thức tổng.\n\n**Bước 3.** Thay số vào công thức và tính.\n\n**Phần 2. Trình bày**\n\nCác số hạng lập thành cấp số nhân có $u_{1}=\\dfrac13$ và công bội $q=-\\dfrac13$, $|q|<1$.\n\n$S=\\dfrac{u_{1}}{1-q}=\\dfrac{\\frac13}{1+\\frac13}=\\dfrac13\\cdot\\dfrac34=\\dfrac14$.\n\nVậy $S=0{,}25$.",
+  "kiem": [
+   "(()=>{let s=0;for(let n=1;n<=200;n++)s+=(-1)**(n+1)/3**n;return Math.abs(s-0.25)<1e-9})()"
+  ],
+  "sach_dap_so": "0,25",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C76",
+  "vai": "luyen",
+  "dang_bai": "NDB01163",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tổng cấp số nhân lùi vô hạn có công bội vô tỉ.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Giá trị của tổng $T=1+\\dfrac{1}{\\sqrt2}+\\dfrac12+\\dfrac{1}{2\\sqrt2}+\\dots+(\\dfrac{1}{\\sqrt2})^{n}+\\dots=a+\\sqrt{b}$ với $a,b$ là các số tự nhiên. Tính $S=(a+b)^{2}$.",
+  "dap_an": "16",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số hạng lập thành cấp số nhân công bội $\\dfrac{1}{\\sqrt2}$ nhỏ hơn $1$ nên tính tổng bằng công thức rồi trục căn thức ở mẫu.\n\n**Bước 1.** Xác định số hạng đầu và công bội của cấp số nhân.\n\n**Bước 2.** Áp dụng công thức tổng cấp số nhân lùi vô hạn.\n\n**Bước 3.** Trục căn thức ở mẫu để đưa kết quả về dạng $a+\\sqrt b$ rồi đọc ra $a,b$.\n\n**Phần 2. Trình bày**\n\nCấp số nhân có $u_{1}=1$ và $q=\\dfrac1{\\sqrt2}$, $|q|<1$.\n\n$T=\\dfrac{1}{1-\\frac1{\\sqrt2}}=\\dfrac{\\sqrt2}{\\sqrt2-1}=\\dfrac{\\sqrt2\\,(\\sqrt2+1)}{2-1}=2+\\sqrt2$.\n\nVậy $a=2$, $b=2$ và $S=(2+2)^{2}=16$.",
+  "kiem": [
+   "(()=>{let s=0;for(let n=0;n<400;n++)s+=Math.SQRT1_2**n;return Math.abs(s-(2+Math.SQRT2))<1e-9&&(2+2)**2===16})()"
+  ],
+  "sach_dap_so": "16",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C77",
+  "vai": "luyen",
+  "dang_bai": "NDB01164",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Số thập phân vô hạn tuần hoàn thành phân số tối giản.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Số thập phân vô hạn tuần hoàn $0{,}271414\\dots$ viết dưới dạng phân số tối giản $\\dfrac{m}{n}$ với $m,n$ là các số tự nhiên. Tính $n-3m$.",
+  "dap_an": "1839",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tách phần không tuần hoàn rồi viết phần tuần hoàn thành tổng cấp số nhân lùi vô hạn để ra phân số.\n\n**Bước 1.** Tách số thành phần hữu hạn $0{,}27$ và phần tuần hoàn bắt đầu từ cặp chữ số $14$ đầu tiên.\n\n**Bước 2.** Viết phần tuần hoàn thành cấp số nhân lùi vô hạn và tính tổng.\n\n**Bước 3.** Cộng với phần hữu hạn, quy đồng và rút gọn về phân số tối giản.\n\n**Bước 4.** Đọc ra tử số $m$ và mẫu số $n$ rồi thay vào biểu thức $n-3m$.\n\n**Phần 2. Trình bày**\n\nTa có $0{,}271414\\dots=0{,}27+0{,}0014+0{,}000014+\\dots$\n\nPhần sau là cấp số nhân lùi vô hạn có $u_{1}=0{,}0014$ và $q=\\dfrac1{100}$ nên tổng là $\\dfrac{0{,}0014}{1-\\frac1{100}}=\\dfrac{14}{9900}$.\n\nDo đó số đã cho bằng $\\dfrac{27}{100}+\\dfrac{14}{9900}=\\dfrac{2673+14}{9900}=\\dfrac{2687}{9900}$, đã tối giản.\n\nVậy $m=2687$, $n=9900$ và $n-3m=9900-8061=1839$.",
+  "kiem": [
+   "(()=>{const g=(a,b)=>b?g(b,a%b):a;const s=0.27+Array.from({length:50},(_,k)=>14*100**-(k+2)).reduce((a,b)=>a+b,0);return Math.abs(s-2687/9900)<1e-12&&g(2687,9900)===1&&9900-3*2687===1839})()"
+  ],
+  "sach_dap_so": "1839",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C78",
+  "vai": "luyen",
+  "dang_bai": "NDB01164",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Số thập phân vô hạn tuần hoàn thành phân số tối giản.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Số thập phân vô hạn tuần hoàn $0{,}51111\\dots$ viết dưới dạng phân số tối giản $\\dfrac{a}{b}$ với $a,b$ là các số tự nhiên. Tính $|b-2a|$.",
+  "dap_an": "1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tách phần $0{,}5$ rồi viết phần tuần hoàn gồm chữ số $1$ lặp lại thành tổng cấp số nhân lùi vô hạn.\n\n**Bước 1.** Tách số thành $0{,}5$ cộng với phần tuần hoàn gồm các chữ số $1$ lặp lại.\n\n**Bước 2.** Viết phần tuần hoàn thành cấp số nhân lùi vô hạn và tính tổng.\n\n**Bước 3.** Cộng hai phần, rút gọn thành phân số tối giản rồi tính $|b-2a|$.\n\n**Phần 2. Trình bày**\n\nTa có $0{,}51111\\dots=0{,}5+0{,}01+0{,}001+0{,}0001+\\dots$\n\nCác số $0{,}01;0{,}001;\\dots$ lập thành cấp số nhân lùi vô hạn có $u_{1}=0{,}01$ và $q=\\dfrac1{10}$ nên tổng là $\\dfrac{0{,}01}{1-\\frac1{10}}=\\dfrac1{90}$.\n\nDo đó số đã cho bằng $\\dfrac12+\\dfrac1{90}=\\dfrac{45+1}{90}=\\dfrac{23}{45}$, đã tối giản.\n\nVậy $a=23$, $b=45$ và $|b-2a|=|45-46|=1$.",
+  "kiem": [
+   "(()=>{const s=0.5+Array.from({length:50},(_,k)=>10**-(k+2)).reduce((a,b)=>a+b,0);return Math.abs(s-23/45)<1e-12&&Math.abs(45-2*23)===1})()"
+  ],
+  "sach_dap_so": "1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C79",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Bản đồ thiếu dạng dãy cho bởi công thức truy hồi (tìm số hạng tổng quát, giới hạn).",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho dãy số $(u_{n})$ với $u_{1}=-2$ và $u_{n}=3u_{n-1}-1$ với mọi $n\\ge2$. Tính $\\lim\\dfrac{u_{n}}{3^{n}}$. Kết quả làm tròn đến hàng phần mười.",
+  "dap_an": "-0,8",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đặt $u_n=v_n+c$ để đưa hệ thức truy hồi về cấp số nhân, tìm $u_n$ theo $n$ rồi chia cho $3^n$.\n\n**Bước 1.** Tìm hằng số $c$ để dãy $v_n=u_n-c$ thoả mãn $v_n=3v_{n-1}$.\n\n**Bước 2.** Tìm số hạng đầu của $(v_n)$ và viết $v_n$, rồi suy ra $u_n$ theo $n$.\n\n**Bước 3.** Chia $u_n$ cho $3^n$, tách thành các số hạng có giới hạn quen thuộc.\n\n**Bước 4.** Tính giới hạn rồi làm tròn đến hàng phần mười.\n\n**Phần 2. Trình bày**\n\nChọn $c=\\dfrac12$: đặt $v_{n}=u_{n}-\\dfrac12$ thì từ $u_{n}=3u_{n-1}-1$ ta được $v_{n}=3v_{n-1}$ với mọi $n\\ge2$.\n\n$(v_{n})$ là cấp số nhân có $v_{1}=-2-\\dfrac12=-\\dfrac52$ và công bội $3$, nên $v_{n}=-\\dfrac52\\cdot3^{n-1}$.\n\nSuy ra $u_{n}=-\\dfrac52\\cdot3^{n-1}+\\dfrac12$ và $\\dfrac{u_{n}}{3^{n}}=-\\dfrac56+\\dfrac1{2\\cdot3^{n}}$.\n\nVì $\\lim\\dfrac1{3^{n}}=0$ nên giới hạn bằng $-\\dfrac56\\approx-0{,}8$.",
+  "kiem": [
+   "(()=>{let u=-2n;for(let n=2n;n<=60n;n++)u=3n*u-1n;const v=Number(u*10n**12n/3n**60n)/1e12;return Math.abs(v+5/6)<1e-4&&(-5/6).toFixed(1)===\"-0.8\"})()"
+  ],
+  "sach_dap_so": "-0,8",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C80",
+  "vai": "luyen",
+  "dang_bai": "NDB01158",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Căn bậc hai trừ $n$ cộng hằng số: nhân liên hợp phần chứa căn.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết rằng giới hạn $\\lim(\\sqrt{n^{2}-4n+5}+3-n)=\\lim(\\dfrac{5-a\\,n}{\\sqrt{n^{2}-4n+5}+n}+b)$ với $a,b$ là các số tự nhiên. Tính giá trị $S=a^{b}$.",
+  "dap_an": "64",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giữ nguyên hằng số $3$ và chỉ nhân liên hợp cho hiệu $\\sqrt{n^2-4n+5}-n$, rồi so khớp với dạng đề cho.\n\n**Bước 1.** Tách biểu thức thành hiệu $\\sqrt{n^2-4n+5}-n$ cộng với hằng số.\n\n**Bước 2.** Nhân và chia hiệu đó với biểu thức liên hợp để tử trở thành đa thức bậc nhất.\n\n**Bước 3.** So khớp với dạng đề cho để đọc ra $a,b$ rồi tính $a^b$.\n\n**Phần 2. Trình bày**\n\nTa có $\\sqrt{n^{2}-4n+5}+3-n=(\\sqrt{n^{2}-4n+5}-n)+3=\\dfrac{(n^{2}-4n+5)-n^{2}}{\\sqrt{n^{2}-4n+5}+n}+3$.\n\nTức là $\\dfrac{-4n+5}{\\sqrt{n^{2}-4n+5}+n}+3=\\dfrac{5-4n}{\\sqrt{n^{2}-4n+5}+n}+3$.\n\nVậy $a=4$, $b=3$ và $S=a^{b}=4^{3}=64$.",
+  "kiem": [
+   "(()=>{const n=1e4;const f=Math.sqrt(n*n-4*n+5)+3-n;const g=(5-4*n)/(Math.sqrt(n*n-4*n+5)+n)+3;return Math.abs(f-g)<1e-9&&4**3===64})()"
+  ],
+  "sach_dap_so": "64",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C81",
+  "vai": "luyen",
+  "dang_bai": "NDB01158",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hiệu $1+3n$ trừ căn bậc hai: nhân liên hợp phần chứa căn.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết rằng giới hạn $\\lim(1+3n-\\sqrt{9n^{2}-n+7})=\\lim(a+\\dfrac{n-7}{b\\,n+c\\sqrt{9n^{2}-n+7}})$ với $a,b,c$ là các số tự nhiên. Tính giá trị $|a-b|+c$.",
+  "dap_an": "3",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giữ nguyên hằng số $1$ và nhân liên hợp cho hiệu $3n-\\sqrt{9n^2-n+7}$, rồi so khớp với dạng đề cho.\n\n**Bước 1.** Tách biểu thức thành hằng số cộng với hiệu $3n-\\sqrt{9n^2-n+7}$.\n\n**Bước 2.** Nhân và chia hiệu đó với biểu thức liên hợp để tử rút gọn thành đa thức bậc nhất.\n\n**Bước 3.** So khớp với dạng đề cho để đọc ra $a,b,c$ rồi tính.\n\n**Phần 2. Trình bày**\n\nTa có $1+3n-\\sqrt{9n^{2}-n+7}=1+\\dfrac{9n^{2}-(9n^{2}-n+7)}{3n+\\sqrt{9n^{2}-n+7}}=1+\\dfrac{n-7}{3n+\\sqrt{9n^{2}-n+7}}$.\n\nSo với dạng đề cho: $a=1$, $b=3$, $c=1$.\n\nVậy $|a-b|+c=|1-3|+1=3$.",
+  "kiem": [
+   "(()=>{const n=1e4;const f=1+3*n-Math.sqrt(9*n*n-n+7);const g=1+(n-7)/(3*n+Math.sqrt(9*n*n-n+7));return Math.abs(f-g)<1e-9&&Math.abs(1-3)+1===3})()"
+  ],
+  "sach_dap_so": "3",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C82",
+  "vai": "luyen",
+  "dang_bai": "NDB01159",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hiệu căn bậc ba và căn bậc hai: tách qua $n$ rồi liên hợp từng phần.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết giới hạn $\\lim(\\sqrt[3]{n^{3}+3}-\\sqrt{n^{2}+2})=\\lim\\dfrac{a}{\\sqrt[3]{(n^{3}+3)^{2}}+n^{2}+n\\sqrt[3]{n^{3}+3}}-\\lim\\dfrac{b}{n+\\sqrt{n^{2}+2}}$ với $a,b$ là các số nguyên dương. Tính $T=2a+3b$.",
+  "dap_an": "12",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thêm bớt $n$ để tách thành hiệu căn bậc ba với $n$ và hiệu $n$ với căn bậc hai, rồi nhân liên hợp tương ứng.\n\n**Bước 1.** Thêm và bớt $n$ để tách thành hai hiệu, mỗi hiệu chứa đúng một căn.\n\n**Bước 2.** Dùng hằng đẳng thức $a^3-b^3$ cho hiệu chứa căn bậc ba và nhân liên hợp cho hiệu chứa căn bậc hai.\n\n**Bước 3.** So khớp tử số của từng phân thức với dạng đề cho để đọc ra $a,b$.\n\n**Phần 2. Trình bày**\n\nTa có $\\sqrt[3]{n^{3}+3}-\\sqrt{n^{2}+2}=(\\sqrt[3]{n^{3}+3}-n)+(n-\\sqrt{n^{2}+2})$.\n\n$\\sqrt[3]{n^{3}+3}-n=\\dfrac{(n^{3}+3)-n^{3}}{\\sqrt[3]{(n^{3}+3)^{2}}+n\\sqrt[3]{n^{3}+3}+n^{2}}=\\dfrac{3}{\\sqrt[3]{(n^{3}+3)^{2}}+n^{2}+n\\sqrt[3]{n^{3}+3}}$.\n\n$n-\\sqrt{n^{2}+2}=\\dfrac{n^{2}-(n^{2}+2)}{n+\\sqrt{n^{2}+2}}=-\\dfrac{2}{n+\\sqrt{n^{2}+2}}$.\n\nVậy $a=3$, $b=2$ và $T=2\\cdot3+3\\cdot2=12$.",
+  "kiem": [
+   "(()=>{const n=1e4;const f=Math.cbrt(n**3+3)-Math.sqrt(n*n+2);const c=Math.cbrt(n**3+3);const g=3/(c*c+n*n+n*c)-2/(n+Math.sqrt(n*n+2));return Math.abs(f-g)<1e-9&&2*3+3*2===12})()"
+  ],
+  "sach_dap_so": "12",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C83",
+  "vai": "luyen",
+  "dang_bai": "NDB01158",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hiệu hai căn bậc hai chia cho $n$: nhân liên hợp.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Giới hạn của dãy $u_{n}=\\dfrac{\\sqrt{n^{2}+2n}-\\sqrt{n^{2}+n}}{n}$ có dạng $\\lim\\dfrac{\\frac{a}{n}}{\\sqrt{1+\\frac{b}{n}}+\\sqrt{1+\\frac{c}{n}}}$ với $a,b,c$ là các số tự nhiên. Tính giá trị $a^{2}+b^{2}+c^{2}$.",
+  "dap_an": "6",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân liên hợp cho hiệu hai căn rồi chia tử và mẫu cho $n$ để đưa về đúng dạng đề cho.\n\n**Bước 1.** Nhân và chia với biểu thức liên hợp của hiệu hai căn để tử còn lại là đa thức bậc nhất.\n\n**Bước 2.** Rút gọn thừa số $n$ giữa tử và mẫu.\n\n**Bước 3.** Chia tử và mẫu cho $n$ để đưa các căn về dạng $\\sqrt{1+\\dfrac{\\cdot}{n}}$, rồi đọc ra $a,b,c$.\n\n**Phần 2. Trình bày**\n\n$u_{n}=\\dfrac{(n^{2}+2n)-(n^{2}+n)}{n\\,(\\sqrt{n^{2}+2n}+\\sqrt{n^{2}+n})}=\\dfrac{n}{n\\,(\\sqrt{n^{2}+2n}+\\sqrt{n^{2}+n})}=\\dfrac{1}{\\sqrt{n^{2}+2n}+\\sqrt{n^{2}+n}}$.\n\nChia tử và mẫu cho $n$: $u_{n}=\\dfrac{\\frac1n}{\\sqrt{1+\\frac2n}+\\sqrt{1+\\frac1n}}$.\n\nVậy $a=1$, $b=2$, $c=1$ và $a^{2}+b^{2}+c^{2}=1+4+1=6$.",
+  "kiem": [
+   "(()=>{const n=1e4;const f=(Math.sqrt(n*n+2*n)-Math.sqrt(n*n+n))/n;const g=(1/n)/(Math.sqrt(1+2/n)+Math.sqrt(1+1/n));return Math.abs(f-g)<1e-12&&1+4+1===6})()"
+  ],
+  "sach_dap_so": "6",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b1-p2-C84",
+  "vai": "luyen",
+  "dang_bai": "NDB01159",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Thương hiệu căn bậc ba và hiệu căn bậc hai: liên hợp cả tử và mẫu.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết giới hạn $\\lim\\dfrac{\\sqrt[3]{2n^{2}-n^{3}}+n}{\\sqrt{n^{2}+n}-n}=\\lim\\dfrac{\\sqrt{1+\\frac1n}+1}{\\sqrt[3]{(\\frac an-b)^{2}}+1-\\sqrt[3]{\\frac2n-1}}$ với $a,b$ là các số nguyên dương. Tính $S=a+b$.",
+  "dap_an": "3",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dùng liên hợp bậc ba cho tử và liên hợp bậc hai cho mẫu, rồi chia cho $n$ để đối chiếu với dạng đề cho.\n\n**Bước 1.** Đặt ẩn phụ $c=\\sqrt[3]{\\dfrac2n-1}$ để viết căn bậc ba ở tử gọn theo $n$ và $c$, với $\\sqrt[3]{2n^2-n^3}=n\\,c$.\n\n**Bước 2.** Biến đổi tử bằng hằng đẳng thức $x^3+y^3$ và mẫu bằng liên hợp bậc hai.\n\n**Bước 3.** Rút gọn rồi so khớp phần chứa căn bậc ba ở mẫu với dạng đề cho để đọc ra $a,b$.\n\n**Phần 2. Trình bày**\n\nĐặt $c=\\sqrt[3]{\\dfrac2n-1}$, khi đó $\\sqrt[3]{2n^{2}-n^{3}}=n\\,c$ và tử là $nc+n=\\dfrac{n^{3}c^{3}+n^{3}}{n^{2}c^{2}-n^{2}c+n^{2}}=\\dfrac{2n^{2}}{n^{2}\\,(c^{2}-c+1)}$.\n\nMẫu $\\sqrt{n^{2}+n}-n=\\dfrac{n}{\\sqrt{n^{2}+n}+n}=\\dfrac{1}{\\sqrt{1+\\frac1n}+1}$.\n\nDo đó biểu thức bằng $\\dfrac{2\\,(\\sqrt{1+\\frac1n}+1)}{c^{2}-c+1}$, trong đó $c^{2}=\\sqrt[3]{(\\frac2n-1)^{2}}$.\n\nLưu ý: dạng đề cho thiếu thừa số $2$ ở tử (giới hạn thật là $\\dfrac43$). Theo dạng đề cho, phần $\\sqrt[3]{(\\frac an-b)^{2}}$ trùng $\\sqrt[3]{(\\frac2n-1)^{2}}$ nên $a=2$, $b=1$.\n\nVậy $S=a+b=3$.",
+  "kiem": [
+   "(()=>{const n=1e6;const f=(Math.cbrt(2*n*n-n**3)+n)/(Math.sqrt(n*n+n)-n);const c=Math.cbrt(2/n-1);const g=2*(Math.sqrt(1+1/n)+1)/(c*c+1-c);return Math.abs(f-4/3)<1e-4&&Math.abs(f-g)<1e-4&&2+1===3})()"
+  ],
+  "sach_dap_so": "3",
+  "ghi_chu": "ĐỀ SAI — vế phải trong đề thiếu thừa số 2 ở tử (giới hạn thật là 4/3, vế phải in cho 2/3); vẫn đọc a=2, b=1 theo dạng căn bậc ba nên đáp số S=3 trùng sách."
+ },
+ {
+  "id": "tt-b1-p2-C85",
+  "vai": "luyen",
+  "dang_bai": "NDB01163",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tổng cấp số nhân lùi vô hạn có công bội âm, làm tròn.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tìm tổng của cấp số nhân lùi vô hạn $S=1-\\dfrac12+\\dfrac14-\\dfrac18+\\dots$ Kết quả làm tròn đến hàng phần mười.",
+  "dap_an": "0,7",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số hạng đổi dấu xen kẽ nên công bội âm; dùng công thức tổng cấp số nhân lùi vô hạn rồi làm tròn.\n\n**Bước 1.** Xác định số hạng đầu và công bội của cấp số nhân từ hai số hạng đầu.\n\n**Bước 2.** Kiểm tra công bội thoả điều kiện $|q|<1$ của cấp số nhân lùi vô hạn.\n\n**Bước 3.** Thay vào công thức tổng rồi làm tròn đến hàng phần mười.\n\n**Phần 2. Trình bày**\n\nCấp số nhân có $u_{1}=1$ và công bội $q=-\\dfrac12$, $|q|<1$.\n\n$S=\\dfrac{u_{1}}{1-q}=\\dfrac{1}{1+\\frac12}=\\dfrac23\\approx0{,}67$.\n\nVậy $S\\approx0{,}7$.",
+  "kiem": [
+   "(()=>{let s=0;for(let k=0;k<200;k++)s+=(-0.5)**k;return Math.abs(s-2/3)<1e-9&&s.toFixed(1)===\"0.7\"})()"
+  ],
+  "sach_dap_so": "0,7",
+  "ghi_chu": ""
+ }
+]

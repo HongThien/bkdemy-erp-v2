@@ -1,0 +1,212 @@
+[
+ {
+  "ma_cau": "T11200000010413",
+  "dang_bai_id": "NDB02552",
+  "chac": "cao",
+  "ly_do": "Hình hộp cho bốn đỉnh, tìm đỉnh còn lại bằng đẳng thức vectơ cạnh bên/đáy."
+ },
+ {
+  "ma_cau": "T11200000010267",
+  "dang_bai_id": "NDB02553",
+  "chac": "cao",
+  "ly_do": "Điểm M thoả MA=3MB, gọi M(a;b;c) lập phương trình từng thành phần."
+ },
+ {
+  "ma_cau": "T11200000010264",
+  "dang_bai_id": "NDB02542",
+  "chac": "cao",
+  "ly_do": "Lập phương, tích vô hướng AC·MN của hai vectơ trên hình khối."
+ },
+ {
+  "ma_cau": "T11200000010307",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT: tập hợp điểm M là mặt cầu, tìm khoảng cách ngắn nhất từ A đến mặt cầu."
+ },
+ {
+  "ma_cau": "T11200000010229",
+  "dang_bai_id": "NDB02542",
+  "chac": "cao",
+  "ly_do": "Lập phương, tích vô hướng MN·AC' của hai vectơ trên hình khối."
+ },
+ {
+  "ma_cau": "T11200000010388",
+  "dang_bai_id": "NDB02557",
+  "chac": "cao",
+  "ly_do": "Điều kiện vuông góc u·v=0 tìm tham số m."
+ },
+ {
+  "ma_cau": "T11200000010447",
+  "dang_bai_id": "NDB02540",
+  "chac": "vua",
+  "ly_do": "Biểu diễn theo ba vectơ không đồng phẳng rồi đồng nhất hệ số tìm tỉ số; cũng hợp NDB02539."
+ },
+ {
+  "ma_cau": "T11200000010292",
+  "dang_bai_id": "NDB02542",
+  "chac": "cao",
+  "ly_do": "Lập phương, tích vô hướng AD'·BB' của hai vectơ trên hình khối."
+ },
+ {
+  "ma_cau": "T11200000010271",
+  "dang_bai_id": "NDB02543",
+  "chac": "cao",
+  "ly_do": "Chóp, tính cos góc giữa hai vectơ SC và AB."
+ },
+ {
+  "ma_cau": "T11200000010239",
+  "dang_bai_id": "NDB02540",
+  "chac": "cao",
+  "ly_do": "Phân tích A'M theo AA', AB, AD rồi tính x+y+z."
+ },
+ {
+  "ma_cau": "T11200000010549",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT: bài GPS giải hệ bốn khoảng cách MA,MB,MC,MD (giao các mặt cầu)."
+ },
+ {
+  "ma_cau": "T11200000010334",
+  "dang_bai_id": "NDB02543",
+  "chac": "vua",
+  "ly_do": "Hai ý: phân tích AH theo ba vectơ (NDB02540) và tính góc AH, BC (NDB02543); lấy dạng sau."
+ },
+ {
+  "ma_cau": "T11200000010251",
+  "dang_bai_id": "NDB02552",
+  "chac": "vua",
+  "ly_do": "Tìm đỉnh M của hình bình hành ABCM, rồi tính thêm độ dài OM (NDB02554)."
+ },
+ {
+  "ma_cau": "T11200000010563",
+  "dang_bai_id": "NDB02559",
+  "chac": "cao",
+  "ly_do": "M thuộc (Oyz) làm |MA+2MB-CM| nhỏ nhất, dùng tâm tỉ cự rồi hình chiếu."
+ },
+ {
+  "ma_cau": "T11200000010437",
+  "dang_bai_id": "NDB02542",
+  "chac": "cao",
+  "ly_do": "Lập phương, tích vô hướng IB·AK của hai vectơ trên hình khối."
+ },
+ {
+  "ma_cau": "T11200000010575",
+  "dang_bai_id": "NDB02561",
+  "chac": "cao",
+  "ly_do": "Ba lực, hai lực hợp góc 100 độ, lực thứ ba vuông góc mặt phẳng; tính độ lớn hợp lực."
+ },
+ {
+  "ma_cau": "T11200000010285",
+  "dang_bai_id": "NDB02542",
+  "chac": "cao",
+  "ly_do": "Lập phương, tích vô hướng AC·BC' của hai vectơ trên hình khối."
+ },
+ {
+  "ma_cau": "T11200000010479",
+  "dang_bai_id": "NDB02561",
+  "chac": "cao",
+  "ly_do": "Độ lớn trọng lực P=mg, nằm trong mô tả dạng lực và trọng lực."
+ },
+ {
+  "ma_cau": "T11200000010512",
+  "dang_bai_id": "NDB02565",
+  "chac": "cao",
+  "ly_do": "Cabin cáp treo chuyển động đều theo vectơ chỉ phương, tìm thời gian di chuyển."
+ },
+ {
+  "ma_cau": "T11200000010552",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT: bài GPS giải hệ bốn khoảng cách MA,MB,MC,MD (giao các mặt cầu)."
+ },
+ {
+  "ma_cau": "T11200000010276",
+  "dang_bai_id": "NDB02561",
+  "chac": "cao",
+  "ly_do": "Ba lực, hai lực hợp góc 120 độ, lực thứ ba vuông góc mặt phẳng; tính hợp lực."
+ },
+ {
+  "ma_cau": "T11200000010387",
+  "dang_bai_id": "NDB02566",
+  "chac": "cao",
+  "ly_do": "Tên lửa và máy bay bay thẳng đều, tìm điểm gặp B và khoảng cách OB."
+ },
+ {
+  "ma_cau": "T11200000010228",
+  "dang_bai_id": "NDB02536",
+  "chac": "cao",
+  "ly_do": "Rút gọn tổng hiệu vectơ trên lập phương về AC rồi tính độ dài."
+ },
+ {
+  "ma_cau": "T11200000010449",
+  "dang_bai_id": "NDB02552",
+  "chac": "cao",
+  "ly_do": "Hình hộp cho bốn đỉnh, tìm C' bằng đẳng thức vectơ AB=DC và AA'=CC'."
+ },
+ {
+  "ma_cau": "T11200000010235",
+  "dang_bai_id": "NDB02541",
+  "chac": "cao",
+  "ly_do": "Biết |a|,|b|,|a+b| tính a·b bằng khai triển bình phương."
+ },
+ {
+  "ma_cau": "T11200000010266",
+  "dang_bai_id": "NDB02542",
+  "chac": "cao",
+  "ly_do": "Lập phương, tích vô hướng AC·NM của hai vectơ trên hình khối."
+ },
+ {
+  "ma_cau": "T11200000010233",
+  "dang_bai_id": "NDB02542",
+  "chac": "cao",
+  "ly_do": "Lập phương, tích vô hướng MN·AC' của hai vectơ trên hình khối."
+ },
+ {
+  "ma_cau": "T11200000010280",
+  "dang_bai_id": "NDB02561",
+  "chac": "cao",
+  "ly_do": "Ba lực, hai lực hợp góc 150 độ, lực thứ ba vuông góc mặt phẳng; tính hợp lực."
+ },
+ {
+  "ma_cau": "T11200000010474",
+  "dang_bai_id": "NDB02561",
+  "chac": "cao",
+  "ly_do": "Độ lớn trọng lực P=mg, nằm trong mô tả dạng lực và trọng lực."
+ },
+ {
+  "ma_cau": "T11200000010262",
+  "dang_bai_id": "NDB02543",
+  "chac": "cao",
+  "ly_do": "Chóp, tính cos góc giữa hai vectơ AI và SC."
+ },
+ {
+  "ma_cau": "T11200000010332",
+  "dang_bai_id": "NDB02552",
+  "chac": "cao",
+  "ly_do": "Hình hộp (chữ nhật) cho bốn đỉnh, tìm C và A' bằng đẳng thức vectơ."
+ },
+ {
+  "ma_cau": "T11200000010560",
+  "dang_bai_id": "NDB02559",
+  "chac": "cao",
+  "ly_do": "M thuộc (Oyz) làm |MA+2MB-CM| nhỏ nhất, dùng tâm tỉ cự rồi hình chiếu."
+ },
+ {
+  "ma_cau": "T11200000010445",
+  "dang_bai_id": "NDB02540",
+  "chac": "vua",
+  "ly_do": "Biểu diễn theo ba vectơ không đồng phẳng rồi đồng nhất hệ số tìm tỉ số; cũng hợp NDB02539."
+ },
+ {
+  "ma_cau": "T11200000010303",
+  "dang_bai_id": "NDB02552",
+  "chac": "cao",
+  "ly_do": "Tìm đỉnh M của hình bình hành ABCM bằng AB=MC."
+ },
+ {
+  "ma_cau": "T11200000010337",
+  "dang_bai_id": "NDB02552",
+  "chac": "cao",
+  "ly_do": "Tìm đỉnh D của hình bình hành ABCD bằng AD=BC."
+ }
+]

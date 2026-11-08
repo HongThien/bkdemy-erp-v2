@@ -8,6 +8,26 @@
 
 ---
 
+
+> ## ⭐ ĐỔI MÔ HÌNH — Thùy 22/10 (THAY §0 "rẽ nhánh từ bài mẹ", §1.1 neo_baitoan_id, §2 RPC rẽ nhánh, §4.2 xếp chỗ làn bài)
+> Mockup chốt: `docs/mockup-hinh-gia-thiet-mh072.html` · mig `202610221743_hinh_gia_thiet_noi_gia_thiet.sql`.
+> - **Giả thiết nối giả thiết, bài nối bài.** Giả thiết mô hình (gốc chuỗi) và mỗi giả thiết thêm là CÙNG một kiểu nút. Nhánh rẽ ra từ
+>   **giả thiết**, KHÔNG từ bài. **Không bao giờ bài nối vào giả thiết**; bài chỉ nối bài theo quan hệ trước → sau (tiền đề, AND, nhiều cái được).
+> - Lưu: nhánh = `hinh_mo_hinh` (`la_mo_hinh=false`, `neo_baitoan_id` NULL) + cạnh `hinh_mo_hinh_cha(mo_hinh_id → cha_id, chinh)`.
+>   `chinh=true` = **nhánh chính** (đi thẳng tiếp giả thiết cha, ≤1/cha — unique index); còn lại **nhánh phụ** (rẽ).
+> - Vẽ (tab Chuỗi): **nhánh chính đi thẳng XUỐNG**, **nhánh phụ rẽ sang PHẢI**; trong mỗi giả thiết **chuỗi bài nằm NGANG**: cột = cấp
+>   (theo tiền đề cùng giả thiết), bài con ĐẦU TIÊN (theo số) đi tiếp cùng hàng, mỗi bài con sau xuống một hàng mới
+>   (vd B1→B2 · B3→B6→B7 · B4 · B5); tiền đề còn lại ghi ở góc thẻ. **Mũi tên đi trong khe, không đè thẻ.**
+> - Số hiển thị bài = **B1, B2…** theo thứ tự tạo trong cả cây (`fn_hl_so_hien_thi`); mã bài bất biến.
+> - RPC mới: `fn_hl_them_gia_thiet(cha, ten, gt_them, chinh)` · `fn_hl_doi_cha_gia_thiet(nhanh, cha, chinh)`. `fn_hl_re_nhanh*` / `fn_hl_doi_neo` đã KHOÁ.
+>   Giả thiết hiệu lực / sai nhánh vẫn theo đường gốc → giả thiết (`_hl_duong_mo_hinh`), nay đi qua cạnh cha.
+
+> ## ⭐ NHÃN BÀI + IN CHUỖI — Thùy 23/10 (mig `202610231746_hinh_baitoan_nhan_do_kho_dang_bo_de.sql`)
+> - Mỗi **bài trong mô hình** có nhãn **Độ khó** (1–5, `hinh_baitoan_do_kho`, chưa đánh = không dòng) · **Dạng bài** (`hinh_baitoan_dang`) · **Bổ đề** (`hinh_baitoan_bo_de`) —
+>   danh mục `hinh_dang` / `hinh_bo_de`, luật khối nhãn ≤ khối mô hình. Sửa ở popup bài (khối "Nhãn"); RPC `fn_hl_bai_nhan_dat`, `fn_hl_bai_do_kho_dat`, đọc `fn_hl_bai_nhan_cay`.
+> - **Ý trong kho gán bài ⇒ KẾ THỪA nhãn của bài**, suy lúc đọc (`fn_hl_y_nhan_hieu_luc`), không chép; ý đã gán không dán nhãn riêng được (DB chặn). Ý chưa gán giữ nhãn riêng (19/10).
+> - **In chuỗi** (nút 🖨 trên màn mô hình, `ChuoiHinhPrintView.tsx`): mỗi giả thiết có bài = 1 khối (nhãn nhánh + giả thiết + hình), xếp theo số B nhỏ nhất của cả nhánh; "Bài N." = số B; sao độ khó cạnh bài; bản GV thêm lời giải.
+
 ## 0. Đích & khái niệm
 
 **Một mô hình Hình = một cây.** Thân là chuỗi bài 1.1 → 1.2 → …; mỗi lần **thêm một giả thiết** thì rẽ ra một **nhánh** từ một bài mẹ; nhánh lại rẽ tiếp. Số bài cho biết bài rẽ từ đâu (1.6.1 rẽ từ 1.6; 1.6.1.1 rẽ từ 1.6.1).
@@ -258,3 +278,11 @@ Chọn vùng nào thì **toàn bộ UI đổi theo vùng đó** — dispatch qua
 - **Công cụ:** `scripts/hinh-luyen/nhap_tu_de_thi.mjs --khoi <k>` (khô) · `--thu` (ghi rồi rollback) · `--ghi`. Chạy lại không nhập trùng (khoá `hinh_bai.nguon_ma_cau`). Biên bản tách: `scripts/hinh-luyen/nhap/k8-de-thi.json`.
 - **Luật tách (máy chỉ làm phần chắc):** mốc ý `a) b) c)` hoặc `1) 2) 3)` nối tiếp · trước mốc đầu = giả thiết chung · câu dẫn kết thúc bằng ":" chép vào đầu từng ý · "Phần 1. Hướng dẫn" → `hinh_bai.huong_dan` · "Phần 2. Trình bày" tách theo cùng mốc → `hinh_y.loi_giai` · số ý đề ≠ số đoạn lời giải hoặc câu Đúng/Sai ⇒ không tách, gắn cờ. **Chưa làm:** `gia_thiet_them` của ý để trống (ranh giới "dữ kiện mới" ↔ "câu hỏi" cần người); ý lồng (2a, 2b) nằm chung trong ý 2; hình đề chỉ 9/88 bài có (đề gốc không kèm hình), hình lời giải 78/88.
 - **Mô hình:** chưa gán ý nào (khối 8 chưa có mô hình luyện) ⇒ cả 223 ý ở **Duyệt kho › "Hình luyện · chưa phân mô hình"** (mig `202610140230`: `fn_hl_kho_chua_phan` · `fn_hl_dem_chua_phan` · `fn_hl_bai_mo_hinh_luyen` · `fn_hl_gan_y` — chỉ gán được vào bài của mô hình `phan='luyen'`). CEO gán tay, hoặc dựng mô hình rồi bảo Claude duyệt lại.
+
+## 12. NHÓM MÔ HÌNH — tầng giữa Chủ đề và Mô hình (Thùy chốt 18/10, mig `202610181651` ĐÃ ÁP)
+
+- **Vì sao:** "dàn ra tầng mô hình thì nhiều quá khó theo dõi" ⇒ **Chủ đề → Nhóm mô hình → Mô hình → Nhánh → Bài**. Nhóm gom các mô hình TƯƠNG ĐỒNG (cùng kiểu cấu hình hình) — schema theory (Marshall 1995): nhận ra *họ* bài trước rồi mới tới bài.
+- **Chốt:** nhóm nằm TRONG 1 chủ đề · mô hình gốc luyện BẮT BUỘC thuộc 1 nhóm (tạo mô hình = tạo trong nhóm; mô hình cũ ở "⚠ Chưa xếp nhóm" tới khi Thùy kéo vào) · nhóm có **mô tả nhận biết** (dấu hiệu chung — sau này máy xếp mô hình/bài mới vào đúng nhóm).
+- **Nhóm CHỈ GOM:** không kế thừa giả thiết (khác *mô hình con*), không đổi số bài, không đo riêng — xem mức nắm cả nhóm = rollup tập `baitoan_id` bằng hàm hiện có.
+- **DB:** `hinh_nhom_mo_hinh` (mã `NMH…` bất biến, `chu_de_id`, `ten`, `mo_ta`, `thu_tu`) · `hinh_mo_hinh.nhom_mh_id` · trigger giữ nhóm và chủ đề khớp (vào nhóm ⇒ chủ đề theo nhóm; đổi chủ đề khác ⇒ rời nhóm) · nhật ký chung `dai_bdm_log` · RPC `fn_hl_nhom_mh_sap` · `fn_hl_nhom_mh_xoa` (chỉ nhóm rỗng) · `fn_hl_tao_mo_hinh_trong_nhom`. Kiểm: `scripts/kho/test_nhom_mo_hinh.mjs` (ROLLBACK, 9/9).
+- **Màn (`CayNhanh.tsx`, chỉ khi mở từ Bản đồ mới):** cột trái = các nhóm (gập/mở nhớ tới F5, ▲▼, ✎ tên + mô tả, xoá khi rỗng) chứa ô mô hình; kéo ô mô hình thả vào nhóm khác = chuyển nhóm; "＋ Mô hình" chọn nhóm (khoá khi chưa có nhóm nào).

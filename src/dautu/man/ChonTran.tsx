@@ -7,6 +7,9 @@ import { KHOI_NHUNG, NHUNG } from '../lib/nhung'
 import { HUONG_DO, khoHuong, useHuong } from '../lib/boDe'
 import type { MucBot } from '../lib/trongTai'
 
+/** Thách đấu luôn ngẫu nhiên toàn bộ dạng đã học (Thùy 03/11) */
+export const TEN_TRON = 'Mọi dạng đã học'
+
 export function ChonChuDe({ nguon, cap, setCap, onChon, onLui }: { nguon: NguonCau; cap: string; setCap: (c: string) => void; onChon: (cd: string, ten: string) => void; onLui: () => void }) {
   const [dsCap, setDsCap] = useState<CapNguon[] | null>(null)
   const [dsCd, setDsCd] = useState<ChuDeNguon[] | null>(null)
@@ -15,7 +18,7 @@ export function ChonChuDe({ nguon, cap, setCap, onChon, onLui }: { nguon: NguonC
   useEffect(() => { setDsCd(null); nguon.dsChuDe(cap).then(setDsCd).catch((e) => setLoi((e as Error).message)) }, [nguon, cap])
   return (
     <div className="man">
-      <DauMan tieuDe={<>{nguon.icon} {nguon.ten} — chọn nội dung</>} phu={nguon.coNhoTu ? 'Chọn một chủ đề hoặc để hệ thống trộn ngẫu nhiên' : 'Câu trắc nghiệm lấy từ kho câu đạt chuẩn của BK'} onLui={onLui} />
+      <DauMan tieuDe={<>{nguon.icon} {nguon.ten} — chọn nội dung</>} phu={'Thách đấu ra câu ngẫu nhiên từ mọi chủ đề — chỉ chọn cấp độ'} onLui={onLui} />
       {loi && <p className="loi bang-tin">{loi}</p>}
       {!(KHOI_NHUNG && !nguon.coNhoTu) && /* trong app HS: chỉ khối em đang học (Thùy 03/10) */ <div className="chip-hang cuon">
         <span className="nhan-hang">{nguon.tenCap}:</span>
@@ -28,7 +31,7 @@ export function ChonChuDe({ nguon, cap, setCap, onChon, onLui }: { nguon: NguonC
       </div>}
       <div className="luoi-chu-de">
         {!dsCd && !loi && <p className="mo">Đang tải chủ đề…</p>}
-        {(dsCd ?? []).map((c) => (
+        {(dsCd ?? []).filter((c) => c.id === 'tron').map((c) => ( /* chỉ còn "trộn tất cả" — Thùy 03/11 bỏ chọn chủ đề lẻ */
           <button key={c.id} className={'o-chu-de' + (c.id === 'auto' || c.id === 'tron' ? ' dac-biet' : '')} style={{ ['--mau' as string]: c.mau ?? '#9b8cf0' }} onClick={() => onChon(c.id, c.ten)}>
             <span className="o-icon">{c.icon}</span><b>{c.ten}</b>{c.phu && <small>{c.phu}</small>}
           </button>

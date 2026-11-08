@@ -1,0 +1,6740 @@
+[
+ {
+  "ma_cau": "T1120000002754",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của sin^2 x, hạ bậc: nguyên hàm hàm lượng giác."
+ },
+ {
+  "ma_cau": "T112020302006",
+  "dang_bai_id": "NDB02488",
+  "chac": "cao",
+  "ly_do": "Phương án lẫn nhiều loại hàm, đáp án bậc hai/bậc nhất: phân biệt loại hàm."
+ },
+ {
+  "ma_cau": "T112020104020",
+  "dang_bai_id": "NDB02488",
+  "chac": "vua",
+  "ly_do": "Thiếu phương án, phụ thuộc hình; chọn công thức theo đồ thị, chưa rõ loại hàm."
+ },
+ {
+  "ma_cau": "T1120000002656",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa parabol và đường chéo, tự tìm giao điểm; phụ thuộc hình, có thể 00777/00787."
+ },
+ {
+  "ma_cau": "T112070101032",
+  "dang_bai_id": "NDB02536",
+  "chac": "cao",
+  "ly_do": "Độ dài tổng bốn vectơ trên hình lập phương: rút gọn rồi tính độ dài."
+ },
+ {
+  "ma_cau": "T112020402213",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Đọc biểu đồ mực nước biển, không phải khảo sát hàm số: bản đồ thiếu dạng đọc biểu đồ thống kê."
+ },
+ {
+  "ma_cau": "T1120000002888",
+  "dang_bai_id": "NDB00781",
+  "chac": "cao",
+  "ly_do": "Quay nửa đường tròn tâm O quanh Ox ra khối cầu; hình quen thuộc có tham số m."
+ },
+ {
+  "ma_cau": "T1120000002908",
+  "dang_bai_id": "NDB00756",
+  "chac": "vua",
+  "ly_do": "Quãng đường vệ tinh bằng tích phân vận tốc rồi đếm lần gặp; chuyển động tròn, nhiều cách xếp."
+ },
+ {
+  "ma_cau": "T112070311025",
+  "dang_bai_id": "NDB02565",
+  "chac": "cao",
+  "ly_do": "Máy bay bay thẳng đều trong Oxyz, tìm vị trí/độ cao sau t giây."
+ },
+ {
+  "ma_cau": "T1120000002591",
+  "dang_bai_id": "NDB00779",
+  "chac": "cao",
+  "ly_do": "Cho sẵn diện tích thiết diện S(x), tính thể tích bằng tích phân."
+ },
+ {
+  "ma_cau": "T112070304007",
+  "dang_bai_id": "NDB02554",
+  "chac": "cao",
+  "ly_do": "Tính độ dài vectơ 3u+v theo toạ độ (dạng sau thắng so với phép toán toạ độ)."
+ },
+ {
+  "ma_cau": "T1120000007657",
+  "dang_bai_id": "NDB00631",
+  "chac": "vua",
+  "ly_do": "Quãng đường từ đồ thị vận tốc (parabol + chậm dần đều), phụ thuộc hình; có thể 00756."
+ },
+ {
+  "ma_cau": "T1120000007464",
+  "dang_bai_id": "NDB02534",
+  "chac": "cao",
+  "ly_do": "Bơm nước với tốc độ thể tích không đổi, tìm tốc độ dâng mực nước: tốc độ liên quan."
+ },
+ {
+  "ma_cau": "T1120000002689",
+  "dang_bai_id": "NDB00782",
+  "chac": "vua",
+  "ly_do": "Thể tích lều = diện tích mặt cắt (tích phân) nhân chiều dài; chiều dài chỉ có trong hình."
+ },
+ {
+  "ma_cau": "T112010304008",
+  "dang_bai_id": "NDB02479",
+  "chac": "cao",
+  "ly_do": "Đọc tiệm cận ngang từ đồ thị hàm nhất biến cho sẵn hình."
+ },
+ {
+  "ma_cau": "T112010302028",
+  "dang_bai_id": "NDB02504",
+  "chac": "cao",
+  "ly_do": "Đếm tiệm cận của g=1/(2f(x)-1) qua bảng biến thiên của f."
+ },
+ {
+  "ma_cau": "T1120000007208",
+  "dang_bai_id": "NDB00760",
+  "chac": "cao",
+  "ly_do": "Cho chi phí cận biên C'(x) và C(0), tính tổng chi phí tại x=98."
+ },
+ {
+  "ma_cau": "T112070202064",
+  "dang_bai_id": "NDB02545",
+  "chac": "cao",
+  "ly_do": "Điểm đối xứng của A qua mặt phẳng toạ độ (Oxy)."
+ },
+ {
+  "ma_cau": "T1120000002655",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa parabol, đường tròn và tường, cận tự tìm; phụ thuộc hình, có thể 00788."
+ },
+ {
+  "ma_cau": "T1120000006642",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học không gian: khoảng cách từ trọng tâm tứ diện đều đến mặt, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T112010403002",
+  "dang_bai_id": "NDB02527",
+  "chac": "cao",
+  "ly_do": "Chia tổng cố định x+y=10 ngày giữa hai máy để lãi lớn nhất."
+ },
+ {
+  "ma_cau": "T1120000005410",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Cấp số cộng lớp 11, không thuộc bảng đích khối 12."
+ },
+ {
+  "ma_cau": "T112010402101",
+  "dang_bai_id": "NDB02470",
+  "chac": "cao",
+  "ly_do": "GTNN hàm đa thức bậc ba trên đoạn [0;3]."
+ },
+ {
+  "ma_cau": "T112010302027",
+  "dang_bai_id": "NDB02480",
+  "chac": "cao",
+  "ly_do": "Đếm tiệm cận từ bảng biến thiên (TCĐ x=-2, TCN y=1)."
+ },
+ {
+  "ma_cau": "T112070305004",
+  "dang_bai_id": "NDB02551",
+  "chac": "cao",
+  "ly_do": "Tìm toạ độ trung điểm của đoạn AB."
+ },
+ {
+  "ma_cau": "T1120000002900",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Cho F là nguyên hàm, tìm f=F' theo định nghĩa nguyên hàm."
+ },
+ {
+  "ma_cau": "T1120000002672",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: thể tích ly nón cụt cộng nắp nửa cầu, không có hàm số để tích phân."
+ },
+ {
+  "ma_cau": "T112070203015",
+  "dang_bai_id": "NDB02563",
+  "chac": "vua",
+  "ly_do": "Mô hình sân bóng trong Oxyz, tìm vectơ K0K1; cũng hợp 02555 (điểm cách đều)."
+ },
+ {
+  "ma_cau": "T112010304013",
+  "dang_bai_id": "NDB02479",
+  "chac": "cao",
+  "ly_do": "Đọc tiệm cận ngang từ đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000007478",
+  "dang_bai_id": "NDB00781",
+  "chac": "vua",
+  "ly_do": "Quay hình ghép nửa elip và nửa đường tròn quanh Ox; cũng hợp 00636, 00628."
+ },
+ {
+  "ma_cau": "T112070201016",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Diện tích tam giác bằng tích có hướng, tìm tham số m."
+ },
+ {
+  "ma_cau": "T112070101021",
+  "dang_bai_id": "NDB02538",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức vectơ đúng trên hình chóp có đáy hình bình hành."
+ },
+ {
+  "ma_cau": "T112010303010",
+  "dang_bai_id": "NDB02476",
+  "chac": "cao",
+  "ly_do": "Tiệm cận đứng của hàm nhất biến cho bằng công thức."
+ },
+ {
+  "ma_cau": "T112020104001",
+  "dang_bai_id": "NDB02488",
+  "chac": "vua",
+  "ly_do": "Đáp án bậc ba nhưng phương án lẫn nhiều loại hàm; 02484 cũng hợp."
+ },
+ {
+  "ma_cau": "T112070308001",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Thể tích chóp qua tích có hướng trong hệ trục đã gắn (dạng sau thắng)."
+ },
+ {
+  "ma_cau": "T1120000007387",
+  "dang_bai_id": "NDB00751",
+  "chac": "cao",
+  "ly_do": "Chọn tính chất tích phân sai: tích phân cùng cận bằng 0 (tính chất cận)."
+ },
+ {
+  "ma_cau": "T112010201007",
+  "dang_bai_id": "NDB02464",
+  "chac": "cao",
+  "ly_do": "Cực trị hàm đa thức bậc ba, kiểm các khẳng định."
+ },
+ {
+  "ma_cau": "T1120000007170",
+  "dang_bai_id": "NDB02479",
+  "chac": "cao",
+  "ly_do": "Đọc tiệm cận đứng từ đồ thị hàm nhất biến."
+ },
+ {
+  "ma_cau": "T1120000002679",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: thể tích hồ lô từ hai chỏm cầu và hình trụ, không có hàm số."
+ },
+ {
+  "ma_cau": "T1120000002785",
+  "dang_bai_id": "NDB00742",
+  "chac": "vua",
+  "ly_do": "Tìm ∫f'(x)dx với f đa thức: hợp 00742, cũng hợp 00747 (định nghĩa)."
+ },
+ {
+  "ma_cau": "T112070101026",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức vectơ đúng trong hình hộp (quy tắc hình hộp)."
+ },
+ {
+  "ma_cau": "T112070202053",
+  "dang_bai_id": "NDB02546",
+  "chac": "cao",
+  "ly_do": "Toạ độ đỉnh C' của hình lập phương gắn gốc tại A."
+ },
+ {
+  "ma_cau": "T1120000002786",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hằng số e, thuộc đa thức (không phải hàm mũ)."
+ },
+ {
+  "ma_cau": "T112070109001",
+  "dang_bai_id": "NDB02562",
+  "chac": "cao",
+  "ly_do": "Khung sắt treo bốn dây cáp, lực căng cân bằng trọng lực."
+ },
+ {
+  "ma_cau": "T112010402023",
+  "dang_bai_id": "NDB02472",
+  "chac": "cao",
+  "ly_do": "GTLN, GTNN của hàm lượng giác y=2-sin x."
+ },
+ {
+  "ma_cau": "T1120000002901",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên hàm thoả F(0)=1."
+ },
+ {
+  "ma_cau": "T112010102159",
+  "dang_bai_id": "NDB02458",
+  "chac": "cao",
+  "ly_do": "Chỉ hỏi tính y' của hàm đa thức (dạng này nhận cả câu tính y')."
+ },
+ {
+  "ma_cau": "T1120000007601",
+  "dang_bai_id": "NDB02525",
+  "chac": "cao",
+  "ly_do": "Lợi nhuận = doanh thu trừ chi phí cho sẵn, tìm lợi nhuận lớn nhất."
+ },
+ {
+  "ma_cau": "T112020201015",
+  "dang_bai_id": "NDB02495",
+  "chac": "cao",
+  "ly_do": "Dấu các hệ số a,b,c của hàm nhất biến từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T112070101036",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Rút gọn hiệu vectơ AB-EH trong hình hộp."
+ },
+ {
+  "ma_cau": "T112010101011",
+  "dang_bai_id": "NDB02460",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng nghịch biến từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T112070202083",
+  "dang_bai_id": "NDB02549",
+  "chac": "cao",
+  "ly_do": "Tính toạ độ vectơ BA từ hai điểm."
+ },
+ {
+  "ma_cau": "T1120000006326",
+  "dang_bai_id": "NDB02479",
+  "chac": "cao",
+  "ly_do": "Đọc tiệm cận đứng từ đồ thị."
+ },
+ {
+  "ma_cau": "T1120000002842",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của 2cos^2(x/2), hạ bậc: nguyên hàm lượng giác."
+ },
+ {
+  "ma_cau": "T112070201003",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Chứng minh tứ diện, thể tích bằng tích có hướng, suy đường cao."
+ },
+ {
+  "ma_cau": "T1120000007790",
+  "dang_bai_id": "NDB02574",
+  "chac": "cao",
+  "ly_do": "Chọn công thức xác suất toàn phần đúng."
+ },
+ {
+  "ma_cau": "T112070102010",
+  "dang_bai_id": "NDB02542",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng AB'·BD trên hình lập phương."
+ },
+ {
+  "ma_cau": "T112020302023",
+  "dang_bai_id": "NDB02486",
+  "chac": "cao",
+  "ly_do": "Bảng biến thiên, bốn phương án cùng là hàm bậc hai trên bậc nhất."
+ },
+ {
+  "ma_cau": "T1120000007594",
+  "dang_bai_id": "NDB02460",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng nghịch biến từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T112010304010",
+  "dang_bai_id": "NDB02488",
+  "chac": "cao",
+  "ly_do": "Đồ thị, phương án lẫn nhiều loại hàm, đáp án nhất biến: phân biệt loại hàm."
+ },
+ {
+  "ma_cau": "T112020302009",
+  "dang_bai_id": "NDB02498",
+  "chac": "cao",
+  "ly_do": "Tìm hệ số a,b,c của hàm bậc hai trên bậc nhất từ đồ thị."
+ },
+ {
+  "ma_cau": "T1120000007562",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Độ lệch chuẩn của mẫu số liệu ghép nhóm cho bằng bảng."
+ },
+ {
+  "ma_cau": "T112070202067",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc toạ độ vectơ viết theo i, k."
+ },
+ {
+  "ma_cau": "T112070101040",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Quy tắc hình hộp: AB+AD+AA'=AC'."
+ },
+ {
+  "ma_cau": "T1120000002769",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm gồm luỹ thừa cộng e^x (dạng sau thắng: hàm mũ)."
+ },
+ {
+  "ma_cau": "T1120000002912",
+  "dang_bai_id": "NDB00780",
+  "chac": "cao",
+  "ly_do": "Thể tích hình nêm: tự xây diện tích thiết diện tam giác S(x) rồi tích phân."
+ },
+ {
+  "ma_cau": "T112070201004",
+  "dang_bai_id": "NDB02558",
+  "chac": "vua",
+  "ly_do": "Chứng minh AB, CD cắt nhau bằng đồng phẳng; có thể thuộc đường thẳng Oxyz (HGT)."
+ },
+ {
+  "ma_cau": "T1120000007499",
+  "dang_bai_id": "NDB00782",
+  "chac": "vua",
+  "ly_do": "Lều parabol: thể tích = diện tích mặt cắt nhân chiều sâu; có thể 00780."
+ },
+ {
+  "ma_cau": "T1120000002603",
+  "dang_bai_id": "NDB00635",
+  "chac": "cao",
+  "ly_do": "Quay hình giới hạn bởi parabol và đường thẳng quanh Ox, cận tự tìm."
+ },
+ {
+  "ma_cau": "T1120000004030",
+  "dang_bai_id": "NDB02531",
+  "chac": "cao",
+  "ly_do": "Vận tốc lớn nhất của chuyển động s(t) trong 9 giây."
+ },
+ {
+  "ma_cau": "T112070202050",
+  "dang_bai_id": "NDB02552",
+  "chac": "cao",
+  "ly_do": "Cho 3 đỉnh hình hộp và D', tìm đỉnh A' bằng đẳng thức vectơ AB=DC."
+ },
+ {
+  "ma_cau": "T112020301007",
+  "dang_bai_id": "NDB02488",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị, phương án lẫn nhất biến và bậc hai trên bậc nhất; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000002697",
+  "dang_bai_id": "NDB00779",
+  "chac": "cao",
+  "ly_do": "Thiết diện tròn bán kính R(x) cho sẵn công thức; thể tích bằng tích phân diện tích thiết diện."
+ },
+ {
+  "ma_cau": "T112070311007",
+  "dang_bai_id": "NDB02565",
+  "chac": "cao",
+  "ly_do": "Một máy bay bay thẳng đều theo vectơ vận tốc; tìm vị trí sau 30 giây."
+ },
+ {
+  "ma_cau": "T112010101014",
+  "dang_bai_id": "NDB02460",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng đồng biến từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T112010101009",
+  "dang_bai_id": "NDB02461",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng đồng biến từ đồ thị hàm số."
+ },
+ {
+  "ma_cau": "T1120000007162",
+  "dang_bai_id": "NDB02588",
+  "chac": "vua",
+  "ly_do": "Câu lý thuyết chọn số đặc trưng theo thông tin nhóm; gần nhất dạng ý nghĩa các số đo, chưa có dạng riêng."
+ },
+ {
+  "ma_cau": "T1120000007783",
+  "dang_bai_id": "NDB00760",
+  "chac": "cao",
+  "ly_do": "Cho chi phí, doanh thu cận biên (tốc độ thay đổi), tích phân với điều kiện đầu tính giá trị tại x=8."
+ },
+ {
+  "ma_cau": "T112070108009",
+  "dang_bai_id": "NDB02540",
+  "chac": "cao",
+  "ly_do": "Xét ba vectơ đồng phẳng trên tứ diện."
+ },
+ {
+  "ma_cau": "T112070108011",
+  "dang_bai_id": "NDB02540",
+  "chac": "cao",
+  "ly_do": "Xét ba vectơ đồng phẳng trên hình hộp."
+ },
+ {
+  "ma_cau": "T112070105016",
+  "dang_bai_id": "NDB02539",
+  "chac": "cao",
+  "ly_do": "Đẳng thức vectơ với trọng tâm tam giác trên tứ diện."
+ },
+ {
+  "ma_cau": "T1120000002859",
+  "dang_bai_id": "NDB00754",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm phân thức 1/(x+2)."
+ },
+ {
+  "ma_cau": "T112020301008",
+  "dang_bai_id": "NDB02498",
+  "chac": "cao",
+  "ly_do": "Đồ thị y=(ax²+bx+1)/(cx+d), xét dấu các hệ số a,b,c,d."
+ },
+ {
+  "ma_cau": "T112010301022",
+  "dang_bai_id": "NDB02476",
+  "chac": "cao",
+  "ly_do": "Tiệm cận ngang của hàm nhất biến."
+ },
+ {
+  "ma_cau": "T112020301002",
+  "dang_bai_id": "NDB02488",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị, phương án lẫn nhất biến và bậc hai trên bậc nhất; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000002811",
+  "dang_bai_id": "NDB00628",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm cho bởi hai biểu thức trên hai đoạn."
+ },
+ {
+  "ma_cau": "T1120000007513",
+  "dang_bai_id": "NDB00756",
+  "chac": "cao",
+  "ly_do": "Cho gia tốc và vận tốc đầu, tính quãng đường chuyển động thẳng."
+ },
+ {
+  "ma_cau": "T112070101001",
+  "dang_bai_id": "NDB02536",
+  "chac": "cao",
+  "ly_do": "Độ dài tổng ba vectơ trên hình lập phương."
+ },
+ {
+  "ma_cau": "T112070203005",
+  "dang_bai_id": "NDB02566",
+  "chac": "cao",
+  "ly_do": "Đọc vị trí theo hướng Nam-Đông và độ cao thành toạ độ Oxyz của các khinh khí cầu."
+ },
+ {
+  "ma_cau": "T1120000007448",
+  "dang_bai_id": "NDB00778",
+  "chac": "vua",
+  "ly_do": "Quay miền parabol quanh Ox, dữ kiện nằm ở hình; cũng gần dạng parabol tròn xoay 00781."
+ },
+ {
+  "ma_cau": "T1120000002837",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm tích hai nhị thức, khai triển đa thức."
+ },
+ {
+  "ma_cau": "T112070304015",
+  "dang_bai_id": "NDB02554",
+  "chac": "cao",
+  "ly_do": "Tìm AC qua trung điểm rồi tính độ dài vectơ."
+ },
+ {
+  "ma_cau": "T1120000002821",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Tìm tham số m từ điều kiện F(0)=0 và F(3)=7 của nguyên hàm."
+ },
+ {
+  "ma_cau": "T1120000005556",
+  "dang_bai_id": "NDB02580",
+  "chac": "cao",
+  "ly_do": "Bayes thực tế: biết xét nghiệm dương tính, tính xác suất mắc bệnh."
+ },
+ {
+  "ma_cau": "T112010402001",
+  "dang_bai_id": "NDB02470",
+  "chac": "cao",
+  "ly_do": "GTNN hàm đa thức bậc ba trên đoạn."
+ },
+ {
+  "ma_cau": "T112070201012",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Tích hỗn tạp [u,v].w=0 theo toạ độ, tìm x."
+ },
+ {
+  "ma_cau": "T1120000002667",
+  "dang_bai_id": "NDB00786",
+  "chac": "cao",
+  "ly_do": "Thể tích phần giao của hai khối trụ."
+ },
+ {
+  "ma_cau": "T1120000002909",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Quay y=√x+1, trục Ox, x=0, x=2 quanh Ox, có đủ cận."
+ },
+ {
+  "ma_cau": "T1120000002778",
+  "dang_bai_id": "NDB00744",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm x-1/x có số hạng phân thức; dạng sau thắng so với đa thức."
+ },
+ {
+  "ma_cau": "T112070108002",
+  "dang_bai_id": "NDB02540",
+  "chac": "cao",
+  "ly_do": "Xét ba vectơ biểu diễn qua a,b,c không đồng phẳng có đồng phẳng hay không."
+ },
+ {
+  "ma_cau": "T112020202010",
+  "dang_bai_id": "NDB02485",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị hàm nhất biến qua tiệm cận đứng x=1, ngang y=2."
+ },
+ {
+  "ma_cau": "T1120000002602",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Quay y=x²-2x, trục hoành, x=0, x=1 quanh Ox, có đủ cận."
+ },
+ {
+  "ma_cau": "T1120000007280",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Diện tích cửa hầm parabol cắt đường thẳng; số liệu ở hình, cũng có thể xếp dạng đồ thị 00777."
+ },
+ {
+  "ma_cau": "T112010304021",
+  "dang_bai_id": "NDB02480",
+  "chac": "cao",
+  "ly_do": "Đếm tiệm cận ngang từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T1120000007515",
+  "dang_bai_id": "NDB00787",
+  "chac": "cao",
+  "ly_do": "Diện tích cổng parabol theo chiều cao và đáy, công thức hình cắt ngang parabol, rồi tính tiền."
+ },
+ {
+  "ma_cau": "T112010301035",
+  "dang_bai_id": "NDB02476",
+  "chac": "cao",
+  "ly_do": "Tiệm cận ngang của hàm nhất biến."
+ },
+ {
+  "ma_cau": "T1120000002609",
+  "dang_bai_id": "NDB00778",
+  "chac": "cao",
+  "ly_do": "Thể tích khối tròn xoay cho bởi hình vẽ, tự đọc hàm và cận từ hình."
+ },
+ {
+  "ma_cau": "T112070304008",
+  "dang_bai_id": "NDB02554",
+  "chac": "cao",
+  "ly_do": "Độ dài vectơ cho bằng toạ độ."
+ },
+ {
+  "ma_cau": "T112070202087",
+  "dang_bai_id": "NDB02549",
+  "chac": "cao",
+  "ly_do": "Cho vectơ MN và điểm N, tìm điểm M."
+ },
+ {
+  "ma_cau": "T112020305021",
+  "dang_bai_id": "NDB02510",
+  "chac": "cao",
+  "ly_do": "Tiếp tuyến biết hệ số góc (vuông góc đường thẳng cho trước)."
+ },
+ {
+  "ma_cau": "T112010101003",
+  "dang_bai_id": "NDB02460",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng đồng biến từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T112010101010",
+  "dang_bai_id": "NDB02461",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng nghịch biến từ đồ thị hàm số."
+ },
+ {
+  "ma_cau": "T1120000002816",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tích phân hàm ẩn đối xứng tâm, cần đổi biến/từng phần; bản đồ thiếu dạng tích phân đổi biến, hàm ẩn."
+ },
+ {
+  "ma_cau": "T112070201036",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Thể tích hình hộp bằng tích hỗn tạp theo toạ độ."
+ },
+ {
+  "ma_cau": "T1120000002718",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích giữa hai đồ thị cho bởi hình, đọc nghiệm làm cận."
+ },
+ {
+  "ma_cau": "T1120000006340",
+  "dang_bai_id": "NDB02522",
+  "chac": "cao",
+  "ly_do": "Hai điểm cùng phía bờ sông, tìm điểm đặt trên bờ để tổng đường đi ngắn nhất."
+ },
+ {
+  "ma_cau": "T1120000002712",
+  "dang_bai_id": "NDB00775",
+  "chac": "cao",
+  "ly_do": "Diện tích giữa parabol và đường thẳng, tự tìm giao điểm, tìm giá trị nhỏ nhất theo m."
+ },
+ {
+  "ma_cau": "T1120000002573",
+  "dang_bai_id": "NDB00778",
+  "chac": "cao",
+  "ly_do": "Khối tròn xoay cho bởi hình vẽ: xác định hình phẳng rồi tính thể tích."
+ },
+ {
+  "ma_cau": "T112070201034",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Thể tích tứ diện bằng toạ độ."
+ },
+ {
+  "ma_cau": "T112010401004",
+  "dang_bai_id": "NDB02474",
+  "chac": "cao",
+  "ly_do": "Đọc GTLN từ đồ thị."
+ },
+ {
+  "ma_cau": "T112070311001",
+  "dang_bai_id": "NDB02566",
+  "chac": "cao",
+  "ly_do": "Hai vật chuyển động thẳng đều, khoảng cách nhỏ nhất theo thời gian."
+ },
+ {
+  "ma_cau": "T112010201025",
+  "dang_bai_id": "NDB02464",
+  "chac": "cao",
+  "ly_do": "Tìm điểm cực tiểu của đồ thị hàm bậc ba."
+ },
+ {
+  "ma_cau": "T1120000007781",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Diện tích các miền do đường tròn và hình vuông tạo ra, số liệu ở hình; dạng công thức hoặc đối xứng."
+ },
+ {
+  "ma_cau": "T1120000005403",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Phương trình mũ lớp 11 (3^{x-4}=(1/9)^x), không thuộc 5 chủ đề bảng đích."
+ },
+ {
+  "ma_cau": "T1120000007588",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Quan hệ vuông góc trong không gian lớp 11, không thuộc 5 chủ đề bảng đích."
+ },
+ {
+  "ma_cau": "T1120000002866",
+  "dang_bai_id": "NDB00627",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm chứa giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T112070103014",
+  "dang_bai_id": "NDB02543",
+  "chac": "cao",
+  "ly_do": "Cho tích vô hướng và độ dài, tìm góc giữa hai vectơ."
+ },
+ {
+  "ma_cau": "T1120000007591",
+  "dang_bai_id": "NDB02583",
+  "chac": "cao",
+  "ly_do": "Xác định nhóm chứa tứ phân vị thứ nhất."
+ },
+ {
+  "ma_cau": "T112070201035",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Thể tích tứ diện trong hình hộp chữ nhật theo toạ độ."
+ },
+ {
+  "ma_cau": "T112020201013",
+  "dang_bai_id": "NDB02495",
+  "chac": "cao",
+  "ly_do": "Đồ thị hàm nhất biến, xét dấu hệ số a,b,c."
+ },
+ {
+  "ma_cau": "T1120000002874",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Nhiều ý diện tích: phần lớn có cận sẵn (00774), vài ý tự tìm cận (00775)."
+ },
+ {
+  "ma_cau": "T1120000005977",
+  "dang_bai_id": "NDB02507",
+  "chac": "cao",
+  "ly_do": "Kiểm điểm thuộc đồ thị bằng cách thay toạ độ."
+ },
+ {
+  "ma_cau": "T1120000007574",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích giữa hai parabol cho bởi hình và dữ kiện đỉnh."
+ },
+ {
+  "ma_cau": "T112020301012",
+  "dang_bai_id": "NDB02498",
+  "chac": "cao",
+  "ly_do": "Hàm (ax²+bx+1)/(cx+d) từ đồ thị, xác định hệ số rồi tính giá trị."
+ },
+ {
+  "ma_cau": "T112010401012",
+  "dang_bai_id": "NDB02474",
+  "chac": "cao",
+  "ly_do": "Đọc GTLN, GTNN từ đồ thị, tính tổng M+m."
+ },
+ {
+  "ma_cau": "T1120000002915",
+  "dang_bai_id": "NDB00781",
+  "chac": "vua",
+  "ly_do": "Thể tích nửa khối elip tròn xoay, lập hàm từ thông số; hợp nhất dạng hình quen thuộc."
+ },
+ {
+  "ma_cau": "T112070311011",
+  "dang_bai_id": "NDB02566",
+  "chac": "cao",
+  "ly_do": "Hai máy bay bay thẳng đều từ gốc, tính khoảng cách tại thời điểm cho trước."
+ },
+ {
+  "ma_cau": "T1120000002805",
+  "dang_bai_id": "NDB00754",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm phân thức (x-1)/x tách thành 1-1/x."
+ },
+ {
+  "ma_cau": "T1120000002726",
+  "dang_bai_id": "NDB00787",
+  "chac": "cao",
+  "ly_do": "Diện tích phần parabol cắt đường thẳng trong hình vuông, rồi tính tiền."
+ },
+ {
+  "ma_cau": "T1120000002637",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Diện tích cánh cửa gồm hình chữ nhật và viên phân cung tròn, số liệu ở hình."
+ },
+ {
+  "ma_cau": "T112010302023",
+  "dang_bai_id": "NDB02479",
+  "chac": "cao",
+  "ly_do": "Đọc phương trình tiệm cận đứng từ đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000002895",
+  "dang_bai_id": "NDB00629",
+  "chac": "cao",
+  "ly_do": "Tính tích phân sin x trên đoạn cho sẵn bằng nguyên hàm."
+ },
+ {
+  "ma_cau": "T1120000002717",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Diện tích hình phẳng giới hạn bởi parabol, đường tròn, trục hoành theo hình; phải tự lập dữ kiện, có thể thuộc dạng công thức đặc biệt."
+ },
+ {
+  "ma_cau": "T112070307007",
+  "dang_bai_id": "NDB02559",
+  "chac": "cao",
+  "ly_do": "Tìm M làm tổng MA²+MB²+MC²+MD² nhỏ nhất bằng tâm tỉ cự."
+ },
+ {
+  "ma_cau": "T112070101047",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức vectơ sai trong hình hộp bằng quy tắc hình hộp."
+ },
+ {
+  "ma_cau": "T1120000007611",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT: viết phương trình đường thẳng Oxyz song song đường thẳng cho trước."
+ },
+ {
+  "ma_cau": "T112020202023",
+  "dang_bai_id": "NDB02480",
+  "chac": "cao",
+  "ly_do": "Đếm tiệm cận ngang từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T1120000002682",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích 6 cung parabol đối xứng, tính một phần nhân sáu; đề có hình nên có thể thuộc dạng khác."
+ },
+ {
+  "ma_cau": "T1120000007541",
+  "dang_bai_id": "NDB00632",
+  "chac": "vua",
+  "ly_do": "Cho sẵn v(t), tính quãng đường bằng tích phân; cũng gần dạng thực tế chuyển động thẳng 00756/00749."
+ },
+ {
+  "ma_cau": "T112020402122",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc lớp 11: cấp số cộng tìm số hạng u5."
+ },
+ {
+  "ma_cau": "T1120000002680",
+  "dang_bai_id": "NDB00786",
+  "chac": "cao",
+  "ly_do": "Thể tích phần giao hai thanh gỗ trụ và lăng trụ bằng cắt lát thiết diện."
+ },
+ {
+  "ma_cau": "T1120000002581",
+  "dang_bai_id": "NDB00635",
+  "chac": "vua",
+  "ly_do": "Hai ý khác dạng: diện tích (a) và thể tích quay quanh Ox không cho cận (b)."
+ },
+ {
+  "ma_cau": "T112020305010",
+  "dang_bai_id": "NDB02510",
+  "chac": "cao",
+  "ly_do": "Tiếp tuyến song song đường thẳng cho trước nghĩa là biết hệ số góc."
+ },
+ {
+  "ma_cau": "T112070203013",
+  "dang_bai_id": "NDB02564",
+  "chac": "cao",
+  "ly_do": "Tìm toạ độ M của máy bay từ độ dài OM và các góc."
+ },
+ {
+  "ma_cau": "T112070101042",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Rút gọn tổng hiệu vectơ trong hình hộp tìm hệ số k."
+ },
+ {
+  "ma_cau": "T112070311048",
+  "dang_bai_id": "NDB02566",
+  "chac": "cao",
+  "ly_do": "Hai vật chuyển động thẳng đều, khoảng cách nhỏ nhất theo thời gian."
+ },
+ {
+  "ma_cau": "T1120000002574",
+  "dang_bai_id": "NDB00636",
+  "chac": "vua",
+  "ly_do": "Hai ý khác dạng: diện tích hình phẳng (a) và thể tích quay Ox có cận (b)."
+ },
+ {
+  "ma_cau": "T1120000007729",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Chọn mệnh đề sai về tính chất của nguyên hàm."
+ },
+ {
+  "ma_cau": "T112010102045",
+  "dang_bai_id": "NDB02463",
+  "chac": "cao",
+  "ly_do": "Xét đơn điệu khi f′ cho dạng tích có nhân tử bình phương."
+ },
+ {
+  "ma_cau": "T112010302012",
+  "dang_bai_id": "NDB02479",
+  "chac": "cao",
+  "ly_do": "Đọc tiệm cận đứng từ đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T112020201014",
+  "dang_bai_id": "NDB02495",
+  "chac": "cao",
+  "ly_do": "Suy hệ số hàm nhất biến từ bảng biến thiên (tiệm cận, chiều biến thiên)."
+ },
+ {
+  "ma_cau": "T1120000006043",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "không có dạng khớp: đọc biểu đồ mực nước biển theo năm, thống kê mô tả cơ bản."
+ },
+ {
+  "ma_cau": "T112070101020",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Rút gọn tổng hiệu vectơ trong lăng trụ."
+ },
+ {
+  "ma_cau": "T1120000007107",
+  "dang_bai_id": "NDB00629",
+  "chac": "vua",
+  "ly_do": "Dùng tính chất tổng tích phân rồi tính tích phân sin; vừa dạng 00752 vừa 00629."
+ },
+ {
+  "ma_cau": "T1120000002824",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên hàm đa thức thoả điều kiện F(1) cho trước."
+ },
+ {
+  "ma_cau": "T112070312007",
+  "dang_bai_id": "NDB02562",
+  "chac": "cao",
+  "ly_do": "Giá đỡ ba chân, lực phân bố cân bằng trọng lực, tính tích vô hướng các lực."
+ },
+ {
+  "ma_cau": "T1120000002709",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích hình phẳng giới hạn bởi bậc ba và parabol đọc từ đồ thị."
+ },
+ {
+  "ma_cau": "T112070202089",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc toạ độ vectơ viết theo i, j, k."
+ },
+ {
+  "ma_cau": "T1120000002828",
+  "dang_bai_id": "NDB00744",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm hàm phân thức, tách phần nguyên."
+ },
+ {
+  "ma_cau": "T1120000002792",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm đa thức."
+ },
+ {
+  "ma_cau": "T1120000007757",
+  "dang_bai_id": "NDB00787",
+  "chac": "cao",
+  "ly_do": "Diện tích hình ghép dùng công thức: lục giác, đường tròn, cánh parabol."
+ },
+ {
+  "ma_cau": "T1120000007465",
+  "dang_bai_id": "NDB02581",
+  "chac": "cao",
+  "ly_do": "Chuyển bóng sang hộp II rồi tính xác suất có điều kiện qua hai nhánh."
+ },
+ {
+  "ma_cau": "T112010102043",
+  "dang_bai_id": "NDB02458",
+  "chac": "cao",
+  "ly_do": "Tìm khoảng đơn điệu của hàm phân thức bằng y′."
+ },
+ {
+  "ma_cau": "T1120000007494",
+  "dang_bai_id": "NDB00775",
+  "chac": "cao",
+  "ly_do": "Diện tích giới hạn bởi parabol và đường thẳng, tự tìm cận."
+ },
+ {
+  "ma_cau": "T112070101059",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Chọn phát biểu sai về tổng vectơ trong hình hộp."
+ },
+ {
+  "ma_cau": "T1120000007587",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc lớp 11: cấp số cộng tìm công sai."
+ },
+ {
+  "ma_cau": "T112010301036",
+  "dang_bai_id": "NDB02477",
+  "chac": "vua",
+  "ly_do": "Đếm tiệm cận các hàm phân thức, có cả tiệm cận xiên nên có thể thuộc 02478."
+ },
+ {
+  "ma_cau": "T1120000002644",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Diện tích miền giữa đường tròn và ba nửa đường tròn, đề có hình, cách giải kết hợp công thức và tích phân."
+ },
+ {
+  "ma_cau": "T1120000002810",
+  "dang_bai_id": "NDB00629",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm lượng giác cot²x."
+ },
+ {
+  "ma_cau": "T1120000007066",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Diện tích cổng hình parabol thực tế; có hình, cũng có thể xếp dạng diện tích hai hàm số."
+ },
+ {
+  "ma_cau": "T1120000002595",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Chọn công thức thể tích quay quanh Ox có đủ cận."
+ },
+ {
+  "ma_cau": "T1120000005388",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc lớp 11: cấp số cộng tìm công sai."
+ },
+ {
+  "ma_cau": "T1120000007789",
+  "dang_bai_id": "NDB02573",
+  "chac": "cao",
+  "ly_do": "Hai biến cố độc lập suy ra P(A|B)=P(A)."
+ },
+ {
+  "ma_cau": "T112020302024",
+  "dang_bai_id": "NDB02486",
+  "chac": "cao",
+  "ly_do": "Nhận dạng bảng biến thiên hàm bậc hai trên bậc nhất."
+ },
+ {
+  "ma_cau": "T112010101001",
+  "dang_bai_id": "NDB02460",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng nghịch biến từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T1120000007700",
+  "dang_bai_id": "NDB00629",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm lượng giác cot²x."
+ },
+ {
+  "ma_cau": "T112070101022",
+  "dang_bai_id": "NDB02538",
+  "chac": "cao",
+  "ly_do": "Đẳng thức vectơ trong hình chóp đáy hình bình hành."
+ },
+ {
+  "ma_cau": "T1120000002819",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên hàm từ đạo hàm với điều kiện f(1), f(-1) cho trước."
+ },
+ {
+  "ma_cau": "T1120000002913",
+  "dang_bai_id": "NDB00781",
+  "chac": "vua",
+  "ly_do": "Thể tích thùng rượu là parabol tròn xoay thực tế; có hình, cũng gần dạng thể tích cho bởi đồ thị."
+ },
+ {
+  "ma_cau": "T1120000003417",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "không có dạng khớp: tìm chu trình ngắn nhất trên sơ đồ đồ thị, toán rời rạc."
+ },
+ {
+  "ma_cau": "T1120000002766",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm mũ 3^x."
+ },
+ {
+  "ma_cau": "T1120000002648",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích chiếc lá gồm hai phần parabol giống nhau, tính một phần nhân đôi; có hình."
+ },
+ {
+  "ma_cau": "T112070101018",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Quy tắc hình hộp tính tổng ba vectơ cùng gốc."
+ },
+ {
+  "ma_cau": "T112070105008",
+  "dang_bai_id": "NDB02539",
+  "chac": "cao",
+  "ly_do": "Dùng hệ thức trọng tâm tam giác để chọn phát biểu đúng trong tứ diện."
+ },
+ {
+  "ma_cau": "T1120000007544",
+  "dang_bai_id": "NDB00782",
+  "chac": "cao",
+  "ly_do": "Lều có mặt cắt parabol không đổi, thể tích bằng diện tích mặt cắt nhân chiều dài."
+ },
+ {
+  "ma_cau": "T112070202065",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc toạ độ vectơ viết theo i, j, k."
+ },
+ {
+  "ma_cau": "T1120000007159",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Công thức khoảng biến thiên của mẫu số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T112010103012",
+  "dang_bai_id": "NDB02463",
+  "chac": "cao",
+  "ly_do": "Xét đơn điệu khi f′ cho dạng tích có nghiệm bội."
+ },
+ {
+  "ma_cau": "T112020202004",
+  "dang_bai_id": "NDB02485",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị hàm nhất biến qua hai tiệm cận."
+ },
+ {
+  "ma_cau": "T112070305008",
+  "dang_bai_id": "NDB02553",
+  "chac": "cao",
+  "ly_do": "Tìm điểm M thoả đẳng thức vectơ MA+MB=0 bằng toạ độ."
+ },
+ {
+  "ma_cau": "T1120000002749",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm đa thức x²."
+ },
+ {
+  "ma_cau": "T1120000002696",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Thể tích khối tròn xoay quanh Ox với hàm và cận cho sẵn."
+ },
+ {
+  "ma_cau": "T112010305021",
+  "dang_bai_id": "NDB02478",
+  "chac": "cao",
+  "ly_do": "Tìm tiệm cận xiên của hàm bậc hai trên bậc nhất."
+ },
+ {
+  "ma_cau": "T112010305019",
+  "dang_bai_id": "NDB02478",
+  "chac": "cao",
+  "ly_do": "Tìm tiệm cận xiên của hàm bậc hai trên bậc nhất."
+ },
+ {
+  "ma_cau": "T1120000002730",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Diện tích hình phẳng có cận x=m, x=2m cho sẵn, tìm m."
+ },
+ {
+  "ma_cau": "T1120000002793",
+  "dang_bai_id": "NDB00755",
+  "chac": "vua",
+  "ly_do": "Tính tích phân theo ý nghĩa hình học (cung tròn, tam giác); hàm cho bằng công thức không phải đồ thị."
+ },
+ {
+  "ma_cau": "T1120000005409",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: thể tích khối chóp lớp 12 hình học không gian."
+ },
+ {
+  "ma_cau": "T1120000002589",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Chọn công thức thể tích quay quanh Ox có đủ cận."
+ },
+ {
+  "ma_cau": "T112070108004",
+  "dang_bai_id": "NDB02540",
+  "chac": "cao",
+  "ly_do": "Câu nhận biết điều kiện đồng phẳng của ba vectơ."
+ },
+ {
+  "ma_cau": "T112070311022",
+  "dang_bai_id": "NDB02565",
+  "chac": "cao",
+  "ly_do": "Cabin cáp treo bay thẳng đều, tìm thời gian di chuyển."
+ },
+ {
+  "ma_cau": "T112070107004",
+  "dang_bai_id": "NDB02543",
+  "chac": "cao",
+  "ly_do": "Tính cos góc giữa AB và DM trên tứ diện đều."
+ },
+ {
+  "ma_cau": "T1120000001456",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Xác suất cổ điển/đếm tổ hợp phân phối câu hỏi, không phải xác suất có điều kiện; bản đồ thiếu dạng xác suất cổ điển (lớp 10-11)."
+ },
+ {
+  "ma_cau": "T1120000002789",
+  "dang_bai_id": "NDB00744",
+  "chac": "cao",
+  "ly_do": "Chọn công thức nguyên hàm của 1/x (hàm phân thức): ln|x|+C."
+ },
+ {
+  "ma_cau": "T1120000007552",
+  "dang_bai_id": "NDB02548",
+  "chac": "cao",
+  "ly_do": "Tính toạ độ 3a+b bằng phép toán vectơ theo toạ độ."
+ },
+ {
+  "ma_cau": "T1120000007251",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích cánh hoa parabol và nửa hình tròn đối xứng kèm chi phí; kích thước lấy từ hình, dạng 00787 cũng hợp."
+ },
+ {
+  "ma_cau": "T1120000002808",
+  "dang_bai_id": "NDB00753",
+  "chac": "cao",
+  "ly_do": "Tích phân của x^2027 trên [0;3], hàm đa thức."
+ },
+ {
+  "ma_cau": "T1120000002752",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của e^x+2 (mũ cộng hằng), dạng sau là mũ."
+ },
+ {
+  "ma_cau": "T112070103008",
+  "dang_bai_id": "NDB02543",
+  "chac": "cao",
+  "ly_do": "Cho tích vô hướng a.b=-|a||b| rồi hỏi góc giữa hai vectơ."
+ },
+ {
+  "ma_cau": "T112020401262",
+  "dang_bai_id": "NDB02518",
+  "chac": "vua",
+  "ly_do": "Chóp cụt lục giác thể tích cố định, lập hàm bán kính theo cạnh để tối ưu; có thể thuộc 02522."
+ },
+ {
+  "ma_cau": "T1120000002780",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm 3^x+sin x gồm mũ và lượng giác, dạng sau là mũ."
+ },
+ {
+  "ma_cau": "T112020201008",
+  "dang_bai_id": "NDB02495",
+  "chac": "vua",
+  "ly_do": "Xét hệ số a,b,c của hàm nhất biến từ đồ thị; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T1120000002791",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Họ nguyên hàm của x^2024, hàm đa thức (luỹ thừa)."
+ },
+ {
+  "ma_cau": "T1120000007557",
+  "dang_bai_id": "NDB02465",
+  "chac": "cao",
+  "ly_do": "Cực tiểu của hàm phân thức (x^2+4)/x."
+ },
+ {
+  "ma_cau": "T1120000007454",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc lớp 11: bất phương trình mũ, không có trong 5 chủ đề của bảng đích."
+ },
+ {
+  "ma_cau": "T112070305003",
+  "dang_bai_id": "NDB02551",
+  "chac": "cao",
+  "ly_do": "Tìm toạ độ trung điểm đoạn AB."
+ },
+ {
+  "ma_cau": "T112070109005",
+  "dang_bai_id": "NDB02561",
+  "chac": "cao",
+  "ly_do": "Ba lực căng vuông góc, trọng lượng bằng độ lớn hợp lực ba lực."
+ },
+ {
+  "ma_cau": "T1120000002763",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của 3^(x-1).5^(x+1) đưa về hàm mũ 15^x."
+ },
+ {
+  "ma_cau": "T112010401008",
+  "dang_bai_id": "NDB02474",
+  "chac": "vua",
+  "ly_do": "Đọc GTLN từ đồ thị trên khoảng; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T1120000007559",
+  "dang_bai_id": "NDB02563",
+  "chac": "vua",
+  "ly_do": "Độ cao 4 điểm sân trường đồng phẳng, đặt toạ độ rồi tính; có hình, dạng 02558 cũng hợp."
+ },
+ {
+  "ma_cau": "T1120000007057",
+  "dang_bai_id": "NDB00745",
+  "chac": "vua",
+  "ly_do": "Chọn công thức nguyên hàm sai gồm mũ và lượng giác; chưa chắc dạng."
+ },
+ {
+  "ma_cau": "T1120000007432",
+  "dang_bai_id": "NDB00760",
+  "chac": "cao",
+  "ly_do": "Cho chi phí cận biên (tốc độ thay đổi) và chi phí cố định, tính chi phí tại 50 sản phẩm."
+ },
+ {
+  "ma_cau": "T1120000002688",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Quay miền giữa hai hàm f,g trên [-2;2] quanh Ox, đủ cận."
+ },
+ {
+  "ma_cau": "T112070202068",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc toạ độ vectơ viết theo i, j, k."
+ },
+ {
+  "ma_cau": "T1120000001275",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Xác suất cổ điển kết hợp xúc xắc và tam giác, không có dạng trong bảng đích (lớp 10-11)."
+ },
+ {
+  "ma_cau": "T112070202078",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc toạ độ vectơ viết theo i, j, k."
+ },
+ {
+  "ma_cau": "T1120000007185",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích giữa hai parabol cho trên đồ thị, chọn công thức tích phân."
+ },
+ {
+  "ma_cau": "T112020301010",
+  "dang_bai_id": "NDB02498",
+  "chac": "vua",
+  "ly_do": "Xét dấu hệ số hàm bậc hai trên bậc nhất từ đồ thị; phụ thuộc hình, đề thiếu đáp án."
+ },
+ {
+  "ma_cau": "T112010305012",
+  "dang_bai_id": "NDB02513",
+  "chac": "cao",
+  "ly_do": "Tiệm cận xiên cắt hai trục, tính diện tích tam giác OAB."
+ },
+ {
+  "ma_cau": "T112070101013",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức vectơ sai trong hình hộp, quy tắc hình hộp."
+ },
+ {
+  "ma_cau": "T112070109013",
+  "dang_bai_id": "NDB02561",
+  "chac": "vua",
+  "ly_do": "Trọng lực P=mg, tính khối lượng; ngoài khuôn hợp lực của dạng."
+ },
+ {
+  "ma_cau": "T1120000007466",
+  "dang_bai_id": "NDB00786",
+  "chac": "vua",
+  "ly_do": "Thể tích phần giao hai nửa trụ elip vuông góc; dạng 00780 cũng hợp, phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T1120000007412",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích dải đối xứng giữa hai đường thẳng trong hình tròn; dạng 00787 cũng hợp."
+ },
+ {
+  "ma_cau": "T112070201018",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Thể tích tứ diện bằng tích có hướng, tìm tham số m."
+ },
+ {
+  "ma_cau": "T1120000006329",
+  "dang_bai_id": "NDB02540",
+  "chac": "cao",
+  "ly_do": "Phân tích DM theo ba vectơ a,b,c không đồng phẳng."
+ },
+ {
+  "ma_cau": "T1120000002662",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích parabol đối xứng của sân kèm chi phí; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T112010309014",
+  "dang_bai_id": "NDB02513",
+  "chac": "cao",
+  "ly_do": "Hai tiệm cận cùng hai trục toạ độ tạo hình thang vuông, tính diện tích."
+ },
+ {
+  "ma_cau": "T1120000007740",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa parabol và đường gấp khúc đối xứng kèm chi phí; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T112070203010",
+  "dang_bai_id": "NDB02564",
+  "chac": "cao",
+  "ly_do": "Toạ độ máy bay từ độ dài OM và các góc."
+ },
+ {
+  "ma_cau": "T1120000007474",
+  "dang_bai_id": "NDB00756",
+  "chac": "cao",
+  "ly_do": "Cho gia tốc và vận tốc ban đầu, tính quãng đường chuyển động thẳng."
+ },
+ {
+  "ma_cau": "T1120000002776",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Họ nguyên hàm của x^5, hàm đa thức."
+ },
+ {
+  "ma_cau": "T112010401014",
+  "dang_bai_id": "NDB02475",
+  "chac": "cao",
+  "ly_do": "Đọc GTLN trên đoạn từ bảng biến thiên cho trong đề."
+ },
+ {
+  "ma_cau": "T112070101024",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Rút gọn tổng vectơ trong hình hộp."
+ },
+ {
+  "ma_cau": "T112070202061",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc toạ độ vectơ viết theo i, j, k."
+ },
+ {
+  "ma_cau": "T1120000002800",
+  "dang_bai_id": "NDB00629",
+  "chac": "cao",
+  "ly_do": "Tích phân của 1/cos^2 x, hàm lượng giác."
+ },
+ {
+  "ma_cau": "T1120000002906",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm gồm mũ e^-x và 1/cos^2 x, dạng sau là mũ."
+ },
+ {
+  "ma_cau": "T112020302022",
+  "dang_bai_id": "NDB02486",
+  "chac": "vua",
+  "ly_do": "Chọn hàm bậc hai trên bậc nhất theo bảng biến thiên; bảng nằm trong hình."
+ },
+ {
+  "ma_cau": "T1120000002649",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích biển quảng cáo giới hạn bởi parabol và hai đoạn thẳng đối xứng, kèm chi phí; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T112010102001",
+  "dang_bai_id": "NDB02458",
+  "chac": "cao",
+  "ly_do": "Chọn hàm đồng biến trên R trong các đa thức và phân thức."
+ },
+ {
+  "ma_cau": "T1120000002657",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích cỏ parabol đối xứng trong hình chữ nhật kèm chi phí; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T1120000002872",
+  "dang_bai_id": "NDB00758",
+  "chac": "cao",
+  "ly_do": "Điện lượng là tích phân cường độ dòng điện, bài vật lý."
+ },
+ {
+  "ma_cau": "T1120000002604",
+  "dang_bai_id": "NDB00635",
+  "chac": "cao",
+  "ly_do": "Quay y=sqrt(x)-2 quanh Ox, phải tự tìm cận giao với trục hoành."
+ },
+ {
+  "ma_cau": "T112020402284",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thay số vào mô hình mũ A=Pe^(rt), kiến thức hàm mũ lớp 11, bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T1120000007198",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định sai về định nghĩa, tính chất nguyên hàm."
+ },
+ {
+  "ma_cau": "T1120000006788",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Diện tích giới hạn bởi các đường đã cho sẵn cận x=0, x=1."
+ },
+ {
+  "ma_cau": "T112010309013",
+  "dang_bai_id": "NDB02513",
+  "chac": "cao",
+  "ly_do": "Hai tiệm cận tạo với hai trục hình chữ nhật, tính diện tích."
+ },
+ {
+  "ma_cau": "T112070102009",
+  "dang_bai_id": "NDB02542",
+  "chac": "cao",
+  "ly_do": "Tính tích vô hướng AC1.BC trên hình lập phương."
+ },
+ {
+  "ma_cau": "T112070201021",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Tính độ dài tích có hướng của hai vectơ."
+ },
+ {
+  "ma_cau": "T112010102200",
+  "dang_bai_id": "NDB02516",
+  "chac": "cao",
+  "ly_do": "Hàm mô hình cho sẵn, tìm khoảng thời gian hàm tăng."
+ },
+ {
+  "ma_cau": "T112070311031",
+  "dang_bai_id": "NDB02552",
+  "chac": "cao",
+  "ly_do": "Tìm đỉnh D của hình bình hành ABCD bằng toạ độ."
+ },
+ {
+  "ma_cau": "T1120000002878",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Diện tích hình gạch sọc đọc từ hình vẽ; đề không nêu đủ dữ kiện."
+ },
+ {
+  "ma_cau": "T1120000002572",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích mặt cắt parabol đối xứng với đường ngang; dữ kiện chỉ có trong hình, dạng 00787 cũng hợp."
+ },
+ {
+  "ma_cau": "T112070201010",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Ba vectơ đồng phẳng bằng tích hỗn tạp, tìm tham số m."
+ },
+ {
+  "ma_cau": "T1120000002853",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên hàm của 3^x, 2^x thoả điều kiện F(0)=0."
+ },
+ {
+  "ma_cau": "T112070302011",
+  "dang_bai_id": "NDB02548",
+  "chac": "cao",
+  "ly_do": "Tính toạ độ vectơ a-b."
+ },
+ {
+  "ma_cau": "T1120000002592",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Quay hình phẳng có đủ hai cận x=1, x=3 quanh Ox."
+ },
+ {
+  "ma_cau": "T112010101018",
+  "dang_bai_id": "NDB02461",
+  "chac": "vua",
+  "ly_do": "Đọc khoảng đồng biến từ đồ thị; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T112020202021",
+  "dang_bai_id": "NDB02485",
+  "chac": "cao",
+  "ly_do": "Chọn hàm nhất biến từ bảng biến thiên cho trong đề."
+ },
+ {
+  "ma_cau": "T112020202001",
+  "dang_bai_id": "NDB02485",
+  "chac": "vua",
+  "ly_do": "Chọn hàm nhất biến từ đường cong trong hình; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T112070202057",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc toạ độ vectơ viết theo i, j, k."
+ },
+ {
+  "ma_cau": "T1120000002884",
+  "dang_bai_id": "NDB00780",
+  "chac": "cao",
+  "ly_do": "Chứng minh S(x) thiết diện khối chóp rồi tính thể tích bằng tích phân."
+ },
+ {
+  "ma_cau": "T1120000002729",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích giới hạn bởi hàm bậc bốn trùng phương, tịnh tiến/đối xứng; đề có hình, còn có thể xếp NDB00775."
+ },
+ {
+  "ma_cau": "T112070101034",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Chọn mệnh đề sai về tổng vectơ trong hình hộp theo quy tắc hình hộp."
+ },
+ {
+  "ma_cau": "T112070202049",
+  "dang_bai_id": "NDB02545",
+  "chac": "cao",
+  "ly_do": "Tìm hình chiếu vuông góc của điểm lên mặt phẳng toạ độ (Oxz)."
+ },
+ {
+  "ma_cau": "T112020104008",
+  "dang_bai_id": "NDB02489",
+  "chac": "cao",
+  "ly_do": "Từ đồ thị bậc ba suy dấu hệ số a và d (giao trục tung, giới hạn vô cực)."
+ },
+ {
+  "ma_cau": "T1120000002600",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Quay y=cos x quanh Ox, đề cho đủ cận 0 và π/2, chỉ lắp công thức."
+ },
+ {
+  "ma_cau": "T1120000002898",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định đúng về nguyên hàm của 1+e^x; phần quyết định là hàm mũ."
+ },
+ {
+  "ma_cau": "T1120000007496",
+  "dang_bai_id": "NDB00632",
+  "chac": "vua",
+  "ly_do": "Cho sẵn v(t) tính quãng đường đến khi dừng; có thể xếp NDB00756 (chuyển động thẳng)."
+ },
+ {
+  "ma_cau": "T1120000007210",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT: khoảng cách từ điểm đến mặt phẳng (AEF) trong Oxyz, cần phương trình mặt phẳng."
+ },
+ {
+  "ma_cau": "T112070105041",
+  "dang_bai_id": "NDB02539",
+  "chac": "cao",
+  "ly_do": "Trọng tâm tứ diện, hệ thức vectơ GA và G0G trên hình khối."
+ },
+ {
+  "ma_cau": "T1120000007692",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT/hình học không gian: mặt phẳng nước, góc nghiêng giữa hai mặt phẳng, dùng phương trình mặt phẳng."
+ },
+ {
+  "ma_cau": "T1120000002714",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Parabol chia elip, diện tích đối xứng qua Oy; còn có thể xếp NDB00775 hoặc NDB00787."
+ },
+ {
+  "ma_cau": "T112070202094",
+  "dang_bai_id": "NDB02545",
+  "chac": "cao",
+  "ly_do": "Tìm hình chiếu vuông góc của điểm lên trục Oy."
+ },
+ {
+  "ma_cau": "T1120000002707",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa parabol và hai đường y=a, y=b, tự tìm giao điểm; hình đối xứng nên có thể NDB00788."
+ },
+ {
+  "ma_cau": "T112070101038",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Hình lập phương, chọn đẳng thức tổng vectơ theo quy tắc hình hộp."
+ },
+ {
+  "ma_cau": "T1120000002820",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Tìm f biết f' và điều kiện f(2)=1, đồ thị cắt Oy để xác định hằng số."
+ },
+ {
+  "ma_cau": "T1120000002897",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm mũ 2025^x."
+ },
+ {
+  "ma_cau": "T1120000007386",
+  "dang_bai_id": "NDB00751",
+  "chac": "vua",
+  "ly_do": "Chọn khẳng định sai về tính chất tích phân; đáp án sai là đảo cận, nhưng còn có nối cận (NDB00752)."
+ },
+ {
+  "ma_cau": "T1120000007612",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT: viết phương trình mặt phẳng qua điểm có vectơ pháp tuyến."
+ },
+ {
+  "ma_cau": "T112080201011",
+  "dang_bai_id": "NDB02578",
+  "chac": "vua",
+  "ly_do": "Nhiều giai đoạn: tung xúc xắc 3 lần, điều kiện tam giác vuông, nhiều tầng trường hợp; không rõ là toàn phần."
+ },
+ {
+  "ma_cau": "T1120000007209",
+  "dang_bai_id": "NDB00774",
+  "chac": "vua",
+  "ly_do": "Diện tích có cận cho sẵn, tìm a để S_A=S_B; đề có hình, có thể xếp NDB00777."
+ },
+ {
+  "ma_cau": "T1120000007613",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT: viết phương trình mặt cầu tâm I đi qua điểm A."
+ },
+ {
+  "ma_cau": "T112020202006",
+  "dang_bai_id": "NDB02485",
+  "chac": "vua",
+  "ly_do": "Nhận dạng đồ thị hàm nhất biến, nhưng đề lỗi lẫn lời giải, có hình."
+ },
+ {
+  "ma_cau": "T1120000002777",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định đúng về nguyên hàm của 5^x."
+ },
+ {
+  "ma_cau": "T1120000002852",
+  "dang_bai_id": "NDB00754",
+  "chac": "vua",
+  "ly_do": "15 ý tích phân trộn đa thức, lượng giác, mũ, phân thức; xếp dạng cuối là phân thức."
+ },
+ {
+  "ma_cau": "T1120000002732",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa f, f'' và Ox của hàm trùng phương, đối xứng; đề có hình thiếu số liệu."
+ },
+ {
+  "ma_cau": "T112070312008",
+  "dang_bai_id": "NDB02561",
+  "chac": "vua",
+  "ly_do": "Hợp lực của hai dây trên đèn trong tứ diện đều; đề có hình, có thể xếp NDB02562."
+ },
+ {
+  "ma_cau": "T112010302029",
+  "dang_bai_id": "NDB02504",
+  "chac": "cao",
+  "ly_do": "Đếm tiệm cận của 1/(2f(x)-1) qua bảng biến thiên của f."
+ },
+ {
+  "ma_cau": "T112070202066",
+  "dang_bai_id": "NDB02545",
+  "chac": "cao",
+  "ly_do": "Tìm hình chiếu vuông góc của điểm lên trục Ox."
+ },
+ {
+  "ma_cau": "T1120000002683",
+  "dang_bai_id": "NDB00779",
+  "chac": "cao",
+  "ly_do": "Thiết diện là tam giác đều có cạnh theo hàm số, hình dạng thiết diện cho sẵn."
+ },
+ {
+  "ma_cau": "T112020402229",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "không thuộc Toán 12 đạo hàm: lãi suất tăng trưởng lũy thừa (mũ, lớp 11); bản đồ thiếu dạng lãi kép/tăng trưởng mũ."
+ },
+ {
+  "ma_cau": "T1120000002668",
+  "dang_bai_id": "NDB00639",
+  "chac": "cao",
+  "ly_do": "Thể tích vật quay quanh trục Oy của miền giới hạn bởi hai hypebol."
+ },
+ {
+  "ma_cau": "T1120000006339",
+  "dang_bai_id": "NDB02466",
+  "chac": "cao",
+  "ly_do": "Đọc giá trị cực tiểu từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T112070202076",
+  "dang_bai_id": "NDB02545",
+  "chac": "cao",
+  "ly_do": "Tìm hình chiếu vuông góc của điểm lên trục Ox."
+ },
+ {
+  "ma_cau": "T1120000002804",
+  "dang_bai_id": "NDB00753",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm đa thức (khai triển x(1+x))."
+ },
+ {
+  "ma_cau": "T1120000002839",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Tìm f biết f' chứa căn và điều kiện f(1)=1."
+ },
+ {
+  "ma_cau": "T1120000007166",
+  "dang_bai_id": "NDB00780",
+  "chac": "vua",
+  "ly_do": "Thể tích nêm hình trụ nước, thiết diện tự lập công thức; có hình, còn có thể dùng công thức quen thuộc."
+ },
+ {
+  "ma_cau": "T1120000007122",
+  "dang_bai_id": "NDB02554",
+  "chac": "cao",
+  "ly_do": "Tính toạ độ w=u+2v rồi độ dài vectơ; dạng độ dài đứng sau."
+ },
+ {
+  "ma_cau": "T112070101057",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Hình lập phương, chọn đẳng thức tổng vectơ theo quy tắc hình hộp."
+ },
+ {
+  "ma_cau": "T112070202079",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc toạ độ vectơ viết theo i, j, k."
+ },
+ {
+  "ma_cau": "T112010302021",
+  "dang_bai_id": "NDB02479",
+  "chac": "cao",
+  "ly_do": "Đọc tiệm cận đứng từ đồ thị."
+ },
+ {
+  "ma_cau": "T112010202001",
+  "dang_bai_id": "NDB02467",
+  "chac": "cao",
+  "ly_do": "Đọc điểm cực đại, cực tiểu từ đồ thị hàm số."
+ },
+ {
+  "ma_cau": "T112070312005",
+  "dang_bai_id": "NDB02562",
+  "chac": "cao",
+  "ly_do": "Máy quay trên giá đỡ ba chân, toạ độ cho sẵn, tính lực tại các chân giá đỡ."
+ },
+ {
+  "ma_cau": "T1120000002748",
+  "dang_bai_id": "NDB02592",
+  "chac": "vua",
+  "ly_do": "Tích phân f'(x+1), f'(x-1) tính bằng Newton-Leibniz, đọc đồ thị; thêm phần f(2x-8) tách ý."
+ },
+ {
+  "ma_cau": "T1120000002660",
+  "dang_bai_id": "NDB00787",
+  "chac": "cao",
+  "ly_do": "Diện tích hình cắt ngang parabol, nửa đường tròn, tính chi phí; dùng công thức diện tích."
+ },
+ {
+  "ma_cau": "T1120000002894",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Họ nguyên hàm của hàm mũ 5^x."
+ },
+ {
+  "ma_cau": "T112070101044",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Hình lăng trụ, rút gọn tổng vectơ BA + A'C' bằng quy tắc lăng trụ."
+ },
+ {
+  "ma_cau": "T1120000002843",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của tan^2 x + cot^2 x, hạ về 1/cos^2 và 1/sin^2."
+ },
+ {
+  "ma_cau": "T1120000002864",
+  "dang_bai_id": "NDB00627",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm chứa dấu giá trị tuyệt đối |2x+1|."
+ },
+ {
+  "ma_cau": "T1120000007830",
+  "dang_bai_id": "NDB00774",
+  "chac": "vua",
+  "ly_do": "Diện tích hình thang cong với cận cho sẵn, tìm k để S1=2S2; đề có hình."
+ },
+ {
+  "ma_cau": "T1120000002599",
+  "dang_bai_id": "NDB00635",
+  "chac": "cao",
+  "ly_do": "Quay quanh Ox hình giới hạn bởi y=1-√x, trục hoành, x=9; phải tự tìm cận từ giao điểm."
+ },
+ {
+  "ma_cau": "T1120000002761",
+  "dang_bai_id": "NDB00744",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của 1/x^3, phân thức đưa về lũy thừa; dạng phân thức đứng sau đa thức."
+ },
+ {
+  "ma_cau": "T1120000002787",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định đúng về nguyên hàm của 2025^x; đáp án đúng thuộc hàm mũ."
+ },
+ {
+  "ma_cau": "T1120000007784",
+  "dang_bai_id": "NDB02581",
+  "chac": "cao",
+  "ly_do": "Chuyển bóng từ hộp I sang II rồi lấy, biết đỏ tìm xác suất là bóng chuyển: Bayes sau chuyển hộp."
+ },
+ {
+  "ma_cau": "T112070202051",
+  "dang_bai_id": "NDB02549",
+  "chac": "cao",
+  "ly_do": "Tính toạ độ vectơ AB từ hai điểm A, B."
+ },
+ {
+  "ma_cau": "T1120000002883",
+  "dang_bai_id": "NDB00782",
+  "chac": "cao",
+  "ly_do": "Thể tích khối trụ bằng tích phân diện tích thiết diện không đổi πr^2."
+ },
+ {
+  "ma_cau": "T1120000002661",
+  "dang_bai_id": "NDB00787",
+  "chac": "cao",
+  "ly_do": "Diện tích cánh hoa parabol bằng công thức hình cắt ngang parabol, rồi chia diện tích tường."
+ },
+ {
+  "ma_cau": "T112010305020",
+  "dang_bai_id": "NDB02478",
+  "chac": "vua",
+  "ly_do": "Chọn mệnh đề sai về hàm (C) nhưng đề thiếu công thức hàm; liên quan tiệm cận xiên, có hình."
+ },
+ {
+  "ma_cau": "T1120000007590",
+  "dang_bai_id": "NDB02476",
+  "chac": "cao",
+  "ly_do": "Tiệm cận đứng của hàm nhất biến (3x+2)/(x-2)."
+ },
+ {
+  "ma_cau": "T112020302018",
+  "dang_bai_id": "NDB02486",
+  "chac": "vua",
+  "ly_do": "Nhận dạng đồ thị hàm bậc hai trên bậc nhất, nhưng đề tiệm cận x=1 mâu thuẫn mẫu x-2, có hình."
+ },
+ {
+  "ma_cau": "T1120000002831",
+  "dang_bai_id": "NDB00748",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm tổng đa thức, phân thức và căn; dạng căn đứng sau."
+ },
+ {
+  "ma_cau": "T1120000002765",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm lũy thừa 2025x^2024."
+ },
+ {
+  "ma_cau": "T1120000007452",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học lớp 11: quan hệ vuông góc trong hình chóp S.ABCD, SA vuông góc đáy."
+ },
+ {
+  "ma_cau": "T1120000007053",
+  "dang_bai_id": "NDB02476",
+  "chac": "cao",
+  "ly_do": "Tiệm cận đứng của hàm nhất biến (2x+3)/(x-1)."
+ },
+ {
+  "ma_cau": "T1120000007553",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Tính khoảng biến thiên của mẫu số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T1120000003777",
+  "dang_bai_id": "NDB02591",
+  "chac": "cao",
+  "ly_do": "Tính số trung bình của mẫu số liệu ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T1120000002783",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của e^x."
+ },
+ {
+  "ma_cau": "T1120000002896",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của (2sin x + cos x)^2, hạ bậc lượng giác."
+ },
+ {
+  "ma_cau": "T1120000007463",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "không thuộc bản đồ: lãi kép giải bất phương trình mũ-logarit (lớp 11); bản đồ thiếu dạng lãi suất/tăng trưởng."
+ },
+ {
+  "ma_cau": "T1120000002880",
+  "dang_bai_id": "NDB00779",
+  "chac": "cao",
+  "ly_do": "Thiết diện hình vuông có cạnh cho sẵn theo x, thể tích bằng tích phân diện tích thiết diện."
+ },
+ {
+  "ma_cau": "T1120000007528",
+  "dang_bai_id": "NDB00632",
+  "chac": "vua",
+  "ly_do": "Cho sẵn v(t) tính quãng đường đến khi dừng; có thể xếp NDB00756 (chuyển động thẳng)."
+ },
+ {
+  "ma_cau": "T112010201013",
+  "dang_bai_id": "NDB02465",
+  "chac": "cao",
+  "ly_do": "Tìm điểm cực trị của hàm phân thức bậc hai trên bậc nhất qua y′."
+ },
+ {
+  "ma_cau": "T1120000002703",
+  "dang_bai_id": "NDB00781",
+  "chac": "vua",
+  "ly_do": "Thể tích bình = nón cụt + cầu cắt chỏm bằng công thức, có hình; bản đồ chưa có dạng riêng."
+ },
+ {
+  "ma_cau": "T112070101066",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức đúng theo quy tắc hình hộp AB+AD+AA'=AC'."
+ },
+ {
+  "ma_cau": "T1120000002587",
+  "dang_bai_id": "NDB00775",
+  "chac": "cao",
+  "ly_do": "Diện tích giới hạn bởi parabol, trục tung, tiếp tuyến; phải tự tìm tiếp tuyến và cận."
+ },
+ {
+  "ma_cau": "T112070109014",
+  "dang_bai_id": "NDB02561",
+  "chac": "vua",
+  "ly_do": "Tính lực F=m·a, thuộc chủ đề lực nhưng không phải hợp lực theo góc; dạng gần nhất."
+ },
+ {
+  "ma_cau": "T1120000007623",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT: khoảng cách từ điểm đến mặt phẳng trong Oxyz (cần lập phương trình mặt phẳng)."
+ },
+ {
+  "ma_cau": "T112020202022",
+  "dang_bai_id": "NDB02485",
+  "chac": "cao",
+  "ly_do": "Chọn đồ thị của hàm nhất biến y=(x+1)/(x-1) qua tiệm cận, chiều biến thiên."
+ },
+ {
+  "ma_cau": "T112070101015",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Rút gọn tổng BA'+BC trong hình hộp bằng quy tắc hình bình hành."
+ },
+ {
+  "ma_cau": "T1120000002861",
+  "dang_bai_id": "NDB00630",
+  "chac": "cao",
+  "ly_do": "Tích phân của hàm mũ e^{3x}."
+ },
+ {
+  "ma_cau": "T1120000002590",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Công thức thể tích quay quanh Ox của hình giới hạn bởi y=f(x), trục hoành, x=a, x=b (có cận)."
+ },
+ {
+  "ma_cau": "T1120000002911",
+  "dang_bai_id": "NDB00781",
+  "chac": "vua",
+  "ly_do": "Khối cầu cắt hai chỏm; dùng tích phân quay hoặc công thức hình quen thuộc, đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T112010304022",
+  "dang_bai_id": "NDB02480",
+  "chac": "cao",
+  "ly_do": "Đếm tiệm cận đứng và ngang từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T112010304019",
+  "dang_bai_id": "NDB02479",
+  "chac": "cao",
+  "ly_do": "Đọc tiệm cận ngang từ đồ thị hàm nhất biến."
+ },
+ {
+  "ma_cau": "T112070107025",
+  "dang_bai_id": "NDB02543",
+  "chac": "cao",
+  "ly_do": "Tính góc giữa AO và CD trên tứ diện đều bằng tích vô hướng."
+ },
+ {
+  "ma_cau": "T1120000007628",
+  "dang_bai_id": "NDB00760",
+  "chac": "cao",
+  "ly_do": "Cho tốc độ thay đổi h′(t), tính mực nước tại thời điểm t=6."
+ },
+ {
+  "ma_cau": "T1120000002822",
+  "dang_bai_id": "NDB00760",
+  "chac": "cao",
+  "ly_do": "Cho tốc độ phát triển, tính số lượng vi khuẩn tại thời điểm (dạng sau thắng so với NDB00750)."
+ },
+ {
+  "ma_cau": "T1120000007800",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Chọn mệnh đề đúng về tính chất nối cận của tích phân."
+ },
+ {
+  "ma_cau": "T112010304020",
+  "dang_bai_id": "NDB02480",
+  "chac": "cao",
+  "ly_do": "Đếm tiệm cận ngang từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T112020104019",
+  "dang_bai_id": "NDB02484",
+  "chac": "cao",
+  "ly_do": "Chọn công thức hàm bậc ba từ bảng biến thiên (cực trị, điểm đi qua, dấu a)."
+ },
+ {
+  "ma_cau": "T112010101008",
+  "dang_bai_id": "NDB02461",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng đồng biến từ đồ thị."
+ },
+ {
+  "ma_cau": "T1120000002767",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Dùng định nghĩa nguyên hàm: f=F′ để tìm hàm có nguyên hàm cho trước."
+ },
+ {
+  "ma_cau": "T112010101007",
+  "dang_bai_id": "NDB02461",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng đồng biến từ đồ thị."
+ },
+ {
+  "ma_cau": "T112020306001",
+  "dang_bai_id": "NDB02510",
+  "chac": "cao",
+  "ly_do": "Tiếp tuyến biết hệ số góc (vuông góc đường thẳng), tìm hoành độ tiếp điểm."
+ },
+ {
+  "ma_cau": "T112070302024",
+  "dang_bai_id": "NDB02548",
+  "chac": "cao",
+  "ly_do": "Tìm vectơ b thoả đẳng thức tổng hiệu vectơ theo toạ độ."
+ },
+ {
+  "ma_cau": "T1120000007001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT: mặt phẳng (P), đường thẳng HK, góc tia sáng với mặt phẳng trong Oxyz."
+ },
+ {
+  "ma_cau": "T1120000004890",
+  "dang_bai_id": "NDB02568",
+  "chac": "cao",
+  "ly_do": "Tính P(B|A)=P(AB)/P(A) khi cho sẵn các xác suất."
+ },
+ {
+  "ma_cau": "T112070109016",
+  "dang_bai_id": "NDB02561",
+  "chac": "cao",
+  "ly_do": "Độ lớn hợp lực ba lực, hai lực hợp góc 110° và lực thứ ba vuông góc."
+ },
+ {
+  "ma_cau": "T112020104005",
+  "dang_bai_id": "NDB02488",
+  "chac": "vua",
+  "ly_do": "Chọn công thức từ đồ thị, phương án lẫn nhiều loại hàm; đề và lời giải/đáp án mâu thuẫn."
+ },
+ {
+  "ma_cau": "T112070101035",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Rút gọn tổng ba vectơ trong hình hộp theo quy tắc hình hộp."
+ },
+ {
+  "ma_cau": "T112070109011",
+  "dang_bai_id": "NDB02561",
+  "chac": "cao",
+  "ly_do": "Hợp lực ba lực, hai lực hợp góc 120° và lực thứ ba vuông góc mặt phẳng của chúng."
+ },
+ {
+  "ma_cau": "T1120000002860",
+  "dang_bai_id": "NDB00754",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm phân thức 1/(2x+1) cộng căn; dạng sau (phân thức) thắng."
+ },
+ {
+  "ma_cau": "T1120000002565",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích hình phẳng tô màu trên đồ thị y=3^x, y=x: đọc cận và hai hàm từ hình."
+ },
+ {
+  "ma_cau": "T112070201007",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Diện tích tam giác và đường cao bằng tích có hướng theo toạ độ."
+ },
+ {
+  "ma_cau": "T1120000002794",
+  "dang_bai_id": "NDB00752",
+  "chac": "vua",
+  "ly_do": "Tính tích phân bằng ý nghĩa hình học (diện tích hình thang, 1/4 hình tròn); bản đồ chưa có dạng riêng."
+ },
+ {
+  "ma_cau": "T1120000002721",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích giữa tiếp tuyến và đồ thị bậc ba, cận và hình đọc từ hình vẽ."
+ },
+ {
+  "ma_cau": "T1120000002631",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Diện tích sân chơi = hình chữ nhật trừ các hình cắt ngang parabol; bài thực tế dựng hệ trục."
+ },
+ {
+  "ma_cau": "T112000000727",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "không dạng nào khớp: xác suất cổ điển đếm tam giác cân (lớp 10–11), thiếu dạng xác suất cổ điển."
+ },
+ {
+  "ma_cau": "T112020301003",
+  "dang_bai_id": "NDB02486",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị hàm bậc hai trên bậc nhất, các phương án cùng loại."
+ },
+ {
+  "ma_cau": "T1120000007456",
+  "dang_bai_id": "NDB02495",
+  "chac": "cao",
+  "ly_do": "Suy a/c và d/c từ hai tiệm cận của đồ thị hàm nhất biến."
+ },
+ {
+  "ma_cau": "T1120000007547",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích hình thang cong trên đồ thị: chọn tích phân giữa 3^x và x theo hình."
+ },
+ {
+  "ma_cau": "T1120000006324",
+  "dang_bai_id": "NDB02466",
+  "chac": "cao",
+  "ly_do": "Đọc giá trị cực đại từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T112070201014",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Diện tích tam giác ABC bằng ½|[AB,AC]| theo toạ độ."
+ },
+ {
+  "ma_cau": "T1120000002848",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm lượng giác sin5x."
+ },
+ {
+  "ma_cau": "T1120000002905",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của x+e^{2020x}; dạng sau (hàm mũ) thắng đa thức."
+ },
+ {
+  "ma_cau": "T1120000007786",
+  "dang_bai_id": "NDB00747",
+  "chac": "vua",
+  "ly_do": "Chọn đẳng thức dùng tính chất tổng hiệu nguyên hàm, không tính; cũng có thể xếp NDB00745."
+ },
+ {
+  "ma_cau": "T1120000002651",
+  "dang_bai_id": "NDB00774",
+  "chac": "vua",
+  "ly_do": "Bài thực tế đường cong bậc ba: lập hàm từ dữ kiện rồi tính diện tích hai phần với cận cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000002580",
+  "dang_bai_id": "NDB00636",
+  "chac": "vua",
+  "ly_do": "Hai ý khác dạng: a) diện tích, b) thể tích quay quanh Ox có cận; theo dạng sau chọn thể tích."
+ },
+ {
+  "ma_cau": "T1120000007446",
+  "dang_bai_id": "NDB00629",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm lượng giác cộng đa thức, dạng sau (lượng giác) thắng."
+ },
+ {
+  "ma_cau": "T1120000002664",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa đường tròn và parabol trong bài thực tế có hình; phải dựng hệ trục và cận."
+ },
+ {
+  "ma_cau": "T112010202004",
+  "dang_bai_id": "NDB02467",
+  "chac": "cao",
+  "ly_do": "Đếm số điểm cực trị từ đồ thị hàm bậc ba."
+ },
+ {
+  "ma_cau": "T1120000002881",
+  "dang_bai_id": "NDB00781",
+  "chac": "cao",
+  "ly_do": "Chứng minh thể tích khối cầu bằng tích phân (hình quen thuộc có công thức), dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000003138",
+  "dang_bai_id": "NDB02591",
+  "chac": "cao",
+  "ly_do": "Tính số trung bình của mẫu số liệu ghép nhóm từ bảng."
+ },
+ {
+  "ma_cau": "T1120000002910",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Thể tích quay quanh Ox của hình giới hạn bởi y=f(x), y=0, x=0, x=√2 (có cận)."
+ },
+ {
+  "ma_cau": "T1120000002826",
+  "dang_bai_id": "NDB00744",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm phân thức 1/(5x-2)."
+ },
+ {
+  "ma_cau": "T112010401029",
+  "dang_bai_id": "NDB02475",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định đúng về GTLN, GTNN trên đoạn từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T112070307011",
+  "dang_bai_id": "NDB02553",
+  "chac": "cao",
+  "ly_do": "Tìm điểm M thoả đẳng thức vectơ MA+2MB-MC=0."
+ },
+ {
+  "ma_cau": "T1120000002719",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích hình (H) tô đậm trên đồ thị y=ln(x+1), y=1, trục tung."
+ },
+ {
+  "ma_cau": "T112070202075",
+  "dang_bai_id": "NDB02545",
+  "chac": "cao",
+  "ly_do": "Tìm hình chiếu vuông góc của điểm lên trục Ox."
+ },
+ {
+  "ma_cau": "T1120000002720",
+  "dang_bai_id": "NDB00775",
+  "chac": "cao",
+  "ly_do": "Diện tích giới hạn bởi parabol và hai tiếp tuyến: tự tìm tiếp tuyến, giao điểm làm cận."
+ },
+ {
+  "ma_cau": "T112070307008",
+  "dang_bai_id": "NDB02553",
+  "chac": "cao",
+  "ly_do": "Tìm điểm K thoả đẳng thức vectơ KA-2KB=0."
+ },
+ {
+  "ma_cau": "T112020303001",
+  "dang_bai_id": "NDB02500",
+  "chac": "cao",
+  "ly_do": "Phương trình đường thẳng qua hai cực trị của hàm bậc hai trên bậc nhất."
+ },
+ {
+  "ma_cau": "T112010101017",
+  "dang_bai_id": "NDB02460",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng đồng biến từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T1120000002762",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Họ nguyên hàm của x+e^{2x}; dạng sau (hàm mũ) thắng đa thức."
+ },
+ {
+  "ma_cau": "T1120000007367",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Diện tích phần xanh giữa hai parabol chung đỉnh trong hình chữ nhật; bài thực tế dựng hệ trục."
+ },
+ {
+  "ma_cau": "T112070202072",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc toạ độ điểm M từ OM viết theo i, j, k."
+ },
+ {
+  "ma_cau": "T1120000001095",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "không dạng nào khớp: xác suất cổ điển (thử số điện thoại), không phải xác suất có điều kiện; thiếu dạng xác suất lớp 11."
+ },
+ {
+  "ma_cau": "T1120000002863",
+  "dang_bai_id": "NDB00627",
+  "chac": "cao",
+  "ly_do": "Bốn tích phân hàm chứa giá trị tuyệt đối, phá dấu theo từng đoạn."
+ },
+ {
+  "ma_cau": "T1120000002643",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa y=x³-x và y=x tự tìm giao điểm, rồi tính chi phí thực tế; có hình."
+ },
+ {
+  "ma_cau": "T1120000002702",
+  "dang_bai_id": "NDB00636",
+  "chac": "vua",
+  "ly_do": "Thể tích quay quanh trục AB của hình chữ nhật trừ miền parabol, phải dựng hàm; bài thực tế có hình."
+ },
+ {
+  "ma_cau": "T1120000002695",
+  "dang_bai_id": "NDB00780",
+  "chac": "cao",
+  "ly_do": "Thể tích lều: thiết diện vuông góc Ox phải tự xây S(x) từ parabol rồi tích phân."
+ },
+ {
+  "ma_cau": "T1120000002809",
+  "dang_bai_id": "NDB00630",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm mũ 7^x, dùng nguyên hàm a^x/ln a."
+ },
+ {
+  "ma_cau": "T112020301004",
+  "dang_bai_id": "NDB02486",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị; cả bốn phương án đều là hàm bậc hai trên bậc nhất."
+ },
+ {
+  "ma_cau": "T112070307013",
+  "dang_bai_id": "NDB02553",
+  "chac": "cao",
+  "ly_do": "Tìm điểm E thoả đẳng thức vectơ CE=2EB theo toạ độ."
+ },
+ {
+  "ma_cau": "T112070201005",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Dùng tích có hướng xét đồng phẳng; ý biểu thị theo ba vectơ giải bằng hệ (dạng sau thắng)."
+ },
+ {
+  "ma_cau": "T112070107043",
+  "dang_bai_id": "NDB02543",
+  "chac": "cao",
+  "ly_do": "Tính góc giữa hai đường bằng tích vô hướng vectơ trên lăng trụ."
+ },
+ {
+  "ma_cau": "T112070312001",
+  "dang_bai_id": "NDB02562",
+  "chac": "cao",
+  "ly_do": "Vật đặt trên giá đỡ ba chân cân bằng, tìm lực F1=k·SA theo toạ độ."
+ },
+ {
+  "ma_cau": "T112070304003",
+  "dang_bai_id": "NDB02554",
+  "chac": "cao",
+  "ly_do": "Tính khoảng cách giữa hai điểm theo toạ độ."
+ },
+ {
+  "ma_cau": "T1120000007445",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Cánh hoa là viên phân giao hai hình tròn tính bằng công thức; cũng có thể xếp hình đối xứng (NDB00788)."
+ },
+ {
+  "ma_cau": "T112070305015",
+  "dang_bai_id": "NDB02551",
+  "chac": "cao",
+  "ly_do": "Tìm toạ độ trọng tâm tam giác."
+ },
+ {
+  "ma_cau": "T112020202017",
+  "dang_bai_id": "NDB02488",
+  "chac": "cao",
+  "ly_do": "Các phương án thuộc nhiều loại hàm (nhất biến, đa thức, x+1/x), nhận loại hàm qua tiệm cận."
+ },
+ {
+  "ma_cau": "T1120000002585",
+  "dang_bai_id": "NDB00752",
+  "chac": "vua",
+  "ly_do": "Dùng tính chất nối cận với S1,S2; mô tả và ví dụ của NDB00751/00752 đang lệch nhau, còn có thể là dạng diện tích."
+ },
+ {
+  "ma_cau": "T1120000002817",
+  "dang_bai_id": "NDB00748",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm sáu ý đa thức, phân thức, căn; dạng căn đứng sau nên xếp vào căn thức."
+ },
+ {
+  "ma_cau": "T112020104010",
+  "dang_bai_id": "NDB02484",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị; bốn phương án đều là hàm bậc ba."
+ },
+ {
+  "ma_cau": "T1120000002812",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định đúng về tính chất tuyến tính, tổng hiệu của tích phân."
+ },
+ {
+  "ma_cau": "T112020202005",
+  "dang_bai_id": "NDB02485",
+  "chac": "cao",
+  "ly_do": "Nhận dạng bảng biến thiên; cả bốn phương án đều là hàm nhất biến."
+ },
+ {
+  "ma_cau": "T1120000007015",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc lớp 11: phương trình lượng giác cos x = 1, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T1120000005998",
+  "dang_bai_id": "NDB02522",
+  "chac": "vua",
+  "ly_do": "Tối ưu tổng độ dài dây theo vị trí nút; đề thiếu số liệu phụ thuộc hình, có thể là dạng khác."
+ },
+ {
+  "ma_cau": "T1120000007563",
+  "dang_bai_id": "NDB00745",
+  "chac": "vua",
+  "ly_do": "Chọn mệnh đề sai trộn nguyên hàm đa thức, lượng giác, mũ, phân thức; không có một dạng duy nhất."
+ },
+ {
+  "ma_cau": "T1120000002646",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Diện tích cánh hoa parabol bằng công thức 2/3·h·d cộng lục giác; có thể xếp hình đối xứng (NDB00788)."
+ },
+ {
+  "ma_cau": "T1120000007691",
+  "dang_bai_id": "NDB00780",
+  "chac": "cao",
+  "ly_do": "Thiết diện parabol phải tự lập S(x)=4/3·h² rồi tích phân tính thể tích."
+ },
+ {
+  "ma_cau": "T1120000002735",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Hình bốn cánh giống nhau: tính một cánh giữa hai đường cong rồi nhân lên; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000007453",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc lớp 11: cấp số nhân, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T112000000558",
+  "dang_bai_id": "NDB00780",
+  "chac": "cao",
+  "ly_do": "Thể tích phần hình nón bị cắt, tự xây thiết diện viên phân S(z) rồi tích phân."
+ },
+ {
+  "ma_cau": "T1120000002862",
+  "dang_bai_id": "NDB00627",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm chứa giá trị tuyệt đối, xét dấu rồi tách cận."
+ },
+ {
+  "ma_cau": "T1120000007694",
+  "dang_bai_id": "NDB00630",
+  "chac": "cao",
+  "ly_do": "Đưa về tổng hàm mũ 2e^x+3e^-x rồi lấy tích phân."
+ },
+ {
+  "ma_cau": "T1120000002751",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm tích sin5x·sin2x, biến tích thành tổng lượng giác."
+ },
+ {
+  "ma_cau": "T1120000007645",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa hai parabol tự lập hệ trục, tìm giao điểm; có thể xếp hình đối xứng hoặc công thức."
+ },
+ {
+  "ma_cau": "T112010403004",
+  "dang_bai_id": "NDB02525",
+  "chac": "cao",
+  "ly_do": "Lợi nhuận bằng doanh thu trừ chi phí cho sẵn, tìm sản lượng tối ưu."
+ },
+ {
+  "ma_cau": "T112070101055",
+  "dang_bai_id": "NDB02536",
+  "chac": "cao",
+  "ly_do": "Tính độ dài tổng hai vectơ trên hình lập phương, rút gọn về AB'."
+ },
+ {
+  "ma_cau": "T1120000002768",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm đa thức x³+x."
+ },
+ {
+  "ma_cau": "T112070101027",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Rút gọn tổng vectơ trong hình hộp bằng quy tắc hình bình hành."
+ },
+ {
+  "ma_cau": "T1120000002564",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Cận x=-1, x=0 phải đọc từ hình tô màu; một đồ thị và trục hoành, cũng gần dạng có cận (NDB00774)."
+ },
+ {
+  "ma_cau": "T112020301006",
+  "dang_bai_id": "NDB02486",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị; cả bốn phương án đều là hàm bậc hai trên bậc nhất."
+ },
+ {
+  "ma_cau": "T112070108006",
+  "dang_bai_id": "NDB02540",
+  "chac": "cao",
+  "ly_do": "Nhận biết các bộ ba vectơ đồng phẳng trên tứ diện với điểm chia tỉ số."
+ },
+ {
+  "ma_cau": "T1120000002775",
+  "dang_bai_id": "NDB00744",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của 1/x + hằng số; dạng phân thức đứng sau đa thức."
+ },
+ {
+  "ma_cau": "T112070108008",
+  "dang_bai_id": "NDB02540",
+  "chac": "cao",
+  "ly_do": "Điều kiện đồng phẳng của MN, AD, BC trên tứ diện để tìm k."
+ },
+ {
+  "ma_cau": "T1120000002734",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Hình giới hạn bởi y=x², y=k, tự tìm cận √k; S1,S2 xác định qua hình vẽ."
+ },
+ {
+  "ma_cau": "T112070108005",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Bốn điểm O,A,B,C đồng phẳng theo toạ độ, dùng tích hỗn tạp bằng 0."
+ },
+ {
+  "ma_cau": "T112020202020",
+  "dang_bai_id": "NDB02488",
+  "chac": "cao",
+  "ly_do": "Các phương án thuộc nhiều loại hàm (bậc ba, bậc hai/bậc nhất, nhất biến)."
+ },
+ {
+  "ma_cau": "T112020202007",
+  "dang_bai_id": "NDB02488",
+  "chac": "cao",
+  "ly_do": "Các phương án thuộc nhiều loại hàm (bậc ba, nhất biến, trùng phương)."
+ },
+ {
+  "ma_cau": "T1120000002736",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích dưới parabol, hai miền đen bằng nhau (nhân đôi); cũng có thể xếp NDB00775 hoặc công thức parabol."
+ },
+ {
+  "ma_cau": "T112070109012",
+  "dang_bai_id": "NDB02561",
+  "chac": "cao",
+  "ly_do": "Hợp lực ba lực: hai lực hợp góc 100°, lực thứ ba vuông góc mặt phẳng."
+ },
+ {
+  "ma_cau": "T112070105035",
+  "dang_bai_id": "NDB02540",
+  "chac": "cao",
+  "ly_do": "Biểu diễn MP theo ba vectơ b,c,d trên tứ diện, có trung điểm; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T112070202095",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Biểu diễn vectơ theo i, j, k từ toạ độ."
+ },
+ {
+  "ma_cau": "T1120000007082",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính độ lệch chuẩn từ bảng ghép nhóm."
+ },
+ {
+  "ma_cau": "T1120000002844",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên hàm của x+sin(2x+1); dạng lượng giác đứng sau đa thức."
+ },
+ {
+  "ma_cau": "T112020301011",
+  "dang_bai_id": "NDB02498",
+  "chac": "cao",
+  "ly_do": "Hàm ax+b+1/(x+c) là bậc hai trên bậc nhất, xét hệ số từ đồ thị."
+ },
+ {
+  "ma_cau": "T1120000002771",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm mũ 2^x."
+ },
+ {
+  "ma_cau": "T112020202011",
+  "dang_bai_id": "NDB02488",
+  "chac": "cao",
+  "ly_do": "Các phương án thuộc nhiều loại hàm (bậc hai/bậc nhất, nhất biến, bậc ba)."
+ },
+ {
+  "ma_cau": "T112070102011",
+  "dang_bai_id": "NDB02541",
+  "chac": "vua",
+  "ly_do": "Câu lý thuyết chọn khẳng định sai về tính chất tích vô hướng, bản đồ chưa có dạng riêng."
+ },
+ {
+  "ma_cau": "T112000000721",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc lớp 11: quan hệ song song trong hình học không gian, không dùng vectơ."
+ },
+ {
+  "ma_cau": "T112020104017",
+  "dang_bai_id": "NDB02484",
+  "chac": "cao",
+  "ly_do": "Đáp án là hàm bậc ba; dạng này nhận cả khi phương án lẫn hàm khác."
+ },
+ {
+  "ma_cau": "T1120000002798",
+  "dang_bai_id": "NDB00629",
+  "chac": "cao",
+  "ly_do": "Tích phân của 1/sin²x, hàm lượng giác."
+ },
+ {
+  "ma_cau": "T112070108013",
+  "dang_bai_id": "NDB02540",
+  "chac": "cao",
+  "ly_do": "Chọn bộ ba vectơ đồng phẳng trong hình hộp."
+ },
+ {
+  "ma_cau": "T1120000002743",
+  "dang_bai_id": "NDB00786",
+  "chac": "cao",
+  "ly_do": "Thể tích phần giao hai khối trụ vuông góc, trùng ví dụ của dạng."
+ },
+ {
+  "ma_cau": "T1120000007498",
+  "dang_bai_id": "NDB00756",
+  "chac": "cao",
+  "ly_do": "Cho gia tốc a(t)=2t+1 và vận tốc đầu, tính vận tốc; trùng ví dụ chuyển động thẳng."
+ },
+ {
+  "ma_cau": "T112070107037",
+  "dang_bai_id": "NDB02543",
+  "chac": "cao",
+  "ly_do": "Chứng minh AB vuông góc CD bằng tích vô hướng trên tứ diện."
+ },
+ {
+  "ma_cau": "T112070302009",
+  "dang_bai_id": "NDB02548",
+  "chac": "cao",
+  "ly_do": "Tính toạ độ vectơ a-2b."
+ },
+ {
+  "ma_cau": "T112010303022",
+  "dang_bai_id": "NDB02476",
+  "chac": "cao",
+  "ly_do": "Tiệm cận đứng và ngang của hàm nhất biến."
+ },
+ {
+  "ma_cau": "T112020302013",
+  "dang_bai_id": "NDB02499",
+  "chac": "cao",
+  "ly_do": "Tâm đối xứng đồ thị bậc hai trên bậc nhất là giao hai tiệm cận."
+ },
+ {
+  "ma_cau": "T1120000002855",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Diện tích hình thang cong có sẵn cận và hàm số."
+ },
+ {
+  "ma_cau": "T112070101033",
+  "dang_bai_id": "NDB02539",
+  "chac": "cao",
+  "ly_do": "Dùng trung điểm M,N trên tứ diện để rút gọn AB+DC=2MN; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T112070202096",
+  "dang_bai_id": "NDB02545",
+  "chac": "cao",
+  "ly_do": "Tìm hình chiếu của điểm lên trục Oy rồi tính toạ độ vectơ."
+ },
+ {
+  "ma_cau": "T112020202018",
+  "dang_bai_id": "NDB02488",
+  "chac": "cao",
+  "ly_do": "Phương án lẫn nhất biến và bậc hai/bậc nhất, nhận loại hàm qua tiệm cận xiên."
+ },
+ {
+  "ma_cau": "T1120000007795",
+  "dang_bai_id": "NDB00748",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm có hạng tử căn √x cộng đa thức; dạng căn đứng sau."
+ },
+ {
+  "ma_cau": "T112070305012",
+  "dang_bai_id": "NDB02551",
+  "chac": "cao",
+  "ly_do": "Tìm toạ độ trung điểm đoạn thẳng."
+ },
+ {
+  "ma_cau": "T112070101008",
+  "dang_bai_id": "NDB02539",
+  "chac": "cao",
+  "ly_do": "Hệ thức vectơ với trung điểm M,N,P trên tứ diện; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T112070307005",
+  "dang_bai_id": "NDB02553",
+  "chac": "cao",
+  "ly_do": "Tìm điểm M thoả đẳng thức vectơ 6MA-11MB+9MC=0 theo toạ độ."
+ },
+ {
+  "ma_cau": "T1120000002663",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa hai parabol lập từ điểm trên hình, trừ hình tròn; dữ kiện nằm ở hình vẽ."
+ },
+ {
+  "ma_cau": "T112000000031",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Tự lập hàm nhất biến từ tiệm cận rồi tính diện tích bằng tích phân; phụ thuộc hình vẽ."
+ },
+ {
+  "ma_cau": "T112070302012",
+  "dang_bai_id": "NDB02548",
+  "chac": "cao",
+  "ly_do": "Tính toạ độ a − 2b từ toạ độ hai vectơ: cộng, trừ, nhân số từng thành phần."
+ },
+ {
+  "ma_cau": "T112010305001",
+  "dang_bai_id": "NDB02478",
+  "chac": "cao",
+  "ly_do": "Tìm tiệm cận xiên của hàm bậc hai trên bậc nhất bằng chia đa thức."
+ },
+ {
+  "ma_cau": "T112070304029",
+  "dang_bai_id": "NDB02554",
+  "chac": "cao",
+  "ly_do": "Tính BC = AC − AB rồi độ dài vectơ BC; dạng sau (độ dài) thắng dạng toạ độ AB."
+ },
+ {
+  "ma_cau": "T1120000002647",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Hai parabol đối xứng, diện tích dùng công thức parabol và đối xứng; phụ thuộc hình, tiền sơn là bước thực tế."
+ },
+ {
+  "ma_cau": "T112070107002",
+  "dang_bai_id": "NDB02543",
+  "chac": "vua",
+  "ly_do": "Góc giữa AA' và BM giải bằng tích vô hướng vectơ, nhưng là lăng trụ phức tạp, có thể thuộc Hình học không gian."
+ },
+ {
+  "ma_cau": "T1120000007701",
+  "dang_bai_id": "NDB00742",
+  "chac": "vua",
+  "ly_do": "Chọn khẳng định sai về công thức nguyên hàm cơ bản (x^α, α≠−1); bản đồ chưa có dạng lý thuyết riêng."
+ },
+ {
+  "ma_cau": "T1120000007173",
+  "dang_bai_id": "NDB02470",
+  "chac": "cao",
+  "ly_do": "GTNN hàm đa thức bậc ba trên đoạn cho trước: nghiệm y′, so sánh giá trị."
+ },
+ {
+  "ma_cau": "T1120000002753",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm x − sin x gồm đa thức và lượng giác; dạng sau (lượng giác) thắng."
+ },
+ {
+  "ma_cau": "T112010308022",
+  "dang_bai_id": "NDB02481",
+  "chac": "cao",
+  "ly_do": "Cho sẵn giới hạn ở ±∞, chọn kết luận tiệm cận ngang theo định nghĩa."
+ },
+ {
+  "ma_cau": "T1120000007246",
+  "dang_bai_id": "NDB00751",
+  "chac": "vua",
+  "ly_do": "Chọn khẳng định sai về tính chất tích phân; mô tả hai dạng 00751 và 00752 gần như trùng."
+ },
+ {
+  "ma_cau": "T112010102018",
+  "dang_bai_id": "NDB02458",
+  "chac": "cao",
+  "ly_do": "Chọn hàm đồng biến trên ℝ trong các phương án đa thức, phân thức; lý thuyết dạng nêu đúng kiểu này."
+ },
+ {
+  "ma_cau": "T1120000002698",
+  "dang_bai_id": "NDB00780",
+  "chac": "cao",
+  "ly_do": "Chính là ví dụ dạng: lều parabol, thiết diện hình vuông phải tự dựng S(y)."
+ },
+ {
+  "ma_cau": "T1120000007604",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Giải phương trình logarit lớp 12 (Mũ–Logarit), không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T1120000007560",
+  "dang_bai_id": "NDB02562",
+  "chac": "cao",
+  "ly_do": "Đèn treo ba dây cân bằng, tìm lực căng từ trọng lượng; dạng lực căng dây sau hợp lực."
+ },
+ {
+  "ma_cau": "T112070311026",
+  "dang_bai_id": "NDB02565",
+  "chac": "cao",
+  "ly_do": "Máy bay bay thẳng đều từ M đến N, tìm vị trí sau thêm 5 phút."
+ },
+ {
+  "ma_cau": "T112070305001",
+  "dang_bai_id": "NDB02551",
+  "chac": "cao",
+  "ly_do": "Tìm toạ độ trung điểm đoạn AB bằng trung bình cộng toạ độ."
+ },
+ {
+  "ma_cau": "T112010304023",
+  "dang_bai_id": "NDB02479",
+  "chac": "cao",
+  "ly_do": "Đọc và đếm tiệm cận đứng, ngang từ đồ thị cho sẵn."
+ },
+ {
+  "ma_cau": "T112070307009",
+  "dang_bai_id": "NDB02559",
+  "chac": "cao",
+  "ly_do": "K thuộc Oy làm |3KE − 2KF| nhỏ nhất: tìm tâm tỉ cự I rồi hình chiếu."
+ },
+ {
+  "ma_cau": "T1120000002687",
+  "dang_bai_id": "NDB00778",
+  "chac": "vua",
+  "ly_do": "Quay hình parabol quanh Ox, cận và hệ số lấy từ hình; có thể thuộc dạng công thức hình quen thuộc 00781."
+ },
+ {
+  "ma_cau": "T112070108007",
+  "dang_bai_id": "NDB02540",
+  "chac": "cao",
+  "ly_do": "Chọn bộ ba vectơ đồng phẳng trên tứ diện; dạng phân tích theo ba vectơ gồm cả đồng phẳng."
+ },
+ {
+  "ma_cau": "T1120000002764",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm lũy thừa x^5 (đa thức)."
+ },
+ {
+  "ma_cau": "T112020104016",
+  "dang_bai_id": "NDB02484",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị đáp án là hàm bậc ba qua dấu a và toạ độ cực trị."
+ },
+ {
+  "ma_cau": "T112070101049",
+  "dang_bai_id": "NDB02539",
+  "chac": "vua",
+  "ly_do": "Tổng SA+SB+SC+SD dùng O là trung điểm hai đường chéo; cũng có thể xếp rút gọn tổng trong hình chóp 02538."
+ },
+ {
+  "ma_cau": "T1120000007610",
+  "dang_bai_id": "NDB02545",
+  "chac": "cao",
+  "ly_do": "Hình chiếu của điểm lên mặt phẳng toạ độ (Oxy): giữ x, y, cho z = 0."
+ },
+ {
+  "ma_cau": "T1120000004389",
+  "dang_bai_id": "NDB02591",
+  "chac": "cao",
+  "ly_do": "Tính số trung bình của mẫu ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T112010201026",
+  "dang_bai_id": "NDB02465",
+  "chac": "cao",
+  "ly_do": "Chọn hàm không có cực trị; đáp án đúng là hàm phân thức nhất biến; dạng phân thức sau đa thức."
+ },
+ {
+  "ma_cau": "T1120000002770",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của sin x, hàm lượng giác cơ bản."
+ },
+ {
+  "ma_cau": "T112010401016",
+  "dang_bai_id": "NDB02474",
+  "chac": "cao",
+  "ly_do": "Đọc GTLN, GTNN từ đồ thị trên đoạn rồi tính tổng."
+ },
+ {
+  "ma_cau": "T1120000007725",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa parabol và nửa đường tròn từ hình rồi tính chi phí; phụ thuộc hình, có thể là 00775."
+ },
+ {
+  "ma_cau": "T112020302007",
+  "dang_bai_id": "NDB02486",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị hàm bậc hai trên bậc nhất qua điểm và tiệm cận đứng."
+ },
+ {
+  "ma_cau": "T112010303004",
+  "dang_bai_id": "NDB02477",
+  "chac": "cao",
+  "ly_do": "Tìm hàm nhận x = −1 là tiệm cận đứng; phải rút gọn nhân tử chung ở phân thức bậc cao."
+ },
+ {
+  "ma_cau": "T1120000007054",
+  "dang_bai_id": "NDB02461",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng nghịch biến từ đồ thị hàm số."
+ },
+ {
+  "ma_cau": "T1120000002690",
+  "dang_bai_id": "NDB00774",
+  "chac": "vua",
+  "ly_do": "Diện tích dưới đồ thị f, trục Ox, x = 2 rồi đổi ra số cây; cận lấy từ hình, bài thực tế."
+ },
+ {
+  "ma_cau": "T1120000007844",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai của mẫu ghép nhóm từ bảng."
+ },
+ {
+  "ma_cau": "T112070203007",
+  "dang_bai_id": "NDB02564",
+  "chac": "cao",
+  "ly_do": "Máy bay cất cánh cho OM và các góc, tìm toạ độ bằng sin, cos."
+ },
+ {
+  "ma_cau": "T1120000003399",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: thể tích khối lăng trụ V = S·h, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T1120000007450",
+  "dang_bai_id": "NDB02460",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng đồng biến từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T1120000002832",
+  "dang_bai_id": "NDB00748",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm 3√x + x^2024: có căn thức, dạng căn sau đa thức."
+ },
+ {
+  "ma_cau": "T1120000007685",
+  "dang_bai_id": "NDB00630",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm mũ e^(3x−1) với cận."
+ },
+ {
+  "ma_cau": "T1120000002803",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Dùng Newton–Leibniz cho ∫f′ = f(3) − f(1) với giá trị f(1) cho sẵn."
+ },
+ {
+  "ma_cau": "T112080201009",
+  "dang_bai_id": "NDB02577",
+  "chac": "cao",
+  "ly_do": "Lấy bi từ hai hộp bỏ vào hộp ba rồi lấy tiếp: chuyển vật giữa các hộp."
+ },
+ {
+  "ma_cau": "T1120000002724",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Tìm m để các diện tích thoả hệ thức, dùng đối xứng qua Oy; phụ thuộc hình, có thể là 00775."
+ },
+ {
+  "ma_cau": "T1120000007512",
+  "dang_bai_id": "NDB00632",
+  "chac": "vua",
+  "ly_do": "Cho sẵn v(t), tìm độ cao bằng tích phân; có thể xếp nguyên hàm 00749 hoặc chuyển động bay 00757."
+ },
+ {
+  "ma_cau": "T1120000002677",
+  "dang_bai_id": "NDB00778",
+  "chac": "vua",
+  "ly_do": "Quay miền tô đậm quanh Ox, cận và hàm lấy từ hình nhiều đường; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T112070108003",
+  "dang_bai_id": "NDB02540",
+  "chac": "cao",
+  "ly_do": "Xét ba vectơ đồng phẳng khi biết a, b, c không đồng phẳng."
+ },
+ {
+  "ma_cau": "T1120000007845",
+  "dang_bai_id": "NDB02570",
+  "chac": "cao",
+  "ly_do": "Tính P(M|khỏi bệnh) từ bảng số liệu hai chiều."
+ },
+ {
+  "ma_cau": "T112010402012",
+  "dang_bai_id": "NDB02473",
+  "chac": "cao",
+  "ly_do": "GTNN trên nửa khoảng [−1;+∞): phải lập bảng biến thiên và xét giới hạn."
+ },
+ {
+  "ma_cau": "T1120000002607",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Chọn tích phân tính diện tích phần tô màu, cận và hàm đọc từ đồ thị."
+ },
+ {
+  "ma_cau": "T112020302008",
+  "dang_bai_id": "NDB02498",
+  "chac": "cao",
+  "ly_do": "Xét hệ số a, b, c của hàm bậc hai trên bậc nhất qua tiệm cận trên đồ thị."
+ },
+ {
+  "ma_cau": "T1120000007161",
+  "dang_bai_id": "NDB02583",
+  "chac": "cao",
+  "ly_do": "Xác định nhóm chứa tứ phân vị thứ nhất bằng tần số tích luỹ."
+ },
+ {
+  "ma_cau": "T112070102008",
+  "dang_bai_id": "NDB02542",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng hai vectơ trên hình lập phương."
+ },
+ {
+  "ma_cau": "T112020302019",
+  "dang_bai_id": "NDB02486",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị hàm bậc hai trên bậc nhất qua tiệm cận đứng và xiên."
+ },
+ {
+  "ma_cau": "T1120000007418",
+  "dang_bai_id": "NDB00750",
+  "chac": "vua",
+  "ly_do": "Cho tốc độ f′(t), tìm công thức đại lượng bằng nguyên hàm; có thể xếp dạng tích phân 00760."
+ },
+ {
+  "ma_cau": "T112070307015",
+  "dang_bai_id": "NDB02559",
+  "chac": "cao",
+  "ly_do": "M thuộc (Oyz) làm |MA+2MB+MC| nhỏ nhất: tâm tỉ cự rồi hình chiếu."
+ },
+ {
+  "ma_cau": "T1120000007068",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Diện tích giới hạn bởi đồ thị, y = 0 và hai cận cho sẵn: S = ∫|f|dx."
+ },
+ {
+  "ma_cau": "T1120000002835",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của đa thức 2x + 4."
+ },
+ {
+  "ma_cau": "T1120000007503",
+  "dang_bai_id": "NDB00774",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa hai parabol trên đoạn [−1;2] cho sẵn, có hình; cận cũng là giao điểm nên có thể 00775."
+ },
+ {
+  "ma_cau": "T112020201006",
+  "dang_bai_id": "NDB02495",
+  "chac": "cao",
+  "ly_do": "Xét hệ số a, b, c của hàm nhất biến từ đồ thị, tiệm cận."
+ },
+ {
+  "ma_cau": "T1120000002833",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm x(x+1)^5 là đa thức, tách x = (x+1) − 1."
+ },
+ {
+  "ma_cau": "T112070101019",
+  "dang_bai_id": "NDB02539",
+  "chac": "vua",
+  "ly_do": "Đẳng thức vectơ dùng O là trung điểm hai đường chéo hình bình hành; cũng có thể xếp rút gọn trong chóp 02538."
+ },
+ {
+  "ma_cau": "T1120000002814",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng bất đẳng thức tích phân với hàm ẩn f, f′ (tìm GTNN của ∫f)."
+ },
+ {
+  "ma_cau": "T1120000007696",
+  "dang_bai_id": "NDB00627",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm chứa giá trị tuyệt đối |sin x|, tách cận tại 0."
+ },
+ {
+  "ma_cau": "T1120000002666",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Sân với hai parabol đối xứng, tính diện tích hoa văn và phần trắng rồi chi phí; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T1120000002914",
+  "dang_bai_id": "NDB00779",
+  "chac": "cao",
+  "ly_do": "Thiết diện tam giác đều có cạnh thay đổi, hình dạng đã cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000002608",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Hai hàm số và hai cận x = −2, x = 1 cho sẵn, lắp công thức diện tích."
+ },
+ {
+  "ma_cau": "T112070203017",
+  "dang_bai_id": "NDB02563",
+  "chac": "cao",
+  "ly_do": "Phòng hình hộp chữ nhật, chọn hệ trục rồi tính khoảng cách giữa hai quạt."
+ },
+ {
+  "ma_cau": "T1120000002593",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Quay y = x², trục hoành, x = 0, x = 1 quanh Ox với hai cận cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000002806",
+  "dang_bai_id": "NDB00754",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm có số hạng 1/x (phân thức); dạng phân thức sau đa thức."
+ },
+ {
+  "ma_cau": "T1120000007778",
+  "dang_bai_id": "NDB02568",
+  "chac": "cao",
+  "ly_do": "Suy P(B|A) từ P(A), P(B), P(A|B) qua P(AB)."
+ },
+ {
+  "ma_cau": "T112020402179",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Cấp số nhân, tổng diện tích dãy hình vuông (lớp 11), không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T1120000002727",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa hai parabol phải tự dựng hệ trục từ hình; còn có thể là dạng hình đồ thị hoặc đối xứng."
+ },
+ {
+  "ma_cau": "T112010103001",
+  "dang_bai_id": "NDB02463",
+  "chac": "cao",
+  "ly_do": "Cho f'(x) dạng tích (x+2)(x-1), xét dấu để tìm khoảng nghịch biến."
+ },
+ {
+  "ma_cau": "T1120000002856",
+  "dang_bai_id": "NDB00760",
+  "chac": "cao",
+  "ly_do": "Cho tốc độ thay đổi T'(x) và giá trị đầu, tính giá trị đại lượng tại điểm khác."
+ },
+ {
+  "ma_cau": "T1120000002782",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm mũ e^{2x}."
+ },
+ {
+  "ma_cau": "T1120000002633",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Hai parabol đối xứng qua AB, dùng công thức diện tích parabol rồi nhân đôi; cũng hợp dạng công thức đặc biệt, phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T1120000007777",
+  "dang_bai_id": "NDB02574",
+  "chac": "cao",
+  "ly_do": "Chọn công thức xác suất toàn phần đúng với hệ {A, A bù}."
+ },
+ {
+  "ma_cau": "T1120000007240",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Hai nửa parabol đối xứng, tính một nửa nhân đôi; cũng có thể xếp diện tích trên đồ thị, phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T112020104022",
+  "dang_bai_id": "NDB02484",
+  "chac": "cao",
+  "ly_do": "Bảng biến thiên có đáp án là hàm bậc ba hệ số a<0, các phương án lẫn loại hàm khác."
+ },
+ {
+  "ma_cau": "T112010201001",
+  "dang_bai_id": "NDB02464",
+  "chac": "cao",
+  "ly_do": "Tìm điểm cực tiểu của hàm đa thức bậc ba cho công thức."
+ },
+ {
+  "ma_cau": "T112070101011",
+  "dang_bai_id": "NDB02536",
+  "chac": "cao",
+  "ly_do": "Tính độ dài tổng ba vectơ trên hình lập phương bằng cách rút gọn về một vectơ."
+ },
+ {
+  "ma_cau": "T1120000006331",
+  "dang_bai_id": "NDB02514",
+  "chac": "cao",
+  "ly_do": "Hàm nồng độ oxygen cho sẵn, tìm thời điểm nồng độ nhỏ nhất."
+ },
+ {
+  "ma_cau": "T1120000002706",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Diện tích giới hạn bởi y=4-x^2, trục hoành, x=-2 và x=m: đề cho sẵn cận."
+ },
+ {
+  "ma_cau": "T1120000002641",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Đồ thị hai parabol, đọc cận và biểu thức hai hàm từ hình rồi tính diện tích phần tô đậm."
+ },
+ {
+  "ma_cau": "T1120000007059",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Tính khoảng biến thiên của mẫu số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T112000000888",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Xác suất cổ điển lớp 11 (dãy số, chia hết), không phải xác suất có điều kiện; bản đồ không có dạng này."
+ },
+ {
+  "ma_cau": "T1120000002638",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Hoa văn đối xứng nhân 8 cánh cộng vành khăn; hợp dạng đối xứng nhưng phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T1120000002846",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm tổng 1/x và 1/cos^2 x; hai dạng cùng hợp thì lấy dạng sau là lượng giác."
+ },
+ {
+  "ma_cau": "T1120000002746",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Diện tích thiết diện elip của khối trụ cần công thức elip hoặc tích phân; kèm hình học không gian."
+ },
+ {
+  "ma_cau": "T1120000007252",
+  "dang_bai_id": "NDB00756",
+  "chac": "cao",
+  "ly_do": "Bài chuyển động thẳng mô tả đại lượng, cộng quãng đường phản ứng với tích phân vận tốc."
+ },
+ {
+  "ma_cau": "T112020201012",
+  "dang_bai_id": "NDB02495",
+  "chac": "cao",
+  "ly_do": "Đồ thị hàm nhất biến y=(bx-c)/(x-a), suy dấu các hệ số từ tiệm cận và chiều biến thiên."
+ },
+ {
+  "ma_cau": "T112010309012",
+  "dang_bai_id": "NDB02513",
+  "chac": "cao",
+  "ly_do": "Tìm tiệm cận xiên rồi tính góc của nó với trục hoành."
+ },
+ {
+  "ma_cau": "T1120000007693",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm tích hàm mũ e^x.e^(x+1) đưa về e^(2x+1)."
+ },
+ {
+  "ma_cau": "T1120000007812",
+  "dang_bai_id": "NDB00760",
+  "chac": "cao",
+  "ly_do": "Cho tốc độ tăng P'(t) và số ban đầu, tính số cá thể tại thời điểm t."
+ },
+ {
+  "ma_cau": "T112000000728",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: thể tích lăng trụ đứng, bản đồ Đại không có dạng này."
+ },
+ {
+  "ma_cau": "T1120000002818",
+  "dang_bai_id": "NDB00744",
+  "chac": "cao",
+  "ly_do": "Sáu ý tìm nguyên hàm, đa số là phân thức (4/6); dạng sau là phân thức."
+ },
+ {
+  "ma_cau": "T112020302020",
+  "dang_bai_id": "NDB02486",
+  "chac": "cao",
+  "ly_do": "Chọn hàm cho đồ thị, đáp án là hàm bậc hai trên bậc nhất."
+ },
+ {
+  "ma_cau": "T1120000002684",
+  "dang_bai_id": "NDB00782",
+  "chac": "vua",
+  "ly_do": "Mái parabol tìm diện tích mặt cắt rồi nhân chiều dài (thiết diện không đổi); phụ thuộc hình, còn dạng diện tích parabol."
+ },
+ {
+  "ma_cau": "T1120000002653",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Hình tròn trừ 4 viên phân đối xứng nhân 4; cũng hợp dạng viên phân, phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T1120000002873",
+  "dang_bai_id": "NDB00756",
+  "chac": "cao",
+  "ly_do": "Chuyển động thẳng mô tả bằng gia tốc, tích phân gia tốc ra vận tốc rồi giải tìm thời gian."
+ },
+ {
+  "ma_cau": "T1120000007804",
+  "dang_bai_id": "NDB00630",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm số mũ 3^x."
+ },
+ {
+  "ma_cau": "T112070105017",
+  "dang_bai_id": "NDB02539",
+  "chac": "cao",
+  "ly_do": "Đẳng thức vectơ với trọng tâm tam giác BCD trong tứ diện."
+ },
+ {
+  "ma_cau": "T112070102013",
+  "dang_bai_id": "NDB02541",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng khi biết độ dài hai vectơ và góc 120 độ."
+ },
+ {
+  "ma_cau": "T112010301033",
+  "dang_bai_id": "NDB02476",
+  "chac": "cao",
+  "ly_do": "Tiệm cận ngang của hàm nhất biến (x-2)/(x+1)."
+ },
+ {
+  "ma_cau": "T1120000002640",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Hai miền giới hạn bởi ba parabol cho trên hình, đặt S1=S2 tìm k; phụ thuộc hình, còn dạng đặt tham số."
+ },
+ {
+  "ma_cau": "T112010102041",
+  "dang_bai_id": "NDB02458",
+  "chac": "cao",
+  "ly_do": "Chọn mệnh đề đúng về khoảng đơn điệu của hàm bậc ba cho công thức."
+ },
+ {
+  "ma_cau": "T112070304013",
+  "dang_bai_id": "NDB02555",
+  "chac": "vua",
+  "ly_do": "Tìm điểm cách gốc O một khoảng cho trước; đề và phương án bị lỗi, cũng hợp tính khoảng cách."
+ },
+ {
+  "ma_cau": "T1120000002710",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Phần chung hai hình tròn, tính nửa trên nhân đôi; cũng có thể là dạng viên phân hoặc hai hàm số."
+ },
+ {
+  "ma_cau": "T112070101030",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức đúng theo quy tắc hình hộp trên hình lập phương."
+ },
+ {
+  "ma_cau": "T1120000002865",
+  "dang_bai_id": "NDB00627",
+  "chac": "cao",
+  "ly_do": "Tích phân chứa giá trị tuyệt đối, tách đoạn theo dấu."
+ },
+ {
+  "ma_cau": "T112070202063",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Cho OD bằng vectơ w, đọc tọa độ điểm D từ tọa độ vectơ."
+ },
+ {
+  "ma_cau": "T112070107001",
+  "dang_bai_id": "NDB02543",
+  "chac": "cao",
+  "ly_do": "Cosin góc giữa MN và AC' trên hình lập phương, giải bằng vectơ."
+ },
+ {
+  "ma_cau": "T1120000005406",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bất phương trình logarit thuộc chương mũ và logarit, bản đồ chưa có dạng này."
+ },
+ {
+  "ma_cau": "T112010102030",
+  "dang_bai_id": "NDB02458",
+  "chac": "cao",
+  "ly_do": "Tìm khoảng nghịch biến của hàm bậc ba cho công thức."
+ },
+ {
+  "ma_cau": "T1120000006600",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Đạo hàm hàm lượng giác (lớp 11), bản đồ chưa có dạng này."
+ },
+ {
+  "ma_cau": "T112020104011",
+  "dang_bai_id": "NDB02484",
+  "chac": "cao",
+  "ly_do": "Chọn công thức hàm bậc ba theo dấu a và hai điểm cực trị trên đồ thị."
+ },
+ {
+  "ma_cau": "T112070102004",
+  "dang_bai_id": "NDB02541",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng khi biết độ dài hai vectơ và góc 120 độ."
+ },
+ {
+  "ma_cau": "T112020201010",
+  "dang_bai_id": "NDB02495",
+  "chac": "cao",
+  "ly_do": "Đồ thị hàm nhất biến y=(ax+b)/(x+1), so sánh a, b từ tiệm cận và chiều biến thiên."
+ },
+ {
+  "ma_cau": "T1120000002797",
+  "dang_bai_id": "NDB00753",
+  "chac": "vua",
+  "ly_do": "Chọn công thức tích phân của x^alpha; câu lý thuyết, có thể thuộc nhóm định nghĩa tính chất."
+ },
+ {
+  "ma_cau": "T112010101013",
+  "dang_bai_id": "NDB02461",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng nghịch biến từ đồ thị hàm số."
+ },
+ {
+  "ma_cau": "T112070304017",
+  "dang_bai_id": "NDB02554",
+  "chac": "cao",
+  "ly_do": "Dùng trung điểm tìm vectơ AC theo toạ độ rồi tính độ dài AC."
+ },
+ {
+  "ma_cau": "T112070304004",
+  "dang_bai_id": "NDB02554",
+  "chac": "cao",
+  "ly_do": "Tính độ dài vectơ cho bằng toạ độ."
+ },
+ {
+  "ma_cau": "T1120000006194",
+  "dang_bai_id": "NDB02562",
+  "chac": "cao",
+  "ly_do": "Lực căng mỗi dây cáp khi container cân bằng với trọng lực."
+ },
+ {
+  "ma_cau": "T1120000007114",
+  "dang_bai_id": "NDB02525",
+  "chac": "cao",
+  "ly_do": "Cho chi phí biên và giá bán, lập hàm lợi nhuận và tìm lợi nhuận tối đa."
+ },
+ {
+  "ma_cau": "T112070305011",
+  "dang_bai_id": "NDB02551",
+  "chac": "cao",
+  "ly_do": "Tìm toạ độ trung điểm đoạn AB."
+ },
+ {
+  "ma_cau": "T1120000002796",
+  "dang_bai_id": "NDB02592",
+  "chac": "cao",
+  "ly_do": "Dùng Newton-Leibniz cho f', biết f(1) tính f(4)."
+ },
+ {
+  "ma_cau": "T112070202055",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc toạ độ vectơ viết theo i, j, k."
+ },
+ {
+  "ma_cau": "T112070303001",
+  "dang_bai_id": "NDB02556",
+  "chac": "cao",
+  "ly_do": "Tính tích vô hướng hai vectơ theo toạ độ."
+ },
+ {
+  "ma_cau": "T112070311028",
+  "dang_bai_id": "NDB02565",
+  "chac": "cao",
+  "ly_do": "Máy bay bay thẳng đều giữa M và N, tìm vị trí sau 5 phút."
+ },
+ {
+  "ma_cau": "T1120000002583",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Chọn công thức diện tích phần gạch sọc giới hạn bởi hai đồ thị trên hình."
+ },
+ {
+  "ma_cau": "T112020104003",
+  "dang_bai_id": "NDB02484",
+  "chac": "cao",
+  "ly_do": "Chọn hàm bậc ba cho đồ thị (cực trị tại 0, nghiệm kép)."
+ },
+ {
+  "ma_cau": "T1120000007776",
+  "dang_bai_id": "NDB02567",
+  "chac": "vua",
+  "ly_do": "Nhận biết kí hiệu P(B|A) của xác suất có điều kiện; không có dạng riêng cho việc đọc kí hiệu."
+ },
+ {
+  "ma_cau": "T1120000002636",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Bồn hoa hai parabol đối xứng qua tâm, 4 phần, tính chi phí; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T112010301039",
+  "dang_bai_id": "NDB02477",
+  "chac": "cao",
+  "ly_do": "Tìm phương án có tiệm cận ngang y=-1/2 trong các hàm phân thức."
+ },
+ {
+  "ma_cau": "T1120000007605",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bất phương trình mũ thuộc chương mũ và logarit, bản đồ chưa có dạng này."
+ },
+ {
+  "ma_cau": "T112010304012",
+  "dang_bai_id": "NDB02480",
+  "chac": "vua",
+  "ly_do": "Đếm tiệm cận từ bảng biến thiên, nhưng đề lẫn đoạn lời giải câu trước."
+ },
+ {
+  "ma_cau": "T112010401026",
+  "dang_bai_id": "NDB02474",
+  "chac": "cao",
+  "ly_do": "Đọc giá trị lớn nhất và nhỏ nhất từ đồ thị trên [-2;2], tính M+m."
+ },
+ {
+  "ma_cau": "T112010202002",
+  "dang_bai_id": "NDB02466",
+  "chac": "cao",
+  "ly_do": "Đọc điểm cực đại từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T1120000002693",
+  "dang_bai_id": "NDB00752",
+  "chac": "vua",
+  "ly_do": "Tính tích phân bằng cách nối cận và dùng diện tích ghi trên hình; có thể thuộc dạng diện tích trên đồ thị."
+ },
+ {
+  "ma_cau": "T1120000002694",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích logo giới hạn bởi hai parabol và hai đường x=-5, x=4, dựng hàm từ đồ thị."
+ },
+ {
+  "ma_cau": "T1120000002652",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích cánh cửa gồm 4 phần parabol đối xứng nhân 4; phụ thuộc hình, kèm tính chi phí."
+ },
+ {
+  "ma_cau": "T1120000005386",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bất phương trình logarit thuộc chương Mũ–Logarit, bảng đích thiếu dạng này."
+ },
+ {
+  "ma_cau": "T1120000007270",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Diện tích tranh gồm cung parabol và hình chữ nhật, phụ thuộc hình; cũng có thể xếp NDB00774."
+ },
+ {
+  "ma_cau": "T1120000002606",
+  "dang_bai_id": "NDB00778",
+  "chac": "vua",
+  "ly_do": "Hình thang cho bằng toạ độ điểm, phải tự lập hàm y=AB và cận rồi quay quanh Ox; cũng có thể NDB00781."
+ },
+ {
+  "ma_cau": "T112070202092",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc toạ độ vectơ viết theo i, j, k."
+ },
+ {
+  "ma_cau": "T112020301005",
+  "dang_bai_id": "NDB02486",
+  "chac": "cao",
+  "ly_do": "Chọn công thức hàm bậc hai trên bậc nhất từ bảng biến thiên (4 phương án cùng loại)."
+ },
+ {
+  "ma_cau": "T112020103002",
+  "dang_bai_id": "NDB02490",
+  "chac": "cao",
+  "ly_do": "Lập công thức hàm bậc ba từ cực trị và điểm đi qua của đồ thị."
+ },
+ {
+  "ma_cau": "T112020103001",
+  "dang_bai_id": "NDB02489",
+  "chac": "cao",
+  "ly_do": "Xác định dấu a, b, c, d của hàm bậc ba từ đồ thị."
+ },
+ {
+  "ma_cau": "T1120000002899",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm mũ 5^(2x-1)."
+ },
+ {
+  "ma_cau": "T1120000007689",
+  "dang_bai_id": "NDB00629",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm lượng giác sin x, cos x."
+ },
+ {
+  "ma_cau": "T112070201019",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Điều kiện bốn điểm đồng phẳng bằng tích hỗn tạp theo toạ độ."
+ },
+ {
+  "ma_cau": "T1120000002750",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm mũ e^x."
+ },
+ {
+  "ma_cau": "T112070101050",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Khẳng định đúng về tổng vectơ trong hình hộp (quy tắc hình hộp)."
+ },
+ {
+  "ma_cau": "T1120000003465",
+  "dang_bai_id": "NDB02470",
+  "chac": "cao",
+  "ly_do": "GTLN hàm đa thức bậc ba trên đoạn."
+ },
+ {
+  "ma_cau": "T1120000007704",
+  "dang_bai_id": "NDB00756",
+  "chac": "cao",
+  "ly_do": "Chuyển động thẳng hai chất điểm, tích phân vận tốc, gia tốc hằng số, đuổi kịp."
+ },
+ {
+  "ma_cau": "T1120000007254",
+  "dang_bai_id": "NDB00754",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm phân thức a/x²+b/x+2, tìm a, b."
+ },
+ {
+  "ma_cau": "T1120000006936",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích chi tiết đối xứng bị khoét bốn hình tròn, phụ thuộc hình; cũng có thể NDB00787."
+ },
+ {
+  "ma_cau": "T112070311027",
+  "dang_bai_id": "NDB02565",
+  "chac": "cao",
+  "ly_do": "Vị trí máy bay bay thẳng đều theo vectơ AB và thời gian."
+ },
+ {
+  "ma_cau": "T1120000007793",
+  "dang_bai_id": "NDB00754",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm phân thức (x+2)/x, tìm a, b."
+ },
+ {
+  "ma_cau": "T112070304009",
+  "dang_bai_id": "NDB02554",
+  "chac": "cao",
+  "ly_do": "Tính độ dài vectơ theo toạ độ."
+ },
+ {
+  "ma_cau": "T1120000006338",
+  "dang_bai_id": "NDB02539",
+  "chac": "vua",
+  "ly_do": "Trọng tâm tứ diện đều, AI=3IG và tỉ số khoảng cách; ngữ cảnh thực tế, có hình."
+ },
+ {
+  "ma_cau": "T112010302019",
+  "dang_bai_id": "NDB02479",
+  "chac": "cao",
+  "ly_do": "Đọc tiệm cận đứng, ngang từ đồ thị."
+ },
+ {
+  "ma_cau": "T112010401024",
+  "dang_bai_id": "NDB02474",
+  "chac": "cao",
+  "ly_do": "Đọc GTLN, GTNN từ đồ thị rồi tính tổng."
+ },
+ {
+  "ma_cau": "T112020305001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "câu Đúng/Sai ⇒ kho riêng cấp chủ đề."
+ },
+ {
+  "ma_cau": "T1120000007118",
+  "dang_bai_id": "NDB02471",
+  "chac": "cao",
+  "ly_do": "GTLN, GTNN hàm phân thức bậc nhất trên đoạn."
+ },
+ {
+  "ma_cau": "T112070202091",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc toạ độ vectơ viết theo i, j, k."
+ },
+ {
+  "ma_cau": "T112070101009",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Quy tắc hình hộp, tổng ba vectơ cạnh chung đỉnh."
+ },
+ {
+  "ma_cau": "T1120000002834",
+  "dang_bai_id": "NDB00742",
+  "chac": "vua",
+  "ly_do": "Nguyên hàm hàm luỹ thừa x^√5 (công thức x^α); không rõ thuộc đa thức hay căn thức."
+ },
+ {
+  "ma_cau": "T1120000002907",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm 2^x+3, có hàm mũ nên xếp dạng sau."
+ },
+ {
+  "ma_cau": "T1120000007012",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tổ hợp, quy tắc nhân (lớp 10–11), không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T1120000006332",
+  "dang_bai_id": "NDB02519",
+  "chac": "cao",
+  "ly_do": "Hình chữ nhật cùng chu vi có diện tích lớn nhất."
+ },
+ {
+  "ma_cau": "T112010302025",
+  "dang_bai_id": "NDB02504",
+  "chac": "cao",
+  "ly_do": "Đếm tiệm cận đứng của 1/(2f(x)+3) qua bảng biến thiên của f."
+ },
+ {
+  "ma_cau": "T112070109010",
+  "dang_bai_id": "NDB02561",
+  "chac": "vua",
+  "ly_do": "Lực cản tỉ lệ bình phương vận tốc, F1=kF2 cùng hướng; không dạng nào khớp hẳn."
+ },
+ {
+  "ma_cau": "T1120000005394",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: hình chóp, góc nhị diện, thể tích."
+ },
+ {
+  "ma_cau": "T112010101015",
+  "dang_bai_id": "NDB02460",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng nghịch biến từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T1120000002742",
+  "dang_bai_id": "NDB00778",
+  "chac": "vua",
+  "ly_do": "Thể tích mũ tròn xoay quanh Oy, chia hai phần, phụ thuộc hình; cũng có thể NDB00639."
+ },
+ {
+  "ma_cau": "T112000000723",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Phương trình logarit thuộc chương Mũ–Logarit, bảng đích thiếu dạng này."
+ },
+ {
+  "ma_cau": "T1120000002674",
+  "dang_bai_id": "NDB00782",
+  "chac": "vua",
+  "ly_do": "Thể tích máng = diện tích mặt cắt không đổi nhân chiều dài; cũng có thể NDB00775."
+ },
+ {
+  "ma_cau": "T1120000002801",
+  "dang_bai_id": "NDB00630",
+  "chac": "cao",
+  "ly_do": "Chọn công thức tích phân của hàm mũ m^x."
+ },
+ {
+  "ma_cau": "T112070202085",
+  "dang_bai_id": "NDB02545",
+  "chac": "cao",
+  "ly_do": "Điểm đối xứng qua mặt phẳng toạ độ (yOz)."
+ },
+ {
+  "ma_cau": "T1120000002681",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích sân khấu đối xứng giới hạn bởi các parabol, phụ thuộc hình; cũng có thể NDB00775."
+ },
+ {
+  "ma_cau": "T112010304024",
+  "dang_bai_id": "NDB02480",
+  "chac": "cao",
+  "ly_do": "Đếm tiệm cận đứng và ngang từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T112020402032",
+  "dang_bai_id": "NDB02514",
+  "chac": "cao",
+  "ly_do": "GTLN của hàm mô hình cho sẵn G(x), tìm liều lượng tối ưu."
+ },
+ {
+  "ma_cau": "T112070109017",
+  "dang_bai_id": "NDB02541",
+  "chac": "cao",
+  "ly_do": "Công của lực bằng tích vô hướng, biết độ lớn và góc."
+ },
+ {
+  "ma_cau": "T112020104014",
+  "dang_bai_id": "NDB02488",
+  "chac": "cao",
+  "ly_do": "Bảng biến thiên, phương án lẫn nhiều loại hàm (bậc bốn, phân thức, parabol, bậc ba)."
+ },
+ {
+  "ma_cau": "T112010101005",
+  "dang_bai_id": "NDB02461",
+  "chac": "vua",
+  "ly_do": "Đọc chiều biến thiên từ đồ thị nhất biến để chọn dấu y'; cũng có thể NDB02495."
+ },
+ {
+  "ma_cau": "T1120000007292",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Diện tích mặt cắt parabol cắt bởi dây (công thức 2/3), số liệu nằm trong hình."
+ },
+ {
+  "ma_cau": "T1120000002650",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Parabol và tiệm cận xiên, dùng công thức (x1-x2)^3/6, phụ thuộc hình, trộn nhiều dạng."
+ },
+ {
+  "ma_cau": "T112070202093",
+  "dang_bai_id": "NDB02545",
+  "chac": "cao",
+  "ly_do": "Điểm đối xứng qua trục toạ độ Oz."
+ },
+ {
+  "ma_cau": "T1120000002790",
+  "dang_bai_id": "NDB00747",
+  "chac": "vua",
+  "ly_do": "Tìm khẳng định sai về tính chất nguyên hàm, tích phân; phương án sai là nguyên hàm."
+ },
+ {
+  "ma_cau": "T1120000002871",
+  "dang_bai_id": "NDB00760",
+  "chac": "cao",
+  "ly_do": "Cho tốc độ P'(t), tính lợi nhuận tích luỹ sau 10 năm bằng tích phân."
+ },
+ {
+  "ma_cau": "T112010303003",
+  "dang_bai_id": "NDB02477",
+  "chac": "cao",
+  "ly_do": "Tìm hàm có tiệm cận đứng x=-1, phải rút gọn nhân tử chung."
+ },
+ {
+  "ma_cau": "T112020301001",
+  "dang_bai_id": "NDB02498",
+  "chac": "cao",
+  "ly_do": "Xét dấu hệ số hàm bậc hai trên bậc nhất từ đồ thị."
+ },
+ {
+  "ma_cau": "T112070304005",
+  "dang_bai_id": "NDB02554",
+  "chac": "cao",
+  "ly_do": "Tính độ dài đoạn AB theo toạ độ."
+ },
+ {
+  "ma_cau": "T112070102005",
+  "dang_bai_id": "NDB02542",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng AB.AC trên tứ diện đều."
+ },
+ {
+  "ma_cau": "T112070201037",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Tìm C thoả tam giác cân và diện tích 8√5 bằng toạ độ, tích có hướng."
+ },
+ {
+  "ma_cau": "T112070202074",
+  "dang_bai_id": "NDB02549",
+  "chac": "cao",
+  "ly_do": "Tính toạ độ vectơ AB từ hai điểm."
+ },
+ {
+  "ma_cau": "T1120000007618",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT: phương trình mặt phẳng (MNP) trong Oxyz."
+ },
+ {
+  "ma_cau": "T1120000002596",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Thể tích khối tròn xoay quanh Ox, đủ hàm số và cận."
+ },
+ {
+  "ma_cau": "T112070305010",
+  "dang_bai_id": "NDB02551",
+  "chac": "vua",
+  "ly_do": "Vectơ chỉ phương trung tuyến qua trung điểm CD; khái niệm đường thẳng thuộc HGT."
+ },
+ {
+  "ma_cau": "T112010201027",
+  "dang_bai_id": "NDB02465",
+  "chac": "cao",
+  "ly_do": "Số cực trị của hàm phân thức bậc nhất trên bậc nhất."
+ },
+ {
+  "ma_cau": "T112020104006",
+  "dang_bai_id": "NDB02488",
+  "chac": "cao",
+  "ly_do": "Chọn công thức từ đồ thị, phương án lẫn bậc ba, parabol, bậc bốn."
+ },
+ {
+  "ma_cau": "T1120000002699",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Diện tích dải parabol và bán nguyệt elip, kèm chi phí; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T1120000005387",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: quan hệ vuông góc đường thẳng–mặt phẳng trong hình chóp (lớp 11)."
+ },
+ {
+  "ma_cau": "T1120000002877",
+  "dang_bai_id": "NDB00758",
+  "chac": "vua",
+  "ly_do": "Xác suất phân phối mũ tính bằng tích phân e^(-x/5); ngữ cảnh ứng dụng, cũng có thể NDB00630."
+ },
+ {
+  "ma_cau": "T112020201001",
+  "dang_bai_id": "NDB02495",
+  "chac": "cao",
+  "ly_do": "Xét hệ số a, b của hàm nhất biến từ đồ thị."
+ },
+ {
+  "ma_cau": "T112070201032",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Thể tích tứ diện bằng toạ độ, tích hỗn tạp."
+ },
+ {
+  "ma_cau": "T112070102021",
+  "dang_bai_id": "NDB02541",
+  "chac": "cao",
+  "ly_do": "Tính tích vô hướng khi biết độ dài và góc."
+ },
+ {
+  "ma_cau": "T1120000002658",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Diện tích ba phần tường giữa đồ thị mũ và logarit, phụ thuộc hình, kèm chi phí sơn."
+ },
+ {
+  "ma_cau": "T1120000002578",
+  "dang_bai_id": "NDB00778",
+  "chac": "vua",
+  "ly_do": "Hình thang cho bằng toạ độ điểm, tự lập hàm y=AB rồi quay quanh Ox; cũng có thể NDB00781."
+ },
+ {
+  "ma_cau": "T1120000002597",
+  "dang_bai_id": "NDB00779",
+  "chac": "cao",
+  "ly_do": "Thiết diện hình vuông cạnh √(1-x⁴) cho sẵn, V=∫S(x)dx."
+ },
+ {
+  "ma_cau": "T112020402056",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tăng trưởng liên tục T=Ae^{rn} (hàm mũ thực tế), bảng đích thiếu dạng ứng dụng mũ–logarit; không phải đạo hàm/tích phân."
+ },
+ {
+  "ma_cau": "T1120000002584",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích hình phẳng giới hạn bởi đồ thị (đọc từ hình) và Ox, tách ∫|f| theo các đoạn."
+ },
+ {
+  "ma_cau": "T1120000002642",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Diện tích giới hạn bởi parabol và đường thẳng chứa tham số a, có hình; cũng gần dạng công thức parabol NDB00787."
+ },
+ {
+  "ma_cau": "T112010302026",
+  "dang_bai_id": "NDB02480",
+  "chac": "cao",
+  "ly_do": "Đáp án đúng là đếm tổng tiệm cận từ giới hạn trong bảng biến thiên."
+ },
+ {
+  "ma_cau": "T112070101062",
+  "dang_bai_id": "NDB02538",
+  "chac": "cao",
+  "ly_do": "Đẳng thức vectơ trên hình chóp đáy hình bình hành, dùng trung điểm O của đáy."
+ },
+ {
+  "ma_cau": "T1120000003406",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Phương trình logarit cơ bản (chương mũ–logarit/lớp 11), bảng đích không có dạng này."
+ },
+ {
+  "ma_cau": "T112070311029",
+  "dang_bai_id": "NDB02565",
+  "chac": "cao",
+  "ly_do": "Cabin cáp treo chuyển động thẳng đều theo vectơ chỉ phương, tìm thời điểm gần camera nhất."
+ },
+ {
+  "ma_cau": "T1120000005417",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Khoảng cách hai đường thẳng chéo nhau trong hình chóp (hình học không gian lớp 11), bảng đích thiếu dạng này."
+ },
+ {
+  "ma_cau": "T1120000007814",
+  "dang_bai_id": "NDB00787",
+  "chac": "cao",
+  "ly_do": "Cổng parabol: diện tích hình parabol bằng công thức 2/3 rồi trừ hình chữ nhật, tính chi phí."
+ },
+ {
+  "ma_cau": "T1120000002733",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Tỉ số diện tích S1/S2 đọc từ đồ thị bậc năm; phải tự lập hàm từ cực trị, đề thiếu đáp án, phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T112080201005",
+  "dang_bai_id": "NDB02578",
+  "chac": "cao",
+  "ly_do": "Giải đấu quần vợt nhiều giai đoạn, phân nhiều tầng trường hợp ghép cặp rồi cộng xác suất."
+ },
+ {
+  "ma_cau": "T112070307004",
+  "dang_bai_id": "NDB02559",
+  "chac": "cao",
+  "ly_do": "Tìm M trên Ox để |MP+MQ| nhỏ nhất, dùng trung điểm I (tâm tỉ cự)."
+ },
+ {
+  "ma_cau": "T1120000002740",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tích phân đổi biến với f cho bởi đồ thị và diện tích; bảng đích thiếu dạng tích phân đổi biến."
+ },
+ {
+  "ma_cau": "T112070107031",
+  "dang_bai_id": "NDB02543",
+  "chac": "cao",
+  "ly_do": "Tính góc giữa hai vectơ AB và IJ trên tứ diện đặc biệt."
+ },
+ {
+  "ma_cau": "T1120000002851",
+  "dang_bai_id": "NDB00760",
+  "chac": "cao",
+  "ly_do": "Cho tốc độ xả h'(t), tính lượng nước thoát tại thời điểm; dạng sau thắng so với NDB00750."
+ },
+ {
+  "ma_cau": "T112010401021",
+  "dang_bai_id": "NDB02475",
+  "chac": "cao",
+  "ly_do": "Cho bảng xét dấu f′, chọn khẳng định đúng về GTNN trên khoảng."
+ },
+ {
+  "ma_cau": "T112070311018",
+  "dang_bai_id": "NDB02566",
+  "chac": "cao",
+  "ly_do": "Hai tổ đào hầm chuyển động thẳng đều gặp nhau tại E, tìm tốc độ; dạng sau thắng so với NDB02565."
+ },
+ {
+  "ma_cau": "T112020202008",
+  "dang_bai_id": "NDB02485",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị: đáp án là hàm nhất biến, có tiệm cận x=1, y=1."
+ },
+ {
+  "ma_cau": "T1120000002739",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Tỉ số diện tích S1/S2 đọc từ đồ thị bậc bốn, phải tự lập hàm từ cực trị lập cấp số cộng; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T1120000002725",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa đồ thị bậc ba và đường thẳng cho trước để tìm ∫f; phụ thuộc hình, nhiều bước lập hàm."
+ },
+ {
+  "ma_cau": "T1120000007083",
+  "dang_bai_id": "NDB02556",
+  "chac": "cao",
+  "ly_do": "Cho toạ độ AB, AC, tính góc BAC bằng tích vô hướng."
+ },
+ {
+  "ma_cau": "T112070304023",
+  "dang_bai_id": "NDB02554",
+  "chac": "vua",
+  "ly_do": "Điểm đối xứng qua trục Oy rồi tính độ dài AB; đề có phương án nhiễu lỗi và thiếu đáp án."
+ },
+ {
+  "ma_cau": "T1120000007458",
+  "dang_bai_id": "NDB02585",
+  "chac": "cao",
+  "ly_do": "Tính khoảng tứ phân vị của mẫu ghép nhóm bằng công thức nội suy."
+ },
+ {
+  "ma_cau": "T1120000002869",
+  "dang_bai_id": "NDB00628",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm cho bởi hai công thức trên hai đoạn, dùng liên tục tại điểm nối để tìm tham số."
+ },
+ {
+  "ma_cau": "T1120000007449",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Phương trình logarit cơ bản (chương mũ–logarit/lớp 11), bảng đích không có dạng này."
+ },
+ {
+  "ma_cau": "T112070109002",
+  "dang_bai_id": "NDB02562",
+  "chac": "cao",
+  "ly_do": "Đèn chùm treo bởi bốn xích hình chóp đều, tính lực căng mỗi dây."
+ },
+ {
+  "ma_cau": "T112010307001",
+  "dang_bai_id": "NDB02477",
+  "chac": "cao",
+  "ly_do": "Đếm tiệm cận đứng và ngang của hàm chứa căn."
+ },
+ {
+  "ma_cau": "T112070105007",
+  "dang_bai_id": "NDB02539",
+  "chac": "cao",
+  "ly_do": "G là trọng tâm tam giác BCD, đẳng thức vectơ AG theo AB, AC, AD."
+ },
+ {
+  "ma_cau": "T1120000007123",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Tính khoảng biến thiên của mẫu số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T112070101041",
+  "dang_bai_id": "NDB02538",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức vectơ đúng trên hình chóp đáy hình bình hành."
+ },
+ {
+  "ma_cau": "T1120000002854",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Cho ∫f và ∫g, tính tích phân của tổng, hiệu, hằng số nhân bằng tính chất tuyến tính."
+ },
+ {
+  "ma_cau": "T112070101014",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức vectơ sai trên hình hộp, dùng quy tắc hình hộp và hình bình hành."
+ },
+ {
+  "ma_cau": "T112010304003",
+  "dang_bai_id": "NDB02479",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị hàm nhất biến, đọc phương trình tiệm cận ngang từ đồ thị."
+ },
+ {
+  "ma_cau": "T112070101025",
+  "dang_bai_id": "NDB02538",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức vectơ trên hình chóp đáy hình bình hành bằng quy tắc ba điểm."
+ },
+ {
+  "ma_cau": "T112000000445",
+  "dang_bai_id": "NDB02578",
+  "chac": "cao",
+  "ly_do": "Trò chơi thả bóng nhiều lần, đếm trường hợp tổ hợp theo trạng thái đèn để tính xác suất."
+ },
+ {
+  "ma_cau": "T1120000002568",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Tính diện tích hình gạch chéo giữa parabol và đường thẳng, đọc cận từ đồ thị."
+ },
+ {
+  "ma_cau": "T1120000005629",
+  "dang_bai_id": "NDB02571",
+  "chac": "cao",
+  "ly_do": "Xác suất có điều kiện bằng đếm trên không gian mẫu thu hẹp (chỉ xét 17 bạn nữ)."
+ },
+ {
+  "ma_cau": "T1120000002755",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm lượng giác 2026sin x."
+ },
+ {
+  "ma_cau": "T112010301034",
+  "dang_bai_id": "NDB02476",
+  "chac": "cao",
+  "ly_do": "Tiệm cận ngang của hàm nhất biến cho bằng công thức."
+ },
+ {
+  "ma_cau": "T1120000002639",
+  "dang_bai_id": "NDB00787",
+  "chac": "cao",
+  "ly_do": "Diện tích miền parabol bằng công thức 2/3·đáy·cao cộng hình chữ nhật, tính chi phí."
+ },
+ {
+  "ma_cau": "T112010101020",
+  "dang_bai_id": "NDB02458",
+  "chac": "cao",
+  "ly_do": "Tìm khoảng đồng biến của hàm đa thức trùng phương cho bằng công thức."
+ },
+ {
+  "ma_cau": "T112000000121",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: công thức thể tích khối trụ, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T112070311024",
+  "dang_bai_id": "NDB02566",
+  "chac": "cao",
+  "ly_do": "Hai máy bay chuyển động thẳng đều, khoảng cách theo thời gian so với ngưỡng an toàn."
+ },
+ {
+  "ma_cau": "T112020104002",
+  "dang_bai_id": "NDB02484",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị cho bằng hình, bốn phương án đều là hàm bậc ba."
+ },
+ {
+  "ma_cau": "T112020201003",
+  "dang_bai_id": "NDB02495",
+  "chac": "cao",
+  "ly_do": "Hàm nhất biến cho đồ thị, tìm hệ số a, b từ tiệm cận và giao điểm với trục."
+ },
+ {
+  "ma_cau": "T1120000002670",
+  "dang_bai_id": "NDB00780",
+  "chac": "cao",
+  "ly_do": "Thể tích lều parabol, thiết diện hình vuông phải tự xây S(t); giống ví dụ lều vải."
+ },
+ {
+  "ma_cau": "T112070202073",
+  "dang_bai_id": "NDB02549",
+  "chac": "cao",
+  "ly_do": "Tính toạ độ vectơ AB từ hai điểm."
+ },
+ {
+  "ma_cau": "T112070101003",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Tổng ba vectơ cạnh hình hộp theo quy tắc hình hộp, O là tâm."
+ },
+ {
+  "ma_cau": "T112010102173",
+  "dang_bai_id": "NDB02458",
+  "chac": "cao",
+  "ly_do": "Chọn mệnh đề đúng về tính đơn điệu của hàm bậc ba cho công thức."
+ },
+ {
+  "ma_cau": "T1120000007077",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Diện tích phần tô đậm giữa hai parabol, phải lập phương trình và tính giao; có hình, nhiều bước."
+ },
+ {
+  "ma_cau": "T112010201019",
+  "dang_bai_id": "NDB02465",
+  "chac": "cao",
+  "ly_do": "Tìm cực trị của hàm chứa căn thức bằng y′ và tập xác định."
+ },
+ {
+  "ma_cau": "T1120000002759",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm đa thức x²."
+ },
+ {
+  "ma_cau": "T1120000007834",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Tính khoảng biến thiên của mẫu số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T112010401017",
+  "dang_bai_id": "NDB02475",
+  "chac": "cao",
+  "ly_do": "Cho bảng biến thiên trên đoạn, chọn khẳng định đúng về GTLN."
+ },
+ {
+  "ma_cau": "T1120000007476",
+  "dang_bai_id": "NDB00775",
+  "chac": "cao",
+  "ly_do": "Diện tích giới hạn bởi hai đồ thị cho công thức, tự tìm giao điểm làm cận."
+ },
+ {
+  "ma_cau": "T1120000002849",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm hàm lượng giác, biến đổi cos2x thành hiệu cos² và sin²."
+ },
+ {
+  "ma_cau": "T1120000007794",
+  "dang_bai_id": "NDB00787",
+  "chac": "cao",
+  "ly_do": "Diện tích phần xiên hoa: hình parabol bằng công thức 2/3 trừ hình chữ nhật."
+ },
+ {
+  "ma_cau": "T112010102042",
+  "dang_bai_id": "NDB02458",
+  "chac": "cao",
+  "ly_do": "Tìm khoảng đồng biến của hàm trùng phương cho bằng công thức."
+ },
+ {
+  "ma_cau": "T1120000002836",
+  "dang_bai_id": "NDB00744",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm có thành phần 2/x² (phân thức); dạng sau thắng so với đa thức NDB00742."
+ },
+ {
+  "ma_cau": "T112070109006",
+  "dang_bai_id": "NDB02562",
+  "chac": "cao",
+  "ly_do": "Đèn treo bởi ba dây vuông góc, trọng lực cân bằng hợp lực căng; dạng sau thắng so với NDB02561."
+ },
+ {
+  "ma_cau": "T1120000004463",
+  "dang_bai_id": "NDB02458",
+  "chac": "cao",
+  "ly_do": "Tìm khoảng nghịch biến của hàm bậc ba cho công thức."
+ },
+ {
+  "ma_cau": "T1120000002704",
+  "dang_bai_id": "NDB00788",
+  "chac": "cao",
+  "ly_do": "Diện tích hình Lemniscate đối xứng bốn phần, tính một phần tư rồi nhân 4, kèm chi phí."
+ },
+ {
+  "ma_cau": "T1120000002882",
+  "dang_bai_id": "NDB00781",
+  "chac": "vua",
+  "ly_do": "Dùng tích phân tính thể tích khối nón; vừa hợp NDB00781 vừa hợp quay quanh Ox NDB00636."
+ },
+ {
+  "ma_cau": "T112080201010",
+  "dang_bai_id": "NDB02577",
+  "chac": "cao",
+  "ly_do": "Chuyển một con thỏ từ chuồng II sang chuồng I rồi lấy tiếp, dùng xác suất toàn phần."
+ },
+ {
+  "ma_cau": "T112070203008",
+  "dang_bai_id": "NDB02563",
+  "chac": "cao",
+  "ly_do": "Chọn hệ trục theo hướng Bắc–Tây và độ cao, tính khoảng cách từ vị trí xuất phát."
+ },
+ {
+  "ma_cau": "T112010307012",
+  "dang_bai_id": "NDB02477",
+  "chac": "cao",
+  "ly_do": "Đếm tiệm cận đứng và ngang của hàm chứa căn, tính giới hạn."
+ },
+ {
+  "ma_cau": "T1120000007195",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Diện tích ba miền chia bởi parabol, tính tích phân theo y rồi tính tiền sơn; nhiều bước, có hình."
+ },
+ {
+  "ma_cau": "T112070109004",
+  "dang_bai_id": "NDB02562",
+  "chac": "cao",
+  "ly_do": "Đèn chùm treo bởi bốn xích hình chóp đều, tính lực căng mỗi dây."
+ },
+ {
+  "ma_cau": "T1120000007281",
+  "dang_bai_id": "NDB00760",
+  "chac": "cao",
+  "ly_do": "Cho tốc độ thay đổi chiều cao nước h'(t), tìm giá trị tại thời điểm rồi tính thể tích."
+ },
+ {
+  "ma_cau": "T112010303001",
+  "dang_bai_id": "NDB02476",
+  "chac": "cao",
+  "ly_do": "Tiệm cận đứng của hàm nhất biến cho bằng công thức."
+ },
+ {
+  "ma_cau": "T112070202082",
+  "dang_bai_id": "NDB02549",
+  "chac": "vua",
+  "ly_do": "Đề bị thay bằng lời giải (thiếu lệnh hỏi); suy ra tìm C khi biết A và vectơ AC."
+ },
+ {
+  "ma_cau": "T1120000002772",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "F là nguyên hàm của f nên f=F'; áp dụng định nghĩa nguyên hàm, không tính nguyên hàm."
+ },
+ {
+  "ma_cau": "T1120000002731",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Diện tích giới hạn bởi hai đồ thị, cận từ hoành độ giao điểm, nhưng hàm chưa cho tường minh, phải lập từ dữ kiện."
+ },
+ {
+  "ma_cau": "T1120000002671",
+  "dang_bai_id": "NDB00781",
+  "chac": "vua",
+  "ly_do": "Thể tích vòng xuyến (tròn xoay hình quen thuộc) phụ thuộc hình; cũng có thể xem là hai hàm quay quanh Ox."
+ },
+ {
+  "ma_cau": "T1120000002700",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Diện tích hình càng cua giới hạn bởi các cung tròn, phụ thuộc hình vẽ; chưa có dạng riêng cho hình cung tròn."
+ },
+ {
+  "ma_cau": "T112070203009",
+  "dang_bai_id": "NDB02563",
+  "chac": "vua",
+  "ly_do": "Cabin hình hộp gắn hệ trục tìm toạ độ camera, phụ thuộc hình vẽ (chiều trục) và có phần giải hệ kích thước."
+ },
+ {
+  "ma_cau": "T112010102161",
+  "dang_bai_id": "NDB02458",
+  "chac": "cao",
+  "ly_do": "Chỉ tính đạo hàm f'(x) của đa thức rồi thay giá trị; mô tả dạng ghi rõ kể cả câu chỉ hỏi tính y'."
+ },
+ {
+  "ma_cau": "T1120000002870",
+  "dang_bai_id": "NDB00756",
+  "chac": "cao",
+  "ly_do": "Cho sẵn v(t) của chuyển động thẳng, tính quãng đường đến lúc dừng bằng tích phân; hai dạng chuyển động cùng hợp, lấy dạng sau."
+ },
+ {
+  "ma_cau": "T112070311030",
+  "dang_bai_id": "NDB02565",
+  "chac": "vua",
+  "ly_do": "Cộng vectơ vận tốc thiết bị và dòng hải lưu rồi tính độ dài; cũng có thể xếp dạng hợp lực NDB02561."
+ },
+ {
+  "ma_cau": "T112070201013",
+  "dang_bai_id": "NDB02558",
+  "chac": "vua",
+  "ly_do": "Độ dài tích có hướng tính theo độ dài và góc (không theo toạ độ); gần nhất với dạng tích có hướng."
+ },
+ {
+  "ma_cau": "T1120000002830",
+  "dang_bai_id": "NDB00748",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm căn thức √(2x−1), đưa về luỹ thừa và hệ số 1/a."
+ },
+ {
+  "ma_cau": "T112070311023",
+  "dang_bai_id": "NDB02566",
+  "chac": "vua",
+  "ly_do": "Máy bay và đạn pháo chuyển động thẳng đều trong Oxyz, tính thời điểm gặp; cũng gần dạng vị trí-thời gian NDB02565."
+ },
+ {
+  "ma_cau": "T1120000007243",
+  "dang_bai_id": "NDB00744",
+  "chac": "vua",
+  "ly_do": "Chọn khẳng định sai về công thức nguyên hàm; phương án sai là ∫1/x dx (phân thức); câu lý thuyết trộn nhiều công thức."
+ },
+ {
+  "ma_cau": "T112080201014",
+  "dang_bai_id": "NDB02578",
+  "chac": "vua",
+  "ly_do": "Chuyển bi A sang B rồi B sang C rồi lấy 3 bi: cây 3 tầng kết hợp tổ hợp; cũng gần dạng chuyển hộp NDB02577."
+ },
+ {
+  "ma_cau": "T1120000002708",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Vườn elip chia 4 phần bởi 2 parabol đối xứng, tính diện tích nhờ đối xứng; phụ thuộc hình vẽ."
+ },
+ {
+  "ma_cau": "T1120000002876",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Logo giới hạn bởi hai parabol; lập phương trình từ hình rồi tính diện tích hình phẳng giữa hai đồ thị."
+ },
+ {
+  "ma_cau": "T1120000007835",
+  "dang_bai_id": "NDB02586",
+  "chac": "cao",
+  "ly_do": "Khoảng tứ phân vị khi cho sẵn Q1,Q2,Q3: chọn công thức Q3−Q1."
+ },
+ {
+  "ma_cau": "T1120000002781",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Hàm cho là một nguyên hàm của hàm nào nên lấy đạo hàm; áp dụng định nghĩa nguyên hàm."
+ },
+ {
+  "ma_cau": "T1120000007796",
+  "dang_bai_id": "NDB00756",
+  "chac": "cao",
+  "ly_do": "Cho gia tốc và vận tốc ban đầu, tìm quãng đường chuyển động thẳng (chú ý xe dừng sau 5 giây)."
+ },
+ {
+  "ma_cau": "T112070201011",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Tính tích có hướng bằng toạ độ rồi tìm x theo độ dài cho trước."
+ },
+ {
+  "ma_cau": "T1120000002685",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Diện tích phần lát giữa bờ và tuyến đường cong, phụ thuộc hình; phải lập hàm bậc 4 từ điều kiện."
+ },
+ {
+  "ma_cau": "T112070305014",
+  "dang_bai_id": "NDB02551",
+  "chac": "cao",
+  "ly_do": "Tìm toạ độ trung điểm đoạn AB từ toạ độ hai đầu mút."
+ },
+ {
+  "ma_cau": "T112070310007",
+  "dang_bai_id": "NDB02550",
+  "chac": "cao",
+  "ly_do": "Tìm vectơ cùng phương với vectơ cho trước bằng toạ độ tỉ lệ."
+ },
+ {
+  "ma_cau": "T112070202059",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc toạ độ vectơ viết theo i, j, k."
+ },
+ {
+  "ma_cau": "T1120000004504",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Tìm vectơ vuông góc với cả hai vectơ bằng tích có hướng."
+ },
+ {
+  "ma_cau": "T1120000007551",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc toạ độ điểm M từ OM viết theo i, j, k (thứ tự lộn xộn)."
+ },
+ {
+  "ma_cau": "T1120000002825",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm đa thức có điều kiện F(−1)=−17 để xác định hằng số C."
+ },
+ {
+  "ma_cau": "T1120000002566",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Đọc hình phẳng tô màu để xác định các đường giới hạn rồi tính diện tích."
+ },
+ {
+  "ma_cau": "T1120000007837",
+  "dang_bai_id": "NDB02568",
+  "chac": "cao",
+  "ly_do": "Cho P(AB), P(B), tính P(A|B) bằng công thức định nghĩa."
+ },
+ {
+  "ma_cau": "T112000000994",
+  "dang_bai_id": "NDB02571",
+  "chac": "cao",
+  "ly_do": "Xác suất có điều kiện bằng đếm: biết có ít nhất một bóng số lẻ, đếm trên không gian mẫu thu hẹp."
+ },
+ {
+  "ma_cau": "T1120000007212",
+  "dang_bai_id": "NDB02563",
+  "chac": "vua",
+  "ly_do": "Sân tứ giác gắn Oxyz, tìm độ thấp của C; phụ thuộc hình và dùng điều kiện đồng phẳng/mặt phẳng, có thể thuộc HGT."
+ },
+ {
+  "ma_cau": "T1120000002840",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm hàm lượng giác 2sinx + 3/sin²x."
+ },
+ {
+  "ma_cau": "T1120000007620",
+  "dang_bai_id": "NDB02518",
+  "chac": "cao",
+  "ly_do": "Khung hình hộp chữ nhật thể tích cố định, tìm kích thước để tổng độ dài dây nhỏ nhất."
+ },
+ {
+  "ma_cau": "T112020302021",
+  "dang_bai_id": "NDB02486",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị: bốn phương án đều là hàm bậc hai trên bậc nhất."
+ },
+ {
+  "ma_cau": "T1120000007341",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Gạch hoa bốn cánh parabol đối xứng, tính diện tích một cánh nhân bốn; phụ thuộc hình vẽ."
+ },
+ {
+  "ma_cau": "T112070201017",
+  "dang_bai_id": "NDB02558",
+  "chac": "vua",
+  "ly_do": "Đề cụt: chỉ cho 4 điểm có tham số m, thiếu lệnh hỏi; nhãn cũ gợi ý tích có hướng/đồng phẳng."
+ },
+ {
+  "ma_cau": "T112070305013",
+  "dang_bai_id": "NDB02551",
+  "chac": "cao",
+  "ly_do": "Tìm toạ độ trung điểm BC từ AB+AC=2AI; hai dạng cùng hợp, lấy dạng sau."
+ },
+ {
+  "ma_cau": "T112070109015",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Lực ma sát F=μN là bài vật lí thuần, không dùng vectơ; bản đồ thiếu dạng lực ma sát/cân bằng đơn giản."
+ },
+ {
+  "ma_cau": "T1120000007602",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Cấp số cộng là kiến thức lớp 11, không thuộc bản đồ khối 12."
+ },
+ {
+  "ma_cau": "T1120000007084",
+  "dang_bai_id": "NDB02539",
+  "chac": "cao",
+  "ly_do": "Hệ thức trọng tâm tam giác BCD trong tứ diện: AB+AC+AD=3AG."
+ },
+ {
+  "ma_cau": "T1120000002904",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm hàm mũ e^(3x+1) cộng đa thức; hai dạng cùng hợp, lấy dạng sau (mũ)."
+ },
+ {
+  "ma_cau": "T112070101002",
+  "dang_bai_id": "NDB02537",
+  "chac": "vua",
+  "ly_do": "Rút gọn tổng hiệu vectơ trong lăng trụ; cũng có thể là dạng phân tích vectơ theo a,b,c (NDB02540)."
+ },
+ {
+  "ma_cau": "T112010309001",
+  "dang_bai_id": "NDB02513",
+  "chac": "cao",
+  "ly_do": "Tìm tiệm cận xiên rồi tính góc tạo với trục hoành: dạng góc giữa đường thẳng và tiệm cận."
+ },
+ {
+  "ma_cau": "T1120000002632",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Gạch hoa bốn cánh parabol đối xứng, tính diện tích một cánh nhân bốn rồi tính chi phí; phụ thuộc hình vẽ."
+ },
+ {
+  "ma_cau": "T1120000007178",
+  "dang_bai_id": "NDB02524",
+  "chac": "cao",
+  "ly_do": "Tăng giá thuê thì bỏ trống căn hộ, tự lập hàm doanh thu rồi tối ưu."
+ },
+ {
+  "ma_cau": "T1120000002829",
+  "dang_bai_id": "NDB00744",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm hàm phân thức (x²−x+1)/(x−1), tách phần nguyên và 1/(x−1)."
+ },
+ {
+  "ma_cau": "T112070108010",
+  "dang_bai_id": "NDB02540",
+  "chac": "vua",
+  "ly_do": "Mệnh đề đồng phẳng của các vectơ trên hình lập phương, phụ thuộc hình (M,N,P,Q)."
+ },
+ {
+  "ma_cau": "T1120000007087",
+  "dang_bai_id": "NDB02582",
+  "chac": "cao",
+  "ly_do": "Khoảng biến thiên của mẫu ghép nhóm: 300−50, nhóm giữa có tần số 0 không ảnh hưởng."
+ },
+ {
+  "ma_cau": "T112070312009",
+  "dang_bai_id": "NDB02562",
+  "chac": "cao",
+  "ly_do": "Chậu cây trên giá đỡ bốn chân, trọng lực phân bố thành bốn lực bằng nhau, tính độ lớn tổ hợp lực."
+ },
+ {
+  "ma_cau": "T1120000007171",
+  "dang_bai_id": "NDB02461",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng đồng biến/nghịch biến từ đồ thị hàm bậc hai trên bậc nhất."
+ },
+ {
+  "ma_cau": "T112010401001",
+  "dang_bai_id": "NDB02474",
+  "chac": "cao",
+  "ly_do": "Đọc giá trị lớn nhất của hàm trên đoạn từ đồ thị."
+ },
+ {
+  "ma_cau": "T112070203004",
+  "dang_bai_id": "NDB02563",
+  "chac": "cao",
+  "ly_do": "Sân cầu lông gắn hệ trục, tìm toạ độ vectơ trụ lưới AB từ chiều cao 1,55."
+ },
+ {
+  "ma_cau": "T1120000007728",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Tính tích phân của hiệu f−g từ giá trị tích phân đã cho, dùng tính chất tổng hiệu."
+ },
+ {
+  "ma_cau": "T112070304010",
+  "dang_bai_id": "NDB02554",
+  "chac": "cao",
+  "ly_do": "Tìm điểm đối xứng qua trục Oy rồi tính độ dài AB; hai dạng cùng hợp, lấy dạng sau."
+ },
+ {
+  "ma_cau": "T1120000002665",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Cánh hoa là giao hai hình tròn, diện tích bằng công thức hình học rồi nhân lên theo đối xứng; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T112070107056",
+  "dang_bai_id": "NDB02543",
+  "chac": "cao",
+  "ly_do": "Tính góc giữa hai vectơ AD và BG trên hình lập phương."
+ },
+ {
+  "ma_cau": "T112020302060",
+  "dang_bai_id": "NDB02488",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị khi phương án lẫn nhiều loại hàm (bậc2/bậc1, nhất biến, bậc ba)."
+ },
+ {
+  "ma_cau": "T112070109009",
+  "dang_bai_id": "NDB02561",
+  "chac": "cao",
+  "ly_do": "Ba lực cân bằng, biết độ lớn hai lực và góc giữa chúng, tính độ lớn lực thứ ba."
+ },
+ {
+  "ma_cau": "T1120000002692",
+  "dang_bai_id": "NDB00774",
+  "chac": "vua",
+  "ly_do": "Diện tích ốp hai thành cầu trượt bằng tích phân hai hàm, cận suy từ hình và độ dài 5m; đáp án 8.75 lệch lời giải 8,72."
+ },
+ {
+  "ma_cau": "T112070101029",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Quy tắc hình hộp, hình bình hành trên hình lập phương; chọn đẳng thức vectơ sai."
+ },
+ {
+  "ma_cau": "T112070203001",
+  "dang_bai_id": "NDB02559",
+  "chac": "vua",
+  "ly_do": "Tổng khoảng cách nhỏ nhất đến ba đỉnh tam giác đều, đáp án là trọng tâm; không khớp hẳn dạng tâm tỉ cự."
+ },
+ {
+  "ma_cau": "T1120000007642",
+  "dang_bai_id": "NDB00774",
+  "chac": "vua",
+  "ly_do": "Hình thang cong y=e^x cho cận, chia bởi x=k để S1=2S2; diện tích có tham số, phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T1120000002845",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm lượng giác có điều kiện F(π/3) để xác định hằng số C."
+ },
+ {
+  "ma_cau": "T112070202071",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc toạ độ vectơ viết theo i, j, k thứ tự k, j, i."
+ },
+ {
+  "ma_cau": "T1120000007306",
+  "dang_bai_id": "NDB02563",
+  "chac": "vua",
+  "ly_do": "Sân trường hình thang gắn Oxyz, bốn điểm đồng phẳng tìm a; phụ thuộc hình và có thể cần phương trình mặt phẳng."
+ },
+ {
+  "ma_cau": "T1120000005404",
+  "dang_bai_id": "NDB02591",
+  "chac": "cao",
+  "ly_do": "Nhóm chứa mốt là nhóm có tần số lớn nhất: đọc bảng ghép nhóm."
+ },
+ {
+  "ma_cau": "T112000000073",
+  "dang_bai_id": "NDB02571",
+  "chac": "cao",
+  "ly_do": "Xác suất có điều kiện bằng đếm: biết tổng mỗi hàng bằng 0, đếm trên không gian mẫu thu hẹp."
+ },
+ {
+  "ma_cau": "T112010306001",
+  "dang_bai_id": "NDB02479",
+  "chac": "cao",
+  "ly_do": "Tìm tiệm cận xiên từ đồ thị đã cho; hai dạng tiệm cận xiên cùng hợp, lấy dạng sau."
+ },
+ {
+  "ma_cau": "T1120000002601",
+  "dang_bai_id": "NDB00635",
+  "chac": "cao",
+  "ly_do": "Thể tích tròn xoay quanh Ox của hai hàm, đề không cho cận phải tìm giao điểm."
+ },
+ {
+  "ma_cau": "T1120000007404",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích hình phẳng trên đồ thị f với y=0, chia đoạn theo dấu f để chọn mệnh đề sai."
+ },
+ {
+  "ma_cau": "T1120000007372",
+  "dang_bai_id": "NDB00759",
+  "chac": "cao",
+  "ly_do": "Cho lợi nhuận biên P', tính lượng thay đổi P(125)-P(100) bằng tích phân; khớp ví dụ chi phí cận biên."
+ },
+ {
+  "ma_cau": "T1120000002788",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm mũ e^{2x}."
+ },
+ {
+  "ma_cau": "T1120000007802",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Tích phân của hiệu f-g cho biết tích phân từng hàm, dùng tính chất tổng hiệu."
+ },
+ {
+  "ma_cau": "T112070201015",
+  "dang_bai_id": "NDB02558",
+  "chac": "vua",
+  "ly_do": "Giải bằng tích có hướng, thể tích tứ diện rồi suy khoảng cách; nhưng bản chất khoảng cách tới mặt phẳng có thể thuộc HGT."
+ },
+ {
+  "ma_cau": "T1120000007086",
+  "dang_bai_id": "NDB02459",
+  "chac": "cao",
+  "ly_do": "Chọn hàm lượng giác luôn nghịch biến trên từng khoảng xác định, xét dấu đạo hàm."
+ },
+ {
+  "ma_cau": "T112070307012",
+  "dang_bai_id": "NDB02559",
+  "chac": "cao",
+  "ly_do": "Tìm M thuộc trục Ox làm |MA+MB+MC| nhỏ nhất bằng tâm tỉ cự (trọng tâm)."
+ },
+ {
+  "ma_cau": "T1120000007028",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học không gian/HGT: khoảng cách giữa hai đường thẳng chéo nhau; bản đồ chưa có dạng này."
+ },
+ {
+  "ma_cau": "T112070202090",
+  "dang_bai_id": "NDB02549",
+  "chac": "cao",
+  "ly_do": "Cho A và vectơ AB, tìm toạ độ B (đúng ví dụ của dạng)."
+ },
+ {
+  "ma_cau": "T1120000007585",
+  "dang_bai_id": "NDB00631",
+  "chac": "cao",
+  "ly_do": "Đồ thị vận tốc gồm parabol và đường thẳng, lập biểu thức v(t) rồi tính quãng đường bằng tích phân."
+ },
+ {
+  "ma_cau": "T112070101058",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Quy tắc hình hộp, chọn đẳng thức vectơ đúng trong hình hộp."
+ },
+ {
+  "ma_cau": "T1120000007741",
+  "dang_bai_id": "NDB00632",
+  "chac": "cao",
+  "ly_do": "Cho sẵn v(t), tính quãng đường đến khi dừng bằng tích phân."
+ },
+ {
+  "ma_cau": "T112070102014",
+  "dang_bai_id": "NDB02541",
+  "chac": "cao",
+  "ly_do": "Tính tích vô hướng khi biết độ dài hai vectơ và góc."
+ },
+ {
+  "ma_cau": "T112000000724",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc lớp 11 (phương trình lượng giác cơ bản): bản đồ chưa có dạng này."
+ },
+ {
+  "ma_cau": "T112010401032",
+  "dang_bai_id": "NDB02474",
+  "chac": "cao",
+  "ly_do": "Đọc giá trị lớn nhất từ đồ thị trên đoạn cho trước."
+ },
+ {
+  "ma_cau": "T112070202077",
+  "dang_bai_id": "NDB02545",
+  "chac": "cao",
+  "ly_do": "Tìm M từ hình chiếu lên (Oxy), (Oxz): giữ/xoá thành phần toạ độ."
+ },
+ {
+  "ma_cau": "T1120000002675",
+  "dang_bai_id": "NDB00780",
+  "chac": "cao",
+  "ly_do": "Thể tích nước bằng tích phân thiết diện tam giác, học sinh phải tự xây công thức diện tích thiết diện."
+ },
+ {
+  "ma_cau": "T112010308001",
+  "dang_bai_id": "NDB02481",
+  "chac": "cao",
+  "ly_do": "Cho các giới hạn của f, áp định nghĩa tiệm cận đứng, ngang."
+ },
+ {
+  "ma_cau": "T112070101043",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Quy tắc hình hộp ABCD.EFGH, chọn đẳng thức đúng."
+ },
+ {
+  "ma_cau": "T112010302007",
+  "dang_bai_id": "NDB02480",
+  "chac": "cao",
+  "ly_do": "Đọc tiệm cận đứng từ bảng biến thiên qua giới hạn một bên."
+ },
+ {
+  "ma_cau": "T1120000007788",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Công thức diện tích hình phẳng giới hạn bởi đồ thị, trục hoành, hai đường x=a, x=b."
+ },
+ {
+  "ma_cau": "T112070304011",
+  "dang_bai_id": "NDB02554",
+  "chac": "cao",
+  "ly_do": "Tính độ dài vectơ 2u-3v theo toạ độ."
+ },
+ {
+  "ma_cau": "T1120000002711",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Diện tích hoa văn khoét nửa elip dùng công thức elip; có thể xếp dạng hình đối xứng NDB00788; đề có hình."
+ },
+ {
+  "ma_cau": "T112070105001",
+  "dang_bai_id": "NDB02539",
+  "chac": "cao",
+  "ly_do": "Hệ thức trọng tâm tam giác BCD trong tứ diện: AG=1/3(AB+AC+AD)."
+ },
+ {
+  "ma_cau": "T1120000007064",
+  "dang_bai_id": "NDB02524",
+  "chac": "vua",
+  "ly_do": "Thêm giếng thì sản lượng mỗi giếng giảm, lập hàm bậc hai tối ưu; cũng có thể xếp NDB02527."
+ },
+ {
+  "ma_cau": "T1120000002795",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Tích phân của 3f(x) biết tích phân f, dùng tính chất nhân hằng số."
+ },
+ {
+  "ma_cau": "T1120000007621",
+  "dang_bai_id": "NDB00774",
+  "chac": "vua",
+  "ly_do": "Lập parabol rồi tính diện tích mặt cắt bằng tích phân từ 0 đến 4; đề có hình, chưa rõ nên xếp dạng diện tích nào."
+ },
+ {
+  "ma_cau": "T1120000007791",
+  "dang_bai_id": "NDB02574",
+  "chac": "cao",
+  "ly_do": "Chọn công thức Bayes đúng trong bốn phương án."
+ },
+ {
+  "ma_cau": "T1120000002885",
+  "dang_bai_id": "NDB00780",
+  "chac": "vua",
+  "ly_do": "Chứng minh S(x) của thiết diện chóp cụt rồi tính thể tích bằng tích phân; có thể coi là NDB00779."
+ },
+ {
+  "ma_cau": "T112070203006",
+  "dang_bai_id": "NDB02563",
+  "chac": "cao",
+  "ly_do": "Phòng học hình hộp chữ nhật gắn hệ trục, tìm toạ độ điểm treo đèn."
+ },
+ {
+  "ma_cau": "T1120000002686",
+  "dang_bai_id": "NDB00781",
+  "chac": "cao",
+  "ly_do": "Thể tích khối tròn xoay parabol (đèn pha) quanh Ox, đúng ví dụ khối parabol tròn xoay."
+ },
+ {
+  "ma_cau": "T1120000007609",
+  "dang_bai_id": "NDB02591",
+  "chac": "cao",
+  "ly_do": "Tính số trung bình của mẫu ghép nhóm bằng giá trị đại diện."
+ },
+ {
+  "ma_cau": "T112020201020",
+  "dang_bai_id": "NDB02495",
+  "chac": "cao",
+  "ly_do": "Từ đồ thị hàm nhất biến suy quan hệ dấu các hệ số a, b, c, d."
+ },
+ {
+  "ma_cau": "T112070202070",
+  "dang_bai_id": "NDB02545",
+  "chac": "cao",
+  "ly_do": "Hình chiếu của điểm lên mặt phẳng (Oxz)."
+ },
+ {
+  "ma_cau": "T1120000006138",
+  "dang_bai_id": "NDB02541",
+  "chac": "vua",
+  "ly_do": "Hai vectơ cùng hướng (góc 0) suy tích vô hướng; có thể là kiến thức lớp 10, nhận diện lý thuyết."
+ },
+ {
+  "ma_cau": "T112010301038",
+  "dang_bai_id": "NDB02513",
+  "chac": "cao",
+  "ly_do": "Tiệm cận cùng hai trục toạ độ tạo hình chữ nhật, tính diện tích."
+ },
+ {
+  "ma_cau": "T1120000002745",
+  "dang_bai_id": "NDB00778",
+  "chac": "vua",
+  "ly_do": "Lập parabol đường sinh từ các điểm rồi tính thể tích tròn xoay; đề có hình, cũng gần NDB00636."
+ },
+ {
+  "ma_cau": "T1120000002886",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa hai đường cong (một đường là tịnh tiến của đường kia) đọc từ hình; chưa chắc dạng diện tích nào."
+ },
+ {
+  "ma_cau": "T1120000007052",
+  "dang_bai_id": "NDB02466",
+  "chac": "cao",
+  "ly_do": "Đọc điểm cực tiểu từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T1120000002705",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Diện tích hình giới hạn bởi parabol và đường thẳng, kèm cực trị theo AB; gần công thức parabol-đường thẳng."
+ },
+ {
+  "ma_cau": "T112070305027",
+  "dang_bai_id": "NDB02551",
+  "chac": "vua",
+  "ly_do": "Tìm trung điểm CD rồi vectơ OM làm vectơ chỉ phương; phần chỉ phương có thể thuộc HGT."
+ },
+ {
+  "ma_cau": "T112070103032",
+  "dang_bai_id": "NDB02543",
+  "chac": "cao",
+  "ly_do": "Cho tích vô hướng và độ dài, tính cos góc giữa hai vectơ tổ hợp."
+ },
+ {
+  "ma_cau": "T1120000002890",
+  "dang_bai_id": "NDB00778",
+  "chac": "vua",
+  "ly_do": "Thể tích chậu tròn xoay quanh Ox y=sqrt(x+1), cận suy từ hình và bán kính đáy."
+ },
+ {
+  "ma_cau": "T1120000007592",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Mũ-Logarit (bất phương trình mũ): bản đồ chưa có dạng này."
+ },
+ {
+  "ma_cau": "T1120000007722",
+  "dang_bai_id": "NDB00632",
+  "chac": "cao",
+  "ly_do": "Cho sẵn v(t), tính quãng đường đến khi dừng bằng tích phân."
+ },
+ {
+  "ma_cau": "T112070109007",
+  "dang_bai_id": "NDB02562",
+  "chac": "cao",
+  "ly_do": "Đèn treo bằng ba dây, lực căng dây cân bằng với trọng lượng."
+ },
+ {
+  "ma_cau": "T1120000007253",
+  "dang_bai_id": "NDB00782",
+  "chac": "cao",
+  "ly_do": "Thể tích khối tường cong bằng diện tích mặt cắt không đổi nhân chiều dài AB."
+ },
+ {
+  "ma_cau": "T1120000002850",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của tan^2 x, hàm lượng giác."
+ },
+ {
+  "ma_cau": "T1120000002807",
+  "dang_bai_id": "NDB00630",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm mũ 3^x."
+ },
+ {
+  "ma_cau": "T1120000006967",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT: lập phương trình mặt phẳng quỹ đạo trong Oxyz."
+ },
+ {
+  "ma_cau": "T112070105010",
+  "dang_bai_id": "NDB02539",
+  "chac": "cao",
+  "ly_do": "Hệ thức trọng tâm tam giác ABC: SA+SB+SC=3SG."
+ },
+ {
+  "ma_cau": "T112070307017",
+  "dang_bai_id": "NDB02559",
+  "chac": "vua",
+  "ly_do": "Tâm tỉ cự cho 2MA^2+3MB^2 nhỏ nhất nhưng M thuộc mặt phẳng (P) tổng quát cần khoảng cách điểm-mặt phẳng (HGT)."
+ },
+ {
+  "ma_cau": "T112070203016",
+  "dang_bai_id": "NDB02563",
+  "chac": "vua",
+  "ly_do": "Mô hình thực tế gắn hệ trục, nhưng lời giải dùng phương trình đường thẳng AC (HGT); đề có hình."
+ },
+ {
+  "ma_cau": "T1120000002867",
+  "dang_bai_id": "NDB00631",
+  "chac": "cao",
+  "ly_do": "Vận tốc theo parabol và đường thẳng từ đồ thị, lập biểu thức rồi tính quãng đường."
+ },
+ {
+  "ma_cau": "T1120000007527",
+  "dang_bai_id": "NDB00632",
+  "chac": "cao",
+  "ly_do": "Cho sẵn v(t), tính quãng đường bằng tích phân."
+ },
+ {
+  "ma_cau": "T112070201002",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Xét ba vectơ đồng phẳng bằng tích hỗn tạp."
+ },
+ {
+  "ma_cau": "T112070202080",
+  "dang_bai_id": "NDB02545",
+  "chac": "cao",
+  "ly_do": "Hình chiếu của điểm lên trục Ox."
+ },
+ {
+  "ma_cau": "T1120000007094",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích hình phẳng gồm 4 phần bằng nhau giới hạn bởi cung parabol; cũng có thể xếp NDB00775; đề có hình."
+ },
+ {
+  "ma_cau": "T112070201001",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Tìm m để ba vectơ đồng phẳng bằng tích hỗn tạp."
+ },
+ {
+  "ma_cau": "T112020201018",
+  "dang_bai_id": "NDB02495",
+  "chac": "cao",
+  "ly_do": "Từ đồ thị hàm nhất biến suy dấu các tích hệ số."
+ },
+ {
+  "ma_cau": "T1120000007674",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Diện tích cánh hoa giữa hai parabol phải tự tìm cận; có tính đối xứng nên cũng gần NDB00788; đề có hình."
+ },
+ {
+  "ma_cau": "T1120000002868",
+  "dang_bai_id": "NDB00632",
+  "chac": "cao",
+  "ly_do": "Cho v(t) từng đoạn, tính quãng đường và vận tốc trung bình bằng tích phân."
+ },
+ {
+  "ma_cau": "T1120000006327",
+  "dang_bai_id": "NDB02478",
+  "chac": "cao",
+  "ly_do": "Tìm tiệm cận xiên của hàm bậc hai trên bậc nhất bằng chia đa thức."
+ },
+ {
+  "ma_cau": "T1120000007838",
+  "dang_bai_id": "NDB02574",
+  "chac": "cao",
+  "ly_do": "Chọn công thức xác suất toàn phần đúng."
+ },
+ {
+  "ma_cau": "T112010401027",
+  "dang_bai_id": "NDB02474",
+  "chac": "cao",
+  "ly_do": "Đọc GTLN, GTNN từ đồ thị trên đoạn rồi tính 2M-m."
+ },
+ {
+  "ma_cau": "T1120000002567",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Hai hình tô màu cho bằng hình, tích phân trị tuyệt đối trên đoạn; có thể xếp NDB00774; đề có hình."
+ },
+ {
+  "ma_cau": "T1120000006330",
+  "dang_bai_id": "NDB02471",
+  "chac": "cao",
+  "ly_do": "GTNN hàm phân thức trên đoạn."
+ },
+ {
+  "ma_cau": "T1120000002903",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm gồm hạng tử mũ và lượng giác; xếp vào dạng sau (hàm mũ)."
+ },
+ {
+  "ma_cau": "T1120000007382",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Chọn mệnh đề sai về tính chất của nguyên hàm (tích không bằng tích nguyên hàm)."
+ },
+ {
+  "ma_cau": "T1120000007457",
+  "dang_bai_id": "NDB02539",
+  "chac": "cao",
+  "ly_do": "Trung điểm E, F, G trong tứ diện, chọn đẳng thức vectơ đúng."
+ },
+ {
+  "ma_cau": "T1120000002634",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa hai parabol phải tự tìm cận; đề có hình."
+ },
+ {
+  "ma_cau": "T1120000002635",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa parabol và bậc ba, 6 cánh giống nhau nhân 6 (đối xứng); cũng hợp NDB00775; có hình."
+ },
+ {
+  "ma_cau": "T112020202009",
+  "dang_bai_id": "NDB02488",
+  "chac": "cao",
+  "ly_do": "Phương án lẫn bậc bốn, bậc ba và hai hàm nhất biến; phân biệt qua tiệm cận."
+ },
+ {
+  "ma_cau": "T1120000007179",
+  "dang_bai_id": "NDB02530",
+  "chac": "cao",
+  "ly_do": "Cho s(t), lấy v=s′ giải v=28 rồi tính s tại thời điểm đó."
+ },
+ {
+  "ma_cau": "T1120000007440",
+  "dang_bai_id": "NDB00745",
+  "chac": "vua",
+  "ly_do": "Chọn khẳng định sai trong bảng nguyên hàm; chỗ sai là nguyên hàm hàm mũ a^x, nhưng câu lý thuyết trộn nhiều hàm."
+ },
+ {
+  "ma_cau": "T112010403003",
+  "dang_bai_id": "NDB02521",
+  "chac": "cao",
+  "ly_do": "Đi qua hai miền với hai vận tốc khác nhau, chọn điểm qua vạch chắn để thời gian ngắn nhất."
+ },
+ {
+  "ma_cau": "T1120000005850",
+  "dang_bai_id": "NDB02466",
+  "chac": "cao",
+  "ly_do": "Đọc giá trị cực tiểu từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T112070202088",
+  "dang_bai_id": "NDB02545",
+  "chac": "cao",
+  "ly_do": "Hình chiếu vuông góc của điểm trên trục Oy."
+ },
+ {
+  "ma_cau": "T112070101005",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Rút gọn tổng vectơ trong lăng trụ bằng quy tắc hình bình hành."
+ },
+ {
+  "ma_cau": "T1120000007226",
+  "dang_bai_id": "NDB00774",
+  "chac": "vua",
+  "ly_do": "Diện tích với cận cho sẵn rồi tìm a để hai diện tích bằng nhau; chưa có dạng tham số riêng; có hình."
+ },
+ {
+  "ma_cau": "T1120000002676",
+  "dang_bai_id": "NDB00778",
+  "chac": "vua",
+  "ly_do": "Thùng rượu tròn xoay: lập phương trình đường tròn từ hình rồi tính thể tích; có hình, cũng gần NDB00635."
+ },
+ {
+  "ma_cau": "T112070201009",
+  "dang_bai_id": "NDB02558",
+  "chac": "vua",
+  "ly_do": "Chứng minh đẳng thức với tích có hướng [a,b] và tích vô hướng, không có toạ độ; sát nhất dạng tích có hướng."
+ },
+ {
+  "ma_cau": "T112020303012",
+  "dang_bai_id": "NDB02500",
+  "chac": "cao",
+  "ly_do": "Lập đường thẳng AB qua hai cực trị của hàm bậc hai trên bậc nhất rồi tìm M gần O nhất trên AB."
+ },
+ {
+  "ma_cau": "T1120000007599",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa parabol và đường gấp khúc đối xứng qua trục, nhân đôi; cũng hợp NDB00775; có hình."
+ },
+ {
+  "ma_cau": "T112020104023",
+  "dang_bai_id": "NDB02484",
+  "chac": "vua",
+  "ly_do": "Hỏi hình là đồ thị hàm nào, không có phương án trong đề, hàm bậc ba phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T1120000007125",
+  "dang_bai_id": "NDB00743",
+  "chac": "vua",
+  "ly_do": "Chọn khẳng định sai: ∫cos x dx bị viết sai dấu; câu bảng nguyên hàm trộn nhiều hàm."
+ },
+ {
+  "ma_cau": "T1120000002605",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Diện tích giữa hai hàm số với hai đường x=2, x=4 cho sẵn cận."
+ },
+ {
+  "ma_cau": "T1120000002701",
+  "dang_bai_id": "NDB00778",
+  "chac": "vua",
+  "ly_do": "Lập parabol qua 3 điểm từ hình quả bóng rồi tính thể tích quay quanh Ox; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T112010304001",
+  "dang_bai_id": "NDB02479",
+  "chac": "cao",
+  "ly_do": "Đọc phương trình tiệm cận ngang từ đồ thị."
+ },
+ {
+  "ma_cau": "T112070101023",
+  "dang_bai_id": "NDB02538",
+  "chac": "cao",
+  "ly_do": "Đẳng thức vectơ trong hình chóp đáy hình bình hành, dùng quy tắc trừ và hình bình hành."
+ },
+ {
+  "ma_cau": "T112070202069",
+  "dang_bai_id": "NDB02545",
+  "chac": "cao",
+  "ly_do": "Điểm đối xứng qua trục Ox: giữ x, đổi dấu y, z."
+ },
+ {
+  "ma_cau": "T1120000002645",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Lập hypebol, diện tích hai phần đối xứng nhân 4 bằng tích phân; cũng hợp NDB00775; có hình."
+ },
+ {
+  "ma_cau": "T1120000007548",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Quy tắc hình hộp: tổng ba vectơ chung gốc bằng đường chéo."
+ },
+ {
+  "ma_cau": "T1120000005330",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích phần tô giữa các parabol đối xứng, tính một góc phần tư nhân 4; cũng hợp NDB00775; có hình."
+ },
+ {
+  "ma_cau": "T112020401155",
+  "dang_bai_id": "NDB02518",
+  "chac": "cao",
+  "ly_do": "Bể hộp chữ nhật không nắp thể tích cố định, chi phí vật liệu nhỏ nhất."
+ },
+ {
+  "ma_cau": "T1120000007115",
+  "dang_bai_id": "NDB00757",
+  "chac": "cao",
+  "ly_do": "Vật bắn lên thẳng đứng dùng g, tích phân vận tốc ra độ cao."
+ },
+ {
+  "ma_cau": "T112070101010",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Quy tắc hình hộp cho AB+AD+AA′."
+ },
+ {
+  "ma_cau": "T112020201009",
+  "dang_bai_id": "NDB02495",
+  "chac": "cao",
+  "ly_do": "Từ đồ thị y=(ax+b)/(cx+d) suy dấu và quan hệ các hệ số."
+ },
+ {
+  "ma_cau": "T1120000007530",
+  "dang_bai_id": "NDB00631",
+  "chac": "vua",
+  "ly_do": "Quãng đường từ đồ thị vận tốc ghép parabol và đoạn thẳng; có hình, cũng hợp NDB00756."
+ },
+ {
+  "ma_cau": "T1120000002747",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Diện tích trên và dưới trục hoành bằng nhau, tìm m; tự tìm cận nhưng có tham số, chưa có dạng riêng."
+ },
+ {
+  "ma_cau": "T112020201002",
+  "dang_bai_id": "NDB02495",
+  "chac": "cao",
+  "ly_do": "Từ đồ thị y=(ax−b)/(x−1) suy dấu và thứ tự hệ số a, b."
+ },
+ {
+  "ma_cau": "T112010303021",
+  "dang_bai_id": "NDB02477",
+  "chac": "cao",
+  "ly_do": "Tìm hàm phân thức có tiệm cận đứng x=−1 sau khi rút gọn nhân tử chung."
+ },
+ {
+  "ma_cau": "T112070304001",
+  "dang_bai_id": "NDB02554",
+  "chac": "cao",
+  "ly_do": "Độ dài đoạn AB theo toạ độ hai điểm."
+ },
+ {
+  "ma_cau": "T1120000002902",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của 3^x+2x, có hàm mũ a^x chia ln a."
+ },
+ {
+  "ma_cau": "T1120000007856",
+  "dang_bai_id": "NDB00632",
+  "chac": "vua",
+  "ly_do": "Quãng đường từ v(t) cho 3 khúc; đáp án file là độ dời, mâu thuẫn quãng đường theo |v|."
+ },
+ {
+  "ma_cau": "T1120000007561",
+  "dang_bai_id": "NDB00787",
+  "chac": "cao",
+  "ly_do": "Phần cổng parabol dùng công thức 2/3·đáy·cao, cộng chi phí hình chữ nhật."
+ },
+ {
+  "ma_cau": "T112070305002",
+  "dang_bai_id": "NDB02551",
+  "chac": "cao",
+  "ly_do": "Toạ độ trung điểm đoạn AB."
+ },
+ {
+  "ma_cau": "T112010401023",
+  "dang_bai_id": "NDB02474",
+  "chac": "cao",
+  "ly_do": "Đọc điểm đạt GTLN trên đoạn từ đồ thị."
+ },
+ {
+  "ma_cau": "T1120000002838",
+  "dang_bai_id": "NDB00744",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm hàm phân thức, tách (5+2x⁴)/x² thành lũy thừa."
+ },
+ {
+  "ma_cau": "T1120000005877",
+  "dang_bai_id": "NDB02484",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị bậc ba, mọi phương án đều bậc ba."
+ },
+ {
+  "ma_cau": "T112070102012",
+  "dang_bai_id": "NDB02541",
+  "chac": "cao",
+  "ly_do": "Biết độ dài và góc hai vectơ, khai triển bình phương để tính độ dài 3u−2v."
+ },
+ {
+  "ma_cau": "T1120000007600",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: thể tích khối chóp (hình không gian lớp 12), bảng đích không có."
+ },
+ {
+  "ma_cau": "T1120000002760",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của sin x."
+ },
+ {
+  "ma_cau": "T112010102046",
+  "dang_bai_id": "NDB02459",
+  "chac": "cao",
+  "ly_do": "Xét đơn điệu hàm chứa căn √(2x²+1)."
+ },
+ {
+  "ma_cau": "T112070202084",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc toạ độ vectơ viết theo i, j, k."
+ },
+ {
+  "ma_cau": "T1120000007734",
+  "dang_bai_id": "NDB00752",
+  "chac": "cao",
+  "ly_do": "Nối cận hai tích phân đã cho; dạng nối cận đứng sau NDB00751."
+ },
+ {
+  "ma_cau": "T112070306001",
+  "dang_bai_id": "NDB02550",
+  "chac": "cao",
+  "ly_do": "Hai vectơ cùng phương, tìm thành phần còn thiếu theo tỉ lệ."
+ },
+ {
+  "ma_cau": "T1120000002577",
+  "dang_bai_id": "NDB00779",
+  "chac": "cao",
+  "ly_do": "Thể tích vật khi biết diện tích thiết diện S(x)=5·0,5^x, cho sẵn công thức."
+ },
+ {
+  "ma_cau": "T112070101064",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Tổng vectơ trong lăng trụ dùng A′C′=AC."
+ },
+ {
+  "ma_cau": "T1120000007531",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Phần trắng là viên phân bán kính 5, dây AB=6; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T112020201019",
+  "dang_bai_id": "NDB02495",
+  "chac": "cao",
+  "ly_do": "Từ bảng biến thiên suy dấu các hệ số a, b, c của hàm nhất biến."
+ },
+ {
+  "ma_cau": "T112080201001",
+  "dang_bai_id": "NDB02578",
+  "chac": "cao",
+  "ly_do": "Trò chơi rút thẻ hai bước, thêm thẻ rồi đếm cấp số cộng; toàn phần nhiều tầng kết hợp tổ hợp."
+ },
+ {
+  "ma_cau": "T112070201033",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Thể tích tứ diện bằng tích hỗn tạp theo toạ độ."
+ },
+ {
+  "ma_cau": "T1120000007558",
+  "dang_bai_id": "NDB02563",
+  "chac": "vua",
+  "ly_do": "Nhà gồm hộp và mái chóp có hệ trục sẵn, tìm toạ độ đỉnh S; phụ thuộc hình, cũng hợp NDB02547."
+ },
+ {
+  "ma_cau": "T1120000002570",
+  "dang_bai_id": "NDB00774",
+  "chac": "vua",
+  "ly_do": "Diện tích với cận cho sẵn rồi tìm a để hai diện tích bằng nhau; chưa có dạng tham số riêng; có hình."
+ },
+ {
+  "ma_cau": "T1120000007426",
+  "dang_bai_id": "NDB00632",
+  "chac": "cao",
+  "ly_do": "Cho v(t), tích phân đến lúc dừng để tính quãng đường."
+ },
+ {
+  "ma_cau": "T1120000007550",
+  "dang_bai_id": "NDB02484",
+  "chac": "vua",
+  "ly_do": "Đáp án là hàm bậc ba, phương án lẫn một hàm nhất biến; phụ thuộc hình, cũng hợp NDB02488."
+ },
+ {
+  "ma_cau": "T112070102049",
+  "dang_bai_id": "NDB02542",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng AM·AB trong tứ diện đều."
+ },
+ {
+  "ma_cau": "T112070307016",
+  "dang_bai_id": "NDB02559",
+  "chac": "vua",
+  "ly_do": "Tâm tỉ cự I rồi M gần I nhất, nhưng M thuộc mặt phẳng (P) tổng quát (gần HGT)."
+ },
+ {
+  "ma_cau": "T112070101065",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức sai về tổng vectơ trong hình hộp."
+ },
+ {
+  "ma_cau": "T1120000007619",
+  "dang_bai_id": "NDB02490",
+  "chac": "vua",
+  "ly_do": "Đếm hệ số dương của bậc ba từ đồ thị; lời giải lập công thức, cũng hợp NDB02489; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T1120000002716",
+  "dang_bai_id": "NDB00787",
+  "chac": "vua",
+  "ly_do": "Cổng parabol, diện tích cả cổng và phần hình chữ nhật; có hình, thiếu phương án."
+ },
+ {
+  "ma_cau": "T112070308005",
+  "dang_bai_id": "NDB02554",
+  "chac": "vua",
+  "ly_do": "Độ dài tổng vectơ trên lập phương, lời giải gắn toạ độ rồi tính độ dài; cũng hợp NDB02536."
+ },
+ {
+  "ma_cau": "T1120000002774",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm mũ 2025^x."
+ },
+ {
+  "ma_cau": "T1120000002738",
+  "dang_bai_id": "NDB00775",
+  "chac": "cao",
+  "ly_do": "Diện tích giữa hai parabol phải tự tìm giao điểm, tham số m."
+ },
+ {
+  "ma_cau": "T112070109003",
+  "dang_bai_id": "NDB02562",
+  "chac": "cao",
+  "ly_do": "Đèn treo cân bằng bởi ba lực căng đôi một vuông góc, trọng lượng bằng hợp lực."
+ },
+ {
+  "ma_cau": "T112020302001",
+  "dang_bai_id": "NDB02486",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị hàm bậc hai trên bậc nhất qua tiệm cận đứng và xiên."
+ },
+ {
+  "ma_cau": "T1120000007135",
+  "dang_bai_id": "NDB00628",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm cho bởi hai biểu thức trên từng đoạn."
+ },
+ {
+  "ma_cau": "T1120000002887",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Thể tích tròn xoay quanh Ox của hàm cho sẵn với hai cận."
+ },
+ {
+  "ma_cau": "T1120000002757",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của cos²x bằng hạ bậc."
+ },
+ {
+  "ma_cau": "T1120000006333",
+  "dang_bai_id": "NDB02539",
+  "chac": "cao",
+  "ly_do": "Trung điểm và trọng tâm tứ diện, chọn đẳng thức vectơ sai."
+ },
+ {
+  "ma_cau": "T112010403001",
+  "dang_bai_id": "NDB02519",
+  "chac": "cao",
+  "ly_do": "Hình chữ nhật nội tiếp nửa đường tròn, lập hàm diện tích rồi tìm max."
+ },
+ {
+  "ma_cau": "T112070101045",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Hình hộp, chọn đẳng thức vectơ sai bằng quy tắc hình hộp, hình bình hành."
+ },
+ {
+  "ma_cau": "T112070302010",
+  "dang_bai_id": "NDB02548",
+  "chac": "cao",
+  "ly_do": "Tính toạ độ hiệu hai vectơ cho bằng toạ độ."
+ },
+ {
+  "ma_cau": "T1120000002579",
+  "dang_bai_id": "NDB00779",
+  "chac": "vua",
+  "ly_do": "Thể tích bình từ diện tích mặt cắt hình tròn cho sẵn bán kính; có thể coi dạng 00780."
+ },
+ {
+  "ma_cau": "T1120000002773",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Họ nguyên hàm của hàm mũ 2^x."
+ },
+ {
+  "ma_cau": "T1120000002659",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Diện tích giữa hai đồ thị, cận suy từ hình; thực tế tính tiền bê tông."
+ },
+ {
+  "ma_cau": "T112010202003",
+  "dang_bai_id": "NDB02466",
+  "chac": "cao",
+  "ly_do": "Đọc điểm cực đại từ bảng biến thiên (lời giải nêu rõ)."
+ },
+ {
+  "ma_cau": "T1120000002847",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm lượng giác có điều kiện F(π/2)=0 để tìm hằng số; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000002678",
+  "dang_bai_id": "NDB00781",
+  "chac": "vua",
+  "ly_do": "Thể tích chỏm cầu và chóp cụt quay quanh trục; hình quen thuộc, nhiều dạng thể tích cùng hợp."
+ },
+ {
+  "ma_cau": "T112070201006",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Đồng phẳng, thể tích tứ diện, diện tích mặt bằng tích có hướng toạ độ."
+ },
+ {
+  "ma_cau": "T112010305018",
+  "dang_bai_id": "NDB02478",
+  "chac": "cao",
+  "ly_do": "Tìm tiệm cận xiên của hàm đã viết dạng ax+b+c/(x-d)."
+ },
+ {
+  "ma_cau": "T112070101053",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Hình hộp, khẳng định sai nhận ra bằng quy tắc hình hộp, hình bình hành."
+ },
+ {
+  "ma_cau": "T1120000007670",
+  "dang_bai_id": "NDB00787",
+  "chac": "cao",
+  "ly_do": "Diện tích cổng parabol, hình cắt ngang parabol có công thức."
+ },
+ {
+  "ma_cau": "T1120000007010",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Biến đổi lôgarit (Mũ-lôgarit lớp 12 đầu), bảng đích chưa có dạng này."
+ },
+ {
+  "ma_cau": "T112010303002",
+  "dang_bai_id": "NDB02476",
+  "chac": "cao",
+  "ly_do": "Tiệm cận đứng và ngang của hàm bậc nhất trên bậc nhất."
+ },
+ {
+  "ma_cau": "T112070304006",
+  "dang_bai_id": "NDB02554",
+  "chac": "cao",
+  "ly_do": "Công thức khoảng cách giữa hai điểm trong Oxyz."
+ },
+ {
+  "ma_cau": "T1120000007238",
+  "dang_bai_id": "NDB00632",
+  "chac": "vua",
+  "ly_do": "Quãng đường từ các v(t) cho sẵn theo từng đoạn, có hình đồ thị; cũng gần 00631."
+ },
+ {
+  "ma_cau": "T1120000002713",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích hình phẳng giữa hai đồ thị cho bằng hình vẽ, xác định cận và hàm từ đồ thị."
+ },
+ {
+  "ma_cau": "T1120000007014",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Cấp số nhân lớp 11, không thuộc bảng đích khối 12."
+ },
+ {
+  "ma_cau": "T112070203012",
+  "dang_bai_id": "NDB02564",
+  "chac": "cao",
+  "ly_do": "Toạ độ vectơ cáp kéo từ độ dài và góc với trục."
+ },
+ {
+  "ma_cau": "T1120000002756",
+  "dang_bai_id": "NDB00745",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm mũ 2025^x."
+ },
+ {
+  "ma_cau": "T112070103020",
+  "dang_bai_id": "NDB02543",
+  "chac": "cao",
+  "ly_do": "Từ hai vectơ vuông góc suy tích vô hướng rồi tìm góc giữa hai vectơ."
+ },
+ {
+  "ma_cau": "T1120000002728",
+  "dang_bai_id": "NDB00775",
+  "chac": "cao",
+  "ly_do": "Diện tích giới hạn bởi đồ thị và hai trục, tự tìm giao điểm làm cận, tham số m."
+ },
+ {
+  "ma_cau": "T1120000002815",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Đề lỗi mất công thức hàm f và điều kiện, không xác định được dạng."
+ },
+ {
+  "ma_cau": "T112070108012",
+  "dang_bai_id": "NDB02540",
+  "chac": "cao",
+  "ly_do": "Khẳng định sai nhờ xét đồng phẳng của vectơ/điểm trên hình hộp; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000007058",
+  "dang_bai_id": "NDB02584",
+  "chac": "cao",
+  "ly_do": "Tính tứ phân vị thứ ba Q3 của mẫu ghép nhóm."
+ },
+ {
+  "ma_cau": "T1120000007797",
+  "dang_bai_id": "NDB02572",
+  "chac": "cao",
+  "ly_do": "Lấy liên tiếp không hoàn lại, dùng P(A1A2)=P(A1)P(A2|A1)."
+ },
+ {
+  "ma_cau": "T1120000002571",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Diện tích có cận x=1, x=a cho sẵn rồi lấy giới hạn."
+ },
+ {
+  "ma_cau": "T112070305009",
+  "dang_bai_id": "NDB02551",
+  "chac": "cao",
+  "ly_do": "Toạ độ trung điểm đoạn thẳng."
+ },
+ {
+  "ma_cau": "T1120000002569",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Hai ý diện tích hình gạch chéo, hàm và cận chỉ có trong hình vẽ."
+ },
+ {
+  "ma_cau": "T112070101006",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Quy tắc hình hộp cho tổng vectơ có chung gốc."
+ },
+ {
+  "ma_cau": "T1120000002586",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Chọn công thức diện tích phần tô màu dưới trục từ đồ thị f, phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T112020202013",
+  "dang_bai_id": "NDB02486",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị bậc hai trên bậc nhất qua tiệm cận đứng và xiên."
+ },
+ {
+  "ma_cau": "T112070202056",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc toạ độ điểm từ OM viết theo i, j, k."
+ },
+ {
+  "ma_cau": "T112070101007",
+  "dang_bai_id": "NDB02539",
+  "chac": "cao",
+  "ly_do": "Dùng tính chất trung điểm O của hai đường chéo hình chóp đều; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000007771",
+  "dang_bai_id": "NDB00779",
+  "chac": "vua",
+  "ly_do": "Thể tích chậu từ mặt cắt hình tròn có bán kính cho sẵn; có thể coi 00780."
+ },
+ {
+  "ma_cau": "T112070308017",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT: đường vuông góc chung, khoảng cách hai đường thẳng chéo nhau trong Oxyz."
+ },
+ {
+  "ma_cau": "T1120000002879",
+  "dang_bai_id": "NDB00636",
+  "chac": "vua",
+  "ly_do": "Sáu ý thể tích quay quanh Ox, năm ý có cận, ý f phải tự tìm cận (00635)."
+ },
+ {
+  "ma_cau": "T112020104004",
+  "dang_bai_id": "NDB02484",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị hàm bậc ba, các phương án đều là hàm bậc ba."
+ },
+ {
+  "ma_cau": "T1120000002722",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Diện tích giữa hai đồ thị bậc ba và bậc hai cho bằng hình, cận đọc từ đồ thị."
+ },
+ {
+  "ma_cau": "T1120000002598",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Công thức thể tích quay y=2^x quanh Ox với cận x=0, x=2 cho sẵn."
+ },
+ {
+  "ma_cau": "T1120000002758",
+  "dang_bai_id": "NDB00744",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của hàm phân thức 1/(5x-12)."
+ },
+ {
+  "ma_cau": "T112070308011",
+  "dang_bai_id": "NDB02556",
+  "chac": "cao",
+  "ly_do": "Gắn hệ trục rồi tính cosin góc hai vectơ bằng toạ độ; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000002744",
+  "dang_bai_id": "NDB00635",
+  "chac": "vua",
+  "ly_do": "Thể tích quay quanh Ox hình giới hạn bởi hai hàm, tự tìm cận; có hình, phần dưới trục phức tạp."
+ },
+ {
+  "ma_cau": "T112010401019",
+  "dang_bai_id": "NDB02474",
+  "chac": "vua",
+  "ly_do": "Đề bị cắt câu hỏi, chỉ có đồ thị trên [-1;3]; nhiều khả năng đọc GTLN, GTNN từ đồ thị."
+ },
+ {
+  "ma_cau": "T1120000006341",
+  "dang_bai_id": "NDB02492",
+  "chac": "cao",
+  "ly_do": "Tìm hai điểm cực trị bậc ba rồi tính khoảng cách AB."
+ },
+ {
+  "ma_cau": "T1120000007739",
+  "dang_bai_id": "NDB00760",
+  "chac": "vua",
+  "ly_do": "Cho tốc độ C'(x) và C(0), tính tổng chi phí tại x=84; gần 00750."
+ },
+ {
+  "ma_cau": "T1120000007836",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính độ lệch chuẩn của mẫu ghép nhóm cho bằng biểu đồ."
+ },
+ {
+  "ma_cau": "T1120000002723",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích dải elip đối xứng qua trục, tính nửa rồi nhân đôi; cũng gần 00774 hoặc 00787."
+ },
+ {
+  "ma_cau": "T112070312006",
+  "dang_bai_id": "NDB02562",
+  "chac": "cao",
+  "ly_do": "Lực căng bốn dây treo tấm bảng cân bằng với trọng lực."
+ },
+ {
+  "ma_cau": "T112020202012",
+  "dang_bai_id": "NDB02486",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị bậc hai trên bậc nhất qua tiệm cận đứng và xiên."
+ },
+ {
+  "ma_cau": "T1120000002858",
+  "dang_bai_id": "NDB00630",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm mũ 5^x trên đoạn [0;1]."
+ },
+ {
+  "ma_cau": "T112020302025",
+  "dang_bai_id": "NDB02486",
+  "chac": "cao",
+  "ly_do": "Nhận dạng bảng biến thiên của hàm bậc hai trên bậc nhất."
+ },
+ {
+  "ma_cau": "T1120000006342",
+  "dang_bai_id": "NDB02471",
+  "chac": "cao",
+  "ly_do": "GTLN, GTNN của hàm phân thức bậc nhất trên đoạn [2;3]."
+ },
+ {
+  "ma_cau": "T1120000007805",
+  "dang_bai_id": "NDB00627",
+  "chac": "cao",
+  "ly_do": "Tích phân chứa giá trị tuyệt đối, tách cận theo dấu."
+ },
+ {
+  "ma_cau": "T112070307010",
+  "dang_bai_id": "NDB02559",
+  "chac": "cao",
+  "ly_do": "Cực trị |MA+MB+MC| bằng tâm tỉ cự, M thuộc mặt phẳng toạ độ."
+ },
+ {
+  "ma_cau": "T112020301009",
+  "dang_bai_id": "NDB02498",
+  "chac": "cao",
+  "ly_do": "Xét dấu hệ số hàm bậc hai trên bậc nhất từ đồ thị."
+ },
+ {
+  "ma_cau": "T112070105029",
+  "dang_bai_id": "NDB02540",
+  "chac": "cao",
+  "ly_do": "Biểu diễn DM theo ba vectơ a, b, c; dạng sau thắng so với trung điểm."
+ },
+ {
+  "ma_cau": "T1120000007433",
+  "dang_bai_id": "NDB00775",
+  "chac": "vua",
+  "ly_do": "Diện tích miền định bởi bất đẳng thức khoảng cách, lập hàm biên parabol rồi tích phân."
+ },
+ {
+  "ma_cau": "T1120000007160",
+  "dang_bai_id": "NDB02591",
+  "chac": "cao",
+  "ly_do": "Giá trị đại diện của nhóm trong bảng ghép nhóm."
+ },
+ {
+  "ma_cau": "T1120000002799",
+  "dang_bai_id": "NDB00754",
+  "chac": "cao",
+  "ly_do": "Tích phân của hàm phân thức 1/x với cận a, b."
+ },
+ {
+  "ma_cau": "T112070103024",
+  "dang_bai_id": "NDB02543",
+  "chac": "cao",
+  "ly_do": "Khai triển |a-b|^2 ra tích vô hướng rồi tính cos góc; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000002737",
+  "dang_bai_id": "NDB00777",
+  "chac": "vua",
+  "ly_do": "Tỉ số diện tích các miền cho bằng hình vẽ hàm bậc bốn, nâng cao phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T1120000007234",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Công thức nguyên hàm sin, cos, chọn mệnh đề sai."
+ },
+ {
+  "ma_cau": "T112070102038",
+  "dang_bai_id": "NDB02542",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng hai vectơ trên lăng trụ đứng; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000002741",
+  "dang_bai_id": "NDB00780",
+  "chac": "cao",
+  "ly_do": "Thể tích vật thể có thiết diện phần hình tròn góc 90 độ, phải tự xây công thức."
+ },
+ {
+  "ma_cau": "T112010301037",
+  "dang_bai_id": "NDB02477",
+  "chac": "cao",
+  "ly_do": "Tìm hàm có tiệm cận ngang cho trước, đáp án là phân thức bậc hai trên bậc hai."
+ },
+ {
+  "ma_cau": "T1120000002673",
+  "dang_bai_id": "NDB00781",
+  "chac": "vua",
+  "ly_do": "Parabol tròn xoay kết hợp tốc độ cát v(t); hai dạng cùng hợp."
+ },
+ {
+  "ma_cau": "T1120000002857",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Diện tích hình thang cong có hàm và cận x=2, x=25 cho sẵn."
+ },
+ {
+  "ma_cau": "T112010101002",
+  "dang_bai_id": "NDB02460",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng nghịch biến từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T1120000007119",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Hình lập phương, chọn đẳng thức tổng/hiệu vectơ sai theo quy tắc hình hộp."
+ },
+ {
+  "ma_cau": "T112010101006",
+  "dang_bai_id": "NDB02461",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng nghịch biến từ đồ thị hàm số."
+ },
+ {
+  "ma_cau": "T112010101004",
+  "dang_bai_id": "NDB02460",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng đồng biến từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T112020202015",
+  "dang_bai_id": "NDB02485",
+  "chac": "cao",
+  "ly_do": "Chọn đồ thị của hàm nhất biến y=(x+1)/(−x+1) qua tiệm cận, giao trục."
+ },
+ {
+  "ma_cau": "T1120000007093",
+  "dang_bai_id": "NDB02518",
+  "chac": "cao",
+  "ly_do": "Lập thể tích hình chóp tứ giác đều theo cạnh đáy x rồi tìm V lớn nhất."
+ },
+ {
+  "ma_cau": "T1120000002576",
+  "dang_bai_id": "NDB00636",
+  "chac": "vua",
+  "ly_do": "Quay y=√(4−x²) quanh Ox, cận −2..1, V=π∫(4−x²); chỏm cầu không phải hình quen thuộc nguyên vẹn."
+ },
+ {
+  "ma_cau": "T1120000002827",
+  "dang_bai_id": "NDB00744",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm x²+2/x² có hạng tử phân thức; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T112010302020",
+  "dang_bai_id": "NDB02479",
+  "chac": "vua",
+  "ly_do": "Đọc phương trình tiệm cận từ đồ thị nhất biến, nhưng đề thiếu phần câu hỏi."
+ },
+ {
+  "ma_cau": "T112070203002",
+  "dang_bai_id": "NDB02563",
+  "chac": "cao",
+  "ly_do": "Vị trí theo hướng nam–đông và độ cao, lập Oxyz; MA+MB nhỏ nhất trên mặt đất; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T112010401010",
+  "dang_bai_id": "NDB02475",
+  "chac": "cao",
+  "ly_do": "Đọc GTNN trên [0;3] từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T1120000006328",
+  "dang_bai_id": "NDB02484",
+  "chac": "cao",
+  "ly_do": "Chọn công thức hàm bậc ba từ đồ thị (3/4 phương án bậc ba)."
+ },
+ {
+  "ma_cau": "T1120000002691",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích mặt tiền mái chùa đối xứng, tính nửa nhân đôi, kèm parabol cổng và tính lượng sơn."
+ },
+ {
+  "ma_cau": "T112020104013",
+  "dang_bai_id": "NDB02484",
+  "chac": "cao",
+  "ly_do": "Nhận dạng đồ thị hàm bậc ba, loại parabol theo dấu a."
+ },
+ {
+  "ma_cau": "T1120000007124",
+  "dang_bai_id": "NDB02587",
+  "chac": "cao",
+  "ly_do": "Tính phương sai từ bảng số liệu ghép nhóm."
+ },
+ {
+  "ma_cau": "T1120000002715",
+  "dang_bai_id": "NDB00752",
+  "chac": "vua",
+  "ly_do": "Đổi biến rồi nối cận với diện tích đồ thị; bản đồ chưa có dạng tích phân đổi biến."
+ },
+ {
+  "ma_cau": "T1120000007813",
+  "dang_bai_id": "NDB00632",
+  "chac": "cao",
+  "ly_do": "Cho sẵn v(t) từng khúc, dùng tích phân tìm độ cao ban đầu."
+ },
+ {
+  "ma_cau": "T112020401225",
+  "dang_bai_id": "NDB02527",
+  "chac": "cao",
+  "ly_do": "Chọn số xe tải tối ưu để tổng chi phí vận chuyển nhỏ nhất."
+ },
+ {
+  "ma_cau": "T112010301001",
+  "dang_bai_id": "NDB02476",
+  "chac": "cao",
+  "ly_do": "Tiệm cận ngang của hàm nhất biến."
+ },
+ {
+  "ma_cau": "T112010102044",
+  "dang_bai_id": "NDB02458",
+  "chac": "cao",
+  "ly_do": "Chọn hàm đa thức/phân thức đồng biến trên ℝ qua dấu y′."
+ },
+ {
+  "ma_cau": "T1120000002669",
+  "dang_bai_id": "NDB00779",
+  "chac": "cao",
+  "ly_do": "Mặt cắt hình tròn bán kính R(x) cho sẵn, V=∫S(x)dx."
+ },
+ {
+  "ma_cau": "T112070201020",
+  "dang_bai_id": "NDB02557",
+  "chac": "cao",
+  "ly_do": "Tìm toạ độ trực tâm tam giác bằng điều kiện vuông góc."
+ },
+ {
+  "ma_cau": "T112070304016",
+  "dang_bai_id": "NDB02554",
+  "chac": "cao",
+  "ly_do": "Tính BC=|AC−AB| từ toạ độ vectơ, độ dài đoạn thẳng."
+ },
+ {
+  "ma_cau": "T112070107003",
+  "dang_bai_id": "NDB02543",
+  "chac": "cao",
+  "ly_do": "Tính góc giữa AB và CD trong tứ diện bằng tích vô hướng."
+ },
+ {
+  "ma_cau": "T112070202060",
+  "dang_bai_id": "NDB02549",
+  "chac": "cao",
+  "ly_do": "Cho A và vectơ AC, tìm toạ độ C."
+ },
+ {
+  "ma_cau": "T112070311012",
+  "dang_bai_id": "NDB02565",
+  "chac": "cao",
+  "ly_do": "Máy bay bay thẳng đều từ A đến B, tìm vị trí sau 10 phút nữa."
+ },
+ {
+  "ma_cau": "T1120000002575",
+  "dang_bai_id": "NDB00780",
+  "chac": "vua",
+  "ly_do": "Đáy tròn, thiết diện vuông phải tự lập cạnh theo x; có thể xếp 00779."
+ },
+ {
+  "ma_cau": "T1120000007381",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích sân chơi: hai phần parabol đối xứng, tính một phần nhân đôi rồi trừ."
+ },
+ {
+  "ma_cau": "T112070101051",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Hình hộp, chọn đẳng thức vectơ sai."
+ },
+ {
+  "ma_cau": "T1120000007167",
+  "dang_bai_id": "NDB02585",
+  "chac": "cao",
+  "ly_do": "Tính khoảng tứ phân vị từ bảng ghép nhóm."
+ },
+ {
+  "ma_cau": "T112010101019",
+  "dang_bai_id": "NDB02460",
+  "chac": "cao",
+  "ly_do": "Chọn mệnh đề đúng về đơn điệu từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T1120000002779",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của đa thức."
+ },
+ {
+  "ma_cau": "T1120000002889",
+  "dang_bai_id": "NDB00636",
+  "chac": "vua",
+  "ly_do": "Quay y=√(2x)+2 quanh Ox, cận 0..5 suy từ độ sâu và hình vẽ."
+ },
+ {
+  "ma_cau": "T1120000004075",
+  "dang_bai_id": "NDB02531",
+  "chac": "cao",
+  "ly_do": "Tìm vận tốc lớn nhất của s(t) trong 9 giây."
+ },
+ {
+  "ma_cau": "T1120000002582",
+  "dang_bai_id": "NDB00777",
+  "chac": "cao",
+  "ly_do": "Viết tích phân diện tích hình phẳng từ đồ thị hai hàm."
+ },
+ {
+  "ma_cau": "T112000000923",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: thể tích khối lập phương chìm trong ly hình trụ, không dùng đạo hàm/tích phân."
+ },
+ {
+  "ma_cau": "T112070304014",
+  "dang_bai_id": "NDB02554",
+  "chac": "cao",
+  "ly_do": "Độ dài vectơ 2a−b theo toạ độ."
+ },
+ {
+  "ma_cau": "T112070108001",
+  "dang_bai_id": "NDB02540",
+  "chac": "cao",
+  "ly_do": "Nhận biết điều kiện ba vectơ đồng phẳng."
+ },
+ {
+  "ma_cau": "T1120000007641",
+  "dang_bai_id": "NDB00746",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên hàm có điều kiện F(0)=1 rồi tính F(−1)."
+ },
+ {
+  "ma_cau": "T112070201008",
+  "dang_bai_id": "NDB02558",
+  "chac": "cao",
+  "ly_do": "Tìm D trên Oy biết thể tích tứ diện bằng tích có hướng."
+ },
+ {
+  "ma_cau": "T1120000007312",
+  "dang_bai_id": "NDB00747",
+  "chac": "cao",
+  "ly_do": "Chọn mệnh đề sai về tính chất của nguyên hàm."
+ },
+ {
+  "ma_cau": "T112010101016",
+  "dang_bai_id": "NDB02460",
+  "chac": "vua",
+  "ly_do": "Đề chỉ còn đoạn lời giải đọc đơn điệu từ bảng biến thiên; đề lỗi."
+ },
+ {
+  "ma_cau": "T1120000007027",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: vay trả góp, lãi kép (cấp số nhân/logarit, lớp 11); không thuộc 5 chủ đề."
+ },
+ {
+  "ma_cau": "T1120000002588",
+  "dang_bai_id": "NDB00636",
+  "chac": "vua",
+  "ly_do": "Chọn công thức thể tích tròn xoay quanh Ox của y=f(x); câu lý thuyết."
+ },
+ {
+  "ma_cau": "T112070203003",
+  "dang_bai_id": "NDB02563",
+  "chac": "cao",
+  "ly_do": "Sân cầu lông gắn Oxyz, tính toạ độ vectơ AB."
+ },
+ {
+  "ma_cau": "T1120000002823",
+  "dang_bai_id": "NDB00742",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm của đa thức x²−2."
+ },
+ {
+  "ma_cau": "T1120000006325",
+  "dang_bai_id": "NDB02475",
+  "chac": "cao",
+  "ly_do": "Chọn GTLN trên [−1;3] từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T112070304002",
+  "dang_bai_id": "NDB02554",
+  "chac": "cao",
+  "ly_do": "Độ dài vectơ viết theo i, j, k."
+ },
+ {
+  "ma_cau": "T1120000007120",
+  "dang_bai_id": "NDB02549",
+  "chac": "cao",
+  "ly_do": "Toạ độ vectơ AB từ hai điểm."
+ },
+ {
+  "ma_cau": "T1120000002594",
+  "dang_bai_id": "NDB00636",
+  "chac": "cao",
+  "ly_do": "Quay y=x²+3, x=−1, x=3 quanh Ox, đủ cận."
+ },
+ {
+  "ma_cau": "T112070202058",
+  "dang_bai_id": "NDB02549",
+  "chac": "cao",
+  "ly_do": "Toạ độ vectơ BA từ hai điểm."
+ },
+ {
+  "ma_cau": "T1120000005279",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: xác suất cổ điển (tổ hợp, lớp 10–11), không phải xác suất có điều kiện."
+ },
+ {
+  "ma_cau": "T112070109008",
+  "dang_bai_id": "NDB02561",
+  "chac": "cao",
+  "ly_do": "Độ lớn hợp lực ba lực biết góc giữa F1, F2 và F3 vuông góc."
+ },
+ {
+  "ma_cau": "T1120000006343",
+  "dang_bai_id": "NDB02563",
+  "chac": "cao",
+  "ly_do": "Radar giàn khoan, vị trí theo hướng tây–nam và độ sâu, tính khoảng cách; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T112070202054",
+  "dang_bai_id": "NDB02544",
+  "chac": "cao",
+  "ly_do": "Đọc toạ độ vectơ viết theo i, j, k rồi suy điểm M."
+ },
+ {
+  "ma_cau": "T1120000007678",
+  "dang_bai_id": "NDB00629",
+  "chac": "cao",
+  "ly_do": "Tích phân hàm lượng giác cos x."
+ },
+ {
+  "ma_cau": "T1120000002654",
+  "dang_bai_id": "NDB00788",
+  "chac": "vua",
+  "ly_do": "Diện tích logo ghép nửa đường tròn và parabol đối xứng, tính chi phí; chưa chắc dạng."
+ },
+ {
+  "ma_cau": "T1120000007121",
+  "dang_bai_id": "NDB02556",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng hai vectơ theo toạ độ."
+ },
+ {
+  "ma_cau": "T112010101012",
+  "dang_bai_id": "NDB02461",
+  "chac": "cao",
+  "ly_do": "Đọc khoảng nghịch biến từ đồ thị (các phương án bị lặp)."
+ },
+ {
+  "ma_cau": "T1120000007603",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: phương trình lượng giác cơ bản (lớp 11)."
+ },
+ {
+  "ma_cau": "T1120000007801",
+  "dang_bai_id": "NDB00752",
+  "chac": "vua",
+  "ly_do": "Mệnh đề sai về tính chất tích phân (tích); có thể xếp 00751, dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1120000005071",
+  "dang_bai_id": "NDB02577",
+  "chac": "vua",
+  "ly_do": "Chọn bài từ hai nhóm rồi lấy tiếp 2 bài, hệ đầy đủ theo lượt chọn đầu; xác suất toàn phần nhiều bước."
+ },
+ {
+  "ma_cau": "T112010102024",
+  "dang_bai_id": "NDB02459",
+  "chac": "cao",
+  "ly_do": "Đơn điệu của hàm logarit qua tập xác định và y′."
+ },
+ {
+  "ma_cau": "T1120000002875",
+  "dang_bai_id": "NDB00774",
+  "chac": "cao",
+  "ly_do": "Diện tích hình phẳng giới hạn bởi các đường có cận x=a, x=b cho sẵn."
+ },
+ {
+  "ma_cau": "T112070102006",
+  "dang_bai_id": "NDB02542",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng AB·AC trong tứ diện đều."
+ },
+ {
+  "ma_cau": "T1120000005418",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: cấp số cộng kết hợp phương trình mũ (lớp 11); không thuộc 5 chủ đề."
+ },
+ {
+  "ma_cau": "T112070302013",
+  "dang_bai_id": "NDB02548",
+  "chac": "cao",
+  "ly_do": "Toạ độ vectơ u+3v."
+ },
+ {
+  "ma_cau": "T1120000007546",
+  "dang_bai_id": "NDB02466",
+  "chac": "cao",
+  "ly_do": "Đọc điểm cực đại từ bảng biến thiên."
+ },
+ {
+  "ma_cau": "T112020201004",
+  "dang_bai_id": "NDB02495",
+  "chac": "vua",
+  "ly_do": "Xét hệ số hàm nhất biến từ đồ thị, nhưng đề thiếu câu hỏi."
+ },
+ {
+  "ma_cau": "T112070101056",
+  "dang_bai_id": "NDB02537",
+  "chac": "cao",
+  "ly_do": "Hình hộp, quy tắc hình hộp AB+AD+AA′=AC′."
+ },
+ {
+  "ma_cau": "T1120000007622",
+  "dang_bai_id": "NDB02565",
+  "chac": "cao",
+  "ly_do": "Vật trượt thẳng từ A đến B, toạ độ vị trí C trên đoạn AB theo độ cao."
+ },
+ {
+  "ma_cau": "T1120000002784",
+  "dang_bai_id": "NDB00743",
+  "chac": "vua",
+  "ly_do": "Chọn mệnh đề sai về bảng nguyên hàm; phương án sai là ∫sin x (lượng giác), nhưng đề trộn mũ, 1/x, lượng giác."
+ },
+ {
+  "ma_cau": "T1120000002841",
+  "dang_bai_id": "NDB00743",
+  "chac": "cao",
+  "ly_do": "Nguyên hàm hàm lượng giác: khai triển bình phương, dùng sin x cos x = sin(2·x/2), tích phân sin x."
+ },
+ {
+  "ma_cau": "T1120000002802",
+  "dang_bai_id": "NDB00754",
+  "chac": "cao",
+  "ly_do": "Tích phân 1/(x√x) là phân thức đưa về lũy thừa x^(-3/2); dạng phân thức đứng sau đa thức."
+ }
+]

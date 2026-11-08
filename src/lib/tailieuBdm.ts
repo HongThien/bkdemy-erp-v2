@@ -33,8 +33,14 @@ export type NdNhom = {
 export type NdOnTap = { phan_id: string; id: string; ten: string | null; caus: string[] }
 export type NdBuoi = { id: string; tieu_de: string | null; thu_tu: number; nhom: NdNhom[]; chua_khop: KhoiCau | null; on_tap?: NdOnTap[] }
 export type NoiDung = {
-  tai_lieu: { id: string; ten: string; khoi: string; mon: string; nhanh: string | null; ban_do: 'cu' | 'moi'; luu_tru_tu: string | null; cau_hinh: Record<string, unknown>; updated_at: string }
+  tai_lieu: { id: string; ten: string; khoi: string; mon: string; nhanh: string | null; ban_do: 'cu' | 'moi'; luu_tru_tu: string | null; cau_hinh: Record<string, unknown>; updated_at: string; lop_id?: string | null }
   buoi: NdBuoi[]
+}
+/** Nguồn từng câu / bài của 1 tài liệu (mã ⇒ "Đề thi giữa kì 1 năm 2025-2026 — THCS …") — chuyên đề in kèm (Thùy 21/10). Rút gọn tên ở DB. */
+export async function nguonCau(taiLieuId: string): Promise<Record<string, string>> {
+  const { data, error } = await supabase.rpc('fn_tl_nguon_cau', { p_tai_lieu: taiLieuId }).limit(5000)
+  if (error) throw error
+  return Object.fromEntries(((data ?? []) as { ma_cau: string; nguon: string }[]).map((r) => [r.ma_cau, r.nguon]))
 }
 export async function noiDung(taiLieuId: string, buoiId?: string | null): Promise<NoiDung> {
   const { data, error } = await supabase.rpc('fn_tl_bdm_noi_dung', { p_tai_lieu: taiLieuId, p_buoi: buoiId ?? null })
@@ -66,6 +72,13 @@ export async function goiY(nhomId: string, dangBai: string[] | null, soLuong: Re
 export const SO_LUYEN_MAC_DINH: Record<string, number> = { trac_nghiem: 1, tra_loi_ngan: 0, tu_luan: 1 }
 export const SO_BTVN_MAC_DINH: Record<string, number> = { trac_nghiem: 2, tra_loi_ngan: 1, tu_luan: 1 }
 
+// ── Kho TRÊN LỚP của 1 nhóm (Thùy 22/10 — giáo trình chọn từ cả 2 kho; mig 202610221509) ──
+export type CauLopKho = { ma_cau: string; dang_bai_id: string; vai: 'giang' | 'luyen'; loai_cau: string; so_lan_dung: number }
+export async function cauLopCuaNhom(nhomId: string): Promise<CauLopKho[]> {
+  const { data, error } = await supabase.rpc('fn_dai_lop_cua_nhom', { p_nhom: nhomId })
+  if (error) throw error
+  return (data ?? []) as CauLopKho[]
+}
 // ── Kho câu của 1 nhóm (cho "✎ Chọn câu") ──
 export type CauKho = { ma_cau: string; dang_bai_id: string | null; loai_cau: string; la_goc: boolean; cum: string; so_lan_dung: number }
 export async function cauCuaNhom(nhomId: string): Promise<CauKho[]> {
@@ -76,7 +89,8 @@ export async function cauCuaNhom(nhomId: string): Promise<CauKho[]> {
 
 // Dạng bài của 1 nhóm theo thứ tự bản đồ (chỉ để đặt tên nhóm câu trong popup chọn câu).
 export async function dangBaiCuaNhom(nhomId: string): Promise<{ id: string; ten: string }[]> {
-  const { data, error } = await supabase.from('dai_bdm_dang_bai').select('id, ten').eq('nhom_id', nhomId).order('thu_tu').order('id').limit(500)
+  // registry môn (Toán · KHTN), mig 202611031655
+  const { data, error } = await supabase.from('tl_bdm_dang_bai_v').select('id, ten').eq('nhom_id', nhomId).order('thu_tu').order('id').limit(500)
   if (error) throw error
   return (data ?? []) as { id: string; ten: string }[]
 }
@@ -118,7 +132,8 @@ export async function trichBuoiBdm(masterId: string, buoiId: string, o: {
     ban_do: 'moi', lop_id: o.lopId, ngay: o.ngay, nguon_id: masterId, nguon_buoi: buoiId, stt_lop: stt, created_by: user?.id ?? null,
   }).select('id, loai').single()
   if (e3) throw e3
-  const { error: e4 } = await supabase.rpc('fn_tl_bdm_trich_buoi', {
+  // Giáo trình Hình (Học + Luyện, mig 202610271757) có hàm chép riêng — cùng tham số.
+  const { error: e4 } = await supabase.rpc(m.nhanh === 'hinh' ? 'fn_tl_hinh_trich_buoi' : 'fn_tl_bdm_trich_buoi', {
     p_master: masterId, p_buoi: buoiId, p_den: (doc as { id: string }).id, p_loai: o.loai === 'btvn' ? 'btvn' : 'gt', p_tieu_de: tieuDe, p_on_tap: o.onTap ?? [],
   })
   if (e4) {
@@ -142,6 +157,34 @@ export const SO_CAU_ON_TAP = 2         // câu / nhóm ôn (như cũ: CAP_CAU_MO
 export function cauCuaBuoi(b: NdBuoi): string[] {
   return b.nhom.flatMap((n) => [...n.dang_bai.flatMap((d) => d.caus), ...(n.chua_phan?.caus ?? []), ...(n.btvn?.caus ?? [])]).concat(b.chua_khop?.caus ?? [])
 }
+// ── ET theo bản đồ mới (mig 202610202008) — lưu y khuôn ET cũ (tai_lieu loai='et', ban_do='moi'), chỉ khác cách CHỌN câu ──
+export type EtDeXuat = { giao_trinh: string | null; dang_bai: { id: string; nhom_id: string; ten: string }[] }
+/** Dạng bài đã dạy buổi đó (giáo trình buổi bản đồ mới của lớp + ngày) — điền sẵn kế hoạch ET. */
+export async function etDeXuat(lopId: string, ngay: string): Promise<EtDeXuat> {
+  const { data, error } = await supabase.rpc('fn_tl_bdm_et_de_xuat', { p_lop: lopId, p_ngay: ngay })
+  if (error) throw error
+  return data as EtDeXuat
+}
+/** Câu → dạng bài / nhóm (mở lại ET đã lưu). */
+export async function etViTri(khoi: string, maCaus: string[]): Promise<{ ma_cau: string; dang_bai_id: string | null; nhom_id: string | null }[]> {
+  if (!maCaus.length) return []
+  const { data, error } = await supabase.rpc('fn_tl_bdm_et_vi_tri', { p_khoi: khoi, p_ma: maCaus })
+  if (error) throw error
+  return (data ?? []) as { ma_cau: string; dang_bai_id: string | null; nhom_id: string | null }[]
+}
+/** Đề 2 & 3 (cùng dạng bài + cùng cụm + cùng form; thiếu thì trùng trong cụm). base theo thứ tự đề gốc. */
+export async function etMaDe(khoi: string, base: { ma_cau: string; dang_bai: string; form: string }[]): Promise<{ etMaDe: Record<string, string[]>; etFormByCau: Record<string, string> }> {
+  const { data, error } = await supabase.rpc('fn_tl_bdm_et_ma_de', { p_khoi: khoi, p_base: base })
+  if (error) throw error
+  return data as { etMaDe: Record<string, string[]>; etFormByCau: Record<string, string> }
+}
+/** N câu ít dùng nhất của 1 dạng bài (né p_tru) — luật gợi ý chung của builder mới. */
+export async function goiYDangBai(nhomId: string, dangBaiId: string, n: number, tru: string[]): Promise<string[]> {
+  const { data, error } = await supabase.rpc('fn_tl_bdm_goi_y', { p_nhom: nhomId, p_dang_bai: [dangBaiId], p_so: { _tong: n }, p_tru: tru })
+  if (error) throw error
+  return (data ?? []) as string[]
+}
+
 // Lỗi RPC → câu người đọc được (P0001 do hàm DB raise đã là tiếng Việt).
 export function loiDoc(e: unknown): string {
   const m = (e as { message?: string })?.message ?? String(e)

@@ -7,13 +7,35 @@ import { supabase } from '../supabase'
 import type { LyThuyet } from './api'
 import type { LyThuyetApi } from '../../screens/kho/branches'
 
+// ⭐ MÔN (Thùy 29/10 — KHTN có bản đồ mới riêng, mig 202610291707/1712): mỗi môn một bộ bảng + hàm (§1.6 bảng riêng), dispatch qua
+// ĐÚNG 1 registry này. Màn BanDoMoi đặt môn đang soạn (datMonBdm); mọi hàm dưới đọc/ghi đúng bộ của môn đó.
+// coVung = chủ đề có cột "vùng" (Đại · HGT · Hình) — KHTN một vùng.
+export type BdmMon = 'Toán' | 'KHTN'
+// aiDuyet = luồng AI xếp câu (Duyệt kho · Đề xuất · Thiếu dạng · Chưa khớp · Đúng/Sai) · khoLop = kho trên lớp · mastery = công tắc mastery
+// chuaPhan = hiện "⚠ n câu chưa gán dạng bài · gán →" ở nhóm/chuyên đề (KHTN: câu không cụm sau chuyển 29/10)
+// chonQuaCay = chuyển câu sang dạng bài khác: chọn thẳng trên cây đang mở (Toán dùng DangPickerOne — nhiều khối, bản đồ cũ)
+// nhanhTl = p_nhanh của cây chọn giáo trình / ET (fn_tl_bdm_cay_chon, mig 202611031655) cho vùng chính của môn
+export const BDM_MON: Record<BdmMon, { bang: string; ham: string; coVung: boolean; aiDuyet: boolean; khoLop: boolean; mastery: boolean; chuaPhan: boolean; chonQuaCay: boolean; nhanhTl: string }> = {
+  'Toán': { bang: 'dai_bdm_', ham: 'fn_bdm_', coVung: true, aiDuyet: true, khoLop: true, mastery: true, chuaPhan: false, chonQuaCay: false, nhanhTl: 'toan' },
+  'KHTN': { bang: 'khtn_bdm_', ham: 'fn_khtn_bdm_', coVung: false, aiDuyet: true, khoLop: false, mastery: false, chuaPhan: true, chonQuaCay: true, nhanhTl: 'khtn' },
+}
+export const BDM_DS_MON = Object.keys(BDM_MON) as BdmMon[]
+/** Cờ của môn tài liệu (giáo trình / ET); môn chưa có bản đồ mới ⇒ null. */
+export const bdmCuaMon = (mon: string | null | undefined) => (mon && mon in BDM_MON ? BDM_MON[mon as BdmMon] : null)
+export const tinhNangBdm = () => BDM_MON[monBdm]
+let monBdm: BdmMon = 'Toán'
+export function datMonBdm(m: BdmMon): void { monBdm = m }
+export const layMonBdm = (): BdmMon => monBdm
+const T = (x: string) => BDM_MON[monBdm].bang + x
+const F = (x: string) => BDM_MON[monBdm].ham + x
+
 // so = số thứ tự hệ tự đánh (tính ở DB): chuyên đề trái→phải · nhóm theo tiền đề (chiều sâu, trái trước) · dạng bài trên→dưới
 // dang_cu = dạng cũ (bản đồ đang chạy) CEO gắn vào đích này · chua_gan = số câu (kể cả bản sao) chưa ra được dạng bài
 export type BdmDangCuRef = { ma: string; ten: string }
 export type BdmDangBai = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; co_ly_thuyet: boolean; co_vi_du: boolean; so_cau: number; dang_cu: BdmDangCuRef[] }
 export type BdmNhom = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; tang: number; tien_de: string[]; co_ly_thuyet: boolean; dang_cu: BdmDangCuRef[]; chua_gan: number; dang_bai: BdmDangBai[] }
 export type BdmO = { chuyen_de_id: string; ten: string; mo_ta: string; thu_tu: number; so: number; so_chu_de: number; cung_co_o: { chu_de_id: string; ten: string; khoi: string }[]; dang_cu: BdmDangCuRef[]; chua_gan: number; nhom: BdmNhom[] }
-export type BdmChuDe = { id: string; ten: string; thu_tu: number; nhanh: BdmNhanh; o: BdmO[] }
+export type BdmChuDe = { id: string; ten: string; thu_tu: number; nhanh: BdmNhanh; so_ds?: number; o: BdmO[] }
 export type BdmChuyenDe = { id: string; ten: string; so_chu_de: number; khoi: string[] }
 // tong: tổng hợp khối (dạng cũ CỦA khối) — khối xong khi dang_cu_chua_gan = 0 và cau_chua_gan = 0
 export type BdmTong = { dang_cu: number; dang_cu_chua_gan: number; cau_dang_cu_chua_gan: number; cau: number; cau_chua_gan: number }
@@ -32,9 +54,9 @@ export type BdmCauChuaGan = {
 // Lỗi Postgres → câu người đọc được (FK chặn xoá khi còn con · ô trùng).
 function loi(e: { code?: string; message?: string } | null): never {
   const m = e?.message ?? ''
-  if (e?.code === '23503' && m.includes('dai_bdm_doi_ung_cum')) throw new Error('Dạng bài này đang có cụm cũ được gán — gỡ gán trước.')
-  if (e?.code === '23503' && m.includes('dai_bdm_gan_cau')) throw new Error('Dạng bài này đang có câu được gán — chuyển hoặc gỡ gán trước.')
-  if (e?.code === '23503' && m.includes('dai_bdm_doi_ung')) throw new Error('Còn dạng cũ đang gắn vào đây — gỡ ở ngăn «Bản đồ cũ» hoặc khung chi tiết trước.')
+  if (e?.code === '23503' && m.includes('_bdm_doi_ung_cum')) throw new Error('Dạng bài này đang có cụm cũ được gán — gỡ gán trước.')
+  if (e?.code === '23503' && m.includes('_bdm_gan_cau')) throw new Error('Dạng bài này đang có câu được gán — chuyển hoặc gỡ gán trước.')
+  if (e?.code === '23503' && m.includes('_bdm_doi_ung')) throw new Error('Còn dạng cũ đang gắn vào đây — gỡ ở ngăn «Bản đồ cũ» hoặc khung chi tiết trước.')
   if (e?.code === '23503') throw new Error('Còn mục con bên trong — chuyển hoặc xoá các mục con trước.')
   if (e?.code === '23505') throw new Error('Đã có sẵn — không thêm trùng.')
   throw new Error(e?.message ?? 'Lỗi không rõ')
@@ -49,16 +71,23 @@ function loi(e: { code?: string; message?: string } | null): never {
 // Thêm vùng mới = thêm 1 dòng ở đây; màn BanDoMoi dispatch theo `khuon`, không `if (nhanh === …)` rải rác.
 export type BdmNhanh = 'toan' | 'hgt' | 'hinh' | 'hinh_hoc' | 'hinh_luyen'
 export type BdmKhuon = 'bon_tang' | 'hinh_hoc' | 'hinh_luyen' | 'chon'
+// Thùy 27/10: Hình cùng chương = MỘT chủ đề vùng 'hinh' có 2 phần Học | Luyện (khuôn chọn ở màn, xem PHAN_HINH); vùng chủ đề KHOÁ khi đã
+// có nội dung (trigger DB _trg_bdm_chu_de_khoa_vung). hinh_hoc / hinh_luyen = vùng cũ trước khi gộp — DB không cho ghi mới.
 export const BDM_NHANH: { id: BdmNhanh; nhan: string; khuon: BdmKhuon; an?: boolean }[] = [
   { id: 'toan', nhan: 'Đại', khuon: 'bon_tang' },
   { id: 'hgt', nhan: 'Hình giải tích', khuon: 'bon_tang' },
-  { id: 'hinh_hoc', nhan: 'Hình – Học', khuon: 'hinh_hoc' },
-  { id: 'hinh_luyen', nhan: 'Hình – Luyện', khuon: 'hinh_luyen' },
-  { id: 'hinh', nhan: 'Hình (chưa chọn Học/Luyện)', khuon: 'chon', an: true },   // giá trị cũ — không cho chọn mới
+  { id: 'hinh', nhan: 'Hình', khuon: 'hinh_hoc' },
+  { id: 'hinh_hoc', nhan: 'Hình – Học (cũ)', khuon: 'hinh_hoc', an: true },
+  { id: 'hinh_luyen', nhan: 'Hình – Luyện (cũ)', khuon: 'hinh_luyen', an: true },
+]
+// 2 phần của chủ đề Hình — khuôn màn tương ứng
+export const PHAN_HINH: { id: 'hoc' | 'luyen'; nhan: string; khuon: BdmKhuon }[] = [
+  { id: 'hoc', nhan: '📖 Học', khuon: 'hinh_hoc' },
+  { id: 'luyen', nhan: '🌿 Luyện', khuon: 'hinh_luyen' },
 ]
 export const khuonCuaVung = (nhanh: BdmNhanh): BdmKhuon => BDM_NHANH.find((n) => n.id === nhanh)?.khuon ?? 'bon_tang'
 export async function getCay(khoi: string): Promise<BdmCay> {
-  const { data, error } = await supabase.rpc('fn_bdm_cay', { p_khoi: khoi })
+  const { data, error } = await supabase.rpc(F('cay'), { p_khoi: khoi })
   if (error) loi(error)
   return data as BdmCay
 }
@@ -66,36 +95,36 @@ export async function getCay(khoi: string): Promise<BdmCay> {
 // ── Xoá TRỌN GÓI (CEO 08/10): xoá 1 mục = xoá mọi thứ bên dưới; DB chỉ chặn khi bên dưới có câu đã gán ──
 export type KqXoa = { nhom: number; dang_bai: number; chuyen_de?: number; xoa_khoi_danh_muc?: boolean }
 export async function xoaNhomTronGoi(id: string): Promise<KqXoa> {
-  const { data, error } = await supabase.rpc('fn_bdm_xoa_nhom', { p_id: id })
+  const { data, error } = await supabase.rpc(F('xoa_nhom'), { p_id: id })
   if (error) loi(error)
   return data as KqXoa
 }
 export async function xoaChuyenDeKhoiChuDe(chuDeId: string, chuyenDeId: string): Promise<KqXoa> {
-  const { data, error } = await supabase.rpc('fn_bdm_xoa_o', { p_chu_de: chuDeId, p_chuyen_de: chuyenDeId })
+  const { data, error } = await supabase.rpc(F('xoa_o'), { p_chu_de: chuDeId, p_chuyen_de: chuyenDeId })
   if (error) loi(error)
   return data as KqXoa
 }
 export async function xoaChuDeTronGoi(id: string): Promise<KqXoa> {
-  const { data, error } = await supabase.rpc('fn_bdm_xoa_chu_de', { p_id: id })
+  const { data, error } = await supabase.rpc(F('xoa_chu_de'), { p_id: id })
   if (error) loi(error)
   return data as KqXoa
 }
 
 // ── Chủ đề ──
-export async function themChuDe(khoi: string, ten: string): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_chu_de').insert({ khoi, ten: ten.trim() }) // vùng mặc định Đại — chọn lại sau ở đầu màn
+export async function themChuDe(khoi: string, ten: string, nhanh: BdmNhanh = 'toan'): Promise<void> {
+  const { error } = await supabase.from(T('chu_de')).insert(BDM_MON[monBdm].coVung ? { khoi, ten: ten.trim(), nhanh } : { khoi, ten: ten.trim() }) // vùng chọn lúc tạo — có nội dung rồi thì khoá
   if (error) loi(error)
 }
 export async function doiVungChuDe(id: string, nhanh: BdmNhanh): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_chu_de').update({ nhanh }).eq('id', id)
+  const { error } = await supabase.from(T('chu_de')).update({ nhanh }).eq('id', id)
   if (error) loi(error)
 }
 export async function suaChuDe(id: string, ten: string): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_chu_de').update({ ten: ten.trim() }).eq('id', id)
+  const { error } = await supabase.from(T('chu_de')).update({ ten: ten.trim() }).eq('id', id)
   if (error) loi(error)
 }
 export async function xoaChuDe(id: string): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_chu_de').delete().eq('id', id)
+  const { error } = await supabase.from(T('chu_de')).delete().eq('id', id)
   if (error) loi(error)
 }
 
@@ -103,140 +132,140 @@ export async function xoaChuDe(id: string): Promise<void> {
 export async function themChuyenDeVaoChuDe(chuDeId: string, a: { chuyenDeId?: string; tenMoi?: string }): Promise<void> {
   let id = a.chuyenDeId
   if (!id) {
-    const { data, error } = await supabase.from('dai_bdm_chuyen_de').insert({ ten: (a.tenMoi ?? '').trim() }).select('id').single()
+    const { data, error } = await supabase.from(T('chuyen_de')).insert({ ten: (a.tenMoi ?? '').trim() }).select('id').single()
     if (error) loi(error)
     id = (data as { id: string }).id
   }
-  const { error } = await supabase.from('dai_bdm_o').insert({ chu_de_id: chuDeId, chuyen_de_id: id })
+  const { error } = await supabase.from(T('o')).insert({ chu_de_id: chuDeId, chuyen_de_id: id })
   if (error) loi(error)
 }
 export async function suaChuyenDe(id: string, patch: { ten?: string; mo_ta?: string }): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_chuyen_de').update(patch).eq('id', id)
+  const { error } = await supabase.from(T('chuyen_de')).update(patch).eq('id', id)
   if (error) loi(error)
 }
 export async function goO(chuDeId: string, chuyenDeId: string): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_o').delete().match({ chu_de_id: chuDeId, chuyen_de_id: chuyenDeId })
+  const { error } = await supabase.from(T('o')).delete().match({ chu_de_id: chuDeId, chuyen_de_id: chuyenDeId })
   if (error) loi(error)
 }
 export async function xoaChuyenDe(id: string): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_chuyen_de').delete().eq('id', id)
+  const { error } = await supabase.from(T('chuyen_de')).delete().eq('id', id)
   if (error) loi(error)
 }
 
 // ── Nhóm bài (tầng 3) ──
 export async function themNhom(chuDeId: string, chuyenDeId: string, ten: string): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_nhom').insert({ chu_de_id: chuDeId, chuyen_de_id: chuyenDeId, ten: ten.trim() })
+  const { error } = await supabase.from(T('nhom')).insert({ chu_de_id: chuDeId, chuyen_de_id: chuyenDeId, ten: ten.trim() })
   if (error) loi(error)
 }
 export async function suaNhom(id: string, patch: { ten?: string; mo_ta?: string }): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_nhom').update(patch).eq('id', id)
+  const { error } = await supabase.from(T('nhom')).update(patch).eq('id', id)
   if (error) loi(error)
 }
 export async function xoaNhom(id: string): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_nhom').delete().eq('id', id)
+  const { error } = await supabase.from(T('nhom')).delete().eq('id', id)
   if (error) loi(error)
 }
 
 // ── Dạng bài (tầng 4) ──
 export async function themDangBai(nhomId: string, ten: string): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_dang_bai').insert({ nhom_id: nhomId, ten: ten.trim() })
+  const { error } = await supabase.from(T('dang_bai')).insert({ nhom_id: nhomId, ten: ten.trim() })
   if (error) loi(error)
 }
 export async function suaDangBai(id: string, patch: { ten?: string; mo_ta?: string }): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_dang_bai').update(patch).eq('id', id)
+  const { error } = await supabase.from(T('dang_bai')).update(patch).eq('id', id)
   if (error) loi(error)
 }
 export async function xoaDangBai(id: string): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_dang_bai').delete().eq('id', id)
+  const { error } = await supabase.from(T('dang_bai')).delete().eq('id', id)
   if (error) loi(error)
 }
 
 // ── Tiền đề nhóm bài (đợt này: trong cùng chuyên đề — DB chặn chéo + vòng tròn) ──
 export async function themTienDe(nhomHocSau: string, nhomHocTruoc: string): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_nhom_tien_de').insert({ nhom_id: nhomHocSau, tien_de_nhom_id: nhomHocTruoc })
+  const { error } = await supabase.from(T('nhom_tien_de')).insert({ nhom_id: nhomHocSau, tien_de_nhom_id: nhomHocTruoc })
   if (error) loi(error)
 }
 export async function goTienDe(nhomHocSau: string, nhomHocTruoc: string): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_nhom_tien_de').delete().match({ nhom_id: nhomHocSau, tien_de_nhom_id: nhomHocTruoc })
+  const { error } = await supabase.from(T('nhom_tien_de')).delete().match({ nhom_id: nhomHocSau, tien_de_nhom_id: nhomHocTruoc })
   if (error) loi(error)
 }
 
 // ── Đối ứng dạng cũ → bản mới (① dạng bài · ② nhóm · ③ chuyên đề) + gán câu/cụm ──
 export async function getDangCu(khoi: string): Promise<BdmDangCu[]> {
-  const { data, error } = await supabase.rpc('fn_bdm_dang_cu', { p_khoi: khoi })
+  const { data, error } = await supabase.rpc(F('dang_cu'), { p_khoi: khoi })
   if (error) loi(error)
   return (data ?? []) as BdmDangCu[]
 }
 const cotDich = (d: BdmDich) => ('dangBai' in d ? { dich_dang_bai: d.dangBai } : 'nhom' in d ? { dich_nhom: d.nhom } : { dich_chu_de: d.chuDe, dich_chuyen_de: d.chuyenDe })
 export async function ganDangCu(maDangCu: string, d: BdmDich): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_doi_ung').insert({ ma_dang_cu: maDangCu, ...cotDich(d) })
+  const { error } = await supabase.from(T('doi_ung')).insert({ ma_dang_cu: maDangCu, ...cotDich(d) })
   if (error) loi(error)
 }
 export async function goDoiUng(id: number): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_doi_ung').delete().eq('id', id)
+  const { error } = await supabase.from(T('doi_ung')).delete().eq('id', id)
   if (error) loi(error)
 }
 export async function goDoiUngTheoDich(maDangCu: string, d: BdmDich): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_doi_ung').delete().match({ ma_dang_cu: maDangCu, ...cotDich(d) })
+  const { error } = await supabase.from(T('doi_ung')).delete().match({ ma_dang_cu: maDangCu, ...cotDich(d) })
   if (error) loi(error)
 }
 export async function getCauChuaGan(d: { nhom: string } | { chuDe: string; chuyenDe: string }, limit = 200, offset = 0): Promise<BdmCauChuaGan> {
-  const { data, error } = await supabase.rpc('fn_bdm_cau_chua_gan', 'nhom' in d
+  const { data, error } = await supabase.rpc(F('cau_chua_gan'), 'nhom' in d
     ? { p_nhom: d.nhom, p_chu_de: null, p_chuyen_de: null, p_limit: limit, p_offset: offset }
     : { p_nhom: null, p_chu_de: d.chuDe, p_chuyen_de: d.chuyenDe, p_limit: limit, p_offset: offset })
   if (error) loi(error)
   return data as BdmCauChuaGan
 }
 export async function ganCau(maCauGocs: string[], dangBai: string): Promise<void> {
-  const { error } = await supabase.rpc('fn_bdm_gan_cau', { p_ma_caus: maCauGocs, p_dang_bai: dangBai, p_nguon: 'nguoi' })
+  const { error } = await supabase.rpc(F('gan_cau'), { p_ma_caus: maCauGocs, p_dang_bai: dangBai, p_nguon: 'nguoi' })
   if (error) loi(error)
 }
 export async function ganCum(maCum: string, dangBai: string): Promise<void> {
-  const { error } = await supabase.rpc('fn_bdm_gan_cum', { p_ma_cum: maCum, p_dang_bai: dangBai })
+  const { error } = await supabase.rpc(F('gan_cum'), { p_ma_cum: maCum, p_dang_bai: dangBai })
   if (error) loi(error)
 }
 
 // ── Chuyển · sắp xếp · nâng · hạ (RPC transactional) ──
 export type LoaiSapXep = 'chu_de' | 'o' | 'nhom' | 'dang_bai'
 export async function sapXep(loai: LoaiSapXep, ids: string[]): Promise<void> {
-  const { error } = await supabase.rpc('fn_bdm_sap_xep', { p_loai: loai, p_ids: ids })
+  const { error } = await supabase.rpc(F('sap_xep'), { p_loai: loai, p_ids: ids })
   if (error) loi(error)
 }
 export async function chuyenNhom(id: string, chuDeId: string, chuyenDeId: string, thuTuDich: string[] | null): Promise<void> {
-  const { error } = await supabase.rpc('fn_bdm_chuyen_nhom', { p_id: id, p_chu_de_id: chuDeId, p_chuyen_de_id: chuyenDeId, p_thu_tu_dich: thuTuDich })
+  const { error } = await supabase.rpc(F('chuyen_nhom'), { p_id: id, p_chu_de_id: chuDeId, p_chuyen_de_id: chuyenDeId, p_thu_tu_dich: thuTuDich })
   if (error) loi(error)
 }
 export async function chuyenDangBai(id: string, nhomId: string, thuTuDich: string[] | null): Promise<void> {
-  const { error } = await supabase.rpc('fn_bdm_chuyen_dang_bai', { p_id: id, p_nhom_id: nhomId, p_thu_tu_dich: thuTuDich })
+  const { error } = await supabase.rpc(F('chuyen_dang_bai'), { p_id: id, p_nhom_id: nhomId, p_thu_tu_dich: thuTuDich })
   if (error) loi(error)
 }
 // Gộp chuyên đề X vào Y (thành dùng chung): nhóm, mũi tên, đối ứng đi theo; X biến mất
 export async function gopChuyenDe(tu: string, vao: string): Promise<void> {
-  const { error } = await supabase.rpc('fn_bdm_gop_chuyen_de', { p_tu: tu, p_vao: vao })
+  const { error } = await supabase.rpc(F('gop_chuyen_de'), { p_tu: tu, p_vao: vao })
   if (error) loi(error)
 }
 export async function chuyenO(chuDeCu: string, chuyenDeId: string, chuDeMoi: string): Promise<void> {
-  const { error } = await supabase.rpc('fn_bdm_chuyen_o', { p_chu_de_cu: chuDeCu, p_chuyen_de_id: chuyenDeId, p_chu_de_moi: chuDeMoi })
+  const { error } = await supabase.rpc(F('chuyen_o'), { p_chu_de_cu: chuDeCu, p_chuyen_de_id: chuyenDeId, p_chu_de_moi: chuDeMoi })
   if (error) loi(error)
 }
 export async function nangDangBai(id: string, chuDeId: string, chuyenDeId: string): Promise<void> {
-  const { error } = await supabase.rpc('fn_bdm_nang_dang_bai', { p_id: id, p_chu_de_id: chuDeId, p_chuyen_de_id: chuyenDeId })
+  const { error } = await supabase.rpc(F('nang_dang_bai'), { p_id: id, p_chu_de_id: chuDeId, p_chuyen_de_id: chuyenDeId })
   if (error) loi(error)
 }
 export async function haNhom(id: string, nhomDich: string): Promise<void> {
-  const { error } = await supabase.rpc('fn_bdm_ha_nhom', { p_id: id, p_nhom_dich: nhomDich })
+  const { error } = await supabase.rpc(F('ha_nhom'), { p_id: id, p_nhom_dich: nhomDich })
   if (error) loi(error)
 }
 
 // ── Lý thuyết (nhóm) · Ví dụ (dạng bài) — cùng shape LyThuyetApi để dùng nguyên LyThuyetModal ──
 export async function getLyThuyetNhom(id: string): Promise<LyThuyet> {
-  const { data, error } = await supabase.from('dai_bdm_nhom').select('ly_thuyet, ly_thuyet_file_url, ly_thuyet_ten_file').eq('id', id).single()
+  const { data, error } = await supabase.from(T('nhom')).select('ly_thuyet, ly_thuyet_file_url, ly_thuyet_ten_file').eq('id', id).single()
   if (error) loi(error)
   const r = data as { ly_thuyet: string; ly_thuyet_file_url: string | null; ly_thuyet_ten_file: string | null }
   return { noi_dung: r.ly_thuyet, file_url: r.ly_thuyet_file_url, ten_file: r.ly_thuyet_ten_file }
 }
 export async function getViDuDangBai(id: string): Promise<LyThuyet> {
-  const { data, error } = await supabase.from('dai_bdm_dang_bai').select('vi_du, vi_du_file_url, vi_du_ten_file').eq('id', id).single()
+  const { data, error } = await supabase.from(T('dang_bai')).select('vi_du, vi_du_file_url, vi_du_ten_file').eq('id', id).single()
   if (error) loi(error)
   const r = data as { vi_du: string; vi_du_file_url: string | null; vi_du_ten_file: string | null }
   return { noi_dung: r.vi_du, file_url: r.vi_du_file_url, ten_file: r.vi_du_ten_file }
@@ -244,17 +273,17 @@ export async function getViDuDangBai(id: string): Promise<LyThuyet> {
 export const lyThuyetNhomApi: LyThuyetApi = {
   list: async () => ({}), // LyThuyetModal không gọi list; màn tải đúng 1 nhóm khi mở (getLyThuyetNhom)
   upsert: async (id, noiDung, fileUrl, tenFile) => {
-    const { error } = await supabase.from('dai_bdm_nhom').update({ ly_thuyet: noiDung, ly_thuyet_file_url: fileUrl, ly_thuyet_ten_file: tenFile }).eq('id', id)
+    const { error } = await supabase.from(T('nhom')).update({ ly_thuyet: noiDung, ly_thuyet_file_url: fileUrl, ly_thuyet_ten_file: tenFile }).eq('id', id)
     if (error) loi(error)
   },
   remove: async (id) => {
-    const { error } = await supabase.from('dai_bdm_nhom').update({ ly_thuyet: '', ly_thuyet_file_url: null, ly_thuyet_ten_file: null }).eq('id', id)
+    const { error } = await supabase.from(T('nhom')).update({ ly_thuyet: '', ly_thuyet_file_url: null, ly_thuyet_ten_file: null }).eq('id', id)
     if (error) loi(error)
   },
 }
 // Dạng bài (tầng 4) có 2 ô riêng: LÝ THUYẾT + VÍ DỤ (CEO 08/10)
 export async function getLyThuyetDangBai(id: string): Promise<LyThuyet> {
-  const { data, error } = await supabase.from('dai_bdm_dang_bai').select('ly_thuyet, ly_thuyet_file_url, ly_thuyet_ten_file').eq('id', id).single()
+  const { data, error } = await supabase.from(T('dang_bai')).select('ly_thuyet, ly_thuyet_file_url, ly_thuyet_ten_file').eq('id', id).single()
   if (error) loi(error)
   const r = data as { ly_thuyet: string; ly_thuyet_file_url: string | null; ly_thuyet_ten_file: string | null }
   return { noi_dung: r.ly_thuyet, file_url: r.ly_thuyet_file_url, ten_file: r.ly_thuyet_ten_file }
@@ -262,22 +291,65 @@ export async function getLyThuyetDangBai(id: string): Promise<LyThuyet> {
 export const lyThuyetDangBaiApi: LyThuyetApi = {
   list: async () => ({}),
   upsert: async (id, noiDung, fileUrl, tenFile) => {
-    const { error } = await supabase.from('dai_bdm_dang_bai').update({ ly_thuyet: noiDung, ly_thuyet_file_url: fileUrl, ly_thuyet_ten_file: tenFile }).eq('id', id)
+    const { error } = await supabase.from(T('dang_bai')).update({ ly_thuyet: noiDung, ly_thuyet_file_url: fileUrl, ly_thuyet_ten_file: tenFile }).eq('id', id)
     if (error) loi(error)
   },
   remove: async (id) => {
-    const { error } = await supabase.from('dai_bdm_dang_bai').update({ ly_thuyet: '', ly_thuyet_file_url: null, ly_thuyet_ten_file: null }).eq('id', id)
+    const { error } = await supabase.from(T('dang_bai')).update({ ly_thuyet: '', ly_thuyet_file_url: null, ly_thuyet_ten_file: null }).eq('id', id)
     if (error) loi(error)
   },
 }
 export const viDuDangBaiApi: LyThuyetApi = {
   list: async () => ({}),
   upsert: async (id, noiDung, fileUrl, tenFile) => {
-    const { error } = await supabase.from('dai_bdm_dang_bai').update({ vi_du: noiDung, vi_du_file_url: fileUrl, vi_du_ten_file: tenFile }).eq('id', id)
+    const { error } = await supabase.from(T('dang_bai')).update({ vi_du: noiDung, vi_du_file_url: fileUrl, vi_du_ten_file: tenFile }).eq('id', id)
     if (error) loi(error)
   },
   remove: async (id) => {
-    const { error } = await supabase.from('dai_bdm_dang_bai').update({ vi_du: '', vi_du_file_url: null, vi_du_ten_file: null }).eq('id', id)
+    const { error } = await supabase.from(T('dang_bai')).update({ vi_du: '', vi_du_file_url: null, vi_du_ten_file: null }).eq('id', id)
     if (error) loi(error)
   },
+}
+
+// ── Bản đồ mới → KHO: câu của 1 dạng bài / 1 nhóm / rổ "chưa khớp" của 1 chủ đề (mig 202610181756, chỉ đọc) ──
+export type KhoCauLoc = 'tat_ca' | 'da_duyet' | 'chua_duyet' | 'kho_chuan'
+export type KhoCauRow = {
+  tong: number; ma_cau: string; loai_cau: string; noi_dung: string; lua_chon: string[] | null
+  menh_de: { noi_dung?: string; dap_an?: string }[] | null; dap_an: string | null; loi_giai: string | null
+  anh_de: string | null; anh_dap_an: string | null; da_duyet: boolean; kho_chuan: boolean; kiem_may: string | null
+  nguon: string; la_goc: boolean; nguon_gan: string; dang_bai_id: string | null; dang_bai: string | null; ly_do: string | null
+}
+// Thùy 27/10 — ngăn 📚 Kho câu: chuyển 1 câu sang dạng bài khác (gán của người; mặc định kèm bản sao của câu gốc) · đưa câu vào
+// KHO RÁC (xoa_at, khôi phục ở màn Kho rác). Kho gốc (Đại/HGT) và mọi luật chặn nằm ở DB (fn_bdm_cau_chuyen_dang / fn_bdm_cau_xoa).
+export async function chuyenCauSangDang(maCau: string, dangBai: string, caBanSao = true): Promise<{ id: string; ten: string; nhom: string; chu_de: string; so_cau: number }> {
+  const { data, error } = await supabase.rpc(F('cau_chuyen_dang'), { p_ma_cau: maCau, p_dang_bai: dangBai, p_ca_ban_sao: caBanSao })
+  if (error) loi(error)
+  return data as { id: string; ten: string; nhom: string; chu_de: string; so_cau: number }
+}
+export async function xoaCauKho(maCau: string, caBanSao: boolean): Promise<number> {
+  const { data, error } = await supabase.rpc(F('cau_xoa'), { p_ma_cau: maCau, p_ca_ban_sao: caBanSao })
+  if (error) loi(error)
+  return Number(data ?? 0)
+}
+export async function getKhoCau(loai: 'dang_bai' | 'nhom' | 'chua_khop' | 'de_xuat' | 'thieu_dang' | 'dung_sai', id: string, loc: KhoCauLoc = 'tat_ca', limit = 40, offset = 0): Promise<KhoCauRow[]> {
+  const { data, error } = await supabase.rpc(F('kho_cau'), { p_loai: loai, p_id: id, p_loc: loc, p_limit: limit, p_offset: offset })
+  if (error) loi(error)
+  return ((data ?? []) as (Omit<KhoCauRow, 'tong'> & { tong: number | string })[]).map((r) => ({ ...r, tong: Number(r.tong) }))
+}
+
+// ── Kho câu HÌNH–HỌC (04/11) — cùng hình dạng trả về với Đại để KhoModal dùng chung; bảng hinh_hoc_*, hàm fn_hh_* ──
+export async function getKhoCauHinh(loai: 'dang_bai' | 'dung_sai' | 'de_xuat' | 'chua_khop', id: string, loc: KhoCauLoc = 'tat_ca', limit = 40, offset = 0): Promise<KhoCauRow[]> {
+  const { data, error } = await supabase.rpc('fn_hh_kho_cau', { p_loai: loai, p_id: id, p_loc: loc, p_limit: limit, p_offset: offset })
+  if (error) loi(error)
+  return ((data ?? []) as (Omit<KhoCauRow, 'tong'> & { tong: number | string })[]).map((r) => ({ ...r, tong: Number(r.tong) }))
+}
+export async function chuyenCauHinhSangBai(maCau: string, maBai: string, caBanSao = true): Promise<{ id: string; ten: string; nhom: string; chu_de: string; so_cau: number }> {
+  const { data, error } = await supabase.rpc('fn_hh_cau_chuyen_dang', { p_ma_cau: maCau, p_ma_bai: maBai, p_ca_ban_sao: caBanSao })
+  if (error) loi(error)
+  return data as { id: string; ten: string; nhom: string; chu_de: string; so_cau: number }
+}
+export async function xoaCauHinh(maCau: string, caBanSao: boolean): Promise<number> {
+  const { data, error } = await supabase.rpc('fn_hh_cau_xoa', { p_ma_cau: maCau, p_ca_ban_sao: caBanSao })
+  if (error) loi(error)
+  return Number(data ?? 0)
 }

@@ -1,0 +1,302 @@
+[
+ {
+  "ma_cau": "T3120000001497",
+  "dang_bai_id": "NDB00854",
+  "chac": "vua",
+  "ly_do": "Viết đường AB qua 2 điểm rồi tìm điểm trên AB có y=z=0; cũng có thể coi giao 2 đường thẳng (NDB00868)."
+ },
+ {
+  "ma_cau": "T3120000001498",
+  "dang_bai_id": "NDB00840",
+  "chac": "cao",
+  "ly_do": "Điểm có toạ độ chứa ẩn nằm trong vùng radar hình cầu: so OA² với R²."
+ },
+ {
+  "ma_cau": "T3120000001499",
+  "dang_bai_id": "NDB00872",
+  "chac": "cao",
+  "ly_do": "Giao điểm đường thẳng AB với mặt phẳng (Oxy), thế tham số tìm t."
+ },
+ {
+  "ma_cau": "T3120000001500",
+  "dang_bai_id": "NDB00841",
+  "chac": "cao",
+  "ly_do": "Viết mặt phẳng qua điểm, biết vectơ pháp tuyến."
+ },
+ {
+  "ma_cau": "T3120000001501",
+  "dang_bai_id": "NDB00838",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc mặt phẳng bằng cách thay toạ độ."
+ },
+ {
+  "ma_cau": "T3120000001502",
+  "dang_bai_id": "NDB00872",
+  "chac": "cao",
+  "ly_do": "Đường bay AB hạ cánh trên (Oxy): giao điểm đường thẳng và mặt phẳng."
+ },
+ {
+  "ma_cau": "T3120000001503",
+  "dang_bai_id": "NDB00872",
+  "chac": "cao",
+  "ly_do": "Đường bay AB hạ cánh trên (Oxy): giao điểm đường thẳng và mặt phẳng."
+ },
+ {
+  "ma_cau": "T3120000001504",
+  "dang_bai_id": "NDB00840",
+  "chac": "cao",
+  "ly_do": "Điểm chứa ẩn z trong vùng radar hình cầu: OA² ≤ R²."
+ },
+ {
+  "ma_cau": "T3120000001505",
+  "dang_bai_id": "NDB00840",
+  "chac": "cao",
+  "ly_do": "Điểm chứa ẩn z trong vùng radar hình cầu: OA² ≤ R²."
+ },
+ {
+  "ma_cau": "T3120000001506",
+  "dang_bai_id": "NDB00838",
+  "chac": "cao",
+  "ly_do": "Xét gốc O thuộc mặt phẳng nào: thay toạ độ điểm vào phương trình."
+ },
+ {
+  "ma_cau": "T3120000001507",
+  "dang_bai_id": "NDB00836",
+  "chac": "cao",
+  "ly_do": "Đọc vectơ chỉ phương từ mẫu số phương trình chính tắc."
+ },
+ {
+  "ma_cau": "T3120000001508",
+  "dang_bai_id": "NDB00860",
+  "chac": "cao",
+  "ly_do": "Khoảng cách từ điểm đến mặt phẳng theo công thức."
+ },
+ {
+  "ma_cau": "T3120000001509",
+  "dang_bai_id": "NDB00857",
+  "chac": "cao",
+  "ly_do": "Côsin góc giữa hai mặt phẳng từ hai vectơ pháp tuyến."
+ },
+ {
+  "ma_cau": "T3120000001510",
+  "dang_bai_id": "NDB00837",
+  "chac": "cao",
+  "ly_do": "Đọc tâm mặt cầu từ phương trình chính tắc rồi tính biểu thức."
+ },
+ {
+  "ma_cau": "T3120000001511",
+  "dang_bai_id": "NDB00846",
+  "chac": "cao",
+  "ly_do": "Viết phương trình mặt cầu biết tâm và bán kính."
+ },
+ {
+  "ma_cau": "T3120000001512",
+  "dang_bai_id": "NDB00835",
+  "chac": "cao",
+  "ly_do": "Đọc vectơ pháp tuyến của mặt phẳng thiếu biến y."
+ },
+ {
+  "ma_cau": "T3120000001513",
+  "dang_bai_id": "NDB00857",
+  "chac": "cao",
+  "ly_do": "Góc giữa hai mặt phẳng tấm pin (bài thực tế) từ hai pháp tuyến."
+ },
+ {
+  "ma_cau": "T3120000001514",
+  "dang_bai_id": "NDB00837",
+  "chac": "cao",
+  "ly_do": "Đọc tâm và bán kính mặt cầu dạng chính tắc."
+ },
+ {
+  "ma_cau": "T3120000001515",
+  "dang_bai_id": "NDB00838",
+  "chac": "cao",
+  "ly_do": "Điểm chứa ẩn thuộc mặt phẳng: thay vào tìm c."
+ },
+ {
+  "ma_cau": "T3120000001516",
+  "dang_bai_id": "NDB00835",
+  "chac": "cao",
+  "ly_do": "Đọc vectơ pháp tuyến của mặt phẳng."
+ },
+ {
+  "ma_cau": "T3120000001517",
+  "dang_bai_id": "NDB00836",
+  "chac": "cao",
+  "ly_do": "Đọc vectơ chỉ phương từ hệ số t của phương trình tham số."
+ },
+ {
+  "ma_cau": "T3120000001518",
+  "dang_bai_id": "NDB00858",
+  "chac": "cao",
+  "ly_do": "Góc giữa hai đường thẳng từ hai vectơ chỉ phương."
+ },
+ {
+  "ma_cau": "T3120000001519",
+  "dang_bai_id": "NDB00843",
+  "chac": "cao",
+  "ly_do": "Viết phương trình tham số đường thẳng biết điểm và vectơ chỉ phương."
+ },
+ {
+  "ma_cau": "T3120000001520",
+  "dang_bai_id": "NDB00849",
+  "chac": "cao",
+  "ly_do": "Viết phương trình mặt phẳng qua ba điểm bằng tích có hướng."
+ },
+ {
+  "ma_cau": "T3120000001521",
+  "dang_bai_id": "NDB00836",
+  "chac": "cao",
+  "ly_do": "Đọc vectơ chỉ phương từ mẫu số phương trình chính tắc."
+ },
+ {
+  "ma_cau": "T3120000001522",
+  "dang_bai_id": "NDB00857",
+  "chac": "cao",
+  "ly_do": "Góc giữa hai mặt phẳng tấm pin (bài thực tế) từ hai pháp tuyến."
+ },
+ {
+  "ma_cau": "T3120000001523",
+  "dang_bai_id": "NDB00849",
+  "chac": "cao",
+  "ly_do": "Mặt phẳng qua ba điểm, đồng nhất dạng Ax+By+Cz+1=0."
+ },
+ {
+  "ma_cau": "T3120000001524",
+  "dang_bai_id": "NDB00835",
+  "chac": "cao",
+  "ly_do": "Đọc vectơ pháp tuyến của mặt phẳng."
+ },
+ {
+  "ma_cau": "T3120000001525",
+  "dang_bai_id": "NDB00843",
+  "chac": "cao",
+  "ly_do": "Viết phương trình chính tắc đường thẳng biết điểm và vectơ chỉ phương."
+ },
+ {
+  "ma_cau": "T3120000001526",
+  "dang_bai_id": "NDB00858",
+  "chac": "cao",
+  "ly_do": "Góc giữa hai đường thẳng từ hai vectơ chỉ phương."
+ },
+ {
+  "ma_cau": "T3120000001527",
+  "dang_bai_id": "NDB00837",
+  "chac": "cao",
+  "ly_do": "Đọc tâm và bán kính mặt cầu dạng chính tắc."
+ },
+ {
+  "ma_cau": "T3120000001529",
+  "dang_bai_id": "NDB00860",
+  "chac": "cao",
+  "ly_do": "Khoảng cách từ điểm đến mặt phẳng theo công thức."
+ },
+ {
+  "ma_cau": "T3120000001530",
+  "dang_bai_id": "NDB00858",
+  "chac": "cao",
+  "ly_do": "Góc giữa hai đường thẳng (hỏi sin) từ hai vectơ chỉ phương."
+ },
+ {
+  "ma_cau": "T3120000001531",
+  "dang_bai_id": "NDB00866",
+  "chac": "cao",
+  "ly_do": "Vị trí tương đối hai mặt phẳng: so sánh hai vectơ pháp tuyến."
+ },
+ {
+  "ma_cau": "T3120000001533",
+  "dang_bai_id": "NDB00850",
+  "chac": "cao",
+  "ly_do": "Viết mặt phẳng trung trực của đoạn AB."
+ },
+ {
+  "ma_cau": "T3120000001534",
+  "dang_bai_id": "NDB00836",
+  "chac": "cao",
+  "ly_do": "Đọc vectơ chỉ phương từ hệ số t, thành phần z bằng 0."
+ },
+ {
+  "ma_cau": "T3120000001535",
+  "dang_bai_id": "NDB00837",
+  "chac": "cao",
+  "ly_do": "Tính bán kính các mặt cầu dạng khai triển để chọn R=2."
+ },
+ {
+  "ma_cau": "T3120000001536",
+  "dang_bai_id": "NDB00859",
+  "chac": "cao",
+  "ly_do": "Góc giữa đường thẳng và mặt phẳng bằng công thức sin."
+ },
+ {
+  "ma_cau": "T3120000001537",
+  "dang_bai_id": "NDB00852",
+  "chac": "cao",
+  "ly_do": "Đường thẳng qua điểm vuông góc mặt phẳng: lấy pháp tuyến làm chỉ phương."
+ },
+ {
+  "ma_cau": "T3120000001538",
+  "dang_bai_id": "NDB00868",
+  "chac": "cao",
+  "ly_do": "Xét vị trí tương đối hai đường thẳng (song song)."
+ },
+ {
+  "ma_cau": "T3120000001539",
+  "dang_bai_id": "NDB00846",
+  "chac": "cao",
+  "ly_do": "Viết phương trình mặt cầu biết tâm và bán kính."
+ },
+ {
+  "ma_cau": "T3120000001540",
+  "dang_bai_id": "NDB00839",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc đường thẳng tham số (cùng một t)."
+ },
+ {
+  "ma_cau": "T3120000001541",
+  "dang_bai_id": "NDB00835",
+  "chac": "cao",
+  "ly_do": "Đọc vectơ pháp tuyến của mặt phẳng."
+ },
+ {
+  "ma_cau": "T3120000001542",
+  "dang_bai_id": "NDB00837",
+  "chac": "cao",
+  "ly_do": "Đọc tâm và bán kính mặt cầu dạng chính tắc."
+ },
+ {
+  "ma_cau": "T3120000001543",
+  "dang_bai_id": "NDB00879",
+  "chac": "cao",
+  "ly_do": "Hỏi thời gian N ở trong vùng theo dõi = dây cung/vận tốc; mặt cầu qua 4 điểm chỉ là bước phụ, dạng sau thắng."
+ },
+ {
+  "ma_cau": "T3120000001544",
+  "dang_bai_id": "NDB00835",
+  "chac": "cao",
+  "ly_do": "Đọc vectơ pháp tuyến của mặt phẳng."
+ },
+ {
+  "ma_cau": "T3120000001545",
+  "dang_bai_id": "NDB00866",
+  "chac": "cao",
+  "ly_do": "Chọn mặt phẳng vuông góc (P): tích vô hướng hai pháp tuyến bằng 0."
+ },
+ {
+  "ma_cau": "T3120000001546",
+  "dang_bai_id": "NDB00836",
+  "chac": "cao",
+  "ly_do": "Đọc vectơ chỉ phương từ hệ số t."
+ },
+ {
+  "ma_cau": "T3120000001547",
+  "dang_bai_id": "NDB00854",
+  "chac": "cao",
+  "ly_do": "Phương trình chính tắc đường thẳng qua hai điểm M, N."
+ },
+ {
+  "ma_cau": "T3120000001548",
+  "dang_bai_id": "NDB00839",
+  "chac": "cao",
+  "ly_do": "Chọn điểm thuộc đường thẳng chính tắc."
+ }
+]

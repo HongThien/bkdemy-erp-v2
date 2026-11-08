@@ -4,6 +4,8 @@
 //    spec-che-do-game.md §4): sai ⇒ khoá CẢ câu với người đó, đối thủ làm tiếp tới hết giờ; cả 2 cùng sai ⇒ hết câu luôn.
 //    (Bufopia gốc cho bấm tiếp đáp án khác ⇒ bấm lần lượt 4 đáp án là ăn — thành game nhanh tay, đã bỏ.)
 //  · Điểm: đúng < 2s = 100 · < 4s = 70 · còn lại 50; mỗi chuỗi 3 câu đúng liền +30.
+//  · SAI BỊ TRỪ đúng bằng điểm câu đúng ở cùng tốc độ (100/70/50, không cộng chuỗi) — Thùy 03/11: không trừ thì bấm bừa thật nhanh
+//    là lời (trúng ăn câu, trật cũng chẳng mất gì), "cho nghiêm túc". Tổng trận được phép âm.
 //  · "Đúng trước" so theo thời gian phản xạ mỗi máy tự đo (rt), chờ thêm 220ms sau đáp án đúng đầu tiên để bù trễ mạng.
 // ⚠ DEMO: máy chủ phòng là trọng tài (tin máy chủ). Khi khớp HS BK + có thưởng season ⇒ chuyển trọng tài xuống server (spec §3).
 import type { Cau } from '../nguon/kieu'
@@ -183,6 +185,10 @@ export class TrongTai {
     s.nk.push({ i: s.i, ghe, chon: opt.startsWith('#bot') || opt === '?' ? '' : opt, dung, ms: Math.round(r) })
     if (!dung) {
       s.sai[ghe].push(opt)
+      const tru = diemVong(r / 1000, 0, 0, this.msVong / 1000)
+      s.diem[ghe] -= tru
+      s.cong[ghe] = -tru
+      s.chuoi[ghe] = 0
       const khac = (1 - ghe) as 0 | 1
       if (s.sai[khac].length > 0 && !this.ungVien.length && !this.henBu && this.dangCho.size === 0) { this.hetGio(); return } // cả 2 đã sai ⇒ hết câu, khỏi chờ đồng hồ
       this.phat()
@@ -209,7 +215,7 @@ export class TrongTai {
     s.tg[w].push(Math.round(giay * 100) / 100)
     const d = diemVong(giay, s.chuoi[w], s.sai[w].length, this.msVong / 1000)
     s.diem[w] += d
-    s.cong = w === 0 ? [d, 0] : [0, d]
+    s.cong[w] = d // ghế kia giữ số âm nếu đã bấm sai câu này
     s.thangVong = w
     s.giayThang = Math.round(giay * 10) / 10
     this.ketVong()

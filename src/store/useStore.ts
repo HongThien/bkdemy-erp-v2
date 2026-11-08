@@ -1,11 +1,14 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
-import { users, opTasks, devTasks, adminLeaves, classesOfCoSo, worktypesByVai } from '../mock/fixtures'
+import { users, opTasks, devTasks, adminLeaves } from '../mock/fixtures'
 import { myQuyen, type MyQuyen } from '../lib/quyen'
 import { setReadOnlyLeafGetter } from '../lib/supabase'
 import { getMyProfile, updateMenuYeuThich, updateErpGiaoDien, updateHomeBoCuc, type DangCard, type MyProfile, type MyScope } from '../lib/nhansu'
 import { enqueueLinkGenJob } from '../lib/linkgen'
-import type { User, Vai, NavGroup, NavLeaf, AdminLeaf } from '../types'
+import { YEU_THICH_TOI_DA } from '../lib/menu'
+import { docCayYT, phangYT, datTabCuaMuc, taoIdTab, TAB_YT_TOI_DA, type CayYT } from '../lib/yeuThich'
+import { useMemo } from 'react'
+import type { User, NavGroup, NavLeaf, AdminLeaf } from '../types'
 
 // Kiểu + bản nhớ trên máy của giao diện ERP: 2 hàm thuần, KHÔNG import registry style ở đây (store được nhiều bundle dùng).
 export type GiaoDienErp = { skin?: string; nen?: string | null; nen_url?: string | null; che_do?: 'sang' | 'toi'; canh?: string | null }
@@ -38,6 +41,7 @@ export type PickItem = {
   | { kind: 'ghep'; luaId: string | null }   // đề chuẩn (luaId=null) hoặc lứa — mọi cỡ chuỗi kể cả 1 node
   | { kind: 'bienthe'; bienTheId: string }   // biến thể riêng lẻ (kieu='doi_so') — CHỈ chuỗi 1 node
   | { kind: 'y'; yId: string }               // ý thật (đã chấm) — CHỈ chuỗi 1 node
+  | { kind: 'bai'; baiId: string; moHinhId: string | null }   // NGUYÊN 1 bài kho Hình luyện (hinh_bai, mọi ý) — nodeIds RỖNG (ý kho chưa chắc gắn node). Chỉ MT (29/10)
 )
 // ⭐ 08-08 (tiếp, "chuyển nhà"): chế độ 'mh' (Theo mô hình, build-rồi-lưu-popup) RÚT khỏi Soạn tài liệu —
 // việc dựng nội dung 1 buổi giáo trình giờ làm TẠI CHỖ trong cây buổi của GiaoTrinhScreen (khuôn
@@ -84,6 +88,14 @@ interface UiState {
   nhanLichSu: (st: unknown) => void
   // Ghim / bỏ ghim 1 mục menu lên Home (nhan_su.menu_yeu_thich) — vá store ngay, DB ghi nền, lỗi thì trả lại.
   doiYeuThich: (id: string) => void
+  // ── Yêu thích THEO TAB (Thùy 29/10, lib/yeuThich.ts) — mọi thao tác đi qua luuCayYT (vá ngay, DB ghi nền, lỗi trả lại) ──
+  luuCayYT: (cay: CayYT) => void
+  ghimTabYT: (id: string, tabIds: string[]) => void          // mục `id` nằm ĐÚNG ở các tab này (rỗng = bỏ ghim)
+  boGhimTabYT: (id: string, tabId: string) => void            // rút mục khỏi 1 tab
+  themTabYT: (ten: string, ghimMuc?: string) => string | null // trả id tab mới (null nếu đã đủ TAB_YT_TOI_DA)
+  doiTenTabYT: (tabId: string, ten: string) => void
+  xoaTabYT: (tabId: string) => void                           // luôn giữ ≥ 1 tab
+  doiChoTabYT: (tabId: string, buoc: -1 | 1) => void
   // Ẩn / hiện 1 box trên Trang chính (nhan_su.home_bo_cuc.an) — vá store ngay, DB ghi nền, lỗi thì trả lại.
   doiHomeAn: (id: string) => void
   // Lưu thứ tự box sau khi kéo thả (nhan_su.home_bo_cuc.thu_tu) — vá store ngay, DB ghi nền.
@@ -206,16 +218,68 @@ export const useStore = create<UiState>()(persist((set, get) => ({
     const me = get().me
     if (me) updateErpGiaoDien(me.nhanSu.id, moi).catch((e) => alert(`Chưa lưu được giao diện vào tài khoản (máy này vẫn nhớ): ${e?.message ?? e}`))
   },
+  // Bật/tắt nhanh (chỗ không có khung chọn tab): đã ghim ở đâu ⇒ rút khỏi MỌI tab; chưa ⇒ vào tab đầu còn chỗ.
   doiYeuThich: (id) => {
     const me = get().me
     if (!me) return
-    const cu = me.nhanSu.menu_yeu_thich ?? []
-    // Thiết kế chung (Thùy 14/10): Yêu thích tối đa 8 mục — đúng 8 ô trên Trang chính ở mọi style.
-    if (!cu.includes(id) && cu.length >= 8) { alert('Yêu thích tối đa 8 mục. Bỏ ★ một mục trước rồi ghim mục mới.'); return }
-    const moi = cu.includes(id) ? cu.filter((x) => x !== id) : [...cu, id]
-    const va = (ds: string[]) => set((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, menu_yeu_thich: ds } } } : {}))
-    va(moi)
-    updateMenuYeuThich(me.nhanSu.id, moi).catch((e) => { va(cu); alert(`Chưa lưu được mục Yêu thích: ${e?.message ?? e}`) })
+    const c = docCayYT(me.nhanSu.menu_yeu_thich)
+    if (phangYT(c).includes(id)) { get().ghimTabYT(id, []); return }
+    const tab = c.tabs.find((t) => t.muc.length < YEU_THICH_TOI_DA)
+    if (!tab) { alert(`Các tab Yêu thích đều đã đủ ${YEU_THICH_TOI_DA} mục. Bỏ ★ một mục hoặc tạo tab mới.`); return }
+    get().ghimTabYT(id, [tab.id])
+  },
+  luuCayYT: (cay) => {
+    const me = get().me
+    if (!me) return
+    const cu = me.nhanSu.menu_yeu_thich ?? null
+    const va = (v: typeof cu) => set((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, menu_yeu_thich: v } } } : {}))
+    va(cay)
+    updateMenuYeuThich(me.nhanSu.id, cay).catch((e) => { va(cu); alert(`Chưa lưu được mục Yêu thích: ${e?.message ?? e}`) })
+  },
+  ghimTabYT: (id, tabIds) => {
+    const me = get().me
+    if (!me) return
+    const { cay, tabDay } = datTabCuaMuc(docCayYT(me.nhanSu.menu_yeu_thich), id, tabIds)
+    if (tabDay.length) alert(`Tab ${tabDay.map((t) => `"${t}"`).join(', ')} đã đủ ${YEU_THICH_TOI_DA} mục — bỏ bớt một mục trong tab đó trước.`)
+    get().luuCayYT(cay)
+  },
+  boGhimTabYT: (id, tabId) => {
+    const me = get().me
+    if (!me) return
+    const c = docCayYT(me.nhanSu.menu_yeu_thich)
+    get().luuCayYT({ tabs: c.tabs.map((t) => (t.id === tabId ? { ...t, muc: t.muc.filter((x) => x !== id) } : t)) })
+  },
+  themTabYT: (ten, ghimMuc) => {
+    const me = get().me
+    if (!me) return null
+    const c = docCayYT(me.nhanSu.menu_yeu_thich)
+    if (c.tabs.length >= TAB_YT_TOI_DA) { alert(`Tối đa ${TAB_YT_TOI_DA} tab Yêu thích.`); return null }
+    const id = taoIdTab()
+    get().luuCayYT({ tabs: [...c.tabs, { id, ten: ten.trim().slice(0, 30) || 'Tab mới', muc: ghimMuc ? [ghimMuc] : [] }] })
+    return id
+  },
+  doiTenTabYT: (tabId, ten) => {
+    const me = get().me
+    const t = ten.trim().slice(0, 30)
+    if (!me || !t) return
+    const c = docCayYT(me.nhanSu.menu_yeu_thich)
+    get().luuCayYT({ tabs: c.tabs.map((x) => (x.id === tabId ? { ...x, ten: t } : x)) })
+  },
+  xoaTabYT: (tabId) => {
+    const me = get().me
+    if (!me) return
+    const c = docCayYT(me.nhanSu.menu_yeu_thich)
+    if (c.tabs.length <= 1) return
+    get().luuCayYT({ tabs: c.tabs.filter((x) => x.id !== tabId) })
+  },
+  doiChoTabYT: (tabId, buoc) => {
+    const me = get().me
+    if (!me) return
+    const ds = [...docCayYT(me.nhanSu.menu_yeu_thich).tabs]
+    const i = ds.findIndex((x) => x.id === tabId), j = i + buoc
+    if (i < 0 || j < 0 || j >= ds.length) return
+    ;[ds[i], ds[j]] = [ds[j], ds[i]]
+    get().luuCayYT({ tabs: ds })
   },
   doiHomeAn: (id) => {
     const me = get().me
@@ -360,10 +424,12 @@ export const canAccessAdmin = (q: MyQuyen | null): boolean => accessibleLeaves(q
 // Đề thi KHÔNG ở đây — đó là luồng NHẬP KHO (đề thật → bóc → đổ vào kho), ngược chiều với
 // giáo trình/ET (kho có sẵn → ghép ra tài liệu). Xem leaf `nhapkho` (tab "Nhập đề thi").
 export const LAMTAILIEU_CHILDREN: NavLeaf[] = [
-  { id: 'lamtailieu:giao_trinh', ten: 'Giáo trình' },
-  { id: 'lamtailieu:giao_trinh_bdm', ten: 'Giáo trình (bản đồ mới)' }, // Thùy 18/10: lá RIÊNG song song lá cũ, hoàn thiện rồi mới bỏ lá cũ (spec-builder-ban-do-moi.md)
-  { id: 'lamtailieu:giao_trinh_hinh', ten: 'Giáo trình (Hình)' },   // ⭐ 08-08 "chuyển nhà": ngang hàng Đại, không còn chôn trong rail Kho
-  { id: 'lamtailieu:et', ten: 'ET' },
+  { id: 'lamtailieu:giao_trinh_bdm', ten: 'Giáo trình (bản đồ mới)' },
+  // ⭐ Thùy 04/11 "Gỡ khỏi menu": lá Giáo trình / ET (bản đồ cũ) GỠ khỏi menu — Toán 3·5 sang bản đồ mới (mig 202611031857), KHTN làm
+  //   ET bản đồ mới (mig 202611031655) ⇒ fn_kho_dung_ban_do_cu rỗng, 2 lá chỉ còn danh sách lớp trống. Màn + route NhanSuHome giữ nguyên
+  //   (Kho tài liệu vẫn mở tài liệu cũ đã lưu); thêm lại 2 dòng { id: 'lamtailieu:giao_trinh' | 'lamtailieu:et' } là hiện lại.
+  { id: 'lamtailieu:et_bdm', ten: 'ET (bản đồ mới)' },
+  { id: 'lamtailieu:chuyen_de', ten: 'Chuyên đề' },   // Thùy 21/10: builder y giáo trình bản đồ mới, KHÔNG gắn lớp (loai='chuyen_de')   // Thùy 20/10: bản MỚI song song ET cũ (bdm/ETBdmEditor) — ET cũ giữ nguyên
   { id: 'lamtailieu:mt', ten: 'MT' },
   { id: 'lamtailieu:bo_tro', ten: 'Tài liệu bổ trợ' },
 ]
@@ -384,7 +450,8 @@ function collapseGroup(leaves: NavLeaf[], parentId: string, parentTen: string, c
   return rest
 }
 export const adminNavFromQuyen = (q: MyQuyen | null): NavGroup[] => {
-  const leaves = accessibleLeaves(q)
+  // 'phong_tk' = Phòng làm việc: khu riêng ngang Trang chính (Thùy 03/11) — không xếp vào nhóm nào, menu vẽ riêng (lib/menu.ts LEAF_PHONG)
+  const leaves = accessibleLeaves(q).filter((l) => !l.anMenu && l.id !== 'phong_tk')
   const nhoms = [...new Set(leaves.map((l) => l.nhom))]
   return nhoms.map((n) => {
     let navLeaves: NavLeaf[] = leaves.filter((l) => l.nhom === n).map((l): NavLeaf =>
@@ -402,9 +469,6 @@ export const adminNavFromQuyen = (q: MyQuyen | null): NavGroup[] => {
 
 // ── Selectors (mock derive theo role) ────────────────────────────
 export const getUser = (id: string): User => users.find((u) => u.id === id)!
-export const vaisOf = (u: User): Vai[] => [...new Set(u.roles.map((r) => r.vai))]
-export const canAdmin = (u: User): boolean =>
-  u.roles.some((r) => r.vai === 'Founder' || r.vai === 'AdminCoSo')
 
 export const opTasksForUser = (u: User) =>
   opTasks.filter((t) =>
@@ -419,21 +483,6 @@ export const opTasksForUser = (u: User) =>
 export const devTasksForUser = (u: User) =>
   devTasks.filter((d) => d.assigneeUserId === u.id)
 
-export const leavesForUser = (u: User) => {
-  const isFounder = u.roles.some((r) => r.vai === 'Founder')
-  return adminLeaves.filter((l) => isFounder || !l.founderOnly)
-}
-
-// Cây Admin (derive theo role) → NavGroup[] cho NavTree
-export const adminNavForUser = (u: User): NavGroup[] => {
-  const leaves = leavesForUser(u)
-  const nhoms = [...new Set(leaves.map((l) => l.nhom))]
-  return nhoms.map((n) => ({
-    nhom: n,
-    leaves: leaves.filter((l) => l.nhom === n).map((l) => ({ id: l.id, ten: l.ten })),
-  }))
-}
-
 // Cây Nhân sự THẬT (từ getMyScope): chỉ "Việc của tôi" (vận hành). Mọi tra-cứu/sửa làm NGAY trong màn Việc-của-tôi
 // (bấm card đã làm để sửa) → đã BỎ nhóm "Tra cứu & sửa" (placeholder, không link đâu). `scope` giữ cho tương lai.
 export const staffNavFromScope = (_scope: MyScope | null): NavGroup[] => {
@@ -441,35 +490,19 @@ export const staffNavFromScope = (_scope: MyScope | null): NavGroup[] => {
   return [{ nhom: null, leaves: [{ id: 'viec', ten: 'Việc của tôi' }, { id: 'myplan', ten: 'Kế hoạch của tôi' }] }]
 }
 
-// (cũ — mock) Cây Nhân sự 2 tầng derive theo role mock. Giữ tạm cho tham chiếu.
-export const staffNavForUser = (u: User): NavGroup[] => {
-  const nodes: NavLeaf[] = []
-  const seen = new Set<string>()
-  for (const r of u.roles) {
-    const wts = worktypesByVai[r.vai]
-    if (!wts) continue
-    const classes = r.lops.length ? r.lops : classesOfCoSo[r.coSo]
-    for (const wt of wts) {
-      const id = `tc:${wt.key}`
-      if (seen.has(id)) continue
-      seen.add(id)
-      nodes.push({
-        id,
-        ten: wt.ten,
-        children: classes.map((lop) => ({ id: `${id}:${lop}`, ten: lop })),
-      })
-    }
-  }
-  const groups: NavGroup[] = [{ nhom: null, leaves: [{ id: 'viec', ten: 'Việc của tôi' }] }]
-  if (nodes.length) groups.push({ nhom: 'Tra cứu & sửa', leaves: nodes })
-  return groups
-}
-
 // Phím tắt công thức của NGƯỜI ĐANG ĐĂNG NHẬP (từ nhan_su.phim_tat_cong_thuc, load cùng `me`). Không persist
 // localStorage → 2 người dùng chung máy mỗi người thấy đúng bộ phím của mình. EMPTY cố định để selector ổn định.
 // Mục menu YÊU THÍCH của người đang đăng nhập (nhan_su.menu_yeu_thich). EMPTY cố định để selector ổn định.
-const YEU_THICH_EMPTY: string[] = []
-export const useYeuThich = () => useStore((s) => s.me?.nhanSu.menu_yeu_thich ?? YEU_THICH_EMPTY)
+// Giá trị DB thô (mảng cũ / cây tab mới) đọc qua docCayYT — memo theo đúng giá trị thô để không đẻ mảng mới mỗi lần render.
+export const useCayYT = (): CayYT => {
+  const raw = useStore((s) => s.me?.nhanSu.menu_yeu_thich)
+  return useMemo(() => docCayYT(raw), [raw])
+}
+/** Mọi mục đã ghim (ở bất kỳ tab nào) — cho trạng thái ★ / ☆. */
+export const useYeuThich = (): string[] => {
+  const c = useCayYT()
+  return useMemo(() => phangYT(c), [c])
+}
 
 const PHIM_TAT_EMPTY: Record<string, string> = {}
 export const usePhimTat = () => useStore((s) => s.me?.nhanSu.phim_tat_cong_thuc ?? PHIM_TAT_EMPTY)

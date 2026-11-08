@@ -8,7 +8,7 @@
 // (KHÔNG dựng lại de_test CRUD, cũng KHÔNG "ghim/trỏ"). Nguồn = MT + Đề thi (mọi master TRỪ ET/GT/BTVN).
 // Mỗi khối×môn 1 đề đang dùng (bản sinh mới nhất), đề cũ giữ làm lịch sử. Xem section ĐỀ TEST ĐẦU VÀO.
 import { supabase } from './supabase'
-import { khoCuaMon, nhanhCuaMon, nhanhCuaCau, laMaHinh, getTaiLieuFull, listPhan, copyPhanInto, PHAN_LUYEN, PHAN_BTVN, PHAN_ONTAP, type TaiLieu } from './tailieu'
+import { khoCuaMon, nhanhCuaMon, nhanhCuaCau, laMaHinh, getTaiLieuFull, listPhan, copyPhanInto, PHAN_LUYEN, PHAN_BTVN, PHAN_ONTAP, NHANH_BDM, type TaiLieu } from './tailieu'
 import { pickCuaHinhRow } from './mt'
 import { loadLuoi } from './kho/hinh'
 import { updateUngVien, toggleViec } from './tuyensinh'
@@ -137,8 +137,10 @@ export async function sinhDeTestDauVao(nguonId: string, khoi: string, mon: strin
 // NHÁNH cho phiếu: môn không chia nhánh (KHTN…) → null (không áp dụng). Toán: nhánh mặc định = Đại; mọi
 // nhánh khác (hinh_gt) + hàng HÌNH mô hình (`HINH:<uuid>`, không ở kho câu) = Hình.
 const NHANH_PHIEU: Record<string, 'dai' | 'hinh'> = { hinh_gt: 'hinh' }
-function nhanhPhieu(mon: string | null | undefined, nhanh: string | null): 'dai' | 'hinh' | null {
+// Nhánh 'bdm' (bản đồ mới) gộp Đại + HGT trong 1 kho ⇒ phiếu theo KHO GỐC của câu (cột kho_goc của view bdm_cau_hoi).
+function nhanhPhieu(mon: string | null | undefined, nhanh: string | null, khoGoc?: string | null): 'dai' | 'hinh' | null {
   if (!nhanhCuaMon(mon).length) return null
+  if (nhanh === NHANH_BDM.ma) return khoGoc === 'hgt' ? 'hinh' : 'dai'
   return nhanh ? (NHANH_PHIEU[nhanh] ?? 'hinh') : 'dai'
 }
 type CaTestCauInsert = {
@@ -192,7 +194,7 @@ export async function ganDeCaTest(caTestId: string, taiLieuId: string): Promise<
       const s = dangTheoBang.get(K.banDoTbl) ?? new Set<string>()
       if (c.dang_chinh) s.add(c.dang_chinh)
       dangTheoBang.set(K.banDoTbl, s)
-      buocs.push({ ma, kind: 'cau', c, nhanh: nhanhPhieu(tl.mon, nh), banDoTbl: K.banDoTbl })
+      buocs.push({ ma, kind: 'cau', c, nhanh: nhanhPhieu(tl.mon, nh, (c as { kho_goc?: string | null }).kho_goc), banDoTbl: K.banDoTbl })
     }
   }
   if (!buocs.length) throw new Error('Tài liệu chưa có câu nào.')

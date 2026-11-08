@@ -1,0 +1,542 @@
+[
+ {
+  "id": "X0781",
+  "dap_an": "C",
+  "loi_giai": "$\\Delta_{1}$ đi qua $M_{1}(1;0;-2)$, có vectơ chỉ phương $\\overrightarrow{u_{1}}=(2;1;-2)$.\n$\\Delta_{2}$ đi qua $M_{2}(-2;1;0)$, có vectơ chỉ phương $\\overrightarrow{u_{2}}=(-2;-1;2)$.\nTa có $\\overrightarrow{u_{2}}=-\\overrightarrow{u_{1}}$ nên hai đường thẳng song song hoặc trùng nhau.\nThay $M_{2}$ vào $\\Delta_{1}$: $\\dfrac{-2-1}{2}=-\\dfrac{3}{2}$ còn $\\dfrac{1}{1}=1$, hai giá trị khác nhau nên $M_{2}\\notin\\Delta_{1}$.\nVậy hai đường thẳng song song. Chọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0782",
+  "dap_an": "0.59",
+  "loi_giai": "Gọi $A$ là biến cố \"món đồ chuyển từ thùng I sang là máy bay\", $B$ là biến cố \"món đồ lấy ra từ thùng II là máy bay\".\nThùng I có $10$ món, nên $P(A)=\\dfrac{4}{10}=0,4$ và $P(\\overline{A})=0,6$.\nNếu chuyển máy bay: thùng II có $21$ món, trong đó $13$ máy bay, nên $P(B|A)=\\dfrac{13}{21}$.\nNếu chuyển ô tô: thùng II có $21$ món, trong đó $12$ máy bay, nên $P(B|\\overline{A})=\\dfrac{12}{21}$.\nTheo công thức xác suất toàn phần: $P(B)=P(A)\\cdot P(B|A)+P(\\overline{A})\\cdot P(B|\\overline{A})=0,4\\cdot\\dfrac{13}{21}+0,6\\cdot\\dfrac{12}{21}=\\dfrac{12,4}{21}\\approx 0,5905$.\nVậy xác suất cần tìm xấp xỉ $0,59$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0783",
+  "dap_an": "D",
+  "loi_giai": "Ta có $P(AB)=P(B)\\cdot P(A|B)=0,6\\cdot 0,3=0,18$.\nVì $B=AB\\cup\\overline{A}B$ (hai biến cố xung khắc) nên $P(\\overline{A}B)=P(B)-P(AB)=0,6-0,18=0,42$.\nChọn D.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "đề có ký tự thừa dấu nháy cuối"
+ },
+ {
+  "id": "X0784",
+  "dap_an": "C",
+  "loi_giai": "Vì $0<P(B)<1$ nên $B$ và $\\overline{B}$ tạo thành một hệ đầy đủ các biến cố.\nTheo công thức xác suất toàn phần: $P(A)=P(B)\\cdot P(A|B)+P(\\overline{B})\\cdot P(A|\\overline{B})$.\nChọn C.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0785",
+  "dap_an": "A",
+  "loi_giai": "Đầu mút trái của nhóm đầu tiên là $40$, đầu mút phải của nhóm cuối cùng là $65$.\nKhoảng biến thiên: $R=65-40=25$ $(cm)$.\nChọn A.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0786",
+  "dap_an": "D",
+  "loi_giai": "$\\overrightarrow{BA}=(x_{A}-x_{B};y_{A}-y_{B};z_{A}-z_{B})=(1-0;3-1;4-2)=(1;2;2)$.\nChọn D.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0787",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{u}+\\overrightarrow{v}=(3+5;2+(-4);0+2)=(8;-2;2)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "phương án C và D trùng nhau"
+ },
+ {
+  "id": "X0788",
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{AB}=(2-1;4-2;-1-3)=(1;2;-4)$ là một vectơ chỉ phương của đường thẳng $AB$.\nĐường thẳng $AB$ đi qua $A(1;2;3)$ nên có phương trình chính tắc $\\dfrac{x-1}{1}=\\dfrac{y-2}{2}=\\dfrac{z-3}{-4}$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0789",
+  "dap_an": "D",
+  "loi_giai": "Bán kính mặt cầu: $R^{2}=IM^{2}=(0+1)^{2}+(3-2)^{2}+(2+3)^{2}=1+1+25=27$.\nMặt cầu tâm $I(-1;2;-3)$ có phương trình $(x+1)^{2}+(y-2)^{2}+(z+3)^{2}=27$.\nChọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0790",
+  "dap_an": "B",
+  "loi_giai": "Đường thẳng $d$ có một vectơ chỉ phương $\\overrightarrow{u}=(1;-2;3)$.\nCác vectơ $(-1;2;-3)=-\\overrightarrow{u}$ và $(2;-4;6)=2\\overrightarrow{u}$ cùng phương với $\\overrightarrow{u}$ nên đều là vectơ chỉ phương của $d$.\nVectơ $(3;1;2)$ không cùng phương với $(1;-2;3)$ vì $\\dfrac{3}{1}\\neq\\dfrac{1}{-2}$ nên không phải vectơ chỉ phương của $d$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0791",
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng đi qua $M(2;1;-3)$ với vectơ chỉ phương $\\overrightarrow{u}=(1;-2;3)$ có phương trình tham số $x=2+t,\\ y=1-2t,\\ z=-3+3t$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0792",
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng $d$ có một vectơ chỉ phương $\\overrightarrow{u_{1}}=(1;-3;2)$.\n$\\overrightarrow{u_{3}}=(-2;6;-4)=-2\\overrightarrow{u_{1}}$ và $\\overrightarrow{u_{4}}=(-1;3;-2)=-\\overrightarrow{u_{1}}$ cùng phương với $\\overrightarrow{u_{1}}$.\n$\\overrightarrow{u_{2}}=(-1;2;1)$ không cùng phương với $\\overrightarrow{u_{1}}$ (vì $\\dfrac{-1}{1}\\neq\\dfrac{2}{-3}$) nên không phải vectơ chỉ phương của $d$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0793",
+  "dap_an": "9",
+  "loi_giai": "$\\overrightarrow{AB}=(a-4;b+1;-2)$.\nĐường thẳng $d$ có vectơ chỉ phương $\\overrightarrow{u_{d}}=(3;2;1)$, mặt phẳng $(P)$ có vectơ pháp tuyến $\\overrightarrow{n}=(2;-1;3)$.\n$\\Delta\\perp d$ nên $\\overrightarrow{AB}\\cdot\\overrightarrow{u_{d}}=0$, suy ra $3(a-4)+2(b+1)-2=0$, tức $3a+2b=12$. $(1)$\n$\\Delta\\parallel(P)$ nên $\\overrightarrow{AB}\\cdot\\overrightarrow{n}=0$, suy ra $2(a-4)-(b+1)-6=0$, tức $2a-b=15$. $(2)$\nTừ $(2)$ có $b=2a-15$; thay vào $(1)$: $3a+4a-30=12$, suy ra $a=6$, $b=-3$.\nĐiểm $A$ không thuộc $(P)$ vì $2\\cdot4+1+3\\cdot3-1=17\\neq0$, nên $\\Delta\\parallel(P)$ thoả mãn.\nVậy $a-b=6-(-3)=9$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0794",
+  "dap_an": "B",
+  "loi_giai": "Điểm $Q(1;0;-1)$: thay vào $d$ được $1=1-t$, $0=2t$, $-1=-1+3t$, đều cho $t=0$ nên $Q\\in d$.\nĐiểm $N(-1;2;3)$: $-1=1-t\\Rightarrow t=2$ nhưng $2=2t\\Rightarrow t=1$, mâu thuẫn nên $N\\notin d$.\nĐiểm $M(1;2;-1)$: $1=1-t\\Rightarrow t=0$ nhưng $2=2t\\Rightarrow t=1$, mâu thuẫn nên $M\\notin d$.\nĐiểm $P(1;2;3)$: $t=0$ từ $x$ nhưng $t=1$ từ $y$, mâu thuẫn nên $P\\notin d$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0795",
+  "dap_an": "D",
+  "loi_giai": "Góc giữa đường thẳng $\\Delta$ và mặt phẳng $(P)$ thoả mãn $\\sin(\\Delta,(P))=\\left|\\cos(\\overrightarrow{u},\\overrightarrow{n})\\right|=\\dfrac{|\\overrightarrow{u}\\cdot\\overrightarrow{n}|}{|\\overrightarrow{u}|\\cdot|\\overrightarrow{n}|}$.\nDo đó $\\sin(\\Delta,(P))=\\dfrac{|Aa+Bb+Cc|}{\\sqrt{A^{2}+B^{2}+C^{2}}\\cdot\\sqrt{a^{2}+b^{2}+c^{2}}}$.\nChọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0796",
+  "dap_an": "D",
+  "loi_giai": "Công thức khoảng cách từ điểm $A(x_{0};y_{0};z_{0})$ đến mặt phẳng $(\\alpha):ax+by+cz+d=0$ là $d(A,(\\alpha))=\\dfrac{|ax_{0}+by_{0}+cz_{0}+d|}{\\sqrt{a^{2}+b^{2}+c^{2}}}$.\nChọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0797",
+  "dap_an": "A",
+  "loi_giai": "Mặt phẳng $(P):3x-y+2z+5=0$ có vectơ pháp tuyến $(3;-1;2)$.\n$(P_{3}):-3x+y-2z+5=0$ có vectơ pháp tuyến $(-3;1;-2)=-(3;-1;2)$ và $\\dfrac{-3}{3}=\\dfrac{1}{-1}=\\dfrac{-2}{2}=-1\\neq\\dfrac{5}{5}$ nên $(P_{3})\\parallel(P)$.\n$(P_{2}):-3x+y-2z-5=0\\Leftrightarrow 3x-y+2z+5=0$ trùng với $(P)$, không phải song song.\n$(P_{1})$ có vectơ pháp tuyến $(6;-2;-4)$ không cùng phương với $(3;-1;2)$; $(P_{4})$ có vectơ pháp tuyến $(1;1;-1)$ cũng không cùng phương.\nVậy $(P)$ song song với $(P_{3})$. Chọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0798",
+  "dap_an": "B",
+  "loi_giai": "Đường thẳng đi qua $A(x_{0};y_{0};z_{0})$, có vectơ chỉ phương $\\overrightarrow{u}=(a;b;c)$ có phương trình tham số $x=x_{0}+at,\\ y=y_{0}+bt,\\ z=z_{0}+ct$ $(t\\in\\mathbb{R})$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0799",
+  "dap_an": "B",
+  "loi_giai": "Mặt phẳng đi qua $M(4;5;6)$ với vectơ pháp tuyến $\\overrightarrow{n}=(1;2;3)$ có phương trình $1(x-4)+2(y-5)+3(z-6)=0$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0800",
+  "dap_an": "A",
+  "loi_giai": "Mặt phẳng $(P):x+3y-4z+5=0$ có một vectơ pháp tuyến là hệ số của $x,y,z$: $\\overrightarrow{n_{1}}=(1;3;-4)$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0801",
+  "dap_an": "A",
+  "loi_giai": "Mặt phẳng $(P):x+3y+4z+5=0$ có một vectơ pháp tuyến là $(1;3;4)$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "phương án B và C cùng đặt tên n2"
+ },
+ {
+  "id": "X0802",
+  "dap_an": "B",
+  "loi_giai": "Điểm $M(2;3;4)$ ứng với $t=0$ nên $M\\in d$.\nĐiểm $N(2;5;11)$: $3+2t=5\\Rightarrow t=1$, khi đó $z=4-7=-3\\neq11$ nên $N\\notin d$.\nĐiểm $P(2;1;11)$: $3+2t=1\\Rightarrow t=-1$, khi đó $z=4+7=11$ nên $P\\in d$.\nĐiểm $Q(2;7;-10)$: $3+2t=7\\Rightarrow t=2$, khi đó $z=4-14=-10$ nên $Q\\in d$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0803",
+  "dap_an": "B",
+  "loi_giai": "Điểm $M(2;3;4)$ ứng với $t=0$ nên $M\\in d$.\nĐiểm $Q(2;7;10)$: $3+2t=7\\Rightarrow t=2$, khi đó $z=4-14=-10\\neq10$ nên $Q\\notin d$.\nĐiểm $P(2;1;11)$: $t=-1$, khi đó $z=4+7=11$ nên $P\\in d$.\nĐiểm $N(2;5;-3)$: $t=1$, khi đó $z=4-7=-3$ nên $N\\in d$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0804",
+  "dap_an": "1",
+  "loi_giai": "Mặt phẳng cắt các tia $Ox,Oy,Oz$ tại các điểm có cùng khoảng cách $m>0$ đến gốc nên có phương trình đoạn chắn $\\dfrac{x}{m}+\\dfrac{y}{m}+\\dfrac{z}{m}=1$, tức $x+y+z-m=0$.\nMặt phẳng đi qua $M(1;2;1)$ nên $1+2+1-m=0\\Rightarrow m=4>0$ (thoả mãn).\nPhương trình mặt phẳng: $x+y+z-4=0$, đồng nhất với $x+ay+bz+c=0$ cho $a=1$.\nVậy $a=1$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0805",
+  "dap_an": "C",
+  "loi_giai": "$\\overrightarrow{AB}=(1;2;3)$ là một vectơ chỉ phương của $AB$.\nVectơ $\\overrightarrow{u}=(1;b;c)$ cùng phương với $\\overrightarrow{AB}$ và có hoành độ bằng $1$ nên $\\overrightarrow{u}=\\overrightarrow{AB}$, suy ra $b=2$, $c=3$.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0806",
+  "dap_an": "19",
+  "loi_giai": "$\\overrightarrow{AB}=(6;6;-3)$ là vectơ chỉ phương của đường bay; mặt phẳng $(Oxy)$ có vectơ pháp tuyến $\\overrightarrow{k}=(0;0;1)$.\n$\\sin\\alpha=\\dfrac{|\\overrightarrow{AB}\\cdot\\overrightarrow{k}|}{|\\overrightarrow{AB}|\\cdot|\\overrightarrow{k}|}=\\dfrac{3}{\\sqrt{36+36+9}}=\\dfrac{3}{9}=\\dfrac{1}{3}$.\nSuy ra $\\alpha=\\arcsin\\dfrac{1}{3}\\approx19,47^{\\circ}$, làm tròn đến hàng đơn vị được $19$.\nVậy $\\alpha=19$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0807",
+  "dap_an": "B",
+  "loi_giai": "$\\overrightarrow{AB}=(1;3;2)$ là một vectơ chỉ phương của $AB$.\nVectơ $\\overrightarrow{u}=(1;b;c)$ cùng phương với $\\overrightarrow{AB}$ và có hoành độ bằng $1$ nên $\\overrightarrow{u}=\\overrightarrow{AB}$, suy ra $b=3$, $c=2$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0808",
+  "dap_an": "D",
+  "loi_giai": "Điểm $M(2;3;4)$ ứng với $t=0$ nên $M\\in d$.\nĐiểm $N(2;5;-3)$: $3+2t=5\\Rightarrow t=1$, khi đó $z=4-7=-3$ nên $N\\in d$.\nĐiểm $P(2;1;11)$: $t=-1$, khi đó $z=4+7=11$ nên $P\\in d$.\nĐiểm $Q(2;7;10)$: $3+2t=7\\Rightarrow t=2$, khi đó $z=4-14=-10\\neq10$ nên $Q\\notin d$.\nChọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0809",
+  "dap_an": "C",
+  "loi_giai": "Phương trình chính tắc của đường thẳng có dạng $\\dfrac{x-x_{0}}{a}=\\dfrac{y-y_{0}}{b}=\\dfrac{z-z_{0}}{c}$ với $a,b,c$ là các hằng số không đồng thời bằng $0$.\nCác phương án A, B, D có mẫu số chứa biến ($z$ hoặc $y$) nên không phải phương trình chính tắc.\nPhương án C có các mẫu số $3;4;5$ là hằng số nên là phương trình chính tắc.\nChọn C.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0810",
+  "dap_an": "B",
+  "loi_giai": "Góc giữa hai đường thẳng nằm trong $[0^{\\circ};90^{\\circ}]$ nên côsin của góc đó không âm: $\\cos(d,d')=\\left|\\cos(\\overrightarrow{u},\\overrightarrow{u'})\\right|$.\nDo đó $\\cos(d,d')=\\dfrac{|aa'+bb'+cc'|}{\\sqrt{a^{2}+b^{2}+c^{2}}\\cdot\\sqrt{a'^{2}+b'^{2}+c'^{2}}}$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0811",
+  "dap_an": "B",
+  "loi_giai": "Phương trình chính tắc của đường thẳng có các mẫu số là hằng số.\nCác phương án A, C, D có mẫu số chứa biến ($z$ hoặc $y$) nên bị loại.\nPhương án B có các mẫu số $7;-1;-2$ là hằng số nên là phương trình chính tắc.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0812",
+  "dap_an": "A",
+  "loi_giai": "Mặt phẳng $(Oyz)$ gồm các điểm có hoành độ bằng $0$ nên có phương trình $x=0$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0813",
+  "dap_an": "D",
+  "loi_giai": "Mặt phẳng $(Oxz)$ gồm các điểm có tung độ bằng $0$ nên có phương trình $y=0$.\nChọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0814",
+  "dap_an": "B",
+  "loi_giai": "Mặt phẳng $(P):2x-y+3z-4=0$ có vectơ pháp tuyến $(2;-1;3)$.\nPhương án A: $4x-2y+6z-8=0\\Leftrightarrow 2x-y+3z-4=0$ trùng với $(P)$, không song song.\nPhương án B: $2x-y+3z+10=0$ có $\\dfrac{2}{2}=\\dfrac{-1}{-1}=\\dfrac{3}{3}\\neq\\dfrac{10}{-4}$ nên song song với $(P)$.\nPhương án C, D có vectơ pháp tuyến $(2;1;3)$, $(1;-1;1)$ không cùng phương với $(2;-1;3)$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0815",
+  "dap_an": "4",
+  "loi_giai": "$(Q)\\parallel(P)$ nên $(Q)$ có dạng $2x+3y+z+d=0$ với $d\\neq-1$.\n$(Q)$ đi qua $M(-1;-1;4)$ nên $2\\cdot(-1)+3\\cdot(-1)+4+d=0\\Rightarrow d=1$ (thoả $d\\neq-1$).\nVậy $(Q):2x+3y+z+1=0$, suy ra $a=2$, $b=3$, $d=1$.\n$T=a+b-d=2+3-1=4$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0816",
+  "dap_an": "D",
+  "loi_giai": "Hai đường thẳng có vectơ chỉ phương $\\overrightarrow{u_{1}}=(1;1;\\sqrt{2})$ và $\\overrightarrow{u_{2}}=(1;1;-\\sqrt{2})$.\n$\\overrightarrow{u_{1}}\\cdot\\overrightarrow{u_{2}}=1+1-2=0$ nên $\\overrightarrow{u_{1}}\\perp\\overrightarrow{u_{2}}$.\nVậy góc giữa hai đường thẳng bằng $90^{\\circ}$. Chọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0817",
+  "dap_an": "0.77",
+  "loi_giai": "Gọi $N$ là biến cố \"học sinh là nam\", $H$ là biến cố \"học sinh tham gia câu lạc bộ Hip hop\". Ta có $P(N)=0,4$, $P(\\overline{N})=0,6$, $P(H|N)=0,25$, $P(H|\\overline{N})=0,05$.\nTheo công thức xác suất toàn phần: $P(H)=0,4\\cdot0,25+0,6\\cdot0,05=0,1+0,03=0,13$.\nTheo công thức Bayes: $P(N|H)=\\dfrac{P(N)\\cdot P(H|N)}{P(H)}=\\dfrac{0,1}{0,13}=\\dfrac{10}{13}\\approx0,77$.\nVậy xác suất cần tìm là $\\dfrac{10}{13}\\approx0,77$.",
+  "chuong": "XS",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "đề không nêu làm tròn; đáp số đúng 10/13"
+ },
+ {
+  "id": "X0818",
+  "dap_an": "B",
+  "loi_giai": "Đường thẳng $d$ đi qua $A(2;1;0)$, có vectơ chỉ phương $\\overrightarrow{u}=(1;2;-1)$.\nPhương án A có vectơ chỉ phương $(1;-2;1)$ không cùng phương với $\\overrightarrow{u}$ nên loại.\nPhương án C trùng với $d$; phương án D đi qua $(3;3;-1)$ là điểm của $d$ (ứng với $t=1$) nên trùng $d$.\nPhương án B có vectơ chỉ phương $(1;2;-1)$ và đi qua $(0;0;1)$; điểm này không thuộc $d$ vì $x=2+t=0\\Rightarrow t=-2$, khi đó $y=1-4=-3\\neq0$.\nVậy đường thẳng ở phương án B song song với $d$. Chọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0819",
+  "dap_an": "A",
+  "loi_giai": "Theo công thức xác suất có điều kiện: $P(A|B)=\\dfrac{P(AB)}{P(B)}=\\dfrac{0,4}{0,6}=\\dfrac{2}{3}$.\nChọn A.",
+  "chuong": "XS",
+  "do_chac": "vua",
+  "de_sai": true,
+  "ghi": "đề sai: P(AB)=0,4 > P(A)=0,3 vô lý; vẫn tính theo công thức"
+ },
+ {
+  "id": "X0820",
+  "dap_an": "A",
+  "loi_giai": "Trên $[1;2]$ có $x^{3}\\ge0$ nên $S=\\int_{1}^{2}x^{3}\\,dx$.\n$S=\\dfrac{x^{4}}{4}\\Big|_{1}^{2}=\\dfrac{16}{4}-\\dfrac{1}{4}=\\dfrac{15}{4}$.\nChọn A.",
+  "chuong": "NHTP",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0821",
+  "dap_an": "B",
+  "loi_giai": "Mặt cầu $(x-a)^{2}+(y-b)^{2}+(z-c)^{2}=R^{2}$ có tâm $(a;b;c)$.\nTừ $x^{2}+(y-2)^{2}+(z+5)^{2}=9$ suy ra tâm $(0;2;-5)$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0822",
+  "dap_an": "A",
+  "loi_giai": "Mặt phẳng $(P):x-4y+2z-7=0$ có một vectơ pháp tuyến là $\\overrightarrow{n}=(1;-4;2)$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0823",
+  "dap_an": "A",
+  "loi_giai": "Gọi $A$ là biến cố \"sản phẩm là phế phẩm\". $P(I)=0,6$, $P(II)=0,4$, $P(A|I)=0,02$, $P(A|II)=0,03$.\nTheo công thức xác suất toàn phần: $P(A)=0,6\\cdot0,02+0,4\\cdot0,03=0,012+0,012=0,024$.\nChọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0824",
+  "dap_an": "A",
+  "loi_giai": "Từ $\\overrightarrow{OM}=2\\overrightarrow{i}+3\\overrightarrow{j}-4\\overrightarrow{k}$ suy ra $M(2;3;-4)$.\nHình chiếu vuông góc của $M$ lên mặt phẳng $(Oyz)$ là điểm giữ nguyên tung độ, cao độ và cho hoành độ bằng $0$: $H(0;3;-4)$.\nChọn A.",
+  "chuong": "VT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0825",
+  "dap_an": "99.9",
+  "loi_giai": "Gọi $A$ là biến cố \"người đó thắt dây an toàn\", $B$ là biến cố \"người đó tử vong\".\n$P(\\overline{A})=29\\%$ nên $P(A)=71\\%$; $P(B)=0,37\\%$; $P(\\overline{A}B)=0,28\\%$.\n$P(AB)=P(B)-P(\\overline{A}B)=0,37\\%-0,28\\%=0,09\\%$.\n$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0,09}{71}\\approx0,00127$.\n$P(\\overline{B}|A)=1-P(B|A)\\approx1-0,00127=0,99873\\approx99,9\\%$.\nVậy xác suất cần tìm xấp xỉ $99,9\\%$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0826",
+  "dap_an": "3.09",
+  "loi_giai": "Tâm nằm trên trục tung nên $I(0;t;0)$.\nMặt cầu đi qua $A,B$ nên $IA^{2}=IB^{2}$: $1+(2-t)^{2}+1=0+(4-t)^{2}+9$.\nKhai triển: $t^{2}-4t+6=t^{2}-8t+25\\Rightarrow4t=19\\Rightarrow t=\\dfrac{19}{4}$.\nBán kính: $R^{2}=IA^{2}=2+\\left(2-\\dfrac{19}{4}\\right)^{2}=2+\\dfrac{121}{16}=\\dfrac{153}{16}$, suy ra $R=\\dfrac{\\sqrt{153}}{4}\\approx3,09$.\nVậy bán kính xấp xỉ $3,09$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0827",
+  "dap_an": "B",
+  "loi_giai": "$\\overrightarrow{BC}=(0+1;-2-0;-1-4)=(1;-2;-5)$.\nMặt phẳng vuông góc với $BC$ nhận $\\overrightarrow{BC}$ làm vectơ pháp tuyến, đi qua $A(2;1;-1)$: $1(x-2)-2(y-1)-5(z+1)=0$.\nKhai triển: $x-2y-5z-2+2-5=0$, tức $x-2y-5z-5=0$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0828",
+  "dap_an": "3",
+  "loi_giai": "Phương trình đường cáp: $x=12+2t,\\ y=5-2t,\\ z=t$ (với $t$ là tham số).\nTại $B$: $x=612\\Rightarrow12+2t=612\\Rightarrow t=300$.\nQuãng đường từ $A$ đến $B$: $AB=|t|\\cdot|\\overrightarrow{u}|=300\\cdot\\sqrt{4+4+1}=300\\cdot3=900$ (m).\nThời gian: $\\dfrac{900}{5}=180$ giây $=3$ phút.\nVậy cabin đến $B$ sau $3$ phút.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0829",
+  "dap_an": "B",
+  "loi_giai": "Đầu mút trái của nhóm đầu tiên là $80$, đầu mút phải của nhóm cuối cùng là $90$.\nKhoảng biến thiên: $R=90-80=10$ (gam).\nChọn B.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0830",
+  "dap_an": "0.5",
+  "loi_giai": "Theo công thức cộng xác suất: $P(A\\cup B)=P(A)+P(B)-P(AB)$, suy ra $0,5=0,2+0,4-P(AB)$.\nDo đó $P(AB)=0,1$.\n$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0,1}{0,2}=0,5$.\nVậy $P(B|A)=0,5$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "đề dính bảng đáp án cuối; không ảnh hưởng đáp số"
+ },
+ {
+  "id": "X0831",
+  "dap_an": "A",
+  "loi_giai": "Mặt cầu tâm $I(1;2;-1)$, bán kính $R=5$ có phương trình $(x-1)^{2}+(y-2)^{2}+(z+1)^{2}=25$.\nKhai triển: $x^{2}+y^{2}+z^{2}-2x-4y+2z+1+4+1-25=0$, tức $x^{2}+y^{2}+z^{2}-2x-4y+2z-19=0$.\nChọn A.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0832",
+  "dap_an": "B",
+  "loi_giai": "$d_{1}$ đi qua $A(2;0;-3)$ có $\\overrightarrow{u_{1}}=(-2;4;6)$; $d_{2}$ đi qua $B(1;2;0)$ có $\\overrightarrow{u_{2}}=(-1;2;3)$.\n$\\overrightarrow{u_{1}}=2\\overrightarrow{u_{2}}$ nên hai đường thẳng song song hoặc trùng nhau.\nThay $B(1;2;0)$ vào $d_{1}$: $1=2-2t\\Rightarrow t=\\dfrac{1}{2}$; khi đó $y=4t=2$ và $z=-3+6t=0$ đều đúng, nên $B\\in d_{1}$.\nVậy $d_{1}$ và $d_{2}$ trùng nhau. Chọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0833",
+  "dap_an": "B",
+  "loi_giai": "$y'=x^{2}-2x-3$; $y'=0\\Leftrightarrow x=-1$ hoặc $x=3$, cả hai thuộc $[-5;7]$.\n$y(-5)=-\\dfrac{125}{3}-25+15-5=-\\dfrac{170}{3}$.\n$y(-1)=-\\dfrac{1}{3}-1+3-5=-\\dfrac{10}{3}$; $y(3)=9-9-9-5=-14$; $y(7)=\\dfrac{343}{3}-49-21-5=\\dfrac{118}{3}$.\nSo sánh: $-\\dfrac{170}{3}\\approx-56,67$ là nhỏ nhất.\nVậy $m=-\\dfrac{170}{3}$. Chọn B.",
+  "chuong": "HS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0834",
+  "dap_an": "B",
+  "loi_giai": "Giá trị đại diện của các nhóm lần lượt là $19,25;\\ 19,75;\\ 20,25;\\ 20,75;\\ 21,25$ với tần số $13;45;24;12;6$. Cỡ mẫu $n=13+45+24+12+6=100$.\n$\\overline{x}=\\dfrac{19,25\\cdot13+19,75\\cdot45+20,25\\cdot24+20,75\\cdot12+21,25\\cdot6}{100}=\\dfrac{2001,5}{100}=20,015$.\nChọn B.",
+  "chuong": "SDT",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0835",
+  "dap_an": "A",
+  "loi_giai": "$P(B|A)=\\dfrac{P(AB)}{P(A)}=\\dfrac{0,3}{0,5}=0,6$.\nChọn A.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0836",
+  "dap_an": "D",
+  "loi_giai": "$\\overrightarrow{MN}=(2;2;-2)=2(1;1;-1)$ nên đường thẳng $MN$ có vectơ chỉ phương $(1;1;-1)$.\nĐường thẳng đi qua $M(1;0;1)$ nên có phương trình tham số $x=1+t,\\ y=t,\\ z=1-t$.\nChọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0837",
+  "dap_an": "B",
+  "loi_giai": "Bán kính: $R^{2}=IM^{2}=(4-0)^{2}+(0-0)^{2}+(0+3)^{2}=16+9=25$.\nMặt cầu tâm $I(0;0;-3)$ có phương trình $x^{2}+y^{2}+(z+3)^{2}=25$.\nChọn B.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0838",
+  "dap_an": "1.73",
+  "loi_giai": "Bốn điểm $A,B,C,D$ là bốn đỉnh của hình lập phương có các đỉnh có toạ độ thuộc $\\{0;2\\}$, tâm $I(1;1;1)$.\nKiểm tra: $IA^{2}=(2-1)^{2}+1+1=3$; tương tự $IB^{2}=IC^{2}=3$; $ID^{2}=1+1+1=3$.\nVậy $I(1;1;1)$ cách đều bốn điểm nên là tâm mặt cầu ngoại tiếp tứ diện, bán kính $R=\\sqrt{3}\\approx1,73$.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "X0839",
+  "dap_an": "0.33",
+  "loi_giai": "$P(A|B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{0,2}{0,6}=\\dfrac{1}{3}\\approx0,33$.\nVậy $P(A|B)\\approx0,33$.",
+  "chuong": "XS",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "đề có dòng \"HẾT\" thừa cuối câu"
+ },
+ {
+  "id": "X0840",
+  "dap_an": "D",
+  "loi_giai": "Mặt phẳng $(\\alpha):x+2y-z+1=0$ có vectơ pháp tuyến $\\overrightarrow{n_{\\alpha}}=(1;2;-1)$; mặt phẳng $(\\beta):2x+y+4z+1=0$ có $\\overrightarrow{n_{\\beta}}=(2;1;4)$.\n$\\overrightarrow{n_{\\alpha}}\\cdot\\overrightarrow{n_{\\beta}}=1\\cdot2+2\\cdot1+(-1)\\cdot4=0$ nên hai vectơ pháp tuyến vuông góc.\nVậy góc giữa hai mặt phẳng bằng $90^{\\circ}$. Chọn D.",
+  "chuong": "PPTD",
+  "do_chac": "cao",
+  "de_sai": true,
+  "ghi": "đề ghi nhầm \"đường thẳng\" thay vì mặt phẳng cho (β)"
+ }
+]

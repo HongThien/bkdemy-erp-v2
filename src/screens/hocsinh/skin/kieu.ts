@@ -8,7 +8,7 @@ import type { LoiHS } from './loi'
 
 
 // Thêm style mới: thêm id ở đây + file skin/styles/<id>.ts + đăng ký trong registry.ts + migration nới CHECK hs_giao_dien.skin.
-export type SkinId = 'rpg' | 'toi_gian' | 'khoi' | 'lofi' | 'dang_yeu'
+export type SkinId = 'rpg' | 'toi_gian' | 'khoi' | 'lofi' | 'dang_yeu' | 'halloween'
 export type CheDo = 'sang' | 'toi' | 'he_thong'
 // hieu_ung_game: công tắc của em (mig 202610020037, mặc định bật) — tắt ⇒ không bản đồ phiêu lưu / màn đấu. Không có trường (bản cũ) = bật.
 export type GiaoDien = { skin: SkinId; che_do: CheDo; hinh_nen: string; hieu_ung_game?: boolean }
@@ -85,6 +85,38 @@ export type HomeSong = {
   /** linh vật đổi tư thế (khác `nv` = ghép mảnh lên một hình người) — style khai MỘT trong hai */
   linhVat?: { nam: LinhVatSong; nu: LinhVatSong }
 }
+/** BỘ ĐÁNH RIÊNG của style (Halloween 25/10 — lần đầu dựng; khuôn kế hoạch design/DON-HANG-NHO-XINH-DANH.md): linh vật của style ra trận THAY 6 nhân vật anime.
+ *  g = thư mục ảnh: `${g}/<nam|nu>/<tư thế>.webp`, mọi tư thế cùng khung w×h · nv[giới].thanDung = cao thân tư thế đứng / cao khung ·
+ *  tu[tư thế]: ax, ay = điểm đặt chân (tỉ lệ khung) · tay = điểm phát đòn (tỉ lệ khung) · fx = 5 ảnh vật bay thay bộ chung (cùng khổ + hướng như bộ RPG).
+ *  Chọn giới theo hồ sơ HS (skin/nhanVat.ts `datGioiDau`). Style không khai ⇒ nhân vật em chọn như cũ. */
+export type BoDau = {
+  g: string; w: number; h: number
+  nv: Record<'nam' | 'nu', { thanDung: number; tu: Record<string, { ax: number; ay: number; tay: number[][] }> }>
+  fx?: Record<'fx_cau_lua' | 'fx_cau_bang' | 'fx_dan_ma' | 'fx_thien_thach' | 'fx_bang_boc', string>
+}
+/** HOẠT CẢNH TRÊN TRANH NỀN (Halloween 30/10 — skin/HoatCanhNen.tsx): lớp chuyển động phủ lên tranh nền màn ngoài, CHỈ dùng transform + opacity
+ *  (chạy trên GPU, không khựng khi trang đang tải dữ liệu). Không khai ⇒ tranh tĩnh như cũ.
+ *  diem[id hình nền] = các điểm SÁNG vẽ sẵn trong tranh KHỔ NGANG (khoá `<id>:doc` = tranh KHỔ DỌC của hình nền đó, nếu đã đo — không có ⇒ điện thoại chỉ có dơi / ma trôi): tl = rộng/cao ảnh nền; x, y = tâm (% ảnh); r = đường kính quầng (% bề ngang ảnh);
+ *    kieu: 'bi' bí ngô sáng → TẮT → sáng · 'den' đèn chập chờn nhẹ · 'nen' nến lay · 'dom' đom đóm loé rồi tắt · 'trang' trăng thở chậm;
+ *    mau = màu quầng (mặc định theo kiểu) · ck = chu kỳ (giây) · tre = lệch pha (giây) để các điểm không nháy cùng lúc.
+ *  tienCanh = vật ĐẶT RỜI ở góc dưới màn (ảnh trong suốt, mép mờ dần) + điểm sáng của nó (x, y, r theo % ảnh đó) — cho vật trong tranh hay bị xén / bị nhân vật che
+ *    (bí ngô Halloween); canh = góc trái / phải, rong = bề ngang (CSS), tl = rộng/cao ảnh. Mọi hình nền đều dùng.
+ *  doi = dơi bay ngang trời (src ảnh 1 con, so con) · ma = bé ma nhỏ trôi xa (mỗi ảnh 1 con) · nvBong = nhân vật Home bồng bềnh (cần homeSong.linhVat). */
+/** MA VẢI trồi lên từ 1 bia mộ rồi bay lượn, mờ dần, lặp lại (ERP Halloween 30/10 — kiểu video Thùy gửi). x, y = chân bia mộ (% ảnh nền) · s = bề ngang
+ *  con ma (% bề ngang ảnh) · ck = chu kỳ 1 vòng (giây) · tre = lệch pha · lat = bay lượn ngược chiều (lật ngang quỹ đạo). Ma vẽ bằng SVG trong HoatCanhNen. */
+export type MaVai = { x: number; y: number; s: number; ck?: number; tre?: number; lat?: boolean }
+export type DiemSang = { x: number; y: number; r: number; kieu: 'bi' | 'den' | 'nen' | 'dom' | 'trang'; mau?: string; ck?: number; tre?: number }
+export type HoatCanh = {
+  /** neoY = điểm neo dọc của tranh khi phủ khung (0 = `center top` như tranh app HS · 0.5 = `center`) — PHẢI khớp `background-position` của hình nền đó.
+   *  ma = ma vải trồi từ mộ · suong = sương mù trôi sát đất (2 lớp ngược chiều). */
+  diem?: Record<string, { tl: number; neoY?: number; ds: DiemSang[]; ma?: MaVai[]; suong?: boolean }>
+  /** truoc = đứng TRƯỚC nhân vật khi màn có cột nhân vật (như ảnh mẫu: bí ngô tiền cảnh, ma phía sau); màn không có cột nhân vật ⇒ lùi ra sau nội dung. */
+  /** chiNen = chỉ hiện với các hình nền này (bỏ trống = mọi hình nền). */
+  tienCanh?: { src: string; tl: number; rong: string; canh: 'trai' | 'phai'; ds: DiemSang[]; truoc?: boolean; chiNen?: string[] }[]
+  doi?: { src: string; so: number }
+  ma?: string[]
+  nvBong?: boolean
+}
 /** Thẻ "Việc tiếp theo" (nền · chữ · viền) */
 export type TheTiep = { bg: string; ink: string; border: string }
 export type NenManId = 'bxh' | 'nhiem_vu' | 'thanh_tuu'
@@ -157,6 +189,8 @@ export type BossAnh = {
   /** có ⇒ MÔ HÌNH dựng bằng khối cơ bản theo thông số này (bossChibi3D.ts); không có cả hai ⇒ tấm ảnh 2D (quaiAnh.ts) */
   mo3d?: MoHinhChibi
   ten: string
+  /** boss CUỐI cốt truyện (vd Thùy Form 2/3): có đủ hoạt ảnh để xem thử/gắn pha, nhưng KHÔNG vào bể boss NGẪU NHIÊN của trận thường (dsBossNgauNhien bỏ qua). */
+  cuoi?: boolean
   /** chiều cao nhân vật trong cảnh 3D (đơn vị thế giới; quái thường ~1.3–1.6) */
   cao: number
   dung: string; noi: string; chieu: string; trung: string; gian: string; ha: string
@@ -223,6 +257,10 @@ export type Skin = {
   nhanVatBoCuc?: { cot: string; cao: string; lech: string; bong?: number; dinh?: boolean }
   // Màn chính "sống" (mây trôi sau cửa sổ + nhân vật cử động) — xem `HomeSong`. Không khai ⇒ Home tĩnh.
   homeSong?: HomeSong
+  // Hoạt cảnh phủ trên tranh nền màn ngoài (bí ngô sáng/tắt · dơi bay · ma trôi) — xem `HoatCanh`. Không khai ⇒ tranh tĩnh.
+  hoatCanh?: HoatCanh
+  // Bộ đánh riêng (linh vật của style ra trận) — xem `BoDau`. Không khai ⇒ màn đấu dùng nhân vật em chọn (6 nhân vật anime).
+  dau?: BoDau
   // Bảng màu 3D của bản đồ phiêu lưu (thế giới · lục địa · chặng đường · màn đấu) — 1 bảng duy nhất cho cả cảnh (skin/the3d/kieuMau.ts).
   the3d?: BangMau3D
   // Sổ hình bản đồ phiêu lưu 2D (xem `BanDo2D`). Không khai ⇒ mọi tầng vẽ hình tạm theo màu `the3d`.

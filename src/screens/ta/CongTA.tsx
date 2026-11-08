@@ -275,7 +275,7 @@ function NgayCong({ ngay, onDoi }: { ngay: string; onDoi?: () => void }) {
             : <div className="mt-1.5 flex flex-col gap-1.5">{viecs.map((v) => <DongSua key={v.id} r={v} loai={loai} lop={lop} onXong={xongSua} />)}</div>}
           {!moThem
             ? <button onClick={() => setMoThem(true)} disabled={!coCa} className="mt-2 rounded-full bg-[#EEF3FF] px-3 py-1.5 text-[13px] font-bold text-[#2F73F6] disabled:opacity-40">+ Thêm việc ngoài lịch</button>
-            : <FormViec ngay={ngay} loai={loai} lop={lop} ban={!!ban} onHuy={() => setMoThem(false)}
+            : <FormViec ngay={ngay} loai={loai} lop={lop} ban={!!ban} daCo={viecs} onHuy={() => setMoThem(false)}
                 onLuu={(v) => chay('them', async () => { await ghiCong(v); setMoThem(false) }, 'Đã ghi công')} />}
           {!coCa && <p className="pt-1.5 text-[12px] text-[#63709A]">{laHomNay ? 'Checkin trước rồi mới thêm việc.' : 'Khai bù ca ngày này trước rồi mới thêm việc.'}</p>}
         </div>
@@ -353,8 +353,8 @@ function KhaiBuCa({ coCaMo, coCa, ban, onLuu }: { coCaMo: boolean; coCa: boolean
   )
 }
 
-function FormViec({ ngay, loai, lop, ban, onHuy, onLuu, dau, nut = 'Ghi công' }: {
-  ngay: string; loai: LoaiViec[]; lop: { id: string; ten_lop: string; mon: string }[]; ban: boolean
+function FormViec({ ngay, loai, lop, ban, onHuy, onLuu, dau, nut = 'Ghi công', daCo = [] }: {
+  ngay: string; loai: LoaiViec[]; lop: { id: string; ten_lop: string; mon: string }[]; ban: boolean; daCo?: DongCong[]
   onHuy: () => void; onLuu: (v: Parameters<typeof ghiCong>[0]) => void
   dau?: DongCong; nut?: string   // dau = việc đang sửa (điền sẵn)
 }) {
@@ -366,6 +366,10 @@ function FormViec({ ngay, loai, lop, ban, onHuy, onLuu, dau, nut = 'Ghi công' }
   const [gc, setGc] = useState(dau?.ghi_chu ?? '')
   const L = loai.find((l) => l.ma === ma)
   const optLop = useMemo(() => lop.map((l) => ({ id: l.id, label: l.ten_lop, sub: l.mon })), [lop])
+  // Thùy 04/11: việc bổ trợ trùng giờ việc bổ trợ đã ghi (vd kèm em trong giờ trực khối) vẫn ghi được — để lưu tên em —
+  // nhưng lương chỉ tính khoảng giờ đó 1 lần (_ta_luong_tinh). Báo trước để TA khỏi tưởng được cộng thêm.
+  const laBT = (m: string | null) => loai.find((l) => l.ma === m)?.tinh_vao === 'bo_tro'
+  const trung = laBT(ma) && bat && ket ? daCo.filter((v) => v.id !== dau?.id && v.duyet !== 'tu_choi' && laBT(v.loai_viec) && v.gio_bat_dau && v.gio_ket_thuc && hm(v.gio_bat_dau) < ket && hm(v.gio_ket_thuc) > bat) : []
   const thieu = (L?.can_lop && !lopId && ma !== 'tro_giang') || (ma === 'khac' && !gc.trim()) || (L?.don_vi === 'gio' && (!bat || !ket))
   return (
     <div className="mt-2 flex flex-col gap-2 rounded-2xl bg-[#F4F7FE] p-2.5">
@@ -385,6 +389,7 @@ function FormViec({ ngay, loai, lop, ban, onHuy, onLuu, dau, nut = 'Ghi công' }
       </div>
       {L?.can_hs && <label className="flex flex-col gap-0.5 text-[11.5px] font-semibold text-[#63709A]">Học sinh<input value={hs} onChange={(e) => setHs(e.target.value)} placeholder="Tên học sinh" className="rounded-lg border border-[#D6DEF0] bg-white px-2 py-1.5 text-[13px] text-[#16224D]" /></label>}
       <label className="flex flex-col gap-0.5 text-[11.5px] font-semibold text-[#63709A]">Ghi chú{ma === 'khac' ? ' (bắt buộc)' : ''}<input value={gc} onChange={(e) => setGc(e.target.value)} className="rounded-lg border border-[#D6DEF0] bg-white px-2 py-1.5 text-[13px] text-[#16224D]" /></label>
+      {trung.length > 0 && <p className="rounded-lg bg-[#FFF5E0] px-2 py-1.5 text-[12px] font-semibold text-[#9A6200]">Giờ này trùng với {trung.map((v) => `${v.ten_loai}${v.ten_lop ? ' ' + v.ten_lop : ''} ${hm(v.gio_bat_dau!)}–${hm(v.gio_ket_thuc!)}`).join(', ')} đã ghi. Vẫn ghi được (để lưu tên em), nhưng giờ bổ trợ chồng nhau chỉ tính 1 lần.</p>}
       <div className="flex items-center gap-2">
         <button disabled={ban || !!thieu} onClick={() => onLuu({ loai: ma, ngay, lop: lopId, bat, ket, hs, ghiChu: gc })} className="rounded-full bg-[#2F73F6] px-4 py-1.5 text-[13px] font-bold text-white disabled:opacity-40">{nut}</button>
         <button onClick={onHuy} className="rounded-full px-3 py-1.5 text-[13px] font-semibold text-[#63709A]">Huỷ</button>
@@ -530,6 +535,7 @@ function Luong({ nsId }: { nsId: string }) {
               <div className="rounded-2xl bg-[#F4F7FE] px-3 py-2">
                 <div className="flex items-baseline justify-between gap-2"><p className="text-[14px] font-bold text-[#16224D]">Bổ trợ</p><p className="text-[14px] font-bold text-[#16224D]">{tien(l.bo_tro_tien)}</p></div>
                 <p className="text-[12px] text-[#63709A]">{so(bt.gio)}/{so(bt.chi_tieu)} giờ ({bt.so_lop} lớp × {so(bt.chi_tieu_moi_lop)} giờ){bt.ti_le != null ? ` · ${so(bt.ti_le * 100)}%` : ''}</p>
+                {Number(bt.gio_trung) > 0 && <p className="text-[12px] text-[#C27A00]">Bạn khai {so(bt.gio_khai ?? 0)} giờ, trong đó {so(bt.gio_trung ?? 0)} giờ các việc bổ trợ chồng giờ nhau — chỉ tính 1 lần.</p>}
               </div>
             )}
             {l.chi_tiet.ngoai_package.map((x, i) => (

@@ -12,7 +12,7 @@
 //  2. Buổi BÙ có `lop_id` NULL ⇒ MẤT nhãn môn (134 lần đo ET). Phải lùi về buổi GỐC qua
 //     `buoi_hoc_hs.bu_cho_buoi_id` mới lấy được môn. Bỏ qua = im lặng đánh rơi data thật.
 import { supabase } from './supabase'
-import { masteryOfDang, cfgMastery, RESULT_VALUE } from '../gami/mastery.js'
+import { masteryOfDang, cfgMastery } from '../gami/mastery.js'
 import {
   DANHGIA_CONFIG, cuaSoCua, cuaSoTruoc, cuoiCuaSo, chuoiDiemChuyenDe, chamPha1, chamPha2,
   trungBinhTruot3, docAmLienTiep, dangDoiBucketXau, deXuatLevelKienThuc, deXuatLevelThaiDo,
@@ -102,78 +102,15 @@ type DoRow = { hoc_sinh_id: string; ma_dang: string; value: number; t: string; s
 
 // Môn của lần đo = `lop.mon` của buổi; buổi BÙ (lop_id null) lùi về buổi gốc theo TỪNG HS
 // (1 buổi bù gom HS từ nhiều lớp/môn khác nhau → không thể suy 1 môn cho cả buổi).
-async function napLanDo(hsIds: string[], mon: string): Promise<DoRow[]> {
+// 26/10 (Thùy "B"): nạp dòng đo Ở DB (fn_botro_lan_do_lop, mig 202610261813) — cùng ngữ nghĩa bản cũ NHƯNG quy dạng theo công tắc bản đồ
+// (mastery_ban_do_moi: K6–12 mã NDB… · cấp 1 + Hình giữ cũ) để chuyên đề / dạng yếu của bước quét CHỐT TUẦN khớp mastery + bổ trợ yếu.
+// cheDo: undefined = theo công tắc · 'cu' · 'moi' · 'tho' = mã chép (y hệt bản TS cũ — chỉ để đối chiếu).
+export type CheDoLanDo = 'tho' | 'cu' | 'moi'
+async function napLanDo(hsIds: string[], mon: string, cheDo?: CheDoLanDo): Promise<DoRow[]> {
   if (!hsIds.length) return []
-  // Phân trang THẬT (xem `fetchAllRows`) — 1 lớp 14 HS có lịch sử từ tháng 7 đã vượt 1000 dòng, và
-  // `.limit(LIMIT)` cũ bị PostgREST cắt im lặng ở 1000. `.order('graded_at')` để trang nào cũng tất
-  // định (không có order thì `.range()` trên UUID PK có thể lặp/thiếu dòng giữa các trang).
-  const rows = await fetchAllRows<any>((from, to) => supabase
-    .from('gami_grades')
-    .select('hoc_sinh_id, result, graded_at, buoi_hoc_id, prob:problem_id(phase, ma_dang, hinh_baitoan_id)')
-    .in('hoc_sinh_id', hsIds)
-    .order('graded_at', { ascending: true })
-    .order('id', { ascending: true })
-    .range(from, to))
-
-  // Môn + NGÀY của buổi: 1 query cho mọi buổi liên quan.
-  // `ngay` để neo `t` timeline theo NGÀY BUỔI (không ngày chấm) — chấm trễ 2 tuần (buổi 10/08 chấm 23/08)
-  // KHÔNG được đẩy phép đo sang cửa sổ 23/08. Dùng ma_dang × HS × timestamp lần đo → sort/window/mastery
-  // đều đúng khi t = ngày buổi.
-  const buoiIds = [...new Set(rows.map((r) => r.buoi_hoc_id).filter(Boolean))]
-  const monCuaBuoi = new Map<string, string | null>()
-  const ngayCuaBuoi = new Map<string, string | null>()
-  const buoiThieuMon: string[] = []
-  if (buoiIds.length) {
-    const { data: buois } = await supabase.from('buoi_hoc').select('id, ngay, lop:lop_id(mon)').in('id', buoiIds).limit(LIMIT)
-    for (const b of (buois ?? []) as any[]) {
-      const m = b.lop?.mon ?? null
-      monCuaBuoi.set(b.id, m)
-      ngayCuaBuoi.set(b.id, b.ngay ?? null)
-      if (!m) buoiThieuMon.push(b.id) // buổi bù — xử ở dưới
-    }
-  }
-  // Bẫy #2: buổi bù → môn theo LỚP GỐC của từng HS.
-  const monBuTheoHs = new Map<string, string>() // `${buoiId}|${hsId}` → mon
-  if (buoiThieuMon.length) {
-    const { data: links } = await supabase.from('buoi_hoc_hs')
-      .select('buoi_hoc_id, hoc_sinh_id, goc:bu_cho_buoi_id(lop:lop_id(mon))')
-      .in('buoi_hoc_id', buoiThieuMon).limit(LIMIT)
-    for (const l of (links ?? []) as any[]) {
-      const m = l.goc?.lop?.mon
-      if (m) monBuTheoHs.set(`${l.buoi_hoc_id}|${l.hoc_sinh_id}`, m)
-    }
-  }
-
-  // Thùy 14/10 (bước 2 Hình mô hình): lần đo của BÀI MÔ HÌNH nằm ở hinh_baitoan_id (ma_dang trống). Dạng của case = hinh_baitoan.ma
-  // (mã gốc bất biến) ⇒ đổi sang mã đó để cả engine (diện · kênh ② · case) dùng chung đường với dạng thường. Thang 3 bài (khớp fn_mastery_cells_hinh).
-  const maCuaBai = new Map<string, string>()
-  if (coKhoHinh(mon)) {
-    const ids = [...new Set(rows.filter((r) => r.prob && !r.prob.ma_dang && r.prob.hinh_baitoan_id).map((r) => r.prob.hinh_baitoan_id as string))]
-    for (let i = 0; i < ids.length; i += 200) {
-      const { data: bs, error: eB } = await supabase.from('hinh_baitoan').select('id, ma').in('id', ids.slice(i, i + 200)).limit(LIMIT)
-      if (eB) throw eB
-      for (const b of (bs ?? []) as { id: string; ma: string }[]) maCuaBai.set(b.id, b.ma)
-    }
-  }
-
-  const out: DoRow[] = []
-  for (const r of rows) {
-    const p = r.prob
-    const maDang: string | null = p?.ma_dang ?? (p?.hinh_baitoan_id ? maCuaBai.get(p.hinh_baitoan_id) ?? null : null)
-    if (!p || !maDang) continue
-    // Chỉ nguồn có trọng số > 0 (et/mt/btvn — spec §9). ingame/dg/bt weight 0 → loại tại đây,
-    // KHÔNG để lọt xuống engine rồi mới rụng (lọt xuống thì `n` đếm sai độ tin).
-    if (!(DANHGIA_CONFIG.WEIGHT as any)[p.phase]) continue
-    const value = RESULT_VALUE[r.result as keyof typeof RESULT_VALUE]
-    if (value === undefined) continue
-    const m = monCuaBuoi.get(r.buoi_hoc_id) ?? monBuTheoHs.get(`${r.buoi_hoc_id}|${r.hoc_sinh_id}`) ?? null
-    if (m !== mon) continue // scope MÔN (§1.6) — buổi bù đã lùi về lớp gốc ở trên
-    // Timeline neo NGÀY BUỔI (ngayCuaBuoi), fallback graded_at chỉ khi buoi_hoc_id null (không xảy ra
-     // theo schema; phòng thủ) hoặc buổi lookup không có ngày (không xảy ra — buoi_hoc.ngay NOT NULL).
-    const tBuoi = r.buoi_hoc_id ? ngayCuaBuoi.get(r.buoi_hoc_id) ?? null : null
-    out.push({ hoc_sinh_id: r.hoc_sinh_id, ma_dang: maDang, value, t: tBuoi ?? r.graded_at, src: p.phase, buoi_hoc_id: r.buoi_hoc_id ?? null })
-  }
-  return out
+  const { data, error } = await supabase.rpc('fn_botro_lan_do_lop', { p_hs: hsIds, p_mon: mon, p_che_do: cheDo ?? null })
+  if (error) throw error
+  return ((data ?? []) as [string, string, number, string, string, string | null][]).map(([hoc_sinh_id, ma_dang, value, t, src, buoi_hoc_id]) => ({ hoc_sinh_id, ma_dang, value: Number(value), t, src, buoi_hoc_id }))
 }
 
 // Bản đồ dạng → chuyên đề + tên + độ khó, tra đúng bảng theo MÔN (bẫy #1) — MỌI nhánh của môn qua registry
@@ -202,7 +139,7 @@ async function napBanDo(mon: string, maDangs: string[]) {
 // ── STAT SHEET cho CẢ LỚP (1 lượt) ────────────────────────────────────────────────────
 // Vì sao theo LỚP chứ không theo HS: pha 1 (§2.A①) chấm bằng SO LỚP → bắt buộc có điểm của
 // mọi bạn cùng lớp trong cùng cửa sổ mới tính được rank/trung vị. Gọi từng HS là không đủ data.
-export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
+export async function getStatSheetLop(lopId: string, cheDo?: CheDoLanDo): Promise<StatSheetHS[]> {
   const { data: lop } = await supabase.from('lop').select('id, mon, ten_lop, khoi').eq('id', lopId).single()
   if (!lop) return []
   const mon = (lop as any).mon as string
@@ -216,7 +153,7 @@ export async function getStatSheetLop(lopId: string): Promise<StatSheetHS[]> {
   if (!hsIds.length) return []
 
   const [doRows, levels, thaiDoRows, canhBao, dangDangMo] = await Promise.all([
-    napLanDo(hsIds, mon),
+    napLanDo(hsIds, mon, cheDo),
     getLevels(hsIds, mon),
     napThaiDo(hsIds, mon),
     napCanhBao(hsIds, mon),
@@ -544,8 +481,8 @@ async function mapDaDuyetKienThucCuaSoNay(hsIds: string[], mon: string): Promise
 }
 
 // `giu` (17/10, Chốt tuần): lấy thêm chuyên đề của các em ĐANG THEO DÕI ở lớp này (kể cả khi không còn là candidate) để ghi ảnh chụp tuần.
-export async function listCandidatesLop(lopId: string, giu?: { hsIds: Set<string>; out: Map<string, ChuyenDeStat[]> }): Promise<Candidate[]> {
-  const sheets = await getStatSheetLop(lopId)
+export async function listCandidatesLop(lopId: string, giu?: { hsIds: Set<string>; out: Map<string, ChuyenDeStat[]> }, cheDo?: CheDoLanDo): Promise<Candidate[]> {
+  const sheets = await getStatSheetLop(lopId, cheDo)
   if (giu) for (const s of sheets) if (giu.hsIds.has(s.hoc_sinh_id)) giu.out.set(s.hoc_sinh_id, s.chuyenDes)
   const { daDuyet, reset } = sheets.length ? await mapDaDuyetKienThucCuaSoNay(sheets.map((s) => s.hoc_sinh_id), sheets[0].mon)
     : { daDuyet: new Map<string, string>(), reset: new Set<string>() }

@@ -58,7 +58,7 @@ for (const p of nguoi) {
 }
 
 const tong = {}
-for (const b of ['hoa_don', 'hoa_don_dong', 'hoc_phi_cong_thuc', 'luong_bac'])
+for (const b of ['hoa_don', 'hoa_don_dong', 'hoc_phi_cong_thuc'])
   tong[b] = (await c.query(`select count(*)::int n from public.${b}`)).rows[0].n
 
 console.log(`\n▸ Hàm co_chuc_nang() ${coHam ? 'ĐÃ tồn tại (migration đã chạy)' : 'CHƯA có — đang chạy bản mô phỏng'}`)

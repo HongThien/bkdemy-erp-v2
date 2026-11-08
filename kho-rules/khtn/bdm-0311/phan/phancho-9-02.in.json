@@ -1,0 +1,364 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00455",
+   "chu_de": "Quang học",
+   "chuyen_de": "Lăng kính",
+   "nhom": "CẤU TẠO LĂNG KÍNH VÀ SỰ TÁN SẮC ÁNH SÁNG",
+   "nhom_ly_thuyet": "##TC1. Kiến thức cần nhớ\nLăng kính là một khối chất trong suốt (thuỷ tinh, nhựa trong...), được giới hạn bởi hai mặt phẳng không song song. Lăng kính thường có dạng lăng trụ tam giác.\nCấu tạo:\n• Hai mặt bên là hai mặt phẳng không song song mà ánh sáng đi vào và ló ra.\n• Cạnh của lăng kính là giao tuyến của hai mặt bên.\n• Đáy là mặt đối diện với cạnh.\n• Góc chiết quang (kí hiệu A) là góc tạo bởi hai mặt bên.\nTrên hình vẽ, lăng kính được biểu diễn bằng tiết diện thẳng là một tam giác: đỉnh tam giác ứng với cạnh lăng kính, hai cạnh tam giác chứa đỉnh đó ứng với hai mặt bên, cạnh còn lại ứng với đáy.\nÁnh sáng trắng (ánh sáng Mặt Trời, ánh sáng đèn sợi đốt...) là hỗn hợp của nhiều ánh sáng màu khác nhau.\nSự tán sắc ánh sáng: khi chiếu một chùm sáng trắng hẹp qua lăng kính, chùm sáng bị tách thành một dải màu biến thiên liên tục từ đỏ đến tím. Dải màu này gọi là quang phổ của ánh sáng trắng, gồm bảy màu chính theo thứ tự: đỏ, da cam, vàng, lục, lam, chàm, tím.\nTrong dải màu, ánh sáng đỏ bị lệch ít nhất, ánh sáng tím bị lệch nhiều nhất. Nguyên nhân là chiết suất của lăng kính đối với các ánh sáng màu khác nhau thì khác nhau: nhỏ nhất với ánh sáng đỏ, lớn nhất với ánh sáng tím.\nÁnh sáng đơn sắc là ánh sáng có một màu nhất định, không bị tán sắc khi đi qua lăng kính (ví dụ ánh sáng của bút laser màu đỏ, màu lục).\n\n##PP2. Các bước làm bài\n\n##PP Câu hỏi về cấu tạo. \nBước 1: xác định hai mặt mà ánh sáng đi vào và ló ra, đó là hai mặt bên. \nBước 2: suy ra cạnh là giao tuyến của hai mặt bên, đáy là mặt đối diện với cạnh. \nBước 3: góc chiết quang là góc giữa hai mặt bên, tức góc của tam giác tiết diện tại đỉnh ứng với cạnh.\n\n##PP Câu hỏi về tán sắc. \nBước 1: xác định ánh sáng chiếu tới là ánh sáng trắng hay ánh sáng đơn sắc. \nBước 2: ánh sáng trắng bị tách thành dải màu từ đỏ đến tím; ánh sáng đơn sắc giữ nguyên màu. \nBước 3: dùng thứ tự bảy màu và quy luật lệch (đỏ ít nhất, tím nhiều nhất) để trả lời.\n\n##CY3. Lưu ý\nĐáy lăng kính là mặt đối diện với cạnh, không phải mặt nằm phía dưới. Khi lăng kính đặt ngược, đáy nằm phía trên.\nGóc chiết quang là góc giữa hai mặt bên, không phải góc giữa tia tới và tia ló.\nLăng kính không tạo ra màu mới. Các ánh sáng màu đã có sẵn trong ánh sáng trắng, lăng kính chỉ tách chúng ra.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01191",
+     "thu_tu": 1,
+     "ten": "CẤU TẠO LĂNG KÍNH",
+     "mo_ta": "Đề hỏi về định nghĩa, hình dạng, vật liệu làm lăng kính và tên các bộ phận (mặt bên, cạnh, đáy, góc chiết quang).\nLàm bằng cách nhớ lăng kính là khối chất trong suốt giới hạn bởi hai mặt phẳng không song song; không có ánh sáng truyền qua trong đề.\nLưu ý: đề chiếu ánh sáng trắng qua lăng kính và hỏi màu/thứ tự màu ⇒ thuộc dạng \"SỰ TÁN SẮC ÁNH SÁNG TRẮNG\".",
+     "ly_thuyet": "##TC Cấu tạo lăng kính\nLăng kính là khối chất trong suốt (thuỷ tinh, nhựa trong...), giới hạn bởi hai mặt phẳng không song song; thường có dạng lăng trụ tam giác.\nHai mặt bên là hai mặt phẳng không song song mà ánh sáng đi vào và ló ra; cạnh là giao tuyến của hai mặt bên; đáy là mặt đối diện với cạnh; góc chiết quang A là góc giữa hai mặt bên.\n\n##CY Lưu ý\nVật liệu làm lăng kính phải trong suốt; gỗ, kim loại, gốm sứ không phải là lăng kính.\nTấm kính có hai mặt song song và viên bi thuỷ tinh không phải lăng kính.",
+     "vi_du": "##VD\nHai mặt bên của một lăng kính là\nA. hai mặt phẳng song song nhau\nB. hai mặt phẳng không song song\nC. hai mặt cong lồi ra phía ngoài\nD. hai mặt cong lõm vào phía trong\n\nBài giải:\nLăng kính được giới hạn bởi hai mặt phẳng không song song, đó là hai mặt bên.\nChọn B.\n\n##VD\nVật nào sau đây là một lăng kính?\nA. Khối gỗ sơn bóng hình lăng trụ tam giác\nB. Tấm kính trong suốt có hai mặt song song\nC. Khối nhựa trong suốt hình lăng trụ tam giác\nD. Viên bi thủy tinh trong suốt hình cầu\n\nBài giải:\nLăng kính là khối chất trong suốt, giới hạn bởi hai mặt phẳng không song song, thường có dạng lăng trụ tam giác.\nKhối gỗ không trong suốt; tấm kính có hai mặt song song; viên bi có mặt cầu; chỉ khối nhựa trong suốt hình lăng trụ tam giác thỏa cả hai điều kiện.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01192",
+     "thu_tu": 2,
+     "ten": "SỰ TÁN SẮC ÁNH SÁNG TRẮNG",
+     "mo_ta": "Đề hỏi về hiện tượng chùm sáng trắng bị tách thành dải màu khi qua lăng kính: tên hiện tượng, thứ tự bảy màu, màu lệch ít nhất/nhiều nhất, vì sao có hiện tượng.\nLàm bằng cách nhớ thứ tự đỏ, da cam, vàng, lục, lam, chàm, tím và quy luật lệch; đề không cần vẽ đường đi tia sáng.\nLưu ý: đề cho hình lăng kính với bảy vệt sáng trên màn đánh số và hỏi vệt nào có màu gì ⇒ thuộc dạng \"CHÙM SÁNG TRẮNG QUA LĂNG KÍNH\".",
+     "ly_thuyet": "##TC Tán sắc ánh sáng\nChùm sáng trắng hẹp qua lăng kính bị tách thành dải màu biến thiên liên tục từ đỏ đến tím (quang phổ của ánh sáng trắng): đỏ, da cam, vàng, lục, lam, chàm, tím.\nÁnh sáng đỏ bị lệch ít nhất, ánh sáng tím bị lệch nhiều nhất vì chiết suất của lăng kính nhỏ nhất với ánh sáng đỏ và lớn nhất với ánh sáng tím.\nÁnh sáng đơn sắc (một màu nhất định) không bị tán sắc khi qua lăng kính.\n\n##CY Lưu ý\nLăng kính không tạo ra màu mới: các màu đã có sẵn trong ánh sáng trắng và lăng kính chỉ tách chúng ra.\nKhông nhầm tán sắc với phản xạ hoặc phản xạ toàn phần.",
+     "vi_du": "##VD\nTrong quang phổ của ánh sáng trắng, màu nằm giữa màu vàng và màu lam là\nA. màu da cam\nB. màu lục\nC. màu chàm\nD. màu tím\n\nBài giải:\nThứ tự các màu: đỏ, da cam, vàng, lục, lam, chàm, tím.\nMàu nằm giữa màu vàng và màu lam là màu lục.\nChọn B.\n\n##VD\nKhi chiếu ánh sáng trắng qua lăng kính, chùm sáng màu nào bị lệch ít nhất?\nA. Màu da cam\nB. Màu lam\nC. Màu tím\nD. Màu đỏ\n\nBài giải:\nChùm sáng trắng bị tách thành dải màu khi qua lăng kính (tán sắc ánh sáng).\nTrong dải màu đó, ánh sáng đỏ bị lệch ít nhất, ánh sáng tím bị lệch nhiều nhất.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00460",
+   "chu_de": "Quang học",
+   "chuyen_de": "Thấu kính",
+   "nhom": "Các dạng bài tập cơ bản của thấu kính",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nThấu kính hội tụ có phần rìa mỏng hơn phần giữa; chùm tia tới song song với trục chính cho chùm tia ló hội tụ tại một điểm (tiêu điểm).\nThấu kính phân kì có phần rìa dày hơn phần giữa; chùm tia tới song song với trục chính cho chùm tia ló loe rộng ra.\nQuang tâm O là điểm mà tia sáng đi qua truyền thẳng, không đổi hướng. Trục chính là đường thẳng đi qua O và vuông góc với mặt thấu kính.\nTiêu điểm F nằm trên trục chính; tiêu cự $f$ là khoảng cách từ quang tâm O đến tiêu điểm F, chỉ phụ thuộc vào thấu kính, không phụ thuộc vị trí vật.\n\n##PP 2. Các bước làm bài\nXác định đề hỏi loại thấu kính, tên gọi của một yếu tố hay đường truyền của tia sáng.\nVới ba tia đặc biệt: tia qua quang tâm truyền thẳng; tia song song trục chính cho tia ló qua tiêu điểm ảnh (hội tụ) hoặc có đường kéo dài qua tiêu điểm (phân kì); tia qua tiêu điểm vật cho tia ló song song trục chính (hội tụ).\n\n##CY 3. Lưu ý\nĐừng nhầm thấu kính với gương cầu: thấu kính cho ánh sáng đi xuyên qua, gương cầu phản xạ ánh sáng.\nĐừng nhầm tiêu điểm (một điểm) với tiêu cự (một độ dài).",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01456",
+     "thu_tu": 1,
+     "ten": "Nhận biết loại thấu kính hội tụ hay phân kì",
+     "mo_ta": "Đề cho đặc điểm của thấu kính (rìa mỏng hay dày hơn phần giữa, chùm tia ló hội tụ hay loe ra, hình vẽ kí hiệu) và hỏi đó là thấu kính gì.\nHọc sinh đối chiếu đặc điểm với định nghĩa thấu kính hội tụ và phân kì.\nLưu ý: đề hỏi tên một điểm, một đường hoặc một độ dài trên hình (quang tâm, trục chính, tiêu điểm, tiêu cự) ⇒ thuộc dạng \"Gọi tên các yếu tố của thấu kính\".",
+     "ly_thuyet": "##TC Phân biệt hai loại thấu kính\nThấu kính hội tụ: rìa mỏng hơn phần giữa, chùm tia tới song song trục chính cho chùm tia ló hội tụ tại một điểm.\nThấu kính phân kì: rìa dày hơn phần giữa, chùm tia tới song song trục chính cho chùm tia ló loe rộng ra.\n\n##CY Lưu ý\nGương cầu lồi, gương cầu lõm và gương phẳng không phải thấu kính; chúng phản xạ ánh sáng chứ không cho ánh sáng đi xuyên qua.",
+     "vi_du": "##VD\nThấu kính có phần rìa mỏng hơn phần giữa là loại thấu kính nào?\nA. Thấu kính phân kì\nB. Gương cầu lồi\nC. Gương cầu lõm\nD. Thấu kính hội tụ\n\nBài giải:\nThấu kính có rìa mỏng hơn phần giữa là thấu kính lồi, tức thấu kính hội tụ.\nGương cầu lồi và gương cầu lõm là gương, không phải thấu kính.\nChọn D.\n\n##VD\nChiếu một chùm sáng song song trục chính vào một thấu kính. Sau khi qua thấu kính, chùm tia ló loe rộng ra. Đó là thấu kính gì?\nA. Thấu kính phân kì\nB. Thấu kính hội tụ\nC. Gương cầu lõm\nD. Gương phẳng\n\nBài giải:\nChùm tia tới song song nhưng chùm tia ló loe rộng ra, tức là thấu kính làm các tia tách xa nhau.\nĐó là tính chất của thấu kính phân kì.\nThấu kính hội tụ làm chùm tia ló hội tụ, còn gương cầu lõm và gương phẳng không phải thấu kính.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01457",
+     "thu_tu": 2,
+     "ten": "Gọi tên các yếu tố của thấu kính",
+     "mo_ta": "Đề mô tả một điểm, một đường hoặc một khoảng cách trên hình vẽ thấu kính và hỏi tên gọi của nó (quang tâm, trục chính, tiêu điểm, tiêu cự).\nCó câu hỏi tiêu cự có thay đổi khi dịch chuyển vật hay không.\nHọc sinh dùng đúng định nghĩa các thuật ngữ.\nLưu ý: đề hỏi tia sáng đi tiếp theo hướng nào sau khi qua thấu kính ⇒ thuộc dạng \"Xác định đường truyền của các tia sáng đặc biệt\".",
+     "ly_thuyet": "##TC Các yếu tố của thấu kính\nQuang tâm O: điểm trong thấu kính mà mọi tia sáng đi qua đều truyền thẳng.\nTrục chính: đường thẳng đi qua quang tâm O và vuông góc với mặt thấu kính.\nTiêu điểm F: điểm trên trục chính mà chùm tia tới song song trục chính hội tụ tại đó (hoặc đường kéo dài của các tia ló đi qua đó).\nTiêu cự $f$: khoảng cách từ quang tâm O đến tiêu điểm F; là đặc trưng riêng của thấu kính, không đổi khi dịch chuyển vật.\n\n##CY Lưu ý\nTiêu điểm là một điểm, còn tiêu cự là một khoảng cách.\nTrục chính là cả một đường thẳng, không phải một điểm.",
+     "vi_du": "##VD\nTrên hình vẽ thấu kính hội tụ, điểm F trên trục chính là nơi các tia song song trục chính hội tụ lại. Điểm F được gọi là gì?\nA. Quang tâm\nB. Tiêu cự\nC. Tiêu điểm\nD. Ảnh của vật\n\nBài giải:\nĐiểm hội tụ của chùm tia song song trục chính sau khi qua thấu kính gọi là tiêu điểm.\nQuang tâm là điểm O mà tia sáng qua đó truyền thẳng; tiêu cự là một khoảng cách, không phải một điểm.\nChọn C.\n\n##VD\nTrên hình vẽ thấu kính hội tụ, khoảng cách từ quang tâm O đến tiêu điểm F được gọi là gì?\nA. Tiêu cự\nB. Trục chính\nC. Khoảng cách ảnh\nD. Chiều cao vật\n\nBài giải:\nKhoảng cách từ quang tâm O đến tiêu điểm F gọi là tiêu cự, kí hiệu $f$.\nTrục chính là đường thẳng đi qua O và vuông góc với thấu kính; khoảng cách ảnh và chiều cao vật là những đại lượng khác.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01458",
+     "thu_tu": 3,
+     "ten": "Xác định đường truyền của các tia sáng đặc biệt",
+     "mo_ta": "Đề cho một tia sáng đặc biệt (qua quang tâm, song song trục chính, qua tiêu điểm vật) tới thấu kính hội tụ hoặc phân kì và hỏi tia ló đi theo hướng nào.\nHọc sinh nhớ quy tắc ba tia đặc biệt cho từng loại thấu kính.\nLưu ý: đề hỏi tên điểm hay đường trên hình ⇒ thuộc dạng \"Gọi tên các yếu tố của thấu kính\".",
+     "ly_thuyet": "##TC Ba tia sáng đặc biệt\nTia tới qua quang tâm O: tia ló truyền thẳng, không đổi hướng (cả thấu kính hội tụ và phân kì).\nThấu kính hội tụ: tia tới song song trục chính cho tia ló đi qua tiêu điểm ảnh F′; tia tới đi qua tiêu điểm vật F cho tia ló song song trục chính.\nThấu kính phân kì: tia tới song song trục chính cho tia ló có đường kéo dài đi qua tiêu điểm nằm cùng phía với tia tới.\n\n##PP Xác định tia ló\nNhận ra tia tới là tia nào trong ba tia đặc biệt.\nXác định thấu kính là hội tụ hay phân kì.\nÁp dụng quy tắc tương ứng để kết luận hướng tia ló.\n\n##CY Lưu ý\nMọi tia qua quang tâm đều truyền thẳng; đừng nhầm với tia qua tiêu điểm.\nVới thấu kính phân kì, tia ló không đi qua tiêu điểm mà chỉ có đường kéo dài đi qua tiêu điểm.",
+     "vi_du": "##VD\nTia sáng đi qua quang tâm O của thấu kính hội tụ thì tiếp tục truyền theo hướng nào?\nA. Đổi hướng, đi qua tiêu điểm\nB. Đổi hướng, song song trục chính\nC. Bị phản xạ ngược trở lại\nD. Truyền thẳng, không đổi hướng\n\nBài giải:\nTia sáng đi qua quang tâm của thấu kính (hội tụ hay phân kì) đều truyền thẳng, không đổi hướng.\nHai phương án đầu là đường đi của tia song song trục chính và tia qua tiêu điểm, không phải tia qua quang tâm.\nChọn D.\n\n##VD\nTia sáng đi qua tiêu điểm vật F (nằm trước thấu kính), sau khi qua thấu kính hội tụ thì truyền theo hướng nào?\nA. Tiếp tục truyền thẳng, không đổi hướng\nB. Đi qua tiêu điểm ảnh F′\nC. Ló ra song song với trục chính\nD. Loe ra xa trục chính\n\nBài giải:\nTia tới đi qua tiêu điểm vật F của thấu kính hội tụ.\nSau khi khúc xạ, tia ló song song với trục chính.\nTia truyền thẳng là tia qua quang tâm, tia qua F′ là tia ló của tia song song trục chính.\nChọn C."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09000000044",
+   "nhom_id": "KNB00455",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Bốn giải thích về hiện tượng tán sắc và màu sắc ánh sáng (xem các phương án). Giải thích nào SAI?",
+   "lua_chon": [
+    "Tia tím luôn lệch ÍT hơn tia đỏ khi qua lăng kính",
+    "Cầu vồng có màu đỏ ở ngoài vì tia đỏ lệch ít nhất qua giọt nước",
+    "Kim cương lấp lánh nhiều màu vì ánh sáng trắng bị tán sắc qua các mặt cắt",
+    "Vạch sơn phản quang dùng màu vàng vì phản xạ tốt, dễ thấy ban đêm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tia tím luôn lệch NHIỀU hơn tia đỏ khi qua lăng kính (đỏ lệch ít nhất, tím lệch nhiều nhất), không phải ngược lại.\n\nVì sao các phương án khác sai:\n- B: Đây là giải thích đúng, không phải câu sai.\n- C: Đây là giải thích đúng, không phải câu sai.\n- D: Đây là giải thích đúng, không phải câu sai."
+  },
+  {
+   "ma_cau": "K09000000045",
+   "nhom_id": "KNB00455",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Bốn giải thích về hiện tượng tán sắc và màu sắc ánh sáng (xem các phương án). Giải thích nào SAI?",
+   "lua_chon": [
+    "Áo bảo hộ màu cam dễ thấy vì cam phản xạ mạnh, tương phản với môi trường",
+    "Trong cầu vồng, tia đỏ lệch NHIỀU hơn tia tím",
+    "Mặc áo trắng mát hơn áo đen vì áo trắng phản xạ phần lớn ánh sáng",
+    "Kính râm màu nâu làm vật nhìn ám nâu vì kính hấp thụ bớt các màu khác"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Trong cầu vồng, tia tím lệch NHIỀU hơn tia đỏ (đỏ lệch ít nhất), không phải ngược lại.\n\nVì sao các phương án khác sai:\n- A: Đây là giải thích đúng, không phải câu sai.\n- C: Đây là giải thích đúng, không phải câu sai.\n- D: Đây là giải thích đúng, không phải câu sai."
+  },
+  {
+   "ma_cau": "K09000000046",
+   "nhom_id": "KNB00455",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Bốn giải thích về hiện tượng tán sắc và màu sắc ánh sáng (xem các phương án). Giải thích nào SAI?",
+   "lua_chon": [
+    "Biển báo STOP màu đỏ dễ chú ý vì tương phản mạnh với môi trường",
+    "Đèn sân khấu chiếu ánh sáng lục lên trang phục đỏ làm trang phục có màu đen",
+    "Muốn quan sát cầu vồng cần có ánh sáng Mặt Trời và các hạt nước trong không khí",
+    "Ánh sáng đơn sắc khi qua lăng kính bị TÁCH thành nhiều màu như ánh sáng trắng"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Ánh sáng đơn sắc khi qua lăng kính chỉ bị LỆCH hướng, KHÔNG bị tách thành nhiều màu (vì nó chỉ có một màu duy nhất, không có gì để tách).\n\nVì sao các phương án khác sai:\n- A: Đây là giải thích đúng, không phải câu sai.\n- B: Đây là giải thích đúng, không phải câu sai.\n- C: Đây là giải thích đúng, không phải câu sai."
+  },
+  {
+   "ma_cau": "K09000000047",
+   "nhom_id": "KNB00455",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Bốn giải thích về hiện tượng tán sắc và màu sắc ánh sáng (xem các phương án). Giải thích nào SAI?",
+   "lua_chon": [
+    "Lá cây màu lục vì lá phản xạ ánh sáng lục, hấp thụ các màu khác",
+    "Vật màu đen hấp thụ hầu hết ánh sáng chiếu tới nên luôn có màu đen",
+    "Cầu vồng luôn có tím ở phía ngoài, đỏ ở phía trong",
+    "Kim cương cắt nhiều mặt để tăng số lần tán sắc và phản xạ ánh sáng bên trong"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Cầu vồng luôn có màu ĐỎ ở phía ngoài và màu TÍM ở phía trong (vì tia đỏ lệch ít nhất, tia tím lệch nhiều nhất), không phải ngược lại.\n\nVì sao các phương án khác sai:\n- A: Đây là giải thích đúng, không phải câu sai.\n- B: Đây là giải thích đúng, không phải câu sai.\n- D: Đây là giải thích đúng, không phải câu sai."
+  },
+  {
+   "ma_cau": "K09000000048",
+   "nhom_id": "KNB00455",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Bốn giải thích về hiện tượng tán sắc và màu sắc ánh sáng (xem các phương án). Giải thích nào SAI?",
+   "lua_chon": [
+    "Chiếu ánh sáng đỏ vào vật màu lục, ta thấy vật có màu đỏ vì vật phản xạ đúng màu ánh sáng chiếu tới",
+    "Vật màu trắng phản xạ gần như toàn bộ ánh sáng chiếu tới, dù ánh sáng đó màu gì",
+    "Tia đỏ lệch ít nhất, tia tím lệch nhiều nhất khi qua lăng kính",
+    "Áo màu vàng sáng giúp công nhân dễ được nhìn thấy vì phản xạ mạnh ánh sáng"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Vật màu lục chỉ phản xạ ánh sáng lục và HẤP THỤ ánh sáng đỏ; khi chiếu ánh sáng đỏ vào, vật không phản xạ được gì nên có màu ĐEN, không phải màu đỏ.\n\nVì sao các phương án khác sai:\n- B: Đây là giải thích đúng, không phải câu sai.\n- C: Đây là giải thích đúng, không phải câu sai.\n- D: Đây là giải thích đúng, không phải câu sai."
+  },
+  {
+   "ma_cau": "K09000000049",
+   "nhom_id": "KNB00455",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Bốn giải thích về hiện tượng tán sắc và màu sắc ánh sáng (xem các phương án). Giải thích nào SAI?",
+   "lua_chon": [
+    "Ánh sáng trắng qua lăng kính bị tách thành dải màu vì mỗi màu có góc lệch khác nhau",
+    "Tia tím lệch nhiều hơn tia lục khi qua lăng kính",
+    "Vật màu đen phản xạ mạnh mọi ánh sáng chiếu tới",
+    "Kính mát màu tối làm giảm cường độ ánh sáng chiếu vào mắt"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Vật màu đen HẤP THỤ hầu hết ánh sáng chiếu tới (không phản xạ mạnh), nên phát biểu này sai; các phát biểu còn lại đều đúng theo tính chất tán sắc và phản xạ - hấp thụ ánh sáng.\n\nVì sao các phương án khác sai:\n- A: Đây là giải thích đúng, không phải câu sai.\n- B: Đây là giải thích đúng, không phải câu sai.\n- D: Đây là giải thích đúng, không phải câu sai."
+  },
+  {
+   "ma_cau": "K09000000050",
+   "nhom_id": "KNB00455",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Bốn giải thích về hiện tượng tán sắc và màu sắc ánh sáng (xem các phương án). Giải thích nào SAI?",
+   "lua_chon": [
+    "Muốn có tán sắc ánh sáng, cần chiếu ánh sáng trắng (hoặc ánh sáng gồm nhiều màu) qua lăng kính",
+    "Đáy lăng kính là mặt đối diện với cạnh (giao tuyến hai mặt bên)",
+    "Trong bảy tia màu, tia đỏ lệch ít nhất qua lăng kính",
+    "Tia sáng qua lăng kính luôn lệch về phía đỉnh (góc chiết quang)"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Tia sáng qua lăng kính luôn lệch về phía ĐÁY, không phải phía đỉnh (góc chiết quang), nên phát biểu này sai; các phát biểu còn lại đều đúng.\n\nVì sao các phương án khác sai:\n- A: Đây là giải thích đúng, không phải câu sai.\n- B: Đây là giải thích đúng, không phải câu sai.\n- C: Đây là giải thích đúng, không phải câu sai."
+  },
+  {
+   "ma_cau": "K09000000051",
+   "nhom_id": "KNB00460",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đặt vật trước thấu kính hội tụ tiêu cự f = 12 cm, cách thấu kính d = 24 cm (d = 2f). Ảnh thật tạo bởi thấu kính cách thấu kính một khoảng d′ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-01-001-de.png)",
+   "lua_chon": [
+    "12 cm",
+    "48 cm",
+    "24 cm",
+    "8 cm"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khi d = 2f, ảnh thật tạo bởi thấu kính hội tụ cũng cách thấu kính đúng 2f = 24 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy khoảng cách ảnh bằng tiêu cự, nhưng khi d = 2f thì ảnh cũng cách thấu kính 2f.\n- B: Đã nhân đôi d một lần nữa, trong khi d′ chỉ bằng d = 2f.\n- D: Đã chia d cho 3 một cách tuỳ tiện, không đúng vị trí ảnh khi d = 2f."
+  },
+  {
+   "ma_cau": "K09000000052",
+   "nhom_id": "KNB00460",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đặt vật trước thấu kính hội tụ tiêu cự f = 15 cm, cách thấu kính d = 30 cm (d = 2f). Ảnh thật tạo bởi thấu kính cách thấu kính một khoảng d′ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-01-002-de.png)",
+   "lua_chon": [
+    "15 cm",
+    "60 cm",
+    "30 cm",
+    "10 cm"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khi d = 2f, ảnh thật tạo bởi thấu kính hội tụ cũng cách thấu kính đúng 2f = 30 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy khoảng cách ảnh bằng tiêu cự, nhưng khi d = 2f thì ảnh cũng cách thấu kính 2f.\n- B: Đã nhân đôi d một lần nữa, trong khi d′ chỉ bằng d = 2f.\n- D: Đã chia d cho 3 một cách tuỳ tiện, không đúng vị trí ảnh khi d = 2f."
+  },
+  {
+   "ma_cau": "K09000000053",
+   "nhom_id": "KNB00460",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đặt vật trước thấu kính hội tụ tiêu cự f = 18 cm, cách thấu kính d = 36 cm (d = 2f). Ảnh thật tạo bởi thấu kính cách thấu kính một khoảng d′ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-01-003-de.png)",
+   "lua_chon": [
+    "18 cm",
+    "72 cm",
+    "36 cm",
+    "12 cm"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khi d = 2f, ảnh thật tạo bởi thấu kính hội tụ cũng cách thấu kính đúng 2f = 36 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy khoảng cách ảnh bằng tiêu cự, nhưng khi d = 2f thì ảnh cũng cách thấu kính 2f.\n- B: Đã nhân đôi d một lần nữa, trong khi d′ chỉ bằng d = 2f.\n- D: Đã chia d cho 3 một cách tuỳ tiện, không đúng vị trí ảnh khi d = 2f."
+  },
+  {
+   "ma_cau": "K09000000054",
+   "nhom_id": "KNB00460",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đặt vật trước thấu kính hội tụ tiêu cự f = 16 cm, cách thấu kính d = 32 cm (d = 2f). Ảnh thật tạo bởi thấu kính cách thấu kính một khoảng d′ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-01-004-de.png)",
+   "lua_chon": [
+    "16 cm",
+    "32 cm",
+    "64 cm",
+    "10,67 cm"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khi d = 2f, ảnh thật tạo bởi thấu kính hội tụ cũng cách thấu kính đúng 2f = 32 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy khoảng cách ảnh bằng tiêu cự, nhưng khi d = 2f thì ảnh cũng cách thấu kính 2f.\n- C: Đã nhân đôi d một lần nữa, trong khi d′ chỉ bằng d = 2f.\n- D: Đã chia d cho 3 một cách tuỳ tiện, không đúng vị trí ảnh khi d = 2f."
+  },
+  {
+   "ma_cau": "K09000000055",
+   "nhom_id": "KNB00460",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một thấu kính hội tụ tạo ảnh thật bằng vật khi vật và ảnh đều cách thấu kính X = 20 cm (d = d′ = 2f). Tiêu cự f của thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-03-001-de.png)",
+   "lua_chon": [
+    "20 cm",
+    "10 cm",
+    "40 cm",
+    "5 cm"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Vì d = d′ = 2f = 20 cm nên tiêu cự f = 20/2 = 10 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy luôn khoảng cách X làm tiêu cự, quên rằng X = 2f.\n- C: Đã nhân đôi X thay vì chia đôi để tìm tiêu cự.\n- D: Đã chia X cho 4 một cách tuỳ tiện, không đúng hệ thức X = 2f."
+  },
+  {
+   "ma_cau": "K09000000056",
+   "nhom_id": "KNB00460",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một thấu kính hội tụ tạo ảnh thật bằng vật khi vật và ảnh đều cách thấu kính X = 32 cm (d = d′ = 2f). Tiêu cự f của thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-03-002-de.png)",
+   "lua_chon": [
+    "16 cm",
+    "32 cm",
+    "64 cm",
+    "8 cm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Vì d = d′ = 2f = 32 cm nên tiêu cự f = 32/2 = 16 cm.\n\nVì sao các phương án khác sai:\n- B: Đã lấy luôn khoảng cách X làm tiêu cự, quên rằng X = 2f.\n- C: Đã nhân đôi X thay vì chia đôi để tìm tiêu cự.\n- D: Đã chia X cho 4 một cách tuỳ tiện, không đúng hệ thức X = 2f."
+  },
+  {
+   "ma_cau": "K09000000057",
+   "nhom_id": "KNB00460",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một thấu kính hội tụ tạo ảnh thật bằng vật khi vật và ảnh đều cách thấu kính X = 26 cm (d = d′ = 2f). Tiêu cự f của thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-03-003-de.png)",
+   "lua_chon": [
+    "26 cm",
+    "52 cm",
+    "6,5 cm",
+    "13 cm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Vì d = d′ = 2f = 26 cm nên tiêu cự f = 26/2 = 13 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy luôn khoảng cách X làm tiêu cự, quên rằng X = 2f.\n- B: Đã nhân đôi X thay vì chia đôi để tìm tiêu cự.\n- C: Đã chia X cho 4 một cách tuỳ tiện, không đúng hệ thức X = 2f."
+  },
+  {
+   "ma_cau": "K09000000058",
+   "nhom_id": "KNB00460",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một thấu kính hội tụ tạo ảnh thật bằng vật khi vật và ảnh đều cách thấu kính X = 44 cm (d = d′ = 2f). Tiêu cự f của thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-03-004-de.png)",
+   "lua_chon": [
+    "44 cm",
+    "88 cm",
+    "22 cm",
+    "11 cm"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Vì d = d′ = 2f = 44 cm nên tiêu cự f = 44/2 = 22 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy luôn khoảng cách X làm tiêu cự, quên rằng X = 2f.\n- B: Đã nhân đôi X thay vì chia đôi để tìm tiêu cự.\n- D: Đã chia X cho 4 một cách tuỳ tiện, không đúng hệ thức X = 2f."
+  },
+  {
+   "ma_cau": "K09000000059",
+   "nhom_id": "KNB00460",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một thấu kính hội tụ tạo ảnh thật bằng vật khi vật và ảnh đều cách thấu kính X = 38 cm (d = d′ = 2f). Tiêu cự f của thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-03-005-de.png)",
+   "lua_chon": [
+    "38 cm",
+    "76 cm",
+    "9,5 cm",
+    "19 cm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Vì d = d′ = 2f = 38 cm nên tiêu cự f = 38/2 = 19 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy luôn khoảng cách X làm tiêu cự, quên rằng X = 2f.\n- B: Đã nhân đôi X thay vì chia đôi để tìm tiêu cự.\n- C: Đã chia X cho 4 một cách tuỳ tiện, không đúng hệ thức X = 2f."
+  },
+  {
+   "ma_cau": "K09000000060",
+   "nhom_id": "KNB00460",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Trong thí nghiệm đo tiêu cự thấu kính hội tụ bằng cách dịch màn tới khi ảnh thật rõ nét và bằng vật, khoảng cách đo được giữa vật và ảnh là L = 56 cm (L = d + d′ = 4f). Tiêu cự f của thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-04-002-de.png)",
+   "lua_chon": [
+    "14 cm",
+    "28 cm",
+    "56 cm",
+    "7 cm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Vì d = d′ = 2f nên L = d + d′ = 4f, suy ra f = L/4 = 56/4 = 14 cm.\n\nVì sao các phương án khác sai:\n- B: Đã tưởng L = 2f giống trường hợp d = 2f, quên rằng L là tổng d và d′.\n- C: Đã lấy luôn L làm tiêu cự, quên rằng L là khoảng cách vật đến ảnh.\n- D: Đã chia L cho 8 một cách tuỳ tiện, không đúng hệ thức L = 4f."
+  },
+  {
+   "ma_cau": "K09000000061",
+   "nhom_id": "KNB00460",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Trong thí nghiệm đo tiêu cự thấu kính hội tụ bằng cách dịch màn tới khi ảnh thật rõ nét và bằng vật, khoảng cách đo được giữa vật và ảnh là L = 72 cm (L = d + d′ = 4f). Tiêu cự f của thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-04-003-de.png)",
+   "lua_chon": [
+    "36 cm",
+    "72 cm",
+    "9 cm",
+    "18 cm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Vì d = d′ = 2f nên L = d + d′ = 4f, suy ra f = L/4 = 72/4 = 18 cm.\n\nVì sao các phương án khác sai:\n- A: Đã tưởng L = 2f giống trường hợp d = 2f, quên rằng L là tổng d và d′.\n- B: Đã lấy luôn L làm tiêu cự, quên rằng L là khoảng cách vật đến ảnh.\n- C: Đã chia L cho 8 một cách tuỳ tiện, không đúng hệ thức L = 4f."
+  },
+  {
+   "ma_cau": "K09000000062",
+   "nhom_id": "KNB00460",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Trong thí nghiệm đo tiêu cự thấu kính hội tụ bằng cách dịch màn tới khi ảnh thật rõ nét và bằng vật, khoảng cách đo được giữa vật và ảnh là L = 64 cm (L = d + d′ = 4f). Tiêu cự f của thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-04-004-de.png)",
+   "lua_chon": [
+    "32 cm",
+    "64 cm",
+    "16 cm",
+    "8 cm"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Vì d = d′ = 2f nên L = d + d′ = 4f, suy ra f = L/4 = 64/4 = 16 cm.\n\nVì sao các phương án khác sai:\n- A: Đã tưởng L = 2f giống trường hợp d = 2f, quên rằng L là tổng d và d′.\n- B: Đã lấy luôn L làm tiêu cự, quên rằng L là khoảng cách vật đến ảnh.\n- D: Đã chia L cho 8 một cách tuỳ tiện, không đúng hệ thức L = 4f."
+  },
+  {
+   "ma_cau": "K09000000063",
+   "nhom_id": "KNB00460",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Trong thí nghiệm đo tiêu cự thấu kính hội tụ bằng cách dịch màn tới khi ảnh thật rõ nét và bằng vật, khoảng cách đo được giữa vật và ảnh là L = 88 cm (L = d + d′ = 4f). Tiêu cự f của thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-04-005-de.png)",
+   "lua_chon": [
+    "44 cm",
+    "88 cm",
+    "11 cm",
+    "22 cm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Vì d = d′ = 2f nên L = d + d′ = 4f, suy ra f = L/4 = 88/4 = 22 cm.\n\nVì sao các phương án khác sai:\n- A: Đã tưởng L = 2f giống trường hợp d = 2f, quên rằng L là tổng d và d′.\n- B: Đã lấy luôn L làm tiêu cự, quên rằng L là khoảng cách vật đến ảnh.\n- C: Đã chia L cho 8 một cách tuỳ tiện, không đúng hệ thức L = 4f."
+  }
+ ]
+}

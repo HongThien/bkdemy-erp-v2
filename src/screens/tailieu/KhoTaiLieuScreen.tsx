@@ -25,6 +25,10 @@ import DeThiPrintView from './DeThiPrintView'
 import MTPrintView from './MTPrintView'
 import TaiLieuBuilder from './TaiLieuBuilder'
 import { ETEditor, type ETView } from './ETScreen'
+import ETBdmEditor from './bdm/ETBdmEditor'
+import BuilderBanDoMoi from './bdm/BuilderBanDoMoi'
+import ChuyenDeHinhBuilder from './bdm/ChuyenDeHinhBuilder'
+import ChuyenDeHinhPrintView from './bdm/ChuyenDeHinhPrintView'
 import { DeThiEditor } from './DeThiScreen'
 import { MTEditor } from './MTScreen'
 import SearchSelect from '../../components/SearchSelect'
@@ -35,7 +39,7 @@ import { saveOnTapConfig, rebuildOnTapInDoc, btvnDaDong, type OnTapConfig } from
 // Loại tài liệu có thể mở builder để sửa từ Kho. (mt_buoi = INSTANCE đã gán buổi — sửa nội dung
 // phải qua master rồi gán lại, không sửa trực tiếp instance để tránh lệch với các lớp khác đã gán.)
 // Đề thi KHÔNG sửa / nhân bản / xoá ở đây nữa (CEO 01/10): chỗ lưu + sửa đề là lá Kho đề thi (Học thuật, dưới Kho tài liệu — tách khỏi Nhập kho 09/10); Kho tài liệu chỉ để IN đề.
-const EDITABLE = new Set(['et', 'giao_trinh', 'giao_trinh_buoi', 'btvn', 'mt'])
+const EDITABLE = new Set(['et', 'giao_trinh', 'giao_trinh_buoi', 'btvn', 'mt', 'chuyen_de'])
 const CHI_IN = new Set(['de_thi'])
 
 type DaiRow = TaiLieu & { nguon: 'dai'; lop_id?: string | null; ngay?: string | null; nguon_id?: string | null; nguon_buoi?: string | null }
@@ -50,6 +54,8 @@ const PAGE = 20
 // không chung ở tab Tất cả"). KHÔNG còn 'hinh_giao_trinh*' — cột "Loại" tự nhiên đọc đúng nhãn Đại.
 const LOAI_TEN: Record<string, string> = { giao_trinh: 'Giáo trình', giao_trinh_buoi: 'Giáo trình buổi', btvn: 'BTVN', et: 'ET', de_thi: 'Đề thi', bo_tro: 'Tài liệu bổ trợ', mt: 'MT', mt_buoi: 'MT buổi', chuyen_de: 'Chuyên đề' }
 const loaiTen = (l: string) => LOAI_TEN[l] ?? l
+// Chuyên đề nhánh Hình in bằng màn riêng (bài Hình–Luyện, không phải câu) — Thùy 21/10
+const loaiIn = (r: { loai: string; nhanh?: string | null }) => (r.loai === 'chuyen_de' && r.nhanh === 'hinh' ? 'chuyen_de_hinh' : r.loai)
 const fmt = (iso?: string | null) => (iso ? new Date(iso).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '—')
 
 export default function KhoTaiLieuScreen() {
@@ -86,6 +92,7 @@ export default function KhoTaiLieuScreen() {
   const [dlDoc, setDlDoc] = useState<{ id: string; loai: string } | null>(null)
   const [editEt, setEditEt] = useState<ETView | null>(null) // sửa ET tại chỗ (mở ETEditor)
   const [editGt, setEditGt] = useState<string | null>(null) // sửa giáo trình/BTVN (mở TaiLieuBuilder)
+  const [editBdm, setEditBdm] = useState<{ id: string; chuyenDe: boolean; hinh?: boolean } | null>(null) // giáo trình / chuyên đề BẢN ĐỒ MỚI (BuilderBanDoMoi)
   const [editDeThi, setEditDeThi] = useState<string | null>(null) // sửa đề thi (mở DeThiEditor)
   const [editMT, setEditMT] = useState<string | null>(null) // sửa MT master (mở MTEditor)
   const [editOnTap, setEditOnTap] = useState<DaiRow | null>(null) // sửa ôn tập (modal nhỏ, spec-btvn-ontap.md §8)
@@ -151,7 +158,7 @@ export default function KhoTaiLieuScreen() {
     setLoading(true)
     try {
       const [{ dai, hinh }, l, fc] = await Promise.all([fetchFirstPage(), listLop(), listTaiLieuFacets()])
-      setDaiRows(dai); setHinhRows(hinh); setLops(l); setFacets(fc)
+      setDaiRows(dai); setHinhRows(hinh); setLops(l); setFacets(fc.filter((f) => f.loai !== 'de_thi'))
     } finally { setLoading(false) }
   }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -314,6 +321,8 @@ export default function KhoTaiLieuScreen() {
     if (r.loai === 'et') setEditEt({ ...(r as any), ten_lop: lopTen(r.lop_id) })
     else if (r.loai === 'de_thi') setEditDeThi(r.id)
     else if (r.loai === 'mt') setEditMT(r.id)
+    // giáo trình / chuyên đề bản đồ mới mở builder MỚI (trước 21/10 rơi vào TaiLieuBuilder cũ — sai builder)
+    else if (r.ban_do === 'moi' && (r.loai === 'giao_trinh' || r.loai === 'chuyen_de')) setEditBdm({ id: r.id, chuyenDe: r.loai === 'chuyen_de', hinh: r.nhanh === 'hinh' })
     else setEditGt(r.id)
   }
   // Đổi TÊN FILE ngay tại kho (= tai_lieu.ten, cột hiển thị) — khỏi vào builder (builder có ô tên buổi riêng dễ nhầm).
@@ -330,11 +339,16 @@ export default function KhoTaiLieuScreen() {
   // Sửa tại chỗ: mở builder full-screen. Link PDF tự làm mới NGAY TRONG chính editor lúc đóng (nút
   // "← ..."/"← Kho tài liệu" của mỗi editor tự enqueueLinkGen trước khi gọi onClose) — không cần lặp
   // lại ở đây nữa (07-12, dọn theo pivot gen-tại-lúc-sửa).
-  if (editEt) return <ETEditor et={editEt} onClose={() => { setEditEt(null); reload() }} />
+  // ET bản đồ mới (ban_do='moi') mở bằng màn RIÊNG (bdm/ETBdmEditor) — ET cũ mở ETEditor như trước (Thùy 20/10: tách hẳn 2 bản).
+  if (editEt) return editEt.ban_do === 'moi'
+    ? <ETBdmEditor et={editEt} onClose={() => { setEditEt(null); reload() }} />
+    : <ETEditor et={editEt} onClose={() => { setEditEt(null); reload() }} />
   if (editEtHinh) return <ETEditor presetHinh={editEtHinh} onClose={() => { setEditEtHinh(null); reload() }} />
+  if (editBdm && editBdm.hinh) return <ChuyenDeHinhBuilder id={editBdm.id} onClose={() => { setEditBdm(null); reload() }} />
+  if (editBdm) return <BuilderBanDoMoi id={editBdm.id} laChuyenDe={editBdm.chuyenDe} onClose={() => { setEditBdm(null); reload() }} />
   if (editGt) return <TaiLieuBuilder id={editGt} onClose={() => { setEditGt(null); reload() }} />
   if (editDeThi) return <DeThiEditor id={editDeThi} onClose={() => { setEditDeThi(null); reload() }} />
-  if (editMT) return <MTEditor id={editMT} onClose={() => { setEditMT(null); reload() }} />
+  if (editMT) return <MTEditor key={editMT} id={editMT} onClose={() => { setEditMT(null); reload() }} onMo={setEditMT} />
 
   const tab = (on: boolean) => `h-7 rounded-md px-2.5 text-xs font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
   return (
@@ -434,10 +448,10 @@ export default function KhoTaiLieuScreen() {
                               {phBusy === r.id ? '…' : '📱'}
                             </button>
                           )}
-                          <button onClick={() => setPrint({ id: r.id, loai: r.loai })} className="shrink-0 rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">🖨 In</button>
+                          <button onClick={() => setPrint({ id: r.id, loai: loaiIn(r) })} className="shrink-0 rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">🖨 In</button>
                           {/* Bỏ qua bước xem thử, mở thẳng hộp thoại in (bản Học sinh mặc định) — Thùy
                               07-11: đổi hẳn từ html2canvas tự vẽ lại (hay lỗi) sang NATIVE print. */}
-                          <button onClick={() => setDlDoc({ id: r.id, loai: r.loai })} className="shrink-0 rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">🖨 In nhanh</button>
+                          <button onClick={() => setDlDoc({ id: r.id, loai: loaiIn(r) })} className="shrink-0 rounded-md border border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">🖨 In nhanh</button>
                           {/* ⭐ 07-12: link gen TỰ ĐỘNG ngay lúc tạo/sửa xong (LinkGenWorker toàn cục) —
                               nút này CHỈ COPY, không còn click-để-chờ trong bất kỳ trường hợp nào. Chưa
                               có link (vừa tạo, đang gen ở nền, hoặc tài liệu cũ từ trước tính năng này)
@@ -480,7 +494,9 @@ export default function KhoTaiLieuScreen() {
         )}
       </div>
 
-      {print && (print.loai === 'et'
+      {print && (print.loai === 'chuyen_de_hinh'
+        ? <ChuyenDeHinhPrintView id={print.id} onClose={() => { setPrint(null); reload() }} />
+        : print.loai === 'et'
         ? <ETPrintView id={print.id} onClose={() => { setPrint(null); reload() }} />
         : print.loai === 'de_thi'
         ? <DeThiPrintView id={print.id} onClose={() => { setPrint(null); reload() }} />
@@ -494,7 +510,9 @@ export default function KhoTaiLieuScreen() {
 
       {/* "🖨 In nhanh" từ hàng (headless: dựng ẩn → mở hộp thoại in NATIVE → đóng khi hộp thoại đóng),
           không mở preview. KHÔNG còn ghi file_url (đó là việc riêng của "🔗 Lấy link" — xem dưới). */}
-      {dlDoc && (dlDoc.loai === 'et'
+      {dlDoc && (dlDoc.loai === 'chuyen_de_hinh'
+        ? <ChuyenDeHinhPrintView id={dlDoc.id} onClose={() => { setDlDoc(null); reload() }} />
+        : dlDoc.loai === 'et'
         ? <ETPrintView id={dlDoc.id} headless onClose={() => { setDlDoc(null); reload() }} />
         : dlDoc.loai === 'de_thi'
         ? <DeThiPrintView id={dlDoc.id} headless onClose={() => { setDlDoc(null); reload() }} />

@@ -1,0 +1,722 @@
+[
+  {
+    "id": "B3-1A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01302",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ ngoặc (có dấu trừ trước ngoặc) rồi cộng trừ.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Bỏ ngoặc rồi tính: $(-15)+31-110-(-20)$.",
+    "dap_an": "-74",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quy tắc dấu ngoặc: trước ngoặc là dấu $+$ thì giữ nguyên dấu các số hạng trong ngoặc; trước ngoặc là dấu $-$ thì đổi dấu tất cả các số hạng trong ngoặc.\n\n**Bước 1.** Nhận ra các ngoặc: $(-15)$ đứng đầu biểu thức, còn $(-20)$ có dấu $-$ đứng trước.\n\n**Bước 2.** Bỏ ngoặc đứng đầu (giữ nguyên dấu) và bỏ ngoặc có dấu $-$ đứng trước (đổi dấu số trong ngoặc).\n\n**Bước 3.** Gom các số âm với nhau, các số dương với nhau.\n\n**Bước 4.** Cộng hai nhóm vừa gom để ra kết quả.\n\n**Chú ý:** $-(-20)=+20$: trừ đi một số âm bằng cộng với số đối của nó.\n\n**Phần 2. Trình bày**\n\n$(-15)+31-110-(-20)$\n\n$=-15+31-110+20$\n\n$=(-15-110)+(31+20)$\n\n$=-125+51$\n\n$=-74$",
+    "kiem": [
+      "(-15)+31-110-(-20)===-74"
+    ],
+    "sach_dap_so": "a) -74",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-1A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01302",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Đề bảo bỏ ngoặc rồi tính (01302) nhưng gom được số tròn trăm (01306?).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Bỏ ngoặc rồi tính: $226-(-24)+(-350)$.",
+    "dap_an": "-100",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quy tắc dấu ngoặc: trước ngoặc là dấu $+$ thì giữ nguyên dấu các số hạng trong ngoặc; trước ngoặc là dấu $-$ thì đổi dấu tất cả các số hạng trong ngoặc.\n\n**Bước 1.** Xét hai ngoặc: $(-24)$ có dấu $-$ đứng trước, $(-350)$ có dấu $+$ đứng trước.\n\n**Bước 2.** Ngoặc có dấu $-$ thì đổi dấu số trong ngoặc; ngoặc có dấu $+$ thì giữ nguyên dấu.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải (hoặc cộng các số dương trước).\n\n**Phần 2. Trình bày**\n\n$226-(-24)+(-350)$\n\n$=226+24-350$\n\n$=250-350$\n\n$=-100$",
+    "kiem": [
+      "226-(-24)+(-350)===-100"
+    ],
+    "sach_dap_so": "b) -100",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-1A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01302",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ ngoặc rồi cộng trừ nhiều số.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Bỏ ngoặc rồi tính: $-100+(-20)-(-70)+15$.",
+    "dap_an": "-35",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quy tắc dấu ngoặc: trước ngoặc là dấu $+$ thì giữ nguyên dấu các số hạng trong ngoặc; trước ngoặc là dấu $-$ thì đổi dấu tất cả các số hạng trong ngoặc.\n\n**Bước 1.** Xét hai ngoặc: $(-20)$ có dấu $+$ đứng trước, $(-70)$ có dấu $-$ đứng trước.\n\n**Bước 2.** Bỏ ngoặc $+(-20)$ thành $-20$, bỏ ngoặc $-(-70)$ thành $+70$.\n\n**Bước 3.** Gom các số âm với nhau, các số dương với nhau rồi cộng hai kết quả.\n\n**Phần 2. Trình bày**\n\n$-100+(-20)-(-70)+15$\n\n$=-100-20+70+15$\n\n$=(-100-20)+(70+15)$\n\n$=-120+85$\n\n$=-35$",
+    "kiem": [
+      "-100+(-20)-(-70)+15===-35"
+    ],
+    "sach_dap_so": "c) -35",
+    "ghi_chu": "Đề trong sách in -100, lời giải sách chép thiếu dấu trừ ở số đầu (100); đáp số -35 khớp với đề -100."
+  },
+  {
+    "id": "B3-1A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01302",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Đề bảo bỏ ngoặc rồi tính (01302) nhưng gom được số tròn trăm (01306?).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Bỏ ngoặc rồi tính: $(-128)+28-(-150)$.",
+    "dap_an": "50",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quy tắc dấu ngoặc: trước ngoặc là dấu $+$ thì giữ nguyên dấu các số hạng trong ngoặc; trước ngoặc là dấu $-$ thì đổi dấu tất cả các số hạng trong ngoặc.\n\n**Bước 1.** Ngoặc $(-128)$ đứng đầu biểu thức; ngoặc $(-150)$ có dấu $-$ đứng trước.\n\n**Bước 2.** Bỏ cả hai ngoặc theo quy tắc: ngoặc đầu giữ nguyên số, ngoặc có dấu $-$ thì đổi dấu số trong ngoặc.\n\n**Bước 3.** Cộng các số hạng cùng dấu trước rồi cộng với số còn lại.\n\n**Phần 2. Trình bày**\n\n$(-128)+28-(-150)$\n\n$=-128+28+150$\n\n$=-128+178$\n\n$=50$",
+    "kiem": [
+      "(-128)+28-(-150)===50"
+    ],
+    "sach_dap_so": "d) 50",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-1B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01302",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ ngoặc rồi cộng trừ.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Bỏ ngoặc rồi tính: $-2+18-(-12)-8$.",
+    "dap_an": "20",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quy tắc dấu ngoặc: trước ngoặc là dấu $+$ thì giữ nguyên dấu các số hạng trong ngoặc; trước ngoặc là dấu $-$ thì đổi dấu tất cả các số hạng trong ngoặc.\n\n**Bước 1.** Chỉ có một ngoặc $(-12)$, đứng sau dấu $-$.\n\n**Bước 2.** Bỏ ngoặc: $-(-12)$ thành $+12$.\n\n**Bước 3.** Gom số dương với nhau, số âm với nhau rồi cộng hai kết quả.\n\n**Phần 2. Trình bày**\n\n$-2+18-(-12)-8$\n\n$=-2+18+12-8$\n\n$=(18+12)-(2+8)$\n\n$=30-10$\n\n$=20$",
+    "kiem": [
+      "-2+18-(-12)-8===20"
+    ],
+    "sach_dap_so": "a) 20",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-1B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01302",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ ngoặc tròn, ngoặc vuông rồi tính.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Bỏ ngoặc rồi tính: $58-(-10)-[(-20)+27]$.",
+    "dap_an": "61",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quy tắc dấu ngoặc: trước ngoặc là dấu $+$ thì giữ nguyên dấu các số hạng trong ngoặc; trước ngoặc là dấu $-$ thì đổi dấu tất cả các số hạng trong ngoặc.\n\n**Bước 1.** Có ngoặc tròn $(-10)$ và ngoặc vuông $[(-20)+27]$, cả hai đều có dấu $-$ đứng trước.\n\n**Bước 2.** Bỏ ngoặc vuông trước: đổi dấu từng số hạng bên trong, số $(-20)$ thành $20$ còn $27$ thành $-27$.\n\n**Bước 3.** Bỏ tiếp ngoặc $(-10)$ có dấu $-$ đứng trước, rồi cộng trừ từ trái sang phải.\n\n**Phần 2. Trình bày**\n\n$58-(-10)-[(-20)+27]$\n\n$=58+10-(-20)-27$\n\n$=58+10+20-27$\n\n$=88-27$\n\n$=61$",
+    "kiem": [
+      "58-(-10)-((-20)+27)===61"
+    ],
+    "sach_dap_so": "b) 61",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-1B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01302",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ ngoặc vuông chứa ngoặc tròn rồi tính.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Bỏ ngoặc rồi tính: $80-20-[(-25)-(-5)]$.",
+    "dap_an": "80",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quy tắc dấu ngoặc: trước ngoặc là dấu $+$ thì giữ nguyên dấu các số hạng trong ngoặc; trước ngoặc là dấu $-$ thì đổi dấu tất cả các số hạng trong ngoặc.\n\n**Bước 1.** Ngoặc vuông $[(-25)-(-5)]$ có dấu $-$ đứng trước, bên trong có hai số hạng $(-25)$ và $-(-5)$.\n\n**Bước 2.** Bỏ ngoặc vuông: đổi dấu cả hai số hạng bên trong, được $+25$ và $+(-5)$.\n\n**Bước 3.** Bỏ nốt ngoặc tròn còn lại rồi cộng trừ từ trái sang phải.\n\n**Phần 2. Trình bày**\n\n$80-20-[(-25)-(-5)]$\n\n$=80-20+25+(-5)$\n\n$=80-20+25-5$\n\n$=60+20$\n\n$=80$",
+    "kiem": [
+      "80-20-((-25)-(-5))===80"
+    ],
+    "sach_dap_so": "c) 80",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-1B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01302",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ ngoặc vuông chứa ngoặc tròn rồi tính.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Bỏ ngoặc rồi tính: $16-[21+20-(-55)]$.",
+    "dap_an": "-80",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quy tắc dấu ngoặc: trước ngoặc là dấu $+$ thì giữ nguyên dấu các số hạng trong ngoặc; trước ngoặc là dấu $-$ thì đổi dấu tất cả các số hạng trong ngoặc.\n\n**Bước 1.** Ngoặc vuông có dấu $-$ đứng trước; bên trong còn ngoặc $(-55)$ cũng có dấu $-$ đứng trước.\n\n**Bước 2.** Bỏ ngoặc tròn trong ngoặc vuông trước: $-(-55)$ thành $+55$.\n\n**Bước 3.** Bỏ ngoặc vuông có dấu $-$ đứng trước: đổi dấu mọi số hạng bên trong.\n\n**Bước 4.** Cộng trừ từ trái sang phải.\n\n**Phần 2. Trình bày**\n\n$16-[21+20-(-55)]$\n\n$=16-[21+20+55]$\n\n$=16-21-20-55$\n\n$=16-96$\n\n$=-80$",
+    "kiem": [
+      "16-(21+20-(-55))===-80"
+    ],
+    "sach_dap_so": "d) -80",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-2A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Ghép cặp số đối, số tròn trăm.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính một cách hợp lí: $[125+(-25)]+(-100)+10$.",
+    "dap_an": "10",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ ngoặc rồi dùng giao hoán, kết hợp để ghép các số đối nhau hoặc các số tròn chục, tròn trăm.\n\n**Bước 1.** Ngoặc vuông có dấu $+$ đứng trước nên bỏ ngoặc vẫn giữ nguyên dấu các số bên trong.\n\n**Bước 2.** Tìm số hạng ghép được: $125$ và $-25$ cho một số tròn trăm.\n\n**Bước 3.** Số tròn trăm đó cùng với $-100$ cho kết quả đặc biệt.\n\n**Bước 4.** Cộng với số hạng còn lại.\n\n**Phần 2. Trình bày**\n\n$[125+(-25)]+(-100)+10$\n\n$=125-25-100+10$\n\n$=(125-25)-100+10$\n\n$=100-100+10$\n\n$=10$",
+    "kiem": [
+      "(125+(-25))+(-100)+10===10"
+    ],
+    "sach_dap_so": "a) 10",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-2A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Ghép cặp số đối sau khi bỏ ngoặc.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính một cách hợp lí: $(71-29)+[(-71)-(-9)]$.",
+    "dap_an": "-20",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ ngoặc rồi dùng giao hoán, kết hợp để ghép các số đối nhau hoặc các số tròn chục, tròn trăm.\n\n**Bước 1.** Bỏ ngoặc tròn $(71-29)$ và ngoặc vuông; bên trong ngoặc vuông có $-(-9)$ nên đổi thành $+9$.\n\n**Bước 2.** Tìm hai số đối nhau: $71$ và $-71$.\n\n**Bước 3.** Ghép hai số đối nhau thành một nhóm, ghép hai số còn lại thành nhóm thứ hai.\n\n**Bước 4.** Cộng hai nhóm.\n\n**Phần 2. Trình bày**\n\n$(71-29)+[(-71)-(-9)]$\n\n$=71-29-71+9$\n\n$=(71-71)+(-29+9)$\n\n$=0+(-20)$\n\n$=-20$",
+    "kiem": [
+      "(71-29)+((-71)-(-9))===-20"
+    ],
+    "sach_dap_so": "b) -20",
+    "ghi_chu": "Đề sách in lỗi dấu ngoặc (\"[(71-29)] + [(-71)-(-9)\"); đã chuẩn hoá thành (71-29)+[(-71)-(-9)], đáp số -20 khớp sách."
+  },
+  {
+    "id": "B3-2A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ ngoặc có dấu trừ, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính một cách hợp lí: $(-124)-(14-124)$.",
+    "dap_an": "-14",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ ngoặc rồi dùng giao hoán, kết hợp để ghép các số đối nhau hoặc các số tròn chục, tròn trăm.\n\n**Bước 1.** Ngoặc $(14-124)$ có dấu $-$ đứng trước nên khi bỏ ngoặc phải đổi dấu cả hai số hạng bên trong.\n\n**Bước 2.** Nhận ra hai số đối nhau: $-124$ và $124$.\n\n**Bước 3.** Ghép cặp số đối rồi cộng với số còn lại.\n\n**Phần 2. Trình bày**\n\n$(-124)-(14-124)$\n\n$=-124-14+124$\n\n$=(-124+124)-14$\n\n$=0-14$\n\n$=-14$",
+    "kiem": [
+      "(-124)-(14-124)===-14"
+    ],
+    "sach_dap_so": "c) -14",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-2A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ ngoặc có dấu trừ, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính một cách hợp lí: $(-63-43)-(233-43)$.",
+    "dap_an": "-296",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ ngoặc rồi dùng giao hoán, kết hợp để ghép các số đối nhau hoặc các số tròn chục, tròn trăm.\n\n**Bước 1.** Bỏ ngoặc thứ nhất (dấu $+$ ngầm, giữ nguyên dấu); ngoặc thứ hai có dấu $-$ đứng trước nên đổi dấu cả hai số bên trong.\n\n**Bước 2.** Nhận ra hai số đối nhau trong biểu thức sau khi bỏ ngoặc: $-43$ và $43$.\n\n**Bước 3.** Ghép các số đối nhau, ghép hai số âm còn lại.\n\n**Bước 4.** Cộng hai nhóm.\n\n**Phần 2. Trình bày**\n\n$(-63-43)-(233-43)$\n\n$=-63-43-233+43$\n\n$=(-63-233)+(-43+43)$\n\n$=-296+0$\n\n$=-296$",
+    "kiem": [
+      "(-63-43)-(233-43)===-296"
+    ],
+    "sach_dap_so": "d) -296",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-2B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Ghép cặp số đối sau khi bỏ ngoặc.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính một cách hợp lí: $(28-29)+(-28)+(-11)$.",
+    "dap_an": "-40",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ ngoặc rồi dùng giao hoán, kết hợp để ghép các số đối nhau hoặc các số tròn chục, tròn trăm.\n\n**Bước 1.** Cả hai ngoặc sau đều có dấu $+$ đứng trước nên bỏ ngoặc là giữ nguyên dấu.\n\n**Bước 2.** Tìm hai số đối nhau: $28$ và $-28$.\n\n**Bước 3.** Ghép cặp số đối, cộng các số còn lại.\n\n**Phần 2. Trình bày**\n\n$(28-29)+(-28)+(-11)$\n\n$=28-29-28-11$\n\n$=(28-28)-29-11$\n\n$=0-40$\n\n$=-40$",
+    "kiem": [
+      "(28-29)+(-28)+(-11)===-40"
+    ],
+    "sach_dap_so": "a) -40",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-2B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Ghép cặp số đối sau khi bỏ ngoặc.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính một cách hợp lí: $(22-32)+(-2)-(-32)$.",
+    "dap_an": "20",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ ngoặc rồi dùng giao hoán, kết hợp để ghép các số đối nhau hoặc các số tròn chục, tròn trăm.\n\n**Bước 1.** Bỏ ngoặc: hai ngoặc đầu giữ nguyên dấu, ngoặc $(-32)$ có dấu $-$ đứng trước nên đổi thành $+32$.\n\n**Bước 2.** Tìm hai số đối nhau: $-32$ và $32$.\n\n**Bước 3.** Ghép cặp số đối rồi cộng với các số còn lại.\n\n**Phần 2. Trình bày**\n\n$(22-32)+(-2)-(-32)$\n\n$=22-32-2+32$\n\n$=22-2+(-32+32)$\n\n$=20+0$\n\n$=20$",
+    "kiem": [
+      "(22-32)+(-2)-(-32)===20"
+    ],
+    "sach_dap_so": "b) 20",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-2B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Ghép các số tròn chục, tròn trăm.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính một cách hợp lí: $[(-20)+80]-(-120)-180$.",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ ngoặc rồi dùng giao hoán, kết hợp để ghép các số đối nhau hoặc các số tròn chục, tròn trăm.\n\n**Bước 1.** Ngoặc vuông có dấu $+$ ngầm đứng trước (giữ nguyên dấu); ngoặc $(-120)$ có dấu $-$ đứng trước nên đổi thành $+120$.\n\n**Bước 2.** Chọn cặp cho tổng tròn trăm: ghép $-20$ với $-180$ và ghép $80$ với $120$.\n\n**Bước 3.** Cộng hai nhóm.\n\n**Phần 2. Trình bày**\n\n$[(-20)+80]-(-120)-180$\n\n$=-20+80+120-180$\n\n$=(-20-180)+(80+120)$\n\n$=-200+200$\n\n$=0$",
+    "kiem": [
+      "((-20)+80)-(-120)-180===0"
+    ],
+    "sach_dap_so": "c) 0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-2B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Hợp cả 01302 và 01306; dạng sau thắng; gom thành số tròn trăm.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính một cách hợp lí: $(378+18)-(-12)+(-8)$.",
+    "dap_an": "400",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ ngoặc rồi dùng giao hoán, kết hợp để ghép các số đối nhau hoặc các số tròn chục, tròn trăm.\n\n**Bước 1.** Bỏ ngoặc: ngoặc đầu giữ nguyên, $-(-12)$ thành $+12$, $+(-8)$ thành $-8$.\n\n**Bước 2.** Không có cặp số đối; ghép $18$ với $12$ cho một số tròn chục dễ cộng.\n\n**Bước 3.** Tính nhóm đó rồi cộng với số hạng lớn nhất.\n\n**Phần 2. Trình bày**\n\n$(378+18)-(-12)+(-8)$\n\n$=378+18+12-8$\n\n$=378+(18+12-8)$\n\n$=378+22$\n\n$=400$",
+    "kiem": [
+      "(378+18)-(-12)+(-8)===400"
+    ],
+    "sach_dap_so": "d) 400",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-3A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thu gọn biểu thức rồi thay giá trị biến.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $(-23)+15-x+23$ với $x=8$.",
+    "dap_an": "7",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ dấu ngoặc, thu gọn biểu thức rồi mới thay giá trị của biến vào để tính.\n\n**Bước 1.** Biểu thức chỉ có ngoặc $(-23)$ đứng đầu, bỏ ngoặc giữ nguyên số.\n\n**Bước 2.** Tìm hai số đối nhau là $-23$ và $23$, ghép lại để thu gọn biểu thức.\n\n**Bước 3.** Thay $x=8$ vào biểu thức đã thu gọn rồi tính.\n\n**Phần 2. Trình bày**\n\nTa có $(-23)+15-x+23=(-23+23)+15-x=15-x$.\n\nThay $x=8$ vào biểu thức vừa thu gọn:\n\n$15-8=7$\n\nVậy với $x=8$ thì biểu thức có giá trị bằng $7$.",
+    "kiem": [
+      "((x)=>(-23)+15-x+23)(8)===7"
+    ],
+    "sach_dap_so": "a) 7",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-3A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thu gọn biểu thức rồi thay giá trị biến.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $(26+x)+124-(124-x)$ với $x=2$.",
+    "dap_an": "30",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ dấu ngoặc, thu gọn biểu thức rồi mới thay giá trị của biến vào để tính.\n\n**Bước 1.** Ngoặc $(26+x)$ có dấu $+$ ngầm đứng trước nên giữ nguyên dấu; ngoặc $(124-x)$ có dấu $-$ đứng trước nên đổi dấu cả hai số bên trong.\n\n**Bước 2.** Ghép hai số đối nhau $124$ và $-124$, ghép hai số hạng chứa $x$.\n\n**Bước 3.** Thay $x=2$ vào biểu thức đã thu gọn rồi tính.\n\n**Phần 2. Trình bày**\n\nTa có $(26+x)+124-(124-x)=26+x+124-124+x=26+2x$.\n\nThay $x=2$ vào biểu thức vừa thu gọn:\n\n$26+2.2=26+4=30$\n\nVậy với $x=2$ thì biểu thức có giá trị bằng $30$.",
+    "kiem": [
+      "((x)=>(26+x)+124-(124-x))(2)===30"
+    ],
+    "sach_dap_so": "b) 30",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-3A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thu gọn biểu thức rồi thay giá trị biến.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $(16-x)+(28-y+9)$ với $x=6$; $y=7$.",
+    "dap_an": "40",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ dấu ngoặc, thu gọn biểu thức rồi mới thay giá trị của biến vào để tính.\n\n**Bước 1.** Cả hai ngoặc đều có dấu $+$ ngầm đứng trước nên bỏ ngoặc là giữ nguyên dấu các số hạng.\n\n**Bước 2.** Cộng các số cụ thể ($16$, $28$, $9$) lại với nhau để thu gọn.\n\n**Bước 3.** Thay $x=6$ và $y=7$ vào biểu thức đã thu gọn rồi tính.\n\n**Phần 2. Trình bày**\n\nTa có $(16-x)+(28-y+9)=16-x+28-y+9=53-x-y$.\n\nThay $x=6$; $y=7$ vào biểu thức vừa thu gọn:\n\n$53-6-7=40$\n\nVậy với $x=6$; $y=7$ thì biểu thức có giá trị bằng $40$.",
+    "kiem": [
+      "((x,y)=>(16-x)+(28-y+9))(6,7)===40"
+    ],
+    "sach_dap_so": "c) 40",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-3B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thu gọn biểu thức rồi thay giá trị biến.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $(-105)+15-x+105$ với $x=5$.",
+    "dap_an": "10",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ dấu ngoặc, thu gọn biểu thức rồi mới thay giá trị của biến vào để tính.\n\n**Bước 1.** Biểu thức chỉ có ngoặc $(-105)$ đứng đầu, bỏ ngoặc giữ nguyên số.\n\n**Bước 2.** Tìm hai số đối nhau là $-105$ và $105$, ghép lại để thu gọn.\n\n**Bước 3.** Thay $x=5$ vào biểu thức đã thu gọn rồi tính.\n\n**Phần 2. Trình bày**\n\nTa có $(-105)+15-x+105=(-105+105)+15-x=15-x$.\n\nThay $x=5$ vào biểu thức vừa thu gọn:\n\n$15-5=10$\n\nVậy với $x=5$ thì biểu thức có giá trị bằng $10$.",
+    "kiem": [
+      "((x)=>(-105)+15-x+105)(5)===10"
+    ],
+    "sach_dap_so": "a) 10",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-3B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thu gọn biểu thức rồi thay giá trị biến.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $(202+x)+14-(14-x)$ với $x=14$.",
+    "dap_an": "230",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ dấu ngoặc, thu gọn biểu thức rồi mới thay giá trị của biến vào để tính.\n\n**Bước 1.** Ngoặc $(202+x)$ giữ nguyên dấu; ngoặc $(14-x)$ có dấu $-$ đứng trước nên đổi dấu cả hai số bên trong.\n\n**Bước 2.** Ghép hai số đối nhau $14$ và $-14$, ghép hai số hạng chứa $x$.\n\n**Bước 3.** Thay $x=14$ vào biểu thức đã thu gọn rồi tính.\n\n**Phần 2. Trình bày**\n\nTa có $(202+x)+14-(14-x)=202+x+14-14+x=202+2x$.\n\nThay $x=14$ vào biểu thức vừa thu gọn:\n\n$202+2.14=202+28=230$\n\nVậy với $x=14$ thì biểu thức có giá trị bằng $230$.",
+    "kiem": [
+      "((x)=>(202+x)+14-(14-x))(14)===230"
+    ],
+    "sach_dap_so": "b) 230",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-3B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thu gọn biểu thức rồi thay giá trị biến.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $(68-x)+(29-y+8)$ với $x=3$; $y=2$.",
+    "dap_an": "100",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ dấu ngoặc, thu gọn biểu thức rồi mới thay giá trị của biến vào để tính.\n\n**Bước 1.** Cả hai ngoặc đều có dấu $+$ ngầm đứng trước nên bỏ ngoặc là giữ nguyên dấu.\n\n**Bước 2.** Cộng các số cụ thể ($68$, $29$, $8$) lại với nhau để thu gọn.\n\n**Bước 3.** Thay $x=3$ và $y=2$ vào biểu thức đã thu gọn rồi tính.\n\n**Phần 2. Trình bày**\n\nTa có $(68-x)+(29-y+8)=68-x+29-y+8=105-x-y$.\n\nThay $x=3$; $y=2$ vào biểu thức vừa thu gọn:\n\n$105-3-2=100$\n\nVậy với $x=3$; $y=2$ thì biểu thức có giá trị bằng $100$.",
+    "kiem": [
+      "((x,y)=>(68-x)+(29-y+8))(3,2)===100"
+    ],
+    "sach_dap_so": "c) 100",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-4A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ dấu ngoặc rồi thu gọn biểu thức chứa chữ.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn biểu thức sau: $A=-(24-x)+4$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Áp dụng quy tắc dấu ngoặc để bỏ hết ngoặc, rồi gộp các số hạng cùng loại (số với số, cùng một chữ với nhau).\n\n**Bước 1.** Ngoặc $(24-x)$ có dấu $-$ đứng trước nên đổi dấu cả hai số hạng bên trong.\n\n**Bước 2.** Ghép các số cụ thể với nhau (số với số) để thu gọn.\n\n**Bước 3.** Viết kết quả gọn: một số hạng là số và một số hạng chứa chữ.\n\n**Chú ý:** Kết quả viết gọn, số đứng trước chữ hoặc chữ đứng trước đều được.\n\n**Phần 2. Trình bày**\n\n$A=-(24-x)+4$\n\n$=-24+x+4$\n\n$=(-24+4)+x$\n\n$=-20+x$",
+    "kiem": [
+      "[...Array(25).keys()].every(i=>{const x=i*2-7;return (-(24-x)+4)===(-20+x)})"
+    ],
+    "sach_dap_so": "a) A = -20 + x",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-4A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ dấu ngoặc rồi thu gọn biểu thức chứa chữ.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn biểu thức sau: $B=-(a-c)-(a-b+c)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Áp dụng quy tắc dấu ngoặc để bỏ hết ngoặc, rồi gộp các số hạng cùng loại (số với số, cùng một chữ với nhau).\n\n**Bước 1.** Cả hai ngoặc đều có dấu $-$ đứng trước nên đổi dấu mọi số hạng bên trong.\n\n**Bước 2.** Nhóm các số hạng giống nhau: các số hạng chứa $a$, chứa $b$, chứa $c$.\n\n**Bước 3.** Hai số hạng $c$ và $-c$ đối nhau thì triệt tiêu.\n\n**Phần 2. Trình bày**\n\n$B=-(a-c)-(a-b+c)$\n\n$=-a+c-a+b-c$\n\n$=(-a-a)+b+(c-c)$\n\n$=-2a+b$",
+    "kiem": [
+      "[...Array(25).keys()].every(i=>{const a=i*2-7;const b=i*3-10;const c=i*4-13;return (-(a-c)-(a-b+c))===(-2*a+b)})"
+    ],
+    "sach_dap_so": "b) B = b - 2a",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-4A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ dấu ngoặc rồi thu gọn biểu thức chứa chữ.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn biểu thức sau: $C=[a+(a+3)]-[(a+2)-(a-2)]$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Áp dụng quy tắc dấu ngoặc để bỏ hết ngoặc, rồi gộp các số hạng cùng loại (số với số, cùng một chữ với nhau).\n\n**Bước 1.** Bỏ ngoặc tròn bên trong từng ngoặc vuông trước: $[a+(a+3)]$ giữ nguyên dấu; $[(a+2)-(a-2)]$ có $-(a-2)$ nên đổi dấu cả hai số bên trong.\n\n**Bước 2.** Ngoặc vuông thứ hai có dấu $-$ đứng trước nên đổi dấu mọi số hạng bên trong khi bỏ.\n\n**Bước 3.** Gộp các số hạng chứa $a$ với nhau, các số cụ thể với nhau.\n\n**Phần 2. Trình bày**\n\n$C=[a+(a+3)]-[(a+2)-(a-2)]$\n\n$=a+a+3-a-2+a-2$\n\n$=(a+a-a+a)+(3-2-2)$\n\n$=2a-1$",
+    "kiem": [
+      "[...Array(25).keys()].every(i=>{const a=i*2-7;return ((a+(a+3))-((a+2)-(a-2)))===(2*a-1)})"
+    ],
+    "sach_dap_so": "c) C = 2a - 1",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-4B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ dấu ngoặc rồi thu gọn biểu thức chứa chữ.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn biểu thức sau: $A=-(15-x)+5$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Áp dụng quy tắc dấu ngoặc để bỏ hết ngoặc, rồi gộp các số hạng cùng loại (số với số, cùng một chữ với nhau).\n\n**Bước 1.** Ngoặc $(15-x)$ có dấu $-$ đứng trước nên đổi dấu cả hai số hạng bên trong.\n\n**Bước 2.** Ghép các số cụ thể với nhau (số với số) để thu gọn.\n\n**Bước 3.** Viết kết quả gọn: một số hạng là số và một số hạng chứa chữ.\n\n**Phần 2. Trình bày**\n\n$A=-(15-x)+5$\n\n$=-15+x+5$\n\n$=(-15+5)+x$\n\n$=-10+x$",
+    "kiem": [
+      "[...Array(25).keys()].every(i=>{const x=i*2-7;return (-(15-x)+5)===(-10+x)})"
+    ],
+    "sach_dap_so": "a) A = -10 + x",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-4B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ dấu ngoặc rồi thu gọn biểu thức chứa chữ.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn biểu thức sau: $B=-(a+c)-(a-b-c)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Áp dụng quy tắc dấu ngoặc để bỏ hết ngoặc, rồi gộp các số hạng cùng loại (số với số, cùng một chữ với nhau).\n\n**Bước 1.** Cả hai ngoặc đều có dấu $-$ đứng trước nên đổi dấu mọi số hạng bên trong.\n\n**Bước 2.** Nhóm các số hạng giống nhau: chứa $a$, chứa $b$, chứa $c$.\n\n**Bước 3.** Hai số hạng $-c$ và $c$ đối nhau thì triệt tiêu.\n\n**Phần 2. Trình bày**\n\n$B=-(a+c)-(a-b-c)$\n\n$=-a-c-a+b+c$\n\n$=(-a-a)+b+(-c+c)$\n\n$=-2a+b$",
+    "kiem": [
+      "[...Array(25).keys()].every(i=>{const a=i*2-7;const b=i*3-10;const c=i*4-13;return (-(a+c)-(a-b-c))===(-2*a+b)})"
+    ],
+    "sach_dap_so": "b) B = -2a + b",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-4B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ dấu ngoặc rồi thu gọn biểu thức chứa chữ.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn biểu thức sau: $C=[a-(a-3)]-[(a-2)+(a-2)]$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Áp dụng quy tắc dấu ngoặc để bỏ hết ngoặc, rồi gộp các số hạng cùng loại (số với số, cùng một chữ với nhau).\n\n**Bước 1.** Bỏ ngoặc tròn bên trong từng ngoặc vuông trước: $-(a-3)$ đổi dấu cả hai số bên trong; $+(a-2)$ giữ nguyên dấu.\n\n**Bước 2.** Ngoặc vuông thứ hai có dấu $-$ đứng trước nên đổi dấu mọi số hạng bên trong khi bỏ.\n\n**Bước 3.** Gộp các số hạng chứa $a$ với nhau, các số cụ thể với nhau.\n\n**Phần 2. Trình bày**\n\n$C=[a-(a-3)]-[(a-2)+(a-2)]$\n\n$=a-a+3-a+2-a+2$\n\n$=(a-a-a-a)+(3+2+2)$\n\n$=-2a+7$",
+    "kiem": [
+      "[...Array(25).keys()].every(i=>{const a=i*2-7;return ((a-(a-3))-((a-2)+(a-2)))===(-2*a+7)})"
+    ],
+    "sach_dap_so": "c) C = -2a + 7",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-5-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Ghép cặp số đối và cặp số tròn trăm.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(-27)+33+67+27$.",
+    "dap_an": "100",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ ngoặc rồi dùng giao hoán, kết hợp để ghép các số đối nhau hoặc các số tròn chục, tròn trăm cho dễ tính.\n\n**Bước 1.** Ngoặc $(-27)$ đứng đầu, bỏ ngoặc giữ nguyên số.\n\n**Bước 2.** Tìm hai số đối nhau: $-27$ và $27$.\n\n**Bước 3.** Ghép $33$ với $67$ cho một số tròn trăm.\n\n**Phần 2. Trình bày**\n\n$(-27)+33+67+27$\n\n$=(-27+27)+(33+67)$\n\n$=0+100$\n\n$=100$",
+    "kiem": [
+      "(-27)+33+67+27===100"
+    ],
+    "sach_dap_so": "a) 100",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-5-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(-7)+(-215)+(-13)+215$.",
+    "dap_an": "-20",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ ngoặc rồi dùng giao hoán, kết hợp để ghép các số đối nhau hoặc các số tròn chục, tròn trăm cho dễ tính.\n\n**Bước 1.** Cả ba ngoặc có dấu $+$ đứng trước nên bỏ ngoặc là giữ nguyên số.\n\n**Bước 2.** Tìm hai số đối nhau: $-215$ và $215$.\n\n**Bước 3.** Ghép $-7$ với $-13$ cho một số tròn chục.\n\n**Phần 2. Trình bày**\n\n$(-7)+(-215)+(-13)+215$\n\n$=-7-215-13+215$\n\n$=(-7-13)+(-215+215)$\n\n$=-20+0$\n\n$=-20$",
+    "kiem": [
+      "(-7)+(-215)+(-13)+215===-20"
+    ],
+    "sach_dap_so": "b) -20",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-5-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $55+35+(-25)+(-55)$.",
+    "dap_an": "10",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ ngoặc rồi dùng giao hoán, kết hợp để ghép các số đối nhau hoặc các số tròn chục, tròn trăm cho dễ tính.\n\n**Bước 1.** Hai ngoặc đều có dấu $+$ đứng trước nên bỏ ngoặc giữ nguyên số.\n\n**Bước 2.** Tìm hai số đối nhau: $55$ và $-55$.\n\n**Bước 3.** Ghép $35$ với $-25$ rồi cộng.\n\n**Phần 2. Trình bày**\n\n$55+35+(-25)+(-55)$\n\n$=55+35-25-55$\n\n$=(55-55)+(35-25)$\n\n$=0+10$\n\n$=10$",
+    "kiem": [
+      "55+35+(-25)+(-55)===10"
+    ],
+    "sach_dap_so": "c) 10",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-5-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Hợp 01300 và 01306 (gom -2, -6, 18 thành số tròn chục); dạng sau thắng.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(-2)+(-6)+55+18$.",
+    "dap_an": "65",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ ngoặc rồi dùng giao hoán, kết hợp để ghép các số hạng thành số tròn chục, tròn trăm cho dễ tính.\n\n**Bước 1.** Hai ngoặc đều có dấu $+$ đứng trước nên bỏ ngoặc giữ nguyên số.\n\n**Bước 2.** Không có cặp số đối; tìm nhóm số hạng có tổng tròn chục: hai số âm $-2$, $-6$ cùng với $18$.\n\n**Bước 3.** Tính nhóm đó trước rồi cộng với số hạng còn lại là $55$.\n\n**Phần 2. Trình bày**\n\n$(-2)+(-6)+55+18$\n\n$=-2-6+55+18$\n\n$=(18-2-6)+55$\n\n$=10+55$\n\n$=65$",
+    "kiem": [
+      "(-2)+(-6)+55+18===65"
+    ],
+    "sach_dap_so": "d) 65",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-6-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ ngoặc rồi ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(131-29)-131+129$.",
+    "dap_an": "100",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ ngoặc rồi dùng giao hoán, kết hợp để ghép các số đối nhau hoặc các số tròn chục, tròn trăm cho dễ tính.\n\n**Bước 1.** Ngoặc $(131-29)$ có dấu $+$ ngầm đứng trước nên giữ nguyên dấu các số bên trong.\n\n**Bước 2.** Tìm hai số đối nhau: $131$ và $-131$.\n\n**Bước 3.** Ghép hai số còn lại là $-29$ và $129$.\n\n**Phần 2. Trình bày**\n\n$(131-29)-131+129$\n\n$=131-29-131+129$\n\n$=(131-131)+(-29+129)$\n\n$=0+100$\n\n$=100$",
+    "kiem": [
+      "(131-29)-131+129===100"
+    ],
+    "sach_dap_so": "a) 100",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-6-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ ngoặc rồi ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(72-27)-(72-28)$.",
+    "dap_an": "1",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ ngoặc rồi dùng giao hoán, kết hợp để ghép các số đối nhau hoặc các số tròn chục, tròn trăm cho dễ tính.\n\n**Bước 1.** Ngoặc thứ hai có dấu $-$ đứng trước nên đổi dấu cả hai số hạng bên trong.\n\n**Bước 2.** Tìm hai số đối nhau: $72$ và $-72$.\n\n**Bước 3.** Cộng hai số còn lại.\n\n**Phần 2. Trình bày**\n\n$(72-27)-(72-28)$\n\n$=72-27-72+28$\n\n$=(72-72)+(-27+28)$\n\n$=0+1$\n\n$=1$",
+    "kiem": [
+      "(72-27)-(72-28)===1"
+    ],
+    "sach_dap_so": "b) 1",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-6-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ ngoặc rồi ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(-312)-(67-312)+(-27)$.",
+    "dap_an": "-94",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ ngoặc rồi dùng giao hoán, kết hợp để ghép các số đối nhau hoặc các số tròn chục, tròn trăm cho dễ tính.\n\n**Bước 1.** Ngoặc $(67-312)$ có dấu $-$ đứng trước nên đổi dấu cả hai số bên trong.\n\n**Bước 2.** Tìm hai số đối nhau: $-312$ và $312$.\n\n**Bước 3.** Cộng hai số âm còn lại là $-67$ và $-27$.\n\n**Phần 2. Trình bày**\n\n$(-312)-(67-312)+(-27)$\n\n$=-312-67+312-27$\n\n$=(-312+312)+(-67-27)$\n\n$=0-94$\n\n$=-94$",
+    "kiem": [
+      "(-312)-(67-312)+(-27)===-94"
+    ],
+    "sach_dap_so": "c) -94",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-6-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ ngoặc rồi ghép số tròn chục, tròn trăm.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(-90+150)-(10-50)$.",
+    "dap_an": "100",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ ngoặc rồi dùng giao hoán, kết hợp để ghép các số đối nhau hoặc các số tròn chục, tròn trăm cho dễ tính.\n\n**Bước 1.** Ngoặc thứ hai có dấu $-$ đứng trước nên đổi dấu cả hai số hạng bên trong.\n\n**Bước 2.** Ghép $-90$ với $-10$ và ghép $150$ với $50$ cho các số tròn trăm.\n\n**Bước 3.** Cộng hai nhóm.\n\n**Phần 2. Trình bày**\n\n$(-90+150)-(10-50)$\n\n$=-90+150-10+50$\n\n$=(-90-10)+(150+50)$\n\n$=-100+200$\n\n$=100$",
+    "kiem": [
+      "(-90+150)-(10-50)===100"
+    ],
+    "sach_dap_so": "d) 100",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-7-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thu gọn biểu thức rồi thay giá trị biến.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $45-(x+45)-85$ với $x=-5$.",
+    "dap_an": "-80",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ dấu ngoặc, thu gọn biểu thức rồi mới thay giá trị của biến vào để tính.\n\n**Bước 1.** Ngoặc $(x+45)$ có dấu $-$ đứng trước nên đổi dấu cả hai số hạng bên trong.\n\n**Bước 2.** Ghép hai số đối nhau $45$ và $-45$ để thu gọn.\n\n**Bước 3.** Thay $x=-5$ (viết trong ngoặc) vào biểu thức đã thu gọn rồi tính.\n\n**Phần 2. Trình bày**\n\nTa có $45-(x+45)-85=45-x-45-85=-x-85$.\n\nThay $x=-5$ vào biểu thức vừa thu gọn:\n\n$-(-5)-85=5-85=-80$\n\nVậy với $x=-5$ thì biểu thức có giá trị bằng $-80$.",
+    "kiem": [
+      "((x)=>45-(x+45)-85)(-5)===-80"
+    ],
+    "sach_dap_so": "a) -80",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-7-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thu gọn biểu thức rồi thay giá trị biến.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $x-123+(23-50)$ với $x=200$.",
+    "dap_an": "50",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ dấu ngoặc, thu gọn biểu thức rồi mới thay giá trị của biến vào để tính.\n\n**Bước 1.** Ngoặc $(23-50)$ có dấu $+$ đứng trước nên bỏ ngoặc giữ nguyên dấu các số bên trong.\n\n**Bước 2.** Gộp các số cụ thể với nhau để thu gọn.\n\n**Bước 3.** Thay $x=200$ vào biểu thức đã thu gọn rồi tính.\n\n**Phần 2. Trình bày**\n\nTa có $x-123+(23-50)=x-123+23-50=x-150$.\n\nThay $x=200$ vào biểu thức vừa thu gọn:\n\n$200-150=50$\n\nVậy với $x=200$ thì biểu thức có giá trị bằng $50$.",
+    "kiem": [
+      "((x)=>x-123+(23-50))(200)===50"
+    ],
+    "sach_dap_so": "b) 50",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-7-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thu gọn biểu thức rồi thay giá trị biến.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $(-83+y-25)+83$ với $y=10$.",
+    "dap_an": "-15",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ dấu ngoặc, thu gọn biểu thức rồi mới thay giá trị của biến vào để tính.\n\n**Bước 1.** Ngoặc có dấu $+$ ngầm đứng trước nên bỏ ngoặc giữ nguyên dấu các số bên trong.\n\n**Bước 2.** Ghép hai số đối nhau $-83$ và $83$ để thu gọn.\n\n**Bước 3.** Thay $y=10$ vào biểu thức đã thu gọn rồi tính.\n\n**Phần 2. Trình bày**\n\nTa có $(-83+y-25)+83=-83+y-25+83=y-25$.\n\nThay $y=10$ vào biểu thức vừa thu gọn:\n\n$10-25=-15$\n\nVậy với $y=10$ thì biểu thức có giá trị bằng $-15$.",
+    "kiem": [
+      "((y)=>(-83+y-25)+83)(10)===-15"
+    ],
+    "sach_dap_so": "c) -15",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-7-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thu gọn biểu thức rồi thay giá trị biến.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $35-(245-y)-25+x+45$ với $y=8$; $x=2$.",
+    "dap_an": "-180",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bỏ dấu ngoặc, thu gọn biểu thức rồi mới thay giá trị của biến vào để tính.\n\n**Bước 1.** Ngoặc $(245-y)$ có dấu $-$ đứng trước nên đổi dấu cả hai số hạng bên trong.\n\n**Bước 2.** Gộp các số cụ thể ($35$, $-245$, $-25$, $45$) lại với nhau để thu gọn.\n\n**Bước 3.** Thay $x=2$ và $y=8$ vào biểu thức đã thu gọn rồi tính.\n\n**Phần 2. Trình bày**\n\nTa có $35-(245-y)-25+x+45=35-245+y-25+x+45=x+y-190$.\n\nThay $x=2$; $y=8$ vào biểu thức vừa thu gọn:\n\n$2+8-190=-180$\n\nVậy với $x=2$; $y=8$ thì biểu thức có giá trị bằng $-180$.",
+    "kiem": [
+      "((x,y)=>35-(245-y)-25+x+45)(2,8)===-180"
+    ],
+    "sach_dap_so": "d) -180",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-8-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ dấu ngoặc rồi thu gọn biểu thức chứa chữ.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn: $M=x+(273-120)-(270-120)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Áp dụng quy tắc dấu ngoặc để bỏ hết ngoặc, rồi gộp các số hạng cùng loại (số với số, cùng một chữ với nhau).\n\n**Bước 1.** Ngoặc $(273-120)$ có dấu $+$ đứng trước nên giữ nguyên dấu; ngoặc $(270-120)$ có dấu $-$ đứng trước nên đổi dấu cả hai số bên trong.\n\n**Bước 2.** Ghép hai số đối nhau $-120$ và $120$.\n\n**Bước 3.** Ghép hai số còn lại để thu gọn.\n\n**Phần 2. Trình bày**\n\n$M=x+(273-120)-(270-120)$\n\n$=x+273-120-270+120$\n\n$=x+(273-270)+(-120+120)$\n\n$=x+3$",
+    "kiem": [
+      "[...Array(25).keys()].every(i=>{const x=i*2-7;return (x+(273-120)-(270-120))===(x+3)})"
+    ],
+    "sach_dap_so": "a) M = x + 3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-8-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ dấu ngoặc rồi thu gọn biểu thức chứa chữ.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn: $N=y+(-30)-[95+(-40)+(-30)]$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Áp dụng quy tắc dấu ngoặc để bỏ hết ngoặc, rồi gộp các số hạng cùng loại (số với số, cùng một chữ với nhau).\n\n**Bước 1.** Ngoặc $(-30)$ có dấu $+$ đứng trước nên giữ nguyên số; ngoặc vuông có dấu $-$ đứng trước nên đổi dấu mọi số hạng bên trong.\n\n**Bước 2.** Bỏ luôn các ngoặc tròn nhỏ bên trong ngoặc vuông.\n\n**Bước 3.** Ghép hai số đối nhau $-30$ và $30$, rồi gộp các số còn lại.\n\n**Phần 2. Trình bày**\n\n$N=y+(-30)-[95+(-40)+(-30)]$\n\n$=y-30-95+40+30$\n\n$=y+(-30+30)+(-95+40)$\n\n$=y-55$",
+    "kiem": [
+      "[...Array(25).keys()].every(i=>{const y=i*2-7;return (y+(-30)-(95+(-40)+(-30)))===(y-55)})"
+    ],
+    "sach_dap_so": "b) N = y - 55",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-8-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Bỏ dấu ngoặc rồi thu gọn biểu thức chứa chữ.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn: $P=x-(294+130)+(94+130)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Áp dụng quy tắc dấu ngoặc để bỏ hết ngoặc, rồi gộp các số hạng cùng loại (số với số, cùng một chữ với nhau).\n\n**Bước 1.** Ngoặc $(294+130)$ có dấu $-$ đứng trước nên đổi dấu cả hai số hạng bên trong; ngoặc $(94+130)$ giữ nguyên dấu.\n\n**Bước 2.** Ghép hai số đối nhau $-130$ và $130$.\n\n**Bước 3.** Ghép $-294$ với $94$ rồi cộng.\n\n**Phần 2. Trình bày**\n\n$P=x-(294+130)+(94+130)$\n\n$=x-294-130+94+130$\n\n$=x+(-294+94)+(-130+130)$\n\n$=x-200$",
+    "kiem": [
+      "[...Array(25).keys()].every(i=>{const x=i*2-7;return (x-(294+130)+(94+130))===(x-200)})"
+    ],
+    "sach_dap_so": "c) P = x - 200",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-9-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tổng các số nguyên thoả điều kiện; ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng các phần tử của tập hợp sau: $A=\\{x\\in\\mathbb{Z}\\mid -10<x<11\\}$.",
+    "dap_an": "10",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Liệt kê các số nguyên thuộc tập hợp, rồi ghép từng cặp số đối nhau (tổng bằng $0$), chỉ còn lại các số không có số đối.\n\n**Bước 1.** Đọc điều kiện $-10<x<11$: $x$ là số nguyên lớn hơn $-10$ và nhỏ hơn $11$, nên bắt đầu từ $-9$ và dừng ở $10$.\n\n**Bước 2.** Liệt kê đầy đủ các phần tử của $A$.\n\n**Bước 3.** Ghép mỗi số âm với số đối của nó (tổng bằng $0$).\n\n**Bước 4.** Xem những số nào không có số đối trong tập hợp rồi cộng lại.\n\n**Chú ý:** Phải kiểm tra số $0$ và hai đầu mút: số $10$ có trong tập hợp nhưng $-10$ thì không.\n\n**Phần 2. Trình bày**\n\nVì $x\\in\\mathbb{Z}$ và $-10<x<11$ nên $A=\\{-9;-8;-7;-6;-5;-4;-3;-2;-1;0;1;2;3;4;5;6;7;8;9;10\\}$.\n\nTổng các phần tử của $A$ là:\n\n$(-9)+(-8)+(-7)+\\dots+7+8+9+10$\n\n$=[(-9)+9]+[(-8)+8]+\\dots+[(-1)+1]+0+10$\n\n$=0+0+\\dots+0+0+10$\n\n$=10$\n\nVậy tổng các phần tử của $A$ bằng $10$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-9;x<=10;x++)s+=x;return s===10})()"
+    ],
+    "sach_dap_so": "a) 10",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B3-9-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tổng các số nguyên thoả điều kiện; ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng các phần tử của tập hợp sau: $B=\\{x\\in\\mathbb{Z}\\mid -200\\le x\\le 200\\}$.",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Liệt kê các số nguyên thuộc tập hợp, rồi ghép từng cặp số đối nhau (tổng bằng $0$), chỉ còn lại các số không có số đối.\n\n**Bước 1.** Đọc điều kiện $-200\\le x\\le 200$: $x$ chạy từ $-200$ đến $200$, lấy cả hai đầu mút.\n\n**Bước 2.** Viết tập hợp bằng cách liệt kê, chỉ ghi vài số đầu, vài số cuối và số $0$.\n\n**Bước 3.** Ghép mỗi số với số đối của nó: hai đầu mút cũng là hai số đối nhau.\n\n**Bước 4.** Xem còn số nào không ghép được rồi cộng lại.\n\n**Chú ý:** Số $0$ không ghép cặp được nhưng cộng thêm $0$ không làm đổi tổng.\n\n**Phần 2. Trình bày**\n\nVì $x\\in\\mathbb{Z}$ và $-200\\le x\\le 200$ nên $B=\\{-200;-199;-198;\\dots;-1;0;1;\\dots;198;199;200\\}$.\n\nTổng các phần tử của $B$ là:\n\n$(-200)+(-199)+(-198)+\\dots+(-1)+0+1+\\dots+198+199+200$\n\n$=[(-200)+200]+[(-199)+199]+[(-198)+198]+\\dots+[(-1)+1]+0$\n\n$=0+0+0+\\dots+0+0$\n\n$=0$\n\nVậy tổng các phần tử của $B$ bằng $0$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-200;x<=200;x++)s+=x;return s===0})()"
+    ],
+    "sach_dap_so": "b) 0",
+    "ghi_chu": ""
+  }
+]

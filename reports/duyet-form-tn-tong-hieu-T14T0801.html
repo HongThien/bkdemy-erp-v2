@@ -1,0 +1,788 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Duyệt form TN Tổng hiệu</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$',right:'$',display:false}],throwOnError:false})"></script>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1b1f24;--mute:#68707a;--line:#e3e6ea;--ok:#1f8a4c;--okbg:#e8f6ee;--do:#c62828;--dobg:#fdecec;--vang:#a86400;--vangbg:#fff4de;--xam:#eef0f3}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#14171b;--card:#1d2126;--ink:#e7eaee;--mute:#9aa3ad;--line:#2d333a;--okbg:#14301f;--dobg:#3a1717;--vangbg:#3a2a10;--xam:#2a2f35}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,"Segoe UI",Arial}
+main{max-width:920px;margin:0 auto;padding:20px 16px 60px}h1{font-size:21px;margin:0 0 4px}.sub{color:var(--mute);font-size:13.5px}
+.tong{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:16px 0}
+.o{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer}.o b{display:block;font-size:26px}.o.on{outline:2px solid var(--ink)}
+.o.ok b{color:var(--ok)}.o.do b{color:var(--do)}.o.vang b{color:var(--vang)}
+.note{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:12px 0;font-size:14px}.note li{margin:4px 0}
+.toc{display:grid;gap:6px;margin:12px 0}.toc a{display:flex;gap:8px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px;color:inherit;text-decoration:none;font-size:14px}.toc a span{flex:1}
+.toc i{font-style:normal;font-size:12px;padding:1px 8px;border-radius:99px}.toc i.do{background:var(--dobg);color:var(--do)}.toc i.vang{background:var(--vangbg);color:var(--vang)}
+h2{font-size:17px;margin:28px 0 8px}h2 small{color:var(--mute);font-weight:400}
+.cau{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:12px;padding:12px 16px;margin:10px 0}.m-do{border-left-color:var(--do)}.m-vang{border-left-color:var(--vang)}
+.cau h3{margin:0 0 6px;font-size:13.5px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}.ma{font-family:ui-monospace,Consolas,monospace;color:var(--mute)}
+.de{font-size:16px;margin:4px 0 8px}.kho{font-size:14px;color:var(--mute)}.kho b{color:var(--ink)}.sua{color:var(--do)}
+.ly{font-size:14px;border-radius:8px;padding:8px 10px;margin:8px 0}.ly.do{background:var(--dobg)}.ly.vang{background:var(--vangbg)}
+.pa{list-style:none;padding:0;margin:8px 0;display:grid;grid-template-columns:1fr 1fr;gap:6px}@media(max-width:560px){.pa{grid-template-columns:1fr}}
+.pa li{border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:14.5px}.pa li.dung{background:var(--okbg)}.m-do .pa li.dung{background:var(--dobg)}.pa li.that{outline:2px solid var(--ok)}
+.tag{font-size:11.5px;padding:1px 8px;border-radius:99px;background:var(--xam);color:var(--mute);font-weight:500}.t-ok{background:var(--okbg);color:var(--ok)}.t-do{background:var(--dobg);color:var(--do)}.t-vang{background:var(--vangbg);color:var(--vang)}
+details{font-size:13.5px;color:var(--mute)}.lg{padding:6px 0 0;color:var(--ink)}
+</style></head><body><main>
+<h1>Duyệt form trắc nghiệm — Bài toán tổng hiệu (4T · T14T0801)</h1>
+<div class="sub">106 form chưa duyệt · Claude giải lại từng câu ngày 24/10 · CHƯA ghi gì vào DB — Thùy duyệt xong mới ghi</div>
+<div class="tong">
+<div class="o ok" data-loc="ok"><b>99</b>Duyệt được</div>
+<div class="o do" data-loc="do"><b>5</b>Không duyệt — đáp án kho sai</div>
+<div class="o vang" data-loc="vang"><b>2</b>Đề phi thực tế — Thùy quyết</div>
+<div class="o" data-loc="all"><b>106</b>Xem tất cả</div>
+</div>
+<div class="note"><b>Đề xuất</b><ul>
+<li><b>99 form</b> đáp án đúng, đủ 4 phương án khác nhau, đúng 1 phương án đúng ⇒ đề xuất <b>duyệt</b>.</li>
+<li><b>5 câu</b> (dạng 1.2 "tuổi con hiện tại"): <b>ô đáp án trong kho sai</b> trong khi lời giải kho đúng ⇒ form theo đáp án sai. Đề xuất: sửa ô đáp án kho theo lời giải, rồi sinh lại form (không duyệt form cũ). Câu kho đang ở trạng thái kho chuẩn, nên nếu có luồng nào chấm theo câu trả lời ngắn thì HS làm đúng vẫn bị chấm sai.</li>
+<li><b>2 câu</b> toán đúng nhưng mốc "… năm trước" rơi vào lúc con chưa sinh / 0 tuổi ⇒ Thùy quyết duyệt hay sửa số.</li>
+<li>Nhiễu yếu (không chặn duyệt, 53 câu): Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2… · Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.</li>
+</ul></div>
+<div class="toc"><a href="#T14T080101"><span>T14T080101 · Bài toán tổng hiệu cơ bản</span><b>6</b></a><a href="#T14T080102"><span>T14T080102 · Bài toán tổng hiệu ẩn tổng</span><b>62</b><i class="do">5 sai</i><i class="vang">2 xem</i></a><a href="#T14T080103"><span>T14T080103 · Bài toán Tổng hiệu  Ẩn hiệu</span><b>38</b></a></div>
+<h2 id="T14T080101">T14T080101 — Bài toán tổng hiệu cơ bản <small>6 câu</small></h2><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080101001</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">Tìm hai số biết rằng tổng hai số đó là 80, hiệu hai số đó là 18 ?</div>
+<div class="kho">Đáp án kho: <b>49, 31</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $98;31$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $50;31$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $49;31$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $49;32$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Số lớn là : $(80+18):2=49$<br>Số bé là : $80-49=31$<br>Đáp số : 49, 31</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080101002</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">Tìm hai số biết rằng tổng hai số đó là 90, hiệu hai số đó là 26 ?</div>
+<div class="kho">Đáp án kho: <b>58, 32</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $116;32$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $57;32$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $58;33$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $58;32$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Số lớn là : $(90+26):2=58$<br>Số bé là : $90-58=32$<br>Đáp số : 58, 32</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080101003</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">Tìm hai số biết rằng tổng hai số đó là 120, hiệu hai số đó là 30 ?</div>
+<div class="kho">Đáp án kho: <b>75, 45</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $75;45$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $76;45$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $74;45$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $75;46$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Số lớn là : $(120+30):2=75$<br>Số bé là : $120-75=45$<br>Đáp số : 75, 45</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080101004</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">Tìm hai số biết rằng tổng hai số đó là 65, hiệu hai số đó là 15 ?</div>
+<div class="kho">Đáp án kho: <b>40, 25</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $80;25$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $40;25$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $41;25$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $39;25$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Số lớn là : $(65+15):2=40$<br>Số bé là : $65-40=25$<br>Đáp số : 40, 25</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080101005</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">Tìm hai số biết rằng tổng hai số đó là 150, hiệu hai số đó là 44 ?</div>
+<div class="kho">Đáp án kho: <b>97, 53</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $194;53$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $98;53$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $97;53$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $97;54$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Số lớn là : $(150+44):2=97$<br>Số bé là : $150-97=53$<br>Đáp số : 97, 53</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080101006</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">Tìm hai số biết rằng tổng hai số đó là 74, hiệu hai số đó là 12 ?</div>
+<div class="kho">Đáp án kho: <b>43, 31</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $86;31$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $42;31$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $43;32$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $43;31$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Số lớn là : $(74+12):2=43$<br>Số bé là : $74-43=31$<br>Đáp số : 43, 31</div></details>
+</section><h2 id="T14T080102">T14T080102 — Bài toán tổng hiệu ẩn tổng <small>62 câu</small></h2><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102001</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">3 năm trước mẹ hơn con 26 tuổi. 5 năm nữa, tổng số tuổi của mẹ và con là 44 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>4</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $4$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $5$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $3$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $2$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 26 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $44 - 5 - 5 = 34$ (tuổi)<br>Tuổi con hiện tại là : $(34 - 26) : 2 = 4$ (tuổi)<br>Đáp số :  4 tuổi</div></details>
+</section><section class="cau m-do" data-muc="do">
+<h3><span class="ma">T14T080102002</span><span class="tag t-do">✗ KHÔNG DUYỆT — đáp án kho sai</span></h3>
+<div class="de">4 năm trước bố hơn con 30 tuổi. 6 năm nữa, tổng số tuổi của bố và con là 52 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>3</b> <span class="sua">→ đúng phải là <b>5</b></span></div>
+<div class="ly do">Hiện tại tổng 52 − 6 − 6 = 40, con = (40 − 30) : 2 = <b>5</b>. Lời giải kho ra 5, ô đáp án kho ghi 3.</div>
+<ol class="pa"><li class=" "><b>A.</b> $6$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $3$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $4$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $2$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, bố vẫn hơn con 30 tuổi.<br>Hiện tại, tổng số tuổi của bố và con là : $52 - 6 - 6 = 40$ (tuổi)<br>Tuổi con hiện tại là : $(40 - 30) : 2 = 5$ (tuổi)<br>Đáp số :  5 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102003</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">2 năm trước mẹ hơn con 24 tuổi. 3 năm nữa, tổng số tuổi của mẹ và con là 38 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>4</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $8$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $5$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $4$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $2$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 24 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $38 - 3 - 3 = 32$ (tuổi)<br>Tuổi con hiện tại là : $(32 - 24) : 2 = 4$ (tuổi)<br>Đáp số :  4 tuổi</div></details>
+</section><section class="cau m-do" data-muc="do">
+<h3><span class="ma">T14T080102004</span><span class="tag t-do">✗ KHÔNG DUYỆT — đáp án kho sai</span></h3>
+<div class="de">5 năm trước bố hơn con 28 tuổi. 2 năm nữa, tổng số tuổi của bố và con là 40 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>3</b> <span class="sua">→ đúng phải là <b>4</b></span></div>
+<div class="ly do">Hiện tại tổng 40 − 2 − 2 = 36, con = (36 − 28) : 2 = <b>4</b>. Lời giải kho ra 4, ô đáp án kho ghi 3.</div><div class="ly vang">Thêm: con hiện 4 tuổi ⇒ 5 năm trước con −1 tuổi (chưa sinh) mà đề nói "bố hơn con 28 tuổi".</div>
+<ol class="pa"><li class=" "><b>A.</b> $6$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $2$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $1$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $3$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, bố vẫn hơn con 28 tuổi.<br>Hiện tại, tổng số tuổi của bố và con là : $40 - 2 - 2 = 36$ (tuổi)<br>Tuổi con hiện tại là : $(36 - 28) : 2 = 4$ (tuổi)<br>Đáp số :  4 tuổi</div></details>
+</section><section class="cau m-do" data-muc="do">
+<h3><span class="ma">T14T080102005</span><span class="tag t-do">✗ KHÔNG DUYỆT — đáp án kho sai</span></h3>
+<div class="de">3 năm trước mẹ hơn con 22 tuổi. 4 năm nữa, tổng số tuổi của mẹ và con là 42 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>5</b> <span class="sua">→ đúng phải là <b>6</b></span></div>
+<div class="ly do">Hiện tại tổng 42 − 4 − 4 = 34, con = (34 − 22) : 2 = <b>6</b>. Lời giải kho ra 6, ô đáp án kho ghi 5. Phương án B (6) đang bị đánh là SAI trong khi đó mới là đáp án đúng.</div>
+<ol class="pa"><li class="dung "><b>A.</b> $5$ <span class="tag t-ok">form đánh đúng</span></li><li class=" that"><b>B.</b> $6$ <span class="tag t-do">đáp án thật</span> <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $4$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $3$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 22 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $42 - 4 - 4 = 34$ (tuổi)<br>Tuổi con hiện tại là : $(34 - 22) : 2 = 6$ (tuổi)<br>Đáp số :  6 tuổi</div></details>
+</section><section class="cau m-vang" data-muc="vang">
+<h3><span class="ma">T14T080102006</span><span class="tag t-vang">? đề phi thực tế — Thùy quyết</span></h3>
+<div class="de">6 năm trước bố hơn con 32 tuổi. 3 năm nữa, tổng số tuổi của bố và con là 46 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>4</b></div>
+<div class="ly vang">Con hiện 4 tuổi ⇒ 6 năm trước con −2 tuổi (chưa sinh) mà đề nói "bố hơn con 32 tuổi". Toán vẫn đúng.</div>
+<ol class="pa"><li class=" "><b>A.</b> $8$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $4$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $5$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $3$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, bố vẫn hơn con 32 tuổi.<br>Hiện tại, tổng số tuổi của bố và con là : $46 - 3 - 3 = 40$ (tuổi)<br>Tuổi con hiện tại là : $(40 - 32) : 2 = 4$ (tuổi)<br>Đáp số :  4 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102007</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">1 năm trước mẹ hơn con 20 tuổi. 5 năm nữa, tổng số tuổi của mẹ và con là 44 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>7</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $14$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $8$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $7$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $5$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 20 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $44 - 5 - 5 = 34$ (tuổi)<br>Tuổi con hiện tại là : $(34 - 20) : 2 = 7$ (tuổi)<br>Đáp số :  7 tuổi</div></details>
+</section><section class="cau m-do" data-muc="do">
+<h3><span class="ma">T14T080102008</span><span class="tag t-do">✗ KHÔNG DUYỆT — đáp án kho sai</span></h3>
+<div class="de">4 năm trước bố hơn con 26 tuổi. 7 năm nữa, tổng số tuổi của bố và con là 52 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>4</b> <span class="sua">→ đúng phải là <b>6</b></span></div>
+<div class="ly do">Hiện tại tổng 52 − 7 − 7 = 38, con = (38 − 26) : 2 = <b>6</b>. Lời giải kho ra 6, ô đáp án kho ghi 4.</div>
+<ol class="pa"><li class=" "><b>A.</b> $8$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $3$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $2$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $4$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, bố vẫn hơn con 26 tuổi.<br>Hiện tại, tổng số tuổi của bố và con là : $52 - 7 - 7 = 38$ (tuổi)<br>Tuổi con hiện tại là : $(38 - 26) : 2 = 6$ (tuổi)<br>Đáp số :  6 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102009</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">3 năm trước mẹ hơn con 18 tuổi. 2 năm nữa, tổng số tuổi của mẹ và con là 36 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>7</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $7$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $8$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $6$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $5$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 18 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $36 - 2 - 2 = 32$ (tuổi)<br>Tuổi con hiện tại là : $(32 - 18) : 2 = 7$ (tuổi)<br>Đáp số :  7 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102010</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">5 năm trước bố hơn con 30 tuổi. 2 năm nữa, tổng số tuổi của bố và con là 48 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>7</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $14$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $7$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $8$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $6$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, bố vẫn hơn con 30 tuổi.<br>Hiện tại, tổng số tuổi của bố và con là : $48 - 2 - 2 = 44$ (tuổi)<br>Tuổi con hiện tại là : $(44 - 30) : 2 = 7$ (tuổi)<br>Đáp số :  7 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102011</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">2 năm trước mẹ hơn con 28 tuổi. 3 năm nữa, tổng số tuổi của mẹ và con là 40 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>3</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $6$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $4$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $3$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $1$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 28 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $40 - 3 - 3 = 34$ (tuổi)<br>Tuổi con hiện tại là : $(34 - 28) : 2 = 3$ (tuổi)<br>Đáp số :  3 tuổi</div></details>
+</section><section class="cau m-vang" data-muc="vang">
+<h3><span class="ma">T14T080102012</span><span class="tag t-vang">? đề phi thực tế — Thùy quyết</span></h3>
+<div class="de">6 năm trước bố hơn con 24 tuổi. 4 năm nữa, tổng số tuổi của bố và con là 44 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>6</b></div>
+<div class="ly vang">Con hiện 6 tuổi ⇒ 6 năm trước con 0 tuổi (vừa sinh). Toán vẫn đúng.</div>
+<ol class="pa"><li class=" "><b>A.</b> $12$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $5$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $4$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $6$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, bố vẫn hơn con 24 tuổi.<br>Hiện tại, tổng số tuổi của bố và con là : $44 - 4 - 4 = 36$ (tuổi)<br>Tuổi con hiện tại là : $(36 - 24) : 2 = 6$ (tuổi)<br>Đáp số :  6 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102013</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">1 năm trước mẹ hơn con 22 tuổi. 5 năm nữa, tổng số tuổi của mẹ và con là 46 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>7</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $7$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $8$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $6$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $5$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 22 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $46 - 5 - 5 = 36$ (tuổi)<br>Tuổi con hiện tại là : $(36 - 22) : 2 = 7$ (tuổi)<br>Đáp số :  7 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102014</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">4 năm trước bố hơn con 34 tuổi. 6 năm nữa, tổng số tuổi của bố và con là 56 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>5</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $10$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $5$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $6$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $4$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, bố vẫn hơn con 34 tuổi.<br>Hiện tại, tổng số tuổi của bố và con là : $56 - 6 - 6 = 44$ (tuổi)<br>Tuổi con hiện tại là : $(44 - 34) : 2 = 5$ (tuổi)<br>Đáp số :  5 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102015</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">3 năm trước mẹ hơn con 26 tuổi. 4 năm nữa, tổng số tuổi của mẹ và con là 42 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>4</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $8$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $5$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $4$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $2$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 26 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $42 - 4 - 4 = 34$ (tuổi)<br>Tuổi con hiện tại là : $(34 - 26) : 2 = 4$ (tuổi)<br>Đáp số :  4 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102016</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">5 năm trước bố hơn con 28 tuổi. 3 năm nữa, tổng số tuổi của bố và con là 48 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>7</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $14$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $6$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $5$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $7$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, bố vẫn hơn con 28 tuổi.<br>Hiện tại, tổng số tuổi của bố và con là : $48 - 3 - 3 = 42$ (tuổi)<br>Tuổi con hiện tại là : $(42 - 28) : 2 = 7$ (tuổi)<br>Đáp số :  7 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102017</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">2 năm trước mẹ hơn con 20 tuổi. 4 năm nữa, tổng số tuổi của mẹ và con là 40 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>6</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $6$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $7$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $5$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $4$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 20 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $40 - 4 - 4 = 32$ (tuổi)<br>Tuổi con hiện tại là : $(32 - 20) : 2 = 6$ (tuổi)<br>Đáp số :  6 tuổi</div></details>
+</section><section class="cau m-do" data-muc="do">
+<h3><span class="ma">T14T080102018</span><span class="tag t-do">✗ KHÔNG DUYỆT — đáp án kho sai</span></h3>
+<div class="de">3 năm trước bố hơn con 26 tuổi. 2 năm nữa, tổng số tuổi của bố và con là 40 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>4</b> <span class="sua">→ đúng phải là <b>5</b></span></div>
+<div class="ly do">Hiện tại tổng 40 − 2 − 2 = 36, con = (36 − 26) : 2 = <b>5</b>. Lời giải kho ra 5, ô đáp án kho ghi 4. Phương án C (5) đang bị đánh là SAI.</div>
+<ol class="pa"><li class=" "><b>A.</b> $8$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $4$ <span class="tag t-ok">form đánh đúng</span></li><li class=" that"><b>C.</b> $5$ <span class="tag t-do">đáp án thật</span> <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $3$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, bố vẫn hơn con 26 tuổi.<br>Hiện tại, tổng số tuổi của bố và con là : $40 - 2 - 2 = 36$ (tuổi)<br>Tuổi con hiện tại là : $(36 - 26) : 2 = 5$ (tuổi)<br>Đáp số :  5 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102019</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">6 năm trước mẹ hơn con 30 tuổi. 5 năm nữa, tổng số tuổi của mẹ và con là 54 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>7</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $14$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $8$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $7$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $5$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 30 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $54 - 5 - 5 = 44$ (tuổi)<br>Tuổi con hiện tại là : $(44 - 30) : 2 = 7$ (tuổi)<br>Đáp số :  7 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102020</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">4 năm trước bố hơn con 32 tuổi. 3 năm nữa, tổng số tuổi của bố và con là 50 tuổi. Hỏi hiện tại con bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>6</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $12$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $5$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $4$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $6$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, bố vẫn hơn con 32 tuổi.<br>Hiện tại, tổng số tuổi của bố và con là : $50 - 3 - 3 = 44$ (tuổi)<br>Tuổi con hiện tại là : $(44 - 32) : 2 = 6$ (tuổi)<br>Đáp số :  6 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102021</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 128m. Biết chiều dài hơn chiều rộng 12m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>988</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $988$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $989$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $987$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $986$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $128 : 2 = 64(m)$<br>Chiều dài hình chữ nhật là : $(64 + 12) : 2 = 38(m)$<br>Chiều rộng hình chữ nhật là : $64 - 38 = 26(m)$<br>Diện tích mảnh đất là : $38 \times 26 = 988(m^2)$<br>Đáp số : $988(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102022</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 100m. Biết chiều dài hơn chiều rộng 10m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>600</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $1200$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $600$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $601$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $599$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $100 : 2 = 50(m)$<br>Chiều dài hình chữ nhật là : $(50 + 10) : 2 = 30(m)$<br>Chiều rộng hình chữ nhật là : $50 - 30 = 20(m)$<br>Diện tích mảnh đất là : $30 \times 20 = 600(m^2)$<br>Đáp số : $600(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102023</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 90m. Biết chiều dài hơn chiều rộng 5m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>500</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $1000$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $501$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $500$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $498$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $90 : 2 = 45(m)$<br>Chiều dài hình chữ nhật là : $(45 + 5) : 2 = 25(m)$<br>Chiều rộng hình chữ nhật là : $45 - 25 = 20(m)$<br>Diện tích mảnh đất là : $25 \times 20 = 500(m^2)$<br>Đáp số : $500(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102024</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 150m. Biết chiều dài hơn chiều rộng 15m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>1350</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $2700$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $1349$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $1348$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $1350$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $150 : 2 = 75(m)$<br>Chiều dài hình chữ nhật là : $(75 + 15) : 2 = 45(m)$<br>Chiều rộng hình chữ nhật là : $75 - 45 = 30(m)$<br>Diện tích mảnh đất là : $45 \times 30 = 1350(m^2)$<br>Đáp số : $1350(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102025</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 84m. Biết chiều dài hơn chiều rộng 8m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>425</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $425$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $426$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $424$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $423$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $84 : 2 = 42(m)$<br>Chiều dài hình chữ nhật là : $(42 + 8) : 2 = 25(m)$<br>Chiều rộng hình chữ nhật là : $42 - 25 = 17(m)$<br>Diện tích mảnh đất là : $25 \times 17 = 425(m^2)$<br>Đáp số : $425(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102026</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 160m. Biết chiều dài hơn chiều rộng 18m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>1519</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $3038$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $1519$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $1520$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $1518$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $160 : 2 = 80(m)$<br>Chiều dài hình chữ nhật là : $(80 + 18) : 2 = 49(m)$<br>Chiều rộng hình chữ nhật là : $80 - 49 = 31(m)$<br>Diện tích mảnh đất là : $49 \times 31 = 1519(m^2)$<br>Đáp số : $1519(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102027</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 72m. Biết chiều dài hơn chiều rộng 4m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>320</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $640$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $321$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $320$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $318$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $72 : 2 = 36(m)$<br>Chiều dài hình chữ nhật là : $(36 + 4) : 2 = 20(m)$<br>Chiều rộng hình chữ nhật là : $36 - 20 = 16(m)$<br>Diện tích mảnh đất là : $20 \times 16 = 320(m^2)$<br>Đáp số : $320(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102028</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 118m. Biết chiều dài hơn chiều rộng 13m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>828</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $1656$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $827$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $826$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $828$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $118 : 2 = 59(m)$<br>Chiều dài hình chữ nhật là : $(59 + 13) : 2 = 36(m)$<br>Chiều rộng hình chữ nhật là : $59 - 36 = 23(m)$<br>Diện tích mảnh đất là : $36 \times 23 = 828(m^2)$<br>Đáp số : $828(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102029</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 96m. Biết chiều dài hơn chiều rộng 10m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>551</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $551$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $552$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $550$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $549$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $96 : 2 = 48(m)$<br>Chiều dài hình chữ nhật là : $(48 + 10) : 2 = 29(m)$<br>Chiều rộng hình chữ nhật là : $48 - 29 = 19(m)$<br>Diện tích mảnh đất là : $29 \times 19 = 551(m^2)$<br>Đáp số : $551(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102030</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 140m. Biết chiều dài hơn chiều rộng 16m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>1161</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $2322$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $1161$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $1162$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $1160$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $140 : 2 = 70(m)$<br>Chiều dài hình chữ nhật là : $(70 + 16) : 2 = 43(m)$<br>Chiều rộng hình chữ nhật là : $70 - 43 = 27(m)$<br>Diện tích mảnh đất là : $43 \times 27 = 1161(m^2)$<br>Đáp số : $1161(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102031</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 66m. Biết chiều dài hơn chiều rộng 7m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>260</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $520$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $261$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $260$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $258$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $66 : 2 = 33(m)$<br>Chiều dài hình chữ nhật là : $(33 + 7) : 2 = 20(m)$<br>Chiều rộng hình chữ nhật là : $33 - 20 = 13(m)$<br>Diện tích mảnh đất là : $20 \times 13 = 260(m^2)$<br>Đáp số : $260(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102032</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 110m. Biết chiều dài hơn chiều rộng 21m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>646</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $1292$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $645$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $644$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $646$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $110 : 2 = 55(m)$<br>Chiều dài hình chữ nhật là : $(55 + 21) : 2 = 38(m)$<br>Chiều rộng hình chữ nhật là : $55 - 38 = 17(m)$<br>Diện tích mảnh đất là : $38 \times 17 = 646(m^2)$<br>Đáp số : $646(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102033</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 180m. Biết chiều dài hơn chiều rộng 30m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>1800</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $1800$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $1801$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $1799$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $1798$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $180 : 2 = 90(m)$<br>Chiều dài hình chữ nhật là : $(90 + 30) : 2 = 60(m)$<br>Chiều rộng hình chữ nhật là : $90 - 60 = 30(m)$<br>Diện tích mảnh đất là : $60 \times 30 = 1800(m^2)$<br>Đáp số : $1800(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102034</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 86m. Biết chiều dài hơn chiều rộng 5m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>456</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $912$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $456$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $457$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $455$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $86 : 2 = 43(m)$<br>Chiều dài hình chữ nhật là : $(43 + 5) : 2 = 24(m)$<br>Chiều rộng hình chữ nhật là : $43 - 24 = 19(m)$<br>Diện tích mảnh đất là : $24 \times 19 = 456(m^2)$<br>Đáp số : $456(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102035</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 124m. Biết chiều dài hơn chiều rộng 12m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>925</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $1850$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $926$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $925$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $923$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $124 : 2 = 62(m)$<br>Chiều dài hình chữ nhật là : $(62 + 12) : 2 = 37(m)$<br>Chiều rộng hình chữ nhật là : $62 - 37 = 25(m)$<br>Diện tích mảnh đất là : $37 \times 25 = 925(m^2)$<br>Đáp số : $925(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102036</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 76m. Biết chiều dài hơn chiều rộng 10m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>336</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $672$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $335$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $334$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $336$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $76 : 2 = 38(m)$<br>Chiều dài hình chữ nhật là : $(38 + 10) : 2 = 24(m)$<br>Chiều rộng hình chữ nhật là : $38 - 24 = 14(m)$<br>Diện tích mảnh đất là : $24 \times 14 = 336(m^2)$<br>Đáp số : $336(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102037</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 200m. Biết chiều dài hơn chiều rộng 24m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>2356</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $2356$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $2357$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $2355$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $2354$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $200 : 2 = 100(m)$<br>Chiều dài hình chữ nhật là : $(100 + 24) : 2 = 62(m)$<br>Chiều rộng hình chữ nhật là : $100 - 62 = 38(m)$<br>Diện tích mảnh đất là : $62 \times 38 = 2356(m^2)$<br>Đáp số : $2356(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102038</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 94m. Biết chiều dài hơn chiều rộng 9m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>532</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $1064$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $532$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $533$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $531$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $94 : 2 = 47(m)$<br>Chiều dài hình chữ nhật là : $(47 + 9) : 2 = 28(m)$<br>Chiều rộng hình chữ nhật là : $47 - 28 = 19(m)$<br>Diện tích mảnh đất là : $28 \times 19 = 532(m^2)$<br>Đáp số : $532(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102039</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 102m. Biết chiều dài hơn chiều rộng 13m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>608</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $1216$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $609$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $608$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $606$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $102 : 2 = 51(m)$<br>Chiều dài hình chữ nhật là : $(51 + 13) : 2 = 32(m)$<br>Chiều rộng hình chữ nhật là : $51 - 32 = 19(m)$<br>Diện tích mảnh đất là : $32 \times 19 = 608(m^2)$<br>Đáp số : $608(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102040</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 156m. Biết chiều dài hơn chiều rộng 22m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>1400</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $2800$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $1399$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $1398$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $1400$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $156 : 2 = 78(m)$<br>Chiều dài hình chữ nhật là : $(78 + 22) : 2 = 50(m)$<br>Chiều rộng hình chữ nhật là : $78 - 50 = 28(m)$<br>Diện tích mảnh đất là : $50 \times 28 = 1400(m^2)$<br>Đáp số : $1400(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102041</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Phương án nhiễu chỉ lệch ±1 (vd 989, 987): không ứng với lỗi thật nào của HS. Lỗi hay gặp hơn: quên chia đôi chu vi, lấy chiều dài × 2…">nhiễu yếu</span></h3>
+<div class="de">Một mảnh đất hình chữ nhật có chu vi 112m. Biết chiều dài hơn chiều rộng 18m. Tính diện tích mảnh đất ?</div>
+<div class="kho">Đáp án kho: <b>703</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $703$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $704$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $702$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $701$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Nửa chu vi hình chữ nhật là : $112 : 2 = 56(m)$<br>Chiều dài hình chữ nhật là : $(56 + 18) : 2 = 37(m)$<br>Chiều rộng hình chữ nhật là : $56 - 37 = 19(m)$<br>Diện tích mảnh đất là : $37 \times 19 = 703(m^2)$<br>Đáp số : $703(m^2)$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102042</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">3 năm trước mẹ hơn con 26 tuổi. 5 năm nữa, tổng số tuổi của mẹ và con là 44 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi ?</div>
+<div class="kho">Đáp án kho: <b>31</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $62$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $31$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $32$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $30$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 26 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $44 - 5 - 5 = 34$ (tuổi)<br>Tuổi mẹ hiện tại là : $(34 + 26) : 2 = 30$ (tuổi)<br>Tuổi mẹ sang năm là : $30 + 1 = 31$ (tuổi)<br>Đáp số : 31 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102043</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">2 năm trước mẹ hơn con 30 tuổi. 4 năm nữa, tổng số tuổi của mẹ và con là 50 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>37</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $74$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $38$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $37$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $35$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 30 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $50 - 4 - 4 = 42$ (tuổi)<br>Tuổi mẹ hiện tại là : $(42 + 30) : 2 = 36$ (tuổi)<br>Tuổi mẹ sang năm là : $36 + 1 = 37$ (tuổi)<br>Đáp số : 37 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102044</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">4 năm trước mẹ hơn con 24 tuổi. 6 năm nữa, tổng số tuổi của mẹ và con là 60 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>37</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $74$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $36$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $35$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $37$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 24 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $60 - 6 - 6 = 48$ (tuổi)<br>Tuổi mẹ hiện tại là : $(48 + 24) : 2 = 36$ (tuổi)<br>Tuổi mẹ sang năm là : $36 + 1 = 37$ (tuổi)<br>Đáp số : 37 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102045</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">5 năm trước mẹ hơn con 28 tuổi. 3 năm nữa, tổng số tuổi của mẹ và con là 52 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>38</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $38$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $39$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $37$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $36$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 28 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $52 - 3 - 3 = 46$ (tuổi)<br>Tuổi mẹ hiện tại là : $(46 + 28) : 2 = 37$ (tuổi)<br>Tuổi mẹ sang năm là : $37 + 1 = 38$ (tuổi)<br>Đáp số : 38 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102046</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">2 năm trước mẹ hơn con 32 tuổi. 7 năm nữa, tổng số tuổi của mẹ và con là 58 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>39</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $78$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $39$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $40$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $38$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 32 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $58 - 7 - 7 = 44$ (tuổi)<br>Tuổi mẹ hiện tại là : $(44 + 32) : 2 = 38$ (tuổi)<br>Tuổi mẹ sang năm là : $38 + 1 = 39$ (tuổi)<br>Đáp số : 39 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102047</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">6 năm trước mẹ hơn con 20 tuổi. 4 năm nữa, tổng số tuổi của mẹ và con là 46 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>30</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $60$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $31$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $30$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $28$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 20 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $46 - 4 - 4 = 38$ (tuổi)<br>Tuổi mẹ hiện tại là : $(38 + 20) : 2 = 29$ (tuổi)<br>Tuổi mẹ sang năm là : $29 + 1 = 30$ (tuổi)<br>Đáp số : 30 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102048</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">3 năm trước mẹ hơn con 34 tuổi. 6 năm nữa, tổng số tuổi của mẹ và con là 62 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>43</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $86$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $42$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $41$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $43$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 34 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $62 - 6 - 6 = 50$ (tuổi)<br>Tuổi mẹ hiện tại là : $(50 + 34) : 2 = 42$ (tuổi)<br>Tuổi mẹ sang năm là : $42 + 1 = 43$ (tuổi)<br>Đáp số : 43 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102049</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">4 năm trước mẹ hơn con 22 tuổi. 8 năm nữa, tổng số tuổi của mẹ và con là 56 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>32</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $32$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $33$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $31$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $30$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 22 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $56 - 8 - 8 = 40$ (tuổi)<br>Tuổi mẹ hiện tại là : $(40 + 22) : 2 = 31$ (tuổi)<br>Tuổi mẹ sang năm là : $31 + 1 = 32$ (tuổi)<br>Đáp số : 32 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102050</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">1 năm trước mẹ hơn con 36 tuổi. 5 năm nữa, tổng số tuổi của mẹ và con là 66 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>47</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $94$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $47$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $48$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $46$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 36 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $66 - 5 - 5 = 56$ (tuổi)<br>Tuổi mẹ hiện tại là : $(56 + 36) : 2 = 46$ (tuổi)<br>Tuổi mẹ sang năm là : $46 + 1 = 47$ (tuổi)<br>Đáp số : 47 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102051</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">5 năm trước mẹ hơn con 18 tuổi. 9 năm nữa, tổng số tuổi của mẹ và con là 60 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>31</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $62$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $32$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $31$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $29$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 18 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $60 - 9 - 9 = 42$ (tuổi)<br>Tuổi mẹ hiện tại là : $(42 + 18) : 2 = 30$ (tuổi)<br>Tuổi mẹ sang năm là : $30 + 1 = 31$ (tuổi)<br>Đáp số : 31 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102052</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">2 năm trước mẹ hơn con 40 tuổi. 6 năm nữa, tổng số tuổi của mẹ và con là 70 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>50</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $100$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $49$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $48$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $50$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 40 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $70 - 6 - 6 = 58$ (tuổi)<br>Tuổi mẹ hiện tại là : $(58 + 40) : 2 = 49$ (tuổi)<br>Tuổi mẹ sang năm là : $49 + 1 = 50$ (tuổi)<br>Đáp số : 50 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102053</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">3 năm trước mẹ hơn con 25 tuổi. 4 năm nữa, tổng số tuổi của mẹ và con là 57 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>38</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $38$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $39$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $37$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $36$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 25 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $57 - 4 - 4 = 49$ (tuổi)<br>Tuổi mẹ hiện tại là : $(49 + 25) : 2 = 37$ (tuổi)<br>Tuổi mẹ sang năm là : $37 + 1 = 38$ (tuổi)<br>Đáp số : 38 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102054</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">7 năm trước mẹ hơn con 30 tuổi. 3 năm nữa, tổng số tuổi của mẹ và con là 54 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>40</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $80$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $40$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $41$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $39$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 30 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $54 - 3 - 3 = 48$ (tuổi)<br>Tuổi mẹ hiện tại là : $(48 + 30) : 2 = 39$ (tuổi)<br>Tuổi mẹ sang năm là : $39 + 1 = 40$ (tuổi)<br>Đáp số : 40 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102055</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">4 năm trước mẹ hơn con 16 tuổi. 10 năm nữa, tổng số tuổi của mẹ và con là 48 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>23</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $46$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $24$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $23$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $21$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 16 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $48 - 10 - 10 = 28$ (tuổi)<br>Tuổi mẹ hiện tại là : $(28 + 16) : 2 = 22$ (tuổi)<br>Tuổi mẹ sang năm là : $22 + 1 = 23$ (tuổi)<br>Đáp số : 23 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102056</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">6 năm trước mẹ hơn con 38 tuổi. 5 năm nữa, tổng số tuổi của mẹ và con là 68 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>49</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $98$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $48$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $47$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $49$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 38 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $68 - 5 - 5 = 58$ (tuổi)<br>Tuổi mẹ hiện tại là : $(58 + 38) : 2 = 48$ (tuổi)<br>Tuổi mẹ sang năm là : $48 + 1 = 49$ (tuổi)<br>Đáp số : 49 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102057</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">2 năm trước mẹ hơn con 44 tuổi. 2 năm nữa, tổng số tuổi của mẹ và con là 60 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>51</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $51$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $52$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $50$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $49$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 44 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $60 - 2 - 2 = 56$ (tuổi)<br>Tuổi mẹ hiện tại là : $(56 + 44) : 2 = 50$ (tuổi)<br>Tuổi mẹ sang năm là : $50 + 1 = 51$ (tuổi)<br>Đáp số : 51 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102058</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">3 năm trước mẹ hơn con 21 tuổi. 7 năm nữa, tổng số tuổi của mẹ và con là 59 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>34</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $68$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $34$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $35$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $33$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 21 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $59 - 7 - 7 = 45$ (tuổi)<br>Tuổi mẹ hiện tại là : $(45 + 21) : 2 = 33$ (tuổi)<br>Tuổi mẹ sang năm là : $33 + 1 = 34$ (tuổi)<br>Đáp số : 34 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102059</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">8 năm trước mẹ hơn con 27 tuổi. 6 năm nữa, tổng số tuổi của mẹ và con là 63 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>40</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $80$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $41$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $40$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $38$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 27 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $63 - 6 - 6 = 51$ (tuổi)<br>Tuổi mẹ hiện tại là : $(51 + 27) : 2 = 39$ (tuổi)<br>Tuổi mẹ sang năm là : $39 + 1 = 40$ (tuổi)<br>Đáp số : 40 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102060</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">5 năm trước mẹ hơn con 33 tuổi. 4 năm nữa, tổng số tuổi của mẹ và con là 61 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>44</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $88$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $43$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $42$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $44$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 33 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $61 - 4 - 4 = 53$ (tuổi)<br>Tuổi mẹ hiện tại là : $(53 + 33) : 2 = 43$ (tuổi)<br>Tuổi mẹ sang năm là : $43 + 1 = 44$ (tuổi)<br>Đáp số : 44 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102061</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">1 năm trước mẹ hơn con 12 tuổi. 12 năm nữa, tổng số tuổi của mẹ và con là 66 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>28</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $28$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $29$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $27$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $26$ <span class="tag" title="tính lệch giá trị (cứu ca trùng công thức)">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 12 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $66 - 12 - 12 = 42$ (tuổi)<br>Tuổi mẹ hiện tại là : $(42 + 12) : 2 = 27$ (tuổi)<br>Tuổi mẹ sang năm là : $27 + 1 = 28$ (tuổi)<br>Đáp số : 28 tuổi</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080102062</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">4 năm trước mẹ hơn con 50 tuổi. 3 năm nữa, tổng số tuổi của mẹ và con là 80 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?</div>
+<div class="kho">Đáp án kho: <b>63</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $126$ <span class="tag" title="tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $63$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $64$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $62$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hiện tại, mẹ vẫn hơn con 50 tuổi.<br>Hiện tại, tổng số tuổi của mẹ và con là : $80 - 3 - 3 = 74$ (tuổi)<br>Tuổi mẹ hiện tại là : $(74 + 50) : 2 = 62$ (tuổi)<br>Tuổi mẹ sang năm là : $62 + 1 = 63$ (tuổi)<br>Đáp số : 63 tuổi</div></details>
+</section><h2 id="T14T080103">T14T080103 — Bài toán Tổng hiệu  Ẩn hiệu <small>38 câu</small></h2><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103001</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">Tìm hai số tự nhiên liên tiếp có tổng là 105 ?</div>
+<div class="kho">Đáp án kho: <b>52;53</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $104;53$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $53;53$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $52;53$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $52;54$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hai số tự nhiên liên tiếp có hiệu là 1.<br>Số lớn là : $(105 + 1):2 = 53$<br>Số bé là : $53 - 1 = 52$<br>Đáp số : 52,53</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103002</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">Tìm hai số tự nhiên liên tiếp có tổng là 77 ?</div>
+<div class="kho">Đáp án kho: <b>38;39</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $76;39$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $37;39$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $38;40$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $38;39$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hai số tự nhiên liên tiếp có hiệu là 1.<br>Số lớn là : $(77 + 1):2 = 39$<br>Số bé là : $39 - 1 = 38$<br>Đáp số : 38,39</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103003</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">Tìm hai số tự nhiên liên tiếp có tổng là 85 ?</div>
+<div class="kho">Đáp án kho: <b>42;43</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $42;43$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $43;43$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $41;43$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $42;44$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hai số tự nhiên liên tiếp có hiệu là 1.<br>Số lớn là : $(85 + 1):2 = 43$<br>Số bé là : $43 - 1 = 42$<br>Đáp số : 42,43</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103004</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">Tìm hai số tự nhiên liên tiếp có tổng là 95 ?</div>
+<div class="kho">Đáp án kho: <b>47;48</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $94;48$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $47;48$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $48;48$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $46;48$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hai số tự nhiên liên tiếp có hiệu là 1.<br>Số lớn là : $(95 + 1):2 = 48$<br>Số bé là : $48 - 1 = 47$<br>Đáp số : 47,48</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103005</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">Tìm hai số tự nhiên liên tiếp có tổng là 127 ?</div>
+<div class="kho">Đáp án kho: <b>63;64</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $126;64$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $64;64$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $63;64$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $63;65$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hai số tự nhiên liên tiếp có hiệu là 1.<br>Số lớn là : $(127 + 1):2 = 64$<br>Số bé là : $64 - 1 = 63$<br>Đáp số : 63,64</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103006</span><span class="tag t-ok">✓ duyệt được</span></h3>
+<div class="de">Tìm hai số tự nhiên liên tiếp có tổng là 201 ?</div>
+<div class="kho">Đáp án kho: <b>100;101</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $200;101$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $99;101$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $100;102$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $100;101$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hai số tự nhiên liên tiếp có hiệu là 1.<br>Số lớn là : $(201 + 1):2 = 101$<br>Số bé là : $101 - 1 = 100$<br>Đáp số : 100,101</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103007</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số chẵn liên tiếp có tổng là 90</div>
+<div class="kho">Đáp án kho: <b>44,46</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $44;46$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $45;46$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $43;46$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $44;47$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hai số chẵn liên tiếp cách nhau 2 đơn vị nên hiệu của chúng là 2.<br>Số lớn là $(90+2):2 = 46$<br>Số bé là $46-2 = 44$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103008</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số chẵn liên tiếp có tổng là 58</div>
+<div class="kho">Đáp án kho: <b>28,30</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $56;30$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $28;30$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $29;30$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $27;30$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hai số chẵn liên tiếp cách nhau 2 đơn vị nên hiệu của chúng là 2.<br>Số lớn là $(58+2):2 = 30$<br>Số bé là $30-2 = 28$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103009</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số chẵn liên tiếp có tổng là 102</div>
+<div class="kho">Đáp án kho: <b>50,52</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $100;52$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $51;52$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $50;52$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $50;53$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hai số chẵn liên tiếp cách nhau 2 đơn vị nên hiệu của chúng là 2.<br>Số lớn là $(102+2):2 = 52$<br>Số bé là $52-2 = 50$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103010</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số chẵn liên tiếp có tổng là 134</div>
+<div class="kho">Đáp án kho: <b>66,68</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $132;68$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $65;68$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $66;69$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $66;68$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hai số chẵn liên tiếp cách nhau 2 đơn vị nên hiệu của chúng là 2.<br>Số lớn là $(134+2):2 = 68$<br>Số bé là $68-2 = 66$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103011</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số chẵn liên tiếp có tổng là 178</div>
+<div class="kho">Đáp án kho: <b>88,90</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $88;90$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $89;90$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $87;90$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $88;91$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hai số chẵn liên tiếp cách nhau 2 đơn vị nên hiệu của chúng là 2.<br>Số lớn là $(178+2):2 = 90$<br>Số bé là $90-2 = 88$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103012</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số chẵn liên tiếp có tổng là 62</div>
+<div class="kho">Đáp án kho: <b>30,32</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $60;32$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $30;32$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $31;32$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $29;32$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hai số chẵn liên tiếp cách nhau 2 đơn vị nên hiệu của chúng là 2.<br>Số lớn là $(62+2):2 = 32$<br>Số bé là $32-2 = 30$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103013</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số chẵn liên tiếp có tổng là 98</div>
+<div class="kho">Đáp án kho: <b>48,50</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $96;50$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $49;50$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $48;50$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $48;51$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hai số chẵn liên tiếp cách nhau 2 đơn vị nên hiệu của chúng là 2.<br>Số lớn là $(98+2):2 = 50$<br>Số bé là $50-2 = 48$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103014</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số chẵn liên tiếp có tổng là 146</div>
+<div class="kho">Đáp án kho: <b>72,74</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $144;74$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $71;74$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $72;75$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $72;74$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hai số chẵn liên tiếp cách nhau 2 đơn vị nên hiệu của chúng là 2.<br>Số lớn là $(146+2):2 = 74$<br>Số bé là $74-2 = 72$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103015</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số chẵn liên tiếp có tổng là 222</div>
+<div class="kho">Đáp án kho: <b>110,112</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $110;112$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $111;112$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $109;112$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $110;113$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hai số chẵn liên tiếp cách nhau 2 đơn vị nên hiệu của chúng là 2.<br>Số lớn là $(222+2):2 = 112$<br>Số bé là $112-2 = 110$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103016</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số chẵn liên tiếp có tổng là 250</div>
+<div class="kho">Đáp án kho: <b>124,126</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $248;126$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $124;126$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $125;126$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $123;126$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hai số chẵn liên tiếp cách nhau 2 đơn vị nên hiệu của chúng là 2.<br>Số lớn là $(250+2):2 = 126$<br>Số bé là $126-2 = 124$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103017</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số chẵn liên tiếp có tổng là 86</div>
+<div class="kho">Đáp án kho: <b>42,44</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $84;44$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $43;44$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $42;44$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $42;45$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Hai số chẵn liên tiếp cách nhau 2 đơn vị nên hiệu của chúng là 2.<br>Số lớn là $(86+2):2 = 44$<br>Số bé là $44-2 = 42$</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103018</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 110 biết rằng giữa chúng có 4 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>60,50</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $120;50$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $59;50$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $60;51$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $60;50$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 4 số tự nhiên chẵn khác , nên tổng có 5 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $5 \times 2 = 10$<br>Số lớn là : $(110 + 10) : 2 = 60$<br>Số bé là : $110 - 60 = 50$<br>Đáp số : 60,50</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103019</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 84 biết rằng giữa chúng có 3 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>46,38</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $46;38$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $47;38$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $45;38$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $46;39$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 3 số tự nhiên chẵn khác , nên tổng có 4 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $4 \times 2 = 8$<br>Số lớn là : $(84 + 8) : 2 = 46$<br>Số bé là : $84 - 46 = 38$<br>Đáp số : 46,38</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103020</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 120 biết rằng giữa chúng có 5 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>66,54</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $132;54$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $66;54$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $67;54$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $65;54$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 5 số tự nhiên chẵn khác , nên tổng có 6 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $6 \times 2 = 12$<br>Số lớn là : $(120 + 12) : 2 = 66$<br>Số bé là : $120 - 66 = 54$<br>Đáp số : 66,54</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103021</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 94 biết rằng giữa chúng có 2 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>50,44</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $100;44$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $51;44$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $50;44$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $50;45$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 2 số tự nhiên chẵn khác , nên tổng có 3 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $3 \times 2 = 6$<br>Số lớn là : $(94 + 6) : 2 = 50$<br>Số bé là : $94 - 50 = 44$<br>Đáp số : 50,44</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103022</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 102 biết rằng giữa chúng có 6 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>58,44</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $116;44$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $57;44$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $58;45$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $58;44$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 6 số tự nhiên chẵn khác , nên tổng có 7 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $7 \times 2 = 14$<br>Số lớn là : $(102 + 14) : 2 = 58$<br>Số bé là : $102 - 58 = 44$<br>Đáp số : 58,44</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103023</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 130 biết rằng giữa chúng có 4 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>70,60</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $70;60$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $71;60$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $69;60$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $70;61$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 4 số tự nhiên chẵn khác , nên tổng có 5 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $5 \times 2 = 10$<br>Số lớn là : $(130 + 10) : 2 = 70$<br>Số bé là : $130 - 70 = 60$<br>Đáp số : 70,60</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103024</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 140 biết rằng giữa chúng có 7 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>78,62</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $156;62$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $78;62$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $79;62$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $77;62$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 7 số tự nhiên chẵn khác , nên tổng có 8 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $8 \times 2 = 16$<br>Số lớn là : $(140 + 16) : 2 = 78$<br>Số bé là : $140 - 78 = 62$<br>Đáp số : 78,62</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103025</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 76 biết rằng giữa chúng có 1 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>40,36</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $80;36$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $41;36$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $40;36$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $40;37$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 1 số tự nhiên chẵn khác , nên tổng có 2 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $2 \times 2 = 4$<br>Số lớn là : $(76 + 4) : 2 = 40$<br>Số bé là : $76 - 40 = 36$<br>Đáp số : 40,36</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103026</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 122 biết rằng giữa chúng có 8 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>70,52</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $140;52$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $69;52$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $70;53$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $70;52$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 8 số tự nhiên chẵn khác , nên tổng có 9 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $9 \times 2 = 18$<br>Số lớn là : $(122 + 18) : 2 = 70$<br>Số bé là : $122 - 70 = 52$<br>Đáp số : 70,52</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103027</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 160 biết rằng giữa chúng có 9 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>90,70</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $90;70$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $91;70$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $89;70$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $90;71$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 9 số tự nhiên chẵn khác , nên tổng có 10 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $10 \times 2 = 20$<br>Số lớn là : $(160 + 20) : 2 = 90$<br>Số bé là : $160 - 90 = 70$<br>Đáp số : 90,70</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103028</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 126 biết rằng giữa chúng có 10 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>74,52</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $148;52$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $74;52$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $75;52$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $73;52$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 10 số tự nhiên chẵn khác , nên tổng có 11 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $11 \times 2 = 22$<br>Số lớn là : $(126 + 22) : 2 = 74$<br>Số bé là : $126 - 74 = 52$<br>Đáp số : 74,52</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103029</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 92 biết rằng giữa chúng có 3 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>50,42</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $100;42$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $51;42$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $50;42$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $50;43$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 3 số tự nhiên chẵn khác , nên tổng có 4 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $4 \times 2 = 8$<br>Số lớn là : $(92 + 8) : 2 = 50$<br>Số bé là : $92 - 50 = 42$<br>Đáp số : 50,42</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103030</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 108 biết rằng giữa chúng có 5 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>60,48</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $120;48$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $59;48$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $60;49$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $60;48$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 5 số tự nhiên chẵn khác , nên tổng có 6 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $6 \times 2 = 12$<br>Số lớn là : $(108 + 12) : 2 = 60$<br>Số bé là : $108 - 60 = 48$<br>Đáp số : 60,48</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103031</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 118 biết rằng giữa chúng có 2 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>62,56</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $62;56$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $63;56$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $61;56$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $62;57$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 2 số tự nhiên chẵn khác , nên tổng có 3 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $3 \times 2 = 6$<br>Số lớn là : $(118 + 6) : 2 = 62$<br>Số bé là : $118 - 62 = 56$<br>Đáp số : 62,56</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103032</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 130 biết rằng giữa chúng có 6 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>72,58</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $144;58$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $72;58$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $73;58$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $71;58$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 6 số tự nhiên chẵn khác , nên tổng có 7 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $7 \times 2 = 14$<br>Số lớn là : $(130 + 14) : 2 = 72$<br>Số bé là : $130 - 72 = 58$<br>Đáp số : 72,58</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103033</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 150 biết rằng giữa chúng có 4 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>80,70</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $160;70$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $81;70$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $80;70$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $80;71$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 4 số tự nhiên chẵn khác , nên tổng có 5 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $5 \times 2 = 10$<br>Số lớn là : $(150 + 10) : 2 = 80$<br>Số bé là : $150 - 80 = 70$<br>Đáp số : 80,70</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103034</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 156 biết rằng giữa chúng có 7 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>86,70</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $172;70$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $85;70$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $86;71$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $86;70$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 7 số tự nhiên chẵn khác , nên tổng có 8 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $8 \times 2 = 16$<br>Số lớn là : $(156 + 16) : 2 = 86$<br>Số bé là : $156 - 86 = 70$<br>Đáp số : 86,70</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103035</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 100 biết rằng giữa chúng có 1 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>52,48</b></div>
+
+<ol class="pa"><li class="dung "><b>A.</b> $52;48$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>B.</b> $53;48$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>C.</b> $51;48$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>D.</b> $52;49$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 1 số tự nhiên chẵn khác , nên tổng có 2 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $2 \times 2 = 4$<br>Số lớn là : $(100 + 4) : 2 = 52$<br>Số bé là : $100 - 52 = 48$<br>Đáp số : 52,48</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103036</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 174 biết rằng giữa chúng có 8 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>96,78</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $192;78$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class="dung "><b>B.</b> $96;78$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>C.</b> $97;78$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class=" "><b>D.</b> $95;78$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 8 số tự nhiên chẵn khác , nên tổng có 9 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $9 \times 2 = 18$<br>Số lớn là : $(174 + 18) : 2 = 96$<br>Số bé là : $174 - 96 = 78$<br>Đáp số : 96,78</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103037</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 200 biết rằng giữa chúng có 9 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>110,90</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $220;90$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $111;90$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất">R344 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất</span></li><li class="dung "><b>C.</b> $110;90$ <span class="tag t-ok">form đánh đúng</span></li><li class=" "><b>D.</b> $110;91$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 9 số tự nhiên chẵn khác , nên tổng có 10 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $10 \times 2 = 20$<br>Số lớn là : $(200 + 20) : 2 = 110$<br>Số bé là : $200 - 110 = 90$<br>Đáp số : 110,90</div></details>
+</section><section class="cau m-ok" data-muc="ok">
+<h3><span class="ma">T14T080103038</span><span class="tag t-ok">✓ duyệt được</span><span class="tag t-xam" title="Hai phương án nhiễu chứa số LẺ ⇒ HS loại ngay vì đề hỏi số chẵn ⇒ thực chất còn 2 lựa chọn.">nhiễu yếu</span></h3>
+<div class="de">Tìm hai số tự nhiên chẵn có tổng là 178 biết rằng giữa chúng có 10 số tự nhiên chẵn khác ?</div>
+<div class="kho">Đáp án kho: <b>100,78</b></div>
+
+<ol class="pa"><li class=" "><b>A.</b> $200;78$ <span class="tag" title="tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)">R343 · Bài toán thực tế: tính gấp đôi giá trị (quên chia đôi)</span></li><li class=" "><b>B.</b> $99;78$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)">R345 · Bài toán thực tế: lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại</span></li><li class=" "><b>C.</b> $100;79$ <span class="tag" title="tính lệch 1 đơn vị ở giá trị thứ hai">R346 · Bài toán thực tế: lệch giá trị ở giá trị còn lại</span></li><li class="dung "><b>D.</b> $100;78$ <span class="tag t-ok">form đánh đúng</span></li></ol>
+<details><summary>Lời giải kho</summary><div class="lg">Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị<br>Khoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị<br>Hai số tự nhiên chẵn mà giữa chúng có 10 số tự nhiên chẵn khác , nên tổng có 11 khoảng giữa số chẵn<br>Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn<br>Vậy hiệu hai số cần tìm là : $11 \times 2 = 22$<br>Số lớn là : $(178 + 22) : 2 = 100$<br>Số bé là : $178 - 100 = 78$<br>Đáp số : 100,78</div></details>
+</section>
+</main><script>
+document.querySelectorAll('.o').forEach(o=>o.onclick=()=>{const k=o.dataset.loc;document.querySelectorAll('.o').forEach(x=>x.classList.toggle('on',x===o));
+document.querySelectorAll('.cau').forEach(c=>c.style.display=(k==='all'||c.dataset.muc===k)?'':'none')})
+</script></body></html>

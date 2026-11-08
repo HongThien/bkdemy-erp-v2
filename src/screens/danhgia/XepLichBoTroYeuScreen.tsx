@@ -22,6 +22,7 @@ import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listPhong, kiemTraTrungPhong, type Phong, type KhoiBanPhong } from '../../lib/phong'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import SearchSelect, { norm } from '../../components/SearchSelect'
+import CapacityKhoiBar from '../../components/CapacityKhoiBar'
 import MucUuTienCase, { MUC_TEN, MUC_CLS, type DoiMucUuTien } from '../botro/MucUuTienCase'
 import RetestTab from './RetestTab'
 
@@ -147,6 +148,7 @@ export default function XepLichBoTroYeuScreen() {
             </div>
           </div>
         </header>
+        <CapacityKhoiBar mon={monF || undefined} khoi={khoiF} onChon={setKhoiF} nap={items.length} />
         <div className="mb-4 inline-flex rounded-xl border border-slate-200 bg-white p-0.5 text-[13px] font-semibold">
           {TABS.map((t) => (
             <button key={t} onClick={() => setTab(t)} className={`rounded-lg px-3 py-1.5 ${tab === t ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-50'}`}>{TAB_TEN[t]}</button>

@@ -15,7 +15,8 @@ import BtvnOnTapBdm from './BtvnOnTapBdm'
 
 type BuoiGoc = { id: string; tieu_de: string | null; thu_tu: number }
 
-export default function GanLopBdm({ masterId, khoi, tl, onClose }: { masterId: string; khoi: string; tl: TaiLieuNhanhCtx; onClose: () => void }) {
+// hinh = giáo trình Hình (Học + Luyện): BTVN = BTVN các bài học của buổi, tạo thẳng (ôn tập chưa có cho Hình — mig 202610271757).
+export default function GanLopBdm({ masterId, khoi, tl, onClose, hinh = false }: { masterId: string; khoi: string; tl: TaiLieuNhanhCtx; onClose: () => void; hinh?: boolean }) {
   const [buois, setBuois] = useState<BuoiGoc[]>([])
   const [lops, setLops] = useState<Lop[]>([])
   const [lopId, setLopId] = useState<string | null>(null)
@@ -64,6 +65,18 @@ export default function GanLopBdm({ masterId, khoi, tl, onClose }: { masterId: s
     } catch (e) { setLoi(loiDoc(e)) }
   }
 
+  async function btvnHinh(b: BuoiGoc, no: number, ngay: string) {
+    if (!lop) return
+    setLoi(null)
+    try {
+      const st = sttLop(b.id), ten = b.tieu_de || `Buổi ${no}`
+      const doc = await trichBuoiBdm(masterId, b.id, { lopId: lop.id, ngay, khoi, tenLop: lop.ten_lop, tenBuoi: st ? tieuDeBuoiLop(ten, st) : ten, loai: 'btvn' })
+      useStore.getState().enqueueLinkGen(doc.id, doc.loai)
+      for (const d of await renumberBuoiLop(lop.id)) useStore.getState().enqueueLinkGen(d.id, d.loai)
+      await napLop(lop.id)
+    } catch (e) { setLoi(loiDoc(e)) }
+  }
+
   return (
     <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
       <div className="absolute inset-x-[8%] inset-y-10 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -80,12 +93,12 @@ export default function GanLopBdm({ masterId, khoi, tl, onClose }: { masterId: s
           : (
             <div className="grid min-h-0 flex-1 grid-cols-[1fr_320px] grid-rows-[minmax(0,1fr)] overflow-hidden">
               <div className="min-h-0 overflow-auto p-5">
-                <p className="mb-2 text-[12px] text-slate-400">Mỗi buổi của giáo trình gốc → gán cho 1 ngày học của lớp <b>{lop.ten_lop}</b> (tạo giáo trình buổi). BTVN + ôn tập làm ở bước riêng, có xem trước.</p>
+                <p className="mb-2 text-[12px] text-slate-400">Mỗi buổi của giáo trình gốc → gán cho 1 ngày học của lớp <b>{lop.ten_lop}</b> (tạo giáo trình buổi). {hinh ? 'BTVN (câu về nhà của các bài học) tạo ở bước riêng.' : 'BTVN + ôn tập làm ở bước riêng, có xem trước.'}</p>
                 <div className="space-y-2">
                   {buois.map((b, i) => (
                     <DongBuoi key={b.id} b={b} no={i + 1} st={state[b.id]} sttLop={sttLop(b.id)} lopId={lop.id} ngayMacDinh={state[b.id]?.ngay ? '' : ngayMacDinh}
-                      onGan={(ngay) => gan(b, i + 1, ngay)}
-                      onBtvn={() => { const st = state[b.id]; if (st?.ngay) setBtvn({ buoi: b, no: i + 1, ngay: st.ngay, tenBuoi: b.tieu_de || `Buổi ${i + 1}` }) }} />
+                      onGan={(ngay) => gan(b, i + 1, ngay)} nhanBtvn={hinh ? '+ BTVN' : undefined}
+                      onBtvn={() => { const st = state[b.id]; if (!st?.ngay) return; if (hinh) void btvnHinh(b, i + 1, st.ngay); else setBtvn({ buoi: b, no: i + 1, ngay: st.ngay, tenBuoi: b.tieu_de || `Buổi ${i + 1}` }) }} />
                   ))}
                 </div>
               </div>
@@ -124,9 +137,9 @@ export default function GanLopBdm({ masterId, khoi, tl, onClose }: { masterId: s
 }
 
 // 1 buổi gốc: chưa gán ⇒ "Gán vào <ngày mặc định>" (đổi ngày được) · đã gán ⇒ số buổi của lớp + GT/BTVN + "+ BTVN / Ôn tập".
-function DongBuoi({ b, no, st, sttLop, lopId, ngayMacDinh, onGan, onBtvn }: {
+function DongBuoi({ b, no, st, sttLop, lopId, ngayMacDinh, onGan, onBtvn, nhanBtvn = '+ BTVN / Ôn tập' }: {
   b: BuoiGoc; no: number; st?: TrichState; sttLop?: number; lopId: string; ngayMacDinh: string
-  onGan: (ngay: string) => Promise<void>; onBtvn: () => void
+  onGan: (ngay: string) => Promise<void>; onBtvn: () => void; nhanBtvn?: string
 }) {
   const [ngay, setNgay] = useState(ngayMacDinh)
   const [chamTay, setChamTay] = useState(false)
@@ -145,7 +158,7 @@ function DongBuoi({ b, no, st, sttLop, lopId, ngayMacDinh, onGan, onBtvn }: {
             {sttLop && <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-[12px] font-semibold text-indigo-700">→ Buổi {sttLop} của lớp</span>}
             <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700">✓ Đã gán · {st.ngay.split('-').reverse().join('/')}</span>
             <span className="text-[11px] text-slate-400">{[st.hasGT && 'GT', st.hasBTVN && 'BTVN'].filter(Boolean).join(' + ')}</span>
-            {st.hasGT && <button onClick={onBtvn} className="rounded-md bg-violet-600 px-2.5 py-1 text-[11px] font-medium text-white hover:bg-violet-500">{st.hasBTVN ? '↻ Làm lại BTVN' : '+ BTVN / Ôn tập'}</button>}
+            {st.hasGT && <button onClick={onBtvn} className="rounded-md bg-violet-600 px-2.5 py-1 text-[11px] font-medium text-white hover:bg-violet-500">{st.hasBTVN ? '↻ Làm lại BTVN' : nhanBtvn}</button>}
             <button onClick={go} disabled={busy || !ngay} title="Gán lại sang ngày đang chọn (thay giáo trình buổi của ngày đó)" className="rounded-md border border-slate-200 px-2 py-1 text-[11px] text-slate-500 hover:border-indigo-300">Gán lại</button>
             <BuoiNgaySelect lopId={lopId} value={ngay} onChange={chon} className="h-7 rounded border border-slate-300 px-1.5 text-[12px]" />
           </div>

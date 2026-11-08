@@ -1,0 +1,429 @@
+=== N P1.1
+@ly_thuyet:
+##TC Vectơ trong không gian
+- Vectơ là một đoạn thẳng có hướng. Vectơ có điểm đầu $A$, điểm cuối $B$ kí hiệu $\overrightarrow{AB}$; khi không cần nêu điểm đầu, điểm cuối thì kí hiệu $\vec{a}$, $\vec{b}$, $\ldots$
+- Độ dài của $\overrightarrow{AB}$ là độ dài đoạn $AB$: $|\overrightarrow{AB}|=AB$. Đường thẳng $AB$ gọi là giá của $\overrightarrow{AB}$.
+- Hai vectơ **cùng phương** nếu giá của chúng song song hoặc trùng nhau; hai vectơ cùng phương thì cùng hướng hoặc ngược hướng.
+- Hai vectơ **bằng nhau** nếu cùng độ dài và cùng hướng. Hai vectơ **đối nhau** nếu cùng độ dài và ngược hướng; khi đó $\overrightarrow{BA}=-\overrightarrow{AB}$.
+- Vectơ-không $\vec{0}=\overrightarrow{AA}$ có độ dài $0$, cùng hướng với mọi vectơ. Với điểm $O$ và vectơ $\vec{a}$ cho trước có duy nhất điểm $M$ sao cho $\overrightarrow{OM}=\vec{a}$.
+
+##TC Vectơ trên hình hộp và hình lăng trụ
+- Hình hộp $ABCD.A'B'C'D'$ có các mặt là hình bình hành nên các cạnh song song bằng nhau thành ba nhóm bốn cạnh: $\overrightarrow{AA'}=\overrightarrow{BB'}=\overrightarrow{CC'}=\overrightarrow{DD'}$; $\overrightarrow{AB}=\overrightarrow{DC}=\overrightarrow{A'B'}=\overrightarrow{D'C'}$; $\overrightarrow{AD}=\overrightarrow{BC}=\overrightarrow{A'D'}=\overrightarrow{B'C'}$.
+- Hình lăng trụ $ABC.A'B'C'$ có $\overrightarrow{AA'}=\overrightarrow{BB'}=\overrightarrow{CC'}$ và $\overrightarrow{AB}=\overrightarrow{A'B'}$, $\overrightarrow{BC}=\overrightarrow{B'C'}$, $\overrightarrow{CA}=\overrightarrow{C'A'}$.
+- Tứ giác $ABCD$ là hình bình hành khi và chỉ khi $\overrightarrow{AB}=\overrightarrow{DC}$.
+
+##PP Đọc vectơ trên hình khối
+Liệt kê hoặc đếm các vectơ khác $\vec{0}$ có điểm đầu, điểm cuối là các đỉnh của hình; nhớ mỗi cặp đỉnh cho hai vectơ ngược nhau.
+Nhóm các đoạn song song và bằng nhau nhờ các mặt là hình bình hành để biết vectơ nào cùng phương.
+Trong mỗi nhóm cùng phương, so sánh hướng với một vectơ chọn trước; cùng độ dài và cùng hướng thì bằng nhau, cùng độ dài và ngược hướng thì đối nhau.
+Độ dài của vectơ là độ dài đoạn thẳng tương ứng, tính bằng định lí Pythagore trong tam giác vuông của hình.
+
+##CY
+- $\overrightarrow{AB}$ và $\overrightarrow{BA}$ cùng phương, cùng độ dài nhưng ngược hướng nên không bằng nhau.
+- Hai vectơ có giá chéo nhau (như $\overrightarrow{AA'}$ và $\overrightarrow{BC}$ trong lăng trụ) không cùng phương, càng không bằng nhau.
+
+=== P1.1.1
+@ly_thuyet:
+##TC Các yếu tố của vectơ trên hình khối
+- Vectơ bằng $\overrightarrow{AB}$ trong hình hộp: các cạnh song song, cùng độ dài, cùng hướng như $\overrightarrow{DC}$, $\overrightarrow{A'B'}$, $\overrightarrow{D'C'}$.
+- Vectơ đối của $\overrightarrow{AB}$ là các vectơ bằng $\overrightarrow{BA}$.
+- Vectơ cùng phương với $\overrightarrow{AA'}$ là mọi vectơ có điểm đầu, điểm cuối cùng nằm trên một đường thẳng song song hoặc trùng $AA'$; mỗi đoạn cho hai vectơ ngược hướng.
+- Vectơ có giá nằm trong mặt phẳng $(ABC)$ là vectơ có cả điểm đầu và điểm cuối thuộc mặt phẳng đó.
+- Từ $n$ điểm phân biệt lập được $n(n-1)$ vectơ khác $\vec{0}$ có điểm đầu, điểm cuối là các điểm đó.
+
+##PP Trả lời câu hỏi về yếu tố của vectơ
+Đọc kĩ điều kiện của đề: điểm đầu, điểm cuối là các điểm nào, có tính chính vectơ đã cho hay không.
+Chỉ ra các nhóm cạnh song song, bằng nhau của hình (hộp có ba nhóm bốn cạnh; lăng trụ có cạnh bên và các cặp cạnh đáy).
+Với mỗi vectơ ứng viên, kiểm hai điều: cùng phương (giá song song hoặc trùng), rồi cùng hướng hay ngược hướng.
+Đếm đủ cả hai chiều của mỗi đoạn và đối chiếu lại các cụm "khác vectơ-không", "kể cả chính nó" trong đề.
+
+##CY
+- Quên chiều ngược lại: đoạn $AA'$ cho cả $\overrightarrow{AA'}$ và $\overrightarrow{A'A}$.
+- "Bằng $\overrightarrow{AB}$" thường không tính chính $\overrightarrow{AB}$, còn "cùng hướng với $\overrightarrow{AA'}$" có thể tính cả nó; đọc kĩ đề.
+- Đường chéo của mặt hay của hộp không song song với cạnh nào nên không cùng phương với vectơ cạnh.
+
+@vi_du:
+##VD
+Cho hình hộp $ABCD.A'B'C'D'$. Xét các vectơ khác $\vec{0}$ có điểm đầu và điểm cuối là hai đỉnh của hình hộp.
+a) Kể tên các vectơ bằng $\overrightarrow{AB}$ (không kể chính $\overrightarrow{AB}$).
+b) Kể tên các vectơ đối của $\overrightarrow{AB}$.
+c) Có bao nhiêu vectơ cùng phương với $\overrightarrow{AA'}$?
+
+Bài giải:
+a) Các cạnh $DC$, $A'B'$, $D'C'$ song song, bằng và cùng hướng với $AB$ (các mặt của hình hộp là hình bình hành) nên $\overrightarrow{AB}=\overrightarrow{DC}=\overrightarrow{A'B'}=\overrightarrow{D'C'}$.
+Các đoạn còn lại nối hai đỉnh không song song với $AB$ nên không cho vectơ bằng $\overrightarrow{AB}$.
+b) Vectơ đối của $\overrightarrow{AB}$ là vectơ bằng $\overrightarrow{BA}$, gồm $\overrightarrow{BA}$, $\overrightarrow{CD}$, $\overrightarrow{B'A'}$, $\overrightarrow{C'D'}$.
+c) Các đường thẳng $AA'$, $BB'$, $CC'$, $DD'$ song song với nhau, mỗi đoạn cho hai vectơ ngược hướng nên có $4\cdot2=8$ vectơ.
+Vậy a) $\overrightarrow{DC}$, $\overrightarrow{A'B'}$, $\overrightarrow{D'C'}$; b) $\overrightarrow{BA}$, $\overrightarrow{CD}$, $\overrightarrow{B'A'}$, $\overrightarrow{C'D'}$; c) có $8$ vectơ.
+
+##VD
+Cho hình lăng trụ $ABC.A'B'C'$. Xét các vectơ khác $\vec{0}$ có điểm đầu và điểm cuối là hai trong sáu đỉnh của lăng trụ.
+a) Có bao nhiêu vectơ cùng phương với $\overrightarrow{AA'}$?
+b) Có bao nhiêu vectơ cùng hướng với $\overrightarrow{AA'}$ (kể cả chính nó)?
+c) Có bao nhiêu vectơ có giá song song hoặc nằm trong mặt phẳng $(ABC)$?
+
+Bài giải:
+a) Các cạnh bên $AA'$, $BB'$, $CC'$ song song với nhau; đường nối hai đỉnh khác không song song với $AA'$. Mỗi cạnh bên cho hai vectơ ngược hướng nên có $3\cdot2=6$ vectơ.
+b) Vì $\overrightarrow{AA'}=\overrightarrow{BB'}=\overrightarrow{CC'}$ nên các vectơ cùng hướng với $\overrightarrow{AA'}$ là $\overrightarrow{AA'}$, $\overrightarrow{BB'}$, $\overrightarrow{CC'}$: có $3$ vectơ.
+c) Vectơ có giá song song hoặc nằm trong $(ABC)$ phải có hai đầu mút cùng thuộc $\{A,B,C\}$ hoặc cùng thuộc $\{A',B',C'\}$ (vì $(A'B'C')\parallel(ABC)$).
+Mỗi bộ ba đỉnh cho $3\cdot2=6$ vectơ, do đó có $6+6=12$ vectơ.
+Vậy a) $6$ vectơ; b) $3$ vectơ; c) $12$ vectơ.
+
+=== P1.1.2
+@ly_thuyet:
+##TC Độ dài của tổng và hiệu hai vectơ
+- Quy tắc ba điểm: $\overrightarrow{AB}+\overrightarrow{BC}=\overrightarrow{AC}$; quy tắc hiệu: $\overrightarrow{AB}-\overrightarrow{AC}=\overrightarrow{CB}$.
+- Quy tắc hình bình hành: $ABCD$ là hình bình hành thì $\overrightarrow{AB}+\overrightarrow{AD}=\overrightarrow{AC}$.
+- Nếu $M$ là trung điểm $BC$ thì $\overrightarrow{AB}+\overrightarrow{AC}=2\overrightarrow{AM}$.
+- Khi tổng hay hiệu đã quy về một vectơ $\overrightarrow{XY}$ thì $|\overrightarrow{XY}|=XY$; hình đặc biệt cho đoạn $XY$ quen thuộc: đường chéo mặt của lập phương cạnh $a$ là $a\sqrt2$, đường chéo của hộp chữ nhật là $\sqrt{a^2+b^2+c^2}$, đường cao của tam giác đều cạnh $a$ là $\dfrac{a\sqrt3}{2}$.
+
+##PP Tính độ dài của tổng, hiệu hai vectơ
+Thay vectơ bằng vectơ bằng nó (cạnh song song, bằng nhau của hình) để hai vectơ chung gốc hoặc nối tiếp đầu–cuối.
+Dùng quy tắc ba điểm, quy tắc hình bình hành hoặc quy tắc hiệu để thu về một vectơ $\overrightarrow{XY}$.
+Tính độ dài đoạn $XY$ bằng định lí Pythagore trong tam giác vuông của hình đặc biệt rồi kết luận.
+
+##CY
+- $|\vec{a}+\vec{b}|$ không bằng $|\vec{a}|+|\vec{b}|$ (chỉ bằng khi hai vectơ cùng hướng); không cộng độ dài từng vectơ.
+- $\overrightarrow{AB}-\overrightarrow{AC}=\overrightarrow{CB}$, không phải $\overrightarrow{BC}$.
+- Hai vectơ chỉ cộng nối tiếp được khi ngọn vectơ trước trùng gốc vectơ sau; $\overrightarrow{BC}+\overrightarrow{DD'}$ phải thay $\overrightarrow{BC}=\overrightarrow{AD}$ và $\overrightarrow{DD'}=\overrightarrow{AA'}$ trước.
+
+@vi_du:
+##VD
+Cho hình hộp chữ nhật $ABCD.A'B'C'D'$ có $AB=4$, $AD=3$, $AA'=4$. Tính:
+a) $|\overrightarrow{AB}+\overrightarrow{AD}|$
+b) $|\overrightarrow{BC}+\overrightarrow{DD'}|$
+c) $|\overrightarrow{AA'}-\overrightarrow{AB}|$
+
+Bài giải:
+a) $ABCD$ là hình chữ nhật nên $\overrightarrow{AB}+\overrightarrow{AD}=\overrightarrow{AC}$.
+Do đó $|\overrightarrow{AB}+\overrightarrow{AD}|=AC=\sqrt{4^2+3^2}=5$.
+b) $\overrightarrow{BC}=\overrightarrow{AD}$ và $\overrightarrow{DD'}=\overrightarrow{AA'}$ nên $\overrightarrow{BC}+\overrightarrow{DD'}=\overrightarrow{AD}+\overrightarrow{AA'}=\overrightarrow{AD'}$ (do $ADD'A'$ là hình bình hành).
+Do đó $|\overrightarrow{BC}+\overrightarrow{DD'}|=AD'=\sqrt{3^2+4^2}=5$.
+c) $\overrightarrow{AA'}-\overrightarrow{AB}=\overrightarrow{BA'}$ nên $|\overrightarrow{AA'}-\overrightarrow{AB}|=BA'=\sqrt{4^2+4^2}=4\sqrt2$.
+Vậy ba độ dài lần lượt là $5$, $5$ và $4\sqrt2$.
+
+##VD
+Cho tứ diện đều $ABCD$ có cạnh bằng $6$; $M$ là trung điểm của $BC$. Tính:
+a) $|\overrightarrow{AB}+\overrightarrow{AC}|$
+b) $|\overrightarrow{AB}-\overrightarrow{AC}|$
+c) $|\overrightarrow{AM}-\overrightarrow{DM}|$
+
+Bài giải:
+a) Vì $M$ là trung điểm của $BC$ nên $\overrightarrow{AB}+\overrightarrow{AC}=2\overrightarrow{AM}$.
+Tam giác $ABC$ đều cạnh $6$ nên $AM=\dfrac{6\sqrt3}{2}=3\sqrt3$.
+Do đó $|\overrightarrow{AB}+\overrightarrow{AC}|=2\cdot3\sqrt3=6\sqrt3$.
+b) $\overrightarrow{AB}-\overrightarrow{AC}=\overrightarrow{CB}$ nên $|\overrightarrow{AB}-\overrightarrow{AC}|=CB=6$.
+c) $\overrightarrow{AM}-\overrightarrow{DM}=\overrightarrow{AM}+\overrightarrow{MD}=\overrightarrow{AD}$ nên $|\overrightarrow{AM}-\overrightarrow{DM}|=AD=6$.
+Vậy ba độ dài lần lượt là $6\sqrt3$, $6$ và $6$.
+
+=== N P1.2
+@ly_thuyet:
+##TC Tổng và hiệu hai vectơ
+- Quy tắc ba điểm: với ba điểm $A,B,C$ bất kì, $\overrightarrow{AB}+\overrightarrow{BC}=\overrightarrow{AC}$.
+- Quy tắc hình bình hành: $ABCD$ là hình bình hành thì $\overrightarrow{AB}+\overrightarrow{AD}=\overrightarrow{AC}$.
+- Quy tắc hình hộp: $ABCD.A'B'C'D'$ là hình hộp thì $\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}=\overrightarrow{AC'}$.
+- Vectơ đối của $\vec{a}$ là $-\vec{a}$; $\overrightarrow{AB}+\overrightarrow{BA}=\vec{0}$; quy tắc hiệu: $\overrightarrow{AB}-\overrightarrow{AC}=\overrightarrow{CB}$.
+
+##TC Tích với một số, trung điểm, trọng tâm
+- $k\vec{a}$ cùng hướng $\vec{a}$ nếu $k>0$, ngược hướng nếu $k<0$; $|k\vec{a}|=|k|\cdot|\vec{a}|$.
+- $\vec{a}$ và $\vec{b}$ ($\vec{b}\ne\vec{0}$) cùng phương khi và chỉ khi $\vec{a}=k\vec{b}$; ba điểm $A,B,C$ thẳng hàng khi và chỉ khi $\overrightarrow{AB}=k\overrightarrow{AC}$.
+- Trung điểm đoạn thẳng, trọng tâm tam giác, trọng tâm tứ diện đều được đặc trưng bằng một đẳng thức vectơ: tổng các vectơ đi từ điểm đó tới các đầu mút (các đỉnh) bằng $\vec{0}$.
+
+##PP Biến đổi vectơ trong hình khối
+Nhận ra cách ghép: vectơ nối tiếp thì dùng quy tắc ba điểm, cùng gốc thì dùng quy tắc hình bình hành hoặc hình hộp, cùng ngọn hoặc cùng gốc mà trừ nhau thì dùng quy tắc hiệu.
+Thay các vectơ bằng nhau (cạnh song song, bằng nhau của hộp, lăng trụ) để đưa về cùng gốc hoặc nối tiếp.
+Có trung điểm, trọng tâm thì dùng các hệ thức $2\overrightarrow{MI}$, $3\overrightarrow{MG}$, $4\overrightarrow{MG}$; cần biểu diễn thì chọn ba vectơ cạnh chung gốc làm cơ sở.
+Rút gọn từng bước đến một vectơ (hoặc đến hai vế giống nhau) rồi kết luận.
+
+##CY
+- Hiệu $\overrightarrow{AB}-\overrightarrow{AC}=\overrightarrow{CB}$ chứ không phải $\overrightarrow{BC}$.
+- Quy tắc ba điểm chỉ dùng khi ngọn vectơ trước trùng gốc vectơ sau; cần thì đổi chiều và thêm dấu trừ.
+- Quy tắc hộp chỉ áp dụng cho ba cạnh chung đỉnh; các hệ thức trung điểm, trọng tâm có hệ số $2$, $3$, $4$, không được bỏ hệ số.
+
+=== P1.2.1
+@ly_thuyet:
+##TC Quy tắc hình hộp
+- $ABCD.A'B'C'D'$ là hình hộp thì $\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}=\overrightarrow{AC'}$ (đường chéo của hộp).
+- Mỗi đỉnh có hệ thức tương tự với ba cạnh xuất phát từ đỉnh đó: $\overrightarrow{CB}+\overrightarrow{CD}+\overrightarrow{CC'}=\overrightarrow{CA'}$, $\overrightarrow{BA}+\overrightarrow{BC}+\overrightarrow{BB'}=\overrightarrow{BD'}$.
+- Các cạnh song song bằng nhau: $\overrightarrow{BC}=\overrightarrow{B'C'}=\overrightarrow{AD}$, $\overrightarrow{DD'}=\overrightarrow{AA'}$, $\overrightarrow{DC}=\overrightarrow{AB}$,…
+- Hộp chữ nhật có ba cạnh $a,b,c$: ba vectơ cạnh đôi một vuông góc nên $AC'=\sqrt{a^2+b^2+c^2}$.
+
+##PP Tổng, hiệu vectơ trong hình hộp
+Thay các vectơ cạnh bằng nhau để đưa về ba vectơ chung gốc, ví dụ $\overrightarrow{B'C'}=\overrightarrow{AD}$, $\overrightarrow{DD'}=\overrightarrow{AA'}$.
+Ba vectơ chung gốc thì gộp thành đường chéo hộp bằng quy tắc hộp; hai vectơ chung gốc thì dùng quy tắc hình bình hành.
+Với hiệu, dùng $\overrightarrow{XY}-\overrightarrow{XZ}=\overrightarrow{ZY}$ hoặc đổi dấu vectơ rồi cộng.
+Đọc kết quả là một vectơ, hoặc tính độ dài đoạn thẳng tương ứng (Pythagore khi là hộp chữ nhật).
+
+##CY
+- Ba vectơ phải chung gốc và là ba cạnh không cùng một mặt; $\overrightarrow{AB}+\overrightarrow{AD}=\overrightarrow{AC}$ chỉ là đường chéo mặt.
+- Đổi dấu một vectơ thì kết quả đổi: $\overrightarrow{AB}-\overrightarrow{AD}=\overrightarrow{DB}$, khác $\overrightarrow{AC}$.
+- Chỉ hộp chữ nhật (hoặc lập phương) mới tính độ dài đường chéo bằng Pythagore ba cạnh.
+
+@vi_du:
+##VD
+Cho hình hộp $ABCD.A'B'C'D'$. Rút gọn các biểu thức sau:
+a) $\overrightarrow{AB}+\overrightarrow{B'C'}+\overrightarrow{DD'}$
+b) $\overrightarrow{CB}+\overrightarrow{CD}+\overrightarrow{CC'}$
+c) $\overrightarrow{AC'}-\overrightarrow{BC}-\overrightarrow{BB'}$
+
+Bài giải:
+a) Ta có $\overrightarrow{B'C'}=\overrightarrow{AD}$ và $\overrightarrow{DD'}=\overrightarrow{AA'}$ nên $\overrightarrow{AB}+\overrightarrow{B'C'}+\overrightarrow{DD'}=\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}$.
+Theo quy tắc hình hộp, biểu thức bằng $\overrightarrow{AC'}$.
+b) Ba vectơ $\overrightarrow{CB}$, $\overrightarrow{CD}$, $\overrightarrow{CC'}$ chung gốc $C$ và là ba cạnh xuất phát từ $C$ nên theo quy tắc hình hộp, tổng bằng $\overrightarrow{CA'}$.
+c) Vì $\overrightarrow{BB'}=\overrightarrow{CC'}$ nên $\overrightarrow{AC'}-\overrightarrow{BC}-\overrightarrow{BB'}=\overrightarrow{AC'}-\overrightarrow{BC}-\overrightarrow{CC'}$.
+Mà $\overrightarrow{AC'}=\overrightarrow{AB}+\overrightarrow{BC}+\overrightarrow{CC'}$ (quy tắc ba điểm) nên biểu thức bằng $\overrightarrow{AB}$.
+Vậy kết quả lần lượt là $\overrightarrow{AC'}$, $\overrightarrow{CA'}$ và $\overrightarrow{AB}$.
+
+##VD
+Cho hình hộp chữ nhật $ABCD.A'B'C'D'$ có $AB=2$, $AD=3$, $AA'=6$. Tính:
+a) $|\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}|$
+b) $|\overrightarrow{AC'}-\overrightarrow{AB}|$
+
+Bài giải:
+a) Theo quy tắc hình hộp, $\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}=\overrightarrow{AC'}$.
+Hình hộp chữ nhật nên $AC'=\sqrt{AB^2+AD^2+AA'^2}=\sqrt{4+9+36}=7$.
+b) $\overrightarrow{AC'}-\overrightarrow{AB}=\overrightarrow{BC'}$ nên cần tính $BC'$.
+Tam giác $BCC'$ vuông tại $C$ có $BC=AD=3$ và $CC'=AA'=6$ nên $BC'=\sqrt{3^2+6^2}=\sqrt{45}=3\sqrt5$.
+Vậy $|\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}|=7$ và $|\overrightarrow{AC'}-\overrightarrow{AB}|=3\sqrt5$.
+
+=== P1.2.2
+@ly_thuyet:
+##TC Vectơ trong hình lăng trụ
+- Lăng trụ $ABC.A'B'C'$: các mặt bên $ABB'A'$, $BCC'B'$, $CAA'C'$ là hình bình hành nên $\overrightarrow{AA'}=\overrightarrow{BB'}=\overrightarrow{CC'}$ và $\overrightarrow{AB}=\overrightarrow{A'B'}$, $\overrightarrow{BC}=\overrightarrow{B'C'}$, $\overrightarrow{CA}=\overrightarrow{C'A'}$.
+- Lăng trụ $ABCD.A'B'C'D'$: $\overrightarrow{AA'}=\overrightarrow{BB'}=\overrightarrow{CC'}=\overrightarrow{DD'}$ và mỗi vectơ cạnh đáy trên bằng vectơ cạnh đáy dưới tương ứng.
+- $\overrightarrow{MM'}=\overrightarrow{AA'}$ nghĩa là $M'$ là ảnh của $M$ khi tịnh tiến theo $\overrightarrow{AA'}$; nếu $M$ là trung điểm của $BC$ thì $M'$ là trung điểm của $B'C'$.
+
+##PP Rút gọn và so sánh vectơ trong lăng trụ
+Thay mỗi vectơ cạnh bên bằng một vectơ cạnh bên chọn trước (ví dụ $\overrightarrow{AA'}$), thay vectơ cạnh đáy trên bằng vectơ cạnh đáy dưới tương ứng.
+Nối tiếp các vectơ bằng quy tắc ba điểm, chú ý vectơ ngược chiều (như $\overrightarrow{A'A}$) là vectơ đối.
+Với bài tìm điểm $M'$ để $\overrightarrow{MM'}=\overrightarrow{AA'}$: xác định điểm bằng cách dựng hình bình hành $AA'M'M$ hoặc dùng mặt bên có sẵn, rồi chứng minh bằng quy tắc ba điểm.
+Kết luận vectơ cần tìm hoặc điểm cần xác định.
+
+##CY
+- Mặt bên là hình bình hành chỉ cho $\overrightarrow{AA'}=\overrightarrow{BB'}$; còn $\overrightarrow{B'B}$ là vectơ đối của $\overrightarrow{AA'}$.
+- $\overrightarrow{AB}=\overrightarrow{A'B'}$ nhưng $\overrightarrow{AB}\ne\overrightarrow{B'A'}$; kiểm tra thứ tự điểm đầu, điểm cuối.
+- Hai vectơ có giá chéo nhau (như $\overrightarrow{AA'}$ và $\overrightarrow{BC}$) không cùng phương nên không thể bằng nhau.
+
+@vi_du:
+##VD
+Cho hình lăng trụ $ABC.A'B'C'$.
+a) Rút gọn $\overrightarrow{AB}+\overrightarrow{B'C'}+\overrightarrow{CC'}$.
+b) Rút gọn $\overrightarrow{BC'}-\overrightarrow{BC}+\overrightarrow{A'A}$.
+c) Gọi $M$ là trung điểm của $BC$. Xác định điểm $M'$ sao cho $\overrightarrow{MM'}=\overrightarrow{AA'}$.
+
+Bài giải:
+a) $BCC'B'$ là hình bình hành nên $\overrightarrow{B'C'}=\overrightarrow{BC}$.
+Do đó $\overrightarrow{AB}+\overrightarrow{B'C'}+\overrightarrow{CC'}=\overrightarrow{AB}+\overrightarrow{BC}+\overrightarrow{CC'}=\overrightarrow{AC}+\overrightarrow{CC'}=\overrightarrow{AC'}$.
+b) $\overrightarrow{BC'}-\overrightarrow{BC}=\overrightarrow{CC'}$ và $\overrightarrow{CC'}=\overrightarrow{AA'}$ nên biểu thức bằng $\overrightarrow{AA'}+\overrightarrow{A'A}=\vec{0}$.
+c) Gọi $M'$ là trung điểm của $B'C'$. Vì $\overrightarrow{B'M'}=\overrightarrow{BM}$ nên $\overrightarrow{MM'}=\overrightarrow{MB}+\overrightarrow{BB'}+\overrightarrow{B'M'}=\overrightarrow{MB}+\overrightarrow{BM}+\overrightarrow{BB'}=\overrightarrow{BB'}$.
+Mà $\overrightarrow{BB'}=\overrightarrow{AA'}$ nên $\overrightarrow{MM'}=\overrightarrow{AA'}$.
+Vậy a) $\overrightarrow{AC'}$; b) $\vec{0}$; c) $M'$ là trung điểm của $B'C'$.
+
+##VD
+Cho hình lăng trụ $ABCD.A'B'C'D'$ có đáy $ABCD$ là hình thang với $AB\parallel CD$ và $AB=2CD$.
+a) Chứng minh $\overrightarrow{A'B'}=2\overrightarrow{DC}$.
+b) Tính $\overrightarrow{A'B'}-\overrightarrow{D'C'}$ theo $\overrightarrow{DC}$.
+c) Rút gọn $\overrightarrow{AC'}-\overrightarrow{DD'}-\overrightarrow{BC}$.
+
+Bài giải:
+a) Mặt bên $ABB'A'$ là hình bình hành nên $\overrightarrow{A'B'}=\overrightarrow{AB}$.
+Hình thang $ABCD$ có $AB\parallel CD$, $AB=2CD$ và $\overrightarrow{AB}$, $\overrightarrow{DC}$ cùng hướng nên $\overrightarrow{AB}=2\overrightarrow{DC}$.
+Do đó $\overrightarrow{A'B'}=2\overrightarrow{DC}$.
+b) Tương tự, mặt bên $DCC'D'$ là hình bình hành nên $\overrightarrow{D'C'}=\overrightarrow{DC}$.
+Vậy $\overrightarrow{A'B'}-\overrightarrow{D'C'}=2\overrightarrow{DC}-\overrightarrow{DC}=\overrightarrow{DC}$.
+c) $\overrightarrow{AC'}=\overrightarrow{AC}+\overrightarrow{CC'}$ và $\overrightarrow{DD'}=\overrightarrow{CC'}$ nên $\overrightarrow{AC'}-\overrightarrow{DD'}=\overrightarrow{AC}$.
+Suy ra $\overrightarrow{AC'}-\overrightarrow{DD'}-\overrightarrow{BC}=\overrightarrow{AC}+\overrightarrow{CB}=\overrightarrow{AB}$.
+Vậy a) đã chứng minh; b) $\overrightarrow{DC}$; c) $\overrightarrow{AB}$.
+
+=== P1.2.3
+@ly_thuyet:
+##TC Vectơ trong hình chóp và tứ diện
+- Đi theo đường khép kín thì tổng bằng vectơ-không, ví dụ trong tứ diện $\overrightarrow{AB}+\overrightarrow{BC}+\overrightarrow{CD}+\overrightarrow{DA}=\vec{0}$.
+- Đáy $ABCD$ của chóp $S.ABCD$ là hình bình hành: $\overrightarrow{AB}=\overrightarrow{DC}$, $\overrightarrow{AD}=\overrightarrow{BC}$, $\overrightarrow{AC}=\overrightarrow{AB}+\overrightarrow{AD}$.
+- Đưa về chung gốc $O$: $\overrightarrow{XY}=\overrightarrow{OY}-\overrightarrow{OX}$, ví dụ $\overrightarrow{AB}=\overrightarrow{SB}-\overrightarrow{SA}$.
+
+##PP Rút gọn, biểu diễn vectơ trong hình chóp, tứ diện
+Chọn gốc thuận lợi (thường là đỉnh chóp $S$ hoặc một đỉnh của tứ diện) và gọi tên các vectơ cạnh xuất phát từ gốc đó.
+Viết mỗi vectơ cạnh còn lại thành hiệu hai vectơ cạnh qua gốc: $\overrightarrow{XY}=\overrightarrow{OY}-\overrightarrow{OX}$.
+Nếu đáy là hình bình hành thì thay $\overrightarrow{CD}=\overrightarrow{BA}$, $\overrightarrow{BC}=\overrightarrow{AD}$ trước khi cộng.
+Gộp các hệ số của cùng một vectơ rồi kết luận.
+
+##CY
+- Đổi gốc: $\overrightarrow{AB}=\overrightarrow{SB}-\overrightarrow{SA}$ (ngọn trừ gốc), không phải $\overrightarrow{SA}-\overrightarrow{SB}$.
+- Hình bình hành đúng thứ tự đỉnh cho $\overrightarrow{AB}=\overrightarrow{DC}$, không phải $\overrightarrow{AB}=\overrightarrow{CD}$.
+- Đường khép kín qua bốn điểm có tổng bằng $\vec{0}$; không rút gọn thành $\overrightarrow{AC}$.
+
+@vi_du:
+##VD
+Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Rút gọn:
+a) $\overrightarrow{SA}+\overrightarrow{AB}+\overrightarrow{CD}$
+b) $\overrightarrow{SC}-\overrightarrow{SA}+\overrightarrow{DB}$
+
+Bài giải:
+a) Vì $ABCD$ là hình bình hành nên $\overrightarrow{CD}=\overrightarrow{BA}$.
+Do đó $\overrightarrow{SA}+\overrightarrow{AB}+\overrightarrow{CD}=\overrightarrow{SB}+\overrightarrow{BA}=\overrightarrow{SA}$.
+b) Ta có $\overrightarrow{SC}-\overrightarrow{SA}=\overrightarrow{AC}=\overrightarrow{AB}+\overrightarrow{AD}$ (quy tắc hình bình hành).
+Mặt khác $\overrightarrow{DB}=\overrightarrow{DA}+\overrightarrow{AB}=-\overrightarrow{AD}+\overrightarrow{AB}$.
+Cộng lại: $\overrightarrow{SC}-\overrightarrow{SA}+\overrightarrow{DB}=\overrightarrow{AB}+\overrightarrow{AD}-\overrightarrow{AD}+\overrightarrow{AB}=2\overrightarrow{AB}$.
+Vậy a) $\overrightarrow{SA}$; b) $2\overrightarrow{AB}$.
+
+##VD
+Cho hình chóp $S.ABC$. Đặt $\vec{a}=\overrightarrow{SA}$, $\vec{b}=\overrightarrow{SB}$, $\vec{c}=\overrightarrow{SC}$. Biểu diễn các vectơ sau theo $\vec{a}$, $\vec{b}$, $\vec{c}$:
+a) $\overrightarrow{BC}$
+b) $\overrightarrow{AB}+\overrightarrow{AC}$
+c) $\overrightarrow{AB}-\overrightarrow{CB}$
+
+Bài giải:
+a) $\overrightarrow{BC}=\overrightarrow{SC}-\overrightarrow{SB}=\vec{c}-\vec{b}$.
+b) $\overrightarrow{AB}=\overrightarrow{SB}-\overrightarrow{SA}=\vec{b}-\vec{a}$ và $\overrightarrow{AC}=\overrightarrow{SC}-\overrightarrow{SA}=\vec{c}-\vec{a}$.
+Do đó $\overrightarrow{AB}+\overrightarrow{AC}=\vec{b}-\vec{a}+\vec{c}-\vec{a}=\vec{b}+\vec{c}-2\vec{a}$.
+c) $\overrightarrow{AB}-\overrightarrow{CB}=\overrightarrow{AB}+\overrightarrow{BC}=\overrightarrow{AC}=\vec{c}-\vec{a}$.
+Vậy a) $\vec{c}-\vec{b}$; b) $\vec{b}+\vec{c}-2\vec{a}$; c) $\vec{c}-\vec{a}$.
+
+=== P1.2.4
+@ly_thuyet:
+##TC Đẳng thức vectơ với bốn điểm bất kì
+- Với bốn điểm $A,B,C,D$ bất kì: $\overrightarrow{AC}+\overrightarrow{BD}=\overrightarrow{AD}+\overrightarrow{BC}$ và $\overrightarrow{AB}+\overrightarrow{CD}=\overrightarrow{AD}+\overrightarrow{CB}$.
+- Chèn điểm trung gian: $\overrightarrow{XY}=\overrightarrow{XZ}+\overrightarrow{ZY}$ với $Z$ bất kì.
+- Hình bình hành $ABCD$: $\overrightarrow{AB}=\overrightarrow{DC}$ nên $\overrightarrow{AB}+\overrightarrow{CD}=\vec{0}$.
+- Hình hộp (lăng trụ) có $\overrightarrow{BB'}=\overrightarrow{CC'}=\overrightarrow{AA'}$, dùng để thay vectơ cạnh bên.
+
+##PP Chứng minh đẳng thức vectơ
+Chọn vế phức tạp hơn để biến đổi (hoặc biến đổi cả hai vế về cùng một biểu thức).
+Chèn điểm trung gian bằng quy tắc ba điểm, hoặc đưa mọi vectơ về hiệu $\overrightarrow{XY}=\overrightarrow{OY}-\overrightarrow{OX}$ với một điểm $O$ cố định.
+Với hình hộp, lăng trụ, hình bình hành: thay các vectơ bằng nhau, vectơ đối nhau để các cặp triệt tiêu.
+Rút gọn đến khi hai vế giống nhau rồi kết luận.
+
+##CY
+- Khi chèn điểm, nhớ vectơ ngược chiều có dấu trừ: $\overrightarrow{DC}+\overrightarrow{CD}=\vec{0}$.
+- Không "chuyển vế" tuỳ tiện khi các vectơ chưa cùng gốc; đưa về hiệu rồi mới chuyển vế.
+- Hình bình hành thì $\overrightarrow{AB}=\overrightarrow{DC}$, nên $\overrightarrow{AB}+\overrightarrow{CD}=\vec{0}$ (không phải $\overrightarrow{AB}+\overrightarrow{DC}=\vec{0}$).
+
+@vi_du:
+##VD
+a) Cho bốn điểm $A,B,C,D$ bất kì trong không gian. Chứng minh $\overrightarrow{AC}+\overrightarrow{BD}=\overrightarrow{AD}+\overrightarrow{BC}$.
+b) Cho hình hộp $ABCD.A'B'C'D'$. Chứng minh $\overrightarrow{BB'}-\overrightarrow{CA}=\overrightarrow{AC'}$.
+
+Bài giải:
+a) Chèn điểm $D$ vào $\overrightarrow{AC}$ và điểm $C$ vào $\overrightarrow{BD}$: $\overrightarrow{AC}=\overrightarrow{AD}+\overrightarrow{DC}$ và $\overrightarrow{BD}=\overrightarrow{BC}+\overrightarrow{CD}$.
+Cộng hai đẳng thức: $\overrightarrow{AC}+\overrightarrow{BD}=\overrightarrow{AD}+\overrightarrow{BC}+(\overrightarrow{DC}+\overrightarrow{CD})=\overrightarrow{AD}+\overrightarrow{BC}$.
+b) Vì $\overrightarrow{BB'}=\overrightarrow{CC'}$ nên $\overrightarrow{BB'}-\overrightarrow{CA}=\overrightarrow{CC'}+\overrightarrow{AC}$.
+Theo quy tắc ba điểm, $\overrightarrow{AC}+\overrightarrow{CC'}=\overrightarrow{AC'}$.
+Vậy hai đẳng thức đã được chứng minh.
+
+##VD
+Cho hình hộp $ABCD.A'B'C'D'$. Chứng minh:
+a) $\overrightarrow{AC'}+\overrightarrow{CA'}=2\overrightarrow{AA'}$
+b) $\overrightarrow{AC'}+\overrightarrow{BD'}+\overrightarrow{CA'}+\overrightarrow{DB'}=4\overrightarrow{AA'}$
+
+Bài giải:
+a) Chèn điểm: $\overrightarrow{AC'}=\overrightarrow{AC}+\overrightarrow{CC'}$ và $\overrightarrow{CA'}=\overrightarrow{CA}+\overrightarrow{AA'}$.
+Cộng lại: $\overrightarrow{AC'}+\overrightarrow{CA'}=(\overrightarrow{AC}+\overrightarrow{CA})+\overrightarrow{CC'}+\overrightarrow{AA'}=\overrightarrow{CC'}+\overrightarrow{AA'}$.
+Vì $\overrightarrow{CC'}=\overrightarrow{AA'}$ nên $\overrightarrow{AC'}+\overrightarrow{CA'}=2\overrightarrow{AA'}$.
+b) Tương tự, $\overrightarrow{BD'}=\overrightarrow{BD}+\overrightarrow{DD'}$ và $\overrightarrow{DB'}=\overrightarrow{DB}+\overrightarrow{BB'}$.
+Cộng lại: $\overrightarrow{BD'}+\overrightarrow{DB'}=(\overrightarrow{BD}+\overrightarrow{DB})+\overrightarrow{DD'}+\overrightarrow{BB'}=2\overrightarrow{AA'}$ vì $\overrightarrow{DD'}=\overrightarrow{BB'}=\overrightarrow{AA'}$.
+Kết hợp với a): $\overrightarrow{AC'}+\overrightarrow{BD'}+\overrightarrow{CA'}+\overrightarrow{DB'}=2\overrightarrow{AA'}+2\overrightarrow{AA'}=4\overrightarrow{AA'}$.
+Vậy cả hai đẳng thức đã được chứng minh.
+
+=== P1.2.5
+@ly_thuyet:
+##TC Hệ thức trung điểm và trọng tâm
+- $I$ là trung điểm $AB$: $\overrightarrow{IA}+\overrightarrow{IB}=\vec{0}$; với mọi điểm $M$, $\overrightarrow{MA}+\overrightarrow{MB}=2\overrightarrow{MI}$.
+- $G$ là trọng tâm tam giác $ABC$: $\overrightarrow{GA}+\overrightarrow{GB}+\overrightarrow{GC}=\vec{0}$; với mọi $M$, $\overrightarrow{MA}+\overrightarrow{MB}+\overrightarrow{MC}=3\overrightarrow{MG}$.
+- $G$ là trọng tâm tứ diện $ABCD$ (trung điểm đoạn nối trung điểm hai cạnh đối): $\overrightarrow{GA}+\overrightarrow{GB}+\overrightarrow{GC}+\overrightarrow{GD}=\vec{0}$; với mọi $M$, $\overrightarrow{MA}+\overrightarrow{MB}+\overrightarrow{MC}+\overrightarrow{MD}=4\overrightarrow{MG}$.
+- Đáy hình bình hành $ABCD$ tâm $O$: $\overrightarrow{OA}+\overrightarrow{OC}=\vec{0}$ và $\overrightarrow{MA}+\overrightarrow{MC}=\overrightarrow{MB}+\overrightarrow{MD}=2\overrightarrow{MO}$.
+
+##PP Dùng hệ thức trung điểm, trọng tâm
+Xác định các điểm đặc biệt trong bài (trung điểm, trọng tâm, tâm) và hệ thức tương ứng của từng điểm.
+Chọn điểm $M$ thuận lợi (thường là đỉnh chung hoặc điểm cần xét), áp dụng $2\overrightarrow{MI}$, $3\overrightarrow{MG}$, $4\overrightarrow{MG}$.
+Ghép các vectơ theo từng cặp có trung điểm chung, hoặc nhóm ba vectơ có trọng tâm chung, rồi rút gọn.
+Đối chiếu hệ số để kết luận (tìm $k$) hoặc đến khi hai vế bằng nhau.
+
+##CY
+- Hệ số của hệ thức trung điểm là $2$ (không phải $1$), của trọng tâm tam giác là $3$, của trọng tâm tứ diện là $4$.
+- Trọng tâm tam giác chia trung tuyến theo tỉ số $2:1$ từ đỉnh, nên $\overrightarrow{AG}=\dfrac{2}{3}\overrightarrow{AI}$ ($I$ trung điểm cạnh đối), không phải $\dfrac12$.
+- Hệ thức $\overrightarrow{MA}+\overrightarrow{MB}=2\overrightarrow{MI}$ đúng với MỌI $M$, còn $\overrightarrow{IA}+\overrightarrow{IB}=\vec{0}$ chỉ khi $I$ là trung điểm.
+
+@vi_du:
+##VD
+a) Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành tâm $O$. Chứng minh $\overrightarrow{SA}+\overrightarrow{SB}+\overrightarrow{SC}+\overrightarrow{SD}=4\overrightarrow{SO}$.
+b) Cho tứ diện $ABCD$, $G$ là trọng tâm tam giác $BCD$. Tìm $k$ sao cho $\overrightarrow{AB}+\overrightarrow{AC}+\overrightarrow{AD}=k\overrightarrow{AG}$.
+
+Bài giải:
+a) $O$ là trung điểm của $AC$ và của $BD$ (tâm hình bình hành) nên $\overrightarrow{SA}+\overrightarrow{SC}=2\overrightarrow{SO}$ và $\overrightarrow{SB}+\overrightarrow{SD}=2\overrightarrow{SO}$.
+Cộng hai đẳng thức: $\overrightarrow{SA}+\overrightarrow{SB}+\overrightarrow{SC}+\overrightarrow{SD}=4\overrightarrow{SO}$.
+b) $G$ là trọng tâm tam giác $BCD$ nên với điểm $A$ ta có $\overrightarrow{AB}+\overrightarrow{AC}+\overrightarrow{AD}=3\overrightarrow{AG}$.
+Vậy a) đã chứng minh; b) $k=3$.
+
+##VD
+Cho tứ diện $ABCD$. Gọi $M$, $N$ lần lượt là trung điểm của $AB$ và $CD$; $G$ là trung điểm của $MN$.
+a) Chứng minh $\overrightarrow{MN}=\dfrac12\left(\overrightarrow{AD}+\overrightarrow{BC}\right)$.
+b) Chứng minh $\overrightarrow{GA}+\overrightarrow{GB}+\overrightarrow{GC}+\overrightarrow{GD}=\vec{0}$.
+c) Với điểm $P$ bất kì, tìm $k$ để $\overrightarrow{PA}+\overrightarrow{PB}+\overrightarrow{PC}+\overrightarrow{PD}=k\overrightarrow{PG}$.
+
+Bài giải:
+a) Ta có $\overrightarrow{MN}=\overrightarrow{MA}+\overrightarrow{AD}+\overrightarrow{DN}$ và $\overrightarrow{MN}=\overrightarrow{MB}+\overrightarrow{BC}+\overrightarrow{CN}$.
+Cộng hai đẳng thức: $2\overrightarrow{MN}=(\overrightarrow{MA}+\overrightarrow{MB})+(\overrightarrow{DN}+\overrightarrow{CN})+\overrightarrow{AD}+\overrightarrow{BC}$.
+Vì $M$ là trung điểm $AB$ và $N$ là trung điểm $CD$ nên $\overrightarrow{MA}+\overrightarrow{MB}=\vec{0}$ và $\overrightarrow{DN}+\overrightarrow{CN}=\vec{0}$.
+Suy ra $2\overrightarrow{MN}=\overrightarrow{AD}+\overrightarrow{BC}$, tức $\overrightarrow{MN}=\dfrac12\left(\overrightarrow{AD}+\overrightarrow{BC}\right)$.
+b) $M$ là trung điểm $AB$ nên $\overrightarrow{GA}+\overrightarrow{GB}=2\overrightarrow{GM}$; $N$ là trung điểm $CD$ nên $\overrightarrow{GC}+\overrightarrow{GD}=2\overrightarrow{GN}$.
+Do đó $\overrightarrow{GA}+\overrightarrow{GB}+\overrightarrow{GC}+\overrightarrow{GD}=2\left(\overrightarrow{GM}+\overrightarrow{GN}\right)=\vec{0}$ vì $G$ là trung điểm $MN$.
+c) Với điểm $P$ bất kì: $\overrightarrow{PA}+\overrightarrow{PB}=2\overrightarrow{PM}$, $\overrightarrow{PC}+\overrightarrow{PD}=2\overrightarrow{PN}$ và $\overrightarrow{PM}+\overrightarrow{PN}=2\overrightarrow{PG}$.
+Suy ra $\overrightarrow{PA}+\overrightarrow{PB}+\overrightarrow{PC}+\overrightarrow{PD}=2\cdot2\overrightarrow{PG}=4\overrightarrow{PG}$.
+Vậy a), b) đã chứng minh; c) $k=4$.
+
+=== P1.2.6
+@ly_thuyet:
+##TC Phân tích vectơ theo ba vectơ không đồng phẳng
+- Ba vectơ $\vec{a}$, $\vec{b}$, $\vec{c}$ không đồng phẳng nếu giá của chúng không cùng song song với một mặt phẳng; ví dụ ba vectơ cạnh chung đỉnh $\overrightarrow{AB}$, $\overrightarrow{AD}$, $\overrightarrow{AA'}$ của hình hộp, hay $\overrightarrow{AB}$, $\overrightarrow{AC}$, $\overrightarrow{AD}$ của tứ diện.
+- Khi đó mọi vectơ $\vec{x}$ đều viết được duy nhất dưới dạng $\vec{x}=m\vec{a}+n\vec{b}+p\vec{c}$.
+- Điểm chia đoạn: $M$ thuộc $AB$ với $AM=k\cdot AB$ thì $\overrightarrow{AM}=k\overrightarrow{AB}$. Trung điểm $I$ của $BC$: $\overrightarrow{AI}=\dfrac12\left(\overrightarrow{AB}+\overrightarrow{AC}\right)$. Trọng tâm $G$ của tam giác $BCD$: $\overrightarrow{AG}=\dfrac13\left(\overrightarrow{AB}+\overrightarrow{AC}+\overrightarrow{AD}\right)$.
+- $\overrightarrow{MN}=\overrightarrow{AN}-\overrightarrow{AM}$ với mọi điểm $A$.
+
+##PP Phân tích một vectơ theo ba vectơ cơ sở
+Chọn ba vectơ cạnh chung một đỉnh, không đồng phẳng, làm cơ sở và đặt tên $\vec{a}$, $\vec{b}$, $\vec{c}$.
+Viết từng điểm của đề dưới dạng $\overrightarrow{AM}$ theo cơ sở (dùng tỉ số, trung điểm, trọng tâm) rồi tìm vectơ cần biểu diễn bằng quy tắc ba điểm hoặc hiệu $\overrightarrow{MN}=\overrightarrow{AN}-\overrightarrow{AM}$.
+Khai triển, gộp hệ số của cùng một vectơ cơ sở.
+Kết luận $m,n,p$ và thử lại bằng một điểm đặc biệt hoặc so với tính chất đã biết.
+
+##CY
+- Tỉ số có thứ tự: $CM=\dfrac13CD$ khác $DM=\dfrac13CD$; vẽ nháp hoặc ghi rõ đoạn nào ngắn hơn.
+- Khi viết trọng tâm hoặc trung điểm, nhớ hệ số $\dfrac13$ hoặc $\dfrac12$.
+- Biểu diễn là duy nhất chỉ khi ba vectơ cơ sở không đồng phẳng (ba cạnh chung đỉnh của hộp, tứ diện); đừng chọn ba vectơ cùng nằm trong một mặt đáy.
+
+@vi_du:
+##VD
+Cho hình hộp $ABCD.A'B'C'D'$. Đặt $\vec{a}=\overrightarrow{AB}$, $\vec{b}=\overrightarrow{AD}$, $\vec{c}=\overrightarrow{AA'}$. Biểu diễn theo $\vec{a}$, $\vec{b}$, $\vec{c}$:
+a) $\overrightarrow{BD'}$
+b) $\overrightarrow{AM}$, với $M$ là trung điểm của $CC'$
+c) $\overrightarrow{AN}$, với $N$ là trung điểm của $B'D'$
+
+Bài giải:
+a) $\overrightarrow{BD'}=\overrightarrow{BA}+\overrightarrow{AD}+\overrightarrow{DD'}=-\vec{a}+\vec{b}+\vec{c}$.
+b) $\overrightarrow{AM}=\overrightarrow{AC}+\overrightarrow{CM}=\overrightarrow{AB}+\overrightarrow{AD}+\dfrac12\overrightarrow{CC'}=\vec{a}+\vec{b}+\dfrac12\vec{c}$.
+c) $\overrightarrow{AB'}=\vec{a}+\vec{c}$ và $\overrightarrow{AD'}=\vec{b}+\vec{c}$.
+Vì $N$ là trung điểm của $B'D'$ nên $\overrightarrow{AN}=\dfrac12\left(\overrightarrow{AB'}+\overrightarrow{AD'}\right)=\dfrac12\left(\vec{a}+\vec{b}+2\vec{c}\right)=\dfrac12\vec{a}+\dfrac12\vec{b}+\vec{c}$.
+Vậy a) $-\vec{a}+\vec{b}+\vec{c}$; b) $\vec{a}+\vec{b}+\dfrac12\vec{c}$; c) $\dfrac12\vec{a}+\dfrac12\vec{b}+\vec{c}$.
+
+##VD
+Cho tứ diện $ABCD$. Đặt $\vec{a}=\overrightarrow{AB}$, $\vec{b}=\overrightarrow{AC}$, $\vec{c}=\overrightarrow{AD}$. Gọi $M$ là điểm thuộc cạnh $CD$ sao cho $CM=\dfrac13CD$, $N$ là trung điểm của $BM$, $G$ là trọng tâm tam giác $BCD$.
+a) Biểu diễn $\overrightarrow{AM}$ và $\overrightarrow{AN}$ theo $\vec{a}$, $\vec{b}$, $\vec{c}$.
+b) Biểu diễn $\overrightarrow{NG}$ theo $\vec{a}$, $\vec{b}$, $\vec{c}$ và chứng minh $NG\parallel BD$.
+
+Bài giải:
+a) Vì $CM=\dfrac13CD$ nên $\overrightarrow{CM}=\dfrac13\overrightarrow{CD}=\dfrac13\left(\vec{c}-\vec{b}\right)$.
+Suy ra $\overrightarrow{AM}=\overrightarrow{AC}+\overrightarrow{CM}=\vec{b}+\dfrac13\left(\vec{c}-\vec{b}\right)=\dfrac23\vec{b}+\dfrac13\vec{c}$.
+$N$ là trung điểm của $BM$ nên $\overrightarrow{AN}=\dfrac12\left(\overrightarrow{AB}+\overrightarrow{AM}\right)=\dfrac12\vec{a}+\dfrac13\vec{b}+\dfrac16\vec{c}$.
+b) $G$ là trọng tâm tam giác $BCD$ nên $\overrightarrow{AG}=\dfrac13\left(\vec{a}+\vec{b}+\vec{c}\right)$.
+Do đó $\overrightarrow{NG}=\overrightarrow{AG}-\overrightarrow{AN}=\left(\dfrac13-\dfrac12\right)\vec{a}+\left(\dfrac13-\dfrac13\right)\vec{b}+\left(\dfrac13-\dfrac16\right)\vec{c}=-\dfrac16\vec{a}+\dfrac16\vec{c}$.
+Mà $\overrightarrow{BD}=\overrightarrow{AD}-\overrightarrow{AB}=\vec{c}-\vec{a}$ nên $\overrightarrow{NG}=\dfrac16\overrightarrow{BD}$.
+Hai vectơ $\overrightarrow{NG}$ và $\overrightarrow{BD}$ cùng phương và $N$ không thuộc $BD$ nên $NG\parallel BD$.
+Vậy $\overrightarrow{AM}=\dfrac23\vec{b}+\dfrac13\vec{c}$, $\overrightarrow{AN}=\dfrac12\vec{a}+\dfrac13\vec{b}+\dfrac16\vec{c}$, $\overrightarrow{NG}=\dfrac16\overrightarrow{BD}$ nên $NG\parallel BD$.
+
+## GHI CHÚ CHO CEO
+- Không có dạng nào mô tả mơ hồ; tám dạng đều làm đúng kiểu đề ghi trong cau-truc.mjs.
+- P1.2.5 và lý thuyết nhóm P1.2: sách chỉ nêu trọng tâm tứ diện qua bài tập; tôi viết rõ định nghĩa (trung điểm đoạn nối trung điểm hai cạnh đối) và hệ thức bốn điểm hệ số 4.
+- P1.2.4 ví dụ 2 (trạm soát thay): bài hai hình bình hành ở hai mặt phẳng (NBV) không đúng khung "tứ diện, hình hộp" và ý b) dùng hệ thức trung điểm (lấn dạng P1.2.5) ⇒ thay bằng bài bốn đường chéo hình hộp $\overrightarrow{AC'}+\overrightarrow{BD'}+\overrightarrow{CA'}+\overrightarrow{DB'}=4\overrightarrow{AA'}$. Nhãn đẳng thức trong hồ sơ NBV (BB'+DD'=CC') thiếu dữ kiện, không chép.
+- Lỗi nguồn gặp: Từ Tâm B1-P2 C18 (hai phương án trùng, câu hỏng) và NBV C8#36 (thiếu dữ kiện); không chép các câu này.
+- P1.2.2 ví dụ 2 chọn đáy hình thang AB=2CD để có hệ số 2 khi so sánh vectơ; P1.2.3 ví dụ 1 dùng chóp đáy hình bình hành vì cả ba sách hay dùng.
+- Toàn bộ 16 ví dụ đã thử lại bằng số (tam/J1/thu.mjs, toạ độ cụ thể các đỉnh): khớp hết.

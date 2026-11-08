@@ -8,9 +8,9 @@
 // PrintView/BtvnSheet đã đọc cau_hinh.colByCau cho mọi câu 'btvn' lẫn 'ontap' từ trước, chỉ thiếu UI set).
 import { useEffect, useRef, useState } from 'react'
 import { MathText } from '../screens/kho/ui'
-import { khoCuaMon, usedCausOfBuoi, autoSuggestByLoai, DEFAULT_BTVN_LINES, DEFAULT_BTVN_COUNTS } from '../lib/tailieu'
+import { usedCausOfBuoi, autoSuggestByLoai, DEFAULT_BTVN_LINES, DEFAULT_BTVN_COUNTS } from '../lib/tailieu'
 import { LOAI_CAU, type CauHoi } from '../lib/kho/api'
-import { goiYOnTap, getOnTapConfig, fetchCausByMa, fetchTenDangByMa, CAP_CAU_MOI_DANG, type OnTapConfig, type OnTapDangConfig } from '../lib/ontap'
+import { goiYOnTap, getOnTapConfig, fetchCausByMa, fetchTenDangByMa, cauTblOnTap, CAP_CAU_MOI_DANG, type OnTapConfig, type OnTapDangConfig } from '../lib/ontap'
 import { KhoPicker } from './KhoPicker'
 import DangPickerOne from './DangPickerOne'
 
@@ -30,7 +30,9 @@ export default function OnTapEditor({ nguonId, buoiId, lopId, khoi, mon, nhanh, 
   nguonId: string; buoiId: string; lopId: string; khoi: string; mon: string; nhanh?: string | null
   config: OnTapConfig | null; onChange: (c: OnTapConfig) => void
 }) {
-  const cauTbl = khoCuaMon(mon, nhanh).cauTbl
+  // Bảng câu THEO DẠNG: dạng bài NDB (bản đồ mới K6–12 — "+ Dạng" chọn theo cây mới, giáo trình đổi mã) ⇒ kho bản đồ mới;
+  // dạng cũ ⇒ kho của nhánh tài liệu như trước.
+  const cauTblCua = (maDang: string) => cauTblOnTap(mon, nhanh, maDang)
   const reqId = useRef(0)
   const [loading, setLoading] = useState(true)
   const [scoreByMa, setScoreByMa] = useState<Record<string, number>>({}) // ma_dang → score (0..1), chỉ có khi vừa chạy engine
@@ -81,17 +83,20 @@ export default function OnTapEditor({ nguonId, buoiId, lopId, khoi, mon, nhanh, 
 
   // Preview câu (config chỉ lưu ma_cau) — nạp thiếu vào cache, không nạp lại câu đã có.
   useEffect(() => {
-    const allMa = config?.dangs.flatMap((d) => d.ma_caus) ?? []
-    const missing = allMa.filter((m) => !cauCache.has(m))
-    if (!missing.length) return
+    const theoBang = new Map<string, string[]>()
+    for (const d of config?.dangs ?? []) {
+      const missing = d.ma_caus.filter((m) => !cauCache.has(m))
+      if (missing.length) { const t = cauTblCua(d.ma_dang); theoBang.set(t, [...(theoBang.get(t) ?? []), ...missing]) }
+    }
+    if (!theoBang.size) return
     let alive = true
-    fetchCausByMa(missing, cauTbl).then((caus) => {
+    Promise.all([...theoBang].map(([t, mas]) => fetchCausByMa(mas, t))).then((ds) => {
       if (!alive) return
-      setCauCache((prev) => { const n = new Map(prev); for (const c of caus) n.set(c.ma_cau, c); return n })
+      setCauCache((prev) => { const n = new Map(prev); for (const c of ds.flat()) n.set(c.ma_cau, c); return n })
     })
     return () => { alive = false }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [config, cauTbl])
+  }, [config, mon, nhanh])
 
   // Tên dạng (config/DangPickerOne chỉ có ma_dang) — nạp thiếu, tương tự cauCache ở trên.
   useEffect(() => {
@@ -200,7 +205,7 @@ export default function OnTapEditor({ nguonId, buoiId, lopId, khoi, mon, nhanh, 
           ) : (
             <div className="space-y-2">
               {tuChon.map((d) => (
-                <TuChonDangBlock key={d.ma_dang} d={d} ten={tenDangCache.get(d.ma_dang) ?? d.ma_dang} cauCache={cauCache} cauTbl={cauTbl}
+                <TuChonDangBlock key={d.ma_dang} d={d} ten={tenDangCache.get(d.ma_dang) ?? d.ma_dang} cauCache={cauCache} cauTbl={cauTblCua(d.ma_dang)}
                   usedExcept={new Set([...usedInBuoi, ...otherDangCaus(d.ma_dang)])}
                   onApply={(maCaus) => doiCau(maCaus, d.ma_dang)}
                   onLine={(maCau, n) => setLine(d.ma_dang, maCau, n)}
@@ -214,13 +219,14 @@ export default function OnTapEditor({ nguonId, buoiId, lopId, khoi, mon, nhanh, 
       )}
 
       {dangPicker && (
-        <DangPickerOne khoi={khoi} mon={mon} nhanh={nhanh}
+        // banDoMoi: khối K6–12 chọn dạng bài NDB (câu ghi nhánh 'bdm' theo câu lúc append — ontap.ts), cấp 1 giữ bản đồ cũ.
+        <DangPickerOne khoi={khoi} mon={mon} nhanh={nhanh} banDoMoi
           onClose={() => setDangPicker(false)}
           onPick={(maDang) => { setDangPicker(false); themDangTuChon(maDang) }}
         />
       )}
       {cauPicker && (
-        <KhoPicker maDangs={[cauPicker.maDang]} selected={cauPicker.selected} disabled={[...usedInBuoi, ...otherDangCaus(cauPicker.maDang)]} cauTbl={cauTbl}
+        <KhoPicker maDangs={[cauPicker.maDang]} selected={cauPicker.selected} disabled={[...usedInBuoi, ...otherDangCaus(cauPicker.maDang)]} cauTbl={cauTblCua(cauPicker.maDang)}
           onClose={() => setCauPicker(null)}
           onConfirm={(m) => {
             const picked = cauPicker.capped ? m.slice(0, CAP_CAU_MOI_DANG) : m

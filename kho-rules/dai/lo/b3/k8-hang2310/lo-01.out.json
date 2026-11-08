@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T108000000770",
+  "dang_bai_id": "NDB00468",
+  "chac": "vua",
+  "ly_do": "Tổng bình phương bằng 0 suy ra từng số bằng 0, gần cụm a=b=c nhưng chưa đúng dạng."
+ },
+ {
+  "ma_cau": "T108030101004",
+  "dang_bai_id": "NDB00470",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung là số 5 của 5y-25."
+ },
+ {
+  "ma_cau": "T108030501001",
+  "dang_bai_id": "NDB00478",
+  "chac": "cao",
+  "ly_do": "Đa thức bậc 3 có nghiệm -2 (khác ±1), phân tích bằng nhẩm nghiệm."
+ },
+ {
+  "ma_cau": "T108000000422",
+  "dang_bai_id": "NDB00672",
+  "chac": "vua",
+  "ly_do": "Nhiều ý: cộng đa thức, tìm N bằng phép nhân, tính giá trị; chọn cộng trừ đa thức."
+ },
+ {
+  "ma_cau": "T108000000761",
+  "dang_bai_id": "NDB00678",
+  "chac": "vua",
+  "ly_do": "Tìm a,b qua hai phép chia đa thức một biến có dư."
+ },
+ {
+  "ma_cau": "T108030602049",
+  "dang_bai_id": "NDB00979",
+  "chac": "cao",
+  "ly_do": "Đảo dấu (3-x), rút nhân tử chung (x-3) rồi chia hai trường hợp tìm x."
+ },
+ {
+  "ma_cau": "T108010201029",
+  "dang_bai_id": "NDB00671",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các đơn thức đồng dạng 5xy²-9xy²+6xy²."
+ },
+ {
+  "ma_cau": "T108000000740",
+  "dang_bai_id": "NDB00681",
+  "chac": "vua",
+  "ly_do": "Chứng minh không phụ thuộc biến, một biến: có thể thuộc dạng một biến hoặc nhiều biến."
+ },
+ {
+  "ma_cau": "T108040501001",
+  "dang_bai_id": "NDB00696",
+  "chac": "vua",
+  "ly_do": "GTNN/GTLN có căn và bình phương độc lập, không khớp hẳn dạng bậc hai nào."
+ },
+ {
+  "ma_cau": "T108000000314",
+  "dang_bai_id": "NDB00683",
+  "chac": "vua",
+  "ly_do": "Nhiều ý: thu gọn, hệ số, bậc, tính giá trị; chọn dạng cuối là tính giá trị."
+ },
+ {
+  "ma_cau": "T108010202048",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Tính B-A của hai đa thức đã cho."
+ },
+ {
+  "ma_cau": "T108000000594",
+  "dang_bai_id": "NDB00681",
+  "chac": "vua",
+  "ly_do": "Chứng minh chia hết cho 6 sau rút gọn; một biến nên cũng có thể là dạng 680."
+ },
+ {
+  "ma_cau": "T108000000534",
+  "dang_bai_id": "NDB00683",
+  "chac": "vua",
+  "ly_do": "Nhiều ý: thu gọn đơn thức, bậc, tính giá trị, chứng minh dương."
+ },
+ {
+  "ma_cau": "T108000000680",
+  "dang_bai_id": "NDB00466",
+  "chac": "vua",
+  "ly_do": "Biến đổi x+3/x từ điều kiện rồi bình phương; gần dạng phân thức nhưng chưa khớp form."
+ },
+ {
+  "ma_cau": "T108000000198",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: khái niệm hằng đẳng thức (nhận biết đẳng thức đúng với mọi giá trị biến)."
+ },
+ {
+  "ma_cau": "T108010303053",
+  "dang_bai_id": "NDB00675",
+  "chac": "cao",
+  "ly_do": "Nhân ba đa thức, thực chất nhân đa thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000628",
+  "dang_bai_id": "NDB00678",
+  "chac": "vua",
+  "ly_do": "Tìm m,n để chia hết (x+2)² qua phép chia đa thức một biến."
+ },
+ {
+  "ma_cau": "T108000000627",
+  "dang_bai_id": "NDB00678",
+  "chac": "vua",
+  "ly_do": "Tìm m để chia hết x+2 qua phép chia đa thức một biến."
+ },
+ {
+  "ma_cau": "T108000000298",
+  "dang_bai_id": "NDB00973",
+  "chac": "vua",
+  "ly_do": "Có (x+y)(x²-xy+y²) là HĐT tổng lập phương, cũng làm được bằng nhân đa thức (dạng 681)."
+ },
+ {
+  "ma_cau": "T108000000742",
+  "dang_bai_id": "NDB00681",
+  "chac": "vua",
+  "ly_do": "Chứng minh không phụ thuộc biến, một biến: có thể thuộc dạng một biến hoặc nhiều biến."
+ },
+ {
+  "ma_cau": "T108000000504",
+  "dang_bai_id": "NDB00981",
+  "chac": "cao",
+  "ly_do": "Khai triển HĐT, đưa về tam thức bậc hai, phân tích bằng tách hạng tử để tìm x."
+ },
+ {
+  "ma_cau": "T108000000561",
+  "dang_bai_id": "NDB00677",
+  "chac": "vua",
+  "ly_do": "Chia đa thức cho 5(y-x)³, số chia là luỹ thừa của đa thức nên chưa thuần đơn thức."
+ },
+ {
+  "ma_cau": "T108000000754",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: Tứ giác (chu vi hình thoi) [hinh_luyen]."
+ },
+ {
+  "ma_cau": "T108010202042",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Tính A+B-C của ba đa thức."
+ },
+ {
+  "ma_cau": "T108000000747",
+  "dang_bai_id": "NDB01370",
+  "chac": "vua",
+  "ly_do": "Bài toán thực tế về diện tích có hình vẽ, số liệu cụ thể, phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T108000000324",
+  "dang_bai_id": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Tìm đơn thức B bằng cách chia đơn thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108020701007",
+  "dang_bai_id": "NDB00469",
+  "chac": "vua",
+  "ly_do": "Tính a³+b³ từ a+b và ab, liên quan lập phương của tổng; mô tả dạng chưa rõ."
+ },
+ {
+  "ma_cau": "T108030401037",
+  "dang_bai_id": "NDB00476",
+  "chac": "cao",
+  "ly_do": "Tam thức bậc hai hai biến, hệ số x² khác 1, tách hạng tử."
+ },
+ {
+  "ma_cau": "T108000000507",
+  "dang_bai_id": "NDB01370",
+  "chac": "vua",
+  "ly_do": "Lập biểu thức tiền theo x,y rồi thêm ý tối ưu số lượng khác dạng."
+ },
+ {
+  "ma_cau": "T108000000520",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chứng minh số chính phương (kẹp giữa hai số chính phương liên tiếp)."
+ },
+ {
+  "ma_cau": "T108010401045",
+  "dang_bai_id": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Chia đơn thức cho đơn thức nhiều biến."
+ },
+ {
+  "ma_cau": "T108030602061",
+  "dang_bai_id": "NDB00979",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung (3x-2) rồi chia hai trường hợp tìm x."
+ },
+ {
+  "ma_cau": "T108000000519",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chứng minh số học (số chính phương, tích hai số tự nhiên liên tiếp)."
+ },
+ {
+  "ma_cau": "T108000000503",
+  "dang_bai_id": "NDB00981",
+  "chac": "cao",
+  "ly_do": "Khai triển, đưa về tam thức bậc hai hệ số x² khác 1, tách hạng tử để tìm x."
+ },
+ {
+  "ma_cau": "T108020501001",
+  "dang_bai_id": "NDB00691",
+  "chac": "cao",
+  "ly_do": "Phân tích 8x³-27 là hiệu hai lập phương."
+ },
+ {
+  "ma_cau": "T108000000673",
+  "dang_bai_id": "NDB00981",
+  "chac": "vua",
+  "ly_do": "9x²+6x+1=0 là bình phương của một tổng, cũng có thể xếp dạng HĐT (975)."
+ },
+ {
+  "ma_cau": "T108000000760",
+  "dang_bai_id": "NDB00979",
+  "chac": "vua",
+  "ly_do": "Tích ba thừa số bằng 0 đã phân tích sẵn, chia trường hợp; dạng rút nhân tử chung gần nhất."
+ },
+ {
+  "ma_cau": "T108000000233",
+  "dang_bai_id": "NDB01370",
+  "chac": "vua",
+  "ly_do": "Có hình vẽ; lập đa thức chu vi, ý b tìm x rồi tính diện tích vườn."
+ },
+ {
+  "ma_cau": "T108000000371",
+  "dang_bai_id": "NDB00692",
+  "chac": "vua",
+  "ly_do": "Có hình vẽ; S=25²-x² viết thành tích (hiệu hai bình phương), kèm ý lập biểu thức (01370)."
+ },
+ {
+  "ma_cau": "T108030603013",
+  "dang_bai_id": "NDB00980",
+  "chac": "cao",
+  "ly_do": "Nhóm hạng tử 3x(x+2)+4(x+2) rồi chia hai trường hợp tìm x."
+ },
+ {
+  "ma_cau": "T108000000649",
+  "dang_bai_id": "NDB00673",
+  "chac": "vua",
+  "ly_do": "Thu gọn đơn thức rồi tìm bậc, hệ số, phần biến: nhiều ý nhỏ."
+ },
+ {
+  "ma_cau": "T108000000773",
+  "dang_bai_id": "NDB00683",
+  "chac": "vua",
+  "ly_do": "Nhân hai đơn thức, nêu hệ số, bậc rồi tính giá trị tại x,y cho trước."
+ },
+ {
+  "ma_cau": "T108000000677",
+  "dang_bai_id": "NDB01370",
+  "chac": "vua",
+  "ly_do": "Có hình vẽ; viết biểu thức cạnh, diện tích rồi suy ra hằng đẳng thức."
+ },
+ {
+  "ma_cau": "T108020101001",
+  "dang_bai_id": "NDB00688",
+  "chac": "cao",
+  "ly_do": "Khai triển bình phương của một tổng (x+1)²."
+ },
+ {
+  "ma_cau": "T108020701042",
+  "dang_bai_id": "NDB00467",
+  "chac": "cao",
+  "ly_do": "Tính a⁴+b⁴+c⁴ từ a+b+c, ab+bc+ca, abc: dạng mũ 4."
+ },
+ {
+  "ma_cau": "T108000000435",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Xác định đa thức chia hết cho đơn thức nào."
+ },
+ {
+  "ma_cau": "T108000000132",
+  "dang_bai_id": "NDB00672",
+  "chac": "vua",
+  "ly_do": "Nhiều ý: cộng, trừ đa thức, bậc, tính giá trị; chọn cộng trừ đa thức."
+ },
+ {
+  "ma_cau": "T108000000529",
+  "dang_bai_id": "NDB00673",
+  "chac": "vua",
+  "ly_do": "Thu gọn đơn thức rồi tìm hệ số, phần biến, bậc."
+ },
+ {
+  "ma_cau": "T108040501006",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: định lí số dư (P(x) chia cho x-a dư P(a)) tìm hệ số đa thức."
+ },
+ {
+  "ma_cau": "T108000000630",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tìm đa thức dư khi chia cho đa thức bậc hai (định lí số dư)."
+ },
+ {
+  "ma_cau": "T108000000341",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Xác định đa thức chia hết cho đơn thức nào."
+ },
+ {
+  "ma_cau": "T108000000675",
+  "dang_bai_id": "NDB00467",
+  "chac": "vua",
+  "ly_do": "Tính a+b, a-b, a⁴+b⁴ từ a²+b² và ab; nhiều ý, có dạng mũ 4."
+ },
+ {
+  "ma_cau": "T108000000540",
+  "dang_bai_id": "NDB00670",
+  "chac": "vua",
+  "ly_do": "Thu gọn đa thức rồi tìm m để bậc bằng 3; gần dạng bậc của đa thức."
+ },
+ {
+  "ma_cau": "T108000000429",
+  "dang_bai_id": "NDB01370",
+  "chac": "vua",
+  "ly_do": "Biểu thức diện tích thửa ruộng theo x, ý 2 tìm x (bình phương); nhiều dạng."
+ },
+ {
+  "ma_cau": "T108030602067",
+  "dang_bai_id": "NDB00979",
+  "chac": "cao",
+  "ly_do": "Đảo dấu (3-x), rút nhân tử chung (x-3) rồi chia hai trường hợp tìm x."
+ },
+ {
+  "ma_cau": "T108020501033",
+  "dang_bai_id": "NDB00691",
+  "chac": "cao",
+  "ly_do": "Điền thừa số còn lại của x³-8 (hiệu hai lập phương)."
+ },
+ {
+  "ma_cau": "T108050302003",
+  "dang_bai_id": "NDB00983",
+  "chac": "vua",
+  "ly_do": "Đặt ẩn phụ a=1-x, b=2-x rồi phân tích tìm x; cách làm khác mẫu đặt ẩn phụ."
+ },
+ {
+  "ma_cau": "T108000000710",
+  "dang_bai_id": "NDB00673",
+  "chac": "vua",
+  "ly_do": "Thu gọn đơn thức (có luỹ thừa) rồi tìm bậc, hệ số."
+ },
+ {
+  "ma_cau": "T108050203004",
+  "dang_bai_id": "NDB00466",
+  "chac": "vua",
+  "ly_do": "Đẳng thức nghịch đảo có a+b+c=0, gần dạng phân thức nhưng chưa khớp form."
+ },
+ {
+  "ma_cau": "T108010301043",
+  "dang_bai_id": "NDB00673",
+  "chac": "cao",
+  "ly_do": "Nhân ba đơn thức nhiều biến."
+ },
+ {
+  "ma_cau": "T108010101040",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Đếm đơn thức trong các biểu thức cho trước."
+ },
+ {
+  "ma_cau": "T108000000252",
+  "dang_bai_id": "NDB00978",
+  "chac": "vua",
+  "ly_do": "Tích bốn số nguyên liên tiếp +1: ghép cặp, đặt ẩn phụ; dạng đặt ẩn phụ."
+ },
+ {
+  "ma_cau": "T108000000550",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tính số có luỹ thừa cùng cơ số (chia từng số hạng)."
+ },
+ {
+  "ma_cau": "T108000000708",
+  "dang_bai_id": "NDB00673",
+  "chac": "vua",
+  "ly_do": "Thu gọn tích đơn thức rồi tìm bậc, hệ số."
+ },
+ {
+  "ma_cau": "T108020104075",
+  "dang_bai_id": "NDB00693",
+  "chac": "cao",
+  "ly_do": "Tách -2x²+4x+3 thành bình phương, hệ số x² khác 1."
+ },
+ {
+  "ma_cau": "T108020203055",
+  "dang_bai_id": "NDB00698",
+  "chac": "cao",
+  "ly_do": "Tách thành -(x-y-1)²-3(y-2)²+10: bình phương ba số kèm bình phương một biến."
+ },
+ {
+  "ma_cau": "T108000000200",
+  "dang_bai_id": "NDB00672",
+  "chac": "vua",
+  "ly_do": "Nhiều ý: bậc, hệ số, tổng, hiệu đa thức; chọn cộng trừ đa thức."
+ },
+ {
+  "ma_cau": "T108000000624",
+  "dang_bai_id": "NDB00981",
+  "chac": "vua",
+  "ly_do": "Tìm x: khai triển HĐT lập phương, ra tam thức bậc hai; lời giải dùng cách khác."
+ },
+ {
+  "ma_cau": "T108010403001",
+  "dang_bai_id": "NDB00678",
+  "chac": "cao",
+  "ly_do": "Chia đa thức x³-6x²+11x-3 cho x-1 có dư."
+ },
+ {
+  "ma_cau": "T108000000551",
+  "dang_bai_id": "NDB00676",
+  "chac": "vua",
+  "ly_do": "Biểu thức số có luỹ thừa chia cho 2³; không đúng dạng đơn thức, gần chia đơn thức."
+ }
+]

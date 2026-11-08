@@ -1,0 +1,121 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00571",
+   "chu_de": "Di truyền Nhiễm sắc thể",
+   "chuyen_de": "Nguyên phân và giảm phân",
+   "nhom": "Các dạng bài tập tính toán cơ bản về Nguyên phân và giảm phân",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nMột tế bào nguyên phân liên tiếp $k$ lần tạo ra $2^k$ tế bào con.\nTổng số NST đơn có trong các tế bào con: $2n\\cdot 2^k$.\nSố NST mà môi trường nội bào cung cấp cho $k$ lần nguyên phân: $2n\\cdot(2^k-1)$.\n\n##PP 2. Các bước làm bài\nXác định số tế bào ban đầu, số lần nguyên phân $k$ và bộ NST $2n$.\nTính số tế bào con $2^k$.\nTính số NST theo công thức tương ứng rồi đối chiếu đáp án.\n\n##CY 3. Lưu ý\nSố NST môi trường cung cấp là số NST mới được tạo ra, không tính các NST có sẵn trong tế bào ban đầu.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01611",
+     "thu_tu": 1,
+     "ten": "Tính số tế bào con tạo ra sau k lần nguyên phân",
+     "mo_ta": "Đề cho một tế bào sinh dưỡng nguyên phân liên tiếp k lần, hỏi số tế bào con tạo thành.\nLàm bằng cách tính $2^k$.\nLưu ý: đề cho bộ NST 2n và hỏi NST môi trường cung cấp ⇒ thuộc dạng \"Tính số NST môi trường cung cấp cho nguyên phân\".",
+     "ly_thuyet": "##TC Công thức\nSau $k$ lần nguyên phân liên tiếp, 1 tế bào tạo $2^k$ tế bào con.\n\n##PP Cách làm\nXác định số lần nguyên phân $k$.\nTính $2^k$.",
+     "vi_du": "##VD\nMột tế bào sinh dưỡng thực hiện nguyên phân liên tiếp 3 lần. Số tế bào con được tạo thành là bao nhiêu?\nA. 6\nB. 4\nC. 8\nD. 9\n\nBài giải:\nSố tế bào con sau 3 lần nguyên phân là $2^3=8$ tế bào.\nChọn C.\n\n##VD\nMột tế bào sinh dưỡng thực hiện nguyên phân liên tiếp 7 lần. Số tế bào con được tạo thành là bao nhiêu?\nA. 14\nB. 128\nC. 49\nD. 64\n\nBài giải:\nSố tế bào con sau 7 lần nguyên phân là $2^7=128$ tế bào.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01612",
+     "thu_tu": 2,
+     "ten": "Tính số NST môi trường cung cấp cho nguyên phân",
+     "mo_ta": "Đề cho bộ NST 2n của tế bào và số lần nguyên phân k, hỏi số NST mới do môi trường nội bào cung cấp.\nLàm bằng cách áp dụng công thức $2n\\cdot(2^k-1)$.\nLưu ý: đề chỉ hỏi số tế bào con ⇒ thuộc dạng \"Tính số tế bào con tạo ra sau k lần nguyên phân\".",
+     "ly_thuyet": "##TC Công thức\nSau $k$ lần nguyên phân, các tế bào con có tất cả $2n\\cdot 2^k$ NST.\nSố NST môi trường cung cấp bằng tổng số NST đã có trừ đi số NST ban đầu: $2n\\cdot 2^k-2n=2n\\cdot(2^k-1)$.\n\n##PP Cách làm\nXác định $2n$ và $k$.\nTính $2^k-1$.\nNhân với $2n$.\n\n##CY Chú ý\nĐừng tính nhầm thành $2n\\cdot 2^k$ (đã bao gồm cả NST của tế bào ban đầu).",
+     "vi_du": "##VD\nMột tế bào có bộ NST 2n = 8 thực hiện nguyên phân liên tiếp 2 lần. Môi trường nội bào đã cung cấp nguyên liệu để tạo ra bao nhiêu NST mới?\nA. 32\nB. 12\nC. 24\nD. 8\n\nBài giải:\nSố NST môi trường cung cấp: $2n\\cdot(2^k-1)=8\\cdot(2^2-1)=8\\cdot3=24$ NST.\nChọn C.\n\n##VD\nMột tế bào có bộ NST 2n = 4 thực hiện nguyên phân liên tiếp 5 lần. Môi trường nội bào đã cung cấp nguyên liệu để tạo ra bao nhiêu NST mới?\nA. 128\nB. 124\nC. 20\nD. 4\n\nBài giải:\nSố NST môi trường cung cấp: $2n\\cdot(2^k-1)=4\\cdot(2^5-1)=4\\cdot31=124$ NST.\nPhương án 128 là tổng NST trong các tế bào con, chưa trừ NST có sẵn của tế bào ban đầu.\nChọn B."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09000000263",
+   "nhom_id": "KNB00571",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Ở kì giữa của nguyên phân với 2n = 4, tế bào có bao nhiêu NST kép và bao nhiêu chromatid?",
+   "lua_chon": [
+    "8 NST kép, 16 chromatid",
+    "4 NST đơn, 4 chromatid",
+    "4 NST kép, 8 chromatid",
+    "2 NST kép, 4 chromatid"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ở kì giữa nguyên phân, NST vẫn ở dạng kép, số NST kép bằng 2n = 4; mỗi NST kép có 2 chromatid nên tổng 8 chromatid.\n\nVì sao các phương án khác sai:\n- A: Số NST kép vẫn bằng 2n = 4, không nhân đôi thành 8 ở kì giữa.\n- B: Ở kì giữa, NST vẫn ở dạng kép (2 chromatid mỗi NST), chưa tách thành dạng đơn.\n- D: 2 là số NST trong bộ đơn bội n, không phải số NST kép trong tế bào 2n."
+  },
+  {
+   "ma_cau": "K09000000264",
+   "nhom_id": "KNB00571",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Ở kì sau của nguyên phân với 2n = 4, trong tế bào (chưa tách thành hai tế bào con) có tổng bao nhiêu NST đơn?",
+   "lua_chon": [
+    "4",
+    "16",
+    "2",
+    "8"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Ở kì sau, mỗi NST kép tách thành 2 NST đơn; tổng số NST đơn trong tế bào là 2 × 2n = 8, chia đều mỗi cực 4.\n\nVì sao các phương án khác sai:\n- A: 4 chỉ là số NST đơn ở một cực, chưa tính tổng cả hai cực trong tế bào.\n- B: 16 nhiều hơn số NST đơn thực có trong tế bào.\n- C: 2 là số NST trong bộ đơn bội n, không liên quan tới số NST đơn ở kì sau."
+  },
+  {
+   "ma_cau": "K09000000265",
+   "nhom_id": "KNB00571",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Ở kì giữa I của giảm phân với 2n = 6, tế bào có bao nhiêu NST kép và bao nhiêu chromatid?",
+   "lua_chon": [
+    "6 NST kép, 12 chromatid",
+    "3 NST kép, 6 chromatid",
+    "6 NST đơn, 6 chromatid",
+    "12 NST kép, 24 chromatid"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Ở kì giữa I, số NST kép vẫn bằng 2n = 6 (chưa tách cặp tương đồng); mỗi NST kép có 2 chromatid nên tổng 12 chromatid.\n\nVì sao các phương án khác sai:\n- B: 3 là số NST trong bộ đơn bội n, chưa phải số NST kép của tế bào 2n ở kì giữa I.\n- C: Ở kì giữa I, NST vẫn ở dạng kép, chưa tách thành dạng đơn.\n- D: Số NST kép ở kì giữa I vẫn bằng 2n = 6, không nhân đôi."
+  },
+  {
+   "ma_cau": "K09000000266",
+   "nhom_id": "KNB00571",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Ở kì sau II của giảm phân với 2n = 6, trong một tế bào (chưa tách thành hai tế bào con) có tổng bao nhiêu NST đơn?",
+   "lua_chon": [
+    "3",
+    "6",
+    "12",
+    "9"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ở kì sau II, mỗi tế bào bước vào với n = 3 NST kép; mỗi NST kép tách thành 2 NST đơn, tổng số NST đơn trong tế bào là 2 × 3 = 6, chia đều mỗi cực 3.\n\nVì sao các phương án khác sai:\n- A: 3 chỉ là số NST đơn ở một cực, chưa tính tổng cả tế bào.\n- C: 12 nhiều hơn số NST đơn thực có trong tế bào ở kì sau II.\n- D: 9 không khớp với số NST đơn thực tế ở kì sau II."
+  },
+  {
+   "ma_cau": "K09000000267",
+   "nhom_id": "KNB00571",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Ở kì sau I của giảm phân với 2n = 6, tế bào (chưa tách thành hai tế bào con) có bao nhiêu NST kép?",
+   "lua_chon": [
+    "12 NST kép",
+    "3 NST kép",
+    "6 NST kép",
+    "6 NST đơn"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ở kì sau I, các NST kép trong từng cặp tương đồng tách nhau (không tách chromatid) di chuyển về hai cực; tổng số NST kép trong tế bào vẫn là 2n = 6.\n\nVì sao các phương án khác sai:\n- A: 12 tính nhầm khi nhân đôi số NST kép, không đúng với giảm phân I.\n- B: 3 là bộ đơn bội, nhưng ở kì sau I, cả tế bào vẫn có 6 NST kép.\n- D: Ở kì sau I, NST vẫn ở dạng kép (2 chromatid dính nhau), chưa tách thành NST đơn (điều đó chỉ xảy ra ở kì sau II)."
+  },
+  {
+   "ma_cau": "K09000000268",
+   "nhom_id": "KNB00571",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Ở kì cuối II của giảm phân với 2n = 6, mỗi tế bào con tạo thành có bao nhiêu NST đơn?",
+   "lua_chon": [
+    "6 NST đơn",
+    "3 NST kép",
+    "6 NST kép",
+    "3 NST đơn"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mỗi tế bào con sau giảm phân II mang bộ NST đơn bội ở dạng đơn: n = 2n:2 = 6:2 = 3 NST đơn.\n\nVì sao các phương án khác sai:\n- A: 6 là bộ NST lưỡng bội (2n), tế bào con sau giảm phân II chỉ có bộ đơn bội (n) = 3.\n- B: Sau kì sau II, các NST đã tách chromatid thành NST đơn, không còn ở dạng kép.\n- C: Tế bào con sau giảm phân II có bộ NST đơn bội (n=3) ở dạng đơn, không phải kép và không phải 2n."
+  }
+ ]
+}

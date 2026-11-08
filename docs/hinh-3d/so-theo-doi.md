@@ -17,15 +17,15 @@ Trang đang chạy: **https://toan.bkacademy.edu.vn/the-tich/** (deploy tay — 
 
 | id | Nguồn · câu | Tên mô hình | Loại | Địa chỉ (sau `https://toan.bkacademy.edu.vn/the-tich/`) | Đáp số | Dựng | Thùy xem | Mã câu trong kho |
 |---|---|---|---|---|---|---|---|---|
-| 43 | NBV-12-18-F · câu 43 | Cốc nước nghiêng | thiết diện | `coc-nghieng.html` | 240 cm³ | 10/10/2026 | ok 10/10 (thêm luật A3) | |
+| 43 | NBV-12-18-F · câu 43 | Cốc nước nghiêng | thiết diện | `coc-nghieng.html` | 240 cm³ | 10/10/2026 | ok 10/10 (thêm luật A3) | T1120000001262 (bản đề Đông Đô, cùng số liệu — NBV F câu 43 chưa có trong kho; khớp 18/10) |
 | 48 | NBV-12-18-F · câu 48 | Miền vắt qua trục quay | tròn xoay | `tron-xoay.html?bai=48` | 836π/15 | 10/10/2026 | bản 7 bước: bắt bỏ cắt lát (A4); bản 5 bước trong trang chuyên đề: chưa xem | |
 | 49 | NBV-12-18-F · câu 49 | Hai đường ở hai phía trục | tròn xoay | `tron-xoay.html?bai=49` | 21π/5 | 10/10/2026 | chưa xem | |
 | 50 | NBV-12-18-F · câu 50 | Thùng rượu đường sinh elip | tròn xoay · bài thực tế | `tron-xoay.html?bai=50` | 1416π/25 ≈ 177,9 lít | 10/10/2026 | chưa xem | |
 | 52 | NBV-12-18-F · câu 52 | Thùng rượu đường sinh parabol | tròn xoay · bài thực tế | `tron-xoay.html?bai=52` | 656π/3 ≈ 686,96 lít/thùng · M = 144 262 (nguồn ghi 144 270 — sai do làm tròn sớm) | 10/10/2026 | chưa xem | |
 | 45 | NBV-12-18-F · câu 45 | Mũ ông già Noel | tròn xoay quanh Oy · đề cho mặt cắt | `tron-xoay.html?bai=45` | 2500π/3 ≈ 2618 cm³ | 10/10/2026 | chưa xem | |
 | 46 | NBV-12-18-F · câu 46 | Bông hoa bốn cánh (hình vuông + bốn nửa đường tròn) | tròn xoay quanh Oy · có lỗ | `tron-xoay.html?bai=46` | 32π/3 + 4π² ≈ 72,99 | 10/10/2026 | chưa xem | |
-| 47 | NBV-12-18-F · câu 47 | Giao của hai khối trụ | thiết diện (lát hình vuông) | `giao-hai-tru.html` | 2a³/3 | 10/10/2026 | chưa xem | |
-| 44 | NBV-12-18-F · câu 44 | Mái vòm sân vận động | thiết diện (lát viên phân) | `mai-vom.html` | 2(π − 2)/3 · ab² = (π − 2)·101 250 ≈ 115 586 m³ | 10/10/2026 | chưa xem | |
+| 47 | NBV-12-18-F · câu 47 | Giao của hai khối trụ | thiết diện (lát hình vuông) | `giao-hai-tru.html` | 2a³/3 | 10/10/2026 | chưa xem | T1120000002743 (khớp 18/10) |
+| 44 | NBV-12-18-F · câu 44 | Mái vòm sân vận động | thiết diện (lát viên phân) | `mai-vom.html` | 2(π − 2)/3 · ab² = (π − 2)·101 250 ≈ 115 586 m³ | 10/10/2026 | chưa xem | T1120000002741 (khớp 18/10) |
 | 53 | NBV-12-18-F · câu 53 | Trụ bị mặt phẳng nghiêng cắt | diện tích mặt cắt | `tru-cat-nghieng.html` | (4π/3 + √3/2)R² ≈ 5,05R² (nguồn: Cách 1 sai, đề in nhầm AB = a√3) | 10/10/2026 | chưa xem | |
 
 Thêm `&nhung=1` vào địa chỉ trang chuyên đề để nhúng cạnh bài giải (không có nút / bảng chọn bài).

@@ -1,0 +1,1376 @@
+{
+ "dang_moi": [
+  {
+   "ten": "Viết phương trình mặt phẳng theo đoạn chắn khi biết điều kiện giữa OA, OB, OC (tỉ lệ, trọng tâm, thể tích…)",
+   "nhom_dat": "Viết phương trình mặt phẳng - đường thẳng - mặt cầu khi biết quan hệ hình học",
+   "dat_sau": "NDB00851",
+   "thu_tu_trong_nhom": 1,
+   "muc_do": 3,
+   "mo_ta": "Đề cho mặt phẳng (P) cắt các trục (hay các tia) Ox, Oy, Oz tại A, B, C kèm điều kiện: đi qua điểm M, G là trọng tâm tam giác ABC, OA=2OB=4OC, OA=OB=OC, OA-OB-OC lập cấp số nhân, thể tích OABC cho trước, (P) song song hay vuông góc mặt phẳng khác; hỏi phương trình (P) hoặc một đại lượng suy ra (a+b+c, hệ số, khoảng cách từ O). Việc làm: đặt A(a;0;0), B(0;b;0), C(0;0;c), viết x/a+y/b+z/c=1, dịch điều kiện thành hệ phương trình theo a, b, c rồi giải. Ranh giới: NDB02598 là bài TỐI ƯU (thể tích, diện tích nhỏ nhất) khi (P) qua điểm cố định bằng AM-GM/Bunhia; dạng này chỉ GIẢI HỆ điều kiện có sẵn.",
+   "ly_thuyet": "##TC Mặt phẳng theo đoạn chắn\n• Mặt phẳng cắt $Ox,Oy,Oz$ tại $A(a;0;0)$, $B(0;b;0)$, $C(0;0;c)$ ($abc\\ne0$) có phương trình đoạn chắn $\\dfrac{x}{a}+\\dfrac{y}{b}+\\dfrac{z}{c}=1$, vectơ pháp tuyến $\\left(\\dfrac1a;\\dfrac1b;\\dfrac1c\\right)$.\n• $OA=|a|$, $OB=|b|$, $OC=|c|$. \"Cắt các tia\" nghĩa là $a,b,c>0$; \"cắt các trục\" thì $a,b,c$ có thể âm.\n• Trọng tâm tam giác $ABC$ là $G\\left(\\dfrac a3;\\dfrac b3;\\dfrac c3\\right)$; thể tích $V_{OABC}=\\dfrac{|abc|}{6}$; $\\dfrac1{d^2(O,(ABC))}=\\dfrac1{a^2}+\\dfrac1{b^2}+\\dfrac1{c^2}$.\n• Điểm $M(m;n;p)\\in(ABC)$ khi và chỉ khi $\\dfrac ma+\\dfrac nb+\\dfrac pc=1$.\n\n##PP Viết phương trình mặt phẳng theo đoạn chắn\nĐặt $A(a;0;0)$, $B(0;b;0)$, $C(0;0;c)$ và viết $(P):\\dfrac xa+\\dfrac yb+\\dfrac zc=1$.\nDịch điều kiện đề thành phương trình theo $a,b,c$: tỉ lệ ($OA=2OB=4OC$ cho $a=2b=4c$), trọng tâm (đồng nhất toạ độ), thể tích ($|abc|=6V$), đi qua điểm (thay toạ độ điểm vào phương trình đoạn chắn).\nGiải hệ, đối chiếu dấu ($a,b,c>0$ nếu đề nói \"cắt các tia\"), loại nghiệm không thoả.\nViết $(P)$ (quy đồng về $Ax+By+Cz+D=0$ nếu đề yêu cầu) hoặc tính đại lượng đề hỏi.\n\n##CY\n• Chuỗi $OA=2OB=4OC$ nghĩa là $OA=2OB$ và $2OB=4OC$, nên $a:b:c=4:2:1$.\n• Mặt phẳng không cắt đủ ba trục (đi qua gốc, song song một trục) không có phương trình đoạn chắn đủ ba hệ số.\n• Đề cho $(P)$ đi qua hai điểm và cắt hai trục (vd. $OM=2ON$): viết $Ax+By+Cz+D=0$ rồi đặt điều kiện giao điểm với trục.\n• \"Cắt các trục\" (không phải tia) thì xét thêm các trường hợp dấu, vd. $OM=ON$ cho $|a|=|b|$, hai họ mặt phẳng.",
+   "vi_du": "##VD\nTrong không gian $Oxyz$, mặt phẳng $(P)$ đi qua $M(2;4;8)$ và cắt các tia $Ox,Oy,Oz$ lần lượt tại $A(a;0;0)$, $B(0;b;0)$, $C(0;0;c)$ sao cho $OA=2OB=4OC$. Tính $T=a+b+c$.\n\nBài giải:\nVì $(P)$ cắt các tia nên $a,b,c>0$, và $OA=2OB=4OC$ cho $a=2b=4c$, tức $b=\\dfrac a2$, $c=\\dfrac a4$.\nPhương trình $(P):\\dfrac xa+\\dfrac yb+\\dfrac zc=1$ đi qua $M(2;4;8)$ nên $\\dfrac2a+\\dfrac4b+\\dfrac8c=1$.\nThay $b,c$: $\\dfrac2a+\\dfrac8a+\\dfrac{32}a=1$, suy ra $a=42$.\nDo đó $b=21$, $c=\\dfrac{21}{2}$ và $T=42+21+\\dfrac{21}2=\\dfrac{147}2$.\nVậy $T=73{,}5$.\n\n##VD\nTrong không gian $Oxyz$, mặt phẳng $(P)$ cắt các trục $Ox,Oy,Oz$ lần lượt tại $A,B,C$ sao cho $G(1;-1;-2)$ là trọng tâm tam giác $ABC$. Viết phương trình $(P)$.\n\nBài giải:\nGọi $A(a;0;0)$, $B(0;b;0)$, $C(0;0;c)$ thì trọng tâm $G\\left(\\dfrac a3;\\dfrac b3;\\dfrac c3\\right)=(1;-1;-2)$.\nSuy ra $a=3$, $b=-3$, $c=-6$.\nPhương trình đoạn chắn $(P):\\dfrac x3+\\dfrac y{-3}+\\dfrac z{-6}=1$.\nNhân hai vế với $6$: $2x-2y-z=6$.\nVậy $(P):2x-2y-z-6=0$.",
+   "dang_gan_nhat": "NDB02598 — không nhét được vì đó là bài tối ưu (thể tích, diện tích nhỏ nhất) có điểm cố định; NDB00851 — không nhét được vì mặt phẳng ở đây được xác định bởi tỉ lệ/trọng tâm/thể tích các đoạn chắn, không phải bởi hai quan hệ song song–vuông góc.",
+   "ma_cau": [
+    "T3120000001556",
+    "T3120000001612",
+    "T312010103003",
+    "T312010107077",
+    "T312010107052",
+    "T312010103002",
+    "T312010107007",
+    "T312010107047",
+    "T312010103004",
+    "T312010107056",
+    "T312010103040",
+    "T312010107017",
+    "T312010107055",
+    "T312010107013",
+    "T312010103031",
+    "T312010107053",
+    "T312010107032"
+   ],
+   "cau_tieu_bieu": [
+    "T3120000001556",
+    "T312010103040",
+    "T312010107052"
+   ]
+  },
+  {
+   "ten": "Tìm điểm thuộc mặt phẳng hoặc đường thẳng thoả điều kiện về khoảng cách (cách đều các điểm, hệ thức tích vô hướng)",
+   "nhom_dat": "NHÓM MỚI: Tìm điểm đặc biệt trong không gian",
+   "dat_sau": "NDB00881",
+   "thu_tu_trong_nhom": 1,
+   "muc_do": 3,
+   "mo_ta": "Đề cho điểm M(a;b;c) phải thoả đồng thời vài điều kiện: thuộc mặt phẳng hay đường thẳng cho trước, cách đều hai hoặc ba điểm, cách một điểm khoảng cho trước, hay thoả hệ thức tích vô hướng giữa NA, NB, NC (trụ đèn, trạm phát sóng, thiết bị định vị); hỏi toạ độ M hoặc a+b+c. Việc làm: mỗi điều kiện thành một phương trình, lấy hiệu hai bình phương khoảng cách (hoặc hai tích vô hướng) để khử bậc hai, giải hệ bậc nhất ba ẩn. Ranh giới: NDB00850 chỉ VIẾT mặt phẳng trung trực; NDB02555 (bảng Đại, vectơ) chỉ tìm điểm trên trục/mặt phẳng toạ độ; dạng này phối hợp mặt phẳng bất kì với nhiều điều kiện cách đều.",
+   "ly_thuyet": "##TC Điểm cách đều và điểm thoả hệ thức khoảng cách\n• $MA=MB$ khi và chỉ khi $M$ thuộc mặt phẳng trung trực của $AB$: $2\\overrightarrow{AB}\\cdot\\overrightarrow{OM}=OB^2-OA^2$ (bậc nhất, đã khử $x^2+y^2+z^2$).\n• Điểm cách đều ba điểm $A,B,C$ không thẳng hàng nằm trên đường thẳng đi qua tâm đường tròn ngoại tiếp tam giác $ABC$ và vuông góc với $(ABC)$.\n• Hệ thức $\\overrightarrow{NA}\\cdot\\overrightarrow{NB}=k$ khai triển được thành phương trình bậc hai có chung $x^2+y^2+z^2$; lấy hiệu hai hệ thức như vậy được mặt phẳng.\n• Ba phương trình bậc nhất độc lập, ba ẩn, cho đúng một điểm.\n\n##PP Tìm điểm thoả nhiều điều kiện\nGọi $M(a;b;c)$ rồi viết từng điều kiện bằng toạ độ.\nLập hiệu hai bình phương khoảng cách (hoặc hai tích vô hướng) để khử $a^2+b^2+c^2$ được các phương trình bậc nhất; điều kiện thuộc mặt phẳng, đường thẳng cho thêm một phương trình hoặc tham số hoá $M$.\nGiải hệ bằng phép thế hoặc định thức, tính đại lượng đề hỏi.\nThử lại: thay $M$ vào từng điều kiện ban đầu.\n\n##CY\n• Chỉ khử được bậc hai khi hai vế có cùng hệ số của $a^2+b^2+c^2$; nếu còn một phương trình bậc hai thì thế nghiệm bậc nhất vào để giải.\n• Hệ vô số nghiệm (ba mặt phẳng cùng chứa một đường thẳng) thường đi kèm điều kiện \"gần nhất\": chọn điểm trên đường thẳng gần nhất theo yêu cầu.\n• Bài thực tế (trụ đèn cách đều hai tượng, thiết bị cách đều ba trạm): đọc đúng đơn vị trục rồi mới thay số.",
+   "vi_du": "##VD\nTrong không gian $Oxyz$ cho $A(4;2;3)$, $B(1;5;3)$, $C(1;2;6)$ và mặt phẳng $(P):x+y+z-6=0$. Tìm toạ độ điểm $M\\in(P)$ cách đều ba điểm $A,B,C$.\n\nBài giải:\nGọi $M(x;y;z)$. Từ $MA^2=MB^2$: $(x-4)^2+(y-2)^2=(x-1)^2+(y-5)^2$, rút gọn được $-6x+6y-6=0$, tức $y=x+1$.\nTừ $MA^2=MC^2$: $(x-4)^2+(z-3)^2=(x-1)^2+(z-6)^2$, rút gọn được $-6x+6z-12=0$, tức $z=x+2$.\nVì $M\\in(P)$ nên $x+(x+1)+(x+2)-6=0$, suy ra $x=1$, $y=2$, $z=3$.\nKiểm tra: $MA^2=(1-4)^2=9$, $MB^2=(2-5)^2=9$, $MC^2=(3-6)^2=9$.\nVậy $M(1;2;3)$.",
+   "dang_gan_nhat": "NDB00850 — không nhét được vì chỉ viết mặt phẳng trung trực của MỘT đoạn, không phải tìm điểm thoả nhiều điều kiện; NDB02555 (bảng Đại) — chỉ tìm điểm trên trục/mặt phẳng toạ độ và nằm ở nhánh vectơ.",
+   "ma_cau": [
+    "T312010107078",
+    "T312010309015",
+    "T312000000123",
+    "T312000000223"
+   ],
+   "cau_tieu_bieu": [
+    "T312010107078",
+    "T312000000123",
+    "T312000000223"
+   ]
+  },
+  {
+   "ten": "Tìm hình chiếu vuông góc của điểm lên đường thẳng, điểm đối xứng qua đường thẳng",
+   "nhom_dat": "NHÓM MỚI: Tìm điểm đặc biệt trong không gian",
+   "dat_sau": "NDB00881",
+   "thu_tu_trong_nhom": 2,
+   "muc_do": 2,
+   "mo_ta": "Đề cho điểm A và đường thẳng d, hỏi toạ độ hình chiếu vuông góc H của A trên d, vectơ chỉ phương của đường thẳng AH, tổng a+b+c của H, hoặc điểm đối xứng A' của A qua d. Việc làm: tham số hoá H trên d rồi dùng AH⊥u_d để tìm tham số. Ranh giới: NDB00861 chỉ cần độ dài AH (có công thức |[AM0,u]|/|u|), không cần toạ độ H; NDB00873 là chân đường vuông góc/đối xứng qua MẶT PHẲNG; dạng này tìm toạ độ chân đường vuông góc trên ĐƯỜNG THẲNG.",
+   "ly_thuyet": "##TC Hình chiếu của điểm lên đường thẳng\n• Hình chiếu vuông góc của $A$ trên đường thẳng $d$ (qua $M_0$, vectơ chỉ phương $\\vec u$) là điểm $H\\in d$ thoả $\\overrightarrow{AH}\\cdot\\vec u=0$.\n• Nếu $H=M_0+t\\vec u$ thì $t=\\dfrac{\\overrightarrow{M_0A}\\cdot\\vec u}{|\\vec u|^2}$.\n• Điểm đối xứng của $A$ qua $d$ là $A'=2H-A$ ($H$ là trung điểm $AA'$).\n• Khoảng cách từ $A$ đến $d$ bằng độ dài $AH$.\n\n##PP Tìm hình chiếu của điểm lên đường thẳng\nViết $d$ dạng tham số và gọi $H(x_0+at;y_0+bt;z_0+ct)$.\nLập $\\overrightarrow{AH}$ theo $t$, giải $\\overrightarrow{AH}\\cdot\\vec u=0$ để tìm $t$.\nThay $t$ tìm $H$; suy ra $\\overrightarrow{AH}$, tổng toạ độ, độ dài $AH$ hoặc $A'=2H-A$ theo đề.\n\n##CY\n• Không nhầm với hình chiếu lên mặt phẳng: ở đó dùng đường thẳng qua $A$ vuông góc với mặt phẳng.\n• Kiểm tra lại $\\overrightarrow{AH}\\cdot\\vec u=0$ sau khi tìm $H$.\n• Vectơ chỉ phương của $AH$ có vô số cách chọn (cùng phương); đọc kĩ yêu cầu như \"toạ độ nguyên\" trước khi tính tổng.",
+   "vi_du": "##VD\nTrong không gian $Oxyz$ cho $A(1;1;-1)$ và đường thẳng $d:\\dfrac{x-4}{2}=\\dfrac{y-4}{2}=\\dfrac{z-2}{-1}$. a) Gọi $H(a;b;c)$ là hình chiếu vuông góc của $A$ trên $d$. Tính $a+b+c$. b) Tìm toạ độ điểm $A'$ đối xứng với $A$ qua $d$.\n\nBài giải:\na) Điểm $H\\in d$ nên $H(4+2t;4+2t;2-t)$, suy ra $\\overrightarrow{AH}=(3+2t;3+2t;3-t)$.\nVì $\\overrightarrow{AH}\\perp\\vec u=(2;2;-1)$ nên $2(3+2t)+2(3+2t)-(3-t)=0$, tức $9+9t=0$, $t=-1$.\nVậy $H(2;2;3)$ và $a+b+c=7$.\nb) $H$ là trung điểm của $AA'$ nên $A'=2H-A=(4-1;4-1;6+1)=(3;3;7)$.\n\n##VD\nTrong không gian $Oxyz$ cho $A(0;2;-4)$ và đường thẳng $d_1:\\dfrac{x-2}{1}=\\dfrac{y-1}{-1}=\\dfrac{z+1}{2}$. Gọi $H$ là hình chiếu của $A$ trên $d_1$, đường thẳng $AH$ có một vectơ chỉ phương $\\vec u=(a;b;c)$ với $a,b,c\\in\\mathbb Z$. Tính $2a-b+c$.\n\nBài giải:\nĐiểm $H\\in d_1$ nên $H(2+t;1-t;-1+2t)$, suy ra $\\overrightarrow{AH}=(2+t;-1-t;3+2t)$.\nĐiều kiện $\\overrightarrow{AH}\\cdot\\vec u_{d_1}=0$ với $\\vec u_{d_1}=(1;-1;2)$: $(2+t)+(1+t)+2(3+2t)=0$, tức $9+6t=0$, $t=-\\dfrac32$.\nDo đó $\\overrightarrow{AH}=\\left(\\dfrac12;\\dfrac12;0\\right)$, chọn vectơ chỉ phương nguyên $\\vec u=(1;1;0)$.\nVậy $2a-b+c=2-1+0=1$.",
+   "dang_gan_nhat": "NDB00861 — không nhét được vì dạng đó chỉ tính độ dài khoảng cách, không đòi toạ độ chân đường vuông góc; NDB00873 — không nhét được vì làm với mặt phẳng, còn đây là đường thẳng.",
+   "ma_cau": [
+    "T312010202011",
+    "T312010201110"
+   ],
+   "cau_tieu_bieu": [
+    "T312010202011",
+    "T312010201110"
+   ]
+  },
+  {
+   "ten": "Đường tròn đi qua ba điểm: tìm tâm, bán kính, độ dài cung",
+   "nhom_dat": "NHÓM MỚI: Tìm điểm đặc biệt trong không gian",
+   "dat_sau": "NDB00881",
+   "thu_tu_trong_nhom": 3,
+   "muc_do": 3,
+   "mo_ta": "Đề cho ba điểm A, B, C không thẳng hàng (máng trượt công viên nước, quỹ đạo chim bói cá, vị trí lắp trạm cách đều ba khu vực) và hỏi tâm I của đường tròn qua ba điểm, bán kính, độ dài cung đi qua cả ba điểm, hoặc điểm cách đều A, B, C mà gần chúng nhất. Việc làm: tìm I từ IA=IB=IC và I∈(ABC), rồi R=IA và góc ở tâm. Ranh giới: NDB00856 (mặt cầu qua 4 điểm) có tâm ngoài mặt phẳng ABC; ở đây tâm thuộc (ABC), hỏi cung/đường tròn chứ không hỏi mặt cầu; nhóm B chỉ tìm điểm cách đều khi còn thêm điều kiện khác.",
+   "ly_thuyet": "##TC Đường tròn qua ba điểm trong không gian\n• Tâm $I$ của đường tròn ngoại tiếp tam giác $ABC$ là điểm duy nhất thoả $IA=IB=IC$ và $I\\in(ABC)$.\n• Hệ để tìm $I$: $2\\overrightarrow{AB}\\cdot\\overrightarrow{OI}=OB^2-OA^2$, $2\\overrightarrow{AC}\\cdot\\overrightarrow{OI}=OC^2-OA^2$ và $\\vec n\\cdot\\overrightarrow{AI}=0$ với $\\vec n=[\\overrightarrow{AB},\\overrightarrow{AC}]$.\n• Bán kính $R=IA$; góc ở tâm $\\theta=\\widehat{AIC}$ ($0\\le\\theta\\le\\pi$) có $\\cos\\theta=\\dfrac{\\overrightarrow{IA}\\cdot\\overrightarrow{IC}}{R^2}$.\n• Cung nhỏ $\\overset\\frown{AC}$ dài $R\\theta$ (radian); cung lớn dài $R(2\\pi-\\theta)$. Điểm cách đều $A,B,C$ nằm trên đường thẳng qua $I$ vuông góc $(ABC)$ và gần ba điểm nhất khi trùng $I$.\n\n##PP Tìm tâm và độ dài cung\nViết ba phương trình tuyến tính cho $I$: hai phương trình từ $IA=IB$, $IA=IC$ và phương trình mặt phẳng $(ABC)$; giải hệ.\nTính $R=IA$ và các góc ở tâm $\\widehat{AIB}$, $\\widehat{BIC}$, $\\widehat{AIC}$ bằng tích vô hướng.\nXác định cung đi qua cả ba điểm: nếu $\\widehat{AIB}+\\widehat{BIC}=\\widehat{AIC}$ thì $B$ nằm trên cung nhỏ $AC$, ngược lại cung đi qua $B$ là cung lớn.\nĐộ dài cung $=R\\cdot$ (góc ở tâm tính bằng radian); đổi đơn vị trục nếu cần.\n\n##CY\n• Nếu tam giác $ABC$ đều thì $I$ là trọng tâm, không cần giải hệ.\n• Điểm cách đều ba điểm mà \"gần nhất\" chính là $I$ (các điểm cách đều khác nằm trên trục đường tròn).\n• Ghi nhớ đổi radian: $\\theta$ độ nhân $\\dfrac{\\pi}{180}$.",
+   "vi_du": "##VD\nTrong không gian $Oxyz$ cho $A(5;-1;-1)$, $B(-1;5;-1)$, $C(-1;-1;5)$. a) Tìm điểm $D$ cách đều $A,B,C$ và gần ba điểm đó nhất. b) Một máng trượt có dạng cung tròn đi từ $A$ qua $B$ đến $C$ (đơn vị trục là mét). Tính độ dài máng trượt.\n\nBài giải:\na) Gọi $D(x;y;z)$. Từ $DA=DB$ có $2\\overrightarrow{AB}\\cdot\\overrightarrow{OD}=OB^2-OA^2$ với $\\overrightarrow{AB}=(-6;6;0)$ và $OA^2=OB^2=27$ nên $-12x+12y=0$, tức $x=y$.\nTương tự $DA=DC$ với $\\overrightarrow{AC}=(-6;0;6)$ cho $x=z$.\nVectơ pháp tuyến của $(ABC)$ là $[\\overrightarrow{AB},\\overrightarrow{AC}]=(36;36;36)$ nên $(ABC):x+y+z-3=0$.\nTừ $x=y=z$ và $x+y+z=3$ suy ra $x=y=z=1$. Vậy $D(1;1;1)$, chính là tâm đường tròn ngoại tiếp.\nb) Bán kính $R=DA=\\sqrt{4^2+2^2+2^2}=2\\sqrt6$.\nTa có $\\overrightarrow{DA}=(4;-2;-2)$, $\\overrightarrow{DB}=(-2;4;-2)$, $\\overrightarrow{DC}=(-2;-2;4)$, tích vô hướng của hai vectơ bất kì trong ba vectơ này bằng $-12$ nên $\\cos\\theta=\\dfrac{-12}{24}=-\\dfrac12$, mỗi góc ở tâm là $120^\\circ$.\nVì $\\widehat{ADB}+\\widehat{BDC}=240^\\circ\\ne\\widehat{ADC}=120^\\circ$ nên cung đi qua $B$ là cung lớn $AC$ ứng với góc ở tâm $240^\\circ=\\dfrac{4\\pi}3$.\nĐộ dài máng trượt $=2\\sqrt6\\cdot\\dfrac{4\\pi}3=\\dfrac{8\\sqrt6\\pi}3\\approx20{,}52$ (m).",
+   "dang_gan_nhat": "NDB00856 — không nhét được vì tâm mặt cầu qua 4 điểm không nằm trong (ABC), còn ở đây tâm thuộc mặt phẳng và bài hỏi cung/đường tròn; nhóm B (tìm điểm thoả nhiều điều kiện) — không đủ vì cần cả bán kính và độ dài cung.",
+   "ma_cau": [
+    "T312010309010",
+    "T312000000066",
+    "T312000000188"
+   ],
+   "cau_tieu_bieu": [
+    "T312010309010",
+    "T312000000066",
+    "T312000000188"
+   ]
+  },
+  {
+   "ten": "Viết phương trình hình chiếu của đường thẳng lên mặt phẳng, đường thẳng đối xứng qua mặt phẳng",
+   "nhom_dat": "Ví trí tương đối giữa đường thẳng và mặt phẳng",
+   "dat_sau": "NDB00873",
+   "thu_tu_trong_nhom": 1,
+   "muc_do": 3,
+   "mo_ta": "Đề cho đường thẳng d và mặt phẳng (P) (có thể là mặt phẳng toạ độ), hỏi phương trình của d' là hình chiếu vuông góc của d lên (P), hoặc đường thẳng đối xứng với d qua (P) (hay mặt phẳng đối xứng của hai đường thẳng). Việc làm: mặt phẳng (Q) chứa d và vuông góc (P) có pháp tuyến [u_d,n_P], d'=(P)∩(Q); hoặc hình chiếu hai điểm của d. Ranh giới: NDB00873 chỉ làm với một ĐIỂM; ở đây phải dựng cả đường thẳng; d vuông góc (P) thì hình chiếu suy biến thành một điểm.",
+   "ly_thuyet": "##TC Hình chiếu và đối xứng của đường thẳng qua mặt phẳng\n• Hình chiếu vuông góc của $d$ lên $(P)$ là giao tuyến $d'=(P)\\cap(Q)$, với $(Q)$ là mặt phẳng chứa $d$ và vuông góc với $(P)$: $\\vec n_Q=[\\vec u_d,\\vec n_P]$.\n• Vectơ chỉ phương của $d'$: $\\vec u'=\\vec u_d-\\dfrac{\\vec u_d\\cdot\\vec n_P}{|\\vec n_P|^2}\\vec n_P$ (bỏ thành phần theo $\\vec n_P$).\n• Hình chiếu của điểm $A$ lên $(P):Ax+By+Cz+D=0$ là $A'=A-\\dfrac{f(A)}{|\\vec n_P|^2}\\vec n_P$ với $f(X)=Ax+By+Cz+D$; điểm đối xứng của $A$ qua $(P)$ là $A-\\dfrac{2f(A)}{|\\vec n_P|^2}\\vec n_P$.\n• Đường thẳng đối xứng với $d$ qua $(P)$: lấy đối xứng hai điểm của $d$ (hoặc giao điểm $d\\cap(P)$ và một điểm đối xứng).\n\n##PP Viết phương trình hình chiếu của đường thẳng\nLấy một điểm $A\\in d$ và vectơ chỉ phương $\\vec u_d$.\nTính hình chiếu $A'$ của $A$ lên $(P)$ và $\\vec u'=\\vec u_d-\\dfrac{\\vec u_d\\cdot\\vec n_P}{|\\vec n_P|^2}\\vec n_P$.\nViết $d'$ đi qua $A'$ với vectơ chỉ phương $\\vec u'$ (hoặc $d'=(P)\\cap(Q)$).\nVới đường thẳng đối xứng, thay hình chiếu bằng điểm đối xứng của hai điểm của $d$.\n\n##CY\n• Nếu $\\vec u_d\\parallel\\vec n_P$ thì hình chiếu của $d$ là một điểm, không phải đường thẳng.\n• Với mặt phẳng toạ độ chỉ cần \"bỏ\" toạ độ tương ứng: hình chiếu lên $(Oxy)$ cho $z=0$ và giữ $x,y$.\n• Kiểm tra: $A'\\in(P)$ và $\\vec u'\\cdot\\vec n_P=0$.\n• Đề có thể hỏi riêng một hệ số của $\\vec u'$: chú ý chọn tỉ lệ vectơ chỉ phương theo yêu cầu.",
+   "vi_du": "##VD\nTrong không gian $Oxyz$, viết phương trình hình chiếu vuông góc của đường thẳng $d:\\dfrac{x+2}{1}=\\dfrac{y-1}{1}=\\dfrac{z-2}{2}$ lên mặt phẳng $(Oxy)$.\n\nBài giải:\nMặt phẳng $(Oxy)$ có phương trình $z=0$. Điểm $M(-2;1;2)\\in d$ có hình chiếu $M'(-2;1;0)$.\nVectơ chỉ phương của $d$ là $\\vec u_d=(1;1;2)$; bỏ thành phần theo $Oz$ được vectơ chỉ phương của hình chiếu $\\vec u'=(1;1;0)$.\nVậy hình chiếu là đường thẳng $\\begin{cases}x=-2+t\\\\y=1+t\\\\z=0.\\end{cases}$\n\n##VD\nTrong không gian $Oxyz$ cho điểm $A(-1;3;-2)$ và các mặt phẳng $(P):2x-y+z+3=0$, $(Q):x-2y-1=0$. Gọi $d$ là đường thẳng đi qua $A$ và vuông góc với $(Q)$. Viết phương trình đường thẳng $d'$ là hình chiếu vuông góc của $d$ lên $(P)$.\n\nBài giải:\nĐường thẳng $d$ có vectơ chỉ phương $\\vec u_d=\\vec n_Q=(1;-2;0)$; mặt phẳng $(P)$ có $\\vec n_P=(2;-1;1)$, $|\\vec n_P|^2=6$.\n$\\vec u_d\\cdot\\vec n_P=2+2+0=4$ nên $\\vec u'=\\vec u_d-\\dfrac46\\vec n_P=\\left(-\\dfrac13;-\\dfrac43;-\\dfrac23\\right)$, chọn $\\vec u'=(1;4;2)$.\nVới $f(x;y;z)=2x-y+z+3$ có $f(A)=-2-3-2+3=-4$, hình chiếu của $A$ lên $(P)$ là $A'=A+\\dfrac46\\vec n_P=\\left(\\dfrac13;\\dfrac73;-\\dfrac43\\right)$.\nVậy $d':\\begin{cases}x=\\dfrac13+t\\\\y=\\dfrac73+4t\\\\z=-\\dfrac43+2t.\\end{cases}$",
+   "dang_gan_nhat": "NDB00873 — không nhét được vì chỉ tìm chân đường vuông góc và điểm đối xứng của MỘT ĐIỂM qua mặt phẳng; NDB00852/NDB00853 — chỉ viết đường thẳng khi đã biết quan hệ, còn đây phải dựng hình chiếu từ d.",
+   "ma_cau": [
+    "T312010202024",
+    "T312010202023",
+    "T312010202022",
+    "T312010107079"
+   ],
+   "cau_tieu_bieu": [
+    "T312010202024",
+    "T312010202023",
+    "T312010107079"
+   ]
+  },
+  {
+   "ten": "Bóng, vùng sáng, vùng che khuất: chiếu tia sáng từ một điểm lên mặt phẳng",
+   "nhom_dat": "Ví trí tương đối giữa đường thẳng và mặt phẳng",
+   "dat_sau": "NDB00873",
+   "thu_tu_trong_nhom": 2,
+   "muc_do": 4,
+   "mo_ta": "Nguồn sáng hoặc mắt người quan sát S và một mặt phẳng (mặt đất, nền nhà, màn). Đề hỏi vùng được chiếu sáng, bán kính tấm bìa/tấm chắn tròn đủ che khuất một vật, khoảng cách lớn nhất–nhỏ nhất từ gốc tới biên vùng sáng, bóng của khối cầu hay của tấm chắn. Việc làm: tìm giao điểm của tia sáng (đường thẳng qua S) với mặt phẳng, rồi xét khoảng cách trong mặt phẳng; chùm sáng hình nón thì vùng sáng là hình tròn bán kính h·tanα. Ranh giới: NDB00872 chỉ tìm MỘT giao điểm; ở đây là cả họ tia/đoạn rồi cực trị khoảng cách trong mặt phẳng.",
+   "ly_thuyet": "##TC Bóng và vùng che khuất khi chiếu từ một điểm\n• Tia sáng từ $S$ qua $P$ là đường thẳng $SP$; bóng của $P$ trên mặt phẳng $(\\alpha)$ là giao điểm $SP\\cap(\\alpha)$, tìm bằng cách thay $S+t\\overrightarrow{SP}$ vào phương trình $(\\alpha)$.\n• Phép chiếu từ một điểm biến đoạn thẳng thành đoạn thẳng: bóng của đoạn $AB$ là đoạn $A'B'$ nối hai bóng.\n• Chùm sáng hình nón đỉnh $S$ cách nền $h$, trục vuông góc nền, nửa góc ở đỉnh $\\alpha$: vùng sáng là hình tròn tâm $I$ (hình chiếu của $S$), bán kính $r=h\\tan\\alpha$.\n• Tấm bìa tròn tâm $O$ bán kính $R$ che khuất đoạn $AB$ đối với mắt $M$ khi cả bóng $A'B'$ nằm trong hình tròn, tức $R\\ge\\max(OA',OB')$.\n• Điểm $O$ ngoài đường tròn tâm $I$ bán kính $r$: khoảng cách đến điểm trên đường tròn lớn nhất là $OI+r$, nhỏ nhất là $|OI-r|$.\n\n##PP Giải bài bóng và che khuất\nGắn hệ trục sao cho mặt đất/nền là $(Oxy)$ nếu đề chưa cho; đọc toạ độ nguồn sáng và các điểm của vật.\nTìm bóng: giải $z=0$ (hay phương trình mặt phẳng) cho tham số $t$ của tia, suy ra điểm chiếu.\nVới chùm nón dùng ngay $r=h\\tan\\alpha$; với vật che khuất dùng khoảng cách tới tâm tấm chắn.\nĐổi bài toán về một yêu cầu trong mặt phẳng (bán kính nhỏ nhất, khoảng cách lớn nhất, diện tích) rồi tính.\n\n##CY\n• Điểm cần chiếu và nguồn sáng phải khác phía mặt phẳng thì tia mới cắt mặt phẳng ở phía vật; nếu cùng phía, tính $t$ âm là sai chiều.\n• Chiếu song song (tia nắng theo $\\vec u$) dùng đường thẳng $P+t\\vec u$ thay cho tia từ một điểm; bóng của hình cầu lúc đó là elip.\n• Góc ở đỉnh của nón là góc toàn phần, nửa góc là một nửa của nó.\n• Đổi đơn vị trục (1 đơn vị = 10 cm, 100 m…) ở bước cuối.",
+   "vi_du": "##VD\nMột bóng đèn được treo tại $S(3;4;4)$ trong căn phòng, mặt phẳng $(Oxy)$ là nền nhà (đơn vị: mét). Đèn phát chùm sáng hình nón tròn xoay có trục vuông góc với nền và góc ở đỉnh bằng $90^\\circ$. Vùng được chiếu sáng trên nền nhà là hình tròn $(C)$. a) Xác định tâm và bán kính của $(C)$. b) Tìm khoảng cách lớn nhất và nhỏ nhất từ gốc toạ độ $O$ đến một điểm trên đường tròn biên của $(C)$.\n\nBài giải:\na) Trục của nón qua $S$ và vuông góc nền nên cắt nền tại $I(3;4;0)$, $SI=4$.\nNửa góc ở đỉnh là $45^\\circ$ nên bán kính $r=SI\\cdot\\tan45^\\circ=4$. Vậy $(C)$ có tâm $I(3;4;0)$, bán kính $4$.\nb) $OI=\\sqrt{3^2+4^2}=5>r=4$ nên $O$ nằm ngoài $(C)$.\nKhoảng cách lớn nhất từ $O$ đến điểm trên biên là $OI+r=9$ (m), nhỏ nhất là $OI-r=1$ (m).\n\n##VD\nTrong không gian $Oxyz$ mắt người quan sát đặt tại $M(1;2;3)$ và quan sát thanh $AB$ với $A(7;8;-3)$, $B(2;3;-3)$. Một tấm bìa cứng hình tròn thuộc mặt phẳng $(Oxy)$, tâm $O$, bán kính $R$ che khuất hoàn toàn thanh $AB$ đối với người quan sát. Tìm $R$ nhỏ nhất (làm tròn đến hàng phần trăm).\n\nBài giải:\nTia $MA$: $\\overrightarrow{MA}=(6;6;-6)$, điểm $M+t\\overrightarrow{MA}$ có cao độ $3-6t=0$ khi $t=\\dfrac12$, nên bóng của $A$ là $A'(4;5;0)$.\nTia $MB$: $\\overrightarrow{MB}=(1;1;-6)$, cao độ $3-6t=0$ khi $t=\\dfrac12$, nên bóng của $B$ là $B'\\left(\\dfrac32;\\dfrac52;0\\right)$.\nBóng của thanh $AB$ là đoạn $A'B'$; khoảng cách từ $O$ đến điểm của đoạn lớn nhất ở một đầu mút.\n$OA'=\\sqrt{16+25}=\\sqrt{41}$, $OB'=\\sqrt{\\dfrac94+\\dfrac{25}4}=\\dfrac{\\sqrt{34}}2<\\sqrt{41}$.\nVậy $R_{\\min}=\\sqrt{41}\\approx6{,}40$.",
+   "dang_gan_nhat": "NDB00872 — không nhét được vì chỉ tìm giao điểm của một đường thẳng với mặt phẳng, còn đây phải xét cả đoạn/chùm tia và bài toán cực trị khoảng cách trong mặt phẳng; NDB02596 — chỉ xét điểm chạy trên đường tròn đã cho, không có bước dựng bóng bằng phép chiếu.",
+   "ma_cau": [
+    "T312010802038",
+    "T312010802064",
+    "T312000000078",
+    "T312000000104",
+    "T312000000109",
+    "T312000000153",
+    "T312000000191",
+    "T312000000241"
+   ],
+   "cau_tieu_bieu": [
+    "T312000000109",
+    "T312000000104",
+    "T312000000153"
+   ]
+  },
+  {
+   "ten": "Đường thẳng cắt mặt cầu: tìm giao điểm, độ dài dây cung (đường bay trong vùng phủ sóng, khu cấm)",
+   "nhom_dat": "Vị trí tương đối của đường thẳng và mặt cầu",
+   "dat_sau": "NDB00881",
+   "thu_tu_trong_nhom": 1,
+   "muc_do": 3,
+   "mo_ta": "Vùng radar, vùng phủ sóng, khu vực cấm bay, khối mây là mặt cầu; máy bay, drone, tia laser chuyển động thẳng. Đề hỏi vật vào/ra vùng tại điểm nào, quãng đường (hoặc thời gian) nằm trong vùng, vị trí rời vùng, có đi vào vùng hay không. Việc làm: thay phương trình tham số của đường thẳng vào phương trình mặt cầu được phương trình bậc hai theo t; hai nghiệm là lúc vào và ra; độ dài dây = |t1-t2|·|u|; thời gian = độ dài/vận tốc (với v(t) thay đổi giải tích phân). Ranh giới: NDB00878 chỉ xét vị trí tương đối (đếm số giao điểm); NDB00879–NDB00880 là bài VIẾT phương trình; dạng này TÍNH giao điểm và độ dài dây.",
+   "ly_thuyet": "##TC Giao điểm của đường thẳng và mặt cầu\n• Mặt cầu tâm $I(a;b;c)$ bán kính $R$: $(x-a)^2+(y-b)^2+(z-c)^2=R^2$.\n• Đường thẳng $\\begin{cases}x=x_0+ut\\\\y=y_0+vt\\\\z=z_0+wt\\end{cases}$ cắt mặt cầu: thay vào được $\\alpha t^2+\\beta t+\\gamma=0$ với $\\alpha=u^2+v^2+w^2$; $\\Delta>0$ cho hai giao điểm ứng với $t_1,t_2$.\n• Độ dài dây cung: $AB=|t_1-t_2|\\sqrt{u^2+v^2+w^2}=2\\sqrt{R^2-d^2(I,d)}$ với $d(I,d)=\\dfrac{\\left|[\\overrightarrow{M_0I},\\vec u]\\right|}{|\\vec u|}$.\n• Vật chuyển động thẳng đều tốc độ $v$ trong vùng cầu: thời gian $=\\dfrac{AB}{v}$; với tốc độ $v(t)$ thay đổi thì giải $\\int_0^Tv(t)\\,dt=s$.\n\n##PP Xét đường bay trong vùng hình cầu\nViết phương trình mặt cầu (tâm là vị trí radar/trạm, bán kính là phạm vi), phương trình tham số của đường bay theo hướng chuyển động.\nThay vào phương trình mặt cầu, giải phương trình bậc hai theo $t$ (chỉ giữ nghiệm theo chiều chuyển động).\nTính điểm vào, điểm ra, độ dài đoạn nằm trong vùng.\nĐổi sang thời gian (hoặc quãng đường) nếu đề hỏi, chú ý đơn vị trục.\n\n##CY\n• Radar đặt trên đỉnh tháp cao $h$ thì tâm mặt cầu là $(0;0;h)$, không phải gốc $O$.\n• Vật đã ở trong vùng lúc bắt đầu chỉ có điểm RA (một nghiệm $t>0$).\n• Đổi đơn vị: 1 đơn vị trục có thể là 10 km; tốc độ km/h cần khớp với đơn vị độ dài.\n• Nếu $\\Delta<0$ hoặc không có nghiệm $t\\ge0$ thì vật không vào vùng.",
+   "vi_du": "##VD\nTrong không gian $Oxyz$ (đơn vị km), radar đặt tại $O$ theo dõi máy bay trong bán kính $500$ km. Một máy bay ở $A(0;0;300)$ bay thẳng theo hướng vectơ $\\vec u=(3;4;0)$. Tìm quãng đường máy bay bay thêm được cho đến khi rời vùng theo dõi.\n\nBài giải:\nĐiểm trên đường bay: $P(3s;4s;300)$ với $s\\ge0$ (cùng hướng $\\vec u$).\nMáy bay rời vùng khi $OP=500$: $(3s)^2+(4s)^2+300^2=500^2$, tức $25s^2=160000$, $s=80$.\nĐiểm rời vùng $P(240;320;300)$.\nQuãng đường $AP=s\\cdot|\\vec u|=80\\cdot5=400$ km.\n\n##VD\nTrong không gian $Oxyz$ (đơn vị km), một radar đặt tại $O$ theo dõi vật thể trong bán kính $125$ km. Một máy bay xuất phát từ $M(-200;60;80)$ bay thẳng đều theo hướng trục $Ox$ với tốc độ $600$ km/h. Hỏi máy bay nằm trong vùng theo dõi bao nhiêu phút?\n\nBài giải:\nĐường bay: $\\begin{cases}x=-200+t\\\\y=60\\\\z=80\\end{cases}$ ($t$ là quãng đường bay, tính bằng km).\nĐiều kiện trong vùng: $(-200+t)^2+60^2+80^2\\le125^2$, tức $(t-200)^2\\le15625-10000=5625$, nên $|t-200|\\le75$.\nQuãng đường nằm trong vùng là $150$ km.\nThời gian $=\\dfrac{150}{600}=0{,}25$ giờ $=15$ phút.",
+   "dang_gan_nhat": "NDB00878 — không nhét được vì chỉ xét vị trí tương đối, không tính giao điểm và độ dài dây; NDB00881 — chỉ bài đường thẳng tiếp xúc mặt cầu; NDB02566 (bảng Đại, chuyển động) — nhánh vectơ không có phương trình mặt cầu.",
+   "ma_cau": [
+    "T312010802050",
+    "T312000000122",
+    "T312000000179",
+    "T312000000182",
+    "T312000000192",
+    "T312000000193",
+    "T312000000200",
+    "T312000000220",
+    "T312010705013",
+    "T312000000233",
+    "T312010706004"
+   ],
+   "cau_tieu_bieu": [
+    "T312010705013",
+    "T312000000179",
+    "T312010706004"
+   ]
+  },
+  {
+   "ten": "Vị trí tương đối của hai mặt cầu; mặt phẳng chứa đường tròn giao tuyến",
+   "nhom_dat": "NHÓM MỚI: Bài toán nâng cao về mặt cầu",
+   "dat_sau": "NDB00881",
+   "thu_tu_trong_nhom": 1,
+   "muc_do": 2,
+   "mo_ta": "Đề cho hai mặt cầu (S) và (S') (tâm, bán kính hoặc phương trình, hoặc một mặt cầu cắt mặt phẳng theo đường tròn bán kính cho trước); hỏi vị trí tương đối (ngoài nhau, tiếp xúc, cắt nhau, chứa nhau), mặt phẳng chứa đường tròn giao tuyến, bán kính giao tuyến, khoảng cách lớn nhất giữa hai điểm thuộc hai mặt cầu, hay số điểm nguyên thuộc phần chung hai khối cầu. Việc làm: so sánh d=II' với R+R' và |R-R'|; trừ vế hai phương trình để được mặt phẳng giao tuyến. Ranh giới: nhóm Vị trí tương đối đã có mp–mp, đt–đt, đt–mp, mp–cầu, đt–cầu nhưng chưa có cầu–cầu.",
+   "ly_thuyet": "##TC Hai mặt cầu\n• $(S)$ tâm $I$ bán kính $R$, $(S')$ tâm $I'$ bán kính $R'$, $d=II'$.\n• $d>R+R'$: ngoài nhau; $d=R+R'$: tiếp xúc ngoài; $|R-R'|<d<R+R'$: cắt nhau theo một đường tròn; $d=|R-R'|$: tiếp xúc trong; $d<|R-R'|$: một mặt cầu nằm trong mặt cầu kia.\n• Khi cắt nhau, trừ vế hai phương trình dạng khai triển $x^2+y^2+z^2+2ax+2by+2cz+d=0$ được phương trình mặt phẳng chứa đường tròn giao tuyến.\n• Bán kính đường tròn giao tuyến $r=\\sqrt{R^2-h^2}$ với $h=d(I,\\text{mặt phẳng giao tuyến})$.\n• Hai điểm lần lượt thuộc hai mặt cầu: khoảng cách lớn nhất $d+R+R'$; nhỏ nhất (khi ngoài nhau) $d-R-R'$.\n\n##PP Xét hai mặt cầu\nXác định tâm và bán kính của từng mặt cầu (đưa phương trình về dạng tâm–bán kính; mặt cầu cắt mặt phẳng theo đường tròn bán kính $r$ cách tâm $h$ thì $R=\\sqrt{r^2+h^2}$).\nTính $d=II'$ rồi so sánh với $R+R'$ và $|R-R'|$.\nNếu cắt nhau và đề hỏi giao tuyến: trừ vế hai phương trình để có mặt phẳng, tính $h$ và $r$.\nVới cực trị khoảng cách hoặc đếm điểm nguyên: dùng hệ thức $d\\pm R\\pm R'$ hoặc ràng buộc từng toạ độ.\n\n##CY\n• Phương trình mặt cầu phải đưa về dạng chuẩn trước khi đọc tâm, bán kính; hệ số $x^2,y^2,z^2$ phải bằng nhau (bằng $1$).\n• Hai mặt cầu tiếp xúc có đúng một điểm chung nằm trên đường nối tâm.\n• Kiểm tra bằng cách tính $r$ từ cả hai mặt cầu: phải bằng nhau.",
+   "vi_du": "##VD\nTrong không gian $Oxyz$ cho hai mặt cầu $(S):(x-3)^2+y^2+z^2=9$ và $(S'):(x+2)^2+y^2+z^2=4$. Xét vị trí tương đối của $(S)$ và $(S')$.\n\nBài giải:\n$(S)$ có tâm $I(3;0;0)$, $R=3$; $(S')$ có tâm $I'(-2;0;0)$, $R'=2$.\n$II'=5$ và $R+R'=3+2=5$.\nVì $II'=R+R'$ nên hai mặt cầu tiếp xúc ngoài.\n\n##VD\nTrong không gian $Oxyz$ cho $(S):(x-3)^2+y^2+z^2=9$ và $(S'):x^2+y^2+z^2-12y+12=0$. Chứng tỏ hai mặt cầu cắt nhau, viết phương trình mặt phẳng chứa đường tròn giao tuyến và tính bán kính $r$ của đường tròn đó.\n\nBài giải:\n$(S)$: $x^2+y^2+z^2-6x=0$, tâm $I(3;0;0)$, $R=3$. $(S')$: $x^2+(y-6)^2+z^2=24$, tâm $I'(0;6;0)$, $R'=2\\sqrt6$.\n$II'=\\sqrt{9+36}=3\\sqrt5\\approx6{,}71$; $R+R'\\approx7{,}90$ và $|R-R'|\\approx1{,}90$, nên $|R-R'|<II'<R+R'$: hai mặt cầu cắt nhau.\nTrừ vế hai phương trình: $-6x+12y-12=0$, tức mặt phẳng giao tuyến $(\\alpha):x-2y+2=0$.\n$h=d(I,(\\alpha))=\\dfrac{|3+2|}{\\sqrt5}=\\sqrt5$ nên $r=\\sqrt{R^2-h^2}=\\sqrt{9-5}=2$.\nKiểm tra bằng $(S')$: $d(I',(\\alpha))=\\dfrac{|{-12}+2|}{\\sqrt5}=2\\sqrt5$, $r=\\sqrt{24-20}=2$.",
+   "dang_gan_nhat": "NDB00874 — không nhét được vì chỉ xét mặt phẳng và mặt cầu; NDB00876 — viết mặt cầu khi biết thiết diện, còn đây xét hai mặt cầu có sẵn.",
+   "ma_cau": [
+    "T312010706001",
+    "T312010301105",
+    "T312010706003",
+    "T312000000170"
+   ],
+   "cau_tieu_bieu": [
+    "T312010706001",
+    "T312010301105",
+    "T312010706003"
+   ]
+  },
+  {
+   "ten": "Tiếp tuyến kẻ từ một điểm ngoài tới mặt cầu: độ dài tiếp tuyến, đường tròn tiếp điểm",
+   "nhom_dat": "NHÓM MỚI: Bài toán nâng cao về mặt cầu",
+   "dat_sau": "NDB00881",
+   "thu_tu_trong_nhom": 2,
+   "muc_do": 3,
+   "mo_ta": "Mắt người quan sát, đèn chiếu hay camera đặt tại điểm M ngoài mặt cầu (quả bóng bay, khối cầu trang trí, vật phản quang); các tia tiếp xúc mặt cầu tạo thành mặt nón. Đề hỏi độ dài tiếp tuyến, bán kính hoặc diện tích đường tròn tiếp điểm, mặt phẳng chứa các tiếp điểm, hay so sánh góc nhìn hai quả cầu. Việc làm: tam giác vuông ITM (IT⊥MT) và hệ thức lượng. Ranh giới: NDB00877 và NDB00881 là bài MỘT mặt phẳng/đường thẳng tiếp xúc cho trước; dạng này xuất phát từ điểm ngoài và hỏi cả họ tiếp tuyến.",
+   "ly_thuyet": "##TC Tiếp tuyến từ điểm ngoài tới mặt cầu\n• Điểm $M$ ngoài mặt cầu $(I;R)$ ($IM>R$): độ dài tiếp tuyến $MT=\\sqrt{IM^2-R^2}$.\n• Các tiếp điểm nằm trên một đường tròn thuộc mặt phẳng vuông góc $IM$, cách $I$ một đoạn $\\dfrac{R^2}{IM}$, bán kính $r=\\dfrac{R\\cdot MT}{IM}=\\dfrac{R\\sqrt{IM^2-R^2}}{IM}$.\n• Mặt phẳng chứa các tiếp điểm (mặt phẳng cực của $M$): $\\overrightarrow{IM}\\cdot\\overrightarrow{IX}=R^2$; với $I\\equiv O$ là $x_Mx+y_My+z_Mz=R^2$.\n• Nửa góc ở đỉnh của nón tiếp tuyến: $\\sin\\alpha=\\dfrac{R}{IM}$. Hai quả cầu nhìn từ $M$ có \"độ to\" bằng nhau khi $\\dfrac{R_1}{MI_1}=\\dfrac{R_2}{MI_2}$.\n\n##PP Giải bài tiếp tuyến từ điểm ngoài\nXác định tâm $I$, bán kính $R$ và tính $IM$; kiểm tra $IM>R$.\nDùng tam giác vuông $ITM$ để tính $MT$, $\\sin\\alpha$, $r$.\nMặt phẳng chứa tiếp điểm: dùng phương trình mặt phẳng cực hoặc điều kiện cách $I$ một đoạn $\\dfrac{R^2}{IM}$ theo hướng $\\overrightarrow{IM}$.\nĐề cho điểm $M$ chạy trên đường thẳng: tính $IM$ theo tham số rồi khảo sát đại lượng đề hỏi.\n\n##CY\n• Đề cho thể tích quả cầu $V$ thì $R=\\sqrt[3]{\\dfrac{3V}{4\\pi}}$ (đổi đơn vị thể tích cho khớp đơn vị trục).\n• Đường tròn tiếp điểm có tâm nằm trên $IM$, không phải trung điểm $IM$.\n• Bán kính tiếp điểm chỉ đúng với $M$ ngoài mặt cầu; $M$ trên mặt cầu thì chỉ có một tiếp điểm.",
+   "vi_du": "##VD\nTrong không gian $Oxyz$ cho mặt cầu $(S):x^2+y^2+z^2=9$ và điểm $M(6;0;0)$. Từ $M$ kẻ các tiếp tuyến tới $(S)$. a) Tính độ dài tiếp tuyến. b) Viết phương trình mặt phẳng chứa các tiếp điểm và tính diện tích hình tròn tiếp điểm.\n\nBài giải:\na) $(S)$ có tâm $O$, $R=3$; $OM=6>3$ nên $MT=\\sqrt{OM^2-R^2}=\\sqrt{36-9}=3\\sqrt3$.\nb) Mặt phẳng chứa các tiếp điểm: $x_Mx=R^2$, tức $6x=9$ hay $2x-3=0$ (cách $O$ đoạn $\\dfrac{R^2}{OM}=\\dfrac32$).\nBán kính đường tròn tiếp điểm $r=\\dfrac{R\\cdot MT}{OM}=\\dfrac{3\\cdot3\\sqrt3}{6}=\\dfrac{3\\sqrt3}2$.\nDiện tích hình tròn $=\\pi r^2=\\dfrac{27\\pi}4$.\n\n##VD\nNgười quan sát đứng tại gốc $O$ nhìn hai quả bóng hình cầu: quả thứ nhất tâm $I_1(6;0;0)$ bán kính $3$, quả thứ hai tâm $I_2(0;8;0)$ bán kính $4$. Hỏi người đó thấy hai quả có to bằng nhau không?\n\nBài giải:\nĐộ to của quả cầu nhìn từ $O$ được đo bằng nửa góc ở đỉnh của nón tiếp tuyến, $\\sin\\alpha=\\dfrac{R}{OI}$.\nQuả thứ nhất: $\\sin\\alpha_1=\\dfrac{3}{6}=\\dfrac12$. Quả thứ hai: $\\sin\\alpha_2=\\dfrac{4}{8}=\\dfrac12$.\nHai góc bằng nhau nên người quan sát thấy hai quả bóng to bằng nhau.",
+   "dang_gan_nhat": "NDB00877 và NDB00881 — không nhét được vì đó là bài cho sẵn mặt phẳng/đường thẳng tiếp xúc, còn đây xuất phát từ điểm ngoài và hỏi họ tiếp tuyến, đường tròn tiếp điểm.",
+   "ma_cau": [
+    "T312010801007",
+    "T312010803017",
+    "T312010803033"
+   ],
+   "cau_tieu_bieu": [
+    "T312010801007",
+    "T312010803017",
+    "T312010803033"
+   ]
+  },
+  {
+   "ten": "Đường đi trên mặt cầu: độ dài cung nhỏ, quãng đường ngắn nhất gồm tiếp tuyến và cung",
+   "nhom_dat": "NHÓM MỚI: Bài toán nâng cao về mặt cầu",
+   "dat_sau": "NDB00881",
+   "thu_tu_trong_nhom": 3,
+   "muc_do": 4,
+   "mo_ta": "Mặt cầu mô phỏng Trái Đất, tổ kiến, quả cầu trang trí. Đề hỏi độ dài cung nhỏ giữa hai điểm (cho bằng toạ độ hoặc kinh độ, vĩ độ), hoặc quãng đường ngắn nhất từ điểm ngoài tới điểm trên mặt cầu khi tia thẳng bị mặt cầu chắn (đi theo tiếp tuyến rồi theo cung), hay lộ trình qua xích đạo. Việc làm: góc ở tâm bằng tích vô hướng rồi l=Rθ; ghép đoạn tiếp tuyến √(OM²-R²). Ranh giới: nhóm Z là cung đường tròn tâm nằm trong mặt phẳng; đây là cung trên MẶT CẦU (đường tròn lớn); NDB00837 và NDB00840 chỉ nhận biết mặt cầu.",
+   "ly_thuyet": "##TC Đường đi trên mặt cầu\n• $A,B$ thuộc mặt cầu tâm $O$ bán kính $R$: góc ở tâm $\\theta=\\widehat{AOB}$, $\\cos\\theta=\\dfrac{\\overrightarrow{OA}\\cdot\\overrightarrow{OB}}{R^2}$; đường ngắn nhất trên mặt cầu là cung nhỏ trên đường tròn lớn, dài $R\\theta$ ($\\theta$ tính bằng radian).\n• Trái Đất $x^2+y^2+z^2=1$: điểm vĩ độ $\\alpha$ Bắc, kinh độ $\\beta$ Đông có toạ độ $(\\cos\\alpha\\cos\\beta;\\cos\\alpha\\sin\\beta;\\sin\\alpha)$; một đơn vị ứng với $6371$ km.\n• Từ điểm $M$ ngoài mặt cầu tới điểm $B$ trên mặt cầu mà đoạn $MB$ cắt mặt cầu: đường ngắn nhất gồm tiếp tuyến $MT=\\sqrt{OM^2-R^2}$ và cung $\\overset\\frown{TB}=R\\left(\\widehat{MOB}-\\widehat{MOT}\\right)$, với $\\cos\\widehat{MOT}=\\dfrac{R}{OM}$.\n• Nếu đoạn $MB$ không cắt mặt cầu thì đường ngắn nhất là đoạn thẳng $MB$.\n\n##PP Tính quãng đường trên mặt cầu\nXác định tâm, bán kính; viết toạ độ các điểm (nếu cho kinh độ, vĩ độ thì dùng công thức trên).\nTính $\\cos\\theta$ bằng tích vô hướng, suy ra $\\theta$ (radian) và độ dài cung $R\\theta$.\nVới điểm ngoài mặt cầu: kiểm tra đoạn thẳng có cắt mặt cầu không (khoảng cách từ $O$ đến đường thẳng so với $R$), tính tiếp tuyến và cung còn lại.\nĐổi đơn vị rồi kết luận.\n\n##CY\n• Đổi $\\theta$ sang radian trước khi nhân với $R$.\n• Tiếp điểm $T$ phải nằm cùng nửa mặt phẳng với $B$ so với $OM$: tính góc $\\widehat{TOB}=\\widehat{MOB}-\\widehat{MOT}$ chỉ đúng khi $T$ nằm giữa.\n• Kinh độ Đông dương, Tây âm; vĩ độ Bắc dương, Nam âm.",
+   "vi_du": "##VD\nTrong không gian $Oxyz$, bề mặt Trái Đất là mặt cầu $x^2+y^2+z^2=1$ (một đơn vị ứng với $6371$ km). Điểm có vĩ độ $\\alpha^\\circ$ Bắc, kinh độ $\\beta^\\circ$ Đông có toạ độ $(\\cos\\alpha^\\circ\\cos\\beta^\\circ;\\cos\\alpha^\\circ\\sin\\beta^\\circ;\\sin\\alpha^\\circ)$. Tính độ dài cung nhỏ giữa hai điểm $P$ ($30^\\circ$ Bắc, $0^\\circ$ Đông) và $Q$ ($30^\\circ$ Bắc, $90^\\circ$ Đông).\n\nBài giải:\n$P\\left(\\dfrac{\\sqrt3}2;0;\\dfrac12\\right)$, $Q\\left(0;\\dfrac{\\sqrt3}2;\\dfrac12\\right)$.\n$\\cos\\theta=\\overrightarrow{OP}\\cdot\\overrightarrow{OQ}=0+0+\\dfrac14=\\dfrac14$ nên $\\theta=\\arccos\\dfrac14\\approx1{,}3181$ (rad).\nĐộ dài cung nhỏ $\\approx1{,}3181\\cdot6371\\approx8398$ km.\n\n##VD\nMột tổ kiến là mặt cầu $x^2+y^2+z^2=36$ (đơn vị: cm). Một con kiến ở $M(10;0;0)$ bò tới điểm $B(0;6;0)$ trên mặt tổ, không được đi xuyên qua tổ. Tính quãng đường ngắn nhất.\n\nBài giải:\n$OM=10$, $R=6$. Đường thẳng $MB$ có khoảng cách tới $O$ bằng $\\dfrac{|\\overrightarrow{OM}\\times\\overrightarrow{OB}|}{MB}=\\dfrac{60}{\\sqrt{136}}\\approx5{,}15<6$ nên đoạn $MB$ xuyên qua tổ; con kiến phải đi theo tiếp tuyến rồi theo cung.\nTiếp tuyến $MT=\\sqrt{100-36}=8$; $\\cos\\widehat{MOT}=\\dfrac{6}{10}$ nên $\\widehat{MOT}\\approx0{,}9273$ (rad).\n$\\widehat{MOB}=\\dfrac\\pi2$ nên $\\widehat{TOB}=\\dfrac\\pi2-0{,}9273\\approx0{,}6435$ và cung $TB=6\\cdot0{,}6435\\approx3{,}861$.\nQuãng đường ngắn nhất $\\approx8+3{,}861\\approx11{,}86$ cm.",
+   "dang_gan_nhat": "Nhóm Z (đường tròn qua ba điểm) — không nhét được vì tâm đường tròn nằm trong mặt phẳng ba điểm, còn đây cung thuộc đường tròn lớn của mặt cầu; NDB00837/NDB00840 — chỉ nhận biết mặt cầu và vị trí điểm.",
+   "ma_cau": [
+    "T312010802030",
+    "T312010803030",
+    "T312010803031",
+    "T312000000072"
+   ],
+   "cau_tieu_bieu": [
+    "T312000000072",
+    "T312010803030",
+    "T312010803031"
+   ]
+  },
+  {
+   "ten": "Định vị GPS, UWB: tìm vị trí vật thể khi biết khoảng cách tới bốn điểm cho trước",
+   "nhom_dat": "NHÓM MỚI: Bài toán nâng cao về mặt cầu",
+   "dat_sau": "NDB00881",
+   "thu_tu_trong_nhom": 4,
+   "muc_do": 3,
+   "mo_ta": "Bốn vệ tinh hoặc bốn trạm phát (GPS, UWB trong kho) ở các điểm A, B, C, D cho trước; vật thể M cách mỗi trạm một khoảng đã biết (có thể cho bằng thời gian tín hiệu, đơn vị trục là 10 km, 100 km, 10 m…). Đề hỏi toạ độ M, a+b+c, khoảng cách OM hay tốc độ suy từ hai vị trí liên tiếp. Việc làm: M thuộc bốn mặt cầu; trừ từng cặp phương trình khử bậc hai được ba mặt phẳng, giải hệ bậc nhất ba ẩn. Ranh giới: NDB00856 là viết mặt cầu qua 4 điểm cho trước; ở đây cho bốn mặt cầu và tìm điểm chung.",
+   "ly_thuyet": "##TC Định vị bằng giao của các mặt cầu\n• $M$ cách $A_i(x_i;y_i;z_i)$ một khoảng $r_i$ khi và chỉ khi $M\\in(S_i):(x-x_i)^2+(y-y_i)^2+(z-z_i)^2=r_i^2$.\n• Trừ vế hai phương trình mặt cầu $(S_i),(S_j)$: $2(x_j-x_i)x+2(y_j-y_i)y+2(z_j-z_i)z=r_i^2-r_j^2-|A_i|^2+|A_j|^2$ — một mặt phẳng.\n• Bốn mặt cầu có tâm không đồng phẳng cho ba mặt phẳng độc lập, giao là đúng một điểm; ba mặt cầu chỉ cho hai điểm (đối xứng qua mặt phẳng tâm), thường chọn điểm thoả điều kiện thực tế (trên mặt đất, $z>0$).\n• Khoảng cách từ tín hiệu: $r=c\\cdot\\Delta t$ (vận tốc nhân thời gian); tốc độ vật $=\\dfrac{M_1M_2}{\\Delta t}$.\n\n##PP Giải bài định vị\nGọi $M(x;y;z)$, viết bốn phương trình $MA_i^2=r_i^2$ (đổi mọi khoảng cách về cùng đơn vị với trục).\nLấy $MA_1^2-MA_2^2$, $MA_1^2-MA_3^2$, $MA_1^2-MA_4^2$ để được hệ ba phương trình bậc nhất.\nGiải hệ, kiểm tra lại với một phương trình mặt cầu ban đầu, tính đại lượng đề hỏi ($x+y+z$, $OM$, tốc độ…).\n\n##CY\n• Nhớ nhân đơn vị trục (10 km, 100 km…) khi tính khoảng cách thật.\n• Khi chỉ có ba mặt cầu, chọn nghiệm theo điều kiện đề (ví dụ vật ở trên mặt đất).\n• Hệ vô nghiệm hoặc nghiệm không thoả phương trình mặt cầu ban đầu thì kiểm tra lại dữ kiện hoặc phép trừ.",
+   "vi_du": "##VD\nTrong kho logistics, bốn bộ phát tín hiệu định vị đặt tại $A(2;0;1)$, $B(0;3;1)$, $C(0;0;2)$, $D(2;3;2)$ (đơn vị trục: 10 m). Một xe tự hành ở vị trí $M$ cách $A$ là $\\sqrt3$, cách $B$ và $C$ cùng là $\\sqrt6$, cách $D$ là $3$ (cùng đơn vị). Tìm toạ độ của $M$.\n\nBài giải:\nGọi $M(x;y;z)$, ta có $MA^2=3$, $MB^2=6$, $MC^2=6$, $MD^2=9$.\n$MA^2-MB^2=-3$: $(-4x+4)+(6y-9)=-3$, rút gọn $-2x+3y=1$.\n$MA^2-MC^2=-3$: $(-4x+4)+(-2z+1)-(-4z+4)=-3$, rút gọn $z=2x-2$.\n$MA^2-MD^2=-6$: $(6y-9)+(2z-3)=-6$, rút gọn $3y+z=3$.\nThế $3y=1+2x$ và $z=2x-2$ vào $3y+z=3$: $4x-1=3$ nên $x=1$, $y=1$, $z=0$.\nKiểm tra: $MA^2=1+1+1=3$, $MD^2=1+4+4=9$.\nVậy $M(1;1;0)$.",
+   "dang_gan_nhat": "NDB00856 — không nhét được vì dạng đó cho 4 điểm để viết một mặt cầu, còn đây cho bốn mặt cầu để tìm điểm chung; nhóm B (tìm điểm thoả nhiều điều kiện) — không nhét được vì điều kiện ở đây là bốn khoảng cách tuyệt đối (bốn mặt cầu).",
+   "ma_cau": [
+    "T312010803026",
+    "T312010803027",
+    "T312010803029",
+    "T312000000218",
+    "T312000000240"
+   ],
+   "cau_tieu_bieu": [
+    "T312010803026",
+    "T312000000240",
+    "T312000000218"
+   ]
+  },
+  {
+   "ten": "Mặt phẳng chứa đường thẳng (hoặc qua hai điểm, chứa trục) sao cho khoảng cách từ một điểm lớn nhất, kể cả tổng có trọng số",
+   "nhom_dat": "Cực trị trong không gian Oxyz",
+   "dat_sau": "NDB02598",
+   "thu_tu_trong_nhom": 1,
+   "muc_do": 4,
+   "mo_ta": "Đề cho điểm A (hoặc ba điểm A, B, C) và mặt phẳng (P) bị ràng buộc: chứa đường thẳng d, chứa trục Oy hoặc Oz, đi qua hai điểm, hoặc có hệ số chứa tham số m; hỏi (P) làm d(A,(P)) lớn nhất, hoặc tổng khoảng cách có trọng số d1+2d2+3d3 lớn nhất khi A, B, C cùng phía. Việc làm: d(A,(P)) ≤ AH với H là hình chiếu của A lên phần cố định của (P), dấu bằng khi pháp tuyến = AH; với tổng có trọng số dùng tâm tỉ cự G: Σk_i d(A_i,(P)) = (Σk_i) d(G,(P)). Ranh giới: NDB02598 xử lý (P) qua điểm cố định M và điểm cần tối ưu là gốc O (pháp tuyến OM) hoặc bài chắn trục; dạng này mở rộng sang (P) chứa đường thẳng/trục, điểm A bất kì và tổng có trọng số.",
+   "ly_thuyet": "##TC Mặt phẳng cách một điểm xa nhất\n• $(P)$ chứa đường thẳng $\\Delta$, $A\\notin\\Delta$ có hình chiếu $H$ lên $\\Delta$: $d(A,(P))\\le AH$, dấu bằng khi $(P)\\perp AH$, tức $\\vec n_P=\\overrightarrow{AH}$.\n• $(P)$ đi qua điểm cố định $M$: $d(A,(P))\\le AM$, dấu bằng khi $\\vec n_P=\\overrightarrow{AM}$.\n• $(P)$ chứa trục $Oz$ (dạng $ax+by=0$): khoảng cách từ $A(x_0;y_0;z_0)$ lớn nhất bằng $\\sqrt{x_0^2+y_0^2}$ khi $\\vec n_P=(x_0;y_0;0)$; tương tự với trục $Oy$, $Ox$.\n• Họ $(P_m):m\\,f(x;y;z)+g(x;y;z)=0$ luôn chứa đường thẳng cố định $\\{f=0,g=0\\}$; tìm đường thẳng đó rồi áp dụng quy tắc đầu.\n• $A_1,\\dots,A_n$ cùng phía $(P)$, $k_i>0$: $\\sum k_i\\,d(A_i,(P))=\\left(\\sum k_i\\right)d(G,(P))$ với $G=\\dfrac{\\sum k_iA_i}{\\sum k_i}$.\n\n##PP Mặt phẳng làm khoảng cách lớn nhất\nXác định phần cố định của $(P)$ (điểm $M$, đường thẳng $\\Delta$ hoặc trục); đề có tham số $m$ thì tìm đường thẳng cố định của chùm.\nNếu đề cho tổng có trọng số thì thay các điểm bằng tâm tỉ cự $G$ (khi đã chắc các điểm cùng phía).\nTìm hình chiếu $H$ của điểm cần xét lên phần cố định (đường thẳng, trục, điểm); khoảng cách lớn nhất là $AH$ (hoặc $(\\sum k_i)\\cdot GH$).\nLấy $\\vec n_P=\\overrightarrow{AH}$, viết $(P)$ qua điểm cố định, đối chiếu yêu cầu (hệ số, tham số $m$, các điểm cùng phía).\n\n##CY\n• Phải kiểm tra các điểm cùng phía mặt phẳng tìm được trước khi dùng tâm tỉ cự (đề thường cho điều kiện này).\n• Nếu $A$ nằm trên phần cố định thì khoảng cách lớn nhất không đạt được bằng cách này; xem lại đề.\n• Chuẩn hoá hệ số: đề thường cho sẵn một hệ số (như hệ số tự do bằng $-7$, hệ số $y$ bằng $2025$); nhân $\\vec n$ cho khớp.\n• Với tham số $m$, giá trị $m$ tìm được từ $\\vec n_P(m)\\parallel\\overrightarrow{AH}$.",
+   "vi_du": "##VD\nTrong không gian $Oxyz$ cho điểm $A(3;-1;0)$ và đường thẳng $d:\\dfrac{x-2}{-1}=\\dfrac{y+1}{2}=\\dfrac{z-1}{1}$. Lập phương trình mặt phẳng $(\\alpha)$ chứa $d$ sao cho khoảng cách từ $A$ đến $(\\alpha)$ lớn nhất.\n\nBài giải:\nGọi $H$ là hình chiếu của $A$ lên $d$: $H(2-t;-1+2t;1+t)$, $\\overrightarrow{AH}=(-1-t;2t;1+t)$.\n$\\overrightarrow{AH}\\cdot\\vec u_d=0$ với $\\vec u_d=(-1;2;1)$: $(1+t)+4t+(1+t)=0$, suy ra $t=-\\dfrac13$ và $\\overrightarrow{AH}=\\left(-\\dfrac23;-\\dfrac23;\\dfrac23\\right)$.\nMọi mặt phẳng $(\\alpha)\\supset d$ đều có $d(A,(\\alpha))\\le AH$, dấu bằng khi $(\\alpha)\\perp AH$.\nChọn $\\vec n_\\alpha=(1;1;-1)$, $(\\alpha)$ đi qua điểm $(2;-1;1)\\in d$: $(x-2)+(y+1)-(z-1)=0$.\nVậy $(\\alpha):x+y-z=0$ (khoảng cách lớn nhất $AH=\\dfrac{2}{\\sqrt3}$).\n\n##VD\nTrong không gian $Oxyz$ cho $A(-2;1;5)$, $B(4;3;1)$, $C(2;-5;1)$. Gọi $(\\alpha)$ là mặt phẳng chứa trục $Oy$ sao cho $A,B,C$ nằm cùng phía đối với $(\\alpha)$, và $d_1,d_2,d_3$ là khoảng cách từ $A,B,C$ đến $(\\alpha)$. Giá trị lớn nhất của $T=d_1+2d_2+3d_3$ bằng $a\\sqrt b$ ($a\\in\\mathbb N^*$, $b$ nguyên tố). Tính $S=98a+99b$.\n\nBài giải:\nVì $A,B,C$ cùng phía $(\\alpha)$ nên $T=1\\cdot d(A,(\\alpha))+2d(B,(\\alpha))+3d(C,(\\alpha))=6\\,d(G,(\\alpha))$ với $G=\\dfrac{A+2B+3C}{6}=\\left(2;-\\dfrac43;\\dfrac53\\right)$.\nMặt phẳng chứa $Oy$ nên $d(G,(\\alpha))\\le d(G,Oy)=\\sqrt{2^2+\\left(\\dfrac53\\right)^2}=\\dfrac{\\sqrt{61}}3$.\nSuy ra $T\\le6\\cdot\\dfrac{\\sqrt{61}}3=2\\sqrt{61}$.\nDấu bằng khi $\\vec n_\\alpha=\\left(2;0;\\dfrac53\\right)\\parallel(6;0;5)$, tức $(\\alpha):6x+5z=0$; khi đó $A,B,C$ có giá trị $6x+5z$ lần lượt $13,29,17$ đều dương, cùng phía.\nVậy $a=2$, $b=61$ và $S=98\\cdot2+99\\cdot61=6235$.",
+   "dang_gan_nhat": "NDB02598 — không nhét được vì dạng đó cho (P) qua điểm cố định và tối ưu khoảng cách từ gốc O (pháp tuyến OM) hay bài chắn trục, còn đây (P) chứa đường thẳng/trục, điểm xét bất kì và có tổng khoảng cách có trọng số; NDB00860 — chỉ tính khoảng cách điểm–mặt phẳng đã biết.",
+   "ma_cau": [
+    "T312010309032",
+    "T312010107090",
+    "T312010107051",
+    "T312010107012",
+    "T312010107016",
+    "T312010401004",
+    "T312010107070",
+    "T312010503008",
+    "T312010401002"
+   ],
+   "cau_tieu_bieu": [
+    "T312010503008",
+    "T312010309032",
+    "T312010107070"
+   ]
+  },
+  {
+   "ten": "Mặt phẳng cắt ba trục với a, b, c thay đổi thoả một ràng buộc: tìm khoảng cách từ O lớn nhất bằng bất đẳng thức",
+   "nhom_dat": "Cực trị trong không gian Oxyz",
+   "dat_sau": "NDB02598",
+   "thu_tu_trong_nhom": 2,
+   "muc_do": 4,
+   "mo_ta": "Cho A(a;0;0), B(0;b;0), C(0;0;c) với a, b, c > 0 thay đổi và thoả một hệ thức (như m²+n²+p²=3, a²+4b²+16c²=49); hỏi giá trị lớn nhất của d(O,(ABC)) hoặc a²+b²+c² khi d đạt lớn nhất. Việc làm: dùng 1/d²=1/a²+1/b²+1/c² rồi Bunhia hoặc AM-GM với ràng buộc, suy ra điều kiện dấu bằng. Ranh giới: NDB02598 có mặt phẳng ĐI QUA điểm cố định; ở đây không có điểm cố định, chỉ có ràng buộc giữa các hệ số a, b, c.",
+   "ly_thuyet": "##TC Khoảng cách từ O đến mặt phẳng chắn trục\n• Với $A(a;0;0)$, $B(0;b;0)$, $C(0;0;c)$ ($abc\\ne0$): $\\dfrac1{d^2(O,(ABC))}=\\dfrac1{a^2}+\\dfrac1{b^2}+\\dfrac1{c^2}$.\n• Bunhia: $\\left(\\dfrac1{a^2}+\\dfrac1{b^2}+\\dfrac1{c^2}\\right)\\left(\\alpha a^2+\\beta b^2+\\gamma c^2\\right)\\ge\\left(\\sqrt\\alpha+\\sqrt\\beta+\\sqrt\\gamma\\right)^2$ với $\\alpha,\\beta,\\gamma>0$; dấu bằng khi $\\alpha a^4=\\beta b^4=\\gamma c^4$.\n• Trường hợp $\\alpha=\\beta=\\gamma=1$: $\\left(\\dfrac1{a^2}+\\dfrac1{b^2}+\\dfrac1{c^2}\\right)(a^2+b^2+c^2)\\ge9$, dấu bằng khi $a=b=c$.\n\n##PP Tối ưu d(O,(ABC)) với ràng buộc\nViết $\\dfrac1{d^2}=\\dfrac1{a^2}+\\dfrac1{b^2}+\\dfrac1{c^2}$.\nChọn hệ số $\\alpha,\\beta,\\gamma$ sao cho $\\alpha a^2+\\beta b^2+\\gamma c^2$ chính là vế trái của ràng buộc; áp dụng Bunhia để được cận dưới của $\\dfrac1{d^2}$, tức cận trên của $d$.\nGiải điều kiện dấu bằng cùng với ràng buộc để tìm $a,b,c$ (kiểm tra thoả $a,b,c>0$).\nTính đại lượng đề hỏi ($a^2+b^2+c^2$, thể tích, …).\n\n##CY\n• Chỉ có cận trên của $d$ (khoảng cách lớn nhất); khoảng cách nhỏ nhất thường không tồn tại với các ràng buộc này.\n• Nếu ràng buộc là tổng nghịch đảo, mặt phẳng qua điểm cố định $\\left(\\dfrac1k;\\dfrac2k;\\dfrac3k\\right)$: khi đó dùng quy tắc $d(O,(P))\\le OM$ của NDB02598.\n• Dấu bằng phải đạt được: kiểm tra nghiệm dương.",
+   "vi_du": "##VD\nTrong không gian $Oxyz$ cho $M(m;0;0)$, $N(0;n;0)$, $P(0;0;p)$ với $m,n,p>0$ và $m^2+n^2+p^2=3$. Tìm giá trị lớn nhất của khoảng cách từ $O$ đến mặt phẳng $(MNP)$.\n\nBài giải:\n$\\dfrac1{d^2}=\\dfrac1{m^2}+\\dfrac1{n^2}+\\dfrac1{p^2}$.\nBunhia: $\\left(\\dfrac1{m^2}+\\dfrac1{n^2}+\\dfrac1{p^2}\\right)(m^2+n^2+p^2)\\ge9$, mà $m^2+n^2+p^2=3$ nên $\\dfrac1{d^2}\\ge3$.\nSuy ra $d\\le\\dfrac1{\\sqrt3}$, dấu bằng khi $m=n=p=1$.\nVậy $d_{\\max}=\\dfrac{\\sqrt3}3\\approx0{,}58$.\n\n##VD\nTrong không gian $Oxyz$ cho $A(a;0;0)$, $B(0;b;0)$, $C(0;0;c)$ với $a,b,c>0$ thoả $a^2+4b^2+16c^2=49$. Tính $S=a^2+b^2+c^2$ khi khoảng cách từ $O$ đến $(ABC)$ lớn nhất.\n\nBài giải:\n$\\dfrac1{d^2}=\\dfrac1{a^2}+\\dfrac1{b^2}+\\dfrac1{c^2}$.\nBunhia với hệ số $(1,4,16)$: $\\left(\\dfrac1{a^2}+\\dfrac1{b^2}+\\dfrac1{c^2}\\right)(a^2+4b^2+16c^2)\\ge(1+2+4)^2=49$, nên $\\dfrac1{d^2}\\ge1$ và $d\\le1$.\nDấu bằng khi $a^4=4b^4=16c^4$, tức $a^2=2b^2=4c^2$. Đặt $a^2=t$ thì $b^2=\\dfrac t2$, $c^2=\\dfrac t4$.\nRàng buộc: $t+2t+4t=49$ nên $t=7$.\nVậy $S=7+\\dfrac72+\\dfrac74=\\dfrac{49}4$.",
+   "dang_gan_nhat": "NDB02598 — không nhét được vì mặt phẳng ở đó đi qua điểm cố định (M), còn ở đây a, b, c chỉ bị ràng buộc bởi một hệ thức giữa các hệ số.",
+   "ma_cau": [
+    "T312010107010",
+    "T312010107069",
+    "T312010401001"
+   ],
+   "cau_tieu_bieu": [
+    "T312010107010",
+    "T312010107069",
+    "T312010401001"
+   ]
+  },
+  {
+   "ten": "Điểm thuộc mặt phẳng làm tổng bình phương khoảng cách hoặc độ dài vectơ nhỏ nhất: tâm tỉ cự và hình chiếu",
+   "nhom_dat": "Cực trị trong không gian Oxyz",
+   "dat_sau": "NDB02595",
+   "thu_tu_trong_nhom": 1,
+   "muc_do": 3,
+   "mo_ta": "Cho hai hoặc ba điểm A, B, C và mặt phẳng (P) (kể cả (Oxy), (Oyz)) hoặc trục toạ độ; M di động trên (P) làm cho k1·MA²+k2·MB²+k3·MC² nhỏ nhất, |k1·MA+k2·MB+k3·MC| nhỏ nhất, hay MA·MB+2·MA·MC nhỏ nhất; hỏi toạ độ M, giá trị nhỏ nhất hoặc a+b+c. Việc làm: tìm điểm I thoả k1·IA+k2·IB+k3·IC=0 để đưa biểu thức về (Σk)·MI²+hằng số, nên M là hình chiếu của I lên (P). Ranh giới: NDB02595 là tổng khoảng cách MA+MB (lấy đối xứng); NDB02597 có M trên mặt cầu; NDB02559 (bảng Đại, vectơ) cùng kĩ thuật nhưng chỉ M trên mặt phẳng/trục toạ độ, ở đây (P) tổng quát cần tính hình chiếu.",
+   "ly_thuyet": "##TC Tâm tỉ cự và biểu thức bình phương, vectơ\n• Với các hệ số có tổng $k=k_1+k_2+k_3\\ne0$, tồn tại duy nhất điểm $I$ thoả $\\sum k_i\\overrightarrow{IA_i}=\\vec0$, toạ độ $I=\\dfrac{\\sum k_iA_i}{k}$.\n• Với mọi điểm $M$: $\\sum k_iMA_i^2=k\\,MI^2+\\sum k_iIA_i^2$ và $\\left|\\sum k_i\\overrightarrow{MA_i}\\right|=|k|\\,MI$.\n• $k>0$: biểu thức nhỏ nhất khi $MI$ nhỏ nhất, tức $M$ là hình chiếu của $I$ lên $(P)$ (hoặc lên trục), $MI_{\\min}=d(I,(P))$; $k<0$ thì tìm giá trị lớn nhất.\n• Hình chiếu của $I$ lên $(P):Ax+By+Cz+D=0$ là $M=I-\\dfrac{f(I)}{|\\vec n|^2}\\vec n$ với $f(X)=Ax+By+Cz+D$.\n• Tích vô hướng: $\\overrightarrow{MA}\\cdot\\overrightarrow{MB}=MJ^2-\\dfrac{AB^2}4$ với $J$ là trung điểm $AB$.\n\n##PP Cực trị bằng tâm tỉ cự\nViết biểu thức dưới dạng $\\sum k_iMA_i^2$ hoặc $\\left|\\sum k_i\\overrightarrow{MA_i}\\right|$ (tích vô hướng đổi về bình phương nhờ trung điểm hoặc khai triển).\nTìm điểm $I=\\dfrac{\\sum k_iA_i}{\\sum k_i}$ và hằng số $\\sum k_iIA_i^2$.\nTìm hình chiếu $M$ của $I$ lên $(P)$ và $d(I,(P))$.\nGiá trị cực trị $=k\\cdot d^2(I,(P))+\\sum k_iIA_i^2$ (hoặc $|k|\\,d(I,(P))$ với vectơ); đọc yêu cầu như $a+b+c$.\n\n##CY\n• Phải kiểm tra $k\\ne0$; $k<0$ thì biểu thức có giá trị lớn nhất, không có nhỏ nhất.\n• Đừng quên hằng số $\\sum k_iIA_i^2$ trong biểu thức bình phương.\n• Biểu thức dạng tỉ số $\\dfrac{\\sum k_iMA_i^2}{MD^2}$ với $\\sum k_i=-1$ và $M\\in(Oyz)$: nếu tâm tỉ cự và $D$ có cùng tung độ, cao độ thì tử $=-MD^2+$hằng, nên $T=-1+\\dfrac{\\text{hằng}}{MD^2}$ đạt lớn nhất khi $M$ là hình chiếu của $D$ lên $(Oyz)$.\n• Với $M$ thuộc trục hoặc đường thẳng, $M$ là hình chiếu của $I$ lên đường thẳng đó.",
+   "vi_du": "##VD\nTrong không gian $Oxyz$ cho $A(2;0;1)$, $B(-1;-6;7)$ và mặt phẳng $(P):x-y+z-3=0$. Điểm $M$ thay đổi trên $(P)$. Tìm giá trị nhỏ nhất của $2MA^2+MB^2$.\n\nBài giải:\nTổng hệ số $2+1=3\\ne0$. Gọi $I$ thoả $2\\overrightarrow{IA}+\\overrightarrow{IB}=\\vec0$: $I=\\dfrac{2A+B}{3}=(1;-2;3)$.\n$IA^2=1+4+4=9$, $IB^2=4+16+16=36$ nên $2IA^2+IB^2=54$.\nVới mọi $M$: $2MA^2+MB^2=3MI^2+54$, nhỏ nhất khi $M$ là hình chiếu của $I$ lên $(P)$.\n$d(I,(P))=\\dfrac{|1+2+3-3|}{\\sqrt3}=\\sqrt3$ nên $MI_{\\min}^2=3$.\nVậy giá trị nhỏ nhất là $3\\cdot3+54=63$.\n\n##VD\nTrong không gian $Oxyz$ cho $A(1;-1;3)$, $B(2;1;0)$, $C(-3;-1;-3)$ và mặt phẳng $(P):x+y-z-4=0$. Gọi $M(a;b;c)\\in(P)$ sao cho $T=\\left|3\\overrightarrow{MA}-2\\overrightarrow{MB}+\\overrightarrow{MC}\\right|$ nhỏ nhất. Tính $S=a+b+c$.\n\nBài giải:\nTổng hệ số $3-2+1=2\\ne0$. Gọi $I$ thoả $3\\overrightarrow{IA}-2\\overrightarrow{IB}+\\overrightarrow{IC}=\\vec0$: $I=\\dfrac{3A-2B+C}{2}=\\dfrac{(-4;-6;6)}2=(-2;-3;3)$.\n$T=\\left|2\\overrightarrow{MI}\\right|=2MI$, nhỏ nhất khi $M$ là hình chiếu của $I$ lên $(P)$.\nVới $f(x;y;z)=x+y-z-4$ có $f(I)=-2-3-3-4=-12$, $\\vec n=(1;1;-1)$, $|\\vec n|^2=3$.\n$M=I-\\dfrac{-12}{3}\\vec n=I+4\\vec n=(2;1;-1)$.\nVậy $S=2+1-1=2$.",
+   "dang_gan_nhat": "NDB02595 — không nhét được vì đó là tổng khoảng cách MA+MB giải bằng đối xứng, còn đây là tổng bình phương/vectơ giải bằng tâm tỉ cự; NDB02597 — M trên mặt cầu, kết quả d(I,tâm)±R, không phải hình chiếu lên mặt phẳng; NDB02559 (bảng Đại) — chỉ M trên mặt phẳng/trục toạ độ trong nhánh vectơ.",
+   "ma_cau": [
+    "T312000000148",
+    "T312000000166",
+    "T312000000178",
+    "T312000000207",
+    "T312010401010",
+    "T312010401005",
+    "T312010107080",
+    "T312010401011",
+    "T312010401014",
+    "T312010401012",
+    "T312010401013",
+    "T312010401020",
+    "T312010401003",
+    "T312010401016",
+    "T312010401006",
+    "T312010401007",
+    "T312010401015",
+    "T312010401018",
+    "T312010401017",
+    "T312010401019"
+   ],
+   "cau_tieu_bieu": [
+    "T312000000148",
+    "T312010401014",
+    "T312010107080"
+   ]
+  },
+  {
+   "ten": "Hai điểm M, N chạy trên mặt phẳng với MN không đổi: tổng AM + BN nhỏ nhất",
+   "nhom_dat": "Cực trị trong không gian Oxyz",
+   "dat_sau": "NDB02595",
+   "thu_tu_trong_nhom": 2,
+   "muc_do": 4,
+   "mo_ta": "Hai điểm cố định A, B nằm ngoài mặt phẳng (Oxy) (hoặc (P)); hai điểm M, N di động trên mặt phẳng và giữ khoảng cách MN = l không đổi (hai robot cảm biến, hai trạm thu tín hiệu, hai trạm trên mặt đất); hỏi giá trị nhỏ nhất của AM+BN (có biến thể tổng bình phương có trọng số). Việc làm: bất đẳng thức Minkowski AM+BN ≥ √((A'B'-l)²+(h1+h2)²) với A', B' là hình chiếu của A, B và h1, h2 là khoảng cách tới mặt phẳng. Ranh giới: NDB02595 chỉ một điểm M di động (đối xứng rồi nối thẳng); ở đây có HAI điểm với khoảng cách cố định nên đối xứng đơn thuần không đạt dấu bằng.",
+   "ly_thuyet": "##TC Hai điểm trên mặt phẳng có khoảng cách không đổi\n• $A,B$ cách mặt phẳng $(P)$ lần lượt $h_1,h_2$ với hình chiếu $A',B'$, $A'B'=L$; $M,N\\in(P)$, $MN=l$.\n• $AM=\\sqrt{A'M^2+h_1^2}$, $BN=\\sqrt{B'N^2+h_2^2}$.\n• Minkowski: $\\sqrt{p^2+h_1^2}+\\sqrt{q^2+h_2^2}\\ge\\sqrt{(p+q)^2+(h_1+h_2)^2}$, dấu bằng khi $\\dfrac p{h_1}=\\dfrac q{h_2}$.\n• $A'M+B'N\\ge A'B'-MN=L-l$ (dấu bằng khi $A',M,N,B'$ thẳng hàng theo thứ tự).\n• Kết quả: $(AM+BN)_{\\min}=\\sqrt{(L-l)^2+(h_1+h_2)^2}$ nếu $L\\ge l$.\n\n##PP Giải bài hai điểm MN không đổi\nTính $h_1,h_2$ (khoảng cách tới mặt phẳng) và hình chiếu $A',B'$, độ dài $L=A'B'$.\nKiểm tra $L\\ge l$; áp dụng công thức $\\sqrt{(L-l)^2+(h_1+h_2)^2}$.\nNếu cần toạ độ $M,N$: dựng $M,N$ trên $A'B'$ với $A'M:B'N=h_1:h_2$.\n\n##CY\n• $A,B$ có thể khác phía mặt phẳng; công thức vẫn dùng $h_1+h_2$ với $h_i$ là khoảng cách dương.\n• Đối xứng một điểm qua mặt phẳng rồi nối thẳng chỉ đúng khi một điểm $M$ duy nhất (NDB02595); với hai điểm $M,N$ phải dùng bước tịnh tiến $l$ như trên.\n• Biến thể $kAM^2+k'BN^2$: tách $AM^2=A'M^2+h_1^2$ rồi tối ưu phần nằm trong mặt phẳng.",
+   "vi_du": "##VD\nTrong không gian $Oxyz$ cho $A(5;0;2)$, $B(5;10;4)$. Các điểm $M,N$ di động trên mặt phẳng $(Oxy)$ sao cho $MN=2$. Tìm giá trị nhỏ nhất của $AM+BN$.\n\nBài giải:\nHình chiếu $A'(5;0;0)$, $B'(5;10;0)$ nên $L=A'B'=10$; $h_1=2$, $h_2=4$.\nVì $AM=\\sqrt{A'M^2+4}$, $BN=\\sqrt{B'N^2+16}$ nên theo Minkowski $AM+BN\\ge\\sqrt{(A'M+B'N)^2+(2+4)^2}$.\nMà $A'M+B'N\\ge A'B'-MN=10-2=8$ nên $AM+BN\\ge\\sqrt{8^2+6^2}=10$.\nDấu bằng đạt khi $A',M,N,B'$ thẳng hàng với $A'M:B'N=2:4$.\nVậy giá trị nhỏ nhất bằng $10$.\n\n##VD\nHai flycam ở $A(1;-3;4)$ và $B(-2;1;2)$. Hai robot $M,N$ trên mặt đất $(Oxy)$ luôn cách nhau $2$ m. Tìm giá trị nhỏ nhất của $AM+BN$ (làm tròn đến hàng phần trăm).\n\nBài giải:\nHình chiếu $A'(1;-3;0)$, $B'(-2;1;0)$ nên $L=\\sqrt{9+16}=5$; $h_1=4$, $h_2=2$.\n$A'M+B'N\\ge L-MN=5-2=3$.\n$AM+BN\\ge\\sqrt{3^2+(4+2)^2}=\\sqrt{45}=3\\sqrt5\\approx6{,}71$.\nVậy giá trị nhỏ nhất bằng $3\\sqrt5\\approx6{,}71$ (m).",
+   "dang_gan_nhat": "NDB02595 — không nhét được vì chỉ có một điểm M di động và giải bằng đối xứng; hai điểm M, N với MN không đổi cần bất đẳng thức Minkowski và bước tịnh tiến.",
+   "ma_cau": [
+    "T312000000069",
+    "T312000000090",
+    "T312000000209",
+    "T312010107066"
+   ],
+   "cau_tieu_bieu": [
+    "T312000000069",
+    "T312000000090",
+    "T312010107066"
+   ]
+  },
+  {
+   "ten": "Tìm tập hợp điểm: nhận ra mặt cầu hoặc đường tròn cố định và tính bán kính",
+   "nhom_dat": "Cực trị trong không gian Oxyz",
+   "dat_sau": "NDB02595",
+   "thu_tu_trong_nhom": 3,
+   "muc_do": 3,
+   "mo_ta": "Đề cho hệ thức giữa các khoảng cách hay tích vô hướng của điểm M với các điểm cố định (MA²+MB²=k, MA=λ·MB, MA·MB=0, MA²+2MB·MC=k), hoặc điểm M thuộc mặt cầu cắt mặt phẳng, tiếp điểm của mặt cầu qua hai điểm cố định tiếp xúc mặt phẳng, trực tâm chạy theo một điều kiện; hỏi tập hợp M là gì (mặt cầu hay đường tròn), tâm, bán kính, chu vi, độ dài đường ray. Việc làm: khai triển hệ thức thành phương trình mặt cầu rồi tìm bán kính. Ranh giới: NDB02596 tiếp tục hỏi khoảng cách lớn nhất, nhỏ nhất khi M đã chạy trên mặt cầu/đường tròn; dạng này chỉ HỎI chính tập hợp điểm (tâm, bán kính, chu vi).",
+   "ly_thuyet": "##TC Tập hợp điểm là mặt cầu, đường tròn\n• $MA^2+MB^2=k$: mặt cầu tâm $I$ là trung điểm $AB$, bán kính $R=\\sqrt{\\dfrac k2-\\dfrac{AB^2}4}$ (cần $\\dfrac k2>\\dfrac{AB^2}4$).\n• $MA=\\lambda\\,MB$ ($\\lambda>0$, $\\lambda\\ne1$): mặt cầu Apollonius, bán kính $R=\\dfrac{\\lambda\\cdot AB}{|\\lambda^2-1|}$.\n• $\\overrightarrow{MA}\\cdot\\overrightarrow{MB}=0$ (hay $\\widehat{AMB}=90^\\circ$): mặt cầu đường kính $AB$.\n• Hệ thức khác: khai triển bằng toạ độ về $x^2+y^2+z^2+2ax+2by+2cz+d=0$, $R^2=a^2+b^2+c^2-d$.\n• Mặt cầu $(I;R)$ cắt mặt phẳng cách $I$ một khoảng $h<R$ theo đường tròn bán kính $r=\\sqrt{R^2-h^2}$.\n• Mặt cầu qua hai điểm $A,B$ tiếp xúc $(P)$ tại $H$: với $K=AB\\cap(P)$ thì $KH^2=KA\\cdot KB$, nên $H$ thuộc đường tròn tâm $K$ bán kính $\\sqrt{KA\\cdot KB}$ nằm trong $(P)$.\n\n##PP Tìm tập hợp điểm\nGọi $M(x;y;z)$, khai triển hệ thức đề cho (bình phương khoảng cách, tích vô hướng) thành phương trình theo $x,y,z$.\nĐưa về dạng $x^2+y^2+z^2+2ax+2by+2cz+d=0$ và kiểm tra $R^2>0$; đề có thêm mặt phẳng thì tính $r=\\sqrt{R^2-h^2}$.\nVới tiếp điểm, hình chiếu: dựng điểm cố định $K$ và dùng phương tích hoặc hệ thức lượng.\nTrả lời theo yêu cầu: bán kính, chu vi $2\\pi r$, diện tích, độ dài đường ray.\n\n##CY\n• Trường hợp $\\lambda=1$ ($MA=MB$) tập hợp là mặt phẳng trung trực, không phải mặt cầu.\n• Khi bài hỏi tập hợp là mặt cầu hay đường tròn: phụ thuộc vào có mặt phẳng ràng buộc hay không.\n• Chu vi/độ dài đường ray $=2\\pi r$; đổi đơn vị trục nếu đề dùng mét hoặc km.",
+   "vi_du": "##VD\na) Trong không gian $Oxyz$ cho $A(1;0;-3)$, $B(-3;-2;-5)$. Tập hợp các điểm $M$ thoả $AM^2+BM^2=30$ là một mặt cầu $(S)$. Tìm bán kính của $(S)$. b) Cho hai điểm $A,B$ cố định có $AB=4$. Tập hợp các điểm $M$ thoả $MA=3MB$ là một mặt cầu. Tìm bán kính của mặt cầu đó.\n\nBài giải:\na) $AB^2=16+4+4=24$. Với $I$ là trung điểm $AB$: $MA^2+MB^2=2MI^2+\\dfrac{AB^2}2=2MI^2+12=30$, suy ra $MI^2=9$.\nVậy $(S)$ có bán kính $R=3$.\nb) Chọn $A(0;0;0)$, $B(4;0;0)$. Từ $MA^2=9MB^2$: $x^2+y^2+z^2=9\\left[(x-4)^2+y^2+z^2\\right]$, rút gọn $x^2+y^2+z^2-9x+18=0$.\n$R^2=\\dfrac{81}4-18=\\dfrac94$ nên $R=\\dfrac32$ (cũng bằng $\\dfrac{\\lambda AB}{\\lambda^2-1}=\\dfrac{12}8$).\n\n##VD\nTrong không gian $Oxyz$ cho mặt phẳng $(P):x-y+2z-15=0$ và hai điểm $A(-2;1;0)$, $B(2;1;3)$. Mặt cầu $(S)$ đi qua $A,B$ và tiếp xúc với $(P)$ tại điểm $H$. Biết $H$ luôn thuộc một đường tròn cố định, tìm bán kính của đường tròn đó.\n\nBài giải:\n$\\overrightarrow{AB}=(4;0;3)$, $AB=5$. Điểm $K=A+t\\overrightarrow{AB}=(-2+4t;1;3t)$ thuộc $(P)$ khi $(-2+4t)-1+6t-15=0$, tức $t=\\dfrac95$.\nVì $t>1$ nên $K$ nằm ngoài đoạn $AB$: $KA=t\\cdot AB=9$, $KB=(t-1)\\cdot AB=4$.\nDo $(P)$ tiếp xúc $(S)$ tại $H$ nên theo phương tích của $K$ đối với $(S)$: $KH^2=KA\\cdot KB=36$, suy ra $KH=6$.\n$H$ thuộc $(P)$ và cách $K$ cố định một khoảng $6$ nên $H$ chạy trên đường tròn tâm $K$ bán kính $6$.\nVậy bán kính bằng $6$.",
+   "dang_gan_nhat": "NDB02596 — không nhét được vì đó là bài tìm khoảng cách lớn nhất/nhỏ nhất sau khi nhận ra quỹ tích; ở đây bài hỏi chính tập hợp điểm (bán kính, chu vi); NDB00877 — chỉ bài mặt cầu tiếp xúc mặt phẳng cho trước, không có điểm tiếp xúc chạy.",
+   "ma_cau": [
+    "T312010309011",
+    "T312000000019",
+    "T312000000020",
+    "T312000000155",
+    "T312010301095",
+    "T312010706002"
+   ],
+   "cau_tieu_bieu": [
+    "T312000000019",
+    "T312000000020",
+    "T312010301095"
+   ]
+  },
+  {
+   "ten": "Điểm có tổng khoảng cách tới hai điểm cố định không đổi (elip): khoảng cách nhỏ nhất, lớn nhất",
+   "nhom_dat": "Cực trị trong không gian Oxyz",
+   "dat_sau": "NDB02599",
+   "thu_tu_trong_nhom": 1,
+   "muc_do": 4,
+   "mo_ta": "Điểm M thuộc mặt phẳng (Oxy) thoả MA+MB = 2a > AB (vệ tinh quỹ đạo elip có hai trạm tiêu điểm), hoặc đường thẳng Δ song song Oz mà tổng khoảng cách từ A, B tới Δ không đổi (giao điểm của Δ với (Oxy) chạy trên elip); hỏi MC nhỏ nhất, lớn nhất, độ dài trục hay khoảng cách ngắn nhất. Việc làm: tìm a, c=AB/2, b²=a²-c², phương trình chính tắc, tham số hoá M(a·cosφ; b·sinφ) rồi khảo sát hàm. Ranh giới: NDB02599 tham số hoá điểm trên ĐƯỜNG THẲNG (hàm bậc hai của t), còn đây điểm chạy trên ELIP (kiến thức elip lớp 10) nên hàm theo sinφ hoặc cosφ.",
+   "ly_thuyet": "##TC Elip trong mặt phẳng toạ độ\n• Tập hợp $M$ trong mặt phẳng thoả $MF_1+MF_2=2a$ với $F_1F_2=2c<2a$ là elip; $b^2=a^2-c^2$.\n• Khi $F_1(-c;0)$, $F_2(c;0)$: $\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}=1$, tham số hoá $M(a\\cos\\varphi;b\\sin\\varphi)$.\n• $M\\in(Oxy)$, $C$ có hình chiếu $C'$ lên $(Oxy)$: $MC^2=MC'^2+z_C^2$.\n• Đường thẳng $\\Delta\\parallel Oz$ cắt $(Oxy)$ tại $K$: $d(A,\\Delta)=KA'$ ($A'$ hình chiếu của $A$ lên $(Oxy)$); điều kiện $d(A,\\Delta)+d(B,\\Delta)=2a$ cho $K$ chạy trên elip nhận $A',B'$ làm tiêu điểm.\n• Khoảng cách từ $C'(x_0;y_0)$ đến $M$ trên elip: $MC'^2=a^2\\cos^2\\varphi+(b\\sin\\varphi-y_0)^2$, đưa về hàm bậc hai của $\\sin\\varphi$ trên $[-1;1]$.\n\n##PP Cực trị trên elip\nNhận ra $2a$ (tổng khoảng cách) và $2c$ (khoảng cách hai tiêu điểm), tính $b$; viết phương trình chính tắc (chọn hệ trục theo hai tiêu điểm).\nVới điểm $C$ ngoài mặt phẳng: tách $MC^2=MC'^2+z_C^2$.\nTham số hoá $M(a\\cos\\varphi;b\\sin\\varphi)$, đặt $s=\\sin\\varphi$ ($|s|\\le1$) và khảo sát hàm bậc hai theo $s$.\nTìm giá trị nhỏ nhất/lớn nhất và đổi về đại lượng đề hỏi.\n\n##CY\n• Phải kiểm tra điều kiện $2a>2c$ (tổng khoảng cách lớn hơn khoảng cách hai tiêu điểm).\n• Hàm theo $s=\\sin\\varphi$ chỉ xét trên $[-1;1]$: giá trị nhỏ nhất có thể ở đầu mút, không nhất thiết ở đỉnh parabol.\n• Hai tiêu điểm có thể không nằm trên trục toạ độ: tịnh tiến/xoay hệ trục trong mặt phẳng trước.",
+   "vi_du": "##VD\nTrong không gian $Oxyz$ cho $A(4;0;0)$, $B(-4;0;0)$, $C(0;6;1)$. Điểm $M$ thuộc mặt phẳng $(Oxy)$ sao cho $MA+MB=10$. Tìm giá trị nhỏ nhất của $MC$ (làm tròn đến hàng phần trăm).\n\nBài giải:\nTrong $(Oxy)$, $MA+MB=10=2a$ và $AB=8=2c$ nên $a=5$, $c=4$, $b^2=25-16=9$. Quỹ tích $M$ là elip $\\dfrac{x^2}{25}+\\dfrac{y^2}9=1$, $M(5\\cos\\varphi;3\\sin\\varphi;0)$.\nGọi $C'(0;6;0)$ là hình chiếu của $C$ lên $(Oxy)$ thì $MC^2=MC'^2+1$.\n$MC'^2=25\\cos^2\\varphi+(3\\sin\\varphi-6)^2=61-16s^2-36s$ với $s=\\sin\\varphi\\in[-1;1]$.\nHàm $g(s)=61-16s^2-36s$ có $g'(s)=-32s-36<0$ trên $[-1;1]$ nên giảm; nhỏ nhất tại $s=1$: $g(1)=9$.\n$MC_{\\min}=\\sqrt{9+1}=\\sqrt{10}\\approx3{,}16$.",
+   "dang_gan_nhat": "NDB02599 — không nhét được vì dạng đó cho điểm chạy trên đường thẳng (tham số hoá bậc hai), còn đây điểm chạy trên elip và cần phương trình chính tắc, tham số lượng giác.",
+   "ma_cau": [
+    "T312000000097",
+    "T312000000098",
+    "T312000000108",
+    "T312010401009"
+   ],
+   "cau_tieu_bieu": [
+    "T312010401009",
+    "T312000000097",
+    "T312000000108"
+   ]
+  },
+  {
+   "ten": "Toạ độ hoá hình khối (chóp, lăng trụ, lập phương): gắn hệ trục rồi tính thể tích, độ dài, khoảng cách, góc",
+   "nhom_dat": "NHÓM MỚI: Toạ độ hoá hình khối và mô hình thực tế",
+   "dat_sau": "NDB02599",
+   "thu_tu_trong_nhom": 1,
+   "muc_do": 3,
+   "mo_ta": "Đề cho hình chóp, lăng trụ, hình lập phương hoặc tứ diện (độ dài cạnh, góc vuông, điểm là trung điểm hay chia đoạn theo tỉ số), đôi khi đã gắn sẵn hệ trục; hỏi thể tích tứ diện, độ dài MN, khoảng cách, tính vuông góc hoặc song song, điểm di động làm diện tích nhỏ nhất, hay các khẳng định đúng/sai nhiều ý. Việc làm: chọn gốc tại đỉnh có ba cạnh đôi một vuông góc (hoặc tâm đáy), viết toạ độ đỉnh, tìm toạ độ các điểm phụ rồi áp dụng công thức toạ độ (tích có hướng, khoảng cách điểm–mặt phẳng, góc). Ranh giới: NDB02546–NDB02547 (bảng Đại, vectơ) dừng ở việc ghi toạ độ đỉnh; dạng này tiếp tục dùng PP toạ độ tính các đại lượng của hình không gian.",
+   "ly_thuyet": "##TC Gắn hệ trục vào hình khối\n• Chọn gốc tại đỉnh có ba cạnh đôi một vuông góc (hình lập phương, hộp, chóp có cạnh bên vuông góc đáy chữ nhật); chóp tứ giác đều: gốc tại tâm đáy, $Oz$ qua đỉnh; lăng trụ đều: gốc tại trung điểm một cạnh đáy.\n• Điểm chia đoạn: $\\overrightarrow{AM}=k\\overrightarrow{AB}\\Rightarrow M=A+k\\overrightarrow{AB}$; trung điểm và trọng tâm dùng trung bình cộng toạ độ.\n• Thể tích tứ diện $V_{ABCD}=\\dfrac16\\left|[\\overrightarrow{AB},\\overrightarrow{AC}]\\cdot\\overrightarrow{AD}\\right|$; pháp tuyến $(ABC)$ là $[\\overrightarrow{AB},\\overrightarrow{AC}]$; khoảng cách điểm–mặt phẳng $d(A,(P))=\\dfrac{|f(A)|}{|\\vec n|}$.\n• Vuông góc: $\\vec u\\cdot\\vec v=0$; song song: $\\vec u=k\\vec v$ hoặc $\\vec u\\cdot\\vec n=0$.\n• Điểm di động trên cạnh $AB$: $M=A+t\\overrightarrow{AB}$, $t\\in[0;1]$; diện tích hay độ dài trở thành hàm bậc hai của $t$.\n\n##PP Giải bài hình không gian bằng toạ độ\nChọn hệ trục thích hợp (gốc, ba trục theo ba đường vuông góc); nếu đề đã chọn thì dùng đúng hệ đó.\nTính toạ độ các đỉnh, rồi các điểm phụ (trung điểm, điểm chia theo tỉ số, điểm đối xứng).\nDịch yêu cầu sang toạ độ: thể tích bằng tích hỗn tạp, khoảng cách bằng công thức, vuông góc bằng tích vô hướng, cực trị bằng tham số hoá.\nĐối chiếu với từng khẳng định (bài đúng/sai) hoặc tính đại lượng đề hỏi.\n\n##CY\n• Chọn gốc sai làm toạ độ đỉnh lệch; ưu tiên gốc tại đỉnh vuông để nhiều toạ độ bằng $0$.\n• Chóp có cạnh bên vuông góc đáy: $S$ nằm trên $Oz$ qua chân đường cao; tam giác đều cạnh $a$ có đường cao $\\dfrac{a\\sqrt3}2$.\n• Thể tích khối đa diện không phải tứ diện: chia thành các tứ diện hoặc dùng công thức thể tích hình hộp.\n• Đề \"như hình vẽ\": kiểm tra hình có kèm theo; không được tự đoán vị trí trục.",
+   "vi_du": "##VD\nCho hình lập phương $ABCD.A'B'C'D'$ có cạnh bằng $1$. Gọi $M,N,P,Q$ lần lượt là trung điểm của $AB$, $BC$, $C'D'$, $DD'$. Tính thể tích khối tứ diện $MNPQ$.\n\nBài giải:\nChọn hệ trục $A(0;0;0)$, $B(1;0;0)$, $D(0;1;0)$, $A'(0;0;1)$; khi đó $C(1;1;0)$, $C'(1;1;1)$, $D'(0;1;1)$.\n$M\\left(\\dfrac12;0;0\\right)$, $N\\left(1;\\dfrac12;0\\right)$, $P\\left(\\dfrac12;1;1\\right)$, $Q\\left(0;1;\\dfrac12\\right)$.\n$\\overrightarrow{MN}=\\left(\\dfrac12;\\dfrac12;0\\right)$, $\\overrightarrow{MP}=(0;1;1)$, $\\overrightarrow{MQ}=\\left(-\\dfrac12;1;\\dfrac12\\right)$.\n$[\\overrightarrow{MN},\\overrightarrow{MP}]=\\left(\\dfrac12;-\\dfrac12;\\dfrac12\\right)$, nhân với $\\overrightarrow{MQ}$ được $-\\dfrac14-\\dfrac12+\\dfrac14=-\\dfrac12$.\n$V=\\dfrac16\\cdot\\dfrac12=\\dfrac1{12}$.\n\n##VD\nCho hình lập phương $ABCD.EFGH$ có cạnh bằng $4$ ($ABCD$ là đáy, $E$ ở trên $A$). Gọi $d$ là đường thẳng đi qua trọng tâm của tứ diện $EABD$, cắt đường thẳng $AE$ tại $M$ và song song với mặt phẳng $(EBD)$. Tính $AM$.\n\nBài giải:\nChọn $A(0;0;0)$, $B(4;0;0)$, $D(0;4;0)$, $E(0;0;4)$. Trọng tâm $G$ của tứ diện $EABD$ là $G(1;1;1)$.\nMặt phẳng $(EBD)$ có phương trình $x+y+z-4=0$, pháp tuyến $\\vec n=(1;1;1)$.\n$M\\in AE$ nên $M(0;0;m)$, $\\overrightarrow{GM}=(-1;-1;m-1)$.\n$d\\parallel(EBD)$ (và $G\\notin(EBD)$) nên $\\overrightarrow{GM}\\cdot\\vec n=0$: $-1-1+m-1=0$, suy ra $m=3$.\nVậy $AM=3$.",
+   "dang_gan_nhat": "NDB02546/NDB02547 (bảng Đại) — không nhét được vì chỉ ghi toạ độ đỉnh, không tiếp tục tính thể tích, khoảng cách, góc; NDB02598/NDB02599 — chỉ bài tối ưu với mặt phẳng, điểm chạy trên đường thẳng cho trước, không có bước gắn hệ trục vào hình khối.",
+   "ma_cau": [
+    "T312000000009",
+    "T312000000010",
+    "T312000000013",
+    "T312000000014",
+    "T312000000055",
+    "T312000000056",
+    "T312000000057",
+    "T312010202034",
+    "T312010901001",
+    "T312000000164",
+    "T312000000227",
+    "T312010201098"
+   ],
+   "cau_tieu_bieu": [
+    "T312000000009",
+    "T312010202034",
+    "T312000000055"
+   ]
+  },
+  {
+   "ten": "Mô hình công trình có mặt phẳng nghiêng (mái nhà, kho, lều, khán đài, đáy bể): lập toạ độ, viết phương trình mặt phẳng, tính góc và khoảng cách",
+   "nhom_dat": "NHÓM MỚI: Toạ độ hoá hình khối và mô hình thực tế",
+   "dat_sau": "NDB02599",
+   "thu_tu_trong_nhom": 2,
+   "muc_do": 3,
+   "mo_ta": "Nhà thân hình hộp có mái, kho hình lăng trụ, lều chóp, tầng nhà chóp cụt, căn phòng có công tắc–bóng đèn, khán đài sân vận động, đáy bể nghiêng, hộp gắn hệ trục sẵn. Đề hỏi toạ độ các điểm đặc biệt (đỉnh mái, đường dông), phương trình mặt phẳng mái/tường/đáy, góc giữa mái và sàn hoặc góc nhị diện giữa hai mái, khoảng cách từ bóng đèn, ổ cắm tới mái, độ dài dây ngắn nhất, thường là bài đúng/sai nhiều ý. Việc làm: đọc kích thước thành toạ độ (sàn là (Oxy)), viết mặt phẳng qua 3 điểm, dùng công thức góc và khoảng cách. Ranh giới: NDB02563 (bảng Đại, vectơ) chỉ tính khoảng cách, góc bằng vectơ, không có phương trình mặt phẳng; dạng này bắt buộc dùng phương trình mặt phẳng mái/tường/đáy.",
+   "ly_thuyet": "##TC Toạ độ hoá công trình có mặt nghiêng\n• Chọn gốc tại một góc nhà ở sàn: sàn là $(Oxy)$, hai tường kề là $(Oxz)$, $(Oyz)$, trục $Oz$ hướng lên; chiều dài, rộng, cao trở thành toạ độ.\n• Mái dốc đối xứng hai phía: đỉnh đường dông nằm trên mặt phẳng đứng cách đều hai tường đối diện; cao độ đỉnh $=$ chiều cao tường $+$ độ nhô lên của mái.\n• Mặt phẳng qua ba điểm $A,B,C$: $\\vec n=[\\overrightarrow{AB},\\overrightarrow{AC}]$, phương trình $\\vec n\\cdot\\overrightarrow{AX}=0$.\n• Góc giữa hai mặt phẳng: $\\cos\\varphi=\\dfrac{|\\vec n_1\\cdot\\vec n_2|}{|\\vec n_1||\\vec n_2|}$ ($0^\\circ\\le\\varphi\\le90^\\circ$); góc nhị diện ở đường dông là $\\varphi$ hoặc $180^\\circ-\\varphi$ tuỳ góc nhìn từ phía trong hay phía ngoài.\n• Góc mái–sàn $(Oxy)$: $\\cos\\varphi=\\dfrac{|C|}{\\sqrt{A^2+B^2+C^2}}$; khoảng cách điểm–mái $d(M,(P))=\\dfrac{|Ax_0+By_0+Cz_0+D|}{\\sqrt{A^2+B^2+C^2}}$.\n\n##PP Giải bài công trình\nChọn hệ trục (nếu đề đã cho hình và trục thì dùng đúng trục đó), đọc toạ độ các đỉnh tường, đỉnh mái.\nViết phương trình mặt phẳng mái/tường bằng ba điểm; kiểm tra các điểm còn lại thuộc mặt phẳng.\nTính góc giữa mái và sàn, góc giữa hai mái, khoảng cách từ điểm (đèn, ổ cắm) đến mái.\nĐọc từng khẳng định đúng/sai hoặc giá trị đề hỏi và kết luận; đổi đơn vị trục nếu cần.\n\n##CY\n• Góc nhị diện giữa hai mái là góc tù khi nhìn từ trong nhà; nếu dùng $\\cos\\varphi$ với giá trị tuyệt đối sẽ ra góc nhọn bù: cần đổi $180^\\circ-\\varphi$.\n• Đề có \"hình vẽ\": toạ độ đỉnh phụ thuộc cách đặt trục trong hình, phải đọc từ hình hoặc từ câu mô tả trục.\n• Chi phí, diện tích mái: diện tích mái $=$ chiều dài$\\times$ độ dài dốc, không phải diện tích hình chiếu.\n• Dây căng ngắn nhất giữa hai điểm qua mặt phẳng: dùng đối xứng qua mặt phẳng (NDB02595).",
+   "vi_du": "##VD\nMột ngôi nhà có thân là hình hộp chữ nhật $ABCD.EFGH$ với $AB=6$ m, $AD=8$ m, $AE=5$ m ($ABCD$ là nền). Mái nhà là hai hình chữ nhật $PEHQ$ và $PFGQ$ với đường dông $PQ$ cao $7$ m so với nền, $P$ nằm trên mặt phẳng đứng đi qua trung điểm $EF$. Chọn hệ trục $O\\equiv A$, $B\\in Ox$, $D\\in Oy$, $E\\in Oz$ (đơn vị: mét). a) Viết phương trình mặt phẳng $(PEHQ)$. b) Tính góc giữa mái $(PEHQ)$ và nền nhà. c) Tính góc nhị diện giữa hai mái tại đường dông $PQ$ (góc phía trong nhà). d) Một đèn treo tại $I(3;4;5)$; tính khoảng cách từ $I$ đến mái $(PEHQ)$.\n\nBài giải:\nToạ độ: $E(0;0;5)$, $F(6;0;5)$, $H(0;8;5)$, $G(6;8;5)$, $P(3;0;7)$, $Q(3;8;7)$.\na) $\\overrightarrow{EH}=(0;8;0)$, $\\overrightarrow{EP}=(3;0;2)$, $[\\overrightarrow{EH},\\overrightarrow{EP}]=(16;0;-24)$, chọn $\\vec n=(2;0;-3)$.\n$(PEHQ):2x-3(z-5)=0$, tức $2x-3z+15=0$ (kiểm tra $P$: $6-21+15=0$).\nb) Nền $(Oxy)$ có pháp tuyến $(0;0;1)$: $\\cos\\varphi=\\dfrac{|-3|}{\\sqrt{13}}=\\dfrac{3}{\\sqrt{13}}$, nên $\\varphi\\approx33{,}69^\\circ$.\nc) Mái $(PFGQ):2x+3z-27=0$ có $\\vec n'=(2;0;3)$. $\\cos=\\dfrac{|4-9|}{13}=\\dfrac5{13}$ cho góc nhọn giữa hai mặt phẳng $\\approx67{,}38^\\circ$; hai mái dốc đối xứng nên góc nhị diện ở đường dông là $180^\\circ-2\\cdot33{,}69^\\circ\\approx112{,}62^\\circ$ (bù với $67{,}38^\\circ$).\nd) $d(I,(PEHQ))=\\dfrac{|2\\cdot3-3\\cdot5+15|}{\\sqrt{13}}=\\dfrac6{\\sqrt{13}}\\approx1{,}66$ (m).",
+   "dang_gan_nhat": "NDB02563 (bảng Đại) — không nhét được vì chỉ tính khoảng cách, góc bằng vectơ, không viết phương trình mặt phẳng mái/tường; NDB00849 và NDB00857 — chỉ là các bước thành phần (mặt phẳng qua 3 điểm, góc hai mặt phẳng), bài này phải dựng toạ độ từ kích thước công trình rồi phối hợp.",
+   "ma_cau": [
+    "T312000000065",
+    "T312000000068",
+    "T312000000083",
+    "T312000000102",
+    "T312000000116",
+    "T312000000120",
+    "T312000000161",
+    "T312010101174",
+    "T312010101142",
+    "T312010101165",
+    "T312010101151",
+    "T312010101171",
+    "T312010107023"
+   ],
+   "cau_tieu_bieu": [
+    "T312000000065",
+    "T312000000120",
+    "T312010101151"
+   ]
+  },
+  {
+   "ten": "Tính thể tích khối đa diện có đỉnh là giao điểm, trung điểm (giao đường thẳng–mặt phẳng, chia khối thành tứ diện)",
+   "nhom_dat": "NHÓM MỚI: Toạ độ hoá hình khối và mô hình thực tế",
+   "dat_sau": "NDB02599",
+   "thu_tu_trong_nhom": 3,
+   "muc_do": 3,
+   "mo_ta": "Cho toạ độ vài đỉnh của khối chóp, khối hộp, hoặc các mặt phẳng song song (hai lớp kính, hai mặt phẳng) cắt bởi tập hợp đường thẳng cùng phương; các đỉnh còn lại là giao điểm của đường thẳng với mặt phẳng, trung điểm, đỉnh suy ra từ hệ thức vectơ (hình hộp). Đề hỏi thể tích khối đa diện. Việc làm: tìm toạ độ các đỉnh còn thiếu rồi chia khối thành các tứ diện (V=1/6·|[AB,AC]·AD|) hoặc dùng V_hộp=|[AB,AD]·AA'|. Ranh giới: NDB02558 (bảng Đại) chỉ tính thể tích khi đã cho đủ toạ độ đỉnh; ở đây phải tự tìm đỉnh bằng giao điểm đường thẳng–mặt phẳng (NDB00872).",
+   "ly_thuyet": "##TC Thể tích khối đa diện bằng toạ độ\n• Tứ diện: $V=\\dfrac16\\left|[\\overrightarrow{AB},\\overrightarrow{AC}]\\cdot\\overrightarrow{AD}\\right|$; hình hộp $ABCD.A'B'C'D'$: $V=\\left|[\\overrightarrow{AB},\\overrightarrow{AD}]\\cdot\\overrightarrow{AA'}\\right|$.\n• Giao điểm đường thẳng và mặt phẳng: thay phương trình tham số của đường thẳng vào phương trình mặt phẳng để tìm tham số.\n• Khối chóp có đáy là tứ giác phẳng $ABCD$ đỉnh $S$: $V_{S.ABCD}=V_{S.ABC}+V_{S.ACD}$ (chia theo đường chéo).\n• Hình hộp: biết $B,C',\\ldots$ thuộc các đường thẳng cho trước thì dùng hệ thức vectơ $\\overrightarrow{AB}=\\overrightarrow{DC}$, $\\overrightarrow{AA'}=\\overrightarrow{BB'}=\\ldots$ để tìm các đỉnh.\n\n##PP Tính thể tích khối đa diện\nXác định các đỉnh đã cho và các đỉnh phải tìm (giao điểm, trung điểm, đỉnh suy ra từ hệ thức).\nTìm toạ độ các đỉnh còn thiếu: giao điểm $\\Rightarrow$ giải phương trình theo tham số; đỉnh hình hộp $\\Rightarrow$ hệ thức vectơ.\nChia khối thành các tứ diện có chung đỉnh (hoặc dùng công thức hình hộp), tính từng thể tích bằng tích hỗn tạp.\nCộng các thể tích, đổi đơn vị nếu cần.\n\n##CY\n• Chia khối theo đường chéo của đáy tứ giác, không chia tuỳ ý (các tam giác phải phủ kín đáy mà không chồng nhau).\n• Tứ giác đáy phải phẳng (kiểm tra bốn điểm đồng phẳng) trước khi chia.\n• Các đường thẳng song song cắt hai mặt phẳng song song cho các đoạn có chiều dài bằng nhau: khối là hình lăng trụ.",
+   "vi_du": "##VD\nTrong không gian $Oxyz$ cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình thoi, $AC$ cắt $BD$ tại gốc toạ độ $O$. Biết $A(2;0;0)$, $B(0;1;0)$, $S(0;0;2\\sqrt2)$. Gọi $M$ là trung điểm cạnh $SC$. Mặt phẳng $(ABM)$ cắt đường thẳng $SD$ tại $N$. Tính thể tích khối chóp $S.ABMN$.\n\nBài giải:\n$O$ là trung điểm $AC$ và $BD$ nên $C(-2;0;0)$, $D(0;-1;0)$, và $M$ là trung điểm $SC$: $M(-1;0;\\sqrt2)$.\n$\\overrightarrow{AB}=(-2;1;0)$, $\\overrightarrow{AM}=(-3;0;\\sqrt2)$, $[\\overrightarrow{AB},\\overrightarrow{AM}]=(\\sqrt2;2\\sqrt2;3)$, nên $(ABM):\\sqrt2(x-2)+2\\sqrt2y+3z=0$.\n$N\\in SD$: $N=S+s\\overrightarrow{SD}=(0;-s;2\\sqrt2(1-s))$. Thay vào: $-2\\sqrt2-2\\sqrt2s+6\\sqrt2(1-s)=0$, suy ra $s=\\dfrac12$ và $N\\left(0;-\\dfrac12;\\sqrt2\\right)$.\nChia khối theo đường chéo $AM$: $V_{S.ABMN}=V_{S.ABM}+V_{S.AMN}$.\n$\\overrightarrow{SA}=(2;0;-2\\sqrt2)$, $\\overrightarrow{SB}=(0;1;-2\\sqrt2)$, $\\overrightarrow{SM}=(-1;0;-\\sqrt2)$, $\\overrightarrow{SN}=\\left(0;-\\dfrac12;-\\sqrt2\\right)$.\n$[\\overrightarrow{SA},\\overrightarrow{SB}]=(2\\sqrt2;4\\sqrt2;2)$, nhân $\\overrightarrow{SM}$ được $-4\\sqrt2$, nên $V_{S.ABM}=\\dfrac{4\\sqrt2}6=\\dfrac{2\\sqrt2}3$.\n$[\\overrightarrow{SA},\\overrightarrow{SM}]=(0;4\\sqrt2;0)$, nhân $\\overrightarrow{SN}$ được $-2\\sqrt2$, nên $V_{S.AMN}=\\dfrac{2\\sqrt2}6=\\dfrac{\\sqrt2}3$.\nVậy $V=\\dfrac{2\\sqrt2}3+\\dfrac{\\sqrt2}3=\\sqrt2$.",
+   "dang_gan_nhat": "NDB02558 (bảng Đại) — không nhét được vì chỉ tính thể tích khi đã cho đủ toạ độ đỉnh; NDB00872 — chỉ là bước tìm giao điểm, chưa tính thể tích.",
+   "ma_cau": [
+    "T312010505006",
+    "T312000000011",
+    "T312000000012",
+    "T312000000110"
+   ],
+   "cau_tieu_bieu": [
+    "T312000000011",
+    "T312010505006",
+    "T312000000110"
+   ]
+  },
+  {
+   "ten": "Hai điểm chuyển động đều trên các cạnh của hình khối: khoảng cách nhỏ nhất, thời điểm gần nhau nhất",
+   "nhom_dat": "NHÓM MỚI: Toạ độ hoá hình khối và mô hình thực tế",
+   "dat_sau": "NDB02599",
+   "thu_tu_trong_nhom": 4,
+   "muc_do": 4,
+   "mo_ta": "Hai chú kiến (hoặc hai chất điểm) xuất phát cùng lúc từ hai đỉnh của hình lập phương, hình hộp, hình lăng trụ và đi thẳng đều trên hai đoạn khác nhau (đường chéo mặt, cạnh, đường nối đỉnh với trung điểm) với vận tốc cho trước; hỏi khoảng cách ngắn nhất giữa chúng, thời điểm chúng gần nhau nhất, hay khoảng cách khi một con tới đích. Việc làm: gắn hệ trục, viết toạ độ hai điểm theo thời gian t (vị trí = đỉnh xuất phát + (v·t/độ dài đoạn)·vectơ), lập d²(t) bậc hai và tìm nhỏ nhất tại đỉnh parabol (kiểm tra t trong đoạn cho phép). Ranh giới: NDB02566 (bảng Đại) là chuyển động trong không gian mở (máy bay, flycam) với toạ độ cho sẵn; ở đây phải tự gắn hệ trục vào hình khối. NDB02599 có điểm chạy theo tham số trên đường thẳng, còn đây là HAI điểm cùng thời gian t.",
+   "ly_thuyet": "##TC Hai điểm chuyển động trên hình khối\n• Điểm chuyển động thẳng đều từ $A$ tới $B$ với vận tốc $v$: sau thời gian $t$ ở vị trí $M(t)=A+\\dfrac{v\\,t}{AB}\\overrightarrow{AB}$, với $0\\le t\\le\\dfrac{AB}{v}$.\n• Khoảng cách hai điểm $M_1(t)$, $M_2(t)$: $d^2(t)=|M_1M_2|^2=\\alpha t^2+\\beta t+\\gamma$ (hàm bậc hai của $t$ khi cả hai chuyển động thẳng đều).\n• Nếu $\\alpha>0$: $d^2$ nhỏ nhất tại $t_0=-\\dfrac{\\beta}{2\\alpha}$ và bằng $\\gamma-\\dfrac{\\beta^2}{4\\alpha}$, với điều kiện $t_0$ nằm trong khoảng thời gian cả hai còn đi.\n• Quãng đường theo thời gian: $s=vt$; đoạn đường đi cho bởi đường chéo mặt hay cạnh có độ dài tính bằng toạ độ.\n\n##PP Hai điểm chuyển động trong hình khối\nGắn hệ trục, tính toạ độ các đỉnh xuất phát và đích, độ dài các đoạn.\nViết $M_1(t)$, $M_2(t)$ theo công thức trên.\nLập $d^2(t)$, rút gọn về $\\alpha t^2+\\beta t+\\gamma$; tìm $t_0$ và kiểm tra $0\\le t_0\\le T$ ($T$ là thời gian ngắn hơn trong hai chuyến đi).\nTính khoảng cách ngắn nhất (hoặc đáp số thời điểm), làm tròn theo đề.\n\n##CY\n• Nếu $t_0$ nằm ngoài khoảng cho phép thì cực tiểu đạt tại đầu mút của khoảng.\n• Cùng thời điểm xuất phát nhưng vận tốc và độ dài đoạn khác nhau: thời gian đi hết đoạn khác nhau.\n• Có thể bỏ căn khi so sánh: chỉ cần cực tiểu của $d^2$.",
+   "vi_du": "##VD\nCho hình lập phương $ABCD.A'B'C'D'$ có cạnh bằng $20$ cm. Hai chú kiến vàng và đen xuất phát cùng lúc tại $A$ và $D$: kiến vàng đi thẳng từ $A$ đến $D'$ với vận tốc $2$ cm/s, kiến đen đi thẳng từ $D$ đến $B$ với vận tốc $3$ cm/s. Tìm khoảng cách ngắn nhất giữa hai chú kiến (làm tròn đến hàng phần chục).\n\nBài giải:\nChọn $A(0;0;0)$, $B(20;0;0)$, $D(0;20;0)$, $D'(0;20;20)$. Khi đó $AD'=DB=20\\sqrt2$.\nSau $t$ giây kiến vàng ở $Y=\\dfrac{2t}{20\\sqrt2}\\overrightarrow{AD'}=\\left(0;\\sqrt2t;\\sqrt2t\\right)$.\nKiến đen ở $K=D+\\dfrac{3t}{20\\sqrt2}\\overrightarrow{DB}=\\left(\\dfrac{3t}{\\sqrt2};20-\\dfrac{3t}{\\sqrt2};0\\right)$.\n$YK^2=\\dfrac{9t^2}2+\\left(20-\\dfrac{5t}{\\sqrt2}\\right)^2+2t^2=19t^2-100\\sqrt2\\,t+400$.\nNhỏ nhất tại $t_0=\\dfrac{50\\sqrt2}{19}\\approx3{,}72$ s (nằm trong $\\left[0;\\dfrac{20\\sqrt2}3\\right]$): $YK^2_{\\min}=400-\\dfrac{5000}{19}=\\dfrac{2600}{19}$.\nVậy khoảng cách ngắn nhất $\\sqrt{\\dfrac{2600}{19}}\\approx11{,}7$ cm.",
+   "dang_gan_nhat": "NDB02566 (bảng Đại) — không nhét được vì chuyển động ở đó trong không gian với toạ độ cho sẵn, không phải trên các đoạn của hình khối phải tự gắn hệ trục; NDB02599 — chỉ một điểm chạy trên đường thẳng, không có hai điểm cùng thời gian t.",
+   "ma_cau": [
+    "T312010802022",
+    "T312010802023",
+    "T312010802044",
+    "T312010802058",
+    "T312010802066"
+   ],
+   "cau_tieu_bieu": [
+    "T312010802044",
+    "T312010802066",
+    "T312010802023"
+   ]
+  },
+  {
+   "ten": "Quỹ đạo parabol của vật ném trong mặt phẳng thẳng đứng: độ cao lớn nhất, độ cao tại một vị trí",
+   "nhom_dat": "NHÓM MỚI: Toạ độ hoá hình khối và mô hình thực tế",
+   "dat_sau": "NDB02599",
+   "thu_tu_trong_nhom": 5,
+   "muc_do": 3,
+   "mo_ta": "Quả bóng (bóng đá xe đạp chổng ngược, ném bóng rổ, bóng nảy) bay theo quỹ đạo parabol nằm trong mặt phẳng thẳng đứng đi qua điểm xuất phát và điểm rơi; mặt đất là (Oxy). Đề hỏi độ cao lớn nhất, độ cao khi qua khung thành/vành rổ hoặc vị trí hình chiếu, tổng quãng đường sau nhiều lần nảy. Việc làm: tìm mặt phẳng thẳng đứng chứa quỹ đạo, đặt toạ độ phẳng (s; z) với s là khoảng cách ngang từ điểm xuất phát, lập parabol z=as²+bs+c qua các điểm đã biết rồi tính đỉnh. Ranh giới: là bài ứng dụng thực tế dùng PP toạ độ để quy về hàm bậc hai trong mặt phẳng; không trùng dạng nào trong bảng.",
+   "ly_thuyet": "##TC Parabol trong mặt phẳng thẳng đứng\n• Quỹ đạo nằm trong mặt phẳng thẳng đứng (chứa điểm ném $A$ và điểm rơi $B$ trên mặt đất): chọn toạ độ phẳng $(s;z)$, $s$ là khoảng cách ngang tính từ $A$ (bằng độ dài hình chiếu), $z$ là độ cao.\n• Parabol $z=as^2+bs+c$ với $a<0$; đỉnh tại $s_0=-\\dfrac{b}{2a}$, độ cao lớn nhất $z_{\\max}=-\\dfrac{b^2-4ac}{4a}$.\n• Qua điểm ném ($s=0$) và điểm rơi ($s=L$, $z=0$, $L$ là khoảng cách ngang giữa hai điểm): $z=a\\,s(s-L)$ nếu $A$ ở độ cao $0$.\n• Khoảng cách ngang từ $A$ đến một điểm có hình chiếu $(x_0;y_0)$: $s=\\sqrt{(x_0-x_A)^2+(y_0-y_A)^2}$.\n\n##PP Giải bài quỹ đạo parabol\nTính khoảng cách ngang $L$ giữa điểm ném và điểm rơi (hình chiếu lên $(Oxy)$).\nĐặt phương trình $z=as^2+bs+c$ và dùng các điểm đã biết (điểm ném, điểm rơi, điểm trung gian, đỉnh) để tìm $a,b,c$.\nTính độ cao lớn nhất hoặc độ cao tại $s$ ứng với vị trí đề hỏi (đổi toạ độ điểm thành $s$).\nVới bóng nảy nhiều lần: mỗi lần là một parabol với độ cao cực đại và tầm xa nhân một hệ số cho trước.\n\n##CY\n• Mặt phẳng chứa quỹ đạo thẳng đứng nên chiều ngang là khoảng cách trong $(Oxy)$, không phải một toạ độ riêng lẻ $x$ hay $y$.\n• Quả bóng ném lên từ độ cao ban đầu $h_0$: $c=h_0$.\n• Đơn vị: đọc đúng đơn vị trục (mét, centimét) trước khi kết luận.",
+   "vi_du": "##VD\nMặt đất là mặt phẳng $(Oxy)$ (đơn vị: mét). Một quả bóng được đá từ $A(0;0;0)$, bay trong một mặt phẳng thẳng đứng rồi rơi xuống đất tại $B(12;16;0)$. Khi quả bóng cách $A$ một khoảng $5$ m theo phương ngang thì ở độ cao $3{,}75$ m. a) Tìm độ cao lớn nhất của quả bóng. b) Quả bóng ở độ cao bao nhiêu khi bay qua vị trí có hình chiếu trên mặt đất là $(9;12)$?\n\nBài giải:\nKhoảng cách ngang $L=AB'=\\sqrt{12^2+16^2}=20$, nên đặt toạ độ phẳng $(s;z)$ với parabol qua $(0;0)$ và $(20;0)$: $z=a\\,s(s-20)$.\nĐiểm $(5;3{,}75)$ thuộc parabol: $a\\cdot5\\cdot(-15)=3{,}75$, suy ra $a=-0{,}05$ và $z=-0{,}05s^2+s$.\na) Đỉnh tại $s_0=10$: $z_{\\max}=-0{,}05\\cdot100+10=5$ m.\nb) Vị trí $(9;12)$ cách $A$ theo phương ngang $s=\\sqrt{81+144}=15$, nên $z=-0{,}05\\cdot225+15=3{,}75$ m.",
+   "dang_gan_nhat": "NDB00849 (mặt phẳng qua 3 điểm) và nhóm tìm điểm — không nhét được vì bài chủ yếu là quy về parabol bậc hai trong mặt phẳng đứng, không phải viết phương trình mặt phẳng hay tìm điểm.",
+   "ma_cau": [
+    "T312010802027",
+    "T312010802053",
+    "T312010802061",
+    "T312000000131"
+   ],
+   "cau_tieu_bieu": [
+    "T312010802027",
+    "T312000000131",
+    "T312010802061"
+   ]
+  }
+ ],
+ "khop_dang_co": [
+  {
+   "ma_cau": "T312010801011",
+   "dang_bai_id": "NDB02594",
+   "ly_do": "mặt phẳng chứa d tạo góc nhỏ nhất với (Q) rồi tính khoảng cách — đúng ví dụ NDB02594"
+  },
+  {
+   "ma_cau": "T312000000062",
+   "dang_bai_id": "NDB02594",
+   "ly_do": "đường thẳng nằm trong mặt phẳng qua M tạo góc nhỏ nhất với d"
+  },
+  {
+   "ma_cau": "T312000000189",
+   "dang_bai_id": "NDB02594",
+   "ly_do": "mặt phẳng chứa d tạo góc lớn nhất với Δ"
+  },
+  {
+   "ma_cau": "T312010210004",
+   "dang_bai_id": "NDB02594",
+   "ly_do": "đường thẳng trong mặt phẳng, cắt d1, tạo góc nhỏ nhất với d"
+  },
+  {
+   "ma_cau": "T312010602016",
+   "dang_bai_id": "NDB02594",
+   "ly_do": "mặt phẳng (Q) chứa tham số m tạo góc lớn nhất với d"
+  },
+  {
+   "ma_cau": "T312010210001",
+   "dang_bai_id": "NDB02594",
+   "ly_do": "đường thẳng qua A, cắt Δ1 (nằm trong mặt phẳng (A,Δ1)) tạo góc nhỏ nhất với Δ2"
+  },
+  {
+   "ma_cau": "T312010802006",
+   "dang_bai_id": "NDB02595",
+   "ly_do": "AM+MB nhỏ nhất, M∈(P): đối xứng qua mặt phẳng (đường ống thực tế)"
+  },
+  {
+   "ma_cau": "T312010802008",
+   "dang_bai_id": "NDB02595",
+   "ly_do": "tổng khoảng cách hai drone đến điểm trên mặt đất: đối xứng qua (Oxy)"
+  },
+  {
+   "ma_cau": "T312010802009",
+   "dang_bai_id": "NDB02595",
+   "ly_do": "chu vi tam giác ABC nhỏ nhất, B∈d, C∈mặt đất: lấy đối xứng hai lần"
+  },
+  {
+   "ma_cau": "T312000000074",
+   "dang_bai_id": "NDB02595",
+   "ly_do": "trùng 30: chu vi AB+BC+CA, đường ống dầu"
+  },
+  {
+   "ma_cau": "T312000000128",
+   "dang_bai_id": "NDB02595",
+   "ly_do": "tổng khoảng cách từ điểm trên mặt đất tới hai flycam: đối xứng qua (Oxy)"
+  },
+  {
+   "ma_cau": "T312000000217",
+   "dang_bai_id": "NDB02595",
+   "ly_do": "AM+MB nhỏ nhất, M∈(Oxy): đối xứng"
+  },
+  {
+   "ma_cau": "T312000000226",
+   "dang_bai_id": "NDB02595",
+   "ly_do": "con ong bay qua (Oxy) rồi (P) y−z=0, đúng ví dụ NDB02595 (thêm đoạn bò 2 dm)"
+  },
+  {
+   "ma_cau": "T312010107067",
+   "dang_bai_id": "NDB02595",
+   "ly_do": "|MB−MA| lớn nhất, M∈(P): cùng kĩ thuật đối xứng với dạng tổng"
+  },
+  {
+   "ma_cau": "T312010107049",
+   "dang_bai_id": "NDB02595",
+   "ly_do": "MA+MB nhỏ nhất, M∈(P)"
+  },
+  {
+   "ma_cau": "T312010107050",
+   "dang_bai_id": "NDB02595",
+   "ly_do": "|MA−MB| lớn nhất, M∈(P): cùng kĩ thuật đối xứng"
+  },
+  {
+   "ma_cau": "T312010107092",
+   "dang_bai_id": "NDB02595",
+   "ly_do": "MA+MB nhỏ nhất, M∈(P), tính OM"
+  },
+  {
+   "ma_cau": "T312010803010",
+   "dang_bai_id": "NDB02596",
+   "ly_do": "mặt cầu qua A, B tiếp xúc mặt đất: tiếp điểm C chạy trên đường tròn, tìm OC lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T312000000071",
+   "dang_bai_id": "NDB02596",
+   "ly_do": "hình chiếu H của A lên mặt phẳng quay quanh d chạy trên đường tròn, tìm OH lớn nhất (nêu đúng trong mô tả NDB02596)"
+  },
+  {
+   "ma_cau": "T312000000079",
+   "dang_bai_id": "NDB02596",
+   "ly_do": "tia laser tạo góc 60° với Ox: OM lớn nhất — đúng ví dụ NDB02596"
+  },
+  {
+   "ma_cau": "T312000000105",
+   "dang_bai_id": "NDB02596",
+   "ly_do": "MB²+MC²=30 ⇒ M trên mặt cầu; N trong (P) với diện tích AIN cho trước; tìm MN lớn nhất"
+  },
+  {
+   "ma_cau": "T312000000144",
+   "dang_bai_id": "NDB02596",
+   "ly_do": "M trên đường tròn quanh d, N trên đường tròn Apollonius trong (P): tìm MN nhỏ nhất"
+  },
+  {
+   "ma_cau": "T312000000150",
+   "dang_bai_id": "NDB02596",
+   "ly_do": "điểm trên mặt đất sao cho hai tia tạo với mặt đất các góc phụ nhau: quỹ tích đường tròn rồi tìm khoảng cách lớn nhất"
+  },
+  {
+   "ma_cau": "T312000000174",
+   "dang_bai_id": "NDB02596",
+   "ly_do": "tia laser tạo góc 45° với Ox: khoảng cách lớn nhất — đúng ví dụ NDB02596"
+  },
+  {
+   "ma_cau": "T312000000201",
+   "dang_bai_id": "NDB02596",
+   "ly_do": "MA=√2MB, M∈(P): quỹ tích đường tròn, tìm EM lớn nhất"
+  },
+  {
+   "ma_cau": "T312010107065",
+   "dang_bai_id": "NDB02596",
+   "ly_do": "tam giác MAB vuông tại M, M∈(P): quỹ tích đường tròn, diện tích lớn nhất"
+  },
+  {
+   "ma_cau": "T312010107064",
+   "dang_bai_id": "NDB02596",
+   "ly_do": "tam giác MAB vuông tại M, M∈(P): quỹ tích đường tròn, diện tích nhỏ nhất"
+  },
+  {
+   "ma_cau": "T312010301082",
+   "dang_bai_id": "NDB02596",
+   "ly_do": "góc AMB = 90° với M thuộc mặt cầu ⇒ M trên đường tròn"
+  },
+  {
+   "ma_cau": "T312010803011",
+   "dang_bai_id": "NDB02597",
+   "ly_do": "GPS: M trên mặt cầu, cực trị tổng khoảng cách"
+  },
+  {
+   "ma_cau": "T312010803012",
+   "dang_bai_id": "NDB02597",
+   "ly_do": "tổng MA²+MB²+MC² với M thuộc mặt cầu"
+  },
+  {
+   "ma_cau": "T312000000059",
+   "dang_bai_id": "NDB02597",
+   "ly_do": "điểm trên đường tròn giao mặt cầu với sàn, tìm khoảng cách nhỏ nhất"
+  },
+  {
+   "ma_cau": "T312000000119",
+   "dang_bai_id": "NDB02597",
+   "ly_do": "3MA²+MB² nhỏ nhất, M thuộc mặt cầu — đúng ví dụ NDB02597"
+  },
+  {
+   "ma_cau": "T312000000169",
+   "dang_bai_id": "NDB02597",
+   "ly_do": "điểm trên chỏm cầu, cực trị tổng khoảng cách đến đèn"
+  },
+  {
+   "ma_cau": "T312000000183",
+   "dang_bai_id": "NDB02597",
+   "ly_do": "E trên ranh giới vùng phủ sóng (mặt cầu), tổng khoảng cách lớn nhất"
+  },
+  {
+   "ma_cau": "T312000000210",
+   "dang_bai_id": "NDB02597",
+   "ly_do": "điểm trên mặt đất và mặt cầu phi thuyền: khoảng cách ngắn nhất giữa điểm trên mặt phẳng và mặt cầu"
+  },
+  {
+   "ma_cau": "T312000000214",
+   "dang_bai_id": "NDB02597",
+   "ly_do": "MN lớn nhất, M∈(S), N∈(P) theo phương cho trước"
+  },
+  {
+   "ma_cau": "T312010301118",
+   "dang_bai_id": "NDB02597",
+   "ly_do": "x+2y+2z nhỏ nhất với điểm trên mặt cầu — đúng mô tả NDB02597"
+  },
+  {
+   "ma_cau": "T312010301064",
+   "dang_bai_id": "NDB02597",
+   "ly_do": "MA²+2MB² với M thuộc mặt cầu (đúng/sai)"
+  },
+  {
+   "ma_cau": "T312000000245",
+   "dang_bai_id": "NDB02597",
+   "ly_do": "điểm trên mặt cầu gần mặt phẳng nhất — đúng ví dụ NDB02597"
+  },
+  {
+   "ma_cau": "T312010301069",
+   "dang_bai_id": "NDB02597",
+   "ly_do": "2MA²+3MB² với M thuộc mặt cầu (đúng/sai)"
+  },
+  {
+   "ma_cau": "T312010301131",
+   "dang_bai_id": "NDB02597",
+   "ly_do": "tổng bình phương khoảng cách điểm trên mặt cầu"
+  },
+  {
+   "ma_cau": "T312010309014",
+   "dang_bai_id": "NDB02598",
+   "ly_do": "mặt phẳng kính qua điểm I cố định ở góc tường, diện tích thiết diện nhỏ nhất"
+  },
+  {
+   "ma_cau": "T312010309031",
+   "dang_bai_id": "NDB02598",
+   "ly_do": "cốt pha mái vát, diện tích tam giác ABC nhỏ nhất, mặt phẳng qua M — nêu đúng trong mô tả NDB02598"
+  },
+  {
+   "ma_cau": "T312000000087",
+   "dang_bai_id": "NDB02598",
+   "ly_do": "trùng 21: cốt pha, diện tích ABC nhỏ nhất"
+  },
+  {
+   "ma_cau": "T312000000103",
+   "dang_bai_id": "NDB02598",
+   "ly_do": "tứ diện góc nhà, thể tích nhỏ nhất, mặt phẳng qua A"
+  },
+  {
+   "ma_cau": "T312000000176",
+   "dang_bai_id": "NDB02598",
+   "ly_do": "kho mini OABC, thể tích nhỏ nhất, mặt phẳng qua M — đúng ví dụ NDB02598"
+  },
+  {
+   "ma_cau": "T312010101149",
+   "dang_bai_id": "NDB02598",
+   "ly_do": "1/a+2/b+3/c=2024 ⇒ (ABC) qua điểm cố định, d(O,(ABC)) lớn nhất ⇒ pháp tuyến OM"
+  },
+  {
+   "ma_cau": "T312010107088",
+   "dang_bai_id": "NDB02598",
+   "ly_do": "mặt phẳng qua M cách gốc xa nhất rồi tính thể tích OABC — đúng ví dụ NDB02598"
+  },
+  {
+   "ma_cau": "T312010107018",
+   "dang_bai_id": "NDB02598",
+   "ly_do": "OA+OB+OC nhỏ nhất, mặt phẳng qua M (Bunhia)"
+  },
+  {
+   "ma_cau": "T312010107071",
+   "dang_bai_id": "NDB02598",
+   "ly_do": "trùng 252"
+  },
+  {
+   "ma_cau": "T312010401008",
+   "dang_bai_id": "NDB02598",
+   "ly_do": "thể tích OABC nhỏ nhất, mặt phẳng qua M"
+  },
+  {
+   "ma_cau": "T312010107062",
+   "dang_bai_id": "NDB02598",
+   "ly_do": "trùng 266"
+  },
+  {
+   "ma_cau": "T312010107059",
+   "dang_bai_id": "NDB02598",
+   "ly_do": "thể tích OABC nhỏ nhất, mặt phẳng qua M(1;1;1)"
+  },
+  {
+   "ma_cau": "T312000000171",
+   "dang_bai_id": "NDB02599",
+   "ly_do": "MN nhỏ nhất, d′ cắt Oz tại M, cắt d tại N, song song (P) — đúng ví dụ thứ hai của NDB02599"
+  },
+  {
+   "ma_cau": "T312010201111",
+   "dang_bai_id": "NDB02599",
+   "ly_do": "C chạy trên d, diện tích tam giác ABC nhỏ nhất — đúng ví dụ NDB02599"
+  },
+  {
+   "ma_cau": "T312010107061",
+   "dang_bai_id": "NDB02599",
+   "ly_do": "C thuộc đường thẳng (P)∩{z=−2}, diện tích tam giác ABC nhỏ nhất"
+  },
+  {
+   "ma_cau": "T312010301034",
+   "dang_bai_id": "NDB00837",
+   "ly_do": "tìm m để phương trình là mặt cầu: đưa về tâm–bán kính, R²>0"
+  },
+  {
+   "ma_cau": "T312010301035",
+   "dang_bai_id": "NDB00837",
+   "ly_do": "đếm m nguyên dương để phương trình là mặt cầu"
+  },
+  {
+   "ma_cau": "T312000000202",
+   "dang_bai_id": "NDB00840",
+   "ly_do": "hải đăng, vùng phủ sáng mặt cầu: xét vị trí người đi biển so với mặt cầu (đề cắt)"
+  },
+  {
+   "ma_cau": "T312010301031",
+   "dang_bai_id": "NDB00846",
+   "ly_do": "hải đăng I, R=5 km: viết phương trình mặt cầu và xét điểm trong/ngoài"
+  },
+  {
+   "ma_cau": "T312000000006",
+   "dang_bai_id": "NDB00849",
+   "ly_do": "tích có hướng, vectơ pháp tuyến mặt phẳng ABC (đúng/sai về tam giác ABC)"
+  },
+  {
+   "ma_cau": "T312000000173",
+   "dang_bai_id": "NDB00861",
+   "ly_do": "cabin chuyển động đều, camera đặt tại C: khoảng cách ngắn nhất = khoảng cách từ C đến đường thẳng AB"
+  },
+  {
+   "ma_cau": "T312000000190",
+   "dang_bai_id": "NDB00872",
+   "ly_do": "laser từ C qua phao B trên mặt nước tới A: B là giao điểm của đường thẳng CA với mặt nước"
+  },
+  {
+   "ma_cau": "T312000000229",
+   "dang_bai_id": "NDB00872",
+   "ly_do": "tia từ robot tới tấm pin: giao điểm đường thẳng với mặt phẳng (P)"
+  },
+  {
+   "ma_cau": "T312000000199",
+   "dang_bai_id": "NDB00873",
+   "ly_do": "tia laser phản xạ trên sàn: dùng điểm đối xứng qua mặt phẳng (Oxy)"
+  },
+  {
+   "ma_cau": "T312000000211",
+   "dang_bai_id": "NDB00873",
+   "ly_do": "quả táo và bức tường: hình chiếu/đối xứng qua mặt phẳng (P)"
+  },
+  {
+   "ma_cau": "T312000000076",
+   "dang_bai_id": "NDB02548",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] phép toán toạ độ vectơ, trung điểm, góc (nhiều ý)"
+  },
+  {
+   "ma_cau": "T312000000003",
+   "dang_bai_id": "NDB02550",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] ba điểm thẳng hàng, hình bình hành, trung điểm (đúng/sai với tham số x,y)"
+  },
+  {
+   "ma_cau": "T312000000004",
+   "dang_bai_id": "NDB02551",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] trọng tâm, trực tâm, vuông góc của tam giác ABC (đúng/sai)"
+  },
+  {
+   "ma_cau": "T312010202013",
+   "dang_bai_id": "NDB02553",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] chân đường phân giác trong chia cạnh theo tỉ số AB:BC"
+  },
+  {
+   "ma_cau": "T312010603023",
+   "dang_bai_id": "NDB02553",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] trùng 213"
+  },
+  {
+   "ma_cau": "T312010107015",
+   "dang_bai_id": "NDB02553",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] d(B,(P))=2d(A,(P)): I chia đoạn AB theo tỉ số"
+  },
+  {
+   "ma_cau": "T312000000238",
+   "dang_bai_id": "NDB02554",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] tổng độ dài SA+SB′+SC′ từ toạ độ cho sẵn"
+  },
+  {
+   "ma_cau": "T312000000001",
+   "dang_bai_id": "NDB02558",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] công thức tích có hướng"
+  },
+  {
+   "ma_cau": "T312000000002",
+   "dang_bai_id": "NDB02558",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] tính toạ độ tích có hướng"
+  },
+  {
+   "ma_cau": "T312000000005",
+   "dang_bai_id": "NDB02558",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] tích có hướng, diện tích, vectơ đơn vị i,j,k (đúng/sai)"
+  },
+  {
+   "ma_cau": "T312000000139",
+   "dang_bai_id": "NDB02561",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] máy tập cáp chéo: hợp lực hai dây cáp"
+  },
+  {
+   "ma_cau": "T312010802032",
+   "dang_bai_id": "NDB02562",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] ba sợi dây treo vật: lực căng, trọng lượng tối đa"
+  },
+  {
+   "ma_cau": "T312000000126",
+   "dang_bai_id": "NDB02562",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] chậu cây bốn chân: lực phân bố"
+  },
+  {
+   "ma_cau": "T312000000091",
+   "dang_bai_id": "NDB02564",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] cẩu trục tháp: toạ độ vật từ độ dài và góc, quãng đường"
+  },
+  {
+   "ma_cau": "T312000000117",
+   "dang_bai_id": "NDB02564",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] cần trục chân đế: toạ độ từ góc"
+  },
+  {
+   "ma_cau": "T312000000141",
+   "dang_bai_id": "NDB02564",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] dây cáp cầu Cổng Vàng: toạ độ từ độ dài và góc"
+  },
+  {
+   "ma_cau": "T312010802035",
+   "dang_bai_id": "NDB02565",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] tốc độ trung bình từ toạ độ hai điểm"
+  },
+  {
+   "ma_cau": "T312000000064",
+   "dang_bai_id": "NDB02565",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] radar, máy bay bay từ M tới N trong 20 phút: vị trí, vận tốc"
+  },
+  {
+   "ma_cau": "T312000000080",
+   "dang_bai_id": "NDB02565",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] radar, máy bay từ M tới N trong 40 phút"
+  },
+  {
+   "ma_cau": "T312000000086",
+   "dang_bai_id": "NDB02565",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] tên lửa bay thẳng: toạ độ, quãng đường"
+  },
+  {
+   "ma_cau": "T312000000114",
+   "dang_bai_id": "NDB02565",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] vật chuyển động với v(t), cosin chỉ phương"
+  },
+  {
+   "ma_cau": "T312000000180",
+   "dang_bai_id": "NDB02565",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] cabin cáp treo: phương trình tham số, góc với Oxy"
+  },
+  {
+   "ma_cau": "T312000000185",
+   "dang_bai_id": "NDB02565",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] hạt proton: hướng từ hai góc, vận tốc theo thời gian"
+  },
+  {
+   "ma_cau": "T312000000186",
+   "dang_bai_id": "NDB02565",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] cabin cáp treo: trung điểm, độ dài AB, độ cao"
+  },
+  {
+   "ma_cau": "T312000000194",
+   "dang_bai_id": "NDB02565",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] radar, máy bay từ M tới N trong 40 phút"
+  },
+  {
+   "ma_cau": "T312000000205",
+   "dang_bai_id": "NDB02565",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] tên lửa chuyển động thẳng đều"
+  },
+  {
+   "ma_cau": "T312000000228",
+   "dang_bai_id": "NDB02565",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] máy bay chuyển động với vận tốc cho trước"
+  },
+  {
+   "ma_cau": "T312010208010",
+   "dang_bai_id": "NDB02565",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] cabin cáp treo: vận tốc dọc đường thẳng"
+  },
+  {
+   "ma_cau": "T312010201041",
+   "dang_bai_id": "NDB02565",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] cabin cáp treo 4,5 m/s (đúng/sai)"
+  },
+  {
+   "ma_cau": "T312010802007",
+   "dang_bai_id": "NDB02566",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] hai máy bay: khoảng cách theo thời gian, thời gian trong bán kính radar"
+  },
+  {
+   "ma_cau": "T312010802024",
+   "dang_bai_id": "NDB02566",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] trùng 28"
+  },
+  {
+   "ma_cau": "T312010802028",
+   "dang_bai_id": "NDB02566",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] tốc độ thay đổi khoảng cách của xe mô tô (đạo hàm)"
+  },
+  {
+   "ma_cau": "T312010802039",
+   "dang_bai_id": "NDB02566",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] hai flycam: khoảng cách ngắn nhất theo thời gian (đúng/sai)"
+  },
+  {
+   "ma_cau": "T312010802046",
+   "dang_bai_id": "NDB02566",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] khoảng cách ngắn nhất giữa hai máy bay bay thẳng đều"
+  },
+  {
+   "ma_cau": "T312010802049",
+   "dang_bai_id": "NDB02566",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] khinh khí cầu và máy bay: khoảng cách theo thời gian"
+  },
+  {
+   "ma_cau": "T312010802051",
+   "dang_bai_id": "NDB02566",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] thời điểm khoảng cách hai máy bay chạm 10 km"
+  },
+  {
+   "ma_cau": "T312010802054",
+   "dang_bai_id": "NDB02566",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] hai chim bói cá: thời gian, khoảng cách (đúng/sai)"
+  },
+  {
+   "ma_cau": "T312010802060",
+   "dang_bai_id": "NDB02566",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] pháo bắn máy bay: thời điểm đánh chặn"
+  },
+  {
+   "ma_cau": "T312010802067",
+   "dang_bai_id": "NDB02566",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] tàu hỏng, trực thăng cứu hộ: tối ưu chuyển động có gió"
+  },
+  {
+   "ma_cau": "T312010802068",
+   "dang_bai_id": "NDB02566",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] đuổi bắt tên lửa–máy bay: giao điểm chuyển động"
+  },
+  {
+   "ma_cau": "T312000000082",
+   "dang_bai_id": "NDB02566",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] hai khinh khí cầu: khoảng cách"
+  },
+  {
+   "ma_cau": "T312000000124",
+   "dang_bai_id": "NDB02566",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] tên lửa A quỹ đạo tham số, đánh chặn"
+  },
+  {
+   "ma_cau": "T312000000133",
+   "dang_bai_id": "NDB02566",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] flycam và radar: khoảng cách theo thời gian"
+  },
+  {
+   "ma_cau": "T312000000172",
+   "dang_bai_id": "NDB02566",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] hai thiết bị bay qua cổng quét x=26: thời điểm, khoảng cách"
+  },
+  {
+   "ma_cau": "T312000000196",
+   "dang_bai_id": "NDB02566",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] flycam đuổi bắt trạm quan sát"
+  },
+  {
+   "ma_cau": "T312000000198",
+   "dang_bai_id": "NDB02566",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] hai khinh khí cầu cùng xuất phát"
+  },
+  {
+   "ma_cau": "T312010201040",
+   "dang_bai_id": "NDB02566",
+   "ly_do": "[bảng Đại k12-hk-vt, nhánh Vectơ-toạ độ, không nằm trong 51 dạng bảng PP toạ độ] hai máy bay, rađa: khoảng cách (đúng/sai)"
+  }
+ ],
+ "khong_xep_duoc": [
+  {
+   "ma_cau": "T312010309018",
+   "ly_do": "THIẾU HÌNH: phương trình mặt phẳng cánh cửa phụ thuộc hệ trục và góc 30° vẽ trong hình, đề không nêu toạ độ"
+  },
+  {
+   "ma_cau": "T312010309026",
+   "ly_do": "THIẾU HÌNH: nắp bể nước, hệ trục chọn \"như hình vẽ\""
+  },
+  {
+   "ma_cau": "T312010309029",
+   "ly_do": "Thiếu dữ kiện: đề không nêu mặt phẳng sân khấu (nằm trong hình)"
+  },
+  {
+   "ma_cau": "T312010801013",
+   "ly_do": "Bài đơn lẻ (tam giác đều ABC, A cố định, B∈(P), C∈(Q), độ cao C), đề cắt; chưa đủ 3 câu để lập dạng"
+  },
+  {
+   "ma_cau": "T312010802019",
+   "ly_do": "THIẾU HÌNH: lều chóp tứ giác đều, nguồn sáng và camera — cùng bài với câu 137 (nhóm bóng/vùng sáng) nhưng nhãn thiếu hình"
+  },
+  {
+   "ma_cau": "T312010802056",
+   "ly_do": "Cần hình: tấm chắn sáng hình chữ nhật trượt trên thanh ray, đề cắt ở chỗ nêu mặt phẳng chắn"
+  },
+  {
+   "ma_cau": "T312010802057",
+   "ly_do": "Ngoài chương: đường đi ngắn nhất trên mặt hộp (trải phẳng), không dùng toạ độ"
+  },
+  {
+   "ma_cau": "T312010803028",
+   "ly_do": "GPS tổng khoảng cách tới bốn điểm: đề cắt, yêu cầu không rõ, một câu"
+  },
+  {
+   "ma_cau": "T312000000015",
+   "ly_do": "Bài đơn lẻ: đường thẳng qua M cắt mặt cầu tại A, B, diện tích OAB lớn nhất; chưa đủ 3 câu để lập dạng"
+  },
+  {
+   "ma_cau": "T312000000060",
+   "ly_do": "Cần hình lưới ô vuông (S, A, B, C), đề không có toạ độ"
+  },
+  {
+   "ma_cau": "T312000000084",
+   "ly_do": "Ngoài chương: đường dây ngắn nhất trên lăng trụ (trải phẳng), không dùng Oxyz"
+  },
+  {
+   "ma_cau": "T312000000092",
+   "ly_do": "Ngoài chương: quãng đường chạy bộ ngắn nhất, tối ưu hình phẳng"
+  },
+  {
+   "ma_cau": "T312000000093",
+   "ly_do": "Ngoài chương: thể tích khối chóp, nhị diện, hình không gian thuần"
+  },
+  {
+   "ma_cau": "T312000000094",
+   "ly_do": "Ngoài chương: tổng độ dài bóng các cạnh hình hộp, hình không gian thuần"
+  },
+  {
+   "ma_cau": "T312000000100",
+   "ly_do": "Ngoài chương: tổng độ dài dây điện ngắn nhất, hình phẳng/hình không gian không toạ độ"
+  },
+  {
+   "ma_cau": "T312000000101",
+   "ly_do": "Ngoài chương: diện tích bóng hình thang qua phép chiếu tâm, hình không gian thuần"
+  },
+  {
+   "ma_cau": "T312000000111",
+   "ly_do": "Ngoài chương: nồi lẩu hai hình trụ đồng trục, bài thực tế không toạ độ"
+  },
+  {
+   "ma_cau": "T312000000112",
+   "ly_do": "Ngoài chương: tứ diện đều, thể tích, hình không gian thuần"
+  },
+  {
+   "ma_cau": "T312000000115",
+   "ly_do": "Ngoài chương: đường đi ngắn nhất trên mặt hình chóp (trải phẳng)"
+  },
+  {
+   "ma_cau": "T312000000137",
+   "ly_do": "Ngoài chương: đường đi ngắn nhất trên mặt bên hình hộp (trải phẳng)"
+  },
+  {
+   "ma_cau": "T312000000142",
+   "ly_do": "Ngoài chương: đường đi ngắn nhất trên tường (trải phẳng), có hình"
+  },
+  {
+   "ma_cau": "T312000000158",
+   "ly_do": "Cần hình vẽ 1: bể cá nghiêng, mực nước; đề cắt; một câu"
+  },
+  {
+   "ma_cau": "T312000000168",
+   "ly_do": "Đề cắt: camera phạt nguội, vùng nhận diện hình thang; một câu"
+  },
+  {
+   "ma_cau": "T312000000175",
+   "ly_do": "Đề cắt: chỉ thấy A, B, (P); các ý hỏi không rõ (nhãn máy gợi ý ý đầu cơ bản NDB00841, ý sau cực trị)"
+  },
+  {
+   "ma_cau": "T312000000177",
+   "ly_do": "THIẾU HÌNH: mái chóp tứ giác đều, góc mặt nghiêng, bóng lên Oxz"
+  },
+  {
+   "ma_cau": "T312000000181",
+   "ly_do": "THIẾU HÌNH: nhà hình hộp mái ngói (cùng đề với 83 và 85 nhưng nhãn thiếu hình)"
+  },
+  {
+   "ma_cau": "T312000000184",
+   "ly_do": "THIẾU HÌNH: mặt kính ABCD không có toạ độ trong đề"
+  },
+  {
+   "ma_cau": "T312000000187",
+   "ly_do": "THIẾU HÌNH: khối gỗ hộp chữ nhật, khoan theo vectơ"
+  },
+  {
+   "ma_cau": "T312000000195",
+   "ly_do": "THIẾU HÌNH: tấm ván, cục đá, mặt cầu tiếp xúc"
+  },
+  {
+   "ma_cau": "T312000000197",
+   "ly_do": "THIẾU HÌNH: toạ độ đỉnh mái chóp S của ngôi nhà, cần hình để đặt trục"
+  },
+  {
+   "ma_cau": "T312000000203",
+   "ly_do": "THIẾU HÌNH: ba cột và dây trang trí, hình xác định các điểm"
+  },
+  {
+   "ma_cau": "T312000000204",
+   "ly_do": "THIẾU HÌNH: chỉ có hình sợi cáp AB, đề không cho toạ độ"
+  },
+  {
+   "ma_cau": "T312000000206",
+   "ly_do": "GPS: M trên AB, tổng khoảng cách; đề cắt, yêu cầu không rõ"
+  },
+  {
+   "ma_cau": "T312000000208",
+   "ly_do": "THIẾU HÌNH: hộp chữ nhật phòng triển lãm, dây cáp chéo"
+  },
+  {
+   "ma_cau": "T312000000212",
+   "ly_do": "THIẾU HÌNH: sơ đồ nhà kho, đường dây"
+  },
+  {
+   "ma_cau": "T312000000213",
+   "ly_do": "THIẾU HÌNH: bể nước nghiêng"
+  },
+  {
+   "ma_cau": "T312000000215",
+   "ly_do": "THIẾU HÌNH: sơ đồ nhà kho"
+  },
+  {
+   "ma_cau": "T312000000216",
+   "ly_do": "Cần hình: công viên parabol và hình tròn, không phải bài Oxyz thuần"
+  },
+  {
+   "ma_cau": "T312000000219",
+   "ly_do": "THIẾU HÌNH: mái che trồng rau"
+  },
+  {
+   "ma_cau": "T312000000221",
+   "ly_do": "THIẾU HÌNH: trụ điện sườn dốc"
+  },
+  {
+   "ma_cau": "T312000000222",
+   "ly_do": "Đề cắt cụt: thiên thạch, vùng theo dõi hình cầu"
+  },
+  {
+   "ma_cau": "T312000000224",
+   "ly_do": "THIẾU HÌNH: lều trại chóp tứ giác đều, cần hình đặt trục"
+  },
+  {
+   "ma_cau": "T312000000225",
+   "ly_do": "THIẾU HÌNH: mái chóp tứ giác đều"
+  },
+  {
+   "ma_cau": "T312010107060",
+   "ly_do": "Bài đơn lẻ: CD=4 trên (P) với A, C, D thẳng hàng, diện tích BCD lớn nhất–nhỏ nhất"
+  },
+  {
+   "ma_cau": "T312010201094",
+   "ly_do": "Ngoài chương: hình chóp thuần không toạ độ (đề không nêu hệ trục)"
+  },
+  {
+   "ma_cau": "T312010107063",
+   "ly_do": "Bài đơn lẻ có hình: khối nón thể tích lớn nhất, mặt cầu ngoại tiếp"
+  },
+  {
+   "ma_cau": "T312000000237",
+   "ly_do": "THIẾU HÌNH: sơ đồ nhà, góc nhị diện mái nhà"
+  },
+  {
+   "ma_cau": "T312010210003",
+   "ly_do": "Bài tổng hợp đơn lẻ: tam giác nhọn cho ba chân đường cao, đường thẳng cắt Ox tạo góc α"
+  },
+  {
+   "ma_cau": "T312000000232",
+   "ly_do": "THIẾU HÌNH: lăng trụ đứng tam giác, chi phí xây dựng"
+  },
+  {
+   "ma_cau": "T312010602033",
+   "ly_do": "Ngoài chương: thể tích khối chóp, không toạ độ"
+  },
+  {
+   "ma_cau": "T312010107014",
+   "ly_do": "Bài đơn lẻ: mặt phẳng chứa giao tuyến của hai mặt phẳng (chùm mặt phẳng) và vuông góc mặt phẳng khác"
+  },
+  {
+   "ma_cau": "T312010601031",
+   "ly_do": "Ngoài chương: góc nhị diện hình chóp, không toạ độ"
+  },
+  {
+   "ma_cau": "T312000000231",
+   "ly_do": "Đề cắt: quỹ đạo vệ tinh, mặt phẳng chứa quỹ đạo; không rõ yêu cầu"
+  },
+  {
+   "ma_cau": "T312010210005",
+   "ly_do": "ĐỀ LỖI: nhắc Δ1, Δ2 chưa định nghĩa và thừa (P); trùng ý câu 321 (T312010210001)"
+  },
+  {
+   "ma_cau": "T312010201063",
+   "ly_do": "Ngoài chương: đếm vectơ trong hình hộp, không toạ độ"
+  },
+  {
+   "ma_cau": "T312010107068",
+   "ly_do": "Bài đơn lẻ: đường thẳng thay đổi cắt ba mặt phẳng song song, AB+96/AC² nhỏ nhất"
+  },
+  {
+   "ma_cau": "T312010301052",
+   "ly_do": "ĐỀ LỖI: toạ độ M ghi hai lần mâu thuẫn, đáp án không khớp"
+  },
+  {
+   "ma_cau": "T312010107024",
+   "ly_do": "Có hình, không có đáp án: tấm hắt sáng, cọc chống"
+  },
+  {
+   "ma_cau": "T312010107022",
+   "ly_do": "THIẾU HÌNH: mái nhà kho, tìm toạ độ P"
+  },
+  {
+   "ma_cau": "T312010107072",
+   "ly_do": "Bài đơn lẻ: góc AMB lớn nhất với M thuộc mặt phẳng"
+  },
+  {
+   "ma_cau": "T312010301134",
+   "ly_do": "Bài đơn lẻ: mặt cầu chứa hai đường tròn chung dây cung AB"
+  },
+  {
+   "ma_cau": "T312000000230",
+   "ly_do": "THIẾU HÌNH: hai tháp, drone"
+  },
+  {
+   "ma_cau": "T312000000236",
+   "ly_do": "THIẾU HÌNH: kho lăng trụ"
+  }
+ ],
+ "ghi_chu": [
+  "Đáp án có vẻ sai trong 3 câu cùng mẫu OA=2OB=4OC: T312010103003 (M(6;12;18), đáp án ghi 220,5; tính lại 178,5), T312010103002 (M(5;10;15), ghi 183,75; tính lại 148,75), T312010103004 (M(7;14;21), ghi 257,25; tính lại 208,25). Câu gốc M(2;4;8) đáp án 73,5 đúng. Có vẻ biến thể đổi đề nhưng chưa tính lại đáp án.",
+  "Cặp câu trùng đề: 13/17, 28/34, 83/85 (và 156), 209/278, 214/267, 213/281, 236/320, 252/263, 266/270, 272/314, 297/316, 21/98, 30/89; 275 là bản lỗi của 321.",
+  "Bảng PP toạ độ (51 dạng) không có các dạng vectơ–toạ độ; bảng Đại k12-hk-vt (NDB02535–NDB02566) có. Các câu khớp NDB025xx ở mục khop_dang_co được đánh dấu \"[bảng Đại k12-hk-vt…]\": nếu pipeline chỉ nhận mã trong 51 dạng thì cần chuyển các câu này sang nhánh Đại.",
+  "Nhóm \"NHÓM MỚI: ...\" đặt sau dạng dat_sau; thu_tu_trong_nhom là thứ tự các dạng mới cùng dat_sau (1 = ngay sau dat_sau).",
+  "Các câu gắn nhãn THIẾU HÌNH được xếp vào khong_xep_duoc dù đề thuộc chủ đề; nếu có hình thì xếp lại theo nhóm C2 (công trình) hay N (bóng, vùng sáng)."
+ ]
+}

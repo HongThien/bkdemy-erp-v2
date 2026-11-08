@@ -1,0 +1,166 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00305",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "nhom": "XÁC ĐỊNH NGUYÊN TỐ TỪ DỮ KIỆN VỊ TRÍ – CẤU TẠO",
+   "nhom_ly_thuyet": "Số thứ tự ô = số proton = số electron; số thứ tự chu kì = số lớp electron; số thứ tự nhóm A = số electron lớp ngoài cùng (trừ helium).\nHai nguyên tố đứng kế tiếp nhau trong cùng một chu kì có số proton hơn kém nhau 1.\nTrong 20 nguyên tố đầu, hai nguyên tố cùng nhóm A ở hai chu kì liên tiếp có số proton hơn kém nhau 8.\nSố hạt mang điện của một nguyên tử bằng tổng số proton và electron, bằng hai lần số proton.\nHai nguyên tố kế tiếp trong một chu kì: {\\mathrm{Z}}_{\\mathrm{B}}={\\mathrm{Z}}_{\\mathrm{A}}+1\nHai nguyên tố cùng nhóm, hai chu kì liên tiếp (20 nguyên tố đầu): {\\mathrm{Z}}_{\\mathrm{B}}={\\mathrm{Z}}_{\\mathrm{A}}+8\nSố hạt mang điện: p+e=2p\nTrong đó: Z là số proton (số hiệu nguyên tử) của nguyên tố.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00677",
+     "thu_tu": 1,
+     "ten": "GIẢI CÂU ĐỐ NGUYÊN TỐ TỪ NHIỀU MANH MỐI",
+     "mo_ta": "Đề cho nhiều manh mối về một nguyên tố chưa biết X: loại (kim loại, phi kim, khí hiếm), chu kì hoặc số lớp electron, nhóm hoặc số electron lớp ngoài cùng, hoặc so sánh với nguyên tố khác; hỏi kí hiệu hoá học của X.\nBài giải bằng cách đổi mỗi manh mối thành chu kì hoặc nhóm rồi ghép lại. Câu trả lời ngắn.\nLưu ý: đề cho hai nguyên tố A, B cùng chu kì hoặc cùng nhóm cùng tổng số proton ⇒ thuộc dạng \"Hai nguyên tố biết tổng số proton\".",
+     "ly_thuyet": "##TC Giải câu đố nguyên tố\nSố thứ tự chu kì = số lớp electron; số thứ tự nhóm A = số electron lớp ngoài cùng (trừ helium).\nKhí hiếm thuộc nhóm VIIIA (helium chỉ có 2 electron ở lớp ngoài cùng); kim loại nằm bên trái và giữa bảng, phi kim nằm bên phải.\nNguyên tố được xác định khi biết cả chu kì và nhóm.\n\n##PP Cách làm\nĐổi từng manh mối thành một thông tin về chu kì (số lớp electron) hoặc về nhóm (số electron lớp ngoài cùng).\nGhép chu kì và nhóm để chỉ ra nguyên tố ở ô tương ứng.\nĐối chiếu với các manh mối còn lại (kim loại, phi kim, khí hiếm) để kiểm tra.\nViết kí hiệu hoá học của nguyên tố.\n\n##CY Chú ý\nManh mối \"số electron lớp ngoài cùng bằng số lớp electron\" cho biết số thứ tự nhóm bằng số thứ tự chu kì.\nKhi manh mối so sánh với nguyên tố khác, tìm chu kì hoặc nhóm của nguyên tố đó trước.",
+     "vi_du": "##VD\nNguyên tố $\\mathrm{X}$ là kim loại thuộc chu kì 3. Nguyên tử $\\mathrm{X}$ có 1 electron ở lớp ngoài cùng. Viết kí hiệu hoá học của $\\mathrm{X}$.\n\nBài giải:\n$\\mathrm{X}$ thuộc chu kì 3 và có 1 electron ở lớp ngoài cùng nên $\\mathrm{X}$ thuộc nhóm IA.\nNguyên tố thuộc chu kì 3, nhóm IA là sodium (kim loại, phù hợp đề).\nĐáp án: $\\mathrm{Na}$.\n\n##VD\nNguyên tố $\\mathrm{X}$ là kim loại thuộc chu kì 3. Nguyên tử $\\mathrm{X}$ có số electron lớp ngoài cùng bằng số lớp electron. Viết kí hiệu hoá học của $\\mathrm{X}$.\n\nBài giải:\n$\\mathrm{X}$ thuộc chu kì 3 nên nguyên tử $\\mathrm{X}$ có 3 lớp electron.\nSố electron lớp ngoài cùng bằng số lớp electron nên lớp ngoài cùng có 3 electron; $\\mathrm{X}$ thuộc nhóm IIIA.\nNguyên tố thuộc chu kì 3, nhóm IIIA là aluminium (kim loại, phù hợp đề).\nĐáp án: $\\mathrm{Al}$."
+    },
+    {
+     "dang_id": "KDB00678",
+     "thu_tu": 2,
+     "ten": "HAI NGUYÊN TỐ BIẾT TỔNG SỐ PROTON",
+     "mo_ta": "Đề cho hai nguyên tố A và B ở vị trí liên hệ nhau (đứng kế tiếp trong cùng một chu kì, hoặc cùng nhóm A ở hai chu kì liên tiếp trong 20 nguyên tố đầu) và biết tổng số proton (hoặc tổng số electron, tổng số hạt mang điện); hỏi xác định nguyên tố A hoặc B.\nBài lập hệ $Z_A + Z_B = S$ với $Z_B = Z_A + 1$ hoặc $Z_B = Z_A + 8$, rồi tra bảng. Câu tự luận.\nLưu ý: đề cho nhiều manh mối về một nguyên tố (loại, chu kì, nhóm) mà không có tổng số proton ⇒ thuộc dạng \"Giải câu đố nguyên tố từ nhiều manh mối\".",
+     "ly_thuyet": "##TC Hai nguyên tố liên hệ vị trí\nSố proton của nguyên tử bằng số electron, nên tổng số electron bằng tổng số proton; số hạt mang điện của một nguyên tử bằng $2p$.\nHai nguyên tố đứng kế tiếp nhau trong cùng một chu kì: $Z_B = Z_A + 1$.\nHai nguyên tố cùng nhóm A ở hai chu kì liên tiếp (trong 20 nguyên tố đầu): $Z_B = Z_A + 8$.\n\n##PP Cách làm\nGọi $Z_A$, $Z_B$ là số proton của A và B; đổi dữ kiện của đề về tổng $Z_A + Z_B$ (nếu cho số hạt mang điện thì chia 2).\nViết quan hệ giữa $Z_A$ và $Z_B$ theo vị trí (hơn kém 1 hoặc hơn kém 8).\nThay vào tổng để tìm $Z_A$, rồi tính $Z_B$.\nĐối chiếu bảng để xác định nguyên tố theo yêu cầu (A hoặc B).\n\n##CY Chú ý\nSố hạt mang điện của hai nguyên tử bằng $2(Z_A + Z_B)$, phải chia 2 để được tổng số proton.\nĐọc kĩ đề hỏi A hay B để không trả lời nhầm nguyên tố.",
+     "vi_du": "##VD\nA và B là hai nguyên tố đứng kế tiếp nhau trong cùng một chu kì của bảng tuần hoàn (A đứng trước B). Tổng số proton trong hạt nhân của các nguyên tử A và B là 15. Xác định nguyên tố B.\n\nBài giải:\nGọi số proton của A và B lần lượt là $Z_A$, $Z_B$.\nTổng số proton: $Z_A + Z_B = 15$.\nA và B đứng kế tiếp nhau trong cùng một chu kì nên $Z_B = Z_A + 1$.\nThay vào tổng: $Z_A + Z_A + 1 = 15$, suy ra $Z_A = \\dfrac{15 - 1}{2} = 7$.\n$Z_B = 7 + 1 = 8$.\nB có 8 proton nên B là oxygen ($\\mathrm{O}$).\n\n##VD\nA và B là hai nguyên tố thuộc cùng một nhóm A, ở hai chu kì liên tiếp của bảng tuần hoàn (A ở chu kì nhỏ hơn); cả hai đều nằm trong 20 nguyên tố đầu. Tổng số proton trong hạt nhân của các nguyên tử A và B là 22. Xác định nguyên tố B.\n\nBài giải:\nGọi số proton của A và B lần lượt là $Z_A$, $Z_B$.\nTổng số proton: $Z_A + Z_B = 22$.\nA và B cùng nhóm, ở hai chu kì liên tiếp trong 20 nguyên tố đầu nên số proton hơn kém nhau 8: $Z_B = Z_A + 8$.\nThay vào tổng: $2Z_A + 8 = 22$, suy ra $Z_A = \\dfrac{22 - 8}{2} = 7$.\n$Z_B = 7 + 8 = 15$.\nB có 15 proton nên B là phosphorus ($\\mathrm{P}$)."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K07000000015",
+   "nhom_id": "KNB00305",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Phân tử XY có tổng số proton là 28; số proton của Y nhiều hơn của X là 6. Công thức của XY là",
+   "lua_chon": [
+    "CaO",
+    "NaCl",
+    "KF",
+    "MgS"
+   ],
+   "dap_an": "B",
+   "loi_giai": "pX + pY = 28 và pY − pX = 6 → pX = 11 (Na), pY = 17 (Cl) → NaCl.\n\nVì sao các phương án khác sai:\n- A: Tổng proton của CaO đúng 28 nhưng Ca nhiều hơn O tới 12 proton, không phải Y nhiều hơn X là 6.\n- C: Tổng proton của KF đúng 28 nhưng hiệu là 10 và K nhiều proton hơn F.\n- D: Tổng proton của MgS đúng 28 nhưng hiệu chỉ là 4."
+  },
+  {
+   "ma_cau": "K07000000016",
+   "nhom_id": "KNB00305",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Phân tử XY có tổng số hạt mang điện là 40; số proton của X nhiều hơn của Y là 4. Công thức của XY là",
+   "lua_chon": [
+    "NaF",
+    "LiCl",
+    "CaO",
+    "MgO"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Hạt mang điện = 2 × số proton → pX + pY = 20; pX − pY = 4 → pX = 12 (Mg), pY = 8 (O) → MgO.\n\nVì sao các phương án khác sai:\n- A: Tổng proton của NaF đúng 20 nhưng hiệu chỉ là 2.\n- B: Tổng proton của LiCl đúng 20 nhưng Cl nhiều hơn Li tới 14 proton.\n- C: Tổng hạt mang điện của CaO là 2 × 28 = 56, không phải 40."
+  },
+  {
+   "ma_cau": "K07000000017",
+   "nhom_id": "KNB00305",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Phân tử XY có tổng số hạt mang điện là 24; số proton của Y nhiều hơn của X là 6. Công thức của XY là",
+   "lua_chon": [
+    "LiF",
+    "BeO",
+    "NaF",
+    "LiCl"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tổng mang điện 24 → tổng proton = 12. pY=pX+6 → 2pX+6=12 → pX=3 (Li), pY=9 (F) → LiF.\n\nVì sao các phương án khác sai:\n- B: Tổng proton đúng bằng 12 nhưng hiệu chỉ là 4, không khớp hiệu đề cho là 6.\n- C: Nhầm Li (Z=3) thành sodium (Z=11), không khớp tổng số proton.\n- D: Nhầm F (Z=9) thành chlorine (Z=17), không khớp tổng số proton."
+  },
+  {
+   "ma_cau": "K07000000018",
+   "nhom_id": "KNB00305",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Phân tử XY₂ có tổng số proton là 22; số proton của Y nhiều hơn của X là 2. Số proton của X và Y lần lượt là",
+   "lua_chon": [
+    "10 và 12",
+    "8 và 6",
+    "6 và 16",
+    "6 và 8"
+   ],
+   "dap_an": "D",
+   "loi_giai": "pX + 2pY = 22 và pY = pX + 2 → 3pX + 4 = 22 → pX = 6 (C), pY = 8 (O); phân tử là CO₂.\n\nVì sao các phương án khác sai:\n- A: Em đã coi phân tử là XY (pX + pY = 22); phân tử có 2 nguyên tử Y nên pX + 2pY = 22.\n- B: Em đã đảo: Y nhiều proton hơn X.\n- C: 16 là tổng proton của 2 nguyên tử Y; mỗi nguyên tử Y chỉ có 8 proton."
+  },
+  {
+   "ma_cau": "K07000000019",
+   "nhom_id": "KNB00305",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Phân tử XY₂ có tổng số proton là 46; số proton của Y nhiều hơn của X là 5. Công thức của XY₂ là",
+   "lua_chon": [
+    "CaCl₂",
+    "MgCl₂",
+    "MgF₂",
+    "CaF₂"
+   ],
+   "dap_an": "B",
+   "loi_giai": "pX + 2pY = 46 và pY = pX + 5 → 3pX + 10 = 46 → pX = 12 (Mg), pY = 17 (Cl) → MgCl₂.\n\nVì sao các phương án khác sai:\n- A: CaCl₂ có tổng proton 20 + 2 × 17 = 54, không phải 46.\n- C: MgF₂ có tổng proton 12 + 2 × 9 = 30, không phải 46.\n- D: CaF₂ có tổng proton 20 + 2 × 9 = 38 và F ít proton hơn Ca."
+  },
+  {
+   "ma_cau": "K07000000020",
+   "nhom_id": "KNB00305",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Phân tử XY₂ có tổng số proton là 30; số proton của X nhiều hơn của Y là 3. Công thức của XY₂ là",
+   "lua_chon": [
+    "CaF₂",
+    "MgF₂",
+    "MgCl₂",
+    "CaCl₂"
+   ],
+   "dap_an": "B",
+   "loi_giai": "pX+2pY=30 và pX−pY=3 → pY=9 (F), pX=12 (Mg) → MgF₂.\n\nVì sao các phương án khác sai:\n- A: Nhầm X là calcium (Z=20), không khớp tổng số proton đề cho.\n- C: Nhầm Y là chlorine (Z=17) thay vì fluorine, không khớp tổng proton 30.\n- D: Nhầm cả hai nguyên tố sang calcium và chlorine, không khớp đề."
+  },
+  {
+   "ma_cau": "K07000000021",
+   "nhom_id": "KNB00305",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Phân tử XY có tổng số hạt mang điện là 56; số hạt mang điện trong nguyên tử X nhiều hơn trong nguyên tử Y là 24. Công thức của XY là",
+   "lua_chon": [
+    "NaCl",
+    "KF",
+    "MgS",
+    "CaO"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Tổng proton = 56 : 2 = 28; hiệu proton = 24 : 2 = 12 → pX = 20 (Ca), pY = 8 (O) → CaO.\n\nVì sao các phương án khác sai:\n- A: NaCl có tổng hạt mang điện 56 nhưng Cl nhiều hạt mang điện hơn Na (hiệu 12).\n- B: KF có tổng hạt mang điện 56 nhưng hiệu hạt mang điện là 20.\n- C: MgS có tổng hạt mang điện 56 nhưng S nhiều hạt mang điện hơn Mg."
+  },
+  {
+   "ma_cau": "K07000000022",
+   "nhom_id": "KNB00305",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Phân tử XY có tổng số hạt mang điện là 72; số hạt mang điện trong nguyên tử X nhiều hơn trong nguyên tử Y là 4. Công thức của XY là",
+   "lua_chon": [
+    "CaS",
+    "KCl",
+    "NaCl",
+    "KF"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Tổng proton = 72 : 2 = 36; hiệu proton = 4 : 2 = 2 → pX = 19 (K), pY = 17 (Cl) → KCl.\n\nVì sao các phương án khác sai:\n- A: Em đã coi 4 là hiệu số proton; hiệu hạt mang điện 4 ứng với hiệu proton chỉ là 2.\n- C: NaCl có tổng hạt mang điện 56, không phải 72.\n- D: KF có tổng hạt mang điện 56, không phải 72."
+  },
+  {
+   "ma_cau": "K07000000023",
+   "nhom_id": "KNB00305",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Phân tử XY có tổng số hạt mang điện là 40; số hạt mang điện trong nguyên tử X nhiều hơn trong nguyên tử Y là 4. Công thức của XY là",
+   "lua_chon": [
+    "MgO",
+    "NaF",
+    "NaCl",
+    "CaO"
+   ],
+   "dap_an": "B",
+   "loi_giai": "2pX+2pY=40 → pX+pY=20; 2pX−2pY=4 → pX−pY=2. Giải hệ: pX=11 (Na), pY=9 (F) → NaF.\n\nVì sao các phương án khác sai:\n- A: Dùng trực tiếp hiệu số hạt mang điện (4) làm hiệu số proton, quên chia đôi.\n- C: Nhầm sang cặp nguyên tố quen thuộc, không giải hệ theo đúng số liệu đề.\n- D: Nhầm sang cặp nguyên tố quen thuộc khác, không khớp số liệu đề."
+  }
+ ]
+}

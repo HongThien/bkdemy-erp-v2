@@ -1,0 +1,1062 @@
+[
+ {
+  "ma_cau": "HHC008672",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp $S.ABCD$ có $ABCD$ là hình chữ nhật, $SA\\bot(ABCD)$, $AB=1$, $AD=2$. Biết rằng góc giữa hai mặt phẳng $(SBC)$ và $(SCD)$ bằng $60^\\circ$. Góc giữa đường thẳng $SC$ và mặt phẳng $(ABCD)$ bằng bao nhiêu độ? (làm tròn đến hàng đơn vị)",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "31",
+  "loi_giai": "Đặt $SA=h$ và chọn hệ trục $A(0;0;0)$, $B(1;0;0)$, $D(0;2;0)$, $S(0;0;h)$. $(SBC)$ có vectơ pháp tuyến $\\vec n_1=(h;0;1)$, $(SCD)$ có $\\vec n_2=(0;h;2)$. $\\cos60^\\circ=\\dfrac{|\\vec n_1\\cdot\\vec n_2|}{|\\vec n_1||\\vec n_2|}=\\dfrac{2}{\\sqrt{(h^2+1)(h^2+4)}}=\\dfrac12\\Rightarrow h^4+5h^2-12=0\\Rightarrow h^2=\\dfrac{-5+\\sqrt{73}}{2}$, $h\\approx1{,}331$. Góc giữa $SC$ và $(ABCD)$ là $\\widehat{SCA}$: $\\tan\\widehat{SCA}=\\dfrac{h}{AC}=\\dfrac{1{,}331}{\\sqrt5}\\approx0{,}595\\Rightarrow\\widehat{SCA}\\approx30{,",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008680",
+  "loai": "trac_nghiem",
+  "de": "Thể tích của khối lăng trụ có diện tích đáy $S$ và chiều cao $h$ là",
+  "lua_chon": [
+   "$V=\\dfrac12.S.h$.",
+   "$V=S^2.h$.",
+   "$V=\\dfrac13.S.h$.",
+   "$V=S.h$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Công thức thể tích khối lăng trụ: $V=S\\cdot h$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008681",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp lập phương $ABCD.A'B'C'D'$. Đường vuông góc chung của hai đường thẳng $DD'$ và $A'B$ là đường thẳng",
+  "lua_chon": [
+   "$AC'$.",
+   "$BC'$.",
+   "$A'C'$.",
+   "$A'D'$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "$A'D'\\bot DD'$ (tại $D'$) và $A'D'\\bot(ABB'A')\\Rightarrow A'D'\\bot A'B$ (tại $A'$). Vậy $A'D'$ là đường vuông góc chung.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008682",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có $SA\\bot(ABCD)$ và đáy $ABCD$ là hình vuông, $H$ là hình chiếu vuông góc của $A$ lên $SD$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$AH\\bot(SBD)$.",
+   "$SD\\bot(HAC)$.",
+   "$AH\\bot(SAD)$.",
+   "$AH\\bot(SCD)$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "$CD\\bot AD$, $CD\\bot SA$ nên $CD\\bot(SAD)\\Rightarrow CD\\bot AH$. Cùng $AH\\bot SD$ nên $AH\\bot(SCD)$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008683",
+  "loai": "trac_nghiem",
+  "de": "Cho hình lập phương $ABCD.A'B'C'D'$. Đường thẳng nào sau đây vuông góc với đường thẳng $BC$?",
+  "lua_chon": [
+   "$BD'$.",
+   "$A'B'$.",
+   "$AD'$.",
+   "$BC'$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "$A'B'\\parallel AB$ và $AB\\bot BC$ nên $A'B'\\bot BC$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008684",
+  "loai": "dung_sai",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a\\sqrt3$. Cạnh bên $SA=a$ và vuông góc với mặt đáy $(ABCD)$.",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$AB\\parallel(SCD)$ nên $d(SD,AB)=d(A,(SCD))=AH$ với $AH\\bot SD$: $AH=\\dfrac{SA\\cdot AD}{SD}=\\dfrac{a\\cdot a\\sqrt3}{2a}=\\dfrac{a\\sqrt3}{2}\\ne\\dfrac{a\\sqrt3}{4}$.",
+    "noi_dung": "Khoảng cách giữa hai đường thẳng $SD,AB$ bằng $\\dfrac{a\\sqrt3}{4}$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$BC\\bot AB$, $BC\\bot SA$ nên $BC\\bot(SAB)\\Rightarrow(SBC)\\bot(SAB)$.",
+    "noi_dung": "$(SBC)\\bot(SAB)$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$V=\\dfrac13\\cdot a\\cdot\\left(a\\sqrt3\\right)^2=a^3$.",
+    "noi_dung": "Thể tích khối chóp $S.ABCD$ bằng $a^3$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$AB\\bot AD$, $AB\\bot SA$ nên $AB\\bot(SAD)$, hình chiếu của $B$ là $A$.",
+    "noi_dung": "Hình chiếu vuông góc của $B$ lên mặt phẳng $SAD$ là $A$."
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008685",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp $S.ABC$ có đáy là tam giác đều cạnh $3$. Cạnh bên $SA$ vuông góc với mặt phẳng $(ABC)$, $SA=4$. Tính thể tích khối chóp $S.ABC$ (Kết quả làm tròn đến hàng phần chục).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "5,2",
+  "loi_giai": "$S_{ABC}=\\dfrac{3^2\\sqrt3}{4}=\\dfrac{9\\sqrt3}{4}$. $V=\\dfrac13\\cdot\\dfrac{9\\sqrt3}{4}\\cdot4=3\\sqrt3\\approx5{,}2$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008686",
+  "loai": "tu_luan",
+  "de": "Cho hình lăng trụ $ABC.A'B'C'$ có đáy $ABC$ là tam giác đều cạnh $a$. Biết hình chiếu vuông góc của điểm $A$ trên mặt phẳng $(A'B'C')$ là trọng tâm $G'$ của tam giác $A'B'C'$ và $AA'=a$. Tính theo $a$:\na) thể tích khối lăng trụ $ABC.A'B'C'$.\nb) khoảng cách giữa hai đường thẳng $AA'$ và $B'C'$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "a) $V=\\dfrac{a^3\\sqrt2}{4}$; b) $d=\\dfrac{a\\sqrt2}{2}$",
+  "loi_giai": "a) $AG'\\bot(A'B'C')$ nên $AG'$ là đường cao của lăng trụ. $S_{A'B'C'}=\\dfrac{a^2\\sqrt3}{4}$, $A'H=\\dfrac{a\\sqrt3}{2}$ ($H$ là trung điểm $B'C'$), $A'G'=\\dfrac23A'H=\\dfrac{a\\sqrt3}{3}$, $AG'=\\sqrt{AA'^2-A'G'^2}=\\sqrt{a^2-\\dfrac{a^2}{3}}=\\dfrac{a\\sqrt6}{3}$. $V=AG'\\cdot S_{A'B'C'}=\\dfrac{a\\sqrt6}{3}\\cdot\\dfrac{a^2\\sqrt3}{4}=\\dfrac{a^3\\sqrt2}{4}$.\nb) $A'H\\bot B'C'$ và $AG'\\bot B'C'$ nên $B'C'\\bot(AA'H)$. Trong $(AA'H)$ dựng $HI\\bot AA'$ thì $HI$ là đường vuông góc chung của $AA'$ và $B'C'$, nên $d=",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008693",
+  "loai": "trac_nghiem",
+  "de": "Cho khối chóp $S.ABCD$ có chiều cao bằng $3$, đáy $ABCD$ có diện tích bằng $10$. Thể tích khối chóp $S.ABCD$ bằng:",
+  "lua_chon": [
+   "$10$.",
+   "$2$.",
+   "$30$.",
+   "$15$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "$V=\\dfrac13\\cdot10\\cdot3=10$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008694",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $O.ABC$ có đáy là tam giác đều cạnh $a$, $OA\\bot(ABC)$ và $AH\\bot BC$ (minh hoạ bằng hình vẽ dưới). Khoảng cách từ điểm $O$ đến $(ABC)$ là độ dài đoạn:",
+  "lua_chon": [
+   "$OH$.",
+   "$OB$.",
+   "$AH$.",
+   "$OA$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "$OA\\bot(ABC)$ nên $d(O,(ABC))=OA$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008695",
+  "loai": "trac_nghiem",
+  "de": "Hình chóp tứ giác đều có mặt bên là hình gì?",
+  "lua_chon": [
+   "Tam giác đều.",
+   "Tam giác vuông.",
+   "Tam giác vuông cân.",
+   "Tam giác cân."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Các mặt bên của hình chóp đều là các tam giác cân (hai cạnh bên bằng nhau).",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008696",
+  "loai": "dung_sai",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông tâm $O$, cạnh bằng $a$, cạnh bên $SA$ vuông góc với mặt phẳng đáy và $SA=a$ (minh họa bằng hình vẽ). Xét tính đúng sai các mệnh đề sau:",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$SA\\bot(ABCD)$ nên $d(S,(ABCD))=SA$, không phải $SO$.",
+    "noi_dung": "Khoảng cách từ đỉnh $S$ đến mặt phẳng $(ABCD)$ là độ dài đoạn $SO$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Chỉ có $SA\\bot(ABCD)$; $SO$ không vuông góc với đáy.",
+    "noi_dung": "$SO\\bot(ABCD)$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$V=\\dfrac13\\cdot a^2\\cdot a=\\dfrac{a^3}{3}$.",
+    "noi_dung": "Thể tích khối chóp $S.ABCD$ bằng $\\dfrac{a^{3}}{3}$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$BD\\bot AC$, $BD\\bot SA$ nên $BD\\bot(SAC)\\Rightarrow(SBD)\\bot(SAC)$.",
+    "noi_dung": "$(SBD)\\bot(SAC)$."
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008697",
+  "loai": "tra_loi_ngan",
+  "de": "Một ống khói có cấu trúc gồm một khối chóp cụt tứ giác đều có thể tích $V_{1}$ và một khối lăng trụ tứ giác đều có thể tích $V_{2}$ ghép lại với nhau (hình 1). Cho biết khối chóp cụt đều này có một mặt bên là tứ giác $ABCD$ và khối lăng trụ tứ giác đều này có một mặt bên là tứ giác $MNBA$ (hình 2): $DC=2x$, $AB=x$, $NB=3x$, $\\widehat{ADC}=60^{\\circ}$. Tính tỉ số thể tích $\\dfrac{V_1}{V_2}$ (Làm tròn kết quả đến hàng phần trăm).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "Mặt bên $ABCD$ là hình thang cân đáy $AB=x$, $DC=2x$, $\\widehat D=60^\\circ$ nên $AD=x$, đường cao hình thang $=\\dfrac{x\\sqrt3}{2}$. Chiều cao chóp cụt: $h=\\sqrt{\\left(\\dfrac{x\\sqrt3}2\\right)^2-\\left(\\dfrac x2\\right)^2}=\\dfrac{x}{\\sqrt2}$. $V_1=\\dfrac13h\\left(S+\\sqrt{SS'}+S'\\right)=\\dfrac13\\cdot\\dfrac{x}{\\sqrt2}\\left(4x^2+2x^2+x^2\\right)=\\dfrac{7\\sqrt2}{6}x^3$. $V_2=x^2\\cdot3x=3x^3$. Vậy $\\dfrac{V_1}{V_2}=\\dfrac{7\\sqrt2}{18}\\approx0{,}55$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008698",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp tứ giác đều $S.ABCD$, có đáy là hình vuông cạnh bằng $2$, cạnh bên bằng $2\\sqrt{2}$. Tính khoảng cách giữa hai đường thẳng $AB$ và $SD$ (kết quả làm tròn đến hàng phần chục)?",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "1,9",
+  "loi_giai": "$AB\\parallel CD$ nên $AB\\parallel(SCD)$, $d(AB,SD)=d(AB,(SCD))=d(A,(SCD))=2d(O,(SCD))$. $SO=\\sqrt{8-2}=\\sqrt6$; $N$ là trung điểm $CD$: $ON=1$, $SN=\\sqrt7$. $d(O,(SCD))=\\dfrac{SO\\cdot ON}{SN}=\\dfrac{\\sqrt6}{\\sqrt7}$. Vậy $d=\\dfrac{2\\sqrt6}{\\sqrt7}\\approx1{,}9$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008706",
+  "loai": "trac_nghiem",
+  "de": "Cho hình lập phương $ABCD.A'B'C'D'$. Đường thẳng nào sau đây vuông góc với đường thẳng $BC'$?",
+  "lua_chon": [
+   "$A'D$.",
+   "$AC$.",
+   "$BB'$.",
+   "$AD'$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "$A'D\\parallel B'C$ và $B'C\\bot BC'$ (hai đường chéo của hình vuông $BCC'B'$), nên $A'D\\bot BC'$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008707",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABC$ có $SA\\bot(ABC)$, $AB=a\\sqrt2$, $AC=a\\sqrt3$ và $SA=a$ (hình vẽ). Khi đó tan của góc giữa đường thẳng $SB$ và mặt phẳng $(ABC)$ bằng",
+  "lua_chon": [
+   "$\\dfrac{\\sqrt6}{2}$.",
+   "$\\dfrac{\\sqrt2}{2}$.",
+   "$\\dfrac{\\sqrt3}{3}$.",
+   "$\\dfrac{\\sqrt6}{3}$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Hình chiếu của $SB$ lên $(ABC)$ là $AB$ nên góc cần tìm là $\\widehat{SBA}$: $\\tan\\widehat{SBA}=\\dfrac{SA}{AB}=\\dfrac{a}{a\\sqrt2}=\\dfrac{\\sqrt2}{2}$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008708",
+  "loai": "trac_nghiem",
+  "de": "Cho khối lăng trụ có diện tích đáy $S=5a^{2}$ và chiều cao $h=a$. Thể tích của khối lăng trụ đã cho bằng",
+  "lua_chon": [
+   "$5a^2$.",
+   "$\\dfrac53a^3$.",
+   "$\\dfrac56a^3$.",
+   "$5a^3$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "$V=S\\cdot h=5a^2\\cdot a=5a^3$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008709",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông cân tại $B$, $AB=2a$ và $SA$ vuông góc với mặt phẳng đáy. Khoảng cách từ $C$ đến mặt phẳng $(SAB)$ bằng",
+  "lua_chon": [
+   "$2\\sqrt2a$.",
+   "$\\sqrt2a$.",
+   "$2a$.",
+   "$a$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "$BC\\bot AB$, $BC\\bot SA$ nên $BC\\bot(SAB)$, do đó $d(C,(SAB))=BC=AB=2a$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008710",
+  "loai": "dung_sai",
+  "de": "Cho hình chóp tam giác đều $S.ABC$ có tâm của đáy là điểm $O$, $AB=4a$, $SA=3a$. Xét tính đúng sai của các mệnh đề sau?",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$AO=\\dfrac{4a}{\\sqrt3}$, $SO=\\sqrt{SA^2-AO^2}=\\sqrt{9a^2-\\dfrac{16a^2}{3}}=\\dfrac{a\\sqrt{33}}{3}\\ne\\dfrac{5a\\sqrt{33}}{3}$.",
+    "noi_dung": "Chiều cao của hình chóp bằng $\\dfrac{5a\\sqrt{33}}{3}$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$S_{ABC}=\\dfrac{\\sqrt3}{4}(4a)^2=4a^2\\sqrt3$. $V=\\dfrac13\\cdot4a^2\\sqrt3\\cdot\\dfrac{a\\sqrt{33}}{3}=\\dfrac{4\\sqrt{99}}{9}a^3=\\dfrac{4a^3\\sqrt{11}}{3}$.",
+    "noi_dung": "Thể tích của khối chóp $S.ABC$ bằng $\\dfrac{4a^3\\sqrt{11}}{3}$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Hình chóp tam giác đều có $SO\\bot(ABC)$ với $O$ là tâm đáy.",
+    "noi_dung": "$SO\\bot(ABC)$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Gọi $M$ là trung điểm $BC$: góc là $\\widehat{SMO}$. $OM=\\dfrac13AM=\\dfrac13\\cdot2a\\sqrt3=\\dfrac{2a\\sqrt3}{3}$, $SM=\\sqrt{SB^2-BM^2}=a\\sqrt5$. $\\cos\\widehat{SMO}=\\dfrac{OM}{SM}=\\dfrac{2\\sqrt3}{3\\sqrt5}=\\dfrac{2\\sqrt{15}}{15}$.",
+    "noi_dung": "$\\cos$ của góc tạo bởi mặt phẳng bên và mặt phẳng đáy bằng $\\dfrac{2\\sqrt{15}}{15}$."
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008711",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $1$, $SA\\bot(ABCD)$, $SA=\\sqrt2$. Tính khoảng cách giữa $AD$ đến mặt phẳng $(SBC)$ (làm tròn kết quả đến hàng phần chục).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "0,8",
+  "loi_giai": "$AD\\parallel(SBC)$ nên $d(AD,(SBC))=d(A,(SBC))=AH$ với $AH\\bot SB$: $AH=\\dfrac{SA\\cdot AB}{SB}=\\dfrac{\\sqrt2\\cdot1}{\\sqrt3}=\\dfrac{\\sqrt6}{3}\\approx0{,}8$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008712",
+  "loai": "tu_luan",
+  "de": "Người ta xây dựng một chân tháp bằng bê tông có dạng khối chóp cụt tứ giác đều như hình bên. Cạnh đáy dưới dài $5$ m, cạnh đáy trên dài $2$ m, cạnh bên dài $4$ m. Biết rằng chân tháp được làm bằng bê tông tươi với giá tiền là $1\\,470\\,000$ đồng/m$^3$. Tính số tiền để mua bê tông tươi làm chân tháp theo đơn vị triệu đồng.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "$\\approx64{,}8$ triệu đồng",
+  "loi_giai": "Đáy trên $ABCD$ cạnh $2$: $AO=\\sqrt2$; đáy dưới $MNEG$ cạnh $5$: $MI=\\dfrac{5\\sqrt2}{2}$. Gọi $H$ là hình chiếu của $A$ lên đáy dưới: $MH=MI-HI=\\dfrac{5\\sqrt2}{2}-\\sqrt2=\\dfrac{3\\sqrt2}{2}$. Chiều cao $h=\\sqrt{AM^2-MH^2}=\\sqrt{16-\\dfrac92}=\\dfrac{\\sqrt{46}}{2}$. Diện tích hai đáy $S=4$, $S'=25$, $V=\\dfrac13h\\left(S+\\sqrt{SS'}+S'\\right)=\\dfrac13\\cdot\\dfrac{\\sqrt{46}}{2}\\cdot39=\\dfrac{13\\sqrt{46}}{2}\\approx44{,}09$ m$^3$. Số tiền $\\approx44{,}09\\cdot1{,}47\\approx64{,}8$ triệu đồng.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008721",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy là hình vuông $ABCD$ cạnh $a$. Biết $SA$ vuông góc với mặt phẳng đáy và $SA=a\\sqrt3$. Khoảng cách từ điểm $C$ đến mặt phẳng $(SAB)$ bằng",
+  "lua_chon": [
+   "$a\\sqrt2$.",
+   "$2a$.",
+   "$a\\sqrt5$.",
+   "$a$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "$CB\\perp AB$ và $CB\\perp SA$ (vì $SA\\perp(ABCD)$) nên $CB\\perp(SAB)$. Do đó $d(C,(SAB))=CB=a$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008722",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABC$, đáy là tam giác $ABC$ vuông cân tại $B$, $SA\\perp(ABC)$ và $SA=AB=a$. Số đo góc giữa đường thẳng $SB$ với mặt phẳng $(ABC)$ bằng",
+  "lua_chon": [
+   "$90^\\circ$.",
+   "$45^\\circ$.",
+   "$60^\\circ$.",
+   "$30^\\circ$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "$AB$ là hình chiếu của $SB$ lên $(ABC)$ nên góc cần tìm là $\\widehat{SBA}$. Tam giác $SAB$ vuông cân tại $A$ ($SA=AB=a$) nên $\\widehat{SBA}=45^\\circ$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008723",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông, $SA\\perp(ABCD)$. Gọi $H,K$ lần lượt là hình chiếu vuông góc của $A$ lên $SB,SD$ (tham khảo hình vẽ). Đường thẳng $HK$ vuông góc với mặt phẳng nào sau đây?",
+  "lua_chon": [
+   "$(SCD)$.",
+   "$(SAD)$.",
+   "$(SBC)$.",
+   "$(SAC)$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Ta có $SA\\perp AB$, $SA\\perp AD$ và $AH\\perp SB$, $AK\\perp SD$ nên $SH\\cdot SB=SA^2=SK\\cdot SD$; mà $SB=SD$ (hai tam giác vuông $SAB$, $SAD$ bằng nhau) nên $\\dfrac{SH}{SB}=\\dfrac{SK}{SD}$ và $HK\\parallel BD$. Vì $BD\\perp AC$ và $BD\\perp SA$ nên $BD\\perp(SAC)$, suy ra $HK\\perp(SAC)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008724",
+  "loai": "trac_nghiem",
+  "de": "Lăng trụ tam giác đều có độ dài tất cả các cạnh bằng $3$. Thể tích khối lăng trụ đã cho bằng",
+  "lua_chon": [
+   "$\\dfrac{9\\sqrt3}{4}$.",
+   "$\\dfrac{27\\sqrt3}{2}$.",
+   "$\\dfrac{27\\sqrt3}{4}$.",
+   "$\\dfrac{9\\sqrt3}{2}$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Đáy là tam giác đều cạnh $3$ có diện tích $\\dfrac{3^2\\sqrt3}{4}=\\dfrac{9\\sqrt3}{4}$, chiều cao lăng trụ bằng cạnh bên $=3$. Vậy $V=\\dfrac{9\\sqrt3}{4}\\cdot3=\\dfrac{27\\sqrt3}{4}$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008725",
+  "loai": "dung_sai",
+  "de": "Cho hình chóp tứ giác đều $S.ABCD$ có $ABCD$ là hình vuông tâm $O$, $SO\\perp(ABCD)$, $AB=2a$. Góc giữa $SB$ và $(ABCD)$ bằng $60^\\circ$.",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Vì $SO\\perp(ABCD)$ nên hình chiếu của $S$ là $O$, hình chiếu của $B$ là $B$: hình chiếu của $SB$ là $OB$, không phải $AB$.",
+    "noi_dung": "Hình chiếu của $SB$ lên $(ABCD)$ là $AB$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Góc giữa $SB$ và $(ABCD)$ chính là $\\widehat{SBO}=60^\\circ$.",
+    "noi_dung": "Góc $\\widehat{SBO}=60^\\circ$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$BO=\\dfrac{AB\\sqrt2}{2}=a\\sqrt2$; $SO=BO\\tan60^\\circ=a\\sqrt2\\cdot\\sqrt3=a\\sqrt6$.",
+    "noi_dung": "$SO=a\\sqrt6$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$V=\\dfrac13\\cdot(2a)^2\\cdot a\\sqrt6=\\dfrac{4\\sqrt6a^3}{3}\\neq4\\sqrt6a^3$.",
+    "noi_dung": "Thể tích hình chóp $S.ABCD$ là $4\\sqrt6a^3$."
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008726",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông cân tại $A$, $BC=4\\ \\text{cm}$, hình chiếu vuông góc của $S$ trên mặt phẳng $(ABC)$ là trung điểm $H$ của cạnh $BC$, góc giữa cạnh bên $SA$ và mặt đáy bằng $45^\\circ$. Tính thể tích khối chóp $S.ABC$ (Làm tròn kết quả đến hàng phần trăm).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "2,67",
+  "loi_giai": "$AH=\\dfrac{BC}2=2$ (trung tuyến ứng cạnh huyền). Góc giữa $SA$ và đáy là $\\widehat{SAH}=45^\\circ$ nên $SH=AH=2$. Cạnh góc vuông $AB=AC=2\\sqrt2$, $S_{ABC}=\\dfrac12\\cdot2\\sqrt2\\cdot2\\sqrt2=4$. $V=\\dfrac13\\cdot4\\cdot2=\\dfrac83\\approx2{,}67\\ (\\text{cm}^3)$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008727",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình hộp chữ nhật $ABCD.A'B'C'D'$ có $AA'=a\\sqrt3$, đáy $ABCD$ là hình vuông cạnh là $a\\sqrt2$. Góc nhị diện $[B',AC,B]$ có số đo bằng $a^\\circ$. Tính $\\sin a^\\circ$ (Làm tròn kết quả đến hàng phần trăm).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "0,87",
+  "loi_giai": "Gọi $O=AC\\cap BD$. $BO\\perp AC$ và $B'O\\perp AC$ (định lí ba đường vuông góc) nên góc nhị diện $[B',AC,B]$ có số đo bằng $\\widehat{B'OB}$. $BO=\\dfrac{a\\sqrt2\\cdot\\sqrt2}{2}=a$, $BB'=a\\sqrt3$ nên $\\tan\\widehat{B'OB}=\\sqrt3$, góc bằng $60^\\circ$. Vậy $\\sin a^\\circ=\\dfrac{\\sqrt3}2\\approx0{,}87$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008728",
+  "loai": "tra_loi_ngan",
+  "de": "Cho khối chóp $S.ABCD$ có $\\triangle SAB$ là tam giác đều và nằm trong mặt phẳng vuông góc mặt đáy $(ABCD)$, biết $ABCD$ là hình thoi cạnh $AB=3$; $\\widehat{BAD}=120^\\circ$, gọi $G$ là trọng tâm tam giác $SAB$. Tính khoảng cách từ $G$ đến mặt phẳng $(SCD)$ (Làm tròn kết quả đến hàng phần trăm).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "1,22",
+  "loi_giai": "Gọi $M$ là trung điểm $AB$: $SM\\perp AB$, $SM=\\dfrac{3\\sqrt3}2$ và $SM\\perp(ABCD)$. Vì $AB\\parallel CD$ nên $AB\\parallel(SCD)$, suy ra $d(M,(SCD))=d(A,(SCD))$, và $G\\in SM$ với $SG=\\dfrac23SM$ nên $d(G,(SCD))=\\dfrac23d(M,(SCD))$. Dựng hệ toạ độ ($A$ gốc, $AB$ trục $x$) ta tính được $d(G,(SCD))=\\dfrac{\\sqrt6}{2}\\approx1{,}22$ (đã kiểm bằng tính toán véc-tơ).",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008733",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp đều $S.ABCD$ có đáy là hình vuông tâm $O$. Khoảng cách từ đỉnh $S$ đến mặt phẳng $(ABCD)$ là:",
+  "lua_chon": [
+   "$SA$.",
+   "$SC$.",
+   "$SO$.",
+   "$SD$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Hình chóp đều nên $SO\\perp(ABCD)$, do đó $d(S,(ABCD))=SO$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008734",
+  "loai": "trac_nghiem",
+  "de": "Cho hình lập phương $ABCD.A'B'C'D'$. Khẳng định nào sau đây là sai?",
+  "lua_chon": [
+   "$AB\\perp(ADD'A')$.",
+   "$CD\\perp(ADD'A')$.",
+   "$CD\\perp(ABB'A')$.",
+   "$AB\\perp(BCC'B')$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "$AB\\perp AD$, $AB\\perp AA'$ nên $AB\\perp(ADD'A')$ (A đúng); $CD\\parallel AB$ nên $CD\\perp(ADD'A')$ (B đúng) và $AB\\perp(BCC'B')$ (D đúng). Còn $CD\\parallel AB$ mà $AB\\subset(ABB'A')$ nên $CD$ song song với $(ABB'A')$, không vuông góc: C sai.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008735",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp $S.ABCD$ có đáy là hình chữ nhật có $AB=4\\ cm$, $AD=3\\ cm$. $SA\\perp(ABCD)$, $SC=6\\ cm$. Tính thể tích khối chóp $S.ABCD$? (Làm tròn kết quả đến hàng phần chục và đơn vị tính là $cm^3$)",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "13,3",
+  "loi_giai": "$AC=\\sqrt{4^2+3^2}=5$; $SA=\\sqrt{SC^2-AC^2}=\\sqrt{36-25}=\\sqrt{11}$. $S_{ABCD}=12$. $V=\\dfrac13\\cdot12\\cdot\\sqrt{11}=4\\sqrt{11}\\approx13{,}3\\ (cm^3)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008736",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật; $SA=SB=AB=2a$, $AD=a$. Gọi $I$ là trung điểm của $AB$, $SI\\perp(ABCD)$. Tính số đo của góc phẳng nhị diện $[S,CD,I]$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "$60^\\circ$",
+  "loi_giai": "Tam giác $SAB$ đều cạnh $2a$ nên $SI=a\\sqrt3$. Gọi $M$ là trung điểm $CD$; $IM\\parallel AD$ nên $IM\\perp CD$, $IM=AD=a$. Vì $SI\\perp CD$ nên $CD\\perp(SIM)$, suy ra $CD\\perp SM$. Vậy góc phẳng nhị diện $[S,CD,I]$ là $\\widehat{SMI}$. Tam giác $SMI$ vuông tại $I$: $\\tan\\widehat{SMI}=\\dfrac{SI}{IM}=\\dfrac{a\\sqrt3}{a}=\\sqrt3$, do đó $\\widehat{SMI}=60^\\circ$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008742",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật và $SA\\perp(ABCD)$. Mặt phẳng $(SBC)$ vuông góc với mặt phẳng nào sau đây?",
+  "lua_chon": [
+   "$(ABCD)$.",
+   "$(SBD)$.",
+   "$(SAC)$.",
+   "$(SAB)$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "$BC\\perp AB$ và $BC\\perp SA$ (vì $SA\\perp(ABCD)$) nên $BC\\perp(SAB)$. Mà $BC\\subset(SBC)$ nên $(SBC)\\perp(SAB)$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008743",
+  "loai": "trac_nghiem",
+  "de": "Cho hình lăng trụ tam giác $ABC.A'B'C'$ có $(ABB'A')$ vuông góc với hai mặt đáy. Hình chiếu của $A'B'$ lên $(ABC)$ là đường thẳng nào sau đây?",
+  "lua_chon": [
+   "$BC$.",
+   "$AB$.",
+   "$A'B$.",
+   "$AC$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Vì $(ABB'A')\\perp(ABC)$ nên hình chiếu vuông góc của mọi điểm thuộc $(ABB'A')$ lên $(ABC)$ nằm trên giao tuyến $AB$. Do đó hình chiếu của $A'B'$ lên $(ABC)$ là $AB$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008744",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp chữ nhật $ABCD.A_1B_1C_1D_1$. Cặp đường thẳng nào sau đây vuông góc với nhau?",
+  "lua_chon": [
+   "$CD$ và $B_1D_1$.",
+   "$AB$ và $A_1C_1$.",
+   "$AD$ và $A_1B_1$.",
+   "$AC$ và $A_1C_1$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "$A_1B_1\\parallel AB$ và $AD\\perp AB$ (đáy là hình chữ nhật) nên $AD\\perp A_1B_1$. Các cặp còn lại không vuông góc (ví dụ $AC\\parallel A_1C_1$).",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008745",
+  "loai": "dung_sai",
+  "de": "Cho hình chóp tam giác đều $S.ABC$ và $G$ là trọng tâm tam giác $ABC$.",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Hình chóp tam giác đều có chân đường cao là tâm $G$ của đáy nên $SG\\perp(ABC)$.",
+    "noi_dung": "$SG$ vuông góc với mặt phẳng $(ABC)$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Hình chiếu của $SA$ lên $(ABC)$ là $GA$ nên góc giữa $SA$ và $(ABC)$ là $\\widehat{SAG}$, không phải $\\widehat{SAB}$.",
+    "noi_dung": "Góc giữa $SA$ và $(ABC)$ bằng $\\widehat{SAB}$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$AM\\perp BC$ (tam giác $ABC$ đều) và $SM\\perp BC$ (tam giác $SBC$ cân tại $S$) nên $\\widehat{SMA}$ là góc phẳng của góc nhị diện $[S,BC,A]$.",
+    "noi_dung": "$\\widehat{SMA}$ là một góc phẳng của góc nhị diện $[S,BC,A]$, trong đó $M$ là trung điểm $BC$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$SG\\perp(ABC)$ tại $G$ nên $d(S,(ABC))=SG$.",
+    "noi_dung": "Khoảng cách từ $S$ đến mặt phẳng $(ABC)$ bằng độ dài đoạn thẳng $SG$."
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008746",
+  "loai": "tu_luan",
+  "de": "(1,0 điểm) Một bể cá hình chóp cụt đều, đáy bể là hình vuông có cạnh bằng $20\\,cm$, miệng bể là hình vuông có cạnh bằng $30\\,cm$ và chiều cao bằng $20\\,cm$ (tham khảo hình minh hoạ).\na) Tính dung tích của bể cá.\nb) Người ta đổ vào bể một lượng nước, biết bề mặt nước là một hình vuông có cạnh bằng $28\\,cm$. Tính thể tích của lượng nước đã đổ vào.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "a) $\\dfrac{38000}3\\approx12667\\ cm^3$; b) $\\dfrac{27904}3\\approx9301{,}3\\ cm^3$",
+  "loi_giai": "a) Thể tích chóp cụt đều: $V=\\dfrac13h\\left(S_1+S_2+\\sqrt{S_1S_2}\\right)=\\dfrac13\\cdot20\\left(20^2+30^2+\\sqrt{20^2\\cdot30^2}\\right)=\\dfrac13\\cdot20\\cdot1900=\\dfrac{38000}3\\approx12667\\ cm^3$.\nb) Lượng nước là một chóp cụt đều có đáy $20\\,cm$, mặt nước $28\\,cm$. Cạnh hình vuông tăng đều theo chiều cao ($10\\,cm$ trên $20\\,cm$ cao), nên mặt nước cạnh $28$ ở độ cao $h'$ với $20+\\dfrac{10}{20}h'=28$, tức $h'=16\\,cm$. Thể tích nước: $V_n=\\dfrac13\\cdot16\\left(20^2+28^2+20\\cdot28\\right)=\\dfrac13\\cdot16\\",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008752",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy là hình vuông cạnh $a\\sqrt2$ và $SA\\perp(ABCD)$, $SA=a\\sqrt3$. Khoảng cách từ $B$ đến mặt phẳng $(SAD)$ là",
+  "lua_chon": [
+   "$\\dfrac{3a}4$.",
+   "$a$.",
+   "$\\dfrac a2$.",
+   "$a\\sqrt2$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "$AB\\perp AD$ và $AB\\perp SA$ nên $AB\\perp(SAD)$ tại $A$. Do đó $d(B,(SAD))=AB=a\\sqrt2$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008753",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp chữ nhật $ABCD.A'B'C'D'$ có $AB=AD=a$ và $AA'=a\\sqrt2$ (tham khảo hình vẽ bên). Góc giữa đường thẳng $CA'$ và mặt phẳng $(ABCD)$ bằng:",
+  "lua_chon": [
+   "$90^\\circ$.",
+   "$45^\\circ$.",
+   "$60^\\circ$.",
+   "$30^\\circ$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "$AC$ là hình chiếu của $CA'$ lên $(ABCD)$ nên góc cần tìm là $\\widehat{A'CA}$. $AC=a\\sqrt2$, $AA'=a\\sqrt2$ nên $\\tan\\widehat{A'CA}=\\dfrac{AA'}{AC}=1$, góc bằng $45^\\circ$.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008754",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác đều, $SA$ vuông góc mặt đáy. Biết $SA=a\\sqrt3$, $AB=a$. Tính góc $(SB,(ABC))$ (làm tròn đến độ).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "60",
+  "loi_giai": "$AB$ là hình chiếu của $SB$ lên $(ABC)$ nên góc cần tìm là $\\widehat{SBA}$. $\\tan\\widehat{SBA}=\\dfrac{SA}{AB}=\\dfrac{a\\sqrt3}a=\\sqrt3$, nên $\\widehat{SBA}=60^\\circ$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008755",
+  "loai": "tu_luan",
+  "de": "(1 điểm) Kim tự tháp Louvre (Pháp) có dạng hình chóp tứ giác đều, được xây bằng kính và kim loại nằm ở giữa sân bảo tàng Louvre, Paris, Pháp, theo Mother Nature Network. Công trình này cao $35$ m với đáy hình vuông, mỗi cạnh dài $20{,}6$ m. Đây là tác phẩm của Ieoh Ming Pei, kiến trúc sư nổi tiếng người Mỹ gốc Trung Quốc. Tính thể tích của kim tự tháp này (Làm tròn đến hàng đơn vị).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "$\\approx4951\\ m^3$",
+  "loi_giai": "Diện tích đáy $S=20{,}6^2=424{,}36\\ m^2$, chiều cao $h=35$ m. $V=\\dfrac13Sh=\\dfrac13\\cdot424{,}36\\cdot35=\\dfrac{14852{,}6}3\\approx4951\\ (m^3)$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008756",
+  "loai": "tu_luan",
+  "de": "(1 điểm) Cho hình chóp $S.ABCD$ có tam giác $SAB$ đều và nằm trong mặt phẳng vuông góc với $(ABCD)$, tứ giác $ABCD$ là hình vuông cạnh $2a$. Tính khoảng cách từ điểm $A$ đến mặt phẳng $(SCD)$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "$\\dfrac{2a\\sqrt{21}}7$",
+  "loi_giai": "Gọi $H$, $K$ lần lượt là trung điểm $AB$, $CD$. Tam giác $SAB$ đều cạnh $2a$ nên $SH\\perp AB$, $SH=a\\sqrt3$; do $(SAB)\\perp(ABCD)$ nên $SH\\perp(ABCD)$. Vì $AB\\parallel CD$ nên $AB\\parallel(SCD)$, suy ra $d(A,(SCD))=d(H,(SCD))$. $HK\\perp CD$, $SH\\perp CD$ nên $CD\\perp(SHK)$, dựng $HI\\perp SK$ ($I\\in SK$) thì $HI\\perp(SCD)$ và $HI=d(H,(SCD))$. Tam giác $SHK$ vuông tại $H$ với $SH=a\\sqrt3$, $HK=2a$: $\\dfrac1{HI^2}=\\dfrac1{3a^2}+\\dfrac1{4a^2}=\\dfrac7{12a^2}$, $HI=\\dfrac{2a\\sqrt3}{\\sqrt7}=\\dfrac{2a\\s",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008763",
+  "loai": "trac_nghiem",
+  "de": "Góc giữa hai đường thẳng bất kỳ trong không gian là góc giữa:",
+  "lua_chon": [
+   "Hai đường thẳng cùng đi qua một điểm và tương ứng song song với hai đường thẳng đó.",
+   "Hai đường thẳng lần lượt vuông góc với hai đường thẳng đó.",
+   "Hai đường thẳng cắt nhau và không song song với hai đường thẳng đó.",
+   "Hai đường thẳng cắt nhau và tương ứng vuông góc với hai đường thẳng đó."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Theo định nghĩa: góc giữa hai đường thẳng $a$, $b$ trong không gian là góc giữa hai đường thẳng $a'$, $b'$ cùng đi qua một điểm và lần lượt song song (hoặc trùng) với $a$, $b$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008764",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật và $SA\\perp(ABCD)$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$AC\\perp(SAB)$.",
+   "$SC\\perp(SAB)$.",
+   "$AB\\perp(SAD)$.",
+   "$BD\\perp(SAB)$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "$AB\\perp AD$ và $AB\\perp SA$ (vì $SA\\perp(ABCD)$) nên $AB\\perp(SAD)$. Các phương án còn lại sai.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008765",
+  "loai": "dung_sai",
+  "de": "Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác đều cạnh $a$. Biết $SA=\\dfrac{3a}2$ và $SA$ vuông góc với mặt đáy. Gọi $M$ là trung điểm của $BC$ và $H$ là hình chiếu vuông góc của $A$ lên $SM$.",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$AM\\perp BC$ (trung tuyến tam giác đều) và $SA\\perp BC$ nên $BC\\perp(SAM)$.",
+    "noi_dung": "Đường thẳng $BC$ vuông góc với mặt phẳng $(SAM)$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$AH\\perp SM$ và $AH\\perp BC$ (do $BC\\perp(SAM)$) nên $AH\\perp(SBC)$; $H$ là hình chiếu của $A$ và $S$ giữ nguyên nên hình chiếu của $SA$ lên $(SBC)$ là $SH$.",
+    "noi_dung": "Đường thẳng $SH$ là hình chiếu của đường thẳng $SA$ lên mặt phẳng $(SBC)$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$SM\\perp BC$, $AM\\perp BC$ nên góc giữa hai mặt phẳng là $\\widehat{SMA}$, không phải $\\widehat{ASM}$.",
+    "noi_dung": "Góc giữa hai mặt phẳng $(SBC)$ và $(ABC)$ là góc $\\widehat{ASM}$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "$AM=\\dfrac{a\\sqrt3}2$, $\\tan\\widehat{SMA}=\\dfrac{SA}{AM}=\\dfrac{3a/2}{a\\sqrt3/2}=\\sqrt3$ nên $\\widehat{SMA}=60^\\circ$.",
+    "noi_dung": "Góc phẳng nhị diện $[S;BC;A]$ bằng $60^\\circ$."
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008766",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh bằng $3$, $SA$ vuông góc với mặt phẳng $(ABCD)$ và $SC=3\\sqrt5$. Biết khoảng cách từ $A$ đến mặt phẳng $(SBC)$ là $\\dfrac{a\\sqrt3}b$ (với $\\dfrac ab$ tối giản). Tính $3a+2b$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "13",
+  "loi_giai": "$AC=3\\sqrt2$ nên $SA=\\sqrt{SC^2-AC^2}=\\sqrt{45-18}=3\\sqrt3$. $BC\\perp AB$, $BC\\perp SA$ nên $BC\\perp(SAB)$. Kẻ $AH\\perp SB$ thì $AH\\perp(SBC)$, $AH=d(A,(SBC))$: $\\dfrac1{AH^2}=\\dfrac1{SA^2}+\\dfrac1{AB^2}=\\dfrac1{27}+\\dfrac19=\\dfrac4{27}$, $AH=\\dfrac{3\\sqrt3}2$. Vậy $a=3$, $b=2$ ($\\dfrac32$ tối giản) và $3a+2b=9+4=13$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008767",
+  "loai": "tra_loi_ngan",
+  "de": "Cho tứ diện đều $ABCD$ có cạnh bằng $4\\sqrt2$. Tính khoảng cách của giữa đường thẳng chéo nhau $AB$ và $CD$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "4",
+  "loi_giai": "Gọi $M,N$ lần lượt là trung điểm $AB$, $CD$. Do tứ diện đều nên $MN\\perp AB$, $MN\\perp CD$, nên $MN=d(AB,CD)$. $AN=BN=\\dfrac{4\\sqrt2\\cdot\\sqrt3}2=2\\sqrt6$, $AM=2\\sqrt2$ nên $MN=\\sqrt{AN^2-AM^2}=\\sqrt{24-8}=4$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008768",
+  "loai": "tu_luan",
+  "de": "(1 điểm) Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật, mặt bên $SAD$ là tam giác đều cạnh $2a$ và nằm trong mặt phẳng vuông góc với mặt phẳng đáy, mặt phẳng $(SBC)$ tạo với mặt phẳng đáy một góc $45^\\circ$. Tính thể tích khối chóp $S.ABCD$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "$2a^3$",
+  "loi_giai": "Gọi $H$ là trung điểm $AD$: $SH\\perp AD$ và $(SAD)\\perp(ABCD)$ nên $SH\\perp(ABCD)$, $SH=a\\sqrt3$. Gọi $I$ là trung điểm $BC$: $HI\\perp BC$, $SH\\perp BC$ nên $BC\\perp(SHI)$, do đó góc giữa $(SBC)$ và đáy là $\\widehat{SIH}=45^\\circ$. Suy ra $HI=SH\\cot45^\\circ=a\\sqrt3$, tức $AB=HI=a\\sqrt3$. $S_{ABCD}=AD\\cdot AB=2a\\cdot a\\sqrt3=2a^2\\sqrt3$. $V=\\dfrac13S_{ABCD}\\cdot SH=\\dfrac13\\cdot2a^2\\sqrt3\\cdot a\\sqrt3=2a^3$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008782",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông tâm $O$, $SA\\perp(ABCD)$ (tham khảo hình vẽ). Góc nhị diện $[A;BD;S]$ là góc",
+  "lua_chon": [
+   "$\\widehat{SOA}$.",
+   "$\\widehat{SBA}$.",
+   "$\\widehat{SCA}$.",
+   "$\\widehat{SDA}$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Cạnh nhị diện là $BD$. Vì $ABCD$ là hình vuông nên $AO\\perp BD$; lại có $BD\\perp SA$ nên $BD\\perp(SAO)$, suy ra $SO\\perp BD$. Vậy góc nhị diện $[A;BD;S]$ là góc $\\widehat{SOA}$. Chọn A.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008783",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình thoi, $SA\\perp(ABCD)$. Mặt phẳng nào sau đây vuông góc với mặt phẳng $(SAC)$?",
+  "lua_chon": [
+   "$(SAB)$.",
+   "$(SBD)$.",
+   "$(SAD)$.",
+   "$(SBC)$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Đáy là hình thoi nên $BD\\perp AC$; lại có $SA\\perp(ABCD)\\Rightarrow SA\\perp BD$. Do đó $BD\\perp(SAC)$, mà $BD\\subset(SBD)$ nên $(SBD)\\perp(SAC)$. Chọn B.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008784",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABC$ có $SA\\perp(ABC)$. Góc giữa đường thẳng $SC$ và mặt phẳng $(ABC)$ là góc nào sau đây?",
+  "lua_chon": [
+   "$\\widehat{SCA}$.",
+   "$\\widehat{SAC}$.",
+   "$\\widehat{BCA}$.",
+   "$\\widehat{CSA}$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "$SA\\perp(ABC)$ nên $AC$ là hình chiếu của $SC$ lên $(ABC)$. Vậy góc giữa $SC$ và $(ABC)$ là $\\widehat{SCA}$. Chọn A.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008785",
+  "loai": "trac_nghiem",
+  "de": "Cho hình lập phương $ABCD.A'B'C'D'$ (tham khảo hình vẽ). Đoạn vuông góc chung của hai đường thẳng $AA'$ và $B'C'$ là",
+  "lua_chon": [
+   "$CD$.",
+   "$A'B'$.",
+   "$AD$.",
+   "$AB$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Ta có $A'B'\\perp AA'$ (tại $A'$) và $A'B'\\perp B'C'$ (tại $B'$), đồng thời $A'B'$ cắt $AA'$ tại $A'$ và cắt $B'C'$ tại $B'$. Vậy $A'B'$ là đoạn vuông góc chung của $AA'$ và $B'C'$. Chọn B.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008786",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông tâm $O$, $SA\\perp(ABCD)$. Hình chiếu của $D$ lên mặt phẳng $(SAC)$ là điểm nào sau đây?",
+  "lua_chon": [
+   "$C$.",
+   "$A$.",
+   "$S$.",
+   "$O$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "$DO\\perp AC$ (hai đường chéo hình vuông) và $DO\\perp SA$ (vì $SA\\perp(ABCD)$) nên $DO\\perp(SAC)$ tại $O$. Vậy hình chiếu của $D$ lên $(SAC)$ là $O$. Chọn D.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008787",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông tại $B$, $SA\\perp(ABC)$. Khẳng định nào sau đây sai?",
+  "lua_chon": [
+   "$(SAB)\\perp(ABC)$.",
+   "$(SAC)\\perp(ABC)$.",
+   "$(SBC)\\perp(ABC)$.",
+   "$(SBC)\\perp(SAB)$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "$SA\\perp(ABC)$ nên các mặt phẳng chứa $SA$ là $(SAB)$, $(SAC)$ đều vuông góc với $(ABC)$ (A, B đúng). $BC\\perp AB$, $BC\\perp SA$ nên $BC\\perp(SAB)$, do đó $(SBC)\\perp(SAB)$ (D đúng). Còn $(SBC)\\perp(ABC)$ là sai vì góc giữa hai mặt phẳng này là $\\widehat{SBA}$ không vuông. Chọn C.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008788",
+  "loai": "trac_nghiem",
+  "de": "Cho hình lập phương $ABCD.A'B'C'D'$ (tham khảo hình vẽ). Đường thẳng nào sau đây vuông góc với đường thẳng $A'C'$?",
+  "lua_chon": [
+   "$A'D'$.",
+   "$AC$.",
+   "$BD$.",
+   "$CD$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "$A'C'\\parallel AC$ và $AC\\perp BD$ (hai đường chéo hình vuông $ABCD$) nên $A'C'\\perp BD$. Các đường $A'D'$, $AC$, $CD$ đều không vuông góc với $A'C'$ (góc giữa $A'C'$ với $A'D'$, $CD$ bằng $45^\\circ$; $AC\\parallel A'C'$). Chọn C.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008789",
+  "loai": "dung_sai",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật có cạnh $AB=a$, $AD=3a$, biết $SA\\perp(ABCD)$ và $SA=4a$. Lúc đó:",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Đúng: $SA\\perp(ABCD)$ nên $AC$ là hình chiếu của $SC$ lên $(ABCD)$, góc giữa $SC$ và $(ABCD)$ là $\\widehat{SCA}$.",
+    "noi_dung": "$(SC,(ABCD))=\\widehat{SCA}$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Sai: $(SAC)\\perp(SBD)$ khi và chỉ khi $BD\\perp(SAC)$, tức $BD\\perp AC$, điều này chỉ đúng khi $ABCD$ là hình thoi. Với hình chữ nhật có $AB\\neq AD$ thì hai đường chéo không vuông góc nên hai mặt phẳng không vuông góc.",
+    "noi_dung": "$(SAC)\\perp(SBD)$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Đúng: $BC\\perp AB$, $BC\\perp SA$ nên $BC\\perp(SAB)$; mà $BC\\subset(SBC)$ nên $(SBC)\\perp(SAB)$.",
+    "noi_dung": "$(SAB)\\perp(SBC)$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "HH11000000",
+    "loi_giai": "Đúng: $V=\\dfrac13\\cdot S_{ABCD}\\cdot SA=\\dfrac13\\cdot a\\cdot3a\\cdot4a=4a^3$.",
+    "noi_dung": "$V_{S.ABCD}=4a^3$."
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008790",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác đều có cạnh $a$, $SA\\perp(ABC)$ và $SA=3a$. Gọi $\\alpha$ là góc giữa đường thẳng $SC$ và mặt phẳng $(ABC)$. Tính $\\tan\\alpha$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "3",
+  "loi_giai": "$SA\\perp(ABC)$ nên $\\alpha=\\widehat{SCA}$. Trong tam giác $SAC$ vuông tại $A$: $\\tan\\alpha=\\dfrac{SA}{AC}=\\dfrac{3a}{a}=3$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008791",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông tại $B$, $SA\\perp(ABC)$, $AB=4$ và $SA=5$. Tính khoảng cách từ điểm $A$ đến mặt phẳng $(SBC)$ (làm tròn kết quả đến hàng phần trăm).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "3,12",
+  "loi_giai": "$BC\\perp AB$, $BC\\perp SA$ nên $BC\\perp(SAB)$, suy ra $(SBC)\\perp(SAB)$ theo giao tuyến $SB$. Kẻ $AH\\perp SB$ thì $AH\\perp(SBC)$ nên $d(A,(SBC))=AH$. Trong tam giác $SAB$ vuông tại $A$: $AH=\\dfrac{SA\\cdot AB}{\\sqrt{SA^2+AB^2}}=\\dfrac{5\\cdot4}{\\sqrt{41}}\\approx3{,}12$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008792",
+  "loai": "tra_loi_ngan",
+  "de": "Một khối gỗ dạng hình chóp tứ giác đều $S.ABCD$ có cạnh đáy $6\\,\\text{cm}$, cạnh bên tạo với mặt đáy một góc $\\alpha$ với $\\tan\\alpha=\\sqrt2$. Người thợ cắt khối chóp bởi một mặt phẳng song song với đáy và qua trung điểm một cạnh bên để được một hình chóp $S.A'B'C'D'$ và một hình chóp cụt đều $ABCD.A'B'C'D'$. Gọi $V_1$ là thể tích của khối chóp $S.A'B'C'D'$ và $V_2$ là thể tích khối chóp cụt đều $ABCD.A'B'C'D'$. Biết $\\dfrac{V_1}{V_2}=\\dfrac ab$ với $a,b\\in\\mathbb Z$ và $\\dfrac ab$ là phân số tối giản. Tính $T=2a+3b$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "23",
+  "loi_giai": "Gọi $O$ là tâm đáy, khi đó $SO\\perp(ABCD)$, góc giữa cạnh bên và đáy là $\\widehat{SAO}$ với $\\tan\\alpha=\\dfrac{SO}{AO}=\\sqrt2$. Đáy cạnh $6$ nên $AO=3\\sqrt2$, $SO=3\\sqrt2\\cdot\\sqrt2=6$. Mặt phẳng cắt song song đáy qua trung điểm cạnh bên nên tỉ số đồng dạng $\\dfrac{SA'}{SA}=\\dfrac12$, suy ra $V_1=\\dfrac18V_{S.ABCD}$ và $V_2=\\dfrac78V_{S.ABCD}$. Do đó $\\dfrac{V_1}{V_2}=\\dfrac17$, $a=1$, $b=7$ và $T=2\\cdot1+3\\cdot7=23$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008793",
+  "loai": "tu_luan",
+  "de": "Cho hình lăng trụ đứng $ABC.A'B'C'$ có $AB=13$, $AC=14$, $BC=15$. Gọi $H$ là hình chiếu vuông góc của $A$ lên $BC$.\na) Chứng minh $(A'AH)\\perp(BCC'B')$.\nb) Tính khoảng cách giữa hai đường thẳng $AA'$ và $BC$. (1,0 điểm)",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "a) Chứng minh $BC\\perp(A'AH)$ nên $(A'AH)\\perp(BCC'B')$; b) $d(AA',BC)=\\dfrac{56}{5}$",
+  "loi_giai": "a) $BC\\perp AH$ (giả thiết) và $BC\\perp AA'$ (vì $AA'\\perp(ABC)$), mà $AH$, $AA'$ cắt nhau trong $(A'AH)$ nên $BC\\perp(A'AH)$. Vì $BC\\subset(BCC'B')$ nên $(A'AH)\\perp(BCC'B')$.\nb) $AH\\perp BC$ và $AH\\perp AA'$ (do $AA'\\perp(ABC)$) nên $AH$ là đoạn vuông góc chung của $AA'$ và $BC$, do đó $d(AA',BC)=AH$. Nửa chu vi tam giác $ABC$: $p=\\dfrac{13+14+15}2=21$; $S_{ABC}=\\sqrt{21\\cdot(21-13)(21-14)(21-15)}=\\sqrt{21\\cdot8\\cdot7\\cdot6}=84$. Mà $S_{ABC}=\\dfrac12AH\\cdot BC$ nên $AH=\\dfrac{2\\cdot84}{15}=\\df",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008794",
+  "loai": "tu_luan",
+  "de": "Trong một cuộc thi làm đồ dùng học tập do lớp 11A phát động, bạn Minh làm một hình chóp tứ giác đều bằng cách lấy một mảnh tôn hình vuông $ABCD$ có cạnh bằng $30\\,\\text{cm}$ (tham khảo hình vẽ). Cắt mảnh tôn theo các tam giác cân $AEB$, $BFC$, $CGD$, $DHA$ và sau đó gò các tam giác $AEH$, $BEF$, $CFG$, $DGH$ sao cho bốn đỉnh $A,B,C,D$ trùng nhau tạo thành khối chóp tứ giác đều. Thể tích lớn nhất của khối chóp tứ giác đều tạo thành bằng bao nhiêu? (0,5 điểm)",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "$V_{\\max}=288\\sqrt{10}\\ \\text{cm}^3$",
+  "loi_giai": "Gọi $O$ là tâm hình vuông $ABCD$ và $EFGH$ là hình vuông cạnh $x$ ($x>0$), $M$ là trung điểm $EF$ thì $OM=\\dfrac x2$, còn $OB=15\\sqrt2$ nên $BM=15\\sqrt2-\\dfrac x2$. Khi gò lại, $A,B,C,D$ trùng nhau tại đỉnh $A$ của hình chóp $A.EFGH$ có chiều cao $AO=\\sqrt{BM^2-OM^2}=\\sqrt{450-15\\sqrt2\\,x}$. Thể tích $V=\\dfrac13x^2\\sqrt{450-15\\sqrt2\\,x}$, nên $V^2=\\dfrac19x^4(450-15\\sqrt2\\,x)=\\dfrac{15\\sqrt2}9\\cdot x^4(15\\sqrt2-x)$. Viết $x^4(15\\sqrt2-x)=256\\cdot\\dfrac x4\\cdot\\dfrac x4\\cdot\\dfrac x4\\cdot\\dfrac x",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008800",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABCD$ có đáy là hình vuông tâm $O$, $SO\\perp(ABCD)$. Khẳng định nào sau đây SAI?",
+  "lua_chon": [
+   "$SA\\perp AB$.",
+   "$AC\\perp BD$.",
+   "$SO\\perp AD$.",
+   "$CD\\perp BC$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "$AC\\perp BD$ (hai đường chéo hình vuông); $SO\\perp(ABCD)$ nên $SO\\perp AD$; $CD\\perp BC$ (hai cạnh kề của hình vuông). Còn $SA\\perp AB$ là sai: nếu $SA\\perp AB$ thì cùng với $AB\\perp SO$ suy ra $AB\\perp(SAO)$, tức $AB\\perp AC$, vô lí. Chọn A.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008801",
+  "loai": "trac_nghiem",
+  "de": "Cho hình lập phương $ABCD.A'B'C'D'$. Mặt phẳng $(ABCD)$ không vuông góc với mặt phẳng nào dưới đây?",
+  "lua_chon": [
+   "$(A'B'C'D')$",
+   "$(ABB'A')$",
+   "$(ADD'A')$",
+   "$(CBB'C')$"
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Các mặt bên $(ABB'A')$, $(ADD'A')$, $(CBB'C')$ của hình lập phương đều vuông góc với mặt đáy $(ABCD)$. Mặt $(A'B'C'D')$ song song với $(ABCD)$ nên không vuông góc với nó. Chọn A.",
+  "co_hinh": true
+ },
+ {
+  "ma_cau": "HHC008802",
+  "loai": "trac_nghiem",
+  "de": "Chọn khẳng định SAI trong các khẳng định dưới đây.",
+  "lua_chon": [
+   "Hình lăng trụ đứng có hai đáy là hai đa giác bằng nhau.",
+   "Hình lăng trụ đứng có các mặt bên là hình bình hành.",
+   "Hình lăng trụ đứng có các mặt bên vuông góc với đáy.",
+   "Hình lăng trụ đứng có các cạnh bên vuông góc với đáy."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Các mệnh đề A, C, D đều đúng theo định nghĩa lăng trụ đứng. Các mặt bên của lăng trụ đứng là hình chữ nhật (không chỉ là hình bình hành bất kì); đáp án của đề chọn B là mệnh đề \"sai\" (theo ý đề: phát biểu chưa đủ chặt, đúng ra phải là hình chữ nhật). Chọn B.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008803",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình chóp tứ giác đều $S.ABCD$ có cạnh đáy là $2$, cạnh bên là $2\\sqrt2$. Tính khoảng cách giữa hai đường thẳng $AB$ và $SD$ (làm tròn đến hàng phần mười).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "1,9",
+  "loi_giai": "Gọi $O$ là tâm đáy, $M$ là trung điểm $CD$. $SO=\\sqrt{SA^2-OA^2}=\\sqrt{8-2}=\\sqrt6$; $SM=\\sqrt{SD^2-DM^2}=\\sqrt{8-1}=\\sqrt7$; $OM=1$. Vì $AB\\parallel CD$ nên $AB\\parallel(SCD)$, do đó $d(AB,SD)=d(AB,(SCD))=d(A,(SCD))=2d(O,(SCD))$. Kẻ $OH\\perp SM$ thì $OH\\perp(SCD)$ và $OH=\\dfrac{SO\\cdot OM}{SM}=\\dfrac{\\sqrt6}{\\sqrt7}$. Vậy $d(AB,SD)=2\\sqrt{\\dfrac67}\\approx1{,}85\\approx1{,}9$.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008804",
+  "loai": "tu_luan",
+  "de": "Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$ và $SA\\perp(ABCD)$.\na) Chứng minh: $(SAC)\\perp(SBD)$.\nb) Tính số đo của góc nhị diện sau: $[C,SA,D]$. (1,0 điểm)",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "a) Chứng minh $BD\\perp(SAC)$ nên $(SAC)\\perp(SBD)$; b) $[C,SA,D]=45^\\circ$",
+  "loi_giai": "a) Vì $ABCD$ là hình vuông nên $BD\\perp AC$; $SA\\perp(ABCD)$ nên $BD\\perp SA$. Suy ra $BD\\perp(SAC)$, mà $BD\\subset(SBD)$ nên $(SAC)\\perp(SBD)$. (0,5 điểm)\nb) Vì $SA\\perp(ABCD)$ nên $SA\\perp AC$ và $SA\\perp AD$. Suy ra $\\widehat{CAD}$ là góc phẳng nhị diện của góc nhị diện $[C,SA,D]$. Do $ABCD$ là hình vuông nên $\\widehat{CAD}=45^\\circ$. Vậy số đo góc nhị diện $[C,SA,D]$ bằng $45^\\circ$. (0,5 điểm)",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008812",
+  "loai": "trac_nghiem",
+  "de": "Cho hai đường thẳng phân biệt $a$, $b$ và mặt phẳng $(P)$, trong đó $a\\perp(P)$. Chọn mệnh đề sai.",
+  "lua_chon": [
+   "Nếu $b\\perp(P)$ thì $b\\parallel a$.",
+   "Nếu $b\\parallel(P)$ thì $b\\perp a$.",
+   "Nếu $b\\parallel a$ thì $b\\parallel(P)$.",
+   "Nếu $b\\parallel a$ thì $b\\perp(P)$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "A đúng (hai đường thẳng cùng vuông góc với một mặt phẳng thì song song). B đúng ($a\\perp(P)$ nên $a$ vuông góc mọi đường thẳng song song với $(P)$). D đúng (đường thẳng song song với $a$ cũng vuông góc với $(P)$). C sai vì nếu $b\\parallel a$ thì $b\\perp(P)$ chứ không song song với $(P)$. Chọn C.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008813",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABC$ có $SA\\perp(ABC)$. Góc giữa đường thẳng $SB$ và mặt phẳng $(ABC)$ là góc nào?",
+  "lua_chon": [
+   "$\\widehat{BCA}$.",
+   "$\\widehat{SAC}$.",
+   "$\\widehat{SCA}$.",
+   "$\\widehat{SBA}$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "$SA\\perp(ABC)$ nên $AB$ là hình chiếu của $SB$ lên $(ABC)$; góc cần tìm là $\\widehat{SBA}$. Chọn D.",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "HHC008814",
+  "loai": "trac_nghiem",
+  "de": "Khối lăng trụ có diện tích đáy bằng $a^2\\sqrt3$ và chiều cao bằng $2a\\sqrt3$. Thể tích khối lăng trụ đã cho bằng",
+  "lua_chon": [
+   "$6a^3$.",
+   "$2a^3$.",
+   "$2a^3\\sqrt3$.",
+   "$3a^3$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "$V=B\\cdot h=a^2\\sqrt3\\cdot2a\\sqrt3=6a^3$. Chọn A.",
+  "co_hinh": false
+ }
+]

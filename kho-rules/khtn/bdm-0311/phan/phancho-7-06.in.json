@@ -1,0 +1,145 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00349",
+   "chu_de": "Từ",
+   "chuyen_de": "Nam châm điện & Từ trường Trái Đất",
+   "nhom": "Lý thuyết cơ bản về Nam châm điện & Từ trường Trái Đất",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nTrái Đất là một nam châm khổng lồ nên có từ trường. Kim nam châm (kim la bàn) tự do khi đứng yên luôn nằm theo hướng Bắc – Nam địa lí, cực Bắc của kim chỉ hướng Bắc.\nNam châm hoặc dòng điện đặt gần la bàn làm kim lệch khỏi hướng Bắc – Nam.\nNam châm điện gồm ống dây dẫn quấn quanh lõi sắt (dây đồng có vỏ cách điện), nguồn điện (pin) và công tắc.\nNam châm điện chỉ có từ tính khi có dòng điện chạy qua ống dây; ngắt điện thì mất từ tính (từ tính tạm thời). Độ mạnh thay đổi được bằng số vòng dây hoặc cường độ dòng điện.\nỨng dụng: cần cẩu điện, khóa điện từ, chuông điện, rơ-le điện từ, máy tách sắt khỏi rác.\n\n##CY 3. Lưu ý\nLõi nam châm điện làm bằng sắt chứ không phải đồng, nhôm hay nhựa.\nNam châm điện khác nam châm vĩnh cửu: có thể bật, tắt từ tính và thay đổi độ mạnh.\nNam châm điện chỉ hút vật liệu từ như sắt, thép, không hút nhôm, đồng, nhựa.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01495",
+     "thu_tu": 1,
+     "ten": "La bàn, từ trường Trái Đất và nhiễm từ",
+     "mo_ta": "Đề hỏi vì sao kim la bàn chỉ hướng Bắc – Nam, ảnh hưởng của nam châm hay dòng điện đặt gần la bàn, nam châm treo tự do khi đứng yên.\nCó tình huống kim thép, đinh sắt cọ xát với nam châm rồi tự quay về hướng Bắc – Nam (nhiễm từ).\nLàm bằng cách vận dụng: Trái Đất là nam châm, từ trường Trái Đất định hướng kim.\nLưu ý: đề cho cực Bắc kim chỉ về phía người rồi hỏi hướng, quay người ⇒ thuộc nhóm \"Bài toán định hướng la bàn…\".",
+     "ly_thuyet": "##TC Từ trường Trái Đất và la bàn\nTrái Đất là nam châm khổng lồ nên có từ trường.\nKim nam châm quay tự do, khi đứng yên luôn nằm theo hướng Bắc – Nam địa lí; cực Bắc của kim chỉ hướng Bắc ở mọi nơi.\nVật bằng thép, sắt cọ xát vào nam châm thì bị nhiễm từ, quay tự do sẽ chỉ hướng Bắc – Nam như kim la bàn.\n\n##CY Lỗi hay mắc\nNam châm hay dòng điện gần la bàn tạo từ trường làm kim lệch khỏi hướng Bắc – Nam.\nKim chỉ hướng do từ trường Trái Đất, không do trục quay, gió hay dòng nước.",
+     "vi_du": "##VD\nVì sao kim la bàn khi đứng yên luôn nằm theo hướng Bắc – Nam?\nA. Trục quay giữ kim cố định một hướng\nB. Gió luôn thổi kim theo hướng Bắc – Nam\nC. Từ trường Trái Đất tác dụng lên kim\nD. Chữ N trên mặt la bàn hút kim\n\nBài giải:\nTrái Đất là một nam châm khổng lồ nên có từ trường.\nTừ trường Trái Đất tác dụng lên kim nam châm làm kim nằm theo hướng Bắc – Nam.\nChọn C.\n\n##VD\nBạn Nam cọ xát một chiếc kim khâu bằng thép nhiều lần theo một chiều vào cực của nam châm, rồi đặt kim nằm trên miếng xốp thả nổi trên chậu nước. Kim khâu quay một lúc rồi đứng yên theo hướng Bắc – Nam. Kết luận nào sau đây đúng?\nA. Dòng nước đẩy kim khâu về hướng Bắc – Nam\nB. Miếng xốp có từ tính nên quay theo hướng Bắc – Nam\nC. Kim khâu đã thành nam châm, dùng được như la bàn\nD. Kim khâu bằng thép không bao giờ có từ tính\n\nBài giải:\nKim khâu cọ xát với nam châm nên bị nhiễm từ, trở thành nam châm.\nNó quay tự do rồi đứng yên theo hướng Bắc – Nam giống kim la bàn, do từ trường Trái Đất.\nNước đứng yên và xốp không phải vật liệu từ nên A, B sai; thép cọ xát với nam châm thì có từ tính nên D sai.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01496",
+     "thu_tu": 2,
+     "ten": "Cấu tạo và vật liệu các bộ phận của nam châm điện",
+     "mo_ta": "Đề hỏi nam châm điện gồm những bộ phận nào; vật liệu làm lõi, làm dây quấn; vai trò của công tắc, của nguồn điện.\nLàm bằng cách nhớ cấu tạo nam châm điện.\nLưu ý: đề hỏi khi nào có từ tính, ngắt điện thì sao ⇒ thuộc dạng \"Điều kiện có từ tính và đặc điểm của nam châm điện\".",
+     "ly_thuyet": "##TC Cấu tạo nam châm điện\nNam châm điện gồm ống dây dẫn (dây đồng có lớp vỏ cách điện) quấn quanh lõi sắt, nguồn điện (pin) và công tắc.\nLõi làm bằng sắt. Nguồn điện tạo dòng điện chạy qua ống dây. Công tắc dùng đóng hoặc ngắt dòng điện.",
+     "vi_du": "##VD\nNam châm điện gồm những bộ phận chính nào?\nA. Ống dây dẫn, lõi sắt, nguồn điện\nB. Ống dây dẫn, lõi đồng, nguồn điện\nC. Nam châm thẳng, dây dẫn, pin\nD. Ống dây dẫn, lõi nhựa, bóng đèn\n\nBài giải:\nNam châm điện gồm ống dây dẫn quấn quanh lõi sắt và nguồn điện.\nLõi phải làm bằng sắt chứ không phải đồng hay nhựa, và không có nam châm thẳng hay bóng đèn trong cấu tạo.\nChọn A.\n\n##VD\nBộ phận nào của mạch nam châm điện dùng để đóng hoặc ngắt dòng điện?\nA. Lõi sắt\nB. Công tắc\nC. Ống dây dẫn\nD. Vỏ cách điện của dây\n\nBài giải:\nCông tắc đóng thì mạch kín, có dòng điện; ngắt công tắc thì mạch hở, không có dòng điện.\nLõi sắt, ống dây, vỏ cách điện không làm nhiệm vụ đóng ngắt.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01497",
+     "thu_tu": 3,
+     "ten": "Điều kiện có từ tính và đặc điểm của nam châm điện",
+     "mo_ta": "Đề hỏi khi nào nam châm điện hút được vật sắt, khi ngắt điện hoặc mạch hở thì thế nào, cách làm mất từ tính.\nCó câu hỏi nam châm điện có từ tính vĩnh viễn hay tạm thời, và so sánh độ mạnh với nam châm vĩnh cửu.\nLàm bằng quy tắc: có dòng điện chạy qua ống dây thì có từ tính, hết dòng điện thì mất từ tính.\nLưu ý: đề nêu thiết bị cụ thể (cần cẩu, chuông, rơ-le) ⇒ thuộc các dạng ứng dụng.",
+     "ly_thuyet": "##TC Đặc điểm nam châm điện\nNam châm điện chỉ có từ tính khi có dòng điện chạy qua ống dây; ngắt điện (hoặc mạch hở) thì mất từ tính ngay (tạm thời).\nĐộ mạnh nam châm điện thay đổi được bằng số vòng dây hoặc cường độ dòng điện; nam châm vĩnh cửu có độ mạnh cố định.\n\n##CY Lưu ý\nĐứt dây làm mạch hở, không còn dòng điện nên nam châm điện mất từ tính.\nNam châm điện không có từ tính vĩnh viễn như nam châm thẳng.",
+     "vi_du": "##VD\nNam châm điện có từ tính VĨNH VIỄN hay chỉ có từ tính TẠM THỜI?\nA. Vĩnh viễn, giống như nam châm thẳng thông thường\nB. Vĩnh viễn, nhưng yếu hơn nam châm thẳng\nC. Tạm thời, chỉ trong 1 giờ sau khi ngắt điện\nD. Tạm thời, chỉ khi có dòng điện chạy qua ống dây\n\nBài giải:\nNam châm điện chỉ có từ tính khi có dòng điện chạy qua ống dây.\nNgắt dòng điện là mất từ tính ngay, không kéo dài thêm khoảng thời gian nào.\nVậy từ tính chỉ là tạm thời, khi có dòng điện.\nChọn D.\n\n##VD\nMột nam châm điện đang hoạt động (có dòng điện qua ống dây) bỗng dưng bị đứt một đoạn dây trong mạch. Điều gì xảy ra với từ tính của nam châm điện?\nA. Từ tính vẫn giữ nguyên vì lõi sắt vẫn còn đó\nB. Từ tính tăng lên vì dòng điện dồn về một chỗ\nC. Từ tính mất ngay vì mạch bị hở, không còn dòng điện chạy qua\nD. Từ tính chỉ giảm nhẹ, vẫn còn hút được ghim sắt\n\nBài giải:\nĐứt dây làm mạch hở, không còn dòng điện chạy qua ống dây.\nKhông có dòng điện thì nam châm điện mất từ tính ngay, giống như ngắt công tắc.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01498",
+     "thu_tu": 4,
+     "ten": "Vì sao dùng nam châm điện: cần cẩu, khóa điện từ, tách phế liệu",
+     "mo_ta": "Đề đưa một tình huống thực tế (cần cẩu ở bãi phế liệu, khóa điện từ, nhà máy tái chế) và hỏi vì sao dùng nam châm điện, vật nào được hút, hay điều gì xảy ra khi ngắt điện.\nLàm bằng cách vận dụng ưu điểm của nam châm điện: bật tắt được từ tính, chỉ hút vật liệu từ.\nLưu ý: đề về chuông điện, rơ-le điện từ ⇒ thuộc dạng \"Nguyên lí hoạt động của chuông điện và rơ-le điện từ\".",
+     "ly_thuyet": "##TC Ưu điểm trong ứng dụng\nNam châm điện có thể bật từ tính (đóng điện) để hút vật và tắt (ngắt điện) để thả vật đúng chỗ; nam châm vĩnh cửu luôn có từ tính nên không làm được.\nNam châm điện chỉ hút vật liệu từ (sắt, thép), không hút nhôm, đồng, nhựa.\n\n##PP Cách làm\nXác định thiết bị cần hút rồi thả vật hay cần giữ rồi nhả.\nXét xem có dòng điện hay không: có thì hút, ngắt thì thả.\nLọc vật nào là vật liệu từ thì mới bị hút.",
+     "vi_du": "##VD\nCần cẩu điện hạ xuống một đống phế liệu gồm vỏ lon nhôm, mảnh đồng, thanh sắt và chai nhựa, rồi đóng điện và nhấc lên. Những vật nào được nhấc lên?\nA. Chỉ các thanh sắt\nB. Vỏ lon nhôm và thanh sắt\nC. Mọi vật bằng kim loại\nD. Mảnh đồng và thanh sắt\n\nBài giải:\nĐóng điện thì nam châm điện hút được các vật liệu từ.\nTrong các vật chỉ có sắt là vật liệu từ; nhôm, đồng, nhựa không bị hút.\nVậy chỉ các thanh sắt được nhấc lên.\nChọn A.\n\n##VD\nCửa phòng dùng khóa điện từ: khi có điện, nam châm điện ở khung cửa hút chặt tấm sắt gắn trên cánh cửa. Nếu mất điện, cánh cửa sẽ thế nào?\nA. Vẫn bị giữ chặt như khi có điện\nB. Không còn bị giữ, đẩy ra được\nC. Bị đẩy bật mở ra thật mạnh\nD. Bị hút chặt hơn, rất khó mở\n\nBài giải:\nMất điện thì không còn dòng điện chạy qua ống dây nên nam châm điện mất từ tính.\nKhông còn lực hút nên cánh cửa không bị giữ nữa, đẩy ra được.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01499",
+     "thu_tu": 5,
+     "ten": "Nguyên lí hoạt động của chuông điện và rơ-le điện từ",
+     "mo_ta": "Đề hỏi vai trò của nam châm điện trong chuông điện hoặc rơ-le điện từ; điều gì xảy ra khi cản búa chuông; lợi ích của rơ-le.\nLàm bằng cách hiểu nam châm điện hút thanh sắt để gõ chuông hoặc đóng, ngắt mạch.\nLưu ý: tình huống cần cẩu, khóa điện từ ⇒ thuộc dạng \"Vì sao dùng nam châm điện: cần cẩu, khóa điện từ, tách phế liệu\".",
+     "ly_thuyet": "##TC Chuông điện và rơ-le điện từ\nChuông điện: nam châm điện hút thanh sắt làm búa gõ vào chuông; búa dao động liên tục nên chuông kêu liên tục.\nRơ-le điện từ: nam châm điện hút thanh sắt để đóng hoặc ngắt mạch điện; dùng mạch điều khiển có dòng điện nhỏ để đóng ngắt mạch có dòng điện lớn, người dùng thao tác an toàn hơn.\n\n##CY Lưu ý\nGiữ chặt búa không cho dao động thì chuông ngừng kêu vì búa không gõ được.",
+     "vi_du": "##VD\nChuông điện ở một nhà đang hoạt động bình thường (nhấn nút thì kêu liên tục). Nếu giữ nguyên nhấn nút nhưng dùng tay giữ chặt thanh sắt gắn búa (không cho nó dao động), điều gì xảy ra?\nA. Chuông vẫn kêu liên tục như bình thường\nB. Chuông ngừng kêu vì búa không còn gõ vào chuông được\nC. Chuông kêu to hơn vì búa được giữ chắc chắn\nD. Chuông kêu chậm hơn nhưng vẫn đều đặn\n\nBài giải:\nChuông phát ra âm nhờ búa liên tục dao động gõ vào chuông.\nGiữ chặt thanh sắt làm búa không gõ được nữa nên chuông ngừng kêu.\nChọn B.\n\n##VD\nRơ-le điện từ trong một số thiết bị dùng để đóng, ngắt một mạch điện có dòng điện lớn bằng một mạch điều khiển có dòng điện nhỏ. Vì sao cách làm này có lợi?\nA. Vì mạch nhỏ làm mạch lớn chạy nhanh hơn\nB. Vì rơ-le làm điện áp mạch lớn giảm về 0\nC. Vì người dùng chỉ thao tác mạch dòng nhỏ, an toàn hơn\nD. Vì mạch nhỏ không cần nam châm điện\n\nBài giải:\nRơ-le dùng nam châm điện ở mạch nhỏ để đóng, ngắt mạch lớn.\nNgười dùng chỉ thao tác mạch dòng nhỏ, tránh tiếp xúc trực tiếp với mạch lớn nên an toàn hơn.\nChọn C."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K07000000126",
+   "nhom_id": "KNB00349",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một chuông điện KHÔNG kêu khi nhấn nút. Bốn đề xuất kiểm tra, sửa chữa (xem các phương án). Đề xuất nào KHÔNG khắc phục được nguyên nhân MẠCH BỊ HỞ?",
+   "lua_chon": [
+    "Quấn thêm vòng dây quanh lõi sắt của chuông",
+    "Kiểm tra và nối lại dây bị đứt trong mạch",
+    "Kiểm tra tiếp điểm ở nút nhấn có bị bẩn không",
+    "Kiểm tra pin còn điện không, thay pin mới"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nếu mạch đang bị HỞ (đứt dây, tiếp điểm bẩn, hết pin) thì dù quấn thêm bao nhiêu vòng dây, mạch vẫn không kín nên không có dòng điện chạy qua; quấn thêm vòng dây không khắc phục được mạch hở.\n\nVì sao các phương án khác sai:\n- B: Nối lại dây đứt trực tiếp khắc phục nguyên nhân mạch hở, đây là đề xuất hợp lí.\n- C: Tiếp điểm bẩn có thể làm mạch không kín; lau sạch trực tiếp khắc phục nguyên nhân mạch hở, đây là đề xuất hợp lí.\n- D: Hết pin làm mạch mất nguồn điện; thay pin mới trực tiếp khắc phục nguyên nhân, đây là đề xuất hợp lí."
+  },
+  {
+   "ma_cau": "K07000000127",
+   "nhom_id": "KNB00349",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Cần cẩu điện ở bãi phế liệu KHÔNG thả vật ra dù đã ngắt điện. Bốn hướng kiểm tra (xem các phương án). Hướng nào KHÔNG liên quan đến việc thả vật ra?",
+   "lua_chon": [
+    "Kiểm tra công tắc đã thực sự ngắt hẳn dòng điện chưa",
+    "Kiểm tra và tăng thêm số vòng dây quấn quanh lõi",
+    "Kiểm tra xem vật sắt có bị kẹt cơ học vào móc cẩu không",
+    "Kiểm tra dây dẫn có bị nối tắt qua vỏ máy không"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Việc vật không được thả ra liên quan đến mạch có thực sự hết dòng điện hay có bị kẹt cơ học hay không; tăng số vòng dây chỉ làm nam châm mạnh hơn LÚC CÓ dòng điện, không liên quan đến việc thả vật ra khi ngắt điện.\n\nVì sao các phương án khác sai:\n- A: Công tắc chưa ngắt hẳn nghĩa là mạch vẫn còn dòng điện, đây là hướng kiểm tra hợp lí cho vấn đề đang gặp.\n- C: Vật bị kẹt cơ học vào móc cẩu cũng khiến vật không rơi ra được dù đã hết từ tính, đây là hướng kiểm tra hợp lí.\n- D: Nối tắt qua vỏ máy có thể khiến mạch vẫn còn dòng điện dù đã ngắt công tắc, đây là hướng kiểm tra hợp lí."
+  },
+  {
+   "ma_cau": "K07000000128",
+   "nhom_id": "KNB00349",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Rơ-le điện từ trong xe ô tô KHÔNG đóng mạch đèn tín hiệu dù đã bật công tắc. Bốn hướng kiểm tra (xem các phương án). Hướng nào KHÔNG khắc phục được nguyên nhân MẤT NGUỒN ĐIỆN?",
+   "lua_chon": [
+    "Kiểm tra và tăng số vòng dây quấn trong nam châm điện của rơ-le",
+    "Kiểm tra cầu chì, dây nối có bị đứt không",
+    "Kiểm tra tiếp điểm rơ-le có bị đóng cặn không",
+    "Kiểm tra ắc quy có đủ điện áp không"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nếu nguyên nhân là MẤT NGUỒN ĐIỆN (cầu chì đứt, tiếp điểm bẩn, ắc quy yếu) thì mạch không kín hoặc không đủ dòng; tăng số vòng dây không tạo thêm nguồn điện nên không khắc phục được nguyên nhân này.\n\nVì sao các phương án khác sai:\n- B: Cầu chì hoặc dây nối đứt trực tiếp làm mất nguồn, kiểm tra và nối lại là hướng hợp lí.\n- C: Tiếp điểm đóng cặn có thể làm mạch không kín, đây là hướng kiểm tra hợp lí.\n- D: Ắc quy yếu làm mạch không đủ dòng điện, kiểm tra điện áp là hướng hợp lí."
+  },
+  {
+   "ma_cau": "K07000000129",
+   "nhom_id": "KNB00349",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Khoá cửa điện từ KHÔNG giữ chặt cửa nữa dù vẫn có điện. Bốn hướng kiểm tra (xem các phương án). Hướng nào KHÔNG hợp lí?",
+   "lua_chon": [
+    "Kiểm tra dây nguồn cấp cho khoá có bị lỏng không",
+    "Kiểm tra bộ nguồn có đủ điện áp cấp cho khoá không",
+    "Kiểm tra tấm sắt gắn trên cánh cửa có tiếp xúc đúng vị trí không",
+    "Kiểm tra và giảm bớt số vòng dây quấn trong khoá"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Giảm số vòng dây làm nam châm điện YẾU đi, không giúp khoá giữ cửa chắc hơn; đây không phải hướng khắc phục hợp lí cho vấn đề khoá giữ cửa yếu.\n\nVì sao các phương án khác sai:\n- A: Dây nguồn lỏng có thể làm dòng điện chập chờn, đây là hướng kiểm tra hợp lí.\n- B: Điện áp không đủ làm nam châm điện yếu, đây là hướng kiểm tra hợp lí.\n- C: Tấm sắt lệch vị trí có thể không được hút chắc, đây là hướng kiểm tra hợp lí."
+  },
+  {
+   "ma_cau": "K07000000131",
+   "nhom_id": "KNB00349",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một khóa cửa điện từ KHÔNG giữ chặt cửa dù đã cắm điện đầy đủ. Bốn hướng kiểm tra (xem các phương án). Hướng nào KHÔNG liên quan đến nguyên nhân MẠCH BỊ HỞ?",
+   "lua_chon": [
+    "Kiểm tra dây nguồn có bị đứt ngầm bên trong không",
+    "Kiểm tra các mối nối trong mạch có bị lỏng không",
+    "Kiểm tra và tăng thêm số vòng dây quấn trong khóa",
+    "Kiểm tra cầu chì bảo vệ mạch có bị đứt không"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Nếu mạch đang bị HỞ (dây đứt ngầm, mối nối lỏng, cầu chì đứt) thì dù có tăng thêm bao nhiêu vòng dây, mạch vẫn không kín nên không có dòng điện chạy qua; tăng vòng dây không khắc phục được nguyên nhân mạch hở.\n\nVì sao các phương án khác sai:\n- A: Dây nguồn đứt ngầm chính là một nguyên nhân gây mạch hở, cần kiểm tra.\n- B: Mối nối lỏng cũng có thể gây mạch hở, cần kiểm tra.\n- D: Cầu chì đứt làm mạch hở, cần kiểm tra."
+  },
+  {
+   "ma_cau": "K07000000132",
+   "nhom_id": "KNB00349",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Cần cẩu điện nhấc một khối sắt nhưng bị RƠI khối sắt giữa chừng dù công tắc vẫn đóng (chưa ngắt điện). Bốn hướng kiểm tra (xem các phương án). Hướng nào KHÔNG liên quan đến nguyên nhân khối sắt bị rơi giữa chừng?",
+   "lua_chon": [
+    "Kiểm tra pin/nguồn điện có bị yếu, sụt áp giữa chừng không",
+    "Kiểm tra móc treo và dây cáp cơ khí có bị đứt, lỏng không",
+    "Kiểm tra khối sắt có nặng vượt quá khả năng của nam châm điện không",
+    "Kiểm tra và đổi chiều quấn dây của ống dây"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đổi chiều quấn dây chỉ làm đổi cực từ (Bắc thành Nam hoặc ngược lại), không ảnh hưởng đến việc nam châm điện có đủ sức hút giữ vật hay không; đây không phải hướng kiểm tra liên quan đến việc khối sắt bị rơi.\n\nVì sao các phương án khác sai:\n- A: Nguồn điện yếu hoặc sụt áp giữa chừng làm nam châm điện yếu đi, có thể khiến vật bị rơi; cần kiểm tra.\n- B: Móc treo, dây cáp cơ khí lỏng hoặc đứt sẽ khiến khối sắt rơi dù nam châm vẫn hút tốt; cần kiểm tra.\n- C: Nếu khối sắt quá nặng so với khả năng hút của nam châm điện, nó có thể tuột rơi; cần kiểm tra."
+  }
+ ]
+}

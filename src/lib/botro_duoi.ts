@@ -150,6 +150,16 @@ export async function duyetKeHoachDuoi(caseId: string, soBuoi: number, maDangs: 
   if (error) throw error
 }
 
+// Danh sách dạng để học thuật chọn MỤC TIÊU đợt (Thùy 26/10 — đuổi sang bản đồ mới). DB quyết theo registry khối
+// (fn_duoi_dang_chon → _kho_ds_nhanh_khoi): K6–12 Toán khi bật bản đồ mới ⇒ ban_do 'moi' + dạng bài NDB đã xếp theo thứ tự bản đồ;
+// còn lại (cấp 1, môn khác) ⇒ 'cu', màn dùng bộ chọn cũ (DangPicker) như trước.
+export type DangChonDuoi = { ma_dang: string; ten_dang: string; muc_do: number | null; ma_chu_de: string; ten_chu_de: string; ma_chuyen_de: string | null; ten_chuyen_de: string | null; ma_nhom: string; ten_nhom: string }
+export async function getDangChonDuoi(mon: string, khoi: string): Promise<{ ban_do: 'cu' | 'moi'; dangs: DangChonDuoi[] }> {
+  const { data, error } = await supabase.rpc('fn_duoi_dang_chon', { p_mon: mon, p_khoi: khoi })
+  if (error) throw error
+  return data as { ban_do: 'cu' | 'moi'; dangs: DangChonDuoi[] }
+}
+
 // Đợt CHỜ team học thuật chốt/duyệt dạng — derive cho "Việc của tôi" + gate màn. Lọc CHƯA duyệt +
 // môn thuộc quyền học thuật của người xem (mons = hocThuatMons). KHÔNG bảng tasks (đúng luật derive).
 export async function listDotChoDuyetDuoi(mons: string[]): Promise<DotDuoi[]> {

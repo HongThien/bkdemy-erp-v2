@@ -1,0 +1,298 @@
+[
+ {
+  "ma_cau": "T111000000206",
+  "loai": "trac_nghiem",
+  "de": "Tính $\\lim \\dfrac{2n+1}{1+n}$ được kết quả là",
+  "lua_chon": [
+   "$2$.",
+   "$0$.",
+   "$\\dfrac{1}{2}$.",
+   "$1$."
+  ],
+  "co_hinh": false,
+  "nguon": "Đề giữa kỳ 1 Toán 11 năm 2024 - 2025 trường THPT Thị xã Quảng Trị"
+ },
+ {
+  "ma_cau": "T111000000207",
+  "loai": "trac_nghiem",
+  "de": "Hàm số nào sau đây là không liên tục tại điểm $x=2$?",
+  "lua_chon": [
+   "$f\\left(x\\right)=x^{2}+3x-2$.",
+   "$f\\left(x\\right)=\\dfrac{x+3}{x-2}$.",
+   "$f\\left(x\\right)=\\dfrac{x+3}{x+2}$.",
+   "$f\\left(x\\right)=\\sin x$."
+  ],
+  "co_hinh": false,
+  "nguon": "Đề giữa kỳ 1 Toán 11 năm 2024 - 2025 trường THPT Thị xã Quảng Trị"
+ },
+ {
+  "ma_cau": "T111000000208",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f\\left(x\\right)=\\begin{cases} x+5 khi x\\ne 3 \\\\ m khi x=3 \\end{cases}$. Tìm $m$ để hàm số liên tục tại điểm $x=3$.",
+  "lua_chon": [
+   "$3$.",
+   "$5$.",
+   "$8$.",
+   "$1$."
+  ],
+  "co_hinh": false,
+  "nguon": "Đề giữa kỳ 1 Toán 11 năm 2024 - 2025 trường THPT Thị xã Quảng Trị"
+ },
+ {
+  "ma_cau": "T111000000209",
+  "loai": "trac_nghiem",
+  "de": "Tìm giới hạn $\\lim\\limits_{x\\to -\\infty }\\dfrac{-2x-3}{2+x}$:",
+  "lua_chon": [
+   "$2$.",
+   "$-2$.",
+   "$-3$.",
+   "$-1$."
+  ],
+  "co_hinh": false,
+  "nguon": "Đề giữa kỳ 1 Toán 11 năm 2024 - 2025 trường THPT Thị xã Quảng Trị"
+ },
+ {
+  "ma_cau": "T111000000210",
+  "loai": "trac_nghiem",
+  "de": "Tìm giới hạn $\\lim\\limits_{x\\to 1^{+}}\\dfrac{4x-3}{x-1}$",
+  "lua_chon": [
+   "$+\\infty$.",
+   "$2$.",
+   "$-\\infty$.",
+   "$-2$."
+  ],
+  "co_hinh": false,
+  "nguon": "Đề giữa kỳ 1 Toán 11 năm 2024 - 2025 trường THPT Thị xã Quảng Trị"
+ },
+ {
+  "ma_cau": "T1110000004007",
+  "loai": "trac_nghiem",
+  "de": "Trong các dãy số sau, dãy số nào có giới hạn $+\\infty$?",
+  "lua_chon": [
+   "$u_n=\\frac{1}{n}$.",
+   "$v_n=\\left(\\frac{3}{\\pi}\\right)^n$.",
+   "$x_n=\\left(\\frac{e}{2}\\right)^n$.",
+   "$a_n=\\left(-1\\right)^n\\cdot n$."
+  ],
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2024 - 2025 trường THPT Nguyễn Du - BR VT (Mã đề 123)"
+ },
+ {
+  "ma_cau": "T1110000004010",
+  "loai": "trac_nghiem",
+  "de": "Giả sử $\\lim\\limits_{x\\to x_0}f(x)=L$ và $\\lim\\limits_{x\\to x_0}g(x)=M$ với $L,M$ là các số thực. Khẳng định nào sau đây sai?",
+  "lua_chon": [
+   "$\\lim\\limits_{x\\to x_0}\\left[f(x)+g(x)\\right]=L+M$.",
+   "$\\lim\\limits_{x\\to x_0}\\left[f(x)-g(x)\\right]=L-M$.",
+   "$\\lim\\limits_{x\\to x_0}\\left[f(x)\\cdot g(x)\\right]=L\\cdot M$.",
+   "$\\lim\\limits_{x\\to x_0}\\left[\\frac{f(x)}{g(x)}\\right]=\\frac{L}{M}$."
+  ],
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2024 - 2025 trường THPT Nguyễn Du - BR VT (Mã đề 123)"
+ },
+ {
+  "ma_cau": "T1110000004020",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giới hạn: $\\lim\\frac{3^{n+1}}{4\\cdot3^n}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2024 - 2025 trường THPT Nguyễn Du - BR VT (Mã đề 123)"
+ },
+ {
+  "ma_cau": "T1110000004021",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giới hạn: $\\lim\\limits_{x\\to5}\\frac{x^2-5x-7}{x-3}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2024 - 2025 trường THPT Nguyễn Du - BR VT (Mã đề 123)"
+ },
+ {
+  "ma_cau": "T1110000004022",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn: $\\lim\\limits_{x\\to-\\infty}\\frac{\\sqrt{x^2+1}}{2x}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2024 - 2025 trường THPT Nguyễn Du - BR VT (Mã đề 123)"
+ },
+ {
+  "ma_cau": "T1110000004023",
+  "loai": "tu_luan",
+  "de": "Cho hàm số $f(x)=\\begin{cases}2x+a&\\text{khi }x<2\\\\4&\\text{khi }x=2\\\\-3x+b&\\text{khi }x>2.\\end{cases}$ Tìm $a,b$ để hàm số liên tục tại $x=2$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2024 - 2025 trường THPT Nguyễn Du - BR VT (Mã đề 123)"
+ },
+ {
+  "ma_cau": "T1110000004025",
+  "loai": "trac_nghiem",
+  "de": "$\\lim\\left(\\frac{1}{n}+2\\right)$ bằng",
+  "lua_chon": [
+   "$1$.",
+   "$0$.",
+   "$2$.",
+   "$+\\infty$."
+  ],
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2025 - 2026 trường THPT Bình Hưng Hòa - TP.HCM (Mã đề 1)"
+ },
+ {
+  "ma_cau": "T1110000004026",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\lim\\limits_{x\\to3}f(x)=-2$. Tính $\\lim\\limits_{x\\to3}2f(x)$.",
+  "lua_chon": [
+   "$-6$.",
+   "$-4$.",
+   "$4$.",
+   "$6$."
+  ],
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2025 - 2026 trường THPT Bình Hưng Hòa - TP.HCM (Mã đề 1)"
+ },
+ {
+  "ma_cau": "T1110000004027",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f(x)$ xác định trên $\\mathbb{R}$ có đồ thị như hình bên dưới. Hàm số đã cho gián đoạn tại điểm nào dưới đây?",
+  "lua_chon": [
+   "$x_0=3$.",
+   "$x_0=1$.",
+   "$x_0=0$.",
+   "$x_0=-1$."
+  ],
+  "co_hinh": true,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2025 - 2026 trường THPT Bình Hưng Hòa - TP.HCM (Mã đề 1)"
+ },
+ {
+  "ma_cau": "T1110000004035",
+  "loai": "trac_nghiem",
+  "de": "Sự phân hủy của rác thải hữu cơ có trong nước sẽ làm tiêu hao lượng oxygen hòa tan trong nước. Sau khi một lượng rác thải hữu cơ được xả vào một hồ nước thì nồng độ oxygen (mg/l) trong hồ sau $t$ giờ ($t\\ge0$) được biểu diễn bởi hàm số $f(t)=5-\\frac{15t}{9t^2+1}$. Tính $\\lim\\limits_{t\\to+\\infty}f(t)$.",
+  "lua_chon": [
+   "$5$.",
+   "$+\\infty$.",
+   "$\\frac{5}{3}$.",
+   "$\\frac{10}{3}$."
+  ],
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2025 - 2026 trường THPT Bình Hưng Hòa - TP.HCM (Mã đề 1)"
+ },
+ {
+  "ma_cau": "T1110000004040",
+  "loai": "tu_luan",
+  "de": "Xét tính liên tục của hàm số $f(x)=\\begin{cases}\\frac{2x^2-5x+2}{x-2}&\\text{khi }x>2\\\\x+1&\\text{khi }x\\le2\\end{cases}$ tại điểm $x_0=2$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2025 - 2026 trường THPT Bình Hưng Hòa - TP.HCM (Mã đề 1)"
+ },
+ {
+  "ma_cau": "T1110000004042",
+  "loai": "tu_luan",
+  "de": "Cho tam giác đều $A_1B_1C_1$ nội tiếp đường tròn tâm $O$ bán kính là $R=6$ cm. Người ta vẽ đường tròn nội tiếp tam giác $A_1B_1C_1$ rồi dựng tam giác đều $A_2B_2C_2$. Tiếp theo người ta vẽ đường tròn nội tiếp tam giác $A_2B_2C_2$ rồi dựng tam giác đều $A_3B_3C_3$. Cứ tiếp tục quá trình như vậy. Gọi $S_1,S_2,S_3,\\dots,S_n,\\dots$ lần lượt là diện tích các tam giác đều $A_1B_1C_1,A_2B_2C_2,A_3B_3C_3,\\dots,A_nB_nC_n,\\dots$ Tính $S=S_1+S_2+\\dots+S_n+\\dots$.",
+  "lua_chon": null,
+  "co_hinh": true,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2025 - 2026 trường THPT Bình Hưng Hòa - TP.HCM (Mã đề 1)"
+ },
+ {
+  "ma_cau": "T1110000004045",
+  "loai": "trac_nghiem",
+  "de": "Nếu các dãy số $\\left(u_n\\right),\\left(v_n\\right)$ thỏa mãn $\\lim u_n=4$ và $\\lim v_n=3$ thì $\\lim\\left(u_n+v_n\\right)$ bằng",
+  "lua_chon": [
+   "$7$.",
+   "$12$.",
+   "$1$.",
+   "$\\frac{4}{3}$."
+  ],
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2025 - 2026 trường THPT Lê Quý Đôn - Ninh Bình (Mã đề 1104)"
+ },
+ {
+  "ma_cau": "T1110000004047",
+  "loai": "trac_nghiem",
+  "de": "Tính $\\lim\\frac{2025n+1}{2026n+2}$.",
+  "lua_chon": [
+   "$\\frac{2026}{2025}$.",
+   "$\\frac{2025}{2026}$.",
+   "$\\frac{1}{2}$.",
+   "$0$."
+  ],
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2025 - 2026 trường THPT Lê Quý Đôn - Ninh Bình (Mã đề 1104)"
+ },
+ {
+  "ma_cau": "T1110000004059",
+  "loai": "tra_loi_ngan",
+  "de": "Một bể chứa $5000$ lít nước tinh khiết. Người ta bơm vào bể đó nước muối có nồng độ $40$ gam muối cho mỗi lít nước với tốc độ $15$ lít/phút. Biết rằng nồng độ muối có trong bể chứa được tính bằng tỉ số của khối lượng muối trong bể và thể tích nước trong bể, đơn vị: gam/lít. Gọi $C(t)$ là nồng độ muối có trong bể sau thời gian $t$ phút nước được bơm vào trong bể. Giả sử bể có thể chứa được lượng nước vô cùng lớn, tính $\\lim\\limits_{t\\to+\\infty}C(t)$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2025 - 2026 trường THPT Lê Quý Đôn - Ninh Bình (Mã đề 1104)"
+ },
+ {
+  "ma_cau": "T1110000004084",
+  "loai": "tra_loi_ngan",
+  "de": "Biết hàm số $f(x)=\\begin{cases}ax^2+bx-4&\\text{khi }x\\le1\\\\2ax-2b&\\text{khi }x>1\\end{cases}$ liên tục tại $x_0=1$. Tính giá trị của biểu thức $P=a-3b$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2025 - 2026 trường THPT Marie Curie - TP.HCM (Mã đề 1611)"
+ },
+ {
+  "ma_cau": "T1110000004091",
+  "loai": "trac_nghiem",
+  "de": "Giá trị của $\\lim\\limits_{n\\to+\\infty}\\frac{3n+2}{2n}$ bằng",
+  "lua_chon": [
+   "$\\frac{3}{2}$.",
+   "$2$.",
+   "$3$.",
+   "$+\\infty$."
+  ],
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2025 - 2026 trường THPT số 1 Ngô Gia Tự - Đắk Lắk (Mã đề 111)"
+ },
+ {
+  "ma_cau": "T1110000004093",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\lim\\limits_{n\\to+\\infty}u_n=2$ khi đó $\\lim\\limits_{n\\to+\\infty}\\left[3u_n-1\\right]$ bằng",
+  "lua_chon": [
+   "$-\\infty$.",
+   "$3$.",
+   "$5$.",
+   "$+\\infty$."
+  ],
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2025 - 2026 trường THPT số 1 Ngô Gia Tự - Đắk Lắk (Mã đề 111)"
+ },
+ {
+  "ma_cau": "T1110000004097",
+  "loai": "trac_nghiem",
+  "de": "Giới hạn $I=\\lim\\limits_{x\\to1}\\left(x^3+x+1\\right)$ bằng.",
+  "lua_chon": [
+   "$I=+\\infty$.",
+   "$I=3$.",
+   "$I=-\\infty$.",
+   "$I=5$."
+  ],
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2025 - 2026 trường THPT số 1 Ngô Gia Tự - Đắk Lắk (Mã đề 111)"
+ },
+ {
+  "ma_cau": "T1110000004104",
+  "loai": "tra_loi_ngan",
+  "de": "Tại một xưởng sản xuất bột đá thạch anh, giá bán (tính theo nghìn đồng) của $x$ (kg) bột đá thạch anh được tính theo công thức sau: $P(x)=\\begin{cases}4{,}5x&\\text{khi }0<x\\le200\\\\3x+a&\\text{khi }x>200\\end{cases}$ ($a$ là một hằng số). Với giá trị nào của $a$ thì hàm số $P(x)$ liên tục trên $(0;+\\infty)$?",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2025 - 2026 trường THPT số 1 Ngô Gia Tự - Đắk Lắk (Mã đề 111)"
+ },
+ {
+  "ma_cau": "T1110000004106",
+  "loai": "tu_luan",
+  "de": "(0,5 điểm) Tính giới hạn sau: $\\lim\\limits_{x\\to4}\\frac{\\sqrt{2x+1}-3}{x^2-16}$.",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cuối kì 1 Toán 11 năm 2025 - 2026 trường THPT số 1 Ngô Gia Tự - Đắk Lắk (Mã đề 111)"
+ },
+ {
+  "ma_cau": "T111000000998",
+  "loai": "tu_luan",
+  "de": "Cho hàm số $f(x)=\\begin{cases} \\dfrac{\\sqrt{x+7}-3}{x-3} & \\text{khi } x>1 \\\\ \\dfrac{ax+15}{4} & \\text{khi } x\\le1 \\end{cases}$. Để hàm số liên tục tại $x=1$ thì $a$ nhận giá trị là",
+  "lua_chon": null,
+  "co_hinh": false,
+  "nguon": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội"
+ }
+]

@@ -1,0 +1,33 @@
+T1120000001052	SDT	NHOM:NNB01260		2	1	
+T112010201059	HS	P1.3.1		1	1	
+T112000000311	XS	NEW	xác suất đi ngẫu nhiên qua các phòng (sơ đồ) đến đích	3	0	có thể gom vào NNB01253 sơ đồ cây
+T1120000007014	O	NEW	cấp số nhân: tìm công bội	1	1	
+T112000000999	XS	NHOM:NNB01257		3	1	DS toàn phần + Bayes
+T112020202037	HS	P2.1.3		2	1	
+T1120000004537	HS	P4.2.2		4	1	
+T112010305098	HS	P1.8.3		3	1	
+T1120000001419	HS	P1.9.1		1	1	
+T1120000005938	VT	P1.2.5		2	1	
+T1120000001024	HS	P1.8.1		3	0	DS nhiều ý: tiệm cận, tâm đối xứng
+T1120000004423	SDT	NEW	tính số trung bình của mẫu số liệu ghép nhóm	1	1	
+T3120000001050	PPTD	NEW	thực tế vùng phủ sóng/tín hiệu hình cầu: điểm, mặt phẳng, chuyển động	3	0	DS nhiều ý; thực đơn chưa có dạng thực tế PPTD
+T312000000788	PPTD	NDB00858		1	1	
+T112070102079	VT	P1.4.2		2	1	
+T312000000085	PPTD	NEW	thực tế vùng phủ sóng/tín hiệu hình cầu: điểm, mặt phẳng, chuyển động	3	0	DS nhiều ý; tàu chuyển động thẳng đều
+T112000000856	HS	P1.8.1		3	1	DS nhiều ý cùng hàm bậc hai/bậc nhất
+T112010306008	HS	P1.9.1		2	1	
+T1120000004791	NHTP	NDB00747		1	1	
+T112020402168	HS	P4.5.1		2	1	
+T312000000138	PPTD	NDB00859		3	0	DS nhiều ý: vtpt, góc, mặt cầu, mp cách điểm lớn nhất
+T1120000005197	NHTP	NDB00746		2	1	
+T112020402114	HS	P4.1.1		3	0	hàm mũ catenary, tìm min; có thể P1.5.4
+T1120000005536	NHTP	NDB00628		2	1	
+T1120000003785	VT	P3.2.5		2	1	
+T1120000003300	VT	P1.2.1		2	0	DS nhiều ý: tổng vectơ, tích vô hướng, góc
+T1120000006504	HS	P2.2.2		2	1	
+T112000000119	NHTP	NDB00778		3	0	thùng rượu parabol quay: thể tích tròn xoay
+T312000000567	PPTD	NDB00846		1	1	
+T1120000004183	HS	P1.8.1		3	0	tiệm cận xiên rồi diện tích tam giác (cũng P3.3.5)
+T1120000003250	VT	P3.2.3		2	1	
+T112000000054	HS	P2.1.4		2	0	đồ thị, giả định bậc ba
+T112020105013	HS	P2.1.9		4	0	cực trị bậc ba + tam giác OAB góc nhọn; gần P2.1.7

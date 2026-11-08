@@ -14,8 +14,18 @@
     // Lưu THEO TÀI KHOẢN (js/cau.js): nhúng trong app HS ⇒ xin bản lưu của tài khoản; chưa có ⇒ nhận bản trên máy MỘT lần (chuyển sang server) rồi chỉ dùng server.
     let s = null, tuServer = false;
     if (window.NT_CAU && NT_CAU.nhung) {
-      const kq = await NT_CAU.hoi(4000);
+      const kq = await NT_CAU.hoi(15000);
       if (kq && kq.ok) { tuServer = true; NT_CAU.dang = true; s = kq.state ? NT_ENGINE.chuanHoa(kq.state) : NT_ENGINE.nap(); }   // giờ server đã nạp trong NT_CAU.docGio
+      else {
+        // NHÚNG trong app mà KHÔNG lấy được bản lưu tài khoản (mạng chậm / server bận / hết phiên) ⇒ DỪNG, KHÔNG rơi về bản lưu trên máy.
+        // 03/11: trước đây chờ 4 giây rồi lặng lẽ chạy bản trên máy (thường là vườn cấp 1 cũ) và chỉ lưu vào máy ⇒ HS tưởng "lên cấp 4 lại về cấp 1".
+        $('taiChu').textContent = 'Chưa kết nối được với tài khoản của em. Vườn của em vẫn an toàn — kiểm tra mạng rồi thử lại nhé.';
+        const nut = document.createElement('button'); nut.textContent = 'Thử lại';
+        nut.style.cssText = 'margin-top:14px;padding:12px 22px;border-radius:12px;border:0;font:700 17px system-ui;background:#ffd24a;color:#3a2a00';
+        nut.onclick = () => location.reload();
+        $('taiChu').after(nut);
+        return;
+      }
       NT_CAU.onXungDot = () => {
         const d = document.createElement('div');
         d.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.78);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;font:600 18px system-ui;text-align:center;padding:24px';

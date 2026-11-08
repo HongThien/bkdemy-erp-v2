@@ -21,20 +21,25 @@ const PHA = 1, SAU = 99;   // SAU = cấp không bao giờ tới (tắt tính n�
 const RUONG = {
   // mùa đầu (Thu Đông) — 8 loại, mở theo cấp (xem LUAT.moKhoa để biết cấp ↔ tuần)
   // W = thu/ô/ngày khi tưới đủ (EXP, chưa bonus mùa) · e = EXP nông sản / 1 điểm chăm chỉ — cả hai tăng dần theo bậc
-  lua_mi:    { ten: 'Lúa mì',    bac: 1, ngay: 1, cap: 1,  hat: 16, diem: 5,  goc: 7,  gia: 2,  mua: 0 },   // W 25,2 · e 5,0
-  ca_rot:    { ten: 'Cà rốt',    bac: 2, ngay: 1, cap: 1,  hat: 17, diem: 5,  goc: 5,  gia: 3,  mua: 1 },   // W 27   · e 5,4
-  ngo:       { ten: 'Ngô',       bac: 3, ngay: 2, cap: 3,  hat: 36, diem: 10, goc: 8,  gia: 4,  mua: 0 },   // W 28,8 · e 5,8
-  khoai_tay: { ten: 'Khoai tây', bac: 4, ngay: 2, cap: 5,  hat: 37, diem: 10, goc: 11, gia: 3,  mua: 1 },   // W 29,7 · e 5,9
-  ca_chua:   { ten: 'Cà chua',   bac: 5, ngay: 2, cap: 7,  hat: 39, diem: 10, goc: 7,  gia: 5,  mua: 1 },   // W 31,5 · e 6,3
-  bi_ngo:    { ten: 'Bí ngô',    bac: 6, ngay: 3, cap: 9,  hat: 63, diem: 16, goc: 8,  gia: 7,  mua: 1 },   // W 33,6 · e 6,3
-  hoa_huong_duong: { ten: 'Hoa hướng dương', bac: 7, ngay: 3, cap: 11, hat: 68, diem: 17, goc: 6, gia: 10, mua: 1 },   // W 36 · e 6,4 — hướng dương Nghệ An nở tháng 11–12
-  dau_tay:   { ten: 'Dâu tây',   bac: 8, ngay: 3, cap: 13, hat: 72, diem: 18, goc: 16, gia: 4,  mua: 1 },   // W 38,4 · e 6,4
+  // ⭐ NGÂN SÁCH EXP (Thùy 07/11 — thay mọi chỉnh nhịp trước, W/e cuối dòng là số CŨ): em chơi giỏi nhất, đủ 12 ô, ngày nào cũng chăm
+  //   chỉ làm ra ≈ 2.000 EXP/tháng (= 20 xu) — trần chỉ còn là lưới an toàn, không phải thứ chặn. Chia: cây + máy chế biến ≈ 1.500 ·
+  //   gà/bò ≈ 200 · giúp bạn/hái trộm ≈ 300. Cây tưới đủ + bón: ~3,4 → 4,5 EXP/ô/ngày (= goc × 1,8 × 1,25 × gia ÷ ngay), bậc sau nhỉnh hơn.
+  //   Số đo trước khi chỉnh: em chăm ~330 EXP/ngày (đủ 20 xu sau 7 ngày). Tỉ lệ 100 EXP = 1 xu GIỮ NGUYÊN. hat (EXP, bản demo) = 0,63 × giá trị tưới đủ.
+  //   Server giữ bản sao goc/gia ở bảng nt_cay (mig 202611071152) — đổi 1 bên phải đổi cả bên kia.
+  lua_mi:    { ten: 'Lúa mì',    bac: 1, ngay: 1, cap: 1,  hat: 2, diem: 5,  goc: 1.5,  gia: 1,  mua: 0 },   // W 25,2 · e 5,0
+  ca_rot:    { ten: 'Cà rốt',    bac: 2, ngay: 1, cap: 1,  hat: 2, diem: 5,  goc: 1.6,  gia: 1,  mua: 1 },   // W 27   · e 5,4
+  ngo:       { ten: 'Ngô',       bac: 3, ngay: 2, cap: 3,  hat: 4, diem: 10, goc: 1.7,  gia: 2,  mua: 0 },   // W 28,8 · e 5,8
+  khoai_tay: { ten: 'Khoai tây', bac: 4, ngay: 2, cap: 5,  hat: 4, diem: 10, goc: 3.5, gia: 1,  mua: 1 },   // W 29,7 · e 5,9
+  ca_chua:   { ten: 'Cà chua',   bac: 5, ngay: 2, cap: 7,  hat: 4, diem: 10, goc: 1.8,  gia: 2,  mua: 1 },   // W 31,5 · e 6,3
+  bi_ngo:    { ten: 'Bí ngô',    bac: 6, ngay: 3, cap: 9,  hat: 6, diem: 16, goc: 1.85,  gia: 3,  mua: 1 },   // W 33,6 · e 6,3
+  hoa_huong_duong: { ten: 'Hoa hướng dương', bac: 7, ngay: 3, cap: 11, hat: 6, diem: 17, goc: 1.4, gia: 4, mua: 1 },   // W 36 · e 6,4 — hướng dương Nghệ An nở tháng 11–12
+  dau_tay:   { ten: 'Dâu tây',   bac: 8, ngay: 3, cap: 13, hat: 7, diem: 18, goc: 2.9, gia: 2,  mua: 1 },   // W 38,4 · e 6,4
   // mùa 2 (Tết) · mùa 3 (Xuân) — tới lúc này HS đã qua mùa đầu, cây mùa sau ngang bậc 7–8
-  ot:        { ten: 'Ớt',        bac: 7, ngay: 1, cap: 2,  hat: 23, diem: 6,  goc: 10, gia: 2,  mua: 2 },   // W 36 · e 6,0
-  dua_hau:   { ten: 'Dưa hấu',   bac: 8, ngay: 3, cap: 4,  hat: 72, diem: 18, goc: 4,  gia: 16, mua: 2 },   // W 38,4 · e 6,4
-  dau_nanh:  { ten: 'Đậu nành',  bac: 7, ngay: 1, cap: 2,  hat: 23, diem: 6,  goc: 10, gia: 2,  mua: 3 },   // W 36 · e 6,0
-  lua_nuoc:  { ten: 'Lúa nước',  bac: 7, ngay: 2, cap: 3,  hat: 45, diem: 12, goc: 10, gia: 4,  mua: 3 },   // W 36 · e 6,0
-  mia:       { ten: 'Mía',       bac: 8, ngay: 3, cap: 5,  hat: 72, diem: 18, goc: 8,  gia: 8,  mua: 3 },   // W 38,4 · e 6,4
+  ot:        { ten: 'Ớt',        bac: 7, ngay: 1, cap: 2,  hat: 2, diem: 6,  goc: 1.7, gia: 1,  mua: 2 },   // W 36 · e 6,0
+  dua_hau:   { ten: 'Dưa hấu',   bac: 8, ngay: 3, cap: 4,  hat: 7, diem: 18, goc: 1,  gia: 6, mua: 2 },   // W 38,4 · e 6,4
+  dau_nanh:  { ten: 'Đậu nành',  bac: 7, ngay: 1, cap: 2,  hat: 2, diem: 6,  goc: 1.7, gia: 1,  mua: 3 },   // W 36 · e 6,0
+  lua_nuoc:  { ten: 'Lúa nước',  bac: 7, ngay: 2, cap: 3,  hat: 4, diem: 12, goc: 1.75, gia: 2,  mua: 3 },   // W 36 · e 6,0
+  mia:       { ten: 'Mía',       bac: 8, ngay: 3, cap: 5,  hat: 6, diem: 18, goc: 1.9,  gia: 3,  mua: 3 },   // W 38,4 · e 6,4
 };
 for (const k in RUONG) RUONG[k].id = k;
 
@@ -42,7 +47,7 @@ for (const k in RUONG) RUONG[k].id = k;
 // Mùa đầu 2 tháng + bonus sản lượng (CEO) — theo Lally 2010: ~66 ngày mới thành thói quen. Sau đó mỗi mùa 1 tháng, bonus chỉ ở sự kiện.
 // bonus là SỐ (cả mùa như nhau) hoặc MẢNG theo từng 30 ngày của mùa. CEO 30/09 lần 5: tháng đầu cao nhất, các tháng sau giảm dần.
 const MUA = [
-  { so: 1, ten: 'Thu Đông', ngay: 60, bonus: [0.6, 0.3] },   // CEO: mùa đầu 2 tháng — tháng 1 +60%, tháng 2 +30%, sau đó hết
+  { so: 1, ten: 'Thu Đông', ngay: 60, bonus: 0 },   // TẠM BỎ bonus (Thùy 23/10). Gốc: [0.6, 0.3] = tháng 1 +60%, tháng 2 +30%. Khôi phục phải đổi CẢ server: _nt_luat().mua0Bonus
   { so: 2, ten: 'Tết',      ngay: 30, bonus: 0 },
   { so: 3, ten: 'Xuân',     ngay: 30, bonus: 0 },
 ];
@@ -55,12 +60,16 @@ const VAT = {
 };
 for (const k in VAT) VAT[k].id = k;
 
-// ---------- LÒ BÁNH (spec §5.5): 1 mẻ, sáng hôm sau xong ----------
-const LO_CAP = PHA >= 2 ? 4 : SAU;
+// ---------- MÁY CHẾ BIẾN (Thùy 03/11 — thay "lò bánh 1 mẻ, sáng hôm sau xong" của pha 2; mở cả ở PHA 1) ----------
+// Nguyên liệu → món, chờ vài PHÚT (giờ server) ⇒ em bỏ nguyên liệu vào, đi tưới/giúp bạn rồi quay lại lấy: kéo dài 1 lần vào vườn.
+// gia ≈ giá nguyên liệu nếu bán thẳng × 1,3 (Thùy: "nhiều hơn tầm 30% nhưng phải chờ") · phut = thời gian 1 mẻ · máy làm 1 mẻ một lúc.
+// LO_CAP / BANH / loTT / nuong / layBanh giữ tên cũ ("lò") để khỏi đổi cả scene/ui — trên màn gọi là "Máy chế biến".
+const LO_CAP = 2;
 const BANH = {
-  banh_mi:     { ten: 'Bánh mì',  cap: 4,  can: { lua_mi: 3 }, gia: 12 },
-  banh_ngo:    { ten: 'Bánh ngô', cap: 6,  can: { ngo: 2, trung: 1 }, gia: 18 },
-  banh_bi_ngo: { ten: 'Bánh bí',  cap: 10, can: { bi_ngo: 1, trung: 1, sua: 1 }, gia: 40 },
+  banh_mi:      { ten: 'Bánh mì',          cap: 2,  can: { lua_mi: 3 },                   phut: 3,  gia: 4 },    // nguyên liệu 3 EXP (ngân sách 07/11: món ≈ nguyên liệu × 1,3)
+  banh_ngo:     { ten: 'Bánh ngô',         cap: 4,  can: { ngo: 1, trung: 1 },            phut: 8,  gia: 5 },    // nguyên liệu 4
+  khoai_nghien: { ten: 'Khoai tây nghiền', cap: 5,  can: { khoai_tay: 3 },                phut: 5,  gia: 4 },    // nguyên liệu 3
+  banh_bi_ngo:  { ten: 'Bánh bí',          cap: 10, can: { bi_ngo: 1, trung: 1, sua: 1 }, phut: 12, gia: 13 },   // nguyên liệu 10
 };
 for (const k in BANH) BANH[k].id = k;
 
@@ -77,12 +86,12 @@ const TRANG_TRI = {
 // ---------- HÀNG HOÁ (mọi thứ nằm trong kho) · gia = giá bán ở chợ (EXP) ----------
 const I = {};
 for (const k in RUONG) I[k] = { id: k, ten: RUONG[k].ten, loai: 'cay', gia: RUONG[k].gia };
-I.trung = { id: 'trung', ten: 'Trứng', loai: 'vat', gia: 6 };   // gà: ăn 1 lúa mì (2) ⇒ lãi ~4 EXP/con/ngày
-I.sua = { id: 'sua', ten: 'Sữa', loai: 'vat', gia: 14 };      // bò: ăn 2 ngô (6) ⇒ lãi ~8 EXP/con/ngày
+I.trung = { id: 'trung', ten: 'Trứng', loai: 'vat', gia: 2 };   // gà: ăn 1 lúa mì (1) ⇒ lãi ~1 EXP/con/ngày (ngân sách 07/11: gà + bò ≈ 200 EXP/tháng)
+I.sua = { id: 'sua', ten: 'Sữa', loai: 'vat', gia: 5 };       // bò: ăn 2 ngô (4) / 1 bí (3) ⇒ lãi ~1–2 EXP/con/ngày
 for (const k in BANH) I[k] = { id: k, ten: BANH[k].ten, loai: 'banh', gia: BANH[k].gia };
-I.phan_bon = { id: 'phan_bon', ten: 'Phân bón', loai: 'phan', gia: 5 };   // bán lại nửa giá mua
+I.phan_bon = { id: 'phan_bon', ten: 'Phân bón', loai: 'phan', gia: 5 };   // bán lại nửa giá mua — CHỈ bản demo; chơi theo tài khoản KHÔNG bán được (mua bằng điểm học tập, bán ra EXP = đổi điểm ra xu)
 for (const k in TRANG_TRI) I[k] = { id: k, ten: TRANG_TRI[k].ten, loai: 'trangtri', gia: 10 };
-I.dong_xu_co = { id: 'dong_xu_co', ten: 'Đồng xu cổ', loai: 'quy', gia: 50 };
+I.dong_xu_co = { id: 'dong_xu_co', ten: 'Đồng xu cổ', loai: 'quy', gia: 20 };   // 07/11: 50 → 20 (rơi ngẫu nhiên, nằm trong ngân sách)
 
 // ---------- THÚ CƯNG (spec §5.8): mỗi con 1 lần/ngày, +5 thiện cảm, mốc 20/50/100 ----------
 const THU = {
@@ -91,6 +100,18 @@ const THU = {
   cho:  { ten: 'Chó', cap: 1, viec: 'Xoa đầu', diem: 15, capMua: 1, icon: '🐶', mota: 'Canh vườn, đuổi kẻ đến hái trộm' },
   meo:  { ten: 'Mèo', cap: 5, viec: 'Vuốt ve', diem: 30, capMua: 5, icon: '🐱', mota: 'Thỉnh thoảng tha quà về nhà' },
   chim: { ten: 'Chim', cap: 7, viec: 'Cho ăn', an: 'lua_mi', diem: 45, capMua: 7, icon: '🐦', mota: 'Bắt sâu giúp em mỗi sáng' },   // cho chim ăn tốn 1 lúa mì
+  // BẠN ĐỒNG HÀNH (Thùy 23/10: "dùng các loại pet đã làm") — loài của BK World (BatThu), xem 3D ở màn Thú cưng qua assets/thu-cung/thu-cung.js (khoá = id loài trong thư viện).
+  // ngoai: true = KHÔNG có mô hình trong vườn (không chạm được ngoài vườn, không có việc hằng ngày); chỉ chơi 1 lần/ngày để tăng thiện cảm. Bảng giá: design/BANG-GIA-THU-CUNG-NONG-TRAI.md (ERP).
+  meo_bong:  { ten: 'Mèo Bông',      cap: 6,  viec: 'Vuốt ve',   diem: 40,  capMua: 6,  icon: '😺', he: 'Thường', mota: 'Mềm như cục bông, thích được ôm', ngoai: true },
+  nhim_dien: { ten: 'Nhím Điện',     cap: 8,  viec: 'Chơi cùng', diem: 60,  capMua: 8,  icon: '🦔', he: 'Điện',   mota: 'Lông xù tí tách tia điện nhỏ', ngoai: true },
+  chim_nuoc: { ten: 'Cánh Cụt Nước', cap: 8,  viec: 'Chơi cùng', diem: 60,  capMua: 8,  icon: '🐧', he: 'Nước',   mota: 'Lạch bạch theo em khắp vườn', ngoai: true },
+  ga_lua:    { ten: 'Gà Lửa',        cap: 9,  viec: 'Chơi cùng', diem: 70,  capMua: 9,  icon: '🐔', he: 'Lửa',    mota: 'Mào đỏ rực, gáy sớm hơn cả mặt trời', ngoai: true },
+  cuu_may:   { ten: 'Cừu Mây',       cap: 10, viec: 'Chơi cùng', diem: 90,  capMua: 10, icon: '🐑', he: 'Nước',   mota: 'Bộ lông xốp như đám mây', ngoai: true },
+  cao_lua:   { ten: 'Cáo Lửa',       cap: 11, viec: 'Chơi cùng', diem: 100, capMua: 11, icon: '🦊', he: 'Lửa',    mota: 'Đuôi cháy ấm, tinh nghịch', ngoai: true },
+  khi_la:    { ten: 'Khỉ Lá',        cap: 12, viec: 'Chơi cùng', diem: 120, capMua: 12, icon: '🐵', he: 'Cỏ',     mota: 'Đội lá làm mũ, thích leo trèo', ngoai: true },
+  bo_tuyet:  { ten: 'Bò Tuyết',      cap: 13, viec: 'Chơi cùng', diem: 140, capMua: 13, icon: '🐮', he: 'Băng',   mota: 'Hiền lành, hơi thở lành lạnh', ngoai: true },
+  su_tu_lua: { ten: 'Sư Tử Lửa',     cap: 15, viec: 'Chơi cùng', diem: 220, capMua: 15, icon: '🦁', he: 'Lửa',    mota: 'Bờm lửa oai vệ nhưng rất quấn em', ngoai: true },
+  voi_rung:  { ten: 'Voi Rừng',      cap: 17, viec: 'Chơi cùng', diem: 280, capMua: 17, icon: '🐘', he: 'Cỏ',     mota: 'Khổng lồ hiền, nhớ em từng ngày', ngoai: true },
 };
 
 // ---------- CẤP NÔNG TRẠI (điểm nhà nông — KHÔNG gọi EXP để khỏi lẫn với EXP ra xu) ----------
@@ -130,9 +151,10 @@ const LUAT = {
   batDau: { xu: 20, diem: 10, kho: {} },   // bản demo: ví giả 20 xu, tặng 10 điểm để học gieo
   // ô ruộng (spec §5.1 — CEO: bắt đầu ít ô, mở dần bằng cấp + điểm chăm chỉ)
   // CEO 30/09: bắt đầu 4 ô, ít ô thì trân trọng, hiểu sâu hơn. Lần 5: tuần đầu 4 ô, HẾT THÁNG ĐẦU ĐỦ 8 Ô là được; ô 9–12 rải tháng 2–3.
-  oDau: 4, oToiDa: 12,
-  oMo: [{ cap: 3, diem: 10 }, { cap: 5, diem: 15 }, { cap: 7, diem: 20 }, { cap: 9, diem: 20 }, { cap: 12, diem: 30 },
-        { cap: 14, diem: 40 }, { cap: 16, diem: 50 }, { cap: 18, diem: 60 }],   // ô thứ 5 → 12
+  // Thùy 07/11: BẮT ĐẦU 8 Ô, tối đa 12 ⇒ 12 ô chỉ gấp 1,5 lần 8 ô (kinh tế dễ chỉnh), mỗi ô thêm +12,5% (thay vì +25% khi 4→8). Ô 9–12 mở dần bằng cấp + điểm. Bản lưu cũ 4–6 ô được engine nâng lên 8.
+  oDau: 8, oToiDa: 12,
+  oMo: [{ cap: 12, diem: 30 },
+        { cap: 14, diem: 40 }, { cap: 16, diem: 50 }, { cap: 18, diem: 60 }],   // ô thứ 9 → 12
   // CEO 30/09: 1 ô = 1 hạt, mỗi ngày mua tối đa SỐ HẠT = SỐ Ô đang có (tính cả trả xu lẫn trả điểm) — đây là cái chặn "dùng xu mua mãi"
   // chăm sóc (spec §5.2 — CEO: mọi cây đều tưới + bón được)
   tuoiThem: 0.8,                 // tưới đủ mọi ngày cây đang lớn: +80% sản lượng (thiếu thì theo tỉ lệ ngày) — lần 5: 50% → 80%
@@ -150,7 +172,8 @@ const LUAT = {
   tranXuTieuThang: 5,            // CEO 30/09: "chỉ nên cho HS dùng 5 xu" — xu đổi ra để mua bịch/đồ mỗi tháng (muốn thêm: trả bằng điểm = phải học)
   tranXuTuan: null,              // BỎ 30/09 (thay bằng giới hạn hạt mỗi ngày = số ô). Đặt số > 0 để bật lại trần xu tiêu mỗi tuần
   // sang vườn bạn (spec §5.7 — CEO: trộm 3 / giúp 5)
-  trom: 3, giup: 5, tromToiDa: 0.2, tromMoiLan: 1,   // CEO 30/09: giảm trộm — mỗi lượt 1 quả, mỗi ô mất tối đa 20%
+  trom: 3, giup: 10, tromToiDa: 0.2, tromMoiLan: 1,   // CEO 30/09: giảm trộm — mỗi lượt 1 quả, mỗi ô mất tối đa 20% · giúp 5 → 10 lượt/ngày (Thùy 03/11 tối, khớp server _nt_luat)
+  expGiup: 1,                    // giúp bạn 1 lượt +1 EXP (Thùy 03/11 đặt 4 ⇒ 07/11 ngân sách: 10 lượt = 10 EXP/ngày ≈ 300/tháng). Chơi theo tài khoản: số do server trả (_nt_luat().expGiup)
   choDuoi: [0, 0.2, 0.4, 0.6],   // tỉ lệ chó đuổi trộm theo mốc thiện cảm
   // thú cưng (spec §5.8)
   tcMoi: 5, tcMoc: [20, 50, 100], chimBatSau: 50,

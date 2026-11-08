@@ -1,0 +1,492 @@
+[
+ {
+  "ma_cau": "T1110000003134",
+  "dang_bai_id": "NDB01174",
+  "chac": "cao",
+  "ly_do": "Giới hạn hữu hạn dạng 0/0 chứa hai tham số a,b: tử phải có nghiệm x=3 rồi so với 3.",
+  "can_cu": "Mẫu dần tới $0$ mà giới hạn hữu hạn nên tử phải dần tới $0$"
+ },
+ {
+  "ma_cau": "T1110000001841",
+  "dang_bai_id": "NDB01149",
+  "chac": "cao",
+  "ly_do": "Tử sin+cos bị chặn, mẫu lớn dần: dùng nguyên lí kẹp |sin|,|cos|≤1 tìm giới hạn dãy.",
+  "can_cu": "Bất đẳng thức hay dùng: $|\\sin n|\\le1$ và $|\\cos n|\\le1$"
+ },
+ {
+  "ma_cau": "T1110000001832",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Dãy phân thức tử bậc 1 thấp hơn mẫu bậc 2, giới hạn bằng 0.",
+  "can_cu": "Tử có bậc thấp hơn mẫu: giới hạn bằng $0$"
+ },
+ {
+  "ma_cau": "T1110000002569",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Dãy phân thức có căn ở tử, đưa n² ra ngoài căn rồi chia cả tử và mẫu cho n².",
+  "can_cu": "Đưa luỹ thừa cao nhất của $n$ ra ngoài dấu căn"
+ },
+ {
+  "ma_cau": "T111000000960",
+  "dang_bai_id": "NDB01182",
+  "chac": "cao",
+  "ly_do": "Đáp án đúng là giới hạn một bên x→2+ của phân thức dạng (-2)/0+, xét dấu mẫu ra -∞.",
+  "can_cu": "Khi $x\\to3^+$: $x-3>0$ nên mẫu dần tới $0$ qua giá trị dương"
+ },
+ {
+  "ma_cau": "T1110000001678",
+  "dang_bai_id": "NDB01163",
+  "chac": "cao",
+  "ly_do": "Tổng vô hạn 3-3/4+... là cấp số nhân công bội -1/4, |q|<1, tính S=u1/(1-q).",
+  "can_cu": "Cấp số nhân vô hạn có công bội $q$ gọi là cấp số nhân lùi vô hạn khi $|q|<1$"
+ },
+ {
+  "ma_cau": "T1110000001850",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Thương các luỹ thừa 2^n,3^n,(-2)^n: chia tử mẫu cho 3^n là cơ số lớn nhất.",
+  "can_cu": "Chọn cơ số có giá trị tuyệt đối lớn nhất trong tử và mẫu để chia"
+ },
+ {
+  "ma_cau": "T1110000001906",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Căn bậc ba ở tử có bậc 2 hơn mẫu bậc 1: rút n ngoài căn, dạng sau thắng so với tử bậc cao hơn.",
+  "can_cu": "Xác định bậc cao nhất của $n$ ở tử và mẫu (căn bậc hai của $n^2$ tính là bậc $1$)"
+ },
+ {
+  "ma_cau": "T1110000002045",
+  "dang_bai_id": "NDB01172",
+  "chac": "cao",
+  "ly_do": "Giới hạn 0/0 chỉ có một căn bậc hai ở tử: nhân liên hợp rồi triệt nhân tử x-3.",
+  "can_cu": "Căn nằm ở tử thì liên hợp của tử"
+ },
+ {
+  "ma_cau": "T1110000002560",
+  "dang_bai_id": "NDB01159",
+  "chac": "cao",
+  "ly_do": "Dãy ∞-∞ có căn bậc ba cộng n: dùng liên hợp bậc ba a³+b³.",
+  "can_cu": "Nhận dạng $\\infty-\\infty$ có căn bậc ba"
+ },
+ {
+  "ma_cau": "T1110000002604",
+  "dang_bai_id": "NDB01158",
+  "chac": "cao",
+  "ly_do": "Hiệu căn bậc hai trừ n dạng ∞-∞ chứa tham số a,b: nhân liên hợp, hệ số n² bằng 0.",
+  "can_cu": "Nhận ra dạng $\\infty-\\infty$: hai số hạng đều tiến ra $+\\infty$"
+ },
+ {
+  "ma_cau": "T1110000001962",
+  "dang_bai_id": "NDB01178",
+  "chac": "cao",
+  "ly_do": "Phân thức tử và mẫu cùng bậc 2 khi x→+∞, chia cho x², ra tỉ số hệ số.",
+  "can_cu": "Bậc tử bằng bậc mẫu: giới hạn bằng thương hai hệ số cao nhất"
+ },
+ {
+  "ma_cau": "T1110000001752",
+  "dang_bai_id": "NDB01163",
+  "chac": "cao",
+  "ly_do": "Tổng vô hạn 1+1/2+1/4+... là cấp số nhân lùi vô hạn nhân thêm hằng số √2.",
+  "can_cu": "Tổng: $S=u_1+u_2+\\dots+u_n+\\dots=\\dfrac{u_1}{1-q}$"
+ },
+ {
+  "ma_cau": "T1110000004027",
+  "dang_bai_id": "NDB01189",
+  "chac": "cao",
+  "ly_do": "Đọc đồ thị: tại x=-1 đồ thị bị đứt, hình đủ dữ kiện để chọn điểm gián đoạn.",
+  "can_cu": "Đồ thị bị đứt (hai nhánh không nối nhau hoặc đi ra vô cực) thì hàm số gián đoạn"
+ },
+ {
+  "ma_cau": "T1110000002696",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Biểu thức căn lồng xác định tại x=1, thay trực tiếp để tính giới hạn.",
+  "can_cu": "Kiểm tra hàm xác định tại $x_0$"
+ },
+ {
+  "ma_cau": "T1110000002249",
+  "dang_bai_id": "NDB01188",
+  "chac": "cao",
+  "ly_do": "Xét liên tục hàm có |x-1| và giá trị riêng tại x=1: so giới hạn trái, phải với f(1).",
+  "can_cu": "Hàm số $f$ liên tục tại điểm chia nhánh $x_0$ khi và chỉ khi"
+ },
+ {
+  "ma_cau": "T1110000002737",
+  "dang_bai_id": "NDB01181",
+  "chac": "cao",
+  "ly_do": "Tích x với hiệu hai căn dần về 0 khi x→+∞: dạng 0·∞, nhân liên hợp rồi chia.",
+  "can_cu": "Nhận dạng $0\\cdot\\infty$: xác định thừa số dần tới $0$ và thừa số dần tới vô cực"
+ },
+ {
+  "ma_cau": "T1110000001849",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Dãy thương có nhiều căn, đưa n ra ngoài mỗi căn rồi chia tử và mẫu cho n.",
+  "can_cu": "Đưa luỹ thừa cao nhất của $n$ ra ngoài dấu căn"
+ },
+ {
+  "ma_cau": "T1110000002821",
+  "dang_bai_id": "NDB01178",
+  "chac": "cao",
+  "ly_do": "1/(x²+9) khi x→-∞: tử bậc 0 thấp hơn mẫu bậc 2 nên giới hạn bằng 0.",
+  "can_cu": "Bậc tử nhỏ hơn bậc mẫu ($m<n$): giới hạn bằng $0$"
+ },
+ {
+  "ma_cau": "T1110000002084",
+  "dang_bai_id": "NDB01170",
+  "chac": "cao",
+  "ly_do": "Cho lim f=2, lim g=3, tính giới hạn biểu thức f-g/3 bằng quy tắc.",
+  "can_cu": "Phương án cho trước $\\lim f$ và $\\lim g$: thay vào biểu thức theo quy tắc"
+ },
+ {
+  "ma_cau": "T1110000002925",
+  "dang_bai_id": "NDB01196",
+  "chac": "cao",
+  "ly_do": "Hàm hai công thức, giá trị riêng tại √3: liên tục trên từng khoảng, xét điểm chia nhánh, chọn tập liên tục.",
+  "can_cu": "chỉ có một điểm cần xét là $x_0$; ở mọi điểm khác hàm số đã liên tục"
+ },
+ {
+  "ma_cau": "T1110000001680",
+  "dang_bai_id": "NDB01163",
+  "chac": "cao",
+  "ly_do": "Tổng vô hạn công bội -1/5 đan dấu, |q|<1, dùng S=u1/(1-q).",
+  "can_cu": "Công bội âm cho các số hạng đan dấu nhưng công thức tổng vẫn giữ nguyên"
+ },
+ {
+  "ma_cau": "T1110000002711",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Phân thức hữu tỉ dạng 0/0 tại x=-1, phân tích nhân tử, triệt x+1.",
+  "can_cu": "Phân tích tử và mẫu thành nhân tử (nhẩm nghiệm, hằng đẳng thức, chia Horner)"
+ },
+ {
+  "ma_cau": "T1110000001836",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Thương các luỹ thừa 3^n,4^n,5^n: chia tử và mẫu cho 5^n.",
+  "can_cu": "Chọn cơ số có giá trị tuyệt đối lớn nhất trong tử và mẫu để chia"
+ },
+ {
+  "ma_cau": "T1110000002247",
+  "dang_bai_id": "NDB01188",
+  "chac": "cao",
+  "ly_do": "Hàm hai công thức, xét liên tục tại điểm chia nhánh x=2: so giới hạn với f(2)=0.",
+  "can_cu": "Gặp dạng $\\dfrac00$ ở một nhánh thì phân tích nhân tử rồi rút gọn mới thay số"
+ },
+ {
+  "ma_cau": "T1110000002066",
+  "dang_bai_id": "NDB01172",
+  "chac": "cao",
+  "ly_do": "Giới hạn 0/0 một căn bậc hai ở tử: nhân liên hợp, rồi tính 2a+b².",
+  "can_cu": "Căn nằm ở tử thì liên hợp của tử"
+ },
+ {
+  "ma_cau": "T1110000002464",
+  "dang_bai_id": "NDB01200",
+  "chac": "cao",
+  "ly_do": "Chứng minh phương trình đa thức có ít nhất 3 nghiệm phân biệt: tìm 3 khoảng rời nhau đổi dấu.",
+  "can_cu": "Tìm các cặp điểm liên tiếp mà $f$ trái dấu; mỗi cặp cho một khoảng."
+ },
+ {
+  "ma_cau": "T1110000001815",
+  "dang_bai_id": "NDB01149",
+  "chac": "cao",
+  "ly_do": "Chứng minh dãy có giới hạn 0 bằng nguyên lí kẹp, chặn |cos|≤1.",
+  "can_cu": "Muốn chứng minh một dãy có giới hạn $0$ bằng nguyên lí kẹp, ta chỉ ra"
+ },
+ {
+  "ma_cau": "T1110000003168",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Tìm a để hàm liên tục tại x=2, tham số nằm ở giá trị f(2), giới hạn dạng 0/0.",
+  "can_cu": "Hàm số liên tục tại $x_0$ khi giá trị $c$ bằng giới hạn"
+ },
+ {
+  "ma_cau": "T1110000001789",
+  "dang_bai_id": "NDB01163",
+  "chac": "cao",
+  "ly_do": "Tổng vô hạn 1/3-1/9+... cấp số nhân công bội -1/3, dùng S=u1/(1-q).",
+  "can_cu": "Công bội âm cho các số hạng đan dấu nhưng công thức tổng vẫn giữ nguyên"
+ },
+ {
+  "ma_cau": "T1110000002004",
+  "dang_bai_id": "NDB01185",
+  "chac": "vua",
+  "ly_do": "Bài toán thực tế dịch bệnh, giới hạn 0/0 của tốc độ tại t=10 kèm ý nghĩa; không dạng nào khớp hẳn.",
+  "can_cu": "Kết luận bằng lời, ghi đơn vị."
+ },
+ {
+  "ma_cau": "T1110000003053",
+  "dang_bai_id": "NDB01159",
+  "chac": "cao",
+  "ly_do": "Dãy ∞-∞ chứa căn bậc ba trừ 2n: liên hợp bậc ba a³-b³ rồi chia n².",
+  "can_cu": "Nhận dạng $\\infty-\\infty$ có căn bậc ba"
+ },
+ {
+  "ma_cau": "T1110000002234",
+  "dang_bai_id": "NDB01188",
+  "chac": "cao",
+  "ly_do": "Xét liên tục hàm hai công thức tại điểm chia nhánh x=2: giới hạn trái, phải, f(2).",
+  "can_cu": "Xác định nhánh nằm về bên trái $x_0$, nhánh nằm về bên phải $x_0$ và nhánh có chứa dấu bằng"
+ },
+ {
+  "ma_cau": "T1110000003006",
+  "dang_bai_id": "NDB01201",
+  "chac": "vua",
+  "ly_do": "Hai bất đẳng thức cho dấu f(-1), f(2) với a,b,c bất kì, đếm nghiệm bậc ba; cũng hợp dạng ít nhất k nghiệm.",
+  "can_cu": "Chọn hai số $a$, $b$ không phụ thuộc tham số"
+ },
+ {
+  "ma_cau": "T1110000002302",
+  "dang_bai_id": "NDB01195",
+  "chac": "cao",
+  "ly_do": "Tìm hàm không liên tục trên R: tan x có tập xác định khác R.",
+  "can_cu": "Hàm số $y=\\tan x$ xác định khi"
+ },
+ {
+  "ma_cau": "T1110000002206",
+  "dang_bai_id": "NDB01171",
+  "chac": "cao",
+  "ly_do": "Phân thức hữu tỉ 0/0 tại x=2, phân tích nhân tử bằng chia Horner rồi triệt x-2.",
+  "can_cu": "Phân tích tử và mẫu thành nhân tử (nhẩm nghiệm, hằng đẳng thức, chia Horner)"
+ },
+ {
+  "ma_cau": "T1110000002029",
+  "dang_bai_id": "NDB01169",
+  "chac": "cao",
+  "ly_do": "Đa thức xác định tại x=1, thay trực tiếp.",
+  "can_cu": "Hàm đa thức: giới hạn bằng giá trị của hàm tại điểm đó"
+ },
+ {
+  "ma_cau": "T1110000002961",
+  "dang_bai_id": "NDB01202",
+  "chac": "vua",
+  "ly_do": "f liên tục, f(-1)=2<5<f(4)=7 ⇒ f(x)=5 có nghiệm; đúng giá trị trung gian nhưng đề không thực tế.",
+  "can_cu": "Khi đó phương trình $f(x)=k$ có ít nhất một nghiệm thuộc khoảng $(a;b)$."
+ },
+ {
+  "ma_cau": "T1110000003012",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Tìm a nguyên để liên tục tại x=1, tham số ở giá trị f(1), giới hạn tính bằng liên hợp hai căn.",
+  "can_cu": "Cho $f(x_0)=L$ rồi giải phương trình tìm tham số."
+ },
+ {
+  "ma_cau": "T1110000003007",
+  "dang_bai_id": "NDB01197",
+  "chac": "cao",
+  "ly_do": "Tìm m để hàm hai nhánh liên tục trên R: lập điều kiện tại điểm chia nhánh x=4.",
+  "can_cu": "Chỉ ra các điểm chia nhánh của hàm số và khoảng cần liên tục"
+ },
+ {
+  "ma_cau": "T1110000002942",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Tìm m để liên tục tại x=1, m là giá trị riêng f(1), giới hạn 0/0 rút gọn.",
+  "can_cu": "Phải rút gọn thừa số $x-x_0$ trước rồi mới thay $x=x_0$"
+ },
+ {
+  "ma_cau": "T1110000002309",
+  "dang_bai_id": "NDB01190",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm chọn hàm không liên tục tại x=3 trong ba hàm, đúng kiểu nhận biết gián đoạn.",
+  "can_cu": "Hàm số nào sau đây gián đoạn tại $x=2$?"
+ },
+ {
+  "ma_cau": "T1110000001879",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Dãy có căn ở tử, đưa n ra ngoài căn rồi chia cho n.",
+  "can_cu": "Đưa luỹ thừa cao nhất của $n$ ra ngoài dấu căn"
+ },
+ {
+  "ma_cau": "T1110000002454",
+  "dang_bai_id": "NDB01191",
+  "chac": "vua",
+  "ly_do": "Tìm a để hàm hai nhánh liên tục tại x=-2, a chỉ ở nhánh phải; ranh giới với tham số ở hai nhánh.",
+  "can_cu": "Tính $L=\\lim\\limits_{x\\to x_0}g(x)$: thay trực tiếp"
+ },
+ {
+  "ma_cau": "T1110000002304",
+  "dang_bai_id": "NDB01198",
+  "chac": "cao",
+  "ly_do": "Bài toán cước taxi theo bậc thang quãng đường, tính tiền cho 3 km.",
+  "can_cu": "Đặt biến (quãng đường, lượng điện, thời gian...) và lập công thức riêng cho từng khoảng giá trị của biến."
+ },
+ {
+  "ma_cau": "T1110000001685",
+  "dang_bai_id": "NDB01860",
+  "chac": "cao",
+  "ly_do": "Dãy truy hồi cộng dồn u_{n+1}=u_n+2/3^n: tính tổng, u_n rồi giới hạn.",
+  "can_cu": "Truy hồi cộng dồn $u_{n+1}=u_n+d_n$"
+ },
+ {
+  "ma_cau": "T1110000002994",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Tìm m để liên tục tại x=2, m ở giá trị f(2), giới hạn phân thức hữu tỉ 0/0.",
+  "can_cu": "Phải rút gọn thừa số $x-x_0$ trước rồi mới thay $x=x_0$"
+ },
+ {
+  "ma_cau": "T1110000002148",
+  "dang_bai_id": "NDB01180",
+  "chac": "vua",
+  "ly_do": "Tổng phân thức bậc 2/bậc 1 cộng mx+n khi x→+∞ là ∞-∞ có tham số; giải bằng chia đa thức.",
+  "can_cu": "Nhận dạng $\\infty-\\infty$ và nêu hướng $x\\to+\\infty$ hay $x\\to-\\infty$."
+ },
+ {
+  "ma_cau": "T1110000002081",
+  "dang_bai_id": "NDB01180",
+  "chac": "cao",
+  "ly_do": "Hiệu hai căn khi x→+∞ dạng ∞-∞: nhân liên hợp rồi chia cho x.",
+  "can_cu": "Liên hợp của hiệu hai căn: $\\sqrt A-\\sqrt B=\\dfrac{A-B}{\\sqrt A+\\sqrt B}$"
+ },
+ {
+  "ma_cau": "T1110000002146",
+  "dang_bai_id": "NDB01180",
+  "chac": "cao",
+  "ly_do": "Căn cộng √2·x khi x→-∞ dạng ∞-∞: liên hợp, chú ý |x|=-x.",
+  "can_cu": "Khi $x\\to-\\infty$, tổng sau cũng là dạng $\\infty-\\infty$"
+ },
+ {
+  "ma_cau": "T1110000003085",
+  "dang_bai_id": "NDB01167",
+  "chac": "cao",
+  "ly_do": "Hình vuông nối trung điểm lặp vô hạn, chu vi lập cấp số nhân lùi vô hạn q=√2/2, tính tổng.",
+  "can_cu": "Hình vuông nối trung điểm các cạnh: cạnh nhân $\\dfrac{\\sqrt{2}}{2}$, diện tích nhân $\\dfrac{1}{2}$"
+ },
+ {
+  "ma_cau": "T111000000134",
+  "dang_bai_id": "NDB01183",
+  "chac": "cao",
+  "ly_do": "Mệnh đề sai là lim x^k=-∞ khi x→-∞ với k bất kì: phụ thuộc k chẵn hay lẻ.",
+  "can_cu": "Khi $x\\to-\\infty$: số mũ chẵn cho kết quả dương vô cực, số mũ lẻ cho âm vô cực."
+ },
+ {
+  "ma_cau": "T1110000002850",
+  "dang_bai_id": "NDB01180",
+  "chac": "vua",
+  "ly_do": "Tổng phân thức cộng ax+b khi x→+∞ dạng ∞-∞ có tham số; giải bằng chia đa thức.",
+  "can_cu": "Nhận dạng $\\infty-\\infty$ và nêu hướng $x\\to+\\infty$ hay $x\\to-\\infty$."
+ },
+ {
+  "ma_cau": "T1110000002748",
+  "dang_bai_id": "NDB01176",
+  "chac": "cao",
+  "ly_do": "Giới hạn trái tại x=2 có |2-x|: bỏ dấu giá trị tuyệt đối theo bên trái rồi rút gọn.",
+  "can_cu": "bỏ dấu giá trị tuyệt đối ở mỗi bên, rút gọn."
+ },
+ {
+  "ma_cau": "T1110000003094",
+  "dang_bai_id": "NDB01159",
+  "chac": "cao",
+  "ly_do": "Hiệu căn bậc ba và căn bậc hai của dãy: cộng bớt n rồi liên hợp từng nhóm.",
+  "can_cu": "Đề có cả căn bậc hai và căn bậc ba: cộng bớt cùng một số hạng (thường là $n$)"
+ },
+ {
+  "ma_cau": "T1110000002255",
+  "dang_bai_id": "NDB01195",
+  "chac": "cao",
+  "ly_do": "Xét tính liên tục hàm sơ cấp 1/sin x: tìm tập xác định và các khoảng liên tục.",
+  "can_cu": "Tìm điều kiện xác định: mẫu khác $0$, biểu thức dưới căn không âm"
+ },
+ {
+  "ma_cau": "T1110000002564",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Dãy phân thức có căn bậc hai ở tử và mẫu: đưa n ra ngoài căn rồi chia cho n.",
+  "can_cu": "Đưa luỹ thừa cao nhất của $n$ ra ngoài dấu căn"
+ },
+ {
+  "ma_cau": "T1110000002938",
+  "dang_bai_id": "NDB01194",
+  "chac": "cao",
+  "ly_do": "Tìm m để hàm gián đoạn tại x=1: lấy phần bù của giá trị m làm hàm liên tục.",
+  "can_cu": "Hàm số gián đoạn tại $x_0$ khi ít nhất một đẳng thức trên sai."
+ },
+ {
+  "ma_cau": "T1110000001640",
+  "dang_bai_id": "NDB01157",
+  "chac": "cao",
+  "ly_do": "Dãy thương có căn ở tử: đưa n ra khỏi căn, chia tử và mẫu cho n.",
+  "can_cu": "Đưa luỹ thừa cao nhất của $n$ ra ngoài dấu căn"
+ },
+ {
+  "ma_cau": "T1110000002282",
+  "dang_bai_id": "NDB01196",
+  "chac": "vua",
+  "ly_do": "Lập hàm bậc thang Q(m) từ hình học rồi tìm các điểm gián đoạn; có thể hợp dạng hàm thực tế.",
+  "can_cu": "Chỉ còn phải xét các điểm chia nhánh"
+ },
+ {
+  "ma_cau": "T1110000002535",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Dãy phân thức tử bậc 1 thấp hơn mẫu bậc 2, giới hạn bằng 0.",
+  "can_cu": "Tử có bậc thấp hơn mẫu: giới hạn bằng $0$"
+ },
+ {
+  "ma_cau": "T1110000002612",
+  "dang_bai_id": "NDB01162",
+  "chac": "cao",
+  "ly_do": "Tích hai dãy (n²-n+1)→+∞ và (2-n)→-∞: dùng quy tắc dấu tích của hai dãy vô cực.",
+  "can_cu": "tích hai dãy vô cực theo quy tắc dấu."
+ },
+ {
+  "ma_cau": "T1110000001988",
+  "dang_bai_id": "NDB01184",
+  "chac": "vua",
+  "ly_do": "Tích ba đa thức khi x→+∞ đều →-∞: dùng quy tắc dấu của tích; cũng giống đa thức bậc cao nhất.",
+  "can_cu": "Tra bảng dấu quy tắc tích: dấu của $L$ nhân dấu của vô cực."
+ },
+ {
+  "ma_cau": "T1110000001657",
+  "dang_bai_id": "NDB01150",
+  "chac": "cao",
+  "ly_do": "Cho lim n·u_n=3, biến đổi biểu thức thành tích thương các dãy có giới hạn đã biết.",
+  "can_cu": "Viết biểu thức cần tính qua $u_n$, $v_n$ bằng các phép tổng, hiệu, tích, thương, căn."
+ },
+ {
+  "ma_cau": "T1110000002288",
+  "dang_bai_id": "NDB01199",
+  "chac": "cao",
+  "ly_do": "Chứng minh phương trình cos x = x có nghiệm trong (0;1) bằng f(0)f(1)<0.",
+  "can_cu": "Chuyển phương trình về dạng $f(x)=0$ và đặt hàm số $f(x)$."
+ },
+ {
+  "ma_cau": "T1110000002433",
+  "dang_bai_id": "NDB01191",
+  "chac": "vua",
+  "ly_do": "Tìm m liên tục tại x=5: m ở nhánh x≤5 cũng là f(5), giới hạn phải dạng 0/0 liên hợp mẫu.",
+  "can_cu": "Cho $f(x_0)=L$ rồi giải phương trình tìm tham số."
+ },
+ {
+  "ma_cau": "T1110000002622",
+  "dang_bai_id": "NDB01154",
+  "chac": "cao",
+  "ly_do": "Thương các luỹ thừa 3^n,4^n,5^n: chia cho 5^n là cơ số lớn nhất.",
+  "can_cu": "Chọn cơ số có giá trị tuyệt đối lớn nhất trong tử và mẫu để chia"
+ },
+ {
+  "ma_cau": "T1110000002310",
+  "dang_bai_id": "NDB01191",
+  "chac": "cao",
+  "ly_do": "Tìm a để liên tục tại x=1, tham số ở giá trị f(1), giới hạn 0/0 rút gọn nhân tử.",
+  "can_cu": "Phải rút gọn thừa số $x-x_0$ trước rồi mới thay $x=x_0$"
+ },
+ {
+  "ma_cau": "T1110000002194",
+  "dang_bai_id": "NDB01177",
+  "chac": "cao",
+  "ly_do": "Tìm m để tồn tại giới hạn tại x=0: cho giới hạn trái bằng giới hạn phải.",
+  "can_cu": "Tìm tham số để giới hạn tồn tại: tính hai giới hạn một bên (theo tham số)"
+ },
+ {
+  "ma_cau": "T1110000002812",
+  "dang_bai_id": "NDB01182",
+  "chac": "cao",
+  "ly_do": "Giới hạn trái x→3- dạng 11/0, mẫu âm nên ra -∞.",
+  "can_cu": "Khi $x\\to3^-$: $x-3<0$ nên mẫu dần tới $0$ qua giá trị âm"
+ }
+]

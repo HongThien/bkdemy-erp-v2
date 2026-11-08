@@ -8,6 +8,8 @@ const THU = ['Chủ nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 
 const thu = (d) => THU[new Date(Date.UTC(+d.slice(0, 4), +d.slice(5, 7) - 1, +d.slice(8, 10))).getUTCDay()]
 const ten = (p) => (p.tg_user_id ? `<a href="tg://user?id=${p.tg_user_id}">${esc(p.ho_ten)}</a>` : `<b>${esc(p.ho_ten)}</b>`)
 const MAX_MUC = 8
+const MAX_CT = 10
+const NHOM_CONG = [['cong_ca', 'Ca trực'], ['cong_bo_tro', 'Buổi bổ trợ'], ['cong_buoi', 'Buổi lớp'], ['quen_checkout', 'Quên checkout']]
 
 export function dungBanTin(d) {
   const ds = d.ta ?? []
@@ -31,9 +33,24 @@ export function dungBanTin(d) {
     }
     const c = t.cong
     if (c) {
-      const phan = [c.so_buoi ? `${c.so_buoi} buổi lớp` : null, c.so_ca ? `${c.so_ca} ca trực` : null, c.so_bo_tro ? `${c.so_bo_tro} buổi bổ trợ` : null].filter(Boolean).join(' + ')
-      const qc = c.quen_checkout ? `quên checkout ${c.quen_checkout} lần` : null
-      dong.push(`• ⏳ Cần hoàn thành chấm công: ${[phan ? `${phan} chưa ghi công` : null, qc].filter(Boolean).join(' · ')} (${ddmm(c.tu)}${c.tu !== c.den ? `–${ddmm(c.den)}` : ''})`)
+      // Thùy 23/10: "cần nhắn rõ là ca trực nào" ⇒ từng ca/buổi một dòng (ngày · giờ · tên), nhóm theo loại
+      const ct = c.chi_tiet ?? []
+      dong.push(`• ⏳ <b>Cần hoàn thành chấm công</b> (${ct.length} mục — khai bù trong app TA → Chấm công):`)
+      for (const [loai, nhan] of NHOM_CONG) {
+        const ds = ct.filter((x) => x.loai === loai)
+        if (!ds.length) continue
+        dong.push(`   <i>${nhan}:</i>`)
+        // cùng ngày + giờ + tên (TA kèm song song nhiều buổi bổ trợ) ⇒ gộp 1 dòng "(N buổi)"
+        const gop = []
+        for (const x of ds) {
+          const ten = loai === 'quen_checkout' ? '' : ` · ${esc(String(x.ten ?? '').replace(/^Trực bổ trợ /, ''))}`
+          const dongX = `${ddmm(x.ngay)}${x.gio ? ' ' + x.gio : ''}${ten}`
+          const cu = gop.find((g) => g.d === dongX)
+          if (cu) cu.n++; else gop.push({ d: dongX, n: 1 })
+        }
+        for (const g of gop.slice(0, MAX_CT)) dong.push(`   – ${g.d}${g.n > 1 ? ` (${g.n} buổi)` : ''}`)
+        if (gop.length > MAX_CT) dong.push(`   – … và ${gop.length - MAX_CT} mục nữa`)
+      }
     }
     if (t.canh_bao?.length) {
       dong.push('⚠️ <b>BTVN cần nhắc em:</b>')

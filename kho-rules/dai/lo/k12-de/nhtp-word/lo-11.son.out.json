@@ -1,0 +1,462 @@
+[
+ {
+  "id": "W0601",
+  "dap_an": "2.31",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Diện tích tam giác đều √3(1-x²), V=4√3/3≈2,31; kiểm Simpson"
+ },
+ {
+  "id": "W0602",
+  "dap_an": "C",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "∫e^x=1 ⇒ ∫f=2"
+ },
+ {
+  "id": "W0603",
+  "dap_an": "D",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "16-2=14"
+ },
+ {
+  "id": "W0604",
+  "dap_an": [
+   "Đ",
+   "S",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F(4)=59/3≠20; (c) thiếu x²/2 và C"
+ },
+ {
+  "id": "W0605",
+  "dap_an": "D",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "F'=-sin x-1"
+ },
+ {
+  "id": "W0606",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫₁³3x(3x²-2)dx=156; kiểm Simpson"
+ },
+ {
+  "id": "W0607",
+  "dap_an": "B",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "∫a^x=a^x/ln a"
+ },
+ {
+  "id": "W0608",
+  "dap_an": "5",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "f=2x; ∫(2+2x)=2+3=5"
+ },
+ {
+  "id": "W0609",
+  "dap_an": null,
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "đề mất biểu thức (EQ-FAILED), không xác định được"
+ },
+ {
+  "id": "W0610",
+  "dap_an": "A",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "∫2^x=2^x/ln2"
+ },
+ {
+  "id": "W0611",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": true,
+  "ghi": "đề viết f thay F nhưng hiểu F nguyên hàm; ∫₀²(2x-5)=-6≠6"
+ },
+ {
+  "id": "W0612",
+  "dap_an": "8",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "f=4x; ∫(2+4x)=2+6=8"
+ },
+ {
+  "id": "W0613",
+  "dap_an": "C",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "∫₃⁰6f=-24"
+ },
+ {
+  "id": "W0614",
+  "dap_an": "D",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "F'=3x²-4"
+ },
+ {
+  "id": "W0615",
+  "dap_an": "-7",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "5-12=-7"
+ },
+ {
+  "id": "W0616",
+  "dap_an": "A",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "5-(-4)=9; phương án A bị lỗi định dạng \"9\""
+ },
+ {
+  "id": "W0617",
+  "dap_an": "B",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "đề thiếu \"trục hoành\" nhưng đáp án chuẩn là |f|"
+ },
+ {
+  "id": "W0618",
+  "dap_an": "D",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "-2cos x+3x²/2"
+ },
+ {
+  "id": "W0619",
+  "dap_an": "D",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "x³/3-5x"
+ },
+ {
+  "id": "W0620",
+  "dap_an": "B",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "e^x+x²"
+ },
+ {
+  "id": "W0621",
+  "dap_an": "A",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "7^x/ln7"
+ },
+ {
+  "id": "W0622",
+  "dap_an": [
+   "S",
+   "S",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "(a) thiếu -x; (b) V=4π/7≠5/7; (d) ∫f=-4 ⇒ ∫g=19; kiểm Simpson"
+ },
+ {
+  "id": "W0623",
+  "dap_an": "C",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "∫₀^{π/2}sin=1"
+ },
+ {
+  "id": "W0624",
+  "dap_an": "C",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "Newton-Leibniz"
+ },
+ {
+  "id": "W0625",
+  "dap_an": "B",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "tính chất tổng/hiệu; C chỉ đúng với k≠0 (ghi ∀k∈R), chọn B"
+ },
+ {
+  "id": "W0626",
+  "dap_an": "A",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "đổi cận đổi dấu, A sai"
+ },
+ {
+  "id": "W0627",
+  "dap_an": "A",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "∫1/x=ln|x|+C; khớp nguồn"
+ },
+ {
+  "id": "W0628",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": true,
+  "ghi": "menh_de gộp a,b trong phần tử 0: (a) Đ,(b) S vì f đổi dấu, S=11/6 Đ; (d) sai công thức V"
+ },
+ {
+  "id": "W0629",
+  "dap_an": "3",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "F=x⁴+x+1"
+ },
+ {
+  "id": "W0630",
+  "dap_an": "A",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "khớp nguồn"
+ },
+ {
+  "id": "W0631",
+  "dap_an": "A",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "F=sin x-cos x+3; F(π/2)=4"
+ },
+ {
+  "id": "W0632",
+  "dap_an": "A",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "e^{2x}/2+2e^x+x"
+ },
+ {
+  "id": "W0633",
+  "dap_an": "A",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "F(2)-F(1)=-4"
+ },
+ {
+  "id": "W0634",
+  "dap_an": "A",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "f(3)=1+9=10"
+ },
+ {
+  "id": "W0635",
+  "dap_an": "A",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "5-(-1)=6"
+ },
+ {
+  "id": "W0636",
+  "dap_an": "A",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "|f|"
+ },
+ {
+  "id": "W0637",
+  "dap_an": "A",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "πe^{2x}"
+ },
+ {
+  "id": "W0638",
+  "dap_an": "A",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "giao x=0,±2; |x³-4x| trên [-2,2]"
+ },
+ {
+  "id": "W0639",
+  "dap_an": null,
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "cần hình"
+ },
+ {
+  "id": "W0640",
+  "dap_an": "B",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "F'=6x≠x³"
+ },
+ {
+  "id": "W0641",
+  "dap_an": "A",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "V=π∫f²"
+ },
+ {
+  "id": "W0642",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "∫₁²f=3≠5"
+ },
+ {
+  "id": "W0643",
+  "dap_an": [
+   "Đ",
+   "S",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫₀^π f=π²+5π≠5; (c) thiếu +C; kiểm Simpson"
+ },
+ {
+  "id": "W0644",
+  "dap_an": "C",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "f' sai, phải là F"
+ },
+ {
+  "id": "W0645",
+  "dap_an": "D",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "|cos x|"
+ },
+ {
+  "id": "W0646",
+  "dap_an": "B",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "3-2=1"
+ },
+ {
+  "id": "W0647",
+  "dap_an": "D",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "3sin x-1/x"
+ },
+ {
+  "id": "W0648",
+  "dap_an": "1",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "a=1/3,b=-1,c=1"
+ },
+ {
+  "id": "W0649",
+  "dap_an": "C",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "k phải thay bằng 1 trong đẳng thức"
+ },
+ {
+  "id": "W0650",
+  "dap_an": "A",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "πsin²x"
+ },
+ {
+  "id": "W0651",
+  "dap_an": "B",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "f=2cos x-e^x"
+ },
+ {
+  "id": "W0652",
+  "dap_an": "B",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "hiệu x²-(-3x)=x²+3x"
+ },
+ {
+  "id": "W0653",
+  "dap_an": "C",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "8-(-1)=9"
+ },
+ {
+  "id": "W0654",
+  "dap_an": "B",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "∫2^x=2^x/ln2"
+ },
+ {
+  "id": "W0655",
+  "dap_an": "D",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "2x²-5x+C"
+ },
+ {
+  "id": "W0656",
+  "dap_an": "B",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "-2+16=14"
+ },
+ {
+  "id": "W0657",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=x³-2x+4; F'(2)=10; F(3)=25; m+n=-20"
+ },
+ {
+  "id": "W0658",
+  "dap_an": "-3",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "F=x⁴/4-3"
+ },
+ {
+  "id": "W0659",
+  "dap_an": "C",
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "S=∫3^x"
+ },
+ {
+  "id": "W0660",
+  "dap_an": [
+   "S",
+   "S",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=3ln|x|; ∫=-9; S=12; V=36π/5; kiểm Simpson"
+ }
+]

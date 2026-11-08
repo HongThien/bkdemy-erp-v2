@@ -7,9 +7,10 @@ import { useEffect, useMemo, useState } from 'react'
 import {
   listDotDuoi, listCaDuoi, taoBuoiDuoi, themHSVaoBuoiDuoi, buoiDuoiSapToi, goiYBuoiDuoi, themCaseDuoi,
   hoanThanhKhoaDuoi, xoaCaseDuoi, timHocSinhDuoi, lopCuaHS, demTabDuoi, setMucHocDuoi, getBuoiDuoiHsInfo, chotKeHoachDuoi, duyetKeHoachDuoi,
-  getDangCuaBuoiDuoi, kichBanDuoi, setBuoiCoThietBi,
-  type CaDuoi, type DotDuoi, type DangDuoiBuoi,
+  getDangCuaBuoiDuoi, kichBanDuoi, setBuoiCoThietBi, getDangChonDuoi,
+  type CaDuoi, type DotDuoi, type DangDuoiBuoi, type DangChonDuoi,
 } from '../../lib/botro_duoi'
+import DangPickerBdm from './DangPickerBdm'
 import { getRoster, getBuoi, huyBuoi, xoaHSKhoiBuoi, diemDanh, getDanhGia, setNhanXet, dongDanhGia, moLaiDanhGia, getDangTen, type BuoiHocHS } from '../../lib/gami'
 import SuaBuoiModal from './SuaBuoiModal'
 import DuoiGiayTA from '../ta/DuoiGiayTA'
@@ -306,6 +307,8 @@ function DotDetailModal({ dot, canEditPlan, onClose, onOpenBuoi, onDone }: {
   const [soBuoi, setSoBuoi] = useState(dot.so_buoi_du_kien ?? Math.max(1, dot.daHoc))
   const [dangs, setDangs] = useState<string[]>(dot.dangs.map((x) => x.ma_dang))
   const [pick, setPick] = useState(false)
+  // Thùy 26/10: K6–12 chọn mục tiêu theo BẢN ĐỒ MỚI — DB quyết theo registry khối (fn_duoi_dang_chon); null = đang hỏi
+  const [chon, setChon] = useState<{ ban_do: 'cu' | 'moi'; dangs: DangChonDuoi[] } | null>(null)
   const [busy, setBusy] = useState(false)
   const [tenDang, setTenDang] = useState<Record<string, string>>({}) // ma_dang → tên đầy đủ (kho, tra theo môn đợt)
   const xongDangSet = new Set(dot.dangs.filter((x) => x.xong).map((x) => x.ma_dang)) // dạng HS đã nộp bài Test online
@@ -357,7 +360,7 @@ function DotDetailModal({ dot, canEditPlan, onClose, onOpenBuoi, onDone }: {
                     {canEditPlan && <button onClick={() => setDangs((ds) => ds.filter((x) => x !== m))} className="text-indigo-300 hover:text-rose-600">✕</button>}
                   </div>
                 ))}
-                {canEditPlan && dot.khoi && <button onClick={() => setPick(true)} className="self-start rounded-lg border border-dashed border-slate-300 px-2.5 py-1 text-[12px] text-slate-500 hover:border-indigo-400 hover:text-indigo-600">+ Chọn dạng</button>}
+                {canEditPlan && dot.khoi && <button onClick={() => { setPick(true); if (!chon) getDangChonDuoi(dot.mon, dot.khoi!).then(setChon).catch(() => setChon({ ban_do: 'cu', dangs: [] })) }} className="self-start rounded-lg border border-dashed border-slate-300 px-2.5 py-1 text-[12px] text-slate-500 hover:border-indigo-400 hover:text-indigo-600">+ Chọn dạng</button>}
               </div>
             )}
           </div>
@@ -404,7 +407,8 @@ function DotDetailModal({ dot, canEditPlan, onClose, onOpenBuoi, onDone }: {
           </button>
         ))}
       </div>
-      {pick && dot.khoi && <DangPicker khoi={dot.khoi} mon={dot.mon || undefined} selected={dangs} onClose={() => setPick(false)} onConfirm={(ms) => { setDangs(ms); setPick(false) }} />}
+      {pick && dot.khoi && chon?.ban_do === 'cu' && <DangPicker khoi={dot.khoi} mon={dot.mon || undefined} selected={dangs} onClose={() => setPick(false)} onConfirm={(ms) => { setDangs(ms); setPick(false) }} />}
+      {pick && dot.khoi && chon?.ban_do === 'moi' && <DangPickerBdm khoi={dot.khoi} dangs={chon.dangs} selected={dangs} tenCu={tenDang} onClose={() => setPick(false)} onConfirm={(ms) => { setDangs(ms); setPick(false) }} />}
     </Modal>
   )
 }

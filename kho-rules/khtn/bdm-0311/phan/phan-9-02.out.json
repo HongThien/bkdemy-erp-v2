@@ -1,0 +1,566 @@
+[
+ {
+  "ma_cau": "K09020101031",
+  "dang_bai_id": "KDB01103",
+  "chac": "cao",
+  "ly_do": "Hỏi khái niệm, điều kiện, ví dụ về hiện tượng khúc xạ"
+ },
+ {
+  "ma_cau": "K09020101032",
+  "dang_bai_id": "KDB01103",
+  "chac": "cao",
+  "ly_do": "Hỏi khái niệm, điều kiện, ví dụ về hiện tượng khúc xạ"
+ },
+ {
+  "ma_cau": "K09020101033",
+  "dang_bai_id": "KDB01106",
+  "chac": "cao",
+  "ly_do": "Góc tới 0° thì tia không đổi hướng: trường hợp đặc biệt"
+ },
+ {
+  "ma_cau": "K09020101034",
+  "dang_bai_id": "KDB01103",
+  "chac": "cao",
+  "ly_do": "Hỏi khái niệm, điều kiện, ví dụ về hiện tượng khúc xạ"
+ },
+ {
+  "ma_cau": "K09020101035",
+  "dang_bai_id": "KDB01103",
+  "chac": "vua",
+  "ly_do": "Hỏi tên hiện tượng nhưng đề có hình minh hoạ"
+ },
+ {
+  "ma_cau": "K09020101036",
+  "dang_bai_id": "KDB01104",
+  "chac": "cao",
+  "ly_do": "Hỏi tên tia/góc: yếu tố hình học của khúc xạ"
+ },
+ {
+  "ma_cau": "K09020101037",
+  "dang_bai_id": "KDB01104",
+  "chac": "cao",
+  "ly_do": "Hỏi tên tia/góc: yếu tố hình học của khúc xạ"
+ },
+ {
+  "ma_cau": "K09020101038",
+  "dang_bai_id": "KDB01104",
+  "chac": "cao",
+  "ly_do": "Hỏi tên tia/góc: yếu tố hình học của khúc xạ"
+ },
+ {
+  "ma_cau": "K09020101039",
+  "dang_bai_id": "KDB01104",
+  "chac": "cao",
+  "ly_do": "Hỏi tên tia/góc: yếu tố hình học của khúc xạ"
+ },
+ {
+  "ma_cau": "K09020101040",
+  "dang_bai_id": "KDB01105",
+  "chac": "vua",
+  "ly_do": "Chiết suất tuyệt đối/tốc độ; nhóm thiếu dạng chiết suất n=c/v"
+ },
+ {
+  "ma_cau": "K09020101041",
+  "dang_bai_id": "KDB01105",
+  "chac": "vua",
+  "ly_do": "Chiết suất tuyệt đối/tốc độ; nhóm thiếu dạng chiết suất n=c/v"
+ },
+ {
+  "ma_cau": "K09020101042",
+  "dang_bai_id": "KDB01105",
+  "chac": "vua",
+  "ly_do": "Chiết suất tuyệt đối/tốc độ; nhóm thiếu dạng chiết suất n=c/v"
+ },
+ {
+  "ma_cau": "K09020101043",
+  "dang_bai_id": "KDB01105",
+  "chac": "vua",
+  "ly_do": "Chiết suất tuyệt đối/tốc độ; nhóm thiếu dạng chiết suất n=c/v"
+ },
+ {
+  "ma_cau": "K09020101044",
+  "dang_bai_id": "KDB01105",
+  "chac": "vua",
+  "ly_do": "Chiết suất tuyệt đối/tốc độ; nhóm thiếu dạng chiết suất n=c/v"
+ },
+ {
+  "ma_cau": "K09020201029",
+  "dang_bai_id": "KDB01169",
+  "chac": "vua",
+  "ly_do": "Nhận biết khái niệm PXTP; nhóm thiếu dạng khái niệm/dấu hiệu PXTP"
+ },
+ {
+  "ma_cau": "K09020201030",
+  "dang_bai_id": "KDB01169",
+  "chac": "vua",
+  "ly_do": "Nhận biết khái niệm PXTP; nhóm thiếu dạng khái niệm/dấu hiệu PXTP"
+ },
+ {
+  "ma_cau": "K09020201031",
+  "dang_bai_id": "KDB01170",
+  "chac": "cao",
+  "ly_do": "So sánh PXTP với phản xạ một phần: hao hụt năng lượng"
+ },
+ {
+  "ma_cau": "K09020201032",
+  "dang_bai_id": "KDB01169",
+  "chac": "vua",
+  "ly_do": "Nhận diện PXTP đối chiếu khúc xạ; thiếu dạng khái niệm PXTP"
+ },
+ {
+  "ma_cau": "K09020201033",
+  "dang_bai_id": "KDB01169",
+  "chac": "cao",
+  "ly_do": "Mô tả tia ở mặt nước, hỏi hiện tượng: PXTP chứ không khúc xạ"
+ },
+ {
+  "ma_cau": "K09020201034",
+  "dang_bai_id": "KDB01169",
+  "chac": "cao",
+  "ly_do": "Không có tia khúc xạ, kết luận hiện tượng là PXTP"
+ },
+ {
+  "ma_cau": "K09020201035",
+  "dang_bai_id": "KDB01169",
+  "chac": "vua",
+  "ly_do": "Dấu hiệu cường độ phản xạ bằng tới; thiếu dạng khái niệm PXTP"
+ },
+ {
+  "ma_cau": "K09020201036",
+  "dang_bai_id": "KDB01169",
+  "chac": "cao",
+  "ly_do": "Mô tả chùm sáng dội ngược hết, hỏi tên hiện tượng"
+ },
+ {
+  "ma_cau": "K09020201037",
+  "dang_bai_id": "KDB01168",
+  "chac": "cao",
+  "ly_do": "Điều kiện về chiều truyền của PXTP"
+ },
+ {
+  "ma_cau": "K09020201038",
+  "dang_bai_id": "KDB01168",
+  "chac": "cao",
+  "ly_do": "Điều kiện góc tới so với góc tới hạn"
+ },
+ {
+  "ma_cau": "K09020201039",
+  "dang_bai_id": "KDB01167",
+  "chac": "cao",
+  "ly_do": "Không khí sang nước: có thể PXTP không theo chiều truyền"
+ },
+ {
+  "ma_cau": "K09020201040",
+  "dang_bai_id": "KDB01169",
+  "chac": "cao",
+  "ly_do": "Đúng chiều nhưng góc nhỏ: khúc xạ hay PXTP (dạng sau thắng)"
+ },
+ {
+  "ma_cau": "K09020201041",
+  "dang_bai_id": "KDB01168",
+  "chac": "cao",
+  "ly_do": "Hỏi số điều kiện đồng thời của PXTP"
+ },
+ {
+  "ma_cau": "K09020201042",
+  "dang_bai_id": "KDB01169",
+  "chac": "cao",
+  "ly_do": "Đúng chiều, góc lớn: xác định PXTP (dạng sau thắng)"
+ },
+ {
+  "ma_cau": "K09020202051",
+  "dang_bai_id": "KDB01171",
+  "chac": "cao",
+  "ly_do": "Cho n1,n2 cụ thể (không không khí), tính sin góc tới hạn"
+ },
+ {
+  "ma_cau": "K09020202052",
+  "dang_bai_id": "KDB01171",
+  "chac": "cao",
+  "ly_do": "Cho n1,n2 cụ thể (không không khí), tính sin góc tới hạn"
+ },
+ {
+  "ma_cau": "K09020202053",
+  "dang_bai_id": "KDB01171",
+  "chac": "cao",
+  "ly_do": "Cho n1,n2 cụ thể (không không khí), tính sin góc tới hạn"
+ },
+ {
+  "ma_cau": "K09020202054",
+  "dang_bai_id": "KDB01171",
+  "chac": "cao",
+  "ly_do": "Cho n1,n2 cụ thể (không không khí), tính sin góc tới hạn"
+ },
+ {
+  "ma_cau": "K09020202055",
+  "dang_bai_id": "KDB01171",
+  "chac": "cao",
+  "ly_do": "Cho n1,n2 cụ thể (không không khí), tính sin góc tới hạn"
+ },
+ {
+  "ma_cau": "K09020202056",
+  "dang_bai_id": "KDB01171",
+  "chac": "cao",
+  "ly_do": "Cho n1,n2 cụ thể (không không khí), tính sin góc tới hạn"
+ },
+ {
+  "ma_cau": "K09020202057",
+  "dang_bai_id": "KDB01172",
+  "chac": "cao",
+  "ly_do": "Chất ra không khí, sin igh = 1/n"
+ },
+ {
+  "ma_cau": "K09020202058",
+  "dang_bai_id": "KDB01172",
+  "chac": "cao",
+  "ly_do": "Chất ra không khí, sin igh = 1/n"
+ },
+ {
+  "ma_cau": "K09020202059",
+  "dang_bai_id": "KDB01172",
+  "chac": "cao",
+  "ly_do": "Chất ra không khí, sin igh = 1/n"
+ },
+ {
+  "ma_cau": "K09020202060",
+  "dang_bai_id": "KDB01172",
+  "chac": "cao",
+  "ly_do": "Chất ra không khí, sin igh = 1/n"
+ },
+ {
+  "ma_cau": "K09020202061",
+  "dang_bai_id": "KDB01172",
+  "chac": "cao",
+  "ly_do": "Chất ra không khí, sin igh = 1/n"
+ },
+ {
+  "ma_cau": "K09020202062",
+  "dang_bai_id": "KDB01172",
+  "chac": "cao",
+  "ly_do": "Chất ra không khí, sin igh = 1/n"
+ },
+ {
+  "ma_cau": "K09020202063",
+  "dang_bai_id": "KDB01178",
+  "chac": "vua",
+  "ly_do": "Cho sin igh, môi trường khúc xạ là không khí, tìm n tới; đề không hỏi tốc độ"
+ },
+ {
+  "ma_cau": "K09020202064",
+  "dang_bai_id": "KDB01178",
+  "chac": "vua",
+  "ly_do": "Cho sin igh, môi trường khúc xạ là không khí, tìm n tới; đề không hỏi tốc độ"
+ },
+ {
+  "ma_cau": "K09020202065",
+  "dang_bai_id": "KDB01178",
+  "chac": "vua",
+  "ly_do": "Cho sin igh, môi trường khúc xạ là không khí, tìm n tới; đề không hỏi tốc độ"
+ },
+ {
+  "ma_cau": "K09020202066",
+  "dang_bai_id": "KDB01178",
+  "chac": "vua",
+  "ly_do": "Cho sin igh, môi trường khúc xạ là không khí, tìm n tới; đề không hỏi tốc độ"
+ },
+ {
+  "ma_cau": "K09020202067",
+  "dang_bai_id": "KDB01178",
+  "chac": "vua",
+  "ly_do": "Cho sin igh, môi trường khúc xạ là không khí, tìm n tới; đề không hỏi tốc độ"
+ },
+ {
+  "ma_cau": "K09020202068",
+  "dang_bai_id": "KDB01178",
+  "chac": "vua",
+  "ly_do": "Cho sin igh, môi trường khúc xạ là không khí, tìm n tới; đề không hỏi tốc độ"
+ },
+ {
+  "ma_cau": "K09020104051",
+  "dang_bai_id": "KDB01115",
+  "chac": "cao",
+  "ly_do": "Từ không khí, cho sin i và sin r, tính n"
+ },
+ {
+  "ma_cau": "K09020104052",
+  "dang_bai_id": "KDB01115",
+  "chac": "vua",
+  "ly_do": "Cho sin i, sin r nhưng môi trường tới n1 khác 1"
+ },
+ {
+  "ma_cau": "K09020104053",
+  "dang_bai_id": "KDB01115",
+  "chac": "vua",
+  "ly_do": "Cho sin i, sin r nhưng môi trường tới n1 khác 1"
+ },
+ {
+  "ma_cau": "K09020203051",
+  "dang_bai_id": "KDB01181",
+  "chac": "cao",
+  "ly_do": "Cho trực tiếp góc tới hạn và góc tới, kết luận PXTP"
+ },
+ {
+  "ma_cau": "K09020203052",
+  "dang_bai_id": "KDB01181",
+  "chac": "cao",
+  "ly_do": "Cho trực tiếp góc tới hạn và góc tới, kết luận PXTP"
+ },
+ {
+  "ma_cau": "K09020203053",
+  "dang_bai_id": "KDB01181",
+  "chac": "cao",
+  "ly_do": "Cho trực tiếp góc tới hạn và góc tới, kết luận PXTP"
+ },
+ {
+  "ma_cau": "K09020203054",
+  "dang_bai_id": "KDB01181",
+  "chac": "cao",
+  "ly_do": "Cho trực tiếp góc tới hạn và góc tới, kết luận PXTP"
+ },
+ {
+  "ma_cau": "K09020203055",
+  "dang_bai_id": "KDB01181",
+  "chac": "cao",
+  "ly_do": "Cho trực tiếp góc tới hạn và góc tới, kết luận PXTP"
+ },
+ {
+  "ma_cau": "K09020203056",
+  "dang_bai_id": "KDB01181",
+  "chac": "cao",
+  "ly_do": "Cho trực tiếp góc tới hạn và góc tới, kết luận PXTP"
+ },
+ {
+  "ma_cau": "K09020203057",
+  "dang_bai_id": "KDB01181",
+  "chac": "cao",
+  "ly_do": "Cho trực tiếp góc tới hạn và góc tới, kết luận PXTP"
+ },
+ {
+  "ma_cau": "K09020203058",
+  "dang_bai_id": "KDB01180",
+  "chac": "cao",
+  "ly_do": "Chất ra không khí, tính igh rồi so với góc tới"
+ },
+ {
+  "ma_cau": "K09020203059",
+  "dang_bai_id": "KDB01180",
+  "chac": "cao",
+  "ly_do": "Chất ra không khí, tính igh rồi so với góc tới"
+ },
+ {
+  "ma_cau": "K09020203060",
+  "dang_bai_id": "KDB01179",
+  "chac": "cao",
+  "ly_do": "Hai chiết suất cụ thể, so góc tới với igh"
+ },
+ {
+  "ma_cau": "K09020203061",
+  "dang_bai_id": "KDB01180",
+  "chac": "cao",
+  "ly_do": "Chất ra không khí, tính igh rồi so với góc tới"
+ },
+ {
+  "ma_cau": "K09020203062",
+  "dang_bai_id": "KDB01180",
+  "chac": "cao",
+  "ly_do": "Chất ra không khí, tính igh rồi so với góc tới"
+ },
+ {
+  "ma_cau": "K09020203063",
+  "dang_bai_id": "KDB01180",
+  "chac": "cao",
+  "ly_do": "Chất ra không khí, tính igh rồi so với góc tới"
+ },
+ {
+  "ma_cau": "K09020203064",
+  "dang_bai_id": "KDB01180",
+  "chac": "cao",
+  "ly_do": "Chất ra không khí, tính igh rồi so với góc tới"
+ },
+ {
+  "ma_cau": "K09020203065",
+  "dang_bai_id": "KDB01179",
+  "chac": "cao",
+  "ly_do": "Hai chiết suất cụ thể, so góc tới với igh"
+ },
+ {
+  "ma_cau": "K09020203066",
+  "dang_bai_id": "KDB01179",
+  "chac": "cao",
+  "ly_do": "Lõi-vỏ cho chiết suất cụ thể và góc tới, kết luận có PXTP không"
+ },
+ {
+  "ma_cau": "K09020203067",
+  "dang_bai_id": "KDB01179",
+  "chac": "cao",
+  "ly_do": "Lõi-vỏ cho chiết suất cụ thể và góc tới, kết luận có PXTP không"
+ },
+ {
+  "ma_cau": "K09020203068",
+  "dang_bai_id": "KDB01179",
+  "chac": "cao",
+  "ly_do": "Lõi-vỏ cho chiết suất cụ thể và góc tới, kết luận có PXTP không"
+ },
+ {
+  "ma_cau": "K09020203069",
+  "dang_bai_id": "KDB01179",
+  "chac": "cao",
+  "ly_do": "Lõi-vỏ cho chiết suất cụ thể và góc tới, kết luận có PXTP không"
+ },
+ {
+  "ma_cau": "K09020203070",
+  "dang_bai_id": "KDB01179",
+  "chac": "cao",
+  "ly_do": "Lõi-vỏ cho chiết suất cụ thể và góc tới, kết luận có PXTP không"
+ },
+ {
+  "ma_cau": "K09020203071",
+  "dang_bai_id": "KDB01179",
+  "chac": "cao",
+  "ly_do": "Lõi-vỏ cho chiết suất cụ thể và góc tới, kết luận có PXTP không"
+ },
+ {
+  "ma_cau": "K09020203072",
+  "dang_bai_id": "KDB01179",
+  "chac": "cao",
+  "ly_do": "Lõi-vỏ cho chiết suất cụ thể và góc tới, kết luận có PXTP không"
+ },
+ {
+  "ma_cau": "K09020105051",
+  "dang_bai_id": "KDB01126",
+  "chac": "cao",
+  "ly_do": "Nhiều lớp mặt song song, tính góc ở lớp cuối"
+ },
+ {
+  "ma_cau": "K09020105052",
+  "dang_bai_id": "KDB01126",
+  "chac": "cao",
+  "ly_do": "Nhiều lớp mặt song song, tính góc ở lớp cuối"
+ },
+ {
+  "ma_cau": "K09020105053",
+  "dang_bai_id": "KDB01126",
+  "chac": "cao",
+  "ly_do": "Nhiều lớp mặt song song, tính góc ở lớp cuối"
+ },
+ {
+  "ma_cau": "K09020105054",
+  "dang_bai_id": "KDB01126",
+  "chac": "cao",
+  "ly_do": "Nhiều lớp mặt song song, tính góc ở lớp cuối"
+ },
+ {
+  "ma_cau": "K09020204031",
+  "dang_bai_id": "KDB01187",
+  "chac": "cao",
+  "ly_do": "Điều kiện chiết suất lõi-vỏ giữ ánh sáng"
+ },
+ {
+  "ma_cau": "K09020204032",
+  "dang_bai_id": "KDB01188",
+  "chac": "cao",
+  "ly_do": "Ứng dụng cáp quang, nội soi: đặc điểm dẫn sáng"
+ },
+ {
+  "ma_cau": "K09020204033",
+  "dang_bai_id": "KDB01187",
+  "chac": "cao",
+  "ly_do": "Vì sao lõi bọc vỏ chiết suất nhỏ hơn: cấu tạo sợi quang"
+ },
+ {
+  "ma_cau": "K09020204034",
+  "dang_bai_id": "KDB01188",
+  "chac": "cao",
+  "ly_do": "Ứng dụng ống nội soi truyền hình ảnh theo đường cong"
+ },
+ {
+  "ma_cau": "K09020204035",
+  "dang_bai_id": "KDB01189",
+  "chac": "cao",
+  "ly_do": "Giải thích ảo ảnh trên mặt đường/sa mạc nóng"
+ },
+ {
+  "ma_cau": "K09020204036",
+  "dang_bai_id": "KDB01189",
+  "chac": "cao",
+  "ly_do": "Giải thích ảo ảnh trên mặt đường/sa mạc nóng"
+ },
+ {
+  "ma_cau": "K09020204037",
+  "dang_bai_id": "KDB01189",
+  "chac": "cao",
+  "ly_do": "Giải thích ảo ảnh trên mặt đường/sa mạc nóng"
+ },
+ {
+  "ma_cau": "K09020204038",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: ứng dụng khác của PXTP (kim cương lấp lánh, lăng kính)"
+ },
+ {
+  "ma_cau": "K09020107029",
+  "dang_bai_id": "KDB01141",
+  "chac": "vua",
+  "ly_do": "Chiều truyền, hỏi tia lệch gần/xa pháp tuyến; thiếu dạng quy tắc lệch theo chiều truyền"
+ },
+ {
+  "ma_cau": "K09020107030",
+  "dang_bai_id": "KDB01141",
+  "chac": "vua",
+  "ly_do": "Chiều truyền, hỏi tia lệch gần/xa pháp tuyến; thiếu dạng quy tắc lệch theo chiều truyền"
+ },
+ {
+  "ma_cau": "K09020107031",
+  "dang_bai_id": "KDB01141",
+  "chac": "vua",
+  "ly_do": "Chiều truyền, hỏi tia lệch gần/xa pháp tuyến; thiếu dạng quy tắc lệch theo chiều truyền"
+ },
+ {
+  "ma_cau": "K09020107032",
+  "dang_bai_id": "KDB01141",
+  "chac": "vua",
+  "ly_do": "Chiều truyền, hỏi tia lệch gần/xa pháp tuyến; thiếu dạng quy tắc lệch theo chiều truyền"
+ },
+ {
+  "ma_cau": "K09020107033",
+  "dang_bai_id": "KDB01141",
+  "chac": "vua",
+  "ly_do": "Chiều truyền, hỏi tia lệch gần/xa pháp tuyến; thiếu dạng quy tắc lệch theo chiều truyền"
+ },
+ {
+  "ma_cau": "K09020107034",
+  "dang_bai_id": "KDB01141",
+  "chac": "vua",
+  "ly_do": "Chiều truyền, hỏi tia lệch gần/xa pháp tuyến; thiếu dạng quy tắc lệch theo chiều truyền"
+ },
+ {
+  "ma_cau": "K09020107035",
+  "dang_bai_id": "KDB01141",
+  "chac": "vua",
+  "ly_do": "Chiều truyền, hỏi tia lệch gần/xa pháp tuyến; thiếu dạng quy tắc lệch theo chiều truyền"
+ },
+ {
+  "ma_cau": "K09020107036",
+  "dang_bai_id": "KDB01141",
+  "chac": "vua",
+  "ly_do": "Chiều truyền, hỏi tia lệch gần/xa pháp tuyến; thiếu dạng quy tắc lệch theo chiều truyền"
+ },
+ {
+  "ma_cau": "K09020107037",
+  "dang_bai_id": "KDB01141",
+  "chac": "vua",
+  "ly_do": "Chiều truyền, hỏi tia lệch gần/xa pháp tuyến; thiếu dạng quy tắc lệch theo chiều truyền"
+ },
+ {
+  "ma_cau": "K09020107038",
+  "dang_bai_id": "KDB01141",
+  "chac": "vua",
+  "ly_do": "Chiều truyền, hỏi tia lệch gần/xa pháp tuyến; thiếu dạng quy tắc lệch theo chiều truyền"
+ },
+ {
+  "ma_cau": "K09020107039",
+  "dang_bai_id": "KDB01141",
+  "chac": "vua",
+  "ly_do": "Chiều truyền, hỏi tia lệch gần/xa pháp tuyến; thiếu dạng quy tắc lệch theo chiều truyền"
+ }
+]

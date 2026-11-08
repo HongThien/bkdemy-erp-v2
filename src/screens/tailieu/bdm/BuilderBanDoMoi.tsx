@@ -4,15 +4,16 @@
 // Mọi đặt buổi / gợi ý câu ở DB (fn_tl_bdm_*); sau mỗi thao tác VÁ đúng buổi/phần đó tại chỗ, không tải lại cả giáo trình.
 // In / xem trước: PrintView chung (tự nhận ban_do='moi', in theo A3). Gán lớp + BTVN/ôn tập: GanLopBdm (riêng, không
 // dùng TrichPanel/OnTapConfirmScreen của builder cũ).
-import { useEffect, useState } from 'react'
-import { addBuoi, listBuoiTaiLieu, updatePhan, updateTaiLieu, fetchCausCuaTaiLieu, DEFAULT_BTVN_LINES, type CauHinh } from '../../../lib/tailieu'
+import { useEffect, useMemo, useState } from 'react'
+import { addBuoi, listBuoiTaiLieu, listTaiLieu, updatePhan, updateTaiLieu, fetchCausCuaTaiLieu, copyBuoiBdm, DEFAULT_BTVN_LINES, anhPhaiCua, type CauHinh, type TaiLieu } from '../../../lib/tailieu'
+import { listLop, type Lop } from '../../../lib/nhansu'
 import {
   noiDung, datBuoi, datCau, goiY, datCoPhan, xoaBuoi, cauCuaBuoi, loiDoc, SO_LUYEN_MAC_DINH, SO_BTVN_MAC_DINH,
   type NoiDung, type NdBuoi, type NdNhom, type ChonBuoi,
 } from '../../../lib/tailieuBdm'
 import { LOAI_CAU, type CauHoi } from '../../../lib/kho/api'
 import type { CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
-import { MathText, inp } from '../../kho/ui'
+import { MathText, Shell, Field, inp } from '../../kho/ui'
 import { AnhMmEditCtx } from '../anhMmCtx'
 import { ColSel, MaCau, AnhXem, AnhMmCtl, CheDoHinhBtn, ApplyLinesAll, MAU_PRESET } from '../TaiLieuBuilder'
 import BoChonNhom from './BoChonNhom'
@@ -20,6 +21,7 @@ import ChonCauBdm from './ChonCauBdm'
 import PrintView from '../PrintView'
 import GanLopBdm from './GanLopBdm'
 import { useStore } from '../../../store/useStore'
+import { bdmCuaMon } from '../../../lib/kho/banDoMoi'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 const filterKey = (id: string) => `tlb_buoi_${id}`   // buổi đang soạn — tiện ích riêng mỗi máy (như builder cũ)
@@ -28,7 +30,9 @@ const chonCuaBuoi = (b: NdBuoi): ChonBuoi => b.nhom.map((n) => ({ nhom: n.id, da
 // Phần đang mở popup chọn câu
 type MoChonCau = { buoi: NdBuoi; nhom: NdNhom; phanId: string; caus: string[]; uuTien: string | null }
 
-export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: () => void }) {
+// laChuyenDe (Thùy 21/10): tài liệu CHUYÊN ĐỀ — cùng builder, KHÔNG đi với lớp (ẩn Gán lớp), đơn vị gọi là "Phần" thay "Buổi".
+export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { id: string; onClose: () => void; laChuyenDe?: boolean }) {
+  const NHAN = laChuyenDe ? 'Phần' : 'Buổi', nhan = NHAN.toLowerCase()
   const [nd, setNd] = useState<NoiDung | null>(null)
   const [cauMap, setCauMap] = useState<Map<string, CauHoi>>(new Map())
   const [ten, setTen] = useState('')
@@ -43,10 +47,14 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
   const [inAll, setInAll] = useState(false)                 // 🖨 Xem / Xuất PDF cả giáo trình
   const [xemBuoi, setXemBuoi] = useState<string | null>(null) // 👁 Xem nhanh bản in 1 buổi
   const [ganLop, setGanLop] = useState(false)                  // ⬇ Gán lớp (trích buổi → tài liệu của lớp)
+  const [copyBuoi, setCopyBuoi] = useState(false)              // 📥 Copy buổi từ giáo trình lớp khác (Thùy 28/10)
+  const [tlLopId, setTlLopId] = useState<string | null>(null)  // lop_id của giáo trình (RPC noi_dung chưa trả; fetch riêng)
   const markSaved = () => setSaved(true)
   useEffect(() => { if (!saved) return; const t = setTimeout(() => setSaved(false), 2000); return () => clearTimeout(t) }, [saved])
 
   const tl = nd ? { mon: nd.tai_lieu.mon, nhanh: nd.tai_lieu.nhanh, cau_hinh: ch } : null
+  const monBdm = bdmCuaMon(nd?.tai_lieu.mon)   // registry môn (Toán · KHTN)
+  const nhanhBdm = nd?.tai_lieu.nhanh === 'hinh_gt' ? 'hgt' : monBdm?.nhanhTl ?? 'toan'   // nhánh bản đồ mới của tài liệu (chuyên đề HGT)
   const chiXem = !!nd?.tai_lieu.luu_tru_tu   // bản lưu trữ: chỉ xem (DB cũng chặn ghi)
 
   // Nạp nội dung câu còn thiếu (theo mã) — chỉ đọc, không tính gì.
@@ -63,7 +71,7 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
   }
   async function chonBuoiLoc(v: string) {
     setFilterBuoi(v)
-    try { localStorage.setItem(filterKey(id), v) } catch { /* private mode */ }
+    if (!laChuyenDe) try { localStorage.setItem(filterKey(id), v) } catch { /* private mode */ }
     await tai(v)
   }
   useEffect(() => {
@@ -71,9 +79,14 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
       try {
         const list = await listBuoiTaiLieu(id)
         setBuoiList(list)
+        // RPC fn_tl_bdm_noi_dung chưa trả lop_id (mig 202610172312) — fetch riêng, nhẹ.
+        const { supabase } = await import('../../../lib/supabase')
+        const { data: tlRow } = await supabase.from('tai_lieu').select('lop_id').eq('id', id).single()
+        setTlLopId(((tlRow as any)?.lop_id as string | null) ?? null)
         let nho: string | null = null
-        try { nho = localStorage.getItem(filterKey(id)) } catch { /* ignore */ }
-        const dau = nho && (nho === 'all' || list.some((b) => b.id === nho)) ? nho : (list.length ? list[list.length - 1].id : 'all')
+        // Chuyên đề luôn mở "Tất cả" (Thùy 21/10: nhớ lọc 1 phần ⇒ tưởng thiếu câu); giáo trình nhớ buổi đang soạn như cũ.
+        if (!laChuyenDe) try { nho = localStorage.getItem(filterKey(id)) } catch { /* ignore */ }
+        const dau = laChuyenDe ? 'all' : nho && (nho === 'all' || list.some((b) => b.id === nho)) ? nho : (list.length ? list[list.length - 1].id : 'all')
         setFilterBuoi(dau)
         await tai(dau)
       } catch (e) { setErr(loiDoc(e)) }
@@ -129,13 +142,13 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
   }
   async function themBuoi() {
     await lam(async () => {
-      await addBuoi(id)
+      await addBuoi(id, NHAN)
       const list = await listBuoiTaiLieu(id); setBuoiList(list)
       await chonBuoiLoc(list.length ? list[list.length - 1].id : 'all'); markSaved()
     })
   }
   async function boBuoi(b: NdBuoi) {
-    if (!confirm(`Xoá "${b.tieu_de ?? 'buổi'}" (gồm mọi nhóm, dạng bài, BTVN và câu đã chọn của buổi)?`)) return
+    if (!confirm(`Xoá "${b.tieu_de ?? nhan}" (gồm mọi nhóm, dạng bài, BTVN và câu đã chọn của ${nhan})?`)) return
     await lam(async () => {
       await xoaBuoi(b.id)
       const list = await listBuoiTaiLieu(id); setBuoiList(list)
@@ -161,25 +174,32 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
   if (!nd || !tl) return <div className="p-8 text-sm text-slate-400">Đang tải…</div>
 
   return (
-    <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: onAnhMm, baChe: false }}>
+    <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: onAnhMm, baChe: false, phai: anhPhaiCua(ch, nd.tai_lieu.nhanh), setPhai: (m, v) => saveCh({ anhPhaiByCau: { ...(ch.anhPhaiByCau ?? {}), [m]: v } }) }}>
       <div className="flex h-full flex-col bg-[#fafafb]">
         <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5">
           {/* Như builder cũ: điểm "xong 1 lượt sửa" DUY NHẤT là lúc đóng ⇒ xếp hàng làm link PDF ở đây (không mỗi lần tự lưu). */}
           <button onClick={() => { if (!chiXem) useStore.getState().enqueueLinkGen(id, 'giao_trinh'); onClose() }} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Thư viện</button>
-          <input value={ten} disabled={chiXem} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className={`${inp} h-9 max-w-[420px] flex-1 font-semibold`} placeholder="Tên giáo trình" />
-          <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700" title="Giáo trình theo bản đồ kiến thức mới (nhóm bài · dạng bài)">🆕 Bản đồ mới</span>
+          <input value={ten} disabled={chiXem} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className={`${inp} h-9 max-w-[420px] flex-1 font-semibold`} placeholder={laChuyenDe ? 'Tên chuyên đề' : 'Tên giáo trình'} />
+          <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700" title="Theo bản đồ kiến thức mới (nhóm bài · dạng bài)">🆕 {laChuyenDe ? 'Chuyên đề · ' : ''}Bản đồ mới</span>
           {chiXem && <span className="rounded bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-700">Bản lưu trữ · chỉ xem</span>}
           <span className="text-[12px] text-slate-400">Khối {nd.tai_lieu.khoi}</span>
           <label className="flex items-center gap-1.5 text-[12px] text-slate-500">
-            Buổi
+            {NHAN}
             <select value={filterBuoi} onChange={(e) => lam(() => chonBuoiLoc(e.target.value))} className={sel}>
               <option value="all">Tất cả ({buoiList.length})</option>
-              {buoiList.map((b) => <option key={b.id} value={b.id}>{b.tieu_de || `Buổi ${b.thu_tu + 1}`}</option>)}
+              {buoiList.map((b) => <option key={b.id} value={b.id}>{b.tieu_de || `${NHAN} ${b.thu_tu + 1}`}</option>)}
             </select>
           </label>
           <span className={`rounded-md px-2 py-0.5 text-[11px] font-medium transition ${saved ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'}`}>{saved ? '✓ Đã lưu' : '↻ Tự động lưu'}</span>
-          {!chiXem && <button onClick={() => setGanLop(true)} className="ml-auto whitespace-nowrap rounded-md border border-violet-300 px-3 py-1.5 text-sm font-medium text-violet-700 hover:bg-violet-50" title="Gán giáo trình cho 1 lớp → mỗi buổi thành giáo trình buổi + BTVN bám ngày học">⬇ Gán lớp</button>}
-          <button onClick={() => setInAll(true)} className={`${chiXem ? 'ml-auto ' : ''}whitespace-nowrap rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500`}>🖨 Xem / Xuất PDF</button>
+          {!chiXem && !laChuyenDe && <button onClick={() => setGanLop(true)} className="ml-auto whitespace-nowrap rounded-md border border-violet-300 px-3 py-1.5 text-sm font-medium text-violet-700 hover:bg-violet-50" title="Gán giáo trình cho 1 lớp → mỗi buổi thành giáo trình buổi + BTVN bám ngày học">⬇ Gán lớp</button>}
+          {/* Lý thuyết TOÀN FILE (Thùy 21/10) — cùng cài `inLyThuyet` của builder cũ, PrintView đã đọc. Tắt ⇒ không in lý thuyết nào;
+              bật ⇒ theo ô "Lý thuyết" của từng nhóm / dạng bài như cũ. */}
+          <label className={`${chiXem || laChuyenDe ? 'ml-auto ' : ''}flex items-center gap-1.5 text-[12px] text-slate-500`} title="Tắt = in cả file KHÔNG kèm lý thuyết (ô Lý thuyết từng nhóm / dạng bài giữ nguyên, bật lại là theo từng ô)">Lý thuyết
+            <select value={ch.inLyThuyet === false ? 'khong' : 'co'} disabled={chiXem} onChange={(e) => saveCh({ inLyThuyet: e.target.value === 'co' })} className={sel}>
+              <option value="co">Theo từng nhóm / dạng</option><option value="khong">Không in cả file</option>
+            </select>
+          </label>
+          <button onClick={() => setInAll(true)} className={`whitespace-nowrap rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500`}>🖨 Xem / Xuất PDF</button>
           {!chiXem && (
             <label className="flex items-center gap-1.5 text-[12px] text-slate-500">Màu
               <span className="flex gap-1">{MAU_PRESET.map(([c, n]) => (
@@ -197,11 +217,11 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
 
         <div className="grid min-h-0 flex-1 grid-cols-[270px_1fr] overflow-hidden">
           <aside className="min-h-0 overflow-auto border-r border-slate-200 bg-white p-3">
-            <CayTrai nd={nd} ten={ten} onJump={jump} />
+            <CayTrai nd={nd} ten={ten} nhan={nhan} onJump={jump} />
           </aside>
           <div className="min-h-0 overflow-auto p-5">
             <div className="mx-auto max-w-[900px] space-y-4">
-              {nd.buoi.length === 0 && <div className="rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-[13px] text-slate-400">Chưa có buổi nào. Bấm “+ Thêm buổi” để bắt đầu.</div>}
+              {nd.buoi.length === 0 && <div className="rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-[13px] text-slate-400">Chưa có {nhan} nào. Bấm “+ Thêm {nhan}” để bắt đầu.</div>}
               {nd.buoi.map((b) => (
                 <div key={b.id} className="rounded-xl border border-slate-200 bg-white">
                   <div id={`p-${b.id}`} className="scroll-mt-3 flex items-center gap-2 rounded-t-xl border-b border-slate-100 bg-indigo-50/50 px-4 py-2.5">
@@ -209,14 +229,14 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
                     <input defaultValue={b.tieu_de ?? ''} disabled={chiXem} onBlur={(e) => { const v = e.target.value.trim(); if (v && v !== b.tieu_de) doiTenBuoi(b, v) }}
                       className="w-[220px] rounded-md border border-transparent bg-transparent px-1.5 py-1 text-[15px] font-bold text-indigo-800 outline-none hover:border-slate-200 focus:border-indigo-400 focus:bg-white" />
                     <span className="text-[12px] text-slate-400">{b.nhom.length} nhóm · {b.nhom.reduce((s, n) => s + n.dang_bai.length, 0)} dạng bài</span>
-                    <button onClick={() => setXemBuoi(b.id)} title="Xem nhanh bản in CHỈ buổi này" className="ml-auto shrink-0 whitespace-nowrap rounded-md border border-indigo-200 bg-white px-2.5 py-1 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">👁 Xem buổi</button>
+                    <button onClick={() => setXemBuoi(b.id)} title={`Xem nhanh bản in CHỈ ${nhan} này`} className="ml-auto shrink-0 whitespace-nowrap rounded-md border border-indigo-200 bg-white px-2.5 py-1 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">👁 Xem {nhan}</button>
                     {!chiXem && <button onClick={() => setBoChon(b)} className="shrink-0 whitespace-nowrap rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">+ Chọn nhóm / dạng bài</button>}
-                    {!chiXem && <button onClick={() => boBuoi(b)} title="Xoá buổi" className="rounded border border-slate-200 px-1.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">✕</button>}
+                    {!chiXem && <button onClick={() => boBuoi(b)} title={`Xoá ${nhan}`} className="rounded border border-slate-200 px-1.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">✕</button>}
                   </div>
                   <div className="space-y-4 p-4">
                     {b.nhom.length === 0 && <div className="text-[12px] italic text-slate-400">Chưa có nhóm — bấm “+ Chọn nhóm / dạng bài”.</div>}
                     {b.nhom.map((n, i) => (
-                      <NhomCard key={n.phan_id} n={n} chiXem={chiXem} cauMap={cauMap} cfg={cauHinhCau}
+                      <NhomCard key={n.phan_id} n={n} chiXem={chiXem} cauMap={cauMap} cfg={cauHinhCau} laChuyenDe={laChuyenDe}
                         canUp={i > 0} canDown={i < b.nhom.length - 1}
                         onMove={(dir) => { const c = chonCuaBuoi(b); const j = i + dir; [c[i], c[j]] = [c[j], c[i]]; datChon(b, c) }}
                         onBoNhom={() => datChon(b, chonCuaBuoi(b).filter((x) => x.nhom !== n.id))}
@@ -233,17 +253,25 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
                   </div>
                 </div>
               ))}
-              {!chiXem && <button onClick={themBuoi} className="w-full rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 py-3 text-[14px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm buổi</button>}
+              {!chiXem && (
+                <div className="flex gap-2">
+                  <button onClick={themBuoi} className="flex-1 rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 py-3 text-[14px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm {nhan}</button>
+                  {!laChuyenDe && tlLopId && (
+                    <button onClick={() => setCopyBuoi(true)} className="rounded-xl border-2 border-dashed border-violet-300 bg-violet-50/40 px-4 py-3 text-[14px] font-medium text-violet-700 transition hover:bg-violet-50" title={`Copy ${nhan.toLowerCase()} từ giáo trình lớp khác (cùng khối ${nd.tai_lieu.khoi}) — chép độc lập, sau này sửa riêng không ảnh hưởng`}>📥 Lấy {nhan.toLowerCase()} từ lớp khác</button>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
 
         {boChon && (
-          <BoChonNhom khoi={nd.tai_lieu.khoi} daChon={chonCuaBuoi(boChon)} onClose={() => setBoChon(null)}
+          <BoChonNhom khoi={nd.tai_lieu.khoi} nhanh={nhanhBdm} daChon={chonCuaBuoi(boChon)} onClose={() => setBoChon(null)}
             onConfirm={async (c) => { vaBuoi(await datBuoi(id, boChon.id, c)); setBoChon(null) }} />
         )}
         {chonCau && (
-          <ChonCauBdm tl={tl} nhomId={chonCau.nhom.id} uuTien={chonCau.uuTien} selected={chonCau.caus}
+          <ChonCauBdm tl={tl} nhomId={chonCau.nhom.id} uuTien={chonCau.uuTien} selected={chonCau.caus} coKhoLop={monBdm?.khoLop ?? false}
+            macDinh={chonCau.nhom.btvn?.phan_id === chonCau.phanId ? 'luyen' : 'lop'}
             khoa={cauCuaBuoi(chonCau.buoi).filter((m) => !chonCau.caus.includes(m))}
             onClose={() => setChonCau(null)}
             onConfirm={async (ms) => { await datCau(chonCau.phanId, ms); vaCau(chonCau.phanId, ms); setChonCau(null) }} />
@@ -251,21 +279,33 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
         {inAll && <PrintView id={id} onClose={() => setInAll(false)} />}
         {xemBuoi && <PrintView id={id} onlyBuoiId={xemBuoi} onClose={() => setXemBuoi(null)} />}
         {ganLop && <GanLopBdm masterId={id} khoi={nd.tai_lieu.khoi} tl={tl} onClose={() => setGanLop(false)} />}
+        {copyBuoi && (
+          <CopyBuoiModal tlId={id} tlLopId={tlLopId} khoi={nd.tai_lieu.khoi} mon={nd.tai_lieu.mon} nhanh={nd.tai_lieu.nhanh}
+            onClose={() => setCopyBuoi(false)}
+            onDone={async (r) => {
+              setCopyBuoi(false); setBao(null)
+              await lam(async () => {
+                const list = await listBuoiTaiLieu(id); setBuoiList(list)
+                await chonBuoiLoc(r.buoiMoiId); markSaved()
+              })
+            }} />
+        )}
       </div>
     </AnhMmEditCtx.Provider>
   )
 }
 
 // ── Cấu hình in theo câu (dùng lại control của builder cũ, khoá theo mã câu) ──
-type CfgCau = {
+export type CfgCau = {
   lines: Record<string, number>; cols: Record<string, number>; cheDo: Record<string, CheDoHinh>
   onLine: (m: string, n: number) => void; onLineAll: (ms: string[], n: number) => void
   onCol: (m: string, n: number) => void; onCheDo: (m: string, v: CheDoHinh) => void
 }
 
 // ── 1 NHÓM trong buổi: LT nhóm → dạng bài (LT · ví dụ · bài luyện) → chưa phân → BTVN nhóm ──
-function NhomCard({ n, chiXem, cauMap, cfg, canUp, canDown, onMove, onBoNhom, onDoiDangBai, onCo, onXoaCau, onGoiY, onChonCau }: {
-  n: NdNhom; chiXem: boolean; cauMap: Map<string, CauHoi>; cfg: CfgCau; canUp: boolean; canDown: boolean
+// Chuyên đề (Thùy 21/10): không phải giáo trình — KHÔNG có trên lớp / về nhà ⇒ ẩn khối BTVN, câu gọi chung "Bài tập".
+function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, canUp, canDown, onMove, onBoNhom, onDoiDangBai, onCo, onXoaCau, onGoiY, onChonCau }: {
+  n: NdNhom; chiXem: boolean; cauMap: Map<string, CauHoi>; cfg: CfgCau; laChuyenDe?: boolean; canUp: boolean; canDown: boolean
   onMove: (dir: -1 | 1) => void; onBoNhom: () => void; onDoiDangBai: (ds: string[]) => void
   onCo: (phanId: string, patch: { hien_lt?: boolean; hien_vi_du?: boolean }) => void
   onXoaCau: (phanId: string, caus: string[], m: string) => void
@@ -275,6 +315,7 @@ function NhomCard({ n, chiXem, cauMap, cfg, canUp, canDown, onMove, onBoNhom, on
   const ids = n.dang_bai.map((d) => d.id)
   const doiCho = (i: number, j: number) => { const x = [...ids]; [x[i], x[j]] = [x[j], x[i]]; onDoiDangBai(x) }
   const coLt = !!(n.ly_thuyet?.trim() || n.ly_thuyet_file_url)
+  const BAI = laChuyenDe ? '📘 Bài tập' : '📘 Bài luyện'
   return (
     <div id={`p-${n.phan_id}`} className="scroll-mt-3 overflow-hidden rounded-xl border border-indigo-200">
       <div className="flex items-center gap-2 bg-indigo-600 px-3 py-2 text-white">
@@ -316,7 +357,7 @@ function NhomCard({ n, chiXem, cauMap, cfg, canUp, canDown, onMove, onBoNhom, on
                   {!chiXem && <button onClick={() => onDoiDangBai(ids.filter((x) => x !== d.id))} title="Bỏ dạng bài khỏi buổi" className="text-[12px] text-slate-400 hover:text-rose-600">✕</button>}
                 </span>
               </div>
-              <KhoiCau tieuDe="📘 Bài luyện" mau="sky" caus={d.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem} soMacDinh={SO_LUYEN_MAC_DINH}
+              <KhoiCau tieuDe={BAI} mau="sky" caus={d.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem} soMacDinh={SO_LUYEN_MAC_DINH}
                 onXoa={(m) => onXoaCau(d.phan_id, d.caus, m)}
                 onGoiY={(so) => onGoiY(d.phan_id, [d.id], so, d.caus)}
                 onChonCau={() => onChonCau(d.phan_id, d.caus, d.id)} />
@@ -325,14 +366,14 @@ function NhomCard({ n, chiXem, cauMap, cfg, canUp, canDown, onMove, onBoNhom, on
         })}
         {n.chua_phan && (
           <div className="rounded-lg border border-slate-200">
-            <KhoiCau tieuDe={n.dang_bai.length ? '📘 Bài luyện · câu chưa phân dạng bài' : '📘 Bài luyện (nhóm chưa chia dạng bài)'} mau="sky" caus={n.chua_phan.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem}
+            <KhoiCau tieuDe={n.dang_bai.length ? `${BAI} · câu chưa phân dạng bài` : `${BAI} (nhóm chưa chia dạng bài)`} mau="sky" caus={n.chua_phan.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem}
               soMacDinh={n.dang_bai.length ? undefined : { trac_nghiem: 3, tra_loi_ngan: 2, tu_luan: 1 }}
               onXoa={(m) => onXoaCau(n.chua_phan!.phan_id, n.chua_phan!.caus, m)}
               onGoiY={n.dang_bai.length ? undefined : (so) => onGoiY(n.chua_phan!.phan_id, null, so, n.chua_phan!.caus)}
               onChonCau={() => onChonCau(n.chua_phan!.phan_id, n.chua_phan!.caus, null)} />
           </div>
         )}
-        {n.btvn && (
+        {n.btvn && !laChuyenDe && (
           <div className="rounded-lg border border-orange-200 bg-orange-50/30">
             <KhoiCau tieuDe="📝 BTVN của nhóm" mau="orange" btvn caus={n.btvn.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem} soMacDinh={SO_BTVN_MAC_DINH}
               onXoa={(m) => onXoaCau(n.btvn!.phan_id, n.btvn!.caus, m)}
@@ -346,8 +387,10 @@ function NhomCard({ n, chiXem, cauMap, cfg, canUp, canDown, onMove, onBoNhom, on
 }
 
 // ── 1 khối câu (bài luyện / BTVN / chưa khớp): số lượng theo loại + Gợi ý + Chọn câu + danh sách câu ──
-function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, soMacDinh, onXoa, onGoiY, onChonCau }: {
+export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soMacDinh, onXoa, onGoiY, onChonCau }: {
   tieuDe: string; mau: 'sky' | 'orange' | 'amber'; caus: string[]; cauMap: Map<string, CauHoi>; cfg: CfgCau; chiXem: boolean; btvn?: boolean
+  /** true = chỉ số lượng + Gợi ý + Chọn câu + ✕ (không cột/chế độ hình/mm ảnh — nơi dùng không lưu cấu hình in theo câu). */
+  gon?: boolean
   soMacDinh?: Record<string, number>
   onXoa: (m: string) => void; onGoiY?: (so: Record<string, number>) => void; onChonCau?: () => void
 }) {
@@ -385,9 +428,9 @@ function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, soMacDinh, onXo
                             <input type="number" min={0} max={50} value={cfg.lines[m] ?? DEFAULT_BTVN_LINES} onChange={(e) => cfg.onLine(m, Math.max(0, Math.min(50, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
                           </label>
                         )}
-                        <ColSel value={cfg.cols[m] ?? 1} onChange={(n) => cfg.onCol(m, n)} />
-                        {c?.anh_de && <CheDoHinhBtn cur={cfg.cheDo[m] ?? 'hien'} onChange={(v) => cfg.onCheDo(m, v)} />}
-                        {c?.anh_de && <AnhMmCtl ma={m} url={c.anh_de} />}
+                        {!gon && <ColSel value={cfg.cols[m] ?? 1} onChange={(n) => cfg.onCol(m, n)} />}
+                        {!gon && c?.anh_de && <CheDoHinhBtn cur={cfg.cheDo[m] ?? 'hien'} onChange={(v) => cfg.onCheDo(m, v)} />}
+                        {!gon && c?.anh_de && <AnhMmCtl ma={m} url={c.anh_de} />}
                         <button onClick={() => onXoa(m)} className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
                       </span>
                     )}
@@ -404,12 +447,12 @@ function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, soMacDinh, onXo
 }
 
 // Cây trái: Buổi → Nhóm → Dạng bài (số câu luyện). Bấm = nhảy tới thẻ.
-function CayTrai({ nd, ten, onJump }: { nd: NoiDung; ten: string; onJump: (pid: string) => void }) {
+function CayTrai({ nd, ten, nhan, onJump }: { nd: NoiDung; ten: string; nhan: string; onJump: (pid: string) => void }) {
   const item = 'block w-full truncate rounded px-2 py-1 text-left text-[13px] hover:bg-slate-100'
   return (
     <div>
       <div className="mb-2 truncate px-1 text-[13px] font-bold text-slate-700">📄 {ten || 'Giáo trình'}</div>
-      {nd.buoi.length === 0 && <div className="px-2 py-3 text-[12px] italic text-slate-400">Chưa có buổi.</div>}
+      {nd.buoi.length === 0 && <div className="px-2 py-3 text-[12px] italic text-slate-400">Chưa có {nhan}.</div>}
       {nd.buoi.map((b) => (
         <div key={b.id} className="mb-1">
           <button onClick={() => onJump(b.id)} className={`${item} font-semibold text-indigo-700`}>🗓️ {b.tieu_de}</button>
@@ -430,5 +473,88 @@ function CayTrai({ nd, ten, onJump }: { nd: NoiDung; ten: string; onJump: (pid: 
         </div>
       ))}
     </div>
+  )
+}
+
+// ⭐ Thùy 28/10: Copy 1 buổi từ giáo trình LỚP KHÁC (cùng khối + môn + nhánh) sang giáo trình đang mở.
+// Flow: chọn lớp → chọn giáo trình của lớp đó → chọn 1 buổi → "📥 Copy vào cuối". Chép ĐỘC LẬP (câu + cấu hình).
+function CopyBuoiModal({ tlId, tlLopId, khoi, mon, nhanh, onClose, onDone }: {
+  tlId: string; tlLopId: string | null; khoi: string; mon: string; nhanh: string | null
+  onClose: () => void; onDone: (r: { buoiMoiId: string; soPhan: number; soCau: number }) => void
+}) {
+  const [lops, setLops] = useState<Lop[]>([])
+  const [lopId, setLopId] = useState<string | null>(null)
+  const [gts, setGts] = useState<TaiLieu[]>([])
+  const [gtId, setGtId] = useState<string | null>(null)
+  const [buois, setBuois] = useState<{ id: string; tieu_de: string | null; thu_tu: number }[]>([])
+  const [buoiId, setBuoiId] = useState<string | null>(null)
+  const [tenMoi, setTenMoi] = useState('')
+  const [busy, setBusy] = useState(false)
+  const [err, setErr] = useState<string | null>(null)
+  // Lớp cùng khối+môn, loại chính lớp của GT đang mở (không copy từ chính mình).
+  useEffect(() => {
+    listLop(khoi).then((ls) => setLops(ls.filter((l) => l.mon === mon && l.id !== tlLopId && l.trang_thai === 'dang_hoc').sort((a, b) => a.ten_lop.localeCompare(b.ten_lop))))
+      .catch((e) => setErr(e.message ?? String(e)))
+  }, [khoi, mon, tlLopId])
+  // Giáo trình của lớp đã chọn (bản đồ mới, cùng nhánh, không phải phase 0).
+  useEffect(() => {
+    if (!lopId) { setGts([]); setGtId(null); return }
+    listTaiLieu(khoi, 'giao_trinh', mon, nhanh ?? undefined, { banDo: 'moi', limit: 100 })
+      .then((all) => setGts(all.filter((t) => t.lop_id === lopId)))
+      .catch((e) => setErr(e.message ?? String(e)))
+  }, [lopId, khoi, mon, nhanh])
+  // Buổi của GT đã chọn
+  useEffect(() => {
+    if (!gtId) { setBuois([]); setBuoiId(null); return }
+    listBuoiTaiLieu(gtId).then(setBuois).catch((e) => setErr(e.message ?? String(e)))
+  }, [gtId])
+  const buoiChon = useMemo(() => buois.find((b) => b.id === buoiId) ?? null, [buois, buoiId])
+  async function copy() {
+    if (!buoiId) return
+    setBusy(true); setErr(null)
+    try {
+      const r = await copyBuoiBdm(buoiId, tlId, tenMoi.trim() || null)
+      onDone(r)
+    } catch (e: any) { setErr(e.message ?? String(e)); setBusy(false) }
+  }
+  return (
+    <Shell title={`📥 Lấy buổi từ giáo trình lớp khác · Khối ${khoi}`} onClose={onClose}>
+      <Field label="1. Lớp nguồn">
+        {lops.length === 0 ? <div className="text-[12px] italic text-slate-400">Không có lớp khác đang học cùng khối {khoi}.</div>
+          : <select value={lopId ?? ''} onChange={(e) => setLopId(e.target.value || null)} className={inp}>
+            <option value="">— Chọn lớp —</option>
+            {lops.map((l) => <option key={l.id} value={l.id}>{l.ten_lop}{l.bac ? ` · bậc ${l.bac}` : ''}</option>)}
+          </select>}
+      </Field>
+      {lopId && (
+        <Field label="2. Giáo trình của lớp">
+          {gts.length === 0 ? <div className="text-[12px] italic text-slate-400">Lớp này chưa có giáo trình bản đồ mới (cùng nhánh).</div>
+            : <select value={gtId ?? ''} onChange={(e) => setGtId(e.target.value || null)} className={inp}>
+              <option value="">— Chọn giáo trình —</option>
+              {gts.map((t) => <option key={t.id} value={t.id}>{t.ten}</option>)}
+            </select>}
+        </Field>
+      )}
+      {gtId && (
+        <Field label="3. Buổi để copy">
+          {buois.length === 0 ? <div className="text-[12px] italic text-slate-400">Giáo trình này chưa có buổi nào.</div>
+            : <select value={buoiId ?? ''} onChange={(e) => setBuoiId(e.target.value || null)} className={inp}>
+              <option value="">— Chọn buổi —</option>
+              {buois.map((b) => <option key={b.id} value={b.id}>{b.tieu_de || `Buổi ${b.thu_tu + 1}`}</option>)}
+            </select>}
+        </Field>
+      )}
+      {buoiChon && (
+        <Field label="4. Tên buổi mới (bỏ trống = giữ nguyên)">
+          <input value={tenMoi} onChange={(e) => setTenMoi(e.target.value)} placeholder={buoiChon.tieu_de || `Buổi ${buoiChon.thu_tu + 1}`} className={inp} />
+        </Field>
+      )}
+      {err && <p className="mb-2 text-xs text-rose-600">{err}</p>}
+      <div className="mb-3 text-[11px] text-slate-400">Chép <b>ĐỘC LẬP</b>: toàn bộ nhóm/dạng bài/BTVN/câu + cấu hình in của câu. Sau khi copy, 2 lớp sửa riêng không ảnh hưởng nhau.</div>
+      <div className="flex justify-end gap-2">
+        <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
+        <button onClick={copy} disabled={!buoiId || busy} className="rounded-md bg-violet-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-violet-500 disabled:opacity-40">{busy ? 'Đang copy…' : '📥 Copy vào cuối'}</button>
+      </div>
+    </Shell>
   )
 }
