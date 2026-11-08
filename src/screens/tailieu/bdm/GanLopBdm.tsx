@@ -3,19 +3,34 @@
 // chưa gán) ⇒ tạo giáo trình buổi; BTVN + ôn tập làm ở bước riêng (BtvnOnTapBdm), xem trước rồi mới tạo.
 // Số buổi in trên phiếu = số CỦA LỚP (renumberBuoiLop dùng chung). Trạng thái "đã gán / đã có BTVN" suy từ tài liệu.
 import { useEffect, useState } from 'react'
-import { listBuoiTaiLieu, listTrichXuat, listGiaoTrinhLop, renumberBuoiLop, tieuDeBuoiLop, type TrichState, type BuoiLop, type TaiLieuNhanhCtx } from '../../../lib/tailieu'
+import { listBuoiTaiLieu, listTrichXuat, listGiaoTrinhLop, renumberBuoiLop, tieuDeBuoiLop, DEFAULT_BTVN_LINES, type TrichState, type BuoiLop, type TaiLieuNhanhCtx } from '../../../lib/tailieu'
 import { trichBuoiBdm, loiDoc } from '../../../lib/tailieuBdm'
 import { listLop, type Lop } from '../../../lib/nhansu'
 import { ngayBuoiHopLeCuaLop } from '../../../lib/gami'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../../lib/tuan'
 import SearchSelect from '../../../components/SearchSelect'
 import BuoiNgaySelect from '../../../components/BuoiNgaySelect'
-import { useStore } from '../../../store/useStore'
+import { useStore, type PickItem } from '../../../store/useStore'
+import { cdhNoiDung } from '../../../lib/chuyenDeHinh'
+import { ensureHinhGtBuoiForBuoi, saveBuoiSelectionPhan, type CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 import BtvnOnTapBdm from './BtvnOnTapBdm'
 
 type BuoiGoc = { id: string; tieu_de: string | null; thu_tu: number }
 
 // hinh = giáo trình Hình (Học + Luyện): BTVN = BTVN các bài học của buổi, tạo thẳng (ôn tập chưa có cho Hình — mig 202610271757).
+// BTVN phần LUYỆN (Thùy 08/11): Chấm BTVN chấm bài Hình theo buổi Hình (lớp,ngày) phan 'nha' (loadHinhForBuoiPhase 'btvn') — ghi bài
+//   kho vào đó (kind 'bai', mỗi ý 1 ô), dòng kẻ / chế độ hình theo cấu hình giáo trình gốc. Không có bài ⇒ không đụng (không xoá oan).
+async function ganChamBtvnLuyen(masterId: string, buoiId: string, lopId: string, ngay: string): Promise<void> {
+  const nd = await cdhNoiDung(masterId, buoiId)
+  const ch = (nd.tai_lieu?.cau_hinh ?? {}) as { btvnLinesByCau?: Record<string, number>; hinhCheDoByCau?: Record<string, CheDoHinh> }
+  const picks: PickItem[] = (nd.buoi[0]?.btvn_luyen ?? []).flatMap((v) => v.bai.filter((x) => x.id)
+    .map((x): PickItem => ({ key: x.ma_bai, phan: 'nha', kind: 'bai', baiId: x.id!, moHinhId: v.mo_hinh_id, nodeIds: [] })))
+  if (!picks.length) return
+  const cheDo: Record<string, CheDoHinh> = {}, soDong: Record<string, number> = {}
+  for (const p of picks) { cheDo[p.key] = ch.hinhCheDoByCau?.[p.key] ?? 'hien'; soDong[p.key] = ch.btvnLinesByCau?.[p.key] ?? DEFAULT_BTVN_LINES }
+  await saveBuoiSelectionPhan(await ensureHinhGtBuoiForBuoi(lopId, ngay), 'nha', { picks, cheDo, soDong })
+}
+
 export default function GanLopBdm({ masterId, khoi, tl, onClose, hinh = false }: { masterId: string; khoi: string; tl: TaiLieuNhanhCtx; onClose: () => void; hinh?: boolean }) {
   const [buois, setBuois] = useState<BuoiGoc[]>([])
   const [lops, setLops] = useState<Lop[]>([])
@@ -72,6 +87,7 @@ export default function GanLopBdm({ masterId, khoi, tl, onClose, hinh = false }:
       const st = sttLop(b.id), ten = b.tieu_de || `Buổi ${no}`
       const doc = await trichBuoiBdm(masterId, b.id, { lopId: lop.id, ngay, khoi, tenLop: lop.ten_lop, tenBuoi: st ? tieuDeBuoiLop(ten, st) : ten, loai: 'btvn' })
       useStore.getState().enqueueLinkGen(doc.id, doc.loai)
+      await ganChamBtvnLuyen(masterId, b.id, lop.id, ngay)
       for (const d of await renumberBuoiLop(lop.id)) useStore.getState().enqueueLinkGen(d.id, d.loai)
       await napLop(lop.id)
     } catch (e) { setLoi(loiDoc(e)) }

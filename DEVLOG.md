@@ -79353,3 +79353,11 @@ Thùy nêu 4 việc, làm được 3:
 - Popup ✎ Chọn bài (ChuyenDeHinhBuilder.ChonBai): thẻ = đúng thẻ "Bài trong kho" của ChonYTuCay — hình trái, đề + MỌI ý, ô tìm; vẫn chọn nhiều, số thứ tự chọn.
 - Thẻ bài trong builder (BaiLuyenXem): đủ đề + ý + hình (bỏ line-clamp 3); giáo trình có bộ điều khiển như KhoiCau: dòng (sau cả bài), CheDoHinhBtn, AnhMmCtl (+ hình phải/dưới). Khoá = mã gốc bài HLB (btvnLinesByCau/hinhCheDoByCau/anhMmByCau của tài liệu). Chuyên đề: chỉ xem.
 - In: BaiHinhIn nhận lines/cheDo, ảnh qua AnhDe (cỡ) + DeVaHinh (hình phải) — export DeVaHinh từ PrintView. Chuyên đề không truyền ⇒ như cũ. Kiểm 9S1 (chỉ xem): 2 bài in hình nửa phải.
+
+### 08/11 — Giáo trình Hình: BTVN cho phần LUYỆN (Thùy "lúc gán lớp xong in bài tập bị trắng trang" → chọn "Thêm BTVN cho Luyện")
+- Nguyên nhân trắng: BTVN 9S1 08/11 (buổi 36 chỉ có Luyện MH.129) — giáo trình Hình (mig 202610271757) chỉ có BTVN ở phần Học ⇒ tài liệu BTVN lớp chỉ có phần 'buoi', 0 câu ⇒ phiếu trắng.
+- Mig 202611081611 ĐÃ ÁP (--only): phần 'hl_btvn' (con buổi, ref_ma = id mô hình); fn_tl_hl_dat_btvn (tạo/thay/rỗng ⇒ gỡ, kiểm qua fn_tl_hl_dat_bai ⇒ không trùng bài trên lớp cùng buổi); bỏ mô hình ⇒ gỡ BTVN của nó; fn_tl_hl_noi_dung trả buoi[].btvn_luyen; gán lớp BTVN chép btvn + hl_btvn, buổi KHÔNG có gì về nhà ⇒ từ chối (khỏi đẻ phiếu trắng); _tl_hl_xep: hl_btvn sau btvn Học. Thử ROLLBACK 7/7.
+- Builder: dưới mỗi mô hình khối "📝 BTVN — về nhà" (✎ Chọn bài BTVN = popup chọn bài mới, khoá bài đã dùng trong buổi; ↑↓✕, Bỏ hết; dòng mặc định 5 như BTVN Học, chế độ hình, cỡ ảnh).
+- In: BtvnSheet nhận hlBtvn — card mỗi mô hình (mã · tên · pill BTVN), "Bài 1, 2…" sau câu BTVN của Học; quyển "Chỉ BTVN" và BTVN cuối buổi đều có.
+- Chấm: gán lớp BTVN xong ghi bài vào buổi Hình (lớp,ngày) phan 'nha' (kind 'bai', dòng/chế độ hình theo giáo trình gốc) ⇒ Chấm BTVN chấm từng ý (loadHinhForBuoiPhase 'btvn'). Không có bài ⇒ không đụng.
+- Kiểm app (chỉ xem): 9S1 thấy khối BTVN, popup 26 bài đủ ảnh, khoá HLB00960/HLB01014 (đang trên lớp). CHƯA bấm chọn/gán thật. BTVN 9S1 08/11 hiện có vẫn trắng tới khi chọn bài BTVN rồi bấm "+ BTVN" gán lại (thay tài liệu cũ).

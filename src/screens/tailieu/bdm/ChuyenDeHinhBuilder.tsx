@@ -4,9 +4,9 @@
 // ⭐ laGiaoTrinh (Thùy 27/10 — giáo trình Hình bản đồ mới, mig 202610271757): CÙNG builder, đơn vị "Buổi", mỗi buổi thêm phần HỌC
 // (bài học → lý thuyết + bài luyện + BTVN) trước phần LUYỆN (mô hình); có Gán lớp; in bằng PrintView chung (Học + Luyện).
 import { useEffect, useMemo, useState } from 'react'
-import { addBuoi, updatePhan, updateTaiLieu, anhPhaiCua, type CauHinh } from '../../../lib/tailieu'
+import { addBuoi, updatePhan, updateTaiLieu, anhPhaiCua, DEFAULT_BTVN_LINES, type CauHinh } from '../../../lib/tailieu'
 import { xoaBuoi, loiDoc, datCoPhan } from '../../../lib/tailieuBdm'
-import { cdhNoiDung, cdhDatMoHinh, cdhDatBai, cdhCayChon, hhCayChon, hhCau, hhCauLop, hhDatBai, hhDatCau, hhGoiY, type CdhNoiDung, type CdhPhan, type CdhMoHinh, type CdhBai, type CdhChonMoHinh, type CdhChonNhom, type CdhChonChuDe, type HhBai, type HhChonBai, type HhCauKho } from '../../../lib/chuyenDeHinh'
+import { cdhNoiDung, cdhDatMoHinh, cdhDatBai, cdhDatBtvn, cdhCayChon, hhCayChon, hhCau, hhCauLop, hhDatBai, hhDatCau, hhGoiY, type CdhNoiDung, type CdhPhan, type CdhMoHinh, type CdhBai, type CdhChonMoHinh, type CdhChonNhom, type CdhChonChuDe, type HhBai, type HhChonBai, type HhCauKho } from '../../../lib/chuyenDeHinh'
 import { khoCuaMoHinh, demKhoMoHinh, type ChuoiKho, type DemKho } from '../../../lib/kho/hinhCay'
 import { MathText, inp } from '../../kho/ui'
 import { MAU_PRESET, AnhMmCtl, AnhXem, CheDoHinhBtn } from '../TaiLieuBuilder'
@@ -30,6 +30,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
   const [saved, setSaved] = useState(false)
   const [chonMh, setChonMh] = useState<CdhPhan | null>(null)
   const [chonBai, setChonBai] = useState<{ phan: CdhPhan; mh: CdhMoHinh } | null>(null)
+  const [chonBtvn, setChonBtvn] = useState<{ phan: CdhPhan; mh: CdhMoHinh } | null>(null)   // chọn bài BTVN của 1 mô hình (giáo trình)
   const [inAll, setInAll] = useState(false)
   const [xemPhan, setXemPhan] = useState<string | null>(null)
   const [chonHoc, setChonHoc] = useState<CdhPhan | null>(null)                                    // + Bài học (giáo trình)
@@ -52,6 +53,14 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
     const moi = (await cdhNoiDung(id, p.id)).buoi[0]          // chỉ đọc lại ĐÚNG phần vừa sửa (bài mới cần nội dung)
     if (moi) vaPhan(moi)
   })
+  // BTVN Luyện (Thùy 08/11): ghi rồi đọc lại ĐÚNG buổi đó (bài mới cần nội dung)
+  const datBtvn = (p: CdhPhan, moHinhId: string, mas: string[]) => lam(async () => {
+    await cdhDatBtvn(id, p.id, moHinhId, mas)
+    const moi = (await cdhNoiDung(id, p.id)).buoi[0]
+    if (moi) vaPhan(moi)
+  })
+  // mọi bài Hình–Luyện đang dùng trong buổi (trên lớp + về nhà) — khoá ở popup chọn, DB cũng chặn
+  const baiCuaBuoi = (p: CdhPhan) => [...p.mo_hinh.flatMap((m) => m.bai.map((b) => b.ma_bai)), ...(p.btvn_luyen ?? []).flatMap((v) => v.bai.map((b) => b.ma_bai))]
   const doiChoMh = (p: CdhPhan, i: number, j: number) => { const ids = p.mo_hinh.map((m) => m.id!).filter(Boolean); if (j < 0 || j >= ids.length) return; [ids[i], ids[j]] = [ids[j], ids[i]]; datMoHinh(p, ids) }
   const doiChoBai = (p: CdhPhan, mh: CdhMoHinh, i: number, j: number) => { const ms = mh.bai.map((b) => b.ma_bai); if (j < 0 || j >= ms.length) return; [ms[i], ms[j]] = [ms[j], ms[i]]; datBai(p, mh, ms) }
   const themPhan = () => lam(async () => { await addBuoi(id, NHAN); setNd(await cdhNoiDung(id)); markSaved() })
@@ -195,6 +204,43 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
                           </li>
                         ))}
                       </ol>
+                      {laGiaoTrinh && m.id && (() => {
+                        // 📝 BTVN của mô hình (Thùy 08/11 — buổi chỉ có Luyện từng in phiếu BTVN trắng): bài kho về nhà, khung như khối BTVN của Học
+                        const bv = (p.btvn_luyen ?? []).find((x) => x.mo_hinh_id === m.id)
+                        const ds = bv?.bai ?? []
+                        const ms = ds.map((x) => x.ma_bai)
+                        const dich = (j: number, k: number) => { if (k < 0 || k >= ms.length) return; const a = [...ms]; [a[j], a[k]] = [a[k], a[j]]; datBtvn(p, m.id!, a) }
+                        return (
+                          <div className="border-t border-orange-100 bg-orange-50/40 p-3">
+                            <div className="flex flex-wrap items-center gap-2 text-[12px]">
+                              <span className="font-semibold text-orange-600">📝 BTVN — về nhà</span>
+                              <span className="text-slate-400">{ds.length} bài</span>
+                              <button onClick={() => setChonBtvn({ phan: p, mh: m })} className="rounded-md border border-slate-300 bg-white px-2.5 py-1 font-medium text-slate-600 hover:border-orange-400">✎ Chọn bài BTVN</button>
+                              {ds.length > 0 && <button onClick={() => { if (window.confirm(`Bỏ cả ${ds.length} bài BTVN của mô hình ${m.ma ?? ''}? (Bài trong kho giữ nguyên.)`)) datBtvn(p, m.id!, []) }} className="text-slate-400 hover:text-rose-600">Bỏ hết</button>}
+                            </div>
+                            {ds.length === 0
+                              ? <div className="mt-1.5 text-[12px] italic text-slate-400">Chưa có bài về nhà — bấm “✎ Chọn bài BTVN”. Buổi không có câu/bài BTVN nào thì gán lớp không tạo phiếu BTVN.</div>
+                              : <ol className="mt-2 space-y-1.5">
+                                {ds.map((b, j) => (
+                                  <li key={b.ma_bai} className="rounded-md border border-slate-100 bg-white/80 px-2.5 py-1.5">
+                                    <div className="flex items-center gap-2">
+                                      <span className="text-[12px] font-bold text-slate-400">{j + 1}.</span>
+                                      <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500">{b.ma_bai}</span>
+                                      <span className="text-[11px] text-slate-400">{b.y.length} ý</span>
+                                      {!b.con_trong_kho && <span className="rounded bg-amber-50 px-1.5 text-[10px] font-medium text-amber-700">không còn trong kho</span>}
+                                      <span className="ml-auto flex items-center gap-1">
+                                        <button onClick={() => dich(j, j - 1)} disabled={j === 0} className="rounded border border-slate-200 px-1.5 text-[11px] text-slate-500 disabled:opacity-30">↑</button>
+                                        <button onClick={() => dich(j, j + 1)} disabled={j === ds.length - 1} className="rounded border border-slate-200 px-1.5 text-[11px] text-slate-500 disabled:opacity-30">↓</button>
+                                        <button onClick={() => datBtvn(p, m.id!, ms.filter((x) => x !== b.ma_bai))} className="text-[12px] text-slate-400 hover:text-rose-600">✕</button>
+                                      </span>
+                                    </div>
+                                    <BaiLuyenXem b={b} cfg={cfgCau} dongMacDinh={DEFAULT_BTVN_LINES} />
+                                  </li>
+                                ))}
+                              </ol>}
+                          </div>
+                        )
+                      })()}
                     </div>
                   ))}
                   {/* khối rỗng (bài đã được gán mô hình ở kho, tự chuyển đi — mig 202610221334) thì ẩn */}
@@ -230,8 +276,14 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
       {chonMh && <ChonMoHinh khoi={khoi} daChon={chonMh.mo_hinh.map((m) => m.id!).filter(Boolean)} onClose={() => setChonMh(null)}
         onConfirm={async (ids) => { const p = chonMh; setChonMh(null); await datMoHinh(p, ids) }} />}
       {chonBai && chonBai.mh.id && <ChonBai moHinhId={chonBai.mh.id} ten={chonBai.mh.ten ?? ''} daChon={chonBai.mh.bai.map((b) => b.ma_bai)}
-        khoa={chonBai.phan.mo_hinh.filter((m) => m.phan_id !== chonBai.mh.phan_id).flatMap((m) => m.bai.map((b) => b.ma_bai))}
+        khoa={baiCuaBuoi(chonBai.phan).filter((ma) => !chonBai.mh.bai.some((b) => b.ma_bai === ma))}
         onClose={() => setChonBai(null)} onConfirm={async (mas) => { const x = chonBai; setChonBai(null); await datBai(x.phan, x.mh, mas) }} />}
+      {chonBtvn && chonBtvn.mh.id && (() => {
+        const cu = ((chonBtvn.phan.btvn_luyen ?? []).find((x) => x.mo_hinh_id === chonBtvn.mh.id)?.bai ?? []).map((b) => b.ma_bai)
+        return <ChonBai moHinhId={chonBtvn.mh.id} ten={`${chonBtvn.mh.ten ?? ''} · BTVN`} daChon={cu}
+          khoa={baiCuaBuoi(chonBtvn.phan).filter((ma) => !cu.includes(ma))}
+          onClose={() => setChonBtvn(null)} onConfirm={async (mas) => { const x = chonBtvn; setChonBtvn(null); await datBtvn(x.phan, x.mh.id!, mas) }} />
+      })()}
       {inAll && (laGiaoTrinh ? <PrintView id={id} onClose={() => setInAll(false)} /> : <ChuyenDeHinhPrintView id={id} onClose={() => setInAll(false)} />)}
       {xemPhan && (laGiaoTrinh ? <PrintView id={id} onlyBuoiId={xemPhan} onClose={() => setXemPhan(null)} /> : <ChuyenDeHinhPrintView id={id} onlyPhanId={xemPhan} onClose={() => setXemPhan(null)} />)}
       {chonHoc && <ChonBaiHoc khoi={khoi} daChon={(chonHoc.hoc ?? []).map((h) => h.ma_bai)} onClose={() => setChonHoc(null)}
@@ -393,7 +445,7 @@ function ChonBai({ moHinhId, ten, daChon, khoa, onClose, onConfirm }: { moHinhId
 // ── 1 bài Hình–Luyện trong builder (Thùy 08/11 "builder chuẩn như bên kia"): ĐỦ đề + mọi ý + hình (không cắt 3 dòng) và —
 //   giáo trình — cùng bộ điều khiển câu Học (KhoiCau): dòng kẻ sau cả bài · chế độ hình · cỡ ảnh / hình phải. Khoá = mã gốc bài
 //   (btvnLinesByCau / hinhCheDoByCau / anhMmByCau của tài liệu); in đọc ở BaiHinhIn. Chuyên đề (cfg null): chỉ xem.
-function BaiLuyenXem({ b, cfg }: { b: CdhBai; cfg: CfgCau | null }) {
+function BaiLuyenXem({ b, cfg, dongMacDinh = 0 }: { b: CdhBai; cfg: CfgCau | null; dongMacDinh?: number }) {
   const motY = !b.gia_thiet_chung?.trim() && b.y.length === 1
   const anh = motY ? (b.y[0]?.anh_de ?? b.anh_de) : b.anh_de
   const cd = cfg?.cheDo[b.ma_bai] ?? 'hien'
@@ -402,7 +454,7 @@ function BaiLuyenXem({ b, cfg }: { b: CdhBai; cfg: CfgCau | null }) {
       {cfg && (
         <div className="mt-1 flex flex-wrap items-center justify-end gap-2">
           <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ cho HS viết, in sau cả bài (bản HS)">dòng
-            <input type="number" min={0} max={50} value={cfg.lines[b.ma_bai] ?? 0} onChange={(e) => cfg.onLine(b.ma_bai, Math.max(0, Math.min(50, +e.target.value || 0)))}
+            <input type="number" min={0} max={50} value={cfg.lines[b.ma_bai] ?? dongMacDinh} onChange={(e) => cfg.onLine(b.ma_bai, Math.max(0, Math.min(50, +e.target.value || 0)))}
               className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
           </label>
           {anh && <CheDoHinhBtn cur={cd} onChange={(v) => cfg.onCheDo(b.ma_bai, v)} />}

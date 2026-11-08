@@ -8,7 +8,9 @@ export type CdhBai = { ma_bai: string; id: string | null; de_bai: string | null;
 export type CdhMoHinh = { phan_id: string; id: string | null; ma: string | null; ten: string | null; gia_thiet: string | null; anh: string | null; con_tren_ban_do: boolean; bai: CdhBai[] }
 // khac = khối "Bài chưa có mô hình" (bài chưa gán mô hình / không tự luận) — mig 202610211748
 // hoc = phần HỌC của giáo trình Hình (bài học → câu luyện + BTVN) — chuyên đề Hình luôn rỗng
-export type CdhPhan = { id: string; tieu_de: string | null; thu_tu: number; hoc?: HhBai[]; mo_hinh: CdhMoHinh[]; khac: { phan_id: string; bai: CdhBai[] } | null }
+// btvn_luyen = BTVN (về nhà) của từng mô hình phần LUYỆN — giáo trình Hình (Thùy 08/11, mig 202611081611); chuyên đề luôn rỗng
+export type CdhBtvnLuyen = { phan_id: string; mo_hinh_id: string; ma: string | null; ten: string | null; bai: CdhBai[] }
+export type CdhPhan = { id: string; tieu_de: string | null; thu_tu: number; hoc?: HhBai[]; mo_hinh: CdhMoHinh[]; khac: { phan_id: string; bai: CdhBai[] } | null; btvn_luyen?: CdhBtvnLuyen[] }
 export type CdhNoiDung = {
   tai_lieu: { id: string; ten: string; khoi: string; mon: string; nhanh: string | null; loai: string; ban_do: string; cau_hinh: Record<string, unknown>; updated_at: string } | null
   buoi: CdhPhan[]
@@ -24,6 +26,11 @@ export async function cdhDatMoHinh(taiLieuId: string, phanId: string, moHinhIds:
   const { data, error } = await supabase.rpc('fn_tl_hl_dat_mo_hinh', { p_tai_lieu: taiLieuId, p_buoi: phanId, p_mo_hinh: moHinhIds })
   if (error) throw error
   return (data as CdhNoiDung).buoi[0]
+}
+/** BTVN của 1 mô hình trong buổi (giáo trình Hình): thay tập bài về nhà; rỗng ⇒ gỡ. DB chặn bài trùng bài trên lớp cùng buổi. */
+export async function cdhDatBtvn(taiLieuId: string, buoiId: string, moHinhId: string, maBai: string[]): Promise<void> {
+  const { error } = await supabase.rpc('fn_tl_hl_dat_btvn', { p_tai_lieu: taiLieuId, p_buoi: buoiId, p_mo_hinh: moHinhId, p_ma_bai: maBai })
+  if (error) throw error
 }
 export async function cdhDatBai(phanMoHinhId: string, maBai: string[]): Promise<void> {
   const { error } = await supabase.rpc('fn_tl_hl_dat_bai', { p_phan: phanMoHinhId, p_ma_bai: maBai })
