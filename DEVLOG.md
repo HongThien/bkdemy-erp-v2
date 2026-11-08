@@ -29376,10 +29376,7 @@ Thứ tự list & TỰ GHÉP: ưu tiên cao trước, cùng ưu tiên thì case 
   Đạt(17, đúng list)/Chưa đánh giá(0, đúng empty state "mọi dạng đều có đo gần đây"). tsc sạch (trừ lỗi
   sẵn có `pdfRender.ts` + 1 lỗi KHÔNG LIÊN QUAN ở `DiemDanhTestScreen.tsx` do phiên khác đang sửa song song).
 - **Sự cố ngoài lề phát hiện lúc commit (không phải do tôi gây ra):** `DEVLOG.md` có conflict marker
-  `### 08/11 — Bài Hình – Luyện trong ET chỉnh được cỡ hình (Thùy "sao ko có chỉnh tỉ lệ hình vậy")
-- Nguyên nhân: khuôn in Hình (MucsBlock/HinhPrintView) cố định ảnh 36% bề ngang, cao ≤ 50mm — chưa từng có cỡ tay như câu Đại (AnhMmCtl, 12/10).
-- Làm: MucIn 'de' thêm anhMm (thiếu = tự động như cũ ⇒ giáo trình/MT/ET cũ không đổi). ET bản đồ mới: ô "cỡ %" (dùng lại AnhMmCtl + 50/75/100) cạnh nút hình vẽ từng bài; lưu ở hinh_gt_buoi.cau_hinh.et.anhMm/anhPct, khoá = sig bài (như maDe); đề 2/3 kế thừa cỡ bài gốc. ETPrintView dựng TỪNG bài một lượt để gắn cỡ đúng bài, không đoán theo vị trí.
-- Kiểm trên app (không lưu): 8A1 › HLB00099 › cỡ 50% = 102.13mm ⇒ bản in 3 mã đề đều 102.13mm.
+  `<<<<<<< Updated upstream / ======= / >>>>>>> Stashed changes` chưa giải quyết (phiên khác `git stash`
   đụng độ) — đã dọn sạch theo đúng quy ước "nối cả 2 bên theo thứ tự", giữ nguyên toàn bộ nội dung cả
   2 phía (không xoá dòng nào), chỉ bỏ 3 dòng marker.
 
@@ -79335,17 +79332,15 @@ Thùy nêu 4 việc, làm được 3:
 - Soát DB: không hàm ET nào chia miền "hinh_baitoan_id is null ⇒ Đại" (chỉ 3 hàm MT, đã sửa 29/10) ⇒ ô bài kho (chỉ hinh_y_id) an toàn như MT; không vào mastery Hình khi ý chưa gắn node (đúng §1.5).
 - Kiểm trên app (admin, KHÔNG lưu): 8A1 hôm nay › + Thêm bài Hình – Luyện › MH.072 › Bài trong kho › HLB00099 ⇒ hiện đề + 4 ý + hình; 🎲 Sinh đề 2&3 ⇒ "✓ đủ 3 mã đề"; Xem/In 5 trang, 3 mã đề ra 3 bài khác nhau. Chưa thử bấm Lưu thật (sẽ ghi ET thật cho lớp).
 
-<<<<<<< HEAD
-## 03–08/11/2026 — Chấm MT tháng 10 bằng Claude + chức năng CHẤM BTVN TỰ ĐỘNG (app trợ giảng)
-- **Chấm MT tháng 10 (K6–K11, 5A2):** ~200 bài chấm bằng subagent (ảnh + Bản GV), Đ/C/S đẩy lên ERP bằng `cham_MT_T10/_nhap_erp_lop.mjs` (máy công ty, KHÔNG trong repo) — `on conflict do nothing`, không đè dòng TA đã chấm. 5A2: lấy dấu TA trên bài DC, câu TA bỏ sót Claude chấm nốt, 3 câu không chắc để trống.
-- **Sai / sửa:** (1) quên xuất các bài chỉ có `KET-QUA.md` (5 em) ⇒ bổ sung. (2) điểm C lẻ 0,125/0,19/0,13 ⇒ CEO chốt **câu 0,25 mà C ⇒ 0đ, mọi điểm bội 0,25, câu ≥0,5 mà C vẫn có điểm** ⇒ sửa toàn ERP lớp 3–11 (log giá trị cũ ở `_nhap/_sua_c_le*.da-ghi*.json`). (3) trừ oan lỗi nhãn/chữ khó đọc ở Hình ⇒ rà 149 mục, nâng 21 mục. (4) file so sánh TA–Claude cộng câu thiếu trang như 0 ⇒ ghi chú + không bôi đỏ.
-- **Quyết định CEO:** chữ khó đọc không trừ; lỗi nhãn nhỏ ⇒ Đ; BTVN không ghi tổng Đ/C/S vào ô ĐIỂM; rule chấm gom ở `spec-quy-tac-cham.md` v0.1 (D1–D9 còn chờ chốt).
-- **Chấm BTVN tự động (app TA):** luồng CEO chốt 07/11: Chấm BTVN → 🤖 Chấm tự động → lớp (phụ trách lên đầu) → buổi → HS → ảnh → máy gợi ý Đ/C/S → TA xác nhận mới ghi `gami_grades`. CEO chọn **chế độ HÀNG ĐỢI** (chưa dùng API key): TA "Gửi chấm" ⇒ máy CEO chạy `/cham-btvn-hang-doi` (Claude Code) ⇒ ghi gợi ý. Edge Function `btvn-cham-ai` (gọi API) viết sẵn, CHƯA deploy.
-- **DB đã áp:** mig 202611071647 (bảng nháp `btvn_ai_lan`/`btvn_ai_cau`, `fn_btvn_ai_du_lieu/ghi/chot`, `fn_btvn_nop_ta_them`, `fn_btvn_ai_lop_cua_toi`, nguon `ta_app`) · 202611072132 (hàng đợi `btvn_ai_yeu_cau`, `fn_btvn_ai_yeu_cau/trang_thai`, `v_btvn_ai_hang_doi`) · 202611081103 (công tắc `he_thong_cong_tac 'btvn_cham_tu_dong'` = BẬT; `scripts/btvn-ai/cong-tac.mjs tat` ẩn nút không cần deploy).
-- **Bẫy đã dính:** `auth.uid()` trong migration ⇒ "permission denied for schema auth" (role claude_build) ⇒ dùng `public.jwt_uid()`. Smoke test trong transaction: `now()` đứng yên nên "gửi lại" trông như không vào hàng đợi — thực tế khác transaction thì đúng.
-- **Chưa:** deploy app TA (Thùy bấm) · chạy thử 1 bài thật trọn vòng · D1–D9 rule chấm.
-- **08/11 (sau commit):** TA thêm nhầm ảnh không bỏ được ⇒ mig 202611081129: cột `btvn_nop_anh.bo_at/bo_boi` (kho rác, không xoá cứng — ảnh trỏ bằng id không FK), `fn_btvn_anh_bo` (chỉ ảnh path `ta/`, bài chưa trả PH), mọi chỗ đọc ảnh (2 view PH, `_btvn_hs_xem_anh`, `fn_btvn_ai_du_lieu/yeu_cau`, `listNopTheoBuoi`) lọc `bo_at is null`; app: nút ✕ trên ảnh TA thêm.
-- **08/11:** đổi chỗ + xoay ảnh BTVN ⇒ mig 202611081137: `btvn_nop_anh.xoay` (0/90/180/270, chỉ hiển thị — ảnh gốc giữ), `fn_btvn_anh_xoay`, `fn_btvn_anh_doi_cho` (đánh số lại 1..n rồi đổi với ảnh kề), `v_btvn_tra_anh` thêm cột `xoay` (app PH CHƯA đọc — việc repo bkdemy-ph). App TA: ◀ ▶ ↻ ở màn chấm tự động + ◀ ▶ ở dải trang màn Chấm BTVN cũ (xoay tay ở màn cũ giờ lưu luôn góc vào DB). Máy chấm ghi `xoay_anh`.
+### 08/11 — Bài Hình – Luyện trong ET chỉnh được cỡ hình (Thùy "sao ko có chỉnh tỉ lệ hình vậy")
+- Nguyên nhân: khuôn in Hình (MucsBlock/HinhPrintView) cố định ảnh 36% bề ngang, cao ≤ 50mm — chưa từng có cỡ tay như câu Đại (AnhMmCtl, 12/10).
+- Làm: MucIn 'de' thêm anhMm (thiếu = tự động như cũ ⇒ giáo trình/MT/ET cũ không đổi). ET bản đồ mới: ô "cỡ %" (dùng lại AnhMmCtl + 50/75/100) cạnh nút hình vẽ từng bài; lưu ở hinh_gt_buoi.cau_hinh.et.anhMm/anhPct, khoá = sig bài (như maDe); đề 2/3 kế thừa cỡ bài gốc. ETPrintView dựng TỪNG bài một lượt để gắn cỡ đúng bài, không đoán theo vị trí.
+- Kiểm trên app (không lưu): 8A1 › HLB00099 › cỡ 50% = 102.13mm ⇒ bản in 3 mã đề đều 102.13mm.
+
+### 08/11 — Giáo trình Hình–Luyện thôi đổ sẵn cả kho bài khi thêm mô hình (Thùy "sao chọn giáo trình hình luyện nó lại load cả kho bài vậy")
+- Nguyên nhân: fn_tl_hl_dat_mo_hinh viết cho CHUYÊN ĐỀ (21/10 — thêm mô hình ⇒ đổ mọi bài kho qua _tl_hl_bai_mac_dinh); giáo trình dùng chung builder/hàm ⇒ 9S1 bị đổ MH.128 82 bài + MH.129 26 bài.
+- Mig 202611081556 ĐÃ ÁP (--only): chỉ tai_lieu.loai='chuyen_de' đổ sẵn; giáo trình thêm mô hình để trống ⇒ "✎ Chọn bài" như thường. Thử ROLLBACK: giáo trình MH.124 0/1 bài · chuyên đề MH.083 1/1 bài.
+- Không tự gỡ 108 bài đã đổ ở 9S1 (Luật xoá) — thêm nút "Bỏ hết bài" trên đầu mỗi mô hình (confirm, chỉ gỡ khỏi tài liệu, kho giữ nguyên; fn_tl_hl_dat_bai nhận mảng rỗng). Đã thấy nút trên 9S1, không bấm.
 
 ## 08/11 — Máy chấm BTVN: bản chấm đỏ + điểm theo ý (CEO)
 - CEO: "chấm xong đưa bản đã chấm đỏ lên · chấm điểm lên bài · min 5 · mỗi ý = 10/tổng ý · bội 0,25 · điểm góc trên phải tờ đầu, to".

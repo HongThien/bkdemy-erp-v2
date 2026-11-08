@@ -168,6 +168,12 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
                         <span className="text-[14px] font-semibold">{m.ma ? `${m.ma} · ` : ''}{m.ten ?? <i className="font-normal opacity-80">(mô hình đã xoá khỏi bản đồ)</i>}</span>
                         <span className="text-[11px] text-white/80">{m.bai.length} bài</span>
                         <button onClick={() => setChonBai({ phan: p, mh: m })} disabled={!m.id} className="ml-auto shrink-0 rounded-md bg-white px-2.5 py-1 text-[12px] font-medium text-teal-700 hover:bg-teal-50 disabled:opacity-40">✎ Chọn bài</button>
+                        {/* Thùy 08/11: giáo trình từng bị đổ sẵn cả kho bài khi thêm mô hình (mig 202611081556 đã thôi) — bỏ hết 1 lần rồi chọn lại.
+                            Chỉ gỡ bài khỏi tài liệu này, bài trong kho giữ nguyên. */}
+                        {m.bai.length > 0 && (
+                          <button onClick={() => { if (window.confirm(`Bỏ cả ${m.bai.length} bài khỏi mô hình ${m.ma ?? ''} trong tài liệu này? (Bài trong kho giữ nguyên.)`)) datBai(p, m, []) }}
+                            title="Bỏ hết bài khỏi mô hình này (chỉ trong tài liệu này — kho không đổi)" className="shrink-0 rounded-md border border-white/40 px-2 py-1 text-[11px] font-medium text-white/90 hover:bg-white/10">Bỏ hết bài</button>
+                        )}
                         <button onClick={() => datMoHinh(p, p.mo_hinh.filter((x) => x.phan_id !== m.phan_id).map((x) => x.id!).filter(Boolean))} title="Bỏ mô hình khỏi phần" className="shrink-0 text-[12px] text-white/70 hover:text-white">✕</button>
                       </div>
                       <ol className="space-y-1.5 bg-white p-3">
