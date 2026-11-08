@@ -79349,3 +79349,7 @@ Thùy nêu 4 việc, làm được 3:
 - Ghi lại 6 bài 9A1 buổi 38: Châu Anh 7,5 · Nhật Minh 10 · Minh Phương 6,25 (2b nghi thiếu trang) · Ngọc Hân 7,5 · Trí Anh 10 · Thành Nam 7,5.
 - Sai: agent đặt ô điểm mỗi bài một kiểu (có bài đè chữ "ĐIỂM") ⇒ tự đo lại vị trí nhãn từ ảnh. Font Segoe không có "⇒".
 - Hạn chế: TA đổi kết quả câu sau khi máy vẽ ⇒ điểm trên app tính lại, nhưng ảnh đỏ vẫn số cũ (gửi chấm lại để vẽ lại).
+### 08/11 — Giáo trình Hình–Luyện: popup chọn bài xem đủ + builder chuẩn (dòng · chế độ hình · cỡ ảnh) (Thùy "preview lúc chọn bài hiện cả hình và full câu hỏi" · "chưa có chọn dòng" · "builder chuẩn như bên kia")
+- Popup ✎ Chọn bài (ChuyenDeHinhBuilder.ChonBai): thẻ = đúng thẻ "Bài trong kho" của ChonYTuCay — hình trái, đề + MỌI ý, ô tìm; vẫn chọn nhiều, số thứ tự chọn.
+- Thẻ bài trong builder (BaiLuyenXem): đủ đề + ý + hình (bỏ line-clamp 3); giáo trình có bộ điều khiển như KhoiCau: dòng (sau cả bài), CheDoHinhBtn, AnhMmCtl (+ hình phải/dưới). Khoá = mã gốc bài HLB (btvnLinesByCau/hinhCheDoByCau/anhMmByCau của tài liệu). Chuyên đề: chỉ xem.
+- In: BaiHinhIn nhận lines/cheDo, ảnh qua AnhDe (cỡ) + DeVaHinh (hình phải) — export DeVaHinh từ PrintView. Chuyên đề không truyền ⇒ như cũ. Kiểm 9S1 (chỉ xem): 2 bài in hình nửa phải.

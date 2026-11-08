@@ -704,7 +704,7 @@ function BuoiBlock({ buoi, gv, scope, lt = true, docTitle, ltCd, tenCd, linesByC
             <div className="gtbk-card-title">{m.ten ?? '(mô hình đã xoá khỏi bản đồ)'}</div>
             <span className="gtbk-pill">Luyện</span>
           </div>
-          <div className="gtbk-card-body pv-cdh">{m.bai.map((b) => { no += 1; return <BaiHinhIn key={b.ma_bai} b={b} no={no} gv={gv} /> })}</div>
+          <div className="gtbk-card-body pv-cdh">{m.bai.map((b) => { no += 1; return <BaiHinhIn key={b.ma_bai} b={b} no={no} gv={gv} lines={linesByCau[b.ma_bai] ?? 0} cheDo={hinhCheDoByCau?.[b.ma_bai]} /> })}</div>
         </section>
       )) })()}
       {btvnHere && (
@@ -1004,7 +1004,7 @@ export function WriteLines({ n }: { n: number }) {
  *  co lại (ảnh "cầm thước đo" phải in đúng cm). Không có ⇒ như cũ (.pv-img tự co). */
 /** Đề (+ ý con) và hình của 1 câu. Hình đặt NỬA PHẢI (AnhPhaiCtx, Thùy 02/11 "đỡ tốn giấy") ⇒ 2 cột: đề + ý bên trái, hình bên
  *  phải; không ⇒ đề → hình → ý chồng dọc như cũ. Div/flex (không grid/column-count — paged.js treo, xem CauColumns). */
-function DeVaHinh({ ma, de, anh, y }: { ma: string; de: React.ReactNode; anh: React.ReactNode; y: React.ReactNode }) {
+export function DeVaHinh({ ma, de, anh, y }: { ma: string; de: React.ReactNode; anh: React.ReactNode; y: React.ReactNode }) {
   const phai = useContext(AnhPhaiCtx)(ma)
   if (!anh || !phai) return <>{de}{anh}{y}</>
   return <div className="pv-hp"><div className="pv-hp-l">{de}{y}</div><div className="pv-hp-r">{anh}</div></div>

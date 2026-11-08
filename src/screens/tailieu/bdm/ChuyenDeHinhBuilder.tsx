@@ -6,10 +6,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import { addBuoi, updatePhan, updateTaiLieu, anhPhaiCua, type CauHinh } from '../../../lib/tailieu'
 import { xoaBuoi, loiDoc, datCoPhan } from '../../../lib/tailieuBdm'
-import { cdhNoiDung, cdhDatMoHinh, cdhDatBai, cdhCayChon, hhCayChon, hhCau, hhCauLop, hhDatBai, hhDatCau, hhGoiY, type CdhNoiDung, type CdhPhan, type CdhMoHinh, type CdhChonMoHinh, type CdhChonNhom, type CdhChonChuDe, type HhBai, type HhChonBai, type HhCauKho } from '../../../lib/chuyenDeHinh'
+import { cdhNoiDung, cdhDatMoHinh, cdhDatBai, cdhCayChon, hhCayChon, hhCau, hhCauLop, hhDatBai, hhDatCau, hhGoiY, type CdhNoiDung, type CdhPhan, type CdhMoHinh, type CdhBai, type CdhChonMoHinh, type CdhChonNhom, type CdhChonChuDe, type HhBai, type HhChonBai, type HhCauKho } from '../../../lib/chuyenDeHinh'
 import { khoCuaMoHinh, demKhoMoHinh, type ChuoiKho, type DemKho } from '../../../lib/kho/hinhCay'
 import { MathText, inp } from '../../kho/ui'
-import { MAU_PRESET } from '../TaiLieuBuilder'
+import { MAU_PRESET, AnhMmCtl, AnhXem, CheDoHinhBtn } from '../TaiLieuBuilder'
 import ChuyenDeHinhPrintView from './ChuyenDeHinhPrintView'
 import PrintView from '../PrintView'
 import GanLopBdm from './GanLopBdm'
@@ -191,9 +191,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
                                 <button onClick={() => datBai(p, m, m.bai.filter((x) => x.ma_bai !== b.ma_bai).map((x) => x.ma_bai))} className="text-[12px] text-slate-400 hover:text-rose-600">✕</button>
                               </span>
                             </div>
-                            {/* đề = giả thiết chung (de_bai là bản gốc trọn); bài một ý: đề nằm trong ý */}
-                            <div className="mt-1 line-clamp-3 text-[13px] leading-relaxed text-slate-700"><MathText>{b.gia_thiet_chung?.trim() || (b.y[0]?.noi_dung ?? '')}</MathText></div>
-                            {b.anh_de && <img src={b.anh_de} alt="" className="mt-1 max-h-28 rounded border border-slate-200" />}
+                            <BaiLuyenXem b={b} cfg={laGiaoTrinh ? cfgCau : null} />
                           </li>
                         ))}
                       </ol>
@@ -215,8 +213,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
                               <span className="text-[11px] text-slate-400">{b.y.length} ý</span>
                               <button onClick={() => datBai(p, { phan_id: p.khac!.phan_id } as CdhMoHinh, p.khac!.bai.filter((x) => x.ma_bai !== b.ma_bai).map((x) => x.ma_bai))} className="ml-auto text-[12px] text-slate-400 hover:text-rose-600">✕</button>
                             </div>
-                            <div className="mt-1 line-clamp-3 text-[13px] leading-relaxed text-slate-700"><MathText>{b.gia_thiet_chung?.trim() || (b.y[0]?.noi_dung ?? '')}</MathText></div>
-                            {b.anh_de && <img src={b.anh_de} alt="" className="mt-1 max-h-28 rounded border border-slate-200" />}
+                            <BaiLuyenXem b={b} cfg={laGiaoTrinh ? cfgCau : null} />
                           </li>
                         ))}
                       </ol>
@@ -331,6 +328,11 @@ function ChonBai({ moHinhId, ten, daChon, khoa, onClose, onConfirm }: { moHinhId
   const [err, setErr] = useState<string | null>(null)
   useEffect(() => { khoCuaMoHinh(moHinhId).then(setKho).catch((e) => setErr(loiDoc(e))) }, [moHinhId])
   const bat = (ma: string) => setChon((s) => (s.includes(ma) ? s.filter((x) => x !== ma) : [...s, ma]))
+  // Thùy 08/11 "preview lúc chọn bài hiện cả hình và full câu hỏi": thẻ = đúng thẻ "Bài trong kho" của ChonYTuCay (ET/MT) —
+  // hình trái, đề + MỌI ý; ô tìm theo mã / nguồn / đề (lọc hiển thị thuần, không đụng dữ liệu).
+  const [tim, setTim] = useState('')
+  const q = tim.trim().toLowerCase()
+  const hien = (kho ?? []).filter((b) => !q || [b.ma_bai, b.nguon ?? '', b.gia_thiet_chung ?? '', ...b.y.map((y) => y.noi_dung)].join(' ').toLowerCase().includes(q))
   return (
     <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
       <div className="absolute inset-x-16 inset-y-8 flex flex-col overflow-hidden rounded-2xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -338,24 +340,45 @@ function ChonBai({ moHinhId, ten, daChon, khoa, onClose, onConfirm }: { moHinhId
           <h3 className="text-base font-semibold text-slate-900">Chọn bài · {ten}</h3>
           <button onClick={onClose} className="ml-auto text-slate-400 hover:text-slate-700">✕</button>
         </div>
-        <div className="min-h-0 flex-1 space-y-2 overflow-auto px-6 py-4">
+        <div className="min-h-0 flex-1 overflow-auto px-6 py-4">
           {err ? <p className="text-sm text-rose-600">{err}</p> : !kho ? <p className="text-sm text-slate-400">Đang tải kho…</p>
             : kho.length === 0 ? <p className="text-sm text-slate-400">Mô hình này chưa có bài trong kho.</p>
-            : kho.map((b) => {
-              const on = chon.includes(b.ma_bai), khoaB = khoa.includes(b.ma_bai)
-              return (
-                <button key={b.id} disabled={khoaB} onClick={() => bat(b.ma_bai)} title={khoaB ? 'Bài đã dùng ở mô hình khác trong cùng phần' : undefined}
-                  className={`block w-full rounded-lg border p-2.5 text-left disabled:opacity-40 ${on ? 'border-teal-500 bg-teal-50' : 'border-slate-200 hover:border-teal-300'}`}>
-                  <div className="mb-1 flex items-center gap-2 text-[11px]">
-                    <span className={`flex h-5 w-5 items-center justify-center rounded text-[11px] font-bold ${on ? 'bg-teal-600 text-white' : 'bg-slate-100 text-slate-400'}`}>{on ? chon.indexOf(b.ma_bai) + 1 : ''}</span>
-                    <span className="font-mono text-slate-500">{b.ma_bai}</span>
-                    <span className="text-slate-400">{b.y.length} ý</span>
-                    {!b.gan_ca_bai && <span className="rounded bg-slate-100 px-1.5 text-slate-500">ý gán vào bài của mô hình</span>}
-                  </div>
-                  <div className="line-clamp-3 text-[13px] text-slate-700"><MathText>{b.gia_thiet_chung?.trim() || (b.y[0]?.noi_dung ?? '')}</MathText></div>
-                </button>
-              )
-            })}
+            : <>
+              <div className="mb-3 flex items-center gap-3">
+                <input value={tim} onChange={(e) => setTim(e.target.value)} placeholder="Tìm trong kho (mã, nguồn, đề)…"
+                  className="h-8 w-72 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-teal-400" />
+                <span className="text-[12px] text-slate-400">{hien.length}/{kho.length} bài</span>
+              </div>
+              <div className="space-y-3">
+                {hien.map((b) => {
+                  const on = chon.includes(b.ma_bai), khoaB = khoa.includes(b.ma_bai)
+                  return (
+                    <div key={b.id} role="button" tabIndex={khoaB ? -1 : 0} onClick={() => { if (!khoaB) bat(b.ma_bai) }} onKeyDown={(e) => { if (!khoaB && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); bat(b.ma_bai) } }}
+                      title={khoaB ? 'Bài đã dùng ở mô hình khác trong cùng phần' : undefined}
+                      className={`flex gap-4 rounded-xl border p-3.5 text-left ${khoaB ? 'cursor-not-allowed opacity-40' : 'cursor-pointer'} ${on ? 'border-teal-500 bg-teal-50/60 shadow-sm' : 'border-slate-200 hover:border-teal-300'}`}>
+                      <span className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded text-[12px] font-bold ${on ? 'bg-teal-600 text-white' : 'border border-slate-300 bg-white text-slate-300'}`}>{on ? chon.indexOf(b.ma_bai) + 1 : ''}</span>
+                      {b.anh_de
+                        ? <img src={b.anh_de} alt="" className="h-36 w-48 shrink-0 self-start rounded-lg border border-slate-200 bg-white object-contain" />
+                        : <div className="flex h-36 w-48 shrink-0 items-center justify-center rounded-lg border border-dashed border-slate-200 text-[11px] text-slate-300">chưa có hình</div>}
+                      <div className="min-w-0 flex-1 space-y-1.5">
+                        <div className="flex flex-wrap items-center gap-x-3 text-[12px]">
+                          <span className="font-mono font-semibold text-teal-700">{b.ma_bai}</span>
+                          <span className="text-slate-500">{b.nguon ?? 'chưa rõ nguồn'}</span>
+                          {!b.gan_ca_bai && <span className="rounded bg-slate-100 px-1.5 text-slate-500">ý gán vào bài của mô hình</span>}
+                          <span className="ml-auto font-medium text-slate-500">{b.y.length} ý</span>
+                        </div>
+                        {b.gia_thiet_chung && <div className="text-[13.5px] leading-relaxed text-slate-800"><MathText>{b.gia_thiet_chung}</MathText></div>}
+                        {b.y.map((y) => (
+                          <div key={y.id} className="flex gap-2 text-[13px] leading-relaxed text-slate-700">
+                            <b className="shrink-0 text-violet-700">{y.nhan ? `${y.nhan})` : '•'}</b>
+                            <div className="min-w-0 flex-1"><MathText>{y.noi_dung}</MathText></div>
+                          </div>))}
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </>}
         </div>
         <div className="flex items-center gap-2 border-t border-slate-200 px-6 py-3">
           <span className="text-[12px] text-slate-500">Đã chọn {chon.length} bài</span>
@@ -364,6 +387,41 @@ function ChonBai({ moHinhId, ten, daChon, khoa, onClose, onConfirm }: { moHinhId
         </div>
       </div>
     </div>
+  )
+}
+
+// ── 1 bài Hình–Luyện trong builder (Thùy 08/11 "builder chuẩn như bên kia"): ĐỦ đề + mọi ý + hình (không cắt 3 dòng) và —
+//   giáo trình — cùng bộ điều khiển câu Học (KhoiCau): dòng kẻ sau cả bài · chế độ hình · cỡ ảnh / hình phải. Khoá = mã gốc bài
+//   (btvnLinesByCau / hinhCheDoByCau / anhMmByCau của tài liệu); in đọc ở BaiHinhIn. Chuyên đề (cfg null): chỉ xem.
+function BaiLuyenXem({ b, cfg }: { b: CdhBai; cfg: CfgCau | null }) {
+  const motY = !b.gia_thiet_chung?.trim() && b.y.length === 1
+  const anh = motY ? (b.y[0]?.anh_de ?? b.anh_de) : b.anh_de
+  const cd = cfg?.cheDo[b.ma_bai] ?? 'hien'
+  return (
+    <>
+      {cfg && (
+        <div className="mt-1 flex flex-wrap items-center justify-end gap-2">
+          <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ cho HS viết, in sau cả bài (bản HS)">dòng
+            <input type="number" min={0} max={50} value={cfg.lines[b.ma_bai] ?? 0} onChange={(e) => cfg.onLine(b.ma_bai, Math.max(0, Math.min(50, +e.target.value || 0)))}
+              className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
+          </label>
+          {anh && <CheDoHinhBtn cur={cd} onChange={(v) => cfg.onCheDo(b.ma_bai, v)} />}
+          {anh && cd !== 'khong' && <AnhMmCtl ma={b.ma_bai} url={anh} />}
+        </div>
+      )}
+      <div className="mt-1.5 flex items-start gap-4">
+        <div className="min-w-0 flex-1 space-y-1 text-[13px] leading-relaxed text-slate-700">
+          {!motY && <div className="text-slate-800"><MathText>{b.gia_thiet_chung ?? ''}</MathText></div>}
+          {b.y.map((y, i) => (
+            <div key={i} className="flex gap-2">
+              {!motY && <b className="shrink-0 text-violet-700">{y.nhan ? `${y.nhan})` : '•'}</b>}
+              <div className="min-w-0 flex-1"><MathText>{[y.gia_thiet_them, y.noi_dung].filter((x) => x && x.trim()).join('\n')}</MathText></div>
+            </div>
+          ))}
+        </div>
+        {anh && <div className="shrink-0"><AnhXem ma={b.ma_bai} url={anh} cheDo={cd} /></div>}
+      </div>
+    </>
   )
 }
 

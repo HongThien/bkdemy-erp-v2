@@ -4,20 +4,29 @@
 // Số "Bài N." là số HIỂN THỊ (người gọi đếm), không lưu.
 import { MathText } from '../../kho/ui'
 import type { CdhBai } from '../../../lib/chuyenDeHinh'
+import type { CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
+import { AnhDe, DeVaHinh, WriteLines } from '../PrintView'
+// ⭐ Thùy 08/11 "builder chuẩn như bên kia": giáo trình in theo cấu hình từng bài như câu Học (khoá = MÃ GỐC bài HLB…):
+//   lines = dòng kẻ sau CẢ bài (bản HS; dòng gán theo cả bài — chốt 08-09) · cheDo hiện / ô trống / bỏ · cỡ ảnh (AnhDe đọc
+//   AnhMmCtx) · hình nửa phải (DeVaHinh đọc AnhPhaiCtx). Chuyên đề không truyền ⇒ y như cũ.
 
-export function BaiHinhIn({ b, no, gv, nguon }: { b: CdhBai; no: number; gv: boolean; nguon?: string }) {
+export function BaiHinhIn({ b, no, gv, nguon, lines = 0, cheDo = 'hien' }: { b: CdhBai; no: number; gv: boolean; nguon?: string; lines?: number; cheDo?: CheDoHinh }) {
   const motY = !b.gia_thiet_chung?.trim() && b.y.length === 1
   // Có nguồn (Thùy 21/10): dòng riêng "Bài N. (Đề thi … — THCS …)", nội dung bài xuống dòng dưới.
   const no_ = nguon ? '' : `<span class="pv-cau-no">Bài ${no}.</span> `
+  // hình của bài (bài một ý: hình ý, thiếu thì hình bài). 'o_trong' = ô vẽ cho HS, bản GV vẫn hiện hình; 'khong' = bỏ.
+  const src = motY ? (b.y[0]?.anh_de ?? b.anh_de) : b.anh_de
+  const hinh = !src || cheDo === 'khong' ? null : cheDo === 'o_trong' && !gv ? <div className="pv-vebox" /> : <AnhDe ma={b.ma_bai} src={src} />
   return (
     <div className="pv-cau cdh-bai">
       {nguon && <div className="cdh-nguon"><span className="pv-cau-no">Bài {no}.</span> <i>({nguon})</i></div>}
-      {!motY && <div className="pv-math"><MathText prefix={no_}>{b.gia_thiet_chung ?? ''}</MathText></div>}
-      {!motY && b.anh_de && <img className="pv-img" src={b.anh_de} alt="" />}
-      {b.y.map((y, i) => (
+      <DeVaHinh ma={b.ma_bai}
+        de={!motY ? <div className="pv-math"><MathText prefix={no_}>{b.gia_thiet_chung ?? ''}</MathText></div> : null}
+        anh={hinh}
+        y={b.y.map((y, i) => (
         <div key={i} className={motY ? '' : 'cdh-y'}>
           <div className="pv-math"><MathText prefix={motY ? no_ : y.nhan ? `<b>${y.nhan})</b> ` : ''}>{[y.gia_thiet_them, y.noi_dung].filter((x) => x && x.trim()).join('\n')}</MathText></div>
-          {(motY ? (y.anh_de ?? b.anh_de) : y.anh_de) && <img className="pv-img" src={(motY ? (y.anh_de ?? b.anh_de) : y.anh_de)!} alt="" />}
+          {!motY && y.anh_de && <img className="pv-img" src={y.anh_de} alt="" />}
           {gv && (y.dap_an || y.loi_giai || y.anh_loi_giai) && (
             <div className="pv-loigiai">
               {y.dap_an && <div className="pv-math"><MathText prefix="<b>Đáp số:</b> ">{y.dap_an}</MathText></div>}
@@ -26,7 +35,8 @@ export function BaiHinhIn({ b, no, gv, nguon }: { b: CdhBai; no: number; gv: boo
             </div>
           )}
         </div>
-      ))}
+      ))} />
+      {!gv && <WriteLines n={lines} />}
     </div>
   )
 }
