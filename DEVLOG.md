@@ -79322,3 +79322,12 @@ Thùy nêu 4 việc, làm được 3:
 - Mig 202611081338 ĐÃ ÁP: fn_hl_gan_bai_mo_hinh CHẶN khi ý của bài đã gán vào bài của cây mô hình khác (đổi mô hình mà giữ liên kết ⇒ chuỗi hiện ở cả 2 kho, lệch âm thầm; không tự gỡ gán — Luật xoá). UI hiện nút mờ + lời nhắc gỡ gán trước. Thử ROLLBACK 4/4: chặn HLB00095 (ý HLY00241) · gán đúng cây vẫn được · chuyển bài không ý gán được · gỡ khỏi mô hình vẫn được.
 - Kiểm trên app (admin, không lưu): K8 dạng bài › 📚 › ✎ Sửa mở CauModal đúng câu; Hình–Luyện K8 MH.081 › ③ Kho bài › danh sách 9 mô hình khác, nằm trong màn.
 - Kèm: git pull vấp rebase dở (3 commit chưa push của phiên 5T/8T, chỉ xung đột nối cuối DEVLOG) ⇒ giữ cả hai bên; regex gỡ dấu phải chịu dòng cuối không xuống dòng + DEVLOG có sẵn chữ "<<<<<<<" trong nội dung cũ.
+
+### 08/11 — ET bản đồ mới chọn được bài Hình – Luyện (Thùy "ET Chưa chọn được hình luyện")
+- Trước: ET bản đồ mới chỉ có 4 nhánh câu rời (Đại · Hình giải tích · Hình–Học · KHTN); bài mô hình nhiều ý (Hình–Luyện) chỉ chọn được ở ET bản đồ CŨ (BuoiPickEditor) và MT.
+- Làm: ETBdmEditor thêm khối "📐 Hình – Luyện" dưới các câu — chọn bằng ĐÚNG popup của MT (ChonYTuCay: tạo từ chuỗi | bài trong kho), ↻ Đổi / ✎ Chọn / ✕, chế độ hình vẽ, số dòng, preview bằng engine in (banInTheoMoHinh).
+- Lưu: bài ghi vào buổi Hình (lớp,ngày) phan='et' (saveBuoiSelectionPhan) = đúng chỗ tab Chấm ET vốn đọc (loadHinhForBuoiPhase 'et') ⇒ không thêm đường chấm mới. Mã đề 2/3 khuôn MT (bài kho khác cùng mô hình cùng số ý / bản khác cùng node, thiếu thì dùng lại bài gốc) lưu ở hinh_gt_buoi.cau_hinh.et.maDe, hsMaDe dùng chung của ET. ET chỉ có Hình cũng lưu được (không đẻ tài liệu ET Đại).
+- Chốt chặn: bài Hình của buổi chưa nạp xong ⇒ KHÔNG cho Lưu (tránh ghi đè rỗng phan 'et' của buổi — saveBuoiSelectionPhan là replace).
+- In: ETPrintView (chỉ ET ban_do='moi') in thêm "Phần · Hình học" sau câu Đại, "Bài 1, 2…" khớp nhãn "Bài 1a" ở tab chấm; mỗi bài 1 ô Đ/C/S đầu phiếu; mã đề theo HS. Mở từ Kho tài liệu thì tự đọc bài Hình từ buổi Hình. ET bản đồ cũ không đổi.
+- Soát DB: không hàm ET nào chia miền "hinh_baitoan_id is null ⇒ Đại" (chỉ 3 hàm MT, đã sửa 29/10) ⇒ ô bài kho (chỉ hinh_y_id) an toàn như MT; không vào mastery Hình khi ý chưa gắn node (đúng §1.5).
+- Kiểm trên app (admin, KHÔNG lưu): 8A1 hôm nay › + Thêm bài Hình – Luyện › MH.072 › Bài trong kho › HLB00099 ⇒ hiện đề + 4 ý + hình; 🎲 Sinh đề 2&3 ⇒ "✓ đủ 3 mã đề"; Xem/In 5 trang, 3 mã đề ra 3 bài khác nhau. Chưa thử bấm Lưu thật (sẽ ghi ET thật cho lớp).
