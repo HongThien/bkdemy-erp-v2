@@ -47,7 +47,17 @@ Mỗi bài:
      đúng chiều khi hiển thị cho TA/phụ huynh. Chỉ ghi ảnh đang xoay ngang/ngược; `de.json` có `xoay_hien_tai` của từng ảnh
      (TA có thể đã xoay tay) — đúng rồi thì bỏ qua ảnh đó.
 
+   - `y` trong từng câu (CEO 08/11): kết quả TỪNG Ý `[{"ten":"a","result":"correct"}, …]` — điểm bài do DB tính
+     theo ý (`fn_btvn_ai_diem`: mỗi ý = 10/tổng ý, C = nửa ý làm tròn xuống bội 0,25, tổng bội 0,25, tối thiểu 5).
+     Câu không chia ý thì bỏ `y`.
+   - `danh_dau` (CEO 08/11): dấu đỏ để vẽ BẢN CHẤM — định dạng ở đầu `scripts/btvn-ai/ve.py` (Đ / C / S / khoanh /
+     ghi 1 dòng / `diem`). Dấu `diem` = góc trên-trái con số điểm, NGAY DƯỚI chữ "ĐIỂM" góc trên phải trang 1, chữ to.
+     Vẽ thử `python -X utf8 scripts/btvn-ai/ve.py "<thư mục>" 7.5` rồi XEM bằng mắt các file `cham_*.jpg` trước khi ghi.
+     Dòng ghi tránh ký tự "⇒" (font không có).
+
 ## Bước 3 — Ghi gợi ý lên ERP
+`ghi.mjs` ghi lần chấm, lấy điểm từ DB, vẽ bản chấm đỏ có điểm, tải lên `cham/ai-…` và gắn `path_cham`.
+Trang TA đã vẽ tay thì không bị đè.
 ```
 node scripts/btvn-ai/ghi.mjs $ARGUMENTS --thu     # chạy thử, kiểm định dạng
 node scripts/btvn-ai/ghi.mjs $ARGUMENTS           # ghi thật

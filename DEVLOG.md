@@ -79255,3 +79255,11 @@ Thùy nêu 4 việc, làm được 3:
 - **Chưa:** deploy app TA (Thùy bấm) · chạy thử 1 bài thật trọn vòng · D1–D9 rule chấm.
 - **08/11 (sau commit):** TA thêm nhầm ảnh không bỏ được ⇒ mig 202611081129: cột `btvn_nop_anh.bo_at/bo_boi` (kho rác, không xoá cứng — ảnh trỏ bằng id không FK), `fn_btvn_anh_bo` (chỉ ảnh path `ta/`, bài chưa trả PH), mọi chỗ đọc ảnh (2 view PH, `_btvn_hs_xem_anh`, `fn_btvn_ai_du_lieu/yeu_cau`, `listNopTheoBuoi`) lọc `bo_at is null`; app: nút ✕ trên ảnh TA thêm.
 - **08/11:** đổi chỗ + xoay ảnh BTVN ⇒ mig 202611081137: `btvn_nop_anh.xoay` (0/90/180/270, chỉ hiển thị — ảnh gốc giữ), `fn_btvn_anh_xoay`, `fn_btvn_anh_doi_cho` (đánh số lại 1..n rồi đổi với ảnh kề), `v_btvn_tra_anh` thêm cột `xoay` (app PH CHƯA đọc — việc repo bkdemy-ph). App TA: ◀ ▶ ↻ ở màn chấm tự động + ◀ ▶ ở dải trang màn Chấm BTVN cũ (xoay tay ở màn cũ giờ lưu luôn góc vào DB). Máy chấm ghi `xoay_anh`.
+
+## 08/11 — Máy chấm BTVN: bản chấm đỏ + điểm theo ý (CEO)
+- CEO: "chấm xong đưa bản đã chấm đỏ lên · chấm điểm lên bài · min 5 · mỗi ý = 10/tổng ý · bội 0,25 · điểm góc trên phải tờ đầu, to".
+- Mig 202611081545: `btvn_ai_cau.y` (kết quả từng ý) · `fn_btvn_ai_diem` (công thức DUY NHẤT: ý = 10/N, C = nửa ý làm tròn xuống 0,25, tổng bội 0,25, kẹp [5,10]; đã chốt thì theo kết quả TA) · `fn_btvn_ai_dat_anh_cham` (gắn `cham/ai-…` vào path_cham, không đè bản TA vẽ tay).
+- `scripts/btvn-ai/ve.py` vẽ Đ/C/S/khoanh/ghi/điểm từ `danh_dau` (toạ độ tỉ lệ trên ảnh đã đứng) · `ghi.mjs` thêm `--chi`, `--lai`, `--thu` giờ ghi-rồi-rollback để lấy điểm DB và vẽ xem trước.
+- Ghi lại 6 bài 9A1 buổi 38: Châu Anh 7,5 · Nhật Minh 10 · Minh Phương 6,25 (2b nghi thiếu trang) · Ngọc Hân 7,5 · Trí Anh 10 · Thành Nam 7,5.
+- Sai: agent đặt ô điểm mỗi bài một kiểu (có bài đè chữ "ĐIỂM") ⇒ tự đo lại vị trí nhãn từ ảnh. Font Segoe không có "⇒".
+- Hạn chế: TA đổi kết quả câu sau khi máy vẽ ⇒ điểm trên app tính lại, nhưng ảnh đỏ vẫn số cũ (gửi chấm lại để vẽ lại).

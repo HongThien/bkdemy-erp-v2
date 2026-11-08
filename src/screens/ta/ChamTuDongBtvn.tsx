@@ -3,7 +3,7 @@
 // Đ/C/S từng câu (câu máy không chắc tô vàng) → TA sửa → ✓ Xác nhận ⇒ fn_btvn_ai_chot ghi gami_grades.
 // Gợi ý nằm ở bảng nháp btvn_ai_*: chưa xác nhận thì CHƯA có gì trong gami_grades (luật §1.5).
 import { useEffect, useRef, useState } from 'react'
-import { taThemAnh, guiCham, layLanAi, chotAi, trangThaiAiTheoBuoi, type AiLan, type AiTrangThai } from '../../lib/btvnnop'
+import { taThemAnh, guiCham, layLanAi, chotAi, diemLanAi, trangThaiAiTheoBuoi, type AiLan, type AiTrangThai, type AiDiem } from '../../lib/btvnnop'
 import { gioVN } from '../../lib/tacong'
 import type { Problem } from '../../lib/gami'
 
@@ -23,6 +23,7 @@ export default function ChamTuDongBtvn({ buoiId, hsId, probs, dong, coAnh, daTra
   const [nx, setNx] = useState<Record<string, string>>({})
   const [dangGui, setDangGui] = useState(false)
   const [tt, setTt] = useState<AiTrangThai | null>(null)
+  const [diem, setDiem] = useState<AiDiem | null>(null)
   const [dangTai, setDangTai] = useState(false)
   const [dangChot, setDangChot] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
@@ -34,6 +35,8 @@ export default function ChamTuDongBtvn({ buoiId, hsId, probs, dong, coAnh, daTra
     const c: Record<string, KQ | undefined> = {}, n: Record<string, string> = {}
     for (const x of l?.cau ?? []) { c[x.problem_id] = x.result; n[x.problem_id] = x.nhan_xet ?? '' }
     setChon(c); setNx(n)
+    setDiem(null)
+    if (l) diemLanAi(l.id).then(setDiem).catch(() => setDiem(null))
   }
   async function tai() {
     const [l, t] = await Promise.all([layLanAi(buoiId, hsId).catch(() => null), trangThaiAiTheoBuoi(buoiId).catch(() => ({} as Record<string, AiTrangThai>))])
@@ -77,6 +80,7 @@ export default function ChamTuDongBtvn({ buoiId, hsId, probs, dong, coAnh, daTra
     try {
       const sua = await chotAi(lan.id, items)
       setLan({ ...lan, chot_at: new Date().toISOString(), so_cau_sua: sua })
+      diemLanAi(lan.id).then(setDiem).catch(() => {}) // điểm theo kết quả TA vừa chốt
       await reloadP()
       setBao(`Đã ghi ${items.length} câu${sua ? ` · bạn sửa ${sua} câu so với máy` : ''}`)
     } catch (e: any) { setLoi(e.message ?? String(e)) } finally { setDangChot(false) }
@@ -116,6 +120,12 @@ export default function ChamTuDongBtvn({ buoiId, hsId, probs, dong, coAnh, daTra
 
       {lan && (
         <div className="mt-2">
+          {diem && (
+            <p className="mb-1.5 flex items-baseline gap-2 rounded-lg bg-white px-2 py-1.5 text-[12px] text-slate-600">
+              <span className="text-[18px] font-extrabold text-rose-600">{String(diem.diem).replace('.', ',')}</span>
+              <span>điểm · {diem.so_y} ý, mỗi ý {String(Math.round(diem.gia_tri_y * 100) / 100).replace('.', ',')}{lan.chot_at ? '' : ' · theo gợi ý của máy'}</span>
+            </p>
+          )}
           {lan.nhan_xet_chung && <p className="mb-1.5 rounded-lg bg-white px-2 py-1.5 text-[12px] text-slate-700"><b>Nhận xét chung:</b> {lan.nhan_xet_chung}</p>}
           <p className="mb-1 text-[11px] text-slate-500">
             {lan.chot_at ? <>✓ Đã xác nhận{lan.so_cau_sua ? ` · sửa ${lan.so_cau_sua} câu so với máy` : ''}. </> : <>Máy gợi ý — kiểm tra rồi bấm Xác nhận. </>}
@@ -129,6 +139,7 @@ export default function ChamTuDongBtvn({ buoiId, hsId, probs, dong, coAnh, daTra
                   <div className="flex items-center gap-2">
                     <span className="min-w-0 flex-1 truncate text-[12px] text-slate-600">
                       <b>{tenCau(p)}</b>{!ai && <span className="text-slate-400"> · máy không thấy câu này</span>}
+                      {ai?.y && ai.y.length > 0 && <span className="ml-1.5 text-[11px] text-slate-400">{ai.y.map((y) => `${y.ten} ${y.result === 'correct' ? 'Đ' : y.result === 'partial' ? 'C' : 'S'}`).join(' · ')}</span>}
                     </span>
                     <div className="flex gap-1">
                       {NUT.map((k) => (

@@ -146,7 +146,8 @@ export async function taThemAnh(buoiId: string, hocSinhId: string, files: File[]
   if (error) throw error
 }
 
-export type AiCau = { problem_id: string; result: 'correct' | 'partial' | 'wrong'; chac: boolean; loai_loi: string | null; nhan_xet: string | null }
+export type AiCau = { problem_id: string; result: 'correct' | 'partial' | 'wrong'; chac: boolean; loai_loi: string | null; nhan_xet: string | null
+  y: { ten: string; result: 'correct' | 'partial' | 'wrong' }[] | null } // y = kết quả từng ý (null = câu không chia ý)
 export type AiLan = {
   id: string; model: string; rule_version: string; nhan_xet_chung: string | null; created_at: string
   chot_at: string | null; so_cau_sua: number | null; cau: AiCau[]
@@ -166,13 +167,21 @@ export async function chamTuDong(buoiId: string, hocSinhId: string): Promise<str
 // Lần chấm máy MỚI NHẤT của 1 HS ở buổi (kèm gợi ý từng câu). Chưa chấm lần nào ⇒ null.
 export async function layLanAi(buoiId: string, hocSinhId: string): Promise<AiLan | null> {
   const { data, error } = await supabase.from('btvn_ai_lan')
-    .select('id,model,rule_version,nhan_xet_chung,created_at,chot_at,so_cau_sua,btvn_ai_cau(problem_id,result,chac,loai_loi,nhan_xet)')
+    .select('id,model,rule_version,nhan_xet_chung,created_at,chot_at,so_cau_sua,btvn_ai_cau(problem_id,result,chac,loai_loi,nhan_xet,y)')
     .eq('buoi_hoc_id', buoiId).eq('hoc_sinh_id', hocSinhId).order('created_at', { ascending: false }).limit(1)
   if (error) throw error
   const r = data?.[0] as (Omit<AiLan, 'cau'> & { btvn_ai_cau: AiCau[] }) | undefined
   if (!r) return null
   const { btvn_ai_cau, ...lan } = r
   return { ...lan, cau: btvn_ai_cau ?? [] }
+}
+
+// Điểm bài thang 10 của 1 lần chấm — công thức DUY NHẤT ở DB (mỗi ý = 10/tổng ý, C = nửa ý, bội 0,25, tối thiểu 5).
+export type AiDiem = { diem: number; so_y: number; gia_tri_y: number; tong_tho: number }
+export async function diemLanAi(lanId: string): Promise<AiDiem | null> {
+  const { data, error } = await supabase.rpc('fn_btvn_ai_diem', { p_lan_id: lanId })
+  if (error) throw error
+  return (data ?? null) as AiDiem | null
 }
 
 // TA xác nhận ⇒ ghi Đ/C/S (+ nhận xét từng câu) vào gami_grades. Trả số câu TA đã sửa so với máy.
