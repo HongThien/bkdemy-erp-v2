@@ -8,7 +8,7 @@ const require = createRequire(import.meta.url)
 const pg = require('pg')
 
 export const RULE_VERSION = 'v0.1-2026-11-07'
-export const MODEL = 'claude-code-hang-doi'
+export const MODEL = 'claude-code-hang-doi-sonnet-5-5' // CEO 08/11: chấm bằng Sonnet 5.5
 
 export function docEnv() {
   const i = process.argv.indexOf('--env')

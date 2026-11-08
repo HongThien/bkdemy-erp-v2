@@ -21,7 +21,9 @@ số câu `so`, đề/đáp án/lời giải kho nếu có, danh sách ảnh `{i
 "không có bài chờ" rồi dừng.
 
 ## Bước 2 — Chấm từng bài
+**Model chấm = Sonnet 5.5 (CEO 08/11 — KHÔNG dùng Opus):** mọi subagent chấm / giải đề gọi Agent với `model: "sonnet"`.
 Nhiều bài ⇒ giao mỗi bài 1 subagent (song song, tối đa 10), mỗi subagent đọc đúng thư mục của bài đó.
+Đề không có trong kho (Hình…) ⇒ 1 subagent giải đề trước, ghi đáp án chung, rồi các subagent chấm theo đáp án đó.
 Mỗi bài:
 1. Đọc `spec-quy-tac-cham.md` (quy tắc chấm v0.1) — đặc biệt §A1–A9 và mục khối của bài.
 2. Đọc `de.json`, xem TỪNG ảnh (Read file ảnh). Ảnh có thể xoay ngang/lộn ngược, lộn thứ tự: tự xoay để đọc,

@@ -3,7 +3,7 @@
 //   → đọc câu + ảnh bằng chính JWT của TA (fn_btvn_ai_du_lieu, RLS/quyền như TA) → gọi Claude
 //   → ghi GỢI Ý vào bảng nháp (fn_btvn_ai_ghi). KHÔNG ghi gami_grades — TA xác nhận mới ghi (fn_btvn_ai_chot).
 // Biến môi trường (Dashboard → Edge Functions → Secrets):
-//   ANTHROPIC_API_KEY (bắt buộc) · CLAUDE_MODEL (mặc định claude-opus-5-5) · CLAUDE_EFFORT (mặc định medium)
+//   ANTHROPIC_API_KEY (bắt buộc) · CLAUDE_MODEL (mặc định claude-sonnet-5-5 — CEO 08/11: chấm bằng Sonnet) · CLAUDE_EFFORT (mặc định medium)
 //   SUPABASE_URL, SUPABASE_ANON_KEY (Supabase tự có).
 // Deploy: `supabase functions deploy btvn-cham-ai` (BẬT Verify JWT — chỉ nhân sự đăng nhập mới gọi được).
 // Luật chấm: spec-quy-tac-cham.md (RULE_VERSION bên dưới — đổi rule thì tăng version).
@@ -12,7 +12,7 @@ import Anthropic from 'npm:@anthropic-ai/sdk@0.113.0'
 
 const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!
 const ANON_KEY = Deno.env.get('SUPABASE_ANON_KEY')!
-const MODEL = Deno.env.get('CLAUDE_MODEL') ?? 'claude-opus-5-5'
+const MODEL = Deno.env.get('CLAUDE_MODEL') ?? 'claude-sonnet-5-5'
 const EFFORT = Deno.env.get('CLAUDE_EFFORT') ?? 'medium'
 const RULE_VERSION = 'v0.1-2026-11-07'
 const MAX_ANH = 16
