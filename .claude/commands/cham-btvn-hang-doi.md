@@ -32,6 +32,7 @@ Mỗi bài:
    ```json
    { "thu_tu_anh": ["<id ảnh trang 1>", "<id ảnh trang 2>", "..."],
      "nhan_xet_chung": "1 dòng nhận xét chung gửi phụ huynh, không chi tiết từng câu, không ghi điểm",
+     "xoay_anh": { "<id ảnh chụp ngang>": 90 },
      "cau": [ { "problem_id": "<uuid trong de.json>", "result": "correct|partial|wrong",
                 "chac": true, "loai_loi": "", "nhan_xet": "" } ] }
    ```
@@ -42,6 +43,9 @@ Mỗi bài:
    - `loai_loi`: ket_qua_sai · sai_phuong_phap · dong_giua_sai · sai_mot_buoc · thieu_ly_do · thieu_ket_luan ·
      chua_phan_tich_het · sai_dau · nhan_ky_hieu · don_vi · dieu_kien · trinh_bay — chỉ gán khi chắc, không thì "".
    - `thu_tu_anh` phải chứa ĐỦ mọi id ảnh trong `de.json` (thiếu thì script giữ thứ tự cũ).
+   - `xoay_anh` (tuỳ chọn): `{ "<id ảnh>": 90 }` — góc TUYỆT ĐỐI (0/90/180/270, chiều kim đồng hồ) để ẢNH GỐC đứng
+     đúng chiều khi hiển thị cho TA/phụ huynh. Chỉ ghi ảnh đang xoay ngang/ngược; `de.json` có `xoay_hien_tai` của từng ảnh
+     (TA có thể đã xoay tay) — đúng rồi thì bỏ qua ảnh đó.
 
 ## Bước 3 — Ghi gợi ý lên ERP
 ```

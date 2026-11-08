@@ -29,7 +29,7 @@ for (const j of ds) {
     const ext = (r.headers.get('content-type') ?? '').includes('png') ? 'png' : 'jpg'
     const file = `anh_${String(k + 1).padStart(2, '0')}_${a.id.slice(0, 8)}.${ext}`
     writeFileSync(join(dir, file), Buffer.from(await r.arrayBuffer()))
-    anh.push({ id: a.id, file })
+    anh.push({ id: a.id, file, xoay_hien_tai: a.xoay ?? 0 })
   }
   writeFileSync(join(dir, 'de.json'), JSON.stringify({
     buoi_hoc_id: j.buoi_hoc_id, hoc_sinh_id: j.hoc_sinh_id, yeu_cau_boi: j.yeu_cau_boi, yeu_cau_at: j.yeu_cau_at,

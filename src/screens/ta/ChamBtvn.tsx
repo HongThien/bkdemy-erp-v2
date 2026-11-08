@@ -15,7 +15,7 @@ import {
   listCanhBao,
   type BuoiHocHS, type Problem, type Grade, type ETResult, type BtvnKQ, type BtvnTrangThai, type BtvnThaiDo, type CanhBao, type DangTaiLieu, type LuoiSync, laOHinh,
 } from '../../lib/gami'
-import { listNopTheoBuoi, deXuatTrangThai, signUrls, uploadAnhCham, boAnhCham, listNhanXetMau, setNhanXet, traBai, xacNhanBuoi, chuyenBuoi, listBuoiBtvnCuaLop, type BtvnNop, type BtvnNopAnh, type NhanXetMau, type BuoiBtvn } from '../../lib/btvnnop'
+import { listNopTheoBuoi, deXuatTrangThai, signUrls, uploadAnhCham, boAnhCham, xoayAnh, doiChoAnh, listNhanXetMau, setNhanXet, traBai, xacNhanBuoi, chuyenBuoi, listBuoiBtvnCuaLop, type BtvnNop, type BtvnNopAnh, type NhanXetMau, type BuoiBtvn } from '../../lib/btvnnop'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { tenHienThiDs } from '../../lib/hoten'
 import { ET_KQ, DongBar, CanhBaoLuoi, type BuoiFull } from './ChamBuoi'
@@ -477,7 +477,10 @@ function VeAnh({ ten, anhDs, urls, reloadNop, daTra }: { ten: string; anhDs: Btv
   const nenRef = useRef<Nen | null>(null)
   nenRef.current = nen
   const bgRef = useRef<HTMLCanvasElement>(null) // canvas NỀN (đồng bộ, không qua toBlob/blob URL — tab bị che vẫn đúng)
-  const xoayRef = useRef<Record<string, Xoay>>({}) // góc xoay CHƯA LƯU theo trang (như nháp nét)
+  // Góc xoay theo trang: khởi tạo từ góc đã lưu ở DB (btvn_nop_anh.xoay, 08/11) — bản đã vẽ (path_cham) đứng sẵn ⇒ 0.
+  // Mỗi lần xoay trang CHƯA có bản vẽ ⇒ lưu luôn góc vào DB (PH/màn khác cũng thấy ảnh đứng đúng chiều).
+  const xoayRef = useRef<Record<string, Xoay>>(Object.fromEntries(anhDs.map((a) => [a.id, (a.path_cham ? 0 : a.xoay) as Xoay])))
+  const gocDb = (a: BtvnNopAnh) => (a.path_cham ? 0 : a.xoay)
   const marksRef = useRef<Record<string, Mark[]>>({}) // nháp theo TRANG (key = anh.id)
   const drawing = useRef(false)
   const toolRef = useRef<Tool>(tool)
@@ -618,6 +621,12 @@ function VeAnh({ ten, anhDs, urls, reloadNop, daTra }: { ten: string; anhDs: Btv
     const cu = xoayRef.current[anhIdRef.current] ?? 0
     const moi = ((((cu + chieu * 90) % 360) + 360) % 360) as Xoay
     xoayRef.current[anhIdRef.current] = moi
+    const aHt = anhs.find((x) => x.id === anhIdRef.current)
+    if (aHt && !aHt.path_cham) {
+      const id = aHt.id
+      setAnhs((cur) => cur.map((x) => (x.id === id ? { ...x, xoay: moi } : x)))
+      xoayAnh(id, moi).catch((e) => alert(`Không lưu được góc xoay: ${e?.message ?? e}`))
+    }
     const W = n.w, H = n.h
     const f = chieu === 1 ? (p: { x: number; y: number }) => ({ x: H - p.y, y: p.x }) : (p: { x: number; y: number }) => ({ x: p.y, y: W - p.x })
     for (const m of marks()) {
@@ -797,6 +806,18 @@ function VeAnh({ ten, anhDs, urls, reloadNop, daTra }: { ten: string; anhDs: Btv
   const soNet = marks().length
   const chuaLuu = (id: string) => (marksRef.current[id]?.length ?? 0) > 0
   // "Làm lại trang": bỏ bản chấm đã lưu (nét đã ghép vào ảnh không hoàn tác được) → về ảnh gốc PH nộp.
+  // Đổi chỗ trang đang xem với trang liền trước/sau: vá local ngay (không nạp lại xấp ảnh), DB đánh số lại.
+  async function doiCho(huong: -1 | 1) {
+    const j = idx + huong
+    if (!anh || busy || j < 0 || j >= anhs.length) return
+    setBusy(true)
+    try {
+      await doiChoAnh(anh.id, huong)
+      setAnhs((cur) => { const m = [...cur]; [m[idx], m[j]] = [m[j], m[idx]]; return m })
+      setIdx(j)
+      reloadNop().catch(() => {})
+    } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
+  }
   async function lamLai() {
     if (!anh?.path_cham || busy) return
     if (!confirm('Bỏ bản chấm của trang này và quay về ảnh gốc? Nét đã vẽ trên trang này sẽ mất.')) return
@@ -804,7 +825,7 @@ function VeAnh({ ten, anhDs, urls, reloadNop, daTra }: { ten: string; anhDs: Btv
     try {
       await boAnhCham(anh.id)
       marksRef.current[anh.id] = []
-      xoayRef.current[anh.id] = 0
+      xoayRef.current[anh.id] = anh.xoay as Xoay // quay về ảnh gốc ⇒ dùng góc đã lưu ở DB
       setAnhs((cur) => cur.map((a) => (a.id === anh.id ? { ...a, path_cham: null } : a)))
       setNhap(null); setTick((n) => n + 1)
       reloadNop().catch(() => {})
@@ -895,13 +916,18 @@ function VeAnh({ ten, anhDs, urls, reloadNop, daTra }: { ten: string; anhDs: Btv
       {anhs.length > 1 && (
         <div className="flex items-center gap-1.5 overflow-x-auto border-t border-slate-200 bg-white px-2 py-1.5">
           <span className="shrink-0 text-[11px] font-semibold text-slate-400">Trang {idx + 1}/{anhs.length}</span>
+          {/* Đổi chỗ trang đang xem (PH/TA đẩy nhầm thứ tự — 08/11): chỉ đổi thu_tu hiển thị, danh tính ảnh = id */}
+          <button onClick={() => doiCho(-1)} disabled={busy || idx === 0} title="Đổi chỗ với trang trước"
+            className="shrink-0 rounded-md border border-slate-200 px-1.5 py-1 text-[12px] font-bold text-slate-600 disabled:opacity-30">◀</button>
+          <button onClick={() => doiCho(1)} disabled={busy || idx === anhs.length - 1} title="Đổi chỗ với trang sau"
+            className="shrink-0 rounded-md border border-slate-200 px-1.5 py-1 text-[12px] font-bold text-slate-600 disabled:opacity-30">▶</button>
           {anhs.map((a, i) => {
             const s = localUrls[a.path_cham ?? a.path]
             return (
               <button key={a.id} onClick={() => { setIdx(i); setNhap(null) }} className={`relative shrink-0 overflow-hidden rounded-md border-2 ${i === idx ? 'border-teal-500' : 'border-transparent'}`}>
                 {s ? <img src={s} alt="" className="h-14 w-10 object-cover" draggable={false} /> : <span className="flex h-14 w-10 items-center justify-center bg-slate-100 text-[9px] text-slate-400">…</span>}
                 {a.path_cham && <span className="absolute right-0.5 top-0.5 rounded bg-rose-600 px-0.5 text-[8px] font-bold text-white">✎</span>}
-                {(chuaLuu(a.id) || (xoayRef.current[a.id] ?? 0) !== 0) && <span className="absolute bottom-0.5 left-0.5 h-2 w-2 rounded-full bg-amber-400" title="chưa lưu" />}
+                {(chuaLuu(a.id) || (xoayRef.current[a.id] ?? 0) !== gocDb(a)) && <span className="absolute bottom-0.5 left-0.5 h-2 w-2 rounded-full bg-amber-400" title="chưa lưu" />}
               </button>
             )
           })}

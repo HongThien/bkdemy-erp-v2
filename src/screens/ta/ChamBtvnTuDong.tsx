@@ -5,7 +5,7 @@
 // Chế độ HÀNG ĐỢI (07/11): TA bấm Gửi chấm, máy CEO chạy /cham-btvn-hang-doi theo đợt, TA quay lại xác nhận.
 import { useEffect, useState } from 'react'
 import { getRoster, listProblems, loadBTVNForBuoi, syncBTVNProblems, loadHinhForBuoiPhase, syncHinhProblems, type BuoiHocHS, type Problem } from '../../lib/gami'
-import { lopChamAi, listBuoiBtvnCuaLop, listNopTheoBuoi, signUrls, trangThaiAiTheoBuoi, boAnh, laAnhTaThem, type LopAi, type BuoiBtvn, type BtvnNop, type AiTrangThai } from '../../lib/btvnnop'
+import { lopChamAi, listBuoiBtvnCuaLop, listNopTheoBuoi, signUrls, trangThaiAiTheoBuoi, boAnh, laAnhTaThem, xoayAnh, doiChoAnh, type LopAi, type BuoiBtvn, type BtvnNop, type AiTrangThai } from '../../lib/btvnnop'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { tenHienThiDs } from '../../lib/hoten'
 import { BK_TROI } from '../../components/bk/BKUI'
@@ -105,7 +105,7 @@ function ChonHocSinh({ buoi, hsMo, onMo }: { buoi: BuoiBtvn; hsMo: { r: BuoiHocH
   async function reloadNop() {
     const n = await listNopTheoBuoi(buoi.id)
     setNop(n)
-    setUrls(await signUrls(Object.values(n).flatMap((x) => x.anh.map((a) => a.path))).catch(() => ({})))
+    setUrls(await signUrls(Object.values(n).flatMap((x) => x.anh.flatMap((a) => [a.path, a.path_cham].filter(Boolean) as string[]))).catch(() => ({})))
   }
   async function reloadAi() { setAi(await trangThaiAiTheoBuoi(buoi.id).catch(() => ({}))) }
   useEffect(() => { (async () => {
@@ -164,8 +164,14 @@ function ChonHocSinh({ buoi, hsMo, onMo }: { buoi: BuoiBtvn; hsMo: { r: BuoiHocH
 
 // Xem xấp ảnh (thứ tự = thu_tu, máy đã sắp lại sau khi chấm). Bấm ảnh để phóng to.
 // ✕ = bỏ ảnh TA thêm nhầm (chỉ ảnh TA tự thêm, bài chưa trả PH) — không xoá, DB đánh dấu bo_at.
+// ◀ ▶ = đổi chỗ (PH/TA đẩy nhầm thứ tự) · ↻ = xoay 90° (ảnh chụp ngang/ngược). Chỉ đổi cách hiển thị, ảnh gốc giữ nguyên.
 function XemAnh({ n, urls, reloadNop }: { n?: BtvnNop; urls: Record<string, string>; reloadNop: () => Promise<void> }) {
-  const [to, setTo] = useState<string | null>(null)
+  const [to, setTo] = useState<{ url: string; xoay: number } | null>(null)
+  async function lam(id: string, viec: () => Promise<void>) {
+    if (dangBo) return
+    setDangBo(id); setLoi(null)
+    try { await viec(); await reloadNop() } catch (e: any) { setLoi(e.message ?? String(e)) } finally { setDangBo(null) }
+  }
   const [dangBo, setDangBo] = useState<string | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
   async function bo(id: string, so: number) {
@@ -177,23 +183,36 @@ function XemAnh({ n, urls, reloadNop }: { n?: BtvnNop; urls: Record<string, stri
   return (
     <div className="rounded-2xl bg-white p-2 shadow-sm">
       <div className="flex gap-2 overflow-x-auto">
-        {n.anh.map((a, i) => (
-          <div key={a.id} className={`relative shrink-0 ${dangBo === a.id ? 'opacity-40' : ''}`}>
-            <button onClick={() => setTo(urls[a.path] ?? null)} className="block">
-              {urls[a.path] ? <img src={urls[a.path]} alt="" className="h-36 w-auto rounded-lg border border-slate-200 object-contain" /> : <div className="h-36 w-24 rounded-lg bg-slate-100" />}
-            </button>
-            <span className="absolute left-1 top-1 rounded bg-black/60 px-1.5 text-[11px] font-bold text-white">{i + 1}</span>
-            {laAnhTaThem(a.path) && !n.tra_at && (
-              <button onClick={() => bo(a.id, i + 1)} disabled={!!dangBo} title="Bỏ ảnh thêm nhầm"
-                className="absolute right-1 top-1 flex h-7 w-7 items-center justify-center rounded-full bg-rose-600 text-[14px] font-bold text-white shadow active:bg-rose-500">✕</button>
-            )}
-          </div>
-        ))}
+        {n.anh.map((a, i) => {
+          const goc = a.path_cham ? 0 : a.xoay // bản TA đã vẽ đứng sẵn
+          const url = urls[a.path_cham ?? a.path] // có bản TA đã vẽ thì xem bản đó
+          return (
+            <div key={a.id} className={`relative shrink-0 ${dangBo === a.id ? 'opacity-40' : ''}`}>
+              <button onClick={() => url && setTo({ url, xoay: goc })} className="flex h-40 w-40 items-center justify-center overflow-hidden rounded-lg border border-slate-200 bg-slate-50">
+                {url ? <img src={url} alt="" className="max-h-full max-w-full object-contain transition-transform" style={{ transform: `rotate(${goc}deg)` }} /> : <div className="h-36 w-24 rounded-lg bg-slate-100" />}
+              </button>
+              <span className="absolute left-1 top-1 rounded bg-black/60 px-1.5 text-[11px] font-bold text-white">{i + 1}</span>
+              {laAnhTaThem(a.path) && !n.tra_at && (
+                <button onClick={() => bo(a.id, i + 1)} disabled={!!dangBo} title="Bỏ ảnh thêm nhầm"
+                  className="absolute right-1 top-1 flex h-7 w-7 items-center justify-center rounded-full bg-rose-600 text-[14px] font-bold text-white shadow active:bg-rose-500">✕</button>
+              )}
+              <div className="mt-1 flex justify-center gap-1">
+                <button onClick={() => lam(a.id, () => doiChoAnh(a.id, -1))} disabled={!!dangBo || i === 0} title="Đổi chỗ với ảnh trước"
+                  className="h-8 w-9 rounded-lg border border-slate-200 bg-white text-[13px] font-bold text-slate-600 disabled:opacity-30">◀</button>
+                <button onClick={() => lam(a.id, () => xoayAnh(a.id, a.xoay + 90))} disabled={!!dangBo || !!a.path_cham}
+                  title={a.path_cham ? 'Trang này đã có bản chấm vẽ tay — đã đứng đúng chiều' : 'Xoay 90° theo chiều kim đồng hồ'}
+                  className="h-8 w-9 rounded-lg border border-slate-200 bg-white text-[14px] font-bold text-slate-600 disabled:opacity-30">↻</button>
+                <button onClick={() => lam(a.id, () => doiChoAnh(a.id, 1))} disabled={!!dangBo || i === n.anh.length - 1} title="Đổi chỗ với ảnh sau"
+                  className="h-8 w-9 rounded-lg border border-slate-200 bg-white text-[13px] font-bold text-slate-600 disabled:opacity-30">▶</button>
+              </div>
+            </div>
+          )
+        })}
       </div>
       {loi && <p className="mt-1.5 rounded-lg bg-rose-50 px-2 py-1 text-[12px] text-rose-700">{loi}</p>}
       {to && (
         <div onClick={() => setTo(null)} className="fixed inset-0 z-[70] flex items-center justify-center bg-black/85 p-2">
-          <img src={to} alt="" className="max-h-full max-w-full object-contain" />
+          <img src={to.url} alt="" className="max-h-full max-w-full object-contain" style={to.xoay % 180 ? { transform: `rotate(${to.xoay}deg)`, maxWidth: '100dvh', maxHeight: '100vw' } : { transform: `rotate(${to.xoay}deg)` }} />
         </div>
       )}
     </div>

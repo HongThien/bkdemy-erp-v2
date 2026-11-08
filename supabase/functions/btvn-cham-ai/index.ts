@@ -42,6 +42,7 @@ KẾT QUẢ MỖI CÂU
 - Chữ số/dấu quyết định kết quả mà không đọc chắc, trắc nghiệm khoanh 2 đáp án, ảnh cắt mất một phần câu ⇒ vẫn đưa kết quả nghiêng nhất nhưng chac=false.
 - Câu KHÔNG có trên ảnh (thiếu trang/ảnh) ⇒ KHÔNG đưa câu đó vào danh sách cau.
 - Ảnh có thể xoay ngang/lộn ngược, thứ tự lộn xộn: tự xoay để đọc; thu_tu_anh = danh sách id ảnh theo đúng thứ tự trang của phiếu.
+- xoay_anh: với ảnh đang ngang/ngược, ghi {id, goc} — goc (0/90/180/270, chiều kim đồng hồ) để ảnh đứng đúng chiều. Ảnh đã đứng thì không ghi.
 
 NHẬN XÉT
 - nhan_xet mỗi câu partial/wrong: 1 dòng tiếng Việt dạng "<lỗi> vì: <lý do>. Đúng: <đáp án>" — nói lỗi trước, đủ để học sinh hiểu. Câu correct: để trống, trừ khi có lỗi nhãn nhỏ cần nhắc.
@@ -52,9 +53,14 @@ NHẬN XÉT
 const SCHEMA = {
   type: 'object',
   additionalProperties: false,
-  required: ['thu_tu_anh', 'nhan_xet_chung', 'cau'],
+  required: ['thu_tu_anh', 'nhan_xet_chung', 'cau', 'xoay_anh'],
   properties: {
     thu_tu_anh: { type: 'array', items: { type: 'string' } },
+    xoay_anh: {
+      type: 'array',
+      items: { type: 'object', additionalProperties: false, required: ['id', 'goc'],
+        properties: { id: { type: 'string' }, goc: { type: 'integer', enum: [0, 90, 180, 270] } } },
+    },
     nhan_xet_chung: { type: 'string' },
     cau: {
       type: 'array',
@@ -169,6 +175,8 @@ Deno.serve(async (req) => {
       p_nhan_xet_chung: out.nhan_xet_chung ?? '', p_thu_tu_anh: thuTu.length === anh.length ? thuTu : null,
       p_cau: ketQua, p_tokens_in: res.usage?.input_tokens ?? null, p_tokens_out: res.usage?.output_tokens ?? null,
     })
+    for (const x of (out.xoay_anh ?? []) as { id: string; goc: number }[])
+      if (okAnh.has(x.id) && [0, 90, 180, 270].includes(x.goc)) await rpc(jwt, 'fn_btvn_anh_xoay', { p_anh_id: x.id, p_goc: x.goc })
     return json({ lan_id: lanId, so_cau: ketQua.length, tong_cau: cau.length }, 200, h)
   } catch (e) {
     console.error(e)

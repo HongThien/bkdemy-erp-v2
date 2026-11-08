@@ -6,7 +6,7 @@ import { supabase } from './supabase'
 
 export const BTVN_NOP_BUCKET = 'btvn-nop'
 
-export type BtvnNopAnh = { id: string; path: string; path_cham: string | null; thu_tu: number }
+export type BtvnNopAnh = { id: string; path: string; path_cham: string | null; thu_tu: number; xoay: number } // xoay = góc hiển thị ảnh gốc (0/90/180/270)
 export type BtvnNop = {
   hoc_sinh_id: string
   buoi_hoc_id: string
@@ -22,13 +22,13 @@ export type NhanXetMau = { ma: string; noi_dung: string; thu_tu: number }
 export async function listNopTheoBuoi(buoiId: string): Promise<Record<string, BtvnNop>> {
   const [n, a] = await Promise.all([
     supabase.from('btvn_nop').select('hoc_sinh_id,buoi_hoc_id,nop_at,tra_at,buoi_xac_nhan_at,nhan_xet_ma').eq('buoi_hoc_id', buoiId).limit(1000),
-    supabase.from('btvn_nop_anh').select('id,hoc_sinh_id,path,path_cham,thu_tu').eq('buoi_hoc_id', buoiId).is('bo_at', null).order('thu_tu').limit(5000), // ảnh TA đã bỏ (thêm nhầm) không hiện
+    supabase.from('btvn_nop_anh').select('id,hoc_sinh_id,path,path_cham,thu_tu,xoay').eq('buoi_hoc_id', buoiId).is('bo_at', null).order('thu_tu').limit(5000), // ảnh TA đã bỏ (thêm nhầm) không hiện
   ])
   if (n.error) throw n.error
   if (a.error) throw a.error
   const out: Record<string, BtvnNop> = {}
   for (const r of n.data ?? []) out[r.hoc_sinh_id] = { ...r, nhan_xet_ma: r.nhan_xet_ma ?? [], anh: [] }
-  for (const r of a.data ?? []) out[r.hoc_sinh_id]?.anh.push({ id: r.id, path: r.path, path_cham: r.path_cham, thu_tu: r.thu_tu })
+  for (const r of a.data ?? []) out[r.hoc_sinh_id]?.anh.push({ id: r.id, path: r.path, path_cham: r.path_cham, thu_tu: r.thu_tu, xoay: r.xoay ?? 0 })
   return out
 }
 
@@ -220,5 +220,17 @@ export async function chamTuDongBat(): Promise<boolean> {
 export const laAnhTaThem = (path: string) => path.startsWith('ta/')
 export async function boAnh(anhId: string): Promise<void> {
   const { error } = await supabase.rpc('fn_btvn_anh_bo', { p_anh_id: anhId })
+  if (error) throw error
+}
+
+// Xoay / đổi chỗ ảnh (mig 202611081137) — chỉ đổi cách HIỂN THỊ, ảnh gốc giữ nguyên.
+// Góc = độ theo chiều kim đồng hồ để ảnh gốc đứng đúng chiều. Bản TA đã vẽ (path_cham) đứng sẵn, không xoay thêm.
+export async function xoayAnh(anhId: string, goc: number): Promise<void> {
+  const { error } = await supabase.rpc('fn_btvn_anh_xoay', { p_anh_id: anhId, p_goc: (((goc % 360) + 360) % 360) })
+  if (error) throw error
+}
+// Đổi chỗ với ảnh liền trước (-1) / liền sau (+1).
+export async function doiChoAnh(anhId: string, huong: -1 | 1): Promise<void> {
+  const { error } = await supabase.rpc('fn_btvn_anh_doi_cho', { p_anh_id: anhId, p_huong: huong })
   if (error) throw error
 }

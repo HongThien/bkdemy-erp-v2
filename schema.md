@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-502 bảng · 39 view · 0 enum · 282 trigger · 1643 function
+502 bảng · 39 view · 0 enum · 282 trigger · 1645 function
 
 ## _app_secrets
 
@@ -899,6 +899,7 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | bo_at | timestamp with time zone | Y |  |  |  |
 | bo_boi | uuid | Y |  |  |  |
+| xoay | smallint |  | 0 |  |  |
 
 ## btvn_ontap_config
 
@@ -5872,8 +5873,8 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
-| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
+| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -8072,12 +8073,17 @@ SELECT n.hoc_sinh_id,
 | buoi_hoc_id | uuid |
 | thu_tu | integer |
 | path | text |
+| xoay | smallint |
 
 ```sql
 SELECT a.hoc_sinh_id,
     a.buoi_hoc_id,
     a.thu_tu,
-    COALESCE(a.path_cham, a.path) AS path
+    COALESCE(a.path_cham, a.path) AS path,
+        CASE
+            WHEN a.path_cham IS NULL THEN a.xoay::integer
+            ELSE 0
+        END::smallint AS xoay
    FROM btvn_nop_anh a
      JOIN btvn_nop n ON n.hoc_sinh_id = a.hoc_sinh_id AND n.buoi_hoc_id = a.buoi_hoc_id
   WHERE n.tra_at IS NOT NULL AND a.bo_at IS NULL;
@@ -10090,8 +10096,8 @@ WITH luot AS (
 - `_tk_dong_bo(p_ns uuid)` → void
 - `_tk_goc_team(p_team text, p_mon text)` → uuid
 - `_tl_bdm_cau_da_dung(p_buoi uuid, p_tru_phan uuid DEFAULT NULL::uuid)` → text[]
-- `_tl_bdm_cau_vi_tri(p_khoi text, p_mon text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
 - `_tl_bdm_cau_vi_tri(p_khoi text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
+- `_tl_bdm_cau_vi_tri(p_khoi text, p_mon text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
 - `_tl_bdm_ghi_cau(p_phan uuid, p_ma_caus text[])` → void
 - `_tl_bdm_khoi_nhom(p_nhom text)` → text
 - `_tl_bdm_kiem_buoi(p_tai_lieu uuid, p_buoi uuid)` → void
@@ -10357,6 +10363,8 @@ WITH luot AS (
 - `fn_btvn_ai_trang_thai(p_buoi_hoc_id uuid)` → TABLE(hoc_sinh_id uuid, yeu_cau_at timestamp with time zone, lan_moi_at timestamp with time zone, cho_cham boolean, chot boolean)
 - `fn_btvn_ai_yeu_cau(p_buoi_hoc_id uuid, p_hoc_sinh_id uuid)` → timestamp with time zone
 - `fn_btvn_anh_bo(p_anh_id uuid)` → void
+- `fn_btvn_anh_doi_cho(p_anh_id uuid, p_huong integer)` → void
+- `fn_btvn_anh_xoay(p_anh_id uuid, p_goc integer)` → void
 - `fn_btvn_bo_trong_theo_buoi(p_hs uuid, p_buoi uuid[])` → TABLE(buoi_hoc_id uuid, so_bo_trong integer)
 - `fn_btvn_bu_theo_buoi_me(p_buoi uuid[], p_hs uuid DEFAULT NULL::uuid)` → TABLE(buoi_me_id uuid, hoc_sinh_id uuid, buoi_bu_id uuid, ngay_bu date, so_cau integer, pct integer, trang_thai_nop text, thai_do text)
 - `fn_btvn_buoi_cua_lop(p_lop_id uuid)` → TABLE(id uuid, ngay date, dong boolean, co_phieu boolean)
@@ -11219,8 +11227,8 @@ WITH luot AS (
 - `hs_sotay_tim_ct(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_sotay_tim_lt(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
@@ -11289,9 +11297,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
@@ -11348,6 +11356,7 @@ WITH luot AS (
 | bo_tro_yeu | bo_tro_yeu_muc_may_ck | `CHECK (((muc_may_de_xuat IS NULL) OR (muc_may_de_xuat = ANY (ARRAY[1, 2, 3]))))` |
 | bo_tro_yeu | bo_tro_yeu_nhe_dong_du_ck | `CHECK (((trang_thai <> 'nhe_xong'::text) OR ((ket_qua IS NOT NULL) AND (hoan_thanh_at IS NOT NULL))))` |
 | bo_tro_yeu | bo_tro_yeu_uu_tien_check | `CHECK (((uu_tien >= 1) AND (uu_tien <= 3)))` |
+| btvn_nop_anh | btvn_nop_anh_xoay_check | `CHECK ((xoay = ANY (ARRAY[0, 90, 180, 270])))` |
 | buoi_ban_qua | buoi_ban_qua_check | `CHECK ((((che_do = 'canhan'::text) = (so_doi IS NULL)) AND ((che_do = 'canhan'::text) = (phut IS NULL))))` |
 | buoi_ban_qua | buoi_ban_qua_phut_check | `CHECK (((phut >= 1) AND (phut <= 10)))` |
 | buoi_ban_qua | buoi_ban_qua_so_doi_check | `CHECK (((so_doi >= 2) AND (so_doi <= 4)))` |
