@@ -27,6 +27,7 @@ Trang đang chạy: **https://toan.bkacademy.edu.vn/the-tich/** (deploy tay — 
 | 47 | NBV-12-18-F · câu 47 | Giao của hai khối trụ | thiết diện (lát hình vuông) | `giao-hai-tru.html` | 2a³/3 | 10/10/2026 | chưa xem | T1120000002743 (khớp 18/10) |
 | 44 | NBV-12-18-F · câu 44 | Mái vòm sân vận động | thiết diện (lát viên phân) | `mai-vom.html` | 2(π − 2)/3 · ab² = (π − 2)·101 250 ≈ 115 586 m³ | 10/10/2026 | chưa xem | T1120000002741 (khớp 18/10) |
 | 53 | NBV-12-18-F · câu 53 | Trụ bị mặt phẳng nghiêng cắt | diện tích mặt cắt | `tru-cat-nghieng.html` | (4π/3 + √3/2)R² ≈ 5,05R² (nguồn: Cách 1 sai, đề in nhầm AB = a√3) | 10/10/2026 | chưa xem | |
+| GT-12A1-B13 | Giáo trình 12A1 · Buổi 13 (08/11/2026) · câu 2914 | Đáy tròn, thiết diện tam giác đều (kèm bước lăng trụ + tổng kết 3 dạng) | thiết diện (lát tam giác đều) | `thiet-dien-day-tron.html` | 256√3/3 ≈ 147,8 · a + b = 259 | 08/11/2026 | chưa xem | T1120000002914 (mã câu lấy thẳng từ giáo trình buổi 13, đối chiếu đề: đáy x² + y² = 16, thiết diện ⟂ Ox là tam giác đều) |
 
 Thêm `&nhung=1` vào địa chỉ trang chuyên đề để nhúng cạnh bài giải (không có nút / bảng chọn bài).
 

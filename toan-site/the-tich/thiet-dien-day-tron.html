@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vật thể đáy tròn, thiết diện tam giác đều · Thể tích bằng tích phân</title>
+<meta name="description" content="Mô hình 3D xoay được cho giáo trình 12A1 buổi 13: từ lăng trụ (thiết diện không đổi) đến vật thể đáy tròn có thiết diện là tam giác đều thay đổi. Cho lát cắt chạy dọc trục Ox, viết diện tích lát S(x), cộng các lát rồi lấy tích phân.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Roboto+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="khung.css">
+<style>
+.fx .r2>span:first-child{white-space:nowrap}   /* công thức không gãy dòng ở dấu = khi chú thích bên phải dài */
+.dang{display:grid;gap:.55rem;margin:.6rem 0}
+.dang .d{border:1px solid var(--line);border-radius:.7rem;padding:.6rem .8rem;background:rgba(16,31,66,.55)}
+.dang .d b.n{display:inline-grid;place-items:center;width:1.5rem;height:1.5rem;border-radius:50%;background:var(--scan);color:var(--void);font:800 .8rem/1 var(--f-ui);margin-right:.45rem}
+.dang .d.hot{border-color:rgba(255,181,71,.6)}
+.dang .d.hot b.n{background:var(--amber)}
+.dang .d p{margin:.3rem 0 0}
+.lien{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.5rem}
+.lien a{display:inline-block;text-decoration:none;cursor:pointer;background:rgba(11,22,48,.82);border:1px solid rgba(92,225,255,.55);border-radius:999px;padding:.45em .95em;font:600 .78rem/1 var(--f-ui);color:var(--scan)}
+.lien a:hover{background:rgba(92,225,255,.14)}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineSegmentsGeometry.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineGeometry.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineMaterial.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/LineSegments2.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/lines/Line2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="khung.js"></script>
+<script>
+// BÀI: Giáo trình 12A1 · Buổi 13 · câu T1120000002914 — vật thể có đáy là hình tròn x² + y² = 16, thiết diện vuông góc Ox là tam giác đều.
+// Loại THIẾT DIỆN (spec A4): có bước cắt lát. Kịch bản: 1 Đề bài → 2 Lăng trụ (thiết diện KHÔNG đổi: V = S·h) → 3 Dựng vật thể (lát tam giác đều chạy dọc Ox)
+//   → 4 Cắt một lát (S(x): chữ trước, số sau) → 5 Cộng các lát → 6 Tính thể tích (công thức chữ → bấm Thay số) → 7 Ba dạng của buổi (liên kết sang cốc nghiêng, mái vòm).
+// Địa chỉ: ?buoc=N · ?x=1.5 (vị trí lát, bước 4) · ?n=16 (số lát) · ?thay=1 (bước 6 đã thay số).
+(function () {
+'use strict'
+// ═══ 1. SỐ LIỆU CỦA BÀI ═══
+const R = 4                                 // bán kính đáy
+const SC = 0.6                              // 1 đơn vị toán = 0,6 đơn vị cảnh
+const R3 = Math.sqrt(3)
+const nua = x => Math.sqrt(Math.max(0, R * R - x * x))   // nửa dây MN tại x
+const dt = x => R3 * (R * R - x * x)                       // S(x) = √3 (R² − x²)
+const V0 = 4 * R3 * R ** 3 / 3                             // = 256√3/3 ≈ 147,80 (đáp số)
+const VLT = 2 * R3 * R ** 3                                // lăng trụ bao ngoài: S(0) · 2R = 128√3
+// Toạ độ TOÁN: Ox = đường kính nằm ngang của đáy, Oy = đường kính còn lại, h = độ cao. Trục đứng của three.js là Y ⇒ (x, y, h) → (x, h, −y).
+const T = (x, y, h) => [x * SC, h * SC, -y * SC]
+const poly = (x, m) => [T(x, m, 0), T(x, -m, 0), T(x, 0, R3 * m)]   // lát: tam giác đều MNK (K là đỉnh nằm trên)
+
+// ═══ 2. KHUNG CHUNG ═══
+const gocCua = n => (n === 4 ? 'cat' : 'chinh')
+const M = MoHinh({
+  nhan: 'Toán 12 · Ứng dụng tích phân · Thể tích', tieuDe: 'Đáy tròn, thiết diện tam giác đều',
+  buoc: ['Đề bài', 'Lăng trụ', 'Dựng vật thể', 'Cắt một lát', 'Cộng các lát', 'Tính thể tích', 'Ba dạng'],
+  nutGoc: [['mac_dinh', 'Góc ban đầu'], ['doc', 'Nhìn dọc trục Ox'], ['tren', 'Nhìn từ trên']],
+  goc: {
+    chinh: { az: 0.55, pol: 1.15 },
+    cat: { az: 1.05, pol: 1.2 },                       // nhìn chếch dọc trục: thấy lát cắt gần chính diện
+    doc: { az: Math.PI / 2 - 0.03, pol: 1.45 },
+    tren: { az: 0, pol: 0.14 },
+  },
+  khung: { chinh: { tx: 0, ty: 1.7, tz: 0, r: 5.4 } },
+  khungNao: () => 'chinh', gocMacDinh: () => gocCua(M.step),
+  bang: n => PANELS[n](), sauBang: bindPanel, truocBang, khiDoiBuoc, dongBo,
+  moiKhung: () => { if (dirty) { dirty = false; capNhatLat(); sync2(); sync3() } },
+  tiep: () => { if (M.step !== 6 || S.subbed) return false; thaySo(); return true },   // ở bước 6, nút Tiếp (và phím →) dùng để thay số
+  nutTiep: () => (M.step === 6 ? { chu: S.subbed ? 'Tiếp ›' : 'Thay số ›', tat: S.subbed } : null),
+  phimCach: () => { if (M.step !== 3) return false; S.playing ? stopPlay() : startPlay(); return true },
+  thamSo: q => {
+    const x = q.get('x'), n = +q.get('n')
+    if (x !== null && x !== '' && Math.abs(+x) < R) S.x = +x
+    if ([4, 8, 16, 32, 64].includes(n)) S.n = n
+    return { sub: q.get('thay') === '1' }
+  },
+})
+if (!M) return
+const { RM, $, $$, fmt, tn, tex, scene, mkLine, setLine, setView, clock, anims, label, dot, flat, luoi } = M
+
+// ═══ 3. TRẠNG THÁI ═══
+const S = {
+  p: 0,                 // bước 2: vị trí lát trong lăng trụ
+  q: R, playing: false, // bước 3: lát đang quét tới đâu (−R → R)
+  x: 1,                 // bước 4: vị trí lát
+  n: 8, reveal: 8,      // bước 5: số lát + số lát đã hiện
+  subbed: false,        // bước 6: đã bấm "Thay số"
+}
+let dirty = true
+const st = () => M.step
+
+// ═══ 4. VẬT THỂ ═══
+const nhom = () => { const g = new THREE.Group(); scene.add(g); return g }
+const mesh = (geo, mat, order) => { const m = new THREE.Mesh(geo, mat); m.renderOrder = order; m.frustumCulled = false; scene.add(m); return m }
+const NX = 100, xs = []; for (let i = 0; i <= NX; i++) xs.push(-R * Math.cos(Math.PI * i / NX))   // dồn điểm mẫu về hai đầu (m(x) dốc đứng ở đó)
+const xCua = s => xs[Math.round(s * NX)]
+// Hai mặt xiên của vật thể (phía y > 0 và y < 0) — tam giác xếp theo dải x nên "dựng tới đâu" chỉ là setDrawRange
+const matXanh = new THREE.MeshPhongMaterial({ color: 0x2fb9e8, transparent: true, opacity: 0.4, side: THREE.DoubleSide, depthWrite: false, shininess: 60, specular: 0x335566, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 2 })
+const matDay = new THREE.MeshBasicMaterial({ color: 0x7daaff, transparent: true, opacity: 0.12, side: THREE.DoubleSide, depthWrite: false })
+const matHong = new THREE.MeshPhongMaterial({ color: 0xff7ab8, transparent: true, opacity: 0.28, side: THREE.DoubleSide, depthWrite: false, shininess: 40 })
+const mat1 = luoi().them((s, t) => { const x = xCua(s), m = nua(x); return T(x, m * (1 - t), R3 * m * t) }, NX, 1).geo()
+const mat2 = luoi().them((s, t) => { const x = xCua(s), m = nua(x); return T(x, -m * (1 - t), R3 * m * t) }, NX, 1).geo()
+const dayGeo = luoi().them((s, t) => { const g = 2 * Math.PI * s; return T(t * R * Math.cos(g), t * R * Math.sin(g), 0) }, 96, 1).geo()
+const vat = nhom()
+{ const a = new THREE.Mesh(mat1, matXanh), b = new THREE.Mesh(mat2, matXanh); a.renderOrder = b.renderOrder = 3; a.frustumCulled = b.frustumCulled = false; vat.add(a, b) }
+const dayMesh = mesh(dayGeo, matDay, 1)
+// Đường nhận dạng vật thể: đường tròn đáy + sống lưng (quỹ tích đỉnh K của các lát, một nửa elip)
+const duongTron = nhom(), songLung = nhom()
+{ const E = []; for (let i = 0; i <= 160; i++) { const g = 2 * Math.PI * i / 160; E.push(...T(R * Math.cos(g), R * Math.sin(g), 0)) }
+  duongTron.add(mkLine(E, { color: 0xe6efff, width: 2.8 }))
+  const K = []; for (let i = 0; i <= NX; i++) { const x = xs[i]; K.push(...T(x, 0, R3 * nua(x))) }
+  songLung.add(mkLine(K, { color: 0x5ce1ff, width: 3.2 })) }
+// Trục Ox (đường kính nằm ngang) + trục Oy
+{ const g = nhom()
+  g.add(mkLine(flat([T(-R - 1, 0, 0), T(R + 1.5, 0, 0)]), { color: 0xffffff, width: 2, opacity: 0.9 }))
+  g.add(mkLine(flat([T(0, -R, 0), T(0, R + 1, 0)]), { color: 0xffffff, width: 1.6, opacity: 0.5 }))
+  const mui = new THREE.Mesh(new THREE.ConeGeometry(0.11, 0.4, 16), new THREE.MeshBasicMaterial({ color: 0xffffff })); mui.position.set((R + 1.5) * SC, 0, 0); mui.rotation.z = -Math.PI / 2; scene.add(mui) }
+
+// Lăng trụ (bước 2): tam giác đều cạnh 2R, dài 2R dọc Ox — chỉ để thấy "thiết diện không đổi"
+const prism = nhom(), prismVien = nhom()
+{ const geoPrism = luoi()
+    .them((s, t) => T(-R + 2 * R * s, R - 2 * R * t, 0), 1, 1)                 // đáy
+    .them((s, t) => T(-R + 2 * R * s, R * (1 - t), R3 * R * t), 1, 1)           // mặt xiên y > 0
+    .them((s, t) => T(-R + 2 * R * s, -R * (1 - t), R3 * R * t), 1, 1).geo()    // mặt xiên y < 0
+  prism.add(new THREE.Mesh(geoPrism, matXanh))
+  prism.children[0].renderOrder = 3; prism.children[0].frustumCulled = false
+  const cap = [-R, R].map(x => flat([T(x, R, 0), T(x, -R, 0), T(x, 0, R3 * R)], true))
+  for (const c of cap) prismVien.add(mkLine(c, { color: 0xbfe9ff, width: 2.4 }))
+  prismVien.add(mkLine(flat([T(-R, R, 0), T(R, R, 0)]), { color: 0xbfe9ff, width: 2.2 }))
+  prismVien.add(mkLine(flat([T(-R, -R, 0), T(R, -R, 0)]), { color: 0xbfe9ff, width: 2.2 }))
+  prismVien.add(mkLine(flat([T(-R, 0, R3 * R), T(R, 0, R3 * R)]), { color: 0xbfe9ff, width: 2.2 })) }
+
+// Lát đang chỉ: tam giác đều MNK (tô) + viền + đường cao KI
+const latG = nhom()
+const latGeo = new THREE.BufferGeometry(); latGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(9), 3)); latGeo.setIndex([0, 1, 2])
+const latMesh = new THREE.Mesh(latGeo, new THREE.MeshBasicMaterial({ color: 0xffb547, transparent: true, opacity: 0.82, side: THREE.DoubleSide, depthTest: false, depthWrite: false })); latMesh.renderOrder = 6; latMesh.frustumCulled = false; latG.add(latMesh)
+const latVien = mkLine(new Array(12).fill(0), { color: 0xfff1d6, width: 3, depthTest: false, order: 8 }); latG.add(latVien)
+const duongCao = mkLine(new Array(6).fill(0), { color: 0xffe2ad, width: 2, depthTest: false, order: 8 }); latG.add(duongCao)
+const xLat = () => (st() === 2 ? S.p : st() === 3 ? S.q : S.x)
+const mLat = () => (st() === 2 ? R : nua(xLat()))     // nửa cạnh của lát hiện tại (bước 2: lát không đổi)
+const coLat = () => st() >= 2 && st() <= 4
+function capNhatLat() {
+  const x = xLat(), m = mLat(), P = poly(x, m)
+  latGeo.attributes.position.array.set(flat(P)); latGeo.attributes.position.needsUpdate = true
+  setLine(latVien, flat(P, true))
+  setLine(duongCao, flat([T(x, 0, R3 * m), T(x, 0, 0)]))
+}
+
+// Chồng n lát dọc Ox (khung lo; đơn vị dọc trục là đơn vị cảnh nên diện tích chia SC để tổng ra thể tích toán học)
+const CL = M.chongLat()
+const cauHinhLat = () => ({ poly: t => poly(t / SC, nua(t / SC)), truc: 0, lo: -R * SC, hi: R * SC, n: S.n, dienTich: t => dt(t / SC) / SC })
+const playSlabs = () => CL.chay(cauHinhLat(), { con: () => st() === 5, khi: r => { S.reveal = r; syncSum() } })
+
+// ═══ 5. NHÃN + CHẤM ĐIỂM ═══
+const ro = () => coLat() && mLat() > 0.5
+label('O', () => T(0, 0, 0), () => true, -0.7, 0.75); label('x', () => T(R + 1.5, 0, 0), () => true, 0.5, 0.9)
+label('M', () => T(xLat(), mLat(), 0), ro, 0.8, -0.5); label('N', () => T(xLat(), -mLat(), 0), ro, -0.8, 0.6); label('K', () => T(xLat(), 0, R3 * mLat()), ro, 0.8, -0.4)
+label('I', () => T(xLat(), 0, 0), () => st() === 4 && ro(), 0.7, 0.8)
+label('R = 4', () => T(R * 0.7, R * 0.72, 0), () => st() === 1, 0.2, 0.9, 'dim')
+dot(() => T(0, 0, 0), () => true)
+dot(() => T(xLat(), mLat(), 0), coLat, 0xfff1d6); dot(() => T(xLat(), -mLat(), 0), coLat, 0xfff1d6); dot(() => T(xLat(), 0, R3 * mLat()), ro, 0xfff1d6)
+dot(() => T(xLat(), 0, 0), () => st() === 4 && ro(), 0xfff1d6)
+
+// ═══ 6. ĐỒNG BỘ HIỂN THỊ MỖI KHUNG HÌNH ═══
+let daiVe = -1
+function dongBo() {
+  const s = st()
+  // bước 3: vật thể mới dựng tới vị trí lát đang quét
+  let dai = NX; if (s === 3) { dai = 0; while (dai < NX && xs[dai + 1] <= S.q + 1e-9) dai++ }
+  if (dai !== daiVe) { daiVe = dai; mat1.setDrawRange(0, dai * 6); mat2.setDrawRange(0, dai * 6) }
+  vat.visible = s >= 3
+  matXanh.opacity = s === 5 ? 0.1 : s === 4 ? 0.3 : 0.4
+  songLung.visible = s >= 3 && s !== 5
+  prism.visible = s === 2
+  prismVien.visible = s === 2 || s === 6 || s === 7
+  prismVien.children.forEach(l => { l.material.opacity = s === 2 ? 1 : 0.35; l.material.transparent = true })
+  latG.visible = coLat(); duongCao.visible = ro()
+  CL.nhom.visible = s === 5
+}
+
+// ═══ 7. BẢNG LỜI GIẢI THEO BƯỚC (A3: công thức bằng chữ trước, thay số sau) ═══
+const ICON_PLAY = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>', ICON_PAUSE = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2.5h3.2v11H3.5zm5.8 0h3.2v11H9.3z"/></svg>'
+const PANELS = {
+  1: () => String.raw`<p class="kicker">Bước 1 · Đề bài</p><h2>Thể tích của vật thể có đáy tròn</h2>
+    <p>Một vật thể có đáy là hình tròn giới hạn bởi đường tròn <b><i>x</i>² + <i>y</i>² = 16</b>.</p>
+    <p>Cắt vật thể bằng mặt phẳng vuông góc với trục <i>Ox</i>, thiết diện luôn là một <b>tam giác đều</b> có một cạnh là dây cung của đường tròn.</p>
+    <p>Thể tích vật thể có dạng <b><i>a</i>√3 / <i>b</i></b> với <i>a</i>/<i>b</i> là phân số tối giản. Tính <i>S</i> = <i>a</i> + <i>b</i>.</p>
+    <div class="chips"><span>đáy: <i>x</i>² + <i>y</i>² = 16</span><span>thiết diện ⟂ <i>Ox</i>: tam giác đều</span><span class="q"><i>S</i> = <i>a</i> + <i>b</i> = ?</span></div>
+    <button type="button" class="btn" id="b1">Bắt đầu ›</button>
+    <p class="cap">Nguồn: giáo trình 12A1 · Buổi 13 · dạng "thiết diện thay đổi, cho sẵn hình dạng"</p>`,
+  2: () => String.raw`<p class="kicker">Bước 2 · Khởi động</p><h2>Khi thiết diện không đổi</h2>
+    <p>Xét khối đơn giản trước: <b>lăng trụ</b> có mặt cắt là tam giác đều cạnh <i>a</i>, dài <i>h</i>. Cắt ở đâu cũng được cùng một tam giác.</p>
+    <label class="sl"><span class="nm">x</span><input type="range" id="s2" min="-4" max="4" step="0.5" aria-label="Vị trí lát cắt trong lăng trụ"><output id="o2"></output></label>
+    <p class="lbl2">Công thức tổng quát</p>
+    <div class="fx"><div class="r2"><span data-tex="S=\dfrac{\sqrt3}{4}\,a^2"></span><small>diện tích tam giác đều</small></div>
+      <div class="res" data-tex="V=S\cdot h"></div></div>
+    <p class="lbl2">Thay số: <i>a</i> = 8, <i>h</i> = 8</p>
+    <div class="fx num"><div data-tex="S=\dfrac{\sqrt3}{4}\cdot 8^2=16\sqrt3"></div><div class="res" data-tex="V=16\sqrt3\cdot 8=128\sqrt3\approx 221{,}7"></div></div>
+    <p class="note">Vật thể của đề thì khác: lát <b>nhỏ dần</b> về hai đầu, nên thể tích bé hơn 128√3. Muốn tính phải biết diện tích lát theo <i>x</i>.</p>
+    <button type="button" class="btn" id="b2n">Dựng vật thể ›</button>`,
+  3: () => String.raw`<p class="kicker">Bước 3 · Dựng vật thể</p><h2>Cho lát cắt chạy dọc trục Ox</h2>
+    <p>Tại mỗi vị trí <i>x</i>, dây <i>MN</i> của đường tròn là một cạnh của tam giác đều <i>MNK</i>. Tam giác đứng thẳng trên đáy, đỉnh <i>K</i> ở phía trên.</p>
+    <div class="row"><button type="button" class="btn" id="b3"></button><span class="ro"><small>Vị trí lát</small><b id="r3">0</b></span></div>
+    <input type="range" id="s3" min="0" max="1000" value="1000" aria-label="Vị trí của lát cắt dọc trục Ox">
+    <ul class="cond">
+      <li id="c3a"><i></i><span>Giữa đáy: dây <i>MN</i> dài nhất, lát to nhất</span><em>x = 0</em></li>
+      <li id="c3b"><i></i><span>Hai đầu: lát thu về một điểm</span><em>x = ±4</em></li>
+    </ul>
+    <p class="note">Lát thay đổi theo <i>x</i> nên khối không phải lăng trụ. Phải viết được <b>diện tích lát</b> <i>S</i>(<i>x</i>).</p>`,
+  4: () => String.raw`<p class="kicker">Bước 4 · Cắt một lát</p><h2>Diện tích một lát</h2>
+    <p>Lát tại <i>x</i> là tam giác đều có cạnh <i>MN</i>. Đường tròn có <i>y</i> = ±√(<i>R</i>² − <i>x</i>²) nên <i>M</i>, <i>N</i> có tung độ ±√(<i>R</i>² − <i>x</i>²).</p>
+    <label class="sl"><span class="nm">x</span><input type="range" id="s4" min="-3.5" max="3.5" step="0.5" aria-label="Vị trí lát cắt"><output id="o4"></output></label>
+    <p class="lbl2">Công thức tổng quát (R: bán kính đáy)</p>
+    <div class="fx"><div class="r2"><span data-tex="MN=2\sqrt{R^2-x^2}"></span><small>cạnh của tam giác đều</small></div>
+      <div class="res" data-tex="S(x)=\dfrac{\sqrt3}{4}MN^2=\sqrt3\,(R^2-x^2)"></div></div>
+    <p class="lbl2" id="l4"></p>
+    <div class="fx num"><div id="f41"></div><div class="res" id="f42"></div></div>
+    <p class="note">Lát lớn nhất ở <i>x</i> = 0: <i>S</i>(0) = √3<i>R</i>². Hai đầu <i>x</i> = ±<i>R</i> thì <i>S</i> = 0.</p>`,
+  5: () => String.raw`<p class="kicker">Bước 5 · Cộng các lát</p><h2>Chồng các lát lại</h2>
+    <p>Chia đường kính thành <b>n</b> đoạn bằng nhau. Coi mỗi lát là một tấm mỏng: thể tích ≈ diện tích lát × bề dày.</p>
+    <div class="seg" id="seg5">${[4, 8, 16, 32, 64].map(n => '<button type="button" data-n="' + n + '" aria-pressed="' + (S.n === n) + '">' + n + '</button>').join('')}</div>
+    <div class="sum"><span class="lbl">Tổng <b id="n5"></b> lát ≈</span><span class="big" id="sum5"></span><span class="off" id="off5"></span></div>
+    <p>Lát càng mỏng, tổng càng sát thể tích thật. Khi bề dày tiến về 0, tổng này chính là <b>tích phân của diện tích lát cắt</b>:</p>
+    <div class="fx"><div data-d data-tex="V=\int_{-R}^{R}S(x)\,\mathrm{d}x"></div></div>`,
+  6: () => String.raw`<p class="kicker">Bước 6 · Tính thể tích</p><h2>Tính tích phân</h2>
+    <p class="lbl2">Công thức tổng quát (R bất kỳ, chưa thay số)</p>
+    <div class="fx"><div data-d data-tex="\begin{aligned}V&=\int_{-R}^{R}S(x)\,\mathrm{d}x\\[0.5em]&=\sqrt3\int_{-R}^{R}\left(R^2-x^2\right)\mathrm{d}x\\[0.5em]&=\sqrt3\left[R^2x-\frac{x^3}{3}\right]_{-R}^{R}=\sqrt3\cdot\frac{4R^3}{3}\end{aligned}"></div><div class="res" data-d data-tex="V=\frac{4\sqrt3}{3}\,R^3"></div></div>
+    <button type="button" class="btn" id="bSub"${S.subbed ? ' hidden' : ''}>Thay số R = 4 ›</button>
+    <div class="subs" id="subs"${S.subbed ? '' : ' hidden'}>
+      <p class="lbl2">Thay số: R = 4</p>
+      <div class="fx num"><div class="res" style="border:0;padding:0" data-d data-tex="\begin{aligned}V&=\frac{4\sqrt3}{3}\cdot 4^3=\frac{256\sqrt3}{3}\\[0.4em]&\approx 147{,}8\end{aligned}"></div></div>
+      <p>Vậy <i>a</i> = 256, <i>b</i> = 3. Hai số nguyên tố cùng nhau nên phân số đã tối giản.</p>
+      <div class="fx"><div class="res" data-tex="S=a+b=256+3=259"></div></div>
+      <p class="note">Chữ lộ ra điều số che mất: lăng trụ bao ngoài (cùng lát lớn nhất, dài 2<i>R</i>) có thể tích 2√3<i>R</i>³. Tỉ số hai khối là <b>2/3</b>, không phụ thuộc <i>R</i>.</p>
+    </div>`,
+  7: () => String.raw`<p class="kicker">Bước 7 · Nhìn lại buổi học</p><h2>Ba dạng, một công thức</h2>
+    <p>Cả ba dạng của buổi hôm nay đều dựa vào một ý: cắt vật bằng mặt phẳng vuông góc với <i>Ox</i>, lát có diện tích <i>S</i>(<i>x</i>), cộng các lát.</p>
+    <div class="dang">
+      <div class="d"><b class="n">1</b><b>Thiết diện không đổi</b><p>Lát nào cũng như nhau, nên chỉ cần lấy diện tích lát nhân độ dài.</p><div class="fx"><div data-tex="V=S\cdot h"></div></div></div>
+      <div class="d hot"><b class="n">2</b><b>Thiết diện thay đổi, cho sẵn</b><p>Đề cho hình dạng lát hoặc cho luôn <i>S</i>(<i>x</i>). Đây là bài vừa làm.</p><div class="fx"><div data-tex="V=\int_a^b S(x)\,\mathrm{d}x"></div></div></div>
+      <div class="d"><b class="n">3</b><b>Phải tự xây <i>S</i>(<i>x</i>)</b><p>Tự nhận ra hình dạng lát, tự tìm các kích thước theo <i>x</i> rồi mới tích phân. Xem hai bài có mô hình:</p>
+        <div class="lien"><a href="coc-nghieng.html">Cốc nước nghiêng</a><a href="mai-vom.html">Mái vòm sân vận động</a></div></div>
+    </div>
+    <p class="cap">Cách làm chung: chọn trục <i>Ox</i> vuông góc với các lát, viết <i>S</i>(<i>x</i>), tìm hai mốc, lấy tích phân.</p>`,
+}
+function bindPanel() {
+  const n = st()
+  if (n === 1) $('#b1').addEventListener('click', () => M.goStep(2))
+  if (n === 2) { const s = $('#s2'); s.value = S.p; s.addEventListener('input', () => { S.p = +s.value; sync2() }); $('#b2n').addEventListener('click', () => M.goStep(3, { play: true })); sync2() }
+  if (n === 3) {
+    $('#b3').addEventListener('click', () => (S.playing ? stopPlay() : startPlay()))
+    $('#s3').addEventListener('input', e => { stopPlay(); S.q = -R + 2 * R * e.target.value / 1000; dirty = true })
+    sync3()
+  }
+  if (n === 4) { const s = $('#s4'); s.value = S.x; s.addEventListener('input', () => { S.x = +s.value; sync4() }); sync4() }
+  if (n === 5) { $$('#seg5 button').forEach(bt => bt.addEventListener('click', () => { S.n = +bt.dataset.n; $$('#seg5 button').forEach(x => x.setAttribute('aria-pressed', x === bt)); playSlabs() })); syncSum() }
+  if (n === 6) $('#bSub').addEventListener('click', thaySo)
+}
+const xt = v => (Number.isInteger(v) ? tn(v, 0) : tn(v, 1))                 // số trong TeX, bỏ số 0 thừa
+const xb = v => (v < 0 ? '(' + xt(v) + ')' : xt(v))                          // số âm trong ngoặc
+function sync2() { const s = $('#s2'); if (!s) return; $('#o2').textContent = fmt(S.p, S.p % 1 ? 1 : 0); dirty = true }
+function sync3() {
+  const s = $('#s3'); if (!s) return
+  const het = S.q >= R - 1e-6
+  if (document.activeElement !== s || S.playing) s.value = Math.round((S.q + R) / (2 * R) * 1000)
+  $('#r3').textContent = 'x = ' + fmt(S.q, 1)
+  $('#c3a').classList.toggle('ok', S.q >= -1e-6); $('#c3b').classList.toggle('ok', het)
+  const lab = (S.playing ? ICON_PAUSE + 'Dừng' : ICON_PLAY + (het ? 'Dựng lại' : 'Dựng vật thể')), bt = $('#b3')
+  if (bt.dataset.lab !== lab) { bt.innerHTML = lab; bt.dataset.lab = lab }
+}
+function sync4() {
+  const x = S.x, mn = 2 * nua(x)
+  $('#o4').textContent = fmt(x, x % 1 ? 1 : 0)
+  $('#l4').textContent = 'Thay số: R = 4, x = ' + fmt(x, x % 1 ? 1 : 0)
+  tex($('#f41'), String.raw`MN=2\sqrt{16-${xb(x)}^2}=${tn(mn)}`)
+  tex($('#f42'), String.raw`S(${xt(x)})=\sqrt3\,(16-${xb(x)}^2)=${tn(dt(x), 2)}`)
+  dirty = true
+}
+function syncSum() {
+  const lat = CL.lat; if (!$('#sum5') || !lat) return
+  const r = S.reveal, v = r ? lat.sums[r - 1] : 0, full = r === lat.n, d = v - V0
+  $('#n5').textContent = full ? lat.n : r + '/' + lat.n
+  $('#sum5').textContent = fmt(v, 2)
+  $('#off5').textContent = full ? 'lệch ' + (d >= 0 ? '+' : '−') + fmt(Math.abs(d), 2) + ' so với ' + fmt(V0, 2) : ''
+}
+function thaySo() {
+  if (st() !== 6 || S.subbed) return
+  S.subbed = true
+  M.renderPanel(true); M.syncChips()
+  const el = $('#subs'); if (el && el.scrollIntoView) el.scrollIntoView({ block: 'nearest', behavior: RM ? 'auto' : 'smooth' })
+}
+
+// ═══ 8. CHUYỂN BƯỚC ═══
+function startPlay() {
+  if (st() !== 3) return
+  if (S.q >= R - 1e-6) S.q = -R
+  S.playing = true; dirty = true
+  const my = M.token(), q0 = S.q, t0 = clock(), dur = RM ? 1 : 7000 * (R - q0) / (2 * R)
+  anims.push(now => {
+    if (!S.playing || !M.alive(my)) return true
+    const k = Math.min(1, (now - t0) / dur)
+    S.q = q0 + (R - q0) * k; dirty = true
+    if (k >= 1) { S.q = R; S.playing = false; return true }
+    return false
+  })
+}
+function stopPlay() { if (S.playing) { S.playing = false; dirty = true } }
+function truocBang(n, prev, o) {
+  S.playing = false
+  if (prev !== 6 || o.first) S.subbed = !!o.sub   // mỗi lần vào bước 6 lại bắt đầu từ công thức chưa thay số
+  if (n === 2 && (prev !== 2 || o.first)) S.p = 0
+  if (n === 3 && (prev !== 3 || o.first)) S.q = o.first ? 0 : (o.play || o.next) ? -R : R   // mở thẳng: lát ở giữa · bấm tới: dựng từ đầu · lùi về: đã xong
+}
+async function khiDoiBuoc(n, prev, o) {
+  dirty = true
+  if (o.first || gocCua(n) !== gocCua(prev)) setView('mac_dinh', o.first)
+  if (n === 3 && !o.first && (o.play || o.next)) startPlay()
+  if (n === 5) playSlabs()
+}
+
+// ═══ 9. CHẠY + TỰ KIỂM ═══
+M.start()
+// Cộng 4000 lát (điểm giữa) phải ra đáp số 256√3/3: hình vẽ và lời giải nói cùng một chuyện.
+function kiem() { let v = 0; const n = 4000, h = 2 * R / n; for (let i = 0; i < n; i++) v += dt(-R + (i + 0.5) * h) * h; return { tinh: v, dapSo: V0, lech: Math.abs(v - V0), laBayGio: 256 + 3, tiSoLangTru: V0 / VLT } }
+Object.assign(window.__dbg, { S, kiem, CL })
+})()
+</script>
+</body>
+</html>
