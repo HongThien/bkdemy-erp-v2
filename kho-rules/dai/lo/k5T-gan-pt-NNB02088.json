@@ -1,0 +1,487 @@
+{
+ "khoi": "5T",
+ "nhom_id": "NNB02088",
+ "lan_chay": "pt-2026-11-08",
+ "kiem": {
+  "model": "sonnet (gán mù)",
+  "lan_chay": "pt-2026-11-08-mu"
+ },
+ "cau": [
+  {
+   "ma_cau": "T15T000000361",
+   "ma_nguon": "VD 16.2",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · Hạt tươi - hạt khô, giữ nguyên khối lượng thuần"
+  },
+  {
+   "ma_cau": "T15T000000051",
+   "ma_nguon": "LT 14.1",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · chỉ đổi số sang tỉ số phần trăm"
+  },
+  {
+   "ma_cau": "T15T000000465",
+   "ma_nguon": "LT 14.2",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · chỉ đổi tỉ số phần trăm sang số thập phân"
+  },
+  {
+   "ma_cau": "T15T000000466",
+   "ma_nguon": "LT 14.3",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · chỉ đổi tỉ số phần trăm sang phân số"
+  },
+  {
+   "ma_cau": "T15T000000467",
+   "ma_nguon": "LT 14.4a",
+   "dang_bai_id": "NDB02767",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Cộng hai tỉ số phần trăm"
+  },
+  {
+   "ma_cau": "T15T000000468",
+   "ma_nguon": "LT 14.4b",
+   "dang_bai_id": "NDB02767",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Cộng các tỉ số phần trăm"
+  },
+  {
+   "ma_cau": "T15T000000469",
+   "ma_nguon": "LT 14.4c",
+   "dang_bai_id": "NDB02767",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Trừ hai tỉ số phần trăm"
+  },
+  {
+   "ma_cau": "T15T000000470",
+   "ma_nguon": "LT 14.4d",
+   "dang_bai_id": "NDB02767",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Cộng trừ các tỉ số phần trăm"
+  },
+  {
+   "ma_cau": "T15T000000471",
+   "ma_nguon": "LT 14.5a",
+   "dang_bai_id": "NDB02767",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Cộng hai tỉ số phần trăm"
+  },
+  {
+   "ma_cau": "T15T000000472",
+   "ma_nguon": "LT 14.5b",
+   "dang_bai_id": "NDB02767",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Trừ hai tỉ số phần trăm"
+  },
+  {
+   "ma_cau": "T15T000000473",
+   "ma_nguon": "LT 14.5c",
+   "dang_bai_id": "NDB02767",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Trừ hai tỉ số phần trăm rồi đổi ra số thập phân"
+  },
+  {
+   "ma_cau": "T15T000000474",
+   "ma_nguon": "LT 14.5d",
+   "dang_bai_id": "NDB02767",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · nhân tỉ số phần trăm với số tự nhiên"
+  },
+  {
+   "ma_cau": "T15T000000475",
+   "ma_nguon": "LT 14.5e",
+   "dang_bai_id": "NDB02767",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · chia tỉ số phần trăm cho số tự nhiên"
+  },
+  {
+   "ma_cau": "T15T000000476",
+   "ma_nguon": "LT 14.5f",
+   "dang_bai_id": "NDB02767",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Chia hai tỉ số phần trăm"
+  },
+  {
+   "ma_cau": "T15T000000477",
+   "ma_nguon": "LT 14.5g",
+   "dang_bai_id": "NDB02767",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Nhân hai tỉ số phần trăm"
+  },
+  {
+   "ma_cau": "T15T000000478",
+   "ma_nguon": "LT 14.5h",
+   "dang_bai_id": "NDB02767",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Chia hai tỉ số phần trăm"
+  },
+  {
+   "ma_cau": "T15T000000479",
+   "ma_nguon": "LT 14.5i",
+   "dang_bai_id": "NDB02767",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · nhân hai tỉ số phần trăm"
+  },
+  {
+   "ma_cau": "T15T000000480",
+   "ma_nguon": "LT 14.5j",
+   "dang_bai_id": "NDB02767",
+   "chac": "vua",
+   "ly_do": "HAI TRẠM LỆCH: làm NDB02767 · mù NDB02769 · 36 × 28% là tìm 28% của 36"
+  },
+  {
+   "ma_cau": "T15T000000481",
+   "ma_nguon": "LT 14.5k",
+   "dang_bai_id": "NDB02767",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · chia hai tỉ số phần trăm"
+  },
+  {
+   "ma_cau": "T15T000000482",
+   "ma_nguon": "LT 14.5l",
+   "dang_bai_id": "NDB02767",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Chia một số cho tỉ số phần trăm"
+  },
+  {
+   "ma_cau": "T15T000000484",
+   "ma_nguon": "LT 14.6c",
+   "dang_bai_id": "NDB02767",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · tính biểu thức có nhân chia cộng trừ tỉ số phần trăm"
+  },
+  {
+   "ma_cau": "T15T000000053",
+   "ma_nguon": "LT 14.11",
+   "dang_bai_id": "NDB02770",
+   "chac": "vua",
+   "ly_do": "HAI TRẠM LỆCH: làm không · mù NDB02770 · sau chuyển tổ một còn 75%, lấy 24:75%"
+  },
+  {
+   "ma_cau": "T15T000000333",
+   "ma_nguon": "LT 15.1",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · chỉ tính a chiếm bao nhiêu % tổng"
+  },
+  {
+   "ma_cau": "T15T000000334",
+   "ma_nguon": "LT 15.2",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · chỉ tính a chiếm bao nhiêu % b"
+  },
+  {
+   "ma_cau": "T15T000000054",
+   "ma_nguon": "LT 15.3",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · Chỉ tính phần trăm thực hiện/vượt kế hoạch"
+  },
+  {
+   "ma_cau": "T15T000000335",
+   "ma_nguon": "LT 15.4",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · Chỉ tìm tiền bảo hiểm chiếm bao nhiêu % tiền lương"
+  },
+  {
+   "ma_cau": "T15T000000336",
+   "ma_nguon": "LT 15.5",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · Chỉ tìm phần trăm giảm giá từ giá niêm yết và giá mua"
+  },
+  {
+   "ma_cau": "T15T000000338",
+   "ma_nguon": "LT 15.7a",
+   "dang_bai_id": "NDB02769",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · lấy số nhân 10%"
+  },
+  {
+   "ma_cau": "T15T000000339",
+   "ma_nguon": "LT 15.7b",
+   "dang_bai_id": "NDB02769",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · lấy số nhân 15%"
+  },
+  {
+   "ma_cau": "T15T000000340",
+   "ma_nguon": "LT 15.7c",
+   "dang_bai_id": "NDB02769",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Tìm 20% của 6,12 bằng phép nhân"
+  },
+  {
+   "ma_cau": "T15T000000341",
+   "ma_nguon": "LT 15.7d",
+   "dang_bai_id": "NDB02769",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Lấy 50% của 236 bằng phép nhân"
+  },
+  {
+   "ma_cau": "T15T000000342",
+   "ma_nguon": "LT 15.7e",
+   "dang_bai_id": "NDB02769",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · lấy số nhân a%"
+  },
+  {
+   "ma_cau": "T15T000000343",
+   "ma_nguon": "LT 15.7f",
+   "dang_bai_id": "NDB02769",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · lấy số nhân 12,5%"
+  },
+  {
+   "ma_cau": "T15T000000344",
+   "ma_nguon": "LT 15.8",
+   "dang_bai_id": "NDB02769",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · lấy giá xe nhân 10%"
+  },
+  {
+   "ma_cau": "T15T000000346",
+   "ma_nguon": "LT 15.10",
+   "dang_bai_id": "NDB02769",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Tìm 5% của 46 rồi cộng vào"
+  },
+  {
+   "ma_cau": "T15T000000347",
+   "ma_nguon": "LT 15.11",
+   "dang_bai_id": "NDB02769",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · lấy 25% của 32 rồi trừ"
+  },
+  {
+   "ma_cau": "T15T000000348",
+   "ma_nguon": "LT 15.12",
+   "dang_bai_id": "NDB02769",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · tìm 20% diện tích khu đất"
+  },
+  {
+   "ma_cau": "T15T000000055",
+   "ma_nguon": "LT 15.13",
+   "dang_bai_id": "NDB02769",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Tìm 25% của 200 rồi 60% của phần còn lại bằng phép nhân"
+  },
+  {
+   "ma_cau": "T15T000000349",
+   "ma_nguon": "LT 15.14a",
+   "dang_bai_id": "NDB02770",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · A nhân 50% = 32, lấy 32:50%"
+  },
+  {
+   "ma_cau": "T15T000000350",
+   "ma_nguon": "LT 15.14b",
+   "dang_bai_id": "NDB02770",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · A × 35% = 16,8 nên chia tích cho 35%"
+  },
+  {
+   "ma_cau": "T15T000000351",
+   "ma_nguon": "LT 15.14c",
+   "dang_bai_id": "NDB02770",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · A nhân 40% = 15, lấy 15:40%"
+  },
+  {
+   "ma_cau": "T15T000000352",
+   "ma_nguon": "LT 15.14d",
+   "dang_bai_id": "NDB02770",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · A × 80% = 2,08 nên A = 2,08 : 80%"
+  },
+  {
+   "ma_cau": "T15T000000353",
+   "ma_nguon": "LT 15.14e",
+   "dang_bai_id": "NDB02770",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · A × 20% = 1,25 nên chia cho 20%"
+  },
+  {
+   "ma_cau": "T15T000000354",
+   "ma_nguon": "LT 15.14f",
+   "dang_bai_id": "NDB02770",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · A nhân 12,5% = 1,2, lấy 1,2:12,5%"
+  },
+  {
+   "ma_cau": "T15T000000355",
+   "ma_nguon": "LT 15.15",
+   "dang_bai_id": "NDB02770",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · 12 con là 25% cả đàn, tìm cả đàn bằng phép chia"
+  },
+  {
+   "ma_cau": "T15T000000356",
+   "ma_nguon": "LT 15.16",
+   "dang_bai_id": "NDB02770",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · 78 cây ứng với 39% tổng số, tìm tổng bằng chia cho phần trăm"
+  },
+  {
+   "ma_cau": "T15T000000357",
+   "ma_nguon": "LT 15.17",
+   "dang_bai_id": "NDB02770",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · 24 bi vàng ứng 80% số còn lại, chia cho % tìm tổng"
+  },
+  {
+   "ma_cau": "T15T000000056",
+   "ma_nguon": "LT 15.18",
+   "dang_bai_id": "NDB02770",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · 70 kg ứng 35% số đậu phộng, lấy 70:35%"
+  },
+  {
+   "ma_cau": "T15T000000358",
+   "ma_nguon": "LT 15.19",
+   "dang_bai_id": "NDB02770",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · 9 em ứng 25% cả lớp nên lấy 9:25% tìm cả lớp"
+  },
+  {
+   "ma_cau": "T15T000000359",
+   "ma_nguon": "LT 15.20",
+   "dang_bai_id": "NDB02770",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · tiền gốc lẫn lãi ứng 105,6% gốc, chia cho % tìm gốc"
+  },
+  {
+   "ma_cau": "T15T000000371",
+   "ma_nguon": "LT 16.11",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · hạt tươi - hạt khô, thuần hạt không đổi"
+  },
+  {
+   "ma_cau": "T15T000000372",
+   "ma_nguon": "LT 16.12",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · Hạt tươi - hạt khô, giữ nguyên khối lượng thuần"
+  },
+  {
+   "ma_cau": "T15T000000373",
+   "ma_nguon": "LT 16.13",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · cỏ tươi - cỏ khô, thuần cỏ không đổi"
+  },
+  {
+   "ma_cau": "T15T000000059",
+   "ma_nguon": "LT 16.14",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · hạt tươi - hạt khô, thuần hạt không đổi"
+  },
+  {
+   "ma_cau": "T15T000000374",
+   "ma_nguon": "LT 16.15",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · Hạt tươi - hạt khô, giữ nguyên khối lượng thuần"
+  },
+  {
+   "ma_cau": "T15T000000375",
+   "ma_nguon": "LT 17.1",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · tăng 10% liên tiếp hai năm"
+  },
+  {
+   "ma_cau": "T15T000000376",
+   "ma_nguon": "LT 17.2",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · lãi nhập vốn"
+  },
+  {
+   "ma_cau": "T15T000000379",
+   "ma_nguon": "LT 17.5",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · Chu vi tăng cùng tỉ lệ với cạnh, không phải tích hai đại lượng"
+  },
+  {
+   "ma_cau": "T15T000000383",
+   "ma_nguon": "LT 17.11",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · Thương (không phải diện tích/doanh thu) thay đổi theo hai số, không khớp dạng nào"
+  },
+  {
+   "ma_cau": "T15T000000061",
+   "ma_nguon": "LT 17.12",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · năng suất - thời gian tỉ lệ nghịch"
+  },
+  {
+   "ma_cau": "T15T000000384",
+   "ma_nguon": "LT 17.13",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · sức chảy - thời gian tỉ lệ nghịch"
+  },
+  {
+   "ma_cau": "T15T000000385",
+   "ma_nguon": "LT 17.14",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · Năng suất - số người - khối lượng công việc, không khớp dạng nào"
+  },
+  {
+   "ma_cau": "T15T000000388",
+   "ma_nguon": "LT 17.17",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · Tăng giá liên tiếp hai tháng, tăng/giảm liên tiếp một đại lượng"
+  },
+  {
+   "ma_cau": "T15T000000713",
+   "ma_nguon": "ON 79",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · Chỉ tính tỉ số phần trăm của nam so với nữ"
+  },
+  {
+   "ma_cau": "T15T000000715",
+   "ma_nguon": "ON 81",
+   "dang_bai_id": "NDB02770",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · 18 cây bưởi ứng với 24% tổng, tìm tổng rồi tìm quýt cam"
+  },
+  {
+   "ma_cau": "T15T000000716",
+   "ma_nguon": "ON 82",
+   "dang_bai_id": "NDB02770",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · 13 em ứng 52% cả lớp, chia cho % tìm cả lớp"
+  },
+  {
+   "ma_cau": "T15T000000719",
+   "ma_nguon": "ON 85",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · lãi nhập vốn"
+  },
+  {
+   "ma_cau": "T15T000000720",
+   "ma_nguon": "ON 86",
+   "dang_bai_id": null,
+   "chac": null,
+   "ly_do": "hai trạm đều không thấy dạng phù hợp · Giảm/tăng giá rồi bằng nhau, thực chất là tổng-tỉ"
+  }
+ ]
+}

@@ -1,0 +1,60 @@
+{
+ "khoi": "5T",
+ "nhom_id": "NNB02090",
+ "lan_chay": "pt-2026-11-08",
+ "kiem": {
+  "model": "sonnet (gán mù)",
+  "lan_chay": "pt-2026-11-08-mu"
+ },
+ "cau": [
+  {
+   "ma_cau": "T15T000000060",
+   "ma_nguon": "LT 17.6",
+   "dang_bai_id": "NDB02776",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Diện tích = dài × rộng, tăng dài và giảm rộng, hỏi diện tích thay đổi"
+  },
+  {
+   "ma_cau": "T15T000000380",
+   "ma_nguon": "LT 17.7",
+   "dang_bai_id": "NDB02776",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Diện tích = dài × rộng, nhân hai tỉ số rồi suy diện tích ban đầu từ phần giảm"
+  },
+  {
+   "ma_cau": "T15T000000381",
+   "ma_nguon": "LT 17.8",
+   "dang_bai_id": "NDB02776",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · đổi chiều dài rộng theo %, diện tích tăng, tìm diện tích ban đầu"
+  },
+  {
+   "ma_cau": "T15T000000382",
+   "ma_nguon": "LT 17.9",
+   "dang_bai_id": "NDB02776",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Diện tích mới = dài mới × rộng mới, cho đổi chiều dài, rộng, diện tích"
+  },
+  {
+   "ma_cau": "T15T000000386",
+   "ma_nguon": "LT 17.15",
+   "dang_bai_id": "NDB02775",
+   "chac": "vua",
+   "ly_do": "HAI TRẠM LỆCH: làm NDB02775 · mù không · Sản lượng = diện tích × năng suất, không phải diện tích hình hay doanh thu"
+  },
+  {
+   "ma_cau": "T15T000000387",
+   "ma_nguon": "LT 17.16",
+   "dang_bai_id": "NDB02775",
+   "chac": "cao",
+   "ly_do": "hai trạm cùng dạng · Doanh thu = giá vé × số vé, cho tỉ số doanh thu và giá vé, hỏi số vé"
+  },
+  {
+   "ma_cau": "T15T000000717",
+   "ma_nguon": "ON 83",
+   "dang_bai_id": "NDB02776",
+   "chac": "vua",
+   "ly_do": "HAI TRẠM LỆCH: làm NDB02776 · mù không · Thể tích là tích ba kích thước, không phải diện tích hay doanh thu"
+  }
+ ]
+}
