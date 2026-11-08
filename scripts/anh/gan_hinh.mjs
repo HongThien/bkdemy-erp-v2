@@ -1,6 +1,6 @@
 // gan_hinh.mjs — LUỒNG GẮN HÌNH ĐỀ: thư mục ảnh đặt tên theo mã câu → upload bucket 'kho-anh' → UPDATE anh_de.
 //
-//   node --env-file=.env scripts/anh/gan_hinh.mjs <thu_muc> [--ghi] [--thay] [--bang baitoan|bienthe|mohinh|cachgiai|hlbai|hly]
+//   node --env-file=.env scripts/anh/gan_hinh.mjs <thu_muc> [--ghi] [--thay] [--bang baitoan|bienthe|mohinh|cachgiai|hgt|hlbai|hly]
 //
 // Tên file:  <ma_cau>[+<ma_cau2>…][_ghi_chu].png|jpg|jpeg      vd  HHC001914_2A.png  ·  HHC001924+HHC001935_11.png (2 câu dùng chung 1 hình)
 //            đuôi _lg = chỉ gắn hình lời giải (anh_dap_an) · đuôi _de = chỉ gắn hình đề (anh_de) · không đuôi = gắn cả hai
@@ -36,6 +36,8 @@ const LUYEN = {
   cachgiai: { bang: 'hinh_cach_giai', khoa: 'id', mau: /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/, song: '', cot: { chung: ['anh_loi_giai'] }, bump: ', updated_at = now()' },
   // kho Hình LUYỆN (14/10): hình theo Ý — xem docs/mau-brief-ve-lai-hinh.md §5
   hlbai: { bang: 'hinh_bai', khoa: 'ma_bai', mau: /^HLB\d+$/, song: '', cot: { chung: ['anh_de'] }, bump: ', updated_at = now()' },
+  // câu HGT (hgt_cau_hoi) — chỉ hình ĐỀ, không đụng hình lời giải (Thùy 08/11, vẽ lại hình vectơ)
+  hgt: { bang: 'hgt_cau_hoi', khoa: 'ma_cau', mau: /^T\d+$/, song: ' and xoa_at is null', cot: { chung: ['anh_de'], de: ['anh_de'] }, bump: '' },
   hly: { bang: 'hinh_y', khoa: 'ma_y', mau: /^HLY\d+$/, song: '', cot: { chung: ['anh_de'] }, bump: ', updated_at = now()' },
 }
 const KIEU = { '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg' }

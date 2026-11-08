@@ -79378,3 +79378,10 @@ Thùy nêu 4 việc, làm được 3:
 ### 08/11 — Popup ✎ Chọn câu (giáo trình bản đồ mới) có hàng chọn DẠNG (Thùy "cần 1 chỗ chọn dạng để câu hiện theo từng dạng cho đỡ phải kéo nhiều")
 - ChonCauBdm: hàng nút "Dạng:" — Tất cả · từng dạng bài (★ dạng đang soạn) · chưa phân, kèm số câu theo nguồn (trên lớp / luyện tập) + lọc loại đang mở. Mở sẵn dạng đang soạn; BTVN nhóm (không uuTien) mở Tất cả. Chỉ lọc hiển thị — câu đã tick ở dạng khác vẫn giữ. Dùng chung mọi chỗ gọi ChonCauBdm (giáo trình, chuyên đề, ET, MT).
 - Kiểm app (không ghi): Giáo trình 10A1 › ✎ Chọn câu: trên lớp Tất cả 12 / ★ 3; luyện tập 393 / ★ 84 / Biểu diễn véc tơ 184…; bấm dạng ⇒ chỉ hiện câu dạng đó.
+
+## 8/11 — Vẽ lại hình ĐỀ chuyên đề "Tích của véc tơ với một số" (hgt, K10)
+- Thùy chọn phạm vi: hình đề của mọi câu có hình (5 dạng NDB00907/909/912/913/01421 → 70 câu · 64 hình; hình lời giải ~135 để lượt sau).
+- Công cụ mới: `scripts/anh/ve_lai_xuat_hgt.mjs` (gói VT-1..8 ở bk-kho-lam-viec/ve-lai-hinh), `scripts/anh/ve_vecto_lib.mjs` (mũi tên vectơ + nhãn có mũi tên), `gan_hinh.mjs --bang hgt` (chỉ cột anh_de của hgt_cau_hoi, không đụng anh_dap_an). 8 trạm Sonnet viết scripts/anh/ve_lai/VT-1..8.mjs; tôi soát 16 bảng đối chiếu bằng mắt.
+- Ghi: 64 hình → 70 câu, ảnh cũ không xoá (biên bản URL cũ ở scripts/anh/bien_ban/gan-hinh-*.json). 2 hình trạm bỏ (T310010201006, T3100000001114: ảnh chia 4 phần, đề AB=3AI) tôi vẽ bù theo ĐỀ (`ve_lai/VT-bo-sung.mjs`).
+- Lỗi công cụ: `ve_lai_bang.mjs` đòi viec.json {goi,hinh:[{ten,kieu,anh_cu,cau}]} — exporter ban đầu ghi mảng trần ⇒ 8 trạm đều báo lỗi; đã sửa file tay (nên sửa luôn exporter nếu dùng lại).
+- Nghi đề sai/thiếu (trạm báo, chưa sửa): T310010201071 (biến \vec{a} lạ), T310010102030 (thiếu "AB"), T310010201084 (A và C trùng nội dung, lời giải cắt cụt), T310000000378 (câu d "AG=3/4 AA" chắc là AA′), T310010201070 (đề nhắc M không định nghĩa).
