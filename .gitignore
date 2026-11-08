@@ -92,3 +92,6 @@ dist-dautu/
 
 # Phiếu lương TA tháng 9 xuất ra từ script (chứa số lương — không commit)
 scripts/luong-ta-t9/_out/
+
+# Máy chấm BTVN hàng đợi: ảnh bài làm học sinh tải về để chấm — KHÔNG commit
+cham_btvn_ai/

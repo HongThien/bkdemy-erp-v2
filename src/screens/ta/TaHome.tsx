@@ -10,7 +10,7 @@ import { supabase } from '../../lib/supabase'
 import { uploadAvatar, updateMyProfile, type MyProfile } from '../../lib/nhansu'
 import type { MyQuyen } from '../../lib/quyen'
 import { getMyTasks, type MyTask } from '../../lib/gami'
-import { demNopTheoBuois } from '../../lib/btvnnop'
+import { demNopTheoBuois, chamTuDongBat } from '../../lib/btvnnop'
 import { taDashboard, type TaDash } from '../../lib/tadash'
 import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline, nhanConLai } from '../../lib/tuan'
 import { kiemTraHoTro, trangThaiNhacViec } from '../../lib/push'
@@ -26,6 +26,7 @@ import { viecBoTroCuaToi, caBuCuaToi, caDuoiCuaToi, btvnBuCuaToi, type ViecCaBoT
 import { BuoiBuDetail } from '../botro/BoTroScreen'
 import DuoiCaTA from './DuoiCaTA'
 import ChamBtvnBu from './ChamBtvnBu'
+import ChamBtvnTuDong from './ChamBtvnTuDong'
 import TripCountdownBanner, { type CountdownRect } from '../../components/TripCountdownBanner'
 import CongTA from './CongTA'
 import { congCuaToi, goiYViec, gioVN, type DongCong, type GoiY } from '../../lib/tacong'
@@ -90,6 +91,9 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
   // BTVN BÙ (Thùy 29/09): em học bù xong làm BTVN buổi đã nghỉ — TA LỚP chấm, nằm trong "Chấm BTVN" (mục riêng đầu danh sách).
   const [btvnBu, setBtvnBu] = useState<BtvnBu[]>([])
   const [moBtvnBu, setMoBtvnBu] = useState<BtvnBu | null>(null)
+  const [moTuDong, setMoTuDong] = useState(false) // 🤖 Chấm BTVN tự động (CEO 07/11): lớp → buổi → HS → ảnh → máy chấm → TA xác nhận
+  const [tuDongBat, setTuDongBat] = useState(false) // công tắc DB 'btvn_cham_tu_dong' — tắt thì ẩn nút, không cần deploy
+  useEffect(() => { chamTuDongBat().then(setTuDongBat) }, [])
   // Chấm công hôm nay cho ô ở màn chính (best-effort, lỗi thì ô vẫn hiện nút Checkin)
   const [congHn, setCongHn] = useState<{ dong: DongCong[]; goiY: GoiY[] } | null>(null)
   const taiCong = () => { Promise.all([congCuaToi(homNay, homNay), goiYViec()]).then(([dong, goiY]) => setCongHn({ dong, goiY })).catch(() => setCongHn({ dong: [], goiY: [] })) }
@@ -140,6 +144,7 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
   // thường (bám đề theo lop×ngày), sẽ trắng dữ liệu với buổi bù (lop_id null, ET không có ở lop×ngày).
   // Buổi đuổi (Thùy 22/09: "UI m phải làm cho dt"): DuoiCaTA — trang cuộn bình thường như ChamBuoi/
   // DuoiGiayTA, KHÔNG bọc 100dvh (khác buổi bù, không phải flex h-full).
+  if (moTuDong) return <ChamBtvnTuDong onBack={() => { setMoTuDong(false); reload(true) }} />
   if (moBtvnBu) return <ChamBtvnBu v={moBtvnBu} onBack={() => { setMoBtvnBu(null); taiBoTro() }} />
   if (view) {
     const onBack = () => { setView(null); reload(true) }
@@ -157,7 +162,7 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
         {tab === 'botro' && <><CaBoTroTA viec={boTro} onDoi={taiBoTro} /><CaHinhTA /></>}
         {tab === 'cong' && <CongTA nsId={profile.nhanSu.id} onBack={() => setTab('home')} onDoi={taiCong} />}
         {tab !== 'home' && tab !== 'dash' && tab !== 'botro' && tab !== 'cong' && <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => belongsToNv(t, tab))} nopCount={nopCount} now={now} homNay={homNay} onOpen={setView}
-          dauDs={tab === 'btvn' ? <DsBtvnBu ds={btvnBu} homNay={homNay} onMo={setMoBtvnBu} /> : null} soThem={tab === 'btvn' ? noBtvnBu : 0} />}
+          dauDs={tab === 'btvn' ? <>{tuDongBat && <NutChamTuDong onClick={() => setMoTuDong(true)} />}<DsBtvnBu ds={btvnBu} homNay={homNay} onMo={setMoBtvnBu} /></> : null} soThem={tab === 'btvn' ? noBtvnBu : 0} />}
       </div>
 
       {/* bottom tab — icon PNG bộ BK, active = pill xanh; mỗi nghiệp vụ có bubble nợ, chừa safe-area */}
@@ -571,5 +576,19 @@ function ViecTab({ nv, tasks, nopCount, now, homNay, onOpen, dauDs, soThem = 0 }
         )}
       </div>
     </div>
+  )
+}
+
+// Nút vào màn Chấm BTVN tự động — đầu tab Chấm BTVN (CEO 07/11: vào app → Chấm BTVN → Chấm tự động).
+function NutChamTuDong({ onClick }: { onClick: () => void }) {
+  return (
+    <button onClick={onClick} className="mb-2 flex w-full items-center gap-2.5 rounded-[18px] bg-[#EFE9FF] px-3 py-2.5 text-left active:scale-[.99]">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/80 text-[22px]">🤖</span>
+      <span className="min-w-0 flex-1 leading-tight">
+        <span className="block text-[15px] font-extrabold text-[#16224D]">Chấm tự động</span>
+        <span className="block text-[12px] text-[#63709A]">Chọn lớp · buổi · học sinh, đẩy ảnh bài lên — máy chấm, bạn xác nhận</span>
+      </span>
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#8B6BEF] text-[15px] font-bold text-white">›</span>
+    </button>
   )
 }
