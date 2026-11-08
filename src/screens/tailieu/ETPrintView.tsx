@@ -19,7 +19,7 @@ import { AnhMmCtx, AnhPhaiCtx } from './anhMmCtx'
 //   phan='et' — đúng chỗ tab Chấm ET đọc) THÀNH 1 PHẦN sau các câu Đại, cùng mã đề với HS (hsMaDe của ET). Đánh số
 //   "Bài 1, Bài 2…" riêng = khớp nhãn "Bài 1a" ở tab chấm. ET bản đồ cũ KHÔNG đụng (ET Hình cũ in riêng như trước).
 import { loadLuoi } from '../../lib/kho/hinh'
-import { banInTheoMoHinh } from '../kho/hinh/SoanTaiLieu'
+// SoanTaiLieu nạp KHI CẦN (chỉ ET có bài Hình–Luyện): import tĩnh kéo cả màn soạn + useStore vào app TA ⇒ bundle TA 3,49 MB > 2 MiB precache PWA ⇒ build Vercel chết (08/11).
 import { MucsBlock, HINH_CSS, type MucIn } from '../kho/hinh/HinhPrintView'
 import { applyBanToPick, findHinhGtBuoi, loadBuoiPicksPhan, getHinhCauHinh, type CheDoHinh, type HinhBanRef } from '../../lib/kho/hinhGiaoTrinh'
 import type { PickItem } from '../../store/useStore'
@@ -115,7 +115,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
       }
       const picks = (h?.picks ?? []).filter((p) => p.phan === 'et')
       if (!h || !picks.length) { if (alive) { setHinhDe(null); setHinhReady(true) } return }
-      const L = await loadLuoi(tl.khoi ?? undefined)
+      const [L, { banInTheoMoHinh }] = await Promise.all([loadLuoi(tl.khoi ?? undefined), import('../kho/hinh/SoanTaiLieu')])
       const cho = (v: 0 | 1) => picks.map((p) => { const alt = h!.maDe[sigPickHinh(p)]?.[v]; return alt ? applyBanToPick(p, alt) : p })
       // dựng TỪNG bài (1 pick/lượt, khuôn MTPrintView) ⇒ biết chắc muc nào của bài nào để gắn cỡ ảnh — không đoán theo vị trí
       const dung = (ps: PickItem[]) => Promise.all(ps.map(async (p, i) => {
