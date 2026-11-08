@@ -79385,3 +79385,10 @@ Thùy nêu 4 việc, làm được 3:
 - Ghi: 64 hình → 70 câu, ảnh cũ không xoá (biên bản URL cũ ở scripts/anh/bien_ban/gan-hinh-*.json). 2 hình trạm bỏ (T310010201006, T3100000001114: ảnh chia 4 phần, đề AB=3AI) tôi vẽ bù theo ĐỀ (`ve_lai/VT-bo-sung.mjs`).
 - Lỗi công cụ: `ve_lai_bang.mjs` đòi viec.json {goi,hinh:[{ten,kieu,anh_cu,cau}]} — exporter ban đầu ghi mảng trần ⇒ 8 trạm đều báo lỗi; đã sửa file tay (nên sửa luôn exporter nếu dùng lại).
 - Nghi đề sai/thiếu (trạm báo, chưa sửa): T310010201071 (biến \vec{a} lạ), T310010102030 (thiếu "AB"), T310010201084 (A và C trùng nội dung, lời giải cắt cụt), T310000000378 (câu d "AG=3/4 AA" chắc là AA′), T310010201070 (đề nhắc M không định nghĩa).
+
+## 2026-11-08 — K4 sách đề Qbooks 4A: 5 đề giữa kì 1 lên app (Thùy "Chọn các đề giữa kì 1, giải xong đưa lên app")
+- Tách HK1 p3–17 (mỗi đề 3 trang, trang lẻ scan lộn ngược ⇒ Rotate 180). Sonnet soạn `kho-rules/dai/lo/k4/HK1-GK0{1..5}.soan.md` theo `k4-brief.md` (đè trên k5-brief-soan/soat), Opus soát mù 2 pha ⇒ 5/5 ĐẠT.
+- Ghi bằng `k4-ghi-het.sh --ghi` (ky gk1, 40 phút): 50 câu mới + 31 câu trỏ câu có sẵn (trùng nội dung — phần lớn là bản phiên khác nhập từ CÙNG sách vào kho câu, chữ bị hỏng "s"→dấu cách).
+- Sửa T104000000263 dap_an "C (1 tấn 45 yến = …)" ⇒ "C" (máy chấm so chữ cái).
+- Duyệt đề bằng `scripts/kho/de-thi/duyet-de-ai.mjs` (mới: làm đúng việc fn_de_thi_duyet, duyet_nguon 'ai', duyet_boi NULL) cho 5 đề + Đề 8 ôn tập GKI Toán 4 (e36ccb61, trước đó chưa duyệt; đặt thêm 40 phút thay mặc định 90). Kiểm: khoi 4 · Toán · ky gk1 · duyet_at có ⇒ khớp điều kiện fn_hs_on_thi_ds.
+- Chưa làm: dọn câu trùng/chữ hỏng của bản nhập kia — cần Thùy gật (luật xoá).
