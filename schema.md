@@ -2,14 +2,14 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `1` BẢNG
-> Role `claude_ro` **không sở hữu** và **không có `bypassrls`** với: `thong_bao_ph`
+> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `17` BẢNG
+> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `sk_checkin` · `sk_dang_ky` · `sk_dang_ky_log` · `sk_luot` · `sk_nguoi_choi` · `sk_phan_cong` · `sk_phan_cong_log` · `sk_phong` · `sk_su_kien` · `sk_xu` · `thong_bao_hs` · `thong_bao_ph`
 > Các bảng này bật RLS với policy `to authenticated`, nên `SELECT` từ script/CLI trả **0 dòng,
 > im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-502 bảng · 39 view · 0 enum · 282 trigger · 1647 function
+502 bảng · 39 view · 0 enum · 282 trigger · 1648 function
 
 ## _app_secrets
 
@@ -10097,8 +10097,8 @@ WITH luot AS (
 - `_tk_dong_bo(p_ns uuid)` → void
 - `_tk_goc_team(p_team text, p_mon text)` → uuid
 - `_tl_bdm_cau_da_dung(p_buoi uuid, p_tru_phan uuid DEFAULT NULL::uuid)` → text[]
-- `_tl_bdm_cau_vi_tri(p_khoi text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
 - `_tl_bdm_cau_vi_tri(p_khoi text, p_mon text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
+- `_tl_bdm_cau_vi_tri(p_khoi text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
 - `_tl_bdm_ghi_cau(p_phan uuid, p_ma_caus text[])` → void
 - `_tl_bdm_khoi_nhom(p_nhom text)` → text
 - `_tl_bdm_kiem_buoi(p_tai_lieu uuid, p_buoi uuid)` → void
@@ -11107,6 +11107,7 @@ WITH luot AS (
 - `fn_tl_hh_goi_y_bai(p_bai text, p_n integer, p_tru text[] DEFAULT '{}'::text[])` → text[]
 - `fn_tl_hinh_trich_buoi(p_master uuid, p_buoi uuid, p_den uuid, p_loai text, p_tieu_de text, p_on_tap jsonb DEFAULT '[]'::jsonb)` → void
 - `fn_tl_hl_dat_bai(p_phan uuid, p_ma_bai text[])` → void
+- `fn_tl_hl_dat_btvn(p_tai_lieu uuid, p_buoi uuid, p_mo_hinh uuid, p_ma_bai text[])` → void
 - `fn_tl_hl_dat_mo_hinh(p_tai_lieu uuid, p_buoi uuid, p_mo_hinh uuid[])` → jsonb
 - `fn_tl_hl_noi_dung(p_tai_lieu uuid, p_buoi uuid DEFAULT NULL::uuid)` → jsonb
 - `fn_tl_hl_them_khoi_khac(p_tai_lieu uuid, p_buoi uuid)` → uuid
