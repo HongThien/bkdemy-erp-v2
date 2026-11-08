@@ -8,7 +8,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as api from '../../../lib/kho/api'
 import type { BaiToan, Luoi, MoHinh } from '../../../lib/kho/hinh'
-import type { BaiCay, ChuoiKho, DemKho, KetQuaCay } from '../../../lib/kho/hinhCay'
+import type { BaiCay, ChuoiKho, DemKho, KetQuaCay, MoHinhLuyen } from '../../../lib/kho/hinhCay'
+import { ChonMoHinh } from '../../duyetloigiai/HinhLuyenChuaPhanTab'
 import { MathText, LoiGiaiXem } from '../ui'
 import { AnhInput, Btn, Empty, Fig, Ma, Note, OcrButton, Seg, inpCls, tron } from './hinhUi'
 import Catalog from './Catalog'
@@ -577,6 +578,20 @@ function TabKho({ gocId, L, khoi, coBai, onMo }: { gocId: string; L: Luoi; khoi:
   const [mo, setMo] = useState<string | null>(null)
   const [tim, setTim] = useState('')
   const [conThieu, setConThieu] = useState(false)
+  // ↪ Chuyển mô hình (Thùy 08/11) — đổi mô hình của BÀI KHO (hàm gán có sẵn fn_hl_gan_bai_mo_hinh); DB chặn nếu ý đã gán vào bài của mô hình khác
+  const [moHinhs, setMoHinhs] = useState<MoHinhLuyen[]>([])
+  const [dangChuyen, setDangChuyen] = useState<string | null>(null)
+  const [tbChuyen, setTbChuyen] = useState<string | null>(null)
+  useEffect(() => { api.moHinhLuyenCuaKhoi(khoi).then(setMoHinhs).catch(() => setMoHinhs([])) }, [khoi])
+  const chuyenMoHinh = async (c: ChuoiKho, moHinhId: string) => {
+    setDangChuyen(c.id); setLoiNhan(null)
+    try {
+      await api.ganBaiVaoMoHinh(c.id, moHinhId)
+      setRows((p) => (p ?? []).filter((x) => x.id !== c.id))   // rời kho mô hình này — vá tại chỗ
+      const m = moHinhs.find((x) => x.id === moHinhId)
+      setTbChuyen(`Đã chuyển ${c.ma_bai} sang mô hình ${m ? `${m.ma} · ${m.ten}` : ''}`); setTimeout(() => setTbChuyen(null), 3000)
+    } catch (e: any) { setLoiNhan(e.message ?? String(e)) } finally { setDangChuyen(null) }
+  }
   useEffect(() => {
     let huy = false
     setRows(null); setLoi(null); setMo(null)
@@ -632,6 +647,7 @@ function TabKho({ gocId, L, khoi, coBai, onMo }: { gocId: string; L: Luoi; khoi:
         <span className="text-[12px] text-slate-400">{hien.length}/{rows.length} chuỗi{deXuat.length ? ` · ✨ ${deXuat.length} gợi ý nhãn chờ duyệt` : ''}</span>
       </div>
       {loiNhan && <div className="mb-2 rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-[12.5px] text-red-700">{loiNhan} <button className="ml-2 underline" onClick={() => setLoiNhan(null)}>đóng</button></div>}
+      {tbChuyen && <div className="mb-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-[12.5px] text-emerald-700">✓ {tbChuyen}</div>}
       {/* Thùy 15/10: "view bé quá, mỗi chuỗi phải to gấp 2–3 lần mới đọc được" ⇒ mỗi chuỗi = một CARD đọc được ngay:
           hình to bên trái, đề + từng ý nguyên văn cỡ 15px bên phải, chip bài mô hình cạnh ý. Bấm "Lời giải" mới mở
           lời giải + hình riêng của ý — không còn trạng thái "hàng gập 1 dòng". */}
@@ -641,6 +657,9 @@ function TabKho({ gocId, L, khoi, coBai, onMo }: { gocId: string; L: Luoi; khoi:
             <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1">
               <span className="font-mono text-[13px] font-semibold text-teal-700">{c.ma_bai}</span>
               <span className="text-[12px] text-slate-500">{c.nguon ?? 'chưa rõ nguồn'}{c.nguon_ma_cau ? ` · gốc ${c.nguon_ma_cau}` : ''}</span>
+              {c.y.some((y) => y.baitoan_id)
+                ? <span className="rounded-md border border-slate-200 px-2 py-0.5 text-[12px] text-slate-400" title="Có ý đã gán vào bài của mô hình này — gỡ gán các ý trước rồi mới chuyển mô hình">↪ Chuyển mô hình</span>
+                : <ChonMoHinh moHinhs={moHinhs.filter((m) => m.id !== gocId)} disabled={dangChuyen === c.id} nhan="↪ Chuyển mô hình" neoPhai onChon={(id) => void chuyenMoHinh(c, id)} />}
               <span className="ml-auto flex items-center gap-1">
                 {c.y.map((y, i) => (
                   <span key={y.id} className="flex items-center gap-1">

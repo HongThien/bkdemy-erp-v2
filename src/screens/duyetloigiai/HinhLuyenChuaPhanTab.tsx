@@ -395,8 +395,9 @@ const Muc = ({ ten, children }: { ten: string; children: React.ReactNode }) => (
 )
 
 /** Nút + ô tìm–chọn MÔ HÌNH luyện (gán cho cả bài). Mô hình chưa có bài vẫn chọn được. */
-function ChonMoHinh({ moHinhs, disabled, nhan, chinh, onChon }: {
-  moHinhs: MoHinhLuyen[]; disabled: boolean; nhan: string; chinh?: boolean; onChon: (id: string) => void
+// export: dùng lại ở Bản đồ mới › Hình – Luyện › ③ Kho (↪ Chuyển mô hình — Thùy 08/11)
+export function ChonMoHinh({ moHinhs, disabled, nhan, chinh, neoPhai, onChon }: {
+  moHinhs: MoHinhLuyen[]; disabled: boolean; nhan: string; chinh?: boolean; neoPhai?: boolean; onChon: (id: string) => void
 }) {
   const [mo, setMo] = useState(false)
   const [tu, setTu] = useState('')
@@ -408,7 +409,7 @@ function ChonMoHinh({ moHinhs, disabled, nhan, chinh, onChon }: {
         className={chinh ? 'h-8 rounded-lg bg-teal-600 px-3 text-[13px] font-semibold text-white shadow-sm hover:bg-teal-500 disabled:opacity-50'
           : 'rounded-md border border-teal-300 px-2 py-0.5 text-[12px] text-teal-700 hover:bg-teal-50 disabled:opacity-50'}>{nhan}</button>
       {mo && (
-        <div className="absolute left-0 top-full z-30 mt-1 w-[380px] rounded-lg border border-slate-200 bg-white p-1.5 shadow-lg">
+        <div className={`absolute ${neoPhai ? 'right-0' : 'left-0'} top-full z-30 mt-1 w-[380px] rounded-lg border border-slate-200 bg-white p-1.5 shadow-lg`}>
           <input autoFocus value={tu} onChange={(e) => setTu(e.target.value)} placeholder="Tìm mô hình…"
             className="mb-1 w-full rounded-md border border-slate-300 px-2 py-1 text-[12.5px] outline-none focus:border-teal-500" />
           <div className="max-h-64 overflow-auto">

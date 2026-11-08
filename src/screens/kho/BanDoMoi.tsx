@@ -15,7 +15,7 @@ import {
   getCay, themChuDe, suaChuDe, themChuyenDeVaoChuDe, suaChuyenDe, xoaChuDeTronGoi, xoaChuyenDeKhoiChuDe, xoaNhomTronGoi,
   themNhom, suaNhom, themDangBai, suaDangBai, xoaDangBai, sapXep, chuyenNhom, chuyenDangBai, chuyenO,
   nangDangBai, haNhom, gopChuyenDe, getLyThuyetNhom, getViDuDangBai, getLyThuyetDangBai, lyThuyetNhomApi, viDuDangBaiApi, lyThuyetDangBaiApi,
-  getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum, getKhoCau, chuyenCauSangDang, xoaCauKho, getKhoCauHinh, chuyenCauHinhSangBai, xoaCauHinh, BDM_NHANH, PHAN_HINH, khuonCuaVung, datMonBdm, tinhNangBdm, type BdmNhanh, type BdmMon,
+  getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum, getKhoCau, chuyenCauSangDang, xoaCauKho, getKhoCauHinh, chuyenCauHinhSangBai, xoaCauHinh, layCauDeSua, BDM_NHANH, PHAN_HINH, khuonCuaVung, datMonBdm, tinhNangBdm, type BdmNhanh, type BdmMon,
   type KhoCauRow, type KhoCauLoc,
   type BdmCay, type BdmChuDe, type BdmO, type BdmNhom, type BdmDangBai, type BdmDangCu, type BdmDangCuRef, type BdmDich, type BdmCauChuaGan,
 } from '../../lib/kho/banDoMoi'
@@ -23,7 +23,9 @@ import KhoHinhHocScreen from './hinh/KhoHinhHocScreen'
 import CayNhanh from './hinh/CayNhanh'
 import { loadLuoi } from '../../lib/kho/api'
 import type { Luoi } from '../../lib/kho/hinh'
-import { KHOI_OPTIONS, DEFAULT_KHOI, duyetCauAuto, type LyThuyet } from '../../lib/kho/api'
+import { KHOI_OPTIONS, DEFAULT_KHOI, duyetCauAuto, listDangOptions, type LyThuyet, type CauHoi } from '../../lib/kho/api'
+import { CauModal } from './DangHub'
+import { DungSaiModal } from './DungSaiBank'
 import { LyThuyetModal } from './BanDo'
 import { MathText, LoiGiaiXem, inp } from './ui'
 import KhopBanDoMoiTab from '../duyetloigiai/KhopBanDoMoiTab'
@@ -1363,6 +1365,29 @@ function KhoModal({ mo, khoi, cay, onDong, onDaDoi }: { mo: KhoMo; khoi: string;
   const [loi, setLoi] = useState<string | null>(null)
   const [tb, setTb] = useState<string | null>(null)
   const [chuyen, setChuyen] = useState<KhoCauRow | null>(null)   // câu đang chọn dạng bài đích
+  // ✎ Sửa (Thùy 08/11 "kho câu cần cho sửa") — mở đúng màn sửa có sẵn: CauModal (câu thường) · DungSaiModal (Đúng/Sai)
+  const [sua, setSua] = useState<{ cau: CauHoi; tbl: string } | null>(null)
+  const [dsOpts, setDsOpts] = useState<{ id: string; label: string; sub: string }[]>([])
+  const moSua = async (r: KhoCauRow) => {
+    try {
+      const x = await layCauDeSua(r.ma_cau, mo.hinh ? 'hinh_hoc_cau_hoi' : undefined)
+      if (x.cau.loai_cau === 'dung_sai') setDsOpts(await listDangOptions(x.tbl).catch(() => []))
+      setSua(x)
+    } catch (e) { setLoi(e instanceof Error ? e.message : String(e)) }
+  }
+  // Lưu xong: đọc lại đúng câu đó rồi vá thẻ tại chỗ (CLAUDE.md §2 — không tải lại cả danh sách)
+  const daSua = async (maCau: string, tbl: string) => {
+    setSua(null)
+    try {
+      const { cau } = await layCauDeSua(maCau, tbl)
+      setRows((a) => a.map((x) => x.ma_cau === maCau ? { ...x, loai_cau: cau.loai_cau, noi_dung: cau.noi_dung, lua_chon: cau.lua_chon ?? null,
+        menh_de: (cau as unknown as { menh_de?: KhoCauRow['menh_de'] }).menh_de ?? null, dap_an: cau.dap_an, loi_giai: cau.loi_giai,
+        anh_de: cau.anh_de ?? null, anh_dap_an: cau.anh_dap_an ?? null, da_duyet: cau.da_duyet,
+        kho_chuan: (cau as unknown as { kho_chuan?: boolean }).kho_chuan ?? x.kho_chuan } : x))
+      setTb(`Đã lưu ${maCau}`); setTimeout(() => setTb(null), 2500)
+      onDaDoi()
+    } catch (e) { setLoi(e instanceof Error ? e.message : String(e)) }
+  }
   // Sau 1 thao tác: bỏ câu khỏi danh sách tại chỗ, tải ngầm trang đầu (bản sao đi theo / tổng mới), báo bản đồ đếm lại
   const xong = (maCau: string, boKhoiDs: boolean, thongBao: string) => {
     if (boKhoiDs) setRows((a) => a.filter((x) => x.ma_cau !== maCau))
@@ -1428,13 +1453,16 @@ function KhoModal({ mo, khoi, cay, onDong, onDaDoi }: { mo: KhoMo; khoi: string;
           {loi && <div className="rounded-md bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi} <button onClick={() => setLoi(null)} className="ml-2 underline">ẩn</button></div>}
           {tb && <div className="rounded-md bg-emerald-50 px-3 py-2 text-[12.5px] text-emerald-700">✓ {tb}</div>}
           {!dang && !loi && rows.length === 0 && <div className="py-10 text-center text-[13px] text-slate-400">Không có câu nào{loc !== 'tat_ca' ? ' ở bộ lọc này' : ''}.</div>}
-          {rows.map((r) => <CauKho key={r.ma_cau} r={r} nhom={mo.loai === 'nhom'} onChuyen={mo.loai === 'dung_sai' || r.loai_cau === 'dung_sai' ? undefined : () => setChuyen(r)} onXoa={(ca) => void xoa(r, ca)} onDuyet={(d) => void doiDuyet(r, d)} />)}
+          {rows.map((r) => <CauKho key={r.ma_cau} r={r} nhom={mo.loai === 'nhom'} onChuyen={mo.loai === 'dung_sai' || r.loai_cau === 'dung_sai' ? undefined : () => setChuyen(r)} onXoa={(ca) => void xoa(r, ca)} onDuyet={(d) => void doiDuyet(r, d)} onSua={() => void moSua(r)} />)}
           {dang && <div className="py-3 text-center text-[12.5px] text-slate-400">Đang tải…</div>}
           {!dang && rows.length < tong && (
             <button onClick={() => tai(rows.length)} className="mx-auto block rounded-md border border-slate-300 bg-white px-4 py-1.5 text-[12.5px] font-medium text-slate-700 hover:border-indigo-300">Tải thêm {Math.min(TRANG, tong - rows.length)} câu</button>
           )}
         </div>
       </div>
+      {sua && <div onClick={(e) => e.stopPropagation()}>{sua.cau.loai_cau === 'dung_sai'
+        ? <DungSaiModal cau={sua.cau} dangChinhMoi={null} tbl={sua.tbl} dangOpts={dsOpts} onClose={() => setSua(null)} onSaved={() => void daSua(sua.cau.ma_cau, sua.tbl)} />
+        : <CauModal editing={sua.cau} cauTbl={sua.tbl} onClose={() => setSua(null)} onSaved={() => void daSua(sua.cau.ma_cau, sua.tbl)} />}</div>}
       {chuyen && mo.hinh && <div onClick={(e) => e.stopPropagation()}><ChonBaiHinh bais={mo.hinh.bais} onClose={() => setChuyen(null)} onPick={(id) => void doiDang(chuyen, id)} /></div>}
       {chuyen && !mo.hinh && <div onClick={(e) => e.stopPropagation()}>
         {tinhNangBdm().chonQuaCay
@@ -1447,7 +1475,7 @@ function KhoModal({ mo, khoi, cay, onDong, onDaDoi }: { mo: KhoMo; khoi: string;
 }
 // Thanh thao tác của 1 câu: ✓ Duyệt / ↩ Bỏ duyệt (Thùy 28/10 — thẳng trong popup Kho) · ↪ Chuyển dạng · 🗑 Xoá
 // (hỏi lại ngay trên thẻ; câu gốc chọn "chỉ câu này" hay "kèm bản sao").
-function ThaoTacCau({ r, onChuyen, onXoa, onDuyet }: { r: KhoCauRow; onChuyen?: () => void; onXoa: (caBanSao: boolean) => void; onDuyet?: (duyet: boolean) => void }) {
+function ThaoTacCau({ r, onChuyen, onXoa, onDuyet, onSua }: { r: KhoCauRow; onChuyen?: () => void; onXoa: (caBanSao: boolean) => void; onDuyet?: (duyet: boolean) => void; onSua?: () => void }) {
   const [hoi, setHoi] = useState(false)
   if (hoi) return (
     <span className="ml-auto flex flex-wrap items-center gap-1 text-[11.5px] max-md:ml-0 max-md:basis-full max-md:justify-end max-md:pt-1">
@@ -1462,6 +1490,8 @@ function ThaoTacCau({ r, onChuyen, onXoa, onDuyet }: { r: KhoCauRow; onChuyen?: 
       {onDuyet && (r.da_duyet
         ? <button onClick={() => onDuyet(false)} title="Bỏ dấu đã duyệt" className="rounded border border-sky-200 bg-sky-50 px-1.5 py-0.5 text-[11px] font-medium text-sky-700 hover:border-sky-300">↩ Bỏ duyệt</button>
         : <button onClick={() => onDuyet(true)} title="Đánh dấu đã duyệt — câu vào kho chuẩn (trừ khi máy nghi đáp số)" className="rounded border border-emerald-300 bg-emerald-50 px-1.5 py-0.5 text-[11px] font-semibold text-emerald-700 hover:bg-emerald-100">✓ Duyệt</button>)}
+      {onSua && <button onClick={onSua} title="Sửa đề · đáp án · lời giải · hình"
+        className="rounded border border-indigo-200 bg-indigo-50 px-1.5 py-0.5 text-[11px] font-semibold text-indigo-700 hover:bg-indigo-100">✎ Sửa</button>}
       {onChuyen && <button onClick={onChuyen} title={r.la_goc ? 'Chuyển câu (kèm mọi bản sao) sang dạng bài khác' : 'Chuyển câu sang dạng bài khác'}
         className="rounded border border-slate-200 px-1.5 py-0.5 text-[11px] font-medium text-slate-600 hover:border-indigo-300 hover:text-indigo-700">↪ Chuyển dạng</button>}
       <button onClick={() => setHoi(true)} title="Đưa câu vào kho rác (khôi phục được ở màn Kho rác)"
@@ -1469,7 +1499,7 @@ function ThaoTacCau({ r, onChuyen, onXoa, onDuyet }: { r: KhoCauRow; onChuyen?: 
     </span>
   )
 }
-function CauKho({ r, nhom, onChuyen, onXoa, onDuyet }: { r: KhoCauRow; nhom: boolean; onChuyen?: () => void; onXoa: (caBanSao: boolean) => void; onDuyet?: (duyet: boolean) => void }) {
+function CauKho({ r, nhom, onChuyen, onXoa, onDuyet, onSua }: { r: KhoCauRow; nhom: boolean; onChuyen?: () => void; onXoa: (caBanSao: boolean) => void; onDuyet?: (duyet: boolean) => void; onSua?: () => void }) {
   const nguonGan = r.nguon_gan === 'chua_khop' || r.nguon_gan === 'thieu_dang' || r.nguon_gan === 'dung_sai' ? null : r.nguon_gan.startsWith('de_xuat') ? 'AI đề xuất (chưa chắc)' : r.nguon_gan.endsWith(':ai') ? 'AI gán' : r.nguon_gan.endsWith(':nguoi') ? 'người gán' : (r.nguon_gan.startsWith('gan_cum') || r.nguon_gan.endsWith(':cum')) ? 'gán theo cụm' : r.nguon_gan.startsWith('doi_ung') ? 'theo dạng cũ' : r.nguon_gan
   const chip = (c: string, t: string) => <span className={`rounded px-1.5 py-0.5 text-[10.5px] font-semibold ${c}`}>{t}</span>
   return (
@@ -1484,7 +1514,7 @@ function CauKho({ r, nhom, onChuyen, onXoa, onDuyet }: { r: KhoCauRow; nhom: boo
         {r.kiem_may === 'khong_kiem_duoc' && chip('bg-slate-100 text-slate-500', 'máy không kiểm được')}
         {nguonGan && chip('bg-violet-50 text-violet-700', nguonGan)}
         {(nhom || r.nguon_gan.startsWith('de_xuat')) && r.dang_bai && <span className="text-[11px] text-violet-600">› <MathText>{r.dang_bai}</MathText></span>}
-        <ThaoTacCau r={r} onChuyen={onChuyen} onXoa={onXoa} onDuyet={onDuyet} />
+        <ThaoTacCau r={r} onChuyen={onChuyen} onXoa={onXoa} onDuyet={onDuyet} onSua={onSua} />
       </div>
       {r.ly_do && <div className="mb-1.5 rounded bg-amber-50 px-2 py-1 text-[12px] text-amber-800">{r.nguon_gan.startsWith('de_xuat') ? 'Lý do đề xuất' : r.nguon_gan === 'thieu_dang' ? 'Vì sao thiếu dạng' : 'Vì sao chưa khớp'}: {r.ly_do}</div>}
       <div className="text-[13.5px] leading-relaxed text-slate-900"><MathText>{r.noi_dung}</MathText></div>

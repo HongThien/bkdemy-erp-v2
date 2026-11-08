@@ -4,7 +4,7 @@
 // CEO soạn 4 tầng trên bản nháp (chia tầng · lý thuyết · ví dụ · mô tả); bản đồ đang chạy KHÔNG bị đụng.
 // Cây đọc 1 lần qua RPC fn_bdm_cay (đếm/ghép ở DB, §2.0). Ghi = CRUD dòng đơn + RPC chuyển/sắp xếp/nâng/hạ.
 import { supabase } from '../supabase'
-import type { LyThuyet } from './api'
+import type { LyThuyet, CauHoi } from './api'
 import type { LyThuyetApi } from '../../screens/kho/branches'
 
 // ⭐ MÔN (Thùy 29/10 — KHTN có bản đồ mới riêng, mig 202610291707/1712): mỗi môn một bộ bảng + hàm (§1.6 bảng riêng), dispatch qua
@@ -20,6 +20,17 @@ export const BDM_MON: Record<BdmMon, { bang: string; ham: string; coVung: boolea
   'KHTN': { bang: 'khtn_bdm_', ham: 'fn_khtn_bdm_', coVung: false, aiDuyet: true, khoLop: false, mastery: false, chuaPhan: true, chonQuaCay: true, nhanhTl: 'khtn' },
 }
 export const BDM_DS_MON = Object.keys(BDM_MON) as BdmMon[]
+// Bảng câu GỐC của môn (popup Kho › ✎ Sửa — Thùy 08/11). Toán có 2 nhánh (Đại · Hình giải tích), mã câu không trùng giữa 2 bảng.
+const BANG_CAU_GOC: Record<BdmMon, string[]> = { 'Toán': ['dai_cau_hoi', 'hgt_cau_hoi'], 'KHTN': ['khtn_cau_hoi'] }
+/** Nguyên dòng câu ở bảng gốc để mở màn sửa có sẵn (CauModal / DungSaiModal). `bang` = ép bảng (vd Hình–Học: hinh_hoc_cau_hoi). */
+export async function layCauDeSua(maCau: string, bang?: string): Promise<{ cau: CauHoi; tbl: string }> {
+  for (const tbl of bang ? [bang] : BANG_CAU_GOC[monBdm]) {
+    const { data, error } = await supabase.from(tbl).select('*').eq('ma_cau', maCau).maybeSingle()
+    if (error) loi(error)
+    if (data) return { cau: data as CauHoi, tbl }
+  }
+  throw new Error(`Không thấy câu ${maCau} ở kho gốc`)
+}
 /** Cờ của môn tài liệu (giáo trình / ET); môn chưa có bản đồ mới ⇒ null. */
 export const bdmCuaMon = (mon: string | null | undefined) => (mon && mon in BDM_MON ? BDM_MON[mon as BdmMon] : null)
 export const tinhNangBdm = () => BDM_MON[monBdm]
