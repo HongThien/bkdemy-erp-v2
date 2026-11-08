@@ -1,0 +1,1411 @@
+{
+ "khoi": "5T",
+ "nhom_id": "NNB02089",
+ "lan_chay": "pt-clone-2026-11-08",
+ "kiem": {
+  "model": "bộ kiểm độc lập k5T-pt-kiem (code) + Thùy duyệt",
+  "lan_chay": "pt-clone-2026-11-08-kiem"
+ },
+ "cau": [
+  {
+   "ma_cau": "T15T0000001000",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001001",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001002",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001003",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001004",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001005",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001006",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001007",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001008",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001009",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001010",
+   "ma_nguon": "gg_1_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001011",
+   "ma_nguon": "gg_1_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001012",
+   "ma_nguon": "gg_1_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001013",
+   "ma_nguon": "gg_1_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001014",
+   "ma_nguon": "gg_1_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001015",
+   "ma_nguon": "gg_1_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001016",
+   "ma_nguon": "gg_1_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001017",
+   "ma_nguon": "gg_1_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001018",
+   "ma_nguon": "gg_1_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001019",
+   "ma_nguon": "gg_1_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001020",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001021",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001022",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001023",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001024",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001025",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001026",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001027",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001028",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001029",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001030",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001031",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001032",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001033",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001034",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001035",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001036",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001037",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001038",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001039",
+   "ma_nguon": "gg_2_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001040",
+   "ma_nguon": "gg_2_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001041",
+   "ma_nguon": "gg_2_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001042",
+   "ma_nguon": "gg_2_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001043",
+   "ma_nguon": "gg_2_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001044",
+   "ma_nguon": "gg_2_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001045",
+   "ma_nguon": "gg_2_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001046",
+   "ma_nguon": "gg_2_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001047",
+   "ma_nguon": "gg_2_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001048",
+   "ma_nguon": "gg_2_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T0000001049",
+   "ma_nguon": "gg_2_tien",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000850",
+   "ma_nguon": "bh_gg_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000851",
+   "ma_nguon": "bh_gg_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000852",
+   "ma_nguon": "bh_gg_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000853",
+   "ma_nguon": "bh_gg_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000854",
+   "ma_nguon": "bh_gg_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000855",
+   "ma_nguon": "bh_gg_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000856",
+   "ma_nguon": "bh_gg_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000857",
+   "ma_nguon": "bh_gg_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000858",
+   "ma_nguon": "bh_gg_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000859",
+   "ma_nguon": "bh_gg_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000860",
+   "ma_nguon": "bh_gg_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000861",
+   "ma_nguon": "bh_gg_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000862",
+   "ma_nguon": "bh_gg_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000863",
+   "ma_nguon": "bh_gg_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000864",
+   "ma_nguon": "bh_gg_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000865",
+   "ma_nguon": "bh_gg_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000866",
+   "ma_nguon": "bh_gg_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000867",
+   "ma_nguon": "bh_gg_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000868",
+   "ma_nguon": "bh_gg_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000869",
+   "ma_nguon": "bh_gg_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000870",
+   "ma_nguon": "bh_lai_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000871",
+   "ma_nguon": "bh_lai_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000872",
+   "ma_nguon": "bh_lai_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000873",
+   "ma_nguon": "bh_lai_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000874",
+   "ma_nguon": "bh_lai_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000875",
+   "ma_nguon": "bh_lai_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000876",
+   "ma_nguon": "bh_lai_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000877",
+   "ma_nguon": "bh_lai_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000878",
+   "ma_nguon": "bh_lai_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000879",
+   "ma_nguon": "bh_lai_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000880",
+   "ma_nguon": "bh_lai_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000881",
+   "ma_nguon": "bh_lai_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000882",
+   "ma_nguon": "bh_lai_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000883",
+   "ma_nguon": "bh_lai_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000884",
+   "ma_nguon": "bh_lai_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000885",
+   "ma_nguon": "bh_lai_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000886",
+   "ma_nguon": "bh_lai_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000887",
+   "ma_nguon": "bh_lai_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000888",
+   "ma_nguon": "bh_lai_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000889",
+   "ma_nguon": "bh_lai_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000890",
+   "ma_nguon": "bh_gb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000891",
+   "ma_nguon": "bh_gb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000892",
+   "ma_nguon": "bh_gb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000893",
+   "ma_nguon": "bh_gb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000894",
+   "ma_nguon": "bh_gb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000895",
+   "ma_nguon": "bh_gb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000896",
+   "ma_nguon": "bh_gb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000897",
+   "ma_nguon": "bh_gb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000898",
+   "ma_nguon": "bh_gb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000899",
+   "ma_nguon": "bh_gb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000900",
+   "ma_nguon": "bh_gb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000901",
+   "ma_nguon": "bh_gb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000902",
+   "ma_nguon": "bh_gb_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000903",
+   "ma_nguon": "bh_gb_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000904",
+   "ma_nguon": "bh_gb_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000905",
+   "ma_nguon": "bh_gb_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000906",
+   "ma_nguon": "bh_gb_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000907",
+   "ma_nguon": "bh_gb_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000908",
+   "ma_nguon": "bh_gb_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000909",
+   "ma_nguon": "bh_gb_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000910",
+   "ma_nguon": "bh_tl_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000911",
+   "ma_nguon": "bh_tl_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000912",
+   "ma_nguon": "bh_tl_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000913",
+   "ma_nguon": "bh_tl_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000914",
+   "ma_nguon": "bh_tl_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000915",
+   "ma_nguon": "bh_tl_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000916",
+   "ma_nguon": "bh_tl_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000917",
+   "ma_nguon": "bh_tl_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000918",
+   "ma_nguon": "bh_tl_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000919",
+   "ma_nguon": "bh_tl_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000920",
+   "ma_nguon": "bh_tl_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000921",
+   "ma_nguon": "bh_tl_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000922",
+   "ma_nguon": "bh_tl_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000923",
+   "ma_nguon": "bh_tl_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000924",
+   "ma_nguon": "bh_tl_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000925",
+   "ma_nguon": "bh_tl_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000926",
+   "ma_nguon": "bh_tl_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000927",
+   "ma_nguon": "bh_tl_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000928",
+   "ma_nguon": "bh_tl_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000929",
+   "ma_nguon": "bh_tl_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000930",
+   "ma_nguon": "bh_tb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000931",
+   "ma_nguon": "bh_tb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000932",
+   "ma_nguon": "bh_tb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000933",
+   "ma_nguon": "bh_tb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000934",
+   "ma_nguon": "bh_tb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000935",
+   "ma_nguon": "bh_tb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000936",
+   "ma_nguon": "bh_tb_a",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000937",
+   "ma_nguon": "bh_tb_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000938",
+   "ma_nguon": "bh_tb_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000939",
+   "ma_nguon": "bh_tb_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000940",
+   "ma_nguon": "bh_tb_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000941",
+   "ma_nguon": "bh_tb_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000942",
+   "ma_nguon": "bh_tb_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000943",
+   "ma_nguon": "bh_tb_b",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000944",
+   "ma_nguon": "bh_tb_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000945",
+   "ma_nguon": "bh_tb_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000946",
+   "ma_nguon": "bh_tb_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000947",
+   "ma_nguon": "bh_tb_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000948",
+   "ma_nguon": "bh_tb_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000949",
+   "ma_nguon": "bh_tb_c",
+   "dang_bai_id": "NDB02771",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000950",
+   "ma_nguon": "gb_1",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000951",
+   "ma_nguon": "gb_1",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000952",
+   "ma_nguon": "gb_1",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000953",
+   "ma_nguon": "gb_1",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000954",
+   "ma_nguon": "gb_1",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000955",
+   "ma_nguon": "gb_1",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000956",
+   "ma_nguon": "gb_1",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000957",
+   "ma_nguon": "gb_1",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000958",
+   "ma_nguon": "gb_1",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000959",
+   "ma_nguon": "gb_1",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000960",
+   "ma_nguon": "gb_1",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000961",
+   "ma_nguon": "gb_1",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000962",
+   "ma_nguon": "gb_2a",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000963",
+   "ma_nguon": "gb_2b",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000964",
+   "ma_nguon": "gb_2a",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000965",
+   "ma_nguon": "gb_2b",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000966",
+   "ma_nguon": "gb_2a",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000967",
+   "ma_nguon": "gb_2b",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000968",
+   "ma_nguon": "gb_2a",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000969",
+   "ma_nguon": "gb_2b",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000970",
+   "ma_nguon": "gb_2a",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000971",
+   "ma_nguon": "gb_2b",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000972",
+   "ma_nguon": "gb_3a",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000973",
+   "ma_nguon": "gb_3b",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000974",
+   "ma_nguon": "gb_3a",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000975",
+   "ma_nguon": "gb_3b",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000976",
+   "ma_nguon": "gb_3a",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000977",
+   "ma_nguon": "gb_3b",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000978",
+   "ma_nguon": "gb_3a",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000979",
+   "ma_nguon": "gb_3b",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000980",
+   "ma_nguon": "gb_3a",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000981",
+   "ma_nguon": "gb_3b",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000982",
+   "ma_nguon": "gb_4",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000983",
+   "ma_nguon": "gb_4",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000984",
+   "ma_nguon": "gb_4",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000985",
+   "ma_nguon": "gb_4",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000986",
+   "ma_nguon": "gb_5",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000987",
+   "ma_nguon": "gb_5",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000988",
+   "ma_nguon": "gb_5",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000989",
+   "ma_nguon": "gb_5",
+   "dang_bai_id": "NDB02772",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000990",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000991",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000992",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000993",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000994",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000995",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000996",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000997",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000998",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  },
+  {
+   "ma_cau": "T15T000000999",
+   "ma_nguon": "gg_1_pt",
+   "dang_bai_id": "NDB02773",
+   "chac": "cao",
+   "ly_do": "Thùy chốt duyệt 08/11: câu sinh theo mẫu của đúng dạng"
+  }
+ ]
+}

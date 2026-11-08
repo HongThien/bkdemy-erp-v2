@@ -1,0 +1,27 @@
+##VD
+Cho số thực $x>0$. Tìm giá trị nhỏ nhất của biểu thức $A=x+\dfrac4{x^2}$.
+
+Bài giải:
+Có $\dfrac4{x^2}$ nên tách $x$ thành hai phần bằng nhau để tích ba số không còn chứa $x$: $A=\dfrac x2+\dfrac x2+\dfrac4{x^2}$.
+Áp dụng Cô-si cho ba số dương: $\dfrac x2+\dfrac x2+\dfrac4{x^2}\ge3\sqrt[3]{\dfrac x2\cdot\dfrac x2\cdot\dfrac4{x^2}}=3\sqrt[3]1=3$.
+Dấu "=" xảy ra khi $\dfrac x2=\dfrac4{x^2}$, tức $x^3=8$, $x=2$ (thỏa $x>0$).
+Vậy $\min A=3$, đạt khi $x=2$.
+
+#TACH
+##VD
+Cho số thực $x$ thỏa mãn $0<x<3$. Tìm giá trị lớn nhất của biểu thức $P=x(3-x)$.
+
+Bài giải:
+Vì $0<x<3$ nên $x>0$ và $3-x>0$, có tổng $x+(3-x)=3$ không đổi.
+Áp dụng Cô-si cho hai số dương: $x(3-x)\le\left(\dfrac{x+(3-x)}2\right)^2=\dfrac94$.
+Dấu "=" xảy ra khi $x=3-x$, tức $x=\dfrac32$ (thỏa $0<x<3$).
+Vậy $\max P=\dfrac94$, đạt khi $x=\dfrac32$.
+
+##VD
+Cho số thực $x$ thỏa mãn $0<x<\dfrac32$. Tìm giá trị lớn nhất của biểu thức $P=x^2(3-2x)$.
+
+Bài giải:
+Vì $0<x<\dfrac32$ nên $x>0$ và $3-2x>0$. Viết $P=x\cdot x\cdot(3-2x)$: ba thừa số dương có tổng $x+x+(3-2x)=3$ không đổi.
+Áp dụng Cô-si cho ba số dương: $x\cdot x\cdot(3-2x)\le\left(\dfrac{x+x+(3-2x)}3\right)^3=1$.
+Dấu "=" xảy ra khi $x=3-2x$, tức $x=1$ (thỏa $0<x<\dfrac32$).
+Vậy $\max P=1$, đạt khi $x=1$.

@@ -344,18 +344,36 @@ không đè quyết định của người). Hai trạm: tôi xếp (đọc đ�
 | `NDB02774` Giảm giá kép | giảm lần 1 rồi lần 2 theo giá đã giảm (nhân, không cộng) | 2: LT 17.3 · 17.4 |
 | `NDB02775` Doanh thu – chi phí | đơn giá × số lượng, thay đổi % hai thừa số, hỏi tích | 1: LT 17.16 |
 | `NDB02776` Diện tích | chiều dài × chiều rộng đổi % | 4: LT 17.6–17.9 |
-| `NDB02777` Trộn A và B → hỗn hợp | cho %/khối lượng hai phần, trộn, tìm % sau trộn | 6: VD 16.3 · LT 16.3–16.6 · ON 87 |
-| `NDB02778` Hỗn hợp tìm ngược A, B | cho hỗn hợp, tìm lượng/% của A hoặc B | 1: LT 16.7 |
+| `NDB02777` Trộn A và B → hỗn hợp | cho %/khối lượng hai phần, trộn, tìm % sau trộn | 8: VD 16.3 · LT 16.1–16.6 · ON 87 |
+| `NDB02778` Hỗn hợp tìm ngược A, B | cho hỗn hợp, tìm lượng/% của A hoặc B | 7: VD 16.1 · LT 16.7–16.10 · ON 88 · ON 89 |
 
-- **Tổng: 117 câu phần trăm = 17 đã nằm ở dạng 5T khác + 63 gán chắc + 12 đề xuất + 25 chưa có dạng.** 17 câu (LT 14.6a, b, d · 14.7a–d · 14.8–14.10 · 14.12–14.17 · ON 3) do lượt gán 5T ngày 01/11 xếp sang các dạng tổng–tỉ / hai tỉ số / số thập phân của chủ đề "Bài toán tỉ số" (phương pháp thắng chủ đề) — không đụng.
-- **12 câu đề xuất, chờ Thùy gật** (hai trạm lệch): ① **thêm nước cất / thêm muối / thêm sắt / đun cho bay hơi, chất tan KHÔNG đổi** — VD 16.1, LT 16.1, 16.2, 16.8, 16.9, 16.10, ON 88, ON 89 (tôi xếp vào `02777`/`02778`, trạm mù thấy đây là pha loãng/cô đặc chứ không phải "trộn hai dung dịch" ⇒ **cần Thùy quyết: nhóm "Bài toán hỗn hợp" có nhận kiểu pha loãng này không**) ·
-  ② LT 14.5j (36 × 28%: tôi `02767`, mù `02769`) · ③ LT 14.11 (chuyển 25% công nhân: mù `02770`) · ④ LT 17.15 (sản lượng = diện tích × năng suất) và ON 83 (thể tích hộp: ba kích thước) — tôi `02775` / `02776`, mù thấy không phải diện tích hay doanh thu.
+- **Tổng: 117 câu phần trăm = 17 đã nằm ở dạng 5T khác + 71 gán chắc (63 lượt đầu + 8 pha loãng Thùy chốt) + 4 đề xuất + 25 chưa có dạng.** 17 câu (LT 14.6a, b, d · 14.7a–d · 14.8–14.10 · 14.12–14.17 · ON 3) do lượt gán 5T ngày 01/11 xếp sang các dạng tổng–tỉ / hai tỉ số / số thập phân của chủ đề "Bài toán tỉ số" (phương pháp thắng chủ đề) — không đụng.
+- **Thùy chốt 08/11: "pha loãng cô đặc là hỗn hợp"** ⇒ 8 câu thêm nước cất / thêm muối / thêm sắt / đun bay hơi (chất tan không đổi) đã gán chắc vào nhóm "Bài toán hỗn hợp": hỏi **% sau khi pha / đun** (LT 16.1, LT 16.2) ⇒ `NDB02777` · hỏi **lượng cần thêm** (VD 16.1, LT 16.8, 16.9, 16.10, ON 88, ON 89) ⇒ `NDB02778`. **4 câu còn đề xuất chờ Thùy gật** (hai trạm lệch): LT 14.5j (36 × 28%: tôi `02767`, mù `02769`) · LT 14.11 (chuyển 25% công nhân: mù `02770`) · LT 17.15 (sản lượng = diện tích × năng suất) và ON 83 (thể tích hộp, ba kích thước) — tôi `02775` / `02776`, mù thấy không phải diện tích hay doanh thu. **Chưa hỏi:** hạt tươi – hạt khô (6 câu) cũng là cô đặc (nước bay hơi, chất khô không đổi) — có đưa vào hỗn hợp không?
 - **25 câu CHƯA CÓ DẠNG** (`dai_bdm_cau_thieu_dang`, hai trạm cùng nói không dạng nào khớp, không ép): ① **tính tỉ số % của hai đại lượng** — LT 15.1–15.5 · ON 79 (6; nhóm cũ có dạng này, bản mới của Thùy không có) · ② **đổi số ↔ %** — LT 14.1–14.3 (3) ·
   ③ **hạt tươi – hạt khô** — VD 16.2 · LT 16.11–16.15 (6; LT 16.11 cổng gắn cờ `nghi`) · ④ **tăng/giảm liên tiếp một đại lượng, lãi nhập vốn** — LT 17.1 · 17.2 · 17.17 · ON 85 (4) · ⑤ **năng suất – thời gian – người, chu vi, thương hai số** — LT 17.5 · 17.11–17.14 (5) · ON 86 (giảm 10% giá áo, tăng 20% giá mũ rồi tổng–tỉ).
 - LT 16.4 (quặng + sắt, cờ `nghi` vì đề viết lại có chủ ý): gán `02777`; DB tự duyệt vì trigger `_bdm_tu_duyet_sau_gan` không xét cờ `nghi` (khác `gan-bdm-nhom.mjs`).
 - Không đưa vào (phương pháp thắng chủ đề, % chỉ là một bước của bài hình / chuyển động): LT 18.10, 20.8, 20.15, 22.26, 28.4 · các câu "viết số thập phân gồm … phần trăm" · LT 7.12 (thừa–thiếu).
 - Lý thuyết / ví dụ của 4 nhóm và 12 dạng đang TRỐNG (Thùy chưa điền); 7/12 dạng có mô tả 1 dòng.
 - Dữ liệu: `lo/k5T-gan-pt-NNB02088/89/90/91.json` (68 + 10 + 7 + 15 câu). Bản cũ `lo/k5T-gan-bdm-pt.json` (nhóm `NNB01747` đã xoá) giữ làm nguồn tra.
+
+### 8.4 CÂU MỚI SINH THEO MẪU (clone) cho chuyên đề phần trăm — Thùy 08/11: *"cơ bản bán hàng: giá gốc, lãi, giá bán, tỉ lệ lãi, tỉ lệ bán, mỗi loại 20 câu · lãi theo giá bán ~40 câu số đẹp · giảm giá 2 kiểu × 30 câu"*
+
+Máy sinh `scripts/kho/clone/k5T-pt-sinh.mjs` (item model: tham số "đẹp" ⇒ đề + đáp số + lời giải 2 phần, hạt giống cố định) → kiểm `k5T-pt-kiem.mjs` → ghi `k5T-pt-ghi.mjs` → xem `reports/5T-phan-tram-clone-moi.html`. Lô: `kho-rules/dai/clone/k5T-pt-c1.json` (200 câu).
+
+| Dạng | Loại | Số câu | Mẫu |
+|---|---|---|---|
+| `NDB02771` Bán hàng cơ bản | Hỏi **giá gốc** | 20 | 12 (cho giá bán + lãi p%: giá bán : (100%+p%)) · 8 (cho tiền lãi + p%: lãi : p%) |
+| | Hỏi **lãi** | 20 | 10 (giá gốc × p%) · 5 (giá bán − giá gốc) · 5 (cho giá bán + p%: tìm giá gốc rồi trừ) |
+| | Hỏi **giá bán** | 20 | 12 (gốc + gốc × p%) · 4 (gốc + lãi) · 4 (n sản phẩm ⇒ tổng thu) |
+| | Hỏi **tỉ lệ lãi** | 20 | 10 (cho giá gốc, giá bán) · 6 (cho giá gốc, lãi) · 4 (cho giá bán, lãi) |
+| | Hỏi **tỉ lệ bán** | 20 | 7 (tính % hàng đã bán) · 7 (bán a% số hàng ⇒ tiền thu) · 6 (bán a% số hàng, lãi p% ⇒ tổng lãi) — *"tỉ lệ bán" tôi hiểu là tỉ lệ số hàng đã bán trên số hàng nhập; chờ Thùy xác nhận* |
+| `NDB02772` Lãi theo giá bán | — | 40 | 12 (cho giá gốc + lãi a% **giá bán** ⇒ giá bán: coi giá bán 100%, giá gốc = (100−a)%) · 10 (giá gốc = c% giá bán + cho lãi ⇒ giá bán / giá gốc) · 10 (cho giá bán + lãi a% giá bán ⇒ lãi / giá gốc) · 4 (lãi bằng bao nhiêu % giá bán) · 4 (đổi gốc so sánh: lãi 20% giá bán ⇒ 25% giá gốc, 60% ⇒ 150%, 25% giá gốc ⇒ 20% giá bán, 100% ⇒ 50%) |
+| `NDB02773` Giảm giá | Kiểu 1: ngày thường lãi p%, giảm d% ⇒ còn lãi bao nhiêu | 30 | 20 chỉ phần trăm (coi giá nhập 100%: (100+p)% × (100−d)% − 100%) · 10 có tiền (cho giá gốc ⇒ tiền lãi còn lại) |
+| | Kiểu 2: giảm d% còn lãi q% ⇒ ngày thường lãi bao nhiêu | 30 | 20 chỉ phần trăm ((100+q)% : (100−d)% − 100%) · 10 có tiền (cho giá gốc ⇒ giá niêm yết) |
+
+- **Số đẹp:** mọi số tiền (giá gốc, lãi, giá bán, đáp số) là bội của 1000 đồng; phần trăm tròn; lãi ngày thường ≤ 100%, lãi còn lại từ 5% đến dưới 100%; kết quả nhân/chia hai tỉ số % là số thập phân hữu hạn (viết thêm bước đổi thập phân đúng §2b-G).
+- **Bộ kiểm độc lập (200/200 đạt):** đọc CHỮ của đề (số tiền, phần trăm), tính lại đáp số bằng phân số BigInt, đối chiếu `dap_an`; máy tính cả chuỗi `a=b=c` ở mọi dòng Phần 2 (bắt sai số học bước trung gian); "Đáp số" cuối = `dap_an`; Phần 1 card 3–6 bước (`kiem-p1-card`); KaTeX; không ký hiệu cấm; 0 trùng đề. Bộ kiểm bắt được 7 câu "tỉ lệ lãi" lỗi do thứ tự hai số tiền trong đề trước khi ghi.
+- **Ghi:** vào kho dạng chờ `T15T000000`, `nguon='clone'`, `clone_method='may_sinh_theo_mau'`, `kiem_may='khop'`; dạng bài đi qua `dai_bdm_de_xuat` (nguon 'ai', chắc 'cao'). **KHÔNG tự gán, KHÔNG tự duyệt** (clone là nội dung mới, khác câu sách đã duyệt ở nguồn) — chờ Thùy xem HTML rồi nói "duyệt" ⇒ chạy `gan-bdm-nhom.mjs` chắc + DB tự duyệt.
 
 ## 9. NHẬT KÝ SỬA (append-only — CEO sửa gì ghi đó, rồi nâng thành luật ở trên)
 
@@ -378,3 +396,4 @@ không đè quyết định của người). Hai trạm: tôi xếp (đọc đ�
 | 11/10 | Gán dạng chuyên đề Tỉ lệ thuận – nghịch: 6 câu thêm / bớt người từ đầu (LT 5.2–5.5, 5.8, 5.9) | *"Thay đổi số người: có 2 loại, đổi từ đầu và đổi giữa chừng. Cùng tư duy nên dạy cùng nhau."* | §8.1: `030104` gồm cả hai loại; ở dạng này dấu hiệu đề (có người đến / đi) thắng phương pháp. 6 câu đã gán `030104`. |
 | 25/10 | Đưa tài liệu 5T vào bản đồ mới, nhóm "Bài toán tính toán với tỉ số phần trăm" | *"Đưa bài vào kho, nhóm … Tự động duyệt"* | §8.3: gán qua `dai_bdm_gan_cau`, câu gán chắc tự duyệt (`duyet_nguon='ai'`); câu máy chưa quyết ⇒ đề xuất / thiếu dạng + trang HTML cho CEO. |
 | 08/11 | 117 câu phần trăm 5T vào chuyên đề `NCH00638` "Tỉ số phầm trăm" (bản đồ mới, Thùy dựng lại sau khi nhóm 25/10 bị migration 31/10 xoá) | *"Phân bài vào tỉ số phần trăm đi. t tạo rồi đấy"* | §8.3: làm lại lượt gán trên 12 dạng mới (63 gán chắc, 12 đề xuất, 25 chưa có dạng, 17 câu đã ở dạng 5T khác); câu hỏi mở: kiểu pha loãng/bay hơi có thuộc "Bài toán hỗn hợp" không |
+| 08/11 | Chuyên đề phần trăm 5T: 8 câu pha loãng + 200 câu mới sinh | *"1. Pha loãng cô đặc là hỗn hợp · 2. cơ bản bán hàng: giá gốc, lãi, giá bán, tỉ lệ lãi, tỉ lệ bán, mỗi loại 20 câu · 3. lãi theo giá bán ~40 câu số đẹp · 4. giảm giá 2 kiểu, mỗi kiểu 30 câu"* | §8.3 (pha loãng ∈ hỗn hợp) + §8.4 (máy sinh theo mẫu, 200 câu chờ duyệt) |

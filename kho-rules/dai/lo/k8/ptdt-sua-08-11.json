@@ -1,0 +1,933 @@
+[
+ {
+  "ma_cau": "T108030105018",
+  "dang": "NDB00477",
+  "ly_do": [
+   "SỬA ĐỀ (khoảng cách 2); đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $9x^3 + 3x^2 - 16x + 4$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x - 1)(3x + 4)(3x - 1)$",
+   "loi_giai": "Đặt $A = 9x^3 + 3x^2 - 16x + 4$.\nNhẩm thấy:\n$A(1) = 9 + 3 - 16 + 4 = 0$.\nVậy ta hướng tới tạo nhân tử $(x - 1)$.\nTa có:\n$A = 9x^3 - 9x^2 + 12x^2 - 12x - 4x + 4$\n$= 9x^2(x - 1) + 12x(x - 1) - 4(x - 1)$\n$= (x - 1)(9x^2 + 12x - 4)$\n$= (x - 1)(9x^2 + 15x - 3x - 4)$\n$= (x - 1)[3x(3x + 5) - (3x + 5)]$\n$= (x - 1)(3x + 5)(3x - 1)$.\nVậy $A = (x - 1)(3x + 5)(3x - 1)$."
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $9x^3 + 3x^2 - 17x + 5$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x - 1)(3x + 5)(3x - 1)$",
+   "loi_giai": "Đặt $A = 9x^3 + 3x^2 - 17x + 5$.\nNhẩm thấy:\n$A(1) = 9 + 3 - 17 + 5 = 0$.\nVậy ta hướng tới tạo nhân tử $(x - 1)$.\nTa có:\n$A = 9x^3 - 9x^2 + 12x^2 - 12x - 5x + 5$\n$= 9x^2(x - 1) + 12x(x - 1) - 5(x - 1)$\n$= (x - 1)(9x^2 + 12x - 5)$\n$= (x - 1)(9x^2 + 15x - 3x - 5)$\n$= (x - 1)[3x(3x + 5) - (3x + 5)]$\n$= (x - 1)(3x + 5)(3x - 1)$.\nVậy $A = (x - 1)(3x + 5)(3x - 1)$."
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108030105019",
+  "dang": "NDB00477",
+  "ly_do": [
+   "SỬA ĐỀ (khoảng cách 2); đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $10x^3 + 3x^2 - 17x + 4$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x - 1)(2x + 5)(5x - 4)$",
+   "loi_giai": "Đặt $A = 10x^3 + 3x^2 - 17x + 4$.\nNhẩm thấy:\n$A(1) = 10 + 3 - 17 + 4 = 0$.\nVậy ta hướng tới tạo nhân tử $(x - 1)$.\nTa có:\n$A = 10x^3 - 10x^2 + 13x^2 - 13x - 4x + 4$\n$= 10x^2(x - 1) + 13x(x - 1) - 4(x - 1)$\n$= (x - 1)(10x^2 + 13x - 4)$\n$= (x - 1)(10x^2 + 15x - 2x - 4)$\n$= (x - 1)[5x(2x + 3) - (2x + 3)]$\n$= (x - 1)(2x + 3)(5x - 2)$.\nVậy $A = (x - 1)(2x + 3)(5x - 2)$."
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $10x^3 + 3x^2 - 16x + 3$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x - 1)(5x - 1)(2x + 3)$",
+   "loi_giai": "Đặt $A = 10x^3 + 3x^2 - 16x + 3$.\nNhẩm thấy:\n$A(1) = 10 + 3 - 16 + 3 = 0$.\nVậy ta hướng tới tạo nhân tử $(x - 1)$.\nTa có:\n$A = 10x^3 - 10x^2 + 13x^2 - 13x - 3x + 3$\n$= 10x^2(x - 1) + 13x(x - 1) - 3(x - 1)$\n$= (x - 1)(10x^2 + 13x - 3)$\n$= (x - 1)(10x^2 - 2x + 15x - 3)$\n$= (x - 1)[2x(5x - 1) + 3(5x - 1)]$\n$= (x - 1)(5x - 1)(2x + 3)$.\nVậy $A = (x - 1)(5x - 1)(2x + 3)$."
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108030105020",
+  "dang": "NDB00477",
+  "ly_do": [
+   "GIỮ ĐỀ (hợp lệ), viết lại lời giải; đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $8x^3 + 2x^2 - 17x + 7$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x - 1)(2x + 7)(4x - 1)$",
+   "loi_giai": "Đặt $A = 8x^3 + 2x^2 - 17x + 7$.\nNhẩm thấy:\n$A(1) = 8 + 2 - 17 + 7 = 0$.\nVậy ta hướng tới tạo nhân tử $(x - 1)$.\nTa có:\n$A = 8x^3 - 8x^2 + 10x^2 - 10x - 7x + 7$\n$= 8x^2(x - 1) + 10x(x - 1) - 7(x - 1)$\n$= (x - 1)(8x^2 + 10x - 7)$\n$= (x - 1)(8x^2 + 14x - 4x - 7)$\n$= (x - 1)[2x(4x + 7) - (4x + 7)]$\n$= (x - 1)(4x + 7)(2x - 1)$.\nVậy $A = (x - 1)(4x + 7)(2x - 1)$."
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $8x^3 + 2x^2 - 17x + 7$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x - 1)(4x + 7)(2x - 1)$",
+   "loi_giai": "Đặt $A = 8x^3 + 2x^2 - 17x + 7$.\nNhẩm thấy:\n$A(1) = 8 + 2 - 17 + 7 = 0$.\nVậy ta hướng tới tạo nhân tử $(x - 1)$.\nTa có:\n$A = 8x^3 - 8x^2 + 10x^2 - 10x - 7x + 7$\n$= 8x^2(x - 1) + 10x(x - 1) - 7(x - 1)$\n$= (x - 1)(8x^2 + 10x - 7)$\n$= (x - 1)(8x^2 + 14x - 4x - 7)$\n$= (x - 1)[2x(4x + 7) - (4x + 7)]$\n$= (x - 1)(4x + 7)(2x - 1)$.\nVậy $A = (x - 1)(4x + 7)(2x - 1)$."
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108030105022",
+  "dang": "NDB00477",
+  "ly_do": [
+   "SỬA ĐỀ (khoảng cách 5); đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $6x^3 + 5x^2 - 8x + 2$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x - 1)(3x - 2)(2x + 1)$",
+   "loi_giai": "Đặt $A = 6x^3 + 5x^2 - 8x + 2$.\nNhẩm thấy:\n$A(1) = 6 + 5 - 8 + 2 = 0$.\nVậy ta hướng tới tạo nhân tử $(x - 1)$.\nTa có:\n$A = 6x^3 - 6x^2 + 11x^2 - 11x + 3x + 2$\n$= 6x^2(x - 1) + 11x(x - 1) + 3(x - 1)$\n$= (x - 1)(6x^2 + 11x + 3)$\n$= (x - 1)(6x^2 + 9x + 2x + 3)$\n$= (x - 1)[3x(2x + 3) + (2x + 3)]$\n$= (x - 1)(2x + 3)(3x + 1)$.\nVậy $A = (x - 1)(2x + 3)(3x + 1)$."
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $6x^3 + 5x^2 - 13x + 2$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x - 1)(6x - 1)(x + 2)$",
+   "loi_giai": "Đặt $A = 6x^3 + 5x^2 - 13x + 2$.\nNhẩm thấy:\n$A(1) = 6 + 5 - 13 + 2 = 0$.\nVậy ta hướng tới tạo nhân tử $(x - 1)$.\nTa có:\n$A = 6x^3 - 6x^2 + 11x^2 - 11x - 2x + 2$\n$= 6x^2(x - 1) + 11x(x - 1) - 2(x - 1)$\n$= (x - 1)(6x^2 + 11x - 2)$\n$= (x - 1)(6x^2 - x + 12x - 2)$\n$= (x - 1)[x(6x - 1) + 2(6x - 1)]$\n$= (x - 1)(6x - 1)(x + 2)$.\nVậy $A = (x - 1)(6x - 1)(x + 2)$."
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108030105027",
+  "dang": "NDB00477",
+  "ly_do": [
+   "GIỮ ĐỀ (hợp lệ), viết lại lời giải; đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $6x^3 - 7x^2 - 16x + 12$ thành nhân tử.",
+   "dap_an": "$(x-2)(x+2)(6x-3)$",
+   "loi_giai": "Đặt\n$$A = 6x^3 - 7x^2 - 16x + 12.$$\nNhẩm thấy:\n$$A(2) = 6(2)^3 - 7(2)^2 - 16(2) + 12 = 0.$$\nVậy ta hướng tới tạo nhân tử $(x-2)$.\nTa có:\n$$\\begin{aligned}A &= 6x^3 - 12x^2 + 5x^2 - 10x - 6x + 12\\\\ &= 6x^2(x-2) + 5x(x-2) - 6(x-2)\\\\ &= (x-2)(6x^2 + 5x - 6)\\\\ &= (x-2)(6x^2 + 4x - 9x - 6)\\\\ &= (x-2)[2x(3x+2) - 3(3x+2)]\\\\ &= (x-2)(x+2)(6x-3).\\end{aligned}$$\nVậy:\n$$A = (x-2)(x+2)(6x-3).$$"
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $6x^3 - 7x^2 - 16x + 12$ thành nhân tử.",
+   "dap_an": "$(x - 2)(3x - 2)(2x + 3)$",
+   "loi_giai": "Đặt $A = 6x^3 - 7x^2 - 16x + 12$.\nNhẩm thấy:\n$A(2) = 6 \\cdot 2^3 - 7 \\cdot 2^2 - 16 \\cdot 2 + 12 = 0$.\nVậy ta hướng tới tạo nhân tử $(x - 2)$.\nTa có:\n$A = 6x^3 - 12x^2 + 5x^2 - 10x - 6x + 12$\n$= 6x^2(x - 2) + 5x(x - 2) - 6(x - 2)$\n$= (x - 2)(6x^2 + 5x - 6)$\n$= (x - 2)(6x^2 - 4x + 9x - 6)$\n$= (x - 2)[2x(3x - 2) + 3(3x - 2)]$\n$= (x - 2)(3x - 2)(2x + 3)$.\nVậy $A = (x - 2)(3x - 2)(2x + 3)$."
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108030105030",
+  "dang": "NDB00477",
+  "ly_do": [
+   "GIỮ ĐỀ (hợp lệ), viết lại lời giải; đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $4x^3-3x^2-6x+5$ thành nhân tử.",
+   "dap_an": "$(x-1)(x+1)(4x-5)$",
+   "loi_giai": "Đặt\n$$A = 4x^3 - 3x^2 - 6x + 5.$$\nNhẩm thấy:\n$$A(1) = 4(1)^3 - 3(1)^2 - 6(1) + 5 = 0.$$\nVậy ta hướng tới tạo nhân tử $(x-1)$.\nTa có:\n$$A = 4x^3 - 4x^2 + x^2 - x - 5x + 5$$\n$$= 4x^2(x - 1) + x(x - 1) - 5(x - 1)$$\n$$= (x - 1)(4x^2 + x - 5)$$\n$$= (x - 1)(4x^2 - 4x + 5x - 5)$$\n$$= (x - 1)[4x(x - 1) + 5(x - 1)]$$\n$$= (x - 1)(x - 1)(4x + 5).$$\nVậy:\n$$A = (x - 1)(x - 1)(4x + 5).$$"
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $4x^3-3x^2-6x+5$ thành nhân tử.",
+   "dap_an": "$(x - 1)(x - 1)(4x + 5)$",
+   "loi_giai": "Đặt $A = 4x^3 - 3x^2 - 6x + 5$.\nNhẩm thấy:\n$A(1) = 4 - 3 - 6 + 5 = 0$.\nVậy ta hướng tới tạo nhân tử $(x - 1)$.\nTa có:\n$A = 4x^3 - 4x^2 + x^2 - x - 5x + 5$\n$= 4x^2(x - 1) + x(x - 1) - 5(x - 1)$\n$= (x - 1)(4x^2 + x - 5)$\n$= (x - 1)(4x^2 - 4x + 5x - 5)$\n$= (x - 1)[4x(x - 1) + 5(x - 1)]$\n$= (x - 1)(x - 1)(4x + 5)$.\nVậy $A = (x - 1)(x - 1)(4x + 5)$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 2
+ },
+ {
+  "ma_cau": "T108030105051",
+  "dang": "NDB00477",
+  "ly_do": [
+   "SỬA ĐỀ (khoảng cách 2); đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $4x^3 - 9x^2 - 6x + 5$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x - 1)(4x - 5)(x + 1)$",
+   "loi_giai": "Đặt $A = 4x^3 - 9x^2 - 6x + 5$.\nNhẩm thấy:\n$A(1) = 4 - 9 - 6 + 5 = -6$.\nVậy ta hướng tới tạo nhân tử $(x - 1)$.\nTa có:\n$A = 4x^3 - 4x^2 - 5x^2 + 5x - 11x + 5$\n$= 4x^2(x - 1) - 5x(x - 1) - 11(x - 1)$\n$= (x - 1)(4x^2 - 5x - 11)$\n$= (x - 1)(4x^2 - 9x + 4x - 11)$\n$= (x - 1)[x(4x - 9) + (4x - 11)]$\n$= (x - 1)(4x - 9)(x + 1)$.\nVậy $A = (x - 1)(4x - 9)(x + 1)$."
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $4x^3 - 8x^2 - 7x + 5$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x + 1)(2x - 1)(2x - 5)$",
+   "loi_giai": "Đặt $A = 4x^3 - 8x^2 - 7x + 5$.\nNhẩm thấy:\n$A(-1) = 4 \\cdot (-1)^3 - 8 \\cdot (-1)^2 - 7 \\cdot (-1) + 5 = 0$.\nVậy ta hướng tới tạo nhân tử $(x + 1)$.\nTa có:\n$A = 4x^3 + 4x^2 - 12x^2 - 12x + 5x + 5$\n$= 4x^2(x + 1) - 12x(x + 1) + 5(x + 1)$\n$= (x + 1)(4x^2 - 12x + 5)$\n$= (x + 1)(4x^2 - 2x - 10x + 5)$\n$= (x + 1)[2x(2x - 1) - 5(2x - 1)]$\n$= (x + 1)(2x - 1)(2x - 5)$.\nVậy $A = (x + 1)(2x - 1)(2x - 5)$."
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 0
+ },
+ {
+  "ma_cau": "T108030105054",
+  "dang": "NDB00477",
+  "ly_do": [
+   "GIỮ ĐỀ (hợp lệ), viết lại lời giải; đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $10x^3 + 3x^2 - 13x - 6$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x + 1)(2x - 3)(5x + 2)$",
+   "loi_giai": "Đặt $A = 10x^3 + 3x^2 - 13x - 6$.\nNhẩm thấy:\n$A(-1) = -10 + 3 + 13 - 6 = 0$.\nVậy ta hướng tới tạo nhân tử $(x + 1)$.\nTa có:\n$A = 10x^3 + 10x^2 - 7x^2 - 7x - 6x - 6$\n$= 10x^2(x + 1) - 7x(x + 1) - 6(x + 1)$\n$= (x + 1)(10x^2 - 7x - 6)$\n$= (x + 1)(10x^2 - 15x + 8x - 6)$\n$= (x + 1)[5x(2x - 3) + 2(2x - 3)]$\n$= (x + 1)(2x - 3)(5x + 2)$.\nVậy $A = (x + 1)(2x - 3)(5x + 2)$."
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $10x^3 + 3x^2 - 13x - 6$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x + 1)(5x - 6)(2x + 1)$",
+   "loi_giai": "Đặt $A = 10x^3 + 3x^2 - 13x - 6$.\nNhẩm thấy:\n$A(-1) = 10 \\cdot (-1)^3 + 3 \\cdot (-1)^2 - 13 \\cdot (-1) - 6 = 0$.\nVậy ta hướng tới tạo nhân tử $(x + 1)$.\nTa có:\n$A = 10x^3 + 10x^2 - 7x^2 - 7x - 6x - 6$\n$= 10x^2(x + 1) - 7x(x + 1) - 6(x + 1)$\n$= (x + 1)(10x^2 - 7x - 6)$\n$= (x + 1)(10x^2 - 12x + 5x - 6)$\n$= (x + 1)[2x(5x - 6) + (5x - 6)]$\n$= (x + 1)(5x - 6)(2x + 1)$.\nVậy $A = (x + 1)(5x - 6)(2x + 1)$."
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 0
+ },
+ {
+  "ma_cau": "T108030105055",
+  "dang": "NDB00477",
+  "ly_do": [
+   "GIỮ ĐỀ (hợp lệ), viết lại lời giải; đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $6x^3 + 5x^2 - 3x - 2$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x + 1)(2x - 1)(3x + 2)$",
+   "loi_giai": "Đặt $A = 6x^3 + 5x^2 - 3x - 2$.\nNhẩm thấy:\n$A(-1) = -6 + 5 + 3 - 2 = 0$.\nVậy ta hướng tới tạo nhân tử $(x + 1)$.\nTa có:\n$A = 6x^3 + 6x^2 - x^2 - x - 2x - 2$\n$= 6x^2(x + 1) - x(x + 1) - 2(x + 1)$\n$= (x + 1)(6x^2 - x - 2)$\n$= (x + 1)(6x^2 - 4x + 3x - 2)$\n$= (x + 1)[2x(3x - 2) + (3x - 2)]$\n$= (x + 1)(2x + 1)(3x - 2)$.\nVậy $A = (x + 1)(2x + 1)(3x - 2)$."
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $6x^3 + 5x^2 - 3x - 2$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x + 1)(3x - 2)(2x + 1)$",
+   "loi_giai": "Đặt $A = 6x^3 + 5x^2 - 3x - 2$.\nNhẩm thấy:\n$A(-1) = 6 \\cdot (-1)^3 + 5 \\cdot (-1)^2 - 3 \\cdot (-1) - 2 = 0$.\nVậy ta hướng tới tạo nhân tử $(x + 1)$.\nTa có:\n$A = 6x^3 + 6x^2 - x^2 - x - 2x - 2$\n$= 6x^2(x + 1) - x(x + 1) - 2(x + 1)$\n$= (x + 1)(6x^2 - x - 2)$\n$= (x + 1)(6x^2 - 4x + 3x - 2)$\n$= (x + 1)[2x(3x - 2) + (3x - 2)]$\n$= (x + 1)(3x - 2)(2x + 1)$.\nVậy $A = (x + 1)(3x - 2)(2x + 1)$."
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 0
+ },
+ {
+  "ma_cau": "T108030105056",
+  "dang": "NDB00477",
+  "ly_do": [
+   "SỬA ĐỀ (khoảng cách 6); đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $10x^3 - 3x^2 - 12x - 5$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x + 1)(2x - 5)(5x + 1)$",
+   "loi_giai": "Đặt $A = 10x^3 - 3x^2 - 12x - 5$.\nNhẩm thấy:\n$A(-1) = -10 - 3 + 12 - 5 = 0$.\nVậy ta hướng tới tạo nhân tử $(x + 1)$.\nTa có:\n$A = 10x^3 + 10x^2 - 13x^2 - 13x + x + 1$\n$= 10x^2(x + 1) - 13x(x + 1) + (x + 1)$\n$= (x + 1)(10x^2 - 13x + 1)$\n$= (x + 1)(10x^2 - 10x - 3x + 1)$\n$= (x + 1)[10x(x - 1) - 3(x - 1)]$\n$= (x + 1)(10x - 3)(x - 1)$.\nVậy $A = (x + 1)(x - 1)(10x - 3)$."
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $10x^3 - 3x^2 - 16x - 3$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x + 1)(5x + 1)(2x - 3)$",
+   "loi_giai": "Đặt $A = 10x^3 - 3x^2 - 16x - 3$.\nNhẩm thấy:\n$A(-1) = 10 \\cdot (-1)^3 - 3 \\cdot (-1)^2 - 16 \\cdot (-1) - 3 = 0$.\nVậy ta hướng tới tạo nhân tử $(x + 1)$.\nTa có:\n$A = 10x^3 + 10x^2 - 13x^2 - 13x - 3x - 3$\n$= 10x^2(x + 1) - 13x(x + 1) - 3(x + 1)$\n$= (x + 1)(10x^2 - 13x - 3)$\n$= (x + 1)(10x^2 + 2x - 15x - 3)$\n$= (x + 1)[2x(5x + 1) - 3(5x + 1)]$\n$= (x + 1)(5x + 1)(2x - 3)$.\nVậy $A = (x + 1)(5x + 1)(2x - 3)$."
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 0
+ },
+ {
+  "ma_cau": "T108030105057",
+  "dang": "NDB00477",
+  "ly_do": [
+   "SỬA ĐỀ (khoảng cách 12); đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $14x^3 + 25x^2 - 3x - 2$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x + 2)(2x - 1)(7x + 1)$",
+   "loi_giai": "Đặt $A = 14x^3 + 25x^2 - 3x - 2$.\nNhẩm thấy:\n$A(-2) = -112 + 100 + 6 - 2 = -8 \\neq 0$.\nThử $A(1) = 14 + 25 - 3 - 2 = 34 \\neq 0$.\nThử $A(-1) = -14 + 25 + 3 - 2 = 12 \\neq 0$.\nThử $A(\\dfrac{1}{2}) = \\dfrac{14}{8} + \\dfrac{25}{4} - \\dfrac{3}{2} - 2 = 0$.\nVậy ta hướng tới tạo nhân tử $(2x - 1)$.\nTa có:\n$A = 14x^3 + 28x^2 - 3x^2 - 6x + 3x + 6$\n$= 14x^2(x + 2) - 3x(x + 2) + 3(x + 2)$\n$= (x + 2)(14x^2 - 3x + 3)$.\nVậy $A = (x + 2)(14x^2 - 3x + 3)$."
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $14x^3 + 17x^2 + x - 2$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x + 1)(7x - 2)(2x + 1)$",
+   "loi_giai": "Đặt $A = 14x^3 + 17x^2 + x - 2$.\nNhẩm thấy:\n$A(-1) = 14 \\cdot (-1)^3 + 17 \\cdot (-1)^2 + (-1) - 2 = 0$.\nVậy ta hướng tới tạo nhân tử $(x + 1)$.\nTa có:\n$A = 14x^3 + 14x^2 + 3x^2 + 3x - 2x - 2$\n$= 14x^2(x + 1) + 3x(x + 1) - 2(x + 1)$\n$= (x + 1)(14x^2 + 3x - 2)$\n$= (x + 1)(14x^2 - 4x + 7x - 2)$\n$= (x + 1)[2x(7x - 2) + (7x - 2)]$\n$= (x + 1)(7x - 2)(2x + 1)$.\nVậy $A = (x + 1)(7x - 2)(2x + 1)$."
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 0
+ },
+ {
+  "ma_cau": "T108030105059",
+  "dang": "NDB00477",
+  "ly_do": [
+   "GIỮ ĐỀ (hợp lệ), viết lại lời giải; đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $6x^3 + 7x^2 - 1$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x + 1)(2x - 1)(3x + 1)$",
+   "loi_giai": "Đặt $A = 6x^3 + 7x^2 - 1$.\nNhẩm thấy:\n$A(-1) = -6 + 7 - 1 = 0$.\nVậy ta hướng tới tạo nhân tử $(x + 1)$.\nTa có:\n$A = 6x^3 + 6x^2 + x^2 + x - x - 1$\n$= 6x^2(x + 1) + x(x + 1) - (x + 1)$\n$= (x + 1)(6x^2 + x - 1)$\n$= (x + 1)(6x^2 - 2x + 3x - 1)$\n$= (x + 1)[2x(3x - 1) + (3x - 1)]$\n$= (x + 1)(3x - 1)(2x + 1)$.\nVậy $A = (x + 1)(2x - 1)(3x + 1)$."
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $6x^3 + 7x^2 - 1$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x + 1)(3x - 1)(2x + 1)$",
+   "loi_giai": "Đặt $A = 6x^3 + 7x^2 - 1$.\nNhẩm thấy:\n$A(-1) = 6 \\cdot (-1)^3 + 7 \\cdot (-1)^2 - 1 = 0$.\nVậy ta hướng tới tạo nhân tử $(x + 1)$.\nTa có:\n$A = 6x^3 + 6x^2 + x^2 + x - x - 1$\n$= 6x^2(x + 1) + x(x + 1) - (x + 1)$\n$= (x + 1)(6x^2 + x - 1)$\n$= (x + 1)(6x^2 - 2x + 3x - 1)$\n$= (x + 1)[2x(3x - 1) + (3x - 1)]$\n$= (x + 1)(3x - 1)(2x + 1)$.\nVậy $A = (x + 1)(3x - 1)(2x + 1)$."
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 0
+ },
+ {
+  "ma_cau": "T108030105060",
+  "dang": "NDB00477",
+  "ly_do": [
+   "SỬA ĐỀ (khoảng cách 4); đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $10x^3 + 9x^2 - 8x - 3$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x + 1)(2x - 1)(5x + 3)$",
+   "loi_giai": "Đặt $A = 10x^3 + 9x^2 - 8x - 3$.\nNhẩm thấy:\n$A(-1) = -10 + 9 + 8 - 3 = 4$.\nVậy ta hướng tới tạo nhân tử $(x - 1)$.\nTa có:\n$A = 10x^3 - 10x^2 + 19x^2 - 19x + 11x - 11$\n$= 10x^2(x - 1) + 19x(x - 1) + 11(x - 1)$\n$= (x - 1)(10x^2 + 19x + 11)$\n$= (x - 1)(10x^2 + 10x + 9x + 11)$\n$= (x - 1)[5x(2x + 3) + (2x + 3)]$\n$= (x - 1)(2x + 3)(5x + 1)$.\nVậy $A = (x - 1)(2x + 3)(5x + 1)$."
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $10x^3 + 9x^2 - 4x - 3$ thành nhân tử bằng phương pháp nhẩm nghiệm.",
+   "dap_an": "$(x + 1)(5x - 3)(2x + 1)$",
+   "loi_giai": "Đặt $A = 10x^3 + 9x^2 - 4x - 3$.\nNhẩm thấy:\n$A(-1) = 10 \\cdot (-1)^3 + 9 \\cdot (-1)^2 - 4 \\cdot (-1) - 3 = 0$.\nVậy ta hướng tới tạo nhân tử $(x + 1)$.\nTa có:\n$A = 10x^3 + 10x^2 - x^2 - x - 3x - 3$\n$= 10x^2(x + 1) - x(x + 1) - 3(x + 1)$\n$= (x + 1)(10x^2 - x - 3)$\n$= (x + 1)(10x^2 - 6x + 5x - 3)$\n$= (x + 1)[2x(5x - 3) + (5x - 3)]$\n$= (x + 1)(5x - 3)(2x + 1)$.\nVậy $A = (x + 1)(5x - 3)(2x + 1)$."
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 0
+ },
+ {
+  "ma_cau": "T108030105034",
+  "dang": "NDB00478",
+  "ly_do": [
+   "SỬA ĐỀ (khoảng cách 2); đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $4x^3-3x^2-13x-6$ thành nhân tử.",
+   "dap_an": "$(x+1)(x-2)(4x+3)$",
+   "loi_giai": "$4x^3-3x^2-13x-6$\n$= 4x^3 + 4x^2 - 7x^2 - 7x - 6x - 6$\n$= 4x^2(x + 1) - 7x(x + 1) - 6(x + 1)$\n$= (x + 1)(4x^2 - 7x - 6)$\n$= (x + 1)(4x^2 + 3x - 10x - 6)$\n$= (x + 1)[x(4x + 3) - 2(4x + 3)]$\n$= (x + 1)(x - 2)(4x + 3)$."
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $4x^3 - 4x^2 - 13x - 5$ thành nhân tử.",
+   "dap_an": "$(x + 1)(2x + 1)(2x - 5)$",
+   "loi_giai": "Đặt $A = 4x^3 - 4x^2 - 13x - 5$.\nNhẩm thấy:\n$A(-1) = 4 \\cdot (-1)^3 - 4 \\cdot (-1)^2 - 13 \\cdot (-1) - 5 = 0$.\nVậy ta hướng tới tạo nhân tử $(x + 1)$.\nTa có:\n$A = 4x^3 + 4x^2 - 8x^2 - 8x - 5x - 5$\n$= 4x^2(x + 1) - 8x(x + 1) - 5(x + 1)$\n$= (x + 1)(4x^2 - 8x - 5)$\n$= (x + 1)(4x^2 + 2x - 10x - 5)$\n$= (x + 1)[2x(2x + 1) - 5(2x + 1)]$\n$= (x + 1)(2x + 1)(2x - 5)$.\nVậy $A = (x + 1)(2x + 1)(2x - 5)$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 6
+ },
+ {
+  "ma_cau": "T108030105035",
+  "dang": "NDB00478",
+  "ly_do": [
+   "SỬA ĐỀ (khoảng cách 2); đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $5x^3-4x^2-13x-4$ thành nhân tử.",
+   "dap_an": "$(x+1)(x-2)(5x+2)$",
+   "loi_giai": "$5x^3-4x^2-13x-4$\n$= 5x^3 + 5x^2 - 9x^2 - 9x - 4x - 4$\n$= 5x^2(x + 1) - 9x(x + 1) - 4(x + 1)$\n$= (x + 1)(5x^2 - 9x - 4)$\n$= (x + 1)(5x^2 + 2x - 10x - 4)$\n$= (x + 1)[x(5x + 2) - 2(5x + 2)]$\n$= (x + 1)(x - 2)(5x + 2)$."
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $5x^3 - 3x^2 - 12x - 4$ thành nhân tử.",
+   "dap_an": "$(x - 2)(5x + 2)(x + 1)$",
+   "loi_giai": "Đặt $A = 5x^3 - 3x^2 - 12x - 4$.\nNhẩm thấy:\n$A(2) = 5 \\cdot 2^3 - 3 \\cdot 2^2 - 12 \\cdot 2 - 4 = 0$.\nVậy ta hướng tới tạo nhân tử $(x - 2)$.\nTa có:\n$A = 5x^3 - 10x^2 + 7x^2 - 14x + 2x - 4$\n$= 5x^2(x - 2) + 7x(x - 2) + 2(x - 2)$\n$= (x - 2)(5x^2 + 7x + 2)$\n$= (x - 2)(5x^2 + 2x + 5x + 2)$\n$= (x - 2)[x(5x + 2) + (5x + 2)]$\n$= (x - 2)(5x + 2)(x + 1)$.\nVậy $A = (x - 2)(5x + 2)(x + 1)$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 5
+ },
+ {
+  "ma_cau": "T108030105037",
+  "dang": "NDB00478",
+  "ly_do": [
+   "SỬA ĐỀ (khoảng cách 2); đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $5x^3-4x^2-23x-12$ thành nhân tử.",
+   "dap_an": "$(x+1)(x-3)(5x+4)$",
+   "loi_giai": "$5x^3-4x^2-23x-12$\n$= 5x^3 + 5x^2 - 9x^2 - 9x - 14x - 14$\n$= 5x^2(x + 1) - 9x(x + 1) - 14(x + 1)$\n$= (x + 1)(5x^2 - 9x - 14)$\n$= (x + 1)(5x^2 + 5x - 14x - 14)$\n$= (x + 1)[5x(x + 1) - 14(x + 1)]$\n$= (x + 1)(x + 1)(5x + ?)$"
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $5x^3 - 6x^2 - 23x - 12$ thành nhân tử.",
+   "dap_an": "$(x - 3)(5x + 4)(x + 1)$",
+   "loi_giai": "Đặt $A = 5x^3 - 6x^2 - 23x - 12$.\nNhẩm thấy:\n$A(3) = 5 \\cdot 3^3 - 6 \\cdot 3^2 - 23 \\cdot 3 - 12 = 0$.\nVậy ta hướng tới tạo nhân tử $(x - 3)$.\nTa có:\n$A = 5x^3 - 15x^2 + 9x^2 - 27x + 4x - 12$\n$= 5x^2(x - 3) + 9x(x - 3) + 4(x - 3)$\n$= (x - 3)(5x^2 + 9x + 4)$\n$= (x - 3)(5x^2 + 4x + 5x + 4)$\n$= (x - 3)[x(5x + 4) + (5x + 4)]$\n$= (x - 3)(5x + 4)(x + 1)$.\nVậy $A = (x - 3)(5x + 4)(x + 1)$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 5
+ },
+ {
+  "ma_cau": "T108030105038",
+  "dang": "NDB00478",
+  "ly_do": [
+   "GIỮ ĐỀ (hợp lệ), viết lại lời giải; đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $3x^3+4x^2-5x-2$ thành nhân tử.",
+   "dap_an": "$(x+1)(x-2)(3x+1)$",
+   "loi_giai": "$3x^3+4x^2-5x-2$\n$= 3x^3 + 3x^2 + x^2 + x - 6x - 2$\n$= 3x^2(x + 1) + x(x + 1) - 6(x + 1)$\n$= (x + 1)(3x^2 + x - 6)$\n$= (x + 1)(3x^2 + 3x - 2x - 6)$\n$= (x + 1)[3x(x + 1) - 2(x + 3)]$\n$= (x + 1)(x - 2)(3x + 3)$"
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $3x^3+4x^2-5x-2$ thành nhân tử.",
+   "dap_an": "$(x - 1)(3x + 1)(x + 2)$",
+   "loi_giai": "Đặt $A = 3x^3 + 4x^2 - 5x - 2$.\nNhẩm thấy:\n$A(1) = 3 + 4 - 5 - 2 = 0$.\nVậy ta hướng tới tạo nhân tử $(x - 1)$.\nTa có:\n$A = 3x^3 - 3x^2 + 7x^2 - 7x + 2x - 2$\n$= 3x^2(x - 1) + 7x(x - 1) + 2(x - 1)$\n$= (x - 1)(3x^2 + 7x + 2)$\n$= (x - 1)(3x^2 + x + 6x + 2)$\n$= (x - 1)[x(3x + 1) + 2(3x + 1)]$\n$= (x - 1)(3x + 1)(x + 2)$.\nVậy $A = (x - 1)(3x + 1)(x + 2)$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108030105039",
+  "dang": "NDB00478",
+  "ly_do": [
+   "SỬA ĐỀ (khoảng cách 2); đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $4x^3+3x^2-7x-6$ thành nhân tử.",
+   "dap_an": "$(x-1)(x+2)(4x+3)$",
+   "loi_giai": "$4x^3+3x^2-7x-6$\n$= 4x^3 - 4x^2 + 7x^2 - 7x + 6x - 6$\n$= 4x^2(x - 1) + 7x(x - 1) + 6(x - 1)$\n$= (x - 1)(4x^2 + 7x + 6)$\n$= (x - 1)(4x^2 + 8x - x + 6)$\n$= (x - 1)[4x(x + 2) - 1(x + 6)]$\n$= (x - 1)(x + 2)(4x + 3)$"
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $4x^3 + 3x^2 - 6x - 5$ thành nhân tử.",
+   "dap_an": "$(x + 1)(4x - 5)(x + 1)$",
+   "loi_giai": "Đặt $A = 4x^3 + 3x^2 - 6x - 5$.\nNhẩm thấy:\n$A(-1) = 4 \\cdot (-1)^3 + 3 \\cdot (-1)^2 - 6 \\cdot (-1) - 5 = 0$.\nVậy ta hướng tới tạo nhân tử $(x + 1)$.\nTa có:\n$A = 4x^3 + 4x^2 - x^2 - x - 5x - 5$\n$= 4x^2(x + 1) - x(x + 1) - 5(x + 1)$\n$= (x + 1)(4x^2 - x - 5)$\n$= (x + 1)(4x^2 - 5x + 4x - 5)$\n$= (x + 1)[x(4x - 5) + (4x - 5)]$\n$= (x + 1)(4x - 5)(x + 1)$.\nVậy $A = (x + 1)(4x - 5)(x + 1)$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108030105040",
+  "dang": "NDB00478",
+  "ly_do": [
+   "GIỮ ĐỀ (hợp lệ), viết lại lời giải; đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $2x^3+5x^2-4x-3$ thành nhân tử.",
+   "dap_an": "$(x+3)(x-1)(2x+1)$",
+   "loi_giai": "$2x^3+5x^2-4x-3$\n$= 2x^3 + 2x^2 + 3x^2 + 3x - 7x - 7$\n$= 2x^2(x + 1) + 3x(x + 1) - 7(x + 1)$\n$= (x + 1)(2x^2 + 3x - 7)$\n$= (x + 1)(2x^2 - 2x + 5x - 7)$\n$= (x + 1)[2x(x - 1) + 5(x - 1)]$\n$= (x + 1)(x - 1)(2x + 5)$"
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $2x^3+5x^2-4x-3$ thành nhân tử.",
+   "dap_an": "$(x - 1)(2x + 1)(x + 3)$",
+   "loi_giai": "Đặt $A = 2x^3 + 5x^2 - 4x - 3$.\nNhẩm thấy:\n$A(1) = 2 + 5 - 4 - 3 = 0$.\nVậy ta hướng tới tạo nhân tử $(x - 1)$.\nTa có:\n$A = 2x^3 - 2x^2 + 7x^2 - 7x + 3x - 3$\n$= 2x^2(x - 1) + 7x(x - 1) + 3(x - 1)$\n$= (x - 1)(2x^2 + 7x + 3)$\n$= (x - 1)(2x^2 + x + 6x + 3)$\n$= (x - 1)[x(2x + 1) + 3(2x + 1)]$\n$= (x - 1)(2x + 1)(x + 3)$.\nVậy $A = (x - 1)(2x + 1)(x + 3)$."
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108030105041",
+  "dang": "NDB00478",
+  "ly_do": [
+   "SỬA ĐỀ (khoảng cách 8); đáp án + lời giải viết lại theo đề"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $5x^3-2x^2-21x-18$ thành nhân tử.",
+   "dap_an": "$(x-2)(x+1)(5x+9)$",
+   "loi_giai": "$5x^3-2x^2-21x-18$\n$= 5x^3 - 10x^2 + 8x^2 - 16x - 5x - 10$\n$= 5x^2(x - 2) + 8x(x - 2) + 5(x - 2)$\n$= (x - 2)(5x^2 + 8x + 5)$\n$= (x - 2)(5x^2 + 5x + 3x + 5)$\n$= (x - 2)[5x(x + 1) + 3(x + 1)]$\n$= (x - 2)(x + 1)(5x + 3)$"
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $5x^3 - 4x^2 - 27x - 18$ thành nhân tử.",
+   "dap_an": "$(x - 3)(5x + 6)(x + 1)$",
+   "loi_giai": "Đặt $A = 5x^3 - 4x^2 - 27x - 18$.\nNhẩm thấy:\n$A(3) = 5 \\cdot 3^3 - 4 \\cdot 3^2 - 27 \\cdot 3 - 18 = 0$.\nVậy ta hướng tới tạo nhân tử $(x - 3)$.\nTa có:\n$A = 5x^3 - 15x^2 + 11x^2 - 33x + 6x - 18$\n$= 5x^2(x - 3) + 11x(x - 3) + 6(x - 3)$\n$= (x - 3)(5x^2 + 11x + 6)$\n$= (x - 3)(5x^2 + 6x + 5x + 6)$\n$= (x - 3)[x(5x + 6) + (5x + 6)]$\n$= (x - 3)(5x + 6)(x + 1)$.\nVậy $A = (x - 3)(5x + 6)(x + 1)$."
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108030401040",
+  "dang": "NDB00476",
+  "ly_do": [
+   "ĐỀ bất khả quy trên Z (hệ số xy sai) → sửa đề theo đáp án + lời giải"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $5x^2-14xy+3y^2$ thành nhân tử.",
+   "dap_an": "$(5x-y)(x-3y)$",
+   "loi_giai": "$5x^2 - 14xy + 3y^2$\n$= 5x^2 - xy - 15xy + 3y^2$\n$= x(5x - y) - 3y(5x - y)$\n$= (5x - y)(x - 3y).$"
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $5x^2-16xy+3y^2$ thành nhân tử.",
+   "dap_an": "$(5x-y)(x-3y)$",
+   "loi_giai": "$5x^2 - 14xy + 3y^2$\n$= 5x^2 - xy - 15xy + 3y^2$\n$= x(5x - y) - 3y(5x - y)$\n$= (5x - y)(x - 3y).$"
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108030401042",
+  "dang": "NDB00476",
+  "ly_do": [
+   "ĐỀ bất khả quy trên Z (hệ số xy sai) → sửa đề theo đáp án + lời giải"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $4x^2-15xy+4y^2$ thành nhân tử.",
+   "dap_an": "$(4x-y)(x-4y)$",
+   "loi_giai": "$4x^2 - 15xy + 4y^2$\n$= 4x^2 - xy - 16xy + 4y^2$\n$= x(4x - y) - 4y(4x - y)$\n$= (4x - y)(x - 4y).$"
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $4x^2-17xy+4y^2$ thành nhân tử.",
+   "dap_an": "$(4x-y)(x-4y)$",
+   "loi_giai": "$4x^2 - 15xy + 4y^2$\n$= 4x^2 - xy - 16xy + 4y^2$\n$= x(4x - y) - 4y(4x - y)$\n$= (4x - y)(x - 4y).$"
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 4
+ },
+ {
+  "ma_cau": "T108030401051",
+  "dang": "NDB00476",
+  "ly_do": [
+   "ĐÁP ÁN sai (≠ đề); lời giải đúng → dap_an lấy từ kết quả lời giải"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $11x-6x^2-4$ thành nhân tử.",
+   "dap_an": "$(2x-1)(1-3x)$",
+   "loi_giai": "$11x-6x^2-4$\n$=-6x^2+11x-4$\n$=-6x^2+8x+3x-4$\n$=-2x(3x-4)+(3x-4)$\n$=(3x-4)(1-2x)$."
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $11x-6x^2-4$ thành nhân tử.",
+   "dap_an": "$(3x-4)(1-2x)$",
+   "loi_giai": "$11x-6x^2-4$\n$=-6x^2+11x-4$\n$=-6x^2+8x+3x-4$\n$=-2x(3x-4)+(3x-4)$\n$=(3x-4)(1-2x)$."
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 5
+ },
+ {
+  "ma_cau": "T108030401052",
+  "dang": "NDB00476",
+  "ly_do": [
+   "ĐÁP ÁN sai (≠ đề); lời giải đúng → dap_an lấy từ kết quả lời giải"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $13x-10x^2-3$ thành nhân tử.",
+   "dap_an": "$(2x-1)(2-5x)$",
+   "loi_giai": "$13x-10x^2-3$\n$=-10x^2+13x-3$\n$=-10x^2+10x+3x-3$\n$=-10x(x-1)+3(x-1)$\n$=(x-1)(3-10x)$."
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $13x-10x^2-3$ thành nhân tử.",
+   "dap_an": "$(x-1)(3-10x)$",
+   "loi_giai": "$13x-10x^2-3$\n$=-10x^2+13x-3$\n$=-10x^2+10x+3x-3$\n$=-10x(x-1)+3(x-1)$\n$=(x-1)(3-10x)$."
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 5
+ },
+ {
+  "ma_cau": "T108030401053",
+  "dang": "NDB00476",
+  "ly_do": [
+   "ĐÁP ÁN sai (≠ đề); lời giải đúng → dap_an lấy từ kết quả lời giải"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $17x-12x^2-5$ thành nhân tử.",
+   "dap_an": "$(3x-1)(2-4x)$",
+   "loi_giai": "$17x-12x^2-5$\n$=-12x^2+17x-5$\n$=-12x^2+12x+5x-5$\n$=-12x(x-1)+5(x-1)$\n$=(x-1)(5-12x)$."
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $17x-12x^2-5$ thành nhân tử.",
+   "dap_an": "$(x-1)(5-12x)$",
+   "loi_giai": "$17x-12x^2-5$\n$=-12x^2+17x-5$\n$=-12x^2+12x+5x-5$\n$=-12x(x-1)+5(x-1)$\n$=(x-1)(5-12x)$."
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 5
+ },
+ {
+  "ma_cau": "T108030401054",
+  "dang": "NDB00476",
+  "ly_do": [
+   "ĐÁP ÁN sai (≠ đề); lời giải đúng → dap_an lấy từ kết quả lời giải"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức $19x-15x^2-4$ thành nhân tử.",
+   "dap_an": "$(5x-1)(3-3x)$",
+   "loi_giai": "$19x-15x^2-4$\n$=-15x^2+19x-4$\n$=-15x^2+15x+4x-4$\n$=-15x(x-1)+4(x-1)$\n$=(x-1)(4-15x)$."
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức $19x-15x^2-4$ thành nhân tử.",
+   "dap_an": "$(x-1)(4-15x)$",
+   "loi_giai": "$19x-15x^2-4$\n$=-15x^2+19x-4$\n$=-15x^2+15x+4x-4$\n$=-15x(x-1)+4(x-1)$\n$=(x-1)(4-15x)$."
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 5
+ },
+ {
+  "ma_cau": "T108030602084",
+  "dang": "NDB00979",
+  "ly_do": [
+   "ĐÁP ÁN sai dấu: 3x+5=0 ⇒ x = −5/3"
+  ],
+  "cu": {
+   "noi_dung": "Tìm $x$, biết:\n$2x(x-5) + x^2 - 25 = 0$",
+   "dap_an": "$x = 5; x = \\dfrac{5}{3}$",
+   "loi_giai": "$2x(x-5) + x^2 - 25 = 0$\n$2x(x-5) + (x-5)(x+5) = 0$\n$(x-5)(3x+5) = 0$\nTrường hợp 1:\n$x - 5 = 0$\n$x = 5$\nTrường hợp 2:\n$3x + 5 = 0$\n$x = \\dfrac{5}{3}$\nVậy:\n$x = 5; x = \\dfrac{5}{3}$"
+  },
+  "moi": {
+   "noi_dung": "Tìm $x$, biết:\n$2x(x-5) + x^2 - 25 = 0$",
+   "dap_an": "$x = 5; x = -\\dfrac{5}{3}$",
+   "loi_giai": "$2x(x-5) + x^2 - 25 = 0$\n$2x(x-5) + (x-5)(x+5) = 0$\n$(x-5)(3x+5) = 0$\nTrường hợp 1:\n$x - 5 = 0$\n$x = 5$\nTrường hợp 2:\n$3x + 5 = 0$\n$x = -\\dfrac{5}{3}$\nVậy:\n$x = 5; x = -\\dfrac{5}{3}$"
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 0
+ },
+ {
+  "ma_cau": "T108030603043",
+  "dang": "NDB00980",
+  "ly_do": [
+   "ĐÁP ÁN + lời giải sai: x²−2x−3=0 ⇒ (x−3)(x+1) ⇒ x=3 hoặc x=−1"
+  ],
+  "cu": {
+   "noi_dung": "Giải phương trình:\n$4 - x^2 + 2x - 1 = 0$",
+   "dap_an": "x=1; x=3",
+   "loi_giai": "$4 - x^2 + 2x - 1 = 0$\n$-x^2 + 2x + 3 = 0$\n$x^2 - 2x - 3 = 0$\n$x^2 - x - 3x + 3 = 0$\n$x(x - 1) - 3(x - 1) = 0$\n$(x - 1)(x - 3) = 0$\nTrường hợp 1:\n$x - 1 = 0$\n$x = 1$\nTrường hợp 2:\n$x - 3 = 0$\n$x = 3$\nVậy:\n$x = 1; x = 3$"
+  },
+  "moi": {
+   "noi_dung": "Giải phương trình:\n$4 - x^2 + 2x - 1 = 0$",
+   "dap_an": "x=3; x=-1",
+   "loi_giai": "$4 - x^2 + 2x - 1 = 0$\n$-x^2 + 2x + 3 = 0$\n$x^2 - 2x - 3 = 0$\n$x^2 - 3x + x - 3 = 0$\n$x(x - 3) + (x - 3) = 0$\n$(x - 3)(x + 1) = 0$\nTrường hợp 1:\n$x - 3 = 0$\n$x = 3$\nTrường hợp 2:\n$x + 1 = 0$\n$x = -1$\nVậy:\n$x = 3; x = -1$"
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 0
+ },
+ {
+  "ma_cau": "T108030601001",
+  "dang": "NDB00982",
+  "ly_do": [
+   "ĐÁP ÁN + lời giải sai: x³−7x+6=(x−1)(x−2)(x+3)"
+  ],
+  "cu": {
+   "noi_dung": "$x^3 - 7x + 6 = 0$",
+   "dap_an": "$x = -2; x = 1; x = 3$",
+   "loi_giai": "Nhẩm thấy:\n$1^3 - 7 \\cdot 1 + 6 = 0$\nVậy đa thức có nhân tử $(x-1)$.\nTa có:\n$x^3 - 7x + 6 = x^3 + x^2 - x^2 - x - 6x + 6$\n$= x^2(x-1) - x(x-1) - 6(x-1)$\n$= (x-1)(x^2 - x - 6)$\n$= (x-1)(x-3)(x+2)$\nDo đó:\nTrường hợp 1:\n$x - 1 = 0$\n$x = 1$\nTrường hợp 2:\n$x - 3 = 0$\n$x = 3$\nTrường hợp 3:\n$x + 2 = 0$\n$x = -2$\nVậy:\n$x = -2; x = 1; x = 3$"
+  },
+  "moi": {
+   "noi_dung": "$x^3 - 7x + 6 = 0$",
+   "dap_an": "$x = -3; x = 1; x = 2$",
+   "loi_giai": "Nhẩm thấy:\n$1^3 - 7 \\cdot 1 + 6 = 0$\nVậy đa thức có nhân tử $(x-1)$.\nTa có:\n$x^3 - 7x + 6 = x^3 - x^2 + x^2 - x - 6x + 6$\n$= x^2(x-1) + x(x-1) - 6(x-1)$\n$= (x-1)(x^2 + x - 6)$\n$= (x-1)(x-2)(x+3)$\nDo đó:\nTrường hợp 1:\n$x - 1 = 0$\n$x = 1$\nTrường hợp 2:\n$x - 2 = 0$\n$x = 2$\nTrường hợp 3:\n$x + 3 = 0$\n$x = -3$\nVậy:\n$x = -3; x = 1; x = 2$"
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108030601007",
+  "dang": "NDB00982",
+  "ly_do": [
+   "ĐỀ sai: x³+3x²+3x+2 không có dạng (x+1)³ (nghiệm không nguyên) → sửa đề thành x³+3x²+3x+1"
+  ],
+  "cu": {
+   "noi_dung": "$x^3 + 3x^2 + 3x + 2 = 0$",
+   "dap_an": "-1",
+   "loi_giai": "Nhẩm thấy:\n$(-1)^3 + 3(-1)^2 + 3(-1) + 2 = 0$\nVậy đa thức có nhân tử $(x+1)$.\nTa có:\n$x^3 + 3x^2 + 3x + 2 = x^3 + x^2 + 2x^2 + 2x + x + 2$\n$= x^2(x + 1) + 2x(x + 1) + (x + 1)$\n$= (x + 1)(x^2 + 2x + 1)$\n$= (x + 1)(x + 1)^2$\n$= (x + 1)^3$\nDo đó:\n$(x + 1)^3 = 0$\nTrường hợp 1:\n$x + 1 = 0$\n$x = -1$\nVậy:\n$x = -1$"
+  },
+  "moi": {
+   "noi_dung": "$x^3 + 3x^2 + 3x + 1 = 0$",
+   "dap_an": "-1",
+   "loi_giai": "Nhẩm thấy:\n$(-1)^3 + 3(-1)^2 + 3(-1) + 1 = 0$\nVậy đa thức có nhân tử $(x+1)$.\nTa có:\n$x^3 + 3x^2 + 3x + 1 = x^3 + x^2 + 2x^2 + 2x + x + 1$\n$= x^2(x + 1) + 2x(x + 1) + (x + 1)$\n$= (x + 1)(x^2 + 2x + 1)$\n$= (x + 1)(x + 1)^2$\n$= (x + 1)^3$\nDo đó:\n$(x + 1)^3 = 0$\nTrường hợp 1:\n$x + 1 = 0$\n$x = -1$\nVậy:\n$x = -1$"
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108030601008",
+  "dang": "NDB00982",
+  "ly_do": [
+   "ĐÁP ÁN thiếu nghiệm −2: (x+1)²(x+2)=0"
+  ],
+  "cu": {
+   "noi_dung": "$x^3 + 4x^2 + 5x + 2 = 0$",
+   "dap_an": "-1",
+   "loi_giai": "Nhẩm thấy:\n$(-1)^3 + 4(-1)^2 + 5(-1) + 2 = 0$\nVậy đa thức có nhân tử $(x+1)$.\nTa có:\n$x^3 + 4x^2 + 5x + 2 = x^3 + x^2 + 3x^2 + 3x + 2x + 2$\n$= x^2(x + 1) + 3x(x + 1) + 2(x + 1)$\n$= (x + 1)(x^2 + 3x + 2)$\n$= (x + 1)(x + 1)(x + 2)$\n$= (x + 1)^2(x + 2)$\nDo đó:\n$(x + 1)^2(x + 2) = 0$\nTrường hợp 1:\n$x + 1 = 0$\n$x = -1$\nTrường hợp 2:\n$x + 2 = 0$\n$x = -2$\nVậy:\n$x = -1$ hoặc $x = -2$"
+  },
+  "moi": {
+   "noi_dung": "$x^3 + 4x^2 + 5x + 2 = 0$",
+   "dap_an": "$x = -2; x = -1$",
+   "loi_giai": "Nhẩm thấy:\n$(-1)^3 + 4(-1)^2 + 5(-1) + 2 = 0$\nVậy đa thức có nhân tử $(x+1)$.\nTa có:\n$x^3 + 4x^2 + 5x + 2 = x^3 + x^2 + 3x^2 + 3x + 2x + 2$\n$= x^2(x + 1) + 3x(x + 1) + 2(x + 1)$\n$= (x + 1)(x^2 + 3x + 2)$\n$= (x + 1)(x + 1)(x + 2)$\n$= (x + 1)^2(x + 2)$\nDo đó:\n$(x + 1)^2(x + 2) = 0$\nTrường hợp 1:\n$x + 1 = 0$\n$x = -1$\nTrường hợp 2:\n$x + 2 = 0$\n$x = -2$\nVậy:\n$x = -1$ hoặc $x = -2$"
+  },
+  "form_tn_thu_hoi": 1,
+  "trong_tai_lieu": 0
+ },
+ {
+  "ma_cau": "T108000000192",
+  "dang": "NDB00470",
+  "ly_do": [
+   "THIẾU đáp án → lấy kết quả cuối lời giải (đã kiểm = đề)"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức sau thành nhân tử $xy^2-2xy+x$.",
+   "dap_an": null,
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cả ba hạng tử đều chứa nhân tử chung $x$; sau khi đặt ra ngoài, biểu thức trong ngoặc lại là một hằng đẳng thức.\n\n**Bước 1.** Tìm nhân tử chung của cả ba hạng tử $xy^2$, $-2xy$, $x$.\n\n**Bước 2.** Đặt nhân tử chung ra ngoài ngoặc và viết các hạng tử còn lại trong ngoặc.\n\n**Bước 3.** Quan sát biểu thức trong ngoặc, nhận ra dạng bình phương của một hiệu rồi viết gọn.\n\n**Chú ý:** khi đặt $x$ ra ngoài, hạng tử $x$ còn lại số 1 trong ngoặc chứ không phải 0.\n\n**Phần 2. Trình bày**\n\n$xy^2-2xy+x=x(y^2-2y+1)$\n\n$=x(y-1)^2$"
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức sau thành nhân tử $xy^2-2xy+x$.",
+   "dap_an": "$x(y-1)^2$",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cả ba hạng tử đều chứa nhân tử chung $x$; sau khi đặt ra ngoài, biểu thức trong ngoặc lại là một hằng đẳng thức.\n\n**Bước 1.** Tìm nhân tử chung của cả ba hạng tử $xy^2$, $-2xy$, $x$.\n\n**Bước 2.** Đặt nhân tử chung ra ngoài ngoặc và viết các hạng tử còn lại trong ngoặc.\n\n**Bước 3.** Quan sát biểu thức trong ngoặc, nhận ra dạng bình phương của một hiệu rồi viết gọn.\n\n**Chú ý:** khi đặt $x$ ra ngoài, hạng tử $x$ còn lại số 1 trong ngoặc chứ không phải 0.\n\n**Phần 2. Trình bày**\n\n$xy^2-2xy+x=x(y^2-2y+1)$\n\n$=x(y-1)^2$"
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 1
+ },
+ {
+  "ma_cau": "T108030101137",
+  "dang": "NDB00472",
+  "ly_do": [
+   "THIẾU đáp án → lấy kết quả cuối lời giải (đã kiểm = đề)"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích ĐTTNT: $6y-54+y(18-2y)= ................$",
+   "dap_an": null,
+   "loi_giai": "$6y-54+y(18-2y)$\n$=6(y-9)+2y(9-y)$\n$=6(y-9)-2y(y-9)$\n$=(y-9)(6-2y)$\n$=2(y-9)(3-y)$"
+  },
+  "moi": {
+   "noi_dung": "Phân tích ĐTTNT: $6y-54+y(18-2y)= ................$",
+   "dap_an": "$2(y-9)(3-y)$",
+   "loi_giai": "$6y-54+y(18-2y)$\n$=6(y-9)+2y(9-y)$\n$=6(y-9)-2y(y-9)$\n$=(y-9)(6-2y)$\n$=2(y-9)(3-y)$"
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 6
+ },
+ {
+  "ma_cau": "T108000000227",
+  "dang": "NDB00977",
+  "ly_do": [
+   "THIẾU đáp án → lấy kết quả cuối lời giải (đã kiểm = đề)"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức sau thành nhân tử: $x^2-y^2+4x+4y$.",
+   "dap_an": null,
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** không có nhân tử chung cho cả bốn hạng tử, nên **nhóm hạng tử** sao cho mỗi nhóm phân tích được rồi lộ ra nhân tử chung.\n\n**Bước 1.** Nhóm $x^2-y^2$ (hiệu hai bình phương) với nhóm $4x+4y$ (có nhân tử chung 4).\n\n**Bước 2.** Phân tích từng nhóm: $x^2-y^2=(x-y)(x+y)$ và $4x+4y=4(x+y)$.\n\n**Bước 3.** Hai nhóm đều có nhân tử chung $(x+y)$, đặt nó ra ngoài để được tích.\n\n**Chú ý:** sau khi đặt $(x+y)$ ra ngoài, trong ngoặc còn lại là $(x-y)+4$.\n\n**Phần 2. Trình bày**\n\n$x^2-y^2+4x+4y=(x^2-y^2)+(4x+4y)$\n\n$=(x-y)(x+y)+4(x+y)$\n\n$=(x+y)(x-y+4)$"
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức sau thành nhân tử: $x^2-y^2+4x+4y$.",
+   "dap_an": "$(x+y)(x-y+4)$",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** không có nhân tử chung cho cả bốn hạng tử, nên **nhóm hạng tử** sao cho mỗi nhóm phân tích được rồi lộ ra nhân tử chung.\n\n**Bước 1.** Nhóm $x^2-y^2$ (hiệu hai bình phương) với nhóm $4x+4y$ (có nhân tử chung 4).\n\n**Bước 2.** Phân tích từng nhóm: $x^2-y^2=(x-y)(x+y)$ và $4x+4y=4(x+y)$.\n\n**Bước 3.** Hai nhóm đều có nhân tử chung $(x+y)$, đặt nó ra ngoài để được tích.\n\n**Chú ý:** sau khi đặt $(x+y)$ ra ngoài, trong ngoặc còn lại là $(x-y)+4$.\n\n**Phần 2. Trình bày**\n\n$x^2-y^2+4x+4y=(x^2-y^2)+(4x+4y)$\n\n$=(x-y)(x+y)+4(x+y)$\n\n$=(x+y)(x-y+4)$"
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108000000228",
+  "dang": "NDB00977",
+  "ly_do": [
+   "THIẾU đáp án → lấy kết quả cuối lời giải (đã kiểm = đề)"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức sau thành nhân tử: $4x^2+4xy+y^2-4x-2y$.",
+   "dap_an": null,
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ba hạng tử đầu là một bình phương, hai hạng tử cuối cùng có chung $2$ và cùng liên hệ với $2x+y$: nhóm rồi đặt $(2x+y)$ làm nhân tử chung.\n\n**Bước 1.** Nhóm ba hạng tử bậc hai $4x^2+4xy+y^2$ thành một nhóm, hai hạng tử bậc nhất $-4x-2y$ thành một nhóm.\n\n**Bước 2.** Nhóm thứ nhất có dạng $A^2+2AB+B^2$ với $A=2x$, $B=y$ nên viết được thành bình phương của một tổng; nhóm thứ hai đặt $-2$ ra ngoài thì trong ngoặc cũng xuất hiện $2x+y$.\n\n**Bước 3.** Cả hai nhóm có nhân tử chung $(2x+y)$, đặt nó ra ngoài để được một tích.\n\n**Chú ý:** đặt dấu trừ khi nhóm hạng tử cuối: $-4x-2y=-2(2x+y)$.\n\n**Phần 2. Trình bày**\n\n$4x^2+4xy+y^2-4x-2y=(4x^2+4xy+y^2)-(4x+2y)$\n\n$=(2x+y)^2-2(2x+y)$\n\n$=(2x+y)(2x+y-2)$"
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức sau thành nhân tử: $4x^2+4xy+y^2-4x-2y$.",
+   "dap_an": "$(2x+y)(2x+y-2)$",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ba hạng tử đầu là một bình phương, hai hạng tử cuối cùng có chung $2$ và cùng liên hệ với $2x+y$: nhóm rồi đặt $(2x+y)$ làm nhân tử chung.\n\n**Bước 1.** Nhóm ba hạng tử bậc hai $4x^2+4xy+y^2$ thành một nhóm, hai hạng tử bậc nhất $-4x-2y$ thành một nhóm.\n\n**Bước 2.** Nhóm thứ nhất có dạng $A^2+2AB+B^2$ với $A=2x$, $B=y$ nên viết được thành bình phương của một tổng; nhóm thứ hai đặt $-2$ ra ngoài thì trong ngoặc cũng xuất hiện $2x+y$.\n\n**Bước 3.** Cả hai nhóm có nhân tử chung $(2x+y)$, đặt nó ra ngoài để được một tích.\n\n**Chú ý:** đặt dấu trừ khi nhóm hạng tử cuối: $-4x-2y=-2(2x+y)$.\n\n**Phần 2. Trình bày**\n\n$4x^2+4xy+y^2-4x-2y=(4x^2+4xy+y^2)-(4x+2y)$\n\n$=(2x+y)^2-2(2x+y)$\n\n$=(2x+y)(2x+y-2)$"
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108000000229",
+  "dang": "NDB00977",
+  "ly_do": [
+   "THIẾU đáp án → lấy kết quả cuối lời giải (đã kiểm = đề)"
+  ],
+  "cu": {
+   "noi_dung": "Phân tích đa thức sau thành nhân tử: $x^3-3x^2y+3xy^2-y^3+x^2-y^2$.",
+   "dap_an": null,
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bốn hạng tử đầu chính là khai triển của lập phương một hiệu, hai hạng tử cuối là hiệu hai bình phương; cả hai đều chứa nhân tử $(x-y)$.\n\n**Bước 1.** Nhóm bốn hạng tử bậc ba $x^3-3x^2y+3xy^2-y^3$ thành một nhóm, hai hạng tử bậc hai $x^2-y^2$ thành một nhóm.\n\n**Bước 2.** Nhận ra nhóm đầu là $(x-y)^3$ (hằng đẳng thức lập phương của một hiệu) và nhóm sau là $(x-y)(x+y)$.\n\n**Bước 3.** Đặt nhân tử chung $(x-y)$ ra ngoài rồi khai triển $(x-y)^2$ trong ngoặc cho gọn.\n\n**Phần 2. Trình bày**\n\n$x^3-3x^2y+3xy^2-y^3+x^2-y^2=(x^3-3x^2y+3xy^2-y^3)+(x^2-y^2)$\n\n$=(x-y)^3+(x-y)(x+y)$\n\n$=(x-y)[(x-y)^2+(x+y)]$\n\n$=(x-y)(x^2-2xy+y^2+x+y)$"
+  },
+  "moi": {
+   "noi_dung": "Phân tích đa thức sau thành nhân tử: $x^3-3x^2y+3xy^2-y^3+x^2-y^2$.",
+   "dap_an": "$(x-y)(x^2-2xy+y^2+x+y)$",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bốn hạng tử đầu chính là khai triển của lập phương một hiệu, hai hạng tử cuối là hiệu hai bình phương; cả hai đều chứa nhân tử $(x-y)$.\n\n**Bước 1.** Nhóm bốn hạng tử bậc ba $x^3-3x^2y+3xy^2-y^3$ thành một nhóm, hai hạng tử bậc hai $x^2-y^2$ thành một nhóm.\n\n**Bước 2.** Nhận ra nhóm đầu là $(x-y)^3$ (hằng đẳng thức lập phương của một hiệu) và nhóm sau là $(x-y)(x+y)$.\n\n**Bước 3.** Đặt nhân tử chung $(x-y)$ ra ngoài rồi khai triển $(x-y)^2$ trong ngoặc cho gọn.\n\n**Phần 2. Trình bày**\n\n$x^3-3x^2y+3xy^2-y^3+x^2-y^2=(x^3-3x^2y+3xy^2-y^3)+(x^2-y^2)$\n\n$=(x-y)^3+(x-y)(x+y)$\n\n$=(x-y)[(x-y)^2+(x+y)]$\n\n$=(x-y)(x^2-2xy+y^2+x+y)$"
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108000000231",
+  "dang": "NDB00979",
+  "ly_do": [
+   "THIẾU đáp án → điền theo nghiệm (khớp dòng Vậy cuối lời giải)"
+  ],
+  "cu": {
+   "noi_dung": "Tìm $x$ biết: $x^2-9x=0$.",
+   "dap_an": null,
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** vế phải bằng 0, đưa vế trái về dạng **tích** rồi dùng: tích bằng 0 thì có một thừa số bằng 0.\n\n**Bước 1.** Hai hạng tử $x^2$ và $-9x$ có nhân tử chung $x$, đặt $x$ ra ngoài để vế trái thành tích của hai thừa số.\n\n**Bước 2.** Một tích bằng 0 khi một trong các thừa số bằng 0, nên xét hai trường hợp: thừa số thứ nhất bằng 0 hoặc thừa số thứ hai bằng 0.\n\n**Bước 3.** Tìm $x$ trong từng trường hợp bằng quy tắc chuyển vế rồi kết luận đủ cả hai giá trị.\n\n**Chú ý:** đừng chia hai vế cho $x$, vì $x$ có thể bằng 0 — chia như vậy sẽ làm mất một giá trị của $x$.\n\n**Phần 2. Trình bày**\n\n$x^2-9x=0$\n\n$x(x-9)=0$\n\nDo đó $x=0$ hoặc $x-9=0$.\n\n$x-9=0$ nên $x=9$.\n\nVậy $x=0$ hoặc $x=9$."
+  },
+  "moi": {
+   "noi_dung": "Tìm $x$ biết: $x^2-9x=0$.",
+   "dap_an": "$x = 0; x = 9$",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** vế phải bằng 0, đưa vế trái về dạng **tích** rồi dùng: tích bằng 0 thì có một thừa số bằng 0.\n\n**Bước 1.** Hai hạng tử $x^2$ và $-9x$ có nhân tử chung $x$, đặt $x$ ra ngoài để vế trái thành tích của hai thừa số.\n\n**Bước 2.** Một tích bằng 0 khi một trong các thừa số bằng 0, nên xét hai trường hợp: thừa số thứ nhất bằng 0 hoặc thừa số thứ hai bằng 0.\n\n**Bước 3.** Tìm $x$ trong từng trường hợp bằng quy tắc chuyển vế rồi kết luận đủ cả hai giá trị.\n\n**Chú ý:** đừng chia hai vế cho $x$, vì $x$ có thể bằng 0 — chia như vậy sẽ làm mất một giá trị của $x$.\n\n**Phần 2. Trình bày**\n\n$x^2-9x=0$\n\n$x(x-9)=0$\n\nDo đó $x=0$ hoặc $x-9=0$.\n\n$x-9=0$ nên $x=9$.\n\nVậy $x=0$ hoặc $x=9$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 1
+ },
+ {
+  "ma_cau": "T108000000738",
+  "dang": "NDB00979",
+  "ly_do": [
+   "THIẾU đáp án → điền theo nghiệm (khớp dòng Vậy cuối lời giải)"
+  ],
+  "cu": {
+   "noi_dung": "Tìm $x$, biết: $2x^3-50x=0$.",
+   "dap_an": null,
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** vế trái có hai hạng tử cùng chứa thừa số $2x$; đặt thừa số chung để vế trái thành một tích, vế phải là $0$, rồi cho từng thừa số bằng $0$.\n\n**Bước 1.** Nhận ra hai hạng tử $2x^3$ và $50x$ đều chia hết cho $2x$, rồi viết vế trái thành $2x$ nhân với một đa thức theo tính chất phân phối của phép nhân đối với phép trừ.\n\n**Bước 2.** Dùng tính chất: tích hai thừa số bằng $0$ thì có ít nhất một thừa số bằng $0$, để tách thành hai việc riêng.\n\n**Bước 3.** Với thừa số bậc nhất, tìm $x$ bằng quy tắc chuyển vế; với thừa số còn lại, chuyển số sang vế phải để được $x^2$ bằng một số dương.\n\n**Bước 4.** Tìm $x$ từ $x^2$ bằng căn bậc hai đã học ở lớp 7, chú ý số dương có hai căn bậc hai đối nhau nên có hai giá trị của $x$.\n\n**Chú ý:** không chia hai vế cho $x$ vì $x$ có thể bằng $0$, làm như vậy sẽ mất một giá trị; bài này cũng chưa dùng hằng đẳng thức, chỉ đặt thừa số chung.\n\n**Phần 2. Trình bày**\n\n$2x^3-50x=0$\n\n$2x \\cdot x^2-2x \\cdot 25=0$\n\n$2x(x^2-25)=0$\n\nVì tích bằng $0$ nên $2x=0$ hoặc $x^2-25=0$.\n\nTrường hợp $2x=0$ thì $x=0$.\n\nTrường hợp $x^2-25=0$ thì $x^2=25$.\n\nVì $5^2=25$ và $(-5)^2=25$ nên $x=5$ hoặc $x=-5$.\n\nVậy $x=0$; $x=5$; $x=-5$."
+  },
+  "moi": {
+   "noi_dung": "Tìm $x$, biết: $2x^3-50x=0$.",
+   "dap_an": "$x = -5; x = 0; x = 5$",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** vế trái có hai hạng tử cùng chứa thừa số $2x$; đặt thừa số chung để vế trái thành một tích, vế phải là $0$, rồi cho từng thừa số bằng $0$.\n\n**Bước 1.** Nhận ra hai hạng tử $2x^3$ và $50x$ đều chia hết cho $2x$, rồi viết vế trái thành $2x$ nhân với một đa thức theo tính chất phân phối của phép nhân đối với phép trừ.\n\n**Bước 2.** Dùng tính chất: tích hai thừa số bằng $0$ thì có ít nhất một thừa số bằng $0$, để tách thành hai việc riêng.\n\n**Bước 3.** Với thừa số bậc nhất, tìm $x$ bằng quy tắc chuyển vế; với thừa số còn lại, chuyển số sang vế phải để được $x^2$ bằng một số dương.\n\n**Bước 4.** Tìm $x$ từ $x^2$ bằng căn bậc hai đã học ở lớp 7, chú ý số dương có hai căn bậc hai đối nhau nên có hai giá trị của $x$.\n\n**Chú ý:** không chia hai vế cho $x$ vì $x$ có thể bằng $0$, làm như vậy sẽ mất một giá trị; bài này cũng chưa dùng hằng đẳng thức, chỉ đặt thừa số chung.\n\n**Phần 2. Trình bày**\n\n$2x^3-50x=0$\n\n$2x \\cdot x^2-2x \\cdot 25=0$\n\n$2x(x^2-25)=0$\n\nVì tích bằng $0$ nên $2x=0$ hoặc $x^2-25=0$.\n\nTrường hợp $2x=0$ thì $x=0$.\n\nTrường hợp $x^2-25=0$ thì $x^2=25$.\n\nVì $5^2=25$ và $(-5)^2=25$ nên $x=5$ hoặc $x=-5$.\n\nVậy $x=0$; $x=5$; $x=-5$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 1
+ },
+ {
+  "ma_cau": "T108000000671",
+  "dang": "NDB00980",
+  "ly_do": [
+   "THIẾU đáp án → điền theo nghiệm (khớp dòng Vậy cuối lời giải)"
+  ],
+  "cu": {
+   "noi_dung": "Tìm $x$, biết: $(2x+1)^2-(x-1)^2=0$.",
+   "dap_an": null,
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** vế trái là hiệu của hai bình phương nên viết được thành tích $A^2-B^2=(A-B)(A+B)$; tích bằng $0$ thì có một thừa số bằng $0$.\n\n**Bước 1.** Nhận ra $(2x+1)^2$ và $(x-1)^2$ là hai bình phương, áp dụng hằng đẳng thức hiệu hai bình phương với $A=2x+1$ và $B=x-1$.\n\n**Bước 2.** Rút gọn từng ngoặc của hai thừa số, chú ý khi bỏ ngoặc phía sau dấu trừ thì phải đổi dấu mọi hạng tử.\n\n**Bước 3.** Vì tích hai thừa số bằng $0$ nên cho từng thừa số bằng $0$ và giải riêng từng trường hợp.\n\n**Chú ý:** không chia hai vế cho $x$ rồi bỏ thừa số chứa $x$ đi, vì làm vậy sẽ mất một giá trị của $x$; đề có hai giá trị.\n\n**Phần 2. Trình bày**\n\n$(2x+1)^2-(x-1)^2=0$\n\n$[(2x+1)-(x-1)][(2x+1)+(x-1)]=0$\n\n$(2x+1-x+1)(2x+1+x-1)=0$\n\n$3x(x+2)=0$\n\nSuy ra $3x=0$ hoặc $x+2=0$.\n\nVới $3x=0$ thì $x=0$.\n\nVới $x+2=0$ thì $x=-2$.\n\nVậy $x=-2$ hoặc $x=0$."
+  },
+  "moi": {
+   "noi_dung": "Tìm $x$, biết: $(2x+1)^2-(x-1)^2=0$.",
+   "dap_an": "$x = -2; x = 0$",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** vế trái là hiệu của hai bình phương nên viết được thành tích $A^2-B^2=(A-B)(A+B)$; tích bằng $0$ thì có một thừa số bằng $0$.\n\n**Bước 1.** Nhận ra $(2x+1)^2$ và $(x-1)^2$ là hai bình phương, áp dụng hằng đẳng thức hiệu hai bình phương với $A=2x+1$ và $B=x-1$.\n\n**Bước 2.** Rút gọn từng ngoặc của hai thừa số, chú ý khi bỏ ngoặc phía sau dấu trừ thì phải đổi dấu mọi hạng tử.\n\n**Bước 3.** Vì tích hai thừa số bằng $0$ nên cho từng thừa số bằng $0$ và giải riêng từng trường hợp.\n\n**Chú ý:** không chia hai vế cho $x$ rồi bỏ thừa số chứa $x$ đi, vì làm vậy sẽ mất một giá trị của $x$; đề có hai giá trị.\n\n**Phần 2. Trình bày**\n\n$(2x+1)^2-(x-1)^2=0$\n\n$[(2x+1)-(x-1)][(2x+1)+(x-1)]=0$\n\n$(2x+1-x+1)(2x+1+x-1)=0$\n\n$3x(x+2)=0$\n\nSuy ra $3x=0$ hoặc $x+2=0$.\n\nVới $3x=0$ thì $x=0$.\n\nVới $x+2=0$ thì $x=-2$.\n\nVậy $x=-2$ hoặc $x=0$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 1
+ },
+ {
+  "ma_cau": "T108000000495",
+  "dang": "NDB00981",
+  "ly_do": [
+   "THIẾU đáp án → điền theo nghiệm (khớp dòng Vậy cuối lời giải)"
+  ],
+  "cu": {
+   "noi_dung": "Tìm $x$ biết: $(2x+1)^2+(x+5)(2-3x)=3$.",
+   "dap_an": null,
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** sau khi khai triển cả hai số hạng, vế trái còn cả $x^2$ lẫn $x$ nên không đưa được về $x^2$ bằng một số; phải chuyển về một vế bằng $0$ rồi phân tích thành tích để dùng \"tích bằng $0$ thì có một thừa số bằng $0$\".\n\n**Bước 1.** Khai triển $(2x+1)^2$ bằng hằng đẳng thức bình phương của một tổng, và $(x+5)(2-3x)$ bằng cách nhân từng hạng tử của ngoặc này với từng hạng tử của ngoặc kia.\n\n**Bước 2.** Cộng hai kết quả, thu gọn các hạng tử đồng dạng rồi chuyển $3$ sang vế trái để vế phải bằng $0$.\n\n**Bước 3.** Phân tích vế trái thành nhân tử: tách hạng tử chứa $x$ thành hai hạng tử sao cho hai hệ số có tích bằng số hạng tự do (hệ số của $x^2$ là $1$), rồi nhóm hạng tử và đặt nhân tử chung.\n\n**Bước 4.** Dùng tính chất tích bằng $0$ thì có một thừa số bằng $0$, cho từng nhân tử bằng $0$ để tìm $x$.\n\n**Chú ý:** khi nhân $(x+5)(2-3x)$ rất dễ sai dấu ở các hạng tử có $-3x$, nên viết đủ bốn tích rồi mới thu gọn.\n\n**Phần 2. Trình bày**\n\n$(2x+1)^2+(x+5)(2-3x)=3$\n\n$(2x+1)^2=4x^2+4x+1$\n\n$(x+5)(2-3x)=2x-3x^2+10-15x=-3x^2-13x+10$\n\n$4x^2+4x+1-3x^2-13x+10=3$\n\n$x^2-9x+11=3$\n\n$x^2-9x+8=0$\n\n$x^2-x-8x+8=0$\n\n$x(x-1)-8(x-1)=0$\n\n$(x-1)(x-8)=0$\n\nVì tích bằng $0$ nên $x-1=0$ hoặc $x-8=0$.\n\nTrường hợp 1: $x-1=0$ nên $x=1$.\n\nTrường hợp 2: $x-8=0$ nên $x=8$.\n\nVậy $x=1$ hoặc $x=8$."
+  },
+  "moi": {
+   "noi_dung": "Tìm $x$ biết: $(2x+1)^2+(x+5)(2-3x)=3$.",
+   "dap_an": "$x = 1; x = 8$",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** sau khi khai triển cả hai số hạng, vế trái còn cả $x^2$ lẫn $x$ nên không đưa được về $x^2$ bằng một số; phải chuyển về một vế bằng $0$ rồi phân tích thành tích để dùng \"tích bằng $0$ thì có một thừa số bằng $0$\".\n\n**Bước 1.** Khai triển $(2x+1)^2$ bằng hằng đẳng thức bình phương của một tổng, và $(x+5)(2-3x)$ bằng cách nhân từng hạng tử của ngoặc này với từng hạng tử của ngoặc kia.\n\n**Bước 2.** Cộng hai kết quả, thu gọn các hạng tử đồng dạng rồi chuyển $3$ sang vế trái để vế phải bằng $0$.\n\n**Bước 3.** Phân tích vế trái thành nhân tử: tách hạng tử chứa $x$ thành hai hạng tử sao cho hai hệ số có tích bằng số hạng tự do (hệ số của $x^2$ là $1$), rồi nhóm hạng tử và đặt nhân tử chung.\n\n**Bước 4.** Dùng tính chất tích bằng $0$ thì có một thừa số bằng $0$, cho từng nhân tử bằng $0$ để tìm $x$.\n\n**Chú ý:** khi nhân $(x+5)(2-3x)$ rất dễ sai dấu ở các hạng tử có $-3x$, nên viết đủ bốn tích rồi mới thu gọn.\n\n**Phần 2. Trình bày**\n\n$(2x+1)^2+(x+5)(2-3x)=3$\n\n$(2x+1)^2=4x^2+4x+1$\n\n$(x+5)(2-3x)=2x-3x^2+10-15x=-3x^2-13x+10$\n\n$4x^2+4x+1-3x^2-13x+10=3$\n\n$x^2-9x+11=3$\n\n$x^2-9x+8=0$\n\n$x^2-x-8x+8=0$\n\n$x(x-1)-8(x-1)=0$\n\n$(x-1)(x-8)=0$\n\nVì tích bằng $0$ nên $x-1=0$ hoặc $x-8=0$.\n\nTrường hợp 1: $x-1=0$ nên $x=1$.\n\nTrường hợp 2: $x-8=0$ nên $x=8$.\n\nVậy $x=1$ hoặc $x=8$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 5
+ },
+ {
+  "ma_cau": "T108000000497",
+  "dang": "NDB00981",
+  "ly_do": [
+   "THIẾU đáp án → điền theo nghiệm (khớp dòng Vậy cuối lời giải)"
+  ],
+  "cu": {
+   "noi_dung": "Tìm $x$ biết: $x^2-3x+2=0$.",
+   "dap_an": null,
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** vế phải bằng 0 nên hãy viết vế trái thành **tích** các thừa số; tích bằng 0 thì có ít nhất một thừa số bằng 0.\n\n**Bước 1.** Nhận thấy vế trái $x^2-3x+2$ không có thừa số chung cho mọi hạng tử và cũng không phải một hằng đẳng thức, nên phải biến đổi thêm mới phân tích được.\n\n**Bước 2.** Tách hạng tử bậc nhất: tìm hai số có tổng bằng hệ số $-3$ của $x$ và tích bằng số hạng tự do $2$, rồi viết $-3x$ thành tổng hai hạng tử theo hai số đó.\n\n**Bước 3.** Nhóm bốn hạng tử thành hai nhóm, đặt thừa số chung ở từng nhóm để lộ thừa số chung của cả hai nhóm, từ đó viết vế trái thành tích hai nhân tử.\n\n**Bước 4.** Cho từng nhân tử bằng 0 (tích bằng 0 thì một thừa số bằng 0) rồi giải hai trường hợp bằng quy tắc chuyển vế.\n\n**Chú ý:** tích bằng 0 cho **hai** trường hợp, đừng chỉ giải một trường hợp rồi dừng.\n\n**Phần 2. Trình bày**\n\n$x^2-3x+2=0$\n\n$x^2-x-2x+2=0$\n\n$(x^2-x)-(2x-2)=0$\n\n$x(x-1)-2(x-1)=0$\n\n$(x-1)(x-2)=0$\n\nSuy ra $x-1=0$ hoặc $x-2=0$.\n\n$x=1$ hoặc $x=2$.\n\nVậy $x=1$ hoặc $x=2$."
+  },
+  "moi": {
+   "noi_dung": "Tìm $x$ biết: $x^2-3x+2=0$.",
+   "dap_an": "$x = 1; x = 2$",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** vế phải bằng 0 nên hãy viết vế trái thành **tích** các thừa số; tích bằng 0 thì có ít nhất một thừa số bằng 0.\n\n**Bước 1.** Nhận thấy vế trái $x^2-3x+2$ không có thừa số chung cho mọi hạng tử và cũng không phải một hằng đẳng thức, nên phải biến đổi thêm mới phân tích được.\n\n**Bước 2.** Tách hạng tử bậc nhất: tìm hai số có tổng bằng hệ số $-3$ của $x$ và tích bằng số hạng tự do $2$, rồi viết $-3x$ thành tổng hai hạng tử theo hai số đó.\n\n**Bước 3.** Nhóm bốn hạng tử thành hai nhóm, đặt thừa số chung ở từng nhóm để lộ thừa số chung của cả hai nhóm, từ đó viết vế trái thành tích hai nhân tử.\n\n**Bước 4.** Cho từng nhân tử bằng 0 (tích bằng 0 thì một thừa số bằng 0) rồi giải hai trường hợp bằng quy tắc chuyển vế.\n\n**Chú ý:** tích bằng 0 cho **hai** trường hợp, đừng chỉ giải một trường hợp rồi dừng.\n\n**Phần 2. Trình bày**\n\n$x^2-3x+2=0$\n\n$x^2-x-2x+2=0$\n\n$(x^2-x)-(2x-2)=0$\n\n$x(x-1)-2(x-1)=0$\n\n$(x-1)(x-2)=0$\n\nSuy ra $x-1=0$ hoặc $x-2=0$.\n\n$x=1$ hoặc $x=2$.\n\nVậy $x=1$ hoặc $x=2$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108000000498",
+  "dang": "NDB00981",
+  "ly_do": [
+   "THIẾU đáp án → điền theo nghiệm (khớp dòng Vậy cuối lời giải)"
+  ],
+  "cu": {
+   "noi_dung": "Tìm $x$ biết: $x(x-4)+3=0$.",
+   "dap_an": null,
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $x(x-4)$ là một tích nhưng còn cộng thêm 3 nên cả vế trái **chưa** là tích; phải nhân ra, thu gọn rồi phân tích lại thành tích.\n\n**Bước 1.** Nhân $x$ với đa thức trong ngoặc để bỏ ngoặc, được đa thức bậc hai ở vế trái.\n\n**Bước 2.** Tách hạng tử bậc nhất theo hai số có tổng bằng hệ số của $x$ và tích bằng số hạng tự do.\n\n**Bước 3.** Nhóm hạng tử, đặt thừa số chung từng nhóm rồi viết vế trái thành tích hai nhân tử.\n\n**Bước 4.** Cho từng nhân tử bằng 0 và giải hai trường hợp.\n\n**Chú ý:** không được cho ngay $x=0$ hoặc $x-4=0$ vì vế trái không chỉ có tích $x(x-4)$.\n\n**Phần 2. Trình bày**\n\n$x(x-4)+3=0$\n\n$x^2-4x+3=0$\n\n$x^2-x-3x+3=0$\n\n$x(x-1)-3(x-1)=0$\n\n$(x-1)(x-3)=0$\n\nSuy ra $x-1=0$ hoặc $x-3=0$.\n\n$x=1$ hoặc $x=3$.\n\nVậy $x=1$ hoặc $x=3$."
+  },
+  "moi": {
+   "noi_dung": "Tìm $x$ biết: $x(x-4)+3=0$.",
+   "dap_an": "$x = 1; x = 3$",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $x(x-4)$ là một tích nhưng còn cộng thêm 3 nên cả vế trái **chưa** là tích; phải nhân ra, thu gọn rồi phân tích lại thành tích.\n\n**Bước 1.** Nhân $x$ với đa thức trong ngoặc để bỏ ngoặc, được đa thức bậc hai ở vế trái.\n\n**Bước 2.** Tách hạng tử bậc nhất theo hai số có tổng bằng hệ số của $x$ và tích bằng số hạng tự do.\n\n**Bước 3.** Nhóm hạng tử, đặt thừa số chung từng nhóm rồi viết vế trái thành tích hai nhân tử.\n\n**Bước 4.** Cho từng nhân tử bằng 0 và giải hai trường hợp.\n\n**Chú ý:** không được cho ngay $x=0$ hoặc $x-4=0$ vì vế trái không chỉ có tích $x(x-4)$.\n\n**Phần 2. Trình bày**\n\n$x(x-4)+3=0$\n\n$x^2-4x+3=0$\n\n$x^2-x-3x+3=0$\n\n$x(x-1)-3(x-1)=0$\n\n$(x-1)(x-3)=0$\n\nSuy ra $x-1=0$ hoặc $x-3=0$.\n\n$x=1$ hoặc $x=3$.\n\nVậy $x=1$ hoặc $x=3$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108000000499",
+  "dang": "NDB00981",
+  "ly_do": [
+   "THIẾU đáp án → điền theo nghiệm (khớp dòng Vậy cuối lời giải)"
+  ],
+  "cu": {
+   "noi_dung": "Tìm $x$ biết: $x(x-5)-x+8=0$.",
+   "dap_an": null,
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** gom hai hạng tử bậc nhất đồng dạng sau khi bỏ ngoặc, khi đó vế trái thành đa thức bậc hai, phân tích được thành tích hai nhân tử.\n\n**Bước 1.** Nhân $x$ với $(x-5)$ để bỏ ngoặc, rồi gom hai hạng tử chứa $x$ lại thành một.\n\n**Bước 2.** Tách hạng tử bậc nhất theo hai số có tổng bằng hệ số của $x$ và tích bằng số hạng tự do.\n\n**Bước 3.** Nhóm hạng tử, đặt thừa số chung để viết vế trái thành tích hai nhân tử.\n\n**Bước 4.** Cho từng nhân tử bằng 0 rồi giải hai trường hợp.\n\n**Chú ý:** hạng tử $-x$ có hệ số $-1$; khi gom với $-5x$ phải cộng cả hai hệ số âm.\n\n**Phần 2. Trình bày**\n\n$x(x-5)-x+8=0$\n\n$x^2-5x-x+8=0$\n\n$x^2-6x+8=0$\n\n$x^2-2x-4x+8=0$\n\n$x(x-2)-4(x-2)=0$\n\n$(x-2)(x-4)=0$\n\nSuy ra $x-2=0$ hoặc $x-4=0$.\n\n$x=2$ hoặc $x=4$.\n\nVậy $x=2$ hoặc $x=4$."
+  },
+  "moi": {
+   "noi_dung": "Tìm $x$ biết: $x(x-5)-x+8=0$.",
+   "dap_an": "$x = 2; x = 4$",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** gom hai hạng tử bậc nhất đồng dạng sau khi bỏ ngoặc, khi đó vế trái thành đa thức bậc hai, phân tích được thành tích hai nhân tử.\n\n**Bước 1.** Nhân $x$ với $(x-5)$ để bỏ ngoặc, rồi gom hai hạng tử chứa $x$ lại thành một.\n\n**Bước 2.** Tách hạng tử bậc nhất theo hai số có tổng bằng hệ số của $x$ và tích bằng số hạng tự do.\n\n**Bước 3.** Nhóm hạng tử, đặt thừa số chung để viết vế trái thành tích hai nhân tử.\n\n**Bước 4.** Cho từng nhân tử bằng 0 rồi giải hai trường hợp.\n\n**Chú ý:** hạng tử $-x$ có hệ số $-1$; khi gom với $-5x$ phải cộng cả hai hệ số âm.\n\n**Phần 2. Trình bày**\n\n$x(x-5)-x+8=0$\n\n$x^2-5x-x+8=0$\n\n$x^2-6x+8=0$\n\n$x^2-2x-4x+8=0$\n\n$x(x-2)-4(x-2)=0$\n\n$(x-2)(x-4)=0$\n\nSuy ra $x-2=0$ hoặc $x-4=0$.\n\n$x=2$ hoặc $x=4$.\n\nVậy $x=2$ hoặc $x=4$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108000000501",
+  "dang": "NDB00981",
+  "ly_do": [
+   "THIẾU đáp án → điền theo nghiệm (khớp dòng Vậy cuối lời giải)"
+  ],
+  "cu": {
+   "noi_dung": "Tìm $x$ biết: $(2x+3)^2-(3x-1)(x+2)=1$.",
+   "dap_an": null,
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** khai triển bình phương và tích hai đa thức trước; dấu trừ đứng trước tích $(3x-1)(x+2)$ làm đổi dấu **mọi** hạng tử của tích khi bỏ ngoặc.\n\n**Bước 1.** Khai triển $(2x+3)^2$ bằng hằng đẳng thức bình phương của một tổng, và nhân hai đa thức $(3x-1)(x+2)$ rồi đặt kết quả trong ngoặc.\n\n**Bước 2.** Bỏ ngoặc theo dấu trừ phía trước, thu gọn vế trái rồi chuyển số 1 sang vế trái để vế phải bằng 0.\n\n**Bước 3.** Tách hạng tử bậc nhất theo hai số có tổng bằng hệ số của $x$ và tích bằng số hạng tự do, rồi nhóm để viết vế trái thành tích.\n\n**Bước 4.** Cho từng nhân tử bằng 0 và giải hai trường hợp.\n\n**Chú ý:** lỗi hay gặp là chỉ đổi dấu hạng tử đầu của $(3x-1)(x+2)$ mà quên các hạng tử còn lại.\n\n**Phần 2. Trình bày**\n\n$(2x+3)^2-(3x-1)(x+2)=1$\n\n$4x^2+12x+9-(3x^2+6x-x-2)=1$\n\n$4x^2+12x+9-3x^2-6x+x+2=1$\n\n$x^2+7x+11=1$\n\n$x^2+7x+10=0$\n\n$x^2+2x+5x+10=0$\n\n$x(x+2)+5(x+2)=0$\n\n$(x+2)(x+5)=0$\n\nSuy ra $x+2=0$ hoặc $x+5=0$.\n\n$x=-2$ hoặc $x=-5$.\n\nVậy $x=-2$ hoặc $x=-5$."
+  },
+  "moi": {
+   "noi_dung": "Tìm $x$ biết: $(2x+3)^2-(3x-1)(x+2)=1$.",
+   "dap_an": "$x = -5; x = -2$",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** khai triển bình phương và tích hai đa thức trước; dấu trừ đứng trước tích $(3x-1)(x+2)$ làm đổi dấu **mọi** hạng tử của tích khi bỏ ngoặc.\n\n**Bước 1.** Khai triển $(2x+3)^2$ bằng hằng đẳng thức bình phương của một tổng, và nhân hai đa thức $(3x-1)(x+2)$ rồi đặt kết quả trong ngoặc.\n\n**Bước 2.** Bỏ ngoặc theo dấu trừ phía trước, thu gọn vế trái rồi chuyển số 1 sang vế trái để vế phải bằng 0.\n\n**Bước 3.** Tách hạng tử bậc nhất theo hai số có tổng bằng hệ số của $x$ và tích bằng số hạng tự do, rồi nhóm để viết vế trái thành tích.\n\n**Bước 4.** Cho từng nhân tử bằng 0 và giải hai trường hợp.\n\n**Chú ý:** lỗi hay gặp là chỉ đổi dấu hạng tử đầu của $(3x-1)(x+2)$ mà quên các hạng tử còn lại.\n\n**Phần 2. Trình bày**\n\n$(2x+3)^2-(3x-1)(x+2)=1$\n\n$4x^2+12x+9-(3x^2+6x-x-2)=1$\n\n$4x^2+12x+9-3x^2-6x+x+2=1$\n\n$x^2+7x+11=1$\n\n$x^2+7x+10=0$\n\n$x^2+2x+5x+10=0$\n\n$x(x+2)+5(x+2)=0$\n\n$(x+2)(x+5)=0$\n\nSuy ra $x+2=0$ hoặc $x+5=0$.\n\n$x=-2$ hoặc $x=-5$.\n\nVậy $x=-2$ hoặc $x=-5$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108000000502",
+  "dang": "NDB00981",
+  "ly_do": [
+   "THIẾU đáp án → điền theo nghiệm (khớp dòng Vậy cuối lời giải)"
+  ],
+  "cu": {
+   "noi_dung": "Tìm $x$ biết: $2(3x-1)^2-5x(2x-5)=8$.",
+   "dap_an": null,
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** sau khi thu gọn, hệ số của $x^2$ khác 1 nên khi tách hạng tử bậc nhất phải dùng **tích của hệ số $x^2$ với số hạng tự do**, không chỉ số hạng tự do.\n\n**Bước 1.** Khai triển $(3x-1)^2$ bằng hằng đẳng thức rồi nhân cả ba hạng tử với hệ số 2 ở ngoài; nhân $5x$ với $(2x-5)$ và bỏ ngoặc theo dấu trừ phía trước.\n\n**Bước 2.** Thu gọn vế trái và chuyển số 8 sang vế trái để được đa thức bậc hai có vế phải bằng 0.\n\n**Bước 3.** Tìm hai số có tổng bằng hệ số của $x$ và tích bằng tích của hệ số $x^2$ với số hạng tự do, rồi tách hạng tử bậc nhất theo hai số đó.\n\n**Bước 4.** Nhóm, đặt thừa số chung để thành tích hai nhân tử; cho từng nhân tử bằng 0 rồi giải bằng quy tắc chuyển vế.\n\n**Chú ý:** hệ số 2 đứng ngoài $(3x-1)^2$ nhân với cả ba hạng tử của khai triển, không chỉ hạng tử đầu.\n\n**Phần 2. Trình bày**\n\n$2(3x-1)^2-5x(2x-5)=8$\n\n$2(9x^2-6x+1)-10x^2+25x=8$\n\n$18x^2-12x+2-10x^2+25x=8$\n\n$8x^2+13x+2=8$\n\n$8x^2+13x-6=0$\n\n$8x^2+16x-3x-6=0$\n\n$8x(x+2)-3(x+2)=0$\n\n$(x+2)(8x-3)=0$\n\nSuy ra $x+2=0$ hoặc $8x-3=0$.\n\n$x=-2$ hoặc $8x=3$.\n\n$x=-2$ hoặc $x=\\dfrac{3}{8}$.\n\nVậy $x=-2$ hoặc $x=\\dfrac{3}{8}$."
+  },
+  "moi": {
+   "noi_dung": "Tìm $x$ biết: $2(3x-1)^2-5x(2x-5)=8$.",
+   "dap_an": "$x = -2; x = \\dfrac{3}{8}$",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** sau khi thu gọn, hệ số của $x^2$ khác 1 nên khi tách hạng tử bậc nhất phải dùng **tích của hệ số $x^2$ với số hạng tự do**, không chỉ số hạng tự do.\n\n**Bước 1.** Khai triển $(3x-1)^2$ bằng hằng đẳng thức rồi nhân cả ba hạng tử với hệ số 2 ở ngoài; nhân $5x$ với $(2x-5)$ và bỏ ngoặc theo dấu trừ phía trước.\n\n**Bước 2.** Thu gọn vế trái và chuyển số 8 sang vế trái để được đa thức bậc hai có vế phải bằng 0.\n\n**Bước 3.** Tìm hai số có tổng bằng hệ số của $x$ và tích bằng tích của hệ số $x^2$ với số hạng tự do, rồi tách hạng tử bậc nhất theo hai số đó.\n\n**Bước 4.** Nhóm, đặt thừa số chung để thành tích hai nhân tử; cho từng nhân tử bằng 0 rồi giải bằng quy tắc chuyển vế.\n\n**Chú ý:** hệ số 2 đứng ngoài $(3x-1)^2$ nhân với cả ba hạng tử của khai triển, không chỉ hạng tử đầu.\n\n**Phần 2. Trình bày**\n\n$2(3x-1)^2-5x(2x-5)=8$\n\n$2(9x^2-6x+1)-10x^2+25x=8$\n\n$18x^2-12x+2-10x^2+25x=8$\n\n$8x^2+13x+2=8$\n\n$8x^2+13x-6=0$\n\n$8x^2+16x-3x-6=0$\n\n$8x(x+2)-3(x+2)=0$\n\n$(x+2)(8x-3)=0$\n\nSuy ra $x+2=0$ hoặc $8x-3=0$.\n\n$x=-2$ hoặc $8x=3$.\n\n$x=-2$ hoặc $x=\\dfrac{3}{8}$.\n\nVậy $x=-2$ hoặc $x=\\dfrac{3}{8}$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108000000503",
+  "dang": "NDB00981",
+  "ly_do": [
+   "THIẾU đáp án → điền theo nghiệm (khớp dòng Vậy cuối lời giải)"
+  ],
+  "cu": {
+   "noi_dung": "Tìm $x$ biết: $(3x-2)^2-5x(x+1)+9=0$.",
+   "dap_an": null,
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** khai triển và thu gọn được đa thức bậc hai có hệ số $x^2$ khác 1, rồi tách hạng tử bậc nhất bằng hai số có tích bằng tích của hệ số $x^2$ với số hạng tự do.\n\n**Bước 1.** Khai triển $(3x-2)^2$ bằng hằng đẳng thức bình phương của một hiệu và nhân $5x$ với $(x+1)$.\n\n**Bước 2.** Bỏ ngoặc theo dấu trừ phía trước, rồi thu gọn vế trái, cộng cả số 9 vào số hạng tự do.\n\n**Bước 3.** Tìm hai số có tổng bằng hệ số của $x$ và tích bằng tích của hệ số $x^2$ với số hạng tự do, rồi tách hạng tử bậc nhất.\n\n**Bước 4.** Nhóm, đặt thừa số chung để viết vế trái thành tích, cho từng nhân tử bằng 0 và giải.\n\n**Chú ý:** dấu trừ trước $5x(x+1)$ đổi dấu cả hạng tử $5x^2$ lẫn $5x$.\n\n**Phần 2. Trình bày**\n\n$(3x-2)^2-5x(x+1)+9=0$\n\n$9x^2-12x+4-5x^2-5x+9=0$\n\n$4x^2-17x+13=0$\n\n$4x^2-4x-13x+13=0$\n\n$4x(x-1)-13(x-1)=0$\n\n$(x-1)(4x-13)=0$\n\nSuy ra $x-1=0$ hoặc $4x-13=0$.\n\n$x=1$ hoặc $4x=13$.\n\n$x=1$ hoặc $x=\\dfrac{13}{4}$.\n\nVậy $x=1$ hoặc $x=\\dfrac{13}{4}$."
+  },
+  "moi": {
+   "noi_dung": "Tìm $x$ biết: $(3x-2)^2-5x(x+1)+9=0$.",
+   "dap_an": "$x = 1; x = \\dfrac{13}{4}$",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** khai triển và thu gọn được đa thức bậc hai có hệ số $x^2$ khác 1, rồi tách hạng tử bậc nhất bằng hai số có tích bằng tích của hệ số $x^2$ với số hạng tự do.\n\n**Bước 1.** Khai triển $(3x-2)^2$ bằng hằng đẳng thức bình phương của một hiệu và nhân $5x$ với $(x+1)$.\n\n**Bước 2.** Bỏ ngoặc theo dấu trừ phía trước, rồi thu gọn vế trái, cộng cả số 9 vào số hạng tự do.\n\n**Bước 3.** Tìm hai số có tổng bằng hệ số của $x$ và tích bằng tích của hệ số $x^2$ với số hạng tự do, rồi tách hạng tử bậc nhất.\n\n**Bước 4.** Nhóm, đặt thừa số chung để viết vế trái thành tích, cho từng nhân tử bằng 0 và giải.\n\n**Chú ý:** dấu trừ trước $5x(x+1)$ đổi dấu cả hạng tử $5x^2$ lẫn $5x$.\n\n**Phần 2. Trình bày**\n\n$(3x-2)^2-5x(x+1)+9=0$\n\n$9x^2-12x+4-5x^2-5x+9=0$\n\n$4x^2-17x+13=0$\n\n$4x^2-4x-13x+13=0$\n\n$4x(x-1)-13(x-1)=0$\n\n$(x-1)(4x-13)=0$\n\nSuy ra $x-1=0$ hoặc $4x-13=0$.\n\n$x=1$ hoặc $4x=13$.\n\n$x=1$ hoặc $x=\\dfrac{13}{4}$.\n\nVậy $x=1$ hoặc $x=\\dfrac{13}{4}$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 3
+ },
+ {
+  "ma_cau": "T108000000504",
+  "dang": "NDB00981",
+  "ly_do": [
+   "THIẾU đáp án → điền theo nghiệm (khớp dòng Vậy cuối lời giải)"
+  ],
+  "cu": {
+   "noi_dung": "Tìm $x$ biết: $(x-3)^2-(2x-5)(x-1)+3x-7=0$.",
+   "dap_an": null,
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** vế trái có ba nhóm (bình phương, tích hai đa thức, hạng tử bậc nhất); khai triển hết rồi gom hạng tử đồng dạng, hệ số $x^2$ ra âm nên đổi dấu hai vế cho dễ phân tích.\n\n**Bước 1.** Khai triển $(x-3)^2$ bằng hằng đẳng thức và nhân $(2x-5)(x-1)$, đặt kết quả trong ngoặc vì có dấu trừ phía trước.\n\n**Bước 2.** Bỏ ngoặc (đổi dấu mọi hạng tử), gom các hạng tử đồng dạng để thu gọn vế trái.\n\n**Bước 3.** Nhân hai vế với $-1$ để hệ số của $x^2$ bằng 1, rồi tách hạng tử bậc nhất theo hai số có tổng bằng hệ số của $x$ và tích bằng số hạng tự do.\n\n**Bước 4.** Nhóm, đặt thừa số chung để thành tích hai nhân tử, cho từng nhân tử bằng 0 và giải.\n\n**Chú ý:** ba số hạng chứa $x$ đều phải gom lại: hạng tử $-6x$ của bình phương, hạng tử từ tích hai đa thức và $3x$.\n\n**Phần 2. Trình bày**\n\n$(x-3)^2-(2x-5)(x-1)+3x-7=0$\n\n$x^2-6x+9-(2x^2-2x-5x+5)+3x-7=0$\n\n$x^2-6x+9-2x^2+2x+5x-5+3x-7=0$\n\n$-x^2+4x-3=0$\n\n$x^2-4x+3=0$ (nhân hai vế với $-1$)\n\n$x^2-x-3x+3=0$\n\n$x(x-1)-3(x-1)=0$\n\n$(x-1)(x-3)=0$\n\nSuy ra $x-1=0$ hoặc $x-3=0$.\n\n$x=1$ hoặc $x=3$.\n\nVậy $x=1$ hoặc $x=3$."
+  },
+  "moi": {
+   "noi_dung": "Tìm $x$ biết: $(x-3)^2-(2x-5)(x-1)+3x-7=0$.",
+   "dap_an": "$x = 1; x = 3$",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** vế trái có ba nhóm (bình phương, tích hai đa thức, hạng tử bậc nhất); khai triển hết rồi gom hạng tử đồng dạng, hệ số $x^2$ ra âm nên đổi dấu hai vế cho dễ phân tích.\n\n**Bước 1.** Khai triển $(x-3)^2$ bằng hằng đẳng thức và nhân $(2x-5)(x-1)$, đặt kết quả trong ngoặc vì có dấu trừ phía trước.\n\n**Bước 2.** Bỏ ngoặc (đổi dấu mọi hạng tử), gom các hạng tử đồng dạng để thu gọn vế trái.\n\n**Bước 3.** Nhân hai vế với $-1$ để hệ số của $x^2$ bằng 1, rồi tách hạng tử bậc nhất theo hai số có tổng bằng hệ số của $x$ và tích bằng số hạng tự do.\n\n**Bước 4.** Nhóm, đặt thừa số chung để thành tích hai nhân tử, cho từng nhân tử bằng 0 và giải.\n\n**Chú ý:** ba số hạng chứa $x$ đều phải gom lại: hạng tử $-6x$ của bình phương, hạng tử từ tích hai đa thức và $3x$.\n\n**Phần 2. Trình bày**\n\n$(x-3)^2-(2x-5)(x-1)+3x-7=0$\n\n$x^2-6x+9-(2x^2-2x-5x+5)+3x-7=0$\n\n$x^2-6x+9-2x^2+2x+5x-5+3x-7=0$\n\n$-x^2+4x-3=0$\n\n$x^2-4x+3=0$ (nhân hai vế với $-1$)\n\n$x^2-x-3x+3=0$\n\n$x(x-1)-3(x-1)=0$\n\n$(x-1)(x-3)=0$\n\nSuy ra $x-1=0$ hoặc $x-3=0$.\n\n$x=1$ hoặc $x=3$.\n\nVậy $x=1$ hoặc $x=3$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 4
+ },
+ {
+  "ma_cau": "T108000000624",
+  "dang": "NDB00981",
+  "ly_do": [
+   "THIẾU đáp án → điền theo nghiệm (khớp dòng Vậy cuối lời giải)"
+  ],
+  "cu": {
+   "noi_dung": "Tìm $x$ biết: $(x+2)^3-(2x+3)(4x-1)=(x-3)^3+26$.",
+   "dap_an": null,
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** khai triển hai lập phương bằng hằng đẳng thức, $x^3$ ở hai vế triệt tiêu và còn đa thức bậc hai, nên đưa về bình phương của một hiệu bằng một số rồi lấy căn bậc hai.\n\n**Bước 1.** Khai triển $(x+2)^3$ theo lập phương của một tổng và $(x-3)^3$ theo lập phương của một hiệu.\n\n**Bước 2.** Nhân $(2x+3)(4x-1)$ bằng cách nhân từng hạng tử rồi bỏ ngoặc với dấu trừ phía trước.\n\n**Bước 3.** Thu gọn mỗi vế, rồi chuyển tất cả về một vế: hạng tử $x^3$ hai vế đối nhau nên chỉ còn đa thức bậc hai.\n\n**Bước 4.** Chuyển số hạng tự do sang vế phải, nhân hai vế với số thích hợp để vế trái có dạng $A^2-2AB$, rồi cộng $B^2$ vào hai vế để được bình phương của một hiệu.\n\n**Bước 5.** Lấy căn bậc hai hai vế, giải hai trường hợp bằng quy tắc chuyển vế.\n\n**Chú ý:** hệ số của $x^2$ là $7$ nên phải nhân hai vế với $28$ để $7x^2$ trở thành $(14x)^2$.\n\n**Phần 2. Trình bày**\n\n$(x+2)^3-(2x+3)(4x-1)=(x-3)^3+26$\n\n$x^3+6x^2+12x+8-(8x^2+10x-3)=x^3-9x^2+27x-27+26$\n\n$x^3+6x^2+12x+8-8x^2-10x+3=x^3-9x^2+27x-1$\n\n$x^3-2x^2+2x+11=x^3-9x^2+27x-1$\n\n$-2x^2+2x+11=-9x^2+27x-1$\n\n$7x^2-25x+12=0$\n\n$7x^2-25x=-12$\n\n$196x^2-700x=-336$ (nhân hai vế với $28$)\n\n$196x^2-700x+625=-336+625$ (cộng $625=25^2$ vào hai vế)\n\n$(14x-25)^2=289$\n\n$(14x-25)^2=17^2$\n\nSuy ra $14x-25=17$ hoặc $14x-25=-17$ (chỉ có hai số có bình phương bằng $17^2$ là $17$ và $-17$).\n\n$14x=42$ hoặc $14x=8$.\n\n$x=3$ hoặc $x=\\dfrac{4}{7}$.\n\nVậy $x=3$ hoặc $x=\\dfrac{4}{7}$."
+  },
+  "moi": {
+   "noi_dung": "Tìm $x$ biết: $(x+2)^3-(2x+3)(4x-1)=(x-3)^3+26$.",
+   "dap_an": "$x = \\dfrac{4}{7}; x = 3$",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** khai triển hai lập phương bằng hằng đẳng thức, $x^3$ ở hai vế triệt tiêu và còn đa thức bậc hai, nên đưa về bình phương của một hiệu bằng một số rồi lấy căn bậc hai.\n\n**Bước 1.** Khai triển $(x+2)^3$ theo lập phương của một tổng và $(x-3)^3$ theo lập phương của một hiệu.\n\n**Bước 2.** Nhân $(2x+3)(4x-1)$ bằng cách nhân từng hạng tử rồi bỏ ngoặc với dấu trừ phía trước.\n\n**Bước 3.** Thu gọn mỗi vế, rồi chuyển tất cả về một vế: hạng tử $x^3$ hai vế đối nhau nên chỉ còn đa thức bậc hai.\n\n**Bước 4.** Chuyển số hạng tự do sang vế phải, nhân hai vế với số thích hợp để vế trái có dạng $A^2-2AB$, rồi cộng $B^2$ vào hai vế để được bình phương của một hiệu.\n\n**Bước 5.** Lấy căn bậc hai hai vế, giải hai trường hợp bằng quy tắc chuyển vế.\n\n**Chú ý:** hệ số của $x^2$ là $7$ nên phải nhân hai vế với $28$ để $7x^2$ trở thành $(14x)^2$.\n\n**Phần 2. Trình bày**\n\n$(x+2)^3-(2x+3)(4x-1)=(x-3)^3+26$\n\n$x^3+6x^2+12x+8-(8x^2+10x-3)=x^3-9x^2+27x-27+26$\n\n$x^3+6x^2+12x+8-8x^2-10x+3=x^3-9x^2+27x-1$\n\n$x^3-2x^2+2x+11=x^3-9x^2+27x-1$\n\n$-2x^2+2x+11=-9x^2+27x-1$\n\n$7x^2-25x+12=0$\n\n$7x^2-25x=-12$\n\n$196x^2-700x=-336$ (nhân hai vế với $28$)\n\n$196x^2-700x+625=-336+625$ (cộng $625=25^2$ vào hai vế)\n\n$(14x-25)^2=289$\n\n$(14x-25)^2=17^2$\n\nSuy ra $14x-25=17$ hoặc $14x-25=-17$ (chỉ có hai số có bình phương bằng $17^2$ là $17$ và $-17$).\n\n$14x=42$ hoặc $14x=8$.\n\n$x=3$ hoặc $x=\\dfrac{4}{7}$.\n\nVậy $x=3$ hoặc $x=\\dfrac{4}{7}$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 1
+ },
+ {
+  "ma_cau": "T108000000674",
+  "dang": "NDB00983",
+  "ly_do": [
+   "THIẾU đáp án → điền theo nghiệm (khớp dòng Vậy cuối lời giải)"
+  ],
+  "cu": {
+   "noi_dung": "Tìm $x$, biết: $(x^2+4x)^2+8(x^2+4x)-65=0$.",
+   "dap_an": null,
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** biểu thức $x^2+4x$ xuất hiện hai lần nên coi nó là một khối; rồi cộng thêm một số vào hai vế để vế trái thành bình phương của một tổng (hoàn thành bình phương).\n\n**Bước 1.** Đặt $t=x^2+4x$ để đưa đề về dạng chỉ có $t$ gồm $t^2$, một hạng tử bậc nhất của $t$ và một số.\n\n**Bước 2.** Hoàn thành bình phương: $t^2+8t$ cần thêm $16$ để thành $(t+4)^2$, mà vế trái đang có $-65$ nên cộng $81$ vào cả hai vế để $-65$ biến thành $+16$.\n\n**Bước 3.** Thay $t$ lại bằng $x^2+4x$ rồi nhận ra $x^2+4x+4$ cũng là bình phương của một tổng; đặt biểu thức đó là $A$ thì được $A^2$ bằng một số, từ đó tìm $A$ (có hai giá trị đối nhau).\n\n**Bước 4.** Với mỗi giá trị của $A$, xét $(x+2)^2=A$: bình phương luôn không âm nên loại giá trị âm, giải tiếp giá trị còn lại.\n\n**Chú ý:** nhớ xét cả hai dấu của $A$ rồi kiểm tra điều kiện bình phương không âm; đề có hai giá trị của $x$.\n\n**Phần 2. Trình bày**\n\n$(x^2+4x)^2+8(x^2+4x)-65=0$\n\nĐặt $t=x^2+4x$, ta có $t^2+8t-65=0$.\n\n$t^2+8t-65+81=81$\n\n$t^2+8t+16=81$\n\n$(t+4)^2=81$\n\nThay $t=x^2+4x$ ta được $(x^2+4x+4)^2=81$.\n\nĐặt $A=x^2+4x+4=(x+2)^2$ thì $A^2=81$.\n\nVì $81=9^2=(-9)^2$ nên $A=9$ hoặc $A=-9$.\n\nTrường hợp $A=-9$: $(x+2)^2=-9$ không xảy ra vì $(x+2)^2 \\ge 0$.\n\nTrường hợp $A=9$: $(x+2)^2=9$, suy ra $x+2=3$ hoặc $x+2=-3$.\n\nVới $x+2=3$ thì $x=1$.\n\nVới $x+2=-3$ thì $x=-5$.\n\nVậy $x=1$ hoặc $x=-5$."
+  },
+  "moi": {
+   "noi_dung": "Tìm $x$, biết: $(x^2+4x)^2+8(x^2+4x)-65=0$.",
+   "dap_an": "$x = -5; x = 1$",
+   "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** biểu thức $x^2+4x$ xuất hiện hai lần nên coi nó là một khối; rồi cộng thêm một số vào hai vế để vế trái thành bình phương của một tổng (hoàn thành bình phương).\n\n**Bước 1.** Đặt $t=x^2+4x$ để đưa đề về dạng chỉ có $t$ gồm $t^2$, một hạng tử bậc nhất của $t$ và một số.\n\n**Bước 2.** Hoàn thành bình phương: $t^2+8t$ cần thêm $16$ để thành $(t+4)^2$, mà vế trái đang có $-65$ nên cộng $81$ vào cả hai vế để $-65$ biến thành $+16$.\n\n**Bước 3.** Thay $t$ lại bằng $x^2+4x$ rồi nhận ra $x^2+4x+4$ cũng là bình phương của một tổng; đặt biểu thức đó là $A$ thì được $A^2$ bằng một số, từ đó tìm $A$ (có hai giá trị đối nhau).\n\n**Bước 4.** Với mỗi giá trị của $A$, xét $(x+2)^2=A$: bình phương luôn không âm nên loại giá trị âm, giải tiếp giá trị còn lại.\n\n**Chú ý:** nhớ xét cả hai dấu của $A$ rồi kiểm tra điều kiện bình phương không âm; đề có hai giá trị của $x$.\n\n**Phần 2. Trình bày**\n\n$(x^2+4x)^2+8(x^2+4x)-65=0$\n\nĐặt $t=x^2+4x$, ta có $t^2+8t-65=0$.\n\n$t^2+8t-65+81=81$\n\n$t^2+8t+16=81$\n\n$(t+4)^2=81$\n\nThay $t=x^2+4x$ ta được $(x^2+4x+4)^2=81$.\n\nĐặt $A=x^2+4x+4=(x+2)^2$ thì $A^2=81$.\n\nVì $81=9^2=(-9)^2$ nên $A=9$ hoặc $A=-9$.\n\nTrường hợp $A=-9$: $(x+2)^2=-9$ không xảy ra vì $(x+2)^2 \\ge 0$.\n\nTrường hợp $A=9$: $(x+2)^2=9$, suy ra $x+2=3$ hoặc $x+2=-3$.\n\nVới $x+2=3$ thì $x=1$.\n\nVới $x+2=-3$ thì $x=-5$.\n\nVậy $x=1$ hoặc $x=-5$."
+  },
+  "form_tn_thu_hoi": 0,
+  "trong_tai_lieu": 3
+ }
+]

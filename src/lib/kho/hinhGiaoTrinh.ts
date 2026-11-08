@@ -319,6 +319,9 @@ export type HinhCauHinhPhan = {
   // khoá = chuoiSig(nodeIds) của bài. null = kho CHƯA đủ bản khác cho ô đó (khuôn "ô TRỐNG" của Đại).
   maDe?: Record<string, [HinhBanRef | null, HinhBanRef | null]>
   hsMaDe?: Record<string, number>                    // hocSinhId -> 1 | 2 | 3
+  // cỡ ảnh đề khi in (Thùy 08/11 — ET bản đồ mới): khoá = sig bài (như maDe); mm = bề rộng in, pct = % ảnh gốc (hiển thị ô cỡ)
+  anhMm?: Record<string, number>
+  anhPct?: Record<string, number>
 }
 export type HinhCauHinh = Record<string, HinhCauHinhPhan>   // khoá ngoài = phan
 export const chuoiSig = (nodeIds: string[]): string => [...nodeIds].sort().join(',')

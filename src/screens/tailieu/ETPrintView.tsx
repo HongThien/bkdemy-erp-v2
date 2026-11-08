@@ -12,9 +12,23 @@ import { fetchCausByMa } from '../../lib/ontap'
 import { hsCoMatCuaBuoi } from '../../lib/gami'
 import { BK_CSS, BK_PAGE_CSS, ETHeaderBK } from './bkPrint'
 import type { CauHoi } from '../../lib/kho/api'
-import { MathText } from '../kho/ui'
+import { MathText, LT_CORE_CSS } from '../kho/ui'
 import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, questionOnlyContent, TLNTable, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename, pruneGhostBlankPages, AnhDe } from './PrintView'
 import { AnhMmCtx, AnhPhaiCtx } from './anhMmCtx'
+// ⭐ Thùy 08/11 "ET chưa chọn được hình luyện": ET BẢN ĐỒ MỚI in kèm bài HÌNH – LUYỆN của buổi (hinh_gt_buoi lớp+ngày,
+//   phan='et' — đúng chỗ tab Chấm ET đọc) THÀNH 1 PHẦN sau các câu Đại, cùng mã đề với HS (hsMaDe của ET). Đánh số
+//   "Bài 1, Bài 2…" riêng = khớp nhãn "Bài 1a" ở tab chấm. ET bản đồ cũ KHÔNG đụng (ET Hình cũ in riêng như trước).
+import { loadLuoi } from '../../lib/kho/hinh'
+import { banInTheoMoHinh } from '../kho/hinh/SoanTaiLieu'
+import { MucsBlock, HINH_CSS, type MucIn } from '../kho/hinh/HinhPrintView'
+import { applyBanToPick, findHinhGtBuoi, loadBuoiPicksPhan, getHinhCauHinh, type CheDoHinh, type HinhBanRef } from '../../lib/kho/hinhGiaoTrinh'
+import type { PickItem } from '../../store/useStore'
+
+/** Bài Hình – Luyện của ET (đang soạn, hoặc đọc từ buổi Hình). maDe khoá = sigPickHinh(pick). */
+export type EtHinh = { picks: PickItem[]; cheDo: Record<string, CheDoHinh>; soDong: Record<string, number>; maDe: Record<string, [HinhBanRef | null, HinhBanRef | null]>; anhMm?: Record<string, number>; anhPct?: Record<string, number> }
+/** Khoá mã đề 2/3 của 1 bài Hình (khuôn sigHinh của MT): bài kho = 'bai:<id>', chuỗi = tập node đã sắp. */
+export const sigPickHinh = (p: PickItem): string => (p.kind === 'bai' ? `bai:${p.baiId}` : [...p.nodeIds].sort().join(','))
+type HinhDe = [MucIn[], MucIn[], MucIn[]]   // mã đề 1 / 2 / 3
 
 const DEFAULT_TL_LINES = 4
 const DEFAULT_TLN_LINES = 2
@@ -31,7 +45,7 @@ const DEFAULT_TLN_LINES = 2
 // Không perHS/không bật "Cả lớp" → in 3 mã đề tổng quát như cũ (ô tên trống).
 // fullOverride/varCauOverride: render từ dữ liệu ĐANG SOẠN (in-memory) thay vì đọc bản đã lưu — cho phép
 // PREVIEW ngay trong màn tạo ET, chưa cần lưu (Thùy 07-31).
-export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, onReady, onRenderErr, perHS, fullOverride, varCauOverride }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void; perHS?: { id: string; ho_ten: string; maDe: number }[]; fullOverride?: TaiLieuFull; varCauOverride?: Record<string, CauHoi> }) {
+export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, onReady, onRenderErr, perHS, fullOverride, varCauOverride, hinhOverride }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void; perHS?: { id: string; ho_ten: string; maDe: number }[]; fullOverride?: TaiLieuFull; varCauOverride?: Record<string, CauHoi>; hinhOverride?: EtHinh }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false)
@@ -84,9 +98,39 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
     return () => { alive = false }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [full])
+  // Bài HÌNH – LUYỆN (chỉ ET bản đồ mới): dựng MucIn cho mã đề 1/2/3 — chặn paged.js tới khi xong.
+  const [hinhDe, setHinhDe] = useState<HinhDe | null>(null)
+  const [hinhReady, setHinhReady] = useState(false)
+  useEffect(() => {
+    if (!full) return
+    setHinhReady(false)
+    const tl = full.taiLieu as { lop_id?: string | null; ngay?: string | null; ban_do?: string | null; khoi?: string | null; ten: string }
+    if (!hinhOverride && (tl.ban_do !== 'moi' || !tl.lop_id || !tl.ngay)) { setHinhDe(null); setHinhReady(true); return }
+    let alive = true
+    ;(async () => {
+      let h = hinhOverride ?? null
+      if (!h) {
+        const bid = await findHinhGtBuoi(tl.lop_id!, tl.ngay!)
+        if (bid) { const [nhap, c2] = await Promise.all([loadBuoiPicksPhan(bid, 'et'), getHinhCauHinh(bid, 'et')]); h = { ...nhap, maDe: c2.maDe ?? {}, anhMm: c2.anhMm ?? {}, anhPct: c2.anhPct ?? {} } }
+      }
+      const picks = (h?.picks ?? []).filter((p) => p.phan === 'et')
+      if (!h || !picks.length) { if (alive) { setHinhDe(null); setHinhReady(true) } return }
+      const L = await loadLuoi(tl.khoi ?? undefined)
+      const cho = (v: 0 | 1) => picks.map((p) => { const alt = h!.maDe[sigPickHinh(p)]?.[v]; return alt ? applyBanToPick(p, alt) : p })
+      // dựng TỪNG bài (1 pick/lượt, khuôn MTPrintView) ⇒ biết chắc muc nào của bài nào để gắn cỡ ảnh — không đoán theo vị trí
+      const dung = (ps: PickItem[]) => Promise.all(ps.map(async (p, i) => {
+        const m = (await banInTheoMoHinh(tl.ten, 'et', [p], L, h!.cheDo, h!.soDong)).mucs.find((x) => x.kieu === 'de')
+        const mm = h!.anhMm?.[sigPickHinh(picks[i])]
+        return m && m.kieu === 'de' ? ({ ...m, anhMm: mm ?? null } as MucIn) : null
+      })).then((ms) => ms.filter((m): m is MucIn => !!m))
+      const [a, b, c] = await Promise.all([dung(picks), dung(cho(0)), dung(cho(1))])
+      if (alive) { setHinhDe([a, b, c]); setHinhReady(true) }
+    })().catch(() => { if (alive) { setHinhDe(null); setHinhReady(true) } })
+    return () => { alive = false }
+  }, [full, hinhOverride])
 
   useEffect(() => {
-    if (!full || !varReady || !srcRef.current || !dstRef.current) return
+    if (!full || !varReady || !hinhReady || !srcRef.current || !dstRef.current) return
     let cancelled = false
     setRendering(true)
     const ch0 = full.taiLieu.cau_hinh ?? {}
@@ -94,7 +138,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
     // ET LUÔN kiểu BK (Thùy: bỏ hẳn header/footer cũ ở mọi chỗ, không tái dùng): bỏ chrome + accent xanh lam.
     const ch = { ...ch0, header: 'none' as const, footer: 'none' as const }
     const accent = '#3b5bd8'
-    const css = buildPagedCss(full.taiLieu, ch, accent) + ET_CSS + BK_CSS + BK_PAGE_CSS
+    const css = buildPagedCss(full.taiLieu, ch, accent) + ET_CSS + BK_CSS + BK_PAGE_CSS + (hinhDe ? HINH_CSS + LT_CORE_CSS : '')
     const cssUrl = URL.createObjectURL(new Blob([css], { type: 'text/css' }))
     const html = srcRef.current.innerHTML
     // Race-safe: KHÔNG xoá DOM của container cũ — nếu Previewer của nó còn đang đo layout dở (paged.js
@@ -142,7 +186,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
         .finally(() => URL.revokeObjectURL(cssUrl))
     })()
     return () => { cancelled = true; clearTimeout(watchdog) }
-  }, [full, gv, varReady, perHSOn, perHSDepKey])
+  }, [full, gv, varReady, hinhReady, hinhDe, perHSOn, perHSDepKey])
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
   const printFileName = () => `${full?.taiLieu.ten ?? ''}${gv ? ' - Bản GV' : ''}`
@@ -177,7 +221,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
   if (headless) return createPortal(
     <>
       <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 88, width: '210mm', background: '#fff' }}><div ref={dstRef} className="pv-pages" /></div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} perHS={effPerHS} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} perHS={effPerHS} hinhDe={hinhDe} />}</div>
       <div className="no-print fixed inset-0 z-[95] flex items-center justify-center bg-white">
         <div className="rounded-xl border border-slate-200 bg-white px-6 py-4 text-sm font-medium text-slate-700 shadow-xl">
           {dlErr ? <span className="text-rose-600">{dlErr}</span> : linkOnly ? <>⏳ Đang lấy link…</> : <>⏳ Đang chuẩn bị in{pages ? ` (${pages} trang)` : ''}…</>}
@@ -215,7 +259,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
           : !full ? <p className="text-center text-slate-400">Đang tải…</p>
           : <div ref={dstRef} className="pv-pages" />}
       </div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} perHS={effPerHS} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} perHS={effPerHS} hinhDe={hinhDe} />}</div>
       <style>{CHROME_CSS}</style>
     </div>,
     document.body,
@@ -225,11 +269,13 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
 // 3 MÃ ĐỀ (Thùy 07-31): đề gốc = câu phan 'custom'; đề 2/3 = thay từng câu bằng ma_cau trong etMaDe
 // (neo theo CÂU GỐC, đúng thứ tự gốc → cùng nhóm form → in ra 3 phiếu cấu trúc y hệt, khác câu). ET cũ
 // (không etMaDe / chưa đủ) → in 1 đề như trước (backward-compatible).
-function ETAllDe({ full, gv, varCau, perHS }: { full: TaiLieuFull; gv: boolean; varCau: Record<string, CauHoi>; perHS?: { id: string; ho_ten: string; maDe: number }[] }) {
+function ETAllDe({ full, gv, varCau, perHS, hinhDe }: { full: TaiLieuFull; gv: boolean; varCau: Record<string, CauHoi>; perHS?: { id: string; ho_ten: string; maDe: number }[]; hinhDe?: HinhDe | null }) {
   const ch = full.taiLieu.cau_hinh ?? {}
   const base = full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
   const etMaDe = ch.etMaDe
-  const complete = !!etMaDe && base.length > 0 && base.every((c) => { const a = etMaDe[c.ma_cau]; return a && a[0] && a[1] })
+  // Đủ 3 mã đề = Đại (nếu có) đủ etMaDe; bài Hình luôn có đề 2/3 (thiếu bản khác thì dùng lại bài gốc). ET chỉ có Hình cũng in 3 mã đề.
+  const coHinh = !!hinhDe && hinhDe[0].length > 0
+  const complete = (base.length > 0 || coHinh) && (base.length === 0 || (!!etMaDe && base.every((c) => { const a = etMaDe[c.ma_cau]; return a && a[0] && a[1] })))
   // Đề 2/3 map THEO VỊ TRÍ câu gốc (base): mỗi ô đề 2/3 là biến thể của ĐÚNG câu gốc cùng vị trí. KHÔNG
   // filter(Boolean) — mất 1 câu sẽ DỒN vị trí, lệch câu gốc giữa các mã đề; thiếu nội dung biến thể thì
   // FALLBACK về câu gốc (giữ vị trí + đúng dạng), không dồn.
@@ -256,20 +302,20 @@ function ETAllDe({ full, gv, varCau, perHS }: { full: TaiLieuFull; gv: boolean; 
     return { ...ch, btvnLinesByCau: lines, colByCau, etFormByCau: formByCau, hinhCheDoByCau: cheDo, anhMmByCau: anhMm }
   }
   // Mã đề n → (câu, cấu hình dòng). Chưa đủ 3 mã đề thì mọi mã về đề gốc (an toàn).
-  const deOf = (maDe: number) => (complete && maDe === 2) ? { caus: build(0), ch: chVar(0) }
-    : (complete && maDe === 3) ? { caus: build(1), ch: chVar(1) } : { caus: base, ch }
+  const deOf = (maDe: number) => (complete && maDe === 2) ? { caus: build(0), ch: chVar(0), hinh: hinhDe?.[1] }
+    : (complete && maDe === 3) ? { caus: build(1), ch: chVar(1), hinh: hinhDe?.[2] } : { caus: base, ch, hinh: hinhDe?.[0] }
   // Chế độ IN THEO HS: mỗi HS 1 phiếu = mã đề đã gán + tên in sẵn.
   if (perHS) {
     return <>{perHS.map((hs) => { const d = deOf(hs.maDe)
-      return <div key={hs.id} className="pv-de-recto"><ETDoc ten={full.taiLieu.ten} nhanh={full.taiLieu.nhanh} caus={d.caus} ch={d.ch} gv={gv} badge={`Mã đề ${hs.maDe}`} hoTen={hs.ho_ten} /></div> })}</>
+      return <div key={hs.id} className="pv-de-recto"><ETDoc ten={full.taiLieu.ten} nhanh={full.taiLieu.nhanh} caus={d.caus} ch={d.ch} hinh={d.hinh} gv={gv} badge={`Mã đề ${hs.maDe}`} hoTen={hs.ho_ten} /></div> })}</>
   }
   const des = complete
-    ? [{ label: 'Mã đề 1', caus: base, ch }, { label: 'Mã đề 2', caus: build(0), ch: chVar(0) }, { label: 'Mã đề 3', caus: build(1), ch: chVar(1) }]
-    : [{ label: '', caus: base, ch }]
-  return <>{des.map((d, i) => <div key={i} className="pv-de-recto"><ETDoc ten={full.taiLieu.ten} nhanh={full.taiLieu.nhanh} caus={d.caus} ch={d.ch} gv={gv} badge={d.label} /></div>)}</>
+    ? [{ label: 'Mã đề 1', caus: base, ch, hinh: hinhDe?.[0] }, { label: 'Mã đề 2', caus: build(0), ch: chVar(0), hinh: hinhDe?.[1] }, { label: 'Mã đề 3', caus: build(1), ch: chVar(1), hinh: hinhDe?.[2] }]
+    : [{ label: '', caus: base, ch, hinh: hinhDe?.[0] }]
+  return <>{des.map((d, i) => <div key={i} className="pv-de-recto"><ETDoc ten={full.taiLieu.ten} nhanh={full.taiLieu.nhanh} caus={d.caus} ch={d.ch} hinh={d.hinh} gv={gv} badge={d.label} /></div>)}</>
 }
 
-function ETDoc({ ten, nhanh, caus, ch, gv, badge, hoTen }: { ten: string; nhanh?: string | null; caus: CauHoi[]; ch: CauHinh; gv: boolean; badge?: string; hoTen?: string }) {
+function ETDoc({ ten, nhanh, caus, ch, hinh, gv, badge, hoTen }: { ten: string; nhanh?: string | null; caus: CauHoi[]; ch: CauHinh; hinh?: MucIn[]; gv: boolean; badge?: string; hoTen?: string }) {
   const lines = ch.btvnLinesByCau ?? {}
   // ⭐ 07-20: KHÔNG gom lại theo loại ở đây nữa. Thứ tự in = ĐÚNG `thu_tu` của DB (đã gom theo nhóm
   // từ lúc LƯU — sortETCaus trong ETScreen.luu). Trước đây gom ở render nên "Câu 3" trên giấy khác
@@ -297,11 +343,12 @@ function ETDoc({ ten, nhanh, caus, ch, gv, badge, hoTen }: { ten: string; nhanh?
   const tenLop = rawName.replace(/^ET\s+/, '')                    // "6S1"
   const made = badge ? badge.replace(/^Mã đề\s*/i, '') : ''       // "2" (từ "Mã đề 2")
   const cheDo = (c: CauHoi) => ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'
+  const soBaiHinh = (hinh ?? []).filter((m) => m.kieu === 'de').length   // ô Đ/C/S đầu phiếu: mỗi bài Hình 1 ô (khuôn ET Hình cũ)
   return (
     <AnhMmCtx.Provider value={ch.anhMmByCau ?? {}}>
     <AnhPhaiCtx.Provider value={anhPhaiCua(ch, nhanh)}>
     <div className="pv-et pv-et-bk">
-      <ETHeaderBK title={tenDe} ngay={ngayDe} lop={tenLop} made={made} hoTen={hoTen} soCau={caus.length} gv={gv} />
+      <ETHeaderBK title={tenDe} ngay={ngayDe} lop={tenLop} made={made} hoTen={hoTen} soCau={caus.length + soBaiHinh} gv={gv} />
       {runs.map((run, ri) => (
         <section key={ri} className="pv-sec"><h2 className="pv-h-dang">Phần {part()} · {GLBL[run.g]}</h2>
           {(!gv && run.g === 1) ? (
@@ -334,7 +381,12 @@ function ETDoc({ ten, nhanh, caus, ch, gv, badge, hoTen }: { ten: string; nhanh?
           )}
         </section>
       ))}
-      {caus.length === 0 && <p className="pv-empty">ET chưa có câu nào.</p>}
+      {soBaiHinh > 0 && (
+        <section className="pv-sec"><h2 className="pv-h-dang">Phần {part()} · Hình học</h2>
+          <MucsBlock mucs={hinh!} gv={gv} />
+        </section>
+      )}
+      {caus.length === 0 && soBaiHinh === 0 && <p className="pv-empty">ET chưa có câu nào.</p>}
     </div>
     </AnhPhaiCtx.Provider>
     </AnhMmCtx.Provider>

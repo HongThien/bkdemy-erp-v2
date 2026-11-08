@@ -1,0 +1,67 @@
+{
+ "khoi": "5T",
+ "nhom_id": "NNB02091",
+ "lan_chay": "pt-2026-11-08-pha-loang",
+ "kiem": {
+  "model": "Thùy chốt trực tiếp",
+  "lan_chay": "chat-2026-11-08"
+ },
+ "cau": [
+  {
+   "ma_cau": "T15T000000363",
+   "ma_nguon": "LT 16.1",
+   "dang_bai_id": "NDB02777",
+   "chac": "cao",
+   "ly_do": "Thùy chốt 08/11: pha loãng / cô đặc là hỗn hợp (hỏi % sau khi pha/đun)"
+  },
+  {
+   "ma_cau": "T15T000000057",
+   "ma_nguon": "LT 16.2",
+   "dang_bai_id": "NDB02777",
+   "chac": "cao",
+   "ly_do": "Thùy chốt 08/11: pha loãng / cô đặc là hỗn hợp (hỏi % sau khi pha/đun)"
+  },
+  {
+   "ma_cau": "T15T000000360",
+   "ma_nguon": "VD 16.1",
+   "dang_bai_id": "NDB02778",
+   "chac": "cao",
+   "ly_do": "Thùy chốt 08/11: pha loãng / cô đặc là hỗn hợp (hỏi lượng cần thêm ⇒ tìm ngược)"
+  },
+  {
+   "ma_cau": "T15T000000368",
+   "ma_nguon": "LT 16.8",
+   "dang_bai_id": "NDB02778",
+   "chac": "cao",
+   "ly_do": "Thùy chốt 08/11: pha loãng / cô đặc là hỗn hợp (hỏi lượng cần thêm ⇒ tìm ngược)"
+  },
+  {
+   "ma_cau": "T15T000000369",
+   "ma_nguon": "LT 16.9",
+   "dang_bai_id": "NDB02778",
+   "chac": "cao",
+   "ly_do": "Thùy chốt 08/11: pha loãng / cô đặc là hỗn hợp (hỏi lượng cần thêm ⇒ tìm ngược)"
+  },
+  {
+   "ma_cau": "T15T000000370",
+   "ma_nguon": "LT 16.10",
+   "dang_bai_id": "NDB02778",
+   "chac": "cao",
+   "ly_do": "Thùy chốt 08/11: pha loãng / cô đặc là hỗn hợp (hỏi lượng cần thêm ⇒ tìm ngược)"
+  },
+  {
+   "ma_cau": "T15T000000722",
+   "ma_nguon": "ON 88",
+   "dang_bai_id": "NDB02778",
+   "chac": "cao",
+   "ly_do": "Thùy chốt 08/11: pha loãng / cô đặc là hỗn hợp (hỏi lượng cần thêm ⇒ tìm ngược)"
+  },
+  {
+   "ma_cau": "T15T000000723",
+   "ma_nguon": "ON 89",
+   "dang_bai_id": "NDB02778",
+   "chac": "cao",
+   "ly_do": "Thùy chốt 08/11: pha loãng / cô đặc là hỗn hợp (hỏi lượng cần thêm ⇒ tìm ngược)"
+  }
+ ]
+}
