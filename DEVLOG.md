@@ -79361,3 +79361,11 @@ Thùy nêu 4 việc, làm được 3:
 - In: BtvnSheet nhận hlBtvn — card mỗi mô hình (mã · tên · pill BTVN), "Bài 1, 2…" sau câu BTVN của Học; quyển "Chỉ BTVN" và BTVN cuối buổi đều có.
 - Chấm: gán lớp BTVN xong ghi bài vào buổi Hình (lớp,ngày) phan 'nha' (kind 'bai', dòng/chế độ hình theo giáo trình gốc) ⇒ Chấm BTVN chấm từng ý (loadHinhForBuoiPhase 'btvn'). Không có bài ⇒ không đụng.
 - Kiểm app (chỉ xem): 9S1 thấy khối BTVN, popup 26 bài đủ ảnh, khoá HLB00960/HLB01014 (đang trên lớp). CHƯA bấm chọn/gán thật. BTVN 9S1 08/11 hiện có vẫn trắng tới khi chọn bài BTVN rồi bấm "+ BTVN" gán lại (thay tài liệu cũ).
+
+
+### [08/11] Lý thuyết / ví dụ bản đồ mới: câu nhiều ý phải MỖI Ý MỘT DÒNG
+- **Thùy:** "Kiểm tra lại 1 loạt lý thuyết và ví dụ đi. khi bài có nhiều ý thì câu hỏi phải xuống dòng" (ảnh: K10 NDB00907 Ví dụ 1 "Tìm véc tơ bằng: a) … b) … c) … d) …" dính một dòng).
+- **Làm:** `scripts/bdm-tach-y-xuong-dong.mjs` quét `dai_bdm_dang_bai` (vi_du · ly_thuyet · mo_ta) + `dai_bdm_nhom` (+ `khtn_bdm_*` nếu có): dòng có ≥2 nhãn ý liên tiếp a) b)… (ngoài `$…$`) ⇒ xuống dòng trước mỗi nhãn bằng MỘT \n (dòng trống sẽ cắt khung ##VD — spec-format-noidung.md). Chỉ thêm xuống dòng, không đổi chữ.
+- **Sai rồi sửa:** lượt quét đầu bắt 101 ô — 46 dòng là câu kết luận NHẮC TỚI nhãn ("Vậy a) và d) đúng; b) và c) sai", "hàm số ở câu a) …; ở câu b) …", "loại a) và c)") ⇒ thêm luật bỏ: dòng mở bằng Vậy/Kết luận/Do đó/Suy ra/Nên/Ta có, nhãn sau câu/ý/ở/phần/từ/và/loại/của, nhãn trước và/,/đúng/sai (công thức thay §). Lượt 2 đòi ":" trước a) thì sót 8 đề thật ("Cho … . a) Tìm …", "Tính a) …") ⇒ bỏ điều kiện ":".
+- **Ghi:** 48 ô vi_du (74 dòng: đề nhiều ý + dòng "Đáp số/Kết quả/Đáp án: a) … b) …"), bản cũ `scripts/bien_ban/tach-y-2026-11-08T09-28-03-367Z.json`; quét lại = 0. Lý thuyết/mô tả/nhóm/KHTN: 0 ô. Trang soát `reports/bdm-tach-y-xuong-dong-2026-11-08.html` (cũ ↔ mới).
+- Chưa quét: câu trong kho (đề câu hỏi), Hình–Học lý thuyết (`hinh_hoc_*`), kho trên lớp.
