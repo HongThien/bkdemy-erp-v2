@@ -11,6 +11,7 @@ import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { tenHienThiDs } from '../../lib/hoten'
 import { BK_TROI } from '../../components/bk/BKUI'
 import ChamTuDongBtvn from './ChamTuDongBtvn'
+import { taoPdfBai, taoAnhBai, chiaSeDuoc, chiaSe, taiXuong } from '../../lib/btvnTaiBai'
 
 // Lớp/buổi/em đang chọn nhớ tới F5: quay lại màn là đúng chỗ cũ (CLAUDE.md §2, màn làm việc theo hàng đợi).
 const NHO: { lopId: string | null; buoiId: string | null; hsId: string | null } = { lopId: null, buoiId: null, hsId: null }
@@ -63,7 +64,7 @@ export default function ChamBtvnTuDong({ onBack }: { onBack: () => void }) {
         </select>
       </div>
       {loi && <p className="mx-2 mt-2 rounded-xl bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">⚠ {loi}</p>}
-      {buoi ? <BangCham key={buoi.id} buoi={buoi} />
+      {buoi ? <BangCham key={buoi.id} buoi={buoi} tenLop={dsLop?.find((l) => l.lop_id === lopId)?.ten_lop ?? ''} />
         : <p className="px-4 py-6 text-[13px] text-slate-500">{lopId ? (dsBuoi && !dsBuoi.length ? 'Lớp này chưa có buổi nào giao phiếu BTVN.' : '') : 'Chọn lớp ở trên để bắt đầu.'}</p>}
     </div>
   )
@@ -79,7 +80,7 @@ function trangThai(n: BtvnNop | undefined, a: AiTrangThai | undefined): TrangTha
 }
 
 // Bảng chấm của 1 buổi: danh sách HS (cột trái / dải ngang trên điện thoại) + bài của em đang chọn.
-function BangCham({ buoi }: { buoi: BuoiBtvn }) {
+function BangCham({ buoi, tenLop }: { buoi: BuoiBtvn; tenLop: string }) {
   const [roster, setRoster] = useState<BuoiHocHS[] | null>(null)
   const [probs, setProbs] = useState<Problem[]>([])
   const [nop, setNop] = useState<Record<string, BtvnNop>>({})
@@ -154,7 +155,8 @@ function BangCham({ buoi }: { buoi: BuoiBtvn }) {
                 className="min-h-[34px] shrink-0 rounded-lg border border-slate-200 bg-white px-3 text-[12.5px] font-bold text-slate-700 active:bg-slate-50 disabled:opacity-40">Em tiếp ›</button>
             </div>
             {probs.length === 0 && <p className="rounded-xl bg-amber-50 px-3 py-2 text-[12.5px] text-amber-800">Buổi này chưa có lưới câu BTVN (phiếu chưa gán đúng lớp + ngày) — chưa chấm được.</p>}
-            <XemAnh key={r.hoc_sinh_id} n={n} urls={urls} reloadNop={reloadCa} />
+            <XemAnh key={r.hoc_sinh_id} n={n} urls={urls} reloadNop={reloadCa} daChot={!!ai[r.hoc_sinh_id]?.chot}
+              tenFile={`BTVN_${tenLop}_${ddmmVN(buoi.ngay).replace(/\//g, '-')}_${r.hoc_sinh?.ho_ten ?? ''}`} />
             <div className="rounded-2xl bg-white p-2.5 shadow-sm">
               <ChamTuDongBtvn key={r.hoc_sinh_id} buoiId={buoi.id} hsId={r.hoc_sinh_id} probs={probs} dong={buoi.dong} coAnh={!!n?.anh.length} daTra={!!n?.tra_at}
                 tenCau={(p) => (p.hinh_baitoan_id ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`)}
@@ -170,7 +172,7 @@ function BangCham({ buoi }: { buoi: BuoiBtvn }) {
 // Xem xấp ảnh (thứ tự = thu_tu, máy đã sắp lại sau khi chấm). Bấm ảnh để phóng to.
 // ✕ = bỏ ảnh TA thêm nhầm (chỉ ảnh TA tự thêm, bài chưa trả PH) — không xoá, DB đánh dấu bo_at.
 // ◀ ▶ = đổi chỗ (PH/TA đẩy nhầm thứ tự) · ↻ = xoay 90° (ảnh chụp ngang/ngược). Chỉ đổi cách hiển thị, ảnh gốc giữ nguyên.
-function XemAnh({ n, urls, reloadNop }: { n?: BtvnNop; urls: Record<string, string>; reloadNop: () => Promise<void> }) {
+function XemAnh({ n, urls, reloadNop, daChot, tenFile }: { n?: BtvnNop; urls: Record<string, string>; reloadNop: () => Promise<void>; daChot: boolean; tenFile: string }) {
   const [to, setTo] = useState<{ url: string; xoay: number } | null>(null)
   const [dangBo, setDangBo] = useState<string | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
@@ -213,12 +215,49 @@ function XemAnh({ n, urls, reloadNop }: { n?: BtvnNop; urls: Record<string, stri
           )
         })}
       </div>
+      <TaiBai anh={n.anh} urls={urls} daChot={daChot} ten={tenFile} />
       {loi && <p className="mt-1.5 rounded-lg bg-rose-50 px-2 py-1 text-[12px] text-rose-700">{loi}</p>}
       {to && (
         <div onClick={() => setTo(null)} className="fixed inset-0 z-[70] flex items-center justify-center bg-black/85 p-2">
           <img src={to.url} alt="" className="max-h-full max-w-full object-contain" style={to.xoay % 180 ? { transform: `rotate(${to.xoay}deg)`, maxWidth: '100dvh', maxHeight: '100vw' } : { transform: `rotate(${to.xoay}deg)` }} />
         </div>
       )}
+    </div>
+  )
+}
+
+// Tải bài đã chấm để TA gửi phụ huynh (CEO 08/11): CHỈ sau khi TA đã xác nhận Đ/C/S. 1 file PDF (mỗi ảnh 1 trang A4)
+// hoặc từng ảnh. Điện thoại có bảng chia sẻ (Zalo…) ⇒ nút 📤 Gửi mở thẳng bảng chia sẻ với file PDF.
+function TaiBai({ anh, urls, daChot, ten }: { anh: BtvnNop['anh']; urls: Record<string, string>; daChot: boolean; ten: string }) {
+  const [dang, setDang] = useState<string | null>(null)
+  const [loi, setLoi] = useState<string | null>(null)
+  async function lam(viec: string, f: () => Promise<void>) {
+    if (dang) return
+    setDang(viec); setLoi(null)
+    try { await f() } catch (e: any) { if (e?.name !== 'AbortError') setLoi(e.message ?? String(e)) } finally { setDang(null) }
+  }
+  const coBanCham = anh.some((a) => a.path_cham)
+  if (!daChot) return <p className="mt-1.5 text-[11.5px] text-slate-400">Xác nhận Đ/C/S xong sẽ tải được bài đã chấm (PDF / ảnh) để gửi phụ huynh.</p>
+  return (
+    <div className="mt-2 border-t border-slate-100 pt-2">
+      <div className="flex flex-wrap items-center gap-1.5">
+        <span className="mr-auto text-[12px] font-semibold text-slate-600">Bài đã chấm{coBanCham ? '' : ' (chưa có bản chấm đỏ — tải ảnh gốc)'}</span>
+        <button onClick={() => lam('pdf', async () => taiXuong([await taoPdfBai(anh, urls, ten)]))} disabled={!!dang}
+          className="min-h-[34px] rounded-lg bg-rose-600 px-3 text-[12px] font-bold text-white active:bg-rose-500 disabled:opacity-50">
+          {dang === 'pdf' ? 'Đang gom…' : '📄 Tải PDF'}</button>
+        <button onClick={() => lam('anh', async () => taiXuong(await taoAnhBai(anh, urls, ten)))} disabled={!!dang}
+          className="min-h-[34px] rounded-lg border border-slate-200 bg-white px-3 text-[12px] font-bold text-slate-700 active:bg-slate-50 disabled:opacity-50">
+          {dang === 'anh' ? 'Đang tải…' : '🖼 Tải ảnh'}</button>
+        {typeof navigator !== 'undefined' && !!navigator.share && (
+          <button onClick={() => lam('gui', async () => {
+            const f = [await taoPdfBai(anh, urls, ten)]
+            if (chiaSeDuoc(f)) await chiaSe(f, ten); else taiXuong(f)
+          })} disabled={!!dang}
+            className="min-h-[34px] rounded-lg border border-rose-200 bg-rose-50 px-3 text-[12px] font-bold text-rose-700 active:bg-rose-100 disabled:opacity-50">
+            {dang === 'gui' ? 'Đang gom…' : '📤 Gửi'}</button>
+        )}
+      </div>
+      {loi && <p className="mt-1 rounded-lg bg-rose-50 px-2 py-1 text-[12px] text-rose-700">{loi}</p>}
     </div>
   )
 }
