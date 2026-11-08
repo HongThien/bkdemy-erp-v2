@@ -79336,3 +79336,8 @@ Thùy nêu 4 việc, làm được 3:
 - Nguyên nhân: khuôn in Hình (MucsBlock/HinhPrintView) cố định ảnh 36% bề ngang, cao ≤ 50mm — chưa từng có cỡ tay như câu Đại (AnhMmCtl, 12/10).
 - Làm: MucIn 'de' thêm anhMm (thiếu = tự động như cũ ⇒ giáo trình/MT/ET cũ không đổi). ET bản đồ mới: ô "cỡ %" (dùng lại AnhMmCtl + 50/75/100) cạnh nút hình vẽ từng bài; lưu ở hinh_gt_buoi.cau_hinh.et.anhMm/anhPct, khoá = sig bài (như maDe); đề 2/3 kế thừa cỡ bài gốc. ETPrintView dựng TỪNG bài một lượt để gắn cỡ đúng bài, không đoán theo vị trí.
 - Kiểm trên app (không lưu): 8A1 › HLB00099 › cỡ 50% = 102.13mm ⇒ bản in 3 mã đề đều 102.13mm.
+
+### 08/11 — Giáo trình Hình–Luyện thôi đổ sẵn cả kho bài khi thêm mô hình (Thùy "sao chọn giáo trình hình luyện nó lại load cả kho bài vậy")
+- Nguyên nhân: fn_tl_hl_dat_mo_hinh viết cho CHUYÊN ĐỀ (21/10 — thêm mô hình ⇒ đổ mọi bài kho qua _tl_hl_bai_mac_dinh); giáo trình dùng chung builder/hàm ⇒ 9S1 bị đổ MH.128 82 bài + MH.129 26 bài.
+- Mig 202611081556 ĐÃ ÁP (--only): chỉ tai_lieu.loai='chuyen_de' đổ sẵn; giáo trình thêm mô hình để trống ⇒ "✎ Chọn bài" như thường. Thử ROLLBACK: giáo trình MH.124 0/1 bài · chuyên đề MH.083 1/1 bài.
+- Không tự gỡ 108 bài đã đổ ở 9S1 (Luật xoá) — thêm nút "Bỏ hết bài" trên đầu mỗi mô hình (confirm, chỉ gỡ khỏi tài liệu, kho giữ nguyên; fn_tl_hl_dat_bai nhận mảng rỗng). Đã thấy nút trên 9S1, không bấm.
