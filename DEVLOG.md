@@ -79369,3 +79369,8 @@ Thùy nêu 4 việc, làm được 3:
 - **Sai rồi sửa:** lượt quét đầu bắt 101 ô — 46 dòng là câu kết luận NHẮC TỚI nhãn ("Vậy a) và d) đúng; b) và c) sai", "hàm số ở câu a) …; ở câu b) …", "loại a) và c)") ⇒ thêm luật bỏ: dòng mở bằng Vậy/Kết luận/Do đó/Suy ra/Nên/Ta có, nhãn sau câu/ý/ở/phần/từ/và/loại/của, nhãn trước và/,/đúng/sai (công thức thay §). Lượt 2 đòi ":" trước a) thì sót 8 đề thật ("Cho … . a) Tìm …", "Tính a) …") ⇒ bỏ điều kiện ":".
 - **Ghi:** 48 ô vi_du (74 dòng: đề nhiều ý + dòng "Đáp số/Kết quả/Đáp án: a) … b) …"), bản cũ `scripts/bien_ban/tach-y-2026-11-08T09-28-03-367Z.json`; quét lại = 0. Lý thuyết/mô tả/nhóm/KHTN: 0 ô. Trang soát `reports/bdm-tach-y-xuong-dong-2026-11-08.html` (cũ ↔ mới).
 - Chưa quét: câu trong kho (đề câu hỏi), Hình–Học lý thuyết (`hinh_hoc_*`), kho trên lớp.
+
+## 08/11 — Máy chấm BTVN (tiếp): 9A2 + tải bài đã chấm (CEO)
+- Chấm 9A1 Lưu Phương Linh (10) + 6 bài 9A2 buổi 38 (Phương Trang 8,5 · Hương Giang 5,5 · Bảo Quân 6,5 · Khôi Nguyên 7,25 · Phương Linh 7,5 · Hà Thu 6,75). Đề Hình không có trong kho ⇒ 1 agent giải đề trước làm đáp án chung, 6 agent chấm theo ⇒ chấm đồng nhất.
+- 3 em 9A2 thiếu ẢNH trang 6/6 (câu 7) ⇒ để TRỐNG câu 7 (không ghi "Con chưa làm" lên bài gửi PH khi chưa chắc em bỏ). Ý có trên trang nhưng em bỏ trống ⇒ S + "Con chưa làm câu X" (CEO 08/11, ca Minh Phương 2b).
+- App TA: nút 📄 Tải PDF / 🖼 Tải ảnh / 📤 Gửi (bảng chia sẻ điện thoại) cho bài đã chấm, CHỈ hiện sau khi TA xác nhận Đ/C/S (`src/lib/btvnTaiBai.ts`, gom ở trình duyệt bằng jspdf, mỗi ảnh 1 trang A4). Chưa thử trên app thật (cần đăng nhập TA).
