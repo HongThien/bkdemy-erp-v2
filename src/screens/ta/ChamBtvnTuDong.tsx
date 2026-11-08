@@ -5,7 +5,7 @@
 // Chế độ HÀNG ĐỢI (07/11): TA bấm Gửi chấm, máy CEO chạy /cham-btvn-hang-doi theo đợt, TA quay lại xác nhận.
 import { useEffect, useState } from 'react'
 import { getRoster, listProblems, loadBTVNForBuoi, syncBTVNProblems, loadHinhForBuoiPhase, syncHinhProblems, type BuoiHocHS, type Problem } from '../../lib/gami'
-import { lopChamAi, listBuoiBtvnCuaLop, listNopTheoBuoi, signUrls, trangThaiAiTheoBuoi, type LopAi, type BuoiBtvn, type BtvnNop, type AiTrangThai } from '../../lib/btvnnop'
+import { lopChamAi, listBuoiBtvnCuaLop, listNopTheoBuoi, signUrls, trangThaiAiTheoBuoi, boAnh, laAnhTaThem, type LopAi, type BuoiBtvn, type BtvnNop, type AiTrangThai } from '../../lib/btvnnop'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { tenHienThiDs } from '../../lib/hoten'
 import { BK_TROI } from '../../components/bk/BKUI'
@@ -124,7 +124,7 @@ function ChonHocSinh({ buoi, hsMo, onMo }: { buoi: BuoiBtvn; hsMo: { r: BuoiHocH
     return (
       <div className="flex flex-col gap-2.5">
         {probs.length === 0 && <p className="rounded-xl bg-amber-50 px-3 py-2 text-[12.5px] text-amber-800">Buổi này chưa có lưới câu BTVN (phiếu chưa gán đúng lớp + ngày) — chưa chấm được.</p>}
-        <XemAnh n={n} urls={urls} />
+        <XemAnh n={n} urls={urls} reloadNop={async () => { await reloadNop(); await reloadAi() }} />
         <div className="rounded-2xl bg-white p-2.5 shadow-sm">
           <ChamTuDongBtvn buoiId={buoi.id} hsId={hsMo.r.hoc_sinh_id} probs={probs} dong={buoi.dong} coAnh={!!n?.anh.length} daTra={!!n?.tra_at}
             tenCau={(p) => (p.hinh_baitoan_id ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`)}
@@ -163,19 +163,34 @@ function ChonHocSinh({ buoi, hsMo, onMo }: { buoi: BuoiBtvn; hsMo: { r: BuoiHocH
 }
 
 // Xem xấp ảnh (thứ tự = thu_tu, máy đã sắp lại sau khi chấm). Bấm ảnh để phóng to.
-function XemAnh({ n, urls }: { n?: BtvnNop; urls: Record<string, string> }) {
+// ✕ = bỏ ảnh TA thêm nhầm (chỉ ảnh TA tự thêm, bài chưa trả PH) — không xoá, DB đánh dấu bo_at.
+function XemAnh({ n, urls, reloadNop }: { n?: BtvnNop; urls: Record<string, string>; reloadNop: () => Promise<void> }) {
   const [to, setTo] = useState<string | null>(null)
+  const [dangBo, setDangBo] = useState<string | null>(null)
+  const [loi, setLoi] = useState<string | null>(null)
+  async function bo(id: string, so: number) {
+    if (dangBo || !confirm(`Bỏ ảnh ${so}? Ảnh sẽ không còn trong bài của em (dùng khi thêm nhầm).`)) return
+    setDangBo(id); setLoi(null)
+    try { await boAnh(id); await reloadNop() } catch (e: any) { setLoi(e.message ?? String(e)) } finally { setDangBo(null) }
+  }
   if (!n?.anh.length) return <p className="rounded-xl bg-white px-3 py-3 text-[12.5px] text-slate-500 shadow-sm">Chưa có ảnh bài làm — bấm <b>📷 Thêm ảnh</b> bên dưới (trên máy tính có thể dán ảnh bằng Ctrl+V).</p>
   return (
     <div className="rounded-2xl bg-white p-2 shadow-sm">
       <div className="flex gap-2 overflow-x-auto">
         {n.anh.map((a, i) => (
-          <button key={a.id} onClick={() => setTo(urls[a.path] ?? null)} className="relative shrink-0">
-            {urls[a.path] ? <img src={urls[a.path]} alt="" className="h-36 w-auto rounded-lg border border-slate-200 object-contain" /> : <div className="h-36 w-24 rounded-lg bg-slate-100" />}
+          <div key={a.id} className={`relative shrink-0 ${dangBo === a.id ? 'opacity-40' : ''}`}>
+            <button onClick={() => setTo(urls[a.path] ?? null)} className="block">
+              {urls[a.path] ? <img src={urls[a.path]} alt="" className="h-36 w-auto rounded-lg border border-slate-200 object-contain" /> : <div className="h-36 w-24 rounded-lg bg-slate-100" />}
+            </button>
             <span className="absolute left-1 top-1 rounded bg-black/60 px-1.5 text-[11px] font-bold text-white">{i + 1}</span>
-          </button>
+            {laAnhTaThem(a.path) && !n.tra_at && (
+              <button onClick={() => bo(a.id, i + 1)} disabled={!!dangBo} title="Bỏ ảnh thêm nhầm"
+                className="absolute right-1 top-1 flex h-7 w-7 items-center justify-center rounded-full bg-rose-600 text-[14px] font-bold text-white shadow active:bg-rose-500">✕</button>
+            )}
+          </div>
         ))}
       </div>
+      {loi && <p className="mt-1.5 rounded-lg bg-rose-50 px-2 py-1 text-[12px] text-rose-700">{loi}</p>}
       {to && (
         <div onClick={() => setTo(null)} className="fixed inset-0 z-[70] flex items-center justify-center bg-black/85 p-2">
           <img src={to} alt="" className="max-h-full max-w-full object-contain" />

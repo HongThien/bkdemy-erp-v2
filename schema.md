@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-502 bảng · 39 view · 0 enum · 282 trigger · 1642 function
+502 bảng · 39 view · 0 enum · 282 trigger · 1643 function
 
 ## _app_secrets
 
@@ -897,6 +897,8 @@
 | path_cham | text | Y |  |  |  |
 | thu_tu | integer |  | 0 |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+| bo_at | timestamp with time zone | Y |  |  |  |
+| bo_boi | uuid | Y |  |  |  |
 
 ## btvn_ontap_config
 
@@ -8055,7 +8057,7 @@ SELECT n.hoc_sinh_id,
     n.tra_at,
     ( SELECT count(*) AS count
            FROM btvn_nop_anh a
-          WHERE a.hoc_sinh_id = n.hoc_sinh_id AND a.buoi_hoc_id = n.buoi_hoc_id) AS so_anh,
+          WHERE a.hoc_sinh_id = n.hoc_sinh_id AND a.buoi_hoc_id = n.buoi_hoc_id AND a.bo_at IS NULL) AS so_anh,
     n.buoi_xac_nhan_at IS NOT NULL AS buoi_da_chot
    FROM btvn_nop n
      JOIN buoi_hoc b ON b.id = n.buoi_hoc_id
@@ -8078,7 +8080,7 @@ SELECT a.hoc_sinh_id,
     COALESCE(a.path_cham, a.path) AS path
    FROM btvn_nop_anh a
      JOIN btvn_nop n ON n.hoc_sinh_id = a.hoc_sinh_id AND n.buoi_hoc_id = a.buoi_hoc_id
-  WHERE n.tra_at IS NOT NULL;
+  WHERE n.tra_at IS NOT NULL AND a.bo_at IS NULL;
 ```
 
 ### v_btvn_tra_cau
@@ -9879,8 +9881,8 @@ WITH luot AS (
 - `_kho_form_tn_cua(p_cautbl text)` → text
 - `_kho_form_tn_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `_kho_la_dang_cho(p_ma_dang text)` → boolean
-- `_kho_loc_duyet_sql(p_loc text, p_tbl text)` → text
 - `_kho_loc_duyet_sql(p_loc text)` → text
+- `_kho_loc_duyet_sql(p_loc text, p_tbl text)` → text
 - `_kho_lt_dang_tbl(p_kho text)` → text
 - `_kho_lt_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `_kho_muc_do_dang(p_mon text, p_ma_dang text)` → smallint
@@ -10354,6 +10356,7 @@ WITH luot AS (
 - `fn_btvn_ai_lop_cua_toi()` → TABLE(lop_id uuid, ten_lop text, mon text, khoi text, phu_trach boolean)
 - `fn_btvn_ai_trang_thai(p_buoi_hoc_id uuid)` → TABLE(hoc_sinh_id uuid, yeu_cau_at timestamp with time zone, lan_moi_at timestamp with time zone, cho_cham boolean, chot boolean)
 - `fn_btvn_ai_yeu_cau(p_buoi_hoc_id uuid, p_hoc_sinh_id uuid)` → timestamp with time zone
+- `fn_btvn_anh_bo(p_anh_id uuid)` → void
 - `fn_btvn_bo_trong_theo_buoi(p_hs uuid, p_buoi uuid[])` → TABLE(buoi_hoc_id uuid, so_bo_trong integer)
 - `fn_btvn_bu_theo_buoi_me(p_buoi uuid[], p_hs uuid DEFAULT NULL::uuid)` → TABLE(buoi_me_id uuid, hoc_sinh_id uuid, buoi_bu_id uuid, ngay_bu date, so_cau integer, pct integer, trang_thai_nop text, thai_do text)
 - `fn_btvn_buoi_cua_lop(p_lop_id uuid)` → TABLE(id uuid, ngay date, dong boolean, co_phieu boolean)

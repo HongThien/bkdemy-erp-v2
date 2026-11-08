@@ -22,7 +22,7 @@ export type NhanXetMau = { ma: string; noi_dung: string; thu_tu: number }
 export async function listNopTheoBuoi(buoiId: string): Promise<Record<string, BtvnNop>> {
   const [n, a] = await Promise.all([
     supabase.from('btvn_nop').select('hoc_sinh_id,buoi_hoc_id,nop_at,tra_at,buoi_xac_nhan_at,nhan_xet_ma').eq('buoi_hoc_id', buoiId).limit(1000),
-    supabase.from('btvn_nop_anh').select('id,hoc_sinh_id,path,path_cham,thu_tu').eq('buoi_hoc_id', buoiId).order('thu_tu').limit(5000),
+    supabase.from('btvn_nop_anh').select('id,hoc_sinh_id,path,path_cham,thu_tu').eq('buoi_hoc_id', buoiId).is('bo_at', null).order('thu_tu').limit(5000), // ảnh TA đã bỏ (thêm nhầm) không hiện
   ])
   if (n.error) throw n.error
   if (a.error) throw a.error
@@ -214,4 +214,11 @@ export async function chamTuDongBat(): Promise<boolean> {
   const { data, error } = await supabase.from('he_thong_cong_tac').select('bat').eq('ma', 'btvn_cham_tu_dong').limit(1)
   if (error) return false
   return !!data?.[0]?.bat
+}
+
+// Bỏ ảnh TRỢ GIẢNG thêm nhầm (mig 202611081129): chỉ ảnh path 'ta/…', bài chưa trả PH. Không xoá — đánh dấu bo_at.
+export const laAnhTaThem = (path: string) => path.startsWith('ta/')
+export async function boAnh(anhId: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_btvn_anh_bo', { p_anh_id: anhId })
+  if (error) throw error
 }
