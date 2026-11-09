@@ -1453,7 +1453,10 @@ function KhoModal({ mo, khoi, cay, onDong, onDaDoi }: { mo: KhoMo; khoi: string;
           {loi && <div className="rounded-md bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi} <button onClick={() => setLoi(null)} className="ml-2 underline">ẩn</button></div>}
           {tb && <div className="rounded-md bg-emerald-50 px-3 py-2 text-[12.5px] text-emerald-700">✓ {tb}</div>}
           {!dang && !loi && rows.length === 0 && <div className="py-10 text-center text-[13px] text-slate-400">Không có câu nào{loc !== 'tat_ca' ? ' ở bộ lọc này' : ''}.</div>}
-          {rows.map((r) => <CauKho key={r.ma_cau} r={r} nhom={mo.loai === 'nhom'} onChuyen={mo.loai === 'dung_sai' || r.loai_cau === 'dung_sai' ? undefined : () => setChuyen(r)} onXoa={(ca) => void xoa(r, ca)} onDuyet={(d) => void doiDuyet(r, d)} onSua={() => void moSua(r)} />)}
+          {/* Hình–Học bài nhiều ý (Thùy 09/11): các ý CÙNG BÀI đứng liền nhau (DB xếp sẵn) ⇒ gom 1 thẻ kiểu kho Hình–Luyện; câu thường như cũ */}
+          {gomBaiY(rows).map((g) => g.length > 1 || g[0].bai_y
+            ? <BaiYKho key={g[0].bai_y + ':' + g[0].ma_cau} ys={g} onXoa={(r, ca) => void xoa(r, ca)} onDuyet={(r, d) => void doiDuyet(r, d)} onSua={(r) => void moSua(r)} />
+            : <CauKho key={g[0].ma_cau} r={g[0]} nhom={mo.loai === 'nhom'} onChuyen={mo.loai === 'dung_sai' || g[0].loai_cau === 'dung_sai' ? undefined : () => setChuyen(g[0])} onXoa={(ca) => void xoa(g[0], ca)} onDuyet={(d) => void doiDuyet(g[0], d)} onSua={() => void moSua(g[0])} />)}
           {dang && <div className="py-3 text-center text-[12.5px] text-slate-400">Đang tải…</div>}
           {!dang && rows.length < tong && (
             <button onClick={() => tai(rows.length)} className="mx-auto block rounded-md border border-slate-300 bg-white px-4 py-1.5 text-[12.5px] font-medium text-slate-700 hover:border-indigo-300">Tải thêm {Math.min(TRANG, tong - rows.length)} câu</button>
@@ -1537,6 +1540,68 @@ function CauKho({ r, nhom, onChuyen, onXoa, onDuyet, onSua }: { r: KhoCauRow; nh
           {r.anh_dap_an && <img src={r.anh_dap_an} alt="" className="mt-2 max-h-56 rounded border border-slate-200" />}
         </details>
       )}
+    </div>
+  )
+}
+
+// Gom các dòng liền nhau cùng bai_y (ý của 1 bài Hình–Học) thành 1 nhóm; câu thường = nhóm 1 phần tử. Chỉ gom HIỂN THỊ.
+function gomBaiY(rows: KhoCauRow[]): KhoCauRow[][] {
+  const out: KhoCauRow[][] = []
+  for (const r of rows) {
+    const cuoi = out[out.length - 1]
+    if (r.bai_y && cuoi && cuoi[0].bai_y === r.bai_y) cuoi.push(r); else out.push([r])
+  }
+  return out
+}
+// Thẻ BÀI NHIỀU Ý (Hình–Học) — khuôn thẻ kho Hình–Luyện (CayNhanh › Kho bài): mã bài · chuỗi ý a → b → c, hình trái, lời dẫn
+// dải xanh, mỗi ý 1 khung (câu hỏi ý + dòng "Đã biết" nếu có) kèm thao tác của câu ý đó; lời giải từng ý mở khi bấm.
+// Mỗi ý là 1 câu kho thật (mã HHC riêng) ⇒ duyệt / sửa / xoá theo ý; không "chuyển dạng" lẻ 1 ý (ý luôn thuộc bài học của bài).
+function BaiYKho({ ys, onXoa, onDuyet, onSua }: { ys: KhoCauRow[]; onXoa: (r: KhoCauRow, caBanSao: boolean) => void; onDuyet: (r: KhoCauRow, duyet: boolean) => void; onSua: (r: KhoCauRow) => void }) {
+  const [moLg, setMoLg] = useState(false)
+  const dau = ys[0]
+  const chip = (c: string, t: string) => <span className={`rounded px-1.5 py-0.5 text-[10.5px] font-semibold ${c}`}>{t}</span>
+  return (
+    <div className={`rounded-xl border bg-white p-4 shadow-sm max-md:p-2.5 ${moLg ? 'border-teal-300' : 'border-slate-200'}`}>
+      <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+        <span className="font-mono text-[13px] font-semibold text-teal-700">{dau.bai_y}</span>
+        <span className="text-[12px] text-slate-500">bài nhiều ý · {ys.length} ý = {ys.length} câu</span>
+        <span className="ml-auto flex items-center gap-1">
+          {ys.map((y, i) => (
+            <span key={y.ma_cau} className="flex items-center gap-1">
+              {i > 0 && <span className="text-slate-300">→</span>}
+              <span className={`rounded-full border px-2 py-0.5 text-[12px] font-semibold ${y.kho_chuan || y.da_duyet ? 'border-teal-600 bg-teal-600 text-white' : 'border-amber-300 bg-amber-50 text-amber-700'}`}
+                title={`Ý ${y.nhan_y} — ${y.ma_cau} · ${y.kho_chuan ? 'kho chuẩn' : y.da_duyet ? 'đã duyệt' : 'chưa duyệt'}`}>{y.nhan_y}</span>
+            </span>))}
+        </span>
+      </div>
+      <div className="flex gap-5 max-md:flex-col max-md:gap-3">
+        {dau.anh_de
+          ? <img src={dau.anh_de} alt="" className="h-48 w-64 shrink-0 self-start rounded-lg border border-slate-200 bg-white object-contain max-md:w-full" />
+          : <div className="flex h-48 w-64 shrink-0 items-center justify-center rounded-lg border border-dashed border-slate-200 text-[12px] text-slate-300 max-md:hidden">chưa có hình</div>}
+        <div className="min-w-0 flex-1 space-y-2">
+          {dau.loi_dan && <div className="rounded-lg bg-teal-600 px-3.5 py-2.5 text-[15px] leading-relaxed text-white"><MathText>{dau.loi_dan}</MathText></div>}
+          {ys.map((y) => (
+            <div key={y.ma_cau} className="rounded-lg border border-slate-200 bg-slate-50/50 px-3 py-2">
+              <div className="mb-1 flex flex-wrap items-center gap-1.5">
+                <code className="text-[11px] text-slate-400">{y.ma_cau}</code>
+                {y.kho_chuan ? chip('bg-emerald-100 text-emerald-700', 'kho chuẩn') : y.da_duyet ? chip('bg-sky-100 text-sky-700', 'đã duyệt') : chip('bg-amber-100 text-amber-700', 'chưa duyệt')}
+                <ThaoTacCau r={y} onXoa={(ca) => onXoa(y, ca)} onDuyet={(d) => onDuyet(y, d)} onSua={() => onSua(y)} />
+              </div>
+              {y.da_biet && <div className="mb-0.5 text-[13px] italic text-slate-500"><MathText>{y.da_biet}</MathText></div>}
+              <div className="flex gap-2.5 text-[15px] leading-relaxed text-slate-800">
+                <b className="shrink-0 text-violet-700">{y.nhan_y})</b>
+                <div className="min-w-0 flex-1"><MathText>{y.cau_hoi_y ?? y.noi_dung}</MathText></div>
+              </div>
+              {moLg && (y.dap_an || y.loi_giai || y.anh_dap_an) && (
+                <div className="mt-2 border-t border-slate-200 pt-2 text-[14px] leading-relaxed text-slate-700">
+                  {y.dap_an && <div>Đáp án: <b className="text-emerald-700"><MathText>{y.dap_an}</MathText></b></div>}
+                  {y.loi_giai && <LoiGiaiXem raw={y.loi_giai} className="whitespace-pre-wrap leading-relaxed" />}
+                  {y.anh_dap_an && <img src={y.anh_dap_an} alt="" className="mt-2 max-h-64 rounded border border-violet-200 bg-white object-contain" />}
+                </div>)}
+            </div>))}
+          <button onClick={() => setMoLg((v) => !v)} className="text-[12.5px] font-medium text-teal-700 hover:underline">{moLg ? '▾ Ẩn lời giải' : '▸ Lời giải + hình từng ý'}</button>
+        </div>
+      </div>
     </div>
   )
 }
